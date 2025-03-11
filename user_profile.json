@@ -1,0 +1,57 @@
+{
+    "page_elements": [
+        {
+            "element_id": 1,
+            "element_name": "user_name",
+            "element_property": "text",
+            "setValue": "",
+            "isInteractive": false,
+            "interactiveRequirements": "",
+            "data_example": "",
+            "api_func_call": ""
+        },
+        {
+            "element_id": 2,
+            "element_name": "user_profile",
+            "element_property": "media file",
+            "setValue": "",
+            "isInteractive": false,
+            "interactiveRequirements": "",
+            "data_example": "",
+            "api_func_call": ""
+        },
+        {
+            "element_id": 3,
+            "element_name": "routes_board",
+            "element_property": "component",
+            "setValue": "",
+            "isInteractive": true,
+            "interactiveRequirements": "show up all user generated routs as a card in vertical. Click card, jump into [map page] to show the route details. Routes are sorted by crated time as newer first, one can also change into sorting by upvotes number or view number or sites included in route",
+            "data_example": [
+                {
+                    "user_profile": "profile.jpg",
+                    "user_id": "uid001",
+                    "user_route_id": "uid001-1",
+                    "user_route_rank": 1,
+                    "created_date": "2025-01-01",
+                    "upvotes": 100,
+                    "views": 500,
+                    "route_name": "a 3-day US travel plan",
+                    "sites_included_in_routes": 50,
+                    "route_duration": "3 days",
+                    "estimated_cost": "3000$"
+                }
+            ],
+            "api_func_call": [
+                {
+                    "api_name": "route_statics",
+                    "api_func_call_description": "write a function to calculate how many sites a route has, how many days spent, how much may cost by following the route. when estimating how much, calling api you need like google map to collect price for entertainment, hotel and transportation"
+                },
+                {
+                    "api_name": "rank_route",
+                    "api_func_call_description": "write a function to support ranking routes by created date, number of sites, number of upvote and number of other user view, number of estimated cost"
+                }
+            ]
+        }
+    ]
+}

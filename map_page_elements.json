@@ -1,0 +1,109 @@
+{
+    "page_elements": [
+        {
+            "element_id": 1,
+            "element_name": "map_preview_windows",
+            "element_property": "component",
+            "setValue": "",
+            "isInteractive": true,
+            "interactiveRequirements": "by using google map api, real-time update map layer to display ai generated routes, highlight nearby interest points",
+            "data_example": "",
+            "api_call_func": [
+                {
+                    "api_name": "map_real_time_display",
+                    "api_call_func_description": "write a function to display ai generated travel plan route by openai 4o api. Carefully check the details as well as accuracy of the distance and transportation time consume between each site of route"
+                },
+                {
+                    "api_name": "get nearby interest point api",
+                    "api_call_func_description": "write a function to search top 3 most nearby entertainment choices around each route site. Then display them in map as interest points with corresponding, unique labels. Hover on each interest point should trigger a display windows which contains name, address and 5 recent user reviews."
+                }
+            ]
+        },
+        {
+            "element_id": 2,
+            "element_name": "user_input_query",
+            "element_property": "component",
+            "setValue": "",
+            "isInteractive": false,
+            "interactiveRequirements": "display user input in a chat box, split query into different parts with different colors by calling the of text intent recognition ability of openai 4o api.",
+            "data_example": [
+                {
+                    "user_name": "uid001",                   
+                    "user_query": "wish a 3-day US travel plan during christmas!",
+                    "user_intent_recognition": [
+                        {
+                            "arrival": "united states",
+                            "departure": "",
+                            "arrival_date": "christmas day",
+                            "departure_date": "",
+                            "travel_duration": "3 days",
+                            "entertainment_prefer": "",
+                            "transportation_prefer": "",
+                            "accommodation_prefer": "",
+                            "total_cost_prefer": "",
+                            "user_time_zone": "GMT-4", // by default set as "GMT+8"
+                            "user_personal_need": ""
+                        }
+                    ],
+                    "created_date": "2025-01-01"
+                }
+            ],
+            "api_call_func": ""
+        },        
+        {
+            "element_id": 3,
+            "element_name": "user_route_timeline",
+            "element_property": "component",
+            "setValue": "",
+            "isInteractive": true,
+            "interactiveRequirements": "display ai generated route in a vertical timeline style grouped by day. Each day includes arranged sites and transportation information between two sites including departure_time(current time zone), arrival_time(current time zone), transportation type, duration, distance. Around each site, attach a short sentence to introduce why it is recommended based on the arrival site",
+            "data_example": [
+                {
+                    "user_profile": "profile.jpg",
+                    "user_name": "uid001",
+                    "user_route_id": "uid001-1",
+                    "user_route_rank": 1,
+                    "created_date": "2025-01-01",
+                    "upvotes": 100,
+                    "route_name": "a 3-day US travel plan",
+                    "travel_split_by_day": [
+                        {
+                            "travel_day": 1,
+                            "current_date": "2025/03/10",
+                            "dairy_routes":[
+                                {
+                                    "route_id": "r001",
+                                    "departure_site": "Hotel Washington",
+                                    "arrival_site": "Smithsonian National Museum of Natural History",
+                                    "departure_time": "2025/03/10 9.00 AM(GMT-4)",
+                                    "arrival_time":  "2025/03/10 9.16 AM(GMT-4)", 
+                                    "user_time_zone": "GMT-4",
+                                    "transportation_type": "walk",
+                                    "duration": "14",
+                                    "duration_unit": "minute", 
+                                    "distance": 0.7,
+                                    "distance_unit": "mile", 
+                                    "recommended_reason": "From dinosaur exhibits to displays of rare gems, this acclaimed museum celebrates the natural world."
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "api_call_func": [
+                {
+                    "api_name": "user_route_split_by_day",
+                    "api_call_func_description": "write a function calling openai 4o api to split the routes it generated into dairy parts in order to fill the dairy routes formate below."
+                },
+                {
+                    "api_name": "user_route_transportation_validation",
+                    "api_call_func_description": "write a function calling google map to validate the distance, transportation type and duration of each route ai generated, update corresponding data using the corrected information."
+                },
+                {
+                    "api_name": "user_route_interest_points_validation",
+                    "api_call_func_description": "write a function calling google map to validate the distance between ai generated interest points and based on site. Only keep nearyby points,  by default distance less than 5 miles."
+                }
+            ]
+        }
+    ]
+}
