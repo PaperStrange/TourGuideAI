@@ -21,11 +21,11 @@
         },
         {
             "element_id": 2,
-            "element_name": "user_input_query",
+            "element_name": "user_input_box",
             "element_property": "component",
             "setValue": "",
             "isInteractive": false,
-            "interactiveRequirements": "display user input in a chat box, split query into different parts with different colors by calling the of text intent recognition ability of openai 4o api.",
+            "interactiveRequirements": "display user input in a chat box with different colors for different parts",
             "data_example": [
                 {
                     "user_name": "uid001",                   
@@ -65,7 +65,7 @@
                     "user_route_rank": 1,
                     "created_date": "2025-01-01",
                     "upvotes": 100,
-                    "route_name": "a 3-day US travel plan",
+                    "user_route_name": "a 3-day US travel plan",
                     "travel_split_by_day": [
                         {
                             "travel_day": 1,
