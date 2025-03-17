@@ -1,0 +1,40 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.logo-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px 0;
+}
+
+/* Custom styles for the navbar */
+.navbar {
+  background: linear-gradient(90deg, #1976d2, #2196f3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  .logo {
+    margin-bottom: 10px;
+  }
+  
+  .nav-links {
+    width: 100%;
+    justify-content: space-around;
+  }
+} 
