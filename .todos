@@ -67,3 +67,68 @@
 - [ ] Enhance error handling for API calls
 - [ ] Implement optimization for large datasets
 - [ ] Improve responsive design on very small screens 
+
+# TourGuideAI Phase 4 To-Do List
+
+## Backend Integration
+
+### 1. Set up server-side components
+- [ ] Create a backend server directory structure
+- [ ] Set up Node.js/Express server
+- [ ] Configure environment variables for API keys
+- [ ] Create API key validation middleware
+
+### 2. API Proxy Implementation
+- [ ] Create OpenAI API proxy routes
+- [ ] Implement Google Maps API proxy routes
+- [ ] Add request validation
+- [ ] Set up CORS and security headers
+
+## Frontend Integration
+
+### 1. Update API client code
+- [ ] Modify OpenAI client to use backend proxy
+- [ ] Update Google Maps client to use backend proxy
+- [ ] Create unified API configuration interface
+
+### 2. UI Integration
+- [ ] Add loading states to all API-dependent components
+- [ ] Implement Google Maps visualization in map page
+- [ ] Update chat interface for real-time responses
+- [ ] Create user settings for API preferences
+
+## Performance Optimization
+
+### 1. Caching Implementation
+- [ ] Add local storage cache for non-sensitive data
+- [ ] Implement server-side caching for API responses
+- [ ] Set up cache invalidation rules
+
+### 2. Rate Limiting
+- [ ] Add request throttling for API calls
+- [ ] Implement queue for batch processing
+- [ ] Create user feedback for rate limits
+
+## Error Handling
+
+### 1. Client-side error handling
+- [ ] Create error boundary components
+- [ ] Implement retry mechanisms
+- [ ] Add user-friendly error messages
+
+### 2. Server-side error handling
+- [ ] Set up comprehensive error logging
+- [ ] Create fallback responses for API failures
+- [ ] Implement graceful degradation
+
+## Testing & Monitoring
+
+### 1. Automated Tests
+- [ ] Create integration tests for API endpoints
+- [ ] Implement end-to-end tests for user flows
+- [ ] Set up CI/CD for automated testing
+
+### 2. Monitoring
+- [ ] Add API usage tracking
+- [ ] Implement performance monitoring
+- [ ] Create dashboard for API metrics 
