@@ -6,6 +6,7 @@ import './styles/App.css';
 import ChatPage from './pages/ChatPage';
 import MapPage from './pages/MapPage';
 import ProfilePage from './pages/ProfilePage';
+import TimelineDemoPage from './pages/TimelineDemoPage';
 
 function App() {
   const location = useLocation();
@@ -30,6 +31,12 @@ function App() {
             Map
           </Link>
           <Link 
+            to="/timeline" 
+            className={`nav-link ${location.pathname === '/timeline' ? 'active' : ''}`}
+          >
+            Timeline
+          </Link>
+          <Link 
             to="/profile" 
             className={`nav-link ${location.pathname === '/profile' ? 'active' : ''}`}
           >
@@ -44,6 +51,7 @@ function App() {
             <Route path="/" element={<ChatPage />} />
             <Route path="/map" element={<MapPage />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/timeline" element={<TimelineDemoPage />} />
           </Routes>
         </div>
       </main>

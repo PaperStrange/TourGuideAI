@@ -1,0 +1,210 @@
+/* TimelineComponent.css */
+
+.timeline-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.timeline-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.timeline-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 0.5rem 0;
+}
+
+.timeline-subtitle {
+  font-size: 1rem;
+  color: #7f8c8d;
+  margin: 0;
+}
+
+.timeline-days-nav {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc #f5f5f5;
+}
+
+.timeline-days-nav::-webkit-scrollbar {
+  height: 8px;
+}
+
+.timeline-days-nav::-webkit-scrollbar-track {
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
+.timeline-days-nav::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+.day-nav-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+  height: 70px;
+  padding: 0.5rem;
+  background-color: #f5f7fa;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.day-nav-btn:hover {
+  background-color: #eef2f7;
+}
+
+.day-nav-btn.active {
+  border-color: #3498db;
+  background-color: #ebf5ff;
+}
+
+.day-number {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #34495e;
+}
+
+.day-date {
+  font-size: 0.8rem;
+  color: #7f8c8d;
+  margin-top: 0.2rem;
+}
+
+.timeline-content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Skeleton loading state styles */
+.skeleton {
+  background-color: #f9f9f9;
+  position: relative;
+}
+
+.skeleton-line {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 4px;
+  height: 20px;
+  margin-bottom: 0.8rem;
+}
+
+.title-skeleton {
+  width: 60%;
+  height: 32px;
+  margin: 0 auto 1rem;
+}
+
+.subtitle-skeleton {
+  width: 40%;
+  height: 16px;
+  margin: 0 auto;
+}
+
+.day-nav-skeleton {
+  min-width: 100px;
+  height: 70px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+.day-card-skeleton {
+  padding: 1rem;
+}
+
+.day-header-skeleton {
+  height: 24px;
+  width: 50%;
+  margin-bottom: 2rem;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+.activities-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.activity-skeleton {
+  height: 80px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .timeline-container {
+    padding: 1rem;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  
+  .timeline-title {
+    font-size: 1.5rem;
+  }
+  
+  .day-nav-btn {
+    min-width: 90px;
+    height: 60px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .timeline-header {
+    margin-bottom: 1rem;
+  }
+  
+  .day-nav-btn {
+    min-width: 80px;
+    height: 55px;
+    padding: 0.3rem;
+  }
+  
+  .day-number {
+    font-size: 0.9rem;
+  }
+  
+  .day-date {
+    font-size: 0.7rem;
+  }
+} 

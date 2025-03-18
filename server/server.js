@@ -19,6 +19,7 @@ const path = require('path');
 // Custom utilities and middleware
 const logger = require('./utils/logger');
 const { globalLimiter, openaiLimiter, mapsLimiter } = require('./middleware/rateLimit');
+const { validateOpenAIApiKey, validateGoogleMapsApiKey, checkKeyRotation } = require('./middleware/apiKeyValidation');
 
 // Import API routes
 const openaiRoutes = require('./routes/openai');
@@ -49,12 +50,13 @@ app.use(cors({
 
 // Apply rate limiting
 app.use(globalLimiter);
-app.use('/api/openai', openaiLimiter);
-app.use('/api/maps', mapsLimiter);
 
-// API routes
-app.use('/api/openai', openaiRoutes);
-app.use('/api/maps', mapsRoutes);
+// Check for API keys needing rotation
+app.use(checkKeyRotation);
+
+// API routes with key validation
+app.use('/api/openai', validateOpenAIApiKey, openaiLimiter, openaiRoutes);
+app.use('/api/maps', validateGoogleMapsApiKey, mapsLimiter, mapsRoutes);
 
 // Serve static files from the frontend build directory in production
 if (process.env.NODE_ENV === 'production') {
