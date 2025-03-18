@@ -10,9 +10,20 @@ import axios from 'axios';
 // Default configuration
 const config = {
   baseURL: process.env.REACT_APP_API_URL || 'http://localhost:3000/api',
-  useSimulation: process.env.NODE_ENV === 'development' && !process.env.REACT_APP_USE_REAL_API,
-  debug: process.env.NODE_ENV === 'development'
+  useSimulation: process.env.NODE_ENV === 'development' && process.env.REACT_APP_USE_REAL_API !== 'true',
+  debug: process.env.NODE_ENV === 'development',
+  openaiApiKey: process.env.REACT_APP_OPENAI_API_KEY || ''
 };
+
+// Log configuration status in development
+if (process.env.NODE_ENV === 'development') {
+  console.log('API Client Configuration:', {
+    baseURL: config.baseURL,
+    useSimulation: config.useSimulation,
+    debug: config.debug,
+    hasOpenAIKey: !!config.openaiApiKey
+  });
+}
 
 // Create an axios instance
 const apiClient = axios.create({

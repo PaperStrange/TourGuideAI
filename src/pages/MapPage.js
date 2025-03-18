@@ -220,7 +220,7 @@ const MapPage = () => {
   
   // Load Google Maps script
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "YOUR_GOOGLE_MAPS_API_KEY", // Replace with your actual API key
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY || "", // Use environment variable
     libraries: ["places"],
   });
   
@@ -228,9 +228,114 @@ const MapPage = () => {
   useEffect(() => {
     if (location.state) {
       console.log('Route data from navigation:', location.state);
-      // In a real implementation, this would fetch the route data based on the state
+      
+      // Use real data passed from ChatPage if available
+      if (location.state.routeData) {
+        // Transform the OpenAI route format to our app's route format
+        const transformedRouteData = transformRouteData(location.state.routeData, location.state.userQuery);
+        setRouteData(transformedRouteData);
+      }
+      
+      if (location.state.userQuery) {
+        // Create user input object from the query
+        setUserInput({
+          user_name: "current_user",
+          user_query: location.state.userQuery,
+          user_intent_recognition: location.state.intentData ? [location.state.intentData.intent] : mockUserInput.user_intent_recognition,
+          created_date: new Date().toISOString().split('T')[0]
+        });
+      }
     }
   }, [location]);
+  
+  // Helper function to transform the OpenAI route data format to our app's format
+  const transformRouteData = (openaiRoute, query) => {
+    if (!openaiRoute) return mockRouteData;
+    
+    try {
+      // Create a transformed route object
+      const transformedRoute = {
+        user_profile: "https://randomuser.me/api/portraits/men/1.jpg", // Default profile
+        user_name: "current_user",
+        user_route_id: `route-${Date.now()}`,
+        user_route_rank: 1,
+        created_date: new Date().toISOString().split('T')[0],
+        upvotes: 0,
+        user_route_name: openaiRoute.route_name || `${openaiRoute.destination} Trip`,
+        travel_split_by_day: []
+      };
+      
+      // Transform daily itinerary into travel_split_by_day format
+      if (openaiRoute.daily_itinerary && Array.isArray(openaiRoute.daily_itinerary)) {
+        transformedRoute.travel_split_by_day = openaiRoute.daily_itinerary.map((day, dayIndex) => {
+          // Get activities for the day
+          const activities = day.activities || [];
+          
+          // Create routes between activities
+          const routes = [];
+          for (let i = 0; i < activities.length - 1; i++) {
+            const departure = activities[i];
+            const arrival = activities[i + 1];
+            
+            routes.push({
+              route_id: `r${dayIndex + 1}-${i + 1}`,
+              departure_site: departure.activity.split(' at ')[1] || departure.activity,
+              arrival_site: arrival.activity.split(' at ')[1] || arrival.activity,
+              departure_time: `${new Date().getFullYear()}/${String(new Date().getMonth() + 1).padStart(2, '0')}/${String(dayIndex + 1).padStart(2, '0')} ${departure.time}`,
+              arrival_time: `${new Date().getFullYear()}/${String(new Date().getMonth() + 1).padStart(2, '0')}/${String(dayIndex + 1).padStart(2, '0')} ${arrival.time}`,
+              user_time_zone: "Local",
+              transportation_type: getRandomTransportation(),
+              duration: getRandomDuration(),
+              duration_unit: "minute",
+              distance: getRandomDistance(),
+              distance_unit: "mile",
+              recommended_reason: getRecommendationFromActivity(arrival.activity)
+            });
+          }
+          
+          return {
+            travel_day: day.day || dayIndex + 1,
+            current_date: `${new Date().getFullYear()}/${String(new Date().getMonth() + 1).padStart(2, '0')}/${String(dayIndex + 1).padStart(2, '0')}`,
+            dairy_routes: routes
+          };
+        });
+      }
+      
+      return transformedRoute;
+    } catch (error) {
+      console.error('Error transforming route data:', error);
+      return mockRouteData;
+    }
+  };
+  
+  // Helper functions to generate random data when real data is not available
+  const getRandomTransportation = () => {
+    const options = ['walk', 'taxi', 'bus', 'subway', 'bike'];
+    return options[Math.floor(Math.random() * options.length)];
+  };
+  
+  const getRandomDuration = () => {
+    return String(Math.floor(Math.random() * 30) + 10);
+  };
+  
+  const getRandomDistance = () => {
+    return (Math.random() * 2 + 0.5).toFixed(1);
+  };
+  
+  const getRecommendationFromActivity = (activity) => {
+    // Extract a recommendation from the activity description
+    if (!activity) return "A must-visit destination on your trip.";
+    
+    const recommendations = [
+      `Discover ${activity} - a highlight of the area.`,
+      `${activity} offers an unforgettable experience.`,
+      `Don't miss ${activity} during your visit.`,
+      `${activity} is popular among travelers for good reason.`,
+      `Experience the unique atmosphere of ${activity}.`
+    ];
+    
+    return recommendations[Math.floor(Math.random() * recommendations.length)];
+  };
   
   // Mock function for map_real_time_display
   const displayRouteOnMap = () => {
@@ -269,169 +374,186 @@ const MapPage = () => {
     setSelectedPoint(point);
   };
   
-  if (loadError) return <div className="map-error">Error loading maps</div>;
-  if (!isLoaded) return <div className="map-loading">Loading maps...</div>;
+  // Render loading indicator or error message for map
+  const renderMap = () => {
+    if (loadError) {
+      return (
+        <div className="map-error-container">
+          <h3>Error loading maps</h3>
+          <p>There was an error loading Google Maps. Please check your API key configuration.</p>
+          <p className="error-details">Error: {loadError.message}</p>
+        </div>
+      );
+    }
 
+    if (!isLoaded) {
+      return <div className="map-loading">Loading maps...</div>;
+    }
+
+    return (
+      <GoogleMap
+        mapContainerStyle={mapContainerStyle}
+        zoom={14}
+        center={center}
+        options={options}
+        onLoad={displayRouteOnMap}
+      >
+        {/* Route markers */}
+        {routeData.travel_split_by_day.flatMap(day =>
+          day.dairy_routes.map(route => (
+            <React.Fragment key={route.route_id}>
+              <Marker
+                key={`departure-${route.route_id}`}
+                position={{
+                  lat: 38.8977 + (Math.random() - 0.5) * 0.02,
+                  lng: -77.0365 + (Math.random() - 0.5) * 0.02
+                }}
+                onClick={() => handleMarkerClick({
+                  id: `departure-${route.route_id}`,
+                  name: route.departure_site,
+                  position: {
+                    lat: 38.8977 + (Math.random() - 0.5) * 0.02,
+                    lng: -77.0365 + (Math.random() - 0.5) * 0.02
+                  }
+                })}
+              />
+              <Marker
+                key={`arrival-${route.route_id}`}
+                position={{
+                  lat: 38.8977 + (Math.random() - 0.5) * 0.02,
+                  lng: -77.0365 + (Math.random() - 0.5) * 0.02
+                }}
+                onClick={() => handleMarkerClick({
+                  id: `arrival-${route.route_id}`,
+                  name: route.arrival_site,
+                  position: {
+                    lat: 38.8977 + (Math.random() - 0.5) * 0.02,
+                    lng: -77.0365 + (Math.random() - 0.5) * 0.02
+                  }
+                })}
+              />
+            </React.Fragment>
+          ))
+        )}
+
+        {/* Nearby points */}
+        {getNearbyInterestPoints().map(point => (
+          <Marker
+            key={point.id}
+            position={point.position}
+            icon={{
+              url: `http://maps.google.com/mapfiles/ms/icons/green-dot.png`,
+              scaledSize: isLoaded ? new window.google.maps.Size(32, 32) : null
+            }}
+            onClick={() => handleMarkerClick(point)}
+          />
+        ))}
+
+        {/* Info window */}
+        {selectedPoint && (
+          <InfoWindow
+            position={selectedPoint.position}
+            onCloseClick={() => setSelectedPoint(null)}
+          >
+            <div className="info-window">
+              <h3>{selectedPoint.name}</h3>
+              {selectedPoint.address && <p>{selectedPoint.address}</p>}
+              {selectedPoint.reviews && selectedPoint.reviews.length > 0 && (
+                <div className="reviews">
+                  <h4>Reviews</h4>
+                  {selectedPoint.reviews.map((review, index) => (
+                    <div key={index} className="review">
+                      <div className="review-rating">{review.rating}/5</div>
+                      <div className="review-text">{review.text}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </InfoWindow>
+        )}
+      </GoogleMap>
+    );
+  };
+
+  // Add helper function to get coordinates from location name (mock implementation)
+  const getCoordinatesFromLocation = (locationName) => {
+    // This would be replaced with actual geocoding in a real application
+    return {
+      lat: 38.8977 + (Math.random() - 0.5) * 0.02,
+      lng: -77.0365 + (Math.random() - 0.5) * 0.02
+    };
+  };
+
+  // Main component return
   return (
     <div className="map-page">
       <h1 className="page-title">Interactive Map</h1>
       
       <div className="map-container">
-        {/* Element 1: Map Preview Windows */}
-        <div className="map-preview">
-          <GoogleMap
-            mapContainerStyle={mapContainerStyle}
-            zoom={14}
-            center={center}
-            options={options}
-            onLoad={displayRouteOnMap}
-          >
-            {/* Display route markers */}
-            {routeData.travel_split_by_day.flatMap(day => 
-              day.dairy_routes.map(route => (
-                <Marker
-                  key={route.route_id}
-                  position={{
-                    lat: 38.8977 + (Math.random() - 0.5) * 0.02, // Mock coordinates
-                    lng: -77.0365 + (Math.random() - 0.5) * 0.02
-                  }}
-                  icon={{
-                    url: `http://maps.google.com/mapfiles/ms/icons/blue-dot.png`,
-                  }}
-                  onClick={() => handleMarkerClick({
-                    id: route.route_id,
-                    name: route.arrival_site,
-                    position: {
-                      lat: 38.8977 + (Math.random() - 0.5) * 0.02,
-                      lng: -77.0365 + (Math.random() - 0.5) * 0.02
-                    },
-                    address: 'Washington, DC',
-                    reviews: []
-                  })}
-                />
-              ))
-            )}
-            
-            {/* Display nearby interest points */}
-            {getNearbyInterestPoints().map(point => (
-              <Marker
-                key={point.id}
-                position={point.position}
-                icon={{
-                  url: `http://maps.google.com/mapfiles/ms/icons/green-dot.png`,
-                }}
-                onClick={() => handleMarkerClick(point)}
-              />
-            ))}
-            
-            {/* Info window for selected point */}
-            {selectedPoint && (
-              <InfoWindow
-                position={selectedPoint.position}
-                onCloseClick={() => setSelectedPoint(null)}
-              >
-                <div className="info-window">
-                  <h3>{selectedPoint.name}</h3>
-                  <p>{selectedPoint.address}</p>
-                  {selectedPoint.reviews && selectedPoint.reviews.length > 0 && (
-                    <div className="reviews">
-                      <h4>Recent Reviews</h4>
-                      <ul>
-                        {selectedPoint.reviews.slice(0, 3).map((review, index) => (
-                          <li key={index}>
-                            <strong>{review.user}</strong>: {review.text}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              </InfoWindow>
-            )}
-          </GoogleMap>
-        </div>
+        {renderMap()}
+      </div>
         
-        <div className="map-sidebar">
-          {/* Element 2: User Input Box */}
-          <div className="user-input-box">
-            <h2>Your Query</h2>
-            <div className="query-display">
-              <div className="user-info">
-                <span className="username">{userInput.user_name}</span>
-                <span className="date">{userInput.created_date}</span>
+      {/* Element 2: User Input Box Component */}
+      <div className="user-input-box">
+        <h2>User Query</h2>
+        <div className="query-display">
+          <p>{userInput.user_query}</p>
+          <div className="intent-recognition">
+            <h3>Recognized Intent</h3>
+            <ul>
+              {userInput.user_intent_recognition.map((intent, index) => (
+                <li key={index}>
+                  <strong>Destination:</strong> {intent.arrival || 'Not specified'}<br />
+                  <strong>Travel Period:</strong> {intent.arrival_date || 'Not specified'}<br />
+                  <strong>Duration:</strong> {intent.travel_duration || 'Not specified'}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Element 3: Route Timeline Component */}
+      <div className="route-timeline">
+        <h2>Route Timeline</h2>
+        <div className="timeline-container">
+          {splitRouteByDay().map((day) => (
+            <div key={day.travel_day} className="day-container">
+              <div className="day-header">
+                <h3>Day {day.travel_day}</h3>
+                <span className="day-date">{day.current_date}</span>
               </div>
-              <p className="query-text">{userInput.user_query}</p>
-              <div className="intent-recognition">
-                {userInput.user_intent_recognition.map((intent, index) => (
-                  <div key={index} className="intent-details">
-                    {intent.arrival && (
-                      <span className="intent-item arrival">
-                        Arrival: {intent.arrival}
-                      </span>
-                    )}
-                    {intent.arrival_date && (
-                      <span className="intent-item date">
-                        Date: {intent.arrival_date}
-                      </span>
-                    )}
-                    {intent.travel_duration && (
-                      <span className="intent-item duration">
-                        Duration: {intent.travel_duration}
-                      </span>
-                    )}
-                    {intent.user_time_zone && (
-                      <span className="intent-item timezone">
-                        Timezone: {intent.user_time_zone}
-                      </span>
-                    )}
+              <div className="routes-container">
+                {day.dairy_routes.map((route) => (
+                  <div key={route.route_id} className="route-item">
+                    <div className="timeline-marker"></div>
+                    <div className="route-content">
+                      <div className="route-sites">
+                        <div className="departure-site">
+                          <span className="time">{route.departure_time.split(' ')[1]}</span>
+                          <span className="site-name">{route.departure_site}</span>
+                        </div>
+                        <div className="transportation">
+                          <span className="transport-type">{route.transportation_type}</span>
+                          <span className="transport-details">
+                            {route.duration} {route.duration_unit} • {route.distance} {route.distance_unit}
+                          </span>
+                        </div>
+                        <div className="arrival-site">
+                          <span className="time">{route.arrival_time.split(' ')[1]}</span>
+                          <span className="site-name">{route.arrival_site}</span>
+                        </div>
+                      </div>
+                      <div className="recommendation">
+                        <p>{route.recommended_reason}</p>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
-          </div>
-          
-          {/* Element 3: Route Timeline */}
-          <div className="route-timeline">
-            <h2>Travel Itinerary</h2>
-            <div className="timeline-container">
-              {splitRouteByDay().map((day) => (
-                <div key={day.travel_day} className="day-container">
-                  <div className="day-header">
-                    <h3>Day {day.travel_day}</h3>
-                    <span className="day-date">{day.current_date}</span>
-                  </div>
-                  <div className="routes-container">
-                    {day.dairy_routes.map((route, index) => (
-                      <div key={route.route_id} className="route-item">
-                        <div className="timeline-marker"></div>
-                        <div className="route-content">
-                          <div className="route-sites">
-                            <div className="departure-site">
-                              <span className="time">{route.departure_time.split(' ')[1]}</span>
-                              <span className="site-name">{route.departure_site}</span>
-                            </div>
-                            <div className="transportation">
-                              <span className="transport-type">{route.transportation_type}</span>
-                              <span className="transport-details">
-                                {route.duration} {route.duration_unit} • {route.distance} {route.distance_unit}
-                              </span>
-                            </div>
-                            <div className="arrival-site">
-                              <span className="time">{route.arrival_time.split(' ')[1]}</span>
-                              <span className="site-name">{route.arrival_site}</span>
-                            </div>
-                          </div>
-                          <div className="recommendation">
-                            <p>{route.recommended_reason}</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

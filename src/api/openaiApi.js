@@ -7,6 +7,14 @@
  * @requires API_KEY - An OpenAI API key must be configured
  */
 
+// Initialize API key from environment variables if available
+if (process.env.REACT_APP_OPENAI_API_KEY) {
+  setApiKey(process.env.REACT_APP_OPENAI_API_KEY);
+}
+
+// Make debug mode follow the NODE_ENV by default
+setDebugMode(process.env.NODE_ENV === 'development');
+
 // OpenAI API configuration
 let config = {
   apiKey: '', // Set via setApiKey
