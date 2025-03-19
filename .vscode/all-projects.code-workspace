@@ -1,0 +1,77 @@
+{
+  "folders": [
+    {
+      "name": "frontend",
+      "path": "../tourai_platform/frontend"
+    },
+    {
+      "name": "backend",
+      "path": "../tourai_platform/backend"
+    },
+    {
+      "name": "build",
+      "path": "../build"
+    },
+    {
+      "name": "models",
+      "path": "../models"
+    },
+    {
+      "name": "infra",
+      "path": "../models/infra"
+    },
+    {
+      "name": "checkpoints",
+      "path": "../models/checkpoints"
+    },
+    {
+      "name": "data",
+      "path": "../models/data"
+    },
+    {
+      "name": "libs",
+      "path": "../models/data/tourai_libs"
+    },
+    {
+      "name": "node_modules",
+      "path": "../node_modules"
+    },
+    {
+      "name": "public",
+      "path": "../public"
+    },
+    {
+      "name": "server",
+      "path": "../server"
+    },
+    {
+      "name": "src",
+      "path": "../src"
+    },
+    {
+      "name": "docs",
+      "path": "../docs"
+    },
+    {
+      "name": "logs",
+      "path": "../logs"
+    },
+    {
+      "name": "[root]",
+      "path": ".."
+    }
+  ],
+  "settings": {
+    "python.analysis.typeCheckingMode": "basic"
+  },
+  "extensions": {
+    "recommendations": [
+      "charliermarsh.ruff",
+      "dart-code.flutter",
+      "ms-python.black-formatter",
+      "ms-python.vscode-pylance",
+      "prisma.prisma",
+      "qwtel.sqlite-viewer"
+    ]
+  }
+}
