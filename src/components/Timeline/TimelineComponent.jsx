@@ -7,25 +7,50 @@ import './TimelineComponent.css';
  * 
  * @param {Object} route - The route data with destination information
  * @param {Object} timeline - The timeline data with daily activities
+ * @param {Object} timelineData - Alternative format for backward compatibility (deprecated)
  * @returns {JSX.Element} The timeline component
  */
-const TimelineComponent = ({ route, timeline }) => {
+const TimelineComponent = ({ route, timeline, timelineData }) => {
   const [activeDay, setActiveDay] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [processedTimeline, setProcessedTimeline] = useState(null);
+  const [processedRoute, setProcessedRoute] = useState(null);
   
   useEffect(() => {
-    // Check if timeline data is available
+    // Process props for backward compatibility
+    let destination = 'Unknown Destination';
+    let routeName = 'Travel Plan';
+    let days = [];
+    
+    // Handle both new format (timeline) and old format (timelineData)
     if (timeline && timeline.days && timeline.days.length > 0) {
+      days = timeline.days;
+      setIsLoading(false);
+    } else if (timelineData && timelineData.travel_split_by_day && timelineData.travel_split_by_day.length > 0) {
+      // Convert old format to new format
+      days = timelineData.travel_split_by_day.map(day => ({
+        ...day,
+        daily_routes: day.dairy_routes
+      }));
       setIsLoading(false);
     }
-  }, [timeline]);
+    
+    // Process route info
+    if (route) {
+      destination = route.destination;
+      routeName = route.route_name;
+    }
+    
+    setProcessedTimeline({ days });
+    setProcessedRoute({ destination, route_name: routeName });
+  }, [timeline, timelineData, route]);
   
   // Handle day selection
   const handleDayChange = (index) => {
     setActiveDay(index);
   };
   
-  if (isLoading) {
+  if (isLoading || !processedTimeline || !processedTimeline.days) {
     return <TimelineSkeleton />;
   }
   
@@ -33,15 +58,15 @@ const TimelineComponent = ({ route, timeline }) => {
     <div className="timeline-container">
       <div className="timeline-header">
         <h2 className="timeline-title">
-          Your Itinerary for {route.destination}
+          Your Itinerary for {processedRoute.destination}
         </h2>
         <p className="timeline-subtitle">
-          {timeline.days.length} day{timeline.days.length !== 1 ? 's' : ''} • {route.route_name}
+          {processedTimeline.days.length} day{processedTimeline.days.length !== 1 ? 's' : ''} • {processedRoute.route_name}
         </p>
       </div>
       
       <div className="timeline-days-nav">
-        {timeline.days.map((day, index) => (
+        {processedTimeline.days.map((day, index) => (
           <button 
             key={index}
             className={`day-nav-btn ${activeDay === index ? 'active' : ''}`}
@@ -56,10 +81,10 @@ const TimelineComponent = ({ route, timeline }) => {
       </div>
       
       <div className="timeline-content">
-        {timeline.days[activeDay] && (
+        {processedTimeline.days[activeDay] && (
           <DayCard 
-            day={timeline.days[activeDay]} 
-            destination={route.destination}
+            day={processedTimeline.days[activeDay]} 
+            destination={processedRoute.destination}
           />
         )}
       </div>

@@ -38,6 +38,27 @@ describe('Route Generation Integration', () => {
     // Configure APIs
     openaiApi.setApiKey('test-openai-key');
     googleMapsApi.setApiKey('test-maps-key');
+    
+    // Mock validateTransportation and getNearbyInterestPoints methods
+    googleMapsApi.validateTransportation = jest.fn().mockImplementation(() => 
+      Promise.resolve({
+        duration: '10 mins',
+        duration_value: 600,
+        distance: '5 km',
+        distance_value: 5000
+      })
+    );
+    
+    googleMapsApi.getNearbyInterestPoints = jest.fn().mockImplementation(() => 
+      Promise.resolve([
+        {
+          name: 'Test Point of Interest',
+          address: 'Test Address',
+          rating: 4.5,
+          types: ['tourist_attraction']
+        }
+      ])
+    );
   });
 
   test('complete route generation flow from user query to timeline display', async () => {
@@ -90,7 +111,7 @@ describe('Route Generation Integration', () => {
       })
     );
     
-    const intent = await openaiApi.recognizeIntent(userQuery);
+    const intent = await openaiApi.recognizeTextIntent(userQuery);
     
     expect(intent).toBeDefined();
     expect(intent.arrival).toBe('Rome');
@@ -148,6 +169,7 @@ describe('Route Generation Integration', () => {
     
     expect(nearbyPoints).toBeDefined();
     expect(Array.isArray(nearbyPoints)).toBe(true);
+    expect(nearbyPoints.length).toBeGreaterThan(0);
     
     // Step 6: Save route to local storage (simulating what the application would do)
     const routeWithDetails = {

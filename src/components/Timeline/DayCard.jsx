@@ -10,9 +10,14 @@ import './DayCard.css';
  * @returns {JSX.Element} The day card component
  */
 const DayCard = ({ day, destination }) => {
+  // Get routes (handle both daily_routes and dairy_routes for backward compatibility)
+  const routes = useMemo(() => {
+    return day.daily_routes || day.dairy_routes || [];
+  }, [day]);
+  
   // Group activities by time period (morning, afternoon, evening)
   const timePeriods = useMemo(() => {
-    const activities = day.daily_routes || [];
+    const activities = routes;
     
     return {
       morning: activities.filter(route => {
@@ -32,12 +37,12 @@ const DayCard = ({ day, destination }) => {
                (parseInt(time.split(':')[0]) >= 6 || time.split(':')[0] === '12');
       })
     };
-  }, [day.daily_routes]);
+  }, [routes]);
   
   // Find activities without specific time
   const unscheduledActivities = useMemo(() => {
-    return (day.daily_routes || []).filter(route => !route.time);
-  }, [day.daily_routes]);
+    return routes.filter(route => !route.time);
+  }, [routes]);
   
   return (
     <div className="day-card">
@@ -90,7 +95,7 @@ const DayCard = ({ day, destination }) => {
         )}
       </div>
       
-      {day.daily_routes && day.daily_routes.length === 0 && (
+      {routes.length === 0 && (
         <div className="empty-day">
           <p>No activities planned for this day. Perfect for relaxing or spontaneous adventures!</p>
         </div>
