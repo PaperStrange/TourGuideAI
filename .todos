@@ -70,72 +70,63 @@
 
 # TourGuideAI Phase 4 To-Do List
 
-## Backend Integration
+## Phase 4: Production Integration Tasks
 
-### 1. Set up server-side components
-- [X] Create a backend server directory structure
-- [X] Set up Node.js/Express server
-- [X] Configure environment variables for API keys
-- [X] Create API key validation middleware
-- [X] Implement secure key management system
-- [X] Add key rotation support
-- [X] Add key usage monitoring
+### Backend Integration
+- [ ] Create server-side API proxy endpoints
+  - [ ] Implement OpenAI API proxy with rate limiting
+  - [ ] Implement Google Maps API proxy with caching
+  - [ ] Add authentication middleware for API access
+- [ ] Set up monitoring and logging for API usage
+  - [ ] Add detailed request logging
+  - [ ] Implement usage metrics collection
+  - [ ] Create dashboard for API usage visualization
 
-### 2. API Proxy Implementation
-- [ ] Create OpenAI API proxy routes
-- [ ] Implement Google Maps API proxy routes
-- [ ] Add request validation
-- [ ] Set up CORS and security headers
+### Frontend Integration
+- [ ] Update imports to use new folder structure
+  - [ ] Update core API imports
+  - [ ] Update service imports
+  - [ ] Update component imports
+- [ ] Connect UI components to real APIs
+  - [ ] Update travel planning components to use backend proxy
+  - [ ] Update map visualization components to use backend proxy
+  - [ ] Add loading states during API requests
+- [ ] Implement API error handling
+  - [ ] Create error boundary components
+  - [ ] Add retry logic for failed requests
+  - [ ] Implement fallback content for API failures
 
-## Frontend Integration
+### Testing
+- [ ] Create end-to-end tests for critical flows
+  - [ ] Test route generation flow
+  - [ ] Test map visualization flow
+  - [ ] Test user profile management flow
+- [ ] Update unit tests to reflect new architecture
+  - [ ] Refactor tests to use new folder structure
+  - [ ] Update mocks for API calls
+  - [ ] Add tests for new components
 
-### 1. Update API client code
-- [ ] Modify OpenAI client to use backend proxy
-- [ ] Update Google Maps client to use backend proxy
-- [ ] Create unified API configuration interface
+### Documentation
+- [X] Document new architecture in ARCHITECTURE.md
+- [X] Add README files to explain directory structure
+- [ ] Create API documentation for backend services
+  - [ ] Document OpenAI proxy endpoints
+  - [ ] Document Google Maps proxy endpoints
+  - [ ] Document authentication endpoints
+- [ ] Update development setup instructions
 
-### 2. UI Integration
-- [ ] Add loading states to all API-dependent components
-- [ ] Implement Google Maps visualization in map page
-- [ ] Update chat interface for real-time responses
-- [ ] Create user settings for API preferences
+## Completed Tasks
+- [X] Reorganize project with feature-based architecture
+- [X] Create core modules for shared functionality
+- [X] Move API clients to core/api directory
+- [X] Move storage services to core/services/storage
+- [X] Create feature-specific directories
+- [X] Add comprehensive README files
+- [X] Fix test suite issues
 
-## Performance Optimization
-
-### 1. Caching Implementation
-- [X] Add local storage cache for non-sensitive data
-- [X] Implement server-side caching for API responses
-- [X] Set up cache invalidation rules
-- [X] Implement cache version control
-- [X] Add cache size monitoring and cleanup
-
-### 2. Rate Limiting
-- [ ] Add request throttling for API calls
-- [ ] Implement queue for batch processing
-- [ ] Create user feedback for rate limits
-
-## Error Handling
-
-### 1. Client-side error handling
-- [ ] Create error boundary components
-- [ ] Implement retry mechanisms
-- [ ] Add user-friendly error messages
-
-### 2. Server-side error handling
-- [ ] Set up comprehensive error logging
-- [ ] Create fallback responses for API failures
-- [ ] Implement graceful degradation
-
-## Testing & Monitoring
-
-### 1. Automated Tests
-- [X] Create integration tests for storage services
-- [X] Create integration tests for key management
-- [ ] Create integration tests for API endpoints
-- [ ] Implement end-to-end tests for user flows
-- [ ] Set up CI/CD for automated testing
-
-### 2. Monitoring
-- [ ] Add API usage tracking
-- [ ] Implement performance monitoring
-- [ ] Create dashboard for API metrics 
+## Final Steps
+- [ ] Perform code review of reorganized structure
+- [ ] Run full test suite to ensure everything works
+- [ ] Deploy updated application to staging environment
+- [ ] Collect user feedback on new features
+- [ ] Plan for Phase 5 (advanced features) 
