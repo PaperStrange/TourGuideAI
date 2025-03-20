@@ -7,5 +7,8 @@
 // Export API client
 export { default as apiClient } from './apiClient';
 
+// Export RouteService
+export { routeService } from './RouteService';
+
 // Export storage services
 export * from './storage'; 

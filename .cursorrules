@@ -265,14 +265,17 @@ Note all thinking frameworks are expressed in markdown. So before using thinking
 - Ensure proper handling of different character encodings (UTF-8) for international queries
 - Add debug information to stderr while keeping the main output clean in stdout for better pipeline integration
 - When using seaborn styles in matplotlib, use 'seaborn-v0_8' instead of 'seaborn' as the style name due to recent seaborn version changes
+- Always verify that component property names match exactly in tests, as mismatched props can lead to subtle errors
+- Maintain backward compatibility when refactoring components by supporting both old and new prop formats
+- For API clients, ensure functions are defined before they're used, especially in initialization code
+- Utilize feature-based architecture for better code organization and maintainability
+- Group related functionality together (services, components, etc.) within feature directories
+- Extract shared functionality into core modules to avoid code duplication
+- Write comprehensive tests for all services and API functions
+- Create singleton instances for services to ensure consistent state across the application
 
 ## Scratchpad
 This section is used for cursor thinking protocol and tracking the progress of current tasks.
-
-### Current Task: Phase 4 - Backend Integration
-- Setting up a secure server-side component for API management
-- Planning server-side caching and rate limiting
-- Designing API proxy endpoints
 
 ### Thinking Process
 - Backend should handle all API key management
