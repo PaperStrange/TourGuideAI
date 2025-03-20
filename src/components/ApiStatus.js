@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getStatus } from '../api/openaiApi';
+import { getStatus } from '../core/api/openaiApi';
 
 /**
  * ApiStatus component - displays the status of the API connections
@@ -17,7 +17,7 @@ const ApiStatus = () => {
       try {
         const status = await getStatus();
         setApiStatus({
-          openai: status.apiKeyConfigured,
+          openai: status.isConfigured,
           maps: !!process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
           checking: false,
           error: null

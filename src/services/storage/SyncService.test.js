@@ -1,3 +1,11 @@
+/**
+ * @deprecated This test file is deprecated. Use tests in 'src/core/services/storage/SyncService.test.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
+ */
+
+// Log warning when this file is imported
+console.warn('Warning: This test file is deprecated. Please use the tests in src/core/services/storage/SyncService.test.js instead.');
+
 import { syncService } from './SyncService';
 import { localStorageService } from './LocalStorageService';
 

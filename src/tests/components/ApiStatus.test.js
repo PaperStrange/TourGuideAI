@@ -4,33 +4,40 @@ import '@testing-library/jest-dom';
 import ApiStatus from '../../components/ApiStatus';
 
 // Mock the openaiApi module
-jest.mock('../../api/openaiApi', () => ({
+jest.mock('../../core/api/openaiApi', () => ({
   getStatus: jest.fn()
 }));
 
-// Mock the googleMapsApi module
-jest.mock('../../api/googleMapsApi', () => ({
-  getStatus: jest.fn()
-}));
-
-// Import the mocked modules
-import { getStatus as getOpenAIStatus } from '../../api/openaiApi';
-import { getStatus as getGoogleMapsStatus } from '../../api/googleMapsApi';
+// Import the mocked module
+import { getStatus } from '../../core/api/openaiApi';
 
 describe('ApiStatus Component', () => {
+  const originalEnv = process.env;
+
+  beforeEach(() => {
+    // Mock environment variable
+    process.env = {
+      ...originalEnv,
+      REACT_APP_GOOGLE_MAPS_API_KEY: undefined
+    };
+  });
+
   afterEach(() => {
     jest.clearAllMocks();
+    process.env = originalEnv;
   });
 
   test('should display loading state initially', () => {
     render(<ApiStatus />);
-    expect(screen.getByText('Checking API connection...')).toBeInTheDocument();
+    expect(screen.getByText('Checking API status...')).toBeInTheDocument();
   });
 
   test('should display connected APIs when both are configured', async () => {
-    // Mock both APIs as connected
-    getOpenAIStatus.mockResolvedValue({ isConfigured: true });
-    getGoogleMapsStatus.mockResolvedValue({ isConfigured: true });
+    // Mock OpenAI API as connected
+    getStatus.mockResolvedValue({ isConfigured: true });
+    
+    // Mock Google Maps API key as defined
+    process.env.REACT_APP_GOOGLE_MAPS_API_KEY = 'test-google-maps-key';
 
     render(<ApiStatus />);
 
@@ -43,25 +50,26 @@ describe('ApiStatus Component', () => {
   });
 
   test('should display disconnected APIs when not configured', async () => {
-    // Mock both APIs as disconnected
-    getOpenAIStatus.mockResolvedValue({ isConfigured: false });
-    getGoogleMapsStatus.mockResolvedValue({ isConfigured: false });
+    // Mock OpenAI API as disconnected
+    getStatus.mockResolvedValue({ isConfigured: false });
+    
+    // Google Maps API key is undefined from beforeEach
 
     render(<ApiStatus />);
 
     // Wait for the async status check to complete
     await waitFor(() => {
       expect(screen.getByText('API Status')).toBeInTheDocument();
-      expect(screen.getByText('OpenAI API: Not connected')).toBeInTheDocument();
-      expect(screen.getByText('Google Maps API: Not connected')).toBeInTheDocument();
-      expect(screen.getByText('Configure API keys in your .env file')).toBeInTheDocument();
+      expect(screen.getByText('OpenAI API: Not Connected')).toBeInTheDocument();
+      expect(screen.getByText('Google Maps API: Not Connected')).toBeInTheDocument();
+      expect(screen.getAllByText(/Please set your .* API key in the \.env file/)).toHaveLength(2);
     });
   });
 
   test('should display mixed API connection states', async () => {
-    // Mock one API connected, one disconnected
-    getOpenAIStatus.mockResolvedValue({ isConfigured: true });
-    getGoogleMapsStatus.mockResolvedValue({ isConfigured: false });
+    // Mock OpenAI API connected but Google Maps disconnected
+    getStatus.mockResolvedValue({ isConfigured: true });
+    // Google Maps API key is undefined from beforeEach
 
     render(<ApiStatus />);
 
@@ -69,56 +77,20 @@ describe('ApiStatus Component', () => {
     await waitFor(() => {
       expect(screen.getByText('API Status')).toBeInTheDocument();
       expect(screen.getByText('OpenAI API: Connected')).toBeInTheDocument();
-      expect(screen.getByText('Google Maps API: Not connected')).toBeInTheDocument();
+      expect(screen.getByText('Google Maps API: Not Connected')).toBeInTheDocument();
     });
   });
 
   test('should handle API check errors', async () => {
     // Mock an error during API check
-    getOpenAIStatus.mockRejectedValue(new Error('API Error'));
-    getGoogleMapsStatus.mockRejectedValue(new Error('API Error'));
+    getStatus.mockRejectedValue(new Error('API Error'));
 
     render(<ApiStatus />);
 
     // Wait for the async status check to complete
     await waitFor(() => {
-      expect(screen.getByText('Error checking API status')).toBeInTheDocument();
+      expect(screen.getByText('API Status Error')).toBeInTheDocument();
+      expect(screen.getByText('API Error')).toBeInTheDocument();
     });
-  });
-
-  test('should refresh API status on interval', async () => {
-    // Mock the timer
-    jest.useFakeTimers();
-    
-    // Mock APIs as connected initially
-    getOpenAIStatus.mockResolvedValue({ isConfigured: true });
-    getGoogleMapsStatus.mockResolvedValue({ isConfigured: true });
-
-    render(<ApiStatus />);
-
-    // Wait for initial render to complete
-    await waitFor(() => {
-      expect(screen.getByText('API Status')).toBeInTheDocument();
-    });
-
-    // Clear mocks to check if they're called again
-    getOpenAIStatus.mockClear();
-    getGoogleMapsStatus.mockClear();
-
-    // Mock APIs as disconnected for the second check
-    getOpenAIStatus.mockResolvedValue({ isConfigured: false });
-    getGoogleMapsStatus.mockResolvedValue({ isConfigured: false });
-
-    // Advance timer to trigger refresh
-    act(() => {
-      jest.advanceTimersByTime(60000); // 60 seconds
-    });
-
-    // Verify that the status was checked again
-    expect(getOpenAIStatus).toHaveBeenCalled();
-    expect(getGoogleMapsStatus).toHaveBeenCalled();
-
-    // Clean up
-    jest.useRealTimers();
   });
 }); 

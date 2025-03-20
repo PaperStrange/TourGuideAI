@@ -1,5 +1,22 @@
 # TourGuideAI Version History
 
+## Version 0.4.1 (2023-03-20)
+### Added
+- Created API_MIGRATION.md documentation for API module migration
+- Added deprecation notices to old API files
+- Updated core module README with API usage examples
+
+### Changed
+- Consolidated duplicate API files
+- Redirected old API modules to use core implementations
+- Updated ApiStatus component to use core API modules
+- Updated tests to use new API module paths
+
+### Fixed
+- Resolved API naming inconsistencies between modules
+- Fixed potential import errors in tests
+- Eliminated duplicate code in API implementations
+
 ## Version 0.4.0 (2023-03-20)
 ### Added
 - Reorganized project structure with feature-based architecture

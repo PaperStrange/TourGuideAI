@@ -1,8 +1,12 @@
 /**
  * Storage Services
- * Exports all storage-related services for offline data management
+ * 
+ * @deprecated This file is deprecated. Import from 'src/core/services/storage' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
  */
 
-export { localStorageService } from './LocalStorageService';
-export { syncService } from './SyncService';
-export { cacheService } from './CacheService'; 
+// Re-export everything from the core implementation
+export * from '../../core/services/storage';
+
+// Log warning when this file is imported
+console.warn('Warning: Importing from src/services/storage is deprecated. Please update your imports to use src/core/services/storage instead.'); 

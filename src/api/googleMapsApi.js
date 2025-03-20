@@ -1,14 +1,21 @@
 /**
  * Google Maps API Service for TourGuideAI
  * 
- * This file contains implementations of Google Maps API functions for travel planning
- * using various Google Maps Platform services.
- * 
- * @requires API_KEY - A Google Maps API key must be configured
- * @requires Google Maps JavaScript API - The Google Maps library must be loaded
+ * @deprecated This file is deprecated. Import from 'src/core/api/googleMapsApi.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
  */
 
-// Google Maps API configuration
+// Re-export everything from the core implementation
+export * from '../core/api/googleMapsApi';
+
+// Log warning when this file is imported
+console.warn('Warning: Importing from src/api/googleMapsApi.js is deprecated. Please update your imports to use src/core/api/googleMapsApi.js instead.');
+
+/**
+ * Google Maps API configuration
+ * @deprecated This file is deprecated. Import from 'src/core/api/googleMapsApi.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
+ */
 let config = {
   apiKey: '', // Set via setApiKey
   librariesLoaded: false,
@@ -19,6 +26,8 @@ let config = {
 /**
  * Set the Google Maps API key
  * @param {string} apiKey - The Google Maps API key
+ * @deprecated This file is deprecated. Import from 'src/core/api/googleMapsApi.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
  */
 export const setApiKey = (apiKey) => {
   if (!apiKey || typeof apiKey !== 'string' || apiKey.length < 10) {
@@ -32,6 +41,8 @@ export const setApiKey = (apiKey) => {
 /**
  * Enable or disable debug logging
  * @param {boolean} enabled - Whether to enable debug logging
+ * @deprecated This file is deprecated. Import from 'src/core/api/googleMapsApi.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
  */
 export const setDebugMode = (enabled) => {
   config.debug = !!enabled;
@@ -43,6 +54,8 @@ export const setDebugMode = (enabled) => {
  * Log debug messages if debug mode is enabled
  * @param {string} message - The message to log
  * @param {object} data - Optional data to log
+ * @deprecated This file is deprecated. Import from 'src/core/api/googleMapsApi.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
  */
 const debugLog = (message, data) => {
   if (config.debug) {
@@ -53,6 +66,8 @@ const debugLog = (message, data) => {
 /**
  * Load the Google Maps JavaScript API
  * @returns {Promise<void>} - A promise that resolves when the API is loaded
+ * @deprecated This file is deprecated. Import from 'src/core/api/googleMapsApi.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
  */
 export const loadGoogleMapsApi = () => {
   return new Promise((resolve, reject) => {
@@ -94,6 +109,8 @@ export const loadGoogleMapsApi = () => {
 /**
  * Check if the Google Maps API is loaded and load it if not
  * @returns {Promise<void>} - A promise that resolves when the API is loaded
+ * @deprecated This file is deprecated. Import from 'src/core/api/googleMapsApi.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
  */
 const ensureApiLoaded = async () => {
   if (!config.librariesLoaded) {
@@ -107,6 +124,8 @@ const ensureApiLoaded = async () => {
  * @param {HTMLElement} container - The container element for the map
  * @param {object} options - Map initialization options
  * @returns {google.maps.Map} - The created map instance
+ * @deprecated This file is deprecated. Import from 'src/core/api/googleMapsApi.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
  */
 export const initializeMap = async (container, options = {}) => {
   await ensureApiLoaded();
@@ -128,6 +147,8 @@ export const initializeMap = async (container, options = {}) => {
  * Convert an address to coordinates using the Geocoding API
  * @param {string} address - The address to geocode
  * @returns {Promise<object>} - The geocoded location
+ * @deprecated This file is deprecated. Import from 'src/core/api/googleMapsApi.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
  */
 export const geocodeAddress = async (address) => {
   await ensureApiLoaded();
@@ -158,6 +179,8 @@ export const geocodeAddress = async (address) => {
  * Function to display route on map
  * @param {object} route - Route information (origin, destination, waypoints)
  * @returns {Promise<object>} - The route data
+ * @deprecated This file is deprecated. Import from 'src/core/api/googleMapsApi.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
  */
 export const displayRouteOnMap = async (route) => {
   await ensureApiLoaded();
@@ -244,6 +267,8 @@ export const displayRouteOnMap = async (route) => {
  * @param {number} radius - Search radius in meters
  * @param {string} type - Place type to search for
  * @returns {Promise<array>} - Array of nearby places
+ * @deprecated This file is deprecated. Import from 'src/core/api/googleMapsApi.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
  */
 export const getNearbyInterestPoints = async (location, radius = 5000, type = 'tourist_attraction') => {
   await ensureApiLoaded();
@@ -307,6 +332,8 @@ export const getNearbyInterestPoints = async (location, radius = 5000, type = 't
  * Function to validate transportation details
  * @param {object} route - Route with departure and arrival sites
  * @returns {Promise<object>} - Validated route with transportation details
+ * @deprecated This file is deprecated. Import from 'src/core/api/googleMapsApi.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
  */
 export const validateTransportation = async (route) => {
   await ensureApiLoaded();
@@ -373,6 +400,8 @@ export const validateTransportation = async (route) => {
  * @param {array} interestPoints - Array of interest points to validate
  * @param {number} maxDistance - Maximum distance in kilometers
  * @returns {Promise<array>} - Filtered and validated interest points
+ * @deprecated This file is deprecated. Import from 'src/core/api/googleMapsApi.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
  */
 export const validateInterestPoints = async (baseLocation, interestPoints, maxDistance = 5) => {
   await ensureApiLoaded();
@@ -457,6 +486,8 @@ export const validateInterestPoints = async (baseLocation, interestPoints, maxDi
  * Function to calculate route statistics
  * @param {object} route - Route information
  * @returns {Promise<object>} - Route statistics
+ * @deprecated This file is deprecated. Import from 'src/core/api/googleMapsApi.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
  */
 export const calculateRouteStatistics = async (route) => {
   await ensureApiLoaded();
@@ -584,6 +615,8 @@ export const calculateRouteStatistics = async (route) => {
 /**
  * Get the current configuration status
  * @returns {object} - The current configuration
+ * @deprecated This file is deprecated. Import from 'src/core/api/googleMapsApi.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
  */
 export const getStatus = () => {
   return {
