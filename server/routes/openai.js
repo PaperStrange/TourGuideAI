@@ -240,8 +240,9 @@ router.post('/split-route-by-day', cacheMiddleware(CACHE_DURATION, 'openai:split
       route: { required: true, type: 'object' }
     });
     
-    const route = params.route;
     const openaiClient = createOpenAIClient(req.openaiApiKey);
+    
+    const route = params.route;
     
     const response = await openaiClient.post('/chat/completions', {
       model: process.env.OPENAI_MODEL || 'gpt-4o',
@@ -253,14 +254,19 @@ router.post('/split-route-by-day', cacheMiddleware(CACHE_DURATION, 'openai:split
           For each day, include:
           - travel_day: Day number
           - current_date: Suggested date for this day
-          - daily_routes: Array of activities with:
-             - time: Suggested time (e.g., "9:00 AM")
-             - activity: Description of the activity
-             - location: Where the activity takes place
-             - duration: How long it will take
-             - transportation: How to get there if applicable
-             - cost: Estimated cost if applicable
-             - notes: Any special notes or tips`
+          - dairy_routes: Array of activities with:
+             - route_id: Unique identifier for this route (format: r001, r002, etc.)
+             - departure_site: Starting point for this leg
+             - arrival_site: Ending point for this leg
+             - departure_time: Suggested departure time (include timezone)
+             - arrival_time: Estimated arrival time (include timezone)
+             - user_time_zone: User's time zone (e.g., "GMT-4")
+             - transportation_type: How to get there (e.g., "walk", "drive", "public_transit")
+             - duration: Estimated duration
+             - duration_unit: Unit for duration (e.g., "minute", "hour")
+             - distance: Estimated distance
+             - distance_unit: Unit for distance (e.g., "mile", "km")
+             - recommended_reason: Why this site is recommended`
         },
         {
           role: 'user',

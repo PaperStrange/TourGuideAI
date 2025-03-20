@@ -273,6 +273,13 @@ Note all thinking frameworks are expressed in markdown. So before using thinking
 - Extract shared functionality into core modules to avoid code duplication
 - Write comprehensive tests for all services and API functions
 - Create singleton instances for services to ensure consistent state across the application
+- Implement robust error handling with retry logic and fallback mechanisms for better user experience
+- Use caching strategies for both performance improvement and offline capabilities
+- Always provide an example environment file with clear documentation for configuration variables
+- Use server-side proxying for API calls to protect sensitive information like API keys
+- Implement rate limiting on the server side to prevent API quota exhaustion
+- Validate input data on both client and server sides to ensure data integrity
+- Log detailed error information for debugging while providing user-friendly error messages in production
 
 ## Scratchpad
 This section is used for cursor thinking protocol and tracking the progress of current tasks.

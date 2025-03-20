@@ -8,12 +8,16 @@
  * @requires Google Maps JavaScript API - The Google Maps library must be loaded
  */
 
+import axios from 'axios';
+
 // Google Maps API configuration
 let config = {
   apiKey: '', // Set via setApiKey
   librariesLoaded: false,
   debug: false,
-  mapInstance: null
+  mapInstance: null,
+  apiBaseUrl: process.env.REACT_APP_API_URL || 'http://localhost:3000/api',
+  useServerProxy: process.env.REACT_APP_USE_SERVER_PROXY === 'true'
 };
 
 /**
@@ -40,6 +44,16 @@ export const setDebugMode = (enabled) => {
 };
 
 /**
+ * Set whether to use the server proxy
+ * @param {boolean} useProxy - Whether to use the server proxy
+ */
+export const setUseServerProxy = (useProxy) => {
+  config.useServerProxy = !!useProxy;
+  console.log(`Server proxy ${config.useServerProxy ? 'enabled' : 'disabled'}`);
+  return true;
+};
+
+/**
  * Log debug messages if debug mode is enabled
  * @param {string} message - The message to log
  * @param {object} data - Optional data to log
@@ -48,6 +62,17 @@ const debugLog = (message, data) => {
   if (config.debug) {
     console.log(`[Google Maps API] ${message}`, data || '');
   }
+};
+
+/**
+ * Create API client for server requests
+ * @returns {Object} API client instance
+ */
+const createApiClient = () => {
+  return axios.create({
+    baseURL: config.apiBaseUrl,
+    timeout: 30000 // 30 seconds
+  });
 };
 
 /**
@@ -63,7 +88,7 @@ export const loadGoogleMapsApi = () => {
       return;
     }
 
-    if (!config.apiKey) {
+    if (!config.apiKey && !config.useServerProxy) {
       reject(new Error('Google Maps API key not configured. Use setApiKey() to configure it.'));
       return;
     }
@@ -130,28 +155,45 @@ export const initializeMap = async (container, options = {}) => {
  * @returns {Promise<object>} - The geocoded location
  */
 export const geocodeAddress = async (address) => {
-  await ensureApiLoaded();
-  
-  debugLog('Geocoding address', address);
-  
-  const geocoder = new google.maps.Geocoder();
-  
-  return new Promise((resolve, reject) => {
-    geocoder.geocode({ address }, (results, status) => {
-      if (status === google.maps.GeocoderStatus.OK) {
-        debugLog('Geocoding successful', results[0]);
-        resolve({
-          formatted_address: results[0].formatted_address,
-          location: results[0].geometry.location.toJSON(),
-          place_id: results[0].place_id
-        });
-      } else {
-        const error = new Error(`Geocoding failed: ${status}`);
-        debugLog('Geocoding failed', { status, error });
-        reject(error);
-      }
+  if (config.useServerProxy) {
+    debugLog('Using server proxy for geocoding', { address });
+    
+    const apiClient = createApiClient();
+    
+    try {
+      const response = await apiClient.get('/maps/geocode', {
+        params: { address }
+      });
+      
+      return response.data.result;
+    } catch (error) {
+      console.error('Error geocoding address:', error);
+      throw error;
+    }
+  } else {
+    await ensureApiLoaded();
+    
+    debugLog('Geocoding address', address);
+    
+    const geocoder = new google.maps.Geocoder();
+    
+    return new Promise((resolve, reject) => {
+      geocoder.geocode({ address }, (results, status) => {
+        if (status === google.maps.GeocoderStatus.OK) {
+          debugLog('Geocoding successful', results[0]);
+          resolve({
+            formatted_address: results[0].formatted_address,
+            location: results[0].geometry.location.toJSON(),
+            place_id: results[0].place_id
+          });
+        } else {
+          const error = new Error(`Geocoding failed: ${status}`);
+          debugLog('Geocoding failed', { status, error });
+          reject(error);
+        }
+      });
     });
-  });
+  }
 };
 
 /**
@@ -160,82 +202,120 @@ export const geocodeAddress = async (address) => {
  * @returns {Promise<object>} - The route data
  */
 export const displayRouteOnMap = async (route) => {
-  await ensureApiLoaded();
-  
-  if (!config.mapInstance) {
-    throw new Error('Map not initialized. Call initializeMap() first.');
-  }
-  
-  debugLog('Displaying route on map', route);
-  
-  const directionsService = new google.maps.DirectionsService();
-  const directionsRenderer = new google.maps.DirectionsRenderer({
-    map: config.mapInstance,
-    suppressMarkers: false,
-    preserveViewport: false
-  });
-  
-  // Prepare waypoints if any
-  const waypoints = Array.isArray(route.waypoints) 
-    ? route.waypoints.map(waypoint => ({
-        location: waypoint,
-        stopover: true
-      }))
-    : [];
-  
-  // Create request
-  const request = {
-    origin: route.origin || '',
-    destination: route.destination || '',
-    waypoints: waypoints,
-    optimizeWaypoints: true,
-    travelMode: google.maps.TravelMode[route.travelMode?.toUpperCase() || 'DRIVING']
-  };
-  
-  return new Promise((resolve, reject) => {
-    directionsService.route(request, (result, status) => {
-      if (status === google.maps.DirectionsStatus.OK) {
-        directionsRenderer.setDirections(result);
+  if (config.useServerProxy) {
+    debugLog('Using server proxy for route display', { route });
+    
+    const apiClient = createApiClient();
+    
+    try {
+      const response = await apiClient.get('/maps/directions', {
+        params: {
+          origin: route.origin || '',
+          destination: route.destination || '',
+          waypoints: Array.isArray(route.waypoints) ? route.waypoints.join('|') : '',
+          mode: route.travelMode?.toLowerCase() || 'driving'
+        }
+      });
+      
+      // If map is initialized, also render the route
+      if (config.mapInstance && window.google && window.google.maps) {
+        const directionsRenderer = new google.maps.DirectionsRenderer({
+          map: config.mapInstance,
+          suppressMarkers: false,
+          preserveViewport: false
+        });
         
-        // Extract and format route data
-        const routeData = result.routes[0];
-        const legs = routeData.legs.map(leg => ({
-          start_address: leg.start_address,
-          end_address: leg.end_address,
-          distance: leg.distance.text,
-          duration: leg.duration.text,
-          steps: leg.steps.map(step => ({
-            instructions: step.instructions,
-            distance: step.distance.text,
-            duration: step.duration.text,
-            travel_mode: step.travel_mode
-          }))
-        }));
-        
-        const formattedResult = {
-          route: {
-            summary: routeData.summary,
-            bounds: {
-              northeast: routeData.bounds.getNortheast().toJSON(),
-              southwest: routeData.bounds.getSouthwest().toJSON()
-            },
-            legs: legs,
-            overview_polyline: routeData.overview_polyline,
-            warnings: routeData.warnings,
-            total_distance: routeData.legs.reduce((sum, leg) => sum + leg.distance.value, 0),
-            total_duration: routeData.legs.reduce((sum, leg) => sum + leg.duration.value, 0)
-          }
+        // Create a DirectionsResult object from the response data
+        const result = {
+          routes: [response.data.route]
         };
         
-        debugLog('Route display successful', formattedResult);
-        resolve(formattedResult);
-      } else {
-        const error = new Error(`Route calculation failed: ${status}`);
-        debugLog('Route display failed', { status, error });
-        reject(error);
+        directionsRenderer.setDirections(result);
       }
+      
+      return response.data.route;
+    } catch (error) {
+      console.error('Error displaying route on map:', error);
+      throw error;
+    }
+  } else {
+    await ensureApiLoaded();
+    
+    if (!config.mapInstance) {
+      throw new Error('Map not initialized. Call initializeMap() first.');
+    }
+    
+    debugLog('Displaying route on map', route);
+    
+    const directionsService = new google.maps.DirectionsService();
+    const directionsRenderer = new google.maps.DirectionsRenderer({
+      map: config.mapInstance,
+      suppressMarkers: false,
+      preserveViewport: false
     });
-  });
+    
+    // Prepare waypoints if any
+    const waypoints = Array.isArray(route.waypoints) 
+      ? route.waypoints.map(waypoint => ({
+          location: waypoint,
+          stopover: true
+        }))
+      : [];
+    
+    // Create request
+    const request = {
+      origin: route.origin || '',
+      destination: route.destination || '',
+      waypoints: waypoints,
+      optimizeWaypoints: true,
+      travelMode: google.maps.TravelMode[route.travelMode?.toUpperCase() || 'DRIVING']
+    };
+    
+    return new Promise((resolve, reject) => {
+      directionsService.route(request, (result, status) => {
+        if (status === google.maps.DirectionsStatus.OK) {
+          directionsRenderer.setDirections(result);
+          
+          // Extract and format route data
+          const routeData = result.routes[0];
+          const legs = routeData.legs.map(leg => ({
+            start_address: leg.start_address,
+            end_address: leg.end_address,
+            distance: leg.distance.text,
+            duration: leg.duration.text,
+            steps: leg.steps.map(step => ({
+              instructions: step.instructions,
+              distance: step.distance.text,
+              duration: step.duration.text,
+              travel_mode: step.travel_mode
+            }))
+          }));
+          
+          const formattedResult = {
+            route: {
+              summary: routeData.summary,
+              bounds: {
+                northeast: routeData.bounds.getNortheast().toJSON(),
+                southwest: routeData.bounds.getSouthwest().toJSON()
+              },
+              legs: legs,
+              overview_polyline: routeData.overview_polyline,
+              warnings: routeData.warnings,
+              total_distance: routeData.legs.reduce((sum, leg) => sum + leg.distance.value, 0),
+              total_duration: routeData.legs.reduce((sum, leg) => sum + leg.duration.value, 0)
+            }
+          };
+          
+          debugLog('Route display successful', formattedResult);
+          resolve(formattedResult);
+        } else {
+          const error = new Error(`Route calculation failed: ${status}`);
+          debugLog('Route display failed', { status, error });
+          reject(error);
+        }
+      });
+    });
+  }
 };
 
 /**
@@ -246,61 +326,88 @@ export const displayRouteOnMap = async (route) => {
  * @returns {Promise<array>} - Array of nearby places
  */
 export const getNearbyInterestPoints = async (location, radius = 5000, type = 'tourist_attraction') => {
-  await ensureApiLoaded();
-  
-  debugLog('Getting nearby interest points', { location, radius, type });
-  
-  // Convert string location to coordinates if needed
-  let locationObj = location;
-  if (typeof location === 'string') {
-    locationObj = await geocodeAddress(location);
-    locationObj = locationObj.location;
-  }
-  
-  // Create Places service
-  const placesService = new google.maps.places.PlacesService(
-    config.mapInstance || document.createElement('div')
-  );
-  
-  // Create request
-  const request = {
-    location: locationObj,
-    radius: radius,
-    type: type
-  };
-  
-  return new Promise((resolve, reject) => {
-    placesService.nearbySearch(request, (results, status) => {
-      if (status === google.maps.places.PlacesServiceStatus.OK) {
-        // Format results
-        const formattedResults = results.map(place => ({
-          id: place.place_id,
-          name: place.name,
-          position: {
-            lat: place.geometry.location.lat(),
-            lng: place.geometry.location.lng()
-          },
-          address: place.vicinity,
-          rating: place.rating,
-          user_ratings_total: place.user_ratings_total,
-          types: place.types,
-          photos: place.photos ? place.photos.map(photo => ({
-            url: photo.getUrl({ maxWidth: 500, maxHeight: 500 }),
-            height: photo.height,
-            width: photo.width,
-            html_attributions: photo.html_attributions
-          })) : []
-        }));
-        
-        debugLog('Nearby search successful', formattedResults);
-        resolve(formattedResults);
-      } else {
-        const error = new Error(`Nearby search failed: ${status}`);
-        debugLog('Nearby search failed', { status, error });
-        reject(error);
-      }
+  if (config.useServerProxy) {
+    debugLog('Using server proxy for nearby interest points', { location, radius, type });
+    
+    const apiClient = createApiClient();
+    
+    try {
+      // If location is an object with lat/lng, use those coordinates
+      // Otherwise, just pass the location as is (string)
+      const locationParam = typeof location === 'object' && location.lat && location.lng
+        ? `${location.lat},${location.lng}`
+        : location;
+      
+      const response = await apiClient.get('/maps/nearby', {
+        params: {
+          location: locationParam,
+          radius: radius,
+          type: type
+        }
+      });
+      
+      return response.data.places;
+    } catch (error) {
+      console.error('Error getting nearby interest points:', error);
+      throw error;
+    }
+  } else {
+    await ensureApiLoaded();
+    
+    debugLog('Getting nearby interest points', { location, radius, type });
+    
+    // Convert string location to coordinates if needed
+    let locationObj = location;
+    if (typeof location === 'string') {
+      locationObj = await geocodeAddress(location);
+      locationObj = locationObj.location;
+    }
+    
+    // Create Places service
+    const placesService = new google.maps.places.PlacesService(
+      config.mapInstance || document.createElement('div')
+    );
+    
+    // Create request
+    const request = {
+      location: locationObj,
+      radius: radius,
+      type: type
+    };
+    
+    return new Promise((resolve, reject) => {
+      placesService.nearbySearch(request, (results, status) => {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          // Format results
+          const formattedResults = results.map(place => ({
+            id: place.place_id,
+            name: place.name,
+            position: {
+              lat: place.geometry.location.lat(),
+              lng: place.geometry.location.lng()
+            },
+            address: place.vicinity,
+            rating: place.rating,
+            user_ratings_total: place.user_ratings_total,
+            types: place.types,
+            photos: place.photos ? place.photos.map(photo => ({
+              url: photo.getUrl({ maxWidth: 500, maxHeight: 500 }),
+              height: photo.height,
+              width: photo.width,
+              html_attributions: photo.html_attributions
+            })) : []
+          }));
+          
+          debugLog('Nearby search successful', formattedResults);
+          resolve(formattedResults);
+        } else {
+          const error = new Error(`Nearby search failed: ${status}`);
+          debugLog('Nearby search failed', { status, error });
+          reject(error);
+        }
+      });
     });
-  });
+  }
 };
 
 /**
@@ -309,62 +416,81 @@ export const getNearbyInterestPoints = async (location, radius = 5000, type = 't
  * @returns {Promise<object>} - Validated route with transportation details
  */
 export const validateTransportation = async (route) => {
-  await ensureApiLoaded();
-  
-  debugLog('Validating transportation for route', route);
-  
-  if (!route.departure_site || !route.arrival_site) {
-    throw new Error('Departure and arrival sites are required for transportation validation');
-  }
-  
-  const directionsService = new google.maps.DirectionsService();
-  
-  // Create request
-  const request = {
-    origin: route.departure_site,
-    destination: route.arrival_site,
-    travelMode: google.maps.TravelMode[route.transportation_type?.toUpperCase() || 'DRIVING'],
-    alternatives: true
-  };
-  
-  return new Promise((resolve, reject) => {
-    directionsService.route(request, (result, status) => {
-      if (status === google.maps.DirectionsStatus.OK) {
-        // Get the best route
-        const bestRoute = result.routes[0];
-        const leg = bestRoute.legs[0];
-        
-        // Format the result
-        const validatedRoute = {
-          ...route,
-          duration: leg.duration.text,
-          duration_value: leg.duration.value, // duration in seconds
-          distance: leg.distance.text,
-          distance_value: leg.distance.value, // distance in meters
-          start_address: leg.start_address,
-          end_address: leg.end_address,
-          steps: leg.steps.map(step => ({
-            travel_mode: step.travel_mode,
-            instructions: step.instructions,
-            distance: step.distance.text,
-            duration: step.duration.text
-          })),
-          alternatives: result.routes.slice(1).map(altRoute => ({
-            summary: altRoute.summary,
-            duration: altRoute.legs[0].duration.text,
-            distance: altRoute.legs[0].distance.text
-          }))
-        };
-        
-        debugLog('Transportation validation successful', validatedRoute);
-        resolve(validatedRoute);
-      } else {
-        const error = new Error(`Transportation validation failed: ${status}`);
-        debugLog('Transportation validation failed', { status, error });
-        reject(error);
-      }
+  if (config.useServerProxy) {
+    debugLog('Using server proxy for transportation validation', { route });
+    
+    const apiClient = createApiClient();
+    
+    try {
+      const response = await apiClient.post('/maps/validate-transportation', {
+        departure_site: route.departure_site,
+        arrival_site: route.arrival_site,
+        transportation_type: route.transportation_type || 'driving'
+      });
+      
+      return response.data.route;
+    } catch (error) {
+      console.error('Error validating transportation:', error);
+      throw error;
+    }
+  } else {
+    await ensureApiLoaded();
+    
+    debugLog('Validating transportation for route', route);
+    
+    if (!route.departure_site || !route.arrival_site) {
+      throw new Error('Departure and arrival sites are required for transportation validation');
+    }
+    
+    const directionsService = new google.maps.DirectionsService();
+    
+    // Create request
+    const request = {
+      origin: route.departure_site,
+      destination: route.arrival_site,
+      travelMode: google.maps.TravelMode[route.transportation_type?.toUpperCase() || 'DRIVING'],
+      alternatives: true
+    };
+    
+    return new Promise((resolve, reject) => {
+      directionsService.route(request, (result, status) => {
+        if (status === google.maps.DirectionsStatus.OK) {
+          // Get the best route
+          const bestRoute = result.routes[0];
+          const leg = bestRoute.legs[0];
+          
+          // Format the result
+          const validatedRoute = {
+            ...route,
+            duration: leg.duration.text,
+            duration_value: leg.duration.value, // duration in seconds
+            distance: leg.distance.text,
+            distance_value: leg.distance.value, // distance in meters
+            start_address: leg.start_address,
+            end_address: leg.end_address,
+            steps: leg.steps.map(step => ({
+              travel_mode: step.travel_mode,
+              instructions: step.instructions,
+              distance: step.distance.text,
+              duration: step.duration.text
+            })),
+            alternatives: result.routes.slice(1).map(altRoute => ({
+              summary: altRoute.summary,
+              duration: altRoute.legs[0].duration.text,
+              distance: altRoute.legs[0].distance.text
+            }))
+          };
+          
+          debugLog('Transportation validation successful', validatedRoute);
+          resolve(validatedRoute);
+        } else {
+          const error = new Error(`Transportation validation failed: ${status}`);
+          debugLog('Transportation validation failed', { status, error });
+          reject(error);
+        }
+      });
     });
-  });
+  }
 };
 
 /**
@@ -375,82 +501,101 @@ export const validateTransportation = async (route) => {
  * @returns {Promise<array>} - Filtered and validated interest points
  */
 export const validateInterestPoints = async (baseLocation, interestPoints, maxDistance = 5) => {
-  await ensureApiLoaded();
-  
-  debugLog('Validating interest points', { baseLocation, interestPoints, maxDistance });
-  
-  if (!Array.isArray(interestPoints) || interestPoints.length === 0) {
-    return [];
-  }
-  
-  // Convert base location to coordinates if it's a string
-  let baseCoords = baseLocation;
-  if (typeof baseLocation === 'string') {
-    const geocoded = await geocodeAddress(baseLocation);
-    baseCoords = geocoded.location;
-  }
-  
-  const service = new google.maps.DistanceMatrixService();
-  
-  // Get points to validate (point names or coordinates)
-  const points = interestPoints.map(point => {
-    return point.name || point.position || point;
-  });
-  
-  // Create request
-  const request = {
-    origins: [baseCoords],
-    destinations: points,
-    travelMode: google.maps.TravelMode.DRIVING,
-    unitSystem: google.maps.UnitSystem.METRIC
-  };
-  
-  return new Promise((resolve, reject) => {
-    service.getDistanceMatrix(request, (response, status) => {
-      if (status === google.maps.DistanceMatrixStatus.OK) {
-        // Get the distances
-        const distances = response.rows[0].elements;
-        
-        // Filter and enhance interest points
-        const validatedPoints = interestPoints.filter((point, index) => {
-          const element = distances[index];
-          
-          if (element.status !== 'OK') {
-            return false;
-          }
-          
-          // Convert distance value from meters to kilometers
-          const distanceInKm = element.distance.value / 1000;
-          
-          // Check if within max distance
-          return distanceInKm <= maxDistance;
-        }).map((point, index) => {
-          const element = distances[index];
-          
-          // Only enhance if element status is OK
-          if (element.status === 'OK') {
-            return {
-              ...point,
-              distance: element.distance.text,
-              distance_value: element.distance.value,
-              duration: element.duration.text,
-              duration_value: element.duration.value,
-              within_range: true
-            };
-          }
-          
-          return point;
-        });
-        
-        debugLog('Interest points validation successful', validatedPoints);
-        resolve(validatedPoints);
-      } else {
-        const error = new Error(`Interest points validation failed: ${status}`);
-        debugLog('Interest points validation failed', { status, error });
-        reject(error);
-      }
+  if (config.useServerProxy) {
+    debugLog('Using server proxy for interest points validation', { baseLocation, interestPoints, maxDistance });
+    
+    const apiClient = createApiClient();
+    
+    try {
+      const response = await apiClient.post('/maps/validate-interest-points', {
+        base_location: baseLocation,
+        interest_points: interestPoints,
+        max_distance: maxDistance
+      });
+      
+      return response.data.validated_points;
+    } catch (error) {
+      console.error('Error validating interest points:', error);
+      throw error;
+    }
+  } else {
+    await ensureApiLoaded();
+    
+    debugLog('Validating interest points', { baseLocation, interestPoints, maxDistance });
+    
+    if (!Array.isArray(interestPoints) || interestPoints.length === 0) {
+      return [];
+    }
+    
+    // Convert base location to coordinates if it's a string
+    let baseCoords = baseLocation;
+    if (typeof baseLocation === 'string') {
+      const geocoded = await geocodeAddress(baseLocation);
+      baseCoords = geocoded.location;
+    }
+    
+    const service = new google.maps.DistanceMatrixService();
+    
+    // Get points to validate (point names or coordinates)
+    const points = interestPoints.map(point => {
+      return point.name || point.position || point;
     });
-  });
+    
+    // Create request
+    const request = {
+      origins: [baseCoords],
+      destinations: points,
+      travelMode: google.maps.TravelMode.DRIVING,
+      unitSystem: google.maps.UnitSystem.METRIC
+    };
+    
+    return new Promise((resolve, reject) => {
+      service.getDistanceMatrix(request, (response, status) => {
+        if (status === google.maps.DistanceMatrixStatus.OK) {
+          // Get the distances
+          const distances = response.rows[0].elements;
+          
+          // Filter and enhance interest points
+          const validatedPoints = interestPoints.filter((point, index) => {
+            const element = distances[index];
+            
+            if (element.status !== 'OK') {
+              return false;
+            }
+            
+            // Convert distance value from meters to kilometers
+            const distanceInKm = element.distance.value / 1000;
+            
+            // Check if within max distance
+            return distanceInKm <= maxDistance;
+          }).map((point, index) => {
+            const element = distances[index];
+            
+            // Only enhance if element status is OK
+            if (element.status === 'OK') {
+              return {
+                ...point,
+                distance: element.distance.text,
+                distance_value: element.distance.value,
+                duration: element.duration.text,
+                duration_value: element.duration.value,
+                within_range: true
+              };
+            }
+            
+            return point;
+          });
+          
+          debugLog('Interest points validation successful', validatedPoints);
+          resolve(validatedPoints);
+        } else {
+          const error = new Error(`Interest points validation failed: ${status}`);
+          debugLog('Interest points validation failed', { status, error });
+          reject(error);
+        }
+      });
+    });
+  }
 };
 
 /**
@@ -583,20 +728,22 @@ export const calculateRouteStatistics = async (route) => {
 
 /**
  * Get the current configuration status
- * @returns {object} - The current configuration
+ * @returns {object} Configuration status
  */
 export const getStatus = () => {
   return {
-    isConfigured: !!config.apiKey,
-    librariesLoaded: config.librariesLoaded,
+    isConfigured: !!config.apiKey || config.useServerProxy,
+    isLoaded: config.librariesLoaded,
+    hasMapInstance: !!config.mapInstance,
     debug: config.debug,
-    hasMapInstance: !!config.mapInstance
+    useServerProxy: config.useServerProxy
   };
 };
 
 export default {
   setApiKey,
   setDebugMode,
+  setUseServerProxy,
   getStatus,
   loadGoogleMapsApi,
   initializeMap,
