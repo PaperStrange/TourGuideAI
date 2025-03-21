@@ -1,0 +1,74 @@
+# TourGuideAI Project Workflow
+
+This document outlines the standard workflow for executing a new project phase in the TourGuideAI project.
+
+## Project Phase Workflow
+
+### 1. Phase Initialization
+- Review `.milestones` file to understand the overall project structure
+- Identify the current phase requirements and objectives
+- Break down the phase into logical milestones and tasks
+- Update `.project` file with the new phase details, milestones, and tasks
+- Update `.todos` file with specific actionable items for the phase
+
+### 2. Development Process
+- Execute tasks according to the priorities defined in `.todos`
+- Update `.project` file as tasks are completed, including:
+  - Mark completed tasks with [X]
+  - Add completion dates
+  - Record any issues encountered
+  - Note key learnings
+- Update `.todos` file regularly to reflect current status and any new tasks
+- Refer to `.cursorrules` for coding standards and project requirements
+
+### 3. Phase Completion
+- Perform comprehensive code review
+- Refactor folder structure to apply new features
+- Remove duplicated or obsolete files
+- Update architecture documentation to reflect changes
+
+### 4. Documentation Updates
+- Update `project.refactors` with details of any structural changes:
+  - Document file relocations
+  - Record line changes
+  - Summarize modifications
+- Update `project.versions.md` with new version details:
+  - Version number and date
+  - Added features
+  - Changed elements
+  - Fixed issues
+
+### 5. Knowledge Preservation
+- Record lessons learned in the `.cursorrules` file under the "Lessons" section
+- Document reusable patterns and solutions
+- Note encountered issues and their resolutions
+- Save all technical decisions for future reference
+
+### 6. Planning Artifacts
+- Store all generated planning files in the `../docs` folder
+- Include detailed implementation plans
+- Document architecture decisions
+- Preserve test plans and results
+
+## File Responsibilities
+
+| File | Purpose | Update Frequency |
+|------|---------|------------------|
+| `.milestones` | Project-wide milestone tracking | At project start, major revisions |
+| `.project` | Detailed project status and task tracking | Throughout development |
+| `.todos` | Current action items and task status | Daily/as tasks change |
+| `.cursorrules` | Project standards and lessons learned | As new lessons emerge |
+| `project.refactors` | Record of structural changes | After refactoring |
+| `project.versions.md` | Version history and release notes | After version completion |
+
+## Standard Procedure for New Phase
+
+1. Begin with `.milestones` to understand phase requirements
+2. Create phase breakdown in `.project` and `.todos`
+3. Execute development tasks, keeping documentation current
+4. Perform code review and refactoring when phase is complete
+5. Update `project.refactors` and `project.versions.md`
+6. Document lessons in `.cursorrules`
+7. Store planning artifacts in `../docs`
+
+This workflow ensures consistent process, comprehensive documentation, and knowledge preservation throughout the project lifecycle. 
