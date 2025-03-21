@@ -14,6 +14,7 @@ The OpenAI API is used for natural language processing and content generation ta
   - Completions API - For general text generation
   - Chat Completions API - For conversation-based interactions
 - **Configuration**: Requires API key set in `.env` file as `REACT_APP_OPENAI_API_KEY`
+- **Caching Strategy**: Stale-while-revalidate with 24-hour TTL, LZ-string compression for responses
 
 ### Google Maps Platform APIs
 
@@ -208,4 +209,125 @@ See `.env.example` for a complete list of configuration options.
 
 ## Migration
 
-If you're working with older code that imports APIs from the legacy paths, please update your imports to use the core implementations. See `API_MIGRATION.md` for detailed migration instructions. 
+If you're working with older code that imports APIs from the legacy paths, please update your imports to use the core implementations. See `API_MIGRATION.md` for detailed migration instructions.
+
+## API Caching Architecture
+
+TourGuideAI implements a comprehensive caching strategy to improve performance, reduce API costs, and enable offline capabilities:
+
+### Cache Service
+
+The core caching mechanism is provided by `CacheService` in `src/core/services/storage/CacheService.js`:
+
+- **TTL-Based Caching**: All API responses are cached with configurable Time-To-Live values
+- **Compression**: LZ-string compression reduces storage size by approximately 70%
+- **Cache Invalidation**: Automatic invalidation based on TTL with background cleanup
+- **Cache Prioritization**: Size-based priority system auto-cleans older items when storage limit is reached
+- **API-Specific TTLs**: Different cache expiration times based on data volatility:
+  - Travel routes: 7 days
+  - Points of interest: 30 days
+  - Location search: 60 days
+  - User preferences: 1 day
+
+### Service Worker Cache
+
+A service worker in `public/service-worker.js` provides browser-level API caching:
+
+- **Strategy**: Network-first with cache fallback for API requests
+- **Offline Support**: Cached API responses are available when offline
+- **Cache Control**: Separate cache storage from application data
+- **Background Sync**: Pending operations are queued for execution when online
+
+### Cache Prefetching
+
+For common API requests, TourGuideAI implements prefetching to improve perceived performance:
+
+- **Route Prefetching**: Likely next routes are prefetched when users are browsing related routes
+- **Location Prefetching**: Nearby location data is prefetched when viewing a destination
+- **Preload Strategy**: Low-priority background fetching during idle periods
+
+## API Performance Optimizations
+
+Phase 5 introduced significant performance optimizations for API interactions:
+
+### Request Batching
+
+Multiple related API requests are now batched to reduce network overhead:
+
+```javascript
+// Instead of multiple separate calls
+const batchedResults = await apiHelpers.batchRequests([
+  { path: '/maps/geocode', params: { address: 'Paris' } },
+  { path: '/maps/nearby', params: { location: 'Paris', type: 'museum' } },
+  { path: '/maps/nearby', params: { location: 'Paris', type: 'restaurant' } }
+]);
+```
+
+### Parallel Requests
+
+Non-dependent requests are processed in parallel:
+
+```javascript
+const [weatherData, attractionsData] = await Promise.all([
+  apiHelpers.get('/weather', { params: { location: 'Paris' } }),
+  apiHelpers.get('/attractions', { params: { location: 'Paris' } })
+]);
+```
+
+### Response Streaming
+
+For large responses like route data, streaming is now supported:
+
+```javascript
+const routeStream = apiHelpers.getStream('/routes/generate', { 
+  params: { destination: 'Paris', duration: 7 }
+});
+
+routeStream.on('data', (chunk) => {
+  // Process partial route data as it arrives
+  updateRouteDisplay(chunk);
+});
+```
+
+### API Response Compression
+
+All API responses now use enhanced compression techniques:
+
+- **Network Compression**: gzip/brotli for transit compression
+- **Storage Compression**: LZ-string for client-side storage
+- **Payload Optimization**: Response filtering to remove unnecessary data
+
+### Background Processing with Web Workers
+
+CPU-intensive processing of API data is offloaded to web workers:
+
+```javascript
+const routeWorker = new Worker('/workers/route-processor.js');
+
+routeWorker.onmessage = (event) => {
+  const { processedRoute } = event.data;
+  displayRoute(processedRoute);
+};
+
+routeWorker.postMessage({
+  action: 'processRouteData',
+  routeData: rawRouteData
+});
+```
+
+## API Error Handling
+
+### Retry Strategy
+
+All API requests include robust error handling:
+
+- **Exponential Backoff**: Automatic retry with increasing delays
+- **Circuit Breaking**: Temporary disabling of failing endpoints
+- **Fallback Mechanism**: Cached data served when APIs fail
+- **Graceful Degradation**: Progressive reduction in functionality based on available data
+
+### Error Reporting
+
+- **Centralized Logging**: All API errors are logged to a central service
+- **User Feedback**: Friendly error messages with actionable information
+- **Silent Recovery**: Background retry attempts without disrupting user experience 

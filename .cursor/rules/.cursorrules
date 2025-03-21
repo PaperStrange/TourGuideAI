@@ -1,6 +1,6 @@
 # TourGuideAI Cursor Rules
 ## Instructions
-At the beginning of any project, Cursor MUST always use `.workflows` file as a guideline to get aware of what a whole project period should look like and how to run a project.
+At the beginning of any project, Cursor MUST always use '.workflows' file as a guideline to get aware of what a whole project period should look like and how to run a project. Keep in mind in every project step, if you forget how to do next, check section `## Project Phase Workflow` in '.workflows'.
 <!-- At the beginning of any project, Cursor MUST always use `.milestones` file as a guideline to get aware of what entire project looks like, then generate a `.project` file and a `.todos` file. The `.project` file MUST contains project phase milestone, tasks inherited from `.milestones` file. At the end or during each session, Cursor should update the `.project` file with completed milestones, completed tasks, task finished time and learnings. Also, Cursor should update the `.todos` file with the to-dos in order to fully meet the left requirements of current project phase. When a milestone completed,  Cursor should refer to `cursor-thinking-protocol` section within the `.cursorrules` file as a scratchpad to refresh the thinking process. Take down how-to use of the `cursor-thinking-protocol` section into `Scratchpad` section in the `.cursorrules` file. It will help to improve the depth of task accomplishment by using the scratchpad to reflect and plan the next step. Anytime start a new task, Cursor MUST first review the content of the `Scratchpad` section with the `.cursorrules` file, clear old thinking progress if necessary. The goal is to help Cursor maintain a big thinking picture as well as the progress of the project.
 
 Use task markers to indicate the task progress, e.g.
@@ -233,10 +233,13 @@ Note all thinking frameworks are expressed in markdown. So before using thinking
   </important_reminder>
 </cursor_thinking_protocol>
 
-## Project Structure
+## Project Structure Guide
+- Top structure files are store in '.cursor'
 - Maintain separate directories for frontend and backend code
 - Keep API-related code in the 'src/api' directory
 - Store environment variables in '.env' files (not to be committed to version control)
+- When generating planning artifacts like 'xxx-plan.md' for further use and instruction, always store them in the 'docs' folder
+- When generating test cases, always store them in the 'tests' folder 
 
 ## Coding Standards
 - Use ES6+ JavaScript features
@@ -258,31 +261,7 @@ Note all thinking frameworks are expressed in markdown. So before using thinking
 - Test error handling and edge cases
 - Document test scenarios and expected outcomes
 
-## Lessons
-- Include info useful for debugging in the program output.
-- Read the file before you try to edit it.
-- Use LLM to perform flexible text understanding tasks. First test on a few files. After success, make it parallel.
-- For website image paths, always use the correct relative path (e.g., 'images/filename.png') and ensure the images directory exists
-- Ensure proper handling of different character encodings (UTF-8) for international queries
-- Add debug information to stderr while keeping the main output clean in stdout for better pipeline integration
-- When using seaborn styles in matplotlib, use 'seaborn-v0_8' instead of 'seaborn' as the style name due to recent seaborn version changes
-- Always verify that component property names match exactly in tests, as mismatched props can lead to subtle errors
-- Maintain backward compatibility when refactoring components by supporting both old and new prop formats
-- For API clients, ensure functions are defined before they're used, especially in initialization code
-- Utilize feature-based architecture for better code organization and maintainability
-- Group related functionality together (services, components, etc.) within feature directories
-- Extract shared functionality into core modules to avoid code duplication
-- Write comprehensive tests for all services and API functions
-- Create singleton instances for services to ensure consistent state across the application
-- Implement robust error handling with retry logic and fallback mechanisms for better user experience
-- Use caching strategies for both performance improvement and offline capabilities
-- Always provide an example environment file with clear documentation for configuration variables
-- Use server-side proxying for API calls to protect sensitive information like API keys
-- Implement rate limiting on the server side to prevent API quota exhaustion
-- Validate input data on both client and server sides to ensure data integrity
-- Log detailed error information for debugging while providing user-friendly error messages in production
-
-## Scratchpad
+<!-- ## Scratchpad
 This section is used for cursor thinking protocol and tracking the progress of current tasks.
 
 ### Thinking Process
@@ -290,4 +269,4 @@ This section is used for cursor thinking protocol and tracking the progress of c
 - Need to implement proper error handling and status codes
 - Consider using Redis for caching on the server side
 - Implement logging for all API requests to track usage
-- Design authentication flow for user-specific API limits
+- Design authentication flow for user-specific API limits -->

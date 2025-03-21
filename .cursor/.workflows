@@ -7,26 +7,31 @@ This document outlines the standard workflow for executing a new project phase i
 ### 1. Phase Initialization
 - Review `.milestones` file to understand the overall project structure
 - Identify the current phase requirements and objectives
-- Refer to the ideas within `Project Structure`, `Coding Standards`, and `API Integration Rules` sections in `.cursorrules`
+- Refer to the references and tips within `Project Structure Guide`, `Coding Standards`, and `API Integration Rules` sections in `.cursorrules` to keep those principles in mind when start generating new things
+- Refer to the lessons recorded in `project.lessons.md` to avoid mistackes, erros used to make
 - Break down the phase into logical milestones and tasks
-- Update `.project` file with the new phase details, milestones, and tasks
-- Update `.todos` file with specific actionable items for the new phase
+- Update `.milestones` file with the new logical milestones and **objects**
+- Update `.project` file with the new phase details, **key results** for **objects** in `.milestones`
+- Update `.todos` file with specific actionable items for **key results** in `.project` 
 - Update `stability-test-plan.md` file with specific actionable items for the new phase
-- Generate planning artifacts like `xxx-plan.md` for further use nad instruction if neccessary according to new project  phase tasks and requirements, store them in the `../docs` folder
 - Planning artifacts should refer to the corresponding task and lines in `.todos` with a link
 
 ### 2. Development Process
 - Execute tasks according to the priorities defined in `.todos`
 - For complex tasks, utilize the `cursor-thinking-protocol` section in `.cursorrules` as a scratchpad
-- Before starting a new task, review the `Scratchpad` section in `.cursorrules` to understand current thinking context
-- Clear old thinking progress in the `Scratchpad` section when necessary
-- Update `.project` file as tasks are completed, including:
+- Update `.milestones` file as objects are decided
+- Update `.project` file as key results for each milestones are decided
+- Update `.todos` file as tasks are completed, including:
   - Mark completed tasks with [X]
   - Add completion dates
   - Record any issues encountered
   - Note key learnings
 - Update `.todos` file regularly to reflect current status and any new tasks
-- When stuck, compare the milestones in `.milestones` with completed milestones in `.project` to identify gaps
+- Compare the milestones in `.milestones` with completed milestones in `.project` regularly to identify gaps
+- Compare project completion criterias to know whether the project phase is ready to close, then update project status, including:
+  - all object in `.milestones` and key results in `.project` are marked as done
+  - all tasks in `.todos` are marked as done
+  - all teste in tests` are marked as success
 
 ### 3. Phase Completion and Documentation Updates
 - Perform comprehensive code review
@@ -50,7 +55,7 @@ This document outlines the standard workflow for executing a new project phase i
 - Update api document named `API_OVERVIEW.md`
 
 ### 5. Knowledge Preservation
-- Record lessons learned in the `.cursorrules` file under the "Lessons" section, including:
+- Record lessons in `project.lessons.md`, including:
   - Technical insights gained during implementation
   - Best practices discovered
   - Common errors and their solutions
@@ -80,15 +85,15 @@ This document outlines the standard workflow for executing a new project phase i
 | `.milestones` | Project-wide milestone tracking | At project start, major revisions | |
 | `.project` | Detailed project status and task tracking | Throughout development | |
 | `.todos` | Current action items and task status | Daily/as tasks change | |
-| `xxx-plan.md` | New planning instruction for further programming | At project start | |
-| `.cursorrules` | Project standards and lessons learned | As new lessons emerge | |
+| `.cursorrules` | Project standards and useful protocols | As new lessons emerge | |
 | `.cursorrules` (Instructions) | Project management guidelines | Reference at phase start | |
 | `.cursorrules` (Thinking Protocol) | Thinking process for complex tasks | During task analysis | |
 | `.cursorrules` (Standards) | Coding and API standards | Reference throughout development | |
 | `.cursorrules` (Lessons) | Knowledge preservation | After resolving challenges | |
 | `.cursorrules` (Scratchpad) | Current thinking context | Before and during task execution | |
-| `project.refactors` | Record of structural changes | After refactoring | |
-| `project.versions.md` | Version history and release notes | After version completion | [Versioning Guide](../docs/references/version-control.md) |
+| `docs/project.refactors.md` | Record of structural changes | After refactoring | [Versioning Guide](../docs/project.refactors.md) |
+| `docs/project.versions.md` | Version history and release notes | After version completion | [Versioning Guide](../docs/project.versions.md) |
+| `docs/project.lessons.md` | Lesson recordings during the project | Reference during reviews | [Code Review Guide](../docs/project.lessons.md) |
 | `docs/references/code-review-checklist.md` | Standard for code reviews | Reference during review | [Code Review Checklist](../docs/references/code-review-checklist.md) |
 | `docs/references/version-control.md` | Versioning conventions | Reference during releases | [Versioning Conventions](../docs/references/version-control.md) |
 | `docs/references/dependencies-tracking.md` | Component dependency management | Update with architectural changes | [Dependencies Tracking](../docs/references/dependencies-tracking.md) |
@@ -103,15 +108,23 @@ This document outlines the standard workflow for executing a new project phase i
 ## Standard Procedure for New Phase
 
 1. Begin with `.milestones` to understand phase requirements
-2. Review `.cursorrules` for instructions, standards, and previous lessons
-3. Create phase breakdown in `.project`, `.todos` and planning artifacts like `xxx-plan.md` in `../docs` if neccessary 
-4. Execute development tasks, keeping all documentations up-to-date
+2. Review `.cursorrules` and  for instructions, standards.
+3. Review lessons recorded in `project.lessons.md` to avoid mistackes, erros used to make in previous project phase
+4. Create new milestones and objects in `.milestones`, then breakdown each milestone to get objects in `.project`. After that create actionable tasks for objects in`.todos` as well as planning artifacts like `xxx-plan.md` in `../docs` if neccessary 
+5. Execute development tasks, keeping all documentations up-to-date
    - Use the thinking protocol and scratchpad for complex tasks
    - Refer to coding standards during implementation to avoid same mistakes or any not user-friendly programming habits
    - Consult reference documentation for specialized tasks:
      - Follow [versioning conventions](../docs/references/version-control.md) for releases
      - Use [code review checklist](../docs/references/code-review-checklist.md) when reviewing code
      - Update [dependencies tracking](../docs/references/dependencies-tracking.md) with architecture changes
-5. Perform code review and refactoring when phase is completed
-6. Update `project.refactors`, `project.versions.md`, each `README.md` within project folders
-7. Update `ARCHITECTURE.md` and `API_OVERVIEW.md`
+     - Check all files in `docs` to find out whether other files should be updated
+     - Check all files in `tests` to find out whether other files should be updated
+6. Double-check `.project`and `.todos` to see whether there is any item incompleted
+7. Double-check the project completion criterias, continue working until all criteria are meet
+  - all things in `.project`and `.todos` are marked as done
+  - all teste in tests` are marked as success
+8. Perform code review and refactoring when phase is completed
+9. Update `project.refactors`, `project.versions.md`, each `README.md` within project folders
+10. Update `ARCHITECTURE.md` and `API_OVERVIEW.md`
+11. When the above steps are all done, print ""Project Phase Current_Number is finished and ready for manual review now!
