@@ -23,6 +23,14 @@ This feature handles the mapping and geographic visualization of travel routes, 
 - Distance and travel time calculations
 - Geographic search and filtering
 
+## Performance Optimizations
+
+- **Lazy Loading**: The map component is loaded on-demand using React.lazy
+- **Progressive Loading**: Map markers and routes are loaded progressively based on viewport
+- **Image Optimization**: Map POI images use responsive loading and WebP format
+- **Caching**: Geographic data is cached with location-specific TTL values
+- **Offline Support**: Previously viewed maps and routes are available offline
+
 ## Dependencies
 
 This feature depends on:

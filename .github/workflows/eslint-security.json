@@ -1,0 +1,77 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "plugins": [
+    "security",
+    "sonarjs",
+    "node"
+  ],
+  "extends": [
+    "plugin:security/recommended",
+    "plugin:sonarjs/recommended",
+    "plugin:node/recommended"
+  ],
+  "rules": {
+    "security/detect-non-literal-regexp": "error",
+    "security/detect-unsafe-regex": "error",
+    "security/detect-buffer-noassert": "error",
+    "security/detect-child-process": "error",
+    "security/detect-disable-mustache-escape": "error",
+    "security/detect-eval-with-expression": "error",
+    "security/detect-no-csrf-before-method-override": "error",
+    "security/detect-non-literal-fs-filename": "error",
+    "security/detect-non-literal-require": "warn",
+    "security/detect-object-injection": "warn",
+    "security/detect-possible-timing-attacks": "error",
+    "security/detect-pseudoRandomBytes": "error",
+    
+    "sonarjs/no-all-duplicated-branches": "error",
+    "sonarjs/no-element-overwrite": "error",
+    "sonarjs/no-extra-arguments": "error",
+    "sonarjs/no-identical-conditions": "error",
+    "sonarjs/no-identical-expressions": "error",
+    "sonarjs/no-one-iteration-loop": "error",
+    "sonarjs/no-use-of-empty-return-value": "error",
+    "sonarjs/cognitive-complexity": ["error", 15],
+    "sonarjs/max-switch-cases": ["error", 10],
+    "sonarjs/no-duplicate-string": ["error", 5],
+    
+    "node/no-deprecated-api": "error",
+    "node/no-extraneous-require": "error",
+    "node/no-missing-require": "error",
+    "node/no-unpublished-require": "off",
+    "node/no-unsupported-features/es-syntax": "off",
+    
+    "no-eval": "error",
+    "no-implied-eval": "error",
+    "no-new-func": "error",
+    "no-script-url": "error",
+    "no-process-env": "off",
+    "no-process-exit": "warn",
+    "no-alert": "error",
+    "no-console": "off",
+    "no-debugger": "error",
+    "no-caller": "error"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.test.js", "**/*.spec.js", "**/*.test.jsx", "**/*.spec.jsx"],
+      "rules": {
+        "node/no-unpublished-require": "off",
+        "sonarjs/no-duplicate-string": "off",
+        "sonarjs/cognitive-complexity": ["error", 25],
+        "security/detect-non-literal-fs-filename": "off"
+      }
+    }
+  ]
+} 

@@ -1,61 +1,35 @@
-import React from 'react';
-import { Routes, Route, Link, useLocation } from 'react-router-dom';
+import React, { lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { LoadingProvider } from './contexts/LoadingContext';
+import LoadingSpinner from './components/common/LoadingSpinner';
 import './styles/App.css';
 
-// Pages
-import ChatPage from './pages/ChatPage';
-import MapPage from './pages/MapPage';
-import ProfilePage from './pages/ProfilePage';
-import TimelineDemoPage from './pages/TimelineDemoPage';
+// Lazy load route components
+const HomePage = lazy(() => import('./pages/HomePage'));
+const ChatPage = lazy(() => import('./pages/ChatPage'));
+const MapPage = lazy(() => import('./pages/MapPage'));
+const ProfilePage = lazy(() => import('./pages/ProfilePage'));
 
+/**
+ * Main application component
+ * Implements code splitting for route-based components
+ */
 function App() {
-  const location = useLocation();
-  
   return (
-    <div className="app">
-      <nav className="navbar">
-        <div className="logo">
-          <Link to="/" className="logo-link">TourGuideAI</Link>
+    <LoadingProvider>
+      <Router>
+        <div className="App">
+          <Suspense fallback={<LoadingSpinner message="Loading page..." />}>
+            <Routes>
+              <Route exact path="/" element={<HomePage />} />
+              <Route path="/chat" element={<ChatPage />} />
+              <Route path="/map" element={<MapPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+            </Routes>
+          </Suspense>
         </div>
-        <div className="nav-links">
-          <Link 
-            to="/" 
-            className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}
-          >
-            Chat
-          </Link>
-          <Link 
-            to="/map" 
-            className={`nav-link ${location.pathname === '/map' ? 'active' : ''}`}
-          >
-            Map
-          </Link>
-          <Link 
-            to="/timeline" 
-            className={`nav-link ${location.pathname === '/timeline' ? 'active' : ''}`}
-          >
-            Timeline
-          </Link>
-          <Link 
-            to="/profile" 
-            className={`nav-link ${location.pathname === '/profile' ? 'active' : ''}`}
-          >
-            Profile
-          </Link>
-        </div>
-      </nav>
-      
-      <main className="main-content">
-        <div className="container">
-          <Routes>
-            <Route path="/" element={<ChatPage />} />
-            <Route path="/map" element={<MapPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/timeline" element={<TimelineDemoPage />} />
-          </Routes>
-        </div>
-      </main>
-    </div>
+      </Router>
+    </LoadingProvider>
   );
 }
 

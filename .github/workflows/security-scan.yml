@@ -1,0 +1,100 @@
+name: Security Scan
+
+on:
+  schedule:
+    - cron: '0 2 * * 1'  # Run at 2 AM every Monday
+  workflow_dispatch:      # Allow manual triggering
+  push:
+    branches: [main]      # Run on push to main branch
+    paths:
+      - '**/*.js'
+      - '**/*.jsx'
+      - '**/*.ts'
+      - '**/*.tsx'
+      - 'package*.json'
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      # Run npm audit to check for vulnerable dependencies
+      - name: Run npm audit
+        run: npm audit --production
+        continue-on-error: true
+      
+      # Static code analysis with ESLint security plugins
+      - name: Install ESLint and security plugins
+        run: |
+          npm install -g eslint
+          npm install -g eslint-plugin-security eslint-plugin-sonarjs eslint-plugin-node
+      
+      - name: Run ESLint security scan
+        run: |
+          eslint --plugin security,sonarjs --ext .js,.jsx,.ts,.tsx src/ server/ --no-eslintrc --config .github/workflows/eslint-security.json -f json > eslint-report.json || true
+      
+      # Run NodeJsScan for security issues
+      - name: Install NodeJsScan
+        run: pip install nodejsscan
+      
+      - name: Run NodeJsScan
+        run: nodejsscan -d ./ -o nodejsscan-report.json
+        continue-on-error: true
+      
+      # OWASP ZAP Baseline Scan
+      - name: ZAP Baseline Scan
+        uses: zaproxy/action-baseline@v0.7.0
+        with:
+          target: 'http://localhost:3000'
+          rules_file_name: '.github/workflows/zap-rules.tsv'
+          cmd_options: '-a'
+        env:
+          API_URL: 'http://localhost:5000/api'
+      
+      # Upload scan results as artifacts
+      - name: Upload scan results
+        uses: actions/upload-artifact@v3
+        with:
+          name: security-scan-reports
+          path: |
+            eslint-report.json
+            nodejsscan-report.json
+            zap-report.html
+          retention-days: 30
+      
+      # Notify on critical findings
+      - name: Check for critical vulnerabilities
+        id: check_critical
+        run: |
+          critical_count=$(grep -c "critical" nodejsscan-report.json || echo "0")
+          if [ "$critical_count" -gt "0" ]; then
+            echo "::set-output name=has_critical::true"
+          else
+            echo "::set-output name=has_critical::false"
+          fi
+      
+      - name: Create GitHub issue for critical vulnerabilities
+        if: steps.check_critical.outputs.has_critical == 'true'
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '🚨 Critical Security Vulnerabilities Detected',
+              body: 'The security scan has detected critical vulnerabilities. Please check the security scan artifacts in GitHub Actions run #' + context.runId,
+              labels: ['security', 'critical']
+            }) 

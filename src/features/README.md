@@ -16,4 +16,15 @@ Each feature directory is organized to be largely self-contained, with its own:
 - `styles`: CSS and styling specific to the feature
 - `tests`: Unit and integration tests for the feature
 
+## Performance Optimizations
+
+All features leverage the following performance enhancements:
+
+- **Code Splitting**: Components are loaded dynamically using React.lazy and Suspense
+- **Image Optimization**: Images use lazy loading and responsive sizing via the core imageUtils
+- **Caching Strategy**: API responses use TTL-based caching with compression
+- **Offline Support**: Critical functionality works offline through service worker caching
+
+## Maintainability
+
 This organization makes it easier to navigate the codebase, maintain features in isolation, and potentially extract features into separate packages if needed. 

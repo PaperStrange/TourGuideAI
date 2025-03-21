@@ -20,6 +20,14 @@ This feature handles the travel itinerary planning functionality, allowing users
 - Customization of generated itineraries
 - Saving and managing travel plans
 
+## Performance Optimizations
+
+- **Dynamic Loading**: Components load on-demand using React.lazy and Suspense
+- **API Caching**: Generated routes are cached to prevent unnecessary API calls
+- **Prefetching**: Common route patterns are prefetched during idle time
+- **Compression**: Route data uses LZ-string compression for efficient storage
+- **Background Processing**: Heavy computations run in separate threads when possible
+
 ## Dependencies
 
 This feature depends on:

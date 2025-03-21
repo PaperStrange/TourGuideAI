@@ -1,286 +1,345 @@
 /**
- * CacheService
- * Handles offline data persistence and caching
+ * Enhanced Cache Service with TTL and compression support
  */
-
 import { localStorageService } from './LocalStorageService';
+import LZString from 'lz-string';
 
+// Default cache configuration
+const DEFAULT_CONFIG = {
+  // Maximum cache size in bytes (50MB)
+  maxCacheSize: parseInt(process.env.REACT_APP_MAX_CACHE_SIZE, 10) || 52428800,
+  
+  // Default TTL in seconds (24 hours)
+  defaultTTL: parseInt(process.env.REACT_APP_CACHE_EXPIRY, 10) || 86400,
+  
+  // Use compression by default
+  useCompression: true,
+  
+  // By default, clean expired items on service initialization
+  cleanOnInit: true
+};
+
+/**
+ * Cache service for storing and retrieving data with TTL
+ */
 class CacheService {
-  constructor() {
-    this.CACHE_KEYS = {
-      ROUTE_CACHE: 'tourguide_route_cache',
-      TIMELINE_CACHE: 'tourguide_timeline_cache',
-      FAVORITES_CACHE: 'tourguide_favorites_cache',
-      SETTINGS_CACHE: 'tourguide_settings_cache',
-      CACHE_VERSION: 'tourguide_cache_version'
-    };
-    this.CACHE_VERSION = '1.0.0';
-    this.CACHE_EXPIRY = 24 * 60 * 60 * 1000; // 24 hours
-  }
-
-  /**
-   * Initialize cache service
-   */
-  initialize() {
-    this.checkCacheVersion();
-    this.cleanExpiredCache();
-  }
-
-  /**
-   * Check and update cache version
-   */
-  checkCacheVersion() {
-    const currentVersion = localStorage.getItem(this.CACHE_KEYS.CACHE_VERSION);
-    if (currentVersion !== this.CACHE_VERSION) {
-      this.clearCache();
-      localStorage.setItem(this.CACHE_KEYS.CACHE_VERSION, this.CACHE_VERSION);
+  constructor(config = {}) {
+    this.config = { ...DEFAULT_CONFIG, ...config };
+    this.cachePrefix = 'cache:';
+    this.cacheMetaKey = 'cache:meta';
+    this.cacheMeta = this._loadCacheMeta();
+    
+    if (this.config.cleanOnInit) {
+      this.cleanExpiredItems();
     }
   }
-
+  
   /**
-   * Clean expired cache entries
+   * Set cache item with TTL
+   * @param {string} key - Cache key
+   * @param {any} data - Data to cache
+   * @param {number} ttl - Time to live in seconds (optional)
+   * @returns {Promise<boolean>} - Success status
    */
-  cleanExpiredCache() {
+  async setItem(key, data, ttl = this.config.defaultTTL) {
+    const cacheKey = this._getCacheKey(key);
     const now = Date.now();
-    const cacheKeys = Object.values(this.CACHE_KEYS).filter(key => key !== this.CACHE_KEYS.CACHE_VERSION);
-
-    cacheKeys.forEach(key => {
-      const cache = this.getCache(key);
-      if (cache) {
-        const updatedCache = Object.entries(cache).reduce((acc, [id, entry]) => {
-          if (now - entry.timestamp < this.CACHE_EXPIRY) {
-            acc[id] = entry;
-          }
-          return acc;
-        }, {});
-        this.setCache(key, updatedCache);
+    const expiresAt = now + (ttl * 1000);
+    const cacheItem = {
+      data,
+      createdAt: now,
+      expiresAt,
+      size: 0
+    };
+    
+    try {
+      // Calculate raw data size (approximate)
+      const serializedData = JSON.stringify(data);
+      cacheItem.size = new Blob([serializedData]).size;
+      
+      // Check against max cache size
+      if (!this._checkCacheSize(cacheItem.size)) {
+        console.warn('Cache size would exceed max size. Cleaning old entries first.');
+        await this._cleanOldestItems(cacheItem.size);
       }
-    });
-  }
-
-  /**
-   * Get cache for a specific key
-   * @param {string} key - Cache key
-   * @returns {Object|null} - Cache data or null if not found
-   */
-  getCache(key) {
-    try {
-      const cache = localStorage.getItem(key);
-      return cache ? JSON.parse(cache) : null;
+      
+      // Store data with compression if enabled
+      let storedValue;
+      if (this.config.useCompression) {
+        storedValue = LZString.compressToUTF16(serializedData);
+        cacheItem.compressed = true;
+      } else {
+        storedValue = serializedData;
+        cacheItem.compressed = false;
+      }
+      
+      // Store the data
+      const success = await localStorageService.saveData(cacheKey, storedValue);
+      
+      if (success) {
+        // Update cache metadata
+        this.cacheMeta[key] = {
+          expiresAt,
+          createdAt: now,
+          size: cacheItem.size,
+          compressed: cacheItem.compressed
+        };
+        
+        await this._saveCacheMeta();
+        return true;
+      }
+      
+      return false;
     } catch (error) {
-      console.error(`Error getting cache for key ${key}:`, error);
-      return null;
-    }
-  }
-
-  /**
-   * Set cache for a specific key
-   * @param {string} key - Cache key
-   * @param {Object} data - Cache data
-   * @returns {boolean} - Success status
-   */
-  setCache(key, data) {
-    try {
-      localStorage.setItem(key, JSON.stringify(data));
-      return true;
-    } catch (error) {
-      console.error(`Error setting cache for key ${key}:`, error);
+      console.error('Error setting cache item:', error);
       return false;
     }
   }
-
+  
   /**
-   * Cache a route
-   * @param {Object} route - Route data
-   * @returns {boolean} - Success status
+   * Get cache item
+   * @param {string} key - Cache key
+   * @returns {Promise<any>} - Cached data or null if expired/not found
    */
-  cacheRoute(route) {
-    const cache = this.getCache(this.CACHE_KEYS.ROUTE_CACHE) || {};
-    cache[route.id] = {
-      data: route,
-      timestamp: Date.now()
-    };
-    return this.setCache(this.CACHE_KEYS.ROUTE_CACHE, cache);
-  }
-
-  /**
-   * Get cached route
-   * @param {string} routeId - Route ID
-   * @returns {Object|null} - Cached route or null if not found/expired
-   */
-  getCachedRoute(routeId) {
-    const cache = this.getCache(this.CACHE_KEYS.ROUTE_CACHE);
-    if (!cache || !cache[routeId]) {
-      return null;
-    }
-
-    const entry = cache[routeId];
-    if (Date.now() - entry.timestamp > this.CACHE_EXPIRY) {
-      delete cache[routeId];
-      this.setCache(this.CACHE_KEYS.ROUTE_CACHE, cache);
-      return null;
-    }
-
-    return entry.data;
-  }
-
-  /**
-   * Cache a timeline
-   * @param {string} routeId - Route ID
-   * @param {Object} timeline - Timeline data
-   * @returns {boolean} - Success status
-   */
-  cacheTimeline(routeId, timeline) {
-    const cache = this.getCache(this.CACHE_KEYS.TIMELINE_CACHE) || {};
-    cache[routeId] = {
-      data: timeline,
-      timestamp: Date.now()
-    };
-    return this.setCache(this.CACHE_KEYS.TIMELINE_CACHE, cache);
-  }
-
-  /**
-   * Get cached timeline
-   * @param {string} routeId - Route ID
-   * @returns {Object|null} - Cached timeline or null if not found/expired
-   */
-  getCachedTimeline(routeId) {
-    const cache = this.getCache(this.CACHE_KEYS.TIMELINE_CACHE);
-    if (!cache || !cache[routeId]) {
-      return null;
-    }
-
-    const entry = cache[routeId];
-    if (Date.now() - entry.timestamp > this.CACHE_EXPIRY) {
-      delete cache[routeId];
-      this.setCache(this.CACHE_KEYS.TIMELINE_CACHE, cache);
-      return null;
-    }
-
-    return entry.data;
-  }
-
-  /**
-   * Cache favorites
-   * @param {string[]} favorites - Array of favorite route IDs
-   * @returns {boolean} - Success status
-   */
-  cacheFavorites(favorites) {
-    const cache = {
-      data: favorites,
-      timestamp: Date.now()
-    };
-    return this.setCache(this.CACHE_KEYS.FAVORITES_CACHE, cache);
-  }
-
-  /**
-   * Get cached favorites
-   * @returns {string[]|null} - Cached favorites or null if not found/expired
-   */
-  getCachedFavorites() {
-    const cache = this.getCache(this.CACHE_KEYS.FAVORITES_CACHE);
-    if (!cache) {
-      return null;
-    }
-
-    if (Date.now() - cache.timestamp > this.CACHE_EXPIRY) {
-      this.setCache(this.CACHE_KEYS.FAVORITES_CACHE, null);
-      return null;
-    }
-
-    return cache.data;
-  }
-
-  /**
-   * Cache settings
-   * @param {Object} settings - User settings
-   * @returns {boolean} - Success status
-   */
-  cacheSettings(settings) {
-    const cache = {
-      data: settings,
-      timestamp: Date.now()
-    };
-    return this.setCache(this.CACHE_KEYS.SETTINGS_CACHE, cache);
-  }
-
-  /**
-   * Get cached settings
-   * @returns {Object|null} - Cached settings or null if not found/expired
-   */
-  getCachedSettings() {
-    const cache = this.getCache(this.CACHE_KEYS.SETTINGS_CACHE);
-    if (!cache) {
-      return null;
-    }
-
-    if (Date.now() - cache.timestamp > this.CACHE_EXPIRY) {
-      this.setCache(this.CACHE_KEYS.SETTINGS_CACHE, null);
-      return null;
-    }
-
-    return cache.data;
-  }
-
-  /**
-   * Clear all cache
-   */
-  clearCache() {
-    Object.values(this.CACHE_KEYS).forEach(key => {
-      localStorage.removeItem(key);
-    });
-  }
-
-  /**
-   * Get cache size
-   * @returns {number} - Total size of cache in bytes
-   */
-  getCacheSize() {
-    let totalSize = 0;
-    Object.values(this.CACHE_KEYS).forEach(key => {
-      const value = localStorage.getItem(key);
-      if (value) {
-        totalSize += value.length * 2; // Approximate size in bytes
+  async getItem(key) {
+    const cacheKey = this._getCacheKey(key);
+    const metaEntry = this.cacheMeta[key];
+    
+    // Check if item exists and is not expired
+    if (!metaEntry || metaEntry.expiresAt < Date.now()) {
+      if (metaEntry) {
+        // Item exists but is expired
+        this._removeItemMeta(key);
+        await localStorageService.removeData(cacheKey);
       }
-    });
-    return totalSize;
-  }
-
-  /**
-   * Check if cache is full
-   * @returns {boolean} - Whether cache is full
-   */
-  isCacheFull() {
-    const MAX_CACHE_SIZE = 50 * 1024 * 1024; // 50MB
-    return this.getCacheSize() > MAX_CACHE_SIZE;
-  }
-
-  /**
-   * Clear oldest cache entries if cache is full
-   */
-  clearOldestCache() {
-    if (!this.isCacheFull()) {
-      return;
+      return null;
     }
-
+    
+    try {
+      const cachedValue = await localStorageService.getData(cacheKey);
+      
+      if (!cachedValue) return null;
+      
+      // Decompress if necessary
+      if (metaEntry.compressed) {
+        const decompressed = LZString.decompressFromUTF16(cachedValue);
+        return decompressed ? JSON.parse(decompressed) : null;
+      } else {
+        return JSON.parse(cachedValue);
+      }
+    } catch (error) {
+      console.error('Error getting cache item:', error);
+      return null;
+    }
+  }
+  
+  /**
+   * Remove cache item
+   * @param {string} key - Cache key
+   * @returns {Promise<boolean>} - Success status
+   */
+  async removeItem(key) {
+    const cacheKey = this._getCacheKey(key);
+    this._removeItemMeta(key);
+    return await localStorageService.removeData(cacheKey);
+  }
+  
+  /**
+   * Clear all cache items
+   * @returns {Promise<boolean>} - Success status
+   */
+  async clearCache() {
+    try {
+      // Get all cache keys
+      const allKeys = Object.keys(this.cacheMeta).map(key => this._getCacheKey(key));
+      
+      // Remove all cache items
+      for (const key of allKeys) {
+        await localStorageService.removeData(key);
+      }
+      
+      // Clear cache metadata
+      this.cacheMeta = {};
+      await this._saveCacheMeta();
+      
+      return true;
+    } catch (error) {
+      console.error('Error clearing cache:', error);
+      return false;
+    }
+  }
+  
+  /**
+   * Clear cache items by prefix
+   * @param {string} prefix - Cache key prefix
+   * @returns {Promise<boolean>} - Success status
+   */
+  async clearCacheByPrefix(prefix) {
+    try {
+      // Get matching keys
+      const matchingKeys = Object.keys(this.cacheMeta).filter(key => key.startsWith(prefix));
+      
+      // Remove matching items
+      for (const key of matchingKeys) {
+        await this.removeItem(key);
+      }
+      
+      return true;
+    } catch (error) {
+      console.error('Error clearing cache by prefix:', error);
+      return false;
+    }
+  }
+  
+  /**
+   * Clean expired items
+   * @returns {Promise<number>} - Number of items removed
+   */
+  async cleanExpiredItems() {
     const now = Date.now();
-    const cacheKeys = Object.values(this.CACHE_KEYS).filter(key => key !== this.CACHE_KEYS.CACHE_VERSION);
-
-    cacheKeys.forEach(key => {
-      const cache = this.getCache(key);
-      if (cache) {
-        const updatedCache = Object.entries(cache)
-          .sort(([, a], [, b]) => a.timestamp - b.timestamp)
-          .slice(-Math.floor(Object.keys(cache).length / 2))
-          .reduce((acc, [id, entry]) => {
-            acc[id] = entry;
-            return acc;
-          }, {});
-        this.setCache(key, updatedCache);
+    const expiredKeys = Object.keys(this.cacheMeta).filter(key => 
+      this.cacheMeta[key].expiresAt < now
+    );
+    
+    for (const key of expiredKeys) {
+      await this.removeItem(key);
+    }
+    
+    return expiredKeys.length;
+  }
+  
+  /**
+   * Get cache statistics
+   * @returns {object} - Cache statistics
+   */
+  getCacheStats() {
+    const now = Date.now();
+    const allItems = Object.keys(this.cacheMeta);
+    const totalItems = allItems.length;
+    const expiredItems = allItems.filter(key => this.cacheMeta[key].expiresAt < now).length;
+    const totalSize = allItems.reduce((sum, key) => sum + (this.cacheMeta[key].size || 0), 0);
+    
+    return {
+      totalItems,
+      expiredItems,
+      activeItems: totalItems - expiredItems,
+      totalSize,
+      maxSize: this.config.maxCacheSize,
+      usagePercentage: (totalSize / this.config.maxCacheSize) * 100
+    };
+  }
+  
+  /**
+   * Prefetch API responses for common routes
+   * @param {Array} urls - URLs to prefetch
+   * @param {object} options - Prefetch options
+   * @returns {Promise<number>} - Number of successfully prefetched items
+   */
+  async prefetchItems(urls, options = {}) {
+    const { fetcher, ttl, batchSize = 3 } = options;
+    
+    if (!fetcher || !Array.isArray(urls) || urls.length === 0) {
+      return 0;
+    }
+    
+    let successCount = 0;
+    
+    // Process in batches to avoid overwhelming the network
+    for (let i = 0; i < urls.length; i += batchSize) {
+      const batch = urls.slice(i, i + batchSize);
+      
+      await Promise.all(batch.map(async url => {
+        try {
+          const data = await fetcher(url);
+          const success = await this.setItem(url, data, ttl);
+          if (success) successCount++;
+        } catch (error) {
+          console.error(`Error prefetching ${url}:`, error);
+        }
+      }));
+    }
+    
+    return successCount;
+  }
+  
+  // Private methods
+  
+  /**
+   * Get full cache key with prefix
+   * @private
+   */
+  _getCacheKey(key) {
+    return `${this.cachePrefix}${key}`;
+  }
+  
+  /**
+   * Load cache metadata
+   * @private
+   */
+  _loadCacheMeta() {
+    return localStorageService.getData(this.cacheMetaKey) || {};
+  }
+  
+  /**
+   * Save cache metadata
+   * @private
+   */
+  async _saveCacheMeta() {
+    return await localStorageService.saveData(this.cacheMetaKey, this.cacheMeta);
+  }
+  
+  /**
+   * Remove item metadata
+   * @private
+   */
+  _removeItemMeta(key) {
+    if (this.cacheMeta[key]) {
+      delete this.cacheMeta[key];
+      this._saveCacheMeta();
+    }
+  }
+  
+  /**
+   * Check if adding data would exceed max cache size
+   * @private
+   */
+  _checkCacheSize(additionalSize) {
+    const currentSize = Object.values(this.cacheMeta).reduce((sum, meta) => sum + (meta.size || 0), 0);
+    return (currentSize + additionalSize) <= this.config.maxCacheSize;
+  }
+  
+  /**
+   * Clean oldest items to make room for new data
+   * @private
+   */
+  async _cleanOldestItems(requiredSize) {
+    // Get all items sorted by creation time (oldest first)
+    const sortedItems = Object.keys(this.cacheMeta).sort((a, b) => 
+      this.cacheMeta[a].createdAt - this.cacheMeta[b].createdAt
+    );
+    
+    let freedSize = 0;
+    let removedCount = 0;
+    
+    // Remove oldest items until we have enough space
+    for (const key of sortedItems) {
+      if (freedSize >= requiredSize) break;
+      
+      const itemSize = this.cacheMeta[key].size || 0;
+      const removed = await this.removeItem(key);
+      
+      if (removed) {
+        freedSize += itemSize;
+        removedCount++;
       }
-    });
+    }
+    
+    return removedCount;
   }
 }
 
-// Export a singleton instance
-export const cacheService = new CacheService(); 
+// Create and export singleton instance
+export const cacheService = new CacheService();
+
+// Export class for testing and custom instances
+export default CacheService; 

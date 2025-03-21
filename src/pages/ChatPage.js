@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/ChatPage.css';
-import { OpenAIService } from '../services/apiClient';
+import * as openaiApi from '../core/api/openaiApi';
 import ApiStatus from '../components/ApiStatus';
 
 // Mock data for live pop-up window and route rankboard
@@ -105,17 +105,17 @@ const ChatPage = () => {
     
     try {
       // 1. Recognize the intent from user input
-      const intentResponse = await OpenAIService.recognizeIntent(userInput);
+      const intentResponse = await openaiApi.recognizeTextIntent(userInput);
       
       // 2. Generate a route based on the recognized intent
-      const routeResponse = await OpenAIService.generateRoute(userInput, intentResponse.intent);
+      const routeResponse = await openaiApi.generateRoute(userInput);
       
       // 3. Navigate to map page with the generated route data
       navigate('/map', { 
         state: { 
           userQuery: userInput, 
           intentData: intentResponse,
-          routeData: routeResponse.route
+          routeData: routeResponse
         } 
       });
     } catch (err) {
@@ -128,30 +128,24 @@ const ChatPage = () => {
   
   // Real implementation for user_route_generate_randomly using OpenAI API
   const handleFeelLucky = async () => {
-    if (!userInput.trim()) return;
-    
     setIsLoading(true);
     setError(null);
     
     try {
-      // 1. Recognize the intent from user input (for context)
-      const intentResponse = await OpenAIService.recognizeIntent(userInput);
+      // 1. Generate a random route
+      const randomRouteResponse = await openaiApi.generateRandomRoute();
       
-      // 2. Generate a random route
-      const randomRouteResponse = await OpenAIService.generateRandomRoute();
-      
-      // 3. Navigate to map page with the randomly generated route
+      // 2. Navigate to map page with the randomly generated route
       navigate('/map', { 
         state: { 
-          userQuery: userInput,
-          intentData: intentResponse,
-          routeData: randomRouteResponse.route,
-          isRandom: true
+          userQuery: 'Random destination', 
+          intentData: null,
+          routeData: randomRouteResponse
         } 
       });
     } catch (err) {
       console.error('Error generating random route:', err);
-      setError('Failed to generate route. Please try again.');
+      setError('Failed to generate random route. Please try again.');
     } finally {
       setIsLoading(false);
     }
