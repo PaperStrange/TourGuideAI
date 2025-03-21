@@ -7,13 +7,13 @@ This document outlines the standard workflow for executing a new project phase i
 ### 1. Phase Initialization
 - Review `.milestones` file to understand the overall project structure
 - Identify the current phase requirements and objectives
-- Review the `Instructions` section in `.cursorrules` to understand project management requirements
-- Consult the `Project Structure`, `Coding Standards`, and `API Integration Rules` sections in `.cursorrules`
+- Refer to the ideas within `Project Structure`, `Coding Standards`, and `API Integration Rules` sections in `.cursorrules`
 - Break down the phase into logical milestones and tasks
 - Update `.project` file with the new phase details, milestones, and tasks
 - Update `.todos` file with specific actionable items for the new phase
 - Update `stability-test-plan.md` file with specific actionable items for the new phase
 - Generate planning artifacts like `xxx-plan.md` for further use nad instruction if neccessary according to new project  phase tasks and requirements, store them in the `../docs` folder
+- Planning artifacts should refer to the corresponding task and lines in `.todos` with a link
 
 ### 2. Development Process
 - Execute tasks according to the priorities defined in `.todos`
@@ -32,6 +32,8 @@ This document outlines the standard workflow for executing a new project phase i
 - Perform comprehensive code review
 - Refactor folder structure to apply new features
 - Remove duplicated or obsolete files
+- Update architecture documentation to reflect changes
+- Review all project files against the standards in `.cursorrules`
 - Update `project.refactors` with details of any structural changes:
   - Document file relocations
   - Record line changes
@@ -69,24 +71,34 @@ This document outlines the standard workflow for executing a new project phase i
   - Security considerations
 - Review previous lessons before adding new ones to avoid duplication
 - Use clear, actionable language in lesson descriptions
+- Always link all new generated files back to the this file
 
 ## File Responsibilities
 
-| File | Purpose | Update Frequency |
-|------|---------|------------------|
-| `.milestones` | Project-wide milestone tracking | At project start, major revisions |
-| `.project` | Detailed project status and task tracking | Throughout development |
-| `.todos` | Current action items and task status | Daily/as tasks change |
-| `xxx-plan.md` | New planning instruction for further programming | At project start |
-| `.cursorrules` | Project standards and lessons learned | As new lessons emerge |
-| `.cursorrules` (Instructions) | Project management guidelines | Reference at phase start |
-| `.cursorrules` (Thinking Protocol) | Thinking process for complex tasks | During task analysis |
-| `.cursorrules` (Standards) | Coding and API standards | Reference throughout development |
-| `.cursorrules` (Lessons) | Knowledge preservation | After resolving challenges |
-| `.cursorrules` (Scratchpad) | Current thinking context | Before and during task execution |
-| `project.refactors` | Record of structural changes | After refactoring |
-| `project.versions.md` | Version history and release notes | After version completion |
-| `README.md` | Introduction for the new-comers | After version completion |
+| File | Purpose | Update Frequency | Reference Documentation |
+|------|---------|------------------|-------------------------|
+| `.milestones` | Project-wide milestone tracking | At project start, major revisions | |
+| `.project` | Detailed project status and task tracking | Throughout development | |
+| `.todos` | Current action items and task status | Daily/as tasks change | |
+| `xxx-plan.md` | New planning instruction for further programming | At project start | |
+| `.cursorrules` | Project standards and lessons learned | As new lessons emerge | |
+| `.cursorrules` (Instructions) | Project management guidelines | Reference at phase start | |
+| `.cursorrules` (Thinking Protocol) | Thinking process for complex tasks | During task analysis | |
+| `.cursorrules` (Standards) | Coding and API standards | Reference throughout development | |
+| `.cursorrules` (Lessons) | Knowledge preservation | After resolving challenges | |
+| `.cursorrules` (Scratchpad) | Current thinking context | Before and during task execution | |
+| `project.refactors` | Record of structural changes | After refactoring | |
+| `project.versions.md` | Version history and release notes | After version completion | [Versioning Guide](../docs/references/version-control.md) |
+| `docs/references/code-review-checklist.md` | Standard for code reviews | Reference during review | [Code Review Checklist](../docs/references/code-review-checklist.md) |
+| `docs/references/version-control.md` | Versioning conventions | Reference during releases | [Versioning Conventions](../docs/references/version-control.md) |
+| `docs/references/dependencies-tracking.md` | Component dependency management | Update with architectural changes | [Dependencies Tracking](../docs/references/dependencies-tracking.md) |
+| `docs/references/whats-code-review-looking-for.md` | Google's code review guide | Reference during reviews | [Code Review Guide](../docs/references/whats-code-review-looking-for.md) |
+| `stability-test-plan.md` | Testing approach and test cases | Before phase execution | |
+| `deployment-pipeline.md` | Deployment process documentation | Before production release | |
+| `performance-optimization.md` | Performance strategy and targets | Before optimization work | |
+| `README.md` | Introduction for the new-comers | After version completion | |
+| `ARCHITECTURE.md` | Introduction for the the whole project file structure | After version completion | |
+| `API_OVERVIEW.md` | Introduction for the api embedded in this project | After version completion | |
 
 ## Standard Procedure for New Phase
 
@@ -96,7 +108,10 @@ This document outlines the standard workflow for executing a new project phase i
 4. Execute development tasks, keeping all documentations up-to-date
    - Use the thinking protocol and scratchpad for complex tasks
    - Refer to coding standards during implementation to avoid same mistakes or any not user-friendly programming habits
+   - Consult reference documentation for specialized tasks:
+     - Follow [versioning conventions](../docs/references/version-control.md) for releases
+     - Use [code review checklist](../docs/references/code-review-checklist.md) when reviewing code
+     - Update [dependencies tracking](../docs/references/dependencies-tracking.md) with architecture changes
 5. Perform code review and refactoring when phase is completed
 6. Update `project.refactors`, `project.versions.md`, each `README.md` within project folders
 7. Update `ARCHITECTURE.md` and `API_OVERVIEW.md`
-8. Document lessons in `.cursorrules` "##Lessons" section with specific, actionable insights, mistakes to avoid
