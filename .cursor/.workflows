@@ -1,33 +1,37 @@
 # TourGuideAI Project Workflow
 
-This document outlines the standard workflow for executing a new project phase in the TourGuideAI project.
+This document outlines the standard workflow for executing a new project phase in the TourGuideAI project. This workflow ensures consistent process, comprehensive documentation, and knowledge preservation throughout the project lifecycle. 
 
 ## Project Phase Workflow
 
 ### 1. Phase Initialization
 - Review `.milestones` file to understand the overall project structure
 - Identify the current phase requirements and objectives
+- Review the `Instructions` section in `.cursorrules` to understand project management requirements
+- Consult the `Project Structure`, `Coding Standards`, and `API Integration Rules` sections in `.cursorrules`
 - Break down the phase into logical milestones and tasks
 - Update `.project` file with the new phase details, milestones, and tasks
-- Update `.todos` file with specific actionable items for the phase
+- Update `.todos` file with specific actionable items for the new phase
+- Update `stability-test-plan.md` file with specific actionable items for the new phase
+- Generate planning artifacts like `xxx-plan.md` for further use nad instruction if neccessary according to new project  phase tasks and requirements, store them in the `../docs` folder
 
 ### 2. Development Process
 - Execute tasks according to the priorities defined in `.todos`
+- For complex tasks, utilize the `cursor-thinking-protocol` section in `.cursorrules` as a scratchpad
+- Before starting a new task, review the `Scratchpad` section in `.cursorrules` to understand current thinking context
+- Clear old thinking progress in the `Scratchpad` section when necessary
 - Update `.project` file as tasks are completed, including:
   - Mark completed tasks with [X]
   - Add completion dates
   - Record any issues encountered
   - Note key learnings
 - Update `.todos` file regularly to reflect current status and any new tasks
-- Refer to `.cursorrules` for coding standards and project requirements
+- When stuck, compare the milestones in `.milestones` with completed milestones in `.project` to identify gaps
 
-### 3. Phase Completion
+### 3. Phase Completion and Documentation Updates
 - Perform comprehensive code review
 - Refactor folder structure to apply new features
 - Remove duplicated or obsolete files
-- Update architecture documentation to reflect changes
-
-### 4. Documentation Updates
 - Update `project.refactors` with details of any structural changes:
   - Document file relocations
   - Record line changes
@@ -37,18 +41,34 @@ This document outlines the standard workflow for executing a new project phase i
   - Added features
   - Changed elements
   - Fixed issues
+- Update each `README.md` within project folders to reflect changes and make sure changed contents are corrected recorded
+
+### 4. Project Artifacts Modification
+- Update detailed folder structure in `ARCHITECTURE.md`
+- Update api document named `API_OVERVIEW.md`
 
 ### 5. Knowledge Preservation
-- Record lessons learned in the `.cursorrules` file under the "Lessons" section
-- Document reusable patterns and solutions
-- Note encountered issues and their resolutions
-- Save all technical decisions for future reference
-
-### 6. Planning Artifacts
-- Store all generated planning files in the `../docs` folder
-- Include detailed implementation plans
-- Document architecture decisions
-- Preserve test plans and results
+- Record lessons learned in the `.cursorrules` file under the "Lessons" section, including:
+  - Technical insights gained during implementation
+  - Best practices discovered
+  - Common errors and their solutions
+  - Performance optimization techniques
+  - Architectural decisions and their rationale
+  - API integration lessons
+  - Testing strategies that work well
+  - Code organization insights
+  - Integration patterns between components
+  - Error handling strategies
+- Format lessons as concise bullet points for easy reference
+- Focus on reusable knowledge that can be applied to future phases
+- Prioritize recording lessons about:
+  - Fixes to mistakes made during development
+  - Corrections received from reviews
+  - Unexpected challenges and their solutions
+  - Performance improvements
+  - Security considerations
+- Review previous lessons before adding new ones to avoid duplication
+- Use clear, actionable language in lesson descriptions
 
 ## File Responsibilities
 
@@ -57,18 +77,26 @@ This document outlines the standard workflow for executing a new project phase i
 | `.milestones` | Project-wide milestone tracking | At project start, major revisions |
 | `.project` | Detailed project status and task tracking | Throughout development |
 | `.todos` | Current action items and task status | Daily/as tasks change |
+| `xxx-plan.md` | New planning instruction for further programming | At project start |
 | `.cursorrules` | Project standards and lessons learned | As new lessons emerge |
+| `.cursorrules` (Instructions) | Project management guidelines | Reference at phase start |
+| `.cursorrules` (Thinking Protocol) | Thinking process for complex tasks | During task analysis |
+| `.cursorrules` (Standards) | Coding and API standards | Reference throughout development |
+| `.cursorrules` (Lessons) | Knowledge preservation | After resolving challenges |
+| `.cursorrules` (Scratchpad) | Current thinking context | Before and during task execution |
 | `project.refactors` | Record of structural changes | After refactoring |
 | `project.versions.md` | Version history and release notes | After version completion |
+| `README.md` | Introduction for the new-comers | After version completion |
 
 ## Standard Procedure for New Phase
 
 1. Begin with `.milestones` to understand phase requirements
-2. Create phase breakdown in `.project` and `.todos`
-3. Execute development tasks, keeping documentation current
-4. Perform code review and refactoring when phase is complete
-5. Update `project.refactors` and `project.versions.md`
-6. Document lessons in `.cursorrules`
-7. Store planning artifacts in `../docs`
-
-This workflow ensures consistent process, comprehensive documentation, and knowledge preservation throughout the project lifecycle. 
+2. Review `.cursorrules` for instructions, standards, and previous lessons
+3. Create phase breakdown in `.project`, `.todos` and planning artifacts like `xxx-plan.md` in `../docs` if neccessary 
+4. Execute development tasks, keeping all documentations up-to-date
+   - Use the thinking protocol and scratchpad for complex tasks
+   - Refer to coding standards during implementation to avoid same mistakes or any not user-friendly programming habits
+5. Perform code review and refactoring when phase is completed
+6. Update `project.refactors`, `project.versions.md`, each `README.md` within project folders
+7. Update `ARCHITECTURE.md` and `API_OVERVIEW.md`
+8. Document lessons in `.cursorrules` "##Lessons" section with specific, actionable insights, mistakes to avoid
