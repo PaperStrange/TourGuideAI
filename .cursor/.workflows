@@ -34,8 +34,9 @@ This document outlines the standard workflow for executing a new project phase i
   - all teste in tests` are marked as success
 
 ### 3. Phase Completion and Documentation Updates
-- Perform comprehensive code review
-- Refactor folder structure to apply new features
+- Perform comprehensive code review referring to `docs/references/code-review-checklist.md`and `docs/references/whats-code-review-looking-for.md`
+- Follow the refactoring plan in `docs/ refactor-.plan.md` to categorize and implement refactors
+- Document all refactors in `docs/project.refactors.md` by type (code structure, duplication, performance, security, etc.)
 - Remove duplicated or obsolete files
 - Update architecture documentation to reflect changes
 - Review all project files against the standards in `.cursorrules`
@@ -92,6 +93,7 @@ This document outlines the standard workflow for executing a new project phase i
 | `.cursorrules` (Lessons) | Knowledge preservation | After resolving challenges | |
 | `.cursorrules` (Scratchpad) | Current thinking context | Before and during task execution | |
 | `docs/project.refactors.md` | Record of structural changes | After refactoring | [Versioning Guide](../docs/project.refactors.md) |
+| `docs/ refactor-.plan.md` | Refactoring categorization and approach | Before refactoring, quarterly review | [Refactoring Plan](../docs/ refactor-.plan.md) |
 | `docs/project.versions.md` | Version history and release notes | After version completion | [Versioning Guide](../docs/project.versions.md) |
 | `docs/project.lessons.md` | Lesson recordings during the project | Reference during reviews | [Code Review Guide](../docs/project.lessons.md) |
 | `docs/references/code-review-checklist.md` | Standard for code reviews | Reference during review | [Code Review Checklist](../docs/references/code-review-checklist.md) |

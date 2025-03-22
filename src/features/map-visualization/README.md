@@ -11,29 +11,29 @@ This feature handles the mapping and geographic visualization of travel routes, 
 
 ## Services
 
-- **LocationService**: Handles geocoding and location search functionality
 - **DirectionsService**: Manages travel directions and routing
+- **LocationService**: Handles geocoding and location search functionality
 - **PlacesService**: Manages points of interest and location details
 
 ## Functionality
 
+- Distance and travel time calculations
+- Discovery of nearby points of interest
+- Geographic search and filtering
 - Interactive map navigation
 - Visualization of travel routes and itineraries
-- Discovery of nearby points of interest
-- Distance and travel time calculations
-- Geographic search and filtering
 
 ## Performance Optimizations
 
-- **Lazy Loading**: The map component is loaded on-demand using React.lazy
-- **Progressive Loading**: Map markers and routes are loaded progressively based on viewport
-- **Image Optimization**: Map POI images use responsive loading and WebP format
 - **Caching**: Geographic data is cached with location-specific TTL values
+- **Image Optimization**: Map POI images use responsive loading and WebP format
+- **Lazy Loading**: The map component is loaded on-demand using React.lazy
 - **Offline Support**: Previously viewed maps and routes are available offline
+- **Progressive Loading**: Map markers and routes are loaded progressively based on viewport
 
 ## Dependencies
 
 This feature depends on:
+- Common UI components (via `core/components`)
 - Google Maps API (via `core/api/googleMapsApi`)
-- Storage services (via `core/services/storage`)
-- Common UI components (via `core/components`) 
+- Storage services (via `core/services/storage`) 

@@ -113,6 +113,10 @@ This document records key lessons learned during the development of TourGuideAI,
 - **Context**: Early failures were occurring in edge cases that weren't tested
 - **Solution**: Expanded test coverage to include error cases and edge conditions
 - **Impact**: Bug detection shifted left in the development process
+- **Lesson**: Set up test infrastructure before implementing features
+- **Context**: In Phase 5, we had to retrofit test automation to existing code
+- **Solution**: Created test plans and infrastructure at the beginning of phase 6
+- **Impact**: More testable code architecture and efficient test development
 
 ### Cross-Browser Testing
 - **Lesson**: Mobile testing requires real device verification
@@ -209,6 +213,37 @@ This document records key lessons learned during the development of TourGuideAI,
 - **Context**: Seaborn styles broke after library updates
 - **Solution**: Updated references to use version-compatible style names
 - **Impact**: Prevented unexpected visual changes and library compatibility issues
+
+## Refactoring Documentation Approach
+
+### Documentation Structure
+- **Organize by date and type**: Structure refactoring records by date first, then categorize by type within each date
+- **Consolidate related refactors**: Group refactors that happen on the same day to show comprehensive improvement efforts
+- **Use multi-layered hierarchy**: Implement nested headings (Type 1, Type 2, etc.) for complex refactoring efforts
+- **Identify cross-cutting concerns**: Separate shared impacts from individual refactor types
+- **Standardize section formats**: Use consistent headings and structure across all refactor entries
+- **Include before/after metrics**: Always document measurable improvements when available
+
+### Refactoring Process
+- **Plan comprehensive refactors**: Address related concerns simultaneously (e.g., API consolidation with naming standardization)
+- **Categorize by impact type**: Different refactor types (e.g., structure, duplication, performance) require different documentation focus
+- **Document code health impact**: Explicitly list positive, negative, and neutral effects of every refactoring effort
+- **Include mitigation strategies**: For every negative impact, document the approach to mitigate it
+- **Track lessons learned**: Each refactoring should generate insights that improve future efforts
+
+### Refactoring Best Practices
+- **Measure before optimizing**: Always establish baseline metrics before performance refactoring
+- **Consolidate duplicate code**: Use re-exports and authoritative implementations to reduce duplication
+- **Standardize interfaces early**: Consistent naming and parameter conventions improve long-term maintainability
+- **Document deprecation paths**: Provide clear migration paths when replacing or deprecating components
+- **Test across environments**: Verify refactors work across all targeted platforms and browsers
+
+### Documentation Maintenance
+- **Keep documentation centralized**: Maintain a single source of truth for refactoring records
+- **Update references**: When files are renamed or moved, update all references in documentation
+- **Link related documents**: Connect refactoring records to implementation plans and test results
+- **Review documentation completeness**: Ensure all refactoring efforts are properly recorded
+- **Update READMEs promptly**: Keep folder-level README files in sync with structural changes
 
 ---
 

@@ -146,13 +146,49 @@ This project is licensed under the MIT License - see the LICENSE.txt file for de
 
 ## Project Structure
 
+- `/.github`: GitHub Actions workflows
+- `/build`: Production build output
+- `/deployment`: Deployment configurations
+- `/docs`: Project documentation
+- `/public`: Static assets and service worker
+  - `offline.html`: Offline fallback page
+  - `service-worker.js`: Service worker for offline support
+- `/scripts`: Build and maintenance scripts
+- `/server`: Backend server code
+  - `/middleware`: Express middleware
+  - `/routes`: API route handlers
+  - `/utils`: Server utility functions
 - `/src`: Source code
+  - `/api`: Legacy API functions (being migrated to core)
   - `/components`: Reusable UI components
-  - `/pages`: Main page components (Chat, Map, Profile)
-  - `/api`: API functions for OpenAI and Google Maps
+  - `/contexts`: React contexts for state management
+  - `/core`: Shared code across features
+    - `/api`: API clients for external services 
+    - `/components`: Shared UI components
+    - `/services`: Shared application services
+    - `/utils`: Utility functions and helpers
+  - `/features`: Feature modules
+    - `/map-visualization`: Map visualization feature
+    - `/travel-planning`: Travel itinerary planning feature
+    - `/user-profile`: User profile management feature
+  - `/pages`: Main page components
+  - `/services`: Legacy services (being migrated to core)
   - `/styles`: CSS and styling files
+  - `/tests`: Component-specific tests
   - `/utils`: Utility functions
-  - `/data`: Mock data for development
+- `/tests`: End-to-end and integration tests
+
+## Refactoring Philosophy
+
+Throughout development, we've applied several key refactoring principles:
+
+- **Code Consolidation**: Reducing duplication by centralizing common functionality
+- **Parameter Standardization**: Consistent naming conventions across interfaces
+- **Performance Optimization**: Regular improvements to frontend and backend performance
+- **Security Hardening**: Progressive enhancement of security practices
+- **Infrastructure Automation**: Continuous improvement of CI/CD processes
+
+See `docs/project.refactors.md` for a detailed history of refactoring efforts and `docs/project.lessons.md` for lessons learned.
 
 ## Application Pages
 

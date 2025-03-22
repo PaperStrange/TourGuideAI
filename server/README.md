@@ -69,17 +69,17 @@ The server uses the following environment variables:
 
 ```
 server/
+├── logs/              # Log files (created at runtime)
 ├── middleware/        # Express middleware
 │   ├── apiKeyValidation.js
 │   ├── caching.js
 │   └── rateLimit.js
 ├── routes/            # API route handlers
-│   ├── openai.js
-│   └── googlemaps.js
+│   ├── googlemaps.js
+│   └── openai.js
 ├── utils/             # Utility functions
 │   ├── apiHelpers.js
 │   └── logger.js
-├── logs/              # Log files (created at runtime)
 ├── .env               # Environment variables (create from .env.example)
 ├── .env.example       # Example environment file
 ├── package.json       # Project dependencies

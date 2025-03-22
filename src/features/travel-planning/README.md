@@ -4,8 +4,8 @@ This feature handles the travel itinerary planning functionality, allowing users
 
 ## Components
 
-- **RouteGenerator**: UI for generating travel routes from user queries
 - **ItineraryBuilder**: Interface for customizing and fine-tuning travel itineraries
+- **RouteGenerator**: UI for generating travel routes from user queries
 - **RoutePreview**: Quick preview of generated routes
 
 ## Services
@@ -15,22 +15,22 @@ This feature handles the travel itinerary planning functionality, allowing users
 
 ## Functionality
 
-- Natural language processing of travel queries
-- Generation of personalized travel routes
 - Customization of generated itineraries
+- Generation of personalized travel routes
+- Natural language processing of travel queries
 - Saving and managing travel plans
 
 ## Performance Optimizations
 
-- **Dynamic Loading**: Components load on-demand using React.lazy and Suspense
 - **API Caching**: Generated routes are cached to prevent unnecessary API calls
-- **Prefetching**: Common route patterns are prefetched during idle time
-- **Compression**: Route data uses LZ-string compression for efficient storage
 - **Background Processing**: Heavy computations run in separate threads when possible
+- **Compression**: Route data uses LZ-string compression for efficient storage
+- **Dynamic Loading**: Components load on-demand using React.lazy and Suspense
+- **Prefetching**: Common route patterns are prefetched during idle time
 
 ## Dependencies
 
 This feature depends on:
+- Common UI components (via `core/components`)
 - OpenAI API (via `core/api/openaiApi`)
-- Storage services (via `core/services/storage`)
-- Common UI components (via `core/components`) 
+- Storage services (via `core/services/storage`) 
