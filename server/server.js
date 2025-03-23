@@ -20,20 +20,26 @@ const path = require('path');
 const logger = require('./utils/logger');
 const { globalLimiter, openaiLimiter, mapsLimiter } = require('./middleware/rateLimit');
 const { validateOpenAIApiKey, validateGoogleMapsApiKey, checkKeyRotation } = require('./middleware/apiKeyValidation');
-const { optionalAuth } = require('./middleware/authMiddleware');
+const { fullOptionalAuth } = require('./middleware/authMiddleware');
 const betaUsers = require('./models/betaUsers');
+const inviteCodes = require('./models/inviteCodes');
 
 // Import API routes
 const openaiRoutes = require('./routes/openai');
 const mapsRoutes = require('./routes/googlemaps');
 const authRoutes = require('./routes/auth');
+const inviteCodeRoutes = require('./routes/inviteCodes');
 
 // Initialize Express app
 const app = express();
 
-// Initialize beta users
+// Initialize beta users and invite codes
 betaUsers.initialize().catch(err => {
   logger.error('Failed to initialize beta users', { error: err });
+});
+
+inviteCodes.initialize().catch(err => {
+  logger.error('Failed to initialize invite codes', { error: err });
 });
 
 // Basic security headers
@@ -62,11 +68,14 @@ app.use(globalLimiter);
 // Check for API keys needing rotation
 app.use(checkKeyRotation);
 
-// Apply optional authentication to all routes
-app.use(optionalAuth);
+// Apply optional authentication with permissions to all routes
+app.use(fullOptionalAuth);
 
 // Auth routes
 app.use('/api/auth', authRoutes);
+
+// Invite code routes
+app.use('/api/invite-codes', inviteCodeRoutes);
 
 // API routes with key validation
 app.use('/api/openai', validateOpenAIApiKey, openaiLimiter, openaiRoutes);

@@ -3,9 +3,13 @@
  * Handles JWT-based authentication, token management, and user operations
  */
 
+import { apiHelpers } from '../../../core/services/apiClient';
+import permissionsService from './PermissionsService';
+
 // Token constants
 const TOKEN_KEY = 'beta_auth_token';
 const TOKEN_EXPIRY = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+const AUTH_API_BASE = '/auth'; // Base path for auth endpoints
 
 class AuthService {
   /**
@@ -16,29 +20,26 @@ class AuthService {
    */
   async register(userData, betaCode) {
     try {
-      // Validate beta code (in a real app, this would be a server API call)
-      if (!this.validateBetaCode(betaCode)) {
-        throw new Error('Invalid beta access code');
-      }
-
-      // In a real application, this would be an API call to create the user
-      // For now, we'll simulate the API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
-      // Generate user object with role
-      const user = {
-        id: `user_${Math.floor(Math.random() * 10000)}`,
-        name: userData.name,
+      // Prepare the request data
+      const data = {
         email: userData.email,
-        role: 'beta_tester',
-        registrationDate: new Date().toISOString()
+        password: userData.password,
+        name: userData.name,
+        inviteCode: betaCode
       };
 
-      // Generate and store JWT token
-      const token = this.generateToken(user);
-      this.setToken(token);
+      // Call the public registration API endpoint
+      const response = await apiHelpers.post(`${AUTH_API_BASE}/register/public`, data);
+      
+      // Store the JWT token
+      if (response.token) {
+        this.setToken(response.token);
+        
+        // Initialize permissions
+        await permissionsService.initialize();
+      }
 
-      return { user, token };
+      return response;
     } catch (error) {
       console.error('Registration error:', error);
       throw error;
@@ -53,29 +54,23 @@ class AuthService {
    */
   async login(email, password) {
     try {
-      // In a real application, this would be an API call to verify credentials
-      // For now, we'll simulate the API call and accept any credentials
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
-      // Mock validation (in a real app, this would verify against a database)
+      // Validate inputs
       if (!email || !password) {
         throw new Error('Email and password are required');
       }
 
-      // Generate mock user object
-      const user = {
-        id: `user_${Math.floor(Math.random() * 10000)}`,
-        name: email.split('@')[0],
-        email,
-        role: 'beta_tester',
-        registrationDate: new Date().toISOString()
-      };
+      // Call the login API endpoint
+      const response = await apiHelpers.post(`${AUTH_API_BASE}/login`, { email, password });
+      
+      // Store the JWT token
+      if (response.token) {
+        this.setToken(response.token);
+        
+        // Initialize permissions
+        await permissionsService.initialize();
+      }
 
-      // Generate and store JWT token
-      const token = this.generateToken(user);
-      this.setToken(token);
-
-      return { user, token };
+      return response;
     } catch (error) {
       console.error('Login error:', error);
       throw error;
@@ -85,8 +80,37 @@ class AuthService {
   /**
    * Logout the current user
    */
-  logout() {
-    localStorage.removeItem(TOKEN_KEY);
+  async logout() {
+    try {
+      const token = this.getToken();
+      
+      if (token) {
+        // Call the logout API endpoint to invalidate the token on the server
+        try {
+          await apiHelpers.post(`${AUTH_API_BASE}/logout`, {}, {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          });
+        } catch (error) {
+          console.error('Error calling logout API:', error);
+          // Continue with local logout even if API call fails
+        }
+        
+        // Remove the token from local storage
+        localStorage.removeItem(TOKEN_KEY);
+        
+        // Reset permissions
+        permissionsService.reset();
+      }
+    } catch (error) {
+      console.error('Logout error:', error);
+      // Always remove the token from local storage even if there's an error
+      localStorage.removeItem(TOKEN_KEY);
+      
+      // Reset permissions
+      permissionsService.reset();
+    }
   }
 
   /**
@@ -101,15 +125,34 @@ class AuthService {
         return null;
       }
 
-      // Verify token and decode user information
-      const user = this.verifyToken(token);
-      
-      if (!user) {
-        this.logout();
-        return null;
+      try {
+        // Call the /me API endpoint to verify the token and get user data
+        const response = await apiHelpers.get(`${AUTH_API_BASE}/me`, {}, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        
+        // Initialize permissions if not already initialized
+        if (permissionsService.initialized === false) {
+          await permissionsService.initialize();
+        }
+        
+        return response.user;
+      } catch (error) {
+        // If the API call fails, fall back to local token verification
+        console.warn('Error checking auth status with API, falling back to local check:', error);
+        
+        // Verify token locally and decode user information
+        const user = this.verifyToken(token);
+        
+        if (!user) {
+          this.logout();
+          return null;
+        }
+        
+        return user;
       }
-
-      return user;
     } catch (error) {
       console.error('Auth check error:', error);
       this.logout();
@@ -118,11 +161,12 @@ class AuthService {
   }
 
   /**
-   * Generate a JWT token for a user
+   * Generate a temporary token for development/fallback purposes
+   * This will be removed once the backend JWT system is fully integrated
    * @param {Object} user - User data to encode in the token
-   * @returns {string} - JWT token
+   * @returns {string} - Temporary token
    */
-  generateToken(user) {
+  generateTempToken(user) {
     // In a real application, this would use a JWT library to properly sign the token
     // For demonstration purposes, we'll create a simple encoded token
     const payload = {
@@ -140,7 +184,20 @@ class AuthService {
    */
   verifyToken(token) {
     try {
-      // Decode the token
+      // For server-issued JWT tokens, we should rely on server verification
+      // This is just a fallback for development/testing
+      
+      // First check if it's our temporary token format
+      if (token.startsWith('eyJ')) {
+        // Looks like a real JWT, we can't decode it locally
+        // Return a basic user object and let the server validate it
+        return {
+          id: 'unknown',
+          role: 'unknown'
+        };
+      }
+      
+      // Decode the token (only for temporary tokens)
       const decoded = JSON.parse(atob(token));
       
       // Check if the token has expired
@@ -172,40 +229,47 @@ class AuthService {
   }
 
   /**
-   * Check if the beta code is valid
+   * Validate a beta access code
    * @param {string} code - Beta code to validate
-   * @returns {boolean} - Whether the code is valid
+   * @returns {Promise<boolean>} - Whether the code is valid
    */
-  validateBetaCode(code) {
-    // In a real application, this would validate against a database of valid codes
-    // For demonstration purposes, we'll accept "BETA12" as a valid code
-    return code === 'BETA12';
+  async validateBetaCode(code) {
+    try {
+      // Call the validation API endpoint
+      const response = await apiHelpers.post('/invite-codes/validate', { code });
+      return response.isValid;
+    } catch (error) {
+      console.error('Beta code validation error:', error);
+      return false;
+    }
   }
 
   /**
    * Check if the current user has a specific role
    * @param {string} role - Role to check
    * @returns {Promise<boolean>} - Whether the user has the role
+   * @deprecated Use permissionsService.hasRole() instead
    */
   async hasRole(role) {
-    const user = await this.checkAuthStatus();
-    return user && user.role === role;
+    return permissionsService.hasRole(role);
   }
 
   /**
    * Check if the current user is a beta tester
    * @returns {Promise<boolean>} - Whether the user is a beta tester
+   * @deprecated Use permissionsService.isBetaTester() instead
    */
   async isBetaTester() {
-    return this.hasRole('beta_tester');
+    return permissionsService.isBetaTester();
   }
 
   /**
    * Check if the current user is an admin
    * @returns {Promise<boolean>} - Whether the user is an admin
+   * @deprecated Use permissionsService.isAdmin() instead
    */
   async isAdmin() {
-    return this.hasRole('admin');
+    return permissionsService.isAdmin();
   }
 }
 

@@ -6,6 +6,7 @@
 
 const jwtAuth = require('../utils/jwtAuth');
 const betaUsers = require('../models/betaUsers');
+const { enrichUserPermissions } = require('./rbacMiddleware');
 const logger = require('../utils/logger');
 
 /**
@@ -64,10 +65,12 @@ const authenticateUser = async (req, res, next) => {
     req.user = {
       id: user.id,
       email: user.email,
+      name: user.name,
       role: user.role,
       betaAccess: user.betaAccess
     };
     
+    // Add permissions (handled by the next middleware)
     next();
   } catch (error) {
     logger.error('Authentication error', { error });
@@ -84,6 +87,7 @@ const authenticateUser = async (req, res, next) => {
 /**
  * Check if a user has admin role
  * For routes that require admin privileges
+ * @deprecated Use requireRole('admin') or requirePermission() from rbacMiddleware instead
  */
 const requireAdmin = (req, res, next) => {
   if (!req.user) {
@@ -135,11 +139,13 @@ const optionalAuth = async (req, res, next) => {
       req.user = {
         id: user.id,
         email: user.email,
+        name: user.name,
         role: user.role,
         betaAccess: user.betaAccess
       };
     }
     
+    // Continue (permission enrichment will happen in the next middleware)
     next();
   } catch (error) {
     // Just proceed without authentication
@@ -147,8 +153,22 @@ const optionalAuth = async (req, res, next) => {
   }
 };
 
+/**
+ * Full authentication middleware - authenticates and enriches with permissions
+ * This combines authentication with role-based access control
+ */
+const fullAuth = [authenticateUser, enrichUserPermissions];
+
+/**
+ * Full optional authentication middleware - optional auth with permissions
+ * This combines optional authentication with role-based access control
+ */
+const fullOptionalAuth = [optionalAuth, enrichUserPermissions];
+
 module.exports = {
   authenticateUser,
-  requireAdmin,
-  optionalAuth
+  requireAdmin, // Kept for backward compatibility
+  optionalAuth,
+  fullAuth,
+  fullOptionalAuth
 }; 

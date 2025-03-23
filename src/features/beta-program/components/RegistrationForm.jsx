@@ -18,8 +18,11 @@ import authService from '../services/AuthService';
 /**
  * Registration form for beta program users
  * Includes validation for email, password strength, and beta access code
+ * 
+ * @param {Object} props Component props
+ * @param {Function} props.onSuccess Callback function when registration is successful
  */
-const RegistrationForm = ({ onRegisterSuccess }) => {
+const RegistrationForm = ({ onSuccess }) => {
   // Form state
   const [formValues, setFormValues] = useState({
     name: '',
@@ -140,29 +143,68 @@ const RegistrationForm = ({ onRegisterSuccess }) => {
     }
     
     setIsSubmitting(true);
+    setFormError(null);
+    setFormSuccess(null);
     
     try {
-      // Use AuthService to register user
-      const userData = {
-        name: formValues.name,
-        email: formValues.email,
-        password: formValues.password
-      };
+      // Validate beta code first
+      const isValidCode = await authService.validateBetaCode(formValues.betaCode);
       
-      const result = await authService.register(userData, formValues.betaCode);
+      if (!isValidCode) {
+        setErrors({
+          ...errors,
+          betaCode: 'Invalid or expired beta code'
+        });
+        setIsSubmitting(false);
+        return;
+      }
+      
+      // Use AuthService register method (updated version)
+      const result = await authService.register(
+        formValues.email, 
+        formValues.betaCode, 
+        formValues.name, 
+        formValues.password
+      );
+      
+      if (!result) {
+        setFormError('Registration failed: Invalid server response');
+        setIsSubmitting(false);
+        return;
+      }
       
       setFormSuccess('Registration successful! Redirecting to your dashboard...');
       
       // Notify parent component of successful registration
       setTimeout(() => {
-        if (onRegisterSuccess) {
-          onRegisterSuccess(result.user);
+        if (onSuccess) {
+          onSuccess(result);
         }
       }, 1500);
       
     } catch (error) {
       console.error('Registration error:', error);
-      setFormError(error.message || 'Registration failed. Please try again later.');
+      
+      if (error.response && error.response.data && error.response.data.error) {
+        // Handle specific API errors
+        const apiError = error.response.data.error;
+        
+        if (apiError.type === 'duplicate_email') {
+          setErrors({
+            ...errors,
+            email: 'This email is already registered'
+          });
+        } else if (apiError.type === 'invalid_invite_code') {
+          setErrors({
+            ...errors,
+            betaCode: 'Invalid or expired beta code'
+          });
+        } else {
+          setFormError(apiError.message || 'Registration failed');
+        }
+      } else {
+        setFormError('Registration failed: ' + (error.message || 'Unknown error'));
+      }
     } finally {
       setIsSubmitting(false);
     }

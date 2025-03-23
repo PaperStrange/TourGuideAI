@@ -395,6 +395,32 @@ This document records key lessons learned during the development of TourGuideAI,
 - **Solution**: Implemented lazy loading with suspense fallbacks
 - **Impact**: Improved initial load time significantly without sacrificing functionality
 
+## Frontend-Backend Integration
+
+### Authentication Flow
+- **Lesson**: Implement graceful fallbacks when connecting frontend to backend authentication
+- **Context**: Initially attempted direct connection but needed to handle scenarios when backend is unavailable
+- **Solution**: Added hybrid approach with local token verification as fallback when API is unavailable
+- **Impact**: Improved resilience and better developer experience during development/testing
+
+### API Client Configuration
+- **Lesson**: Set up authentication headers at the application level, not component level
+- **Context**: Initially added authentication headers in individual API calls
+- **Solution**: Used axios interceptors to automatically add authentication headers to all requests
+- **Impact**: Reduced duplication and ensured consistent authentication across the application
+
+### Token Management
+- **Lesson**: Handle both local and server-generated tokens during transition phases
+- **Context**: Had to support both locally generated tokens and server JWT tokens during integration
+- **Solution**: Implemented token format detection to handle different token types appropriately
+- **Impact**: Enabled gradual migration from mock to real authentication without breaking changes
+
+### Error Handling
+- **Lesson**: Map server error responses to user-friendly messages based on error types
+- **Context**: Backend returned structured error objects with types that needed user-friendly interpretation
+- **Solution**: Added specific error handling for common error types (invalid credentials, etc.)
+- **Impact**: Improved user experience with clear, actionable error messages
+
 ---
 
-*Last Updated: March 28, 2025* 
+*Last Updated: March 29, 2025* 

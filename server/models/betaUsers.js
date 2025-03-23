@@ -71,6 +71,7 @@ const createUser = async (userData) => {
     const newUser = {
       id: uuidv4(),
       email: userData.email,
+      name: userData.name || userData.email.split('@')[0], // Use name or fallback to email username
       passwordHash,
       role: userData.role || 'beta-tester',
       betaAccess: true,

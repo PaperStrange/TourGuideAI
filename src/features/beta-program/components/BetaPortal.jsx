@@ -10,11 +10,18 @@ import {
   Tab,
   CircularProgress,
   Alert,
-  useMediaQuery
+  useMediaQuery,
+  Chip
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
 import RegistrationForm from './RegistrationForm';
 import authService from '../services/AuthService';
+import { Role, Permission, AccessControl } from './auth';
+import { PERMISSIONS, ROLES } from '../services/PermissionsService';
+import { useCurrentPermissions } from '../hooks';
+import axios from 'axios';
+import UserPermissionsCard from './user/UserPermissionsCard';
 // Placeholder imports for components to be implemented later
 // import FeedbackWidget from './FeedbackWidget';
 // import SurveyList from './SurveyList';
@@ -28,10 +35,12 @@ const AnalyticsDashboard = lazy(() => import('./analytics/AnalyticsDashboard'));
  * Beta Portal main component
  * Provides the main interface for beta testers to register, provide feedback,
  * participate in surveys, and view their dashboard.
+ * Uses RBAC components for conditional rendering.
  */
 const BetaPortal = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const { isAdmin, isModerator, isLoading: permissionsLoading } = useCurrentPermissions();
   
   // State
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -39,6 +48,16 @@ const BetaPortal = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [error, setError] = useState(null);
   const [user, setUser] = useState(null);
+
+  // Configure axios to include the auth token in requests
+  useEffect(() => {
+    const token = authService.getToken();
+    if (token) {
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    } else {
+      delete axios.defaults.headers.common['Authorization'];
+    }
+  }, [isAuthenticated]);
 
   // Use AuthService to check authentication status
   useEffect(() => {
@@ -50,13 +69,22 @@ const BetaPortal = () => {
         if (userData) {
           setUser(userData);
           setIsAuthenticated(true);
+          
+          // Set up authentication header
+          const token = authService.getToken();
+          if (token) {
+            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+          }
         } else {
           setIsAuthenticated(false);
           setUser(null);
+          delete axios.defaults.headers.common['Authorization'];
         }
       } catch (err) {
         console.error('Authentication error:', err);
         setError('Failed to authenticate. Please try again.');
+        setIsAuthenticated(false);
+        setUser(null);
       } finally {
         setIsLoading(false);
       }
@@ -69,6 +97,12 @@ const BetaPortal = () => {
   const handleRegisterSuccess = (userData) => {
     setUser(userData);
     setIsAuthenticated(true);
+    
+    // Set up authentication header
+    const token = authService.getToken();
+    if (token) {
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
   };
 
   // Handle tab change
@@ -77,14 +111,20 @@ const BetaPortal = () => {
   };
 
   // Handle logout
-  const handleLogout = () => {
-    authService.logout();
-    setIsAuthenticated(false);
-    setUser(null);
+  const handleLogout = async () => {
+    try {
+      await authService.logout();
+      setIsAuthenticated(false);
+      setUser(null);
+      delete axios.defaults.headers.common['Authorization'];
+    } catch (err) {
+      console.error('Logout error:', err);
+      setError('Logout failed. Please try again.');
+    }
   };
 
   // Loading state
-  if (isLoading) {
+  if (isLoading || permissionsLoading) {
     return (
       <Container maxWidth="lg">
         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '70vh' }}>
@@ -110,12 +150,55 @@ const BetaPortal = () => {
           // Authenticated user view
           <Box>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
-              <Typography variant="h6">
-                Welcome, {user.name}
-              </Typography>
-              <Button variant="outlined" color="primary" onClick={handleLogout}>
-                Logout
-              </Button>
+              <Box>
+                <Typography variant="h6">
+                  Welcome, {user.name || user.email}
+                </Typography>
+                
+                <Box sx={{ mt: 1 }}>
+                  <Role role={ROLES.ADMIN}>
+                    <Chip 
+                      label="Admin" 
+                      color="error" 
+                      size="small" 
+                      sx={{ mr: 1 }}
+                    />
+                  </Role>
+                  
+                  <Role role={ROLES.MODERATOR}>
+                    <Chip 
+                      label="Moderator" 
+                      color="warning" 
+                      size="small" 
+                      sx={{ mr: 1 }}
+                    />
+                  </Role>
+                  
+                  <Chip 
+                    label="Beta Tester" 
+                    color="primary" 
+                    size="small" 
+                  />
+                </Box>
+              </Box>
+              
+              <Box>
+                <AccessControl role={[ROLES.ADMIN, ROLES.MODERATOR]}>
+                  <Button 
+                    variant="outlined" 
+                    color="primary" 
+                    component={Link} 
+                    to="/admin" 
+                    sx={{ mr: 2 }}
+                  >
+                    Admin Panel
+                  </Button>
+                </AccessControl>
+                
+                <Button variant="outlined" color="primary" onClick={handleLogout}>
+                  Logout
+                </Button>
+              </Box>
             </Box>
 
             <Paper elevation={3} sx={{ mb: 4 }}>
@@ -129,6 +212,11 @@ const BetaPortal = () => {
                 <Tab label="Dashboard" />
                 <Tab label="Provide Feedback" />
                 <Tab label="Surveys" />
+                
+                <Permission permission={PERMISSIONS.VIEW_ANALYTICS}>
+                  <Tab label="Analytics" />
+                </Permission>
+                
                 <Tab label="Resources" />
               </Tabs>
 
@@ -174,6 +262,44 @@ const BetaPortal = () => {
                           </Typography>
                         </Paper>
                       </Grid>
+                      
+                      <Grid item xs={12}>
+                        <UserPermissionsCard />
+                      </Grid>
+                      
+                      <AccessControl role={[ROLES.ADMIN, ROLES.MODERATOR]}>
+                        <Grid item xs={12}>
+                          <Paper elevation={2} sx={{ p: 2, bgcolor: isAdmin ? 'error.50' : 'warning.50' }}>
+                            <Typography variant="subtitle1" fontWeight="bold">
+                              Administrative Tools
+                            </Typography>
+                            <Box sx={{ mt: 1, display: 'flex', gap: 2 }}>
+                              <Permission permission={PERMISSIONS.CREATE_INVITE}>
+                                <Button 
+                                  variant="contained" 
+                                  size="small" 
+                                  component={Link} 
+                                  to="/admin/invite-codes"
+                                >
+                                  Manage Invite Codes
+                                </Button>
+                              </Permission>
+                              
+                              <Role role={ROLES.ADMIN}>
+                                <Button 
+                                  variant="contained" 
+                                  color="error"
+                                  size="small" 
+                                  component={Link} 
+                                  to="/admin"
+                                >
+                                  Admin Dashboard
+                                </Button>
+                              </Role>
+                            </Box>
+                          </Paper>
+                        </Grid>
+                      </AccessControl>
                     </Grid>
                   </Box>
                 )}
@@ -202,55 +328,77 @@ const BetaPortal = () => {
                     Surveys will be implemented in subsequent tasks.
                   </Typography>
                 )}
-                {activeTab === 3 && (
+                <Permission permission={PERMISSIONS.VIEW_ANALYTICS}>
+                  {activeTab === 3 && (
+                    <Box>
+                      <Typography variant="h6" gutterBottom>
+                        Analytics Dashboard
+                      </Typography>
+                      <Typography variant="body1" paragraph>
+                        View real-time insights into beta program usage and feedback.
+                      </Typography>
+                      
+                      <Suspense fallback={<CircularProgress />}>
+                        <AnalyticsDashboard />
+                      </Suspense>
+                    </Box>
+                  )}
+                </Permission>
+                {activeTab === (
+                  isAdmin || isModerator ? 4 : 3
+                ) && (
                   <Box>
                     <Typography variant="h6" gutterBottom>
-                      Analytics Dashboard
+                      Beta Program Resources
                     </Typography>
                     <Typography variant="body1" paragraph>
-                      View real-time insights into beta program usage and feedback.
+                      Access documentation, guides, and resources for the beta program.
                     </Typography>
                     
-                    <Suspense fallback={<CircularProgress />}>
-                      <AnalyticsDashboard />
-                    </Suspense>
+                    {/* Resources content here */}
+                    <Grid container spacing={2}>
+                      <Grid item xs={12} md={6}>
+                        <Paper elevation={2} sx={{ p: 2 }}>
+                          <Typography variant="subtitle1" fontWeight="bold">
+                            Getting Started
+                          </Typography>
+                          <Typography variant="body2" paragraph>
+                            A guide to help you get started with TourGuideAI's beta program.
+                          </Typography>
+                          <Button size="small" variant="outlined">View Guide</Button>
+                        </Paper>
+                      </Grid>
+                      <Grid item xs={12} md={6}>
+                        <Paper elevation={2} sx={{ p: 2 }}>
+                          <Typography variant="subtitle1" fontWeight="bold">
+                            Providing Effective Feedback
+                          </Typography>
+                          <Typography variant="body2" paragraph>
+                            Learn how to provide feedback that helps us improve TourGuideAI.
+                          </Typography>
+                          <Button size="small" variant="outlined">View Guide</Button>
+                        </Paper>
+                      </Grid>
+                    </Grid>
                   </Box>
                 )}
               </Box>
             </Paper>
           </Box>
         ) : (
-          // Unauthenticated user view
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={6}>
-              <Paper elevation={3} sx={{ p: 3 }}>
-                <Typography variant="h5" component="h2" gutterBottom>
-                  Join Our Beta Program
-                </Typography>
-                <Typography variant="body1" paragraph>
-                  Help us shape the future of TourGuideAI by joining our exclusive beta testing program. 
-                  As a beta tester, you'll get early access to new features and have a direct impact on our development.
-                </Typography>
-                <Typography variant="body1" paragraph>
-                  Benefits include:
-                </Typography>
-                <ul>
-                  <li>Early access to new features</li>
-                  <li>Direct influence on product development</li>
-                  <li>Special recognition in our community</li>
-                  <li>Exclusive beta tester badge</li>
-                </ul>
-              </Paper>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Paper elevation={3} sx={{ p: 3 }}>
-                <Typography variant="h5" component="h2" gutterBottom>
-                  Register
-                </Typography>
-                <RegistrationForm onRegisterSuccess={handleRegisterSuccess} />
-              </Paper>
-            </Grid>
-          </Grid>
+          // Non-authenticated view - Registration Form
+          <Box sx={{ mt: 4 }}>
+            <Paper elevation={3} sx={{ p: 4 }}>
+              <Typography variant="h5" component="h2" gutterBottom align="center">
+                Join Our Beta Program
+              </Typography>
+              <Typography variant="body1" paragraph align="center">
+                Get early access to TourGuideAI and help shape the future of travel planning.
+              </Typography>
+              
+              <RegistrationForm onSuccess={handleRegisterSuccess} />
+            </Paper>
+          </Box>
         )}
       </Box>
       

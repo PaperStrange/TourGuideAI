@@ -268,4 +268,6 @@ const apiHelpers = {
   }
 };
 
-export default apiHelpers; 
+// Export the apiClient and apiHelpers
+export { apiHelpers };
+export default apiClient; 
