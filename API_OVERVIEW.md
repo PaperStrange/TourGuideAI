@@ -330,4 +330,100 @@ All API requests include robust error handling:
 
 - **Centralized Logging**: All API errors are logged to a central service
 - **User Feedback**: Friendly error messages with actionable information
-- **Silent Recovery**: Background retry attempts without disrupting user experience 
+- **Silent Recovery**: Background retry attempts without disrupting user experience
+
+## API Endpoints
+
+The TourGuideAI API provides the following endpoints:
+
+### Authentication (Beta Program)
+
+#### `POST /api/auth/login`
+
+Authenticate a beta user and get a JWT token.
+
+**Request Body:**
+```json
+{
+  "email": "user@example.com",
+  "password": "password123"
+}
+```
+
+**Response:**
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "user": {
+    "id": "abc123",
+    "email": "user@example.com",
+    "role": "beta-tester"
+  }
+}
+```
+
+#### `POST /api/auth/logout`
+
+Logout and invalidate the JWT token.
+
+**Headers:**
+- `Authorization: Bearer <token>`
+
+**Response:**
+```json
+{
+  "message": "Logged out successfully"
+}
+```
+
+#### `GET /api/auth/me`
+
+Get current authenticated user's information.
+
+**Headers:**
+- `Authorization: Bearer <token>`
+
+**Response:**
+```json
+{
+  "user": {
+    "id": "abc123",
+    "email": "user@example.com",
+    "role": "beta-tester",
+    "betaAccess": true
+  }
+}
+```
+
+#### `POST /api/auth/register` (Admin only)
+
+Register a new beta user (requires admin privileges).
+
+**Headers:**
+- `Authorization: Bearer <admin-token>`
+
+**Request Body:**
+```json
+{
+  "email": "newuser@example.com",
+  "password": "securepassword",
+  "role": "beta-tester"
+}
+```
+
+**Response:**
+```json
+{
+  "user": {
+    "id": "xyz789",
+    "email": "newuser@example.com",
+    "role": "beta-tester",
+    "betaAccess": true,
+    "createdAt": "2023-06-01T12:00:00Z"
+  }
+}
+```
+
+### OpenAI API Endpoints
+
+// ... existing code ... 

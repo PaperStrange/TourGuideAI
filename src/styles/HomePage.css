@@ -133,6 +133,50 @@
   text-decoration: underline;
 }
 
+.beta-program {
+  margin: 4rem 0;
+  padding: 2rem;
+  background-color: #f4f8fb;
+  border-radius: 8px;
+  text-align: center;
+  border-left: 4px solid #3498db;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.beta-program h2 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.beta-program p {
+  color: #555;
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.beta-button {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background-color: #e74c3c;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.beta-button:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .feature-cards,

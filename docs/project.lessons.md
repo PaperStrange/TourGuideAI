@@ -2,6 +2,26 @@
 
 This document records key lessons learned during the development of TourGuideAI, focusing on reusable knowledge for future phases and projects.
 
+## Document Consolidation and Consistency (CRITICAL)
+
+### File Responsibility Alignment
+- **Lesson**: Always check .workflow file responsibilities before creating new documentation files
+- **Context**: Created separate beta-program-status.md and phase6-beta-program-progress.md when this information should have been consolidated into .project
+- **Solution**: Refer to the File Responsibilities section in .workflows before creating any new documentation
+- **Impact**: Prevents documentation fragmentation and maintains a clear source of truth
+
+### Documentation Centralization
+- **Lesson**: Consolidate related information into designated existing files rather than creating new ones
+- **Context**: Status updates, progress reports, and implementation details were spread across multiple files
+- **Solution**: Update the primary responsibility file (.project, .milestones, etc.) with comprehensive information
+- **Impact**: Easier information retrieval, consistent documentation structure, and reduced maintenance overhead
+
+### Workflow Adherence
+- **Lesson**: Strictly follow the workflow document's guidelines for file responsibilities
+- **Context**: Created new files without checking if their purpose was already covered by existing files
+- **Solution**: Create a checklist from the File Responsibilities section of .workflows at the beginning of each phase
+- **Impact**: Ensures documentation remains consistent and follows established project patterns
+
 ## Project Workflow
 
 ### Workflow Compliance
@@ -283,6 +303,98 @@ This document records key lessons learned during the development of TourGuideAI,
 - **Solution**: Enhanced test plans with quantitative targets and clear pass/fail conditions
 - **Impact**: Provides objective measurement for test success and feature readiness
 
+## Authentication Implementation
+
+### JWT Authentication
+- **Lesson**: Separate JWT token generation from validation for better testability
+- **Context**: Initially implemented token validation in the same module as generation
+- **Solution**: Created separate utility functions for generation and validation
+- **Impact**: Improved testability and separation of concerns
+
+### User Management
+- **Lesson**: Start with in-memory storage during development before committing to a database
+- **Context**: Implemented beta user management with in-memory storage to test flows
+- **Solution**: Created a database-like API even with in-memory storage to make future migration easier
+- **Impact**: Allowed rapid development while designing proper database schema
+
+### Security Practices
+- **Lesson**: Implement token blacklisting for secure logout functionality
+- **Context**: Initial logout simply removed the token from the client
+- **Solution**: Added server-side token blacklisting with TTL-based expiration
+- **Impact**: Prevented potential security issues with revoked but valid tokens
+
+### Authentication Middleware
+- **Lesson**: Create graduated levels of authentication middleware (required, optional)
+- **Context**: Some routes needed strict authentication while others benefited from knowing user context
+- **Solution**: Implemented both required and optional authentication middleware variants
+- **Impact**: More flexible application flow with appropriate authentication levels
+
+## Feedback Collection System
+
+### Widget Design
+- **Lesson**: Use a floating feedback button for omnipresent but unobtrusive access
+- **Context**: Initial design required navigating to a specific page for feedback
+- **Solution**: Implemented a floating feedback button that appears on all pages
+- **Impact**: Increased feedback collection opportunities while maintaining clean UI
+
+### Screenshot Functionality
+- **Lesson**: Temporarily hide the feedback widget during screenshot capture
+- **Context**: Screenshots were including the feedback widget itself
+- **Solution**: Added widget removal during screenshot capture with safe restoration
+- **Impact**: Cleaner screenshots that better represent the actual user experience
+
+### Categorization
+- **Lesson**: Start with a simple keyword-based categorization before implementing ML
+- **Context**: Full ML integration would have been overkill for initial implementation
+- **Solution**: Created a keyword-matching system that mimics ML categorization
+- **Impact**: Quick implementation with a clear upgrade path to true ML later
+
+### User Context
+- **Lesson**: Automatically collect environment data with feedback
+- **Context**: Users often omit critical environment information in bug reports
+- **Solution**: Added automatic collection of browser, OS, and screen size data
+- **Impact**: More actionable feedback with complete context for troubleshooting
+
+## Implementation Sequencing
+
+### Task Prioritization
+- **Lesson**: Follow workflow sequence rather than implementing all features at once
+- **Context**: Started implementing all aspects of authentication when only part was needed for current phase
+- **Solution**: Consult project workflow (.workflows) before starting a new implementation task
+- **Impact**: More focused implementation with better integration between components
+
+### Development Focus
+- **Lesson**: Complete one functional area before moving to the next
+- **Context**: Moving between different components created context switching overhead
+- **Solution**: Implement complete vertical slices of functionality in sequence
+- **Impact**: Faster delivery of usable features and better component integration
+
+## Analytics Implementation
+
+### Data Visualization
+- **Lesson**: Start with mock data for visualization development before connecting real APIs
+- **Context**: Initial development was blocked waiting for real API data
+- **Solution**: Created detailed mock data structures with realistic values
+- **Impact**: Accelerated dashboard development independent of backend readiness
+
+### Dashboard Design
+- **Lesson**: Use tabs to organize complex dashboards by domain instead of endless scrolling
+- **Context**: Initial dashboard was overwhelming with all metrics on a single scrolling page
+- **Solution**: Organized metrics into logical tab groups (Overview, User Activity, Features, etc.)
+- **Impact**: More approachable interface with better information architecture
+
+### Anomaly Detection
+- **Lesson**: Define clear thresholds for anomaly detection based on business context
+- **Context**: Initial anomaly alerts were too sensitive and created alert fatigue
+- **Solution**: Set appropriate thresholds based on expected business variability
+- **Impact**: More meaningful anomaly detection that highlights actual issues
+
+### Performance Optimization
+- **Lesson**: Use React.lazy for dashboard components to avoid loading until needed
+- **Context**: Dashboard components were heavy and slowed down initial page load
+- **Solution**: Implemented lazy loading with suspense fallbacks
+- **Impact**: Improved initial load time significantly without sacrificing functionality
+
 ---
 
-*Last Updated: March 21, 2025* 
+*Last Updated: March 28, 2025* 

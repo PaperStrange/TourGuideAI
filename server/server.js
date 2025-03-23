@@ -20,13 +20,21 @@ const path = require('path');
 const logger = require('./utils/logger');
 const { globalLimiter, openaiLimiter, mapsLimiter } = require('./middleware/rateLimit');
 const { validateOpenAIApiKey, validateGoogleMapsApiKey, checkKeyRotation } = require('./middleware/apiKeyValidation');
+const { optionalAuth } = require('./middleware/authMiddleware');
+const betaUsers = require('./models/betaUsers');
 
 // Import API routes
 const openaiRoutes = require('./routes/openai');
 const mapsRoutes = require('./routes/googlemaps');
+const authRoutes = require('./routes/auth');
 
 // Initialize Express app
 const app = express();
+
+// Initialize beta users
+betaUsers.initialize().catch(err => {
+  logger.error('Failed to initialize beta users', { error: err });
+});
 
 // Basic security headers
 app.use(helmet());
@@ -53,6 +61,12 @@ app.use(globalLimiter);
 
 // Check for API keys needing rotation
 app.use(checkKeyRotation);
+
+// Apply optional authentication to all routes
+app.use(optionalAuth);
+
+// Auth routes
+app.use('/api/auth', authRoutes);
 
 // API routes with key validation
 app.use('/api/openai', validateOpenAIApiKey, openaiLimiter, openaiRoutes);

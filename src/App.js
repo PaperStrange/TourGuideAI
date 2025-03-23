@@ -9,6 +9,7 @@ const HomePage = lazy(() => import('./pages/HomePage'));
 const ChatPage = lazy(() => import('./pages/ChatPage'));
 const MapPage = lazy(() => import('./pages/MapPage'));
 const ProfilePage = lazy(() => import('./pages/ProfilePage'));
+const BetaPortalPage = lazy(() => import('./pages/BetaPortalPage'));
 
 /**
  * Main application component
@@ -25,6 +26,7 @@ function App() {
               <Route path="/chat" element={<ChatPage />} />
               <Route path="/map" element={<MapPage />} />
               <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/beta" element={<BetaPortalPage />} />
             </Routes>
           </Suspense>
         </div>
