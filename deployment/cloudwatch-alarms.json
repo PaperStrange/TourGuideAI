@@ -1,0 +1,118 @@
+{
+  "Alarms": [
+    {
+      "AlarmName": "TourGuideAI-HighLatency",
+      "AlarmDescription": "Alarm when API response time exceeds threshold",
+      "MetricName": "Latency",
+      "Namespace": "AWS/ApiGateway",
+      "Statistic": "Average",
+      "Dimensions": [
+        {
+          "Name": "ApiName",
+          "Value": "TourGuideAIApi"
+        }
+      ],
+      "Period": 300,
+      "EvaluationPeriods": 1,
+      "Threshold": 1000,
+      "ComparisonOperator": "GreaterThanThreshold",
+      "AlarmActions": ["arn:aws:sns:us-east-1:123456789012:TourGuideAI-Alerts"],
+      "TreatMissingData": "notBreaching"
+    },
+    {
+      "AlarmName": "TourGuideAI-ErrorRate",
+      "AlarmDescription": "Alarm when error rate exceeds 5%",
+      "MetricName": "5XXError",
+      "Namespace": "AWS/ApiGateway",
+      "Statistic": "Sum",
+      "Dimensions": [
+        {
+          "Name": "ApiName",
+          "Value": "TourGuideAIApi"
+        }
+      ],
+      "Period": 300,
+      "EvaluationPeriods": 1,
+      "Threshold": 5,
+      "ComparisonOperator": "GreaterThanThreshold",
+      "AlarmActions": ["arn:aws:sns:us-east-1:123456789012:TourGuideAI-Alerts"],
+      "TreatMissingData": "notBreaching"
+    },
+    {
+      "AlarmName": "TourGuideAI-HighCPUUtilization",
+      "AlarmDescription": "Alarm when CPU exceeds 80% for 5 minutes",
+      "MetricName": "CPUUtilization",
+      "Namespace": "AWS/EC2",
+      "Statistic": "Average",
+      "Dimensions": [
+        {
+          "Name": "AutoScalingGroupName",
+          "Value": "TourGuideAI-ASG"
+        }
+      ],
+      "Period": 300,
+      "EvaluationPeriods": 1,
+      "Threshold": 80,
+      "ComparisonOperator": "GreaterThanThreshold",
+      "AlarmActions": ["arn:aws:sns:us-east-1:123456789012:TourGuideAI-Alerts"],
+      "TreatMissingData": "notBreaching"
+    },
+    {
+      "AlarmName": "TourGuideAI-LowMemory",
+      "AlarmDescription": "Alarm when free memory is below 20%",
+      "MetricName": "MemoryUtilization",
+      "Namespace": "AWS/EC2",
+      "Statistic": "Average",
+      "Dimensions": [
+        {
+          "Name": "AutoScalingGroupName",
+          "Value": "TourGuideAI-ASG"
+        }
+      ],
+      "Period": 300,
+      "EvaluationPeriods": 1,
+      "Threshold": 80,
+      "ComparisonOperator": "GreaterThanThreshold",
+      "AlarmActions": ["arn:aws:sns:us-east-1:123456789012:TourGuideAI-Alerts"],
+      "TreatMissingData": "notBreaching"
+    },
+    {
+      "AlarmName": "TourGuideAI-APICalls",
+      "AlarmDescription": "Alarm when API usage is abnormally high",
+      "MetricName": "Count",
+      "Namespace": "AWS/ApiGateway",
+      "Statistic": "Sum",
+      "Dimensions": [
+        {
+          "Name": "ApiName",
+          "Value": "TourGuideAIApi"
+        }
+      ],
+      "Period": 300,
+      "EvaluationPeriods": 1,
+      "Threshold": 1000,
+      "ComparisonOperator": "GreaterThanThreshold",
+      "AlarmActions": ["arn:aws:sns:us-east-1:123456789012:TourGuideAI-Alerts"],
+      "TreatMissingData": "notBreaching"
+    },
+    {
+      "AlarmName": "TourGuideAI-LambdaErrors",
+      "AlarmDescription": "Alarm when Lambda functions have errors",
+      "MetricName": "Errors",
+      "Namespace": "AWS/Lambda",
+      "Statistic": "Sum",
+      "Dimensions": [
+        {
+          "Name": "FunctionName",
+          "Value": "TourGuideAI-ApiHandler"
+        }
+      ],
+      "Period": 300,
+      "EvaluationPeriods": 1,
+      "Threshold": 1,
+      "ComparisonOperator": "GreaterThanThreshold",
+      "AlarmActions": ["arn:aws:sns:us-east-1:123456789012:TourGuideAI-Alerts"],
+      "TreatMissingData": "notBreaching"
+    }
+  ]
+} 

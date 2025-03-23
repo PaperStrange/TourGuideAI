@@ -1,13 +1,21 @@
 /**
  * OpenAI API Service for TourGuideAI
  * 
- * This file contains implementations of OpenAI API functions for travel planning
- * using GPT models to generate personalized travel content.
- * 
- * @requires API_KEY - An OpenAI API key must be configured
+ * @deprecated This file is deprecated. Import from 'src/core/api/openaiApi.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
  */
 
-// OpenAI API configuration
+// Re-export everything from the core implementation
+export * from '../core/api/openaiApi';
+
+// Log warning when this file is imported
+console.warn('Warning: Importing from src/api/openaiApi.js is deprecated. Please update your imports to use src/core/api/openaiApi.js instead.');
+
+/**
+ * OpenAI API configuration
+ * @deprecated This file is deprecated. Import from 'src/core/api/openaiApi.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
+ */
 let config = {
   apiKey: '', // Set via setApiKey
   model: 'gpt-4o', // Default model
@@ -18,6 +26,8 @@ let config = {
 /**
  * Set the OpenAI API key
  * @param {string} apiKey - The OpenAI API key
+ * @deprecated This file is deprecated. Import from 'src/core/api/openaiApi.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
  */
 export const setApiKey = (apiKey) => {
   if (!apiKey || typeof apiKey !== 'string' || apiKey.length < 10) {
@@ -31,6 +41,8 @@ export const setApiKey = (apiKey) => {
 /**
  * Set the OpenAI model to use
  * @param {string} model - The model name (e.g., 'gpt-4o', 'gpt-4-turbo')
+ * @deprecated This file is deprecated. Import from 'src/core/api/openaiApi.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
  */
 export const setModel = (model) => {
   config.model = model;
@@ -41,6 +53,8 @@ export const setModel = (model) => {
 /**
  * Enable or disable debug logging
  * @param {boolean} enabled - Whether to enable debug logging
+ * @deprecated This file is deprecated. Import from 'src/core/api/openaiApi.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
  */
 export const setDebugMode = (enabled) => {
   config.debug = !!enabled;
@@ -48,10 +62,20 @@ export const setDebugMode = (enabled) => {
   return true;
 };
 
+// Initialize API key from environment variables if available
+if (process.env.REACT_APP_OPENAI_API_KEY) {
+  setApiKey(process.env.REACT_APP_OPENAI_API_KEY);
+}
+
+// Make debug mode follow the NODE_ENV by default
+setDebugMode(process.env.NODE_ENV === 'development');
+
 /**
  * Log debug messages if debug mode is enabled
  * @param {string} message - The message to log
  * @param {object} data - Optional data to log
+ * @deprecated This file is deprecated. Import from 'src/core/api/openaiApi.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
  */
 const debugLog = (message, data) => {
   if (config.debug) {
@@ -64,6 +88,8 @@ const debugLog = (message, data) => {
  * @param {object} messages - Array of message objects for the conversation
  * @param {object} options - Additional options for the API call
  * @returns {Promise<object>} - The API response
+ * @deprecated This file is deprecated. Import from 'src/core/api/openaiApi.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
  */
 const callOpenAI = async (messages, options = {}) => {
   if (!config.apiKey) {
@@ -122,6 +148,8 @@ const callOpenAI = async (messages, options = {}) => {
  * Function to recognize text intent from user input
  * @param {string} userInput - The user's query text
  * @returns {Promise<object>} - Structured intent data
+ * @deprecated This file is deprecated. Import from 'src/core/api/openaiApi.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
  */
 export const recognizeTextIntent = async (userInput) => {
   debugLog('Recognizing text intent for:', userInput);
@@ -160,6 +188,8 @@ export const recognizeTextIntent = async (userInput) => {
  * Function to generate a route based on user input
  * @param {string} userInput - The user's query text
  * @returns {Promise<object>} - Generated route data
+ * @deprecated This file is deprecated. Import from 'src/core/api/openaiApi.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
  */
 export const generateRoute = async (userInput) => {
   debugLog('Generating route for:', userInput);
@@ -213,6 +243,8 @@ export const generateRoute = async (userInput) => {
 /**
  * Function to generate a random route
  * @returns {Promise<object>} - Generated random route data
+ * @deprecated This file is deprecated. Import from 'src/core/api/openaiApi.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
  */
 export const generateRandomRoute = async () => {
   debugLog('Generating random route');
@@ -250,6 +282,8 @@ export const generateRandomRoute = async () => {
  * Function to split route by day
  * @param {object} route - Route data to split
  * @returns {Promise<array>} - Array of daily itineraries
+ * @deprecated This file is deprecated. Import from 'src/core/api/openaiApi.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
  */
 export const splitRouteByDay = async (route) => {
   debugLog('Splitting route by day:', route);
@@ -291,6 +325,8 @@ export const splitRouteByDay = async (route) => {
 /**
  * Get the current configuration status
  * @returns {object} - The current configuration
+ * @deprecated This file is deprecated. Import from 'src/core/api/openaiApi.js' instead.
+ * This file is kept for backward compatibility but will be removed in a future version.
  */
 export const getStatus = () => {
   return {

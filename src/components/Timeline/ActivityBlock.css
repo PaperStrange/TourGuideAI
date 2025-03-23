@@ -1,0 +1,291 @@
+/* ActivityBlock.css */
+
+.activity-block {
+  display: flex;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.activity-time-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 1rem;
+  width: 80px;
+  flex-shrink: 0;
+}
+
+.time-indicator {
+  width: 14px;
+  height: 14px;
+  background-color: #3498db;
+  border-radius: 50%;
+  margin-top: 6px;
+  z-index: 2;
+}
+
+.activity-time {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #34495e;
+  margin-top: 0.2rem;
+  text-align: center;
+}
+
+.time-connector {
+  position: absolute;
+  top: 14px;
+  bottom: -20px;
+  width: 2px;
+  background-color: #e0e0e0;
+  z-index: 1;
+}
+
+.last-activity .time-connector {
+  display: none;
+}
+
+.activity-content {
+  flex: 1;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.activity-content:hover {
+  background-color: #f1f3f5;
+}
+
+.activity-block.expanded .activity-content {
+  background-color: #edf2f7;
+}
+
+.activity-main-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.activity-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0 0 0.5rem 0;
+  flex: 1;
+}
+
+.activity-location {
+  display: flex;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #7f8c8d;
+  margin-bottom: 0.5rem;
+}
+
+.location-icon {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 0.3rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%237f8c8d'%3E%3Cpath d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.expand-button {
+  background: transparent;
+  border: none;
+  padding: 0.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.expand-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.expand-icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2395a5a6'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: transform 0.2s ease;
+}
+
+.expand-icon.expanded {
+  transform: rotate(180deg);
+}
+
+.activity-details {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.detail-row {
+  display: flex;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #34495e;
+  width: 100px;
+  flex-shrink: 0;
+}
+
+.detail-value {
+  color: #2c3e50;
+}
+
+.activity-notes {
+  background-color: #fff8e1;
+  padding: 0.8rem;
+  border-radius: 6px;
+  margin: 0.5rem 0 1rem;
+}
+
+.activity-notes p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #7f5500;
+}
+
+.activity-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.map-btn {
+  background-color: #3498db;
+  color: white;
+}
+
+.map-btn:hover {
+  background-color: #2980b9;
+}
+
+.save-btn {
+  background-color: #e0e0e0;
+  color: #34495e;
+}
+
+.save-btn:hover {
+  background-color: #d0d0d0;
+}
+
+.map-icon, .save-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 0.5rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.map-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z'/%3E%3C/svg%3E");
+}
+
+.save-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2334495e'%3E%3Cpath d='M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z'/%3E%3C/svg%3E");
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .activity-time-container {
+    width: 60px;
+  }
+  
+  .activity-content {
+    padding: 0.8rem;
+  }
+  
+  .activity-title {
+    font-size: 0.95rem;
+  }
+  
+  .detail-label {
+    width: 90px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .activity-time-container {
+    width: 50px;
+    padding-right: 0.5rem;
+  }
+  
+  .activity-time {
+    font-size: 0.7rem;
+  }
+  
+  .time-indicator {
+    width: 12px;
+    height: 12px;
+  }
+  
+  .activity-content {
+    padding: 0.7rem;
+  }
+  
+  .activity-title {
+    font-size: 0.9rem;
+  }
+  
+  .activity-location {
+    font-size: 0.8rem;
+  }
+  
+  .activity-details {
+    margin-top: 0.7rem;
+    padding-top: 0.7rem;
+  }
+  
+  .detail-row {
+    font-size: 0.8rem;
+  }
+  
+  .detail-label {
+    width: 80px;
+  }
+  
+  .activity-notes p {
+    font-size: 0.8rem;
+  }
+  
+  .activity-actions {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  
+  .action-button {
+    width: 100%;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+} 

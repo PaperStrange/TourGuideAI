@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/ChatPage.css';
+import * as openaiApi from '../core/api/openaiApi';
+import ApiStatus from '../components/ApiStatus';
 
 // Mock data for live pop-up window and route rankboard
 const mockPopups = [
@@ -92,39 +94,61 @@ const ChatPage = () => {
   const navigate = useNavigate();
   const [userInput, setUserInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
   
-  // Mock function for user_route_generate
+  // Real implementation for user_route_generate using OpenAI API
   const handleGenerateRoute = async () => {
     if (!userInput.trim()) return;
     
     setIsLoading(true);
+    setError(null);
     
-    // Simulate API call
-    setTimeout(() => {
-      console.log('Generating route based on input:', userInput);
-      // In a real implementation, this would call the OpenAI API
-      setIsLoading(false);
+    try {
+      // 1. Recognize the intent from user input
+      const intentResponse = await openaiApi.recognizeTextIntent(userInput);
       
-      // Navigate to map page with the generated route
-      navigate('/map', { state: { userQuery: userInput } });
-    }, 2000);
+      // 2. Generate a route based on the recognized intent
+      const routeResponse = await openaiApi.generateRoute(userInput);
+      
+      // 3. Navigate to map page with the generated route data
+      navigate('/map', { 
+        state: { 
+          userQuery: userInput, 
+          intentData: intentResponse,
+          routeData: routeResponse
+        } 
+      });
+    } catch (err) {
+      console.error('Error generating route:', err);
+      setError('Failed to generate route. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
   
-  // Mock function for user_route_generate_randomly
+  // Real implementation for user_route_generate_randomly using OpenAI API
   const handleFeelLucky = async () => {
-    if (!userInput.trim()) return;
-    
     setIsLoading(true);
+    setError(null);
     
-    // Simulate API call
-    setTimeout(() => {
-      console.log('Generating random route based on input:', userInput);
-      // In a real implementation, this would call the OpenAI API
-      setIsLoading(false);
+    try {
+      // 1. Generate a random route
+      const randomRouteResponse = await openaiApi.generateRandomRoute();
       
-      // Navigate to map page with the randomly generated route
-      navigate('/map', { state: { userQuery: userInput, isRandom: true } });
-    }, 2000);
+      // 2. Navigate to map page with the randomly generated route
+      navigate('/map', { 
+        state: { 
+          userQuery: 'Random destination', 
+          intentData: null,
+          routeData: randomRouteResponse
+        } 
+      });
+    } catch (err) {
+      console.error('Error generating random route:', err);
+      setError('Failed to generate random route. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
   
   const handlePopupClick = (routeId) => {
@@ -139,6 +163,9 @@ const ChatPage = () => {
     <div className="chat-page">
       {/* Element 1: Title */}
       <h1 className="page-title">Your personal tour guide!</h1>
+      
+      {/* API Status component */}
+      <ApiStatus />
       
       <div className="chat-container">
         <div className="input-section">
@@ -169,6 +196,9 @@ const ChatPage = () => {
               Feel lucky?
             </button>
           </div>
+          
+          {/* Error message */}
+          {error && <div className="error-message">{error}</div>}
         </div>
         
         <div className="content-section">
