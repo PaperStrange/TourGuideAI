@@ -240,3 +240,31 @@ See `docs/project.refactors.md` for a detailed history of refactoring efforts an
 - Recharts for data visualization
 - HTML2Canvas for screenshot capture
 
+## Security Configuration
+
+### Environment Setup
+
+1. **Generate secure keys**:
+   ```
+   node scripts/generate-keys.js
+   ```
+   This will generate secure random keys for JWT_SECRET and ENCRYPTION_KEY.
+
+2. **Copy and configure environment files**:
+   ```
+   cp .env.example .env
+   cp server/.env.example server/.env
+   ```
+   Then update the `.env` files with your secure keys and API credentials.
+
+3. **Verify .env files are git-ignored**:
+   Ensure `.env` files are listed in `.gitignore` to prevent accidentally committing secrets.
+
+### Security Best Practices
+
+- Never commit `.env` files or any files containing secrets to version control
+- Rotate API keys and secrets regularly
+- Use strong passwords (minimum 12 characters) for all admin accounts
+- In production, use a secrets manager service instead of environment files where possible
+- For production deployment, use a secure vault service (AWS Secrets Manager, HashiCorp Vault, etc.)
+

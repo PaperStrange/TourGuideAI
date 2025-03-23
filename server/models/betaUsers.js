@@ -28,6 +28,15 @@ const initialize = async () => {
   try {
     // Create a default admin user if configured in env
     if (process.env.DEFAULT_ADMIN_EMAIL && process.env.DEFAULT_ADMIN_PASSWORD) {
+      // Security validation
+      if (process.env.NODE_ENV === 'production') {
+        logger.warn('Default admin credentials should not be set in production environment');
+      }
+      
+      if (process.env.DEFAULT_ADMIN_PASSWORD.length < 12) {
+        logger.warn('Default admin password is too weak, should be at least 12 characters');
+      }
+      
       const adminExists = Array.from(betaUsers.values()).some(
         user => user.email === process.env.DEFAULT_ADMIN_EMAIL
       );
@@ -48,6 +57,9 @@ const initialize = async () => {
         
         betaUsers.set(adminUser.id, adminUser);
         logger.info('Default admin user created');
+        
+        // Clear sensitive data from memory after use
+        process.env.DEFAULT_ADMIN_PASSWORD = '';
       }
     }
   } catch (error) {
