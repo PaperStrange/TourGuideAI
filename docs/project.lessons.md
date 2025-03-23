@@ -245,6 +245,44 @@ This document records key lessons learned during the development of TourGuideAI,
 - **Review documentation completeness**: Ensure all refactoring efforts are properly recorded
 - **Update READMEs promptly**: Keep folder-level README files in sync with structural changes
 
+## Phase 6 Planning
+
+### Planning Process Lessons
+- **Lesson**: Ensure all planning artifacts cross-reference corresponding tasks in `.todos`
+- **Context**: Initial Phase 6 planning lacked explicit references between planning artifacts and tasks
+- **Solution**: Added HTML comments linking stability test cases to specific task line numbers
+- **Impact**: Improved traceability between test plans and implementation tasks
+
+### Documentation Integration
+- **Lesson**: Keep lessons in the centralized project.lessons.md file, not in .cursorrules
+- **Context**: Lessons were being added to `.cursorrules` instead of the project-wide lessons file
+- **Solution**: Consolidated all lessons in `docs/project.lessons.md` with proper categorization
+- **Impact**: Maintains a single source of truth for project learnings
+
+### Planning Efficiency
+- **Lesson**: Always check for existing planning files before creating new ones
+- **Context**: New planning documents were created without checking for existing similar files
+- **Solution**: Implemented a document inventory check at the start of planning
+- **Impact**: Prevents documentation duplication and inconsistency
+
+### Workflow Adherence
+- **Lesson**: Follow detailed workflow guidelines completely
+- **Context**: Some steps in the workflow were skipped or incompletely implemented
+- **Solution**: Created explicit checklists from workflow documentation before starting
+- **Impact**: Ensures comprehensive phase initialization with no missed steps
+
+### Standards Application
+- **Lesson**: Review project standards before implementation
+- **Context**: Planning proceeded without full review of `.cursorrules` standards
+- **Solution**: Made standards review a required first step in phase initialization
+- **Impact**: Ensures consistency with project standards from the beginning
+
+### Test Planning Integration
+- **Lesson**: Create detailed test scenarios with specific metrics and acceptance criteria
+- **Context**: Initial test plans lacked specific metrics and clear acceptance criteria
+- **Solution**: Enhanced test plans with quantitative targets and clear pass/fail conditions
+- **Impact**: Provides objective measurement for test success and feature readiness
+
 ---
 
 *Last Updated: March 21, 2025* 

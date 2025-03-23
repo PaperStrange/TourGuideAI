@@ -8,12 +8,16 @@ This document outlines the standard workflow for executing a new project phase i
 - Review `.milestones` file to understand the overall project structure
 - Identify the current phase requirements and objectives
 - Refer to the references and tips within `Project Structure Guide`, `Coding Standards`, and `API Integration Rules` sections in `.cursorrules` to keep those principles in mind when start generating new things
-- Refer to the lessons recorded in `project.lessons.md` to avoid mistackes, erros used to make
+- Refer to the lessons recorded in `project.lessons.md` to avoid mistakes, errors used to make
 - Break down the phase into logical milestones and tasks
 - Update `.milestones` file with the new logical milestones and **objects**
 - Update `.project` file with the new phase details, **key results** for **objects** in `.milestones`
 - Update `.todos` file with specific actionable items for **key results** in `.project` 
-- Update `stability-test-plan.md` file with specific actionable items for the new phase
+- Check existing planning files in 'docs' directory before creating new ones to avoid duplication
+- Create a whole planning file for each phase and use a consistent naming convention for this file (e.g., `phase#-[focus]-plan.md`)
+- Update or create detail planning files in 'docs' with specific actionable items for the new phase
+- Ensure all planning files follow the same format structure as existing plan files
+- Create proper cross-references between the whole planning file and related detail planning files
 - Planning artifacts should refer to the corresponding task and lines in `.todos` with a link
 
 ### 2. Development Process
@@ -28,10 +32,10 @@ This document outlines the standard workflow for executing a new project phase i
   - Note key learnings
 - Update `.todos` file regularly to reflect current status and any new tasks
 - Compare the milestones in `.milestones` with completed milestones in `.project` regularly to identify gaps
-- Compare project completion criterias to know whether the project phase is ready to close, then update project status, including:
+- Compare project completion criteria to know whether the project phase is ready to close, then update project status, including:
   - all object in `.milestones` and key results in `.project` are marked as done
   - all tasks in `.todos` are marked as done
-  - all teste in tests` are marked as success
+  - all testesin tests` are marked as success
 
 ### 3. Phase Completion and Documentation Updates
 - Perform comprehensive code review referring to `docs/references/code-review-checklist.md`and `docs/references/whats-code-review-looking-for.md`
@@ -77,7 +81,8 @@ This document outlines the standard workflow for executing a new project phase i
   - Security considerations
 - Review previous lessons before adding new ones to avoid duplication
 - Use clear, actionable language in lesson descriptions
-- Always link all new generated files back to the this file
+- Always link all new generated files back to this file
+- Never store lessons in `.cursorrules`
 
 ## File Responsibilities
 
@@ -86,47 +91,35 @@ This document outlines the standard workflow for executing a new project phase i
 | `.milestones` | Project-wide milestone tracking | At project start, major revisions | |
 | `.project` | Detailed project status and task tracking | Throughout development | |
 | `.todos` | Current action items and task status | Daily/as tasks change | |
-| `.cursorrules` | Project standards and useful protocols | As new lessons emerge | |
+| `.cursorrules` | Project standards and useful protocols | As new standards emerge | |
 | `.cursorrules` (Instructions) | Project management guidelines | Reference at phase start | |
 | `.cursorrules` (Thinking Protocol) | Thinking process for complex tasks | During task analysis | |
 | `.cursorrules` (Standards) | Coding and API standards | Reference throughout development | |
-| `.cursorrules` (Lessons) | Knowledge preservation | After resolving challenges | |
 | `.cursorrules` (Scratchpad) | Current thinking context | Before and during task execution | |
 | `docs/project.refactors.md` | Record of structural changes | After refactoring | [Versioning Guide](../docs/project.refactors.md) |
 | `docs/ refactor-.plan.md` | Refactoring categorization and approach | Before refactoring, quarterly review | [Refactoring Plan](../docs/ refactor-.plan.md) |
 | `docs/project.versions.md` | Version history and release notes | After version completion | [Versioning Guide](../docs/project.versions.md) |
-| `docs/project.lessons.md` | Lesson recordings during the project | Reference during reviews | [Code Review Guide](../docs/project.lessons.md) |
+| `docs/project.lessons.md` | Centralized location for all project lessons | After resolving challenges or discovering insights | |
 | `docs/references/code-review-checklist.md` | Standard for code reviews | Reference during review | [Code Review Checklist](../docs/references/code-review-checklist.md) |
 | `docs/references/version-control.md` | Versioning conventions | Reference during releases | [Versioning Conventions](../docs/references/version-control.md) |
 | `docs/references/dependencies-tracking.md` | Component dependency management | Update with architectural changes | [Dependencies Tracking](../docs/references/dependencies-tracking.md) |
 | `docs/references/whats-code-review-looking-for.md` | Google's code review guide | Reference during reviews | [Code Review Guide](../docs/references/whats-code-review-looking-for.md) |
-| `stability-test-plan.md` | Testing approach and test cases | Before phase execution | |
-| `deployment-pipeline.md` | Deployment process documentation | Before production release | |
-| `performance-optimization.md` | Performance strategy and targets | Before optimization work | |
+| `docs/phase#-planning.md` | Whole phase planning overview with strategy and cross-references | At phase start | |
+| `docs/stability-test-plan.md` | Detailed testing approach and test cases | Before phase execution | |
+| `docs/deployment-pipeline.md` | Detailed deployment process documentation | Before production release | |
+| `docs/performance-optimization-plan.md` | Detailed performance strategy and targets | Before optimization work | |
 | `README.md` | Introduction for the new-comers | After version completion | |
 | `ARCHITECTURE.md` | Introduction for the the whole project file structure | After version completion | |
 | `API_OVERVIEW.md` | Introduction for the api embedded in this project | After version completion | |
 
 ## Standard Procedure for New Phase
 
-1. Begin with `.milestones` to understand phase requirements
-2. Review `.cursorrules` and  for instructions, standards.
-3. Review lessons recorded in `project.lessons.md` to avoid mistackes, erros used to make in previous project phase
-4. Create new milestones and objects in `.milestones`, then breakdown each milestone to get objects in `.project`. After that create actionable tasks for objects in`.todos` as well as planning artifacts like `xxx-plan.md` in `../docs` if neccessary 
-5. Execute development tasks, keeping all documentations up-to-date
-   - Use the thinking protocol and scratchpad for complex tasks
-   - Refer to coding standards during implementation to avoid same mistakes or any not user-friendly programming habits
-   - Consult reference documentation for specialized tasks:
-     - Follow [versioning conventions](../docs/references/version-control.md) for releases
-     - Use [code review checklist](../docs/references/code-review-checklist.md) when reviewing code
-     - Update [dependencies tracking](../docs/references/dependencies-tracking.md) with architecture changes
-     - Check all files in `docs` to find out whether other files should be updated
-     - Check all files in `tests` to find out whether other files should be updated
-6. Double-check `.project`and `.todos` to see whether there is any item incompleted
-7. Double-check the project completion criterias, continue working until all criteria are meet
-  - all things in `.project`and `.todos` are marked as done
-  - all teste in tests` are marked as success
-8. Perform code review and refactoring when phase is completed
-9. Update `project.refactors`, `project.versions.md`, each `README.md` within project folders
-10. Update `ARCHITECTURE.md` and `API_OVERVIEW.md`
-11. When the above steps are all done, print ""Project Phase Current_Number is finished and ready for manual review now!
+This is a simplified checklist of phases to execute. For detailed steps of each phase, refer to the corresponding sections in the **Project Phase Workflow** above.
+
+1. **Phase Initialization** - See [section 1: Phase Initialization](#1-phase-initialization)
+2. **Development Process** - See [section 2: Development Process](#2-development-process)
+3. **Project Verification** - Ensure all milestones, key results, and tasks are complete
+4. **Phase Completion and Documentation Updates** - See [section 3: Phase Completion and Documentation Updates](#3-phase-completion-and-documentation-updates)
+5. **Project Artifacts Modification** - See [section 4: Project Artifacts Modification](#4-project-artifacts-modification)
+6. **Knowledge Preservation** - See [section 5: Knowledge Preservation](#5-knowledge-preservation)
+7. **Final Review** - Verify all steps are complete and announce completion
