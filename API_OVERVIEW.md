@@ -656,3 +656,73 @@ Send a password reset email.
 ### OpenAI API Endpoints
 
 // ... existing code ... 
+
+## Internal APIs
+
+### Beta Program APIs
+
+The following APIs are used specifically for the Beta Program features:
+
+#### Authentication & User Management
+
+- **Purpose**: Handle user authentication, registration, and profile management for beta testers
+- **Base Endpoint**: `/api/auth`
+- **Endpoints**:
+  - `POST /api/auth/login` - Authenticate user and return JWT token
+  - `POST /api/auth/register` - Register new beta tester with invite code
+  - `POST /api/auth/verify-email` - Verify user email with token
+  - `POST /api/auth/reset-password` - Request password reset
+  - `POST /api/auth/reset-password/confirm` - Confirm password reset with token
+  - `GET /api/auth/profile` - Get current user profile
+  - `PUT /api/auth/profile` - Update user profile
+  - `GET /api/auth/permissions` - Get user permissions based on role
+
+#### Onboarding Workflow
+
+- **Purpose**: Manage the onboarding process for new beta testers
+- **Base Endpoint**: `/api/onboarding`
+- **Endpoints**:
+  - `POST /api/onboarding/verify-code` - Verify beta invite code
+  - `POST /api/onboarding/profile` - Save user profile information
+  - `POST /api/onboarding/preferences` - Save user preferences
+  - `GET /api/onboarding/status` - Get current onboarding status
+  - `POST /api/onboarding/complete` - Mark onboarding as complete
+
+#### Survey System
+
+- **Purpose**: Create, manage, and respond to surveys
+- **Base Endpoint**: `/api/surveys`
+- **Endpoints**:
+  - `GET /api/surveys` - List all surveys (with filtering options)
+  - `POST /api/surveys` - Create new survey
+  - `GET /api/surveys/:id` - Get survey by ID
+  - `PUT /api/surveys/:id` - Update survey
+  - `DELETE /api/surveys/:id` - Delete survey
+  - `POST /api/surveys/:id/publish` - Publish survey (change status to active)
+  - `POST /api/surveys/:id/responses` - Submit survey response
+  - `GET /api/surveys/:id/responses` - Get all responses for survey
+  - `GET /api/surveys/:id/analytics` - Get survey response analytics
+
+#### Analytics Dashboard
+
+- **Purpose**: Provide analytics data for admin users
+- **Base Endpoint**: `/api/analytics`
+- **Endpoints**:
+  - `GET /api/analytics/users` - Get user activity metrics
+  - `GET /api/analytics/feedback` - Get feedback analysis
+  - `GET /api/analytics/features` - Get feature usage statistics
+  - `GET /api/analytics/surveys` - Get survey participation metrics
+  - `GET /api/analytics/demographics` - Get user demographic data
+  - `GET /api/analytics/export` - Export analytics data (CSV/JSON)
+  - `GET /api/analytics/realtime` - Get real-time user activity
+
+#### Feedback Collection
+
+- **Purpose**: Collect and categorize user feedback
+- **Base Endpoint**: `/api/feedback`
+- **Endpoints**:
+  - `POST /api/feedback` - Submit new feedback
+  - `GET /api/feedback` - List all feedback (admin only)
+  - `GET /api/feedback/categories` - Get feedback categories
+  - `PUT /api/feedback/:id/status` - Update feedback status
+  - `POST /api/feedback/:id/screenshot` - Upload feedback screenshot

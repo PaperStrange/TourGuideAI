@@ -31,7 +31,19 @@ src/
 │   │
 │   └── beta-program/         # Beta program management feature
 │       ├── components/       # Beta program components
+│       │   ├── analytics/    # Analytics dashboard components
 │       │   ├── auth/         # Authentication components
+│       │   ├── feedback/     # Feedback collection components
+│       │   ├── onboarding/   # User onboarding components
+│       │   │   ├── CodeRedemptionForm.jsx # Beta code redemption
+│       │   │   ├── UserProfileSetup.jsx   # User profile configuration
+│       │   │   ├── PreferencesSetup.jsx   # User preferences configuration
+│       │   │   ├── WelcomeScreen.jsx      # Final onboarding welcome
+│       │   │   └── OnboardingFlow.jsx     # Orchestrates the onboarding process
+│       │   ├── survey/       # Survey components
+│       │   │   ├── SurveyBuilder.jsx      # Interface for creating surveys
+│       │   │   ├── SurveyList.jsx         # Survey management interface
+│       │   │   └── SurveyResponse.jsx     # Survey response visualization
 │       │   └── user/         # User management components
 │       ├── pages/            # Beta program pages
 │       └── services/         # Beta program services
@@ -39,6 +51,8 @@ src/
 │           ├── InviteCodeService.js # Invite code management
 │           ├── NotificationService.js # Email notifications
 │           ├── PermissionsService.js  # RBAC permissions
+│           ├── SurveyService.js     # Survey creation and management
+│           ├── AnalyticsService.js  # Usage analytics and reporting
 │           └── FeedbackService.js   # Feedback collection
 │
 ├── contexts/                 # React contexts for state management

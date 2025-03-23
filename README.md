@@ -11,6 +11,10 @@ An AI-powered travel planning application that helps users plan personalized tra
 - User profile management
 - Role-based access control for beta testers and administrators
 - Email notifications with verification and password reset capabilities
+- Comprehensive onboarding workflow for new beta users
+- Customizable survey system with conditional logic
+- Analytics dashboard with real-time usage metrics
+- Feedback collection with screenshot and recording capabilities
 
 ## Getting Started
 
@@ -185,6 +189,14 @@ This project is licensed under the MIT License - see the LICENSE.txt file for de
     - `/map-visualization`: Map visualization feature
     - `/travel-planning`: Travel itinerary planning feature
     - `/user-profile`: User profile management feature
+    - `/beta-program`: Beta program management
+      - `/components`: Beta program components
+        - `/analytics`: Analytics dashboard components
+        - `/auth`: Authentication components
+        - `/feedback`: Feedback collection components
+        - `/onboarding`: User onboarding components
+        - `/survey`: Survey creation and management components
+      - `/services`: Beta program services
   - `/pages`: Main page components
   - `/services`: Legacy services (being migrated to core)
   - `/styles`: CSS and styling files
@@ -209,6 +221,11 @@ See `docs/project.refactors.md` for a detailed history of refactoring efforts an
 1. **Chat Page**: Input travel preferences and generate personalized tour plans
 2. **Map Page**: Visualize routes on an interactive map with nearby attractions
 3. **User Profile Page**: View and manage saved routes
+4. **Beta Portal**: Access point for beta testers with the following features:
+   - **Onboarding**: Step-by-step setup for new beta users
+   - **Feedback**: Submit feedback with screenshots and recordings
+   - **Surveys**: Participate in and manage customizable surveys
+   - **Analytics**: View usage metrics and insights (admin only)
 
 ## Technology Stack
 
@@ -220,4 +237,6 @@ See `docs/project.refactors.md` for a detailed history of refactoring efforts an
 - JWT Authentication
 - SendGrid Email API
 - Role-based Access Control (RBAC)
+- Recharts for data visualization
+- HTML2Canvas for screenshot capture
 

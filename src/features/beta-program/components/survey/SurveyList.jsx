@@ -98,7 +98,7 @@ const SurveyList = ({ onSelect, surveyService }) => {
           questions: [
             { id: 'q1', title: 'What types of destinations do you prefer?', type: 'checkbox' },
             { id: 'q2', title: 'How do you typically plan your trips?', type: 'radio' },
-            { id: 'q3', title: 'What's your average budget for a week-long trip?', type: 'select' }
+            { id: 'q3', title: 'What\'s your average budget for a week-long trip?', type: 'select' }
           ],
           status: 'draft',
           responses: 0,
