@@ -110,6 +110,35 @@ For each version:
 4. Tag the release in version control
 5. Create release artifacts
 
+## Testing Requirements
+
+<details>
+  <summary>Example test plan</summary>
+ 
+More details in  `docs/stability-test-plan.md` 
+  - [ ] Create from scratch and execute an agent with at least 3 blocks
+  - [ ] Import an agent from file upload, and confirm it executes correctly
+  - [ ] Upload agent to marketplace
+  - [ ] Import an agent from marketplace and confirm it executes correctly
+  - [ ] Edit an agent from monitor, and confirm it executes correctly
+</details>
+
+## Configuration Management
+
+#### For configuration changes:
+- [x] `.env.example` is updated or already compatible with my changes
+- [ ] `docker-compose.yml` is updated or already compatible with my changes
+- [] I have included a list of my configuration changes in the PR description (under **Changes**)
+
+<details>
+  <summary>Examples of configuration changes</summary>
+
+  - Changing ports
+  - Adding new services that need to communicate with each other
+  - Secrets or environment variable changes
+  - New or infrastructure changes such as databases
+</details>
+
 ## References
 
 - [Semantic Versioning 2.0.0](https://semver.org/)

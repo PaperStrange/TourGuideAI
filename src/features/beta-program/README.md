@@ -1,46 +1,88 @@
 # Beta Program Feature
 
-This feature handles the beta testing portal, feedback collection, and analytics functionality for the TourGuideAI beta program.
+This directory contains all components, services, and utilities for the TourGuideAI Beta Program.
 
-## Components
+## Overview
 
-- **BetaPortal**: Main interface for beta testers with dashboard and controls
-- **RegistrationForm**: Component for user registration and beta code redemption
-- **FeedbackWidget**: Component for collecting and categorizing user feedback
-- **SurveyBuilder**: Component for creating and managing customizable surveys
-- **AnalyticsDashboard**: Component for visualizing beta usage metrics
+The Beta Program allows early access to TourGuideAI's features for selected users. It includes:
 
-## Services
+1. **Registration and Authentication**: Users can register for the beta program using invite codes.
+2. **Onboarding Flow**: New users go through a guided onboarding process.
+3. **Feature Request System**: Users can submit and vote on feature requests.
+4. **Survey System**: Administrators can create surveys to collect feedback from beta testers.
+5. **Community Forum**: Users can discuss features, ask questions, and share ideas.
+6. **Analytics Dashboard**: Administrators can view usage statistics and feedback trends.
 
-- **AuthService**: Handles JWT-based authentication and access control
-- **FeedbackService**: Manages feedback collection, categorization, and storage
-- **NotificationService**: Manages email notifications using SendGrid API
-- **AnalyticsService**: Tracks and processes beta usage analytics
+## Component Structure
 
-## Functionality
+- **`components/`**: UI components for the beta program
+  - **`BetaPortal.jsx`**: Main container component for the beta program
+  - **`RegistrationForm.jsx`**: Component for new user registration
+  - **`OnboardingFlow.jsx`**: Multi-step onboarding process
+  - **`onboarding/`**: Individual onboarding step components
+    - `CodeRedemptionForm.jsx`: Code validation form
+    - `UserProfileSetup.jsx`: User profile setup form
+    - `PreferencesSetup.jsx`: User preferences setup
+    - `WelcomeScreen.jsx`: Final onboarding screen
+  - **`feature-request/`**: Feature request system components
+    - `FeatureRequestBoard.jsx`: Main component for feature requests
+  - **`survey/`**: Survey system components
+    - `SurveyBuilder.jsx`: Admin component for creating surveys
+    - `SurveyList.jsx`: Component for displaying available surveys
+  - **`community/`**: Community forum components
+    - `BetaCommunityForum.jsx`: Discussion forum component
+  - **`auth/`**: Authentication components and utilities
+  - **`user/`**: User management components
+  - **`feedback/`**: User feedback components
 
-- Beta tester registration and authentication
-- Role-based access control
-- Feedback collection and categorization
-- Customizable survey creation and distribution
-- Screenshot and error reporting
-- Feature request management with voting
-- Analytics dashboard for beta usage metrics
-- Email notifications for beta testers
+- **`services/`**: Business logic and API services
+  - `AuthService.js`: Authentication and user management
+  - `FeatureService.js`: Feature request management
+  - `SurveyService.js`: Survey creation and submission
+  - `PermissionsService.js`: Role-based access control
 
-## Performance Optimizations
+- **`hooks/`**: Custom React hooks for the beta program
+- **`utils/`**: Utility functions
 
-- **Lazy Loading**: Beta portal components are loaded on-demand using React.lazy
-- **Optimized Forms**: Form validation using efficient validation patterns
-- **Throttled API Calls**: Feedback submission is throttled to prevent API overload
-- **Local Storage Caching**: User preferences and feedback drafts are cached locally
-- **Optimized Analytics**: Analytics batching to reduce API calls
+## Role-Based Access Control
 
-## Dependencies
+The beta program implements role-based access control (RBAC) with these roles:
 
-This feature depends on:
-- Material UI (@mui/material) for UI components
-- JWT for authentication
-- SendGrid API for email notifications
-- Core storage services (via `core/services/storage`)
-- Common UI components (via `core/components`) 
+- **Beta Tester**: Base role for all beta program participants
+- **Moderator**: Can manage content and users, but has limited administrative access
+- **Admin**: Full access to all beta program features
+
+## Getting Started
+
+To add the beta program to a page, import and use the `BetaPortal` component:
+
+```jsx
+import { BetaPortal } from 'src/features/beta-program/components';
+
+function SomePage() {
+  return (
+    <div>
+      <h1>Beta Program</h1>
+      <BetaPortal />
+    </div>
+  );
+}
+```
+
+## Development Guidelines
+
+- Keep components modular and focused on a single responsibility
+- Use the provided RBAC components (`Role`, `Permission`, `AccessControl`) for conditional rendering
+- Implement proper validation for user inputs
+- Follow the established design patterns for new components
+
+## Testing
+
+Test cases for beta program components should be placed in `__tests__` directories alongside the respective components.
+
+## Future Enhancements
+
+- Integration with external analytics tools
+- Localization support for international beta testers
+- Expanded notification system for beta program events
+- Mobile app beta testing support 
