@@ -9,6 +9,8 @@ An AI-powered travel planning application that helps users plan personalized tra
 - Detailed timeline view of daily activities
 - Offline capability for saved routes
 - User profile management
+- Role-based access control for beta testers and administrators
+- Email notifications with verification and password reset capabilities
 
 ## Getting Started
 
@@ -20,6 +22,7 @@ These instructions will help you set up and run the project on your local machin
 - npm (v6.0.0 or higher)
 - Google Maps API key
 - OpenAI API key
+- SendGrid API key (for email notifications)
 
 ### Installation
 
@@ -73,6 +76,17 @@ These instructions will help you set up and run the project on your local machin
    # Logging
    LOG_LEVEL=debug
    LOG_FILE_PATH=./logs/app.log
+   
+   # JWT Authentication
+   JWT_SECRET=your_jwt_secret_here
+   JWT_EXPIRATION=86400
+   
+   # SendGrid Email Configuration
+   SENDGRID_API_KEY=your_sendgrid_api_key_here
+   SENDGRID_FROM_EMAIL=noreply@yourdomain.com
+   SENDGRID_VERIFICATION_TEMPLATE_ID=your_template_id
+   SENDGRID_PASSWORD_RESET_TEMPLATE_ID=your_template_id
+   SENDGRID_WELCOME_TEMPLATE_ID=your_template_id
    ```
 
 ### Getting API Keys
@@ -203,4 +217,7 @@ See `docs/project.refactors.md` for a detailed history of refactoring efforts an
 - Material UI
 - OpenAI API
 - Google Maps API
+- JWT Authentication
+- SendGrid Email API
+- Role-based Access Control (RBAC)
 

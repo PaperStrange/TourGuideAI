@@ -9,6 +9,7 @@ const router = express.Router();
 const inviteCodes = require('../models/inviteCodes');
 const { authenticateUser } = require('../middleware/authMiddleware');
 const { requirePermission, PERMISSIONS } = require('../middleware/rbacMiddleware');
+const emailService = require('../services/emailService');
 const logger = require('../utils/logger');
 
 // Initialize invite codes on startup
@@ -24,9 +25,33 @@ router.post('/generate',
   requirePermission(PERMISSIONS.CREATE_INVITE), 
   async (req, res) => {
     try {
-      const code = await inviteCodes.generateCode(req.user.id);
+      const { sendEmail, recipientEmail } = req.body;
       
-      return res.status(201).json({ code });
+      // Generate code
+      const inviteCode = await inviteCodes.generateCode(req.user.id);
+      
+      // If sendEmail flag is true and recipientEmail is provided, send email
+      if (sendEmail && recipientEmail) {
+        const emailSent = await emailService.sendInviteCodeEmail(
+          recipientEmail, 
+          inviteCode, 
+          req.user.name || 'The TourGuideAI Team'
+        );
+        
+        if (!emailSent) {
+          logger.warn('Failed to send invite code email', { 
+            code: inviteCode.code, 
+            recipientEmail 
+          });
+        }
+        
+        return res.status(201).json({
+          inviteCode,
+          emailSent
+        });
+      }
+      
+      return res.status(201).json({ inviteCode });
     } catch (error) {
       logger.error('Error generating invitation code', { error });
       
@@ -133,6 +158,81 @@ router.post('/invalidate',
         error: {
           message: 'Failed to invalidate invitation code',
           type: 'invalidation_error'
+        }
+      });
+    }
+  }
+);
+
+/**
+ * Send invitation email with an existing code
+ */
+router.post('/send', 
+  authenticateUser, 
+  requirePermission(PERMISSIONS.CREATE_INVITE), 
+  async (req, res) => {
+    try {
+      const { code, email } = req.body;
+      
+      if (!code || !email) {
+        return res.status(400).json({
+          error: {
+            message: 'Invite code and email are required',
+            type: 'missing_fields'
+          }
+        });
+      }
+      
+      // Get invite code
+      const allCodes = await inviteCodes.getAllCodes();
+      const inviteCode = allCodes.find(c => c.code === code);
+      
+      if (!inviteCode) {
+        return res.status(404).json({
+          error: {
+            message: 'Invalid invitation code',
+            type: 'invalid_code'
+          }
+        });
+      }
+      
+      // Check if code is valid
+      if (!inviteCode.isValid || inviteCode.usedBy) {
+        return res.status(400).json({
+          error: {
+            message: 'Invitation code is no longer valid',
+            type: 'invalid_code'
+          }
+        });
+      }
+      
+      // Send email
+      const emailSent = await emailService.sendInviteCodeEmail(
+        email, 
+        inviteCode, 
+        req.user.name || 'The TourGuideAI Team'
+      );
+      
+      if (!emailSent) {
+        return res.status(500).json({
+          error: {
+            message: 'Failed to send invitation email',
+            type: 'email_error'
+          }
+        });
+      }
+      
+      return res.json({
+        message: 'Invitation sent successfully',
+        emailSent: true
+      });
+    } catch (error) {
+      logger.error('Error sending invite code', { error });
+      
+      return res.status(500).json({
+        error: {
+          message: 'Error sending invitation',
+          type: 'sending_error'
         }
       });
     }

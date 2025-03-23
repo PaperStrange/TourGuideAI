@@ -357,7 +357,67 @@ Authenticate a beta user and get a JWT token.
   "user": {
     "id": "abc123",
     "email": "user@example.com",
+    "name": "John Doe",
     "role": "beta-tester"
+  }
+}
+```
+
+#### `POST /api/auth/register`
+
+Register a new beta tester with an invitation code.
+
+**Request Body:**
+```json
+{
+  "email": "user@example.com",
+  "password": "password123",
+  "name": "John Doe",
+  "inviteCode": "BETA123"
+}
+```
+
+**Response:**
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "user": {
+    "id": "abc123",
+    "email": "user@example.com",
+    "name": "John Doe",
+    "role": "beta-tester",
+    "emailVerified": false
+  },
+  "message": "Registration successful. Please verify your email."
+}
+```
+
+#### `POST /api/auth/register/admin`
+
+Register a new user with admin privileges (requires admin access).
+
+**Headers:**
+- `Authorization: Bearer <admin-token>`
+
+**Request Body:**
+```json
+{
+  "email": "admin@example.com",
+  "password": "password123",
+  "name": "Admin User",
+  "role": "admin"
+}
+```
+
+**Response:**
+```json
+{
+  "user": {
+    "id": "xyz789",
+    "email": "admin@example.com",
+    "name": "Admin User",
+    "role": "admin",
+    "emailVerified": false
   }
 }
 ```
@@ -389,15 +449,152 @@ Get current authenticated user's information.
   "user": {
     "id": "abc123",
     "email": "user@example.com",
+    "name": "John Doe",
     "role": "beta-tester",
-    "betaAccess": true
+    "emailVerified": true,
+    "permissions": ["read:feedback", "create:feedback", "read:routes"]
   }
 }
 ```
 
-#### `POST /api/auth/register` (Admin only)
+#### `GET /api/auth/permissions`
 
-Register a new beta user (requires admin privileges).
+Get current authenticated user's permissions and roles.
+
+**Headers:**
+- `Authorization: Bearer <token>`
+
+**Response:**
+```json
+{
+  "permissions": ["read:feedback", "create:feedback", "read:routes"],
+  "role": "beta-tester"
+}
+```
+
+#### `GET /api/auth/verify-email/:token`
+
+Verify a user's email address using the token sent to their email.
+
+**Response:**
+```json
+{
+  "message": "Email verified successfully",
+  "emailVerified": true
+}
+```
+
+#### `POST /api/auth/reset-password`
+
+Request a password reset email.
+
+**Request Body:**
+```json
+{
+  "email": "user@example.com"
+}
+```
+
+**Response:**
+```json
+{
+  "message": "Password reset email sent"
+}
+```
+
+#### `POST /api/auth/reset-password/:token`
+
+Reset password using the token sent to the user's email.
+
+**Request Body:**
+```json
+{
+  "password": "newpassword123"
+}
+```
+
+**Response:**
+```json
+{
+  "message": "Password reset successfully"
+}
+```
+
+### Invite Codes
+
+#### `POST /api/invite-codes/generate`
+
+Generate a new invitation code (requires CREATE_INVITE permission).
+
+**Headers:**
+- `Authorization: Bearer <token>`
+
+**Request Body:**
+```json
+{
+  "maxUses": 10,
+  "expiresAt": "2023-12-31T23:59:59Z"
+}
+```
+
+**Response:**
+```json
+{
+  "code": "BETA123",
+  "maxUses": 10,
+  "expiresAt": "2023-12-31T23:59:59Z",
+  "usedCount": 0,
+  "active": true,
+  "createdBy": "abc123"
+}
+```
+
+#### `GET /api/invite-codes`
+
+List all invitation codes (requires READ_INVITE permission).
+
+**Headers:**
+- `Authorization: Bearer <token>`
+
+**Response:**
+```json
+{
+  "inviteCodes": [
+    {
+      "code": "BETA123",
+      "maxUses": 10,
+      "expiresAt": "2023-12-31T23:59:59Z",
+      "usedCount": 2,
+      "active": true,
+      "createdBy": "abc123",
+      "createdAt": "2023-06-01T12:00:00Z"
+    },
+    // More invite codes...
+  ]
+}
+```
+
+#### `PUT /api/invite-codes/:code/invalidate`
+
+Invalidate an invitation code (requires UPDATE_INVITE permission).
+
+**Headers:**
+- `Authorization: Bearer <token>`
+
+**Response:**
+```json
+{
+  "code": "BETA123",
+  "active": false,
+  "message": "Invite code invalidated successfully"
+}
+```
+
+### Email Notifications
+
+#### `POST /api/email/welcome`
+
+Send a welcome email to a user (automatic on registration).
 
 **Headers:**
 - `Authorization: Bearer <admin-token>`
@@ -405,22 +602,54 @@ Register a new beta user (requires admin privileges).
 **Request Body:**
 ```json
 {
-  "email": "newuser@example.com",
-  "password": "securepassword",
-  "role": "beta-tester"
+  "email": "user@example.com",
+  "name": "John Doe"
 }
 ```
 
 **Response:**
 ```json
 {
-  "user": {
-    "id": "xyz789",
-    "email": "newuser@example.com",
-    "role": "beta-tester",
-    "betaAccess": true,
-    "createdAt": "2023-06-01T12:00:00Z"
-  }
+  "message": "Welcome email sent successfully"
+}
+```
+
+#### `POST /api/email/verification`
+
+Send or resend a verification email.
+
+**Headers:**
+- `Authorization: Bearer <token>` (optional - for resending)
+
+**Request Body:**
+```json
+{
+  "email": "user@example.com"
+}
+```
+
+**Response:**
+```json
+{
+  "message": "Verification email sent successfully"
+}
+```
+
+#### `POST /api/email/password-reset`
+
+Send a password reset email.
+
+**Request Body:**
+```json
+{
+  "email": "user@example.com"
+}
+```
+
+**Response:**
+```json
+{
+  "message": "Password reset email sent successfully"
 }
 ```
 

@@ -29,6 +29,7 @@ const openaiRoutes = require('./routes/openai');
 const mapsRoutes = require('./routes/googlemaps');
 const authRoutes = require('./routes/auth');
 const inviteCodeRoutes = require('./routes/inviteCodes');
+const emailRoutes = require('./routes/emails');
 
 // Initialize Express app
 const app = express();
@@ -58,7 +59,7 @@ app.use(express.urlencoded({ extended: true }));
 // CORS configuration
 app.use(cors({
   origin: process.env.ALLOWED_ORIGIN || '*',
-  methods: ['GET', 'POST', 'OPTIONS'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
@@ -76,6 +77,9 @@ app.use('/api/auth', authRoutes);
 
 // Invite code routes
 app.use('/api/invite-codes', inviteCodeRoutes);
+
+// Email routes
+app.use('/api/emails', emailRoutes);
 
 // API routes with key validation
 app.use('/api/openai', validateOpenAIApiKey, openaiLimiter, openaiRoutes);

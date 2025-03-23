@@ -7,14 +7,19 @@
 
 const { v4: uuidv4 } = require('uuid');
 const bcrypt = require('bcrypt');
+const crypto = require('crypto');
 const logger = require('../utils/logger');
 
 // In-memory store for beta users
 // In production, this would be a database
 const betaUsers = new Map();
 
-// Default admin user for testing
+// Password reset tokens storage
+const passwordResetTokens = new Map();
+
+// Configuration
 const SALT_ROUNDS = 10;
+const PASSWORD_RESET_EXPIRY = 60 * 60 * 1000; // 1 hour in milliseconds
 
 /**
  * Initialize the beta users store
@@ -33,8 +38,10 @@ const initialize = async () => {
           id: uuidv4(),
           email: process.env.DEFAULT_ADMIN_EMAIL,
           passwordHash: hashedPassword,
+          name: 'Admin User',
           role: 'admin',
           betaAccess: true,
+          emailVerified: true,
           createdAt: new Date().toISOString(),
           lastLogin: null
         };
@@ -67,6 +74,10 @@ const createUser = async (userData) => {
     // Hash the password
     const passwordHash = await bcrypt.hash(userData.password, SALT_ROUNDS);
     
+    // Generate email verification token if email verification is enabled
+    const emailVerificationToken = crypto.randomBytes(32).toString('hex');
+    const emailVerificationExpires = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 hours
+    
     // Create user object
     const newUser = {
       id: uuidv4(),
@@ -75,6 +86,11 @@ const createUser = async (userData) => {
       passwordHash,
       role: userData.role || 'beta-tester',
       betaAccess: true,
+      isEmailVerified: false, // Default to unverified email
+      emailVerificationToken,
+      emailVerificationExpires,
+      passwordResetToken: null,
+      passwordResetExpires: null,
       createdAt: new Date().toISOString(),
       lastLogin: null
     };
@@ -143,10 +159,240 @@ const validateCredentials = async (email, password) => {
   }
 };
 
+/**
+ * Find a user by email verification token
+ * @param {string} token - Email verification token
+ * @returns {Object|null} User object or null if not found or token expired
+ */
+const findUserByVerificationToken = (token) => {
+  const user = Array.from(betaUsers.values()).find(user => 
+    user.emailVerificationToken === token && 
+    user.emailVerificationExpires > new Date()
+  );
+  return user || null;
+};
+
+/**
+ * Find a user by password reset token
+ * @param {string} token - Password reset token
+ * @returns {Object|null} User object or null if not found or token expired
+ */
+const findUserByResetToken = (token) => {
+  const user = Array.from(betaUsers.values()).find(user => 
+    user.passwordResetToken === token && 
+    user.passwordResetExpires > new Date()
+  );
+  return user || null;
+};
+
+/**
+ * Mark a user's email as verified
+ * @param {string} userId - User ID
+ * @returns {Object|null} Updated user object or null if user not found
+ */
+const markEmailVerified = async (userId) => {
+  try {
+    const user = findUserById(userId);
+    
+    if (!user) {
+      return null;
+    }
+    
+    // Update email verification status
+    user.isEmailVerified = true;
+    user.emailVerificationToken = null;
+    user.emailVerificationExpires = null;
+    
+    // Save changes
+    betaUsers.set(userId, user);
+    
+    // Return updated user without password
+    const { passwordHash, ...userWithoutPassword } = user;
+    return userWithoutPassword;
+  } catch (error) {
+    logger.error('Error marking email as verified', { error, userId });
+    return null;
+  }
+};
+
+/**
+ * Set password reset token for a user
+ * @param {string} email - User email
+ * @returns {string|null} Reset token or null if user not found
+ */
+const createPasswordResetToken = async (email) => {
+  try {
+    const user = findUserByEmail(email);
+    
+    if (!user) {
+      return null;
+    }
+    
+    // Generate token
+    const resetToken = crypto.randomBytes(32).toString('hex');
+    
+    // Set token and expiry
+    user.passwordResetToken = resetToken;
+    user.passwordResetExpires = new Date(Date.now() + PASSWORD_RESET_EXPIRY);
+    
+    // Save user
+    betaUsers.set(user.id, user);
+    
+    return resetToken;
+  } catch (error) {
+    logger.error('Error creating password reset token', { error });
+    return null;
+  }
+};
+
+/**
+ * Reset a user's password using a token
+ * @param {string} token - Password reset token
+ * @param {string} newPassword - New password
+ * @returns {boolean} Whether the password was reset successfully
+ */
+const resetPassword = async (token, newPassword) => {
+  try {
+    // Find user by reset token
+    const user = findUserByResetToken(token);
+    
+    if (!user) {
+      return false;
+    }
+    
+    // Hash the new password
+    const passwordHash = await bcrypt.hash(newPassword, SALT_ROUNDS);
+    
+    // Update the user's password and clear reset token
+    user.passwordHash = passwordHash;
+    user.passwordResetToken = null;
+    user.passwordResetExpires = null;
+    
+    // Save changes
+    betaUsers.set(user.id, user);
+    
+    // Delete token from token storage
+    passwordResetTokens.delete(token);
+    
+    return true;
+  } catch (error) {
+    logger.error('Error resetting password', { error });
+    return false;
+  }
+};
+
+/**
+ * Change a user's password (authenticated)
+ * @param {string} userId - User ID
+ * @param {string} currentPassword - Current password
+ * @param {string} newPassword - New password
+ * @returns {boolean} Whether the password was changed successfully
+ */
+const changePassword = async (userId, currentPassword, newPassword) => {
+  try {
+    const user = findUserById(userId);
+    
+    if (!user) {
+      return false;
+    }
+    
+    // Verify current password
+    const passwordMatch = await bcrypt.compare(currentPassword, user.passwordHash);
+    
+    if (!passwordMatch) {
+      return false;
+    }
+    
+    // Hash the new password
+    const passwordHash = await bcrypt.hash(newPassword, SALT_ROUNDS);
+    
+    // Update password
+    user.passwordHash = passwordHash;
+    
+    // Save changes
+    betaUsers.set(userId, user);
+    
+    return true;
+  } catch (error) {
+    logger.error('Error changing password', { error, userId });
+    return false;
+  }
+};
+
+/**
+ * Update a user's profile
+ * @param {string} userId - User ID
+ * @param {Object} updates - Fields to update (name, etc.)
+ * @returns {Object|null} Updated user object or null if user not found
+ */
+const updateProfile = async (userId, updates) => {
+  try {
+    const user = findUserById(userId);
+    
+    if (!user) {
+      return null;
+    }
+    
+    // Apply updates (only allow certain fields to be updated)
+    if (updates.name) {
+      user.name = updates.name;
+    }
+    
+    // Add other updateable fields as needed
+    
+    // Save changes
+    betaUsers.set(userId, user);
+    
+    // Return updated user without password
+    const { passwordHash, ...userWithoutPassword } = user;
+    return userWithoutPassword;
+  } catch (error) {
+    logger.error('Error updating user profile', { error, userId });
+    return null;
+  }
+};
+
+/**
+ * Update user properties
+ * @param {string} userId - User ID
+ * @param {Object} updates - Object with properties to update
+ * @returns {Object|null} Updated user object or null if user not found
+ */
+const updateUser = async (userId, updates) => {
+  try {
+    const user = findUserById(userId);
+    
+    if (!user) {
+      return null;
+    }
+    
+    // Apply updates
+    Object.assign(user, updates);
+    
+    // Store updated user
+    betaUsers.set(userId, user);
+    
+    // Return user without password
+    const { passwordHash, ...userWithoutPassword } = user;
+    return userWithoutPassword;
+  } catch (error) {
+    logger.error('Error updating user', { error, userId });
+    return null;
+  }
+};
+
 module.exports = {
   initialize,
   createUser,
   findUserByEmail,
   findUserById,
-  validateCredentials
+  validateCredentials,
+  findUserByVerificationToken,
+  findUserByResetToken,
+  markEmailVerified,
+  createPasswordResetToken,
+  resetPassword,
+  changePassword,
+  updateProfile,
+  updateUser
 }; 

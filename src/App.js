@@ -18,6 +18,8 @@ const BetaPortalPage = lazy(() => import('./pages/BetaPortalPage'));
 const AdminDashboard = lazy(() => import('./features/beta-program/components/admin/AdminDashboard'));
 const InviteCodeManager = lazy(() => import('./features/beta-program/components/admin/InviteCodeManager'));
 const LoginPage = lazy(() => import('./features/beta-program/components/auth/LoginPage'));
+const VerifyEmailPage = lazy(() => import('./features/beta-program/pages/VerifyEmailPage'));
+const ResetPasswordPage = lazy(() => import('./features/beta-program/pages/ResetPasswordPage'));
 
 /**
  * Main application component
@@ -46,6 +48,8 @@ function App() {
                 {/* Public routes */}
                 <Route exact path="/" element={<HomePage />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/verify-email" element={<VerifyEmailPage />} />
+                <Route path="/reset-password" element={<ResetPasswordPage />} />
                 
                 {/* Beta-tester+ protected routes */}
                 <Route path="/chat" element={

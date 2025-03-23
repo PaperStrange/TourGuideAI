@@ -25,9 +25,21 @@ src/
 │   │   ├── components/       # Feature-specific components
 │   │   └── services/         # Feature-specific services
 │   │
-│   └── user-profile/         # User profile management feature
-│       ├── components/       # Feature-specific components
-│       └── services/         # Feature-specific services
+│   ├── user-profile/         # User profile management feature
+│   │   ├── components/       # Feature-specific components
+│   │   └── services/         # Feature-specific services
+│   │
+│   └── beta-program/         # Beta program management feature
+│       ├── components/       # Beta program components
+│       │   ├── auth/         # Authentication components
+│       │   └── user/         # User management components
+│       ├── pages/            # Beta program pages
+│       └── services/         # Beta program services
+│           ├── AuthService.js       # Authentication service
+│           ├── InviteCodeService.js # Invite code management
+│           ├── NotificationService.js # Email notifications
+│           ├── PermissionsService.js  # RBAC permissions
+│           └── FeedbackService.js   # Feedback collection
 │
 ├── contexts/                 # React contexts for state management
 │
@@ -43,9 +55,16 @@ The server component uses a layered architecture:
 ```
 server/
 ├── routes/                   # API route handlers
+│   ├── auth.js               # Authentication routes
+│   ├── inviteCodes.js        # Invite code management routes
+│   └── email.js              # Email notification routes
 ├── middleware/               # Express middleware
+│   ├── authMiddleware.js     # Authentication middleware
+│   └── rbacMiddleware.js     # Role-based access control
 ├── utils/                    # Utility functions
 ├── logs/                     # Server logs
+├── services/                 # Server services
+│   └── emailService.js       # SendGrid email service
 └── config/                   # Environment configuration
 ```
 
@@ -157,4 +176,20 @@ Security is implemented through multiple layers:
 5. **Secure Storage**: Encryption of sensitive user data
 6. **Static Code Analysis**: Security-focused ESLint rules
 7. **Dependency Scanning**: Regular auditing of dependencies for vulnerabilities
-8. **OWASP Compliance**: Following OWASP security best practices 
+8. **OWASP Compliance**: Following OWASP security best practices
+9. **Authentication**: JWT-based authentication system with token validation
+10. **Role-Based Access Control**: Granular permissions system for user roles
+11. **Email Verification**: Account verification through secure email tokens
+
+## Authentication & Authorization Architecture
+
+The application implements a comprehensive security model:
+
+1. **JWT Authentication**: Stateless token-based authentication
+2. **Role System**: Tiered user roles (Guest, Beta Tester, Moderator, Admin)
+3. **Permission Framework**: Granular permissions for specific actions
+4. **Middleware Protection**: Route-level access control through middleware
+5. **Frontend Permission Guards**: Component-level rendering based on permissions
+6. **Email Verification**: Two-step verification process for new accounts
+7. **Password Reset**: Secure token-based password recovery
+8. **Invite Code System**: Controlled beta program access through unique codes 

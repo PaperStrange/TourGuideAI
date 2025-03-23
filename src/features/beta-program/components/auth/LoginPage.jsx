@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { 
   Container, 
   Paper, 
@@ -170,6 +170,19 @@ const LoginPage = () => {
             >
               {loading ? 'Signing in...' : 'Sign In'}
             </Button>
+            
+            <Box sx={{ mt: 2, textAlign: 'center' }}>
+              <Typography variant="body2" sx={{ mb: 1 }}>
+                <Link to="/reset-password" style={{ textDecoration: 'none' }}>
+                  Forgot your password?
+                </Link>
+              </Typography>
+              <Typography variant="body2">
+                <Link to="/verify-email" style={{ textDecoration: 'none' }}>
+                  Need to verify your email?
+                </Link>
+              </Typography>
+            </Box>
           </Box>
         ) : (
           <Box component="form" onSubmit={handleRegister}>
