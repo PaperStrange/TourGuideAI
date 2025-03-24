@@ -10,6 +10,7 @@ Backend server for the TourGuideAI application, handling secure token management
 - **logs**: Server log files
 - **config**: Configuration files for different environments
 - **vault**: Secure token storage directory (created at runtime)
+- **scripts**: Administrative and utility scripts
 
 ## Features
 
@@ -43,6 +44,52 @@ Edit the `.env` file with your vault configuration and API keys.
 ```bash
 npm run dev
 ```
+
+## Token Management and Rotation
+
+TourGuideAI includes a comprehensive token management system to securely handle API keys, secrets, and credentials:
+
+### Automatic Rotation Detection
+
+The system automatically detects tokens that need rotation based on their age:
+
+| Token Type | Default Rotation Period |
+|------------|-------------------------|
+| API Keys   | 90 days                 |
+| JWT Secrets| 180 days                |
+| Encryption Keys | 365 days           |
+| OAuth Tokens | 30 days               |
+
+### Token Rotation Tool
+
+A dedicated command-line tool is included for securely rotating tokens:
+
+```bash
+npm run rotate-tokens
+```
+
+This interactive tool provides options to:
+- List tokens that need rotation
+- Rotate tokens securely
+- Add new tokens to the vault
+- List all tokens in the vault
+
+### Security Features
+
+- AES-256-GCM encryption for all stored tokens
+- Secure key derivation with salting
+- Token caching with short TTL to minimize vault access
+- Automatic clearing of tokens from memory
+- Support for hardware security modules (via AWS KMS)
+
+### Production Recommendations
+
+For production environments:
+1. Use a remote vault backend (AWS Secrets Manager or HashiCorp Vault)
+2. Set VAULT_BACKEND to 'aws' or 'hashicorp' in your environment
+3. Configure a secure rotation schedule with alerting
+4. Use the token rotation script in a secure environment only
+5. Consider using an HSM or KMS for the vault encryption key
 
 ## Token Vault System
 
@@ -128,6 +175,8 @@ server/
 │   ├── googlemaps.js
 │   ├── openai.js
 │   └── auth.js
+├── scripts/           # Utility and admin scripts
+│   └── rotateToken.js # Token rotation tool
 ├── utils/             # Utility functions
 │   ├── vaultService.js
 │   ├── tokenProvider.js

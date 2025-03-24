@@ -268,3 +268,95 @@ See `docs/project.refactors.md` for a detailed history of refactoring efforts an
 - In production, use a secrets manager service instead of environment files where possible
 - For production deployment, use a secure vault service (AWS Secrets Manager, HashiCorp Vault, etc.)
 
+## Token Security Configuration Guide
+
+TourGuideAI uses a secure token vault system to protect all sensitive credentials like API keys, secrets, and tokens. This section explains how to configure and manage this system.
+
+### Setting Up the Token Vault
+
+1. Configure vault settings in your server `.env` file:
+
+```
+# Token Vault Configuration
+VAULT_BACKEND=local          # Options: local, aws, hashicorp, in-memory
+VAULT_ENCRYPTION_KEY=your_secure_encryption_key_here
+VAULT_SALT=your_secure_salt_here
+VAULT_PATH=./vault/vault.enc # For local backend
+IMPORT_ENV_SECRETS=true      # Import legacy env vars on startup
+```
+
+2. For initial setup, set `IMPORT_ENV_SECRETS=true` and provide your API keys as regular environment variables:
+
+```
+# These will be imported to the vault on first run
+OPENAI_API_KEY=your_openai_key_here
+GOOGLE_MAPS_API_KEY=your_google_maps_key_here
+JWT_SECRET=your_jwt_secret_here
+SENDGRID_API_KEY=your_sendgrid_key_here
+```
+
+3. Start the server once to initialize the vault and import secrets:
+
+```bash
+npm run start
+```
+
+4. After initial import, you can remove the raw API keys from your environment file and set `IMPORT_ENV_SECRETS=false`.
+
+### Managing Tokens
+
+Use the built-in token rotation tool for secure token management:
+
+```bash
+npm run rotate-tokens
+```
+
+This interactive CLI tool allows you to:
+- List tokens that need rotation
+- Rotate tokens securely
+- Add new tokens to the vault
+- List all tokens in the vault
+
+### Configuring Different Environments
+
+#### Development (Default)
+- Use `VAULT_BACKEND=local` for simple file-based storage
+- Store the vault file in a location excluded from version control
+
+#### Production
+- Use `VAULT_BACKEND=aws` for AWS Secrets Manager integration
+- Set `AWS_REGION`, `AWS_ACCESS_KEY_ID`, and `AWS_SECRET_ACCESS_KEY` for AWS access
+- Or use `VAULT_BACKEND=hashicorp` for HashiCorp Vault integration
+- Set `VAULT_REMOTE_ENDPOINT` and `VAULT_REMOTE_TOKEN` for remote vault access
+
+#### High-Security Environments
+- Use a Hardware Security Module (HSM) to store the `VAULT_ENCRYPTION_KEY`
+- Use AWS KMS or similar service to manage encryption keys
+- Set up automated rotation alerts for expiring tokens
+
+### Security Best Practices
+
+1. **Encryption Key Security**: Store the `VAULT_ENCRYPTION_KEY` and `VAULT_SALT` securely, preferably in a separate system from the vault file
+2. **Regular Rotation**: Rotate API keys according to the recommended schedules:
+   - API Keys: 90 days
+   - JWT Secrets: 180 days
+   - Encryption Keys: 365 days
+3. **Access Control**: Limit access to the token rotation tool to administrators
+4. **Backend Selection**: Use appropriate vault backends based on environment security requirements
+5. **Monitoring**: Set up alerts for tokens nearing rotation dates
+
+## Contributing
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Project Structure
+
+- `/src` - Frontend React application
+- `/server` - Backend Express server
+- `/docs` - Project documentation
+- `/tests` - Test suites and fixtures
+

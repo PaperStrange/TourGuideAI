@@ -7,12 +7,13 @@
 const sgMail = require('@sendgrid/mail');
 const logger = require('../utils/logger');
 const crypto = require('crypto');
+const tokenProvider = require('../utils/tokenProvider');
 
 // In-memory token storage (in production, use a database)
 const emailVerificationTokens = new Map();
 
-// Initialize SendGrid with API key
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+// Initialize SendGrid API key - this will be set dynamically when sending emails
+// We don't initialize here to avoid loading the API key at startup
 
 /**
  * Send a generic email
@@ -21,6 +22,12 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
  */
 const sendEmail = async (emailData) => {
   try {
+    // Get the SendGrid API key from the token provider
+    const sendgridApiKey = await tokenProvider.getSendGridToken();
+    
+    // Set the API key just for this request
+    sgMail.setApiKey(sendgridApiKey);
+    
     const msg = {
       from: process.env.EMAIL_FROM,
       ...emailData

@@ -156,7 +156,51 @@ This document records key lessons learned during the development of TourGuideAI,
 - **Solution**: Added configurable rate limiting middleware for all API proxies
 - **Impact**: API costs reduced and service availability improved
 
-### Error Handling
+## Token Management & Vault Security
+
+### Centralized Token Management
+- **Lesson**: Implement a centralized token vault for all credentials and secrets
+- **Context**: API keys, secrets, and tokens were initially stored directly in environment variables
+- **Solution**: Created a secure vault service with encryption, rotation tracking, and multiple backend support
+- **Impact**: Unified security approach, structured rotation process, reduced token exposure risk
+
+### Encryption for Secrets
+- **Lesson**: Always use strong encryption (AES-256-GCM) for stored credentials
+- **Context**: Sensitive tokens like API keys were only protected by environment variables
+- **Solution**: Implemented AES-256-GCM with secure key derivation for all stored tokens
+- **Impact**: Protected sensitive credentials at rest, even if access to the vault file is gained
+
+### Token Caching Strategy
+- **Lesson**: Use memory caching with short TTL for frequently accessed tokens
+- **Context**: Initial token access required decryption operations for each API call
+- **Solution**: Implemented in-memory token caching with 5-minute TTL
+- **Impact**: Reduced vault access overhead while maintaining security through short cache lifetime
+
+### Automatic Rotation Tracking
+- **Lesson**: Set type-specific token rotation schedules with automatic tracking
+- **Context**: API keys were being used indefinitely without scheduled rotation
+- **Solution**: Implemented token type-specific rotation periods with automatic tracking and alerting
+- **Impact**: Reduced credential exposure time, improved compliance with security best practices
+
+### Multiple Backend Support
+- **Lesson**: Support multiple secure storage backends for different environments
+- **Context**: Local storage was used for all environments, creating security risks in production
+- **Solution**: Created pluggable backend architecture supporting local file, AWS Secrets Manager, and HashiCorp Vault
+- **Impact**: Enabled appropriate security levels for different environments while maintaining consistent API
+
+### Production Security
+- **Lesson**: Use specialized secret management services for production environments
+- **Context**: Production environments need higher security than development environments
+- **Solution**: Added AWS Secrets Manager and HashiCorp Vault integrations for production
+- **Impact**: Leveraged enterprise-level security in production while maintaining developer-friendly local options
+
+### Command-Line Management Tools
+- **Lesson**: Create dedicated admin tools for secure token management
+- **Context**: Token management was ad-hoc and required direct environment manipulation
+- **Solution**: Built an interactive CLI tool for secure token rotation and management
+- **Impact**: Standardized token management process, reduced human error in token handling
+
+## Error Handling
 - **Lesson**: Implement robust error handling with retry logic and fallbacks
 - **Context**: API errors were causing UI crashes and poor user experience
 - **Solution**: Added retry mechanisms with exponential backoff and fallback content
