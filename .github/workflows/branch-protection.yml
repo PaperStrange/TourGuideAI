@@ -1,0 +1,80 @@
+name: Branch Protection
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 1'  # Run every Monday at midnight
+
+jobs:
+  protect-main-branch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Configure Branch Protection for Main
+        uses: github/branch-protection@v3
+        with:
+          token: ${{ secrets.ADMIN_GITHUB_TOKEN }}
+          owner: ${{ github.repository_owner }}
+          repo: ${{ github.event.repository.name }}
+          branch: "main"
+          enforce_admins: true
+          required_status_checks: "security-scan,build-and-test,e2e-tests"
+          strict: true
+          required_pull_request_reviews: true
+          required_approving_review_count: 1
+          dismiss_stale_reviews: true
+          require_code_owner_reviews: true
+          
+  protect-develop-branch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Configure Branch Protection for Develop
+        uses: github/branch-protection@v3
+        with:
+          token: ${{ secrets.ADMIN_GITHUB_TOKEN }}
+          owner: ${{ github.repository_owner }}
+          repo: ${{ github.event.repository.name }}
+          branch: "develop"
+          enforce_admins: true
+          required_status_checks: "build-and-test"
+          strict: true
+          required_pull_request_reviews: true
+          required_approving_review_count: 1
+          dismiss_stale_reviews: true
+          
+  protect-release-branches:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Configure Branch Protection for Release Branches
+        uses: github/branch-protection@v3
+        with:
+          token: ${{ secrets.ADMIN_GITHUB_TOKEN }}
+          owner: ${{ github.repository_owner }}
+          repo: ${{ github.event.repository.name }}
+          pattern: "release-*"
+          enforce_admins: true
+          required_status_checks: "security-scan,build-and-test"
+          strict: true
+          required_pull_request_reviews: true
+          required_approving_review_count: 1
+          dismiss_stale_reviews: true 

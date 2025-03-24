@@ -2,9 +2,20 @@ name: TourGuideAI CI/CD Pipeline
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: 
+      - main
+      - develop
+      - 'feat-*'
+      - 'release-*'
   pull_request:
-    branches: [ main, develop ]
+    branches: 
+      - main
+      - develop
+      - 'release-*'
+
+# Set default permissions as least privilege
+permissions:
+  contents: read
 
 jobs:
   build-and-test:
@@ -12,19 +23,23 @@ jobs:
     
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
     
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     
     - name: Install dependencies
       run: npm ci
+    
+    - name: Dependency Review
+      uses: actions/dependency-review-action@v3
+      if: github.event_name == 'pull_request'
     
     - name: Lint
       run: npm run lint || true
@@ -35,31 +50,44 @@ jobs:
     - name: Test
       run: npm test -- --watchAll=false
     
+    - name: Setup CodeQL
+      uses: github/codeql-action/init@v2
+      if: github.event_name == 'push'
+      with:
+        languages: javascript
+    
+    - name: Run CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
+      if: github.event_name == 'push'
+    
     - name: Archive build artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: build-artifacts
         path: build/
+        retention-days: 5
 
   deploy-staging:
     needs: build-and-test
-    if: github.ref == 'refs/heads/develop'
+    if: github.ref == 'refs/heads/develop' || startsWith(github.ref, 'refs/heads/release-')
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     
     - name: Download build artifacts
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v4
       with:
         name: build-artifacts
         path: build/
     
     - name: Set up AWS CLI
-      uses: aws-actions/configure-aws-credentials@v1
+      uses: aws-actions/configure-aws-credentials@v4
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME_STAGING }}
         aws-region: us-east-1
     
     - name: Deploy to S3 (Staging)
@@ -72,21 +100,23 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: production
+    permissions:
+      id-token: write
+      contents: read
     
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     
     - name: Download build artifacts
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v4
       with:
         name: build-artifacts
         path: build/
     
     - name: Set up AWS CLI
-      uses: aws-actions/configure-aws-credentials@v1
+      uses: aws-actions/configure-aws-credentials@v4
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME_PRODUCTION }}
         aws-region: us-east-1
     
     - name: Deploy to S3 (Production)
@@ -98,22 +128,32 @@ jobs:
     needs: [deploy-staging, deploy-production]
     if: always() && (needs.deploy-staging.result == 'success' || needs.deploy-production.result == 'success')
     runs-on: ubuntu-latest
+    permissions: {}
     
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     
     - name: Use Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v4
       with:
-        node-version: '16.x'
+        node-version: '18.x'
+        cache: 'npm'
     
     - name: Install Playwright
       run: |
-        npm install -g @playwright/test
+        npm ci
         npx playwright install --with-deps chromium
     
     - name: Run Smoke Tests
       env:
         BASE_URL: ${{ github.ref == 'refs/heads/main' && 'https://app.tourguideai.com' || 'https://staging.tourguideai.com' }}
       run: |
-        npx playwright test smoke.test.js 
+        npx playwright test smoke.test.js
+    
+    - name: Upload test results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: smoke-test-results
+        path: test-results/
+        retention-days: 7 

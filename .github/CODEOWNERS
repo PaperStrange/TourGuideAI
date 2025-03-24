@@ -1,0 +1,37 @@
+# TourGuideAI CODEOWNERS File
+# Each line is a file pattern followed by one or more owners
+
+# Default owners for everything in the repo
+*                   @TourGuideAI/developers
+
+# Infrastructure and workflow files
+.github/workflows/   @TourGuideAI/devops-team
+terraform/           @TourGuideAI/devops-team
+docker/              @TourGuideAI/devops-team
+*.yml                @TourGuideAI/devops-team
+
+# Security sensitive areas
+/auth/               @TourGuideAI/security-team
+/src/utils/security/ @TourGuideAI/security-team
+/server/api/auth/    @TourGuideAI/security-team
+
+# Frontend components
+/src/components/     @TourGuideAI/frontend-team
+/src/pages/          @TourGuideAI/frontend-team
+/styles/             @TourGuideAI/frontend-team
+
+# Backend services
+/server/             @TourGuideAI/backend-team
+/api/                @TourGuideAI/backend-team
+/database/           @TourGuideAI/backend-team
+
+# Documentation
+*.md                 @TourGuideAI/tech-writers @TourGuideAI/developers
+/docs/               @TourGuideAI/tech-writers
+
+# Special branch naming patterns
+# Feature branches require review from both developers and the relevant team
+feat-*               @TourGuideAI/developers @TourGuideAI/tech-leads
+
+# Release branches require additional review and are critical
+release-*            @TourGuideAI/developers @TourGuideAI/devops-team @TourGuideAI/tech-leads 
