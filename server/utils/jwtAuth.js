@@ -2,14 +2,12 @@
  * JWT Authentication Utility
  * 
  * Handles JWT token generation, validation, and management for beta user authentication.
+ * Uses the TokenProvider for secure access to the JWT secret.
  */
 
 const jwt = require('jsonwebtoken');
 const logger = require('./logger');
-
-// JWT configuration
-const JWT_SECRET = process.env.JWT_SECRET || 'development-jwt-secret';
-const JWT_EXPIRY = process.env.JWT_EXPIRY || '24h';
+const tokenProvider = require('./tokenProvider');
 
 // Token blacklist for revoked tokens
 // In production, this would use Redis or another distributed store
@@ -20,8 +18,11 @@ const tokenBlacklist = new Set();
  * @param {Object} user - User object
  * @returns {string} JWT token
  */
-const generateToken = (user) => {
+const generateToken = async (user) => {
   try {
+    const jwtSecret = await tokenProvider.getJWTSecret();
+    const jwtExpiry = process.env.JWT_EXPIRY || '24h';
+    
     const payload = {
       sub: user.id,
       email: user.email,
@@ -29,7 +30,7 @@ const generateToken = (user) => {
       betaAccess: user.betaAccess
     };
     
-    return jwt.sign(payload, JWT_SECRET, { expiresIn: JWT_EXPIRY });
+    return jwt.sign(payload, jwtSecret, { expiresIn: jwtExpiry });
   } catch (error) {
     logger.error('Error generating JWT token', { error });
     throw new Error('Failed to generate authentication token');
@@ -41,15 +42,18 @@ const generateToken = (user) => {
  * @param {string} token - JWT token to verify
  * @returns {Object|null} Decoded token payload or null if invalid
  */
-const verifyToken = (token) => {
+const verifyToken = async (token) => {
   try {
     // Check if token is blacklisted
     if (tokenBlacklist.has(token)) {
       return null;
     }
     
+    // Get the JWT secret from token provider
+    const jwtSecret = await tokenProvider.getJWTSecret();
+    
     // Verify the token
-    return jwt.verify(token, JWT_SECRET);
+    return jwt.verify(token, jwtSecret);
   } catch (error) {
     logger.error('Error verifying JWT token', { error });
     return null;
@@ -60,13 +64,16 @@ const verifyToken = (token) => {
  * Revoke a JWT token (add to blacklist)
  * @param {string} token - JWT token to revoke
  */
-const revokeToken = (token) => {
+const revokeToken = async (token) => {
   try {
     // Add token to blacklist
     tokenBlacklist.add(token);
     
+    // Get the JWT secret from token provider
+    const jwtSecret = await tokenProvider.getJWTSecret();
+    
     // Verify token to get expiry
-    const decoded = jwt.verify(token, JWT_SECRET);
+    const decoded = jwt.verify(token, jwtSecret);
     const expiryTime = decoded.exp * 1000; // Convert to milliseconds
     
     // Schedule removal from blacklist after expiry

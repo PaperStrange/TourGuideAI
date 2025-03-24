@@ -2,6 +2,7 @@
  * Authentication Middleware
  * 
  * Middleware for JWT-based authentication of beta testers.
+ * Uses the updated jwtAuth module with secure token management.
  */
 
 const jwtAuth = require('../utils/jwtAuth');
@@ -28,7 +29,7 @@ const authenticateUser = async (req, res, next) => {
     }
     
     // Verify token
-    const decoded = jwtAuth.verifyToken(token);
+    const decoded = await jwtAuth.verifyToken(token);
     
     if (!decoded) {
       return res.status(401).json({
@@ -125,7 +126,7 @@ const optionalAuth = async (req, res, next) => {
     }
     
     // Verify token
-    const decoded = jwtAuth.verifyToken(token);
+    const decoded = await jwtAuth.verifyToken(token);
     
     if (!decoded) {
       return next();
