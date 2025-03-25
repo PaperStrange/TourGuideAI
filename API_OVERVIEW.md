@@ -50,6 +50,76 @@ src/
 - **Legacy API Modules**: Compatibility layer that re-exports from core modules
 - **Server Proxy**: For secure API key management, requests can be proxied through backend
 
+## API Module Organization
+
+TourGuideAI's API modules are organized to prevent naming conflicts and ensure clean imports:
+
+### Namespaced Exports
+
+API modules use namespaced exports to avoid naming conflicts between different service integrations:
+
+```javascript
+// core/api/index.js
+import * as googleMapsApi from './googleMapsApi';
+import * as openaiApi from './openaiApi';
+import * as weatherApi from './weatherApi';
+
+// Export all APIs as namespaces
+export {
+  googleMapsApi,
+  openaiApi,
+  weatherApi
+};
+
+// Provide a default API client for simple HTTP requests
+export { default } from '../services/apiClient';
+```
+
+### Importing API Modules
+
+```javascript
+// Import specific API module with namespace
+import { googleMapsApi } from '../core/api';
+
+// Use the API with namespaced functions
+googleMapsApi.geocodeAddress("Eiffel Tower, Paris");
+googleMapsApi.displayRouteOnMap({ origin: "Paris", destination: "Nice" });
+
+// Import multiple API modules
+import { googleMapsApi, openaiApi } from '../core/api';
+
+// Use different API modules without conflict
+const location = await googleMapsApi.geocodeAddress("Eiffel Tower");
+const description = await openaiApi.generateDescription(location);
+```
+
+### Global Variable Declarations
+
+For external libraries that inject global variables, we use ESLint directives to prevent linting errors:
+
+```javascript
+// In googleMapsApi.js
+/* global google */
+// This tells ESLint that 'google' is a global variable
+
+function initializeMap(container, options) {
+  return new google.maps.Map(container, options);
+}
+```
+
+### Default API Client
+
+For simple HTTP requests without specific API requirements, a default API client is available:
+
+```javascript
+// Import default API client
+import apiClient from '../core/api';
+
+// Use for generic HTTP requests
+const data = await apiClient.get('/endpoint', { params });
+const result = await apiClient.post('/endpoint', payload);
+```
+
 ## OpenAI API Integration
 
 ### Key Features

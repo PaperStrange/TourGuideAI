@@ -165,9 +165,12 @@ This project is licensed under the MIT License - see the LICENSE.txt file for de
 ## Project Structure
 
 - `/.github`: GitHub Actions workflows
+  - `/workflows`: CI/CD, security scanning, and frontend stability checks
 - `/build`: Production build output
 - `/deployment`: Deployment configurations
 - `/docs`: Project documentation
+  - `stability-test-plan.md`: Comprehensive stability testing approach
+  - `project.lessons.md`: Lessons learned during development
 - `/public`: Static assets and service worker
   - `offline.html`: Offline fallback page
   - `service-worker.js`: Service worker for offline support
@@ -179,6 +182,7 @@ This project is licensed under the MIT License - see the LICENSE.txt file for de
 - `/src`: Source code
   - `/api`: Legacy API functions (being migrated to core)
   - `/components`: Reusable UI components
+    - `/common`: Shared UI components like Navbar with graceful degradation
   - `/contexts`: React contexts for state management
   - `/core`: Shared code across features
     - `/api`: API clients for external services 
@@ -203,6 +207,9 @@ This project is licensed under the MIT License - see the LICENSE.txt file for de
   - `/tests`: Component-specific tests
   - `/utils`: Utility functions
 - `/tests`: End-to-end and integration tests
+  - `/stability`: Frontend stability tests for router, theme, and resilience
+  - `/cross-browser`: Cross-browser compatibility tests
+  - `/load`: Performance and load testing
 
 ## Refactoring Philosophy
 
@@ -213,6 +220,7 @@ Throughout development, we've applied several key refactoring principles:
 - **Performance Optimization**: Regular improvements to frontend and backend performance
 - **Security Hardening**: Progressive enhancement of security practices
 - **Infrastructure Automation**: Continuous improvement of CI/CD processes
+- **Frontend Stability**: Ensuring robust React component architecture with proper error handling
 
 See `docs/project.refactors.md` for a detailed history of refactoring efforts and `docs/project.lessons.md` for lessons learned.
 
@@ -229,9 +237,9 @@ See `docs/project.refactors.md` for a detailed history of refactoring efforts an
 
 ## Technology Stack
 
-- React
-- React Router
-- Material UI
+- React with well-structured component architecture
+- React Router with proper route configuration
+- Material UI with ThemeProvider for consistent styling
 - OpenAI API
 - Google Maps API
 - JWT Authentication
@@ -239,6 +247,7 @@ See `docs/project.refactors.md` for a detailed history of refactoring efforts an
 - Role-based Access Control (RBAC)
 - Recharts for data visualization
 - HTML2Canvas for screenshot capture
+- Robust error boundaries and graceful degradation
 
 ## Security Configuration
 

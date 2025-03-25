@@ -4,7 +4,7 @@
  * Service for handling email-related operations in the beta program
  */
 
-import apiClient from '../../../core/api/apiClient';
+import apiClient from '../../../core/services/apiClient';
 import { getAuthHeaders } from './AuthService';
 
 const API_BASE_URL = '/api/emails';

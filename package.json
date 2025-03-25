@@ -16,6 +16,7 @@
     "express-rate-limit": "^7.1.1",
     "helmet": "^7.0.0",
     "html2canvas": "^1.4.1",
+    "jsonwebtoken": "^9.0.2",
     "lz-string": "^1.5.0",
     "memory-cache": "^0.2.0",
     "morgan": "^1.10.0",
@@ -35,7 +36,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "node server/server.js",
-    "dev": "concurrently \"npm run start\" \"npm run server\"",
+    "dev": "concurrently \"PORT=3000 npm run start\" \"PORT=3001 npm run server\"",
+    "dev:win": "concurrently \"set PORT=3000 && npm run start\" \"set PORT=3001 && npm run server\"",
     "analyze": "ANALYZE=true npm run build",
     "analyze:win": "set ANALYZE=true && npm run build"
   },

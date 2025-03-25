@@ -1,5 +1,39 @@
 # TourGuideAI Version History
 
+## Version 0.5.0-ALPHA2 (2023-03-25) - Frontend Stability Enhancement
+
+*Release Date: March 25, 2023*
+
+### Description
+Patch release focused on frontend stability, error handling, and resilience improvements
+
+### Major Improvements
+- Fixed critical React Router nesting issues that caused runtime errors
+- Implemented Material UI ThemeProvider for consistent styling across components
+- Added proper error boundaries and fallback UI for backend service unavailability
+- Created comprehensive stability test suite with automated CI verification
+
+### Technical Enhancements
+- Standardized API module organization with namespaced exports
+- Implemented proper ESLint global declarations for external libraries
+- Added graceful degradation for service failures
+- Enhanced component resilience with error boundaries
+
+### Testing Improvements
+- Added Router structure validation tests
+- Created Theme Provider presence tests
+- Implemented backend resilience tests
+- Added automated stability checks to CI/CD pipeline
+
+### Documentation Updates
+- Created comprehensive stability tests README
+- Updated core module documentation with API organization guidelines
+- Enhanced project refactoring records with stability improvements
+- Updated GitHub workflows documentation with stability checks
+
+### Known Issues
+- No new issues introduced
+
 ## Version 0.5.0-ALPHA1 - Performance Optimization & Production Readiness
 
 *Release Date: March 21, 2023*

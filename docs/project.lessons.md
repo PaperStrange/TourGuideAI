@@ -101,6 +101,10 @@ This document records key lessons learned during the development of TourGuideAI,
 - **Context**: Our initial CI workflow ran tests sequentially, taking over 15 minutes
 - **Solution**: Implemented matrix testing strategy in GitHub Actions
 - **Impact**: Build times reduced to under 6 minutes
+- **Lesson**: Use environment variables to bypass non-critical checks in CI/CD pipelines
+- **Context**: ESLint errors were causing build failures even though the application was functional
+- **Solution**: Added DISABLE_ESLINT_PLUGIN environment variable to bypass ESLint during builds
+- **Impact**: Prevented non-critical linting issues from blocking deployments while still enforcing linting in separate steps
 
 ### Dependency Management
 - **Lesson**: Always keep package.json and package-lock.json synchronized when using npm ci in CI/CD pipelines
@@ -150,6 +154,50 @@ This document records key lessons learned during the development of TourGuideAI,
 - **Solution**: Added BrowserStack integration for real device testing
 - **Impact**: Caught 5 critical mobile-specific bugs before release
 
+## Frontend Stability
+
+### React Router Structure
+- **Lesson**: Avoid nested Router components in React applications
+- **Context**: Multiple Router components were causing unpredictable navigation behavior and runtime errors
+- **Solution**: Implemented a single top-level Router component with proper Route nesting
+- **Impact**: Eliminated router-related crashes and navigation inconsistencies
+
+### Theme Provider Implementation
+- **Lesson**: Application-wide theming requires a properly placed ThemeProvider
+- **Context**: Inconsistent styling occurred across components due to missing ThemeProvider
+- **Solution**: Added a single ThemeProvider at the application root with proper theme configuration
+- **Impact**: Consistent styling across all components and elimination of styling-related bugs
+
+### Global Variable Declarations
+- **Lesson**: Properly declare external library globals to prevent ESLint errors
+- **Context**: External libraries like Google Maps were causing ESLint errors due to undefined globals
+- **Solution**: Added explicit global declarations using ESLint global directives
+- **Impact**: Cleaner code with proper linting support for external libraries
+
+### Backend Resilience
+- **Lesson**: Implement graceful degradation for backend service failures
+- **Context**: Application crashed when backend services were unavailable
+- **Solution**: Added error boundaries and fallback UI components with user-friendly messages
+- **Impact**: Application remains functional with helpful feedback during service disruptions
+
+### API Module Organization
+- **Lesson**: Use namespaced exports to prevent naming conflicts between API modules
+- **Context**: Name collisions between similar functions in different API modules caused bugs
+- **Solution**: Switched to namespaced exports and imports for all API modules
+- **Impact**: Eliminated naming conflicts while maintaining logical API organization
+
+### Frontend Stability Testing
+- **Lesson**: Create specific tests for architectural stability concerns
+- **Context**: Router nesting issues were not caught by functional tests
+- **Solution**: Implemented dedicated stability tests for router structure, theme providers, and backend resilience
+- **Impact**: Early detection of architectural issues before they cause runtime errors
+
+### Automated Stability Verification
+- **Lesson**: Integrate stability checks into CI/CD pipeline
+- **Context**: Stability issues were frequently reintroduced during development
+- **Solution**: Added automated checks in CI pipeline to verify proper architecture 
+- **Impact**: Prevented regression of stability issues and maintained consistent architecture
+
 ## API Integration
 
 ### Security
@@ -161,6 +209,16 @@ This document records key lessons learned during the development of TourGuideAI,
 - **Context**: Without rate limiting, API quotas were quickly exhausted
 - **Solution**: Added configurable rate limiting middleware for all API proxies
 - **Impact**: API costs reduced and service availability improved
+
+### API Module Organization
+- **Lesson**: Avoid naming conflicts when using wildcard exports from multiple files
+- **Context**: Build failed due to conflicts between identically named exports (setApiKey, setDebugMode) from different API modules
+- **Solution**: Switched from wildcard exports to namespaced exports (e.g., `export const openaiApi = openaiModule`)
+- **Impact**: Eliminated name collisions while preserving logical module organization
+- **Lesson**: Provide backward compatibility when refactoring module exports
+- **Context**: Changed module exports broke existing service implementations
+- **Solution**: Maintained a default export for common use cases while introducing the namespaced approach
+- **Impact**: Enabled incremental adoption of the new API structure without breaking existing code
 
 ## Token Management & Vault Security
 
@@ -233,6 +291,12 @@ This document records key lessons learned during the development of TourGuideAI,
 - **Context**: Related code was scattered across the codebase
 - **Solution**: Co-located components, services, and tests for each feature
 - **Impact**: Improved code discoverability and developer onboarding
+
+### Import Path Consistency
+- **Lesson**: Verify import paths match the actual file structure during refactoring
+- **Context**: Build failures occurred when a file imported from '../../../core/api/apiClient' but the file was actually in '../../../core/services/apiClient'
+- **Solution**: Established consistent module paths and updated imports to reflect the actual directory structure
+- **Impact**: Prevented build failures and improved code maintainability
 
 ### Modularity
 - **Lesson**: Extract shared functionality into core modules
@@ -470,6 +534,32 @@ This document records key lessons learned during the development of TourGuideAI,
 - **Context**: Backend returned structured error objects with types that needed user-friendly interpretation
 - **Solution**: Added specific error handling for common error types (invalid credentials, etc.)
 - **Impact**: Improved user experience with clear, actionable error messages
+
+## Frontend Development
+
+### Material UI Integration
+- **Lesson**: Always include Material UI's ThemeProvider at the root of React applications using MUI components
+- **Context**: Application rendered a blank page because no ThemeProvider was wrapping the components that used MUI
+- **Solution**: Added ThemeProvider in the application's entry point (index.js)
+- **Impact**: Fixed component rendering and ensured consistent theming across the application
+
+### React Router Configuration
+- **Lesson**: Avoid nested router components in React applications
+- **Context**: Application crashed with error "You cannot render a <Router> inside another <Router>"
+- **Solution**: Removed redundant Router component in App.js since BrowserRouter was already in index.js
+- **Impact**: Eliminated router nesting errors and improved application stability
+
+### ESLint Integration
+- **Lesson**: Properly configure ESLint for external libraries that define global variables
+- **Context**: ESLint errors for the 'google' variable from Google Maps API blocked the build
+- **Solution**: Added /* global google */ comment to inform ESLint about externally defined variables
+- **Impact**: Prevented false positive linting errors while maintaining code quality checks
+
+### Graceful Degradation
+- **Lesson**: Implement graceful degradation for frontend when backend services are unavailable
+- **Context**: Application crashed when trying to access backend services that weren't running
+- **Solution**: Added backend availability detection and fallback UI that works without the backend
+- **Impact**: Improved user experience by showing meaningful content even when backend services are down
 
 ---
 

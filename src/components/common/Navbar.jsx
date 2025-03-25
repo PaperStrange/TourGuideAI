@@ -28,6 +28,7 @@ const Navbar = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const location = useLocation();
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [authError, setAuthError] = useState(false);
 
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
@@ -47,6 +48,20 @@ const Navbar = () => {
       return location.pathname === '/';
     }
     return location.pathname.startsWith(path);
+  };
+
+  // Safely render AuthButtons component
+  const renderAuthButtons = (props) => {
+    try {
+      return <AuthButtons {...props} />;
+    } catch (error) {
+      console.warn('Error rendering AuthButtons:', error);
+      return (
+        <Button color="inherit" component={Link} to="/">
+          Home
+        </Button>
+      );
+    }
   };
 
   const drawer = (
@@ -72,7 +87,7 @@ const Navbar = () => {
       <Divider />
       
       {/* Mobile auth buttons */}
-      <AuthButtons isMobile={true} onMobileItemClick={handleDrawerToggle} />
+      {renderAuthButtons({ isMobile: true, onMobileItemClick: handleDrawerToggle })}
     </Box>
   );
 
@@ -145,7 +160,7 @@ const Navbar = () => {
               </Box>
 
               {/* Auth buttons */}
-              <AuthButtons />
+              {renderAuthButtons()}
             </>
           )}
         </Toolbar>

@@ -3,7 +3,7 @@
  * Handles JWT-based authentication, token management, and user operations
  */
 
-import api from '../../../core/api';
+import apiClient from '../../../core/api';
 import permissionsService from './PermissionsService';
 
 // Token constants
@@ -39,7 +39,7 @@ class AuthService {
       };
 
       // Call the public registration API endpoint
-      const response = await api.post(`${API_BASE_URL}/register/public`, data);
+      const response = await apiClient.post(`${API_BASE_URL}/register/public`, data);
       
       // Store the JWT token and user data
       if (response.data.token) {
@@ -71,7 +71,7 @@ class AuthService {
       }
 
       // Call the login API endpoint
-      const response = await api.post(`${API_BASE_URL}/login`, { email, password });
+      const response = await apiClient.post(`${API_BASE_URL}/login`, { email, password });
       
       // Store the JWT token and user data
       if (response.data.token) {
@@ -127,7 +127,7 @@ class AuthService {
       if (token) {
         // Call the logout API endpoint to invalidate the token on the server
         try {
-          await api.post(`${API_BASE_URL}/logout`, {}, {
+          await apiClient.post(`${API_BASE_URL}/logout`, {}, {
             headers: { Authorization: `Bearer ${token}` }
           });
         } catch (error) {
@@ -171,7 +171,7 @@ class AuthService {
 
       try {
         // Call the /me API endpoint to verify the token and get user data
-        const response = await api.get(`${API_BASE_URL}/me`, {
+        const response = await apiClient.get(`${API_BASE_URL}/me`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         
@@ -242,7 +242,7 @@ class AuthService {
   async validateBetaCode(code) {
     try {
       // Call the validation API endpoint
-      const response = await api.post('/api/invite-codes/validate', { code });
+      const response = await apiClient.post('/api/invite-codes/validate', { code });
       return response.data.valid;
     } catch (error) {
       console.error('Beta code validation error:', error);
@@ -258,7 +258,7 @@ class AuthService {
    */
   async changePassword(currentPassword, newPassword) {
     try {
-      const response = await api.post(
+      const response = await apiClient.post(
         `${API_BASE_URL}/change-password`,
         { currentPassword, newPassword },
         { headers: getAuthHeaders() }
@@ -277,7 +277,7 @@ class AuthService {
    */
   async updateProfile(profileData) {
     try {
-      const response = await api.put(
+      const response = await apiClient.put(
         `${API_BASE_URL}/profile`,
         profileData,
         { headers: getAuthHeaders() }

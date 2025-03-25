@@ -3,7 +3,7 @@
  * Handles invite code management for beta program administrators
  */
 
-import api from '../../../core/api';
+import apiClient from '../../../core/api';
 import { getAuthHeaders } from './AuthService';
 import emailService from './EmailService';
 
@@ -22,7 +22,7 @@ class InviteCodeService {
     try {
       const { sendEmail, recipientEmail } = options;
       
-      const response = await api.post(
+      const response = await apiClient.post(
         `${API_BASE_URL}/generate`, 
         { sendEmail, recipientEmail },
         { headers: getAuthHeaders() }
@@ -41,7 +41,7 @@ class InviteCodeService {
    */
   async getAllCodes() {
     try {
-      const response = await api.get(
+      const response = await apiClient.get(
         API_BASE_URL,
         { headers: getAuthHeaders() }
       );
@@ -59,7 +59,7 @@ class InviteCodeService {
    */
   async validateCode(code) {
     try {
-      const response = await api.post(
+      const response = await apiClient.post(
         `${API_BASE_URL}/validate`, 
         { code }
       );
@@ -77,7 +77,7 @@ class InviteCodeService {
    */
   async invalidateCode(code) {
     try {
-      const response = await api.post(
+      const response = await apiClient.post(
         `${API_BASE_URL}/invalidate`, 
         { code },
         { headers: getAuthHeaders() }
@@ -97,7 +97,7 @@ class InviteCodeService {
    */
   async sendInviteCodeEmail(code, email) {
     try {
-      const response = await api.post(
+      const response = await apiClient.post(
         `${API_BASE_URL}/send`, 
         { code, email },
         { headers: getAuthHeaders() }

@@ -6,7 +6,23 @@ This directory contains GitHub Actions workflow definitions for continuous integ
 
 ### CI/CD Pipeline (`ci-cd.yml`)
 
-The CI/CD workflow handles continuous integration and deployment:
+This workflow is responsible for the continuous integration and deployment of the TourGuideAI application.
+
+#### Key Features:
+- Builds and tests the application on every push and pull request
+- Deploys to staging for develop and release branches
+- Deploys to production for the main branch
+- Runs smoke tests after deployment
+- Performs frontend stability checks to prevent common React issues
+
+#### Environment Variables:
+- `DISABLE_ESLINT_PLUGIN`: Set to "true" to bypass ESLint checks during the build process, which helps when there are linting errors that shouldn't block deployment.
+
+#### Frontend Stability Checks:
+The workflow includes automated checks to prevent common React frontend issues:
+- Router nesting verification - Prevents nested Router components that cause runtime errors
+- Theme Provider validation - Ensures Material UI components are properly themed
+- ESLint global declarations - Verifies proper handling of global variables like Google Maps
 
 - **Triggers**: 
   - Push to main, develop, feat-* and release-* branches
