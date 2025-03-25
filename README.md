@@ -1,6 +1,99 @@
 # TourGuideAI
 
-An AI-powered travel planning application that helps users plan personalized travel itineraries and explore destinations.
+A comprehensive tour guide application that leverages AI to provide personalized travel experiences.
+
+## Project Structure
+
+```
+TourGuideAI/
+├── src/
+│   ├── components/     # React components
+│   ├── pages/         # Page components
+│   ├── tests/         # Test files
+│   │   ├── api/       # API tests
+│   │   ├── components/# Component tests
+│   │   ├── integration/# Integration tests
+│   │   ├── pages/     # Page tests
+│   │   └── stability/ # Stability tests
+│   └── utils/         # Utility functions
+├── docs/
+│   ├── references/    # Reference documentation
+│   ├── stability-test-plan.md
+│   ├── test-execution-results.md
+│   └── other documentation files
+└── .cursor/
+    └── .workflows     # Project workflow documentation
+```
+
+## Development Workflow
+
+This project follows a structured development workflow to ensure consistency and quality. The workflow is documented in `.cursor/.workflows` and includes:
+
+1. **Phase Initialization**
+   - Review project structure and requirements
+   - Set up milestones and tasks
+   - Create necessary documentation
+
+2. **Development Process**
+   - Execute tasks according to priorities
+   - Regular updates to project status
+   - Continuous testing and validation
+
+3. **Phase Completion**
+   - Comprehensive code review
+   - Documentation updates
+   - Test execution and validation
+
+4. **Project Artifacts**
+   - Architecture documentation
+   - API documentation
+   - Test results and coverage reports
+
+## Testing Strategy
+
+The project implements a comprehensive testing strategy as outlined in `docs/stability-test-plan.md`:
+
+- Unit Tests: Component and function testing
+- Integration Tests: Component interaction testing
+- End-to-End Tests: Complete user flow testing
+- Stability Tests: System reliability testing
+
+Test execution results are tracked in `docs/test-execution-results.md`.
+
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run the development server:
+   ```bash
+   npm start
+   ```
+4. Run tests:
+   ```bash
+   npm test
+   ```
+
+## Documentation
+
+- Project workflow: `.cursor/.workflows`
+- Testing strategy: `docs/stability-test-plan.md`
+- Test results: `docs/test-execution-results.md`
+- API documentation: `API_OVERVIEW.md`
+- Architecture: `ARCHITECTURE.md`
+
+## Contributing
+
+1. Follow the project workflow in `.cursor/.workflows`
+2. Ensure all tests pass before submitting changes
+3. Update relevant documentation
+4. Submit pull requests with detailed descriptions
+
+## License
+
+[License details here]
 
 ## Features
 

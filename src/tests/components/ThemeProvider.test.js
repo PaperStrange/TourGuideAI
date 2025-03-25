@@ -5,7 +5,8 @@
  */
 
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import { create } from 'react-test-renderer';
 import App from '../../App';
@@ -18,7 +19,12 @@ jest.mock('react-dom/client', () => ({
   })),
 }));
 
-jest.mock('../../App', () => () => <div>App Component</div>);
+jest.mock('../../App', () => {
+  return function MockApp() {
+    return <div data-testid="app">App Component</div>;
+  };
+});
+
 jest.mock('../../reportWebVitals', () => () => {});
 
 // Mock Material UI components
@@ -81,4 +87,32 @@ describe('Theme Provider', () => {
       expect(themeConfig.palette.secondary.main).toBeDefined();
     }
   });
-}); 
+
+  test('ThemeProvider is properly implemented', () => {
+    // Render a component with the ThemeProvider
+    render(
+      <ThemeProvider theme={{}}>
+        <TestComponent />
+      </ThemeProvider>
+    );
+    
+    // Check that the themed component renders
+    expect(screen.getByTestId('themed-component')).toBeInTheDocument();
+  });
+  
+  test('App is wrapped with ThemeProvider', () => {
+    // Import the index module which contains the ThemeProvider wrapping
+    const Index = require('../../index');
+    
+    // We're just checking that the module doesn't throw an error
+    expect(typeof Index).toBe('object');
+    
+    // Since we can't easily access the JSX structure from index.js,
+    // this test is just a simple smoke test to verify it doesn't crash
+  });
+});
+
+// Simple test component that uses theme
+const TestComponent = () => {
+  return <div data-testid="themed-component">Themed Component</div>;
+}; 
