@@ -102,6 +102,12 @@ This document records key lessons learned during the development of TourGuideAI,
 - **Solution**: Implemented matrix testing strategy in GitHub Actions
 - **Impact**: Build times reduced to under 6 minutes
 
+### Dependency Management
+- **Lesson**: Always keep package.json and package-lock.json synchronized when using npm ci in CI/CD pipelines
+- **Context**: CI builds failed due to @mui/icons-material being added to package.json without updating package-lock.json
+- **Solution**: Run npm install locally before committing changes to ensure lock file synchronization
+- **Impact**: Prevents CI/CD pipeline failures and ensures consistent dependency installation
+
 ### Environment Management
 - **Lesson**: Environment variables should be validated at build time
 - **Context**: Missing environment variables were causing silent runtime failures
