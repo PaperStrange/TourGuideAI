@@ -78,4 +78,76 @@ test.describe('TourGuideAI Smoke Tests', () => {
     // Go back online
     await context.setOffline(false);
   });
+
+  test('Beta Portal loads correctly', async ({ page }) => {
+    // Navigate to beta portal
+    await page.goto(`${BASE_URL}/beta`);
+    
+    // Check for beta portal elements
+    await expect(page.locator('text=Beta Program Portal')).toBeVisible();
+    await expect(page.locator('.beta-login-form')).toBeVisible();
+  });
+
+  test('Beta login works with valid credentials', async ({ page }) => {
+    // Navigate to beta portal
+    await page.goto(`${BASE_URL}/beta`);
+    
+    // Fill login form with test user (this should be a test user specifically for smoke tests)
+    await page.fill('#email', 'beta-tester@example.com');
+    await page.fill('#password', 'test-password-123');
+    await page.click('button[type="submit"]');
+    
+    // Verify successful login redirects to dashboard
+    await expect(page.locator('.beta-dashboard')).toBeVisible();
+  });
+
+  test('Onboarding flow is accessible for new users', async ({ page }) => {
+    // This test assumes a new user account or a way to reset onboarding status
+    // Login with a test account that needs onboarding
+    await page.goto(`${BASE_URL}/beta`);
+    await page.fill('#email', 'new-beta-tester@example.com');
+    await page.fill('#password', 'test-password-123');
+    await page.click('button[type="submit"]');
+    
+    // Check that onboarding flow appears
+    await expect(page.locator('.onboarding-flow')).toBeVisible();
+    
+    // Verify first step (code redemption) is shown
+    await expect(page.locator('text=Enter your beta access code')).toBeVisible();
+  });
+
+  test('Survey system displays available surveys', async ({ page }) => {
+    // Login with a test account
+    await page.goto(`${BASE_URL}/beta`);
+    await page.fill('#email', 'beta-tester@example.com');
+    await page.fill('#password', 'test-password-123');
+    await page.click('button[type="submit"]');
+    
+    // Navigate to surveys section
+    await page.click('text=Surveys');
+    
+    // Verify survey list is displayed
+    await expect(page.locator('.survey-list')).toBeVisible();
+    
+    // Verify there's at least one survey item or empty state message
+    await expect(page.locator('.survey-list-item, .empty-surveys-message')).toBeVisible();
+  });
+
+  test('Analytics dashboard loads for admin users', async ({ page }) => {
+    // Login with an admin account
+    await page.goto(`${BASE_URL}/beta`);
+    await page.fill('#email', 'admin@example.com');
+    await page.fill('#password', 'admin-password-123');
+    await page.click('button[type="submit"]');
+    
+    // Navigate to analytics section (admin only)
+    await page.click('text=Analytics');
+    
+    // Verify analytics dashboard is displayed
+    await expect(page.locator('.analytics-dashboard')).toBeVisible();
+    
+    // Check for key analytics components
+    await expect(page.locator('.user-activity-chart')).toBeVisible();
+    await expect(page.locator('.feedback-analysis')).toBeVisible();
+  });
 }); 

@@ -8,6 +8,8 @@
  * @requires Google Maps JavaScript API - The Google Maps library must be loaded
  */
 
+/* global google */  // Tell ESLint that 'google' is a global variable from external script
+
 import axios from 'axios';
 
 // Google Maps API configuration

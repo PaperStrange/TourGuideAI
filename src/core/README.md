@@ -7,6 +7,7 @@ This directory contains core functionality that is shared across different featu
 - `/api` - API client modules for external service integration
   - `googleMapsApi.js` - Google Maps Platform API integration
   - `openaiApi.js` - OpenAI API integration
+  - `index.js` - Namespaced exports to prevent naming conflicts
 - `/components` - Shared UI components
 - `/services` - Service modules for business logic
   - `/storage` - Data persistence services
@@ -17,6 +18,50 @@ This directory contains core functionality that is shared across different featu
   - `RouteService.js` - Route management and processing
 - `/utils` - Utility functions and helpers
   - `imageUtils.js` - Image optimization utilities
+
+## API Module Organization
+
+The API modules are organized to avoid naming conflicts while maintaining a clean import experience:
+
+### Namespaced Exports
+
+Instead of using wildcard exports, each API module exports its functions through namespaces to prevent naming conflicts:
+
+```javascript
+// Import API modules with namespaces
+import { openaiApi, googleMapsApi } from '../core/api';
+
+// Use module functions through their namespace
+openaiApi.setApiKey('your-api-key');
+const route = await openaiApi.generateRoute('Plan a trip to Paris');
+
+googleMapsApi.setApiKey('your-maps-api-key');
+const location = await googleMapsApi.geocodeAddress('Paris, France');
+```
+
+### Default API Client
+
+For backward compatibility and simpler HTTP requests, a default axios client is also exported:
+
+```javascript
+// Import default API client for direct HTTP requests
+import apiClient from '../core/api';
+
+// Use for generic HTTP requests
+const response = await apiClient.get('/api/endpoint');
+const result = await apiClient.post('/api/data', { payload: 'value' });
+```
+
+### Global Variable Declarations
+
+When using external libraries that define global variables (like Google Maps), we use ESLint global declarations to prevent linting errors:
+
+```javascript
+/* global google */  // Tell ESLint that 'google' is a global variable
+
+// Now can use google object without ESLint errors
+const map = new google.maps.Map(element, options);
+```
 
 ## API Module Usage
 

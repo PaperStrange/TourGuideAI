@@ -18,15 +18,37 @@ const path = require('path');
 
 // Custom utilities and middleware
 const logger = require('./utils/logger');
+const tokenProvider = require('./utils/tokenProvider');
 const { globalLimiter, openaiLimiter, mapsLimiter } = require('./middleware/rateLimit');
 const { validateOpenAIApiKey, validateGoogleMapsApiKey, checkKeyRotation } = require('./middleware/apiKeyValidation');
+const { fullOptionalAuth } = require('./middleware/authMiddleware');
+const betaUsers = require('./models/betaUsers');
+const inviteCodes = require('./models/inviteCodes');
 
 // Import API routes
 const openaiRoutes = require('./routes/openai');
 const mapsRoutes = require('./routes/googlemaps');
+const authRoutes = require('./routes/auth');
+const inviteCodeRoutes = require('./routes/inviteCodes');
+const emailRoutes = require('./routes/emails');
+const adminRoutes = require('./routes/admin');
 
 // Initialize Express app
 const app = express();
+
+// Initialize token provider
+tokenProvider.initialize().catch(err => {
+  logger.error('Failed to initialize token provider', { error: err });
+});
+
+// Initialize beta users and invite codes
+betaUsers.initialize().catch(err => {
+  logger.error('Failed to initialize beta users', { error: err });
+});
+
+inviteCodes.initialize().catch(err => {
+  logger.error('Failed to initialize invite codes', { error: err });
+});
 
 // Basic security headers
 app.use(helmet());
@@ -44,7 +66,7 @@ app.use(express.urlencoded({ extended: true }));
 // CORS configuration
 app.use(cors({
   origin: process.env.ALLOWED_ORIGIN || '*',
-  methods: ['GET', 'POST', 'OPTIONS'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
@@ -53,6 +75,21 @@ app.use(globalLimiter);
 
 // Check for API keys needing rotation
 app.use(checkKeyRotation);
+
+// Apply optional authentication with permissions to all routes
+app.use(fullOptionalAuth);
+
+// Auth routes
+app.use('/api/auth', authRoutes);
+
+// Invite code routes
+app.use('/api/invite-codes', inviteCodeRoutes);
+
+// Email routes
+app.use('/api/emails', emailRoutes);
+
+// Admin routes
+app.use('/api/admin', adminRoutes);
 
 // API routes with key validation
 app.use('/api/openai', validateOpenAIApiKey, openaiLimiter, openaiRoutes);
@@ -74,7 +111,11 @@ app.get('/health', (req, res) => {
     status: 'ok',
     timestamp: new Date().toISOString(),
     environment: process.env.NODE_ENV || 'development',
-    uptime: process.uptime()
+    uptime: process.uptime(),
+    tokenVault: {
+      initialized: tokenProvider.initialized,
+      backend: process.env.VAULT_BACKEND || 'local'
+    }
   });
 });
 
@@ -108,6 +149,7 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   logger.info(`TourGuideAI API server running on port ${PORT} in ${process.env.NODE_ENV || 'development'} mode`);
+  logger.info(`Token Vault using ${process.env.VAULT_BACKEND || 'local'} backend`);
   logger.info(`Server started at ${new Date().toISOString()}`);
 });
 

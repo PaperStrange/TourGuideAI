@@ -1,109 +1,56 @@
 /**
  * API Key Validation Middleware
  * 
- * This middleware validates that the required API keys are set in environment variables.
- * It prevents the application from making API calls if keys are missing.
+ * This middleware validates and securely provides API keys for external services.
+ * It uses the tokenProvider service to securely access keys from the vault.
  */
 
-const keyManager = require('../utils/keyManager');
+const tokenProvider = require('../utils/tokenProvider');
+const logger = require('../utils/logger');
 
 /**
- * Validates that the OpenAI API key is set and valid
+ * Validates and provides the OpenAI API key
  */
 const validateOpenAIApiKey = async (req, res, next) => {
   try {
-    const keyId = process.env.OPENAI_KEY_ID;
+    // Get the API key from token provider
+    const apiKey = await tokenProvider.getOpenAIToken();
     
-    if (!keyId) {
-      return res.status(500).json({
-        error: {
-          message: 'OpenAI API key ID not configured. Please set the OPENAI_KEY_ID environment variable.',
-          type: 'api_key_missing'
-        }
-      });
-    }
-
-    // Validate and get the key
-    const isValid = await keyManager.validateKey(keyId);
-    if (!isValid) {
-      return res.status(500).json({
-        error: {
-          message: 'OpenAI API key is invalid or needs rotation.',
-          type: 'api_key_invalid'
-        }
-      });
-    }
-
-    // Get the key and add it to the request
-    const apiKey = await keyManager.getKey(keyId);
+    // Add API key to request
     req.openaiApiKey = apiKey;
     
-    // Add key stats to response headers for monitoring
-    const stats = keyManager.getKeyStats(keyId);
-    res.setHeader('X-OpenAI-Key-Stats', JSON.stringify({
-      lastUsed: stats.lastUsed,
-      usageCount: stats.usageCount,
-      daysUntilRotation: stats.daysUntilRotation
-    }));
-
     next();
   } catch (error) {
+    logger.error('Error retrieving OpenAI API key', { error });
+    
     return res.status(500).json({
       error: {
-        message: 'Error validating OpenAI API key',
-        type: 'api_key_error',
-        details: error.message
+        message: 'OpenAI API key not available',
+        type: 'api_key_error'
       }
     });
   }
 };
 
 /**
- * Validates that the Google Maps API key is set and valid
+ * Validates and provides the Google Maps API key
  */
 const validateGoogleMapsApiKey = async (req, res, next) => {
   try {
-    const keyId = process.env.GOOGLE_MAPS_KEY_ID;
+    // Get the API key from token provider
+    const apiKey = await tokenProvider.getGoogleMapsToken();
     
-    if (!keyId) {
-      return res.status(500).json({
-        error: {
-          message: 'Google Maps API key ID not configured. Please set the GOOGLE_MAPS_KEY_ID environment variable.',
-          type: 'api_key_missing'
-        }
-      });
-    }
-
-    // Validate and get the key
-    const isValid = await keyManager.validateKey(keyId);
-    if (!isValid) {
-      return res.status(500).json({
-        error: {
-          message: 'Google Maps API key is invalid or needs rotation.',
-          type: 'api_key_invalid'
-        }
-      });
-    }
-
-    // Get the key and add it to the request
-    const apiKey = await keyManager.getKey(keyId);
+    // Add API key to request
     req.googleMapsApiKey = apiKey;
     
-    // Add key stats to response headers for monitoring
-    const stats = keyManager.getKeyStats(keyId);
-    res.setHeader('X-GoogleMaps-Key-Stats', JSON.stringify({
-      lastUsed: stats.lastUsed,
-      usageCount: stats.usageCount,
-      daysUntilRotation: stats.daysUntilRotation
-    }));
-
     next();
   } catch (error) {
+    logger.error('Error retrieving Google Maps API key', { error });
+    
     return res.status(500).json({
       error: {
-        message: 'Error validating Google Maps API key',
-        type: 'api_key_error',
-        details: error.message
+        message: 'Google Maps API key not available',
+        type: 'api_key_error'
       }
     });
   }
@@ -114,30 +61,26 @@ const validateGoogleMapsApiKey = async (req, res, next) => {
  */
 const checkKeyRotation = async (req, res, next) => {
   try {
-    const keys = keyManager.listKeys();
-    const keysNeedingRotation = keys.filter(key => {
-      const stats = keyManager.getKeyStats(key.keyId);
-      return stats.daysUntilRotation <= 1; // Keys that need rotation within 24 hours
-    });
-
-    if (keysNeedingRotation.length > 0) {
+    // Get tokens needing rotation
+    const tokensNeedingRotation = await tokenProvider.getTokensNeedingRotation();
+    
+    if (tokensNeedingRotation.length > 0) {
       // Log warning about keys needing rotation
-      console.warn('API keys needing rotation:', keysNeedingRotation);
+      logger.warn('API keys needing rotation', { tokensNeedingRotation });
       
       // Add warning header to response
       res.setHeader('X-API-Key-Rotation-Warning', JSON.stringify(
-        keysNeedingRotation.map(key => ({
-          type: key.type,
-          keyId: key.keyId,
-          daysUntilRotation: keyManager.getKeyStats(key.keyId).daysUntilRotation
+        tokensNeedingRotation.map(token => ({
+          service: token.serviceName,
+          rotationDue: token.rotationDue
         }))
       ));
     }
-
+    
     next();
   } catch (error) {
-    console.error('Error checking key rotation:', error);
-    next();
+    logger.error('Error checking key rotation', { error });
+    next(); // Continue despite error
   }
 };
 

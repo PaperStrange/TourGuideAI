@@ -59,12 +59,19 @@ const HomePage = () => {
         </div>
       </section>
 
+      <section className="beta-program">
+        <h2>Join Our Beta Program</h2>
+        <p>Get early access to new features and help shape the future of TourGuideAI.</p>
+        <Link to="/beta" className="beta-button">Join Beta</Link>
+      </section>
+
       <footer className="home-footer">
         <p>&copy; {new Date().getFullYear()} TourGuideAI - Your personal tour guide</p>
         <nav className="footer-nav">
           <Link to="/chat">Chat</Link>
           <Link to="/map">Map</Link>
           <Link to="/profile">Profile</Link>
+          <Link to="/beta">Beta Program</Link>
         </nav>
       </footer>
     </div>

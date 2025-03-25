@@ -2,6 +2,26 @@
 
 This document records key lessons learned during the development of TourGuideAI, focusing on reusable knowledge for future phases and projects.
 
+## Document Consolidation and Consistency (CRITICAL)
+
+### File Responsibility Alignment
+- **Lesson**: Always check .workflow file responsibilities before creating new documentation files
+- **Context**: Created separate beta-program-status.md and phase6-beta-program-progress.md when this information should have been consolidated into .project
+- **Solution**: Refer to the File Responsibilities section in .workflows before creating any new documentation
+- **Impact**: Prevents documentation fragmentation and maintains a clear source of truth
+
+### Documentation Centralization
+- **Lesson**: Consolidate related information into designated existing files rather than creating new ones
+- **Context**: Status updates, progress reports, and implementation details were spread across multiple files
+- **Solution**: Update the primary responsibility file (.project, .milestones, etc.) with comprehensive information
+- **Impact**: Easier information retrieval, consistent documentation structure, and reduced maintenance overhead
+
+### Workflow Adherence
+- **Lesson**: Strictly follow the workflow document's guidelines for file responsibilities
+- **Context**: Created new files without checking if their purpose was already covered by existing files
+- **Solution**: Create a checklist from the File Responsibilities section of .workflows at the beginning of each phase
+- **Impact**: Ensures documentation remains consistent and follows established project patterns
+
 ## Project Workflow
 
 ### Workflow Compliance
@@ -81,6 +101,16 @@ This document records key lessons learned during the development of TourGuideAI,
 - **Context**: Our initial CI workflow ran tests sequentially, taking over 15 minutes
 - **Solution**: Implemented matrix testing strategy in GitHub Actions
 - **Impact**: Build times reduced to under 6 minutes
+- **Lesson**: Use environment variables to bypass non-critical checks in CI/CD pipelines
+- **Context**: ESLint errors were causing build failures even though the application was functional
+- **Solution**: Added DISABLE_ESLINT_PLUGIN environment variable to bypass ESLint during builds
+- **Impact**: Prevented non-critical linting issues from blocking deployments while still enforcing linting in separate steps
+
+### Dependency Management
+- **Lesson**: Always keep package.json and package-lock.json synchronized when using npm ci in CI/CD pipelines
+- **Context**: CI builds failed due to @mui/icons-material being added to package.json without updating package-lock.json
+- **Solution**: Run npm install locally before committing changes to ensure lock file synchronization
+- **Impact**: Prevents CI/CD pipeline failures and ensures consistent dependency installation
 
 ### Environment Management
 - **Lesson**: Environment variables should be validated at build time
@@ -124,6 +154,50 @@ This document records key lessons learned during the development of TourGuideAI,
 - **Solution**: Added BrowserStack integration for real device testing
 - **Impact**: Caught 5 critical mobile-specific bugs before release
 
+## Frontend Stability
+
+### React Router Structure
+- **Lesson**: Avoid nested Router components in React applications
+- **Context**: Multiple Router components were causing unpredictable navigation behavior and runtime errors
+- **Solution**: Implemented a single top-level Router component with proper Route nesting
+- **Impact**: Eliminated router-related crashes and navigation inconsistencies
+
+### Theme Provider Implementation
+- **Lesson**: Application-wide theming requires a properly placed ThemeProvider
+- **Context**: Inconsistent styling occurred across components due to missing ThemeProvider
+- **Solution**: Added a single ThemeProvider at the application root with proper theme configuration
+- **Impact**: Consistent styling across all components and elimination of styling-related bugs
+
+### Global Variable Declarations
+- **Lesson**: Properly declare external library globals to prevent ESLint errors
+- **Context**: External libraries like Google Maps were causing ESLint errors due to undefined globals
+- **Solution**: Added explicit global declarations using ESLint global directives
+- **Impact**: Cleaner code with proper linting support for external libraries
+
+### Backend Resilience
+- **Lesson**: Implement graceful degradation for backend service failures
+- **Context**: Application crashed when backend services were unavailable
+- **Solution**: Added error boundaries and fallback UI components with user-friendly messages
+- **Impact**: Application remains functional with helpful feedback during service disruptions
+
+### API Module Organization
+- **Lesson**: Use namespaced exports to prevent naming conflicts between API modules
+- **Context**: Name collisions between similar functions in different API modules caused bugs
+- **Solution**: Switched to namespaced exports and imports for all API modules
+- **Impact**: Eliminated naming conflicts while maintaining logical API organization
+
+### Frontend Stability Testing
+- **Lesson**: Create specific tests for architectural stability concerns
+- **Context**: Router nesting issues were not caught by functional tests
+- **Solution**: Implemented dedicated stability tests for router structure, theme providers, and backend resilience
+- **Impact**: Early detection of architectural issues before they cause runtime errors
+
+### Automated Stability Verification
+- **Lesson**: Integrate stability checks into CI/CD pipeline
+- **Context**: Stability issues were frequently reintroduced during development
+- **Solution**: Added automated checks in CI pipeline to verify proper architecture 
+- **Impact**: Prevented regression of stability issues and maintained consistent architecture
+
 ## API Integration
 
 ### Security
@@ -136,7 +210,61 @@ This document records key lessons learned during the development of TourGuideAI,
 - **Solution**: Added configurable rate limiting middleware for all API proxies
 - **Impact**: API costs reduced and service availability improved
 
-### Error Handling
+### API Module Organization
+- **Lesson**: Avoid naming conflicts when using wildcard exports from multiple files
+- **Context**: Build failed due to conflicts between identically named exports (setApiKey, setDebugMode) from different API modules
+- **Solution**: Switched from wildcard exports to namespaced exports (e.g., `export const openaiApi = openaiModule`)
+- **Impact**: Eliminated name collisions while preserving logical module organization
+- **Lesson**: Provide backward compatibility when refactoring module exports
+- **Context**: Changed module exports broke existing service implementations
+- **Solution**: Maintained a default export for common use cases while introducing the namespaced approach
+- **Impact**: Enabled incremental adoption of the new API structure without breaking existing code
+
+## Token Management & Vault Security
+
+### Centralized Token Management
+- **Lesson**: Implement a centralized token vault for all credentials and secrets
+- **Context**: API keys, secrets, and tokens were initially stored directly in environment variables
+- **Solution**: Created a secure vault service with encryption, rotation tracking, and multiple backend support
+- **Impact**: Unified security approach, structured rotation process, reduced token exposure risk
+
+### Encryption for Secrets
+- **Lesson**: Always use strong encryption (AES-256-GCM) for stored credentials
+- **Context**: Sensitive tokens like API keys were only protected by environment variables
+- **Solution**: Implemented AES-256-GCM with secure key derivation for all stored tokens
+- **Impact**: Protected sensitive credentials at rest, even if access to the vault file is gained
+
+### Token Caching Strategy
+- **Lesson**: Use memory caching with short TTL for frequently accessed tokens
+- **Context**: Initial token access required decryption operations for each API call
+- **Solution**: Implemented in-memory token caching with 5-minute TTL
+- **Impact**: Reduced vault access overhead while maintaining security through short cache lifetime
+
+### Automatic Rotation Tracking
+- **Lesson**: Set type-specific token rotation schedules with automatic tracking
+- **Context**: API keys were being used indefinitely without scheduled rotation
+- **Solution**: Implemented token type-specific rotation periods with automatic tracking and alerting
+- **Impact**: Reduced credential exposure time, improved compliance with security best practices
+
+### Multiple Backend Support
+- **Lesson**: Support multiple secure storage backends for different environments
+- **Context**: Local storage was used for all environments, creating security risks in production
+- **Solution**: Created pluggable backend architecture supporting local file, AWS Secrets Manager, and HashiCorp Vault
+- **Impact**: Enabled appropriate security levels for different environments while maintaining consistent API
+
+### Production Security
+- **Lesson**: Use specialized secret management services for production environments
+- **Context**: Production environments need higher security than development environments
+- **Solution**: Added AWS Secrets Manager and HashiCorp Vault integrations for production
+- **Impact**: Leveraged enterprise-level security in production while maintaining developer-friendly local options
+
+### Command-Line Management Tools
+- **Lesson**: Create dedicated admin tools for secure token management
+- **Context**: Token management was ad-hoc and required direct environment manipulation
+- **Solution**: Built an interactive CLI tool for secure token rotation and management
+- **Impact**: Standardized token management process, reduced human error in token handling
+
+## Error Handling
 - **Lesson**: Implement robust error handling with retry logic and fallbacks
 - **Context**: API errors were causing UI crashes and poor user experience
 - **Solution**: Added retry mechanisms with exponential backoff and fallback content
@@ -163,6 +291,12 @@ This document records key lessons learned during the development of TourGuideAI,
 - **Context**: Related code was scattered across the codebase
 - **Solution**: Co-located components, services, and tests for each feature
 - **Impact**: Improved code discoverability and developer onboarding
+
+### Import Path Consistency
+- **Lesson**: Verify import paths match the actual file structure during refactoring
+- **Context**: Build failures occurred when a file imported from '../../../core/api/apiClient' but the file was actually in '../../../core/services/apiClient'
+- **Solution**: Established consistent module paths and updated imports to reflect the actual directory structure
+- **Impact**: Prevented build failures and improved code maintainability
 
 ### Modularity
 - **Lesson**: Extract shared functionality into core modules
@@ -283,6 +417,150 @@ This document records key lessons learned during the development of TourGuideAI,
 - **Solution**: Enhanced test plans with quantitative targets and clear pass/fail conditions
 - **Impact**: Provides objective measurement for test success and feature readiness
 
+## Authentication Implementation
+
+### JWT Authentication
+- **Lesson**: Separate JWT token generation from validation for better testability
+- **Context**: Initially implemented token validation in the same module as generation
+- **Solution**: Created separate utility functions for generation and validation
+- **Impact**: Improved testability and separation of concerns
+
+### User Management
+- **Lesson**: Start with in-memory storage during development before committing to a database
+- **Context**: Implemented beta user management with in-memory storage to test flows
+- **Solution**: Created a database-like API even with in-memory storage to make future migration easier
+- **Impact**: Allowed rapid development while designing proper database schema
+
+### Security Practices
+- **Lesson**: Implement token blacklisting for secure logout functionality
+- **Context**: Initial logout simply removed the token from the client
+- **Solution**: Added server-side token blacklisting with TTL-based expiration
+- **Impact**: Prevented potential security issues with revoked but valid tokens
+
+### Authentication Middleware
+- **Lesson**: Create graduated levels of authentication middleware (required, optional)
+- **Context**: Some routes needed strict authentication while others benefited from knowing user context
+- **Solution**: Implemented both required and optional authentication middleware variants
+- **Impact**: More flexible application flow with appropriate authentication levels
+
+## Feedback Collection System
+
+### Widget Design
+- **Lesson**: Use a floating feedback button for omnipresent but unobtrusive access
+- **Context**: Initial design required navigating to a specific page for feedback
+- **Solution**: Implemented a floating feedback button that appears on all pages
+- **Impact**: Increased feedback collection opportunities while maintaining clean UI
+
+### Screenshot Functionality
+- **Lesson**: Temporarily hide the feedback widget during screenshot capture
+- **Context**: Screenshots were including the feedback widget itself
+- **Solution**: Added widget removal during screenshot capture with safe restoration
+- **Impact**: Cleaner screenshots that better represent the actual user experience
+
+### Categorization
+- **Lesson**: Start with a simple keyword-based categorization before implementing ML
+- **Context**: Full ML integration would have been overkill for initial implementation
+- **Solution**: Created a keyword-matching system that mimics ML categorization
+- **Impact**: Quick implementation with a clear upgrade path to true ML later
+
+### User Context
+- **Lesson**: Automatically collect environment data with feedback
+- **Context**: Users often omit critical environment information in bug reports
+- **Solution**: Added automatic collection of browser, OS, and screen size data
+- **Impact**: More actionable feedback with complete context for troubleshooting
+
+## Implementation Sequencing
+
+### Task Prioritization
+- **Lesson**: Follow workflow sequence rather than implementing all features at once
+- **Context**: Started implementing all aspects of authentication when only part was needed for current phase
+- **Solution**: Consult project workflow (.workflows) before starting a new implementation task
+- **Impact**: More focused implementation with better integration between components
+
+### Development Focus
+- **Lesson**: Complete one functional area before moving to the next
+- **Context**: Moving between different components created context switching overhead
+- **Solution**: Implement complete vertical slices of functionality in sequence
+- **Impact**: Faster delivery of usable features and better component integration
+
+## Analytics Implementation
+
+### Data Visualization
+- **Lesson**: Start with mock data for visualization development before connecting real APIs
+- **Context**: Initial development was blocked waiting for real API data
+- **Solution**: Created detailed mock data structures with realistic values
+- **Impact**: Accelerated dashboard development independent of backend readiness
+
+### Dashboard Design
+- **Lesson**: Use tabs to organize complex dashboards by domain instead of endless scrolling
+- **Context**: Initial dashboard was overwhelming with all metrics on a single scrolling page
+- **Solution**: Organized metrics into logical tab groups (Overview, User Activity, Features, etc.)
+- **Impact**: More approachable interface with better information architecture
+
+### Anomaly Detection
+- **Lesson**: Define clear thresholds for anomaly detection based on business context
+- **Context**: Initial anomaly alerts were too sensitive and created alert fatigue
+- **Solution**: Set appropriate thresholds based on expected business variability
+- **Impact**: More meaningful anomaly detection that highlights actual issues
+
+### Performance Optimization
+- **Lesson**: Use React.lazy for dashboard components to avoid loading until needed
+- **Context**: Dashboard components were heavy and slowed down initial page load
+- **Solution**: Implemented lazy loading with suspense fallbacks
+- **Impact**: Improved initial load time significantly without sacrificing functionality
+
+## Frontend-Backend Integration
+
+### Authentication Flow
+- **Lesson**: Implement graceful fallbacks when connecting frontend to backend authentication
+- **Context**: Initially attempted direct connection but needed to handle scenarios when backend is unavailable
+- **Solution**: Added hybrid approach with local token verification as fallback when API is unavailable
+- **Impact**: Improved resilience and better developer experience during development/testing
+
+### API Client Configuration
+- **Lesson**: Set up authentication headers at the application level, not component level
+- **Context**: Initially added authentication headers in individual API calls
+- **Solution**: Used axios interceptors to automatically add authentication headers to all requests
+- **Impact**: Reduced duplication and ensured consistent authentication across the application
+
+### Token Management
+- **Lesson**: Handle both local and server-generated tokens during transition phases
+- **Context**: Had to support both locally generated tokens and server JWT tokens during integration
+- **Solution**: Implemented token format detection to handle different token types appropriately
+- **Impact**: Enabled gradual migration from mock to real authentication without breaking changes
+
+### Error Handling
+- **Lesson**: Map server error responses to user-friendly messages based on error types
+- **Context**: Backend returned structured error objects with types that needed user-friendly interpretation
+- **Solution**: Added specific error handling for common error types (invalid credentials, etc.)
+- **Impact**: Improved user experience with clear, actionable error messages
+
+## Frontend Development
+
+### Material UI Integration
+- **Lesson**: Always include Material UI's ThemeProvider at the root of React applications using MUI components
+- **Context**: Application rendered a blank page because no ThemeProvider was wrapping the components that used MUI
+- **Solution**: Added ThemeProvider in the application's entry point (index.js)
+- **Impact**: Fixed component rendering and ensured consistent theming across the application
+
+### React Router Configuration
+- **Lesson**: Avoid nested router components in React applications
+- **Context**: Application crashed with error "You cannot render a <Router> inside another <Router>"
+- **Solution**: Removed redundant Router component in App.js since BrowserRouter was already in index.js
+- **Impact**: Eliminated router nesting errors and improved application stability
+
+### ESLint Integration
+- **Lesson**: Properly configure ESLint for external libraries that define global variables
+- **Context**: ESLint errors for the 'google' variable from Google Maps API blocked the build
+- **Solution**: Added /* global google */ comment to inform ESLint about externally defined variables
+- **Impact**: Prevented false positive linting errors while maintaining code quality checks
+
+### Graceful Degradation
+- **Lesson**: Implement graceful degradation for frontend when backend services are unavailable
+- **Context**: Application crashed when trying to access backend services that weren't running
+- **Solution**: Added backend availability detection and fallback UI that works without the backend
+- **Impact**: Improved user experience by showing meaningful content even when backend services are down
+
 ---
 
-*Last Updated: March 21, 2025* 
+*Last Updated: March 29, 2025* 

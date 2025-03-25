@@ -9,6 +9,12 @@ An AI-powered travel planning application that helps users plan personalized tra
 - Detailed timeline view of daily activities
 - Offline capability for saved routes
 - User profile management
+- Role-based access control for beta testers and administrators
+- Email notifications with verification and password reset capabilities
+- Comprehensive onboarding workflow for new beta users
+- Customizable survey system with conditional logic
+- Analytics dashboard with real-time usage metrics
+- Feedback collection with screenshot and recording capabilities
 
 ## Getting Started
 
@@ -20,6 +26,7 @@ These instructions will help you set up and run the project on your local machin
 - npm (v6.0.0 or higher)
 - Google Maps API key
 - OpenAI API key
+- SendGrid API key (for email notifications)
 
 ### Installation
 
@@ -73,6 +80,17 @@ These instructions will help you set up and run the project on your local machin
    # Logging
    LOG_LEVEL=debug
    LOG_FILE_PATH=./logs/app.log
+   
+   # JWT Authentication
+   JWT_SECRET=your_jwt_secret_here
+   JWT_EXPIRATION=86400
+   
+   # SendGrid Email Configuration
+   SENDGRID_API_KEY=your_sendgrid_api_key_here
+   SENDGRID_FROM_EMAIL=noreply@yourdomain.com
+   SENDGRID_VERIFICATION_TEMPLATE_ID=your_template_id
+   SENDGRID_PASSWORD_RESET_TEMPLATE_ID=your_template_id
+   SENDGRID_WELCOME_TEMPLATE_ID=your_template_id
    ```
 
 ### Getting API Keys
@@ -147,9 +165,12 @@ This project is licensed under the MIT License - see the LICENSE.txt file for de
 ## Project Structure
 
 - `/.github`: GitHub Actions workflows
+  - `/workflows`: CI/CD, security scanning, and frontend stability checks
 - `/build`: Production build output
 - `/deployment`: Deployment configurations
 - `/docs`: Project documentation
+  - `stability-test-plan.md`: Comprehensive stability testing approach
+  - `project.lessons.md`: Lessons learned during development
 - `/public`: Static assets and service worker
   - `offline.html`: Offline fallback page
   - `service-worker.js`: Service worker for offline support
@@ -161,6 +182,7 @@ This project is licensed under the MIT License - see the LICENSE.txt file for de
 - `/src`: Source code
   - `/api`: Legacy API functions (being migrated to core)
   - `/components`: Reusable UI components
+    - `/common`: Shared UI components like Navbar with graceful degradation
   - `/contexts`: React contexts for state management
   - `/core`: Shared code across features
     - `/api`: API clients for external services 
@@ -171,12 +193,23 @@ This project is licensed under the MIT License - see the LICENSE.txt file for de
     - `/map-visualization`: Map visualization feature
     - `/travel-planning`: Travel itinerary planning feature
     - `/user-profile`: User profile management feature
+    - `/beta-program`: Beta program management
+      - `/components`: Beta program components
+        - `/analytics`: Analytics dashboard components
+        - `/auth`: Authentication components
+        - `/feedback`: Feedback collection components
+        - `/onboarding`: User onboarding components
+        - `/survey`: Survey creation and management components
+      - `/services`: Beta program services
   - `/pages`: Main page components
   - `/services`: Legacy services (being migrated to core)
   - `/styles`: CSS and styling files
   - `/tests`: Component-specific tests
   - `/utils`: Utility functions
 - `/tests`: End-to-end and integration tests
+  - `/stability`: Frontend stability tests for router, theme, and resilience
+  - `/cross-browser`: Cross-browser compatibility tests
+  - `/load`: Performance and load testing
 
 ## Refactoring Philosophy
 
@@ -187,6 +220,7 @@ Throughout development, we've applied several key refactoring principles:
 - **Performance Optimization**: Regular improvements to frontend and backend performance
 - **Security Hardening**: Progressive enhancement of security practices
 - **Infrastructure Automation**: Continuous improvement of CI/CD processes
+- **Frontend Stability**: Ensuring robust React component architecture with proper error handling
 
 See `docs/project.refactors.md` for a detailed history of refactoring efforts and `docs/project.lessons.md` for lessons learned.
 
@@ -195,12 +229,143 @@ See `docs/project.refactors.md` for a detailed history of refactoring efforts an
 1. **Chat Page**: Input travel preferences and generate personalized tour plans
 2. **Map Page**: Visualize routes on an interactive map with nearby attractions
 3. **User Profile Page**: View and manage saved routes
+4. **Beta Portal**: Access point for beta testers with the following features:
+   - **Onboarding**: Step-by-step setup for new beta users
+   - **Feedback**: Submit feedback with screenshots and recordings
+   - **Surveys**: Participate in and manage customizable surveys
+   - **Analytics**: View usage metrics and insights (admin only)
 
 ## Technology Stack
 
-- React
-- React Router
-- Material UI
+- React with well-structured component architecture
+- React Router with proper route configuration
+- Material UI with ThemeProvider for consistent styling
 - OpenAI API
 - Google Maps API
+- JWT Authentication
+- SendGrid Email API
+- Role-based Access Control (RBAC)
+- Recharts for data visualization
+- HTML2Canvas for screenshot capture
+- Robust error boundaries and graceful degradation
+
+## Security Configuration
+
+### Environment Setup
+
+1. **Generate secure keys**:
+   ```
+   node scripts/generate-keys.js
+   ```
+   This will generate secure random keys for JWT_SECRET and ENCRYPTION_KEY.
+
+2. **Copy and configure environment files**:
+   ```
+   cp .env.example .env
+   cp server/.env.example server/.env
+   ```
+   Then update the `.env` files with your secure keys and API credentials.
+
+3. **Verify .env files are git-ignored**:
+   Ensure `.env` files are listed in `.gitignore` to prevent accidentally committing secrets.
+
+### Security Best Practices
+
+- Never commit `.env` files or any files containing secrets to version control
+- Rotate API keys and secrets regularly
+- Use strong passwords (minimum 12 characters) for all admin accounts
+- In production, use a secrets manager service instead of environment files where possible
+- For production deployment, use a secure vault service (AWS Secrets Manager, HashiCorp Vault, etc.)
+
+## Token Security Configuration Guide
+
+TourGuideAI uses a secure token vault system to protect all sensitive credentials like API keys, secrets, and tokens. This section explains how to configure and manage this system.
+
+### Setting Up the Token Vault
+
+1. Configure vault settings in your server `.env` file:
+
+```
+# Token Vault Configuration
+VAULT_BACKEND=local          # Options: local, aws, hashicorp, in-memory
+VAULT_ENCRYPTION_KEY=your_secure_encryption_key_here
+VAULT_SALT=your_secure_salt_here
+VAULT_PATH=./vault/vault.enc # For local backend
+IMPORT_ENV_SECRETS=true      # Import legacy env vars on startup
+```
+
+2. For initial setup, set `IMPORT_ENV_SECRETS=true` and provide your API keys as regular environment variables:
+
+```
+# These will be imported to the vault on first run
+OPENAI_API_KEY=your_openai_key_here
+GOOGLE_MAPS_API_KEY=your_google_maps_key_here
+JWT_SECRET=your_jwt_secret_here
+SENDGRID_API_KEY=your_sendgrid_key_here
+```
+
+3. Start the server once to initialize the vault and import secrets:
+
+```bash
+npm run start
+```
+
+4. After initial import, you can remove the raw API keys from your environment file and set `IMPORT_ENV_SECRETS=false`.
+
+### Managing Tokens
+
+Use the built-in token rotation tool for secure token management:
+
+```bash
+npm run rotate-tokens
+```
+
+This interactive CLI tool allows you to:
+- List tokens that need rotation
+- Rotate tokens securely
+- Add new tokens to the vault
+- List all tokens in the vault
+
+### Configuring Different Environments
+
+#### Development (Default)
+- Use `VAULT_BACKEND=local` for simple file-based storage
+- Store the vault file in a location excluded from version control
+
+#### Production
+- Use `VAULT_BACKEND=aws` for AWS Secrets Manager integration
+- Set `AWS_REGION`, `AWS_ACCESS_KEY_ID`, and `AWS_SECRET_ACCESS_KEY` for AWS access
+- Or use `VAULT_BACKEND=hashicorp` for HashiCorp Vault integration
+- Set `VAULT_REMOTE_ENDPOINT` and `VAULT_REMOTE_TOKEN` for remote vault access
+
+#### High-Security Environments
+- Use a Hardware Security Module (HSM) to store the `VAULT_ENCRYPTION_KEY`
+- Use AWS KMS or similar service to manage encryption keys
+- Set up automated rotation alerts for expiring tokens
+
+### Security Best Practices
+
+1. **Encryption Key Security**: Store the `VAULT_ENCRYPTION_KEY` and `VAULT_SALT` securely, preferably in a separate system from the vault file
+2. **Regular Rotation**: Rotate API keys according to the recommended schedules:
+   - API Keys: 90 days
+   - JWT Secrets: 180 days
+   - Encryption Keys: 365 days
+3. **Access Control**: Limit access to the token rotation tool to administrators
+4. **Backend Selection**: Use appropriate vault backends based on environment security requirements
+5. **Monitoring**: Set up alerts for tokens nearing rotation dates
+
+## Contributing
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Project Structure
+
+- `/src` - Frontend React application
+- `/server` - Backend Express server
+- `/docs` - Project documentation
+- `/tests` - Test suites and fixtures
 

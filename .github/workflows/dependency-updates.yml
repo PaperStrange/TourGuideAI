@@ -1,0 +1,36 @@
+name: Dependency Updates
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'  # Run every Monday at midnight
+  workflow_dispatch:      # Allow manual triggering
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  dependency-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      # Use Dependabot to update dependencies
+      - name: Enable Dependabot
+        uses: dependabot/fetch-metadata@v1.6.0
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+      
+      # Alternative: Use Renovate for more control
+      - name: Update dependencies with Renovate
+        uses: renovatebot/github-action@v39.0.5
+        with:
+          configurationFile: renovate.json
+          token: ${{ secrets.GITHUB_TOKEN }} 
