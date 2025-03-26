@@ -224,14 +224,31 @@ The frontend will be available at http://localhost:3000 and the backend at http:
 
 ## Documentation
 
-The project maintains comprehensive documentation organized by purpose. For a complete inventory of all documentation, see [Document Inventory](docs/project_lifecycle/documentation/records/project.document-inventory.md).
+The project maintains comprehensive documentation organized by purpose. For a complete inventory of all documentation, see [Document Inventory](docs/project.document-inventory.md).
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <strong>Project Documentation Map</strong><br>
+      <img src="docs/pics/flowchart/project_documentation_map.svg" alt="Project Documentation Map"><br>
+      <em>Shows how documentation files are connected and their relationships throughout the project. Color coding indicates different document types and their purposes.</em>
+    </td>
+    <td width="50%" align="center">
+      <strong>Project Workflow</strong><br>
+      <img src="docs/pics/flowchart/project_workflow.png" alt="Project Workflow"><br>
+      <em>Illustrates the development process through seven phases: initialization, development, verification, documentation, artifacts, knowledge management, and final review.</em>
+    </td>
+  </tr>
+</table>
 
 ### Project Management Documentation
 - Project workflow: [.cursor/.workflows](.cursor/.workflows)
 - Project milestones: [.cursor/.milestones](.cursor/.milestones)
 - Project status: [.cursor/.project](.cursor/.project)
 - Task tracking: [.cursor/.todos](.cursor/.todos)
-- Workflow visualization: [.cursor/.mermaidflow](.cursor/.mermaidflow)
+- Project workflow visualization: [docs/pics/flowchart/.mermaidworkflow](docs/pics/flowchart/.mermaidworkflow)
+- Documentation map visualization: [docs/pics/flowchart/.mermaidfilesmap](docs/pics/flowchart/.mermaidfilesmap)
+- Diagrams README: [docs/pics/flowchart/README.md](docs/pics/flowchart/README.md)
 
 ### Process Documentation
 - Workflow checklists: [docs/project_lifecycle/process_monitors/plans/project.workflow-checklists.md](docs/project_lifecycle/process_monitors/plans/project.workflow-checklists.md)

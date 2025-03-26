@@ -1,0 +1,146 @@
+```mermaid
+%%{init: {
+  "theme": "default",
+  "themeVariables": {
+    "primaryColor": "#f0f0f0",
+    "primaryTextColor": "#333",
+    "primaryBorderColor": "#666",
+    "lineColor": "#666",
+    "secondaryColor": "#f9f9f9",
+    "tertiaryColor": "#fff"
+  },
+  "flowchart": {
+    "curve": "basis",
+    "diagramPadding": 20
+  }
+}}%%
+
+flowchart TB
+    %% Main Style Definitions
+    classDef root fill:#f9f9f9,stroke:#333,stroke-width:2px,color:#333,font-weight:bold
+    classDef docFile fill:#dff0d8,stroke:#3c763d,stroke-width:1px,color:#3c763d
+    classDef projectFile fill:#d9edf7,stroke:#31708f,stroke-width:1px,color:#31708f
+    classDef referenceFile fill:#fcf8e3,stroke:#8a6d3b,stroke-width:1px,color:#8a6d3b
+    classDef testingFile fill:#f2dede,stroke:#a94442,stroke-width:1px,color:#a94442
+    classDef lifecycleFile fill:#e8f4ff,stroke:#337ab7,stroke-width:1px,color:#337ab7
+    
+    %% Main root node
+    README[README.md]
+    
+    %% Group nodes hierarchically to minimize crossings
+    subgraph RootDocs ["Root Documentation"]
+        README
+        ARCHITECTURE[ARCHITECTURE.md]
+        API_OVERVIEW[API_OVERVIEW.md]
+        API_MIGRATION[API_MIGRATION.md]
+        CONTRIBUTING[CONTRIBUTING.md]
+        SECURITY[SECURITY.md]
+    end
+    
+    subgraph DocInv ["Documentation"]
+        DOC_INVENTORY[Document Inventory<br>project.document-inventory.md]
+    end
+    
+    subgraph ProcessArea ["Process Documentation"]
+        subgraph ProcessDocs ["Process Monitors"]
+            WORKFLOW_CHECKLISTS[Workflow Checklists<br>project.workflow-checklists.md]
+            PHASE_SIGNOFF[Phase Signoff<br>project.phase-signoff.md]
+        end
+        
+        subgraph VersionDocs ["Version Control"]
+            VERSION_HISTORY[Version History<br>project.versions.md]
+            VERSION_CONTROL_REF[Version Control Reference<br>version-control.md]
+        end
+    end
+    
+    subgraph CodeArea ["Code & Structure"]
+        subgraph RefactorDocs ["Refactoring"]
+            REFACTORS_HISTORY[Refactoring History<br>project.refactors.md]
+            REFACTORS_PLAN[Refactoring Plan<br>project.refactors-plan.md]
+        end
+        
+        subgraph ReviewDocs ["Code Review"]
+            CODE_REVIEW_CHECKLIST[Code Review Checklist<br>code-review-checklist.md]
+            CODE_REVIEW_GUIDE[What to look for in Code Review<br>whats-code-review-looking-for.md]
+            DEPENDENCIES[Dependencies Tracking<br>dependencies-tracking.md]
+        end
+    end
+    
+    subgraph LearnDocs ["Knowledge"]
+        LESSONS[Lessons Learned<br>project.lessons.md]
+    end
+    
+    subgraph TestArea ["Testing"]
+        TEST_PLAN[Stability Test Plan<br>project.stability-test-plan.md]
+        TEST_RESULTS[Test Execution Results<br>project.test-execution-results.md]
+        TEST_SCENARIOS[Test Scenarios<br>project.test-scenarios.md]
+        TEST_USER_STORY[Test User Stories<br>project.test-user-story.md]
+    end
+    
+    subgraph DeployDocs ["Deployment"]
+        DEPLOYMENT_PIPELINE[Deployment Pipeline<br>project.deployment-pipeline.md]
+        DEPLOYMENT_PLAN[Deployment Plan<br>project.deployment-pipeline-plan.md]
+    end
+    
+    subgraph PerfDocs ["Performance"]
+        PERFORMANCE_PLAN[Performance Plan<br>project.performance-optimization-plan.md]
+        PERFORMANCE_IMPL[Performance Implementation<br>project.performance-implementation-plan.md]
+    end
+    
+    subgraph FeatureArea ["Feature Documentation"]
+        FEATURES_README[src/features/README.md]
+        MAP_VIZ_README[src/features/map-visualization/README.md]
+        TESTS_README[src/tests/README.md]
+    end
+    
+    %% Connect README to primary sections (cleaner layout)
+    README --> RootDocs
+    README --> DocInv
+    README --> ProcessArea
+    README --> CodeArea
+    README --> LearnDocs
+    README --> TestArea
+    README --> DeployDocs
+    README --> PerfDocs
+    
+    %% Core document relationships (careful placement to reduce crossings)
+    DOC_INVENTORY --> ProcessDocs
+    DOC_INVENTORY --> VersionDocs
+    DOC_INVENTORY --> RefactorDocs
+    DOC_INVENTORY --> ReviewDocs
+    DOC_INVENTORY --> LearnDocs
+    DOC_INVENTORY --> TestArea
+    DOC_INVENTORY --> DeployDocs
+    DOC_INVENTORY --> PerfDocs
+    
+    %% Workflow connections (minimized)
+    WORKFLOW_CHECKLISTS --> LESSONS
+    WORKFLOW_CHECKLISTS --> TEST_RESULTS
+    WORKFLOW_CHECKLISTS --> REFACTORS_PLAN
+    WORKFLOW_CHECKLISTS --> VERSION_HISTORY
+    PHASE_SIGNOFF --> TEST_RESULTS
+    
+    %% Refactor connections (reduced)
+    REFACTORS_HISTORY --> CODE_REVIEW_CHECKLIST
+    
+    %% Feature connections (simplified)
+    FeatureArea --> TestArea
+    FeatureArea --> RefactorDocs
+    FeatureArea --> PerfDocs
+    
+    %% Apply classes to nodes
+    class README,ARCHITECTURE,API_OVERVIEW,API_MIGRATION,CONTRIBUTING,SECURITY root
+    class DOC_INVENTORY docFile
+    class WORKFLOW_CHECKLISTS,PHASE_SIGNOFF projectFile
+    class VERSION_HISTORY,VERSION_CONTROL_REF projectFile
+    class REFACTORS_HISTORY,REFACTORS_PLAN projectFile
+    class CODE_REVIEW_CHECKLIST,CODE_REVIEW_GUIDE,DEPENDENCIES projectFile
+    class LESSONS projectFile
+    class TEST_PLAN,TEST_RESULTS,TEST_SCENARIOS,TEST_USER_STORY testingFile
+    class DEPLOYMENT_PIPELINE,DEPLOYMENT_PLAN projectFile
+    class PERFORMANCE_PLAN,PERFORMANCE_IMPL projectFile
+    class FEATURES_README,MAP_VIZ_README,TESTS_README referenceFile
+    
+    %% Style links by type
+    linkStyle default stroke:#999,stroke-width:1px
+``` 
