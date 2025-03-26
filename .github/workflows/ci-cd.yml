@@ -55,6 +55,33 @@ jobs:
         # Check for proper ESLint globals
         grep -r --include="*.js" --include="*.jsx" --include="*.ts" --include="*.tsx" "\/\* global " src/
     
+    - name: Run Stability Tests
+      run: |
+        # Run frontend stability tests
+        npx jest src/tests/stability/frontend-stability.test.js --json --outputFile=stability-test-results-frontend.json || true
+        
+        # Run component stability tests
+        npx jest src/tests/components/ApiStatus.test.js --json --outputFile=stability-test-results-components.json || true
+        
+        # Run backend resilience tests (capture rather than fail)
+        npx jest src/tests/stability/frontend-stability.test.js -t "Backend Resilience" --json --outputFile=stability-test-results-backend.json || true
+        
+        # Run test script for comprehensive report (if script exists)
+        if [ -f "./scripts/run-stability-tests.js" ]; then
+          node ./scripts/run-stability-tests.js
+        fi
+        
+        # Upload stability test results to test results directory
+        mkdir -p ./docs/project_lifecycle/stability_tests/records/test-results
+        cp *.json ./docs/project_lifecycle/stability_tests/records/test-results/ || true
+
+    - name: Store Stability Test Results
+      uses: actions/upload-artifact@v4
+      with:
+        name: stability-test-results
+        path: ./docs/project_lifecycle/stability_tests/records/test-results/
+        retention-days: 30
+    
     - name: Build
       run: npm run build
       env:

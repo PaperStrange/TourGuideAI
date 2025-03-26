@@ -14,6 +14,7 @@ This workflow is responsible for the continuous integration and deployment of th
 - Deploys to production for the main branch
 - Runs smoke tests after deployment
 - Performs frontend stability checks to prevent common React issues
+- Executes key stability tests and stores results as artifacts
 
 #### Environment Variables:
 - `DISABLE_ESLINT_PLUGIN`: Set to "true" to bypass ESLint checks during the build process, which helps when there are linting errors that shouldn't block deployment.
@@ -24,21 +25,36 @@ The workflow includes automated checks to prevent common React frontend issues:
 - Theme Provider validation - Ensures Material UI components are properly themed
 - ESLint global declarations - Verifies proper handling of global variables like Google Maps
 
+#### Stability Tests:
+The CI/CD workflow now includes essential stability tests:
+- Runs critical frontend stability tests
+- Tests backend resilience using the ApiStatus component
+- Executes tests to verify proper API integration
+- Generates and stores test reports in a standardized format
+- Test results are stored as artifacts for later analysis
+
+### Stability Tests (`stability-tests.yml`)
+
+The stability testing workflow performs comprehensive tests to ensure application stability:
+
 - **Triggers**: 
-  - Push to main, develop, feat-* and release-* branches
-  - Pull requests to main, develop, and release-* branches
-- **Environments**: Development, Staging, Production
-- **Steps**:
-  - Code checkout
-  - Dependency installation and review
-  - Unit testing
-  - Integration testing
-  - Build optimization
-  - CodeQL security analysis
-  - Smoke testing
-  - Deployment to appropriate environment
-  - Feature branches are built and tested
-  - Release branches are built, tested, and deployed to staging
+  - Weekly schedule (Wednesdays at midnight)
+  - Pull requests with changes to src files, tests, or configuration
+  - Manual workflow dispatch
+- **Tests**:
+  - Frontend stability tests for component architecture
+  - Critical component tests (ProfilePage, ChatPage, MapPage)
+  - Backend resilience tests to verify graceful degradation
+  - API integration tests for external services
+- **Features**:
+  - Detailed console output for each test step
+  - Automatic generation of comprehensive test reports
+  - Storage of test results as artifacts
+  - GitHub step summary with test result overview
+- **Output**:
+  - Test results stored in `docs/project_lifecycle/stability_tests/records/test-results/`
+  - JSON-formatted test reports with detailed metrics
+  - Artifacts preserved for 30 days for historical analysis
 
 ### Security Scanning (`security-scan.yml`)
 
