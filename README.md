@@ -6,23 +6,65 @@ A comprehensive tour guide application that leverages AI to provide personalized
 
 ```
 TourGuideAI/
-├── src/
-│   ├── components/     # React components
-│   ├── pages/         # Page components
-│   ├── tests/         # Test files
-│   │   ├── api/       # API tests
-│   │   ├── components/# Component tests
-│   │   ├── integration/# Integration tests
-│   │   ├── pages/     # Page tests
-│   │   └── stability/ # Stability tests
-│   └── utils/         # Utility functions
-├── docs/
-│   ├── references/    # Reference documentation
-│   ├── stability-test-plan.md
-│   ├── test-execution-results.md
-│   └── other documentation files
-└── .cursor/
-    └── .workflows     # Project workflow documentation
+├── .cursor/              # Project management files
+│   └── .workflows        # Project workflow documentation
+├── .github/              # GitHub Actions workflows
+│   └── workflows/        # CI/CD, security scanning, and stability checks
+├── build/                # Production build output
+├── deployment/           # Deployment configurations
+├── docs/                 # Project documentation
+│   ├── references/       # Reference documentation
+│   ├── screenshots/      # Visual documentation assets
+│   ├── project.stability-test-plan.md
+│   ├── project.test-scenarios.md
+│   ├── project.test-user-story.md
+│   ├── project.workflow-checklists.md
+│   ├── project.document-inventory.md
+│   ├── project.phase-signoff.md
+│   ├── project.lessons.md
+│   ├── project.refactors-plan.md
+│   ├── project.refactors.md
+│   ├── project.versions.md
+│   └── project.test-execution-results.md
+├── public/               # Static assets and service worker
+│   ├── offline.html      # Offline fallback page
+│   └── service-worker.js # Service worker for offline support
+├── scripts/              # Build and maintenance scripts
+├── server/               # Backend server code
+│   ├── middleware/       # Express middleware
+│   ├── routes/           # API route handlers
+│   └── utils/            # Server utility functions
+├── src/                  # Source code
+│   ├── api/              # Legacy API functions (migration in progress)
+│   ├── components/       # Reusable UI components
+│   │   └── common/       # Shared UI components
+│   ├── contexts/         # React contexts for state management
+│   ├── core/             # Shared code across features
+│   │   ├── api/          # API clients for external services
+│   │   ├── components/   # Shared UI components
+│   │   ├── services/     # Shared application services
+│   │   └── utils/        # Utility functions and helpers
+│   ├── features/         # Feature modules
+│   │   ├── map-visualization/
+│   │   ├── travel-planning/
+│   │   ├── user-profile/
+│   │   └── beta-program/ # Beta program management
+│   │       ├── components/
+│   │       │   ├── analytics/
+│   │       │   ├── auth/
+│   │       │   ├── feedback/
+│   │       │   ├── onboarding/
+│   │       │   └── survey/
+│   │       └── services/
+│   ├── pages/            # Main page components
+│   ├── services/         # Legacy services (migration in progress)
+│   ├── styles/           # CSS and styling files
+│   ├── tests/            # Component-specific tests
+│   └── utils/            # Utility functions
+└── tests/                # End-to-end and integration tests
+    ├── stability/        # Frontend stability tests
+    ├── cross-browser/    # Cross-browser compatibility tests
+    └── load/             # Performance and load testing
 ```
 
 ## Development Workflow
@@ -59,55 +101,6 @@ The project implements a comprehensive testing strategy as outlined in `docs/sta
 - Stability Tests: System reliability testing
 
 Test execution results are tracked in `docs/test-execution-results.md`.
-
-## Getting Started
-
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Run the development server:
-   ```bash
-   npm start
-   ```
-4. Run tests:
-   ```bash
-   npm test
-   ```
-
-## Documentation
-
-- Project workflow: `.cursor/.workflows`
-- Testing strategy: `docs/stability-test-plan.md`
-- Test results: `docs/test-execution-results.md`
-- API documentation: `API_OVERVIEW.md`
-- Architecture: `ARCHITECTURE.md`
-
-## Contributing
-
-1. Follow the project workflow in `.cursor/.workflows`
-2. Ensure all tests pass before submitting changes
-3. Update relevant documentation
-4. Submit pull requests with detailed descriptions
-
-## License
-
-[License details here]
-
-## Features
-
-- Chat-based travel planning interface
-- Interactive map visualization of travel routes
-- Detailed timeline view of daily activities
-- Offline capability for saved routes
-- User profile management
-- Role-based access control for beta testers and administrators
-- Email notifications with verification and password reset capabilities
-- Comprehensive onboarding workflow for new beta users
-- Customizable survey system with conditional logic
-- Analytics dashboard with real-time usage metrics
-- Feedback collection with screenshot and recording capabilities
 
 ## Getting Started
 
@@ -232,90 +225,57 @@ npm run server
 
 The frontend will be available at http://localhost:3000 and the backend at http://localhost:5000.
 
-## Troubleshooting
+## Documentation
 
-### Google Maps Issues
+The project maintains comprehensive documentation organized by purpose. For a complete inventory of all documentation, see [Document Inventory](docs/project.document-inventory.md).
 
-If you see the error "This page didn't load Google Maps correctly":
+### Project Management Documentation
+- Project workflow: [.cursor/.workflows](.cursor/.workflows)
+- Project milestones: [.cursor/.milestones](.cursor/.milestones)
+- Project status: [.cursor/.project](.cursor/.project)
+- Task tracking: [.cursor/.todos](.cursor/.todos)
+- Workflow visualization: [.cursor/.mermaidflow](.cursor/.mermaidflow)
 
-1. Check that your Google Maps API key is correctly set in the `.env` file
-2. Make sure the key is not restricted to specific domains that exclude localhost
-3. Verify that you've enabled all required Google Maps APIs in your Google Cloud Console
-4. Check the browser console for specific error messages
+### Process Documentation
+- Workflow checklists: [docs/project.workflow-checklists.md](docs/project.workflow-checklists.md)
+- Phase signoff: [docs/project.phase-signoff.md](docs/project.phase-signoff.md)
+- Version history: [docs/project.versions.md](docs/project.versions.md)
+- Refactoring history: [docs/project.refactors.md](docs/project.refactors.md)
+- Refactoring plans: [docs/project.refactors-plan.md](docs/project.refactors-plan.md)
+- Lessons learned: [docs/project.lessons.md](docs/project.lessons.md)
 
-### API Connection Issues
+### Development Documentation
+- Architecture overview: [ARCHITECTURE.md](ARCHITECTURE.md)
+- API overview: [API_OVERVIEW.md](API_OVERVIEW.md)
+- API migration guide: [API_MIGRATION.md](API_MIGRATION.md)
+- Deployment pipeline: [docs/project.deployment-pipeline.md](docs/project.deployment-pipeline.md)
+- Performance optimization: [docs/project.performance-optimization-plan.md](docs/project.performance-optimization-plan.md)
 
-If you're having trouble connecting to the APIs:
+### Testing Documentation
+- Testing strategy: [docs/project.stability-test-plan.md](docs/project.stability-test-plan.md)
+- Test scenarios: [docs/project.test-scenarios.md](docs/project.test-scenarios.md)
+- Test user stories: [docs/project.test-user-story.md](docs/project.test-user-story.md)
+- Test results: [docs/project.test-execution-results.md](docs/project.test-execution-results.md)
 
-1. Ensure your OpenAI API key is correctly set in the server `.env` file
-2. Check that the server is running (`npm run server`)
-3. Make sure the `REACT_APP_API_URL` in the frontend `.env` points to the correct server address
+### Reference Documentation
+- Code review checklist: [docs/references/code-review-checklist.md](docs/references/code-review-checklist.md)
+- Version control: [docs/references/version-control.md](docs/references/version-control.md)
+- Dependencies tracking: [docs/references/dependencies-tracking.md](docs/references/dependencies-tracking.md)
+- Code review guide: [docs/references/whats-code-review-looking-for.md](docs/references/whats-code-review-looking-for.md)
 
-## License
+## Features
 
-This project is licensed under the MIT License - see the LICENSE.txt file for details.
-
-## Project Structure
-
-- `/.github`: GitHub Actions workflows
-  - `/workflows`: CI/CD, security scanning, and frontend stability checks
-- `/build`: Production build output
-- `/deployment`: Deployment configurations
-- `/docs`: Project documentation
-  - `stability-test-plan.md`: Comprehensive stability testing approach
-  - `project.lessons.md`: Lessons learned during development
-- `/public`: Static assets and service worker
-  - `offline.html`: Offline fallback page
-  - `service-worker.js`: Service worker for offline support
-- `/scripts`: Build and maintenance scripts
-- `/server`: Backend server code
-  - `/middleware`: Express middleware
-  - `/routes`: API route handlers
-  - `/utils`: Server utility functions
-- `/src`: Source code
-  - `/api`: Legacy API functions (being migrated to core)
-  - `/components`: Reusable UI components
-    - `/common`: Shared UI components like Navbar with graceful degradation
-  - `/contexts`: React contexts for state management
-  - `/core`: Shared code across features
-    - `/api`: API clients for external services 
-    - `/components`: Shared UI components
-    - `/services`: Shared application services
-    - `/utils`: Utility functions and helpers
-  - `/features`: Feature modules
-    - `/map-visualization`: Map visualization feature
-    - `/travel-planning`: Travel itinerary planning feature
-    - `/user-profile`: User profile management feature
-    - `/beta-program`: Beta program management
-      - `/components`: Beta program components
-        - `/analytics`: Analytics dashboard components
-        - `/auth`: Authentication components
-        - `/feedback`: Feedback collection components
-        - `/onboarding`: User onboarding components
-        - `/survey`: Survey creation and management components
-      - `/services`: Beta program services
-  - `/pages`: Main page components
-  - `/services`: Legacy services (being migrated to core)
-  - `/styles`: CSS and styling files
-  - `/tests`: Component-specific tests
-  - `/utils`: Utility functions
-- `/tests`: End-to-end and integration tests
-  - `/stability`: Frontend stability tests for router, theme, and resilience
-  - `/cross-browser`: Cross-browser compatibility tests
-  - `/load`: Performance and load testing
-
-## Refactoring Philosophy
-
-Throughout development, we've applied several key refactoring principles:
-
-- **Code Consolidation**: Reducing duplication by centralizing common functionality
-- **Parameter Standardization**: Consistent naming conventions across interfaces
-- **Performance Optimization**: Regular improvements to frontend and backend performance
-- **Security Hardening**: Progressive enhancement of security practices
-- **Infrastructure Automation**: Continuous improvement of CI/CD processes
-- **Frontend Stability**: Ensuring robust React component architecture with proper error handling
-
-See `docs/project.refactors.md` for a detailed history of refactoring efforts and `docs/project.lessons.md` for lessons learned.
+- Chat-based travel planning interface
+- Interactive map visualization of travel routes
+- Detailed timeline view of daily activities
+- Offline capability for saved routes
+- User profile management
+- Role-based access control for beta testers and administrators
+- Email notifications with verification and password reset capabilities
+- Comprehensive onboarding workflow for new beta users
+- Customizable survey system with conditional logic
+- Analytics dashboard with real-time usage metrics
+- Feedback collection with screenshot and recording capabilities
 
 ## Application Pages
 
@@ -341,6 +301,38 @@ See `docs/project.refactors.md` for a detailed history of refactoring efforts an
 - Recharts for data visualization
 - HTML2Canvas for screenshot capture
 - Robust error boundaries and graceful degradation
+
+## Refactoring Philosophy
+
+Throughout development, we've applied several key refactoring principles:
+
+- **Code Consolidation**: Reducing duplication by centralizing common functionality
+- **Parameter Standardization**: Consistent naming conventions across interfaces
+- **Performance Optimization**: Regular improvements to frontend and backend performance
+- **Security Hardening**: Progressive enhancement of security practices
+- **Infrastructure Automation**: Continuous improvement of CI/CD processes
+- **Frontend Stability**: Ensuring robust React component architecture with proper error handling
+
+See `docs/project.refactors.md` for a detailed history of refactoring efforts and `docs/project.lessons.md` for lessons learned.
+
+## Troubleshooting
+
+### Google Maps Issues
+
+If you see the error "This page didn't load Google Maps correctly":
+
+1. Check that your Google Maps API key is correctly set in the `.env` file
+2. Make sure the key is not restricted to specific domains that exclude localhost
+3. Verify that you've enabled all required Google Maps APIs in your Google Cloud Console
+4. Check the browser console for specific error messages
+
+### API Connection Issues
+
+If you're having trouble connecting to the APIs:
+
+1. Ensure your OpenAI API key is correctly set in the server `.env` file
+2. Check that the server is running (`npm run server`)
+3. Make sure the `REACT_APP_API_URL` in the frontend `.env` points to the correct server address
 
 ## Security Configuration
 
@@ -454,11 +446,4 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Project Structure
-
-- `/src` - Frontend React application
-- `/server` - Backend Express server
-- `/docs` - Project documentation
-- `/tests` - Test suites and fixtures
 

@@ -22,6 +22,56 @@ This document records key lessons learned during the development of TourGuideAI,
 - **Solution**: Create a checklist from the File Responsibilities section of .workflows at the beginning of each phase
 - **Impact**: Ensures documentation remains consistent and follows established project patterns
 
+### File Naming Conventions
+- **Lesson**: Follow standardized naming patterns for all project files
+- **Context**: Inconsistent file naming led to confusion and difficulty finding related documentation
+- **Solution**: Implement and follow these naming conventions:
+  - **Project management files**:
+    - Pattern: `.lowercase-descriptor`
+    - Examples: `.milestones`, `.todos`, `.project`, `.workflows`, `.mermaidflow`
+    - Constraints: Must begin with a period, all lowercase with hyphens for multi-word names, no spaces or special characters
+  - **Documentation files**:
+    - Pattern: `project.[category]-[purpose].md`
+    - Examples: `project.test-scenarios.md`, `project.deployment-pipeline.md`
+    - Constraints: Must begin with "project.", category and purpose must be lowercase with hyphens for multi-word terms, must use appropriate category labels (test, phase, deployment, performance, refactors, etc.)
+    - Categories: 
+      - `test`: Test-related documentation (e.g., `project.test-scenarios.md`)
+      - `phase`: Phase planning documents (e.g., `project.phase6-planning.md`)
+      - `deployment`: Deployment-related documentation (e.g., `project.deployment-pipeline.md`)
+      - `performance`: Performance-related documentation (e.g., `project.performance-optimization-plan.md`)
+      - `refactors`: Refactoring documentation (e.g., `project.refactors-plan.md`)
+  - **Reference files**:
+    - Pattern: `/docs/references/[topic-name].md`
+    - Examples: `code-review-checklist.md`, `version-control.md`
+    - Constraints: Must be stored in references subdirectory, all lowercase with hyphens for multi-word terms
+  - **Project-wide files**:
+    - Pattern: `UPPERCASE.md` or `UPPERCASE_WITH_UNDERSCORES.md`
+    - Examples: `README.md`, `ARCHITECTURE.md`, `API_OVERVIEW.md`
+    - Constraints: All uppercase letters, underscores for multi-word names, reserved for project-wide documentation only
+  - **Directory structure**:
+    - Pattern: `lowercase-with-hyphens/`
+    - Examples: `docs/`, `docs/references/`, `docs/screenshots/`
+    - Constraints: All lowercase with hyphens for multi-word names, no spaces or special characters
+- **Impact**: 
+  - Improved file organization and easier navigation
+  - Clear documentation structure and predictable file locations
+  - Support for automated tools that process files by type
+  - Simplified documentation discovery and maintenance
+  - Reduced time spent searching for specific documentation
+
+### File Naming Enforcement
+- **Lesson**: Actively enforce file naming conventions to maintain consistency
+- **Context**: Even with established conventions, files were occasionally created with non-standard names
+- **Solution**: 
+  - Include file naming verification in the phase completion checklist
+  - Create automated checks for file naming in the CI/CD pipeline
+  - Regularly audit documentation to identify and rename non-compliant files
+  - Document naming convention exceptions with clear justification
+- **Impact**: 
+  - Consistent documentation structure over the project lifetime
+  - Reduced cognitive load when navigating the project
+  - Improved collaboration through predictable documentation locations
+
 ## Project Workflow
 
 ### Workflow Compliance

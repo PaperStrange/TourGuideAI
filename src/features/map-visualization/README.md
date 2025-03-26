@@ -31,9 +31,18 @@ This feature handles the mapping and geographic visualization of travel routes, 
 - **Offline Support**: Previously viewed maps and routes are available offline
 - **Progressive Loading**: Map markers and routes are loaded progressively based on viewport
 
+## Testing
+
+For detailed test scenarios of this feature, see `docs/project.test-scenarios.md` and `docs/project.test-user-story.md`.
+
 ## Dependencies
 
 This feature depends on:
 - Common UI components (via `core/components`)
 - Google Maps API (via `core/api/googleMapsApi`)
-- Storage services (via `core/services/storage`) 
+- Storage services (via `core/services/storage`)
+
+## Related Documentation
+
+- Performance optimizations: `docs/project.performance-optimization-plan.md`
+- Refactoring history: `docs/project.refactors.md` 

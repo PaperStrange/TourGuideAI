@@ -5,10 +5,13 @@ This document outlines the standard workflow for executing a new project phase i
 ## Project Phase Workflow
 
 ### 1. Phase Initialization
+- Create a checklist from this workflow file to track completion of each workflow step
 - Review `.milestones` file to understand the overall project structure
 - Identify the current phase requirements and objectives
 - Refer to the references and tips within `Project Structure Guide`, `Coding Standards`, and `API Integration Rules` sections in `.cursorrules` to keep those principles in mind when start generating new things
 - Refer to the lessons recorded in `project.lessons.md` to avoid mistakes, errors used to make
+- Review previous phase documents to understand decisions and rationale
+- Perform a document inventory scan to identify all documentation artifacts that need updates
 - Break down the phase into logical milestones and tasks
 - Update `.milestones` file with the new logical milestones and **objects**
 - Update `.project` file with the new phase details, **key results** for **objects** in `.milestones`
@@ -19,10 +22,14 @@ This document outlines the standard workflow for executing a new project phase i
 - Ensure all planning files follow the same format structure as existing plan files
 - Create proper cross-references between the whole planning file and related detail planning files
 - Planning artifacts should refer to the corresponding task and lines in `.todos` with a link
+- Schedule explicit code review sessions as separate tasks with clear artifacts and outcomes
 
 ### 2. Development Process
 - Execute tasks according to the priorities defined in `.todos`
+- Complete one functional area before moving to the next to reduce context switching
 - For complex tasks, utilize the `cursor-thinking-protocol` section in `.cursorrules` as a scratchpad
+- Always read files thoroughly before editing them to avoid unintended side effects
+- Use the OKR framework consistently: Objectives (milestones) → Key Results (project) → Tasks (todos)
 - Update `.milestones` file as objects are decided
   - Use task markers to indicate the task progress, Mark completed tasks with [X]
   - Add completion dates
@@ -37,24 +44,29 @@ This document outlines the standard workflow for executing a new project phase i
 - Update `.todos` file regularly to reflect current status and any new tasks
 - Update `.milestones` file regularly to reflect current status and any new milestone object
 - Update `.project` file regularly to reflect current status and any new key result
+- Treat documentation and review tasks with equal priority to implementation tasks
 - Compare the milestones in `.milestones` with completed milestones in `.project` regularly to identify gaps
 - Compare project completion criteria to know whether the project phase is ready to close, then update project status, including:
   - all object in `.milestones` and key results in `.project` are marked as done
   - all tasks in `.todos` are marked as done
   - all tests in `tests` are marked as success
   - Update `docs/test-execution-results.md` with latest test status and next steps
+- Create detailed test scenarios with specific metrics and clear acceptance criteria
 
 ### 3. Phase Completion and Documentation Updates
-- Perform comprehensive code review referring to `docs/references/code-review-checklist.md`and `docs/references/whats-code-review-looking-for.md`
+- Perform comprehensive code review referring to `docs/references/code-review-checklist.md` and `docs/references/whats-code-review-looking-for.md`
 - Follow the refactoring plan in `docs/refactor-plan.md` to categorize and implement refactors
 - Document all refactors in `docs/project.refactors.md` by type (code structure, duplication, performance, security, etc.)
 - Remove duplicated or obsolete files
 - Update architecture documentation to reflect changes
 - Review all project files against the standards in `.cursorrules`
+- Perform explicit verification against workflow requirements and create a formal sign-off process
+- Update all feature-level README files to reflect changes
 - Update `project.refactors` with details of any structural changes:
   - Document file relocations
   - Record line changes
   - Summarize modifications
+  - Include before/after metrics when available
 - Update `project.versions.md` with new version details:
   - Version number and date
   - Added features
@@ -66,6 +78,8 @@ This document outlines the standard workflow for executing a new project phase i
 ### 4. Project Artifacts Modification
 - Update detailed folder structure in `ARCHITECTURE.md`
 - Update api document named `API_OVERVIEW.md`
+- Ensure all documentation consistently references the same terms and concepts
+- Verify that import paths in documentation match the actual file structure 
 
 ### 5. Knowledge Preservation
 - Record lessons in `project.lessons.md`, including:
@@ -79,6 +93,7 @@ This document outlines the standard workflow for executing a new project phase i
   - Code organization insights
   - Integration patterns between components
   - Error handling strategies
+  - Document consolidation and consistency insights
 - Format lessons as concise bullet points for easy reference
 - Focus on reusable knowledge that can be applied to future phases
 - Prioritize recording lessons about:
@@ -91,32 +106,39 @@ This document outlines the standard workflow for executing a new project phase i
 - Use clear, actionable language in lesson descriptions
 - Always link all new generated files back to this file
 - Never store lessons in `.cursorrules`
+- Categorize lessons by type for easier reference
 
 ## File Responsibilities
 
 | File | Purpose | Update Frequency | Reference Documentation |
 |------|---------|------------------|-------------------------|
-| `.milestones` | Project-wide milestone tracking | At project start, major revisions | |
+| `.milestones` | Project-wide milestone tracking | At project start and completion, major revisions | |
 | `.project` | Detailed project status and task tracking | Throughout development | |
 | `.todos` | Current action items and task status | Daily/as tasks change | |
+| `.mermaidflow` | Visual representation of project workflow | When workflow process changes | |
 | `.cursorrules` | Project standards and useful protocols | As new standards emerge | |
 | `.cursorrules` (Instructions) | Project management guidelines | Reference at phase start | |
 | `.cursorrules` (Thinking Protocol) | Thinking process for complex tasks | During task analysis | |
 | `.cursorrules` (Standards) | Coding and API standards | Reference throughout development | |
 | `.cursorrules` (Scratchpad) | Current thinking context | Before and during task execution | |
+| `docs/project.workflow-checklists.md` | Checklists for current project phase to reflect on the workflow completion procedures | At project start and each time when one procedure in workflow marked is finished | [Workflow Checklists](../docs/project.workflow-checklists.md) |
+| `docs/project.document-inventory.md` | Inventory of all documentation artifacts that need updates | At phase start and when new documentation is created | |
+| `docs/project.phase-signoff.md` | Formal phase completion verification and signoff record | At phase completion | |
+| `docs/project.test-scenarios.md` | Detailed test scenarios with metrics and acceptance criteria | Before implementation of features | |
+| `docs/project.test-user-story.md` | Mock user jounery and generated user story from different user profiles to expand scenario tests | Before implementation of features | |
 | `docs/project.refactors.md` | Record of structural changes | After refactoring | [Versioning Guide](../docs/project.refactors.md) |
-| `docs/refactor-plan.md` | Refactoring categorization and approach | Before refactoring, quarterly review | [Refactoring Plan](../docs/refactor-plan.md) |
+| `docs/project.refactors-plan.md` | Refactoring categorization and approach | Before refactoring, quarterly review | [Refactoring Plan](../docs/project.refactors-plan.md) |
 | `docs/project.versions.md` | Version history and release notes | After version completion | [Versioning Guide](../docs/project.versions.md) |
 | `docs/project.lessons.md` | Centralized location for all project lessons | After resolving challenges or discovering insights | |
 | `docs/references/code-review-checklist.md` | Standard for code reviews | Reference during review | [Code Review Checklist](../docs/references/code-review-checklist.md) |
 | `docs/references/version-control.md` | Versioning conventions | Reference during releases | [Versioning Conventions](../docs/references/version-control.md) |
 | `docs/references/dependencies-tracking.md` | Component dependency management | Update with architectural changes | [Dependencies Tracking](../docs/references/dependencies-tracking.md) |
 | `docs/references/whats-code-review-looking-for.md` | Google's code review guide | Reference during reviews | [Code Review Guide](../docs/references/whats-code-review-looking-for.md) |
-| `docs/phase#-planning.md` | Whole phase planning overview with strategy and cross-references | At phase start | |
-| `docs/stability-test-plan.md` | Detailed testing approach and test cases | Before phase execution | |
-| `docs/test-execution-results.md` | Current test execution status and next steps | After each test run | |
-| `docs/deployment-pipeline.md` | Detailed deployment process documentation | Before production release | |
-| `docs/performance-optimization-plan.md` | Detailed performance strategy and targets | Before optimization work | |
+| `docs/project.phase#-planning.md` | Whole phase planning overview with strategy and cross-references | At phase start | |
+| `docs/project.stability-test-plan.md` | Detailed testing approach and test cases | Before phase execution | |
+| `docs/project.test-execution-results.md` | Current test execution status and next steps | After each test run | |
+| `docs/project.deployment-pipeline.md` | Detailed deployment process documentation | Before production release | |
+| `docs/project.performance-optimization-plan.md` | Detailed performance strategy and targets | Before optimization work | |
 | `README.md` | Introduction for the new-comers | After version completion | |
 | `ARCHITECTURE.md` | Introduction for the the whole project file structure | After version completion | |
 | `API_OVERVIEW.md` | Introduction for the api embedded in this project | After version completion | |
@@ -126,9 +148,36 @@ This document outlines the standard workflow for executing a new project phase i
 This is a simplified checklist of phases to execute. For detailed steps of each phase, refer to the corresponding sections in the **Project Phase Workflow** above.
 
 1. **Phase Initialization** - See [section 1: Phase Initialization](#1-phase-initialization)
+   - Create workflow checklist
+   - Review project standards
+   - Check existing documentation
+   - Plan phase with OKR structure
+   
 2. **Development Process** - See [section 2: Development Process](#2-development-process)
+   - Follow task sequence from workflow
+   - Complete one functional area before moving to next
+   - Balance documentation with implementation
+   - Regular progress tracking
+
 3. **Project Verification** - Ensure all milestones, key results, and tasks are complete
+   - Verify against acceptance criteria
+   - Conduct comprehensive testing
+   - Document test results
+
 4. **Phase Completion and Documentation Updates** - See [section 3: Phase Completion and Documentation Updates](#3-phase-completion-and-documentation-updates)
+   - Perform code review sessions
+   - Complete refactoring and document changes
+   - Update all documentation artifacts
+
 5. **Project Artifacts Modification** - See [section 4: Project Artifacts Modification](#4-project-artifacts-modification)
+   - Update architecture documentation
+   - Update API documentation
+   - Ensure consistency across artifacts
+
 6. **Knowledge Preservation** - See [section 5: Knowledge Preservation](#5-knowledge-preservation)
+   - Document lessons by category
+   - Focus on reusable knowledge
+
 7. **Final Review** - Verify all steps are complete and announce completion
+   - Formal sign-off process
+   - Verification against workflow requirements
