@@ -13,19 +13,16 @@ TourGuideAI/
 ├── build/                # Production build output
 ├── deployment/           # Deployment configurations
 ├── docs/                 # Project documentation
+│   ├── project_lifecycle/  # Project lifecycle documentation
+│   │   ├── code_and_project_structure_refactors/  # Code structure changes
+│   │   ├── deployment/     # Deployment documentation
+│   │   ├── knowledge/      # Knowledge base
+│   │   ├── process_monitors/  # Process monitoring
+│   │   ├── stability_tests/   # Stability testing
+│   │   └── version_control/   # Version control
 │   ├── references/       # Reference documentation
 │   ├── screenshots/      # Visual documentation assets
-│   ├── project.stability-test-plan.md
-│   ├── project.test-scenarios.md
-│   ├── project.test-user-story.md
-│   ├── project.workflow-checklists.md
-│   ├── project.document-inventory.md
-│   ├── project.phase-signoff.md
-│   ├── project.lessons.md
-│   ├── project.refactors-plan.md
-│   ├── project.refactors.md
-│   ├── project.versions.md
-│   └── project.test-execution-results.md
+│   └── prototype/        # Prototype documentation
 ├── public/               # Static assets and service worker
 │   ├── offline.html      # Offline fallback page
 │   └── service-worker.js # Service worker for offline support
@@ -227,7 +224,7 @@ The frontend will be available at http://localhost:3000 and the backend at http:
 
 ## Documentation
 
-The project maintains comprehensive documentation organized by purpose. For a complete inventory of all documentation, see [Document Inventory](docs/project.document-inventory.md).
+The project maintains comprehensive documentation organized by purpose. For a complete inventory of all documentation, see [Document Inventory](docs/project_lifecycle/documentation/records/project.document-inventory.md).
 
 ### Project Management Documentation
 - Project workflow: [.cursor/.workflows](.cursor/.workflows)
@@ -237,12 +234,12 @@ The project maintains comprehensive documentation organized by purpose. For a co
 - Workflow visualization: [.cursor/.mermaidflow](.cursor/.mermaidflow)
 
 ### Process Documentation
-- Workflow checklists: [docs/project.workflow-checklists.md](docs/project.workflow-checklists.md)
-- Phase signoff: [docs/project.phase-signoff.md](docs/project.phase-signoff.md)
-- Version history: [docs/project.versions.md](docs/project.versions.md)
-- Refactoring history: [docs/project.refactors.md](docs/project.refactors.md)
-- Refactoring plans: [docs/project.refactors-plan.md](docs/project.refactors-plan.md)
-- Lessons learned: [docs/project.lessons.md](docs/project.lessons.md)
+- Workflow checklists: [docs/project_lifecycle/process_monitors/plans/project.workflow-checklists.md](docs/project_lifecycle/process_monitors/plans/project.workflow-checklists.md)
+- Phase signoff: [docs/project_lifecycle/process_monitors/plans/project.phase-signoff.md](docs/project_lifecycle/process_monitors/plans/project.phase-signoff.md)
+- Version history: [docs/project_lifecycle/version_control/records/project.versions.md](docs/project_lifecycle/version_control/records/project.versions.md)
+- Refactoring history: [docs/project_lifecycle/code_and_project_structure_refactors/records/project.refactors.md](docs/project_lifecycle/code_and_project_structure_refactors/records/project.refactors.md)
+- Refactoring plans: [docs/project_lifecycle/code_and_project_structure_refactors/plans/project.refactors-plan.md](docs/project_lifecycle/code_and_project_structure_refactors/plans/project.refactors-plan.md)
+- Lessons learned: [docs/project_lifecycle/knowledge/project.lessons.md](docs/project_lifecycle/knowledge/project.lessons.md)
 
 ### Development Documentation
 - Architecture overview: [ARCHITECTURE.md](ARCHITECTURE.md)

@@ -32,14 +32,14 @@ This document records key lessons learned during the development of TourGuideAI,
     - Constraints: Must begin with a period, all lowercase with hyphens for multi-word names, no spaces or special characters
   - **Documentation files**:
     - Pattern: `project.[category]-[purpose].md`
-    - Examples: `project.test-scenarios.md`, `project.deployment-pipeline.md`
+    - Examples: `docs/project_lifecycle/stability_tests/plans/project.test-scenarios.md`, `docs/project_lifecycle/deployment/records/project.deployment-pipeline.md`
     - Constraints: Must begin with "project.", category and purpose must be lowercase with hyphens for multi-word terms, must use appropriate category labels (test, phase, deployment, performance, refactors, etc.)
     - Categories: 
-      - `test`: Test-related documentation (e.g., `project.test-scenarios.md`)
+      - `test`: Test-related documentation (e.g., `docs/project_lifecycle/stability_tests/plans/project.test-scenarios.md`)
       - `phase`: Phase planning documents (e.g., `project.phase6-planning.md`)
-      - `deployment`: Deployment-related documentation (e.g., `project.deployment-pipeline.md`)
-      - `performance`: Performance-related documentation (e.g., `project.performance-optimization-plan.md`)
-      - `refactors`: Refactoring documentation (e.g., `project.refactors-plan.md`)
+      - `deployment`: Deployment-related documentation (e.g., `docs/project_lifecycle/deployment/records/project.deployment-pipeline.md`)
+      - `performance`: Performance-related documentation (e.g., `docs/project_lifecycle/optimizations/plans/project.performance-optimization-plan.md`)
+      - `refactors`: Refactoring documentation (e.g., `docs/project_lifecycle/code_and_project_structure_refactors/plans/project.refactors-plan.md`)
   - **Reference files**:
     - Pattern: `/docs/references/[topic-name].md`
     - Examples: `code-review-checklist.md`, `version-control.md`
@@ -440,7 +440,7 @@ This document records key lessons learned during the development of TourGuideAI,
 ### Documentation Integration
 - **Lesson**: Keep lessons in the centralized project.lessons.md file, not in .cursorrules
 - **Context**: Lessons were being added to `.cursorrules` instead of the project-wide lessons file
-- **Solution**: Consolidated all lessons in `docs/project.lessons.md` with proper categorization
+- **Solution**: Consolidated all lessons in `docs/project_lifecycle/knowledge/project.lessons.md` with proper categorization
 - **Impact**: Maintains a single source of truth for project learnings
 
 ### Planning Efficiency

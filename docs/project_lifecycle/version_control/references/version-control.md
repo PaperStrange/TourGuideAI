@@ -74,7 +74,7 @@ When needed, version qualifiers may be appended with a hyphen:
 ## Documentation
 
 For each version:
-- Update `project.versions.md` with detailed release notes
+- Update `docs/project_lifecycle/version_control/records/project.versions.md` with detailed release notes
 - Update relevant README files
 - Document any breaking changes prominently
 - Include migration guides when necessary
@@ -106,7 +106,7 @@ For each version:
    - `package.json`
    - Any version constants in code
    - Documentation
-3. Update `project.versions.md` with release notes
+3. Update `docs/project_lifecycle/version_control/records/project.versions.md` with release notes
 4. Tag the release in version control
 5. Create release artifacts
 

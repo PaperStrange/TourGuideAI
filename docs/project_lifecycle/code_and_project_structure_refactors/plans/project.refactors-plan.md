@@ -1,6 +1,6 @@
 # TourGuideAI Refactoring Plan
 
-This document outlines the refactoring approach for the TourGuideAI project, categorizing refactors by type and providing guidance for implementation. All refactoring work should be documented in `project.refactors.md` upon completion.
+This document outlines the refactoring approach for the TourGuideAI project, categorizing refactors by type and providing guidance for implementation. All refactoring work should be documented in `docs/project_lifecycle/code_and_project_structure_refactors/records/project.refactors.md` upon completion.
 
 ## Refactoring Categories
 
@@ -76,7 +76,7 @@ For each refactoring effort, follow this structured process:
 
 ### 4. Documentation
 
-- Document all changes in `project.refactors.md` using the established format:
+- Document all changes in `docs/project_lifecycle/code_and_project_structure_refactors/records/project.refactors.md` using the established format:
   - Summary
   - Design Improvements
   - Functionality Changes

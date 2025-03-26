@@ -121,27 +121,19 @@ This document outlines the standard workflow for executing a new project phase i
 | `.cursorrules` (Thinking Protocol) | Thinking process for complex tasks | During task analysis | |
 | `.cursorrules` (Standards) | Coding and API standards | Reference throughout development | |
 | `.cursorrules` (Scratchpad) | Current thinking context | Before and during task execution | |
-| `docs/project.workflow-checklists.md` | Checklists for current project phase to reflect on the workflow completion procedures | At project start and each time when one procedure in workflow marked is finished | [Workflow Checklists](../docs/project.workflow-checklists.md) |
-| `docs/project.document-inventory.md` | Inventory of all documentation artifacts that need updates | At phase start and when new documentation is created | |
-| `docs/project.phase-signoff.md` | Formal phase completion verification and signoff record | At phase completion | |
-| `docs/project.test-scenarios.md` | Detailed test scenarios with metrics and acceptance criteria | Before implementation of features | |
-| `docs/project.test-user-story.md` | Mock user jounery and generated user story from different user profiles to expand scenario tests | Before implementation of features | |
-| `docs/project.refactors.md` | Record of structural changes | After refactoring | [Versioning Guide](../docs/project.refactors.md) |
-| `docs/project.refactors-plan.md` | Refactoring categorization and approach | Before refactoring, quarterly review | [Refactoring Plan](../docs/project.refactors-plan.md) |
-| `docs/project.versions.md` | Version history and release notes | After version completion | [Versioning Guide](../docs/project.versions.md) |
-| `docs/project.lessons.md` | Centralized location for all project lessons | After resolving challenges or discovering insights | |
-| `docs/references/code-review-checklist.md` | Standard for code reviews | Reference during review | [Code Review Checklist](../docs/references/code-review-checklist.md) |
-| `docs/references/version-control.md` | Versioning conventions | Reference during releases | [Versioning Conventions](../docs/references/version-control.md) |
-| `docs/references/dependencies-tracking.md` | Component dependency management | Update with architectural changes | [Dependencies Tracking](../docs/references/dependencies-tracking.md) |
-| `docs/references/whats-code-review-looking-for.md` | Google's code review guide | Reference during reviews | [Code Review Guide](../docs/references/whats-code-review-looking-for.md) |
-| `docs/project.phase#-planning.md` | Whole phase planning overview with strategy and cross-references | At phase start | |
-| `docs/project.stability-test-plan.md` | Detailed testing approach and test cases | Before phase execution | |
-| `docs/project.test-execution-results.md` | Current test execution status and next steps | After each test run | |
-| `docs/project.deployment-pipeline.md` | Detailed deployment process documentation | Before production release | |
-| `docs/project.performance-optimization-plan.md` | Detailed performance strategy and targets | Before optimization work | |
-| `README.md` | Introduction for the new-comers | After version completion | |
-| `ARCHITECTURE.md` | Introduction for the the whole project file structure | After version completion | |
-| `API_OVERVIEW.md` | Introduction for the api embedded in this project | After version completion | |
+| `docs/project_lifecycle/process_monitors/plans/project.workflow-checklists.md` | Checklists for current project phase to reflect on the workflow completion procedures | At project start and each time when one procedure in workflow marked is finished | [Workflow Checklists](../docs/project_lifecycle/process_monitors/plans/project.workflow-checklists.md) |
+| `docs/project_lifecycle/documentation/records/project.document-inventory.md` | Inventory of all documentation artifacts that need updates | At phase start and when new documentation is created | |
+| `docs/project_lifecycle/process_monitors/plans/project.phase-signoff.md` | Formal phase completion verification and signoff record | At phase completion | |
+| `docs/project_lifecycle/stability_tests/plans/project.test-scenarios.md` | Detailed test scenarios with metrics and acceptance criteria | Before implementation of features | |
+| `docs/project_lifecycle/stability_tests/plans/project.test-user-story.md` | Mock user jounery and generated user story from different user profiles to expand scenario tests | Before implementation of features | |
+| `docs/project_lifecycle/code_and_project_structure_refactors/records/project.refactors.md` | Record of structural changes | After refactoring | [Versioning Guide](../docs/project_lifecycle/code_and_project_structure_refactors/records/project.refactors.md) |
+| `docs/project_lifecycle/code_and_project_structure_refactors/plans/project.refactors-plan.md` | Refactoring categorization and approach | Before refactoring, quarterly review | [Refactoring Plan](../docs/project_lifecycle/code_and_project_structure_refactors/plans/project.refactors-plan.md) |
+| `docs/project_lifecycle/version_control/records/project.versions.md` | Version history and release notes | After version completion | [Versioning Guide](../docs/project_lifecycle/version_control/records/project.versions.md) |
+| `docs/project_lifecycle/knowledge/project.lessons.md` | Centralized location for all project lessons | After resolving challenges or discovering insights | |
+| `docs/project_lifecycle/stability_tests/plans/project.stability-test-plan.md` | Detailed testing approach and test cases | Before phase execution | |
+| `docs/project_lifecycle/stability_tests/records/project.test-execution-results.md` | Current test execution status and next steps | After each test run | |
+| `docs/project_lifecycle/deployment/records/project.deployment-pipeline.md` | Detailed deployment process documentation | Before production release | |
+| `docs/project_lifecycle/optimizations/plans/project.performance-optimization-plan.md` | Detailed performance strategy and targets | Before optimization work | |
 
 ## Standard Procedure for New Phase
 

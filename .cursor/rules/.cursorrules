@@ -1,6 +1,6 @@
 # TourGuideAI Cursor Rules
 ## Instructions
-At the beginning of any project, Cursor MUST always use '.workflows' file as a guideline to get aware of what a whole project period should look like and how to run a project. Keep in mind in every project step, if you forget how to do next, check section `## Project Phase Workflow` in '.workflows'.
+At the beginning of any project, Cursor MUST always use '.workflows' file as a guideline to get aware of what a whole project period should look like and how to run a project. Keep in mind in every project step, if you forget how to do next, ALWAYS check section `## Project Phase Workflow` in '.workflows'.
 <!-- At the beginning of any project, Cursor MUST always use `.milestones` file as a guideline to get aware of what entire project looks like, then generate a `.project` file and a `.todos` file. The `.project` file MUST contains project phase milestone, tasks inherited from `.milestones` file. At the end or during each session, Cursor should update the `.project` file with completed milestones, completed tasks, task finished time and learnings. Also, Cursor should update the `.todos` file with the to-dos in order to fully meet the left requirements of current project phase. When a milestone completed,  Cursor should refer to `cursor-thinking-protocol` section within the `.cursorrules` file as a scratchpad to refresh the thinking process. Take down how-to use of the `cursor-thinking-protocol` section into `Scratchpad` section in the `.cursorrules` file. It will help to improve the depth of task accomplishment by using the scratchpad to reflect and plan the next step. Anytime start a new task, Cursor MUST first review the content of the `Scratchpad` section with the `.cursorrules` file, clear old thinking progress if necessary. The goal is to help Cursor maintain a big thinking picture as well as the progress of the project.
 
 Use task markers to indicate the task progress, e.g.
@@ -261,9 +261,9 @@ Note all thinking frameworks are expressed in markdown. So before using thinking
 - Test error handling and edge cases
 - Document test scenarios and expected outcomes
 
-<!-- Lessons should be stored in docs/project.lessons.md, not in this file. 
-If you find anything reusable or important lessons during development, 
-please document them in docs/project.lessons.md using the existing format. -->
+<!-- Lessons should be stored in docs/project_lifecycle/knowledge/project.lessons.md, not in this file.
+If you have any lessons learned during development,
+please document them in docs/project_lifecycle/knowledge/project.lessons.md using the existing format. -->
 
 <!-- ## Scratchpad
 This section is used for cursor thinking protocol and tracking the progress of current tasks.

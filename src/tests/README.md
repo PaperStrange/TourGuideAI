@@ -285,5 +285,5 @@ When adding new tests:
 - [Jest Documentation](https://jestjs.io/docs/getting-started)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
 - [Testing Best Practices](https://testing-library.com/docs/guiding-principles)
-- [Project Test Plan](../../docs/project.stability-test-plan.md)
-- [Test Results](../../docs/project.test-execution-results.md) 
+- [Project Test Plan](../../docs/project_lifecycle/stability_tests/plans/project.stability-test-plan.md)
+- [Test Results](../../docs/project_lifecycle/stability_tests/records/project.test-execution-results.md) 

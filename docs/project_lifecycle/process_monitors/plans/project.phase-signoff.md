@@ -35,7 +35,7 @@ _List all key results from `.project` file that were achieved in this phase._
 
 ### Test Execution Results
 
-_Summarize the test results from `docs/project.test-execution-results.md`._
+_Summarize the test results from `docs/project_lifecycle/stability_tests/records/project.test-execution-results.md`._
 
 - Total Test Cases: 
 - Passed Test Cases: 
@@ -52,7 +52,7 @@ _List all documentation files that were updated during this phase._
 
 ### Refactors Implemented
 
-_List significant refactors from `docs/project.refactors.md` that were implemented in this phase._
+_List significant refactors from `docs/project_lifecycle/code_and_project_structure_refactors/records/project.refactors.md` that were implemented in this phase._
 
 1. 
 2. 
@@ -68,7 +68,7 @@ _List any known issues that remain unresolved at the end of this phase._
 
 ### Lessons Learned
 
-_Summarize key lessons learned during this phase (from `docs/project.lessons.md`)._
+_Summarize key lessons learned during this phase (from `docs/project_lifecycle/knowledge/project.lessons.md`)._
 
 1. 
 2. 

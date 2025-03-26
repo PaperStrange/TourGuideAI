@@ -78,7 +78,7 @@ Improved the stability and resilience of the frontend React application by fixin
 
 ### Documentation Enhancements
 - Updated READMEs with new frontend stability information
-- Added frontend stability section to project.lessons.md
+- Added frontend stability section to docs/project_lifecycle/knowledge/project.lessons.md
 - Created stability test documentation
 - Updated CI/CD documentation with frontend checks
 

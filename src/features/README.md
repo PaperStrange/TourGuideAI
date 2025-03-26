@@ -21,9 +21,9 @@ Each feature directory is organized to be largely self-contained, with its own:
 ## Documentation
 
 For comprehensive testing of these features, refer to:
-- Test scenarios: `docs/project.test-scenarios.md`
-- User journey testing: `docs/project.test-user-story.md`
-- Test execution results: `docs/project.test-execution-results.md`
+- Test scenarios: `docs/project_lifecycle/stability_tests/plans/project.test-scenarios.md`
+- User journey testing: `docs/project_lifecycle/stability_tests/plans/project.test-user-story.md`
+- Test execution results: `docs/project_lifecycle/stability_tests/records/project.test-execution-results.md`
 
 ## Performance Optimizations
 
@@ -38,4 +38,4 @@ All features leverage the following performance enhancements:
 
 This organization makes it easier to navigate the codebase, maintain features in isolation, and potentially extract features into separate packages if needed. 
 
-For detailed refactoring history of these features, see `docs/project.refactors.md`. 
+For detailed refactoring history of these features, see `docs/project_lifecycle/code_and_project_structure_refactors/records/project.refactors.md`. 
