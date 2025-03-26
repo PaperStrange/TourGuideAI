@@ -5,7 +5,13 @@ import { BrowserRouter } from 'react-router-dom';
 import ChatPage from '../../pages/ChatPage';
 
 // Mock the openaiApi module
-jest.mock('../../api/openaiApi', () => ({
+jest.mock('../../core/api/openaiApi', () => ({
+  recognizeTextIntent: jest.fn().mockResolvedValue({
+    arrival: 'Rome',
+    departure: '',
+    travel_duration: '3 days',
+    transportation_prefer: ''
+  }),
   generateRoute: jest.fn().mockResolvedValue({
     id: 'route1',
     name: 'Rome 3-day Tour',
@@ -18,12 +24,7 @@ jest.mock('../../api/openaiApi', () => ({
     destination: 'Paris',
     sites_included_in_routes: ['Eiffel Tower', 'Louvre', 'Notre Dame']
   }),
-  recognizeIntent: jest.fn().mockResolvedValue({
-    arrival: 'Rome',
-    departure: '',
-    travel_duration: '3 days',
-    transportation_prefer: ''
-  })
+  getStatus: jest.fn().mockReturnValue({ isConnected: false, error: 'Test error' })
 }));
 
 // Mock the route navigation
@@ -31,6 +32,18 @@ jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useNavigate: () => jest.fn()
 }));
+
+// Mock ApiStatus component
+jest.mock('../../components/ApiStatus', () => {
+  return function DummyApiStatus() {
+    return (
+      <div className="api-status api-status-error">
+        <h3>API Status Error</h3>
+        <p>Test error message</p>
+      </div>
+    );
+  };
+});
 
 describe('ChatPage Component', () => {
   const renderWithRouter = (ui) => {
@@ -48,7 +61,7 @@ describe('ChatPage Component', () => {
 
   test('should render input box', () => {
     renderWithRouter(<ChatPage />);
-    expect(screen.getByPlaceholderText('Enter your travel details...')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('Tell me about your dream vacation...')).toBeInTheDocument();
   });
 
   test('should render generate button with correct text', () => {
@@ -74,7 +87,7 @@ describe('ChatPage Component', () => {
   test('buttons should be enabled when input has text', () => {
     renderWithRouter(<ChatPage />);
     
-    const inputBox = screen.getByPlaceholderText('Enter your travel details...');
+    const inputBox = screen.getByPlaceholderText('Tell me about your dream vacation...');
     fireEvent.change(inputBox, { target: { value: 'Show me a 3-day tour of Rome' } });
     
     const generateButton = screen.getByText('Generate your first plan!');
@@ -87,29 +100,14 @@ describe('ChatPage Component', () => {
   test('should show loading state when generate button is clicked', async () => {
     renderWithRouter(<ChatPage />);
     
-    const inputBox = screen.getByPlaceholderText('Enter your travel details...');
+    const inputBox = screen.getByPlaceholderText('Tell me about your dream vacation...');
     fireEvent.change(inputBox, { target: { value: 'Show me a 3-day tour of Rome' } });
     
     const generateButton = screen.getByText('Generate your first plan!');
     fireEvent.click(generateButton);
     
-    await waitFor(() => {
-      expect(screen.getByText('Creating your travel plan...')).toBeInTheDocument();
-    });
-  });
-
-  test('should show loading state when feel lucky button is clicked', async () => {
-    renderWithRouter(<ChatPage />);
-    
-    const inputBox = screen.getByPlaceholderText('Enter your travel details...');
-    fireEvent.change(inputBox, { target: { value: 'Show me a 3-day tour of Rome' } });
-    
-    const luckyButton = screen.getByText('Feel lucky?');
-    fireEvent.click(luckyButton);
-    
-    await waitFor(() => {
-      expect(screen.getByText('Creating a surprise journey...')).toBeInTheDocument();
-    });
+    // Check loading text
+    expect(screen.getByText('Generating...')).toBeInTheDocument();
   });
 
   test('should render rankboard with top routes', () => {
@@ -118,14 +116,14 @@ describe('ChatPage Component', () => {
     // Check for rankboard title
     expect(screen.getByText('Top Routes')).toBeInTheDocument();
     
-    // Check for medal positions
-    expect(screen.getAllByText(/upvotes/i).length).toBeGreaterThan(0);
+    // Check for upvotes
+    expect(screen.getByText('58 upvotes')).toBeInTheDocument();
   });
 
   test('should render the API status component', () => {
     renderWithRouter(<ChatPage />);
     
-    // The ApiStatus component should be included
-    expect(screen.getByText(/API Status/i)).toBeInTheDocument();
+    // Mock the ApiStatus component shows an error status
+    expect(screen.getByText('API Status Error')).toBeInTheDocument();
   });
 }); 

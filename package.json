@@ -64,6 +64,7 @@
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/preset-env": "^7.26.9",
     "@babel/preset-react": "^7.26.3",
+    "@playwright/test": "^1.51.1",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^14.6.1",
@@ -71,6 +72,8 @@
     "concurrently": "^8.2.1",
     "css-loader": "^7.1.2",
     "file-loader": "^6.2.0",
+    "identity-obj-proxy": "^3.0.0",
+    "react-test-renderer": "^18.2.0",
     "style-loader": "^4.0.0",
     "webpack-bundle-analyzer": "^4.10.2"
   }

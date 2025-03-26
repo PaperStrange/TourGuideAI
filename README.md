@@ -6,6 +6,7 @@ A comprehensive tour guide application that leverages AI to provide personalized
 
 ```
 TourGuideAI/
+├── .babelrc              # Babel configuration for React/JSX
 ├── .cursor/              # Project management files
 │   └── .workflows        # Project workflow documentation
 ├── .github/              # GitHub Actions workflows
@@ -19,14 +20,22 @@ TourGuideAI/
 │   │   ├── knowledge/      # Knowledge base
 │   │   ├── process_monitors/  # Process monitoring
 │   │   ├── stability_tests/   # Stability testing
+│   │   │   ├── plans/         # Test plans
+│   │   │   ├── records/       # Test execution records
+│   │   │   │   └── test-results/  # Timestamped test results
+│   │   │   └── references/    # Test reference materials
 │   │   └── version_control/   # Version control
 │   ├── references/       # Reference documentation
 │   ├── screenshots/      # Visual documentation assets
 │   └── prototype/        # Prototype documentation
+├── jest.config.js        # Jest configuration for testing
 ├── public/               # Static assets and service worker
 │   ├── offline.html      # Offline fallback page
 │   └── service-worker.js # Service worker for offline support
 ├── scripts/              # Build and maintenance scripts
+│   ├── run-security-audit.js  # Security testing script
+│   ├── run-load-tests.sh      # Load testing script
+│   └── run-stability-tests.js # Stability test runner
 ├── server/               # Backend server code
 │   ├── middleware/       # Express middleware
 │   ├── routes/           # API route handlers
@@ -55,8 +64,13 @@ TourGuideAI/
 │   │       └── services/
 │   ├── pages/            # Main page components
 │   ├── services/         # Legacy services (migration in progress)
+│   ├── setupTests.js     # Jest setup for component tests
 │   ├── styles/           # CSS and styling files
 │   ├── tests/            # Component-specific tests
+│   │   ├── pages/        # Page component tests
+│   │   ├── components/   # Reusable component tests
+│   │   ├── api/          # API integration tests
+│   │   └── stability/    # Frontend stability tests
 │   └── utils/            # Utility functions
 └── tests/                # End-to-end and integration tests
     ├── stability/        # Frontend stability tests
@@ -97,7 +111,34 @@ The project implements a comprehensive testing strategy as outlined in `docs/sta
 - End-to-End Tests: Complete user flow testing
 - Stability Tests: System reliability testing
 
-Test execution results are tracked in `docs/test-execution-results.md`.
+Test execution results are tracked in `docs/project_lifecycle/stability_tests/records/test-results/` with detailed reports for each test run.
+
+### Running Stability Tests
+
+To run stability tests and verify frontend and backend resilience:
+
+```bash
+# Run all stability tests and generate a report
+node scripts/run-stability-tests.js
+
+# Run a specific test file
+npx jest src/tests/stability/frontend-stability.test.js
+
+# Run only backend resilience tests
+npx jest src/tests/stability/frontend-stability.test.js -t "Backend Resilience"
+```
+
+Test results are automatically saved to `docs/project_lifecycle/stability_tests/records/test-results/` with timestamped JSON files tracking pass/fail metrics.
+
+### Test Configuration
+
+The project uses the following configuration files for testing:
+
+- `.babelrc` - Babel configuration with React and environment presets
+- `jest.config.js` - Jest configuration with JSDOM environment and proper transformers
+- `src/setupTests.js` - Global test setup including custom matchers and mocks
+
+These configurations ensure consistent test behavior across all components and environments.
 
 ## Getting Started
 
@@ -269,7 +310,9 @@ The project maintains comprehensive documentation organized by purpose. For a co
 - Testing strategy: [docs/project.stability-test-plan.md](docs/project.stability-test-plan.md)
 - Test scenarios: [docs/project.test-scenarios.md](docs/project.test-scenarios.md)
 - Test user stories: [docs/project.test-user-story.md](docs/project.test-user-story.md)
-- Test results: [docs/project.test-execution-results.md](docs/project.test-execution-results.md)
+- Stability test results: [docs/project_lifecycle/stability_tests/records/test-results](docs/project_lifecycle/stability_tests/records/test-results)
+- Stability test execution: [scripts/run-stability-tests.js](scripts/run-stability-tests.js)
+- Legacy test results: [docs/project.test-execution-results.md](docs/project.test-execution-results.md)
 
 ### Reference Documentation
 - Code review checklist: [docs/references/code-review-checklist.md](docs/references/code-review-checklist.md)
@@ -347,6 +390,28 @@ If you're having trouble connecting to the APIs:
 1. Ensure your OpenAI API key is correctly set in the server `.env` file
 2. Check that the server is running (`npm run server`)
 3. Make sure the `REACT_APP_API_URL` in the frontend `.env` points to the correct server address
+
+### Testing Issues
+
+If you're experiencing test failures:
+
+1. **Jest configuration issues**:
+   - Verify that `.babelrc` and `jest.config.js` are in the project root
+   - Ensure `identity-obj-proxy` is installed for CSS modules
+   - Check that `setupTests.js` is properly configured
+
+2. **MapPage test crashes**:
+   - Use the simplified mock approach for complex components
+   - Avoid circular dependencies in tests
+   - Mock Google Maps API responses completely
+
+3. **ESM vs CommonJS conflicts**:
+   - When testing files with `import` statements for third-party libraries like axios, use proper Jest transformers
+   - Add problematic packages to `transformIgnorePatterns` in jest.config.js if needed
+
+4. **Viewing test results**:
+   - Check the latest results in `docs/project_lifecycle/stability_tests/records/test-results/`
+   - Run `node scripts/run-stability-tests.js` to generate a fresh report
 
 ## Security Configuration
 
