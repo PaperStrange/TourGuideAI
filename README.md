@@ -137,6 +137,32 @@ npx jest src/tests/stability/frontend-stability.test.js -t "Backend Resilience"
 
 Test results are automatically saved to `docs/project_lifecycle/stability_tests/results/data/` with timestamped JSON files tracking pass/fail metrics. HTML reports are generated in the `reports/` subdirectory.
 
+### Adding New Stability Tests
+
+When adding new stability tests:
+
+1. Add the test file to the appropriate location:
+   - Core app tests in `src/tests/pages/` or `src/tests/stability/`
+   - Beta program tests in `src/tests/components/analytics/` or `src/tests/components/survey/`
+
+2. Update the test file list in `scripts/run-stability-tests.js` by adding your test file to the appropriate category:
+   ```javascript
+   const testFilesByCategory = {
+     'core-app': [
+       // Add core app test files here
+     ],
+     'beta-program': [
+       // Add beta program test files here
+     ]
+   };
+   ```
+
+3. Run the tests to verify they work correctly:
+   ```bash
+   npm run test:stability
+   npm run test:report
+   ```
+
 ### Test Configuration
 
 The project uses the following configuration files for testing:

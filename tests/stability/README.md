@@ -45,6 +45,19 @@ Key validations:
 
 ## Running the Tests
 
+### Using npm Scripts
+
+```bash
+# Run all stability tests (includes both Jest and Playwright tests)
+npm run test:stability
+
+# Generate an HTML report from test results
+npm run test:report
+
+# View the report in your browser
+open docs/project_lifecycle/stability_tests/results/index.html
+```
+
 ### Using Playwright for E2E Testing
 
 ```bash
@@ -61,11 +74,11 @@ npx playwright test tests/stability/frontend-stability.test.js --ui
 ### Using Jest for Component Testing
 
 ```bash
-# Run unit tests for router structure
-npm test -- src/tests/components/RouterStructure.test.js
+# Run specific stability tests
+npx jest src/tests/stability/frontend-stability.test.js
 
-# Run unit tests for theme provider
-npm test -- src/tests/components/ThemeProvider.test.js
+# Run tests with a specific tag
+npx jest src/tests/stability/frontend-stability.test.js -t "Backend Resilience"
 ```
 
 ## Adding New Tests
@@ -77,6 +90,20 @@ When adding new stability tests, follow these guidelines:
 3. Use meaningful assertions that validate user-facing behavior
 4. Include console error checking for silent runtime issues
 5. Document the purpose of each test case clearly
+6. Add your test file to the appropriate category in `scripts/run-stability-tests.js`
+
+## Test Results and Reports
+
+Test results are saved in two formats:
+
+1. **Raw JSON data** - Detailed test execution data is saved to:
+   `docs/project_lifecycle/stability_tests/results/data/`
+
+2. **HTML Reports** - Interactive visual reports are generated at:
+   `docs/project_lifecycle/stability_tests/results/reports/`
+
+You can access the most recent test report via:
+`docs/project_lifecycle/stability_tests/results/index.html`
 
 ## Integration with CI/CD
 

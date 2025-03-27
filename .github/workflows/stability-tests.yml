@@ -75,20 +75,13 @@ jobs:
             npx jest src/tests/api/googleMapsApi.test.js --verbose || echo "Google Maps API tests skipped due to ESM issues"
           fi
       
-      - name: Generate Comprehensive Report
+      - name: Run All Stability Tests and Generate Report
         run: |
-          echo "Generating Comprehensive Stability Test Report..."
+          echo "Running All Stability Tests and Generating Report..."
           
-          # Run the stability test script to generate comprehensive report
-          if [ -f "./scripts/run-stability-tests.js" ]; then
-            node ./scripts/run-stability-tests.js
-          else
-            echo "Stability test script not found, generating basic report..."
-            # Create timestamp for report
-            TIMESTAMP=$(date +"%Y-%m-%d-%H-%M-%S")
-            mkdir -p ./docs/project_lifecycle/stability_tests/records/test-results
-            echo "{\"timestamp\":\"$(date -Iseconds)\",\"status\":\"completed\"}" > ./docs/project_lifecycle/stability_tests/records/test-results/stability-test-results-${TIMESTAMP}.json
-          fi
+          # Run all stability tests with new npm scripts
+          npm run test:stability
+          npm run test:report
       
       - name: Store Test Results
         uses: actions/upload-artifact@v4
@@ -96,8 +89,7 @@ jobs:
         with:
           name: stability-test-results
           path: |
-            ./docs/project_lifecycle/stability_tests/records/test-results/
-            ./test-results/
+            ./docs/project_lifecycle/stability_tests/results/
           retention-days: 30
       
       - name: Update Test Summary
@@ -106,4 +98,8 @@ jobs:
           echo "✅ Frontend Stability Tests completed" >> $GITHUB_STEP_SUMMARY
           echo "✅ Component Tests completed" >> $GITHUB_STEP_SUMMARY
           echo "✅ Backend Resilience Tests completed" >> $GITHUB_STEP_SUMMARY
-          echo "📊 Results available in the artifacts" >> $GITHUB_STEP_SUMMARY 
+          
+          # Add links to reports in the summary
+          echo "📊 **Test Reports**:" >> $GITHUB_STEP_SUMMARY
+          echo "- [View Full Report](./docs/project_lifecycle/stability_tests/results/reports/latest.html)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Raw Test Data](./docs/project_lifecycle/stability_tests/results/data/)" >> $GITHUB_STEP_SUMMARY 
