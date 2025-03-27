@@ -39,7 +39,9 @@
     "dev": "concurrently \"PORT=3000 npm run start\" \"PORT=3001 npm run server\"",
     "dev:win": "concurrently \"set PORT=3000 && npm run start\" \"set PORT=3001 && npm run server\"",
     "analyze": "ANALYZE=true npm run build",
-    "analyze:win": "set ANALYZE=true && npm run build"
+    "analyze:win": "set ANALYZE=true && npm run build",
+    "test:stability": "node scripts/run-stability-tests.js",
+    "test:report": "node scripts/generate-test-report.js"
   },
   "eslintConfig": {
     "extends": [

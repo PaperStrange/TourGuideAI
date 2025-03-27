@@ -1,24 +1,42 @@
 const { execSync } = require('child_process');
 const fs = require('fs');
 
-// List of test files to run
-const testFiles = [
-  'src/tests/pages/ProfilePage.test.js',
-  'src/tests/pages/ChatPage.test.js',
-  'src/tests/pages/MapPage.test.js',
-  'src/tests/stability/frontend-stability.test.js',
-];
+// List of test files to run, categorized by app section
+const testFilesByCategory = {
+  'core-app': [
+    'src/tests/pages/ProfilePage.test.js',
+    'src/tests/pages/ChatPage.test.js',
+    'src/tests/pages/MapPage.test.js',
+    'src/tests/stability/frontend-stability.test.js',
+  ],
+  'beta-program': [
+    'src/tests/components/analytics/AnalyticsDashboard.test.js',
+    'src/tests/components/survey/SurveyList.test.js',
+    'src/tests/components/survey/SurveyBuilder.test.js',
+  ]
+};
+
+// Flatten test files for running
+const allTestFiles = Object.values(testFilesByCategory).flat();
 
 // Results storage
-const results = {
-  passed: [],
-  failed: []
-};
+const resultsByCategory = {};
+Object.keys(testFilesByCategory).forEach(category => {
+  resultsByCategory[category] = {
+    passed: [],
+    failed: []
+  };
+});
 
 // Run each test file individually
 console.log('Running stability tests...\n');
 
-for (const testFile of testFiles) {
+for (const testFile of allTestFiles) {
+  // Determine which category this file belongs to
+  const category = Object.keys(testFilesByCategory).find(cat => 
+    testFilesByCategory[cat].includes(testFile)
+  );
+  
   // Check if file exists
   if (!fs.existsSync(testFile)) {
     console.log(`SKIPPED: ${testFile} (File not found)`);
@@ -33,14 +51,14 @@ for (const testFile of testFiles) {
     // Check if all tests passed
     if (result.numFailedTests === 0) {
       console.log(`✅ PASSED: ${testFile} (${result.numPassedTests} tests)`);
-      results.passed.push({ file: testFile, count: result.numPassedTests });
+      resultsByCategory[category].passed.push({ file: testFile, count: result.numPassedTests });
     } else {
       console.log(`❌ FAILED: ${testFile} (${result.numFailedTests} of ${result.numTotalTests} tests failed)`);
-      results.failed.push({ file: testFile, count: result.numFailedTests });
+      resultsByCategory[category].failed.push({ file: testFile, count: result.numFailedTests });
     }
   } catch (error) {
     console.log(`❌ FAILED: ${testFile} (Error running tests)`);
-    results.failed.push({ file: testFile, error: error.message });
+    resultsByCategory[category].failed.push({ file: testFile, error: error.message });
   }
   
   console.log(''); // Empty line between test files
@@ -48,15 +66,32 @@ for (const testFile of testFiles) {
 
 // Print summary
 console.log('=== SUMMARY ===');
-console.log(`Total files tested: ${testFiles.length}`);
-console.log(`Passed: ${results.passed.length} files`);
-console.log(`Failed: ${results.failed.length} files`);
+console.log(`Total files tested: ${allTestFiles.length}`);
 
-if (results.failed.length > 0) {
-  console.log('\nFailed tests:');
-  results.failed.forEach(failure => {
-    console.log(`- ${failure.file} (${failure.count || 'unknown'} failures)`);
-  });
+let totalPassed = 0;
+let totalFailed = 0;
+
+Object.keys(resultsByCategory).forEach(category => {
+  const categoryResults = resultsByCategory[category];
+  console.log(`\n${category.toUpperCase()}:`);
+  console.log(`  Passed: ${categoryResults.passed.length} files`);
+  console.log(`  Failed: ${categoryResults.failed.length} files`);
+  
+  totalPassed += categoryResults.passed.length;
+  totalFailed += categoryResults.failed.length;
+  
+  if (categoryResults.failed.length > 0) {
+    console.log(`\n  Failed tests in ${category}:`);
+    categoryResults.failed.forEach(failure => {
+      console.log(`  - ${failure.file} (${failure.count || 'unknown'} failures)`);
+    });
+  }
+});
+
+console.log(`\nTotal Passed: ${totalPassed} files`);
+console.log(`Total Failed: ${totalFailed} files`);
+
+if (totalFailed > 0) {
   process.exit(1);
 } else {
   console.log('\nAll tests have passed successfully!');
@@ -64,35 +99,61 @@ if (results.failed.length > 0) {
 
 // Save test results to docs folder
 const saveResults = () => {
-  const resultsDir = 'docs/project_lifecycle/stability_tests/records/test-results';
+  const resultsBaseDir = 'docs/project_lifecycle/stability_tests/results/data';
   const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
   
-  // Create directory if it doesn't exist
-  if (!fs.existsSync(resultsDir)) {
-    fs.mkdirSync(resultsDir, { recursive: true });
+  // Create base directory if it doesn't exist
+  if (!fs.existsSync(resultsBaseDir)) {
+    fs.mkdirSync(resultsBaseDir, { recursive: true });
   }
   
-  // Save results to a JSON file
-  const resultsFile = `${resultsDir}/stability-test-results-${timestamp}.json`;
-  fs.writeFileSync(
-    resultsFile, 
-    JSON.stringify({
-      timestamp: new Date().toISOString(),
-      totalFiles: testFiles.length,
-      passed: results.passed,
-      failed: results.failed,
-      summary: {
-        passedCount: results.passed.length,
-        failedCount: results.failed.length
-      }
-    }, null, 2)
-  );
+  // Save combined results
+  const combinedResultsFile = `${resultsBaseDir}/stability-test-results-${timestamp}.json`;
   
-  console.log(`\nTest results saved to ${resultsFile}`);
+  // Flatten results for the combined file
+  const combinedResults = {
+    timestamp: new Date().toISOString(),
+    totalFiles: allTestFiles.length,
+    passed: Object.values(resultsByCategory).flatMap(r => r.passed),
+    failed: Object.values(resultsByCategory).flatMap(r => r.failed),
+    summary: {
+      passedCount: totalPassed,
+      failedCount: totalFailed
+    }
+  };
+  
+  fs.writeFileSync(combinedResultsFile, JSON.stringify(combinedResults, null, 2));
+  console.log(`\nCombined test results saved to ${combinedResultsFile}`);
+  
+  // Save category-specific results
+  Object.keys(resultsByCategory).forEach(category => {
+    // Create category directory if it doesn't exist
+    const categoryDir = `${resultsBaseDir}/${category}`;
+    if (!fs.existsSync(categoryDir)) {
+      fs.mkdirSync(categoryDir, { recursive: true });
+    }
+    
+    const categoryResultsFile = `${categoryDir}/stability-test-results-${timestamp}.json`;
+    fs.writeFileSync(
+      categoryResultsFile, 
+      JSON.stringify({
+        timestamp: new Date().toISOString(),
+        category,
+        totalFiles: testFilesByCategory[category].length,
+        passed: resultsByCategory[category].passed,
+        failed: resultsByCategory[category].failed,
+        summary: {
+          passedCount: resultsByCategory[category].passed.length,
+          failedCount: resultsByCategory[category].failed.length
+        }
+      }, null, 2)
+    );
+    console.log(`${category.charAt(0).toUpperCase() + category.slice(1)} test results saved to ${categoryResultsFile}`);
+  });
   
   // Update the last run file
   fs.writeFileSync(
-    `${resultsDir}/.last-run.json`,
+    `${resultsBaseDir}/.last-run.json`,
     JSON.stringify({ lastRun: timestamp }, null, 2)
   );
 };

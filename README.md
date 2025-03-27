@@ -21,8 +21,9 @@ TourGuideAI/
 │   │   ├── process_monitors/  # Process monitoring
 │   │   ├── stability_tests/   # Stability testing
 │   │   │   ├── plans/         # Test plans
-│   │   │   ├── records/       # Test execution records
-│   │   │   │   └── test-results/  # Timestamped test results
+│   │   │   ├── results/       # Test results and reports
+│   │   │   │   ├── data/      # Raw test result data
+│   │   │   │   └── reports/   # HTML test reports
 │   │   │   └── references/    # Test reference materials
 │   │   └── version_control/   # Version control
 │   ├── references/       # Reference documentation
@@ -111,7 +112,7 @@ The project implements a comprehensive testing strategy as outlined in `docs/sta
 - End-to-End Tests: Complete user flow testing
 - Stability Tests: System reliability testing
 
-Test execution results are tracked in `docs/project_lifecycle/stability_tests/records/test-results/` with detailed reports for each test run.
+Test execution results are tracked in `docs/project_lifecycle/stability_tests/results/` with detailed reports for each test run.
 
 ### Running Stability Tests
 
@@ -119,7 +120,13 @@ To run stability tests and verify frontend and backend resilience:
 
 ```bash
 # Run all stability tests and generate a report
-node scripts/run-stability-tests.js
+npm run test:stability
+
+# Generate an HTML report from test results
+npm run test:report
+
+# View the report in your browser
+open docs/project_lifecycle/stability_tests/results/index.html
 
 # Run a specific test file
 npx jest src/tests/stability/frontend-stability.test.js
@@ -128,7 +135,7 @@ npx jest src/tests/stability/frontend-stability.test.js
 npx jest src/tests/stability/frontend-stability.test.js -t "Backend Resilience"
 ```
 
-Test results are automatically saved to `docs/project_lifecycle/stability_tests/records/test-results/` with timestamped JSON files tracking pass/fail metrics.
+Test results are automatically saved to `docs/project_lifecycle/stability_tests/results/data/` with timestamped JSON files tracking pass/fail metrics. HTML reports are generated in the `reports/` subdirectory.
 
 ### Test Configuration
 
@@ -310,8 +317,9 @@ The project maintains comprehensive documentation organized by purpose. For a co
 - Testing strategy: [docs/project.stability-test-plan.md](docs/project.stability-test-plan.md)
 - Test scenarios: [docs/project.test-scenarios.md](docs/project.test-scenarios.md)
 - Test user stories: [docs/project.test-user-story.md](docs/project.test-user-story.md)
-- Stability test results: [docs/project_lifecycle/stability_tests/records/test-results](docs/project_lifecycle/stability_tests/records/test-results)
+- Stability test results: [docs/project_lifecycle/stability_tests/results](docs/project_lifecycle/stability_tests/results)
 - Stability test execution: [scripts/run-stability-tests.js](scripts/run-stability-tests.js)
+- Test report generator: [scripts/generate-test-report.js](scripts/generate-test-report.js)
 - Legacy test results: [docs/project.test-execution-results.md](docs/project.test-execution-results.md)
 
 ### Reference Documentation
@@ -410,8 +418,9 @@ If you're experiencing test failures:
    - Add problematic packages to `transformIgnorePatterns` in jest.config.js if needed
 
 4. **Viewing test results**:
-   - Check the latest results in `docs/project_lifecycle/stability_tests/records/test-results/`
-   - Run `node scripts/run-stability-tests.js` to generate a fresh report
+   - Check the latest results in `docs/project_lifecycle/stability_tests/results/`
+   - Run `npm run test:stability` to run tests and `npm run test:report` to generate reports
+   - Open `docs/project_lifecycle/stability_tests/results/index.html` to view the latest report
 
 ## Security Configuration
 

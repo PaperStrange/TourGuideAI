@@ -23,17 +23,18 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogActions
+  DialogActions,
+  Stack
 } from '@mui/material';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import AddIcon from '@mui/icons-material/Add';
-import DeleteIcon from '@mui/icons-material/Delete';
-import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
-import EditIcon from '@mui/icons-material/Edit';
-import FileCopyIcon from '@mui/icons-material/FileCopy';
-import CodeIcon from '@mui/icons-material/Code';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import SaveIcon from '@mui/icons-material/Save';
+import {
+  Add as AddIcon,
+  Delete as DeleteIcon,
+  Edit as EditIcon,
+  Visibility as PreviewIcon,
+  Save as SaveIcon,
+  Close as CloseIcon
+} from '@mui/icons-material';
+import SurveyService from '../../services/SurveyService';
 
 // Question types
 const QUESTION_TYPES = {
@@ -342,7 +343,7 @@ const SurveyBuilder = ({ initialSurvey = null, onSave }) => {
   };
   
   // Handle survey save
-  const handleSaveSurvey = () => {
+  const handleSaveSurvey = async () => {
     if (!validateSurvey()) {
       return;
     }
@@ -356,9 +357,23 @@ const SurveyBuilder = ({ initialSurvey = null, onSave }) => {
       updatedAt: new Date().toISOString()
     };
     
-    // Call the save callback
-    if (onSave) {
-      onSave(updatedSurvey);
+    try {
+      let result;
+      
+      if (survey.id) {
+        // Update existing
+        result = await SurveyService.updateSurvey(survey.id, updatedSurvey);
+      } else {
+        // Create new
+        result = await SurveyService.createSurvey(updatedSurvey);
+      }
+      
+      if (onSave) {
+        onSave(result);
+      }
+    } catch (error) {
+      console.error('Error saving survey:', error);
+      setValidationError('Failed to save survey. Please try again.');
     }
   };
   
@@ -441,7 +456,7 @@ const SurveyBuilder = ({ initialSurvey = null, onSave }) => {
                 variant="outlined"
                 color="primary"
                 onClick={toggleSettings}
-                startIcon={<CodeIcon />}
+                startIcon={<EditIcon />}
                 sx={{ mr: 1 }}
               >
                 {showSettings ? 'Hide Settings' : 'Survey Settings'}
@@ -450,7 +465,7 @@ const SurveyBuilder = ({ initialSurvey = null, onSave }) => {
                 variant="outlined"
                 color="primary"
                 onClick={togglePreview}
-                startIcon={<VisibilityIcon />}
+                startIcon={<PreviewIcon />}
               >
                 {showPreview ? 'Back to Editor' : 'Preview Survey'}
               </Button>
@@ -552,22 +567,101 @@ const SurveyBuilder = ({ initialSurvey = null, onSave }) => {
       {showPreview ? (
         <Box>
           <Paper sx={{ p: 3, mb: 3 }}>
-            <Typography variant="h5" gutterBottom>
-              {survey.title}
-            </Typography>
-            {survey.description && (
-              <Typography variant="body1" paragraph>
-                {survey.description}
-              </Typography>
-            )}
-            <Divider sx={{ my: 2 }} />
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+              <Typography variant="h5">Preview Mode</Typography>
+              <Button 
+                variant="outlined" 
+                startIcon={<CloseIcon />} 
+                onClick={togglePreview}
+              >
+                Exit Preview
+              </Button>
+            </Box>
             
-            {/* This would be replaced with actual SurveyRenderer component */}
-            <Typography variant="subtitle1" color="textSecondary" align="center" sx={{ py: 5 }}>
-              Survey Preview Mode
-              <br />
-              <small>(Full preview functionality will be implemented in SurveyRenderer component)</small>
-            </Typography>
+            <Typography variant="h4" gutterBottom>{survey.title}</Typography>
+            {survey.description && (
+              <Typography variant="body1" paragraph>{survey.description}</Typography>
+            )}
+            
+            {survey.questions.map((question, index) => (
+              <Box key={question.id} sx={{ mb: 4 }}>
+                <Typography variant="h6" gutterBottom>{index + 1}. {question.title}</Typography>
+                
+                {question.type === QUESTION_TYPES.SELECT && question.options.length > 0 && (
+                  <FormControl fullWidth>
+                    <Select
+                      displayEmpty
+                      value=""
+                      disabled
+                    >
+                      <MenuItem value="" disabled>Select an option</MenuItem>
+                      {question.options.map((option, idx) => (
+                        <MenuItem key={idx} value={option.id}>{option.text}</MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                )}
+                
+                {question.type === QUESTION_TYPES.TEXT && (
+                  <TextField
+                    fullWidth
+                    variant="outlined"
+                    placeholder="Your answer"
+                    disabled
+                  />
+                )}
+                
+                {question.type === QUESTION_TYPES.RATING && (
+                  <Stack direction="row" spacing={1} sx={{ mt: 2 }}>
+                    {[1, 2, 3, 4, 5].map(rating => (
+                      <Chip 
+                        key={rating} 
+                        label={rating} 
+                        variant="outlined"
+                        sx={{ width: 40, height: 40 }}
+                      />
+                    ))}
+                  </Stack>
+                )}
+                
+                {question.type === QUESTION_TYPES.RADIO && question.options.length > 0 && (
+                  <FormControl fullWidth>
+                    <RadioGroup
+                      value={question.selectedOptionId || ''}
+                      onChange={(e) => updateActiveQuestion({ selectedOptionId: e.target.value })}
+                    >
+                      {question.options.map((option) => (
+                        <FormControlLabel
+                          key={option.id}
+                          value={option.id}
+                          control={<Radio />}
+                          label={option.text}
+                        />
+                      ))}
+                    </RadioGroup>
+                  </FormControl>
+                )}
+                
+                {question.type === QUESTION_TYPES.CHECKBOX && question.options.length > 0 && (
+                  <FormControl fullWidth>
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={question.selectedOptionIds.includes(question.options[0].id)}
+                          onChange={(e) => {
+                            const newSelectedOptionIds = e.target.checked
+                              ? [...question.selectedOptionIds, question.options[0].id]
+                              : question.selectedOptionIds.filter((id) => id !== question.options[0].id);
+                            updateActiveQuestion({ selectedOptionIds: newSelectedOptionIds });
+                          }}
+                        />
+                      }
+                      label={question.options[0].text}
+                    />
+                  </FormControl>
+                )}
+              </Box>
+            ))}
           </Paper>
         </Box>
       ) : (
@@ -622,7 +716,7 @@ const SurveyBuilder = ({ initialSurvey = null, onSave }) => {
                               >
                                 <Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
                                   <Box {...provided.dragHandleProps} sx={{ mr: 1, display: 'flex', alignItems: 'center' }}>
-                                    <DragIndicatorIcon color="action" />
+                                    <EditIcon color="action" />
                                   </Box>
                                   <Box sx={{ flexGrow: 1 }}>
                                     <Typography variant="subtitle2" noWrap>
@@ -642,7 +736,7 @@ const SurveyBuilder = ({ initialSurvey = null, onSave }) => {
                                           handleDuplicateQuestion(question, index);
                                         }}
                                       >
-                                        <FileCopyIcon fontSize="small" />
+                                        <EditIcon fontSize="small" />
                                       </IconButton>
                                     </Tooltip>
                                     <Tooltip title="Delete">
@@ -787,7 +881,7 @@ const SurveyBuilder = ({ initialSurvey = null, onSave }) => {
                           Conditional Logic
                           <Tooltip title="Conditions determine when this question is shown based on answers to previous questions">
                             <IconButton size="small">
-                              <HelpOutlineIcon fontSize="small" />
+                              <EditIcon fontSize="small" />
                             </IconButton>
                           </Tooltip>
                         </Typography>

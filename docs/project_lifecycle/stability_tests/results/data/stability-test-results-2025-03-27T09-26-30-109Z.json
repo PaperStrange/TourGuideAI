@@ -1,0 +1,41 @@
+{
+  "timestamp": "2025-03-27T09:26:30.109Z",
+  "totalFiles": 6,
+  "passed": [
+    {
+      "file": "src/tests/pages/ProfilePage.test.js",
+      "count": 9
+    },
+    {
+      "file": "src/tests/pages/ChatPage.test.js",
+      "count": 9
+    },
+    {
+      "file": "src/tests/pages/MapPage.test.js",
+      "count": 1
+    },
+    {
+      "file": "src/tests/stability/frontend-stability.test.js",
+      "count": 5
+    },
+    {
+      "file": "src/tests/components/analytics/AnalyticsDashboard.test.js",
+      "count": 3
+    },
+    {
+      "file": "src/tests/components/survey/SurveyList.test.js",
+      "count": 1
+    }
+  ],
+  "failed": [
+    {
+      "file": "src/tests/components/survey/SurveyBuilder.test.js",
+      "count": 1,
+      "error": "DragDropContext is not defined"
+    }
+  ],
+  "summary": {
+    "passedCount": 6,
+    "failedCount": 1
+  }
+}

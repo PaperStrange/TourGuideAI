@@ -25,7 +25,12 @@ import {
   MenuItem,
   ListItemIcon,
   ListItemText,
-  useTheme
+  useTheme,
+  List,
+  ListItem,
+  ListItemSecondaryAction,
+  CircularProgress,
+  Divider
 } from '@mui/material';
 import { 
   Add as AddIcon,
@@ -40,6 +45,8 @@ import {
   Link as LinkIcon
 } from '@mui/icons-material';
 import SurveyBuilder from './SurveyBuilder';
+import { format } from 'date-fns';
+import SurveyService from '../../services/SurveyService';
 
 /**
  * Survey List component
@@ -52,13 +59,14 @@ import SurveyBuilder from './SurveyBuilder';
 const SurveyList = ({ onSelect, surveyService }) => {
   // State
   const [surveys, setSurveys] = useState([]);
+  const [filteredSurveys, setFilteredSurveys] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showBuilder, setShowBuilder] = useState(false);
   const [editingSurvey, setEditingSurvey] = useState(null);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [surveyToDelete, setSurveyToDelete] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const [actionMenuAnchor, setActionMenuAnchor] = useState(null);
   const [selectedSurveyId, setSelectedSurveyId] = useState(null);
   
@@ -69,74 +77,49 @@ const SurveyList = ({ onSelect, surveyService }) => {
     loadSurveys();
   }, []);
   
-  // Load surveys from service
+  // Filter surveys when search query changes
+  useEffect(() => {
+    if (!surveys) return;
+    
+    if (!searchQuery) {
+      setFilteredSurveys(surveys);
+      return;
+    }
+    
+    const query = searchQuery.toLowerCase();
+    const filtered = surveys.filter(survey => 
+      survey.title.toLowerCase().includes(query) || 
+      (survey.description && survey.description.toLowerCase().includes(query))
+    );
+    
+    setFilteredSurveys(filtered);
+  }, [searchQuery, surveys]);
+  
+  // Load surveys from API
   const loadSurveys = async () => {
     try {
       setLoading(true);
       setError(null);
       
-      // For demo purposes - using mock data
-      // In real implementation, would use surveyService.getSurveys()
-      const mockSurveys = [
-        {
-          id: 'survey_1',
-          title: 'Beta Program Feedback Survey',
-          description: 'Help us improve the beta program by sharing your feedback',
-          questions: [
-            { id: 'q1', title: 'How satisfied are you with the beta program so far?', type: 'rating' },
-            { id: 'q2', title: 'What features would you like to see improved?', type: 'checkbox' }
-          ],
-          status: 'active',
-          responses: 12,
-          createdAt: '2023-03-25T14:32:01Z',
-          updatedAt: '2023-03-26T09:15:22Z'
-        },
-        {
-          id: 'survey_2',
-          title: 'Travel Preferences Survey',
-          description: 'Tell us about your travel preferences to help us improve tour recommendations',
-          questions: [
-            { id: 'q1', title: 'What types of destinations do you prefer?', type: 'checkbox' },
-            { id: 'q2', title: 'How do you typically plan your trips?', type: 'radio' },
-            { id: 'q3', title: 'What\'s your average budget for a week-long trip?', type: 'select' }
-          ],
-          status: 'draft',
-          responses: 0,
-          createdAt: '2023-03-28T11:45:33Z',
-          updatedAt: '2023-03-28T11:45:33Z'
-        },
-        {
-          id: 'survey_3',
-          title: 'User Interface Evaluation',
-          description: 'Provide feedback on our user interface and experience',
-          questions: [
-            { id: 'q1', title: 'Rate the ease of navigation', type: 'rating' },
-            { id: 'q2', title: 'What aspects of the interface are confusing?', type: 'textarea' },
-            { id: 'q3', title: 'How would you rate the overall design?', type: 'rating' }
-          ],
-          status: 'completed',
-          responses: 28,
-          createdAt: '2023-03-15T08:22:17Z',
-          updatedAt: '2023-03-22T16:33:41Z'
-        }
-      ];
+      const data = await SurveyService.getSurveys();
+      setSurveys(data);
+      setFilteredSurveys(data);
       
-      setSurveys(mockSurveys);
+      setLoading(false);
     } catch (err) {
       console.error('Error loading surveys:', err);
       setError('Failed to load surveys. Please try again.');
-    } finally {
       setLoading(false);
     }
   };
   
   // Format date for display
   const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString(undefined, {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric'
-    });
+    try {
+      return format(new Date(dateString), 'MMM d, yyyy');
+    } catch (err) {
+      return 'Invalid date';
+    }
   };
   
   // Create a new survey
@@ -195,14 +178,13 @@ const SurveyList = ({ onSelect, surveyService }) => {
     if (!surveyToDelete) return;
     
     try {
-      setLoading(true);
-      
-      // For demo purposes - would use surveyService in real implementation
-      // await surveyService.deleteSurvey(surveyToDelete.id);
+      await SurveyService.deleteSurvey(surveyToDelete.id);
       
       // Update local state for demo
-      setSurveys(prevSurveys => 
-        prevSurveys.filter(s => s.id !== surveyToDelete.id)
+      const updatedSurveys = surveys.filter(s => s.id !== surveyToDelete.id);
+      setSurveys(updatedSurveys);
+      setFilteredSurveys(
+        filteredSurveys.filter(s => s.id !== surveyToDelete.id)
       );
       
       setDeleteDialogOpen(false);
@@ -210,8 +192,6 @@ const SurveyList = ({ onSelect, surveyService }) => {
     } catch (err) {
       console.error('Error deleting survey:', err);
       // In real implementation, would show error notification
-    } finally {
-      setLoading(false);
     }
   };
   
@@ -251,11 +231,10 @@ const SurveyList = ({ onSelect, surveyService }) => {
     setSelectedSurveyId(null);
   };
   
-  // Filter surveys based on search term
-  const filteredSurveys = surveys.filter(survey => 
-    survey.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    survey.description.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Handle search input change
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
   
   // Get status color
   const getStatusColor = (status) => {
@@ -270,6 +249,18 @@ const SurveyList = ({ onSelect, surveyService }) => {
         return theme.palette.grey[500];
     }
   };
+  
+  // Render loading state
+  if (loading) {
+    return (
+      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 4 }}>
+        <CircularProgress size={40} />
+        <Typography variant="body1" sx={{ mt: 2 }}>
+          Loading surveys...
+        </Typography>
+      </Box>
+    );
+  }
   
   return (
     <Box>
@@ -337,8 +328,8 @@ const SurveyList = ({ onSelect, surveyService }) => {
         <TextField
           fullWidth
           placeholder="Search surveys..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          value={searchQuery}
+          onChange={handleSearchChange}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -380,7 +371,7 @@ const SurveyList = ({ onSelect, surveyService }) => {
               <TableRow>
                 <TableCell colSpan={6} align="center">
                   <Box sx={{ py: 3 }}>
-                    {searchTerm ? (
+                    {searchQuery ? (
                       <Typography>No surveys match your search criteria.</Typography>
                     ) : (
                       <Typography>No surveys available. Create your first survey!</Typography>
