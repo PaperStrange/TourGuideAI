@@ -75,6 +75,17 @@ flowchart TB
         TEST_RESULTS[Test Execution Results<br>project.test-execution-results.md]
         TEST_SCENARIOS[Test Scenarios<br>project.test-scenarios.md]
         TEST_USER_STORY[Test User Stories<br>project.test-user-story.md]
+        
+        subgraph StabilityDocs ["Stability Test Results"]
+            STABILITY_README[Stability Results<br>results/README.md]
+            
+            subgraph StabilitySubdocs ["Detailed Documentation"]
+                STABILITY_DATA_README[Test Data<br>results/data/README.md]
+                STABILITY_REPORTS_README[Test Reports<br>results/reports/README.md]
+            end
+            
+            FRONTEND_STABILITY_README[Frontend Stability Tests<br>tests/stability/README.md]
+        end
     end
     
     subgraph DeployDocs ["Deployment"]
@@ -128,6 +139,14 @@ flowchart TB
     FeatureArea --> RefactorDocs
     FeatureArea --> PerfDocs
     
+    %% Stability test relationships
+    TEST_PLAN --> STABILITY_README
+    TEST_RESULTS --> STABILITY_README
+    STABILITY_README --> StabilitySubdocs
+    STABILITY_README --> FRONTEND_STABILITY_README
+    STABILITY_DATA_README --> STABILITY_REPORTS_README
+    FRONTEND_STABILITY_README --> STABILITY_DATA_README
+    
     %% Apply classes to nodes
     class README,ARCHITECTURE,API_OVERVIEW,API_MIGRATION,CONTRIBUTING,SECURITY root
     class DOC_INVENTORY docFile
@@ -137,6 +156,7 @@ flowchart TB
     class CODE_REVIEW_CHECKLIST,CODE_REVIEW_GUIDE,DEPENDENCIES projectFile
     class LESSONS projectFile
     class TEST_PLAN,TEST_RESULTS,TEST_SCENARIOS,TEST_USER_STORY testingFile
+    class STABILITY_README,STABILITY_DATA_README,STABILITY_REPORTS_README,FRONTEND_STABILITY_README testingFile
     class DEPLOYMENT_PIPELINE,DEPLOYMENT_PLAN projectFile
     class PERFORMANCE_PLAN,PERFORMANCE_IMPL projectFile
     class FEATURES_README,MAP_VIZ_README,TESTS_README referenceFile
