@@ -34,6 +34,13 @@ export const PERMISSIONS = {
   UPDATE_FEEDBACK: 'update:feedback',
   DELETE_FEEDBACK: 'delete:feedback',
   
+  // Issue management
+  MANAGE_ISSUES: 'manage:issues',
+  CREATE_ISSUE: 'create:issue',
+  READ_ISSUE: 'read:issue',
+  UPDATE_ISSUE: 'update:issue',
+  DELETE_ISSUE: 'delete:issue',
+  
   // Application features
   ACCESS_BETA_FEATURES: 'access:beta',
   ACCESS_ANALYTICS: 'access:analytics',
@@ -41,6 +48,7 @@ export const PERMISSIONS = {
   
   // Content management
   MANAGE_CONTENT: 'manage:content',
+  MANAGE_FEEDBACK: 'manage:feedback',
 };
 
 class PermissionsService {

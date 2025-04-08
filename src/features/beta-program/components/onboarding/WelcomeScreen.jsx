@@ -3,173 +3,201 @@ import {
   Box,
   Typography,
   Button,
+  Card,
+  CardContent,
+  Grid,
   Paper,
-  Avatar,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
-  Card,
-  CardContent,
-  Grid,
+  CircularProgress,
+  Alert,
   Divider
 } from '@mui/material';
-import { styled } from '@mui/material/styles';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
-import FeedbackIcon from '@mui/icons-material/Feedback';
 import ExploreIcon from '@mui/icons-material/Explore';
 import MapIcon from '@mui/icons-material/Map';
-import ForumIcon from '@mui/icons-material/Forum';
-
-// Styled components
-const WelcomeCard = styled(Card)(({ theme }) => ({
-  textAlign: 'center',
-  padding: theme.spacing(3),
-  marginBottom: theme.spacing(4),
-  background: `linear-gradient(45deg, ${theme.palette.primary.main} 30%, ${theme.palette.primary.light} 90%)`,
-  color: theme.palette.primary.contrastText
-}));
-
-const BetaFeature = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(2),
-  height: '100%',
-  transition: 'transform 0.2s',
-  '&:hover': {
-    transform: 'translateY(-4px)',
-    boxShadow: theme.shadows[4]
-  }
-}));
+import ChatIcon from '@mui/icons-material/Chat';
+import FeedbackIcon from '@mui/icons-material/Feedback';
+import PersonIcon from '@mui/icons-material/Person';
 
 /**
- * Welcome screen for the final step of onboarding flow
- * Shows a summary of the profile and next steps for beta users
- * 
- * @param {Object} props Component props
- * @param {Object} props.profile User profile data
- * @param {Function} props.onFinish Callback function when user completes onboarding
+ * Welcome Screen Component
+ * Final step in the onboarding flow showing feature highlights and next steps
  */
-const WelcomeScreen = ({ profile, onFinish }) => {
-  // Beta program features to highlight
-  const betaFeatures = [
+const WelcomeScreen = ({ userName, onComplete, loading, error }) => {
+  // Key features to highlight
+  const keyFeatures = [
     {
-      icon: <ExploreIcon color="primary" fontSize="large" />,
-      title: 'Tour Planning',
-      description: 'Generate personalized travel itineraries with AI-powered route optimization'
+      icon: <ChatIcon color="primary" />,
+      title: 'AI-Powered Chat',
+      description: 'Generate personalized travel plans based on your preferences using our advanced AI'
     },
     {
-      icon: <MapIcon color="primary" fontSize="large" />,
+      icon: <MapIcon color="primary" />,
       title: 'Interactive Maps',
-      description: 'Explore your routes with detailed maps and points of interest'
+      description: 'Visualize your travel routes and discover points of interest along the way'
     },
     {
-      icon: <ForumIcon color="primary" fontSize="large" />,
-      title: 'Beta Community',
-      description: 'Join discussions and share feedback with other beta testers'
+      icon: <ExploreIcon color="primary" />,
+      title: 'Customized Itineraries',
+      description: 'Create and save detailed itineraries tailored to your travel style and interests'
+    },
+    {
+      icon: <FeedbackIcon color="primary" />,
+      title: 'Beta Feedback',
+      description: 'Share your thoughts and suggestions to help shape the future of TourGuideAI'
     }
   ];
-  
-  // Next steps for beta users
+
+  // Next steps for the beta user
   const nextSteps = [
-    'Explore the dashboard to see available features',
-    'Create your first travel plan and provide feedback',
-    'Join the beta community forum for discussions',
-    'Check your email for upcoming feature releases',
-    'Share your experience with us through the feedback widget'
+    'Explore the dashboard to get familiar with the interface',
+    'Create your first travel plan using the Chat feature',
+    'Visualize your route on the interactive Map',
+    'Share your feedback about your experience'
   ];
-  
+
+  /**
+   * Handle completion of the onboarding flow
+   */
+  const handleGetStarted = () => {
+    if (onComplete) {
+      onComplete();
+    }
+  };
+
   return (
-    <Box sx={{ width: '100%' }}>
-      <WelcomeCard>
-        <EmojiEventsIcon sx={{ fontSize: 60, mb: 2 }} />
-        <Typography variant="h5" component="h2" gutterBottom>
-          Welcome to the TourGuideAI Beta Program!
-        </Typography>
-        <Typography variant="body1">
-          Congratulations, {profile.displayName || 'Beta Tester'}! Your setup is complete,
-          and you're ready to start exploring TourGuideAI.
-        </Typography>
-      </WelcomeCard>
-      
-      <Box sx={{ display: 'flex', alignItems: 'center', mb: 4 }}>
-        <Avatar
-          src={profile.profilePicture ? URL.createObjectURL(profile.profilePicture) : undefined}
-          sx={{ width: 64, height: 64, mr: 2 }}
-        />
-        <Box>
-          <Typography variant="h6">{profile.displayName || 'Beta Tester'}</Typography>
-          {profile.jobTitle && profile.company && (
-            <Typography variant="body2" color="textSecondary">
-              {profile.jobTitle} at {profile.company}
-            </Typography>
-          )}
-        </Box>
-      </Box>
-      
-      <Typography variant="h6" gutterBottom>
-        Beta Program Features
-      </Typography>
-      
-      <Grid container spacing={3} sx={{ mb: 4 }}>
-        {betaFeatures.map((feature, index) => (
-          <Grid item xs={12} sm={4} key={index}>
-            <BetaFeature elevation={2}>
-              <Box sx={{ textAlign: 'center', mb: 2 }}>
-                {feature.icon}
-              </Box>
-              <Typography variant="h6" align="center" gutterBottom>
-                {feature.title}
-              </Typography>
-              <Typography variant="body2" align="center" color="textSecondary">
-                {feature.description}
-              </Typography>
-            </BetaFeature>
-          </Grid>
-        ))}
-      </Grid>
-      
-      <Divider sx={{ mb: 4 }} />
-      
-      <Typography variant="h6" gutterBottom>
-        Next Steps
-      </Typography>
-      
-      <List>
-        {nextSteps.map((step, index) => (
-          <ListItem key={index} sx={{ py: 1 }}>
-            <ListItemIcon>
-              <CheckCircleIcon color="primary" />
-            </ListItemIcon>
-            <ListItemText primary={step} />
-          </ListItem>
-        ))}
-      </List>
-      
-      <Box sx={{ 
-        display: 'flex', 
-        justifyContent: 'space-between', 
-        alignItems: 'center',
-        mt: 4,
-        p: 2,
-        bgcolor: 'background.paper',
-        borderRadius: 1
-      }}>
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <FeedbackIcon sx={{ mr: 2, color: 'primary.main' }} />
-          <Typography>
-            Your feedback is valuable to us! Use the feedback button at any time.
+    <Card sx={{ maxWidth: 800, mx: 'auto', boxShadow: 0 }}>
+      <CardContent>
+        <Box textAlign="center" mb={4}>
+          <Typography variant="h4" component="h1" gutterBottom>
+            Welcome to TourGuideAI Beta, {userName || 'Explorer'}!
+          </Typography>
+          
+          <Typography variant="body1" color="text.secondary">
+            Thank you for joining our beta program. We're excited to have you help us shape the future of travel planning!
           </Typography>
         </Box>
-        <Button 
-          variant="contained" 
-          color="primary"
-          onClick={onFinish}
-          size="large"
-        >
-          Start Exploring
-        </Button>
-      </Box>
-    </Box>
+        
+        {error && (
+          <Alert severity="error" sx={{ mb: 3 }}>
+            {error}
+          </Alert>
+        )}
+        
+        <Grid container spacing={4}>
+          {/* Key Features */}
+          <Grid item xs={12}>
+            <Typography variant="h6" gutterBottom sx={{ ml: 2 }}>
+              Key Features to Explore
+            </Typography>
+            
+            <Grid container spacing={2}>
+              {keyFeatures.map((feature, index) => (
+                <Grid item xs={12} sm={6} key={index}>
+                  <Paper
+                    elevation={1}
+                    sx={{
+                      p: 2,
+                      height: '100%',
+                      borderRadius: 2,
+                      transition: 'transform 0.2s, box-shadow 0.2s',
+                      '&:hover': {
+                        transform: 'translateY(-4px)',
+                        boxShadow: 3
+                      }
+                    }}
+                  >
+                    <Box display="flex" alignItems="center" mb={1}>
+                      <Box mr={1}>{feature.icon}</Box>
+                      <Typography variant="subtitle1" fontWeight="bold">
+                        {feature.title}
+                      </Typography>
+                    </Box>
+                    <Typography variant="body2" color="text.secondary">
+                      {feature.description}
+                    </Typography>
+                  </Paper>
+                </Grid>
+              ))}
+            </Grid>
+          </Grid>
+          
+          {/* Next Steps */}
+          <Grid item xs={12}>
+            <Typography variant="h6" gutterBottom sx={{ ml: 2 }}>
+              Your Next Steps
+            </Typography>
+            
+            <Paper
+              elevation={1}
+              sx={{
+                p: 3,
+                borderRadius: 2
+              }}
+            >
+              <List>
+                {nextSteps.map((step, index) => (
+                  <React.Fragment key={index}>
+                    <ListItem>
+                      <ListItemIcon>
+                        <CheckCircleIcon color="primary" />
+                      </ListItemIcon>
+                      <ListItemText primary={step} />
+                    </ListItem>
+                    {index < nextSteps.length - 1 && <Divider component="li" />}
+                  </React.Fragment>
+                ))}
+              </List>
+            </Paper>
+          </Grid>
+          
+          {/* Beta Badge */}
+          <Grid item xs={12}>
+            <Paper
+              elevation={1}
+              sx={{
+                p: 3,
+                borderRadius: 2,
+                bgcolor: 'primary.light',
+                color: 'primary.contrastText'
+              }}
+            >
+              <Box display="flex" alignItems="center" justifyContent="center">
+                <PersonIcon sx={{ mr: 1 }} />
+                <Typography variant="body1" fontWeight="medium">
+                  You're now an official TourGuideAI Beta Tester! Your feedback will help us create a better product.
+                </Typography>
+              </Box>
+            </Paper>
+          </Grid>
+        </Grid>
+        
+        <Box display="flex" justifyContent="center" mt={4}>
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            onClick={handleGetStarted}
+            disabled={loading}
+            sx={{ 
+              minWidth: 200,
+              py: 1.5,
+              fontSize: '1.1rem',
+              boxShadow: 2
+            }}
+          >
+            {loading ? (
+              <CircularProgress size={24} color="inherit" />
+            ) : (
+              'Get Started!'
+            )}
+          </Button>
+        </Box>
+      </CardContent>
+    </Card>
   );
 };
 

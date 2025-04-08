@@ -1,278 +1,474 @@
-import React, { useState } from 'react';
-import {
-  Box,
-  TextField,
-  Typography,
-  Button,
-  Grid,
-  Avatar,
+import React, { useState, useEffect } from 'react';
+import { 
+  Box, 
+  TextField, 
+  Button, 
+  Typography, 
+  Avatar, 
+  Card,
+  CardContent,
   IconButton,
-  Tooltip
+  Grid,
+  CircularProgress,
+  Alert,
+  Tooltip,
+  InputAdornment
 } from '@mui/material';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import DeleteIcon from '@mui/icons-material/Delete';
+import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import ErrorIcon from '@mui/icons-material/Error';
+import CloseIcon from '@mui/icons-material/Close';
+import { apiHelpers } from '../../../../core/services/apiClient';
 
 /**
- * User profile setup component for onboarding flow
- * Allows new beta users to configure their profile information
- * 
- * @param {Object} props Component props
- * @param {Object} props.initialData Initial profile data
- * @param {Function} props.onSubmit Callback function when profile setup is submitted
+ * User Profile Setup Component
+ * Allows beta users to create their profile during onboarding
  */
-const UserProfileSetup = ({ initialData = {}, onSubmit }) => {
-  // Set default values from initial data
-  const [profile, setProfile] = useState({
-    displayName: initialData.displayName || '',
-    jobTitle: initialData.jobTitle || '',
-    company: initialData.company || '',
-    bio: initialData.bio || '',
+const UserProfileSetup = ({ initialData = {}, onComplete }) => {
+  const [formData, setFormData] = useState({
+    name: initialData.name || '',
+    email: initialData.email || '',
+    username: initialData.username || '',
     profilePicture: initialData.profilePicture || null
   });
   
-  // Form validation state
-  const [errors, setErrors] = useState({});
+  const [preview, setPreview] = useState(null);
+  const [validating, setValidating] = useState({
+    username: false,
+    email: false
+  });
+  const [validation, setValidation] = useState({
+    name: null,
+    email: null,
+    username: null
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   
-  // Image preview state
-  const [imagePreview, setImagePreview] = useState(
-    initialData.profilePicture ? URL.createObjectURL(initialData.profilePicture) : null
-  );
+  // Generate preview URL for the selected profile image
+  useEffect(() => {
+    if (formData.profilePicture && typeof formData.profilePicture === 'object') {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreview(reader.result);
+      };
+      reader.readAsDataURL(formData.profilePicture);
+    } else if (formData.profilePicture && typeof formData.profilePicture === 'string') {
+      // If it's already a URL string
+      setPreview(formData.profilePicture);
+    } else {
+      setPreview(null);
+    }
+  }, [formData.profilePicture]);
   
-  // Handle input changes
-  const handleInputChange = (e) => {
+  /**
+   * Handle input field changes
+   */
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    
-    setProfile(prev => ({
+    setFormData(prev => ({
       ...prev,
       [name]: value
     }));
     
-    // Clear error when field is edited
-    if (errors[name]) {
-      setErrors(prev => ({
+    // Clear validation errors when field changes
+    if (validation[name]) {
+      setValidation(prev => ({
         ...prev,
         [name]: null
       }));
     }
+    
+    // Real-time validation for some fields
+    if (name === 'email') {
+      validateEmail(value, false);
+    } else if (name === 'username') {
+      validateUsername(value, false);
+    }
   };
   
-  // Handle image upload
-  const handleImageUpload = (e) => {
+  /**
+   * Handle profile picture selection
+   */
+  const handleProfilePictureChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      // Validate file type and size
-      const validTypes = ['image/jpeg', 'image/png', 'image/gif'];
-      if (!validTypes.includes(file.type)) {
-        setErrors(prev => ({
-          ...prev,
-          profilePicture: 'Please upload a valid image file (JPEG, PNG, or GIF)'
-        }));
-        return;
-      }
-      
-      // Max size: 5MB
       if (file.size > 5 * 1024 * 1024) {
-        setErrors(prev => ({
-          ...prev,
-          profilePicture: 'Image size should be less than 5MB'
-        }));
+        setError('Profile picture must be less than 5MB');
         return;
       }
       
-      // Clear previous error
-      if (errors.profilePicture) {
-        setErrors(prev => ({
-          ...prev,
-          profilePicture: null
-        }));
+      if (!file.type.startsWith('image/')) {
+        setError('Selected file must be an image');
+        return;
       }
       
-      // Set file and generate preview
-      setProfile(prev => ({
+      setFormData(prev => ({
         ...prev,
         profilePicture: file
       }));
-      
-      // Create and set preview URL
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreview(reader.result);
-      };
-      reader.readAsDataURL(file);
+      setError(null);
     }
   };
   
-  // Handle removing profile picture
-  const handleRemoveImage = () => {
-    setProfile(prev => ({
+  /**
+   * Remove the selected profile picture
+   */
+  const handleRemoveProfilePicture = () => {
+    setFormData(prev => ({
       ...prev,
       profilePicture: null
     }));
-    setImagePreview(null);
-    
-    // Clear any profile picture errors
-    if (errors.profilePicture) {
-      setErrors(prev => ({
+    setPreview(null);
+  };
+  
+  /**
+   * Validate email format and availability
+   */
+  const validateEmail = async (email, showFeedback = true) => {
+    // Basic email format validation
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+      setValidation(prev => ({
         ...prev,
-        profilePicture: null
+        email: { valid: false, message: 'Please enter a valid email address' }
       }));
+      return false;
+    }
+    
+    if (showFeedback) {
+      setValidating(prev => ({ ...prev, email: true }));
+    }
+    
+    try {
+      // Check if the email is already in use
+      const response = await apiHelpers.get(`/beta/validate-email?email=${encodeURIComponent(email)}`);
+      
+      setValidating(prev => ({ ...prev, email: false }));
+      
+      if (response.available) {
+        setValidation(prev => ({
+          ...prev,
+          email: { valid: true, message: 'Email is available' }
+        }));
+        return true;
+      } else {
+        setValidation(prev => ({
+          ...prev,
+          email: { valid: false, message: 'Email is already in use' }
+        }));
+        return false;
+      }
+    } catch (err) {
+      setValidating(prev => ({ ...prev, email: false }));
+      setValidation(prev => ({
+        ...prev,
+        email: { valid: false, message: 'Unable to validate email' }
+      }));
+      return false;
     }
   };
   
-  // Validate form
-  const validateForm = () => {
-    const newErrors = {};
-    
-    // Display name is required
-    if (!profile.displayName.trim()) {
-      newErrors.displayName = 'Display name is required';
+  /**
+   * Validate username format and availability
+   */
+  const validateUsername = async (username, showFeedback = true) => {
+    // Basic username format validation
+    const usernameRegex = /^[a-zA-Z0-9_]{3,20}$/;
+    if (!usernameRegex.test(username)) {
+      setValidation(prev => ({
+        ...prev,
+        username: { 
+          valid: false, 
+          message: 'Username must be 3-20 characters and contain only letters, numbers, and underscores' 
+        }
+      }));
+      return false;
     }
     
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    if (showFeedback) {
+      setValidating(prev => ({ ...prev, username: true }));
+    }
+    
+    try {
+      // Check if the username is already taken
+      const response = await apiHelpers.get(`/beta/validate-username?username=${encodeURIComponent(username)}`);
+      
+      setValidating(prev => ({ ...prev, username: false }));
+      
+      if (response.available) {
+        setValidation(prev => ({
+          ...prev,
+          username: { valid: true, message: 'Username is available' }
+        }));
+        return true;
+      } else {
+        setValidation(prev => ({
+          ...prev,
+          username: { valid: false, message: 'Username is already taken' }
+        }));
+        return false;
+      }
+    } catch (err) {
+      setValidating(prev => ({ ...prev, username: false }));
+      setValidation(prev => ({
+        ...prev,
+        username: { valid: false, message: 'Unable to validate username' }
+      }));
+      return false;
+    }
   };
   
-  // Handle form submission
-  const handleSubmit = (e) => {
+  /**
+   * Validate name field
+   */
+  const validateName = (name) => {
+    if (!name || name.trim().length < 2) {
+      setValidation(prev => ({
+        ...prev,
+        name: { valid: false, message: 'Please enter your name (minimum 2 characters)' }
+      }));
+      return false;
+    }
+    
+    setValidation(prev => ({
+      ...prev,
+      name: { valid: true, message: null }
+    }));
+    return true;
+  };
+  
+  /**
+   * Validate all form fields
+   */
+  const validateForm = async () => {
+    const nameValid = validateName(formData.name);
+    const emailValid = await validateEmail(formData.email);
+    const usernameValid = await validateUsername(formData.username);
+    
+    return nameValid && emailValid && usernameValid;
+  };
+  
+  /**
+   * Handle form submission
+   */
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!validateForm()) {
+    setLoading(true);
+    setError(null);
+    
+    const isValid = await validateForm();
+    
+    if (!isValid) {
+      setLoading(false);
+      setError('Please fix the validation errors before proceeding');
       return;
     }
     
-    onSubmit(profile);
+    try {
+      // In a real implementation, this would upload the profile picture and save the profile
+      if (formData.profilePicture && typeof formData.profilePicture === 'object') {
+        // Simulate file upload
+        // In a real app, you would use FormData and send it to the server
+        console.log('Uploading profile picture...');
+        // Simulate a successful upload that returns a URL
+        formData.profilePicture = URL.createObjectURL(formData.profilePicture);
+      }
+      
+      // Call the completion callback with the profile data
+      onComplete(formData);
+    } catch (err) {
+      setError(err.message || 'Failed to save profile. Please try again.');
+      setLoading(false);
+    }
+  };
+  
+  /**
+   * Get validation feedback for a field
+   */
+  const getFieldFeedback = (fieldName) => {
+    if (!validation[fieldName]) return null;
+    
+    const { valid, message } = validation[fieldName];
+    
+    if (valid) {
+      return (
+        <InputAdornment position="end">
+          <CheckCircleIcon color="success" />
+        </InputAdornment>
+      );
+    } else {
+      return (
+        <InputAdornment position="end">
+          <ErrorIcon color="error" />
+        </InputAdornment>
+      );
+    }
   };
   
   return (
-    <Box component="form" onSubmit={handleSubmit} sx={{ width: '100%' }}>
-      <Typography variant="h6" gutterBottom>
-        Set Up Your Profile
-      </Typography>
-      
-      <Typography variant="body2" color="textSecondary" paragraph>
-        Customize your beta program profile. This information will help us
-        provide a personalized experience and better understand our users.
-      </Typography>
-      
-      <Grid container spacing={3} sx={{ mt: 1 }}>
-        {/* Profile picture */}
-        <Grid item xs={12} display="flex" flexDirection="column" alignItems="center">
-          <Box sx={{ position: 'relative', mb: 2 }}>
-            <Avatar
-              src={imagePreview}
-              sx={{ 
-                width: 120, 
-                height: 120,
-                border: theme => `2px solid ${theme.palette.primary.main}`
-              }}
-            />
-            {imagePreview && (
+    <Card sx={{ maxWidth: 700, mx: 'auto', boxShadow: 0 }}>
+      <CardContent>
+        <Typography variant="h5" component="h2" gutterBottom align="center">
+          Create Your Profile
+        </Typography>
+        
+        <Typography variant="body2" color="text.secondary" paragraph align="center">
+          Set up your profile information for the beta program.
+        </Typography>
+        
+        {error && (
+          <Alert 
+            severity="error" 
+            sx={{ mb: 3 }}
+            action={
               <IconButton
-                onClick={handleRemoveImage}
+                aria-label="close"
+                color="inherit"
                 size="small"
-                sx={{
-                  position: 'absolute',
-                  top: 0,
-                  right: 0,
-                  bgcolor: 'background.paper',
-                  '&:hover': {
-                    bgcolor: 'error.light',
-                    color: 'white'
-                  }
-                }}
+                onClick={() => setError(null)}
               >
-                <DeleteIcon fontSize="small" />
+                <CloseIcon fontSize="inherit" />
               </IconButton>
-            )}
-          </Box>
-          
-          <Box>
-            <input
-              accept="image/*"
-              id="profile-picture-upload"
-              type="file"
-              style={{ display: 'none' }}
-              onChange={handleImageUpload}
-            />
-            <label htmlFor="profile-picture-upload">
-              <Button
-                variant="outlined"
-                component="span"
-                startIcon={<CloudUploadIcon />}
-                size="medium"
-              >
-                {imagePreview ? 'Change Picture' : 'Upload Picture'}
-              </Button>
-            </label>
-          </Box>
-          
-          {errors.profilePicture && (
-            <Typography color="error" variant="caption" sx={{ mt: 1 }}>
-              {errors.profilePicture}
-            </Typography>
-          )}
-        </Grid>
-        
-        {/* Form fields */}
-        <Grid item xs={12}>
-          <TextField
-            fullWidth
-            label="Display Name"
-            name="displayName"
-            value={profile.displayName}
-            onChange={handleInputChange}
-            error={!!errors.displayName}
-            helperText={errors.displayName}
-            required
-          />
-        </Grid>
-        
-        <Grid item xs={12} sm={6}>
-          <TextField
-            fullWidth
-            label="Job Title"
-            name="jobTitle"
-            value={profile.jobTitle}
-            onChange={handleInputChange}
-            placeholder="Optional"
-          />
-        </Grid>
-        
-        <Grid item xs={12} sm={6}>
-          <TextField
-            fullWidth
-            label="Company/Organization"
-            name="company"
-            value={profile.company}
-            onChange={handleInputChange}
-            placeholder="Optional"
-          />
-        </Grid>
-        
-        <Grid item xs={12}>
-          <TextField
-            fullWidth
-            label="Bio"
-            name="bio"
-            value={profile.bio}
-            onChange={handleInputChange}
-            multiline
-            rows={3}
-            placeholder="Tell us a bit about yourself and how you plan to use TourGuideAI (optional)"
-          />
-        </Grid>
-        
-        <Grid item xs={12} display="flex" justifyContent="flex-end">
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
+            }
           >
-            Continue
-          </Button>
-        </Grid>
-      </Grid>
-    </Box>
+            {error}
+          </Alert>
+        )}
+        
+        <Box component="form" onSubmit={handleSubmit} noValidate>
+          <Grid container spacing={3}>
+            {/* Profile Picture */}
+            <Grid item xs={12} display="flex" justifyContent="center">
+              <Box textAlign="center">
+                <Avatar
+                  src={preview}
+                  sx={{
+                    width: 120,
+                    height: 120,
+                    mb: 2,
+                    bgcolor: 'primary.main'
+                  }}
+                >
+                  {!preview && (formData.name ? formData.name.charAt(0).toUpperCase() : 'U')}
+                </Avatar>
+                
+                <Box sx={{ display: 'flex', gap: 1, justifyContent: 'center' }}>
+                  <Button
+                    variant="outlined"
+                    component="label"
+                    startIcon={<PhotoCameraIcon />}
+                  >
+                    {preview ? 'Change Photo' : 'Upload Photo'}
+                    <input
+                      type="file"
+                      hidden
+                      accept="image/*"
+                      onChange={handleProfilePictureChange}
+                    />
+                  </Button>
+                  
+                  {preview && (
+                    <Button
+                      variant="outlined"
+                      color="error"
+                      onClick={handleRemoveProfilePicture}
+                    >
+                      Remove
+                    </Button>
+                  )}
+                </Box>
+                
+                <Typography variant="caption" color="text.secondary" display="block" mt={1}>
+                  Max size: 5MB. Recommended: 400x400px
+                </Typography>
+              </Box>
+            </Grid>
+            
+            {/* Name Field */}
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Full Name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                variant="outlined"
+                placeholder="Enter your full name"
+                helperText={validation.name?.message || "Your name as you'd like it to appear in the beta program"}
+                error={validation.name?.valid === false}
+                InputProps={{
+                  endAdornment: getFieldFeedback('name')
+                }}
+                required
+              />
+            </Grid>
+            
+            {/* Email Field */}
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                label="Email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                variant="outlined"
+                placeholder="your@email.com"
+                helperText={validation.email?.message || "We'll send beta invites to this email"}
+                error={validation.email?.valid === false}
+                InputProps={{
+                  endAdornment: validating.email ? (
+                    <InputAdornment position="end">
+                      <CircularProgress size={20} />
+                    </InputAdornment>
+                  ) : getFieldFeedback('email')
+                }}
+                required
+              />
+            </Grid>
+            
+            {/* Username Field */}
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                label="Username"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+                variant="outlined"
+                placeholder="username"
+                helperText={validation.username?.message || "Choose a unique username (3-20 characters)"}
+                error={validation.username?.valid === false}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">@</InputAdornment>,
+                  endAdornment: validating.username ? (
+                    <InputAdornment position="end">
+                      <CircularProgress size={20} />
+                    </InputAdornment>
+                  ) : getFieldFeedback('username')
+                }}
+                required
+              />
+            </Grid>
+          </Grid>
+          
+          <Box sx={{ mt: 4, display: 'flex', justifyContent: 'flex-end' }}>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              size="large"
+              disabled={loading}
+              sx={{ minWidth: 150 }}
+            >
+              {loading ? <CircularProgress size={24} /> : "Save Profile"}
+            </Button>
+          </Box>
+        </Box>
+      </CardContent>
+    </Card>
   );
 };
 

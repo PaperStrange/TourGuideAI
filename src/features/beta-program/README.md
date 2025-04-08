@@ -1,88 +1,122 @@
-# Beta Program Feature
+# TourGuideAI Beta Program
 
-This directory contains all components, services, and utilities for the TourGuideAI Beta Program.
+This directory contains all components, services, and pages related to the TourGuideAI Beta Program.
 
 ## Overview
 
-The Beta Program allows early access to TourGuideAI's features for selected users. It includes:
+The Beta Program enables early access to TourGuideAI features for selected users, with a focus on gathering feedback, testing features, and building a community of engaged users. The program includes comprehensive onboarding, issue prioritization, feature request capabilities, and feedback collection through customizable surveys.
 
-1. **Registration and Authentication**: Users can register for the beta program using invite codes.
-2. **Onboarding Flow**: New users go through a guided onboarding process.
-3. **Feature Request System**: Users can submit and vote on feature requests.
-4. **Survey System**: Administrators can create surveys to collect feedback from beta testers.
-5. **Community Forum**: Users can discuss features, ask questions, and share ideas.
-6. **Analytics Dashboard**: Administrators can view usage statistics and feedback trends.
+## Features
 
-## Component Structure
+### Onboarding Workflow
 
-- **`components/`**: UI components for the beta program
-  - **`BetaPortal.jsx`**: Main container component for the beta program
-  - **`RegistrationForm.jsx`**: Component for new user registration
-  - **`OnboardingFlow.jsx`**: Multi-step onboarding process
-  - **`onboarding/`**: Individual onboarding step components
-    - `CodeRedemptionForm.jsx`: Code validation form
-    - `UserProfileSetup.jsx`: User profile setup form
-    - `PreferencesSetup.jsx`: User preferences setup
-    - `WelcomeScreen.jsx`: Final onboarding screen
-  - **`feature-request/`**: Feature request system components
-    - `FeatureRequestBoard.jsx`: Main component for feature requests
-  - **`survey/`**: Survey system components
-    - `SurveyBuilder.jsx`: Admin component for creating surveys
-    - `SurveyList.jsx`: Component for displaying available surveys
-  - **`community/`**: Community forum components
-    - `BetaCommunityForum.jsx`: Discussion forum component
-  - **`auth/`**: Authentication components and utilities
-  - **`user/`**: User management components
-  - **`feedback/`**: User feedback components
+The onboarding workflow guides new beta users through the process of setting up their accounts:
 
-- **`services/`**: Business logic and API services
-  - `AuthService.js`: Authentication and user management
-  - `FeatureService.js`: Feature request management
-  - `SurveyService.js`: Survey creation and submission
-  - `PermissionsService.js`: Role-based access control
+- Beta code redemption
+- User profile setup
+- Preferences configuration
+- Welcome screen with feature introduction
 
-- **`hooks/`**: Custom React hooks for the beta program
-- **`utils/`**: Utility functions
+### Issue Prioritization System
 
-## Role-Based Access Control
+The issue prioritization system helps the team manage and address user-reported issues:
 
-The beta program implements role-based access control (RBAC) with these roles:
+- Automated issue categorization and assignment
+- Severity assessment and impact analysis
+- SLA tracking with visual indicators
+- Priority scoring algorithm
 
-- **Beta Tester**: Base role for all beta program participants
-- **Moderator**: Can manage content and users, but has limited administrative access
-- **Admin**: Full access to all beta program features
+### Feature Request System
 
-## Getting Started
+The feature request system allows users to submit and vote on feature ideas:
 
-To add the beta program to a page, import and use the `BetaPortal` component:
+- Feature submission with categorization and tagging
+- Upvoting mechanism with tracking
+- Status updates for feature progress
+- Comment threads for discussion
+- Admin review workflow
+
+### Survey System
+
+The customizable survey system collects structured feedback:
+
+- Support for various question types (text, choice, rating, etc.)
+- Conditional logic based on previous answers
+- Result analytics and reporting
+- Visual progress indicators
+
+### Feedback Collection
+
+General feedback collection helps capture user opinions:
+
+- Categorized feedback (bug reports, suggestions, general)
+- Automated analysis with sentiment detection
+- Feedback tracking and response management
+
+## Technical Details
+
+### Directory Structure
+
+- `/components` - Reusable UI components
+- `/services` - API interfaces and business logic
+- `/pages` - Page components for routing
+- `/layouts` - Layout components for consistent UI
+- `/routes` - Route configurations
+- `/hooks` - Custom React hooks for shared logic
+- `/utils` - Utility functions and helpers
+
+### Key Components
+
+- **OnboardingFlow**: Multi-step onboarding process
+- **FeatureRequestList**: Displays and filters feature requests
+- **FeatureRequestDetails**: Shows details for a specific feature request
+- **Survey**: Renders survey questions with conditional logic
+- **SurveyQuestion**: Handles various question types
+- **BetaDashboard**: Central hub for beta program activities
+- **FeedbackForm**: Collects general feedback
+
+### Services
+
+- **SurveyService**: Manages survey data and submissions
+- **FeatureRequestService**: Handles feature request operations
+- **IssueAssignmentService**: Automates issue triage and assignment
+
+## Usage
 
 ```jsx
-import { BetaPortal } from 'src/features/beta-program/components';
+// Import components from the beta program
+import { FeatureRequestList } from '@/features/beta-program/components/feature-request';
+import { Survey } from '@/features/beta-program/components/survey';
+import { OnboardingFlow } from '@/features/beta-program/components/onboarding';
 
-function SomePage() {
+// Import services
+import surveyService from '@/features/beta-program/services/SurveyService';
+import featureRequestService from '@/features/beta-program/services/FeatureRequestService';
+
+// Use in a component
+function BetaFeature() {
   return (
     <div>
-      <h1>Beta Program</h1>
-      <BetaPortal />
+      <OnboardingFlow />
+      <FeatureRequestList />
+      <Survey survey={survey} />
     </div>
   );
 }
 ```
 
-## Development Guidelines
+## Contributing
 
-- Keep components modular and focused on a single responsibility
-- Use the provided RBAC components (`Role`, `Permission`, `AccessControl`) for conditional rendering
-- Implement proper validation for user inputs
-- Follow the established design patterns for new components
+When adding new components or services to the Beta Program:
 
-## Testing
+1. Follow the existing directory structure and naming conventions
+2. Create comprehensive tests for new functionality
+3. Update this README with details of major new features
+4. Ensure all components are properly exported from their respective index files
 
-Test cases for beta program components should be placed in `__tests__` directories alongside the respective components.
+## Related Documentation
 
-## Future Enhancements
-
-- Integration with external analytics tools
-- Localization support for international beta testers
-- Expanded notification system for beta program events
-- Mobile app beta testing support 
+- [Beta Program User Guide](../../docs/user-guides/beta-program.md)
+- [Issue Prioritization System Design](../../docs/technical/issue-prioritization.md)
+- [Feature Request System Design](../../docs/technical/feature-requests.md)
+- [Survey System Architecture](../../docs/technical/survey-system.md) 

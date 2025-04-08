@@ -132,6 +132,24 @@ const AdminDashboard = () => {
                   </ListItem>
                 </AccessControl>
                 
+                <AccessControl permission={PERMISSIONS.MANAGE_ISSUES}>
+                  <ListItem button onClick={() => navigate('/admin/issue-prioritization')}>
+                    <ListItemText 
+                      primary="Issue Prioritization" 
+                      secondary="Classify and prioritize reported issues"
+                    />
+                  </ListItem>
+                </AccessControl>
+                
+                <AccessControl permission={PERMISSIONS.MANAGE_ISSUES}>
+                  <ListItem button onClick={() => navigate('/admin/sla-tracking')}>
+                    <ListItemText 
+                      primary="SLA Tracking" 
+                      secondary="Monitor and manage issue resolution SLAs"
+                    />
+                  </ListItem>
+                </AccessControl>
+                
                 <Role role="ADMIN">
                   <ListItem button>
                     <ListItemText 
@@ -162,6 +180,12 @@ const AdminDashboard = () => {
                   <ListItemText 
                     primary="Feedback submitted" 
                     secondary="New feature suggestion received • 5 hours ago"
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText 
+                    primary="Issue prioritized" 
+                    secondary="Critical issue escalated for immediate attention • 1 day ago"
                   />
                 </ListItem>
                 <ListItem>
