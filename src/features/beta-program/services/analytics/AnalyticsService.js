@@ -427,6 +427,332 @@ class AnalyticsService {
       throw error;
     }
   }
+  
+  /**
+   * Get session recordings based on filters
+   * @param {string} startDate - Start date in ISO format
+   * @param {string} endDate - End date in ISO format
+   * @param {Object} filters - Filters for the recordings
+   * @returns {Promise<Object>} Session recordings data
+   */
+  async getSessionRecordings(startDate, endDate, filters = {}) {
+    // In a real implementation, this would call the Hotjar API
+    // For now, we'll simulate it with mock data
+    
+    console.log('Fetching session recordings with filters:', filters);
+    
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    // Generate mock recordings
+    const recordings = Array.from({ length: 25 }).map((_, index) => {
+      const recordingDate = new Date(
+        new Date(startDate).getTime() + 
+        Math.random() * (new Date(endDate).getTime() - new Date(startDate).getTime())
+      );
+      
+      const duration = Math.floor(Math.random() * 600) + 30; // 30s to 10min
+      const userType = Math.random() > 0.3 ? 'returning' : 'new';
+      const device = ['desktop', 'mobile', 'tablet'][Math.floor(Math.random() * 3)];
+      
+      const pages = [];
+      const numPages = Math.floor(Math.random() * 5) + 1;
+      const possiblePages = ['dashboard', 'search', 'profile', 'settings', 'tour_creation', 'tour_details', 'checkout'];
+      
+      for (let i = 0; i < numPages; i++) {
+        const page = possiblePages[Math.floor(Math.random() * possiblePages.length)];
+        if (!pages.includes(page)) {
+          pages.push(page);
+        }
+      }
+      
+      return {
+        id: `hj-${(10000000 + index).toString(16)}`, // Mock Hotjar recording ID
+        date: recordingDate.toISOString(),
+        duration: duration,
+        userId: Math.random() > 0.2 ? `user_${Math.floor(Math.random() * 1000)}` : null,
+        userType: userType,
+        device: device,
+        browser: ['Chrome', 'Firefox', 'Safari', 'Edge'][Math.floor(Math.random() * 4)],
+        country: ['United States', 'United Kingdom', 'Canada', 'Germany', 'France', 'Japan', 'Australia'][Math.floor(Math.random() * 7)],
+        pages: pages,
+        url: `https://example.com/${pages[0]}`
+      };
+    });
+    
+    // Apply filters
+    let filteredRecordings = [...recordings];
+    
+    if (filters.userType && filters.userType !== 'all') {
+      filteredRecordings = filteredRecordings.filter(r => r.userType === filters.userType);
+    }
+    
+    if (filters.device && filters.device !== 'all') {
+      filteredRecordings = filteredRecordings.filter(r => r.device === filters.device);
+    }
+    
+    if (filters.duration && filters.duration !== 'all') {
+      switch(filters.duration) {
+        case 'short':
+          filteredRecordings = filteredRecordings.filter(r => r.duration < 60);
+          break;
+        case 'medium':
+          filteredRecordings = filteredRecordings.filter(r => r.duration >= 60 && r.duration <= 300);
+          break;
+        case 'long':
+          filteredRecordings = filteredRecordings.filter(r => r.duration > 300);
+          break;
+      }
+    }
+    
+    if (filters.page && filters.page !== 'all') {
+      filteredRecordings = filteredRecordings.filter(r => r.pages.includes(filters.page));
+    }
+    
+    if (filters.search) {
+      const searchLower = filters.search.toLowerCase();
+      filteredRecordings = filteredRecordings.filter(r => 
+        (r.userId && r.userId.toLowerCase().includes(searchLower)) ||
+        r.pages.some(p => p.toLowerCase().includes(searchLower)) ||
+        r.url.toLowerCase().includes(searchLower)
+      );
+    }
+    
+    // Sort by date (newest first)
+    filteredRecordings.sort((a, b) => new Date(b.date) - new Date(a.date));
+    
+    // Handle pagination
+    const page = filters.page || 1;
+    const limit = filters.limit || 10;
+    const offset = (page - 1) * limit;
+    
+    const paginatedRecordings = filteredRecordings.slice(offset, offset + limit);
+    
+    return {
+      recordings: paginatedRecordings,
+      total: filteredRecordings.length
+    };
+  }
+  
+  /**
+   * Get heatmap data for a specific page and interaction type
+   * @param {string} pageId - ID of the page to get data for
+   * @param {string} interactionType - Type of interaction (clicks, moves, scrolls, etc.)
+   * @param {string} startDate - Start date in ISO format
+   * @param {string} endDate - End date in ISO format
+   * @param {string} userSegment - User segment to filter by
+   * @returns {Promise<Object>} Heatmap data
+   */
+  async getHeatmapData(pageId, interactionType, startDate, endDate, userSegment) {
+    // This would normally call the Hotjar API
+    console.log(`Fetching heatmap data for page ${pageId} and interaction type ${interactionType}`);
+    
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    // Generate mock heatmap data
+    const width = 1200;
+    const height = 1600;
+    const numPoints = Math.floor(Math.random() * 200) + 100;
+    
+    const interactions = Array.from({ length: numPoints }).map(() => {
+      let x, y;
+      
+      // Create clusters to simulate realistic interaction patterns
+      if (Math.random() < 0.7) {
+        // 70% chance of being in a cluster
+        const clusterX = Math.floor(Math.random() * 5) * (width / 5) + (width / 10);
+        const clusterY = Math.floor(Math.random() * 8) * (height / 8) + (height / 16);
+        
+        x = Math.floor(clusterX + (Math.random() - 0.5) * (width / 5));
+        y = Math.floor(clusterY + (Math.random() - 0.5) * (height / 8));
+      } else {
+        // 30% chance of being random
+        x = Math.floor(Math.random() * width);
+        y = Math.floor(Math.random() * height);
+      }
+      
+      return {
+        x: x,
+        y: y,
+        value: Math.floor(Math.random() * 10) + 1 // 1-10 intensity
+      };
+    });
+    
+    // Get a screenshot URL (this would be fetched from Hotjar in real implementation)
+    const screenshotUrl = `/screenshots/${pageId}.png`;
+    
+    return {
+      screenshot: screenshotUrl,
+      interactions: interactions
+    };
+  }
+  
+  /**
+   * Get interaction metrics for a specific page and interaction type
+   * @param {string} pageId - ID of the page to get data for
+   * @param {string} interactionType - Type of interaction (clicks, moves, scrolls, etc.)
+   * @param {string} startDate - Start date in ISO format
+   * @param {string} endDate - End date in ISO format
+   * @param {string} userSegment - User segment to filter by
+   * @returns {Promise<Object>} Interaction metrics
+   */
+  async getInteractionMetrics(pageId, interactionType, startDate, endDate, userSegment) {
+    // This would normally call the Hotjar API
+    console.log(`Fetching interaction metrics for page ${pageId} and interaction type ${interactionType}`);
+    
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    // Generate mock metrics
+    return {
+      totalInteractions: Math.floor(Math.random() * 5000) + 1000,
+      uniqueUsers: Math.floor(Math.random() * 500) + 100,
+      averageTimeSpent: Math.floor(Math.random() * 60) + 10,
+      mostInteractedElement: ['Search Button', 'Login Form', 'Navigation Menu', 'Feature Card', 'Pricing Table'][Math.floor(Math.random() * 5)]
+    };
+  }
+  
+  /**
+   * Get UX metrics for evaluation
+   * @param {string} startDate - Start date in ISO format
+   * @param {string} endDate - End date in ISO format
+   * @param {string} benchmark - Benchmark to compare against
+   * @returns {Promise<Object>} UX metrics data
+   */
+  async getUXMetrics(startDate, endDate, benchmark = 'industry') {
+    console.log(`Fetching UX metrics from ${startDate} to ${endDate} with benchmark ${benchmark}`);
+    
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 800));
+    
+    // Generate mock metrics
+    return {
+      timeOnTask: { 
+        value: Math.floor(Math.random() * 60) + 20, 
+        trend: ['up', 'down', 'stable'][Math.floor(Math.random() * 3)],
+        loading: false, 
+        error: null 
+      },
+      successRate: { 
+        value: Math.floor(Math.random() * 30) + 70, 
+        trend: ['up', 'stable', 'down'][Math.floor(Math.random() * 3)],
+        loading: false, 
+        error: null 
+      },
+      errorRate: { 
+        value: Math.floor(Math.random() * 10) + 1, 
+        trend: ['down', 'stable', 'up'][Math.floor(Math.random() * 3)],
+        loading: false, 
+        error: null 
+      }, 
+      satisfactionScore: { 
+        value: Math.floor(Math.random() * 3) + 7, 
+        trend: ['up', 'stable', 'down'][Math.floor(Math.random() * 3)],
+        loading: false, 
+        error: null 
+      },
+      taskCompletionTime: { 
+        value: Math.floor(Math.random() * 50) + 20, 
+        trend: ['down', 'stable', 'up'][Math.floor(Math.random() * 3)],
+        loading: false, 
+        error: null 
+      }
+    };
+  }
+  
+  /**
+   * Get component usage statistics
+   * @param {string} startDate - Start date in ISO format
+   * @param {string} endDate - End date in ISO format
+   * @returns {Promise<Array>} Component usage statistics
+   */
+  async getComponentUsageStats(startDate, endDate) {
+    console.log(`Fetching component usage stats from ${startDate} to ${endDate}`);
+    
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 600));
+    
+    // Generate mock component stats
+    const components = [
+      'Search Form',
+      'Navigation Menu',
+      'Tour Card',
+      'Checkout Form',
+      'User Profile',
+      'Settings Panel',
+      'Login Modal',
+      'Feedback Widget',
+      'Feature Request Form',
+      'Survey Component'
+    ];
+    
+    return components.map((name, index) => ({
+      id: index + 1,
+      name,
+      usageCount: Math.floor(Math.random() * 1000) + 100,
+      avgTimeSpent: Math.floor(Math.random() * 60) + 5,
+      errorRate: Math.floor(Math.random() * 10),
+      satisfaction: Math.floor(Math.random() * 3) + 7
+    }));
+  }
+  
+  /**
+   * Get UX metrics time series data for charts
+   * @param {string} startDate - Start date in ISO format
+   * @param {string} endDate - End date in ISO format
+   * @returns {Promise<Object>} Time series data for charts
+   */
+  async getUXMetricsTimeSeries(startDate, endDate) {
+    console.log(`Fetching UX metrics time series from ${startDate} to ${endDate}`);
+    
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 700));
+    
+    // Calculate number of days between dates
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const daysDiff = Math.round((end - start) / (1000 * 60 * 60 * 24));
+    const numPoints = Math.min(daysDiff, 30); // Cap at 30 data points
+    
+    // Generate date labels
+    const labels = Array.from({ length: numPoints }).map((_, i) => {
+      const date = new Date(start);
+      date.setDate(date.getDate() + Math.round(i * (daysDiff / numPoints)));
+      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    });
+    
+    // Generate datasets
+    return {
+      labels,
+      datasets: [
+        {
+          label: 'Success Rate (%)',
+          data: Array.from({ length: numPoints }).map(() => Math.floor(Math.random() * 30) + 70),
+          borderColor: '#4caf50',
+          backgroundColor: 'rgba(76, 175, 80, 0.1)',
+          tension: 0.4,
+          fill: true
+        },
+        {
+          label: 'Error Rate (%)',
+          data: Array.from({ length: numPoints }).map(() => Math.floor(Math.random() * 10) + 1),
+          borderColor: '#f44336',
+          backgroundColor: 'rgba(244, 67, 54, 0.1)',
+          tension: 0.4,
+          fill: true
+        },
+        {
+          label: 'Satisfaction Score',
+          data: Array.from({ length: numPoints }).map(() => Math.floor(Math.random() * 3) + 7),
+          borderColor: '#2196f3',
+          backgroundColor: 'rgba(33, 150, 243, 0.1)',
+          tension: 0.4,
+          fill: true
+        }
+      ]
+    };
+  }
 }
 
 // Create singleton instance
