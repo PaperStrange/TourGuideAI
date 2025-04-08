@@ -74,12 +74,12 @@ Phase 6 focuses on setting up and launching the beta program infrastructure for 
   - [X] Create support for various question types
   - [X] Implement sentiment analysis for text responses
 
-- [X] Enable automated feedback collection and analysis pipelines
-  - [X] Set up scheduled feedback prompts
-  - [X] Implement user behavior tracking
-  - [X] Create feedback categorization system
-  - [X] Build sentiment analysis for feedback
-  - [X] Design actionable insights reports
+- [ ] Enable automated feedback collection and analysis pipelines
+  - [ ] Set up scheduled feedback prompts
+  - [ ] Implement user behavior tracking
+  - [ ] Create feedback categorization system
+  - [ ] Build sentiment analysis for feedback
+  - [ ] Design actionable insights reports
 
 - [X] Develop feature request system with voting and ranking
   - [X] Create feature submission form
@@ -113,10 +113,10 @@ Phase 6 focuses on setting up and launching the beta program infrastructure for 
   - [ ] Add annotation capabilities
 
 ### User Experience Enhancement
-- [X] Establish UX audit system with session recording and heatmap visualization
+- [ ] Establish UX audit system with session recording and heatmap visualization
   - [X] Create UX metrics evaluation component
   - [X] Implement heatmap visualization for user interactions
-  - [X] Develop session recording playback functionality
+  - [ ] Develop session recording playback functionality
   - [X] Add filtering options for different user segments
   - [X] Integrate with existing analytics service
 - [ ] Design and implement 5+ high-impact features based on user demand
