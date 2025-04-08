@@ -45,6 +45,27 @@ The customizable survey system collects structured feedback:
 - Result analytics and reporting
 - Visual progress indicators
 
+### UX Audit System
+
+The UX audit system provides comprehensive insights into user behavior and interface interactions:
+
+- Session recording with playback control and event timeline
+- Heatmap visualization for clicks, movements, and page views
+- UX metrics evaluation with weighted scoring
+- Filtering by page, device type, and date range
+- Export capabilities for analysis
+- Integration with third-party tools like Hotjar
+
+### Task Prompt System
+
+The task prompt system guides users through specific beta testing tasks:
+
+- In-app task prompts with step-by-step instructions
+- Context-aware task suggestions
+- Task completion tracking and reporting
+- User feedback collection for individual tasks
+- Integration with session recording for task analysis
+
 ### Feedback Collection
 
 General feedback collection helps capture user opinions:
@@ -58,7 +79,18 @@ General feedback collection helps capture user opinions:
 ### Directory Structure
 
 - `/components` - Reusable UI components
+  - `/analytics` - Analytics dashboard and visualization components
+  - `/auth` - Authentication-related components
+  - `/feedback` - Feedback collection components
+  - `/feature-request` - Feature request components
+  - `/onboarding` - User onboarding components
+  - `/survey` - Survey components
+  - `/task-prompts` - In-app task prompt components
+  - `/user-testing` - User testing program components
+  - `/ux-audit` - UX audit components
 - `/services` - API interfaces and business logic
+  - `/analytics` - Analytics and UX audit services
+  - `/feedback` - Feedback processing services
 - `/pages` - Page components for routing
 - `/layouts` - Layout components for consistent UI
 - `/routes` - Route configurations
@@ -74,12 +106,24 @@ General feedback collection helps capture user opinions:
 - **SurveyQuestion**: Handles various question types
 - **BetaDashboard**: Central hub for beta program activities
 - **FeedbackForm**: Collects general feedback
+- **InAppTaskPrompt**: Displays contextual task prompts to guide users
+- **TaskPromptManager**: Manages the display of task prompts across the application
+- **SessionRecording**: Records and plays back user sessions
+- **SessionPlayback**: Advanced session playback with interactive timeline
+- **SessionRecordingPlayer**: Lightweight session recording playback component
+- **HeatmapVisualization**: Displays interaction heatmaps for user activity
+- **UXMetricsEvaluation**: Evaluates UX metrics with benchmarking
+- **UXAuditDashboard**: Central dashboard for all UX audit tools
 
 ### Services
 
 - **SurveyService**: Manages survey data and submissions
 - **FeatureRequestService**: Handles feature request operations
 - **IssueAssignmentService**: Automates issue triage and assignment
+- **SessionRecordingService**: Manages session recording and playback
+- **TaskPromptService**: Handles in-app task prompts and completion tracking
+- **AnalyticsService**: Processes UX data and metrics
+- **HotjarService**: Provides integration with Hotjar for session recording and heatmaps
 
 ## Usage
 
@@ -88,10 +132,14 @@ General feedback collection helps capture user opinions:
 import { FeatureRequestList } from '@/features/beta-program/components/feature-request';
 import { Survey } from '@/features/beta-program/components/survey';
 import { OnboardingFlow } from '@/features/beta-program/components/onboarding';
+import { InAppTaskPrompt } from '@/features/beta-program/components/task-prompts';
+import { SessionRecording, HeatmapVisualization } from '@/features/beta-program/components/analytics';
 
 // Import services
 import surveyService from '@/features/beta-program/services/SurveyService';
 import featureRequestService from '@/features/beta-program/services/FeatureRequestService';
+import sessionRecordingService from '@/features/beta-program/services/SessionRecordingService';
+import taskPromptService from '@/features/beta-program/services/TaskPromptService';
 
 // Use in a component
 function BetaFeature() {
@@ -100,6 +148,13 @@ function BetaFeature() {
       <OnboardingFlow />
       <FeatureRequestList />
       <Survey survey={survey} />
+      
+      {/* Task prompting */}
+      <InAppTaskPrompt taskId="task-123" onComplete={() => {}} />
+      
+      {/* UX audit tools */}
+      <SessionRecording sessionId="session-123" onBack={() => {}} />
+      <HeatmapVisualization onBack={() => {}} />
     </div>
   );
 }
@@ -119,4 +174,6 @@ When adding new components or services to the Beta Program:
 - [Beta Program User Guide](../../docs/user-guides/beta-program.md)
 - [Issue Prioritization System Design](../../docs/technical/issue-prioritization.md)
 - [Feature Request System Design](../../docs/technical/feature-requests.md)
-- [Survey System Architecture](../../docs/technical/survey-system.md) 
+- [Survey System Architecture](../../docs/technical/survey-system.md)
+- [UX Audit System Documentation](../../docs/technical/ux-audit-system.md)
+- [Task Prompt System Documentation](../../docs/technical/task-prompt-system.md) 

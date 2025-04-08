@@ -8,6 +8,10 @@ This directory contains feature-specific code organized by domain functionality.
 - **travel-planning**: Contains components and services for the travel planning feature
 - **user-profile**: Contains components and services for the user profile feature
 - **beta-program**: Contains components and services for the beta program management
+  - Includes comprehensive onboarding flow
+  - Survey system with conditional logic
+  - Feature request system with voting
+  - UX audit system with session recording and heatmap visualization
 
 Each feature directory is organized to be largely self-contained, with its own:
 
@@ -24,6 +28,7 @@ For comprehensive testing of these features, refer to:
 - Test scenarios: `docs/project_lifecycle/stability_tests/plans/project.test-scenarios.md`
 - User journey testing: `docs/project_lifecycle/stability_tests/plans/project.test-user-story.md`
 - Test execution results: `docs/project_lifecycle/stability_tests/records/project.test-execution-results.md`
+- UX audit system: `docs/technical/ux-audit-system.md`
 
 ## Performance Optimizations
 
@@ -33,6 +38,7 @@ All features leverage the following performance enhancements:
 - **Image Optimization**: Images use lazy loading and responsive sizing via the core imageUtils
 - **Caching Strategy**: API responses use TTL-based caching with compression
 - **Offline Support**: Critical functionality works offline through service worker caching
+- **Canvas Rendering**: UX audit components use optimized canvas rendering for performance
 
 ## Maintainability
 

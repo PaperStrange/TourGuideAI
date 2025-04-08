@@ -1295,6 +1295,191 @@ class TaskPromptService {
       }
     ];
   }
+
+  /**
+   * Fetch task details by task ID
+   * @param {string} taskId - ID of the task prompt
+   * @returns {Promise<Object>} - Task prompt data
+   */
+  static async getTaskById(taskId) {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/task-prompts/${taskId}`);
+      return response.data;
+    } catch (error) {
+      console.error(`Error fetching task prompt ${taskId}:`, error);
+      throw error;
+    }
+  }
+
+  /**
+   * Fetch task details by context ID (page/feature)
+   * @param {string} contextId - Context ID where the task should appear
+   * @returns {Promise<Object>} - Task prompt data for the context
+   */
+  static async getTaskByContext(contextId) {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/task-prompts/context/${contextId}`);
+      return response.data;
+    } catch (error) {
+      console.error(`Error fetching task prompt for context ${contextId}:`, error);
+      throw error;
+    }
+  }
+
+  /**
+   * Mark a task step as completed
+   * @param {string} taskId - ID of the task prompt
+   * @param {string} stepId - ID of the step to mark as completed
+   * @returns {Promise<Object>} - Updated task data
+   */
+  static async completeStep(taskId, stepId) {
+    try {
+      const response = await axios.post(`${API_BASE_URL}/task-prompts/${taskId}/steps/${stepId}/complete`);
+      return response.data;
+    } catch (error) {
+      console.error(`Error completing task step ${stepId}:`, error);
+      throw error;
+    }
+  }
+
+  /**
+   * Mark an entire task as completed
+   * @param {string} taskId - ID of the task prompt to complete
+   * @returns {Promise<Object>} - Completed task data
+   */
+  static async completeTask(taskId) {
+    try {
+      const response = await axios.post(`${API_BASE_URL}/task-prompts/${taskId}/complete`);
+      return response.data;
+    } catch (error) {
+      console.error(`Error completing task ${taskId}:`, error);
+      throw error;
+    }
+  }
+
+  /**
+   * Dismiss a task prompt (user chooses not to do it)
+   * @param {string} taskId - ID of the task prompt to dismiss
+   * @param {Object} feedback - Optional feedback about why it was dismissed
+   * @returns {Promise<Object>} - Response data
+   */
+  static async dismissTask(taskId, feedback = {}) {
+    try {
+      const response = await axios.post(`${API_BASE_URL}/task-prompts/${taskId}/dismiss`, feedback);
+      return response.data;
+    } catch (error) {
+      console.error(`Error dismissing task ${taskId}:`, error);
+      throw error;
+    }
+  }
+
+  /**
+   * Submit feedback about a task
+   * @param {string} taskId - ID of the task prompt
+   * @param {Object} feedback - Feedback data (rating, comments, etc)
+   * @returns {Promise<Object>} - Response data
+   */
+  static async submitFeedback(taskId, feedback) {
+    try {
+      const response = await axios.post(`${API_BASE_URL}/task-prompts/${taskId}/feedback`, feedback);
+      return response.data;
+    } catch (error) {
+      console.error(`Error submitting feedback for task ${taskId}:`, error);
+      throw error;
+    }
+  }
+
+  /**
+   * Get all available tasks for the current user
+   * @param {Object} filters - Optional filters (status, category)
+   * @returns {Promise<Array>} - List of available tasks
+   */
+  static async getAllTasks(filters = {}) {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/task-prompts`, {
+        params: filters
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching all tasks:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Reset a task to start over
+   * @param {string} taskId - ID of the task prompt to reset
+   * @returns {Promise<Object>} - Reset task data
+   */
+  static async resetTask(taskId) {
+    try {
+      const response = await axios.post(`${API_BASE_URL}/task-prompts/${taskId}/reset`);
+      return response.data;
+    } catch (error) {
+      console.error(`Error resetting task ${taskId}:`, error);
+      throw error;
+    }
+  }
+
+  /**
+   * Get task completion statistics
+   * @returns {Promise<Object>} - Task completion statistics
+   */
+  static async getTaskStatistics() {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/task-prompts/statistics`);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching task statistics:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Create a custom task (admin only)
+   * @param {Object} taskData - Task data to create
+   * @returns {Promise<Object>} - Created task data
+   */
+  static async createTask(taskData) {
+    try {
+      const response = await axios.post(`${API_BASE_URL}/task-prompts`, taskData);
+      return response.data;
+    } catch (error) {
+      console.error('Error creating task:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Update an existing task (admin only)
+   * @param {string} taskId - ID of the task to update
+   * @param {Object} taskData - Updated task data
+   * @returns {Promise<Object>} - Updated task data
+   */
+  static async updateTask(taskId, taskData) {
+    try {
+      const response = await axios.put(`${API_BASE_URL}/task-prompts/${taskId}`, taskData);
+      return response.data;
+    } catch (error) {
+      console.error(`Error updating task ${taskId}:`, error);
+      throw error;
+    }
+  }
+
+  /**
+   * Delete a task (admin only)
+   * @param {string} taskId - ID of the task to delete
+   * @returns {Promise<Object>} - Response data
+   */
+  static async deleteTask(taskId) {
+    try {
+      const response = await axios.delete(`${API_BASE_URL}/task-prompts/${taskId}`);
+      return response.data;
+    } catch (error) {
+      console.error(`Error deleting task ${taskId}:`, error);
+      throw error;
+    }
+  }
 }
 
 // Create and export singleton instance
