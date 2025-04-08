@@ -1,6 +1,157 @@
 # GitHub Workflows
 
-This directory contains GitHub Actions workflow definitions for continuous integration, delivery, and security scanning.
+This directory contains GitHub Actions workflows used to automate tasks in the TourGuideAI project.
+
+## Available Workflows
+
+### CI/CD Workflows
+
+- **ci.yml**: Main continuous integration workflow that runs on pull requests and pushes to main.
+  - Runs unit tests, linting, and build validation
+  - Includes UX Audit System component testing
+  - Validates Task Prompt System integration
+  - Generates code coverage reports
+
+- **deployment.yml**: Handles deployment to different environments.
+  - Stages: dev, staging, production
+  - Includes post-deployment verification
+  - Validates UX audit recording functionality in each environment
+
+### Code Quality Workflows
+
+- **lint.yml**: Runs linting checks on JavaScript and TypeScript files.
+  - Uses ESLint with our custom rule set
+  - Validates component structure and best practices
+  - Includes specific rules for UX Audit components
+  - Validates Task Prompt accessibility patterns
+
+- **test.yml**: Runs all test suites.
+  - Unit tests with Jest
+  - Integration tests with Playwright
+  - Stability tests for critical components
+  - Dedicated UX Audit System tests to ensure recording and visualization reliability
+  - Task Prompt System tests to verify user guidance functionality
+
+### Documentation Workflows
+
+- **docs.yml**: Builds and deploys documentation.
+  - Generates API documentation
+  - Builds technical documentation site
+  - Includes UX Audit System and Task Prompt System documentation
+  - Validates code examples in documentation
+
+### Specific Feature Workflows
+
+- **ux-audit-validation.yml**: Runs specialized tests for the UX Audit System.
+  - Validates session recording functionality
+  - Tests heatmap visualization with various data inputs
+  - Ensures UX metrics calculations are accurate
+  - Checks export functionality and data integrity
+  - Tests integration with analytics dashboard
+
+- **task-prompt-testing.yml**: Validates the Task Prompt System.
+  - Tests prompt appearance and timing
+  - Validates multi-step task guidance
+  - Ensures proper state management across tasks
+  - Tests integration with UX audit recording
+  - Verifies task completion analytics
+
+## Running Workflows Locally
+
+You can run these workflows locally using [act](https://github.com/nektos/act).
+
+```bash
+# Install act
+brew install act
+
+# Run the CI workflow
+act -j build
+
+# Run UX Audit validation workflow
+act -j ux-audit-validation
+
+# Run Task Prompt testing workflow
+act -j task-prompt-testing
+```
+
+## Creating New Workflows
+
+When creating new workflows:
+
+1. Use our workflow templates in `.github/workflow-templates/`
+2. Follow naming conventions: `<feature>-<action>.yml`
+3. Include appropriate triggers and conditions
+4. Add adequate documentation in this README
+
+### Adding UX Audit System Tests to Workflows
+
+When adding UX Audit System tests to workflows:
+
+```yaml
+jobs:
+  ux-audit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - run: npm ci
+      - name: Run UX Audit System tests
+        run: npm run test:ux-audit
+      - name: Generate UX test report
+        run: npm run report:ux-audit
+      - name: Upload test artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ux-audit-test-results
+          path: test-results/ux-audit
+```
+
+### Adding Task Prompt System Tests to Workflows
+
+When adding Task Prompt System tests to workflows:
+
+```yaml
+jobs:
+  task-prompt-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - run: npm ci
+      - name: Run Task Prompt System tests
+        run: npm run test:task-prompt
+      - name: Generate Task Prompt test report
+        run: npm run report:task-prompt
+      - name: Upload test artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: task-prompt-test-results
+          path: test-results/task-prompt
+```
+
+## Workflow Dependencies
+
+Some workflows depend on specific environment variables or secrets:
+
+- `API_KEY`: Used for deployment and integration tests
+- `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`: Used for AWS deployments
+- `UX_AUDIT_SERVICE_URL`: URL for the UX Audit backend service
+- `TASK_PROMPT_API_KEY`: API key for Task Prompt service integration
+
+## Best Practices
+
+- Keep workflows focused on a single responsibility
+- Use job dependencies for complex workflows
+- Store sensitive data in GitHub Secrets
+- Use specific versions for GitHub Actions
+- Add descriptive comments to complex steps
+- Configure proper timeout settings for long-running jobs
+- Add proper error handling and notifications
+- Include UX Audit and Task Prompt validations in critical workflows
 
 ## Workflows
 
@@ -182,4 +333,76 @@ When adding new workflows, follow these guidelines:
 5. Set appropriate timeout values
 6. Configure notifications for workflow failures
 7. Follow least privilege principle for permissions
-8. Ensure proper error handling and reporting 
+8. Ensure proper error handling and reporting
+
+## UX Audit System CI/CD Integration
+
+The UX Audit System has specific CI/CD workflow steps for ensuring its reliability:
+
+1. **Unit Tests**: Test individual components (`SessionRecording`, `HeatmapVisualization`, `UXMetricsEvaluation`)
+2. **Integration Tests**: Test how components interact with services
+3. **Stability Tests**: Verify resilience using the specific stability tests
+4. **Smoke Tests**: Validate core functionality post-deployment
+5. **Performance Tests**: Measure rendering performance and memory usage
+
+These tests use mock data to simulate various user session scenarios and interaction patterns.
+
+### Example Workflow Step for UX Audit System
+
+```yaml
+- name: Run UX Audit System stability tests
+  run: |
+    npm run test:stability:ux-audit
+    mkdir -p test-results/ux-audit
+    cp docs/project_lifecycle/stability_tests/results/data/ux-audit-*.json test-results/ux-audit/
+  if: success() || failure()  # Run even if previous steps failed
+```
+
+## Task Prompt System CI/CD Integration
+
+The Task Prompt System has specific CI/CD workflow steps for ensuring its reliability:
+
+1. **Unit Tests**: Test individual components (`TaskPromptManager`, `InAppTaskPrompt`)
+2. **Integration Tests**: Test how components interact with task services and UX audit system
+3. **Stability Tests**: Verify resilience under various conditions
+4. **Smoke Tests**: Validate core functionality post-deployment
+5. **User Flow Tests**: Simulate complete task completion workflows
+
+These tests verify task state management, multi-step task progression, and proper event recording.
+
+### Example Workflow Step for Task Prompt System
+
+```yaml
+- name: Run Task Prompt System stability tests
+  run: |
+    npm run test:stability:task-prompt
+    mkdir -p test-results/task-prompt
+    cp docs/project_lifecycle/stability_tests/results/data/task-prompt-*.json test-results/task-prompt/
+  if: success() || failure()  # Run even if previous steps failed
+```
+
+## Adding New Workflow Steps
+
+When adding new workflow steps:
+
+1. Add the step to the appropriate job
+2. Ensure it runs the correct test command
+3. Store test results in a consistent location
+4. Configure the step to run on appropriate conditions
+5. Add artifact upload for test results if needed
+
+## Viewing Test Results
+
+Test results are:
+1. Stored as artifacts in GitHub Actions
+2. Available for download for 90 days
+3. Summarized in PR comments through GitHub Actions
+
+## Troubleshooting
+
+If a workflow fails:
+
+1. Check the GitHub Actions tab for the specific error
+2. Download artifacts to view detailed test results
+3. Check if the test is flaky (inconsistent)
+4. Check for environment-specific issues 

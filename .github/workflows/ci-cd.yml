@@ -66,6 +66,12 @@ jobs:
         # Run backend resilience tests (capture rather than fail)
         npx jest src/tests/stability/frontend-stability.test.js -t "Backend Resilience" --json --outputFile=stability-test-results-backend.json || true
         
+        # Run UX Audit System stability tests
+        npx jest src/tests/stability/ux-audit-stability.test.js --json --outputFile=stability-test-results-ux-audit.json || true
+        
+        # Run Task Prompt System stability tests 
+        npx jest src/tests/stability/task-prompt-stability.test.js --json --outputFile=stability-test-results-task-prompt.json || true
+        
         # Run test script for comprehensive report (if script exists)
         if [ -f "./scripts/run-stability-tests.js" ]; then
           node ./scripts/run-stability-tests.js
@@ -87,8 +93,16 @@ jobs:
       env:
         DISABLE_ESLINT_PLUGIN: "true"
     
-    - name: Test
-      run: npm test -- --watchAll=false
+    - name: Run Feature Tests
+      run: |
+        # Run core tests
+        npm test -- --watchAll=false
+        
+        # Run UX Audit System tests
+        npm test -- --testPathPattern="src/tests/beta-program/ux-audit" --watchAll=false
+        
+        # Run Task Prompt System tests
+        npm test -- --testPathPattern="src/tests/beta-program/task-prompt" --watchAll=false
     
     - name: Setup CodeQL
       uses: github/codeql-action/init@v2
@@ -189,6 +203,12 @@ jobs:
         BASE_URL: ${{ github.ref == 'refs/heads/main' && 'https://app.tourguideai.com' || 'https://staging.tourguideai.com' }}
       run: |
         npx playwright test smoke.test.js
+        
+        # Run UX Audit System smoke tests
+        npx playwright test --grep "UX Audit System" smoke.test.js
+        
+        # Run Task Prompt System smoke tests
+        npx playwright test --grep "Task Prompt System" smoke.test.js
     
     - name: Upload test results
       if: always()

@@ -1,0 +1,273 @@
+/**
+ * UX Audit System Stability Tests
+ * 
+ * These tests check the stability and reliability of the UX Audit System components
+ * under various conditions including invalid data, large datasets, and edge cases.
+ */
+
+import React from 'react';
+import { render, screen, waitFor } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import userEvent from '@testing-library/user-event';
+
+// Import components to test
+import SessionRecording from '../../beta-program/ux-audit/SessionRecording';
+import UXHeatmap from '../../beta-program/ux-audit/UXHeatmap';
+import UXMetricsEvaluation from '../../beta-program/ux-audit/UXMetricsEvaluation';
+import UXAuditDashboard from '../../beta-program/ux-audit/UXAuditDashboard';
+
+// Import mock data
+import { 
+  sessionRecordingMocks, 
+  heatmapMocks, 
+  uxMetricsMocks, 
+  dashboardMocks 
+} from '../mocks/uxAuditMocks';
+
+// Mock canvas methods for heatmap testing
+beforeEach(() => {
+  HTMLCanvasElement.prototype.getContext = jest.fn(() => ({
+    fillRect: jest.fn(),
+    beginPath: jest.fn(),
+    arc: jest.fn(),
+    fill: jest.fn(),
+    createRadialGradient: jest.fn(() => ({
+      addColorStop: jest.fn()
+    }))
+  }));
+
+  // Mock media element
+  window.HTMLMediaElement.prototype.play = jest.fn();
+  window.HTMLMediaElement.prototype.pause = jest.fn();
+});
+
+describe('UX Audit System Stability', () => {
+  // Test section for SessionRecording component stability
+  describe('SessionRecording Component Stability', () => {
+    test('handles null or undefined recording data gracefully', () => {
+      // Test with null data
+      render(<SessionRecording recording={null} />);
+      expect(screen.getByText('No recording data available')).toBeInTheDocument();
+      
+      // Test with undefined data
+      render(<SessionRecording />);
+      expect(screen.getByText('No recording data available')).toBeInTheDocument();
+    });
+    
+    test('handles empty events array gracefully', () => {
+      const emptyEventsRecording = { ...sessionRecordingMocks, events: [] };
+      render(<SessionRecording recording={emptyEventsRecording} />);
+      expect(screen.getByText('No events recorded in this session')).toBeInTheDocument();
+    });
+    
+    test('handles invalid timestamp data gracefully', () => {
+      const invalidTimestampRecording = {
+        ...sessionRecordingMocks,
+        startTime: 'invalid-time', // Invalid timestamp
+        events: [
+          {
+            ...sessionRecordingMocks.events[0],
+            timestamp: 'not-a-timestamp' // Invalid timestamp
+          },
+          ...sessionRecordingMocks.events.slice(1)
+        ]
+      };
+      
+      // Should not crash on invalid timestamps
+      render(<SessionRecording recording={invalidTimestampRecording} />);
+      expect(screen.getByTestId('session-player')).toBeInTheDocument();
+    });
+    
+    test('handles extremely large event counts efficiently', async () => {
+      // Create recording with large number of events (1000)
+      const largeEventsRecording = {
+        ...sessionRecordingMocks,
+        events: Array(1000).fill().map((_, i) => ({
+          type: i % 3 === 0 ? 'click' : i % 3 === 1 ? 'scroll' : 'input',
+          timestamp: sessionRecordingMocks.startTime + (i * 1000),
+          target: `.element-${i}`,
+          position: { x: i * 10, y: i * 5 }
+        }))
+      };
+      
+      // Measure render performance
+      const start = performance.now();
+      render(<SessionRecording recording={largeEventsRecording} />);
+      const end = performance.now();
+      
+      // Should render within reasonable time (500ms)
+      expect(end - start).toBeLessThan(500);
+    });
+  });
+  
+  // Test section for UXHeatmap component stability
+  describe('UXHeatmap Component Stability', () => {
+    test('handles null or undefined data gracefully', () => {
+      // Test with null data
+      render(<UXHeatmap data={null} />);
+      expect(screen.getByText('No heatmap data available')).toBeInTheDocument();
+      
+      // Test with undefined data
+      render(<UXHeatmap />);
+      expect(screen.getByText('No heatmap data available')).toBeInTheDocument();
+    });
+    
+    test('handles invalid or missing point data gracefully', () => {
+      // Create heatmap data with missing or invalid points
+      const invalidPointsData = {
+        width: 1200,
+        height: 800,
+        points: [
+          { x: 'invalid', y: 150, value: 5 }, // Invalid x
+          { x: 300, y: 'not-a-number', value: 3 }, // Invalid y
+          { x: 600, y: 400, value: 'high' }, // Invalid value
+          { y: 600, value: 2 }, // Missing x
+          { x: 1000, value: 4 }, // Missing y
+          { x: 1200, y: 700 } // Missing value
+        ]
+      };
+      
+      render(<UXHeatmap data={invalidPointsData} />);
+      expect(screen.getByTestId('heatmap-canvas')).toBeInTheDocument();
+      // Should filter out invalid points but not crash
+    });
+    
+    test('handles extremely high density data efficiently', () => {
+      // Create extremely dense heatmap data (10,000 points)
+      const extremeDensityData = {
+        width: 1200,
+        height: 800,
+        points: Array(10000).fill().map((_, i) => ({
+          x: Math.floor(Math.random() * 1200),
+          y: Math.floor(Math.random() * 800),
+          value: Math.floor(Math.random() * 10) + 1
+        }))
+      };
+      
+      // Measure render performance
+      const start = performance.now();
+      render(<UXHeatmap data={extremeDensityData} />);
+      const end = performance.now();
+      
+      // Should render within reasonable time (500ms)
+      expect(end - start).toBeLessThan(500);
+    });
+  });
+  
+  // Test section for UXMetricsEvaluation component stability
+  describe('UXMetricsEvaluation Component Stability', () => {
+    test('handles null or undefined metrics data gracefully', () => {
+      // Test with null data
+      render(<UXMetricsEvaluation metrics={null} />);
+      expect(screen.getByText('No metrics data available')).toBeInTheDocument();
+      
+      // Test with undefined data
+      render(<UXMetricsEvaluation />);
+      expect(screen.getByText('No metrics data available')).toBeInTheDocument();
+    });
+    
+    test('handles missing or inconsistent data fields gracefully', () => {
+      const partialMetrics = {
+        timeOnPage: {
+          average: 120,
+          // Missing breakdown
+        },
+        // Missing clickAccuracy
+        userFlow: []
+      };
+      
+      render(<UXMetricsEvaluation metrics={partialMetrics} />);
+      
+      // Should display available data and gracefully handle missing data
+      expect(screen.getByText(/Average Time on Page: 120/)).toBeInTheDocument();
+      expect(screen.getByText('No click accuracy data available')).toBeInTheDocument();
+      expect(screen.getByText('No user flow data available')).toBeInTheDocument();
+    });
+    
+    test('export functionality handles errors gracefully', async () => {
+      // Mock export functions that fail
+      const mockExportCSVFail = jest.fn().mockRejectedValue(new Error('Export failed'));
+      const mockExportPDFFail = jest.fn().mockRejectedValue(new Error('Export failed'));
+      
+      render(
+        <UXMetricsEvaluation 
+          metrics={uxMetricsMocks}
+          exportToCSV={mockExportCSVFail}
+          exportToPDF={mockExportPDFFail}
+        />
+      );
+      
+      const user = userEvent.setup();
+      
+      // Test CSV export
+      const csvButton = screen.getByRole('button', { name: 'Export to CSV' });
+      await user.click(csvButton);
+      
+      // Should show error message but not crash
+      await waitFor(() => {
+        expect(screen.getByText('Export failed. Please try again.')).toBeInTheDocument();
+      });
+    });
+  });
+  
+  // Test section for UXAuditDashboard component stability
+  describe('UXAuditDashboard Component Stability', () => {
+    // Mock API calls
+    const mockFetchDashboardData = jest.fn().mockResolvedValue(dashboardMocks);
+    const mockFetchSessionRecordings = jest.fn().mockResolvedValue([sessionRecordingMocks]);
+    const mockFetchUXMetrics = jest.fn().mockResolvedValue(uxMetricsMocks);
+    
+    beforeEach(() => {
+      jest.clearAllMocks();
+    });
+    
+    test('handles API failures gracefully', async () => {
+      // Mock API error
+      mockFetchDashboardData.mockRejectedValueOnce(new Error('API error'));
+      mockFetchSessionRecordings.mockRejectedValueOnce(new Error('API error'));
+      mockFetchUXMetrics.mockRejectedValueOnce(new Error('API error'));
+      
+      render(
+        <UXAuditDashboard 
+          projectId={dashboardMocks.projectId}
+          fetchDashboardData={mockFetchDashboardData}
+          fetchSessionRecordings={mockFetchSessionRecordings}
+          fetchUXMetrics={mockFetchUXMetrics}
+        />
+      );
+      
+      // Wait for error state
+      await waitFor(() => {
+        expect(screen.getByTestId('dashboard-error')).toBeInTheDocument();
+        expect(screen.getByText('Failed to load dashboard data')).toBeInTheDocument();
+      });
+      
+      // Should display retry button
+      expect(screen.getByRole('button', { name: 'Retry' })).toBeInTheDocument();
+    });
+    
+    test('handles empty dataset gracefully', async () => {
+      // Mock empty data
+      mockFetchDashboardData.mockResolvedValueOnce({});
+      mockFetchSessionRecordings.mockResolvedValueOnce([]);
+      mockFetchUXMetrics.mockResolvedValueOnce({});
+      
+      render(
+        <UXAuditDashboard 
+          projectId={dashboardMocks.projectId}
+          fetchDashboardData={mockFetchDashboardData}
+          fetchSessionRecordings={mockFetchSessionRecordings}
+          fetchUXMetrics={mockFetchUXMetrics}
+        />
+      );
+      
+      // Wait for loading to complete
+      await waitFor(() => {
+        expect(screen.queryByTestId('dashboard-loading')).not.toBeInTheDocument();
+      });
+      
+      // Should display empty state message
+      expect(screen.getByText('No session recordings available')).toBeInTheDocument();
+    });
+  });
+}); 

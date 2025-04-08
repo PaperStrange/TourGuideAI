@@ -33,7 +33,7 @@ function generateTestReport() {
   const combinedResults = JSON.parse(fs.readFileSync(combinedResultsFile, 'utf8'));
   
   // Read category results
-  const categories = ['core-app', 'beta-program'];
+  const categories = ['core-app', 'beta-program', 'ux-audit', 'task-prompt'];
   const categoryResults = {};
   
   categories.forEach(category => {

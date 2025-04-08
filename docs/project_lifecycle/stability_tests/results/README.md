@@ -56,6 +56,16 @@ The stability tests are divided into the following categories:
   - SurveyList - Survey listing and management
   - SurveyBuilder - Survey creation and editing
 
+- **UX Audit System tests** (`src/tests/components/ux-audit/`):
+  - SessionRecording - Session recording functionality and playback
+  - HeatmapVisualization - Interaction heatmap generation and display
+  - UXMetricsEvaluation - User experience metrics collection and analysis
+
+- **Task Prompt System tests** (`src/tests/components/task-prompts/`):
+  - TaskPromptManager - Task prompt delivery and scheduling
+  - InAppTaskPrompt - UI rendering and user interaction tracking
+  - TaskFeedback - User feedback collection and processing
+
 ## Adding New Tests
 
 When adding new stability tests:

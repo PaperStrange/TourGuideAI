@@ -41,7 +41,12 @@
     "analyze": "ANALYZE=true npm run build",
     "analyze:win": "set ANALYZE=true && npm run build",
     "test:stability": "node scripts/run-stability-tests.js",
-    "test:report": "node scripts/generate-test-report.js"
+    "test:report": "node scripts/generate-test-report.js",
+    "test:stability:frontend": "npx jest src/tests/stability/frontend-stability.test.js",
+    "test:stability:ux-audit": "npx jest src/tests/stability/ux-audit-stability.test.js",
+    "test:stability:task-prompt": "npx jest src/tests/stability/task-prompt-stability.test.js",
+    "test:ux-audit": "npx jest src/tests/beta-program/ux-audit",
+    "test:task-prompt": "npx jest src/tests/beta-program/task-prompt"
   },
   "eslintConfig": {
     "extends": [

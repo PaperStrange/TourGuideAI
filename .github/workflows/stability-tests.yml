@@ -79,6 +79,12 @@ jobs:
         run: |
           echo "Running All Stability Tests and Generating Report..."
           
+          # Run UX Audit System stability tests
+          npx jest src/tests/stability/ux-audit-stability.test.js --json --outputFile=stability-test-results-ux-audit.json || true
+          
+          # Run Task Prompt System stability tests 
+          npx jest src/tests/stability/task-prompt-stability.test.js --json --outputFile=stability-test-results-task-prompt.json || true
+          
           # Run all stability tests with new npm scripts
           npm run test:stability
           npm run test:report

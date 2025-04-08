@@ -1,0 +1,219 @@
+import React from 'react';
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import UXAuditDashboard from '../../../beta-program/ux-audit/UXAuditDashboard';
+import { dashboardMocks, sessionRecordingMocks, uxMetricsMocks } from '../../mocks/uxAuditMocks';
+
+// Mock the child components
+jest.mock('../../../beta-program/ux-audit/SessionRecording', () => {
+  return function MockSessionRecording(props) {
+    return (
+      <div data-testid="mock-session-recording">
+        <span>Session Recording Component</span>
+        <span>Recording ID: {props.recording?.recordingId}</span>
+      </div>
+    );
+  };
+});
+
+jest.mock('../../../beta-program/ux-audit/UXHeatmap', () => {
+  return function MockUXHeatmap(props) {
+    return (
+      <div data-testid="mock-ux-heatmap">
+        <span>UX Heatmap Component</span>
+        <span>Points: {props.data?.points?.length || 0}</span>
+      </div>
+    );
+  };
+});
+
+jest.mock('../../../beta-program/ux-audit/UXMetricsEvaluation', () => {
+  return function MockUXMetricsEvaluation(props) {
+    return (
+      <div data-testid="mock-ux-metrics">
+        <span>UX Metrics Evaluation Component</span>
+        <span>Avg Time: {props.metrics?.timeOnPage?.average || 0}</span>
+      </div>
+    );
+  };
+});
+
+// Mock API calls
+const mockFetchDashboardData = jest.fn().mockResolvedValue(dashboardMocks);
+const mockFetchSessionRecordings = jest.fn().mockResolvedValue([sessionRecordingMocks]);
+const mockFetchUXMetrics = jest.fn().mockResolvedValue(uxMetricsMocks);
+
+describe('UXAuditDashboard Component', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+  
+  test('renders dashboard with all components and fetches data', async () => {
+    render(
+      <UXAuditDashboard 
+        projectId={dashboardMocks.projectId}
+        fetchDashboardData={mockFetchDashboardData}
+        fetchSessionRecordings={mockFetchSessionRecordings}
+        fetchUXMetrics={mockFetchUXMetrics}
+      />
+    );
+    
+    // Check initial loading state
+    expect(screen.getByTestId('dashboard-loading')).toBeInTheDocument();
+    
+    // Wait for data loading to complete
+    await waitFor(() => {
+      expect(screen.queryByTestId('dashboard-loading')).not.toBeInTheDocument();
+    });
+    
+    // Check if API calls were made with correct params
+    expect(mockFetchDashboardData).toHaveBeenCalledWith(dashboardMocks.projectId);
+    expect(mockFetchSessionRecordings).toHaveBeenCalledWith(dashboardMocks.projectId);
+    expect(mockFetchUXMetrics).toHaveBeenCalledWith(expect.any(String), expect.any(String));
+    
+    // Check if all components are rendered
+    expect(screen.getByTestId('mock-session-recording')).toBeInTheDocument();
+    expect(screen.getByTestId('mock-ux-heatmap')).toBeInTheDocument();
+    expect(screen.getByTestId('mock-ux-metrics')).toBeInTheDocument();
+    
+    // Check if summary stats are displayed
+    expect(screen.getByText(`Total Sessions: ${dashboardMocks.summary.totalSessions}`)).toBeInTheDocument();
+    expect(screen.getByText(`Avg Session Duration: ${dashboardMocks.summary.avgSessionDuration}s`)).toBeInTheDocument();
+    expect(screen.getByText(`Bounce Rate: ${dashboardMocks.summary.bounceRate * 100}%`)).toBeInTheDocument();
+    expect(screen.getByText(`Conversion Rate: ${dashboardMocks.summary.conversionRate * 100}%`)).toBeInTheDocument();
+  });
+  
+  test('handles date range filter correctly', async () => {
+    render(
+      <UXAuditDashboard 
+        projectId={dashboardMocks.projectId}
+        fetchDashboardData={mockFetchDashboardData}
+        fetchSessionRecordings={mockFetchSessionRecordings}
+        fetchUXMetrics={mockFetchUXMetrics}
+      />
+    );
+    
+    // Wait for initial data loading
+    await waitFor(() => {
+      expect(screen.queryByTestId('dashboard-loading')).not.toBeInTheDocument();
+    });
+    
+    const user = userEvent.setup();
+    
+    // Change date range
+    const startDateInput = screen.getByLabelText('Start Date');
+    const endDateInput = screen.getByLabelText('End Date');
+    
+    await user.clear(startDateInput);
+    await user.type(startDateInput, '2023-03-01');
+    
+    await user.clear(endDateInput);
+    await user.type(endDateInput, '2023-03-31');
+    
+    const applyButton = screen.getByRole('button', { name: 'Apply Date Range' });
+    await user.click(applyButton);
+    
+    // Check if API calls were made again with new date range
+    expect(mockFetchDashboardData).toHaveBeenCalledWith(
+      dashboardMocks.projectId,
+      '2023-03-01',
+      '2023-03-31'
+    );
+    expect(mockFetchSessionRecordings).toHaveBeenCalledWith(
+      dashboardMocks.projectId,
+      '2023-03-01',
+      '2023-03-31'
+    );
+    expect(mockFetchUXMetrics).toHaveBeenCalledWith('2023-03-01', '2023-03-31');
+  });
+  
+  test('selecting a session updates active recording', async () => {
+    const mockSessions = [
+      sessionRecordingMocks,
+      {...sessionRecordingMocks, recordingId: 'rec-67890', userId: 'user-456'}
+    ];
+    mockFetchSessionRecordings.mockResolvedValueOnce(mockSessions);
+    
+    render(
+      <UXAuditDashboard 
+        projectId={dashboardMocks.projectId}
+        fetchDashboardData={mockFetchDashboardData}
+        fetchSessionRecordings={mockFetchSessionRecordings}
+        fetchUXMetrics={mockFetchUXMetrics}
+      />
+    );
+    
+    // Wait for data loading
+    await waitFor(() => {
+      expect(screen.queryByTestId('dashboard-loading')).not.toBeInTheDocument();
+    });
+    
+    const user = userEvent.setup();
+    
+    // Find session list and select second session
+    const sessionList = screen.getByTestId('session-list');
+    const secondSession = screen.getByText('rec-67890');
+    await user.click(secondSession);
+    
+    // Check if the second session is now active
+    expect(screen.getByText('Recording ID: rec-67890')).toBeInTheDocument();
+    expect(screen.queryByText('Recording ID: rec-12345')).not.toBeInTheDocument();
+  });
+  
+  test('error state is handled properly', async () => {
+    // Mock API error
+    mockFetchDashboardData.mockRejectedValueOnce(new Error('Failed to fetch dashboard data'));
+    
+    render(
+      <UXAuditDashboard 
+        projectId={dashboardMocks.projectId}
+        fetchDashboardData={mockFetchDashboardData}
+        fetchSessionRecordings={mockFetchSessionRecordings}
+        fetchUXMetrics={mockFetchUXMetrics}
+      />
+    );
+    
+    // Wait for error state
+    await waitFor(() => {
+      expect(screen.getByTestId('dashboard-error')).toBeInTheDocument();
+      expect(screen.getByText('Failed to fetch dashboard data')).toBeInTheDocument();
+    });
+    
+    // Check retry button
+    const retryButton = screen.getByRole('button', { name: 'Retry' });
+    
+    const user = userEvent.setup();
+    await user.click(retryButton);
+    
+    // Should call API again
+    expect(mockFetchDashboardData).toHaveBeenCalledTimes(2);
+  });
+  
+  test('performance is acceptable during initial render and data fetching', async () => {
+    const start = performance.now();
+    
+    render(
+      <UXAuditDashboard 
+        projectId={dashboardMocks.projectId}
+        fetchDashboardData={mockFetchDashboardData}
+        fetchSessionRecordings={mockFetchSessionRecordings}
+        fetchUXMetrics={mockFetchUXMetrics}
+      />
+    );
+    
+    const initialRenderTime = performance.now() - start;
+    
+    // Initial render should be quick even before data loads
+    expect(initialRenderTime).toBeLessThan(50);
+    
+    // Wait for data loading
+    await waitFor(() => {
+      expect(screen.queryByTestId('dashboard-loading')).not.toBeInTheDocument();
+    });
+    
+    const totalLoadTime = performance.now() - start;
+    
+    // Total load time with data fetching should be reasonable
+    expect(totalLoadTime).toBeLessThan(200);
+  });
+}); 
