@@ -1,8 +1,8 @@
 /**
  * UX Audit Components
- * Export all components related to UX auditing functionality
+ * Exports all components related to UX auditing and analysis
  */
 
-export { default as UXHeatmap } from './UXHeatmap';
+export { default as SessionRecording } from './SessionRecording';
 export { default as UXMetricsEvaluation } from './UXMetricsEvaluation';
-export { default as SessionRecording } from './SessionRecording'; 
+export { default as UXHeatmap } from './UXHeatmap'; 

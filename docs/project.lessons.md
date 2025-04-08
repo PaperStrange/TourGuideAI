@@ -129,6 +129,36 @@
 - Survey previews for administrators prevented publishing mistakes
 - Question branching required careful design to avoid logical dead-ends
 
+### Task Prompt System
+- **User Experience**
+  - Contextual prompts that appear based on user location in the app are more effective than global prompts
+  - Breaking tasks into smaller steps with clear completion indicators increases success rates
+  - Dismissible prompts give users control and reduce frustration
+  - Providing both task instructions and hints helps users with different learning styles
+  - Visual distinction (border colors, icons) helps users identify different prompt types
+  - Snackbar notifications for completed steps provide positive reinforcement
+
+- **Technical Implementation**
+  - Using a context-based system for determining relevant prompts increases relevance
+  - The portal component ensures prompts appear above other UI elements
+  - Position configuration options make the system adaptable to different UI layouts
+  - Background polling for new tasks prevents disruptions during user workflows
+  - Service-based architecture separates data fetching from presentation concerns
+  - Optimistic UI updates improve perceived performance for task completion
+
+- **Feedback Collection**
+  - Post-task feedback collection provides valuable insights for improving task definitions
+  - Optional feedback keeps the system from feeling intrusive
+  - User feedback helps identify unclear instructions or complex steps
+  - Capturing task completion rates helps measure onboarding effectiveness
+
+- **Task Management**
+  - Priority-based presentation ensures most important tasks appear first
+  - Context-specific task filtering prevents overwhelming users with too many prompts
+  - User role and preference considerations improve task relevance
+  - The ability to dismiss tasks gives users control over their experience
+  - Task completion tracking helps identify abandoned or difficult tasks
+
 ### Technical Implementation
 - Material UI components saved at least 200 hours of custom component development
 - JWT-based authentication provides better security and scalability than session cookies

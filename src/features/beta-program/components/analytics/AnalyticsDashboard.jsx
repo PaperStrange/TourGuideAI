@@ -23,7 +23,9 @@ import {
   TableHead,
   TableBody,
   TableRow,
-  TableCell
+  TableCell,
+  ButtonGroup,
+  IconButton
 } from '@mui/material';
 import {
   DownloadOutlined as DownloadIcon,
@@ -35,12 +37,20 @@ import {
   ArrowDownward as TrendDownIcon,
   Info as InfoIcon,
   FileDownload as ExportIcon,
-  Refresh as RefreshIcon
+  Refresh as RefreshIcon,
+  Person,
+  Devices,
+  BarChart,
+  Ballot,
+  Timeline,
+  Map,
+  VideoLibrary,
+  Whatshot
 } from '@mui/icons-material';
 import {
   AreaChart,
   Area,
-  BarChart,
+  BarChart as RechartsBarChart,
   Bar,
   LineChart,
   Line,
@@ -57,6 +67,12 @@ import {
 
 import analyticsService from '../../services/analytics/AnalyticsService';
 import authService from '../../services/AuthService';
+import UserActivityChart from './UserActivityChart';
+import FeedbackSentimentChart from './FeedbackSentimentChart';
+import FeatureUsageChart from './FeatureUsageChart';
+import DeviceDistribution from './DeviceDistribution';
+import SessionRecording from './SessionRecording';
+import HeatmapVisualization from './HeatmapVisualization';
 
 /**
  * Analytics Dashboard Component
@@ -82,6 +98,8 @@ const AnalyticsDashboard = () => {
   const [exportFormat, setExportFormat] = useState('json');
   const [timeRange, setTimeRange] = useState('7days');
   const [dashboardData, setDashboardData] = useState(null);
+  const [showSessionRecordings, setShowSessionRecordings] = useState(false);
+  const [showHeatmaps, setShowHeatmaps] = useState(false);
   
   // Colors for charts
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8', '#82CA9D', '#FFC658'];
@@ -453,6 +471,29 @@ const AnalyticsDashboard = () => {
     }
   };
 
+  const handleShowSessionRecordings = () => {
+    setShowSessionRecordings(true);
+    setShowHeatmaps(false);
+  };
+
+  const handleShowHeatmaps = () => {
+    setShowHeatmaps(true);
+    setShowSessionRecordings(false);
+  };
+
+  const handleBack = () => {
+    setShowSessionRecordings(false);
+    setShowHeatmaps(false);
+  };
+
+  if (showSessionRecordings) {
+    return <SessionRecording onBack={handleBack} />;
+  }
+
+  if (showHeatmaps) {
+    return <HeatmapVisualization onBack={handleBack} />;
+  }
+
   return (
     <Box>
       {/* Dashboard Header */}
@@ -501,6 +542,29 @@ const AnalyticsDashboard = () => {
           </Button>
         </Box>
       </Box>
+      
+      {/* UX Audit Tools */}
+      <Paper elevation={1} sx={{ p: 2, mb: 3 }}>
+        <Typography variant="h6" gutterBottom>
+          UX Audit Tools
+        </Typography>
+        <Box sx={{ display: 'flex', gap: 2 }}>
+          <Button 
+            variant="outlined" 
+            startIcon={<VideoLibrary />}
+            onClick={handleShowSessionRecordings}
+          >
+            Session Recordings
+          </Button>
+          <Button 
+            variant="outlined" 
+            startIcon={<Whatshot />}
+            onClick={handleShowHeatmaps}
+          >
+            Heatmap Visualization
+          </Button>
+        </Box>
+      </Paper>
       
       {/* Error message */}
       {error && (
@@ -604,15 +668,15 @@ const AnalyticsDashboard = () => {
               textColor="primary"
               variant="fullWidth"
             >
-              <Tab label="User Activity" />
-              <Tab label="Feedback Analysis" />
-              <Tab label="Feature Usage" />
-              <Tab label="User Demographics" />
+              <Tab icon={<BarChart />} label="Overview" />
+              <Tab icon={<Person />} label="User Activity" />
+              <Tab icon={<Devices />} label="Devices" />
+              <Tab icon={<Ballot />} label="Feedback" />
             </Tabs>
             
             {/* Tab Content */}
             <Box sx={{ p: 3 }}>
-              {/* User Activity Tab */}
+              {/* Overview Tab */}
               {activeTab === 0 && (
                 <Grid container spacing={3}>
                   <Grid item xs={12}>
@@ -698,7 +762,7 @@ const AnalyticsDashboard = () => {
                     </Typography>
                     <Paper variant="outlined" sx={{ p: 2, height: 300 }}>
                       <ResponsiveContainer width="100%" height="100%">
-                        <BarChart
+                        <RechartsBarChart
                           data={dashboardData.geoData}
                           layout="vertical"
                           margin={{ top: 5, right: 30, left: 70, bottom: 5 }}
@@ -711,20 +775,197 @@ const AnalyticsDashboard = () => {
                             tick={{ fontSize: 12 }}
                           />
                           <RechartsTooltip />
-                          <Bar 
+                          <RechartsBarChart.Bar 
                             dataKey="users" 
                             name="Users" 
                             fill={colors.primary}
                           />
-                        </BarChart>
+                        </RechartsBarChart>
                       </ResponsiveContainer>
                     </Paper>
                   </Grid>
                 </Grid>
               )}
               
-              {/* Feedback Analysis Tab */}
+              {/* User Activity Tab */}
               {activeTab === 1 && (
+                <Grid container spacing={3}>
+                  <Grid item xs={12}>
+                    <Typography variant="h6" gutterBottom>
+                      User Activity Trends
+                    </Typography>
+                    <Paper variant="outlined" sx={{ p: 2, height: 400 }}>
+                      <ResponsiveContainer width="100%" height="100%">
+                        <LineChart
+                          data={dashboardData.activityData}
+                          margin={{ top: 20, right: 30, left: 20, bottom: 10 }}
+                        >
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis 
+                            dataKey="date" 
+                            tick={{ fontSize: 12 }}
+                          />
+                          <YAxis tick={{ fontSize: 12 }} />
+                          <RechartsTooltip />
+                          <Legend />
+                          <Line
+                            type="monotone"
+                            dataKey="activeUsers"
+                            name="Active Users"
+                            stroke={colors.primary}
+                            activeDot={{ r: 8 }}
+                            strokeWidth={2}
+                          />
+                          <Line
+                            type="monotone"
+                            dataKey="newUsers"
+                            name="New Users"
+                            stroke={colors.secondary}
+                            strokeWidth={2}
+                          />
+                          <Line
+                            type="monotone"
+                            dataKey="sessions"
+                            name="Sessions"
+                            stroke={colors.info}
+                            strokeWidth={2}
+                          />
+                        </LineChart>
+                      </ResponsiveContainer>
+                    </Paper>
+                  </Grid>
+                  
+                  <Grid item xs={12} md={6}>
+                    <Typography variant="h6" gutterBottom>
+                      Device Distribution
+                    </Typography>
+                    <Paper variant="outlined" sx={{ p: 2, height: 300 }}>
+                      <ResponsiveContainer width="100%" height="100%">
+                        <PieChart>
+                          <Pie
+                            data={dashboardData.deviceBreakdown}
+                            cx="50%"
+                            cy="50%"
+                            labelLine={false}
+                            outerRadius={80}
+                            fill="#8884d8"
+                            dataKey="value"
+                            nameKey="name"
+                            label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                          >
+                            {dashboardData.deviceBreakdown.map((entry, index) => (
+                              <Cell 
+                                key={`cell-${index}`} 
+                                fill={colors.pieColors[index % colors.pieColors.length]} 
+                              />
+                            ))}
+                          </Pie>
+                          <RechartsTooltip />
+                          <Legend />
+                        </PieChart>
+                      </ResponsiveContainer>
+                    </Paper>
+                  </Grid>
+                  
+                  <Grid item xs={12} md={6}>
+                    <Typography variant="h6" gutterBottom>
+                      Geographic Distribution
+                    </Typography>
+                    <Paper variant="outlined" sx={{ p: 2, height: 300 }}>
+                      <ResponsiveContainer width="100%" height="100%">
+                        <RechartsBarChart
+                          data={dashboardData.geoData}
+                          layout="vertical"
+                          margin={{ top: 5, right: 30, left: 70, bottom: 5 }}
+                        >
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis type="number" />
+                          <YAxis 
+                            dataKey="country" 
+                            type="category" 
+                            tick={{ fontSize: 12 }}
+                          />
+                          <RechartsTooltip />
+                          <RechartsBarChart.Bar 
+                            dataKey="users" 
+                            name="Users" 
+                            fill={colors.primary}
+                          />
+                        </RechartsBarChart>
+                      </ResponsiveContainer>
+                    </Paper>
+                  </Grid>
+                </Grid>
+              )}
+              
+              {/* Devices Tab */}
+              {activeTab === 2 && (
+                <Grid container spacing={3}>
+                  <Grid item xs={12}>
+                    <Typography variant="h6" gutterBottom>
+                      Device Distribution
+                    </Typography>
+                    <Paper variant="outlined" sx={{ p: 2, height: 400 }}>
+                      <ResponsiveContainer width="100%" height="100%">
+                        <PieChart>
+                          <Pie
+                            data={dashboardData.deviceBreakdown}
+                            cx="50%"
+                            cy="50%"
+                            labelLine={false}
+                            outerRadius={80}
+                            fill="#8884d8"
+                            dataKey="value"
+                            nameKey="name"
+                            label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                          >
+                            {dashboardData.deviceBreakdown.map((entry, index) => (
+                              <Cell 
+                                key={`cell-${index}`} 
+                                fill={colors.pieColors[index % colors.pieColors.length]} 
+                              />
+                            ))}
+                          </Pie>
+                          <RechartsTooltip />
+                          <Legend />
+                        </PieChart>
+                      </ResponsiveContainer>
+                    </Paper>
+                  </Grid>
+                  
+                  <Grid item xs={12} md={6}>
+                    <Typography variant="h6" gutterBottom>
+                      Geographic Distribution
+                    </Typography>
+                    <Paper variant="outlined" sx={{ p: 2, height: 300 }}>
+                      <ResponsiveContainer width="100%" height="100%">
+                        <RechartsBarChart
+                          data={dashboardData.geoData}
+                          layout="vertical"
+                          margin={{ top: 5, right: 30, left: 70, bottom: 5 }}
+                        >
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis type="number" />
+                          <YAxis 
+                            dataKey="country" 
+                            type="category" 
+                            tick={{ fontSize: 12 }}
+                          />
+                          <RechartsTooltip />
+                          <RechartsBarChart.Bar 
+                            dataKey="users" 
+                            name="Users" 
+                            fill={colors.primary}
+                          />
+                        </RechartsBarChart>
+                      </ResponsiveContainer>
+                    </Paper>
+                  </Grid>
+                </Grid>
+              )}
+              
+              {/* Feedback Tab */}
+              {activeTab === 3 && (
                 <Grid container spacing={3}>
                   <Grid item xs={12} md={6}>
                     <Typography variant="h6" gutterBottom>
@@ -816,192 +1057,6 @@ const AnalyticsDashboard = () => {
                           This feature will analyze the sentiment of user feedback to identify trends in user satisfaction.
                         </Typography>
                       </Box>
-                    </Paper>
-                  </Grid>
-                </Grid>
-              )}
-              
-              {/* Feature Usage Tab */}
-              {activeTab === 2 && (
-                <Grid container spacing={3}>
-                  <Grid item xs={12}>
-                    <Typography variant="h6" gutterBottom>
-                      Feature Adoption Rates
-                    </Typography>
-                    <Paper variant="outlined" sx={{ p: 2, height: 400 }}>
-                      <ResponsiveContainer width="100%" height="100%">
-                        <BarChart
-                          data={dashboardData.featureUsageData}
-                          margin={{ top: 20, right: 30, left: 20, bottom: 10 }}
-                        >
-                          <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis 
-                            dataKey="name" 
-                            tick={{ fontSize: 12 }}
-                          />
-                          <YAxis 
-                            tick={{ fontSize: 12 }}
-                            label={{ 
-                              value: 'Usage Count', 
-                              angle: -90, 
-                              position: 'insideLeft',
-                              style: { textAnchor: 'middle' }
-                            }}
-                          />
-                          <RechartsTooltip />
-                          <Legend />
-                          <Bar 
-                            dataKey="usage" 
-                            name="Usage Count" 
-                            fill={colors.primary}
-                          />
-                        </BarChart>
-                      </ResponsiveContainer>
-                    </Paper>
-                  </Grid>
-                  
-                  <Grid item xs={12} md={6}>
-                    <Typography variant="h6" gutterBottom>
-                      Feature Engagement Over Time
-                    </Typography>
-                    <Paper variant="outlined" sx={{ p: 2, height: 300 }}>
-                      <Box sx={{ 
-                        display: 'flex', 
-                        justifyContent: 'center', 
-                        alignItems: 'center',
-                        flexDirection: 'column',
-                        height: '100%',
-                        color: 'text.secondary'
-                      }}>
-                        <Typography variant="body1" sx={{ mb: 2 }}>
-                          Feature Engagement Timeline Coming Soon
-                        </Typography>
-                        <Typography variant="body2">
-                          This chart will show how engagement with different features changes over time.
-                        </Typography>
-                      </Box>
-                    </Paper>
-                  </Grid>
-                  
-                  <Grid item xs={12} md={6}>
-                    <Typography variant="h6" gutterBottom>
-                      Feature Retention Rates
-                    </Typography>
-                    <Paper variant="outlined" sx={{ p: 2, height: 300 }}>
-                      <Box sx={{ 
-                        display: 'flex', 
-                        justifyContent: 'center', 
-                        alignItems: 'center',
-                        flexDirection: 'column',
-                        height: '100%',
-                        color: 'text.secondary'
-                      }}>
-                        <Typography variant="body1" sx={{ mb: 2 }}>
-                          Feature Retention Analysis Coming Soon
-                        </Typography>
-                        <Typography variant="body2">
-                          This chart will show the percentage of users who continue to use each feature after initial use.
-                        </Typography>
-                      </Box>
-                    </Paper>
-                  </Grid>
-                </Grid>
-              )}
-              
-              {/* User Demographics Tab */}
-              {activeTab === 3 && (
-                <Grid container spacing={3}>
-                  <Grid item xs={12} md={6}>
-                    <Typography variant="h6" gutterBottom>
-                      User Type Distribution
-                    </Typography>
-                    <Paper variant="outlined" sx={{ p: 2, height: 300 }}>
-                      <ResponsiveContainer width="100%" height="100%">
-                        <PieChart>
-                          <Pie
-                            data={[
-                              { name: 'Consumer', value: 65 },
-                              { name: 'Travel Professional', value: 25 },
-                              { name: 'Business', value: 10 }
-                            ]}
-                            cx="50%"
-                            cy="50%"
-                            labelLine={false}
-                            outerRadius={80}
-                            fill="#8884d8"
-                            dataKey="value"
-                            nameKey="name"
-                            label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-                          >
-                            <Cell fill={colors.primary} />
-                            <Cell fill={colors.secondary} />
-                            <Cell fill={colors.info} />
-                          </Pie>
-                          <RechartsTooltip />
-                          <Legend />
-                        </PieChart>
-                      </ResponsiveContainer>
-                    </Paper>
-                  </Grid>
-                  
-                  <Grid item xs={12} md={6}>
-                    <Typography variant="h6" gutterBottom>
-                      User Engagement Level
-                    </Typography>
-                    <Paper variant="outlined" sx={{ p: 2, height: 300 }}>
-                      <ResponsiveContainer width="100%" height="100%">
-                        <PieChart>
-                          <Pie
-                            data={[
-                              { name: 'High Engagement', value: 30 },
-                              { name: 'Medium Engagement', value: 45 },
-                              { name: 'Low Engagement', value: 25 }
-                            ]}
-                            cx="50%"
-                            cy="50%"
-                            labelLine={false}
-                            outerRadius={80}
-                            fill="#8884d8"
-                            dataKey="value"
-                            nameKey="name"
-                            label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-                          >
-                            <Cell fill={colors.success} />
-                            <Cell fill={colors.warning} />
-                            <Cell fill={colors.error} />
-                          </Pie>
-                          <RechartsTooltip />
-                          <Legend />
-                        </PieChart>
-                      </ResponsiveContainer>
-                    </Paper>
-                  </Grid>
-                  
-                  <Grid item xs={12}>
-                    <Typography variant="h6" gutterBottom>
-                      Geographic Distribution
-                    </Typography>
-                    <Paper variant="outlined" sx={{ p: 2, height: 400 }}>
-                      <ResponsiveContainer width="100%" height="100%">
-                        <BarChart
-                          data={dashboardData.geoData}
-                          margin={{ top: 20, right: 30, left: 20, bottom: 10 }}
-                        >
-                          <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis 
-                            dataKey="country" 
-                            tick={{ fontSize: 12 }}
-                          />
-                          <YAxis tick={{ fontSize: 12 }} />
-                          <RechartsTooltip />
-                          <Legend />
-                          <Bar 
-                            dataKey="users" 
-                            name="Users" 
-                            fill={colors.primary}
-                          />
-                        </BarChart>
-                      </ResponsiveContainer>
                     </Paper>
                   </Grid>
                 </Grid>
