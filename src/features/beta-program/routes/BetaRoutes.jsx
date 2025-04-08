@@ -22,6 +22,9 @@ const SurveyList = lazy(() => import('../components/survey/SurveyList'));
 const SurveyDetails = lazy(() => import('../components/survey/SurveyDetails'));
 const SurveyAdminDashboard = lazy(() => import('../components/survey/SurveyAdminDashboard'));
 
+// User Testing components
+const UserTestingDashboard = lazy(() => import('../components/user-testing/UserTestingDashboard'));
+
 // Authentication Guards
 import { BetaAuthGuard } from '../guards/BetaAuthGuard';
 import { AdminGuard } from '../guards/AdminGuard';
@@ -87,6 +90,13 @@ const BetaRoutes = () => {
         
         {/* Feedback */}
         <Route path="feedback" element={<FeedbackPage />} />
+        
+        {/* User Testing */}
+        <Route path="user-testing" element={
+          <Suspense fallback={<LoadingFallback />}>
+            <UserTestingDashboard />
+          </Suspense>
+        } />
         
         {/* Catch-all redirect */}
         <Route path="*" element={<Navigate to="/beta" replace />} />

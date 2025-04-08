@@ -25,6 +25,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import FeedbackIcon from '@mui/icons-material/Feedback';
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import PeopleIcon from '@mui/icons-material/People';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -104,6 +105,7 @@ const BetaLayout = () => {
     { text: 'Surveys', icon: <AssignmentIcon />, path: '/beta/surveys' },
     { text: 'Feature Requests', icon: <LightbulbIcon />, path: '/beta/feature-requests' },
     { text: 'Feedback', icon: <FeedbackIcon />, path: '/beta/feedback' },
+    { text: 'User Testing', icon: <PeopleIcon />, path: '/beta/user-testing' },
   ];
 
   // Profile menu
