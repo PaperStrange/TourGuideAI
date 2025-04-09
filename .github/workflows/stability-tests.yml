@@ -108,4 +108,60 @@ jobs:
           # Add links to reports in the summary
           echo "📊 **Test Reports**:" >> $GITHUB_STEP_SUMMARY
           echo "- [View Full Report](./docs/project_lifecycle/stability_tests/results/reports/latest.html)" >> $GITHUB_STEP_SUMMARY
-          echo "- [Raw Test Data](./docs/project_lifecycle/stability_tests/results/data/)" >> $GITHUB_STEP_SUMMARY 
+          echo "- [Raw Test Data](./docs/project_lifecycle/stability_tests/results/data/)" >> $GITHUB_STEP_SUMMARY
+
+  load-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    needs: stability-tests
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install Dependencies
+        run: npm ci
+      
+      - name: Install k6
+        run: |
+          curl -L https://github.com/grafana/k6/releases/download/v0.45.0/k6-v0.45.0-linux-amd64.tar.gz | tar xz
+          sudo cp k6-v0.45.0-linux-amd64/k6 /usr/local/bin
+      
+      - name: Run Load Tests
+        env:
+          BASE_URL: 'https://staging.tourguideai.com'
+        run: |
+          echo "Running load tests against $BASE_URL..."
+          chmod +x ./scripts/run-load-tests.sh
+          ./scripts/run-load-tests.sh $BASE_URL
+      
+      - name: Store Load Test Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: load-test-results
+          path: |
+            ./load-test-results/
+          retention-days: 14
+      
+      - name: Update Load Test Summary
+        run: |
+          echo "### Load Test Summary" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Core App Load Tests completed" >> $GITHUB_STEP_SUMMARY
+          echo "✅ UX Audit System Load Tests completed" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Task Prompt System Load Tests completed" >> $GITHUB_STEP_SUMMARY
+          
+          # Add links to the latest report
+          LATEST_REPORT=$(ls -t ./load-test-results/*_report.html | head -1)
+          REPORT_NAME=$(basename $LATEST_REPORT)
+          
+          echo "📊 **Load Test Reports**:" >> $GITHUB_STEP_SUMMARY
+          echo "- [View Latest Report](./load-test-results/$REPORT_NAME)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Raw Test Data](./load-test-results/)" >> $GITHUB_STEP_SUMMARY 

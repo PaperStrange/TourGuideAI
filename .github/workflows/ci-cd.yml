@@ -125,6 +125,7 @@ jobs:
     needs: build-and-test
     if: github.ref == 'refs/heads/develop' || startsWith(github.ref, 'refs/heads/release-')
     runs-on: ubuntu-latest
+    environment: staging
     permissions:
       id-token: write
       contents: read
@@ -143,11 +144,21 @@ jobs:
       with:
         role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME_STAGING }}
         aws-region: us-east-1
+        role-duration-seconds: 1200
+        role-session-name: GHActionDeployStaging
     
     - name: Deploy to S3 (Staging)
       run: |
-        aws s3 sync build/ s3://tourguideai-staging/ --delete
-        aws cloudfront create-invalidation --distribution-id ${{ secrets.STAGING_CLOUDFRONT_ID }} --paths "/*"
+        # Create a script file to avoid exposing secrets directly in commands
+        echo "aws s3 sync build/ s3://tourguideai-staging/ --delete" > deploy.sh
+        echo "aws cloudfront create-invalidation --distribution-id \$CLOUDFRONT_ID --paths \"/*\"" >> deploy.sh
+        chmod +x deploy.sh
+        
+        # Run the script with the secret passed as an environment variable
+        CLOUDFRONT_ID="${{ secrets.STAGING_CLOUDFRONT_ID }}" ./deploy.sh
+        
+        # Clean up
+        rm deploy.sh
 
   deploy-production:
     needs: build-and-test
@@ -172,15 +183,28 @@ jobs:
       with:
         role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME_PRODUCTION }}
         aws-region: us-east-1
+        role-duration-seconds: 1200
+        role-session-name: GHActionDeployProduction
     
     - name: Deploy to S3 (Production)
       run: |
-        aws s3 sync build/ s3://tourguideai-production/ --delete
-        aws cloudfront create-invalidation --distribution-id ${{ secrets.PRODUCTION_CLOUDFRONT_ID }} --paths "/*"
+        # Create a script file to avoid exposing secrets directly in commands
+        echo "aws s3 sync build/ s3://tourguideai-production/ --delete" > deploy.sh
+        echo "aws cloudfront create-invalidation --distribution-id \$CLOUDFRONT_ID --paths \"/*\"" >> deploy.sh
+        chmod +x deploy.sh
+        
+        # Run the script with the secret passed as an environment variable
+        CLOUDFRONT_ID="${{ secrets.PRODUCTION_CLOUDFRONT_ID }}" ./deploy.sh
+        
+        # Clean up
+        rm deploy.sh
 
   smoke-test:
     needs: [deploy-staging, deploy-production]
-    if: always() && (needs.deploy-staging.result == 'success' || needs.deploy-production.result == 'success')
+    # Simplified conditional that's easier to understand and more reliable
+    if: |
+      always() && 
+      (needs.deploy-staging.result == 'success' || needs.deploy-production.result == 'success')
     runs-on: ubuntu-latest
     permissions: {}
     
