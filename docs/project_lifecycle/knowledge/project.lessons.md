@@ -1,5 +1,17 @@
 # Project Lessons
 
+## Project Management
+- **MUST-OBEY PRINCIPLE**: Strict alignment between milestones (.milestones), key results (.project), and tasks (.todos) is CRITICAL for project success using the OKR framework
+- Misalignment between project planning documents creates severe project management risks that can halt progress
+- Changes to project scope must be reflected consistently in ALL planning documents simultaneously
+- When deferring features between phases, ensure proper alignment across all planning documents to prevent confusion and miscommunication
+- Project phase boundaries should be clearly defined with specific completion criteria
+- Phase revisions require formal documentation with clear rationale for scope changes
+- Regularly verify OKR alignment between .milestones, .project, and .todos files during development
+- Phased development approach with clear MVPs enables faster time-to-market and better feedback integration
+- Documentation and planning updates should be treated with the same priority as implementation tasks
+- Maintaining a single source of truth for project phases is essential for cross-team alignment
+
 ## Architecture
 - Feature-based architecture provides better organization and maintainability than page-based architecture
 - Core modules should be separated from feature-specific code to reduce duplication
@@ -119,4 +131,4 @@
 
 ---
 
-*Last Updated: March 29, 2025* 
+*Last Updated: April 10, 2025* 

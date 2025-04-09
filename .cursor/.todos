@@ -251,8 +251,6 @@
 - [X] Document security findings and remediation plan
 - [X] Address critical and high-priority security issues
 
-## Previous To-Do Items (Completed) 
-
 ## Phase 6: Beta Release & User Feedback
 
 ### Beta Program Infrastructure
@@ -318,32 +316,93 @@
   - [X] Implement technical debt consideration
   - [X] Create priority adjustment mechanis
 
-### User Experience Enhancement
+#### Key Result: Enable basic automated feedback collection with fundamental analysis (Reduced scope for Phase 6)
+  - [X] Set up scheduled feedback prompts at key application points
+  - [X] Implement basic user behavior tracking for critical paths
+  - [X] Create simple feedback categorization by feature area
+  // Advanced sentiment analysis and complex insights deferred to Phase 7
 
-#### Key Result: UX audit system established with session recording and heatmap visualization
-- [X] Define UX metrics for evaluation
-- [X] Create journey mapping tool with Figma integration
-- [X] Implement session recording and playback 
-- [X] Develop UI interaction heatmap visualization
-- [X] Build UX scoring system with weighted metrics
-- [X] Create component-level UX evaluation tool
-- [X] Implement A/B test reporting framework
-- [X] Develop user sentiment analysis dashboard
+### User Experience Enhancement (Reduced Scope for Beta)
 
-#### Key Result: At least 5 new features implemented
-<!-- Stability testing defined in docs/stability-test-plan.md section 2.1 Feature Implementation Stability -->
-- [ ] Create user interview script and conduct interviews (min. 10 users)
+#### Key Result: Essential UI improvements for beta readiness
+- [X] Conduct limited user interviews (5-10 users) to identify critical issues
+- [X] Fix top 3 UX issues based on current feedback and observations
+- [X] Enhance visual consistency across main beta user flows
+- [X] Update primary user interaction elements for better usability
+- [X] Implement simple progress indicators for long-running operations
+
+#### Key Result: Fundamental quality issue tracking
+- [X] Set up basic issue tracking in existing GitHub project
+- [X] Create simple verification checklist for critical fixes
+- [X] Implement basic regression testing for fixed issues
+// Comprehensive quality system deferred to Phase 7
+
+#### Key Result: Critical performance improvements for beta experience
+- [X] Identify and fix top 3 performance bottlenecks in current application
+- [X] Implement basic load time measurements for critical pages
+- [X] Optimize initial page load for beta user onboarding
+// Advanced performance optimization deferred to Phase 7
+
+### Essential Analytics (Reduced Scope for Beta)
+
+#### Key Result: Basic beta usage tracking
+- [X] Define core events to track during beta (page views, key interactions)
+- [X] Implement event tracking for these critical user actions
+- [X] Create simple dashboard showing beta user activity
+- [X] Set up basic alert system for unusual usage patterns
+// Comprehensive analytics deferred to Phase 7
+
+### Essential Documentation
+
+#### Key Result: Beta user quickstart guide
+- [X] Create getting started documentation for beta users
+- [X] Document primary user flows with screenshots
+- [X] Develop simple troubleshooting guide for common issues
+- [X] Build basic FAQ section based on anticipated questions
+
+#### Key Result: Simple developer reference
+- [X] Document core API endpoints used in beta
+- [X] Create basic integration examples for developers
+- [X] Provide authentication and setup instructions
+// Full documentation system deferred to Phase 7
+
+## Phase 7: Post-Beta Enhancements (PLANNED)
+
+### UX Audit System (Moved from Phase 6)
+
+#### Key Result: Re-establish UX audit system with session recording and heatmap visualization
+- [ ] Define/Confirm UX metrics for evaluation
+- [ ] Create/Update journey mapping tool with Figma integration
+- [ ] Re-implement session recording and playback
+- [ ] Re-implement UI interaction heatmap visualization
+- [ ] Re-implement UX scoring system with weighted metrics
+- [ ] Re-implement component-level UX evaluation tool
+- [ ] Re-implement A/B test reporting framework
+- [ ] Re-implement user sentiment analysis dashboard
+
+### Task Prompt System (Moved from Phase 6)
+
+#### Key Result: Re-launch in-app testing prompts with task tracking
+- [ ] Re-implement task definition system
+- [ ] Re-implement contextual prompts
+- [ ] Re-implement completion tracking
+- [ ] Re-implement success metrics
+- [ ] Re-implement user feedback collection
+
+### Advanced User Experience (Deferred from Phase 6)
+
+#### Key Result: 5+ new high-impact features implemented
+- [ ] Create user interview script and conduct interviews (20+ users)
 - [ ] Analyze feature requests to identify top 10 candidates
-- [ ] Prioritize feature backlog using impact/effort matrix
+- [ ] Develop comprehensive prioritization matrix using impact/effort framework
 - [ ] Develop detailed specifications for top 5 features
-- [ ] Create wireframes and mockups for new features
+- [ ] Create complete wireframes and mockups for new features
 - [ ] Implement new features with comprehensive tests
-- [ ] Conduct user testing for new features
+- [ ] Conduct thorough user testing for new features
 - [ ] Create feature rollout plan with staged deployment
 
-#### Key Result: 90% of quality issues addressed
-<!-- Stability testing defined in docs/stability-test-plan.md section 2.3 Quality Issue Resolution Verification -->
-- [ ] Create quality issue tracking board in Jira
+#### Key Result: Comprehensive quality issue resolution system
+- [ ] Create detailed quality issue tracking board in Jira
 - [ ] Define resolution SLAs for different severity levels
 - [ ] Develop automated testing for all fixed issues
 - [ ] Implement regression testing system for quality verification
@@ -353,22 +412,20 @@
 - [ ] Implement automatic quality trend reporting
 
 #### Key Result: Real-world performance improved by 20%
-<!-- Stability testing defined in docs/stability-test-plan.md sections 2.1 and 3.2 -->
 - [ ] Establish baseline performance metrics with RUM
 - [ ] Set up synthetic monitoring tests for key user flows
-- [ ] Identify critical performance bottlenecks
+- [ ] Identify critical performance bottlenecks across application
 - [ ] Run Lighthouse audits on all main application routes
 - [ ] Implement Core Web Vitals optimization
 - [ ] Optimize API response times for common queries
 - [ ] Improve rendering performance for main components
 - [ ] Create performance improvement verification tests
 
-### Analytical Capabilities
+### Comprehensive Analytics (Deferred from Phase 6)
 
-#### Key Result: Usage analytics capturing user journey
-<!-- Stability testing defined in docs/stability-test-plan.md section 3.1 Usage Analytics System Testing -->
-- [ ] Define key user journey tracking points
-- [ ] Create data collection plan for journey analysis
+#### Key Result: Complete usage analytics capturing user journey
+- [ ] Define comprehensive user journey tracking points
+- [ ] Create detailed data collection plan for journey analysis
 - [ ] Implement GTM containers for flexible tracking
 - [ ] Build funnel visualization component for journey analysis
 - [ ] Create user segmentation system based on behavior
@@ -377,7 +434,6 @@
 - [ ] Create user pathing analysis visualization
 
 #### Key Result: Real-time performance monitoring
-<!-- Stability testing defined in docs/stability-test-plan.md section 3.2 Performance Monitoring System Testing -->
 - [ ] Set up Prometheus for metrics collection
 - [ ] Implement Grafana dashboards for performance visualization
 - [ ] Create alert thresholds for performance degradation
@@ -388,7 +444,6 @@
 - [ ] Implement automatic performance regression detection
 
 #### Key Result: A/B testing framework
-<!-- Stability testing defined in docs/stability-test-plan.md section 3.3 A/B Testing Framework Stability -->
 - [ ] Design feature flag system architecture
 - [ ] Implement LaunchDarkly integration for feature flags
 - [ ] Create experiment definition interface in admin panel
@@ -399,7 +454,6 @@
 - [ ] Build experiment lifecycle management system
 
 #### Key Result: User behavior tracking system
-<!-- Stability testing defined in docs/stability-test-plan.md section 3.4 User Behavior Tracking System Testing -->
 - [ ] Create privacy-compliant tracking system with consent management
 - [ ] Implement GDPR-compliant data collection practices
 - [ ] Develop data anonymization procedures and verification
@@ -409,10 +463,9 @@
 - [ ] Design privacy-first data storage architecture
 - [ ] Create data retention and purging automated system
 
-### User Documentation
+### Complete Documentation (Deferred from Phase 6)
 
 #### Key Result: Comprehensive user guide
-<!-- Stability testing defined in docs/stability-test-plan.md section 4.1 User Guide Testing -->
 - [ ] Create user guide structure with table of contents
 - [ ] Develop tutorial content for all core features (min. 10)
 - [ ] Implement searchable documentation portal using Docusaurus
@@ -423,7 +476,6 @@
 - [ ] Create FAQ system based on common user questions
 
 #### Key Result: Developer API documentation
-<!-- Stability testing defined in docs/stability-test-plan.md section 4.2 Developer Documentation Testing -->
 - [ ] Document all public APIs with OpenAPI specification
 - [ ] Create code examples for common integration scenarios
 - [ ] Develop integration guides for popular frameworks
@@ -434,7 +486,6 @@
 - [ ] Create postman collection for API testing
 
 #### Key Result: Interactive API reference
-<!-- Stability testing defined in docs/stability-test-plan.md section 4.3 Interactive API Reference Testing -->
 - [ ] Build interactive API explorer using Swagger UI
 - [ ] Implement sandbox testing environment with mocked responses
 - [ ] Create request/response examples for all endpoints
@@ -445,7 +496,6 @@
 - [ ] Develop API change notification system
 
 #### Key Result: Marketing materials and demo content
-<!-- Acceptance criteria defined in docs/stability-test-plan.md section 5 -->
 - [ ] Create product overview materials with key features
 - [ ] Develop feature highlight videos (min. 5)
 - [ ] Build interactive demo with guided tour
@@ -471,12 +521,6 @@
   - [X] Build profile matching algorithm
   - [X] Implement usage pattern analysis
   - [X] Design segment dashboard
-- [X] Launch in-app testing prompts with task tracking
-  - [X] Create task definition system
-  - [X] Implement contextual prompts
-  - [X] Build completion tracking
-  - [X] Develop success metrics
-  - [X] Create user feedback collection
 - [X] Set up video session recording with consent management
   - [X] Implement consent collection
   - [X] Build recording mechanism
@@ -484,19 +528,3 @@
   - [X] Implement secure storage
   - [X] Design analyst interface
   - [X] Add annotation capabilities
-
-### Phase 6 Beta Release Plan Tasks
-- [x] Build customizable survey system with conditional logic
-  - [x] Create SurveyService for API interactions
-  - [x] Implement SurveyQuestion component supporting different question types
-  - [x] Build Survey component that handles conditional logic
-  - [x] Create SurveyBuilder for admin survey creation
-  - [x] Implement SurveyAnalytics for response visualization
-  - [x] Add SurveyList and SurveyDetail components
-
-- [x] Establish UX audit system with session recording and heatmap visualization
-  - [x] Implement UXMetricsEvaluation service 
-  - [x] Create HeatmapVisualization component
-  - [x] Build SessionRecording component with playback functionality
-  - [x] Implement user flow analysis tools
-  - [x] Add UX issue tracking integration
