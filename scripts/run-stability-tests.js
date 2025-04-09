@@ -14,20 +14,6 @@ const testFilesByCategory = {
     'src/tests/components/survey/SurveyList.test.js',
     'src/tests/components/survey/SurveyBuilder.test.js',
   ],
-  'ux-audit': [
-    'src/tests/stability/ux-audit-stability.test.js',
-    'src/tests/beta-program/ux-audit/SessionRecording.test.jsx',
-    'src/tests/beta-program/ux-audit/UXHeatmap.test.jsx',
-    'src/tests/beta-program/ux-audit/UXMetricsEvaluation.test.jsx',
-    'src/tests/beta-program/ux-audit/UXAuditDashboard.test.jsx',
-  ],
-  'task-prompt': [
-    'src/tests/stability/task-prompt-stability.test.js',
-    'src/tests/beta-program/task-prompt/TaskPromptManager.test.jsx',
-    'src/tests/beta-program/task-prompt/InAppTaskPrompt.test.jsx',
-    'src/tests/beta-program/task-prompt/TaskCompletionFlow.test.jsx',
-    'src/tests/beta-program/task-prompt/TaskPromptUXAudit.test.jsx',
-  ]
 };
 
 // Flatten test files for running

@@ -2,6 +2,7 @@
 
 ## Project Management
 - **MUST-OBEY PRINCIPLE**: Strict alignment between milestones (.milestones), key results (.project), and tasks (.todos) is CRITICAL for project success using the OKR framework
+- **MUST-OBEY PRINCIPLE**: ALWAYS check for existing files before creating new ones; duplicate files cause severe confusion and project management issues
 - Misalignment between project planning documents creates severe project management risks that can halt progress
 - Changes to project scope must be reflected consistently in ALL planning documents simultaneously
 - When deferring features between phases, ensure proper alignment across all planning documents to prevent confusion and miscommunication
@@ -11,6 +12,9 @@
 - Phased development approach with clear MVPs enables faster time-to-market and better feedback integration
 - Documentation and planning updates should be treated with the same priority as implementation tasks
 - Maintaining a single source of truth for project phases is essential for cross-team alignment
+- File naming conventions should be followed strictly to maintain organizational clarity
+- When creating new documentation, always verify existing document structures and locations
+- When using templates, maintain consistency with existing file formats and conventions
 
 ## Architecture
 - Feature-based architecture provides better organization and maintainability than page-based architecture
