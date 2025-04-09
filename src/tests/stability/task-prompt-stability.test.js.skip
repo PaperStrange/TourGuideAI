@@ -11,10 +11,10 @@ import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 
 // Import components to test
-import TaskPromptManager from '../../beta-program/task-prompt/TaskPromptManager';
-import InAppTaskPrompt from '../../beta-program/task-prompt/InAppTaskPrompt';
-import TaskCompletionFlow from '../../beta-program/task-prompt/TaskCompletionFlow';
-import TaskPromptUXAudit from '../../beta-program/task-prompt/TaskPromptUXAudit';
+import TaskPromptManager from '../../features/beta-program/components/task-prompts/TaskPromptManager';
+import InAppTaskPrompt from '../../features/beta-program/components/task-prompts/InAppTaskPrompt';
+import TaskCompletionFlow from '../../features/beta-program/components/task-prompts/TaskCompletionFlow';
+import TaskPromptUXAudit from '../../features/beta-program/components/task-prompts/TaskPromptUXAudit';
 
 // Import mock data
 import { 

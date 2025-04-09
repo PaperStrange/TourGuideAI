@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import SessionRecording from '../../../beta-program/ux-audit/SessionRecording';
+import SessionRecording from '../../../features/beta-program/components/ux-audit/SessionRecording';
 import { sessionRecordingMocks } from '../../mocks/uxAuditMocks';
 
 describe('SessionRecording Component', () => {

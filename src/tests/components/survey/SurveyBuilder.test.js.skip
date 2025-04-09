@@ -10,6 +10,27 @@ jest.mock('../../../features/beta-program/services/SurveyService', () => ({
   deleteSurvey: jest.fn().mockResolvedValue(true)
 }));
 
+// Reinstate mock for react-beautiful-dnd with basic structure
+jest.mock('react-beautiful-dnd', () => ({
+  DragDropContext: ({ children }) => <div>{children}</div>, // Render children directly
+  Droppable: ({ children }) => children(
+    { 
+      innerRef: jest.fn(), 
+      droppableProps: { 'data-rbd-droppable-id': 'mock-droppable' }, // Add necessary props
+      placeholder: <div data-testid="dnd-placeholder" /> // Basic placeholder
+    }, 
+    { isDraggingOver: false } // Snapshot state
+  ),
+  Draggable: ({ children }) => children(
+    { 
+      innerRef: jest.fn(), 
+      draggableProps: { 'data-rbd-draggable-id': 'mock-draggable', style: {} }, // Add necessary props
+      dragHandleProps: null // Usually null or passed to a specific handle element
+    }, 
+    { isDragging: false } // Snapshot state
+  ),
+}));
+
 describe('Survey Builder Component', () => {
   // Initial survey data for testing
   const initialSurveyData = {

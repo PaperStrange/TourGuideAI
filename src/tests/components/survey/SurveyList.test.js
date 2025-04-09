@@ -1,6 +1,7 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { MemoryRouter } from 'react-router-dom';
 import SurveyList from '../../../features/beta-program/components/survey/SurveyList';
 
 // Mock the survey service
@@ -19,10 +20,14 @@ describe('Survey List Component', () => {
     surveyService.getSurveys.mockResolvedValue([]);
   });
 
-  test('renders survey list component', () => {
-    render(<SurveyList />);
+  test('renders survey list component', async () => {
+    render(
+      <MemoryRouter> 
+        <SurveyList />
+      </MemoryRouter>
+    );
     
-    // Should show loading initially
-    expect(screen.getByText(/loading surveys/i)).toBeInTheDocument();
+    // Check for the final state after data loading (mock returns empty array initially)
+    expect(await screen.findByText(/no surveys available/i)).toBeInTheDocument();
   });
 }); 

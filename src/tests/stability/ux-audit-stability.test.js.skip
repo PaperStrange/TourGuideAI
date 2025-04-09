@@ -11,10 +11,10 @@ import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 
 // Import components to test
-import SessionRecording from '../../beta-program/ux-audit/SessionRecording';
-import UXHeatmap from '../../beta-program/ux-audit/UXHeatmap';
-import UXMetricsEvaluation from '../../beta-program/ux-audit/UXMetricsEvaluation';
-import UXAuditDashboard from '../../beta-program/ux-audit/UXAuditDashboard';
+import SessionRecording from '../../features/beta-program/components/ux-audit/SessionRecording';
+import UXHeatmap from '../../features/beta-program/components/ux-audit/UXHeatmap';
+import UXMetricsEvaluation from '../../features/beta-program/components/ux-audit/UXMetricsEvaluation';
+import UXAuditDashboard from '../../features/beta-program/components/analytics/UXAuditDashboard';
 
 // Import mock data
 import { 

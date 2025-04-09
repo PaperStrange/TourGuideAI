@@ -6,12 +6,13 @@
 import authService from './AuthService';
 import analyticsService from './analytics/AnalyticsService';
 import userSegmentService from './UserSegmentService';
-import { apiClient } from '../../../utils/api';
+import { apiHelpers } from 'core/services';
 import { localStorageKeys } from '../../../utils/constants';
-import api from '../../../utils/api';
-import axios from 'axios';
-import { API_BASE_URL } from '../../../config/constants';
 import { getAuthToken } from '../../../utils/auth';
+
+// Define API_BASE_URL if it was meant to come from config (adjust as needed)
+// Example: Get from environment variable or define directly
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000/api';
 
 class TaskPromptService {
   constructor() {
@@ -267,7 +268,7 @@ class TaskPromptService {
    */
   async getTasksForContext(context) {
     try {
-      const response = await api.get(`/beta/tasks?context=${context}`);
+      const response = await apiHelpers.get(`/beta/tasks?context=${context}`);
       return response.data;
     } catch (error) {
       console.error('Failed to fetch tasks for context:', error);
@@ -290,7 +291,7 @@ class TaskPromptService {
         if (value) params.append(key, value);
       });
       
-      const response = await api.get(`/beta/tasks?${params.toString()}`);
+      const response = await apiHelpers.get(`/beta/tasks?${params.toString()}`);
       return response.data;
     } catch (error) {
       console.error('Failed to fetch all tasks:', error);
@@ -305,7 +306,7 @@ class TaskPromptService {
    */
   async getTaskById(taskId) {
     try {
-      const response = await api.get(`/beta/tasks/${taskId}`);
+      const response = await apiHelpers.get(`/beta/tasks/${taskId}`);
       return response.data;
     } catch (error) {
       console.error(`Failed to fetch task ${taskId}:`, error);
@@ -324,8 +325,8 @@ class TaskPromptService {
    */
   startTask(userId, taskId) {
     try {
-      // Attempt to send to API
-      api.post(`/beta/tasks/${taskId}/start`, { userId });
+      // Use apiHelpers
+      apiHelpers.post(`/beta/tasks/${taskId}/start`, { userId });
       
       // Update local progress tracking
       const progress = {
@@ -394,22 +395,14 @@ class TaskPromptService {
       // Save progress locally
       this._saveTaskProgress(taskId, progress);
       
-      // Send to API
-      api.post(`/beta/tasks/${taskId}/progress`, progress)
+      // Use apiHelpers
+      apiHelpers.post(`/beta/tasks/${taskId}/progress`, progress)
         .catch(err => console.error('Failed to sync task progress:', err));
         
       return progress;
     } catch (error) {
-      console.error(`Failed to complete step for task ${taskId}:`, error);
-      
-      // Return existing progress
-      return this._getTaskProgress(taskId) || {
-        userId,
-        taskId,
-        started: true,
-        currentStep: stepIndex,
-        completed: false
-      };
+      console.error(`Error completing step ${stepIndex} for task ${taskId}:`, error);
+      throw error;
     }
   }
 
@@ -441,8 +434,8 @@ class TaskPromptService {
       // Save locally
       this._saveTaskProgress(taskId, updatedProgress);
       
-      // Send to API
-      api.post(`/beta/tasks/${taskId}/abandon`, {
+      // Use apiHelpers
+      apiHelpers.post(`/beta/tasks/${taskId}/abandon`, {
         userId,
         reason,
         progress: updatedProgress
@@ -462,7 +455,7 @@ class TaskPromptService {
    */
   async getUserTaskStats(userId) {
     try {
-      const response = await api.get(`/beta/users/${userId}/task-stats`);
+      const response = await apiHelpers.get(`/beta/users/${userId}/task-stats`);
       return response.data;
     } catch (error) {
       console.error('Failed to fetch user task stats:', error);
@@ -739,126 +732,6 @@ class TaskPromptService {
   }
   
   /**
-   * Start a task for a user
-   * @param {string} userId - The user's ID
-   * @param {string} taskId - The task's ID
-   * @returns {Object} - Initial task progress
-   */
-  startTask(userId, taskId) {
-    if (!userId || !taskId) {
-      throw new Error('User ID and Task ID are required');
-    }
-    
-    const task = this.taskDefinitions.find(t => t.id === taskId);
-    if (!task) {
-      throw new Error(`Task with ID ${taskId} not found`);
-    }
-    
-    const progress = {
-      taskId,
-      userId,
-      currentStep: 0,
-      completed: false,
-      startedAt: new Date().toISOString(),
-      lastUpdated: new Date().toISOString(),
-      completedSteps: []
-    };
-    
-    // Save to local storage (in a real app, this would be API)
-    localStorage.setItem(`${userId}_task_${taskId}`, JSON.stringify(progress));
-    
-    return progress;
-  }
-  
-  /**
-   * Mark a step as completed
-   * @param {string} userId - The user's ID
-   * @param {string} taskId - The task's ID
-   * @param {number} stepIndex - The index of the completed step
-   * @returns {Object} - Updated task progress
-   */
-  completeStep(userId, taskId, stepIndex) {
-    if (!userId || !taskId) {
-      throw new Error('User ID and Task ID are required');
-    }
-    
-    // Get current progress
-    const progress = this.getTaskProgress(userId, taskId);
-    if (!progress) {
-      throw new Error(`No progress found for task ${taskId}`);
-    }
-    
-    const task = this.taskDefinitions.find(t => t.id === taskId);
-    if (!task) {
-      throw new Error(`Task with ID ${taskId} not found`);
-    }
-    
-    // Mark step as completed
-    if (!progress.completedSteps.includes(stepIndex)) {
-      progress.completedSteps.push(stepIndex);
-    }
-    
-    // Update current step
-    if (stepIndex === progress.currentStep) {
-      progress.currentStep = stepIndex + 1;
-    }
-    
-    // Check if all steps are completed
-    const totalSteps = task.steps.length;
-    progress.completed = progress.currentStep >= totalSteps;
-    progress.lastUpdated = new Date().toISOString();
-    
-    if (progress.completed) {
-      progress.completedAt = new Date().toISOString();
-      
-      // Add to completed tasks
-      const completedTasks = this.getUserCompletedTasks(userId);
-      completedTasks.push(taskId);
-      localStorage.setItem(`${userId}_completed_tasks`, JSON.stringify(completedTasks));
-    }
-    
-    // Save updated progress
-    localStorage.setItem(`${userId}_task_${taskId}`, JSON.stringify(progress));
-    
-    return progress;
-  }
-  
-  /**
-   * Abandon a task
-   * @param {string} userId - The user's ID
-   * @param {string} taskId - The task's ID
-   * @param {string} reason - The reason for abandoning
-   * @returns {boolean} - Success status
-   */
-  abandonTask(userId, taskId, reason = '') {
-    if (!userId || !taskId) {
-      throw new Error('User ID and Task ID are required');
-    }
-    
-    try {
-      // Record the abandonment
-      const abandonData = {
-        taskId,
-        userId,
-        abandonedAt: new Date().toISOString(),
-        reason: reason || 'No reason provided',
-        progress: this.getTaskProgress(userId, taskId)
-      };
-      
-      // In a real app, send to analytics or API
-      console.log('Task abandoned:', abandonData);
-      
-      // Remove from active tasks
-      localStorage.removeItem(`${userId}_task_${taskId}`);
-      
-      return true;
-    } catch (error) {
-      console.error('Error abandoning task:', error);
-      return false;
-    }
-  }
-  
-  /**
    * Submit feedback for a task
    * @param {string} userId - The user's ID
    * @param {string} taskId - The task's ID
@@ -970,7 +843,7 @@ class TaskPromptService {
    */
   async getTaskPrompts(options = {}) {
     try {
-      const response = await api.get('/beta-program/tasks', { params: options });
+      const response = await apiHelpers.get('/beta-program/tasks', { params: options });
       return response.data;
     } catch (error) {
       console.error('Error fetching task prompts:', error);
@@ -989,7 +862,7 @@ class TaskPromptService {
    */
   async getTaskPromptById(taskId) {
     try {
-      const response = await api.get(`/beta-program/tasks/${taskId}`);
+      const response = await apiHelpers.get(`/beta-program/tasks/${taskId}`);
       return response.data;
     } catch (error) {
       console.error(`Error fetching task prompt ${taskId}:`, error);
@@ -1005,7 +878,7 @@ class TaskPromptService {
    */
   async completeTask(userId, taskId) {
     try {
-      const response = await api.post(`/beta-program/users/${userId}/tasks/${taskId}/complete`);
+      const response = await apiHelpers.post(`/beta-program/users/${userId}/tasks/${taskId}/complete`);
       return response.data;
     } catch (error) {
       console.error(`Error completing task ${taskId}:`, error);
@@ -1022,7 +895,7 @@ class TaskPromptService {
    */
   async completeTaskStep(userId, taskId, stepIndex) {
     try {
-      const response = await api.post(
+      const response = await apiHelpers.post(
         `/beta-program/users/${userId}/tasks/${taskId}/steps/${stepIndex}/complete`
       );
       return response.data;
@@ -1040,7 +913,7 @@ class TaskPromptService {
    */
   async dismissTask(userId, taskId) {
     try {
-      const response = await api.post(`/beta-program/users/${userId}/tasks/${taskId}/dismiss`);
+      const response = await apiHelpers.post(`/beta-program/users/${userId}/tasks/${taskId}/dismiss`);
       return response.data;
     } catch (error) {
       console.error(`Error dismissing task ${taskId}:`, error);
@@ -1060,7 +933,7 @@ class TaskPromptService {
    */
   async submitTaskFeedback(userId, taskId, feedbackData) {
     try {
-      const response = await api.post(
+      const response = await apiHelpers.post(
         `/beta-program/users/${userId}/tasks/${taskId}/feedback`,
         feedbackData
       );
@@ -1078,7 +951,7 @@ class TaskPromptService {
    */
   async createTaskPrompt(taskData) {
     try {
-      const response = await api.post('/beta-program/tasks', taskData);
+      const response = await apiHelpers.post('/beta-program/tasks', taskData);
       return response.data;
     } catch (error) {
       console.error('Error creating task prompt:', error);
@@ -1094,7 +967,7 @@ class TaskPromptService {
    */
   async updateTaskPrompt(taskId, taskData) {
     try {
-      const response = await api.put(`/beta-program/tasks/${taskId}`, taskData);
+      const response = await apiHelpers.put(`/beta-program/tasks/${taskId}`, taskData);
       return response.data;
     } catch (error) {
       console.error(`Error updating task prompt ${taskId}:`, error);
@@ -1109,7 +982,7 @@ class TaskPromptService {
    */
   async deleteTaskPrompt(taskId) {
     try {
-      const response = await api.delete(`/beta-program/tasks/${taskId}`);
+      const response = await apiHelpers.delete(`/beta-program/tasks/${taskId}`);
       return response.data;
     } catch (error) {
       console.error(`Error deleting task prompt ${taskId}:`, error);
@@ -1124,7 +997,7 @@ class TaskPromptService {
    */
   async getTaskAnalytics(options = {}) {
     try {
-      const response = await api.get('/beta-program/tasks/analytics', { params: options });
+      const response = await apiHelpers.get('/beta-program/tasks/analytics', { params: options });
       return response.data;
     } catch (error) {
       console.error('Error fetching task analytics:', error);
@@ -1303,11 +1176,11 @@ class TaskPromptService {
    */
   static async getTaskById(taskId) {
     try {
-      const response = await axios.get(`${API_BASE_URL}/task-prompts/${taskId}`);
+      const response = await apiHelpers.get(`/beta/tasks/${taskId}`);
       return response.data;
     } catch (error) {
-      console.error(`Error fetching task prompt ${taskId}:`, error);
-      throw error;
+      console.error(`Failed to fetch task ${taskId}:`, error);
+      // Fallback logic remains
     }
   }
 
@@ -1318,7 +1191,7 @@ class TaskPromptService {
    */
   static async getTaskByContext(contextId) {
     try {
-      const response = await axios.get(`${API_BASE_URL}/task-prompts/context/${contextId}`);
+      const response = await apiHelpers.get(`/beta/tasks/context/${contextId}`);
       return response.data;
     } catch (error) {
       console.error(`Error fetching task prompt for context ${contextId}:`, error);
@@ -1334,7 +1207,7 @@ class TaskPromptService {
    */
   static async completeStep(taskId, stepId) {
     try {
-      const response = await axios.post(`${API_BASE_URL}/task-prompts/${taskId}/steps/${stepId}/complete`);
+      const response = await apiHelpers.post(`/beta/tasks/${taskId}/steps/${stepId}/complete`);
       return response.data;
     } catch (error) {
       console.error(`Error completing task step ${stepId}:`, error);
@@ -1349,7 +1222,7 @@ class TaskPromptService {
    */
   static async completeTask(taskId) {
     try {
-      const response = await axios.post(`${API_BASE_URL}/task-prompts/${taskId}/complete`);
+      const response = await apiHelpers.post(`/beta/tasks/${taskId}/complete`);
       return response.data;
     } catch (error) {
       console.error(`Error completing task ${taskId}:`, error);
@@ -1365,7 +1238,7 @@ class TaskPromptService {
    */
   static async dismissTask(taskId, feedback = {}) {
     try {
-      const response = await axios.post(`${API_BASE_URL}/task-prompts/${taskId}/dismiss`, feedback);
+      const response = await apiHelpers.post(`/beta/tasks/${taskId}/dismiss`, feedback);
       return response.data;
     } catch (error) {
       console.error(`Error dismissing task ${taskId}:`, error);
@@ -1381,7 +1254,7 @@ class TaskPromptService {
    */
   static async submitFeedback(taskId, feedback) {
     try {
-      const response = await axios.post(`${API_BASE_URL}/task-prompts/${taskId}/feedback`, feedback);
+      const response = await apiHelpers.post(`/beta/tasks/${taskId}/feedback`, feedback);
       return response.data;
     } catch (error) {
       console.error(`Error submitting feedback for task ${taskId}:`, error);
@@ -1396,7 +1269,7 @@ class TaskPromptService {
    */
   static async getAllTasks(filters = {}) {
     try {
-      const response = await axios.get(`${API_BASE_URL}/task-prompts`, {
+      const response = await apiHelpers.get('/beta/tasks', {
         params: filters
       });
       return response.data;
@@ -1413,7 +1286,7 @@ class TaskPromptService {
    */
   static async resetTask(taskId) {
     try {
-      const response = await axios.post(`${API_BASE_URL}/task-prompts/${taskId}/reset`);
+      const response = await apiHelpers.post(`/beta/tasks/${taskId}/reset`);
       return response.data;
     } catch (error) {
       console.error(`Error resetting task ${taskId}:`, error);
@@ -1427,7 +1300,7 @@ class TaskPromptService {
    */
   static async getTaskStatistics() {
     try {
-      const response = await axios.get(`${API_BASE_URL}/task-prompts/statistics`);
+      const response = await apiHelpers.get('/beta/tasks/statistics');
       return response.data;
     } catch (error) {
       console.error('Error fetching task statistics:', error);
@@ -1442,7 +1315,7 @@ class TaskPromptService {
    */
   static async createTask(taskData) {
     try {
-      const response = await axios.post(`${API_BASE_URL}/task-prompts`, taskData);
+      const response = await apiHelpers.post('/beta/tasks', taskData);
       return response.data;
     } catch (error) {
       console.error('Error creating task:', error);
@@ -1458,7 +1331,7 @@ class TaskPromptService {
    */
   static async updateTask(taskId, taskData) {
     try {
-      const response = await axios.put(`${API_BASE_URL}/task-prompts/${taskId}`, taskData);
+      const response = await apiHelpers.put(`/beta/tasks/${taskId}`, taskData);
       return response.data;
     } catch (error) {
       console.error(`Error updating task ${taskId}:`, error);
@@ -1473,7 +1346,7 @@ class TaskPromptService {
    */
   static async deleteTask(taskId) {
     try {
-      const response = await axios.delete(`${API_BASE_URL}/task-prompts/${taskId}`);
+      const response = await apiHelpers.delete(`/beta/tasks/${taskId}`);
       return response.data;
     } catch (error) {
       console.error(`Error deleting task ${taskId}:`, error);

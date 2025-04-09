@@ -16,7 +16,7 @@ import {
   Divider
 } from '@mui/material';
 import HeatmapVisualization from './HeatmapVisualization';
-import AnalyticsService from '../../services/AnalyticsService';
+import { AnalyticsService } from '../../services/analytics/AnalyticsService';
 import { 
   Timeline, 
   PlayArrow, 

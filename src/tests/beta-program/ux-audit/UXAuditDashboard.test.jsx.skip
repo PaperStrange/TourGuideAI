@@ -1,11 +1,13 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
-import UXAuditDashboard from '../../../beta-program/ux-audit/UXAuditDashboard';
+import UXAuditDashboard from '../../../features/beta-program/components/analytics/UXAuditDashboard';
 import { dashboardMocks, sessionRecordingMocks, uxMetricsMocks } from '../../mocks/uxAuditMocks';
+import UXMetricsEvaluation from '../../../features/beta-program/components/ux-audit/UXMetricsEvaluation';
 
 // Mock the child components
-jest.mock('../../../beta-program/ux-audit/SessionRecording', () => {
+jest.mock('../../../features/beta-program/components/analytics/SessionRecording', () => {
   return function MockSessionRecording(props) {
     return (
       <div data-testid="mock-session-recording">
@@ -16,18 +18,17 @@ jest.mock('../../../beta-program/ux-audit/SessionRecording', () => {
   };
 });
 
-jest.mock('../../../beta-program/ux-audit/UXHeatmap', () => {
+jest.mock('../../../features/beta-program/components/ux-audit/UXHeatmap', () => {
   return function MockUXHeatmap(props) {
     return (
       <div data-testid="mock-ux-heatmap">
-        <span>UX Heatmap Component</span>
-        <span>Points: {props.data?.points?.length || 0}</span>
+        <span>Mock UX Heatmap</span>
       </div>
     );
   };
 });
 
-jest.mock('../../../beta-program/ux-audit/UXMetricsEvaluation', () => {
+jest.mock('../../../features/beta-program/components/ux-audit/UXMetricsEvaluation', () => {
   return function MockUXMetricsEvaluation(props) {
     return (
       <div data-testid="mock-ux-metrics">

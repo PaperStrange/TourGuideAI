@@ -28,7 +28,10 @@ import {
   AccessTime, 
   CheckCircleOutline,
   ErrorOutline,
-  Refresh 
+  Refresh,
+  Feedback,
+  Task,
+  EventNote
 } from '@mui/icons-material';
 import { useTheme } from '@mui/material/styles';
 import { Line } from 'react-chartjs-2';
@@ -37,8 +40,8 @@ import { Chart as ChartJS, registerables } from 'chart.js';
 // Register Chart.js components
 ChartJS.register(...registerables);
 
-// Placeholder for actual service
-import { analyticsService } from '../../services/AnalyticsService';
+// Corrected path for AnalyticsService
+import { analyticsService } from '../../services/analytics/AnalyticsService';
 
 const UXMetricsEvaluation = ({ 
   startDate = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], 

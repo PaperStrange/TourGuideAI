@@ -1,13 +1,23 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import UXMetricsEvaluation from '../../../beta-program/ux-audit/UXMetricsEvaluation';
+import UXMetricsEvaluation from '../../../features/beta-program/components/ux-audit/UXMetricsEvaluation';
 import { uxMetricsMocks } from '../../mocks/uxAuditMocks';
 
 // Mock chart libraries
 jest.mock('chart.js', () => ({
-  Chart: jest.fn(),
-  registerables: []
+  Chart: jest.fn(() => ({ // Mock the Chart constructor
+    destroy: jest.fn(),
+    update: jest.fn(),
+    // Add other methods if needed by the component
+  })),
+  registerables: [], // Keep if needed, or mock specific elements
+  // Mock specific elements if directly imported and used
+  BarElement: jest.fn(), 
+  CategoryScale: jest.fn(),
+  LinearScale: jest.fn(),
+  Tooltip: jest.fn(),
+  Legend: jest.fn(),
 }));
 
 jest.mock('react-chartjs-2', () => ({
@@ -15,7 +25,7 @@ jest.mock('react-chartjs-2', () => ({
     <div data-testid="bar-chart">
       <span>Bar Chart Component</span>
       <pre>{JSON.stringify(props.data, null, 2)}</pre>
-    </div>
+    </div> 
   ),
   Line: (props) => (
     <div data-testid="line-chart">
