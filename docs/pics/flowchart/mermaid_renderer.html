@@ -659,6 +659,37 @@ flowchart TD
             // Show the filesmap by default
             showDiagram('filesmap');
         });
+
+        window.addEventListener('DOMContentLoaded', function() {
+            // Fetch the Mermaid diagram definition
+            fetch('.mermaidfilesmap')
+                .then(response => response.text())
+                .then(diagramText => {
+                    // Extract the Mermaid diagram code
+                    const match = diagramText.match(/```mermaid\s*([\s\S]*?)\s*```/);
+                    if (match && match[1]) {
+                        // Update diagram display
+                        const diagramContainer = document.getElementById('diagram-container');
+                        diagramContainer.textContent = match[1];
+                        
+                        // Initialize Mermaid
+                        mermaid.initialize({
+                            startOnLoad: true,
+                            theme: 'default',
+                            securityLevel: 'loose',
+                            flowchart: {
+                                htmlLabels: true,
+                                useMaxWidth: true,
+                                curve: 'basis'
+                            }
+                        });
+                        
+                        // Render diagram
+                        mermaid.init(undefined, diagramContainer);
+                    }
+                })
+                .catch(error => console.error('Error loading diagram:', error));
+        });
     </script>
 </body>
 </html> 

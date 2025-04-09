@@ -23,6 +23,7 @@ flowchart TB
     classDef referenceFile fill:#fcf8e3,stroke:#8a6d3b,stroke-width:1px,color:#8a6d3b
     classDef testingFile fill:#f2dede,stroke:#a94442,stroke-width:1px,color:#a94442
     classDef lifecycleFile fill:#e8f4ff,stroke:#337ab7,stroke-width:1px,color:#337ab7
+    classDef prototypeFile fill:#f5e6f7,stroke:#9b59b6,stroke-width:1px,color:#9b59b6
     
     %% Main root node
     README[README.md]
@@ -43,8 +44,17 @@ flowchart TB
     
     subgraph ProcessArea ["Process Documentation"]
         subgraph ProcessDocs ["Process Monitors"]
-            WORKFLOW_CHECKLISTS[Workflow Checklists<br>project.workflow-checklists.md]
-            PHASE_SIGNOFF[Phase Signoff<br>project.phase-signoff.md]
+            subgraph RecordsDocs ["Records"]
+                WORKFLOW_CHECKLISTS[Workflow Checklists<br>records/project.workflow-checklists.md]
+                PHASE_SIGNOFF[Phase Signoff<br>records/project.phase-signoff.md]
+            end
+            
+            subgraph PlansDocs ["Plans"]
+                PHASE6_PLAN[Phase 6 Beta Release<br>plans/phase6-beta-release-plan.md]
+                PHASE7_PLAN[Phase 7 Post-Beta Enhancements<br>plans/phase7-post-beta-enhancements-plan.md]
+            end
+            
+            IMPL_SUMMARY[Implementation Summary<br>implementation_summary.md]
         end
         
         subgraph VersionDocs ["Version Control"]
@@ -73,34 +83,60 @@ flowchart TB
     subgraph TestArea ["Testing"]
         TEST_PLAN[Stability Test Plan<br>project.stability-test-plan.md]
         TEST_RESULTS[Test Execution Results<br>project.test-execution-results.md]
-        TEST_SCENARIOS[Test Scenarios<br>project.test-scenarios.md]
-        TEST_USER_STORY[Test User Stories<br>project.test-user-story.md]
+        subgraph TestRefs ["References"]
+            TEST_SCENARIOS[Test Scenarios<br>references/project.test-scenarios.md]
+            TEST_USER_STORY[Test User Stories<br>references/project.test-user-story.md]
+        end
         
         subgraph StabilityDocs ["Stability Test Results"]
             STABILITY_README[Stability Results<br>results/README.md]
+            STABILITY_SUMMARY[Test Results Summary<br>results/test-results-summary.md]
             
             subgraph StabilitySubdocs ["Detailed Documentation"]
                 STABILITY_DATA_README[Test Data<br>results/data/README.md]
                 STABILITY_REPORTS_README[Test Reports<br>results/reports/README.md]
             end
-            
-            FRONTEND_STABILITY_README[Frontend Stability Tests<br>tests/stability/README.md]
         end
     end
     
     subgraph DeployDocs ["Deployment"]
-        DEPLOYMENT_PIPELINE[Deployment Pipeline<br>project.deployment-pipeline.md]
-        DEPLOYMENT_PLAN[Deployment Plan<br>project.deployment-pipeline-plan.md]
+        subgraph DeployPipes ["Pipelines"]
+            DEPLOYMENT_PIPELINE[Deployment Pipeline<br>pipelines/project.deployment-pipeline.md]
+        end
+        
+        subgraph DeployPlans ["Plans"]
+            DEPLOYMENT_PLAN[Deployment Plan<br>plans/project.deployment-pipeline-plan.md]
+            PERFORMANCE_PLAN[Performance Plan<br>plans/project.performance-optimization-plan.md]
+            PERFORMANCE_IMPL[Performance Implementation<br>plans/project.performance-implementation-plan.md]
+        end
     end
     
-    subgraph PerfDocs ["Performance"]
-        PERFORMANCE_PLAN[Performance Plan<br>project.performance-optimization-plan.md]
-        PERFORMANCE_IMPL[Performance Implementation<br>project.performance-implementation-plan.md]
+    subgraph TechDocs ["Technical Documentation"]
+        UX_AUDIT[UX Audit System<br>ux-audit-system.md]
+    end
+    
+    subgraph PrototypeDocs ["Prototype Documentation"]
+        USER_PROFILE[User Profile<br>user_profile.json]
+        CHAT_PAGE[Chat Page<br>chat_page.json]
+        MAP_PAGE[Map Page Elements<br>map_page_elements.json]
+    end
+    
+    subgraph DiagramsDocs ["Diagrams & Flowcharts"]
+        FLOWCHART_README[Flowchart README<br>README.md]
+        DOC_MAP[Documentation Map<br>project_documentation_map.svg]
+        WORKFLOW_PNG[Project Workflow<br>project_workflow.png]
+        MERMAID_RENDERER[Mermaid Renderer<br>mermaid_renderer.html]
+        EXPORT_DIAGRAMS[Export Diagrams<br>export_diagrams.js]
     end
     
     subgraph FeatureArea ["Feature Documentation"]
         FEATURES_README[src/features/README.md]
         MAP_VIZ_README[src/features/map-visualization/README.md]
+        TRAVEL_README[src/features/travel-planning/README.md]
+        USER_PROFILE_README[src/features/user-profile/README.md]
+        BETA_README[src/features/beta-program/README.md]
+        CONTEXT_README[src/contexts/README.md]
+        CORE_README[src/core/README.md]
         TESTS_README[src/tests/README.md]
     end
     
@@ -112,7 +148,10 @@ flowchart TB
     README --> LearnDocs
     README --> TestArea
     README --> DeployDocs
-    README --> PerfDocs
+    README --> TechDocs
+    README --> PrototypeDocs
+    README --> DiagramsDocs
+    README --> FeatureArea
     
     %% Core document relationships (careful placement to reduce crossings)
     DOC_INVENTORY --> ProcessDocs
@@ -122,7 +161,9 @@ flowchart TB
     DOC_INVENTORY --> LearnDocs
     DOC_INVENTORY --> TestArea
     DOC_INVENTORY --> DeployDocs
-    DOC_INVENTORY --> PerfDocs
+    DOC_INVENTORY --> TechDocs
+    DOC_INVENTORY --> PrototypeDocs
+    DOC_INVENTORY --> DiagramsDocs
     
     %% Workflow connections (minimized)
     WORKFLOW_CHECKLISTS --> LESSONS
@@ -131,35 +172,50 @@ flowchart TB
     WORKFLOW_CHECKLISTS --> VERSION_HISTORY
     PHASE_SIGNOFF --> TEST_RESULTS
     
+    %% Phase plan connections
+    PHASE6_PLAN --> PHASE_SIGNOFF
+    PHASE7_PLAN --> PHASE6_PLAN
+    
     %% Refactor connections (reduced)
     REFACTORS_HISTORY --> CODE_REVIEW_CHECKLIST
     
     %% Feature connections (simplified)
     FeatureArea --> TestArea
     FeatureArea --> RefactorDocs
-    FeatureArea --> PerfDocs
+    FeatureArea --> DeployPlans
+    BETA_README --> UX_AUDIT
+    MAP_VIZ_README --> PERFORMANCE_PLAN
     
     %% Stability test relationships
     TEST_PLAN --> STABILITY_README
     TEST_RESULTS --> STABILITY_README
     STABILITY_README --> StabilitySubdocs
-    STABILITY_README --> FRONTEND_STABILITY_README
-    STABILITY_DATA_README --> STABILITY_REPORTS_README
-    FRONTEND_STABILITY_README --> STABILITY_DATA_README
+    STABILITY_README --> STABILITY_SUMMARY
+    
+    %% Deployment relationships
+    DEPLOYMENT_PLAN --> DEPLOYMENT_PIPELINE
+    PERFORMANCE_PLAN --> PERFORMANCE_IMPL
+    
+    %% Diagram & flowchart relationships
+    FLOWCHART_README --> DOC_MAP
+    FLOWCHART_README --> WORKFLOW_PNG
+    FLOWCHART_README --> MERMAID_RENDERER
+    MERMAID_RENDERER --> EXPORT_DIAGRAMS
     
     %% Apply classes to nodes
     class README,ARCHITECTURE,API_OVERVIEW,API_MIGRATION,CONTRIBUTING,SECURITY root
     class DOC_INVENTORY docFile
-    class WORKFLOW_CHECKLISTS,PHASE_SIGNOFF projectFile
+    class WORKFLOW_CHECKLISTS,PHASE_SIGNOFF,PHASE6_PLAN,PHASE7_PLAN,IMPL_SUMMARY projectFile
     class VERSION_HISTORY,VERSION_CONTROL_REF projectFile
     class REFACTORS_HISTORY,REFACTORS_PLAN projectFile
     class CODE_REVIEW_CHECKLIST,CODE_REVIEW_GUIDE,DEPENDENCIES projectFile
     class LESSONS projectFile
-    class TEST_PLAN,TEST_RESULTS,TEST_SCENARIOS,TEST_USER_STORY testingFile
-    class STABILITY_README,STABILITY_DATA_README,STABILITY_REPORTS_README,FRONTEND_STABILITY_README testingFile
-    class DEPLOYMENT_PIPELINE,DEPLOYMENT_PLAN projectFile
-    class PERFORMANCE_PLAN,PERFORMANCE_IMPL projectFile
-    class FEATURES_README,MAP_VIZ_README,TESTS_README referenceFile
+    class TEST_PLAN,TEST_RESULTS,TEST_SCENARIOS,TEST_USER_STORY,STABILITY_README,STABILITY_SUMMARY,STABILITY_DATA_README,STABILITY_REPORTS_README testingFile
+    class DEPLOYMENT_PIPELINE,DEPLOYMENT_PLAN,PERFORMANCE_PLAN,PERFORMANCE_IMPL projectFile
+    class UX_AUDIT projectFile
+    class USER_PROFILE,CHAT_PAGE,MAP_PAGE prototypeFile
+    class FLOWCHART_README,DOC_MAP,WORKFLOW_PNG,MERMAID_RENDERER,EXPORT_DIAGRAMS referenceFile
+    class FEATURES_README,MAP_VIZ_README,TRAVEL_README,USER_PROFILE_README,BETA_README,CONTEXT_README,CORE_README,TESTS_README referenceFile
     
     %% Style links by type
     linkStyle default stroke:#999,stroke-width:1px

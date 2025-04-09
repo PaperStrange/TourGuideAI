@@ -145,7 +145,6 @@ Restructured the entire project to use a feature-based architecture, moving comm
 
 #### Updated Imports
 - Modified multiple files to update import paths to new structure
-- Created `src/core/README.md` - Lines: All new
 - Created `src/features/index.js` - Lines: All new (re-exports)
 
 ### Code Health Impact
@@ -401,7 +400,7 @@ Established CI/CD pipeline and production infrastructure to support automated te
 
 ## Review Guidelines for Future Refactorings
 
-Future refactorings should follow these guidelines, based on our [Code Review Checklist](../docs/references/code-review-checklist.md):
+Future refactorings should follow these guidelines, based on our [Code Review Checklist](../../code_and_project_structure_refactors/references/code-review-checklist.md):
 
 1. **Design**: Ensure architectural patterns are followed and components are properly decomposed
 2. **Functionality**: Maintain or improve existing functionality while making structural changes
@@ -948,7 +947,7 @@ Established CI/CD pipeline and production infrastructure to support automated te
 
 ## Review Guidelines for Future Refactorings
 
-Future refactorings should follow these guidelines, based on our [Code Review Checklist](../docs/references/code-review-checklist.md):
+Future refactorings should follow these guidelines, based on our [Code Review Checklist](../../code_and_project_structure_refactors/references/code-review-checklist.md):
 
 1. **Design**: Ensure architectural patterns are followed and components are properly decomposed
 2. **Functionality**: Maintain or improve existing functionality while making structural changes

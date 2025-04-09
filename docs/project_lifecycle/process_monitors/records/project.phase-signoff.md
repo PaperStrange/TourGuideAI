@@ -35,7 +35,7 @@ _List all key results from `.project` file that were achieved in this phase._
 
 ### Test Execution Results
 
-_Summarize the test results from `docs/project_lifecycle/stability_tests/records/project.test-execution-results.md`._
+_Summarize the test results from `docs/project_lifecycle/stability_tests/results/project.test-execution-results.md`._
 
 - Total Test Cases: 
 - Passed Test Cases: 

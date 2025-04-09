@@ -25,8 +25,8 @@ Each feature directory is organized to be largely self-contained, with its own:
 ## Documentation
 
 For comprehensive testing of these features, refer to:
-- Test scenarios: `docs/project_lifecycle/stability_tests/plans/project.test-scenarios.md`
-- User journey testing: `docs/project_lifecycle/stability_tests/plans/project.test-user-story.md`
+- Test scenarios: `docs/project_lifecycle/stability_tests/references/project.test-scenarios.md`
+- User journey testing: `docs/project_lifecycle/stability_tests/references/project.test-user-story.md`
 - Test execution results: `docs/project_lifecycle/stability_tests/results/project.test-execution-results.md`
 - UX audit system: `docs/technical/ux-audit-system.md`
 

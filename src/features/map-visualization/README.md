@@ -33,7 +33,7 @@ This feature handles the mapping and geographic visualization of travel routes, 
 
 ## Testing
 
-For detailed test scenarios of this feature, see `docs/project_lifecycle/stability_tests/plans/project.test-scenarios.md` and `docs/project_lifecycle/stability_tests/plans/project.test-user-story.md`.
+For detailed test scenarios of this feature, see `docs/project_lifecycle/stability_tests/references/project.test-scenarios.md` and `docs/project_lifecycle/stability_tests/references/project.test-user-story.md`.
 
 ## Dependencies
 
@@ -44,5 +44,5 @@ This feature depends on:
 
 ## Related Documentation
 
-- Performance optimizations: `docs/project_lifecycle/optimizations/plans/project.performance-optimization-plan.md`
+- Performance optimizations: `docs/project_lifecycle/deployment/plans/project.performance-optimization-plan.md`
 - Refactoring history: `docs/project_lifecycle/code_and_project_structure_refactors/records/project.refactors.md` 

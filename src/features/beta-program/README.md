@@ -171,9 +171,7 @@ When adding new components or services to the Beta Program:
 
 ## Related Documentation
 
-- [Beta Program User Guide](../../docs/user-guides/beta-program.md)
-- [Issue Prioritization System Design](../../docs/technical/issue-prioritization.md)
-- [Feature Request System Design](../../docs/technical/feature-requests.md)
-- [Survey System Architecture](../../docs/technical/survey-system.md)
-- [UX Audit System Documentation](../../docs/technical/ux-audit-system.md)
-- [Task Prompt System Documentation](../../docs/technical/task-prompt-system.md) 
+- [UX Audit System Documentation](../../../docs/technical/ux-audit-system.md)
+- [Project Documentation Inventory](../../../docs/project.document-inventory.md)
+- [Project Lessons](../../../docs/project.lessons.md)
+- [Stability Tests](../../../docs/project_lifecycle/stability_tests/plans/project.stability-test-plan.md) 

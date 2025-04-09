@@ -3,6 +3,17 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
+/**
+ * Export Diagrams Script
+ * 
+ * This script converts Mermaid diagram definitions to SVG files.
+ * 
+ * Prerequisites:
+ * - Node.js installed
+ * - @mermaid-js/mermaid-cli installed globally
+ *   Install using: npm install -g @mermaid-js/mermaid-cli
+ */
+
 // File paths for diagrams
 const filesMapPath = path.join(__dirname, '.mermaidfilesmap');
 const workflowPath = path.join(__dirname, '.mermaidworkflow');

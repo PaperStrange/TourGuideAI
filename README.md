@@ -27,27 +27,28 @@ TourGuideAI is an intelligent virtual tour guide application that uses AI to cre
 TourGuideAI/
 ├── server/              # Backend server code
 ├── src/                 # Frontend source code
+│   ├── api/             # API clients and interfaces
 │   ├── components/      # Reusable UI components
-│   ├── context/         # React context providers
+│   ├── contexts/        # React context providers
+│   ├── core/            # Core functionality and services
+│   ├── data/            # Data utilities and storage
 │   ├── features/        # Feature modules
-│   │   ├── auth/        # Authentication
-│   │   ├── beta-program/ # Beta program components and services
-│   │   ├── map/         # Map visualization
-│   │   ├── tours/       # Tour generation and management
-│   │   └── translation/ # Translation services
-│   ├── hooks/           # Custom React hooks
 │   ├── pages/           # Page components
 │   ├── services/        # API interfaces
 │   ├── styles/          # Global styles
+│   ├── tests/           # Test files
 │   ├── utils/           # Utility functions
-│   └── App.js           # Main application component
+│   ├── App.js           # Main application component
+│   └── index.js         # Entry point
 ├── public/              # Public assets
 ├── tests/               # Test files
 ├── docs/                # Documentation
-│   ├── api/             # API documentation
+│   ├── project.document-inventory.md # Documentation inventory
+│   ├── project.lessons.md # Project lessons learned
 │   ├── technical/       # Technical documentation
-│   ├── user-guides/     # User guides
-│   └── pics/            # Images for documentation
+│   ├── pics/            # Images for documentation
+│   ├── prototype/       # Prototype data and mockups
+│   └── project_lifecycle/ # Project management documentation
 └── tools/               # Development and deployment tools
 ```
 
@@ -187,12 +188,15 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on contributing to the pro
 
 ## Documentation
 
-- [API Documentation](docs/api/README.md)
-- [Technical Documentation](docs/technical/README.md)
-- [User Guides](docs/user-guides/README.md)
-- [Development Setup](docs/development-setup.md)
+- [API Overview](API_OVERVIEW.md)
+- [Architecture](ARCHITECTURE.md)
+- [Security](SECURITY.md)
+- [Contributing](CONTRIBUTING.md)
 - [UX Audit System](docs/technical/ux-audit-system.md)
-- [Task Prompt System](docs/technical/task-prompt-system.md)
+- [Documentation Inventory](docs/project.document-inventory.md)
+- [Project Lessons](docs/project.lessons.md)
+- [Stability Test Plan](docs/project_lifecycle/stability_tests/plans/project.stability-test-plan.md)
+- [Deployment Pipeline](docs/project_lifecycle/deployment/pipelines/project.deployment-pipeline.md)
 
 ## License
 
