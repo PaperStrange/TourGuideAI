@@ -468,6 +468,35 @@ flowchart TD
             }
         }
         
+        // Helper function to prepare SVG for export
+        function prepareSvgForExport(originalSvg) {
+            // Get outer dimensions (including the container)
+            const containerRect = originalSvg.getBoundingClientRect();
+            
+            // Create a new SVG element
+            const newSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            
+            // Set width and height to visible dimensions
+            newSvg.setAttribute('width', containerRect.width);
+            newSvg.setAttribute('height', containerRect.height);
+            newSvg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+            newSvg.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink');
+            newSvg.setAttribute('version', '1.1');
+            
+            // Add white background
+            const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+            rect.setAttribute('width', '100%');
+            rect.setAttribute('height', '100%');
+            rect.setAttribute('fill', 'white');
+            newSvg.appendChild(rect);
+            
+            // Add content of the original SVG
+            const svgContent = originalSvg.innerHTML;
+            newSvg.innerHTML += svgContent;
+            
+            return newSvg;
+        }
+        
         // Function to download the current diagram
         function downloadCurrentDiagram() {
             // Make sure diagram is showing
@@ -484,35 +513,6 @@ flowchart TD
                 if (!svg) {
                     alert('Diagram not rendered yet. Please wait and try again.');
                     return;
-                }
-                
-                // Helper function to fix SVG for export
-                function prepareSvgForExport(originalSvg) {
-                    // Get outer dimensions (including the container)
-                    const containerRect = originalSvg.getBoundingClientRect();
-                    
-                    // Create a new SVG element
-                    const newSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                    
-                    // Set width and height to visible dimensions
-                    newSvg.setAttribute('width', containerRect.width);
-                    newSvg.setAttribute('height', containerRect.height);
-                    newSvg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-                    newSvg.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink');
-                    newSvg.setAttribute('version', '1.1');
-                    
-                    // Add white background
-                    const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-                    rect.setAttribute('width', '100%');
-                    rect.setAttribute('height', '100%');
-                    rect.setAttribute('fill', 'white');
-                    newSvg.appendChild(rect);
-                    
-                    // Add content of the original SVG
-                    const svgContent = originalSvg.innerHTML;
-                    newSvg.innerHTML += svgContent;
-                    
-                    return newSvg;
                 }
                 
                 try {
@@ -545,35 +545,6 @@ flowchart TD
         function downloadAllDiagrams() {
             // Save current view
             const currentView = currentDiagram;
-            
-            // Function to prepare SVG for export
-            function prepareSvgForExport(originalSvg) {
-                // Get outer dimensions
-                const containerRect = originalSvg.getBoundingClientRect();
-                
-                // Create a new SVG element
-                const newSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                
-                // Set width and height to visible dimensions
-                newSvg.setAttribute('width', containerRect.width);
-                newSvg.setAttribute('height', containerRect.height);
-                newSvg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-                newSvg.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink');
-                newSvg.setAttribute('version', '1.1');
-                
-                // Add white background
-                const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-                rect.setAttribute('width', '100%');
-                rect.setAttribute('height', '100%');
-                rect.setAttribute('fill', 'white');
-                newSvg.appendChild(rect);
-                
-                // Add content of the original SVG
-                const svgContent = originalSvg.innerHTML;
-                newSvg.innerHTML += svgContent;
-                
-                return newSvg;
-            }
             
             // Download filesmap
             showDiagram('filesmap');
@@ -658,37 +629,6 @@ flowchart TD
             
             // Show the filesmap by default
             showDiagram('filesmap');
-        });
-
-        window.addEventListener('DOMContentLoaded', function() {
-            // Fetch the Mermaid diagram definition
-            fetch('.mermaidfilesmap')
-                .then(response => response.text())
-                .then(diagramText => {
-                    // Extract the Mermaid diagram code
-                    const match = diagramText.match(/```mermaid\s*([\s\S]*?)\s*```/);
-                    if (match && match[1]) {
-                        // Update diagram display
-                        const diagramContainer = document.getElementById('diagram-container');
-                        diagramContainer.textContent = match[1];
-                        
-                        // Initialize Mermaid
-                        mermaid.initialize({
-                            startOnLoad: true,
-                            theme: 'default',
-                            securityLevel: 'loose',
-                            flowchart: {
-                                htmlLabels: true,
-                                useMaxWidth: true,
-                                curve: 'basis'
-                            }
-                        });
-                        
-                        // Render diagram
-                        mermaid.init(undefined, diagramContainer);
-                    }
-                })
-                .catch(error => console.error('Error loading diagram:', error));
         });
     </script>
 </body>
