@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TourGuideAI Security Scan - MOCK REPORT</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; }
+    .mock-warning { background-color: #fff3cd; border: 1px solid #ffeeba; padding: 1em; margin-bottom: 1em; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2; }
+    .risk-low { background-color: #d4edda; }
+    .risk-medium { background-color: #fff3cd; }
+    .risk-info { background-color: #d1ecf1; }
+  </style>
+</head>
+<body>
+  <h1>TourGuideAI Security Scan Report (MOCK)</h1>
+  <div class="mock-warning">
+    <strong>WARNING:</strong> This is a mock report generated without using OWASP ZAP. 
+    It contains simulated findings for demonstration purposes only.
+  </div>
+  
+  <h2>Summary</h2>
+  <p>Scan target: https://staging.tourguideai.com</p>
+  <p>Scan date: 2025-04-10T09:33:34.506Z</p>
+  
+  <h2>Findings</h2>
+  <table>
+    <tr>
+      <th>Risk Level</th>
+      <th>Issue</th>
+      <th>URL</th>
+    </tr>
+    
+    <tr class="risk-low">
+      <td>Low</td>
+      <td>X-Content-Type-Options Header Missing</td>
+      <td>https://staging.tourguideai.com/login</td>
+    </tr>
+    
+    <tr class="risk-medium">
+      <td>Medium</td>
+      <td>Application Error Disclosure</td>
+      <td>https://staging.tourguideai.com/api/user</td>
+    </tr>
+    
+    <tr class="risk-informational">
+      <td>Informational</td>
+      <td>Modern Web Application</td>
+      <td>https://staging.tourguideai.com</td>
+    </tr>
+    
+  </table>
+  
+  <h2>Recommendations</h2>
+  <ul>
+    <li>Install OWASP ZAP for proper security scanning</li>
+    <li>Run regular security scans against staging and production environments</li>
+    <li>Review application headers and error handling</li>
+  </ul>
+  
+  <p><em>This is a mock report for development and testing purposes.</em></p>
+</body>
+</html>
+  

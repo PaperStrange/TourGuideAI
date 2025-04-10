@@ -30,9 +30,10 @@ const colors = {
 // Parse command-line arguments
 const targetUrl = process.argv[2] || process.env.TARGET_URL || 'https://staging.tourguideai.com';
 const zapProxyUrl = process.argv[3] || process.env.ZAP_PROXY || 'http://localhost:8080';
+const mockMode = process.argv[4] === 'mock' || process.env.MOCK_MODE === 'true';
 
 // Create security-reports directory if it doesn't exist
-const reportDir = path.join(__dirname, '..', 'security-reports');
+const reportDir = path.join(__dirname, '..', 'docs', 'project_lifecycle', 'all_tests', 'results', 'security-reports');
 if (!fs.existsSync(reportDir)) {
   fs.mkdirSync(reportDir, { recursive: true });
 }
@@ -110,18 +111,38 @@ async function startZap() {
   if (!fs.existsSync(zapPath)) {
     log(`ZAP executable not found at ${zapPath}`, 'error');
     log('Please install OWASP ZAP or set ZAP_PATH environment variable to the correct path', 'error');
-    process.exit(1);
+    
+    if (mockMode) {
+      log('Running in mock mode. Continuing without ZAP...', 'warning');
+      return false;
+    } else {
+      log('To run without ZAP, use the mock mode: node scripts/run-security-audit.js [target_url] [zap_proxy_url] mock', 'info');
+      process.exit(1);
+    }
   }
   
-  // Start ZAP in daemon mode
-  const zapProcess = spawn(zapPath, ['-daemon', '-config', 'api.disablekey=true'], {
-    detached: true,
-    stdio: 'ignore',
-  });
-  
-  // Allow ZAP to start
-  log('Starting ZAP daemon...');
-  zapProcess.unref();
+  try {
+    // Start ZAP in daemon mode using execSync
+    log('Starting ZAP daemon...');
+    const { execSync } = require('child_process');
+    
+    // Use start /b on Windows to start the process in the background
+    if (isWindows) {
+      execSync(`start /b "${zapPath}" -daemon -config api.disablekey=true`, {
+        shell: true,
+        stdio: 'ignore'
+      });
+    } else {
+      execSync(`"${zapPath}" -daemon -config api.disablekey=true &`, {
+        shell: true,
+        stdio: 'ignore'
+      });
+    }
+  } catch (error) {
+    log(`Error starting ZAP: ${error.message}`, 'error');
+    log('Please start ZAP manually.', 'error');
+    process.exit(1);
+  }
   
   // Wait for ZAP to start
   let zapRunning = false;
@@ -142,6 +163,7 @@ async function startZap() {
   }
   
   log('ZAP started successfully!', 'success');
+  return true;
 }
 
 // Function to install dependencies
@@ -149,23 +171,40 @@ async function installDependencies() {
   return new Promise((resolve, reject) => {
     log('Installing dependencies...', 'info');
     
-    const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
-    const install = spawn(npm, ['install', 'zaproxy', 'axios'], {
-      cwd: path.join(__dirname, '..'),
-    });
-    
-    install.stdout.on('data', data => console.log(data.toString()));
-    install.stderr.on('data', data => console.error(data.toString()));
-    
-    install.on('close', code => {
-      if (code === 0) {
+    try {
+      // Use require to check if the modules are already installed
+      // This avoids spawning a child process which is failing with EINVAL
+      try {
+        require('zaproxy');
+        require('axios');
+        log('Dependencies already installed', 'success');
+        resolve();
+        return;
+      } catch (err) {
+        // Module not found, continue with installation
+      }
+      
+      // Alternative approach using execSync instead of spawn
+      const { execSync } = require('child_process');
+      const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
+      
+      try {
+        const output = execSync(`${npm} install zaproxy axios`, {
+          cwd: path.join(__dirname, '..'),
+          stdio: 'pipe',
+          encoding: 'utf8'
+        });
+        
         log('Dependencies installed successfully', 'success');
         resolve();
-      } else {
-        log(`npm install failed with code ${code}`, 'error');
-        reject(new Error(`npm install failed with code ${code}`));
+      } catch (execError) {
+        log(`npm install failed: ${execError.message}`, 'error');
+        reject(new Error(`npm install failed: ${execError.message}`));
       }
-    });
+    } catch (error) {
+      log(`Error installing dependencies: ${error.message}`, 'error');
+      reject(error);
+    }
   });
 }
 
@@ -187,6 +226,87 @@ function createLatestRedirect(reportFile) {
   log(`Created redirect to latest report: ${path.join(reportDir, 'latest.html')}`, 'success');
 }
 
+// Function to run a mock security scan
+async function runMockSecurityScan() {
+  log('Running mock security scan...', 'info');
+  
+  // Define sample vulnerabilities for the mock scan
+  const mockVulnerabilities = [
+    { risk: 'Low', name: 'X-Content-Type-Options Header Missing', url: `${targetUrl}/login` },
+    { risk: 'Medium', name: 'Application Error Disclosure', url: `${targetUrl}/api/user` },
+    { risk: 'Informational', name: 'Modern Web Application', url: targetUrl }
+  ];
+  
+  // Wait to simulate scanning
+  await new Promise(resolve => setTimeout(resolve, 3000));
+  
+  // Create a mock report
+  const mockReportContent = `
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TourGuideAI Security Scan - MOCK REPORT</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; }
+    .mock-warning { background-color: #fff3cd; border: 1px solid #ffeeba; padding: 1em; margin-bottom: 1em; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2; }
+    .risk-low { background-color: #d4edda; }
+    .risk-medium { background-color: #fff3cd; }
+    .risk-info { background-color: #d1ecf1; }
+  </style>
+</head>
+<body>
+  <h1>TourGuideAI Security Scan Report (MOCK)</h1>
+  <div class="mock-warning">
+    <strong>WARNING:</strong> This is a mock report generated without using OWASP ZAP. 
+    It contains simulated findings for demonstration purposes only.
+  </div>
+  
+  <h2>Summary</h2>
+  <p>Scan target: ${targetUrl}</p>
+  <p>Scan date: ${new Date().toISOString()}</p>
+  
+  <h2>Findings</h2>
+  <table>
+    <tr>
+      <th>Risk Level</th>
+      <th>Issue</th>
+      <th>URL</th>
+    </tr>
+    ${mockVulnerabilities.map(vuln => `
+    <tr class="risk-${vuln.risk.toLowerCase()}">
+      <td>${vuln.risk}</td>
+      <td>${vuln.name}</td>
+      <td>${vuln.url}</td>
+    </tr>
+    `).join('')}
+  </table>
+  
+  <h2>Recommendations</h2>
+  <ul>
+    <li>Install OWASP ZAP for proper security scanning</li>
+    <li>Run regular security scans against staging and production environments</li>
+    <li>Review application headers and error handling</li>
+  </ul>
+  
+  <p><em>This is a mock report for development and testing purposes.</em></p>
+</body>
+</html>
+  `;
+  
+  // Save the mock report
+  const reportFile = `${reportPath}.html`;
+  fs.writeFileSync(reportFile, mockReportContent);
+  
+  log('Mock security scan completed successfully!', 'success');
+  log(`Mock report saved to: ${reportFile}`, 'success');
+  
+  createLatestRedirect(reportFile);
+  return true;
+}
+
 // Main function
 async function main() {
   try {
@@ -197,8 +317,16 @@ ${colors.bold}├─────────────────────
 ${colors.bold}│  Target URL: ${targetUrl.padEnd(27)}│${colors.reset}
 ${colors.bold}│  ZAP Proxy:  ${zapProxyUrl.padEnd(27)}│${colors.reset}
 ${colors.bold}│  Report Dir: ${reportDir.padEnd(27)}│${colors.reset}
+${colors.bold}│  Mock Mode:  ${(mockMode ? 'Enabled' : 'Disabled').padEnd(27)}│${colors.reset}
 ${colors.bold}└─────────────────────────────────────────┘${colors.reset}
 `);
+    
+    // If in mock mode, skip ZAP related steps
+    if (mockMode) {
+      log('Running in mock mode - OWASP ZAP will not be used', 'warning');
+      await runMockSecurityScan();
+      return;
+    }
     
     // Ensure dependencies are installed
     try {
@@ -211,7 +339,12 @@ ${colors.bold}└─────────────────────
     const isZapRunning = await checkZapIsRunning(zapProxyUrl);
     
     if (!isZapRunning) {
-      await startZap();
+      const zapStarted = await startZap();
+      if (!zapStarted && mockMode) {
+        // If ZAP didn't start but we're in mock mode, run the mock scan
+        await runMockSecurityScan();
+        return;
+      }
     }
     
     // Set environment variables for the security audit script
@@ -221,29 +354,33 @@ ${colors.bold}└─────────────────────
     
     // Run the security audit script
     log('Running security audit...', 'info');
-    const auditScript = spawn('node', [path.join(__dirname, '..', 'tests', 'security', 'security-audit.js')], {
-      stdio: 'inherit',
-      env: process.env,
-    });
-    
-    auditScript.on('close', code => {
-      if (code === 0) {
-        log('Security audit completed successfully!', 'success');
-        
-        // Check if the report file was created
-        const reportFile = `${reportPath}.html`;
-        if (fs.existsSync(reportFile)) {
-          log(`Report saved to: ${reportFile}`, 'success');
-          createLatestRedirect(reportFile);
-          log('Security audit report is ready for review.', 'success');
-        } else {
-          log(`Expected report file not found: ${reportFile}`, 'warning');
+    try {
+      const { execSync } = require('child_process');
+      const output = execSync(`node "${path.join(__dirname, '..', 'tests', 'security', 'security-audit.js')}"`, {
+        stdio: 'inherit',
+        env: {
+          ...process.env,
+          TARGET_URL: targetUrl,
+          ZAP_PROXY: zapProxyUrl,
+          REPORT_PATH: reportPath
         }
+      });
+      
+      log('Security audit completed successfully!', 'success');
+      
+      // Check if the report file was created
+      const reportFile = `${reportPath}.html`;
+      if (fs.existsSync(reportFile)) {
+        log(`Report saved to: ${reportFile}`, 'success');
+        createLatestRedirect(reportFile);
+        log('Security audit report is ready for review.', 'success');
       } else {
-        log(`Security audit failed with code ${code}`, 'error');
-        process.exit(code);
+        log(`Expected report file not found: ${reportFile}`, 'warning');
       }
-    });
+    } catch (error) {
+      log(`Security audit failed: ${error.message}`, 'error');
+      process.exit(1);
+    }
     
   } catch (error) {
     log(`Error: ${error.message}`, 'error');

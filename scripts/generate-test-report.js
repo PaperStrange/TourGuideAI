@@ -6,7 +6,7 @@ const path = require('path');
  */
 function generateTestReport() {
   const resultsDir = 'docs/project_lifecycle/all_tests/results/data';
-  const outputDir = 'docs/project_lifecycle/all_tests/results/stability-tests';
+  const outputDir = 'docs/project_lifecycle/all_tests/results/stability-test';
   
   // Ensure output directory exists
   if (!fs.existsSync(outputDir)) {
