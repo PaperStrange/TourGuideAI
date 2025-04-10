@@ -50,6 +50,10 @@ function generateTestReport() {
   const totalPassedTests = combinedResults.passed.reduce((sum, file) => sum + file.count, 0);
   const passPercentage = totalTests > 0 ? Math.round((totalPassedTests / totalTests) * 100) : 0;
   
+  // Calculate skipped tests
+  const totalSkippedTests = combinedResults.skipped ? 
+    combinedResults.skipped.reduce((sum, file) => sum + (file.count || 0), 0) : 0;
+  
   // Generate HTML report
   const html = `
   <!DOCTYPE html>
@@ -94,6 +98,10 @@ function generateTestReport() {
         background-color: #cce5ff;
         border-left: 5px solid #007bff;
       }
+      .card-yellow {
+        background-color: #fff3cd;
+        border-left: 5px solid #ffc107;
+      }
       .big-number {
         font-size: 36px;
         font-weight: bold;
@@ -132,6 +140,10 @@ function generateTestReport() {
         background-color: #dc3545;
         color: white;
       }
+      .badge-warning {
+        background-color: #ffc107;
+        color: #212529;
+      }
       .progress-container {
         width: 100%;
         height: 20px;
@@ -163,6 +175,10 @@ function generateTestReport() {
         <h3>Failed Files</h3>
         <div class="big-number">${combinedResults.failed.length}</div>
       </div>
+      <div class="summary-card card-yellow">
+        <h3>Files with Skipped Tests</h3>
+        <div class="big-number">${combinedResults.skipped ? combinedResults.skipped.length : 0}</div>
+      </div>
     </div>
     
     <h2>Test Coverage</h2>
@@ -170,6 +186,7 @@ function generateTestReport() {
       <div class="progress-bar" style="width: ${passPercentage}%"></div>
     </div>
     <p><strong>${passPercentage}%</strong> of tests passing (${totalPassedTests} of ${totalTests} tests)</p>
+    ${totalSkippedTests > 0 ? `<p><strong>Note:</strong> There are ${totalSkippedTests} skipped tests across ${combinedResults.skipped.length} files that need attention.</p>` : ''}
     
     <h2>Results by Category</h2>
     ${categories.map(category => {
@@ -204,10 +221,39 @@ function generateTestReport() {
                 <td>${file.error || 'Some tests failed'}</td>
               </tr>
             `).join('')}
+            ${results.skipped && results.skipped.length ? results.skipped.map(file => `
+              <tr>
+                <td>${file.file}</td>
+                <td><span class="badge badge-warning">Skipped</span></td>
+                <td>${file.count || 'Unknown'}</td>
+                <td>Contains skipped tests</td>
+              </tr>
+            `).join('') : ''}
           </tbody>
         </table>
       `;
     }).join('')}
+    
+    <h2>Skipped Tests Overview</h2>
+    ${!combinedResults.skipped || combinedResults.skipped.length === 0 ? 
+      `<p>No skipped tests found. Great job!</p>` : 
+      `<table>
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Skipped Tests</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${combinedResults.skipped.map(file => `
+            <tr>
+              <td>${file.file}</td>
+              <td>${file.count || 'Unknown'}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>`
+    }
     
     <h2>Test Execution Details</h2>
     <table>

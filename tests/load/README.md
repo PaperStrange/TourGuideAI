@@ -1,99 +1,60 @@
-# Load Testing Suite
+# Load Tests
 
-This directory contains the configuration and scenario files for load testing the TourGuideAI application using k6.
+This directory contains load and performance tests for TourGuideAI to verify the application can handle expected traffic levels.
 
-## Overview
+## Purpose
 
-The load testing suite uses k6 to simulate different user loads and traffic patterns on the application. It helps ensure the application can handle expected traffic volumes and identifies performance bottlenecks under load.
+Load tests simulate real-world usage patterns with varying numbers of concurrent users to ensure the application remains responsive and stable under load.
 
-## Directory Structure
+## Directory Contents
 
-- `k6.config.js` - Main configuration file for k6 load testing
-- `scenarios/` - Test scenarios for different application flows
-  - `route_creation.js` - Load test for the route creation flow
-  - `home.js` - Load test for the home page
-  - `auth.js` - Load test for the authentication flow
-  - `route_viewing.js` - Load test for the route viewing flow
-  - `api_only/` - API-focused load test scenarios
-    - `route_generation.js` - Tests for the route generation API
-    - `route_fetching.js` - Tests for the route fetching API
-    - `user_profile.js` - Tests for the user profile API
+- `load-test.js`: Main load test script with various traffic scenarios
+- `route-generation-load.js`: Specific load tests for the route generation API
+- `k6.config.js`: Configuration for k6 load testing tool
+- `scenarios/`: Directory containing different load test scenarios
 
-## Load Testing Scenarios
+## Running Load Tests
 
-The configuration defines four main load testing scenarios:
-
-1. **Normal Load** - Simulates typical daily usage with gradual ramp-up to 20 users
-2. **Peak Load** - Simulates peak usage with up to 50 concurrent users
-3. **API Stress** - Targets API endpoints directly with 30 requests per second
-4. **Soak Test** - Tests long-term reliability with 10 users over 30 minutes
-
-## Running Tests
-
-### Prerequisites
-
-1. Install k6:
-   ```bash
-   # Linux
-   sudo apt-get install k6
-   
-   # macOS
-   brew install k6
-   
-   # Windows
-   choco install k6
-   ```
-
-### Running a Test
-
-Run all scenarios:
-```bash
-k6 run tests/load/k6.config.js
-```
-
-Run a specific scenario:
-```bash
-k6 run --env SCENARIO=normal_load tests/load/k6.config.js
-```
-
-Run with custom environment variables:
-```bash
-k6 run --env BASE_URL=https://staging.tourguideai.com tests/load/k6.config.js
-```
-
-### Test Results
-
-Test results can be output in various formats:
+Run the load tests using the npm script:
 
 ```bash
-# JSON output
-k6 run --out json=results.json tests/load/k6.config.js
-
-# CSV output
-k6 run --out csv=results.csv tests/load/k6.config.js
-
-# InfluxDB output (for visualization in Grafana)
-k6 run --out influxdb=http://localhost:8086/k6 tests/load/k6.config.js
+npm run test:load
 ```
 
-## Performance Thresholds
+Or directly with k6:
 
-The tests include the following thresholds:
+```bash
+k6 run tests/load/load-test.js
+```
 
-- 95% of requests must complete below 1 second
-- 99% of requests must complete below 2 seconds
-- Less than 1% of requests should fail
-- Static assets should load in under 100ms for 95% of requests
-- API calls should complete in under 1 second for 95% of requests
+For specific scenario testing:
 
-## Adding New Scenarios
+```bash
+k6 run tests/load/scenarios/spike-test.js
+```
 
-To add a new test scenario:
+## What These Tests Verify
 
-1. Create a new JavaScript file in the `scenarios/` directory
-2. Export a function that performs the test steps
-3. Import and call the function from `k6.config.js`
+- Application response times under various loads
+- Route generation performance with concurrent users
+- Map visualization performance under load
+- System stability during traffic spikes
+- API endpoint performance
+- Database query performance
+- Memory utilization patterns
+- Network bottlenecks
 
-## Load Testing Results
+## Requirements
 
-A full report of load testing results is available in `docs/phase5-implementation-status.md`. 
+- [k6](https://k6.io/docs/getting-started/installation/) installed and accessible
+- Node.js 14+ and npm
+
+## Test Reports
+
+Load test reports are generated in the `load-test-results/` directory and include:
+
+- Response time trends
+- Request rate data
+- Error rates
+- Threshold validations
+- Performance metrics over time 

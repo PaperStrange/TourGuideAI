@@ -16,6 +16,20 @@
 - When creating new documentation, always verify existing document structures and locations
 - When using templates, maintain consistency with existing file formats and conventions
 
+## Test Organization
+- **MUST-OBEY PRINCIPLE**: Organize tests by type (smoke, security, load) rather than by feature to improve discoverability and maintenance
+- Centralizing test configurations in a dedicated directory prevents configuration drift and inconsistencies
+- Comprehensive test documentation is as important as the tests themselves for team knowledge sharing
+- Standardizing directory structure across test categories makes the codebase more approachable for new developers
+- Component tests should be organized by logical feature categories, not flat directories
+- Test scripts should be abstracted from implementation details to survive structural reorganization
+- Utility scripts for maintaining test organization pay for themselves rapidly during refactoring
+- Visualizing directory structures in documentation significantly improves comprehension
+- When reorganizing test files, update related scripts immediately to prevent CI/CD breaks
+- Consistent test naming conventions improve searchability and organization
+- Use recursive glob patterns (like `**/*.test.js`) when searching for tests to accommodate deep directory structures
+- Create specific README files for each test category to document purpose, usage, and requirements
+
 ## Architecture
 - Feature-based architecture provides better organization and maintainability than page-based architecture
 - Core modules should be separated from feature-specific code to reduce duplication

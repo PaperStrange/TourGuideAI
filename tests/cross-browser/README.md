@@ -1,66 +1,62 @@
-# Cross-Browser Testing Suite
+# Cross-Browser Tests
 
-This directory contains the configuration and test files for cross-browser testing of the TourGuideAI application.
+This directory contains cross-browser compatibility tests for TourGuideAI, ensuring the application works correctly across different browsers and platforms.
 
-## Overview
+## Purpose
 
-The cross-browser testing suite uses Playwright and BrowserStack integration to test the application across multiple browsers and devices. It ensures that the application functions correctly and appears consistent across different environments.
+Cross-browser tests verify that the application's UI and functionality work consistently across multiple browsers, devices, and viewport sizes.
 
-## Directory Structure
+## Directory Contents
 
-- `browser-test-matrix.js` - Configuration of browsers, devices, and critical flows to test
-- `browserstack.config.js` - BrowserStack integration configuration 
-- `playwright.config.js` - Playwright test runner configuration
-- `specs/` - Test specifications for different application flows
-  - `route-creation.spec.js` - Tests for the route creation flow
+- `specs/`: Directory containing cross-browser test specifications
+  - `cross-browser.test.js`: General cross-browser compatibility tests
+- `travel-planning.spec.js`: Travel planning feature tests across browsers
+- `browser-test-matrix.js`: Browser configuration matrix defining the test combinations
+- `playwright.config.js`: Playwright configuration specific to cross-browser tests
+- `browserstack.config.js`: BrowserStack configuration for running tests on cloud browsers
 
-## Running Tests
+## Running Cross-Browser Tests
 
-### Local Testing
-
-To run tests locally with Playwright:
-
-```bash
-# Install dependencies
-npm install
-
-# Run on all configured browsers
-npx playwright test --config tests/cross-browser/playwright.config.js
-
-# Run on specific browser
-npx playwright test --config tests/cross-browser/playwright.config.js --project=chromium
-```
-
-### BrowserStack Testing
-
-To run tests on BrowserStack:
+Run the cross-browser tests using the npm script:
 
 ```bash
-# Set environment variables
-export BROWSERSTACK_USERNAME=your_username
-export BROWSERSTACK_ACCESS_KEY=your_access_key
-
-# Run tests
-npx browserstack-runner --config tests/cross-browser/browserstack.config.js
+npm run test:cross-browser
 ```
 
-## Test Matrix
+Or directly with Playwright:
 
-The test matrix in `browser-test-matrix.js` defines:
+```bash
+npx playwright test tests/cross-browser/specs --config=tests/config/playwright.config.js
+```
 
-1. Desktop browsers to test (Chrome, Firefox, Safari, Edge)
-2. Mobile devices to test (iPhone, Android devices)
-3. Critical application flows to test on each platform
-4. Feature-specific browser requirements
+For BrowserStack testing:
 
-## Adding New Tests
+```bash
+npx browserstack-runner -c tests/config/browserstack.config.js
+```
 
-To add a new test:
+## What These Tests Verify
 
-1. Create a new spec file in the `specs/` directory
-2. Follow the Playwright test pattern as shown in existing tests
-3. Add the test to CI pipeline if appropriate
+- Rendering consistency across browsers
+- Interactive elements functionality
+- Responsive design at different viewport sizes
+- Touch interactions on mobile devices
+- Browser-specific API compatibility
+- Font rendering consistency
+- CSS compatibility
+- Service worker support
 
-## Compatibility Table
+## Browser Coverage
 
-A full compatibility report is available in `docs/phase5-implementation-status.md`. 
+Tests are run against the following browsers:
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Mobile Chrome (Android)
+- Mobile Safari (iOS)
+
+## Test Reports
+
+Cross-browser test reports are generated in the `tests/cross-browser/reports/` directory. 

@@ -26,6 +26,12 @@ TourGuideAI is an intelligent virtual tour guide application that uses AI to cre
 ```
 TourGuideAI/
 ├── server/              # Backend server code
+│   ├── routes/          # API routes
+│   ├── models/          # Database models
+│   ├── middleware/      # Express middleware
+│   ├── services/        # Backend services
+│   ├── utils/           # Utility functions
+│   └── tests/           # Server-side tests
 ├── src/                 # Frontend source code
 │   ├── api/             # API clients and interfaces
 │   ├── components/      # Reusable UI components
@@ -49,6 +55,13 @@ TourGuideAI/
 │   ├── pics/            # Images for documentation
 │   ├── prototype/       # Prototype data and mockups
 │   └── project_lifecycle/ # Project management documentation
+├── models/              # AI models and related resources
+│   ├── data/            # Training data
+│   ├── checkpoints/     # Model checkpoints
+│   └── infra/           # Model infrastructure code
+├── tourai_platform/     # TourAI platform specific code
+│   ├── backend/         # Platform backend 
+│   └── frontend/        # Platform frontend
 └── tools/               # Development and deployment tools
 ```
 

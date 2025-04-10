@@ -46,15 +46,20 @@
     "analyze:win": "set ANALYZE=true && npm run build",
     "test:stability": "node scripts/run-stability-tests.js",
     "test:report": "node scripts/generate-test-report.js",
-    "test:stability:frontend": "npx jest src/tests/stability/frontend-stability.test.js",
+    "test:stability:frontend": "npx jest tests/stability/frontend-stability.test.js",
     "test:stability:ux-audit": "npx jest src/tests/stability/ux-audit-stability.test.js",
     "test:stability:task-prompt": "npx jest src/tests/stability/task-prompt-stability.test.js",
+    "test:smoke": "npx playwright test tests/smoke/smoke.test.js",
+    "test:cross-browser": "npx playwright test tests/cross-browser/specs --config=tests/config/playwright.config.js",
+    "test:load": "k6 run tests/load/load-test.js",
+    "test:security": "node scripts/run-security-audit.js",
     "test:ux-audit": "npx jest src/tests/beta-program/ux-audit",
     "test:task-prompt": "npx jest src/tests/beta-program/task-prompt",
     "test:travel-planning": "bash scripts/run-travel-planning-tests.sh",
     "test:travel-planning:components": "npx jest src/tests/components/travel-planning",
     "test:travel-planning:integration": "npx jest src/tests/integration/travel-planning-workflow.test.js",
-    "test:travel-planning:backend": "npx jest server/tests/routeGeneration.test.js server/tests/routeManagement.test.js"
+    "test:travel-planning:backend": "npx jest server/tests/routeGeneration.test.js server/tests/routeManagement.test.js",
+    "reorganize-tests": "node scripts/reorganize-tests.js"
   },
   "eslintConfig": {
     "extends": [
@@ -87,6 +92,7 @@
     "concurrently": "^8.2.1",
     "css-loader": "^7.1.2",
     "file-loader": "^6.2.0",
+    "glob": "^10.3.10",
     "identity-obj-proxy": "^3.0.0",
     "react-test-renderer": "^18.2.0",
     "style-loader": "^4.0.0",

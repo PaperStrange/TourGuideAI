@@ -20,13 +20,13 @@ k6 run \
   --out json=$OUTPUT_DIR/${TEST_NAME}_raw.json \
   --out csv=$OUTPUT_DIR/${TEST_NAME}_metrics.csv \
   --summary-export=$OUTPUT_DIR/${TEST_NAME}_summary.json \
-  tests/load-test.js
+  tests/load/load-test.js
 
 # Generate HTML report from JSON results
 echo "Generating HTML report"
 cat > $OUTPUT_DIR/${TEST_NAME}_report.html << EOL
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>TourGuideAI Load Test Report</title>
   <meta charset="UTF-8">
@@ -34,21 +34,128 @@ cat > $OUTPUT_DIR/${TEST_NAME}_report.html << EOL
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    .container { max-width: 1200px; margin: 0 auto; }
-    .header { background-color: #3498db; color: white; padding: 20px; border-radius: 5px; }
-    .metrics { display: flex; flex-wrap: wrap; justify-content: space-between; margin: 20px 0; }
-    .metric-card { border: 1px solid #ddd; border-radius: 5px; padding: 15px; margin-bottom: 15px; width: 22%; }
-    .metric-card h3 { margin-top: 0; color: #3498db; }
-    .chart-container { margin: 20px 0; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
-    .threshold { margin: 20px 0; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
-    .threshold-pass { color: green; }
-    .threshold-fail { color: red; }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+    .header {
+      padding: 20px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    .summary-box {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+    .summary-card {
+      flex: 1;
+      margin: 0 10px;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .card-green {
+      background-color: #d4edda;
+      border-left: 5px solid #28a745;
+    }
+    .card-red {
+      background-color: #f8d7da;
+      border-left: 5px solid #dc3545;
+    }
+    .card-blue {
+      background-color: #cce5ff;
+      border-left: 5px solid #007bff;
+    }
+    .card-yellow {
+      background-color: #fff3cd;
+      border-left: 5px solid #ffc107;
+    }
+    .big-number {
+      font-size: 36px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .chart-container {
+      margin: 20px 0;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .threshold {
+      margin: 20px 0;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .threshold-pass {
+      color: #28a745;
+    }
+    .threshold-fail {
+      color: #dc3545;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #f8f9fa;
+      font-weight: bold;
+    }
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge-success {
+      background-color: #28a745;
+      color: white;
+    }
+    .badge-danger {
+      background-color: #dc3545;
+      color: white;
+    }
+    .progress-container {
+      width: 100%;
+      height: 20px;
+      background-color: #f1f1f1;
+      border-radius: 10px;
+      margin: 10px 0;
+    }
+    .progress-bar {
+      height: 20px;
+      background-color: #4CAF50;
+      border-radius: 10px;
+    }
     @media (max-width: 768px) {
-      .metric-card { width: 45%; }
+      .summary-card {
+        width: 45%;
+      }
     }
     @media (max-width: 480px) {
-      .metric-card { width: 100%; }
+      .summary-card {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -60,7 +167,7 @@ cat > $OUTPUT_DIR/${TEST_NAME}_report.html << EOL
       <p>Target URL: ${BASE_URL}</p>
     </div>
     
-    <div class="metrics" id="metrics-container">
+    <div class="summary-box" id="metrics-container">
       <!-- Metrics will be populated by JavaScript -->
     </div>
     
@@ -101,16 +208,16 @@ cat > $OUTPUT_DIR/${TEST_NAME}_report.html << EOL
     function populateMetrics(data) {
       const metricsContainer = document.getElementById('metrics-container');
       const metrics = [
-        { name: 'VUs', value: data.metrics.vus.max },
-        { name: 'Duration', value: formatDuration(data.metrics.iteration_duration.max) },
-        { name: 'Iterations', value: data.metrics.iterations.count },
-        { name: 'Failed Requests', value: data.metrics.http_req_failed.fails },
+        { name: 'VUs', value: data.metrics.vus.max, type: 'blue' },
+        { name: 'Duration', value: formatDuration(data.metrics.iteration_duration.max), type: 'blue' },
+        { name: 'Iterations', value: data.metrics.iterations.count, type: 'green' },
+        { name: 'Failed Requests', value: data.metrics.http_req_failed.fails, type: 'red' },
       ];
       
       metrics.forEach(metric => {
         const card = document.createElement('div');
-        card.className = 'metric-card';
-        card.innerHTML = \`<h3>\${metric.name}</h3><p>\${metric.value}</p>\`;
+        card.className = \`summary-card card-\${metric.type}\`;
+        card.innerHTML = \`<h3>\${metric.name}</h3><div class="big-number">\${metric.value}</div>\`;
         metricsContainer.appendChild(card);
       });
     }
@@ -124,7 +231,7 @@ cat > $OUTPUT_DIR/${TEST_NAME}_report.html << EOL
           thresholds[key].thresholds.forEach(threshold => {
             const div = document.createElement('div');
             div.className = threshold.ok ? 'threshold-pass' : 'threshold-fail';
-            div.innerHTML = \`<strong>\${key}:</strong> \${threshold.name} - \${threshold.ok ? 'PASSED' : 'FAILED'}\`;
+            div.innerHTML = \`<strong>\${key}:</strong> \${threshold.name} - <span class="badge badge-\${threshold.ok ? 'success' : 'danger'}">\${threshold.ok ? 'PASSED' : 'FAILED'}</span>\`;
             thresholdsContainer.appendChild(div);
           });
         }
@@ -234,4 +341,19 @@ cat > $OUTPUT_DIR/${TEST_NAME}_report.html << EOL
 </html>
 EOL
 
-echo "Load test completed. Results available at $OUTPUT_DIR/${TEST_NAME}_report.html" 
+# Create a latest.html that redirects to the most recent report
+cat > $OUTPUT_DIR/latest.html << EOL
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="refresh" content="0; url='./${TEST_NAME}_report.html'" />
+  </head>
+  <body>
+    <p>Redirecting to latest report...</p>
+  </body>
+</html>
+EOL
+
+echo "Load test completed. Results available at:"
+echo "- Full report: $OUTPUT_DIR/${TEST_NAME}_report.html"
+echo "- Latest report link: $OUTPUT_DIR/latest.html" 

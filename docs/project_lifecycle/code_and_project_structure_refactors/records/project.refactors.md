@@ -2,6 +2,103 @@
 
 This file documents significant refactoring efforts in the TourGuideAI project, including specific files changed, line numbers, and summaries of modifications.
 
+## Test Structure Reorganization (2025-04-10)
+**Type: Code Structure Refactor**
+
+### Summary
+Reorganized the test structure to improve maintainability and discoverability by categorizing tests by type and creating a clear hierarchy. Moved tests from the root directory into specific subdirectories, standardized documentation, and updated scripts to work with the new structure.
+
+### Design Improvements
+- Implemented a clear test categorization system with dedicated directories for each test type
+- Created a consistent directory structure across all test categories
+- Established comprehensive documentation for each test category
+- Centralized configuration files in a dedicated directory
+- Standardized test naming conventions and organization
+
+### Functionality Changes
+- Preserved all existing test functionality while improving organization
+- Updated test scripts to point to new file locations
+- Enhanced test documentation to improve understanding and usability
+- Added scripts to simplify test execution for each category
+- Created support for reorganizing component tests into logical groupings
+
+### Complexity Management
+- Simplified test discovery with logical directory structure
+- Reduced complexity by centralizing test configurations
+- Improved component test organization with feature-based directories
+- Standardized README files for consistent documentation
+- Created reusable scripts for test organization management
+
+### Modified Files
+
+#### Root Test Structure
+- Created `tests/config/` - For centralized test configurations
+- Created `tests/smoke/` - For critical path verification tests
+- Created `tests/security/` - For security audit tests
+- Created `tests/load/` - For performance and load tests
+- Created `tests/cross-browser/specs/` - For browser compatibility tests
+
+#### Configuration Files
+- Moved `tests/playwright.config.js` → `tests/config/playwright.config.js`
+- Moved `tests/browserstack.config.js` → `tests/config/browserstack.config.js`
+
+#### Test Files
+- Moved `tests/smoke.test.js` → `tests/smoke/smoke.test.js`
+- Moved `tests/cross-browser.test.js` → `tests/cross-browser/specs/cross-browser.test.js`
+- Moved `tests/security-audit.js` → `tests/security/security-audit.js`
+- Moved `tests/load-test.js` → `tests/load/load-test.js`
+
+#### Component Test Organization
+- Organized test files in `src/tests/components/` into feature-based subdirectories:
+  - Created `src/tests/components/api/` for API-related component tests
+  - Created `src/tests/components/ui/` for UI component tests
+  - Created `src/tests/components/router/` for routing component tests
+  - Created `src/tests/components/theme/` for theme-related component tests
+
+#### Documentation
+- Created `tests/README.md` - Main test documentation with directory structure
+- Created `tests/config/README.md` - Configuration documentation
+- Created `tests/smoke/README.md` - Smoke test documentation
+- Created `tests/security/README.md` - Security test documentation
+- Created `tests/load/README.md` - Load test documentation
+- Created `tests/cross-browser/README.md` - Cross-browser test documentation
+- Created `src/tests/README.md` - Frontend test documentation
+- Created `src/tests/components/README.md` - Component test documentation
+- Updated `docs/project.document-inventory.md` with new documentation references
+
+#### Scripts
+- Modified `package.json` - Lines: Multiple sections
+  - Updated test script paths to match new directory structure
+  - Added new test scripts for each test category
+  - Added reorganization utility script
+- Created `scripts/reorganize-tests.js` - Utility for test reorganization
+- Updated `scripts/run-security-audit.js` - Updated paths to security tests
+- Updated `scripts/run-load-tests.sh` - Updated paths to load tests
+- Updated `scripts/run-stability-tests.js` - Updated component test patterns
+- Updated `scripts/run-travel-planning-tests.sh` - Updated test paths
+
+### Testing Improvements
+- Enhanced test discoverability with logical organization
+- Improved test reliability by centralizing configurations
+- Added test-specific documentation to improve understanding
+- Created scripts for easier test execution by category
+- Established patterns for component test organization
+
+### Documentation Enhancements
+- Created comprehensive documentation for the test structure
+- Added detailed README files for each test category
+- Updated documentation inventory with new documentation files
+- Standardized documentation format across all test categories
+- Added visual directory structure representations in documentation
+
+### Code Health Impact
+- **Positive**: Significantly improved test organization and maintainability
+- **Positive**: Enhanced test documentation and discoverability
+- **Positive**: Better separated test concerns by category
+- **Positive**: Improved consistency with standardized test organization
+- **Neutral**: Required updating import paths and scripts
+- **Mitigation**: Added reorganization utility script for easier future reorganization
+
 ## Frontend Stability Improvements (2023-03-25)
 **Type: Application Architecture Refactor**
 
@@ -547,94 +644,6 @@ Implemented comprehensive stability enhancements for Beta Program features, spec
 - Implement graceful degradation as a core design principle
 - Incorporate load testing early in the feature development lifecycle
 - Use realistic data volumes and patterns in development testing
-
-## Frontend Stability Improvements (2023-03-25)
-**Type: Application Architecture Refactor**
-
-### Summary
-Improved the stability and resilience of the frontend React application by fixing critical architectural issues, implementing proper error handling, and ensuring consistent component structure.
-
-### Design Improvements
-- Fixed Router nesting issues to prevent runtime errors
-- Added Material UI ThemeProvider for consistent component styling
-- Implemented proper ESLint global declarations for external libraries
-- Added graceful degradation for backend service unavailability
-- Created comprehensive stability tests to prevent regression
-
-### Functionality Changes
-- Preserved all existing functionality while improving stability
-- Enhanced application resilience when backend services are unavailable
-- Improved error handling and user feedback
-- Standardized component rendering with ThemeProvider
-
-### Complexity Management
-- Simplified React Router structure with single router instance
-- Centralized theme configuration in index.js
-- Used namespaced exports in API modules to prevent naming conflicts
-- Added proper ESLint directives for global variables
-
-### Modified Files
-
-#### React Router Structure
-- Modified `src/App.js` - Lines: 27-38, 84-95
-  - Removed redundant Router component
-  - Kept Routes and Route components for proper nesting
-  - Fixed component hierarchy to prevent Router nesting errors
-
-#### Theme Provider Implementation
-- Modified `src/index.js` - Lines: 3-19
-  - Added ThemeProvider wrapper component
-  - Created theme configuration with consistent palette
-  - Added CssBaseline component for style normalization
-
-#### API Module Organization
-- Modified `src/core/api/index.js` - Lines: 4-21
-  - Changed export pattern from wildcard to namespaced exports
-  - Added default HTTP client export for backward compatibility
-  - Prevented export naming conflicts between API modules
-
-#### ESLint Configuration
-- Modified `src/core/api/googleMapsApi.js` - Lines: 9
-  - Added ESLint global directive for Google Maps integration
-
-#### Backend Resilience
-- Modified `src/App.js` - Lines: 40-78
-  - Added backend availability detection
-  - Implemented fallback UI for backend unavailability
-  - Added error handling for API connection failures
-
-#### Comprehensive Testing
-- Created `tests/stability/frontend-stability.test.js` - Lines: All new
-  - Added tests for Router structure
-  - Added tests for Theme Provider presence
-  - Added tests for ESLint global declarations
-  - Added tests for backend resilience
-
-- Created `src/tests/components/RouterStructure.test.js` - Lines: All new
-  - Added unit tests for proper Router configuration
-
-- Created `src/tests/components/ThemeProvider.test.js` - Lines: All new
-  - Added unit tests for Material UI theming
-
-- Modified `.github/workflows/ci-cd.yml` - Lines: 30-39
-  - Added Frontend Stability Check step to CI pipeline
-  - Added automated checks for Router nesting
-  - Added Theme Provider validation
-  - Added ESLint global declaration checks
-
-### Documentation Enhancements
-- Updated READMEs with new frontend stability information
-- Added frontend stability section to docs/project_lifecycle/knowledge/project.lessons.md
-- Created stability test documentation
-- Updated CI/CD documentation with frontend checks
-
-### Code Health Impact
-- **Positive**: Eliminated critical runtime errors from Router nesting
-- **Positive**: Improved UI consistency with proper theming
-- **Positive**: Enhanced application resilience and error handling
-- **Positive**: Added automated testing to prevent regression
-- **Neutral**: Added small overhead for error checking
-- **Mitigation**: Optimized error handling for minimal performance impact
 
 ## Project Structure Reorganization (2023-03-20)
 **Type: Code Structure Refactor**

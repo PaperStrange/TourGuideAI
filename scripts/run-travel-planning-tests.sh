@@ -7,6 +7,7 @@
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 YELLOW='\033[0;33m'
+BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Print header
@@ -25,6 +26,37 @@ if [ -z "$GOOGLE_MAPS_API_KEY" ]; then
   echo -e "${YELLOW}Warning: GOOGLE_MAPS_API_KEY environment variable not set.${NC}"
   echo "Some tests may fail. Set it with: export GOOGLE_MAPS_API_KEY=your-api-key"
 fi
+
+# Function to check for skipped tests
+check_skipped_tests() {
+  local directory=$1
+  local pattern=${2:-"*.test.js"}
+  local skipped_count=0
+  local skipped_files=()
+  
+  echo -e "\n${BLUE}Checking for skipped tests in $directory/$pattern...${NC}"
+  
+  # Find all test files
+  local test_files=$(find "$directory" -name "$pattern" 2>/dev/null)
+  
+  # Check each file for skipped tests
+  for file in $test_files; do
+    local skip_count=$(grep -c "\.(skip|xdescribe|xit|xtest)" "$file" 2>/dev/null)
+    if [ "$skip_count" -gt 0 ]; then
+      skipped_count=$((skipped_count + skip_count))
+      skipped_files+=("$file ($skip_count skipped tests)")
+    fi
+  done
+  
+  if [ ${#skipped_files[@]} -gt 0 ]; then
+    echo -e "${YELLOW}Found ${skipped_count} skipped tests in ${#skipped_files[@]} files:${NC}"
+    for file in "${skipped_files[@]}"; do
+      echo -e "  - $file"
+    done
+  else
+    echo -e "${GREEN}No skipped tests found.${NC}"
+  fi
+}
 
 # Function to run tests and check result
 run_test_group() {
@@ -47,21 +79,21 @@ run_test_group() {
 # Track overall status
 FAILED_TESTS=0
 
-# 1. Run frontend component tests
-run_test_group "Frontend Component Tests" "npm test src/tests/components/travel-planning -- --silent"
+# 1. Run frontend component tests (using wildcard to find all test files)
+run_test_group "Frontend Component Tests" "npm test src/tests/components/travel-planning/**/*.test.js -- --silent"
 FAILED_TESTS=$((FAILED_TESTS + $?))
 
-# 2. Run backend tests
-run_test_group "Backend Tests" "npm test server/tests/routeGeneration.test.js server/tests/routeManagement.test.js -- --silent"
+# 2. Run backend tests (using wildcard to find all test files)
+run_test_group "Backend Tests" "npm test server/tests/route*.test.js -- --silent"
 FAILED_TESTS=$((FAILED_TESTS + $?))
 
 # 3. Run integration tests
-run_test_group "Integration Tests" "npm test src/tests/integration/travel-planning-workflow.test.js -- --silent"
+run_test_group "Integration Tests" "npm test src/tests/integration/travel-planning*.test.js -- --silent"
 FAILED_TESTS=$((FAILED_TESTS + $?))
 
 # 4. Run end-to-end tests (if Playwright is installed)
 if command -v npx &> /dev/null && npx playwright --version &> /dev/null; then
-  run_test_group "End-to-End Tests" "npx playwright test tests/cross-browser/travel-planning.spec.js"
+  run_test_group "End-to-End Tests" "npx playwright test tests/cross-browser/specs/*travel-planning*.spec.js"
   FAILED_TESTS=$((FAILED_TESTS + $?))
 else
   echo -e "${YELLOW}Skipping End-to-End Tests: Playwright not installed.${NC}"
@@ -75,6 +107,18 @@ if command -v k6 &> /dev/null; then
 else
   echo -e "${YELLOW}Skipping Load Tests: k6 not installed.${NC}"
   echo "Install with: npm install -g k6 (or OS-specific installation)"
+fi
+
+# Check for skipped tests in relevant directories
+echo -e "\n${YELLOW}=================================${NC}"
+echo -e "${YELLOW}Checking for Skipped Tests${NC}"
+echo -e "${YELLOW}=================================${NC}"
+
+check_skipped_tests "src/tests/components/travel-planning"
+check_skipped_tests "server/tests" "route*.test.js"
+check_skipped_tests "src/tests/integration" "travel-planning*.test.js"
+if [ -d "tests" ]; then
+  check_skipped_tests "tests" "*travel-planning*.spec.js"
 fi
 
 # Summary
