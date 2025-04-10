@@ -119,6 +119,14 @@ class LocalStorageService {
   }
 
   /**
+   * Get all timelines from offline storage
+   * @returns {Object} - All timelines
+   */
+  getAllTimelines() {
+    return this.getData(this.STORAGE_KEYS.TIMELINES) || {};
+  }
+
+  /**
    * Add a favorite route
    * @param {string} routeId - Route ID
    * @returns {boolean} - Success status

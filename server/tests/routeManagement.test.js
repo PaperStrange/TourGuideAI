@@ -1,4 +1,4 @@
-const { describe, test, expect, beforeEach, jest } = require('@jest/globals');
+const { describe, test, expect, beforeEach } = require('@jest/globals');
 const { routeManagementService } = require('../services/routeManagementService');
 const { RouteModel } = require('../models/RouteModel');
 const userService = require('../services/userService');

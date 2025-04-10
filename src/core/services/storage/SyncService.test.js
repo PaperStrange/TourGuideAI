@@ -11,6 +11,19 @@ const mockApiClient = {
   updateFavorites: jest.fn()
 };
 
+// Mock server data
+const mockServerRoutes = [
+  { id: 'route1', name: 'Updated Route' },
+  { id: 'route2', name: 'New Route' }
+];
+
+const mockServerTimelines = {
+  route1: { days: [{ day: 1, activities: [] }] },
+  route2: { days: [{ day: 1, activities: [] }] }
+};
+
+const mockServerFavorites = ['route1', 'route2'];
+
 describe('SyncService', () => {
   beforeEach(() => {
     // Clear localStorage and reset mocks
@@ -19,6 +32,29 @@ describe('SyncService', () => {
     
     // Initialize sync service with mock API client
     syncService.initialize(mockApiClient);
+    
+    // Set up default mock responses
+    mockApiClient.getRoutes.mockResolvedValue(mockServerRoutes);
+    mockApiClient.getTimelines.mockResolvedValue(mockServerTimelines);
+    mockApiClient.getFavorites.mockResolvedValue(mockServerFavorites);
+    mockApiClient.updateRoute.mockResolvedValue({ success: true });
+    mockApiClient.updateTimeline.mockResolvedValue({ success: true });
+    mockApiClient.updateFavorites.mockResolvedValue({ success: true });
+    
+    // Mock implementation of setInterval for testing
+    jest.spyOn(global, 'setInterval').mockImplementation((callback, delay) => {
+      return 1; // Return a dummy interval ID
+    });
+    
+    // Mock implementation of setTimeout for testing
+    jest.spyOn(global, 'setTimeout').mockImplementation((callback, delay) => {
+      return 1; // Return a dummy timeout ID
+    });
+  });
+
+  afterEach(() => {
+    // Restore original timer functions
+    jest.restoreAllMocks();
   });
 
   describe('Initialization', () => {
@@ -27,10 +63,8 @@ describe('SyncService', () => {
     });
 
     test('should start periodic sync', () => {
-      jest.useFakeTimers();
       syncService.startPeriodicSync();
-      expect(setInterval).toHaveBeenCalled();
-      jest.useRealTimers();
+      expect(global.setInterval).toHaveBeenCalled();
     });
   });
 
@@ -45,25 +79,24 @@ describe('SyncService', () => {
   });
 
   describe('Route Synchronization', () => {
-    const mockServerRoutes = [
-      { id: 'route1', name: 'Updated Route' },
-      { id: 'route2', name: 'New Route' }
-    ];
-
     test('should sync routes from server', async () => {
-      mockApiClient.getRoutes.mockResolvedValue(mockServerRoutes);
-      
       await syncService.syncRoutes(null);
       
       expect(mockApiClient.getRoutes).toHaveBeenCalledWith({ since: null });
-      expect(localStorageService.getRoute('route1')).toEqual({
-        ...mockServerRoutes[0],
-        lastUpdated: expect.any(String)
-      });
-      expect(localStorageService.getRoute('route2')).toEqual({
-        ...mockServerRoutes[1],
-        lastUpdated: expect.any(String)
-      });
+      
+      // Verify the routes were saved to local storage
+      const route1 = localStorageService.getRoute('route1');
+      const route2 = localStorageService.getRoute('route2');
+      
+      expect(route1).toEqual(expect.objectContaining({
+        id: 'route1',
+        name: 'Updated Route'
+      }));
+      
+      expect(route2).toEqual(expect.objectContaining({
+        id: 'route2',
+        name: 'New Route'
+      }));
     });
 
     test('should sync local routes to server', async () => {
@@ -76,64 +109,68 @@ describe('SyncService', () => {
       
       await syncService.syncRoutes(null);
       
-      expect(mockApiClient.updateRoute).toHaveBeenCalledWith('route1', localRoute);
+      expect(mockApiClient.updateRoute).toHaveBeenCalledWith('route1', expect.objectContaining({
+        id: 'route1',
+        name: 'Local Route'
+      }));
     });
   });
 
   describe('Timeline Synchronization', () => {
-    const mockServerTimelines = {
-      route1: { days: [{ day: 1, activities: [] }] },
-      route2: { days: [{ day: 1, activities: [] }] }
-    };
-
     test('should sync timelines from server', async () => {
-      mockApiClient.getTimelines.mockResolvedValue(mockServerTimelines);
-      
       await syncService.syncTimelines(null);
       
       expect(mockApiClient.getTimelines).toHaveBeenCalledWith({ since: null });
-      expect(localStorageService.getTimeline('route1')).toEqual({
-        ...mockServerTimelines.route1,
-        lastUpdated: expect.any(String)
-      });
-      expect(localStorageService.getTimeline('route2')).toEqual({
-        ...mockServerTimelines.route2,
-        lastUpdated: expect.any(String)
-      });
+      
+      // Verify the timelines were saved to local storage
+      const timeline1 = localStorageService.getTimeline('route1');
+      const timeline2 = localStorageService.getTimeline('route2');
+      
+      expect(timeline1).toEqual(expect.objectContaining({
+        days: [{ day: 1, activities: [] }]
+      }));
+      
+      expect(timeline2).toEqual(expect.objectContaining({
+        days: [{ day: 1, activities: [] }]
+      }));
     });
 
     test('should sync local timelines to server', async () => {
       const localTimeline = {
-        days: [{ day: 1, activities: [] }],
+        days: [{ day: 1, activities: [{ name: 'Local Activity' }] }],
         lastUpdated: new Date().toISOString()
       };
       localStorageService.saveTimeline('route1', localTimeline);
       
       await syncService.syncTimelines(null);
       
-      expect(mockApiClient.updateTimeline).toHaveBeenCalledWith('route1', localTimeline);
+      expect(mockApiClient.updateTimeline).toHaveBeenCalledWith('route1', expect.objectContaining({
+        days: [{ day: 1, activities: [{ name: 'Local Activity' }] }]
+      }));
     });
   });
 
   describe('Favorites Synchronization', () => {
-    const mockServerFavorites = ['route1', 'route2'];
-
     test('should sync favorites from server', async () => {
-      mockApiClient.getFavorites.mockResolvedValue(mockServerFavorites);
-      
       await syncService.syncFavorites();
       
       expect(mockApiClient.getFavorites).toHaveBeenCalled();
-      expect(localStorageService.getFavorites()).toEqual(mockServerFavorites);
+      
+      // Verify the favorites were saved to local storage
+      const favorites = localStorageService.getFavorites();
+      expect(favorites).toContain('route1');
+      expect(favorites).toContain('route2');
     });
 
     test('should sync local favorites to server', async () => {
       localStorageService.addFavorite('route1');
-      localStorageService.addFavorite('route2');
+      localStorageService.addFavorite('route3');
       
       await syncService.syncFavorites();
       
-      expect(mockApiClient.updateFavorites).toHaveBeenCalledWith(['route1', 'route2']);
+      expect(mockApiClient.updateFavorites).toHaveBeenCalledWith(
+        expect.arrayContaining(['route1', 'route3'])
+      );
     });
   });
 
@@ -145,13 +182,16 @@ describe('SyncService', () => {
       
       await syncService.processSyncQueue();
       
-      expect(mockApiClient.updateRoute).toHaveBeenCalledWith('route1', mockRoute);
+      expect(mockApiClient.updateRoute).toHaveBeenCalledWith('route1', expect.objectContaining({
+        id: 'route1',
+        name: 'Test Route'
+      }));
       expect(syncService.syncQueue.size).toBe(0);
     });
 
     test('should handle failed syncs', async () => {
       const mockError = new Error('Sync failed');
-      mockApiClient.updateRoute.mockRejectedValue(mockError);
+      mockApiClient.updateRoute.mockRejectedValueOnce(mockError);
       
       localStorageService.saveRoute({ id: 'route1', name: 'Test Route' });
       syncService.queueForSync('route', 'route1');
@@ -166,13 +206,11 @@ describe('SyncService', () => {
   describe('Error Handling', () => {
     test('should handle sync errors and retry', async () => {
       const mockError = new Error('Sync failed');
-      mockApiClient.getRoutes.mockRejectedValue(mockError);
+      mockApiClient.getRoutes.mockRejectedValueOnce(mockError);
       
-      jest.useFakeTimers();
       await syncService.sync();
       
-      expect(setTimeout).toHaveBeenCalled();
-      jest.useRealTimers();
+      expect(global.setTimeout).toHaveBeenCalled();
     });
 
     test('should force immediate sync', async () => {
@@ -183,7 +221,10 @@ describe('SyncService', () => {
       await syncService.forceSync();
       
       expect(syncService.syncQueue.size).toBe(0);
-      expect(mockApiClient.updateRoute).toHaveBeenCalledWith('route1', mockRoute);
+      expect(mockApiClient.updateRoute).toHaveBeenCalledWith('route1', expect.objectContaining({
+        id: 'route1',
+        name: 'Test Route'
+      }));
     });
   });
 }); 

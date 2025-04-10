@@ -1,4 +1,4 @@
-const { describe, test, expect, beforeEach, jest } = require('@jest/globals');
+const { describe, test, expect, beforeEach } = require('@jest/globals');
 const { routeGenerationService } = require('../services/routeGenerationService');
 const openaiClient = require('../clients/openaiClient');
 const googleMapsClient = require('../clients/googleMapsClient');
