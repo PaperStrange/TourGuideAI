@@ -276,7 +276,48 @@ npm run test:ux-audit-system
 npm run test:task-prompt-system
 npm run test:errors
 npm run test:localization
+npm run test:travel-planning
 ```
+
+## Travel Planning Tests
+
+The Travel Planning feature has comprehensive test coverage across multiple test levels:
+
+### Test Files Structure
+
+```
+src/tests/components/travel-planning/
+├── RouteGenerator.test.js       # Tests for route generation UI
+├── RoutePreview.test.js         # Tests for route preview component
+└── ItineraryBuilder.test.js     # Tests for itinerary editing
+
+src/tests/integration/
+└── travel-planning-workflow.test.js  # Integration tests for the full workflow
+
+server/tests/
+├── routeGeneration.test.js      # Backend route generation service tests
+└── routeManagement.test.js      # Backend route management service tests
+
+tests/cross-browser/
+└── travel-planning.spec.js      # End-to-end Playwright tests
+
+tests/load/
+└── route-generation-load.js     # k6 load tests for API endpoints
+```
+
+### Running Travel Planning Tests
+
+We've created a dedicated script to run all travel planning tests:
+
+```bash
+# Run all travel planning tests
+./scripts/run-travel-planning-tests.sh
+
+# Run specific test files
+npm test src/tests/components/travel-planning/RouteGenerator.test.js
+```
+
+See the [Travel Planning Testing Plan](../docs/project_lifecycle/stability_tests/plans/project-travel-planning-test-plan.md) for detailed information about the testing approach, scenarios, and requirements.
 
 ## Test Coverage Requirements
 
