@@ -161,7 +161,7 @@ if (totalFailed > 0) {
 
 // Save test results to docs folder
 const saveResults = () => {
-  const resultsBaseDir = 'docs/project_lifecycle/stability_tests/results/data';
+  const resultsBaseDir = 'docs/project_lifecycle/all_tests/results/data';
   const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
   
   // Create base directory if it doesn't exist

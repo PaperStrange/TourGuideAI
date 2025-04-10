@@ -89,5 +89,8 @@ The SyncService has been implemented to handle synchronization of different data
 - Sync performance is acceptable even with large data volumes
 - Conflicts are handled gracefully
 
+## Test Results Documentation
+All test results should be documented in the `docs/project_lifecycle/all_tests/results` directory following the established naming conventions.
+
 ---
 *Plan created: 2023-04-10* 

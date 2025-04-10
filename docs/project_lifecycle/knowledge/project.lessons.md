@@ -2,7 +2,8 @@
 
 ## Project Management
 - **MUST-OBEY PRINCIPLE**: Strict alignment between milestones (.milestones), key results (.project), and tasks (.todos) is CRITICAL for project success using the OKR framework
-- **MUST-OBEY PRINCIPLE**: ALWAYS check for existing files before creating new ones; duplicate files cause severe confusion and project management issues
+- **MUST-OBEY PRINCIPLE**: ALWAYS follow section named like `Document Update Process` and check for existing files before creating new ones; duplicated files cause severe confusion and project management issues
+- **MUST-OBEY PRINCIPLE**: ALWAYS keep documentation in its designated folders; save test results in the separate, corresponding subfolder of `results/` directory while keep test plans up-to-date in the `plans/` directory and update reference documentation in `references/` directory when making code changes
 - Misalignment between project planning documents creates severe project management risks that can halt progress
 - Changes to project scope must be reflected consistently in ALL planning documents simultaneously
 - When deferring features between phases, ensure proper alignment across all planning documents to prevent confusion and miscommunication

@@ -5,8 +5,8 @@ const path = require('path');
  * Generates an HTML report of all stability tests
  */
 function generateTestReport() {
-  const resultsDir = 'docs/project_lifecycle/stability_tests/results/data';
-  const outputDir = 'docs/project_lifecycle/stability_tests/results/reports';
+  const resultsDir = 'docs/project_lifecycle/all_tests/results/data';
+  const outputDir = 'docs/project_lifecycle/all_tests/results/stability-tests';
   
   // Ensure output directory exists
   if (!fs.existsSync(outputDir)) {
@@ -368,11 +368,11 @@ function generateTestReport() {
   </html>
   `;
   
-  fs.writeFileSync(path.join('docs/project_lifecycle/stability_tests/results', 'index.html'), indexHtml);
+  fs.writeFileSync(path.join('docs/project_lifecycle/all_tests/results', 'index.html'), indexHtml);
   
   console.log(`Report generated: ${outputFile}`);
   console.log(`Latest report link: ${path.join(outputDir, 'latest.html')}`);
-  console.log(`Main index created: docs/project_lifecycle/stability_tests/results/index.html`);
+  console.log(`Main index created: docs/project_lifecycle/all_tests/results/index.html`);
 }
 
 // Run the report generator

@@ -31,9 +31,9 @@ All remaining tests for Phase 6 successfully pass. This confirms that the core a
 
 ### Test Evidence
 Test results are saved in:
-- Combined results: `docs/project_lifecycle/stability_tests/results/data/stability-test-results-2025-04-09T09-21-19-008Z.json`
-- Core-app results: `docs/project_lifecycle/stability_tests/results/data/core-app/stability-test-results-2025-04-09T09-21-19-008Z.json`
-- Beta-program results: `docs/project_lifecycle/stability_tests/results/data/beta-program/stability-test-results-2025-04-09T09-21-19-008Z.json`
+- Combined results: `docs/project_lifecycle/all_tests/results/data/stability-test-results-2025-04-09T09-21-19-008Z.json`
+- Core-app results: `docs/project_lifecycle/all_tests/results/data/core-app/stability-test-results-2025-04-09T09-21-19-008Z.json`
+- Beta-program results: `docs/project_lifecycle/all_tests/results/data/beta-program/stability-test-results-2025-04-09T09-21-19-008Z.json`
 
 ### Next Steps
 1. Begin preparation for Phase 7 test infrastructure

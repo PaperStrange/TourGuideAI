@@ -219,6 +219,12 @@ class SyncService {
               await this.apiClient.updateTimeline(id, timeline);
             }
             break;
+          case 'waypoint':
+            const waypoint = localStorageService.getWaypoint(id);
+            if (waypoint) {
+              await this.apiClient.updateWaypoint(id, waypoint);
+            }
+            break;
           default:
             console.warn(`Unknown sync type: ${type}`);
         }
@@ -245,8 +251,39 @@ class SyncService {
    * @returns {Promise<void>}
    */
   async forceSync() {
-    this.syncQueue.clear();
-    await this.sync();
+    // Don't clear the queue yet - we need to process these items
+    // Instead, set a flag to indicate this is a forced sync
+    const isForcedSync = true;
+    
+    // Set sync in progress flag only if not already in progress
+    const wasInProgress = this.syncInProgress;
+    if (!wasInProgress) {
+      this.syncInProgress = true;
+    }
+    
+    const lastSync = localStorageService.getLastSync();
+    
+    try {
+      // First process the sync queue to ensure all queued items are synced
+      await this.processSyncQueue();
+      
+      // Then run the standard sync methods
+      await this.syncRoutes(lastSync);
+      await this.syncTimelines(lastSync);
+      await this.syncFavorites();
+      await this.syncWaypoints(lastSync);
+      
+      // Update last sync timestamp
+      localStorageService.updateLastSync();
+    } catch (error) {
+      console.error('Force sync failed:', error);
+      this.retryFailedSyncs();
+    } finally {
+      // Only reset the flag if we set it
+      if (!wasInProgress) {
+        this.syncInProgress = false;
+      }
+    }
   }
 }
 
