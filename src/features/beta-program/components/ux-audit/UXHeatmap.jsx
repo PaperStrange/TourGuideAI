@@ -19,7 +19,7 @@ import { InfoOutlined, FileDownload, Refresh } from '@mui/icons-material';
 import h337 from 'heatmap.js'; // Note: This library would need to be installed
 
 // Corrected path for AnalyticsService
-import { analyticsService } from '../../services/analytics/AnalyticsService';
+import analyticsService from '../../services/analytics/AnalyticsService';
 
 const UXHeatmap = () => {
   // Refs

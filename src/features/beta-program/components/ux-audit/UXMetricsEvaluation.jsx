@@ -41,7 +41,7 @@ import { Chart as ChartJS, registerables } from 'chart.js';
 ChartJS.register(...registerables);
 
 // Corrected path for AnalyticsService
-import { analyticsService } from '../../services/analytics/AnalyticsService';
+import analyticsService from '../../services/analytics/AnalyticsService';
 
 const UXMetricsEvaluation = ({ 
   startDate = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], 

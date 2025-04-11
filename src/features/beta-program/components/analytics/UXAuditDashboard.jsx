@@ -16,7 +16,7 @@ import {
   Divider
 } from '@mui/material';
 import HeatmapVisualization from './HeatmapVisualization';
-import { AnalyticsService } from '../../services/analytics/AnalyticsService';
+import analyticsService, { AnalyticsService } from '../../services/analytics/AnalyticsService';
 import { 
   Timeline, 
   PlayArrow, 
@@ -26,7 +26,8 @@ import {
   Speed 
 } from '@mui/icons-material';
 
-const analyticsService = new AnalyticsService();
+// No need to create a new instance as we're using the singleton
+// const analyticsService = new AnalyticsService();
 
 const UXAuditDashboard = () => {
   const [activeTab, setActiveTab] = useState(0);

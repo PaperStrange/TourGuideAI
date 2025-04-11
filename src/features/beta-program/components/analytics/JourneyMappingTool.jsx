@@ -40,7 +40,7 @@ import {
   Autorenew as AutorenewIcon
 } from '@mui/icons-material';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import AnalyticsService from '../../services/AnalyticsService';
+import analyticsService from '../../services/analytics/AnalyticsService';
 import FigmaService from '../../services/FigmaService';
 
 /**
@@ -76,8 +76,8 @@ const JourneyMappingTool = () => {
       try {
         setLoading(true);
         const [journeysData, segmentsData] = await Promise.all([
-          AnalyticsService.getUserJourneys(),
-          AnalyticsService.getUserSegments()
+          analyticsService.getUserJourneys(),
+          analyticsService.getUserSegments()
         ]);
         setJourneys(journeysData);
         setUserSegments(segmentsData);
@@ -133,7 +133,7 @@ const JourneyMappingTool = () => {
   // Save journey changes to the server
   const saveJourney = async (journey) => {
     try {
-      await AnalyticsService.updateUserJourney(journey.id, journey);
+      await analyticsService.updateUserJourney(journey.id, journey);
       
       // Update the journeys list
       setJourneys(prev => prev.map(j => j.id === journey.id ? journey : j));
@@ -216,7 +216,7 @@ const JourneyMappingTool = () => {
         lastModified: new Date().toISOString()
       };
       
-      const createdJourney = await AnalyticsService.createUserJourney(newJourney);
+      const createdJourney = await analyticsService.createUserJourney(newJourney);
       
       setJourneys([...journeys, createdJourney]);
       setSelectedJourney(createdJourney);
@@ -281,7 +281,7 @@ const JourneyMappingTool = () => {
       await FigmaService.syncJourneyWithFigma(selectedJourney.id);
       
       // Refresh journey data
-      const updatedJourney = await AnalyticsService.getUserJourneyById(selectedJourney.id);
+      const updatedJourney = await analyticsService.getUserJourneyById(selectedJourney.id);
       setSelectedJourney(updatedJourney);
       
       // Update the journeys list

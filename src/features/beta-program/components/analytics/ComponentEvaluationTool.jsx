@@ -52,7 +52,7 @@ import {
   Warning as WarningIcon,
   Info as InfoIcon
 } from '@mui/icons-material';
-import AnalyticsService from '../../services/AnalyticsService';
+import analyticsService from '../../services/analytics/AnalyticsService';
 
 /**
  * Component-Level UX Evaluation Tool
@@ -106,8 +106,8 @@ const ComponentEvaluationTool = () => {
         
         // Fetch all required data in parallel
         const [componentsData, criteriaData] = await Promise.all([
-          AnalyticsService.getUIComponents(),
-          AnalyticsService.getEvaluationCriteria()
+          analyticsService.getUIComponents(),
+          analyticsService.getEvaluationCriteria()
         ]);
         
         setComponents(componentsData);
@@ -131,7 +131,7 @@ const ComponentEvaluationTool = () => {
   // Fetch component evaluations
   const fetchComponentEvaluations = async (componentId) => {
     try {
-      const data = await AnalyticsService.getComponentEvaluations(componentId);
+      const data = await analyticsService.getComponentEvaluations(componentId);
       setEvaluationScores(data);
     } catch (err) {
       console.error('Error fetching component evaluations:', err);
@@ -173,7 +173,7 @@ const ComponentEvaluationTool = () => {
         screenshot: screenCapture
       };
       
-      const newComponent = await AnalyticsService.createUIComponent(componentData);
+      const newComponent = await analyticsService.createUIComponent(componentData);
       
       setComponents([...components, newComponent]);
       setSelectedComponent(newComponent);
@@ -220,7 +220,7 @@ const ComponentEvaluationTool = () => {
       setEvaluationScores(updatedScores);
       
       // Send update to the server
-      await AnalyticsService.updateComponentEvaluation(
+      await analyticsService.updateComponentEvaluation(
         selectedComponent.id,
         criterionId,
         score

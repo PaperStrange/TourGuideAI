@@ -5,15 +5,26 @@ import PreferencesSetup from '../../../features/beta-program/components/onboardi
 
 describe('Preferences Setup Component', () => {
   // Initial preferences data
-  const initialData = {
-    notificationEmail: true,
-    dataSharingLevel: 'minimal',
-    tourPreferences: [],
-    interestTopics: []
+  const initialPreferences = {
+    notifications: {
+      email: true,
+      push: true,
+      digest: 'daily'
+    },
+    privacy: {
+      dataSharing: true,
+      analyticsCollection: true,
+      feedbackSharing: true
+    },
+    features: {
+      earlyAccess: true,
+      betaFeatures: true,
+      experimentalFeatures: false
+    }
   };
   
   test('renders preferences setup form', () => {
-    render(<PreferencesSetup initialData={initialData} onSubmit={() => {}} />);
+    render(<PreferencesSetup initialPreferences={initialPreferences} onComplete={() => {}} />);
     
     // Check main title is rendered
     expect(screen.getByText(/set your preferences/i)).toBeInTheDocument();
@@ -23,59 +34,75 @@ describe('Preferences Setup Component', () => {
   });
   
   test('renders notifications section', () => {
-    render(<PreferencesSetup initialData={initialData} onSubmit={() => {}} />);
+    render(<PreferencesSetup initialPreferences={initialPreferences} onComplete={() => {}} />);
     
-    // Check if notifications section is present - using getAllByText and selecting the first one
-    const notificationElements = screen.getAllByText(/notifications/i);
-    expect(notificationElements.length).toBeGreaterThan(0);
+    // Check if notifications section is present
+    expect(screen.getByText(/notification preferences/i)).toBeInTheDocument();
     
-    // Check for the switch/checkbox element
-    const checkboxes = screen.getAllByRole('checkbox');
-    expect(checkboxes.length).toBeGreaterThan(0);
+    // Check for notification toggle elements
+    const switches = screen.getAllByRole('checkbox');
+    expect(switches.length).toBeGreaterThan(0);
   });
   
-  test('renders data sharing section', () => {
-    render(<PreferencesSetup initialData={initialData} onSubmit={() => {}} />);
+  test('renders privacy section', () => {
+    render(<PreferencesSetup initialPreferences={initialPreferences} onComplete={() => {}} />);
     
-    // Check if data sharing section is present
-    expect(screen.getByText(/data sharing level/i)).toBeInTheDocument();
-    expect(screen.getByRole('radiogroup')).toBeInTheDocument();
+    // Check if privacy section is present
+    expect(screen.getByText(/privacy preferences/i)).toBeInTheDocument();
+    
+    // Check for data sharing toggle
+    expect(screen.getByText(/usage data sharing/i)).toBeInTheDocument();
   });
   
   test('toggles notification preference', () => {
-    render(<PreferencesSetup initialData={initialData} onSubmit={() => {}} />);
+    render(<PreferencesSetup initialPreferences={initialPreferences} onComplete={() => {}} />);
     
-    // Find the notification toggle - get the first checkbox which should be the notification toggle
-    const checkboxes = screen.getAllByRole('checkbox');
-    const notificationToggle = checkboxes[0];
+    // Find the email notifications toggle
+    const emailToggle = screen.getAllByRole('checkbox')[0];
     
-    // Initial state should be checked based on initialData
-    expect(notificationToggle).toBeChecked();
+    // Initial state should be checked based on initialPreferences
+    expect(emailToggle).toBeChecked();
     
     // Toggle it off
-    fireEvent.click(notificationToggle);
+    fireEvent.click(emailToggle);
     
     // Check that it's unchecked now
-    expect(notificationToggle).not.toBeChecked();
+    expect(emailToggle).not.toBeChecked();
   });
   
-  test('can select a radio button value', () => {
-    render(<PreferencesSetup initialData={initialData} onSubmit={() => {}} />);
+  test('selects different digest frequency', () => {
+    render(<PreferencesSetup initialPreferences={initialPreferences} onComplete={() => {}} />);
     
-    // Get all radio inputs
+    // Get all radio inputs in the digest frequency section
     const radioInputs = screen.getAllByRole('radio');
     
-    // We should have at least one radio button for minimal and one for something else
-    expect(radioInputs.length).toBeGreaterThan(1);
+    // Find the "Weekly" radio option by its label
+    const weeklyRadio = screen.getByLabelText(/weekly/i);
     
-    // First should be selected (minimal based on initialData)
-    expect(radioInputs[0]).toBeChecked();
+    // Make sure it's not already selected
+    expect(weeklyRadio).not.toBeChecked();
     
-    // Click the second one
-    fireEvent.click(radioInputs[1]);
+    // Select it
+    fireEvent.click(weeklyRadio);
     
-    // Check that second is now selected
-    expect(radioInputs[1]).toBeChecked();
-    expect(radioInputs[0]).not.toBeChecked();
+    // Check that it's now selected
+    expect(weeklyRadio).toBeChecked();
+  });
+  
+  test('calls onComplete with updated preferences when form is submitted', () => {
+    const handleComplete = jest.fn();
+    render(<PreferencesSetup initialPreferences={initialPreferences} onComplete={handleComplete} />);
+    
+    // Find and click the continue button
+    const continueButton = screen.getByRole('button', { name: /continue/i });
+    fireEvent.click(continueButton);
+    
+    // Check that onComplete was called with the preferences object
+    expect(handleComplete).toHaveBeenCalledTimes(1);
+    expect(handleComplete).toHaveBeenCalledWith(expect.objectContaining({
+      notifications: expect.any(Object),
+      privacy: expect.any(Object),
+      features: expect.any(Object)
+    }));
   });
 }); 

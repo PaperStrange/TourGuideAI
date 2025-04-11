@@ -1,100 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { 
-  Box, 
-  Paper, 
-  Typography, 
-  CircularProgress,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
-  Grid,
-  Button,
-  Alert,
-  ToggleButtonGroup,
-  ToggleButton
-} from '@mui/material';
-import { 
-  MouseOutlined,
-  TouchApp,
-  Visibility,
-  DevicesOther,
-  FilterList,
-  Download,
-  Refresh
-} from '@mui/icons-material';
 
-// Mock service - would be replaced with actual API calls
-const fetchHeatmapData = (page, type = 'clicks') => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      // Mock data for different heatmap types
-      const mockData = {
-        clicks: [
-          { x: 150, y: 200, value: 45 },
-          { x: 300, y: 200, value: 32 },
-          { x: 450, y: 350, value: 28 },
-          { x: 600, y: 400, value: 20 },
-          { x: 750, y: 150, value: 15 },
-          { x: 200, y: 300, value: 12 },
-          { x: 350, y: 450, value: 10 },
-          { x: 500, y: 250, value: 8 },
-          { x: 650, y: 350, value: 6 },
-          { x: 400, y: 100, value: 5 }
-        ],
-        moves: [
-          { x: 200, y: 250, value: 200 },
-          { x: 350, y: 220, value: 180 },
-          { x: 500, y: 300, value: 150 },
-          { x: 650, y: 420, value: 120 },
-          { x: 300, y: 400, value: 100 },
-          { x: 450, y: 150, value: 90 },
-          { x: 550, y: 350, value: 80 },
-          { x: 400, y: 280, value: 70 },
-          { x: 250, y: 150, value: 60 },
-          { x: 700, y: 300, value: 50 }
-        ],
-        views: [
-          { x: 400, y: 300, value: 500 },
-          { x: 500, y: 350, value: 450 },
-          { x: 300, y: 250, value: 400 },
-          { x: 600, y: 200, value: 350 },
-          { x: 200, y: 350, value: 300 },
-          { x: 700, y: 400, value: 250 },
-          { x: 450, y: 450, value: 200 },
-          { x: 550, y: 250, value: 150 },
-          { x: 350, y: 150, value: 100 },
-          { x: 650, y: 300, value: 50 }
-        ]
-      };
-      
-      resolve({
-        data: mockData[type],
-        page,
-        type,
-        viewport: { width: 1280, height: 720 },
-        pageUrl: `/example/${page}`,
-        screenshot: `https://via.placeholder.com/1280x720?text=Screenshot+of+${page}+page`
-      });
-    }, 1000);
-  });
-};
+// Simplified approach without relying on Material-UI components
+import styles from './Analytics.module.css';
+import analyticsService from '../../services/analytics/AnalyticsService';
 
-const fetchPagesList = () => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve([
-        { id: 'dashboard', name: 'Dashboard', path: '/dashboard' },
-        { id: 'features', name: 'Feature Requests', path: '/feature-requests' },
-        { id: 'survey', name: 'Surveys', path: '/surveys' },
-        { id: 'settings', name: 'Settings', path: '/settings' },
-        { id: 'profile', name: 'User Profile', path: '/profile' }
-      ]);
-    }, 500);
-  });
-};
-
+/**
+ * HeatmapVisualization component
+ * Displays user interaction heatmaps on app pages/screens
+ * Helps identify which UI elements receive most attention from users
+ */
 const HeatmapVisualization = ({ onBack }) => {
   const [loading, setLoading] = useState(true);
   const [pages, setPages] = useState([]);
@@ -109,18 +24,23 @@ const HeatmapVisualization = ({ onBack }) => {
   const imageRef = useRef(null);
   
   useEffect(() => {
-    fetchPagesList()
-      .then(data => {
+    // Fetch available pages for heatmap visualization
+    const fetchPages = async () => {
+      try {
+        const data = await analyticsService.getHeatmapPagesList();
         setPages(data);
         if (data.length > 0) {
           setSelectedPage(data[0].id);
         }
         setLoading(false);
-      })
-      .catch(err => {
+      } catch (err) {
         setError('Failed to load pages list');
         setLoading(false);
-      });
+        console.error('Error fetching pages list:', err);
+      }
+    };
+    
+    fetchPages();
   }, []);
   
   useEffect(() => {
@@ -128,15 +48,19 @@ const HeatmapVisualization = ({ onBack }) => {
       setLoading(true);
       setHeatmapData(null);
       
-      fetchHeatmapData(selectedPage, heatmapType)
-        .then(data => {
+      const fetchData = async () => {
+        try {
+          const data = await analyticsService.getHeatmapData(selectedPage, heatmapType);
           setHeatmapData(data);
           setLoading(false);
-        })
-        .catch(err => {
+        } catch (err) {
           setError('Failed to load heatmap data');
           setLoading(false);
-        });
+          console.error('Error fetching heatmap data:', err);
+        }
+      };
+      
+      fetchData();
     }
   }, [selectedPage, heatmapType]);
   
@@ -216,10 +140,16 @@ const HeatmapVisualization = ({ onBack }) => {
     setSelectedPage(event.target.value);
   };
   
-  const handleTypeChange = (_, newType) => {
-    if (newType !== null) {
-      setHeatmapType(newType);
-    }
+  const handleTypeChange = (event) => {
+    setHeatmapType(event.target.value);
+  };
+  
+  const handleIntensityChange = (event) => {
+    setIntensity(parseFloat(event.target.value));
+  };
+  
+  const handleRadiusChange = (event) => {
+    setRadius(parseInt(event.target.value, 10));
   };
   
   const handleExport = () => {
@@ -235,238 +165,135 @@ const HeatmapVisualization = ({ onBack }) => {
   };
   
   if (loading && !heatmapData) {
-    return (
-      <Box display="flex" justifyContent="center" alignItems="center" height="400px">
-        <CircularProgress />
-      </Box>
-    );
+    return <div className={styles.loadingIndicator}>Loading heatmap data...</div>;
   }
   
   if (error) {
     return (
-      <Box m={2}>
-        <Alert severity="error">{error}</Alert>
-        <Button variant="outlined" onClick={onBack} sx={{ mt: 2 }}>
-          Back to Analytics
-        </Button>
-      </Box>
+      <div className={styles.chartContainer}>
+        <div className={styles.errorMessage}>{error}</div>
+        <button onClick={onBack} className={styles.viewSelector}>Back to Analytics</button>
+      </div>
     );
   }
   
   return (
-    <Paper elevation={3} sx={{ p: 3, mb: 3 }}>
-      <Typography variant="h5" component="h2" gutterBottom>
-        Heatmap Visualization
-      </Typography>
-      
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
-          <FormControl fullWidth margin="normal">
-            <InputLabel>Select Page</InputLabel>
-            <Select
-              value={selectedPage}
-              onChange={handlePageChange}
-              label="Select Page"
-            >
-              {pages.map(page => (
-                <MenuItem key={page.id} value={page.id}>
-                  {page.name} ({page.path})
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
-        
-        <Grid item xs={12} md={6}>
-          <Box display="flex" justifyContent="flex-end" alignItems="center" height="100%">
-            <Button 
-              variant="outlined" 
-              startIcon={<Refresh />}
-              onClick={() => {
-                setLoading(true);
-                Promise.all([
-                  fetchPagesList(),
-                  selectedPage ? fetchHeatmapData(selectedPage, heatmapType) : Promise.resolve(null)
-                ])
-                  .then(([pagesData, heatmapData]) => {
-                    setPages(pagesData);
-                    if (heatmapData) setHeatmapData(heatmapData);
-                    setLoading(false);
-                  })
-                  .catch(err => {
-                    setError('Failed to refresh data');
-                    setLoading(false);
-                  });
-              }}
-              sx={{ mr: 1 }}
-            >
-              Refresh
-            </Button>
-            <Button 
-              variant="outlined" 
-              onClick={onBack}
-            >
-              Back
-            </Button>
-          </Box>
-        </Grid>
-      </Grid>
-      
-      <Box mt={2} display="flex" alignItems="center" justifyContent="space-between">
-        <ToggleButtonGroup
-          value={heatmapType}
-          exclusive
-          onChange={handleTypeChange}
-          aria-label="heatmap type"
-        >
-          <ToggleButton value="clicks" aria-label="clicks">
-            <TouchApp sx={{ mr: 1 }} />
-            Clicks
-          </ToggleButton>
-          <ToggleButton value="moves" aria-label="mouse movement">
-            <MouseOutlined sx={{ mr: 1 }} />
-            Movement
-          </ToggleButton>
-          <ToggleButton value="views" aria-label="views">
-            <Visibility sx={{ mr: 1 }} />
-            Views
-          </ToggleButton>
-        </ToggleButtonGroup>
-        
-        <Box>
-          <Button
-            variant="outlined"
-            startIcon={<Download />}
-            onClick={handleExport}
-            disabled={!heatmapData}
+    <div className={styles.chartContainer}>
+      <div className={styles.chartHeader}>
+        <h3>User Interaction Heatmap</h3>
+        <div className={styles.controlsRow}>
+          <select 
+            value={selectedPage} 
+            onChange={handlePageChange}
+            className={styles.viewSelector}
+          >
+            {pages.map(page => (
+              <option key={page.id} value={page.id}>{page.name}</option>
+            ))}
+          </select>
+          
+          <select 
+            value={heatmapType} 
+            onChange={handleTypeChange}
+            className={styles.viewSelector}
+          >
+            <option value="clicks">Clicks</option>
+            <option value="moves">Mouse Movements</option>
+            <option value="views">View Time</option>
+          </select>
+          
+          <button 
+            onClick={handleExport} 
+            className={styles.viewSelector}
           >
             Export
-          </Button>
-        </Box>
-      </Box>
+          </button>
+        </div>
+      </div>
+      
+      <div className={styles.heatmapControls}>
+        <div className={styles.controlGroup}>
+          <label>Intensity:</label>
+          <input 
+            type="range" 
+            min="0.1" 
+            max="1" 
+            step="0.1" 
+            value={intensity}
+            onChange={handleIntensityChange} 
+          />
+          <span>{intensity}</span>
+        </div>
+        
+        <div className={styles.controlGroup}>
+          <label>Radius:</label>
+          <input 
+            type="range" 
+            min="10" 
+            max="50" 
+            step="5" 
+            value={radius}
+            onChange={handleRadiusChange} 
+          />
+          <span>{radius}px</span>
+        </div>
+      </div>
+      
+      <div className={styles.heatmapContainer}>
+        {/* Hidden image for screenshot */}
+        <img 
+          ref={imageRef} 
+          src={heatmapData?.screenshot || "https://via.placeholder.com/1280x720?text=Loading+Screenshot"} 
+          alt="Page screenshot" 
+          style={{ display: 'none' }} 
+          crossOrigin="anonymous"
+        />
+        
+        {/* Canvas for drawing heatmap */}
+        <canvas 
+          ref={canvasRef} 
+          className={styles.heatmapCanvas}
+        />
+      </div>
       
       {heatmapData && (
-        <>
-          <Box 
-            mt={2} 
-            sx={{ 
-              position: 'relative',
-              border: '1px solid #ccc',
-              maxWidth: '100%',
-              overflow: 'auto'
-            }}
-          >
-            <img 
-              ref={imageRef} 
-              src={heatmapData.screenshot} 
-              alt={`Screenshot of ${heatmapData.pageUrl}`}
-              style={{ display: 'none' }}
-            />
-            <canvas 
-              ref={canvasRef} 
-              style={{
-                display: 'block',
-                maxWidth: '100%'
-              }}
-            />
-          </Box>
-          
-          <Grid container spacing={3} mt={1}>
-            <Grid item xs={12} md={6}>
-              <Typography gutterBottom>Intensity: {intensity * 100}%</Typography>
-              <Box px={1}>
-                <input
-                  type="range"
-                  min="0.1"
-                  max="1"
-                  step="0.05"
-                  value={intensity}
-                  onChange={(e) => setIntensity(parseFloat(e.target.value))}
-                  style={{ width: '100%' }}
-                />
-              </Box>
-            </Grid>
+        <div className={styles.insightPanel}>
+          <h4>Interaction Insights</h4>
+          <div className={styles.insightGrid}>
+            <div className={styles.insightItem}>
+              <h5>Most Active Area</h5>
+              <p>
+                The area with highest activity is around 
+                coordinates ({heatmapData.data[0]?.x || 0}, {heatmapData.data[0]?.y || 0})
+              </p>
+            </div>
             
-            <Grid item xs={12} md={6}>
-              <Typography gutterBottom>Radius: {radius}px</Typography>
-              <Box px={1}>
-                <input
-                  type="range"
-                  min="10"
-                  max="50"
-                  step="2"
-                  value={radius}
-                  onChange={(e) => setRadius(parseInt(e.target.value))}
-                  style={{ width: '100%' }}
-                />
-              </Box>
-            </Grid>
-          </Grid>
-          
-          <Box mt={3}>
-            <Typography variant="subtitle1">
-              Data Points ({heatmapData.data.length})
-            </Typography>
-            <Paper variant="outlined" sx={{ p: 2, maxHeight: 200, overflow: 'auto' }}>
-              {heatmapData.data.map((point, index) => (
-                <Box 
-                  key={index} 
-                  sx={{ 
-                    p: 1,
-                    borderBottom: index < heatmapData.data.length - 1 ? '1px solid #eee' : 'none',
-                    display: 'flex',
-                    justifyContent: 'space-between'
-                  }}
-                >
-                  <Typography variant="body2">
-                    Point {index + 1}: ({point.x}, {point.y})
-                  </Typography>
-                  <Typography variant="body2" fontWeight="bold">
-                    Value: {point.value}
-                  </Typography>
-                </Box>
-              ))}
-            </Paper>
-          </Box>
-          
-          {/* Legend */}
-          <Box mt={3} display="flex" alignItems="center" justifyContent="center">
-            <Box 
-              sx={{ 
-                width: 20, 
-                height: 20, 
-                background: heatmapType === 'clicks' ? 'red' : 
-                             heatmapType === 'moves' ? 'blue' : 'green',
-                borderRadius: '50%',
-                mr: 1 
-              }} 
-            />
-            <Typography variant="body2" sx={{ mr: 3 }}>
-              High intensity
-            </Typography>
+            <div className={styles.insightItem}>
+              <h5>Activity Summary</h5>
+              <p>
+                {heatmapData.data.length} {heatmapType} tracked on this page
+              </p>
+            </div>
             
-            <Box 
-              sx={{ 
-                width: 20, 
-                height: 20, 
-                background: heatmapType === 'clicks' ? 'rgba(255,0,0,0.3)' : 
-                             heatmapType === 'moves' ? 'rgba(0,0,255,0.3)' : 'rgba(0,255,0,0.3)',
-                borderRadius: '50%',
-                mr: 1 
-              }} 
-            />
-            <Typography variant="body2">
-              Low intensity
-            </Typography>
-          </Box>
-        </>
+            <div className={styles.insightItem}>
+              <h5>Page URL</h5>
+              <p>{heatmapData.pageUrl}</p>
+            </div>
+          </div>
+        </div>
       )}
-    </Paper>
+      
+      <div className={styles.backButton}>
+        <button onClick={onBack} className={styles.viewSelector}>
+          Back to Dashboard
+        </button>
+      </div>
+    </div>
   );
 };
 
 HeatmapVisualization.propTypes = {
-  onBack: PropTypes.func
+  onBack: PropTypes.func.isRequired
 };
 
 export default HeatmapVisualization; 

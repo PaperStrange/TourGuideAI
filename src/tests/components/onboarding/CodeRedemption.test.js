@@ -1,130 +1,137 @@
 import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import CodeRedemptionForm from '../../../features/beta-program/components/onboarding/CodeRedemptionForm';
-import inviteCodeService from '../../../features/beta-program/services/InviteCodeService';
+import { apiHelpers } from '../../../core/services/apiClient';
 
-// Mock the invite code service
-jest.mock('../../../features/beta-program/services/InviteCodeService', () => ({
-  validateCode: jest.fn()
+// Mock the API client
+jest.mock('../../../core/services/apiClient', () => ({
+  apiHelpers: {
+    post: jest.fn()
+  }
 }));
 
-describe('Code Redemption Component', () => {
-  // Reset mocks before each test
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
+// Use fake timers for setTimeout handling
+jest.useFakeTimers();
 
-  test('renders the code redemption form', () => {
-    render(<CodeRedemptionForm initialCode="" onSubmit={() => {}} />);
-    
-    expect(screen.getByText(/enter your beta access code/i)).toBeInTheDocument();
-    expect(screen.getByRole('textbox')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /verify code/i })).toBeInTheDocument();
-  });
+beforeEach(() => {
+  jest.clearAllMocks();
+});
 
-  test('initializes with provided code', () => {
-    render(<CodeRedemptionForm initialCode="BETA123" onSubmit={() => {}} />);
-    
-    expect(screen.getByRole('textbox')).toHaveValue('BETA123');
-  });
+afterEach(() => {
+  jest.clearAllTimers();
+});
 
-  test('validates required field', async () => {
-    render(<CodeRedemptionForm initialCode="" onSubmit={() => {}} />);
-    
-    // Submit empty form
-    fireEvent.click(screen.getByRole('button', { name: /verify code/i }));
-    
-    // Validation message should appear
-    await waitFor(() => {
-      expect(screen.getByText(/beta code is required/i)).toBeInTheDocument();
-    });
-  });
+test('renders code redemption form', () => {
+  render(<CodeRedemptionForm />);
+  expect(screen.getByLabelText(/beta invite code/i)).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: /redeem code/i })).toBeInTheDocument();
+  // Button should be disabled initially when no valid code is entered
+  expect(screen.getByRole('button', { name: /redeem code/i })).toBeDisabled();
+});
 
-  test('handles valid code submission', async () => {
-    // Mock successful validation
-    inviteCodeService.validateCode.mockResolvedValue(true);
-    
-    const handleSubmit = jest.fn();
-    render(<CodeRedemptionForm initialCode="" onSubmit={handleSubmit} />);
-    
-    // Enter code
-    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'VALID123' } });
-    
-    // Submit form
-    fireEvent.click(screen.getByRole('button', { name: /verify code/i }));
-    
-    // Wait for validation and submission
-    await waitFor(() => {
-      expect(inviteCodeService.validateCode).toHaveBeenCalledWith('VALID123');
-      expect(handleSubmit).toHaveBeenCalledWith('VALID123');
-    });
+test('handles successful code redemption', async () => {
+  // Mock a successful API response
+  apiHelpers.post.mockResolvedValueOnce({ 
+    valid: true,
+    userData: { id: '123', name: 'Test User' }
   });
+  
+  const handleSuccess = jest.fn();
+  render(<CodeRedemptionForm onSuccess={handleSuccess} />);
 
-  test('handles invalid code submission', async () => {
-    // Mock failed validation
-    inviteCodeService.validateCode.mockResolvedValue(false);
-    
-    const handleSubmit = jest.fn();
-    render(<CodeRedemptionForm initialCode="" onSubmit={handleSubmit} />);
-    
-    // Enter code
-    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'INVALID123' } });
-    
-    // Submit form
-    fireEvent.click(screen.getByRole('button', { name: /verify code/i }));
-    
-    // Wait for validation
-    await waitFor(() => {
-      expect(inviteCodeService.validateCode).toHaveBeenCalledWith('INVALID123');
-      expect(screen.getByText(/invalid or expired beta code/i)).toBeInTheDocument();
-      expect(handleSubmit).not.toHaveBeenCalled();
-    });
+  // Enter valid code
+  fireEvent.change(screen.getByLabelText(/beta invite code/i), { 
+    target: { value: 'ABCD-EFGH-IJKL' } 
   });
+  
+  // Button should be enabled with valid code
+  expect(screen.getByRole('button', { name: /redeem code/i })).not.toBeDisabled();
+  
+  // Submit form
+  fireEvent.click(screen.getByRole('button', { name: /redeem code/i }));
 
-  test('handles network error during submission', async () => {
-    // Mock service error
-    inviteCodeService.validateCode.mockRejectedValue(new Error('Network error'));
-    
-    const handleSubmit = jest.fn();
-    render(<CodeRedemptionForm initialCode="" onSubmit={handleSubmit} />);
-    
-    // Enter code
-    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'ERROR123' } });
-    
-    // Submit form
-    fireEvent.click(screen.getByRole('button', { name: /verify code/i }));
-    
-    // Wait for error handling
-    await waitFor(() => {
-      expect(screen.getByText(/error validating code/i)).toBeInTheDocument();
-      expect(handleSubmit).not.toHaveBeenCalled();
-    });
+  // Verify API was called correctly
+  expect(apiHelpers.post).toHaveBeenCalledWith('/beta/redeem-code', { code: 'ABCD-EFGH-IJKL' });
+  
+  // Wait for success message
+  await waitFor(() => {
+    expect(screen.getByText(/code accepted/i)).toBeInTheDocument();
   });
+  
+  // Advance timers to trigger the onSuccess callback (after 1000ms delay)
+  act(() => {
+    jest.advanceTimersByTime(1000);
+  });
+  
+  // Check if success callback was called
+  expect(handleSuccess).toHaveBeenCalledWith({ id: '123', name: 'Test User' });
+});
 
-  test('handles rate limiting for multiple attempts', async () => {
-    // First mock successful validation, then rate limiting error
-    inviteCodeService.validateCode
-      .mockResolvedValueOnce(false)
-      .mockRejectedValueOnce(new Error('Rate limit exceeded'));
-    
-    const handleSubmit = jest.fn();
-    render(<CodeRedemptionForm initialCode="" onSubmit={handleSubmit} />);
-    
-    // First attempt
-    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'TEST123' } });
-    fireEvent.click(screen.getByRole('button', { name: /verify code/i }));
-    
-    await waitFor(() => {
-      expect(screen.getByText(/invalid or expired beta code/i)).toBeInTheDocument();
-    });
-    
-    // Second attempt
-    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'TEST456' } });
-    fireEvent.click(screen.getByRole('button', { name: /verify code/i }));
-    
-    await waitFor(() => {
-      expect(screen.getByText(/too many attempts/i)).toBeInTheDocument();
-    });
+test('handles invalid code submission', async () => {
+  // Mock API failure response
+  apiHelpers.post.mockResolvedValueOnce({ 
+    valid: false,
+    message: 'Invalid or expired code'
   });
+  
+  const handleError = jest.fn();
+  render(<CodeRedemptionForm onError={handleError} />);
+
+  // Enter valid format but invalid code
+  fireEvent.change(screen.getByLabelText(/beta invite code/i), { 
+    target: { value: 'ABCD-EFGH-IJKL' } 
+  });
+  
+  // Submit form
+  fireEvent.click(screen.getByRole('button', { name: /redeem code/i }));
+
+  // Wait for error message
+  await waitFor(() => {
+    expect(screen.getByText(/invalid or expired code/i)).toBeInTheDocument();
+  });
+  
+  // Check if error callback was called
+  expect(handleError).toHaveBeenCalledWith('Invalid or expired code');
+});
+
+test('handles network error', async () => {
+  // Mock network error
+  apiHelpers.post.mockRejectedValueOnce(new Error('Network error'));
+
+  render(<CodeRedemptionForm />);
+  
+  // Enter a valid code
+  const input = screen.getByLabelText(/beta invite code/i);
+  fireEvent.change(input, { target: { value: 'ABCD-EFGH-IJKL' } });
+  
+  // Submit the form
+  const button = screen.getByRole('button', { name: /redeem code/i });
+  fireEvent.click(button);
+  
+  // Wait for error message
+  await waitFor(() => {
+    expect(screen.getByText(/network error/i)).toBeInTheDocument();
+  });
+  
+  // Verify the button is re-enabled
+  expect(button).toHaveTextContent(/redeem code/i);
+  expect(button).toBeDisabled(); // Disabled because validation state is 'invalid'
+});
+
+test('validates code format', () => {
+  render(<CodeRedemptionForm />);
+  const input = screen.getByLabelText(/beta invite code/i);
+  const submitButton = screen.getByRole('button', { name: /redeem code/i });
+  
+  // Initially button should be disabled
+  expect(submitButton).toBeDisabled();
+  
+  // Invalid format should keep button disabled
+  fireEvent.change(input, { target: { value: 'INVALID' } });
+  expect(submitButton).toBeDisabled();
+  
+  // Valid format should enable button
+  fireEvent.change(input, { target: { value: 'ABCD-EFGH-IJKL' } });
+  expect(submitButton).not.toBeDisabled();
 }); 

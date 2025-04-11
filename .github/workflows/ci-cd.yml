@@ -72,6 +72,9 @@ jobs:
         # Run Task Prompt System stability tests 
         npx jest src/tests/stability/task-prompt-stability.test.js --json --outputFile=stability-test-results-task-prompt.json || true
         
+        # Run Analytics components stability tests
+        npx jest src/tests/stability/analytics-components-stability.test.js --json --outputFile=stability-test-results-analytics.json || true
+        
         # Run test script for comprehensive report (if script exists)
         if [ -f "./scripts/run-stability-tests.js" ]; then
           node ./scripts/run-stability-tests.js
@@ -103,6 +106,9 @@ jobs:
         
         # Run Task Prompt System tests
         npm test -- --testPathPattern="src/tests/beta-program/task-prompt" --watchAll=false
+        
+        # Run Analytics Components tests
+        npm test -- --testPathPattern="src/tests/components/analytics" --watchAll=false
     
     - name: Setup CodeQL
       uses: github/codeql-action/init@v2
@@ -233,6 +239,9 @@ jobs:
         
         # Run Task Prompt System smoke tests
         npx playwright test --grep "Task Prompt System" smoke.test.js
+        
+        # Run Analytics Component smoke tests
+        npx playwright test --grep "Analytics Components" smoke.test.js
     
     - name: Upload test results
       if: always()

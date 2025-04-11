@@ -51,7 +51,7 @@ import {
   Tooltip as ChartTooltip,
   Legend
 } from 'chart.js';
-import AnalyticsService from '../../services/AnalyticsService';
+import analyticsService from '../../services/analytics/AnalyticsService';
 
 // Register ChartJS components
 ChartJS.register(
@@ -94,7 +94,7 @@ const ABTestReporting = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const testsData = await AnalyticsService.getABTests(showOnlyActive);
+        const testsData = await analyticsService.getABTests(showOnlyActive);
         setTests(testsData);
         
         if (testsData.length > 0) {

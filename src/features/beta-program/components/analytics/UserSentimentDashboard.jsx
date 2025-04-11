@@ -62,7 +62,7 @@ import {
   Legend,
   Filler
 } from 'chart.js';
-import AnalyticsService from '../../services/AnalyticsService';
+import analyticsService from '../../services/analytics/AnalyticsService';
 
 // Register ChartJS components
 ChartJS.register(
@@ -129,11 +129,11 @@ const UserSentimentDashboard = () => {
           feedbackData,
           trendData
         ] = await Promise.all([
-          AnalyticsService.getSentimentOverview(timeRange, feedbackSource),
-          AnalyticsService.getTopSentimentKeywords(timeRange, feedbackSource),
-          AnalyticsService.getTopIssues(timeRange, feedbackSource),
-          AnalyticsService.getRecentFeedback(feedbackSource, 10),
-          AnalyticsService.getSentimentTrend(timeRange, feedbackSource)
+          analyticsService.getSentimentOverview(timeRange, feedbackSource),
+          analyticsService.getTopSentimentKeywords(timeRange, feedbackSource),
+          analyticsService.getTopIssues(timeRange, feedbackSource),
+          analyticsService.getRecentFeedback(feedbackSource, 10),
+          analyticsService.getSentimentTrend(timeRange, feedbackSource)
         ]);
         
         setSentimentData(sentimentData);

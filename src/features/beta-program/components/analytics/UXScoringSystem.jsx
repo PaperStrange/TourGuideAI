@@ -62,7 +62,7 @@ import {
   RadialLinearScale,
   ArcElement
 } from 'chart.js';
-import AnalyticsService from '../../services/AnalyticsService';
+import analyticsService from '../../services/analytics/AnalyticsService';
 
 // Register ChartJS components
 ChartJS.register(
@@ -143,11 +143,11 @@ const UXScoringSystem = () => {
           segmentsData,
           benchmarkData
         ] = await Promise.all([
-          AnalyticsService.getUXMetrics(),
-          AnalyticsService.getUXCategories(),
-          AnalyticsService.getFeatures(),
-          AnalyticsService.getUserSegments(),
-          AnalyticsService.getUXBenchmark()
+          analyticsService.getUXMetrics(),
+          analyticsService.getUXCategories(),
+          analyticsService.getFeatures(),
+          analyticsService.getUserSegments(),
+          analyticsService.getUXBenchmark()
         ]);
         
         setMetrics(metricsData);
@@ -182,7 +182,7 @@ const UXScoringSystem = () => {
   const fetchScoreData = async (featureId, timeRange, segmentId) => {
     try {
       setIsLoading(true);
-      const data = await AnalyticsService.getUXScores(featureId, timeRange, segmentId);
+      const data = await analyticsService.getUXScores(featureId, timeRange, segmentId);
       setScoreData(data);
     } catch (err) {
       console.error('Error fetching score data:', err);
@@ -260,11 +260,11 @@ const UXScoringSystem = () => {
       
       if (editingMetric) {
         // Update existing metric
-        updatedMetric = await AnalyticsService.updateUXMetric(editingMetric.id, metricData);
+        updatedMetric = await analyticsService.updateUXMetric(editingMetric.id, metricData);
         setMetrics(prev => prev.map(m => m.id === updatedMetric.id ? updatedMetric : m));
       } else {
         // Create new metric
-        updatedMetric = await AnalyticsService.createUXMetric(metricData);
+        updatedMetric = await analyticsService.createUXMetric(metricData);
         setMetrics(prev => [...prev, updatedMetric]);
       }
       
@@ -280,7 +280,7 @@ const UXScoringSystem = () => {
     if (!window.confirm('Are you sure you want to delete this metric?')) return;
     
     try {
-      await AnalyticsService.deleteUXMetric(metricId);
+      await analyticsService.deleteUXMetric(metricId);
       setMetrics(prev => prev.filter(m => m.id !== metricId));
     } catch (err) {
       console.error('Error deleting metric:', err);
