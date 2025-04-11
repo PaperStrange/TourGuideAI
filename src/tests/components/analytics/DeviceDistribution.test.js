@@ -5,7 +5,7 @@ import DeviceDistribution from '../../../features/beta-program/components/analyt
 import analyticsService from '../../../features/beta-program/services/analytics/AnalyticsService';
 
 // Mock the AnalyticsService
-jest.mock('../../../../src/features/beta-program/services/AnalyticsService', () => ({
+jest.mock('../../../features/beta-program/services/analytics/AnalyticsService', () => ({
   getDeviceDistributionData: jest.fn()
 }));
 

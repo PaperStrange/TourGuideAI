@@ -193,3 +193,47 @@ Initial prototype version
 
 ### Breaking Changes
 None 
+
+## v0.5.0-beta - Beta Release (2025-04-11)
+
+### Summary
+TourGuideAI Beta release with core functionality for limited user testing and feedback collection.
+
+### Added Features
+- Beta program infrastructure with role-based access control
+- User feedback collection system with ML-based categorization
+- Beta analytics dashboard for monitoring user behavior
+- Email notification system with verification and password reset
+- Comprehensive onboarding workflow with beta code redemption
+- Survey system with conditional logic for feedback collection
+- Issue prioritization framework with severity classification
+
+### Changed
+- Improved UI based on early testing feedback
+- Enhanced user flows for beta experience
+- Improved visual consistency across the application
+- Targeted performance improvements for core features
+
+### Fixed
+- Critical UX issues identified in early testing
+- Authentication system stability improvements
+- KeyManager service for better API key handling
+- CacheService for more reliable data caching
+- Multiple ESLint warnings across the codebase
+
+### Known Issues
+- Some frontend tests failing due to React 18 compatibility issues
+- Authentication tests show issues with JWT token validation
+- Analytics component tests need improved service mocking
+
+### Testing Information
+- Overall test coverage: ~75%
+- Backend test pass rate: 85%
+- Frontend test pass rate: 68%
+- Integration test pass rate: 81%
+
+### Next Version Focus
+- Address test infrastructure issues
+- Re-implement UX audit system with improved architecture
+- Launch in-app task prompt system for guided testing
+- Develop advanced user experience features based on beta feedback 

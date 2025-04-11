@@ -5,7 +5,7 @@ import UserActivityChart from '../../../features/beta-program/components/analyti
 import analyticsService from '../../../features/beta-program/services/analytics/AnalyticsService';
 
 // Mock the AnalyticsService
-jest.mock('../../../../src/features/beta-program/services/AnalyticsService', () => ({
+jest.mock('../../../features/beta-program/services/analytics/AnalyticsService', () => ({
   getUserActivityData: jest.fn()
 }));
 

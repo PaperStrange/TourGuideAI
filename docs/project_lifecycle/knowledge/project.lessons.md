@@ -148,6 +148,24 @@
 - AI-driven recommendations could personalize the user experience
 - Voice interfaces would improve accessibility for certain user segments
 
+## Testing Strategy Lessons
+
+### Phase 6 Test Completion (2025-04-11)
+- **LESSON**: Plan separate service mocking strategies for unit vs integration testing to avoid conflicting mock implementations
+- **LESSON**: When upgrading React versions (e.g., to React 18), proactively update test infrastructure before component tests start failing
+- **LESSON**: Prioritize creating a robust setupTests.js file early in the project to handle common mocking needs
+- **LESSON**: Test infrastructure should be treated as production code with its own review and refactoring cycles
+- **LESSON**: Create standardized mock factories for complex services to ensure consistent test behavior
+- **LESSON**: Invest in proper test isolation to ensure tests don't affect each other through shared state
+
+## Test Framework Choices
+
+### Phase 6 React Testing Library Lessons (2025-04-11)
+- **LESSON**: When using React Testing Library with React 18, explicitly mock the createRoot API to maintain compatibility
+- **LESSON**: Text content matching in tests should use flexible patterns rather than exact text to avoid fragile tests
+- **LESSON**: For canvas-based components, create comprehensive canvas mocks in setupTests.js rather than individual test files
+- **LESSON**: For third-party libraries like heatmap.js and chart.js, create specific mock implementations to avoid DOM errors
+
 ---
 
 *Last Updated: April 10, 2025* 

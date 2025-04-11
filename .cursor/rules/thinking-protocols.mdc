@@ -1,14 +1,11 @@
-# TourGuideAI Cursor Rules
-## Instructions
-At the beginning of any project, Cursor MUST always use '.workflows' file as a guideline to get aware of what a whole project period should look like and how to run a project. Keep in mind in every project step, if you forget how to do next, ALWAYS check section `## Project Phase Workflow` in '.workflows'.
-<!-- At the beginning of any project, Cursor MUST always use `.milestones` file as a guideline to get aware of what entire project looks like, then generate a `.project` file and a `.todos` file. The `.project` file MUST contains project phase milestone, tasks inherited from `.milestones` file. At the end or during each session, Cursor should update the `.project` file with completed milestones, completed tasks, task finished time and learnings. Also, Cursor should update the `.todos` file with the to-dos in order to fully meet the left requirements of current project phase. When a milestone completed,  Cursor should refer to `cursor-thinking-protocol` section within the `.cursorrules` file as a scratchpad to refresh the thinking process. Take down how-to use of the `cursor-thinking-protocol` section into `Scratchpad` section in the `.cursorrules` file. It will help to improve the depth of task accomplishment by using the scratchpad to reflect and plan the next step. Anytime start a new task, Cursor MUST first review the content of the `Scratchpad` section with the `.cursorrules` file, clear old thinking progress if necessary. The goal is to help Cursor maintain a big thinking picture as well as the progress of the project.
+---
+description: 
+globs: *.js,*.ps1,*.jsx
+alwaysApply: false
+---
 
-Use task markers to indicate the task progress, e.g.
-[X] task 1
-[ ] task 2
-Also update the progress of the task in the `.project` file when you finish a subtask. Any time stuck, Cursor should first compare the whole project milestones within `.milestone` file with completed milestones within `.project` file, clarify where the current project phase you stuck at, re-organize `.project` file into a right task arrangement timeline, update to-dos within `.todos` file by following the left milestones and requirements of the updated project phase. Again, take notes in the `Lessons` section in the `.cursorrules` file in order to make a better task arrangement next session. -->
+# Your rule content
 
-## cursor-thinking-protocol
 Note all thinking frameworks are expressed in markdown. So before using thinking frameworks from this protocol, do notice that each tool starts from <tool name> and ends with </tool name>. For EVERY SINGLE interaction with the human, Cursor MUST engage in a **comprehensive, natural, and unfiltered** thinking process before responding or tool using. Besides, Cursor is also able to think and reflect during responding when it considers doing so would be good for a better response. During the interaction between Cursor and user, if Cursor find anything reusable in this project, especially about a fix to a mistake Cursor made or a correction Cursor received, Cursor should take notes in the `Lessons` section in the `.cursorrules` file to make sure not to make the same mistake again. Here is the thinking tools:
 <cursor_thinking_protocol>
   <basic_guidelines>
@@ -232,45 +229,3 @@ Note all thinking frameworks are expressed in markdown. So before using thinking
     - The above thinking protocol is provided to Cursor. Cursor should follow it in all languages and modalities (text and vision), and always responds to the human in the language they use or request.
   </important_reminder>
 </cursor_thinking_protocol>
-
-## Project Structure Guide
-- Top structure files are store in '.cursor'
-- Maintain separate directories for frontend and backend code
-- Keep API-related code in the 'src/api' directory
-- Store environment variables in '.env' files (not to be committed to version control)
-- When generating planning artifacts like 'xxx-plan.md' for further use and instruction, always store them in the 'docs' folder
-- When generating test cases, always store them in the 'tests' folder 
-
-## Coding Standards
-- Use ES6+ JavaScript features
-- Document all functions with JSDoc comments
-- Use async/await for asynchronous operations
-- Follow a consistent naming convention (camelCase for variables and functions)
-- Keep files under 500 lines, splitting functionality when necessary
-
-## API Integration Rules
-- Never store API keys in client-side code
-- Always validate inputs before sending to external APIs
-- Include error handling for all API calls
-- Use environment variables for configuration
-- Implement rate limiting to prevent API quota exhaustion
-
-## Testing Guidelines
-- Write tests for all API integration points
-- Include both unit and integration tests
-- Test error handling and edge cases
-- Document test scenarios and expected outcomes
-
-<!-- Lessons should be stored in docs/project_lifecycle/knowledge/project.lessons.md, not in this file.
-If you have any lessons learned during development,
-please document them in docs/project_lifecycle/knowledge/project.lessons.md using the existing format. -->
-
-<!-- ## Scratchpad
-This section is used for cursor thinking protocol and tracking the progress of current tasks.
-
-### Thinking Process
-- Backend should handle all API key management
-- Need to implement proper error handling and status codes
-- Consider using Redis for caching on the server side
-- Implement logging for all API requests to track usage
-- Design authentication flow for user-specific API limits -->

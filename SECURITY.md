@@ -54,4 +54,4 @@ Please ensure you follow our security best practices:
 
 ## Learn More
 
-For more information about security best practices, see our [Security Documentation](https://docs.tourguideai.com/security). 
+For more information about security best practices, see the [Technical Implementation](docs/project_lifecycle/knowledge/project.lessons.md#technical-implementation) section of our project lessons. 

@@ -119,7 +119,7 @@ TourGuideAI/
 
 ### Code Standards
 
-- Follow the [JavaScript Style Guide](docs/javascript-style-guide.md)
+- Follow the [JavaScript Style Guide](docs/project_lifecycle/knowledge/project.lessons.md#javascript-style-guide)
 - Write tests for all new features
 - Maintain code coverage above 80%
 - Use TypeScript for type safety
@@ -205,10 +205,10 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on contributing to the pro
 - [Architecture](ARCHITECTURE.md)
 - [Security](SECURITY.md)
 - [Contributing](CONTRIBUTING.md)
-- [UX Audit System](docs/technical/ux-audit-system.md)
+- [UX Audit System](docs/project_lifecycle/knowledge/project.lessons.md#ux-audit-system)
 - [Documentation Inventory](docs/project.document-inventory.md)
-- [Project Lessons](docs/project.lessons.md)
-- [Stability Test Plan](docs/project_lifecycle/stability_tests/plans/project.stability-test-plan.md)
+- [Project Lessons](docs/project_lifecycle/knowledge/project.lessons.md)
+- [Stability Test Plan](docs/project_lifecycle/all_tests/plans/project.tests.frontend-plan.md)
 - [Deployment Pipeline](docs/project_lifecycle/deployment/pipelines/project.deployment-pipeline.md)
 
 ## License

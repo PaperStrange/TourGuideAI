@@ -171,7 +171,7 @@ When adding new components or services to the Beta Program:
 
 ## Related Documentation
 
-- [UX Audit System Documentation](../../../docs/technical/ux-audit-system.md)
+- [UX Audit System Documentation](../../../docs/project_lifecycle/knowledge/project.lessons.md#ux-audit-system)
 - [Project Documentation Inventory](../../../docs/project.document-inventory.md)
-- [Project Lessons](../../../docs/project.lessons.md)
-- [Stability Tests](../../../docs/project_lifecycle/stability_tests/plans/project.stability-test-plan.md) 
+- [Project Lessons](../../../docs/project_lifecycle/knowledge/project.lessons.md)
+- [Stability Tests](../../../docs/project_lifecycle/all_tests/plans/project.tests.frontend-plan.md) 
