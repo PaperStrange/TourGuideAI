@@ -54,7 +54,7 @@ const BetaPortal = () => {
   const [user, setUser] = useState(null);
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [onboardingCode, setOnboardingCode] = useState('');
-  const [isAdminState, setIsAdmin] = useState(false);
+  const [, setIsAdmin] = useState(false);
 
   // Configure axios to include the auth token in requests
   useEffect(() => {

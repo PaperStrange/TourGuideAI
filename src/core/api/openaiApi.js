@@ -418,7 +418,8 @@ export const getStatus = () => {
   };
 };
 
-export default {
+// Create a named API object instead of anonymous export
+const openaiApi = {
   setApiKey,
   setModel,
   setUseServerProxy,
@@ -428,4 +429,6 @@ export default {
   generateRoute,
   generateRandomRoute,
   splitRouteByDay
-}; 
+};
+
+export default openaiApi; 

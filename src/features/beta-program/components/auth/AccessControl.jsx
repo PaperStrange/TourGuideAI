@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import Role from './Role';
+import Permission from './Permission';
+import { useState, useEffect } from 'react';
 import permissionsService from '../../services/PermissionsService';
 
 /**
@@ -101,6 +104,33 @@ const AccessControl = ({
 
   // Render content based on access check
   return hasAccess ? children : fallback;
+};
+
+AccessControl.propTypes = {
+  permission: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string)
+  ]),
+  role: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string)
+  ]),
+  requireAllPermissions: PropTypes.bool,
+  requireAllRoles: PropTypes.bool,
+  requireAll: PropTypes.bool,
+  inverse: PropTypes.bool,
+  fallback: PropTypes.node,
+  children: PropTypes.node.isRequired
+};
+
+AccessControl.defaultProps = {
+  permission: null,
+  role: null,
+  requireAllPermissions: false,
+  requireAllRoles: false,
+  requireAll: false,
+  inverse: false,
+  fallback: null
 };
 
 export default AccessControl; 

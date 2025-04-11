@@ -28,7 +28,6 @@ const Navbar = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const location = useLocation();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [authError, setAuthError] = useState(false);
 
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);

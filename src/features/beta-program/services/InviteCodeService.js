@@ -110,4 +110,6 @@ class InviteCodeService {
   }
 }
 
-export default new InviteCodeService(); 
+// Create a named instance before exporting
+const inviteCodeService = new InviteCodeService();
+export default inviteCodeService; 

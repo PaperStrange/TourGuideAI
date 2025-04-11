@@ -35,6 +35,28 @@ class CacheService {
   }
   
   /**
+   * Initialize the cache service
+   * @param {Object} config - Cache configuration (optional)
+   * @returns {Promise<boolean>} - Success status
+   */
+  async initialize(config = {}) {
+    // Update config if provided
+    if (Object.keys(config).length > 0) {
+      this.config = { ...this.config, ...config };
+    }
+    
+    // Reload cache metadata
+    this.cacheMeta = this._loadCacheMeta();
+    
+    // Clean expired items if configured
+    if (this.config.cleanOnInit) {
+      await this.cleanExpiredItems();
+    }
+    
+    return true;
+  }
+  
+  /**
    * Set cache item with TTL
    * @param {string} key - Cache key
    * @param {any} data - Data to cache
@@ -236,27 +258,28 @@ class CacheService {
    * @returns {Promise<number>} - Number of successfully prefetched items
    */
   async prefetchItems(urls, options = {}) {
-    const { fetcher, ttl, batchSize = 3 } = options;
-    
-    if (!fetcher || !Array.isArray(urls) || urls.length === 0) {
-      return 0;
-    }
+    const { ttl, fetcher = fetch, batchSize = 5 } = options;
     
     let successCount = 0;
     
     // Process in batches to avoid overwhelming the network
     for (let i = 0; i < urls.length; i += batchSize) {
       const batch = urls.slice(i, i + batchSize);
+      const currentBatchResults = await Promise.all(
+        batch.map(async url => {
+          try {
+            const data = await fetcher(url);
+            const success = await this.setItem(url, data, ttl);
+            return success ? 1 : 0;
+          } catch (error) {
+            console.error(`Error prefetching ${url}:`, error);
+            return 0;
+          }
+        })
+      );
       
-      await Promise.all(batch.map(async url => {
-        try {
-          const data = await fetcher(url);
-          const success = await this.setItem(url, data, ttl);
-          if (success) successCount++;
-        } catch (error) {
-          console.error(`Error prefetching ${url}:`, error);
-        }
-      }));
+      // Update success count after processing each batch
+      successCount += currentBatchResults.reduce((sum, result) => sum + result, 0);
     }
     
     return successCount;

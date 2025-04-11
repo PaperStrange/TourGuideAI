@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useContext, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { PermissionsContext } from '../../contexts/PermissionsContext';
 import permissionsService from '../../services/PermissionsService';
 
 /**
@@ -64,6 +66,23 @@ const Role = ({
 
   // Render content based on role check
   return hasRole ? children : fallback;
+};
+
+Role.propTypes = {
+  role: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string)
+  ]).isRequired,
+  requireAll: PropTypes.bool,
+  inverse: PropTypes.bool,
+  fallback: PropTypes.node,
+  children: PropTypes.node.isRequired
+};
+
+Role.defaultProps = {
+  requireAll: false,
+  inverse: false,
+  fallback: null
 };
 
 export default Role; 

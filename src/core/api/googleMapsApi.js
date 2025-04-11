@@ -742,7 +742,8 @@ export const getStatus = () => {
   };
 };
 
-export default {
+// Fix anonymous export by creating a named object
+const googleMapsApi = {
   setApiKey,
   setDebugMode,
   setUseServerProxy,
@@ -755,4 +756,6 @@ export default {
   validateTransportation,
   validateInterestPoints,
   calculateRouteStatistics
-}; 
+};
+
+export default googleMapsApi; 

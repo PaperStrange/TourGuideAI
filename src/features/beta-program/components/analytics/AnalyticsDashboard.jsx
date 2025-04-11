@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useTheme } from '@mui/material/styles';
 import {
   Box,
@@ -12,18 +12,17 @@ import {
   Tab,
   Alert,
   Button,
-  Divider,
   Select,
   MenuItem,
   FormControl,
   InputLabel,
-  Chip,
   TableContainer,
   Table,
   TableHead,
   TableBody,
   TableRow,
   TableCell,
+  Chip,
   ButtonGroup,
   IconButton
 } from '@mui/material';
@@ -101,14 +100,6 @@ const AnalyticsDashboard = () => {
   const [showSessionRecordings, setShowSessionRecordings] = useState(false);
   const [showHeatmaps, setShowHeatmaps] = useState(false);
   
-  // Colors for charts
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8', '#82CA9D', '#FFC658'];
-  const SENTIMENT_COLORS = {
-    positive: '#4caf50',
-    neutral: '#9e9e9e', 
-    negative: '#f44336'
-  };
-
   // Chart colors
   const colors = {
     primary: theme.palette.primary.main,
@@ -233,40 +224,6 @@ const AnalyticsDashboard = () => {
     }
   };
 
-  // Load analytics data
-  useEffect(() => {
-    loadAnalytics();
-  }, [timeRange]);
-  
-  // Load analytics data based on time range
-  const loadAnalytics = async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      
-      // In a real implementation, this would be an API call
-      // const data = await analyticsService.getAnalytics(timeRange);
-      
-      // Mock data for demo
-      setTimeout(() => {
-        // Generate data based on selected time range
-        const data = generateMockData(timeRange);
-        setDashboardData(data);
-        setLoading(false);
-      }, 800); // Simulate network delay
-      
-    } catch (err) {
-      console.error('Error loading analytics:', err);
-      setError('Failed to load analytics data. Please try again.');
-      setLoading(false);
-    }
-  };
-  
-  // Handle time range change
-  const handleTimeRangeChange = (event) => {
-    setTimeRange(event.target.value);
-  };
-
   // Format number with K, M suffixes
   const formatNumber = (num) => {
     if (num >= 1000000) {
@@ -277,36 +234,7 @@ const AnalyticsDashboard = () => {
     }
     return num;
   };
-  
-  // Get trend indicator component
-  const TrendIndicator = ({ value, previousValue }) => {
-    const percentChange = previousValue 
-      ? ((value - previousValue) / previousValue) * 100
-      : 0;
-      
-    if (Math.abs(percentChange) < 0.1) {
-      return null;
-    }
-    
-    const isPositive = percentChange > 0;
-    
-    return (
-      <Box 
-        component="span" 
-        sx={{ 
-          display: 'flex',
-          alignItems: 'center',
-          color: isPositive ? colors.success : colors.error,
-          ml: 1,
-          fontSize: '0.875rem'
-        }}
-      >
-        {isPositive ? <TrendUpIcon fontSize="small" /> : <TrendDownIcon fontSize="small" />}
-        {Math.abs(percentChange).toFixed(1)}%
-      </Box>
-    );
-  };
-  
+
   // Mock data generation
   const generateMockData = (timeRange) => {
     let days = 7;
@@ -439,6 +367,76 @@ const AnalyticsDashboard = () => {
     };
   };
   
+  // Load analytics data
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        
+        // In a real implementation, this would be an API call
+        // const data = await analyticsService.getAnalytics(timeRange);
+        
+        // Mock data for demo
+        setTimeout(() => {
+          // Generate data based on selected time range
+          const data = generateMockData(timeRange);
+          setDashboardData(data);
+          setLoading(false);
+        }, 800); // Simulate network delay
+      } catch (err) {
+        console.error('Error loading analytics:', err);
+        setError('Failed to load analytics data. Please try again.');
+        setLoading(false);
+      }
+    };
+    
+    loadData();
+  }, [timeRange]); // Only depends on timeRange now
+  
+  // Create a function to reload data for the refresh button
+  const handleRefresh = () => {
+    // Force React to regenerate data by toggling timeRange
+    const currentTimeRange = timeRange;
+    const tempTimeRange = currentTimeRange === "7days" ? "temp" : "7days";
+    setTimeRange(tempTimeRange);
+    setTimeout(() => setTimeRange(currentTimeRange), 10);
+  };
+  
+  // Handle time range change
+  const handleTimeRangeChange = (event) => {
+    setTimeRange(event.target.value);
+  };
+
+  // Get trend indicator component
+  const TrendIndicator = ({ value, previousValue }) => {
+    const percentChange = previousValue 
+      ? ((value - previousValue) / previousValue) * 100
+      : 0;
+      
+    if (Math.abs(percentChange) < 0.1) {
+      return null;
+    }
+    
+    const isPositive = percentChange > 0;
+    
+    return (
+      <Box 
+        component="span" 
+        sx={{ 
+          display: 'flex',
+          alignItems: 'center',
+          color: isPositive ? colors.success : colors.error,
+          ml: 1,
+          fontSize: '0.875rem'
+        }}
+      >
+        {isPositive ? <TrendUpIcon fontSize="small" /> : <TrendDownIcon fontSize="small" />}
+        {Math.abs(percentChange).toFixed(1)}%
+      </Box>
+    );
+  };
+  
   // Get status color
   const getStatusColor = (status) => {
     switch (status) {
@@ -524,7 +522,7 @@ const AnalyticsDashboard = () => {
             startIcon={<RefreshIcon />}
             variant="outlined"
             size="small"
-            onClick={loadAnalytics}
+            onClick={handleRefresh}
             disabled={loading}
           >
             Refresh

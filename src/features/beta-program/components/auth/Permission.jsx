@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useContext, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { PermissionsContext } from '../../contexts/PermissionsContext';
 import permissionsService from '../../services/PermissionsService';
 
 /**
@@ -62,6 +64,23 @@ const Permission = ({
 
   // Render content based on permission check
   return hasPermission ? children : fallback;
+};
+
+Permission.propTypes = {
+  permission: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string)
+  ]).isRequired,
+  requireAll: PropTypes.bool,
+  inverse: PropTypes.bool,
+  fallback: PropTypes.node,
+  children: PropTypes.node.isRequired
+};
+
+Permission.defaultProps = {
+  requireAll: false,
+  inverse: false,
+  fallback: null
 };
 
 export default Permission; 

@@ -502,6 +502,9 @@ class AnalyticsService {
         case 'long':
           filteredRecordings = filteredRecordings.filter(r => r.duration > 300);
           break;
+        default:
+          // If we get here, no filtering will be applied based on duration
+          break;
       }
     }
     
