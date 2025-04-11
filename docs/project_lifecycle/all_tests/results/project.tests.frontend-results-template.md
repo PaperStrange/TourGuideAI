@@ -124,3 +124,9 @@
 | Date | Version | Pass Rate | Coverage | Notes |
 |------|---------|-----------|----------|-------|
 | | | | | | 
+
+## References
+
+- [Frontend Test Plan](../../plans/project.tests.frontend-plan.md)
+- [Test Patterns Reference](../../references/project.tests.test-patterns.md)
+- [Mock Strategies Reference](../../references/project.tests.mock-strategies.md) 

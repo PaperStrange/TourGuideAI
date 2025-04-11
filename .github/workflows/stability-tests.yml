@@ -95,7 +95,7 @@ jobs:
         with:
           name: stability-test-results
           path: |
-            ./docs/project_lifecycle/stability_tests/results/
+            ./docs/project_lifecycle/all_tests/results/
           retention-days: 30
       
       - name: Update Test Summary
@@ -107,8 +107,8 @@ jobs:
           
           # Add links to reports in the summary
           echo "📊 **Test Reports**:" >> $GITHUB_STEP_SUMMARY
-          echo "- [View Full Report](./docs/project_lifecycle/stability_tests/results/reports/latest.html)" >> $GITHUB_STEP_SUMMARY
-          echo "- [Raw Test Data](./docs/project_lifecycle/stability_tests/results/data/)" >> $GITHUB_STEP_SUMMARY
+          echo "- [View Full Report](./docs/project_lifecycle/all_tests/results/reports/latest.html)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Raw Test Data](./docs/project_lifecycle/all_tests/results/data/)" >> $GITHUB_STEP_SUMMARY
 
   load-tests:
     runs-on: ubuntu-latest

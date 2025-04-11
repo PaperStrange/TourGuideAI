@@ -139,3 +139,9 @@
 | Date | Version | Pass Rate | Coverage | Notes |
 |------|---------|-----------|----------|-------|
 | | | | | | 
+
+## References
+
+- [Backend Test Plan](../../plans/project.tests.backend-plan.md)
+- [Test Patterns Reference](../../references/project.tests.test-patterns.md)
+- [Mock Strategies Reference](../../references/project.tests.mock-strategies.md) 

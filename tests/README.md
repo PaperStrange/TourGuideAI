@@ -98,7 +98,7 @@ Test reports are generated in the following locations:
 - Cross-browser test reports: `tests/cross-browser/reports/`
 - Load test reports: `load-test-results/`
 - Security test reports: `security-reports/`
-- Stability test reports: `docs/project_lifecycle/stability_tests/results/`
+- Stability test reports: `docs/project_lifecycle/all_tests/results/`
 
 ## Contributing to Testing
 

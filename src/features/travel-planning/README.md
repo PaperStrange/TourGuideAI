@@ -45,4 +45,4 @@ The Travel Planning feature has comprehensive test coverage:
 - **Cross-Browser Tests**: End-to-end tests across different browsers and screen sizes
 - **Load Tests**: Performance testing under various load conditions
 
-For detailed information about testing, refer to the [Travel Planning Testing Plan](../../../docs/project_lifecycle/stability_tests/plans/project-travel-planning-test-plan.md). 
+For detailed information about testing, refer to the [Travel Planning Testing Plan](../../../docs/project_lifecycle/all_tests/plans/project-travel-planning-test-plan.md). 

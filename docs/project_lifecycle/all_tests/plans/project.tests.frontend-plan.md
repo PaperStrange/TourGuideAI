@@ -606,5 +606,5 @@ Add these scripts to package.json:
 - [React Testing Library Documentation](https://testing-library.com/docs/react-testing-library/intro/)
 - [Cypress Documentation](https://docs.cypress.io/)
 - [Storybook Documentation](https://storybook.js.org/docs/react/get-started/introduction)
-- [Test Patterns Reference](./project.tests.test-patterns.md)
-- [Mock Strategies Reference](./project.tests.mock-strategies.md) 
+- [Test Patterns Reference](../references/project.tests.test-patterns.md)
+- [Mock Strategies Reference](../references/project.tests.mock-strategies.md) 

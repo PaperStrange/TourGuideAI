@@ -203,7 +203,7 @@ The stability testing workflow performs comprehensive tests to ensure applicatio
   - Storage of test results as artifacts
   - GitHub step summary with test result overview
 - **Output**:
-  - Test results stored in `docs/project_lifecycle/stability_tests/records/test-results/`
+  - Test results stored in `docs/project_lifecycle/all_tests/records/test-results/`
   - JSON-formatted test reports with detailed metrics
   - Artifacts preserved for 30 days for historical analysis
 
@@ -405,4 +405,30 @@ If a workflow fails:
 1. Check the GitHub Actions tab for the specific error
 2. Download artifacts to view detailed test results
 3. Check if the test is flaky (inconsistent)
-4. Check for environment-specific issues 
+4. Check for environment-specific issues
+
+# Test Artifact Collection and Processing
+
+After the test run, artifacts are collected:
+
+```bash
+# UX Audit artifacts
+mkdir -p test-results/ux-audit
+cp docs/project_lifecycle/all_tests/results/data/ux-audit-*.json test-results/ux-audit/
+
+# Upload artifacts
+actions/upload-artifact@v3
+  name: ux-audit-test-results
+  path: test-results/ux-audit
+```
+
+```bash
+# Task Prompt artifacts
+mkdir -p test-results/task-prompt
+cp docs/project_lifecycle/all_tests/results/data/task-prompt-*.json test-results/task-prompt/
+
+# Upload artifacts
+actions/upload-artifact@v3
+  name: task-prompt-test-results
+  path: test-results/task-prompt
+``` 

@@ -208,7 +208,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on contributing to the pro
 - [UX Audit System](docs/project_lifecycle/knowledge/project.lessons.md#ux-audit-system)
 - [Documentation Inventory](docs/project.document-inventory.md)
 - [Project Lessons](docs/project_lifecycle/knowledge/project.lessons.md)
-- [Stability Test Plan](docs/project_lifecycle/all_tests/plans/project.tests.frontend-plan.md)
+- [Frontend Test Plan](docs/project_lifecycle/all_tests/plans/project.tests.frontend-plan.md)
+- [Backend Test Plan](docs/project_lifecycle/all_tests/plans/project.tests.backend-plan.md)
 - [Deployment Pipeline](docs/project_lifecycle/deployment/pipelines/project.deployment-pipeline.md)
 
 ## License

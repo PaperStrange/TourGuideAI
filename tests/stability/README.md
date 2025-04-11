@@ -236,20 +236,20 @@ test('should progress through multi-step task sequence', async ({ page }) => {
 
 Stability test results are reported in several formats:
 
-- Markdown summary in `docs/project_lifecycle/stability_tests/results/test-results-summary.md`
-- Execution results in `docs/project_lifecycle/stability_tests/results/project.test-execution-results.md`
-- HTML report in `docs/project_lifecycle/stability_tests/results/index.html`
-- Detailed reports in `docs/project_lifecycle/stability_tests/results/reports/` directory
-- Raw test data in `docs/project_lifecycle/stability_tests/results/data/` directory
+- Markdown summary in `docs/project_lifecycle/all_tests/results/test-results-summary.md`
+- Execution results in `docs/project_lifecycle/all_tests/results/project.test-execution-results.md`
+- HTML report in `docs/project_lifecycle/all_tests/results/index.html`
+- Detailed reports in `docs/project_lifecycle/all_tests/results/reports/` directory
+- Raw test data in `docs/project_lifecycle/all_tests/results/data/` directory
 
 ## Troubleshooting Common Issues
 
 When troubleshooting stability test failures, consult the following resources:
 
-1. **Test Results Summary**: Review `docs/project_lifecycle/stability_tests/results/test-results-summary.md` for an overview of test outcomes.
-2. **Execution Logs**: Check `docs/project_lifecycle/stability_tests/results/project.test-execution-results.md` for detailed error messages.
-3. **Visual Reports**: Open `docs/project_lifecycle/stability_tests/results/index.html` in your browser for a visual representation of test results.
-4. **Raw Test Data**: Explore `docs/project_lifecycle/stability_tests/results/data/` for the underlying data behind the test results.
+1. **Test Results Summary**: Review `docs/project_lifecycle/all_tests/results/test-results-summary.md` for an overview of test outcomes.
+2. **Execution Logs**: Check `docs/project_lifecycle/all_tests/results/project.test-execution-results.md` for detailed error messages.
+3. **Visual Reports**: Open `docs/project_lifecycle/all_tests/results/index.html` in your browser for a visual representation of test results.
+4. **Raw Test Data**: Explore `docs/project_lifecycle/all_tests/results/data/` for the underlying data behind the test results.
 
 If you need additional assistance, reach out to the testing team.
 

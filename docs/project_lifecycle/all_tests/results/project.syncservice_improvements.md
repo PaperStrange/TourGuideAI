@@ -60,6 +60,10 @@ While the current implementation is now stable and passing all tests, there are 
 3. **Conflict resolution**: Add strategies for resolving conflicts between local and server data
 4. **Network detection**: Implement better handling of offline/online status
 
+## References
+- [Test Patterns Reference](../references/project.tests.test-patterns.md)
+- [Mock Strategies Reference](../references/project.tests.mock-strategies.md)
+
 ## Conclusion
 The SyncService implementation now properly handles all data types including waypoints, with comprehensive test coverage. The architecture follows a consistent pattern across all sync methods, making it maintainable and extensible for future enhancements.
 

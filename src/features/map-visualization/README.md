@@ -33,7 +33,7 @@ This feature handles the mapping and geographic visualization of travel routes, 
 
 ## Testing
 
-For detailed test scenarios of this feature, see `docs/project_lifecycle/stability_tests/references/project.test-scenarios.md` and `docs/project_lifecycle/stability_tests/references/project.test-user-story.md`.
+For detailed test scenarios of this feature, see `docs/project_lifecycle/all_tests/references/project.test-scenarios.md` and `docs/project_lifecycle/all_tests/references/project.test-user-story.md`.
 
 ## Dependencies
 

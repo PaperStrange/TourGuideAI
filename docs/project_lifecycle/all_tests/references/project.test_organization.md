@@ -73,6 +73,13 @@ Test documentation follows these principles:
 3. Test plans are stored in the `plans/` directory
 4. References and guides are kept in the `references/` directory
 
+## Related Documentation
+
+- [Test Patterns Reference](./project.tests.test-patterns.md)
+- [Mock Strategies Reference](./project.tests.mock-strategies.md)
+- [Frontend Test Plan](../plans/project.tests.frontend-plan.md)
+- [Backend Test Plan](../plans/project.tests.backend-plan.md)
+
 ---
 
 *Last Updated: 2025-04-10* 
