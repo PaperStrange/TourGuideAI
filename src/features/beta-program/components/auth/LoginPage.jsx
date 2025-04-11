@@ -30,6 +30,7 @@ const LoginPage = () => {
   const [betaCode, setBetaCode] = useState('');
   const [name, setName] = useState('');
   const [registerEmail, setRegisterEmail] = useState('');
+  const [registerPassword, setRegisterPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -77,7 +78,7 @@ const LoginPage = () => {
   
   const handleRegister = async (e) => {
     e.preventDefault();
-    if (!registerEmail || !betaCode || !name) {
+    if (!registerEmail || !betaCode || !name || !registerPassword) {
       setError('Please fill in all fields');
       return;
     }
@@ -86,14 +87,27 @@ const LoginPage = () => {
     setError('');
     
     try {
-      const success = await authService.register(registerEmail, betaCode, name);
-      if (success) {
-        navigate(from);
+      // Create user data object to match the expected format in AuthService
+      const userData = {
+        email: registerEmail,
+        name: name,
+        password: registerPassword // Add password field
+      };
+      
+      // Call register with the correct parameter format
+      const result = await authService.register(userData, betaCode);
+      
+      if (result) {
+        setSuccess('Registration successful! Redirecting...');
+        setTimeout(() => {
+          navigate(from);
+        }, 1500);
       } else {
         setError('Registration failed. Please check your beta invitation code.');
       }
     } catch (err) {
-      setError(err.message || 'Registration failed. Please try again.');
+      console.error('Registration error:', err);
+      setError(err.response?.data?.error?.message || err.message || 'Registration failed. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -207,6 +221,17 @@ const LoginPage = () => {
               margin="normal"
               value={registerEmail}
               onChange={(e) => setRegisterEmail(e.target.value)}
+              disabled={loading}
+              required
+            />
+            
+            <TextField
+              label="Password"
+              type="password"
+              fullWidth
+              margin="normal"
+              value={registerPassword}
+              onChange={(e) => setRegisterPassword(e.target.value)}
               disabled={loading}
               required
             />

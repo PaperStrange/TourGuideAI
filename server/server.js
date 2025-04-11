@@ -119,6 +119,54 @@ app.get('/health', (req, res) => {
   });
 });
 
+// Development-only endpoint to generate invite codes
+if (process.env.NODE_ENV !== 'production') {
+  app.get('/dev/generate-invite', async (req, res) => {
+    try {
+      // Generate a new invite code
+      const code = await inviteCodes.generateCode('system-dev');
+      
+      // Return the code
+      res.json({
+        success: true,
+        message: 'Generated new invite code for development',
+        code: code.code,
+        expiresAt: code.expiresAt
+      });
+    } catch (error) {
+      logger.error('Error generating development invite code', { error });
+      res.status(500).json({
+        success: false,
+        message: 'Failed to generate invite code',
+        error: error.message
+      });
+    }
+  });
+  
+  // Display all invite codes
+  app.get('/dev/list-invites', async (req, res) => {
+    try {
+      const codes = await inviteCodes.getAllCodes();
+      res.json({
+        success: true,
+        codes: codes.map(code => ({
+          code: code.code,
+          isValid: code.isValid,
+          used: !!code.usedBy,
+          expiresAt: code.expiresAt
+        }))
+      });
+    } catch (error) {
+      logger.error('Error listing invite codes', { error });
+      res.status(500).json({
+        success: false,
+        message: 'Failed to list invite codes',
+        error: error.message
+      });
+    }
+  });
+}
+
 // Global error handling middleware
 app.use((err, req, res, next) => {
   const errorId = `err-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
