@@ -4,6 +4,11 @@ echo "TourGuideAI Deployment Script"
 echo "============================"
 echo ""
 
+# Navigate to project root
+cd "$(dirname "$0")/.." || exit 1
+echo "Working from directory: $(pwd)"
+echo ""
+
 # Stop any running servers
 echo "Stopping any running servers..."
 pkill -f "node server.js" || true

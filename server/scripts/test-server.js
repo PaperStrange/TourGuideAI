@@ -2,12 +2,12 @@
  * TourGuideAI API Server Test Script
  * 
  * A simple test script to verify the server is working correctly.
- * Run with: node test-server.js
+ * Run with: node scripts/test-server.js
  */
 
 require('dotenv').config();
 const axios = require('axios');
-const logger = require('./utils/logger');
+const logger = require('../utils/logger');
 
 // Validate environment variables
 const validateEnv = () => {
