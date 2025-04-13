@@ -15,6 +15,7 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const responseTime = require('response-time');
 const path = require('path');
+const fs = require('fs');
 
 // Custom utilities and middleware
 const logger = require('./utils/logger');
@@ -36,6 +37,15 @@ const adminRoutes = require('./routes/admin');
 // Initialize Express app
 const app = express();
 
+// Create public directory if it doesn't exist
+const publicDir = path.join(__dirname, 'public');
+if (!fs.existsSync(publicDir)) {
+  fs.mkdirSync(publicDir, { recursive: true });
+}
+
+// Serve static files from public directory - FIRST in middleware chain
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Initialize token provider
 tokenProvider.initialize().catch(err => {
   logger.error('Failed to initialize token provider', { error: err });
@@ -51,7 +61,28 @@ inviteCodes.initialize().catch(err => {
 });
 
 // Basic security headers
-app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+      imgSrc: ["'self'", "data:", "blob:", "http://localhost:3000", "*"],
+      connectSrc: ["'self'", "http://localhost:3000", "ws://localhost:3000"],
+      fontSrc: ["'self'", "https://fonts.gstatic.com"],
+      objectSrc: ["'none'"],
+      mediaSrc: ["'self'"],
+      frameSrc: ["'none'"],
+      manifestSrc: ["'self'"],
+      workerSrc: ["'self'", "blob:"],
+      baseUri: ["'self'"],
+      formAction: ["'self'"],
+    },
+  },
+  crossOriginEmbedderPolicy: false,
+  crossOriginOpenerPolicy: false,
+  crossOriginResourcePolicy: false,
+}));
 
 // Request logging
 app.use(morgan('combined'));
@@ -95,18 +126,9 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/openai', validateOpenAIApiKey, openaiLimiter, openaiRoutes);
 app.use('/api/maps', validateGoogleMapsApiKey, mapsLimiter, mapsRoutes);
 
-// Serve static files from the frontend build directory in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../build')));
-  
-  // Serve the React frontend for any other request
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../build', 'index.html'));
-  });
-}
-
-// Health check endpoint
+// Health check endpoint - must be defined BEFORE the catch-all React handler
 app.get('/health', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
   res.json({
     status: 'ok',
     timestamp: new Date().toISOString(),
@@ -118,6 +140,22 @@ app.get('/health', (req, res) => {
     }
   });
 });
+
+// Explicitly define API routes to avoid being overridden by the React app
+app.get('/api/*', (req, res) => {
+  res.status(404).json({ error: 'API endpoint not found' });
+});
+
+// Serve static files from the frontend build directory in production
+if (process.env.NODE_ENV === 'production') {
+  // Serve static files from the React build
+  app.use(express.static(path.join(__dirname, '../build')));
+  
+  // Serve the React frontend for any other request
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build', 'index.html'));
+  });
+}
 
 // Development-only endpoint to generate invite codes
 if (process.env.NODE_ENV !== 'production') {

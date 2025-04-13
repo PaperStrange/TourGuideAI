@@ -1,6 +1,7 @@
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { LoadingProvider } from './contexts/LoadingContext';
+import { PermissionsProvider } from './features/beta-program/contexts/PermissionsContext';
 import LoadingSpinner from './components/common/LoadingSpinner';
 import Navbar from './components/common/Navbar';
 import { NavGuard } from './features/beta-program/components/auth';
@@ -63,85 +64,91 @@ function App() {
   // If backend is not available, show a simplified UI
   if (!backendAvailable) {
     return (
-      <div className="App">
-        <Navbar />
-        <main className="main-content">
-          <Suspense fallback={<LoadingSpinner message="Loading page..." />}>
-            <div style={{ padding: '2rem', textAlign: 'center' }}>
-              <h1>Welcome to TourGuideAI</h1>
-              <p>The backend services are not currently available. Only static content is being displayed.</p>
-              <p>This could be because:</p>
-              <ul style={{ listStyle: 'none', padding: 0 }}>
-                <li>The server component is not running</li>
-                <li>There are configuration issues</li>
-                <li>Network connectivity problems</li>
-              </ul>
-              <p>Try starting the backend with: <code>npm run server</code></p>
-            </div>
-          </Suspense>
-        </main>
-      </div>
+      <LoadingProvider>
+        <PermissionsProvider>
+          <div className="App">
+            <Navbar />
+            <main className="main-content">
+              <Suspense fallback={<LoadingSpinner message="Loading page..." />}>
+                <div style={{ padding: '2rem', textAlign: 'center' }}>
+                  <h1>Welcome to TourGuideAI</h1>
+                  <p>The backend services are not currently available. Only static content is being displayed.</p>
+                  <p>This could be because:</p>
+                  <ul style={{ listStyle: 'none', padding: 0 }}>
+                    <li>The server component is not running</li>
+                    <li>There are configuration issues</li>
+                    <li>Network connectivity problems</li>
+                  </ul>
+                  <p>Try starting the backend with: <code>npm run server</code></p>
+                </div>
+              </Suspense>
+            </main>
+          </div>
+        </PermissionsProvider>
+      </LoadingProvider>
     );
   }
 
   // Normal app with all routes
   return (
     <LoadingProvider>
-      <div className="App">
-        <Navbar />
-        <main className="main-content">
-          <Suspense fallback={<LoadingSpinner message="Loading page..." />}>
-            <Routes>
-              {/* Public routes */}
-              <Route exact path="/" element={<HomePage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/verify-email" element={<VerifyEmailPage />} />
-              <Route path="/reset-password" element={<ResetPasswordPage />} />
-              
-              {/* Beta-tester+ protected routes */}
-              <Route path="/chat" element={
-                <NavGuard role={[ROLES.BETA_TESTER, ROLES.MODERATOR, ROLES.ADMIN]}>
-                  <ChatPage />
-                </NavGuard>
-              } />
-              
-              <Route path="/map" element={
-                <NavGuard role={[ROLES.BETA_TESTER, ROLES.MODERATOR, ROLES.ADMIN]}>
-                  <MapPage />
-                </NavGuard>
-              } />
-              
-              <Route path="/profile" element={
-                <NavGuard role={[ROLES.BETA_TESTER, ROLES.MODERATOR, ROLES.ADMIN]}>
-                  <ProfilePage />
-                </NavGuard>
-              } />
-              
-              <Route path="/beta" element={
-                <NavGuard role={[ROLES.BETA_TESTER, ROLES.MODERATOR, ROLES.ADMIN]}>
-                  <BetaPortalPage />
-                </NavGuard>
-              } />
-              
-              {/* Admin-only routes */}
-              <Route path="/admin" element={
-                <NavGuard role={ROLES.ADMIN}>
-                  <AdminDashboard />
-                </NavGuard>
-              } />
-              
-              <Route path="/admin/invite-codes" element={
-                <NavGuard role={[ROLES.ADMIN, ROLES.MODERATOR]} permission="invites:read">
-                  <InviteCodeManager />
-                </NavGuard>
-              } />
-              
-              {/* Catch-all - redirect to home */}
-              <Route path="*" element={<Navigate to="/" />} />
-            </Routes>
-          </Suspense>
-        </main>
-      </div>
+      <PermissionsProvider>
+        <div className="App">
+          <Navbar />
+          <main className="main-content">
+            <Suspense fallback={<LoadingSpinner message="Loading page..." />}>
+              <Routes>
+                {/* Public routes */}
+                <Route exact path="/" element={<HomePage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/verify-email" element={<VerifyEmailPage />} />
+                <Route path="/reset-password" element={<ResetPasswordPage />} />
+                
+                {/* Beta-tester+ protected routes */}
+                <Route path="/chat" element={
+                  <NavGuard role={[ROLES.BETA_TESTER, ROLES.MODERATOR, ROLES.ADMIN]}>
+                    <ChatPage />
+                  </NavGuard>
+                } />
+                
+                <Route path="/map" element={
+                  <NavGuard role={[ROLES.BETA_TESTER, ROLES.MODERATOR, ROLES.ADMIN]}>
+                    <MapPage />
+                  </NavGuard>
+                } />
+                
+                <Route path="/profile" element={
+                  <NavGuard role={[ROLES.BETA_TESTER, ROLES.MODERATOR, ROLES.ADMIN]}>
+                    <ProfilePage />
+                  </NavGuard>
+                } />
+                
+                <Route path="/beta" element={
+                  <NavGuard role={[ROLES.BETA_TESTER, ROLES.MODERATOR, ROLES.ADMIN]}>
+                    <BetaPortalPage />
+                  </NavGuard>
+                } />
+                
+                {/* Admin-only routes */}
+                <Route path="/admin" element={
+                  <NavGuard role={ROLES.ADMIN}>
+                    <AdminDashboard />
+                  </NavGuard>
+                } />
+                
+                <Route path="/admin/invite-codes" element={
+                  <NavGuard role={[ROLES.ADMIN, ROLES.MODERATOR]} permission="invites:read">
+                    <InviteCodeManager />
+                  </NavGuard>
+                } />
+                
+                {/* Catch-all - redirect to home */}
+                <Route path="*" element={<Navigate to="/" />} />
+              </Routes>
+            </Suspense>
+          </main>
+        </div>
+      </PermissionsProvider>
     </LoadingProvider>
   );
 }
