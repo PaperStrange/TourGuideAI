@@ -1,343 +1,532 @@
-# Mock Strategies Reference
+# TourGuideAI Mock Strategies
 
-This document provides detailed guidance on mocking different services and libraries used in the TourGuideAI project. Standardized mocking approaches ensure consistent test behavior and maintainability.
+This document outlines the strategies and patterns used for mocking and test data management within the TourGuideAI project.
 
-## React Component Mocking
+## Mock Data Organization
 
-### Recharts Library Mocking
+All mock data is organized in the following structure:
 
-For components that use Recharts for data visualization, use this standardized mock approach:
+```
+/src/tests/mocks/
+├── api/              # API response mocks
+├── data/             # Data model mocks
+├── services/         # Service layer mocks
+└── fixtures/         # Test fixtures for specific test scenarios
+```
+
+## API Mocking Strategy
+
+### External API Mocks
+
+For external APIs (OpenAI, Maps API, etc.), we use the following approach:
 
 ```javascript
-// Mock Recharts components
-jest.mock('recharts', () => {
-  const OriginalModule = jest.requireActual('recharts');
-  return {
-    ...OriginalModule,
-    ResponsiveContainer: ({ children }) => <div data-testid="responsive-container">{children}</div>,
-    LineChart: () => <div data-testid="line-chart" />,
-    BarChart: () => <div data-testid="bar-chart" />,
-    PieChart: () => <div data-testid="pie-chart" />,
-    Line: () => <div data-testid="line" />,
-    Bar: () => <div data-testid="bar" />,
-    Pie: ({ children }) => <div data-testid="pie">{children}</div>,
-    Cell: () => <div data-testid="cell" />,
-    Sector: () => <div data-testid="sector" />,
-    XAxis: () => <div data-testid="x-axis" />,
-    YAxis: () => <div data-testid="y-axis" />,
-    CartesianGrid: () => <div data-testid="cartesian-grid" />,
-    Tooltip: () => <div data-testid="tooltip" />,
-    Legend: () => <div data-testid="legend" />,
-    Brush: () => <div data-testid="brush" />
-  };
+// /src/tests/mocks/api/openai.mock.js
+const openAIMock = {
+  generateCompletion: jest.fn().mockResolvedValue({
+    text: 'This is a mock completion response',
+    usage: { total_tokens: 150 }
+  }),
+  
+  generateEmbedding: jest.fn().mockResolvedValue({
+    embedding: [0.1, 0.2, 0.3, 0.4],
+    usage: { total_tokens: 8 }
+  })
+};
+
+export default openAIMock;
+```
+
+Implementation in tests:
+
+```javascript
+// /src/tests/unit/services/ai-service.test.js
+import openAIMock from '../../mocks/api/openai.mock';
+import { AIService } from '../../../services/ai-service';
+
+jest.mock('../../../lib/openai', () => openAIMock);
+
+describe('AIService', () => {
+  beforeEach(() => {
+    openAIMock.generateCompletion.mockClear();
+  });
+
+  it('should generate tour descriptions', async () => {
+    const aiService = new AIService();
+    const result = await aiService.generateTourDescription('Paris');
+    
+    expect(openAIMock.generateCompletion).toHaveBeenCalledWith(
+      expect.stringContaining('Paris')
+    );
+    expect(result).toContain('mock completion response');
+  });
 });
 ```
 
-This approach preserves the original Recharts API while replacing the actual chart components with simple div elements that can be easily tested.
+### Internal API Mocks
 
-### React Router Mocking
-
-For components that use React Router, use this standard approach:
+For internal API endpoints, we use MSW (Mock Service Worker):
 
 ```javascript
-// Mock React Router
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useNavigate: () => jest.fn(),
-  useParams: () => ({ id: 'test-id' }),
-  useLocation: () => ({ 
-    pathname: '/test-path',
-    search: '?test=true',
-    hash: '',
-    state: null
+// /src/tests/mocks/api/handlers.js
+import { rest } from 'msw';
+import { toursMockData } from '../data/tours.mock';
+
+export const handlers = [
+  rest.get('/api/tours', (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json(toursMockData)
+    );
+  }),
+  
+  rest.get('/api/tours/:id', (req, res, ctx) => {
+    const { id } = req.params;
+    const tour = toursMockData.find(tour => tour.id === id);
+    
+    if (!tour) {
+      return res(
+        ctx.status(404),
+        ctx.json({ message: 'Tour not found' })
+      );
+    }
+    
+    return res(
+      ctx.status(200),
+      ctx.json(tour)
+    );
   })
-}));
+];
 ```
 
-### Canvas and WebGL Mocking
-
-For components that use canvas or WebGL (like heatmaps):
+Setup in tests:
 
 ```javascript
-// In setupTests.js
-class MockCanvasContext {
-  fillRect = jest.fn();
-  clearRect = jest.fn();
-  getImageData = jest.fn(() => ({
-    data: new Array(4).fill(0)
-  }));
-  putImageData = jest.fn();
-  createLinearGradient = jest.fn(() => ({
-    addColorStop: jest.fn()
-  }));
-  beginPath = jest.fn();
-  arc = jest.fn();
-  fill = jest.fn();
-  // Add other methods as needed
-}
+// /src/tests/setup.js
+import { setupServer } from 'msw/node';
+import { handlers } from './mocks/api/handlers';
 
-// Mock canvas
-HTMLCanvasElement.prototype.getContext = jest.fn(() => new MockCanvasContext());
+const server = setupServer(...handlers);
+
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
+```
+
+## Data Mocking
+
+### Model/Entity Mocks
+
+Data models are mocked as follows:
+
+```javascript
+// /src/tests/mocks/data/tours.mock.js
+export const toursMockData = [
+  {
+    id: 'tour-1',
+    name: 'Historic Paris Walking Tour',
+    description: 'Explore the rich history of Paris...',
+    duration: 180,
+    price: 49.99,
+    rating: 4.8,
+    locations: [
+      { name: 'Eiffel Tower', lat: 48.8584, lng: 2.2945 },
+      { name: 'Louvre Museum', lat: 48.8606, lng: 2.3376 }
+    ],
+    guideId: 'guide-1'
+  },
+  {
+    id: 'tour-2',
+    name: 'Roman Colosseum Tour',
+    description: 'Step back in time at the iconic Colosseum...',
+    duration: 120,
+    price: 39.99,
+    rating: 4.7,
+    locations: [
+      { name: 'Colosseum', lat: 41.8902, lng: 12.4922 },
+      { name: 'Roman Forum', lat: 41.8925, lng: 12.4853 }
+    ],
+    guideId: 'guide-2'
+  }
+];
+
+export const createMockTour = (overrides = {}) => ({
+  id: `tour-${Math.floor(Math.random() * 1000)}`,
+  name: 'New Mock Tour',
+  description: 'This is a dynamically created mock tour',
+  duration: 120,
+  price: 29.99,
+  rating: 0,
+  locations: [],
+  guideId: 'guide-1',
+  ...overrides
+});
+```
+
+### Factory Pattern for Mock Data
+
+For complex or varied test data needs, we use a factory pattern:
+
+```javascript
+// /src/tests/mocks/data/factory.js
+import { createMockTour } from './tours.mock';
+import { createMockUser } from './users.mock';
+
+export const createMockTourWithGuide = (tourOverrides = {}, guideOverrides = {}) => {
+  const guide = createMockUser({ role: 'GUIDE', ...guideOverrides });
+  return {
+    ...createMockTour({ guideId: guide.id, ...tourOverrides }),
+    guide
+  };
+};
+
+export const createMockBooking = (userOverrides = {}, tourOverrides = {}) => {
+  const user = createMockUser(userOverrides);
+  const tour = createMockTour(tourOverrides);
+  
+  return {
+    id: `booking-${Math.floor(Math.random() * 1000)}`,
+    userId: user.id,
+    tourId: tour.id,
+    date: new Date().toISOString(),
+    participants: 2,
+    totalPrice: tour.price * 2,
+    status: 'CONFIRMED',
+    user,
+    tour
+  };
+};
 ```
 
 ## Service Mocking
 
-### Analytics Service Mocking
-
-For the AnalyticsService used by various components:
+Services are mocked using Jest's mocking capabilities:
 
 ```javascript
-// Standard mock for AnalyticsService
-jest.mock('../../../features/beta-program/services/analytics/AnalyticsService', () => ({
-  getUserActivityData: jest.fn(),
-  getFeatureUsageData: jest.fn(),
-  getDeviceDistributionData: jest.fn(),
-  trackEvent: jest.fn(),
-  generateInsights: jest.fn()
-}));
+// /src/tests/mocks/services/tour-service.mock.js
+export const tourServiceMock = {
+  findTourById: jest.fn(),
+  searchTours: jest.fn(),
+  createTour: jest.fn(),
+  updateTour: jest.fn(),
+  deleteTour: jest.fn()
+};
 
-// In the beforeEach section of your tests:
-analyticsService.getUserActivityData.mockResolvedValue([
-  { 
-    date: '2023-05-01', 
-    activeUsers: 42, 
-    totalSessions: 86, 
-    newUsers: 8, 
-    returningUsers: 34,
-    avgSessionLength: 15.2,
-    actionsPerSession: 25.4,
-    bounceRate: 12.5
-  }
-  // Add more mock data as needed
-]);
-```
+// /src/tests/unit/controllers/tour-controller.test.js
+import { tourServiceMock } from '../../mocks/services/tour-service.mock';
+import { tourController } from '../../../controllers/tour-controller';
+import { toursMockData } from '../../mocks/data/tours.mock';
 
-### API Service Mocking
+jest.mock('../../../services/tour-service', () => tourServiceMock);
 
-For REST API services:
-
-```javascript
-jest.mock('../../../core/api/apiService', () => ({
-  get: jest.fn(),
-  post: jest.fn(),
-  put: jest.fn(),
-  delete: jest.fn()
-}));
-
-// In the beforeEach section:
-apiService.get.mockResolvedValue({ 
-  data: { 
-    // Mock response data
-  } 
-});
-```
-
-### Authentication Service Mocking
-
-For the AuthService:
-
-```javascript
-jest.mock('../../../services/AuthService', () => ({
-  login: jest.fn(),
-  logout: jest.fn(),
-  register: jest.fn(),
-  verifyToken: jest.fn(),
-  refreshToken: jest.fn(),
-  getCurrentUser: jest.fn(),
-  isAuthenticated: jest.fn()
-}));
-
-// In the beforeEach section:
-AuthService.getCurrentUser.mockReturnValue({
-  id: 'test-user-id',
-  username: 'testuser',
-  email: 'test@example.com',
-  roles: ['user']
-});
-AuthService.isAuthenticated.mockReturnValue(true);
-```
-
-## Environment Variables and Configuration Mocking
-
-For testing services that rely on environment variables (like KeyManager):
-
-```javascript
-// In test setup
-beforeAll(() => {
-  process.env.ENCRYPTION_KEY = 'test-encryption-key';
-  process.env.KEY_SALT = 'test-salt';
-  process.env.KEY_ROTATION_INTERVAL = '1'; // 1 day for testing
+describe('Tour Controller', () => {
+  beforeEach(() => {
+    tourServiceMock.findTourById.mockReset();
+    tourServiceMock.searchTours.mockReset();
+  });
   
-  // Reset the module to pick up the environment variables
-  jest.resetModules();
-  // Re-import the module to test
-  keyManager = require('./keyManager');
-});
-
-// In test teardown
-afterAll(() => {
-  delete process.env.ENCRYPTION_KEY;
-  delete process.env.KEY_SALT;
-  delete process.env.KEY_ROTATION_INTERVAL;
+  it('should get tour by id', async () => {
+    const mockTour = toursMockData[0];
+    tourServiceMock.findTourById.mockResolvedValue(mockTour);
+    
+    const req = { params: { id: mockTour.id } };
+    const res = { json: jest.fn(), status: jest.fn().mockReturnThis() };
+    
+    await tourController.getTourById(req, res);
+    
+    expect(tourServiceMock.findTourById).toHaveBeenCalledWith(mockTour.id);
+    expect(res.json).toHaveBeenCalledWith(mockTour);
+  });
 });
 ```
 
 ## Database Mocking
 
-For database operations:
+For database interactions, we use the following approaches:
+
+### In-Memory Database
+
+For integration tests:
 
 ```javascript
-// Mock MongoDB
-jest.mock('mongodb', () => {
-  const mCollection = {
-    find: jest.fn().mockReturnThis(),
-    findOne: jest.fn(),
-    insertOne: jest.fn(),
-    updateOne: jest.fn(),
-    deleteOne: jest.fn(),
-    toArray: jest.fn()
-  };
+// /src/tests/config/test-db.js
+import { MongoMemoryServer } from 'mongodb-memory-server';
+import mongoose from 'mongoose';
+
+let mongoServer;
+
+export const connectTestDb = async () => {
+  mongoServer = await MongoMemoryServer.create();
+  const uri = mongoServer.getUri();
   
-  const mDb = {
-    collection: jest.fn().mockReturnValue(mCollection)
-  };
+  await mongoose.connect(uri);
+};
+
+export const disconnectTestDb = async () => {
+  await mongoose.disconnect();
+  await mongoServer.stop();
+};
+
+export const clearTestDb = async () => {
+  const collections = mongoose.connection.collections;
   
-  return {
-    MongoClient: jest.fn().mockImplementation(() => ({
-      connect: jest.fn().mockResolvedValue(this),
-      db: jest.fn().mockReturnValue(mDb),
-      close: jest.fn()
-    }))
-  };
-});
-```
-
-## Node.js Module Mocking
-
-### Crypto Module Mocking
-
-For crypto operations (used in KeyManager):
-
-```javascript
-jest.mock('crypto', () => {
-  return {
-    randomBytes: jest.fn().mockReturnValue({
-      toString: jest.fn().mockReturnValue('random-mock-bytes')
-    }),
-    createCipheriv: jest.fn().mockReturnValue({
-      update: jest.fn().mockReturnValue(Buffer.from('encrypted-data')),
-      final: jest.fn().mockReturnValue(Buffer.from('final-data')),
-      getAuthTag: jest.fn().mockReturnValue(Buffer.from('auth-tag'))
-    }),
-    createDecipheriv: jest.fn().mockReturnValue({
-      update: jest.fn().mockReturnValue(Buffer.from('decrypted-data')),
-      final: jest.fn().mockReturnValue(Buffer.from('final-data')),
-      setAuthTag: jest.fn()
-    }),
-    createHash: jest.fn().mockReturnValue({
-      update: jest.fn().mockReturnThis(),
-      digest: jest.fn().mockReturnValue('hashed-value')
-    })
-  };
-});
-```
-
-### File System (fs) Module Mocking
-
-```javascript
-jest.mock('fs', () => ({
-  promises: {
-    readFile: jest.fn(),
-    writeFile: jest.fn(),
-    mkdir: jest.fn(),
-    access: jest.fn()
-  },
-  existsSync: jest.fn(),
-  mkdirSync: jest.fn()
-}));
-
-// In test setup
-fs.promises.readFile.mockResolvedValue(JSON.stringify({ 
-  // Mock file contents
-}));
-fs.existsSync.mockReturnValue(true);
-```
-
-## Error Handling in Mocks
-
-It's important to test both success and failure scenarios:
-
-```javascript
-// Test success case
-apiService.get.mockResolvedValue({ data: { /* mock data */ } });
-
-// Test failure case
-apiService.get.mockRejectedValue(new Error('API error'));
-
-// Test both in separate test cases
-test('handles API success', async () => {
-  apiService.get.mockResolvedValueOnce({ data: { /* mock data */ } });
-  // Test component with successful API response
-});
-
-test('handles API failure', async () => {
-  apiService.get.mockRejectedValueOnce(new Error('API error'));
-  // Test component with failed API response
-});
-```
-
-## Conditional Response Mocking
-
-For more complex testing scenarios, use conditional mocking:
-
-```javascript
-// Mock that returns different responses based on input
-apiService.get.mockImplementation((url) => {
-  if (url.includes('/users')) {
-    return Promise.resolve({ data: { users: [/* user data */] } });
-  } else if (url.includes('/products')) {
-    return Promise.resolve({ data: { products: [/* product data */] } });
-  } else {
-    return Promise.reject(new Error('Not found'));
+  for (const key in collections) {
+    const collection = collections[key];
+    await collection.deleteMany({});
   }
+};
+```
+
+Usage in tests:
+
+```javascript
+// /src/tests/integration/repositories/tour-repository.test.js
+import { connectTestDb, disconnectTestDb, clearTestDb } from '../../config/test-db';
+import { TourRepository } from '../../../repositories/tour-repository';
+import { toursMockData } from '../../mocks/data/tours.mock';
+
+describe('Tour Repository', () => {
+  beforeAll(async () => {
+    await connectTestDb();
+  });
+  
+  afterAll(async () => {
+    await disconnectTestDb();
+  });
+  
+  beforeEach(async () => {
+    await clearTestDb();
+  });
+  
+  it('should create a new tour', async () => {
+    const repository = new TourRepository();
+    const mockTour = toursMockData[0];
+    
+    const createdTour = await repository.create(mockTour);
+    
+    expect(createdTour.id).toBeDefined();
+    expect(createdTour.name).toBe(mockTour.name);
+    
+    const retrievedTour = await repository.findById(createdTour.id);
+    expect(retrievedTour).toMatchObject(mockTour);
+  });
 });
 ```
 
-## Shared Mocks
+### Repository Mocking
 
-For commonly used mocks, create a shared mocks directory:
-
-```javascript
-// In src/__mocks__/recharts.js
-const React = require('react');
-
-module.exports = {
-  // Standard Recharts mock implementation
-  ResponsiveContainer: ({ children }) => <div data-testid="responsive-container">{children}</div>,
-  // ... other components
-};
-
-// Then in your tests:
-jest.mock('recharts');
-```
-
-## React DOM Client Mock for React 18
-
-For React 18 compatibility in tests:
+For unit tests that don't need actual database interactions:
 
 ```javascript
-// In src/__mocks__/react-dom/client.js
-module.exports = {
-  createRoot: jest.fn().mockImplementation(() => ({
-    render: jest.fn(),
-    unmount: jest.fn()
-  }))
+// /src/tests/mocks/repositories/tour-repository.mock.js
+export const tourRepositoryMock = {
+  findById: jest.fn(),
+  findAll: jest.fn(),
+  create: jest.fn(),
+  update: jest.fn(),
+  delete: jest.fn()
 };
 
-// Then in setupTests.js:
-jest.mock('react-dom/client');
+// /src/tests/unit/services/tour-service.test.js
+import { tourRepositoryMock } from '../../mocks/repositories/tour-repository.mock';
+import { TourService } from '../../../services/tour-service';
+import { toursMockData, createMockTour } from '../../mocks/data/tours.mock';
+
+jest.mock('../../../repositories/tour-repository', () => ({
+  TourRepository: jest.fn().mockImplementation(() => tourRepositoryMock)
+}));
+
+describe('Tour Service', () => {
+  let tourService;
+  
+  beforeEach(() => {
+    tourRepositoryMock.findById.mockReset();
+    tourRepositoryMock.findAll.mockReset();
+    tourRepositoryMock.create.mockReset();
+    
+    tourService = new TourService();
+  });
+  
+  it('should find tour by id', async () => {
+    const mockTour = toursMockData[0];
+    tourRepositoryMock.findById.mockResolvedValue(mockTour);
+    
+    const result = await tourService.findTourById(mockTour.id);
+    
+    expect(tourRepositoryMock.findById).toHaveBeenCalledWith(mockTour.id);
+    expect(result).toEqual(mockTour);
+  });
+  
+  it('should create a new tour', async () => {
+    const newTourData = {
+      name: 'New Tour',
+      description: 'New tour description',
+      price: 59.99
+    };
+    
+    const createdTour = createMockTour(newTourData);
+    tourRepositoryMock.create.mockResolvedValue(createdTour);
+    
+    const result = await tourService.createTour(newTourData);
+    
+    expect(tourRepositoryMock.create).toHaveBeenCalledWith(
+      expect.objectContaining(newTourData)
+    );
+    expect(result).toEqual(createdTour);
+  });
+});
 ```
 
-## Conclusion
+## Component Testing Mocks
 
-These standardized mocking strategies ensure consistent behavior across tests and make test maintenance easier. Using these patterns will help improve test reliability and prevent common testing issues like flaky tests or false positives. 
+For React component testing, we use both MSW and component-specific mocks:
+
+```javascript
+// /src/tests/mocks/contexts/auth-context.mock.jsx
+import React from 'react';
+import { AuthContext } from '../../../contexts/auth-context';
+
+export const createAuthContextMock = (overrides = {}) => ({
+  user: {
+    id: 'user-1',
+    name: 'Test User',
+    email: 'test@example.com',
+    role: 'USER'
+  },
+  isAuthenticated: true,
+  isLoading: false,
+  login: jest.fn(),
+  logout: jest.fn(),
+  signup: jest.fn(),
+  ...overrides
+});
+
+export const AuthContextMockProvider = ({ children, value = {} }) => {
+  const contextValue = createAuthContextMock(value);
+  return (
+    <AuthContext.Provider value={contextValue}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+```
+
+Usage in component tests:
+
+```javascript
+// /src/tests/unit/components/tour-list.test.jsx
+import React from 'react';
+import { render, screen, waitFor } from '@testing-library/react';
+import { AuthContextMockProvider } from '../../mocks/contexts/auth-context.mock';
+import { TourList } from '../../../components/tour-list';
+import { toursMockData } from '../../mocks/data/tours.mock';
+import { rest } from 'msw';
+import { setupServer } from 'msw/node';
+
+const server = setupServer(
+  rest.get('/api/tours', (req, res, ctx) => {
+    return res(ctx.json(toursMockData));
+  })
+);
+
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
+
+describe('TourList Component', () => {
+  it('should render tours from API', async () => {
+    render(
+      <AuthContextMockProvider>
+        <TourList />
+      </AuthContextMockProvider>
+    );
+    
+    expect(screen.getByText('Loading tours...')).toBeInTheDocument();
+    
+    await waitFor(() => {
+      expect(screen.getByText(toursMockData[0].name)).toBeInTheDocument();
+    });
+    
+    expect(screen.getByText(toursMockData[1].name)).toBeInTheDocument();
+  });
+  
+  it('should handle API errors', async () => {
+    server.use(
+      rest.get('/api/tours', (req, res, ctx) => {
+        return res(ctx.status(500));
+      })
+    );
+    
+    render(
+      <AuthContextMockProvider>
+        <TourList />
+      </AuthContextMockProvider>
+    );
+    
+    await waitFor(() => {
+      expect(screen.getByText('Error loading tours')).toBeInTheDocument();
+    });
+  });
+});
+```
+
+## E2E Testing Mock Strategy
+
+For end-to-end tests using Playwright, we use the following approach:
+
+```javascript
+// /src/tests/e2e/setup/global-setup.js
+const { chromium } = require('@playwright/test');
+const { setupMockApi } = require('./mock-api');
+
+async function globalSetup(config) {
+  const browser = await chromium.launch();
+  const page = await browser.newPage();
+  
+  // Setup mock API endpoints
+  await setupMockApi(page);
+  
+  // Seed mock data
+  await page.goto('http://localhost:3000/api/test/seed');
+  
+  await browser.close();
+}
+
+module.exports = globalSetup;
+```
+
+```javascript
+// /src/tests/e2e/tests/tour-booking.spec.js
+const { test, expect } = require('@playwright/test');
+const { loginAsMockUser } = require('../helpers/auth');
+
+test.describe('Tour Booking Flow', () => {
+  test.beforeEach(async ({ page }) => {
+    await loginAsMockUser(page);
+  });
+
+  test('User can book a tour', async ({ page }) => {
+    await page.goto('/tours');
+    
+    // Click on the first tour
+    await page.click('.tour-card:first-child');
+    
+    // Fill booking details
+    await page.fill('[data-testid="booking-date"]', '2023-12-15');
+    await page.fill('[data-testid="participants"]', '2');
+    
+    // Submit booking
+    await page.click('[data-testid="book-now-button"]');
+    
+    // Assert success
+    await expect(page.locator('.booking-confirmation')).toBeVisible();
+    await expect(page.locator('.booking-id')).toBeVisible();
+  });
+});
+```
+
+## Related Documentation
+
+- [Test Execution Environments](/docs/project_lifecycle/all_tests/references/project.test-execution-environments.md)
+- [End-to-End Testing Guide](/docs/project_lifecycle/all_tests/references/project.e2e-test-guide.md)
+- [API Mocking Guidelines](/docs/project_lifecycle/development/references/project.api-mocking.md) 
