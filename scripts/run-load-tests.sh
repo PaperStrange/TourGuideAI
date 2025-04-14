@@ -4,10 +4,10 @@
 # Requires k6 to be installed: https://k6.io/docs/get-started/installation/
 
 # Set environment variables
-export BASE_URL=${1:-"https://staging.tourguideai.com"}
-export OUTPUT_DIR="./load-test-results"
-export TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
-export TEST_NAME="load_test_${TIMESTAMP}"
+export TEST_ENV="staging"
+export NODE_ENV="test"
+export OUTPUT_DIR="./docs/project_lifecycle/all_tests/results/load-test"
+export TEST_NAME="load-test-$(date +%Y%m%d-%H%M%S)"
 
 # Create output directory
 mkdir -p $OUTPUT_DIR

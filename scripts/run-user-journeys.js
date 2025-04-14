@@ -15,8 +15,8 @@ const ora = require('ora');
 
 // Configuration
 const USER_JOURNEYS_DIR = path.join(__dirname, '..', 'tests', 'user-journey');
-const REPORT_DIR = path.join(__dirname, '..', 'test-results', 'user-journeys');
-const HTML_REPORT_DIR = path.join(__dirname, '..', 'playwright-report', 'user-journeys');
+const REPORT_DIR = path.join(__dirname, '..', 'docs', 'project_lifecycle', 'all_tests', 'results', 'user-journey');
+const HTML_REPORT_DIR = path.join(__dirname, '..', 'docs', 'project_lifecycle', 'all_tests', 'results', 'user-journey');
 const DOCS_DIR = path.join(__dirname, '..', 'docs', 'project_lifecycle', 'all_tests');
 
 // Documentation references

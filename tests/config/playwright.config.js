@@ -5,6 +5,7 @@
 
 // @ts-check
 const { devices } = require('@playwright/test');
+const path = require('path');
 
 /** @type {import('@playwright/test').PlaywrightTestConfig} */
 const config = {
@@ -14,7 +15,10 @@ const config = {
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 3 : undefined,
   reporter: [
-    ['html', { open: 'never' }],
+    ['html', { 
+      open: 'never',
+      outputFolder: path.join(__dirname, '../../docs/project_lifecycle/all_tests/results/playwright-test')
+    }],
     ['list']
   ],
   

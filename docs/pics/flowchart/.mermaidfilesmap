@@ -83,19 +83,30 @@ flowchart TB
     subgraph TestArea ["Testing"]
         TEST_PLAN[Stability Test Plan<br>project.stability-test-plan.md]
         TEST_RESULTS[Test Execution Results<br>project.test-execution-results.md]
-        subgraph TestRefs ["References"]
-            TEST_SCENARIOS[Test Scenarios<br>references/project.test-scenarios.md]
-            TEST_USER_STORY[Test User Stories<br>references/project.test-user-story.md]
+        TEST_SCENARIOS[Test Scenarios<br>project.test-scenarios.md]
+        TEST_USER_STORY[Test User Stories<br>project.test-user-story.md]
+        
+        subgraph UserJourneyTests ["User Journey Tests"]
+            SARAH_TEST[Sarah - Casual Tourist<br>tests/user-journey/sarah-casual-tourist.spec.ts]
+            MICHAEL_TEST[Michael - History Enthusiast<br>tests/user-journey/michael-history-enthusiast.spec.ts]
+            ELENA_TEST[Elena - Family Traveler<br>tests/user-journey/elena-family-traveler.spec.ts]
+            JAMES_TEST[James - Business Traveler<br>tests/user-journey/james-business-traveler.spec.ts]
+            TANYA_TEST[Tanya - Adventure Seeker<br>tests/user-journey/tanya-adventure-seeker.spec.ts]
+            RUN_USER_JOURNEYS[Run User Journeys<br>scripts/run-user-journeys.js]
         end
         
         subgraph StabilityDocs ["Stability Test Results"]
-            STABILITY_README[Stability Results<br>results/README.md]
+            STABILITY_README[Stability Results<br>results/stability-test/README.md]
             STABILITY_SUMMARY[Test Results Summary<br>results/test-results-summary.md]
             
             subgraph StabilitySubdocs ["Detailed Documentation"]
                 STABILITY_DATA_README[Test Data<br>results/data/README.md]
                 STABILITY_REPORTS_README[Test Reports<br>results/reports/README.md]
             end
+        end
+        
+        subgraph UserJourneyResults ["User Journey Results"]
+            UJ_README[User Journey Results<br>results/user-journey/README.md]
         end
     end
     
@@ -201,6 +212,13 @@ flowchart TB
     FLOWCHART_README --> WORKFLOW_PNG
     FLOWCHART_README --> MERMAID_RENDERER
     MERMAID_RENDERER --> EXPORT_DIAGRAMS
+    
+    %% Test user journey relationships
+    TEST_USER_STORY --> UserJourneyTests
+    SARAH_TEST --> MICHAEL_TEST --> ELENA_TEST --> JAMES_TEST --> TANYA_TEST
+    RUN_USER_JOURNEYS --> UserJourneyTests
+    UserJourneyTests --> UserJourneyResults
+    UserJourneyResults --> TEST_RESULTS
     
     %% Apply classes to nodes
     class README,ARCHITECTURE,API_OVERVIEW,API_MIGRATION,CONTRIBUTING,SECURITY root

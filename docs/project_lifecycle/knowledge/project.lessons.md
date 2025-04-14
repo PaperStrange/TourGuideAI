@@ -4,6 +4,7 @@
 - **MUST-OBEY PRINCIPLE**: Strict alignment between milestones (.milestones), key results (.project), and tasks (.todos) is CRITICAL for project success using the OKR framework
 - **MUST-OBEY PRINCIPLE**: ALWAYS follow section named like `Document Update Process` and check for existing files before creating new ones; duplicated files cause severe confusion and project management issues
 - **MUST-OBEY PRINCIPLE**: ALWAYS keep documentation in its designated folders; save test results in the separate, corresponding subfolder of `results/` directory while keep test plans up-to-date in the `plans/` directory and update reference documentation in `references/` directory when making code changes
+- **MUST-OBEY PRINCIPLE**: Clearly distinguish between runtime-generated directories and repository directories in documentation; always store generated test artifacts in existing repository directories rather than creating new directories at runtime
 - Misalignment between project planning documents creates severe project management risks that can halt progress
 - Changes to project scope must be reflected consistently in ALL planning documents simultaneously
 - When deferring features between phases, ensure proper alignment across all planning documents to prevent confusion and miscommunication
@@ -158,6 +159,11 @@
 - **LESSON**: Create standardized mock factories for complex services to ensure consistent test behavior
 - **LESSON**: Invest in proper test isolation to ensure tests don't affect each other through shared state
 
+### Test Output Management (2025-04-11)
+- **LESSON**: Configure test runners to output results to predefined repository directories rather than creating new runtime directories
+- **LESSON**: Use consistent paths in documentation and code for test artifacts to prevent confusion and make results easier to find
+- **LESSON**: Establish conventions for test artifact storage in the project structure early to avoid divergent practices
+
 ## Test Framework Choices
 
 ### Phase 6 React Testing Library Lessons (2025-04-11)
@@ -166,6 +172,16 @@
 - **LESSON**: For canvas-based components, create comprehensive canvas mocks in setupTests.js rather than individual test files
 - **LESSON**: For third-party libraries like heatmap.js and chart.js, create specific mock implementations to avoid DOM errors
 
+### Script Development Lessons (2025-04-11)
+- **LESSON**: Create standardized output formats (JSON) for test execution scripts to enable consistent reporting across different test types
+- **LESSON**: Implement timestamp-based naming for test result files to maintain clear history of test executions
+- **LESSON**: For HTML report generation, separate data processing from presentation logic to improve maintainability
+- **LESSON**: Centralize configuration settings (file paths, output directories) at the top of scripts for easy maintenance
+- **LESSON**: Include category-specific result files alongside combined results to enable both high-level and detailed analysis
+- **LESSON**: Automatically create symlinks or reference files (like latest.html) to make it easy to find most recent test results
+- **LESSON**: Build report generation scripts with extensibility in mind to accommodate new test categories
+- **LESSON**: Implement proper error handling in test scripts to prevent misleading results when environment issues occur
+
 ---
 
-*Last Updated: April 10, 2025* 
+*Last Updated: April 11, 2025* 

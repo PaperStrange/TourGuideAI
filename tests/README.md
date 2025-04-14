@@ -33,6 +33,12 @@ tests/
 ├── stability/              # Stability and reliability tests
 │   ├── frontend-stability.test.js # Frontend stability tests
 │   └── README.md               # Stability testing documentation
+├── user-journey/           # User journey tests with Playwright
+│   ├── sarah-casual-tourist.spec.ts        # Casual tourist persona tests
+│   ├── michael-history-enthusiast.spec.ts  # History enthusiast persona tests
+│   ├── elena-family-traveler.spec.ts       # Family traveler persona tests
+│   ├── james-business-traveler.spec.ts     # Business traveler persona tests
+│   └── tanya-adventure-seeker.spec.ts      # Adventure seeker persona tests
 └── README.md               # This file
 ```
 
@@ -58,47 +64,9 @@ Security auditing and penetration testing scripts that identify potential vulner
 
 Long-running tests that verify the application's reliability and stability under continuous use.
 
-## Running Tests
+### User Journey Tests
 
-### Smoke Tests
-
-```bash
-npm run test:smoke
-```
-
-### Cross-Browser Tests
-
-```bash
-npm run test:cross-browser
-```
-
-### Load Tests
-
-```bash
-npm run test:load
-```
-
-### Security Tests
-
-```bash
-npm run test:security
-```
-
-### Stability Tests
-
-```bash
-npm run test:stability
-```
-
-## Test Reports
-
-Test reports are generated in the following locations:
-
-- Smoke test reports: `tests/smoke/reports/`
-- Cross-browser test reports: `tests/cross-browser/reports/`
-- Load test reports: `load-test-results/`
-- Security test reports: `security-reports/`
-- Stability test reports: `docs/project_lifecycle/all_tests/results/`
+The `user-journey` directory contains Playwright tests that simulate various user personas interacting with the TourGuideAI application. These tests cover realistic user scenarios and help ensure that the application meets the needs of different user types.
 
 ## Contributing to Testing
 

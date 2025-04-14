@@ -48,7 +48,7 @@ jobs:
         if: always()
         with:
           name: playwright-report
-          path: playwright-report/
+          path: docs/project_lifecycle/all_tests/results/playwright-test/
           retention-days: 14
       
       - name: Store Playwright Screenshots
@@ -56,7 +56,7 @@ jobs:
         if: failure()
         with:
           name: playwright-screenshots
-          path: test-results/
+          path: docs/project_lifecycle/all_tests/results/playwright-test/screenshots/
           retention-days: 14
           
       - name: Publish Test Results

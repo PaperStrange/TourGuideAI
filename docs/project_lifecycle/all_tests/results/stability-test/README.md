@@ -13,8 +13,24 @@ Stability tests ensure that the application functions reliably across various sc
 
 ## File Structure
 
-- `stability-test-results-[timestamp].json`: JSON files containing detailed test results with timestamps
+- `data/stability-test-results-[timestamp].json`: JSON files containing detailed test results with timestamps
+- `data/core-app/stability-test-results-[timestamp].json`: Test results specific to core application components
+- `data/beta-program/stability-test-results-[timestamp].json`: Test results specific to beta program features
 - `test_summary.md`: Latest summary of test results with pass/fail status
+- `reports/`: Directory containing HTML reports generated from test results
+
+## Output Structure
+
+Test results are stored in the following locations:
+
+1. Raw JSON data: `docs/project_lifecycle/all_tests/results/stability-test/data/` directory
+   - Combined results: `stability-test-results-[timestamp].json`
+   - Core-app results: `core-app/stability-test-results-[timestamp].json`
+   - Beta-program results: `beta-program/stability-test-results-[timestamp].json`
+
+2. HTML Reports: `docs/project_lifecycle/all_tests/results/stability-test/` directory
+   - Main dashboard: `index.html` in the root results directory
+   - Detailed reports: Various HTML files showing test results
 
 ## Running Tests
 
