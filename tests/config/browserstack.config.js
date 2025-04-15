@@ -12,7 +12,7 @@ const config = {
   retries: 1,
   workers: 5,
   reporter: [
-    ['html', { open: 'never' }],
+    ['html', { open: 'never', outputFolder: require('path').join(__dirname, '../../docs/project_lifecycle/all_tests/results/playwright-test') }],
     ['list']
   ],
   
