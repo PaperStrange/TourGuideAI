@@ -10,8 +10,42 @@ const fs = require('fs');
 const path = require('path');
 const util = require('util');
 
-const chalk = require('chalk');
-const ora = require('ora');
+// Patch for chalk v5+ compatibility (ESM vs CommonJS)
+let chalk;
+try {
+  chalk = require('chalk');
+  if (typeof chalk.red !== 'function') {
+    // Fallback for ESM default export
+    chalk = new (require('chalk').Chalk)();
+  }
+} catch (e) {
+  // Fallback: no color
+  chalk = {
+    red: (s) => s,
+    green: (s) => s,
+    blue: (s) => s,
+    gray: (s) => s,
+    bold: (s) => s
+  };
+}
+
+// Patch for ora v6+ compatibility (ESM vs CommonJS)
+let ora;
+try {
+  ora = require('ora');
+  if (typeof ora !== 'function') {
+    // Fallback for ESM default export
+    ora = require('ora').default;
+  }
+} catch (e) {
+  // Fallback: dummy spinner
+  ora = (msg) => ({
+    start: () => ({
+      succeed: (s) => console.log(s),
+      fail: (f) => console.log(f)
+    })
+  });
+}
 
 // Configuration
 const USER_JOURNEYS_DIR = path.join(__dirname, '..', 'tests', 'user-journey');
@@ -69,9 +103,9 @@ const userJourneys = [
 
 // Run one specific user journey test
 async function runUserJourneyTest(journey, options = {}) {
-  const { headless = true, video = false, browser = 'chromium' } = options;
+  const { headless = true, video = false, browser = 'Chrome' } = options;
   
-  const testFile = path.join(USER_JOURNEYS_DIR, journey.file);
+  const testFile = path.join('tests', 'user-journey', journey.file);
   if (!fs.existsSync(testFile)) {
     console.error(chalk.red(`Test file not found: ${testFile}`));
     return false;
@@ -81,7 +115,7 @@ async function runUserJourneyTest(journey, options = {}) {
   
   try {
     // Build the command with appropriate flags
-    let cmd = `npx playwright test ${testFile} --project=${browser}`;
+    let cmd = `npx playwright test ${testFile} --config=tests/config/playwright.config.js --project=${browser}`;
     
     if (headless) {
       cmd += ' --headed false';
@@ -95,7 +129,6 @@ async function runUserJourneyTest(journey, options = {}) {
     
     // Add reporting options
     cmd += ` --reporter=html,line`;
-    cmd += ` --output=${HTML_REPORT_DIR}/${journey.name.toLowerCase().replace(/\s+/g, '-')}`;
     
     // Execute the command
     execSync(cmd, { stdio: 'pipe' });
@@ -104,7 +137,16 @@ async function runUserJourneyTest(journey, options = {}) {
     return true;
   } catch (error) {
     spinner.fail(chalk.red(`${journey.name} user journey test failed`));
-    console.error(chalk.red(error.stdout.toString()));
+    if (error.stdout) {
+      console.error(chalk.red(error.stdout.toString()));
+    }
+    if (error.stderr) {
+      console.error(chalk.red(error.stderr.toString()));
+    }
+    if (error.message) {
+      console.error(chalk.red(error.message));
+    }
+    console.error(error); // Print the full error object for debugging
     return false;
   }
 }
@@ -170,7 +212,7 @@ function parseArguments() {
   const options = {
     headless: true,
     video: false,
-    browser: 'chromium',
+    browser: 'Chrome',
     specificJourney: null
   };
   
@@ -182,7 +224,7 @@ function parseArguments() {
     } else if (arg === '--video' || arg === '-v') {
       options.video = true;
     } else if (arg === '--browser' || arg === '-b') {
-      options.browser = args[++i] || 'chromium';
+      options.browser = args[++i] || 'Chrome';
     } else if (arg === '--journey' || arg === '-j') {
       options.specificJourney = args[++i];
     }

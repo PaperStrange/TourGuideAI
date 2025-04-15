@@ -9,7 +9,7 @@ const path = require('path');
 
 /** @type {import('@playwright/test').PlaywrightTestConfig} */
 const config = {
-  testDir: './',
+  testDir: path.join(__dirname, '../../'),
   timeout: 30000,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
