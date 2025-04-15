@@ -115,7 +115,7 @@ async function runUserJourneyTest(journey, options = {}) {
   
   try {
     // Build the command with appropriate flags
-    let cmd = `npx playwright test ${testFile} --config=tests/config/playwright.config.js --project=${browser}`;
+    let cmd = `npx playwright test ${testFile} --config=tests/config/playwright/cross-browser.config.js --project=${browser}`;
     
     if (headless) {
       cmd += ' --headed false';

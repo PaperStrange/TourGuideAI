@@ -106,7 +106,7 @@ FAILED_TESTS=$((FAILED_TESTS + $?))
 
 # 4. Run end-to-end tests (if Playwright is installed)
 if command -v npx &> /dev/null && npx playwright --version &> /dev/null; then
-  run_test_group "End-to-End Tests" "npx playwright test tests/cross-browser/specs/*travel-planning*.spec.js --config=tests/config/playwright.config.js"
+  run_test_group "End-to-End Tests" "npx playwright test tests/cross-browser/specs/*travel-planning*.spec.js --config=tests/config/playwright/cross-browser.config.js"
   FAILED_TESTS=$((FAILED_TESTS + $?))
 else
   echo -e "${YELLOW}Skipping End-to-End Tests: Playwright not installed.${NC}"

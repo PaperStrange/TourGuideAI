@@ -1,6 +1,89 @@
 # TourGuideAI Test Suite
 
-This directory contains all tests for the TourGuideAI application, organized by test type and purpose.
+This directory contains all tests for the TourGuideAI application.
+
+## Test Organization
+
+The tests are organized into the following directories:
+
+```
+tests/
+├── config/                     # Test configuration files (see below)
+├── cross-browser/              # Cross-browser compatibility tests
+├── load/                       # Load and performance tests
+├── security/                   # Security testing
+├── smoke/                      # Smoke tests for quick verification
+├── stability/                  # Stability and regression tests
+└── user-journey/               # End-to-end user journey tests
+```
+
+## Test Configuration
+
+All test configurations have been reorganized for better maintainability. The new structure is:
+
+```
+tests/config/
+├── jest/                       # Jest configurations
+│   ├── backend.config.js       # Configuration for backend tests
+│   ├── frontend.config.js      # Configuration for frontend tests
+│   └── integration.config.js   # Configuration for integration tests
+│
+├── playwright/                 # Playwright configurations
+│   ├── base.config.js          # Base configuration that others extend
+│   └── cross-browser.config.js # Cross-browser specific configuration
+│
+├── browserstack/               # BrowserStack configurations
+│   ├── base.config.js          # Base BrowserStack configuration
+│   └── cross-browser.config.js # Cross-browser BrowserStack configuration
+│
+├── mocks/                      # Mock files for testing
+└── integration-setup.js        # Setup for integration tests
+```
+
+### Legacy Configuration Files
+
+For backward compatibility, the original configuration files now import from the new structure. You might see references to:
+
+- `tests/config/playwright.config.js` → use `tests/config/playwright/cross-browser.config.js` instead
+- `tests/config/jest.frontend.config.js` → use `tests/config/jest/frontend.config.js` instead
+- `tests/config/jest.backend.config.js` → use `tests/config/jest/backend.config.js` instead
+- `tests/config/jest.integration.config.js` → use `tests/config/jest/integration.config.js` instead
+- `tests/config/browserstack.config.js` → use `tests/config/browserstack/cross-browser.config.js` instead
+
+### Updating References
+
+To update references in scripts to use the new configuration paths, run:
+
+```
+node scripts/update-config-references.js
+```
+
+## Running Tests
+
+See the `scripts` section in `package.json` for available test commands:
+
+```bash
+# Run frontend tests
+npm run test:frontend
+
+# Run backend tests
+npm run test:backend
+
+# Run integration tests
+npm run test:integration
+
+# Run cross-browser tests
+npm run test:cross-browser
+
+# Run load tests
+npm run test:load
+
+# Run security tests
+npm run test:security
+
+# Run user journey tests
+npm run test:user-journeys
+```
 
 ## Test Directory Structure
 

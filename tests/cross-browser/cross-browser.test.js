@@ -1,6 +1,21 @@
+/**
+ * Cross-Browser Test Suite
+ * 
+ * This file runs cross-browser tests using the new configuration structure.
+ */
+
 const { test, expect } = require('@playwright/test');
 
-test.describe('TourGuideAI Cross-Browser Tests', () => {
+// Import the configuration based on the environment
+const config = process.env.USE_BROWSERSTACK 
+  ? require('../config/browserstack/cross-browser.config')
+  : require('../config/playwright/cross-browser.config');
+
+// Tell the test runner to use our configuration
+test.use(config);
+
+// Test scenarios
+test.describe('Cross-browser travel planning functionality', () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to the application before each test
     await page.goto('/');
