@@ -53,15 +53,56 @@ const mockValidatedPoints = [
   }
 ];
 
-// Mock the googleMapsApi import completely
+// Need to mock before importing the module
 jest.mock('../../api/googleMapsApi', () => ({
-  initializeMap: jest.fn(() => mockMap),
-  displayRouteOnMap: jest.fn(() => Promise.resolve(mockRouteResult)),
-  getNearbyInterestPoints: jest.fn(() => Promise.resolve(mockNearbyPoints)),
-  validateTransportation: jest.fn(() => Promise.resolve(mockValidatedRoute)),
-  validateInterestPoints: jest.fn(() => Promise.resolve(mockValidatedPoints))
+  initializeMap: jest.fn().mockReturnValue({ id: 'mock-map' }),
+  displayRouteOnMap: jest.fn().mockResolvedValue({
+    route: {
+      summary: 'Test Route',
+      legs: [{
+        duration: { text: '20 mins' },
+        distance: { text: '5 km' }
+      }]
+    }
+  }),
+  getNearbyInterestPoints: jest.fn().mockResolvedValue([
+    { 
+      name: 'Test Place', 
+      place_id: 'test123',
+      vicinity: 'Test Address',
+      geometry: { location: { lat: 41.9, lng: 12.5 } },
+      rating: 4.5,
+      user_ratings_total: 100
+    }
+  ]),
+  validateTransportation: jest.fn().mockResolvedValue({
+    duration: '20 mins',
+    distance: '5 km',
+    transportation_type: 'driving'
+  }),
+  validateInterestPoints: jest.fn().mockResolvedValue([
+    {
+      name: 'Roman Forum',
+      distance: '0.5 km',
+      duration: '10 mins',
+      within_range: true
+    },
+    {
+      name: 'Trevi Fountain',
+      distance: '2 km',
+      duration: '25 mins',
+      within_range: true
+    },
+    {
+      name: 'Vatican City',
+      distance: '6 km',
+      duration: '45 mins',
+      within_range: false
+    }
+  ])
 }));
 
+// Now import the mocked module
 import * as googleMapsApi from '../../api/googleMapsApi';
 
 describe('Map and Location Functions', () => {
@@ -135,6 +176,13 @@ describe('Map and Location Functions', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
+    
+    // Reset mock implementations before each test
+    googleMapsApi.initializeMap.mockReturnValue(mockMap);
+    googleMapsApi.displayRouteOnMap.mockResolvedValue(mockRouteResult);
+    googleMapsApi.getNearbyInterestPoints.mockResolvedValue(mockNearbyPoints);
+    googleMapsApi.validateTransportation.mockResolvedValue(mockValidatedRoute);
+    googleMapsApi.validateInterestPoints.mockResolvedValue(mockValidatedPoints);
   });
 
   describe('map_real_time_display function', () => {

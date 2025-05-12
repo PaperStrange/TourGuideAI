@@ -53,10 +53,9 @@ describe('BetaProgramDashboard Component', () => {
     // Check that the title is rendered
     expect(screen.getByText(/Beta Program Analytics/i)).toBeInTheDocument();
     
-    // Check that tabs are rendered - use getAllByText and find the one that's likely a tab
-    const tabs = screen.getAllByRole('tablist', { hidden: true }) || 
-                 screen.getAllByText(/Overview|User Activity|Feature Usage|Device Stats/i);
-    expect(tabs.length).toBeGreaterThan(0);
+    // Check that tabs are rendered by finding tab-like div elements directly
+    const tabDivs = screen.getAllByText(/Overview|User Activity|Feature Usage|Device Stats/i);
+    expect(tabDivs.length).toBeGreaterThan(0);
     
     // Check that summary cards are rendered in overview
     expect(screen.getByText(/Active Beta Users/i)).toBeInTheDocument();
