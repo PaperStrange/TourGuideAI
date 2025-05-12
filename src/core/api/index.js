@@ -4,13 +4,10 @@
  * This file exports all API functions from the core API modules
  */
 
-// Import ES modules first
+// Import all modules using ES module syntax
+import axios from 'axios';
 import * as openai from './openaiApi';
 import * as googleMaps from './googleMapsApi';
-
-// Then use CommonJS require for axios to avoid Jest compatibility issues
-// eslint-disable-next-line import/first
-const axios = require('axios');
 
 // Import and re-export OpenAI API functions with specific namespaces
 export const openaiApi = openai;
