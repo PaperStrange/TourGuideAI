@@ -29,8 +29,8 @@ describe('Preferences Setup Component', () => {
     // Check main title is rendered
     expect(screen.getByText(/set your preferences/i)).toBeInTheDocument();
     
-    // Check that continue button is rendered
-    expect(screen.getByRole('button', { name: /continue/i })).toBeInTheDocument();
+    // Check that save button is rendered
+    expect(screen.getByRole('button', { name: /save preferences/i })).toBeInTheDocument();
   });
   
   test('renders notifications section', () => {
@@ -93,9 +93,9 @@ describe('Preferences Setup Component', () => {
     const handleComplete = jest.fn();
     render(<PreferencesSetup initialPreferences={initialPreferences} onComplete={handleComplete} />);
     
-    // Find and click the continue button
-    const continueButton = screen.getByRole('button', { name: /continue/i });
-    fireEvent.click(continueButton);
+    // Find and click the save preferences button
+    const saveButton = screen.getByRole('button', { name: /save preferences/i });
+    fireEvent.click(saveButton);
     
     // Check that onComplete was called with the preferences object
     expect(handleComplete).toHaveBeenCalledTimes(1);

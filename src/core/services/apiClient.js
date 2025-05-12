@@ -42,144 +42,150 @@ const apiClient = axios.create({
   }
 });
 
-// Add a request interceptor for debugging and caching
-apiClient.interceptors.request.use(
-  async (config) => {
-    const requestId = `${config.method}-${config.url}-${JSON.stringify(config.params || {})}-${JSON.stringify(config.data || {})}`;
-    
-    // Check cache before making request
-    if (config.method.toLowerCase() === 'get' && config.useFallbackCache !== false) {
-      const cachedResponse = await cacheService.getCache(`api:${requestId}`);
-      if (cachedResponse) {
-        console.log(`Using cached response for ${config.url}`);
-        
-        // Create a response-like object that axios will interpret as a successful response
-        return {
-          ...config,
-          adapter: () => Promise.resolve({
-            data: cachedResponse.data,
-            status: 200,
-            statusText: 'OK',
-            headers: cachedResponse.headers || {},
-            config: config,
-            cached: true,
-            cachedAt: cachedResponse.timestamp
-          })
-        };
-      }
-    }
-    
-    if (config.debug) {
-      console.log(`🚀 API Request: ${config.method.toUpperCase()} ${config.url}`, config.params || config.data);
-    }
-    
-    // Add API keys if needed for direct API calls
-    if (!config.useServerProxy) {
-      if (config.url.includes('openai') && config.openaiApiKey) {
-        config.headers.Authorization = `Bearer ${config.openaiApiKey}`;
-      }
+// Check if interceptors are available (they might not be in test environments where axios is mocked)
+if (apiClient.interceptors && apiClient.interceptors.request) {
+  // Add a request interceptor for debugging and caching
+  apiClient.interceptors.request.use(
+    async (config) => {
+      const requestId = `${config.method}-${config.url}-${JSON.stringify(config.params || {})}-${JSON.stringify(config.data || {})}`;
       
-      if (config.url.includes('maps') && config.googleMapsApiKey) {
-        if (!config.params) config.params = {};
-        config.params.key = config.googleMapsApiKey;
-      }
-    }
-    
-    return config;
-  },
-  (error) => {
-    console.error('❌ API Request Error:', error);
-    return Promise.reject(error);
-  }
-);
-
-// Add a response interceptor for error handling and caching
-apiClient.interceptors.response.use(
-  async (response) => {
-    if (config.debug) {
-      console.log(`✅ API Response: ${response.config.method.toUpperCase()} ${response.config.url}`, response.status);
-    }
-    
-    // Cache successful GET responses
-    if (response.config.method.toLowerCase() === 'get' && !response.cached && response.config.useFallbackCache !== false) {
-      const requestId = `${response.config.method}-${response.config.url}-${JSON.stringify(response.config.params || {})}-${JSON.stringify(response.config.data || {})}`;
-      
-      await cacheService.saveCache(`api:${requestId}`, {
-        data: response.data,
-        headers: response.headers,
-        timestamp: Date.now()
-      });
-    }
-    
-    return response;
-  },
-  async (error) => {
-    // Handle errors
-    const originalRequest = error.config;
-    
-    // Handle network errors or timeouts
-    if (!error.response) {
-      console.error(`Network Error for ${originalRequest.url}:`, error.message);
-      
-      // Try to get cached response as fallback
-      if (originalRequest.useFallbackCache !== false) {
-        const requestId = `${originalRequest.method}-${originalRequest.url}-${JSON.stringify(originalRequest.params || {})}-${JSON.stringify(originalRequest.data || {})}`;
+      // Check cache before making request
+      if (config.method.toLowerCase() === 'get' && config.useFallbackCache !== false) {
         const cachedResponse = await cacheService.getCache(`api:${requestId}`);
-        
         if (cachedResponse) {
-          console.log(`Using cached response as fallback for ${originalRequest.url}`);
-          return Promise.resolve({
-            data: cachedResponse.data,
-            status: 200,
-            statusText: 'OK (Fallback from Cache)',
-            headers: cachedResponse.headers || {},
-            config: originalRequest,
-            cached: true,
-            cachedAt: cachedResponse.timestamp,
-            fromFallback: true
+          console.log(`Using cached response for ${config.url}`);
+          
+          // Create a response-like object that axios will interpret as a successful response
+          return {
+            ...config,
+            adapter: () => Promise.resolve({
+              data: cachedResponse.data,
+              status: 200,
+              statusText: 'OK',
+              headers: cachedResponse.headers || {},
+              config: config,
+              cached: true,
+              cachedAt: cachedResponse.timestamp
+            })
+          };
+        }
+      }
+      
+      if (config.debug) {
+        console.log(`🚀 API Request: ${config.method.toUpperCase()} ${config.url}`, config.params || config.data);
+      }
+      
+      // Add API keys if needed for direct API calls
+      if (!config.useServerProxy) {
+        if (config.url.includes('openai') && config.openaiApiKey) {
+          config.headers.Authorization = `Bearer ${config.openaiApiKey}`;
+        }
+        
+        if (config.url.includes('maps') && config.googleMapsApiKey) {
+          if (!config.params) config.params = {};
+          config.params.key = config.googleMapsApiKey;
+        }
+      }
+      
+      return config;
+    },
+    (error) => {
+      console.error('❌ API Request Error:', error);
+      return Promise.reject(error);
+    }
+  );
+}
+
+// Check if interceptors are available for response (they might not be in test environments)
+if (apiClient.interceptors && apiClient.interceptors.response) {
+  // Add a response interceptor for error handling and caching
+  apiClient.interceptors.response.use(
+    async (response) => {
+      if (config.debug) {
+        console.log(`✅ API Response: ${response.config.method.toUpperCase()} ${response.config.url}`, response.status);
+      }
+      
+      // Cache successful GET responses
+      if (response.config.method.toLowerCase() === 'get' && !response.cached && response.config.useFallbackCache !== false) {
+        const requestId = `${response.config.method}-${response.config.url}-${JSON.stringify(response.config.params || {})}-${JSON.stringify(response.config.data || {})}`;
+        
+        await cacheService.saveCache(`api:${requestId}`, {
+          data: response.data,
+          headers: response.headers,
+          timestamp: Date.now()
+        });
+      }
+      
+      return response;
+    },
+    async (error) => {
+      // Handle errors
+      const originalRequest = error.config;
+      
+      // Handle network errors or timeouts
+      if (!error.response) {
+        console.error(`Network Error for ${originalRequest.url}:`, error.message);
+        
+        // Try to get cached response as fallback
+        if (originalRequest.useFallbackCache !== false) {
+          const requestId = `${originalRequest.method}-${originalRequest.url}-${JSON.stringify(originalRequest.params || {})}-${JSON.stringify(originalRequest.data || {})}`;
+          const cachedResponse = await cacheService.getCache(`api:${requestId}`);
+          
+          if (cachedResponse) {
+            console.log(`Using cached response as fallback for ${originalRequest.url}`);
+            return Promise.resolve({
+              data: cachedResponse.data,
+              status: 200,
+              statusText: 'OK (Fallback from Cache)',
+              headers: cachedResponse.headers || {},
+              config: originalRequest,
+              cached: true,
+              cachedAt: cachedResponse.timestamp,
+              fromFallback: true
+            });
+          }
+        }
+        
+        // Check if we should retry the request
+        if (originalRequest.retryCount === undefined) {
+          originalRequest.retryCount = 0;
+        }
+        
+        if (originalRequest.retryCount < (config.retryCount || 3)) {
+          originalRequest.retryCount++;
+          
+          // Exponential backoff
+          const delay = (config.retryDelay || 1000) * Math.pow(2, originalRequest.retryCount - 1);
+          
+          console.log(`Retrying request to ${originalRequest.url} (Attempt ${originalRequest.retryCount} of ${config.retryCount})...`);
+          
+          return new Promise(resolve => {
+            setTimeout(() => resolve(apiClient(originalRequest)), delay);
           });
         }
       }
       
-      // Check if we should retry the request
-      if (originalRequest.retryCount === undefined) {
-        originalRequest.retryCount = 0;
-      }
+      // Format error for client
+      const formattedError = {
+        status: error.response?.status || 500,
+        message: error.response?.data?.error?.message || error.message || 'Unknown error',
+        code: error.response?.data?.error?.code || error.code || 'UNKNOWN_ERROR',
+        url: originalRequest?.url,
+        method: originalRequest?.method,
+        timestamp: new Date().toISOString()
+      };
       
-      if (originalRequest.retryCount < (config.retryCount || 3)) {
-        originalRequest.retryCount++;
-        
-        // Exponential backoff
-        const delay = (config.retryDelay || 1000) * Math.pow(2, originalRequest.retryCount - 1);
-        
-        console.log(`Retrying request to ${originalRequest.url} (Attempt ${originalRequest.retryCount} of ${config.retryCount})...`);
-        
-        return new Promise(resolve => {
-          setTimeout(() => resolve(apiClient(originalRequest)), delay);
-        });
-      }
+      console.error(`❌ API Error (${formattedError.status}): ${formattedError.message}`, formattedError);
+      
+      // Store error in local storage for error reporting
+      const errors = localStorageService.getData('api_errors') || [];
+      errors.push(formattedError);
+      localStorageService.saveData('api_errors', errors.slice(-10)); // Keep only last 10 errors
+      
+      return Promise.reject(formattedError);
     }
-    
-    // Format error for client
-    const formattedError = {
-      status: error.response?.status || 500,
-      message: error.response?.data?.error?.message || error.message || 'Unknown error',
-      code: error.response?.data?.error?.code || error.code || 'UNKNOWN_ERROR',
-      url: originalRequest?.url,
-      method: originalRequest?.method,
-      timestamp: new Date().toISOString()
-    };
-    
-    console.error(`❌ API Error (${formattedError.status}): ${formattedError.message}`, formattedError);
-    
-    // Store error in local storage for error reporting
-    const errors = localStorageService.getData('api_errors') || [];
-    errors.push(formattedError);
-    localStorageService.saveData('api_errors', errors.slice(-10)); // Keep only last 10 errors
-    
-    return Promise.reject(formattedError);
-  }
-);
+  );
+}
 
 // Helper functions
 const apiHelpers = {
