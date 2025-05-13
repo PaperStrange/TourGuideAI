@@ -13,7 +13,7 @@
   - [ ] Service mocking issues in analytics component tests
 
 ## Testing
-- [ ] Run selective tests that are known to work
+- [ ] Run selective tests that are known to work, fix failure tests if needed
 - [ ] Perform manual verification of core features:
   - [ ] Authentication functionality
   - [ ] Route planning
