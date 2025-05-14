@@ -1011,4 +1011,88 @@ Add these scripts to package.json:
 - [Supertest Documentation](https://github.com/visionmedia/supertest)
 - [MongoDB Documentation](https://docs.mongodb.com/manual/)
 - [Test Patterns Reference](../references/project.tests.test-patterns.md)
-- [Mock Strategies Reference](../references/project.tests.mock-strategies.md) 
+- [Mock Strategies Reference](../references/project.tests.mock-strategies.md)
+
+# Database Testing TODO List
+
+## Current Status
+
+The database-related tests are all passing successfully, with good coverage across:
+- Schema validation (server/tests/db-schema.test.js)
+- Database connections (server/tests/db-connection.test.js)
+- CRUD operations (server/tests/routeManagement.test.js)
+
+## Improvements Needed
+
+### 1. Fix Auth Test Suite
+
+- **Priority: High**
+- **Issue**: The auth.test.js test suite is failing due to problems with the inviteCodes route handler
+- **Fix**: Review the inviteCodes.js route file to ensure proper route handler functions are provided
+- **Impact**: This affects authentication tests which may have implications for database access control
+- **Reference**: Follows pattern in [project.tests.mock-strategies.md](../references/project.tests.mock-strategies.md)
+
+### 2. Add Database Query Performance Tests
+
+- **Priority: Medium**
+- **Goal**: Add tests to measure and assert database query performance
+- **Implementation**: Follow patterns in existing test files and add to server/tests/db-performance.test.js
+- **Reference**: Use metrics defined in [project.tests.backend-results-template.md](../results/project.tests.backend-results-template.md) for performance targets
+- **Tests to Add**:
+  - Measure query execution time
+  - Test indexes for effectiveness
+  - Verify that complex queries complete within acceptable timeframes
+  - Test pagination performance with large datasets
+
+### 3. Add Data Validation Edge Case Tests
+
+- **Priority: Medium**
+- **Goal**: Expand schema validation tests to cover more edge cases 
+- **Implementation**: Add tests to existing server/tests/db-schema.test.js file
+- **Reference**: Test structure defined in this document
+- **Tests to Add**:
+  - Maximum string lengths
+  - Boundary conditions for numeric fields
+  - Malformed data handling
+  - Special character handling in text fields
+
+### 4. Add Database Transaction Tests
+
+- **Priority: Medium**
+- **Goal**: Test transaction support and rollback functionality
+- **Implementation**: Add to existing test files following patterns in [project.tests.test-patterns.md](../references/project.tests.test-patterns.md)
+- **Tests to Add**:
+  - Verify that operations within a transaction are atomic
+  - Ensure proper rollback on error
+  - Test concurrent transactions for isolation
+
+### 5. Database Migration Testing
+
+- **Priority: Low**
+- **Goal**: Test database migration scripts
+- **Implementation**: Create tests following the existing patterns in mock-strategies
+- **Reference**: Use utilities from [project.tests.mock-strategies.md](../references/project.tests.mock-strategies.md)
+- **Tests to Add**:
+  - Apply migrations to a test database
+  - Verify schema changes are applied correctly
+  - Test data transformation during migrations
+  - Verify backward compatibility where needed
+
+### 6. Connection Pool Testing
+
+- **Priority: Low**
+- **Goal**: Test database connection pool behavior
+- **Implementation**: Extend server/tests/db-connection.test.js
+- **Reference**: Use approach in [project.tests.mock-strategies.md](../references/project.tests.mock-strategies.md)
+- **Tests to Add**:
+  - Verify connection reuse
+  - Test pool under high load
+  - Verify connection timeout and retry logic
+
+## Next Actions
+
+1. First, fix the failing auth.test.js by addressing the route handler issue in inviteCodes.js
+2. Extend db-schema.test.js with additional edge case tests following the project test plans
+3. Add performance testing methods to existing test files instead of creating a new file
+4. Add transaction-related tests to the existing database test files
+5. Set up a workflow to test database migrations as they are created 
