@@ -165,10 +165,35 @@ try {
                     $categoryTests.Passed++
                     Write-Host "  ✓ Test passed (mocked): $relativeTestFile" -ForegroundColor Green
                 } else {
-                    # Run the real test
+                    # Run the real test based on file type and location
                     try {
                         $env:CI = $true  # Disable watch mode
-                        $testOutput = npm test -- $relativeTestFile --no-watch 2>&1
+                        
+                        # Determine how to run the test based on category and file type
+                        $isPlaywrightTest = $false
+                        
+                        # Check if it's a Playwright test file
+                        if (($category -eq "Smoke Tests" -or $category -eq "Cross-Browser Tests" -or $category -eq "User Journey Tests") -or
+                            ((Get-Content $testFile -First 10) -match "playwright|test.describe|test\(")) {
+                            $isPlaywrightTest = $true
+                        }
+                        
+                        if ($isPlaywrightTest) {
+                            # Use npx playwright test to run Playwright tests
+                            Write-Host "  Running as Playwright test: $relativeTestFile" -ForegroundColor Magenta
+                            $playwrightOutput = "$playwrightResultsDir\$($relativeTestFile.Replace("\", "-").Replace("/", "-"))-results.json"
+                            
+                            # Create reporter output directory if it doesn't exist
+                            $playwrightReportDir = "$playwrightResultsDir\reports"
+                            if (-not (Test-Path -Path $playwrightReportDir)) {
+                                New-Item -Path $playwrightReportDir -ItemType Directory -Force | Out-Null
+                            }
+                            
+                            $testOutput = npx playwright test $relativeTestFile --reporter=json,html --reporter-json-output=$playwrightOutput 2>&1
+                        } else {
+                            # Use regular npm test for other tests
+                            $testOutput = npm test -- $relativeTestFile --no-watch 2>&1
+                        }
                         
                         if ($LASTEXITCODE -eq 0) {
                             $testResults.Passed++
@@ -290,6 +315,19 @@ try {
         
         # Write category report
         $categoryReportContent | Out-File -FilePath $categoryReportPath -Encoding utf8
+    }
+    
+    # If we have Playwright tests, copy the HTML report to the results directory
+    $playwrightHtmlReport = "$projectRoot\playwright-report"
+    if (Test-Path -Path $playwrightHtmlReport) {
+        $playwrightResultHtmlDir = "$playwrightResultsDir\html-report-$date"
+        if (-not (Test-Path -Path $playwrightResultHtmlDir)) {
+            New-Item -Path $playwrightResultHtmlDir -ItemType Directory -Force | Out-Null
+        }
+        
+        # Copy HTML report files
+        Copy-Item -Path "$playwrightHtmlReport\*" -Destination $playwrightResultHtmlDir -Recurse -Force
+        Write-Host "  Playwright HTML report copied to: $playwrightResultHtmlDir" -ForegroundColor Yellow
     }
     
     Write-Host "`nTest reports saved to:" -ForegroundColor Yellow
