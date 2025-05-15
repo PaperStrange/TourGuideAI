@@ -47,6 +47,10 @@ jobs:
         run: |
           # Use the GitHub-specific test script
           pwsh ./.github/workflows/scripts/run-github-tests.ps1
+          
+          # Ensure critical user journey tests are included
+          echo "Running specific user journey tests..."
+          npx playwright test tests/user-journey/elena-family-traveler.spec.ts --config=tests/config/playwright.config.js --reporter=github
       
       - name: Store Playwright Report
         uses: actions/upload-artifact@v4
@@ -54,6 +58,14 @@ jobs:
         with:
           name: playwright-report
           path: docs/project_lifecycle/all_tests/results/playwright-test/
+          retention-days: 14
+      
+      - name: Store User Journey Test Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: user-journey-tests
+          path: docs/project_lifecycle/all_tests/results/user-journey/
           retention-days: 14
       
       - name: Store Playwright Screenshots

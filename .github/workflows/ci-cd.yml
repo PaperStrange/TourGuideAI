@@ -207,25 +207,29 @@ jobs:
         npm ci
         npx playwright install --with-deps chromium
     
+    - name: Install PowerShell
+      uses: actions/setup-powershell@v1
+    
     - name: Run Smoke Tests
       env:
         BASE_URL: ${{ github.ref == 'refs/heads/main' && 'https://app.tourguideai.com' || 'https://staging.tourguideai.com' }}
       run: |
-        npx playwright test smoke.test.js --config=tests/config/playwright.config.js
+        # Run all smoke tests including user journey tests
+        pwsh ./.github/workflows/scripts/run-github-tests.ps1
         
-        # Run UX Audit System smoke tests
-        npx playwright test --grep "UX Audit System" smoke.test.js --config=tests/config/playwright.config.js
+        # Ensure specific tests are included
+        echo "Running specific smoke tests for critical components..."
         
-        # Run Task Prompt System smoke tests
-        npx playwright test --grep "Task Prompt System" smoke.test.js --config=tests/config/playwright.config.js
+        # User Journey tests - ensure elena-family-traveler.spec.ts is run
+        npx playwright test tests/user-journey/elena-family-traveler.spec.ts --config=tests/config/playwright.config.js --reporter=github
         
-        # Run Analytics Component smoke tests
-        npx playwright test --grep "Analytics Components" smoke.test.js --config=tests/config/playwright.config.js
+        # Analytics Components smoke tests
+        npx playwright test tests/smoke/analytics-components.spec.js --config=tests/config/playwright.config.js --reporter=github
     
     - name: Upload test results
       if: always()
       uses: actions/upload-artifact@v4
       with:
         name: smoke-test-results
-        path: test-results/
+        path: docs/project_lifecycle/all_tests/results/
         retention-days: 7 

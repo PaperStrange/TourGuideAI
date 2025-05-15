@@ -22,6 +22,7 @@ $smokeResultsDir = "$resultsBaseDir"
 $stabilityResultsDir = "$resultsBaseDir\stability-test"
 $performanceResultsDir = "$resultsBaseDir\performance"
 $userJourneyResultsDir = "$resultsBaseDir\user-journey"
+$analyticsResultsDir = "$resultsBaseDir\analytics"
 
 # Ensure results directories exist
 $dirsToCreate = @(
@@ -29,7 +30,8 @@ $dirsToCreate = @(
     $playwrightResultsDir,
     $stabilityResultsDir,
     $performanceResultsDir,
-    $userJourneyResultsDir
+    $userJourneyResultsDir,
+    $analyticsResultsDir
 )
 
 foreach ($dir in $dirsToCreate) {
@@ -74,7 +76,10 @@ function Show-MockedTestOutput {
     )
     
     $testName = [System.IO.Path]::GetFileNameWithoutExtension($testFile)
-    $testType = if ($testFile -like "*playwright*" -or $category -in @("Smoke Tests", "Cross-Browser Tests", "User Journey Tests")) {
+    $testType = if ($testFile -like "*playwright*" -or 
+                    $testFile -like "*.spec.ts" -or 
+                    $testFile -like "*.spec.js" -or 
+                    $category -in @("Smoke Tests", "Cross-Browser Tests", "User Journey Tests")) {
         "Playwright"
     } else {
         "Jest"
@@ -112,6 +117,7 @@ try {
         "User Journey Tests" = "tests/user-journey";
         "Security Tests" = "tests/security";
         "Load Tests" = "tests/load";
+        "Analytics Tests" = "src/tests/components/analytics";
     }
     
     $testResults = @{
@@ -137,8 +143,11 @@ try {
         if (Test-Path -Path $categoryDir) {
             Write-Host "`nRunning $category..." -ForegroundColor Cyan
             
-            # Define filter patterns for different test file types
-            $testFilters = @('*.test.js', '*.spec.js', '*-test.js')
+            # Define filter patterns for different test file types - now including TypeScript extensions
+            $testFilters = @(
+                '*.test.js', '*.spec.js', '*-test.js',  # JavaScript test files
+                '*.test.ts', '*.spec.ts', '*-test.ts'   # TypeScript test files
+            )
             $testFiles = @()
             
             # Get all test files in the directory (excluding .skip files)
@@ -151,7 +160,6 @@ try {
             # Count skipped tests
             $skippedTests = 0
             foreach ($filter in $testFilters) {
-                $filterNoExt = $filter.Replace("*", "").Replace(".", "\.")
                 $skipFilter = ($filter.Replace(".", ".skip."))
                 $skippedTests += (Get-ChildItem -Path $categoryDir -Recurse -Filter $skipFilter | 
                                Measure-Object | Select-Object -ExpandProperty Count)
@@ -168,7 +176,7 @@ try {
             $categoryTests.Total = $testFiles.Count
             
             foreach ($testFile in $testFiles) {
-                $relativeTestFile = $testFile.Replace("$projectRoot\", "")
+                $relativeTestFile = $testFile.Replace("$projectRoot\", "").Replace("/", "\")
                 Write-Host "`n  Running test: $relativeTestFile" -ForegroundColor White
                 $categoryTests.Files += $relativeTestFile
                 
@@ -205,8 +213,9 @@ try {
                         # Determine how to run the test based on category and file type
                         $isPlaywrightTest = $false
                         
-                        # Check if it's a Playwright test file
+                        # Enhanced Playwright detection: check file extensions (.spec.ts, .spec.js) and categories
                         if (($category -eq "Smoke Tests" -or $category -eq "Cross-Browser Tests" -or $category -eq "User Journey Tests") -or
+                            ($relativeTestFile -like "*.spec.ts" -or $relativeTestFile -like "*.spec.js") -or
                             ((Get-Content $testFile -First 10) -match "playwright|test.describe|test\(")) {
                             $isPlaywrightTest = $true
                         }
@@ -225,12 +234,28 @@ try {
                             # Run Playwright test without redirecting output so it shows in the console
                             # Save output path to file report but don't hide console output
                             Write-Host "  Test details: " -ForegroundColor Cyan
-                            npx playwright test $relativeTestFile --reporter=json,html --reporter-json-output=$playwrightOutput
+                            
+                            if ($relativeTestFile -like "*.ts") {
+                                # TypeScript-specific configuration
+                                npx playwright test $relativeTestFile --reporter=json,html --reporter-json-output=$playwrightOutput
+                            } else {
+                                # Regular JavaScript files
+                                npx playwright test $relativeTestFile --reporter=json,html --reporter-json-output=$playwrightOutput
+                            }
+                            
                             $testExitCode = $LASTEXITCODE 
                         } else {
                             # Use regular npm test for other tests without redirecting output
                             Write-Host "  Test details: " -ForegroundColor Cyan
-                            npm test -- $relativeTestFile --no-watch
+                            
+                            if ($relativeTestFile -like "*.ts") {
+                                # TypeScript-specific configuration
+                                npm test -- $relativeTestFile --no-watch
+                            } else {
+                                # Regular JavaScript files
+                                npm test -- $relativeTestFile --no-watch
+                            }
+                            
                             $testExitCode = $LASTEXITCODE
                         }
                         
@@ -332,6 +357,10 @@ try {
             "Performance*" { 
                 $categoryReportDir = $performanceResultsDir 
                 $categoryFileName = "performance-tests-$date.txt"
+            }
+            "Analytics*" {
+                $categoryReportDir = $analyticsResultsDir
+                $categoryFileName = "analytics-tests-$date.txt"
             }
         }
         

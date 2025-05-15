@@ -43,6 +43,10 @@ jobs:
           echo "Running All Stability Tests with updated test runner..."
           # Run using the GitHub-specific test script
           pwsh ./.github/workflows/scripts/run-github-tests.ps1
+          
+          # Ensure analytics component tests are run
+          echo "Running specific analytics component tests..."
+          npx playwright test tests/smoke/analytics-components.spec.js --config=tests/config/playwright.config.js --reporter=github
       
       - name: Store Test Results
         uses: actions/upload-artifact@v4
@@ -53,16 +57,26 @@ jobs:
             ./docs/project_lifecycle/all_tests/results/
           retention-days: 30
       
+      - name: Store Analytics Test Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: analytics-test-results
+          path: ./docs/project_lifecycle/all_tests/results/analytics/
+          retention-days: 30
+      
       - name: Update Test Summary
         run: |
           echo "### Stability Test Summary" >> $GITHUB_STEP_SUMMARY
           echo "✅ Frontend Stability Tests completed" >> $GITHUB_STEP_SUMMARY
           echo "✅ Component Tests completed" >> $GITHUB_STEP_SUMMARY
           echo "✅ Backend Resilience Tests completed" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Analytics Components Tests completed" >> $GITHUB_STEP_SUMMARY
           
           # Add links to reports in the summary
           echo "📊 **Test Reports**:" >> $GITHUB_STEP_SUMMARY
           echo "- [View Full Report](./docs/project_lifecycle/all_tests/results/playwright-test/reports)" >> $GITHUB_STEP_SUMMARY
+          echo "- [View Analytics Report](./docs/project_lifecycle/all_tests/results/analytics)" >> $GITHUB_STEP_SUMMARY
           echo "- [Raw Test Data](./docs/project_lifecycle/all_tests/results/)" >> $GITHUB_STEP_SUMMARY
 
   load-tests:

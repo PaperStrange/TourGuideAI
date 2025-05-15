@@ -68,6 +68,7 @@ try {
         "User Journey Tests" = "tests/user-journey";
         "Security Tests" = "tests/security";
         "Load Tests" = "tests/load";
+        "Analytics Tests" = "src/tests/components/analytics";
     }
     
     $testResults = @{
@@ -93,8 +94,11 @@ try {
         if (Test-Path -Path $categoryDir) {
             Write-Host "`nRunning $category..." -ForegroundColor Cyan
             
-            # Define filter patterns for different test file types
-            $testFilters = @('*.test.js', '*.spec.js', '*-test.js')
+            # Define filter patterns for different test file types - now including TypeScript extensions
+            $testFilters = @(
+                '*.test.js', '*.spec.js', '*-test.js',  # JavaScript test files
+                '*.test.ts', '*.spec.ts', '*-test.ts'   # TypeScript test files
+            )
             $testFiles = @()
             
             # Get all test files in the directory (excluding .skip files)
@@ -168,7 +172,9 @@ try {
                     $isPlaywrightTest = $false
                     
                     # Check if it's a Playwright test file
+                    # Enhanced Playwright detection: check file extensions (.spec.ts, .spec.js) and categories
                     if (($category -eq "Smoke Tests" -or $category -eq "Cross-Browser Tests" -or $category -eq "User Journey Tests") -or
+                        ($relativeTestFile -like "*.spec.ts" -or $relativeTestFile -like "*.spec.js") -or
                         ((Get-Content $testFile -First 10) -match "playwright|test.describe|test\(")) {
                         $isPlaywrightTest = $true
                     }
@@ -184,14 +190,30 @@ try {
                             New-Item -Path $playwrightReportDir -ItemType Directory -Force | Out-Null
                         }
                         
-                        # Run Playwright test
+                        # Run Playwright test with specific options for TypeScript
                         Write-Host "  Test details: " -ForegroundColor Cyan
-                        npx playwright test $relativeTestFile --reporter=json,html,github --reporter-json-output=$playwrightOutput
+                        
+                        if ($relativeTestFile -like "*.ts") {
+                            # TypeScript-specific configuration
+                            npx playwright test $relativeTestFile --reporter=json,html,github --reporter-json-output=$playwrightOutput
+                        } else {
+                            # Regular JavaScript files
+                            npx playwright test $relativeTestFile --reporter=json,html,github --reporter-json-output=$playwrightOutput
+                        }
+                        
                         $testExitCode = $LASTEXITCODE 
                     } else {
                         # Use regular npm test for other tests
                         Write-Host "  Test details: " -ForegroundColor Cyan
-                        npm test -- $relativeTestFile --no-watch --ci
+                        
+                        if ($relativeTestFile -like "*.ts") {
+                            # TypeScript-specific Jest configuration
+                            npm test -- $relativeTestFile --no-watch --ci
+                        } else {
+                            # Regular JavaScript files
+                            npm test -- $relativeTestFile --no-watch --ci
+                        }
+                        
                         $testExitCode = $LASTEXITCODE
                     }
                     
@@ -293,6 +315,14 @@ try {
                 $categoryReportDir = $performanceResultsDir 
                 $categoryFileName = "performance-tests-$date.txt"
             }
+            "Analytics*" {
+                $categoryReportDir = "$resultsBaseDir/analytics"
+                $categoryFileName = "analytics-tests-$date.txt"
+                # Ensure analytics directory exists
+                if (-not (Test-Path -Path $categoryReportDir)) {
+                    New-Item -Path $categoryReportDir -ItemType Directory -Force | Out-Null
+                }
+            }
         }
         
         $categoryReportPath = "$categoryReportDir/$categoryFileName"
@@ -350,7 +380,7 @@ try {
         if ($failedTests.Count -gt 0) {
             $githubSummary += "`n### Failed Tests`n`n"
             foreach ($test in $failedTests) {
-                $githubSummary += "- `$test`n"
+                $githubSummary += "- $test`n"
             }
         }
         
