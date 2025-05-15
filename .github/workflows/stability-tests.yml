@@ -32,62 +32,17 @@ jobs:
       - name: Install Dependencies
         run: npm ci
       
-      - name: Frontend Stability Tests
-        run: |
-          echo "Running Frontend Stability Tests..."
-          npx jest src/tests/stability/frontend-stability.test.js --verbose --bail --maxWorkers=4 --testTimeout=20000
-          
-          # Check for Router nesting issues
-          echo "Checking Router structure..."
-          ! grep -r --include="*.js" --include="*.jsx" --include="*.ts" --include="*.tsx" "BrowserRouter.*Router\|Router.*BrowserRouter" src/ || echo "Warning: Potential Router nesting detected"
-          
-          # Check Theme Provider implementation
-          echo "Checking Theme Provider implementation..."
-          grep -r --include="*.js" --include="*.jsx" --include="*.ts" --include="*.tsx" "ThemeProvider" src/
+      - name: Install Playwright
+        run: npx playwright install --with-deps
       
-      - name: Component Tests
-        run: |
-          echo "Running Component Stability Tests..."
-          
-          # Run tests for critical components
-          npx jest src/tests/pages/ProfilePage.test.js --verbose --bail --maxWorkers=4 --testTimeout=20000
-          npx jest src/tests/pages/ChatPage.test.js --verbose --bail --maxWorkers=4 --testTimeout=20000
-          npx jest src/tests/pages/MapPage.test.js --verbose --bail --maxWorkers=4 --testTimeout=20000
-          
-          # Run API Status component test which is critical for backend resilience
-          npx jest src/tests/components/ApiStatus.test.js --verbose --bail --maxWorkers=4 --testTimeout=20000
+      - name: Install PowerShell
+        uses: actions/setup-powershell@v1
       
-      - name: Backend Resilience Tests
+      - name: Run All Stability Tests
         run: |
-          echo "Running Backend Resilience Tests..."
-          
-          # Run backend resilience test section
-          npx jest src/tests/stability/frontend-stability.test.js -t "Backend Resilience" --verbose --bail --maxWorkers=4 --testTimeout=20000
-          
-          # Test API-related functionality if possible
-          if [ -f "src/tests/api/openaiApi.test.js" ]; then
-            echo "Testing OpenAI API integration..."
-            npx jest src/tests/api/openaiApi.test.js --verbose --bail --maxWorkers=4 --testTimeout=20000 || echo "OpenAI API tests skipped due to ESM issues"
-          fi
-          
-          if [ -f "src/tests/api/googleMapsApi.test.js" ]; then
-            echo "Testing Google Maps API integration..."
-            npx jest src/tests/api/googleMapsApi.test.js --verbose --bail --maxWorkers=4 --testTimeout=20000 || echo "Google Maps API tests skipped due to ESM issues"
-          fi
-      
-      - name: Run All Stability Tests and Generate Report
-        run: |
-          echo "Running All Stability Tests and Generating Report..."
-          
-          # Run UX Audit System stability tests
-          npx jest src/tests/stability/ux-audit-stability.test.js --json --outputFile=stability-test-results-ux-audit.json --bail --maxWorkers=4 --testTimeout=20000 || true
-          
-          # Run Task Prompt System stability tests 
-          npx jest src/tests/stability/task-prompt-stability.test.js --json --outputFile=stability-test-results-task-prompt.json --bail --maxWorkers=4 --testTimeout=20000 || true
-          
-          # Run all stability tests with new npm scripts
-          npm run test:stability
-          npm run test:report
+          echo "Running All Stability Tests with updated test runner..."
+          # Run using the GitHub-specific test script
+          pwsh ./.github/workflows/scripts/run-github-tests.ps1
       
       - name: Store Test Results
         uses: actions/upload-artifact@v4
@@ -107,8 +62,8 @@ jobs:
           
           # Add links to reports in the summary
           echo "📊 **Test Reports**:" >> $GITHUB_STEP_SUMMARY
-          echo "- [View Full Report](./docs/project_lifecycle/all_tests/results/reports/latest.html)" >> $GITHUB_STEP_SUMMARY
-          echo "- [Raw Test Data](./docs/project_lifecycle/all_tests/results/data/)" >> $GITHUB_STEP_SUMMARY
+          echo "- [View Full Report](./docs/project_lifecycle/all_tests/results/playwright-test/reports)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Raw Test Data](./docs/project_lifecycle/all_tests/results/)" >> $GITHUB_STEP_SUMMARY
 
   load-tests:
     runs-on: ubuntu-latest
@@ -148,7 +103,7 @@ jobs:
         with:
           name: load-test-results
           path: |
-            ./load-test-results/
+            ./docs/project_lifecycle/all_tests/results/performance/
           retention-days: 14
       
       - name: Update Load Test Summary
@@ -159,9 +114,5 @@ jobs:
           echo "✅ Task Prompt System Load Tests completed" >> $GITHUB_STEP_SUMMARY
           
           # Add links to the latest report
-          LATEST_REPORT=$(ls -t ./load-test-results/*_report.html | head -1)
-          REPORT_NAME=$(basename $LATEST_REPORT)
-          
           echo "📊 **Load Test Reports**:" >> $GITHUB_STEP_SUMMARY
-          echo "- [View Latest Report](./load-test-results/$REPORT_NAME)" >> $GITHUB_STEP_SUMMARY
-          echo "- [Raw Test Data](./load-test-results/)" >> $GITHUB_STEP_SUMMARY 
+          echo "- [View Latest Report](./docs/project_lifecycle/all_tests/results/performance/)" >> $GITHUB_STEP_SUMMARY 

@@ -55,40 +55,19 @@ jobs:
         # Check for proper ESLint globals
         grep -r --include="*.js" --include="*.jsx" --include="*.ts" --include="*.tsx" "\/\* global " src/
     
+    - name: Install PowerShell
+      uses: actions/setup-powershell@v1
+    
     - name: Run Stability Tests
       run: |
-        # Run frontend stability tests
-        npx jest src/tests/stability/frontend-stability.test.js --json --outputFile=stability-test-results-frontend.json --maxWorkers=4 --testTimeout=20000 --bail || true
-        
-        # Run component stability tests
-        npx jest src/tests/components/ApiStatus.test.js --json --outputFile=stability-test-results-components.json --maxWorkers=4 --testTimeout=20000 --bail || true
-        
-        # Run backend resilience tests (capture rather than fail)
-        npx jest src/tests/stability/frontend-stability.test.js -t "Backend Resilience" --json --outputFile=stability-test-results-backend.json --maxWorkers=4 --testTimeout=20000 --bail || true
-        
-        # Run UX Audit System stability tests
-        npx jest src/tests/stability/ux-audit-stability.test.js --json --outputFile=stability-test-results-ux-audit.json --maxWorkers=4 --testTimeout=20000 --bail || true
-        
-        # Run Task Prompt System stability tests 
-        npx jest src/tests/stability/task-prompt-stability.test.js --json --outputFile=stability-test-results-task-prompt.json --maxWorkers=4 --testTimeout=20000 --bail || true
-        
-        # Run Analytics components stability tests
-        npx jest src/tests/stability/analytics-components-stability.test.js --json --outputFile=stability-test-results-analytics.json --maxWorkers=4 --testTimeout=20000 --bail || true
-        
-        # Run test script for comprehensive report (if script exists)
-        if [ -f "./scripts/run-stability-tests.js" ]; then
-          node ./scripts/run-stability-tests.js
-        fi
-        
-        # Upload stability test results to test results directory
-        mkdir -p ./docs/project_lifecycle/stability_tests/records/test-results
-        cp *.json ./docs/project_lifecycle/stability_tests/records/test-results/ || true
-
+        # Run frontend stability tests using GitHub-specific test script
+        pwsh ./.github/workflows/scripts/run-github-tests.ps1
+    
     - name: Store Stability Test Results
       uses: actions/upload-artifact@v4
       with:
         name: stability-test-results
-        path: ./docs/project_lifecycle/stability_tests/records/test-results/
+        path: ./docs/project_lifecycle/all_tests/results/
         retention-days: 30
     
     - name: Build

@@ -431,4 +431,52 @@ cp docs/project_lifecycle/all_tests/results/data/task-prompt-*.json test-results
 actions/upload-artifact@v3
   name: task-prompt-test-results
   path: test-results/task-prompt
+```
+
+## Test Framework
+
+### Updated Test Framework Structure
+
+The TourGuideAI test framework has been updated to provide better organization, consistency, and reporting:
+
+- **Centralized Test Runner**: All tests now use the PowerShell-based test runner located at `tests/run-frontend-tests.ps1`
+- **GitHub-specific Runner**: For CI/CD environments, a specialized script in `.github/workflows/scripts/run-github-tests.ps1` is used
+- **Organized Results**: Test results are stored in a standardized directory structure under `docs/project_lifecycle/all_tests/results/`
+- **Framework Detection**: The runner automatically detects and appropriately handles different test frameworks (Playwright, Jest)
+- **Enhanced Reporting**: Test reports include detailed summaries, categorized results, and GitHub-friendly output formats
+
+### Test Categories and Directories
+
+The test framework supports the following categories, each with a dedicated results directory:
+
+- **Playwright Tests**: `docs/project_lifecycle/all_tests/results/playwright-test/` - E2E and browser-based tests
+- **Stability Tests**: `docs/project_lifecycle/all_tests/results/stability-test/` - Testing component and system stability
+- **Performance Tests**: `docs/project_lifecycle/all_tests/results/performance/` - Load and performance testing
+- **User Journey Tests**: `docs/project_lifecycle/all_tests/results/user-journey/` - End-to-end user workflow tests
+
+### Running Tests in CI/CD
+
+The workflow files have been updated to use the GitHub-specific test runner:
+
+```yaml
+- name: Install PowerShell
+  uses: actions/setup-powershell@v1
+
+- name: Run Tests
+  run: |
+    pwsh ./.github/workflows/scripts/run-github-tests.ps1
+```
+
+### Test Results and Artifacts
+
+Test results are archived as artifacts with the following structure:
+
+```
+docs/project_lifecycle/all_tests/results/
+├── playwright-test/
+│   ├── reports/          # HTML and JSON reports
+│   └── screenshots/      # Failure screenshots
+├── stability-test/       # Stability test reports
+├── performance/          # Performance test reports
+└── user-journey/         # User journey test reports
 ``` 

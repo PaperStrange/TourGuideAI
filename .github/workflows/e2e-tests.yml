@@ -40,8 +40,13 @@ jobs:
           npm run start:client &
           npx wait-on http://localhost:3000 http://localhost:5000/api/health
       
+      - name: Install PowerShell
+        uses: actions/setup-powershell@v1
+      
       - name: Run Playwright Tests
-        run: npx playwright test --config=tests/config/playwright.config.js
+        run: |
+          # Use the GitHub-specific test script
+          pwsh ./.github/workflows/scripts/run-github-tests.ps1
       
       - name: Store Playwright Report
         uses: actions/upload-artifact@v4
@@ -64,4 +69,4 @@ jobs:
         if: always()
         with:
           files: |
-            playwright-report/*.xml 
+            docs/project_lifecycle/all_tests/results/playwright-test/reports/**/*.xml 
