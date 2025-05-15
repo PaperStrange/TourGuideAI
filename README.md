@@ -154,6 +154,92 @@ Test user experience with the UX audit system:
 npm run test:ux-audit
 ```
 
+
+### Overall Testing
+
+### Prerequisites
+
+Before running the test scripts, ensure you have the following:
+
+1. Node.js and npm installed
+2. All project dependencies installed (`npm install`)
+3. Appropriate permissions to run scripts on your system
+
+### Windows Setup
+
+#### Setting Up PowerShell Scripts
+
+PowerShell scripts may be blocked from running due to execution policies. To enable running the scripts:
+
+1. Open PowerShell as Administrator
+2. Set the execution policy to allow running the scripts:
+   ```powershell
+   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+   ```
+3. Alternatively, run the scripts with the `-ExecutionPolicy Bypass` parameter:
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File .\scripts\run-all-tests.ps1
+   ```
+
+### Unix/Linux/macOS Setup
+
+#### Making Scripts Executable
+
+Before running bash scripts, you need to make them executable:
+
+```bash
+chmod +x scripts/run-all-tests.sh
+chmod +x tests/*.sh  # If you have any other scripts in the tests directory
+```
+
+Then you can run them:
+```bash
+./scripts/run-all-tests.sh
+```
+
+### Troubleshooting Common Issues
+
+#### Scripts Not Found
+
+If you receive "file not found" errors when trying to run scripts:
+
+1. Check that you are in the project root directory
+2. Verify that the scripts exist in the specified paths
+3. Use the full path to the script:
+   ```
+   C:\full\path\to\TourGuideAI\scripts\run-all-tests.bat
+   ```
+
+#### Permission Denied
+
+If you receive "permission denied" errors:
+
+**Windows:**
+1. Right-click on the script file
+2. Select Properties
+3. Click the "Unblock" button if it's available
+4. Click Apply and OK
+
+**Unix/Linux/macOS:**
+```bash
+chmod +x <script_file>
+```
+
+#### Script Execution Failed
+
+If scripts fail to run properly:
+
+1. Check for syntax errors in the script
+2. Ensure you have the required environment variables set
+3. Verify that Node.js and npm are in your PATH
+4. Try running with administrator privileges
+
+### Additional Notes
+
+- The test scripts will create a `test-results` directory in the project root to store test reports
+- If you customize the scripts, ensure you maintain proper paths and error handling
+- For CI/CD integration, use the appropriate script for your platform in your CI pipeline 
+
 ## Deployment
 
 ### Staging
