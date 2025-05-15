@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import TimelineComponent from '../../components/Timeline/TimelineComponent';
+import TimelineComponent from '../../../components/Timeline/TimelineComponent';
 
 describe('Timeline Component', () => {
   const mockRoute = {

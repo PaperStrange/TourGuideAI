@@ -102,7 +102,7 @@ describe('OpenAI API', () => {
     test('should recognize user intent from query', async () => {
       const query = 'I want to visit Paris for 3 days in December';
       
-      const result = await openaiApi.recognizeIntent(query);
+      const result = await openaiApi.recognizeTextIntent(query);
       
       expect(fetch).toHaveBeenCalled();
       expect(result).toBeDefined();

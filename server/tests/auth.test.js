@@ -60,6 +60,88 @@ jest.mock('../routes/auth', () => {
   return router;
 });
 
+// Mock inviteCodes routes
+jest.mock('../routes/inviteCodes', () => {
+  const express = require('express');
+  const router = express.Router();
+  
+  router.post('/generate', (req, res) => {
+    return res.status(201).json({
+      inviteCode: {
+        code: 'test-invite-code',
+        createdBy: 'test-user-id',
+        isValid: true,
+        createdAt: new Date(),
+        expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+      }
+    });
+  });
+  
+  router.post('/validate', (req, res) => {
+    const { code } = req.body;
+    
+    if (!code) {
+      return res.status(400).json({
+        error: {
+          message: 'Invitation code is required',
+          type: 'missing_code'
+        }
+      });
+    }
+    
+    return res.json({ isValid: code === 'test-invite-code' });
+  });
+  
+  router.get('/', (req, res) => {
+    return res.json({
+      codes: [
+        {
+          code: 'test-invite-code',
+          createdBy: 'test-user-id',
+          isValid: true,
+          createdAt: new Date(),
+          expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+        }
+      ]
+    });
+  });
+  
+  router.post('/invalidate', (req, res) => {
+    const { code } = req.body;
+    
+    if (!code) {
+      return res.status(400).json({
+        error: {
+          message: 'Invitation code is required',
+          type: 'missing_code'
+        }
+      });
+    }
+    
+    return res.json({ success: true });
+  });
+  
+  router.post('/send', (req, res) => {
+    const { code, email } = req.body;
+    
+    if (!code || !email) {
+      return res.status(400).json({
+        error: {
+          message: 'Invite code and email are required',
+          type: 'missing_fields'
+        }
+      });
+    }
+    
+    return res.json({
+      message: 'Invitation sent successfully',
+      emailSent: true
+    });
+  });
+  
+  return router;
+});
+
 // Mock the middleware
 jest.mock('../middleware/authMiddleware', () => ({
   requireAuth: (req, res, next) => {

@@ -4,8 +4,8 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 
 // Import the standardized mocks
-const { mockComponents, mockContexts, withMockProviders } = require('../../../tests/config/mocks/componentMocks');
-const { mockRouteGenerationService, mockRouteManagementService } = require('../../../tests/config/mocks/serviceMocks');
+const { mockComponents, mockContexts, withMockProviders } = require('../../tests/config/mocks/componentMocks');
+const { mockRouteGenerationService, mockRouteManagementService } = require('../../tests/config/mocks/serviceMocks');
 
 // Create local component reference
 const { AuthContext, NotificationContext } = mockContexts;
@@ -68,7 +68,8 @@ const TravelPlanningWorkflow = () => (
 // Setup mocks
 jest.mock('../../features/travel-planning/services', () => ({
   routeGenerationService: mockRouteGenerationService,
-  routeManagementService: mockRouteManagementService
+  routeManagementService: mockRouteManagementService,
+  addToFavorites: jest.fn().mockResolvedValue({ success: true })
 }), { virtual: true });
 
 describe('Travel Planning Workflow Integration', () => {
