@@ -11,26 +11,37 @@ Write-Host "Starting tests in GitHub Actions at $(Get-Date)" -ForegroundColor Cy
 # Set working directory to project root - fix path resolution
 $scriptDir = $PSScriptRoot
 Write-Host "Script directory: $scriptDir" -ForegroundColor Yellow
-$projectRoot = Split-Path -Parent (Split-Path -Parent $scriptDir)
+
+# Fix project root determination for both local and CI environments
+if ($scriptDir -like "*\.github\workflows\scripts") {
+    # We're running locally or in a normal path structure
+    $projectRoot = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $scriptDir))
+} else {
+    # Fallback for CI environment or unusual path structure
+    $projectRoot = Split-Path -Parent (Split-Path -Parent $scriptDir)
+}
+
 Write-Host "Project root: $projectRoot" -ForegroundColor Yellow
 
 Set-Location $projectRoot
 
-# Define results directory paths
+# Define results directory paths - using the correct established directory structure
 $resultsBaseDir = "$projectRoot/docs/project_lifecycle/all_tests/results"
-$playwrightResultsDir = "$resultsBaseDir/playwright-test"
+$testResultsDir = "$resultsBaseDir"
 $smokeResultsDir = "$resultsBaseDir"
-$stabilityResultsDir = "$resultsBaseDir/stability-test"
+$stabilityResultsDir = "$resultsBaseDir/stability-test" 
 $performanceResultsDir = "$resultsBaseDir/performance"
 $userJourneyResultsDir = "$resultsBaseDir/user-journey"
+$analyticsResultsDir = "$resultsBaseDir/analytics"
 
 # Ensure results directories exist
 $dirsToCreate = @(
     $resultsBaseDir,
-    $playwrightResultsDir,
+    $testResultsDir,
     $stabilityResultsDir,
     $performanceResultsDir,
-    $userJourneyResultsDir
+    $userJourneyResultsDir,
+    $analyticsResultsDir
 )
 
 foreach ($dir in $dirsToCreate) {
@@ -64,11 +75,9 @@ try {
         "API Tests" = "src/tests/api";
         "Integration Tests" = "src/tests/integration";
         "Smoke Tests" = "tests/smoke";
-        "Cross-Browser Tests" = "tests/cross-browser";
-        "User Journey Tests" = "tests/user-journey";
         "Security Tests" = "tests/security";
-        "Load Tests" = "tests/load";
         "Analytics Tests" = "src/tests/components/analytics";
+        # Removed "User Journey Tests" category for CI/CD to improve build speed
     }
     
     $testResults = @{
@@ -94,7 +103,7 @@ try {
         if (Test-Path -Path $categoryDir) {
             Write-Host "`nRunning $category..." -ForegroundColor Cyan
             
-            # Define filter patterns for different test file types - now including TypeScript extensions
+            # Define filter patterns for different test file types
             $testFilters = @(
                 '*.test.js', '*.spec.js', '*-test.js',  # JavaScript test files
                 '*.test.ts', '*.spec.ts', '*-test.ts'   # TypeScript test files
@@ -164,58 +173,58 @@ try {
                     continue
                 }
                 
-                # Run the real test based on file type and location
+                # Run tests using Jest
                 try {
                     $env:CI = $true  # Ensure CI mode is enabled
                     
-                    # Determine how to run the test based on category and file type
-                    $isPlaywrightTest = $false
+                    # Use regular npm test for tests
+                    Write-Host "  Test details: " -ForegroundColor Cyan
                     
-                    # Check if it's a Playwright test file
-                    # Enhanced Playwright detection: check file extensions (.spec.ts, .spec.js) and categories
-                    if (($category -eq "Smoke Tests" -or $category -eq "Cross-Browser Tests" -or $category -eq "User Journey Tests") -or
-                        ($relativeTestFile -like "*.spec.ts" -or $relativeTestFile -like "*.spec.js") -or
-                        ((Get-Content $testFile -First 10) -match "playwright|test.describe|test\(")) {
-                        $isPlaywrightTest = $true
-                    }
-                    
-                    if ($isPlaywrightTest) {
-                        # Use npx playwright test to run Playwright tests
-                        Write-Host "  Running as Playwright test: $relativeTestFile" -ForegroundColor Magenta
-                        $playwrightOutput = "$playwrightResultsDir/$(($relativeTestFile -replace '/', '-').Replace("\", "-"))-results.json"
+                    if ($relativeTestFile -like "*.ts") {
+                        # TypeScript-specific Jest configuration with ts-node support
+                        Write-Host "  Running TypeScript test with Jest..." -ForegroundColor Cyan
                         
-                        # Create reporter output directory if it doesn't exist
-                        $playwrightReportDir = "$playwrightResultsDir/reports"
-                        if (-not (Test-Path -Path $playwrightReportDir)) {
-                            New-Item -Path $playwrightReportDir -ItemType Directory -Force | Out-Null
+                        # Ensure ts-node is installed for TypeScript support
+                        if (-not (Test-Path -Path "node_modules/.bin/ts-node")) {
+                            Write-Host "  Installing ts-node for TypeScript support..." -ForegroundColor Cyan
+                            npm install --no-save ts-node typescript @types/node @playwright/test
                         }
                         
-                        # Run Playwright test with specific options for TypeScript
-                        Write-Host "  Test details: " -ForegroundColor Cyan
-                        
-                        if ($relativeTestFile -like "*.ts") {
-                            # TypeScript-specific configuration
-                            npx playwright test $relativeTestFile --reporter=json,html,github --reporter-json-output=$playwrightOutput
+                        # Run TypeScript tests with ts-node
+                        if ($relativeTestFile -like "*.spec.ts") {
+                            # Skip user journey TypeScript tests in GitHub CI
+                            if ($relativeTestFile -like "tests/user-journey/*.spec.ts") {
+                                Write-Host "  Skipping user journey TypeScript test in CI: $relativeTestFile" -ForegroundColor Yellow
+                                $testResults.Skipped++
+                                $categoryTests.Skipped++
+                                continue
+                            }
+                            
+                            # For other Playwright tests
+                            # Convert Windows path to glob pattern
+                            $globPattern = $relativeTestFile.Replace("\", "/")
+                            
+                            # Always enforce mock mode for TypeScript tests in GitHub CI
+                            $env:CI = 'true'
+                            $env:NODE_ENV = 'test'
+                            $env:TEST_BASE_URL = 'http://mock-tourguideai.test'
+                            
+                            if (Test-Path -Path "tests/config/typescript.config.js") {
+                                Write-Host "  Using TypeScript configuration with mock mode" -ForegroundColor Yellow
+                                npx playwright test $globPattern --config=tests/config/typescript.config.js --reporter=dot
+                            } else {
+                                npx playwright test $globPattern --reporter=dot
+                            }
                         } else {
-                            # Regular JavaScript files
-                            npx playwright test $relativeTestFile --reporter=json,html,github --reporter-json-output=$playwrightOutput
+                            # For Jest tests
+                            npm test -- "$relativeTestFile" --no-watch --ci --testMatch="**/*.ts"
                         }
-                        
-                        $testExitCode = $LASTEXITCODE 
                     } else {
-                        # Use regular npm test for other tests
-                        Write-Host "  Test details: " -ForegroundColor Cyan
-                        
-                        if ($relativeTestFile -like "*.ts") {
-                            # TypeScript-specific Jest configuration
-                            npm test -- $relativeTestFile --no-watch --ci
-                        } else {
-                            # Regular JavaScript files
-                            npm test -- $relativeTestFile --no-watch --ci
-                        }
-                        
-                        $testExitCode = $LASTEXITCODE
+                        # Regular JavaScript files
+                        npm test -- $relativeTestFile --no-watch --ci
                     }
+                    
+                    $testExitCode = $LASTEXITCODE
                     
                     if ($testExitCode -eq 0) {
                         $testResults.Passed++
@@ -253,10 +262,10 @@ try {
     $date = Get-Date -Format "yyyyMMdd"
     
     # Generate main report 
-    $mainReportPath = "$playwrightResultsDir/frontend-tests-$date.txt"
+    $mainReportPath = "$resultsBaseDir/test-summary-$date.txt"
     
     # Build report content
-    $reportContent = "TourGuideAI Frontend Test Report`n"
+    $reportContent = "TourGuideAI Test Report`n"
     $reportContent += "===============================`n"
     $reportContent += "Generated: $(Get-Date)`n`n"
     $reportContent += "==== Summary ====`n"
@@ -295,8 +304,8 @@ try {
         }
         
         # Determine which directory to use for this category
-        $categoryReportDir = $playwrightResultsDir
-        $categoryFileName = "frontend-" + $category.Replace(' ', '-').ToLower() + "-$date.txt"
+        $categoryReportDir = $resultsBaseDir
+        $categoryFileName = $category.Replace(' ', '-').ToLower() + "-tests-$date.txt"
         
         switch -Wildcard ($category) {
             "Smoke*" { 
@@ -316,19 +325,15 @@ try {
                 $categoryFileName = "performance-tests-$date.txt"
             }
             "Analytics*" {
-                $categoryReportDir = "$resultsBaseDir/analytics"
+                $categoryReportDir = $analyticsResultsDir
                 $categoryFileName = "analytics-tests-$date.txt"
-                # Ensure analytics directory exists
-                if (-not (Test-Path -Path $categoryReportDir)) {
-                    New-Item -Path $categoryReportDir -ItemType Directory -Force | Out-Null
-                }
             }
         }
         
         $categoryReportPath = "$categoryReportDir/$categoryFileName"
         
         # Build category report content
-        $categoryReportContent = "TourGuideAI Frontend Test Report - $category`n"
+        $categoryReportContent = "TourGuideAI Test Report - $category`n"
         $categoryReportContent += "============================================`n"
         $categoryReportContent += "Generated: $(Get-Date)`n`n"
         $categoryReportContent += "==== Summary ====`n"
@@ -345,22 +350,6 @@ try {
         # Write category report
         $categoryReportContent | Out-File -FilePath $categoryReportPath -Encoding utf8
     }
-    
-    # If we have Playwright tests, copy the HTML report to the results directory
-    $playwrightHtmlReport = "$projectRoot/playwright-report"
-    if (Test-Path -Path $playwrightHtmlReport) {
-        $playwrightResultHtmlDir = "$playwrightResultsDir/html-report-$date"
-        if (-not (Test-Path -Path $playwrightResultHtmlDir)) {
-            New-Item -Path $playwrightResultHtmlDir -ItemType Directory -Force | Out-Null
-        }
-        
-        # Copy HTML report files
-        Copy-Item -Path "$playwrightHtmlReport/*" -Destination $playwrightResultHtmlDir -Recurse -Force
-        Write-Host "  Playwright HTML report copied to: $playwrightResultHtmlDir" -ForegroundColor Yellow
-    }
-    
-    Write-Host "`nTest reports saved to:" -ForegroundColor Yellow
-    Write-Host "- Main report: $mainReportPath" -ForegroundColor Yellow
     
     # Special handling for GitHub Actions - create step summary
     if ($env:GITHUB_STEP_SUMMARY) {

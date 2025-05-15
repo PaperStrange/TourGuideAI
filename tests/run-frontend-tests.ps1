@@ -154,7 +154,7 @@ try {
             foreach ($filter in $testFilters) {
                 $testFiles += Get-ChildItem -Path $categoryDir -Recurse -Filter $filter | 
                               Where-Object { $_.Name -notmatch "\.skip\.(js|ts)$" } |
-                              ForEach-Object { $_.FullName }
+                        ForEach-Object { $_.FullName }
             }
             
             # Count skipped tests
@@ -208,14 +208,14 @@ try {
                 } else {
                     # Run the real test based on file type and location
                     try {
-                        $env:CI = $true  # Disable watch mode
+                    $env:CI = $true  # Disable watch mode
                         
                         # Determine how to run the test based on category and file type
                         $isPlaywrightTest = $false
                         
                         # Enhanced Playwright detection: check file extensions (.spec.ts, .spec.js) and categories
                         if (($category -eq "Smoke Tests" -or $category -eq "Cross-Browser Tests" -or $category -eq "User Journey Tests") -or
-                            ($relativeTestFile -like "*.spec.ts" -or $relativeTestFile -like "*.spec.js") -or
+                            ($relativeTestFile -like "*.spec.ts" -or $relativeTestFile -like "*.spec.js" -or $relativeTestFile -like "*.test.ts") -or
                             ((Get-Content $testFile -First 10) -match "playwright|test.describe|test\(")) {
                             $isPlaywrightTest = $true
                         }
@@ -232,15 +232,45 @@ try {
                             }
                             
                             # Run Playwright test without redirecting output so it shows in the console
-                            # Save output path to file report but don't hide console output
                             Write-Host "  Test details: " -ForegroundColor Cyan
                             
                             if ($relativeTestFile -like "*.ts") {
-                                # TypeScript-specific configuration
-                                npx playwright test $relativeTestFile --reporter=json,html --reporter-json-output=$playwrightOutput
+                                # For TypeScript files - use ts-node for proper transpilation
+                                Write-Host "  Running TypeScript test: $relativeTestFile" -ForegroundColor Yellow
+                                
+                                # First check if we need to install ts-node
+                                if (-not (Test-Path -Path "node_modules/.bin/ts-node")) {
+                                    Write-Host "  Installing ts-node for TypeScript support..." -ForegroundColor Cyan
+                                    npm install --no-save ts-node typescript @types/node @playwright/test
+                                }
+                                
+                                # Convert Windows path to glob pattern
+                                $globPattern = $relativeTestFile.Replace("\", "/")
+                                
+                                # Use TypeScript specific config if available
+                                if (Test-Path -Path "tests\config\typescript.config.js") {
+                                    # Use TypeScript config
+                                    Write-Host "  Using TypeScript configuration" -ForegroundColor Yellow
+                                    npx playwright test $globPattern --config=tests\config\typescript.config.js
+                                } elseif (Test-Path -Path "tests\config\playwright\base.config.js") {
+                                    # If base config exists, use it
+                                    npx playwright test $globPattern --config=tests\config\playwright\base.config.js
+                                } else {
+                                    # Fallback to running without config
+                                    npx playwright test $globPattern
+                                }
                             } else {
-                                # Regular JavaScript files
-                                npx playwright test $relativeTestFile --reporter=json,html --reporter-json-output=$playwrightOutput
+                                # Regular JavaScript files - use minimal reporter options
+                                Write-Host "  Running JavaScript test: $relativeTestFile" -ForegroundColor Yellow
+                                
+                                # Direct execution with minimal options to avoid path issues on different platforms
+                                if (Test-Path -Path "tests\config\playwright\base.config.js") {
+                                    # If base config exists, use it - note Windows path separators
+                                    npx playwright test $relativeTestFile --config=tests\config\playwright\base.config.js --reporter=html
+                                } else {
+                                    # Fallback to running without config
+                                    npx playwright test $relativeTestFile --reporter=html
+                                }
                             }
                             
                             $testExitCode = $LASTEXITCODE 
@@ -249,8 +279,9 @@ try {
                             Write-Host "  Test details: " -ForegroundColor Cyan
                             
                             if ($relativeTestFile -like "*.ts") {
-                                # TypeScript-specific configuration
-                                npm test -- $relativeTestFile --no-watch
+                                # TypeScript-specific configuration with ts-jest
+                                Write-Host "  Running TypeScript test with Jest..." -ForegroundColor Cyan
+                                npm test -- $relativeTestFile --no-watch --testMatch="**/*.ts"
                             } else {
                                 # Regular JavaScript files
                                 npm test -- $relativeTestFile --no-watch
@@ -260,20 +291,20 @@ try {
                         }
                         
                         if ($testExitCode -eq 0) {
-                            $testResults.Passed++
+                        $testResults.Passed++
                             $categoryTests.Passed++
-                            Write-Host "  ✓ Test passed: $relativeTestFile" -ForegroundColor Green
-                        } else {
-                            $testResults.Failed++
-                            $categoryTests.Failed++
-                            $failedTests += $relativeTestFile
-                            Write-Host "  ✗ Test failed: $relativeTestFile" -ForegroundColor Red
-                        }
-                    } catch {
+                        Write-Host "  ✓ Test passed: $relativeTestFile" -ForegroundColor Green
+                    } else {
                         $testResults.Failed++
-                        $categoryTests.Failed++
+                            $categoryTests.Failed++
                         $failedTests += $relativeTestFile
-                        Write-Host "  ✗ Test error: $relativeTestFile - $_" -ForegroundColor Red
+                        Write-Host "  ✗ Test failed: $relativeTestFile" -ForegroundColor Red
+                    }
+                } catch {
+                    $testResults.Failed++
+                        $categoryTests.Failed++
+                    $failedTests += $relativeTestFile
+                    Write-Host "  ✗ Test error: $relativeTestFile - $_" -ForegroundColor Red
                     }
                 }
             }
