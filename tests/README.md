@@ -174,6 +174,25 @@ Long-running tests that verify the application's reliability and stability under
 
 The `user-journey` directory contains Playwright tests that simulate various user personas interacting with the TourGuideAI application. These tests cover realistic user scenarios and help ensure that the application meets the needs of different user types.
 
+#### User Personas
+
+The following user personas are simulated in the tests:
+- Sarah (Casual Tourist) - Weekend city exploration in Barcelona
+- Michael (History Enthusiast) - Historical deep dive in Rome
+- Elena (Family Traveler) - Family-friendly London exploration
+- James (Business Traveler) - Business trip to Tokyo with limited free time
+- Tanya (Adventure Seeker) - Active exploration of Costa Rica
+
+#### Recent Updates (May 2025)
+
+User journey tests have been recently fixed to address several issues:
+1. **Selector Specificity**: Added data-testid attributes to elements in `test-helpers.ts` to improve selector specificity in strict mode.
+2. **Template String Syntax**: Corrected template string syntax in test files where template literals were missing proper backtick formatting.
+3. **Duplicate Element Resolution**: Resolved issues with duplicate elements by using more specific selectors.
+4. **URL Handling**: Fixed integration test files to use proper baseUrl format.
+
+All user journey tests are now passing successfully. See `docs/project_lifecycle/all_tests/results/user-journey/README.md` for more details.
+
 ## Contributing to Testing
 
 When adding new tests:

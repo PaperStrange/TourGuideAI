@@ -151,6 +151,15 @@
 
 ## Testing Strategy Lessons
 
+### User Journey Testing (2025-05-15)
+- **LESSON**: Use data-testid attributes consistently for reliable element selection in user journey tests to avoid selector specificity issues
+- **LESSON**: Always use proper template string syntax (backticks) when using variable interpolation in test files
+- **LESSON**: When dealing with duplicate elements in the DOM, use parent-child selectors or unique identifiers to ensure test reliability
+- **LESSON**: For URL navigation in tests, always use proper baseUrl with template literals to avoid "Cannot navigate to invalid URL" errors
+- **LESSON**: Strict mode in testing frameworks may expose issues that weren't apparent in less strict environments
+- **LESSON**: Maintain a comprehensive user journey test suite that simulates different user personas to ensure application meets diverse needs
+- **LESSON**: Write detailed test documentation to help other developers understand the purpose and structure of user journey tests
+
 ### Phase 6 Test Completion (2025-04-11)
 - **LESSON**: Plan separate service mocking strategies for unit vs integration testing to avoid conflicting mock implementations
 - **LESSON**: When upgrading React versions (e.g., to React 18), proactively update test infrastructure before component tests start failing
@@ -184,4 +193,4 @@
 
 ---
 
-*Last Updated: April 11, 2025* 
+*Last Updated: May 15, 2025* 

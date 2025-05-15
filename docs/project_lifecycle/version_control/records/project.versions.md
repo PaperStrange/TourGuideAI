@@ -1,5 +1,35 @@
 # TourGuideAI Version History
 
+## Version 0.5.0-BETA2 (2025-05-15) - User Journey Test Improvements
+
+*Release Date: May 15, 2025*
+
+### Summary
+Maintenance release focused on fixing user journey tests and improving overall test reliability.
+
+### Major Improvements
+- Fixed all user journey tests to achieve 100% pass rate (29/29 test cases)
+- Improved selector specificity in test helpers with data-testid attributes
+- Corrected template string syntax across multiple test files
+- Resolved duplicate element selector issues with more specific targeting
+- Fixed URL navigation issues in integration tests
+
+### Technical Enhancements
+- Enhanced test-helpers.ts with better element selection strategies
+- Updated all user persona test files with proper syntax and selectors
+- Improved documentation of user journey tests and test results
+- Added more comprehensive test tracking in project documentation
+
+### Documentation Updates
+- Updated user journey test README with detailed fix information
+- Added new section in project.lessons.md with testing learnings
+- Updated project.test-execution-results.md with latest test outcomes
+- Enhanced tests/README.md with more detailed user persona information
+
+### Known Issues
+- Security tests still show one failing test (security-audit.test.js)
+- Some frontend integration tests still require OpenAI API mocking improvements
+
 ## Version 0.5.0-BETA1 (2023-04-01) - Beta Release
 
 *Release Date: April 1, 2023*

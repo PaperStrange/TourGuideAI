@@ -147,6 +147,22 @@ Test complete user flows:
 npm run test:e2e
 ```
 
+### User Journey Tests
+
+Simulate realistic user personas interacting with the application:
+```
+npm run test:user-journeys
+```
+
+TourGuideAI implements comprehensive user journey tests for different personas:
+- Sarah (Casual Tourist) - Weekend city exploration
+- Michael (History Enthusiast) - Historical deep dive
+- Elena (Family Traveler) - Family-friendly travel
+- James (Business Traveler) - Business trip with limited free time
+- Tanya (Adventure Seeker) - Active outdoor exploration
+
+All user journey tests are now passing with 100% success rate as of May 2025.
+
 ### UX Audit and Testing
 
 Test user experience with the UX audit system:
