@@ -102,16 +102,40 @@ Write-Host "`n=== Test Results Summary ===" -ForegroundColor Cyan
 Write-Host "Frontend tests: $($testResults.Frontend.Status)" -ForegroundColor $(if ($testResults.Frontend.Status -eq "Passed") { "Green" } else { "Red" })
 Write-Host "Backend tests: $($testResults.Backend.Status)" -ForegroundColor $(if ($testResults.Backend.Status -eq "Passed") { "Green" } else { "Red" })
 
-# Generate test report file
+# Generate test report files
 $timestamp = Get-Date -Format "yyyy-MM-dd_HH-mm-ss"
-$reportPath = "$projectRoot\test-results\test-report-$timestamp.txt"
+$date = Get-Date -Format "yyyyMMdd"
 
-# Create directory if it doesn't exist
+# Define paths for results
+$resultsBaseDir = "$projectRoot\docs\project_lifecycle\all_tests\results"
+$combinedReportPath = "$resultsBaseDir\test-summary-$timestamp.txt"
+$frontendReportPath = "$resultsBaseDir\frontend-$date.txt"
+$backendReportPath = "$resultsBaseDir\backend-$date.txt"
+
+# Ensure all directories exist
+$dirsToCreate = @(
+    "$resultsBaseDir",
+    "$resultsBaseDir\integration-tests",
+    "$resultsBaseDir\playwright-test", 
+    "$resultsBaseDir\stability-test",
+    "$resultsBaseDir\performance",
+    "$resultsBaseDir\user-journey"
+)
+
+foreach ($dir in $dirsToCreate) {
+    if (-not (Test-Path -Path $dir)) {
+        New-Item -Path $dir -ItemType Directory -Force | Out-Null
+        Write-Host "Created directory: $dir" -ForegroundColor Yellow
+    }
+}
+
+# Keep a legacy copy in the test-results directory for backward compatibility
 if (-not (Test-Path -Path "$projectRoot\test-results")) {
     New-Item -Path "$projectRoot\test-results" -ItemType Directory | Out-Null
 }
+$legacyReportPath = "$projectRoot\test-results\test-report-$timestamp.txt"
 
-# Write report
+# Generate main combined report content
 $reportContent = @"
 TourGuideAI Test Report
 =======================
@@ -122,11 +146,69 @@ Overall Status: $(if (($testResults.Frontend.Status -eq "Passed") -and ($testRes
 Frontend Tests: $($testResults.Frontend.Status)
 Backend Tests: $($testResults.Backend.Status)
 
-For detailed test results, refer to the console output or individual test log files.
+For detailed test results, refer to:
+- Frontend: $frontendReportPath
+- Backend: $backendReportPath
 "@
 
-$reportContent | Out-File -FilePath $reportPath -Encoding utf8
-Write-Host "`nTest report saved to: $reportPath" -ForegroundColor Yellow
+# Write combined report
+$reportContent | Out-File -FilePath $combinedReportPath -Encoding utf8
+# Write legacy report
+$reportContent | Out-File -FilePath $legacyReportPath -Encoding utf8
+
+# Write categorized reports
+# Frontend report - Save in playwright-test folder since frontend tests use Playwright
+$frontendReportDir = "$resultsBaseDir\playwright-test"
+if (-not (Test-Path -Path $frontendReportDir)) {
+    New-Item -Path $frontendReportDir -ItemType Directory -Force | Out-Null
+}
+$frontendReportPath = "$frontendReportDir\frontend-tests-$date.txt"
+
+$frontendReportContent = @"
+TourGuideAI Frontend Test Report
+===============================
+Generated: $(Get-Date)
+
+Status: $($testResults.Frontend.Status)
+
+Frontend tests include: Component tests, UI tests, Smoke tests, Cross-browser tests
+
+This report is automatically generated. For detailed results, see the console output.
+"@
+
+$frontendReportContent | Out-File -FilePath $frontendReportPath -Encoding utf8
+
+# Backend report - Save in integration-tests folder since most backend tests are integration tests
+$backendReportDir = "$resultsBaseDir\integration-tests"
+if (-not (Test-Path -Path $backendReportDir)) {
+    New-Item -Path $backendReportDir -ItemType Directory -Force | Out-Null
+}
+$backendReportPath = "$backendReportDir\backend-tests-$date.txt"
+
+$backendReportContent = @"
+TourGuideAI Backend Test Report
+==============================
+Generated: $(Get-Date)
+
+Status: $($testResults.Backend.Status)
+
+Backend tests include: API tests, Database tests, Authentication tests
+
+This report is automatically generated. For detailed results, see the console output.
+"@
+
+$backendReportContent | Out-File -FilePath $backendReportPath -Encoding utf8
+
+# Write summaries to appropriate folders
+if ($testResults.Frontend.Status -eq "Passed") {
+    "PASSED: Frontend smoke tests on $(Get-Date)" | Out-File -FilePath "$resultsBaseDir\smoke-tests-$date.txt" -Encoding utf8
+}
+
+Write-Host "`nTest reports saved to:" -ForegroundColor Yellow
+Write-Host "- Main report: $combinedReportPath" -ForegroundColor Yellow
+Write-Host "- Frontend report: $frontendReportPath" -ForegroundColor Yellow
+Write-Host "- Backend report: $backendReportPath" -ForegroundColor Yellow
+Write-Host "- Legacy report: $legacyReportPath" -ForegroundColor Yellow
 
 # Set final exit code
 $exitCode = 0
