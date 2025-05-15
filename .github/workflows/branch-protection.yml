@@ -9,72 +9,82 @@ jobs:
   protect-main-branch:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      pull-requests: write
+      contents: read
+      pull-requests: read
+      actions: write
+      security-events: write
     
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
       
       - name: Configure Branch Protection for Main
-        uses: github/branch-protection@v3
-        with:
-          token: ${{ secrets.ADMIN_GITHUB_TOKEN }}
-          owner: ${{ github.repository_owner }}
-          repo: ${{ github.event.repository.name }}
-          branch: "main"
-          enforce_admins: true
-          required_status_checks: "security-scan,build-and-test,e2e-tests"
-          strict: true
-          required_pull_request_reviews: true
-          required_approving_review_count: 1
-          dismiss_stale_reviews: true
-          require_code_owner_reviews: true
+        run: |
+          gh api --method PUT repos/${{ github.repository }}/branches/main/protection \
+          -f enforce_admins=true \
+          -f required_status_checks[0].context=security-scan \
+          -f required_status_checks[1].context=build-and-test \
+          -f required_status_checks[2].context=e2e-tests \
+          -f required_status_checks[].strict=true \
+          -f required_pull_request_reviews.required_approving_review_count=1 \
+          -f required_pull_request_reviews.dismiss_stale_reviews=true \
+          -f required_pull_request_reviews.require_code_owner_reviews=true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
   protect-develop-branch:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      pull-requests: write
+      contents: read
+      pull-requests: read
+      actions: write
+      security-events: write
     
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
       
       - name: Configure Branch Protection for Develop
-        uses: github/branch-protection@v3
-        with:
-          token: ${{ secrets.ADMIN_GITHUB_TOKEN }}
-          owner: ${{ github.repository_owner }}
-          repo: ${{ github.event.repository.name }}
-          branch: "develop"
-          enforce_admins: true
-          required_status_checks: "build-and-test"
-          strict: true
-          required_pull_request_reviews: true
-          required_approving_review_count: 1
-          dismiss_stale_reviews: true
+        run: |
+          gh api --method PUT repos/${{ github.repository }}/branches/develop/protection \
+          -f enforce_admins=true \
+          -f required_status_checks[0].context=build-and-test \
+          -f required_status_checks[].strict=true \
+          -f required_pull_request_reviews.required_approving_review_count=1 \
+          -f required_pull_request_reviews.dismiss_stale_reviews=true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
   protect-release-branches:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      pull-requests: write
+      contents: read
+      pull-requests: read
+      actions: write
+      security-events: write
     
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
       
-      - name: Configure Branch Protection for Release Branches
-        uses: github/branch-protection@v3
-        with:
-          token: ${{ secrets.ADMIN_GITHUB_TOKEN }}
-          owner: ${{ github.repository_owner }}
-          repo: ${{ github.event.repository.name }}
-          pattern: "release-*"
-          enforce_admins: true
-          required_status_checks: "security-scan,build-and-test"
-          strict: true
-          required_pull_request_reviews: true
-          required_approving_review_count: 1
-          dismiss_stale_reviews: true 
+      - name: List Release Branches
+        id: list-branches
+        run: |
+          RELEASE_BRANCHES=$(gh api repos/${{ github.repository }}/branches --jq '.[] | select(.name | startswith("release-")) | .name')
+          echo "RELEASE_BRANCHES=$RELEASE_BRANCHES" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Configure Branch Protection for Each Release Branch
+        run: |
+          for branch in ${{ steps.list-branches.outputs.RELEASE_BRANCHES }}; do
+            gh api --method PUT repos/${{ github.repository }}/branches/$branch/protection \
+            -f enforce_admins=true \
+            -f required_status_checks[0].context=security-scan \
+            -f required_status_checks[1].context=build-and-test \
+            -f required_status_checks[].strict=true \
+            -f required_pull_request_reviews.required_approving_review_count=1 \
+            -f required_pull_request_reviews.dismiss_stale_reviews=true
+          done
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
