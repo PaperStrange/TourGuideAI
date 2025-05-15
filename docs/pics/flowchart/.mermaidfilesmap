@@ -24,6 +24,7 @@ flowchart TB
     classDef testingFile fill:#f2dede,stroke:#a94442,stroke-width:1px,color:#a94442
     classDef lifecycleFile fill:#e8f4ff,stroke:#337ab7,stroke-width:1px,color:#337ab7
     classDef prototypeFile fill:#f5e6f7,stroke:#9b59b6,stroke-width:1px,color:#9b59b6
+    classDef updateFile fill:#ffcccc,stroke:#cc0000,stroke-width:2px,color:#cc0000,font-weight:bold
     
     %% Main root node
     README[README.md]
@@ -34,7 +35,7 @@ flowchart TB
         ARCHITECTURE[ARCHITECTURE.md]
         API_OVERVIEW[API_OVERVIEW.md]
         API_MIGRATION[API_MIGRATION.md]
-        CONTRIBUTING[CONTRIBUTING.md]
+        CONTRIBUTING[CONTRIBUTING.md]:::updateFile
         SECURITY[SECURITY.md]
     end
     
@@ -58,7 +59,7 @@ flowchart TB
         end
         
         subgraph VersionDocs ["Version Control"]
-            VERSION_HISTORY[Version History<br>project.versions.md]
+            VERSION_HISTORY[Version History<br>project.versions.md]:::updateFile
             VERSION_CONTROL_REF[Version Control Reference<br>version-control.md]
         end
     end
@@ -77,22 +78,24 @@ flowchart TB
     end
     
     subgraph LearnDocs ["Knowledge"]
-        LESSONS[Lessons Learned<br>project.lessons.md]
+        LESSONS[Lessons Learned<br>project.lessons.md]:::updateFile
     end
     
     subgraph TestArea ["Testing"]
         TEST_PLAN[Stability Test Plan<br>project.stability-test-plan.md]
-        TEST_RESULTS[Test Execution Results<br>project.test-execution-results.md]
+        TEST_RESULTS[Test Execution Results<br>project.test-execution-results.md]:::updateFile
         TEST_SCENARIOS[Test Scenarios<br>project.test-scenarios.md]
         TEST_USER_STORY[Test User Stories<br>project.test-user-story.md]
         
         subgraph UserJourneyTests ["User Journey Tests"]
-            SARAH_TEST[Sarah - Casual Tourist<br>tests/user-journey/sarah-casual-tourist.spec.ts]
-            MICHAEL_TEST[Michael - History Enthusiast<br>tests/user-journey/michael-history-enthusiast.spec.ts]
-            ELENA_TEST[Elena - Family Traveler<br>tests/user-journey/elena-family-traveler.spec.ts]
-            JAMES_TEST[James - Business Traveler<br>tests/user-journey/james-business-traveler.spec.ts]
-            TANYA_TEST[Tanya - Adventure Seeker<br>tests/user-journey/tanya-adventure-seeker.spec.ts]
+            TEST_HELPERS[Test Helpers<br>tests/user-journey/test-helpers.ts]:::updateFile
+            SARAH_TEST[Sarah - Casual Tourist<br>tests/user-journey/sarah-casual-tourist.spec.ts]:::updateFile
+            MICHAEL_TEST[Michael - History Enthusiast<br>tests/user-journey/michael-history-enthusiast.spec.ts]:::updateFile
+            ELENA_TEST[Elena - Family Traveler<br>tests/user-journey/elena-family-traveler.spec.ts]:::updateFile
+            JAMES_TEST[James - Business Traveler<br>tests/user-journey/james-business-traveler.spec.ts]:::updateFile
+            TANYA_TEST[Tanya - Adventure Seeker<br>tests/user-journey/tanya-adventure-seeker.spec.ts]:::updateFile
             RUN_USER_JOURNEYS[Run User Journeys<br>scripts/run-user-journeys.js]
+            TESTS_README[Tests README<br>tests/README.md]:::updateFile
         end
         
         subgraph StabilityDocs ["Stability Test Results"]
@@ -106,7 +109,8 @@ flowchart TB
         end
         
         subgraph UserJourneyResults ["User Journey Results"]
-            UJ_README[User Journey Results<br>results/user-journey/README.md]
+            UJ_README[User Journey Results<br>results/user-journey/README.md]:::updateFile
+            UJ_SUMMARY[User Journey Summary<br>results/user-journey/user-journey-tests-20250515.txt]:::updateFile
         end
     end
     
@@ -215,10 +219,21 @@ flowchart TB
     
     %% Test user journey relationships
     TEST_USER_STORY --> UserJourneyTests
-    SARAH_TEST --> MICHAEL_TEST --> ELENA_TEST --> JAMES_TEST --> TANYA_TEST
+    TEST_HELPERS --> SARAH_TEST
+    TEST_HELPERS --> MICHAEL_TEST
+    TEST_HELPERS --> ELENA_TEST
+    TEST_HELPERS --> JAMES_TEST
+    TEST_HELPERS --> TANYA_TEST
     RUN_USER_JOURNEYS --> UserJourneyTests
     UserJourneyTests --> UserJourneyResults
     UserJourneyResults --> TEST_RESULTS
+    UJ_README --> UJ_SUMMARY
+    TESTS_README --> UserJourneyTests
+    
+    %% New documentation relationships
+    LESSONS --> TEST_HELPERS
+    VERSION_HISTORY --> UJ_README
+    CONTRIBUTING --> UserJourneyTests
     
     %% Apply classes to nodes
     class README,ARCHITECTURE,API_OVERVIEW,API_MIGRATION,CONTRIBUTING,SECURITY root
