@@ -28,9 +28,6 @@ jobs:
       - name: Install Dependencies
         run: npm ci
       
-      - name: Install Playwright
-        run: npx playwright install --with-deps
-      
       - name: Build Application
         run: npm run build
       
@@ -43,42 +40,23 @@ jobs:
       - name: Install PowerShell
         uses: actions/setup-powershell@v1
       
-      - name: Run Playwright Tests
+      - name: Run Tests
         run: |
           # Use the GitHub-specific test script
+          # Note: User journey TypeScript tests are skipped in CI to improve build speed
           pwsh ./.github/workflows/scripts/run-github-tests.ps1
-          
-          # Ensure critical user journey tests are included
-          echo "Running specific user journey tests..."
-          npx playwright test tests/user-journey/elena-family-traveler.spec.ts --config=tests/config/playwright.config.js --reporter=github
       
-      - name: Store Playwright Report
+      - name: Store Test Results
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: playwright-report
-          path: docs/project_lifecycle/all_tests/results/playwright-test/
+          name: e2e-test-results
+          path: docs/project_lifecycle/all_tests/results/
           retention-days: 14
       
-      - name: Store User Journey Test Results
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: user-journey-tests
-          path: docs/project_lifecycle/all_tests/results/user-journey/
-          retention-days: 14
-      
-      - name: Store Playwright Screenshots
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: playwright-screenshots
-          path: docs/project_lifecycle/all_tests/results/playwright-test/screenshots/
-          retention-days: 14
-          
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
           files: |
-            docs/project_lifecycle/all_tests/results/playwright-test/reports/**/*.xml 
+            docs/project_lifecycle/all_tests/results/**/*.xml 

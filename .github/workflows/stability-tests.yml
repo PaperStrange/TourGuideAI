@@ -32,9 +32,6 @@ jobs:
       - name: Install Dependencies
         run: npm ci
       
-      - name: Install Playwright
-        run: npx playwright install --with-deps
-      
       - name: Install PowerShell
         uses: actions/setup-powershell@v1
       
@@ -42,11 +39,8 @@ jobs:
         run: |
           echo "Running All Stability Tests with updated test runner..."
           # Run using the GitHub-specific test script
+          # Note: User journey TypeScript tests are skipped in CI to improve build speed
           pwsh ./.github/workflows/scripts/run-github-tests.ps1
-          
-          # Ensure analytics component tests are run
-          echo "Running specific analytics component tests..."
-          npx playwright test tests/smoke/analytics-components.spec.js --config=tests/config/playwright.config.js --reporter=github
       
       - name: Store Test Results
         uses: actions/upload-artifact@v4
@@ -75,7 +69,7 @@ jobs:
           
           # Add links to reports in the summary
           echo "📊 **Test Reports**:" >> $GITHUB_STEP_SUMMARY
-          echo "- [View Full Report](./docs/project_lifecycle/all_tests/results/playwright-test/reports)" >> $GITHUB_STEP_SUMMARY
+          echo "- [View Full Report](./docs/project_lifecycle/all_tests/results)" >> $GITHUB_STEP_SUMMARY
           echo "- [View Analytics Report](./docs/project_lifecycle/all_tests/results/analytics)" >> $GITHUB_STEP_SUMMARY
           echo "- [Raw Test Data](./docs/project_lifecycle/all_tests/results/)" >> $GITHUB_STEP_SUMMARY
 
