@@ -65,9 +65,9 @@ jobs:
         grep -r --include="*.js" --include="*.jsx" --include="*.ts" --include="*.tsx" "\/\* global " src/
     
     - name: Install PowerShell
-      uses: actions/setup-powershell@v2
+      uses: bjompen/UpdatePWSHAction@v1.0.1
       with:
-        powershell-version: '7.3'
+        ReleaseVersion: 'stable'
     
     - name: Setup PowerShell Execution Policy
       # Note: pwsh is the PowerShell Core command on Linux/macOS/Windows
@@ -240,9 +240,15 @@ jobs:
       run: npm ci
     
     - name: Install PowerShell
-      uses: actions/setup-powershell@v2
+      uses: bjompen/UpdatePWSHAction@v1.0.1
       with:
-        powershell-version: '7.3'
+        ReleaseVersion: 'stable'
+    
+    - name: Setup PowerShell Execution Policy
+      # Note: pwsh is the PowerShell Core command on Linux/macOS/Windows
+      shell: pwsh
+      run: |
+        Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
     
     - name: Run Smoke Tests
       env:

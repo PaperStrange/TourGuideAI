@@ -460,7 +460,9 @@ The workflow files have been updated to use the GitHub-specific test runner:
 
 ```yaml
 - name: Install PowerShell
-  uses: actions/setup-powershell@v1
+  uses: bjompen/UpdatePWSHAction@v1.0.1
+  with:
+    ReleaseVersion: 'stable'
 
 - name: Run Tests
   run: |
