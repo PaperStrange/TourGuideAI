@@ -18,6 +18,12 @@ permissions:
   contents: read
   checks: write  # Add permissions for checks
 
+# Define environment variables
+env:
+  NODE_VERSION: '18.x'
+  AWS_REGION: 'us-east-1'
+  ROLE_DURATION: 1200
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -64,6 +70,7 @@ jobs:
         powershell-version: '7.3'
     
     - name: Setup PowerShell Execution Policy
+      # Note: pwsh is the PowerShell Core command on Linux/macOS/Windows
       shell: pwsh
       run: |
         Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
@@ -71,6 +78,7 @@ jobs:
     - name: Run Stability Tests
       run: |
         # Run frontend stability tests using GitHub-specific test script
+        # Note: pwsh is the PowerShell Core executable, not a misspelling
         pwsh -ExecutionPolicy Bypass -File ./.github/workflows/scripts/run-github-tests.ps1
     
     - name: Store Stability Test Results
@@ -126,7 +134,9 @@ jobs:
     needs: build-and-test
     if: github.ref == 'refs/heads/develop' || startsWith(github.ref, 'refs/heads/release-')
     runs-on: ubuntu-latest
-    environment: staging
+    environment: 
+      name: staging
+      url: https://staging.tourguideai.com
     permissions:
       id-token: write
       contents: read
@@ -143,19 +153,22 @@ jobs:
     - name: Set up AWS CLI
       uses: aws-actions/configure-aws-credentials@v4
       with:
+        # Make sure this secret is defined in GitHub repository settings
         role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME_STAGING }}
-        aws-region: us-east-1
-        role-duration-seconds: 1200
+        aws-region: ${{ env.AWS_REGION }}
+        role-duration-seconds: ${{ env.ROLE_DURATION }}
         role-session-name: GHActionDeployStaging
     
     - name: Deploy to S3 (Staging)
       run: |
         # Create a script file to avoid exposing secrets directly in commands
+        # Note: tourguideai is the project name/bucket prefix
         echo "aws s3 sync build/ s3://tourguideai-staging/ --delete" > deploy.sh
         echo "aws cloudfront create-invalidation --distribution-id \$CLOUDFRONT_ID --paths \"/*\"" >> deploy.sh
         chmod +x deploy.sh
         
         # Run the script with the secret passed as an environment variable
+        # Make sure this secret is defined in GitHub repository settings
         CLOUDFRONT_ID="${{ secrets.STAGING_CLOUDFRONT_ID }}" ./deploy.sh
         
         # Clean up
@@ -165,7 +178,9 @@ jobs:
     needs: build-and-test
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    environment: production
+    environment: 
+      name: production
+      url: https://app.tourguideai.com
     permissions:
       id-token: write
       contents: read
@@ -182,19 +197,22 @@ jobs:
     - name: Set up AWS CLI
       uses: aws-actions/configure-aws-credentials@v4
       with:
+        # Make sure this secret is defined in GitHub repository settings
         role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME_PRODUCTION }}
-        aws-region: us-east-1
-        role-duration-seconds: 1200
+        aws-region: ${{ env.AWS_REGION }}
+        role-duration-seconds: ${{ env.ROLE_DURATION }}
         role-session-name: GHActionDeployProduction
     
     - name: Deploy to S3 (Production)
       run: |
         # Create a script file to avoid exposing secrets directly in commands
+        # Note: tourguideai is the project name/bucket prefix
         echo "aws s3 sync build/ s3://tourguideai-production/ --delete" > deploy.sh
         echo "aws cloudfront create-invalidation --distribution-id \$CLOUDFRONT_ID --paths \"/*\"" >> deploy.sh
         chmod +x deploy.sh
         
         # Run the script with the secret passed as an environment variable
+        # Make sure this secret is defined in GitHub repository settings
         CLOUDFRONT_ID="${{ secrets.PRODUCTION_CLOUDFRONT_ID }}" ./deploy.sh
         
         # Clean up
@@ -215,20 +233,23 @@ jobs:
     - name: Use Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18.x'
+        node-version: ${{ env.NODE_VERSION }}
         cache: 'npm'
     
     - name: Install Dependencies
       run: npm ci
     
     - name: Install PowerShell
-      uses: actions/setup-powershell@v1
+      uses: actions/setup-powershell@v2
+      with:
+        powershell-version: '7.3'
     
     - name: Run Smoke Tests
       env:
         BASE_URL: ${{ github.ref == 'refs/heads/main' && 'https://app.tourguideai.com' || 'https://staging.tourguideai.com' }}
       run: |
         # Run smoke tests using GitHub-specific test script
+        # Note: pwsh is the PowerShell Core executable
         pwsh ./.github/workflows/scripts/run-github-tests.ps1
     
     - name: Upload test results
