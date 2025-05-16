@@ -464,6 +464,17 @@ The workflow files have been updated to use the GitHub-specific test runner:
   with:
     ReleaseVersion: 'stable'
 
+- name: Setup PowerShell Execution Policy
+  shell: pwsh
+  run: |
+    try {
+      Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force -ErrorAction SilentlyContinue
+    } catch {
+      Write-Output "Note: Unable to set execution policy. This is expected in some CI environments and can be ignored."
+    }
+    # Verify PowerShell is working
+    Write-Output "PowerShell Version: $($PSVersionTable.PSVersion)"
+
 - name: Run Tests
   run: |
     pwsh ./.github/workflows/scripts/run-github-tests.ps1

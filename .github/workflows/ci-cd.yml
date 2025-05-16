@@ -73,7 +73,13 @@ jobs:
       # Note: pwsh is the PowerShell Core command on Linux/macOS/Windows
       shell: pwsh
       run: |
-        Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
+        try {
+          Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force -ErrorAction SilentlyContinue
+        } catch {
+          Write-Output "Note: Unable to set execution policy. This is expected in some CI environments and can be ignored."
+        }
+        # Verify PowerShell is working
+        Write-Output "PowerShell Version: $($PSVersionTable.PSVersion)"
     
     - name: Run Stability Tests
       run: |
@@ -248,7 +254,13 @@ jobs:
       # Note: pwsh is the PowerShell Core command on Linux/macOS/Windows
       shell: pwsh
       run: |
-        Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
+        try {
+          Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force -ErrorAction SilentlyContinue
+        } catch {
+          Write-Output "Note: Unable to set execution policy. This is expected in some CI environments and can be ignored."
+        }
+        # Verify PowerShell is working
+        Write-Output "PowerShell Version: $($PSVersionTable.PSVersion)"
     
     - name: Run Smoke Tests
       env:
