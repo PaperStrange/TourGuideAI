@@ -20,6 +20,8 @@ TourGuideAI is an intelligent virtual tour guide application that uses AI to cre
   - UX audit system with session recording and heatmaps
   - Task prompt system for guided beta testing
   - Issue prioritization system
+- **Global Content Delivery**: Fast and reliable content access worldwide with CDN integration
+- **Monetization**: Subscription-based access with tiered pricing plans
 
 ## Project Structure
 
@@ -123,6 +125,28 @@ TourGuideAI/
 - Write tests for all new features
 - Maintain code coverage above 80%
 - Use TypeScript for type safety
+
+## Project Phases
+
+The project is organized into multiple development phases:
+
+1. **Initial Setup and Prototype** - ✅ Completed
+2. **API Architecture** - ✅ Completed
+3. **Real API Integration** - ✅ Completed
+4. **Production Integration** - ✅ Completed
+5. **Performance Optimization & Production Readiness** - ✅ Completed
+6. **Beta Release & User Feedback** - ✅ Completed (April 2025)
+7. **Post-Beta Enhancements** - ⏭️ Skipped
+8. **Online Launch** - 🚀 Planned (September 2023)
+   - Global deployment infrastructure
+   - CDN implementation for worldwide content delivery
+   - Security hardening and compliance
+   - Customer support infrastructure
+   - Monetization strategy implementation
+
+Detailed documentation for the latest phase is available in:
+- [Phase 8 Online Launch Plan](docs/project_lifecycle/version_control/records/project.offcial.1.0.0.release-plan.md)
+- [CDN Implementation Plan](docs/project_lifecycle/deployment/plans/project.cdn-implementation-plan.md)
 
 ## Testing Strategy
 
