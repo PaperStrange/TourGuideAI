@@ -161,6 +161,39 @@ This document outlines the detailed plan for implementing a Content Delivery Net
 - Create runbook for common operational tasks
 - Provide training for operations team
 
+### 10. CI/CD Integration (Week 5-6)
+- Update the GitHub Actions workflow to incorporate CDN deployment:
+  - Configure S3 bucket deployment for CDN origin
+  - Implement automatic cache invalidation after deployment
+  - Set up environment-specific CDN configurations for staging and production
+- Configure required secrets in GitHub repository:
+  - AWS IAM roles for each environment (`AWS_ROLE_TO_ASSUME_STAGING`, `AWS_ROLE_TO_ASSUME_PRODUCTION`)
+  - CloudFront distribution IDs for staging and production (`STAGING_CLOUDFRONT_ID`, `PRODUCTION_CLOUDFRONT_ID`)
+- Implement proper IAM permissions:
+  - S3 permissions (PutObject, GetObject, ListBucket, DeleteObject)
+  - CloudFront permissions (CreateInvalidation, GetInvalidation)
+- Set up deployment process for different branches:
+  - Deploy to staging CDN from develop and release branches
+  - Deploy to production CDN from main branch
+- Configure smoke tests to verify CDN deployment
+- Implement secure handling of credentials:
+  - Use IAM roles with temporary credentials for secure deployment
+  - Configure appropriate role duration and session names
+  - Follow least privilege principle for all permissions
+- Create manual deployment fallback procedure:
+  ```bash
+  # Set up AWS credentials
+  aws configure
+  
+  # Deploy to staging
+  aws s3 sync build/ s3://tourguideai-staging/ --delete
+  aws cloudfront create-invalidation --distribution-id STAGING_DISTRIBUTION_ID --paths "/*"
+  
+  # Deploy to production
+  aws s3 sync build/ s3://tourguideai-production/ --delete
+  aws cloudfront create-invalidation --distribution-id PRODUCTION_DISTRIBUTION_ID --paths "/*"
+  ```
+
 ## Technology Choices
 
 ### Recommended CDN Providers (in order of preference)
@@ -194,6 +227,9 @@ This document outlines the detailed plan for implementing a Content Delivery Net
 | Cost overruns due to unexpected traffic patterns | 3 | 3 | Set up detailed cost monitoring, implement budget alerts |
 | Origin server overloading during cache misses | 4 | 2 | Implement origin shielding, rate limiting, and proper retry mechanisms |
 | Vendor lock-in with chosen CDN provider | 3 | 4 | Design for portability where possible, document dependencies |
+| CI/CD deployment failures | 4 | 2 | Implement proper error handling, create fallback deployment procedures, document manual deployment steps |
+| Authentication failures with IAM roles | 4 | 3 | Verify role ARNs, ensure correct permissions setup, implement thorough testing before deployment |
+| Cache invalidation failures | 3 | 2 | Verify CloudFront distribution IDs, ensure IAM roles have necessary permissions |
 
 ## Dependencies
 
@@ -201,42 +237,94 @@ This document outlines the detailed plan for implementing a Content Delivery Net
 - Domain name registration and access to DNS configuration
 - Appropriate access rights to generate and manage SSL certificates
 - CI/CD pipeline integration capability
+- Access to GitHub repository settings for configuring secrets
+- IAM permissions to create and manage roles with appropriate policies
 
 ## Timeline and Milestones
 
-### Week 1: Research and Design
+### Week 1: Research and Design (June 1-7, 2025)
 - Day 1-2: Research CDN providers
 - Day 3: Create decision matrix and select provider
 - Day 4-5: Design CDN architecture
 
-### Week 2: Initial Configuration
+### Week 2: Initial Configuration (June 8-14, 2025)
 - Day 1-3: Configure CDN for static assets
 - Day 4-5: Implement API response caching
 
-### Week 3: Domain and Security Setup
+### Week 3: Domain and Security Setup (June 15-21, 2025)
 - Day 1-2: Configure custom domain and SSL
 - Day 3-5: Implement security optimizations
 
-### Week 4: Monitoring and Testing
+### Week 4: Monitoring and Testing (June 22-28, 2025)
 - Day 1-2: Set up monitoring and analytics
 - Day 3-5: Perform initial testing and validation
 
-### Week 5: Final Testing and Documentation
+### Week 5: Final Testing and Documentation (June 29-July 5, 2025)
 - Day 1-3: Complete comprehensive testing
 - Day 4-5: Finalize documentation and training
 
+### Week 6: CI/CD Integration (July 6-12, 2025)
+- Day 1-2: Update GitHub Actions workflow for CDN deployment
+- Day 3-4: Configure secrets and IAM permissions
+- Day 5: Test CI/CD pipeline with CDN deployment
+
 ## Responsible Team Members
-- DevOps Engineer: Primary implementation
+- DevOps Engineer: Primary implementation and CI/CD integration
 - Frontend Developer: Static asset optimization
 - Backend Developer: API caching strategy
 - Security Specialist: Security headers and SSL configuration
 - QA Engineer: Testing and validation
 
+## Troubleshooting Guide
+
+### CDN Deployment Issues
+
+If the deployment to CDN fails through the CI/CD pipeline:
+
+1. **AWS Credential Issues**:
+   - Verify IAM roles exist and have appropriate permissions
+   - Check that role ARNs are correctly set in GitHub repository secrets
+   - Ensure GitHub Actions workflow has correct permissions (`id-token: write` and `contents: read`)
+   - Verify the workflow is using the correct AWS region
+
+2. **Cache Invalidation Failures**:
+   - Verify CloudFront distribution IDs are correctly set in GitHub secrets
+   - Check CloudFront console for error messages
+   - Ensure IAM roles have necessary CloudFront permissions
+   - Validate the syntax of the invalidation paths
+
+3. **S3 Upload Failures**:
+   - Check S3 bucket permissions and policies
+   - Verify bucket names in deployment scripts
+   - Check for storage capacity issues
+   - Validate file permissions in the build directory
+
+4. **Security and Authentication Errors**:
+   - Review IAM trust relationships
+   - Check role durations aren't exceeding allowed limits
+   - Verify OIDC provider is correctly configured
+   - Inspect GitHub workflow permission settings
+
+5. **Manual Deployment Process**:
+   ```bash
+   # Deploy to staging
+   aws s3 sync build/ s3://tourguideai-staging/ --delete
+   aws cloudfront create-invalidation --distribution-id DISTRIBUTION_ID --paths "/*"
+
+   # Deploy to production
+   aws s3 sync build/ s3://tourguideai-production/ --delete
+   aws cloudfront create-invalidation --distribution-id DISTRIBUTION_ID --paths "/*"
+   ```
+
 ## References
 - [CDN Best Practices Guide](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/best-practices.html)
 - [Web Performance Optimization Standards](https://web.dev/performance-optimizing-content-efficiency/)
 - [OWASP Security Headers Guide](https://owasp.org/www-project-secure-headers/)
+- [AWS GitHub Actions Integration Documentation](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services)
+- [CloudFront Cache Invalidation API](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html)
 
 ## Related Documents
 - [Phase 8 Online Launch Plan](../../../project.phase8-online-launch-plan.md)
 - [TourGuideAI Architecture Design](../../../ARCHITECTURE.md) 
+- [Deployment Pipeline Documentation](../pipelines/project.deployment-pipeline.md)
+- [CI/CD Workflow](/.github/workflows/ci-cd.yml) 
