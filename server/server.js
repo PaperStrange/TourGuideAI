@@ -23,6 +23,7 @@ const tokenProvider = require('./utils/tokenProvider');
 const { globalLimiter, openaiLimiter, mapsLimiter } = require('./middleware/rateLimit');
 const { validateOpenAIApiKey, validateGoogleMapsApiKey, checkKeyRotation } = require('./middleware/apiKeyValidation');
 const { fullOptionalAuth } = require('./middleware/authMiddleware');
+const { cdnMiddleware, staticAssetCdnMiddleware } = require('./middleware/cdnMiddleware');
 const betaUsers = require('./models/betaUsers');
 const inviteCodes = require('./models/inviteCodes');
 
@@ -41,6 +42,13 @@ const app = express();
 const publicDir = path.join(__dirname, 'public');
 if (!fs.existsSync(publicDir)) {
   fs.mkdirSync(publicDir, { recursive: true });
+}
+
+// Apply CDN middleware in production environment
+if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
+  app.use(cdnMiddleware);
+  app.use(staticAssetCdnMiddleware);
+  logger.info('CDN middleware applied for static asset delivery');
 }
 
 // Serve static files from public directory - FIRST in middleware chain
@@ -155,6 +163,8 @@ if (process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../build', 'index.html'));
   });
+  
+  logger.info('Serving production build from React app');
 }
 
 // Development-only endpoint to generate invite codes

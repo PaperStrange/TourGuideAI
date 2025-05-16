@@ -9,6 +9,7 @@
     "@mui/material": "^5.14.5",
     "@react-google-maps/api": "^2.19.2",
     "@sendgrid/mail": "^8.1.5",
+    "aws-sdk": "^2.1692.0",
     "axios": "^1.8.4",
     "bcrypt": "^5.1.1",
     "chart.js": "^4.4.8",
@@ -75,7 +76,12 @@
     "reorganize-tests": "node scripts/reorganize-tests.js",
     "test:user-journeys": "node scripts/run-user-journeys.js",
     "test:user-journeys:headed": "node scripts/run-user-journeys.js --headed",
-    "test:user-journeys:video": "node scripts/run-user-journeys.js --headed --video"
+    "test:user-journeys:video": "node scripts/run-user-journeys.js --headed --video",
+    "deploy:staging": "cross-env NODE_ENV=staging npm run build && node scripts/deploy-to-cdn.js",
+    "deploy:production": "cross-env NODE_ENV=production npm run build && node scripts/deploy-to-cdn.js",
+    "deploy:cdn:dry-run": "node scripts/deploy-to-cdn.js --dry-run",
+    "deploy:cdn:staging": "cross-env NODE_ENV=staging node scripts/deploy-to-cdn.js",
+    "deploy:cdn:production": "cross-env NODE_ENV=production node scripts/deploy-to-cdn.js"
   },
   "eslintConfig": {
     "extends": [
@@ -107,9 +113,10 @@
     "babel-loader": "^10.0.0",
     "chalk": "^5.4.1",
     "concurrently": "^8.2.1",
+    "cross-env": "^7.0.3",
     "css-loader": "^7.1.2",
     "file-loader": "^6.2.0",
-    "glob": "^10.3.10",
+    "glob": "^10.4.5",
     "identity-obj-proxy": "^3.0.0",
     "mongodb-memory-server": "^10.1.4",
     "mongoose": "^8.14.3",
