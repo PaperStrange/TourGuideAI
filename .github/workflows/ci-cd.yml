@@ -83,9 +83,9 @@ jobs:
     
     - name: Run Stability Tests
       run: |
-        # Run frontend stability tests using GitHub-specific test script
+        # Run frontend stability tests using the main test runner script
         # Note: pwsh is the PowerShell Core executable, not a misspelling
-        pwsh -ExecutionPolicy Bypass -File ./.github/workflows/scripts/run-github-tests.ps1
+        pwsh -ExecutionPolicy Bypass -File ./tests/run-frontend-tests.ps1
     
     - name: Store Stability Test Results
       uses: actions/upload-artifact@v4
@@ -266,9 +266,9 @@ jobs:
       env:
         BASE_URL: ${{ github.ref == 'refs/heads/main' && 'https://app.tourguideai.com' || 'https://staging.tourguideai.com' }}
       run: |
-        # Run smoke tests using GitHub-specific test script
+        # Run smoke tests using the main test runner script
         # Note: pwsh is the PowerShell Core executable
-        pwsh ./.github/workflows/scripts/run-github-tests.ps1
+        pwsh -ExecutionPolicy Bypass -File ./tests/run-frontend-tests.ps1
     
     - name: Upload test results
       if: always()

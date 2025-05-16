@@ -55,9 +55,9 @@ jobs:
       
       - name: Run Tests
         run: |
-          # Use the GitHub-specific test script
+          # Use the main test runner script
           # Note: User journey TypeScript tests are skipped in CI to improve build speed
-          pwsh ./.github/workflows/scripts/run-github-tests.ps1
+          pwsh -ExecutionPolicy Bypass -File ./tests/run-frontend-tests.ps1
       
       - name: Store Test Results
         uses: actions/upload-artifact@v4

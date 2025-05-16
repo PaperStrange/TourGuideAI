@@ -456,7 +456,7 @@ The test framework supports the following categories, each with a dedicated resu
 
 ### Running Tests in CI/CD
 
-The workflow files have been updated to use the GitHub-specific test runner:
+The workflow files have been updated to use the centralized test runner:
 
 ```yaml
 - name: Install PowerShell
@@ -477,19 +477,5 @@ The workflow files have been updated to use the GitHub-specific test runner:
 
 - name: Run Tests
   run: |
-    pwsh ./.github/workflows/scripts/run-github-tests.ps1
+    pwsh -ExecutionPolicy Bypass -File ./tests/run-frontend-tests.ps1
 ```
-
-### Test Results and Artifacts
-
-Test results are archived as artifacts with the following structure:
-
-```
-docs/project_lifecycle/all_tests/results/
-├── playwright-test/
-│   ├── reports/          # HTML and JSON reports
-│   └── screenshots/      # Failure screenshots
-├── stability-test/       # Stability test reports
-├── performance/          # Performance test reports
-└── user-journey/         # User journey test reports
-``` 

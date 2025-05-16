@@ -51,9 +51,9 @@ jobs:
       - name: Run All Stability Tests
         run: |
           echo "Running All Stability Tests with updated test runner..."
-          # Run using the GitHub-specific test script
+          # Run using the main test runner script
           # Note: User journey TypeScript tests are skipped in CI to improve build speed
-          pwsh ./.github/workflows/scripts/run-github-tests.ps1
+          pwsh -ExecutionPolicy Bypass -File ./tests/run-frontend-tests.ps1
       
       - name: Store Test Results
         uses: actions/upload-artifact@v4
