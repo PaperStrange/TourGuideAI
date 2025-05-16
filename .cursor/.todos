@@ -548,6 +548,39 @@
   - [x] Configure cache behaviors for different content types
   - [x] Implement proper cache invalidation mechanisms
   - [x] Set up appropriate TTL values for different content types
+- [ ] Implement CDN refactoring plan
+  - [x] Implement code structure refactors
+    - [x] Create dedicated CDN service module with clear API
+    - [x] Refactor file structure for better organization
+    - [x] Migrate existing functionality to new service
+    - [x] Create assetProcessor module for optimization
+    - [x] Create storageClient module for AWS integration
+    - [x] Create cacheManager for invalidation operations
+  - [x] Implement performance improvements
+    - [x] Upgrade to AWS SDK v3
+    - [x] Add content-type detection and appropriate handling
+    - [x] Implement cache control optimization by file type
+    - [ ] Set up asset optimization pipeline for images
+    - [ ] Implement WebP conversion for supported browsers
+    - [ ] Implement proper asset bundling with hashing
+  - [ ] Enhance CDN security
+    - [ ] Improve credential handling using AWS best practices
+    - [ ] Configure security headers and OAI
+    - [ ] Implement signed URLs for sensitive assets
+    - [ ] Add proper CORS configuration for different asset types
+    - [ ] Implement Content-Security-Policy headers
+  - [ ] Integrate with CI/CD pipeline
+    - [ ] Automate CDN deployment in GitHub Actions
+    - [ ] Create IaC templates for CDN infrastructure
+    - [ ] Set up monitoring and metrics collection
+    - [ ] Implement automated cache invalidation on deployment
+    - [ ] Add smoke tests for deployed assets
+  - [ ] Implement comprehensive testing
+    - [ ] Create unit tests with proper AWS service mocking
+    - [ ] Set up integration tests with localstack
+    - [ ] Implement performance testing for asset delivery
+    - [ ] Create test fixtures for various asset types
+    - [ ] Add visual regression testing for optimized images
 - [ ] Implement edge caching for dynamic API responses where appropriate
   - [ ] Identify cacheable API responses
   - [ ] Configure cache keys and TTL for API caching

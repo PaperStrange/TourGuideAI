@@ -155,6 +155,29 @@
   - [ ] Implement database backups and recovery procedures
   - [ ] Configure domain and SSL certificates
 
+- **Object**: CDN Refactoring
+  - [x] Implement code structure refactors with dedicated CDN service
+    - [x] Create cdnService directory structure
+    - [x] Implement main service module (index.js)
+    - [x] Implement storage client for AWS integration
+    - [x] Implement asset processor for optimization
+  - [x] Upgrade to AWS SDK v3 for improved performance
+    - [x] Replace aws-sdk with modular v3 packages
+    - [x] Implement proper client configuration
+    - [x] Use command pattern for AWS operations
+  - [ ] Enhance CDN security with proper credential handling and OAI
+    - [ ] Implement credential provider chain
+    - [ ] Configure Origin Access Identity for S3
+    - [ ] Implement signed URLs for sensitive assets
+  - [ ] Integrate CDN deployment with CI/CD pipeline
+    - [ ] Create GitHub Actions workflow for CDN deployment
+    - [ ] Implement cache invalidation after deployment
+    - [ ] Add smoke tests for CDN assets
+  - [ ] Implement comprehensive testing for CDN operations
+    - [ ] Create unit tests with AWS service mocking
+    - [ ] Implement integration tests with localstack
+    - [ ] Add performance testing for asset delivery
+
 - **Object**: Security Hardening
   - [ ] Conduct comprehensive security audit
   - [ ] Implement penetration testing and vulnerability scanning
