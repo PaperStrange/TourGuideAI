@@ -10,7 +10,6 @@
     "@react-google-maps/api": "^2.19.2",
     "@sendgrid/mail": "^8.1.5",
     "aws-sdk": "^2.1692.0",
-    "axios": "^1.8.4",
     "bcrypt": "^5.1.1",
     "chart.js": "^4.4.8",
     "cors": "^2.8.5",
@@ -35,8 +34,7 @@
     "recharts": "^2.15.1",
     "response-time": "^2.3.3",
     "web-vitals": "^2.1.4",
-    "winston": "^3.10.0",
-    "zaproxy": "^2.0.0-rc.6"
+    "winston": "^3.10.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -110,6 +108,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^14.6.1",
+    "axios": "^1.9.0",
     "babel-loader": "^10.0.0",
     "chalk": "^5.4.1",
     "concurrently": "^8.2.1",
@@ -125,6 +124,7 @@
     "style-loader": "^4.0.0",
     "supertest": "^7.1.0",
     "ts-node": "^10.9.2",
-    "webpack-bundle-analyzer": "^4.10.2"
+    "webpack-bundle-analyzer": "^4.10.2",
+    "zaproxy": "^2.0.0-rc.6"
   }
 }
