@@ -103,6 +103,39 @@ TourGuideAI/
 
 ### API Configuration and Token Access
 
+#### Getting API Keys
+
+##### Google Maps API
+1. Go to the [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project or select an existing one
+3. Navigate to "APIs & Services" > "Dashboard"
+4. Click "+ ENABLE APIS AND SERVICES"
+5. Search for and enable the following APIs:
+   - Maps JavaScript API
+   - Places API
+   - Directions API
+   - Geocoding API
+6. Go to "APIs & Services" > "Credentials"
+7. Click "Create credentials" > "API key"
+8. Restrict the API key to the APIs listed above
+9. Copy the API key to your `.env` file
+
+##### OpenAI API
+1. Go to [OpenAI's website](https://platform.openai.com/)
+2. Sign up or log in to your account
+3. Navigate to the API section
+4. Create a new API key
+5. Copy the API key to your `.env` file
+6. Set up billing to ensure API access
+
+##### Translation Service API
+1. Go to the [DeepL API portal](https://www.deepl.com/pro-api)
+2. Sign up for a developer account
+3. Navigate to your account dashboard
+4. Create a new API key
+5. Copy the API key to your `.env` file
+
+#### Setting up API and tokens
 1. Set up API tokens:
    ```
    npm run setup:tokens
@@ -161,7 +194,7 @@ The project is organized into multiple development phases:
 5. **Performance Optimization & Production Readiness** - ✅ Completed
 6. **Beta Release & User Feedback** - ✅ Completed (April 2025)
 7. **Post-Beta Enhancements** - ⏭️ Skipped
-8. **Online Launch** - 🚀 Planned (September 2023)
+8. **Online Launch** - 🚀 Planned (May 2025)
    - Global deployment infrastructure
    - CDN implementation for worldwide content delivery
    - Security hardening and compliance
@@ -218,10 +251,9 @@ Test user experience with the UX audit system:
 npm run test:ux-audit
 ```
 
-
 ### Overall Testing
 
-### Prerequisites
+#### Prerequisites
 
 Before running the test scripts, ensure you have the following:
 
@@ -229,9 +261,9 @@ Before running the test scripts, ensure you have the following:
 2. All project dependencies installed (`npm install`)
 3. Appropriate permissions to run scripts on your system
 
-### Windows Setup
+#### Windows Setup
 
-#### Setting Up PowerShell Scripts
+##### Setting Up PowerShell Scripts
 
 PowerShell scripts may be blocked from running due to execution policies. To enable running the scripts:
 
@@ -245,9 +277,9 @@ PowerShell scripts may be blocked from running due to execution policies. To ena
    powershell -ExecutionPolicy Bypass -File .\scripts\run-all-tests.ps1
    ```
 
-### Unix/Linux/macOS Setup
+#### Unix/Linux/macOS Setup
 
-#### Making Scripts Executable
+##### Making Scripts Executable
 
 Before running bash scripts, you need to make them executable:
 
