@@ -278,7 +278,7 @@ class FeatureRequestService {
   async addComment(requestId, content) {
     try {
       // In a real implementation, this would make an API request
-      console.log(`Adding comment to feature request ${requestId}:`, content);
+      console.log('Adding comment to feature request %s:', requestId, content);
       
       // Validate content
       if (!content) {
