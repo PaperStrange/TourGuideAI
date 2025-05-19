@@ -4,7 +4,6 @@
  */
 
 import authService from '../../services/AuthService';
-import crypto from 'crypto';
 
 // Mock data for different metrics - would be replaced with real API calls in production
 const mockData = {
@@ -449,29 +448,28 @@ class AnalyticsService {
     const recordings = Array.from({ length: 25 }).map((_, index) => {
       const recordingDate = new Date(
         new Date(startDate).getTime() + 
-        (crypto.randomBytes(4).readUInt32BE(0) / 0xFFFFFFFF) * (new Date(endDate).getTime() - new Date(startDate).getTime())
+        Math.random() * (new Date(endDate).getTime() - new Date(startDate).getTime())
       );
       
-      const duration = Math.floor((crypto.randomBytes(4).readUInt32BE(0) / 0xFFFFFFFF) * 600) + 30; // 30s to 10min
-      const userType = (crypto.randomBytes(4).readUInt32BE(0) / 0xFFFFFFFF) > 0.3 ? 'returning' : 'new';
-      const device = ['desktop', 'mobile', 'tablet'][Math.floor((crypto.randomBytes(4).readUInt32BE(0) / 0xFFFFFFFF) * 3)];
-      
+      const duration = Math.floor(Math.random() * 600) + 30; // 30s to 10min
+      const userType = Math.random() > 0.3 ? 'returning' : 'new';
+      const device = ['desktop', 'mobile', 'tablet'][Math.floor(Math.random() * 3)];
+
       const pages = [];
       const numPages = Math.floor(Math.random() * 5) + 1;
       const possiblePages = ['dashboard', 'search', 'profile', 'settings', 'tour_creation', 'tour_details', 'checkout'];
-      
+
       for (let i = 0; i < numPages; i++) {
-        const page = possiblePages[Math.floor((crypto.randomBytes(4).readUInt32BE(0) / 0xFFFFFFFF) * possiblePages.length)];
+        const page = possiblePages[Math.floor(Math.random() * possiblePages.length)];
         if (!pages.includes(page)) {
           pages.push(page);
         }
-      }
       
       return {
         id: `hj-${(10000000 + index).toString(16)}`, // Mock Hotjar recording ID
         date: recordingDate.toISOString(),
         duration: duration,
-        userId: (crypto.randomBytes(4).readUInt32BE(0) / 0xFFFFFFFF) > 0.2 ? `user_${Math.floor((crypto.randomBytes(4).readUInt32BE(0) / 0xFFFFFFFF) * 1000)}` : null,
+        userId: Math.random() > 0.2 ? `user_${Math.floor(Math.random() * 1000)}` : null,
         userType: userType,
         device: device,
         browser: ['Chrome', 'Firefox', 'Safari', 'Edge'][Math.floor(Math.random() * 4)],
