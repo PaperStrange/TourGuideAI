@@ -195,7 +195,8 @@ class TokenProvider {
       
       return true;
     } catch (error) {
-      logger.error(`Failed to rotate token for ${serviceName}`, { error });
+      const sanitizedServiceName = serviceName.replace(/[\n\r]/g, "");
+      logger.error(`Failed to rotate token for ${sanitizedServiceName}`, { error });
       throw error;
     }
   }
