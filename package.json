@@ -75,6 +75,7 @@
     "test:user-journeys": "node scripts/run-user-journeys.js",
     "test:user-journeys:headed": "node scripts/run-user-journeys.js --headed",
     "test:user-journeys:video": "node scripts/run-user-journeys.js --headed --video",
+    "test:analytics": "npx jest src/tests/components/analytics --watchAll=false --testTimeout=20000",
     "deploy:staging": "cross-env NODE_ENV=staging npm run build && node scripts/deploy-to-cdn.js",
     "deploy:production": "cross-env NODE_ENV=production npm run build && node scripts/deploy-to-cdn.js",
     "deploy:cdn:dry-run": "node scripts/deploy-to-cdn.js --dry-run",
