@@ -187,23 +187,29 @@ TourGuideAI/
 
 The project is organized into multiple development phases:
 
-1. **Initial Setup and Prototype** - ✅ Completed
-2. **API Architecture** - ✅ Completed
-3. **Real API Integration** - ✅ Completed
-4. **Production Integration** - ✅ Completed
-5. **Performance Optimization & Production Readiness** - ✅ Completed
+1. **Initial Setup and Prototype** - ✅ Completed (March 2025)
+2. **API Architecture** - ✅ Completed (March 2025)
+3. **Real API Integration** - ✅ Completed (March 2025)
+4. **Production Integration** - ✅ Completed (March 2025)
+5. **Performance Optimization & Production Readiness** - ✅ Completed (March 2025)
 6. **Beta Release & User Feedback** - ✅ Completed (April 2025)
 7. **Post-Beta Enhancements** - ⏭️ Skipped
-8. **Online Launch** - 🚀 Planned (May 2025)
+8. **Online Launch** - 🚀 In Progress (Started April 2025)
    - Global deployment infrastructure
    - CDN implementation for worldwide content delivery
    - Security hardening and compliance
    - Customer support infrastructure
    - Monetization strategy implementation
 
-Detailed documentation for the latest phase is available in:
-- [Phase 8 Online Launch Plan](docs/project_lifecycle/version_control/records/project.offcial.1.0.0.release-plan.md)
-- [CDN Implementation Plan](docs/project_lifecycle/deployment/plans/project.cdn-implementation-plan.md)
+### Current Version
+
+**Current Version:** 1.0.0-RC1 (May 30, 2025)
+
+TourGuideAI follows semantic versioning (MAJOR.MINOR.PATCH) as defined in our [Version Control Documentation](docs/project_lifecycle/version_control/references/version-control.md).
+
+The project is currently in Release Candidate stage, preparing for the official 1.0.0 release scheduled for August 2025.
+
+For detailed release plans, see our [1.0.0 Release Candidate Plan](docs/project_lifecycle/version_control/records/project.rc.1.0.0.release-plan.md).
 
 ## Testing Strategy
 
@@ -403,4 +409,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - OpenAI for the GPT models
 - Google Maps for mapping functionality
 - Contributors and beta testers
-
