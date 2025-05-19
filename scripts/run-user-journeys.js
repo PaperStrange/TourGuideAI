@@ -5,7 +5,7 @@
  * interacting with the TourGuideAI application.
  */
 
-const { execSync } = require('child_process');
+const { execFileSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const util = require('util');
@@ -114,24 +114,19 @@ async function runUserJourneyTest(journey, options = {}) {
   const spinner = ora(`Running ${journey.name} user journey test (${journey.estimatedTime})...`).start();
   
   try {
-    // Build the command with appropriate flags
-    let cmd = `npx playwright test ${testFile} --config=tests/config/playwright/cross-browser.config.js --project=${browser}`;
+    // Build the command as an array of arguments
+    const args = [
+      'test',
+      testFile,
+      '--config=tests/config/playwright/cross-browser.config.js',
+      `--project=${browser}`,
+      headless ? '--headed=false' : '--headed',
+      video ? '--video=on' : '--video=off',
+      '--reporter=html,line'
+    ];
     
-    if (headless) {
-      cmd += ' --headed false';
-    } else {
-      cmd += ' --headed';
-    }
-    
-    if (video) {
-      cmd += ' --video on';
-    }
-    
-    // Add reporting options
-    cmd += ` --reporter=html,line`;
-    
-    // Execute the command
-    execSync(cmd, { stdio: 'pipe' });
+    // Execute the command using execFileSync
+    execFileSync('npx', ['playwright', ...args], { stdio: 'pipe' });
     
     spinner.succeed(chalk.green(`${journey.name} user journey test completed successfully`));
     return true;
