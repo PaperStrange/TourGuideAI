@@ -49,7 +49,7 @@ class SurveyService {
       });
       return response;
     } catch (error) {
-      console.error(`Error submitting survey ${surveyId} responses:`, error);
+      console.error('Error submitting survey %s responses:', surveyId, error);
       throw error;
     }
   }
