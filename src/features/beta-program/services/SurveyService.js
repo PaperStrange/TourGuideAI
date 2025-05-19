@@ -31,7 +31,7 @@ class SurveyService {
       const response = await apiHelpers.get(`/beta/surveys/${surveyId}`);
       return response.survey;
     } catch (error) {
-      console.error(`Error fetching survey ${surveyId}:`, error);
+      console.error('Error fetching survey %s:', surveyId, error);
       throw error;
     }
   }
