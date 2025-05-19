@@ -101,6 +101,30 @@ TourGuideAI/
    npm run dev
    ```
 
+### API Configuration and Token Access
+
+1. Set up API tokens:
+   ```
+   npm run setup:tokens
+   ```
+
+2. Configure API access:
+   ```
+   npm run configure:api
+   ```
+
+3. Verify API configuration:
+   ```
+   npm run verify:api
+   ```
+   This will check if all required API endpoints are accessible.
+
+4. Generate access tokens for development:
+   ```
+   npm run generate:dev-tokens
+   ```
+   These tokens are valid for 7 days and are required for local development.
+
 ## Development Workflow
 
 ### Branch Structure
