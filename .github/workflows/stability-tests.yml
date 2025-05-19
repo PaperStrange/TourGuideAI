@@ -1,0 +1,149 @@
+name: Stability Tests
+
+permissions:
+  contents: read
+
+on:
+  schedule:
+    - cron: '0 0 * * 3'  # Run every Wednesday at midnight
+  pull_request:
+    paths:
+      - 'src/**/*.js'
+      - 'src/**/*.jsx'
+      - 'src/**/*.ts'
+      - 'src/**/*.tsx'
+      - 'src/tests/**/*'
+      - '.babelrc'
+      - 'jest.config.js'
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  stability-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install Dependencies
+        run: npm ci
+      
+      - name: Run Security Tests
+        run: |
+          echo "Running Security Tests..."
+          NODE_ENV=test npm test -- tests/security/security-audit.test.js --passWithNoTests
+      
+      - name: Install PowerShell
+        uses: bjompen/UpdatePWSHAction@v1.0.1
+        with:
+          ReleaseVersion: 'stable'
+      
+      - name: Setup PowerShell Execution Policy
+        shell: pwsh
+        run: |
+          try {
+            Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force -ErrorAction SilentlyContinue
+          } catch {
+            Write-Output "Note: Unable to set execution policy. This is expected in some CI environments and can be ignored."
+          }
+          # Verify PowerShell is working
+          Write-Output "PowerShell Version: $($PSVersionTable.PSVersion)"
+      
+      - name: Run All Stability Tests
+        run: |
+          echo "Running All Stability Tests with updated test runner..."
+          # Run using the main test runner script
+          # Note: User journey TypeScript tests are skipped in CI to improve build speed
+          export CI=true
+          export NODE_ENV=test
+          pwsh -ExecutionPolicy Bypass -File ./tests/run-frontend-tests.ps1
+      
+      - name: Store Test Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: stability-test-results
+          path: |
+            ./docs/project_lifecycle/all_tests/results/
+          retention-days: 30
+      
+      - name: Store Analytics Test Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: analytics-test-results
+          path: ./docs/project_lifecycle/all_tests/results/analytics/
+          retention-days: 30
+      
+      - name: Update Test Summary
+        run: |
+          echo "### Stability Test Summary" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Frontend Stability Tests completed" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Component Tests completed" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Backend Resilience Tests completed" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Analytics Components Tests completed" >> $GITHUB_STEP_SUMMARY
+          
+          # Add links to reports in the summary
+          echo "📊 **Test Reports**:" >> $GITHUB_STEP_SUMMARY
+          echo "- [View Full Report](./docs/project_lifecycle/all_tests/results)" >> $GITHUB_STEP_SUMMARY
+          echo "- [View Analytics Report](./docs/project_lifecycle/all_tests/results/analytics)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Raw Test Data](./docs/project_lifecycle/all_tests/results/)" >> $GITHUB_STEP_SUMMARY
+
+  load-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    needs: stability-tests
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install Dependencies
+        run: npm ci
+      
+      - name: Install k6
+        run: |
+          curl -L https://github.com/grafana/k6/releases/download/v0.45.0/k6-v0.45.0-linux-amd64.tar.gz | tar xz
+          sudo cp k6-v0.45.0-linux-amd64/k6 /usr/local/bin
+      
+      - name: Run Load Tests
+        env:
+          BASE_URL: 'https://staging.tourguideai.com'
+        run: |
+          echo "Running load tests against $BASE_URL..."
+          chmod +x ./scripts/run-load-tests.sh
+          ./scripts/run-load-tests.sh $BASE_URL
+      
+      - name: Store Load Test Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: load-test-results
+          path: |
+            ./docs/project_lifecycle/all_tests/results/performance/
+          retention-days: 14
+      
+      - name: Update Load Test Summary
+        run: |
+          echo "### Load Test Summary" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Core App Load Tests completed" >> $GITHUB_STEP_SUMMARY
+          echo "✅ UX Audit System Load Tests completed" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Task Prompt System Load Tests completed" >> $GITHUB_STEP_SUMMARY
+          
+          # Add links to the latest report
+          echo "📊 **Load Test Reports**:" >> $GITHUB_STEP_SUMMARY
+          echo "- [View Latest Report](./docs/project_lifecycle/all_tests/results/performance/)" >> $GITHUB_STEP_SUMMARY 

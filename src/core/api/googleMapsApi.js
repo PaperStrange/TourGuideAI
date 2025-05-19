@@ -8,6 +8,8 @@
  * @requires Google Maps JavaScript API - The Google Maps library must be loaded
  */
 
+/* global google */  // Tell ESLint that 'google' is a global variable from external script
+
 import axios from 'axios';
 
 // Google Maps API configuration
@@ -740,7 +742,8 @@ export const getStatus = () => {
   };
 };
 
-export default {
+// Fix anonymous export by creating a named object
+const googleMapsApi = {
   setApiKey,
   setDebugMode,
   setUseServerProxy,
@@ -753,4 +756,6 @@ export default {
   validateTransportation,
   validateInterestPoints,
   calculateRouteStatistics
-}; 
+};
+
+export default googleMapsApi; 

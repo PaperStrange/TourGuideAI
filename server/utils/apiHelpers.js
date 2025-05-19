@@ -6,13 +6,19 @@
 
 const axios = require('axios');
 const { v4: uuidv4 } = require('uuid');
+const logger = require('./logger');
 
 /**
  * Create a configured axios instance for OpenAI API
- * @param {string} apiKey - OpenAI API key
+ * @param {string} apiKey - OpenAI API key (provided by middleware)
  * @returns {Object} Axios instance
  */
 const createOpenAIClient = (apiKey) => {
+  if (!apiKey) {
+    logger.error('Missing OpenAI API key when creating client');
+    throw new Error('API key not provided to createOpenAIClient');
+  }
+  
   return axios.create({
     baseURL: 'https://api.openai.com/v1',
     headers: {
@@ -25,10 +31,15 @@ const createOpenAIClient = (apiKey) => {
 
 /**
  * Create a configured axios instance for Google Maps API
- * @param {string} apiKey - Google Maps API key
+ * @param {string} apiKey - Google Maps API key (provided by middleware)
  * @returns {Object} Axios instance
  */
 const createGoogleMapsClient = (apiKey) => {
+  if (!apiKey) {
+    logger.error('Missing Google Maps API key when creating client');
+    throw new Error('API key not provided to createGoogleMapsClient');
+  }
+  
   return axios.create({
     baseURL: 'https://maps.googleapis.com/maps/api',
     params: {
@@ -63,7 +74,7 @@ const handleApiError = (error, source) => {
   };
   
   // Log error details for server-side debugging
-  console.error(`[${source.toUpperCase()} API ERROR] ${formattedError.message}`, {
+  logger.error(`[${source.toUpperCase()} API ERROR] ${formattedError.message}`, {
     error_id: errorId,
     status: formattedError.status,
     type: formattedError.type,

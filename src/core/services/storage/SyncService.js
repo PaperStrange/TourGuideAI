@@ -61,6 +61,9 @@ class SyncService {
       // Sync favorites
       await this.syncFavorites();
 
+      // Sync waypoints
+      await this.syncWaypoints(lastSync);
+
       // Process sync queue
       await this.processSyncQueue();
 
@@ -92,13 +95,11 @@ class SyncService {
 
       // Get local routes that need to be synced to server
       const localRoutes = localStorageService.getAllRoutes();
-      const routesToSync = Object.values(localRoutes).filter(route => 
-        !lastSync || new Date(route.lastUpdated) > new Date(lastSync)
-      );
-
-      // Sync local changes to server
-      for (const route of routesToSync) {
-        await this.apiClient.updateRoute(route.id, route);
+      for (const routeId in localRoutes) {
+        const route = localRoutes[routeId];
+        if (!lastSync || new Date(route.lastUpdated) > new Date(lastSync)) {
+          await this.apiClient.updateRoute(routeId, route);
+        }
       }
     } catch (error) {
       console.error('Route sync failed:', error);
@@ -117,19 +118,24 @@ class SyncService {
       const serverTimelines = await this.apiClient.getTimelines({ since: lastSync });
       
       // Update local storage with server data
-      Object.entries(serverTimelines).forEach(([routeId, timeline]) => {
-        localStorageService.saveTimeline(routeId, timeline);
-      });
-
+      if (Array.isArray(serverTimelines)) {
+        serverTimelines.forEach(timeline => {
+          localStorageService.saveTimeline(timeline);
+        });
+      } else if (typeof serverTimelines === 'object') {
+        // Handle object format where keys are timeline IDs
+        Object.entries(serverTimelines).forEach(([timelineId, timeline]) => {
+          localStorageService.saveTimeline(timelineId, timeline);
+        });
+      }
+      
       // Get local timelines that need to be synced to server
-      const localTimelines = Object.entries(localStorageService.getData('tourguide_timelines') || {})
-        .filter(([_, timeline]) => 
-          !lastSync || new Date(timeline.lastUpdated) > new Date(lastSync)
-        );
-
-      // Sync local changes to server
-      for (const [routeId, timeline] of localTimelines) {
-        await this.apiClient.updateTimeline(routeId, timeline);
+      const localTimelines = localStorageService.getAllTimelines();
+      for (const timelineId in localTimelines) {
+        const timeline = localTimelines[timelineId];
+        if (!lastSync || new Date(timeline.lastUpdated) > new Date(lastSync)) {
+          await this.apiClient.updateTimeline(timelineId, timeline);
+        }
       }
     } catch (error) {
       console.error('Timeline sync failed:', error);
@@ -163,6 +169,35 @@ class SyncService {
   }
 
   /**
+   * Sync waypoints with server
+   * @param {string} lastSync - Last sync timestamp
+   * @returns {Promise<void>}
+   */
+  async syncWaypoints(lastSync) {
+    try {
+      // Get waypoints from server that have been updated since last sync
+      const serverWaypoints = await this.apiClient.getWaypoints({ since: lastSync });
+      
+      // Update local storage with server data
+      serverWaypoints.forEach(waypoint => {
+        localStorageService.saveWaypoint(waypoint);
+      });
+
+      // Get local waypoints that need to be synced to server
+      const localWaypoints = localStorageService.getAllWaypoints();
+      for (const waypointId in localWaypoints) {
+        const waypoint = localWaypoints[waypointId];
+        if (!lastSync || new Date(waypoint.lastUpdated) > new Date(lastSync)) {
+          await this.apiClient.updateWaypoint(waypointId, waypoint);
+        }
+      }
+    } catch (error) {
+      console.error('Waypoint sync failed:', error);
+      throw error;
+    }
+  }
+
+  /**
    * Process sync queue
    * @returns {Promise<void>}
    */
@@ -182,6 +217,12 @@ class SyncService {
             const timeline = localStorageService.getTimeline(id);
             if (timeline) {
               await this.apiClient.updateTimeline(id, timeline);
+            }
+            break;
+          case 'waypoint':
+            const waypoint = localStorageService.getWaypoint(id);
+            if (waypoint) {
+              await this.apiClient.updateWaypoint(id, waypoint);
             }
             break;
           default:
@@ -210,8 +251,39 @@ class SyncService {
    * @returns {Promise<void>}
    */
   async forceSync() {
-    this.syncQueue.clear();
-    await this.sync();
+    // Don't clear the queue yet - we need to process these items
+    // Instead, set a flag to indicate this is a forced sync
+    const isForcedSync = true;
+    
+    // Set sync in progress flag only if not already in progress
+    const wasInProgress = this.syncInProgress;
+    if (!wasInProgress) {
+      this.syncInProgress = true;
+    }
+    
+    const lastSync = localStorageService.getLastSync();
+    
+    try {
+      // First process the sync queue to ensure all queued items are synced
+      await this.processSyncQueue();
+      
+      // Then run the standard sync methods
+      await this.syncRoutes(lastSync);
+      await this.syncTimelines(lastSync);
+      await this.syncFavorites();
+      await this.syncWaypoints(lastSync);
+      
+      // Update last sync timestamp
+      localStorageService.updateLastSync();
+    } catch (error) {
+      console.error('Force sync failed:', error);
+      this.retryFailedSyncs();
+    } finally {
+      // Only reset the flag if we set it
+      if (!wasInProgress) {
+        this.syncInProgress = false;
+      }
+    }
   }
 }
 

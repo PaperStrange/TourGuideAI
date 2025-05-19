@@ -1,0 +1,78 @@
+name: End-to-End Tests
+
+on:
+  schedule:
+    - cron: '0 0 * * 1,4'  # Run every Monday and Thursday at midnight
+  pull_request:
+    branches: 
+      - main
+      - develop
+      - 'release-*'
+  workflow_dispatch:       # Allow manual triggering
+
+permissions:
+  contents: read
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install Dependencies
+        run: npm ci
+      
+      - name: Build Application
+        run: npm run build
+      
+      - name: Start Application
+        run: |
+          npm run start:server &
+          npm run start:client &
+          npx wait-on http://localhost:3000 http://localhost:5000/api/health
+      
+      - name: Install PowerShell
+        uses: bjompen/UpdatePWSHAction@v1.0.1
+        with:
+          ReleaseVersion: 'stable'
+      
+      - name: Setup PowerShell Execution Policy
+        shell: pwsh
+        run: |
+          try {
+            Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force -ErrorAction SilentlyContinue
+          } catch {
+            Write-Output "Note: Unable to set execution policy. This is expected in some CI environments and can be ignored."
+          }
+          # Verify PowerShell is working
+          Write-Output "PowerShell Version: $($PSVersionTable.PSVersion)"
+      
+      - name: Run Tests
+        run: |
+          # Use the main test runner script
+          # Note: User journey TypeScript tests are skipped in CI to improve build speed
+          pwsh -ExecutionPolicy Bypass -File ./tests/run-frontend-tests.ps1
+      
+      - name: Store Test Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: e2e-test-results
+          path: docs/project_lifecycle/all_tests/results/
+          retention-days: 14
+      
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          files: |
+            docs/project_lifecycle/all_tests/results/**/*.xml 

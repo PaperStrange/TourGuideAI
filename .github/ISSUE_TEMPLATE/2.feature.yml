@@ -1,28 +1,44 @@
 name: Feature request 🚀
-description: Suggest a new idea for AutoGPT!
+description: Suggest a new idea for TourGuideAI!
 labels: ['status: needs triage']
 body:
   - type: markdown
     attributes:
       value: |
-        First, check out our [wiki page on Contributing](https://github.com/Significant-Gravitas/AutoGPT/wiki/Contributing)
-        Please provide a searchable summary of the issue in the title above ⬆️.
+        Please check our [roadmap](https://github.com/PaperStrange/TourGuideAI/projects/1) before submitting to see if your idea is already planned.
+        Provide a clear and descriptive title for your feature request in the field above ⬆️.
   - type: checkboxes
     attributes:
       label: Duplicates
-      description: Please [search the history](https://github.com/Significant-Gravitas/AutoGPT/issues) to see if an issue already exists for the same problem.
+      description: Please [search the history](https://github.com/PaperStrange/TourGuideAI/issues) to see if a feature request already exists for the same idea.
       options:
         - label: I have searched the existing issues
           required: true
   - type: textarea
     attributes:
       label: Summary 💡
-      description: Describe how it should work.
+      description: Describe how the feature should work and what problem it solves.
   - type: textarea
     attributes:
       label: Examples 🌈
-      description: Provide a link to other implementations, or screenshots of the expected behavior.
+      description: Provide examples, mockups, or references to similar features in other applications.
   - type: textarea
     attributes:
       label: Motivation 🔦
-      description: What are you trying to accomplish? How has the lack of this feature affected you? Providing context helps us come up with a solution that is more useful in the real world.
+      description: What are you trying to accomplish? How has the lack of this feature affected you? Providing context helps us create a solution that is most useful in the real world.
+  - type: dropdown
+    attributes:
+      label: Feature category
+      description: Which area of the application does this feature primarily relate to?
+      options:
+        - User Interface
+        - Maps & Navigation
+        - Route Planning
+        - API Integration
+        - Performance
+        - Offline Functionality
+        - Mobile Experience
+        - User Accounts
+        - Other (specify in description)
+    validations:
+      required: true

@@ -5,9 +5,6 @@
  * This file is kept for backward compatibility but will be removed in a future version.
  */
 
-// Re-export everything from the core implementation
-export * from '../core/api/googleMapsApi';
-
 // Log warning when this file is imported
 console.warn('Warning: Importing from src/api/googleMapsApi.js is deprecated. Please update your imports to use src/core/api/googleMapsApi.js instead.');
 

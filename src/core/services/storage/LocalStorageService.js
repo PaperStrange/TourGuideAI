@@ -10,7 +10,8 @@ class LocalStorageService {
       TIMELINES: 'tourguide_timelines',
       FAVORITES: 'tourguide_favorites',
       SETTINGS: 'tourguide_settings',
-      LAST_SYNC: 'tourguide_last_sync'
+      LAST_SYNC: 'tourguide_last_sync',
+      WAYPOINTS: 'tourguide_waypoints'
     };
   }
 
@@ -119,6 +120,14 @@ class LocalStorageService {
   }
 
   /**
+   * Get all timelines from offline storage
+   * @returns {Object} - All timelines
+   */
+  getAllTimelines() {
+    return this.getData(this.STORAGE_KEYS.TIMELINES) || {};
+  }
+
+  /**
    * Add a favorite route
    * @param {string} routeId - Route ID
    * @returns {boolean} - Success status
@@ -198,6 +207,38 @@ class LocalStorageService {
       console.error('Error clearing localStorage:', error);
       return false;
     }
+  }
+
+  /**
+   * Save a waypoint to offline storage
+   * @param {Object} waypoint - Waypoint data
+   * @returns {boolean} - Success status
+   */
+  saveWaypoint(waypoint) {
+    const waypoints = this.getData(this.STORAGE_KEYS.WAYPOINTS) || {};
+    waypoints[waypoint.id] = {
+      ...waypoint,
+      lastUpdated: new Date().toISOString()
+    };
+    return this.saveData(this.STORAGE_KEYS.WAYPOINTS, waypoints);
+  }
+
+  /**
+   * Get a waypoint from offline storage
+   * @param {string} waypointId - Waypoint ID
+   * @returns {Object|null} - Waypoint data or null if not found
+   */
+  getWaypoint(waypointId) {
+    const waypoints = this.getData(this.STORAGE_KEYS.WAYPOINTS) || {};
+    return waypoints[waypointId] || null;
+  }
+
+  /**
+   * Get all waypoints from offline storage
+   * @returns {Object} - All waypoints
+   */
+  getAllWaypoints() {
+    return this.getData(this.STORAGE_KEYS.WAYPOINTS) || {};
   }
 }
 

@@ -5,61 +5,169 @@ This document outlines the standard workflow for executing a new project phase i
 ## Project Phase Workflow
 
 ### 1. Phase Initialization
-- Review `.milestones` file to understand the overall project structure
+- Create a checklist from this workflow file to track completion of each workflow step
+- Review `.cursor/.milestones` file to understand the overall project structure
 - Identify the current phase requirements and objectives
-- Refer to the references and tips within `Project Structure Guide`, `Coding Standards`, and `API Integration Rules` sections in `.cursorrules` to keep those principles in mind when start generating new things
-- Refer to the lessons recorded in `project.lessons.md` to avoid mistakes, errors used to make
+- Review previous phase documents to understand decisions and rationale
+- Perform a document inventory scan to identify all documentation artifacts that need updates
 - Break down the phase into logical milestones and tasks
-- Update `.milestones` file with the new logical milestones and **objects**
-- Update `.project` file with the new phase details, **key results** for **objects** in `.milestones`
-- Update `.todos` file with specific actionable items for **key results** in `.project` 
+- Update `.cursor/.milestones` file with the new logical milestones and **objects**
+- Update `.cursor/.project` file with the new phase details, **key results** for **objects** in `.cursor/.milestones`
+- Update `.cursor/.todos` file with specific actionable items for **key results** in `.cursor/.project` 
 - Check existing planning files in 'docs' directory before creating new ones to avoid duplication
-- Create a whole planning file for each phase and use a consistent naming convention for this file (e.g., `phase#-[focus]-plan.md`)
+- Create a whole planning file for each phase and use a consistent naming convention for this file (e.g., `project.phase#-[focus]-plan.md`)
 - Update or create detail planning files in 'docs' with specific actionable items for the new phase
 - Ensure all planning files follow the same format structure as existing plan files
 - Create proper cross-references between the whole planning file and related detail planning files
-- Planning artifacts should refer to the corresponding task and lines in `.todos` with a link
+- Planning artifacts should refer to the corresponding task and lines in `.cursor/.todos` with a link
+- Schedule explicit code review sessions as separate tasks with clear artifacts and outcomes
 
 ### 2. Development Process
-- Execute tasks according to the priorities defined in `.todos`
-- For complex tasks, utilize the `cursor-thinking-protocol` section in `.cursorrules` as a scratchpad
-- Update `.milestones` file as objects are decided
-- Update `.project` file as key results for each milestones are decided
-- Update `.todos` file as tasks are completed, including:
-  - Mark completed tasks with [X]
+- Execute tasks according to the priorities defined in `.cursor/.todos`
+- Complete one functional area before moving to the next to reduce context switching
+- Always read files thoroughly before editing them to avoid unintended side effects
+- Use the OKR framework consistently: Objectives (milestones) → Key Results (project) → Tasks (todos)
+- Update `.cursor/.milestones` file as objects are decided
+  - Use task markers to indicate the task progress, Mark completed tasks with [X]
+  - Add completion dates
+- Update `.cursor/.project` file as key results for each milestones are decided
+  - Use task markers to indicate the task progress, Mark completed tasks with [X]
+  - Add completion dates
+- Update `.cursor/.todos` file as tasks are completed, including:
+  - Use task markers to indicate the task progress, Mark completed tasks with [X]
   - Add completion dates
   - Record any issues encountered
   - Note key learnings
-- Update `.todos` file regularly to reflect current status and any new tasks
-- Compare the milestones in `.milestones` with completed milestones in `.project` regularly to identify gaps
+- Update `.cursor/.todos` file regularly to reflect current status and any new tasks
+- Update `.cursor/.milestones` file regularly to reflect current status and any new milestone object
+- Update `.cursor/.project` file regularly to reflect current status and any new key result
+- Treat documentation and review tasks with equal priority to implementation tasks
+- Compare the milestones in `.cursor/.milestones` with completed milestones in `.cursor/.project` regularly to identify gaps
 - Compare project completion criteria to know whether the project phase is ready to close, then update project status, including:
-  - all object in `.milestones` and key results in `.project` are marked as done
-  - all tasks in `.todos` are marked as done
-  - all testesin tests` are marked as success
+  - all object in `.cursor/.milestones` and key results in `.cursor/.project` are marked as done
+  - all tasks in `.cursor/.todos` are marked as done
+  - all frontend and backend tests in `src/tests` and `tests` are marked as success
+- Create detailed test scenarios with specific metrics and clear acceptance criteria
 
-### 3. Phase Completion and Documentation Updates
-- Perform comprehensive code review referring to `docs/references/code-review-checklist.md`and `docs/references/whats-code-review-looking-for.md`
-- Follow the refactoring plan in `docs/ refactor-.plan.md` to categorize and implement refactors
-- Document all refactors in `docs/project.refactors.md` by type (code structure, duplication, performance, security, etc.)
+### 3. Test Management and Organization
+- Organize all tests according to their type rather than by feature to improve discoverability and maintenance
+- Store all test artifacts in the appropriate directories:
+  - Store test plans in `docs/project_lifecycle/all_tests/plans/`
+  - Store test results in `docs/project_lifecycle/all_tests/results/`
+  - Store test reference documentation in `docs/project_lifecycle/all_tests/references/`
+- Create and maintain separate test suites for:
+  - Frontend component tests - focus on rendering and user interactions
+  - Backend integration tests - focus on API contracts and service interactions
+  - End-to-end tests - full workflow testing across components
+  - Performance tests - measure response times and resource usage
+  - Security tests - validate authentication, authorization, and data protection
+- Frontend test development:
+  - Create mock services in `src/__mocks__` to isolate component testing
+  - Use standardized mock factory patterns for common services
+  - Ensure tests are compatible with current React version
+  - Maintain a comprehensive `setupTests.js` file for shared testing utilities
+  - Document any canvas/WebGL mocking strategies in test references
+- Backend test development:
+  - Create environment variables and test configuration in `/tests/config`
+  - Set up appropriate database isolation between test runs
+  - Define standard patterns for API contract testing
+  - Create test data factories for generating consistent test data
+- Test documentation:
+  - Create reference documentation for all test patterns and conventions
+  - Document mock strategies for external services
+  - Maintain test coverage reports in results folder
+  - Create and update test user stories for key workflows
+- Test execution and CI/CD integration:
+  - Define test execution commands in package.json
+  - Configure test suites to run independently or together
+  - Ensure CI/CD pipeline executes appropriate test suites
+  - Report test results in a standardized format
+- Test maintenance:
+  - Review tests for flakiness and address root causes
+  - Update tests when component or API contracts change
+  - Refactor tests when patterns or conventions are updated
+  - Document test-specific lessons learned in project.lessons.md
+
+### 4. Test-Driven Refactoring
+- Use test results from `docs/project_lifecycle/all_tests/results/` to identify refactoring candidates
+- Document all identified refactoring opportunities in `docs/project_lifecycle/code_and_project_structure_refactors/plans/test-driven-refactors.md`
+- Categorize refactoring needs based on the following criteria:
+  - Test flakiness issues - components that produce inconsistent test results
+  - Code coverage gaps - areas with insufficient test coverage
+  - Performance bottlenecks - components that fail performance tests
+  - Architectural issues - components that are difficult to test due to design
+  - Technical debt - components with excessive mocking requirements
+- Create detailed refactoring plans that include:
+  - Current code structure and identified issues
+  - Proposed changes with expected improvements
+  - Impact on existing tests
+  - Testing strategy for the refactored code
+- Store refactoring plans in `docs/project_lifecycle/code_and_project_structure_refactors/plans/`
+- Reference test result documentation that prompted the refactoring
+- Consult refactoring patterns from `docs/project_lifecycle/code_and_project_structure_refactors/references/`
+- Execute refactoring in a test-driven approach:
+  - Write or update tests to reflect expected behavior after refactoring
+  - Implement refactoring to make tests pass
+  - Run full test suite to ensure no regressions
+- Document all completed refactors in `docs/project_lifecycle/code_and_project_structure_refactors/records/project.refactors.md`
+- Record specific test improvements resulting from refactors:
+  - Increased test coverage
+  - Reduced test execution time
+  - Eliminated flaky tests
+  - Simplified test setup and mocking
+- Update test patterns and mock strategies based on successful refactors
+
+### 5. Phase Completion and Documentation Updates
 - Remove duplicated or obsolete files
 - Update architecture documentation to reflect changes
-- Review all project files against the standards in `.cursorrules`
-- Update `project.refactors` with details of any structural changes:
-  - Document file relocations
-  - Record line changes
-  - Summarize modifications
+- Perform explicit verification against workflow requirements and create a formal sign-off process
+- Update all feature-level README files to reflect changes
 - Update `project.versions.md` with new version details:
   - Version number and date
   - Added features
   - Changed elements
   - Fixed issues
-- Update each `README.md` within project folders to reflect changes and make sure changed contents are corrected recorded
+- Update each `README.md` within project folders to reflect changes and make sure changed contents are correctly recorded
 
-### 4. Project Artifacts Modification
+### 6. Process Monitoring and Version Control
+- Perform explicit verification against workflow requirements and create a formal sign-off process
+- Document the process completion in `docs/project_lifecycle/process_monitors/records/project.phase-completion.md`:
+  - Create a comprehensive phase completion report
+  - Document all major decisions made during the phase
+  - List challenges encountered and solutions implemented
+  - Record performance metrics and improvements
+- Maintain the implementation summary in `docs/project_lifecycle/process_monitors/implementation_summary.md`:
+  - Update implementation status for all features
+  - Document architecture evolution and technical debt
+  - Track integration points between components
+- Create process monitor checkpoints in `docs/project_lifecycle/process_monitors/records/`:
+  - Record all process deviations and their justifications
+  - Document process improvements identified during the phase
+  - Track workflow adherence metrics and bottlenecks
+- Update versioning artifacts in `docs/project_lifecycle/version_control/records/`:
+  - Ensure all version numbering follows the established pattern
+  - Create appropriate release notes with categorized changes
+  - Tag repository with appropriate version labels
+  - Update the version history documentation
+- Submit version transition plans to `docs/project_lifecycle/version_control/plans/`:
+  - Document upgrade paths for existing installations
+  - Create rollback procedures for critical components
+  - Detail backward compatibility guarantees
+- Reference and update versioning standards in `docs/project_lifecycle/version_control/references/`:
+  - Ensure adherence to semantic versioning principles
+  - Maintain compatibility matrices for dependencies
+  - Document API versioning strategy for public interfaces
+
+### 7. Project Artifacts Modification
+- Remove duplicated or obsolete files
+- Update architecture documentation and any `.md` files to reflect changes
+- Update all feature-level README files to reflect changes
 - Update detailed folder structure in `ARCHITECTURE.md`
 - Update api document named `API_OVERVIEW.md`
+- Ensure all documentation consistently references the same terms and concepts
+- Verify that import paths in documentation match the actual file structure 
 
-### 5. Knowledge Preservation
+### 8. Knowledge Preservation
 - Record lessons in `project.lessons.md`, including:
   - Technical insights gained during implementation
   - Best practices discovered
@@ -71,6 +179,7 @@ This document outlines the standard workflow for executing a new project phase i
   - Code organization insights
   - Integration patterns between components
   - Error handling strategies
+  - Document consolidation and consistency insights
 - Format lessons as concise bullet points for easy reference
 - Focus on reusable knowledge that can be applied to future phases
 - Prioritize recording lessons about:
@@ -82,44 +191,149 @@ This document outlines the standard workflow for executing a new project phase i
 - Review previous lessons before adding new ones to avoid duplication
 - Use clear, actionable language in lesson descriptions
 - Always link all new generated files back to this file
-- Never store lessons in `.cursorrules`
+- Categorize lessons by type for easier reference
 
 ## File Responsibilities
 
-| File | Purpose | Update Frequency | Reference Documentation |
-|------|---------|------------------|-------------------------|
-| `.milestones` | Project-wide milestone tracking | At project start, major revisions | |
-| `.project` | Detailed project status and task tracking | Throughout development | |
-| `.todos` | Current action items and task status | Daily/as tasks change | |
-| `.cursorrules` | Project standards and useful protocols | As new standards emerge | |
-| `.cursorrules` (Instructions) | Project management guidelines | Reference at phase start | |
-| `.cursorrules` (Thinking Protocol) | Thinking process for complex tasks | During task analysis | |
-| `.cursorrules` (Standards) | Coding and API standards | Reference throughout development | |
-| `.cursorrules` (Scratchpad) | Current thinking context | Before and during task execution | |
-| `docs/project.refactors.md` | Record of structural changes | After refactoring | [Versioning Guide](../docs/project.refactors.md) |
-| `docs/ refactor-.plan.md` | Refactoring categorization and approach | Before refactoring, quarterly review | [Refactoring Plan](../docs/ refactor-.plan.md) |
-| `docs/project.versions.md` | Version history and release notes | After version completion | [Versioning Guide](../docs/project.versions.md) |
-| `docs/project.lessons.md` | Centralized location for all project lessons | After resolving challenges or discovering insights | |
-| `docs/references/code-review-checklist.md` | Standard for code reviews | Reference during review | [Code Review Checklist](../docs/references/code-review-checklist.md) |
-| `docs/references/version-control.md` | Versioning conventions | Reference during releases | [Versioning Conventions](../docs/references/version-control.md) |
-| `docs/references/dependencies-tracking.md` | Component dependency management | Update with architectural changes | [Dependencies Tracking](../docs/references/dependencies-tracking.md) |
-| `docs/references/whats-code-review-looking-for.md` | Google's code review guide | Reference during reviews | [Code Review Guide](../docs/references/whats-code-review-looking-for.md) |
-| `docs/phase#-planning.md` | Whole phase planning overview with strategy and cross-references | At phase start | |
-| `docs/stability-test-plan.md` | Detailed testing approach and test cases | Before phase execution | |
-| `docs/deployment-pipeline.md` | Detailed deployment process documentation | Before production release | |
-| `docs/performance-optimization-plan.md` | Detailed performance strategy and targets | Before optimization work | |
-| `README.md` | Introduction for the new-comers | After version completion | |
-| `ARCHITECTURE.md` | Introduction for the the whole project file structure | After version completion | |
-| `API_OVERVIEW.md` | Introduction for the api embedded in this project | After version completion | |
+### Core Documentation Files
+
+| File | Purpose | Update Frequency |
+|------|---------|------------------|
+| `README.md` | Main project overview, setup instructions, and getting started guide | When major features are added or setup changes |
+| `ARCHITECTURE.md` | Detailed system architecture, component interactions, and folder structure | When architecture changes |
+| `API_OVERVIEW.md` | API endpoints, usage examples, and authentication requirements | When API changes |
+| `CONTRIBUTING.md` | Contribution guidelines, code standards, and PR process | When contribution process changes |
+| `docs/project_lifecycle/knowledge/project.lessons.md` | Centralized location for all project lessons and best practices | As new lessons are learned |
+
+### Project Tracking Files
+
+| File | Purpose | Update Frequency |
+|------|---------|------------------|
+| `.cursor/.milestones` | Project-wide milestone tracking | At project start and completion, major revisions |
+| `.cursor/.project` | Detailed project status and task tracking | Throughout development |
+| `.cursor/.todos` | Current action items and task status | Daily/as tasks change |
+| `.cursor/.workflows` | Project workflow procedures and documentation strategy | When workflow process changes |
+
+### Test Documentation
+
+| File | Purpose | Update Frequency |
+|------|---------|------------------|
+| `docs/project_lifecycle/all_tests/results/coverage-report.md` | Test coverage metrics and trends | After each test run |
+| `docs/project_lifecycle/all_tests/references/test-user-stories.md` | User stories for test scenario generation | Updated as features evolve |
+
+### Feature Documentation
+
+| Directory | Contents | Documentation Approach |
+|-----------|----------|------------------------|
+| `src/features/` | Feature-specific code | Single README.md per feature explaining usage and architecture |
+| `server/` | Server-side code | Single README.md covering API, database, and authentication |
+| `scripts/` | Utility scripts | Single README.md documenting all scripts and their usage |
+
+### Process Documentation
+
+| File | Purpose | Update Frequency |
+|------|---------|------------------|
+| `docs/project_lifecycle/process_monitors/implementation_summary.md` | Overall project implementation status | After each major feature |
+| `docs/project_lifecycle/version_control/records/project.versions.md` | Version history and release notes | After version completion |
+| `docs/project_lifecycle/process_monitors/records/project.phase-completion.md` | Detailed phase completion reports | At phase completion |
+
+### Consolidated Documentation Strategy
+
+1. **Root Directory**: Limit to essential files only
+   - `README.md` - Main entry point with project overview and quick start
+   - `ARCHITECTURE.md` - High-level architecture documentation
+   - `API_OVERVIEW.md` - API documentation
+   - `CONTRIBUTING.md` - Contributing guidelines
+
+2. **Feature Documentation**: One README.md per logical component
+   - Each major feature should have a single README.md (e.g., `src/features/beta-program/README.md`)
+   - README should link to related documentation rather than duplicating
+
+3. **Testing Documentation**: Organize by type in dedicated directories
+   - Test plans in `docs/project_lifecycle/all_tests/plans/`
+   - Test results in `docs/project_lifecycle/all_tests/results/`
+   - Test references in `docs/project_lifecycle/all_tests/references/`
+   - Maintain consistent structure within each directory
+
+4. **Process Documentation**: Consolidate workflow documents
+   - Process monitoring in `docs/project_lifecycle/process_monitors/`
+   - Version history in `docs/project_lifecycle/version_control/records/`
+   - Knowledge preservation in `docs/project_lifecycle/knowledge/`
+
+5. **Documentation Hierarchy**:
+   - Level 1: Root README.md - Overall project
+   - Level 2: Major component README.md files (server, frontend, etc.)
+   - Level 3: Feature-specific README.md files
+   - Level 4: Detailed implementation documents (not README.md)
 
 ## Standard Procedure for New Phase
 
-This is a simplified checklist of phases to execute. For detailed steps of each phase, refer to the corresponding sections in the **Project Phase Workflow** above.
+This is a comprehensive checklist for executing a new project phase, based on the detailed procedures in the **Project Phase Workflow** above.
 
 1. **Phase Initialization** - See [section 1: Phase Initialization](#1-phase-initialization)
+   - Create a checklist from the workflow file to track step completion
+   - Review [.cursor/.milestones](./.cursor/.milestones) file to understand project structure
+   - Identify current phase requirements and objectives
+   - Break down the phase into logical milestones and tasks
+   - Update [.cursor/.milestones](./.cursor/.milestones), [.cursor/.project](./.cursor/.project), and [.cursor/.todos](./.cursor/.todos) files
+   - Create phase planning file with consistent naming (`project.phase#-[focus]-plan.md`)
+   - Schedule explicit code review sessions as separate tasks
+   
 2. **Development Process** - See [section 2: Development Process](#2-development-process)
-3. **Project Verification** - Ensure all milestones, key results, and tasks are complete
-4. **Phase Completion and Documentation Updates** - See [section 3: Phase Completion and Documentation Updates](#3-phase-completion-and-documentation-updates)
-5. **Project Artifacts Modification** - See [section 4: Project Artifacts Modification](#4-project-artifacts-modification)
-6. **Knowledge Preservation** - See [section 5: Knowledge Preservation](#5-knowledge-preservation)
-7. **Final Review** - Verify all steps are complete and announce completion
+   - Execute tasks according to priorities in [.cursor/.todos](./.cursor/.todos)
+   - Complete one functional area before moving to the next
+   - Use the OKR framework consistently for tracking
+   - Update [.cursor/.milestones](./.cursor/.milestones), [.cursor/.project](./.cursor/.project), and [.cursor/.todos](./.cursor/.todos) files regularly
+   - Treat documentation and review tasks with equal priority
+   - Create detailed test scenarios with specific metrics and acceptance criteria
+
+3. **Test Management and Organization** - See [section 3: Test Management and Organization](#3-test-management-and-organization)
+   - Organize tests by type in appropriate directories:
+     - Test plans in `docs/project_lifecycle/all_tests/plans/`
+     - Test results in `docs/project_lifecycle/all_tests/results/`
+     - Test references in `docs/project_lifecycle/all_tests/references/`
+   - Maintain separate test suites for different testing types
+   - Create frontend and backend test structures with appropriate mocking
+   - Document test patterns and maintain coverage reports
+
+4. **Test-Driven Refactoring** - See [section 4: Test-Driven Refactoring](#4-test-driven-refactoring)
+   - Use test results to identify refactoring candidates
+   - Document refactoring follow plans in `docs/project_lifecycle/code_and_project_structure_refactors/plans/project.refactors.test-driven-plan.md`
+   - Categorize refactoring needs (flakiness, coverage gaps, performance issues)
+   - Create detailed refactoring plans with current issues and proposed improvements
+   - Execute refactoring with a test-driven approach
+   - Document completed refactors in `docs/project_lifecycle/code_and_project_structure_refactors/records/project.refactors.md`
+
+5. **Phase Completion and Documentation Updates** - See [section 5: Phase Completion and Documentation Updates](#5-phase-completion-and-documentation-updates)
+   - Remove duplicated or obsolete files
+   - Update [ARCHITECTURE.md](./ARCHITECTURE.md) documentation
+   - Perform verification against workflow requirements
+   - Update all feature-level README files
+   - Update version details in appropriate documentation
+
+6. **Process Monitoring and Version Control** - See [section 6: Process Monitoring and Version Control](#6-process-monitoring-and-version-control)
+   - Document process completion in `docs/project_lifecycle/process_monitors/records/project.phase-completion.md`
+   - Maintain implementation summary in `docs/project_lifecycle/process_monitors/implementation_summary.md`
+   - Create process monitor checkpoints for deviations and improvements
+   - Update versioning artifacts and ensure semantic versioning compliance
+   - Submit version transition plans and document upgrade paths
+
+7. **Project Artifacts Modification** - See [section 7: Project Artifacts Modification](#7-project-artifacts-modification)
+   - Update [ARCHITECTURE.md](./ARCHITECTURE.md) with folder structure changes
+   - Update [API_OVERVIEW.md](./API_OVERVIEW.md) with API changes
+   - Ensure documentation consistently references the same terms
+   - Verify import paths match actual file structure
+
+8. **Knowledge Preservation** - See [section 8: Knowledge Preservation](#8-knowledge-preservation)
+   - Record lessons in `docs/project_lifecycle/knowledge/project.lessons.md`
+   - Format lessons as concise, categorized bullet points
+   - Focus on reusable knowledge for future phases
+   - Document key learnings from errors, reviews, and unexpected challenges
+
+9. **Final Review and Signoff**
+   - Verify all milestones in [.cursor/.milestones](./.cursor/.milestones) are completed
+   - Verify all key results in [.cursor/.project](./.cursor/.project) are completed
+   - Verify all tasks in [.cursor/.todos](./.cursor/.todos) are completed
+   - Execute comprehensive test suite and document results
+   - Complete formal sign-off process and document in `docs/project_lifecycle/process_monitors/records/project.phase-signoff.md`
+   - Announce phase completion to the team

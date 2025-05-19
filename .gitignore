@@ -3,6 +3,22 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# React/Node.js specific
+/build
+/dist
+/node_modules
+/.pnp
+.pnp.js
+/coverage
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+
 # User-specific files
 *.rsuser
 *.suo
@@ -245,7 +261,7 @@ orleans.codegen.cs
 #*.snk
 
 # Since there are multiple workflows, uncomment next line to ignore bower_components
-# (https://github.com/github/gitignore/pull/1529#issuecomment-104372622)
+# (https://github.com/github/gitignore/pull/1529#issue-comment-104372622)
 #bower_components/
 
 # RIA/Silverlight projects
@@ -362,3 +378,98 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /data
+
+# Environment files
+.env
+.env.*
+!.env.example
+server/.env
+server/.env.*
+!server/.env.example
+
+# Security files
+scripts/generated-keys.txt
+**/generated-keys.txt
+
+# Vault files
+**/vault.enc
+**/vault/*.enc
+**/*.vault
+vault/
+.vault/
+server/vault/
+server/.vault/
+
+# Additional security patterns
+**/*.pem
+**/*.crt
+**/*.key
+**/*.keystore
+**/*.p12
+**/*.pfx
+**/*.jks
+**/id_rsa*
+**/.ssh/
+**/.aws/
+**/.npmrc
+**/.yarnrc
+**/config.gypi
+**/firebase-admin*.json
+**/service-account*.json
+**/*credential*.json
+**/auth.json
+**/auth.config.js
+**/secrets.yaml
+**/secrets.yml
+**/secrets.json
+**/secrets.js
+**/*.secret.*
+**/*_private.*
+**/private_key*
+**/*password*
+**/*credential*
+**/*config*.json
+**/*config*.js
+!**/default*config*.js
+!**/example*config*.js
+!**/sample*config*.js
+
+# Logs with potential secrets
+**/logs/
+**/*.log
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+
+# Vault and secret storage
+**/.vault/
+**/vault/
+**/*.vault
+**/*.enc
+**/vault.enc
+**/*.gpg
+**/*.pgp
+**/*.asc
+
+# Prevent accidental inclusion of .env files
+.env
+.env.*
+!.env.example
+server/.env
+server/.env.*
+!server/.env.example
+
+# Additional environment configuration files
+.env.local
+.env.development
+.env.test
+.env.production
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Cursor configuration usage
+.cursorignore
+
+# Ignore all test results, reports, and records
+docs/project_lifecycle/all_tests/results/

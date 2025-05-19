@@ -1,28 +1,21 @@
 name: Bug report 🐛
-description: Create a bug report for AutoGPT.
+description: Create a bug report for TourGuideAI.
 labels: ['status: needs triage']
 body:
   - type: markdown
     attributes:
       value: |
         ### ⚠️ Before you continue
-        * Check out our [backlog], [roadmap] and join our [discord] to discuss what's going on
-        * If you need help, you can ask in the [discussions] section or in [#tech-support]
-        * **Thoroughly search the [existing issues] before creating a new one**
-        * Read our [wiki page on Contributing]
-        [backlog]: https://github.com/orgs/Significant-Gravitas/projects/1
-        [roadmap]: https://github.com/orgs/Significant-Gravitas/projects/2  
-        [discord]: https://discord.gg/autogpt
-        [discussions]: https://github.com/Significant-Gravitas/AutoGPT/discussions
-        [#tech-support]: https://discord.com/channels/1092243196446249134/1092275629602394184
-        [existing issues]: https://github.com/Significant-Gravitas/AutoGPT/issues?q=is%3Aissue
-        [wiki page on Contributing]: https://github.com/Significant-Gravitas/AutoGPT/wiki/Contributing
+        * Check our [project roadmap](https://github.com/PaperStrange/TourGuideAI/projects/1) for planned features
+        * If you need help, you can ask in the [discussions](https://github.com/PaperStrange/TourGuideAI/discussions) section
+        * **Thoroughly search the [existing issues](https://github.com/PaperStrange/TourGuideAI/issues) before creating a new one**
+        * Read our [contribution guidelines](https://github.com/PaperStrange/TourGuideAI/blob/main/CONTRIBUTING.md)
 
   - type: checkboxes
     attributes:
       label: ⚠️ Search for existing issues first ⚠️
       description: >
-        Please [search the history](https://github.com/Significant-Gravitas/AutoGPT/issues)
+        Please [search the history](https://github.com/PaperStrange/TourGuideAI/issues)
         to see if an issue already exists for the same problem.
       options:
         - label: I have searched the existing issues, and there is no existing issue for my problem
@@ -31,30 +24,22 @@ body:
   - type: markdown
     attributes:
       value: |
-        Please confirm that the issue you have is described well and precise in the title above ⬆️.
-        A good rule of thumb: What would you type if you were searching for the issue?
+        Please provide a clear and descriptive title for your issue ⬆️.
         
         For example:
-        BAD - my AutoGPT keeps looping
-        GOOD - After performing execute_python_file, AutoGPT goes into a loop where it keeps trying to execute the file.
+        BAD - App keeps looping
+        GOOD - After building locally, application goes into an infinite loop when loading the Map page
         
-        ⚠️ SUPER-busy repo, please help the volunteer maintainers.
-        The less time we spend here, the more time we can spend building AutoGPT.
-        
-        Please help us help you by following these steps:
-        - Search for existing issues, adding a comment when you have the same or similar issue is tidier than "new issue" and 
-          newer issues will not be reviewed earlier, this is dependent on the current priorities set by our wonderful team
-        - Ask on our Discord if your issue is known when you are unsure (https://discord.gg/autogpt)
-        - Provide relevant info:
-          - Provide commit-hash (`git rev-parse HEAD` gets it) if possible
-          - If it's a pip/packages issue, mention this in the title and provide pip version, python version
-          - If it's a crash, provide traceback and describe the error you got as precise as possible in the title.
+        Please help us by following these steps:
+        - Search for existing issues and add a comment if you have the same or similar issue
+        - Provide relevant details about your environment and steps to reproduce
+        - Include screenshots or recordings if applicable
 
   - type: dropdown
     attributes:
       label: Which Operating System are you using?
       description: >
-        Please select the operating system you were using to run AutoGPT when this problem occurred.
+        Please select the operating system you were using when this problem occurred.
       options:
         - Windows
         - Linux
@@ -73,30 +58,31 @@ body:
 
   - type: dropdown
     attributes:
-      label: Which version of AutoGPT are you using?
+      label: Which version of TourGuideAI are you using?
       description: |
-        Please select which version of AutoGPT you were using when this issue occurred.
-        If you downloaded the code from the [releases page](https://github.com/Significant-Gravitas/AutoGPT/releases/) make sure you were using the latest code. 
-        **If you weren't please try with the [latest code](https://github.com/Significant-Gravitas/AutoGPT/releases/)**.
-        If installed with git you can run `git branch` to see which version of AutoGPT you are running.
+        Please select which version of TourGuideAI you were using when this issue occurred.
+        If you downloaded the code from the [releases page](https://github.com/PaperStrange/TourGuideAI/releases/) make sure you were using the latest code.
+        **If you weren't please try with the [latest code](https://github.com/PaperStrange/TourGuideAI/releases/)**.
+        If installed with git you can run `git branch` to see which version you are running.
       options:
-        - Latest Release
-        - Stable (branch)
-        - Master (branch)
+        - Latest Release (v0.5.1)
+        - Stable Branch
+        - Main Branch
+        - Development Branch
     validations:
       required: true
 
   - type: dropdown
     attributes:
-      label: What LLM Provider do you use?
+      label: Which API service are you using?
       description: >
-        If you are using AutoGPT with `SMART_LLM=gpt-3.5-turbo`, your problems may be caused by
-        the [limitations](https://github.com/Significant-Gravitas/AutoGPT/issues?q=is%3Aissue+label%3A%22AI+model+limitation%22) of GPT-3.5.
+        Please select which API service you were using when this issue occurred.
       options:
-        - Azure
-        - Groq
-        - Anthropic
-        - Llamafile
+        - Google Maps API
+        - OpenAI API
+        - Weather API
+        - Multiple APIs
+        - None
         - Other (detail in issue)
     validations:
       required: true
@@ -108,16 +94,15 @@ body:
         Select the area related to the issue you are reporting.
       options:
         - Installation and setup
-        - Memory
+        - User Interface
+        - Maps functionality
+        - Route planning
+        - API integration
         - Performance
-        - Prompt
-        - Commands
-        - Plugins
-        - AI Model Limitations
-        - Challenges
+        - Offline functionality
+        - Mobile compatibility
+        - Authentication
         - Documentation
-        - Logging
-        - Agents
         - Other
     validations:
       required: true
@@ -138,7 +123,7 @@ body:
   - type: textarea
     attributes:
       label: Describe your issue.
-      description: Describe the problem you are experiencing. Try to describe only the issue and phrase it short but clear. ⚠️ Provide NO other data in this field
+      description: Describe the problem you are experiencing. Try to be clear and concise. Include steps to reproduce if possible.
     validations:
       required: true
 
@@ -146,18 +131,17 @@ body:
   - type: markdown
     attributes:
       value: |
-        ⚠️The following is OPTIONAL, please keep in mind that the log files may contain personal information such as credentials.⚠️
+        ⚠️The following is OPTIONAL, please keep in mind that log files may contain personal information.⚠️
         
-        "The log files are located in the folder 'logs' inside the main AutoGPT folder."
+        "Log files are located in the 'logs' folder inside the main TourGuideAI folder."
 
   - type: textarea
     attributes:
-      label: Upload Activity Log Content
+      label: Upload Application Log Content
       description: |
-        Upload the activity log content, this can help us understand the issue better. 
-        To do this, go to the folder logs in your main AutoGPT folder, open activity.log and copy/paste the contents to this field. 
-        ⚠️ The activity log may contain personal data given to AutoGPT by you in prompt or input as well as 
-        any personal information that AutoGPT collected out of files during last run. Do not add the activity log if you are not comfortable with sharing it. ⚠️
+        Upload the application log content to help us understand the issue better. 
+        To do this, go to the 'logs' folder in your main TourGuideAI folder, open application.log and copy/paste the contents to this field.
+        ⚠️ Please remove any personal or sensitive information before sharing. ⚠️
     validations:
       required: false
 
@@ -165,9 +149,8 @@ body:
     attributes:
       label: Upload Error Log Content
       description: |
-        Upload the error log content, this will help us understand the issue better. 
-        To do this, go to the folder logs in your main AutoGPT folder, open error.log and copy/paste the contents to this field. 
-        ⚠️ The error log may contain personal data given to AutoGPT by you in prompt or input as well as 
-        any personal information that AutoGPT collected out of files during last run. Do not add the activity log if you are not comfortable with sharing it. ⚠️
+        Upload the error log content to help us understand the issue better.
+        To do this, go to the 'logs' folder in your main TourGuideAI folder, open error.log and copy/paste the contents to this field.
+        ⚠️ Please remove any personal or sensitive information before sharing. ⚠️
     validations:
       required: false

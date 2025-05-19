@@ -34,3 +34,15 @@ This feature depends on:
 - Common UI components (via `core/components`)
 - OpenAI API (via `core/api/openaiApi`)
 - Storage services (via `core/services/storage`) 
+
+## Testing
+
+The Travel Planning feature has comprehensive test coverage:
+
+- **Component Tests**: Unit tests for RouteGenerator, RoutePreview, and ItineraryBuilder components
+- **Service Tests**: Backend tests for RouteGenerationService and RouteManagementService
+- **Integration Tests**: Tests for the complete travel planning workflow
+- **Cross-Browser Tests**: End-to-end tests across different browsers and screen sizes
+- **Load Tests**: Performance testing under various load conditions
+
+For detailed information about testing, refer to the [Travel Planning Testing Plan](../../../docs/project_lifecycle/all_tests/plans/project-travel-planning-test-plan.md). 

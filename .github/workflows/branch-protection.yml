@@ -1,0 +1,90 @@
+name: Branch Protection
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 1'  # Run every Monday at midnight
+
+jobs:
+  protect-main-branch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+      actions: write
+      security-events: write
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Configure Branch Protection for Main
+        run: |
+          gh api --method PUT repos/${{ github.repository }}/branches/main/protection \
+          -f enforce_admins=true \
+          -f required_status_checks[0].context=security-scan \
+          -f required_status_checks[1].context=build-and-test \
+          -f required_status_checks[2].context=e2e-tests \
+          -f required_status_checks[].strict=true \
+          -f required_pull_request_reviews.required_approving_review_count=1 \
+          -f required_pull_request_reviews.dismiss_stale_reviews=true \
+          -f required_pull_request_reviews.require_code_owner_reviews=true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+  protect-develop-branch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+      actions: write
+      security-events: write
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Configure Branch Protection for Develop
+        run: |
+          gh api --method PUT repos/${{ github.repository }}/branches/develop/protection \
+          -f enforce_admins=true \
+          -f required_status_checks[0].context=build-and-test \
+          -f required_status_checks[].strict=true \
+          -f required_pull_request_reviews.required_approving_review_count=1 \
+          -f required_pull_request_reviews.dismiss_stale_reviews=true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+  protect-release-branches:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+      actions: write
+      security-events: write
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: List Release Branches
+        id: list-branches
+        run: |
+          RELEASE_BRANCHES=$(gh api repos/${{ github.repository }}/branches --jq '.[] | select(.name | startswith("release-")) | .name')
+          echo "RELEASE_BRANCHES=$RELEASE_BRANCHES" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Configure Branch Protection for Each Release Branch
+        run: |
+          for branch in ${{ steps.list-branches.outputs.RELEASE_BRANCHES }}; do
+            gh api --method PUT repos/${{ github.repository }}/branches/$branch/protection \
+            -f enforce_admins=true \
+            -f required_status_checks[0].context=security-scan \
+            -f required_status_checks[1].context=build-and-test \
+            -f required_status_checks[].strict=true \
+            -f required_pull_request_reviews.required_approving_review_count=1 \
+            -f required_pull_request_reviews.dismiss_stale_reviews=true
+          done
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
