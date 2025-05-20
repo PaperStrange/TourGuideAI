@@ -128,15 +128,15 @@ async function startZap() {
     
     // Use start /b on Windows to start the process in the background
     if (isWindows) {
-      execSync(`start /b "${zapPath}" -daemon -config api.disablekey=true`, {
-        shell: true,
-        stdio: 'ignore'
-      });
+      spawn('cmd', ['/c', 'start', '/b', zapPath, '-daemon', '-config', 'api.disablekey=true'], {
+        stdio: 'ignore',
+        detached: true
+      }).unref();
     } else {
-      execSync(`"${zapPath}" -daemon -config api.disablekey=true &`, {
-        shell: true,
-        stdio: 'ignore'
-      });
+      spawn(zapPath, ['-daemon', '-config', 'api.disablekey=true'], {
+        stdio: 'ignore',
+        detached: true
+      }).unref();
     }
   } catch (error) {
     log(`Error starting ZAP: ${error.message}`, 'error');

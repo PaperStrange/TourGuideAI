@@ -454,17 +454,16 @@ class AnalyticsService {
       const duration = Math.floor(Math.random() * 600) + 30; // 30s to 10min
       const userType = Math.random() > 0.3 ? 'returning' : 'new';
       const device = ['desktop', 'mobile', 'tablet'][Math.floor(Math.random() * 3)];
-      
+
       const pages = [];
       const numPages = Math.floor(Math.random() * 5) + 1;
       const possiblePages = ['dashboard', 'search', 'profile', 'settings', 'tour_creation', 'tour_details', 'checkout'];
-      
+
       for (let i = 0; i < numPages; i++) {
         const page = possiblePages[Math.floor(Math.random() * possiblePages.length)];
         if (!pages.includes(page)) {
           pages.push(page);
         }
-      }
       
       return {
         id: `hj-${(10000000 + index).toString(16)}`, // Mock Hotjar recording ID

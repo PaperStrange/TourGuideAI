@@ -184,7 +184,7 @@ class FeatureRequestService {
         comments: mockComments.filter(c => c.requestId === requestId)
       };
     } catch (error) {
-      console.error(`Error fetching feature request ${requestId}:`, error);
+      console.error('Error fetching feature request %s:', requestId, error);
       throw new Error('Failed to fetch feature request');
     }
   }
@@ -278,7 +278,7 @@ class FeatureRequestService {
   async addComment(requestId, content) {
     try {
       // In a real implementation, this would make an API request
-      console.log(`Adding comment to feature request ${requestId}:`, content);
+      console.log('Adding comment to feature request %s:', requestId, content);
       
       // Validate content
       if (!content) {
