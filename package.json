@@ -80,7 +80,8 @@
     "deploy:production": "cross-env NODE_ENV=production npm run build && node scripts/deploy-to-cdn.js",
     "deploy:cdn:dry-run": "node scripts/deploy-to-cdn.js --dry-run",
     "deploy:cdn:staging": "cross-env NODE_ENV=staging node scripts/deploy-to-cdn.js",
-    "deploy:cdn:production": "cross-env NODE_ENV=production node scripts/deploy-to-cdn.js"
+    "deploy:cdn:production": "cross-env NODE_ENV=production node scripts/deploy-to-cdn.js",
+    "postinstall": "patch-package"
   },
   "eslintConfig": {
     "extends": [
@@ -121,11 +122,16 @@
     "mongodb-memory-server": "^10.1.4",
     "mongoose": "^8.14.3",
     "ora": "^8.2.0",
+    "patch-package": "^8.0.0",
+    "postinstall-postinstall": "^2.1.0",
     "react-test-renderer": "^18.2.0",
     "style-loader": "^4.0.0",
     "supertest": "^7.1.0",
     "ts-node": "^10.9.2",
     "webpack-bundle-analyzer": "^4.10.2",
     "zaproxy": "^2.0.0-rc.6"
+  },
+  "overrides": {
+    "postcss": "^8.4.31"
   }
 }

@@ -57,13 +57,6 @@ TourGuideAI/
 │   ├── pics/            # Images for documentation
 │   ├── prototype/       # Prototype data and mockups
 │   └── project_lifecycle/ # Project management documentation
-├── models/              # AI models and related resources
-│   ├── data/            # Training data
-│   ├── checkpoints/     # Model checkpoints
-│   └── infra/           # Model infrastructure code
-├── tourai_platform/     # TourAI platform specific code
-│   ├── backend/         # Platform backend 
-│   └── frontend/        # Platform frontend
 └── tools/               # Development and deployment tools
 ```
 

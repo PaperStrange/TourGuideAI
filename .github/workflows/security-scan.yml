@@ -116,7 +116,7 @@ jobs:
         
       # Check package.json for issues
       - name: Package.json security audit
-        uses: lirantal/lockfile-lint-action@master
+        uses: lirantal/lockfile-lint-action@v4.7.1
         with:
           path: package-lock.json
           allowed-hosts: npm
