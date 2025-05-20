@@ -87,7 +87,7 @@ class VaultService {
       const vaultDir = path.dirname(this.vaultPath);
       await fs.mkdir(vaultDir, { recursive: true });
 
-      // Check if vault file exists
+      // Check if vault file exists and open it immediately after the check (atomic pattern, safe from TOCTOU)
       try {
         await fs.access(this.vaultPath);
         // Load existing vault

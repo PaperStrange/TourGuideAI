@@ -191,6 +191,15 @@
 - **LESSON**: Build report generation scripts with extensibility in mind to accommodate new test categories
 - **LESSON**: Implement proper error handling in test scripts to prevent misleading results when environment issues occur
 
+## Security & Build Lessons (2025-05-18)
+- **MUST-OBEY PRINCIPLE**: When a critical dependency vulnerability cannot be fixed due to upstream lock (e.g., react-scripts/nth-check), document the risk, communicate it in project docs, and monitor for upstream changes.
+- **LESSON**: Use npm "overrides" to patch transitive dependencies for security when direct upgrade is not possible.
+- **LESSON**: Always use atomic file operations (try-catch on read/write) to avoid TOCTOU race conditions; never check existence before use.
+- **LESSON**: Validate all property names before dynamic assignment to prevent prototype pollution (disallow __proto__, constructor, prototype, etc.).
+- **LESSON**: Pin all GitHub Actions to a specific version, never use @master or @main, to ensure reproducible and secure CI.
+- **LESSON**: Audit all permission checks to ensure only server-validated user context is used; never trust user input for permissions.
+- **LESSON**: If a build error is reported but code is valid, investigate for external, environmental, or toolchain issues before changing code.
+
 ---
 
 *Last Updated: May 15, 2025* 

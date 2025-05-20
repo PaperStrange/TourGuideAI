@@ -81,6 +81,8 @@ class TokenProvider {
     // Build mappings based on secret names
     for (const secret of secrets) {
       if (Object.values(this.serviceNames).includes(secret.name)) {
+        // Prevent prototype pollution
+        if (["__proto__", "constructor", "prototype"].includes(secret.name)) continue;
         this.secretIdMapping[secret.name] = secret.secretId;
       }
     }

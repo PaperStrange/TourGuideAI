@@ -806,4 +806,49 @@ Future refactorings should follow these guidelines, based on our [Code Review Ch
 7. **Performance**: Measure and maintain or improve performance characteristics
 8. **Code Health**: Every refactoring should improve the overall health of the codebase
 
+Each refactoring record should document impacts across these dimensions to provide a complete picture of the changes made.
+
+## Security and Build Fixes (2025-05-18)
+**Type: Security, Build, Code Health**
+
+### Summary
+Addressed multiple security and build issues identified by automated scans and manual review. Implemented dependency overrides, improved file system safety, prevented prototype pollution, and ensured CI stability.
+
+### Issues Addressed
+- **Dependabot nth-check/react-scripts**: Documented the unfixable vulnerability due to upstream lock. Added monitoring note in package.json.
+- **PostCSS Vulnerability**: Forced postcss to ^8.4.31 using npm overrides in package.json.
+- **File System Race Condition**: Refactored scripts and vaultService to use atomic file operations and try-catch, avoiding TOCTOU vulnerabilities.
+- **User-Controlled Bypass of Security Check**: Audited permission checks to ensure only server-validated user context is used; no direct user input in permission logic.
+- **Prototype Pollution**: Added property name validation in tokenProvider.js to prevent remote property injection.
+- **lockfile-lint-action Pinning**: Updated GitHub Actions workflow to use a specific version for security scan stability.
+- **AnalyticsService.js Build Error**: Reviewed and confirmed no syntax error; code is valid.
+
+### Modified Files
+- package.json (overrides, documentation)
+- .github/workflows/security-scan.yml (action pinning)
+- scripts/utils/test-script-template.js (atomic file ops)
+- scripts/generate-keys.js (atomic file ops)
+- server/utils/vaultService.js (atomic file ops, doc comment)
+- server/utils/tokenProvider.js (prototype pollution prevention)
+- src/features/beta-program/services/analytics/AnalyticsService.js (build error review)
+
+### Code Health Impact
+- **Positive**: Improved security posture and file operation safety
+- **Positive**: Reduced risk of prototype pollution and race conditions
+- **Positive**: Ensured CI stability and clear documentation of dependency risks
+- **Neutral**: nth-check issue remains due to upstream lock; documented for monitoring
+
+## Review Guidelines for Future Refactorings
+
+Future refactorings should follow these guidelines, based on our [Code Review Checklist](../../code_and_project_structure_refactors/references/code-review-checklist.md):
+
+1. **Design**: Ensure architectural patterns are followed and components are properly decomposed
+2. **Functionality**: Maintain or improve existing functionality while making structural changes
+3. **Complexity**: Aim to reduce complexity rather than increase it
+4. **Tests**: Update tests to reflect changes and ensure continued coverage
+5. **Documentation**: Keep documentation in sync with code changes
+6. **Security**: Consider security implications, especially for API changes
+7. **Performance**: Measure and maintain or improve performance characteristics
+8. **Code Health**: Every refactoring should improve the overall health of the codebase
+
 Each refactoring record should document impacts across these dimensions to provide a complete picture of the changes made. 

@@ -91,14 +91,13 @@ function updateSummary(results) {
   
   let content = '';
   
-  // Create new file if it doesn't exist
-  if (!fs.existsSync(summaryFile)) {
+  try {
+    content = fs.readFileSync(summaryFile, 'utf8');
+  } catch (err) {
+    // File does not exist, create new
     content = `# ${TEST_NAME.charAt(0).toUpperCase() + TEST_NAME.slice(1)} Test History\n\n`;
     content += `| Date | Status | Details | Results File |\n`;
     content += `|------|--------|---------|-------------|\n`;
-  } else {
-    // Read existing content
-    content = fs.readFileSync(summaryFile, 'utf8');
   }
   
   // Add new entry after the header (at line 4)
@@ -123,9 +122,12 @@ function updateSummary(results) {
   content = content.substring(0, headerEnd) + '\n' + newLine + 
            (headerEnd < content.length ? content.substring(headerEnd) : '');
   
-  // Write updated content
-  fs.writeFileSync(summaryFile, content);
-  console.log(`Summary updated at ${summaryFile}`);
+  try {
+    fs.writeFileSync(summaryFile, content);
+    console.log(`Summary updated at ${summaryFile}`);
+  } catch (err) {
+    console.error(`Failed to update summary at ${summaryFile}:`, err);
+  }
 }
 
 // Create a file that points to the latest results
@@ -133,8 +135,12 @@ function createLatestRedirect(resultsFile) {
   const latestFile = path.join(resultsBaseDir, 'latest.txt');
   const content = `Latest test results: ${path.basename(resultsFile)}\nRun at: ${new Date().toISOString()}`;
   
-  fs.writeFileSync(latestFile, content);
-  console.log(`Latest results reference created at ${latestFile}`);
+  try {
+    fs.writeFileSync(latestFile, content);
+    console.log(`Latest results reference created at ${latestFile}`);
+  } catch (err) {
+    console.error(`Failed to create latest results reference at ${latestFile}:`, err);
+  }
   
   // For HTML reports, create an HTML redirect
   if (resultsFile.endsWith('.html')) {
@@ -151,8 +157,12 @@ function createLatestRedirect(resultsFile) {
     </html>
     `;
     
-    fs.writeFileSync(latestHtml, htmlContent);
-    console.log(`Latest HTML redirect created at ${latestHtml}`);
+    try {
+      fs.writeFileSync(latestHtml, htmlContent);
+      console.log(`Latest HTML redirect created at ${latestHtml}`);
+    } catch (err) {
+      console.error(`Failed to create latest HTML redirect at ${latestHtml}:`, err);
+    }
   }
 }
 

@@ -82,16 +82,28 @@ utils.ensureDirectoryExists(scriptsDir);
 
 // Write keys to a temporary file that should NOT be committed
 const outputFile = path.join(scriptsDir, 'generated-keys.txt');
-fs.writeFileSync(outputFile, output);
+try {
+  fs.writeFileSync(outputFile, output);
+} catch (err) {
+  utils.log(`Failed to write keys to ${outputFile}: ${err.message}`, 'error');
+}
 
 // Create .gitignore entry if it doesn't exist
 const gitignoreFile = path.join(__dirname, '..', '.gitignore');
-if (fs.existsSync(gitignoreFile)) {
-  let gitignoreContent = fs.readFileSync(gitignoreFile, 'utf8');
+try {
+  let gitignoreContent = '';
+  try {
+    gitignoreContent = fs.readFileSync(gitignoreFile, 'utf8');
+  } catch (err) {
+    // File may not exist, will be created
+    gitignoreContent = '';
+  }
   if (!gitignoreContent.includes('generated-keys.txt')) {
     fs.appendFileSync(gitignoreFile, '\n# Security keys\nscripts/generated-keys.txt\n');
     utils.log('Updated .gitignore to exclude generated-keys.txt', 'success');
   }
+} catch (err) {
+  utils.log(`Failed to update .gitignore: ${err.message}`, 'error');
 }
 
 utils.log(`Keys have been saved to: ${outputFile}`, 'success');
