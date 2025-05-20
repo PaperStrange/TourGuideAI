@@ -199,6 +199,7 @@
 - **LESSON**: Pin all GitHub Actions to a specific version, never use @master or @main, to ensure reproducible and secure CI.
 - **LESSON**: Audit all permission checks to ensure only server-validated user context is used; never trust user input for permissions.
 - **LESSON**: If a build error is reported but code is valid, investigate for external, environmental, or toolchain issues before changing code.
+- **LESSON**: Use patch-package to document and monitor unfixable vulnerabilities in transitive dependencies when upstream fixes are not available.
 
 ---
 

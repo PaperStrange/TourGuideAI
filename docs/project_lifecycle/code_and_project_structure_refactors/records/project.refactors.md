@@ -815,7 +815,7 @@ Each refactoring record should document impacts across these dimensions to provi
 Addressed multiple security and build issues identified by automated scans and manual review. Implemented dependency overrides, improved file system safety, prevented prototype pollution, and ensured CI stability.
 
 ### Issues Addressed
-- **Dependabot nth-check/react-scripts**: Documented the unfixable vulnerability due to upstream lock. Added monitoring note in package.json.
+- **Dependabot nth-check/react-scripts**: Documented the unfixable vulnerability due to upstream lock. Added monitoring note in package.json. Now using patch-package to track local awareness and maintain a patch for audit purposes.
 - **PostCSS Vulnerability**: Forced postcss to ^8.4.31 using npm overrides in package.json.
 - **File System Race Condition**: Refactored scripts and vaultService to use atomic file operations and try-catch, avoiding TOCTOU vulnerabilities.
 - **User-Controlled Bypass of Security Check**: Audited permission checks to ensure only server-validated user context is used; no direct user input in permission logic.
@@ -831,6 +831,7 @@ Addressed multiple security and build issues identified by automated scans and m
 - server/utils/vaultService.js (atomic file ops, doc comment)
 - server/utils/tokenProvider.js (prototype pollution prevention)
 - src/features/beta-program/services/analytics/AnalyticsService.js (build error review)
+- patches/nth-check+2.1.1.patch (local vulnerability monitoring)
 
 ### Code Health Impact
 - **Positive**: Improved security posture and file operation safety
