@@ -464,7 +464,8 @@ class AnalyticsService {
         if (!pages.includes(page)) {
           pages.push(page);
         }
-      
+      }
+
       return {
         id: `hj-${(10000000 + index).toString(16)}`, // Mock Hotjar recording ID
         date: recordingDate.toISOString(),
