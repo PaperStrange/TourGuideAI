@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: tourguideai-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Add other environment variables as needed, e.g. from .env.example
+
+  - type: static
+    name: tourguideai-frontend
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: build
+    plan: free
+    envVars:
+      # Add frontend environment variables if needed
+      # - key: REACT_APP_API_URL
+      #   value: https://tourguideai-backend.onrender.com 

@@ -1,0 +1,226 @@
+import React from 'react';
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import TaskPromptManager from '../../../features/beta-program/components/task-prompts/TaskPromptManager';
+import { tasksMocks, taskStateMocks } from '../../mocks/taskPromptMocks';
+
+// Mock task API calls
+const mockFetchTasks = jest.fn().mockResolvedValue(tasksMocks);
+const mockFetchTaskState = jest.fn().mockResolvedValue(taskStateMocks);
+const mockUpdateTaskState = jest.fn().mockResolvedValue({ success: true });
+
+describe('TaskPromptManager Component', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+  
+  test('loads and displays available tasks', async () => {
+    render(
+      <TaskPromptManager 
+        fetchTasks={mockFetchTasks}
+        fetchTaskState={mockFetchTaskState}
+        updateTaskState={mockUpdateTaskState}
+      />
+    );
+    
+    // Check loading state
+    expect(screen.getByTestId('tasks-loading')).toBeInTheDocument();
+    
+    // Wait for loading to complete
+    await waitFor(() => {
+      expect(screen.queryByTestId('tasks-loading')).not.toBeInTheDocument();
+    });
+    
+    // Check if API calls were made
+    expect(mockFetchTasks).toHaveBeenCalledTimes(1);
+    expect(mockFetchTaskState).toHaveBeenCalledTimes(1);
+    
+    // Check if tasks are displayed
+    tasksMocks.forEach(task => {
+      expect(screen.getByText(task.title)).toBeInTheDocument();
+    });
+    
+    // Active task should be highlighted
+    const activeTask = tasksMocks.find(t => t.id === taskStateMocks.activeTaskId);
+    expect(screen.getByText(activeTask.title).closest('div')).toHaveClass('active-task');
+  });
+  
+  test('filters tasks correctly', async () => {
+    render(
+      <TaskPromptManager 
+        fetchTasks={mockFetchTasks}
+        fetchTaskState={mockFetchTaskState}
+        updateTaskState={mockUpdateTaskState}
+      />
+    );
+    
+    // Wait for loading to complete
+    await waitFor(() => {
+      expect(screen.queryByTestId('tasks-loading')).not.toBeInTheDocument();
+    });
+    
+    const user = userEvent.setup();
+    
+    // Filter by tag
+    const tagFilter = screen.getByLabelText('Filter by tag');
+    await user.selectOptions(tagFilter, 'booking');
+    
+    // Should show only the "Book a Tour Guide" task
+    expect(screen.getByText('Book a Tour Guide')).toBeInTheDocument();
+    expect(screen.queryByText('Discover Popular Attractions')).not.toBeInTheDocument();
+    
+    // Reset filter
+    await user.selectOptions(tagFilter, '');
+    
+    // Should show all tasks again
+    expect(screen.getByText('Book a Tour Guide')).toBeInTheDocument();
+    expect(screen.getByText('Discover Popular Attractions')).toBeInTheDocument();
+    
+    // Filter by search term
+    const searchInput = screen.getByPlaceholderText('Search tasks...');
+    await user.type(searchInput, 'guide');
+    
+    // Should show only the "Book a Tour Guide" task
+    expect(screen.getByText('Book a Tour Guide')).toBeInTheDocument();
+    expect(screen.queryByText('Discover Popular Attractions')).not.toBeInTheDocument();
+  });
+  
+  test('starts a task when selected', async () => {
+    render(
+      <TaskPromptManager 
+        fetchTasks={mockFetchTasks}
+        fetchTaskState={mockFetchTaskState}
+        updateTaskState={mockUpdateTaskState}
+      />
+    );
+    
+    // Wait for loading to complete
+    await waitFor(() => {
+      expect(screen.queryByTestId('tasks-loading')).not.toBeInTheDocument();
+    });
+    
+    const user = userEvent.setup();
+    
+    // Select the second task (Book a Tour Guide)
+    const secondTask = screen.getByText('Book a Tour Guide');
+    await user.click(secondTask);
+    
+    // Should call the update task state API with the correct values
+    expect(mockUpdateTaskState).toHaveBeenCalledWith({
+      activeTaskId: 'task-456',
+      taskProgress: {
+        'task-456': {
+          currentStepIndex: 0,
+          startTime: expect.any(Number),
+          stepCompletionTimes: {}
+        }
+      }
+    });
+    
+    // Task should be marked as active
+    await waitFor(() => {
+      expect(secondTask.closest('div')).toHaveClass('active-task');
+    });
+  });
+  
+  test('handles multiple concurrent tasks correctly', async () => {
+    render(
+      <TaskPromptManager 
+        fetchTasks={mockFetchTasks}
+        fetchTaskState={mockFetchTaskState}
+        updateTaskState={mockUpdateTaskState}
+        allowMultipleTasks={true}
+      />
+    );
+    
+    // Wait for loading to complete
+    await waitFor(() => {
+      expect(screen.queryByTestId('tasks-loading')).not.toBeInTheDocument();
+    });
+    
+    const user = userEvent.setup();
+    
+    // Select the second task while the first is already active
+    const secondTask = screen.getByText('Book a Tour Guide');
+    await user.click(secondTask);
+    
+    // With allowMultipleTasks=true, it should not change the activeTaskId
+    // but add the task to activeTasks array
+    expect(mockUpdateTaskState).toHaveBeenCalledWith({
+      activeTasks: expect.arrayContaining(['task-123', 'task-456']),
+      taskProgress: expect.objectContaining({
+        'task-456': {
+          currentStepIndex: 0,
+          startTime: expect.any(Number),
+          stepCompletionTimes: {}
+        }
+      })
+    });
+  });
+  
+  test('handles task completion correctly', async () => {
+    render(
+      <TaskPromptManager 
+        fetchTasks={mockFetchTasks}
+        fetchTaskState={mockFetchTaskState}
+        updateTaskState={mockUpdateTaskState}
+      />
+    );
+    
+    // Wait for loading to complete
+    await waitFor(() => {
+      expect(screen.queryByTestId('tasks-loading')).not.toBeInTheDocument();
+    });
+    
+    const user = userEvent.setup();
+    
+    // Find and click the "Complete Task" button
+    const completeButton = screen.getByRole('button', { name: 'Complete Task' });
+    await user.click(completeButton);
+    
+    // Should update the task state with the completed task
+    expect(mockUpdateTaskState).toHaveBeenCalledWith({
+      activeTaskId: null,
+      completedTasks: expect.arrayContaining(['task-789', 'task-123']),
+      taskProgress: expect.objectContaining({
+        'task-123': {
+          completed: true,
+          completionTime: expect.any(Number)
+        }
+      })
+    });
+    
+    // Should show completion message
+    await waitFor(() => {
+      expect(screen.getByText(/Great job/)).toBeInTheDocument();
+    });
+  });
+  
+  test('handles error states gracefully', async () => {
+    // Mock API error
+    mockFetchTasks.mockRejectedValueOnce(new Error('Failed to fetch tasks'));
+    
+    render(
+      <TaskPromptManager 
+        fetchTasks={mockFetchTasks}
+        fetchTaskState={mockFetchTaskState}
+        updateTaskState={mockUpdateTaskState}
+      />
+    );
+    
+    // Wait for error state
+    await waitFor(() => {
+      expect(screen.getByTestId('tasks-error')).toBeInTheDocument();
+      expect(screen.getByText('Failed to fetch tasks')).toBeInTheDocument();
+    });
+    
+    const user = userEvent.setup();
+    
+    // Click retry button
+    const retryButton = screen.getByRole('button', { name: 'Retry' });
+    await user.click(retryButton);
+    
+    // Should call fetch API again
+    expect(mockFetchTasks).toHaveBeenCalledTimes(2);
+  });
+}); 

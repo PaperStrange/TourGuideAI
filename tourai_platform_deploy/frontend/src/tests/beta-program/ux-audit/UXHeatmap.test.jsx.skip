@@ -1,0 +1,102 @@
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import UXHeatmap from '../../../features/beta-program/components/ux-audit/UXHeatmap';
+import { heatmapMocks } from '../../mocks/uxAuditMocks';
+
+// Mock canvas context methods for heatmap testing
+const mockCanvasContext = {
+  fillRect: jest.fn(),
+  beginPath: jest.fn(),
+  arc: jest.fn(),
+  fill: jest.fn(),
+  createRadialGradient: jest.fn().mockReturnValue({
+    addColorStop: jest.fn()
+  })
+};
+
+describe('UXHeatmap Component', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    
+    // Mock canvas methods
+    HTMLCanvasElement.prototype.getContext = jest.fn().mockReturnValue(mockCanvasContext);
+  });
+
+  test('renders heatmap with low density data', () => {
+    render(<UXHeatmap data={heatmapMocks.lowDensity} />);
+    
+    expect(screen.getByTestId('heatmap-canvas')).toBeInTheDocument();
+    expect(screen.getByText('Interaction Heatmap')).toBeInTheDocument();
+    
+    // Verify canvas element has correct dimensions
+    const canvas = screen.getByTestId('heatmap-canvas');
+    expect(canvas.width).toBe(heatmapMocks.lowDensity.width);
+    expect(canvas.height).toBe(heatmapMocks.lowDensity.height);
+    
+    // Verify each point was drawn
+    expect(mockCanvasContext.beginPath).toHaveBeenCalledTimes(heatmapMocks.lowDensity.points.length);
+    expect(mockCanvasContext.arc).toHaveBeenCalledTimes(heatmapMocks.lowDensity.points.length);
+  });
+
+  test('renders heatmap with medium density data', () => {
+    render(<UXHeatmap data={heatmapMocks.mediumDensity} />);
+    
+    // Verify medium density points were drawn
+    expect(mockCanvasContext.beginPath).toHaveBeenCalledTimes(heatmapMocks.mediumDensity.points.length);
+  });
+
+  test('renders heatmap with high density data', () => {
+    render(<UXHeatmap data={heatmapMocks.highDensity} />);
+    
+    // Verify high density points were drawn
+    expect(mockCanvasContext.beginPath).toHaveBeenCalledTimes(heatmapMocks.highDensity.points.length);
+  });
+
+  test('updates heatmap when data changes', () => {
+    const { rerender } = render(<UXHeatmap data={heatmapMocks.lowDensity} />);
+    
+    // Initial draw
+    expect(mockCanvasContext.beginPath).toHaveBeenCalledTimes(heatmapMocks.lowDensity.points.length);
+    
+    // Update with new data
+    rerender(<UXHeatmap data={heatmapMocks.mediumDensity} />);
+    
+    // Should have total calls from both renders
+    expect(mockCanvasContext.beginPath).toHaveBeenCalledTimes(
+      heatmapMocks.lowDensity.points.length + heatmapMocks.mediumDensity.points.length
+    );
+  });
+
+  test('heatmap controls change intensity properly', async () => {
+    render(<UXHeatmap data={heatmapMocks.mediumDensity} />);
+    
+    const user = userEvent.setup();
+    const intensitySlider = screen.getByLabelText('Heatmap Intensity');
+    
+    // Change intensity
+    await user.type(intensitySlider, '75');
+    
+    // Verify the heatmap redraws with new intensity
+    expect(mockCanvasContext.beginPath).toHaveBeenCalledTimes(
+      heatmapMocks.mediumDensity.points.length * 2 // Initial + after intensity change
+    );
+  });
+
+  test('handles empty data gracefully', () => {
+    render(<UXHeatmap data={{ width: 1200, height: 800, points: [] }} />);
+    
+    expect(screen.getByText('No heatmap data available')).toBeInTheDocument();
+    // Canvas should still be rendered
+    expect(screen.getByTestId('heatmap-canvas')).toBeInTheDocument();
+  });
+
+  test('performance is acceptable with high density data', () => {
+    const start = performance.now();
+    render(<UXHeatmap data={heatmapMocks.highDensity} />);
+    const end = performance.now();
+    
+    // Rendering should be under 150ms even with high density
+    expect(end - start).toBeLessThan(150);
+  });
+}); 

@@ -1,0 +1,136 @@
+/* DayCard.css */
+
+.day-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.day-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.day-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0 0 0.3rem 0;
+}
+
+.day-location {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  margin: 0;
+}
+
+.day-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.time-period {
+  position: relative;
+}
+
+.period-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #34495e;
+  margin: 0 0 1rem 0;
+  padding-left: 0.5rem;
+  border-left: 3px solid;
+}
+
+.time-period.morning .period-title {
+  border-color: #f1c40f; /* Yellow for morning */
+}
+
+.time-period.afternoon .period-title {
+  border-color: #e74c3c; /* Red for afternoon */
+}
+
+.time-period.evening .period-title {
+  border-color: #8e44ad; /* Purple for evening */
+}
+
+.time-period.unscheduled .period-title {
+  border-color: #7f8c8d; /* Gray for unscheduled */
+}
+
+.activities-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 1rem;
+}
+
+.empty-period {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border: 1px dashed #e0e0e0;
+}
+
+.empty-period p {
+  color: #95a5a6;
+  font-style: italic;
+  margin: 0;
+}
+
+.empty-day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border: 1px dashed #e0e0e0;
+  text-align: center;
+}
+
+.empty-day p {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+  max-width: 400px;
+  margin: 0;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .day-card {
+    padding: 1rem;
+  }
+  
+  .day-title {
+    font-size: 1.2rem;
+  }
+  
+  .period-title {
+    font-size: 1rem;
+  }
+  
+  .empty-day {
+    padding: 2rem 1rem;
+  }
+  
+  .empty-day p {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .day-timeline {
+    gap: 1.5rem;
+  }
+  
+  .activities-container {
+    padding-left: 0.5rem;
+  }
+} 
