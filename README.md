@@ -57,7 +57,13 @@ TourGuideAI/
 │   ├── pics/            # Images for documentation
 │   ├── prototype/       # Prototype data and mockups
 │   └── project_lifecycle/ # Project management documentation
-└── tools/               # Development and deployment tools
+├── tools/               # Development and deployment tools
+├── tourai_platform_deploy / # Copy for Render Deployment
+│   ├── backend/ # Backend source code
+│   ├── frontend/ # Frontend source code
+│   ├── scripts/ # Automatic scripts 
+│   ├── render.yaml # Infrastructure-as-code deployment for Render blueprint
+│   └── README.md # Deployment introduction
 ```
 
 ## Getting Started
