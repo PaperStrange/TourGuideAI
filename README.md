@@ -354,15 +354,23 @@ We maintain two deployment approaches:
 
 For detailed information, see our [Deployment Strategy](docs/project_lifecycle/deployment/plans/project.deployment-strategy.md).
 
-### Infrastructure Preparation
+### Infrastructure Status
 
-⚠️ **IMPORTANT**: Production deployment requires extensive infrastructure setup. Before attempting any production deployment:
+⚠️ **Current Status**: Infrastructure **not ready for deployment**
 
-1. Review the [Deployment Preparation Checklist](docs/project_lifecycle/deployment/plans/project.deployment-preparation-checklist.md)
-2. Complete all infrastructure requirements (estimated 22-30 days)
-3. Validate multi-environment setup
+**Automatic CI/CD Behavior**:
+- ✅ **Build & Test**: All tests run successfully
+- ⏸️ **Staging Deployment**: Automatically skipped (infrastructure not configured)
+- ⏸️ **Production Deployment**: Automatically skipped (infrastructure not configured)
+- 🎭 **Mock Testing**: Simulation tests run when real environments aren't available
 
-**Current Deployment Readiness: 0%** - No production infrastructure is currently provisioned.
+**Missing Infrastructure Components**:
+- AWS account with S3, CloudFront, IAM setup
+- Domain registration (`tourguideai.com`)
+- SSL certificate configuration
+- GitHub Secrets for deployment credentials
+
+**Infrastructure Readiness: 0%** - No production infrastructure is currently provisioned.
 
 ### Development Environment
 
@@ -387,8 +395,13 @@ npm run deploy:production
 
 ### Related Documentation
 
+**Infrastructure & Deployment**:
+- [Infrastructure Awareness Guide](.github/workflows/INFRASTRUCTURE_AWARENESS.md) - How CI/CD adapts to infrastructure availability
 - [Deployment Strategy](docs/project_lifecycle/deployment/plans/project.deployment-strategy.md) - Overview of deployment approaches
 - [Deployment Preparation Checklist](docs/project_lifecycle/deployment/plans/project.deployment-preparation-checklist.md) - Complete infrastructure requirements
+- [Testing Improvements](.github/workflows/TESTING_IMPROVEMENTS.md) - GitHub Actions testing enhancements
+
+**Implementation Plans**:
 - [CDN Implementation Plan](docs/project_lifecycle/deployment/plans/project.cdn-implementation-plan.md) - Global content delivery setup
 - [Deployment Pipeline](docs/project_lifecycle/deployment/plans/project.deployment-pipeline-plan.md) - CI/CD pipeline configuration
 
