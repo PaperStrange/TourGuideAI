@@ -6,7 +6,7 @@
  */
 
 // Re-export everything from the core implementation
-export * from '../../../core/services/storage/SyncService';
+export * from '../../core/services/storage/SyncService';
 
 // Log warning when this file is imported
 console.warn('Warning: Importing from src/services/storage/SyncService.js is deprecated. Please update your imports to use src/core/services/storage/SyncService.js instead.');
