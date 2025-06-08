@@ -60,9 +60,11 @@ describe('RouteGenerator Component', () => {
     render(<RouteGenerator />);
     
     const generateButton = screen.getByText('Generate Route');
-    userEvent.click(generateButton);
+    fireEvent.click(generateButton);
     
-    expect(screen.getByText('Please enter a travel query')).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText('Please enter a travel query')).toBeInTheDocument();
+    });
     expect(routeGenerationService.generateRouteFromQuery).not.toHaveBeenCalled();
   });
 
@@ -73,11 +75,11 @@ describe('RouteGenerator Component', () => {
     
     // Type a query
     const textArea = screen.getByPlaceholderText(/Describe your travel plans/i);
-    userEvent.type(textArea, 'I want to visit Paris for 3 days');
+    await userEvent.type(textArea, 'I want to visit Paris for 3 days');
     
     // Click analyze button
     const analyzeButton = screen.getByText('Analyze Query');
-    userEvent.click(analyzeButton);
+    await userEvent.click(analyzeButton);
     
     await waitFor(() => {
       expect(routeGenerationService.analyzeUserQuery).toHaveBeenCalledWith('I want to visit Paris for 3 days');
@@ -91,18 +93,18 @@ describe('RouteGenerator Component', () => {
     
     // Type a query
     const textArea = screen.getByPlaceholderText(/Describe your travel plans/i);
-    userEvent.type(textArea, 'I want to visit Paris for 3 days');
+    await userEvent.type(textArea, 'I want to visit Paris for 3 days');
     
     // Click analyze button
     const analyzeButton = screen.getByText('Analyze Query');
-    userEvent.click(analyzeButton);
+    await userEvent.click(analyzeButton);
     
     await waitFor(() => {
       expect(screen.getByText('Travel Intent Analysis')).toBeInTheDocument();
       expect(screen.getByText(/Destination:/)).toBeInTheDocument();
-      expect(screen.getByText(/Paris/)).toBeInTheDocument();
+      expect(screen.getAllByText(/Paris/)).toHaveLength(2); // One in textarea, one in intent
       expect(screen.getByText(/Duration:/)).toBeInTheDocument();
-      expect(screen.getByText(/3 days/)).toBeInTheDocument();
+      expect(screen.getAllByText(/3 days/)).toHaveLength(2); // One in textarea, one in intent
     });
   });
 
@@ -114,11 +116,11 @@ describe('RouteGenerator Component', () => {
     
     // Type a query
     const textArea = screen.getByPlaceholderText(/Describe your travel plans/i);
-    userEvent.type(textArea, 'I want to visit Paris for 3 days');
+    await userEvent.type(textArea, 'I want to visit Paris for 3 days');
     
     // Click generate route button
     const generateButton = screen.getByText('Generate Route');
-    userEvent.click(generateButton);
+    await userEvent.click(generateButton);
     
     await waitFor(() => {
       expect(routeGenerationService.generateRouteFromQuery).toHaveBeenCalledWith('I want to visit Paris for 3 days');
@@ -134,7 +136,7 @@ describe('RouteGenerator Component', () => {
     
     // Click surprise me button
     const surpriseButton = screen.getByText('Surprise Me!');
-    userEvent.click(surpriseButton);
+    await userEvent.click(surpriseButton);
     
     await waitFor(() => {
       expect(routeGenerationService.generateRandomRoute).toHaveBeenCalled();
@@ -154,14 +156,16 @@ describe('RouteGenerator Component', () => {
     
     // Type a query
     const textArea = screen.getByPlaceholderText(/Describe your travel plans/i);
-    userEvent.type(textArea, 'I want to visit Paris for 3 days');
+    await userEvent.type(textArea, 'I want to visit Paris for 3 days');
     
     // Click generate route button
     const generateButton = screen.getByText('Generate Route');
-    userEvent.click(generateButton);
+    await userEvent.click(generateButton);
     
     // Check that loading indicator is shown
-    expect(screen.getByText(/Generating your travel plan/i)).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText(/Generating your travel plan/i)).toBeInTheDocument();
+    });
     
     // Wait for completion
     await waitFor(() => {
@@ -178,11 +182,11 @@ describe('RouteGenerator Component', () => {
     
     // Type a query
     const textArea = screen.getByPlaceholderText(/Describe your travel plans/i);
-    userEvent.type(textArea, 'I want to visit Paris for 3 days');
+    await userEvent.type(textArea, 'I want to visit Paris for 3 days');
     
     // Click generate route button
     const generateButton = screen.getByText('Generate Route');
-    userEvent.click(generateButton);
+    await userEvent.click(generateButton);
     
     await waitFor(() => {
       expect(screen.getByText(/Error generating route: Network error/i)).toBeInTheDocument();

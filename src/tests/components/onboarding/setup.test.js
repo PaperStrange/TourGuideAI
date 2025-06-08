@@ -1,6 +1,17 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
+
+// Mock the apiClient to prevent axios import issues
+jest.mock('../../../core/services/apiClient', () => ({
+  apiHelpers: {
+    get: jest.fn(),
+    post: jest.fn(),
+    put: jest.fn(),
+    delete: jest.fn()
+  }
+}));
+
 import UserProfileSetup from '../../../features/beta-program/components/onboarding/UserProfileSetup';
 import PreferencesSetup from '../../../features/beta-program/components/onboarding/PreferencesSetup';
 
