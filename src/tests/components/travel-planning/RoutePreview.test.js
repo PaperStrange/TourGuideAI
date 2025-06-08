@@ -83,7 +83,8 @@ describe('RoutePreview Component', () => {
     expect(screen.getByText('No route to preview')).toBeInTheDocument();
   });
 
-  it('expands sections when headers are clicked', () => {
+  it('expands sections when headers are clicked', async () => {
+    const user = userEvent.setup();
     render(<RoutePreview route={mockRoute} />);
     
     // Initially, highlights content should not be visible
@@ -91,22 +92,25 @@ describe('RoutePreview Component', () => {
     
     // Click on highlights header to expand
     const highlightsHeader = screen.getByText(/Highlights/);
-    userEvent.click(highlightsHeader);
+    await user.click(highlightsHeader);
     
     // Now highlights content should be visible
-    expect(screen.getByText('Eiffel Tower')).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText('Eiffel Tower')).toBeInTheDocument();
+    });
     expect(screen.getByText('Louvre Museum')).toBeInTheDocument();
     expect(screen.getByText('Notre Dame Cathedral')).toBeInTheDocument();
   });
 
-  it('toggles favorites when favorite button is clicked', () => {
+  it('toggles favorites when favorite button is clicked', async () => {
+    const user = userEvent.setup();
     render(<RoutePreview route={mockRoute} />);
     
     // Initially not a favorite
     const favoriteButton = screen.getByText('☆ Add to Favorites');
     
     // Click to add to favorites
-    userEvent.click(favoriteButton);
+    await user.click(favoriteButton);
     expect(routeManagementService.addToFavorites).toHaveBeenCalledWith('route_123');
     
     // Mock the updated state

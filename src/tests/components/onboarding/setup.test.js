@@ -92,7 +92,7 @@ describe('Onboarding Components', () => {
       render(<PreferencesSetup initialPreferences={initialPreferences} onComplete={handleComplete} />);
       
       // Submit the form
-      const submitButton = screen.getByRole('button', { name: /continue/i });
+      const submitButton = screen.getByRole('button', { name: /save preferences/i });
       fireEvent.click(submitButton);
       
       // Check that onComplete was called with the preferences data

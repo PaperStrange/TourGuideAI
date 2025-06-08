@@ -790,4 +790,26 @@ jobs:
         echo "---" >> $GITHUB_STEP_SUMMARY
         echo "**Deployment ID**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
         echo "**Triggered by**: ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
-        echo "**Branch**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY 
+        echo "**Branch**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+
+        # Frontend Tests
+        - name: Run Frontend Tests
+          run: |
+            npm run test:frontend
+          env:
+            CI: true
+          
+        # Backend Tests
+        - name: Run Backend Tests  
+          run: |
+            npm run test:backend
+          env:
+            CI: true
+          
+        # Test Summary
+        - name: Generate Test Summary
+          if: always()
+          run: |
+            echo "## Test Results Summary" >> $GITHUB_STEP_SUMMARY
+            echo "- Frontend Tests: ${{ steps.frontend-tests.outcome }}" >> $GITHUB_STEP_SUMMARY
+            echo "- Backend Tests: ${{ steps.backend-tests.outcome }}" >> $GITHUB_STEP_SUMMARY 

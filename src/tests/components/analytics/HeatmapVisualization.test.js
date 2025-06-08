@@ -59,10 +59,11 @@ describe('HeatmapVisualization Component', () => {
     const mockOnBack = jest.fn();
     render(<HeatmapVisualization onBack={mockOnBack} />);
     
-    // Wait for the component to load
+    // Wait for the component to load completely with selects available
     await waitFor(() => {
       expect(screen.getByText('User Interaction Heatmap')).toBeInTheDocument();
-    });
+      expect(screen.getAllByRole('combobox')).toHaveLength(2);
+    }, { timeout: 3000 });
     
     // Find the type selector - it's the second select element
     const selects = screen.getAllByRole('combobox');

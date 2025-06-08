@@ -35,12 +35,15 @@ jest.mock('@mui/material/TextField', () => ({ label, ...props }) => (
   />
 ));
 
-jest.mock('@mui/material/FormControlLabel', () => ({ control, label, ...props }) => (
-  <label>
-    {React.cloneElement(control, props)}
-    <span>{label}</span>
-  </label>
-));
+jest.mock('@mui/material/FormControlLabel', () => {
+  const mockReact = require('react');
+  return ({ control, label, ...props }) => (
+    <label>
+      {mockReact.cloneElement(control, props)}
+      <span>{label}</span>
+    </label>
+  );
+});
 
 describe('Onboarding Flow Integration', () => {
   // Setup mocks for each test

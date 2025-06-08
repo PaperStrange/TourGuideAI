@@ -8,13 +8,14 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import App from '../../../App';
 
 // Mock fetch for backend health check
 global.fetch = jest.fn(() => Promise.reject(new Error('Health check failed')));
 
 // Mock components used in the App
-jest.mock('../../../components/Navbar', () => {
+jest.mock('../../../components/common/Navbar', () => {
   return function MockNavbar() {
     return <div data-testid="navbar">Navbar</div>;
   };
@@ -35,10 +36,14 @@ jest.mock('../../../components/LoadingProvider', () => {
 
 describe('Router Structure', () => {
   test('should render Routes properly', () => {
+    const theme = createTheme();
+    
     render(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ThemeProvider>
     );
     
     // Check that the App component renders
