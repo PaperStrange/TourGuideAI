@@ -310,7 +310,7 @@ This RC2 release plan requires approval from:
 **Next Review**: Weekly during implementation
 
 **Related Documents**:
-- [Phase 8 Online Launch Plan](project.phase8-online-launch-plan.md)
-- [CDN Implementation Plan](../deployment/plans/project.cdn-implementation-plan.md)
-- [Security Hardening Checklist](../security/project.security-hardening-checklist.md)
-- [Test Stabilization Plan](../all_tests/plans/project.test-stabilization-plan.md) 
+- [Phase 8 Completion Summary](../../process_monitors/plans/project.phase8-completion-summary.md)
+- [CDN Implementation Plan](../../deployment/plans/project.cdn-implementation-plan.md)
+- [Security Hardening Checklist](../../deployment/security/project.security-hardening-checklist.md)
+- [Test Stabilization Plan](../../all_tests/plans/project.test.stabilization-plan.md) 

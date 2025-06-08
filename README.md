@@ -208,7 +208,7 @@ TourGuideAI follows semantic versioning (MAJOR.MINOR.PATCH) as defined in our [V
 
 The project is currently in Release Candidate stage, preparing for the official 1.0.0 release scheduled for August 2025.
 
-For detailed release plans, see our [1.0.0 Release Candidate Plan](docs/project_lifecycle/version_control/records/project.rc.1.0.0.release-plan.md).
+For detailed release plans, see our [1.0.0 Release Candidate 2 Plan](docs/project_lifecycle/version_control/records/project.rc2.1.0.0.release-plan.md).
 
 ## Testing Strategy
 

@@ -356,6 +356,6 @@ This document provides a comprehensive security hardening checklist for TourGuid
 **Approval Required From**: CISO, Technical Lead, Compliance Officer
 
 **Related Documents**:
-- [Incident Response Plan](project.incident-response-plan.md)
-- [Privacy Policy](project.privacy-policy.md)
-- [Security Training Materials](project.security-training.md) 
+- Incident Response Plan (planned)
+- Privacy Policy (planned)
+- Security Training Materials (planned) 
