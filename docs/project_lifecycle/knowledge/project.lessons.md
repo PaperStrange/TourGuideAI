@@ -2,6 +2,7 @@
 
 ## Project Management
 - **MUST-OBEY PRINCIPLE**: Strict alignment between milestones (.milestones), key results (.project), and tasks (.todos) is CRITICAL for project success using the OKR framework
+- **MUST-OBEY PRINCIPLE**: Never mark a phase as COMPLETED if any Key Results within that phase are incomplete - this creates severe project tracking inconsistencies and can lead to premature launch decisions without proper preparation
 - **MUST-OBEY PRINCIPLE**: ALWAYS follow section named like `Document Update Process` and check for existing files before creating new ones; duplicated files cause severe confusion and project management issues
 - **MUST-OBEY PRINCIPLE**: ALWAYS keep documentation in its designated folders; save test results in the separate, corresponding subfolder of `results/` directory while keep test plans up-to-date in the `plans/` directory and update reference documentation in `references/` directory when making code changes
 - **MUST-OBEY PRINCIPLE**: Clearly distinguish between runtime-generated directories and repository directories in documentation; always store generated test artifacts in existing repository directories rather than creating new directories at runtime

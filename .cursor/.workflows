@@ -117,7 +117,13 @@ This document outlines the standard workflow for executing a new project phase i
   - Simplified test setup and mocking
 - Update test patterns and mock strategies based on successful refactors
 
-### 5. Phase Completion and Documentation Updates
+### 5. Special Considerations for Deployment
+- **CRITICAL**: Before marking any deployment-related phase as complete, ensure ALL infrastructure requirements in [Deployment Preparation Checklist](docs/project_lifecycle/deployment/plans/project.deployment-preparation-checklist.md) are verified
+- Review and update deployment preparation checklist to reflect all infrastructure work from related plans in `docs/project_lifecycle/deployment/plans/`
+- Validate infrastructure readiness using deployment preparation checklist before any launch activities
+- Ensure proper integration between [Deployment Strategy](docs/project_lifecycle/deployment/plans/project.deployment-strategy.md), [CDN Implementation Plan](docs/project_lifecycle/deployment/plans/project.cdn-implementation-plan.md), and [Deployment Pipeline Plan](docs/project_lifecycle/deployment/plans/project.deployment-pipeline-plan.md)
+
+### 6. Phase Completion and Documentation Updates
 - Remove duplicated or obsolete files
 - Update architecture documentation to reflect changes
 - Perform explicit verification against workflow requirements and create a formal sign-off process
@@ -129,7 +135,7 @@ This document outlines the standard workflow for executing a new project phase i
   - Fixed issues
 - Update each `README.md` within project folders to reflect changes and make sure changed contents are correctly recorded
 
-### 6. Process Monitoring and Version Control
+### 7. Process Monitoring and Version Control
 - Perform explicit verification against workflow requirements and create a formal sign-off process
 - Document the process completion in `docs/project_lifecycle/process_monitors/records/project.phase-completion.md`:
   - Create a comprehensive phase completion report
@@ -158,7 +164,7 @@ This document outlines the standard workflow for executing a new project phase i
   - Maintain compatibility matrices for dependencies
   - Document API versioning strategy for public interfaces
 
-### 7. Project Artifacts Modification
+### 8. Project Artifacts Modification
 - Remove duplicated or obsolete files
 - Update architecture documentation and any `.md` files to reflect changes
 - Update all feature-level README files to reflect changes
@@ -167,7 +173,7 @@ This document outlines the standard workflow for executing a new project phase i
 - Ensure all documentation consistently references the same terms and concepts
 - Verify that import paths in documentation match the actual file structure 
 
-### 8. Knowledge Preservation
+### 9. Knowledge Preservation
 - Record lessons in `project.lessons.md`, including:
   - Technical insights gained during implementation
   - Best practices discovered

@@ -343,19 +343,54 @@ If scripts fail to run properly:
 
 ## Deployment
 
-### Staging
+TourGuideAI uses a comprehensive multi-environment deployment strategy supporting development, staging, and production environments.
 
-Automatically deployed from the `dev` branch:
+### Deployment Strategy
+
+We maintain two deployment approaches:
+
+1. **Simple Deployment** (`scripts/deploy.sh`) - For development and staging environments
+2. **Production Deployment** (`deployment/production/`) - Enterprise-grade Docker-based deployment
+
+For detailed information, see our [Deployment Strategy](docs/project_lifecycle/deployment/plans/project.deployment-strategy.md).
+
+### Infrastructure Preparation
+
+⚠️ **IMPORTANT**: Production deployment requires extensive infrastructure setup. Before attempting any production deployment:
+
+1. Review the [Deployment Preparation Checklist](docs/project_lifecycle/deployment/plans/project.deployment-preparation-checklist.md)
+2. Complete all infrastructure requirements (estimated 22-30 days)
+3. Validate multi-environment setup
+
+**Current Deployment Readiness: 0%** - No production infrastructure is currently provisioned.
+
+### Development Environment
+
+For local development and testing:
+```bash
+npm run dev
 ```
+
+### Staging Deployment
+
+Automatically deployed from the `dev` branch (requires infrastructure setup):
+```bash
 npm run deploy:staging
 ```
 
-### Production
+### Production Deployment
 
-Deployed from the `main` branch after approval:
-```
+Enterprise-grade deployment from the `main` branch (requires complete infrastructure):
+```bash
 npm run deploy:production
 ```
+
+### Related Documentation
+
+- [Deployment Strategy](docs/project_lifecycle/deployment/plans/project.deployment-strategy.md) - Overview of deployment approaches
+- [Deployment Preparation Checklist](docs/project_lifecycle/deployment/plans/project.deployment-preparation-checklist.md) - Complete infrastructure requirements
+- [CDN Implementation Plan](docs/project_lifecycle/deployment/plans/project.cdn-implementation-plan.md) - Global content delivery setup
+- [Deployment Pipeline](docs/project_lifecycle/deployment/plans/project.deployment-pipeline-plan.md) - CI/CD pipeline configuration
 
 ## Analytics and Monitoring
 
@@ -388,16 +423,29 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on contributing to the pro
 
 ## Documentation
 
+### Core Documentation
 - [API Overview](API_OVERVIEW.md)
 - [Architecture](ARCHITECTURE.md)
 - [Security](SECURITY.md)
 - [Contributing](CONTRIBUTING.md)
+
+### Deployment Documentation
+- [Deployment Strategy](docs/project_lifecycle/deployment/plans/project.deployment-strategy.md) - Deployment approach overview
+- [Deployment Preparation Checklist](docs/project_lifecycle/deployment/plans/project.deployment-preparation-checklist.md) - Infrastructure requirements
+- [CDN Implementation Plan](docs/project_lifecycle/deployment/plans/project.cdn-implementation-plan.md) - Global content delivery setup
+- [Deployment Pipeline Plan](docs/project_lifecycle/deployment/plans/project.deployment-pipeline-plan.md) - CI/CD configuration
+- [Performance Implementation Plan](docs/project_lifecycle/deployment/plans/project.performance-implementation-plan.md) - Code splitting and optimization
+- [Performance Optimization Plan](docs/project_lifecycle/deployment/plans/project.performance-optimization-plan.md) - Performance strategy
+
+### Testing Documentation
+- [Frontend Test Plan](docs/project_lifecycle/all_tests/plans/project.tests.frontend-plan.md)
+- [Backend Test Plan](docs/project_lifecycle/all_tests/plans/project.tests.backend-plan.md)
+
+### Project Management
 - [UX Audit System](docs/project_lifecycle/knowledge/project.lessons.md#ux-audit-system)
 - [Documentation Inventory](docs/project.document-inventory.md)
 - [Project Lessons](docs/project_lifecycle/knowledge/project.lessons.md)
-- [Frontend Test Plan](docs/project_lifecycle/all_tests/plans/project.tests.frontend-plan.md)
-- [Backend Test Plan](docs/project_lifecycle/all_tests/plans/project.tests.backend-plan.md)
-- [Deployment Pipeline](docs/project_lifecycle/deployment/pipelines/project.deployment-pipeline.md)
+- [Project Workflows](.cursor/.workflows)
 
 ## License
 

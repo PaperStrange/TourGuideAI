@@ -669,3 +669,116 @@
   - [ ] Implement proper test isolation
   - [ ] Configure automated test reporting
   - [ ] Set up continuous test quality monitoring
+
+### Comprehensive Deployment Infrastructure (Updated Requirements)
+
+#### Key Result: Multi-environment infrastructure setup completed
+- [ ] **Cloud Provider Setup**
+  - [ ] Set up AWS production account with proper billing alerts
+  - [ ] Configure IAM root account security (MFA, secure passwords)
+  - [ ] Create deployment service accounts with minimal required permissions
+  - [ ] Generate AWS Access Keys for deployment automation
+  - [ ] Set up AWS Organizations for account management
+
+- [ ] **Multi-Environment Infrastructure**
+  - [ ] Set up ECS/EKS clusters for all environments (dev/staging/production)
+  - [ ] Configure Application Load Balancers for all environments
+  - [ ] Set up Auto Scaling Groups with environment-specific scaling policies
+  - [ ] Configure CloudWatch monitoring for all environments
+  - [ ] Set up VPC and networking with proper security groups
+
+- [ ] **Database & Cache Clusters**
+  - [ ] Create RDS PostgreSQL instances for all environments
+  - [ ] Set up production database cluster with read replicas
+  - [ ] Configure ElastiCache Redis clusters for all environments
+  - [ ] Implement automated backups and recovery procedures
+  - [ ] Set up database security and encryption
+
+- [ ] **Domain & SSL Infrastructure**
+  - [ ] Purchase production domain (tourguideai.com) and configure DNS
+  - [ ] Set up subdomains for staging (staging.tourguideai.com) and dev (dev.tourguideai.com)
+  - [ ] Obtain SSL certificates for all domains using AWS Certificate Manager
+  - [ ] Configure HTTPS redirects and security headers
+  - [ ] Set up Route 53 DNS management with health checks
+
+#### Key Result: CDN and performance infrastructure implemented
+- [ ] **CloudFront CDN Setup**
+  - [ ] Create CloudFront distributions for staging and production
+  - [ ] Configure S3 buckets for CDN origin (tourguideai-staging-assets, tourguideai-production-assets)
+  - [ ] Set up cache behaviors and TTL strategies for different content types
+  - [ ] Configure compression (Brotli/Gzip) at edge locations
+  - [ ] Implement cache invalidation workflows
+
+- [ ] **CDN Security & Optimization**
+  - [ ] Configure Origin Access Identity (OAI) for S3 buckets
+  - [ ] Set up security headers (CSP, HSTS, X-Content-Type-Options, etc.)
+  - [ ] Configure CORS headers for API responses
+  - [ ] Set up edge-based security policies and geographic routing
+  - [ ] Implement HTTP/2 and HTTP/3 support
+
+- [ ] **Performance Monitoring Infrastructure**
+  - [ ] Set up Lighthouse CI for automated performance testing
+  - [ ] Configure webpack-bundle-analyzer in CI/CD pipeline
+  - [ ] Set up automated bundle size monitoring and regression alerts
+  - [ ] Configure k6 for load testing with realistic scenarios
+  - [ ] Set up WebPageTest for multi-location performance testing
+
+#### Key Result: External service integrations configured for all environments
+- [ ] **API Keys & External Services Setup**
+  - [ ] Create OpenAI accounts and generate API keys for all environments
+  - [ ] Set up Google Cloud project and configure Maps API for all environments
+  - [ ] Create SendGrid accounts and configure email service for all environments
+  - [ ] Set up monitoring services (DataDog/New Relic) for multi-environment tracking
+  - [ ] Configure Google Analytics 4 properties for each environment
+
+- [ ] **Service Configuration & Limits**
+  - [ ] Configure development API keys with appropriate usage limits
+  - [ ] Set up staging API keys with production-like limits for testing
+  - [ ] Configure production API keys with monitoring and alerts
+  - [ ] Implement API key rotation strategies for all environments
+  - [ ] Set up usage monitoring and cost alerts for all external services
+
+#### Key Result: Comprehensive CI/CD pipeline and automation implemented
+- [ ] **GitHub Actions Multi-Environment CI/CD**
+  - [ ] Configure GitHub repository secrets for all environments
+  - [ ] Set up branch protection rules for main, staging, and develop branches
+  - [ ] Configure environment-specific deployment approvals and requirements
+  - [ ] Set up automated deployment on develop branch for dev environment
+  - [ ] Configure manual approval workflows for staging and production deployments
+
+- [ ] **CDN CI/CD Integration**
+  - [ ] Configure GitHub Secrets for CDN deployment
+    - [ ] AWS_ROLE_TO_ASSUME_STAGING and AWS_ROLE_TO_ASSUME_PRODUCTION
+    - [ ] STAGING_CLOUDFRONT_ID and PRODUCTION_CLOUDFRONT_ID
+  - [ ] Set up automated asset deployment to CDN on successful builds
+  - [ ] Configure cache invalidation after deployments
+  - [ ] Set up CDN smoke tests to verify successful deployment
+
+- [ ] **Docker Registry & Container Management**
+  - [ ] Set up AWS ECR for container registry
+  - [ ] Configure automated image scanning for security vulnerabilities
+  - [ ] Implement multi-environment image tagging strategy
+  - [ ] Set up automated image builds and deployments
+
+- [ ] **Environment Variables & Configuration Management**
+  - [ ] Create comprehensive environment variables for all environments
+  - [ ] Configure GitHub Secrets for sensitive information
+  - [ ] Set up environment-specific feature flags
+  - [ ] Implement configuration validation and environment checks
+
+- [ ] **Monitoring & Alerting Infrastructure**
+  - [ ] Deploy Prometheus for metrics collection across all environments
+  - [ ] Set up Grafana dashboards for multi-environment visualization
+  - [ ] Configure application performance monitoring alerts
+  - [ ] Set up CloudWatch alarms for infrastructure metrics
+  - [ ] Configure cost monitoring and budget alerts
+  - [ ] Set up PagerDuty or equivalent for incident management
+
+- [ ] **Backup & Disaster Recovery**
+  - [ ] Configure automated database backups for all environments
+  - [ ] Set up disaster recovery procedures and testing
+  - [ ] Implement backup validation and restoration testing
+  - [ ] Create comprehensive runbooks for emergency procedures
+  - [ ] Set up cross-region backup storage for critical data
+
+### Marketing & User Acquisition (Pending Infrastructure Completion)
