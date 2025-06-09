@@ -92,6 +92,7 @@ jobs:
           path: |
             ./docs/project_lifecycle/all_tests/results/
           retention-days: 30
+        timeout-minutes: 5  # Prevent artifact upload from hanging
       
       - name: Store Analytics Test Results
         uses: actions/upload-artifact@v4
@@ -100,6 +101,7 @@ jobs:
           name: analytics-test-results
           path: ./docs/project_lifecycle/all_tests/results/analytics/
           retention-days: 30
+        timeout-minutes: 5  # Prevent artifact upload from hanging
       
       - name: Update Test Summary
         run: |
@@ -195,6 +197,7 @@ jobs:
           path: |
             ./docs/project_lifecycle/all_tests/results/performance/
           retention-days: 14
+        timeout-minutes: 5  # Prevent artifact upload from hanging
       
       - name: Update Load Test Summary
         run: |

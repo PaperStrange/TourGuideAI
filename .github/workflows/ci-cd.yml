@@ -92,6 +92,7 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     if: ${{ !github.event.inputs.skip_tests || github.event.inputs.skip_tests == 'false' }}
+    timeout-minutes: 20  # Prevent long-running builds that cause auth token expiration
     
     strategy:
       matrix:
@@ -119,6 +120,7 @@ jobs:
     
     - name: Install dependencies
       run: npm ci --legacy-peer-deps --prefer-offline
+      timeout-minutes: 10  # Prevent dependency installation from hanging
     
     - name: Dependency Review
       uses: actions/dependency-review-action@v3
@@ -195,6 +197,7 @@ jobs:
         DISABLE_ESLINT_PLUGIN: "true"
         CI: "false"  # Treat warnings as warnings, not errors
         GENERATE_SOURCEMAP: "false"  # Disable sourcemaps for faster builds
+      timeout-minutes: 10  # Prevent build from hanging
     
     - name: Validate Build Output
       run: |
@@ -247,6 +250,7 @@ jobs:
         path: build/
         retention-days: 7
         if-no-files-found: error
+      timeout-minutes: 5  # Prevent artifact upload from hanging
 
   deploy-staging:
     needs: [infrastructure-check, build-and-test]
@@ -704,12 +708,14 @@ jobs:
           docs/project_lifecycle/all_tests/results/
         retention-days: 14
         if-no-files-found: warn
+      timeout-minutes: 5  # Prevent artifact upload from hanging
 
   deployment-summary:
     needs: [infrastructure-check, build-and-test, deploy-staging, deploy-production, comprehensive-testing]
     if: always()
     runs-on: ubuntu-latest
     permissions: {}
+    timeout-minutes: 5  # Prevent summary generation from hanging
     
     steps:
     - name: Deployment Summary
@@ -791,25 +797,10 @@ jobs:
         echo "**Deployment ID**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
         echo "**Triggered by**: ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
         echo "**Branch**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
-
-        # Frontend Tests
-        - name: Run Frontend Tests
-          run: |
-            npm run test:frontend
-          env:
-            CI: true
-          
-        # Backend Tests
-        - name: Run Backend Tests  
-          run: |
-            npm run test:backend
-          env:
-            CI: true
-          
-        # Test Summary
-        - name: Generate Test Summary
-          if: always()
-          run: |
-            echo "## Test Results Summary" >> $GITHUB_STEP_SUMMARY
-            echo "- Frontend Tests: ${{ steps.frontend-tests.outcome }}" >> $GITHUB_STEP_SUMMARY
-            echo "- Backend Tests: ${{ steps.backend-tests.outcome }}" >> $GITHUB_STEP_SUMMARY 
+        
+        # Add test results summary
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "## Test Results Summary" >> $GITHUB_STEP_SUMMARY
+        echo "- Frontend Tests: ${{ needs.build-and-test.result }}" >> $GITHUB_STEP_SUMMARY
+        echo "- Backend Tests: ${{ needs.build-and-test.result }}" >> $GITHUB_STEP_SUMMARY
+        echo "- Infrastructure Check: ${{ needs.infrastructure-check.result }}" >> $GITHUB_STEP_SUMMARY

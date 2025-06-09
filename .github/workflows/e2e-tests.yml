@@ -69,6 +69,7 @@ jobs:
           name: e2e-test-results
           path: docs/project_lifecycle/all_tests/results/
           retention-days: 14
+        timeout-minutes: 5  # Prevent artifact upload from hanging
       
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2

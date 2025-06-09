@@ -281,6 +281,7 @@ PowerShell scripts may be blocked from running due to execution policies. To ena
    ```powershell
    powershell -ExecutionPolicy Bypass -File .\scripts\run-all-tests.ps1
    ```
+- ⏸️ **Staging Deployment**: Automatically skipped 
 
 #### Unix/Linux/macOS Setup
 
