@@ -28,42 +28,53 @@ TourGuideAI is an intelligent virtual tour guide application that uses AI to cre
 ```
 TourGuideAI/
 ├── server/              # Backend server code
-│   ├── routes/          # API routes
-│   ├── models/          # Database models
+│   ├── clients/         # External API clients
+│   ├── config/          # Server configuration
+│   ├── coverage/        # Test coverage reports
 │   ├── middleware/      # Express middleware
+│   ├── models/          # Database models
+│   ├── public/          # Static server assets
+│   ├── routes/          # API routes
+│   ├── scripts/         # Server utility scripts
 │   ├── services/        # Backend services
+│   ├── tests/           # Server-side tests
 │   ├── utils/           # Utility functions
-│   └── tests/           # Server-side tests
+│   └── vault/           # Secure configuration storage
 ├── src/                 # Frontend source code
+│   ├── __mocks__/       # Jest mocks
 │   ├── api/             # API clients and interfaces
 │   ├── components/      # Reusable UI components
+│   ├── config/          # Frontend configuration
 │   ├── contexts/        # React context providers
 │   ├── core/            # Core functionality and services
-│   ├── data/            # Data utilities and storage
-│   ├── features/        # Feature modules
+│   ├── features/        # Feature modules (beta-program, map-visualization, travel-planning, user-profile)
 │   ├── pages/           # Page components
-│   ├── services/        # API interfaces
+│   ├── services/        # Frontend services
 │   ├── styles/          # Global styles
-│   ├── tests/           # Test files
+│   ├── tests/           # Frontend test files
 │   ├── utils/           # Utility functions
 │   ├── App.js           # Main application component
 │   └── index.js         # Entry point
-├── public/              # Public assets
-├── tests/               # Test files
+├── tests/               # End-to-end and integration tests
+│   ├── config/          # Test configuration
+│   ├── cross-browser/   # Cross-browser testing
+│   ├── integration/     # Integration tests
+│   ├── load/            # Load testing
+│   ├── security/        # Security tests
+│   ├── smoke/           # Smoke tests
+│   ├── stability/       # Stability tests
+│   └── user-journey/    # User journey tests
+├── scripts/             # Development and deployment scripts
+│   └── utils/           # Script utilities
 ├── docs/                # Documentation
-│   ├── project.document-inventory.md # Documentation inventory
-│   ├── project.lessons.md # Project lessons learned
-│   ├── technical/       # Technical documentation
-│   ├── pics/            # Images for documentation
-│   ├── prototype/       # Prototype data and mockups
-│   └── project_lifecycle/ # Project management documentation
-├── tools/               # Development and deployment tools
-├── tourai_platform_deploy / # Copy for Render Deployment
-│   ├── backend/ # Backend source code
-│   ├── frontend/ # Frontend source code
-│   ├── scripts/ # Automatic scripts 
-│   ├── render.yaml # Infrastructure-as-code deployment for Render blueprint
-│   └── README.md # Deployment introduction
+│   ├── pics/            # Images and screenshots
+│   ├── project_lifecycle/ # Project management docs (all_tests, deployment, knowledge, etc.)
+│   └── prototype/       # Prototype data and mockups
+├── deployment/          # Deployment configurations
+│   └── production/      # Production deployment files
+├── logs/                # Application logs
+├── patches/             # Code patches
+└── public/              # Public frontend assets
 ```
 
 ## Getting Started

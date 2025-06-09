@@ -27,7 +27,7 @@ This directory contains utility scripts for various operations in the TourGuideA
 - **run-syncservice-test.ps1** - PowerShell script for testing sync services
   - *Note: The older `run_syncservice_test.ps1` is kept for backward compatibility*
 - **run-frontend-tests.ps1** - Located in `/tests/` directory, runs all frontend tests
-- **run-server-tests.ps1** - Located in `/server/tests/` directory, runs all server tests
+- **run-server-tests.ps1** - Runs all server tests from `/server/tests/` directory
 
 ## Deployment Scripts
 
