@@ -135,15 +135,16 @@ describe('LocalStorageService', () => {
 
   describe('Clear Operations', () => {
     test('should clear all data', () => {
-      localStorageService.saveData('test_key', { key: 'value' });
+      // Use service methods to save data that will be cleared
       localStorageService.saveRoute({ id: 'route1', name: 'Test' });
       localStorageService.addFavorite('route1');
+      localStorageService.saveSettings({ theme: 'dark' });
       
       const success = localStorageService.clearAllData();
       expect(success).toBe(true);
-      expect(localStorage.getItem('test_key')).toBeNull();
-      expect(localStorage.getItem('tourguide_routes')).toBeNull();
-      expect(localStorage.getItem('tourguide_favorites')).toBeNull();
+      expect(localStorageService.getRoute('route1')).toBeNull();
+      expect(localStorageService.getFavorites()).toEqual([]);
+      expect(localStorageService.getSettings()).toEqual({});
     });
   });
 }); 

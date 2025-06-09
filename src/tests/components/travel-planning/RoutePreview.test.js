@@ -104,7 +104,7 @@ describe('RoutePreview Component', () => {
 
   it('toggles favorites when favorite button is clicked', async () => {
     const user = userEvent.setup();
-    render(<RoutePreview route={mockRoute} />);
+    const { rerender } = render(<RoutePreview route={mockRoute} />);
     
     // Initially not a favorite
     const favoriteButton = screen.getByText('☆ Add to Favorites');
@@ -117,7 +117,7 @@ describe('RoutePreview Component', () => {
     routeManagementService.getFavoriteRoutes.mockReturnValue([mockRoute]);
     
     // Re-render to simulate state update
-    render(<RoutePreview route={mockRoute} />);
+    rerender(<RoutePreview route={mockRoute} />);
     
     // Now should show as favorited
     expect(screen.getByText('★ Favorited')).toBeInTheDocument();

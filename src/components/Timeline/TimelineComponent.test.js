@@ -64,7 +64,7 @@ describe('TimelineComponent', () => {
     
     // Navigation buttons for each day should be present
     mockTimeline.days.forEach((day, index) => {
-      expect(screen.getByText(`Day ${day.travel_day}`)).toBeInTheDocument();
+      expect(screen.getAllByText(`Day ${day.travel_day}`)).toHaveLength(2); // One in nav, one in card
     });
     
     // Initial day card should be for day 1
@@ -77,14 +77,14 @@ describe('TimelineComponent', () => {
     // Initial day is day 1
     expect(screen.getByTestId('day-number')).toHaveTextContent('Day 1');
     
-    // Click day 2 button
-    fireEvent.click(screen.getByText('Day 2'));
+    // Click day 2 button (get the first one which should be the navigation button)
+    fireEvent.click(screen.getAllByText('Day 2')[0]);
     
     // Day card should now be for day 2
     expect(screen.getByTestId('day-number')).toHaveTextContent('Day 2');
     
-    // Click day 3 button
-    fireEvent.click(screen.getByText('Day 3'));
+    // Click day 3 button (get the first one which should be the navigation button)
+    fireEvent.click(screen.getAllByText('Day 3')[0]);
     
     // Day card should now be for day 3
     expect(screen.getByTestId('day-number')).toHaveTextContent('Day 3');

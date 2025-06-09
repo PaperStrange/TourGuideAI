@@ -27,12 +27,15 @@ jest.mock('../../../pages/HomePage', () => {
   };
 });
 
-jest.mock('../../../components/LoadingProvider', () => {
-  // Pass through the children without the actual loading logic
-  return function MockLoadingProvider({ children }) {
+jest.mock('../../../contexts/LoadingContext', () => ({
+  LoadingProvider: function MockLoadingProvider({ children }) {
     return <div data-testid="loading-provider">{children}</div>;
-  };
-});
+  },
+  useLoading: () => ({
+    isLoading: false,
+    setLoading: jest.fn()
+  })
+}));
 
 describe('Router Structure', () => {
   test('should render Routes properly', () => {

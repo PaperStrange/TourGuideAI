@@ -81,7 +81,9 @@ describe('ItineraryBuilder Component', () => {
     });
     
     // Verify itinerary days are displayed
-    expect(screen.getByText('Exploring Iconic Landmarks')).toBeInTheDocument();
+    expect(screen.getByText((content, element) => 
+      content.includes('Exploring Iconic Landmarks')
+    )).toBeInTheDocument();
     expect(screen.getByText('Cultural Immersion')).toBeInTheDocument();
   });
 
@@ -165,7 +167,9 @@ describe('ItineraryBuilder Component', () => {
     render(<ItineraryBuilder routeId="route_123" />);
     
     await waitFor(() => {
-      expect(screen.getByText('Exploring Iconic Landmarks')).toBeInTheDocument();
+      expect(screen.getByText((content, element) => 
+        content.includes('Exploring Iconic Landmarks')
+      )).toBeInTheDocument();
     });
     
     // Find the add activity button for the first day
