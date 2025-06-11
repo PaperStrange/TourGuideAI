@@ -23,6 +23,317 @@ TourGuideAI is an intelligent virtual tour guide application that uses AI to cre
 - **Global Content Delivery**: Fast and reliable content access worldwide with CDN integration
 - **Monetization**: Subscription-based access with tiered pricing plans
 
+## 🚀 MVP Quick Start (5 minutes to deploy)
+
+**For rapid deployment and testing**, use our simplified MVP version with only essential features:
+- ✅ JWT Authentication
+- ✅ OpenAI Chat Integration  
+- ✅ Google Maps Integration
+- ✅ Basic User Profile
+- ✅ Responsive Material-UI design
+
+### Prerequisites for MVP
+
+1. **API Keys Required:**
+   - [OpenAI API Key](https://platform.openai.com/api-keys)
+   - [Google Maps API Key](https://developers.google.com/maps/gmp-get-started)
+
+2. **Node.js** (v16 or higher)
+
+### MVP Setup Instructions
+
+#### 1. Activate MVP Branch
+```bash
+git checkout mvp-release
+```
+
+#### 2. Install Dependencies
+```bash
+npm install
+```
+
+#### 3. Environment Configuration
+Create a `.env` file in the root directory:
+```env
+# TourGuide AI MVP Environment Configuration
+OPENAI_API_KEY=your_openai_api_key_here
+GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
+JWT_SECRET=your_super_secure_jwt_secret_here_minimum_32_characters
+PORT=3001
+NODE_ENV=production
+
+# Demo Account (CHANGE IN PRODUCTION)
+DEMO_EMAIL=demo@example.com
+DEMO_PASSWORD=demo123
+
+# Rate Limiting
+RATE_LIMIT_WINDOW_MS=900000
+RATE_LIMIT_MAX_REQUESTS=100
+
+# Cache Configuration
+CACHE_TTL=3600000
+```
+
+#### 4. Build and Start
+```bash
+npm run build
+npm run server
+```
+
+Your MVP app will be available at: `http://localhost:3001`
+
+### 🌐 MVP Deployment Options
+
+#### Option 1: Heroku (Recommended)
+```bash
+heroku login
+heroku create your-tourguide-app
+heroku config:set OPENAI_API_KEY=your_key
+heroku config:set GOOGLE_MAPS_API_KEY=your_key
+heroku config:set JWT_SECRET=your_secret
+heroku config:set NODE_ENV=production
+git push heroku mvp-release:main
+```
+
+#### Option 2: Railway
+1. Connect GitHub repo to Railway
+2. Set environment variables in dashboard
+3. Deploy automatically
+
+#### Option 3: DigitalOcean App Platform
+1. Connect GitHub repo
+2. Build command: `npm run build`
+3. Run command: `npm run server`
+4. Set environment variables
+
+### 🔐 MVP Default Test Account
+- **Email:** demo@example.com
+- **Password:** demo123
+
+### 🔄 Switching Back to Full Version
+```bash
+git checkout main
+# Full version automatically restored
+npm install  # Reinstall full dependencies
+```
+
+### 🔧 What's Removed in MVP
+
+The MVP version removes these complex features:
+- ❌ Beta program features
+- ❌ Role-based access control
+- ❌ Analytics dashboard
+- ❌ Email verification
+- ❌ Admin dashboard
+- ❌ Invite code system
+- ❌ Feedback collection
+- ❌ Complex testing framework
+- ❌ Performance monitoring
+
+### ✅ What's Included in MVP
+
+- ✅ Simple JWT authentication
+- ✅ OpenAI chat integration
+- ✅ Google Maps integration
+- ✅ Basic user profiles
+- ✅ Responsive Material-UI design
+- ✅ Core routing (Home, Chat, Map, Profile)
+
+### 📝 MVP Post-Deployment Steps
+
+1. **Test the application:**
+   - Register a new account
+   - Try the chat feature
+   - Test the map functionality
+
+2. **Configure your APIs:**
+   - Ensure OpenAI API key has sufficient credits
+   - Enable necessary Google Maps APIs
+
+3. **Security:**
+   - Change the default JWT secret
+   - Remove or change the demo account
+
+### 🆘 MVP Troubleshooting
+
+#### Common Issues:
+
+1. **"Cannot GET /" error:**
+   - Make sure you're using the MVP server: `node server/mvp-server.js`
+
+2. **API Key errors:**
+   - Verify your environment variables
+   - Check API key permissions
+
+3. **Build errors:**
+   - Delete `node_modules` and `package-lock.json`
+   - Run `npm install` again
+
+#### Support
+
+If you need help with deployment:
+1. Check the console logs for error messages
+2. Verify all environment variables are set
+3. Test locally first before deploying
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 16+
+- npm 7+
+- MongoDB 4+
+- Google Maps API key
+- OpenAI API key
+
+### Installation
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/yourusername/tourguideai.git
+   cd tourguideai
+   ```
+
+2. Install dependencies:
+   ```
+   npm install
+   ```
+
+3. Set up environment variables:
+   ```
+   cp .env.example .env
+   ```
+   Edit the `.env` file with your API keys and configuration.
+
+4. Start the development server:
+   ```
+   npm run dev
+   ```
+
+### API Configuration and Token Access
+
+#### Environment Variables Template
+
+For full development setup, create a `.env` file with the following configuration:
+
+```env
+# TourGuide AI Full Development Configuration
+
+# OpenAI Configuration
+OPENAI_API_KEY=your_openai_api_key_here
+
+# Google Maps Configuration  
+GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
+
+# Authentication
+JWT_SECRET=your_super_secure_jwt_secret_here_minimum_32_characters
+
+# Database Configuration
+MONGODB_URI=mongodb://localhost:27017/tourguideai
+DATABASE_NAME=tourguideai
+
+# Server Configuration
+PORT=3001
+NODE_ENV=development
+
+# Translation Service
+DEEPL_API_KEY=your_deepl_api_key_here
+
+# Email Configuration (for full version)
+EMAIL_SERVICE=gmail
+EMAIL_USER=your_email@gmail.com
+EMAIL_PASSWORD=your_app_password
+
+# Rate Limiting
+RATE_LIMIT_WINDOW_MS=900000
+RATE_LIMIT_MAX_REQUESTS=100
+
+# Cache Configuration
+CACHE_TTL=3600000
+REDIS_URL=redis://localhost:6379
+
+# File Upload Configuration
+MAX_FILE_SIZE=5242880
+ALLOWED_FILE_TYPES=image/jpeg,image/png,image/gif
+
+# Analytics (optional)
+GOOGLE_ANALYTICS_ID=your_ga_id_here
+```
+
+#### Getting API Keys
+
+##### Google Maps API
+1. Go to the [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project or select an existing one
+3. Navigate to "APIs & Services" > "Dashboard"
+4. Click "+ ENABLE APIS AND SERVICES"
+5. Search for and enable the following APIs:
+   - Maps JavaScript API
+   - Places API
+   - Directions API
+   - Geocoding API
+6. Go to "APIs & Services" > "Credentials"
+7. Click "Create credentials" > "API key"
+8. Restrict the API key to the APIs listed above
+9. Copy the API key to your `.env` file
+
+##### OpenAI API
+1. Go to [OpenAI's website](https://platform.openai.com/)
+2. Sign up or log in to your account
+3. Navigate to the API section
+4. Create a new API key
+5. Copy the API key to your `.env` file
+6. Set up billing to ensure API access
+
+##### Translation Service API (Optional)
+1. Go to the [DeepL API portal](https://www.deepl.com/pro-api)
+2. Sign up for a developer account
+3. Navigate to your account dashboard
+4. Create a new API key
+5. Copy the API key to your `.env` file
+
+##### JWT Secret Generation
+Generate a secure random string (minimum 32 characters):
+```bash
+# Using OpenSSL
+openssl rand -base64 32
+
+# Using Node.js
+node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"
+```
+
+#### Setting up API and tokens
+1. Set up API tokens:
+   ```
+   npm run setup:tokens
+   ```
+
+2. Configure API access:
+   ```
+   npm run configure:api
+   ```
+
+3. Verify API configuration:
+   ```
+   npm run verify:api
+   ```
+   This will check if all required API endpoints are accessible.
+
+4. Generate access tokens for development:
+   ```
+   npm run generate:dev-tokens
+   ```
+   These tokens are valid for 7 days and are required for local development.
+
+#### Security Notes
+
+- **Never commit your .env file to version control**
+- Change the demo account credentials in production
+- Use strong, unique passwords and secrets
+- Regularly rotate your API keys
+- Enable API key restrictions and monitoring
+- Use environment-specific configurations for different deployment stages
+
 ## Project Structure
 
 ```
@@ -76,97 +387,6 @@ TourGuideAI/
 ├── patches/             # Code patches
 └── public/              # Public frontend assets
 ```
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 16+
-- npm 7+
-- MongoDB 4+
-- Google Maps API key
-- OpenAI API key
-
-### Installation
-
-1. Clone the repository:
-   ```
-   git clone https://github.com/yourusername/tourguideai.git
-   cd tourguideai
-   ```
-
-2. Install dependencies:
-   ```
-   npm install
-   ```
-
-3. Set up environment variables:
-   ```
-   cp .env.example .env
-   ```
-   Edit the `.env` file with your API keys and configuration.
-
-4. Start the development server:
-   ```
-   npm run dev
-   ```
-
-### API Configuration and Token Access
-
-#### Getting API Keys
-
-##### Google Maps API
-1. Go to the [Google Cloud Console](https://console.cloud.google.com/)
-2. Create a new project or select an existing one
-3. Navigate to "APIs & Services" > "Dashboard"
-4. Click "+ ENABLE APIS AND SERVICES"
-5. Search for and enable the following APIs:
-   - Maps JavaScript API
-   - Places API
-   - Directions API
-   - Geocoding API
-6. Go to "APIs & Services" > "Credentials"
-7. Click "Create credentials" > "API key"
-8. Restrict the API key to the APIs listed above
-9. Copy the API key to your `.env` file
-
-##### OpenAI API
-1. Go to [OpenAI's website](https://platform.openai.com/)
-2. Sign up or log in to your account
-3. Navigate to the API section
-4. Create a new API key
-5. Copy the API key to your `.env` file
-6. Set up billing to ensure API access
-
-##### Translation Service API
-1. Go to the [DeepL API portal](https://www.deepl.com/pro-api)
-2. Sign up for a developer account
-3. Navigate to your account dashboard
-4. Create a new API key
-5. Copy the API key to your `.env` file
-
-#### Setting up API and tokens
-1. Set up API tokens:
-   ```
-   npm run setup:tokens
-   ```
-
-2. Configure API access:
-   ```
-   npm run configure:api
-   ```
-
-3. Verify API configuration:
-   ```
-   npm run verify:api
-   ```
-   This will check if all required API endpoints are accessible.
-
-4. Generate access tokens for development:
-   ```
-   npm run generate:dev-tokens
-   ```
-   These tokens are valid for 7 days and are required for local development.
 
 ## Development Workflow
 
