@@ -14,7 +14,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Configuration
-MVP_VERSION="1.0.0"
+MVP_VERSION="1.0.0-MVP"
 BUILD_DIR="build"
 DEPLOY_TARGET="${1:-railway}"
 ENVIRONMENT="${2:-production}"

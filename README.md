@@ -433,7 +433,7 @@ The project is organized into multiple development phases:
 
 ### Current Version
 
-**Current Version:** 1.0.0-RC1 (May 30, 2025)
+**Current Version:** 1.0.0-MVP (June 12, 2025)
 
 TourGuideAI follows semantic versioning (MAJOR.MINOR.PATCH) as defined in our [Version Control Documentation](docs/project_lifecycle/version_control/references/version-control.md).
 

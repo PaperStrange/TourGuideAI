@@ -17,13 +17,13 @@ describe('CacheService', () => {
 
   describe('Initialization', () => {
     test('should initialize with correct cache version', () => {
-      expect(localStorage.getItem('tourguide_cache_version')).toBe('1.0.0');
+      expect(localStorage.getItem('tourguide_cache_version')).toBe('1.0.0-MVP');
     });
 
     test('should clear cache when version changes', () => {
       localStorage.setItem('tourguide_cache_version', '0.9.0');
       cacheService.initialize();
-      expect(localStorage.getItem('tourguide_cache_version')).toBe('1.0.0');
+      expect(localStorage.getItem('tourguide_cache_version')).toBe('1.0.0-MVP');
     });
   });
 
