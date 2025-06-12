@@ -17,9 +17,26 @@ const users = [
   }
 ];
 
+// Security middleware for MVP
+app.use((req, res, next) => {
+  // Basic security headers for MVP deployment
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  // Remove X-Powered-By header
+  res.removeHeader('X-Powered-By');
+  next();
+});
+
 // Middleware
-app.use(cors());
-app.use(express.json());
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' 
+    ? process.env.FRONTEND_URL || false 
+    : true,
+  credentials: true
+}));
+app.use(express.json({ limit: '10mb' }));
 app.use(express.static(path.join(__dirname, '../build')));
 
 // JWT secret (use a secure secret in production)

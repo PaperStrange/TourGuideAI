@@ -25,9 +25,12 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "test": "react-scripts test",
+    "test:ci": "react-scripts test --watchAll=false --coverage --testTimeout=10000",
     "server": "node server/mvp-server.js",
     "dev": "concurrently \"PORT=3000 npm run start\" \"PORT=3001 npm run server\"",
-    "deploy": "npm run build"
+    "deploy": "npm run build",
+    "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx"
   },
   "eslintConfig": {
     "extends": [
@@ -48,6 +51,10 @@
     ]
   },
   "devDependencies": {
-    "concurrently": "^8.2.1"
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "concurrently": "^8.2.1",
+    "eslint": "^8.57.1"
   }
 }
