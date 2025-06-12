@@ -5,32 +5,37 @@ This document clarifies the deployment strategy for TourGuideAI, explaining the 
 
 ## Deployment Approaches
 
-### 1. Simple Deployment (`scripts/deploy.sh`)
+### 1. MVP Deployment (`scripts/deploy-mvp.sh`)
 
-**Purpose**: Development and staging environments
+**Purpose**: Optimized MVP deployment with comprehensive features
 
 **Characteristics**:
-- Direct npm-based deployment
-- Single server architecture
-- No containerization
-- Basic process management
-- Suitable for development/testing
+- Advanced security checks and vulnerability scanning
+- Core test validation before deployment  
+- Multi-platform support (Railway, Vercel, Heroku)
+- Build optimization and verification
+- Error handling and rollback capabilities
+- Color-coded output for clarity
 
 **Use Cases**:
-- Local development testing
-- Staging environment deployment
-- Quick prototyping and demos
-- Development team testing
+- MVP launch deployment
+- Multi-platform deployment testing
+- Production-ready MVP releases
+- CI/CD pipeline integration
 
 **Deployment Process**:
-1. Stop existing processes
-2. Build frontend assets
-3. Start server in production mode
+1. Pre-deployment validation (Node.js, npm, directory check)
+2. Core MVP test execution (38 critical tests)
+3. Security audit (hardcoded secrets detection)
+4. Production build creation and optimization
+5. Backend health check validation
+6. Platform-specific deployment instructions
 
 **Requirements**:
 - Node.js and npm installed
-- Basic server environment
-- No external infrastructure dependencies
+- Environment variables properly configured
+- JWT secret (32+ characters) for security
+- Platform-specific API keys (OpenAI, Google Maps)
 
 ### 2. Production Deployment (`deployment/production/`)
 
@@ -73,28 +78,28 @@ This document clarifies the deployment strategy for TourGuideAI, explaining the 
 ### Deployment Pipeline
 
 ```
-Development → Simple Deployment (Staging) → Production Deployment (Live)
+Development → MVP Deployment (Testing/Staging) → Production Deployment (Live)
 ```
 
 ## Implementation Recommendations
 
-### Phase 1: Infrastructure Preparation (Current Priority)
+### Phase 1: MVP Launch (Current Priority)
+- Use optimized `scripts/deploy-mvp.sh` for rapid MVP deployment
+- Deploy to chosen platform (Railway, Vercel, or Heroku)  
+- Validate core functionality with 38 critical tests
+- Monitor initial user feedback and performance
+
+### Phase 2: Infrastructure Scaling
 - Complete [Deployment Preparation Checklist](project.deployment-preparation-checklist.md)
-- Set up cloud infrastructure
-- Obtain API keys and certificates
-- Configure production environment
+- Set up enterprise-grade production infrastructure
+- Migrate from MVP deployment to full production deployment
+- Implement comprehensive monitoring and alerting
 
-### Phase 2: Deployment Validation
-- Test production deployment in staging environment
-- Validate all services and integrations
-- Perform security and performance testing
-- Document operational procedures
-
-### Phase 3: Launch Preparation
-- Complete marketing and user acquisition setup
-- Implement customer support infrastructure
-- Set up monetization systems
-- Final pre-launch testing
+### Phase 3: Enterprise Features
+- Add advanced features requiring complex infrastructure
+- Implement multi-region deployment
+- Set up disaster recovery and backup systems
+- Complete security hardening and compliance
 
 ## Documentation Updates
 
@@ -118,10 +123,12 @@ Development → Simple Deployment (Staging) → Production Deployment (Live)
 
 ## Current Status
 
-### Simple Deployment
-- ✅ **Ready**: Can be used immediately for development/staging
-- ✅ **Tested**: Basic functionality validated
-- ✅ **Documented**: Basic usage documented
+### MVP Deployment
+- ✅ **Ready**: Optimized script with security checks and test validation
+- ✅ **Tested**: 38/38 core MVP tests passing
+- ✅ **Multi-Platform**: Supports Railway, Vercel, Heroku deployment
+- ✅ **Secure**: Zero hardcoded secrets, environment variable validation
+- ✅ **Documented**: Comprehensive usage and deployment guides
 
 ### Production Deployment
 - ❌ **Not Ready**: Requires infrastructure setup (see checklist)

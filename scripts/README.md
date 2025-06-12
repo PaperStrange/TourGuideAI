@@ -3,8 +3,11 @@
 This directory contains utility scripts for various operations in the TourGuideAI project.
 
 ## Deployment Scripts
-- **deploy.sh** - Builds the frontend and starts the server in production mode
-  - Usage: `./deploy.sh`
+- **deploy-mvp.sh** - Optimized MVP deployment with security checks, test validation, and multi-platform support (Railway, Vercel, Heroku)
+  - Usage: `./scripts/deploy-mvp.sh [platform] [environment]`
+  - Example: `./scripts/deploy-mvp.sh railway production`
+- **deploy-to-cdn.js** - Deploys static assets to CDN
+  - Usage: `node scripts/deploy-to-cdn.js [--dry-run] [--invalidate-all]`
 
 ## All Platform Test Scripts
 
@@ -44,12 +47,11 @@ This directory contains utility scripts for various operations in the TourGuideA
 Most scripts can be run directly from the scripts directory. For example:
 
 ```bash
-# Run from project root
-./scripts/deploy.sh
+# Run MVP deployment from project root
+./scripts/deploy-mvp.sh railway production
 
-# Or navigate to scripts directory first
-cd scripts
-./deploy.sh
+# Or for CDN deployment
+node scripts/deploy-to-cdn.js
 ```
 
 For JavaScript scripts, use Node.js:

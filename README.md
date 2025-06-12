@@ -581,7 +581,7 @@ TourGuideAI uses a comprehensive multi-environment deployment strategy supportin
 
 We maintain two deployment approaches:
 
-1. **Simple Deployment** (`scripts/deploy.sh`) - For development and staging environments
+1. **MVP Deployment** (`scripts/deploy-mvp.sh`) - Optimized MVP deployment with security checks and multi-platform support
 2. **Production Deployment** (`deployment/production/`) - Enterprise-grade Docker-based deployment
 
 For detailed information, see our [Deployment Strategy](docs/project_lifecycle/deployment/plans/project.deployment-strategy.md).
