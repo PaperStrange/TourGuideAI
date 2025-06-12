@@ -39,8 +39,15 @@ app.use(cors({
 app.use(express.json({ limit: '10mb' }));
 app.use(express.static(path.join(__dirname, '../build')));
 
-// JWT secret (use a secure secret in production)
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
+// JWT secret (MUST be set via environment variable for security)
+const JWT_SECRET = process.env.JWT_SECRET;
+
+// Validate JWT secret is properly configured
+if (!JWT_SECRET || JWT_SECRET.length < 32) {
+  console.error('❌ SECURITY ERROR: JWT_SECRET environment variable must be set and at least 32 characters long');
+  console.error('   Generate a secure secret: node -e "console.log(require(\'crypto\').randomBytes(64).toString(\'hex\'))"');
+  process.exit(1);
+}
 
 // Simple authentication middleware
 const authenticateToken = (req, res, next) => {
