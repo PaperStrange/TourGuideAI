@@ -318,65 +318,7 @@ const MapPage = () => {
     };
   }, []);
   
-  // Helper function to transform the OpenAI route data format to our app's format
-  const transformRouteData = (openaiRoute, query) => {
-    if (!openaiRoute) return mockRouteData;
-    
-    try {
-      // Create a transformed route object
-      const transformedRoute = {
-        user_profile: "https://randomuser.me/api/portraits/men/1.jpg", // Default profile
-        user_name: "current_user",
-        user_route_id: `route-${Date.now()}`,
-        user_route_rank: 1,
-        created_date: new Date().toISOString().split('T')[0],
-        upvotes: 0,
-        user_route_name: openaiRoute.route_name || `${openaiRoute.destination} Trip`,
-        travel_split_by_day: []
-      };
-      
-      // Transform daily itinerary into travel_split_by_day format
-      if (openaiRoute.daily_itinerary && Array.isArray(openaiRoute.daily_itinerary)) {
-        transformedRoute.travel_split_by_day = openaiRoute.daily_itinerary.map((day, dayIndex) => {
-          // Get activities for the day
-          const activities = day.activities || [];
-          
-          // Create routes between activities
-          const routes = [];
-          for (let i = 0; i < activities.length - 1; i++) {
-            const departure = activities[i];
-            const arrival = activities[i + 1];
-            
-            routes.push({
-              route_id: `r${dayIndex + 1}-${i + 1}`,
-              departure_site: departure.activity.split(' at ')[1] || departure.activity,
-              arrival_site: arrival.activity.split(' at ')[1] || arrival.activity,
-              departure_time: `${new Date().getFullYear()}/${String(new Date().getMonth() + 1).padStart(2, '0')}/${String(dayIndex + 1).padStart(2, '0')} ${departure.time}`,
-              arrival_time: `${new Date().getFullYear()}/${String(new Date().getMonth() + 1).padStart(2, '0')}/${String(dayIndex + 1).padStart(2, '0')} ${arrival.time}`,
-              user_time_zone: "Local",
-              transportation_type: getRandomTransportation(),
-              duration: getRandomDuration(),
-              duration_unit: "minute",
-              distance: getRandomDistance(),
-              distance_unit: "mile",
-              recommended_reason: getRecommendationFromActivity(arrival.activity)
-            });
-          }
-          
-          return {
-            travel_day: day.day || dayIndex + 1,
-            current_date: `${new Date().getFullYear()}/${String(new Date().getMonth() + 1).padStart(2, '0')}/${String(dayIndex + 1).padStart(2, '0')}`,
-            dairy_routes: routes
-          };
-        });
-      }
-      
-      return transformedRoute;
-    } catch (error) {
-      console.error('Error transforming route data:', error);
-      return mockRouteData;
-    }
-  };
+  // Removed duplicate transformRouteData function - using the useCallback version above
   
   // Helper functions to generate random data when real data is not available
   const getRandomTransportation = () => {
