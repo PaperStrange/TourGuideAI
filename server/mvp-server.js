@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const path = require('path');
+const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 
 const app = express();
@@ -29,6 +30,81 @@ app.use((req, res, next) => {
   next();
 });
 
+// JWT secret (MUST be set via environment variable for security)
+const JWT_SECRET = process.env.JWT_SECRET;
+
+// Validate JWT secret is properly configured
+if (!JWT_SECRET || JWT_SECRET.length < 32) {
+  console.error('❌ SECURITY ERROR: JWT_SECRET environment variable must be set and at least 32 characters long');
+  console.error('   Generate a secure secret: node -e "console.log(require(\'crypto\').randomBytes(64).toString(\'hex\'))"');
+  process.exit(1);
+}
+
+// Rate limiting configuration
+const globalLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per windowMs
+  message: {
+    error: {
+      status: 429,
+      code: 'RATE_LIMIT_EXCEEDED',
+      message: 'Too many requests from this IP, please try again later'
+    }
+  },
+  standardHeaders: true,
+  legacyHeaders: false
+});
+
+// OpenAI specific rate limiter (more restrictive due to API costs)
+const openaiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 20, // Limit each IP to 20 OpenAI requests per 15 minutes
+  message: {
+    error: {
+      status: 429,
+      code: 'OPENAI_RATE_LIMIT_EXCEEDED',
+      message: 'Too many OpenAI API requests, please try again later'
+    }
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+  keyGenerator: (req) => {
+    // Rate limit by IP + user ID for better control
+    return `openai:${req.ip}:${req.user?.sub || 'anonymous'}`;
+  }
+});
+
+// Maps API rate limiter
+const mapsLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 50, // Limit each IP to 50 Maps requests per 15 minutes
+  message: {
+    error: {
+      status: 429,
+      code: 'MAPS_RATE_LIMIT_EXCEEDED',
+      message: 'Too many Maps API requests, please try again later'
+    }
+  },
+  standardHeaders: true,
+  legacyHeaders: false
+});
+
+// Stricter rate limiting for auth endpoints (prevent brute force attacks)
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5, // Limit each IP to 5 login attempts per 15 minutes
+  message: {
+    error: {
+      status: 429,
+      code: 'AUTH_RATE_LIMIT_EXCEEDED',
+      message: 'Too many authentication attempts, please try again later'
+    }
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+  skipSuccessfulRequests: true // Don't count successful logins against the limit
+});
+
 // Middleware
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
@@ -39,15 +115,8 @@ app.use(cors({
 app.use(express.json({ limit: '10mb' }));
 app.use(express.static(path.join(__dirname, '../build')));
 
-// JWT secret (MUST be set via environment variable for security)
-const JWT_SECRET = process.env.JWT_SECRET;
-
-// Validate JWT secret is properly configured
-if (!JWT_SECRET || JWT_SECRET.length < 32) {
-  console.error('❌ SECURITY ERROR: JWT_SECRET environment variable must be set and at least 32 characters long');
-  console.error('   Generate a secure secret: node -e "console.log(require(\'crypto\').randomBytes(64).toString(\'hex\'))"');
-  process.exit(1);
-}
+// Apply global rate limiting to all API routes
+app.use('/api/', globalLimiter);
 
 // Simple authentication middleware
 const authenticateToken = (req, res, next) => {
@@ -72,8 +141,8 @@ app.get('/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
-// Auth endpoints
-app.post('/api/auth/login', (req, res) => {
+// Auth endpoints (with rate limiting for security)
+app.post('/api/auth/login', authLimiter, (req, res) => {
   const { email, password } = req.body;
   
   const user = users.find(u => u.email === email && u.password === password);
@@ -93,7 +162,7 @@ app.post('/api/auth/login', (req, res) => {
   });
 });
 
-app.post('/api/auth/register', (req, res) => {
+app.post('/api/auth/register', authLimiter, (req, res) => {
   const { email, password, name } = req.body;
   
   // Check if user already exists
@@ -122,8 +191,8 @@ app.post('/api/auth/register', (req, res) => {
   });
 });
 
-// OpenAI API proxy (protected)
-app.post('/api/openai/chat', authenticateToken, async (req, res) => {
+// OpenAI API proxy (protected with rate limiting)
+app.post('/api/openai/chat', authenticateToken, openaiLimiter, async (req, res) => {
   try {
     const { OpenAI } = require('openai');
     const openai = new OpenAI({
@@ -146,8 +215,8 @@ app.post('/api/openai/chat', authenticateToken, async (req, res) => {
   }
 });
 
-// Google Maps API proxy (protected)
-app.get('/api/maps/places', authenticateToken, async (req, res) => {
+// Google Maps API proxy (protected with rate limiting)
+app.get('/api/maps/places', authenticateToken, mapsLimiter, async (req, res) => {
   try {
     const { query } = req.query;
     // Simple proxy to Google Places API
