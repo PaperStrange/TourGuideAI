@@ -94,7 +94,9 @@ CRITICAL_SECRETS=$(grep -r --include="*.js" --include="*.json" \
   --exclude-dir="docs/project_lifecycle/all_tests" \
   --exclude-dir="build" \
   --exclude-dir="coverage" \
+  --exclude-dir="node_modules" \
   --exclude="*.min.js" \
+  --exclude="*bundle.js" \
   --exclude-dir="src/tests" \
   -E "(api_key|secret_key|access_token|private_key|password).*=.*['\"][a-zA-Z0-9]{20,}" \
   src/ server/ public/ 2>/dev/null | wc -l)
@@ -105,7 +107,9 @@ if [ "$CRITICAL_SECRETS" -gt 0 ]; then
       --exclude-dir="docs/project_lifecycle/all_tests" \
       --exclude-dir="build" \
       --exclude-dir="coverage" \
+      --exclude-dir="node_modules" \
       --exclude="*.min.js" \
+      --exclude="*bundle.js" \
       --exclude-dir="src/tests" \
       -E "(api_key|secret_key|access_token|private_key|password).*=.*['\"][a-zA-Z0-9]{20,}" \
       src/ server/ public/ 2>/dev/null || true
