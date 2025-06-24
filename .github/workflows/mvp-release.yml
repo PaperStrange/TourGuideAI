@@ -86,9 +86,21 @@ jobs:
       run: |
         echo "🏥 Testing backend health endpoints..."
         cd server
+        echo "📦 Installing server dependencies..."
+        npm ci --no-audit --no-fund
+        echo "🚀 Starting server..."
+        export NODE_ENV=test
+        export JWT_SECRET="test-jwt-secret-for-ci-health-check-minimum-32-chars-long"
+        export PORT=3000
+        export VAULT_BACKEND=in-memory
+        export VAULT_ENCRYPTION_KEY=test-encryption-key
+        export VAULT_SALT=test-salt
         timeout 30s npm start &
-        sleep 10
-        curl -f http://localhost:3000/health || exit 1
+        SERVER_PID=$!
+        sleep 15
+        echo "🏥 Testing health endpoint..."
+        curl -f http://localhost:3001/health && echo "✅ Health check successful!" || (echo "❌ Health check failed" && kill $SERVER_PID && exit 1)
+        echo "✅ Health check passed!"
         pkill -f "node.*server.js" || true
 
     - name: Store build artifacts
