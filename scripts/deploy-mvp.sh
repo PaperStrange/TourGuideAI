@@ -69,12 +69,17 @@ fi
 
 print_success "Environment validation passed"
 
-# Step 2: MVP Core Tests (Critical)
+# Step 2: Install Dependencies and Run MVP Core Tests (Critical)
+print_step "Installing dependencies for testing"
+
+echo "Installing all dependencies (including dev dependencies for testing)..."
+npm ci --no-audit --no-fund
+
 print_step "Running MVP core tests"
 
 echo "Testing core MVP components..."
-if npm test -- --testPathPattern="(apiStatus|ProfilePage|ErrorBoundary|RoutePreview|ItineraryBuilder)" --watchAll=false --passWithNoTests --silent; then
-    print_success "Core MVP tests passed (38/38)"
+if npx react-scripts test --testPathPattern="(apiStatus|ProfilePage|ErrorBoundary|RoutePreview|ItineraryBuilder)" --watchAll=false --passWithNoTests --silent; then
+    print_success "Core MVP tests passed"
 else
     print_error "Core MVP tests failed"
     echo "MVP deployment cannot proceed with failing core tests"
@@ -120,11 +125,10 @@ fi
 # Step 4: Build Production Bundle
 print_step "Building production bundle"
 
-echo "Installing dependencies..."
-npm ci --production --no-audit --no-fund
+echo "Dependencies already installed, proceeding with build..."
 
 echo "Building React application..."
-if DISABLE_ESLINT_PLUGIN=true CI=false GENERATE_SOURCEMAP=false npm run build; then
+if DISABLE_ESLINT_PLUGIN=true CI=false GENERATE_SOURCEMAP=false npx react-scripts build; then
     print_success "Production build completed"
     
     # Check build size
@@ -138,11 +142,20 @@ fi
 # Step 5: Backend Health Check
 print_step "Backend health validation"
 
-echo "Testing backend server..."
+echo "Installing server dependencies..."
 cd server
-timeout 30s npm start &
+npm ci --no-audit --no-fund
+
+echo "Testing backend server..."
+export NODE_ENV=test
+export JWT_SECRET="deployment-test-jwt-secret-for-health-check-minimum-32-chars-long"
+export PORT=3000
+export VAULT_BACKEND=in-memory
+export VAULT_ENCRYPTION_KEY=test-encryption-key
+export VAULT_SALT=test-salt
+timeout 30s node mvp-server.js &
 SERVER_PID=$!
-sleep 10
+sleep 15
 
 if curl -f http://localhost:3000/health >/dev/null 2>&1; then
     print_success "Backend health check passed"
