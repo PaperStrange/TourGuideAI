@@ -7,6 +7,12 @@
 
 import * as openaiApi from '../../api/openaiApi';
 
+// Mock the API key configuration before any tests run
+beforeAll(() => {
+  // Mock the API key to prevent configuration errors
+  openaiApi.setApiKey('test-api-key-mock');
+});
+
 // Mock setApiKey method to avoid actual API calls
 jest.mock('../../api/openaiApi', () => {
   const originalModule = jest.requireActual('../../api/openaiApi');

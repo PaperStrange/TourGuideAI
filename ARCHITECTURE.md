@@ -8,58 +8,53 @@ The project follows a feature-based architecture, with shared code extracted int
 
 ```
 src/
-├── core/                     # Shared code across features
-│   ├── api/                  # API clients for external services
-│   ├── components/           # Shared UI components
-│   ├── services/             # Shared application services
-│   │   └── storage/          # Storage services (cache, local storage, sync)
-│   └── utils/                # Utility functions and helpers
-│       └── imageUtils.js     # Image optimization utilities
-│
-├── features/                 # Feature modules
-│   ├── travel-planning/      # Travel itinerary planning feature
-│   │   ├── components/       # Feature-specific components
-│   │   └── services/         # Feature-specific services
-│   │
-│   ├── map-visualization/    # Map visualization feature
-│   │   ├── components/       # Feature-specific components
-│   │   └── services/         # Feature-specific services
-│   │
-│   ├── user-profile/         # User profile management feature
-│   │   ├── components/       # Feature-specific components
-│   │   └── services/         # Feature-specific services
-│   │
-│   └── beta-program/         # Beta program management feature
-│       ├── components/       # Beta program components
-│       │   ├── analytics/    # Analytics dashboard components
-│       │   ├── auth/         # Authentication components
-│       │   ├── feedback/     # Feedback collection components
-│       │   ├── onboarding/   # User onboarding components
-│       │   │   ├── CodeRedemptionForm.jsx # Beta code redemption
-│       │   │   ├── UserProfileSetup.jsx   # User profile configuration
-│       │   │   ├── PreferencesSetup.jsx   # User preferences configuration
-│       │   │   ├── WelcomeScreen.jsx      # Final onboarding welcome
-│       │   │   └── OnboardingFlow.jsx     # Orchestrates the onboarding process
-│       │   ├── survey/       # Survey components
-│       │   │   ├── SurveyBuilder.jsx      # Interface for creating surveys
-│       │   │   ├── SurveyList.jsx         # Survey management interface
-│       │   │   └── SurveyResponse.jsx     # Survey response visualization
-│       │   └── user/         # User management components
-│       ├── pages/            # Beta program pages
-│       └── services/         # Beta program services
-│           ├── AuthService.js       # Authentication service
-│           ├── InviteCodeService.js # Invite code management
-│           ├── NotificationService.js # Email notifications
-│           ├── PermissionsService.js  # RBAC permissions
-│           ├── SurveyService.js     # Survey creation and management
-│           ├── AnalyticsService.js  # Usage analytics and reporting
-│           └── FeedbackService.js   # Feedback collection
-│
+├── __mocks__/                # Jest mocks
+├── api/                      # API clients and interfaces
+├── components/               # Reusable UI components
+│   ├── common/               # Common shared components
+│   └── Timeline/             # Timeline component
+├── config/                   # Frontend configuration
 ├── contexts/                 # React contexts for state management
-│
-├── pages/                    # Page components (compositions of features)
-│
-└── styles/                   # Global styles and themes
+├── core/                     # Core functionality and services
+│   ├── api/                  # API clients for external services
+│   └── services/             # Shared application services
+│       └── storage/          # Storage services (cache, local storage, sync)
+├── features/                 # Feature modules
+│   ├── beta-program/         # Beta program management feature
+│   │   ├── components/       # Beta program components
+│   │   │   ├── admin/        # Admin components
+│   │   │   ├── analytics/    # Analytics dashboard components
+│   │   │   ├── auth/         # Authentication components
+│   │   │   ├── community/    # Community components
+│   │   │   ├── feature-request/ # Feature request components
+│   │   │   ├── feedback/     # Feedback collection components
+│   │   │   ├── onboarding/   # User onboarding components
+│   │   │   ├── survey/       # Survey components
+│   │   │   ├── task-prompts/ # Task prompt components
+│   │   │   ├── user/         # User management components
+│   │   │   ├── user-testing/ # User testing components
+│   │   │   └── ux-audit/     # UX audit components
+│   │   ├── contexts/         # Beta program contexts
+│   │   ├── hooks/            # Beta program hooks
+│   │   ├── layouts/          # Beta program layouts
+│   │   ├── pages/            # Beta program pages
+│   │   ├── routes/           # Beta program routes
+│   │   └── services/         # Beta program services
+│   │       ├── analytics/    # Analytics services
+│   │       └── feedback/     # Feedback services
+│   ├── map-visualization/    # Map visualization feature
+│   ├── travel-planning/      # Travel itinerary planning feature
+│   │   ├── components/       # Travel planning components
+│   │   └── services/         # Travel planning services
+│   └── user-profile/         # User profile management feature
+├── pages/                    # Page components
+├── services/                 # Frontend services
+│   └── storage/              # Storage services
+├── styles/                   # Global styles and themes
+├── tests/                    # Frontend test files
+├── utils/                    # Utility functions
+├── App.js                    # Main application component
+└── index.js                  # Entry point
 ```
 
 ## Server Structure
@@ -68,18 +63,24 @@ The server component uses a layered architecture:
 
 ```
 server/
+├── clients/                  # External API clients
+├── config/                   # Environment configuration
+├── coverage/                 # Test coverage reports
+├── middleware/               # Express middleware
+│   ├── authMiddleware.js     # Authentication middleware
+│   └── rbacMiddleware.js     # Role-based access control
+├── models/                   # Database models
+├── public/                   # Static server assets
 ├── routes/                   # API route handlers
 │   ├── auth.js               # Authentication routes
 │   ├── inviteCodes.js        # Invite code management routes
 │   └── email.js              # Email notification routes
-├── middleware/               # Express middleware
-│   ├── authMiddleware.js     # Authentication middleware
-│   └── rbacMiddleware.js     # Role-based access control
-├── utils/                    # Utility functions
-├── logs/                     # Server logs
+├── scripts/                  # Server utility scripts
 ├── services/                 # Server services
 │   └── emailService.js       # SendGrid email service
-└── config/                   # Environment configuration
+├── tests/                    # Server-side tests
+├── utils/                    # Utility functions
+└── vault/                    # Secure configuration storage
 ```
 
 ## Public Files
@@ -110,16 +111,16 @@ Deployment and CI/CD configuration:
 
 ```
 tests/
-├── unit/                     # Unit tests
-├── integration/              # Integration tests
+├── config/                   # Test configuration files
 ├── cross-browser/            # Cross-browser compatibility tests
-│   ├── browser-test-matrix.js  # Test matrix configuration
-│   ├── specs/                # Test specifications
-│   └── playwright.config.js  # Playwright configuration
+│   └── specs/                # Test specifications
+├── integration/              # Integration tests
 ├── load/                     # Load and performance tests
-│   ├── k6.config.js          # k6 load testing configuration
 │   └── scenarios/            # Load testing scenarios
-└── smoke.test.js             # Smoke tests for deployment verification
+├── security/                 # Security tests
+├── smoke/                    # Smoke tests for deployment verification
+├── stability/                # Stability tests
+└── user-journey/             # End-to-end user journey tests
 ```
 
 ## Architecture Principles

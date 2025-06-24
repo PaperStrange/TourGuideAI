@@ -35,12 +35,15 @@ jest.mock('@mui/material/TextField', () => ({ label, ...props }) => (
   />
 ));
 
-jest.mock('@mui/material/FormControlLabel', () => ({ control, label, ...props }) => (
-  <label>
-    {React.cloneElement(control, props)}
-    <span>{label}</span>
-  </label>
-));
+jest.mock('@mui/material/FormControlLabel', () => {
+  const mockReact = require('react');
+  return ({ control, label, ...props }) => (
+    <label>
+      {mockReact.cloneElement(control, props)}
+      <span>{label}</span>
+    </label>
+  );
+});
 
 describe('Onboarding Flow Integration', () => {
   // Setup mocks for each test
@@ -69,7 +72,7 @@ describe('Onboarding Flow Integration', () => {
     render(<OnboardingFlow onComplete={() => {}} initialStep={1} />);
     
     // Should render the second step (Create Your Profile)
-    expect(screen.getByText(/create your profile/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/create your profile/i)).toHaveLength(1);
   });
 
   test('handles code redemption and moves to next step', async () => {
@@ -98,7 +101,7 @@ describe('Onboarding Flow Integration', () => {
     // Verify step advance functionality is called
     await waitFor(() => {
       // Should move to the second step after successful code redemption
-      expect(screen.getByText(/create your profile/i)).toBeInTheDocument();
+      expect(screen.getAllByText(/create your profile/i)).toHaveLength(1);
     });
   });
 

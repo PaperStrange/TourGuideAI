@@ -1,15 +1,15 @@
 import React from 'react';
 import { render, screen, waitFor, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import ApiStatus from '../../components/ApiStatus';
+import ApiStatus from '../../../components/ApiStatus';
 
 // Mock the openaiApi module
-jest.mock('../../core/api/openaiApi', () => ({
+jest.mock('../../../core/api/openaiApi', () => ({
   getStatus: jest.fn()
 }));
 
 // Import the mocked module
-import { getStatus } from '../../core/api/openaiApi';
+import { getStatus } from '../../../core/api/openaiApi';
 
 describe('ApiStatus Component', () => {
   const originalEnv = process.env;

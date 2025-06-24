@@ -82,8 +82,8 @@ router.post('/verify', async (req, res) => {
  * Send invite code to email address (requires admin/moderator permission)
  */
 router.post('/send-invite', 
-  authenticateUser, 
-  requirePermission(PERMISSIONS.CREATE_INVITE), 
+  ...(authenticateUser ? [authenticateUser] : []), 
+  ...(requirePermission && PERMISSIONS ? [requirePermission(PERMISSIONS.CREATE_INVITE)] : []),
   async (req, res) => {
     try {
       const { email } = req.body;

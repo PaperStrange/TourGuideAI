@@ -1,0 +1,290 @@
+const express = require('express');
+const cors = require('cors');
+const jwt = require('jsonwebtoken');
+const path = require('path');
+const rateLimit = require('express-rate-limit');
+require('dotenv').config();
+
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+// Simple in-memory user store (replace with database in production)
+const users = [
+  {
+    id: 1,
+    email: 'demo@example.com',
+    password: 'demo123', // In production, hash passwords!
+    name: 'Demo User'
+  }
+];
+
+// Security middleware for MVP
+app.use((req, res, next) => {
+  // Basic security headers for MVP deployment
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  // Remove X-Powered-By header
+  res.removeHeader('X-Powered-By');
+  next();
+});
+
+// JWT secret (MUST be set via environment variable for security)
+const JWT_SECRET = process.env.JWT_SECRET;
+
+// Validate JWT secret is properly configured
+if (!JWT_SECRET || JWT_SECRET.length < 32) {
+  console.error('❌ SECURITY ERROR: JWT_SECRET environment variable must be set and at least 32 characters long');
+  console.error('   Generate a secure secret: node -e "console.log(require(\'crypto\').randomBytes(64).toString(\'hex\'))"');
+  process.exit(1);
+}
+
+// Rate limiting configuration
+const globalLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per windowMs
+  message: {
+    error: {
+      status: 429,
+      code: 'RATE_LIMIT_EXCEEDED',
+      message: 'Too many requests from this IP, please try again later'
+    }
+  },
+  standardHeaders: true,
+  legacyHeaders: false
+});
+
+// OpenAI specific rate limiter (more restrictive due to API costs)
+const openaiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 20, // Limit each IP to 20 OpenAI requests per 15 minutes
+  message: {
+    error: {
+      status: 429,
+      code: 'OPENAI_RATE_LIMIT_EXCEEDED',
+      message: 'Too many OpenAI API requests, please try again later'
+    }
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+  keyGenerator: (req) => {
+    // Rate limit by IP + user ID for better control
+    return `openai:${req.ip}:${req.user?.sub || 'anonymous'}`;
+  }
+});
+
+// Maps API rate limiter
+const mapsLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 50, // Limit each IP to 50 Maps requests per 15 minutes
+  message: {
+    error: {
+      status: 429,
+      code: 'MAPS_RATE_LIMIT_EXCEEDED',
+      message: 'Too many Maps API requests, please try again later'
+    }
+  },
+  standardHeaders: true,
+  legacyHeaders: false
+});
+
+// Stricter rate limiting for auth endpoints (prevent brute force attacks)
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5, // Limit each IP to 5 login attempts per 15 minutes
+  message: {
+    error: {
+      status: 429,
+      code: 'AUTH_RATE_LIMIT_EXCEEDED',
+      message: 'Too many authentication attempts, please try again later'
+    }
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+  skipSuccessfulRequests: true // Don't count successful logins against the limit
+});
+
+// Middleware
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' 
+    ? process.env.FRONTEND_URL || false 
+    : true,
+  credentials: true
+}));
+app.use(express.json({ limit: '10mb' }));
+app.use(express.static(path.join(__dirname, '../build')));
+
+// Apply global rate limiting to all API routes
+app.use('/api/', globalLimiter);
+
+// Simple authentication middleware
+const authenticateToken = (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+
+  if (!token) {
+    return res.status(401).json({ message: 'Access token required' });
+  }
+
+  jwt.verify(token, JWT_SECRET, (err, user) => {
+    if (err) {
+      return res.status(403).json({ message: 'Invalid or expired token' });
+    }
+    req.user = user;
+    next();
+  });
+};
+
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.json({ status: 'OK', timestamp: new Date().toISOString() });
+});
+
+// Auth endpoints (with rate limiting for security)
+app.post('/api/auth/login', authLimiter, (req, res) => {
+  const { email, password } = req.body;
+  
+  const user = users.find(u => u.email === email && u.password === password);
+  if (!user) {
+    return res.status(401).json({ message: 'Invalid email or password' });
+  }
+
+  const token = jwt.sign(
+    { sub: user.id, email: user.email },
+    JWT_SECRET,
+    { expiresIn: '24h' }
+  );
+
+  res.json({
+    token,
+    user: { id: user.id, email: user.email, name: user.name }
+  });
+});
+
+app.post('/api/auth/register', authLimiter, (req, res) => {
+  const { email, password, name } = req.body;
+  
+  // Check if user already exists
+  if (users.find(u => u.email === email)) {
+    return res.status(400).json({ message: 'User already exists' });
+  }
+
+  // Create new user
+  const newUser = {
+    id: users.length + 1,
+    email,
+    password, // In production, hash this!
+    name
+  };
+  users.push(newUser);
+
+  const token = jwt.sign(
+    { sub: newUser.id, email: newUser.email },
+    JWT_SECRET,
+    { expiresIn: '24h' }
+  );
+
+  res.json({
+    token,
+    user: { id: newUser.id, email: newUser.email, name: newUser.name }
+  });
+});
+
+// OpenAI API proxy (protected with rate limiting)
+app.post('/api/openai/chat', authenticateToken, openaiLimiter, async (req, res) => {
+  try {
+    const { OpenAI } = require('openai');
+    const openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
+
+    const response = await openai.chat.completions.create({
+      model: 'gpt-3.5-turbo',
+      messages: req.body.messages,
+      max_tokens: req.body.max_tokens || 150,
+    });
+
+    res.json(response);
+  } catch (error) {
+    console.error('OpenAI API error:', error);
+    res.status(500).json({ 
+      message: 'OpenAI API error', 
+      error: error.message 
+    });
+  }
+});
+
+// Google Maps API proxy (protected with rate limiting)
+app.get('/api/maps/places', authenticateToken, mapsLimiter, async (req, res) => {
+  try {
+    const { query } = req.query;
+    // Simple proxy to Google Places API
+    const googleMapsApiKey = process.env.GOOGLE_MAPS_API_KEY;
+    
+    if (!googleMapsApiKey) {
+      return res.status(500).json({ message: 'Google Maps API key not configured' });
+    }
+
+    // In a real app, you'd make the actual API call here
+    res.json({ 
+      message: 'Google Maps API proxy endpoint',
+      query,
+      note: 'Implement actual Google Places API call here'
+    });
+  } catch (error) {
+    console.error('Google Maps API error:', error);
+    res.status(500).json({ 
+      message: 'Google Maps API error', 
+      error: error.message 
+    });
+  }
+});
+
+// User profile endpoint (protected)
+app.get('/api/user/profile', authenticateToken, (req, res) => {
+  const user = users.find(u => u.id === req.user.sub);
+  if (!user) {
+    return res.status(404).json({ message: 'User not found' });
+  }
+
+  res.json({
+    id: user.id,
+    email: user.email,
+    name: user.name
+  });
+});
+
+app.put('/api/user/profile', authenticateToken, (req, res) => {
+  const user = users.find(u => u.id === req.user.sub);
+  if (!user) {
+    return res.status(404).json({ message: 'User not found' });
+  }
+
+  const { name } = req.body;
+  user.name = name || user.name;
+
+  res.json({
+    id: user.id,
+    email: user.email,
+    name: user.name
+  });
+});
+
+// Serve React app for all other routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+});
+
+// Start server
+app.listen(PORT, () => {
+  console.log(`🚀 MVP Server running on port ${PORT}`);
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log('Available endpoints:');
+  console.log('- POST /api/auth/login');
+  console.log('- POST /api/auth/register'); 
+  console.log('- POST /api/openai/chat (protected)');
+  console.log('- GET /api/maps/places (protected)');
+  console.log('- GET /api/user/profile (protected)');
+  console.log('- PUT /api/user/profile (protected)');
+}); 

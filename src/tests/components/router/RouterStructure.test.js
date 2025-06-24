@@ -8,37 +8,45 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import App from '../../App';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import App from '../../../App';
 
 // Mock fetch for backend health check
 global.fetch = jest.fn(() => Promise.reject(new Error('Health check failed')));
 
 // Mock components used in the App
-jest.mock('../../components/Navbar', () => {
+jest.mock('../../../components/common/Navbar', () => {
   return function MockNavbar() {
     return <div data-testid="navbar">Navbar</div>;
   };
 });
 
-jest.mock('../../pages/HomePage', () => {
+jest.mock('../../../pages/HomePage', () => {
   return function MockHomePage() {
     return <div data-testid="home-page">Home Page</div>;
   };
 });
 
-jest.mock('../../components/LoadingProvider', () => {
-  // Pass through the children without the actual loading logic
-  return function MockLoadingProvider({ children }) {
+jest.mock('../../../contexts/LoadingContext', () => ({
+  LoadingProvider: function MockLoadingProvider({ children }) {
     return <div data-testid="loading-provider">{children}</div>;
-  };
-});
+  },
+  useLoading: () => ({
+    isLoading: false,
+    setLoading: jest.fn()
+  })
+}));
 
 describe('Router Structure', () => {
   test('should render Routes properly', () => {
+    const theme = createTheme();
+    
     render(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ThemeProvider>
     );
     
     // Check that the App component renders

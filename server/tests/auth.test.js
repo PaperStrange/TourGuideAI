@@ -144,6 +144,16 @@ jest.mock('../routes/inviteCodes', () => {
 
 // Mock the middleware
 jest.mock('../middleware/authMiddleware', () => ({
+  authenticateUser: (req, res, next) => {
+    if (req.headers.authorization && req.headers.authorization.startsWith('Bearer ')) {
+      req.user = { id: 'test-user-id', email: 'test@example.com' };
+      next();
+    } else {
+      res.status(401).json({ 
+        error: { type: 'auth_required', message: 'Authentication required' }
+      });
+    }
+  },
   requireAuth: (req, res, next) => {
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer ')) {
       req.user = { id: 'test-user-id', email: 'test@example.com' };
@@ -159,6 +169,51 @@ jest.mock('../middleware/authMiddleware', () => ({
       req.user = { id: 'test-user-id', email: 'test@example.com' };
     }
     next();
+  },
+  fullAuth: (req, res, next) => {
+    if (req.headers.authorization && req.headers.authorization.startsWith('Bearer ')) {
+      req.user = { id: 'test-user-id', email: 'test@example.com', role: 'admin' };
+      next();
+    } else {
+      res.status(401).json({ 
+        error: { type: 'auth_required', message: 'Authentication required' }
+      });
+    }
+  }
+}));
+
+// Mock RBAC middleware
+jest.mock('../middleware/rbacMiddleware', () => ({
+  requireRole: (role) => (req, res, next) => {
+    if (!req.user) {
+      return res.status(401).json({
+        error: { type: 'auth_required', message: 'Authentication required' }
+      });
+    }
+    if (req.user.role !== role && req.user.role !== 'admin') {
+      return res.status(403).json({
+        error: { type: 'insufficient_role', message: `Role '${role}' required` }
+      });
+    }
+    next();
+  },
+  requirePermission: (permission) => (req, res, next) => {
+    if (!req.user) {
+      return res.status(401).json({
+        error: { type: 'auth_required', message: 'Authentication required' }
+      });
+    }
+    // For testing, just allow if user has admin role
+    if (req.user.role === 'admin') {
+      next();
+    } else {
+      res.status(403).json({
+        error: { type: 'insufficient_permission', message: `Permission '${permission}' required` }
+      });
+    }
+  },
+  PERMISSIONS: {
+    CREATE_INVITE: 'create:invite'
   }
 }));
 

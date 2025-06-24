@@ -20,15 +20,17 @@ jest.mock('../../features/beta-program/components/analytics', () => ({
 }));
 
 jest.mock('../../features/beta-program/services/AnalyticsService', () => ({
-  getUserActivityData: jest.fn().mockResolvedValue([]),
-  getFeatureUsageData: jest.fn().mockResolvedValue([]),
-  getDeviceDistributionData: jest.fn().mockResolvedValue([]),
-  getHeatmapPagesList: jest.fn().mockResolvedValue([]),
-  getHeatmapData: jest.fn().mockResolvedValue({
-    data: [], page: 'test', type: 'clicks',
-    viewport: { width: 1280, height: 720 },
-    pageUrl: '/', screenshot: ''
-  })
+  default: {
+    getUserActivityData: jest.fn().mockResolvedValue([]),
+    getFeatureUsageData: jest.fn().mockResolvedValue([]),
+    getDeviceDistributionData: jest.fn().mockResolvedValue([]),
+    getHeatmapPagesList: jest.fn().mockResolvedValue([]),
+    getHeatmapData: jest.fn().mockResolvedValue({
+      data: [], page: 'test', type: 'clicks',
+      viewport: { width: 1280, height: 720 },
+      pageUrl: '/', screenshot: ''
+    })
+  }
 }));
 
 // Now import the components after mocking
@@ -40,7 +42,7 @@ const {
   BetaProgramDashboard
 } = require('../../features/beta-program/components/analytics');
 
-const { AnalyticsService } = require('../../features/beta-program/services/AnalyticsService');
+const AnalyticsService = require('../../features/beta-program/services/AnalyticsService').default;
 
 // Mock canvas-related methods for HeatmapVisualization
 const mockCanvasContext = {

@@ -324,7 +324,7 @@ If the deployment to CDN fails through the CI/CD pipeline:
 - [CloudFront Cache Invalidation API](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html)
 
 ## Related Documents
-- [Phase 8 Online Launch Plan](../../../project.phase8-online-launch-plan.md)
+- [Phase 8 Completion Summary](../../process_monitors/plans/project.phase8-completion-summary.md)
 - [TourGuideAI Architecture Design](../../../ARCHITECTURE.md) 
 - [Deployment Pipeline Documentation](../pipelines/project.deployment-pipeline.md)
 - [CI/CD Workflow](/.github/workflows/ci-cd.yml) 

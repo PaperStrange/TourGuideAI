@@ -104,10 +104,11 @@ const HeatmapVisualization = ({ onBack }) => {
     }
     
     // Find maximum value for normalization
-    const maxValue = Math.max(...heatmapData.data.map(point => point.value));
+    const dataPoints = heatmapData.data || heatmapData.points || [];
+    const maxValue = dataPoints.length > 0 ? Math.max(...dataPoints.map(point => point.value)) : 1;
     
     // Draw heatmap points
-    heatmapData.data.forEach(point => {
+    dataPoints.forEach(point => {
       const { x, y, value } = point;
       const normalizedValue = value / maxValue;
       
@@ -264,14 +265,14 @@ const HeatmapVisualization = ({ onBack }) => {
               <h5>Most Active Area</h5>
               <p>
                 The area with highest activity is around 
-                coordinates ({heatmapData.data[0]?.x || 0}, {heatmapData.data[0]?.y || 0})
+                coordinates ({heatmapData.data?.[0]?.x || heatmapData.points?.[0]?.x || 0}, {heatmapData.data?.[0]?.y || heatmapData.points?.[0]?.y || 0})
               </p>
             </div>
             
             <div className={styles.insightItem}>
               <h5>Activity Summary</h5>
               <p>
-                {heatmapData.data.length} {heatmapType} tracked on this page
+                {(heatmapData.data?.length || heatmapData.points?.length || 0)} {heatmapType} tracked on this page
               </p>
             </div>
             

@@ -1,6 +1,51 @@
 // Jest setup file
 import '@testing-library/jest-dom';
 
+// Mock axios to prevent ES module issues
+jest.mock('axios', () => ({
+  __esModule: true,
+  default: {
+    get: jest.fn(() => Promise.resolve({ data: {} })),
+    post: jest.fn(() => Promise.resolve({ data: {} })),
+    put: jest.fn(() => Promise.resolve({ data: {} })),
+    delete: jest.fn(() => Promise.resolve({ data: {} })),
+    create: jest.fn(function() { return this; }),
+    defaults: {
+      headers: {
+        common: {},
+        get: {},
+        post: {},
+        put: {},
+        delete: {}
+      }
+    },
+    interceptors: {
+      request: { use: jest.fn() },
+      response: { use: jest.fn() }
+    }
+  },
+  create: jest.fn(() => ({
+    get: jest.fn(() => Promise.resolve({ data: {} })),
+    post: jest.fn(() => Promise.resolve({ data: {} })),
+    put: jest.fn(() => Promise.resolve({ data: {} })),
+    delete: jest.fn(() => Promise.resolve({ data: {} })),
+    interceptors: {
+      request: { use: jest.fn() },
+      response: { use: jest.fn() }
+    }
+  }))
+}));
+
+// Mock the apiClient specifically
+jest.mock('./core/services/apiClient', () => ({
+  apiHelpers: {
+    get: jest.fn(() => Promise.resolve({ data: {} })),
+    post: jest.fn(() => Promise.resolve({ data: {} })),
+    put: jest.fn(() => Promise.resolve({ data: {} })),
+    delete: jest.fn(() => Promise.resolve({ data: {} }))
+  }
+}));
+
 // Mock fetch API globally
 global.fetch = jest.fn();
 

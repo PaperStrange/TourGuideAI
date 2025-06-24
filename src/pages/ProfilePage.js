@@ -66,8 +66,8 @@ const mockRoutes = [
 
 const ProfilePage = () => {
   const navigate = useNavigate();
-  const [userData, setUserData] = useState(mockUserData);
-  const [routes, setRoutes] = useState(mockRoutes);
+  const [userData] = useState(mockUserData);
+  const [routes] = useState(mockRoutes);
   const [sortBy, setSortBy] = useState('created_date');
   const [sortOrder, setSortOrder] = useState('desc');
   

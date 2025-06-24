@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import '../styles/MapPage.css';
@@ -224,42 +224,8 @@ const MapPage = () => {
     libraries: ["places"],
   });
   
-  // Effect to handle route data from navigation state
-  useEffect(() => {
-    if (location.state) {
-      console.log('Route data from navigation:', location.state);
-      
-      // Use real data passed from ChatPage if available
-      if (location.state.routeData) {
-        // Transform the OpenAI route format to our app's route format
-        const transformedRouteData = transformRouteData(location.state.routeData, location.state.userQuery);
-        setRouteData(transformedRouteData);
-      }
-      
-      if (location.state.userQuery) {
-        // Create user input object from the query
-        setUserInput({
-          user_name: "current_user",
-          user_query: location.state.userQuery,
-          user_intent_recognition: location.state.intentData ? [location.state.intentData.intent] : mockUserInput.user_intent_recognition,
-          created_date: new Date().toISOString().split('T')[0]
-        });
-      }
-    }
-  }, [location]);
-  
-  // Log when component mounts successfully
-  useEffect(() => {
-    console.log('MapPage component mounted successfully');
-    
-    // Cleanup function
-    return () => {
-      console.log('MapPage component unmounted');
-    };
-  }, []);
-  
   // Helper function to transform the OpenAI route data format to our app's format
-  const transformRouteData = (openaiRoute, query) => {
+  const transformRouteData = useCallback((openaiRoute, query) => {
     if (!openaiRoute) return mockRouteData;
     
     try {
@@ -294,12 +260,12 @@ const MapPage = () => {
               departure_time: `${new Date().getFullYear()}/${String(new Date().getMonth() + 1).padStart(2, '0')}/${String(dayIndex + 1).padStart(2, '0')} ${departure.time}`,
               arrival_time: `${new Date().getFullYear()}/${String(new Date().getMonth() + 1).padStart(2, '0')}/${String(dayIndex + 1).padStart(2, '0')} ${arrival.time}`,
               user_time_zone: "Local",
-              transportation_type: getRandomTransportation(),
-              duration: getRandomDuration(),
+              transportation_type: 'walk', // Simplified for MVP
+              duration: '15', // Simplified for MVP
               duration_unit: "minute",
-              distance: getRandomDistance(),
+              distance: '0.5', // Simplified for MVP
               distance_unit: "mile",
-              recommended_reason: getRecommendationFromActivity(arrival.activity)
+              recommended_reason: `Visit ${arrival.activity}`
             });
           }
           
@@ -316,7 +282,43 @@ const MapPage = () => {
       console.error('Error transforming route data:', error);
       return mockRouteData;
     }
-  };
+  }, [mockRouteData]);
+
+  // Effect to handle route data from navigation state
+  useEffect(() => {
+    if (location.state) {
+      console.log('Route data from navigation:', location.state);
+      
+      // Use real data passed from ChatPage if available
+      if (location.state.routeData) {
+        // Transform the OpenAI route format to our app's route format
+        const transformedRouteData = transformRouteData(location.state.routeData, location.state.userQuery);
+        setRouteData(transformedRouteData);
+      }
+      
+      if (location.state.userQuery) {
+        // Create user input object from the query
+        setUserInput({
+          user_name: "current_user",
+          user_query: location.state.userQuery,
+          user_intent_recognition: location.state.intentData ? [location.state.intentData.intent] : mockUserInput.user_intent_recognition,
+          created_date: new Date().toISOString().split('T')[0]
+        });
+      }
+    }
+  }, [location, transformRouteData]);
+  
+  // Log when component mounts successfully
+  useEffect(() => {
+    console.log('MapPage component mounted successfully');
+    
+    // Cleanup function
+    return () => {
+      console.log('MapPage component unmounted');
+    };
+  }, []);
+  
+  // Removed duplicate transformRouteData function - using the useCallback version above
   
   // Helper functions to generate random data when real data is not available
   const getRandomTransportation = () => {
@@ -367,17 +369,7 @@ const MapPage = () => {
     return routeData.travel_split_by_day;
   };
   
-  // Mock function for user_route_transportation_validation
-  const validateTransportation = () => {
-    console.log('Validating transportation');
-    // In a real implementation, this would use the Google Maps Directions API
-  };
-  
-  // Mock function for user_route_interest_points_validation
-  const validateInterestPoints = () => {
-    console.log('Validating interest points');
-    // In a real implementation, this would use the Google Maps Distance Matrix API
-  };
+  // Removed unused validation functions - they're not needed for MVP functionality
   
   // Handle marker click
   const handleMarkerClick = (point) => {
@@ -496,14 +488,7 @@ const MapPage = () => {
     );
   };
 
-  // Add helper function to get coordinates from location name (mock implementation)
-  const getCoordinatesFromLocation = (locationName) => {
-    // This would be replaced with actual geocoding in a real application
-    return {
-      lat: 38.8977 + (Math.random() - 0.5) * 0.02,
-      lng: -77.0365 + (Math.random() - 0.5) * 0.02
-    };
-  };
+  // Removed unused validation functions - not needed for MVP
 
   // Main component return
   return (

@@ -1,136 +1,89 @@
 /**
- * Component Mocks
- * 
- * Standardized mock implementations for commonly used React components.
+ * Standardized component mocks for testing
  */
 
-const React = require('react');
+import React from 'react';
 
-// Mock components
-const mockComponents = {
-  // Map Component Mock
-  MapComponent: props => (
-    <div data-testid="map-component" className="mock-map">
-      Map Component (Mock)
-      {props.markers && (
-        <div data-testid="map-markers">
-          Markers: {props.markers.length}
-        </div>
-      )}
+// Mock Components
+export const mockComponents = {
+  Timeline: ({ route, timeline }) => (
+    <div data-testid="timeline-component">
+      <h2>Your Itinerary for {route?.destination || 'Unknown'}</h2>
+      <div data-testid="timeline-content">
+        {timeline?.days?.map((day, index) => (
+          <div key={index} data-testid={`day-${day.travel_day}`}>
+            Day {day.travel_day}
+          </div>
+        )) || <div>No timeline data</div>}
+      </div>
     </div>
   ),
   
-  // Loading Indicator Mock
-  LoadingIndicator: props => (
-    <div 
-      data-testid="loading-indicator" 
-      className={`mock-loader ${props.fullScreen ? 'full-screen' : ''}`}
-    >
-      {props.message || 'Loading...'}
+  ItineraryBuilder: ({ onRouteGenerated }) => (
+    <div data-testid="itinerary-builder">
+      <button onClick={() => onRouteGenerated?.({})}>
+        Generate Route
+      </button>
     </div>
   ),
   
-  // Error Boundary Mock
-  ErrorBoundary: ({ children }) => <div data-testid="error-boundary">{children}</div>,
-  
-  // Modal Mock
-  Modal: ({ isOpen, onClose, title, children }) => (
-    isOpen ? (
-      <div data-testid="modal" className="mock-modal">
-        <div className="mock-modal-header">
-          <h2>{title}</h2>
-          <button onClick={onClose} data-testid="modal-close-btn">✕</button>
-        </div>
-        <div className="mock-modal-content">
-          {children}
-        </div>
-      </div>
-    ) : null
+  RoutePreview: ({ route }) => (
+    <div data-testid="route-preview">
+      Route: {route?.destination || 'No destination'}
+    </div>
   ),
   
-  // Navigation Mock
-  Navigation: () => (
-    <nav data-testid="navigation" className="mock-navigation">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/map">Map</a></li>
-        <li><a href="/profile">Profile</a></li>
-      </ul>
-    </nav>
-  ),
-  
-  // Route Card Mock
-  RouteCard: ({ route, onEdit, onView, onFavorite }) => (
-    <div data-testid="route-card" className="mock-route-card">
-      <h3>{route.route_name}</h3>
-      <p>{route.destination}</p>
-      <p>{route.duration} days</p>
-      <div className="mock-route-card-actions">
-        {onView && <button onClick={() => onView(route)} data-testid="view-route-btn">View</button>}
-        {onEdit && <button onClick={() => onEdit(route)} data-testid="edit-route-btn">Edit</button>}
-        {onFavorite && <button onClick={() => onFavorite(route)} data-testid="favorite-route-btn">
-          {route.is_favorite ? '★' : '☆'}
-        </button>}
-      </div>
+  UserProfileSetup: ({ onComplete }) => (
+    <div data-testid="user-profile-setup">
+      <button onClick={() => onComplete?.({})}>
+        Complete Setup
+      </button>
     </div>
   )
 };
 
-// Mock contexts
-const mockContexts = {
-  // Auth Context Mock
+// Mock Contexts
+export const mockContexts = {
   AuthContext: React.createContext({
-    user: {
-      id: 'user123',
-      name: 'Test User',
-      email: 'test@example.com'
-    },
+    user: { id: 1, name: 'Test User', email: 'test@example.com' },
     isAuthenticated: true,
-    login: jest.fn().mockResolvedValue(true),
-    logout: jest.fn().mockResolvedValue(true),
-    register: jest.fn().mockResolvedValue(true)
+    login: jest.fn(),
+    logout: jest.fn(),
+    loading: false
   }),
   
-  // Notification Context Mock
   NotificationContext: React.createContext({
-    showNotification: jest.fn(),
     notifications: [],
-    clearNotifications: jest.fn()
-  }),
-  
-  // Loading Context Mock
-  LoadingContext: React.createContext({
-    isLoading: false,
-    setLoading: jest.fn(),
-    loadingMessage: ''
-  }),
-  
-  // Theme Context Mock
-  ThemeContext: React.createContext({
-    theme: 'light',
-    toggleTheme: jest.fn()
+    addNotification: jest.fn(),
+    removeNotification: jest.fn(),
+    showSuccess: jest.fn(),
+    showError: jest.fn(),
+    showWarning: jest.fn(),
+    showInfo: jest.fn()
   })
 };
 
-// Mock providers wrapper for easy test setup
-const withMockProviders = (children) => {
-  const { AuthContext, NotificationContext, LoadingContext, ThemeContext } = mockContexts;
-  
-  return (
-    <AuthContext.Provider value={AuthContext._currentValue}>
-      <NotificationContext.Provider value={NotificationContext._currentValue}>
-        <LoadingContext.Provider value={LoadingContext._currentValue}>
-          <ThemeContext.Provider value={ThemeContext._currentValue}>
-            {children}
-          </ThemeContext.Provider>
-        </LoadingContext.Provider>
-      </NotificationContext.Provider>
-    </AuthContext.Provider>
-  );
+// Higher-order component for providing mock contexts
+export const withMockProviders = (Component, contextOverrides = {}) => {
+  return function MockedComponent(props) {
+    const authValue = { ...mockContexts.AuthContext._currentValue, ...contextOverrides.auth };
+    const notificationValue = { ...mockContexts.NotificationContext._currentValue, ...contextOverrides.notification };
+    
+    return (
+      <mockContexts.AuthContext.Provider value={authValue}>
+        <mockContexts.NotificationContext.Provider value={notificationValue}>
+          <Component {...props} />
+        </mockContexts.NotificationContext.Provider>
+      </mockContexts.AuthContext.Provider>
+    );
+  };
 };
 
-module.exports = {
-  mockComponents,
-  mockContexts,
-  withMockProviders
+// Mock hooks
+export const mockHooks = {
+  useAuth: () => mockContexts.AuthContext._currentValue,
+  useNotification: () => mockContexts.NotificationContext._currentValue,
+  useNavigate: () => jest.fn(),
+  useLocation: () => ({ pathname: '/test' }),
+  useParams: () => ({ id: '1' })
 }; 

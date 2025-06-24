@@ -433,6 +433,7 @@ server/.vault/
 !**/default*config*.js
 !**/example*config*.js
 !**/sample*config*.js
+!**/tests/config/jest/*.config.js
 
 # Logs with potential secrets
 **/logs/
@@ -467,9 +468,11 @@ server/.env.*
 .env.development.local
 .env.test.local
 .env.production.local
+.env.production.example
 
 # Cursor configuration usage
 .cursorignore
 
 # Ignore all test results, reports, and records
 docs/project_lifecycle/all_tests/results/
+server/coverage/lcov-report
