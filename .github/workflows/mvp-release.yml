@@ -99,7 +99,7 @@ jobs:
         SERVER_PID=$!
         sleep 15
         echo "🏥 Testing health endpoint..."
-        curl -f http://localhost:3001/health && echo "✅ Health check successful!" || (echo "❌ Health check failed" && kill $SERVER_PID && exit 1)
+        curl -f http://localhost:3000/health && echo "✅ Health check successful!" || (echo "❌ Health check failed" && kill $SERVER_PID && exit 1)
         echo "✅ Health check passed!"
         pkill -f "node.*server.js" || true
 
