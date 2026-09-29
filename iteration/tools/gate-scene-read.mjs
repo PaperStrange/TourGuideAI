@@ -35,8 +35,34 @@ const P = join(REPO, 'build', 'scene.bin');
 const problems = [];
 const ok = (id, cond, detail) => { if (!cond) problems.push(`${id}: ${detail}`); console.log(`${id} ${cond ? 'PASS' : 'FAIL'}  ${detail}`); };
 
+// SELF-SUFFICIENT BY CONSTRUCTION. build/ is gitignored, so a clean checkout has no scene.bin
+// and the first version of this gate exited 2 with 'could not RUN' there while passing on my
+// machine. That is the SEVENTH occurrence of one shape in this harness: a verdict that depends
+// on how the working copy was prepared rather than on the repository. R1 assumed a single-branch
+// clone carries every branch; R7 required a per-clone hook that CI can never have; branch-sync
+// read an empty branch list as 'not a git repository'; the guide gate pointed at an absent build
+// product. The remedy has been identical every time, and relying on gate ORDER to supply the
+// artefact is the same fault wearing a different hat -- so this bakes its own input when the
+// artefact is missing rather than assuming a predecessor ran.
+import { spawnSync } from 'node:child_process';
 let buf;
-try { buf = readFileSync(P); } catch { console.log(`ENV  no scene.bin at ${P} - run emit-scene.mjs first`); process.exit(2); }
+try {
+  buf = readFileSync(P);
+} catch {
+  if (!process.argv.includes('--bake-if-absent')) {
+    console.log(`ENV  no scene.bin at ${P} - run emit-scene.mjs first, or pass --bake-if-absent`);
+    process.exit(2);
+  }
+  const r = spawnSync(process.execPath, [join(REPO, 'iteration', 'tools', 'emit-scene.mjs')], { cwd: REPO, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+  if (r.status !== 0) {
+    console.log(`ENV  could not bake the scene (exit ${r.status})`);
+    const all = (r.stdout ?? '') + (r.stderr ?? '');
+    for (const l of all.split('\n').slice(-6)) if (l.trim()) console.log('    ' + l);
+    process.exit(2);
+  }
+  buf = readFileSync(P);
+  console.log('(scene.bin was absent and this gate baked it)');
+}
 
 const MAGIC = 'TG25DSCN';
 ok('R1', buf.length >= 108, `${buf.length} B, minimum header is 108`);

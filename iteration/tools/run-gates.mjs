@@ -40,7 +40,7 @@ const GATES = [
     why: 'D-14: check A proves a URL resolves; this proves the VALUE is in that source and not a different one' },
   { id: 'scene', name: 'scene emit (real geometry through the frozen projection)', cmd: ['node', join(REPO, 'iteration', 'tools', 'emit-scene.mjs'), '--assert'],
     why: 'real OSM geometry through a projection whose assertions had only ever seen a synthetic fixture; rejection, determinism, traversal independence' },
-  { id: 'scene-read', name: 'scene.bin is readable from its bytes by a reader that is not the emitter', cmd: ['node', join(REPO, 'iteration', 'tools', 'gate-scene-read.mjs')],
+  { id: 'scene-read', name: 'scene.bin is readable from its bytes by a reader that is not the emitter', cmd: ['node', join(REPO, 'iteration', 'tools', 'gate-scene-read.mjs'), '--bake-if-absent'],
     why: 'Gate 1 needs a walkable world and nothing reads the scene today; this is the second independent reader of the container, which is the posture emit-guide chose when it stopped trusting it' },
   { id: 'doors', name: 'doors (strict release gate)', cmd: ['node', join(PACK, 'validate-doors.mjs'), '--strict'],
     why: '--strict, because a declared blocker must fail the release gate' },
