@@ -39,6 +39,22 @@ docs/handOff/dsh-bundle-tourguide-2.5d/node_modules/
 !docs/handOff/dsh-bundle-tourguide-2.5d/tools/
 !docs/handOff/dsh-bundle-tourguide-2.5d/tools/**
 
+# Three measurement records inside archive/ are LOAD-BEARING, and excluding the whole
+# archive hid that. Found by scanning every tracked script for on-disk paths it reads
+# that are not themselves tracked (iteration/tools/find-untracked-deps.mjs) - the same
+# class of defect as the untracked gate scripts above, caught by a mechanical sweep
+# instead of by hand.
+#
+#   kyoto-slice-origin-candidate.json     1.4 KB  asserted by world-grid.mjs A13
+#   kyoto-slice-measurement-summary.json  1.0 KB  world-grid.mjs A12 + validate-doors V11 + pack.json
+#   kyoto-slice-overpass.json           286.9 KB  validate-doors: resolves all 12 osmBuildingIds
+#
+# Without them the geo contract and the doors gate cannot run in a clean checkout, which
+# is exactly how the doors gate failed the first time the gates were tested against one.
+!docs/handOff/archive/corpora/geo-japan/kyoto-slice-origin-candidate.json
+!docs/handOff/archive/corpora/geo-japan/kyoto-slice-measurement-summary.json
+!docs/handOff/archive/corpora/geo-japan/kyoto-slice-overpass.json
+
 # DSH harness state for this workspace (agent config, not project source)
 .dsh/
 
