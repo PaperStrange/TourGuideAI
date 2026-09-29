@@ -10,15 +10,17 @@
 
 ## 实际存在的 workflow（7 个）
 
-| 文件 | 触发 | 作用 |
+<!-- BEGIN GENERATED WORKFLOW TABLE -->
+| File | Trigger | Purpose |
 |---|---|---|
-| **fact-integrity.yml** | push/PR → `master` `iteration` `release-*`，限 `city-packs/**` `iteration/**` `dsh-bundle/tools/**`；+ `workflow_dispatch` | **事实完整性门**：调 `iteration/tools/run-gates.mjs`，6 道门。见下 |
-| **ci-cd.yml** | push/PR → `master` `iteration` `feat-*` `release-*`；+ `workflow_dispatch` | 基础设施感知的构建/测试；`build-and-test` job 是分支保护要求的 check 之一 |
-| **e2e-tests.yml** | 每周一/四定时 + PR；+ `workflow_dispatch` | 端到端测试 |
-| **security-scan.yml** | 每周定时 + push → `master` `release-*`，限源码与 `package*.json` | 安全扫描；`security-scan` 是分支保护要求的 check 之一 |
-| **stability-tests.yml** | 每周三定时 + PR（限 `src/**`）；+ `workflow_dispatch` | 稳定性与负载测试 |
-| **dependency-updates.yml** | 每周一定时；+ `workflow_dispatch` | Dependabot 元数据 |
-| **branch-protection.yml** | 每周一定时；+ `workflow_dispatch` | 用 `gh api` 给 `master` / `iteration` / `release-*` 配分支保护 |
+| **branch-protection.yml** | Mon schedule; + `workflow_dispatch` | Configures branch protection for `master` / `iteration` / `release-*` via `gh api` |
+| **ci-cd.yml** | push/PR → `master` `iteration` `feat-*` `release-*`; + `workflow_dispatch` | Infrastructure-aware build and test; its `build-and-test` job is one of the checks branch protection requires |
+| **dependency-updates.yml** | Mon schedule; + `workflow_dispatch` | Dependabot metadata |
+| **e2e-tests.yml** | Mon/Thu schedule + PR; + `workflow_dispatch` | End-to-end tests |
+| **fact-integrity.yml** | push/PR → `master` `iteration` `release-*`, limited to `city-packs/**`, `iteration/**`, `dsh-bundle/tools/**`; + `workflow_dispatch` | **Fact-integrity gates**: runs `iteration/tools/run-gates.mjs`. See below |
+| **security-scan.yml** | weekly schedule + push → `master` `release-*`, limited to source and `package*.json` | Security scan; `security-scan` is one of the checks branch protection requires |
+| **stability-tests.yml** | Wed schedule + PR (limited to `src/**`); + `workflow_dispatch` | Stability and load tests |
+<!-- END GENERATED WORKFLOW TABLE -->
 
 **分支名是实测的，不是照惯例写的**：本仓库默认分支是 **`master`**，**没有 `main`，也没有 `develop`**。完整模型与逐条出处见 [`iteration/design/branching-model.md`](../../iteration/design/branching-model.md)。
 
@@ -26,7 +28,7 @@
 
 ## 事实完整性门（**fact-integrity.yml**）
 
-它跑 `node iteration/tools/run-gates.mjs`，6 道门全部**零依赖**，且**可在本地原样运行**——一个从没被推上去过的 workflow 不算证据。
+它跑 `node iteration/tools/run-gates.mjs`，**8 道门**全部**零依赖**，且**可在本地原样运行**——一个从没被推上去过的 workflow 不算证据。
 
 | # | 门 | 守什么 |
 |---|---|---|
