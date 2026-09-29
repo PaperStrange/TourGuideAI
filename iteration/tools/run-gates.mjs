@@ -64,15 +64,25 @@ for (const g of GATES) {
   const lines = out.split('\n').map((l) => l.trim()).filter(Boolean);
   const notArt = (l) => !/^[\s+:#.=D]*$/.test(l);
   const pick = code === 0
-    ? lines.find((l) => /SELF-TEST PASS|assertions? passed|\d+\s+checks? passed|BUILD OK|all facts carry provenance/i.test(l)) ?? lines.filter(notArt).slice(-1)[0] ?? ''
+    // Prefer a summary that also carries a SKIP count. world-grid prints
+    // "16/18 assertions passed, 0 failed, 2 skipped" when the measurement records are
+    // absent from the tree, and matching only on 'assertions passed' silently hides the
+    // skips: the reader sees PASS and a fraction and never learns two checks did not run.
+    // A skipped assertion is not a passed one, and the summary line is where that shows.
+    ? lines.find((l) => /skipped/i.test(l) && /passed/i.test(l)) ??
+      lines.find((l) => /SELF-TEST PASS|assertions? passed|\d+\s+checks? passed|BUILD OK|all facts carry provenance/i.test(l)) ?? lines.filter(notArt).slice(-1)[0] ?? ''
     : lines.find((l) => /(^|\s)FAIL(\s|$)/.test(l)) ??
       lines.find((l) => /\b(ENOENT|Error:|usage error|could not|not found)\b/i.test(l)) ??
       lines.filter(notArt).slice(-1)[0] ?? '';
-  results.push({ id: g.id, name: g.name, why: g.why, code, ok: code === 0, envProblem, lastLine: pick.slice(0, 220) });
+  // Surface skips as a warning even on a green gate, so a partial run is never read as a
+  // complete one. This is the same distinction the gates themselves make.
+  const skipped = /(\d+)\s+skipped/i.exec(out);
+  results.push({ id: g.id, name: g.name, why: g.why, code, ok: code === 0, envProblem, skipped: skipped ? Number(skipped[1]) : 0, lastLine: pick.slice(0, 220) });
   if (!JSON_OUT) {
     const status = code === 0 ? 'PASS' : envProblem ? 'ENV ' : 'FAIL';
     console.log(`${status}  ${g.name}`);
     console.log(`      ${results.at(-1).lastLine}`);
+    if (results.at(-1).skipped) console.log(`      WARNING: ${results.at(-1).skipped} assertion(s) SKIPPED - this gate did not fully run.`);
   }
 }
 
