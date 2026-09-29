@@ -1,0 +1,68 @@
+# Tripadvisor Terra Documentation
+
+> API documentation for Tripadvisor's Terra product, a comprehensive content delivery platform for partners.
+
+## Guides: Overview
+- [About the Tripadvisor Terra Platform](https://docs.terra.tripadvisor.com/docs/overview.md)
+- [Endpoints Overview](https://docs.terra.tripadvisor.com/docs/endpoints-overview.md)
+
+## Guides: Using the API
+- [API Versioning & Compatibility](https://docs.terra.tripadvisor.com/docs/versioning-compatibility.md)
+- [API Access & Rate Limits](https://docs.terra.tripadvisor.com/docs/rate-limits.md)
+- [How to Download Feeds](https://docs.terra.tripadvisor.com/docs/download-a-feed.md)
+- [How to Manage your Allowlist](https://docs.terra.tripadvisor.com/docs/guide-for-managing-allowed-locations.md)
+- [How to use Catalog Search vs Location Search](https://docs.terra.tripadvisor.com/docs/guide-for-when-to-use-catalog-search-vs-location-search.md)
+- [How to understand Languages](https://docs.terra.tripadvisor.com/docs/supported-languages-for-reviews.md)
+- [How to understand Locales](https://docs.terra.tripadvisor.com/docs/locales.md): In-depth guide on how to retreive locales
+- [How to use Enumerations](https://docs.terra.tripadvisor.com/docs/using-enumerations.md)
+
+## Guides: Resources & Policies
+- [API Access and Limits](https://docs.terra.tripadvisor.com/docs/api-access-and-limits.md)
+- [API Master Terms and Conditions](https://docs.terra.tripadvisor.com/docs/api-master-terms.md)
+- [API Security](https://docs.terra.tripadvisor.com/docs/api-security.md)
+- [Brand Guidelines and Resources](https://docs.terra.tripadvisor.com/docs/display-requirements.md)
+- [Caching Policy](https://docs.terra.tripadvisor.com/docs/caching-policy.md)
+- [Discover Usage-based Pricing](https://docs.terra.tripadvisor.com/docs/usage-based-pricing.md)
+- [Linking Policy](https://docs.terra.tripadvisor.com/docs/linking-policy.md)
+- [Prohibited Sites](https://docs.terra.tripadvisor.com/docs/prohibited-sites-and-content.md)
+- [Review Implementation Policy](https://docs.terra.tripadvisor.com/docs/review-implementation-policy.md)
+
+## Guides: MCP Server
+- [Developer MCP](https://docs.terra.tripadvisor.com/docs/mcp.md)
+
+## Guides: legacy migration faqs
+- [Legacy Content API Migration ](https://docs.terra.tripadvisor.com/docs/faq.md): For developers migrating from Tripadvisor's Content API.
+- [Moving from Legacy "Mapping" to Allowed Locations](https://docs.terra.tripadvisor.com/docs/faq-migrating-from-legacy-mapping-partner-api.md)
+
+## API Reference: Partner API
+- [Search Nearby Locations Catalog](https://docs.terra.tripadvisor.com/reference/cataloglocationsnearbyget.md): Searches the Location catalog for points of interest within a geographic area, ordered by proximity  or rating.   <p>The search area is defined either by a center point and radius or by a bounding…
+- [Search Locations Catalog](https://docs.terra.tripadvisor.com/reference/cataloglocationssearch.md): Searches the Location catalog by free-text name or address.   <p>Use this endpoint to resolve a textual query (for example a business name or street address) into  matching Tripadvisor Locations.…
+- [Get Catalog Location](https://docs.terra.tripadvisor.com/reference/cataloglocationget.md): Retrieves a single Tripadvisor Location from the catalog by its ID.   <p>Use this endpoint to resolve a known Tripadvisor Location ID into an abbreviated summary of that  Location, including its…
+- [Geo Details](https://docs.terra.tripadvisor.com/reference/geoget.md): Retrieves the factual and rich details of a single Tripadvisor Geo by its ID.
+- [Multiple Geos Details](https://docs.terra.tripadvisor.com/reference/geosget.md): Retrieves the details of multiple Tripadvisor Geos in a single request.   <p>This is the batch (multi-GET) counterpart to the single Geo Details endpoint; supply a set of Geo  IDs and receive the…
+- [Multiple Locations Details](https://docs.terra.tripadvisor.com/reference/locationsget.md): Retrieves the full details of multiple Tripadvisor Locations in a single request.   <p>This is the batch (multi-GET) counterpart to the single Location Details endpoint; supply a set of  Location IDs…
+- [Location Details](https://docs.terra.tripadvisor.com/reference/locationget.md): Retrieves the full details of a single Tripadvisor Location by its ID.   <p>Returns rich, factual content for one point of interest, including basic details, addresses and  coordinates, contact…
+- [Location Photos](https://docs.terra.tripadvisor.com/reference/locationphotosget.md): Retrieves photos for a Tripadvisor Location.   <p>Returns a page of high-resolution images contributed by both travelers and management, sorted with  the most recent first. Each photo includes…
+- [Location Reviews](https://docs.terra.tripadvisor.com/reference/locationreviewsget.md): Retrieves traveler reviews for a Tripadvisor Location.   <p>Returns a page of reviews drawn from the most recent reviews for the Location, with optional  filtering by minimum rating, trip type,…
+- [Search Nearby Locations](https://docs.terra.tripadvisor.com/reference/locationsnearbyget.md): Finds Locations within a geographic area, ordered by proximity or rating.   <p>The search area is defined either by a center point and radius or by a bounding box, supplied via  the…
+- [Search Locations](https://docs.terra.tripadvisor.com/reference/locationssearch.md): Finds Locations by free-text name or address.   <p>Use this endpoint to resolve a textual query (for example a business name or street address) into  matching Tripadvisor Locations. Results are…
+- [Recommendations](https://docs.terra.tripadvisor.com/reference/recommendationssearch-1.md): Returns AI-powered Location recommendations for a natural-language query.   <p>Accepts a free-text query plus optional geographic context, category filters, and a result limit,  and returns a ranked…
+
+## API Reference: Feed API
+- [List Files](https://docs.terra.tripadvisor.com/reference/listfiles.md): Get information on available Feed files to download.
+- [Feed File URL](https://docs.terra.tripadvisor.com/reference/getfileurl.md): Get a temporary URL for downloading the file
+- [Redirect to Feed File](https://docs.terra.tripadvisor.com/reference/getfile.md): Download a file through an automatic redirect to a secure presigned URL.
+
+## API Reference: Definitions
+- [Errors](https://docs.terra.tripadvisor.com/reference/errors.md): The page describes possible known error responses from the API.
+
+## API Reference: Account API
+- [Get Location allowlist IDs.](https://docs.terra.tripadvisor.com/reference/getallowlist.md): Get Location allowlist IDs.
+- [Add, remove, or replace location IDs on the allowlist, depending on the request's operation type.](https://docs.terra.tripadvisor.com/reference/uploadallowlist.md): Add, remove, or replace location IDs on the allowlist, depending on the request's operation type.
+
+## API Reference: MCP Server
+- [MCP](https://docs.terra.tripadvisor.com/reference/mcp.md)
+
+## Changelog
+- [Version 2](https://docs.terra.tripadvisor.com/changelog/version-2.md)
+- [Version 1](https://docs.terra.tripadvisor.com/changelog/version-1-in-beta.md)

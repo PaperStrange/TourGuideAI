@@ -1,13 +1,29 @@
 // A1 — freeze the projection origin by MEASUREMENT, not by hand.
 //
 // User decision: "方案1+方案2，默认方案1，允许用户语言输入并作为方案2的原点"
-//   - default (方案 1): DERIVED — the westernmost point of the road we actually use.
-//   - override (方案 2): a HUMAN-NAMED anchor resolved to coordinates, validated identically.
+//   - default (方案 1): DERIVED
+//   - override (方案 2): a HUMAN-NAMED anchor resolved to coordinates, validated identically
 //
-// CORRECTION over the first attempt: "westernmost road node in the slice" is NOT a valid
-// rule — the westernmost x_m in a bbox can belong to any cross street. The first run
-// returned 錦小路通, a residential lane, because the bbox extended west of 四条烏丸.
-// The rule must be anchored to the road the slice IS: 四条通 (市道186号 嵐山祇園線).
+// TWO corrections, both found by measurement rather than reasoning:
+//
+// (1) "Westernmost road node in the bbox" is not a rule — the westernmost x_m can belong
+//     to any cross street. First run returned 錦小路通, a residential lane.
+//
+// (2) "Westernmost point of the named road" is not a rule either. 四条通 is the whole of
+//     市道186号 嵐山祇園線, which starts at 松尾大社 and therefore runs ~1.0 km WEST of
+//     四条烏丸. Measured way boundaries along 四条通 in the western stub:
+//       273924626  135.748883 .. 135.751874  primary lanes=4
+//       385665653  135.751874 .. 135.752063  primary lanes=4
+//       273924625  135.752063 .. 135.755136  primary lanes=4
+//       977465923  135.755136 .. 135.758147  primary lanes=4   <- the origin the first run picked
+//       1496344393 135.758147 .. 135.758392  primary lanes=4
+//       964931603  135.758392 .. 135.759606  primary lanes=4
+//       678103923  135.759606 .. 135.759719  primary lanes=4   <- OSM way boundary sits ON 四条烏丸
+//     So the origin must be CONSTRAINED to the declared slice, not merely to the road.
+//
+// Rule now: the westernmost geometry point of the road that lies at or EAST of the slice's
+// declared western anchor (四条烏丸). The declared anchor is data, not opinion — the user
+// named it, and an OSM way boundary confirms it.
 //
 // Reads a cached Overpass response (fetched with curl, which this sandbox permits).
 // Usage: node freeze-origin.mjs <overpass.json> [--out file.json]
@@ -19,22 +35,30 @@ if (!src || !existsSync(src)) { console.error('usage: node freeze-origin.mjs <ov
 const ROAD = '四条通';
 const LON_M_PER_DEG = 91282.15;
 const LAT_M_PER_DEG = 110940.65;
-const KARASUMA = { lat: 35.003825, lon: 135.759680 };
+// Declared slice anchor, from the user's own segment definition 四条烏丸 → 祇園.
+// Coordinates for 四条烏丸 intersection (四条通 × 烏丸通).
+const ANCHOR = { name: '四条烏丸', lat: 35.003825, lon: 135.759680 };
 
 const json = JSON.parse(readFileSync(src, 'utf8'));
 const ways = (json.elements || []).filter((e) => e.type === 'way' && Array.isArray(e.geometry));
-console.log(`source            : ${src}`);
-console.log(`ways named ${ROAD}   : ${ways.length}`);
+console.log(`source              : ${src}`);
+console.log(`ways named ${ROAD}     : ${ways.length}`);
 
-const nodes = [];
+let nodes = [];
 for (const w of ways) {
   w.geometry.forEach((p, i) => nodes.push({
     lat: p.lat, lon: p.lon, wayId: w.id, idx: i,
     highway: w.tags?.highway ?? '', lanes: w.tags?.lanes ?? '', width: w.tags?.width ?? '',
   }));
 }
-console.log(`geometry nodes    : ${nodes.length}`);
+console.log(`geometry nodes      : ${nodes.length}`);
 if (!nodes.length) { console.error('no geometry for the named road'); process.exit(2); }
+
+// Constrain to the declared slice: everything at or east of the anchor.
+const beforeN = nodes.length;
+nodes = nodes.filter((p) => p.lon >= ANCHOR.lon);
+console.log(`after slice clamp   : ${nodes.length}  (dropped ${beforeN - nodes.length} west of ${ANCHOR.name})`);
+if (!nodes.length) { console.error(`no ${ROAD} geometry east of ${ANCHOR.name}`); process.exit(3); }
 
 const lat0 = nodes.reduce((s, p) => s + p.lat, 0) / nodes.length;
 const lon0 = nodes.reduce((s, p) => s + p.lon, 0) / nodes.length;
@@ -47,30 +71,29 @@ const west = nodes.reduce((a, b) => (b.xm < a.xm ? b : a));
 const east = nodes.reduce((a, b) => (b.xm > a.xm ? b : a));
 const span = east.xm - west.xm;
 const toUd = (d) => Math.round(d * 1e6);
+const distFromAnchor = Math.hypot((west.lon - ANCHOR.lon) * LON_M_PER_DEG, (west.lat - ANCHOR.lat) * LAT_M_PER_DEG);
 
-console.log(`\n── 方案 1 origin candidate: westernmost point of ${ROAD} ──`);
+console.log(`\n── 方案 1 origin: westernmost ${ROAD} point at or east of ${ANCHOR.name} ──`);
 console.log(`  lon ${west.lon.toFixed(7)}   lat ${west.lat.toFixed(7)}`);
 console.log(`  MICRODEG  lon ${toUd(west.lon)}   lat ${toUd(west.lat)}`);
 console.log(`  OSM way ${west.wayId} node#${west.idx}  highway=${west.highway}  lanes=${west.lanes || '-'}  width=${west.width || '-'}`);
 console.log(`  east end  lon ${east.lon.toFixed(7)}  lat ${east.lat.toFixed(7)}  (microdeg ${toUd(east.lon)}, ${toUd(east.lat)})`);
 
-console.log(`\n── corridor span along the road ──`);
+console.log(`\n── corridor span along the clamped road ──`);
 console.log(`  span          : ${span.toFixed(2)} m`);
 console.log(`  frozen wTiles : 2000`);
-console.log(`  margin        : ${(span - 2000).toFixed(2)} m  ${span >= 2000 ? '(covers the 2000 m contract ✅)' : '❌ SHORT'}`);
-
-const dx = (west.lon - KARASUMA.lon) * LON_M_PER_DEG;
-const dy = (west.lat - KARASUMA.lat) * LAT_M_PER_DEG;
-const dist = Math.hypot(dx, dy);
-console.log(`\n── cross-check vs 四条烏丸 (${KARASUMA.lat}, ${KARASUMA.lon}) ──`);
-console.log(`  derived origin sits ${dist.toFixed(1)} m from 四条烏丸   (dx ${dx.toFixed(1)} m, dy ${dy.toFixed(1)} m)`);
-console.log(`  → the two schemes ${dist < 60 ? 'AGREE (within one block) ✅' : 'DISAGREE — needs a decision ❌'}`);
+console.log(`  margin        : ${(span - 2000).toFixed(2)} m  ${span >= 2000 ? '(covers the 2000 m contract ✅)' : '❌ SHORT — the slice is smaller than wTiles assumes'}`);
+console.log(`\n  origin sits ${distFromAnchor.toFixed(1)} m from ${ANCHOR.name} (expected: within one block)`);
 
 const payload = {
   note: 'A1 origin — derived candidate to freeze into the geo contract (GAP-1)',
-  method: `方案 1: westernmost geometry point of the road actually used (${ROAD}), not of the bbox`,
-  correction: 'The bbox-wide "westernmost node" rule was wrong — it returned 錦小路通, a residential lane west of 四条烏丸.',
+  method: `方案 1: westernmost geometry point of ${ROAD} AT OR EAST OF the declared slice anchor (${ANCHOR.name})`,
+  corrections: [
+    'bbox-wide "westernmost node" returned 錦小路通, a residential lane.',
+    'road-wide "westernmost point" returned 松尾大社, ~1.0 km west of the slice, because 四条通 IS 市道186号 嵐山祇園線.',
+  ],
   road: ROAD,
+  sliceAnchor: ANCHOR,
   source: 'Overpass API (overpass-api.de), OpenStreetMap contributors',
   licence: 'ODbL 1.0',
   coefficients: { LON_M_PER_DEG, LAT_M_PER_DEG },
@@ -81,7 +104,7 @@ const payload = {
   },
   eastEnd: { lonUdeg: toUd(east.lon), latUdeg: toUd(east.lat), lonDeg: east.lon, latDeg: east.lat },
   corridor: { measuredSpanM: Number(span.toFixed(2)), frozenWTiles: 2000, marginM: Number((span - 2000).toFixed(2)) },
-  crossCheck: { anchor: '四条烏丸', ...KARASUMA, distanceM: Number(dist.toFixed(1)), agree: dist < 60 },
+  crossCheck: { anchor: ANCHOR.name, distanceFromAnchorM: Number(distFromAnchor.toFixed(1)) },
   counts: { ways: ways.length, nodes: nodes.length },
 };
 

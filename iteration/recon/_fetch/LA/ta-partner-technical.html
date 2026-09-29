@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+
+
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+<meta name="description" content="Authentication / SecurityAll API requests must be made over https. Note: The partner will need to set a user agent and use api.tripadvisor.com for the API calls to ensure that all requests are sent through.">
+<title>Partner Portal / JSON Partner API / Technical Overview | Tripadvisor Developer Portal</title>
+<link rel="shortcut icon" href="/assets/partner/static/img/favicon.ico">
+
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/feeds/rss/">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="/blog/feeds/atom/">
+
+
+<link rel="stylesheet" href="/assets/partner/static/CACHE/css/76917d0f160f.css" type="text/css" />
+
+<script type="text/javascript" src="/assets/partner/static/CACHE/js/40696a39efef.js"></script>
+
+<!--[if lt IE 9]>
+<script src="/assets/partner/static/js/html5shiv.js"></script>
+<script src="/assets/partner/static/js/respond.min.js"></script>
+<![endif]-->
+
+
+</head>
+
+<body id="body">
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle Navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+
+          
+    <a href="../../index.html"><img alt="Tripadvisor" width="176" height="36" src="/assets/partner/static/img/Tripadvisor_lockup_horizontal_registered.svg"></a>
+
+
+          
+            
+          
+      </div>
+      
+    </div>
+</div>
+
+<div id="wrapper" class="">
+  <div id="sidebar-wrapper">
+
+    
+
+    <div class="sidebar-tree">
+    
+    <div class="panel panel-default tree">
+        
+
+<ul class="nav nav-list navlist-menu-level-0"><li class="
+    
+     active-branch
+    " id="tree-menu-partner"><a href="../../index.html">Partner Portal</a><ul class="nav nav-list navlist-menu-level-1"><li class="
+    
+    
+    " id="tree-menu-partner-rcp"><a href="../../rcp/index.html">Review Collection Platform</a></li><li class="
+    
+     active-branch
+    " id="tree-menu-partner-json-api"><a href="../index.html">JSON Partner API</a><ul class="nav nav-list navlist-menu-level-2"><li class="
+    
+    
+    " id="tree-menu-partner-json-api-get-started"><a href="../get-started/index.html">Get Started</a></li><li class="
+     active
+     active-branch
+    " id="tree-menu-partner-json-api-technical-overview"><a href="index.html">Technical Overview</a><ul class="nav nav-list"><li><a href='/partner/json-api/technical-overview/#API_versions'>Authentication / Security</a></li><li><a href='/partner/json-api/technical-overview/#rate_limit'>Rate Limits</a></li><li><a href='/partner/json-api/technical-overview/#caching'>Caching</a></li><li><a href='/partner/json-api/technical-overview/#multi_get'>Multi-Get</a></li><li><a href='/partner/json-api/technical-overview/#offset_and_pagination'>Offset & Pagination</a></li><li><a href='/partner/json-api/technical-overview/#errors'>Errors</a></li><li><a href='/partner/json-api/technical-overview/#Implementing Reviews'>Implementing Reviews</a></li></ul></li><li class="
+    
+    
+    " id="tree-menu-partner-json-api-documentation"><a href="../documentation/index.html">Documentation</a></li><li class="
+    
+    
+    " id="tree-menu-partner-json-api-business-content"><a href="../business-content/index.html">Business Content</a></li><li class="
+    
+    
+    " id="tree-menu-partner-json-api-destination-content"><a href="../destination-content/index.html">Destination Content</a></li><li class="
+    
+    
+    " id="tree-menu-partner-json-api-airline-partners"><a href="../airline-partners/index.html">Airline Partners</a></li><li class="
+    
+    
+    " id="tree-menu-partner-json-api-api-change-log"><a href="../api-change-log/index.html">API Change Log</a></li><li class="
+    
+    
+    " id="tree-menu-partner-json-api-support"><a href="../support/index.html">Support</a></li></ul></li><li class="
+    
+    
+    " id="tree-menu-partner-hotel-pricing-api-v3"><a href="../../hotel-pricing-api-v3/index.html">Hotel Pricing API</a></li><li class="
+    
+    
+    " id="tree-menu-partner-locations"><a href="../../locations/index.html"> Location IDs/Mapping</a></li><li class="
+    
+    
+    " id="tree-menu-partner-supported-languages"><a href="../../supported-languages/index.html">Supported Languages</a></li><li class="
+    
+    
+    " id="tree-menu-partner-mega-feeds"><a href="../../mega-feeds/index.html">Mega feeds</a></li><li class="
+    
+    
+    " id="tree-menu-partner-pdf-guides"><a href="../../pdf-guides/index.html">PDF Guides</a></li><li class="
+    
+    
+    " id="tree-menu-partner-partner-advertising-guidelines"><a href="../../partner-advertising-guidelines/index.html">Brand Guidelines for Partners</a></li><li class="
+    
+    
+    " id="tree-menu-partner-faq"><a href="../../faq/index.html">FAQs</a></li><li class="
+    
+    
+    " id="tree-menu-partner-master-partnerships-terms-and-conditions"><a href="../../master-partnerships-terms-and-conditions/index.html">Master Partnerships Terms and Conditions</a></li><li class="
+    
+    
+    " id="tree-menu-partner-legacy-contents"><a href="../../legacy-contents/index.html">Legacy Contents</a></li></ul></li></ul>
+
+    </div>
+
+    </div>
+  </div>
+
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-10">
+
+          
+          
+          
+
+          <ul class="breadcrumb">
+            
+          
+          </ul>
+
+          <h1>
+
+
+
+
+
+
+Technical Overview
+
+
+
+
+
+
+
+</h1>
+          
+
+
+
+
+
+
+
+
+
+<h2 dir="ltr" id="API_versions">Authentication / Security</h2>
+<p dir="ltr">All API requests must be made over https. Note: The partner will need to set a user agent and use api.tripadvisor.com for the API calls to ensure that all requests are sent through.</p>
+<p> </p>
+<p dir="ltr">Please safeguard your access key. To include it with each request, set it as the value of the X-TripAdvisor-API-Key header. If you need to make API calls from client code, be aware this may expose your key to other scripts and browser extensions on the client.</p>
+<p> </p>
+<p dir="ltr">Tripadvisor reserves the right to revoke an access key at any time and issue a new one, if a key has leaked or is being misused.</p>
+<p> </p>
+<h2 dir="ltr" id="rate_limit">Rate Limits</h2>
+<p dir="ltr">Tripadvisor sets daily and per-second call limits on each key used to access the Partner API. Talk with your Account Manager to evaluate what kind of traffic you will be expecting to web pages containing Tripadvisor content. The rate limit measures on a 24 hour rolling window. The window starts with the first call made, and resets 24 hours later.  There is no fixed time of day when the window resets. If the window resets and no calls are made for a given key, a new window is not opened until the next call is made for a given key. The calls per second work similarly.</p>
+<p> </p>
+<p dir="ltr">The partner API returns an HTTP status code of 429, “too many requests”, when either the per-second or per-day limits are reached. The two cases are distinguished by the error code in the response body. The response body will contain an error message in a JSON object. For the per-second limit, the response body will be like:</p>
+<pre dir="ltr">{
+ "error": {
+  "message": "Maximum number of requests per second exceeded: (Max: 50 per sec)",
+  "code": "150",
+  "type": "TooManyRequestsException"
+ }
+}</pre>
+<p dir="ltr"> </p>
+<p dir="ltr">For the daily limit, the response body will be like:</p>
+<pre dir="ltr">{<br> "error": {
+  "message": "Maximum number of daily requests exceeded: (Max: 100000 per day)",
+  "code": "151",
+  "type": "TooManyRequestsException"
+ }
+}</pre>
+<h2 id="caching">Caching</h2>
+<div>
+<p>Tripadvisor recommends that partners cache the content from API responses for 24 hours. This allows your application to show content more quickly if it has been requested before, while still showing the latest user reviews. If you are displaying only ratings and popularity index data, you should cache data for up to a week. These numbers are updated only weekly with refreshed data pushed out on Tuesday of each week.</p>
+<p>Caching also reduces the load on Tripadvisor’s content servers. Do not use the API to pre-fetch content for your entire inventory. Request only the content you need, at the moment you need it.</p>
+</div>
+<p>Tripadvisor has implemented HTTP cache headers.  All Tripadvisor API traffic is routed through a CDN [Content Delivery Network], which can cache the content locally so that it can be served more quickly.  Tripadvisor has added cache control headers to API responses so that they can be cached in the CDN, giving partners who make frequent repeated calls for the same location better response time and less impact on their API call quotas.</p>
+<p>Most API content is marked as cacheable for one hour.  Any request without a partner-specific query parameter (key or cache-key) will not be cached.  Content in the<a href="http://developer-tripadvisor.com/connectivity-solutions/review-express-api/"> Review Express API</a> will not be cached.</p>
+<p>If you are using the X-TripAdvisor.API-Key header for authentication, we recommend that you add a query parameter cache-key, with the MD5 hash of your partner key as the value.</p>
+<h2 id="multi_get">Multi-Get</h2>
+<p dir="ltr">You can call for multiple location ids with one request.  Call /location-hotels with a  comma-separated list of hotel location-ids, the API will output data for the hotels in your list.   Call /location-restaurants with a list of restaurant location ids.  Call /location-attractions with  a list of attraction location ids. You may include a maximum of 50 unique location IDs.</p>
+<p> </p>
+<p dir="ltr"><strong>Syntax:</strong></p>
+<p dir="ltr">http://api.tripadvisor.com/api//partner/2.0/location/89575,233835,192416/hotels?key=<em>PARTNER_KEY</em></p>
+<p dir="ltr">http://api.tripadvisor.com/api//partner/2.0/location/2411123,433852,675600/restaurants?key=<em>PARTNER_KEY</em></p>
+<p>http://api.tripadvisor.com/api//partner/2.0/location/2226812,233835,3177246/attractions?key=<em>PARTNER_KEY</em></p>
+<p><em> </em></p>
+<h2 id="offset_and_pagination">Offset &amp; Pagination</h2>
+<p>The default pagination limit is 20. But it can be adjusted as high as 50 with the limit parameter in the API call (presuming the key is turned up for 20 or more reviews).</p>
+<p dir="ltr">You may optionally limit the number of results returned by a given request by using the limit and offset parameters in your request URL.</p>
+<p> </p>
+<p dir="ltr">http://api.tripadvisor.com/api/partner/2.0/map/42.33141,-71.099396?limit=3&amp;offset=3"&amp;key=<em>PARTNER_KEY</em></p>
+<p> </p>
+<div dir="ltr">
+<table border="1" cellpadding="10"><colgroup><col width="131"><col width="484"></colgroup>
+<tbody>
+<tr>
+<td>
+<p dir="ltr"><strong>Name</strong></p>
+</td>
+<td>
+<p dir="ltr"><strong>Description</strong></p>
+</td>
+</tr>
+<tr>
+<td>
+<p dir="ltr">limit</p>
+</td>
+<td>
+<p dir="ltr">Limits number of entities (POIs or destinations or reviews) returned in a response. You may not set your limit higher than the total number of entities your access key allows you to obtain.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p dir="ltr">offset</p>
+</td>
+<td>
+<p dir="ltr">Defines the point in a list of items where you wish to begin. For example, if you would like to show 3 results per page, the offset can be used to display results starting on “page 2” at the 4th entity in a list.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p> </p>
+<p dir="ltr">Responses including a list of results will include pagination details for retrieving the next and previous sets of locations in the list, if they were not all returned as part of the current call.</p>
+<pre>{<br class="kix-line-break"> "paging": {<br class="kix-line-break">  "previous": null,<br class="kix-line-break">  "skipped": "0",<br class="kix-line-break">  "results": "3",<br class="kix-line-break">  "next": "http://api.tripadvisor.com/api/partner/1.0/map/42.33141,-71.099396?limit=3&amp;offset=3"&amp;key=PARTNER_KEY”,<br>  "total_results": "10"<br class="kix-line-break"> }<br class="kix-line-break">} </pre>
+<p><em> </em></p>
+<h2 id="errors">Errors</h2>
+<table border="1" cellpadding="10"><colgroup><col width="80"><col width="63"><col width="120"><col width="*"></colgroup>
+<tbody>
+<tr>
+<td>
+<p dir="ltr"><strong>Error</strong></p>
+</td>
+<td>
+<p dir="ltr"><strong>Code</strong></p>
+</td>
+<td>
+<p dir="ltr"><strong>Description</strong></p>
+</td>
+<td>
+<p dir="ltr"><strong>Sample</strong></p>
+</td>
+</tr>
+<tr>
+<td>
+<p dir="ltr">Invalid client key</p>
+</td>
+<td>
+<p dir="ltr">160</p>
+</td>
+<td>
+<p dir="ltr">Your partner key was incorrect</p>
+</td>
+<td>
+<pre dir="ltr">{<br> "error": {<br>  "message": "invalid client key: 3cacf",<br>  "code": "160",<br>  "type": "UnauthorizedException"<br> }<br>}</pre>
+</td>
+</tr>
+<tr>
+<td>
+<p dir="ltr">Too many requests</p>
+</td>
+<td>
+<p dir="ltr">150</p>
+</td>
+<td>
+<p dir="ltr">Maximum requests per second exceeded</p>
+</td>
+<td>
+<pre dir="ltr">{<br> "error": {<br>  "message": "Maximum number of requests per second exceeded: (Max: 50 per sec)",<br>  "code": "150",<br>  "type": "TooManyRequestsException"<br> }<br>}</pre>
+</td>
+</tr>
+<tr>
+<td>
+<p dir="ltr">Too many requests</p>
+</td>
+<td>
+<p dir="ltr">151</p>
+</td>
+<td>
+<p dir="ltr">Maximum requests per day exceeded</p>
+</td>
+<td><br>
+<pre dir="ltr">{<br> "error": {<br> "message": "Maximum number of daily requests exceeded: (Max: 100000 per day)",<br>  "code": "151",<br>  "type": "TooManyRequestsException"<br> }<br>}</pre>
+</td>
+</tr>
+<tr>
+<td>
+<p dir="ltr">Invalid location_id</p>
+</td>
+<td>
+<p dir="ltr">101</p>
+</td>
+<td>
+<p dir="ltr">The location_id being passed is not recognized by Tripadvisor</p>
+</td>
+<td>
+<pre dir="ltr">{<br> "error": {<br> "message": "The location was not found.","code": "101",<br> "type": "NotFoundException"<br> }<br>}</pre>
+</td>
+</tr>
+<tr>
+<td>
+<p dir="ltr">Method not found</p>
+</td>
+<td>
+<p dir="ltr">101</p>
+</td>
+<td>
+<p dir="ltr">An invalid connection was requested</p>
+</td>
+<td>
+<pre dir="ltr">{<br> "error": {<br>  "message": "The method was not found.",<br>  "code": "101",<br>  "type": "NotFoundException"<br> }<br>}</pre>
+</td>
+</tr>
+<tr>
+<td>
+<p dir="ltr">Missing Location ID</p>
+</td>
+<td>
+<p dir="ltr">110</p>
+</td>
+<td>
+<p dir="ltr">The API call requires a location identifier, but one was not provided</p>
+</td>
+<td>
+<pre>{
+  "error": {
+    "code": "110",
+    "type": "BadRequestException",
+    "message": "This resource requires the presence of a location parameter."
+  }
+}</pre>
+</td>
+</tr>
+<tr>
+<td>
+<p dir="ltr">Invalid connection</p>
+</td>
+<td>
+<p dir="ltr">120</p>
+</td>
+<td>
+<p dir="ltr">The location_id passed is not valid for this connection</p>
+</td>
+<td>
+<pre dir="ltr">{<br> "error": {<br>  "message": "Cannot view this connection at this level.",<br>  "code": "120",<br>  "type": "BadRequestException"<br> }<br>}</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p><em> </em></p>
+<h2 id="Implementing Reviews">Implementing Reviews</h2>
+<p>The review content should <strong>never</strong> appear directly in the source code of the loaded page, be it in HTML or Javascript.</p>
+<p> </p>
+<p><strong>How to check: </strong>In Chrome, load the hotel detail pages where users would be able to read the reviews. Copy a short snippet of a review (10 words will do) and then go to View &gt; Developer &gt; View Source (command-option-U). In the new page that opens, search for the snippet. If it appears in HTML or Javascript, Google will index the content.</p>
+<p> </p>
+<p>Invalid implementation in HTML</p>
+<p> </p>
+<p>Review text is directly in the html and will be indexed by Google.</p>
+<p> </p>
+<p>&lt;html&gt;</p>
+<p>            &lt;head&gt;</p>
+<p>            &lt;/head&gt;</p>
+<p>            &lt;body&gt;</p>
+<p>                        &lt;div&gt;”I had a great time at this hotel”&lt;/div&gt;</p>
+<p>            &lt;/body&gt;</p>
+<p>&lt;/html&gt;</p>
+<p> </p>
+<p>Invalid implementation in Javascript directly in the page source</p>
+<p> </p>
+<p>Everything needed to render the review content is available to Google directly in the page and will be indexed.</p>
+<p> </p>
+<p>&lt;html&gt;</p>
+<p>            &lt;head&gt;</p>
+<p>                        &lt;script&gt;</p>
+<p>                                    var review_content = ”I had a great time at this hotel”;</p>
+<p>                                    $(“review”).html(review_content);</p>
+<p>                        &lt;/script&gt;</p>
+<p>            &lt;/head&gt;</p>
+<p>            &lt;body&gt;</p>
+<p>                        &lt;div id=”review”&gt;&lt;/div&gt;</p>
+<p>            &lt;/body&gt;</p>
+<p>&lt;/html&gt;</p>
+<p> </p>
+<p><strong></strong></p>
+<p><strong>Valid Implementations</strong></p>
+<p> </p>
+<p>The review content must be loaded via an <strong>external</strong> javascript call that is <strong>blocked</strong> in <a href="https://moz.com/learn/seo/robotstxt">robots.txt</a> so that Google can not crawl the review text.</p>
+<p> </p>
+<p>Valid implementation by blocking the specific ajax call that retrieves the reviews</p>
+<p> </p>
+<p>&lt;html&gt;</p>
+<p>            &lt;head&gt;</p>
+<p>&lt;script&gt;</p>
+<p>var review_content = $.ajax(“https://api.abc.com/getReviewContentForHotel/123/”);</p>
+<p>$(“review”).html(review_content);</p>
+<p>&lt;/script&gt;</p>
+<p>            &lt;/head&gt;</p>
+<p>            &lt;body&gt;</p>
+<p>                        &lt;div id=”review”&gt;&lt;/div&gt;</p>
+<p>            &lt;/body&gt;</p>
+<p>&lt;/html&gt;</p>
+<p> </p>
+<p><em>Robots.txt in the root directory for https://api.abc.com</em></p>
+<p> </p>
+<p>User-Agent: *</p>
+<p>Disallow: /getReviewContentForHotel</p>
+<p> </p>
+<p><strong>Note:</strong> The robots.txt file must be in the root directory for whichever domain <strong>or</strong> <strong>subdomain</strong> the call is being made to. Please review <a href="https://support.google.com/webmasters/answer/6062596?hl=en">robots.txt guidelines</a> for exact syntax based on your site.</p>
+<p> </p>
+<p>Valid implementation by blocking all the javascript related to loading the reviews</p>
+<p> </p>
+<p>&lt;html&gt;</p>
+<p>            &lt;head&gt;</p>
+<p>&lt;script src="/everything_to_do_with_loading_reviews/load_reviews.js"&gt;&lt;/script&gt;</p>
+<p>            &lt;/head&gt;</p>
+<p>            &lt;body&gt;</p>
+<p>                        &lt;div id=”review”&gt;&lt;/div&gt;</p>
+<p>            &lt;/body&gt;</p>
+<p>&lt;/html&gt;</p>
+<p> </p>
+<p><em>Robots.txt in the root directory for https://www.abc.com</em></p>
+<p> </p>
+<p>User-Agent: *</p>
+<p>Disallow: /everything_to_do_with_loading_reviews</p>
+
+
+
+
+
+
+
+
+
+
+          <footer>
+            <div class="footer-container">
+              <div class="footer-width">
+                <p class="pull-left">© 2026 TripAdvisor LLC All rights reserved.</p>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+</script>
+
+
+<!-- Menu Toggle Script -->
+<script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
+
+</body>
+</html>

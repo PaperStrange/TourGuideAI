@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2G3P5MCEQB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2G3P5MCEQB');
+</script>
+<script>
+/* 2025.03.19 ADD START */
+var startPos = 0, winScrollTop = 0;
+window.addEventListener('scroll', function () {
+    winScrollTop = this.scrollY;
+    if (winScrollTop >= startPos) {
+        if (winScrollTop >= 100) {
+            document.getElementById('scrollAreaSp').classList.add('hide');
+        }
+    } else {
+        document.getElementById('scrollAreaSp').classList.remove('hide');
+    }
+    startPos = winScrollTop;
+});
+/* 2025.03.19 ADD END */
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0" />
+<meta name="description" content="京都市のオープンデータのポータルサイトです。あらゆる分野の行政データを公開しています。" />
+<meta name="keywords" content="京都,オープンデータ,統計,観光,文化,産業,福祉" />
+<link rel="canonical" href="https://data.city.kyoto.lg.jp/" /> 
+<link rel="icon" href="https://data.city.kyoto.lg.jp/img/favicon.ico"><!-- ファビコン -->
+<link rel="apple-touch-icon" sizes="180x180" href="https://data.city.kyoto.lg.jp/img/apple-touch-icon.png"><!-- スマホ用アイコン -->
+<!--OGP設定-->
+<meta property="og:site_name" content="京都市オープンデータポータルサイト KYOTO OPEN DATA" />
+<meta property="og:title" content="京都市オープンデータポータルサイト KYOTO OPEN DATA" />
+<meta property="og:url" content="https://data.city.kyoto.lg.jp/" />
+<meta property="og:image" content="https://data.city.kyoto.lg.jp/img/sns_share_img.jpg" />
+<meta property="og:description" content="京都市の統計情報のサイトです。京都市の人口，産業，観光等の主要な統計データを公開しています。" />
+<meta property="og:type" content="website" />
+<!--Twitter Card設定-->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@京都市" />
+<meta name="twitter:creator" content="@京都市" />
+<meta name="twitter:title" content="京都市オープンデータポータルサイト KYOTO OPEN DATA" />
+<meta name="twitter:description" content="京都市のオープンデータのポータルサイトです。あらゆる分野の行政データを公開しています。">
+<meta name="twitter:image:src" content="https://data.city.kyoto.lg.jp/img/sns_share_img.jpg">
+<link rel="stylesheet" type="text/css" href="./css/index.css">
+<title>京都市オープンデータポータルサイト</title>
+</head>
+<body>
+<!------------------------------------ ここからヘッダーコンテンツ ---------------------------------->
+<div id="headerContentsFrame">
+<a href="./"><img id="headerLogoImg" src="./img/top_logo.svg"></a>
+<ul id="navMenu">
+	<li><a href="./search.php">データ検索</a></li>
+	<li><a href="./contents.php?category=0">ご利用方法</a></li>
+	<li><a href="./contents.php?category=1">活用事例</a></li>
+	<li><a href="./contents.php?category=2">アプリ一覧</a></li>
+	<li><a href="./mailform.php">お問い合わせ</a></li>
+</ul>
+</div>
+<div style="clear:both; height:0;"></div>
+<hr class="borderLine"/>
+<!------------------------------------ ここからメインコンテンツ ---------------------------------->
+<img src="./img/index_back.jpg" class="mainBackImg">
+<div id="mainContentsFrame">
+	<div id="searchContentsFrame">
+		<form id="searchForm"  method="GET" action="./search.php">
+			<input type="text" name="keyword" id="seachTextBox" placeholder="データセットを検索" />
+			<input type="submit" value="検索" id="seachButton" >
+		</form>
+		<ul id="sixPanel">
+			<li><a href='./search.php?bunya=1'><p class="sixPanelTxt">観光・産業</p><p class="sixPanelCount">124</p></a></li>
+			<li><a href='./search.php?bunya=2'><p class="sixPanelTxt">文化・芸術</p><p class="sixPanelCount">12</p></a></li>
+			<li><a href='./search.php?bunya=3'><p class="sixPanelTxt">安心安全・防災</p><p class="sixPanelCount">7</p></a></li>
+			<li><a href='./search.php?bunya=4'><p class="sixPanelTxt">子育て・教育</p><p class="sixPanelCount">26</p></a></li>
+			<li><a href='./search.php?bunya=5'><p class="sixPanelTxt">環境・まちづくり</p><p class="sixPanelCount">53</p></a></li>
+			<li><a href='./search.php?bunya=6'><p class="sixPanelTxt">市政情報</p><p class="sixPanelCount">454</p></a></li>
+		</ul>
+	</div>
+<!-- 2025.03.19 ADD START -->
+<div style="text-align: center;">
+</div>
+<!-- 2025.03.19 ADD END -->
+	<div class="infoFrameOuter">
+		<div class="infoFrameLeft">
+			<p class="infoIconBox"><img src="./img/index_icon_info.svg" class="infoIcon"><br>京都市からのお知らせ</p>
+			<table class="infoBox"><tr><td id='infoBoxleft1'>2026-01-30</td><td><a href='./infomation.php?id=42'>京都市オープンデータポータルサイト　バナー広告募集中です！</a></td></tr>
+<tr><td id='infoBoxleft1'>2025-03-17</td><td><a href='./infomation.php?id=45'>ポータルサイトメンテナンスのお知らせ</a></td></tr>
+<tr><td id='infoBoxleft1'>2024-11-12</td><td><a href='./infomation.php?id=44'>特設サイト「みんなの理想京 ideal Kyoto」を開設しています</a></td></tr>
+<tr><td id='infoBoxleft1'>2024-10-29</td><td><a href='./infomation.php?id=43'>ポータルサイトメンテナンスのお知らせ</a></td></tr>
+<tr><td id='infoBoxleft1'>2023-10-12</td><td><a href='./infomation.php?id=41'>１１月１８日（土）・１９日（日）にハッカソン「ＫＹＯＴＯ　ＰＬＡＴＥＡＵ　ＨＡＣＫ　２０２３」が開催されます</a></td></tr>
+<tr><td id='infoBoxleft1'>2023-07-12</td><td><a href='./infomation.php?id=39'>京都女子大学データサイエンス学部で、オープンデータ利活用について講演しました</a></td></tr>
+<tr><td id='infoBoxleft1'>2023-06-01</td><td><a href='./infomation.php?id=2'>京都市オープンデータポータルサイトをリニューアルしました！</a></td></tr>
+<tr><td id='infoBoxleft1'>2022-03-30</td><td><a href='https://www.city.kyoto.lg.jp/sogo/page/0000296441.html'>京都市と京都女子大学間のデータサイエンス分野における連携・協力に関する協定の締結について</a></td></tr>
+</table>
+		</div>
+		<div class="infoFrameRight">
+			<p class="infoIconBox"><img src="./img/index_icon_new.svg" class="infoIcon"><br>新着／更新データセット</p>
+			<table class="infoBox"><tr><td id='infoBoxleft2'>2026-09-25更新</td><td><a href='./dataset/00530/'>理容所・美容所・クリーニング所の施設一覧について</a></td></tr>
+<tr><td id='infoBoxleft2'>2026-09-25更新</td><td><a href='./dataset/00302/'>京都市ソーシャルメディア一覧</a></td></tr>
+<tr><td id='infoBoxleft2'>2026-09-25更新</td><td><a href='./dataset/00007/'>京都市スマートフォンアプリケーション一覧</a></td></tr>
+<tr><td id='infoBoxleft2'>2026-09-24更新</td><td><a href='./dataset/00573/'>政策・施策評価データベース</a></td></tr>
+<tr><td id='infoBoxleft2'>2026-09-17更新</td><td><a href='./dataset/00184/'>市民生活実感調査結果</a></td></tr>
+<tr><td id='infoBoxleft2'>2026-09-17更新</td><td><a href='./dataset/00305/'>京都市上下水道事業経営評価</a></td></tr>
+<tr><td id='infoBoxleft2'>2026-09-11更新</td><td><a href='./dataset/00074/'>京都市統計月報</a></td></tr>
+<tr><td id='infoBoxleft2'>2026-09-11更新</td><td><a href='./dataset/00119/'>京都市の人口動態(月別転入元転出先別移動者数)</a></td></tr>
+</table>
+		</div>
+	</div>
+	<div class="infoFrameOuter">
+		<div class="infoFrameLeft">
+			<p class="infoIconBox"><img src="./img/index_icon_ds.svg" class="infoIcon"><br>データセット アクセスランキング</p>
+			<table class="infoBox"><tr><td id='infoBoxleft3'>1位</td><td><a href='./dataset/00541/'>食品営業許可施設一覧について（令和3年6月以降）</a></td></tr>
+<tr><td id='infoBoxleft3'>2位</td><td><a href='./dataset/00530/'>理容所・美容所・クリーニング所の施設一覧について</a></td></tr>
+<tr><td id='infoBoxleft3'>3位</td><td><a href='./dataset/00039/'>旅館業法に基づく許可施設一覧</a></td></tr>
+<tr><td id='infoBoxleft3'>4位</td><td><a href='./dataset/00613/'>建設リサイクル法に基づく届出情報</a></td></tr>
+<tr><td id='infoBoxleft3'>5位</td><td><a href='./dataset/00400/'>住宅宿泊事業法に基づく届出施設一覧</a></td></tr>
+<tr><td id='infoBoxleft3'>6位</td><td><a href='./dataset/00074/'>京都市統計月報</a></td></tr>
+<tr><td id='infoBoxleft3'>7位</td><td><a href='./dataset/00041/'>京都市AED設置施設検索システムデータ</a></td></tr>
+<tr><td id='infoBoxleft3'>8位</td><td><a href='./dataset/00302/'>京都市ソーシャルメディア一覧</a></td></tr>
+</table>
+		</div>
+		<div class="infoFrameRight">
+			<p class="infoIconBox"><img src="./img/index_icon_dl.svg" class="infoIcon"><br>データリソース ダウンロードランキング</p>
+			<table class="infoBox"><tr><td id='infoBoxleft3'>1位</td><td><a href='./resource/?id=18537'>京都市固定資産税（土地）地番図データ（令和５年１月１日）</a></td></tr>
+<tr><td id='infoBoxleft3'>2位</td><td><a href='./resource/?id=20504'>京都市固定資産税（土地）地番図データ（令和６年１月１日）</a></td></tr>
+<tr><td id='infoBoxleft3'>3位</td><td><a href='./resource/?id=7936'>京都市史　地図編</a></td></tr>
+<tr><td id='infoBoxleft3'>4位</td><td><a href='./resource/?id=13715'>住宅宿泊事業法に基づく届出施設一覧（令和８年８月末現在）Excel版</a></td></tr>
+<tr><td id='infoBoxleft3'>5位</td><td><a href='./resource/?id=15447'>令和3年3月末時点食品営業許可施設一覧</a></td></tr>
+<tr><td id='infoBoxleft3'>6位</td><td><a href='./resource/?id=20211'>令和６年度（令和５年度分）京都市図書館統計概要</a></td></tr>
+<tr><td id='infoBoxleft3'>7位</td><td><a href='./resource/?id=125'>京都市営地下鉄 駅間距離・運賃</a></td></tr>
+<tr><td id='infoBoxleft3'>8位</td><td><a href='./resource/?id=13714'>住宅宿泊事業法に基づく届出施設一覧（令和８年８月末現在）PDF版</a></td></tr>
+</table>
+		</div>
+	</div>
+
+</div>
+<div style="clear:both; height:30px;"></div>
+<hr class="borderLine"/>
+<!------------------------------------ ここからバナーコンテンツ ---------------------------------->
+<div id="bannerContentsFrame">
+<span style="background:#555; color:#FFF; padding:2px 10px;">広告欄</span>
+<div style="text-align:center;margin-bottom:10px;">
+<a href="https://www.wingarc.com/solution/government/govlong/index.html" alt="ウイングアーク１ｓｔ株式会社"><img src="/img/contents/20250430145945_wingarc1st.png"></a>
+<a href="/infomation.php?id=42" alt="バナー2"><img src="/img/contents/20230510103648_bosyuchu2.png"></a>
+</div>
+<div style="text-align:center;">
+<a href="/infomation.php?id=42" alt="バナー3"><img src="/img/contents/20230510103648_bosyuchu2.png"></a>
+<a href="/infomation.php?id=42" alt="バナー4"><img src="/img/contents/20230510103218_bosyuchu.png"></a>
+</div>
+<div style="line-height:1.5;font-size:14px;margin-top:10px;">
+本市の財源確保のための広告を掲載しています。広告をクリックすると外部サイトへリンクします。広告内容に関する質問等につきましては、直接、広告スポンサーにお問い合わせください。当ページでの企業広告に興味のある方はこちらの <a href="/infomation.php?id=42">バナー広告に関するページ</a> をご覧ください。
+</div></div>
+<hr class="borderLine"/>
+<!------------------------------------ ここからフッターコンテンツ ---------------------------------->
+<div id="footerContentsFrame">
+	<div id="footerTextFrame">
+		<h3>京都市総合企画局デジタル化戦略推進室　情報統計・データ利活用推進担当</h3>
+<span>〒604-8571　京都市中京区寺町通御池上る上本能寺前町488番地　京都市役所北庁舎4階　TEL: 075-222-3216</span>	</div>
+	<a href="https://www2.city.kyoto.lg.jp/sogo/toukei/">
+<img id="footerToukeiImg" src="/img/banner_toukei.jpg">
+</a></div>
+<!-------------------------------------------------------------------------------------------------->
+</body>
+</html>

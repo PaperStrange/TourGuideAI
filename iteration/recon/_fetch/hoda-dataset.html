@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<!--[if IE 9]> <html lang="ja" class="ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="ja"> <!--<![endif]-->
+  <head>
+    <link rel="stylesheet" type="text/css" href="/fanstatic/vendor/:version:2025-08-20T13:48:35.40/select2/select2.min.css" />
+<link rel="stylesheet" type="text/css" href="/fanstatic/css/:version:2025-08-20T13:48:35.35/main.min.css" />
+<link rel="stylesheet" type="text/css" href="/fanstatic/vendor/:version:2025-08-20T13:48:35.40/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="/fanstatic/ckanext-harvest/:version:2018-09-13T10:50:18/styles/harvest.css" />
+
+    <meta charset="utf-8" />
+      <meta name="generator" content="ckan 2.8.9" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>観光ポイント - データセット - HODA</title>
+
+    
+    <link rel="shortcut icon" href="/base/ima" />
+    
+  
+      
+    
+  
+
+
+    
+      
+      
+    
+  
+  <meta property="og:title" content="観光ポイント - HODA">
+  <meta property="og:description" content="施設とは別のポイント情報">
+<style>
+        /* =====================================================
+   The "account masthead" bar across the top of the site
+   ===================================================== */
+
+.account-masthead {
+    background-color: #0958e0;
+}
+/* The "bubble" containing the number of new notifications. */
+.account-masthead .account .notifications a span {
+  background-color: #0A7DE0;
+}
+/* The text and icons in the user account info. */
+.account-masthead .account ul li a {
+  color: rgba(255, 255, 255, 0.6);
+}
+/* The user account info text and icons, when the user's pointer is hovering
+   over them. */
+.account-masthead .account ul li a:hover {
+  color: rgba(255, 255, 255, 0.7);
+  background-color: black;
+}
+
+
+/* ========================================================================
+   The main masthead bar that contains the site logo, nav links, and search
+   ======================================================================== */
+
+.masthead {
+  background-color: #0A7DE0;
+}
+/* The "navigation pills" in the masthead (the links to Datasets,
+   Organizations, etc) when the user's pointer hovers over them. */
+.masthead .navigation .nav-pills li a:hover {
+  background-color: #0958e0;
+  color: white;
+}
+/* The "active" navigation pill (for example, when you're on the /dataset page
+   the "Datasets" link is active). */
+.masthead .navigation .nav-pills li.active a {
+  background-color: #0958e0;
+}
+/* The "box shadow" effect that appears around the search box when it
+   has the keyboard cursor's focus. */
+.masthead input[type="text"]:focus {
+  -webkit-box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.7);
+  box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.7);
+}
+
+
+/* ===========================================
+   The content in the middle of the front page
+   =========================================== */
+
+/* Remove the "box shadow" effect around various boxes on the page. */
+.box {
+  box-shadow: none;
+}
+/* Remove the borders around the "Welcome to CKAN" and "Search Your Data"
+   boxes. */
+.hero .box {
+  border: none;
+}
+/* Change the colors of the "Search Your Data" box. */
+.homepage .module-search .module-content {
+  color: rgb(68, 68, 68);
+  background-color: white;
+}
+/* Change the background color of the "Popular Tags" box. */
+.homepage .module-search .tags {
+  background-color: rgb(61, 61, 61);
+}
+/* Remove some padding. This makes the bottom edges of the "Welcome to CKAN"
+   and "Search Your Data" boxes line up. */
+.module-content:last-child {
+  padding-bottom: 0px;
+}
+.homepage .module-search {
+  padding: 0px;
+}
+/* Add a border line between the top and bottom halves of the front page. */
+.homepage [role="main"] {
+  border-top: 1px solid rgb(204, 204, 204);
+}
+
+
+/* ====================================
+   The footer at the bottom of the site
+   ==================================== */
+
+.site-footer,
+body {
+  background-color: #0A7DE0;
+}
+/* The text in the footer. */
+.site-footer,
+.site-footer label,
+.site-footer small {
+  color: rgba(255, 255, 255, 0.6);
+}
+/* The link texts in the footer. */
+.site-footer a {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* 検索アイコンの位置調整 */
+.search-form .search-input.search-giant button {
+  margin-top: -13px;
+  right: 10px;
+  height: 30px;
+}
+
+/* ヘッダーの位置調整 */
+.masthead .nav-collapse{
+  padding-top: 13px
+}
+
+/* フォームボタンの位置調整 */
+.form-actions{
+  padding-bottom: 20px;
+}
+
+/* データセット一覧の位置調整 */
+.dataset-item:last-of-type{
+  padding-bottom: 20px;
+}
+
+/* ページネーションの位置調整 */
+.module-content .pagination{
+  margin-bottom: 20px;
+}
+      </style>
+    
+  </head>
+
+  
+  <body data-site-root="https://ckan.hoda.jp/" data-locale-root="https://ckan.hoda.jp/" >
+
+    
+    <div class="sr-only sr-only-focusable"><a href="#content">スキップして内容へ</a></div>
+  
+
+  
+     
+<header class="account-masthead">
+  <div class="container">
+     
+    <nav class="account not-authed">
+      <ul class="list-unstyled">
+        
+        <li><a href="/user/login">ログイン</a></li>
+         
+      </ul>
+    </nav>
+     
+  </div>
+</header>
+
+<header class="navbar navbar-static-top masthead">
+    
+  <div class="container">
+    <div class="navbar-right">
+      <button data-target="#main-navigation-toggle" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+        <span class="fa fa-bars"></span>
+      </button>
+    </div>
+    <hgroup class="header-image navbar-left">
+       
+      <a class="logo" href="/"><img src="/uploads/admin/2018-11-30-075604.684582title.png" alt="HODA" title="HODA" /></a>
+       
+    </hgroup>
+
+    <div class="collapse navbar-collapse" id="main-navigation-toggle">
+      
+      <nav class="section navigation">
+        <ul class="nav nav-pills">
+           <li><a href="/dataset">データセット</a></li><li><a href="/organization">組織</a></li><li><a href="/group">グループ</a></li><li><a href="/about">About</a></li> 
+        </ul>
+      </nav>
+       
+      <form class="section site-search simple-input" action="/dataset" method="get">
+        <div class="field">
+          <label for="field-sitewide-search">データセットを検索</label>
+          <input id="field-sitewide-search" type="text" class="form-control" name="q" placeholder="検索" />
+          <button class="btn-search" type="submit"><i class="fa fa-search"></i></button>
+        </div>
+      </form>
+      
+    </div>
+  </div>
+</header>
+
+  
+    <div role="main">
+      <div id="content" class="container">
+        
+          
+            <div class="flash-messages">
+              
+                
+              
+            </div>
+          
+
+          
+            <div class="toolbar">
+              
+                
+                  <ol class="breadcrumb">
+                    
+<li class="home"><a href="/"><i class="fa fa-home"></i><span> ホーム</span></a></li>
+                    
+  
+    
+    
+      
+      
+      <li><a href="/organization">組織</a></li>
+      <li><a href="/organization/noboribetsu">登別市</a></li>
+    
+    <li class="active"><a class=" active" href="/dataset/012301_tourist_attraction">観光ポイント</a></li>
+  
+
+                  </ol>
+                
+              
+            </div>
+          
+
+          <div class="row wrapper">
+            
+            
+            
+
+            
+              <aside class="secondary col-sm-3">
+                
+                
+
+  
+
+  
+    
+
+  
+    <section class="module module-narrow">
+      <div class="module context-info">
+        <div class="module-content">
+          
+            
+              <h1 class="heading">観光ポイント</h1>
+            
+            
+              
+              <div class="nums">
+                <dl>
+                  <dt>フォロワー</dt>
+                  <dd data-module="followers-counter" data-module-id="e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" data-module-num_followers="0"><span>0</span></dd>
+                </dl>
+              </div>
+            
+            
+              
+                <div class="follow_button">
+                  
+                </div>
+              
+            
+          
+        </div>
+      </div>
+    </section>
+  
+
+  
+
+  
+    
+      
+      
+
+
+
+
+  
+  <div class="module module-narrow module-shallow context-info">
+    
+      <h2 class="module-heading"><i class="fa fa-building-o"></i> 組織</h2>
+    
+    <section class="module-content">
+      
+      
+        <div class="image">
+          <a href="/organization/noboribetsu">
+            <img src="/base/images/placeholder-organization.png" width="200" alt="noboribetsu" />
+          </a>
+        </div>
+      
+      
+      <h1 class="heading">登別市
+        
+      </h1>
+      
+      
+      
+        <p class="empty">この組織には説明がありません</p>
+      
+      
+      
+      
+    </section>
+  </div>
+  
+    
+  
+
+  
+    
+
+  <section class="module module-narrow social">
+    
+      <h2 class="module-heading"><i class="fa fa-share-square-o"></i> ソーシャル</h2>
+    
+    
+      <ul class="nav nav-simple">
+        <li class="nav-item"><a href="https://twitter.com/share?url=https://ckan.hoda.jp/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+        <li class="nav-item"><a href="https://www.facebook.com/sharer.php?u=https://ckan.hoda.jp/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" target="_blank"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+      </ul>
+    
+  </section>
+
+  
+
+  
+    
+
+
+  
+    
+      
+        <section class="module module-narrow module-shallow license">
+          
+            <h2 class="module-heading"><i class="fa fa-lock"></i> ライセンス</h2>
+          
+          
+            <p class="module-content">
+              
+                
+  
+    <a href="http://www.opendefinition.org/licenses/cc-by" rel="dc:rights">Creative Commons Attribution</a>
+  
+
+                
+                  <a href="http://opendefinition.org/okd/" title="このデータセットはオープンデフィニションを満たしています。">
+                      <img class="open-data" src="/base/images/od_80x15_blue.png" alt="[Open Data]" />
+                  </a>
+                
+              
+            </p>
+          
+        </section>
+      
+    
+  
+
+  
+
+
+              </aside>
+            
+
+            
+              <div class="primary col-sm-9 col-xs-12">
+                
+                
+                  <article class="module">
+                    
+                      <header class="module-content page-header">
+                        
+                        <ul class="nav nav-tabs">
+                          
+  <li class="active"><a href="/dataset/012301_tourist_attraction"><i class="fa fa-sitemap"></i> データセット</a></li>
+  <li><a href="/dataset/groups/012301_tourist_attraction"><i class="fa fa-users"></i> グループ</a></li>
+  <li><a href="/dataset/activity/012301_tourist_attraction"><i class="fa fa-clock-o"></i> アクティビティストリーム</a></li>
+
+                        </ul>
+                      </header>
+                    
+                    <div class="module-content">
+                      
+                      
+  
+    
+      
+    
+
+  
+    
+    <h1>
+      
+        観光ポイント
+        
+        
+      
+    </h1>
+    
+      
+        <div class="notes embedded-content">
+          <p>施設とは別のポイント情報</p>
+        </div>
+      
+    
+    
+    <span class="insert-comment-thread"></span>
+  
+
+  
+    
+<section id="dataset-resources" class="resources">
+  <h3>データとリソース</h3>
+  
+    
+      <ul class="resource-list">
+        
+          
+          
+            
+
+
+<li class="resource-item" data-id="472f07f1-c8b6-4033-94e2-cc2ad2841869">
+  
+  <a class="heading" href="/dataset/012301_tourist_attraction/resource/472f07f1-c8b6-4033-94e2-cc2ad2841869" title="012301_tourist_attraction.csv">
+    012301_tourist_attraction.csv<span class="format-label" property="dc:format" data-format="csv">CSV</span>
+    
+
+  </a>
+  
+  
+    <p class="description">
+      
+        施設とは別のポイント情報
+      
+    </p>
+  
+  
+  
+  <div class="dropdown btn-group">
+    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      <i class="fa fa-share"></i>
+      探索
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      
+      <li>
+        <a href="/dataset/012301_tourist_attraction/resource/472f07f1-c8b6-4033-94e2-cc2ad2841869">
+          
+            <i class="fa fa-bar-chart-o"></i>
+            プレビュー
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://ckan.hoda.jp/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5/resource/472f07f1-c8b6-4033-94e2-cc2ad2841869/download/012301_tourist_attraction.csv" class="resource-url-analytics" target="_blank">
+          
+            <i class="fa fa-arrow-circle-o-down"></i>
+            ダウンロード
+          
+        </a>
+      </li>
+      
+      
+      
+    </ul>
+  </div>
+  
+  
+</li>
+          
+        
+      </ul>
+    
+    
+</section>
+  
+
+  
+    
+  
+
+  
+    <section class="additional-info">
+  <h3>追加情報</h3>
+  <table class="table table-striped table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th scope="col">フィールド</th>
+        <th scope="col">値</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        
+
+        
+
+        
+
+        
+
+        
+        
+          <tr>
+            <th scope="row" class="dataset-label">最終更新</th>
+            <td class="dataset-details">
+                
+<span class="automatic-local-datetime" data-datetime="2024-06-14T10:39:03+0900">
+    6月 14, 2024, 10:39 (JST)
+</span>
+            </td>
+          </tr>
+        
+        
+          <tr>
+            <th scope="row" class="dataset-label">作成日</th>
+
+            <td class="dataset-details">
+                
+<span class="automatic-local-datetime" data-datetime="2024-06-14T10:38:33+0900">
+    6月 14, 2024, 10:38 (JST)
+</span>
+            </td>
+          </tr>
+        
+
+      
+        
+      
+
+      
+    </tbody>
+  </table>
+</section>
+  
+
+
+                    </div>
+                  </article>
+                
+              </div>
+            
+          </div>
+        
+      </div>
+    </div>
+  
+    <footer class="site-footer">
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-md-8 footer-links">
+        
+          <ul class="list-unstyled">
+            
+              <li><a href="/about">About HODA</a></li>
+            
+          </ul>
+          <ul class="list-unstyled">
+            
+              
+              <li><a href="http://docs.ckan.org/en/2.8/api/">CKAN API</a></li>
+              <li><a href="http://www.ckan.org/">CKANアソシエーション</a></li>
+              <li><a href="http://www.opendefinition.org/okd/"><img src="/base/images/od_80x15_blue.png" alt="Open Data"></a></li>
+            
+          </ul>
+        
+      </div>
+      <div class="col-md-4 attribution">
+        
+          <p><strong>Powered by</strong> <a class="hide-text ckan-footer-logo" href="http://ckan.org">CKAN</a></p>
+        
+        
+          
+<form class="form-inline form-select lang-select" action="/util/redirect" data-module="select-switch" method="POST">
+  <label for="field-lang-select">言語</label>
+  <select id="field-lang-select" name="url" data-module="autocomplete" data-module-dropdown-class="lang-dropdown" data-module-container-class="lang-container">
+    
+      <option value="/ja/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" selected="selected">
+        日本語
+      </option>
+    
+      <option value="/en/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        English
+      </option>
+    
+      <option value="/am/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        አማርኛ
+      </option>
+    
+      <option value="/ar/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        العربية
+      </option>
+    
+      <option value="/bg/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        български
+      </option>
+    
+      <option value="/ca/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        català
+      </option>
+    
+      <option value="/cs_CZ/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        čeština (Česká republika)
+      </option>
+    
+      <option value="/da_DK/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        dansk (Danmark)
+      </option>
+    
+      <option value="/de/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        Deutsch
+      </option>
+    
+      <option value="/el/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        Ελληνικά
+      </option>
+    
+      <option value="/en_AU/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        English (Australia)
+      </option>
+    
+      <option value="/en_GB/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        English (United Kingdom)
+      </option>
+    
+      <option value="/es/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        español
+      </option>
+    
+      <option value="/es_AR/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        español (Argentina)
+      </option>
+    
+      <option value="/eu/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        euskara
+      </option>
+    
+      <option value="/fa_IR/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        فارسی (ایران)
+      </option>
+    
+      <option value="/fi/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        suomi
+      </option>
+    
+      <option value="/fr/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        français
+      </option>
+    
+      <option value="/gl/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        galego
+      </option>
+    
+      <option value="/he/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        עברית
+      </option>
+    
+      <option value="/hr/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        hrvatski
+      </option>
+    
+      <option value="/hu/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        magyar
+      </option>
+    
+      <option value="/id/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        Indonesia
+      </option>
+    
+      <option value="/is/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        íslenska
+      </option>
+    
+      <option value="/it/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        italiano
+      </option>
+    
+      <option value="/km/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        ខ្មែរ
+      </option>
+    
+      <option value="/ko_KR/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        한국어 (대한민국)
+      </option>
+    
+      <option value="/lt/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        lietuvių
+      </option>
+    
+      <option value="/lv/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        latviešu
+      </option>
+    
+      <option value="/mk/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        македонски
+      </option>
+    
+      <option value="/mn_MN/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        монгол (Монгол)
+      </option>
+    
+      <option value="/ne/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        नेपाली
+      </option>
+    
+      <option value="/nl/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        Nederlands
+      </option>
+    
+      <option value="/no/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        norsk bokmål (Norge)
+      </option>
+    
+      <option value="/pl/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        polski
+      </option>
+    
+      <option value="/pt_BR/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        português (Brasil)
+      </option>
+    
+      <option value="/pt_PT/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        português (Portugal)
+      </option>
+    
+      <option value="/ro/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        română
+      </option>
+    
+      <option value="/ru/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        русский
+      </option>
+    
+      <option value="/sk/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        slovenčina
+      </option>
+    
+      <option value="/sl/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        slovenščina
+      </option>
+    
+      <option value="/sq/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        shqip
+      </option>
+    
+      <option value="/sr/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        српски
+      </option>
+    
+      <option value="/sr_Latn/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        srpski (latinica)
+      </option>
+    
+      <option value="/sv/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        svenska
+      </option>
+    
+      <option value="/th/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        ไทย
+      </option>
+    
+      <option value="/tl/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        Filipino (Pilipinas)
+      </option>
+    
+      <option value="/tr/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        Türkçe
+      </option>
+    
+      <option value="/uk/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        українська
+      </option>
+    
+      <option value="/uk_UA/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        українська (Україна)
+      </option>
+    
+      <option value="/vi/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        Tiếng Việt
+      </option>
+    
+      <option value="/zh_Hans_CN/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        中文 (简体, 中国)
+      </option>
+    
+      <option value="/zh_Hant_TW/dataset/e4ac8dc0-2f66-48d7-94d8-5ed84861eee5" >
+        中文 (繁體, 台灣)
+      </option>
+    
+  </select>
+  <button class="btn btn-default js-hide" type="submit">Go</button>
+</form>
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+    
+  
+</footer>
+  
+    
+    
+    
+      
+    
+  
+    
+
+      
+  <script>document.getElementsByTagName('html')[0].className += ' js';</script>
+<script type="text/javascript" src="/fanstatic/vendor/:version:2025-08-20T13:48:35.40/jquery.min.js"></script>
+<script type="text/javascript" src="/fanstatic/vendor/:version:2025-08-20T13:48:35.40/:bundle:bootstrap/js/bootstrap.min.js;jed.min.js;moment-with-locales.min.js;select2/select2.min.js;qs.js"></script>
+<script type="text/javascript" src="/fanstatic/base/:version:2025-08-20T13:48:35.35/:bundle:plugins/jquery.inherit.min.js;plugins/jquery.proxy-all.min.js;plugins/jquery.url-helpers.min.js;plugins/jquery.date-helpers.min.js;plugins/jquery.slug.min.js;plugins/jquery.slug-preview.min.js;plugins/jquery.truncator.min.js;plugins/jquery.masonry.min.js;plugins/jquery.form-warning.min.js;plugins/jquery.images-loaded.min.js;sandbox.min.js;module.min.js;pubsub.min.js;client.min.js;notify.min.js;i18n.min.js;main.min.js;modules/select-switch.min.js;modules/slug-preview.min.js;modules/basic-form.min.js;modules/confirm-action.min.js;modules/api-info.min.js;modules/autocomplete.min.js;modules/custom-fields.min.js;modules/data-viewer.min.js;modules/table-selectable-rows.min.js;modules/resource-form.min.js;modules/resource-upload-field.min.js;modules/resource-reorder.min.js;modules/resource-view-reorder.min.js;modules/follow.min.js;modules/activity-stream.min.js;modules/dashboard.min.js;modules/resource-view-embed.min.js;view-filters.min.js;modules/resource-view-filters-form.min.js;modules/resource-view-filters.min.js;modules/table-toggle-more.min.js;modules/dataset-visibility.min.js;modules/media-grid.min.js;modules/image-upload.min.js;modules/followers-counter.min.js"></script>
+<script type="text/javascript" src="/fanstatic/base/:version:2025-08-20T13:48:35.35/tracking.min.js"></script></body>
+</html>

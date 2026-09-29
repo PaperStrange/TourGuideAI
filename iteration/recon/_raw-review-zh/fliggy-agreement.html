@@ -1,0 +1,349 @@
+
+
+
+
+<!DOCTYPE html><html><head><meta name="data-spm" content="181"><script fixed="true">window.trackerPerformanceTime = {};window.trackerPerformanceTime.trip_startTime = Date.now();</script><meta name="alitrip-project-version" content="1.0.51"><meta name="alitrip-project-name" content="h5-lazada-pc-fliggy-home-ssr">
+  <script fixed="true">window.REACT_TOUCH_TAP_FIXED = true</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  
+  <meta name="aplus-waiting" content="MAN">
+  <title>飞机票查询-机票预订、酒店预订查询、客栈民宿、旅游度假、门票签证【飞猪旅行】</title><script>window._$isOffline$_=false;</script>
+  <meta name="description" content="飞猪是阿里巴巴旗下的综合性旅游出行服务平台。飞猪整合数千家机票代理商、航空公司、旅行社、旅行代理商资源，直签酒店，客栈卖家等为广大旅游者提供特价机票，酒店预订，客栈查询，国内外度假信息，门票购买，签证代理，旅游卡券，租车，邮轮等旅游产品的信息搜索，购买及售后服务。全程采用支付宝担保交易，安全、可靠、有保证。">
+  <meta name="keywords" content="机票,酒店，机票预订,飞机票查询,航班查询,酒店预订,特价酒店,旅游，度假,门票,签证,台湾通行证,旅游,旅行,自由行线路">
+  <meta name="baidu-site-verification" content="N54YwxEkAs">
+  <meta name="360-site-verification" content="36864dd264e7ec211a8ed1a23558fc78">
+  <meta name="google-site-verification" content="wyfVgguEsY6bYWJtVhUkFBK_ikH9-d-8HBhRafXoR6k">
+  <meta name="msvalidate.01" content="ECE80BECC6B6C891D1BFB3012BD1D649">
+  <meta name="shenma-site-verification" content="ca1b6e78abad7fabcb8b445f7ec18c6b_1543903000">
+  <meta name="viewport" content="width=device-width, viewport-fit=cover">
+  <link rel="shortcut icon" href="//img.alicdn.com/imgextra/i1/O1CN01XslwqW1rp2BOz0lt4_!!6000000005679-73-tps-64-64.ico" type="image/x-icon">
+  <base target="_blank">
+  <script>
+    window.g_config = {
+      assetsServer: "https://g.alicdn.com/",
+      appVersion: "0.5.24",
+      pageName: "PC_HOME"
+    }
+  </script>
+
+  <style>
+    body {
+      max-width: 100vw !important;
+    }
+  </style>
+  <script>
+      (function () {
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf('MSIE ');
+        var trident = ua.indexOf('Trident/');
+
+        if (msie > 0 || trident > 0) {
+          alert('您正在使用不受支持的浏览器，请使用最新版本的 Chrome、Firefox 或 Edge 浏览器。');
+        }
+      })();
+
+  </script>
+
+
+  <script>
+    (function () {
+      try {
+
+        if (typeof Object.assign !== 'function') {
+          Object.defineProperty(Object, "assign", {
+            value: function assign(target, varArgs) {
+              'use strict';
+              if (target === null || target === undefined) {
+                throw new TypeError('Cannot convert undefined or null to object');
+              }
+
+              var to = Object(target);
+
+              for (var index = 1; index < arguments.length; index++) {
+                var nextSource = arguments[index];
+
+                if (nextSource !== null && nextSource !== undefined) {
+                  for (var nextKey in nextSource) {
+                    if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+                      to[nextKey] = nextSource[nextKey];
+                    }
+                  }
+                }
+              }
+              return to;
+            },
+            writable: true,
+            configurable: true
+          });
+        }
+
+        function addUrlParams(url, paramObj) {
+          if (!url) return '';
+
+          function parseUrlToObj(url) {
+            var ORIGIN_REG = new RegExp("^http[s]?://.+?[^#?]*");
+            var SEARCH_REG = new RegExp("\?[^#]*");
+            var HASH_REG = new RegExp("#[^?]*");
+
+            var urlObj = {
+              href: url,
+              origin: '',
+              pathname: '',
+              search: '',
+              hash: ''
+            };
+
+            if (url) {
+              Object.assign(urlObj, {
+                origin: ORIGIN_REG.exec(url) ? ORIGIN_REG.exec(url)[0] : '',
+                pathname: url.replace(ORIGIN_REG, '').replace(SEARCH_REG, '').replace(HASH_REG, ''),
+                search: SEARCH_REG.exec(url) ? SEARCH_REG.exec(url)[0] : '',
+                hash: HASH_REG.exec(url) ? HASH_REG.exec(url)[0] : '',
+              });
+            }
+
+            return urlObj;
+          }
+
+          function objToSearch(queryObj, needMark) {
+            var ret = [];
+
+            for (var key in queryObj) {
+              ret.push(key + '=' + queryObj[key]);
+            }
+
+            return needMark ? ('?' + ret.join('&')) : ret.join('&');
+          }
+
+          function searchToObj(search) {
+            var searchObj = {};
+
+            if (search) {
+              var kvs = search.replace("?", "").split("&");
+              kvs.forEach(function (item) {
+                if (item) {
+                  var kvPars = item.split("=");
+                  if (kvPars[0]) {
+                    searchObj[kvPars[0]] = kvPars[1];
+                  }
+                }
+              })
+            }
+
+            return searchObj;
+          }
+
+          var urlObj = parseUrlToObj(url);
+
+          return urlObj.origin
+            + urlObj.pathname
+            + "?"
+            + objToSearch(Object.assign(searchToObj(urlObj.search), paramObj), false)
+            + urlObj.hash;
+        }
+
+        var uniformChannel = { "defaultTTID": { "pc": "seo.000000573", "mobile": "seo.000000358" }, "channels": [{ "env": "pc", "referRegExp": "baidu\\.com", "ttid": "seo.000000574", "desc": "Baidu PC 搜索渠道" }, { "env": "mobile", "referRegExp": "baidu\\.com", "ttid": "seo.000000575", "desc": "Baidu 无线搜索渠道" }, { "env": "pc", "referRegExp": "google\\.com", "ttid": "seo.000000576", "desc": "Goolge PC 搜索渠道" }, { "env": "mobile", "referRegExp": "google\\.com", "ttid": "seo.000000577", "desc": "Goolge 移动 搜索渠道" }, { "env": "pc", "referRegExp": "yahoo\\.com", "ttid": "seo.000000578", "desc": "雅虎 PC搜索渠道" }, { "env": "mobile", "referRegExp": "yahoo\\.com", "ttid": "seo.000000579", "desc": "雅虎 移动搜索渠道" }, { "env": "pc", "referRegExp": "bing\\.com", "ttid": "seo.000000580", "desc": "微软Bing PC搜索渠道" }, { "env": "mobile", "referRegExp": "bing\\.com", "ttid": "seo.000000581", "desc": "微软Bing 移动搜索渠道" }, { "env": "mobile", "referRegExp": "m\\.sm\\.cn", "ttid": "seo.000000582", "desc": "神马 移动搜索渠道" }, { "env": "pc", "referRegExp": "so\\.com", "ttid": "seo.000000583", "desc": "360 PC搜索渠道" }, { "env": "mobile", "referRegExp": "so\\.com", "ttid": "seo.000000584", "desc": "360 移动搜索渠道" }, { "env": "pc", "referRegExp": "sogou\\.com", "ttid": "seo.000000585", "desc": "搜狗 PC搜索渠道" }, { "env": "mobile", "referRegExp": "sogou\\.com", "ttid": "seo.000000586", "desc": "搜狗 移动搜索渠道" }], "globalParams": [{ "key": "seoType", "value": "origin", "desc": "SEO入口分析依据" }] },
+          ua = navigator.userAgent,
+          href = window.location.href,
+          refUrl = document.referrer,
+          isMobile = !!ua.match(/AppleWebKit.*Mobile.*/),
+          fromSE = false,
+          ttid = '';
+
+        if (refUrl && uniformChannel && uniformChannel.channels && uniformChannel.channels.length) {
+          var channels = uniformChannel.channels, i = 0, t;
+
+          while (i < channels.length) {
+            t = channels[i];
+            i += 1;
+            var reg = new RegExp(t.referRegExp, "i");
+            if ((t.env === 'mobile' && isMobile && reg.test(refUrl)) || (t.env === 'pc' && !isMobile && reg.test(refUrl))) {
+              fromSE = true;
+              ttid = t.ttid;
+            }
+          }
+        }
+
+        if (fromSE) {
+          var needRep = false;
+          if (ttid && href.indexOf('ttid') < 0) {
+            href = addUrlParams(href, { ttid: ttid, seoType: 'origin' });
+            needRep = true;
+          }
+          if (isMobile &&
+            new RegExp("^(www\.fliggy\.com|www\.alitrip\.com|btrip\.alitrip\.com)$").test(location.host) &&
+            new RegExp("^\/?$").test(location.pathname)
+          ) {
+            href = 'https://m.fliggy.com?ttid=' + ttid + '&seoType=origin';
+            needRep = true;
+          } else if (!!location.href.match(new RegExp("www\.fliggy\.com\/travel\/detail\-(\d+)")) && !/id=\d+/.test(location.search)) {
+            var currentId = location.href.match(new RegExp("www\.fliggy\.com\/travel\/detail\-(\d+)"))[1];
+            href = addUrlParams(href, { id: currentId });
+            needRep = true;
+          }
+          needRep && window.location.replace(href);
+          return;
+        }
+        if (isMobile &&
+          new RegExp("^(pre-www\.fliggy\.com|www\.fliggy\.com|www\.alitrip\.com|btrip\.alitrip\.com)$").test(location.host) &&
+          new RegExp("^\/?$").test(location.pathname)
+        ) {
+          href = 'https://market.m.taobao.com/app/trip/rx-home/pages/home';
+          window.location.replace(href);
+          return;
+        }
+        if (isMobile &&
+          new RegExp("^market\.(m|wapa)\.taobao\.com$").test(location.host) &&
+          new RegExp("^\/app\/trip\/h5-lazada-pc-fliggy-home-ssr\/pages\/home").test(location.pathname)
+        ) {
+          href = 'https://market.m.taobao.com/app/trip/rx-home/pages/home' + location.search;
+          window.location.replace(href);
+          return;
+        }
+        if (!!location.href.match(new RegExp("www\.fliggy\.com\/travel\/detail\-(\d+)")) && !/id=\d+/.test(location.search)) {
+          var currentId = location.href.match(new RegExp("www\.fliggy\.com\/travel\/detail\-(\d+)"))[1];
+          window.location.replace(addUrlParams(href, { id: currentId }));
+          return;
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="//g.alicdn.com/trip/h5-lazada-pc-fliggy-home-ssr/1.0.51/h5-lazada-pc-fliggy-home-ssr-commons.css">
+  <link rel="stylesheet" href="//g.alicdn.com/trip/h5-lazada-pc-fliggy-home-ssr/1.0.51/pages/home/index.css">
+  <script ref="flexible">/*! flexible 2017-11-08 17:36:12 */
+!function(a){function b(){var b=d.clientWidth,c="}";if(!navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)&&b>1024&&(b=640,c=";max-width:"+b+"px;margin-right:auto!important;margin-left:auto!important;}"),a.rem=b/10,location.search.match(/hairlines=true/i)&&document.querySelector("html").classList.add("hairlines"),a.devicePixelRatio&&devicePixelRatio>=2)if(a.RATIO_HACK)a.rem=a.rem*a.RATIO_HACK;else{d.style.fontSize="200px";var f=document.createElement("div"),g=document.createElement("body"),h=d.firstElementChild||d.firstChild;f.style.width="0",f.style.borderTop="1rem solid transparent",f.style.borderLeft=".5px solid transparent",f.style.borderRight=".5px solid transparent",g.appendChild(f),d.insertBefore(g,h),a.RATIO_HACK=200/f.offsetHeight,a.rem=a.rem*a.RATIO_HACK,1==f.offsetWidth&&document.querySelector("html").classList.add("hairlines"),d.removeChild(g),d.style.fontSize=""}e.innerHTML="html{font-size:"+a.rem+"px!important;}body{font-size:"+12*(b/320)+"px"+c}var c,d=document.documentElement,e=(document.querySelector('meta[name="viewport"]'),document.createElement("style")),f=1;f=1,c=1/f,d.firstElementChild.appendChild(e),d.setAttribute("data-dpr",f),a.dpr=f,a.addEventListener("resize",function(){b()},!1),a.addEventListener("pageshow",function(a){a.persisted&&b()},!1),b()}(window);</script>
+<script fixed="true">window.trackerPerformanceTime.trip_headerTime = Date.now();</script><script fixed="true">window.addEventListener("DOMContentLoaded", function() { window.trackerPerformanceTime.readyTime = Date.now();}, false);</script></head>
+
+<body class="wide-screen w1190" data-spm="11358650"><script>
+with(document)with(body)with(insertBefore(createElement("script"),firstChild))setAttribute("exparams","category=&userid=&aplus&yunid=&&trid=6f2fdba317906984915337653e&asid=AQAAAAD747tqnThYCAAAAABnsURoRDxe9w==",id="tb-beacon-aplus",src=(location>"https"?"//g":"//g")+".alicdn.com/alilog/mlog/aplus_v2.js")
+</script>
+<script>
+with(document)with(body)with(insertBefore(createElement("script"),firstChild))setAttribute("exparams","category=&userid=&aplus&yunid=&&asid=AQAAAAD747tqdqB0QAAAAAA3tiNGyKaW+g==",id="tb-beacon-aplus",src=(location>"https"?"//g":"//g")+".alicdn.com/alilog/mlog/aplus_v2.js")
+</script>
+
+
+  <a id="J_ems_trip_bar_fixed" target="_blank" href data-spm="9857a1">
+    <style>
+      #J_ems_trip_bar_fixed {
+        position: fixed;
+        display: none;
+        right: 36px;
+        top: 0;
+        z-index: 99999;
+      }
+
+      .ems_trip_bar_fixed_image {
+        width: 93px;
+      }
+    </style>
+
+  </a>
+
+  <script>
+
+    if (!Array.prototype.indexOf) {
+      Array.prototype.indexOf = function (val) {
+        var value = this;
+        for (var i = 0; i < value.length; i++) {
+          if (value[i] == val) return i;
+        }
+        return -1;
+      };
+    }
+    if (!("classList" in document.documentElement)) {
+      Object.defineProperty(Element.prototype, 'classList', {
+        get: function () {
+          var self = this;
+          function update(fn) {
+            return function (value) {
+              var classes = self.className.split(/\s+/g),
+                index = classes.indexOf(value);
+
+              fn(classes, index, value);
+              self.className = classes.join(" ");
+            }
+          }
+
+          return {
+            add: update(function (classes, index, value) {
+              if (!~index) classes.push(value);
+            }),
+            remove: update(function (classes, index) {
+              if (~index) classes.splice(index, 1);
+            })
+          };
+        }
+      });
+    }
+
+
+    var tripBarFixed = window.document.getElementById("J_ems_trip_bar_fixed");
+    var defaultBlackList = [
+      'tripbuy.fliggy.com/order/confirm.htm',
+      'hotel.fliggy.com/order/auction/buyNow.htm',
+      'hotel.fliggy.com/order/auction/buy_now.htm',
+      'jipiao.fliggy.com/trip_open_order.htm',
+      'jipiao.fliggy.com/tripViewOrder.htm',
+      'ijipiao.fliggy.com/ie/open_order.htm',
+      'ijipiao.fliggy.com/ie/ie_order_detail.htm',
+      'quamarket.m.taobao.com',
+      'market.fliggy.com'
+    ];
+    var blackList = JSON.parse("" || "[]");
+    blackList = defaultBlackList.concat(blackList);
+
+    if (blackList.indexOf(location.hostname) > -1 || blackList.indexOf(location.hostname + location.pathname) > -1) {
+      tripBarFixed.style.display = 'none !important';
+    }
+
+  </script>
+  <script>
+    var topbar_appdownLoader = '<div class="sendMsg" mark-subActId="2160">' +
+      '<div class="mobile-l">' +
+      '<a href="#?"><img src="//img.alicdn.com/tps/i3/TB1Ge0lIFXXXXa9XVXXW629JVXX-246-88.png"></a>' +
+      '<div class="txt">发送下载地址:</div>' +
+      '<input id="J_PhoneNum" type="text" value="请输入您手机号">' +
+      '<div id="J_Msg"></div>' +
+      '<a href="javascript:void(0)" id="J_Btn" class="duanxin-btn">发送</a>' +
+      '</div>' +
+      '<div class="mobile-r">' +
+      '<a href="#?"><img src="//img.alicdn.com/tps/TB1FBffPXXXXXcFXXXXXXXXXXXX-94-94.png"></a>' +
+      '<div class="txt1">到手机飞猪</div>' +
+      '<div class="txt2">领客户端专享红包</div>' +
+      '</div>' +
+      '</div>';
+  </script>
+  <div>
+    <div class="flg-site-nav-header-wrap" id="J_fliggy_top_header"></div>
+    <script src="https://g.alicdn.com/alilog/mlog/aplus_v2.js"></script>
+    <script src="https://o.alicdn.com/tpi/pc-header-footer/top-min.js"></script>
+  </div>
+  <script>window.TT && TT.Global.init();</script>
+
+  <div data-tms="ems/fliggy-channel/home/navbar">
+    <div class="fly-menu-wrap" id="fly-common-menulist-wrap"></div>
+    <script src="https://o.alicdn.com/tpi/pc-header-footer/menu-min.js"></script>
+  </div>
+
+  <div>
+    <div id="J_HomeContainer"></div>
+    <script src="https://g.alicdn.com/trip/rc-pc-home/1.1.27/index.js"></script>
+  </div>
+
+  <!--__BEFORE_ROOT__-->
+  <div id="root" class="page-content">
+    <!--__INNER_ROOT__-->
+  </div>
+  <!--__AFTER_ROOT__-->
+  <div></div>
+
+  <div>
+    <div class="flg-footer-wrap" id="J_fliggy_footer"></div>
+    <script src="https://o.alicdn.com/tpi/pc-header-footer/footer-min.js"></script>
+  </div>
+
+  <script src="//g.alicdn.com/trip/h5-lazada-pc-fliggy-home-ssr/1.0.51/h5-lazada-pc-fliggy-home-ssr-commons.entry.js" crossorigin="anonymous"></script>
+  <script src="//g.alicdn.com/trip/h5-lazada-pc-fliggy-home-ssr/1.0.51/pages/home/index.entry.js" crossorigin="anonymous"></script>
+
+<script fixed="true">window.addEventListener("load", function() { window.trackerPerformanceTime.loadTime = Date.now();}, false);</script></body></html>

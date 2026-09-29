@@ -1,0 +1,48 @@
+# Developer - Places Documentation
+
+> Documentation for Developer - Places
+
+## API Docs: Welcome
+- [Foursquare APIs Overview](https://docs.foursquare.com/fsq-developers-places/reference/foursquare-apis-overview.md)
+- [Getting Started](https://docs.foursquare.com/fsq-developers-places/reference/getting-started.md)
+- [Authentication](https://docs.foursquare.com/fsq-developers-places/reference/authentication.md)
+- [Migration Guide](https://docs.foursquare.com/fsq-developers-places/reference/migration-guide.md)
+- [Rate Limits](https://docs.foursquare.com/fsq-developers-places/reference/rate-limits.md)
+- [Errors](https://docs.foursquare.com/fsq-developers-places/reference/errors.md)
+- [Pagination](https://docs.foursquare.com/fsq-developers-places/reference/pagination.md)
+- [Localization](https://docs.foursquare.com/fsq-developers-places/reference/localization.md)
+- [Usage Guidelines](https://docs.foursquare.com/fsq-developers-places/reference/usage-guidelines.md)
+- [Visual Crediting Policy](https://docs.foursquare.com/fsq-developers-places/reference/visual-crediting-policy.md)
+- [Place Photo Guides](https://docs.foursquare.com/fsq-developers-places/reference/place-photo-guides.md)
+
+## API Docs: Places API
+- [Places API Overview](https://docs.foursquare.com/fsq-developers-places/reference/places-api-overview.md)
+- [Places Response Fields](https://docs.foursquare.com/fsq-developers-places/reference/response-fields.md)
+- [Autocomplete](https://docs.foursquare.com/fsq-developers-places/reference/autocomplete.md): Returns a list of top places, geos, and/or searches partially matching the provided keyword and location inputs.
+- [Ask](https://docs.foursquare.com/fsq-developers-places/reference/ask.md): Ask is a natural language place search that returns a list of places matching a natural-language question. Provide `query` with what the user wants (e.g., "best cocktail lounge in Williamsburg"). Ask…
+- [Place Search](https://docs.foursquare.com/fsq-developers-places/reference/place-search.md): Search for places in the FSQ Places database using a location and querying by name, category name, telephone number, taste label, or chain name. For example, search for "coffee" to get back a list of…
+- [Get Place Details](https://docs.foursquare.com/fsq-developers-places/reference/place-details.md): Retrieve comprehensive information and metadata for a FSQ Place using the fsq_place_id.
+- [Get Place Tips](https://docs.foursquare.com/fsq-developers-places/reference/place-tips.md): Retrieve tips for a FSQ Place using the fsq_place_id.
+- [Get Place Photos](https://docs.foursquare.com/fsq-developers-places/reference/place-photos.md): Retrieve photos for a FSQ Place using the fsq_place_id.   To retrieve photos from a Photos response, learn [how to assemble photo…
+- [Place Match](https://docs.foursquare.com/fsq-developers-places/reference/place-match.md): Return the Foursquare record of a POI (via fsq_place_id) given a name and location.
+- [Release Notes - Places API](https://docs.foursquare.com/fsq-developers-places/reference/places-api-release-notes.md)
+- [Offline Jobs Guide](https://docs.foursquare.com/fsq-developers-places/reference/offline-job-apis.md)
+  - [Offline Jobs Onboarding Guide](https://docs.foursquare.com/fsq-developers-places/reference/offline-job-onboarding-guide.md)
+  - [Place Match](https://docs.foursquare.com/fsq-developers-places/reference/batch-place-match-1.md)
+  - [Transaction Match](https://docs.foursquare.com/fsq-developers-places/reference/batch-transaction-match.md)
+  - [Partner Places Ingestion](https://docs.foursquare.com/fsq-developers-places/reference/partner-places-ingestion.md)
+    - [Data Contribution Guidelines](https://docs.foursquare.com/fsq-developers-places/reference/data-contribution-guidelines.md)
+- [Merge Places](https://docs.foursquare.com/fsq-developers-places/reference/suggest-merge.md): Suggest the merge of two or more places.
+- [Edit a Place](https://docs.foursquare.com/fsq-developers-places/reference/place-suggest-edit.md): Suggest edits to an existing Place?s information such as address, phone number, and hours of operation via its `fsq_place_id`. Providing values for the parameters below constitute the proposed edit.
+- [Remove a Place](https://docs.foursquare.com/fsq-developers-places/reference/place-suggest-remove.md): Flag an entire place for removal for reasons such as closed, doesn't exist, inappropriate, or private.
+- [Flag a Place](https://docs.foursquare.com/fsq-developers-places/reference/place-flag.md): Flag a field(s) on a Place as incorrect. Does not require you to provide the correct value.
+- [Suggest a New Place](https://docs.foursquare.com/fsq-developers-places/reference/places-suggest-place.md): Add a new place that does not currently exist. We will first attempt to find a match in our database. If we do not find a match, we will create a new suggested place.
+- [Get Suggestion Status](https://docs.foursquare.com/fsq-developers-places/reference/place-suggest-status.md): Monitor the status of the places edits provided by your users or service keys.
+- [Get Places With Pending Suggested Edits](https://docs.foursquare.com/fsq-developers-places/reference/place-top-venue-woes.md): Get a list of the top places that need review for a given location.
+- [Find Geotagging Candidates](https://docs.foursquare.com/fsq-developers-places/reference/geotagging-candidates.md): Utilize Foursquare's Snap to Place technology to detect where your user's device is and what is around them.  This endpoint will intentionally return lower quality results not found in Place Search.…
+- [Confirm Geotagging Candidate Selection](https://docs.foursquare.com/fsq-developers-places/reference/geotagging-confirm.md): Report the selection of a place as the result of a Geotagging Candidates request.
+- [Get Offline Jobs Status](https://docs.foursquare.com/fsq-developers-places/reference/offline-jobs-status.md): Check the status of previously submitted Places API offline jobs. Jobs and their statuses are retained for 90 days after initialization.  For more details on how to use the Offline Jobs Endpoints,…
+- [Execute an Offline Job](https://docs.foursquare.com/fsq-developers-places/reference/offline-jobs-execute.md): Execute a previously initialized offline job. Note you may not execute jobs that are already running or have completed, but you may use this endpoint to re-execute failed jobs.  For more details on…
+- [Initialize an Offline Job](https://docs.foursquare.com/fsq-developers-places/reference/offline-jobs-initialize.md): Initialize an offline job and generate temporary AWS credentials for uploading and reading data.  For more details on how to use the Offline Jobs Endpoints, please refer to the [onboarding…
+- [Refresh Offline Job Credentials](https://docs.foursquare.com/fsq-developers-places/reference/offline-jobs-credentials-refresh.md): Refreshes temporary AWS credentials for an existing offline job. This is useful if your original credentials have expired.  For more details on how to use the Offline Jobs Endpoints, please refer to…
+- [Place Resolve](https://docs.foursquare.com/fsq-developers-places/reference/place-resolve.md): Check whether a partner-provided place identifier has been matched to FSQ Places.

@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<!--[if IE 9]> <html lang="ja" class="ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="ja"> <!--<![endif]-->
+  <head>
+    
+  <meta charset="utf-8" />
+      <meta name="generator" content="ckan 2.9.5" />
+      <meta name="viewport" content="width=device-width">
+  
+  <meta name="description" content="データカタログに登録済みのデータセットの詳細、リソースの一覧を表示します。" />
+  <meta name="keywords" content="公共データ,オープンデータ,データカタログ,データセット" />
+
+
+    <title>
+    データセット
+ | e-Govデータポータル</title>
+
+    
+    
+    <link rel="shortcut icon" href="/data/base/images/favicon.ico" />
+    
+    
+        <link rel="alternate" type="text/n3" href="https://data.e-gov.go.jp/data/dataset/2da31033-1c57-4520-87f0-d4fcb44374f2.n3"/>
+        <link rel="alternate" type="text/ttl" href="https://data.e-gov.go.jp/data/dataset/2da31033-1c57-4520-87f0-d4fcb44374f2.ttl"/>
+        <link rel="alternate" type="application/rdf+xml" href="https://data.e-gov.go.jp/data/dataset/2da31033-1c57-4520-87f0-d4fcb44374f2.xml"/>
+        <link rel="alternate" type="application/ld+json" href="https://data.e-gov.go.jp/data/dataset/2da31033-1c57-4520-87f0-d4fcb44374f2.jsonld"/>
+    
+
+  
+  
+  
+  
+
+
+    
+  
+      
+      
+    
+  
+  <meta property="og:title" content="オープンデータ100 - e-Govデータポータル">
+  <meta property="og:description" content="情報通信技術(IT)総合戦略室がオープンデータの普及・啓発を目的として、いろいろな事業者や地方公共団体等によるオープンデータの利活用事例を公開していく取組みです。">
+
+
+    
+    <link href="/data/webassets/ckanext-datasetslist-theme/637f4624_jquery-ui-min-css.css" rel="stylesheet"/>
+<link href="/data/webassets/ckanext-datasetslist-theme/a8504815_datasetslist_theme_css.css" rel="stylesheet"/>
+<link href="/data/webassets/ckanext-datasetslist-theme/088fc192_datasetslist_theme_form_tooltip_css.css" rel="stylesheet"/>
+<link href="/data/webassets/vendor/bc192712_select2.css" rel="stylesheet"/>
+<link href="/data/webassets/vendor/0b01aef1_font-awesome.css" rel="stylesheet"/>
+<link href="/data/webassets/ckanext-datasetslist-theme/79ca7695_suggest_css.css" rel="stylesheet"/>
+    
+  </head>
+
+  
+  <body data-site-root="https://data.e-gov.go.jp/data/" data-locale-root="https://data.e-gov.go.jp/data/" >
+
+    
+
+    
+        
+
+<div id="blockskip">
+  <a href="#contents">このページの本文へ移動</a>
+</div>
+<header>
+  <div class="header_title_container">
+    <div class="header_title_inner header-image">
+      <button class="header_menu_btn" id="header_menu_btn_01" aria-label="メニュー" data-dialog="header_nav_area">
+        <span class="menu_bar"></span>
+        <span class="menu_bar"></span>
+        <span class="menu_bar"></span>
+        <span class="menu_label">メニュー</span>
+      </button>
+  
+    
+      <a href="/data/" class="header_logo"><img src="/data/base/images/logo.svg" alt="e-Govデータポータル"></a>
+      <span class="header_title">データポータル</span>
+    
+  
+      <div class="header_lang_wrapper">
+        <a href="#" class="header_lang_link" role="button" aria-expanded="false" aria-controls="lang_menu_01" style="text-decoration: none;">
+          <img class="icon_header_lang" src="/data/base/images/icon_header_lang.svg" alt="言語切り替えのイメージ">
+          <span class="only_pc lang_link" lang="en" style="margin-left: 0.15rem !important">Language</span>
+        </a>
+        <ul class="lang_menu" id="lang_menu_01" aria-label="アカウントメニュー">
+          <li><a href="/data/ja/dataset/digi_20220315_0062">日本語</a></li>
+          <li><a href="/data/en/dataset/digi_20220315_0062" lang="en">English</a></li>
+        </ul>
+      </div>
+  
+    
+      <a href="https://data.e-gov.go.jp/info/keycloak/login" 
+           class="header_link only_pc ml-0 pc-ml-6">
+          ログイン
+      </a>
+    
+      <button class="btn_normal only_pc ml-0 pc-ml-6" onclick="location.href='https://account.e-gov.go.jp/user/pre-registration/init?service_type=00'">新規登録</button>
+    
+  
+    </div>
+  </div>
+  <div class="header_nav_container" id="header_nav_area" aria-labelledby="header_menu_btn_01">
+    <nav class="header_nav">
+      <div class="nav_header">
+        <img class="header_menu_logo" src="/data/base/images/logo.svg" alt="e-Govデータポータル" tabindex="0">
+        <button class="close_dialog close_dialog_btn">
+          <span class="close_dialog_label">閉じる</span>
+        </button>
+      </div>
+  
+    
+    
+      <div class="nav_user_links">
+        <a href="https://data.e-gov.go.jp/info/keycloak/login" class="header_link header_link_in_menu">ログイン</a>
+      
+        <a href="https://data.e-gov.go.jp/info/#" class="header_link header_link_in_menu">新規登録</a>
+      
+      </div>
+  
+      <ul class="nav_bar">
+                <li class="active"><a href="/data/dataset/?organization=default">データセット</a></li><li><a href="/data/organization/?q=default">提供組織</a></li><li><a href="/data/showcase?organization=default">ショーケース</a></li>
+  
+
+    
+        <li><a href="https://data.e-gov.go.jp/info/communication/list">コミュニケーション</a></li>
+        <li><a href="/info/databasesite">データベースサイト一覧</a></li>
+  
+      </ul>
+      <ul class="nav_bottom_links">
+        <li><a href="/info/about-site">このサイトについて</a></li>
+        <li><a href="/info/service-policy">ご利用にあたって</a></li>
+        <li><a href="/info/help">ヘルプ</a></li>
+        <li><a href="/info/terms">利用規約</a></li>
+        <li><a href="/info/privacy-policy">個人情報取扱方針</a></li>
+        <li><a href="/info/contacts">お問合せ</a></li>
+        <li><a href="https://data.e-gov.go.jp/info/dashboard/metrics">ダッシュボード</a></li>
+        <li><a href="/info/site-map">サイトマップ</a></li>
+      </ul>
+    
+    </nav>
+  </div>
+</header>
+
+    
+
+    
+    
+      <main>
+        
+          <div class="contents_area flash-messages mb-5 pc-mb-5">
+            
+              
+            
+          </div>
+        
+      <div class="contents_area" id="contents">
+    
+      <!-- <div class="container"> -->
+        
+
+          <div class="row wrapper no-nav">
+
+            
+ 
+          </div>
+
+          
+<!-- package/read primary start-->
+<div class="main_contents">
+  <div class="primary" role="main">
+    <div class="container">
+      <div class="row dataset-update-bnt">
+        <div>
+        </div>
+      </div>
+    </div>
+    <h1 class="page_title mt-0 pc-mt-0" style="overflow-wrap: anywhere; width: 100%;">
+      オープンデータ100
+    </h1>
+    <div class="star_rate_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+      <span class="rate_label mr-2">評価</span>
+      <span class='star_rate star_rate_0' aria-hidden="true"></span>
+      <span class="rate_amount ml-1">(
+        <a href="#" class="rate_breakdown_handle" role="button" aria-expanded="false" aria-controls="rate_breakdown_01">
+          <span>0</span>
+          <img class="icon_rate_breakdown_open" src="/data/base/images/icon_rate_breakdown_open.svg" alt="内訳を開く">
+          <img class="icon_rate_breakdown_close" src="/data/base/images/icon_rate_breakdown_close.svg" alt="内訳を閉じる">
+        </a>)
+      </span>
+    </div>
+    <ul class="rate_breakdown percentage_100 pc_px_310 mt-2" id="rate_breakdown_01" aria-label="評価の内訳">
+      <li class="star_rate_container">
+        <span class="star_rate star_rate_5" aria-hidden="true"></span><span class="rate_alt visually_hidden"></span><span class="rate_label ml-2">とても良い</span><span class="rate_breakdown_amount">(0)</span>
+      </li>
+      <li class="star_rate_container">
+        <span class="star_rate star_rate_4" aria-hidden="true"></span><span class="rate_alt visually_hidden"></span><span class="rate_label ml-2">良い</span><span class="rate_breakdown_amount">(0)</span>
+      </li>
+      <li class="star_rate_container">
+        <span class="star_rate star_rate_3" aria-hidden="true"></span><span class="rate_alt visually_hidden"></span><span class="rate_label ml-2">どちらでもない</span><span class="rate_breakdown_amount">(0)</span>
+      </li>
+      <li class="star_rate_container">
+        <span class="star_rate star_rate_2" aria-hidden="true"></span><span class="rate_alt visually_hidden"></span><span class="rate_label ml-2">あまり良くない</span><span class="rate_breakdown_amount">(0)</span>
+      </li>
+      <li class="star_rate_container">
+        <span class="star_rate star_rate_1" aria-hidden="true"></span><span class="rate_alt visually_hidden"></span><span class="rate_label ml-2">悪い</span><span class="rate_breakdown_amount">(0)</span>
+      </li>
+    </ul>
+    <div class="notes text mt-5 pc-mt-5 mb-0 pc-mb-0">
+      <p>情報通信技術(IT)総合戦略室がオープンデータの普及・啓発を目的として、いろいろな事業者や地方公共団体等によるオープンデータの利活用事例を公開していく取組みです。</p>
+    </div>
+    <div class="follow_button">
+      
+    </div>
+    <span class="insert-comment-thread"></span>
+<section id="dataset-resources" class="resources">
+  <h2 class="page_title_icon mt-8 pc-mt-8 mb-0 pc-mb-0">データとリソース</h2>
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+  
+  
+    
+      <ul class="list_dataset mt-5 pc-mt-5 mb-0 pc-mb-0">
+        
+          
+          
+          
+          
+            
+              
+                
+
+
+<li class="list_dataset_item resource-item"  data-id="f4734cc2-7c29-4c0b-b624-f6815f6a0fa4" >
+  <a href="javascript:;" class="handle-fa sort-arrows">
+    <i class="fa fa-arrows"></i>
+  </a>
+  <div class="list_dataset_item_main_box">
+    <div class="list_dataset_item_column_content">
+  
+  <p class="mt-0 pc-mt-0 mb-4 pc-mb-4 resource-sort-arrows">
+  <a class="link_normal list_dataset_item_title" href="/data/dataset/digi_20220315_0062/resource/f4734cc2-7c29-4c0b-b624-f6815f6a0fa4" title="オープンデータ100（一括ダウンロード）">
+    オープンデータ100（一括ダウンロード）
+    
+
+<span class="popular ckan-icon ckan-icon-flame" title="閲覧数 69" xmlns="http://www.w3.org/1999/xhtml">人気</span>
+
+  </a>
+  </p>
+  
+  
+
+  
+  
+  
+  <div class="dropdown btn-group">
+   
+    <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-4 pc-mb-4">
+     <span class="badge">PDF</span>
+    </p>
+   
+   
+    <a href="https://www.digital.go.jp/assets/contents/node/basic_page/field_ref_resources/ee1fd65a-cb8c-4baa-b711-7a45648c6804/5bb43375/20250819_resources_open-data100_outline_01.pdf" class="btn_normal btn_sizelock mt-0 pc-mt-0 mb-0 pc-mb-0 resource-url-analytics" target="_blank">
+      
+        リソースへ行く
+      
+    </a>
+   
+  </div>
+  
+</div>
+</div>
+  
+</li>
+              
+            
+          
+            
+              
+                
+
+
+<li class="list_dataset_item resource-item"  data-id="1712ccd1-fb86-4642-b372-e6c367a13c5f" >
+  <a href="javascript:;" class="handle-fa sort-arrows">
+    <i class="fa fa-arrows"></i>
+  </a>
+  <div class="list_dataset_item_main_box">
+    <div class="list_dataset_item_column_content">
+  
+  <p class="mt-0 pc-mt-0 mb-4 pc-mb-4 resource-sort-arrows">
+  <a class="link_normal list_dataset_item_title" href="/data/dataset/digi_20220315_0062/resource/1712ccd1-fb86-4642-b372-e6c367a13c5f" title="オープンデータ100 民間事業者による事例（一括ダウンロード）">
+    オープンデータ100 民間事業者による事例（一括ダウンロード）
+    
+
+<span class="popular ckan-icon ckan-icon-flame" title="閲覧数 29" xmlns="http://www.w3.org/1999/xhtml">人気</span>
+
+  </a>
+  </p>
+  
+  
+
+  
+  
+  
+  <div class="dropdown btn-group">
+   
+    <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-4 pc-mb-4">
+     <span class="badge">PDF</span>
+    </p>
+   
+   
+    <a href="https://www.digital.go.jp/assets/contents/node/basic_page/field_ref_resources/bb4bbf97-9c4e-4a39-8d65-44f5f873ae45/74b6332e/20240913_resources_open-data100_private_outline_01.pdf" class="btn_normal btn_sizelock mt-0 pc-mt-0 mb-0 pc-mb-0 resource-url-analytics" target="_blank">
+      
+        リソースへ行く
+      
+    </a>
+   
+  </div>
+  
+</div>
+</div>
+  
+</li>
+              
+            
+          
+            
+              
+                
+
+
+<li class="list_dataset_item resource-item"  data-id="c30d5d16-541c-4763-aaea-a3a7fb195b5b" >
+  <a href="javascript:;" class="handle-fa sort-arrows">
+    <i class="fa fa-arrows"></i>
+  </a>
+  <div class="list_dataset_item_main_box">
+    <div class="list_dataset_item_column_content">
+  
+  <p class="mt-0 pc-mt-0 mb-4 pc-mb-4 resource-sort-arrows">
+  <a class="link_normal list_dataset_item_title" href="/data/dataset/digi_20220315_0062/resource/c30d5d16-541c-4763-aaea-a3a7fb195b5b" title="オープンデータ100 地方公共団体等による事例（一括ダウンロード）">
+    オープンデータ100 地方公共団体等による事例（一括ダウンロード）
+    
+
+  </a>
+  </p>
+  
+  
+
+  
+  
+  
+  <div class="dropdown btn-group">
+   
+    <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-4 pc-mb-4">
+     <span class="badge">PDF</span>
+    </p>
+   
+   
+    <a href="https://www.digital.go.jp/assets/contents/node/basic_page/field_ref_resources/79cc7071-1bf1-430d-bdb5-7abd76e4e65b/20200928_resources_od100_local_all_00.pdf" class="btn_normal btn_sizelock mt-0 pc-mt-0 mb-0 pc-mb-0 resource-url-analytics" target="_blank">
+      
+        リソースへ行く
+      
+    </a>
+   
+  </div>
+  
+</div>
+</div>
+  
+</li>
+              
+            
+          
+            
+              
+                
+
+
+<li class="list_dataset_item resource-item"  data-id="c110fd04-41f4-44aa-8d5f-39654b93777b" >
+  <a href="javascript:;" class="handle-fa sort-arrows">
+    <i class="fa fa-arrows"></i>
+  </a>
+  <div class="list_dataset_item_main_box">
+    <div class="list_dataset_item_column_content">
+  
+  <p class="mt-0 pc-mt-0 mb-4 pc-mb-4 resource-sort-arrows">
+  <a class="link_normal list_dataset_item_title" href="/data/dataset/digi_20220315_0062/resource/c110fd04-41f4-44aa-8d5f-39654b93777b" title="オープンデータ100 地方公共団体がオープンデータを利活用する際に参考となる事例（一括ダウンロード）">
+    オープンデータ100 地方公共団体がオープンデータを利活用する際に参考となる事例（一括ダウンロード）
+    
+
+  </a>
+  </p>
+  
+  
+
+  
+  
+  
+  <div class="dropdown btn-group">
+   
+    <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-4 pc-mb-4">
+     <span class="badge">PDF</span>
+    </p>
+   
+   
+    <a href="https://www.digital.go.jp/assets/contents/node/basic_page/field_ref_resources/de5fe8f7-0896-4b13-badc-ee428fe178e4/20200928_resources_od100_reference_all_00_0.pdf" class="btn_normal btn_sizelock mt-0 pc-mt-0 mb-0 pc-mb-0 resource-url-analytics" target="_blank">
+      
+        リソースへ行く
+      
+    </a>
+   
+  </div>
+  
+</div>
+</div>
+  
+</li>
+              
+            
+          
+            
+              
+                
+
+
+<li class="list_dataset_item resource-item"  data-id="22d4f842-1933-45fd-8219-4500eeff2e04" >
+  <a href="javascript:;" class="handle-fa sort-arrows">
+    <i class="fa fa-arrows"></i>
+  </a>
+  <div class="list_dataset_item_main_box">
+    <div class="list_dataset_item_column_content">
+  
+  <p class="mt-0 pc-mt-0 mb-4 pc-mb-4 resource-sort-arrows">
+  <a class="link_normal list_dataset_item_title" href="/data/dataset/digi_20220315_0062/resource/22d4f842-1933-45fd-8219-4500eeff2e04" title="オープンデータ100 アクティビティ（一括ダウンロード）">
+    オープンデータ100 アクティビティ（一括ダウンロード）
+    
+
+  </a>
+  </p>
+  
+  
+
+  
+  
+  
+  <div class="dropdown btn-group">
+   
+    <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-4 pc-mb-4">
+     <span class="badge">PDF</span>
+    </p>
+   
+   
+    <a href="https://www.digital.go.jp/assets/contents/node/basic_page/field_ref_resources/85f47825-6d28-45ad-9d7e-296eb94b8234/7c8a265a/20250819__resources_od100_act_all_00_.pdf" class="btn_normal btn_sizelock mt-0 pc-mt-0 mb-0 pc-mb-0 resource-url-analytics" target="_blank">
+      
+        リソースへ行く
+      
+    </a>
+   
+  </div>
+  
+</div>
+</div>
+  
+</li>
+              
+            
+          
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+        
+      </ul>
+    
+    
+</section><section>
+  <h2 class="page_title_icon mt-8 pc-mt-8 mb-0 pc-mb-0">詳細情報</h2>
+  <ul class="checkbox_list mt-5 pc-mt-5 mb-0 pc-mb-0" role="group">
+    <div class="link_accordion link_accordion_rear mt-5 pc-mt-5 mb-5 pc-mb-5 ml-0 pc-ml-0">
+      <a class="link_accordion_handle" role="button" aria-expanded="false" aria-controls="link_accordion_content02" aria-label="表示項目切り替えについての説明を開くボタン" tabindex="0">
+        <img class="link_accordion_icon_image" src="/data/base/images/icon_question_mark.svg" alt="表示項目切り替えについての説明を開くボタン">
+        表示項目切り替えについて
+      </a>
+      <div id="link_accordion_content02" class="link_accordion_content mt-0 pc-mt-0 mb-0 pc-mb-0">
+        <div class="arrow_up"></div>
+        <div class="link_accordion_content_inner">
+          <p class="text mt-0 pc-mt-0 mb-0 pc-mb-0">
+                    詳細情報に表示するメタデータの項目を切り替えることができます。 <br>一部表示：e-Govデータポータル標準のメタデータ項目(項目名を太字で表示)に限定して表示します。<br> 全て表示：自治体標準ODS オープンデータ一覧の項目を含む全てのメタデータ項目を表示します。 
+          </p>
+        </div>
+      </div>
+    </div>
+    <li>表示項目切り替え：
+      <input type="radio" id="metadata_detail_toggle_min" name="metadata_detail_toggle" class="metadata_detail_toggle" data-module="metadata_detail_toggle" checked>
+      <label for="metadata_detail_toggle_min">一部表示</label>
+      <input type="radio" id="metadata_detail_toggle_max" name="metadata_detail_toggle" class="metadata_detail_toggle" data-module="metadata_detail_toggle">
+      <label for="metadata_detail_toggle_max">全て表示</label>
+    </li>
+  </ul>
+  <table class="table_vertical mt-5 pc-mt-5 mb-0 pc-mb-0">
+    <tbody>
+      
+        <tr class="metadata_basic_field">
+          <th class="pc_percentage_20">タイトル</th>
+          <td>オープンデータ100</td>
+        </tr>
+
+        <tr class="metadata_detail_field hide">
+          <th class="pc_percentage_20" aria-label="自治体標準ODS オープンデータ一覧の項目 サブタイトル">サブタイトル</th>
+          <td></td>
+        </tr>
+
+        <tr class="metadata_basic_field">
+            <th class="pc_percentage_20">データセット管理名</th>
+            <td>digi_20220315_0062</td>
+        </tr>
+
+        <tr class="metadata_basic_field">
+          <th class="pc_percentage_20">説明</th>
+          <td>情報通信技術(IT)総合戦略室がオープンデータの普及・啓発を目的として、いろいろな事業者や地方公共団体等によるオープンデータの利活用事例を公開していく取組みです。</td>
+        </tr>
+        
+        <tr class="metadata_basic_field">
+            <th class="pc_percentage_20">タグ</th>
+            <td>
+              
+                <a class="tag" href="/data/dataset/?tags=%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF">
+                  <span class="tag_text">
+                    オープンデータ
+                  </span>
+                </a>
+              
+                <a class="tag" href="/data/dataset/?tags=%E4%BA%8B%E4%BE%8B%E9%9B%86">
+                  <span class="tag_text">
+                    事例集
+                  </span>
+                </a>
+              
+                <a class="tag" href="/data/dataset/?tags=%E5%88%A9%E6%B4%BB%E7%94%A8">
+                  <span class="tag_text">
+                    利活用
+                  </span>
+                </a>
+              
+            </td>
+        </tr>
+
+        <tr class="metadata_detail_field hide">
+          <th class="pc_percentage_20" aria-label="自治体標準ODS オープンデータ一覧の項目 ユニバーサルメニュー">ユニバーサルメニュー</th>
+          <td>
+            
+          </td>
+        </tr>
+
+        <tr class="metadata_detail_field hide">
+          <th class="pc_percentage_20" aria-label="自治体標準ODS オープンデータ一覧の項目 バージョン">バージョン</th>
+          <td></td>
+        </tr>
+
+        <tr class="metadata_detail_field hide">
+          <th class="pc_percentage_20" aria-label="自治体標準ODS オープンデータ一覧の項目 言語">言語</th>
+          <td></td>
+        </tr>
+
+        <tr class="metadata_basic_field">
+            <th class="pc_percentage_20">公表組織名</th>
+            <td>デジタル庁</td>
+        </tr>
+
+        <tr class="metadata_detail_field hide">
+            <th class="pc_percentage_20" aria-label="自治体標準ODS オープンデータ一覧の項目 地方公共団体名">地方公共団体名</th>
+            <td></td>
+        </tr>
+
+        <tr class="metadata_basic_field">
+            <th class="pc_percentage_20">連絡先</th>
+            <td>デジタル庁</td>
+        </tr>
+
+        <tr class="metadata_detail_field hide">
+            <th class="pc_percentage_20" aria-label="自治体標準ODS オープンデータ一覧の項目 連絡先メールアドレス">連絡先メールアドレス</th>
+            <td></td>
+        </tr>
+  
+        <tr class="metadata_detail_field hide">
+            <th class="pc_percentage_20" aria-label="自治体標準ODS オープンデータ一覧の項目 連絡先電話番号">連絡先電話番号</th>
+            <td></td>
+        </tr>
+  
+        <tr class="metadata_detail_field hide">
+            <th class="pc_percentage_20" aria-label="自治体標準ODS オープンデータ一覧の項目 連絡先内線番号">連絡先内線番号</th>
+            <td></td>
+        </tr>
+
+        <tr class="metadata_detail_field hide">
+            <th class="pc_percentage_20" aria-label="自治体標準ODS オープンデータ一覧の項目 連絡先FormURL">連絡先FormURL</th>
+            <td></td>
+        </tr>
+
+        <tr class="metadata_detail_field hide">
+            <th class="pc_percentage_20" aria-label="自治体標準ODS オープンデータ一覧の項目 連絡先備考（その他、SNSなど）">連絡先備考（その他、SNSなど）</th>
+            <td></td>
+        </tr>
+
+        <tr class="metadata_basic_field">
+            <th class="pc_percentage_20">作成者</th>
+            <td>デジタル庁</td>
+        </tr>
+
+        <tr class="metadata_basic_field">
+          <th class="pc_percentage_20">作成頻度</th>
+          <td>不定期</td>
+        </tr>
+
+        <tr class="metadata_detail_field hide">
+          <th class="pc_percentage_20" aria-label="自治体標準ODS オープンデータ一覧の項目 準拠する標準">準拠する標準</th>
+          <td></td>
+        </tr>
+        
+        <tr class="metadata_detail_field hide">
+          <th class="pc_percentage_20" aria-label="自治体標準ODS オープンデータ一覧の項目 関連ドキュメント">関連ドキュメント</th>
+          <td></td>
+        </tr>
+        
+        <tr class="metadata_detail_field hide">
+          <th class="pc_percentage_20" aria-label="自治体標準ODS オープンデータ一覧の項目 来歴情報">来歴情報</th>
+          <td></td>
+        </tr>
+
+        <tr class="metadata_basic_field">
+          <th class="pc_percentage_20">対象地域</th>
+          <td></td>
+        </tr>
+
+        <tr class="metadata_basic_field">
+          <th class="pc_percentage_20">対象期間</th>
+          <td></td>
+        </tr>
+
+        <tr class="metadata_basic_field">
+          <th class="pc_percentage_20">公開ウェブページ</th>
+          <td>
+            
+              
+
+
+    <a class="link_accessory mt-2 pc-mt-2 mb-2 pc-mb-2" href="https://cio.go.jp/opendata100" target="_blank" style="display: flex;">
+        <span>https://cio.go.jp/opendata100</span>
+        <div class="link_accessory_icon"></div>
+    </a>
+
+            
+          </td>
+        </tr>
+
+        <tr class="metadata_basic_field">
+          <th class="pc_percentage_20">配布</th>
+          <td></td>
+        </tr>
+        
+        <tr class="metadata_basic_field">
+            <th class="pc_percentage_20">リリース日</th>
+            <td>
+              2022-08-17
+            </td>
+        </tr>
+
+        <tr class="metadata_basic_field">
+            <th class="pc_percentage_20">最終更新日</th>
+            <td>
+                2025-10-02
+            </td>
+        </tr>
+
+        <tr class="metadata_detail_field hide">
+          <th class="pc_percentage_20" aria-label="自治体標準ODS オープンデータ一覧の項目 備考">備考</th>
+          <td></td>
+        </tr>
+
+      
+    </tbody>
+  </table>
+</section><!-- drupal_item start -->
+<h2 class="page_title_icon mt-8 pc-mt-8 mb-0 pc-mb-0">レビューを参照</h2>
+<ul class="dataset-resources list-unstyled">
+  <button disabled class="btn_normal mt-5 pc-mt-5 mb-0 pc-mb-0 mr-0 pc-mr-1" onclick="location.href='https://data.e-gov.go.jp/info/communication/list?sendType=02&freeKeywords=オープンデータ100';">活用事例を参照</button>
+  <button disabled class="btn_normal mt-5 pc-mt-5 mb-0 pc-mb-0 mr-0 pc-mr-1" onclick="location.href='https://data.e-gov.go.jp/info/communication/list?sendType=01&freeKeywords=オープンデータ100';">問題報告を参照</button>
+</ul>
+<h2 class="page_title_icon mt-8 pc-mt-8 mb-0 pc-mb-0">レビューを登録</h2>
+<ul class="dataset-resources list-unstyled">
+  <button class="btn_normal mt-5 pc-mt-5 mb-0 pc-mb-0 mr-0 pc-mr-1" onclick="location.href='https://data.e-gov.go.jp/info/communication/register?dataset=digi_20220315_0062';">活用事例・問題報告の登録</button>
+</ul>
+<!-- drupal_item end -->
+  
+  <input type="hidden" id="drupal_login_url" value=https://data.e-gov.go.jp/info/keycloak/login>
+  
+  <h2 class="page_title_icon mt-8 pc-mt-8 mb-0 pc-mb-0">評価</h2>
+  <div class="box_gray mt-5 pc-mt-5 mb-0 pc-mb-0">
+    <p id="rating-register-message" class="mt-0 pc-mt-0 mb-5 pc-mb-5" style="display:none;">登録完了しました</p>
+    <p id="rating-register-error-message" class="mt-0 pc-mt-0 mb-5 pc-mb-5 error_message_title" style="display:none;">登録失敗しました</p>
+    
+      
+    
+    <p id="rating-message" class="mt-0 pc-mt-0 mb-5 pc-mb-5">このデータセットを評価してください。</p>
+    <ul class="radio_list star_rate_list mt-0 pc-mt-0 mb-5 pc-mb-5" role="radiogroup">
+      <li>
+        <input type="radio" class="radio_item" name="radio_name_rate01" id="radio_rate01" value="5.0" >
+        <label for="radio_rate01">
+          <span class="star_rate_container">
+            <span class="star_rate star_rate_5" aria-hidden="true"></span>
+            <span class="rate_label ml-2">とても良い</span>
+          </span>
+        </label>
+      </li>
+      <li>
+        <input type="radio" class="radio_item" name="radio_name_rate01" id="radio_rate02" value=4 >
+        <label for="radio_rate02">
+          <span class="star_rate_container">
+            <span class="star_rate star_rate_4" aria-hidden="true"></span>
+            <span class="rate_label ml-2">良い</span>
+          </span>
+        </label>
+      </li>
+      <li>
+        <input type="radio" class="radio_item" name="radio_name_rate01" id="radio_rate03" value=3 >
+        <label for="radio_rate03">
+          <span class="star_rate_container">
+            <span class="star_rate star_rate_3" aria-hidden="true"></span>
+            <span class="rate_label ml-2">どちらでもない</span>
+          </span>
+        </label>
+      </li>
+      <li>
+        <input type="radio" class="radio_item" name="radio_name_rate01" id="radio_rate04" value=2 >
+        <label for="radio_rate04">
+          <span class="star_rate_container">
+            <span class="star_rate star_rate_2" aria-hidden="true"></span>
+            <span class="rate_label ml-2">あまり良くない</span>
+          </span>
+        </label>
+      </li>
+      <li>
+        <input type="radio" class="radio_item" name="radio_name_rate01" id="radio_rate05" value=1 >
+        <label for="radio_rate05">
+          <span class="star_rate_container">
+            <span class="star_rate star_rate_1" aria-hidden="true"></span>
+            <span class="rate_label ml-2">悪い</span>
+          </span>
+        </label>
+      </li>
+    </ul>
+    <input type="hidden" id="pkg_id" value=2da31033-1c57-4520-87f0-d4fcb44374f2>
+    <input type="hidden" id="user_id" value=>
+    <input type="hidden"
+           id="rating-api-url"
+           value=/data/api/3/action/rating_create>
+    <button id="rating-btn"
+            class="btn_normal mt-0 pc-mt-0 mb-0 pc-mb-0">
+      評価を送信
+    </button>
+               
+
+      
+      
+
+    
+  </div>
+
+
+<!-- morelikethis start -->
+<h2 class="page_title_icon mt-8 pc-mt-8 mb-0 pc-mb-0 morelikethis">類似データセット</h2>
+<ul class="list_dataset mt-5 pc-mt-5 mb-0 pc-mb-0">
+  <li class="list_dataset_item">
+    <div class="list_dataset_item_main_box">
+      <div class="list_dataset_item_column_content">
+        <p class="mt-0 pc-mt-0 mb-3 pc-mb-3">
+          <a class="link_normal list_dataset_item_title" href="/data/dataset/basic">オープンデータの地方公共団体手引書</a>
+            
+
+<span class="popular ckan-icon ckan-icon-flame" title="最近の閲覧数 23" xmlns="http://www.w3.org/1999/xhtml">人気</span>
+
+        </p>
+        <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">自治体がオープンデータに取り組む際に参考となる手引書を公開しています。</p>
+        <div class="metadata">
+          <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+            提供開始日:
+            2025-12-19
+          </p>
+          <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+            メタデータ更新日:
+            2026-01-14
+          </p>
+        </div>
+        <div class="star_rate_container mt-0 pc-mt-0 mb-4 pc-mb-4"><span class="rate_label mr-2">評価</span><span class='star_rate star_rate_0' aria-hidden="true"></span><span class="rate_amount ml-1">(0)</span></div>
+        <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+            
+          <span class="badge">
+            <a href="/data/dataset/basic" class="link_normal" data-format="docx">
+              DOCX
+            </a>
+          </span>
+            
+          <span class="badge">
+            <a href="/data/dataset/basic" class="link_normal" data-format="pptx">
+              PPTX
+            </a>
+          </span>
+        </p>
+        <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+        </p>
+      </div>
+    </div>
+  </li>
+  <li class="list_dataset_item">
+    <div class="list_dataset_item_main_box">
+      <div class="list_dataset_item_column_content">
+        <p class="mt-0 pc-mt-0 mb-3 pc-mb-3">
+          <a class="link_normal list_dataset_item_title" href="/data/dataset/digi_20220315_0066">オープンデータの取組に関する自治体アンケート結果</a>
+            
+
+<span class="popular ckan-icon ckan-icon-flame" title="最近の閲覧数 39" xmlns="http://www.w3.org/1999/xhtml">人気</span>
+
+        </p>
+        <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">オープンデータの取組に関する自治体アンケート結果の一覧資料です。 </p>
+        <div class="metadata">
+          <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+            提供開始日:
+            2022-08-17
+          </p>
+          <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+            メタデータ更新日:
+            2025-10-02
+          </p>
+        </div>
+        <div class="star_rate_container mt-0 pc-mt-0 mb-4 pc-mb-4"><span class="rate_label mr-2">評価</span><span class='star_rate star_rate_0' aria-hidden="true"></span><span class="rate_amount ml-1">(0)</span></div>
+        <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+            
+          <span class="badge">
+            <a href="/data/dataset/digi_20220315_0066" class="link_normal" data-format="csv">
+              CSV
+            </a>
+          </span>
+            
+          <span class="badge">
+            <a href="/data/dataset/digi_20220315_0066" class="link_normal" data-format="md">
+              md
+            </a>
+          </span>
+            
+          <span class="badge">
+            <a href="/data/dataset/digi_20220315_0066" class="link_normal" data-format="pdf">
+              PDF
+            </a>
+          </span>
+            
+          <span class="badge">
+            <a href="/data/dataset/digi_20220315_0066" class="link_normal" data-format="pptx">
+              PPTX
+            </a>
+          </span>
+            
+          <span class="badge">
+            <a href="/data/dataset/digi_20220315_0066" class="link_normal" data-format="xlsx">
+              XLSX
+            </a>
+          </span>
+        </p>
+        <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+        </p>
+      </div>
+    </div>
+  </li>
+  <li class="list_dataset_item">
+    <div class="list_dataset_item_main_box">
+      <div class="list_dataset_item_column_content">
+        <p class="mt-0 pc-mt-0 mb-3 pc-mb-3">
+          <a class="link_normal list_dataset_item_title" href="/data/dataset/digi_20220315_0072">オープンデータをはじめよう～地方公共団体のための最初の手引書～</a>
+            
+
+<span class="popular ckan-icon ckan-icon-flame" title="最近の閲覧数 32" xmlns="http://www.w3.org/1999/xhtml">人気</span>
+
+        </p>
+        <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">「地方公共団体オープンデータ推進ガイドライン」の補足資料。
+これから具体的なオープンデータの取組をはじめようとする地方公共団体の担当職員を対象として、オープンデータについての考え方や取組の進め方をできるかぎり平易に解説したもの。</p>
+        <div class="metadata">
+          <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+            提供開始日:
+            2022-08-17
+          </p>
+          <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+            メタデータ更新日:
+            2025-11-25
+          </p>
+        </div>
+        <div class="star_rate_container mt-0 pc-mt-0 mb-4 pc-mb-4"><span class="rate_label mr-2">評価</span><span class='star_rate star_rate_0' aria-hidden="true"></span><span class="rate_amount ml-1">(0)</span></div>
+        <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+            
+          <span class="badge">
+            <a href="/data/dataset/digi_20220315_0072" class="link_normal" data-format="pptx">
+              PPTX
+            </a>
+          </span>
+        </p>
+        <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+        </p>
+      </div>
+    </div>
+  </li>
+  <li class="list_dataset_item">
+    <div class="list_dataset_item_main_box">
+      <div class="list_dataset_item_column_content">
+        <p class="mt-0 pc-mt-0 mb-3 pc-mb-3">
+          <a class="link_normal list_dataset_item_title" href="/data/dataset/digi_20240705">オープンデータ基本指針</a>
+            
+
+<span class="popular ckan-icon ckan-icon-flame" title="最近の閲覧数 45" xmlns="http://www.w3.org/1999/xhtml">人気</span>
+
+        </p>
+        <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">（平成29年5月30日IT本部・官民データ活用推進戦略会議決定　令和6年7月5日改正）
+オープンデータの基本事項（定義・意義、公開のルール等）を示しています。</p>
+        <div class="metadata">
+          <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+            提供開始日:
+            2022-08-17
+          </p>
+          <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+            メタデータ更新日:
+            2026-03-25
+          </p>
+        </div>
+        <div class="star_rate_container mt-0 pc-mt-0 mb-4 pc-mb-4"><span class="rate_label mr-2">評価</span><span class='star_rate star_rate_0' aria-hidden="true"></span><span class="rate_amount ml-1">(0)</span></div>
+        <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+            
+          <span class="badge">
+            <a href="/data/dataset/digi_20240705" class="link_normal" data-format="docx">
+              DOCX
+            </a>
+          </span>
+            
+          <span class="badge">
+            <a href="/data/dataset/digi_20240705" class="link_normal" data-format="pdf">
+              PDF
+            </a>
+          </span>
+            
+          <span class="badge">
+            <a href="/data/dataset/digi_20240705" class="link_normal" data-format="pptx">
+              PPTX
+            </a>
+          </span>
+        </p>
+        <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+        </p>
+      </div>
+    </div>
+  </li>
+  <li class="list_dataset_item">
+    <div class="list_dataset_item_main_box">
+      <div class="list_dataset_item_column_content">
+        <p class="mt-0 pc-mt-0 mb-3 pc-mb-3">
+          <a class="link_normal list_dataset_item_title" href="/data/dataset/iryou_teikyouseido_mhlw">医療情報ネットのオープンデータ</a>
+            
+
+<span class="popular ckan-icon ckan-icon-flame" title="最近の閲覧数 66" xmlns="http://www.w3.org/1999/xhtml">人気</span>
+
+        </p>
+        <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">医療情報ネットで公表されている医療機関等のデータの一部を、オープンデータとして提供しています。</p>
+        <div class="metadata">
+          <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+            提供開始日:
+            2024-09-10
+          </p>
+          <p class="text text_px14 mt-0 pc-mt-0 mb-0 pc-mb-0">
+            メタデータ更新日:
+            2025-12-05
+          </p>
+        </div>
+        <div class="star_rate_container mt-0 pc-mt-0 mb-4 pc-mb-4"><span class="rate_label mr-2">評価</span><span class='star_rate star_rate_0' aria-hidden="true"></span><span class="rate_amount ml-1">(0)</span></div>
+        <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+            
+          <span class="badge">
+            <a href="/data/dataset/iryou_teikyouseido_mhlw" class="link_normal" data-format="zip">
+              ZIP
+            </a>
+          </span>
+        </p>
+        <p class="list_dataset_item_badge_container mt-0 pc-mt-0 mb-0 pc-mb-0">
+        </p>
+      </div>
+    </div>
+  </li>
+</ul>
+<!-- morelikethis end -->
+  </div>
+</div>
+<!-- package/read primary end-->
+
+
+
+        
+      <!-- </div> -->
+    </div>
+  </main>
+  
+
+  
+      <footer>
+    <div class="footer_inner">
+        <ul class="footer_items mt-0 pc-mt-0 mb-2 pc-mb-4">
+            <li><a href="/info/about-site">このサイトについて</a></li>
+            <li><a href="/info/service-policy">ご利用にあたって</a></li>
+            <li><a href="/info/help">ヘルプ</a></li>
+            <li><a href="/info/terms">利用規約</a></li>
+            <li><a href="/info/privacy-policy">個人情報取扱方針</a></li>
+            <li><a href="/info/contacts">お問合せ</a></li>
+            <li><a href="https://data.e-gov.go.jp/info/dashboard/metrics">ダッシュボード</a></li>
+            <li><a href="/info/site-map">サイトマップ</a></li>
+        </ul>
+        <p class="copy_right" lang="en">Copyright © Digital Agency All Rights Reserved.</p>
+    </div>
+</footer>
+    <div>
+      <a class="to_pagetop" role="button" href="#contents">ページトップへ移動</a>
+    </div>
+
+
+  
+  
+  
+    
+  
+  
+  
+    
+  
+  
+  
+  
+  
+  
+
+
+  
+      
+  
+    
+
+      
+          <script type="application/ld+json">
+           {
+    "@context": {
+        "brick": "https://brickschema.org/schema/Brick#",
+        "csvw": "http://www.w3.org/ns/csvw#",
+        "dc": "http://purl.org/dc/elements/1.1/",
+        "dcam": "http://purl.org/dc/dcam/",
+        "dcat": "http://www.w3.org/ns/dcat#",
+        "dcmitype": "http://purl.org/dc/dcmitype/",
+        "dcterms": "http://purl.org/dc/terms/",
+        "doap": "http://usefulinc.com/ns/doap#",
+        "foaf": "http://xmlns.com/foaf/0.1/",
+        "odrl": "http://www.w3.org/ns/odrl/2/",
+        "org": "http://www.w3.org/ns/org#",
+        "owl": "http://www.w3.org/2002/07/owl#",
+        "prof": "http://www.w3.org/ns/dx/prof/",
+        "prov": "http://www.w3.org/ns/prov#",
+        "qb": "http://purl.org/linked-data/cube#",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "schema": "http://schema.org/",
+        "sh": "http://www.w3.org/ns/shacl#",
+        "skos": "http://www.w3.org/2004/02/skos/core#",
+        "sosa": "http://www.w3.org/ns/sosa/",
+        "ssn": "http://www.w3.org/ns/ssn/",
+        "time": "http://www.w3.org/2006/time#",
+        "vann": "http://purl.org/vocab/vann/",
+        "void": "http://rdfs.org/ns/void#",
+        "xsd": "http://www.w3.org/2001/XMLSchema#"
+    },
+    "@graph": [
+        {
+            "@id": "https://data.e-gov.go.jp/dataset/2da31033-1c57-4520-87f0-d4fcb44374f2/resource/1712ccd1-fb86-4642-b372-e6c367a13c5f",
+            "@type": "schema:DataDownload",
+            "schema:contentSize": 11091968,
+            "schema:description": "\u30aa\u30fc\u30d7\u30f3\u30c7\u30fc\u30bf100 \u6c11\u9593\u4e8b\u696d\u8005\u306b\u3088\u308b\u4e8b\u4f8b\u3092\u4e00\u3064\u306e\u30d5\u30a1\u30a4\u30eb\u306b\u307e\u3068\u3081\u305f\u8cc7\u6599\u3067\u3059\u3002",
+            "schema:encodingFormat": "PDF",
+            "schema:inLanguage": "ja",
+            "schema:name": "\u30aa\u30fc\u30d7\u30f3\u30c7\u30fc\u30bf100 \u6c11\u9593\u4e8b\u696d\u8005\u306b\u3088\u308b\u4e8b\u4f8b\uff08\u4e00\u62ec\u30c0\u30a6\u30f3\u30ed\u30fc\u30c9\uff09",
+            "schema:url": "https://www.digital.go.jp/assets/contents/node/basic_page/field_ref_resources/bb4bbf97-9c4e-4a39-8d65-44f5f873ae45/74b6332e/20240913_resources_open-data100_private_outline_01.pdf"
+        },
+        {
+            "@id": "https://data.e-gov.go.jp/dataset/2da31033-1c57-4520-87f0-d4fcb44374f2",
+            "@type": "schema:Dataset",
+            "schema:about": {
+                "@id": "_:Nbc4c57f3e68440e2b1b5c9cc327722ea"
+            },
+            "schema:dateModified": "2025-10-02T13:08:13.516262",
+            "schema:datePublished": "2022-08-17T11:56:30.399253",
+            "schema:description": "\u60c5\u5831\u901a\u4fe1\u6280\u8853(IT)\u7dcf\u5408\u6226\u7565\u5ba4\u304c\u30aa\u30fc\u30d7\u30f3\u30c7\u30fc\u30bf\u306e\u666e\u53ca\u30fb\u5553\u767a\u3092\u76ee\u7684\u3068\u3057\u3066\u3001\u3044\u308d\u3044\u308d\u306a\u4e8b\u696d\u8005\u3084\u5730\u65b9\u516c\u5171\u56e3\u4f53\u7b49\u306b\u3088\u308b\u30aa\u30fc\u30d7\u30f3\u30c7\u30fc\u30bf\u306e\u5229\u6d3b\u7528\u4e8b\u4f8b\u3092\u516c\u958b\u3057\u3066\u3044\u304f\u53d6\u7d44\u307f\u3067\u3059\u3002",
+            "schema:distribution": [
+                {
+                    "@id": "https://data.e-gov.go.jp/dataset/2da31033-1c57-4520-87f0-d4fcb44374f2/resource/f4734cc2-7c29-4c0b-b624-f6815f6a0fa4"
+                },
+                {
+                    "@id": "https://data.e-gov.go.jp/dataset/2da31033-1c57-4520-87f0-d4fcb44374f2/resource/22d4f842-1933-45fd-8219-4500eeff2e04"
+                },
+                {
+                    "@id": "https://data.e-gov.go.jp/dataset/2da31033-1c57-4520-87f0-d4fcb44374f2/resource/c110fd04-41f4-44aa-8d5f-39654b93777b"
+                },
+                {
+                    "@id": "https://data.e-gov.go.jp/dataset/2da31033-1c57-4520-87f0-d4fcb44374f2/resource/1712ccd1-fb86-4642-b372-e6c367a13c5f"
+                },
+                {
+                    "@id": "https://data.e-gov.go.jp/dataset/2da31033-1c57-4520-87f0-d4fcb44374f2/resource/c30d5d16-541c-4763-aaea-a3a7fb195b5b"
+                }
+            ],
+            "schema:includedInDataCatalog": {
+                "@id": "_:N73402b23e38c412883136fbecb0b291a"
+            },
+            "schema:keywords": [
+                "\u5229\u6d3b\u7528",
+                "\u30aa\u30fc\u30d7\u30f3\u30c7\u30fc\u30bf",
+                "\u4e8b\u4f8b\u96c6"
+            ],
+            "schema:name": "\u30aa\u30fc\u30d7\u30f3\u30c7\u30fc\u30bf100",
+            "schema:publisher": {
+                "@id": "https://data.e-gov.go.jp/organization/3a3b5b24-c438-43e3-a2f6-0b0cc860f655"
+            },
+            "schema:url": "https://data.e-gov.go.jp/data/dataset/digi_20220315_0062"
+        },
+        {
+            "@id": "_:Nbc4c57f3e68440e2b1b5c9cc327722ea",
+            "@type": "schema:Thing",
+            "schema:name": "gr_1100",
+            "schema:url": "https://data.e-gov.go.jp/data/group/57aaa006-42ec-4080-85e2-e79b79a63ecd"
+        },
+        {
+            "@id": "_:N73402b23e38c412883136fbecb0b291a",
+            "@type": "schema:DataCatalog",
+            "schema:description": "",
+            "schema:name": "e-Gov\u30c7\u30fc\u30bf\u30dd\u30fc\u30bf\u30eb",
+            "schema:url": "https://data.e-gov.go.jp"
+        },
+        {
+            "@id": "https://data.e-gov.go.jp/dataset/2da31033-1c57-4520-87f0-d4fcb44374f2/resource/22d4f842-1933-45fd-8219-4500eeff2e04",
+            "@type": "schema:DataDownload",
+            "schema:contentSize": 2592768,
+            "schema:description": "\u30aa\u30fc\u30d7\u30f3\u30c7\u30fc\u30bf100 \u30a2\u30af\u30c6\u30a3\u30d3\u30c6\u30a3\u3092\u4e00\u3064\u306e\u30d5\u30a1\u30a4\u30eb\u306b\u307e\u3068\u3081\u305f\u8cc7\u6599\u3067\u3059\u3002",
+            "schema:encodingFormat": "PDF",
+            "schema:inLanguage": "ja",
+            "schema:name": "\u30aa\u30fc\u30d7\u30f3\u30c7\u30fc\u30bf100 \u30a2\u30af\u30c6\u30a3\u30d3\u30c6\u30a3\uff08\u4e00\u62ec\u30c0\u30a6\u30f3\u30ed\u30fc\u30c9\uff09",
+            "schema:url": "https://www.digital.go.jp/assets/contents/node/basic_page/field_ref_resources/85f47825-6d28-45ad-9d7e-296eb94b8234/7c8a265a/20250819__resources_od100_act_all_00_.pdf"
+        },
+        {
+            "@id": "https://data.e-gov.go.jp/dataset/2da31033-1c57-4520-87f0-d4fcb44374f2/resource/c30d5d16-541c-4763-aaea-a3a7fb195b5b",
+            "@type": "schema:DataDownload",
+            "schema:contentSize": 5824512,
+            "schema:description": "\u30aa\u30fc\u30d7\u30f3\u30c7\u30fc\u30bf100 \u5730\u65b9\u516c\u5171\u56e3\u4f53\u7b49\u306b\u3088\u308b\u4e8b\u4f8b\u3092\u4e00\u3064\u306e\u30d5\u30a1\u30a4\u30eb\u306b\u307e\u3068\u3081\u305f\u8cc7\u6599\u3067\u3059\u3002",
+            "schema:encodingFormat": "PDF",
+            "schema:inLanguage": "ja",
+            "schema:name": "\u30aa\u30fc\u30d7\u30f3\u30c7\u30fc\u30bf100 \u5730\u65b9\u516c\u5171\u56e3\u4f53\u7b49\u306b\u3088\u308b\u4e8b\u4f8b\uff08\u4e00\u62ec\u30c0\u30a6\u30f3\u30ed\u30fc\u30c9\uff09",
+            "schema:url": "https://www.digital.go.jp/assets/contents/node/basic_page/field_ref_resources/79cc7071-1bf1-430d-bdb5-7abd76e4e65b/20200928_resources_od100_local_all_00.pdf"
+        },
+        {
+            "@id": "https://data.e-gov.go.jp/dataset/2da31033-1c57-4520-87f0-d4fcb44374f2/resource/f4734cc2-7c29-4c0b-b624-f6815f6a0fa4",
+            "@type": "schema:DataDownload",
+            "schema:contentSize": 19279872,
+            "schema:description": "\u30aa\u30fc\u30d7\u30f3\u30c7\u30fc\u30bf100(\u4e8b\u4f8b\u8cc7\u6599)\u3092\u4e00\u3064\u306e\u30d5\u30a1\u30a4\u30eb\u306b\u307e\u3068\u3081\u305f\u8cc7\u6599\u3067\u3059\u3002",
+            "schema:encodingFormat": "PDF",
+            "schema:inLanguage": "ja",
+            "schema:name": "\u30aa\u30fc\u30d7\u30f3\u30c7\u30fc\u30bf100\uff08\u4e00\u62ec\u30c0\u30a6\u30f3\u30ed\u30fc\u30c9\uff09",
+            "schema:url": "https://www.digital.go.jp/assets/contents/node/basic_page/field_ref_resources/ee1fd65a-cb8c-4baa-b711-7a45648c6804/5bb43375/20250819_resources_open-data100_outline_01.pdf"
+        },
+        {
+            "@id": "https://data.e-gov.go.jp/organization/3a3b5b24-c438-43e3-a2f6-0b0cc860f655",
+            "@type": "schema:Organization",
+            "schema:contactPoint": {
+                "@id": "_:Nef5c269937194c29a8f7d050cc4a5e1b"
+            },
+            "schema:name": "\u30c7\u30b8\u30bf\u30eb\u5e81"
+        },
+        {
+            "@id": "_:Nef5c269937194c29a8f7d050cc4a5e1b",
+            "@type": "schema:ContactPoint",
+            "schema:contactType": "customer service",
+            "schema:name": "\u30c7\u30b8\u30bf\u30eb\u5e81",
+            "schema:url": "https://data.e-gov.go.jp"
+        },
+        {
+            "@id": "https://data.e-gov.go.jp/dataset/2da31033-1c57-4520-87f0-d4fcb44374f2/resource/c110fd04-41f4-44aa-8d5f-39654b93777b",
+            "@type": "schema:DataDownload",
+            "schema:contentSize": 3473408,
+            "schema:description": "\u5730\u65b9\u516c\u5171\u56e3\u4f53\u304c\u30aa\u30fc\u30d7\u30f3\u30c7\u30fc\u30bf\u3092\u5229\u6d3b\u7528\u3059\u308b\u969b\u306b\u53c2\u8003\u3068\u306a\u308b\u4e8b\u4f8b\u3092\u4e00\u3064\u306e\u30d5\u30a1\u30a4\u30eb\u306b\u307e\u3068\u3081\u305f\u8cc7\u6599\u3067\u3059\u3002",
+            "schema:encodingFormat": "PDF",
+            "schema:inLanguage": "ja",
+            "schema:name": "\u30aa\u30fc\u30d7\u30f3\u30c7\u30fc\u30bf100 \u5730\u65b9\u516c\u5171\u56e3\u4f53\u304c\u30aa\u30fc\u30d7\u30f3\u30c7\u30fc\u30bf\u3092\u5229\u6d3b\u7528\u3059\u308b\u969b\u306b\u53c2\u8003\u3068\u306a\u308b\u4e8b\u4f8b\uff08\u4e00\u62ec\u30c0\u30a6\u30f3\u30ed\u30fc\u30c9\uff09",
+            "schema:url": "https://www.digital.go.jp/assets/contents/node/basic_page/field_ref_resources/de5fe8f7-0896-4b13-badc-ee428fe178e4/20200928_resources_od100_reference_all_00_0.pdf"
+        }
+    ]
+}
+          </script>
+      
+  
+
+
+    
+    
+    
+    <script src="/data/webassets/vendor/d8ae4bed_jquery.js" type="text/javascript"></script>
+<script src="/data/webassets/vendor/fb6095a0_vendor.js" type="text/javascript"></script>
+<script src="/data/webassets/vendor/580fa18d_bootstrap.js" type="text/javascript"></script>
+<script src="/data/webassets/base/8597cdcc_main.js" type="text/javascript"></script>
+<script src="/data/webassets/base/19c28fdb_ckan.js" type="text/javascript"></script>
+<script src="/data/webassets/base/cd2c0272_tracking.js" type="text/javascript"></script>
+<script src="/data/webassets/ckanext-datasetslist-theme/9cad9e6d_datasetslist_theme_js.js" type="text/javascript"></script>
+<script src="/data/webassets/ckanext-datasetslist-theme/169dffff_datasetslist_theme_form_tooltip_js.js" type="text/javascript"></script>
+<script src="/data/webassets/ckanext-datasetslist-theme/4d255bdc_typeahead_js.js" type="text/javascript"></script>
+<script src="/data/webassets/ckanext-datasetslist-theme/f831a5b6_suggest_js.js" type="text/javascript"></script>
+<script src="/data/webassets/ckanext-datasetslist-theme/ab1b9d49_rating_js.js" type="text/javascript"></script>
+<script src="/data/webassets/ckanext-datasetslist-theme/dec0930d_get_template_js.js" type="text/javascript"></script>
+  </body>
+</html>
