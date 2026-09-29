@@ -1,7 +1,7 @@
 # 设计内核 — 2.5D 出国旅游模拟
 
 - **状态**：v1 设计提案（供专家红队与用户评审）
-- **依据**：`docs/handOff/gap-analysis-and-plan.md`（GAP 与规划）、`docs/handOff/recon-2.5d-game-research.md`（1186 行调研，含 Appendix A 目录布局 / Appendix B 七层隔离机制）、`docs/handOff/recon-codebase-salvage.md`（旧代码盘点）
+- **依据**：`iteration/recon/gap-analysis-and-plan.md`（GAP 与规划）、`iteration/recon/recon-2.5d-game-research.md`（1186 行调研，含 Appendix A 目录布局 / Appendix B 七层隔离机制）、`iteration/recon/recon-codebase-salvage.md`（旧代码盘点）
 - **作者**：Lead（本会话）+ 用户已确认的产品意图
 
 ---

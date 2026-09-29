@@ -6,7 +6,7 @@
 - **新目标**（用户确认）：网页端 2.5D「模拟出国旅游」游戏，第一版聚焦**日本 3–5 座城市**；游戏部分用 Phaser 3 独立重写；旧项目只取后端与内容
 - **成功定义**（用户原话归纳）：一个能在网页上、一个人或和朋友一起，在日本 3–5 座城市中模拟旅游体验的游戏；**支持一键生成路线攻略和旅游回忆录**；回忆录支持玩家上传现实打卡照片
 
-> 证据来源：`docs/handOff/recon-codebase-salvage.md`（代码级盘点，含逐行引用）、`docs/handOff/recon-2.5d-game-research.md`（技术选型）、`docs/handOff/evidence/`（许可条款原文快照：Google Maps ToS、ODbL、OSM 瓦片政策）。本文中的"事实"均已由命令或读码验证，判断类结论单独标注。
+> 证据来源：`iteration/recon/recon-codebase-salvage.md`（代码级盘点，含逐行引用）、`iteration/recon/recon-2.5d-game-research.md`（技术选型）、`docs/handOff/evidence/`（许可条款原文快照：Google Maps ToS、ODbL、OSM 瓦片政策）。本文中的"事实"均已由命令或读码验证，判断类结论单独标注。
 >
 > **文档位置**：本轮（规划/调研阶段）的全部产出统一放在 `docs/handOff/`。开发正式开始后按仓库既有文档规范落盘，不再往 `docs/handOff/` 追加。
 
@@ -515,7 +515,7 @@ OpenAI 提示缓存默认开启，缓存输入最高 **90% 折扣**（写入 1.2
 >
 > 唯一的反例（A Short Hike 数月完成）恰恰印证了这一点：它靠的是**复用废弃项目 + 极小的世界 + 自设死线**。
 >
-> **⚠️ 证据强度标注（事后补充）**：上表数字来自 `docs/handOff/recon-2.5d-game-research.md` §6.1.1，
+> **⚠️ 证据强度标注（事后补充）**：上表数字来自 `iteration/recon/recon-2.5d-game-research.md` §6.1.1，
 > 每行都带具名出处与直接引语（80 Days 的 "20–30 城 → 一百多城"、Unpacking 的 "实际制作花了两倍时间"）。
 > 但另有一份更严格的同期检索（`docs/project_lifecycle/knowledge/_recon_tmp/q4q6-hardproblems-scope.md` §Q6.1）
 > 把 **Stardew 的 2012 起始**与 **Unpacking 的开发时长**标为 `UNVERIFIED`——因为它只承认自己本次抓到的原始来源。
