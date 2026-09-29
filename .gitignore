@@ -76,8 +76,11 @@ docs/handOff/archive/corpora/geo-japan/*
 !docs/handOff/archive/corpora/geo-japan/kyoto-slice-measurement-summary.json
 !docs/handOff/archive/corpora/geo-japan/kyoto-slice-overpass.json
 
-# DSH harness state for this workspace (agent config, not project source)
-.dsh/
+# DSH harness state for this workspace (agent config, not project source).
+# Trailing /* rather than / on purpose: a bare directory pattern makes git refuse to
+# descend, which defeats every `!` re-inclusion below it. That is a trap this branch
+# has now hit three times - twice on the evidence corpus and once here.
+.dsh/*
 
 # React/Node.js specific
 /build
@@ -551,3 +554,20 @@ server/.env.*
 # Ignore all test results, reports, and records
 docs/project_lifecycle/all_tests/results/
 server/coverage/lcov-report
+
+# The project's own normative spec must survive a clean checkout. `.dsh/` is harness
+# state and stays ignored, but one directory under it is not harness state: this skill
+# is the document that states the fact-layer contract's rules, and pack-curator updated
+# it normatively during task-10. It was untracked, so a clean checkout had every gate
+# but not the spec they enforce.
+#
+# Ancestors are re-included explicitly because a file cannot be re-included while a
+# parent directory is excluded - the same trap that silently defeated the evidence
+# re-inclusions earlier in this branch.
+!.dsh/skills/
+!.dsh/skills/tourguide-fact-integrity/
+!.dsh/skills/tourguide-fact-integrity/**
+.dsh/*
+!.dsh/skills/
+!.dsh/skills/tourguide-fact-integrity/
+!.dsh/skills/tourguide-fact-integrity/**
