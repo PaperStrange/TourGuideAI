@@ -52,12 +52,20 @@ for (const g of GATES) {
   // Distinguish "could not run" from "ran and found a violation". A missing tool, an
   // unreadable pack or a bad argument is an environment problem, not a data problem.
   const envProblem = code === 2 || /usage error|cannot find module|ENOENT|not found/i.test(out);
-  results.push({ id: g.id, name: g.name, why: g.why, code, ok: code === 0, envProblem,
-    lastLine: out.trim().split('\n').filter(Boolean).slice(-1)[0] ?? '' });
+  // The LAST line is often a plan-view drawing or a hash footer, not the verdict, so
+  // pick the most informative line instead: an explicit failure if there is one, else
+  // the assertion/check summary, else the last line that is not pure ASCII art.
+  const lines = out.split('\n').map((l) => l.trim()).filter(Boolean);
+  const pick =
+    lines.find((l) => /\bFAIL\b/.test(l)) ??
+    lines.find((l) => /\d+\s*\/\s*\d+\s+assertions? passed|\d+\s+checks? passed|SELF-TEST PASS|PASS\b/i.test(l)) ??
+    lines.filter((l) => !/^[\s+:#.=D]*$/.test(l)).slice(-1)[0] ??
+    '';
+  results.push({ id: g.id, name: g.name, why: g.why, code, ok: code === 0, envProblem, lastLine: pick.slice(0, 200) });
   if (!JSON_OUT) {
     const status = code === 0 ? 'PASS' : envProblem ? 'ENV ' : 'FAIL';
     console.log(`${status}  ${g.name}`);
-    console.log(`      ${results.at(-1).lastLine.slice(0, 160)}`);
+    console.log(`      ${results.at(-1).lastLine}`);
   }
 }
 
