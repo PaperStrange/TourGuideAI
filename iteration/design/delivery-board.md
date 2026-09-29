@@ -6,7 +6,7 @@
 > **更新规则**：每次共享任务状态变化时更新本文件。
 > **本文件只做索引**：判定在门与登记册里，这里只给**命令与结论**。**抄了判断的看板会变成下一条"文档承诺 ≠ 仓库实况"（D-07）。**
 
-**最后更新**：2026-09-30 · `iteration` = `e9597d4` · **门 12 道**
+**最后更新**：2026-09-30 · `iteration` = `76ebfc2` · **门 15 道**
 
 ---
 
@@ -14,39 +14,38 @@
 
 **把项目从"调研与契约"推进到 Gate 1 的可验证结果：一支真人在京都四条通上按游戏导出物走通一次。**
 
-| 阶段 | 目标 | 状态 |
+**Gate 1 的原文定义**（`design-core.md` L341 / L355，**引用而非转述**）：
+> **一条街 + 12 个可进入地点 + 可走的 2.5D + 一次真人走通**
+> 且 **2 km 走廊 = 派生几何**（攻略路线 + 可走网格）；**Gate 1 手作美术 = 一个 40 m 街区**
+
+| 项 | 状态 | 证据 |
 |---|---|---|
-**S1** | 证伪或证实"一个 40×40 街区含 12 个可进入门洞" | ✅ **容量上证实**——实测 **60.000 m** 四条通临街 → 按实测门距 **17 门**、按设计模块 **~20 门**<br>⚠️ **但 12 个位置 0 个被观察**（街景在 agent 环境取不到）。见 D-24…D-27 |
-**S2** | 事实层收尾，干净 checkout 中全门通过 | ✅ **达成**（干净克隆 10/10 exit 0 已验证；现为 11 道门） |
-**S3** | 投影与栅格化（OSM 几何烘焙 → 地面/碰撞/高度） | 🔄 **进行中**——发射器 + `scene.bin` 已交付；**GAP-10 裁定补全中**（见 §4 B2） |
-**S4** | 12 套室内 + 招牌管线（100–160 h） | ⏳ **模型待改**：D-24 门类型（`street-shop`/`building-lobby`/`transit-mouth`），见 `door-type-model.md` |
-**S5** | Gate 1 验收：一个真人走通 | ⏳ |
-**＋** | **导出层**（"一键生成路线攻略"——核心卖点所在） | 🔄 **进行中**（`task-16`，此前是"守着一扇后面什么都没有的门"） |
+**① 一条街** | ✅ **达成** | 224 栋发射（171 裁剪）· 轴线覆盖 **81.1%** · `S14` 最小北侧余量 **9.13 m** · 第 13 道门从字节独立可读 9/9 |
+**② 12 个可进入地点** | ⚠️ **机械部分达成，可进入性 0/12** | 门 **21/21** 断言过 · 但 **ENTERABLE 0/12**（**D-40/D-42**）· **12 个位置 0 个被观察** |
+**③ 可走的 2.5D** | ✅ **达成** | 走者从 **x=0 到 x=1599**，1600 步 0 次偏离中线 · 1600 个位置 0 个在阻挡格上 · 两次渲染逐字节相同 |
+**④ 一次真人走通** | ❌ **未做** | **只能人判**：见 `gate1-acceptance.md` §1 第 4 项 |
+
+**完整的可核验判据见 `iteration/design/gate1-acceptance.md`**——它把"机械可判"与"只能人判"**分成两栏**，因为把后者伪装成前者正是本项目要防的。
 
 ---
 
-## 二 · 分工（共享任务板实况）
+## 二 · 分工（共享任务板实况，**task-1…17 全部完成**）
 
 | 卡 | 主题 | owner | 状态 |
 |---|---|---|---|
-| task-1 | Geo 管线契约冻结 | `geo-contract` | ✅ |
-| task-2 | 12 门位置清单 | `doors-author` | ✅ |
-| task-3 | 事实核验报告（非产出者核验） | `fact-verifier` | ✅ |
-| task-4 | 导出物边界断言 | `export-guard` | ✅ |
-| task-5/6/7 | L-A/L-B/L-C 评价源条款横评 | `review-src-intl`/`jp`/`zh` | ✅ |
-| task-8 | 修正 wTiles（2000→1600）+ 冻结原点 | `geo-contract` | ✅ |
-| task-9 | 修 validate-doors 指向 ODbL 分表 | `doors-author` | ✅ |
-| task-10 | 事实层落地 | `pack-curator` | ✅ |
-| task-11 | **12 个门的现实核对** | `fact-verifier` | ✅ **裁决：有门 0 / 无门 0 / 无法判定 12** |
-| task-12 | 事实层收尾（UNKNOWN/D-15/D-18） | `pack-curator` | ✅ **22 places / 9 legs** |
-| task-13 | **投影与栅格化（发射器 + scene.bin）** | `geo-contract` | 🔄 补全 GAP-10 裁定 |
-| task-14 | 补车站坐标 + 地铁分区 + 缺口措辞 | `pack-curator` | ✅ **496 格运赁矩阵已解码** |
-| task-15 | **拆 doors.json 的枚举镜像**（V1 被漂移打红） | `doors-author` | 🔄 |
-| task-16 | **导出层：可带出门的路线攻略** | `export-guard` | 🔄 |
+| task-1 / 8 | Geo 契约冻结 + 修正 wTiles/冻结原点 | `geo-contract` | ✅ |
+| task-2 / 9 / 15 | 12 门清单 + ODbL 分表 + 拆枚举镜像 | `doors-author` | ✅ |
+| task-3 / 11 | 事实核验（非产出者）+ 12 门现实核对 | `fact-verifier` | ✅ |
+| task-4 | 导出边界断言（七层守卫唯一没守的一边） | `export-guard` | ✅ |
+| task-5 / 6 / 7 | L-A / L-B / L-C 评价源条款横评 | `review-src-intl` / `jp` / `zh` | ✅ |
+| task-10 / 12 / 14 | 事实层落地 + 收尾 + 车站坐标/地铁分区 | `pack-curator` | ✅ |
+| task-13 | 投影与栅格化（发射器 + `scene.bin`） | `geo-contract` | ✅ |
+| task-16 | 导出层（可带出门的路线攻略） | `export-guard` | ✅ |
+| task-17 | 可走外壳（项目第一次真的"走"世界） | `export-guard` | ✅ |
+| **task-18** | **北侧 7 扇门真的可进入（`openings` 层）** | `geo-contract` | 🔄 **进行中** |
 
 **团队编制**：**8 个 teammate，上限即 8，当前满编**。
-**派新活时优先复用已收工的成员**——第一次派 `task-11`/`task-12` 就因满编被拒。
-**要真正新增成员必须先腾位**；四个 running 成员与 `fact-verifier`、三名评价源成员**都持有活上下文，不为此退役**。
+**派新活时优先复用已收工的成员**——第一次派 `task-11`/`task-12` 就因满编被拒。**要真正新增成员必须先腾位，而那是决定不是疏忽。**
 
 ---
 
@@ -54,15 +53,18 @@
 
 | 项 | 命令 | 当前 |
 |---|---|---|
-**全部门** | `node iteration/tools/run-gates.mjs` | **12 道**（新增 `scene` + `guide`）。**11 过 1 红**：`doors`（datum 移动后 12 扇门的格子待重算，`doors-author` 在跑） |
-**仓库规则** | `iteration/tools/check-repo-hygiene.mjs` | **7 条**，R1–R5 过、R6 KNOWN-ACCEPTED、**R7 NOTE（信息性）** |
-**溯源对齐** | `iteration/tools/check-source-alignment.mjs` | `PRESENT 21  AS-PARTS 10  OSM-ELEMENT 9  **ABSENT 0**  NEAR-VARIANT 0  UNKNOWN 4`<br>（起点 8/12；**4 是诚实下限**：2 条组合地址 + 2 条 OSM 无名字对象的手作标签） |
-**场景** | `node iteration/tools/emit-scene.mjs --assert` | 真实几何进管线。`scene.bin` **393,979 B**，两次运行 + 逆序遍历 + `lanes` 污染后 **sha256 均相同** |
-**契约** | `node docs/handOff/dsh-bundle-tourguide-2.5d/tools/world-grid.mjs` | **18/18**，`contract sha256=F50E4144…` |
-**分支同步** | `iteration/tools/check-branch-sync.mjs` | 全部 in-sync |
-**CI** | GitHub → Actions → Fact Integrity | **#7 success** |
-**分支保护** | `master` + `iteration` | 已生效，check 名为真实值（`Fact-integrity gates` / `build-and-test (18.x)`） |
-**登记册** | `iteration/design/repo-defect-registry.md` | **32 条**（D-01…D-32） |
+**全部门** | `node iteration/tools/run-gates.mjs` | **15 道**，本地与**干净克隆都 15/15**（`build/` 与 `viewer/index.html` 都不存在时自动烤） |
+**仓库规则** | `iteration/tools/check-repo-hygiene.mjs` | **7 条**，R1–R5 过 · R6 KNOWN-ACCEPTED · **R7 NOTE（信息性）** |
+**契约** | 跑 `world-grid.mjs` | **18/18**，`contract sha256=E2E9307C…`，几何夹具 `7059980F…` **未动** |
+**场景** | `emit-scene.mjs --assert` | **15/15** · 两次运行 / 逆序 / `lanes` 污染后 sha256 相同 |
+**从字节读场景** | `gate-scene-read.mjs` | **9/9**（第 13 道门，独立于发射器的第二个读取器） |
+**走世界** | `check-viewer.mjs` | **11/11** · 走者到 **x=1599** · **ENTERABLE 0/12** |
+**页面真的能跑** | `check-viewer-page.mjs` | **8/8**（把"烤出来了"变成"能跑"） |
+**门** | `validate-doors.mjs --strict` | **21/21** · `cellY` 北 **24** / 南 **0** |
+**事实层** | `validate-city-pack-v2.mjs --json` | **16 passed / 0 failed** |
+**溯源对齐** | `check-source-alignment.mjs` | `ABSENT 0 · NEAR-VARIANT 0 · UNKNOWN 4`（4 是诚实下限） |
+**攻略** | `validate-guide.mjs` | **19/19** · verified 栏 **111 条，0 条非 `observed`** |
+**登记册** | `repo-defect-registry.md` | **42 条**（D-01…D-42） |
 
 ---
 
@@ -70,22 +72,24 @@
 
 | # | 阻塞 | 谁能解 |
 |---|---|---|
-**B1** | **12 个门位需要人工街景核对**（`DOOR-CHECKLIST-for-human.md`，**约 5 分钟**）。**12 个位置 0 个被观察**，而它**决定 S4 的美术量** | **用户**（街景在 agent 环境取不到：Street View 无 key `REQUEST_DENIED`、3D Tiles 403、Bing 无数据、Mapillary 需 OAuth、Commons 800 m 内 0 张） |
-**B2** | `scene` 门 `S8` 红——**我裁定的 GAP-10 不完整**：窗口深 40 m 而建筑深达 ±556 m，裁剪产出**整幅 40 m 深的板**，轴线行可走比例由 0.826 掉到 0.679 | `geo-contract`（在跑：加**深度上限** + 把 `S8` 改成**可走比例下限 + 连通性**） |
-**B3** | `doors` 门 `V1` 红——`doors.json` **抄了一份 `VALUE_KINDS`** 而它是活的枚举 | `doors-author`（在跑 `task-15`：**拆镜像而非更新副本**，且须**证明防漂移有效**） |
-**B4** | 227 条依赖告警（**遗留代码**） | 用户已定暂不管；npm 更新块已按此关闭 |
-**B5** | 遗留代码搬迁（**22 个 npm scripts + 4 个 CI 作业受影响**） | 用户 |
+**B1** | **`iteration/recon/DOOR-CHECKLIST-for-human.md`（约 5 分钟）。** 它解 **D-24**（门的类型）· **D-25**（南侧数量）· **D-40**（门后应该有什么）——**三者都是 Gate 1 第 2 项的定义本身**。**12 个门位至今 0 个被观察**；街景在 agent 环境取不到（Street View 无 key、3D Tiles 403、Bing 无数据、Mapillary 需 OAuth、Commons 800 m 内 0 张） | **用户** |
+**B2** | **南侧 5 扇门的 A/B/C 选择**（A 门向北移 · B `hTiles 40→48` · C 改标为"临街面"）——见 `d42-corridor-capacity.md`。**它们的门行是世界最后一行，所以南侧室内会住在世界之外** | **用户** |
+**B3** | 227 条依赖告警（**遗留代码**） | 用户已定暂不管；npm 更新块已按此关闭 |
+**B4** | 遗留代码搬迁（**22 个 npm scripts + 4 个 CI 作业受影响**）——见 `legacy-code-map.md` | **用户** |
 
 ---
 
-## 五 · 只在对话里存在、还没落进仓库的（**这是本文件存在的理由**）
+## 五 · 只在对话里存在、还没落进仓库的
 
 | 事项 | 状态 |
 |---|---|
 `DOOR-CHECKLIST-for-human.md` | ✅ 已落盘，**等用户填** |
-`door-type-model.md`（D-24 的解法 v2） | ✅ 已落盘（提案，未落进 `doors.json`） |
+`door-type-model.md`（D-24 解法 v2） | ✅ 已落盘（**提案**，未落进 `doors.json`） |
 `legacy-code-map.md` | ✅ 已落盘（**未执行搬迁**） |
-`emit-guide.mjs`（导出层） | 🔄 `export-guard` 在做 |
+`gate1-scope.md` · `gate1-acceptance.md` | ✅ **已落盘**——它们更正了我此前把 Gate 1 读成"12 套室内"的错误 |
+`d42-corridor-capacity.md` · `scene-door-dependency.md` | ✅ **已落盘**（D-42 的裁定依据 + 依赖形状） |
+
+**（本栏目已从"多项只在对话里"降到"全部已落盘"——但每次改动后要重新检查，不能假定它一直干净。）**
 
 ---
 
