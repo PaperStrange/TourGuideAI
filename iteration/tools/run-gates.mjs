@@ -65,7 +65,7 @@ const GATES = [
   // so a clean clone runs both gates without a predecessor's help for the artefact it owns.
   { id: 'viewer', name: 'walkable shell (the world, walked)', cmd: ['node', join(REPO, 'iteration', 'tools', 'check-viewer.mjs'), '--bake-if-absent'],
     why: 'a collision-constrained walker follows the drifting street centreline end to end; doors present and reconciled with the export; frames deterministic' },
-  { id: 'viewer-page', name: 'the baked page actually runs', cmd: ['node', join(REPO, 'iteration', 'tools', 'check-viewer-page.mjs')],
+  { id: 'viewer-page', name: 'the baked page actually runs', cmd: ['node', join(REPO, 'iteration', 'tools', 'check-viewer-page.mjs'), '--bake-if-absent'],
     why: 'the page own JavaScript executed headlessly against a DOM stub -- that it baked is not that it runs' },  { id: 'branch-sync', name: 'no local branch is stale or diverged', cmd: ['node', join(REPO, 'iteration', 'tools', 'check-branch-sync.mjs'), '--no-fetch'],
     why: 'a local branch behind its remote is how a commit lands on a 199-commit-old base' },
 ];

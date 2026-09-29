@@ -34,6 +34,7 @@
  * Exit codes: 0 = all pass, 1 = an assertion failed, 2 = environment.
  */
 import { existsSync, readFileSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
 import { join, resolve } from 'node:path';
 import vm from 'node:vm';
 
@@ -122,7 +123,26 @@ function preloadedElements(html) {
 
 function main() {
   const jsonOut = process.argv.includes('--json');
-  if (!existsSync(PAGE)) throw new EnvError(`no page at ${PAGE} — run: node iteration/tools/bake-viewer.mjs`);
+  // SELF-SUFFICIENT BY CONSTRUCTION. iteration/viewer/index.html is a DERIVED artefact and is
+  // gitignored, so a clean checkout has no page and this check exited 2 with 'could not RUN'
+  // there while passing on my machine. That is the EIGHTH occurrence of one shape in this
+  // harness: a verdict that depends on how the working copy was prepared rather than on the
+  // repository. R1 assumed a single-branch clone carries every branch; R7 required a per-clone
+  // hook CI can never have; branch-sync read an empty branch list as 'not a git repository'; the
+  // guide gate pointed at an absent build product; the scene-read gate relied on gate order; and
+  // this. The remedy has been identical every time, and writing the lesson down has demonstrably
+  // not been what prevents it -- wiring the artefact is. So this bakes the page when it is absent
+  // and says so, rather than assuming a predecessor gate ran.
+  if (!existsSync(PAGE)) {
+    if (!process.argv.includes('--bake-if-absent')) {
+      throw new EnvError(`no page at ${PAGE} - run: node iteration/tools/bake-viewer.mjs (or pass --bake-if-absent)`);
+    }
+    const r = spawnSync(process.execPath, [join(REPO, 'iteration', 'tools', 'bake-viewer.mjs'), '--bake-if-absent'], { cwd: REPO, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+    if (r.status !== 0 || !existsSync(PAGE)) {
+      throw new EnvError(`could not bake the page (exit ${r.status}); run: node iteration/tools/bake-viewer.mjs`);
+    }
+    console.log('(the page was absent and this check baked it)');
+  }
   if (!existsSync(SCENE)) throw new EnvError(`no scene.bin at ${SCENE} — build/ is gitignored; run emit-scene.mjs`);
 
   const html = readFileSync(PAGE, 'utf8');
