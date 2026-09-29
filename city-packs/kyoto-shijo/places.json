@@ -9,28 +9,12 @@
     "factTier": "static",
     "addressJa": "京都市下京区四条通烏丸東入長刀鉾町8",
     "latUdeg": 35004094,
-    "lonUdeg": 135760073,
-    "lat": 35.004094,
-    "lng": 135.760073,
+    "lngUdeg": 135760073,
     "origin": "osm",
     "hours": [],
     "admission": {},
     "closedDays": [],
-    "entrances": {
-      "blockDoors": 7,
-      "doorIds": [
-        "D-N1",
-        "D-N2",
-        "D-N3",
-        "D-N4",
-        "D-N5",
-        "D-N6",
-        "D-N7"
-      ],
-      "valueKind": "licenced",
-      "whyNotObserved": "門の数と位置は curator が置いた 3 m 店舗モジュールのテンプレートであり、実在の開口部を述べた来源は無い。doors.json が各門を licenced / guideVerifiedColumnAllowed=false としているのに合わせる。",
-      "doorsFile": "city-packs/kyoto-shijo/doors.json"
-    },
+    "stateNoteJa": "",
     "source_url": "https://www.openstreetmap.org/way/205732558",
     "verified_at": "2026-09-29",
     "provenance": {
@@ -59,7 +43,24 @@
       ],
       "whyEmpty": "OSM は営業時間・料金の来源ではない。この建物に入る店舗の情報を述べた来源を本パックは 1 件も開いていない。",
       "guideVerifiedColumnAllowed": true
-    }
+    },
+    "entrances": {
+      "blockDoors": 7,
+      "doorIds": [
+        "D-N1",
+        "D-N2",
+        "D-N3",
+        "D-N4",
+        "D-N5",
+        "D-N6",
+        "D-N7"
+      ],
+      "valueKind": "licenced",
+      "whyNotObserved": "門の数と位置は curator が置いた 3 m 店舗モジュールのテンプレートであり、実在の開口部を述べた来源は無い。doors.json が各門を licenced / guideVerifiedColumnAllowed=false としているのに合わせる。",
+      "doorsFile": "city-packs/kyoto-shijo/doors.json"
+    },
+    "lat": 35.004094,
+    "lng": 135.760073
   },
   {
     "id": "kyoto-shijo-bldg-daiya",
@@ -71,26 +72,12 @@
     "factTier": "static",
     "addressJa": "京都市下京区四条通烏丸東入長刀鉾町10",
     "latUdeg": 35003232,
-    "lonUdeg": 135760033,
-    "lat": 35.003232,
-    "lng": 135.760033,
+    "lngUdeg": 135760033,
     "origin": "osm",
     "hours": [],
     "admission": {},
     "closedDays": [],
-    "entrances": {
-      "blockDoors": 5,
-      "doorIds": [
-        "D-S1",
-        "D-S2",
-        "D-S3",
-        "D-S4",
-        "D-S5"
-      ],
-      "valueKind": "licenced",
-      "whyNotObserved": "京都三井ビルディングに同じ。",
-      "doorsFile": "city-packs/kyoto-shijo/doors.json"
-    },
+    "stateNoteJa": "",
     "source_url": "https://www.openstreetmap.org/way/205732536",
     "verified_at": "2026-09-29",
     "provenance": {
@@ -119,7 +106,22 @@
       ],
       "whyEmpty": "同上。",
       "guideVerifiedColumnAllowed": true
-    }
+    },
+    "entrances": {
+      "blockDoors": 5,
+      "doorIds": [
+        "D-S1",
+        "D-S2",
+        "D-S3",
+        "D-S4",
+        "D-S5"
+      ],
+      "valueKind": "licenced",
+      "whyNotObserved": "京都三井ビルディングに同じ。",
+      "doorsFile": "city-packs/kyoto-shijo/doors.json"
+    },
+    "lat": 35.003232,
+    "lng": 135.760033
   },
   {
     "id": "kyoto-shijo-bank-mufg-kyoto",
@@ -131,13 +133,12 @@
     "factTier": "static",
     "addressJa": "",
     "latUdeg": 35003511,
-    "lonUdeg": 135759918,
-    "lat": 35.003511,
-    "lng": 135.759918,
+    "lngUdeg": 135759918,
     "origin": "osm",
     "hours": [],
     "admission": {},
     "closedDays": [],
+    "stateNoteJa": "",
     "source_url": "https://www.openstreetmap.org/node/14196400744",
     "verified_at": "2026-09-29",
     "provenance": {
@@ -164,7 +165,9 @@
       ],
       "whyEmpty": "営業時間・ATM 稼働時間・住所は OSM に無く、銀行公式のページを本パックは開いていない。窓口が閉まっている可能性を残すより空欄にして攻略に『要確認』を出させる。",
       "guideVerifiedColumnAllowed": true
-    }
+    },
+    "lat": 35.003511,
+    "lng": 135.759918
   },
   {
     "id": "kyoto-shijo-hist-bank-sign-1",
@@ -176,13 +179,12 @@
     "factTier": "static",
     "addressJa": "",
     "latUdeg": 35003532,
-    "lonUdeg": 135759900,
-    "lat": 35.003532,
-    "lng": 135.7599,
+    "lngUdeg": 135759900,
     "origin": "osm",
     "hours": [],
     "admission": {},
     "closedDays": [],
+    "stateNoteJa": "",
     "source_url": "https://www.openstreetmap.org/node/10220936881",
     "verified_at": "2026-09-29",
     "provenance": {
@@ -208,7 +210,9 @@
       ],
       "whyEmpty": "屋外の案内板に開場時間・料金・休みは存在しない（該当しない項目であり、缺口ではない）。",
       "guideVerifiedColumnAllowed": true
-    }
+    },
+    "lat": 35.003532,
+    "lng": 135.7599
   },
   {
     "id": "kyoto-shijo-hist-bank-sign-2",
@@ -220,13 +224,12 @@
     "factTier": "static",
     "addressJa": "",
     "latUdeg": 35003490,
-    "lonUdeg": 135759850,
-    "lat": 35.00349,
-    "lng": 135.75985,
+    "lngUdeg": 135759850,
     "origin": "osm",
     "hours": [],
     "admission": {},
     "closedDays": [],
+    "stateNoteJa": "",
     "source_url": "https://www.openstreetmap.org/node/10220936882",
     "verified_at": "2026-09-29",
     "provenance": {
@@ -252,7 +255,9 @@
       ],
       "whyEmpty": "屋外の案内板に該当しない項目。",
       "guideVerifiedColumnAllowed": true
-    }
+    },
+    "lat": 35.00349,
+    "lng": 135.75985
   },
   {
     "id": "kyoto-shijo-crossing-karasuma-east",
@@ -264,13 +269,12 @@
     "factTier": "static",
     "addressJa": "",
     "latUdeg": 35003659,
-    "lonUdeg": 135759946,
-    "lat": 35.003659,
-    "lng": 135.759946,
+    "lngUdeg": 135759946,
     "origin": "osm",
     "hours": [],
     "admission": {},
     "closedDays": [],
+    "stateNoteJa": "",
     "source_url": "https://www.openstreetmap.org/node/2737069286",
     "verified_at": "2026-09-29",
     "provenance": {
@@ -297,7 +301,9 @@
       ],
       "whyEmpty": "横断歩道に開場時間・料金・休みは該当しない。nameJa は OSM に name タグが無く、本パックの位置記述（東側横断歩道）は curator の記述なので licenced とした。",
       "guideVerifiedColumnAllowed": true
-    }
+    },
+    "lat": 35.003659,
+    "lng": 135.759946
   },
   {
     "id": "kyoto-shijo-subway-shijo-exit1",
@@ -309,13 +315,12 @@
     "factTier": "static",
     "addressJa": "",
     "latUdeg": 35003247,
-    "lonUdeg": 135759825,
-    "lat": 35.003247,
-    "lng": 135.759825,
+    "lngUdeg": 135759825,
     "origin": "osm",
     "hours": [],
     "admission": {},
     "closedDays": [],
+    "stateNoteJa": "",
     "source_url": "https://www.openstreetmap.org/node/11283562286",
     "verified_at": "2026-09-29",
     "provenance": {
@@ -344,7 +349,9 @@
       ],
       "whyEmpty": "出入口自体の開閉時間は OSM に無い。駅の初発/終電は事実層にキャッシュせず攻略側で『要確認』にする。",
       "guideVerifiedColumnAllowed": true
-    }
+    },
+    "lat": 35.003247,
+    "lng": 135.759825
   },
   {
     "id": "kyoto-shijo-subway-shijo-exit19",
@@ -356,13 +363,12 @@
     "factTier": "static",
     "addressJa": "",
     "latUdeg": 35003555,
-    "lonUdeg": 135760460,
-    "lat": 35.003555,
-    "lng": 135.76046,
+    "lngUdeg": 135760460,
     "origin": "osm",
     "hours": [],
     "admission": {},
     "closedDays": [],
+    "stateNoteJa": "",
     "source_url": "https://www.openstreetmap.org/node/4229848161",
     "verified_at": "2026-09-29",
     "provenance": {
@@ -388,7 +394,9 @@
       ],
       "whyEmpty": "出入口自体の開閉時間は OSM に無い。",
       "guideVerifiedColumnAllowed": true
-    }
+    },
+    "lat": 35.003555,
+    "lng": 135.76046
   },
   {
     "id": "kyoto-shijo-bus-shijo-karasuma-F",
@@ -400,13 +408,12 @@
     "factTier": "static",
     "addressJa": "",
     "latUdeg": 35003760,
-    "lonUdeg": 135758973,
-    "lat": 35.00376,
-    "lng": 135.758973,
+    "lngUdeg": 135758973,
     "origin": "osm",
     "hours": [],
     "admission": {},
     "closedDays": [],
+    "stateNoteJa": "",
     "source_url": "https://www.openstreetmap.org/node/2787253037",
     "verified_at": "2026-09-29",
     "provenance": {
@@ -435,7 +442,9 @@
       ],
       "whyEmpty": "停留所の営業時間は無い。バスの運賃は transit.json の gapReport に出典付きで記載し、運行間隔・初発/終電は本パックのどの来源にも無いので空欄。",
       "guideVerifiedColumnAllowed": true
-    }
+    },
+    "lat": 35.00376,
+    "lng": 135.758973
   },
   {
     "id": "kyoto-shijo-bus-shijo-karasuma-G",
@@ -447,13 +456,12 @@
     "factTier": "static",
     "addressJa": "",
     "latUdeg": 35004403,
-    "lonUdeg": 135759538,
-    "lat": 35.004403,
-    "lng": 135.759538,
+    "lngUdeg": 135759538,
     "origin": "osm",
     "hours": [],
     "admission": {},
     "closedDays": [],
+    "stateNoteJa": "",
     "source_url": "https://www.openstreetmap.org/node/8447615881",
     "verified_at": "2026-09-29",
     "provenance": {
@@ -482,7 +490,9 @@
       ],
       "whyEmpty": "停留所の営業時間は無い。nameZh はこの node に中国語タグが無いので空欄。",
       "guideVerifiedColumnAllowed": true
-    }
+    },
+    "lat": 35.004403,
+    "lng": 135.759538
   },
   {
     "id": "kyoto-shijo-bus-shijo-takakura-A",
@@ -494,13 +504,12 @@
     "factTier": "static",
     "addressJa": "",
     "latUdeg": 35003718,
-    "lonUdeg": 135761625,
-    "lat": 35.003718,
-    "lng": 135.761625,
+    "lngUdeg": 135761625,
     "origin": "osm",
     "hours": [],
     "admission": {},
     "closedDays": [],
+    "stateNoteJa": "",
     "source_url": "https://www.openstreetmap.org/node/8886543723",
     "verified_at": "2026-09-29",
     "provenance": {
@@ -529,7 +538,9 @@
       ],
       "whyEmpty": "停留所の営業時間は無い。",
       "guideVerifiedColumnAllowed": true
-    }
+    },
+    "lat": 35.003718,
+    "lng": 135.761625
   },
   {
     "id": "kyoto-shijo-bus-shijo-kawaramachi-E",
@@ -541,13 +552,12 @@
     "factTier": "static",
     "addressJa": "",
     "latUdeg": 35003785,
-    "lonUdeg": 135767749,
-    "lat": 35.003785,
-    "lng": 135.767749,
+    "lngUdeg": 135767749,
     "origin": "osm",
     "hours": [],
     "admission": {},
     "closedDays": [],
+    "stateNoteJa": "",
     "source_url": "https://www.openstreetmap.org/node/4387240005",
     "verified_at": "2026-09-29",
     "provenance": {
@@ -576,7 +586,9 @@
       ],
       "whyEmpty": "停留所の営業時間は無い。",
       "guideVerifiedColumnAllowed": true
-    }
+    },
+    "lat": 35.003785,
+    "lng": 135.767749
   },
   {
     "id": "kyoto-shijo-bus-shijo-kawaramachi-D",
@@ -588,13 +600,12 @@
     "factTier": "static",
     "addressJa": "",
     "latUdeg": 35003702,
-    "lonUdeg": 135768198,
-    "lat": 35.003702,
-    "lng": 135.768198,
+    "lngUdeg": 135768198,
     "origin": "osm",
     "hours": [],
     "admission": {},
     "closedDays": [],
+    "stateNoteJa": "",
     "source_url": "https://www.openstreetmap.org/node/2503718438",
     "verified_at": "2026-09-29",
     "provenance": {
@@ -623,7 +634,9 @@
       ],
       "whyEmpty": "停留所の営業時間は無い。",
       "guideVerifiedColumnAllowed": true
-    }
+    },
+    "lat": 35.003702,
+    "lng": 135.768198
   },
   {
     "id": "kyoto-shijo-station-hankyu-kawaramachi",
@@ -635,13 +648,12 @@
     "factTier": "static",
     "addressJa": "",
     "latUdeg": 35003763,
-    "lonUdeg": 135769608,
-    "lat": 35.003763,
-    "lng": 135.769608,
+    "lngUdeg": 135769608,
     "origin": "osm",
     "hours": [],
     "admission": {},
     "closedDays": [],
+    "stateNoteJa": "",
     "source_url": "https://www.openstreetmap.org/node/6944607675",
     "verified_at": "2026-09-29",
     "provenance": {
@@ -669,7 +681,9 @@
       ],
       "whyEmpty": "駅の営業時間・運賃は阪急の公式ページを本パックは開いていない。阪急は本パックの許可来源一覧に無い事業者であり、運賃を推測で置かない。",
       "guideVerifiedColumnAllowed": true
-    }
+    },
+    "lat": 35.003763,
+    "lng": 135.769608
   },
   {
     "id": "kyoto-shijo-station-keihan-gion-shijo",
@@ -681,13 +695,12 @@
     "factTier": "static",
     "addressJa": "",
     "latUdeg": 35003233,
-    "lonUdeg": 135771931,
-    "lat": 35.003233,
-    "lng": 135.771931,
+    "lngUdeg": 135771931,
     "origin": "osm",
     "hours": [],
     "admission": {},
     "closedDays": [],
+    "stateNoteJa": "",
     "source_url": "https://www.openstreetmap.org/node/6883622225",
     "verified_at": "2026-09-29",
     "provenance": {
@@ -715,7 +728,9 @@
       ],
       "whyEmpty": "京阪の運賃ページを本パックは開いていない。運賃を推測で置かない。",
       "guideVerifiedColumnAllowed": true
-    }
+    },
+    "lat": 35.003233,
+    "lng": 135.771931
   },
   {
     "id": "kyoto-shijo-bus-shijo-keihan-mae-A",
@@ -727,13 +742,12 @@
     "factTier": "static",
     "addressJa": "",
     "latUdeg": 35003906,
-    "lonUdeg": 135772518,
-    "lat": 35.003906,
-    "lng": 135.772518,
+    "lngUdeg": 135772518,
     "origin": "osm",
     "hours": [],
     "admission": {},
     "closedDays": [],
+    "stateNoteJa": "",
     "source_url": "https://www.openstreetmap.org/node/2930865877",
     "verified_at": "2026-09-29",
     "provenance": {
@@ -762,7 +776,9 @@
       ],
       "whyEmpty": "停留所の営業時間は無い。nameZh はこの node に中国語タグが無い。",
       "guideVerifiedColumnAllowed": true
-    }
+    },
+    "lat": 35.003906,
+    "lng": 135.772518
   },
   {
     "id": "kyoto-shijo-bus-gion-A",
@@ -774,13 +790,12 @@
     "factTier": "static",
     "addressJa": "",
     "latUdeg": 35003257,
-    "lonUdeg": 135777225,
-    "lat": 35.003257,
-    "lng": 135.777225,
+    "lngUdeg": 135777225,
     "origin": "osm",
     "hours": [],
     "admission": {},
     "closedDays": [],
+    "stateNoteJa": "",
     "source_url": "https://www.openstreetmap.org/node/2503718437",
     "verified_at": "2026-09-29",
     "provenance": {
@@ -809,7 +824,9 @@
       ],
       "whyEmpty": "停留所の営業時間は無い。nameZh はこの node に中国語タグが無い。",
       "guideVerifiedColumnAllowed": true
-    }
+    },
+    "lat": 35.003257,
+    "lng": 135.777225
   },
   {
     "id": "kyoto-shijo-yasaka-nishiromon",
@@ -821,14 +838,12 @@
     "factTier": "static",
     "addressJa": "京都市東山区祇園町北側125",
     "latUdeg": 35003741,
-    "lonUdeg": 135777526,
-    "lat": 35.003741,
-    "lng": 135.777526,
+    "lngUdeg": 135777526,
     "origin": "osm",
     "hours": [],
     "admission": {},
     "closedDays": [],
-    "state": "24時間参拝可能",
+    "stateNoteJa": "24時間参拝可能",
     "source_url": "https://www.yasaka-jinja.or.jp/access/",
     "verified_at": "2026-09-29",
     "provenance": {
@@ -858,7 +873,9 @@
       "hoursNote": "社務所 9:00–17:00、境内は 24 時間参拝可能。社務所の時間を境内の開門時間として使ってはならない。",
       "admissionNote": "公式アクセスページに拝観料の記載なし。賽銭のみ。",
       "guideVerifiedColumnAllowed": true
-    }
+    },
+    "lat": 35.003741,
+    "lng": 135.777526
   },
   {
     "id": "kyoto-shijo-yasaka-honden",
@@ -870,13 +887,12 @@
     "factTier": "static",
     "addressJa": "京都市東山区祇園町北側125",
     "latUdeg": 35003645,
-    "lonUdeg": 135778590,
-    "lat": 35.003645,
-    "lng": 135.77859,
+    "lngUdeg": 135778590,
     "origin": "osm",
     "hours": [],
     "admission": {},
     "closedDays": [],
+    "stateNoteJa": "",
     "source_url": "https://www.yasaka-jinja.or.jp/about/architecture/",
     "verified_at": "2026-09-29",
     "provenance": {
@@ -904,237 +920,8 @@
       "whyEmpty": "本殿の特別拝観は CSV（S1）に平成28年（2016年）の予定として残っており、10 年落ちの動的情報である。事実層にキャッシュしない（skill: dynamic は never cache as truth）ので admission は空欄。CSV row 1000040 col21/23 の『900 / 1600』は同日の駐車場に関する col26 の記述と同居しており、本殿の拝観時間なのか境内施設の時間なのか判別できないため採用しない。",
       "hoursNote": "CSV の 900/1600 は同じ行の col26『駐車場　自家用車50台(有料)』と並んでおり、何の時間か確定できない。採用しない（矛盾 C4 に記録）。",
       "guideVerifiedColumnAllowed": true
-    }
-  },
-  {
-    "id": "kyoto-shijo-chion-in",
-    "osmRecord": null,
-    "nameJa": "知恩院",
-    "nameZh": "",
-    "nameEn": "Chion-in",
-    "category": "temple",
-    "factTier": "static",
-    "addressJa": "京都市東山区林下町400",
-    "latUdeg": null,
-    "lonUdeg": null,
-    "lat": null,
-    "lng": null,
-    "origin": "official-site",
-    "hours": [
-      {
-        "open": "06:00",
-        "close": "16:00",
-        "appliesTo": "開閉門時間（通年）",
-        "source_url": "https://www.chion-in.or.jp/guide/"
-      }
-    ],
-    "admission": {
-      "currency": "JPY",
-      "minorUnit": 1,
-      "items": [
-        {
-          "labelJa": "方丈庭園 大人",
-          "amount": 400,
-          "source_url": "https://www.chion-in.or.jp/guide/"
-        },
-        {
-          "labelJa": "友禅苑 大人",
-          "amount": 300,
-          "source_url": "https://www.chion-in.or.jp/guide/"
-        },
-        {
-          "labelJa": "方丈庭園・友禅苑 共通券 大人",
-          "amount": 500,
-          "source_url": "https://www.chion-in.or.jp/guide/"
-        },
-        {
-          "labelJa": "共通券 小人（小・中学生）",
-          "amount": 250,
-          "source_url": "https://www.chion-in.or.jp/guide/"
-        }
-      ],
-      "note": "境内の参拝は無料。上記は庭園拝観料。共通券の販売は 15:20 まで。"
     },
-    "closedDays": [],
-    "source_url": "https://www.chion-in.or.jp/guide/",
-    "verified_at": "2026-09-29",
-    "provenance": {
-      "valueKind": "observed",
-      "verifiedBy": "city-data-architect (pack-curator, task-10)",
-      "readWhat": "公式拝観情報ページ（S9）を実際に読んだ：『開閉門時間は午前6時から午後4時』『※勢至堂修理工事期間中、御廟の拝観時間は午前9時から午後4時』『※一部行事・法要日程では開門時間が異なります』『※各所受付は午前9時～』。庭園拝観料の表（友禅苑300/方丈庭園400/共通券500、小人150/200/250、団体270/360/450）と受付時間（友禅苑9:00〜16:00、方丈庭園9:00〜15:50、共通券は15:20まで）。行事による開門変更：正月元旦 5:30、御忌大会 4/19〜4/25 5:00、伝宗伝戒道場 12/5〜12/24 6:20。所在地は 〒605-8686 京都市東山区林下町400（フッタ）。京都市 CSV（S1）row 1000015/1000016 の col17 も『東山区林下町400』で一致。",
-      "attestedFields": [
-        "nameJa",
-        "addressJa",
-        "hours",
-        "admission",
-        "category"
-      ],
-      "valueKindPerField": {
-        "nameJa": "observed",
-        "addressJa": "observed",
-        "hours": "observed",
-        "admission": "observed",
-        "category": "observed",
-        "nameEn": "licenced"
-      },
-      "notAttested": [
-        "latUdeg",
-        "lonUdeg",
-        "closedDays"
-      ],
-      "whyEmpty": "座標はどの来源にも無い。住所を座標に変換するのは導出であって観測ではないので行わない（本パックで唯一座標を持たない地点）。定休日は公式に記載が無く、CSV にも該当行が無いので空欄。",
-      "hoursNote": "『境内に入れるのは 6:00–16:00』であって『拝観できるのが 6:00–16:00』ではない。各所受付は 9:00 から。行事日は開門が早まる／変更される。",
-      "guideVerifiedColumnAllowed": true,
-      "addressCorroboration": "京都市 CSV row 1000015/1000016（S1）col17 と公式サイトのフッタが同一住所を述べている。2 来源一致の corroboration であって、座標の证明ではない。"
-    }
-  },
-  {
-    "id": "kyoto-shijo-kiyomizu-dera",
-    "osmRecord": null,
-    "nameJa": "清水寺",
-    "nameZh": "",
-    "nameEn": "Kiyomizu-dera",
-    "category": "temple",
-    "factTier": "static",
-    "addressJa": "京都市東山区清水一丁目294",
-    "latUdeg": null,
-    "lonUdeg": null,
-    "lat": null,
-    "lng": null,
-    "origin": "official-site",
-    "hours": [
-      {
-        "open": "06:00",
-        "close": "18:00",
-        "appliesTo": "2026年 1.1〜3.26 / 4.6〜6.30 / 9.1〜11.20 / 12.1〜12.31",
-        "source_url": "https://www.kiyomizudera.or.jp/access.php"
-      },
-      {
-        "open": "06:00",
-        "close": "18:30",
-        "appliesTo": "2026年 7.1〜8.13 / 8.17〜8.31",
-        "source_url": "https://www.kiyomizudera.or.jp/access.php"
-      },
-      {
-        "open": "06:00",
-        "close": "21:30",
-        "appliesTo": "2026年 夜間特別拝観 3.27〜4.5 / 8.14〜8.16 / 11.21〜11.30（21:00 受付終了）",
-        "source_url": "https://www.kiyomizudera.or.jp/access.php"
-      }
-    ],
-    "admission": {},
-    "closedDays": [],
-    "source_url": "https://www.kiyomizudera.or.jp/access.php",
-    "verified_at": "2026-09-29",
-    "provenance": {
-      "valueKind": "observed",
-      "verifiedBy": "city-data-architect (pack-curator, task-10)",
-      "readWhat": "公式拝観案内ページ（S10）を実際に読んだ：『2026年の拝観時間』表の 9 期間すべて（開門 6:00 固定、閉門 18:00 / 18:30 / 21:30 の 3 種）、『＊夜間特別拝観の期間は年ごとに変更になります』、『夜間特別拝観の期間は、開門時間を延長します』、交通案内（京阪電鉄 清水五条駅から約徒歩25分、市バス206・100系統 五条坂下車 徒歩10分）、所在地 〒605-0862 京都市東山区清水1丁目294、TEL 075-551-1234。同じ curl 応答の生バイトは evidence/kiyomizudera-access-hours.html に保存した（curl -L はトップに 302 するため、保存ファイルは access.php の応答そのもの）。FAQ ページも読み、団体割引・障害者減免の記載はあるが金額の記載は無いことを確認した。",
-      "attestedFields": [
-        "nameJa",
-        "addressJa",
-        "hours",
-        "category"
-      ],
-      "valueKindPerField": {
-        "nameJa": "observed",
-        "addressJa": "observed",
-        "hours": "observed",
-        "category": "observed",
-        "nameEn": "licenced",
-        "admission": "absent"
-      },
-      "notAttested": [
-        "latUdeg",
-        "lonUdeg",
-        "admission",
-        "closedDays"
-      ],
-      "whyEmpty": "拝観料：公式サイトのトップ・拝観案内・FAQ のいずれにも金額が無い。京都市 CSV（S1）の col27 に『本堂・舞台 大人400円』とあるが、それは row 10000008『清水寺　狛犬』の行であり、狛犬の説明に付された料金欄である。主体が違う行の金額を本堂の料金として採用するのは、まさに本タスクが排除しようとしている『確からしい値』である。よって空欄とし、矛盾 C1 に記録する。座標：本パックの OSM 抽出範囲（lat 35.0028–35.0047）に清水寺の地物が無い。",
-      "hoursNote": "閉門時刻は季節で 3 通り（18:00 / 18:30 / 21:30）あり、夜間特別拝観の期間は年ごとに変わる。攻略は期間を明示して提示しなければならない。",
-      "guideVerifiedColumnAllowed": true,
-      "addressCorroboration": "京都市 CSV row 1000004（S1）col17『京都市東山区清水一丁目294』と公式サイトのフッタが同一住所を述べている。"
-    }
-  },
-  {
-    "id": "kyoto-shijo-kennin-ji",
-    "osmRecord": null,
-    "nameJa": "建仁寺",
-    "nameZh": "",
-    "nameEn": "Kennin-ji",
-    "category": "temple",
-    "factTier": "static",
-    "addressJa": "京都市東山区大和大路通四条下る小松町584",
-    "latUdeg": null,
-    "lonUdeg": null,
-    "lat": null,
-    "lng": null,
-    "origin": "official-site",
-    "hours": [
-      {
-        "open": "10:00",
-        "close": "16:30",
-        "appliesTo": "受付終了（17:00 閉門）",
-        "source_url": "https://www.kenninji.jp/access/"
-      }
-    ],
-    "admission": {
-      "currency": "JPY",
-      "minorUnit": 1,
-      "items": [
-        {
-          "labelJa": "一般",
-          "amount": 800,
-          "effectiveFrom": "2026-09-29",
-          "supersededFrom": "2027-01-01",
-          "source_url": "https://www.kenninji.jp/access/"
-        },
-        {
-          "labelJa": "学生（小・中・高）",
-          "amount": 500,
-          "effectiveFrom": "2026-09-29",
-          "source_url": "https://www.kenninji.jp/access/"
-        },
-        {
-          "labelJa": "一般（2027-01-01 改定後）",
-          "amount": 1000,
-          "effectiveFrom": "2027-01-01",
-          "source_url": "https://www.kenninji.jp/news/?p=2352"
-        }
-      ],
-      "note": "小学生未満は無料。障害者手帳提示で本人無料（介助は有料）。2027-01-01 に一般が 800 円から 1,000 円へ改定される告知が出ている（学生は 500 円のまま）。"
-    },
-    "closedDays": [],
-    "source_url": "https://www.kenninji.jp/access/",
-    "verified_at": "2026-09-29",
-    "provenance": {
-      "valueKind": "observed",
-      "verifiedBy": "city-data-architect (pack-curator, task-10)",
-      "readWhat": "公式アクセスページ（S11）を実際に読んだ：『拝観時間 午前10時～午後4時30分受付終了（午後5時閉門）』『拝観料金 一般 800円、学生（小・中・高） 500円 ※小学生未満のお子様は無料』『※小学生以下のみでの拝観は不可』『※障害者手帳をお持ちの方は無料で拝観可能（介助は有料）』。交通：京阪電車「祇園四条駅」より徒歩7分／阪急電車「河原町駅」より徒歩10分／市バス「東山安井」より徒歩5分／市バス「南座前」より徒歩7分／市バス「祇園」・「清水道」より徒歩10分。所在地 京都市東山区大和大路通四条下る小松町584。料金改定告知（S12）も読み、『改定時期：2027年1月1日』『改定前 一般 800円』『改定後 一般 1,000円』『小・中・高生は以前と同様に500円』を確認した。",
-      "attestedFields": [
-        "nameJa",
-        "addressJa",
-        "hours",
-        "admission",
-        "category"
-      ],
-      "valueKindPerField": {
-        "nameJa": "observed",
-        "addressJa": "observed",
-        "hours": "observed",
-        "admission": "observed",
-        "category": "observed",
-        "nameEn": "licenced"
-      },
-      "notAttested": [
-        "latUdeg",
-        "lonUdeg",
-        "closedDays"
-      ],
-      "whyEmpty": "座標は本パックの OSM 抽出範囲外。定休日は公式に記載が無い。京都市 CSV row 1000043 の col25 には休みの記載があるが、公式が述べていない現行値として採用できない（矛盾 C3）。",
-      "hoursNote": "16:30 は『受付終了』であって閉門ではない。閉門は 17:00。攻略は 16:30 を最終入場として書くこと。",
-      "guideVerifiedColumnAllowed": true,
-      "addressCorroboration": "京都市 CSV row 1000043（S1）col17『東山区大和大路通四条下る４丁目小松町584番地』と公式サイトの住所が同一地を指す。"
-    }
+    "lat": 35.003645,
+    "lng": 135.77859
   }
 ]

@@ -628,7 +628,15 @@
     "contentLicence": "CC BY 4.0",
     "odblUrl": "https://opendatacommons.org/licenses/odbl/1-0/",
     "osmCopyrightUrl": "https://www.openstreetmap.org/copyright",
-    "contentLicenceWhy": "Lead decision, 2026-09-30. The repository LICENSE is MIT and covers the SOFTWARE only;\nit does not reach curated data under city-packs/.\n\nChosen: CC BY 4.0 for our curated content. Reasons:\n1. It is the licence our two upstream data sources already use (京都市 京都観光見もの情報\n   is CC-BY 4.0; Japanese government open data is PDL 1.0, which states CC BY 4.0\n   compatibility), so the obligations we take on and the ones we pass on are the same shape.\n2. It has NO share-alike, so it creates no viral obligation over the product.\n3. CC BY 4.0 is one-way compatible with ODbL, so nothing here fights the ODbL half.\n\nWhat remains unchanged and non-negotiable: this file is NOT under ODbL. OSM-derived values\nlive only in the -osm.json halves, which are."
+    "contentLicenceWhy": "Lead decision, 2026-09-30. The repository LICENSE is MIT and covers the SOFTWARE only;\nit does not reach curated data under city-packs/.\n\nChosen: CC BY 4.0 for our curated content. Reasons:\n1. It is the licence our two upstream data sources already use (京都市 京都観光見もの情報\n   is CC-BY 4.0; Japanese government open data is PDL 1.0, which states CC BY 4.0\n   compatibility), so the obligations we take on and the ones we pass on are the same shape.\n2. It has NO share-alike, so it creates no viral obligation over the product.\n3. CC BY 4.0 is one-way compatible with ODbL, so nothing here fights the ODbL half.\n\nWhat remains unchanged and non-negotiable: this file is NOT under ODbL. OSM-derived values\nlive only in the -osm.json halves, which are.",
+    "contentLicenceUri": "https://creativecommons.org/licenses/by/4.0/",
+    "contentLicenceNotice": "This curated content is licensed under CC BY 4.0. You must give appropriate credit, provide a link to the licence, and indicate if changes were made.",
+    "contentCreator": {
+      "status": "UNRESOLVED -- requires the rights holder to state it",
+      "why": "CC BY 4.0 section 3(a)(1) requires creator identification to travel with the work.\nIt cannot be derived mechanically: git history contains FOUR distinct author identities\n  NemoHuang <nemo010713@gmail.com>\n  NemoHuang <Dr_in_Dream@163.com>\n  Huangziqiang <Dr_in_Dream@163.com>\n  PaperStrange <dr_in_dream@163.com>\nand the repository LICENSE still reads the unedited MIT placeholder\n  Copyright (c) [year] [fullname]\nwhile package.json has no author field. Selecting one of the four would be a guess\npresented as a decision, and inventing a name would be a false attribution.",
+      "needed": "The name the rights holder wants credited, and the year of first publication."
+    },
+    "contentWarrantyDisclaimer": "This pack is provided without warranties of any kind. Opening hours, admission fees, closed days and transit times are recorded as observed at the verified_at timestamps and may have changed since. Confirm before travelling."
   },
   "osmDerived": {
     "file": "city-packs/kyoto-shijo/kyoto-shijo-osm.json",
