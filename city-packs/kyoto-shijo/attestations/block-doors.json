@@ -17,17 +17,24 @@
   ],
   "northBuilding": "kyoto-shijo-bldg-mitsui",
   "southBuilding": "kyoto-shijo-bldg-daiya",
-  "valueKind": "licenced",
-  "guideVerifiedColumnAllowed": false,
   "files": [
     "city-packs/kyoto-shijo/doors.json",
     "city-packs/kyoto-shijo/kyoto-shijo-osm.json"
   ],
-  "why": "doors.json provenance.fields marks cellX/cellY/entrancePointJa/interiorTemplate as licenced and provenance.guideVerifiedColumnAllowed is false for every door; validator.notAsserted states that no source records a doorway position in this block.",
+  "fieldOwnership": {
+    "thisFile": "the door inventory only — note, count, doorIds, the two building ids, files",
+    "merge-pack-meta.mjs": "valueKind, valueKindAuthority, guideVerifiedColumnAllowed, decision, decisionWhy, reachableFrom. Those are stamped onto the PUBLISHED attestations/block-doors.json on every build, so a copy here would be dead text that a reader could still mistake for the record.",
+    "doors.json": "each door's own provenance.valueKind — the authority for the vocabulary",
+    "world-grid.mjs": "VALUE_KINDS — the frozen enum itself"
+  },
+  "whyRemoved": "This file previously carried valueKind: \"licenced\" and a `why` string repeating it. That was stale twice over: doors.json says `authored`, and merge-pack-meta.mjs overwrote both fields on the way to attestations/. Removing them means the source cannot state a value the published record does not use — the same defect as a mirror copy of a frozen enum, applied to prose.",
+  "valueKind": "authored",
+  "valueKindAuthority": "city-packs/kyoto-shijo/doors.json (each door's provenance.valueKind) and world-grid.mjs (VALUE_KINDS). This file does not restate the enum; it points at the two places that own it.",
+  "guideVerifiedColumnAllowed": false,
   "decision": "DOORS ARE A SEPARATE ENTITY TYPE. places.json does not carry them and must not be expected to.",
   "decisionWhy": [
     "A place record needs a name and a position. Each door \"name\" is 本門 — the word for a gate type, not a proper name — and the OSM extract plus every source opened for this pack describes this block as having no mapped doorway at all.",
-    "doors.json itself marks every door valueKind=licenced with provenance.guideVerifiedColumnAllowed=false, and validate-doors.mjs V8/V15 assert that boundary. Promoting a door into places.json would give a template placement a row in the fact layer, which is the exact move contract clause 4 forbids.",
+    "doors.json marks every door valueKind=\"authored\" with provenance.guideVerifiedColumnAllowed=false, and validate-doors.mjs V8/V15 assert that boundary. Promoting a door into places.json would give a curator placement a row in the fact layer, which is the exact move contract clause 4 forbids.",
     "So the doors remain: our authored content in doors.json, their ODbL geometry in kyoto-shijo-osm.json, and a declared count + doorId list reachable from places.json via each building record's entrances block."
   ],
   "reachableFrom": "undefined doorIds are declared across 2 building records in places.json; this file holds the decision record."

@@ -60,10 +60,17 @@ write(resolve(ATTEST, 'ungeoreferenced-places.json'), ungeo);
 write(resolve(ATTEST, 'dropped-legs.json'), ungeoLegs);
 write(resolve(ATTEST, 'block-doors.json'), {
   ...blockDoors,
+  // The doors' provenance vocabulary is stated ONCE and pointed at, not restated. An earlier version
+  // of this file spelled out `valueKind: "licenced"` while doors.json said `authored`, so the
+  // decision record contradicted the artefact it describes. Prose copies of a frozen enum drift for
+  // exactly the same reason code copies do — and this is the second spelling of the same drift here.
+  valueKind: 'authored',
+  valueKindAuthority: 'city-packs/kyoto-shijo/doors.json (each door\'s provenance.valueKind) and world-grid.mjs (VALUE_KINDS). This file does not restate the enum; it points at the two places that own it.',
+  guideVerifiedColumnAllowed: false,
   decision: 'DOORS ARE A SEPARATE ENTITY TYPE. places.json does not carry them and must not be expected to.',
   decisionWhy: [
     'A place record needs a name and a position. Each door "name" is 本門 — the word for a gate type, not a proper name — and the OSM extract plus every source opened for this pack describes this block as having no mapped doorway at all.',
-    'doors.json itself marks every door valueKind=licenced with provenance.guideVerifiedColumnAllowed=false, and validate-doors.mjs V8/V15 assert that boundary. Promoting a door into places.json would give a template placement a row in the fact layer, which is the exact move contract clause 4 forbids.',
+    'doors.json marks every door valueKind="authored" with provenance.guideVerifiedColumnAllowed=false, and validate-doors.mjs V8/V15 assert that boundary. Promoting a door into places.json would give a curator placement a row in the fact layer, which is the exact move contract clause 4 forbids.',
     'So the doors remain: our authored content in doors.json, their ODbL geometry in kyoto-shijo-osm.json, and a declared count + doorId list reachable from places.json via each building record\'s entrances block.',
   ],
   reachableFrom: `${pack.scope.doorsNotPlaces} doorIds are declared across ${places.filter((p) => p.entrances).length} building records in places.json; this file holds the decision record.`,
@@ -109,6 +116,10 @@ pack.transit = {
   walkTimeRule: transitMeta.walkTimeRule,
   distanceRule: transitMeta.distanceRule,
   fareReference: transitMeta.fareReference,
+  // Subway zone counts are looked up, never computed: 区 is operator policy, not geography.
+  subwayZones: transitMeta.subwayZones,
+  stationCoordinates: transitMeta.stationCoordinates,
+  gapWordingRule: transitMeta.gapWordingRule,
   gaps: transitMeta.gaps,
   transfers: transitMeta.transfers,
 };

@@ -108,34 +108,89 @@ function check(id, title, ok, detail) {
 }
 
 /* ------------------------------------------------------------------ *
- * V1 — the mirror of the frozen constants equals the import
+ * V1 — the contract is IMPORTED, not copied (D-12)
+ *
+ * This assertion used to compare twelve literals and two enum members in
+ * doors.json against the import. It did its job -- it went red the moment
+ * VALUE_KINDS gained `parsed` -- and that red was the point: the copy in
+ * doors.json had gone stale. The fix is not to refresh the copy. A mirrored copy
+ * drifts, an import does not, so the mirror is gone and this assertion now holds
+ * the absence of the drift surface instead of tolerating it.
+ *
+ * This is not weaker. It is the same protection pointed at the cause:
+ *   - before: a copy was allowed, and had to be kept in step by hand;
+ *   - now:    a copy is a FAILURE, and nothing has to be kept in step at all.
+ * The companion assertion is V8, which checks every declared valueKind against the
+ * LIVE imported enum -- so deleting the copy did not delete the ability to notice
+ * an incompatible kind; it only deleted the ability to be wrong about the list.
  * ------------------------------------------------------------------ */
 {
-  const m = doorsDoc.frozenConstants;
-  const pairs = [
-    ['ORIGIN.status', m.ORIGIN.status, ORIGIN.status],
-    ['ORIGIN.lonUdeg', m.ORIGIN.lonUdeg, ORIGIN.lonUdeg],
-    ['ORIGIN.latUdeg', m.ORIGIN.latUdeg, ORIGIN.latUdeg],
-    ['PROJECTION.kind', m.PROJECTION.kind, PROJECTION.kind],
-    ['PROJECTION.metresPerDegreeLon', m.PROJECTION.metresPerDegreeLon, PROJECTION.metresPerDegreeLon],
-    ['PROJECTION.metresPerDegreeLat', m.PROJECTION.metresPerDegreeLat, PROJECTION.metresPerDegreeLat],
-    ['PROJECTION.coefficientLatitudeDeg', m.PROJECTION.coefficientLatitudeDeg, PROJECTION.coefficientLatitudeDeg],
-    ['worldGrid.wTiles', m.worldGrid.wTiles, worldGrid.wTiles],
-    ['worldGrid.hTiles', m.worldGrid.hTiles, worldGrid.hTiles],
-    ['worldGrid.blockSize', m.worldGrid.blockSize, worldGrid.blockSize],
-    ['GRID.halfCrossTiles', m.GRID.halfCrossTiles, GRID.halfCrossTiles],
-    ['GRID.blocksAcrossY', m.GRID.blocksAcrossY, GRID.blocksAcrossY],
-  ];
-  const bad = pairs.filter(([, a, b]) => a !== b);
-  const kindsOk = JSON.stringify(m.valueKinds) === JSON.stringify(VALUE_KINDS);
-  const guideOk = JSON.stringify(m.guideVerifiedColumnAllowed) === JSON.stringify(GUIDE_VERIFIED_COLUMN_ALLOWED);
-  check('V1', 'frozen constants imported, not retyped', bad.length === 0 && kindsOk && guideOk,
-    `compared ${pairs.length} literals against ${WGEO_PATH.split(/[\\/]/).pop()}: ` +
-    `mismatches=${bad.length}${bad.length ? ' -> ' + bad.map(([k, a, b]) => `${k}: file=${a} import=${b}`).join('; ') : ''}; ` +
-    `valueKinds match=${kindsOk}` +
-    (kindsOk ? '' : ` -> doors.json mirror [${(m.valueKinds || []).join(', ')}] vs contract [${VALUE_KINDS.join(', ')}]`) +
-    `; guideVerifiedColumnAllowed match=${guideOk}` +
-    (guideOk ? '' : ` -> doors.json [${(m.guideVerifiedColumnAllowed || []).join(', ')}] vs contract [${GUIDE_VERIFIED_COLUMN_ALLOWED.join(', ')}]`));
+  // Key names the contract owns. A mirror of any of these is the defect itself.
+  const CONTRACT_MIRROR_KEYS = Object.freeze([
+    'ORIGIN', 'PROJECTION', 'worldGrid', 'GRID',
+    'valueKinds', 'guideVerifiedColumnAllowed',
+    'tileMetres', 'subTilesPerTile', 'cellMetres', 'worldDepthM',
+  ]);
+  // High-entropy literals from the contract. None of these can collide with a door
+  // cell or a measured width, so a match anywhere is a mirror under a new name --
+  // which the key check above could not see.
+  const CONTRACT_LITERAL_VALUES = Object.freeze([
+    ORIGIN.lonUdeg, ORIGIN.latUdeg,
+    PROJECTION.metresPerDegreeLon, PROJECTION.metresPerDegreeLat, PROJECTION.coefficientLatitudeDeg,
+  ].filter((v) => typeof v === 'number'));
+
+  const problems = [];
+  const foundKeys = [];
+  const foundValues = [];
+  // One exemption, stated rather than special-cased silently: `guideVerifiedColumnAllowed`
+  // is ALSO a per-record BOOLEAN on every door -- "this record is not admitted to the
+  // guide's verified column". That is not a copy of the contract's allow-LIST; it is the
+  // record's own assertion, V8 checks it, and the Lead explicitly asked for it to stay.
+  // The contract's list is an ARRAY, so the guard is type-aware: a list here is a mirror,
+  // a boolean under provenance is a claim. A copy re-appearing as an array still fails.
+  const isPerRecordClaim = (key, value, path) =>
+    key === 'guideVerifiedColumnAllowed' && typeof value === 'boolean' && /\.provenance$/.test(path);
+  (function walk(node, path) {
+    if (Array.isArray(node)) { node.forEach((v, i) => walk(v, `${path}[${i}]`)); return; }
+    if (node && typeof node === 'object') {
+      for (const [k, v] of Object.entries(node)) {
+        if (CONTRACT_MIRROR_KEYS.includes(k) && !isPerRecordClaim(k, v, path)) {
+          foundKeys.push(`${path}.${k}`);
+        }
+        walk(v, `${path}.${k}`);
+      }
+      return;
+    }
+    if (typeof node === 'number' && CONTRACT_LITERAL_VALUES.includes(node)) foundValues.push(`${path}=${node}`);
+  })(doorsDoc, '');
+
+  for (const p of foundKeys) problems.push(`contract-mirror key at ${p} -- the contract is imported, not copied`);
+  for (const p of foundValues) problems.push(`contract literal at ${p} -- a mirror under another name is still a mirror`);
+
+  // The pointer must resolve, and must point at something that still IS the contract.
+  const mustImport = doorsDoc.frozenConstants && doorsDoc.frozenConstants.mustImport;
+  const pointerPath = mustImport ? resolve(REPO, mustImport) : null;
+  if (!mustImport) problems.push('frozenConstants.mustImport is absent -- nothing says where the contract lives');
+  else if (pointerPath !== WGEO_PATH) problems.push(`frozenConstants.mustImport points at ${mustImport}, but this validator imported ${WGEO_PATH}`);
+
+  // ...and the contract must still export its shape, so V1 cannot pass vacuously
+  const shapeOk = Boolean(ORIGIN) && Number.isInteger(ORIGIN.lonUdeg) && Number.isInteger(ORIGIN.latUdeg)
+    && Number.isInteger(worldGrid.blockSize) && worldGrid.blockSize > 0
+    && Number.isInteger(worldGrid.wTiles) && worldGrid.wTiles > 0
+    && Number.isFinite(PROJECTION.metresPerDegreeLon) && Number.isFinite(PROJECTION.metresPerDegreeLat)
+    && Array.isArray(VALUE_KINDS) && VALUE_KINDS.length > 0 && VALUE_KINDS.every((k) => typeof k === 'string')
+    && Array.isArray(GUIDE_VERIFIED_COLUMN_ALLOWED)
+    && GUIDE_VERIFIED_COLUMN_ALLOWED.every((k) => VALUE_KINDS.includes(k));
+  if (!shapeOk) problems.push('the imported contract no longer exports the expected shape');
+
+  check('V1', 'the contract is imported, not copied (D-12)',
+    problems.length === 0,
+    `scanned the whole file for ${CONTRACT_MIRROR_KEYS.length} contract-mirror key names and ` +
+    `${CONTRACT_LITERAL_VALUES.length} high-entropy contract literals: ` +
+    `mirrored keys=${foundKeys.length} (bound 0), mirrored literals=${foundValues.length} (bound 0); ` +
+    `pointer ${mustImport ? `resolves to ${WGEO_PATH.split(/[\\/]/).pop()}` : 'MISSING'} and the module exports the expected shape=${shapeOk}; ` +
+    `no enum is stored here, so the live enum is ${VALUE_KINDS.length} members (${VALUE_KINDS.join('|')}) and this file follows it automatically; ` +
+    `problems=${problems.length}${problems.length ? ' -> ' + problems.join('; ') : ''}`);
 }
 
 /* ------------------------------------------------------------------ *
@@ -731,16 +786,21 @@ const TOP_LEVEL_SECTIONS = Object.freeze([
 /** Closed key sets for the small sections that still carry OSM-derived values,
  *  so an aggregate cannot be smuggled in without tripping V16. */
 const CLOSED_SECTIONS = Object.freeze({
-  block: ['blockIndex', 'note', 'cellXRange', 'cellYRange', 'cellMetres', 'subTilesPerTile',
-    'worldDepthM', 'facadeFrontageNorthM', 'facadeFrontageSouthM', 'facadeFrontageTotalM',
+  // task-15: cellMetres, subTilesPerTile and worldDepthM were contract copies and are
+  // gone; cellXRange/cellYRange stay because they say WHICH block this is, not how big
+  // a block is. See the rangeNote in the file itself.
+  block: ['blockIndex', 'note', 'cellXRange', 'cellYRange', 'rangeNote',
+    'facadeFrontageNorthM', 'facadeFrontageSouthM', 'facadeFrontageTotalM',
     'frontageFreeWestM'],
   summary: ['doorCount', 'byValueKind', 'guideVerifiedColumnAdmitted', 'doorsNorthSide',
     'doorsSouthSide', 'distinctBuildingIds', 'storefrontWidthNorthM', 'storefrontWidthSouthM',
     'storefrontWidthMeanM', 'minPairwiseDoorSeparationM', 'minSameFacadeCellSpacing',
     'maxQuantisationShiftM', 'derivedOnlyNote'],
   cellYConvention: ['formula', 'why', 'evidenceStreetCentrelineAtOrigin', 'conflictWithTaskCard'],
-  frozenConstants: ['mustImport', 'note', 'ORIGIN', 'PROJECTION', 'worldGrid', 'GRID',
-    'valueKinds', 'guideVerifiedColumnAllowed'],
+  // task-15: the mirror is gone, so this is now pointer and rationale only. The key set
+  // is still locked, because a RETURNED mirror would otherwise slip in as a new key.
+  frozenConstants: ['mustImport', 'noMirror', 'howToRead', 'whyNothingIsCopiedHere',
+    'whatIsStillCopiedHere', 'enforcedBy', 'removedIn', 'whatWasRemoved'],
   // Locked in task-9 follow-up. The Lead had believed this block was already pinned by
   // V17's census; it was not -- V17 covers block/cellYConvention/frozenConstants/summary
   // only. V21 guards the required CC BY 4.0 slots, but an ARBITRARY new key here was
@@ -831,19 +891,22 @@ function valueCensus(doc) {
  * back. Shrinkage means the split advanced -- correct the census in the same
  * commit.
  *
- *   frozenConstants         the projection ORIGIN, mirrored because contract clause 1
- *                           requires readers of this file to see it (V1 proves it equals the import)
  *   summary                 distinctBuildingIds, and widths/offsets measured off the facades
  *   block                   frontage widths and the frontage-free west end, measured off the footprints
  *   cellYConvention         the way/node ids proving the origin sits on the street centreline
  *
- * unusedSourceCandidates was here in the first census (42 values) and is GONE: it
- * moved to the ODbL half in task-9, on the Lead's call that 'unused' does not make a
- * full geometry record ours. summary also lost maxPerpendicularOffsetFromFacadeM
- * when its non-reproducing per-door source was dropped.
+ * TWO SECTIONS HAVE LEFT THIS CENSUS, both on purpose:
+ *   unusedSourceCandidates  42 values, moved to the ODbL half in task-9, on the Lead's
+ *                           call that 'unused' does not make a full geometry record ours.
+ *   frozenConstants         4 values, gone in task-15. They were the projection ORIGIN's
+ *                           two integer microdegrees plus the latUdeg/lonUdeg key names.
+ *                           A mirrored contract literal is not an OSM-derived measurement
+ *                           we chose to keep -- it was a copy, and copies drift. Removing
+ *                           it dropped this section out of the census entirely.
+ * summary also lost maxPerpendicularOffsetFromFacadeM when its non-reproducing
+ * per-door source was dropped.
  *
  * WHAT PINS THE RESIDUAL (stated because a census alone does not):
- *   frozenConstants   re-derived by V1 against the contract import
  *   summary, block    re-derived by V12 (15 fields, incl. the quantisation maximum
  *                     and the frontage-free west end)
  *   doors, facades    re-derived by V4/V5/V9/V13/V14
@@ -851,6 +914,8 @@ function valueCensus(doc) {
  *     -> pinned by count and key set ONLY. A value inside it could be edited in
  *        place without this validator noticing. That is the acknowledged soft spot,
  *        and it is why cellYConvention is the next candidate to leave this file.
+ *   frozenConstants   was pinned by V1 against the import; now there is nothing
+ *                     there to pin, and V1 pins its ABSENCE instead.
  *
  * KNOWN BLIND SPOT, stated rather than papered over: an aggregate that exists ONLY
  * in doors.json and was computed from ODbL geometry -- summary.minPairwiseDoorSeparationM,
@@ -861,7 +926,6 @@ function valueCensus(doc) {
 const DECLARED_VALUE_CENSUS = Object.freeze({
   block: { count: 4, kinds: ['VALUE:matches-odbl-number'] },
   cellYConvention: { count: 3, kinds: ['VALUE:field:osmWayId', 'VALUE:osm-element-id'] },
-  frozenConstants: { count: 4, kinds: ['VALUE:field:latUdeg', 'VALUE:field:lonUdeg', 'VALUE:microdegree'] },
   summary: { count: 5, kinds: ['VALUE:matches-odbl-number', 'VALUE:osm-element-id'] },
 });
 

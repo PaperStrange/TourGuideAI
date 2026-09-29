@@ -63,6 +63,7 @@ if (!Array.isArray(JSON.parse(execFileSync(node, ['-e', `process.stdout.write(re
   process.stdout.write('\n──── 3/10 split the metadata head\n  skipped: places.json / transit.json are already bare arrays\n');
 }
 run('4/10 apply the F2 corrections (D-15 temples, labels, gates, pointers)', join(HERE, 'apply-f2-corrections.mjs'));
+run('4b/10 apply the F3 corrections (subway zones, station coordinates, gap wording)', join(HERE, 'apply-f3-corrections.mjs'));
 run('5/10 restore the temple legs whose endpoints now resolve', join(HERE, 'restore-temple-legs.mjs'));
 run('6/10 extract the remaining non-fact rows', join(HERE, 'extract-nonfact-rows.mjs'));
 run('7/10 correct the tracked metadata sources', join(HERE, 'apply-tracked-corrections.mjs'));

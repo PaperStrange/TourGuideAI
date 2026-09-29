@@ -53,12 +53,13 @@
   ],
   "gaps": [
     "バス区間：京都市バスは均一運賃 230 円（fareReference に出典付き）だが、停留所間の所要時間・系統別の運行間隔・初発/終電が本パックのどの来源にも無い。所要時間の無い leg は攻略に載せられないので 0 件とした。",
-    "地下鉄区間：四条駅→烏丸御池駅の区数が不明。区数が決まらないと運賃が確定しない。",
-    "阪急電鉄・京阪電気鉄道の運賃：両社の運賃ページを本パックは開いていない。ユーザーの『許可来源一覧』に両社は含まれておらず、開いていないものを引用しない。",
-    "清水五条駅・東山安井停留所・南座前停留所：公式サイトが徒歩分数を述べているが、これらの座標が本パックの OSM 抽出範囲外で、leg の端点にできない。places.json の gapNotes に出典付きで残した。",
-    "知恩院への leg：知恩院に座標が無い。京都市 CSV と公式サイトは『祇園四条駅／祇園バス停から徒歩』と述べるが、歩行距離の来源が無い。",
-    "深リンクの規則：design-core §5 は『策展した常用路線＋深リンク』を求めている。深リンクの URL 形式と、オフライン時にリンクをどう劣化させるかは本パックの範囲外（攻略層の設計）。",
-    "運賃精算方式：市バスは前乗り後乗りの別、IC と現金の差、乗継割引の適用可否を述べた来源を開いていない。"
+    "地下鉄区間の運賃：区数は取得済み（subwayZones、京都市交通局の運賃ページが読むデータファイルから復号）。ただし transit.json に地下鉄の leg を追加するには ① 終点の地点レコード（例 烏丸御池）と ② 駅間の所要時間 の 2 つがまだ無い。運賃は缺口ではない。",
+    "阪急電鉄・京阪電気鉄道の運賃：両社の運賃ページは本パックの来源の範囲では取得していない。取得不能ではない。ユーザーの許可来源一覧に両社は含まれておらず、開いていないものを引用しないという規則に従った結果である。",
+    "清水五条駅・東山安井・南座前：清水五条駅と東山安井は取得済み（transit.stationCoordinates を参照）。南座前は OSM に存在せず（3 つの抽出・京都市 CSV・新規 bbox のいずれにも無い）、これは「世界が公表していない」種類の缺口であって「我々が取得していない」種類ではない。",
+    "知恩院への leg：知恩院の座標は取得済み（OVL 側 placeId=kyoto-shijo-chion-in、OSM way/456122965。task-12 で解消）。leg が無い理由は別で、祇園四条駅／祇園バス停から知恩院までの歩行距離・所要時間を述べた来源を本パックは開いていないため。運賃でも座標でもなく、時間と経路が欠けている。",
+    "深リンクの規則：design-core §5 は「策展した常用路線＋深リンク」を求める。深リンクの URL 形式とオフライン時の劣化は本パックの範囲外（攻略層の設計）。",
+    "運賃精算方式：市バスは前乗り後乗りの別、IC と現金の差、乗継割引の適用可否を述べた来源を開いていない。",
+    "地下鉄の運賃以外の缺口：subwayZones の gaps を参照。区数と運賃は取得済みだが、駅間の所要時間は本パックの来源の範囲では取得していない。"
   ],
   "transfers": [
     {
@@ -85,5 +86,449 @@
       "whatIRead": "OSM node 6944607675（阪急 京都河原町駅、railway=station、ref=HK86）と node 6883622225（京阪 祇園四条駅、railway=station、ref=KH39）。両駅は四条通に沿って 211.538 m 離れており、市バス四条河原町の各のりば（node 4387240005 E / 2503718438 D）がその間に位置する。",
       "note": "阪急・京阪間の乗換に改札を出る必要があるかは本パックの来源に無い。3 分は道路距離からの算出であって、駅構内の移動時間ではない。"
     }
-  ]
+  ],
+  "subwayZones": {
+    "note": "京都市営地下鉄 の区数と運賃。区数は事業者が公表するマトリクスから引くものであって、地理的距離から計算できるものではない。",
+    "source": {
+      "page": "https://www2.city.kyoto.lg.jp/kotsu/webguide/ja/fare/fare_tika.html",
+      "dataFile": "https://www2.city.kyoto.lg.jp/kotsu/webguide/js/disp_tika_fare.js",
+      "faqCrossCheck": "https://www.city.kyoto.lg.jp/kotsu/page/0000204850.html",
+      "zoneFarePage": "https://www.city.kyoto.lg.jp/kotsu/page/0000240757.html",
+      "operator": "京都市交通局",
+      "effectiveFrom": "令和7年（2025年）10月1日 — stated on the page. The script's active fare array is byte-identical to the zone table on page/0000240757.html, so the table is current; the file also retains superseded revisions in comments, which must not be read as live.",
+      "evidence": [
+        "evidence/kyoto-webguide-subway-fare.html",
+        "evidence/kyoto-webguide-subway-fare.txt",
+        "evidence/kyoto-webguide-disp_tika_fare.js",
+        "evidence/kyoto-subway-fare-normal.html",
+        "evidence/kyoto-subway-fare-table.pdf"
+      ]
+    },
+    "fareByZone": {
+      "1": {
+        "kmUpTo": 3,
+        "adult": 220,
+        "child": 110
+      },
+      "2": {
+        "kmUpTo": 7,
+        "adult": 260,
+        "child": 130
+      },
+      "3": {
+        "kmUpTo": 10,
+        "adult": 290,
+        "child": 150
+      },
+      "4": {
+        "kmUpTo": 15,
+        "adult": 330,
+        "child": 170
+      },
+      "5": {
+        "kmOver": 15,
+        "adult": 360,
+        "child": 180
+      }
+    },
+    "method": {
+      "stationIndexing": "the page's own <option value=N>; the index is the source's, not ours",
+      "zoneLookup": "the operator's own loop, transcribed: if (d<s) swap; c = Sta[s].length - (d-s); kusu = Sta[s].charAt(c)",
+      "matrixShape": "Sta[N] has length 31-N (lower triangle, 496 chars total), verified before any value is read",
+      "starMeaning": "the 乗継割引 marker; reported as transferDiscount, never coerced to a digit",
+      "crossChecks": [
+        "山科 -> 三条京阪 decodes to 260 円, matching the operator's own FAQ statement",
+        "四条 -> 烏丸御池 costs the same via the K08 row and the T13 row",
+        "every one of the 496 pairs is direction-symmetric",
+        "the 烏丸線 terminus is dearer than the adjacent stop"
+      ]
+    },
+    "zoneIsNotGeographic": {
+      "statementJa": "地下鉄の「区」は事業者の運賃区分であって、地理的距離の関数ではない。",
+      "evidenceJa": "東西線 T13 烏丸御池（四条から 1 駅）と T01 六地蔵（4.6 km 離れている）が同じ 4 区であり、T01〜T07 の 9 km が 1 区に収まる。",
+      "consequence": "A zone may be LOOKED UP for a subway station pair. It may never be COMPUTED from coordinates or from distance. Code that derives a fare from geometry will emit confident wrong fares."
+    },
+    "pairs": [
+      {
+        "from": {
+          "ekicode": 8,
+          "code": "K09",
+          "nameJa": "四条",
+          "line": "烏丸線",
+          "platformOf": null
+        },
+        "to": {
+          "ekicode": 7,
+          "code": "K08",
+          "nameJa": "烏丸御池",
+          "line": "烏丸線",
+          "platformOf": "烏丸線"
+        },
+        "rowUsed": 7,
+        "offset": 23,
+        "raw": "1",
+        "zones": 1,
+        "transferDiscount": false,
+        "fare": 220,
+        "fareAdult": 220,
+        "fareChild": 110,
+        "why": "四条 -> 烏丸御池 (K08 row) — the subway pair nearest this pack's block"
+      },
+      {
+        "from": {
+          "ekicode": 8,
+          "code": "K09",
+          "nameJa": "四条",
+          "line": "烏丸線",
+          "platformOf": null
+        },
+        "to": {
+          "ekicode": 19,
+          "code": "T13",
+          "nameJa": "烏丸御池",
+          "line": "東西線",
+          "platformOf": "東西線"
+        },
+        "rowUsed": 8,
+        "offset": 12,
+        "raw": "1",
+        "zones": 1,
+        "transferDiscount": false,
+        "fare": 220,
+        "fareAdult": 220,
+        "fareChild": 110,
+        "why": "四条 -> 烏丸御池 (T13 row) — same station, other line; same fare, different zone count"
+      },
+      {
+        "from": {
+          "ekicode": 8,
+          "code": "K09",
+          "nameJa": "四条",
+          "line": "烏丸線",
+          "platformOf": null
+        },
+        "to": {
+          "ekicode": 9,
+          "code": "K10",
+          "nameJa": "五条",
+          "line": "烏丸線",
+          "platformOf": null
+        },
+        "rowUsed": 8,
+        "offset": 22,
+        "raw": "1",
+        "zones": 1,
+        "transferDiscount": false,
+        "fare": 220,
+        "fareAdult": 220,
+        "fareChild": 110,
+        "why": "四条 -> 五条 (烏丸線, one stop south)"
+      },
+      {
+        "from": {
+          "ekicode": 8,
+          "code": "K09",
+          "nameJa": "四条",
+          "line": "烏丸線",
+          "platformOf": null
+        },
+        "to": {
+          "ekicode": 6,
+          "code": "K07",
+          "nameJa": "丸太町",
+          "line": "烏丸線",
+          "platformOf": null
+        },
+        "rowUsed": 6,
+        "offset": 23,
+        "raw": "1",
+        "zones": 1,
+        "transferDiscount": false,
+        "fare": 220,
+        "fareAdult": 220,
+        "fareChild": 110,
+        "why": "四条 -> 丸太町 (烏丸線, one stop north)"
+      },
+      {
+        "from": {
+          "ekicode": 8,
+          "code": "K09",
+          "nameJa": "四条",
+          "line": "烏丸線",
+          "platformOf": null
+        },
+        "to": {
+          "ekicode": 10,
+          "code": "K11",
+          "nameJa": "京都",
+          "line": "烏丸線",
+          "platformOf": null
+        },
+        "rowUsed": 8,
+        "offset": 21,
+        "raw": "1",
+        "zones": 1,
+        "transferDiscount": false,
+        "fare": 220,
+        "fareAdult": 220,
+        "fareChild": 110,
+        "why": "四条 -> 京都 (烏丸線 south)"
+      },
+      {
+        "from": {
+          "ekicode": 8,
+          "code": "K09",
+          "nameJa": "四条",
+          "line": "烏丸線",
+          "platformOf": null
+        },
+        "to": {
+          "ekicode": 0,
+          "code": "K01",
+          "nameJa": "国際会館",
+          "line": "烏丸線",
+          "platformOf": null
+        },
+        "rowUsed": 0,
+        "offset": 23,
+        "raw": "3",
+        "zones": 3,
+        "transferDiscount": false,
+        "fare": 290,
+        "fareAdult": 290,
+        "fareChild": 150,
+        "why": "四条 -> 国際会館 (烏丸線 north terminus)"
+      },
+      {
+        "from": {
+          "ekicode": 8,
+          "code": "K09",
+          "nameJa": "四条",
+          "line": "烏丸線",
+          "platformOf": null
+        },
+        "to": {
+          "ekicode": 14,
+          "code": "K15",
+          "nameJa": "竹田",
+          "line": "烏丸線",
+          "platformOf": null
+        },
+        "rowUsed": 8,
+        "offset": 17,
+        "raw": "2",
+        "zones": 2,
+        "transferDiscount": false,
+        "fare": 260,
+        "fareAdult": 260,
+        "fareChild": 130,
+        "why": "四条 -> 竹田 (烏丸線 south terminus) — the 乗継割引 cell"
+      },
+      {
+        "from": {
+          "ekicode": 8,
+          "code": "K09",
+          "nameJa": "四条",
+          "line": "烏丸線",
+          "platformOf": null
+        },
+        "to": {
+          "ekicode": 20,
+          "code": "T12",
+          "nameJa": "京都市役所前",
+          "line": "東西線",
+          "platformOf": null
+        },
+        "rowUsed": 8,
+        "offset": 11,
+        "raw": "1",
+        "zones": 1,
+        "transferDiscount": false,
+        "fare": 220,
+        "fareAdult": 220,
+        "fareChild": 110,
+        "why": "四条 -> 京都市役所前 (東西線)"
+      },
+      {
+        "from": {
+          "ekicode": 8,
+          "code": "K09",
+          "nameJa": "四条",
+          "line": "烏丸線",
+          "platformOf": null
+        },
+        "to": {
+          "ekicode": 21,
+          "code": "T11",
+          "nameJa": "三条京阪",
+          "line": "東西線",
+          "platformOf": null
+        },
+        "rowUsed": 8,
+        "offset": 10,
+        "raw": "1",
+        "zones": 1,
+        "transferDiscount": false,
+        "fare": 220,
+        "fareAdult": 220,
+        "fareChild": 110,
+        "why": "四条 -> 三条京阪 (東西線)"
+      },
+      {
+        "from": {
+          "ekicode": 25,
+          "code": "T07",
+          "nameJa": "山科",
+          "line": "東西線",
+          "platformOf": null
+        },
+        "to": {
+          "ekicode": 21,
+          "code": "T11",
+          "nameJa": "三条京阪",
+          "line": "東西線",
+          "platformOf": null
+        },
+        "rowUsed": 21,
+        "offset": 6,
+        "raw": "2",
+        "zones": 2,
+        "transferDiscount": false,
+        "fare": 260,
+        "fareAdult": 260,
+        "fareChild": 130,
+        "why": "山科 -> 三条京阪 — the operator-FAQ cross-check pair"
+      }
+    ],
+    "answerForThisPack": {
+      "question": "can the station pairs already in this pack be priced?",
+      "pairConsidered": "kyoto-shijo-subway-shijo-exit1 (地下鉄四条駅) -> 烏丸御池",
+      "zones": 1,
+      "fareAdult": 220,
+      "fareChild": 110,
+      "fareIsNowSourced": true,
+      "priceableAsALeg": false,
+      "missingSource": false,
+      "missingFare": false,
+      "missingInput": "a DESTINATION PLACE RECORD and a RUNNING TIME",
+      "why": "The fare itself is now determined and sourced (1区, 220 円 adult / 110 円 child, from the operator's own script). But transit.json requires both endpoints of a leg to exist in places.json, and this pack has no place record for 烏丸御池. Even with that, the operator publishes no station-to-station running time on the pages opened here, so a leg still could not state its minutes. Two specific inputs are missing; no source and no fare are."
+    },
+    "decodedBy": "evidence/tools/decode-subway-zones.mjs",
+    "decodedFrom": "evidence/subway-zones.json",
+    "verification": {
+      "crossChecks": [
+        "山科 -> 三条京阪 decodes to 260 円, matching the operator's own FAQ statement",
+        "四条 -> 烏丸御池 costs the same via the K08 row and the T13 row",
+        "every one of the 496 pairs is direction-symmetric",
+        "the 烏丸線 terminus is dearer than the adjacent stop"
+      ],
+      "stationCountParsed": 32,
+      "matrixProfile": "Sta[N] length is 31-N for all N in 0..31 (496 chars), asserted before any value is read"
+    }
+  },
+  "stationCoordinates": {
+    "note": "建仁寺公式アクセスページが所要分数を述べている 3 点の座標。places.json の行にはしない——訪問先ではなく、建仁寺への leg の端点候補だからである。ODbL 派生値なので出典は kyoto-shijo-osm-places.json 側に置く。",
+    "sourcePage": "https://www.kenninji.jp/access/",
+    "sourceEvidence": "evidence/kenninji-access.txt:24-26",
+    "entries": [
+      {
+        "nameJa": "京阪電鉄 清水五条駅",
+        "kind": "rail-station",
+        "osmRef": "node/6883622224",
+        "id": 6883622224,
+        "status": "obtained",
+        "note": "京阪本線の stop_position（local_ref=1）。同じ駅の反対方向が node/7944965638（local_ref=2）。",
+        "latUdeg": 34995622,
+        "lonUdeg": 135768397,
+        "nameOsm": "清水五条",
+        "tags": {
+          "KSJ2:STN": "五条",
+          "level": "-2",
+          "local_ref": "1",
+          "name": "清水五条",
+          "name:en": "Kiyomizu-gojo",
+          "name:es": "Kiyomizu-gojo",
+          "name:ja": "清水五条",
+          "name:ja-Hira": "きよみずごじょう",
+          "name:ja-Latn": "Kiyomizu-Gojō",
+          "name:ko": "기요미즈고죠",
+          "public_transport": "stop_position",
+          "railway": "stop",
+          "ref": "KH38",
+          "train": "yes",
+          "wikidata": "Q1111248",
+          "wikipedia": "ja:清水五条駅"
+        },
+        "coordinateKind": "osm-node"
+      },
+      {
+        "nameJa": "東山安井 バス停",
+        "kind": "bus-stop",
+        "osmRef": "node/1854284675",
+        "id": 1854284675,
+        "status": "obtained",
+        "note": "建仁寺公式が『市バス「東山安井」より 徒歩5分』と述べるバス停。反対側が node/3006140863。",
+        "latUdeg": 35000123,
+        "lonUdeg": 135777379,
+        "nameOsm": "東山安井",
+        "tags": {
+          "bench": "no",
+          "bin": "no",
+          "bus": "yes",
+          "highway": "bus_stop",
+          "lit": "yes",
+          "name": "東山安井",
+          "name:en": "Higashiyama Yasui",
+          "operator": "京都市交通局・京都バス・京阪バス",
+          "public_transport": "platform",
+          "shelter": "no",
+          "tactile_paving": "no"
+        },
+        "coordinateKind": "osm-node"
+      },
+      {
+        "nameJa": "南座前 バス停",
+        "kind": "bus-stop",
+        "osmRef": null,
+        "id": null,
+        "status": "absent-from-source",
+        "note": "建仁寺公式は『市バス「南座前」より 徒歩7分』と述べるが、この停留所は OSM に存在しない。"
+      }
+    ],
+    "verdicts": {
+      "obtained": [
+        "京阪電鉄 清水五条駅",
+        "東山安井 バス停"
+      ],
+      "absentFromSource": [
+        "南座前 バス停"
+      ],
+      "verdictNote": "清水五条駅と東山安井は「我々の抽出框の外」だと思っていたが、清水五条駅は corridor 抽出に最初から入っており、東山安井は bbox をもう一度取れば入った。どちらも「世界が公表していない」のではない。南座前だけが「世界が公表していない」——OSM に当該停留所ノードが無い。"
+    },
+    "gapKind": {
+      "obtained": "we had it / one narrow fetch",
+      "absentFromSource": "the source does not carry it — closed only by a different source, not by another fetch of the same one"
+    }
+  },
+  "gapWordingRule": {
+    "rule": "缺口の文言は「世界が公表していない」か「本パックの来源の範囲では取得していない」のどちらかを明示しなければならない。",
+    "why": "D-15 は「取得していない」を「存在しない」と記録したことが原因で、座標 3 件と leg 2 本を失った。同じ混同は読者を不要な回り道に送る。",
+    "sweep": [
+      {
+        "where": "transit.gaps",
+        "before": "バス区間：京都市バスは均一運賃 230 円（fareReference に出典付き）だが、停留所間の所要時間・系統別の運行間隔・初発/終電が本パックのどの来源にも無い。所要時間の無い leg は攻略に載せられないので 0 件とした。",
+        "after": "バス区間：京都市バスは均一運賃 230 円（fareReference に出典付き）だが、停留所間の所要時間・系統別の運行間隔・初発/終電が本パックのどの来源にも無い。所要時間の無い leg は攻略に載せられないので 0 件とした。"
+      },
+      {
+        "where": "transit.gaps",
+        "before": "地下鉄区間の運賃：区数は取得済み（subwayZones、京都市交通局の運賃ページが読むデータファイルから復号）。ただし transit.json に地下鉄の leg を追加するには ① 終点の地点レコード（例 烏丸御池）と ② 駅間の所要時間 の 2 つがまだ無い。運賃は缺口ではない。",
+        "after": "地下鉄区間の運賃：区数は取得済み（subwayZones、京都市交通局の運賃ページが読むデータファイルから復号）。ただし transit.json に地下鉄の leg を追加するには ① 終点の地点レコード（例 烏丸御池）と ② 駅間の所要時間 の 2 つがまだ無い。運賃は缺口ではない。"
+      },
+      {
+        "where": "transit.gaps",
+        "before": "阪急電鉄・京阪電気鉄道の運賃：両社の運賃ページは本パックの来源の範囲では取得していない。取得不能ではない。ユーザーの許可来源一覧に両社は含まれておらず、開いていないものを引用しないという規則に従った結果である。",
+        "after": "阪急電鉄・京阪電気鉄道の運賃：両社の運賃ページは本パックの来源の範囲では取得していない。取得不能ではない。ユーザーの許可来源一覧に両社は含まれておらず、開いていないものを引用しないという規則に従った結果である。"
+      }
+    ]
+  }
 }

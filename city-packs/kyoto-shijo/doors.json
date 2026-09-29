@@ -12,9 +12,7 @@
       0,
       40
     ],
-    "cellMetres": 1,
-    "subTilesPerTile": 16,
-    "worldDepthM": 40,
+    "rangeNote": "cellXRange and cellYRange say WHICH block of the 40 this is, not how big a block is. For block 7 they would read [280, 320) while the contract's blockSize stayed 40, so they are pack facts rather than copies of a contract literal. cellMetres, subTilesPerTile and worldDepthM were removed in task-15: those three WERE pure copies (of WORLD_UNITS.tileMetres, WORLD_UNITS.subTilesPerTile and worldGrid.hTiles) and the contract is the only place they should live.",
     "facadeFrontageNorthM": 23.477931,
     "facadeFrontageSouthM": 18.165148,
     "facadeFrontageTotalM": 41.643079,
@@ -45,36 +43,13 @@
   },
   "frozenConstants": {
     "mustImport": "docs/handOff/dsh-bundle-tourguide-2.5d/tools/world-grid.mjs",
-    "note": "These literals are a MIRROR for readers of this JSON only. Nothing may be computed from them: validate-doors.mjs imports the real constants and asserts every value below equals the import (assertion V1). Retyping them is how the corridor length silently drifted once already (wTiles 2000 -> 1600).",
-    "ORIGIN": {
-      "status": "frozen",
-      "lonUdeg": 135759719,
-      "latUdeg": 35003658
-    },
-    "PROJECTION": {
-      "kind": "local-tangent-equirectangular",
-      "metresPerDegreeLon": 91282.15,
-      "metresPerDegreeLat": 110940.65,
-      "coefficientLatitudeDeg": 35.0055
-    },
-    "worldGrid": {
-      "wTiles": 1600,
-      "hTiles": 40,
-      "blockSize": 40
-    },
-    "GRID": {
-      "halfCrossTiles": 20,
-      "blocksAcrossY": 1
-    },
-    "valueKinds": [
-      "observed",
-      "authored",
-      "licenced",
-      "abstract"
-    ],
-    "guideVerifiedColumnAllowed": [
-      "observed"
-    ]
+    "noMirror": "This object deliberately carries NO copy of any contract literal. It used to hold the projection origin, the projection coefficients, the grid, the valueKind enum and the guide allow-list. That mirror is exactly why V1 went red in task-15: VALUE_KINDS gained a fifth member and the copy here did not, so the copy went stale. A mirrored copy drifts; an import does not (D-12).",
+    "howToRead": "Open the file named by mustImport. It is the only authority for ORIGIN, PROJECTION, worldGrid, GRID, VALUE_KINDS and GUIDE_VERIFIED_COLUMN_ALLOWED, and it asserts itself (18 assertions) when run.",
+    "whyNothingIsCopiedHere": "Two of those items grow by design ruling: VALUE_KINDS gains members and GUIDE_VERIFIED_COLUMN_ALLOWED is a policy list. A copy of something that grows on someone else's schedule is a scheduled failure. The geometric constants were given the same treatment rather than kept with an excuse, because this file's own note already admitted the mirror existed only 'for readers of this JSON', while mustImport in the same object named the truth -- and worldGrid has drifted before (wTiles 2000 -> 1600, corrected only after measurement). There is no honest answer to 'why is this one less likely to drift than the enum is', so none of them is copied.",
+    "whatIsStillCopiedHere": "Nothing from the contract. `block` keeps cellXRange, cellYRange and blockIndex, but those are not copies: they say WHICH block of the 40 this is, so for block 7 they would read [280, 320) while blockSize stayed 40. They are pack facts whose values coincide with 0..40 only because this is block 0.",
+    "enforcedBy": "validate-doors.mjs assertion V1 -- no contract-mirror key may appear anywhere in this file, no high-entropy contract literal may appear as a value, mustImport must resolve, and the module it points at must still export the contract's shape. Its companion is V8, which checks every declared valueKind against the LIVE imported enum, so removing the copy did not remove the ability to notice an incompatible kind.",
+    "removedIn": "task-15, 2026-09-30",
+    "whatWasRemoved": "the two enum members, the twelve geometric literals (ORIGIN, PROJECTION, worldGrid, GRID), and three unit/extent copies that sat in `block` (cellMetres, subTilesPerTile, worldDepthM)"
   },
   "method": {
     "osmBuildingIdResolution": {
@@ -590,7 +565,7 @@
     "run": "node city-packs/kyoto-shijo/validate-doors.mjs",
     "lastResult": "Not recorded here. A hand-copied result is a second source of truth and will drift, so run the command above; it prints its own count and exits 0 only when every assertion passes.",
     "assertions": [
-      "V1  frozen constants in this file equal an actual import of world-grid.mjs (12 literals + the valueKind enum + the guide admitted-set)",
+      "V1  the contract is IMPORTED, not copied (D-12): no contract-mirror key name and no high-entropy contract literal appears anywhere in this file, frozenConstants.mustImport resolves, and the module it names still exports the contract's shape. It used to compare twelve mirrored literals plus the enum; that mirror is gone, so this now holds the ABSENCE of the drift surface. Companion: V8 checks every declared valueKind against the LIVE imported enum",
       "V2  every door cellX and cellY is an integer in [0, 40)",
       "V3  all 12 cells are pairwise distinct, and every pair of doors is >= 1 m apart",
       "V4  each door's declared cell is re-derived from the stored OSM geometry (node ids re-projected, module midpoint recomputed, imported quantiser reapplied)",

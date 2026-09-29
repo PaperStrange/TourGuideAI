@@ -17,11 +17,15 @@
   ],
   "northBuilding": "kyoto-shijo-bldg-mitsui",
   "southBuilding": "kyoto-shijo-bldg-daiya",
-  "valueKind": "licenced",
-  "guideVerifiedColumnAllowed": false,
   "files": [
     "city-packs/kyoto-shijo/doors.json",
     "city-packs/kyoto-shijo/kyoto-shijo-osm.json"
   ],
-  "why": "doors.json provenance.fields marks cellX/cellY/entrancePointJa/interiorTemplate as licenced and provenance.guideVerifiedColumnAllowed is false for every door; validator.notAsserted states that no source records a doorway position in this block."
+  "fieldOwnership": {
+    "thisFile": "the door inventory only — note, count, doorIds, the two building ids, files",
+    "merge-pack-meta.mjs": "valueKind, valueKindAuthority, guideVerifiedColumnAllowed, decision, decisionWhy, reachableFrom. Those are stamped onto the PUBLISHED attestations/block-doors.json on every build, so a copy here would be dead text that a reader could still mistake for the record.",
+    "doors.json": "each door's own provenance.valueKind — the authority for the vocabulary",
+    "world-grid.mjs": "VALUE_KINDS — the frozen enum itself"
+  },
+  "whyRemoved": "This file previously carried valueKind: \"licenced\" and a `why` string repeating it. That was stale twice over: doors.json says `authored`, and merge-pack-meta.mjs overwrote both fields on the way to attestations/. Removing them means the source cannot state a value the published record does not use — the same defect as a mirror copy of a frozen enum, applied to prose."
 }

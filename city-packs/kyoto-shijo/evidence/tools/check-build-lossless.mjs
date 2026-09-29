@@ -58,6 +58,32 @@ function state() {
     admissionItems: places.reduce((n, p) => n + (p.admission?.items?.length ?? 0), 0),
     packUngeorefCount: (pack.ungeoreferencedPlaces ?? []).length,
     packDroppedLegCount: (pack.ungeoreferencedLegs ?? []).length,
+    // Gap-list shapes. A build must not shrink these silently (loss) AND must not grow them with
+    // duplicates (accumulation). Only the loss direction was checked at first, which missed a real
+    // defect: apply-f3-corrections appended the same gap entry on every run until `gapsResolved`
+    // held four copies of one item. Accumulation is the same family as the payload that got
+    // overwritten with [] — a build whose output changes on every run is not reproducible.
+    gapCounts: {
+      placeGaps: (pack.placeGaps ?? []).length,
+      placeGapsResolved: (pack.placeGapsResolved ?? []).length,
+      placeGapNotes: (pack.placeGapNotes ?? []).length,
+      transitGaps: (pack.transit?.gaps ?? []).length,
+    },
+    gapDuplicates: (() => {
+      const lists = {
+        placeGaps: pack.placeGaps ?? [],
+        placeGapsResolved: pack.placeGapsResolved ?? [],
+        placeGapNotes: pack.placeGapNotes ?? [],
+        transitGaps: pack.transit?.gaps ?? [],
+      };
+      const dupes = {};
+      for (const [name, list] of Object.entries(lists)) {
+        const seen = new Set(); const dup = [];
+        for (const g of list) { const k = typeof g === 'string' ? g : g?.key ?? g?.gap; if (seen.has(k)) dup.push(k); else seen.add(k); }
+        if (dup.length) dupes[name] = dup.length;
+      }
+      return dupes;
+    })(),
   };
 }
 
@@ -104,6 +130,11 @@ if (before.parkedPlaceIds.length > 0 && after.parkedPlaceIds.length === 0 && bef
 // 4. substance must not silently drain out of records that remain
 for (const k of ['hoursEntries', 'admissionItems']) {
   if (after[k] < before[k]) problems.push(`${k} fell from ${before[k]} to ${after[k]} — a record kept its id but lost its facts`);
+}
+
+// 5. gap lists must not accumulate duplicates
+for (const [name, n] of Object.entries(after.gapDuplicates ?? {})) {
+  problems.push(`${name} contains ${n} duplicate entr${n === 1 ? 'y' : 'ies'}: a build that appends on every run is not reproducible`);
 }
 
 if (problems.length) {
