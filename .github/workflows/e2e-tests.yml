@@ -5,8 +5,8 @@ on:
     - cron: '0 0 * * 1,4'  # Run every Monday and Thursday at midnight
   pull_request:
     branches: 
-      - main
-      - develop
+      - master
+      - iteration
       - 'release-*'
   workflow_dispatch:       # Allow manual triggering
 

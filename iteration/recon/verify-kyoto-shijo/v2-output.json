@@ -1,0 +1,30 @@
+{
+  "checks": [
+    {
+      "check": "coord-twin",
+      "places": 19,
+      "mismatches": 0,
+      "verdict": "observed-consistent"
+    },
+    {
+      "check": "osm-ref-exists",
+      "ok": 17,
+      "total": 19,
+      "missing": [],
+      "nonOsm": [
+        "kyoto-shijo-yasaka-nishiromon (source_url is not an OSM permalink: https://www.yasaka-jinja.or.jp/access/)",
+        "kyoto-shijo-yasaka-honden (source_url is not an OSM permalink: https://www.yasaka-jinja.or.jp/about/architecture/)"
+      ]
+    },
+    {
+      "check": "osm-tag-supports-name",
+      "ok": 17,
+      "total": 19,
+      "issues": [
+        "kyoto-shijo-crossing-karasuma-east: nameMatched=false catKey=highway catValue=\"crossing\" | nameJa=\"四条烏丸交差点 東側横断歩道\" osmName=undefined osmRef=node/2737069286 category=crossing",
+        "kyoto-shijo-subway-shijo-exit19: nameMatched=false catKey=railway catValue=\"subway_entrance\" | nameJa=\"地下鉄四条駅 19番出入口\" osmName=undefined osmRef=node/4229848161 category=station-entrance"
+      ]
+    }
+  ],
+  "findings": []
+}

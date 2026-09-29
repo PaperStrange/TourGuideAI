@@ -11,9 +11,14 @@ name: Fact Integrity
 #     node iteration/tools/run-gates.mjs
 #     node iteration/tools/run-gates.mjs --json
 
+# Branch names are MEASURED, not assumed: this repository's default branch is master,
+# and there is no main or develop. Five other workflows here still filter on those two
+# names, so they have never run -- and per GitHub's own documentation a workflow skipped by
+# branch filtering leaves its checks Pending, which blocks any PR that requires them.
+# The full model, with sources, is iteration/design/branching-model.md.
 on:
   push:
-    branches: [main, develop, 'release-*', iteration]
+    branches: [master, iteration, 'release-*']
     paths:
       - 'city-packs/**'
       - 'iteration/**'

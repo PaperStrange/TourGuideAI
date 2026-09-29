@@ -6,7 +6,7 @@ on:
   workflow_dispatch:      # Allow manual triggering
   push:
     branches: 
-      - main
+      - master
       - 'release-*'
     paths:
       - '**/*.js'
