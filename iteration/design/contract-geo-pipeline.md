@@ -1,7 +1,7 @@
 # 契约 · Geo 管线（投影 / `worldGrid` / `valueKind` / 格定义）
 
 > **性质：下游契约，不是设计决策。** 父文档是 [`design-core.md`](design-core.md)（§8.1 决断、§8.2.1 四线调研与 2026-09-30 实测修正）；实现级常量见 [`appendix-visual-and-ui-spec.md`](appendix-visual-and-ui-spec.md)（§1.1 网格/比例/投影、§1.3 图层栈）。
-> **唯一权威实现**：[`world-grid.mjs`](../../docs/handOff/dsh-bundle-tourguide-2.5d/tools/world-grid.mjs)。本文每一条都有对应机械断言（A1–A15，共 **17 项**），判定命令：
+> **唯一权威实现**：[`world-grid.mjs`](../../docs/handOff/dsh-bundle-tourguide-2.5d/tools/world-grid.mjs)。本文每一条都有对应机械断言（A1–A15，含 A8b/A8c/A9b，共 **18 项**），判定命令：
 > ```bash
 > node docs/handOff/dsh-bundle-tourguide-2.5d/tools/world-grid.mjs
 > ```
@@ -81,6 +81,8 @@ ORIGIN = { status: 'frozen', lonUdeg: 135759719, latUdeg: 35003658 }
 | 路几何终点 → 祇園交差点（参考 `135778200` µ度，约值 ±4.56 m） | **91.92 m** |
 | 独立复算：把 `EAST_END` 对 `ORIGIN` 投影 | **x_m = 1595.064 m**（复现测量记录 ✅） |
 
+> **符号约定（两处必须一致，否则会看起来"互相矛盾"）**：契约说**余量 +4.95 m** = `wTiles − span`；测量记录 `kyoto-slice-origin-candidate.json` 里写的是 **`marginM = span − wTiles = −4.95`**，即**定义相反、绝对值相同**。A14 同时断言记录里的 `wTiles` 等于冻结值、且 `marginM` 等于我们余量的相反数——所以两者不可能各自漂移。看到 −4.95 不要以为切片缺了 4.95 m，**是"走廊比路长 4.95 m"**。
+
 A14 把上面每一条都变成断言，包括"**缺口 > 10 m**"——如果谁"顺手"把路延伸到祇園交差点，这条会塌向 0 并立刻失败。**祇園交差点是"约在 135.7782"的近似参考点**（design-core 原文），因此它带 ±50 µ度 = ±4.56 m 的显式余量；它**不是** `observed` 事实、**不是**事实层的行，`valueKind` 对它不适用。
 
 ---
@@ -136,7 +138,7 @@ tileX = floor(x_m)        tileY = floor(y_m)
 tileX ∈ [0, 1600)         row = tileY + 20 ∈ [0, 40)      // y_m ∈ [−20, +20)
 ```
 
-街心线是 `tileY = 0`，所以走廊跨 `tileY ∈ [−20, +20)`，存储行号 = `tileY + 20`。**这个偏移是存储细节，不是坐标定义的一部分。**
+街心线是 `tileY = 0`，所以走廊跨 `tileY ∈ [−20, +20)`，存储单元 `cellY = row = floor(y_m) + 20 ∈ [0, 40)`。**这个偏移是存储细节，不是坐标定义的一部分**；`row` 与 `cellY` 是**同一个量**，不是两套坐标。
 
 **规范化坐标是整数 1/16 子格，不是浮点**：`tileFromSub(sub) = floor(sub/16)`。浮点的 `floor(x_m)` 只作为**参考判据**存在（`referenceTileFromMetres`）——A3 在 1,134 个采样点（含两符号的近边界区，这是关键：粗扫永远扫不到那里，断言会**空洞地通过**）上实测出 **315 处分歧，最远 0.031250 m**，即分歧**恰好只发生在距格边界 1/32 m 以内**，且**规定分歧时以整数子格为准**。窗口判定跑在规范化坐标上，于是每条边的**有效内缩**是精确的两个数（A11 实测）：
 
@@ -160,7 +162,7 @@ tileX ∈ [0, 1600)         row = tileY + 20 ∈ [0, 40)      // y_m ∈ [−20,
 **冻结内容**：
 
 ```js
-VALUE_KIND = { OBSERVED: 'observed', LICENCED: 'licenced', ABSTRACT: 'abstract' }
+VALUE_KIND = { OBSERVED: 'observed', AUTHORED: 'authored', LICENCED: 'licenced', ABSTRACT: 'abstract' }
 GUIDE_VERIFIED_COLUMN_ALLOWED = ['observed']
 ```
 
@@ -169,26 +171,35 @@ GUIDE_VERIFIED_COLUMN_ALLOWED = ['observed']
 | 值 | 含义 | 本仓库的实例 |
 |---|---|---|
 | `observed` | **人打开来源并读到了这个值** | 亲自核过的营业时间、坐标 |
+| `authored` | **人放上去的**：以观察为依据，但**本身不是从任何来源读出来的**——是我们的判断，且记录在案 | **12 扇门的位置**（见下） |
 | `licenced` | 许可 / 授权派生的**模板或默认值** | 道路宽度——本段 OSM `width` 覆盖率仅 **2.7%** |
 | `abstract` | 模型派生的**抽象值** | PLATEAU LOD1 抽象高度——`building:levels` 仅 **8.6%** |
+
+> **`authored` 是怎么来的（task-2，`doors-author`）**：Gate 1 那个街区里 OSM 只有 **2 个建筑轮廓、0 个 `entrance` 节点**，所以 12 扇门**全部**是手作放置。在此之前，唯一"看起来诚实"的选项是 `licenced`——但条款四把 `licenced` 定义为**授权派生模板**，而门的位置不是任何人的模板。**当时那个标签是三者中"最不坏"的，而不是正确的；该修的是枚举，不是标签。**
+
+**顺序不是许可阶梯。** `VALUE_KINDS` 的顺序（`observed` > `authored` > `licenced` > `abstract`）只是**证据强度**的排序，用于报告。**排在第二不给任何东西开门**——只有 `GUIDE_VERIFIED_COLUMN_ALLOWED` 决定准入，A9b 断言它**仍然恰好是 `['observed']` 一项**。
 
 **这一维不是置信度，是来源类别。** 不要把它变成打分，也不要给它加权：agent 自评不可机械校验，加权会把"每行都有可核来源"这条铁律稀释掉。玩家侧的三态（`✅ 亲自到过` / `📖 读过来源` / `⚠️ 待确认`）描述的是**玩家做了什么**，与 `valueKind` 正交——**玩家状态不能提升值的等级**：
 
 | 玩家状态 × `valueKind` | 攻略"已验证"栏 |
 |---|---|
 | 亲自到过 × `observed` | ✅ 允许 |
+| 亲自到过 × `authored` | ❌ **禁止**（"到过"会给我们自己的摆放背书） |
 | 亲自到过 × `licenced` | ❌ **禁止**（"到过"会给一个模板背书） |
 | 亲自到过 × `abstract` | ❌ **禁止**（"到过"会给一个抽象高度背书） |
 | 读过来源 × `observed` | ✅ 允许 |
-| 任意 × `abstract` | ❌ 永不进"已验证" |
+| 任意 × `authored` / `licenced` / `abstract` | ❌ 永不进"已验证" |
 
-`licenced` / `abstract` 不是"不能用"——它们可以渲染、可以参与几何，但**要么从攻略里去掉，要么换一个显式标签**（如「按类别模板推算」「模型抽象高度」）。第三条路（静默提升为已验证）是禁止的。
+`authored` / `licenced` / `abstract` 不是"不能用"——它们可以渲染、可以参与几何，但**要么从攻略里去掉，要么换一个显式标签**（如「策展人放置」「按类别模板推算」「模型抽象高度」）。第三条路（静默提升为已验证）是禁止的。
 
 **反例 A（高度）**：有人把 PLATEAU LOD1 高度并到 1,212 个建筑 way 上，并让合并行继承附近策展地点的 `✅ 亲自到过`。攻略于是印出一个**没有任何来源陈述过**的建筑高度：LOD1 是从航拍影像挤出的抽象体块，不是测绘高度。**谁会发现**：读者数楼层，发现攻略说 4 层、实际 6 层。
 
 **反例 B（路宽）**：构造时 `width` 只覆盖 2.7%，于是回落到按类别的授权模板，写进同一个字段且**不带 `valueKind`**。结果：攻略"已验证"栏里 **97.3% 的路宽是模板**，与那 2.7% 实测值完全无法区分；依赖路宽的招牌位置（"退到路缘后 1.0 m"）与 12 扇门的门洞全部对一个**类别平均值**定位。**谁会发现**：验证守门人查不出哪一行是实测（字段里没信息），直到有人站在门口发现招牌悬在车道上方。
 
 **反例 C（枚举本身）**：有人把 `licenced` "修正"成美式拼写 `licensed`。A9 显式拒绝 `licensed` 与 `Licenced`。这是**故意设计成大声失败**的：出事故时最自然的"修复"是把这些行改标成 `observed`——那才是真正的灾难，而校验器会先拦住拼写这一步。
+
+**反例 D（把 `authored` 当成 `observed`）——本次新增成员最可能引发的那一个**：12 扇门是策展人放的，**没有任何来源陈述过它们的位置**。如果有人把 `authored` 读成"反正也是我们实地看过才放的，等于 `observed` 吧"，那 12 行就进了攻略的"已验证"栏。后果不是格式问题：**攻略会宣称"这扇门我们核实过"，而实际上它是我们的判断**。读者按图走到门前发现是后巷的卷帘门时，被质疑的不是那扇门，是**整份攻略的可信度**——而这就是"亲自到过给抽象高度背书"的同一个错误换了个字段。
+**谁会发现**：验证守门人（`authored` 行出现在"已验证"栏 = 条款四被违反），然后是在现场数门牌的读者。**A9b 就是为这个而加的**：新增一个成员**不得**顺带把闸门放宽——四个成员，**一个**进"已验证"栏。
 
 ### 4b. `lanes` 在人工核一次之前**不得**作为事实使用
 
@@ -271,8 +282,10 @@ A8b  PASS  acceptance — grid is independent of feature order
           sha256=7059980F09A82664297D9DF488E2D0D54AB7BB3581D05A79EDB2F3D6F1B0B3C3
 A8c  PASS  acceptance — rasteriser is direction-invariant (OSM way order is not stable)
           reversed-vertex sha256=7059980F09A82664297D9DF488E2D0D54AB7BB3581D05A79EDB2F3D6F1B0B3C3 identical=true
-A9   PASS  clause 4 — valueKind enum frozen; only `observed` reaches the guide
-          kinds=[observed, licenced, abstract]; 'licensed' rejected=true; guide verified column allows [observed]
+A9   PASS  clause 4 — valueKind enum is exactly {observed, authored, licenced, abstract}
+          kinds=[observed, authored, licenced, abstract] exact=true frozen=true; 'licensed' rejected=true; 'authored' is a valid kind=true
+A9b  PASS  clause 4 — the gate did not widen: four kinds, one reaches the guide
+          allow-list=["observed"] exact=true; permitted by predicate=[observed]; of 4 kinds, authored blocked=true, licenced/abstract/undefined/null/'OBSERVED' blocked=true
 A10  PASS  clause 5 — fact-layer coords are integer microdegrees; grid needs a frozen origin
           float coordinate rejected=true; gate missing:gated unfrozen:gated null-island:gated non-integer:gated; bad origin propagates from buildWorldGrid=true; default (no-arg) origin is the frozen ORIGIN=true
 A11  PASS  clause 3 — half-open window x[0,1600) row[0,40); overflow rejected, never clamped
@@ -282,11 +295,12 @@ A12  PASS  clause 2 — building measurement covers the frozen corridor
 A13  PASS  clause 1 — frozen ORIGIN mirrors the measurement record, and both rejected rules survive
           origin 135759719,35003658 == way 465069436 node#3 (primary) matches=true; uDeg round-trip=true; anchor=四条烏丸; recorded span=1595.05 m, origin sits 18.9 m from the anchor; rejected rules kept=true
 A14  PASS  clause 1 — measured span fits the corridor; the 92 m east gap is frozen
-          measured span=1595.05 m inside wTiles=1600 -> margin 4.95 m; EAST_END projected against ORIGIN = 1595.064 m (reproduces the record: true); corridor east=135777247 uDeg vs road end=135777193 uDeg -> road stops 4.93 m before the corridor end; gap to 祇園交差点 (ref 135778200 uDeg, +-4.56 m) = 91.92 m vs documented 92 m (matches=true, real=true)
+          measured span=1595.05 m inside wTiles=1600 -> margin 4.95 m; EAST_END projected against ORIGIN = 1595.064 m (reproduces the record: true); corridor east=135777247 uDeg vs road end=135777193 uDeg -> road stops 4.93 m before the corridor end; gap to 祇園交差点 (ref 135778200 uDeg, +-4.56 m) = 91.92 m vs documented 92 m (matches=true, real=true); record: wTiles=1600 (agrees=true), marginM=-4.95 = -(ours) (agrees=true)
 A15  PASS  clause 4 — `lanes` may not be used as a fact until a human checks it
           usableAsFact=false humanCheckRequired=true; recorded 6 segments / 16 ways (measurement says 16) = true; distinct lanes values=[4,2,1] conflicting=true; west of origin all lanes=4 (1 segs) but the first way east is lanes=2 -> contradiction=true
 
-17/17 assertions passed, 0 failed
+18/18 assertions passed, 0 failed
+contract sha256=0A616AB6DBC3020AD8EDAEFFCBA1FDEA29F697CE62E0B35546E8236FD50B83CD  (all frozen literals)
 fixture grid sha256=7059980F09A82664297D9DF488E2D0D54AB7BB3581D05A79EDB2F3D6F1B0B3C3  setTiles=2894  bytes=64000
 ```
 
@@ -300,17 +314,27 @@ payloadsha256=7059980F09A82664297D9DF488E2D0D54AB7BB3581D05A79EDB2F3D6F1B0B3C3 s
 **可 import**（另一进程动态 import，且**不触发 CLI 输出**）：
 
 ```
-exports=40
+exports=41
 worldGrid={"wTiles":1600,"hTiles":40,"blockSize":40} frozen=true
 ORIGIN={"status":"frozen","lonUdeg":135759719,"latUdeg":35003658,"osmWayId":465069436,"nodeIndex":3}
 EAST_END={"lonUdeg":135777193,"latUdeg":35003749}
 GRID: tiles=64000 chunks=16x100 chunkPx=3200x1280 indexedMiB=62.5
+VALUE_KINDS=observed|authored|licenced|abstract
+guideVerifiedAllows=["observed"]   → authored→verified? false, observed→verified? true
 LANES_QUALITY.usableAsFact=false
 GAP_M=92
 eastEnd projected: x_m=1595.06 y_m=10.10
+contractFingerprint=0A616AB6DBC3020AD8EDAEFFCBA1FDEA29F697CE62E0B35546E8236FD50B83CD
 ```
 
-**cwd 无关**：从仓库根跑 `--json` 同样 17/17。
+**cwd 无关**：从仓库根跑 `--json` 同样 18/18。
+
+> **两个哈希是两件事，都要看。**
+> - **`contract sha256`**（全部冻结字面量的指纹）= `0A616AB6…`。**任何**字面量变化都会移动它，包括这次新增 `authored`。
+> - **`fixture grid sha256`** = `7059980F…`。**只**在投影 / 网格 / 栅格化器变化时移动。
+>
+> **本次新增枚举成员，网格哈希没有动——这是对的**：`authored` 是来源词汇，不是几何。如果它动了，说明我在改词汇时碰坏了投影。§10 那条"哈希变了 = 必须有人签字"要读成：**几何哈希变了才需要签字；词汇变了看 contract 哈希**。
+> 之所以需要 `contract` 这个哈希：本模块被 `.gitignore` 排除（bundle 被 junction 进 DSH profile），**唯一被跟踪的审计锚点是本文档**——所以文档必须同时携带"契约指纹"和"几何指纹"。
 
 > **测试夹具不是地理数据。** A8 的输入是 `buildFixtureLines()` 生成的合成夹具：一条 **1,600** 顶点、1 m 间距、±0.22 m 确定性摆动的脊线 + 一条 5 m 横枝 + 一条 8 m 侧枝，**以原点相对偏移表达**，因此整条管线在没有京都坐标的情况下也能被完整检验。它**不是**四条通线形，**不得**当作几何发货。
 > **未覆盖**：A12 / A13 的 SKIP 分支（`archive/` 不在包内时）在本环境未被执行——那两个文件都存在。
@@ -334,11 +358,16 @@ eastEnd projected: x_m=1595.06 y_m=10.10
 
 ## 8. 需要契约外的人做的改动（我不动这些文件）
 
-**8.1 已被 Lead 修掉 / 仍需修的三处**
+**8.1 已由 Lead 修掉的三处（我复核过，不再是缺口）**
 
-1. ✅ **附录 §1.3 lane 0** 的"只用 40²"已被 Lead 改为"单张纹理上限 4096² **px**"并加了警告——**但同一句里的数字仍是旧的**：`80,000 格（2000×40）`、`81.92 Mpx`、`312.5 MiB`。按 S1b 应为 **64,000 格（1600×40）**、**65.536 Mpx**、索引色 **62.5 MiB**（RGBA 250 MiB）。**渲染方会照这一行申请显存，必须改。**
-2. ⚠️ **`design-core.md` 里 2000 时代的数仍在两处**：§8.2.1 ⑤ 表格行（`{ wTiles: 2000, ... }`、`80,000 格 = 50 个街区`）与"两条口径"小节的 `2 km × 32 px = 8,192 万像素 / 312.5 MB`（后者单位实为 MiB）。①②③ 修正块已给出 1600 的口径，但这两处**没有被它覆盖**。父文档归 Lead 管，我只报告。
+1. ✅ **附录 §1.3 lane 0** 现在是 `64,000 格（1600×40，wTiles=1600）`、`65.536 Mpx`、RGBA `250 MiB` → 索引色 `62.5 MiB`、`分 16 块，每块 3,200×1,280 px`。**渲染方可以直接照这一行申请显存。**
+2. ✅ **`design-core.md` §8.2.1 ⑤** 已是 `{ wTiles: 1600, ... }` 与"64,000 格 = 40 个街区 = 16 个纹理块"；"两条口径"小节已是 `51,200 × 1,280 px = 65.536 Mpx` / RGBA `250 MiB` / 索引色 `62.5 MiB`。
 3. **任务卡写 `cos(35.0055°) = 0.8192`，实测是 `0.8190969811`，四位小数是 `0.8191`。**（此值**不在** `design-core.md` 或附录里，只在任务卡中。）结论不受影响（22.086% vs 22.070%，都归到"22%"），但**字面量应当修正**，否则下一个人会拿 `0.8192` 反推出一个约 34.995° 的纬度。A4/A6 用的都是实算值。
+
+**8.1b 本次 `authored` 新增带来的两处下游（文件都不在我手上）**
+
+- **12 扇门的行需要从 `licenced` 改标为 `authored`。** 这是本次加成员**唯一的实际目的**——`doors-author` 当初标 `licenced` 是为了不把摆放洗成"已验证"（判断正确），但 `licenced` 的语义是"授权派生模板"，对门的位置不成立。**改标不会让它们进"已验证"栏**（A9b 已断言），只是让标签第一次变成正确的。
+- **`design-core.md` §8.2.1 ④ 的枚举行仍写 `observed | licenced | abstract`（三个成员）**，与本契约的四个成员不一致。父文档归 Lead 管；不改的话，两份文档对同一个枚举给出不同答案。
 
 **8.2 `measure-kyoto-blocks.mjs` 的两处口径问题（该文件不在我的写入范围）**
 
@@ -347,9 +376,9 @@ eastEnd projected: x_m=1595.06 y_m=10.10
 
 **8.3 需要 Lead 处理的三件事（文件不在我的写入范围）**
 
-- **`iteration/tools/freeze-origin.mjs` 里 `wTiles` 是硬编码的 2000**，并且 `kyoto-slice-origin-candidate.json` 里因此留下了陈旧的 `corridor.frozenWTiles: 2000` / `marginM: -404.95`。**测量本身的字段（origin / eastEnd / measuredSpanM / counts）是对的，我的 A13/A14 只读这些**；那两个派生字段现在与冻结值矛盾（真实余量是 **+4.95 m**，不是 −404.95 m）。建议把工具改成读 `world-grid.mjs` 的常量，或至少把这两行删掉——**留着一个 −404.95 m 的余量会让下一个人以为切片还缺 405 m**。
+- ✅ **`freeze-origin.mjs` 不再硬编码 `wTiles`**——它现在 `import` 本模块的 `worldGrid.wTiles`，记录里也写 `wTiles` 而非旧的 `frozenWTiles`。A14 因此新增两条交叉断言：**记录里的 `wTiles` 必须等于冻结值**、**`marginM` 必须等于我们余量的相反数**。⚠️ 残余一处：记录里 `sliceAnchor` 仍是**四条烏丸交点**（`35.003825 / 135.759680`）而工具里的 `ANCHOR` 已改成**原点本身**（`35.003658 / 135.759719`），所以 `distanceFromAnchorM: 18.9` 说的是"原点到交点"的距离。**这其实更有信息量，建议保留**；只是别让下一个人以为 `sliceAnchor` 是那个 clamp 锚点。重跑工具会让这两个字段变成 0。
 - `docs/handOff/dsh-bundle-tourguide-2.5d/package.json`：把 `"./world-grid": "./tools/world-grid.mjs"` 加进 `exports`，并加一条 `"check:geo": "node tools/world-grid.mjs"`；条款二要求这个常量"进 CI"，目前**尚未接线**。
-- `validate-city-pack.mjs`：加一条 `valueKind` 校验（枚举合法 + "已验证"栏准入），把条款四从声明变成门。
+- `validate-city-pack.mjs`：加一条 `valueKind` 校验（枚举合法 + "已验证"栏准入），把条款四从声明变成门。**注意它必须同时接受 `authored` 为合法值、又拒绝它进"已验证"栏**——这正是 A9b 在契约侧做的两件事。
 
 ---
 
@@ -374,4 +403,8 @@ eastEnd projected: x_m=1595.06 y_m=10.10
 
 **A8 是这条规程的执行者**：任何一次改动都会改变那个 `sha256`。哈希不变 = 没改到实质；哈希变了 = 必须有人签字。
 
-> **本次先例**：S1b 把 `wTiles` 2000 → 1600，夹具哈希 `D5732ED6…` → `7059980F…`，断言数 14 → 17，`bytes` 80,000 → 64,000。四个数字全部变化，**没有一个是"顺手"改的**。
+> **两个先例，读法不同。**
+> - **S1b（几何变了）**：`wTiles` 2000 → 1600，夹具哈希 `D5732ED6…` → `7059980F…`，`bytes` 80,000 → **64,000**，`setTiles` 3,614 → 2,894，断言 14 → 17。
+> - **S1c（只动来源词汇）**：`VALUE_KIND` 加 `authored`，断言 17 → **18**，`contract sha256` → `0A616AB6…`，而**夹具哈希 `7059980F…` 一格没动**。
+>
+> 第二次的"没动"和第一次的"动了"一样重要：**加一个来源类别不该移动任何几何**。如果它动了，说明改词汇时碰坏了投影或栅格化器——那才是要签字的信号。所以 §6 必须同时贴 `contract sha256` 与 `fixture grid sha256`，只看一个都会误判。
