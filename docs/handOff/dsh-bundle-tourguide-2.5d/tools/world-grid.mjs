@@ -227,11 +227,20 @@ export const GRID = Object.freeze({
  * turned into one (an agent's self-assessment is not mechanically checkable).
  *
  *   observed — a human opened the source and read the value off it
+ *   parsed   — a PARSER read this value off the source; no human has verified it
  *   authored — a human PLACED this value. Derived from observation, but not
  *              itself read from any source: our judgement, on the record
  *   licenced — a licence-derived default or template, e.g. road width where OSM
  *              `width` coverage in this slice is 2.7%
  *   abstract — a model-derived abstraction, e.g. PLATEAU LOD1 height
+ *
+ * WHY `parsed` EXISTS (S3, task-13, ruled by the Lead): the scene emitter reads
+ * `building:levels` / `height` off OSM with a parser. Those values ARE in the
+ * source — they are not invented and not abstract — but nobody opened the source
+ * and read them. Calling them `observed` would have dissolved the distinction
+ * clause 4 exists to protect, and widening `observed` to cover machine reading
+ * would have emptied the guide's verified column of meaning. A sourced value
+ * read by a machine is its own kind, so it got its own member.
  *
  * WHY `authored` EXISTS (task-2, `doors-author`): OSM records exactly two
  * building footprints and ZERO entrance nodes in the Gate-1 block, so all 12
@@ -241,9 +250,12 @@ export const GRID = Object.freeze({
  * label was the least-wrong of three rather than correct, so the enum was the
  * thing to fix, not the label.
  *
- * `authored` deliberately does NOT reach the guide's verified column. Being
- * second in the list below buys nothing: only GUIDE_VERIFIED_COLUMN_ALLOWED
- * grants access, and A9b asserts that gate is still exactly ['observed'].
+ * NEITHER `parsed` NOR `authored` REACHES THE GUIDE'S VERIFIED COLUMN. Being
+ * high in the list below buys nothing: only GUIDE_VERIFIED_COLUMN_ALLOWED grants
+ * access, and A9b asserts that gate is still exactly ['observed']. `parsed` is
+ * the most tempting of the four to promote ("but the source says it!") and A9b
+ * blocks it explicitly, because a parser bug promoted to `observed` becomes a
+ * printed claim that a human checked something.
  *
  * The member is spelled `licenced` (British) because it is a frozen wire value.
  * Do not normalise it to `licensed`: A9 rejects the American spelling, and the
@@ -251,6 +263,7 @@ export const GRID = Object.freeze({
  */
 export const VALUE_KIND = Object.freeze({
   OBSERVED: 'observed',
+  PARSED: 'parsed',
   AUTHORED: 'authored',
   LICENCED: 'licenced',
   ABSTRACT: 'abstract',
@@ -258,10 +271,16 @@ export const VALUE_KIND = Object.freeze({
 
 /**
  * Provenance order, for REPORTING only. Strength of evidence, strongest first:
- * read off a source > placed by a curator > template default > model
- * abstraction. This is not a permission ladder — see the allow-list below.
+ * human read off a source > machine read off a source > placed by a curator >
+ * template default > model abstraction. This is not a permission ladder — see
+ * the allow-list below.
  */
-export const VALUE_KINDS = Object.freeze(['observed', 'authored', 'licenced', 'abstract']);
+export const VALUE_KINDS = Object.freeze([
+  'observed',
+  'parsed',
+  'authored',
+  'licenced',
+  'abstract']);
 
 /** Only these kinds may appear in the guide's "verified" column. */
 export const GUIDE_VERIFIED_COLUMN_ALLOWED = Object.freeze(['observed']);
@@ -1110,10 +1129,10 @@ export function runAssertions() {
 
   /* A9 — valueKind enum ------------------------------------------------- */
   {
-    // The enum is EXACT: four members, in this order, no more and no fewer.
-    // Adding a fifth without thinking about the gate fails here.
-    const expectedKinds = ['observed', 'authored', 'licenced', 'abstract'];
-    const expectedKeys = ['OBSERVED', 'AUTHORED', 'LICENCED', 'ABSTRACT'];
+    // The enum is EXACT: five members, in this order, no more and no fewer.
+    // Adding a sixth without thinking about the gate fails here.
+    const expectedKinds = ['observed', 'parsed', 'authored', 'licenced', 'abstract'];
+    const expectedKeys = ['OBSERVED', 'PARSED', 'AUTHORED', 'LICENCED', 'ABSTRACT'];
     const kindsExact =
       VALUE_KINDS.length === expectedKinds.length &&
       VALUE_KINDS.every((k, i) => k === expectedKinds[i]) &&
@@ -1123,20 +1142,22 @@ export function runAssertions() {
     const spellingFrozen = VALUE_KIND.LICENCED === 'licenced';
     const americanRejected = !isValueKind('licensed') && !isValueKind('Licenced');
     const authoredIsValidKind = isValueKind('authored');
+    const parsedIsValidKind = isValueKind('parsed');
     check(
       'A9',
-      'clause 4 — valueKind enum is exactly {observed, authored, licenced, abstract}',
-      kindsExact && kindsFrozen && spellingFrozen && americanRejected && authoredIsValidKind,
+      'clause 4 — valueKind enum is exactly {observed, parsed, authored, licenced, abstract}',
+      kindsExact && kindsFrozen && spellingFrozen && americanRejected && authoredIsValidKind && parsedIsValidKind,
       `kinds=[${VALUE_KINDS.join(', ')}] exact=${kindsExact} frozen=${kindsFrozen}; ` +
-        `'licensed' rejected=${americanRejected}; 'authored' is a valid kind=${authoredIsValidKind}`,
+        `'licensed' rejected=${americanRejected}; 'parsed' and 'authored' are valid kinds=` +
+        `${parsedIsValidKind && authoredIsValidKind}`,
     );
   }
 
   /* A9b — adding a member did NOT widen the guide gate ------------------ */
   {
-    // The failure this guards: someone adds `authored` (or a later member) and
-    // the verified column quietly grows with the enum. The allow-list must stay
-    // exactly one entry, and it must stay `observed`.
+    // The failure this guards: someone adds `parsed` or `authored` (or a later
+    // member) and the verified column quietly grows with the enum. The allow-list
+    // must stay exactly one entry, and it must stay `observed`.
     const allowListExact =
       GUIDE_VERIFIED_COLUMN_ALLOWED.length === 1 &&
       GUIDE_VERIFIED_COLUMN_ALLOWED[0] === 'observed' &&
@@ -1145,8 +1166,11 @@ export function runAssertions() {
     // and the function cannot disagree.
     const permitted = VALUE_KINDS.filter((k) => mayAppearInGuideVerifiedColumn(k));
     const permittedExact = permitted.length === 1 && permitted[0] === 'observed';
-    const authoredBlocked = !mayAppearInGuideVerifiedColumn('authored');
+    // `parsed` is the most tempting member to promote — "but the source says it!"
+    // — so it gets its own named check rather than riding along with the others.
+    const parsedBlocked = !mayAppearInGuideVerifiedColumn('parsed');
     const othersBlocked =
+      !mayAppearInGuideVerifiedColumn('authored') &&
       !mayAppearInGuideVerifiedColumn('licenced') &&
       !mayAppearInGuideVerifiedColumn('abstract') &&
       !mayAppearInGuideVerifiedColumn(undefined) &&
@@ -1154,11 +1178,11 @@ export function runAssertions() {
       !mayAppearInGuideVerifiedColumn('OBSERVED');
     check(
       'A9b',
-      'clause 4 — the gate did not widen: four kinds, one reaches the guide',
-      allowListExact && permittedExact && authoredBlocked && othersBlocked,
+      'clause 4 — the gate did not widen: five kinds, one reaches the guide',
+      allowListExact && permittedExact && parsedBlocked && othersBlocked,
       `allow-list=${JSON.stringify(GUIDE_VERIFIED_COLUMN_ALLOWED)} exact=${allowListExact}; ` +
         `permitted by predicate=[${permitted.join(', ')}]; of ${VALUE_KINDS.length} kinds, ` +
-        `authored blocked=${authoredBlocked}, licenced/abstract/undefined/null/'OBSERVED' blocked=${othersBlocked}`,
+        `parsed blocked=${parsedBlocked}, authored/licenced/abstract/undefined/null/'OBSERVED' blocked=${othersBlocked}`,
     );
   }
 
