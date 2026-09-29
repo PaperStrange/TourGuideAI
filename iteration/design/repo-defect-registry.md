@@ -1,6 +1,6 @@
 # 仓库缺陷登记册（Repo defect registry）
 
-> **20 条**，分八类。最后修订于 	ask-3 事实核验之后（D-14…D-19）。
+> **22 条**，分九类。最后修订于 	ask-3 事实核验之后（D-14…D-19）。
 
 > **为什么有这份文件。** 这轮工作里发现的缺陷，**几乎全部是"纸面上的规则与仓库实况不一致"**，而且**没有任何东西在看**。这类缺陷不会报错、不会失败、不会有人抱怨——它们只是**一直不生效**。
 > 登记册的用途不是记录历史，而是**让每一类缺陷都对应一个机器检查**；没有机器的地方显式列出，不假装有。
@@ -254,6 +254,34 @@
 
 ---
 
+
+---
+
+## 六之三 · 溯源链与配置的"指向不存在的东西"（**D-06 家族的延续**）
+
+### D-21 · Dependabot 配在一个从未存在的分支上 —— **AUTOMATED**
+
+| | |
+|---|---|
+现象 | `.github/dependabot.yml` 的 `target-branch: "develop"` —— **`develop` 在本仓库从未存在过** |
+后果 | Dependabot **无法向它开 PR** → 整个配置形同虚设 |
+**同族第几次** | **第三次**：workflow 过滤 `main`/`develop`（D-06）、`CONTRIBUTING.md` 让人从 `main` 切（D-08）、现在 Dependabot（D-21） |
+另查出的两处 | `allow-ignores-on-branch-regex` **不是合法 Dependabot 键**；`reviewers: TourGuideAI/developers` 用法错（团队应用 `team-reviewers`，`reviewers` 收用户名） |
+**处置** | **不是"修好它"**——npm 更新块**有意关闭**。理由：根 `package.json` 属于**遗留应用**，而重启会用一个 2.5D 游戏替换它，那些依赖**不在维护范围内**；GitHub 报的 ~227 条告警是**我们不会发布的代码**的属性。**保留 GitHub Actions 块**（workflow 就是门，且活在默认分支上，一个被 pin 或含漏洞的 action 是供应链问题） |
+**为什么留成注释而非删块** | **"关掉"是一个决定；一个不留痕的决定，会被下一个读者悄悄反转** |
+
+### D-22 · 溯源指向**活的** Overpass URL，而非被捕获的字节 —— **OPEN（部分机械化）**
+
+| | |
+|---|---|
+发现于 | 新写的 `check-source-alignment.mjs` |
+现象 | OSM 派生的 place 记录引用 `https://api.openstreetmap.org/...bbox=...` —— **一个实时查询 URL**，而实测到的那份字节存在**描述性文件名**下（`osm-corridor-map.json`、`osm-block-q1-footprints.json`） |
+**为什么是缺陷** | **一个活 URL 与一份被捕获的文件不是同一个主张。** 读者今天打开它，会拿到**可能已变的数据**，而不是记录时的那份——**溯源链没有闭合到字节**。这正是 pack 其余部分刻意避免的（`evidence/` 快照 + sha256） |
+**已做** | 检查器现在把 OSM 家族 URL 映射到 `osm*` 捕获文件（避免假阳性），并**把"活 URL"本身作为一类报出** |
+**待做** | 要么让这些记录引用**具体的捕获文件**（而非 API URL），要么在 schema 里明确"OSM 派生的记录以 `osmRecord` 为溯源、`source_url` 只作来源说明" |
+**当前计数** | 对齐检查：**PRESENT 8 / ABSENT 10 / NEAR-VARIANT 0（D-14 已修）/ UNKNOWN 17 / UBIQUITOUS 0** |
+---
+
 ## 七 · 规则与机器对照表
 
 **这是本登记册的核心。** 每条规则必须说清它靠什么机器执行——**没有机器的规则就是会漂移的规则**。
@@ -269,6 +297,8 @@
 | 无分支名可遮蔽顶层目录 | R6 | KNOWN-ACCEPTED |
 | **本地分支不得落后/分叉于远程** | **ranch-sync 门 + pre-push 钩子** | **AUTOMATED** —— D-20 |
 | **pre-push 守卫确实已安装** | **R7** | **AUTOMATED** —— D-20 |
+| **记录的值必须出现在它引的来源里** | **check-source-alignment.mjs** | **AUTOMATED** —— D-14 已修；D-22 仍 OPEN |
+| **配置不得指向不存在的分支/键** | **R1/R2**（workflow 部分）；Dependabot 部分**无机器** | 部分 —— D-21 |
 | 事实层：每个值必须有来源 | stock `validate-city-pack` | AUTOMATED |
 | 事实层：来源必须**支撑**取值 | `validate-city-pack-v2` check A/D | **部分**——见下 |
 | 事实层：来源是否**真的支撑**取值（人工判断） | **无机器** | **已完成一次**（`task-3`，13/42 行 `supports=false`）。**仍无机器**——见 D-14…D-19 |

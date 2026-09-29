@@ -1,45 +1,43 @@
 version: 2
 updates:
-  # Enable version updates for npm
-  - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-    open-pull-requests-limit: 10
-    target-branch: "develop"
-    labels:
-      - "dependencies"
-    versioning-strategy: auto
-    reviewers:
-      - "TourGuideAI/developers"
-    commit-message:
-      prefix: "deps"
-      include: "scope"
-    groups:
-      dev-dependencies:
-        patterns:
-          - "@types/*"
-          - "eslint*"
-          - "jest"
-          - "prettier"
-        update-types:
-          - "minor"
-          - "patch"
-    # Add support for release branches
-    allow-ignores-on-branch-regex:
-      - "^release-"
-  
-  # Enable version updates for GitHub Actions
+  # npm updates are INTENTIONALLY OFF during the rebuild.
+  #
+  # Why: the dependencies in the root package.json belong to the legacy travel-planner app.
+  # The reboot replaces that app with a 2.5D game built on Phaser, and the old dependencies
+  # are not being maintained. GitHub reports ~227 advisories against this manifest; that
+  # count is a property of code we are not going to ship, and opening weekly update PRs
+  # against it would be noise rather than work.
+  #
+  # Deleting the block outright would be the tidier-looking move, so it is kept as a
+  # comment instead. The reason it is off is a decision, and a decision that leaves no
+  # trace in the file is one the next reader will silently reverse.
+  #
+  # The previous config also pointed `target-branch` at "develop", a branch that has never
+  # existed in this repository, which would have made it inert even if it were wanted.
+  # That is the same defect shape as the five workflows filtered on main/develop.
+  #
+  # Re-enable when the new app has a manifest of its own to keep current:
+  #   - package-ecosystem: "npm"
+  #     directory: "/"
+  #     schedule: { interval: "weekly", day: "monday" }
+  #     open-pull-requests-limit: 10
+  #     target-branch: "iteration"
+  #     labels: ["dependencies"]
+  #     commit-message: { prefix: "deps", include: "scope" }
+
+  # GitHub Actions updates stay ON, and are worth keeping during a rebuild: the workflows
+  # are the gates, they are live on the default branch, and a pinned or vulnerable action
+  # is a supply-chain problem in the thing that decides whether anything else is correct.
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
       day: "monday"
     open-pull-requests-limit: 5
+    target-branch: "iteration"
     labels:
       - "dependencies"
       - "github-actions"
     commit-message:
       prefix: "ci"
-      include: "scope" 
+      include: "scope"

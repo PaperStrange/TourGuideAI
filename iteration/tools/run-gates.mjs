@@ -36,6 +36,8 @@ const GATES = [
     why: 'the contract gate that existed before any pack; checks provenance PRESENCE' },
   { id: 'pack-v2', name: 'city pack (fact-layer gate)', cmd: ['node', join(PACK, 'validate-city-pack-v2.mjs'), '--json'],
     why: 'provenance ADEQUACY: URLs opened, per-entry sources, counts re-derived, enum imported' },
+  { id: 'source-align', name: 'recorded values appear in the source they cite', cmd: ['node', join(REPO, 'iteration', 'tools', 'check-source-alignment.mjs')],
+    why: 'D-14: check A proves a URL resolves; this proves the VALUE is in that source and not a different one' },
   { id: 'doors', name: 'doors (strict release gate)', cmd: ['node', join(PACK, 'validate-doors.mjs'), '--strict'],
     why: '--strict, because a declared blocker must fail the release gate' },
   { id: 'build', name: 'pack build is reproducible', cmd: ['node', join(PACK, 'evidence', 'tools', 'build-pack.mjs')],
