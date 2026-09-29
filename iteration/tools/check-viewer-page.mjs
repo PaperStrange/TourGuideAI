@@ -247,14 +247,28 @@ function main() {
 
   /* ---- the page's own summary agrees with the page's own data ---------- */
   const leg = elements['legend'] ? elements['legend'].innerHTML : '';
-  const doorsOk = payload.doors.length === 12 && payload.doors.every((d) => d.reachable && d.inWall);
+  // P5 used to require `payload.doors.every((d) => d.reachable && d.inWall)`, and that criterion
+  // expired with D-43: an enterable door now opens into a room, so it has no blocked neighbour and
+  // `inWall` is FALSE for all seven working doors. The page itself computes reachable and enterable
+  // from its own payload and prints both, so the honest assertion is that the three NUMBERS the page
+  // prints equal the three numbers in the payload it printed them from -- rather than that the page
+  // contains a substring such as "12", which a broken page would contain just as readily.
+  const dReachable = payload.doors.filter((d) => d.reachable).length;
+  const dEnterable = payload.doors.filter((d) => d.enterable).length;
+  const doorsOk =
+    payload.doors.length === 12 &&
+    dReachable === 12 &&
+    dEnterable === 7 &&
+    leg.includes(`reached x=${payload.walk.reachedX}`) &&
+    leg.includes(`${dReachable} of ${payload.doors.length} reachable`) &&
+    leg.includes(`${dEnterable} of ${payload.doors.length} enterable`);
   check(
     'P5',
-    'the page states the walk result and the door result from its own payload',
-    leg.includes(`reached x=${payload.walk.reachedX}`) && leg.includes(`${payload.doors.length}`) && doorsOk,
-    `legend mentions reached x=${payload.walk.reachedX}, ${payload.doors.length} doors; ` +
-      `payload: ${payload.doors.filter((d) => d.reachable).length} reachable, ` +
-      `${payload.doors.filter((d) => d.enterable).length} enterable, all in a wall=${payload.doors.every((d) => d.inWall)}`,
+    "the page's printed summary equals the payload it printed it from (walk, reachable and enterable counts)",
+    doorsOk,
+    `legend says reached x=${payload.walk.reachedX}, ${dReachable} of ${payload.doors.length} reachable, ` +
+      `${dEnterable} of ${payload.doors.length} enterable; payload: ${dReachable} reachable, ${dEnterable} enterable, ` +
+      `inWall ${payload.doors.filter((d) => d.inWall).length}/12 -- false for an enterable door by design (D-43)`,
   );
 
   /* ---- the guide overlay is the export, not a fresh invention ---------- */

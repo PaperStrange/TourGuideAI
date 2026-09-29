@@ -34,6 +34,7 @@
  * Exit codes: 0 = baked, 1 = a problem, 2 = environment (no scene.bin).
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { SCENE_VERSION, SCENE_MAGIC } from './emit-scene.mjs';
 import { join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 
@@ -91,12 +92,13 @@ const ground = buf.subarray(o, o + n);
 const collision = buf.subarray(o + n, o + 2 * n);
 const heights = buf.subarray(o + 2 * n, o + 3 * n);
 const occlusionHalf = buf.subarray(o + 3 * n, o + 3 * n + W);
+const openings = buf.subarray(o + 3 * n + W, o + 4 * n + W);
 
 // Re-assert the container here rather than trusting it: this baker is a fourth
 // reader, and a fourth reader that assumes is a fourth chance to be wrong.
-if (buf.toString('ascii', 0, 8) !== 'TG25DSCN' || buf.readUInt32LE(8) !== 1 ||
+if (buf.toString('ascii', 0, 8) !== SCENE_MAGIC || buf.readUInt32LE(8) !== SCENE_VERSION ||
     W !== worldGrid.wTiles || H !== worldGrid.hTiles ||
-    108 + manifestLen + (n * 3 + W) !== buf.length) {
+    108 + manifestLen + (n * 4 + W) !== buf.length) {
   die(1, `scene.bin does not match the frozen contract header (${W}x${H}, manifest ${manifestLen}, ${buf.length} B)`);
 }
 

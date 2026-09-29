@@ -43,6 +43,7 @@
  */
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
+import { SCENE_VERSION, SCENE_MAGIC } from './emit-scene.mjs';
 import { join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
@@ -409,21 +410,26 @@ function main() {
   const manifestLen = buf.readUInt32LE(104);
   const okHeader =
     buf.length >= 108 &&
-    buf.toString('ascii', 0, 8) === 'TG25DSCN' &&
-    buf.readUInt32LE(8) === 1 &&
+    buf.toString('ascii', 0, 8) === SCENE_MAGIC &&
+    buf.readUInt32LE(8) === SCENE_VERSION &&   // was a literal 1; the FOURTH D-44 instance, and the one
     W === worldGrid.wTiles &&
     H === worldGrid.hTiles &&
     buf.readUInt32LE(20) === GRID.chunksAlongX &&
     Number(buf.readBigInt64LE(24)) === ORIGIN.lonUdeg &&
     Number(buf.readBigInt64LE(32)) === ORIGIN.latUdeg &&
-    108 + manifestLen + (W * H * 3 + W) === buf.length;
+    108 + manifestLen + (W * H * 4 + W) === buf.length;
   const manifest = JSON.parse(buf.toString('utf8', 108, 108 + manifestLen));
   const o = 108 + manifestLen;
   const n = W * H;
   const ground = buf.subarray(o, o + n);
   const collision = buf.subarray(o + n, o + 2 * n);
   const heights = buf.subarray(o + 2 * n, o + 3 * n);
-  const occlusionHalf = buf.subarray(o + 3 * n, o + 3 * n + W);
+  const openings = buf.subarray(o + 3 * n, o + 4 * n);
+  // occlusionHalf comes AFTER all four n-sized layers. It read `o + 3*n` while openings was read
+  // from `o + 3*n + W`, so the two buffers OVERLAPPED and the occlusion count was taken from bytes
+  // belonging to the openings layer. The layer arithmetic above had already been updated to
+  // `W*H*4 + W`; the offsets had not, which is why the two disagreed while both looked right.
+  const occlusionHalf = buf.subarray(o + 4 * n, o + 4 * n + W);
   let blockedCount = 0;
   for (const v of collision) if (v !== 0) blockedCount += 1;
   let groundCount = 0;
@@ -478,16 +484,39 @@ function main() {
   const allPresent = doorRows.length === 12;
   const allReachable = doorRows.every((d) => d.reachable);
   const allInWall = doorRows.every((d) => d.inWall);
-  const enterable = doorRows.filter((d) => d.enterable).length;
   const maxDepth = Math.max(...doorRows.map((d) => d.depthBehind));
+  // V4 USED TO ASSERT "all twelve doors are in a wall" and NOTHING about being enterable, which is
+  // how it passed for rounds while the world had nowhere to go behind any of them (D-40). A check
+  // that does not ask the question the feature exists to answer is not a weaker check, it is a
+  // different one. So it now asserts the split the world actually has, per side, because the sides
+  // differ for a measured reason (D-42/D-43): north doors open into a bounded room; south doors sit
+  // on the corridor's last row with the world's edge behind them.
+  const north = doorRows.filter((d) => d.cellY >= GRID.halfCrossTiles);
+  const south = doorRows.filter((d) => d.cellY < GRID.halfCrossTiles);
+  const northEnterable = north.filter((d) => d.enterable).length;
+  const southEnterable = south.filter((d) => d.enterable).length;
+  // The D-43 room: an enterable door's depth must be terminated by a SOLID tile one row beyond it,
+  // so the far side of the room is a wall rather than the corridor.
+  const walled = (d) => {
+    const dir = Math.sign(d.cellY - (d.streetRow ?? d.cellY)) || 1;
+    return isBlocked(collision, d.cellX, d.cellY + dir * (d.depthBehind + 1), W, H);
+  };
+  const roomsClosed = north.every((d) => !d.enterable || walled(d));
+  // "Sits in a wall" meant "has a blocked 4-neighbour", and after D-43 that is no longer what an
+  // enterable door looks like: the door opens into a room, so its neighbours are the room and the
+  // street, and the wall is three rows further on. The old test therefore failed on the SEVEN doors
+  // that work. What it was reaching for is "you cannot walk past this door, only through it", and
+  // that is either a blocked neighbour (a door in a solid facade) or a closed room behind it.
+  const sitsInItsFacade = (d) => d.inWall || (d.enterable && walled(d));
+  const framed = doorRows.every(sitsInItsFacade);
   check(
     'V4',
-    'all 12 authored doors are present, reachable from the street, and sit in a wall',
-    allPresent && allReachable && allInWall,
+    'all 12 doors present and reachable; the 7 north doors are ENTERABLE into a bounded room; the 5 south doors are not, which is the measured state (D-40/D-42/D-43)',
+    allPresent && allReachable && framed && northEnterable === 7 && southEnterable === 0 && roomsClosed,
     `${doorRows.length} doors · reachable ${doorRows.filter((d) => d.reachable).length} · ` +
-      `in a wall ${doorRows.filter((d) => d.inWall).length} · ` +
-      `ENTERABLE (free tile behind the doorway) ${enterable} of ${doorRows.length} · ` +
-      `max free depth behind any door ${maxDepth} row(s)`,
+      `framed by a facade or a closed room ${doorRows.filter(sitsInItsFacade).length}/${doorRows.length} · ` +
+      `ENTERABLE north ${northEnterable}/${north.length}, south ${southEnterable}/${south.length} · ` +
+      `max depth behind any door ${maxDepth} row(s) · every open room closed by a back wall ${roomsClosed}`,
   );
   check(
     'V4b',

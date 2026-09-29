@@ -1081,6 +1081,12 @@ export function buildScene(inputPath, { mutateTags } = {}) {
   for (let i = 0; i < openings.raster.length; i += 1) {
     if (openings.raster[i]) raster.collision[i] = 0;
   }
+  // D-43: the far edge of each opened run becomes a wall, so the room is bounded.
+  // Applied AFTER opening, and it can never re-close an opened tile because the
+  // wall row is one beyond the run.
+  for (const [x, row] of openings.walls ?? []) {
+    raster.collision[row * worldGrid.wTiles + x] = 1;
+  }
 
   const observed = raster.records.filter((r) => r.valueKind === VALUE_KIND.OBSERVED);
   const parsed = raster.records.filter((r) => r.valueKind === VALUE_KIND.PARSED);
@@ -1106,6 +1112,9 @@ export function buildScene(inputPath, { mutateTags } = {}) {
         : 'doors.json absent: the openings layer is EMPTY and the seven north doors are NOT enterable in this bake',
       records: openings.records,
       tiles: openings.tiles ?? 0,
+      backWalls: openings.walls ?? [],
+      backWallCount: (openings.walls ?? []).length,
+      roomSemantics: 'D-43: an opening leads into a BOUNDED space - the far edge of each opened run is closed as a back wall',
       authoredCount: openings.authored ?? 0,
       observedCount: openings.observed ?? 0,
       guideVerifiedColumnAllowed: false,
@@ -1226,8 +1235,9 @@ export function readDoors(path = DOORS_PATH) {
 export function buildOpenings(doors, collision) {
   const n = worldGrid.wTiles * worldGrid.hTiles;
   const raster = new Uint8Array(n);
+  const walls = [];
   const records = [];
-  if (!doors) return { raster, records, source: null, authored: 0, observed: 0 };
+  if (!doors) return { raster, walls, records, source: null, authored: 0, observed: 0 };
   const maxDepth = Math.round(FRONTAGE_BAND_DEPTH_M / WORLD_UNITS.tileMetres);
   for (const d of [...doors.doors].sort((a, b) => (a.id < b.id ? -1 : 1))) {
     const away = d.cellY > GRID.halfCrossTiles ? 1 : -1; // north of the street row => step +row
@@ -1240,11 +1250,22 @@ export function buildOpenings(doors, collision) {
     }
     if (!cells.length) continue; // south doors: the door row is the world's LAST row, nothing to open
     for (const [x, row] of cells) raster[row * worldGrid.wTiles + x] = 1;
+    // D-43 (Lead ruling): the opening leads into a BOUNDED space, not a passage.
+    // Close the far edge of the run so the interior is a room with a back wall.
+    // A back wall is the ONLY fix self-consistent with the other layers: `heights`
+    // says 24 on these rows and 0 beyond, so DEEPENING the band would claim more
+    // tiles are building than the height layer says are building. Whether the wall
+    // is also VISIBLE is a rendering question and is not decided here.
+    const lastRow = cells[cells.length - 1][1];
+    const wallRow = lastRow + away;
+    const backWall = wallRow >= 0 && wallRow < worldGrid.hTiles ? [d.cellX, wallRow] : null;
+    if (backWall) walls.push(backWall);
     records.push({
       doorId: d.id,
       doorCell: [d.cellX, d.cellY],
       away,
       cells,
+      backWall,
       depthTiles: cells.length,
       depthM: Number((cells.length * WORLD_UNITS.tileMetres).toFixed(3)),
       // The claim, carried per tile by derivation: every cell above belongs to
@@ -1256,6 +1277,7 @@ export function buildOpenings(doors, collision) {
   const tiles = raster.reduce((a, b) => a + b, 0);
   return {
     raster,
+    walls,
     records,
     source: doors.path,
     sourceSha256: doors.sha256,
@@ -1643,6 +1665,25 @@ export function runAssertions(inputPath = DEFAULT_IN) {
       'every openings tile carries a valueKind; none is allowed in the guide verified column',
       allGraded && observed === 0 && noneVerified && rasterMatchesRecords && authored > 0,
       op.records.length + ' opening records: authored=' + authored + ', observed=' + observed + '; all graded=' + allGraded + '; none allowed in verified column=' + noneVerified + '; tiles=' + op.tiles + '; raster == union(records)=' + rasterMatchesRecords,
+    );
+  }
+
+  // S18 - D-43: an opening leads into a BOUNDED room, not a passage.
+  {
+    const op = first.openings;
+    const recs = op.records;
+    const allBounded = recs.every((r) => Array.isArray(r.backWall));
+    const wallIsSolid = recs.every((r) => first.collision[r.backWall[1] * worldGrid.wTiles + r.backWall[0]] !== 0);
+    // The back wall must not be a tile that the height layer says is building-
+    // continued: it sits exactly one row beyond the opened run.
+    const wallJustBeyond = recs.every((r) => Math.abs(r.backWall[1] - r.cells[r.cells.length - 1][1]) === 1);
+    // And the room must be reachable: door cell walkable, all cells walkable.
+    const roomReachable = recs.every((r) => first.collision[r.doorCell[1] * worldGrid.wTiles + r.doorCell[0]] === 0 && r.cells.every((c) => first.collision[c[1] * worldGrid.wTiles + c[0]] === 0));
+    check(
+      'S18',
+      'D-43 - each opening leads into a BOUNDED room (back wall closes the far edge)',
+      allBounded && wallIsSolid && wallJustBeyond && roomReachable,
+      recs.length + ' rooms; every one has a back wall=' + allBounded + '; every wall tile is SOLID=' + wallIsSolid + '; wall sits one row beyond the run=' + wallJustBeyond + '; door + room walkable=' + roomReachable + '; walls=' + JSON.stringify(recs.map((r) => r.backWall)),
     );
   }
 

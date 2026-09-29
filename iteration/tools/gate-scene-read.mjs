@@ -96,7 +96,7 @@ ok('R6', lonUdeg === ORIGIN.lonUdeg && latUdeg === ORIGIN.latUdeg,
 // The container must agree with its own length. emit-guide asserts this too; asserting it in a
 // second reader is the point -- one reader agreeing with itself is not corroboration.
 const n = wTiles * hTiles;
-const layerBytes = n * 3 + wTiles;              // ground, collision, heights, then one byte per column
+const layerBytes = n * 4 + wTiles;              // ground, collision, heights, then one byte per column
 const expected = 108 + manifestLen + layerBytes;
 ok('R7', expected === buf.length, `header implies ${expected} B (manifest ${manifestLen} + layers ${layerBytes}), file is ${buf.length} B`);
 
@@ -111,6 +111,7 @@ const ground = buf.subarray(o, o + n); o += n;
 const collision = buf.subarray(o, o + n); o += n;
 const heights = buf.subarray(o, o + n); o += n;
 const occlusionHalf = buf.subarray(o, o + wTiles); o += wTiles;
+  const openings = buf.subarray(o, o + n); o += n;
 ok('R8', o === buf.length, `consumed ${o} B of ${buf.length} - no trailing bytes and no short read`);
 
 // The manifest must describe the layers that actually follow it.

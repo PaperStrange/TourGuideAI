@@ -104,7 +104,7 @@ function unpackScene(buf) {
   const latUdeg = Number(buf.readBigInt64LE(32));
   const contractHash = buf.toString('ascii', 40, 104);
   const manifestLen = buf.readUInt32LE(104);
-  const layerBytes = wTiles * hTiles * 3 + wTiles;
+  const layerBytes = wTiles * hTiles * 4 + wTiles;
   const expected = 108 + manifestLen + layerBytes;
   if (manifestLen <= 0 || expected !== buf.length) {
     throw new Error(
@@ -123,6 +123,7 @@ function unpackScene(buf) {
   const heights = buf.subarray(o, o + n);
   o += n;
   const occlusionHalf = buf.subarray(o, o + wTiles);
+  const openings = buf.subarray(o + wTiles, o + wTiles + wTiles * hTiles);
   return { version, wTiles, hTiles, chunksAlongX, lonUdeg, latUdeg, contractHash, manifest, ground, collision, heights, occlusionHalf };
 }
 
