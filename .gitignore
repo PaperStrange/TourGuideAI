@@ -3,6 +3,31 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# Planning / research — SPLIT BY LIFETIME (revised after the `iteration` move)
+#
+# Long-lived assets now live under iteration/ and ARE version-controlled:
+#   iteration/design/      design kernel, appendix, frozen contracts
+#   iteration/recon/       recon reports + section drafts (crawl caches excluded)
+#   iteration/reference/   external inputs (plugin survey, research plan)
+#
+# What remains excluded is genuinely one-off:
+#   docs/handOff/archive/            ~90 MB of raw crawl snapshots (HTML + txt)
+#   iteration/recon/sections/*/_raw* raw fetch caches behind the section drafts
+#   docs/handOff/dsh-bundle-*/       the DSH preset bundle; it is junction-linked
+#                                    into the local DSH profile, so moving it
+#                                    forces a bundle reinstall + dsh restart.
+#                                    It holds the city-pack validator and the two
+#                                    gates (world-grid, assert-export-boundary),
+#                                    referenced by relative path from iteration/.
+docs/handOff/archive/
+docs/handOff/dsh-bundle-tourguide-2.5d/
+iteration/recon/sections/_raw/
+iteration/recon/sections/_raw_q4q6/
+docs/project_lifecycle/knowledge/_recon_tmp/
+
+# DSH harness state for this workspace (agent config, not project source)
+.dsh/
+
 # React/Node.js specific
 /build
 /dist

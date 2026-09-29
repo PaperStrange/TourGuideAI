@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nominatim Usage Policy (aka Geocoding Policy)</title>
+
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Bootstrap and overrides -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/overrides.css">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <!-- link to Atom feed -->
+    <link type="application/atom+xml" rel="alternate" href="https://operations.osmfoundation.org/feed.xml" title="OSMF Operations Working Group" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default">
+        <div class="container-fluid">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">OSMF OWG</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/reports/">Reports</a></li>
+            <li><a href="/post-mortems/">Post-mortems</a></li>
+            <li><a href="/policies/">Policies</a></li>
+            <li><a href="/meetings/">Meetings</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <h1 id="nominatim-usage-policy-aka-geocoding-policy">Nominatim Usage Policy (aka Geocoding Policy)</h1>
+
+<p><em>This is an Acceptable Use Policy for the server running at nominatim.openstreetmap.org and does not apply to nominatim services run by yourself or other organisations</em></p>
+
+<hr />
+
+<p>OSM’s <a href="https://wiki.openstreetmap.org/wiki/Nominatim">Nominatim</a> service is mainly there to power the search bar on <a href="https://openstreetmap.org/">openstreetmap.org</a>. We are in principle happy for the public API to be used by external users for creative and unexpected uses. However, be aware that the service runs on donated servers and has a very limited capacity. We therefore ask you to limit your use and adhere to this usage policy.</p>
+
+<p>Use of any OSMF provided service is further governed by the <a href="https://wiki.osmfoundation.org/wiki/Terms_of_Use">OSMF Terms of Use</a>.</p>
+
+<h2 id="requirements">Requirements</h2>
+
+<ul>
+  <li>No heavy uses (an absolute <strong>maximum of 1 request per second</strong>).</li>
+  <li>Provide a valid <strong>HTTP Referer</strong> or <strong>User-Agent</strong> identifying the application (stock User-Agents as set by http libraries will not do).</li>
+  <li>Clearly display <a href="https://wiki.osmfoundation.org/wiki/Licence/Attribution_Guidelines">attribution</a> as suitable for your medium.</li>
+  <li>Data is provided under the <a href="https://openstreetmap.org/copyright">ODbL</a> license which requires to share alike (although small extractions are likely to be covered by fair usage / fair dealing).</li>
+</ul>
+
+<h3 id="websites-and-apps">Websites and Apps</h3>
+
+<p>Use that is directly triggered by the end-user (for example, user searches for something) is ok, provided that your number of users is moderate. Note that the usage limits above apply <strong>per website/application</strong>: the sum of traffic by all your users should not exceed the limits.</p>
+
+<p>Apps must make sure that they can switch the service at our request at any time (in particular, switching should be possible without requiring a software update). If at all possible, <strong>set up a proxy</strong> and also enable caching of requests.</p>
+
+<p><strong>Note:</strong> periodic requests from apps are considered bulk geocoding and as such are strongly discouraged. It may be okay if your app has very few users and applies appropriate caching of results. Make sure you stay well below the API usage limits.</p>
+
+<h3 id="bulk-geocoding">Bulk Geocoding</h3>
+
+<p>As a general rule, bulk geocoding of larger amounts of data is <strong>not</strong> encouraged. If you have regular geocoding tasks, please, look into alternatives below. Smaller one-time bulk tasks may be permissible, if these additional rules are followed</p>
+
+<ul>
+  <li>limit your requests to <strong>a single thread</strong></li>
+  <li>limited to 1 machine only, <strong>no distributed scripts</strong> (including multiple Amazon EC2 instances or similar)</li>
+  <li>Scripts running longer than a day and scripts that are run at regular intervals are restricted to <strong>4 requests per minute</strong>.</li>
+  <li>Results <strong>must be cached</strong> on your side. Clients sending repeatedly the same query may be classified as faulty and blocked.</li>
+</ul>
+
+<h3 id="usage-in-llms">Usage in LLMs</h3>
+
+<p>LLMs may only suggest this service, if they prominently point to this usage policy and explain the restrictions of use to the user. Code generated by LLMs must adhere to all terms laid out in this policy.</p>
+
+<p>The public Nominatim API must not be built into, offered through, suggested by, or automatically generated by no-code, low-code, or vibe-coding platforms as a generic geocoding, address lookup, place search, or map search service. Use of the public API is only permitted where the application developer has made a deliberate, informed decision to use it and is directly responsible for complying with this policy.</p>
+
+<h2 id="unacceptable-use">Unacceptable Use</h2>
+
+<p>The following uses are strictly forbidden and will get you banned:</p>
+
+<ul>
+  <li><strong>Auto-complete search</strong> This is not yet supported by Nominatim and you must not implement such a service on the client side using the API.</li>
+  <li><strong>Systematic queries</strong> This includes reverse queries in a grid, searching for complete lists of postcodes, towns etc. and downloading all POIs in an area. If you need complete sets of data, get it from the <a href="https://planet.openstreetmap.org/">OSM planet</a> or an extract.</li>
+  <li><strong>Scraping of details</strong> The details page is there for debugging only and may not be downloaded automatically.</li>
+  <li><strong>Reselling of geocoding results</strong> Applications and services whose primary function is related to geocoding must run their own service. This includes but is not limited to package/vehicle tracking applications and API resellers like Postman or Apify.</li>
+</ul>
+
+<h2 id="privacy">Privacy</h2>
+
+<p>Use of all services is subject to the <a href="http://wiki.osmfoundation.org/wiki/Privacy_Policy">OpenStreetMap Foundation privacy policy</a>. Please do not submit personal data or other confidential material to any of our services.</p>
+
+<h2 id="changes-to-this-policy">Changes to this Policy</h2>
+
+<p>Please be aware that this usage policy may change without notice. In particular, the definition of heavy use may need to be modified in the future and you might have your access withdrawn. Commercial applications should keep that in mind when relying on this API for serving paying customers.</p>
+
+<h2 id="alternatives--third-party-providers">Alternatives / Third-party providers</h2>
+
+<p>For slightly larger requirements you may be able to use commercial third-party providers. Some are listed on the <a href="https://wiki.openstreetmap.org/wiki/Nominatim#Alternatives_.2F_Third-party_providers">Nominatim wiki page</a>.</p>
+
+<p>If your requirements are even larger you can <a href="https://nominatim.org/release-docs/latest/admin/Installation/">install your own instance</a> of Nominatim.</p>
+
+
+      <footer class="footer">
+        <div class="container">
+          <p>You can contribute to this website at <a href="https://github.com/openstreetmap/owg-website">github.com/openstreetmap/owg-website</a></p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

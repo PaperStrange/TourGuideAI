@@ -1,0 +1,34 @@
+SOURCE_URL: https://www.mlit.go.jp/plateau/faq/
+FETCHED: 2026-09-29T15:07:52Z
+FETCHED_BY: fetch-page.ps1 (Invoke-WebRequest)
+CHARS: 3427
+
+FAQ | よくある質問 | PLATEAU [プラトー] Language 日本語 English About PLATEAU About Vision Consortium News Learn Handbooks Use Cases Technical Reports Learning Journal Use Open Data Support Tools PLATEAU VIEW Support Start Guide Use Case Guide PLATEAU YouTube Channel PLATEAU Code FAQ Contact About PLATEAU Project PLATEAUについて知る About Vision Consortium News Learn Project PLATEAU、 データについて学ぶ Handbooks Use Cases Technical Reports Learning Journal Use データを活用、 利用する Open Data Support Tools PLATEAU VIEW Support データの活用等に関するサポート情報、 お問い合わせ Start Guide Use Case Guide PLATEAU YouTube Channel PLATEAU Code FAQ Contact Social X Youtube GitHub Copyright© MLIT Japan. All Rights Reserved. Site Policy Privacy Policy FAQ データ利用 データ整備・更新 PLATEAU VIEW その他 データ利用 Q 3D都市モデルを利用してみたいのですが、何から始めればいいかわかりません。 A 3D都市モデルを初めて利用する方向けに「スタートガイド」をまとめています。まずは こちら をご覧ください。 
+ Q 3D都市モデルはどこでダウンロードできますか。 A G空間情報センター でダウンロードできます。 
+ Q 3D都市モデルはどのような形式で配布されていますか。 A 基本的にCityGMLとなっています。都市によってはOBJやFBX等もダウンロードができます。 
+ Q CityGMLやFBX、OBJなど複数の形式で配布されているのは何故ですか。データとして差異はありますか。また、どれを使うべきですか。 A PLATEAUでは3D都市モデルの標準データ形式としてCityGML形式を採用し、全国で提供しています。一部地域では試験的にFBX、OBJ、FGDB等のデータ形式を提供しています。 
+ CityGML形式は中間フォーマットとして優れた汎用性を有しており、ユーザのニーズに応じた各種データ形式に変換可能です。 
+各種ツールを利用した変換方法を「データ変換マニュアル」として公開しています。 こちら をご覧ください。 
+ Q CityGMLのOBJ等への変換方法がわかりません。 A 各種ツールを利用した変換方法を「データ変換マニュアル」として公開しています。 こちら をご覧ください。 
+ Q 3D都市モデルのデータを利用するのに手続きは必要ですか。 A 手続き不要です。PLATEAUが提供する3D都市モデルやソフトウェアはすべてCC BY4.0等のオープンライセンスを採用しており、ご自由にダウンロード等して頂けます。 
+商用利用も可能です。詳細は PLATEAU Policy をご覧ください。 
+ Q 3D都市モデルのデータには何らかの権利が存在しますか。 A PLATEAUが提供する3D都市モデルの著作権はすべて地方公共団体に帰属していますが、これを公共データ利用規約（第1.0版）、CC BY4.0、ODC BY、ODbLの各種オープンライセンスに基づきオープンデータとして提供しています。 
+このため、3D都市モデルはどなたでも商用利用も含めて無料で自由にご利用いただけます。詳細は PLATEAU Policy をご覧ください。 
+ データ整備・更新 Q 自分の住んでいる地域の3D都市モデルがありません。 A PLATEAUの3D都市モデルは原則として市町村等の地方公共団体の発意に基づき、国土交通省が支援することで整備しています。 
+ Q 3D都市モデルはどのくらい正確ですか。 A PLATEAUの3D都市モデルは地図情報レベル2500を基本として整備しています。 
+ また、建築物LOD1等の単純なモデルは高さをある程度抽象化しています。 
+ 詳しくは「 TOPIC 3｜3D都市モデルデータの基本[3/4]｜LODレベルによる表現の違い 」のコラムをご覧ください。 
+ Q 3D都市モデルはどの程度の頻度で更新されますか。 A PLATEAUの3D都市モデルは地方公共団体が定期的に取得する航空写真等のデータをもとに作成しています。更新頻度は地域によって様々ですが、概ね1年～5年の範囲内で更新されることが一般的です。 
+ Q 3D都市モデルは全国整備される予定ですか。また、いつまでに全国に整備される予定でしょうか。 A 2027年度までに約500都市に拡大することを目指しています。その後も整備範囲の拡大を進めていきます。 
+ PLATEAU VIEW Q PLATEAU VIEWの使い方がわかりません。 A 操作方法のチュートリアルを提供しています。 こちら をご覧ください。 
+ Q PLATEAU VIEWで閲覧できる建物が古いです。 A 3D都市モデルはある時点で取得された航空写真等をもとに作成していますので、最新の建設状況が反映されていない場合があります。 
+データ取得年度等の詳細はデータカタログから確認することができます。 
+ Q PLATEAU VIEWに取り込めるデータ形式は何ですか。 A PLATEAU VIEWでは［Myデータ］から、GeoJSON、KML/KMZ、CSV、CZML等の形式のデータを取り込めます。 
+ 詳細は こちら の「コラム：任意の地理空間情報を追加する」をご覧ください。 
+ その他 Q PLATEAU Slackコミュニティに参加したいです。 A お問い合わせフォーム よりその旨ご連絡ください。参加のご案内を返信させていただきます。 
+ Q PLATEAUの補助制度「都市空間情報デジタル基盤構築支援事業」の情報はどこで確認できますか。 A こちら の補助制度ポータルサイトに情報を掲載しています。 
+ Q 「PLATEAUコンソーシアム」に参加したいです。​ A PLATEAUコンソーシアムページ の「Join」より、資料のご提出をお願いいたします。​ 
+ 　なお、これまでの活動記録は以下をご覧ください。​ 
+ 　・ PLATEAUコンソーシアムの活動記録 ​ 
+ 　・ 3D都市モデルの整備・活用促進に関する検討分科会の活動記録 ​ 
+ About PLATEAU Project PLATEAUについて知る About Vision Consortium News Learn Project PLATEAU、 データについて学ぶ Handbooks Use Cases Technical Reports Learning Journal Use データを活用、 利用する Open Data Support Tools PLATEAU VIEW Support データの活用等に関するサポート情報、 お問い合わせ Start Guide Use Case Guide PLATEAU YouTube Channel PLATEAU Code FAQ Contact Connection PLATEAU NEXT G空間情報センター PLATEAUヘルプデスク（AIGID） スマートシティ官民連携プラットフォーム 国土交通データプラットフォーム 東京都デジタルツイン実現プロジェクト Social X Youtube GitHub Copyright© MLIT Japan. All Rights Reserved. Site Policy Privacy Policy
