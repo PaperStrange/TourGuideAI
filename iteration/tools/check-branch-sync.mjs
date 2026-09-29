@@ -53,14 +53,29 @@ if (!NO_FETCH) {
   }
 }
 
-const localsRaw = git('for-each-ref --format=%(refname:short) refs/heads');
-if (localsRaw === null) {
+// A git working tree with NO LOCAL BRANCHES is still a git working tree. actions/checkout
+// leaves the runner in a detached HEAD, so `for-each-ref refs/heads` returns nothing there
+// -- and the first version read that empty list as "this is not a repository" and exited 2.
+// It is the fourth distinct failure of this one check, and all four had the same shape:
+// treating a proxy signal as the fact. The fact is whether git is usable, so ask that.
+if (git('rev-parse --git-dir') === null) {
   const msg = `${REPO} is not a git working tree`;
   if (JSON_OUT) console.log(JSON.stringify({ error: msg, branches: [] }));
   else console.log(`ENV  ${msg}`);
   process.exit(2);
 }
+
+const localsRaw = git('for-each-ref --format=%(refname:short) refs/heads') ?? '';
 const locals = localsRaw.split('\n').filter(Boolean);
+
+// No local branches means there is nothing to compare, which is the CI checkout shape.
+// That is "not applicable", not "clean" and not "broken" -- saying so is the point.
+if (locals.length === 0) {
+  const head = git('rev-parse --short HEAD') ?? '(unknown)';
+  if (JSON_OUT) console.log(JSON.stringify({ fetched: !NO_FETCH, diverged: 0, stale: 0, branches: [], note: 'detached HEAD with no local branches' }));
+  else console.log(`N/A  no local branches to compare (detached HEAD at ${head}).\n     Nothing to check here, and that is not a pass --\n     the guard that matters is the pre-push hook on a developer machine.`);
+  process.exit(0);
+}
 
 const rows = [];
 for (const b of locals) {
