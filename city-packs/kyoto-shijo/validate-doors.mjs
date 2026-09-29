@@ -35,11 +35,20 @@
  * fresh fetch is a re-verification event, not a validator step.
  *
  * Usage:  node city-packs/kyoto-shijo/validate-doors.mjs [--json]
+ *         node city-packs/kyoto-shijo/validate-doors.mjs --strict
+ *              Release gate. Same assertions, but exit is non-zero while any
+ *              declared BLOCKER stands. The default run exits 0 with a blocker
+ *              standing, because nothing in the pack is FALSE -- it is not yet
+ *              SHIPPABLE. Those are different states and this flag keeps them
+ *              different, rather than making CI permanently red and training
+ *              everyone to ignore it.
  *         node city-packs/kyoto-shijo/validate-doors.mjs --doors <path>   # fire drill:
  *              run every assertion against an ALTERNATE doors.json, so the
  *              separation assertions can be shown to fail without editing the
  *              shipped file (task-9 asked for exactly that demonstration).
- * Exit:   0 = all assertions pass, 1 = an assertion failed, 2 = usage/IO error.
+ * Exit:   0 = all assertions pass (and no fatal blocker under --strict)
+ *         1 = an assertion failed, or --strict with a blocker standing
+ *         2 = usage/IO error.
  */
 import { readFileSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -1023,9 +1032,139 @@ const DECLARED_VALUE_CENSUS = Object.freeze({
 }
 
 /* ------------------------------------------------------------------ *
+ * V21 — our attribution record is as complete as the licence we elected
+ *
+ * CC BY 4.0 section 3(a)(1) requires creator identification, a copyright notice,
+ * a licence notice, a notice referring to the disclaimer of warranties and a URI
+ * to the licence to travel with the work when it is Shared. The Lead elected
+ * CC BY 4.0 on 2026-09-30 and, on the first pass, recorded only the licence name
+ * and the reasoning -- the material that has to travel was unbuilt. This
+ * assertion is what stops that recurring.
+ *
+ * It is deliberately NOT a hardcoded 1:1 field list against the ODbL half. The two
+ * halves are different kinds of thing (one is extracted from a dataset, the other
+ * is authored), so some ODbL slots legitimately have no counterpart here. Instead
+ * every ODbL `source` slot must be ACCOUNTED FOR: either mapped to a named field
+ * of ours that is non-empty, or declared not-applicable with a reason. A slot that
+ * is neither fails, so if the ODbL half ever gains a slot this goes red until
+ * someone decides what it means for our side.
+ * ------------------------------------------------------------------ */
+
+/** Editorial floors, NOT derived facts. An editorial threshold is a different kind
+ *  of value from a measured one, and this file does not blur the two. */
+const EDITORIAL_MIN_NOTICE_CHARS = 40;
+
+/** CC BY 4.0 section 3(a)(1): material that must be present on our side. */
+const REQUIRED_OUR_SLOTS = Object.freeze([
+  'contentLicence', 'contentLicenceUri', 'contentLicenceNotice',
+  'contentWarrantyDisclaimer', 'contentCreator',
+]);
+
+/** Every ODbL `source` slot, accounted for. */
+const ODBL_SOURCE_COUNTERPART = Object.freeze({
+  dataset: { ours: 'thisFile', note: 'theirs names the upstream dataset; ours names what this file is' },
+  licence: { ours: 'contentLicence', note: '' },
+  licenceUri: { ours: 'contentLicenceUri', note: '' },
+  attribution: { ours: 'contentLicenceNotice', note: 'the credit + link + changes notice CC BY 4.0 requires' },
+  copyrightUrl: { ours: null, na: "Our content has no copyright page of its own. The CC BY deed URI in contentLicenceUri carries the terms, and osmCopyrightUrl covers the ODbL half's attribution." },
+  extractedAt: { ours: null, na: 'Nothing was extracted. Our rows are authored and carry a per-door verifiedAt; the ODbL half carries extractedAt for the material that WAS extracted.' },
+});
+
+/**
+ * A field whose ENTIRE content is one of these is a placeholder.
+ *
+ * Deliberately whole-string anchored, and deliberately NOT applied to explanatory
+ * prose. The first version of this test matched on token presence, and it fired on
+ * the Lead's `contentCreator.why`, which reads "...the repository LICENSE still
+ * reads the unedited MIT placeholder..." -- a sentence ABOUT a placeholder, not a
+ * placeholder. That is pattern-matching on a word instead of reading what the
+ * field says, which is the exact failure this session keeps circling.
+ */
+const PLACEHOLDER_ONLY = /^(TBD|TODO|FIXME|XXX|UNSET|null|placeholder|n\/?a)$/i;
+const hasContent = (v) => {
+  if (v === null || v === undefined) return false;
+  if (typeof v === 'string') return v.trim().length > 0;
+  if (Array.isArray(v)) return v.length > 0;
+  if (typeof v === 'object') return Object.keys(v).length > 0;
+  return true;
+};
+/** Present, non-empty, and not a whole-string placeholder. Value slots only. */
+const filled = (v) => hasContent(v) && !(typeof v === 'string' && PLACEHOLDER_ONLY.test(v.trim()));
+
+/** Declared blockers: visible, counted, and fatal under --strict. */
+const DECLARED_BLOCKERS = [];
+
+{
+  const problems = [];
+  const L = doorsDoc.licence;
+
+  // (1) every required slot is present, non-empty and not a placeholder
+  for (const slot of REQUIRED_OUR_SLOTS) {
+    if (!filled(L[slot])) problems.push(`required attribution slot "${slot}" is absent, empty, or a placeholder`);
+  }
+  if (L.contentLicenceUri && !/^https:\/\/creativecommons\.org\/licenses\/by\/4\.0\/?$/.test(String(L.contentLicenceUri))) {
+    problems.push(`contentLicenceUri "${L.contentLicenceUri}" is not the CC BY 4.0 deed`);
+  }
+  for (const slot of ['contentLicenceNotice', 'contentWarrantyDisclaimer']) {
+    const v = L[slot];
+    if (typeof v === 'string' && v.trim().length < EDITORIAL_MIN_NOTICE_CHARS) {
+      problems.push(`${slot} is ${v.trim().length} chars; an editorial floor of ${EDITORIAL_MIN_NOTICE_CHARS} applies because a notice that says "see licence" is not a notice`);
+    }
+  }
+
+  // (2) symmetry: every ODbL source slot is accounted for
+  const odblSlots = Object.keys(osmDoc.source || {});
+  const unaccounted = odblSlots.filter((k) => !Object.prototype.hasOwnProperty.call(ODBL_SOURCE_COUNTERPART, k));
+  if (unaccounted.length) {
+    problems.push(`the ODbL half has source slot(s) [${unaccounted.join(', ')}] with no entry in ODBL_SOURCE_COUNTERPART -- decide what they mean for our side`);
+  }
+  for (const [slot, map] of Object.entries(ODBL_SOURCE_COUNTERPART)) {
+    if (!odblSlots.includes(slot)) { problems.push(`ODBL_SOURCE_COUNTERPART declares "${slot}", which the ODbL half no longer has`); continue; }
+    if (map.ours === null) {
+      if (!hasContent(map.na)) problems.push(`"${slot}" is declared not-applicable without a reason`);
+    } else if (!filled(L[map.ours])) {
+      problems.push(`${slot}: counterpart "${map.ours}" on our side is absent or empty -- this is the quiet drop the check exists to catch`);
+    }
+  }
+
+  // (3) the creator slot: resolved, or explicitly declared unresolved.
+  //     `.why` and `.needed` are explanatory prose, so they are checked with
+  //     hasContent, NOT with the placeholder test.
+  const c = L.contentCreator;
+  const resolved = Boolean(c) && typeof c === 'object' && filled(c.name) && (filled(c.year) || filled(c.years));
+  const declaredUnresolved = Boolean(c) && typeof c === 'object'
+    && typeof c.status === 'string' && /UNRESOLVED/i.test(c.status)
+    && hasContent(c.why) && hasContent(c.needed);
+  if (!resolved && !declaredUnresolved) {
+    problems.push('contentCreator is neither a resolved credit (name + year) nor explicitly flagged unresolved with why + needed');
+  }
+  if (!resolved && declaredUnresolved) {
+    DECLARED_BLOCKERS.push({
+      id: 'B1',
+      what: 'CC BY 4.0 creator identification is unresolved',
+      detail: `${String(c.status)} -- the pack cannot lawfully be distributed under CC BY 4.0 until the creator is named.`,
+      needed: String(c.needed),
+      fatalWhen: '--strict',
+    });
+  }
+
+  const mapped = Object.values(ODBL_SOURCE_COUNTERPART).filter((m) => m.ours).length;
+  const na = Object.values(ODBL_SOURCE_COUNTERPART).filter((m) => !m.ours).length;
+  check('V21', 'our attribution record is as complete as the licence we elected requires',
+    problems.length === 0,
+    `${REQUIRED_OUR_SLOTS.length} required CC BY 4.0 slots present; all ` +
+    `${Object.keys(ODBL_SOURCE_COUNTERPART).length} ODbL source slots accounted for ` +
+    `(${mapped} mapped, ${na} declared not-applicable with a reason); ` +
+    (DECLARED_BLOCKERS.length
+      ? 'DECLARED BLOCKER: contentCreator is unresolved -- printed in the BLOCKED section and fatal under --strict'
+      : 'contentCreator is resolved') +
+    `; problems=${problems.length}${problems.length ? ' -> ' + problems.join('; ') : ''}`);
+}
+
+/* ------------------------------------------------------------------ *
  * guard — an assertion may not be silently deleted to make the run green
  * ------------------------------------------------------------------ */
-const MIN_ASSERTIONS = 20;
+const MIN_ASSERTIONS = 21;
 {
   check('V20', `at least ${MIN_ASSERTIONS} assertions exist`,
     results.length + 1 >= MIN_ASSERTIONS,
@@ -1083,8 +1222,11 @@ function planView() {
   return rows.join('\n');
 }
 
+const STRICT = process.argv.includes('--strict');
+const blockersFatal = STRICT && DECLARED_BLOCKERS.length > 0;
+
 if (process.argv.includes('--json')) {
-  console.log(JSON.stringify({ passed, failed, results }, null, 2));
+  console.log(JSON.stringify({ passed, failed, strict: STRICT, blockers: DECLARED_BLOCKERS, results }, null, 2));
 } else {
   console.log('kyoto-shijo doors — executable assertions');
   console.log(`  own content : ${DOORS_PATH.split(/[\\/]/).slice(-3).join('/')}  (${doorsDoc.doors.length} doors, no ODbL value)`);
@@ -1116,8 +1258,23 @@ if (process.argv.includes('--json')) {
   }
   console.log(`  ${'TOTAL'.padEnd(24)} ${String(Object.values(census).reduce((n, v) => n + v.count, 0)).padStart(3)}`);
   console.log('');
+  console.log('BLOCKED — declared, visible, and fatal under --strict');
+  if (DECLARED_BLOCKERS.length === 0) {
+    console.log('  (none)');
+  } else {
+    for (const b of DECLARED_BLOCKERS) {
+      console.log(`  ${b.id}  ${b.what}`);
+      console.log(`      ${b.detail}`);
+      console.log(`      needed: ${b.needed}`);
+      console.log(`      fatal when: ${b.fatalWhen}`);
+    }
+    console.log(`  ${DECLARED_BLOCKERS.length} blocker(s) standing. The assertions above are green and exit is 0,`);
+    console.log('  because nothing in the pack is FALSE -- it is not yet SHIPPABLE. Re-run with');
+    console.log('  --strict to make this exit non-zero, which is the release gate.');
+  }
+  console.log('');
   console.log('plan view — derived from the evidence footprints, not from the doors file');
   console.log('  D door cell   # footprint interior   : 四条通 sidewalk   = street centreline   | 烏丸通   . open ground');
   console.log(planView());
 }
-process.exit(failed === 0 ? 0 : 1);
+process.exit(failed === 0 && !blockersFatal ? 0 : 1);

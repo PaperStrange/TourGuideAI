@@ -1,0 +1,121 @@
+{
+  "note": "One entry per URL this pack cites. `whatIRead` is what the curator actually found on the page — page, table, or line — recorded so a different person can check the claim without re-fetching. `evidence` names the raw bytes kept under evidence/, whose sha256 is recorded here too, so the bytes can be proven unchanged.",
+  "rule": "A URL that was never opened does not count as verification. An entry with no evidence file has not been opened and is listed under unopenedUrls instead.",
+  "cityId": "kyoto-shijo",
+  "recordedAt": "2026-09-29",
+  "recordedBy": "city-data-architect (pack-curator, shared task task-10)",
+  "sources": {
+    "S1": {
+      "url": "https://data.city.kyoto.lg.jp/resource/?id=7052",
+      "title": "京都市オープンデータ 京都観光Navi「京都観光見もの情報」DSIGHT_1.csv（資源ID 7052、著作権者 京都市）",
+      "licence": "CC BY 4.0（表示）",
+      "whatIRead": "資源ページ本文：データファイル DSIGHT_1.csv / ファイルサイズ 0.36 MB / 著作権者 京都市 / 登録者 産業観光局 観光ＭＩＣＥ推進室 / データのライセンス CC-BY 4.0（表示）/ 更新日時 2021-03-26。CSV 本体は POST フォーム（upload_file=DSIGHT_1.csv + download=Download）で取得、378,453 B、sha256 233736CE87051B584D34000B7AD6D84B1DE8EF450DAE0801926488FACE67AD7A、648 行 × 30 列、ヘッダ行なし。",
+      "evidence": "evidence/kyoto-odp-resource-7052.html / .txt、evidence/kyoto-sight-DSIGHT_1.csv、evidence/kyoto-csv-slice-rows.txt"
+    },
+    "S2": {
+      "url": "https://www2.city.kyoto.lg.jp/sogo/toukei/Sonota/kiyaku/kiyaku_syoban.pdf",
+      "title": "京都市オープンデータ利用規約",
+      "licence": "CC BY 4.0 相当（規約 (1)）",
+      "whatIRead": "規約本文 (1)(2)ア・イ：複製・公衆送信・翻案は原則 CC 表示 4.0 国際による／必須署名串／改変した場合はその旨を記載し、市が作成したかのように公表してはならない。",
+      "evidence": "evidence/kyoto-city-kiyaku-syoban.pdf"
+    },
+    "S3": {
+      "url": "https://www.openstreetmap.org/copyright",
+      "title": "OpenStreetMap copyright and licence (ODbL 1.0)",
+      "licence": "ODbL 1.0",
+      "whatIRead": "ODbL 1.0 の適用と「© OpenStreetMap contributors」の帰属表示義務。OSM 由来の値は kyoto-shijo-osm-places.json に分離して同ライセンスで公開する。",
+      "evidence": "evidence/osm-corridor-map.json（API 応答ヘッダの license フィールドが同 URL を指す）"
+    },
+    "S4": {
+      "url": "https://www.tfkoutori.jp/data/pdf/kiyaku-202209.pdf",
+      "title": "不動産の表示に関する公正競争規約（全国不動産公正取引協議会連合会）",
+      "licence": "公開規約（引用）",
+      "whatIRead": "施行規則 (9)：『徒歩による所要時間は、道路距離８０メートルにつき１分間を要するものとして算出した数値を表示すること。この場合において、１分未満の端数が生じたときは、１分として算出すること。』 本文抽出 evidence/japan-rftc-hyouji-kiyaku.txt の 5189–5194 行。",
+      "evidence": "evidence/japan-rftc-hyouji-kiyaku.pdf、evidence/japan-rftc-hyouji-kiyaku.txt"
+    },
+    "S5": {
+      "url": "https://www.city.kyoto.lg.jp/kotsu/page/0000240682.html",
+      "title": "京都市交通局：定期券以外の運賃（市バス）",
+      "licence": "公開情報（引用）",
+      "whatIRead": "『市バス普通運賃（均一運賃区間） 運賃額 大人 230円 小児 120円』『市バスでは、交通系ICカードもご利用いただけます。』 ページ番号240682、2024年6月1日。IC 割引の記載は無い。",
+      "evidence": "evidence/kyoto-kotsu-fare-bus-teiki.html / .txt"
+    },
+    "S6": {
+      "url": "https://www.city.kyoto.lg.jp/kotsu/page/0000240757.html",
+      "title": "京都市交通局：定期券以外の運賃（地下鉄）",
+      "licence": "公開情報（引用）",
+      "whatIRead": "地下鉄普通運賃一覧：1区 大人220円 / 2区 260円 / 3区 290円 / 4区 330円 / 5区 360円。区数は駅間で決まるため、この表だけでは特定区間の運賃は決まらない。",
+      "evidence": "evidence/kyoto-kotsu-fare-subway.html / .txt"
+    },
+    "S7": {
+      "url": "https://www.yasaka-jinja.or.jp/access/",
+      "title": "八坂神社 境内マップ・アクセス（公式）",
+      "licence": "公開情報（事実の引用）",
+      "whatIRead": "『9：00～17：00（社務所）』『24時間参拝可能』『〒605-0073 京都府京都市東山区祇園町北側625』『TEL 075-561-6155』。電車：京阪「祇園四条」駅より徒歩約5分／阪急「京都河原町」駅より徒歩約8分。バス：JR京都駅より市バス100・206番「祇園」下車すぐ。",
+      "evidence": "evidence/yasaka-jinja-access.html / .txt"
+    },
+    "S8": {
+      "url": "https://www.yasaka-jinja.or.jp/about/architecture/",
+      "title": "八坂神社 建造物（公式）",
+      "licence": "公開情報（事実の引用）",
+      "whatIRead": "西楼門・本殿等の建造物解説。西楼門が四条通に面する門であること、本殿が祇園造であることの記述を含む。",
+      "evidence": "evidence/yasaka-jinja-architecture.html / .txt"
+    },
+    "S9": {
+      "url": "https://www.chion-in.or.jp/guide/",
+      "title": "知恩院 参拝のご案内（拝観情報・公式）",
+      "licence": "公開情報（事実の引用）",
+      "whatIRead": "『開閉門時間は午前6時から午後4時』『※各所受付は午前9時～』『※一部行事・法要日程では開門時間が異なります』。庭園拝観料：方丈庭園 大人400円／友禅苑 大人300円／共通券 大人500円（小人 200/150/250円、団体 360/270/450円）。受付時間：友禅苑 9:00〜16:00、方丈庭園 9:00〜15:50、共通券販売は15:20まで。所在地 京都市東山区林下町400。",
+      "evidence": "evidence/chion-in-guide.html / .txt"
+    },
+    "S10": {
+      "url": "https://www.kiyomizudera.or.jp/access.php",
+      "title": "清水寺 拝観案内・交通案内（公式）",
+      "licence": "公開情報（事実の引用）",
+      "whatIRead": "『2026年の拝観時間』表：1.1〜3.26 開門6:00 閉門18:00／3.27〜4.5 6:00〜21:30（21:00受付終了）／4.6〜6.30 6:00〜18:00／7.1〜8.13 6:00〜18:30／8.14〜8.16 6:00〜21:30／8.17〜8.31 6:00〜18:30／9.1〜11.20 6:00〜18:00／11.21〜11.30 6:00〜21:30／12.1〜12.31 6:00〜18:00。『＊夜間特別拝観の期間は年ごとに変更になります』。交通：京阪電鉄 清水五条駅から約徒歩25分。所在地 京都市東山区清水1丁目294、TEL 075-551-1234。拝観料の記載はこのページには無い。",
+      "evidence": "evidence/kiyomizudera-access-hours.html / .txt、evidence/kiyomizudera-faq.html / .txt"
+    },
+    "S11": {
+      "url": "https://www.kenninji.jp/access/",
+      "title": "建仁寺 アクセス・拝観案内（公式）",
+      "licence": "公開情報（事実の引用）",
+      "whatIRead": "『拝観時間 午前10時～午後4時30分受付終了（午後5時閉門）』『拝観料金 一般 800円、学生（小・中・高）500円 ※小学生未満のお子様は無料』。交通：京阪電車「祇園四条駅」より徒歩7分／阪急電車「河原町駅」より徒歩10分／市バス「東山安井」より徒歩5分。所在地 京都市東山区大和大路通四条下る小松町584。",
+      "evidence": "evidence/kenninji-access.html / .txt"
+    },
+    "S12": {
+      "url": "https://www.kenninji.jp/news/?p=2352",
+      "title": "建仁寺 [重要] 拝観料改定のお知らせ（公式）",
+      "licence": "公開情報（事実の引用）",
+      "whatIRead": "『改定時期：2027年1月1日』『改定前 拝観料：一般 800円』『改定後 拝観料：一般 1,000円』『※小・中・高生につきましては、以前と同様に500円となります。』 → 2026-09-29 時点の有効値は 800 円で、2027-01-01 に 1,000 円へ上がる。",
+      "evidence": "evidence/kenninji-news-fee2025.html / .txt"
+    },
+    "S13": {
+      "url": "https://api.openstreetmap.org/api/0.6/map.json?bbox=135.7588,35.0028,135.7789,35.0047",
+      "title": "OpenStreetMap API 0.6 map response — 四条烏丸〜祇園 corridor",
+      "licence": "ODbL 1.0",
+      "whatIRead": "3,730,909 B、sha256 56B456152B2F5CFC6854EA5EDFBD2C92B236D4BA67E7978D591E359999C294A2。四条通の way 11 本（27427466 / 28322073 / 174762073 / 380083522 / 465069431 / 465069436 / 678103923 / 843727820 / 854442449 / 964931603 / 1510539685）が共有ノードで連続し、西端 lod 135.7583923 から東端 135.7771926 まで 1,716.803 m。地下鉄・京阪・阪急の駅ノード、市バス停留所ノード、subway_entrance ノードを含む。座標は kyoto-shijo-osm-places.json に分離して収録。",
+      "evidence": "evidence/osm-corridor-map.json"
+    },
+    "S14": {
+      "url": "https://www.openstreetmap.org/way/205732558",
+      "title": "OpenStreetMap way 205732558 京都三井ビルディング / way 205732536 京都ダイヤビル（block 0 の 2 棟）",
+      "licence": "ODbL 1.0",
+      "whatIRead": "block 0（四条烏丸直東 40 m）の北側・南側の建物同定。両 way のタグ（building=commercial、addr:suburb/addr:quarter/addr:block_number、building:levels=8、start_date、source=Bing）を kyoto-shijo-osm.json の facades から読み、座標は kyoto-shijo-osm-places.json に収録。",
+      "evidence": "evidence/osm-block-q1-footprints.json、evidence/osm-block-q2-everything.json、city-packs/kyoto-shijo/kyoto-shijo-osm.json"
+    }
+  },
+  "unopenedUrls": [
+    "https://data.city.kyoto.lg.jp/dataset/00073/",
+    "https://opendatacommons.org/licenses/odbl/1-0/"
+  ],
+  "licencePointers": [
+    {
+      "url": "https://www.openstreetmap.org/copyright",
+      "reason": "licence pointer for the ODbL half, not an opened document"
+    },
+    {
+      "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+      "reason": "licence text pointer, not an opened document"
+    }
+  ]
+}
