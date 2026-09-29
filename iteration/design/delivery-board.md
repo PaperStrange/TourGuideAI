@@ -5,7 +5,7 @@
 >
 > **更新规则**：每次共享任务状态变化时更新本文件；`ledger` 与门是真相，本文件是它们的指针。
 
-**最后更新**：2026-09-30 · `iteration` = `016621f`
+**最后更新**：2026-09-30 · `iteration` = `b958d5f`
 
 ---
 
@@ -16,7 +16,7 @@
 | 阶段 | 目标 | 状态 |
 |---|---|---|
 **S1** | **证伪或证实"一个 40×40 街区含 12 个可进入门洞"** | 🔄 **进行中** |
-**S2** | 事实层收尾，干净 checkout 中 **10/10 门通过** | 🔄 **进行中** |
+**S2** | 事实层收尾，干净 checkout 中 **10/10 门通过** | ✅ **达成** |
 **S3** | 投影与栅格化（OSM 几何烘焙 → 地面/碰撞/高度） | ⏳ **被 S1 挡**（见下） |
 **S4** | 12 套室内 + 招牌管线（100–160 h） | ⏳ |
 **S5** | Gate 1 验收：一个真人走通 | ⏳ |
@@ -40,7 +40,7 @@
 | task-9 | 修 validate-doors 指向 ODbL 分表 + 加断言 | `doors-author` | ✅ 完成 |
 | task-10 | 事实层落地（pack/places/transit） | `pack-curator` | ✅ 完成 |
 | **task-11** | **12 个门的现实核对** | **`fact-verifier`** | 🔄 **进行中** |
-| **task-12** | **事实层收尾（UNKNOWN/D-15/D-18）** | **`pack-curator`** | 🔄 **进行中** |
+| task-12 | 事实层收尾（UNKNOWN/D-15/D-18） | `pack-curator` | ✅ 完成 |
 
 **团队编制**：8 个 teammate（**上限即 8**）。派新活时**优先复用已收工成员**——第一次派 `task-11`/`task-12` 就因满编被拒。
 
@@ -50,9 +50,9 @@
 
 | 项 | 命令 | 当前 |
 |---|---|---|
-**全部门** | `node iteration/tools/run-gates.mjs` | **10 道**；本地 9 过 1 红（`deps`，见 B2） |
+**全部门** | `node iteration/tools/run-gates.mjs` | **10 道 · 干净克隆 10/10 exit 0** ✅ |
 **仓库规则** | `node iteration/tools/check-repo-hygiene.mjs` | **7 条**（R1–R5,R7 过；R6 KNOWN-ACCEPTED） |
-**溯源对齐** | `node iteration/tools/check-source-alignment.mjs` | `PRESENT 21  AS-PARTS 10  OSM-ELEMENT 9  **ABSENT 0**  NEAR-VARIANT 0  UNKNOWN 4`（起点：8 / 12） |
+**溯源对齐** | `node iteration/tools/check-source-alignment.mjs` | `PRESENT 21  AS-PARTS 10  OSM-ELEMENT 9  **ABSENT 0**  NEAR-VARIANT 0  UNKNOWN 4`（起点 8 / 12；**4 是诚实下限**：2 条组合地址 + 2 条 OSM 无名字对象的手作标签） |
 **分支同步** | `node iteration/tools/check-branch-sync.mjs` | 全部 in-sync |
 **CI** | GitHub → Actions → Fact Integrity | **#7 success**（前 6 次失败已修） |
 **分支保护** | `master` + `iteration` | 已生效，check 名为真实值（`Fact-integrity gates` / `build-and-test (18.x)`） |
