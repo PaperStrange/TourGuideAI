@@ -59,7 +59,14 @@ const GATES = [
   // describe a world built under a different contract -- and that refusal is worth keeping.
   { id: 'guide', name: 'guide export (the door that finally has something behind it)', cmd: ['node', join(REPO, 'iteration', 'tools', 'gate-guide.mjs')],
     why: 'the export boundary proved in task-4 asserted a door with nothing behind it; this asserts the artefact, including that the guide refuses to describe a scene baked under a different contract' },
-  { id: 'branch-sync', name: 'no local branch is stale or diverged', cmd: ['node', join(REPO, 'iteration', 'tools', 'check-branch-sync.mjs'), '--no-fetch'],
+  // Placed AFTER gate-guide so the export exists: the walk must reconcile against guide.json and
+  // cannot bake it itself. That is ordering for an INPUT, not a verdict that depends on how the
+  // working copy was prepared -- the viewer still bakes its own scene.bin via --bake-if-absent,
+  // so a clean clone runs both gates without a predecessor's help for the artefact it owns.
+  { id: 'viewer', name: 'walkable shell (the world, walked)', cmd: ['node', join(REPO, 'iteration', 'tools', 'check-viewer.mjs'), '--bake-if-absent'],
+    why: 'a collision-constrained walker follows the drifting street centreline end to end; doors present and reconciled with the export; frames deterministic' },
+  { id: 'viewer-page', name: 'the baked page actually runs', cmd: ['node', join(REPO, 'iteration', 'tools', 'check-viewer-page.mjs')],
+    why: 'the page own JavaScript executed headlessly against a DOM stub -- that it baked is not that it runs' },  { id: 'branch-sync', name: 'no local branch is stale or diverged', cmd: ['node', join(REPO, 'iteration', 'tools', 'check-branch-sync.mjs'), '--no-fetch'],
     why: 'a local branch behind its remote is how a commit lands on a 199-commit-old base' },
 ];
 

@@ -571,3 +571,9 @@ server/coverage/lcov-report
 !.dsh/skills/
 !.dsh/skills/tourguide-fact-integrity/
 !.dsh/skills/tourguide-fact-integrity/**
+
+# The walkable shell's baked page is a DERIVED artefact: it is regenerated from scene.bin and
+# guide.json, and it pins both hashes. build/ is gitignored for the same reason, and tracking a
+# 311 KB file that every emit-scene invalidates would put a stale copy in history.
+# check-viewer.mjs --bake-if-absent and gate-viewer.mjs regenerate it on demand instead.
+iteration/viewer/index.html
