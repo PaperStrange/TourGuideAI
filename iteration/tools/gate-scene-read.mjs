@@ -28,6 +28,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { ORIGIN, worldGrid, GRID } from '../../docs/handOff/dsh-bundle-tourguide-2.5d/tools/world-grid.mjs';
+import { SCENE_MAGIC, SCENE_VERSION } from './emit-scene.mjs';
 
 const REPO = join(import.meta.dirname, '..', '..');
 const P = join(REPO, 'build', 'scene.bin');
@@ -64,9 +65,14 @@ try {
   console.log('(scene.bin was absent and this gate baked it)');
 }
 
-const MAGIC = 'TG25DSCN';
+// The container's format id and version are IMPORTED, not copied. This reader's LOGIC is
+// independent of the emitter -- it re-derives the header and cross-checks it -- but the format
+// CONSTANTS must not be: a reader carrying its own copy of the magic cannot notice that the
+// container changed format, which is the one thing R2 and R3 exist to notice. The evidence is
+// immediate: R3 read ersion === 1 as a literal and therefore kept passing the assertion while
+// the emitter had already moved to version 2.
 ok('R1', buf.length >= 108, `${buf.length} B, minimum header is 108`);
-ok('R2', buf.toString('ascii', 0, 8) === MAGIC, `magic ${JSON.stringify(buf.toString('ascii', 0, 8))}`);
+ok('R2', buf.toString('ascii', 0, 8) === SCENE_MAGIC, `magic ${JSON.stringify(buf.toString('ascii', 0, 8))}`);
 const version = buf.readUInt32LE(8);
 const wTiles = buf.readUInt32LE(12);
 const hTiles = buf.readUInt32LE(16);
@@ -76,7 +82,7 @@ const latUdeg = Number(buf.readBigInt64LE(32));
 const contractHash = buf.toString('ascii', 40, 104);
 const manifestLen = buf.readUInt32LE(104);
 
-ok('R3', version === 1, `version ${version}`);
+ok('R3', version === SCENE_VERSION, `version ${version} equals the IMPORTED SCENE_VERSION ${SCENE_VERSION}`);
 // The container must agree with the FROZEN CONTRACT, not merely with itself. A scene baked
 // under a different grid is a scene of a different world.
 ok('R4', wTiles === worldGrid.wTiles && hTiles === worldGrid.hTiles,

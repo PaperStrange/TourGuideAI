@@ -83,8 +83,15 @@ const DEFAULT_OUT = 'build/scene.bin';
  */
 const METRES_PER_LEVEL = 3.0;
 
-const MAGIC = 'TG25DSCN';
-const SCENE_VERSION = 1;
+export const SCENE_MAGIC = 'TG25DSCN';
+const MAGIC = SCENE_MAGIC;   // local alias; the container's format id is exported so readers can ASSERT it
+/**
+ * THE ONE DEFINITION. Readers import this from here (D-12's lesson: mirrored
+ * copies drift, imports do not). Bumped 1 -> 2 with the `openings` layer, because
+ * the container grew a layer and a reader that does not know about it must FAIL
+ * rather than read past the end of the bytes it understands.
+ */
+export const SCENE_VERSION = 2;
 
 /* Frontage-continuity thresholds (Lead instruction: assert the PROPERTY, not the
  * count — "79 footprints" was satisfied by the broken behaviour).
@@ -1019,6 +1026,7 @@ export function packScene(scene, meta) {
     Buffer.from(scene.collision),
     Buffer.from(scene.heights),
     Buffer.from(scene.occlusionHalf),
+    Buffer.from(scene.openings.raster),
   ]);
 }
 
@@ -1044,7 +1052,9 @@ export function unpackScene(buf) {
   const heights = buf.subarray(o, o + n);
   o += n;
   const occlusionHalf = buf.subarray(o, o + wTiles);
-  return { wTiles, hTiles, lonUdeg, latUdeg, contractHash, manifest, ground, collision, heights, occlusionHalf };
+  o += wTiles;
+  const openings = buf.subarray(o, o + n);
+  return { wTiles, hTiles, lonUdeg, latUdeg, contractHash, manifest, ground, collision, heights, occlusionHalf, openings };
 }
 
 /* ------------------------------------------------------------------ *
@@ -1063,6 +1073,14 @@ export function buildScene(inputPath, { mutateTags } = {}) {
   const diag = diagnose(projected);
   diag.blockZero = blockZeroStats(projected, raster.records);
   const fit = streetFit(street.line);
+  // Openings: read from the fact layer, applied to the collision bytes, and the
+  // claim recorded per door. The door's own cell is NOT opened -- only what is
+  // behind it -- so "the walker reaches the door" and "the walker enters" stay
+  // two different facts.
+  const openings = buildOpenings(readDoors(), raster.collision);
+  for (let i = 0; i < openings.raster.length; i += 1) {
+    if (openings.raster[i]) raster.collision[i] = 0;
+  }
 
   const observed = raster.records.filter((r) => r.valueKind === VALUE_KIND.OBSERVED);
   const parsed = raster.records.filter((r) => r.valueKind === VALUE_KIND.PARSED);
@@ -1078,6 +1096,19 @@ export function buildScene(inputPath, { mutateTags } = {}) {
       collision: '1 = BLOCKED (building), 0 = walkable',
       heights: 'sourced height in metres, 0 = no sourced height (see records[].valueKind)',
       occlusionHalf: 'per column, northernmost blocked half-cell (0..79), 255 = none',
+      openings: '1 = the block here is opened by an entrance; every such tile belongs to exactly one openings.records[] entry and carries its valueKind',
+    },
+    openings: {
+      source: openings.source,
+      sourceSha256: openings.sourceSha256 ?? null,
+      note: openings.source
+        ? 'positions read from the fact layer (doors.json), never guessed here'
+        : 'doors.json absent: the openings layer is EMPTY and the seven north doors are NOT enterable in this bake',
+      records: openings.records,
+      tiles: openings.tiles ?? 0,
+      authoredCount: openings.authored ?? 0,
+      observedCount: openings.observed ?? 0,
+      guideVerifiedColumnAllowed: false,
     },
     counts: {
       buildingWaysSeen: features.length + skippedNoGeometry.length,
@@ -1141,6 +1172,96 @@ export function buildScene(inputPath, { mutateTags } = {}) {
     diag,
     street,
     fit,
+    openings,
+  };
+}
+
+/* --- Openings: where a block is opened by an entrance --------------------- *
+ * SHAPE IS SETTLED BY THE LEAD, do not re-open it:
+ *   - positions come from `doors.json`, NOT from this emitter's own guess. That
+ *     is an OWNERSHIP decision, not convenience: a door's position is a
+ *     fact-layer thing, and letting each consumer decide which door is an
+ *     entrance gives one fact several sources of truth (D-12 / D-23 / D-36).
+ *   - every opening tile carries a `valueKind`. All twelve doors are `authored`
+ *     -- nobody has observed one -- so an opening is something we PLACED and it
+ *     must not reach the guide's verified column. An openings layer without a
+ *     valueKind would be the exact thing this project exists to prevent, and it
+ *     would be easy to omit because a collision layer FEELS like geometry rather
+ *     than a claim.
+ *   - emit-scene must still run with NO doors.json: the layer is then empty and
+ *     the report says so. This is a gate; making doors.json a hard dependency
+ *     would break the chain elsewhere.
+ * ------------------------------------------------------------------------ */
+
+const DOORS_PATH = 'city-packs/kyoto-shijo/doors.json';
+
+/** Read the authored doors. Returns null when the file is absent (not an error here). */
+export function readDoors(path = DOORS_PATH) {
+  const abs = resolve(REPO, path);
+  if (!existsSync(abs)) return null;
+  const raw = JSON.parse(readFileSync(abs, 'utf8'));
+  const list = raw.doors || (raw.blocks && raw.blocks[0] && raw.blocks[0].doors) || [];
+  return {
+    path,
+    sha256: sha256Hex(readFileSync(abs)),
+    doors: list
+      .map((d) => ({
+        id: d.doorId || d.id,
+        cellX: d.cellX ?? d.cell?.x,
+        cellY: d.cellY ?? d.cell?.y,
+        valueKind: d.provenance?.valueKind ?? null,
+      }))
+      .filter((d) => Number.isInteger(d.cellX) && Number.isInteger(d.cellY)),
+  };
+}
+
+/**
+ * Derive the opening run behind each door FROM THE COLLISION BYTES.
+ *
+ * The depth is not assumed: starting at the door's own cell, step AWAY from the
+ * street while the tile is blocked, capped at FRONTAGE_BAND_DEPTH_M cells. That
+ * is what makes "the interior lives in the building's own three rows" a measured
+ * statement rather than a copied one.
+ */
+export function buildOpenings(doors, collision) {
+  const n = worldGrid.wTiles * worldGrid.hTiles;
+  const raster = new Uint8Array(n);
+  const records = [];
+  if (!doors) return { raster, records, source: null, authored: 0, observed: 0 };
+  const maxDepth = Math.round(FRONTAGE_BAND_DEPTH_M / WORLD_UNITS.tileMetres);
+  for (const d of [...doors.doors].sort((a, b) => (a.id < b.id ? -1 : 1))) {
+    const away = d.cellY > GRID.halfCrossTiles ? 1 : -1; // north of the street row => step +row
+    const cells = [];
+    for (let k = 1; k <= maxDepth; k += 1) {
+      const row = d.cellY + away * k;
+      if (row < 0 || row >= worldGrid.hTiles) break;
+      if (collision[row * worldGrid.wTiles + d.cellX] === 0) break; // the run ends where the block ends
+      cells.push([d.cellX, row]);
+    }
+    if (!cells.length) continue; // south doors: the door row is the world's LAST row, nothing to open
+    for (const [x, row] of cells) raster[row * worldGrid.wTiles + x] = 1;
+    records.push({
+      doorId: d.id,
+      doorCell: [d.cellX, d.cellY],
+      away,
+      cells,
+      depthTiles: cells.length,
+      depthM: Number((cells.length * WORLD_UNITS.tileMetres).toFixed(3)),
+      // The claim, carried per tile by derivation: every cell above belongs to
+      // exactly this record, and this record's valueKind is the door's.
+      valueKind: d.valueKind,
+      guideVerifiedColumnAllowed: mayAppearInGuideVerifiedColumn(d.valueKind),
+    });
+  }
+  const tiles = raster.reduce((a, b) => a + b, 0);
+  return {
+    raster,
+    records,
+    source: doors.path,
+    sourceSha256: doors.sha256,
+    tiles,
+    authored: records.filter((r) => r.valueKind === VALUE_KIND.AUTHORED).length,
+    observed: records.filter((r) => r.valueKind === VALUE_KIND.OBSERVED).length,
   };
 }
 
@@ -1481,6 +1602,48 @@ export function runAssertions(inputPath = DEFAULT_IN) {
       Buffer.compare(Buffer.from(back.heights), Buffer.from(first.heights)) === 0 &&
       Buffer.compare(Buffer.from(back.occlusionHalf), Buffer.from(first.occlusionHalf)) === 0;
     check('S9', 'scene.bin round-trips (header, manifest and layers)', same, `${buf.length} bytes, magic=${MAGIC}`);
+  }
+
+  // S15 - north doors enterable, south untouched. Reaching a door and entering it
+  // must stay two different facts: the door's OWN cell stays a wall.
+  {
+    const doors = readDoors();
+    const op = first.openings;
+    const northDoors = doors ? doors.doors.filter((d) => d.cellY > GRID.halfCrossTiles) : [];
+    const southDoors = doors ? doors.doors.filter((d) => d.cellY < GRID.halfCrossTiles) : [];
+    const northRecords = op.records.filter((r) => northDoors.some((d) => d.id === r.doorId));
+    const southOpened = op.records.filter((r) => southDoors.some((d) => d.id === r.doorId));
+    const depths = northRecords.map((r) => r.depthTiles);
+    const northOk = northDoors.length > 0 && northRecords.length === northDoors.length && depths.every((d) => d >= 1);
+    // The door cell is WALKABLE by design (the player stands there; row 24 is
+    // street side). What makes a door ENTERABLE is that the run behind it is walkable.
+    const doorCellWalkable = northDoors.every((d) => first.collision[d.cellY * worldGrid.wTiles + d.cellX] === 0);
+    const southDoorRows = southDoors.map((d) => d.cellY);
+    const openedTilesWalkable = northRecords.every((r) => r.cells.every((c) => first.collision[c[1] * worldGrid.wTiles + c[0]] === 0));
+    check(
+      'S15',
+      'north doors are ENTERABLE and south doors are untouched',
+      northOk && southOpened.length === 0 && doorCellWalkable && openedTilesWalkable && southDoorRows.every((r) => r === 0),
+      northDoors.length + ' north / ' + southDoors.length + ' south doors; opened ' + northRecords.length + ' north, ' + southOpened.length + ' south; depth behind each north door = [' + depths.join(', ') + '] tiles; door cell walkable=' + doorCellWalkable + '; opened tiles walkable=' + openedTilesWalkable + '; south door rows=' + JSON.stringify(southDoorRows) + ' (row 0 = the world last row, nothing behind to open)',
+    );
+  }
+
+  // S16 - every opening tile carries a valueKind; none reaches the guide.
+  {
+    const op = first.openings;
+    const allGraded = op.records.every((r) => isValueKind(r.valueKind));
+    const authored = op.records.filter((r) => r.valueKind === VALUE_KIND.AUTHORED).length;
+    const observed = op.records.filter((r) => r.valueKind === VALUE_KIND.OBSERVED).length;
+    const noneVerified = op.records.every((r) => r.guideVerifiedColumnAllowed === false);
+    const union = new Uint8Array(op.raster.length);
+    for (const r of op.records) for (const c of r.cells) union[c[1] * worldGrid.wTiles + c[0]] = 1;
+    const rasterMatchesRecords = union.length === op.raster.length && union.every((v, i) => v === op.raster[i]);
+    check(
+      'S16',
+      'every openings tile carries a valueKind; none is allowed in the guide verified column',
+      allGraded && observed === 0 && noneVerified && rasterMatchesRecords && authored > 0,
+      op.records.length + ' opening records: authored=' + authored + ', observed=' + observed + '; all graded=' + allGraded + '; none allowed in verified column=' + noneVerified + '; tiles=' + op.tiles + '; raster == union(records)=' + rasterMatchesRecords,
+    );
   }
 
   const passed = results.filter((r) => r.ok).length;

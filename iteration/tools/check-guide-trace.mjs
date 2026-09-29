@@ -21,13 +21,20 @@
 //      `lookedUpFrom: "pack.transit.fareReference[0]"` does. Export-generated ids are now
 //      accepted when accompanied by a resolving pointer, and rejected when not.
 import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 
-const PACK = 'D:/All-Downloads/TourGuideAI/city-packs/kyoto-shijo';
-const placesDoc = JSON.parse(readFileSync(`${PACK}/places.json`, 'utf8'));
-const transitDoc = JSON.parse(readFileSync(`${PACK}/transit.json`, 'utf8'));
-const packDoc = JSON.parse(readFileSync(`${PACK}/pack.json`, 'utf8'));
-const doorsDoc = JSON.parse(readFileSync(`${PACK}/doors.json`, 'utf8'));
-const guide = JSON.parse(readFileSync('D:/All-Downloads/TourGuideAI/build/guide.json', 'utf8'));
+// Resolved from this file's own location, not from an absolute path. The first version hard-coded
+// D:/All-Downloads/TourGuideAI, which meant this check only worked on one machine -- and it was
+// found by a duplicate-constant scan noticing that PACK was 'city-packs/kyoto-shijo' everywhere
+// else and a machine-specific path here. A checker that cannot run in a clean checkout is the same
+// defect class as the seven gates that could not.
+const REPO = join(import.meta.dirname, '..', '..');
+const PACK = join(REPO, 'city-packs', 'kyoto-shijo');
+const placesDoc = JSON.parse(readFileSync(join(PACK, 'places.json'), 'utf8'));
+const transitDoc = JSON.parse(readFileSync(join(PACK, 'transit.json'), 'utf8'));
+const packDoc = JSON.parse(readFileSync(join(PACK, 'pack.json'), 'utf8'));
+const doorsDoc = JSON.parse(readFileSync(join(PACK, 'doors.json'), 'utf8'));
+const guide = JSON.parse(readFileSync(join(REPO, 'build', 'guide.json'), 'utf8'));
 
 const places = Array.isArray(placesDoc) ? placesDoc : (placesDoc.places ?? []);
 const legs = Array.isArray(transitDoc) ? transitDoc : (transitDoc.legs ?? []);

@@ -83,8 +83,12 @@ const {
  * `emit-scene.mjs#packScene` and by the contract document; if it changes, these
  * checks fail loudly rather than reading garbage.
  */
-const SCENE_MAGIC = 'TG25DSCN';
-const SCENE_VERSION = 1;
+import { SCENE_MAGIC, SCENE_VERSION } from './emit-scene.mjs';
+// Imported, not copied. This is the second half of the same D-12 lesion the card fixed for
+// SCENE_VERSION: a reader carrying its own format id cannot notice that the container changed
+// format. Verified the hard way -- gate-scene-read.mjs held ersion === 1 as a literal and kept
+// passing R3 while the emitter had moved to version 2, and only R7, which does real arithmetic on
+// the layer lengths, still caught it.
 
 function unpackScene(buf) {
   if (buf.length < 108) throw new Error(`scene.bin is only ${buf.length} B — too small to be a container`);
