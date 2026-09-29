@@ -30,11 +30,11 @@
       ],
       "valueKindPerField": {
         "nameJa": "observed",
-        "addressJa": "observed",
+        "addressJa": "authored",
         "latUdeg": "observed",
         "lonUdeg": "observed",
         "category": "observed",
-        "entrances": "licenced"
+        "entrances": "authored"
       },
       "notAttested": [
         "hours",
@@ -42,7 +42,8 @@
         "closedDays"
       ],
       "whyEmpty": "OSM は営業時間・料金の来源ではない。この建物に入る店舗の情報を述べた来源を本パックは 1 件も開いていない。",
-      "guideVerifiedColumnAllowed": true
+      "guideVerifiedColumnAllowed": false,
+      "whyNotObserved": "addressJa（京都市下京区四条通烏丸東入長刀鉾町8）は OSM のタグを連結した値である。個々の断片（addr:province 京都府／addr:city 京都市／addr:suburb 下京区／addr:quarter 長刀鉾町／addr:block_number）は OSM から読んだ observed だが、連結そのもの——区の順序と番地の繋ぎ方——は本パックが行った編集であり、どの来源もこの文字列を述べていない（addressProvenance.kind = osm-fragments-composed）。同じ記録の中で addressJa を observed と呼ぶのは、この記録自身の addressProvenance と矛盾していた。加えて entrances は 12 門の配置で authored である。したがって建物名・座標・category は OSM から読んだ observed だが、この記録は攻略の「已验证」欄に出してはならない。"
     },
     "entrances": {
       "blockDoors": 7,
@@ -104,11 +105,11 @@
       ],
       "valueKindPerField": {
         "nameJa": "observed",
-        "addressJa": "observed",
+        "addressJa": "authored",
         "latUdeg": "observed",
         "lonUdeg": "observed",
         "category": "observed",
-        "entrances": "licenced"
+        "entrances": "authored"
       },
       "notAttested": [
         "hours",
@@ -116,7 +117,8 @@
         "closedDays"
       ],
       "whyEmpty": "同上。",
-      "guideVerifiedColumnAllowed": true
+      "guideVerifiedColumnAllowed": false,
+      "whyNotObserved": "addressJa（京都市下京区四条通烏丸東入長刀鉾町10）は OSM のタグを連結した値である。個々の断片（addr:province 京都府／addr:city 京都市／addr:suburb 下京区／addr:quarter 長刀鉾町／addr:block_number）は OSM から読んだ observed だが、連結そのもの——区の順序と番地の繋ぎ方——は本パックが行った編集であり、どの来源もこの文字列を述べていない（addressProvenance.kind = osm-fragments-composed）。同じ記録の中で addressJa を observed と呼ぶのは、この記録自身の addressProvenance と矛盾していた。加えて entrances は 12 門の配置で authored である。したがって建物名・座標・category は OSM から読んだ observed だが、この記録は攻略の「已验证」欄に出してはならない。"
     },
     "entrances": {
       "blockDoors": 5,
@@ -333,7 +335,8 @@
       ],
       "whyEmpty": "横断歩道に開場時間・料金・休みは該当しない。nameJa は OSM に name タグが無く、本パックの位置記述（東側横断歩道）は curator の記述なので licenced とした。",
       "guideVerifiedColumnAllowed": false,
-      "guideGateNote": "guideVerifiedColumnAllowed closed because provenance.valueKindPerField.nameJa is a curator-written name with no source (OSM carries no such tag on this object). design-core §8.2.2 ④: only observed reaches the verified column, so an invented name must not print behind \"we verified this\"."
+      "guideGateNote": "guideVerifiedColumnAllowed closed because provenance.valueKindPerField.nameJa is a curator-written name with no source (OSM carries no such tag on this object). design-core §8.2.2 ④: only observed reaches the verified column, so an invented name must not print behind \"we verified this\".",
+      "whyNotObserved": "この地点の nameJa（四条烏丸交差点 東側横断歩道）は本パックが付けた位置記述であり、来源が述べた名称ではない。OSM node/2737069286 には name タグが無い（highway=crossing、crossing=traffic_signals、crossing:markings=zebra のみ）。座標と category は OSM から読んだ observed だが、名前は我々が書いたものなので、この記録は攻略の「已验证」欄に出してはならない。"
     },
     "lat": 35.003659,
     "lng": 135.759946
@@ -382,7 +385,8 @@
       ],
       "whyEmpty": "出入口自体の開閉時間は OSM に無い。駅の初発/終電は事実層にキャッシュせず攻略側で『要確認』にする。",
       "guideVerifiedColumnAllowed": false,
-      "guideGateNote": "guideVerifiedColumnAllowed closed because provenance.valueKindPerField.nameZh is a curator-written name with no source (OSM carries no such tag on this object). design-core §8.2.2 ④: only observed reaches the verified column, so an invented name must not print behind \"we verified this\"."
+      "guideGateNote": "guideVerifiedColumnAllowed closed because provenance.valueKindPerField.nameZh is a curator-written name with no source (OSM carries no such tag on this object). design-core §8.2.2 ④: only observed reaches the verified column, so an invented name must not print behind \"we verified this\".",
+      "whyNotObserved": "この出入口の nameZh（四条站出口1）は本パックが付けた中国語表記であり、来源が述べた名称ではない。OSM node/11283562286 の name は \"Exit 1\" で、name:zh は無い。nameJa / nameEn / 座標は OSM のタグをそのまま読んだ observed だが、nameZh は我々が書いたものなので、この記録は攻略の「已验证」欄に出してはならない。"
     },
     "lat": 35.003247,
     "lng": 135.759825

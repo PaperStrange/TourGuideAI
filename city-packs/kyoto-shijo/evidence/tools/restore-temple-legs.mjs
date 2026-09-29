@@ -129,6 +129,17 @@ for (const spec of LEGS) {
       ...(spec.minutesBasis ? { minutesBasis: spec.minutesBasis } : {}),
       notAttested: ['実際の歩行経路', '信号待ち時間'],
       guideVerifiedColumnAllowed: spec.operatorFigureUsed !== false,
+      // A GENUINELY DIFFERENT REFUSAL from the two curator-written names, and the reason it must be
+      // stated in its own terms: nothing here is invented. The endpoints are OSM observed, the
+      // straight-line distance is a measurement, and the operator's page was read. What is refused
+      // is the MINUTE COUNT — it is a licence-derived conversion (道路距離80mにつき1分, RFTC 施行規則),
+      // not a figure the operator published for this pair. Under design-core §8.2.2 ④ a licenced
+      // value may not sit in the verified column, so the leg is barred even though every input to it
+      // is sourced. A reason copied from the name cases would have been wrong about the cause.
+      // Key emitted only when the gate is actually closed, so an open gate cannot carry a stale reason.
+      ...(spec.operatorFigureUsed === false ? {
+        whyNotObserved: 'この区間の分数（15 分）は運営者が公表した値ではなく、本パックが実測した直線距離 1,122.6 m に不動産公正取引協議会の徒歩所要時間規約（道路距離80mにつき1分、端数切り上げ）を適用した換算値である。端点の座標は OSM から読んだ observed、直線距離は実測、清水寺公式ページは実際に開いた——捏造された値は 1 つも無い。しかし換算値は licenced であって observed ではないので、design-core §8.2.2 ④ によりこの leg は攻略の「已验证」欄に出してはならない。',
+      } : {}),
     },
   };
   if (byLegId.has(spec.id)) Object.assign(byLegId.get(spec.id), row); else legs.push(row);

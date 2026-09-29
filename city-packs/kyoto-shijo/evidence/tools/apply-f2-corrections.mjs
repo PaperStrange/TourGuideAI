@@ -211,16 +211,33 @@ for (const id of ['kyoto-shijo-bldg-mitsui', 'kyoto-shijo-bldg-daiya']) {
 // design-core §8.2.2 ④: only `observed` reaches the guide's "verified" column. Two records hold
 // curator-written names and had guideVerifiedColumnAllowed=true, which would print a name we
 // invented behind "we verified this". Harmless only until the badge renders.
+//
+// WHY `whyNotObserved` AND NOT ONLY `guideGateNote`. The two names were doing different jobs:
+// `guideGateNote` said what the FLAG is set to, which a reader only consults if they already know
+// the flag exists. `whyNotObserved` is the field a reader looks at when they ask "why is this value
+// not something you observed?" — the question itself, not the mechanism. `valueKind` and the
+// per-record permission are two independent gates, and the second one was declared in the data
+// while nothing in the fact layer enforced or explained it. Both fields are kept: the note stays
+// for continuity, the reason is now where the question is asked.
 const GATE_CLOSES = [
-  { id: 'kyoto-shijo-crossing-karasuma-east', field: 'nameJa' },
-  { id: 'kyoto-shijo-subway-shijo-exit1', field: 'nameZh' },
+  {
+    id: 'kyoto-shijo-crossing-karasuma-east',
+    field: 'nameJa',
+    whyNotObserved: 'この地点の nameJa（四条烏丸交差点 東側横断歩道）は本パックが付けた位置記述であり、来源が述べた名称ではない。OSM node/2737069286 には name タグが無い（highway=crossing、crossing=traffic_signals、crossing:markings=zebra のみ）。座標と category は OSM から読んだ observed だが、名前は我々が書いたものなので、この記録は攻略の「已验证」欄に出してはならない。',
+  },
+  {
+    id: 'kyoto-shijo-subway-shijo-exit1',
+    field: 'nameZh',
+    whyNotObserved: 'この出入口の nameZh（四条站出口1）は本パックが付けた中国語表記であり、来源が述べた名称ではない。OSM node/11283562286 の name は "Exit 1" で、name:zh は無い。nameJa / nameEn / 座標は OSM のタグをそのまま読んだ observed だが、nameZh は我々が書いたものなので、この記録は攻略の「已验证」欄に出してはならない。',
+  },
 ];
 for (const g of GATE_CLOSES) {
   const p = placeById.get(g.id);
   if (!p) continue;
   p.provenance.guideVerifiedColumnAllowed = false;
   p.provenance.guideGateNote = `guideVerifiedColumnAllowed closed because provenance.valueKindPerField.${g.field} is a curator-written name with no source (OSM carries no such tag on this object). design-core §8.2.2 ④: only observed reaches the verified column, so an invented name must not print behind "we verified this".`;
-  log.push(`gate closed on ${g.id} (curated ${g.field})`);
+  p.provenance.whyNotObserved = g.whyNotObserved;
+  log.push(`gate closed on ${g.id} (curated ${g.field}) with a stated whyNotObserved`);
 }
 // The two category fields are direct tag transforms (building=commercial -> building-commercial),
 // not licence-derived templates. design-core reserves `licenced` for templates.
@@ -249,6 +266,36 @@ for (const id of ['kyoto-shijo-yasaka-nishiromon', 'kyoto-shijo-yasaka-honden'])
     note: 'The record\'s source_url is the shrine\'s own page, which states hours and access but no coordinate. The coordinate comes from OSM and is reachable through osmRecord. Two different sources support two different field groups in the same record, and this field says which is which.',
   };
   log.push(`coordinate pointer added on ${id} -> ${c.osmRef}`);
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 3b. The two block-0 buildings: a composed address must not be labelled observed
+// ─────────────────────────────────────────────────────────────────────────────
+// FOUND BY THE CHECK O AUDIT, not by looking for the flag. These two records declared
+// `valueKindPerField.addressJa = "observed"` while the SAME RECORD's `addressProvenance.kind` read
+// "osm-fragments-composed" and its note said plainly that "the composition (ward order, the
+// block-number join) is ours while every fragment is OSM's". One value, labelled both ways in one
+// record — and behind it an open guide gate, so the guide would have printed a joined string we
+// assembled under a heading that means "a human opened a source and read this".
+//
+// The consequence is the one the project already reasoned about: design-core §8.2.2 ④ says of
+// `authored` that "'到过' would endorse a hand-made judgement as 'we verified it'". A composed
+// address is that hand-made judgement. Closing the gate costs the address its place in the verified
+// column; it does NOT hide the address, which still renders everywhere else.
+//
+// Two label corrections fall out of the same record:
+//   - `perField.entrances` said `licenced` while `entrances.valueKind` said `authored`. One nested
+//     object, two vocabularies; `authored` is the member the enum grew for a curator placement.
+//   - `perField.addressJa` becomes `authored`, which is what its own addressProvenance says.
+const BUILDING_GATE_CLOSES = ['kyoto-shijo-bldg-mitsui', 'kyoto-shijo-bldg-daiya'];
+for (const id of BUILDING_GATE_CLOSES) {
+  const p = placeById.get(id);
+  if (!p) continue;
+  p.provenance.valueKindPerField.addressJa = 'authored';
+  if (p.provenance.valueKindPerField.entrances) p.provenance.valueKindPerField.entrances = 'authored';
+  p.provenance.guideVerifiedColumnAllowed = false;
+  p.provenance.whyNotObserved = 'addressJa（' + p.addressJa + '）は OSM のタグを連結した値である。個々の断片（addr:province 京都府／addr:city 京都市／addr:suburb 下京区／addr:quarter 長刀鉾町／addr:block_number）は OSM から読んだ observed だが、連結そのもの——区の順序と番地の繋ぎ方——は本パックが行った編集であり、どの来源もこの文字列を述べていない（addressProvenance.kind = osm-fragments-composed）。同じ記録の中で addressJa を observed と呼ぶのは、この記録自身の addressProvenance と矛盾していた。加えて entrances は 12 門の配置で authored である。したがって建物名・座標・category は OSM から読んだ observed だが、この記録は攻略の「已验证」欄に出してはならない。';
+  log.push(`gate closed on ${id}: composed address + authored entrances, both now labelled as such`);
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

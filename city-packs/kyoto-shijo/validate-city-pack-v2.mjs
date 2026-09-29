@@ -330,6 +330,78 @@ for (const l of transit) {
 if (gateOffenders.length) for (const g of gateOffenders) fail('GUIDE_GATE_OPEN', 'places.json', g);
 else ok('N', `every valueKind is a member of the frozen enum ${VALUE_KINDS.join('|')}; usage ${[...seenKinds.entries()].map(([k, n]) => `${k}:${n}`).join(', ')}`);
 
+// ---- O: a refused guide gate must SAY WHY, and the refusal must actually hold ----
+//
+// THE DEFECT THIS EXISTS FOR. Two independent gates decide whether a value may appear in the
+// guide's "verified" column: `valueKind` (must be `observed`) and the per-record permission
+// `guideVerifiedColumnAllowed`. The fact layer DECLARED the second gate but nothing in the fact
+// layer ENFORCED it — only the export side caught a violation, and only during task-16, after its
+// first run had already printed an invented name under a heading that means "a human opened a
+// source and read this".
+//
+// So: `valueKind === 'observed'` does NOT imply "may appear in the verified column". A gate that is
+// declared but unenforced is not a gate, it is a comment, and the next consumer — a memoir, a
+// second city, a UI — has no reason to know it exists.
+//
+// Two things are asserted:
+//   1. ALIGNMENT — if any per-field entry declares a non-`observed` kind, the holder's own gate must
+//      be closed. This is what makes the refusal enforced rather than merely declared, and it is the
+//      rule that catches the shape the audit found: a record whose `nameJa` is curator-written while
+//      the record still says it may enter the verified column.
+//   2. REASON — every closed gate states why, in at least one of the fields that exist for the
+//      purpose. A refusal with no reason tells the next curator "no" without telling them what would
+//      change the answer.
+//
+// NOT asserted, deliberately: that an `observed` field on a closed-gate record is a contradiction.
+// It is not. `latUdeg` on the 四条烏丸 crossing really was read off OSM and is legitimately
+// `observed`; the record is barred from the verified column because ONE of its names is ours, not
+// because its coordinates are unsound. Conflating "this field is unverified" with "this record may
+// not be presented as verified" would have been my error, and the first version of this check made
+// exactly that mistake against 8 fields. The observed fields on such a record are therefore COUNTED
+// and reported, so the judgement stays visible instead of silently assumed.
+const gateWithoutReason = [];
+const gateMisaligned = [];
+const closedGates = [];
+
+const auditGate = (label, holder, reasonFields, perField) => {
+  const allowed = holder?.guideVerifiedColumnAllowed;
+  const entries = Object.entries(perField ?? {}).filter(([, k]) => k && k !== 'absent');
+  const nonObserved = entries.filter(([, k]) => k !== 'observed');
+  const observed = entries.filter(([, k]) => k === 'observed');
+
+  // 1. alignment: a non-observed field with an open gate is the defect
+  if (nonObserved.length && allowed !== false) {
+    gateMisaligned.push(`${label}: ${nonObserved.map(([f, k]) => `${f}=${k}`).join(', ')} but guideVerifiedColumnAllowed=${JSON.stringify(allowed)} — the holder may enter the guide's verified column while carrying a value that may not`);
+  }
+  if (allowed !== false) return;
+
+  closedGates.push({ label, nonObserved: nonObserved.map(([f]) => f), observedCount: observed.length });
+
+  // 2. reason
+  const raw = reasonFields.map((f) => holder?.[f]).find((v) => typeof v === 'string' && v.trim().length > 0);
+  if (!raw || raw.trim().length < 40) {
+    gateWithoutReason.push(`${label}: guideVerifiedColumnAllowed=false but none of ${reasonFields.join('/')} states why (${raw ? `${raw.trim().length} chars, too short to be a reason` : 'absent'})`);
+  }
+};
+
+for (const p of allPlaceLike) {
+  auditGate(`places[${p.id}]`, p.provenance, ['whyNotObserved', 'guideGateNote'], p.provenance?.valueKindPerField);
+  if (p.entrances) auditGate(`places[${p.id}].entrances`, p.entrances, ['whyNotObserved', 'whyAuthored'], p.entrances.valueKindPerField);
+}
+for (const l of transit) auditGate(`transit[${l.id}]`, l.provenance, ['whyNotObserved', 'guideGateNote'], l.provenance?.valueKindPerField);
+
+for (const g of gateMisaligned) fail('GATE_MISALIGNED', 'fact layer', g);
+for (const g of gateWithoutReason) fail('GATE_WITHOUT_REASON', 'fact layer', g);
+if (closedGates.length === 0) {
+  // A check that examined nothing is not a passing check — say so rather than reporting green.
+  notes.push('no holder refuses the guide verified column, so check O had nothing to examine in this pack');
+} else if (!gateWithoutReason.length && !gateMisaligned.length) {
+  const detail = closedGates.map((c) => (c.nonObserved.length
+    ? `${c.label} (refuses ${c.nonObserved.join(', ')}; ${c.observedCount} observed field(s) remain, legitimately so)`
+    : `${c.label} (whole-record refusal)`)).join('; ');
+  ok('O', `${closedGates.length} refused guide gate(s), each aligned with its per-field kinds and carrying a stated reason: ${detail}`);
+}
+
 // fareReference integrity
 for (const [i, f] of (pack.transit?.fareReference ?? []).entries()) {
   const at = `pack.transit.fareReference[${i}]`;

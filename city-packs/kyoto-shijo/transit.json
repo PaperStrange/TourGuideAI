@@ -271,7 +271,8 @@
         "実際の歩行経路",
         "信号待ち時間"
       ],
-      "guideVerifiedColumnAllowed": false
+      "guideVerifiedColumnAllowed": false,
+      "whyNotObserved": "この区間の分数（15 分）は運営者が公表した値ではなく、本パックが実測した直線距離 1,122.6 m に不動産公正取引協議会の徒歩所要時間規約（道路距離80mにつき1分、端数切り上げ）を適用した換算値である。端点の座標は OSM から読んだ observed、直線距離は実測、清水寺公式ページは実際に開いた——捏造された値は 1 つも無い。しかし換算値は licenced であって observed ではないので、design-core §8.2.2 ④ によりこの leg は攻略の「已验证」欄に出してはならない。"
     },
     "distanceBasis": "measuredStraightM (straight line between the two OSM centres; not a route distance)"
   }
