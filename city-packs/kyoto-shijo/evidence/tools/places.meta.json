@@ -1,0 +1,220 @@
+{
+  "schemaVersion": "tourguide.city-pack.places/v1",
+  "cityId": "kyoto-shijo",
+  "coordinateSystem": {
+    "fields": [
+      "latUdeg",
+      "lonUdeg"
+    ],
+    "unit": "integer microdegrees (1e-6 degree), rounded to nearest",
+    "resolutionNote": "1 µ度 is 91.28 mm east-west / 110.94 mm north-south — the fact layer is coarser than the 1/16 sub-tile, so no place record may claim sub-decimetre precision (iteration/design/contract-geo-pipeline.md §5).",
+    "compatFields": "lat / lng are the same value expressed in decimal degrees for consumers that expect that shape; they are derived from latUdeg / lonUdeg and are not an independent value."
+  },
+  "sources": {
+    "S1": {
+      "url": "https://data.city.kyoto.lg.jp/resource/?id=7052",
+      "title": "京都市オープンデータ 京都観光Navi「京都観光見もの情報」DSIGHT_1.csv（資源ID 7052、著作権者 京都市）",
+      "licence": "CC BY 4.0（表示）",
+      "whatIRead": "資源ページ本文：データファイル DSIGHT_1.csv / ファイルサイズ 0.36 MB / 著作権者 京都市 / 登録者 産業観光局 観光ＭＩＣＥ推進室 / データのライセンス CC-BY 4.0（表示）/ 更新日時 2021-03-26。CSV 本体は POST フォーム（upload_file=DSIGHT_1.csv + download=Download）で取得、378,453 B、sha256 233736CE87051B584D34000B7AD6D84B1DE8EF450DAE0801926488FACE67AD7A、648 行 × 30 列、ヘッダ行なし。",
+      "evidence": "evidence/kyoto-odp-resource-7052.html / .txt、evidence/kyoto-sight-DSIGHT_1.csv、evidence/kyoto-csv-slice-rows.txt"
+    },
+    "S2": {
+      "url": "https://www2.city.kyoto.lg.jp/sogo/toukei/Sonota/kiyaku/kiyaku_syoban.pdf",
+      "title": "京都市オープンデータ利用規約",
+      "licence": "CC BY 4.0 相当（規約 (1)）",
+      "whatIRead": "規約本文 (1)(2)ア・イ：複製・公衆送信・翻案は原則 CC 表示 4.0 国際による／必須署名串／改変した場合はその旨を記載し、市が作成したかのように公表してはならない。",
+      "evidence": "evidence/kyoto-city-kiyaku-syoban.pdf"
+    },
+    "S3": {
+      "url": "https://www.openstreetmap.org/copyright",
+      "title": "OpenStreetMap copyright and licence (ODbL 1.0)",
+      "licence": "ODbL 1.0",
+      "whatIRead": "ODbL 1.0 の適用と「© OpenStreetMap contributors」の帰属表示義務。OSM 由来の値は kyoto-shijo-osm-places.json に分離して同ライセンスで公開する。",
+      "evidence": "evidence/osm-corridor-map.json（API 応答ヘッダの license フィールドが同 URL を指す）"
+    },
+    "S4": {
+      "url": "https://www.tfkoutori.jp/data/pdf/kiyaku-202209.pdf",
+      "title": "不動産の表示に関する公正競争規約（全国不動産公正取引協議会連合会）",
+      "licence": "公開規約（引用）",
+      "whatIRead": "施行規則 (9)：『徒歩による所要時間は、道路距離８０メートルにつき１分間を要するものとして算出した数値を表示すること。この場合において、１分未満の端数が生じたときは、１分として算出すること。』 本文抽出 evidence/japan-rftc-hyouji-kiyaku.txt の 5189–5194 行。",
+      "evidence": "evidence/japan-rftc-hyouji-kiyaku.pdf、evidence/japan-rftc-hyouji-kiyaku.txt"
+    },
+    "S5": {
+      "url": "https://www.city.kyoto.lg.jp/kotsu/page/0000240682.html",
+      "title": "京都市交通局：定期券以外の運賃（市バス）",
+      "licence": "公開情報（引用）",
+      "whatIRead": "『市バス普通運賃（均一運賃区間） 運賃額 大人 230円 小児 120円』『市バスでは、交通系ICカードもご利用いただけます。』 ページ番号240682、2024年6月1日。IC 割引の記載は無い。",
+      "evidence": "evidence/kyoto-kotsu-fare-bus-teiki.html / .txt"
+    },
+    "S6": {
+      "url": "https://www.city.kyoto.lg.jp/kotsu/page/0000240757.html",
+      "title": "京都市交通局：定期券以外の運賃（地下鉄）",
+      "licence": "公開情報（引用）",
+      "whatIRead": "地下鉄普通運賃一覧：1区 大人220円 / 2区 260円 / 3区 290円 / 4区 330円 / 5区 360円。区数は駅間で決まるため、この表だけでは特定区間の運賃は決まらない。",
+      "evidence": "evidence/kyoto-kotsu-fare-subway.html / .txt"
+    },
+    "S7": {
+      "url": "https://www.yasaka-jinja.or.jp/access/",
+      "title": "八坂神社 境内マップ・アクセス（公式）",
+      "licence": "公開情報（事実の引用）",
+      "whatIRead": "『9：00～17：00（社務所）』『24時間参拝可能』『〒605-0073 京都府京都市東山区祇園町北側625』『TEL 075-561-6155』。電車：京阪「祇園四条」駅より徒歩約5分／阪急「京都河原町」駅より徒歩約8分。バス：JR京都駅より市バス100・206番「祇園」下車すぐ。",
+      "evidence": "evidence/yasaka-jinja-access.html / .txt"
+    },
+    "S8": {
+      "url": "https://www.yasaka-jinja.or.jp/about/architecture/",
+      "title": "八坂神社 建造物（公式）",
+      "licence": "公開情報（事実の引用）",
+      "whatIRead": "西楼門・本殿等の建造物解説。西楼門が四条通に面する門であること、本殿が祇園造であることの記述を含む。",
+      "evidence": "evidence/yasaka-jinja-architecture.html / .txt"
+    },
+    "S9": {
+      "url": "https://www.chion-in.or.jp/guide/",
+      "title": "知恩院 参拝のご案内（拝観情報・公式）",
+      "licence": "公開情報（事実の引用）",
+      "whatIRead": "『開閉門時間は午前6時から午後4時』『※各所受付は午前9時～』『※一部行事・法要日程では開門時間が異なります』。庭園拝観料：方丈庭園 大人400円／友禅苑 大人300円／共通券 大人500円（小人 200/150/250円、団体 360/270/450円）。受付時間：友禅苑 9:00〜16:00、方丈庭園 9:00〜15:50、共通券販売は15:20まで。所在地 京都市東山区林下町400。",
+      "evidence": "evidence/chion-in-guide.html / .txt"
+    },
+    "S10": {
+      "url": "https://www.kiyomizudera.or.jp/access.php",
+      "title": "清水寺 拝観案内・交通案内（公式）",
+      "licence": "公開情報（事実の引用）",
+      "whatIRead": "『2026年の拝観時間』表：1.1〜3.26 開門6:00 閉門18:00／3.27〜4.5 6:00〜21:30（21:00受付終了）／4.6〜6.30 6:00〜18:00／7.1〜8.13 6:00〜18:30／8.14〜8.16 6:00〜21:30／8.17〜8.31 6:00〜18:30／9.1〜11.20 6:00〜18:00／11.21〜11.30 6:00〜21:30／12.1〜12.31 6:00〜18:00。『＊夜間特別拝観の期間は年ごとに変更になります』。交通：京阪電鉄 清水五条駅から約徒歩25分。所在地 京都市東山区清水1丁目294、TEL 075-551-1234。拝観料の記載はこのページには無い。",
+      "evidence": "evidence/kiyomizudera-access-hours.html / .txt、evidence/kiyomizudera-faq.html / .txt"
+    },
+    "S11": {
+      "url": "https://www.kenninji.jp/access/",
+      "title": "建仁寺 アクセス・拝観案内（公式）",
+      "licence": "公開情報（事実の引用）",
+      "whatIRead": "『拝観時間 午前10時～午後4時30分受付終了（午後5時閉門）』『拝観料金 一般 800円、学生（小・中・高）500円 ※小学生未満のお子様は無料』。交通：京阪電車「祇園四条駅」より徒歩7分／阪急電車「河原町駅」より徒歩10分／市バス「東山安井」より徒歩5分。所在地 京都市東山区大和大路通四条下る小松町584。",
+      "evidence": "evidence/kenninji-access.html / .txt"
+    },
+    "S12": {
+      "url": "https://www.kenninji.jp/news/?p=2352",
+      "title": "建仁寺 [重要] 拝観料改定のお知らせ（公式）",
+      "licence": "公開情報（事実の引用）",
+      "whatIRead": "『改定時期：2027年1月1日』『改定前 拝観料：一般 800円』『改定後 拝観料：一般 1,000円』『※小・中・高生につきましては、以前と同様に500円となります。』 → 2026-09-29 時点の有効値は 800 円で、2027-01-01 に 1,000 円へ上がる。",
+      "evidence": "evidence/kenninji-news-fee2025.html / .txt"
+    },
+    "S13": {
+      "url": "https://api.openstreetmap.org/api/0.6/map.json?bbox=135.7588,35.0028,135.7789,35.0047",
+      "title": "OpenStreetMap API 0.6 map response — 四条烏丸〜祇園 corridor",
+      "licence": "ODbL 1.0",
+      "whatIRead": "3,730,909 B、sha256 56B456152B2F5CFC6854EA5EDFBD2C92B236D4BA67E7978D591E359999C294A2。四条通の way 11 本（27427466 / 28322073 / 174762073 / 380083522 / 465069431 / 465069436 / 678103923 / 843727820 / 854442449 / 964931603 / 1510539685）が共有ノードで連続し、西端 lod 135.7583923 から東端 135.7771926 まで 1,716.803 m。地下鉄・京阪・阪急の駅ノード、市バス停留所ノード、subway_entrance ノードを含む。座標は kyoto-shijo-osm-places.json に分離して収録。",
+      "evidence": "evidence/osm-corridor-map.json"
+    },
+    "S14": {
+      "url": "https://www.openstreetmap.org/way/205732558",
+      "title": "OpenStreetMap way 205732558 京都三井ビルディング / way 205732536 京都ダイヤビル（block 0 の 2 棟）",
+      "licence": "ODbL 1.0",
+      "whatIRead": "block 0（四条烏丸直東 40 m）の北側・南側の建物同定。両 way のタグ（building=commercial、addr:suburb/addr:quarter/addr:block_number、building:levels=8、start_date、source=Bing）を kyoto-shijo-osm.json の facades から読み、座標は kyoto-shijo-osm-places.json に収録。",
+      "evidence": "evidence/osm-block-q1-footprints.json、evidence/osm-block-q2-everything.json、city-packs/kyoto-shijo/kyoto-shijo-osm.json"
+    }
+  },
+  "gaps": [
+    "hours / admission を持たない地点：OSM は地物の同定と座標の来源であって、営業時間・料金の来源ではない。公園・広場・交差点・停留所・駅そのものに開館時間は存在しないため、当該地点の hours / admission / closedDays は空のままにする（推測で埋めない）。",
+    "清水寺の拝観料：公式サイトのどのページにも金額の記載が無い。京都市 CSV の「清水寺　狛犬」行 col27 に『本堂・舞台 大人400円』とあるが、① その行の主体は狛犬であり本堂の料金ではない、② 公式サイトが金額を出していない以上どちらが現行か判定できない。よって清水寺の admission は空欄とし、本項に矛盾として記録する。",
+    "建仁寺の方丈拝観料：京都市 CSV は『大人500円／中高生300円／子供無料』（col27、執筆時点不明）だが、公式サイトは『一般 800円／学生（小・中・高）500円』、かつ 2027-01-01 から 1,000 円への改定を告知している。本パックは公式サイト（S11/S12）を採り、CSV との矛盾を contradictions に記録する。",
+    "建仁寺の拝観時間：CSV は 10:00–16:00、公式は『10:00〜16:30 受付終了（17:00 閉門）』。本パックは公式を採る。",
+    "八坂神社 本殿の特別拝観：CSV の col27 に『28年3月12日～3月21日』とあり、これは平成28年（2016年）の予定で、10 年落ちの値である。動的情報は事実層にキャッシュしない規則（skill: dynamic は never cache as truth）に従い、本パックの admission は空欄とし、この行を contradictions に記録する。",
+    "知恩院 大方丈・小方丈の拝観：CSV の col26 は『非公開』。公式拝観情報（S9）には方丈庭園の拝観料と受付時間があるが、これは庭園の拝観であって大方丈・小方丈の室内拝観が常時可能という意味ではない。両者が同一の対象を指すか判定できないため、知恩院の方丈拝観は本パックの admission に含めず、庭園の料金のみを記録する。",
+    "飲食店・土産物店の網羅：京都市 CSV は国宝建造物・見どころ粒度の権威ある紹介文源であって、完全な POI 主表ではない（iteration/recon/review-source-japan.md §5 限定 3）。本パックは shop / restaurant の行を 1 件も持たない。これは欠落ではなく範囲の帰結であり、埋めるには別の来源裁定が要る。",
+    "12 番の門そのもの：doors.json は各門の `entrancePointJa`（本門）を valueKind=licenced としており、実在の開口部位置を述べた来源は存在しない（doors.json validator.notAsserted / gaps G1・G5、kyoto-shijo-osm.json の facade 記録）。門は 3D 世界のオブジェクトであって位置を持つ事実行ではないため、places.json には門を 1 件も登録していない。block 0 の 12 門は kyoto-shijo-osm.json の doors[] と doors.json に、権威ある門の来源が得られるまで licenced のまま留まる。",
+    "「er」を含む移動時間・運賃：京都市バスは均一運賃 230 円（S5）だが、停留所間の所要時間・系統別の運行間隔・初発/終電は本パックのどの来源にも無い。地下鉄も区数が判定できない（S6）。よって transit.json には徒歩区間のみを入れ、バス・鉄道区間は意図的に 1 件も作っていない。",
+    "清水五条駅・東山安井停留所・南座前停留所の座標：公式サイト（S10/S11）は徒歩分数を述べているが、これら 3 点の位置は本パックの OSM 抽出範囲（lat 35.0028–35.0047）に入っていない。座標が無いため transit.json の端点にできず、公式サイトの徒歩分数は source 付きの gap として gapNotes に残す。"
+  ],
+  "contradictions": [
+    {
+      "id": "C1",
+      "with": "京都市 CSV（S1）col27『本堂・舞台 大人400円』 vs 清水寺公式サイト（S10）に拝観料の記載が無い",
+      "handling": "公式サイトに金額が無い以上どちらが現行か機械的に決められない。清水寺の admission は空欄。金額を採用しない（skill 鉄律 5: drop, don't correct）。"
+    },
+    {
+      "id": "C2",
+      "with": "京都市 CSV（S1）col27『大人500円／中高生300円』 vs 建仁寺公式サイト（S11）『一般 800円／学生 500円』",
+      "handling": "公式サイト（運営者自身の現行告知）を採用。CSV の値は採用せず本項に記録。加えて S12 が 2027-01-01 の 1,000 円改定を告知しているので、admission に effectiveFrom / supersededFrom を明記し、攻略側が改定日を跨いで古い値を使えないようにする。"
+    },
+    {
+      "id": "C3",
+      "with": "京都市 CSV（S1）col25『4月19、20日は法堂のみ拝観可／6月4、5日／年末12月28日～31日』（建仁寺の休み） vs 建仁寺公式サイトに休館日の記載が無い",
+      "handling": "CSV の休館日は採用しない。公式が述べていない以上、機械的に現行と確認できない。建仁寺の closedDays は空欄とし、本項に記録。"
+    },
+    {
+      "id": "C4",
+      "with": "京都市 CSV（S1）col27 に平成28年（2016年）の日付を含む本殿特別拝観の予定が残っている",
+      "handling": "動的・期限切れ情報は事実層にキャッシュしない。採用せず、本項に記録。八坂神社の admission は空欄。"
+    },
+    {
+      "id": "C5",
+      "with": "task-10 カード『12 個の門自体は places として入庫すべき』 vs 門の実在位置を述べた来源が 1 件も無い",
+      "handling": "門は登録しない。doors.json 自身が各門を valueKind=licenced とし、guideVerifiedColumnAllowed=false、validator.notAsserted に『実在の開口部位置を述べた来源は無い』と書いている。座標も名称（本門は種別名であって固有名ではない）も来源を持たない行を places に入れると、まさに task-10 が排除しようとしている『確からしい捏造』になる。block 0 の 12 門は doors.json + kyoto-shijo-osm.json 側に留める。Lead の裁定を仰ぐ。"
+    },
+    {
+      "id": "C6",
+      "with": "SKILL.md の city pack 表記『places.json [{ … lat, lng, … }]』 vs iteration/design/contract-geo-pipeline.md §5『フィールド名は lonUdeg / latUdeg の 1 組だけ。lonMicro 別名は意図的に提供しない』",
+      "handling": "contract が §5 で『浮動小数点は事実層に決して入らない』と凍結しているので、権威は contract 側。各地点は latUdeg / lonUdeg（整数 µ度）を一次表現とし、lat / lng は同値の派生表現として併記する。両者が食い違ったら latUdeg / lonUdeg が正。"
+    },
+    {
+      "id": "C7",
+      "with": "iteration/design/design-core.md §8.2.1 ①b と contract §1b の『18.87 m』の書き方",
+      "handling": "本パックは design-core が同節で自ら訂正した書き方（18.87 m は距離であって東向き偏移ではない）に従う。pack.json は東 3.56 m・南 18.53 m の分解のみを持つ。"
+    }
+  ],
+  "gapNotes": [
+    {
+      "gap": "清水五条駅 → 清水寺",
+      "value": "約徒歩25分",
+      "source_url": "https://www.kiyomizudera.or.jp/access.php",
+      "verified_at": "2026-09-29",
+      "whyNotALeg": "清水五条駅の座標が本パックの OSM 抽出範囲外。端点にできないため transit.json に入れず、出典付きの注記として残す。"
+    },
+    {
+      "gap": "祇園四条駅 → 建仁寺",
+      "value": "徒歩7分",
+      "source_url": "https://www.kenninji.jp/access/",
+      "verified_at": "2026-09-29",
+      "whyNotALeg": "建仁寺の座標が無い（公式サイトは住所のみ）。端点にできない。"
+    },
+    {
+      "gap": "京都河原町駅 → 建仁寺",
+      "value": "徒歩10分",
+      "source_url": "https://www.kenninji.jp/access/",
+      "verified_at": "2026-09-29",
+      "whyNotALeg": "同上。"
+    },
+    {
+      "gap": "祇園四条駅 → 八坂神社",
+      "value": "徒歩約5分",
+      "source_url": "https://www.yasaka-jinja.or.jp/access/",
+      "verified_at": "2026-09-29",
+      "whyNotALeg": "八坂神社の代表点は西楼門（(135777526, 35003741)）で、祇園四条駅から直線 55 m・四条通沿いでは測れない。神社の式内の参道経路は本パックのどの来源にも無いので、実測区間としては作らない。"
+    },
+    {
+      "gap": "京都河原町駅 → 八坂神社",
+      "value": "徒歩約8分",
+      "source_url": "https://www.yasaka-jinja.or.jp/access/",
+      "verified_at": "2026-09-29",
+      "whyNotALeg": "同上。"
+    },
+    {
+      "gap": "知恩院の座標",
+      "value": "京都市東山区林下町400（京都市 CSV col17、および公式サイト footer の同一表記）",
+      "source_url": "https://www.chion-in.or.jp/guide/",
+      "verified_at": "2026-09-29",
+      "whyNotALeg": "住所は 2 来源が一致するが、座標はどの来源にも無い。住所から座標を作るのは導出であって観測ではないので行わない。"
+    },
+    {
+      "gap": "建仁寺の座標",
+      "value": "京都市東山区大和大路通四条下る小松町584",
+      "source_url": "https://www.kenninji.jp/access/",
+      "verified_at": "2026-09-29",
+      "whyNotALeg": "同上。"
+    },
+    {
+      "gap": "清水寺の座標",
+      "value": "京都市東山区清水一丁目294（京都市 CSV col17、および公式サイト footer の同一表記）",
+      "source_url": "https://www.kiyomizudera.or.jp/access.php",
+      "verified_at": "2026-09-29",
+      "whyNotALeg": "同上。"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "tourguide.city-pack/v1",
+  "cityId": "kyoto-shijo",
+  "nameLocal": "京都・四条通（四条烏丸〜祇園）",
+  "nameEn": "Kyoto, Shijō-dōri (Shijō Karasuma to Gion)",
+  "country": "JP",
+  "language": "ja",
+  "timeZone": "Asia/Tokyo",
+  "currency": "JPY",
+  "currencyMinorUnit": 1,
+  "corridor": {
+    "streetNameJa": "四条通",
+    "officialNameJa": "京都市道186号 嵐山祇園線",
+    "nationalRouteRef": "市道186号",
+    "fromAnchorJa": "四条烏丸",
+    "toAnchorJa": "祇園",
+    "originUdeg": { "lonUdeg": 135759719, "latUdeg": 35003658 },
+    "originStatus": "frozen",
+    "originContract": "iteration/design/contract-geo-pipeline.md#1b",
+    "gridContract": "iteration/design/contract-geo-pipeline.md#2",
+    "measuredCorridorM": 1595.05,
+    "measuredCorridorSource": "docs/handOff/archive/corpora/geo-japan/kyoto-slice-measurement-summary.json",
+    "eastGapNoteJa": "四条通の OSM 幾何は lon 135777193 で終わり、祇園交差点（約 135778200）まで 91.92 m の実測ギャップがある。この欠落は凍結済みで、攻略で「祇園交差点まで」と書いてはならない。",
+    "eastGapContract": "iteration/design/contract-geo-pipeline.md#GAP-2"
+  },
+  "scope": {
+    "gate": "Gate 1",
+    "anchorBlockIndex": 0,
+    "anchorBlockNote": "Block 0 of the frozen corridor: the first 40 m of 四条通 east of 四条烏丸, the only block that can hold authored interiors.",
+    "authoredDoors": 12,
+    "authoredDoorsFile": "city-packs/kyoto-shijo/doors.json",
+    "includedPlaces": 24,
+    "includedTransitLegs": 12
+  },
+  "factTiers": {
+    "static": ["nameJa", "latUdeg", "lngUdeg", "addressJa", "osmBuildingId", "category"],
+    "semiStatic": ["hours", "admission", "closedDays", "fareIC", "fareTicket"],
+    "dynamic": [],
+    "reviewCadence": { "static": "yearly", "semiStatic": "quarterly", "dynamic": "never cached as truth" },
+    "dynamicNote": "No dynamic fact is cached in this pack. Temporary closures, seasonal timetables and event dates are NOT stored; the guide must render an explicit \"confirm before you go\" affordance for them."
+  },
+  "licenceObligations": {
+    "odblDerivedFile": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json",
+    "odblAttribution": "© OpenStreetMap contributors",
+    "odblLicenceUri": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "whySeparate": "ODbL 4.5(a) Collective Database: rows whose values originate in OSM live only in the *-osm-places.json file, which is published under ODbL. places.json and transit.json carry our curation and reach the OSM values by placeId reference.",
+    "ccByAttributionJa": "【京都観光見もの情報】，京都市，クリエイティブ・コモンズ・ライセンス表示 4.0 国際（http://creativecommons.org/licenses/by/4.0/deed.ja）",
+    "ccByNote": "The string above is the attribution format the Kyoto City open-data terms require verbatim (京都 オープンデータ利用規約 (2)ア). Where a place row quotes the CSV's 説明 text, this attribution must travel with the exported guide.",
+    "modifiedFromSource": "This pack selects, translates, and reformats rows from the Kyoto City CSV. The adaptation is stated here because the terms require it, and the pack must never be presented as if Kyoto City published it in this form."
+  },
+  "sources": [
+    "https://data.city.kyoto.lg.jp/dataset/00073/",
+    "https://data.city.kyoto.lg.jp/resource/?id=7052",
+    "https://www2.city.kyoto.lg.jp/sogo/toukei/Sonota/kiyaku/kiyaku_syoban.pdf",
+    "https://www.openstreetmap.org/copyright",
+    "https://opendatacommons.org/licenses/odbl/1-0/",
+    "https://www.tfkoutori.jp/data/pdf/kiyaku-202209.pdf",
+    "https://www.city.kyoto.lg.jp/kotsu/page/0000240682.html",
+    "https://www.city.kyoto.lg.jp/kotsu/page/0000240757.html",
+    "https://www.yasaka-jinja.or.jp/access/",
+    "https://www.yasaka-jinja.or.jp/about/architecture/",
+    "https://www.chion-in.or.jp/guide/",
+    "https://www.kiyomizudera.or.jp/access.php",
+    "https://www.kenninji.jp/access/",
+    "https://www.kenninji.jp/news/?p=2352"
+  ],
+  "sourcesNotUsed": [
+    "https://meetkyoto.jp/en/sitepolicy/ — KYOTO CVB reserves all rights; verbatim: \"Reproducing or reprinting materials from this website without permission is prohibited.\"",
+    "Google Places / Yelp / Foursquare / TripAdvisor / HERE — review text cannot be permanently redistributed offline.",
+    "食べログ / ホットペッパーグルメ / ぐるなび / じゃらん — commercial redistribution of user reviews prohibited (iteration/recon/review-source-japan.md §2)."
+  ],
+  "verifiedAt": "2026-09-29",
+  "verifiedBy": "city-data-architect (pack-curator, shared task task-10)"
+}

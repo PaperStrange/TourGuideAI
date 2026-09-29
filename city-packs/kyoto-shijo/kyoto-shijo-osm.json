@@ -8,7 +8,7 @@
     "licenceUri": "https://opendatacommons.org/licenses/odbl/1-0/",
     "attribution": "© OpenStreetMap contributors",
     "copyrightUrl": "https://www.openstreetmap.org/copyright",
-    "extractedAt": null
+    "extractedAt": "2026-09-29T16:39:40Z"
   },
   "method": {
     "extraction": "Overpass API, out body geom on a narrow block bbox",
@@ -197,7 +197,6 @@
           "x": 0.011564,
           "y": 0.02515
         },
-        "perpendicularOffsetFromFacadeM": 0.025121,
         "floorXMVersusCanonical": {
           "floorXM": 18,
           "floorYM": 13,
@@ -234,7 +233,6 @@
           "x": 0.009446,
           "y": 0.02845
         },
-        "perpendicularOffsetFromFacadeM": 0.02845,
         "floorXMVersusCanonical": {
           "floorXM": 21,
           "floorYM": 13,
@@ -271,7 +269,6 @@
           "x": 0.030456,
           "y": 0.019549
         },
-        "perpendicularOffsetFromFacadeM": 0.019467,
         "floorXMVersusCanonical": {
           "floorXM": 24,
           "floorYM": 13,
@@ -308,7 +305,6 @@
           "x": 0.011035,
           "y": 0.010649
         },
-        "perpendicularOffsetFromFacadeM": 0.010649,
         "floorXMVersusCanonical": {
           "floorXM": 28,
           "floorYM": 13,
@@ -345,7 +341,6 @@
           "x": 0.009975,
           "y": 0.001749
         },
-        "perpendicularOffsetFromFacadeM": 0.001749,
         "floorXMVersusCanonical": {
           "floorXM": 31,
           "floorYM": 13,
@@ -382,7 +377,6 @@
           "x": 0.030985,
           "y": 0.007151
         },
-        "perpendicularOffsetFromFacadeM": 0.007236,
         "floorXMVersusCanonical": {
           "floorXM": 34,
           "floorYM": 13,
@@ -420,7 +414,6 @@
           "x": 0.010505,
           "y": 0.016051
         },
-        "perpendicularOffsetFromFacadeM": 0.016051,
         "floorXMVersusCanonical": {
           "floorXM": 38,
           "floorYM": 13,
@@ -457,7 +450,6 @@
           "x": 0.030188,
           "y": 0.023436
         },
-        "perpendicularOffsetFromFacadeM": 0.023804,
         "floorXMVersusCanonical": {
           "floorXM": 19,
           "floorYM": -11,
@@ -512,7 +504,6 @@
           "x": 0.024283,
           "y": 0.02094
         },
-        "perpendicularOffsetFromFacadeM": 0.021235,
         "floorXMVersusCanonical": {
           "floorXM": 22,
           "floorYM": -11,
@@ -550,7 +541,6 @@
           "x": 0.016253,
           "y": 0.002816
         },
-        "perpendicularOffsetFromFacadeM": 0.005321,
         "floorXMVersusCanonical": {
           "floorXM": 26,
           "floorYM": -11,
@@ -587,7 +577,6 @@
           "x": 0.008224,
           "y": 0.015307
         },
-        "perpendicularOffsetFromFacadeM": 0.018806,
         "floorXMVersusCanonical": {
           "floorXM": 30,
           "floorYM": -11,
@@ -624,7 +613,6 @@
           "x": 0.000194,
           "y": 0.029069
         },
-        "perpendicularOffsetFromFacadeM": 0.029057,
         "floorXMVersusCanonical": {
           "floorXM": 33,
           "floorYM": -11,
@@ -857,5 +845,87 @@
     ],
     "beneathTheBlockNote": "The block sits directly above the 阪急京都線: two tracks down the middle of 四条通 at layer -1, tunnel=yes, and a railway platform area at level -2 with ref '1;2'. Source is National-Land Numerical Information (Railway) 2007, MLIT Japan, i.e. MLIT open data (KSJ2), not a survey. Tags quoted are a subset; see contradiction C5."
   },
-  "evidenceFiles": []
+  "evidenceFiles": [
+    {
+      "path": "city-packs/kyoto-shijo/evidence/osm-block-q1-footprints.json",
+      "sha256": "36806863EC546AF798C284A96D9F70AAA0A12E19FC4BC9A3A3BB68D6B468820E",
+      "bytes": 47032,
+      "query": "way[building] + way[highway] + node[entrance] + node[shop] over lat 35.00320..35.00460 lon 135.75940..135.76060, out body geom",
+      "fetchedAtUtc": "2026-09-29T16:39:40Z",
+      "osmBaseTimestamp": "2026-09-29T16:37:26Z",
+      "usedFor": "footprint geometry for the two facades, sidewalk centrelines, the street centreline, and every node id cited in doors[] and facades[]"
+    },
+    {
+      "path": "city-packs/kyoto-shijo/evidence/osm-block-q2-everything.json",
+      "sha256": "11D059737D3FABE9592D2E3AC12DF91A599698FF6108BF5AD3DD38369C39D0A5",
+      "bytes": 19288,
+      "query": "EVERY node and way inside the exact block bbox lat 35.003478..35.003838 lon 135.759719..135.760157, out body geom",
+      "fetchedAtUtc": "2026-09-29T16:41:01Z",
+      "osmBaseTimestamp": "2026-09-29T16:38:26Z",
+      "usedFor": "the exhaustive negative evidence for gap G1 (no entrance node exists in the block) and the occupancy POI"
+    }
+  ],
+  "evidenceFilesNote": "These paths, byte counts, sha256 digests and in-band osm3s timestamps live here rather than in doors.json, because they describe ODbL content and the provenance chain belongs on the ODbL side of the boundary. The digests were moved out of doors.json in task-9. Fetched with curl --tlsv1.2 --ssl-no-revoke; the plain schannel handshake fails in this sandbox with exit 35. validate-doors.mjs assertion V10 verifies these digests against the bytes on disk, and V19 verifies that this chain is complete.",
+  "unusedSourceCandidates": [
+    {
+      "candidateId": "C-north-corner",
+      "kind": "corner-facade-facing-the-四条烏丸-junction",
+      "osmBuildingId": 205732558,
+      "edgeNodes": [
+        2157078412,
+        2157078408
+      ],
+      "fromUdeg": {
+        "lonUdeg": 135759809,
+        "latUdeg": 35003844
+      },
+      "toUdeg": {
+        "lonUdeg": 135759900,
+        "latUdeg": 35003781
+      },
+      "fromM": {
+        "xM": 8.215,
+        "yM": 20.635
+      },
+      "toM": {
+        "xM": 16.522,
+        "yM": 13.646
+      },
+      "lengthM": 10.856,
+      "inBlockPortion": "yM <= 20.0, i.e. cellY <= 39",
+      "whyUnused": "It faces 烏丸通, not 四条通. A door here would be a 側門 and would change the block's declared two-sided 四条通 frontage model. Offered so the level designer can choose; no door is placed on it.",
+      "valueKind": "observed",
+      "movedFrom": "doors.json in task-9 -- a full geometry record with integer-microdegree corners; 'unused' does not make it ours"
+    },
+    {
+      "candidateId": "C-south-corner",
+      "kind": "corner-facade-facing-the-四条烏丸-junction",
+      "osmBuildingId": 205732536,
+      "edgeNodes": [
+        2157078403,
+        2157078404
+      ],
+      "fromUdeg": {
+        "lonUdeg": 135759824,
+        "latUdeg": 35003479
+      },
+      "toUdeg": {
+        "lonUdeg": 135759911,
+        "latUdeg": 35003559
+      },
+      "fromM": {
+        "xM": 9.585,
+        "yM": -19.858
+      },
+      "toM": {
+        "xM": 17.526,
+        "yM": -10.983
+      },
+      "lengthM": 11.91,
+      "inBlockPortion": "whole edge, cellY 0..9",
+      "whyUnused": "Same reason as C-north-corner.",
+      "valueKind": "observed",
+      "movedFrom": "doors.json in task-9"
+    }
+  ]
 }

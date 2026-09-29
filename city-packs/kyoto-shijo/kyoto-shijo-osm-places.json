@@ -1,0 +1,879 @@
+{
+  "schema": "tourguide.city-pack.osm-derived/places/v1",
+  "pack": "kyoto-shijo",
+  "note": "Every coordinate and tag in this file originates in OpenStreetMap. It is a Derivative Database published under ODbL 1.0 (clause 4.4), and it is the alteration file clause 4.6 asks for. places.json and transit.json hold our own content and reach this file by placeId — no OSM value is copied back into them.",
+  "source": {
+    "dataset": "OpenStreetMap, via the OSM API 0.6 map endpoint and Overpass API",
+    "licence": "Open Database License (ODbL) 1.0",
+    "licenceUri": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "attribution": "© OpenStreetMap contributors",
+    "copyrightUrl": "https://www.openstreetmap.org/copyright",
+    "retrievedAt": "2026-09-29",
+    "evidenceFiles": [
+      {
+        "file": "evidence/osm-corridor-map.json",
+        "sha256": "56B456152B2F5CFC6854EA5EDFBD2C92B236D4BA67E7978D591E359999C294A2",
+        "query": "https://api.openstreetmap.org/api/0.6/map.json?bbox=135.7588,35.0028,135.7789,35.0047"
+      },
+      {
+        "file": "evidence/osm-corridor-os.json",
+        "sha256": "5152995D0C599EA9EB0B3B7A56D7F11A2277A66B498038C5D6DAA949AA4E6818",
+        "query": "https://api.openstreetmap.org/api/0.6/map.json?bbox=135.7595,35.0028,135.7790,35.0047"
+      },
+      {
+        "file": "evidence/osm-block-q1-footprints.json",
+        "sha256": "36806863EC546AF798C284A96D9F70AAA0A12E19FC4BC9A3A3BB68D6B468820E",
+        "note": "already recorded by doors.json method.facadeGeometrySource"
+      },
+      {
+        "file": "evidence/osm-block-q2-everything.json",
+        "sha256": "11D059737D3FABE9592D2E3AC12DF91A599698FF6108BF5AD3DD38369C39D0A5",
+        "note": "already recorded by doors.json method.facadeGeometrySource.secondQuery"
+      }
+    ]
+  },
+  "method": {
+    "scripts": [
+      "evidence/tools/build-osm-places.mjs",
+      "evidence/tools/measure-shijo-walk.mjs"
+    ],
+    "coordinateRule": "integer microdegrees, rounded to nearest (iteration/design/contract-geo-pipeline.md §5)",
+    "wayCentreRule": "arithmetic mean of the way's vertices that are present in the extracts"
+  },
+  "places": [
+    {
+      "placeId": "kyoto-shijo-bldg-mitsui",
+      "osmRef": "way/205732558",
+      "whyInPack": "north-side building containing doors D-N1..D-N7",
+      "latUdeg": 35004094,
+      "lonUdeg": 135760073,
+      "coordinateKind": "osm-centre",
+      "nameOsm": "京都三井ビルディング",
+      "nameEnOsm": null,
+      "tags": {
+        "addr:block_number": "8",
+        "addr:city": "京都市",
+        "addr:province": "京都府",
+        "addr:quarter": "長刀鉾町",
+        "addr:suburb": "下京区",
+        "building": "commercial",
+        "building:levels": "8",
+        "name": "京都三井ビルディング",
+        "source": "Bing",
+        "start_date": "1984-09"
+      },
+      "licence": "ODbL 1.0"
+    },
+    {
+      "placeId": "kyoto-shijo-bldg-daiya",
+      "osmRef": "way/205732536",
+      "whyInPack": "south-side building containing doors D-S1..D-S5",
+      "latUdeg": 35003232,
+      "lonUdeg": 135760033,
+      "coordinateKind": "osm-centre",
+      "nameOsm": "京都ダイヤビル",
+      "nameEnOsm": null,
+      "tags": {
+        "addr:block_number": "10",
+        "addr:city": "京都市",
+        "addr:province": "京都府",
+        "addr:quarter": "長刀鉾町",
+        "addr:suburb": "下京区",
+        "building": "commercial",
+        "building:levels": "8",
+        "name": "京都ダイヤビル",
+        "source": "Bing",
+        "start_date": "2007-10",
+        "wikidata": "Q110701885"
+      },
+      "licence": "ODbL 1.0"
+    },
+    {
+      "placeId": "kyoto-shijo-bank-mufg-kyoto",
+      "osmRef": "node/14196400744",
+      "whyInPack": "the block's only mapped occupant (three doors' facade line is also recorded in kyoto-shijo-osm.json)",
+      "latUdeg": 35003511,
+      "lonUdeg": 135759918,
+      "coordinateKind": "osm-centre",
+      "nameOsm": "三菱ＵＦＪ銀行 京都支店",
+      "nameEnOsm": null,
+      "tags": {
+        "amenity": "bank",
+        "atm": "yes",
+        "name": "三菱ＵＦＪ銀行 京都支店"
+      },
+      "licence": "ODbL 1.0"
+    },
+    {
+      "placeId": "kyoto-shijo-hist-bank-sign-1",
+      "osmRef": "node/10220936881",
+      "whyInPack": "history information board on the block",
+      "latUdeg": 35003532,
+      "lonUdeg": 135759900,
+      "coordinateKind": "osm-centre",
+      "nameOsm": "旧三菱銀行京都支店の歴史継承",
+      "nameEnOsm": null,
+      "tags": {
+        "board_type": "history",
+        "information": "board",
+        "name": "旧三菱銀行京都支店の歴史継承",
+        "tourism": "information"
+      },
+      "licence": "ODbL 1.0"
+    },
+    {
+      "placeId": "kyoto-shijo-hist-bank-sign-2",
+      "osmRef": "node/10220936882",
+      "whyInPack": "history information board on the block",
+      "latUdeg": 35003490,
+      "lonUdeg": 135759850,
+      "coordinateKind": "osm-centre",
+      "nameOsm": "旧三菱銀行京都支店",
+      "nameEnOsm": null,
+      "tags": {
+        "board_type": "history",
+        "information": "board",
+        "name": "旧三菱銀行京都支店",
+        "tourism": "information"
+      },
+      "licence": "ODbL 1.0"
+    },
+    {
+      "placeId": "kyoto-shijo-crossing-karasuma-east",
+      "osmRef": "node/2737069286",
+      "whyInPack": "signalised crossing on the east arm of 四条烏丸",
+      "latUdeg": 35003659,
+      "lonUdeg": 135759946,
+      "coordinateKind": "osm-centre",
+      "nameOsm": null,
+      "nameEnOsm": null,
+      "tags": {
+        "button_operated": "no",
+        "crossing": "traffic_signals",
+        "crossing:island": "no",
+        "crossing:markings": "zebra",
+        "highway": "crossing",
+        "tactile_paving": "yes",
+        "traffic_signals:sound": "yes",
+        "traffic_signals:vibration": "no"
+      },
+      "licence": "ODbL 1.0"
+    },
+    {
+      "placeId": "kyoto-shijo-subway-shijo-exit1",
+      "osmRef": "node/11283562286",
+      "whyInPack": "subway 四条駅 Exit 1 — the nearest station exit to the block",
+      "latUdeg": 35003247,
+      "lonUdeg": 135759825,
+      "coordinateKind": "osm-centre",
+      "nameOsm": "Exit 1",
+      "nameEnOsm": null,
+      "tags": {
+        "name": "Exit 1",
+        "railway": "subway_entrance",
+        "ref": "1",
+        "wheelchair": "yes"
+      },
+      "licence": "ODbL 1.0"
+    },
+    {
+      "placeId": "kyoto-shijo-subway-shijo-exit19",
+      "osmRef": "node/4229848161",
+      "whyInPack": "subway 四条駅 exit 19",
+      "latUdeg": 35003555,
+      "lonUdeg": 135760460,
+      "coordinateKind": "osm-centre",
+      "nameOsm": null,
+      "nameEnOsm": null,
+      "tags": {
+        "level": "0",
+        "railway": "subway_entrance",
+        "ref": "19",
+        "source": "local knowledge"
+      },
+      "licence": "ODbL 1.0"
+    },
+    {
+      "placeId": "kyoto-shijo-bus-shijo-karasuma-F",
+      "osmRef": "node/2787253037",
+      "whyInPack": "四条烏丸 bus stop, Fのりば",
+      "latUdeg": 35003760,
+      "lonUdeg": 135758973,
+      "coordinateKind": "osm-centre",
+      "nameOsm": "四条烏丸",
+      "nameEnOsm": "Shijo Karasuma",
+      "tags": {
+        "bench": "yes",
+        "bin": "no",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "lit": "yes",
+        "local_ref": "F",
+        "name": "四条烏丸",
+        "name:en": "Shijo Karasuma",
+        "name:ja": "四条烏丸",
+        "name:ja-Hira": "しじょうからすま",
+        "name:ko": "시조카라스마",
+        "name:zh-Hans": "四条乌丸",
+        "name:zh-Hant": "四条烏丸",
+        "network": "京都市営バス",
+        "network:en": "Kyoto City Bus",
+        "network:ja": "京都市営バス",
+        "network:wikidata": "Q4858667",
+        "note": "Fのりば 百万遍・平安神宮・銀閣寺・北白川・清水寺方面行 停車する系統:3,11,12,32,46,201,203,207",
+        "official_name": "四条烏丸（地下鉄四条駅）",
+        "official_name:en": "Shijo Karasuma (Subway Shijo Station)",
+        "official_name:ja": "四条烏丸（地下鉄四条駅）",
+        "official_name:ja-Hira": "しじょうからすま（ちかてつ　しじょうえき）",
+        "official_name:ko": "시조카라스마(지하철　시조역)",
+        "official_name:zh-Hans": "四条乌丸（地铁四条站）",
+        "official_name:zh-Hant": "四条烏丸（地下鐵四条車站）",
+        "operator": "京都市交通局",
+        "public_transport": "platform",
+        "shelter": "yes",
+        "tactile_paving": "yes"
+      },
+      "licence": "ODbL 1.0"
+    },
+    {
+      "placeId": "kyoto-shijo-bus-shijo-karasuma-G",
+      "osmRef": "node/8447615881",
+      "whyInPack": "四条烏丸 bus stop, Gのりば",
+      "latUdeg": 35004403,
+      "lonUdeg": 135759538,
+      "coordinateKind": "osm-centre",
+      "nameOsm": "四条烏丸",
+      "nameEnOsm": "Shijo Karasuma",
+      "tags": {
+        "bus": "yes",
+        "highway": "bus_stop",
+        "local_ref": "G",
+        "name": "四条烏丸",
+        "name:en": "Shijo Karasuma",
+        "name:ja": "四条烏丸",
+        "name:ja-Hira": "しじょうからすま",
+        "name:ko": "시조카라스마",
+        "name:zh-Hans": "四条乌丸",
+        "name:zh-Hant": "四条烏丸",
+        "note": "Gのりば 京都市交通局 高野・岩倉・京大病院方面行 停車する系統:65",
+        "official_name": "四条烏丸（地下鉄四条駅）",
+        "official_name:en": "Shijo Karasuma (Subway Shijo Station)",
+        "official_name:ja": "四条烏丸（地下鉄四条駅）",
+        "official_name:ja-Hira": "しじょうからすま（ちかてつ　しじょうえき）",
+        "official_name:ko": "시조카라스마(지하철　시조역)",
+        "official_name:zh-Hans": "四条乌丸（地铁四条站）",
+        "official_name:zh-Hant": "四条烏丸（地下鐵四条車站）",
+        "operator": "京都市交通局;ケイルック",
+        "public_transport": "platform"
+      },
+      "licence": "ODbL 1.0"
+    },
+    {
+      "placeId": "kyoto-shijo-bus-shijo-takakura-A",
+      "osmRef": "node/8886543723",
+      "whyInPack": "四条高倉 bus stop, Aのりば",
+      "latUdeg": 35003718,
+      "lonUdeg": 135761625,
+      "coordinateKind": "osm-centre",
+      "nameOsm": "四条高倉",
+      "nameEnOsm": "Shijo Takakura",
+      "tags": {
+        "bench": "yes",
+        "bin": "no",
+        "bus": "yes",
+        "departures_board": "realtime",
+        "highway": "bus_stop",
+        "lit": "yes",
+        "local_ref": "A",
+        "name": "四条高倉",
+        "name:en": "Shijo Takakura",
+        "name:ja": "四条高倉",
+        "name:ja-Hira": "しじょうたかくら",
+        "name:ko": "시조타카쿠라",
+        "name:zh-Hans": "四条高仓",
+        "name:zh-Hant": "四条高倉",
+        "operator": "京都市交通局;京都バス",
+        "public_transport": "platform",
+        "shelter": "yes;no",
+        "tactile_paving": "yes"
+      },
+      "licence": "ODbL 1.0"
+    },
+    {
+      "placeId": "kyoto-shijo-bus-shijo-kawaramachi-E",
+      "osmRef": "node/4387240005",
+      "whyInPack": "四条河原町 bus stop, Eのりば",
+      "latUdeg": 35003785,
+      "lonUdeg": 135767749,
+      "coordinateKind": "osm-centre",
+      "nameOsm": "四条河原町",
+      "nameEnOsm": "Shijo Kawaramachi",
+      "tags": {
+        "bench": "yes",
+        "bin": "no",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "lit": "yes",
+        "local_ref": "E",
+        "name": "四条河原町",
+        "name:en": "Shijo Kawaramachi",
+        "name:ja": "四条河原町",
+        "name:ja-Hira": "しじょうかわらまち",
+        "name:ko": "시조카와라마치",
+        "name:zh-Hans": "四条河原町",
+        "name:zh-Hant": "四条河原町",
+        "note": "Eのりば 京都市交通局 祇園・平安神宮・清水寺方面行 停車する系統:11, 12, 31, 46, 201, 203, 207 京都バス:17,特17",
+        "operator": "京都市交通局;京都バス;京阪バス",
+        "public_transport": "platform",
+        "shelter": "yes",
+        "tactile_paving": "yes"
+      },
+      "licence": "ODbL 1.0"
+    },
+    {
+      "placeId": "kyoto-shijo-bus-shijo-kawaramachi-D",
+      "osmRef": "node/2503718438",
+      "whyInPack": "四条河原町 bus stop, Dのりば",
+      "latUdeg": 35003702,
+      "lonUdeg": 135768198,
+      "coordinateKind": "osm-centre",
+      "nameOsm": "四条河原町",
+      "nameEnOsm": "Shijo Kawaramachi",
+      "tags": {
+        "bench": "yes",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "local_ref": "D",
+        "name": "四条河原町",
+        "name:en": "Shijo Kawaramachi",
+        "name:ja": "四条河原町",
+        "name:ja-Hira": "しじょうかわらまち",
+        "name:ja-Latn": "Shijō Kawaramachi",
+        "name:ko": "시조카와라마치",
+        "name:zh-Hans": "四条河原町",
+        "name:zh-Hant": "四条河原町",
+        "note": "Dのりば 京都市交通局 嵐山・二条城・上賀茂神社・四条大宮・北野白梅町・千本今出川・東寺方面行 停車する系統:3, 11, 12, 31, 32, 46, 201, 203, 58, 207, よるバス",
+        "operator": "京都市交通局;京都バス",
+        "public_transport": "platform",
+        "shelter": "yes"
+      },
+      "licence": "ODbL 1.0"
+    },
+    {
+      "placeId": "kyoto-shijo-station-hankyu-kawaramachi",
+      "osmRef": "node/6944607675",
+      "whyInPack": "阪急京都線 京都河原町駅",
+      "latUdeg": 35003763,
+      "lonUdeg": 135769608,
+      "coordinateKind": "osm-centre",
+      "nameOsm": "京都河原町",
+      "nameEnOsm": "Kyoto Kawaramachi",
+      "tags": {
+        "contact:website": "https://www.hankyu.co.jp/station/kawaramachi.html",
+        "name": "京都河原町",
+        "name:de": "Kioto Kawaramachi",
+        "name:en": "Kyoto Kawaramachi",
+        "name:ja": "京都河原町",
+        "name:ja-Hira": "きょうと かわらまち",
+        "name:ja-Latn": "Kyoto-Kawaramachi",
+        "name:ko": "교토 카와라마치",
+        "public_transport": "station",
+        "railway": "station",
+        "ref": "HK86",
+        "wheelchair": "limited",
+        "wikidata": "Q2085248",
+        "wikipedia": "ja:京都河原町駅 (京都府)"
+      },
+      "licence": "ODbL 1.0"
+    },
+    {
+      "placeId": "kyoto-shijo-station-keihan-gion-shijo",
+      "osmRef": "node/6883622225",
+      "whyInPack": "京阪本線 祇園四条駅",
+      "latUdeg": 35003233,
+      "lonUdeg": 135771931,
+      "coordinateKind": "osm-centre",
+      "nameOsm": "祇園四条",
+      "nameEnOsm": "Gion-shijo",
+      "tags": {
+        "contact:website": "https://www.keihan.co.jp/traffic/station/162/info.html",
+        "name": "祇園四条",
+        "name:en": "Gion-shijo",
+        "name:es": "Gion-shijo",
+        "name:ja": "祇園四条",
+        "name:ja-Hira": "ぎおんしじょう",
+        "name:ja-Latn": "Gion-shijō",
+        "name:ko": "기온시죠",
+        "old_name": "四条",
+        "public_transport": "station",
+        "railway": "station",
+        "ref": "KH39",
+        "wikidata": "Q2153263",
+        "wikipedia": "ja:祇園四条駅"
+      },
+      "licence": "ODbL 1.0"
+    },
+    {
+      "placeId": "kyoto-shijo-bus-shijo-keihan-mae-A",
+      "osmRef": "node/2930865877",
+      "whyInPack": "四条京阪前 bus stop, Aのりば",
+      "latUdeg": 35003906,
+      "lonUdeg": 135772518,
+      "coordinateKind": "osm-centre",
+      "nameOsm": "四条京阪前",
+      "nameEnOsm": "Shijo Keihan-mae",
+      "tags": {
+        "bench": "yes",
+        "bin": "yes",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "lit": "yes",
+        "local_ref": "A",
+        "name": "四条京阪前",
+        "name:en": "Shijo Keihan-mae",
+        "name:ja": "四条京阪前",
+        "name:ko": "시죠케이한마에",
+        "note": "Aのりば\n京都市交通局 祇園・百万遍・平安神宮・清水寺方面行\n停車する系統:31, 46, 86,201, 203, 58, 207",
+        "operator": "京都市交通局・京阪バス",
+        "public_transport": "platform",
+        "shelter": "yes",
+        "tactile_paving": "yes"
+      },
+      "licence": "ODbL 1.0"
+    },
+    {
+      "placeId": "kyoto-shijo-bus-gion-A",
+      "osmRef": "node/2503718437",
+      "whyInPack": "祇園 bus stop, Aのりば",
+      "latUdeg": 35003257,
+      "lonUdeg": 135777225,
+      "coordinateKind": "osm-centre",
+      "nameOsm": "祇園",
+      "nameEnOsm": "Gion",
+      "tags": {
+        "bench": "yes",
+        "bin": "no",
+        "bus": "yes",
+        "highway": "bus_stop",
+        "lit": "yes",
+        "local_ref": "A",
+        "name": "祇園",
+        "name:en": "Gion",
+        "note": "Aのりば\n京都市交通局:清水寺・京都駅・東福寺・鉄道博物館方面行\n停車する系統:86, 202, 206, 58, 207",
+        "operator": "京都市交通局・京都バス",
+        "public_transport": "platform",
+        "shelter": "yes",
+        "tactile_paving": "yes"
+      },
+      "licence": "ODbL 1.0"
+    },
+    {
+      "placeId": "kyoto-shijo-yasaka-nishiromon",
+      "osmRef": "way/105449683",
+      "whyInPack": "八坂神社 西楼門 — the gate that faces 四条通",
+      "latUdeg": 35003741,
+      "lonUdeg": 135777526,
+      "coordinateKind": "osm-centre",
+      "nameOsm": "西楼門",
+      "nameEnOsm": "West Tower Gate",
+      "tags": {
+        "building": "roof",
+        "image": "https://photos.app.goo.gl/gfP1LsuTJAA4ong16",
+        "name": "西楼門",
+        "name:en": "West Tower Gate",
+        "name:fr": "Porte de la tour ouest",
+        "name:ja-Hira": "にし ろうもん",
+        "name:ja-Latn": "Nishi-rōmon"
+      },
+      "licence": "ODbL 1.0"
+    },
+    {
+      "placeId": "kyoto-shijo-yasaka-honden",
+      "osmRef": "way/88108397",
+      "whyInPack": "八坂神社 本殿",
+      "latUdeg": 35003645,
+      "lonUdeg": 135778590,
+      "coordinateKind": "osm-centre",
+      "nameOsm": "本殿",
+      "nameEnOsm": "Main Shrine",
+      "tags": {
+        "building": "shrine",
+        "building:wikidata": "Q2044994",
+        "contact:website": "https://www.yasaka-jinja.or.jp/about/architecture/#sec01",
+        "heritage": "2",
+        "heritage:operator": "文部科学省",
+        "heritage:since": "2020-12-23",
+        "heritage:type": "国宝",
+        "heritage:wikidata": "Q1139795",
+        "historic:period": "edo",
+        "image": "https://photos.app.goo.gl/qa67uehoE8FhgmjH7",
+        "name": "本殿",
+        "name:en": "Main Shrine",
+        "name:fr": "Pavillon principal",
+        "name:ja-Hira": "ほんでん",
+        "name:ja-Latn": "Honden",
+        "name:ko": "본전",
+        "religion": "shinto",
+        "wikidata": "Q107020629",
+        "wikimedia_commons": "Category:Honden, Yasaka-jinja"
+      },
+      "licence": "ODbL 1.0"
+    }
+  ],
+  "walkMeasurement": {
+    "schema": "tourguide.city-pack.osm-derived/walk-measurement/v1",
+    "source": {
+      "dataset": "OpenStreetMap, via the OSM API 0.6 map endpoint",
+      "extract": "city-packs/kyoto-shijo/evidence/osm-corridor-map.json",
+      "licence": "Open Database License (ODbL) 1.0",
+      "attribution": "© OpenStreetMap contributors",
+      "copyrightUrl": "https://www.openstreetmap.org/copyright"
+    },
+    "method": {
+      "projection": "local tangent-plane equirectangular; metresPerDegreeLon 91282.15, metresPerDegreeLat 110940.65 (iteration/design/contract-geo-pipeline.md §1)",
+      "origin": "135759719,35003658 (frozen)",
+      "chaining": "四条通 ways chained by shared OSM node id; the west terminus is the end node with no 四条通 neighbour; all other streets excluded",
+      "anchorProjection": "each anchor is dropped onto the nearest point of the chain; alongStreetM is measured from the chain west end",
+      "walkTimeRule": "道路距離80メートルにつき1分間、1分未満の端数は1分 (不動産の表示に関する公正競争規約 施行規則; evidence/japan-rftc-hyouji-kiyaku.txt)",
+      "walkMetresPerMinute": 80,
+      "verification": {
+        "allWayNodesPresentInExtract": true,
+        "wayCount": 11,
+        "chainedWays": 11,
+        "chainNodeCount": 62
+      }
+    },
+    "corridorChain": {
+      "ways": [
+        964931603,
+        678103923,
+        465069436,
+        465069431,
+        380083522,
+        174762073,
+        843727820,
+        28322073,
+        27427466,
+        1510539685,
+        854442449
+      ],
+      "lanes": [
+        "4",
+        "2",
+        "1"
+      ],
+      "totalM": 1716.803,
+      "westEnd": {
+        "lat": 35.0036834,
+        "lon": 135.7583923,
+        "xM": -121.104
+      },
+      "eastEnd": {
+        "lat": 35.0037491,
+        "lon": 135.7771926,
+        "xM": 1595.028
+      }
+    },
+    "anchors": [
+      {
+        "id": "origin-shijo-karasuma",
+        "nameJa": "四条烏丸（投影原点）",
+        "src": "ORIGIN, frozen in iteration/design/contract-geo-pipeline.md §1b",
+        "ll": {
+          "lon": 135.759719,
+          "lat": 35.003658
+        },
+        "lat": 35.003658,
+        "lon": 135.759719,
+        "xM": 0,
+        "yM": 0,
+        "alongStreetM": 121.141,
+        "offsetFromCentrelineM": 0.033
+      },
+      {
+        "id": "bus-shijo-karasuma-F",
+        "nameJa": "四条烏丸 バス停 Fのりば",
+        "src": "OSM node/2787253037",
+        "ll": {
+          "id": 2787253037,
+          "lat": 35.0037604,
+          "lon": 135.7589727
+        },
+        "lat": 35.0037604,
+        "lon": 135.7589727,
+        "xM": -68.124,
+        "yM": 11.36,
+        "alongStreetM": 52.743,
+        "offsetFromCentrelineM": 9.901
+      },
+      {
+        "id": "subway-shijo-exit1",
+        "nameJa": "地下鉄四条駅 1番出入口",
+        "src": "OSM node/11283562286",
+        "ll": {
+          "id": 11283562286,
+          "lat": 35.0032474,
+          "lon": 135.7598247
+        },
+        "lat": 35.0032474,
+        "lon": 135.7598247,
+        "xM": 9.649,
+        "yM": -45.552,
+        "alongStreetM": 130.497,
+        "offsetFromCentrelineM": 45.58
+      },
+      {
+        "id": "bus-shijo-takakura",
+        "nameJa": "四条高倉 バス停 Aのりば",
+        "src": "OSM node/8886543723",
+        "ll": {
+          "id": 8886543723,
+          "lat": 35.003718,
+          "lon": 135.7616253
+        },
+        "lat": 35.003718,
+        "lon": 135.7616253,
+        "xM": 174.011,
+        "yM": 6.656,
+        "alongStreetM": 295.204,
+        "offsetFromCentrelineM": 5.453
+      },
+      {
+        "id": "bus-shijo-kawaramachi-E",
+        "nameJa": "四条河原町 バス停 Eのりば",
+        "src": "OSM node/4387240005",
+        "ll": {
+          "id": 4387240005,
+          "lat": 35.0037854,
+          "lon": 135.7677487
+        },
+        "lat": 35.0037854,
+        "lon": 135.7677487,
+        "xM": 732.968,
+        "yM": 14.134,
+        "alongStreetM": 854.356,
+        "offsetFromCentrelineM": 5.973
+      },
+      {
+        "id": "hankyu-kyoto-kawaramachi",
+        "nameJa": "阪急 京都河原町駅",
+        "src": "OSM node/6944607675",
+        "ll": {
+          "id": 6944607675,
+          "lat": 35.0037633,
+          "lon": 135.769608
+        },
+        "lat": 35.0037633,
+        "lon": 135.769608,
+        "xM": 902.689,
+        "yM": 11.682,
+        "alongStreetM": 1023.962,
+        "offsetFromCentrelineM": 2.486
+      },
+      {
+        "id": "keihan-gion-shijo",
+        "nameJa": "京阪 祇園四条駅",
+        "src": "OSM node/6883622225",
+        "ll": {
+          "id": 6883622225,
+          "lat": 35.0032326,
+          "lon": 135.7719309
+        },
+        "lat": 35.0032326,
+        "lon": 135.7719309,
+        "xM": 1114.728,
+        "yM": -47.194,
+        "alongStreetM": 1235.5,
+        "offsetFromCentrelineM": 65.639
+      },
+      {
+        "id": "bus-shijo-keihan-mae-A",
+        "nameJa": "四条京阪前 バス停 Aのりば",
+        "src": "OSM node/2930865877",
+        "ll": {
+          "id": 2930865877,
+          "lat": 35.0039061,
+          "lon": 135.7725181
+        },
+        "lat": 35.0039061,
+        "lon": 135.7725181,
+        "xM": 1168.329,
+        "yM": 27.524,
+        "alongStreetM": 1289.801,
+        "offsetFromCentrelineM": 8.571
+      },
+      {
+        "id": "bus-gion-A",
+        "nameJa": "祇園 バス停 Aのりば",
+        "src": "OSM node/2503718437",
+        "ll": {
+          "id": 2503718437,
+          "lat": 35.0032569,
+          "lon": 135.7772252
+        },
+        "lat": 35.0032569,
+        "lon": 135.7772252,
+        "xM": 1598.004,
+        "yM": -44.498,
+        "alongStreetM": 1716.803,
+        "offsetFromCentrelineM": 54.686
+      },
+      {
+        "id": "yasaka-jinja-nishiro-mon",
+        "nameJa": "八坂神社 西楼門",
+        "src": "OSM way/105449683",
+        "ll": {
+          "lat": 35.003740900000004,
+          "lon": 135.77752609
+        },
+        "lat": 35.0037409,
+        "lon": 135.7775261,
+        "xM": 1625.469,
+        "yM": 9.197,
+        "alongStreetM": 1716.803,
+        "offsetFromCentrelineM": 30.455
+      },
+      {
+        "id": "yasaka-jinja-honden",
+        "nameJa": "八坂神社 本殿",
+        "src": "OSM way/88108397",
+        "ll": {
+          "lat": 35.00364484736842,
+          "lon": 135.77859043684208
+        },
+        "lat": 35.0036448,
+        "lon": 135.7785904,
+        "xM": 1722.625,
+        "yM": -1.459,
+        "alongStreetM": 1716.803,
+        "offsetFromCentrelineM": 128.121
+      },
+      {
+        "id": "chion-in",
+        "nameJa": "知恩院",
+        "src": "OSM node/… absent — address only (東山区林下町400)",
+        "ll": null,
+        "lat": null,
+        "lon": null,
+        "xM": null,
+        "yM": null,
+        "alongStreetM": null,
+        "offsetFromCentrelineM": null,
+        "reason": "no OSM object in the extract and no coordinates in any source read for this pack"
+      },
+      {
+        "id": "kiyomizu-dera",
+        "nameJa": "清水寺",
+        "src": "OSM node/… absent — address only (東山区清水一丁目294)",
+        "ll": null,
+        "lat": null,
+        "lon": null,
+        "xM": null,
+        "yM": null,
+        "alongStreetM": null,
+        "offsetFromCentrelineM": null,
+        "reason": "no OSM object in the extract and no coordinates in any source read for this pack"
+      },
+      {
+        "id": "kennin-ji",
+        "nameJa": "建仁寺",
+        "src": "OSM node/… absent — address only (東山区大和大路通四条下る小松町584)",
+        "ll": null,
+        "lat": null,
+        "lon": null,
+        "xM": null,
+        "yM": null,
+        "alongStreetM": null,
+        "offsetFromCentrelineM": null,
+        "reason": "no OSM object in the extract and no coordinates in any source read for this pack"
+      }
+    ],
+    "legs": [
+      {
+        "from": "bus-shijo-karasuma-F",
+        "to": "origin-shijo-karasuma",
+        "mode": "walk",
+        "alongStreetM": 68.398,
+        "minutes": 1,
+        "rule": "ceil(68.398 m / 80 m per min)"
+      },
+      {
+        "from": "origin-shijo-karasuma",
+        "to": "subway-shijo-exit1",
+        "mode": "walk",
+        "alongStreetM": 9.356,
+        "minutes": 1,
+        "rule": "ceil(9.356 m / 80 m per min)"
+      },
+      {
+        "from": "subway-shijo-exit1",
+        "to": "bus-shijo-takakura",
+        "mode": "walk",
+        "alongStreetM": 164.707,
+        "minutes": 3,
+        "rule": "ceil(164.707 m / 80 m per min)"
+      },
+      {
+        "from": "bus-shijo-takakura",
+        "to": "bus-shijo-kawaramachi-E",
+        "mode": "walk",
+        "alongStreetM": 559.152,
+        "minutes": 7,
+        "rule": "ceil(559.152 m / 80 m per min)"
+      },
+      {
+        "from": "bus-shijo-kawaramachi-E",
+        "to": "hankyu-kyoto-kawaramachi",
+        "mode": "walk",
+        "alongStreetM": 169.606,
+        "minutes": 3,
+        "rule": "ceil(169.606 m / 80 m per min)"
+      },
+      {
+        "from": "hankyu-kyoto-kawaramachi",
+        "to": "keihan-gion-shijo",
+        "mode": "walk",
+        "alongStreetM": 211.538,
+        "minutes": 3,
+        "rule": "ceil(211.538 m / 80 m per min)"
+      },
+      {
+        "from": "keihan-gion-shijo",
+        "to": "bus-shijo-keihan-mae-A",
+        "mode": "walk",
+        "alongStreetM": 54.301,
+        "minutes": 1,
+        "rule": "ceil(54.301 m / 80 m per min)"
+      },
+      {
+        "from": "bus-shijo-keihan-mae-A",
+        "to": "bus-gion-A",
+        "mode": "walk",
+        "alongStreetM": 427.002,
+        "minutes": 6,
+        "rule": "ceil(427.002 m / 80 m per min)"
+      },
+      {
+        "from": "bus-gion-A",
+        "to": "yasaka-jinja-nishiro-mon",
+        "mode": "walk",
+        "alongStreetM": 0,
+        "minutes": 1,
+        "rule": "ceil(0.000 m / 80 m per min)"
+      },
+      {
+        "from": "yasaka-jinja-nishiro-mon",
+        "to": "yasaka-jinja-honden",
+        "mode": "walk",
+        "alongStreetM": 0,
+        "minutes": 1,
+        "rule": "ceil(0.000 m / 80 m per min)"
+      }
+    ],
+    "gaps": [
+      "Offsets from the centreline are straight-line distances to the chain, not the walked path around the 四条烏丸 crossing.",
+      "No timetable, headway, first/last departure or platform-level data is measured here. Those remain gaps.",
+      "知恩院 / 清水寺 / 建仁寺 have no OSM object in this extract, so their alongStreetM is null: the pack carries their address and their own source instead of a invented coordinate."
+    ]
+  }
+}

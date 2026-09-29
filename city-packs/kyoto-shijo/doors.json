@@ -68,6 +68,7 @@
     },
     "valueKinds": [
       "observed",
+      "authored",
       "licenced",
       "abstract"
     ],
@@ -85,15 +86,17 @@
       "endpoint": "https://overpass-api.de/api/interpreter",
       "query": "[out:json][timeout:60];(way[\"building\"](35.00320,135.75940,35.00460,135.76060);way[\"highway\"](35.00320,135.75940,35.00460,135.76060);node[\"entrance\"](35.00320,135.75940,35.00460,135.76060);node[\"shop\"](35.00320,135.75940,35.00460,135.76060););out body geom;",
       "outMode": "out body geom (tags + node refs + inline geometry)",
-      "requestedAtUtc": "2026-09-29T16:30:00Z",
-      "rawResponsePath": "city-packs/kyoto-shijo/evidence/osm-block-q1-footprints.json",
-      "rawResponseSha256": "36806863EC546AF798C284A96D9F70AAA0A12E19FC4BC9A3A3BB68D6B468820E",
+      "fetchedAtUtc": "2026-09-29T16:39:40Z",
       "secondQuery": {
         "purpose": "Exhaustive: EVERY node and way inside the exact block bbox lon 135.759719..135.760157 lat 35.003478..35.003838 (x in [0,40), y in [-20,20)). This is the negative evidence for gap G1.",
         "query": "[out:json][timeout:90];(node(35.003478,135.759719,35.003838,135.760157);way(35.003478,135.759719,35.003838,135.760157););out body geom;",
-        "rawResponsePath": "city-packs/kyoto-shijo/evidence/osm-block-q2-everything.json",
-        "rawResponseSha256": "11D059737D3FABE9592D2E3AC12DF91A599698FF6108BF5AD3DD38369C39D0A5",
+        "fetchedAtUtc": "2026-09-29T16:41:01Z",
         "elementsInBlock": 41
+      },
+      "rawBytesRecordedIn": {
+        "file": "city-packs/kyoto-shijo/kyoto-shijo-osm.json",
+        "field": "evidenceFiles",
+        "why": "The raw Overpass responses ARE ODbL content, so their paths, sizes, hashes and in-band osm3s timestamps live in the ODbL half, not here. Before the split these digests sat in this file, which had the provenance chain on the wrong side of the licence boundary. validate-doors.mjs assertion V10 reads them from there, and V19 asserts that the ODbL half's chain is complete and hashes correctly."
       },
       "freshness": "OSM is a live database. These two responses are the frozen evidence for this pack version; a later re-fetch may legitimately differ. Static field tier -> annual re-check.",
       "toolingNote": "curl needed --tlsv1.2 --ssl-no-revoke in this sandbox; plain schannel handshake fails with exit 35. Overpass returned 504 once on an identical query and succeeded on retry."
@@ -108,7 +111,7 @@
     },
     "doorExistence": {
       "authored": true,
-      "statement": "No OSM entrance node exists anywhere in this block, so all 12 doorways are AUTHORED placements on measured facades. The building identity and the facade line are observed; the position along the facade is authored. Hence provenance.valueKind = licenced for every door, and none may enter the guide's verified column.",
+      "statement": "No OSM entrance node exists anywhere in this block, so all 12 doorways are AUTHORED placements on measured facades. The building identity and the facade line are observed; the position along the facade is authored. Hence provenance.valueKind = authored for every door, and none may enter the guide's verified column.",
       "notMerged": "No two distinct storefronts were merged into one door. Each door registers to the footprint it opens into, which is what the source says: OSM records ONE footprint per building here, with no building:part and no shop way inside either footprint (Q2 returned no such element). Splitting one footprint into 7 and 5 doorways is authored, and is labelled as such rather than being passed off as observed subdivision."
     },
     "curator": {
@@ -127,7 +130,12 @@
     }
   },
   "contentFieldsRule": {
-    "note": "entrancePointJa and interiorTemplate are NOT facts. They are authored content decisions, which is why their valueKind is licenced and not observed. The rules behind them are stated here so a consumer can disagree with the rule rather than guess at it.",
+    "note": "entrancePointJa and interiorTemplate are NOT facts. They are authored content decisions, which is why their valueKind is `authored` and not `observed`. The rules behind them are stated here so a consumer can disagree with the rule rather than guess at it.",
+    "provenanceClass": {
+      "whyAuthored": "All 12 doors carry provenance.valueKind = authored, and so do the four placement-derived fields (cellX, cellY, entrancePointJa, interiorTemplate). A human READ the building identity and the facade line off OSM, so those two fields stay `observed`. Nobody read 'there is a doorway at x m' off any source: the doorway position is a placement this project made along a measured facade. Before VALUE_KIND gained `authored` these rows said `licenced`, which is the vocabulary for licence-derived defaults such as a road-width template -- the wrong class, and the file contradicted itself by saying `authored: true` in prose while the field said `licenced`. `authored` is the truthful member.",
+      "whyItChangesNothingDownstream": "`authored` does NOT reach the guide's verified column. GUIDE_VERIFIED_COLUMN_ALLOWED is still exactly ['observed'], so re-labelling licenced -> authored moved no door into the verified column and moved none out of it. Every door still carries guideVerifiedColumnAllowed: false, which is why re-labelling is a provenance correction and not a product change. world-grid.mjs assertion A9b asserts that the gate did not widen when the fourth member was added.",
+      "cannotDriftAgain": "validate-doors.mjs imports VALUE_KINDS from world-grid.mjs and asserts this file's embedded frozenConstants mirror equals it (assertion V1). That is what caught this drift: the mirror was written before `authored` existed, and V1 went red the moment the contract changed rather than waiting for a human to notice."
+    },
     "entrancePointJa": {
       "rule": "Every door is on the 四条通 street frontage, so every door is 本門.",
       "whyNoSideDoors": "A 側門 needs a side street or alley to face. Measured: the north footprint's only other street-facing edges are its 烏丸通 corner wall (nodes 2157078412 -> 2157078408), and the south footprint's is its 烏丸通 corner wall (nodes 2157078403 -> 2157078404). Both are recorded under unusedSourceCandidates. No door is placed on either, because doing so would change this block's declared two-sided 四条通 frontage model and the card does not define 本門/側門 for a corner.",
@@ -149,17 +157,17 @@
       "entrancePointJa": "本門",
       "interiorTemplate": "S 10×7",
       "provenance": {
-        "valueKind": "licenced",
+        "valueKind": "authored",
         "source": "OSM way 205732558 (footprint edge nodes 2157078408..2157078409) + 3 m storefront module template applied by the curator",
         "verifiedAt": "2026-09-29T16:45:00Z",
         "verifiedBy": "city-data-architect (doors-author, shared task task-2)",
         "fields": {
           "osmBuildingId": "observed",
           "facadeLineRun": "observed",
-          "cellX": "licenced",
-          "cellY": "licenced",
-          "entrancePointJa": "licenced",
-          "interiorTemplate": "licenced"
+          "cellX": "authored",
+          "cellY": "authored",
+          "entrancePointJa": "authored",
+          "interiorTemplate": "authored"
         },
         "guideVerifiedColumnAllowed": false,
         "whyNotObserved": "A human read the building identity and the facade line off OSM. Nobody read 'there is a doorway at 18.199 m' off any source. Labelling this observed would print a template placement in the guide's verified column -- contract clause 4, counter-example B."
@@ -174,17 +182,17 @@
       "entrancePointJa": "本門",
       "interiorTemplate": "S 10×7",
       "provenance": {
-        "valueKind": "licenced",
+        "valueKind": "authored",
         "source": "OSM way 205732558 (footprint edge nodes 2157078408..2157078409) + 3 m storefront module template applied by the curator",
         "verifiedAt": "2026-09-29T16:45:00Z",
         "verifiedBy": "city-data-architect (doors-author, shared task task-2)",
         "fields": {
           "osmBuildingId": "observed",
           "facadeLineRun": "observed",
-          "cellX": "licenced",
-          "cellY": "licenced",
-          "entrancePointJa": "licenced",
-          "interiorTemplate": "licenced"
+          "cellX": "authored",
+          "cellY": "authored",
+          "entrancePointJa": "authored",
+          "interiorTemplate": "authored"
         },
         "guideVerifiedColumnAllowed": false,
         "whyNotObserved": "Same as D-N1."
@@ -199,17 +207,17 @@
       "entrancePointJa": "本門",
       "interiorTemplate": "S 10×7",
       "provenance": {
-        "valueKind": "licenced",
+        "valueKind": "authored",
         "source": "OSM way 205732558 (footprint edge nodes 2157078408..2157078409) + 3 m storefront module template applied by the curator",
         "verifiedAt": "2026-09-29T16:45:00Z",
         "verifiedBy": "city-data-architect (doors-author, shared task task-2)",
         "fields": {
           "osmBuildingId": "observed",
           "facadeLineRun": "observed",
-          "cellX": "licenced",
-          "cellY": "licenced",
-          "entrancePointJa": "licenced",
-          "interiorTemplate": "licenced"
+          "cellX": "authored",
+          "cellY": "authored",
+          "entrancePointJa": "authored",
+          "interiorTemplate": "authored"
         },
         "guideVerifiedColumnAllowed": false,
         "whyNotObserved": "Same as D-N1."
@@ -224,17 +232,17 @@
       "entrancePointJa": "本門",
       "interiorTemplate": "S 10×7",
       "provenance": {
-        "valueKind": "licenced",
+        "valueKind": "authored",
         "source": "OSM way 205732558 (footprint edge nodes 2157078408..2157078409) + 3 m storefront module template applied by the curator",
         "verifiedAt": "2026-09-29T16:45:00Z",
         "verifiedBy": "city-data-architect (doors-author, shared task task-2)",
         "fields": {
           "osmBuildingId": "observed",
           "facadeLineRun": "observed",
-          "cellX": "licenced",
-          "cellY": "licenced",
-          "entrancePointJa": "licenced",
-          "interiorTemplate": "licenced"
+          "cellX": "authored",
+          "cellY": "authored",
+          "entrancePointJa": "authored",
+          "interiorTemplate": "authored"
         },
         "guideVerifiedColumnAllowed": false,
         "whyNotObserved": "Same as D-N1."
@@ -249,17 +257,17 @@
       "entrancePointJa": "本門",
       "interiorTemplate": "S 10×7",
       "provenance": {
-        "valueKind": "licenced",
+        "valueKind": "authored",
         "source": "OSM way 205732558 (footprint edge nodes 2157078408..2157078409) + 3 m storefront module template applied by the curator",
         "verifiedAt": "2026-09-29T16:45:00Z",
         "verifiedBy": "city-data-architect (doors-author, shared task task-2)",
         "fields": {
           "osmBuildingId": "observed",
           "facadeLineRun": "observed",
-          "cellX": "licenced",
-          "cellY": "licenced",
-          "entrancePointJa": "licenced",
-          "interiorTemplate": "licenced"
+          "cellX": "authored",
+          "cellY": "authored",
+          "entrancePointJa": "authored",
+          "interiorTemplate": "authored"
         },
         "guideVerifiedColumnAllowed": false,
         "whyNotObserved": "Same as D-N1."
@@ -274,17 +282,17 @@
       "entrancePointJa": "本門",
       "interiorTemplate": "S 10×7",
       "provenance": {
-        "valueKind": "licenced",
+        "valueKind": "authored",
         "source": "OSM way 205732558 (footprint edge nodes 2157078408..2157078409) + 3 m storefront module template applied by the curator",
         "verifiedAt": "2026-09-29T16:45:00Z",
         "verifiedBy": "city-data-architect (doors-author, shared task task-2)",
         "fields": {
           "osmBuildingId": "observed",
           "facadeLineRun": "observed",
-          "cellX": "licenced",
-          "cellY": "licenced",
-          "entrancePointJa": "licenced",
-          "interiorTemplate": "licenced"
+          "cellX": "authored",
+          "cellY": "authored",
+          "entrancePointJa": "authored",
+          "interiorTemplate": "authored"
         },
         "guideVerifiedColumnAllowed": false,
         "whyNotObserved": "Same as D-N1."
@@ -299,17 +307,17 @@
       "entrancePointJa": "本門",
       "interiorTemplate": "S 10×7",
       "provenance": {
-        "valueKind": "licenced",
+        "valueKind": "authored",
         "source": "OSM way 205732558 (footprint edge nodes 2157078408..2157078409) + 3 m storefront module template applied by the curator",
         "verifiedAt": "2026-09-29T16:45:00Z",
         "verifiedBy": "city-data-architect (doors-author, shared task task-2)",
         "fields": {
           "osmBuildingId": "observed",
           "facadeLineRun": "observed",
-          "cellX": "licenced",
-          "cellY": "licenced",
-          "entrancePointJa": "licenced",
-          "interiorTemplate": "licenced"
+          "cellX": "authored",
+          "cellY": "authored",
+          "entrancePointJa": "authored",
+          "interiorTemplate": "authored"
         },
         "guideVerifiedColumnAllowed": false,
         "whyNotObserved": "Same as D-N1."
@@ -324,20 +332,20 @@
       "entrancePointJa": "本門",
       "interiorTemplate": "M 13×9",
       "provenance": {
-        "valueKind": "licenced",
+        "valueKind": "authored",
         "source": "OSM way 205732536 (footprint edge nodes 2157078404..2157078405) + 3 m storefront module template applied by the curator; module contains OSM node 14196400744 (amenity=bank)",
         "verifiedAt": "2026-09-29T16:45:00Z",
         "verifiedBy": "city-data-architect (doors-author, shared task task-2)",
         "fields": {
           "osmBuildingId": "observed",
           "facadeLineRun": "observed",
-          "cellX": "licenced",
-          "cellY": "licenced",
-          "entrancePointJa": "licenced",
-          "interiorTemplate": "licenced"
+          "cellX": "authored",
+          "cellY": "authored",
+          "entrancePointJa": "authored",
+          "interiorTemplate": "authored"
         },
         "guideVerifiedColumnAllowed": false,
-        "whyNotObserved": "The module contains the block's only mapped occupant, which is why this door is given the M template. The bank's existence is observed; the position of its doorway is a perpendicular projection of the POI node onto the facade, which is an inference by the curator, not a value read off a source. It therefore stays licenced -- see observedAnchors."
+        "whyNotObserved": "The module contains the block's only mapped occupant, which is why this door is given the M template. The bank's existence is observed; the position of its doorway is a perpendicular projection of the POI node onto the facade, which is an inference by the curator, not a value read off a source. It therefore stays authored -- see osmRecord for the recorded anchor."
       },
       "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm.json#/doors[doorId=D-S1]"
     },
@@ -349,17 +357,17 @@
       "entrancePointJa": "本門",
       "interiorTemplate": "S 10×7",
       "provenance": {
-        "valueKind": "licenced",
+        "valueKind": "authored",
         "source": "OSM way 205732536 (footprint edge nodes 2157078404..2157078405) + 3 m storefront module template applied by the curator",
         "verifiedAt": "2026-09-29T16:45:00Z",
         "verifiedBy": "city-data-architect (doors-author, shared task task-2)",
         "fields": {
           "osmBuildingId": "observed",
           "facadeLineRun": "observed",
-          "cellX": "licenced",
-          "cellY": "licenced",
-          "entrancePointJa": "licenced",
-          "interiorTemplate": "licenced"
+          "cellX": "authored",
+          "cellY": "authored",
+          "entrancePointJa": "authored",
+          "interiorTemplate": "authored"
         },
         "guideVerifiedColumnAllowed": false,
         "whyNotObserved": "Same as D-N1."
@@ -374,17 +382,17 @@
       "entrancePointJa": "本門",
       "interiorTemplate": "S 10×7",
       "provenance": {
-        "valueKind": "licenced",
+        "valueKind": "authored",
         "source": "OSM way 205732536 (footprint edge nodes 2157078404..2157078405) + 3 m storefront module template applied by the curator",
         "verifiedAt": "2026-09-29T16:45:00Z",
         "verifiedBy": "city-data-architect (doors-author, shared task task-2)",
         "fields": {
           "osmBuildingId": "observed",
           "facadeLineRun": "observed",
-          "cellX": "licenced",
-          "cellY": "licenced",
-          "entrancePointJa": "licenced",
-          "interiorTemplate": "licenced"
+          "cellX": "authored",
+          "cellY": "authored",
+          "entrancePointJa": "authored",
+          "interiorTemplate": "authored"
         },
         "guideVerifiedColumnAllowed": false,
         "whyNotObserved": "Same as D-N1."
@@ -399,17 +407,17 @@
       "entrancePointJa": "本門",
       "interiorTemplate": "S 10×7",
       "provenance": {
-        "valueKind": "licenced",
+        "valueKind": "authored",
         "source": "OSM way 205732536 (footprint edge nodes 2157078404..2157078405) + 3 m storefront module template applied by the curator",
         "verifiedAt": "2026-09-29T16:45:00Z",
         "verifiedBy": "city-data-architect (doors-author, shared task task-2)",
         "fields": {
           "osmBuildingId": "observed",
           "facadeLineRun": "observed",
-          "cellX": "licenced",
-          "cellY": "licenced",
-          "entrancePointJa": "licenced",
-          "interiorTemplate": "licenced"
+          "cellX": "authored",
+          "cellY": "authored",
+          "entrancePointJa": "authored",
+          "interiorTemplate": "authored"
         },
         "guideVerifiedColumnAllowed": false,
         "whyNotObserved": "Same as D-N1."
@@ -424,17 +432,17 @@
       "entrancePointJa": "本門",
       "interiorTemplate": "S 10×7",
       "provenance": {
-        "valueKind": "licenced",
+        "valueKind": "authored",
         "source": "OSM way 205732536 (footprint edge nodes 2157078404..2157078405) + 3 m storefront module template applied by the curator",
         "verifiedAt": "2026-09-29T16:45:00Z",
         "verifiedBy": "city-data-architect (doors-author, shared task task-2)",
         "fields": {
           "osmBuildingId": "observed",
           "facadeLineRun": "observed",
-          "cellX": "licenced",
-          "cellY": "licenced",
-          "entrancePointJa": "licenced",
-          "interiorTemplate": "licenced"
+          "cellX": "authored",
+          "cellY": "authored",
+          "entrancePointJa": "authored",
+          "interiorTemplate": "authored"
         },
         "guideVerifiedColumnAllowed": false,
         "whyNotObserved": "Same as D-N1."
@@ -446,7 +454,8 @@
     "doorCount": 12,
     "byValueKind": {
       "observed": 0,
-      "licenced": 12,
+      "authored": 12,
+      "licenced": 0,
       "abstract": 0
     },
     "guideVerifiedColumnAdmitted": 0,
@@ -461,69 +470,9 @@
     "storefrontWidthMeanM": 3.470257,
     "minPairwiseDoorSeparationM": 3.3125,
     "minSameFacadeCellSpacing": 3,
-    "maxPerpendicularOffsetFromFacadeM": 0.029057,
-    "maxQuantisationShiftM": 0.030985
+    "maxQuantisationShiftM": 0.030985,
+    "derivedOnlyNote": "maxPerpendicularOffsetFromFacadeM was REMOVED here. The stored per-door perpendicularOffsetFromFacadeM did not reproduce from the facade geometry (worst 3.600 mm, D-S4), and a derived value stored beside its source is a second source of truth that drifts. The ODbL half no longer stores it either; validate-doors.mjs assertion V5 computes the true perpendicular offset from the facade line and prints the maximum (0.029069 m)."
   },
-  "unusedSourceCandidates": [
-    {
-      "candidateId": "C-north-corner",
-      "kind": "corner-facade-facing-the-四条烏丸-junction",
-      "osmBuildingId": 205732558,
-      "edgeNodes": [
-        2157078412,
-        2157078408
-      ],
-      "fromUdeg": {
-        "lonUdeg": 135759809,
-        "latUdeg": 35003844
-      },
-      "toUdeg": {
-        "lonUdeg": 135759900,
-        "latUdeg": 35003781
-      },
-      "fromM": {
-        "xM": 8.215,
-        "yM": 20.635
-      },
-      "toM": {
-        "xM": 16.522,
-        "yM": 13.646
-      },
-      "lengthM": 10.856,
-      "inBlockPortion": "yM <= 20.0, i.e. cellY <= 39",
-      "whyUnused": "It faces 烏丸通, not 四条通. A door here would be a 側門 and would change the block's declared two-sided 四条通 frontage model. Offered so the level designer can choose; no door is placed on it.",
-      "valueKind": "observed"
-    },
-    {
-      "candidateId": "C-south-corner",
-      "kind": "corner-facade-facing-the-四条烏丸-junction",
-      "osmBuildingId": 205732536,
-      "edgeNodes": [
-        2157078403,
-        2157078404
-      ],
-      "fromUdeg": {
-        "lonUdeg": 135759824,
-        "latUdeg": 35003479
-      },
-      "toUdeg": {
-        "lonUdeg": 135759911,
-        "latUdeg": 35003559
-      },
-      "fromM": {
-        "xM": 9.585,
-        "yM": -19.858
-      },
-      "toM": {
-        "xM": 17.526,
-        "yM": -10.983
-      },
-      "lengthM": 11.91,
-      "inBlockPortion": "whole edge, cellY 0..9",
-      "whyUnused": "Same reason as C-north-corner.",
-      "valueKind": "observed"
-    }
-  ],
   "gaps": [
     {
       "gapId": "G1",
@@ -584,10 +533,13 @@
     {
       "gapId": "G8",
       "claim": "The frozen valueKind enum has no member meaning 'authored by the curator'.",
-      "severity": "contract-level; needs a decision",
-      "measured": "VALUE_KIND = observed | licenced | abstract. This pack's 12 doors are authored placements on observed facades; they are recorded as licenced because a template produced the position, which is the closest of the three. The contract defines licenced as licence-derived defaults (its example is road width).",
-      "consequence": "12 doors are barred from the guide's verified column -- correct, but for a reason the enum cannot state precisely. A reader may think these doors are licence-derived road-width-style defaults.",
-      "closesWhen": "Either the enum gains an 'authored' member (a contract change under contract section 10), or the contract states that authored placements belong in licenced."
+      "status": "CLOSED",
+      "closedAt": "2026-09-30",
+      "closedBy": "geo-contract added VALUE_KIND.AUTHORED to world-grid.mjs; doors-author re-labelled this pack (shared task task-9)",
+      "wasMeasuredAs": "VALUE_KIND = observed | licenced | abstract, with this pack's 12 authored doorways recorded as licenced because a template produced the position -- the closest of three, but the wrong class, since the contract defines licenced as licence-derived defaults such as road width.",
+      "resolution": "VALUE_KIND now has four members: observed | authored | licenced | abstract. `authored` is deliberately NOT admitted to the guide's verified column; GUIDE_VERIFIED_COLUMN_ALLOWED is still exactly ['observed'], and world-grid.mjs assertion A9b asserts the gate did not widen. All 12 doors now carry provenance.valueKind = authored, as do the four placement-derived per-field entries, so the file's prose and its fields finally agree. summary.byValueKind reads {observed:0, authored:12, licenced:0, abstract:0}, and every door keeps guideVerifiedColumnAllowed: false.",
+      "whyItCannotRecur": "validate-doors.mjs imports VALUE_KINDS from world-grid.mjs and asserts this file's embedded frozenConstants mirror equals it. That guard is what caught the drift: the mirror was written before `authored` existed, and V1 went red the moment the contract changed rather than waiting for a human to notice.",
+      "consequenceOfTheOldGap": "None shipped. Because neither licenced nor authored reaches the guide's verified column, re-labelling moved no door into or out of it; the correction is to the provenance class, not to the product."
     }
   ],
   "contradictionsWithDesign": [
@@ -636,42 +588,52 @@
   "validator": {
     "path": "city-packs/kyoto-shijo/validate-doors.mjs",
     "run": "node city-packs/kyoto-shijo/validate-doors.mjs",
-    "lastRunUtc": "2026-09-29T17:05:00Z",
-    "lastResult": "15/15 assertions passed, 0 failed (exit 0)",
+    "lastResult": "Not recorded here. A hand-copied result is a second source of truth and will drift, so run the command above; it prints its own count and exits 0 only when every assertion passes.",
     "assertions": [
       "V1  frozen constants in this file equal an actual import of world-grid.mjs (12 literals + the valueKind enum + the guide admitted-set)",
       "V2  every door cellX and cellY is an integer in [0, 40)",
       "V3  all 12 cells are pairwise distinct, and every pair of doors is >= 1 m apart",
       "V4  each door's declared cell is re-derived from the stored OSM geometry (node ids re-projected, module midpoint recomputed, imported quantiser reapplied)",
-      "V5  each door's canonical sub-tile lies inside its declared cell and within 1/32 m of its facade line, and within its facade run",
+      "V5  each door's canonical sub-tile lies inside its declared cell, within 1/32 m of its facade line, and within its facade run; the perpendicular offset is COMPUTED here and its maximum printed (the ODbL half no longer stores it)",
       "V6  each osmBuildingId resolves in kyoto-slice-overpass.json as a way carrying a building tag (the acceptance criterion)",
       "V7  each osmBuildingId is the way that actually owns the facade edge the door cites",
-      "V8  provenance: every door carries a valid valueKind; licenced/abstract doors are not admitted to the guide's verified column; per-field valueKind cannot be laundered upward",
+      "V8  provenance: every door carries a valid valueKind; authored/licenced/abstract doors are not admitted to the guide's verified column; per-field valueKind cannot be laundered upward",
       "V9  the facade lines are consistent with the mapped sidewalks: each facade lies on the far side of its sidewalk from the street centreline, 1.5-4.5 m beyond it, and the two facades straddle y = 0",
-      "V10 the two evidence files still hash to the recorded sha256 (tamper detection)",
+      "V10 the raw-bytes provenance chain in the ODbL half's evidenceFiles still hashes to what it records (tamper detection)",
       "V11 the corpus slice on disk hashes to the value its own measurement record names, and the record's counts match the slice",
-      "V12 the summary block is self-consistent with the doors and facades it summarises",
+      "V12 the summary block is self-consistent with the doors and facades it summarises (15 fields)",
       "V13 every door stands in the wall of the footprint it registers to (within one 1/16 sub-tile of that outline)",
       "V14 no door stands inside the wrong footprint, nor deeper than half a sub-tile into its own",
-      "V15 every coordinate quoted in observedBlockFeatures equals the evidence bytes (the block's real features were transcribed, so they are machine-checked rather than trusted)"
+      "V15 every coordinate quoted in observedBlockFeatures equals the evidence bytes (the block's real features were transcribed, so they are machine-checked rather than trusted)",
+      "V16 SEPARATION: doors.json carries no OSM-derived value -- each door record's key set is closed, no moved field is back at top level, and the top-level section inventory is closed",
+      "V17 SEPARATION: the OSM-derived residual in this file is exactly the declared census, so it can neither grow nor shrink silently",
+      "V18 every door's osmRecord pointer resolves to the SAME doorId in the ODbL half, bijectively, and the ODbL file's sha256 matches the one recorded here",
+      "V19 the ODbL half names the raw bytes it was derived from, and they hash correctly"
     ],
     "notAsserted": [
-      "That any doorway exists in reality. No source states a doorway position in this block; see gaps G1 and G5. That is exactly why every door is valueKind licenced and none is admitted to the guide's verified column.",
+      "That any doorway exists in reality. No source states a doorway position in this block; see gaps G1 and G5. That is exactly why every door is valueKind authored and none is admitted to the guide's verified column.",
       "That the storefronts are 11 separate businesses plus one bank. Only the bank is sourced."
     ]
   },
   "licence": {
-    "derivedFrom": "OpenStreetMap contributors",
+    "thisFile": "our own content -- NOT under ODbL. See odblNote.",
+    "odblAppliesToThisFile": false,
+    "odblHalf": "city-packs/kyoto-shijo/kyoto-shijo-osm.json",
+    "derivedFrom": "OpenStreetMap contributors (via the ODbL half; this file holds only references to it)",
     "source": "Overpass API (overpass-api.de)",
-    "licence": "ODbL 1.0",
     "attributionRequired": true,
-    "odblNote": "This file mixes authored rows with ODbL-derived rows (osmBuildingId, facade geometry, node ids, occupancy POI). Contract GAP-6 records that the project has not yet named a *-odbl.json convention for isolating ODbL-derived rows. This file is the first instance that would need to be split once that convention exists; it is flagged rather than unilaterally split.",
+    "attribution": "© OpenStreetMap contributors -- required because the pack as a whole uses OSM data, and it must travel with any distribution of the pack",
+    "odblNote": "The split is DONE. This file is ours and is not under ODbL; the ODbL half is city-packs/kyoto-shijo/kyoto-shijo-osm.json, which carries the ODbL 1.0 licence, the attribution and the raw-bytes provenance chain. Our content and the ODbL content sit in separate files, each under its own licence -- a Collective Database per ODbL 4.5(a). This file contains no OSM-derived value, only references into the ODbL half by doorId. validate-doors.mjs assertions V16 and V17 hold that boundary: V16 asserts no OSM-derived value appears in any door record, and V17 pins the small residual of derived counts and contract mirrors that we deliberately keep here.",
+    "residualNote": "Some ODbL-adjacent derived material stays in this file on purpose: counts and widths measured from the ODbL half (summary, block), the frozen origin/grid mirror that contract clause 1 requires readers of this file to see, and the way/node ids proving the origin sits on the street centreline (cellYConvention). Those are declared and pinned by V17. Raw OSM geometry does not stay here -- unusedSourceCandidates was moved to the ODbL half in task-9.",
+    "contentLicence": "CC BY 4.0",
     "odblUrl": "https://opendatacommons.org/licenses/odbl/1-0/",
-    "osmCopyrightUrl": "https://www.openstreetmap.org/copyright"
+    "osmCopyrightUrl": "https://www.openstreetmap.org/copyright",
+    "contentLicenceWhy": "Lead decision, 2026-09-30. The repository LICENSE is MIT and covers the SOFTWARE only;\nit does not reach curated data under city-packs/.\n\nChosen: CC BY 4.0 for our curated content. Reasons:\n1. It is the licence our two upstream data sources already use (京都市 京都観光見もの情報\n   is CC-BY 4.0; Japanese government open data is PDL 1.0, which states CC BY 4.0\n   compatibility), so the obligations we take on and the ones we pass on are the same shape.\n2. It has NO share-alike, so it creates no viral obligation over the product.\n3. CC BY 4.0 is one-way compatible with ODbL, so nothing here fights the ODbL half.\n\nWhat remains unchanged and non-negotiable: this file is NOT under ODbL. OSM-derived values\nlive only in the -osm.json halves, which are."
   },
   "osmDerived": {
     "file": "city-packs/kyoto-shijo/kyoto-shijo-osm.json",
-    "sha256": "1388f797814109e5ed8a38a2be2f0b924d24b9f07708b4d1f4de6dbe97f45a49",
+    "sha256": "aa3d34cf99f79c6cfaf43329a8e840951305253dc31cd88ad6c72787d7c2c226",
+    "sha256Note": "Re-recorded in task-9 after three authorised edits to the ODbL half: evidenceFiles gained the raw-bytes chain, source.extractedAt was set, and the non-reproducing per-door perpendicularOffsetFromFacadeM was dropped. V18 asserts this matches the file on disk.",
     "licence": "ODbL 1.0",
     "licenceUri": "https://opendatacommons.org/licenses/odbl/1-0/",
     "attribution": "© OpenStreetMap contributors",
@@ -682,9 +644,11 @@
       "observedAnchors",
       "placement",
       "facades",
-      "observedBlockFeatures"
+      "observedBlockFeatures",
+      "unusedSourceCandidates"
     ],
-    "relation": "Collective Database per ODbL 4.5(a): our content and the ODbL content sit in separate files, each under its own licence. This file is ours and is NOT itself under ODbL; it contains no OSM-derived value, only references into the ODbL file by doorId.",
-    "why": "Separating is what ODbL 4.2 and 4.4 ask for, and 4.5(a) is what keeps our curated rows from being absorbed."
+    "relation": "Collective Database per ODbL 4.5(a): our content and the ODbL content sit in separate files, each under its own licence. This file is ours and is NOT itself under ODbL; it contains no OSM-derived value, only references into the ODbL file by doorId. The ODbL half also carries the raw-bytes provenance chain (evidenceFiles), because those digests are derived from ODbL content and belong on that side of the boundary.",
+    "why": "Separating is what ODbL 4.2 and 4.4 ask for, and 4.5(a) is what keeps our curated rows from being absorbed.",
+    "movedInTask9": "unusedSourceCandidates -- two unused corner-facade records carrying integer-microdegree corners and a footprint id. 'Unused' does not make them ours."
   }
 }

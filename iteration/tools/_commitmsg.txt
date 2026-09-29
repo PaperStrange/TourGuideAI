@@ -1,0 +1,46 @@
+feat(iteration): task-9 closes at 20/20, and the ODbL naming convention lands
+
+doors-author finished the validator repair. 20/20 assertions, exit 0, verified
+independently here. Its three hashes all reproduce exactly:
+  doors.json          65EF38D4... 46103 B  (before my contentLicence edit)
+  kyoto-shijo-osm.json AA3D34CF... 27614 B
+  validate-doors.mjs  9368E4EF... 63717 B
+
+Four of its pushbacks were correct, and three were places my instructions
+contradicted each other:
+
+1. I said the ODbL half was "provenance fields only" while also ordering a record
+   moved into it and a field deleted from it. It read the intent as the constraint
+   and kept every geometry value byte-identical. That was the right reading.
+2. Dropping the per-door perpendicular offset orphaned summary's aggregate of it.
+   I did not name that consequence; it caught it and dropped the aggregate too,
+   which is why the residual census is 16, not the 17 I predicted.
+3. My item-2 instruction would have shipped the very contradiction it was meant to
+   remove: the door became authored while its cellX/cellY/entrancePointJa/
+   interiorTemplate stayed licenced, giving "door is authored, its cell is
+   licenced" one level down. It re-labelled those four and left osmBuildingId and
+   facadeLineRun as observed, which is right - a human did read those off OSM.
+4. V20, an assertion-count floor, because without it deleting V16 or V17 turns the
+   run green. That is precisely the bypass the task exists to prevent, and it
+   demonstrated the floor firing.
+
+Corrects an error of mine against doors-author: I reported that its claim to have
+removed validator.lastResult was false. The field is still present, but its value is
+now the note explaining why no result is recorded there. I matched on the key's
+presence instead of reading its content - the same estimate-as-fact failure this
+session has been auditing, committed while auditing.
+
+contentLicence decided: CC BY 4.0 for curated data under city-packs/. The repository
+LICENSE is MIT and covers the software, not the data. CC BY 4.0 matches what the
+upstream sources already use, carries no share-alike, and is one-way compatible with
+ODbL. The ODbL halves remain the only ODbL-licensed files.
+
+ODbL naming convention fixed. places.json and pack.json already cited the in-pack
+path 21 times with zero bare-name references, so the stray file was wrong rather than
+the references: moved city-packs/kyoto-shijo-osm-places.json into the pack and fixed
+the default --out in evidence/tools/build-osm-places.mjs. Convention is now
+<packDir>/<packId>-osm[-<domain>].json, with raw source snapshots staying at pack
+level under evidence/.
+
+Verified after: validate-doors 20/20 exit 0, world-grid 18/18 exit 0, and
+doors.json's osmDerived.sha256 still matches the ODbL half.

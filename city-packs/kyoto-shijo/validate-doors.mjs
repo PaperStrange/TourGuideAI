@@ -251,7 +251,7 @@ function check(id, title, ok, detail) {
  * ------------------------------------------------------------------ */
 {
   const problems = [];
-  let maxPerp = 0, maxShift = 0, worstPerpResidual = 0, worstPerpDoor = '';
+  let maxPerp = 0, maxShift = 0, maxPerpDoor = '';
   const BOUND = 1 / 32; // 0.03125 m — the contract's A3 disagreement bound
   for (const d of doors) {
     const p = d.placement;
@@ -265,20 +265,12 @@ function check(id, title, ok, detail) {
     const L = Math.hypot(dx, dy);
     const perp = Math.abs((qx - run.fromM) * dy - (qy - run.yFromM) * dx) / L;
     if (perp > BOUND + 1e-9) problems.push(`${d.doorId}: ${perp.toFixed(6)} m off the facade line (> ${BOUND})`);
-    // The stored per-door offset does NOT reproduce from the facade geometry.
-    // Measured worst case is 3.600 mm (D-S4) -- the natural perpendicular
-    // distance is 0.015200 m where 0.018806 m is stored. That is 0.058 of a
-    // sub-tile, so it cannot move a cell, but it is a number in the fact layer
-    // that does not derive from its source, so it is bounded here and reported
-    // rather than left to pass unseen.
-    const declaredPerp = p.perpendicularOffsetFromFacadeM;
-    if (typeof declaredPerp === 'number') {
-      const residual = Math.abs(declaredPerp - perp);
-      if (residual > worstPerpResidual) { worstPerpResidual = residual; worstPerpDoor = d.doorId; }
-      if (residual > WORLD_ONE_SUBTILE) {
-        problems.push(`${d.doorId}: stored offset ${declaredPerp} is ${residual.toFixed(6)} m from the recomputed perpendicular distance`);
-      }
-    }
+    // The perpendicular offset is COMPUTED here, never read from the record. The ODbL
+    // half used to store a per-door perpendicularOffsetFromFacadeM; it did not
+    // reproduce from the geometry (worst 3.600 mm at D-S4, where the natural
+    // perpendicular distance is 0.015200 m against a stored 0.018806 m) and was
+    // dropped in task-9. A derived value stored beside its source is a second source
+    // of truth, so this assertion is now the only place the number exists.
     // the door must sit within the run, not past either end
     if (qx < run.fromM - 1e-9 || qx > run.toM + 1e-9) problems.push(`${d.doorId}: x ${qx} outside run [${run.fromM},${run.toM}]`);
     const shift = Math.max(Math.abs(qx - p.authoredXM), Math.abs(qy - p.authoredYM));
@@ -287,12 +279,12 @@ function check(id, title, ok, detail) {
     }
     maxPerp = Math.max(maxPerp, perp);
     maxShift = Math.max(maxShift, shift);
+    if (perp === maxPerp) maxPerpDoor = d.doorId;
   }
   check('V5', `every door sits in its own cell and within 1/32 m of its measured facade line`,
     problems.length === 0,
-    `max perpendicular offset ${maxPerp.toFixed(6)} m; max quantisation shift ${maxShift.toFixed(6)} m; ` +
-    `bound ${BOUND} m; stored-vs-recomputed offset residual worst ${worstPerpResidual.toFixed(6)} m ` +
-    `(${worstPerpDoor}, bound ${WORLD_ONE_SUBTILE} m = one sub-tile); ` +
+    `max perpendicular offset ${maxPerp.toFixed(6)} m (${maxPerpDoor}) -- COMPUTED here, not stored; ` +
+    `max quantisation shift ${maxShift.toFixed(6)} m; bound ${BOUND} m; ` +
     `problems=${problems.length}${problems.length ? ' -> ' + problems.join('; ') : ''}`);
 }
 
@@ -380,9 +372,10 @@ let sliceHash = null;
   const declared = doorsDoc.summary.byValueKind;
   const summaryOk = VALUE_KINDS.every((k) => (declared[k] || 0) === (byKind[k] || 0));
   if (!summaryOk) problems.push('summary.byValueKind disagrees with the doors');
-  check('V8', "valueKind is a frozen member and licenced/abstract doors stay out of the guide's verified column",
+  check('V8', "valueKind is a frozen member and only `observed` reaches the guide's verified column",
     problems.length === 0,
     `kinds=${JSON.stringify(byKind)} (allowed ${JSON.stringify(GUIDE_VERIFIED_COLUMN_ALLOWED)} -> admitted=${admitted}); ` +
+    `every door keeps guideVerifiedColumnAllowed=false, so authored/licenced/abstract all stay out; ` +
     `summary matches=${summaryOk}; problems=${problems.length}${problems.length ? ' -> ' + problems.join('; ') : ''}`);
 }
 
@@ -449,25 +442,29 @@ let sliceHash = null;
 }
 
 /* ------------------------------------------------------------------ *
- * V10 — the evidence still hashes to what the pack recorded
+ * V10 — the ODbL half's raw-bytes chain still hashes correctly
  * ------------------------------------------------------------------ */
 {
-  const recorded = [
-    ['osm-block-q1-footprints.json', doorsDoc.method.facadeGeometrySource.rawResponseSha256],
-    ['osm-block-q2-everything.json', doorsDoc.method.facadeGeometrySource.secondQuery.rawResponseSha256],
-  ];
   const problems = [];
   const detail = [];
-  for (const [name, want] of recorded) {
-    const p = resolve(EVID_DIR, name);
-    if (!existsSync(p)) { problems.push(`${name} missing`); continue; }
+  const files = osmDoc.evidenceFiles || [];
+  if (files.length === 0) problems.push('the ODbL half declares no evidenceFiles');
+  for (const rec of files) {
+    if (!rec.path || !rec.sha256) { problems.push(`evidenceFiles entry without path/sha256: ${JSON.stringify(rec).slice(0, 80)}`); continue; }
+    const p = resolve(REPO, rec.path);
+    if (!existsSync(p)) { problems.push(`${rec.path} missing`); continue; }
     const got = sha256(p);
-    const ok = got === want;
-    if (!ok) problems.push(`${name}: recorded ${want} but on disk ${got}`);
-    detail.push(`${name} ${ok ? 'OK' : 'TAMPERED'} ${got.slice(0, 16)}...`);
+    const ok = got.toLowerCase() === String(rec.sha256).toLowerCase();
+    if (!ok) problems.push(`${rec.path}: recorded ${rec.sha256} but on disk ${got}`);
+    if (typeof rec.bytes === 'number' && readFileSync(p).length !== rec.bytes) {
+      problems.push(`${rec.path}: recorded ${rec.bytes} bytes, on disk ${readFileSync(p).length}`);
+    }
+    detail.push(`${rec.path.split('/').slice(-1)[0]} ${ok ? 'OK' : 'TAMPERED'} ${got.slice(0, 16)}...`);
   }
-  check('V10', 'evidence bytes are unchanged since the pack was written', problems.length === 0,
-    `${detail.join(' | ')}; problems=${problems.length}${problems.length ? ' -> ' + problems.join('; ') : ''}`);
+  check('V10', "the ODbL half's raw-bytes chain still hashes correctly",
+    problems.length === 0,
+    `${detail.join(' | ')}; digests read from the ODbL half, not from ours -- they were moved there in task-9; ` +
+    `problems=${problems.length}${problems.length ? ' -> ' + problems.join('; ') : ''}`);
 }
 
 /* ------------------------------------------------------------------ *
@@ -524,22 +521,18 @@ let sliceHash = null;
   const declaredTotal = doorsDoc.block.facadeFrontageTotalM;
   // Re-derive the residual maxima in summary, so they cannot be edited in place:
   // the census in V17 pins a section's COUNT, and a value edited in place does not
-  // move a count. These two being re-derived here is what covers them.
+  // move a count. These being re-derived here is what covers them.
   //
-  // NB on maxPerpendicularOffsetFromFacadeM: the summary is asserted to be the max
-  // of the per-door values as stored, which is the internal-consistency claim. Those
-  // stored per-door values do not reproduce from the geometry (worst 3.600 mm, D-S4),
-  // so the true perpendicular maximum is 0.029069 m where 0.029057 m is stored. V5
-  // bounds that residual per door and prints the worst case; this line only checks
-  // the summary against its own parts. Naming the distinction beats calling it exact.
-  let maxShift = 0, maxDeclaredPerp = 0;
+  // NB: maxPerpendicularOffsetFromFacadeM is GONE. It was a max over per-door values
+  // that did not reproduce from the geometry (worst 3.600 mm, D-S4), so in task-9 the
+  // stored per-door field was dropped from the ODbL half and the aggregate with it.
+  // V5 now computes the true perpendicular maximum and prints it. Do not reintroduce
+  // a stored copy of a derived value.
+  let maxShift = 0;
   for (const d of doors) {
     const p = d.placement;
     const qx = p.subX / 16, qy = p.subY / 16;
     maxShift = Math.max(maxShift, Math.max(Math.abs(qx - p.authoredXM), Math.abs(qy - p.authoredYM)));
-    if (typeof p.perpendicularOffsetFromFacadeM === 'number') {
-      maxDeclaredPerp = Math.max(maxDeclaredPerp, p.perpendicularOffsetFromFacadeM);
-    }
   }
   const cmp = [
     ['doorCount', s.doorCount, doors.length],
@@ -555,7 +548,6 @@ let sliceHash = null;
     ['facadeFrontageTotalM', declaredTotal, Number(total.toFixed(6))],
     ['frontageFreeWestM.north', doorsDoc.block.frontageFreeWestM.north, facades[0].facadeRunFull.fromM.xM],
     ['frontageFreeWestM.south', doorsDoc.block.frontageFreeWestM.south, facades[1].facadeRunFull.fromM.xM],
-    ['maxPerpendicularOffsetFromFacadeM', s.maxPerpendicularOffsetFromFacadeM, Number(maxDeclaredPerp.toFixed(6))],
     ['maxQuantisationShiftM', s.maxQuantisationShiftM, Number(maxShift.toFixed(6))],
     ['distinctBuildingIds', JSON.stringify([...s.distinctBuildingIds].sort((a, b) => a - b)), JSON.stringify(uniqIds)],
   ];
@@ -711,17 +703,20 @@ const outlines = new Map(facades.map((f) => [f.osmBuildingId, outlineOf(f.osmBui
 /** Fields the split moved into the ODbL half. Must not reappear in ours. */
 const CARRIED_FIELDS = Object.freeze([
   'osmBuildingId', 'osmBuildingName', 'facadeLineRun', 'observedAnchors',
-  'placement', 'facades', 'observedBlockFeatures',
+  'placement', 'facades', 'observedBlockFeatures', 'unusedSourceCandidates',
 ]);
+/** Carried fields that live at the TOP LEVEL of the ODbL half, not on a door record. */
+const TOP_LEVEL_CARRIED = Object.freeze(['facades', 'observedBlockFeatures', 'unusedSourceCandidates']);
 /** Our own content: the complete, closed key set of one door record. */
 const OWN_DOOR_KEYS = Object.freeze([
   'doorId', 'cellX', 'cellY', 'tileY', 'entrancePointJa', 'interiorTemplate',
   'provenance', 'osmRecord',
 ]);
-/** Closed inventory of top-level sections. A new section is a review event. */
+/** Closed inventory of top-level sections. A new section is a review event.
+ *  unusedSourceCandidates left this list in task-9, when it moved to the ODbL half. */
 const TOP_LEVEL_SECTIONS = Object.freeze([
   'schema', 'pack', 'block', 'cellYConvention', 'frozenConstants', 'method',
-  'contentFieldsRule', 'doors', 'summary', 'unusedSourceCandidates', 'gaps',
+  'contentFieldsRule', 'doors', 'summary', 'gaps',
   'contradictionsWithDesign', 'validator', 'licence', 'osmDerived',
 ]);
 /** Closed key sets for the small sections that still carry OSM-derived values,
@@ -733,7 +728,7 @@ const CLOSED_SECTIONS = Object.freeze({
   summary: ['doorCount', 'byValueKind', 'guideVerifiedColumnAdmitted', 'doorsNorthSide',
     'doorsSouthSide', 'distinctBuildingIds', 'storefrontWidthNorthM', 'storefrontWidthSouthM',
     'storefrontWidthMeanM', 'minPairwiseDoorSeparationM', 'minSameFacadeCellSpacing',
-    'maxPerpendicularOffsetFromFacadeM', 'maxQuantisationShiftM'],
+    'maxQuantisationShiftM', 'derivedOnlyNote'],
   cellYConvention: ['formula', 'why', 'evidenceStreetCentrelineAtOrigin', 'conflictWithTaskCard'],
   frozenConstants: ['mustImport', 'note', 'ORIGIN', 'PROJECTION', 'worldGrid', 'GRID',
     'valueKinds', 'guideVerifiedColumnAllowed'],
@@ -814,47 +809,43 @@ function valueCensus(doc) {
 
 /**
  * THE DECLARED RESIDUAL. doors.json still carries OSM-derived values in these
- * five places, and pinning them here is deliberate: the split is INCOMPLETE, and
- * an exact census means the residual can neither grow silently nor shrink
- * silently. Growth means someone put a value back. Shrinkage means the split
- * advanced -- correct the census in the same commit, and delete this note when
- * the census is empty.
+ * places, and pinning them here is deliberate: an exact census means the residual
+ * can neither grow silently nor shrink silently. Growth means someone put a value
+ * back. Shrinkage means the split advanced -- correct the census in the same
+ * commit.
  *
- *   unusedSourceCandidates  the 2 unused corner facades, still full geometry records
  *   frozenConstants         the projection ORIGIN, mirrored because contract clause 1
  *                           requires readers of this file to see it (V1 proves it equals the import)
  *   summary                 distinctBuildingIds, and widths/offsets measured off the facades
  *   block                   frontage widths and the frontage-free west end, measured off the footprints
  *   cellYConvention         the way/node ids proving the origin sits on the street centreline
  *
+ * unusedSourceCandidates was here in the first census (42 values) and is GONE: it
+ * moved to the ODbL half in task-9, on the Lead's call that 'unused' does not make a
+ * full geometry record ours. summary also lost maxPerpendicularOffsetFromFacadeM
+ * when its non-reproducing per-door source was dropped.
+ *
+ * WHAT PINS THE RESIDUAL (stated because a census alone does not):
+ *   frozenConstants   re-derived by V1 against the contract import
+ *   summary, block    re-derived by V12 (15 fields, incl. the quantisation maximum
+ *                     and the frontage-free west end)
+ *   doors, facades    re-derived by V4/V5/V9/V13/V14
+ *   cellYConvention.evidenceStreetCentrelineAtOrigin
+ *     -> pinned by count and key set ONLY. A value inside it could be edited in
+ *        place without this validator noticing. That is the acknowledged soft spot,
+ *        and it is why cellYConvention is the next candidate to leave this file.
+ *
  * KNOWN BLIND SPOT, stated rather than papered over: an aggregate that exists ONLY
  * in doors.json and was computed from ODbL geometry -- summary.minPairwiseDoorSeparationM,
  * block.facadeFrontageTotalM -- has no twin in the ODbL half, so exact-number
- * matching cannot see it. The census pins a section's COUNT, and a value edited in
- * place does not move a count, so what actually pins the residual is re-derivation:
- *
- *   frozenConstants   re-derived by V1 against the contract import
- *   summary, block    re-derived by V12 (15 fields, incl. both maxima and the
- *                     frontage-free west end)
- *   doors, facades    re-derived by V4/V5/V9/V13/V14
- *   cellYConvention.evidenceStreetCentrelineAtOrigin
- *   unusedSourceCandidates (2 corner-facade records)
- *     -> these last two are pinned by count and key set ONLY. A value inside them
- *        could be edited in place without this validator noticing. That is the
- *        acknowledged soft spot of the split, and it is the reason both are
- *        candidates to move to the ODbL half next.
+ * matching cannot see it. The closed key sets in CLOSED_SECTIONS are what stop a
+ * new one appearing; V12 is what stops an existing one moving.
  */
 const DECLARED_VALUE_CENSUS = Object.freeze({
   block: { count: 4, kinds: ['VALUE:matches-odbl-number'] },
   cellYConvention: { count: 3, kinds: ['VALUE:field:osmWayId', 'VALUE:osm-element-id'] },
   frozenConstants: { count: 4, kinds: ['VALUE:field:latUdeg', 'VALUE:field:lonUdeg', 'VALUE:microdegree'] },
-  summary: { count: 6, kinds: ['VALUE:matches-odbl-number', 'VALUE:osm-element-id'] },
-  unusedSourceCandidates: {
-    count: 42,
-    kinds: ['VALUE:field:edgeNodes', 'VALUE:field:fromM', 'VALUE:field:fromUdeg', 'VALUE:field:latUdeg',
-      'VALUE:field:lonUdeg', 'VALUE:field:osmBuildingId', 'VALUE:field:toM', 'VALUE:field:toUdeg',
-      'VALUE:field:xM', 'VALUE:field:yM', 'VALUE:microdegree', 'VALUE:osm-element-id'],
-  },
+  summary: { count: 5, kinds: ['VALUE:matches-odbl-number', 'VALUE:osm-element-id'] },
 });
 
 /* ------------------------------------------------------------------ *
@@ -973,10 +964,16 @@ const DECLARED_VALUE_CENSUS = Object.freeze({
     const rec = osmByDoor.get(id);
     if (rec.doorId !== id) problems.push(`${d.doorId}: ODbL record's own doorId is ${rec.doorId}`);
     if (rec.doorId !== d.doorId) problems.push(`${d.doorId}: ODbL record resolves to a DIFFERENT door (${rec.doorId})`);
-    const missing = CARRIED_FIELDS.filter((k) => !['facades', 'observedBlockFeatures'].includes(k) &&
+    const missing = CARRIED_FIELDS.filter((k) => !TOP_LEVEL_CARRIED.includes(k) &&
       !Object.prototype.hasOwnProperty.call(rec, k));
     if (missing.length) problems.push(`${d.doorId}: ODbL record is missing moved field(s) [${missing.join(', ')}]`);
     referenced.add(id);
+  }
+  // carried fields that live at the top level of the ODbL half, not on a door record
+  for (const k of TOP_LEVEL_CARRIED) {
+    if (!Object.prototype.hasOwnProperty.call(osmDoc, k)) {
+      problems.push(`ODbL half is missing top-level carried field "${k}"`);
+    }
   }
   // bijection: no orphan ODbL records, none referenced twice
   if (referenced.size !== doorsDoc.doors.length) {
@@ -990,6 +987,50 @@ const DECLARED_VALUE_CENSUS = Object.freeze({
     `${doorsDoc.doors.length} pointers -> ${referenced.size} distinct ODbL records, bijective (orphans=${orphans.length}); ` +
     `pointer file(s): ${[...pointerFiles].join(', ')}; ODbL sha256 ${osmHash.slice(0, 16)}... matches osmDerived.sha256; ` +
     `each target carries the moved fields; problems=${problems.length}${problems.length ? ' -> ' + problems.join('; ') : ''}`);
+}
+
+/* ------------------------------------------------------------------ *
+ * V19 — the ODbL half names the raw bytes it was derived from
+ * ------------------------------------------------------------------ */
+{
+  const problems = [];
+  const files = osmDoc.evidenceFiles || [];
+  const hashes = [];
+  if (files.length < 2) problems.push(`evidenceFiles has ${files.length} entries; both Overpass responses must be named`);
+  for (const rec of files) {
+    if (!rec.path) problems.push('an evidenceFiles entry has no path');
+    else if (!existsSync(resolve(REPO, rec.path))) problems.push(`${rec.path} does not exist`);
+    if (!/^[0-9a-f]{64}$/i.test(String(rec.sha256))) problems.push(`${rec.path}: sha256 is not a 64-hex digest`);
+    else hashes.push(String(rec.sha256).slice(0, 16));
+    if (!rec.osmBaseTimestamp) problems.push(`${rec.path}: no osmBaseTimestamp (the in-band osm3s timestamp)`);
+    if (!rec.fetchedAtUtc) problems.push(`${rec.path}: no fetchedAtUtc`);
+    if (typeof rec.bytes !== 'number') problems.push(`${rec.path}: no byte count`);
+  }
+  if (!osmDoc.source || osmDoc.source.extractedAt === null || osmDoc.source.extractedAt === undefined) {
+    problems.push('source.extractedAt is still null -- the ODbL half does not say when it was extracted');
+  }
+  // the extraction must not predate the data it claims to be about
+  for (const rec of files) {
+    if (rec.fetchedAtUtc && rec.osmBaseTimestamp && rec.fetchedAtUtc < rec.osmBaseTimestamp) {
+      problems.push(`${rec.path}: fetchedAtUtc ${rec.fetchedAtUtc} is BEFORE osmBaseTimestamp ${rec.osmBaseTimestamp}`);
+    }
+  }
+  check('V19', 'the ODbL half names the raw bytes it was derived from',
+    problems.length === 0,
+    `${files.length} evidence file(s) named with path + sha256 + bytes + in-band osm3s timestamp + fetch time ` +
+    `(digests ${hashes.join(', ')}); source.extractedAt = ${osmDoc.source && osmDoc.source.extractedAt}; ` +
+    `problems=${problems.length}${problems.length ? ' -> ' + problems.join('; ') : ''}`);
+}
+
+/* ------------------------------------------------------------------ *
+ * guard — an assertion may not be silently deleted to make the run green
+ * ------------------------------------------------------------------ */
+const MIN_ASSERTIONS = 20;
+{
+  check('V20', `at least ${MIN_ASSERTIONS} assertions exist`,
+    results.length + 1 >= MIN_ASSERTIONS,
+    `this run has ${results.length + 1} assertions; floor is ${MIN_ASSERTIONS}. ` +
+    `Without this, deleting the assertion that is inconvenient would turn the run green.`);
 }
 
 /* ------------------------------------------------------------------ *
@@ -1063,7 +1104,7 @@ if (process.argv.includes('--json')) {
   console.log(`${passed}/${results.length} assertions passed, ${failed} failed`);
   console.log(`slice sha256=${sliceHash}`);
   console.log(`min pairwise door separation=${doorsDoc.summary.minPairwiseDoorSeparationM} m  ·  ` +
-    `max perpendicular offset from facade=${doorsDoc.summary.maxPerpendicularOffsetFromFacadeM} m`);
+    `max perpendicular offset from facade: see V5 (computed there, no longer stored in either file)`);
   console.log('');
   console.log('ODbL split — residual OSM-derived values still inside doors.json (pinned by V17)');
   const census = valueCensus(doorsDoc);

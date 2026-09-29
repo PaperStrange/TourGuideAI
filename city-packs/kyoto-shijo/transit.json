@@ -1,0 +1,221 @@
+[
+  {
+    "id": "L01",
+    "from": "kyoto-shijo-subway-shijo-exit1",
+    "to": "kyoto-shijo-bus-shijo-takakura-A",
+    "mode": "walk",
+    "lineName": null,
+    "minutes": 3,
+    "alongStreetM": 164.707,
+    "minutesRule": "ceil(164.707 m / 80 m per min) = 3",
+    "fareIC": null,
+    "fareTicket": null,
+    "transfers": 0,
+    "source_url": "https://api.openstreetmap.org/api/0.6/map.json?bbox=135.7588,35.0028,135.7789,35.0047",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "distanceValueKind": "observed",
+      "minutesValueKind": "licenced",
+      "verifiedBy": "city-data-architect (pack-curator, task-10)",
+      "readWhat": "両端点は OSM node 11283562286 と node 8886543723 で、実在を確認した。距離 164.707 m は 四条通の連続チェーン（way 27427466/28322073/174762073/380083522/465069431/465069436/678103923/843727820/854442449/964931603/1510539685、計 62 ノード、全ノードが抽出に存在）上を投影して測った。分は 80 m/分 の規約で端数切り上げ。",
+      "whyLicencedMinutes": "距離は観測（OSM 幾何の実測）。3 分は観測ではなく、道路距離に 80 m/分 という規約定数を適用した結果である。valueKind はこの区別を潰さないために分けて記録する。8 の値は契約 §4 により guideVerifiedColumn に入れてはならない。",
+      "notAttested": [
+        "乗換案内",
+        "バリアフリー経路",
+        "実際の歩行速度"
+      ]
+    }
+  },
+  {
+    "id": "L02",
+    "from": "kyoto-shijo-bus-shijo-takakura-A",
+    "to": "kyoto-shijo-bus-shijo-kawaramachi-E",
+    "mode": "walk",
+    "lineName": null,
+    "minutes": 7,
+    "alongStreetM": 559.152,
+    "minutesRule": "ceil(559.152 m / 80 m per min) = 7",
+    "fareIC": null,
+    "fareTicket": null,
+    "transfers": 0,
+    "source_url": "https://api.openstreetmap.org/api/0.6/map.json?bbox=135.7588,35.0028,135.7789,35.0047",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "distanceValueKind": "observed",
+      "minutesValueKind": "licenced",
+      "verifiedBy": "city-data-architect (pack-curator, task-10)",
+      "readWhat": "四条高倉（OSM node 8886543723）から四条河原町 Eのりば（OSM node 4387240005）まで、四条通チェーン上の実測 559.152 m。",
+      "whyLicencedMinutes": "L01 に同じ。",
+      "notAttested": [
+        "実際の歩行速度",
+        "四条通の横断待ち時間"
+      ]
+    }
+  },
+  {
+    "id": "L03",
+    "from": "kyoto-shijo-bus-shijo-kawaramachi-E",
+    "to": "kyoto-shijo-station-hankyu-kawaramachi",
+    "mode": "walk",
+    "lineName": null,
+    "minutes": 3,
+    "alongStreetM": 169.606,
+    "minutesRule": "ceil(169.606 m / 80 m per min) = 3",
+    "fareIC": null,
+    "fareTicket": null,
+    "transfers": 0,
+    "source_url": "https://api.openstreetmap.org/api/0.6/map.json?bbox=135.7588,35.0028,135.7789,35.0047",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "distanceValueKind": "observed",
+      "minutesValueKind": "licenced",
+      "verifiedBy": "city-data-architect (pack-curator, task-10)",
+      "readWhat": "四条河原町 Eのりば（OSM node 4387240005）から阪急京都河原町駅（OSM node 6944607675）まで四条通チェーン上の実測 169.606 m。八坂神社公式（S7）は阪急『京都河原町』駅から神社まで『徒歩約8分』と述べており、本 leg の 3 分はその一部区間として整合する。",
+      "whyLicencedMinutes": "L01 に同じ。",
+      "notAttested": [
+        "駅構内の移動時間",
+        "改札位置"
+      ]
+    }
+  },
+  {
+    "id": "L04",
+    "from": "kyoto-shijo-station-hankyu-kawaramachi",
+    "to": "kyoto-shijo-station-keihan-gion-shijo",
+    "mode": "walk",
+    "lineName": null,
+    "minutes": 3,
+    "alongStreetM": 211.538,
+    "minutesRule": "ceil(211.538 m / 80 m per min) = 3",
+    "fareIC": null,
+    "fareTicket": null,
+    "transfers": 0,
+    "source_url": "https://api.openstreetmap.org/api/0.6/map.json?bbox=135.7588,35.0028,135.7789,35.0047",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "distanceValueKind": "observed",
+      "minutesValueKind": "licenced",
+      "verifiedBy": "city-data-architect (pack-curator, task-10)",
+      "readWhat": "阪急京都河原町駅（OSM node 6944607675）から京阪祇園四条駅（OSM node 6883622225）まで四条通チェーン上の実測 211.538 m。この区間は四条大橋（OSM way 28322073、bridge=yes、bridge:name=四条大橋）を渡る。",
+      "whyLicencedMinutes": "L01 に同じ。",
+      "notAttested": [
+        "橋の上での実際の歩行速度",
+        "駅出入口の位置（本パックは駅ノードの代表点を使っている）"
+      ]
+    }
+  },
+  {
+    "id": "L05",
+    "from": "kyoto-shijo-station-keihan-gion-shijo",
+    "to": "kyoto-shijo-bus-shijo-keihan-mae-A",
+    "mode": "walk",
+    "lineName": null,
+    "minutes": 1,
+    "alongStreetM": 54.301,
+    "minutesRule": "ceil(54.301 m / 80 m per min) = 1",
+    "fareIC": null,
+    "fareTicket": null,
+    "transfers": 0,
+    "source_url": "https://api.openstreetmap.org/api/0.6/map.json?bbox=135.7588,35.0028,135.7789,35.0047",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "distanceValueKind": "observed",
+      "minutesValueKind": "licenced",
+      "verifiedBy": "city-data-architect (pack-curator, task-10)",
+      "readWhat": "京阪祇園四条駅（OSM node 6883622225）から四条京阪前 Aのりば（OSM node 2930865877）まで四条通チェーン上の実測 54.301 m。",
+      "whyLicencedMinutes": "L01 に同じ。",
+      "notAttested": [
+        "駅改札からバス停までの構内経路"
+      ]
+    }
+  },
+  {
+    "id": "L06",
+    "from": "kyoto-shijo-bus-shijo-keihan-mae-A",
+    "to": "kyoto-shijo-bus-gion-A",
+    "mode": "walk",
+    "lineName": null,
+    "minutes": 6,
+    "alongStreetM": 427.002,
+    "minutesRule": "ceil(427.002 m / 80 m per min) = 6",
+    "fareIC": null,
+    "fareTicket": null,
+    "transfers": 0,
+    "source_url": "https://api.openstreetmap.org/api/0.6/map.json?bbox=135.7588,35.0028,135.7789,35.0047",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "distanceValueKind": "observed",
+      "minutesValueKind": "licenced",
+      "verifiedBy": "city-data-architect (pack-curator, task-10)",
+      "readWhat": "四条京阪前 Aのりば（OSM node 2930865877）から祇園 Aのりば（OSM node 2503718437）まで四条通チェーン上の実測 427.002 m。祇園 Aのりばはチェーン東端（OSM way 854442449 の東端ノード、lon 135.7771926）にほぼ一致する。",
+      "whyLicencedMinutes": "L01 に同じ。",
+      "notAttested": [
+        "祇園交差点の横断待ち時間"
+      ]
+    }
+  },
+  {
+    "id": "L07",
+    "from": "kyoto-shijo-station-keihan-gion-shijo",
+    "to": "kyoto-shijo-kennin-ji",
+    "mode": "walk",
+    "lineName": null,
+    "minutes": 7,
+    "alongStreetM": null,
+    "minutesRule": "operator-published: 徒歩7分",
+    "fareIC": null,
+    "fareTicket": null,
+    "transfers": 0,
+    "source_url": "https://www.kenninji.jp/access/",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "distanceValueKind": "absent",
+      "minutesValueKind": "observed",
+      "verifiedBy": "city-data-architect (pack-curator, task-10)",
+      "readWhat": "建仁寺公式アクセスページ（S11）を実際に読み、『京阪電車「祇園四条駅」より 徒歩7分』と書かれているのを確認した。これは運営者自身が公表した徒歩分数であり、80 m/分 の規約で算出した値ではない。",
+      "whyNoDistance": "建仁寺の座標が無いため、本パックが距離を実測できない。したがって alongStreetM は null。分だけが来源を持つ。",
+      "notAttested": [
+        "徒歩経路",
+        "実際の道路距離"
+      ],
+      "minutesProvenance": "operator-published",
+      "guideVerifiedColumnAllowed": true
+    }
+  },
+  {
+    "id": "L08",
+    "from": "kyoto-shijo-station-hankyu-kawaramachi",
+    "to": "kyoto-shijo-kennin-ji",
+    "mode": "walk",
+    "lineName": null,
+    "minutes": 10,
+    "alongStreetM": null,
+    "minutesRule": "operator-published: 徒歩10分",
+    "fareIC": null,
+    "fareTicket": null,
+    "transfers": 0,
+    "source_url": "https://www.kenninji.jp/access/",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "distanceValueKind": "absent",
+      "minutesValueKind": "observed",
+      "verifiedBy": "city-data-architect (pack-curator, task-10)",
+      "readWhat": "建仁寺公式アクセスページ（S11）を実際に読み、『阪急電車「河原町駅」より 徒歩10分』と書かれているのを確認した。",
+      "whyNoDistance": "L07 に同じ。",
+      "notAttested": [
+        "徒歩経路",
+        "実際の道路距離"
+      ],
+      "minutesProvenance": "operator-published",
+      "guideVerifiedColumnAllowed": true
+    }
+  }
+]
