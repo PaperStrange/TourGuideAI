@@ -24,6 +24,10 @@ const BUNDLE = join(REPO, 'docs', 'handOff', 'dsh-bundle-tourguide-2.5d');
 
 /** One gate. `envExit2` marks the patterns that mean "could not run", not "found bad data". */
 const GATES = [
+  { id: 'hygiene', name: 'repo hygiene (documented rules vs reality)', cmd: ['node', join(REPO, 'iteration', 'tools', 'check-repo-hygiene.mjs')],
+    why: 'R1-R6: workflow branch refs, workflows README, UTF-8 text, gates tracked, line endings, branch/dir collisions' },
+  { id: 'deps', name: 'every tracked script dependency is tracked', cmd: ['node', join(REPO, 'iteration', 'tools', 'find-untracked-deps.mjs')],
+    why: 'a file read by a tracked script but not itself tracked is absent from a clean checkout' },
   { id: 'contract', name: 'geo contract (world-grid)', cmd: ['node', join(BUNDLE, 'tools', 'world-grid.mjs')],
     why: 'frozen projection, grid, origin and valueKind; 18 assertions' },
   { id: 'export', name: 'export boundary', cmd: ['node', join(BUNDLE, 'tools', 'assert-export-boundary.mjs'), '--self-test'],

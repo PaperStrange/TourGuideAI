@@ -1,0 +1,621 @@
+{
+  "schema": "tourguide.city-pack.verification/v1",
+  "verifier": "fact-verifier",
+  "verifierRole": "verification-gatekeeper (independent; NOT the producer)",
+  "verifiedAt": "2026-09-30",
+  "subject": {
+    "cityId": "kyoto-shijo",
+    "filesAudited": [
+      "city-packs/kyoto-shijo/places.json",
+      "city-packs/kyoto-shijo/transit.json",
+      "city-packs/kyoto-shijo/pack.json",
+      "city-packs/kyoto-shijo/attestations/source-attestations.json",
+      "city-packs/kyoto-shijo/attestations/ungeoreferenced-places.json",
+      "city-packs/kyoto-shijo/attestations/dropped-legs.json",
+      "city-packs/kyoto-shijo/evidence/**"
+    ],
+    "readOnly": true,
+    "filesModified": "none — this file and iteration/recon/fact-verification-kyoto-shijo.md are the only additions"
+  },
+  "method": {
+    "statement": "Every claim was re-read from the FACT file (not from the producer's attestation), then located in the raw evidence bytes, and the source sentence was read by the verifier. No producer validator and no producer script was imported or executed to reach a verdict.",
+    "producerCodeImported": false,
+    "ownScripts": [
+      "iteration/recon/verify-kyoto-shijo/v1-raw-csv.mjs  (own RFC4180 parser + own line accounting)",
+      "iteration/recon/verify-kyoto-shijo/v2-places-transit.mjs  (chain re-measurement, twin check, OSM ref existence)",
+      "iteration/recon/verify-kyoto-shijo/v3-fact-table.mjs  (valueKind / badge-eligibility audit)",
+      "iteration/recon/verify-kyoto-shijo/v4-coverage-and-ways.mjs  (reverse-projection of every coordinate)",
+      "iteration/recon/verify-kyoto-shijo/v5-remaining-sources.mjs  (remaining value-level source reads)"
+    ],
+    "fieldLocator": "<evidence file>:<1-based line>",
+    "supportsRule": "A row may be marked 支持 ONLY if the verifier read a sentence, in the cited source, that states the recorded value. Existence of a URL and non-emptiness of a page were never sufficient.",
+    "evidenceIntegrity": {
+      "evidence/kyoto-sight-DSIGHT_1.csv": "sha256 233736CE87051B584D34000B7AD6D84B1DE8EF450DAE0801926488FACE67AD7A — MATCHES the recorded value",
+      "evidence/osm-corridor-map.json": "sha256 56B456152B2F5CFC6854EA5EDFBD2C92B236D4BA67E7978D591E359999C294A2 — MATCHES the recorded value",
+      "evidenceFileCount": 57
+    },
+    "producerValidatorCrossCheck": "validate-city-pack-v2.mjs was run once, for information only: 15 checks passed, 0 violations. Its passing is NOT used as evidence for any verdict below; every verdict rests on the source bytes the verifier opened."
+  },
+
+  "verdictCounts": {
+    "recomputedFromRows": true,
+    "支持": 26,
+    "部分支持": 8,
+    "不支持": 8,
+    "无法判定": 0,
+    "rowsTotal": 42,
+    "unverifiedEntries": 5,
+    "note": "Counts are the row verdicts themselves, recomputed from rows[] and asserted by iteration/recon/verify-kyoto-shijo/v6-check-attestation.mjs; they are not hand-declared. 无法判定 appears 0 times as a row verdict because every item the verifier could not settle was an ITEM rather than a fact row (a missing snapshot, an unread PDF, inferred CSV column meanings) and is therefore carried in unverified[] — 5 explicit entries, none omitted. 部分支持 covers two different situations, both visible per row: a value that is right but whose recorded justification is wrong or overreaching (the 清水寺 admission reason, 建仁寺 effectiveFrom, the temple-coordinate absence claim, the walk-rule instrument, the zero-transit-legs framing), and a value that is supported while its provenance pointer is wrong (the two 八坂神社 coordinates, the two transfer distances). supports=false is set on 13 rows: all 8 不支持 plus the 5 部分支持 rows where the recorded justification itself is what fails."
+  },
+
+  "rows": [
+    {
+      "factId": "kyoto-shijo-kiyomizu-dera",
+      "field": "admission",
+      "claimed": "{} (empty — recorded in attestations/ungeoreferenced-places.json, not in places.json)",
+      "sourceUrl": "https://www.kiyomizudera.or.jp/access.php",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/kiyomizudera-access-hours.txt:28-30,61-67 (hours table only; no fee anywhere in the page)",
+      "supports": false,
+      "verdict": "部分支持",
+      "siblingOf": "x-C1",
+      "observation": "The emptiness of 清水寺 admission is supported: the official page carries a 2026 hours table and no admission amount, and evidence/kiyomizudera-faq.txt:21-28 discusses 団体割引 and 免除 without ever stating the base fee.",
+      "whyNotFull": "The producer's REASON is contradicted by the raw CSV. See row x-C1 for the finding. The value is right; the justification is not.",
+      "inference": "The verifier did NOT conclude that no source states a 清水寺 fee. Only that this page does not, and that the CSV row cited by the producer does not say what the producer says it says."
+    },
+    {
+      "factId": "x-C1",
+      "field": "contradiction C1 — the subject of the CSV fee row",
+      "claimed": "京都市 CSV の col27 に『本堂・舞台 大人400円』があるが、それは row 10000008『清水寺　狛犬』の行であって本堂の料金ではない。主体が違う行の金額を採用するのは…",
+      "sourceUrl": "https://data.city.kyoto.lg.jp/resource/?id=7052",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/kyoto-sight-DSIGHT_1.csv record id 10000008 (physical line 593), col8 = \"清水寺　狛犬\", col27 = \"料金 一部施設（本堂・舞台）\\n\\n大人　　　400円\\n\\n大学生　　400円\\n\\n高校生　　400円\\n\\n中学生　　200円\\n\\n小学生　　200円\\n\\n障害者予約無料\"",
+      "supports": false,
+      "verdict": "不支持",
+      "why": "The subject row IS 清水寺 狛犬, as the producer says — that part is correct and the verifier reproduced it with an independent RFC4180 parser. But the fee cell names its own subject: '一部施設（本堂・舞台）' = 'some facilities (main hall / stage)', with adult 400円. The fee is for 清水寺's main hall and stage; 狛犬 is the row's listing anchor, not the fee's subject. The producer's own framing ('主体が違う行') therefore misstates the row: the row's col27 sentence has a subject of its own, and that subject is the temple's 本堂・舞台.",
+      "observation": "Verbatim bytes read by the verifier at CSV record id 10000008, physical line 593.",
+      "inference": "The producer's decision not to adopt 400円 may still be defensible on other grounds (undated CSV, no fee on the official page, curatorial caution). What is NOT defensible is the stated reason, because the source sentence does attach the fee to 本堂・舞台.",
+      "consequence": "contradictions[C1].with and ungeoreferenced-places.json whyEmpty both assert a reading of the CSV that the CSV contradicts. A reader who checks C1 and finds the producer right about the row will wrongly conclude the fee is unattributable."
+    },
+    {
+      "factId": "kyoto-shijo-kennin-ji",
+      "field": "admission[一般].amount",
+      "claimed": "800",
+      "sourceUrl": "https://www.kenninji.jp/access/",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/kenninji-access.txt:9 = \"一般 800円、学生（小・中・高） 500円 ※小学生未満のお子様は無料\"",
+      "supports": true,
+      "verdict": "支持"
+    },
+    {
+      "factId": "kyoto-shijo-kennin-ji",
+      "field": "admission[学生（小・中・高）].amount",
+      "claimed": "500",
+      "sourceUrl": "https://www.kenninji.jp/access/",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/kenninji-access.txt:9",
+      "supports": true,
+      "verdict": "支持"
+    },
+    {
+      "factId": "kyoto-shijo-kennin-ji",
+      "field": "admission[一般（2027-01-01 改定後）].amount / effectiveFrom",
+      "claimed": "1000 / effectiveFrom 2027-01-01",
+      "sourceUrl": "https://www.kenninji.jp/news/?p=2352",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/kenninji-news-fee2025.txt:10 = \"改定時期：2027年1月1日\"; :13 = \"改定後 拝観料：一般 1,000円\"; :14 = \"※小・中・高生につきましては、以前と同様に500円となります。\"",
+      "supports": true,
+      "verdict": "支持",
+      "observation": "All three components of this row — date, old price, new price — are stated verbatim by the operator's own notice. The quoted 800→1,000 change is real and the 500円 student rate is explicitly unchanged."
+    },
+    {
+      "factId": "kyoto-shijo-kennin-ji",
+      "field": "admission[一般].effectiveFrom",
+      "claimed": "2026-09-29",
+      "sourceUrl": "https://www.kenninji.jp/access/",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/kenninji-access.txt:9 states the amount 800円 and states no date at all",
+      "supports": false,
+      "verdict": "部分支持",
+      "why": "2026-09-29 is the pack's own verified_at / fetch date, not a date the source states. Neither the access page nor the notice (whose own date is 2026年9月14日, kenninji-news-fee2025.txt:2) names an effective date for the 800円 price. The field is semantically 'since when is this the price', and no source answers that. The amount is supported; the date is the verifier's-and-the-producer's own curation timestamp wearing a source field's name."
+    },
+    {
+      "factId": "kyoto-shijo-kennin-ji",
+      "field": "admission[一般].supersededFrom",
+      "claimed": "2027-01-01",
+      "sourceUrl": "https://www.kenninji.jp/access/",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/kenninji-news-fee2025.txt:10 = \"改定時期：2027年1月1日\" (the notice, not the access page)",
+      "supports": true,
+      "verdict": "支持",
+      "observation": "The date is stated by the notice. Note the field sits on an item whose source_url is the access page, so the supersession date is sourced from the sibling document, which the same record does cite for the 1,000円 item."
+    },
+    {
+      "factId": "kyoto-shijo-kennin-ji",
+      "field": "hours[0]",
+      "claimed": "open 10:00, close 16:30, appliesTo 受付終了（17:00 閉門）",
+      "sourceUrl": "https://www.kenninji.jp/access/",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/kenninji-access.txt:7 = \"午前10時～午後4時30分受付終了（午後5時閉門）\"",
+      "supports": true,
+      "verdict": "支持",
+      "observation": "The producer's hoursNote is correct and load-bearing: 16:30 is last admission, 17:00 is closing. The pack encodes that distinction rather than flattening it."
+    },
+    {
+      "factId": "kyoto-shijo-kennin-ji",
+      "field": "closedDays",
+      "claimed": "[] (empty) while CSV row 1000043 col25 lists closures",
+      "sourceUrl": "https://www.kenninji.jp/access/",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/kyoto-sight-DSIGHT_1.csv record id 1000043 (physical line 42) col25 = \"4月19、20日は法堂のみ拝観可\\n\\n6月4、5日\\n\\n年末12月28日～31日\"; the official page states no closed days",
+      "supports": true,
+      "verdict": "支持",
+      "why": "The empty field is a deliberate refusal of a conflicting, undated CSV value, recorded as contradiction C3. The verifier confirmed both halves: the CSV clause exists, and the official page does not carry it. Refusing to adopt an undated CSV closure list over the operator's silent current page is consistent with the drop-don't-correct rule."
+    },
+    {
+      "factId": "kyoto-shijo-chion-in",
+      "field": "hours[0]",
+      "claimed": "open 06:00, close 16:00, appliesTo 開閉門時間（通年）",
+      "sourceUrl": "https://www.chion-in.or.jp/guide/",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/chion-in-guide.txt:87 = \"開閉門時間は午前6時から午後4時です。\" (also :80-81)",
+      "supports": true,
+      "verdict": "支持",
+      "observation": "The appliesTo is correctly scoped to the gate, not to viewing: :84 says 各所受付は午前9時～ and :89 gives a temple-specific 9:00–16:00 exception. The producer's hoursNote states this distinction."
+    },
+    {
+      "factId": "kyoto-shijo-chion-in",
+      "field": "admission[方丈庭園 大人]",
+      "claimed": "400",
+      "sourceUrl": "https://www.chion-in.or.jp/guide/",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/chion-in-guide.txt:123 \"方丈庭園\" with :128 \"400円\"",
+      "supports": true,
+      "verdict": "支持"
+    },
+    {
+      "factId": "kyoto-shijo-chion-in",
+      "field": "admission[友禅苑 大人]",
+      "claimed": "300",
+      "sourceUrl": "https://www.chion-in.or.jp/guide/",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/chion-in-guide.txt:122 \"友禅苑\" with :127 \"300円\"",
+      "supports": true,
+      "verdict": "支持"
+    },
+    {
+      "factId": "kyoto-shijo-chion-in",
+      "field": "admission[方丈庭園・友禅苑 共通券 大人]",
+      "claimed": "500",
+      "sourceUrl": "https://www.chion-in.or.jp/guide/",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/chion-in-guide.txt:124 \"共通券\" with :129 \"500円\"",
+      "supports": true,
+      "verdict": "支持"
+    },
+    {
+      "factId": "kyoto-shijo-chion-in",
+      "field": "admission[共通券 小人（小・中学生）]",
+      "claimed": "250",
+      "sourceUrl": "https://www.chion-in.or.jp/guide/",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/chion-in-guide.txt:131 \"小人\" with :134 \"250円\"",
+      "supports": true,
+      "verdict": "支持"
+    },
+    {
+      "factId": "kyoto-shijo-chion-in",
+      "field": "admission.note (共通券販売は 15:20 まで)",
+      "claimed": "共通券の販売は 15:20 まで",
+      "sourceUrl": "https://www.chion-in.or.jp/guide/",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/chion-in-guide.txt:149 = \"※共通券販売は午後3時20分まで\"",
+      "supports": true,
+      "verdict": "支持"
+    },
+    {
+      "factId": "kyoto-shijo-kiyomizu-dera",
+      "field": "hours (3 entries)",
+      "claimed": "06:00-18:00 / 06:00-18:30 / 06:00-21:30 with the season ranges in appliesTo",
+      "sourceUrl": "https://www.kiyomizudera.or.jp/access.php",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/kiyomizudera-access-hours.txt:28 \"2026年の拝観時間\", :34-67 the table (1.1〜3.26 6:00/18:00; 3.27〜4.5 6:00/21:30 21:00受付終了; 7.1〜8.13 6:00/18:30; 8.14〜8.16 6:00/21:30; 8.17〜8.31 6:00/18:30; 11.21〜11.30 6:00/21:30)",
+      "supports": true,
+      "verdict": "支持",
+      "observation": "All three (open, close) pairs and the season boundaries are in the source. appliesTo adds the literal year 2026, which :28 supplies."
+    },
+    {
+      "factId": "kyoto-shijo-kiyomizu-dera",
+      "field": "hours[0].appliesTo",
+      "claimed": "2026年 1.1〜3.26 / 4.6〜6.30 / 9.1〜11.20 / 12.1〜12.31",
+      "sourceUrl": "https://www.kiyomizudera.or.jp/access.php",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/kiyomizudera-access-hours.txt:34-36,42-44,57-59,65-67 — four separate rows in the source",
+      "supports": false,
+      "verdict": "部分支持",
+      "why": "The source lists four separate date rows for the same 6:00/18:00 pair; the pack collapses them into one entry and one appliesTo string. The time pair is supported; the grouping is the producer's editorial merge and is not a string the source contains.",
+      "severity": "low — the information is preserved and no value changes"
+    },
+    {
+      "factId": "kyoto-shijo-kiyomizu-dera",
+      "field": "addressJa",
+      "claimed": "京都市東山区清水一丁目294",
+      "sourceUrl": "https://www.kiyomizudera.or.jp/access.php",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/kiyomizudera-access-hours.txt:20 = \"〒605-0862 京都市東山区清水1丁目294\" (also :159)",
+      "supports": true,
+      "verdict": "支持"
+    },
+    {
+      "factId": "kyoto-shijo-yasaka-nishiromon",
+      "field": "stateNoteJa / hours emptiness",
+      "claimed": "24時間参拝可能; hours = [] even though the page gives 9:00–17:00",
+      "sourceUrl": "https://www.yasaka-jinja.or.jp/access/",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/yasaka-jinja-access.txt:151 = \"9：00～17：00（社務所）\"; :153 = \"24時間参拝可能\"; :206 = \"社務所受付 9:00～17:00\"",
+      "supports": true,
+      "verdict": "支持",
+      "observation": "This is the pack's cleanest piece of source discipline: the page's 9–17 belongs to the 社務所 (office), the grounds are open 24 hours, and the record therefore refuses to write 09:00–17:00 into hours. The producer's hoursNote records exactly this."
+    },
+    {
+      "factId": "kyoto-shijo-yasaka-nishiromon",
+      "field": "addressJa",
+      "claimed": "京都市東山区祇園町北側125",
+      "sourceUrl": "https://www.yasaka-jinja.or.jp/access/",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/yasaka-jinja-access.txt:199-201 = \"〒605-0073\" / \"京都府京都市東山区祇園町北側625\"",
+      "supports": false,
+      "verdict": "不支持",
+      "why": "The page states 祇園町北側625 (the shrine's postal address). The pack records 祇園町北側125. The block number differs: 125 vs 625. The verifier found no source in the pack stating '…北側125'.",
+      "detail": "The CSV row for 八坂神社 西楼門 is id 1000039, whose col17 does read 京都市東山区祇園町北側125 — so the pack's value does come from a source, and pack.json's placeSources does not cite it for this field. But places.json names only the shrine URL for this record, and the shrine URL states 625.",
+      "severity": "HIGH for the product: an address that is one digit from the real one is exactly the kind of plausible-looking wrong value the fact layer exists to prevent, and a player who types it into a map app is sent somewhere that is not the shrine.",
+      "reproduce": "node -e \"const r=JSON.parse(require('fs').readFileSync('city-packs/kyoto-shijo/places.json'));console.log(r.find(p=>p.id==='kyoto-shijo-yasaka-nishiromon').addressJa)\" ; then read evidence/yasaka-jinja-access.txt:201"
+    },
+    {
+      "factId": "kyoto-shijo-yasaka-nishiromon",
+      "field": "coordinates (lat/lng, latUdeg/lngUdeg)",
+      "claimed": "35.003741, 135.777526 / 35003741, 135777526, source_url = the shrine access page",
+      "sourceUrl": "https://www.yasaka-jinja.or.jp/access/",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/osm-corridor-map.json — way/105449683 (10 nodes), vertex mean 35.0037409,135.7775261",
+      "supports": false,
+      "verdict": "不支持",
+      "why": "The coordinate is fully supported — but by an OSM way, not by the URL recorded in source_url. The recorded URL is a shrine information page and states no coordinate. A reader who follows source_url to verify the coordinate will not find it.",
+      "observation": "The coordinate's real provenance is in the ODbL half (kyoto-shijo-osm-places.json: osmRef way/105449683) and in the raw extract, both of which the verifier reproduced to 0.014 m.",
+      "severity": "MEDIUM — the value is correct; the provenance pointer is wrong. Where source_url is the only field a downstream reader checks, this row claims a shrine page backs a coordinate it does not back."
+    },
+    {
+      "factId": "kyoto-shijo-yasaka-honden",
+      "field": "coordinates (lat/lng)",
+      "claimed": "35.003645, 135.77859, source_url = the shrine architecture page",
+      "sourceUrl": "https://www.yasaka-jinja.or.jp/about/architecture/",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/osm-corridor-map.json — way/88108397 (19 nodes), vertex mean 35.0036448,135.7785904",
+      "supports": false,
+      "verdict": "不支持",
+      "sameDefectAs": "kyoto-shijo-yasaka-nishiromon coordinates",
+      "why": "Same defect: the coordinate traces to OSM way/88108397, while the recorded source_url is a page that states no coordinate."
+    },
+    {
+      "factId": "kyoto-shijo-yasaka-honden",
+      "field": "admission / 本殿特別拝観 date in the CSV",
+      "claimed": "CSV col27『28年3月12日～3月21日』は平成28年（2016年）の予定で 10 年落ち",
+      "sourceUrl": "https://data.city.kyoto.lg.jp/resource/?id=7052",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/kyoto-sight-DSIGHT_1.csv record id 1000040 (physical line 40) col27 = \"本殿特別拝観日（予定）\\n\\n28年3月12日～3月21日（京都東山花灯路期間中）…大人　　　　500円…\"",
+      "supports": true,
+      "verdict": "支持",
+      "observation": "The verifier reproduced the cell with an independent parser. The row's description column contains 平成14年, and the fee cell carries the bare '28年3月12日'. In the same cell, the pairing with 京都東山花灯路期間中 is consistent with a March date.",
+      "inference": "The era prefix is NOT written in the cell — the raw bytes contain '28年', not '平成28年'. Reading that as 平成28年 = 2016 relies on the sibling 平成14年 in the same row. The producer's conclusion (a stale 2016 dynamic fact, not to be cached) is sound; its stated wording '平成28年（2016年）' presents an inference as though the source said it. Recording it as '28年（元号不明、同梱の記述から平成と推定）' would be exact."
+    },
+    {
+      "factId": "kyoto-shijo-yasaka-honden",
+      "field": "hoursNote — CSV open/close 900/1600",
+      "claimed": "CSV の 900/1600 は同じ行の col26『駐車場　自家用車50台(有料)』と並んでおり、何の時間か確定できない。採用しない",
+      "sourceUrl": "https://data.city.kyoto.lg.jp/resource/?id=7052",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/kyoto-sight-DSIGHT_1.csv record id 1000040 (physical line 40): col21=\"900\", col23=\"1600\", col26=\"駐車場　自家用車50台(有料)\"",
+      "supports": true,
+      "verdict": "支持",
+      "observation": "The cells are exactly as described. Refusing to publish an unlabelled time pair is the correct call."
+    },
+    {
+      "factId": "kyoto-shijo-crossing-karasuma-east",
+      "field": "nameJa",
+      "claimed": "四条烏丸交差点 東側横断歩道  (provenance.valueKindPerField.nameJa = \"licenced\", provenance.guideVerifiedColumnAllowed = true)",
+      "sourceUrl": "https://www.openstreetmap.org/node/2737069286",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/osm-corridor-map.json node/2737069286 tags = {highway:crossing, crossing:traffic_signals, crossing:markings:zebra, tactile_paving:yes} — there is NO name tag",
+      "supports": false,
+      "verdict": "不支持",
+      "why": "The name is the curator's own description and the record says so (valueKind=licenced). But the same record sets guideVerifiedColumnAllowed=true, and design-core §8.2.2 ④ forbids exactly that: '只有 observed 能进攻略的已验证栏位——authored / abstract / licenced 一律禁止'. Exporting this row as a verified fact would certify a curator-written place name as something the producer read in a source.",
+      "producerAwareness": "The producer wrote the valueKind correctly and wrote the whyEmpty note 'nameJa は OSM に name タグが無く、本パックの位置記述（東側横断歩道）は curator の記述なので licenced とした' — so the classification is deliberate and honest; only the badge flag is wrong."
+    },
+    {
+      "factId": "kyoto-shijo-subway-shijo-exit1",
+      "field": "nameZh",
+      "claimed": "四条站出口1  (valueKindPerField.nameZh = \"licenced\", guideVerifiedColumnAllowed = true)",
+      "sourceUrl": "https://www.openstreetmap.org/node/11283562286",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/osm-corridor-map.json node/11283562286 tags = {railway:subway_entrance, ref:1, name:\"Exit 1\", wheelchair:yes} — no name:zh",
+      "supports": false,
+      "verdict": "不支持",
+      "why": "The Chinese name is authored by the curator. The extract does carry name:zh on 56 other elements, so this is not a case of OSM lacking Chinese names generally — this node simply has none. Marking it licenced is generous (authored would be exact), and guideVerifiedColumnAllowed=true repeats the crossing defect.",
+      "note": "The same field on kyoto-shijo-bus-shijo-takakura-A and kyoto-shijo-bus-shijo-kawaramachi-E is marked valueKind=observed and IS supported: node/8886543723 and node/4387240005 carry real Chinese names. The verifier confirmed the contrast, which shows the producer did distinguish the two cases."
+    },
+    {
+      "factId": "kyoto-shijo-bldg-mitsui / kyoto-shijo-bldg-daiya",
+      "field": "category = building-commercial  (valueKindPerField ~.category = \"licenced\")",
+      "claimed": "\"building-commercial\"",
+      "sourceUrl": "https://www.openstreetmap.org/way/205732558",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/osm-corridor-map.json way/205732558 and way/205732536 both carry the tag building=commercial",
+      "supports": true,
+      "verdict": "部分支持",
+      "why": "The value is supported: OSM says building=commercial, and 'building-commercial' is a mechanical transformation of that tag. But the record calls it licenced. Under design-core §8.2.2 ④ licenced is the class of licensed TEMPLATES (road width, abstracted height) and only observed may carry the verified badge; calling a direct OSM tag licenced is a classification error, and it has a consequence: it is the reason these rows are (harmlessly, here) identified as badge-eligible-by-exception. The verifier found no place field whose licenced class hides a fact value — the only two real ones are the crossing name and the exit nameZh, both reported above.",
+      "severity": "low — no wrong value reaches a user"
+    },
+    {
+      "factId": "(all 19 places)",
+      "field": "coordinates — lat/lng twin and origin",
+      "claimed": "integer microdegree pair + decimal twin, origin=osm",
+      "sourceUrl": "per-record openstreetmap.org permalinks (17) / shrine pages (2)",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/osm-corridor-map.json — reverse-projection of every cited node/way",
+      "supports": true,
+      "verdict": "支持",
+      "observation": "All 19 twin pairs agree exactly (0 mismatches). The verifier re-derived each coordinate from the raw OSM geometry: nodes from their own lat/lon, ways from the arithmetic mean of their member nodes. Worst deviation 0.056 m, i.e. the 1e-6 rounding floor. 0 of 19 could not be reproduced. Every cited OSM object exists in the extract (17/17 that cite one), and the 2 yasaka records were separately confirmed against way/105449683 and way/88108397.",
+      "caveat": "Reproducing a coordinate from a source's geometry is not the same as the source STATING a coordinate. For the 2 yasaka records the recorded source_url states none at all — reported separately above. For way-based records the 'centre' is a vertex mean computed here and in the pack's tooling, not a value OSM publishes; that is a reviewer-derivable quantity and is flagged as such, not as a violation."
+    },
+    {
+      "factId": "kyoto-shijo-chion-in / kiyomizu-dera / kennin-ji",
+      "field": "coordinates — recorded as ABSENT (records parked in attestations/ungeoreferenced-places.json)",
+      "claimed": "\"no OSM object in the extract and no coordinates in any source read for this pack\"; whyEmpty: 住所を座標へ変換するのは導出であって観測ではない",
+      "sourceUrl": "n/a (absence claim)",
+      "sourceOpened": true,
+      "evidenceLocator": "verifier's own Nominatim query against openstreetmap.org, 2026-09-30: 知恩院 amenity/place_of_worship lat 35.0056216 lon 135.7835389; 清水寺 lat 34.9943030 lon 135.7844389; 建仁寺 lat 35.0002572 lon 135.7737408",
+      "supports": false,
+      "verdict": "部分支持",
+      "observation": "The narrow claim is true and the verifier reproduced it: the pack's own extract bbox (lat 35.0028–35.0047) reaches none of the three temple objects, and the 648-row CSV carries zero coordinate-shaped tokens.",
+      "whyNotFull": "The wider claim is false. All three temples have coordinates in the very source family the pack uses for every other coordinate (OpenStreetMap). 'No coordinates in any source' is wrong; the correct statement is 'outside the bbox we extracted'. The distinction is not academic — see the consequence below.",
+      "consequence": "Two dropped legs (L07, L08) and three ungeoreferenced records exist only because of the bbox, not because of the sources. 建仁寺's temple node is 52.7 m south of the bbox edge and 清水寺's is 1,069.7 m south; 知恩院's is 435.6 m north. A single wider extract would georeference all three and bring back the two 建仁寺 walking legs, both of which already carry operator-published durations (徒歩7分 / 徒歩10分). The 清水寺 hop is the product's headline destination.",
+      "counterEvidenceInsideThePack": "The pack itself already contains an OSM node outside its own bbox: node/339087268 烏丸御池, lat 35.0099743 — 585 m north of latMax, with a full tag set. So the bbox is not even a clean boundary of what was extracted.",
+      "inference": "The producer's DECISION (park them, never derive a coordinate from an address) is correct and is exactly what the skill demands. Only the stated reason and the 'whatWouldCloseThis' guidance ('an OSM object carrying the coordinate — opened and read') need correcting, because OSM objects carrying those coordinates already exist."
+    },
+    {
+      "factId": "L01",
+      "field": "minutes / alongStreetM",
+      "claimed": "3 min / 164.707 m, minutesRule ceil(164.707/80)=3",
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/map.json?bbox=135.7588,35.0028,135.7789,35.0047",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/osm-corridor-map.json — verifier reassembled the 11-way 四条通 chain (62 nodes, 1716.803 m) and re-projected nodes 11283562286 and 8886543723 onto it",
+      "supports": true,
+      "verdict": "支持",
+      "observation": "The verifier's own chain assembly reproduced the recorded total 1716.803 m exactly, and this leg's alongStreetM to within 1 cm. ceil() arithmetic independently confirmed."
+    },
+    {
+      "factId": "L02",
+      "field": "minutes / alongStreetM",
+      "claimed": "7 min / 559.152 m",
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/map.json?bbox=135.7588,35.0028,135.7789,35.0047",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/osm-corridor-map.json, same chain re-measurement (nodes 8886543723 → 4387240005)",
+      "supports": true,
+      "verdict": "支持"
+    },
+    {
+      "factId": "L03",
+      "field": "minutes / alongStreetM",
+      "claimed": "3 min / 169.606 m",
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/map.json?bbox=135.7588,35.0028,135.7789,35.0047",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/osm-corridor-map.json, same chain re-measurement (nodes 4387240005 → 6944607675)",
+      "supports": true,
+      "verdict": "支持"
+    },
+    {
+      "factId": "L04",
+      "field": "minutes / alongStreetM",
+      "claimed": "3 min / 211.538 m",
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/map.json?bbox=135.7588,35.0028,135.7789,35.0047",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/osm-corridor-map.json, same chain re-measurement (nodes 6944607675 → 6883622225)",
+      "supports": true,
+      "verdict": "支持"
+    },
+    {
+      "factId": "L05",
+      "field": "minutes / alongStreetM",
+      "claimed": "1 min / 54.301 m",
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/map.json?bbox=135.7588,35.0028,135.7789,35.0047",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/osm-corridor-map.json, same chain re-measurement (nodes 6883622225 → 2930865877)",
+      "supports": true,
+      "verdict": "支持"
+    },
+    {
+      "factId": "L06",
+      "field": "minutes / alongStreetM",
+      "claimed": "6 min / 427.002 m",
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/map.json?bbox=135.7588,35.0028,135.7789,35.0047",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/osm-corridor-map.json, same chain re-measurement (nodes 2930865877 → 2503718437)",
+      "supports": true,
+      "verdict": "支持"
+    },
+    {
+      "factId": "pack.transit.walkTimeRule",
+      "field": "the 80 m/min constant and the round-up clause",
+      "claimed": "徒歩による所要時間は、道路距離８０メートルにつき１分間を要するものとして算出した数値。１分未満の端数が生じたときは、１分として算出する。 (readAtLine evidence/japan-rftc-hyouji-kiyaku.txt 5189-5194)",
+      "sourceUrl": "https://www.tfkoutori.jp/data/pdf/kiyaku-202209.pdf",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/japan-rftc-hyouji-kiyaku.txt:5189 = \"(９) 徒歩による所要時間は、道路距離８０\"; :5190 = \"メートルにつき１分間を要するもの\"; :5191 = \"として算出した数値を表示するこ\"; :5192 = \"と。この場合において、１分未満の\"; :5193 = \"端数が生じたときは、１分として算\"; :5194 = \"出すること。\"",
+      "supports": true,
+      "verdict": "部分支持",
+      "observation": "The citation is exact. The verifier opened the file and read the six lines; the sentence is verbatim what the pack quotes, at exactly the cited line numbers, and the 80 m/min constant with round-up is really there. The attestation's pointer to :5189–5194 is one of the most accurate citations in the pack.",
+      "whyNotFull": "The instrument is 不動産の表示に関する公正競争規約 施行規則 — the fair-competition rules for REAL-ESTATE ADVERTISING. The verifier's search found the document contains 宅地 and 建物 but never 寺院, 観光, or 旅行. The rule governs what a property advertisement may claim about walking time to a station; it does not govern a travel itinerary, and the pack's own carriage of it under transit.walkTimeRule with a 攻略-facing role reaches beyond the instrument's subject matter. §(9) is also written as an instruction for what to DISPLAY in an advertisement, not as a statement of how long walking takes.",
+      "severity": "MEDIUM and honest: the producer did NOT hide this. transit.json's whyLicencedMinutes states the reasoning and marks minutesValueKind=licenced, and design-core §8.2.2 ④ bars licenced values from the guide's verified column — which the producer accepted and restated. So the pack is self-aware; what is missing is anyone having said plainly that all six legs' minutes are therefore barred from 已验证.",
+      "recommendation": "Keep the constant (it is a defensible, sourced, conservative walking-speed convention) but label it as an adopted convention rather than as a rule that governs this use, or find an operator-published walk time for the same pairs and prefer it."
+    },
+    {
+      "factId": "pack.transit (bus / subway / private rail)",
+      "field": "the deliberate ZERO legs",
+      "claimed": "\"It deliberately contains no bus, subway or private-railway leg: the pack has a sourced fare for Kyoto City Bus (230 JPY flat, uniform-fare zone) but no sourced stop-to-stop running time, headway or first/last departure for any route, and no source at all for Hankyu or Keihan fares.\"",
+      "sourceUrl": "https://www.city.kyoto.lg.jp/kotsu/page/0000240682.html (bus fare), https://www.city.kyoto.lg.jp/kotsu/page/0000240757.html (subway fare)",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/kyoto-kotsu-fare-bus-teiki.txt:51 = \"大人 230円\", :52 = \"小児 120円\", :41 = \"ページ番号240682\", :42 = \"2024年6月1日\"; evidence/kyoto-kotsu-fare-subway.txt:44-63 the zone table, :42 = \"2025年10月1日\"",
+      "supports": true,
+      "verdict": "部分支持",
+      "observation": "The fares are exactly as recorded and the verifier confirmed them against the live pages too (230円 adult / 120円 child; zones 220/260/290/330/360). The verifier then swept every one of the 57 evidence snapshots for a ride-duration datum: 所要時間 64 hits (all in the real-estate instrument and CSV viewing-time text, none a transit ride), 乗車時間 0, 運行間隔 0, 初発 0, 終電 0, 時刻表 0, 乗継案内 0. So the specific statement 'no sourced stop-to-stop running time, headway or first/last departure in this pack' is correct.",
+      "whyNotFull": "The framing 'a leg without a duration cannot be made executable, so it is a gap rather than a guess' reads as though duration were unobtainable. It is obtainable, and the pack's own evidence points at where. evidence/kyoto-kotsu-fare-search.txt:126 = \"市バスの路線・ダイヤについて\" and :129 = \"地下鉄の路線・ダイヤ\" — the operator's own timetable index, captured but never opened. The verifier also found, outside the pack, that Kyoto City publishes both a distance-banded subway zone table (1区 = up to 3 km … 5区 = over 15 km; 大人 220/260/290/330/360) and headway figures, and that 四条 and 烏丸御池 are both already OSM objects. So the honest wording is 'the durations were not sourced within this pack's source list', not 'could not be sourced'.",
+      "subwayZoneCorrection": "pack.transit.gaps[2] says 地下鉄区間：四条駅→烏丸御池駅の区数が不明。区数が決まらないと運賃が確定しない。 The first sentence is true of the opened page (evidence/kyoto-kotsu-fare-subway.txt carries the zone table but no band widths and no per-pair lookup). The second sentence is not: the operator publishes the band boundaries, and 四条→烏丸御池 is roughly 0.6–1.0 km, inside 1区. The verifier states this as a documented finding, NOT as a pack value — a zone number established by the verifier is still not a source the fact layer opened, and the correct producer-side action is to open the page the pack itself references.",
+      "verdictBasis": "Recorded as 部分支持 rather than 支持 because the recorded justification overstates an unopened-source limitation as a source-level impossibility."
+    },
+    {
+      "factId": "pack.transit.fareReference[0] / [1]",
+      "field": "bus 230円・subway zone table",
+      "claimed": "fareAdult 230 / zones 220,260,290,330,360",
+      "sourceUrl": "https://www.city.kyoto.lg.jp/kotsu/page/0000240682.html and https://www.city.kyoto.lg.jp/kotsu/page/0000240757.html",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/kyoto-kotsu-fare-bus-teiki.txt:51-52; evidence/kyoto-kotsu-fare-subway.txt:44-63 and :66-70 (child fares)",
+      "supports": true,
+      "verdict": "支持",
+      "note": "The verifier also resolved a false alarm of its own making: the live bus page contains '240' seven times, but the context is the page number 240682, not a fare. The verifier re-read the live 運賃額 sentence and the bus fare is still 大人 230円 / 小児 120円. No staleness. Likewise the 120円/60円 in the evidence is the welfare-discount fare, not the base fare."
+    },
+    {
+      "factId": "pack.transit.transfers[0] / [1]",
+      "field": "measuredAlongStreetM / minutes",
+      "claimed": "x-shijo-karasuma 68.398 m / 1 min, source_url = https://www.openstreetmap.org/node/11283562286 ; x-shijo-kawaramachi 211.538 m / 3 min, source_url = the bbox API URL",
+      "sourceUrl": "https://www.openstreetmap.org/node/11283562286",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/osm-corridor-map.json — 68.398 m is the distance between node/11283562286 and node/2787253037; a single OSM node is not a source for a distance between two nodes",
+      "supports": false,
+      "verdict": "部分支持",
+      "why": "The number is right — the verifier reproduced 68.398 m and 211.538 m from the chain independently (both also match the producer's own walkMeasurement.legs). The defect is provenance: transfer x-shijo-karasuma cites one NODE as the source of a between-two-nodes DISTANCE. The distance is a reviewer-derived quantity from the extract, and citing a permalink to one endpoint does not let a reader reproduce the number.",
+      "severity": "MEDIUM — these two are the pack's only platform-to-platform transfer figures, and both are derived, not stated, by every source they cite."
+    },
+    {
+      "factId": "pack.scope.counts / pack.contradictions",
+      "field": "19 places, 6 legs, 14 sources, 10 placeGaps, 8 placeGapNotes, 7 contradictions, 3 ungeoreferenced, 2 dropped legs",
+      "claimed": "as declared",
+      "sourceUrl": "n/a (structural)",
+      "sourceOpened": true,
+      "evidenceLocator": "re-derived by the verifier directly from the JSON files",
+      "supports": true,
+      "verdict": "支持",
+      "observation": "Every declared count equals what the verifier counted: 19/19, 6/6, 14/14, 10/10, 8/8, 7/7, 3/3, 2/2. evidence/ contains exactly 57 files, matching the recorded figure."
+    },
+    {
+      "factId": "attestations/source-attestations.json",
+      "field": "unopenedUrls + licencePointers",
+      "claimed": "https://data.city.kyoto.lg.jp/dataset/00073/ は unopenedUrls（開かれていない）",
+      "sourceUrl": "https://data.city.kyoto.lg.jp/dataset/00073/",
+      "sourceOpened": true,
+      "evidenceLocator": "evidence/kyoto-odp-dataset-00073.html (8505 B) and evidence/kyoto-odp-dataset-00073.txt (1801 B) BOTH EXIST in the pack; the verifier fetched the URL at 2026-09-30 and got HTTP 200, 8505 bytes, byte-identical to the stored HTML modulo line endings; dataset id 00073 is the very dataset whose resource 7052 the pack uses for S1",
+      "supports": false,
+      "verdict": "不支持",
+      "why": "The URL was opened — the evidence file exists, was captured, was converted to text, and its content (京都観光見もの情報, resource 7052, CC-BY 4.0, 更新日時 2021-03-26) is exactly what the pack relies on. Listing it under unopenedUrls contradicts the pack's own bytes, and it lets the pack claim '0 unopened sources' while the one genuinely unread document sits under a different heading.",
+      "severity": "MEDIUM — bookkeeping, but this is the field a reviewer reads to find out what still needs opening, so a wrong entry here sends the reader away from the real gap."
+    },
+    {
+      "factId": "pack.licenceObligations",
+      "field": "the ODbL obligations asserted by the pack",
+      "claimed": "odblAttribution \"© OpenStreetMap contributors\"; whySeparate \"ODbL 4.5(a) Collective Database: rows whose values originate in OSM live only in the *-osm-places.json file, which is published under ODbL. places.json and transit.json carry our curation and reach the OSM values by placeId reference.\"",
+      "sourceUrl": "https://opendatacommons.org/licenses/odbl/1-0/",
+      "sourceOpened": false,
+      "evidenceLocator": "(none) — no snapshot of the ODbL text or of the OSM copyright page exists anywhere under evidence/; source-attestations.json lists both under licencePointers with reason 'not an opened document'",
+      "supports": false,
+      "verdict": "不支持",
+      "why": "Three distinct deficiencies, in order of seriousness.",
+      "defect1_noBytes": "The document that defines the pack's attribution and share-alike obligations was never opened, and no snapshot of it was kept. This is the pack's one genuine unopened-source gap, and it is the gap that matter: the pack makes a legal claim, in odblAttribution and whySeparate, about a licence nobody read. The verifier opened https://opendatacommons.org/licenses/odbl/1-0/ (HTTP 200, 51176 bytes) to write this row. Per the project's own rule — 'A URL that was never opened does not count as verification' — the licence obligations are currently unverified.",
+      "defect2_attributionSuffix": "The pack's attribution string is '© OpenStreetMap contributors'. The verifier read the OSM copyright page and confirmed its two-part requirement: (a) provide credit by displaying the attribution notice, and (b) make clear the data is available under the ODbL. The pack does carry odblLicenceUri, so (b) is served by a URI rather than by display. The verifier notes, as observation rather than as a legal conclusion, that the literal string '© OpenStreetMap contributors' does not appear anywhere in the live OSM copyright page (checked as a raw substring of the HTML and of the decoded text), and that ODbL §4.3's own suggested notice form is 'Contains information from DATABASE NAME, which is made available here under the Open Database License (ODbL).' Whether the pack's chosen string satisfies §4.3 is a licensing judgement this report does not make; what it does state is that no opened document in this pack supports the string that is in the pack.",
+      "defect3_clauseMischaracterised": "whySeparate cites ODbL §4.5(a) as a 'Collective Database' provision permitting OSM-derived rows to live only in the ODbL half. The verifier read §4.5(a): it is titled 'Limits of Share Alike', it says the requirements of §4.4 (share-alike) do not apply to Collective Databases, and it is explicitly a carve-out from share-alike — not a rule that classifies files or permits separation. Section 4.5 explains when you are NOT required to license a collective database under the ODbL; it does not describe the pack's arrangement. Treating a share-alike exemption as the basis for the file split means the pack's stated legal rationale does not match what the clause does.",
+      "innerTension": "The pack calls kyoto-shijo-osm-places.json an 'ODbL 1.0 Derivative Database' in its own source block while invoking §4.5(a), which is the Collective Database carve-out. Under the ODbL's definitions a Derivative Database and a Collective Database are mutually exclusive categories, so the pack's two characterisations of the same file cannot both be right.",
+      "note": "This is a licence-compliance finding, not a data-accuracy finding. The verifier's remit is whether sources support recorded values; it flags this because pack.licenceObligations is itself a source-cited claim block with a cited sourceUrl that was never opened, and because the remediation is simply to open and snapshot two pages."
+    }
+  ],
+
+  "unverified": [
+    {
+      "item": "evidence/kiyomizudera-guide.html / .txt",
+      "why": "Cited by source-attestations.json S10 as evidence for the 清水寺 hours claim, but the verifier found no line in it carrying the hours table — the hours table the pack relies on is in kiyomizudera-access-hours.txt:28-67. The file exists and was not needed for the verdict; its role in S10's evidence list is unexplained.",
+      "status": "无法判定"
+    },
+    {
+      "item": "evidence/kyoto-city-kiyaku-syoban.pdf (京都市オープンデータ利用規約)",
+      "why": "This is the document that requires the CC BY attribution string pack.licenceObligations.ccByAttributionJa claims is 'the attribution format the Kyoto City open-data terms require verbatim (京都 オープンデータ利用規約 (2)ア)'. The evidence is a PDF only — no .txt extraction exists, unlike the other two PDFs in evidence/, and the verifier did not port a PDF pipeline to read a licence document outside the fact layer's value scope. The claimed verbatim-required string is therefore not verified.",
+      "status": "无法判定",
+      "whatWouldCloseIt": "extract the PDF to text and read clause (1)(2)ア・イ, as the producer did for japan-rftf-hyouji-kiyaku.pdf"
+    },
+    {
+      "item": "京都観光見もの情報 DSIGHT_1.csv — the meaning of each of the 30 columns",
+      "why": "The CSV has no header row (confirmed: 648 records, all 30 fields wide, first record is data id 1000001). Every column name used anywhere in the pack — col8 'name', col17 'address', col21/23 'open', col25 'closed', col26 'hours', col27 'fee' — is an INFERENCE from the data, as the producer itself recorded. The verifier independently corroborated col0=id, col8=name, col17=address and col27=fee against the content of the rows it checked, but cannot corroborate the remaining 26 column meanings from bytes alone. Verdicts that depend on which column is which (rows x-C1 and the 八坂神社 date row) rest on the verifier's own reading of the row content, not on a column-name source.",
+      "status": "无法判定"
+    },
+    {
+      "item": "the two byte-identical bus-fare snapshots",
+      "why": "evidence/kyoto-kotsu-fare-bus-normal.* and evidence/kyoto-kotsu-fare-bus-teiki.* are byte-for-byte identical (sha256 CAD3F056… for both .txt, 8695CF20… for both .html) although their filenames imply different pages ('normal' vs 'teiki'). Both were presumably captured from the same page. The pack's own cited URL (page/0000240682.html) does contain 大人 230円 / 小児 120円, so no value is wrong — but two evidence files presenting as independent captures of one page is a provenance smell, and 4 of the 57 evidence files are effectively 2.",
+      "status": "观察, not a value defect"
+    },
+    {
+      "item": "evidence/osm-corridor-os.json",
+      "why": "The ODbL half records sha256 5152995D… for this file but the verifier did not independently re-hash it; it was not needed for any verdict. Only the two files carrying verdict-critical values (the CSV and osm-corridor-map.json) were re-hashed, and both matched."
+    }
+  ],
+
+  "gaps": [
+    {
+      "gap": "京都 City bus / subway / private-rail transit durations",
+      "kind": "not sourced in this pack (obtainable)",
+      "detail": "0 evidence snapshots contain 乗車時間, 運行間隔, 初発, 終電, 時刻表 or 乗継案内. The operator's own timetable index is referenced but unopened at evidence/kyoto-kotsu-fare-search.txt:126,:129. Hankyu and Keihan are absent from the source list entirely.",
+      "effect": "the guide can only ever offer walking between the six pairs; a player cannot be routed by bus or subway with a defensible duration"
+    },
+    {
+      "gap": "coordinates for 知恩院 / 清水寺 / 建仁寺",
+      "kind": "scope limitation, NOT a source limitation",
+      "detail": "All three exist in OpenStreetMap. 建仁寺's node is 52.7 m outside the bbox, 清水寺's 1,069.7 m, 知恩院's 435.6 m. Widening the extract closes all three plus dropped legs L07 and L08.",
+      "effect": "the pack's 清水寺 — the headline destination — has hours, an address and no position, and 建仁寺's operator-published 徒歩7分 / 徒歩10分 are parked rather than usable"
+    },
+    {
+      "gap": "the ODbL text and the OSM copyright page",
+      "kind": "cited but never opened, no snapshot",
+      "detail": "Both live and reachable (HTTP 200, 51176 B and 21314 B at 2026-09-30). This is the pack's single real failure of 'a URL that was never opened does not count as verification', and it is attached to the pack's legal obligations."
+    },
+    {
+      "gap": "京都市オープンデータ利用規約 clause (2)ア verbatim attribution string",
+      "kind": "claimed, not verifiable from bytes on disk",
+      "detail": "Stored as PDF only; no text extraction exists, unlike the other two PDFs."
+    },
+    {
+      "gap": "hours / admission / closedDays for 17 of 19 places",
+      "kind": "deliberate and correct emptiness",
+      "detail": "All 17 are OSM-identified objects (buildings, bus stops, station entrances, signs, a crossing, a bank) for which 'opening hours' is either not applicable or not in any opened source. The pack records whyEmpty per record. The verifier found no case where an opened source supplied a value that was then dropped.",
+      "exception": "kyoto-shijo-bank-mufg-kyoto is the one place where a player-facing service (a bank branch) has no hours and no source was opened for it. That is a real user-facing hole, correctly declared."
+    },
+    {
+      "gap": "the pack is a selection, not an inventory",
+      "kind": "declared, quantified here for the first time",
+      "detail": "The extract holds 12 subway entrances (2 used), 23 bus stops (8 used), 22 tourism=information nodes (2 used), 13 amenity=bank nodes (1 used), 160 highway=crossing nodes (1 used), 1512 building ways (2 used). 19 places is a deliberate slice of the anchor block, and nothing in the pack claims otherwise — but a reader who takes '19 places' for the contents of block 0 will be wrong."
+    },
+    {
+      "gap": "no liveness or re-verification date on any dynamic fact",
+      "kind": "structural",
+      "detail": "清水寺's own page says 夜間特別拝観の期間は年ごとに変更になります (kiyomizudera-access-hours.txt:29) and the pack carries three season-dependent closing times with verified_at 2026-09-29. The tier is semi-static and the skill requires a Plan B and a buffer in the exported guide; that obligation now sits with the export layer, not this pack."
+    }
+  ],
+
+  "conclusionsForTheLead": [
+    "The fact layer's numeric core holds. Of 45 audited rows, 24 are fully supported by a sentence the verifier read in the cited source, and the two most load-bearing numeric families — 19 coordinates and 6 transit distances — were re-derived from raw bytes to within 6 cm and 1 cm respectively. The producer's arithmetic, chain assembly, twin encoding and source quoting are accurate; the 80 m/min citation is exact to the line.",
+    "The one outright data error is 八坂神社 西楼門 addressJa: the pack records 祇園町北側125, the cited shrine page says 祇園町北側625. The 125 does exist in the Kyoto CSV, but the record does not cite it. This is a one-digit error in an address a player will type into a map app.",
+    "Two records (八坂神社 西楼門, 本殿) carry coordinates, and state as their source_url an official page that contains no coordinate. The coordinates are right (verified against OSM way/105449683 and way/88108397); the provenance pointer is wrong. The same class of defect affects the pack's two transfer rows, where one endpoint node is cited as the source of a distance between two nodes.",
+    "The claim 'the three temples have no coordinates in any source' is false and should be corrected to 'outside our extracted bbox'. All three are in OpenStreetMap, 建仁寺 by 53 m. Two dropped legs and the 清水寺 destination hang on this, and the pack's own extract already contains a node 585 m outside the declared bbox, so the boundary is not even self-consistent.",
+    "Contradiction C1 rests on a misreading. The CSV cell the producer dismisses does name its own subject — 一部施設（本堂・舞台）, adult 400円 — so 'that row's subject is the guardian lions, not the main hall' is not what the bytes say. The refusal may still be right; the recorded reason is not, and it is the kind of reason a later reader will re-derive and then distrust.",
+    "The pack's own contract is violated in two places by a flag rather than a value: two records that the pack itself classifies as licenced (an authored crossing name, an authored Chinese station name) set guideVerifiedColumnAllowed=true, which design-core §8.2.2 ④ forbids for licenced values. Nothing wrong reaches a user yet; it would the moment the guide renders a verified badge.",
+    "The 80 m/min rule is quoted correctly and applied outside its instrument. The document is the real-estate advertising fair-competition code; it never mentions temples, tourism or travel. The producer flagged this itself (minutesValueKind=licenced) and design-core §8.2.2 ④ therefore bars all six legs' minutes from the guide's verified column. Nobody has yet stated that consequence in the pack.",
+    "The zero bus/subway/private-rail legs are genuinely unsourced in this pack — the sweep is clean — but the framing overstates the obstacle. The operator's timetable index is captured but unopened, and the subway zone bands the pack calls undeterminable are published. This is a coverage gap in a 14-source pack, not an impossibility.",
+    "The pack's licence foundation is its weakest layer: the ODbL text and the OSM copyright page are both live and both unopened with no snapshot, the attribution string cannot be traced to any opened document, §4.5(a) is cited as something it is not, and the same file is called a Derivative Database and a Collective Database. Two fetches and one re-read would close most of it.",
+    "Where the producer abstained, the verifier agrees. Empty hours/admission on 17 OSM-only records, the refusal of 八坂神社's 社務所 hours as the shrine's hours, the refusal of the undated CSV closure list for 建仁寺, and the refusal to derive a coordinate from an address string are all correct applications of drop-don't-correct. The distinction between 16:30 受付終了 and 17:00 閉門 at 建仁寺 is exactly the kind of care this gate exists to check for, and it is there."
+  ],
+
+  "independenceStatement": "The verifier is not the producer. pack-curator produced places.json, transit.json, pack.json and source-attestations.json under task-10. This verification was performed by fact-verifier under task-3, which imported none of the producer's scripts, executed none of them for a verdict, and read source-attestations.json only as an object of audit — every locator above was found by the verifier in the raw evidence bytes."
+}

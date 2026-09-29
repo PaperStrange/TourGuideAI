@@ -15,6 +15,8 @@
 | [`design/contract-geo-pipeline.md`](design/contract-geo-pipeline.md) | **已冻结的地理管线契约**：投影 / `worldGrid` / `valueKind` / 格定义 + 7 个 GAP | 要动任何与坐标、格、地图有关的东西之前 |
 | [`design/appendix-visual-and-ui-spec.md`](design/appendix-visual-and-ui-spec.md) | **实现级视觉与 UI 规格**：像素常量、投影推导、风格包、三套界面、字形渲染、资产许可、必须自建 ⑧ 项 | 要开始做美术与界面时 |
 | [`design/architecture-server-current-state.md`](design/architecture-server-current-state.md) | 旧 `server/` 现状实测（44 文件 / 8,569 行；约 1,400 行属已废 beta 产品） | 要判"server 删不删"时 |
+| [`design/branching-model.md`](design/branching-model.md) | **分支策略**：`master` = 生产就绪（只在发稳定版时合并），`iteration` = 开发主线；release/hotfix 的双向合回规则；**每条结论都附权威出处** | 要开分支、发版、或想知道"该合去哪"时 |
+| [`design/repo-defect-registry.md`](design/repo-defect-registry.md) | **仓库缺陷登记册**（13 条）**+ 规则↔机器对照表**：每条规则靠哪个检查器执行；没有机器的显式标 OPEN | 想知道"哪些规则真的在跑、哪些只是写在纸上"时 |
 | [`recon/gap-analysis-and-plan.md`](recon/gap-analysis-and-plan.md) | **GAP 与规划**：现状实测、GAP 矩阵、游戏优先原则、9 阶段规划、已取证工期 | 想知道"差距在哪、要几周" |
 | [`recon/recon-2.5d-game-research.md`](recon/recon-2.5d-game-research.md) | **2.5D 调研权威版**（1186 行）：Q1–Q7 全量证据、引擎选型、美术成本、LLM 边界、工期基准；**Appendix A** 目录布局 · **Appendix B** 七层隔离 · **Authored by** 逐块来源 | 想知道"为什么选 Phaser 4.2.1 + 俯视分层" |
 | [`recon/recon-codebase-salvage.md`](recon/recon-codebase-salvage.md) | 旧项目代码级盘点（逐行引用）：约 4,500 行可搬、约 77,000 行可零损失删除 | 想知道"旧代码哪些能用" |
