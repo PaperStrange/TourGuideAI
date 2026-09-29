@@ -118,7 +118,7 @@
     "八坂神社 本殿の特別拝観：CSV の col27 に『28年3月12日～3月21日』とあり、これは平成28年（2016年）の予定で、10 年落ちの値である。動的情報は事実層にキャッシュしない規則（skill: dynamic は never cache as truth）に従い、本パックの admission は空欄とし、この行を contradictions に記録する。",
     "知恩院 大方丈・小方丈の拝観：CSV の col26 は『非公開』。公式拝観情報（S9）には方丈庭園の拝観料と受付時間があるが、これは庭園の拝観であって大方丈・小方丈の室内拝観が常時可能という意味ではない。両者が同一の対象を指すか判定できないため、知恩院の方丈拝観は本パックの admission に含めず、庭園の料金のみを記録する。",
     "飲食店・土産物店の網羅：京都市 CSV は国宝建造物・見どころ粒度の権威ある紹介文源であって、完全な POI 主表ではない（iteration/recon/review-source-japan.md §5 限定 3）。本パックは shop / restaurant の行を 1 件も持たない。これは欠落ではなく範囲の帰結であり、埋めるには別の来源裁定が要る。",
-    "12 番の門そのもの：doors.json は各門の `entrancePointJa`（本門）を valueKind=licenced としており、実在の開口部位置を述べた来源は存在しない（doors.json validator.notAsserted / gaps G1・G5、kyoto-shijo-osm.json の facade 記録）。門は 3D 世界のオブジェクトであって位置を持つ事実行ではないため、places.json には門を 1 件も登録していない。block 0 の 12 門は kyoto-shijo-osm.json の doors[] と doors.json に、権威ある門の来源が得られるまで licenced のまま留まる。",
+    "12 番の門そのもの：doors.json は各門の `entrancePointJa`（本門）を valueKind=authored としており、実在の開口部位置を述べた来源は存在しない（doors.json validator.notAsserted / gaps G1・G5、kyoto-shijo-osm.json の facade 記録）。門は 3D 世界のオブジェクトであって位置を持つ事実行ではないため、places.json には門を 1 件も登録していない。block 0 の 12 門は kyoto-shijo-osm.json の doors[] と doors.json に、権威ある門の来源が得られるまで authored のまま留まる。",
     "「er」を含む移動時間・運賃：京都市バスは均一運賃 230 円（S5）だが、停留所間の所要時間・系統別の運行間隔・初発/終電は本パックのどの来源にも無い。地下鉄も区数が判定できない（S6）。よって transit.json には徒歩区間のみを入れ、バス・鉄道区間は意図的に 1 件も作っていない。",
     "清水五条駅・東山安井停留所・南座前停留所の座標：公式サイト（S10/S11）は徒歩分数を述べているが、これら 3 点の位置は本パックの OSM 抽出範囲（lat 35.0028–35.0047）に入っていない。座標が無いため transit.json の端点にできず、公式サイトの徒歩分数は source 付きの gap として gapNotes に残す。"
   ],
@@ -146,12 +146,20 @@
     {
       "id": "C5",
       "with": "task-10 カード『12 個の門自体は places として入庫すべき』 vs 門の実在位置を述べた来源が 1 件も無い",
-      "handling": "門は登録しない。doors.json 自身が各門を valueKind=licenced とし、guideVerifiedColumnAllowed=false、validator.notAsserted に『実在の開口部位置を述べた来源は無い』と書いている。座標も名称（本門は種別名であって固有名ではない）も来源を持たない行を places に入れると、まさに task-10 が排除しようとしている『確からしい捏造』になる。block 0 の 12 門は doors.json + kyoto-shijo-osm.json 側に留める。Lead の裁定を仰ぐ。"
+      "handling": "門は登録しない。doors.json 自身が各門を valueKind=authored とし、guideVerifiedColumnAllowed=false、validator.notAsserted に『実在の開口部位置を述べた来源は無い』と書いている。座標も名称（本門は種別名であって固有名ではない）も来源を持たない行を places に入れると、まさに task-10 が排除しようとしている『確からしい捏造』になる。block 0 の 12 門は doors.json + kyoto-shijo-osm.json 側に留める。Lead の裁定を仰ぐ。 → 裁定済み（下記 resolution）。",
+      "status": "resolved",
+      "resolvedAt": "2026-09-30",
+      "resolvedBy": "Lead",
+      "resolution": "カードの『12 個の門自体は places として入庫すべき』は誤りだった。Lead 裁定：門は places の行にしない。places の行は名前と出典のある位置を期待するが、門の「名前」は本門という種別名であり、block 内に開口部の存在を述べた来源は 1 件も無い（OSM は footprint 2 件・entrance node 0 件）。scope.doorsArePlaces=false と attestations/block-doors.json が正しい形であり、doorId を 2 棟の建物レコードに宣言させ check (G) が双方向で照合する形はカードの要求より強い。"
     },
     {
       "id": "C6",
       "with": "SKILL.md の city pack 表記『places.json [{ … lat, lng, … }]』 vs iteration/design/contract-geo-pipeline.md §5『フィールド名は lonUdeg / latUdeg の 1 組だけ。lonMicro 別名は意図的に提供しない』",
-      "handling": "contract が §5 で『浮動小数点は事実層に決して入らない』と凍結しているので、権威は contract 側。各地点は latUdeg / lonUdeg（整数 µ度）を一次表現とし、lat / lng は同値の派生表現として併記する。両者が食い違ったら latUdeg / lonUdeg が正。"
+      "handling": "contract が §5 で『浮動小数点は事実層に決して入らない』と凍結しているので、権威は contract 側。各地点は latUdeg / lonUdeg（整数 µ度）を一次表現とし、lat / lng は同値の派生表現として併記する。両者が食い違ったら latUdeg / lonUdeg が正。 → 裁定済み（下記 resolution）。",
+      "status": "resolved",
+      "resolvedAt": "2026-09-30",
+      "resolvedBy": "Lead",
+      "resolution": "lat / lng（十進数の数値）が事実層の正準形。skill の schema と validate-city-pack.mjs がそう要求しており、schema は自分のファイル内で優先する。整数マイクロ度は provenance 形式として残り、ODbL 側ハーフ（kyoto-shijo-osm-places.json）に置かれ、osmRecord で到達する。第二の別名は禁止＝第二の「値」の禁止であり、同一の数を 2 表記で持ち片方を権威・他方を再計算してアサートする本パックの扱い（validate-city-pack-v2.mjs check C）は別名に当たらない。この区別は Lead 裁定により明示された。SKILL.md の schema 節も同じ裁定で更新済み。"
     },
     {
       "id": "C7",

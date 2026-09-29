@@ -55,9 +55,10 @@
         "D-N6",
         "D-N7"
       ],
-      "valueKind": "licenced",
-      "whyNotObserved": "門の数と位置は curator が置いた 3 m 店舗モジュールのテンプレートであり、実在の開口部を述べた来源は無い。doors.json が各門を licenced / guideVerifiedColumnAllowed=false としているのに合わせる。",
-      "doorsFile": "city-packs/kyoto-shijo/doors.json"
+      "valueKind": "authored",
+      "whyNotObserved": "doors.json は各門を valueKind=authored とする（world-grid.mjs が task-2 で追加した第 4 の enum メンバ。OSM は block に 2 つの footprint と entrance node ゼロしか記録しておらず、門の位置はキュレーターの配置であってライセンス由来のテンプレートではない）。",
+      "doorsFile": "city-packs/kyoto-shijo/doors.json",
+      "guideVerifiedColumnAllowed": false
     },
     "lat": 35.004094,
     "lng": 135.760073
@@ -116,9 +117,10 @@
         "D-S4",
         "D-S5"
       ],
-      "valueKind": "licenced",
-      "whyNotObserved": "京都三井ビルディングに同じ。",
-      "doorsFile": "city-packs/kyoto-shijo/doors.json"
+      "valueKind": "authored",
+      "whyNotObserved": "doors.json は各門を valueKind=authored とする（world-grid.mjs が task-2 で追加した第 4 の enum メンバ。OSM は block に 2 つの footprint と entrance node ゼロしか記録しておらず、門の位置はキュレーターの配置であってライセンス由来のテンプレートではない）。",
+      "doorsFile": "city-packs/kyoto-shijo/doors.json",
+      "guideVerifiedColumnAllowed": false
     },
     "lat": 35.003232,
     "lng": 135.760033

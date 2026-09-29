@@ -5,7 +5,7 @@
 
 # Planning / research — SPLIT BY LIFETIME (revised after the `iteration` move)
 #
-# Long-lived assets now live under iteration/ and ARE version-controlled:
+# Long-lived assets live under iteration/ and ARE version-controlled:
 #   iteration/design/      design kernel, appendix, frozen contracts
 #   iteration/recon/       recon reports + section drafts (crawl caches excluded)
 #   iteration/reference/   external inputs (plugin survey, research plan)
@@ -13,17 +13,31 @@
 # What remains excluded is genuinely one-off:
 #   docs/handOff/archive/            ~90 MB of raw crawl snapshots (HTML + txt)
 #   iteration/recon/sections/*/_raw* raw fetch caches behind the section drafts
-#   docs/handOff/dsh-bundle-*/       the DSH preset bundle; it is junction-linked
-#                                    into the local DSH profile, so moving it
-#                                    forces a bundle reinstall + dsh restart.
-#                                    It holds the city-pack validator and the two
-#                                    gates (world-grid, assert-export-boundary),
-#                                    referenced by relative path from iteration/.
+#   the bundle's node_modules/       install artifacts, not source
 docs/handOff/archive/
-docs/handOff/dsh-bundle-tourguide-2.5d/
 iteration/recon/sections/_raw/
 iteration/recon/sections/_raw_q4q6/
 docs/project_lifecycle/knowledge/_recon_tmp/
+docs/handOff/dsh-bundle-tourguide-2.5d/node_modules/
+
+# The gate scripts ARE tracked, and this reverses an earlier decision that was made on
+# a premise I never checked. The exclusion was justified as "the bundle is
+# junction-linked into the DSH profile, so moving it forces a reinstall". Measured:
+# neither docs/handOff/dsh-bundle-tourguide-2.5d/ nor its tools/ has a LinkType -- the
+# junction is created BY the DSH install and points AT this directory, so this
+# directory was never the link and nothing here is pinned by it.
+#
+# The cost of the exclusion was severe and silent: world-grid.mjs (18 assertions over
+# the frozen projection, grid, origin and valueKind), assert-export-boundary.mjs and
+# validate-city-pack.mjs were ABSENT from every clean checkout, so a Fact Integrity CI
+# job would have skipped exactly the gates it exists to run. Tracking is not moving:
+# the files keep their paths, so the DSH profile is unaffected.
+#
+# Everything except node_modules under the bundle is therefore tracked. The scripts are
+# zero-dependency by construction; the CI job asserts that rather than assuming it.
+!docs/handOff/dsh-bundle-tourguide-2.5d/
+!docs/handOff/dsh-bundle-tourguide-2.5d/tools/
+!docs/handOff/dsh-bundle-tourguide-2.5d/tools/**
 
 # DSH harness state for this workspace (agent config, not project source)
 .dsh/

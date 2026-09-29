@@ -741,6 +741,14 @@ const CLOSED_SECTIONS = Object.freeze({
   cellYConvention: ['formula', 'why', 'evidenceStreetCentrelineAtOrigin', 'conflictWithTaskCard'],
   frozenConstants: ['mustImport', 'note', 'ORIGIN', 'PROJECTION', 'worldGrid', 'GRID',
     'valueKinds', 'guideVerifiedColumnAllowed'],
+  // Locked in task-9 follow-up. The Lead had believed this block was already pinned by
+  // V17's census; it was not -- V17 covers block/cellYConvention/frozenConstants/summary
+  // only. V21 guards the required CC BY 4.0 slots, but an ARBITRARY new key here was
+  // unguarded. Now it is a review event, like the other policy-bearing blocks.
+  licence: ['thisFile', 'odblAppliesToThisFile', 'odblHalf', 'derivedFrom', 'source',
+    'attributionRequired', 'attribution', 'odblNote', 'residualNote', 'contentLicence',
+    'odblUrl', 'osmCopyrightUrl', 'contentLicenceWhy', 'contentLicenceUri',
+    'contentLicenceNotice', 'contentCreator', 'contentWarrantyDisclaimer'],
 });
 
 /** Key names that only ever appear on OSM-derived data. */
@@ -1128,36 +1136,55 @@ const DECLARED_BLOCKERS = [];
   }
 
   // (3) the creator slot: resolved, or explicitly declared unresolved.
-  //     `.why` and `.needed` are explanatory prose, so they are checked with
-  //     hasContent, NOT with the placeholder test.
+  //     Accepts the two-year schema the rights holder supplied. The two years are
+  //     DIFFERENT facts -- 2024 is the year of first publication, 2026 the year of
+  //     the edition being licensed -- so they are asserted as a relationship rather
+  //     than collapsed into one field. `.why`/`.needed` and their historical
+  //     counterparts `wasBlockedBecause`/`wasNeeded` are explanatory prose, so they
+  //     are checked with hasContent, NOT with the placeholder test.
   const c = L.contentCreator;
-  const resolved = Boolean(c) && typeof c === 'object' && filled(c.name) && (filled(c.year) || filled(c.years));
-  const declaredUnresolved = Boolean(c) && typeof c === 'object'
-    && typeof c.status === 'string' && /UNRESOLVED/i.test(c.status)
-    && hasContent(c.why) && hasContent(c.needed);
+  const cObj = (c && typeof c === 'object') ? c : {};
+  const yearOk = (v) => Number.isInteger(v) && v >= 1000 && v <= 2200;
+  const resolved = filled(cObj.name) && (filled(cObj.firstPublicationYear) || filled(cObj.year) || filled(cObj.years));
+  if (resolved) {
+    for (const k of ['firstPublicationYear', 'yearOfThisEdition']) {
+      if (cObj[k] !== undefined && !yearOk(cObj[k])) {
+        problems.push(`contentCreator.${k} ${JSON.stringify(cObj[k])} is not a plausible 4-digit year`);
+      }
+    }
+    if (yearOk(cObj.firstPublicationYear) && yearOk(cObj.yearOfThisEdition)
+        && cObj.yearOfThisEdition < cObj.firstPublicationYear) {
+      problems.push(`contentCreator.yearOfThisEdition ${cObj.yearOfThisEdition} predates firstPublicationYear ${cObj.firstPublicationYear}`);
+    }
+  }
+  const declaredUnresolved = typeof cObj.status === 'string' && /UNRESOLVED/i.test(cObj.status)
+    && (hasContent(cObj.why) || hasContent(cObj.wasBlockedBecause))
+    && (hasContent(cObj.needed) || hasContent(cObj.wasNeeded));
   if (!resolved && !declaredUnresolved) {
-    problems.push('contentCreator is neither a resolved credit (name + year) nor explicitly flagged unresolved with why + needed');
+    problems.push('contentCreator is neither a resolved credit (name + first publication year) nor explicitly flagged unresolved with why + needed');
   }
   if (!resolved && declaredUnresolved) {
     DECLARED_BLOCKERS.push({
       id: 'B1',
       what: 'CC BY 4.0 creator identification is unresolved',
-      detail: `${String(c.status)} -- the pack cannot lawfully be distributed under CC BY 4.0 until the creator is named.`,
-      needed: String(c.needed),
+      detail: `${String(cObj.status)} -- the pack cannot lawfully be distributed under CC BY 4.0 until the creator is named.`,
+      needed: String(cObj.needed || cObj.wasNeeded),
       fatalWhen: '--strict',
     });
   }
 
   const mapped = Object.values(ODBL_SOURCE_COUNTERPART).filter((m) => m.ours).length;
   const na = Object.values(ODBL_SOURCE_COUNTERPART).filter((m) => !m.ours).length;
+  const creatorNote = resolved
+    ? `contentCreator resolved: ${cObj.name}` +
+      (yearOk(cObj.firstPublicationYear) ? `, first published ${cObj.firstPublicationYear}` : '') +
+      (yearOk(cObj.yearOfThisEdition) ? `, this edition ${cObj.yearOfThisEdition}` : '')
+    : 'DECLARED BLOCKER: contentCreator is unresolved -- printed in the BLOCKED section and fatal under --strict';
   check('V21', 'our attribution record is as complete as the licence we elected requires',
     problems.length === 0,
     `${REQUIRED_OUR_SLOTS.length} required CC BY 4.0 slots present; all ` +
     `${Object.keys(ODBL_SOURCE_COUNTERPART).length} ODbL source slots accounted for ` +
-    `(${mapped} mapped, ${na} declared not-applicable with a reason); ` +
-    (DECLARED_BLOCKERS.length
-      ? 'DECLARED BLOCKER: contentCreator is unresolved -- printed in the BLOCKED section and fatal under --strict'
-      : 'contentCreator is resolved') +
+    `(${mapped} mapped, ${na} declared not-applicable with a reason); ${creatorNote}` +
     `; problems=${problems.length}${problems.length ? ' -> ' + problems.join('; ') : ''}`);
 }
 
@@ -1238,7 +1265,11 @@ if (process.argv.includes('--json')) {
     `frontage=${doorsDoc.block.facadeFrontageTotalM.toFixed(3)} m  ·  ` +
     `storefront mean=${doorsDoc.summary.storefrontWidthMeanM.toFixed(4)} m`);
   console.log('');
-  for (const r of results) {
+  // printed in ID order. The count-floor guard is numbered V20 but must EXECUTE last,
+  // because it counts the other assertions -- so execution order and ID order differ,
+  // and the reader should see the IDs ascending rather than the guard in the middle.
+  const ordered = [...results].sort((a, b) => Number(a.id.slice(1)) - Number(b.id.slice(1)));
+  for (const r of ordered) {
     console.log(`${r.id.padEnd(4)} ${r.ok ? 'PASS' : 'FAIL'}  ${r.title}`);
     console.log(`          ${r.detail}`);
   }

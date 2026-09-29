@@ -46,8 +46,27 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 // It took three attempts to get this right because I kept reasoning about the path
 // instead of printing it; the resolution is now stated below rather than inferred.
 //   up1 -> <repo>\city-packs      up2 -> <repo>      up3 -> <repo parent>
-const REPO = resolve(process.argv[2] ?? resolve(HERE, '../..'));
-const PACKDIR = resolve(process.argv[3] ?? join(REPO, 'city-packs', 'kyoto-shijo'));
+const positional = process.argv.slice(2).filter((a) => !a.startsWith('--'));
+const REPO = resolve(positional[0] ?? resolve(HERE, '../..'));
+const PACKDIR = resolve(positional[1] ?? join(REPO, 'city-packs', 'kyoto-shijo'));
+// Machine-readable mode for CI. Anchored to the first line of a NON-EMPTY line, because a
+// trailing newline in a shell-captured stream otherwise eats the anchor and the JSON vanishes.
+const JSON_MODE = process.argv.includes('--json');
+
+// The valueKind enum is FROZEN in exactly one place. Importing it rather than restating it
+// matters: this checker previously hard-coded the three members it knew about, and the enum
+// gained a fourth (`authored`, added when it turned out all 12 doors are authored placements)
+// without this file noticing. A checker that carries its own copy of a frozen constant is a
+// second source of truth, and it will drift exactly like a hand-written count does.
+const GRID_URL = new URL('../../docs/handOff/dsh-bundle-tourguide-2.5d/tools/world-grid.mjs', import.meta.url);
+let VALUE_KINDS;
+let GUIDE_VERIFIED_COLUMN_ALLOWED;
+try {
+  ({ VALUE_KINDS, GUIDE_VERIFIED_COLUMN_ALLOWED } = await import(GRID_URL.href));
+} catch (e) {
+  console.error(`usage error: cannot import the frozen valueKind enum from ${GRID_URL.pathname}: ${e.message}`);
+  process.exit(2);
+}
 
 const violations = [];
 const notes = [];
@@ -245,9 +264,40 @@ for (const l of transit) {
   }
   if (!Number.isInteger(l.transfers) || l.transfers < 0) fail('TRANSFERS_NOT_INTEGER', at, `transfers must be a non-negative integer, got ${JSON.stringify(l.transfers)}`);
   if (!l.provenance?.valueKind) fail('LEG_NO_VALUEKIND', at, 'every leg must declare provenance.valueKind');
-  else if (!['observed', 'licenced', 'abstract'].includes(l.provenance.valueKind)) fail('VALUEKIND_BAD', at, `valueKind must be observed|licenced|abstract, got ${JSON.stringify(l.provenance.valueKind)}`);
+  else if (!VALUE_KINDS.includes(l.provenance.valueKind)) fail('VALUEKIND_BAD', at, `valueKind must be one of ${VALUE_KINDS.join('|')} (imported from world-grid.mjs), got ${JSON.stringify(l.provenance.valueKind)}`);
 }
 ok('F', `${transit.length} transit legs: endpoints resolve, minutes are integers, walk legs carry no fare, measured legs satisfy the sourced ceil(d/80) rule`);
+
+// ---- N: valueKind on every record and sub-fact, against the frozen enum --------
+// Two things are checked, because they fail differently:
+//   1. every declared valueKind is a member of the frozen enum (no invented label);
+//   2. `authored`, `licenced` and `abstract` records set guideVerifiedColumnAllowed false.
+//      Only `observed` may reach the guide's verified column, and a record that claims
+//      otherwise is the failure clause 4 was written about: "visited" endorsing a template.
+const seenKinds = new Map();
+const gateOffenders = [];
+const scanKinds = (label, kind, allowed) => {
+  if (kind === undefined) return;
+  seenKinds.set(kind, (seenKinds.get(kind) ?? 0) + 1);
+  if (!VALUE_KINDS.includes(kind)) { fail('VALUEKIND_BAD', label, `"${kind}" is not in the frozen enum ${VALUE_KINDS.join('|')}`); return; }
+  const mustBeGatedOff = !GUIDE_VERIFIED_COLUMN_ALLOWED.includes(kind);
+  if (mustBeGatedOff && allowed === true) gateOffenders.push(`${label}: valueKind=${kind} but guideVerifiedColumnAllowed=true`);
+};
+for (const p of allPlaceLike) {
+  scanKinds(`places[${p.id}]`, p.provenance?.valueKind, p.provenance?.guideVerifiedColumnAllowed);
+  for (const [field, kind] of Object.entries(p.provenance?.valueKindPerField ?? {})) {
+    if (kind === 'absent') continue;
+    seenKinds.set(kind, (seenKinds.get(kind) ?? 0) + 1);
+    if (!VALUE_KINDS.includes(kind)) fail('VALUEKIND_BAD', `places[${p.id}].${field}`, `"${kind}" is not in the frozen enum ${VALUE_KINDS.join('|')}`);
+  }
+  if (p.entrances?.valueKind) scanKinds(`places[${p.id}].entrances`, p.entrances.valueKind, p.entrances.guideVerifiedColumnAllowed);
+}
+for (const l of transit) {
+  scanKinds(`transit[${l.id}]`, l.provenance?.valueKind, l.provenance?.guideVerifiedColumnAllowed);
+  for (const k of ['distanceValueKind', 'minutesValueKind']) scanKinds(`transit[${l.id}].${k}`, l.provenance?.[k], undefined);
+}
+if (gateOffenders.length) for (const g of gateOffenders) fail('GUIDE_GATE_OPEN', 'places.json', g);
+else ok('N', `every valueKind is a member of the frozen enum ${VALUE_KINDS.join('|')}; usage ${[...seenKinds.entries()].map(([k, n]) => `${k}:${n}`).join(', ')}`);
 
 // fareReference integrity
 for (const [i, f] of (pack.transit?.fareReference ?? []).entries()) {
@@ -363,6 +413,28 @@ else ok('M', `no OSM tag or geometry value appears inline in places.json or tran
 }
 
 // ---- report -------------------------------------------------------------------
+const emit = JSON_MODE
+  ? (obj) => process.stdout.write(JSON.stringify(obj) + '\n')
+  : null;
+const report = {
+  tool: 'validate-city-pack-v2',
+  packDir: PACKDIR,
+  repo: REPO,
+  passed: checks.length,
+  failed: violations.length,
+  exitCode: violations.length === 0 ? 0 : 1,
+  checks: checks.map((c) => ({ id: c.id, ok: true, detail: c.detail })),
+  violations: violations.map((v) => ({ code: v.code, at: v.at, msg: v.msg })),
+  notes,
+  evidenceFiles: evidenceFiles.length,
+  evidenceSha256: Object.fromEntries(evidenceHashes),
+};
+
+if (JSON_MODE) {
+  emit(report);
+  process.exit(report.exitCode);
+}
+
 console.log(`validate-city-pack-v2 — ${PACKDIR}`);
 console.log(`repo ${REPO}`);
 for (const c of checks) console.log(`  PASS  ${c.id.padEnd(14)} ${c.detail}`);

@@ -1,0 +1,103 @@
+name: Fact Integrity
+
+# The seven-layer guards this project relies on all sit BELOW the export boundary.
+# These gates are what stands between a fact-layer regression and a printed guide
+# that sends a traveller to a closed door in a city where they do not read the
+# language. They existed for a while before anything ran them automatically, which
+# is the exact failure mode the export-boundary guard was written to catch.
+#
+# Everything here is also runnable locally, and that is deliberate - a workflow that
+# has never been pushed is not evidence:
+#     node iteration/tools/run-gates.mjs
+#     node iteration/tools/run-gates.mjs --json
+
+on:
+  push:
+    branches: [main, develop, 'release-*', iteration]
+    paths:
+      - 'city-packs/**'
+      - 'iteration/**'
+      - 'docs/handOff/dsh-bundle-tourguide-2.5d/tools/**'
+      - '.github/workflows/fact-integrity.yml'
+  pull_request:
+    paths:
+      - 'city-packs/**'
+      - 'iteration/**'
+      - 'docs/handOff/dsh-bundle-tourguide-2.5d/tools/**'
+      - '.github/workflows/fact-integrity.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gates:
+    name: Fact-integrity gates
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # No dependency install: every gate is zero-dependency by construction, which is
+      # itself worth asserting. If a gate starts needing a package, this job fails at
+      # the gate rather than silently succeeding against a different environment.
+      - name: Assert the gates are dependency-free
+        run: |
+          for d in \
+            docs/handOff/dsh-bundle-tourguide-2.5d/tools \
+            city-packs/kyoto-shijo \
+            iteration/tools
+          do
+            if [ -d "$d/node_modules" ]; then
+              echo "::error::$d has node_modules; the gates must not need one"
+              exit 1
+            fi
+          done
+          echo "no node_modules anywhere under the gate paths"
+
+      # The bundle is gitignored on purpose: it is junction-linked into the DSH profile
+      # locally, so moving it forces a reinstall. In a clean checkout it is therefore
+      # ABSENT, and its gates cannot run. That is an environment condition, not a
+      # passing test, so it is reported as a skip - never as a green gate.
+      - name: Locate the geo-contract bundle
+        id: bundle
+        run: |
+          if [ -f docs/handOff/dsh-bundle-tourguide-2.5d/tools/world-grid.mjs ]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+            echo "bundle present"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::geo-contract bundle is not in this checkout (it is gitignored by design); world-grid, the export-boundary guard and the stock pack validator CANNOT run here. This job does not cover them."
+          fi
+
+      # Gate order matters and is not arbitrary: the stock validator first because it is
+      # the contract gate that predates every pack, then the stronger fact-layer gate.
+      # Neither is a subset of the other and the stock one must not be demoted.
+      - name: Run fact-integrity gates
+        run: node iteration/tools/run-gates.mjs
+
+      # exit 1 and exit 2 mean different things and want different people: 1 is a data
+      # violation someone must fix by opening a source or deleting a record; 2 is an
+      # environment problem. The runner preserves both; this step only labels them.
+      - name: Explain a non-zero exit
+        if: failure()
+        run: |
+          echo "::error::Fact-integrity gates failed. Exit 1 = a fact-layer violation (open the source, or delete the record). Exit 2 = environment (a pack, the enum or a tool could not be found). They are deliberately distinct."
+
+      - name: Upload gate report
+        if: always()
+        run: node iteration/tools/run-gates.mjs --json > gate-report.json || true
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fact-integrity-report
+          path: gate-report.json
+          if-no-files-found: warn

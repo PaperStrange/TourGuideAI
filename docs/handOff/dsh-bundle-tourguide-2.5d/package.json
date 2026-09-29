@@ -1,0 +1,45 @@
+{
+  "name": "@local/tourguide-2.5d",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Fact-layer discipline for the TourGuideAI 2.5D travel-simulation reboot: an iron-rule skill plus a mechanical city-pack provenance validator.",
+  "license": "MIT",
+  "exports": {
+    "./validator": "./tools/validate-city-pack.mjs",
+    "./world-grid": "./tools/world-grid.mjs",
+    "./export-boundary": "./tools/assert-export-boundary.mjs",
+    "./checker": "./tools/check-patch-yml.mjs",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "check:geo": "node tools/world-grid.mjs",
+    "check:export": "node tools/assert-export-boundary.mjs --self-test"
+  },
+  "bin": {
+    "tourguide-validate": "./tools/validate-city-pack.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "files": [
+    "cordis.patch.yml",
+    "skills/",
+    "tools/",
+    "README.md"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "skills",
+    "city-pack",
+    "provenance",
+    "travel-game"
+  ]
+}

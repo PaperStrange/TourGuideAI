@@ -46,19 +46,20 @@ const run = (label, script, args = []) => {
   process.stdout.write(out.split('\n').map((l) => (l ? `  ${l}` : l)).join('\n'));
 };
 
-run('1/8 measure the corridor walk', join(HERE, 'measure-shijo-walk.mjs'), [join(EVID, 'osm-corridor-map.json'), '--out', join(EVID, 'transit-measurement.json')]);
-run('2/8 build the ODbL half', join(HERE, 'build-osm-places.mjs'));
+run('1/9 measure the corridor walk', join(HERE, 'measure-shijo-walk.mjs'), [join(EVID, 'osm-corridor-map.json'), '--out', join(EVID, 'transit-measurement.json')]);
+run('2/9 build the ODbL half', join(HERE, 'build-osm-places.mjs'));
 if (!Array.isArray(JSON.parse(execFileSync(node, ['-e', `process.stdout.write(require('fs').readFileSync(${JSON.stringify(join(PACK, 'places.json'))},'utf8'))`], { encoding: 'utf8' })))) {
-  run('3/8 split the metadata head', join(HERE, 'split-pack-meta.mjs'));
+  run('3/9 split the metadata head', join(HERE, 'split-pack-meta.mjs'));
 } else {
-  process.stdout.write('\n──── 3/8 split the metadata head\n  skipped: places.json / transit.json are already bare arrays\n');
+  process.stdout.write('\n──── 3/9 split the metadata head\n  skipped: places.json / transit.json are already bare arrays\n');
 }
-run('4/8 re-author the non-fact records from the evidence bytes', join(HERE, 'restore-parked-records.mjs'));
-run('5/8 extract the non-fact rows from the fact tables', join(HERE, 'extract-nonfact-rows.mjs'));
-run('6/8 derive freshness tiers', join(HERE, 'classify-freshness.mjs'));
-run('7/8 merge metadata into pack.json', join(HERE, 'merge-pack-meta.mjs'));
+run('4/9 re-author the non-fact records from the evidence bytes', join(HERE, 'restore-parked-records.mjs'));
+run('5/9 correct the tracked metadata sources (doors valueKind, resolved contradictions)', join(HERE, 'apply-tracked-corrections.mjs'));
+run('6/9 extract the non-fact rows from the fact tables', join(HERE, 'extract-nonfact-rows.mjs'));
+run('7/9 derive freshness tiers', join(HERE, 'classify-freshness.mjs'));
+run('8/9 merge metadata into pack.json', join(HERE, 'merge-pack-meta.mjs'));
 
-process.stdout.write('\n──── 8/8 validate\n');
+process.stdout.write('\n──── 9/9 validate\n');
 try {
   const out = execFileSync(node, [join(PACK, 'validate-city-pack-v2.mjs'), REPO, PACK], { cwd: REPO, encoding: 'utf8' });
   process.stdout.write(out.split('\n').map((l) => (l ? `  ${l}` : l)).join('\n'));

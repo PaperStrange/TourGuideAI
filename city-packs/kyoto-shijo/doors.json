@@ -608,8 +608,12 @@
       "V16 SEPARATION: doors.json carries no OSM-derived value -- each door record's key set is closed, no moved field is back at top level, and the top-level section inventory is closed",
       "V17 SEPARATION: the OSM-derived residual in this file is exactly the declared census, so it can neither grow nor shrink silently",
       "V18 every door's osmRecord pointer resolves to the SAME doorId in the ODbL half, bijectively, and the ODbL file's sha256 matches the one recorded here",
-      "V19 the ODbL half names the raw bytes it was derived from, and they hash correctly"
+      "V19 the ODbL half names the raw bytes it was derived from, and they hash correctly",
+      "V20 an assertion-count floor (MIN_ASSERTIONS in the validator, currently 21). It must execute LAST because it counts the others, which is why it is numbered before V21 but printed after it. Without it, deleting V16 or V17 would turn the run green -- the very bypass the separation assertions exist to prevent",
+      "V21 our attribution record is as complete as the licence we elected: the five CC BY 4.0 section 3(a)(1) slots are present and non-empty, every ODbL source slot is accounted for (mapped to a field of ours, or declared not-applicable with a reason), and contentCreator is either a resolved credit with plausible, correctly ordered years or an explicitly declared blocker. Under --strict it is the release gate."
     ],
+    "assertionsNote": "This list is a reader's index, not the authority. The validator is the authority; if the two disagree, the validator is right and this list is stale.",
+    "strictMode": "The default run exits 0 while a declared blocker stands, and prints it under a BLOCKED heading. --strict makes a standing blocker exit non-zero. The distinction is deliberate: nothing in the pack is FALSE, it is not yet SHIPPABLE, and a suite that is permanently red for an unrelated reason is a suite people learn to skip.",
     "notAsserted": [
       "That any doorway exists in reality. No source states a doorway position in this block; see gaps G1 and G5. That is exactly why every door is valueKind authored and none is admitted to the guide's verified column.",
       "That the storefronts are 11 separate businesses plus one bank. Only the bank is sourced."
@@ -632,9 +636,17 @@
     "contentLicenceUri": "https://creativecommons.org/licenses/by/4.0/",
     "contentLicenceNotice": "This curated content is licensed under CC BY 4.0. You must give appropriate credit, provide a link to the licence, and indicate if changes were made.",
     "contentCreator": {
-      "status": "UNRESOLVED -- requires the rights holder to state it",
-      "why": "CC BY 4.0 section 3(a)(1) requires creator identification to travel with the work.\nIt cannot be derived mechanically: git history contains FOUR distinct author identities\n  NemoHuang <nemo010713@gmail.com>\n  NemoHuang <Dr_in_Dream@163.com>\n  Huangziqiang <Dr_in_Dream@163.com>\n  PaperStrange <dr_in_dream@163.com>\nand the repository LICENSE still reads the unedited MIT placeholder\n  Copyright (c) [year] [fullname]\nwhile package.json has no author field. Selecting one of the four would be a guess\npresented as a decision, and inventing a name would be a false attribution.",
-      "needed": "The name the rights holder wants credited, and the year of first publication."
+      "name": "NemoHuang",
+      "nameAscii": "NemoHuang",
+      "contact": "nemo010713@gmail.com",
+      "firstPublicationYear": 2024,
+      "yearOfThisEdition": 2026,
+      "status": "RESOLVED",
+      "resolvedOn": "2026-09-30",
+      "resolvedBy": "the rights holder, relayed by the Lead (shared task task-9)",
+      "twoYearsWhy": "Both years are recorded rather than collapsed into one. 2024 is the year of FIRST PUBLICATION -- the repository's first commit is 2024-02-28 (git log --reverse). 2026 is the year of the EDITION being licensed. CC BY 4.0 section 3(a)(1) asks for creator identification, and being precise about which year means what costs nothing.",
+      "wasBlockedBecause": "Kept as history. CC BY 4.0 section 3(a)(1) requires creator identification to travel with the work.\nIt cannot be derived mechanically: git history contains FOUR distinct author identities\n  NemoHuang <nemo010713@gmail.com>\n  NemoHuang <Dr_in_Dream@163.com>\n  Huangziqiang <Dr_in_Dream@163.com>\n  PaperStrange <dr_in_dream@163.com>\nand the repository LICENSE still read the unedited MIT placeholder\n  Copyright (c) [year] [fullname]\nwhile package.json has no author field. Selecting one of the four would have been a guess\npresented as a decision, and inventing a name would have been a false attribution. None of\nthat was resolved by guessing: the rights holder was asked, and answered on 2026-09-30.",
+      "wasNeeded": "The name the rights holder wants credited, and the year of first publication. SUPPLIED 2026-09-30; see name, firstPublicationYear, yearOfThisEdition."
     },
     "contentWarrantyDisclaimer": "This pack is provided without warranties of any kind. Opening hours, admission fees, closed days and transit times are recorded as observed at the verified_at timestamps and may have changed since. Confirm before travelling."
   },
