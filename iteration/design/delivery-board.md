@@ -50,12 +50,12 @@
 
 | 项 | 命令 | 当前 |
 |---|---|---|
-**全部门** | `node iteration/tools/run-gates.mjs` | **10 道**（本地 10/10） |
+**全部门** | `node iteration/tools/run-gates.mjs` | **10 道**；本地 9 过 1 红（`deps`，见 B2） |
 **仓库规则** | `node iteration/tools/check-repo-hygiene.mjs` | **7 条**（R1–R5,R7 过；R6 KNOWN-ACCEPTED） |
-**溯源对齐** | `node iteration/tools/check-source-alignment.mjs` | `PRESENT 21  AS-PARTS 10  OSM-ELEMENT 9  **ABSENT 0**  NEAR-VARIANT 0  UNKNOWN 4` |
+**溯源对齐** | `node iteration/tools/check-source-alignment.mjs` | `PRESENT 21  AS-PARTS 10  OSM-ELEMENT 9  **ABSENT 0**  NEAR-VARIANT 0  UNKNOWN 4`（起点：8 / 12） |
 **分支同步** | `node iteration/tools/check-branch-sync.mjs` | 全部 in-sync |
 **CI** | GitHub → Actions → Fact Integrity | **#7 success**（前 6 次失败已修） |
-**分支保护** | `master` + `iteration` | 已生效，check 名为真实值 |
+**分支保护** | `master` + `iteration` | 已生效，check 名为真实值（`Fact-integrity gates` / `build-and-test (18.x)`） |
 
 ---
 
@@ -63,11 +63,12 @@
 
 | # | 阻塞 | 谁能解 |
 |---|---|---|
-**B1** | **S1 的结论**：若可确认门洞远少于 12，**S4 的美术量与 S3 的几何都要改** | `fact-verifier`（在跑） |
-**B2** | `deps` 门当前红——三个新抓的 OSM 寺院文件未跟踪 | `pack-curator`（在跑） |
-**B3** | `restore-parked-records.mjs` 被删；它是 `task-10` 里"修一个会销毁数据的构建步骤"的权威定义 | 已问 `pack-curator` |
-**B4** | 227 条依赖告警（遗留代码） | 用户已定暂不管；npm 更新块已按此关闭 |
-**B5** | 遗留代码搬迁（22 个 npm scripts + 4 个 CI 作业受影响） | 用户 |
+**B1** | **S1 的结论**：若可确认门洞远少于 12，**S4 的美术量与 S3 的几何都要改** | `fact-verifier`（在跑，产物未落盘） |
+**B2** | `deps` 门红——teammate 新抓的 3 个 OSM 寺院文件与 5 个工具脚本未跟踪 | `pack-curator`（在跑，提交即解） |
+**B3** | ~~`restore-parked-records.mjs` 被删~~ | 已判断为**被替代**：新增 `restore-temple-legs.mjs` 与 `check-build-lossless.mjs`；后者检查的是**性质**而非修补症状，比原脚本更强。等 teammate 确认 |
+**B4** | **`kyoto-kotsu-fare-bus-teiki.*` 被删**（与 `-normal` 逐字节相同的重复份），但其引用仍在 9 处，含**核验者记录 3 处** | `pack-curator` 改工作引用；**核验者记录不动**（已登记 **D-23**） |
+**B5** | 227 条依赖告警（遗留代码） | 用户已定暂不管；npm 更新块已按此关闭 |
+**B6** | 遗留代码搬迁（**22 个 npm scripts + 4 个 CI 作业**受影响） | 用户 |
 
 ---
 

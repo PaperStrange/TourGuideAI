@@ -159,5 +159,120 @@
         "祇園交差点の横断待ち時間"
       ]
     }
+  },
+  {
+    "id": "L07",
+    "from": "kyoto-shijo-station-keihan-gion-shijo",
+    "to": "kyoto-shijo-kennin-ji",
+    "mode": "walk",
+    "lineName": null,
+    "minutes": 7,
+    "alongStreetM": null,
+    "measuredStraightM": 427.4,
+    "minutesRule": "operator-published (徒歩7分)",
+    "minutesProvenance": "operator-published",
+    "fareIC": null,
+    "fareTicket": null,
+    "transfers": 0,
+    "source_url": "https://www.kenninji.jp/access/",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "distanceValueKind": "observed",
+      "minutesValueKind": "observed",
+      "verifiedBy": "city-data-architect (pack-curator, task-12)",
+      "readWhat": "Operator page read: 京阪電車「祇園四条駅」より 徒歩7分 (evidence/kenninji-access.txt:20). Endpoint coordinates come from OSM way/760889100 and node/6883622225, both in kyoto-shijo-osm-places.json.",
+      "measuredCrossCheck": {
+        "straightLineM": 427.4,
+        "rftcMinutes": 6,
+        "publishedMinutes": 7,
+        "divergenceMinutes": 1,
+        "note": "The two disagree by 1 min: RFTC over our straight line gives 6 min, the operator publishes 7. Recorded rather than reconciled. A straight line ignores the route, so it understates a real walk, and the operator's figure is the one kept as `minutes`."
+      },
+      "restores": "dropped as DANGLING_REF in task-10 when the endpoint had no coordinate",
+      "notAttested": [
+        "実際の歩行経路",
+        "信号待ち時間"
+      ],
+      "guideVerifiedColumnAllowed": true
+    },
+    "distanceBasis": "measuredStraightM (straight line between the two OSM centres; not a route distance)"
+  },
+  {
+    "id": "L08",
+    "from": "kyoto-shijo-station-hankyu-kawaramachi",
+    "to": "kyoto-shijo-kennin-ji",
+    "mode": "walk",
+    "lineName": null,
+    "minutes": 10,
+    "alongStreetM": null,
+    "measuredStraightM": 605.3,
+    "minutesRule": "operator-published (徒歩10分)",
+    "minutesProvenance": "operator-published",
+    "fareIC": null,
+    "fareTicket": null,
+    "transfers": 0,
+    "source_url": "https://www.kenninji.jp/access/",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "distanceValueKind": "observed",
+      "minutesValueKind": "observed",
+      "verifiedBy": "city-data-architect (pack-curator, task-12)",
+      "readWhat": "Operator page read: 阪急電車「河原町駅」より 徒歩10分 (evidence/kenninji-access.txt:21). Endpoint coordinates come from OSM way/760889100 and node/6944607675, both in kyoto-shijo-osm-places.json.",
+      "measuredCrossCheck": {
+        "straightLineM": 605.3,
+        "rftcMinutes": 8,
+        "publishedMinutes": 10,
+        "divergenceMinutes": 2,
+        "note": "The two disagree by 2 min: RFTC over our straight line gives 8 min, the operator publishes 10. Recorded rather than reconciled. A straight line ignores the route, so it understates a real walk, and the operator's figure is the one kept as `minutes`."
+      },
+      "restores": "dropped as DANGLING_REF in task-10 when the endpoint had no coordinate",
+      "notAttested": [
+        "実際の歩行経路",
+        "信号待ち時間"
+      ],
+      "guideVerifiedColumnAllowed": true
+    },
+    "distanceBasis": "measuredStraightM (straight line between the two OSM centres; not a route distance)"
+  },
+  {
+    "id": "L09",
+    "from": "kyoto-shijo-bus-gion-A",
+    "to": "kyoto-shijo-kiyomizu-dera",
+    "mode": "walk",
+    "lineName": null,
+    "minutes": 15,
+    "alongStreetM": null,
+    "measuredStraightM": 1122.6,
+    "minutesRule": "ceil(1122.6 m / 80 m per min) = 15",
+    "minutesProvenance": "measured-rftc",
+    "fareIC": null,
+    "fareTicket": null,
+    "transfers": 0,
+    "source_url": "https://www.kiyomizudera.or.jp/access.php",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "distanceValueKind": "observed",
+      "minutesValueKind": "licenced",
+      "verifiedBy": "city-data-architect (pack-curator, task-12)",
+      "readWhat": "Operator page read: 京阪電鉄 清水五条駅から 約徒歩25分 (evidence/kiyomizudera-access-hours.txt — 交通案内, 京阪電鉄 清水五条駅から約徒歩25分). Endpoint coordinates come from OSM way/336641107 and node/2503718437, both in kyoto-shijo-osm-places.json.",
+      "measuredCrossCheck": {
+        "straightLineM": 1122.6,
+        "rftcMinutes": 15,
+        "publishedMinutes": 15,
+        "divergenceMinutes": 0,
+        "note": "The two agree: the RFTC rule over our straight line gives 15 min and the operator publishes 15. Agreement is a cross-check, not a source: the operator figure is the one a traveller can hold them to."
+      },
+      "restores": "new: 清水寺 is the slice headline destination and had no leg at all",
+      "minutesBasis": "straight-line distance from the 祇園 bus stop to the temple, under the RFTC 80 m/min ceil rule. NOT an operator-published figure for this pair: the operator publishes a time only from 清水五条駅, whose own coordinate is outside this pack, so that leg is recorded as a gap instead.",
+      "notAttested": [
+        "実際の歩行経路",
+        "信号待ち時間"
+      ],
+      "guideVerifiedColumnAllowed": false
+    },
+    "distanceBasis": "measuredStraightM (straight line between the two OSM centres; not a route distance)"
   }
 ]

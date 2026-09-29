@@ -39,20 +39,20 @@
       "attestations/dropped-legs.json"
     ],
     "countsAssertedBy": "validate-city-pack-v2.mjs check (K) re-derives every count below from those files and fails on any mismatch",
-    "places": 19,
-    "transitLegs": 6,
-    "sources": 14,
+    "places": 22,
+    "transitLegs": 9,
+    "sources": 16,
     "placeGaps": 10,
-    "placeGapNotes": 8,
+    "placeGapNotes": 5,
     "contradictions": 7,
     "transitGaps": 7,
     "transfers": 2,
     "fareReferences": 2,
-    "ungeoreferencedPlaces": 3,
-    "droppedLegs": 2,
+    "ungeoreferencedPlaces": 0,
+    "droppedLegs": 0,
     "authoredDoors": 12,
     "doorsDeclaredInPlaces": 12,
-    "odblRows": 19,
+    "odblRows": 22,
     "doorsArePlaces": false,
     "doorsNote": "The authored doors are a SEPARATE ENTITY TYPE, not place records: places.json does not carry them and a reader must not expect it to. Each door name is the word 本門 (a gate type, not a proper name) and no source opened for this pack states that any doorway exists in this block, so a place row would carry an invented name and an invented position. They remain in doors.json (our content) + kyoto-shijo-osm.json (their ODbL geometry) as valueKind=licenced, and each building record in places.json declares its doorIds. See attestations/block-doors.json and placeGaps.",
     "ungeoreferencedNote": "Records with sourced hours/fees/addresses but NO coordinate in any source. They are deliberately not in places.json (which requires a numeric coordinate) and are kept in full, with provenance, at attestations/ungeoreferenced-places.json.",
@@ -154,8 +154,8 @@
       "url": "https://www.openstreetmap.org/copyright",
       "title": "OpenStreetMap copyright and licence (ODbL 1.0)",
       "licence": "ODbL 1.0",
-      "whatIRead": "ODbL 1.0 の適用と「© OpenStreetMap contributors」の帰属表示義務。OSM 由来の値は kyoto-shijo-osm-places.json に分離して同ライセンスで公開する。",
-      "evidence": "evidence/osm-corridor-map.json（API 応答ヘッダの license フィールドが同 URL を指す）"
+      "whatIRead": "OSM の copyright ページ（evidence/osm-copyright.html / .txt、21,314 B）を実際に開いて読んだ。ODbL 1.0 の適用、および「© OpenStreetMap contributors」の帰属表示義務の記載を確認した。以前の版はこのページを引用しながら開いておらず、スナップショットも無かったため、これは実読に置き換えた記録である。",
+      "evidence": "evidence/osm-copyright.html / .txt"
     },
     "S4": {
       "url": "https://www.tfkoutori.jp/data/pdf/kiyaku-202209.pdf",
@@ -168,8 +168,9 @@
       "url": "https://www.city.kyoto.lg.jp/kotsu/page/0000240682.html",
       "title": "京都市交通局：定期券以外の運賃（市バス）",
       "licence": "公開情報（引用）",
-      "whatIRead": "『市バス普通運賃（均一運賃区間） 運賃額 大人 230円 小児 120円』『市バスでは、交通系ICカードもご利用いただけます。』 ページ番号240682、2024年6月1日。IC 割引の記載は無い。",
-      "evidence": "evidence/kyoto-kotsu-fare-bus-teiki.html / .txt"
+      "whatIRead": "『市バス普通運賃（均一運賃区間） 運賃額 大人 230円 小児 120円』『市バスでは、交通系ICカードもご利用いただけます。』 ページ番号240682、2024年6月1日。IC 割引の記載は無い。\n【重複について】page/0000240682.html は別の正規 URL へ転送され、evidence/kyoto-kotsu-fare-bus-normal.{html,txt} と evidence/kyoto-kotsu-fare-bus-teiki.{html,txt} が逐バイト同一（sha256 8695CF20… / CAD3F056…）になった。2 つの独立取得に見えていたが実体は 1 ページ。重複側は削除し、残した側が両方の URL に答えることをここに記す。",
+      "evidence": "evidence/kyoto-kotsu-fare-bus-normal.html / .txt",
+      "alsoServes": "https://www.city.kyoto.lg.jp/kotsu/page/0000240682.html"
     },
     "S6": {
       "url": "https://www.city.kyoto.lg.jp/kotsu/page/0000240757.html",
@@ -204,7 +205,8 @@
       "title": "清水寺 拝観案内・交通案内（公式）",
       "licence": "公開情報（事実の引用）",
       "whatIRead": "『2026年の拝観時間』表：1.1〜3.26 開門6:00 閉門18:00／3.27〜4.5 6:00〜21:30（21:00受付終了）／4.6〜6.30 6:00〜18:00／7.1〜8.13 6:00〜18:30／8.14〜8.16 6:00〜21:30／8.17〜8.31 6:00〜18:30／9.1〜11.20 6:00〜18:00／11.21〜11.30 6:00〜21:30／12.1〜12.31 6:00〜18:00。『＊夜間特別拝観の期間は年ごとに変更になります』。交通：京阪電鉄 清水五条駅から約徒歩25分。所在地 京都市東山区清水1丁目294、TEL 075-551-1234。拝観料の記載はこのページには無い。",
-      "evidence": "evidence/kiyomizudera-access-hours.html / .txt、evidence/kiyomizudera-faq.html / .txt"
+      "evidence": "evidence/kiyomizudera-access-hours.html / .txt（拝観時間表の本体）、evidence/kiyomizudera-faq.html / .txt（団体割引・障害者減免の記載。金額の記載が無いことの確認）",
+      "evidenceRoleNote": "evidence/kiyomizudera-guide.{html,txt} は S10 の時間数の根拠として挙げられていたが、そのファイルに拝観時間表は無い（表は kiyomizudera-access-hours.txt:28-67）。guide 側は清水寺サイトのトップページであり、取得日には実際に開いたが、この主張の根拠にはならない。S10 の evidence から外した。"
     },
     "S11": {
       "url": "https://www.kenninji.jp/access/",
@@ -233,6 +235,20 @@
       "licence": "ODbL 1.0",
       "whatIRead": "block 0（四条烏丸直東 40 m）の北側・南側の建物同定。両 way のタグ（building=commercial、addr:suburb/addr:quarter/addr:block_number、building:levels=8、start_date、source=Bing）を kyoto-shijo-osm.json の facades から読み、座標は kyoto-shijo-osm-places.json に収録。",
       "evidence": "evidence/osm-block-q1-footprints.json、evidence/osm-block-q2-everything.json、city-packs/kyoto-shijo/kyoto-shijo-osm.json"
+    },
+    "S15": {
+      "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+      "title": "Open Database License (ODbL) v1.0 — full text (Open Data Commons)",
+      "licence": "ODbL 1.0（この文書自体が規約正文）",
+      "whatIRead": "ODbL 正文（evidence/odbl-1.0-text.html / .txt、51,176 B）を実際に開き 4.4 と 4.5 を逐字で読んだ。4.4「Share alike. a. Any Derivative Database that You Publicly Use must be only under the terms of: i. This License」→ kyoto-shijo-osm-places.json はそれ自体 Derivative Database なので ODbL 1.0 で公開する。4.5「Limits of Share Alike. … a. For the avoidance of doubt, You are not required to license Collective Databases under this License if You incorporate this Database or a Derivative Database in the collection, but this License still applies to this Database or a Derivative Database as a part of the Collective Database」→ 同ファイルを places.json / transit.json の隣に置く配置は Collective Database であり、こちらの行は CC BY 4.0 のままでよい。2 語は別物で、以前の版は同じファイルを両方と呼んでいた。",
+      "evidence": "evidence/odbl-1.0-text.html / .txt"
+    },
+    "S16": {
+      "url": "https://data.city.kyoto.lg.jp/dataset/00073/",
+      "title": "京都市オープンデータ データセット 00073「京都観光Navi」",
+      "licence": "CC-BY 4.0（表示）",
+      "whatIRead": "データセットページ（evidence/kyoto-odp-dataset-00073.html / .txt、8,505 B）を実際に開いた。著作権者 京都市／登録者 産業観光局 観光ＭＩＣＥ推進室／ライセンス CC-BY 4.0（表示）／性質 一覧表オープンデータ／分野 観光・産業。2 件のリソースの一方が本パックが使う「京都観光見もの情報」CSV（S1、資源 7052）であることを確認した。このページは取得済み・転記済みであり「未開封」ではない。",
+      "evidence": "evidence/kyoto-odp-dataset-00073.html / .txt"
     }
   },
   "placeGaps": [
@@ -253,7 +269,7 @@
       "value": "約徒歩25分",
       "source_url": "https://www.kiyomizudera.or.jp/access.php",
       "verified_at": "2026-09-29",
-      "whyNotALeg": "清水五条駅の座標が本パックの OSM 抽出範囲外。端点にできないため transit.json に入れず、出典付きの注記として残す。"
+      "whyNotALeg": "これらの座標は本パックの OSM 抽取框（lat 35.0028–35.0047）の外にある。来源に無いのではない（D-15 と同じ区別）。この 3 点はまだ個別に取得していないため端点にできず、出典付きの注記として残す。"
     },
     {
       "gap": "祇園四条駅 → 建仁寺",
@@ -280,27 +296,6 @@
       "gap": "京都河原町駅 → 八坂神社",
       "value": "徒歩約8分",
       "source_url": "https://www.yasaka-jinja.or.jp/access/",
-      "verified_at": "2026-09-29",
-      "whyNotALeg": "同上。"
-    },
-    {
-      "gap": "知恩院の座標",
-      "value": "京都市東山区林下町400（京都市 CSV col17、および公式サイト footer の同一表記）",
-      "source_url": "https://www.chion-in.or.jp/guide/",
-      "verified_at": "2026-09-29",
-      "whyNotALeg": "住所は 2 来源が一致するが、座標はどの来源にも無い。住所から座標を作るのは導出であって観測ではないので行わない。"
-    },
-    {
-      "gap": "建仁寺の座標",
-      "value": "京都市東山区大和大路通四条下る小松町584",
-      "source_url": "https://www.kenninji.jp/access/",
-      "verified_at": "2026-09-29",
-      "whyNotALeg": "同上。"
-    },
-    {
-      "gap": "清水寺の座標",
-      "value": "京都市東山区清水一丁目294（京都市 CSV col17、および公式サイト footer の同一表記）",
-      "source_url": "https://www.kiyomizudera.or.jp/access.php",
       "verified_at": "2026-09-29",
       "whyNotALeg": "同上。"
     }
@@ -352,9 +347,9 @@
   ],
   "fileRoles": {
     "pack.json": "Pack identity, licences and obligations, the per-source attestation index, scope counts (derived, then asserted by the checker), and the explicit gap / contradiction lists. Not a fact table.",
-    "places.json": "Top-level array, 19 fact records — exactly the shape the fact-layer contract declares. Bare array: no schemaVersion and no licence block of its own; both live in pack.json.",
-    "transit.json": "Top-level array, 6 fact records. Bare array, same reason.",
-    "kyoto-shijo-osm-places.json": "ODbL 1.0 Derivative Database — every OSM-derived value (19 rows), kept out of our two fact files per ODbL 4.5(a).",
+    "places.json": "Top-level array, 22 fact records — exactly the shape the fact-layer contract declares. Bare array: no schemaVersion and no licence block of its own; both live in pack.json.",
+    "transit.json": "Top-level array, 9 fact records. Bare array, same reason.",
+    "kyoto-shijo-osm-places.json": "ODbL 1.0 Derivative Database — every OSM-derived value (22 rows), kept out of our two fact files per ODbL 4.5(a).",
     "kyoto-shijo-osm.json": "The ODbL half of doors.json. Not touched by this task.",
     "doors.json": "Our authored block-0 door content; refers to the ODbL file by doorId. Not touched by this task.",
     "attestations/": "The record of what was actually read at each source URL, plus the rows that are deliberately NOT fact records.",
@@ -370,297 +365,209 @@
     ],
     "why": "places.json and transit.json are bare arrays so that their shape is exactly what the fact-layer contract declares. Everything that is not a fact record — the record of what was read at each URL, the rows that are not place records — lives here, at a path the fact files point at, so it is checkable from the pack alone."
   },
-  "ungeoreferencedPlaces": [
+  "ungeoreferencedPlaces": [],
+  "ungeoreferencedLegs": [],
+  "sourceAlignment": {
+    "gate": "iteration/tools/check-source-alignment.mjs",
+    "whatTheCounterMeans": "Every literal field value in places.json is looked for in the evidence bytes of the source its record cites. UNKNOWN means the value appears in NO captured source. It is explicitly 'not a failure by itself' — the failure the gate exists for is ABSENT (present in a source, but not the cited one) and NEAR-VARIANT (differs from the cited source by a digit).",
+    "before": {
+      "PRESENT": 8,
+      "AS_PARTS": 8,
+      "OSM_ELEMENT": 7,
+      "ABSENT": 0,
+      "NEAR_VARIANT": 0,
+      "UNKNOWN": 12,
+      "UBIQUITOUS": 0
+    },
+    "after": {
+      "PRESENT": 21,
+      "AS_PARTS": 10,
+      "OSM_ELEMENT": 9,
+      "ABSENT": 0,
+      "NEAR_VARIANT": 0,
+      "UNKNOWN": 4,
+      "UBIQUITOUS": 0
+    },
+    "decisionRule": "Classify, never fill. A value with no source is one of two things and the fix differs. (a) OSM-DERIVED: the value IS in the cited source, but as a tag fragment rather than the composed string the record stored — fix by storing the source's own literal. (b) CURATED: our translation or our own label; no source can exist — keep the value, say so, and close the guide's verified-column gate on it, because a name we wrote must not print behind 'we verified this'. The forbidden move is inventing a citation to make the counter go down: that is the exact defect this project exists to prevent, and it is worth less than an honest UNKNOWN.",
+    "entries": [
+      {
+        "place": "kyoto-shijo-bldg-mitsui",
+        "field": "addressJa",
+        "valueBefore": "京都市下京区四条通烏丸東入長刀鉾町8",
+        "classification": "osm-fragments-composed",
+        "remainsUnknown": true,
+        "why": "OSM carries the address as four separate tags (addr:province 京都府, addr:city 京都市, addr:suburb 下京区, addr:quarter 長刀鉾町, addr:block_number 8). No single tag contains the joined string, so whole-string containment cannot match and never will. Every FRAGMENT is the source's; the composition (ward order, the join) is ours.",
+        "action": "Declared as a composition in place record's addressProvenance, and the traditional street-and-entry clause 四条通烏丸東入 was REMOVED because no source read for this pack contains it. Storing a plausible-looking street clause would have been an invented address fragment."
+      },
+      {
+        "place": "kyoto-shijo-bldg-daiya",
+        "field": "addressJa",
+        "valueBefore": "京都市下京区四条通烏丸東入長刀鉾町10",
+        "classification": "osm-fragments-composed",
+        "remainsUnknown": true,
+        "why": "Identical case to kyoto-shijo-bldg-mitsui: addr:block_number 10 plus the same four tags.",
+        "action": "Same as above."
+      },
+      {
+        "place": "kyoto-shijo-hist-bank-sign-1",
+        "field": "nameJa",
+        "valueBefore": "旧三菱銀行京都支店の歴史継承（案内板）",
+        "classification": "fixed-to-source-literal",
+        "remainsUnknown": false,
+        "why": "OSM node/10220936881 name=旧三菱銀行京都支店の歴史継承. We had appended （案内板） — our classification of the object — to the source's name, which broke whole-string containment.",
+        "action": "nameJa set to the OSM tag verbatim; the editorial suffix moved to curatedLabelJa."
+      },
+      {
+        "place": "kyoto-shijo-hist-bank-sign-2",
+        "field": "nameJa",
+        "valueBefore": "旧三菱銀行京都支店（案内板）",
+        "classification": "fixed-to-source-literal",
+        "remainsUnknown": false,
+        "why": "OSM node/10220936882 name=旧三菱銀行京都支店. Same appended suffix.",
+        "action": "As above."
+      },
+      {
+        "place": "kyoto-shijo-crossing-karasuma-east",
+        "field": "nameJa",
+        "value": "四条烏丸交差点 東側横断歩道",
+        "classification": "curated-ours",
+        "remainsUnknown": true,
+        "why": "OSM node/2737069286 carries NO name tag at all (highway=crossing, crossing=traffic_signals, crossing:markings=zebra …). There is no source string to find because the source names this object nothing. Every word of the label is ours.",
+        "action": "Kept and labelled, and the record's guideVerifiedColumnAllowed was flipped to FALSE — an invented name must not reach the guide's verified column (design-core §8.2.2 ④). This was the pack's one real contract violation."
+      },
+      {
+        "place": "kyoto-shijo-subway-shijo-exit19",
+        "field": "nameJa",
+        "value": "地下鉄四条駅 19番出入口",
+        "classification": "curated-ours",
+        "remainsUnknown": true,
+        "why": "OSM node/4229848161 carries no name tag (railway=subway_entrance, ref=19). The label is our composition.",
+        "action": "Kept and labelled as ours."
+      },
+      {
+        "place": "kyoto-shijo-bus-shijo-karasuma-G",
+        "field": "nameJa",
+        "valueBefore": "四条烏丸 バス停 Gのりば",
+        "classification": "fixed-to-source-literal",
+        "remainsUnknown": false,
+        "why": "OSM node/8447615881 name=四条烏丸 and local_ref=G. The two words バス停 and のりば are our classification and platform vocabulary, not the source's.",
+        "action": "nameJa is now '四条烏丸 Gのりば' — the source's name plus its own ref. The editorial バス停 moved to curatedLabelJa."
+      },
+      {
+        "place": "kyoto-shijo-bus-shijo-kawaramachi-D",
+        "field": "nameJa",
+        "valueBefore": "四条河原町 バス停 Dのりば",
+        "classification": "fixed-to-source-literal",
+        "remainsUnknown": false,
+        "why": "OSM node/2503718438 name=四条河原町 and local_ref=D. Same as above.",
+        "action": "nameJa is now '四条河原町 Dのりば'."
+      },
+      {
+        "place": "kyoto-shijo-station-hankyu-kawaramachi",
+        "field": "nameEn",
+        "valueBefore": "Kyoto Kawaramachi Station (Hankyu)",
+        "classification": "fixed-to-source-literal",
+        "remainsUnknown": false,
+        "why": "OSM node/6944607675 name:en=Kyoto Kawaramachi, exactly. We had appended 'Station (Hankyu)' — a disambiguation the source does not make.",
+        "action": "nameEn set to the OSM tag verbatim; the suffix moved to curatedLabelEn."
+      },
+      {
+        "place": "kyoto-shijo-station-keihan-gion-shijo",
+        "field": "nameEn",
+        "valueBefore": "Gion-shijō Station (Keihan)",
+        "classification": "fixed-to-source-literal",
+        "remainsUnknown": false,
+        "why": "OSM node/6883622225 name:en=Gion-shijo — ASCII, no macron. We had added BOTH a macron and 'Station (Keihan)'.",
+        "action": "nameEn set to the OSM tag verbatim, including its ASCII spelling."
+      },
+      {
+        "place": "kyoto-shijo-yasaka-nishiromon",
+        "field": "nameEn",
+        "valueBefore": "Yasaka Shrine, West Tower Gate",
+        "classification": "fixed-to-source-literal",
+        "remainsUnknown": false,
+        "why": "OSM way/105449683 name:en=West Tower Gate. The shrine name was our prefix. This one mattered twice: because the record's source_url pointed at the shrine's Japanese access page, which contains no English at all, the value appeared in no source the gate could reach — an ABSENT, not merely an UNKNOWN, once the prefix was corrected.",
+        "action": "nameEn set to the OSM tag verbatim AND the record's source_url repointed to the OSM element, because a citation must name a source that can carry the value. The shrine's page is still declared in sourcesByField for the fields it does carry."
+      },
+      {
+        "place": "kyoto-shijo-yasaka-honden",
+        "field": "nameEn",
+        "valueBefore": "Yasaka Shrine, Main Hall (Honden)",
+        "classification": "fixed-to-source-literal",
+        "remainsUnknown": false,
+        "why": "OSM way/88108397 name:en=Main Shrine. 'Main Hall (Honden)' was our rendering.",
+        "action": "As above."
+      }
+    ],
+    "summary": {
+      "total": 12,
+      "fixedToSourceLiteral": 8,
+      "curatedAndLabelled": 2,
+      "osmFragmentsComposed": 2,
+      "shouldHaveBeenSourcedAndWasNot": 0,
+      "inventedCitations": 0
+    },
+    "note": "No entry in this table was resolved by adding a citation. Eight were resolved by making our value equal the source's own literal (we had been appending editorial words to sourced names); two are ours and are now labelled as ours with the guide gate closed; two are compositions whose fragments are the source's and whose joining is ours. The remaining UNKNOWN count of 4 is the honest floor for this pack: two composed addresses and two labels for OSM objects that carry no name tag.",
+    "triageFile": "evidence/tools/source-alignment-triage.json",
+    "gateCommand": "node iteration/tools/check-source-alignment.mjs"
+  },
+  "placeGapsResolved": [
     {
-      "id": "kyoto-shijo-chion-in",
-      "nameJa": "知恩院",
-      "nameZh": "",
-      "nameEn": "Chion-in",
-      "category": "temple",
-      "factTier": "semi-static",
-      "addressJa": "京都市東山区林下町400",
-      "origin": "official-site",
-      "hours": [
-        {
-          "open": "06:00",
-          "close": "16:00",
-          "appliesTo": "開閉門時間（通年）",
-          "source_url": "https://www.chion-in.or.jp/guide/",
-          "verified_at": "2026-09-29"
-        }
-      ],
-      "admission": {
-        "currency": "JPY",
-        "minorUnit": 1,
-        "items": [
-          {
-            "labelJa": "方丈庭園 大人",
-            "amount": 400,
-            "source_url": "https://www.chion-in.or.jp/guide/"
-          },
-          {
-            "labelJa": "友禅苑 大人",
-            "amount": 300,
-            "source_url": "https://www.chion-in.or.jp/guide/"
-          },
-          {
-            "labelJa": "方丈庭園・友禅苑 共通券 大人",
-            "amount": 500,
-            "source_url": "https://www.chion-in.or.jp/guide/"
-          },
-          {
-            "labelJa": "共通券 小人（小・中学生）",
-            "amount": 250,
-            "source_url": "https://www.chion-in.or.jp/guide/"
-          }
-        ],
-        "note": "境内の参拝は無料。上記は庭園拝観料。共通券の販売は 15:20 まで。"
-      },
-      "closedDays": [],
-      "stateNoteJa": "",
-      "source_url": "https://www.chion-in.or.jp/guide/",
-      "provenance": {
-        "valueKind": "observed",
-        "verifiedBy": "city-data-architect (pack-curator, shared task task-10)",
-        "readWhat": "evidence/chion-in-guide.txt（公式拝観情報ページの抽出）を再読。L81『午前6時から午後4時』／L87『開閉門時間は午前6時から午後4時です。』／L83『※一部行事・法要日程では開門時間が異なります。』／L84『※各所受付は午前9時～』。庭園拝観料の表 L121-141：友禅苑 大人300円・方丈庭園 大人400円・共通券 大人500円、小人 150/200/250円、団体 270/360/450円。受付時間 L144-149：友禅苑 午前9時～午後4時、方丈庭園 午前9時～午後3時50分、※共通券販売は午後3時20分まで。行事による開門変更 L90-99：正月元旦 1月1日 午前5時30分、御忌大会 4月19日～4月25日 午前5時、伝宗伝戒道場 12月5日～12月24日 午前6時20分。無料シャトルバス L109-113：三門前から御影堂前、午前9時～午後4時（午後1時～2時を除く）。所在地は公式ページのフッタ『〒605-8686 京都市東山区林下町400』。",
-        "attestedFields": [
-          "nameJa",
-          "addressJa",
-          "hours",
-          "admission",
-          "category"
-        ],
-        "valueKindPerField": {
-          "nameJa": "observed",
-          "addressJa": "observed",
-          "hours": "observed",
-          "admission": "observed",
-          "category": "observed",
-          "nameEn": "licenced",
-          "stateNoteJa": "absent"
-        },
-        "notAttested": [
-          "latUdeg",
-          "lngUdeg",
-          "closedDays"
-        ],
-        "whyEmpty": "座標はどの来源にも無い。住所を座標へ変換するのは導出であって観測ではないので行わない。定休日は公式に記載が無い。",
-        "hoursNote": "『境内に入れるのは 6:00–16:00』であって『拝観できるのが 6:00–16:00』ではない。各所受付は 9:00 から。行事日は開門が早まる。",
-        "guideVerifiedColumnAllowed": true,
-        "addressCorroboration": "京都市 CSV（evidence/kyoto-csv-slice-rows.txt、row 1000015/1000016）col17 が『東山区林下町400』で公式フッタと一致する。2 来源一致の corroboration であって座標の证明ではない。"
-      },
-      "verified_at": "2026-09-29"
+      "gap": "三座寺院（知恩院・清水寺・建仁寺）に坐标来源が無い",
+      "status": "closed",
+      "closedAt": "2026-09-30",
+      "how": "「无来源」は誤りで、正しくは「抽取框の外」。3 件それぞれに narrow bbox で OSM API から取得し、amenity=place_of_worship の way を同定した（知恩院 way/456122965、清水寺 way/336641107、建仁寺 way/760889100）。3 件とも全頂点が揃った完全なジオメトリで、中心は全頂点の平均。証拠は evidence/osm-temple-*.json、座標は kyoto-shijo-osm-places.json。",
+      "whatChanged": "3 件は ungeoreferenced から places.json へ入り、parked 集合は空になった（0 places / 0 legs）。"
     },
     {
-      "id": "kyoto-shijo-kiyomizu-dera",
-      "nameJa": "清水寺",
-      "nameZh": "",
-      "nameEn": "Kiyomizu-dera",
-      "category": "temple",
-      "factTier": "semi-static",
-      "addressJa": "京都市東山区清水一丁目294",
-      "origin": "official-site",
-      "hours": [
-        {
-          "open": "06:00",
-          "close": "18:00",
-          "appliesTo": "2026年 1.1〜3.26 / 4.6〜6.30 / 9.1〜11.20 / 12.1〜12.31",
-          "source_url": "https://www.kiyomizudera.or.jp/access.php",
-          "verified_at": "2026-09-29"
-        },
-        {
-          "open": "06:00",
-          "close": "18:30",
-          "appliesTo": "2026年 7.1〜8.13 / 8.17〜8.31",
-          "source_url": "https://www.kiyomizudera.or.jp/access.php",
-          "verified_at": "2026-09-29"
-        },
-        {
-          "open": "06:00",
-          "close": "21:30",
-          "appliesTo": "2026年 夜間特別拝観 3.27〜4.5 / 8.14〜8.16 / 11.21〜11.30（21:00 受付終了）",
-          "source_url": "https://www.kiyomizudera.or.jp/access.php",
-          "verified_at": "2026-09-29"
-        }
-      ],
-      "admission": {},
-      "closedDays": [],
-      "stateNoteJa": "",
-      "source_url": "https://www.kiyomizudera.or.jp/access.php",
-      "provenance": {
-        "valueKind": "observed",
-        "verifiedBy": "city-data-architect (pack-curator, shared task task-10)",
-        "readWhat": "evidence/kiyomizudera-access-hours.txt を再読。L28『2026年の拝観時間』、L29『＊夜間特別拝観の期間は年ごとに変更になります』、L30『＊夜間特別拝観の期間は、開門時間を延長します』、L33-39 が表頭『期間／開門時間／閉門時間』、L36-41 に『1.1 ～ 3.26 / 6:00 / 18:00』『3.27 ～ 4.5（春の夜間特別拝観）/ 6:00 / 21:30 (21:00受付終了)』、続いて 4.6〜6.30 → 18:00、7.1〜8.13 → 18:30、8.14〜8.16（千日詣り／夏の夜間特別拝観）→ 21:30、8.17〜8.31 → 18:30、9.1〜11.20 → 18:00、11.21〜11.30（秋の夜間特別拝観）→ 21:30、12.1〜12.31 → 18:00。L20『〒605-0862 京都市東山区清水1丁目294』。交通案内：市バス206・100系統 五条坂下車 徒歩10分、京阪電鉄 清水五条駅から約徒歩25分。",
-        "attestedFields": [
-          "nameJa",
-          "addressJa",
-          "hours",
-          "category"
-        ],
-        "valueKindPerField": {
-          "nameJa": "observed",
-          "addressJa": "observed",
-          "hours": "observed",
-          "category": "observed",
-          "nameEn": "licenced",
-          "admission": "absent"
-        },
-        "notAttested": [
-          "latUdeg",
-          "lngUdeg",
-          "admission",
-          "closedDays"
-        ],
-        "whyEmpty": "拝観料：公式サイトのトップ・拝観案内・FAQ のいずれにも金額が無い。京都市 CSV の col27 に『本堂・舞台 大人400円』があるが、それは row 10000008『清水寺　狛犬』の行であって本堂の料金ではない。主体が違う行の金額を採用するのは本タスクが排除しようとしている『確からしい値』なので空欄とし、pack.json の矛盾 C1 に記録した。座標：本パックの OSM 抽出範囲（lat 35.0028–35.0047）に清水寺の地物が無い。",
-        "hoursNote": "閉門は 3 通り（18:00 / 18:30 / 21:30）あり、夜間特別拝観の期間は年ごとに変わる。攻略は期間を明示して提示しなければならない。",
-        "guideVerifiedColumnAllowed": true,
-        "addressCorroboration": "京都市 CSV row 1000004（evidence/kyoto-csv-slice-rows.txt）col17『京都市東山区清水一丁目294』と公式 L20/L159 が同一住所を述べている。"
-      },
-      "verified_at": "2026-09-29"
+      "gap": "L07（祇園四条→建仁寺・徒歩7分）と L08（京都河原町→建仁寺・徒歩10分）が DANGLING_REF で破棄されていた",
+      "status": "closed",
+      "closedAt": "2026-09-30",
+      "how": "端点に座標が無かったことが唯一の理由だったので、座標が入った時点で復帰させた。分は運営者公表値（kenninji-access.txt:20,:21）。加えて両端点間の直線距離を実測し、RFTC 80 m/分 換算との食い違いを各レコードに記録した（L07: 427.4 m → 6 分 vs 公表 7 分。L08: 605.3 m → 8 分 vs 公表 10 分）。",
+      "whatChanged": "transit.json は 6 本から 9 本になった（L09 清水寺を新規追加）。packed legs は 0。"
     },
     {
-      "id": "kyoto-shijo-kennin-ji",
-      "nameJa": "建仁寺",
-      "nameZh": "",
-      "nameEn": "Kennin-ji",
-      "category": "temple",
-      "factTier": "semi-static",
-      "addressJa": "京都市東山区大和大路通四条下る小松町584",
-      "origin": "official-site",
-      "hours": [
-        {
-          "open": "10:00",
-          "close": "16:30",
-          "appliesTo": "受付終了（17:00 閉門）",
-          "source_url": "https://www.kenninji.jp/access/",
-          "verified_at": "2026-09-29"
-        }
-      ],
-      "admission": {
-        "currency": "JPY",
-        "minorUnit": 1,
-        "items": [
-          {
-            "labelJa": "一般",
-            "amount": 800,
-            "effectiveFrom": "2026-09-29",
-            "supersededFrom": "2027-01-01",
-            "source_url": "https://www.kenninji.jp/access/"
-          },
-          {
-            "labelJa": "学生（小・中・高）",
-            "amount": 500,
-            "effectiveFrom": "2026-09-29",
-            "source_url": "https://www.kenninji.jp/access/"
-          },
-          {
-            "labelJa": "一般（2027-01-01 改定後）",
-            "amount": 1000,
-            "effectiveFrom": "2027-01-01",
-            "source_url": "https://www.kenninji.jp/news/?p=2352"
-          }
-        ],
-        "note": "小学生未満は無料。障害者手帳提示で本人無料（介助は有料）。2027-01-01 に一般が 800 円から 1,000 円へ改定される告知が出ている（学生は 500 円のまま）。"
-      },
-      "closedDays": [],
-      "stateNoteJa": "",
-      "source_url": "https://www.kenninji.jp/access/",
-      "provenance": {
-        "valueKind": "observed",
-        "verifiedBy": "city-data-architect (pack-curator, shared task task-10)",
-        "readWhat": "evidence/kenninji-access.txt を再読。L7『午前10時～午後4時30分受付終了（午後5時閉門）』、L9『一般 800円、学生（小・中・高） 500円 ※小学生未満のお子様は無料』、L10『※小学生以下のみでの拝観は不可』、L11『※障害者手帳をお持ちの方は無料で拝観可能（介助は有料）』、L20『京阪電車「祇園四条駅」より 徒歩7分』、L21『阪急電車「河原町駅」より 徒歩10分』、L24-26 市バス『東山安井』徒歩5分／『南座前』徒歩7分／『祇園』・『清水道』徒歩10分。所在地 L5『京都市東山区大和大路通四条下る小松町』（生 HTML evidence/kenninji-access.html L86 <dd> も同一）。料金改定告知 evidence/kenninji-news-fee2025.txt L13 で『改定後 拝観料：一般 1,000円』『改定時期：2027年1月1日』を確認。",
-        "attestedFields": [
-          "nameJa",
-          "addressJa",
-          "hours",
-          "admission",
-          "category"
-        ],
-        "valueKindPerField": {
-          "nameJa": "observed",
-          "addressJa": "observed",
-          "hours": "observed",
-          "admission": "observed",
-          "category": "observed",
-          "nameEn": "licenced"
-        },
-        "notAttested": [
-          "latUdeg",
-          "lngUdeg",
-          "closedDays"
-        ],
-        "whyEmpty": "座標は本パックの OSM 抽出範囲外。定休日は公式に記載が無い。京都市 CSV row 1000043 の col25 には休みの記載があるが、公式が述べていない現行値として採用できない（pack.json 矛盾 C3）。",
-        "hoursNote": "16:30 は『受付終了』であって閉門ではない。閉門は 17:00。攻略は 16:30 を最終入場として書くこと。",
-        "addressNote": "公式サイトの所在地は『小松町』までで番地を含まない。addressJa の『584』は京都市 CSV row 1000043 col17『東山区大和大路通四条下る４丁目小松町584番地』から来ており、2 来源の合成である。番地なしの公式表記だけを採るなら『京都市東山区大和大路通四条下る小松町』が正しい。",
-        "guideVerifiedColumnAllowed": true,
-        "addressCorroboration": "京都市 CSV row 1000043（evidence/kyoto-csv-slice-rows.txt）と公式 L5 が同一地を指す。"
-      },
-      "verified_at": "2026-09-29"
+      "gap": "清水寺への leg が存在しない（slice の看板目的地）",
+      "status": "closed",
+      "closedAt": "2026-09-30",
+      "how": "L09 祇園バス停 → 清水寺 を追加。15 分は本パックの実測直線距離 1,122.6 m に RFTC 80 m/分 の端数切り上げを適用した値（licenced、運営者公表値ではない）。清水寺公式が公表する徒歩分数は京阪 清水五条駅からの約25分であり、清水五条駅の座標は本パックに無いので、その leg は引退させず gapNotes #0 に残した。"
     }
   ],
-  "ungeoreferencedLegs": [
+  "placeGapNotesClosed": [
     {
-      "id": "L07",
-      "from": "kyoto-shijo-station-keihan-gion-shijo",
-      "to": "kyoto-shijo-kennin-ji",
-      "mode": "walk",
-      "lineName": null,
-      "minutes": 7,
-      "alongStreetM": null,
-      "minutesRule": "operator-published: 徒歩7分",
-      "minutesProvenance": "operator-published",
-      "fareIC": null,
-      "fareTicket": null,
-      "transfers": 0,
-      "source_url": "https://www.kenninji.jp/access/",
+      "gap": "知恩院の座標",
+      "value": "京都市東山区林下町400（京都市 CSV col17、および公式サイト footer の同一表記）",
+      "source_url": "https://www.chion-in.or.jp/guide/",
       "verified_at": "2026-09-29",
-      "provenance": {
-        "valueKind": "observed",
-        "distanceValueKind": "absent",
-        "minutesValueKind": "observed",
-        "verifiedBy": "city-data-architect (pack-curator, shared task task-10)",
-        "readWhat": "evidence/kenninji-access.txt L20『京阪電車「祇園四条駅」より 徒歩7分』。これは運営者自身が公表した徒歩分数であり、80 m/分 の規約で算出した値ではない。",
-        "whyNoDistance": "建仁寺の座標が無いため、本パックが距離を実測できない。したがって alongStreetM は null。分だけが来源を持つ。",
-        "notAttested": [
-          "徒歩経路",
-          "実際の道路距離"
-        ],
-        "guideVerifiedColumnAllowed": true
-      },
-      "droppedBecause": "endpoint to=kyoto-shijo-kennin-ji has no place record in places.json (no coordinate in any source)",
-      "droppedBy": "rule 5, drop don't correct"
+      "whyNotALeg": "住所は 2 来源が一致するが、座標はどの来源にも無い。住所から座標を作るのは導出であって観測ではないので行わない。",
+      "status": "closed",
+      "closedAt": "2026-09-30",
+      "how": "narrow bbox で OSM API から取得。evidence/osm-temple-*.json を参照。"
     },
     {
-      "id": "L08",
-      "from": "kyoto-shijo-station-hankyu-kawaramachi",
-      "to": "kyoto-shijo-kennin-ji",
-      "mode": "walk",
-      "lineName": null,
-      "minutes": 10,
-      "alongStreetM": null,
-      "minutesRule": "operator-published: 徒歩10分",
-      "minutesProvenance": "operator-published",
-      "fareIC": null,
-      "fareTicket": null,
-      "transfers": 0,
+      "gap": "建仁寺の座標",
+      "value": "京都市東山区大和大路通四条下る小松町584",
       "source_url": "https://www.kenninji.jp/access/",
       "verified_at": "2026-09-29",
-      "provenance": {
-        "valueKind": "observed",
-        "distanceValueKind": "absent",
-        "minutesValueKind": "observed",
-        "verifiedBy": "city-data-architect (pack-curator, shared task task-10)",
-        "readWhat": "evidence/kenninji-access.txt L21『阪急電車「河原町駅」より 徒歩10分』。運営者公表値。",
-        "whyNoDistance": "L07 に同じ。",
-        "notAttested": [
-          "徒歩経路",
-          "実際の道路距離"
-        ],
-        "guideVerifiedColumnAllowed": true
-      },
-      "droppedBecause": "endpoint to=kyoto-shijo-kennin-ji has no place record in places.json (no coordinate in any source)",
-      "droppedBy": "rule 5, drop don't correct"
+      "whyNotALeg": "同上。",
+      "status": "closed",
+      "closedAt": "2026-09-30",
+      "how": "narrow bbox で OSM API から取得。evidence/osm-temple-*.json を参照。"
+    },
+    {
+      "gap": "清水寺の座標",
+      "value": "京都市東山区清水一丁目294（京都市 CSV col17、および公式サイト footer の同一表記）",
+      "source_url": "https://www.kiyomizudera.or.jp/access.php",
+      "verified_at": "2026-09-29",
+      "whyNotALeg": "同上。",
+      "status": "closed",
+      "closedAt": "2026-09-30",
+      "how": "narrow bbox で OSM API から取得。evidence/osm-temple-*.json を参照。"
     }
+  ],
+  "evidenceRemoved": [
+    "kyoto-kotsu-fare-bus-teiki.html",
+    "kyoto-kotsu-fare-bus-teiki.txt"
   ],
   "transit": {
     "schemaVersion": "tourguide.city-pack.transit/v1",

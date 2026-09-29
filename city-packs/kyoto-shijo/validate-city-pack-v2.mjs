@@ -98,7 +98,12 @@ const URL_EVIDENCE = {
   'https://data.city.kyoto.lg.jp/dataset/00073/': ['kyoto-odp-dataset-00073.html'],
   'https://www2.city.kyoto.lg.jp/sogo/toukei/Sonota/kiyaku/kiyaku_syoban.pdf': ['kyoto-city-kiyaku-syoban.pdf'],
   'https://www.tfkoutori.jp/data/pdf/kiyaku-202209.pdf': ['japan-rftc-kiyaku-202209.pdf'],
-  'https://www.city.kyoto.lg.jp/kotsu/page/0000240682.html': ['kyoto-kotsu-fare-bus-teiki.html'],
+  // page/0000240682.html redirects to the same page as the canonical bus-fare URL, so ONE snapshot
+  // serves both URLs. The duplicate pair (kyoto-kotsu-fare-bus-teiki.*) was byte-identical and has
+  // been deleted; binding both URLs here is what stops a "missing evidence" error and a re-fetch.
+  'https://www.city.kyoto.lg.jp/kotsu/page/0000240682.html': ['kyoto-kotsu-fare-bus-normal.html'],
+  'https://www.city.kyoto.lg.jp/kotsu/page/0000204850.html': ['kyoto-kotsu-fare-search.html'],
+  'https://opendatacommons.org/licenses/odbl/1-0/': ['odbl-1.0-text.html'],
   'https://www.city.kyoto.lg.jp/kotsu/page/0000240757.html': ['kyoto-kotsu-fare-subway.html'],
   'https://www.yasaka-jinja.or.jp/access/': ['yasaka-jinja-access.html'],
   'https://www.yasaka-jinja.or.jp/about/architecture/': ['yasaka-jinja-architecture.html'],
@@ -108,9 +113,14 @@ const URL_EVIDENCE = {
   'https://www.kenninji.jp/news/?p=2352': ['kenninji-news-fee2025.html'],
   'https://www.openstreetmap.org/way/205732558': ['osm-block-q1-footprints.json', 'osm-block-q2-everything.json'],
   'https://www.openstreetmap.org/way/205732536': ['osm-block-q1-footprints.json', 'osm-block-q2-everything.json'],
+  // The three temples' own fetches, and the two 八坂神社 ways named in sourcesByField.
+  'https://www.openstreetmap.org/way/456122965': ['osm-temple-chionin.json'],
+  'https://www.openstreetmap.org/way/336641107': ['osm-temple-kiyomizu.json'],
+  'https://www.openstreetmap.org/way/760889100': ['osm-temple-kenninji.json'],
+  'https://www.openstreetmap.org/way/105449683': ['osm-corridor-map.json', 'osm-corridor-os.json'],
+  'https://www.openstreetmap.org/way/88108397': ['osm-corridor-map.json', 'osm-corridor-os.json'],
   'https://api.openstreetmap.org/api/0.6/map.json?bbox=135.7588,35.0028,135.7789,35.0047': ['osm-corridor-map.json'],
   'https://www.openstreetmap.org/copyright': ['osm-corridor-map.json'],
-  'https://opendatacommons.org/licenses/odbl/1-0/': ['osm-corridor-map.json'],
 };
 // OSM node URLs are all served by the same corridor extract.
 const osmNodeUrl = /^https:\/\/www\.openstreetmap\.org\/node\/(\d+)$/;
@@ -123,6 +133,8 @@ for (const p of places) {
   for (const h of p.hours ?? []) collect(h.source_url);
   for (const it of p.admission?.items ?? []) collect(it.source_url);
   for (const c of p.closedDays ?? []) collect(typeof c === 'string' ? null : c.source_url);
+  // A record that draws on two sources declares them per field group; both must be openable.
+  for (const u of Object.keys(p.sourcesByField ?? {})) collect(u);
 }
 for (const l of transit) collect(l.source_url);
 for (const x of pack.transit?.transfers ?? []) collect(x.source_url);
@@ -253,8 +265,27 @@ for (const l of transit) {
       if (expect !== l.minutes) fail('MINUTES_MISMATCH', at, `alongStreetM ${l.alongStreetM} implies ${expect} min under the sourced 80 m/min ceil rule, but minutes=${l.minutes}`);
     }
   }
-  if (l.minutesProvenance !== 'operator-published' && l.alongStreetM === null) {
+  // A leg's minutes must rest on something checkable, and there are three legitimate bases:
+  //   alongStreetM       measured along the 四条通 chain (the corridor legs)
+  //   measuredStraightM  measured between two OSM centres (the temple legs, which leave the street)
+  //   operator-published the operator states the walking time themselves
+  // A straight line is a weaker basis than a route distance and the record labels it as such, but
+  // it is a measurement with a citable origin — unlike a plausible-looking number.
+  if (l.minutesProvenance !== 'operator-published' && l.alongStreetM === null && l.measuredStraightM === undefined) {
     fail('LEG_NO_BASIS', at, 'a leg with neither a measured distance nor an operator-published duration has no checkable basis for its minutes');
+  }
+  if (l.measuredStraightM !== undefined) {
+    if (typeof l.measuredStraightM !== 'number' || l.measuredStraightM <= 0) {
+      fail('DISTANCE_NOT_NUMBER', at, `measuredStraightM must be a positive number or absent, got ${JSON.stringify(l.measuredStraightM)}`);
+    } else if (Number.isInteger(l.minutes)) {
+      // A route cannot be shorter than the straight line between its ends, so a published minute
+      // count below the straight-line floor is the one direction in which the two quantities
+      // CONTRADICT rather than merely differ. Divergence upward is fine and is recorded; this is not.
+      const floorMin = Math.max(1, Math.ceil(l.measuredStraightM / 80));
+      if (l.minutes < floorMin) {
+        fail('MINUTES_IMPOSSIBLE', at, `${l.minutes} min is below the straight-line floor: ${l.measuredStraightM} m cannot be walked in under ${floorMin} min at 80 m/min, so the published figure and the measurement contradict each other`);
+      }
+    }
   }
   if (l.fareIC !== null && l.fareTicket !== null && l.fareIC !== l.fareTicket && !l.fareDifferenceSource_url) {
     fail('FARE_DIFF_UNSOURCED', at, `fareIC ${l.fareIC} != fareTicket ${l.fareTicket} with no source for the difference`);

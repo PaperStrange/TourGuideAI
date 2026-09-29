@@ -29,8 +29,8 @@
       "url": "https://www.openstreetmap.org/copyright",
       "title": "OpenStreetMap copyright and licence (ODbL 1.0)",
       "licence": "ODbL 1.0",
-      "whatIRead": "ODbL 1.0 の適用と「© OpenStreetMap contributors」の帰属表示義務。OSM 由来の値は kyoto-shijo-osm-places.json に分離して同ライセンスで公開する。",
-      "evidence": "evidence/osm-corridor-map.json（API 応答ヘッダの license フィールドが同 URL を指す）"
+      "whatIRead": "OSM の copyright ページ（evidence/osm-copyright.html / .txt、21,314 B）を実際に開いて読んだ。ODbL 1.0 の適用、および「© OpenStreetMap contributors」の帰属表示義務の記載を確認した。以前の版はこのページを引用しながら開いておらず、スナップショットも無かったため、これは実読に置き換えた記録である。",
+      "evidence": "evidence/osm-copyright.html / .txt"
     },
     "S4": {
       "url": "https://www.tfkoutori.jp/data/pdf/kiyaku-202209.pdf",
@@ -43,8 +43,9 @@
       "url": "https://www.city.kyoto.lg.jp/kotsu/page/0000240682.html",
       "title": "京都市交通局：定期券以外の運賃（市バス）",
       "licence": "公開情報（引用）",
-      "whatIRead": "『市バス普通運賃（均一運賃区間） 運賃額 大人 230円 小児 120円』『市バスでは、交通系ICカードもご利用いただけます。』 ページ番号240682、2024年6月1日。IC 割引の記載は無い。",
-      "evidence": "evidence/kyoto-kotsu-fare-bus-teiki.html / .txt"
+      "whatIRead": "『市バス普通運賃（均一運賃区間） 運賃額 大人 230円 小児 120円』『市バスでは、交通系ICカードもご利用いただけます。』 ページ番号240682、2024年6月1日。IC 割引の記載は無い。\n【重複について】page/0000240682.html は別の正規 URL へ転送され、evidence/kyoto-kotsu-fare-bus-normal.{html,txt} と evidence/kyoto-kotsu-fare-bus-teiki.{html,txt} が逐バイト同一（sha256 8695CF20… / CAD3F056…）になった。2 つの独立取得に見えていたが実体は 1 ページ。重複側は削除し、残した側が両方の URL に答えることをここに記す。",
+      "evidence": "evidence/kyoto-kotsu-fare-bus-normal.html / .txt",
+      "alsoServes": "https://www.city.kyoto.lg.jp/kotsu/page/0000240682.html"
     },
     "S6": {
       "url": "https://www.city.kyoto.lg.jp/kotsu/page/0000240757.html",
@@ -79,7 +80,8 @@
       "title": "清水寺 拝観案内・交通案内（公式）",
       "licence": "公開情報（事実の引用）",
       "whatIRead": "『2026年の拝観時間』表：1.1〜3.26 開門6:00 閉門18:00／3.27〜4.5 6:00〜21:30（21:00受付終了）／4.6〜6.30 6:00〜18:00／7.1〜8.13 6:00〜18:30／8.14〜8.16 6:00〜21:30／8.17〜8.31 6:00〜18:30／9.1〜11.20 6:00〜18:00／11.21〜11.30 6:00〜21:30／12.1〜12.31 6:00〜18:00。『＊夜間特別拝観の期間は年ごとに変更になります』。交通：京阪電鉄 清水五条駅から約徒歩25分。所在地 京都市東山区清水1丁目294、TEL 075-551-1234。拝観料の記載はこのページには無い。",
-      "evidence": "evidence/kiyomizudera-access-hours.html / .txt、evidence/kiyomizudera-faq.html / .txt"
+      "evidence": "evidence/kiyomizudera-access-hours.html / .txt（拝観時間表の本体）、evidence/kiyomizudera-faq.html / .txt（団体割引・障害者減免の記載。金額の記載が無いことの確認）",
+      "evidenceRoleNote": "evidence/kiyomizudera-guide.{html,txt} は S10 の時間数の根拠として挙げられていたが、そのファイルに拝観時間表は無い（表は kiyomizudera-access-hours.txt:28-67）。guide 側は清水寺サイトのトップページであり、取得日には実際に開いたが、この主張の根拠にはならない。S10 の evidence から外した。"
     },
     "S11": {
       "url": "https://www.kenninji.jp/access/",
@@ -108,6 +110,20 @@
       "licence": "ODbL 1.0",
       "whatIRead": "block 0（四条烏丸直東 40 m）の北側・南側の建物同定。両 way のタグ（building=commercial、addr:suburb/addr:quarter/addr:block_number、building:levels=8、start_date、source=Bing）を kyoto-shijo-osm.json の facades から読み、座標は kyoto-shijo-osm-places.json に収録。",
       "evidence": "evidence/osm-block-q1-footprints.json、evidence/osm-block-q2-everything.json、city-packs/kyoto-shijo/kyoto-shijo-osm.json"
+    },
+    "S15": {
+      "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+      "title": "Open Database License (ODbL) v1.0 — full text (Open Data Commons)",
+      "licence": "ODbL 1.0（この文書自体が規約正文）",
+      "whatIRead": "ODbL 正文（evidence/odbl-1.0-text.html / .txt、51,176 B）を実際に開き 4.4 と 4.5 を逐字で読んだ。4.4「Share alike. a. Any Derivative Database that You Publicly Use must be only under the terms of: i. This License」→ kyoto-shijo-osm-places.json はそれ自体 Derivative Database なので ODbL 1.0 で公開する。4.5「Limits of Share Alike. … a. For the avoidance of doubt, You are not required to license Collective Databases under this License if You incorporate this Database or a Derivative Database in the collection, but this License still applies to this Database or a Derivative Database as a part of the Collective Database」→ 同ファイルを places.json / transit.json の隣に置く配置は Collective Database であり、こちらの行は CC BY 4.0 のままでよい。2 語は別物で、以前の版は同じファイルを両方と呼んでいた。",
+      "evidence": "evidence/odbl-1.0-text.html / .txt"
+    },
+    "S16": {
+      "url": "https://data.city.kyoto.lg.jp/dataset/00073/",
+      "title": "京都市オープンデータ データセット 00073「京都観光Navi」",
+      "licence": "CC-BY 4.0（表示）",
+      "whatIRead": "データセットページ（evidence/kyoto-odp-dataset-00073.html / .txt、8,505 B）を実際に開いた。著作権者 京都市／登録者 産業観光局 観光ＭＩＣＥ推進室／ライセンス CC-BY 4.0（表示）／性質 一覧表オープンデータ／分野 観光・産業。2 件のリソースの一方が本パックが使う「京都観光見もの情報」CSV（S1、資源 7052）であることを確認した。このページは取得済み・転記済みであり「未開封」ではない。",
+      "evidence": "evidence/kyoto-odp-dataset-00073.html / .txt"
     }
   },
   "gaps": [
@@ -173,7 +189,7 @@
       "value": "約徒歩25分",
       "source_url": "https://www.kiyomizudera.or.jp/access.php",
       "verified_at": "2026-09-29",
-      "whyNotALeg": "清水五条駅の座標が本パックの OSM 抽出範囲外。端点にできないため transit.json に入れず、出典付きの注記として残す。"
+      "whyNotALeg": "これらの座標は本パックの OSM 抽取框（lat 35.0028–35.0047）の外にある。来源に無いのではない（D-15 と同じ区別）。この 3 点はまだ個別に取得していないため端点にできず、出典付きの注記として残す。"
     },
     {
       "gap": "祇園四条駅 → 建仁寺",
@@ -202,27 +218,66 @@
       "source_url": "https://www.yasaka-jinja.or.jp/access/",
       "verified_at": "2026-09-29",
       "whyNotALeg": "同上。"
+    }
+  ],
+  "evidenceRemoved": [
+    "kyoto-kotsu-fare-bus-teiki.html",
+    "kyoto-kotsu-fare-bus-teiki.txt"
+  ],
+  "gapsResolved": [
+    {
+      "gap": "三座寺院（知恩院・清水寺・建仁寺）に坐标来源が無い",
+      "status": "closed",
+      "closedAt": "2026-09-30",
+      "how": "「无来源」は誤りで、正しくは「抽取框の外」。3 件それぞれに narrow bbox で OSM API から取得し、amenity=place_of_worship の way を同定した（知恩院 way/456122965、清水寺 way/336641107、建仁寺 way/760889100）。3 件とも全頂点が揃った完全なジオメトリで、中心は全頂点の平均。証拠は evidence/osm-temple-*.json、座標は kyoto-shijo-osm-places.json。",
+      "whatChanged": "3 件は ungeoreferenced から places.json へ入り、parked 集合は空になった（0 places / 0 legs）。"
     },
+    {
+      "gap": "L07（祇園四条→建仁寺・徒歩7分）と L08（京都河原町→建仁寺・徒歩10分）が DANGLING_REF で破棄されていた",
+      "status": "closed",
+      "closedAt": "2026-09-30",
+      "how": "端点に座標が無かったことが唯一の理由だったので、座標が入った時点で復帰させた。分は運営者公表値（kenninji-access.txt:20,:21）。加えて両端点間の直線距離を実測し、RFTC 80 m/分 換算との食い違いを各レコードに記録した（L07: 427.4 m → 6 分 vs 公表 7 分。L08: 605.3 m → 8 分 vs 公表 10 分）。",
+      "whatChanged": "transit.json は 6 本から 9 本になった（L09 清水寺を新規追加）。packed legs は 0。"
+    },
+    {
+      "gap": "清水寺への leg が存在しない（slice の看板目的地）",
+      "status": "closed",
+      "closedAt": "2026-09-30",
+      "how": "L09 祇園バス停 → 清水寺 を追加。15 分は本パックの実測直線距離 1,122.6 m に RFTC 80 m/分 の端数切り上げを適用した値（licenced、運営者公表値ではない）。清水寺公式が公表する徒歩分数は京阪 清水五条駅からの約25分であり、清水五条駅の座標は本パックに無いので、その leg は引退させず gapNotes #0 に残した。"
+    }
+  ],
+  "gapNotesClosed": [
     {
       "gap": "知恩院の座標",
       "value": "京都市東山区林下町400（京都市 CSV col17、および公式サイト footer の同一表記）",
       "source_url": "https://www.chion-in.or.jp/guide/",
       "verified_at": "2026-09-29",
-      "whyNotALeg": "住所は 2 来源が一致するが、座標はどの来源にも無い。住所から座標を作るのは導出であって観測ではないので行わない。"
+      "whyNotALeg": "住所は 2 来源が一致するが、座標はどの来源にも無い。住所から座標を作るのは導出であって観測ではないので行わない。",
+      "status": "closed",
+      "closedAt": "2026-09-30",
+      "how": "narrow bbox で OSM API から取得。evidence/osm-temple-*.json を参照。"
     },
     {
       "gap": "建仁寺の座標",
       "value": "京都市東山区大和大路通四条下る小松町584",
       "source_url": "https://www.kenninji.jp/access/",
       "verified_at": "2026-09-29",
-      "whyNotALeg": "同上。"
+      "whyNotALeg": "同上。",
+      "status": "closed",
+      "closedAt": "2026-09-30",
+      "how": "narrow bbox で OSM API から取得。evidence/osm-temple-*.json を参照。"
     },
     {
       "gap": "清水寺の座標",
       "value": "京都市東山区清水一丁目294（京都市 CSV col17、および公式サイト footer の同一表記）",
       "source_url": "https://www.kiyomizudera.or.jp/access.php",
       "verified_at": "2026-09-29",
-      "whyNotALeg": "同上。"
+      "whyNotALeg": "同上。",
+      "status": "closed",
+      "closedAt": "2026-09-30",
+      "how": "narrow bbox で OSM API から取得。evidence/osm-temple-*.json を参照。"
     }
-  ]
+  ],
+  "gapNotesResolvedAt": "2026-09-30",
+  "gapNotesWordingFixed": "2026-09-30"
 }

@@ -12,17 +12,20 @@
  *   1  measure-shijo-walk.mjs        evidence bytes  -> transit-measurement.json
  *   2  build-osm-places.mjs          OSM extracts    -> kyoto-shijo-osm-places.json (ODbL half)
  *   3  split-pack-meta.mjs           (no-op once split) head -> evidence/tools/*.meta.json
- *   4  restore-parked-records.mjs    re-author the non-fact records FROM THE EVIDENCE BYTES
- *   5  extract-nonfact-rows.mjs      fact tables     -> parked payload (idempotent union)
- *   6  classify-freshness.mjs        derive factTier from the fields present
- *   7  merge-pack-meta.mjs           fold metadata into pack.json, publish attestations
- *   8  validate-city-pack-v2.mjs     assert; non-zero exit stops the build
+ *   4  apply-f2-corrections.mjs      temples in, labels aligned to OSM, gates closed, pointers fixed
+ *   5  restore-temple-legs.mjs       the legs whose endpoints now resolve, + the 清水寺 leg
+ *   6  extract-nonfact-rows.mjs      remaining non-fact rows -> parked payload (union)
+ *   7  apply-tracked-corrections.mjs tracked metadata sources: doors valueKind, resolved items
+ *   8  classify-freshness.mjs        derive factTier from the fields present
+ *   9  merge-pack-meta.mjs           fold metadata into pack.json, publish attestations
+ *  10  validate-city-pack-v2.mjs     assert; non-zero exit stops the build
  *
  * Ordering that matters, learned the hard way:
- *   - 4 before 5: restore appends to the fact tables, extract parks what it finds.
- *   - 5 before 6: tier derivation must see the parked payload, which 5 has just refreshed.
- *   - 6 before 7: merge publishes the parked payload, so the tiers have to be applied first.
- *   - 5 is a UNION, not a recompute-and-overwrite. The first version recomputed an empty
+ *   - 4 before 5 before 6: corrections first (they are authoritative), then legs (they need the
+ *     temples to have coordinates), then extract parks whatever still cannot be a fact record.
+ *   - 6 before 8: tier derivation must see the parked payload, which 6 has just refreshed.
+ *   - 8 before 9: merge publishes the parked payload, so the tiers have to be applied first.
+ *   - 6 is a UNION, not a recompute-and-overwrite. The first version recomputed an empty
  *     "to park" list from an already-clean fact table and overwrote the payload with it,
  *     destroying three sourced temple records. Re-running a build must never lose data.
  *
@@ -46,20 +49,28 @@ const run = (label, script, args = []) => {
   process.stdout.write(out.split('\n').map((l) => (l ? `  ${l}` : l)).join('\n'));
 };
 
-run('1/9 measure the corridor walk', join(HERE, 'measure-shijo-walk.mjs'), [join(EVID, 'osm-corridor-map.json'), '--out', join(EVID, 'transit-measurement.json')]);
-run('2/9 build the ODbL half', join(HERE, 'build-osm-places.mjs'));
-if (!Array.isArray(JSON.parse(execFileSync(node, ['-e', `process.stdout.write(require('fs').readFileSync(${JSON.stringify(join(PACK, 'places.json'))},'utf8'))`], { encoding: 'utf8' })))) {
-  run('3/9 split the metadata head', join(HERE, 'split-pack-meta.mjs'));
-} else {
-  process.stdout.write('\n──── 3/9 split the metadata head\n  skipped: places.json / transit.json are already bare arrays\n');
-}
-run('4/9 re-author the non-fact records from the evidence bytes', join(HERE, 'restore-parked-records.mjs'));
-run('5/9 correct the tracked metadata sources (doors valueKind, resolved contradictions)', join(HERE, 'apply-tracked-corrections.mjs'));
-run('6/9 extract the non-fact rows from the fact tables', join(HERE, 'extract-nonfact-rows.mjs'));
-run('7/9 derive freshness tiers', join(HERE, 'classify-freshness.mjs'));
-run('8/9 merge metadata into pack.json', join(HERE, 'merge-pack-meta.mjs'));
+// Losslessness guard, run around the whole build. The original data-loss defect was GREEN — it
+// replaced a payload with an empty list and nothing complained — so the guarantee needs a check,
+// not a comment. The snapshot is taken before any step writes.
+const SNAP = join(EVID, 'tools', '.build-before.json');
+run('0/10 snapshot the pack before the build (losslessness guard)', join(HERE, 'check-build-lossless.mjs'), ['--snapshot', SNAP]);
 
-process.stdout.write('\n──── 9/9 validate\n');
+run('1/10 measure the corridor walk', join(HERE, 'measure-shijo-walk.mjs'), [join(EVID, 'osm-corridor-map.json'), '--out', join(EVID, 'transit-measurement.json')]);
+run('2/10 build the ODbL half', join(HERE, 'build-osm-places.mjs'));
+if (!Array.isArray(JSON.parse(execFileSync(node, ['-e', `process.stdout.write(require('fs').readFileSync(${JSON.stringify(join(PACK, 'places.json'))},'utf8'))`], { encoding: 'utf8' })))) {
+  run('3/10 split the metadata head', join(HERE, 'split-pack-meta.mjs'));
+} else {
+  process.stdout.write('\n──── 3/10 split the metadata head\n  skipped: places.json / transit.json are already bare arrays\n');
+}
+run('4/10 apply the F2 corrections (D-15 temples, labels, gates, pointers)', join(HERE, 'apply-f2-corrections.mjs'));
+run('5/10 restore the temple legs whose endpoints now resolve', join(HERE, 'restore-temple-legs.mjs'));
+run('6/10 extract the remaining non-fact rows', join(HERE, 'extract-nonfact-rows.mjs'));
+run('7/10 correct the tracked metadata sources', join(HERE, 'apply-tracked-corrections.mjs'));
+run('8/10 derive freshness tiers', join(HERE, 'classify-freshness.mjs'));
+run('9/10 merge metadata into pack.json', join(HERE, 'merge-pack-meta.mjs'));
+run('9b/10 verify the build lost nothing', join(HERE, 'check-build-lossless.mjs'), ['--verify', SNAP]);
+
+process.stdout.write('\n──── 10/10 validate\n');
 try {
   const out = execFileSync(node, [join(PACK, 'validate-city-pack-v2.mjs'), REPO, PACK], { cwd: REPO, encoding: 'utf8' });
   process.stdout.write(out.split('\n').map((l) => (l ? `  ${l}` : l)).join('\n'));

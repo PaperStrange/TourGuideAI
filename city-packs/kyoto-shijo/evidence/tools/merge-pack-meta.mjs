@@ -49,6 +49,11 @@ write(resolve(ATTEST, 'source-attestations.json'), {
     { url: 'https://www.openstreetmap.org/copyright', reason: 'licence pointer for the ODbL half, not an opened document' },
     { url: 'https://opendatacommons.org/licenses/odbl/1-0/', reason: 'licence text pointer, not an opened document' },
   ],
+  // Files deliberately removed from evidence/, with the reason, so that a reader who finds a
+  // reference to one of them (in a history, a verifier record, or a note) knows it was removed on
+  // purpose rather than lost. Without this list the removal itself looks like the D-18 defect class.
+  evidenceRemoved: placesMeta.evidenceRemoved ?? [],
+  evidenceRemovedWhy: 'evidence/kyoto-kotsu-fare-bus-teiki.html and .txt were byte-identical to the -normal pair (same sha256 8695CF20… and CAD3F056…) because page/0000240682.html redirects to the same canonical page. Two names for one snapshot looked like two independent captures. The duplicate pair was deleted and the survivor records both URLs in alsoServes. References to the removed pair still appear in verification-verifier.json and in the verifier report: that is the correct historical state, because the verifier cited what existed when it audited, and those records are evidence rather than working state.',
 });
 
 write(resolve(ATTEST, 'ungeoreferenced-places.json'), ungeo);
@@ -93,8 +98,11 @@ delete pack.transitMeta;
 pack.coordinateSystem = placesMeta.coordinateSystem;
 pack.placeSources = placesMeta.sources;
 pack.placeGaps = placesMeta.gaps;
+pack.placeGapsResolved = placesMeta.gapsResolved ?? [];
 pack.placeGapNotes = placesMeta.gapNotes;
+pack.placeGapNotesClosed = placesMeta.gapNotesClosed ?? [];
 pack.contradictions = placesMeta.contradictions;
+pack.evidenceRemoved = placesMeta.evidenceRemoved ?? [];
 pack.transit = {
   schemaVersion: transitMeta.schemaVersion,
   scopeNote: transitMeta.scopeNote,
@@ -127,6 +135,14 @@ pack.attestations = {
   dir: 'city-packs/kyoto-shijo/attestations/',
   files: ['source-attestations.json', 'ungeoreferenced-places.json', 'dropped-legs.json', 'block-doors.json'],
   why: 'places.json and transit.json are bare arrays so that their shape is exactly what the fact-layer contract declares. Everything that is not a fact record — the record of what was read at each URL, the rows that are not place records — lives here, at a path the fact files point at, so it is checkable from the pack alone.',
+};
+
+// The UNKNOWN triage is data, not prose: the gate's counter is what a reader will look up, so the
+// per-value classification travels with it.
+pack.sourceAlignment = {
+  ...read(resolve(HERE, 'source-alignment-triage.json')),
+  triageFile: 'evidence/tools/source-alignment-triage.json',
+  gateCommand: 'node iteration/tools/check-source-alignment.mjs',
 };
 
 pack.licenceObligations.curatedContentLicence = 'CC BY 4.0';

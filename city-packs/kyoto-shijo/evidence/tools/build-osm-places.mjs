@@ -29,13 +29,20 @@ const sha256 = (f) => createHash('sha256').update(readFileSync(resolve(EVID, f))
 const corridor = read('osm-corridor-map.json');
 const blockQ1 = read('osm-block-q1-footprints.json');
 const blockQ2 = read('osm-block-q2-everything.json');
+// Three extra fetches, one per temple, because the corridor bbox stops at lat 35.0047 and every
+// one of the three lies outside it (建仁寺 by 52.7 m, 知恩院 by 435.6 m, 清水寺 by 1069.7 m).
+// The pack previously recorded that as "no coordinates in any source read for this pack", which
+// conflated our fetch box with the source: the coordinates were in OSM all along. See D-15.
+const templeKenninji = read('osm-temple-kenninji.json');
+const templeChionin = read('osm-temple-chionin.json');
+const templeKiyomizu = read('osm-temple-kiyomizu.json');
 
 const nodeIndex = new Map();
-for (const doc of [corridor, blockQ1, blockQ2]) {
+for (const doc of [corridor, blockQ1, blockQ2, templeKenninji, templeChionin, templeKiyomizu]) {
   for (const e of doc.elements ?? []) if (e.type === 'node') nodeIndex.set(e.id, e);
 }
 const wayIndex = new Map();
-for (const doc of [corridor, blockQ1, blockQ2]) {
+for (const doc of [corridor, blockQ1, blockQ2, templeKenninji, templeChionin, templeKiyomizu]) {
   for (const e of doc.elements ?? []) if (e.type === 'way') wayIndex.set(e.id, e);
 }
 
@@ -76,6 +83,9 @@ const REGISTRY = [
   { placeId: 'kyoto-shijo-bus-gion-A', kind: 'node', id: 2503718437, why: '祇園 bus stop, Aのりば' },
   { placeId: 'kyoto-shijo-yasaka-nishiromon', kind: 'way', id: 105449683, why: '八坂神社 西楼門 — the gate that faces 四条通' },
   { placeId: 'kyoto-shijo-yasaka-honden', kind: 'way', id: 88108397, why: '八坂神社 本殿' },
+  { placeId: 'kyoto-shijo-chion-in', kind: 'way', id: 456122965, why: '知恩院 — amenity=place_of_worship, fetched from its own bbox (outside the corridor box)' },
+  { placeId: 'kyoto-shijo-kiyomizu-dera', kind: 'way', id: 336641107, why: '清水寺 — amenity=place_of_worship, the slice\'s headline destination, fetched from its own bbox' },
+  { placeId: 'kyoto-shijo-kennin-ji', kind: 'way', id: 760889100, why: '建仁寺 — amenity=place_of_worship, the nearest of the three to the corridor (52.7 m outside it)' },
 ];
 
 const rows = REGISTRY.map((r) => {
@@ -98,7 +108,7 @@ const rows = REGISTRY.map((r) => {
 const doc = {
   schema: 'tourguide.city-pack.osm-derived/places/v1',
   pack: 'kyoto-shijo',
-  note: 'Every coordinate and tag in this file originates in OpenStreetMap. It is a Derivative Database published under ODbL 1.0 (clause 4.4), and it is the alteration file clause 4.6 asks for. places.json and transit.json hold our own content and reach this file by placeId — no OSM value is copied back into them.',
+  note: 'Every coordinate and tag in this file originates in OpenStreetMap. TWO terms apply and they are not interchangeable — this file is itself a Derivative Database and is published under ODbL 1.0 because clause 4.4(a)(i) requires it; how this file sits BESIDE places.json and transit.json is a Collective Database, and clause 4.5(a) says (verbatim) "You are not required to license Collective Databases under this License if You incorporate this Database or a Derivative Database in the collection, but this License still applies to this Database or a Derivative Database as a part of the Collective Database." That is what lets our curated rows stay CC BY 4.0. It is also the alteration file clause 4.6 asks for. places.json and transit.json reach these rows by placeId.',
   source: {
     dataset: 'OpenStreetMap, via the OSM API 0.6 map endpoint and Overpass API',
     licence: 'Open Database License (ODbL) 1.0',
@@ -111,12 +121,17 @@ const doc = {
       { file: 'evidence/osm-corridor-os.json', sha256: sha256('osm-corridor-os.json'), query: 'https://api.openstreetmap.org/api/0.6/map.json?bbox=135.7595,35.0028,135.7790,35.0047' },
       { file: 'evidence/osm-block-q1-footprints.json', sha256: sha256('osm-block-q1-footprints.json'), note: 'already recorded by doors.json method.facadeGeometrySource' },
       { file: 'evidence/osm-block-q2-everything.json', sha256: sha256('osm-block-q2-everything.json'), note: 'already recorded by doors.json method.facadeGeometrySource.secondQuery' },
+      { file: 'evidence/osm-temple-chionin.json', sha256: sha256('osm-temple-chionin.json'), query: 'https://api.openstreetmap.org/api/0.6/map.json?bbox=135.78150,35.00390,135.78550,35.00740', note: 'way/456122965 知恩院, fetched from its own bbox (435.6 m outside the corridor box)' },
+      { file: 'evidence/osm-temple-kiyomizu.json', sha256: sha256('osm-temple-kiyomizu.json'), query: 'https://api.openstreetmap.org/api/0.6/map.json?bbox=135.78250,34.99280,135.78650,34.99630', note: 'way/336641107 清水寺, fetched from its own bbox (1069.7 m outside the corridor box)' },
+      { file: 'evidence/osm-temple-kenninji.json', sha256: sha256('osm-temple-kenninji.json'), query: 'https://api.openstreetmap.org/api/0.6/map.json?bbox=135.77150,34.99850,135.77550,35.00200', note: 'way/760889100 建仁寺, fetched from its own bbox (52.7 m outside the corridor box)' },
     ],
   },
   method: {
     scripts: ['evidence/tools/build-osm-places.mjs', 'evidence/tools/measure-shijo-walk.mjs'],
     coordinateRule: 'integer microdegrees, rounded to nearest (iteration/design/contract-geo-pipeline.md §5)',
     wayCentreRule: 'arithmetic mean of the way\'s vertices that are present in the extracts',
+    vertexCompleteness: 'every way used as a coordinate source has ALL of its vertices present in the extract; the builder reports present/declared per row so a clipped geometry cannot silently shift a centre',
+    fetchRegions: 'four separate fetches: the corridor box, the block-0 pair, and one narrow box per temple (the corridor box stops at lat 35.0047 and all three temples lie outside it)',
   },
   places: rows,
   walkMeasurement: JSON.parse(readFileSync(resolve(EVID, 'transit-measurement.json'), 'utf8')),
@@ -126,4 +141,6 @@ const outIdx = process.argv.indexOf('--out');
 const OUT = outIdx > 0 ? process.argv[outIdx + 1] : resolve(EVID, '../../kyoto-shijo/kyoto-shijo-osm-places.json');
 writeFileSync(OUT, JSON.stringify(doc, null, 2) + '\n', 'utf8');
 console.log(`wrote ${OUT}  ${rows.length} places`);
-for (const r of rows) console.log(`  ${r.placeId.padEnd(42)} ${r.osmRef.padEnd(18)} ${r.latUdeg},${r.lonUdeg}  ${r.nameOsm ?? ''}`);
+const clipped = rows.filter((r) => r.declaredNodeCount && r.vertexCount !== r.declaredNodeCount);
+for (const r of rows) console.log(`  ${r.placeId.padEnd(42)} ${r.osmRef.padEnd(18)} ${r.latUdeg},${r.lonUdeg}  ${r.nameOsm ?? ''}${r.declaredNodeCount && r.vertexCount !== r.declaredNodeCount ? '  <-- CLIPPED GEOMETRY' : ''}`);
+if (clipped.length) { console.error(`\nREFUSING: ${clipped.length} way(s) have clipped geometry, so their centre is not the real centre`); process.exit(1); }

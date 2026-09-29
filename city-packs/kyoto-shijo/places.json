@@ -33,7 +33,7 @@
         "addressJa": "observed",
         "latUdeg": "observed",
         "lonUdeg": "observed",
-        "category": "licenced",
+        "category": "observed",
         "entrances": "licenced"
       },
       "notAttested": [
@@ -61,7 +61,17 @@
       "guideVerifiedColumnAllowed": false
     },
     "lat": 35.004094,
-    "lng": 135.760073
+    "lng": 135.760073,
+    "addressProvenance": {
+      "kind": "osm-fragments-composed",
+      "fragmentsFrom": {
+        "addr:province": "京都府",
+        "addr:city": "京都市",
+        "addr:suburb": "下京区",
+        "addr:quarter": "長刀鉾町"
+      },
+      "note": "OSM carries the address as separate tags; no single tag contains this joined string, so the composition (ward order and the block-number join) is ours while every fragment is OSM's. The street-and-entry clause 四条通烏丸東入 appears in the traditional address and is NOT in any source read for this pack, so it is deliberately absent."
+    }
   },
   {
     "id": "kyoto-shijo-bldg-daiya",
@@ -97,7 +107,7 @@
         "addressJa": "observed",
         "latUdeg": "observed",
         "lonUdeg": "observed",
-        "category": "licenced",
+        "category": "observed",
         "entrances": "licenced"
       },
       "notAttested": [
@@ -123,7 +133,17 @@
       "guideVerifiedColumnAllowed": false
     },
     "lat": 35.003232,
-    "lng": 135.760033
+    "lng": 135.760033,
+    "addressProvenance": {
+      "kind": "osm-fragments-composed",
+      "fragmentsFrom": {
+        "addr:province": "京都府",
+        "addr:city": "京都市",
+        "addr:suburb": "下京区",
+        "addr:quarter": "長刀鉾町"
+      },
+      "note": "OSM carries the address as separate tags; no single tag contains this joined string, so the composition (ward order and the block-number join) is ours while every fragment is OSM's. The street-and-entry clause 四条通烏丸東入 appears in the traditional address and is NOT in any source read for this pack, so it is deliberately absent."
+    }
   },
   {
     "id": "kyoto-shijo-bank-mufg-kyoto",
@@ -174,7 +194,7 @@
   {
     "id": "kyoto-shijo-hist-bank-sign-1",
     "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/places[placeId=kyoto-shijo-hist-bank-sign-1]",
-    "nameJa": "旧三菱銀行京都支店の歴史継承（案内板）",
+    "nameJa": "旧三菱銀行京都支店の歴史継承",
     "nameZh": "",
     "nameEn": "",
     "category": "information-board",
@@ -214,12 +234,17 @@
       "guideVerifiedColumnAllowed": true
     },
     "lat": 35.003532,
-    "lng": 135.7599
+    "lng": 135.7599,
+    "curatedLabelJa": "旧三菱銀行京都支店の歴史継承（案内板）",
+    "labelProvenance": {
+      "kind": "osm-verbatim",
+      "note": "The value is the cited source's own tag text, used verbatim."
+    }
   },
   {
     "id": "kyoto-shijo-hist-bank-sign-2",
     "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/places[placeId=kyoto-shijo-hist-bank-sign-2]",
-    "nameJa": "旧三菱銀行京都支店（案内板）",
+    "nameJa": "旧三菱銀行京都支店",
     "nameZh": "",
     "nameEn": "",
     "category": "information-board",
@@ -259,7 +284,12 @@
       "guideVerifiedColumnAllowed": true
     },
     "lat": 35.00349,
-    "lng": 135.75985
+    "lng": 135.75985,
+    "curatedLabelJa": "旧三菱銀行京都支店（案内板）",
+    "labelProvenance": {
+      "kind": "osm-verbatim",
+      "note": "The value is the cited source's own tag text, used verbatim."
+    }
   },
   {
     "id": "kyoto-shijo-crossing-karasuma-east",
@@ -302,7 +332,8 @@
         "nameJa"
       ],
       "whyEmpty": "横断歩道に開場時間・料金・休みは該当しない。nameJa は OSM に name タグが無く、本パックの位置記述（東側横断歩道）は curator の記述なので licenced とした。",
-      "guideVerifiedColumnAllowed": true
+      "guideVerifiedColumnAllowed": false,
+      "guideGateNote": "guideVerifiedColumnAllowed closed because provenance.valueKindPerField.nameJa is a curator-written name with no source (OSM carries no such tag on this object). design-core §8.2.2 ④: only observed reaches the verified column, so an invented name must not print behind \"we verified this\"."
     },
     "lat": 35.003659,
     "lng": 135.759946
@@ -350,7 +381,8 @@
         "closedDays"
       ],
       "whyEmpty": "出入口自体の開閉時間は OSM に無い。駅の初発/終電は事実層にキャッシュせず攻略側で『要確認』にする。",
-      "guideVerifiedColumnAllowed": true
+      "guideVerifiedColumnAllowed": false,
+      "guideGateNote": "guideVerifiedColumnAllowed closed because provenance.valueKindPerField.nameZh is a curator-written name with no source (OSM carries no such tag on this object). design-core §8.2.2 ④: only observed reaches the verified column, so an invented name must not print behind \"we verified this\"."
     },
     "lat": 35.003247,
     "lng": 135.759825
@@ -398,7 +430,12 @@
       "guideVerifiedColumnAllowed": true
     },
     "lat": 35.003555,
-    "lng": 135.76046
+    "lng": 135.76046,
+    "curatedLabelJa": "地下鉄四条駅 19番出入口",
+    "labelProvenance": {
+      "kind": "curated-no-name-tag",
+      "note": "node/4229848161 carries NO name tag at all (only railway=subway_entrance, ref=19). Every word of this label is ours."
+    }
   },
   {
     "id": "kyoto-shijo-bus-shijo-karasuma-F",
@@ -451,7 +488,7 @@
   {
     "id": "kyoto-shijo-bus-shijo-karasuma-G",
     "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/places[placeId=kyoto-shijo-bus-shijo-karasuma-G]",
-    "nameJa": "四条烏丸 バス停 Gのりば",
+    "nameJa": "四条烏丸 Gのりば",
     "nameZh": "",
     "nameEn": "Shijō Karasuma",
     "category": "bus-stop",
@@ -494,7 +531,12 @@
       "guideVerifiedColumnAllowed": true
     },
     "lat": 35.004403,
-    "lng": 135.759538
+    "lng": 135.759538,
+    "curatedLabelJa": "四条烏丸 バス停 Gのりば",
+    "labelProvenance": {
+      "kind": "osm-plus-ref",
+      "note": "OSM name=四条烏丸 and local_ref=G; \"のりば\" is the platform word and \"バス停\" is our classification."
+    }
   },
   {
     "id": "kyoto-shijo-bus-shijo-takakura-A",
@@ -595,7 +637,7 @@
   {
     "id": "kyoto-shijo-bus-shijo-kawaramachi-D",
     "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/places[placeId=kyoto-shijo-bus-shijo-kawaramachi-D]",
-    "nameJa": "四条河原町 バス停 Dのりば",
+    "nameJa": "四条河原町 Dのりば",
     "nameZh": "四条河原町",
     "nameEn": "Shijō Kawaramachi",
     "category": "bus-stop",
@@ -638,14 +680,19 @@
       "guideVerifiedColumnAllowed": true
     },
     "lat": 35.003702,
-    "lng": 135.768198
+    "lng": 135.768198,
+    "curatedLabelJa": "四条河原町 バス停 Dのりば",
+    "labelProvenance": {
+      "kind": "osm-plus-ref",
+      "note": "OSM name=四条河原町 and local_ref=D; as above."
+    }
   },
   {
     "id": "kyoto-shijo-station-hankyu-kawaramachi",
     "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/places[placeId=kyoto-shijo-station-hankyu-kawaramachi]",
     "nameJa": "阪急電鉄 京都河原町駅",
     "nameZh": "",
-    "nameEn": "Kyoto Kawaramachi Station (Hankyu)",
+    "nameEn": "Kyoto Kawaramachi",
     "category": "rail-station",
     "factTier": "static",
     "addressJa": "",
@@ -685,14 +732,19 @@
       "guideVerifiedColumnAllowed": true
     },
     "lat": 35.003763,
-    "lng": 135.769608
+    "lng": 135.769608,
+    "curatedLabelEn": "Kyoto Kawaramachi Station (Hankyu)",
+    "labelProvenance": {
+      "kind": "osm-verbatim",
+      "note": "node/6944607675 name:en=Kyoto Kawaramachi. The operator word \"(Hankyu)\" was our disambiguation."
+    }
   },
   {
     "id": "kyoto-shijo-station-keihan-gion-shijo",
     "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/places[placeId=kyoto-shijo-station-keihan-gion-shijo]",
     "nameJa": "京阪電鉄 祇園四条駅",
     "nameZh": "",
-    "nameEn": "Gion-shijō Station (Keihan)",
+    "nameEn": "Gion-shijo",
     "category": "rail-station",
     "factTier": "static",
     "addressJa": "",
@@ -732,7 +784,12 @@
       "guideVerifiedColumnAllowed": true
     },
     "lat": 35.003233,
-    "lng": 135.771931
+    "lng": 135.771931,
+    "curatedLabelEn": "Gion-shijō Station (Keihan)",
+    "labelProvenance": {
+      "kind": "osm-verbatim",
+      "note": "node/6883622225 name:en=Gion-shijo, ASCII, no macron. We had added the macron and \"(Keihan)\"."
+    }
   },
   {
     "id": "kyoto-shijo-bus-shijo-keihan-mae-A",
@@ -835,7 +892,7 @@
     "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/places[placeId=kyoto-shijo-yasaka-nishiromon]",
     "nameJa": "八坂神社 西楼門",
     "nameZh": "",
-    "nameEn": "Yasaka Shrine, West Tower Gate",
+    "nameEn": "West Tower Gate",
     "category": "shrine",
     "factTier": "static",
     "addressJa": "京都市東山区祇園町北側625",
@@ -846,7 +903,7 @@
     "admission": {},
     "closedDays": [],
     "stateNoteJa": "24時間参拝可能",
-    "source_url": "https://www.yasaka-jinja.or.jp/access/",
+    "source_url": "https://www.openstreetmap.org/way/105449683",
     "verified_at": "2026-09-29",
     "provenance": {
       "valueKind": "observed",
@@ -874,17 +931,41 @@
       "whyEmpty": "参拝は無料で、公式ページに拝観料の記載は無い。『0 円』と書くのは出典の無い断定なので空欄にし、無料である旨は state と note で述べる。",
       "hoursNote": "社務所 9:00–17:00、境内は 24 時間参拝可能。社務所の時間を境内の開門時間として使ってはならない。",
       "admissionNote": "公式アクセスページに拝観料の記載なし。賽銭のみ。",
-      "guideVerifiedColumnAllowed": true
+      "guideVerifiedColumnAllowed": true,
+      "coordinateSource": {
+        "osmRef": "way/105449683",
+        "licence": "ODbL 1.0",
+        "evidence": "kyoto-shijo-osm-places.json (placeId=kyoto-shijo-yasaka-nishiromon)",
+        "note": "The record's source_url is the shrine's own page, which states hours and access but no coordinate. The coordinate comes from OSM and is reachable through osmRecord. Two different sources support two different field groups in the same record, and this field says which is which."
+      },
+      "osmRef": "way/105449683"
     },
     "lat": 35.003741,
-    "lng": 135.777526
+    "lng": 135.777526,
+    "curatedLabelEn": "Yasaka Shrine, West Tower Gate",
+    "labelProvenance": {
+      "kind": "osm-verbatim",
+      "note": "way/105449683 name:en=West Tower Gate. The shrine name was our prefix; it is now name-en context only."
+    },
+    "sourcesByField": {
+      "https://www.openstreetmap.org/way/105449683": [
+        "nameJa",
+        "nameEn",
+        "latUdeg",
+        "lngUdeg"
+      ],
+      "https://www.yasaka-jinja.or.jp/access/": [
+        "stateNoteJa"
+      ],
+      "note": "This record draws on two sources and each supports a different field group. https://www.openstreetmap.org/way/105449683 carries nameJa, nameEn, latUdeg, lngUdeg; https://www.yasaka-jinja.or.jp/access/ carries stateNoteJa."
+    }
   },
   {
     "id": "kyoto-shijo-yasaka-honden",
     "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/places[placeId=kyoto-shijo-yasaka-honden]",
     "nameJa": "八坂神社 本殿",
     "nameZh": "",
-    "nameEn": "Yasaka Shrine, Main Hall (Honden)",
+    "nameEn": "Main Shrine",
     "category": "shrine-building",
     "factTier": "static",
     "addressJa": "京都市東山区祇園町北側625",
@@ -895,7 +976,7 @@
     "admission": {},
     "closedDays": [],
     "stateNoteJa": "",
-    "source_url": "https://www.yasaka-jinja.or.jp/about/architecture/",
+    "source_url": "https://www.openstreetmap.org/way/88108397",
     "verified_at": "2026-09-29",
     "provenance": {
       "valueKind": "observed",
@@ -921,9 +1002,259 @@
       ],
       "whyEmpty": "本殿の特別拝観は CSV（S1）に平成28年（2016年）の予定として残っており、10 年落ちの動的情報である。事実層にキャッシュしない（skill: dynamic は never cache as truth）ので admission は空欄。CSV row 1000040 col21/23 の『900 / 1600』は同日の駐車場に関する col26 の記述と同居しており、本殿の拝観時間なのか境内施設の時間なのか判別できないため採用しない。",
       "hoursNote": "CSV の 900/1600 は同じ行の col26『駐車場　自家用車50台(有料)』と並んでおり、何の時間か確定できない。採用しない（矛盾 C4 に記録）。",
-      "guideVerifiedColumnAllowed": true
+      "guideVerifiedColumnAllowed": true,
+      "coordinateSource": {
+        "osmRef": "way/88108397",
+        "licence": "ODbL 1.0",
+        "evidence": "kyoto-shijo-osm-places.json (placeId=kyoto-shijo-yasaka-honden)",
+        "note": "The record's source_url is the shrine's own page, which states hours and access but no coordinate. The coordinate comes from OSM and is reachable through osmRecord. Two different sources support two different field groups in the same record, and this field says which is which."
+      },
+      "osmRef": "way/88108397"
     },
     "lat": 35.003645,
-    "lng": 135.77859
+    "lng": 135.77859,
+    "curatedLabelEn": "Yasaka Shrine, Main Hall (Honden)",
+    "labelProvenance": {
+      "kind": "osm-verbatim",
+      "note": "way/88108397 name:en=Main Shrine. \"Main Hall (Honden)\" was our rendering."
+    },
+    "sourcesByField": {
+      "https://www.openstreetmap.org/way/88108397": [
+        "nameJa",
+        "nameEn",
+        "latUdeg",
+        "lngUdeg"
+      ],
+      "https://www.yasaka-jinja.or.jp/about/architecture/": [
+        "addressJa"
+      ],
+      "note": "This record draws on two sources and each supports a different field group. https://www.openstreetmap.org/way/88108397 carries nameJa, nameEn, latUdeg, lngUdeg; https://www.yasaka-jinja.or.jp/about/architecture/ carries addressJa."
+    }
+  },
+  {
+    "id": "kyoto-shijo-chion-in",
+    "osmRecord": "kyoto-shijo-osm-places.json placeId=kyoto-shijo-chion-in",
+    "nameJa": "知恩院",
+    "nameZh": "",
+    "nameEn": "Chion-in",
+    "category": "temple",
+    "factTier": "semi-static",
+    "addressJa": "京都市東山区林下町400",
+    "latUdeg": 35005362,
+    "lngUdeg": 135783334,
+    "lat": 35.005362,
+    "lng": 135.783334,
+    "origin": "osm+official-site",
+    "hours": [
+      {
+        "open": "06:00",
+        "close": "16:00",
+        "appliesTo": "開閉門時間（通年）",
+        "source_url": "https://www.chion-in.or.jp/guide/"
+      }
+    ],
+    "admission": {
+      "currency": "JPY",
+      "minorUnit": 1,
+      "items": [
+        {
+          "labelJa": "方丈庭園 大人",
+          "amount": 400,
+          "source_url": "https://www.chion-in.or.jp/guide/"
+        },
+        {
+          "labelJa": "友禅苑 大人",
+          "amount": 300,
+          "source_url": "https://www.chion-in.or.jp/guide/"
+        },
+        {
+          "labelJa": "方丈庭園・友禅苑 共通券 大人",
+          "amount": 500,
+          "source_url": "https://www.chion-in.or.jp/guide/"
+        },
+        {
+          "labelJa": "共通券 小人（小・中学生）",
+          "amount": 250,
+          "source_url": "https://www.chion-in.or.jp/guide/"
+        }
+      ],
+      "note": "境内の参拝は無料。上記は庭園拝観料。共通券の販売は 15:20 まで。"
+    },
+    "closedDays": [],
+    "stateNoteJa": "",
+    "source_url": "https://www.chion-in.or.jp/guide/",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "verifiedBy": "city-data-architect (pack-curator, task-12)",
+      "readWhat": "Coordinates and the English name come from OSM way/456122965 (amenity=place_of_worship, geometry complete, centre = mean of all vertices). Hours, fees and address come from the operator's own page https://www.chion-in.or.jp/guide/. The OSM way also carries website=https://www.chion-in.or.jp/guide/, and that tag agrees with the page this record cites — two independent paths reaching the same operator page.",
+      "coordinateSource": {
+        "osmRef": "way/456122965",
+        "licence": "ODbL 1.0",
+        "evidence": "see kyoto-shijo-osm-places.json source.evidenceFiles for the per-temple fetch and its sha256",
+        "note": "This is the coordinate this record previously recorded as unsourceable. It was never absent — our fetch box stopped short of it (D-15)."
+      },
+      "valueKindPerField": {
+        "nameJa": "observed",
+        "nameEn": "observed",
+        "latUdeg": "observed",
+        "lngUdeg": "observed",
+        "hours": "observed",
+        "admission": "observed",
+        "addressJa": "observed",
+        "category": "observed"
+      },
+      "notAttested": [
+        "closedDays"
+      ],
+      "whyEmpty": "定休日は運営者のページに記載が無い。",
+      "guideVerifiedColumnAllowed": true
+    }
+  },
+  {
+    "id": "kyoto-shijo-kiyomizu-dera",
+    "osmRecord": "kyoto-shijo-osm-places.json placeId=kyoto-shijo-kiyomizu-dera",
+    "nameJa": "清水寺",
+    "nameZh": "",
+    "nameEn": "Kiyomizu-dera",
+    "category": "temple",
+    "factTier": "semi-static",
+    "addressJa": "京都市東山区清水一丁目294",
+    "latUdeg": 34994832,
+    "lngUdeg": 135784037,
+    "lat": 34.994832,
+    "lng": 135.784037,
+    "origin": "osm+official-site",
+    "hours": [
+      {
+        "open": "06:00",
+        "close": "18:00",
+        "appliesTo": "2026年 1.1〜3.26 / 4.6〜6.30 / 9.1〜11.20 / 12.1〜12.31",
+        "source_url": "https://www.kiyomizudera.or.jp/access.php"
+      },
+      {
+        "open": "06:00",
+        "close": "18:30",
+        "appliesTo": "2026年 7.1〜8.13 / 8.17〜8.31",
+        "source_url": "https://www.kiyomizudera.or.jp/access.php"
+      },
+      {
+        "open": "06:00",
+        "close": "21:30",
+        "appliesTo": "2026年 夜間特別拝観 3.27〜4.5 / 8.14〜8.16 / 11.21〜11.30（21:00 受付終了）",
+        "source_url": "https://www.kiyomizudera.or.jp/access.php"
+      }
+    ],
+    "admission": {},
+    "closedDays": [],
+    "stateNoteJa": "",
+    "source_url": "https://www.kiyomizudera.or.jp/access.php",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "verifiedBy": "city-data-architect (pack-curator, task-12)",
+      "readWhat": "Coordinates and the English name come from OSM way/336641107 (amenity=place_of_worship, geometry complete, centre = mean of all vertices). Hours, fees and address come from the operator's own page https://www.kiyomizudera.or.jp/access.php. The OSM way also carries website=https://www.kiyomizudera.or.jp/access.php, and that tag agrees with the page this record cites — two independent paths reaching the same operator page.",
+      "coordinateSource": {
+        "osmRef": "way/336641107",
+        "licence": "ODbL 1.0",
+        "evidence": "see kyoto-shijo-osm-places.json source.evidenceFiles for the per-temple fetch and its sha256",
+        "note": "This is the coordinate this record previously recorded as unsourceable. It was never absent — our fetch box stopped short of it (D-15)."
+      },
+      "valueKindPerField": {
+        "nameJa": "observed",
+        "nameEn": "observed",
+        "latUdeg": "observed",
+        "lngUdeg": "observed",
+        "hours": "observed",
+        "admission": "observed",
+        "addressJa": "observed",
+        "category": "observed"
+      },
+      "notAttested": [
+        "admission",
+        "closedDays"
+      ],
+      "whyEmpty": "拝観料は運営者のページに金額の記載が無い（京都市 CSV の該当額は別主体の行に付された値。/pack.json 矛盾 C1）。定休日も記載が無い。",
+      "guideVerifiedColumnAllowed": true
+    }
+  },
+  {
+    "id": "kyoto-shijo-kennin-ji",
+    "osmRecord": "kyoto-shijo-osm-places.json placeId=kyoto-shijo-kennin-ji",
+    "nameJa": "建仁寺",
+    "nameZh": "",
+    "nameEn": "Kennin-ji",
+    "category": "temple",
+    "factTier": "semi-static",
+    "addressJa": "京都市東山区大和大路通四条下る小松町584",
+    "latUdeg": 34999914,
+    "lngUdeg": 135774308,
+    "lat": 34.999914,
+    "lng": 135.774308,
+    "origin": "osm+official-site",
+    "hours": [
+      {
+        "open": "10:00",
+        "close": "16:30",
+        "appliesTo": "受付終了（17:00 閉門）",
+        "source_url": "https://www.kenninji.jp/access/"
+      }
+    ],
+    "admission": {
+      "currency": "JPY",
+      "minorUnit": 1,
+      "items": [
+        {
+          "labelJa": "一般",
+          "amount": 800,
+          "effectiveFrom": "2026-09-29",
+          "supersededFrom": "2027-01-01",
+          "source_url": "https://www.kenninji.jp/access/"
+        },
+        {
+          "labelJa": "学生（小・中・高）",
+          "amount": 500,
+          "effectiveFrom": "2026-09-29",
+          "source_url": "https://www.kenninji.jp/access/"
+        },
+        {
+          "labelJa": "一般（2027-01-01 改定後）",
+          "amount": 1000,
+          "effectiveFrom": "2027-01-01",
+          "source_url": "https://www.kenninji.jp/news/?p=2352"
+        }
+      ],
+      "note": "小学生未満は無料。障害者手帳提示で本人無料（介助は有料）。2027-01-01 に一般が 800 円から 1,000 円へ改定される告知が出ている（学生は 500 円のまま）。"
+    },
+    "closedDays": [],
+    "stateNoteJa": "",
+    "source_url": "https://www.kenninji.jp/access/",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "verifiedBy": "city-data-architect (pack-curator, task-12)",
+      "readWhat": "Coordinates and the English name come from OSM way/760889100 (amenity=place_of_worship, geometry complete, centre = mean of all vertices). Hours, fees and address come from the operator's own page https://www.kenninji.jp/access/. The OSM way also carries website=https://www.kenninji.jp/access/, and that tag agrees with the page this record cites — two independent paths reaching the same operator page.",
+      "coordinateSource": {
+        "osmRef": "way/760889100",
+        "licence": "ODbL 1.0",
+        "evidence": "see kyoto-shijo-osm-places.json source.evidenceFiles for the per-temple fetch and its sha256",
+        "note": "This is the coordinate this record previously recorded as unsourceable. It was never absent — our fetch box stopped short of it (D-15)."
+      },
+      "valueKindPerField": {
+        "nameJa": "observed",
+        "nameEn": "observed",
+        "latUdeg": "observed",
+        "lngUdeg": "observed",
+        "hours": "observed",
+        "admission": "observed",
+        "addressJa": "observed",
+        "category": "observed"
+      },
+      "notAttested": [
+        "closedDays"
+      ],
+      "whyEmpty": "定休日は運営者のページに記載が無い。",
+      "guideVerifiedColumnAllowed": true
+    }
   }
 ]

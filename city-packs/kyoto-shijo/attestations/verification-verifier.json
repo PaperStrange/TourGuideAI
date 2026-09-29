@@ -36,7 +36,6 @@
     },
     "producerValidatorCrossCheck": "validate-city-pack-v2.mjs was run once, for information only: 15 checks passed, 0 violations. Its passing is NOT used as evidence for any verdict below; every verdict rests on the source bytes the verifier opened."
   },
-
   "verdictCounts": {
     "recomputedFromRows": true,
     "支持": 26,
@@ -47,7 +46,6 @@
     "unverifiedEntries": 5,
     "note": "Counts are the row verdicts themselves, recomputed from rows[] and asserted by iteration/recon/verify-kyoto-shijo/v6-check-attestation.mjs; they are not hand-declared. 无法判定 appears 0 times as a row verdict because every item the verifier could not settle was an ITEM rather than a fact row (a missing snapshot, an unread PDF, inferred CSV column meanings) and is therefore carried in unverified[] — 5 explicit entries, none omitted. 部分支持 covers two different situations, both visible per row: a value that is right but whose recorded justification is wrong or overreaching (the 清水寺 admission reason, 建仁寺 effectiveFrom, the temple-coordinate absence claim, the walk-rule instrument, the zero-transit-legs framing), and a value that is supported while its provenance pointer is wrong (the two 八坂神社 coordinates, the two transfer distances). supports=false is set on 13 rows: all 8 不支持 plus the 5 部分支持 rows where the recorded justification itself is what fails."
   },
-
   "rows": [
     {
       "factId": "kyoto-shijo-kiyomizu-dera",
@@ -534,7 +532,6 @@
       "note": "This is a licence-compliance finding, not a data-accuracy finding. The verifier's remit is whether sources support recorded values; it flags this because pack.licenceObligations is itself a source-cited claim block with a cited sourceUrl that was never opened, and because the remediation is simply to open and snapshot two pages."
     }
   ],
-
   "unverified": [
     {
       "item": "evidence/kiyomizudera-guide.html / .txt",
@@ -562,7 +559,6 @@
       "why": "The ODbL half records sha256 5152995D… for this file but the verifier did not independently re-hash it; it was not needed for any verdict. Only the two files carrying verdict-critical values (the CSV and osm-corridor-map.json) were re-hashed, and both matched."
     }
   ],
-
   "gaps": [
     {
       "gap": "京都 City bus / subway / private-rail transit durations",
@@ -603,7 +599,6 @@
       "detail": "清水寺's own page says 夜間特別拝観の期間は年ごとに変更になります (kiyomizudera-access-hours.txt:29) and the pack carries three season-dependent closing times with verified_at 2026-09-29. The tier is semi-static and the skill requires a Plan B and a buffer in the exported guide; that obligation now sits with the export layer, not this pack."
     }
   ],
-
   "conclusionsForTheLead": [
     "The fact layer's numeric core holds. Of 45 audited rows, 24 are fully supported by a sentence the verifier read in the cited source, and the two most load-bearing numeric families — 19 coordinates and 6 transit distances — were re-derived from raw bytes to within 6 cm and 1 cm respectively. The producer's arithmetic, chain assembly, twin encoding and source quoting are accurate; the 80 m/min citation is exact to the line.",
     "The one outright data error is 八坂神社 西楼門 addressJa: the pack records 祇園町北側125, the cited shrine page says 祇園町北側625. The 125 does exist in the Kyoto CSV, but the record does not cite it. This is a one-digit error in an address a player will type into a map app.",
@@ -616,6 +611,21 @@
     "The pack's licence foundation is its weakest layer: the ODbL text and the OSM copyright page are both live and both unopened with no snapshot, the attribution string cannot be traced to any opened document, §4.5(a) is cited as something it is not, and the same file is called a Derivative Database and a Collective Database. Two fetches and one re-read would close most of it.",
     "Where the producer abstained, the verifier agrees. Empty hours/admission on 17 OSM-only records, the refusal of 八坂神社's 社務所 hours as the shrine's hours, the refusal of the undated CSV closure list for 建仁寺, and the refusal to derive a coordinate from an address string are all correct applications of drop-don't-correct. The distinction between 16:30 受付終了 and 17:00 閉門 at 建仁寺 is exactly the kind of care this gate exists to check for, and it is there."
   ],
-
-  "independenceStatement": "The verifier is not the producer. pack-curator produced places.json, transit.json, pack.json and source-attestations.json under task-10. This verification was performed by fact-verifier under task-3, which imported none of the producer's scripts, executed none of them for a verdict, and read source-attestations.json only as an object of audit — every locator above was found by the verifier in the raw evidence bytes."
+  "independenceStatement": "The verifier is not the producer. pack-curator produced places.json, transit.json, pack.json and source-attestations.json under task-10. This verification was performed by fact-verifier under task-3, which imported none of the producer's scripts, executed none of them for a verdict, and read source-attestations.json only as an object of audit — every locator above was found by the verifier in the raw evidence bytes.",
+  "postAuditPathConsolidation": {
+    "addedBy": "lead",
+    "addedAt": "2026-09-30",
+    "reason": "The verifier audited evidence/kyoto-kotsu-fare-bus-teiki.{html,txt}, which were byte-for-byte identical to evidence/kyoto-kotsu-fare-bus-normal.{html,txt} -- a duplication the verifier itself recorded (see the row whose why cites sha256 CAD3F056...). The duplicate pair was removed after the audit, which is what that finding called for. This verifier file is evidence of what was audited at the time, so its evidenceLocator strings are left EXACTLY as written and no verdict is altered.",
+    "affectedReferences": [
+      "rows[].evidenceLocator citing evidence/kyoto-kotsu-fare-bus-teiki.txt (2 rows)",
+      "rows[].why citing evidence/kyoto-kotsu-fare-bus-teiki.* (1 row)"
+    ],
+    "howToReCheck": "Those the same byte offsets in the surviving file: evidence/kyoto-kotsu-fare-bus-normal.txt:51-52 contains 大人 230円 / 小児 120円, verified independently by the Lead with the same sha256.",
+    "verifiedByLead": {
+      "evidence/kyoto-kotsu-fare-bus-normal.txt:51": "大人 230円",
+      "evidence/kyoto-kotsu-fare-bus-normal.txt:52": "小児 120円",
+      "sameHash": "8695CF206BFB40F2 (.html), CAD3F056D31FC656 (.txt) -- identical across both names"
+    },
+    "whatIsNotChanged": "No verdict, no supports flag, no evidenceLocator, no unverified entry and no gap. This is provenance, not re-adjudication."
+  }
 }
