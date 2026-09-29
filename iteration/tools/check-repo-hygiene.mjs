@@ -260,7 +260,7 @@ if (JSON_OUT) console.log(JSON.stringify({ repo: REPO, passed: failed.length ===
 else {
   console.log('repo hygiene — every rule here was violated while nothing looked\n');
   for (const r of results) {
-    const tag = r.status === 'pass' ? 'PASS' : r.status === 'known-accepted' ? 'KNOWN' : 'FAIL';
+    const tag = r.status === 'pass' ? 'PASS' : r.status === 'known-accepted' ? 'KNOWN' : r.status === 'info' ? 'NOTE' : 'FAIL';
     console.log(`${tag}  ${r.id}  ${r.title}`);
     if (r.detail) console.log(`      ${r.detail}`);
   }
