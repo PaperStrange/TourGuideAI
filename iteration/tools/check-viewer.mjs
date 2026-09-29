@@ -392,6 +392,18 @@ function main() {
     console.log('(guide.json was absent and this check ran emit-guide to produce it)');
   }
 
+  // V8 asserts the baked PAGE, so under --bake-if-absent the page must be produced too. Same
+  // reasoning as the export above: an assertion about an artefact is only meaningful if the
+  // artefact is produced rather than assumed, and gate order is not a dependency.
+  const PAGE = join(REPO, 'iteration', 'viewer', 'index.html');
+  if (!existsSync(PAGE) && process.argv.includes('--bake-if-absent')) {
+    const b = spawnSync(process.execPath, [join(REPO, 'iteration', 'tools', 'bake-viewer.mjs'), '--bake-if-absent'], { cwd: REPO, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+    if (b.status !== 0 || !existsSync(PAGE)) {
+      throw new EnvError(`could not bake the page (exit ${b.status}): ${((b.stdout || '') + (b.stderr || '')).slice(-400)}`);
+    }
+    console.log('(the page was absent and this check ran bake-viewer to produce it)');
+  }
+
   const W = buf.readUInt32LE(12);
   const H = buf.readUInt32LE(16);
   const manifestLen = buf.readUInt32LE(104);
