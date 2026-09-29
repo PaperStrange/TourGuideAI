@@ -149,7 +149,18 @@ tileX ∈ [0, 1600)         row = tileY + 20 ∈ [0, 40)      // y_m ∈ [−20,
 | 实测（相对原点的整数微度） | 输入 17,527 µ度 = 1,599.902 m **收**；17,528 µ度 = 1,599.994 m **拒** |
 | 实测（子格） | sub 25,599 **收**；sub 25,600 **拒** |
 
-越窗要素**一律拒绝、绝不夹紧**（"drop, don't correct"）。南边缘 `y_m = −20 m` 正好落在 row 0，北边缘 `+20 m` 落在窗口外——这是半开区间的正常后果，不是 bug。
+越窗要素的行为由 Lead 裁定（GAP-10，2026-09-30，基于实测数字）：
+
+| 几何 | 行为 |
+|---|---|
+| **完全在窗外**（没有任何顶点进入窗口） | **拒绝**（原条款三的"拒绝、不夹紧"**仍然成立**） |
+| **跨越窗口**（部分顶点在内） | **裁剪**到窗口，保留真实交集 |
+
+**夹紧（clamping）仍然被禁止，且与裁剪是两个操作**：夹紧把顶点搬到边界上、**伪造**了几何；裁剪算的是**真实交集**，什么也没编造。
+
+**并且**：裁剪到 40 m 深的窗口**本身不够**——真实脚印深达 p95 +113.8 m，把一个跨界脚印裁到窗口会得到一块**横贯整个断面的 40 m 厚板**，它填满走廊、把街道埋掉（这是 S8 实测出来的）。所以发射器还要把结果与**立面进深带**相交：从**立面**朝街区内部量 `FACADE_DEPTH_M`，默认 = `worldGrid.blockSize` = **40 m**。取 40 是因为"每个立面朝内一个街区的深度"是设计自己的单位，不是这里发明的数；它**派生**自冻结的 `blockSize`，**不是**新的冻结字面量（若要冻结，见 GAP-13）。
+
+**注意这条修正改变了什么**：条款三的**窗口定义与格定义一个字都没动**，动的是"越窗要素怎么办"——而这一条此前只有"拒绝"。**没有任何冻结字面量被修改。**
 
 **反例 A（把格当缩放）**：有人把"1 格 = 1 m"实现成 zoom 2 下"1 格 = 0.5 m"（视口 640×360 px / 32 px = 20 格，看起来"更细"）。碰撞盒 **24×16 px** 变成 0.375 m 宽，玩家直接穿过门框；进门判定"距门锚点 ≤1.5 格（48 px）"变成 ≤0.75 m，于是**没有一扇门进得去**。最坏的地方在于：单元测试全绿——它们用米，不用格。**谁会发现**：走完 1.6 km 发现 0 个室内的测试者；若没有这一步，就是玩家。
 
@@ -162,7 +173,7 @@ tileX ∈ [0, 1600)         row = tileY + 20 ∈ [0, 40)      // y_m ∈ [−20,
 **冻结内容**：
 
 ```js
-VALUE_KIND = { OBSERVED: 'observed', AUTHORED: 'authored', LICENCED: 'licenced', ABSTRACT: 'abstract' }
+VALUE_KIND = { OBSERVED: 'observed', PARSED: 'parsed', AUTHORED: 'authored', LICENCED: 'licenced', ABSTRACT: 'abstract' }
 GUIDE_VERIFIED_COLUMN_ALLOWED = ['observed']
 ```
 
@@ -171,13 +182,16 @@ GUIDE_VERIFIED_COLUMN_ALLOWED = ['observed']
 | 值 | 含义 | 本仓库的实例 |
 |---|---|---|
 | `observed` | **人打开来源并读到了这个值** | 亲自核过的营业时间、坐标 |
-| `authored` | **人放上去的**：以观察为依据，但**本身不是从任何来源读出来的**——是我们的判断，且记录在案 | **12 扇门的位置**（见下） |
+| `parsed` | **解析器**从来源读到了这个值；**没有人核过它** | S3 发射器解析出的 `building:levels` / `height`（67 栋） |
+| `authored` | **人放上去的**：以观察为依据，但**本身不是从任何来源读出来的**——是我们的判断，且记录在案 | **12 扇门的位置** |
 | `licenced` | 许可 / 授权派生的**模板或默认值** | 道路宽度——本段 OSM `width` 覆盖率仅 **2.7%** |
 | `abstract` | 模型派生的**抽象值** | PLATEAU LOD1 抽象高度——`building:levels` 仅 **8.6%** |
 
+> **`parsed` 是怎么来的（S3 / task-13，Lead 裁定 GAP-9）**：发射器用解析器从 OSM 读 `building:levels`。这些值**在来源里**——不是编的、也不是抽象的——但**没有人打开来源读过它**。把它们叫 `observed` 会溶解条款四存在的那个区分；把 `observed` 放宽到覆盖机器读取，会让攻略的"已验证"栏失去意义。**来源陈述 + 机器读取**是独立的一类，所以它有了自己的成员。`observed` 的定义**没有**被动过，这正是它仍然值钱的原因。
+>
 > **`authored` 是怎么来的（task-2，`doors-author`）**：Gate 1 那个街区里 OSM 只有 **2 个建筑轮廓、0 个 `entrance` 节点**，所以 12 扇门**全部**是手作放置。在此之前，唯一"看起来诚实"的选项是 `licenced`——但条款四把 `licenced` 定义为**授权派生模板**，而门的位置不是任何人的模板。**当时那个标签是三者中"最不坏"的，而不是正确的；该修的是枚举，不是标签。**
 
-**顺序不是许可阶梯。** `VALUE_KINDS` 的顺序（`observed` > `authored` > `licenced` > `abstract`）只是**证据强度**的排序，用于报告。**排在第二不给任何东西开门**——只有 `GUIDE_VERIFIED_COLUMN_ALLOWED` 决定准入，A9b 断言它**仍然恰好是 `['observed']` 一项**。
+**顺序不是许可阶梯。** `VALUE_KINDS` 的顺序（`observed` > `parsed` > `authored` > `licenced` > `abstract`）只是**证据强度**的排序，用于报告。**排在前面不给任何东西开门**——只有 `GUIDE_VERIFIED_COLUMN_ALLOWED` 决定准入，A9b 断言它**仍然恰好是 `['observed']` 一项**，并且**单独点名断言 `parsed` 被挡在外面**（它是最诱人的一个："可是来源就是这么写的啊！"）。
 
 **这一维不是置信度，是来源类别。** 不要把它变成打分，也不要给它加权：agent 自评不可机械校验，加权会把"每行都有可核来源"这条铁律稀释掉。玩家侧的三态（`✅ 亲自到过` / `📖 读过来源` / `⚠️ 待确认`）描述的是**玩家做了什么**，与 `valueKind` 正交——**玩家状态不能提升值的等级**：
 
@@ -282,10 +296,10 @@ A8b  PASS  acceptance — grid is independent of feature order
           sha256=7059980F09A82664297D9DF488E2D0D54AB7BB3581D05A79EDB2F3D6F1B0B3C3
 A8c  PASS  acceptance — rasteriser is direction-invariant (OSM way order is not stable)
           reversed-vertex sha256=7059980F09A82664297D9DF488E2D0D54AB7BB3581D05A79EDB2F3D6F1B0B3C3 identical=true
-A9   PASS  clause 4 — valueKind enum is exactly {observed, authored, licenced, abstract}
-          kinds=[observed, authored, licenced, abstract] exact=true frozen=true; 'licensed' rejected=true; 'authored' is a valid kind=true
-A9b  PASS  clause 4 — the gate did not widen: four kinds, one reaches the guide
-          allow-list=["observed"] exact=true; permitted by predicate=[observed]; of 4 kinds, authored blocked=true, licenced/abstract/undefined/null/'OBSERVED' blocked=true
+A9   PASS  clause 4 — valueKind enum is exactly {observed, parsed, authored, licenced, abstract}
+          kinds=[observed, parsed, authored, licenced, abstract] exact=true frozen=true; 'licensed' rejected=true; 'parsed' and 'authored' are valid kinds=true
+A9b  PASS  clause 4 — the gate did not widen: five kinds, one reaches the guide
+          allow-list=["observed"] exact=true; permitted by predicate=[observed]; of 5 kinds, parsed blocked=true, authored/licenced/abstract/undefined/null/'OBSERVED' blocked=true
 A10  PASS  clause 5 — fact-layer coords are integer microdegrees; grid needs a frozen origin
           float coordinate rejected=true; gate missing:gated unfrozen:gated null-island:gated non-integer:gated; bad origin propagates from buildWorldGrid=true; default (no-arg) origin is the frozen ORIGIN=true
 A11  PASS  clause 3 — half-open window x[0,1600) row[0,40); overflow rejected, never clamped
@@ -300,7 +314,7 @@ A15  PASS  clause 4 — `lanes` may not be used as a fact until a human checks i
           usableAsFact=false humanCheckRequired=true; recorded 6 segments / 16 ways (measurement says 16) = true; distinct lanes values=[4,2,1] conflicting=true; west of origin all lanes=4 (1 segs) but the first way east is lanes=2 -> contradiction=true
 
 18/18 assertions passed, 0 failed
-contract sha256=0A616AB6DBC3020AD8EDAEFFCBA1FDEA29F697CE62E0B35546E8236FD50B83CD  (all frozen literals)
+contract sha256=F50E4144E5BBAD1D14F889C944BDFD58A7CD6681349411F67A6AB9B23BC422A9  (all frozen literals)
 fixture grid sha256=7059980F09A82664297D9DF488E2D0D54AB7BB3581D05A79EDB2F3D6F1B0B3C3  setTiles=2894  bytes=64000
 ```
 
@@ -356,6 +370,10 @@ contractFingerprint=0A616AB6DBC3020AD8EDAEFFCBA1FDEA29F697CE62E0B35546E8236FD50B
 | **GAP-9** | **`observed` 的定义与发射器冲突。** 条款四把 `observed` 定义为"**人**打开来源并读到了这个值"；S3 发射器把**机器解析**的 `building:levels` 标成 `observed`（遵循任务卡约束 3）。1,512 个 way 的标签不是任何人读过的。这会把"来源这么说"与"人核过"混成一列——**正是条款四存在的理由**。 | 攻略"已验证"栏会因此吃到机器读取的值 | **Lead 裁定**：把 `observed` 措辞放宽为"来源陈述了它（人读或机读，且记录在案）"，或给机器读取另立一档 |
 | **GAP-10** | **跨窗建筑被整栋丢弃（实测 134 栋）。** 条款三要求越窗要素**拒绝、不夹紧**；但真实建筑比 ±20 m 走廊深得多，于是**部分在窗内**的建筑被整栋丢弃，连带丢掉窗内那截临街面。 | 临街墙上出现"整栋消失"的空洞 | **Lead 裁定**：保持整栋拒绝，还是允许**裁剪**（裁剪 ≠ 夹紧：夹紧伪造几何，裁剪算的是真实交集）。§11.3 给了两种做法的实测数字 |
 | **GAP-11** | **78 栋无来源高度的建筑没有数字（刻意的）。** 它们标 `abstract` 但 `heightM: null`——没有 PLATEAU LOD1 抽象高度可填，也**不允许**填一个"看起来合理"的高度。 | 2.5D 场景里这些建筑没有高度 | 要么摄入 PLATEAU 抽象高度，要么由 **Lead 在契约里**声明一个项目级默认高度，而不是让发射器自己挑一个 |
+| ~~**GAP-9**~~ | ~~`observed` 定义与机器读取冲突~~ → **已解（S3）**：新增 `parsed` 成员，`observed` 的定义**未动**，A9b 单独断言 `parsed` 进不了"已验证"栏。 | — | ✅ 已关闭 |
+| ~~**GAP-10**~~ | ~~跨窗建筑被整栋丢弃~~ → **已解（S3）**：Lead 裁定**跨越窗口的裁剪、完全在窗外的拒绝**；随后发现"裁到 40 m 窗口"会产出埋掉街道的厚板，故追加**立面进深带**（默认 40 m = `blockSize`）。 | — | ✅ 已关闭（进深值本身见 GAP-13） |
+| **GAP-12** | 🔴 **街道装不进世界（S14 正在失败）。** `四条通` 自己的中心线在走廊内**向北爬升 19.86 m**（0.71° 偏东），而窗口只有 ±20 m。x=1388 处北侧余量 **0.14 m**。按需求的半宽算，走廊**短缺长度**：1 m → **297 m（18.6%）**、3.25 m → 523 m、5 m → 611 m、8 m → **735 m（45.9%，最差缺 7.86 m）**。**S11/S12/S13 都测不到这个**——它们只问"中心线在不在"，一条 1 m 宽的街也能全过。 | 走廊东段三分之一：街道的北半幅落在世界之外。玩家走到那里会看到街爬出世界边缘 | **Lead 裁定中**。三种读法的算术已在 §11.7：**加宽 `hTiles`**（1 m 半宽 → 42；8 m → 56）、**把原点纬度改到走廊中点**（北移 9.93 m → 最小余量变 10.07 m，但**每个门的 cellY 都要重算**）、**或让走廊随街走**（`cellY` 改为相对街道行，1,600 项表，不动原点） |
+| **GAP-13** | **立面进深带 40 m 是发射器常量，尚未冻结。** 它派生自 `worldGrid.blockSize`，因此不是魔法数，但也不在冻结集合里、无断言。 | 深于 40 m 的建筑只发射临街那一段；若日后想要别的深度，没有契约约束 | 若 Lead 要它进冻结集合，它移入 `world-grid.mjs` 并加断言（一次有纸面流程的改动）；否则它留在发射器里，由 S14 与 GAP-12 的裁定共同约束 |
 
 ---
 
@@ -439,42 +457,54 @@ contractFingerprint=0A616AB6DBC3020AD8EDAEFFCBA1FDEA29F697CE62E0B35546E8236FD50B
 | 要素顺序 | 栅格化前**按 OSM id 排序** | 顺序无关性由构造保证，不靠运气（S4 另测） |
 | 输出位置 | `build/scene.bin`（`.gitignore:86 /build`） | 烘焙产物不该变成被跟踪的仓库内容 |
 
-### 11.3 真实数字（此前从未测过）
+### 11.3 真实数字（GAP-10 裁定后重新测量）
 
 | 量 | 值 |
 |---|---|
 | 输入 | 1,512 个 building way（14,149 elements） |
-| **接受** | **79（5.2%）** |
-| **拒绝** | **1,433**：跨窗 1,351 / 走廊东端外 61 / 原点以西 21 |
-| 其中**整栋在窗外** | 1,299（无信息损失：它们在临街排之后或走廊两端之外） |
-| 其中**跨窗（部分在窗内）** | **134** ← 整栋拒绝会丢掉这部分窗内临街面（GAP-10） |
+| **发射** | **211（14.0%）**，其中 **132 栋是裁剪进来的** |
+| **拒绝** | **1,301**：跨窗 1,217 / 走廊东端外 61 / 原点以西 21（+ 2 栋裁到零面积） |
 | 真实横截面 `y_m` | p5 −90.31 / p25 −47.59 / **p50 +33.73** / p75 +80.10 / p95 +113.83（9,567 顶点） |
 | 冻结窗口 | `y_m ∈ [−20, +20)` —— **真实建筑比走廊深得多** |
-| `x_m` 全范围 | −94.2 .. +1762.3 m（窗口 `[0, 1600)`） |
-| 地面层占用 | **6,349 / 64,000 格 = 9.9%** |
-| 高度分级 | **observed 1** / **abstract 78**；abstract 带数字的 = **0** |
-| **what-if 裁剪** | 211 栋 / 22,470 格 = **35.1%**（诊断，未进产物） |
-| block 0（x∈[0,40) m） | 真实脚印 **7 栋触及，接受 0 栋**；最西的被接受临街面在 **x=198.90 m** |
+| 地面层占用 | **22,454 / 64,000 格 = 35.1%** |
+| 高度分级 | **parsed 67** / observed **0** / **abstract 144**；abstract 带数字的 = **0** |
+| **临街连续性** | 轴覆盖 **1,329 m = 83.1%**；>20 m 的缺口 **3 个**，最长 **69 m** |
+| 对照：整栋拒绝（旧行为） | **79 栋**（5.2%）/ 地面 **9.9%** / 轴覆盖 **420 m** / 最长缺口 **450 m** |
+| `scene.bin` | **404,406 字节**，sha256 `F3855B4E…`（两次运行、逆序遍历、`lanes` 被破坏三种情况**同一个值**） |
 
-### 11.4 D-26 的答复：发射器不"切"任何东西——但当前 40 m 走廊里也没有东西可切
+### 11.4 D-26 的答复：block 0 现在装的是什么（Lead 点名要的数字）
 
-发射器的窗口是**走廊**（`x ∈ [0, 1600)`，1,600 m），**不是作者手作的 block 0**（40 m）。所以 `x=58.36 m` 的北侧立面**落在 block 1**，发射器照常发射它——`wTiles` 不会、也不必被拓宽；那个常数是冻结且有断言的，要动它需要纸面流程，不是一次编辑。
+发射器的窗口是**走廊**（1,600 m），**不是**手作的 block 0（40 m），所以 `x=58.36 m` 的立面只是落在 block 1——`wTiles` 不必也不能被拓宽。
 
-但**真实数据把 D-26 的提法推翻了**：在 `x ∈ [0,40)` 里，真实几何只有 **7 栋**脚印触及，且**一栋都没被接受**——它们都深达 `y_m −102.5 .. +142.7 m`，而冻结窗口只到 ±20 m。所以"18.36 m 临街面在 block 0 之外"这个描述，在今天的数据上不是主要矛盾；主要矛盾是 **40 m 走廊装不下真实建筑**（§11.3）。D-26 因此**并入 GAP-10**。
+裁定后重新测量 **block 0 的实际内容**：
 
-### 11.5 新增断言 S1–S9（在发射器里，**不是**第九道门）
+| 量 | 值 |
+|---|---|
+| 源几何触及 block 0 的脚印 | **7 栋** |
+| **实际发射进 block 0 的脚印** | **1 栋**（OSM way `205732536`） |
+| 它的发射范围 | `x 9.585 .. 44.363 m`、`y −20.00 .. −12.44 m`（南侧立面带） |
+| 它的 `valueKind` / 高度 | `parsed`，`levels=8` → 24 m（3.0 m/层） |
+| 最西的**已发射**临街面 | **x = 9.585 m**（裁定前是"没有任何东西"，因为整栋拒绝把它丢了） |
 
-`node iteration/tools/emit-scene.mjs --assert` → 9/9。要点：
+所以：**12 扇手作门所在的 block 0，现在有 1 栋真实建筑、8 层、南侧**。其余 6 栋触及 block 0 的脚印仍然落在窗外（它们深达 `y_m −102.5 .. +142.7 m`，而窗口只到 ±20 m）——按裁定它们**完全在窗外**，拒绝正确。
+
+### 11.5 新增断言 S1–S14（15 条，在发射器里）
+
+`node iteration/tools/emit-scene.mjs --assert` → **14/15，S14 故意红**。要点：
 
 - **S2** 越窗拒绝：`y=+20 m → row 40`、`x=1600 m → tileX 1600`、`x=2500 m → tileX 2500`，三者 `inWindow=false`；控制点 `x=100 m, y=19.9 m` 为 `true`。
-- **S5** 79 条记录**每条都带 `valueKind`**；`abstract` 78 条**全部 `heightM: null`**。
-- **S6** `lanes` **行为证明**：把输入里每个 `lanes` 改成 `'9'` 后重建，`sha256` **一字不差** —— 比"没写这行代码"强，因为它证明的是**结果**不受影响。
-- **S8** 半格偏移哨兵：少加 `halfCrossTiles` 会让 `y_m ≥ 0` 落在 row 0–19，从而**北半区格数归零**。实测南半 4,499 / 北半 1,850 格被挡 → 偏移正确。
-- **S9** 容器往返：`scene.bin` 解回来与内存层逐字节相等。**S9 第一次跑就抓到一个真 bug**：我的 header 字段偏移错了 4 字节（把 `hTiles` 读成 `wTiles`）。断言存在的意义就是这个。
+- **S2b** GAP-10 裁定的**要素级**测试：完全在西边 → 拒绝；跨 `x=0` → 裁剪后 4 点；跨 `y=+20` → 裁剪；完全在内 → 保留；裁剪点全在可表示盒内。
+- **S5** 211 条记录**每条都带 `valueKind`**；`abstract` 144 条**全部 `heightM: null`**；`observed` = 0 **是对的**（没有人读过）。
+- **S6** `lanes` **行为证明**：把输入里每个 `lanes` 改成 `'9'` 后重建，`sha256` **一字不差**。
+- **S10** 临街连续性（**性质而非计数**）：轴覆盖 ≥ 1,200 m 且最长缺口 ≤ 80 m；并断言这个下限**不能被旧行为满足**（旧行为 420 m）——所以闸门真的在区分两种行为。
+- **S11** 街道中心线全程留在窗口内：漂移 **19.86 m**，北侧余量 **0.14 m**。
+- **S12** 街道**自己那一列**可走 ≥ 98%：实测 **1,600 列全查，街道处被挡 0 列（100.0%）**。
+- **S13** 路线**连通**（不是"大体通畅"）：从 `x=0` 洪泛，41,269 个可走格，最远列 `x=1599`，到达街道在 `x=1599` 的位置（row 30）。
+- **S14** 🔴 **街道是否装得下**（在每一列的两侧都要有 ≥1 m 半宽）→ **失败**，见 GAP-12。**这是故意留红的**：闸门红着才是诚实状态，直到 GAP-12 被裁定。
 
-`scene.bin` 目前 **323,004 字节**，sha256 **`86F5314D946ED06EFE9E8D7D00DD47BB2E4022BE2A13E82EB454443526CE7D9D`**（两次运行、逆序遍历、以及 `lanes` 被破坏三种情况**同一个值**）。
+### 11.6 已接线为第十一道门（Lead 已加）
 
-### 11.6 没接线成第九道门（按 Lead 的指示）
+`run-gates.mjs` 现在跑 11 道门，`scene` 那道调用 `emit-scene.mjs --assert`。**当前 `run-gates` = 10/11**：`scene` 因 S14 而红，这正是 GAP-12 的信号，不是缺陷。
 
 `run-gates.mjs` **保持 10/10 不变**（我复核过）。发射器的断言**不进** `GATES` 数组——那需要改 `run-gates.mjs`，而它不在我的写入范围。**建议 Lead 加这一条**（我已确认它不会破坏任何现有门）：
 

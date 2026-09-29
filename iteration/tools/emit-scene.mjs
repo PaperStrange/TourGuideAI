@@ -107,6 +107,115 @@ const FRONTAGE_MAX_GAP_M = 80;
 const STREET_WALKABLE_FLOOR = 0.98;
 
 /**
+ * How much street must fit on EACH side of the centreline for "the street is in
+ * the world" to mean anything.
+ *
+ * Deliberately the WEAKEST defensible value, because the point of S14 is to fail
+ * if the street does not fit at all, not to smuggle in a road standard:
+ *   - `lanes` may not be used as a fact (LANES_QUALITY.usableAsFact = false),
+ *     so the carriageway cannot be derived from it;
+ *   - there is no approved road-width template yet (contract GAP-4), so
+ *     inventing a Japanese standard here would be exactly the guess this project
+ *     forbids;
+ *   - `width` is absent on every 四条通 way in this dump (verified: 0 of 11).
+ * One metre is the minimum that makes a walk a walk rather than a tightrope.
+ * S14 prints the shortfall at 1/2/3.25/5/7/8 m as well, so a ruling does not
+ * depend on this number.
+ */
+const MIN_STREET_HALF_M = 1.0;
+
+/**
+ * Does the street FIT in the world, or is it merely inside it?
+ *
+ * S11/S12/S13 all test where the CENTRELINE is. A one-metre-wide street would
+ * pass them. This measures the half-width actually available on each side of the
+ * centreline at every column, which is the property the others assume.
+ */
+export function streetFit(line) {
+  let minNorth = Infinity;
+  let minNorthX = 0;
+  let minSouth = Infinity;
+  let minSouthX = 0;
+  const H = GRID.halfCrossTiles;
+  for (let x = 0; x < worldGrid.wTiles; x += 1) {
+    const y = streetYAt(line, x + 0.5);
+    const north = H - y;
+    const south = H + y;
+    if (north < minNorth) {
+      minNorth = north;
+      minNorthX = x;
+    }
+    if (south < minSouth) {
+      minSouth = south;
+      minSouthX = x;
+    }
+  }
+  const maxY = streetMaxY(line);
+  const minY = streetMinY(line);
+  const sensitivity = [1, 2, 3.25, 5, 7, 8].map((halfWidthM) => {
+    let shortM = 0;
+    let worstShortfallM = 0;
+    for (let x = 0; x < worldGrid.wTiles; x += 1) {
+      const north = H - streetYAt(line, x + 0.5);
+      if (north < halfWidthM) {
+        shortM += 1;
+        worstShortfallM = Math.max(worstShortfallM, halfWidthM - north);
+      }
+    }
+    return {
+      halfWidthM,
+      shortM,
+      shortPct: Number(((shortM / worldGrid.wTiles) * 100).toFixed(1)),
+      worstShortfallM: Number(worstShortfallM.toFixed(2)),
+      // hTiles is a FULL width and the window stays centred on the origin row, so
+      // fitting `halfWidthM` north of the drifting street needs 2 x (maxY + halfWidthM).
+      hTilesNeeded: Math.ceil(maxY + halfWidthM) * 2,
+    };
+  });
+  return {
+    minNorthMarginM: Number(minNorth.toFixed(2)),
+    minNorthAtX: minNorthX,
+    minSouthMarginM: Number(minSouth.toFixed(2)),
+    minSouthAtX: minSouthX,
+    fits: minNorth >= MIN_STREET_HALF_M && minSouth >= MIN_STREET_HALF_M,
+    requiredHalfM: MIN_STREET_HALF_M,
+    sensitivity,
+    // What each candidate reading would have to change, in numbers.
+    readings: {
+      widenHtiles: {
+        needHalfCrossTiles: Number((maxY + MIN_STREET_HALF_M).toFixed(2)),
+        needHtilesEven: Math.ceil(maxY + MIN_STREET_HALF_M) * 2,
+        note: 'keeps the origin; widens the world; the 40 m ribbon stops being 40 m',
+      },
+      redatum: {
+        shiftNorthM: Number(((maxY + minY) / 2).toFixed(2)),
+        resultingMinMarginM: Number((GRID.halfCrossTiles - (maxY - minY) / 2).toFixed(2)),
+        note: 'centres the drift instead of absorbing it at the west end; moves every door cellY',
+      },
+      streetRelative: {
+        note: 'keep hTiles=40 and reinterpret cellY as offset from the STREET row per column; a ~1600-entry table, no origin change, but clause 1/3 change',
+      },
+    },
+    profile: [0, 200, 400, 600, 800, 1000, 1200, 1388, 1500].map((x) => {
+      const y = streetYAt(line, x + 0.5);
+      return { x, streetY: Number(y.toFixed(2)), northClearance: Number((GRID.halfCrossTiles - y).toFixed(2)), southClearance: Number((GRID.halfCrossTiles + y).toFixed(2)) };
+    }),
+  };
+}
+
+function streetMaxY(line) {
+  let m = -Infinity;
+  for (let x = 0; x < worldGrid.wTiles; x += 1) m = Math.max(m, streetYAt(line, x + 0.5));
+  return m;
+}
+
+function streetMinY(line) {
+  let m = Infinity;
+  for (let x = 0; x < worldGrid.wTiles; x += 1) m = Math.min(m, streetYAt(line, x + 0.5));
+  return m;
+}
+
+/**
  * Project the STREET's own centreline (ways named 四条通) against the frozen
  * origin, and report where it sits inside the fixed-latitude band.
  *
@@ -115,7 +224,14 @@ const STREET_WALKABLE_FLOOR = 0.98;
  * measured drift is the single most consequential thing real geometry told us.
  */
 export function streetProfile(index) {
-  const matched = index.ways.filter((w) => w.tags && /四条通/.test(w.tags.name || ''));
+  const named = index.ways.filter((w) => w.tags && /四条通/.test(w.tags.name || ''));
+  // OBJECTIVE FILTER, confirmed against an independent check: a way named 四条通
+  // without a `highway` tag is not a road. Way 585713959 carries
+  // highway=undefined / lanes=undefined and 9 nodes inside x[328,356] that jump
+  // 41 m north (y to 56.14); it was the sole source of out-of-window street
+  // nodes. Name alone is not evidence that a way is the carriageway.
+  const matched = named.filter((w) => w.tags.highway);
+  const withoutHighwayTag = named.length - matched.length;
   // Some ways carry the street's name without being part of its CENTRELINE: the
   // corridor dump contains way 585713959, 9 nodes inside x[328,356] that jump
   // 41 m north (y up to 56.14). Keeping it made the street look like it left the
@@ -150,7 +266,8 @@ export function streetProfile(index) {
   const line = [...inside].sort((a, b) => a.x - b.x).map((p) => ({ x: p.x, y: p.y }));
   return {
     ways: road.length,
-    waysMatchedByName: matched.length,
+    waysMatchedByName: named.length,
+    waysWithoutHighwayTag: withoutHighwayTag,
     waysExcludedAsSideWays: matched.length - road.length,
     nodes: pts.length,
     nodesInsideWindow: inside.length,
@@ -444,7 +561,6 @@ export function diagnose(projected) {
     yM: { p1: pct(ys, 1), p5: pct(ys, 5), p25: pct(ys, 25), p50: pct(ys, 50), p75: pct(ys, 75), p95: pct(ys, 95), p99: pct(ys, 99), min: Math.min(...ys), max: Math.max(...ys) },
     xM: { min: Math.min(...xs), max: Math.max(...xs) },
     vertices: ys.length,
-    blockZero: blockZeroStats(projected, raster.records),
   };
 }
 
@@ -837,6 +953,8 @@ export function buildScene(inputPath, { mutateTags } = {}) {
   const projected = features.map((f) => projectFeature(f, street.line));
   const raster = rasterize(projected);
   const diag = diagnose(projected);
+  diag.blockZero = blockZeroStats(projected, raster.records);
+  const fit = streetFit(street.line);
 
   const observed = raster.records.filter((r) => r.valueKind === VALUE_KIND.OBSERVED);
   const parsed = raster.records.filter((r) => r.valueKind === VALUE_KIND.PARSED);
@@ -914,6 +1032,7 @@ export function buildScene(inputPath, { mutateTags } = {}) {
     projected,
     diag,
     street,
+    fit,
   };
 }
 
@@ -1186,6 +1305,26 @@ export function runAssertions(inputPath = DEFAULT_IN) {
     );
   }
 
+  // S14 - the street must FIT, not merely be inside. S11/S12/S13 test where the
+  // centreline IS; a one-metre-wide street would pass all three. This measures the
+  // half-width actually available on each side at every column.
+  //
+  // EXPECTED TO FAIL on the current frozen window: the street climbs 19.86 m, so
+  // the north margin bottoms out at 0.14 m. It is left failing on purpose — a red
+  // gate is the honest state while the ORIGIN / hTiles ruling is pending. Do not
+  // tune MIN_STREET_HALF_M to make it pass.
+  {
+    const fit = first.fit;
+    check(
+      'S14',
+      `the street FITS in the world (>= ${MIN_STREET_HALF_M} m of half-width on BOTH sides at every column)`,
+      fit.fits,
+      `minimum north clearance ${fit.minNorthMarginM} m at x=${fit.minNorthAtX}, minimum south clearance ` +
+        `${fit.minSouthMarginM} m at x=${fit.minSouthAtX}; ` +
+        `shortfall by required half-width: ${fit.sensitivity.map((s) => `${s.halfWidthM} m -> ${s.shortM} m of corridor short (${s.shortPct}%), worst ${s.worstShortfallM} m`).join('; ')}`,
+    );
+  }
+
   // S13 - the route is CONNECTED end to end. "Mostly open" is not enough: one
   // full-width blockage severs the walk this whole exercise exists to produce.
   {
@@ -1271,6 +1410,25 @@ function report(scene, outPath, hash) {
   lines.push(`  axis coverage   : ${fmt(c.frontageCoveredM)} m of ${fmt(worldGrid.wTiles)} = ${c.frontageCoveragePct}%`);
   lines.push(`  gaps > 20 m     : ${fmt(c.frontageGapsOver20m)}   longest gap: ${fmt(c.frontageMaxGapM)} m`);
   lines.push(`  floor asserted  : ${fmt(FRONTAGE_FLOOR_M)} m;  max gap asserted: ${fmt(FRONTAGE_MAX_GAP_M)} m`);
+  lines.push('');
+  lines.push('  -- DOES THE STREET FIT? (S14; the property S11-S13 assume) --');
+  const fit = scene.fit;
+  lines.push(`  minimum north clearance : ${fit.minNorthMarginM} m at x=${fit.minNorthAtX}   (required ${fit.requiredHalfM} m)`);
+  lines.push(`  minimum south clearance : ${fit.minSouthMarginM} m at x=${fit.minSouthAtX}`);
+  lines.push(`  verdict                 : ${fit.fits ? 'FITS' : 'DOES NOT FIT - the street leaves the world'}`);
+  lines.push('  clearance profile:');
+  lines.push('      x     street_y   north_clear   south_clear');
+  for (const p of fit.profile) {
+    lines.push(`    ${String(p.x).padStart(4)}   ${p.streetY.toFixed(2).padStart(8)}   ${p.northClearance.toFixed(2).padStart(10)}   ${p.southClearance.toFixed(2).padStart(10)}`);
+  }
+  lines.push('  shortfall by required half-width, and the hTiles that would fit it:');
+  for (const s of fit.sensitivity) {
+    lines.push(`      ${String(s.halfWidthM).padStart(5)} m -> ${String(s.shortM).padStart(4)} m of corridor short (${s.shortPct}%), worst ${s.worstShortfallM} m   |  hTiles needed ${s.hTilesNeeded}`);
+  }
+  lines.push('  what each candidate reading would change:');
+  lines.push(`      widen hTiles   : needs halfCrossTiles >= ${fit.readings.widenHtiles.needHalfCrossTiles} -> hTiles ${fit.readings.widenHtiles.needHtilesEven} (from ${worldGrid.hTiles})`);
+  lines.push(`      re-datum origin: shift ${fit.readings.redatum.shiftNorthM} m north -> minimum margin becomes ${fit.readings.redatum.resultingMinMarginM} m (moves every door cellY)`);
+  lines.push(`      street-relative: ${fit.readings.streetRelative.note}`);
   lines.push('');
   lines.push('  -- REAL cross-section of the data (y_m from the street axis) --');
   const cs = scene.manifest.realCrossSection;
