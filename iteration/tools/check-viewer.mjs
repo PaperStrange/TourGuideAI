@@ -378,6 +378,20 @@ function main() {
     buf = readFileSync(SCENE);
   }
 
+  // The export is an INPUT this check cannot bake itself -- V5 reconciles the walk against
+  // guide.json, and a walk reconciled against nothing would assert less than it claims. But
+  // "cannot bake it" must not mean "exit 2 on a clean clone": build/ is gitignored, so a fresh
+  // checkout has no guide either, and that is the shape that has now appeared nine times in this
+  // harness. So under --bake-if-absent this runs the producer it depends on, rather than relying
+  // on gate ORDER to have run it first.
+  if (!existsSync(GUIDE) && process.argv.includes('--bake-if-absent')) {
+    const g = spawnSync(process.execPath, [join(REPO, 'iteration', 'tools', 'emit-guide.mjs')], { cwd: REPO, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+    if (g.status !== 0 || !existsSync(GUIDE)) {
+      throw new EnvError(`could not bake guide.json (exit ${g.status}): ${((g.stdout || '') + (g.stderr || '')).slice(-400)}`);
+    }
+    console.log('(guide.json was absent and this check ran emit-guide to produce it)');
+  }
+
   const W = buf.readUInt32LE(12);
   const H = buf.readUInt32LE(16);
   const manifestLen = buf.readUInt32LE(104);

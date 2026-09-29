@@ -28,12 +28,34 @@ const SOURCES = tracked.filter((p) => /\.(mjs|js|cjs|json|ps1|yml|yaml)$/.test(p
 const deps = new Map(); // repoRelPath -> Set of referring scripts
 const missing = new Map();
 const directories = new Map(); // bare directory references, reported separately
+const written = new Map();     // paths this scanner saw WRITTEN, not read, and so does not flag
 
 for (const rel of SOURCES) {
   const abs = join(REPO, rel);
   if (!existsSync(abs) || statSync(abs).size > 8 * 1024 * 1024) continue;
   let text;
   try { text = readFileSync(abs, 'utf8'); } catch { continue; }
+
+  // A path appearing in a tracked script is NOT the same as that script READING it.
+  //
+  // This scanner reported iteration/viewer/index.html as an untracked dependency because
+  // bake-viewer.mjs names it -- but bake-viewer WRITES it, and a build product that a tracked
+  // script produces is the opposite of a missing input. A grep cannot tell reading from writing,
+  // and the first attempt at the distinction failed for a reason worth recording: the candidate
+  // path only looked like a path because it was being resolved against the repo root, while the
+  // real expression was join(OUT_DIR, 'index.html') -- a bare FILENAME, which no path-shaped
+  // regex will ever match. Getting this exact would need a JavaScript parser, for a check whose
+  // whole purpose is to cost a glance, so the rule is deliberately coarse instead.
+  //
+  // A file is treated as WRITTEN when some script contains a writing call AND, somewhere in that
+  // same script, every segment of this repo-relative path appears as a string literal. For
+  // bake-viewer.mjs that is satisfied: it writes, and 'iteration', 'viewer' and 'index.html' all
+  // appear. Over-detecting "written" is the safe direction -- it can only hide a dependency whose
+  // sole reference is a write, and such a thing is not a dependency.
+  const writesSomething = /(?:writeFileSync|writeFile|createWriteStream|mkdirSync|appendFileSync|rmSync|unlinkSync|cpSync)\s*\(/.test(text);
+  const literalFragments = new Set();
+  if (writesSomething) for (const m of text.matchAll(/['"`]([^'"`\n]{1,120})['"`]/g)) literalFragments.add(m[1]);
+  const isWrittenHere = (rr) => writesSomething && rr.split('/').every((seg) => literalFragments.has(seg));
 
   // Quoted strings that look like a repo-relative path. Deliberately permissive:
   // a false positive costs a glance, a false negative costs a gate.
@@ -48,6 +70,11 @@ for (const rel of SOURCES) {
       const repoRel = r.slice(REPO.length + 1).replace(/\\/g, '/');
       if (!existsSync(r)) continue;                       // not on disk at all: ignore
       if (trackedSet.has(repoRel)) continue;              // tracked: fine
+      if (isWrittenHere(repoRel)) {                          // written by this script, not read from it
+        if (!written.has(repoRel)) written.set(repoRel, new Set());
+        written.get(repoRel).add(rel);
+        continue;
+      }
       if (repoRel.includes('node_modules')) continue;     // expected to be absent
       const owner = repoRel.split('/')[0];
       if (!['docs', 'city-packs', 'iteration'].includes(owner)) continue;
