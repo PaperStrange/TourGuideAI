@@ -1,0 +1,18 @@
+{
+  "note": "决定性测量：四条通 烏丸→祇園 的建筑层数与门可得性（ui-designer §7 指标）",
+  "source": "Overpass API (overpass-api.de), OpenStreetMap contributors",
+  "licence": "ODbL 1.0 — attribution required; redistribution as a Derivative Database requires the same licence",
+  "fetchedAt": "2026-09-29T14:54:12Z",
+  "bbox": "lat 35.0030..35.0046, lng 135.7590..135.7788 (~2 km of 四条通, axis ±45 m)",
+  "query": "way[\"building\"]; node[\"entrance\"]; node[\"shop\"]; out tags center;",
+  "counts": {
+    "buildingWays": 1212,
+    "withLevels": 104,
+    "entrances": 10,
+    "shops": 193
+  },
+  "levelsCoveragePct": 8.6,
+  "thresholdVerdict": "ui-designer set >=70% on building:levels; measured 8.6% -> FAIL. The 2-band default would be the norm, not an edge case.",
+  "doorVerdict": "Only 10 entrance nodes vs ~100 street frontages -> OSM cannot supply doors here; all 12 doors must be authored.",
+  "rawResponseSha256": "5CE780313417ECDF94C52418D390038CEC1EC6E28014AF4B25EC53B3DE007D2C"
+}

@@ -14,11 +14,32 @@
 #   docs/handOff/archive/            ~90 MB of raw crawl snapshots (HTML + txt)
 #   iteration/recon/sections/*/_raw* raw fetch caches behind the section drafts
 #   the bundle's node_modules/       install artifacts, not source
-docs/handOff/archive/
+#
+# NOTE the trailing /* rather than /. A bare directory pattern excludes the directory
+# itself, and git then refuses to descend into it at all, so NO later `!` negation
+# inside it can ever take effect. That is what silently defeated the three
+# re-inclusions below on the first attempt. `dir/*` keeps the directory traversable
+# while excluding its contents, which is what makes a targeted re-inclusion possible.
+docs/handOff/archive/*
 iteration/recon/sections/_raw/
 iteration/recon/sections/_raw_q4q6/
 docs/project_lifecycle/knowledge/_recon_tmp/
 docs/handOff/dsh-bundle-tourguide-2.5d/node_modules/
+
+# Re-include the directory chain down to the three load-bearing measurement records.
+# Each ancestor has to be re-included explicitly, because "It is not possible to
+# re-include a file if a parent directory of that file is excluded."
+!docs/handOff/archive/corpora/
+!docs/handOff/archive/corpora/geo-japan/
+!docs/handOff/archive/corpora/geo-japan/kyoto-slice-origin-candidate.json
+!docs/handOff/archive/corpora/geo-japan/kyoto-slice-measurement-summary.json
+!docs/handOff/archive/corpora/geo-japan/kyoto-slice-overpass.json
+# Everything else under geo-japan stays excluded, so the re-included parents do not
+# drag 24 MB of unmined corpus in with them.
+docs/handOff/archive/corpora/geo-japan/*
+!docs/handOff/archive/corpora/geo-japan/kyoto-slice-origin-candidate.json
+!docs/handOff/archive/corpora/geo-japan/kyoto-slice-measurement-summary.json
+!docs/handOff/archive/corpora/geo-japan/kyoto-slice-overpass.json
 
 # The gate scripts ARE tracked, and this reverses an earlier decision that was made on
 # a premise I never checked. The exclusion was justified as "the bundle is
