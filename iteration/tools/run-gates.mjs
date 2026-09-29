@@ -38,6 +38,8 @@ const GATES = [
     why: 'provenance ADEQUACY: URLs opened, per-entry sources, counts re-derived, enum imported' },
   { id: 'source-align', name: 'recorded values appear in the source they cite', cmd: ['node', join(REPO, 'iteration', 'tools', 'check-source-alignment.mjs')],
     why: 'D-14: check A proves a URL resolves; this proves the VALUE is in that source and not a different one' },
+  { id: 'scene', name: 'scene emit (real geometry through the frozen projection)', cmd: ['node', join(REPO, 'iteration', 'tools', 'emit-scene.mjs'), '--assert'],
+    why: 'real OSM geometry through a projection whose assertions had only ever seen a synthetic fixture; rejection, determinism, traversal independence' },
   { id: 'doors', name: 'doors (strict release gate)', cmd: ['node', join(PACK, 'validate-doors.mjs'), '--strict'],
     why: '--strict, because a declared blocker must fail the release gate' },
   { id: 'build', name: 'pack build is reproducible', cmd: ['node', join(PACK, 'evidence', 'tools', 'build-pack.mjs')],
