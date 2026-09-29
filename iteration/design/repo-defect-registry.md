@@ -114,6 +114,8 @@
 
 ### D-09 · 分支保护给不存在的分支配保护 —— **OPEN（需 GitHub 权限）**
 
+> **2026-09-30 更新**：文件名里的分支已全部改正，**门基础设施已推送 master**（c054308，GitHub API 确认 Fact Integrity 状态 ctive）。ranch-protection.yml 里的 gh api 调用**仍未生效**——实测 GET /branches/master/protection 返回 **HTTP 401 Requires authentication**，本机 gh 未安装、git 凭据不含 administration scope。**需要 PAT 或网页 UI。**
+
 | | |
 |---|---|
 现象 | `branch-protection.yml` 给 `main` 与 `develop` 配保护 → **真正的 `master` 与 `iteration` 长期无保护**，**没有任何东西阻止直接推 `master`**
@@ -252,8 +254,8 @@
 | 投影/网格/原点/枚举冻结 | `world-grid` 18 条断言 | AUTOMATED |
 | ODbL 派生值不得出现在我们的文件里 | `validate-doors` V16/V17 | AUTOMATED |
 | 地址等**直接数据值**必须与来源逐字一致 | **无机器**（产出者校验器通过 15/15 而 8 行有错） | **OPEN** —— D-14 |
-| 分支保护真的生效 | **无机器** | **OPEN（需 GitHub 权限）** |
-| 发布分支删除前 tag 必须存在 | **无机器** | **OPEN** |
+| 分支保护真的生效 | **无机器** | **OPEN** —— 实测 401 Requires authentication（D-09）；连 ranch-protection.yml 自己的 gh api 调用也缺同一权限 |
+| 发布分支删除前 tag 必须存在，**且无开着的 PR** | **无机器** | **已人工判定一次**：9 个远程分支中 8 个被 tag 覆盖可删，**1 个有开着的 PR #33 不可删**（D-13 区）。仍无机器 |
 
 ---
 

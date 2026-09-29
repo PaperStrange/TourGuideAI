@@ -82,13 +82,72 @@ fatal: ambiguous argument 'iteration': both revision and filename
 
 | # | 事项 | 状态 |
 |---|---|---|
-| 1 | `fact-integrity.yml` 触发分支改为 `master` + `iteration` | ✅ 已改 |
-| 2 | 其余 4 个 workflow 的 `main`/`develop` → `master`/`iteration` | ⏳ 待办 |
-| 3 | `CONTRIBUTING.md` 转 UTF-8 并改正分支名 | ⏳ 待办 |
-| 4 | 把 `fact-integrity.yml` 送上 `master`，让 `workflow_dispatch` 可用 | ⏳ **需你授权**（动 `master`） |
-| 5 | 给 `master` 与 `iteration` 配真正的分支保护 | ⏳ 待办（需 GitHub 权限） |
-| 6 | 清理已完成的远程分支（先核 tag） | ⏳ 待办 |
-| 7 | 其余 3 个 UTF-16LE 文档转码 | ⏳ 待办 |
+| 1 | `fact-integrity.yml` 触发分支改为 `master` + `iteration` | ✅ 已完成 |
+| 2 | 其余 4 个 workflow 的 `main`/`develop` → `master`/`iteration` | ✅ 已完成 |
+| 3 | `CONTRIBUTING.md` 转 UTF-8 并改正分支名 | ✅ 已完成 |
+| 4 | 把门基础设施送上 `master`（让 `workflow_dispatch` 可用） | ✅ **已推送**（见 §3.1） |
+| 5 | 给 `master` 与 `iteration` 配真正的分支保护 | ⏳ **被 token 挡住**（见 §3.2） |
+| 6 | 清理已完成的远程分支 | ⏳ **被 PR 挡住一个**，其余 8 个已判定可删（见 §3.3） |
+| 7 | 其余 3 个 UTF-16LE 文档转码 | ✅ 已完成（全仓 0 非 UTF-8） |
+
+### 3.1 `master` 已收到门基础设施（2026-09-30）
+
+| | |
+|---|---|
+推送前 | `069f93d`（2025-03-19，PR #32） |
+**推送后** | **`c054308`** |
+跟踪文件 | 508 → **647** |
+**范围** | **只有 CI 基础设施与事实层**——**不含应用代码**（那仍在 `iteration`，等它够发布标准） |
+
+**⚠️ 一个必须先纠正的前提**：我原以为"推一个 4 KB 的 workflow 文件"就够了。**实测发现不够**——那个 workflow 调用 `run-gates.mjs`，而它需要：
+`iteration/tools/`、`iteration/design/`、`city-packs/`、`dsh-bundle-*/tools/`、**以及三个实测记录**。**缺任何一个，门要么报错、要么静默降级。**
+
+**⚠️ 另一个差点造成事故的前提**：**本地 `master` 落后 `origin/master` 198 个提交**（自 2025-03 未 fetch）。基于本地 `master` 提交再推，会是一次**非快进推送**，可能覆盖远程工作。
+**正确做法**：先 `fetch`，再基于 `origin/master` 建 worktree。**推送是快进的**（`069f93d..c054308`）。
+
+**推送后核实**：GitHub API 显示 **`Fact Integrity` 状态 `active`** ✅ —— 而 `workflow_dispatch` 需要 workflow 文件位于默认分支，**现在满足了**。
+
+### 3.2 分支保护：**被 token 挡住**（我可以调用但无权）
+
+```
+GET /repos/PaperStrange/TourGuideAI/branches/master/protection
+→ HTTP 401  {"message": "Requires authentication"}
+```
+
+本机 **`gh` CLI 未安装**；git 凭据是 GitHub credential manager（OAuth），**其 scope 不含 administration**。
+
+**需要**：一个有 repo admin 权限的 PAT，或在 GitHub 网页 UI 上设置。
+**顺带一条实测**：`branch-protection.yml` 里的 `gh api` 也需要同样的权限——**所以那个 workflow 即使触发，也会因为没有 token 而失败**。
+
+### 3.3 远程分支清理：**8 个可删，1 个不能**
+
+判定规则：**分支内容已被某个 tag 覆盖 → 删分支不丢发布记录。**
+
+现有 tag：`v1.0.0-rc1`、`v1.1.0-mvp`（本地与远程一致）。
+
+| 分支 | 最后提交 | 被 tag 覆盖 | 判定 |
+|---|---|---|---|
+`feat-cursor` | 2025-03-17 | ✅ 两个 | **可删** |
+`feat-cursor-beta-release` | 2025-03-27 | ✅ 两个 | **可删** |
+`release-0.5.0-ALPHA1` | 2025-03-23 | ✅ 两个 | **可删** |
+`release-0.5.0-ALPHA2` | 2025-03-25 | ✅ 两个 | **可删** |
+`feat-cursor-backend` | 2025-06-09 | ✅ `v1.1.0-mvp` | **可删** |
+`release-1.0.0-RC1` | 2025-05-20 | ✅ `v1.1.0-mvp` | **可删** |
+`mvp-release` | 2025-06-24 | ✅ `v1.1.0-mvp` | **可删** |
+`release-mvp-demo` | 2025-06-11 | ✅ `v1.1.0-mvp` | **可删** |
+| **`cursor/fix-mvp-deploy-configuration-errors-073f`** | 2025-06-24 | **❌ 无** | **⛔ 不能删** |
+
+**为什么那一个不能删**：**它有 1 个开着的 PR（#33，base = `mvp-release`）**，且**有 1 个提交未并入 `origin/master`**（`b8dd0b7`）。**删分支会把这个 PR 直接作废。**
+
+**所以正确的顺序是**：先决定 PR #33 的命运（合并或关闭），**再**删分支。**不是"先删了再说"。**
+
+**执行命令**（需认证，我无法代跑）：
+```bash
+git push origin --delete \
+  feat-cursor feat-cursor-beta-release \
+  release-0.5.0-ALPHA1 release-0.5.0-ALPHA2 \
+  feat-cursor-backend release-1.0.0-RC1 mvp-release release-mvp-demo
+```
 
 ---
 
