@@ -695,7 +695,7 @@ function blockZeroStats(projected, records = []) {
  * valueKind for anything derived through it: `licenced` (a template default),
  * never `observed`.
  */
-const CARRIAGEWAY_HALF_M = 5.0;
+export const CARRIAGEWAY_HALF_M = 5.0;
 
 /**
  * How deep the world emits a building INWARD FROM ITS FACADE, in metres.
@@ -722,7 +722,7 @@ const CARRIAGEWAY_HALF_M = 5.0;
  * 9.18 m` (see the ruling inputs in the report). 5.0 + 3.0 = 8.0 fits with 1.18 m
  * of slack; 7.0 + 40.0 needed hTiles 94 and was never a frontage.
  */
-const FRONTAGE_BAND_DEPTH_M = 3.0;
+export const FRONTAGE_BAND_DEPTH_M = 3.0;
 
 /**
  * The REPRESENTABLE window box in sub-cells. The window is half-open
