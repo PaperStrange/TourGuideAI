@@ -105,12 +105,21 @@ export const PROJECTION = Object.freeze({
 export const ORIGIN = Object.freeze({
   status: 'frozen',
   lonUdeg: 135759719,
-  latUdeg: 35003658,
-  // Provenance — who says so, and where it was read.
+  latUdeg: 35003739,
+  // THE DATUM MOVED, AND IT SAYS SO. A datum that silently changes is worse than
+  // one that moves loudly, so the shift, the value it moved from, and the method
+  // change are frozen fields rather than a commit message.
+  latShiftUdeg: 81,
+  supersededLatUdeg: 35003658,
+  method: 'mid-drift of 四条通 over the corridor',
+  methodSupersedes: 'westernmost 四条通 geometry point at or east of 四条烏丸 (road-within-slice)',
+  methodChangeReason:
+    'the old datum was the street centreline AT 四条烏丸, a point at the corridor western END; a datum taken at one end of a 1.6 km street cannot be centred on it. The street climbs 19.86 m then falls 9.76 m; with the old datum north clearance fell to 0.14 m at x=1388 and the street left the world. 81 uDeg = 8.986 m north, chosen INSIDE the feasible band [7.86, 9.04] so all twelve authored doors shift by the same -9 rows (the band MIDPOINT 8.431 would have split them -8/-9).',
+  // Provenance of the LON datum, which did NOT move: OSM way 465069436 node#3,
+  // the 四条通 x 烏丸通 crossing (烏丸通's four ways terminate on that node).
   osmWayId: 465069436,
   nodeIndex: 3,
   highway: 'primary',
-  method: 'westernmost 四条通 geometry point at or east of 四条烏丸 (road-within-slice)',
   sliceAnchorName: '四条烏丸',
   source: 'Overpass API (overpass-api.de), OpenStreetMap contributors',
   licence: 'ODbL 1.0',
@@ -859,7 +868,11 @@ export function runAssertions() {
       PROJECTION.metresPerDegreeLon === 91282.15 &&
       PROJECTION.metresPerDegreeLat === 110940.65 &&
       ORIGIN.lonUdeg === 135759719 &&
-      ORIGIN.latUdeg === 35003658 &&
+      // 35003739 = 35003658 + 81 uDeg: the mid-drift datum, NOT the original
+      // 四条烏丸 datum. A1 pins the CURRENT value; A13 proves the shift is legible.
+      ORIGIN.latUdeg === 35003739 &&
+      ORIGIN.supersededLatUdeg === 35003658 &&
+      ORIGIN.latShiftUdeg === 81 &&
       EAST_END.lonUdeg === 135777193 &&
       EAST_END.latUdeg === 35003749;
     check(
@@ -1357,19 +1370,29 @@ export function runAssertions() {
       );
     } else {
       const d = cand.derivedOrigin;
-      const matches =
+      // REWRITTEN, not deleted (Lead ruling). The record is still the source of
+      // truth for the LON datum, which did not move, and for the east end. What
+      // changed is the LATITUDE: the record holds the SUPERSEDED value, and the
+      // frozen value must equal it PLUS the recorded shift. So the movement stays
+      // traceable and visible instead of the two quietly disagreeing.
+      const lonStillMirrors =
         d.lonUdeg === ORIGIN.lonUdeg &&
-        d.latUdeg === ORIGIN.latUdeg &&
         d.osmWayId === ORIGIN.osmWayId &&
         d.nodeIndex === ORIGIN.nodeIndex &&
-        d.highway === ORIGIN.highway &&
-        cand.eastEnd.lonUdeg === EAST_END.lonUdeg &&
-        cand.eastEnd.latUdeg === EAST_END.latUdeg;
-      // The rounding from the measured degrees to the frozen integers must be
-      // the nearest microdegree, not a truncation.
-      const roundTrips =
-        Math.round(d.lonDeg * 1e6) === ORIGIN.lonUdeg &&
-        Math.round(d.latDeg * 1e6) === ORIGIN.latUdeg;
+        d.highway === ORIGIN.highway;
+      const eastEndStillMirrors =
+        cand.eastEnd.lonUdeg === EAST_END.lonUdeg && cand.eastEnd.latUdeg === EAST_END.latUdeg;
+      const recordHoldsSupersededLat = d.latUdeg === ORIGIN.supersededLatUdeg;
+      const shiftArithmetic =
+        ORIGIN.supersededLatUdeg + ORIGIN.latShiftUdeg === ORIGIN.latUdeg && ORIGIN.latShiftUdeg > 0;
+      // The method change must be legible from the constant alone: the new method
+      // named, and the superseded one still named.
+      const methodLegible =
+        /mid-drift/.test(ORIGIN.method) &&
+        /四条烏丸/.test(ORIGIN.methodSupersedes) &&
+        ORIGIN.methodSupersedes !== ORIGIN.method &&
+        ORIGIN.methodChangeReason.length > 80;
+      const lonRoundTrips = Math.round(d.lonDeg * 1e6) === ORIGIN.lonUdeg;
       // The two rejected rules must still be recorded, or someone will
       // "simplify" the slice clamp away and move the origin ~1 km west.
       const correctionsKept =
@@ -1377,15 +1400,24 @@ export function runAssertions() {
         cand.corrections.some((c) => /錦小路通/.test(c)) &&
         cand.corrections.some((c) => /松尾大社/.test(c));
       const anchorDeclared = Boolean(cand.sliceAnchor) && cand.sliceAnchor.name === ORIGIN.sliceAnchorName;
+      const ok =
+        lonStillMirrors &&
+        eastEndStillMirrors &&
+        recordHoldsSupersededLat &&
+        shiftArithmetic &&
+        methodLegible &&
+        lonRoundTrips &&
+        correctionsKept &&
+        anchorDeclared;
       check(
         'A13',
-        'clause 1 — frozen ORIGIN mirrors the measurement record, and both rejected rules survive',
-        matches && roundTrips && correctionsKept && anchorDeclared,
-        `origin ${ORIGIN.lonUdeg},${ORIGIN.latUdeg} == way ${d.osmWayId} node#${d.nodeIndex} ` +
-          `(${d.highway}) matches=${matches}; uDeg round-trip=${roundTrips}; ` +
-          `anchor=${cand.sliceAnchor ? cand.sliceAnchor.name : '-'}; ` +
-          `recorded span=${cand.measuredSpanM} m, origin sits ${cand.distanceFromAnchorM} m from the anchor; ` +
-          `rejected rules kept=${correctionsKept}`,
+        'clause 1 — ORIGIN still mirrors the record, and the DATUM CHANGE is legible from the constant',
+        ok,
+        `lon mirrors the record=${lonStillMirrors} (${ORIGIN.lonUdeg}); east end mirrors=${eastEndStillMirrors}; ` +
+          `record holds the superseded lat ${d.latUdeg}=${recordHoldsSupersededLat}; ` +
+          `lat ${ORIGIN.supersededLatUdeg} + ${ORIGIN.latShiftUdeg} uDeg = ${ORIGIN.latUdeg} (${shiftArithmetic}); ` +
+          `method "${ORIGIN.method}" supersedes "westernmost 四条烏丸 ..." =${methodLegible}; ` +
+          `anchor=${cand.sliceAnchor ? cand.sliceAnchor.name : '-'}; rejected rules kept=${correctionsKept}`,
       );
     }
   }

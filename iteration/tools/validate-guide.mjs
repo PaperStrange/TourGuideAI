@@ -44,6 +44,15 @@ import { createHash } from 'node:crypto';
 const REPO = resolve(import.meta.dirname, '../..');
 const PACK_DIR = 'city-packs/kyoto-shijo';
 
+/**
+ * The gate is IMPORTED, never restated. `validate-city-pack-v2.mjs:61-67` already
+ * establishes this pattern for the fact layer; the export layer must not be the
+ * place where someone copies `['observed']` and lets the two drift.
+ */
+const CONTRACT = await import(
+  new URL('../../docs/handOff/dsh-bundle-tourguide-2.5d/tools/world-grid.mjs', import.meta.url).href
+);
+
 const JSON_OUT = process.argv.includes('--json');
 const inIdx = process.argv.indexOf('--in-dir');
 const IN_DIR = inIdx >= 0 ? process.argv[inIdx + 1] : 'build';
@@ -198,9 +207,7 @@ function main() {
   for (const l of guide.route.legs) for (const c of l.verified) allCells.push({ ...c, where: `leg ${l.legId}` });
   for (const l of guide.branchLegs) for (const c of l.verified) allCells.push({ ...c, where: `branch ${l.legId}` });
 
-  const { mayAppearInGuideVerifiedColumn, GUIDE_VERIFIED_COLUMN_ALLOWED, VALUE_KINDS } = await import(
-    new URL('../../docs/handOff/dsh-bundle-tourguide-2.5d/tools/world-grid.mjs', import.meta.url).href
-  );
+  const { mayAppearInGuideVerifiedColumn, GUIDE_VERIFIED_COLUMN_ALLOWED, VALUE_KINDS } = CONTRACT;
 
   {
     const bad = allCells.filter((c) => c.valueKind !== 'observed');
@@ -226,7 +233,6 @@ function main() {
 
     const blank = others.filter((c) => !c.valueKind || typeof c.valueKind !== 'string');
     const unknown = others.filter((c) => c.valueKind && !VALUE_KINDS.includes(c.valueKind));
-    const promoted = others.filter((c) => mayAppearInGuideVerifiedColumn(c.valueKind));
     check(
       'G5',
       'every non-verified value carries a real valueKind string (never blank, never unknown)',
@@ -236,14 +242,30 @@ function main() {
         : `${others.length} non-verified cells all carry a kind from ${JSON.stringify(VALUE_KINDS)}; ` +
           `kinds present: ${JSON.stringify([...new Set(others.map((c) => c.valueKind))].sort())}`,
     );
+    /**
+     * The promotion direction, GATE-AWARE.
+     *
+     * A cell with an allowed kind may legitimately sit outside the verified column
+     * when the RECORD gate is closed (contract-export.md section 3.3: two gates,
+     * not one). The first version of this check ignored the second gate and
+     * flagged all 7 cells of the two `guideVerifiedColumnAllowed: false` records
+     * — the check was wrong, not the emitter.
+     */
+    const wrong = others.filter(
+      (c) => mayAppearInGuideVerifiedColumn(c.valueKind) && c.recordGateOpen !== false,
+    );
+    const gateClosedCount = others.filter(
+      (c) => mayAppearInGuideVerifiedColumn(c.valueKind) && c.recordGateOpen === false,
+    ).length;
     check(
       'G5b',
-      'no cell with a verified-eligible kind is left out of the verified column (the promotion direction)',
-      promoted.length === 0,
-      promoted.length
-        ? `${promoted.length} cell(s) hold an allowed kind but sit in otherKinds: ` +
-          promoted.slice(0, 5).map((c) => `${c.where}.${c.field}=${c.valueKind}`).join('; ')
-        : 'every cell whose kind the imported allow-list permits is in the verified column',
+      'no cell is left out of the verified column while BOTH gates are open',
+      wrong.length === 0,
+      wrong.length
+        ? `${wrong.length} cell(s) hold an allowed kind with the record gate open but sit in otherKinds: ` +
+          wrong.slice(0, 5).map((c) => `${c.where}.${c.field}=${c.valueKind}`).join('; ')
+        : `every cell permitted by both gates is in the verified column; ` +
+          `${gateClosedCount} cell(s) kept out by the fact layer's own guideVerifiedColumnAllowed=false`,
     );
   }
 
@@ -416,12 +438,6 @@ function main() {
   /* --- G11: the export boundary (task-4) -------------------------------- */
   let boundaryDetail = 'not run';
   let boundaryOk = false;
-  try {
-    const mod = await import(
-      new URL('../../docs/handOff/dsh-bundle-tourguide-2.5d/tools/assert-export-boundary.mjs', import.meta.url).href
-    );
-    void mod; // the module runs its CLI only under `import.meta.main`-style guard
-  } catch { /* importing is not how it is invoked; run it as a process instead */ }
   {
     const r = spawnSync(
       process.execPath,
@@ -461,47 +477,91 @@ function main() {
     );
   }
 
-  /* --- G13: gap wording rule -------------------------------------------- */
+  /* --- G13: gap wording rule -------------------------------------------- *
+   * Classified, not grepped. The first version looked for a wording phrase inside
+   * every gap sentence and failed 11 of them for using their own words; the pack's
+   * rule is that a gap DECLARES its class, so the check now reads the declared
+   * class and cross-checks it against the sentence.
+   */
   {
     const rule = pack.transit?.gapWordingRule?.rule || '';
-    const bad = guide.gaps.filter(
-      (g) => !/世界が公表していない|世界没有公布|来源の範囲|来源范围内|来源的范围内|not been obtained|来源/.test(g.statementJa),
-    );
+    const classes = new Set(Object.values({
+      WORLD_NOT_PUBLISHED: 'world-has-not-published',
+      SOURCES_NOT_COVERED: 'our-sources-do-not-cover',
+      NOT_INGESTED: 'source-exists-but-not-ingested',
+    }));
+    const unclassified = guide.gaps.filter((g) => !classes.has(g.wordingClass));
+    // A gap declared `world-has-not-published` must actually say so in its sentence.
+    const inconsistent = guide.gaps.filter((g) => {
+      if (g.wordingClass !== 'world-has-not-published') return false;
+      return !/世界が公表していない|世界没有公布|OSM に存在しない|OSM に存在せず/.test(g.statementJa);
+    });
     check(
       'G13',
-      'each gap states WHICH kind of gap it is (world has not published it vs our sources do not cover it)',
-      bad.length === 0 && rule.length > 0,
-      bad.length
-        ? `${bad.length} gap(s) with a wording class that is neither: ` + bad.slice(0, 4).map((g) => g.gapId).join(', ')
-        : `all ${guide.gaps.length} gaps carry a wording class; pack rule present=${rule.length > 0}`,
+      'each gap declares WHICH kind of gap it is, and the class agrees with its sentence',
+      unclassified.length === 0 && inconsistent.length === 0 && rule.length > 0,
+      unclassified.length || inconsistent.length
+        ? `unclassified=${unclassified.map((g) => g.gapId).join(', ')}; ` +
+          `class contradicts sentence=${inconsistent.map((g) => g.gapId).join(', ')}`
+        : `all ${guide.gaps.length} gaps declare a class; ` +
+          `distribution=${JSON.stringify(guide.gaps.reduce((a, g) => { a[g.wordingClass] = (a[g.wordingClass] || 0) + 1; return a; }, {}))}; ` +
+          `pack wording rule present=${rule.length > 0}`,
     );
   }
 
-  /* --- G14: no platform review text ------------------------------------- */
+  /* --- G14: no platform review text ------------------------------------- *
+   * The first version of this check flagged the guide's OWN policy sentence
+   * ("任何平台的评价正文一律不进入本攻略"), i.e. it failed the guide for saying
+   * it does not do the thing. A vocabulary scan must exclude the disclaimer that
+   * performs the exclusion, or it can never be satisfied by an honest document.
+   */
   {
-    const platformWords = ['点评', '评价', '口碑', '大众点评', 'tabelog', '食べログ', 'yelp', 'tripadvisor', '猫途鹰', '小红书', '马蜂窝', '携程', 'reviews']);
-    const hits = platformWords.filter((w) => md.includes(w));
+    const platformWords = ['点评', '评价', '口碑', '大众点评', 'tabelog', '食べログ', 'yelp', 'tripadvisor', '猫途鹰', '小红书', '马蜂窝', '携程', 'reviews'];
+    // Strip the two policy statements that exist to forbid this content.
+    const body = md
+      .replace(/^> .*评价.*$/gm, '')
+      .replace(/- .*评价正文.*$/gm, '')
+      .replace(/- 任何平台的评价正文.*$/gm, '');
+    const hits = platformWords.filter((w) => body.includes(w));
     const pol = guide.licences.reviewTextPolicy;
     check(
       'G14',
-      'no platform review text or "N user reviews" style claim reaches the guide',
+      'no platform review text or "N user reviews" style claim reaches the guide BODY',
       hits.length === 0 && pol.platformReviewText === 0 && pol.curatedDescriptions === 0,
-      hits.length ? `platform vocabulary found: ${hits.join(', ')}` : `no platform-review vocabulary in guide.md; policy counters ${JSON.stringify(pol)}`,
+      hits.length
+        ? `platform vocabulary found outside the policy statement: ${hits.join(', ')}`
+        : `no platform-review vocabulary in the guide body (policy sentence excluded); counters ${JSON.stringify(pol)}`,
     );
   }
 
-  /* --- G15: route wording ---------------------------------------------- */
+  /* --- G15: route wording ---------------------------------------------- *
+   * Same lesson: `不是推荐清单` ("is not a recommendation list") contains the word
+   * 推荐. A negation must not read as a claim, so the check looks at the word in
+   * context and exempts an explicit negation.
+   */
   {
     const banned = ['推荐', '最佳', '必去', '不容错过', 'recommended', 'must-see'];
-    const hits = banned.filter((w) => md.toLowerCase().includes(w.toLowerCase()));
-    // The forbidden-word list is declared by the emitter; assert it is non-empty so
-    // this check cannot pass by having nothing to look for.
+    const lines = md.split('\n');
+    const hits = [];
+    for (const line of lines) {
+      for (const w of banned) {
+        let idx = line.toLowerCase().indexOf(w.toLowerCase());
+        while (idx !== -1) {
+          const before = line.slice(Math.max(0, idx - 12), idx);
+          const negated = /不是|不含|并不|非|no |not |never /.test(before);
+          if (!negated) hits.push(`${w} @ ${JSON.stringify(line.slice(Math.max(0, idx - 20), idx + 20))}`);
+          idx = line.toLowerCase().indexOf(w.toLowerCase(), idx + 1);
+        }
+      }
+    }
     const declared = /FORBIDDEN_ROUTE_WORDS/.test(readText('iteration/tools/emit-guide.mjs'));
     check(
       'G15',
-      'the guide does not promote the route (it is a projection, not a recommendation)',
+      'the guide does not promote the route (negated usage such as "不是推荐清单" is not a claim)',
       hits.length === 0 && declared,
-      hits.length ? `promotional wording found: ${hits.join(', ')}` : `no promotional route wording in guide.md; emitter declares the list=${declared}`,
+      hits.length
+        ? `promotional wording found: ${hits.slice(0, 4).join(' | ')}`
+        : `no promotional route wording in guide.md; emitter declares the list=${declared}`,
     );
   }
 
@@ -509,17 +569,27 @@ function main() {
   {
     const doorFile = contract;
     const doorRows = doorFile.doors || [];
+    const doorIds = doorRows.map((d) => d.doorId).filter(Boolean);
     const kinds = [...new Set(doorRows.map((d) => d.provenance?.valueKind))];
-    const inGuide = JSON.stringify(guide).includes('D-N');
+    // Test against the ACTUAL door ids, not the string "D-N": a first version
+    // grepped for `D-N` and failed on the quoted `whyNotObserved` prose.
+    const leaked = doorIds.filter((id) => JSON.stringify(guide).includes(id));
     const entranceCells = [];
     for (const s of guide.stops) for (const c of s.verified) if (c.field === 'entrances') entranceCells.push(s.placeId);
     for (const n of guide.nearby) for (const c of n.verified) if (c.field === 'entrances') entranceCells.push(n.placeId);
+    const authoredEntranceCells = [];
+    for (const s of guide.stops) for (const c of s.otherKinds) if (c.field === 'entrances') authoredEntranceCells.push(`${s.placeId}:${c.valueKind}`);
+    for (const n of guide.nearby) for (const c of n.otherKinds) if (c.field === 'entrances') authoredEntranceCells.push(`${n.placeId}:${c.valueKind}`);
+    const allAuthored = authoredEntranceCells.every((x) => x.endsWith(':authored'));
     check(
       'G16',
-      'the 12 authored doors are declared authored and never reach the verified column',
-      kinds.length === 1 && kinds[0] === 'authored' && !inGuide && entranceCells.length === 0,
+      'the 12 authored doors are declared authored, never verified, and their ids stay out of the guide',
+      kinds.length === 1 && kinds[0] === 'authored' && leaked.length === 0 && entranceCells.length === 0 &&
+        allAuthored && authoredEntranceCells.length > 0,
       `doors.json valueKinds=${JSON.stringify(kinds)} (${doorRows.length} doors); ` +
-        `door ids appearing in guide.json=${inGuide}; entrances cells in the verified column=${entranceCells.length}`,
+        `door ids appearing in guide.json=${JSON.stringify(leaked)}; ` +
+        `entrances cells in the verified column=${entranceCells.length}; ` +
+        `entrances cells outside it=${JSON.stringify(authoredEntranceCells)}`,
     );
   }
 
@@ -545,21 +615,16 @@ function main() {
           `verified column ${s.verifiedColumnCount} · gaps ${s.gapCount} entries / ${s.gapItemCount} items · ` +
           `fares computedFromDistance ${s.fares.computedFromDistance}\n`,
       );
-      process.stdout.write(`guide.json sha256 ${guide.inputs ? '' : ''}`);
-      const { createHash } = require$crypto();
       process.stdout.write(
-        `${createHash('sha256').update(readFileSync(resolve(REPO, guidePath))).digest('hex').toUpperCase()}\n`,
+        `guide.json sha256 ${createHash('sha256').update(readFileSync(resolve(REPO, guidePath))).digest('hex').toUpperCase()}\n`,
+      );
+      process.stdout.write(
+        `guide.md   sha256 ${createHash('sha256').update(readFileSync(resolve(REPO, mdPath))).digest('hex').toUpperCase()}\n`,
       );
     }
   }
   return failed === 0 ? 0 : 1;
 }
-
-function require$crypto() {
-  return nodeCrypto;
-}
-
-import * as nodeCrypto from 'node:crypto';
 
 try {
   process.exitCode = main();

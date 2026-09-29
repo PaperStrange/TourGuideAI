@@ -268,7 +268,78 @@ verifiedColumn = mayAppearInGuideVerifiedColumn(cell.valueKind)   // 来自 impo
 
 ---
 
+## 10. 实测结果（真实输出，非描述）
+
+`node iteration/tools/emit-guide.mjs`（2026-09-30，node v26.8.2）：
+
+```
+  scene     : build/scene.bin  404406 B  sha256 F3855B4E2DC9D596483F518E7086341F4E7327F9BFC688A692E67B713CB7C6DD
+  contract  : F50E4144E5BBAD1D14F889C944BDFD58A7CD6681349411F67A6AB9B23BC422A9
+  route     : longest simple path 地下鉄四条駅1番出入口 -> 清水寺 over the curated legs (8 of 9)
+  stops on the main chain : 9 of 22 place records
+  passed-alongside places : 13   accounted for: 22 of 22
+  measured total          : 3530.07 m along 四条通
+  outside 40 m window     : 6 of 9 chain stops, 7 of 13 passed-alongside
+```
+
+### 10.1 值分布（本项目首次测量）
+
+| `valueKind` | cell 数 | 进"已验证"栏 |
+|---|---|---|
+| `observed` | **134** | 其中 **127** 进栏；**7** 被事实层的 `guideVerifiedColumnAllowed=false` 拦下 |
+| `parsed` | **0** | 0（本层不消费场景高度） |
+| `authored` | **2** | 0（12 扇门 → 2 条 `entrances` 计数） |
+| `licenced` | **19** | 0（17 条规约算出的分钟数 + 其他） |
+| `abstract` | **0** | 0 |
+| **合计** | **155** | **127 进栏 / 28 在栏外** |
+
+**校验器核对**：`sum(valueCounts) === cellCount === 155`；**进"已验证"栏的 127 个 cell 的 `valueKind` 全部是 `observed`**（G4）。
+
+`licenced` 19 条的构成：`transit.json` 里 `minutesValueKind: "licenced"` 的分钟数（80 m/分规约算出，非观测）是主要来源——**这正是条款四存在的理由**：来源距离是 `observed`，而分钟数是常数算出来的，两者在同一条 leg 上，不能混成一列。
+
+### 10.2 缺口（全部写出）
+
+**18 条缺口记录 / 166 个缺口项**，逐条在 `guide.md` 里可见（G8b）：
+
+| `kind` | 条数 | 缺口项 |
+|---|---|---|
+| `unsourced-height` | 1 | **144** 栋建筑无来源高度（与 `scene.bin` manifest 的 `heightAbstract` **逐数核对相等**，G8） |
+| `no-running-time` | 8 | 8（`pack.transit.gaps` 全部透传） |
+| `coordinate-unavailable` | 4 | 2（南座前 + 站点集 1 未取得） |
+| `leg-missing-between-stops` | 4 | 1（未用到的 L04）+ 5 条运营方公表但无坐标的区间 |
+| `scene-window-outside` | 1 | 6 + 7 = **13** 个地点在 40 m 冻结走廊之外 |
+
+`sum(gap[].count)` 与 `summary.gapItemCount` 都是 **166**，两者相等由发射器计算、校验器读取。
+
+**5 条运营方公表值被保住了**（`约徒歩25分` / `徒歩7分` / `徒歩10分` / `徒歩約5分` / `徒歩約8分`）。第一版发射器读 `note || how || gap`，而 `placeGapNotes` 的字段是 `gap` / `value` / `whyNotALeg`——**5 条有来源的运营方数字因此从攻略里消失了**。这不是格式问题：`design-core` §3 要求"每条都带来源"，而它们有来源。现在它们逐条带 `source_url` 打印，并显式标注"读取到了，但它不能构成本包的一段行程"。
+
+### 10.3 确定性
+
+两次**独立 node 进程**：
+
+```
+guide.json  379BA2071DDE142D2F381B7CC4AF46DA16FA21ABC7E5B16F200BD65644093449  identical=True
+guide.md    BA790362BA21723C358ACD121A5F2D884B6980F0C8A9995AC14B2EE3D447C0D1  identical=True
+guide.html  59A9D89631CA08A68B6F499EF7E43004A2694C021B62FAE4BA54933F3A06B30E  identical=True
+```
+
+### 10.4 D-31 的机械结果
+
+3 条运赁全部 `basis: "lookup"`，`computedFromDistance: 0`，`priceableAsALeg: 0`。
+**`kmUpTo` 在 `guide.json` 里零命中**（G10b）——那个字段是这座陷阱的诱饵，本层不读、不抄、不引用。
+
+### 10.5 一处诚实的方向瑕疵（未修，记录在案）
+
+主链在 **x = 902.69 m（阪急河原町駅）** 分叉去 **建仁寺（x = 1331.72 m）**，再**折返**经 **祇園四条駅（x = 1114.74 m）** 继续向东。所以攻略上第 5 个停留点的沿街里程大于第 6 个——一条**来回支线**。
+
+- 几何上是对的：L08 = 605.3 m 去、L07 = 427.4 m 回（本层如实计入 3530.07 m）。
+- 读者体验上不顺：攻略没有标出"这一段是折返，多走 X m"。
+- **没有修**，因为没有来源陈述过一条更优的顺序，而本层不得自行排序成"看起来更顺"的样子。**这是一个需要 Lead 或策展层裁定的 UX 问题，不是数据问题。**
+
+---
+
 ## 11. 缺口清单（本层发现的，未关闭）
+
 
 | # | 缺口 | 影响 |
 |---|---|---|
@@ -278,3 +349,5 @@ verifiedColumn = mayAppearInGuideVerifiedColumn(cell.valueKind)   // 来自 impo
 | **E-4** | **`guideVerifiedColumnAllowed` 这道逐记录闸门没有校验器** | 与 GAP-7 同源。本层**执行**它，但没有权力让事实层执行 |
 | **E-5** | **多语言只有一种出口** | §7 |
 | **E-6** | **深链接未实现** | design-core §5 要求"冷门区间给深链并加注'出发前确认'"；本 v1 只有缺口条目 |
+| **E-7** | **主链在阪急河原町駅分叉折返去建仁寺**（§10.5） | 几何正确、读者体验不顺；需要裁定顺序，本层不得自行优化 |
+| **E-8** | **`guide.json` 的 `recommended_reason` 字段不存在** | 条款四禁止本层自撰景点描述。要它就得先裁定一份日本官方开放文本来源，并逐条带 `source_url` |

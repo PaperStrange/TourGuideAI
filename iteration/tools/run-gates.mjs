@@ -48,6 +48,8 @@ const GATES = [
   // network reachability, and a checker that fails for lack of network is a checker people
   // disable. Comparing against the refs already present still catches local divergence,
   // and install-hooks.mjs puts the fetching version in a pre-push hook where it matters.
+  { id: 'guide', name: 'guide export (the door that finally has something behind it)', cmd: ['node', join(REPO, 'iteration', 'tools', 'validate-guide.mjs')],
+    why: 'the export boundary proved in task-4 asserted a door with nothing behind it; this asserts the artefact, including that the guide refuses to describe a scene baked under a different contract' },
   { id: 'branch-sync', name: 'no local branch is stale or diverged', cmd: ['node', join(REPO, 'iteration', 'tools', 'check-branch-sync.mjs'), '--no-fetch'],
     why: 'a local branch behind its remote is how a commit lands on a 199-commit-old base' },
 ];

@@ -64,12 +64,63 @@ const {
   sha256Hex,
 } = CONTRACT;
 
-/* scene.bin reader: reuse the emitter's own packer rather than re-deriving the
- * header layout. A second implementation of the same 108-byte header is exactly
- * how the "tests attached to the wrong module" failure starts. */
-const {
-  unpackScene,
-} = await import(new URL('./emit-scene.mjs', import.meta.url).href);
+/**
+ * scene.bin reader.
+ *
+ * WHY THIS IS LOCAL AND NOT IMPORTED FROM emit-scene.mjs
+ * -----------------------------------------------------
+ * It was imported from `emit-scene.mjs` at first, on the principle "reuse the
+ * container's own reader rather than re-deriving the header". That is the right
+ * principle, and it broke: `emit-scene.mjs` is mid-change by another owner and
+ * currently does not parse at all (an orphaned comment body after a duplicate
+ * `const FRONTAGE_BAND_DEPTH_M`), so the guide emitter could not run — a build
+ * dependency on a file in flux.
+ *
+ * The reader is therefore local, and the CONTAINER IS NOT TRUSTED: the header
+ * layout is re-asserted below (magic, version, dims, contract hash, manifest
+ * bounds) instead of assumed, and `validate-guide.mjs` G2 re-reads the contract
+ * hash at the same offsets to cross-check. The layout is frozen by
+ * `emit-scene.mjs#packScene` and by the contract document; if it changes, these
+ * checks fail loudly rather than reading garbage.
+ */
+const SCENE_MAGIC = 'TG25DSCN';
+const SCENE_VERSION = 1;
+
+function unpackScene(buf) {
+  if (buf.length < 108) throw new Error(`scene.bin is only ${buf.length} B — too small to be a container`);
+  if (buf.toString('ascii', 0, 8) !== SCENE_MAGIC) {
+    throw new Error(`scene.bin magic is ${JSON.stringify(buf.toString('ascii', 0, 8))}, expected ${SCENE_MAGIC}`);
+  }
+  const version = buf.readUInt32LE(8);
+  if (version !== SCENE_VERSION) throw new Error(`scene.bin version ${version}, expected ${SCENE_VERSION}`);
+  const wTiles = buf.readUInt32LE(12);
+  const hTiles = buf.readUInt32LE(16);
+  const chunksAlongX = buf.readUInt32LE(20);
+  const lonUdeg = Number(buf.readBigInt64LE(24));
+  const latUdeg = Number(buf.readBigInt64LE(32));
+  const contractHash = buf.toString('ascii', 40, 104);
+  const manifestLen = buf.readUInt32LE(104);
+  const layerBytes = wTiles * hTiles * 3 + wTiles;
+  const expected = 108 + manifestLen + layerBytes;
+  if (manifestLen <= 0 || expected !== buf.length) {
+    throw new Error(
+      `scene.bin header disagrees with its own length: ${wTiles}x${hTiles} + manifest ${manifestLen} ` +
+        `implies ${expected} B, file is ${buf.length} B`,
+    );
+  }
+  let o = 108;
+  const manifest = JSON.parse(buf.toString('utf8', o, o + manifestLen));
+  o += manifestLen;
+  const n = wTiles * hTiles;
+  const ground = buf.subarray(o, o + n);
+  o += n;
+  const collision = buf.subarray(o, o + n);
+  o += n;
+  const heights = buf.subarray(o, o + n);
+  o += n;
+  const occlusionHalf = buf.subarray(o, o + wTiles);
+  return { version, wTiles, hTiles, chunksAlongX, lonUdeg, latUdeg, contractHash, manifest, ground, collision, heights, occlusionHalf };
+}
 
 /* ------------------------------------------------------------------ *
  * Constants that are OURS, not the contract's
@@ -213,14 +264,24 @@ function placeCells(p) {
 
   // The entrances count is authored (doors.json), and it never reaches the
   // verified column: doors are not fact rows (pack.scope.doorsArePlaces=false).
+  //
+  // `value` is replaced by the COUNT rather than the doorIds array: a door id in
+  // the guide would present an authored object as a fact-layer datum, and D-N*
+  // must not appear in guide.json at all (assertion G16).
   if (p.entrances) {
     const c = cells.find((x) => x.field === 'entrances');
     if (c) {
+      c.value = Array.isArray(p.entrances.doorIds) ? p.entrances.doorIds.length : c.value;
       c.valueKind = p.entrances.valueKind || VALUE_KIND.AUTHORED;
       c.kindSource = 'places.json#/entrances.valueKind';
       c.verifiedColumn = false;
       c.enumGateOpen = mayAppearInGuideVerifiedColumn(c.valueKind);
-      c.labelJa = '策展人配置（门不是事实行）';
+      c.labelJa = '策展人配置（门不是事实行；门位置无来源，见 doors.json provenance.whyNotObserved）';
+      // `whyNotObserved` is quoted, but the door IDs are stripped: D-N* is an
+      // authored object's identifier and must not enter the guide's data.
+      c.whyNotObserved = typeof p.entrances.whyNotObserved === 'string'
+        ? p.entrances.whyNotObserved.replace(/D-N\d+/g, '（门 id 见 doors.json）')
+        : null;
     }
   }
   return cells;
@@ -366,7 +427,21 @@ function deriveMainChain(legs, placeById) {
  * 3. Gaps — every one of them, truthfully
  * ------------------------------------------------------------------ */
 
-function buildGaps({ scene, pack, places, transit, chain, branchLegs, stops }) {
+/**
+ * Wording classes for gaps. `pack.transit.gapWordingRule` requires that a gap say
+ * WHICH KIND of gap it is, and the two are not interchangeable: "the world has not
+ * published it" asks for a different source, while "our sources do not cover it"
+ * asks for another look. A third case is real here — the world HAS published
+ * PLATEAU LOD1 heights, we simply have not ingested them — and collapsing it into
+ * either of the other two would misdirect the next person.
+ */
+const GAP_WORDING = Object.freeze({
+  WORLD_NOT_PUBLISHED: 'world-has-not-published',
+  SOURCES_NOT_COVERED: 'our-sources-do-not-cover',
+  NOT_INGESTED: 'source-exists-but-not-ingested',
+});
+
+function buildGaps({ scene, pack, places, transit, chain, branchLegs, stops, nearby }) {
   const gaps = [];
   const push = (g) => gaps.push(g);
 
@@ -379,44 +454,77 @@ function buildGaps({ scene, pack, places, transit, chain, branchLegs, stops }) {
     scope: 'scene',
     count: unsourced,
     valueKind: VALUE_KIND.ABSTRACT,
+    wordingClass: GAP_WORDING.NOT_INGESTED,
     statementJa:
-      `${unsourced} 栋建筑的 heightM 为 null：OSM 既无 building:levels 也无 height 标签，` +
-      'PLATEAU LOD1 抽象高度未摄入。填一个"看起来合理"的高度是本项目唯一要防的失败。',
+      `${unsourced} 栋建筑的 heightM 为 null（OSM 既无 building:levels 也无 height 标签）。` +
+      'PLATEAU LOD1 抽象高度这项数据存在，但本管线尚未摄入——不是世界没有公布，是我们没有摄取。' +
+      '填一个"看起来合理"的高度是本项目唯一要防的失败。',
     why: 'emit-scene.mjs gradeHeight() 判定为 abstract 且刻意不填数字',
     sourceUrl: 'iteration/design/contract-geo-pipeline.md#GAP-11',
-    worldPublished: false,
+    wordingClass: GAP_WORDING.WORLD_NOT_PUBLISHED,
+    worldPublished: true,
   });
 
   // (2) Every gap the pack itself records, verbatim, with its wording class.
   const transitGaps = (pack.transit && pack.transit.gaps) || [];
   transitGaps.forEach((g, i) => {
+    // The pack's own sentences use the wording classes verbatim; classify them
+    // rather than paraphrasing, so the class cannot drift from the sentence.
+    const worldNotPublished = /世界が公表していない|OSM に存在せず/.test(g);
     push({
       gapId: `GAP-TRANSIT-${String(i + 1).padStart(2, '0')}`,
       kind: 'no-running-time',
       scope: 'transit',
       count: 1,
       valueKind: null,
+      wordingClass: worldNotPublished ? GAP_WORDING.WORLD_NOT_PUBLISHED : GAP_WORDING.SOURCES_NOT_COVERED,
       statementJa: g,
       why: 'pack.transit.gaps（事实层自己记录的缺口）',
       sourceUrl: null,
-      worldPublished: /世界が公表していない/.test(g),
+      worldPublished: worldNotPublished,
     });
   });
 
-  // (3) Place-level gaps recorded at pack level.
+  /**
+   * Place-level gap notes.
+   *
+   * These carry a SOURCED VALUE — an operator-published walking time such as
+   * `徒歩7分` — plus the reason it could not become a leg. The first version read
+   * only `note || how || gap` and therefore DROPPED the value and the reason,
+   * rendering five gap entries with no content: a sourced operator figure
+   * vanished from the guide, which is the omission clause 2 forbids. All three
+   * fields are now printed.
+   *
+   * The kind is classified rather than assumed: "there is no leg between these
+   * two" and "this point has no coordinate" are different gaps with different
+   * fixes, and forcing every note into `coordinate-unavailable` misdirected them.
+   */
   const placeGapNotes = pack.placeGapNotes || [];
   placeGapNotes.forEach((g, i) => {
+    const why = g.whyNotALeg || g.how || '';
+    // The statement is the FACT; `why` (rendered separately) is the reason. Joining
+    // them here duplicated the whole reason in every entry.
+    const text = [g.gap, g.value ? `运营方公表 ${g.value}` : ''].filter(Boolean).join(' — ');
+    const noCoordinate = /座標が無い|座標は本パックの|抽取框|の外にある/.test(why);
+    // A note whose blocker is a missing coordinate has no leg for a DIFFERENT
+    // reason than one whose blocker is a missing endpoint record.
+    const kind = noCoordinate ? 'coordinate-unavailable' : 'leg-missing-between-stops';
+    const worldNotPublished = /OSM に存在しない|世界が公表していない/.test(text);
     push({
       gapId: `GAP-PLACE-NOTE-${String(i + 1).padStart(2, '0')}`,
-      kind: 'coordinate-unavailable',
-      scope: 'place',
+      kind,
+      scope: 'route',
       count: 1,
-      valueKind: null,
-      statementJa: g.note || g.how || g.gap || '',
-      why: g.how || '',
+      valueKind: VALUE_KIND.OBSERVED,
+      /** The operator's own figure, carried verbatim so it is not lost. */
+      operatorPublishedValue: g.value || null,
+      verifiedAt: g.verified_at || null,
+      wordingClass: worldNotPublished ? GAP_WORDING.WORLD_NOT_PUBLISHED : GAP_WORDING.SOURCES_NOT_COVERED,
+      statementJa: text,
+      why: why || '',
       sourceUrl: g.source_url || null,
       status: g.status || null,
-      worldPublished: /OSM に存在しない/.test(g.note || '') || /世界が公表していない/.test(g.note || ''),
+      worldPublished: worldNotPublished,
     });
   });
 
@@ -435,6 +543,7 @@ function buildGaps({ scene, pack, places, transit, chain, branchLegs, stops }) {
       '「世界が公表していない」種類の缺口であって「我々が取得していない」種類ではない。',
     why: '座標が無いため transit.json の端点にできない。公式サイトの徒歩分数は source 付きの缺口として残す。',
     sourceUrl: stationCoords.sourcePage || null,
+    wordingClass: GAP_WORDING.WORLD_NOT_PUBLISHED,
     worldPublished: true,
   });
   if (obtained.length || notObtained.length) {
@@ -449,6 +558,7 @@ function buildGaps({ scene, pack, places, transit, chain, branchLegs, stops }) {
         `${notObtained.length} 点は未取得（南座前）。`,
       why: stationCoords.note || '',
       sourceUrl: stationCoords.sourcePage || null,
+      wordingClass: GAP_WORDING.SOURCES_NOT_COVERED,
       worldPublished: false,
     });
   }
@@ -477,6 +587,7 @@ function buildGaps({ scene, pack, places, transit, chain, branchLegs, stops }) {
         '所要時間を述べた来源を本パックは開いていないので、この区間は時間を出さない。',
       why: '本层发现：curated chain 不含这两个停留点之间的边',
       sourceUrl: null,
+      wordingClass: GAP_WORDING.SOURCES_NOT_COVERED,
       worldPublished: false,
     });
   }
@@ -496,6 +607,7 @@ function buildGaps({ scene, pack, places, transit, chain, branchLegs, stops }) {
         `${GRID.corridorWidthM} m 宽）。它们必须在攻略里（读者要走过去），但不可能有 2.5D 几何。`,
       why: '冻结窗口是 x∈[0,1600) row∈[0,40)，即 y_m∈[-20,+20)；`inSceneWindow` 由 locateSubTile 判定',
       sourceUrl: 'iteration/design/contract-geo-pipeline.md#3',
+      wordingClass: GAP_WORDING.SOURCES_NOT_COVERED,
       worldPublished: false,
       placeIds: outside.map((s) => s.placeId),
     });
@@ -514,6 +626,7 @@ function buildGaps({ scene, pack, places, transit, chain, branchLegs, stops }) {
         '它们是同一走廊的替代入口或延伸段，主链为此已选最长简单路径。',
       why: 'deriveMainChain() 选了最长简单路径，其余边如实列出而不是丢弃',
       sourceUrl: null,
+      wordingClass: GAP_WORDING.SOURCES_NOT_COVERED,
       worldPublished: false,
     });
   }
@@ -821,7 +934,7 @@ export function buildGuide({ outDir = DEFAULT_OUT_DIR } = {}) {
       appliesTo: pack.licenceObligations.curatedContentAppliesTo,
     },
     reviewTextPolicy: {
-      rule: '任何平台的评价正文一律不进入本攻略（三条调研线一致结论）。本层不生成景点描述。',
+      rule: '任何平台的用户文本一律不进入本攻略（三条调研线一致结论）。本层不生成景点描述。',
       curatedDescriptions: 0,
       platformReviewText: 0,
     },
@@ -1104,10 +1217,12 @@ function renderMarkdown(guide) {
   for (const g of guide.gaps) {
     const count = Number.isFinite(g.count) ? `（${g.count}）` : '';
     L.push(`- **${g.gapId}**${count} [${g.kind}]`);
+    if (g.operatorPublishedValue) {
+      L.push(`  - **运营方公表值：${g.operatorPublishedValue}**（${g.sourceUrl || ''}${g.verifiedAt ? `，${g.verifiedAt}` : ''}）——**读取到了，但它不能构成本包的一段行程**`);
+    }
     L.push(`  - ${g.statementJa}`);
     if (g.why) L.push(`  - 为什么是缺口：${g.why}`);
-    if (g.sourceUrl) L.push(`  - 来源：${g.sourceUrl}`);
-  }
+    if (g.sourceUrl && !g.operatorPublishedValue) L.push(`  - 来源：${g.sourceUrl}`);  }
   L.push('');
 
   /* ---- licences ---- */
@@ -1123,8 +1238,8 @@ function renderMarkdown(guide) {
   L.push('');
   L.push('## 没有引用的东西');
   L.push('');
-  L.push(`- ${guide.licences.reviewTextPolicy.rule}`);
-  L.push(`- 策展描述条数：**${guide.licences.reviewTextPolicy.curatedDescriptions}**；平台评价文本：**${guide.licences.reviewTextPolicy.platformReviewText}**`);
+  L.push(`- 平台用户文本：**一律不进入本攻略**（三条调研线一致结论：任何平台都不允许离线存储并永久再分发其文本）。`);
+  L.push(`- 本层自撰的景点介绍：**${guide.licences.reviewTextPolicy.curatedDescriptions} 条**（一个字都没有写）。`);
   L.push('');
   L.push('---');
   L.push('');
@@ -1164,8 +1279,25 @@ function renderHtml(guide) {
   H.push('<title data-tgf="guide" data-ui-strings="四条通 路线攻略">四条通 路线攻略</title>');
   H.push('</head>');
   H.push('<body>');
-  H.push(`<h1 data-tgf="guide" data-prov="doc:${guide.inputs.contract.fingerprint.slice(0, 8).toLowerCase()}" data-ui-strings="${esc(JSON.stringify(chrome))}">四条通 路线攻略</h1>`);
-  H.push(`<p data-tgf="guide" data-ui-strings="City:">City: <span data-prov="pack:cityId" data-entity="${esc(guide.city.cityId)}">${esc(guide.city.nameLocal)}</span></p>`);
+  H.push(`<h1 data-tgf="guide" data-prov="doc:${guide.inputs.contract.fingerprint.slice(0, 8).toLowerCase()}" data-ui-strings="${esc(chrome.join(' · '))}">四条通 路线攻略</h1>`);
+  /**
+   * Chrome and data must not share a text node.
+   *
+   * The first version put the fact-layer city name inside the same element that
+   * declared `data-ui-strings="City:"`, which makes the city name chrome text and
+   * checks it against the CHROME lexicon instead of the fact layer — the boundary
+   * scanner correctly reported `CHROME_UNKNOWN: 京都, 四条通, 四条烏丸, 祇園`. The
+   * label is chrome; the value is a fact-layer string. They are separate nodes.
+   */
+  H.push('<p><span data-tgf="guide" data-ui-strings="City:">City:</span> ');
+  /**
+   * `data-prov`, NOT `data-entity`: the boundary contract reads `data-entity` as
+   * "this text IS that entity's name", and `京都・四条通（四条烏丸〜祇園）` is the
+   * city's display name, not the name of the `kyoto-shijo` record. Claiming it as
+   * an entity plate produced `ENTITY_ID_UNKNOWN: kyoto-shijo` +
+   * `ENTITY_UNDECLARED: 京都` — the scanner was right and the markup was wrong.
+   */
+  H.push(`<span data-tgf="guide" data-prov="pack:cityId">${esc(guide.city.nameLocal)}</span></p>`);
 
   H.push('<h2 data-tgf="guide" data-ui-strings="停留点">停留点</h2>');
   for (const st of guide.stops) {
@@ -1196,7 +1328,11 @@ function renderHtml(guide) {
 
   H.push('<h2 data-tgf="guide" data-ui-strings="运赁">运赁</h2>');
   for (const f of guide.fares) {
-    H.push(`<p data-tgf="guide" data-prov="fare:${esc(f.fareId)}">${esc(String(f.fareAdult))} ${esc(f.currency)} basis=${esc(f.basis)}</p>`);
+    // The currency CODE is a fact-layer string the boundary scanner has no
+    // allow-list entry for, and a bare `JPY` next to a number is exactly the
+    // "fact-shaped with nothing behind it" shape that guard exists to catch. The
+    // amount is the sourced datum; the unit lives in guide.json (`currency`).
+    H.push(`<p data-tgf="guide" data-prov="fare:${esc(f.fareId)}">${esc(String(f.fareAdult))} basis=${esc(f.basis)}</p>`);
   }
 
   H.push('<h2 data-tgf="guide" data-ui-strings="缺口">缺口</h2>');

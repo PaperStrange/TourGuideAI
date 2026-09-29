@@ -73,11 +73,11 @@
         },
         "fromM": {
           "xM": 16.522069,
-          "yM": 13.6457
+          "yM": 4.659507
         },
         "toM": {
           "xM": 58.329294,
-          "yM": 13.756641
+          "yM": 4.770448
         },
         "frontageXM": 41.807225,
         "edgeLengthM": 41.807372,
@@ -92,8 +92,9 @@
       "sidewalkFootway": {
         "osmWayId": 465066447,
         "footway": "sidewalk",
-        "yM": 11.322,
-        "note": "north sidewalk centreline; the facade lies 2.4 m beyond it, on the far side from the street."
+        "yM": 2.259,
+        "note": "north sidewalk centreline; the facade lies 2.4 m beyond it, on the far side from the street.",
+        "yMethod": "y of the sidewalk way at the facade run midpoint (x = 28.261), projected against the frozen ORIGIN. Recomputed in task-16: the stored value did not reproduce from the sidewalk geometry, and it duplicated observedBlockFeatures.sidewalks[].yAtFacadeMidM, which is the same quantity. Both now carry the same number."
       },
       "valueKind": "observed"
     },
@@ -127,11 +128,11 @@
         },
         "fromM": {
           "xM": 17.526173,
-          "yM": -10.983124
+          "yM": -19.969317
         },
         "toM": {
           "xM": 35.691321,
-          "yM": -10.761243
+          "yM": -19.747436
         },
         "frontageXM": 18.165148,
         "edgeLengthM": 18.166503,
@@ -146,8 +147,9 @@
       "sidewalkFootway": {
         "osmWayId": 465069406,
         "footway": "sidewalk",
-        "yM": -8.544,
-        "note": "south sidewalk centreline; the facade lies 2.4 m beyond it, on the far side from the street."
+        "yM": -17.529,
+        "note": "south sidewalk centreline; the facade lies 2.4 m beyond it, on the far side from the street.",
+        "yMethod": "y of the sidewalk way at the facade run midpoint (x = 26.609), projected against the frozen ORIGIN. Recomputed in task-16: the stored value did not reproduce from the sidewalk geometry, and it duplicated observedBlockFeatures.sidewalks[].yAtFacadeMidM, which is the same quantity. Both now carry the same number."
       },
       "valueKind": "observed",
       "observedOccupantPoi": {
@@ -158,11 +160,11 @@
           "name": "三菱ＵＦＪ銀行 京都支店"
         },
         "nodeM": {
-          "xM": 18.166,
-          "yM": -16.306
+          "xM": 18.165,
+          "yM": -25.294
         },
         "insideThisFootprint": true,
-        "perpendicularProjectionOntoFacadeXM": 18.166,
+        "perpendicularProjectionOntoFacadeXM": 18.165,
         "note": "The block's ONLY mapped occupant. The node position is observed; the position of the bank's doorway is NOT -- hence the projection is recorded as an anchor candidate (see doors[7].observedAnchors) and the door itself remains valueKind licenced.",
         "corroboration": "addr:block_number=10 with addr:quarter=長刀鉾町 matches the published address of 三菱ＵＦＪ銀行京都支店 (四条通烏丸東入長刀鉾町10). Two independent fields inside the same response agree; recorded as corroboration, not as proof."
       }
@@ -178,8 +180,8 @@
         "axis": "x",
         "fromM": 16.522069,
         "toM": 40,
-        "yFromM": 13.6457,
-        "yToM": 13.708002,
+        "yFromM": 4.659507,
+        "yToM": 4.721809,
         "clippedByBlock": true,
         "storefrontModule": {
           "indexOnFacade": 0,
@@ -188,18 +190,18 @@
       },
       "placement": {
         "authoredXM": 18.199064,
-        "authoredYM": 13.65015,
+        "authoredYM": 4.663957,
         "subX": 291,
-        "subY": 218,
+        "subY": 75,
         "quantisedXM": 18.1875,
-        "quantisedYM": 13.625,
+        "quantisedYM": 4.6875,
         "quantisationShiftM": {
           "x": 0.011564,
-          "y": 0.02515
+          "y": 0.023543
         },
         "floorXMVersusCanonical": {
           "floorXM": 18,
-          "floorYM": 13,
+          "floorYM": 4,
           "disagree": false
         }
       },
@@ -214,8 +216,8 @@
         "axis": "x",
         "fromM": 16.522069,
         "toM": 40,
-        "yFromM": 13.6457,
-        "yToM": 13.708002,
+        "yFromM": 4.659507,
+        "yToM": 4.721809,
         "clippedByBlock": true,
         "storefrontModule": {
           "indexOnFacade": 1,
@@ -224,18 +226,18 @@
       },
       "placement": {
         "authoredXM": 21.553054,
-        "authoredYM": 13.65905,
+        "authoredYM": 4.672858,
         "subX": 345,
-        "subY": 219,
+        "subY": 75,
         "quantisedXM": 21.5625,
-        "quantisedYM": 13.6875,
+        "quantisedYM": 4.6875,
         "quantisationShiftM": {
           "x": 0.009446,
-          "y": 0.02845
+          "y": 0.014642
         },
         "floorXMVersusCanonical": {
           "floorXM": 21,
-          "floorYM": 13,
+          "floorYM": 4,
           "disagree": false
         }
       },
@@ -250,8 +252,8 @@
         "axis": "x",
         "fromM": 16.522069,
         "toM": 40,
-        "yFromM": 13.6457,
-        "yToM": 13.708002,
+        "yFromM": 4.659507,
+        "yToM": 4.721809,
         "clippedByBlock": true,
         "storefrontModule": {
           "indexOnFacade": 2,
@@ -260,18 +262,18 @@
       },
       "placement": {
         "authoredXM": 24.907044,
-        "authoredYM": 13.667951,
+        "authoredYM": 4.681758,
         "subX": 399,
-        "subY": 219,
+        "subY": 75,
         "quantisedXM": 24.9375,
-        "quantisedYM": 13.6875,
+        "quantisedYM": 4.6875,
         "quantisationShiftM": {
           "x": 0.030456,
-          "y": 0.019549
+          "y": 0.005742
         },
         "floorXMVersusCanonical": {
           "floorXM": 24,
-          "floorYM": 13,
+          "floorYM": 4,
           "disagree": false
         }
       },
@@ -286,8 +288,8 @@
         "axis": "x",
         "fromM": 16.522069,
         "toM": 40,
-        "yFromM": 13.6457,
-        "yToM": 13.708002,
+        "yFromM": 4.659507,
+        "yToM": 4.721809,
         "clippedByBlock": true,
         "storefrontModule": {
           "indexOnFacade": 3,
@@ -296,18 +298,18 @@
       },
       "placement": {
         "authoredXM": 28.261035,
-        "authoredYM": 13.676851,
+        "authoredYM": 4.690658,
         "subX": 452,
-        "subY": 219,
+        "subY": 75,
         "quantisedXM": 28.25,
-        "quantisedYM": 13.6875,
+        "quantisedYM": 4.6875,
         "quantisationShiftM": {
           "x": 0.011035,
-          "y": 0.010649
+          "y": 0.003158
         },
         "floorXMVersusCanonical": {
           "floorXM": 28,
-          "floorYM": 13,
+          "floorYM": 4,
           "disagree": false
         }
       },
@@ -322,8 +324,8 @@
         "axis": "x",
         "fromM": 16.522069,
         "toM": 40,
-        "yFromM": 13.6457,
-        "yToM": 13.708002,
+        "yFromM": 4.659507,
+        "yToM": 4.721809,
         "clippedByBlock": true,
         "storefrontModule": {
           "indexOnFacade": 4,
@@ -332,18 +334,18 @@
       },
       "placement": {
         "authoredXM": 31.615025,
-        "authoredYM": 13.685751,
+        "authoredYM": 4.699558,
         "subX": 506,
-        "subY": 219,
+        "subY": 75,
         "quantisedXM": 31.625,
-        "quantisedYM": 13.6875,
+        "quantisedYM": 4.6875,
         "quantisationShiftM": {
           "x": 0.009975,
-          "y": 0.001749
+          "y": 0.012058
         },
         "floorXMVersusCanonical": {
           "floorXM": 31,
-          "floorYM": 13,
+          "floorYM": 4,
           "disagree": false
         }
       },
@@ -358,8 +360,8 @@
         "axis": "x",
         "fromM": 16.522069,
         "toM": 40,
-        "yFromM": 13.6457,
-        "yToM": 13.708002,
+        "yFromM": 4.659507,
+        "yToM": 4.721809,
         "clippedByBlock": true,
         "storefrontModule": {
           "indexOnFacade": 5,
@@ -368,18 +370,18 @@
       },
       "placement": {
         "authoredXM": 34.969015,
-        "authoredYM": 13.694651,
+        "authoredYM": 4.708459,
         "subX": 560,
-        "subY": 219,
+        "subY": 75,
         "quantisedXM": 35,
-        "quantisedYM": 13.6875,
+        "quantisedYM": 4.6875,
         "quantisationShiftM": {
           "x": 0.030985,
-          "y": 0.007151
+          "y": 0.020959
         },
         "floorXMVersusCanonical": {
           "floorXM": 34,
-          "floorYM": 13,
+          "floorYM": 4,
           "disagree": true
         },
         "boundaryCaseNote": "The authored module midpoint 34.969015 m lies 30.985 mm west of the x = 35 tile boundary -- inside the 1/32 m (31.25 mm) band where floor(x_m) and the canonical sub-tile path disagree (contract clause 3, assertion A3). floor() would give cellX = 34; the canonical sub-tile (560) gives 35. The canonical value governs and is what is declared. The door therefore sits at the west edge of cell 35 rather than the middle of it."
@@ -395,8 +397,8 @@
         "axis": "x",
         "fromM": 16.522069,
         "toM": 40,
-        "yFromM": 13.6457,
-        "yToM": 13.708002,
+        "yFromM": 4.659507,
+        "yToM": 4.721809,
         "clippedByBlock": true,
         "storefrontModule": {
           "indexOnFacade": 6,
@@ -405,18 +407,18 @@
       },
       "placement": {
         "authoredXM": 38.323005,
-        "authoredYM": 13.703551,
+        "authoredYM": 4.717359,
         "subX": 613,
-        "subY": 219,
+        "subY": 75,
         "quantisedXM": 38.3125,
-        "quantisedYM": 13.6875,
+        "quantisedYM": 4.6875,
         "quantisationShiftM": {
           "x": 0.010505,
-          "y": 0.016051
+          "y": 0.029859
         },
         "floorXMVersusCanonical": {
           "floorXM": 38,
-          "floorYM": 13,
+          "floorYM": 4,
           "disagree": false
         }
       },
@@ -431,8 +433,8 @@
         "axis": "x",
         "fromM": 17.526173,
         "toM": 35.691321,
-        "yFromM": -10.983124,
-        "yToM": -10.761243,
+        "yFromM": -19.969317,
+        "yToM": -19.747436,
         "clippedByBlock": false,
         "storefrontModule": {
           "indexOnFacade": 0,
@@ -441,18 +443,18 @@
       },
       "placement": {
         "authoredXM": 19.342688,
-        "authoredYM": -10.960936,
+        "authoredYM": -19.947129,
         "subX": 309,
-        "subY": -175,
+        "subY": -319,
         "quantisedXM": 19.3125,
-        "quantisedYM": -10.9375,
+        "quantisedYM": -19.9375,
         "quantisationShiftM": {
           "x": 0.030188,
-          "y": 0.023436
+          "y": 0.009629
         },
         "floorXMVersusCanonical": {
           "floorXM": 19,
-          "floorYM": -11,
+          "floorYM": -20,
           "disagree": false
         }
       },
@@ -466,13 +468,13 @@
             "atm": "yes"
           },
           "nodeM": {
-            "xM": 18.166,
-            "yM": -16.306
+            "xM": 18.165,
+            "yM": -25.294
           },
-          "projectedXM": 18.166,
-          "offsetFromThisDoorM": 1.177,
+          "projectedXM": 18.165,
+          "offsetFromThisDoorM": 1.178,
           "valueKind": "observed",
-          "whatThisDoesNotClaim": "It does not claim the doorway is at x = 18.166. It records that the only sourced occupant of this facade projects to 18.166, 1.177 m west of this door, inside this door's storefront module [17.526, 21.159]. A human check could promote this door by re-anchoring it to 18.166."
+          "whatThisDoesNotClaim": "It does not claim the doorway is at x = 18.165. It records that the only sourced occupant of this facade projects to 18.165, 1.178 m west of this door, inside this door's storefront module [17.526, 21.159]. A human check could promote this door by re-anchoring it to 18.165. The x values here were 18.166 until task-16, disagreeing by 1 mm with this node's own xM in observedOccupantPoi; the exact projection is 18.165148, so both now read 18.165. The datum move does not touch x."
         }
       ]
     },
@@ -485,8 +487,8 @@
         "axis": "x",
         "fromM": 17.526173,
         "toM": 35.691321,
-        "yFromM": -10.983124,
-        "yToM": -10.761243,
+        "yFromM": -19.969317,
+        "yToM": -19.747436,
         "clippedByBlock": false,
         "storefrontModule": {
           "indexOnFacade": 1,
@@ -495,18 +497,18 @@
       },
       "placement": {
         "authoredXM": 22.975717,
-        "authoredYM": -10.91656,
+        "authoredYM": -19.902753,
         "subX": 368,
-        "subY": -175,
+        "subY": -318,
         "quantisedXM": 23,
-        "quantisedYM": -10.9375,
+        "quantisedYM": -19.875,
         "quantisationShiftM": {
           "x": 0.024283,
-          "y": 0.02094
+          "y": 0.027753
         },
         "floorXMVersusCanonical": {
           "floorXM": 22,
-          "floorYM": -11,
+          "floorYM": -20,
           "disagree": true
         },
         "boundaryCaseNote": "The authored module midpoint 22.975717 m lies 24.283 mm west of the x = 23 tile boundary -- inside the 1/32 m band where floor(x_m) and the canonical sub-tile path disagree (contract clause 3, assertion A3). floor() would give cellX = 22; the canonical sub-tile (368) gives 23. The canonical value governs and is what is declared."
@@ -522,8 +524,8 @@
         "axis": "x",
         "fromM": 17.526173,
         "toM": 35.691321,
-        "yFromM": -10.983124,
-        "yToM": -10.761243,
+        "yFromM": -19.969317,
+        "yToM": -19.747436,
         "clippedByBlock": false,
         "storefrontModule": {
           "indexOnFacade": 2,
@@ -532,18 +534,18 @@
       },
       "placement": {
         "authoredXM": 26.608747,
-        "authoredYM": -10.872184,
+        "authoredYM": -19.858376,
         "subX": 426,
-        "subY": -174,
+        "subY": -318,
         "quantisedXM": 26.625,
-        "quantisedYM": -10.875,
+        "quantisedYM": -19.875,
         "quantisationShiftM": {
           "x": 0.016253,
-          "y": 0.002816
+          "y": 0.016624
         },
         "floorXMVersusCanonical": {
           "floorXM": 26,
-          "floorYM": -11,
+          "floorYM": -20,
           "disagree": false
         }
       },
@@ -558,8 +560,8 @@
         "axis": "x",
         "fromM": 17.526173,
         "toM": 35.691321,
-        "yFromM": -10.983124,
-        "yToM": -10.761243,
+        "yFromM": -19.969317,
+        "yToM": -19.747436,
         "clippedByBlock": false,
         "storefrontModule": {
           "indexOnFacade": 3,
@@ -568,18 +570,18 @@
       },
       "placement": {
         "authoredXM": 30.241776,
-        "authoredYM": -10.827807,
+        "authoredYM": -19.814,
         "subX": 484,
-        "subY": -173,
+        "subY": -317,
         "quantisedXM": 30.25,
-        "quantisedYM": -10.8125,
+        "quantisedYM": -19.8125,
         "quantisationShiftM": {
           "x": 0.008224,
-          "y": 0.015307
+          "y": 0.0015
         },
         "floorXMVersusCanonical": {
           "floorXM": 30,
-          "floorYM": -11,
+          "floorYM": -20,
           "disagree": false
         }
       },
@@ -594,8 +596,8 @@
         "axis": "x",
         "fromM": 17.526173,
         "toM": 35.691321,
-        "yFromM": -10.983124,
-        "yToM": -10.761243,
+        "yFromM": -19.969317,
+        "yToM": -19.747436,
         "clippedByBlock": false,
         "storefrontModule": {
           "indexOnFacade": 4,
@@ -604,18 +606,18 @@
       },
       "placement": {
         "authoredXM": 33.874806,
-        "authoredYM": -10.783431,
+        "authoredYM": -19.769624,
         "subX": 542,
-        "subY": -173,
+        "subY": -316,
         "quantisedXM": 33.875,
-        "quantisedYM": -10.8125,
+        "quantisedYM": -19.75,
         "quantisationShiftM": {
           "x": 0.000194,
-          "y": 0.029069
+          "y": 0.019624
         },
         "floorXMVersusCanonical": {
           "floorXM": 33,
-          "floorYM": -11,
+          "floorYM": -20,
           "disagree": false
         }
       },
@@ -629,7 +631,7 @@
         "osmNodeId": 14196400744,
         "m": {
           "xM": 18.165,
-          "yM": -16.308
+          "yM": -25.294
         },
         "tags": {
           "amenity": "bank",
@@ -644,7 +646,7 @@
         "osmNodeId": 10220936881,
         "m": {
           "xM": 16.522,
-          "yM": -13.979
+          "yM": -22.965
         },
         "tags": {
           "tourism": "information",
@@ -657,7 +659,7 @@
         "osmNodeId": 10220936882,
         "m": {
           "xM": 11.958,
-          "yM": -18.638
+          "yM": -27.624
         },
         "tags": {
           "tourism": "information",
@@ -672,7 +674,7 @@
         "osmNodeId": 2737069286,
         "m": {
           "xM": 20.721,
-          "yM": 0.111
+          "yM": -8.875
         },
         "tags": {
           "highway": "crossing",
@@ -683,7 +685,7 @@
           "traffic_signals:sound": "yes",
           "traffic_signals:vibration": "no"
         },
-        "note": "Signalised crossing over 四条通 on the east arm of the 四条烏丸 junction, carried by footway way 465069430 which links the two sidewalks between yM -8.542 and yM 11.316."
+        "note": "Signalised crossing over 四条通 on the east arm of the 四条烏丸 junction, carried by footway way 465069430 which links the two sidewalks between yM -17.529 and yM 2.330 in the task-16 datum."
       }
     ],
     "streetFurniture": [
@@ -691,7 +693,7 @@
         "osmNodeId": 13037178804,
         "m": {
           "xM": 5.477,
-          "yM": -8.542
+          "yM": -17.529
         },
         "tags": {
           "natural": "tree"
@@ -701,7 +703,7 @@
         "osmNodeId": 13037298967,
         "m": {
           "xM": 22.455,
-          "yM": -6.767
+          "yM": -15.754
         },
         "tags": {
           "man_made": "surveillance",
@@ -712,7 +714,7 @@
         "osmNodeId": 13762279596,
         "m": {
           "xM": 22.273,
-          "yM": 10.65
+          "yM": 1.664
         },
         "tags": {
           "man_made": "surveillance",
@@ -731,8 +733,8 @@
           15.609
         ],
         "yRangeM": [
-          -15.199,
-          -5.658
+          -24.185,
+          -14.644
         ],
         "side": "south"
       },
@@ -746,8 +748,8 @@
           13.966
         ],
         "yRangeM": [
-          10.207,
-          19.526
+          1.22,
+          10.539
         ],
         "side": "north"
       }
@@ -764,7 +766,7 @@
           "covered": "yes",
           "bicycle": "dismount"
         },
-        "yAtFacadeMidM": 11.246
+        "yAtFacadeMidM": 2.259
       },
       {
         "osmWayId": 465069406,
@@ -777,7 +779,7 @@
           "covered": "yes",
           "bicycle": "dismount"
         },
-        "yAtFacadeMidM": -8.542
+        "yAtFacadeMidM": -17.529
       }
     ],
     "sidewalkCoveredTagCaveat": "Both sidewalk ways carry covered=yes. Recorded verbatim because it would mean the sidewalks here are roofed, which is a visible feature the art layer would have to render. It has NOT been independently checked by a human and the tag applies to ways extending 860 m east of this block, well beyond what was examined. Treat as tagged-not-verified; see gap G7 for the general accuracy caveat.",
@@ -799,8 +801,8 @@
           632.95
         ],
         "yRangeM": [
-          2.663,
-          8.431
+          -6.324,
+          -0.555
         ]
       },
       {
@@ -820,8 +822,8 @@
           611.225
         ],
         "yRangeM": [
-          -1.553,
-          1.22
+          -10.539,
+          -7.766
         ]
       },
       {
@@ -838,8 +840,8 @@
           221.542
         ],
         "yRangeM": [
-          0.222,
-          6.767
+          -8.764,
+          -2.219
         ]
       }
     ],
@@ -885,11 +887,11 @@
       },
       "fromM": {
         "xM": 8.215,
-        "yM": 20.635
+        "yM": 11.649
       },
       "toM": {
         "xM": 16.522,
-        "yM": 13.646
+        "yM": 4.66
       },
       "lengthM": 10.856,
       "inBlockPortion": "yM <= 20.0, i.e. cellY <= 39",
@@ -915,15 +917,15 @@
       },
       "fromM": {
         "xM": 9.585,
-        "yM": -19.858
+        "yM": -28.845
       },
       "toM": {
         "xM": 17.526,
-        "yM": -10.983
+        "yM": -19.969
       },
       "lengthM": 11.91,
-      "inBlockPortion": "whole edge, cellY 0..9",
-      "whyUnused": "Same reason as C-north-corner.",
+      "inBlockPortion": "EFFECTIVELY NONE -- 0.042 m of 11.91 m, in cellY 0 only. This said 'whole edge, cellY 0..9' before task-16. The task-16 datum move put the edge at yM -28.845 .. -19.969, so all but the last 42 mm of it now lies SOUTH of the world's southern edge (yM -20). The candidate is therefore no longer usable as a door site on this edge, and the level designer should not treat it as an available corner entrance without re-measuring under a datum that covers it.",
+      "whyUnused": "Same reason as C-north-corner, and now a second and harder one: see inBlockPortion -- the edge has fallen almost entirely outside the world since the task-16 datum move.",
       "valueKind": "observed",
       "movedFrom": "doors.json in task-9"
     }

@@ -24,7 +24,7 @@
   },
   "cellYConvention": {
     "formula": "cellY = row = tileY + 20, where tileY = tileFromSub(subY) = floor(y_m) on the canonical sub-tile",
-    "why": "四条通's centreline passes through the origin, so y_m = 0 IS the street centreline and the 40 m corridor spans y_m in [-20, +20) with row in [0, 40). The corridor is therefore 20 m of block on each side of the street.",
+    "why": "The datum was moved north in task-16, so y_m = 0 is NO LONGER the street centreline and the old sentence here ('the centreline passes through the origin') was retired. What is true now: the datum is the street's mid-drift over the corridor, so 四条通 sits at y_m = -8.986 where it enters the world at the western end and rises to about +10.874 at x=1388 -- inside the 40 m corridor on both sides, with roughly 11 m of clearance to the south edge and 9.1 m to the north. The corridor still spans y_m in [-20, +20) with row in [0, 40). The reason for the move is that a datum taken AT ONE END of a 1.6 km street cannot be centred on it; see evidenceStreetCentrelineAtOrigin below.",
     "evidenceStreetCentrelineAtOrigin": {
       "osmWayId": 465069436,
       "nodeIndex": 3,
@@ -36,10 +36,17 @@
         "lanes": "2",
         "maxspeed": "40"
       },
-      "measuredYM": 0,
-      "note": "ORIGIN equals BOTH way 465069436 node#3 AND way 678103923 node#0 -- the two are the same node. Both are geometry nodes of 四条通 (highway=primary), so the origin lies ON 四条通's centreline. Way 678103923 runs west (lanes=4) and way 465069436 runs east (lanes=2): this IS the 四条烏丸 way boundary the contract describes."
+      "measuredYM": -8.986,
+      "nodeStillIsTheCentreline": "Way 465069436 node#3 and way 678103923 node#0 are the SAME node, and both are geometry nodes of 四条通 (highway=primary) -- so this node is still the evidence that the corridor's western anchor sits on the street. Way 678103923 runs west (lanes=4) and 465069436 runs east (lanes=2): this IS the 四条烏丸 way boundary the contract describes.",
+      "thisNodeNoLongerSetsTheDatum": "It used to. measuredYM was 0 because the frozen datum WAS this node's latitude. The datum is now the street's mid-drift, so this node sits at y_m = -8.986: the datum is 8.986 m north of it. The superseded latitude is preserved by the contract itself as ORIGIN.supersededLatUdeg; this file deliberately does not copy it, because a copied datum drifts exactly the way the enum copy did (D-12).",
+      "datumChange": {
+        "whatHappened": "In task-16 the contract moved ORIGIN north by 81 microdegrees, which is 8.986 m measured in the frozen projection.",
+        "whyItHadToMove": "The street climbs 19.86 m and then falls 9.76 m across the corridor. With the datum pinned at the western end, the north clearance at x=1388 fell to 0.14 m and the street left the world; the scene gate's S14 assertion caught it.",
+        "why8_986AndNotTheBandMidpoint": "The move was chosen INSIDE the feasible band rather than at its midpoint so that all twelve authored doorways shift by the SAME nine rows. At the band midpoint the north doors would have moved eight rows and the south doors nine, which would have changed the twelve doors' positions relative to each other -- a content change dressed as a datum change. At 8.986 m every door moves by exactly -9 rows and nothing else about the set moves: north doors cellY 33 -> 24, south doors cellY 9 -> 0.",
+        "whatDidNotMove": "Door count, door order, cellX, the frontage widths, the storefront modules and the pairwise minimum separation are all unchanged, because x depends on longitude and the move was purely in latitude. Every y-valued field in both halves was recomputed from the stored microdegrees against the new datum rather than shifted by hand."
+      }
     },
-    "conflictWithTaskCard": "Task card task-2 states the grid conversion as 'cellY = floor(y_m)' while also requiring cellY in [0,40). Those two are joint-inconsistent: floor(y_m) over the corridor [-20,20) yields [-20,20), and it would place the street centreline at cellY = 0 (the block's south edge) instead of cellY = 20 (its middle), putting every south-side door at negative cellY. The card's own next sentence ('blocksAcrossY: 1 -- so cellY's whole range is [0,40)') and its '两侧' (both sides) frontage model are only satisfiable by the row reading. cellY = row is used here; see contradictions C1."
+    "conflictWithTaskCard": "Task card task-2 states the grid conversion as 'cellY = floor(y_m)' while also requiring cellY in [0,40). Those two are joint-inconsistent: floor(y_m) over the corridor [-20,20) yields [-20,20), so the whole south half of the world would take a negative cellY and no south-side door could exist at all. The card's own next sentence ('blocksAcrossY: 1 -- so cellY's whole range is [0,40)') and its '两侧' (both sides) frontage model are only satisfiable by the row reading. cellY = row is used here; see contradictions C1. This argument is about the ROW CONVENTION and does not depend on where the datum sits."
   },
   "frozenConstants": {
     "mustImport": "docs/handOff/dsh-bundle-tourguide-2.5d/tools/world-grid.mjs",
@@ -81,7 +88,7 @@
       "step2_clip": "Clip each edge to the block, x_m in [0, 40). The west ends are already inside the block; the north edge is cut at x_m = 40 by the block boundary.",
       "step3_allocate": "Allocate the 12 doors between the two facades in proportion to measured frontage, largest-remainder: north 7, south 5. This yields near-uniform storefront widths of 3.3540 m and 3.6330 m (design module is 3 m; measured mean is 3.4703 m).",
       "step4_place": "Place each door at the midpoint of its storefront module, projected onto the measured facade edge.",
-      "step5_quantise": "Quantise to the canonical integer 1/16 sub-tile with the imported quantizeToSubTile(), then cellX = tileFromSub(subX) and cellY = tileFromSub(subY) + 20. The canonical sub-tile governs; floor(x_m) is a reference oracle only (contract clause 3 / assertion A3). Two doors land within 1/32 m of a tile boundary and the two paths disagree there -- see doors D-N6 and D-S2.",
+      "step5_quantise": "Quantise to the canonical integer 1/16 sub-tile with the imported quantizeToSubTile(), then cellX = tileFromSub(subX) and cellY = tileFromSub(subY) + 20. The canonical sub-tile governs; floor(x_m) is a reference oracle only (contract clause 3 / assertion A3). Two doors land within 1/32 m of a tile boundary and the two paths disagree there -- see doors D-N6 and D-S2. These cells are a function of the FROZEN DATUM and of nothing else: when the datum moved in task-16 the cells were recomputed from the stored microdegrees rather than adjusted by hand, and the validator re-derives them on every run (assertion V4), which is how the stale cells were caught.",
       "noLanestUsed": "No facade positioning uses the `lanes` tag. LANES_QUALITY.usableAsFact = false; the frozen contract asserts it (A15). Frontage geometry here is footprint edges only."
     },
     "doorExistence": {
@@ -127,8 +134,8 @@
     {
       "doorId": "D-N1",
       "cellX": 18,
-      "cellY": 33,
-      "tileY": 13,
+      "cellY": 24,
+      "tileY": 4,
       "entrancePointJa": "本門",
       "interiorTemplate": "S 10×7",
       "provenance": {
@@ -152,8 +159,8 @@
     {
       "doorId": "D-N2",
       "cellX": 21,
-      "cellY": 33,
-      "tileY": 13,
+      "cellY": 24,
+      "tileY": 4,
       "entrancePointJa": "本門",
       "interiorTemplate": "S 10×7",
       "provenance": {
@@ -177,8 +184,8 @@
     {
       "doorId": "D-N3",
       "cellX": 24,
-      "cellY": 33,
-      "tileY": 13,
+      "cellY": 24,
+      "tileY": 4,
       "entrancePointJa": "本門",
       "interiorTemplate": "S 10×7",
       "provenance": {
@@ -202,8 +209,8 @@
     {
       "doorId": "D-N4",
       "cellX": 28,
-      "cellY": 33,
-      "tileY": 13,
+      "cellY": 24,
+      "tileY": 4,
       "entrancePointJa": "本門",
       "interiorTemplate": "S 10×7",
       "provenance": {
@@ -227,8 +234,8 @@
     {
       "doorId": "D-N5",
       "cellX": 31,
-      "cellY": 33,
-      "tileY": 13,
+      "cellY": 24,
+      "tileY": 4,
       "entrancePointJa": "本門",
       "interiorTemplate": "S 10×7",
       "provenance": {
@@ -252,8 +259,8 @@
     {
       "doorId": "D-N6",
       "cellX": 35,
-      "cellY": 33,
-      "tileY": 13,
+      "cellY": 24,
+      "tileY": 4,
       "entrancePointJa": "本門",
       "interiorTemplate": "S 10×7",
       "provenance": {
@@ -277,8 +284,8 @@
     {
       "doorId": "D-N7",
       "cellX": 38,
-      "cellY": 33,
-      "tileY": 13,
+      "cellY": 24,
+      "tileY": 4,
       "entrancePointJa": "本門",
       "interiorTemplate": "S 10×7",
       "provenance": {
@@ -302,8 +309,8 @@
     {
       "doorId": "D-S1",
       "cellX": 19,
-      "cellY": 9,
-      "tileY": -11,
+      "cellY": 0,
+      "tileY": -20,
       "entrancePointJa": "本門",
       "interiorTemplate": "M 13×9",
       "provenance": {
@@ -327,8 +334,8 @@
     {
       "doorId": "D-S2",
       "cellX": 23,
-      "cellY": 9,
-      "tileY": -11,
+      "cellY": 0,
+      "tileY": -20,
       "entrancePointJa": "本門",
       "interiorTemplate": "S 10×7",
       "provenance": {
@@ -352,8 +359,8 @@
     {
       "doorId": "D-S3",
       "cellX": 26,
-      "cellY": 9,
-      "tileY": -11,
+      "cellY": 0,
+      "tileY": -20,
       "entrancePointJa": "本門",
       "interiorTemplate": "S 10×7",
       "provenance": {
@@ -377,8 +384,8 @@
     {
       "doorId": "D-S4",
       "cellX": 30,
-      "cellY": 9,
-      "tileY": -11,
+      "cellY": 0,
+      "tileY": -20,
       "entrancePointJa": "本門",
       "interiorTemplate": "S 10×7",
       "provenance": {
@@ -402,8 +409,8 @@
     {
       "doorId": "D-S5",
       "cellX": 33,
-      "cellY": 9,
-      "tileY": -11,
+      "cellY": 0,
+      "tileY": -20,
       "entrancePointJa": "本門",
       "interiorTemplate": "S 10×7",
       "provenance": {
@@ -446,14 +453,14 @@
     "minPairwiseDoorSeparationM": 3.3125,
     "minSameFacadeCellSpacing": 3,
     "maxQuantisationShiftM": 0.030985,
-    "derivedOnlyNote": "maxPerpendicularOffsetFromFacadeM was REMOVED here. The stored per-door perpendicularOffsetFromFacadeM did not reproduce from the facade geometry (worst 3.600 mm, D-S4), and a derived value stored beside its source is a second source of truth that drifts. The ODbL half no longer stores it either; validate-doors.mjs assertion V5 computes the true perpendicular offset from the facade line and prints the maximum (0.029069 m)."
+    "derivedOnlyNote": "maxPerpendicularOffsetFromFacadeM was REMOVED here. The stored per-door perpendicularOffsetFromFacadeM did not reproduce from the facade geometry (worst 3.600 mm, D-S4), and a derived value stored beside its source is a second source of truth that drifts. The ODbL half no longer stores it either; validate-doors.mjs assertion V5 computes the true perpendicular offset from the facade line and prints the maximum. That maximum is 0.029831 m (D-N7) under the task-16 datum; it is not datum-invariant, because re-quantising moves each door to a different sub-tile, so it must be read from V5's output rather than from here. The value printed here in an earlier revision (0.029069 m) was the pre-task-16 figure and went stale the moment the datum moved -- which is the argument for not storing it at all."
   },
   "gaps": [
     {
       "gapId": "G1",
       "claim": "No OSM entrance node exists inside this block.",
       "severity": "blocks observed doors",
-      "measured": "The corpus slice contains exactly 10 entrance nodes; 0 fall in x in [0,40), y in [-20,20). The nearest node of any kind to the block centre is 57.7 m away (node 12749347474, shop=gift). Query Q2 (exhaustive over the exact block bbox: every node and way) returned 41 elements and ZERO entrance nodes.",
+      "measured": "The corpus slice contains exactly 10 entrance nodes; 0 fall in x in [0,40), y in [-20,20). The nearest node IN THE SLICE -- which carries only entrance and shop nodes, so this is not a claim about every node that exists -- is 53.3 m from the block centre (node 12749347474, shop=gift, at xM 68.28 / yM 22.63 in the task-16 datum). Query Q2 (exhaustive over the exact block bbox: every node and way) returned 41 elements and ZERO entrance nodes.",
       "consequence": "All 12 doorways are authored. No door in this pack can be valueKind observed.",
       "closesWhen": "A field survey or a municipal open dataset supplies entrance positions; or the project accepts authored doors permanently (then the valueKind enum needs a member that means 'authored')."
     },
@@ -461,7 +468,7 @@
       "gapId": "G2",
       "claim": "The block's west end is the 四条烏丸 junction, not shop frontage. The design's 40 m-per-side frontage does not exist.",
       "severity": "changes the art and level budget",
-      "measured": "North facade begins at node 2157078408 (xM 16.522069). South facade begins at node 2157078404 (xM 17.526173). x in [0, 16.52) contains the 烏丸通 carriageway and its sidewalks (ways 907059193 x[5.57,20.72], 907059194 x[7.39,20.81]), two barrier=hedge ways (907059199 x[5.84,15.61]; 907059200 x[4.84,13.97]) and the signalised pedestrian crossing node 2737069286 at (20.72, 0.11).",
+      "measured": "North facade begins at node 2157078408 (xM 16.522069). South facade begins at node 2157078404 (xM 17.526173). x in [0, 16.52) contains the 烏丸通 carriageway and its sidewalks (ways 907059193 x[5.57,20.72], 907059194 x[7.39,20.81]), two barrier=hedge ways (907059199 x[5.84,15.61]; 907059200 x[4.84,13.97]) and the signalised pedestrian crossing node 2737069286 at xM 20.721 / yM -8.875 in the task-16 datum.",
       "consequence": "16.5-17.5 m of each 40 m side is not frontage. See also C3.",
       "closesWhen": "The design re-states the block's usable frontage, or the block is re-anchored so the origin sits at the frontage start."
     },
@@ -477,7 +484,7 @@
       "gapId": "G4",
       "claim": "The south frontage stops at xM 35.691321; x in [35.69, 40) has no south footprint, and no source describes what is there.",
       "severity": "limits doors; forbids a sourced 路地奥 door",
-      "measured": "Way 205732536 turns south at node 2157078405 (35.691321, -10.761243); way 205732545 (四条烏丸ＦＴスクエア) starts at xM 40.7. No footway, service way or barrier is mapped in x in [35.69, 40) on the south side (Q2 found none).",
+      "measured": "Way 205732536 turns south at node 2157078405 (xM 35.691 / yM -19.747 in the task-16 datum); way 205732545 (四条烏丸ＦＴスクエア) starts at xM 40.7. No footway, service way or barrier is mapped in x in [35.69, 40) on the south side (Q2 found none).",
       "consequence": "The gap is most likely a service alley, but OSM does not say so. No door is placed there and no 路地奥 entrance is claimed anywhere in this block.",
       "closesWhen": "A source (survey, municipal data, street-level imagery opened by a human) describes the gap."
     },
@@ -522,7 +529,7 @@
       "id": "C1",
       "document": "shared task task-2 (card) vs docs/handOff/dsh-bundle-tourguide-2.5d/tools/world-grid.mjs",
       "what": "The card gives the grid conversion as 'cellY = floor(y_m)' and in the same breath requires cellY in [0,40) and calls the block two-sided.",
-      "measured": "world-grid.mjs locateSubTile() defines row = tileY + GRID.halfCrossTiles (line 477), i.e. row = floor(y_m) + 20. The corridor is y_m in [-20, +20) -> row in [0,40).",
+      "measured": "world-grid.mjs locateSubTile() defines row = tileY + GRID.halfCrossTiles, i.e. row = floor(y_m) + 20. The corridor is y_m in [-20, +20) -> row in [0,40). No line number is cited here: this file previously named one and the contract has moved since, which is the same class of staleness as a copied constant.",
       "whyItMatters": "Under the card's literal formula the whole south half of the corridor (y_m < 0) gets a negative cellY and no south-side door can exist -- which kills the card's own '两侧' model and its [0,40) requirement. This pack uses cellY = row.",
       "needs": "Card correction. The card's own next sentence already describes the row reading."
     },
@@ -530,9 +537,9 @@
       "id": "C2",
       "document": "iteration/tools/freeze-origin.mjs line 54 + design-core.md section 8.2.1 (1)b",
       "what": "freeze-origin.mjs hardcodes ANCHOR = { name: '四条烏丸', lat: 35.003825, lon: 135.759680 } with the comment 'Coordinates for 四条烏丸 intersection (四条通 x 烏丸通)'. design-core publishes the result as '四条烏丸东南 18.87 m (东 3.56 m + 南 18.53 m)'.",
-      "measured": "Both the anchor (the 四条通 x 烏丸通 crossing) and the origin (way 465069436 node#3, a 四条通 highway=primary geometry node) are supposed to lie ON 四条通's centreline. They differ by 18.527 m of latitude over 3.560 m of longitude -- an implied grade of 520%, impossible for one street. The origin is the measured value, so the hardcoded ANCHOR.latitude is ~18.5 m north of 四条通.",
+      "measured": "The anchor (the 四条通 x 烏丸通 crossing) and the origin NODE (way 465069436 node#3, a 四条通 highway=primary geometry node) both lie ON 四条通's centreline. They differ by 18.527 m of latitude over 3.560 m of longitude -- an implied grade of 520%, impossible for one street. The node is the measured value, so the hardcoded ANCHOR.latitude is ~18.5 m north of 四条通.",
       "harmlessBecause": "freeze-origin.mjs line 73 clamps on LONGITUDE only (p.lon >= ANCHOR.lon), so the bad latitude never entered the derivation. The damage is confined to the cosmetic distanceFromAnchorM = 18.9 cross-check, which design-core then published as if the anchor were on the street.",
-      "whyItMatters": "The 18.87 m figure is now load-bearing in the reading of the origin: it is the reason a reader might expect the origin to sit off the street. It does not. 四条通's centreline passes through the origin -- verified directly: way 465069436 node#3 and way 678103923 node#0 are the SAME node at (0.000, 0.000), and the street's geometry through the block runs at y_m = 0.000 to 0.111.",
+      "whyItMatters": "The 18.87 m figure is load-bearing in the reading of the origin: it is the reason a reader might expect the origin to sit off the street. The centreline evidence is about the NODE, not about the constant, and task-16 changed which of those sets the datum -- so the argument is restated in terms of the node. Verified directly: way 465069436 node#3 and way 678103923 node#0 are the SAME node, and that node is on 四条通's centreline. It used to BE the datum; since task-16 it sits at y_m = -8.986, because the datum is now the street's mid-drift (8.986 m north of this node). The node's latitude is preserved by the contract as ORIGIN.supersededLatUdeg. What this contradiction is about is unchanged either way: the ANCHOR literal is 18.5 m north of the street, in any datum, because both are absolute latitudes.",
       "needs": "Correct ANCHOR.lat in freeze-origin.mjs, or delete the distanceFromAnchorM cross-check, or restate design-core section 8.2.1 (1)b. File is outside this task's write scope."
     },
     {
@@ -547,7 +554,7 @@
       "id": "C4",
       "document": "design-core.md section 8.2.1 (1)c, contract clause 4b (LANES_QUALITY)",
       "what": "contract-geo-pipeline.md GAP-8 / design-core leave 'is 四条通 really 4 lanes?' open, and note that OSM's lanes=1 sits over 四条河原町 while L2 says about 4.",
-      "measured": "Independent geometric measure, using no lanes tag at all: the two 四条通-facing facades are at yM 13.646 (north) and yM -10.983 (south), a 24.6 m right-of-way between building walls. Sidewalk centrelines are ways 465066447 at yM 11.322 and 465069406 at yM -8.544, i.e. 19.9 m apart. That leaves roughly 15 m of carriageway, consistent with 4 lanes of about 3.5 m and NOT with the lanes=2 on way 465069436, the first way east of 四条烏丸.",
+      "measured": "Independent geometric measure, using no lanes tag at all: the two 四条通-facing facades are at yM 4.660 (north) and yM -19.969 (south) in the task-16 datum, a 24.6 m right-of-way between building walls. Sidewalk centrelines are ways 465066447 at yM 2.259 and 465069406 at yM -17.529, i.e. 19.8 m apart. That leaves roughly 15 m of carriageway, consistent with 4 lanes of about 3.5 m and NOT with the lanes=2 on way 465069436, the first way east of 四条烏丸. The right-of-way width and the sidewalk separation are both differences between two y values, so the task-16 datum move leaves them untouched; the individual y values above are datum-relative and were recomputed.",
       "supports": "The frozen LANES_QUALITY.usableAsFact = false. This measurement is independent of the contradictory tag and does not discharge GAP-8 (a human check is still owed); it is a second, geometric opinion.",
       "needs": "Nothing here. Recorded as supporting evidence for a decision already frozen."
     },
@@ -627,8 +634,8 @@
   },
   "osmDerived": {
     "file": "city-packs/kyoto-shijo/kyoto-shijo-osm.json",
-    "sha256": "aa3d34cf99f79c6cfaf43329a8e840951305253dc31cd88ad6c72787d7c2c226",
-    "sha256Note": "Re-recorded in task-9 after three authorised edits to the ODbL half: evidenceFiles gained the raw-bytes chain, source.extractedAt was set, and the non-reproducing per-door perpendicularOffsetFromFacadeM was dropped. V18 asserts this matches the file on disk.",
+    "sha256": "416d763bf0ce30f6e29b47b423310bc030ffa8601bcc601dfafeafaab6d30963",
+    "sha256Note": "Re-recorded whenever the ODbL half changes: task-9 (evidenceFiles, extractedAt, and dropping the non-reproducing perpendicular offset) and task-16 (the datum move). V18 asserts this value equals the file on disk, so editing one without the other fails rather than passing quietly.",
     "licence": "ODbL 1.0",
     "licenceUri": "https://opendatacommons.org/licenses/odbl/1-0/",
     "attribution": "© OpenStreetMap contributors",

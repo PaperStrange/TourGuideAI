@@ -6,7 +6,7 @@
 > **更新规则**：每次共享任务状态变化时更新本文件。
 > **本文件只做索引**：判定在门与登记册里，这里只给**命令与结论**。**抄了判断的看板会变成下一条"文档承诺 ≠ 仓库实况"（D-07）。**
 
-**最后更新**：2026-09-30 · `iteration` = `1d77e77` · **门 11 道**
+**最后更新**：2026-09-30 · `iteration` = `e9597d4` · **门 12 道**
 
 ---
 
@@ -54,7 +54,7 @@
 
 | 项 | 命令 | 当前 |
 |---|---|---|
-**全部门** | `node iteration/tools/run-gates.mjs` | **11 道**（新增 `scene`）。最近一次：**9 过 2 红**（`scene` S8、`doors` V1，**两条都在改**） |
+**全部门** | `node iteration/tools/run-gates.mjs` | **12 道**（新增 `scene` + `guide`）。**11 过 1 红**：`doors`（datum 移动后 12 扇门的格子待重算，`doors-author` 在跑） |
 **仓库规则** | `iteration/tools/check-repo-hygiene.mjs` | **7 条**，R1–R5 过、R6 KNOWN-ACCEPTED、**R7 NOTE（信息性）** |
 **溯源对齐** | `iteration/tools/check-source-alignment.mjs` | `PRESENT 21  AS-PARTS 10  OSM-ELEMENT 9  **ABSENT 0**  NEAR-VARIANT 0  UNKNOWN 4`<br>（起点 8/12；**4 是诚实下限**：2 条组合地址 + 2 条 OSM 无名字对象的手作标签） |
 **场景** | `node iteration/tools/emit-scene.mjs --assert` | 真实几何进管线。`scene.bin` **393,979 B**，两次运行 + 逆序遍历 + `lanes` 污染后 **sha256 均相同** |

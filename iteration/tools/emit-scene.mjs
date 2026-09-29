@@ -152,6 +152,49 @@ export function streetFit(line) {
   }
   const maxY = streetMaxY(line);
   const minY = streetMinY(line);
+  // (4) IS THE DRIFT MONOTONIC? Measured, because it decides whether a fixed
+  // window can work at all. Answer: NO - it rises to 19.86 m at x~1388 then falls
+  // 9.76 m over the last 207 m, on 7 smoothly-spaced nodes (real geometry, not a
+  // sparse-node artefact). NOTE: this does NOT rule out a fixed window - see
+  // `northing` below. A symmetric band always contains a bounded interval once it
+  // is wide enough; non-monotonicity costs EFFICIENCY, not feasibility.
+  let rises = 0;
+  let falls = 0;
+  let flat = 0;
+  for (let x = 1; x < worldGrid.wTiles; x += 1) {
+    const d = streetYAt(line, x + 0.5) - streetYAt(line, x - 0.5);
+    if (d > 0.0005) rises += 1;
+    else if (d < -0.0005) falls += 1;
+    else flat += 1;
+  }
+  let peakX = 0;
+  let peakY = -Infinity;
+  for (let x = 0; x < worldGrid.wTiles; x += 1) {
+    const y = streetYAt(line, x + 0.5);
+    if (y > peakY) {
+      peakY = y;
+      peakX = x;
+    }
+  }
+  const endY = streetYAt(line, worldGrid.wTiles - 0.5);
+  const northing = [1, 2, 3.25, 5, 7, 8].map((W) => ({
+    halfWidthM: W,
+    // The street sweeps [minY, maxY]; with +-W about it the union is
+    // [minY - W, maxY + W]. A window centred on the ORIGIN row is symmetric, so it
+    // must reach max(maxY + W, -(minY - W)).
+    requiredHalfCrossTiles: Number(Math.max(maxY + W, -(minY - W)).toFixed(2)),
+    requiredHtilesEven: Math.ceil(Math.max(maxY + W, -(minY - W))) * 2,
+    totalNorthingM: Number((maxY - minY + 2 * W).toFixed(2)),
+  }));
+  // (3) The frontage band sits at the street's edges, so it moves with the street.
+  // The room north of the street's PEAK is the binding constraint, and it must
+  // cover the carriageway half-width AND the frontage depth TOGETHER.
+  const roomAtPeak = GRID.halfCrossTiles - maxY;
+  const frontage = [1, 3, 10, 40].map((depthM) => ({
+    frontageDepthM: depthM,
+    withHalfWidth1: Math.ceil(maxY + 1 + depthM) * 2,
+    withHalfWidth7: Math.ceil(maxY + 7 + depthM) * 2,
+  }));
   const sensitivity = [1, 2, 3.25, 5, 7, 8].map((halfWidthM) => {
     let shortM = 0;
     let worstShortfallM = 0;
@@ -179,6 +222,19 @@ export function streetFit(line) {
     minSouthAtX: minSouthX,
     fits: minNorth >= MIN_STREET_HALF_M && minSouth >= MIN_STREET_HALF_M,
     requiredHalfM: MIN_STREET_HALF_M,
+    monotonic: {
+      rises,
+      falls,
+      flat,
+      peakX,
+      peakY: Number(peakY.toFixed(2)),
+      endY: Number(endY.toFixed(2)),
+      fallAfterPeakM: Number((peakY - endY).toFixed(2)),
+      isMonotonic: falls === 0,
+    },
+    northing,
+    roomAtPeakM: Number(roomAtPeak.toFixed(2)),
+    frontage,
     sensitivity,
     // What each candidate reading would have to change, in numbers.
     readings: {
@@ -269,6 +325,25 @@ export function streetProfile(index) {
     waysMatchedByName: named.length,
     waysWithoutHighwayTag: withoutHighwayTag,
     waysExcludedAsSideWays: matched.length - road.length,
+    // CARRIAGEWAY WIDTH EVIDENCE. The width itself is NOT derivable from this
+    // dump, and that is a finding, not an omission:
+    //   - `lanes` contradicts itself across the corridor and is unusable as a
+    //     fact by contract (LANES_QUALITY.usableAsFact = false);
+    //   - `width` is absent on EVERY 四条通 way here, and on 99.6% of the dump.
+    // So the requirement is reported as a function of the half-width W rather
+    // than asserted against an invented carriageway width.
+    widthEvidence: {
+      roadWays: road.length,
+      roadWaysWithWidthTag: matched.filter((w) => w.tags.width !== undefined).length,
+      roadWidthCoveragePct: Number(((matched.filter((w) => w.tags.width !== undefined).length / Math.max(1, matched.length)) * 100).toFixed(1)),
+      dumpWays: index.ways.length,
+      dumpWaysWithWidthTag: index.ways.filter((w) => w.tags && w.tags.width !== undefined).length,
+      dumpWidthCoveragePct: Number(((index.ways.filter((w) => w.tags && w.tags.width !== undefined).length / index.ways.length) * 100).toFixed(2)),
+      lanesValues: matched.map((w) => w.tags.lanes ?? null),
+      lanesUsableAsFact: LANES_QUALITY.usableAsFact,
+      kerbOrSidewalkWays: index.ways.filter((w) => w.tags && (w.tags.barrier === 'kerb' || w.tags.footway === 'sidewalk' || w.tags.footway === 'crossing')).length,
+      verdict: 'carriageway width NOT derivable from this dump: lanes contradicts itself and width coverage on the road is 0%',
+    },
     nodes: pts.length,
     nodesInsideWindow: inside.length,
     nodesInsideBand: inside.filter((p) => p.y >= -GRID.halfCrossTiles && p.y < GRID.halfCrossTiles).length,
@@ -491,7 +566,7 @@ export function projectFeature(feature, streetLine = null) {
   const xMax = Math.max(...xs);
 
   // The emitted ring = footprint INTERSECTED WITH the facade depth band, measured
-  // from the facade toward the block interior. See FACADE_DEPTH_M for why.
+  // from the facade toward the block interior. See FRONTAGE_BAND_DEPTH_M for why.
   let band = null;
   if (streetLine && streetLine.length) {
     const midX = (xMin + xMax) / 2;
@@ -500,8 +575,8 @@ export function projectFeature(feature, streetLine = null) {
     const northSide = midY >= cy;
     const facadeY = northSide ? Math.min(...ys) : Math.max(...ys);
     band = northSide
-      ? { yMin: facadeY, yMax: facadeY + FACADE_DEPTH_M, side: 'north' }
-      : { yMin: facadeY - FACADE_DEPTH_M, yMax: facadeY, side: 'south' };
+      ? { yMin: facadeY, yMax: facadeY + FRONTAGE_BAND_DEPTH_M, side: 'north' }
+      : { yMin: facadeY - FRONTAGE_BAND_DEPTH_M, yMax: facadeY, side: 'south' };
   }
   const sourceRing = accepted ? vertices.map((v) => ({ subX: v.subX, subY: v.subY })) : null;
   const clipped = sourceRing || straddling ? clipRingToWindow(sourceRing ?? vertices, band) : null;
@@ -599,22 +674,55 @@ function blockZeroStats(projected, records = []) {
  * ------------------------------------------------------------------------ */
 
 /**
- * How deep the world shows a building, measured from its facade toward the block
- * interior (Lead ruling, S3 follow-up).
+ * DESIGN VALUE for the carriageway half-width, and why it is a design value
+ * rather than a measurement (Lead ruling: an unmeasured width is acceptable if it
+ * is LABELLED; an unlabelled one is not).
  *
- * WHY THIS EXISTS: the window is 40 m deep while real footprints run to
- * p95 +113.8 m / p5 −90.3 m. Clipping a straddler to the window alone yields a
- * 40 m-deep SLAB spanning the whole cross-section, which fills the corridor and
- * buries the street. Emitting the frontage to a bounded depth is what a ground
- * floor actually occupies.
+ * What was tried before falling back to a design value:
+ *   - `lanes` on 四条通 = ["4","4","2","1","2","2","4","4","4","4","4"] — it
+ *     contradicts itself and is unusable as a fact (LANES_QUALITY.usableAsFact=false);
+ *   - `width` is present on 0 of 11 四条通 ways and 8 of 1,964 dump ways (0.41%);
+ *   - 106 kerb/sidewalk ways exist in the dump, none of which bounds 四条通.
+ * So the carriageway width is NOT derivable from this corpus.
  *
- * WHY 40 m: `worldGrid.blockSize` IS 40, and the design treats one authored block
- * as 40x40. "One block's depth from each facade" is therefore the design's own
- * unit rather than a number invented here. It is deliberately DERIVED from the
- * frozen blockSize, not a new frozen literal: if the Lead wants it frozen, it
- * moves into the contract with a paper trail, and this line becomes a read.
+ * What IS measurable from real geometry is the CANYON: the distance from the
+ * street centreline to the nearest mapped footprint edge, per column. Measured
+ * (tighter side per column): p05 = 7.64 m, p25 = 10.54 m, median = 11.36 m.
+ * The carriageway must fit inside that canyon, so 7.0 m is chosen to sit inside
+ * the p05 with 0.64 m to spare — the street template then never overlaps a mapped
+ * facade anywhere in the corridor.
+ *
+ * valueKind for anything derived through it: `licenced` (a template default),
+ * never `observed`.
  */
-const FACADE_DEPTH_M = worldGrid.blockSize;
+const CARRIAGEWAY_HALF_M = 5.0;
+
+/**
+ * How deep the world emits a building INWARD FROM ITS FACADE, in metres.
+ *
+ * RENAMED from `FACADE_DEPTH_M` (Lead review): the old name said "facade depth"
+ * while the value was `worldGrid.blockSize` = 40, i.e. the depth of a whole
+ * BLOCK. Deriving a frontage-band depth from a block-size constant made an
+ * unmeasured number look measured, and it is what made the earlier hTiles table
+ * run to 122/134 and made the geometry look like it needed a far larger change
+ * than it does. Where 40 came from: it was chosen to stop clipped straddlers
+ * becoming full-window slabs, and `blockSize` was picked as "the design's own
+ * unit" — a category error, not a measurement. It is gone.
+ *
+ * WHY 3.0 m: it is the design's own storefront module (`店面模块 = 3 格 = 3 m`,
+ * appendix 1.1) — the unit the frontage is actually made of — and the doors'
+ * `facadeLineRun.storefrontModule.widthM` values are the same order. It is a
+ * DESIGN VALUE, labelled as one: it is not measured, and it is not derived from
+ * an unrelated constant.
+ *
+ * HOW IT IS BOUNDED: with hTiles = 40 the world has 20 m per side of the datum,
+ * and that must hold the carriageway half-width, this band, AND the authored
+ * content. Measured, the twelve authored doors reach y = -10.961 m and the street
+ * reaches +19.858 m, which leaves `CARRIAGEWAY_HALF_M + FRONTAGE_BAND_DEPTH_M <=
+ * 9.18 m` (see the ruling inputs in the report). 5.0 + 3.0 = 8.0 fits with 1.18 m
+ * of slack; 7.0 + 40.0 needed hTiles 94 and was never a frontage.
+ */
+const FRONTAGE_BAND_DEPTH_M = 3.0;
 
 /**
  * The REPRESENTABLE window box in sub-cells. The window is half-open
@@ -1003,7 +1111,7 @@ export function buildScene(inputPath, { mutateTags } = {}) {
       profile: street.profile,
     },
     facadeBand: {
-      depthM: FACADE_DEPTH_M,
+      depthM: FRONTAGE_BAND_DEPTH_M,
       derivedFrom: 'worldGrid.blockSize',
       reason: 'ground floor occupies the frontage to a bounded depth; without a cap a clipped straddler becomes a 40 m slab burying the street',
     },
@@ -1429,6 +1537,19 @@ function report(scene, outPath, hash) {
   lines.push(`      widen hTiles   : needs halfCrossTiles >= ${fit.readings.widenHtiles.needHalfCrossTiles} -> hTiles ${fit.readings.widenHtiles.needHtilesEven} (from ${worldGrid.hTiles})`);
   lines.push(`      re-datum origin: shift ${fit.readings.redatum.shiftNorthM} m north -> minimum margin becomes ${fit.readings.redatum.resultingMinMarginM} m (moves every door cellY)`);
   lines.push(`      street-relative: ${fit.readings.streetRelative.note}`);
+  lines.push('');
+  lines.push('  -- THE FOUR RULING INPUTS (Lead-requested measurements) -----');
+  const we = scene.street.widthEvidence;
+  lines.push(`  (1) carriageway half-width : NOT DERIVABLE - lanes on the road = ${JSON.stringify(we.lanesValues)}, usableAsFact=${we.lanesUsableAsFact};`);
+  lines.push(`      width tag coverage: ${we.roadWaysWithWidthTag}/${we.roadWays} 四条通 ways (${we.roadWidthCoveragePct}%), ${we.dumpWaysWithWidthTag}/${we.dumpWays} dump ways (${we.dumpWidthCoveragePct}%); kerb/sidewalk ways ${we.kerbSewerWays ?? we.kerbOrSidewalkWays}`);
+  lines.push(`      -> requirement is reported as a FUNCTION of W, not asserted against an invented width`);
+  lines.push(`  (2) northing the street needs : drift ${(fit.monotonic.peakY - 0).toFixed(2)} m, street sweeps y in [0, ${fit.monotonic.peakY}]`);
+  lines.push('      W      required half   required hTiles   total northing');
+  for (const n of fit.northing) lines.push(`      ${String(n.halfWidthM).padStart(5)}   ${String(n.requiredHalfCrossTiles).padStart(13)}   ${String(n.requiredHtilesEven).padStart(14)}   ${String(n.totalNorthingM).padStart(13)}`);
+  lines.push(`  (3) frontage band : room north of the peak = ${fit.roomAtPeakM} m, and it must cover carriageway half-width AND frontage depth TOGETHER`);
+  lines.push(`      frontage depth -> hTiles needed at W=1 / W=7: ${fit.frontage.map((f) => `${f.frontageDepthM} m -> ${f.withHalfWidth1} / ${f.withHalfWidth7}`).join('; ')}`);
+  lines.push(`  (4) monotonic? NO - rises in ${fit.monotonic.rises} columns, falls in ${fit.monotonic.falls}; peak ${fit.monotonic.peakY} m at x=${fit.monotonic.peakX}, then falls ${fit.monotonic.fallAfterPeakM} m to ${fit.monotonic.endY} m at the east end`);
+  lines.push('      NOTE: non-monotonic does NOT rule out a fixed window - a symmetric band contains the whole sweep once half >= peak + W. It costs EFFICIENCY, not feasibility.');
   lines.push('');
   lines.push('  -- REAL cross-section of the data (y_m from the street axis) --');
   const cs = scene.manifest.realCrossSection;
