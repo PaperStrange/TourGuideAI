@@ -32,6 +32,20 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 const src = process.argv[2];
 if (!src || !existsSync(src)) { console.error('usage: node freeze-origin.mjs <overpass.json> [--out file.json]'); process.exit(10); }
 
+// Read the corridor length from the AUTHORITATIVE frozen constant rather than
+// repeating the number here. Hardcoding it is exactly how this file once wrote a
+// stale `frozenWTiles: 2000 / marginM: -404.95` into the measurement record after
+// the contract had moved to 1600.
+const WG = new URL('../../docs/handOff/dsh-bundle-tourguide-2.5d/tools/world-grid.mjs', import.meta.url);
+let wTiles;
+try {
+  ({ worldGrid: { wTiles } } = await import(WG.href));
+} catch (e) {
+  console.error(`cannot read worldGrid.wTiles from ${WG.pathname}: ${e.message}`);
+  process.exit(11);
+}
+if (!Number.isInteger(wTiles) || wTiles <= 0) { console.error(`bad wTiles from contract: ${wTiles}`); process.exit(11); }
+
 const ROAD = '四条通';
 const LON_M_PER_DEG = 91282.15;
 const LAT_M_PER_DEG = 110940.65;
@@ -80,10 +94,15 @@ console.log(`  OSM way ${west.wayId} node#${west.idx}  highway=${west.highway}  
 console.log(`  east end  lon ${east.lon.toFixed(7)}  lat ${east.lat.toFixed(7)}  (microdeg ${toUd(east.lon)}, ${toUd(east.lat)})`);
 
 console.log(`\n── corridor span along the clamped road ──`);
-console.log(`  span          : ${span.toFixed(2)} m`);
-console.log(`  frozen wTiles : 2000`);
-console.log(`  margin        : ${(span - 2000).toFixed(2)} m  ${span >= 2000 ? '(covers the 2000 m contract ✅)' : '❌ SHORT — the slice is smaller than wTiles assumes'}`);
-console.log(`\n  origin sits ${distFromAnchor.toFixed(1)} m from ${ANCHOR.name} (expected: within one block)`);
+console.log(`  span              : ${span.toFixed(2)} m`);
+console.log(`  wTiles (contract) : ${wTiles}`);
+console.log(`  margin            : ${(span - wTiles).toFixed(2)} m  ${span >= wTiles ? '(covers the corridor ✅)' : '❌ SHORT — the slice is smaller than wTiles assumes'}`);
+const dEast = (west.lon - ANCHOR.lon) * LON_M_PER_DEG;
+const dSouth = -(west.lat - ANCHOR.lat) * LAT_M_PER_DEG;
+console.log(`\n  origin sits ${distFromAnchor.toFixed(2)} m from ${ANCHOR.name}`);
+console.log(`    decomposition: east ${dEast.toFixed(2)} m, ${dSouth >= 0 ? 'south' : 'north'} ${Math.abs(dSouth).toFixed(2)} m`);
+console.log(`    NOTE: the distance is not an eastward offset. Writing "east ${distFromAnchor.toFixed(1)} m" would imply`);
+console.log(`          lonUdeg ${toUd(ANCHOR.lon + distFromAnchor / LON_M_PER_DEG)}, which is wrong by ~${((distFromAnchor - dEast)).toFixed(1)} m of longitude.`);
 
 const payload = {
   note: 'A1 origin — derived candidate to freeze into the geo contract (GAP-1)',
@@ -103,7 +122,7 @@ const payload = {
     osmWayId: west.wayId, nodeIndex: west.idx, highway: west.highway, lanes: west.lanes || null, width: west.width || null,
   },
   eastEnd: { lonUdeg: toUd(east.lon), latUdeg: toUd(east.lat), lonDeg: east.lon, latDeg: east.lat },
-  corridor: { measuredSpanM: Number(span.toFixed(2)), frozenWTiles: 2000, marginM: Number((span - 2000).toFixed(2)) },
+  corridor: { measuredSpanM: Number(span.toFixed(2)), wTiles, marginM: Number((span - wTiles).toFixed(2)) },
   crossCheck: { anchor: ANCHOR.name, distanceFromAnchorM: Number(distFromAnchor.toFixed(1)) },
   counts: { ways: ways.length, nodes: nodes.length },
 };

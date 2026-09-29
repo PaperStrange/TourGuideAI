@@ -2,7 +2,7 @@
 
 **本目录是入口。** 长期存活的文档与工具在这里（已进 git）；一次性的抓取语料留在 [`../docs/handOff/`](../docs/handOff/)。
 
-- **回归线运行时产出的说明**（AI 旅游工具原型、已停摆 16 个月）：[`../docs/handOff/README.md`](../docs/handOff/README.md)
+- **回归线运行时产出的说明**：`docs/handOff/` 下只剩被引用的资产（evidence 快照、bundle 工具），**没有需要索引的文档**
 - **需求初始来源（产品原型）**：[`../docs/prototype/`](../docs/prototype/) —— 3 份 JSON。**未读完之前不要讨论范围**（见下 §3）
 
 ---
