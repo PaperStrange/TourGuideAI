@@ -48,7 +48,14 @@ const GATES = [
   // network reachability, and a checker that fails for lack of network is a checker people
   // disable. Comparing against the refs already present still catches local divergence,
   // and install-hooks.mjs puts the fetching version in a pre-push hook where it matters.
-  { id: 'guide', name: 'guide export (the door that finally has something behind it)', cmd: ['node', join(REPO, 'iteration', 'tools', 'validate-guide.mjs')],
+  // This gate GENERATES what it validates. build/ is gitignored -- correctly, it is a build
+  // product -- so a clean checkout has no guide to check, and the first version of this entry
+  // exited 2 with 'could not RUN' on a fresh clone while passing on my machine, where the file
+  // happened to exist. That is the sixth instance of a verdict that depended on how the working
+  // copy was prepared rather than on the repository, and the fix is the same each time: make the
+  // gate self-sufficient. It must also bake the scene first, because the guide refuses to
+  // describe a world built under a different contract -- and that refusal is worth keeping.
+  { id: 'guide', name: 'guide export (the door that finally has something behind it)', cmd: ['node', join(REPO, 'iteration', 'tools', 'gate-guide.mjs')],
     why: 'the export boundary proved in task-4 asserted a door with nothing behind it; this asserts the artefact, including that the guide refuses to describe a scene baked under a different contract' },
   { id: 'branch-sync', name: 'no local branch is stale or diverged', cmd: ['node', join(REPO, 'iteration', 'tools', 'check-branch-sync.mjs'), '--no-fetch'],
     why: 'a local branch behind its remote is how a commit lands on a 199-commit-old base' },
