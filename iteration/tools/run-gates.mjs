@@ -52,16 +52,19 @@ for (const g of GATES) {
   // Distinguish "could not run" from "ran and found a violation". A missing tool, an
   // unreadable pack or a bad argument is an environment problem, not a data problem.
   const envProblem = code === 2 || /usage error|cannot find module|ENOENT|not found/i.test(out);
-  // The LAST line is often a plan-view drawing or a hash footer, not the verdict, so
-  // pick the most informative line instead: an explicit failure if there is one, else
-  // the assertion/check summary, else the last line that is not pure ASCII art.
+  // Pick the line that best describes the outcome, and let the EXIT CODE decide what
+  // kind of line to look for. Naively taking the last line printed a plan-view drawing;
+  // naively grepping for /FAIL\b/ printed "FAIL-CLOSED as required", which is the export
+  // gate DESCRIBING correct behaviour. So: a failing run looks for a failure line with
+  // FAIL as a standalone token, and a passing run looks for a completion marker.
   const lines = out.split('\n').map((l) => l.trim()).filter(Boolean);
-  const pick =
-    lines.find((l) => /\bFAIL\b/.test(l)) ??
-    lines.find((l) => /\d+\s*\/\s*\d+\s+assertions? passed|\d+\s+checks? passed|SELF-TEST PASS|PASS\b/i.test(l)) ??
-    lines.filter((l) => !/^[\s+:#.=D]*$/.test(l)).slice(-1)[0] ??
-    '';
-  results.push({ id: g.id, name: g.name, why: g.why, code, ok: code === 0, envProblem, lastLine: pick.slice(0, 200) });
+  const notArt = (l) => !/^[\s+:#.=D]*$/.test(l);
+  const pick = code === 0
+    ? lines.find((l) => /SELF-TEST PASS|assertions? passed|\d+\s+checks? passed|BUILD OK|all facts carry provenance/i.test(l)) ?? lines.filter(notArt).slice(-1)[0] ?? ''
+    : lines.find((l) => /(^|\s)FAIL(\s|$)/.test(l)) ??
+      lines.find((l) => /\b(ENOENT|Error:|usage error|could not|not found)\b/i.test(l)) ??
+      lines.filter(notArt).slice(-1)[0] ?? '';
+  results.push({ id: g.id, name: g.name, why: g.why, code, ok: code === 0, envProblem, lastLine: pick.slice(0, 220) });
   if (!JSON_OUT) {
     const status = code === 0 ? 'PASS' : envProblem ? 'ENV ' : 'FAIL';
     console.log(`${status}  ${g.name}`);
