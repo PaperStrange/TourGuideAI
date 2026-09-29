@@ -28,7 +28,7 @@
 
 ## 事实完整性门（**fact-integrity.yml**）
 
-它跑 `node iteration/tools/run-gates.mjs`，**8 道门**全部**零依赖**，且**可在本地原样运行**——一个从没被推上去过的 workflow 不算证据。
+它跑 `node iteration/tools/run-gates.mjs`，**9 道门**全部**零依赖**，且**可在本地原样运行**——一个从没被推上去过的 workflow 不算证据。
 
 | # | 门 | 守什么 |
 |---|---|---|

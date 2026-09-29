@@ -203,6 +203,29 @@ if (!gitOk()) {
     clashes.length ? 'known-accepted' : 'pass');
 }
 
+// ── R7 · the pre-push guard must actually be installed ───────────────────────
+// Defect class: .git/hooks is untracked, so a hook cannot be committed. Writing the rule
+// in branching-model.md did nothing, and a hook that exists on one machine is the same
+// kind of nothing. install-hooks.mjs is the tracked artefact; this checks that it has been
+// RUN in this clone, and reports absence rather than assuming presence.
+{
+  const problems = [];
+  let hooksPath = null;
+  try {
+    hooksPath = execSync('git rev-parse --git-path hooks', { cwd: REPO, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
+    if (!hooksPath.startsWith('/') && !/^[A-Za-z]:/.test(hooksPath)) hooksPath = join(REPO, hooksPath);
+  } catch { problems.push('cannot resolve the hooks directory'); }
+  if (hooksPath) {
+    const hook = join(hooksPath, 'pre-push');
+    if (!existsSync(hook)) problems.push(`no pre-push hook at ${hook} - run: node iteration/tools/install-hooks.mjs`);
+    else if (!readFileSync(hook, 'utf8').includes('install-hooks.mjs')) problems.push(`${hook} exists but was not written by install-hooks.mjs`);
+  }
+  add('R7', problems.length === 0, 'the pre-push guard is installed in this clone',
+    problems.length
+      ? problems.join('\n      ') + '\n      .git/hooks is untracked, so committing cannot fix this - the script has to be run per clone.'
+      : 'pre-push refuses to push from a stale or diverged branch (bypass: git push --no-verify)');
+}
+
 const failed = results.filter((r) => r.status === 'fail');
 const accepted = results.filter((r) => r.status === 'known-accepted');
 if (JSON_OUT) console.log(JSON.stringify({ repo: REPO, passed: failed.length === 0, exitCode: failed.length ? 1 : 0, checks: results }));

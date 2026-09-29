@@ -40,6 +40,12 @@ const GATES = [
     why: '--strict, because a declared blocker must fail the release gate' },
   { id: 'build', name: 'pack build is reproducible', cmd: ['node', join(PACK, 'evidence', 'tools', 'build-pack.mjs')],
     why: '9 stages; exits non-zero if validation fails, so it doubles as a reproducibility check' },
+  // Last, and with --no-fetch on purpose: CI and a git-archive export must not require
+  // network reachability, and a checker that fails for lack of network is a checker people
+  // disable. Comparing against the refs already present still catches local divergence,
+  // and install-hooks.mjs puts the fetching version in a pre-push hook where it matters.
+  { id: 'branch-sync', name: 'no local branch is stale or diverged', cmd: ['node', join(REPO, 'iteration', 'tools', 'check-branch-sync.mjs'), '--no-fetch'],
+    why: 'a local branch behind its remote is how a commit lands on a 199-commit-old base' },
 ];
 
 if (!existsSync(PACK)) {
