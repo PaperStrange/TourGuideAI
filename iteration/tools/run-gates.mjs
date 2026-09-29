@@ -104,15 +104,25 @@ for (const g of GATES) {
 }
 
 const failed = results.filter((r) => !r.ok);
+const skippedGates = results.filter((r) => r.ok && r.skipped > 0);
 const envFailed = failed.filter((r) => r.envProblem);
-const exitCode = envFailed.length ? 2 : failed.length ? 1 : 0;
+// A gate that skipped assertions did not fully run, so it must not count as green.
+// world-grid reports "16/18 assertions passed, 0 failed, 2 skipped" when the measurement
+// records are absent -- it degrades honestly, but a runner that accepts that as a pass
+// would go green while two assertions never executed. It now fails, with the skip count,
+// because a partial run read as complete is the failure this whole harness exists to stop.
+const exitCode = envFailed.length ? 2 : failed.length || skippedGates.length ? 1 : 0;
 
 if (JSON_OUT) {
-  console.log(JSON.stringify({ repo: REPO, pack: PACK, passed: failed.length === 0, exitCode, gates: results }));
+  console.log(JSON.stringify({ repo: REPO, pack: PACK, passed: exitCode === 0, exitCode, skipped: skippedGates.reduce((n, r) => n + r.skipped, 0), gates: results }));
 } else {
   console.log('');
-  if (exitCode === 0) console.log(`${results.length}/${results.length} gates passed.`);
-  else if (exitCode === 2) console.log(`${failed.length} gate(s) could not RUN: ${envFailed.map((r) => r.id).join(', ')} - environment, not data.`);
-  else console.log(`${failed.length} gate(s) FAILED: ${failed.map((r) => r.id).join(', ')} - a fact-layer violation.`);
+  if (exitCode === 0) console.log(`${results.length}/${results.length} gates passed, no skips.`);
+  else if (envFailed.length) console.log(`${failed.length} gate(s) could not RUN: ${envFailed.map((r) => r.id).join(', ')} - environment, not data.`);
+  else if (failed.length) console.log(`${failed.length} gate(s) FAILED: ${failed.map((r) => r.id).join(', ')} - a fact-layer violation.`);
+  if (skippedGates.length) {
+    console.log(`${skippedGates.length} gate(s) SKIPPED assertions and so did not fully run: ${skippedGates.map((r) => `${r.id} (${r.skipped})`).join(', ')}`);
+    console.log('  A skipped assertion is not a passed one. Fix the missing input rather than the gate.');
+  }
 }
 process.exit(exitCode);
