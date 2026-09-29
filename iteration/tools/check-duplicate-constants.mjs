@@ -11,19 +11,28 @@
 // The first instance cost a red gate; the second was caught by eye while reading a diff. Neither
 // is a mechanism. This is.
 //
-// HOW IT WORKS, and the limit is stated rather than hidden. It collects exported const/let
-// declarations that hold a primitive literal (number, string, boolean) from the contract and the
-// tools, then looks for the SAME NAME redeclared with a literal in a DIFFERENT file. A name that
-// is imported is not a copy. A name declared twice with the same value IS still reported, because
-// two copies that agree today disagree after one edit -- and reporting only the disagreements
-// would miss the moment before the edit, which is the only moment the fix is cheap.
+// HOW IT WORKS, and its limits are stated rather than hidden.
 //
-// WHAT IT DOES NOT CATCH: a copy under a DIFFERENT name (the `kmUpTo` class of problem), and a
-// literal inlined at a use site rather than bound to a name. Both need real dataflow analysis.
-// Stated here so the guard is not read as airtight -- a guard whose limits are unknown gets
-// trusted for things it cannot do.
+// Pass 1 -- DECLARATIONS. Collect const/let declarations holding a primitive literal and report a
+// name declared in more than one file. A name that is imported is not a copy; a name declared twice
+// with the SAME value is still reported, because two copies that agree today disagree after one
+// edit, and reporting only the disagreements would miss the moment before the edit, which is the
+// only moment the fix is cheap.
+//
+// Pass 2 -- INLINE LITERALS. Pass 1 alone was insufficient, and the measurement that proved it: the
+// scene magic and version appeared in FIVE files, as a named const in two, under a different name in
+// one, and as a bare literal at two comparison sites. Pass 1 found two of the five. Two of the
+// three misses were format-region literals compared inline -- `buf.readUInt32LE(8) !== 1` and
+// `toString('ascii', 0, 8) !== 'TG25DSCN'` -- so this pass looks for those shapes specifically:
+// a comparison against a numeric or string literal within a few lines of a read of the container
+// header. That is a heuristic, not dataflow analysis, and it is scoped to the container region
+// because a literal compared anywhere else is ordinary code.
+//
+// STILL NOT CAUGHT, stated so the guard is not trusted for what it cannot do: a copy under a
+// different name that is never compared inline (`const SCENE_MAGIC = ...` used only in an
+// assignment), and a literal assembled at runtime. Both need a real parser and a type checker.
 import { readFileSync, existsSync } from 'node:fs';
-import { join, relative } from 'node:path';
+import { join } from 'node:path';
 import { execSync } from 'node:child_process';
 
 const REPO = join(import.meta.dirname, '..', '..');
@@ -87,6 +96,34 @@ for (const rel of files) {
   });
 }
 
+// ── Pass 2: inline literals in the container-header region ────────────────────────────────
+// Found by measurement, not by imagination. The scene magic and version lived in five files: a
+// named const in two, a differently-named const in one, and a bare literal at two comparison
+// sites. Pass 1 caught two of the five, and BOTH misses were format literals compared inline.
+const inlineHits = [];
+const HEADER_READ = /readUInt32LE\(\s*8\s*\)|readUInt32LE\(\s*12\s*\)|readUInt32LE\(\s*16\s*\)|readUInt32LE\(\s*20\s*\)|toString\(\s*['"]ascii['"]\s*,\s*0\s*,\s*8\s*\)|readUInt32LE\(\s*104\s*\)|readBigInt64LE/;
+for (const rel of files) {
+  const abs = join(REPO, rel);
+  if (!existsSync(abs)) continue;
+  const lines = readFileSync(abs, 'utf8').split('\n');
+  lines.forEach((line, i) => {
+    if (!HEADER_READ.test(line)) return;
+    // Skip comments. The checker's own header documents the shapes it hunts for, and a checker
+    // that reports its own documentation as a finding is a checker people stop reading.
+    if (/^\s*(?:\/\/|\*|\/\*)/.test(line)) return;
+    // A literal compared against something read from the header, on this line or the two after.
+    for (let k = 0; k <= 2 && i + k < lines.length; k++) {
+      const probe = lines[i + k];
+      for (const m of probe.matchAll(/(?:===|!==|==|!=)\s*(\d+|'[^']{2,}'|"[^"]{2,}")/g)) {
+        const lit = m[1];
+        // Ignore comparisons that are plainly not the container's format: offsets, byte counts.
+        if (/^\d+$/.test(lit) && Number(lit) < 2) continue;
+        inlineHits.push({ file: rel, line: i + k + 1, literal: lit, text: probe.trim().slice(0, 100) });
+      }
+    }
+  });
+}
+
 const problems = [];
 for (const [name, sites] of declared) {
   if (sites.length < 2) continue;
@@ -120,7 +157,7 @@ const blocking = problems.filter((p) => p.blocking);
 const noted = problems.filter((p) => !p.blocking);
 
 if (JSON_OUT) {
-  console.log(JSON.stringify({ scanned: files.length, blocking: blocking.length, noted: noted.length, problems }, null, 2));
+  console.log(JSON.stringify({ scanned: files.length, blocking: blocking.length, noted: noted.length, inlineLiterals: inlineHits.length, problems, inlineHits }, null, 2));
 } else {
   console.log(`scanned ${files.length} tracked script(s) under the contract and iteration/tools`);
   console.log('');
@@ -145,4 +182,13 @@ if (JSON_OUT) {
     console.log('nobody re-reads. Export from one place and import it from the others.');
   }
 }
-process.exit(blocking.length ? 1 : 0);
+if (!JSON_OUT && inlineHits.length) {
+  console.log(`${inlineHits.length} INLINE literal(s) compared against a container-header read -- these are the`);
+  console.log('format constants that Pass 1 cannot see, because they were never bound to a name:');
+  for (const h of inlineHits) console.log(`  ${h.file}:${h.line}  ${h.literal}   ${h.text}`);
+  console.log('');
+  console.log('Two of the three D-44 instances found so far were exactly this shape. Bind it to the');
+  console.log('imported constant instead, so a format change breaks the comparison rather than the data.');
+  console.log('');
+}
+process.exit(blocking.length || inlineHits.length ? 1 : 0);
