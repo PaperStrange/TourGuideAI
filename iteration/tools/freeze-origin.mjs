@@ -49,9 +49,22 @@ if (!Number.isInteger(wTiles) || wTiles <= 0) { console.error(`bad wTiles from c
 const ROAD = '四条通';
 const LON_M_PER_DEG = 91282.15;
 const LAT_M_PER_DEG = 110940.65;
+
 // Declared slice anchor, from the user's own segment definition 四条烏丸 → 祇園.
-// Coordinates for 四条烏丸 intersection (四条通 × 烏丸通).
-const ANCHOR = { name: '四条烏丸', lat: 35.003825, lon: 135.759680 };
+//
+// CORRECTED 2026-09-30 (found by doors-author). The previous value, lat 35.003825,
+// sat 18.56 m NORTH of 四条通's centreline while claiming to be the 四条通 × 烏丸通
+// crossing — implying a 520% grade between two points both supposedly on that street.
+// The error came from modelling 四条烏丸 as a POINT. It is not one: it is the crossing
+// of two roads, and a crossing has no single node.
+//
+// So the anchor is a pair, each half taken from whichever road actually defines it:
+//   lon -> 烏丸通's eastern edge of the crossing, which is also the frozen origin's
+//          longitude, so that the reported eastward offset stays 3.56 m;
+//   lat -> 四条通's centreline (y = 0), because the slice runs ALONG 四条通 and its
+//          cross-axis zero is that street, not the intersection's centroid.
+// This keeps the published decomposition honest: east 3.56 m, south 18.53 m.
+const ANCHOR = { name: '四条烏丸', lat: 35.003658, lon: 135.759719 };
 
 const json = JSON.parse(readFileSync(src, 'utf8'));
 const ways = (json.elements || []).filter((e) => e.type === 'way' && Array.isArray(e.geometry));
