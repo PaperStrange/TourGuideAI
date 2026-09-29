@@ -33,6 +33,16 @@ const places = Array.isArray(placesDoc) ? placesDoc : (placesDoc?.places ?? []);
 
 const items = [];
 
+// ── the chain from an observed door to everything that describes it ─────────────────────────
+// This exists because nothing else does it. The scene records the sha256 of the doors.json it read
+// when it baked (`openings.sourceSha256`). When the five-minute checklist is filled and the twelve
+// doors stop being `authored`, doors.json changes and EVERY artefact describing it -- the openings
+// layer, the collision layer, the guide's verified column -- becomes stale in a way nothing
+// currently notices. The re-bake is a step a person has to remember, and "remember to re-run it" is
+// the failure this project has registered four times: D-07's README, D-12's stale enum, D-44's four
+// copied constants, and my own board six rounds behind. So the chain is stated out loud and the one
+// link that is machine-checkable today is checked.
+
 // ── 1. one street ───────────────────────────────────────────────────────────────────────────
 let scene = null;
 if (existsSync(join(REPO, 'build', 'scene.bin'))) {
@@ -40,6 +50,28 @@ if (existsSync(join(REPO, 'build', 'scene.bin'))) {
   const ml = b.readUInt32LE(104);
   scene = { version: b.readUInt32LE(8), wTiles: b.readUInt32LE(12), hTiles: b.readUInt32LE(16), manifest: JSON.parse(b.toString('utf8', 108, 108 + ml)) };
 }
+
+// The one link in the chain that is machine-checkable today: does the baked scene still describe the
+// doors.json that exists now? The scene records the hash of the doors.json it read, so a mismatch
+// means the doors changed after the bake, and the openings layer, the collision layer and the guide
+// all describe a previous version of the world. Nothing else in the harness compares these two.
+const crypto = await import('node:crypto');
+const sha256Of = (p) => (existsSync(p) ? crypto.createHash('sha256').update(readFileSync(p)).digest('hex').toUpperCase() : null);
+const doorsHashNow = sha256Of(join(PACK, 'doors.json'));
+const bakedDoorsHash = scene?.manifest?.openings?.sourceSha256 ?? null;
+const stale = Boolean(bakedDoorsHash && doorsHashNow && bakedDoorsHash !== doorsHashNow);
+items.push({
+  id: 'chain',
+  decidable: 'machine',
+  title: 'the world still describes the doors it was baked from',
+  ok: !stale && Boolean(bakedDoorsHash),
+  evidence: bakedDoorsHash
+    ? `scene baked from doors.json ${bakedDoorsHash.slice(0, 16)}…; doors.json is now ${doorsHashNow.slice(0, 16)}…`
+    : 'the scene records no doors.json hash, so this cannot be checked',
+  blocking: stale
+    ? 'doors.json changed after the scene was baked. Re-run in this order, because the guide refuses a scene baked under different constants: emit-scene.mjs, then emit-guide.mjs, then bake-viewer.mjs.'
+    : null,
+});
 items.push({
   id: '1-street',
   decidable: 'machine',
