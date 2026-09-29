@@ -85,12 +85,21 @@ for (const g of GATES) {
   // Surface skips as a warning even on a green gate, so a partial run is never read as a
   // complete one. This is the same distinction the gates themselves make.
   const skipped = /(\d+)\s+skipped/i.exec(out);
-  results.push({ id: g.id, name: g.name, why: g.why, code, ok: code === 0, envProblem, skipped: skipped ? Number(skipped[1]) : 0, lastLine: pick.slice(0, 220) });
+  // On failure, keep the last few lines of RAW output rather than one chosen summary.
+  // Losing the trace is why a CI-only crash in this very runner took a log download to
+  // diagnose: the summary line said "Node.js v22.23.2" and the actual error had been
+  // discarded. A gate that fails must carry its reason out with it.
+  const tail = code === 0 ? [] : lines.filter(notArt).slice(-6);
+  results.push({ id: g.id, name: g.name, why: g.why, code, ok: code === 0, envProblem, skipped: skipped ? Number(skipped[1]) : 0, lastLine: pick.slice(0, 220), tail });
   if (!JSON_OUT) {
     const status = code === 0 ? 'PASS' : envProblem ? 'ENV ' : 'FAIL';
     console.log(`${status}  ${g.name}`);
     console.log(`      ${results.at(-1).lastLine}`);
     if (results.at(-1).skipped) console.log(`      WARNING: ${results.at(-1).skipped} assertion(s) SKIPPED - this gate did not fully run.`);
+    if (tail.length) {
+      console.log('      --- last output before exit ---');
+      for (const l of tail) console.log(`      ${l.slice(0, 150)}`);
+    }
   }
 }
 

@@ -42,11 +42,30 @@ if (!gitOk()) {
 // paths: block as a missing branch -- a false positive that would have been worse than
 // no check, because it trains the reader to ignore the output.
 {
+  // The set of branches that EXIST is not the same as the set visible in this working
+  // copy. GitHub Actions checks out with a shallow, single-branch fetch, so a CI run sees
+  // only the branch it is building -- and the first version of this check then reported
+  // "master, which is not a branch" four times in CI while passing locally. A checker whose
+  // verdict depends on how the clone was made is not checking the repository.
+  //
+  // Ask the remote directly. If that is impossible (offline, or a git-archive export) the
+  // check reports what it could not verify rather than asserting absence.
   let branches = [];
+  let source = '';
+  let unverifiable = null;
   try {
-    const out = execSync('git for-each-ref --format=%(refname:short) refs/heads refs/remotes/origin', { cwd: REPO, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] });
-    branches = out.split('\n').map((b) => b.replace(/^origin\//, '').trim()).filter((b) => b && b !== 'origin' && b !== 'HEAD');
-  } catch { /* fall through to the empty set and let the check fail loudly */ }
+    const out = execSync('git ls-remote --heads origin', { cwd: REPO, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] });
+    branches = out.split('\n').filter(Boolean).map((l) => l.split('\t')[1].replace('refs/heads/', '').trim());
+    source = 'git ls-remote origin';
+  } catch {
+    try {
+      const out = execSync('git for-each-ref --format=%(refname:short) refs/heads refs/remotes/origin', { cwd: REPO, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] });
+      branches = out.split('\n').map((b) => b.replace(/^origin\//, '').trim()).filter((b) => b && b !== 'origin' && b !== 'HEAD');
+      source = 'local refs (remote unreachable)';
+      unverifiable = 'the remote could not be reached, so only locally-present branches could be checked';
+    } catch { /* leave empty; every reference will then be reported below */ }
+  }
+  // glob patterns are checked by inspection, not by existence
   const known = new Set(branches);
   const offenders = [];
   for (const f of existsSync(WF) ? readdirSync(WF).filter((n) => n.endsWith('.yml')) : []) {
@@ -57,17 +76,20 @@ if (!gitOk()) {
       if (/^\s*(paths(-ignore)?|tags(-ignore)?):/.test(line)) { inBranches = false; return; }
       if (!inBranches) return;
       const m = line.match(/^\s+-\s*'?([A-Za-z0-9._\/-]+)'?\s*$/);
-      if (!m) { if (line.trim() && !line.startsWith(' ') === false && /^\s*\w+:/.test(line) && !/^\s+-/.test(line)) inBranches = false; return; }
+      if (!m) { if (/^\s*\w+:/.test(line) && !/^\s+-/.test(line)) inBranches = false; return; }
       const b = m[1];
       if (b.includes('*') || b.includes('!')) return;   // glob patterns are fine
-      if (!known.has(b)) offenders.push(`${f}:${i + 1} branch filter names "${b}", which is not a branch`);
+      if (!known.has(b)) offenders.push(`${f}:${i + 1} branch filter names "${b}", which is not a branch on origin`);
     });
     for (const m of readFileSync(join(WF, f), 'utf8').matchAll(/branches\/([A-Za-z0-9._-]+)\/protection/g)) {
-      if (!known.has(m[1])) offenders.push(`${f}: configures protection for "${m[1]}", which is not a branch`);
+      if (!known.has(m[1])) offenders.push(`${f}: configures protection for "${m[1]}", which is not a branch on origin`);
     }
   }
   add('R1', offenders.length === 0, 'workflow branch references name real branches',
-    offenders.length ? offenders.join('\n      ') : `checked every branches: filter against ${known.size} known branches`);
+    offenders.length
+      ? offenders.join('\n      ')
+      : `checked every branches: filter against ${known.size} branches on origin (via ${source})`
+        + (unverifiable ? `\n      PARTIAL: ${unverifiable}` : ''));
 }
 
 // ── R2 · the workflows README must describe the workflows that exist ──────────
@@ -220,10 +242,17 @@ if (!gitOk()) {
     if (!existsSync(hook)) problems.push(`no pre-push hook at ${hook} - run: node iteration/tools/install-hooks.mjs`);
     else if (!readFileSync(hook, 'utf8').includes('install-hooks.mjs')) problems.push(`${hook} exists but was not written by install-hooks.mjs`);
   }
-  add('R7', problems.length === 0, 'the pre-push guard is installed in this clone',
-    problems.length
-      ? problems.join('\n      ') + '\n      .git/hooks is untracked, so committing cannot fix this - the script has to be run per clone.'
-      : 'pre-push refuses to push from a stale or diverged branch (bypass: git push --no-verify)');
+  // A pre-push hook is a DEVELOPER-MACHINE concern. In CI there is no one to push and no
+  // clone to protect, so requiring it there would fail every run for a condition that
+  // cannot hold -- exactly the "check that fails for an unrelated reason" pattern that gets
+  // checks ignored. Detect CI and report it as not-applicable instead of as a violation.
+  const inCI = Boolean(process.env.CI);
+  add('R7', inCI || problems.length === 0, 'the pre-push guard is installed in this clone',
+    inCI
+      ? 'not applicable: running in CI, where no hook is installed and none is needed'
+      : problems.length
+        ? problems.join('\n      ') + '\n      .git/hooks is untracked, so committing cannot fix this - the script has to be run per clone.'
+        : 'pre-push refuses to push from a stale or diverged branch (bypass: git push --no-verify)');
 }
 
 const failed = results.filter((r) => r.status === 'fail');
