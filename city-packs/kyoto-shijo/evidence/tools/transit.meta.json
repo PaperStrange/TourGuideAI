@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "tourguide.city-pack.transit/v1",
+  "cityId": "kyoto-shijo",
+  "scopeNote": "This pack carries ONLY walking legs and legs whose duration was published by the destination's own operator. It deliberately contains no bus, subway or private-railway leg: the pack has a sourced fare for Kyoto City Bus (230 JPY flat, uniform-fare zone) but no sourced stop-to-stop running time, headway or first/last departure for any route, and no source at all for Hankyu or Keihan fares. A leg without a duration cannot be made executable, so it is a gap rather than a guess.",
+  "walkTimeRule": {
+    "statementJa": "徒歩による所要時間は、道路距離８０メートルにつき１分間を要するものとして算出した数値。１分未満の端数が生じたときは、１分として算出する。",
+    "source_url": "https://www.tfkoutori.jp/data/pdf/kiyaku-202209.pdf",
+    "sourceTitleJa": "不動産の表示に関する公正競争規約 施行規則 (9)",
+    "readAtLine": "evidence/japan-rftc-hyouji-kiyaku.txt 5189-5194",
+    "metresPerMinute": 80,
+    "rounding": "ceil",
+    "verified_at": "2026-09-29"
+  },
+  "distanceRule": {
+    "statement": "alongStreetM is a measurement along the chained 四条通 centreline taken from OSM geometry, in the frozen local tangent-plane projection. It is the ROAD DISTANCE the 80 m/min rule asks for, not a straight line between the two anchors.",
+    "source_url": "https://api.openstreetmap.org/api/0.6/map.json?bbox=135.7588,35.0028,135.7789,35.0047",
+    "measurementFile": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/walkMeasurement",
+    "measurementScript": "city-packs/kyoto-shijo/evidence/tools/measure-shijo-walk.mjs",
+    "verified_at": "2026-09-29"
+  },
+  "fareReference": [
+    {
+      "operatorJa": "京都市交通局（市バス）",
+      "mode": "bus",
+      "fareAdult": 230,
+      "fareChild": 120,
+      "currency": "JPY",
+      "minorUnit": 1,
+      "appliesToJa": "均一運賃区間（四条通の当該区間を含む）",
+      "icDiscount": "なし（公式ページに IC 割引の記載なし）",
+      "source_url": "https://www.city.kyoto.lg.jp/kotsu/page/0000240682.html",
+      "verified_at": "2026-09-29",
+      "whatIRead": "『市バス普通運賃（均一運賃区間） 運賃額 大人 230円 小児 120円』『市バスでは、交通系ICカードもご利用いただけます。』ページ番号240682、2024年6月1日。",
+      "whyReferenceOnly": "運賃は出典があるが、停留所間の所要時間・運行間隔・初発終電が無いため区間（leg）にはできない。"
+    },
+    {
+      "operatorJa": "京都市交通局（地下鉄）",
+      "mode": "subway",
+      "fareByZoneAdult": {
+        "1区": 220,
+        "2区": 260,
+        "3区": 290,
+        "4区": 330,
+        "5区": 360
+      },
+      "currency": "JPY",
+      "minorUnit": 1,
+      "source_url": "https://www.city.kyoto.lg.jp/kotsu/page/0000240757.html",
+      "verified_at": "2026-09-29",
+      "whatIRead": "地下鉄普通運賃一覧（1区220円〜5区360円、小児半額）。『地下鉄各駅間の区数や運賃はこちらでご確認ください。乗車駅と降車駅を選択するだけで、普通運賃や定期運賃が表示されます。』",
+      "whyReferenceOnly": "四条駅→烏丸御池駅が何区かを述べた来源を本パックは開いていない。区数が決まらないので運賃を確定できない。最大 360 円という上限だけが出典付きで言える。"
+    }
+  ],
+  "gaps": [
+    "バス区間：京都市バスは均一運賃 230 円（fareReference に出典付き）だが、停留所間の所要時間・系統別の運行間隔・初発/終電が本パックのどの来源にも無い。所要時間の無い leg は攻略に載せられないので 0 件とした。",
+    "地下鉄区間：四条駅→烏丸御池駅の区数が不明。区数が決まらないと運賃が確定しない。",
+    "阪急電鉄・京阪電気鉄道の運賃：両社の運賃ページを本パックは開いていない。ユーザーの『許可来源一覧』に両社は含まれておらず、開いていないものを引用しない。",
+    "清水五条駅・東山安井停留所・南座前停留所：公式サイトが徒歩分数を述べているが、これらの座標が本パックの OSM 抽出範囲外で、leg の端点にできない。places.json の gapNotes に出典付きで残した。",
+    "知恩院への leg：知恩院に座標が無い。京都市 CSV と公式サイトは『祇園四条駅／祇園バス停から徒歩』と述べるが、歩行距離の来源が無い。",
+    "深リンクの規則：design-core §5 は『策展した常用路線＋深リンク』を求めている。深リンクの URL 形式と、オフライン時にリンクをどう劣化させるかは本パックの範囲外（攻略層の設計）。",
+    "運賃精算方式：市バスは前乗り後乗りの別、IC と現金の差、乗継割引の適用可否を述べた来源を開いていない。"
+  ],
+  "transfers": [
+    {
+      "id": "x-shijo-karasuma",
+      "nameJa": "四条烏丸（地下鉄四条駅 ⇄ 市バス四条烏丸）",
+      "from": "kyoto-shijo-subway-shijo-exit1",
+      "to": "kyoto-shijo-bus-shijo-karasuma-F",
+      "measuredAlongStreetM": 68.398,
+      "minutes": 1,
+      "source_url": "https://www.openstreetmap.org/node/11283562286",
+      "verified_at": "2026-09-29",
+      "whatIRead": "OSM node 11283562286 は subway_entrance（四条駅 1番出入口、wheelchair=yes）。OSM node 2787253037 は四条烏丸バス停 Fのりばで、official_name が『四条烏丸（地下鉄四条駅）』。つまりバス停の公式名そのものが地下鉄四条駅との同一地点性を述べている。2 点間の距離は 四条通中心線に沿って 68.398 m（実測）。",
+      "note": "地下鉄と市バスの乗継割引の有無は本パックのどの来源にも無い（gaps 参照）。"
+    },
+    {
+      "id": "x-shijo-kawaramachi",
+      "nameJa": "四条河原町（阪急京都河原町駅 ⇄ 京阪祇園四条駅 ⇄ 市バス四条河原町）",
+      "from": "kyoto-shijo-station-hankyu-kawaramachi",
+      "to": "kyoto-shijo-station-keihan-gion-shijo",
+      "measuredAlongStreetM": 211.538,
+      "minutes": 3,
+      "source_url": "https://api.openstreetmap.org/api/0.6/map.json?bbox=135.7588,35.0028,135.7789,35.0047",
+      "verified_at": "2026-09-29",
+      "whatIRead": "OSM node 6944607675（阪急 京都河原町駅、railway=station、ref=HK86）と node 6883622225（京阪 祇園四条駅、railway=station、ref=KH39）。両駅は四条通に沿って 211.538 m 離れており、市バス四条河原町の各のりば（node 4387240005 E / 2503718438 D）がその間に位置する。",
+      "note": "阪急・京阪間の乗換に改札を出る必要があるかは本パックの来源に無い。3 分は道路距離からの算出であって、駅構内の移動時間ではない。"
+    }
+  ]
+}

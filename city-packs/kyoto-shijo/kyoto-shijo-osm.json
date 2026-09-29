@@ -1,0 +1,931 @@
+{
+  "schema": "tourguide.city-pack.osm-derived/v1",
+  "pack": "kyoto-shijo",
+  "note": "Every value in this file originates in OpenStreetMap, or is a position measured against OSM geometry. It is published as a Derivative Database under ODbL 1.0, exactly as clause 4.4 requires. It is also the alteration file clause 4.6 asks for: the scripts that produced it are listed under method. doors.json holds our own content and refers to this file by doorId.",
+  "source": {
+    "dataset": "OpenStreetMap, via Overpass API",
+    "licence": "Open Database License (ODbL) 1.0",
+    "licenceUri": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "attribution": "© OpenStreetMap contributors",
+    "copyrightUrl": "https://www.openstreetmap.org/copyright",
+    "extractedAt": "2026-09-29T16:39:40Z"
+  },
+  "method": {
+    "extraction": "Overpass API, out body geom on a narrow block bbox",
+    "projection": "local tangent-plane equirectangular, origin frozen in the geo contract",
+    "scripts": [
+      "docs/handOff/dsh-bundle-tourguide-2.5d/tools/world-grid.mjs",
+      "iteration/tools/freeze-origin.mjs",
+      "city-packs/kyoto-shijo/validate-doors.mjs"
+    ]
+  },
+  "buildings": [
+    {
+      "osmWayId": 205732558,
+      "name": "京都三井ビルディング",
+      "side": "north",
+      "facadeId": "F-north",
+      "facadeEdgeNodes": [
+        2157078408,
+        2157078409
+      ],
+      "source": "Bing (imagery-traced, per the OSM tag)"
+    },
+    {
+      "osmWayId": 205732536,
+      "name": "京都ダイヤビル",
+      "side": "south",
+      "facadeId": "F-south",
+      "facadeEdgeNodes": [
+        2157078404,
+        2157078405
+      ],
+      "source": "Bing (imagery-traced, per the OSM tag)"
+    }
+  ],
+  "facades": [
+    {
+      "facadeId": "F-north",
+      "side": "north",
+      "street": "四条通",
+      "sideOfStreet": "north",
+      "osmBuildingId": 205732558,
+      "osmBuildingName": "京都三井ビルディング",
+      "osmBuildingLevels": 8,
+      "osmBuildingTags": {
+        "building": "commercial",
+        "addr:quarter": "長刀鉾町",
+        "addr:suburb": "下京区",
+        "addr:block_number": "8",
+        "source": "Bing",
+        "start_date": "1984-09"
+      },
+      "facadeRunFull": {
+        "fromNode": 2157078408,
+        "fromUdeg": {
+          "lonUdeg": 135759900,
+          "latUdeg": 35003781
+        },
+        "toNode": 2157078409,
+        "toUdeg": {
+          "lonUdeg": 135760358,
+          "latUdeg": 35003782
+        },
+        "fromM": {
+          "xM": 16.522069,
+          "yM": 13.6457
+        },
+        "toM": {
+          "xM": 58.329294,
+          "yM": 13.756641
+        },
+        "frontageXM": 41.807225,
+        "edgeLengthM": 41.807372,
+        "lengthNote": "frontageXM is the ALONG-STREET (x) extent, which is what storefront modules are counted against; edgeLengthM is the Euclidean edge length. The two differ by 0.15 mm here because the facade is nearly parallel to the street. Every module width in this file is an x-extent."
+      },
+      "facadeRunClippedToBlock": {
+        "fromM": 16.522069,
+        "toM": 40,
+        "frontageXM": 23.477931,
+        "clipped": true
+      },
+      "sidewalkFootway": {
+        "osmWayId": 465066447,
+        "footway": "sidewalk",
+        "yM": 11.322,
+        "note": "north sidewalk centreline; the facade lies 2.4 m beyond it, on the far side from the street."
+      },
+      "valueKind": "observed"
+    },
+    {
+      "facadeId": "F-south",
+      "side": "south",
+      "street": "四条通",
+      "sideOfStreet": "south",
+      "osmBuildingId": 205732536,
+      "osmBuildingName": "京都ダイヤビル",
+      "osmBuildingLevels": 8,
+      "osmBuildingTags": {
+        "building": "commercial",
+        "addr:quarter": "長刀鉾町",
+        "addr:suburb": "下京区",
+        "addr:block_number": "10",
+        "source": "Bing",
+        "start_date": "2007-10",
+        "wikidata": "Q110701885"
+      },
+      "facadeRunFull": {
+        "fromNode": 2157078404,
+        "fromUdeg": {
+          "lonUdeg": 135759911,
+          "latUdeg": 35003559
+        },
+        "toNode": 2157078405,
+        "toUdeg": {
+          "lonUdeg": 135760110,
+          "latUdeg": 35003561
+        },
+        "fromM": {
+          "xM": 17.526173,
+          "yM": -10.983124
+        },
+        "toM": {
+          "xM": 35.691321,
+          "yM": -10.761243
+        },
+        "frontageXM": 18.165148,
+        "edgeLengthM": 18.166503,
+        "lengthNote": "See F-north.lengthNote."
+      },
+      "facadeRunClippedToBlock": {
+        "fromM": 17.526173,
+        "toM": 35.691321,
+        "frontageXM": 18.165148,
+        "clipped": false
+      },
+      "sidewalkFootway": {
+        "osmWayId": 465069406,
+        "footway": "sidewalk",
+        "yM": -8.544,
+        "note": "south sidewalk centreline; the facade lies 2.4 m beyond it, on the far side from the street."
+      },
+      "valueKind": "observed",
+      "observedOccupantPoi": {
+        "osmNodeId": 14196400744,
+        "tags": {
+          "amenity": "bank",
+          "atm": "yes",
+          "name": "三菱ＵＦＪ銀行 京都支店"
+        },
+        "nodeM": {
+          "xM": 18.166,
+          "yM": -16.306
+        },
+        "insideThisFootprint": true,
+        "perpendicularProjectionOntoFacadeXM": 18.166,
+        "note": "The block's ONLY mapped occupant. The node position is observed; the position of the bank's doorway is NOT -- hence the projection is recorded as an anchor candidate (see doors[7].observedAnchors) and the door itself remains valueKind licenced.",
+        "corroboration": "addr:block_number=10 with addr:quarter=長刀鉾町 matches the published address of 三菱ＵＦＪ銀行京都支店 (四条通烏丸東入長刀鉾町10). Two independent fields inside the same response agree; recorded as corroboration, not as proof."
+      }
+    }
+  ],
+  "doors": [
+    {
+      "doorId": "D-N1",
+      "osmBuildingId": 205732558,
+      "osmBuildingName": "京都三井ビルディング",
+      "facadeLineRun": {
+        "facadeId": "F-north",
+        "axis": "x",
+        "fromM": 16.522069,
+        "toM": 40,
+        "yFromM": 13.6457,
+        "yToM": 13.708002,
+        "clippedByBlock": true,
+        "storefrontModule": {
+          "indexOnFacade": 0,
+          "widthM": 3.35399
+        }
+      },
+      "placement": {
+        "authoredXM": 18.199064,
+        "authoredYM": 13.65015,
+        "subX": 291,
+        "subY": 218,
+        "quantisedXM": 18.1875,
+        "quantisedYM": 13.625,
+        "quantisationShiftM": {
+          "x": 0.011564,
+          "y": 0.02515
+        },
+        "floorXMVersusCanonical": {
+          "floorXM": 18,
+          "floorYM": 13,
+          "disagree": false
+        }
+      },
+      "observedAnchors": []
+    },
+    {
+      "doorId": "D-N2",
+      "osmBuildingId": 205732558,
+      "osmBuildingName": "京都三井ビルディング",
+      "facadeLineRun": {
+        "facadeId": "F-north",
+        "axis": "x",
+        "fromM": 16.522069,
+        "toM": 40,
+        "yFromM": 13.6457,
+        "yToM": 13.708002,
+        "clippedByBlock": true,
+        "storefrontModule": {
+          "indexOnFacade": 1,
+          "widthM": 3.35399
+        }
+      },
+      "placement": {
+        "authoredXM": 21.553054,
+        "authoredYM": 13.65905,
+        "subX": 345,
+        "subY": 219,
+        "quantisedXM": 21.5625,
+        "quantisedYM": 13.6875,
+        "quantisationShiftM": {
+          "x": 0.009446,
+          "y": 0.02845
+        },
+        "floorXMVersusCanonical": {
+          "floorXM": 21,
+          "floorYM": 13,
+          "disagree": false
+        }
+      },
+      "observedAnchors": []
+    },
+    {
+      "doorId": "D-N3",
+      "osmBuildingId": 205732558,
+      "osmBuildingName": "京都三井ビルディング",
+      "facadeLineRun": {
+        "facadeId": "F-north",
+        "axis": "x",
+        "fromM": 16.522069,
+        "toM": 40,
+        "yFromM": 13.6457,
+        "yToM": 13.708002,
+        "clippedByBlock": true,
+        "storefrontModule": {
+          "indexOnFacade": 2,
+          "widthM": 3.35399
+        }
+      },
+      "placement": {
+        "authoredXM": 24.907044,
+        "authoredYM": 13.667951,
+        "subX": 399,
+        "subY": 219,
+        "quantisedXM": 24.9375,
+        "quantisedYM": 13.6875,
+        "quantisationShiftM": {
+          "x": 0.030456,
+          "y": 0.019549
+        },
+        "floorXMVersusCanonical": {
+          "floorXM": 24,
+          "floorYM": 13,
+          "disagree": false
+        }
+      },
+      "observedAnchors": []
+    },
+    {
+      "doorId": "D-N4",
+      "osmBuildingId": 205732558,
+      "osmBuildingName": "京都三井ビルディング",
+      "facadeLineRun": {
+        "facadeId": "F-north",
+        "axis": "x",
+        "fromM": 16.522069,
+        "toM": 40,
+        "yFromM": 13.6457,
+        "yToM": 13.708002,
+        "clippedByBlock": true,
+        "storefrontModule": {
+          "indexOnFacade": 3,
+          "widthM": 3.35399
+        }
+      },
+      "placement": {
+        "authoredXM": 28.261035,
+        "authoredYM": 13.676851,
+        "subX": 452,
+        "subY": 219,
+        "quantisedXM": 28.25,
+        "quantisedYM": 13.6875,
+        "quantisationShiftM": {
+          "x": 0.011035,
+          "y": 0.010649
+        },
+        "floorXMVersusCanonical": {
+          "floorXM": 28,
+          "floorYM": 13,
+          "disagree": false
+        }
+      },
+      "observedAnchors": []
+    },
+    {
+      "doorId": "D-N5",
+      "osmBuildingId": 205732558,
+      "osmBuildingName": "京都三井ビルディング",
+      "facadeLineRun": {
+        "facadeId": "F-north",
+        "axis": "x",
+        "fromM": 16.522069,
+        "toM": 40,
+        "yFromM": 13.6457,
+        "yToM": 13.708002,
+        "clippedByBlock": true,
+        "storefrontModule": {
+          "indexOnFacade": 4,
+          "widthM": 3.35399
+        }
+      },
+      "placement": {
+        "authoredXM": 31.615025,
+        "authoredYM": 13.685751,
+        "subX": 506,
+        "subY": 219,
+        "quantisedXM": 31.625,
+        "quantisedYM": 13.6875,
+        "quantisationShiftM": {
+          "x": 0.009975,
+          "y": 0.001749
+        },
+        "floorXMVersusCanonical": {
+          "floorXM": 31,
+          "floorYM": 13,
+          "disagree": false
+        }
+      },
+      "observedAnchors": []
+    },
+    {
+      "doorId": "D-N6",
+      "osmBuildingId": 205732558,
+      "osmBuildingName": "京都三井ビルディング",
+      "facadeLineRun": {
+        "facadeId": "F-north",
+        "axis": "x",
+        "fromM": 16.522069,
+        "toM": 40,
+        "yFromM": 13.6457,
+        "yToM": 13.708002,
+        "clippedByBlock": true,
+        "storefrontModule": {
+          "indexOnFacade": 5,
+          "widthM": 3.35399
+        }
+      },
+      "placement": {
+        "authoredXM": 34.969015,
+        "authoredYM": 13.694651,
+        "subX": 560,
+        "subY": 219,
+        "quantisedXM": 35,
+        "quantisedYM": 13.6875,
+        "quantisationShiftM": {
+          "x": 0.030985,
+          "y": 0.007151
+        },
+        "floorXMVersusCanonical": {
+          "floorXM": 34,
+          "floorYM": 13,
+          "disagree": true
+        },
+        "boundaryCaseNote": "The authored module midpoint 34.969015 m lies 30.985 mm west of the x = 35 tile boundary -- inside the 1/32 m (31.25 mm) band where floor(x_m) and the canonical sub-tile path disagree (contract clause 3, assertion A3). floor() would give cellX = 34; the canonical sub-tile (560) gives 35. The canonical value governs and is what is declared. The door therefore sits at the west edge of cell 35 rather than the middle of it."
+      },
+      "observedAnchors": []
+    },
+    {
+      "doorId": "D-N7",
+      "osmBuildingId": 205732558,
+      "osmBuildingName": "京都三井ビルディング",
+      "facadeLineRun": {
+        "facadeId": "F-north",
+        "axis": "x",
+        "fromM": 16.522069,
+        "toM": 40,
+        "yFromM": 13.6457,
+        "yToM": 13.708002,
+        "clippedByBlock": true,
+        "storefrontModule": {
+          "indexOnFacade": 6,
+          "widthM": 3.35399
+        }
+      },
+      "placement": {
+        "authoredXM": 38.323005,
+        "authoredYM": 13.703551,
+        "subX": 613,
+        "subY": 219,
+        "quantisedXM": 38.3125,
+        "quantisedYM": 13.6875,
+        "quantisationShiftM": {
+          "x": 0.010505,
+          "y": 0.016051
+        },
+        "floorXMVersusCanonical": {
+          "floorXM": 38,
+          "floorYM": 13,
+          "disagree": false
+        }
+      },
+      "observedAnchors": []
+    },
+    {
+      "doorId": "D-S1",
+      "osmBuildingId": 205732536,
+      "osmBuildingName": "京都ダイヤビル",
+      "facadeLineRun": {
+        "facadeId": "F-south",
+        "axis": "x",
+        "fromM": 17.526173,
+        "toM": 35.691321,
+        "yFromM": -10.983124,
+        "yToM": -10.761243,
+        "clippedByBlock": false,
+        "storefrontModule": {
+          "indexOnFacade": 0,
+          "widthM": 3.63303
+        }
+      },
+      "placement": {
+        "authoredXM": 19.342688,
+        "authoredYM": -10.960936,
+        "subX": 309,
+        "subY": -175,
+        "quantisedXM": 19.3125,
+        "quantisedYM": -10.9375,
+        "quantisationShiftM": {
+          "x": 0.030188,
+          "y": 0.023436
+        },
+        "floorXMVersusCanonical": {
+          "floorXM": 19,
+          "floorYM": -11,
+          "disagree": false
+        }
+      },
+      "observedAnchors": [
+        {
+          "kind": "poi-perpendicular-projection",
+          "osmNodeId": 14196400744,
+          "tags": {
+            "amenity": "bank",
+            "name": "三菱ＵＦＪ銀行 京都支店",
+            "atm": "yes"
+          },
+          "nodeM": {
+            "xM": 18.166,
+            "yM": -16.306
+          },
+          "projectedXM": 18.166,
+          "offsetFromThisDoorM": 1.177,
+          "valueKind": "observed",
+          "whatThisDoesNotClaim": "It does not claim the doorway is at x = 18.166. It records that the only sourced occupant of this facade projects to 18.166, 1.177 m west of this door, inside this door's storefront module [17.526, 21.159]. A human check could promote this door by re-anchoring it to 18.166."
+        }
+      ]
+    },
+    {
+      "doorId": "D-S2",
+      "osmBuildingId": 205732536,
+      "osmBuildingName": "京都ダイヤビル",
+      "facadeLineRun": {
+        "facadeId": "F-south",
+        "axis": "x",
+        "fromM": 17.526173,
+        "toM": 35.691321,
+        "yFromM": -10.983124,
+        "yToM": -10.761243,
+        "clippedByBlock": false,
+        "storefrontModule": {
+          "indexOnFacade": 1,
+          "widthM": 3.63303
+        }
+      },
+      "placement": {
+        "authoredXM": 22.975717,
+        "authoredYM": -10.91656,
+        "subX": 368,
+        "subY": -175,
+        "quantisedXM": 23,
+        "quantisedYM": -10.9375,
+        "quantisationShiftM": {
+          "x": 0.024283,
+          "y": 0.02094
+        },
+        "floorXMVersusCanonical": {
+          "floorXM": 22,
+          "floorYM": -11,
+          "disagree": true
+        },
+        "boundaryCaseNote": "The authored module midpoint 22.975717 m lies 24.283 mm west of the x = 23 tile boundary -- inside the 1/32 m band where floor(x_m) and the canonical sub-tile path disagree (contract clause 3, assertion A3). floor() would give cellX = 22; the canonical sub-tile (368) gives 23. The canonical value governs and is what is declared."
+      },
+      "observedAnchors": []
+    },
+    {
+      "doorId": "D-S3",
+      "osmBuildingId": 205732536,
+      "osmBuildingName": "京都ダイヤビル",
+      "facadeLineRun": {
+        "facadeId": "F-south",
+        "axis": "x",
+        "fromM": 17.526173,
+        "toM": 35.691321,
+        "yFromM": -10.983124,
+        "yToM": -10.761243,
+        "clippedByBlock": false,
+        "storefrontModule": {
+          "indexOnFacade": 2,
+          "widthM": 3.63303
+        }
+      },
+      "placement": {
+        "authoredXM": 26.608747,
+        "authoredYM": -10.872184,
+        "subX": 426,
+        "subY": -174,
+        "quantisedXM": 26.625,
+        "quantisedYM": -10.875,
+        "quantisationShiftM": {
+          "x": 0.016253,
+          "y": 0.002816
+        },
+        "floorXMVersusCanonical": {
+          "floorXM": 26,
+          "floorYM": -11,
+          "disagree": false
+        }
+      },
+      "observedAnchors": []
+    },
+    {
+      "doorId": "D-S4",
+      "osmBuildingId": 205732536,
+      "osmBuildingName": "京都ダイヤビル",
+      "facadeLineRun": {
+        "facadeId": "F-south",
+        "axis": "x",
+        "fromM": 17.526173,
+        "toM": 35.691321,
+        "yFromM": -10.983124,
+        "yToM": -10.761243,
+        "clippedByBlock": false,
+        "storefrontModule": {
+          "indexOnFacade": 3,
+          "widthM": 3.63303
+        }
+      },
+      "placement": {
+        "authoredXM": 30.241776,
+        "authoredYM": -10.827807,
+        "subX": 484,
+        "subY": -173,
+        "quantisedXM": 30.25,
+        "quantisedYM": -10.8125,
+        "quantisationShiftM": {
+          "x": 0.008224,
+          "y": 0.015307
+        },
+        "floorXMVersusCanonical": {
+          "floorXM": 30,
+          "floorYM": -11,
+          "disagree": false
+        }
+      },
+      "observedAnchors": []
+    },
+    {
+      "doorId": "D-S5",
+      "osmBuildingId": 205732536,
+      "osmBuildingName": "京都ダイヤビル",
+      "facadeLineRun": {
+        "facadeId": "F-south",
+        "axis": "x",
+        "fromM": 17.526173,
+        "toM": 35.691321,
+        "yFromM": -10.983124,
+        "yToM": -10.761243,
+        "clippedByBlock": false,
+        "storefrontModule": {
+          "indexOnFacade": 4,
+          "widthM": 3.63303
+        }
+      },
+      "placement": {
+        "authoredXM": 33.874806,
+        "authoredYM": -10.783431,
+        "subX": 542,
+        "subY": -173,
+        "quantisedXM": 33.875,
+        "quantisedYM": -10.8125,
+        "quantisationShiftM": {
+          "x": 0.000194,
+          "y": 0.029069
+        },
+        "floorXMVersusCanonical": {
+          "floorXM": 33,
+          "floorYM": -11,
+          "disagree": false
+        }
+      },
+      "observedAnchors": []
+    }
+  ],
+  "observedBlockFeatures": {
+    "note": "Everything OSM actually maps inside the block, verbatim, for the level designer. All valueKind observed. These are the block's real furniture: what a player standing there would see, and what the guide may name. Nothing here is inferred. Every coordinate below is asserted equal to the evidence bytes by validator assertion V15.",
+    "occupant": [
+      {
+        "osmNodeId": 14196400744,
+        "m": {
+          "xM": 18.165,
+          "yM": -16.308
+        },
+        "tags": {
+          "amenity": "bank",
+          "atm": "yes",
+          "name": "三菱ＵＦＪ銀行 京都支店"
+        },
+        "insideFootprint": 205732536
+      }
+    ],
+    "signage": [
+      {
+        "osmNodeId": 10220936881,
+        "m": {
+          "xM": 16.522,
+          "yM": -13.979
+        },
+        "tags": {
+          "tourism": "information",
+          "information": "board",
+          "board_type": "history",
+          "name": "旧三菱銀行京都支店の歴史継承"
+        }
+      },
+      {
+        "osmNodeId": 10220936882,
+        "m": {
+          "xM": 11.958,
+          "yM": -18.638
+        },
+        "tags": {
+          "tourism": "information",
+          "information": "board",
+          "board_type": "history",
+          "name": "旧三菱銀行京都支店"
+        }
+      }
+    ],
+    "crossing": [
+      {
+        "osmNodeId": 2737069286,
+        "m": {
+          "xM": 20.721,
+          "yM": 0.111
+        },
+        "tags": {
+          "highway": "crossing",
+          "crossing": "traffic_signals",
+          "crossing:markings": "zebra",
+          "crossing:island": "no",
+          "tactile_paving": "yes",
+          "traffic_signals:sound": "yes",
+          "traffic_signals:vibration": "no"
+        },
+        "note": "Signalised crossing over 四条通 on the east arm of the 四条烏丸 junction, carried by footway way 465069430 which links the two sidewalks between yM -8.542 and yM 11.316."
+      }
+    ],
+    "streetFurniture": [
+      {
+        "osmNodeId": 13037178804,
+        "m": {
+          "xM": 5.477,
+          "yM": -8.542
+        },
+        "tags": {
+          "natural": "tree"
+        }
+      },
+      {
+        "osmNodeId": 13037298967,
+        "m": {
+          "xM": 22.455,
+          "yM": -6.767
+        },
+        "tags": {
+          "man_made": "surveillance",
+          "surveillance:type": "camera"
+        }
+      },
+      {
+        "osmNodeId": 13762279596,
+        "m": {
+          "xM": 22.273,
+          "yM": 10.65
+        },
+        "tags": {
+          "man_made": "surveillance",
+          "surveillance:type": "camera"
+        }
+      }
+    ],
+    "hedges": [
+      {
+        "osmWayId": 907059199,
+        "tags": {
+          "barrier": "hedge"
+        },
+        "xRangeM": [
+          5.842,
+          15.609
+        ],
+        "yRangeM": [
+          -15.199,
+          -5.658
+        ],
+        "side": "south"
+      },
+      {
+        "osmWayId": 907059200,
+        "tags": {
+          "barrier": "hedge"
+        },
+        "xRangeM": [
+          4.838,
+          13.966
+        ],
+        "yRangeM": [
+          10.207,
+          19.526
+        ],
+        "side": "north"
+      }
+    ],
+    "sidewalks": [
+      {
+        "osmWayId": 465066447,
+        "side": "north",
+        "tags": {
+          "highway": "footway",
+          "footway": "sidewalk",
+          "surface": "paving_stones",
+          "lit": "yes",
+          "covered": "yes",
+          "bicycle": "dismount"
+        },
+        "yAtFacadeMidM": 11.246
+      },
+      {
+        "osmWayId": 465069406,
+        "side": "south",
+        "tags": {
+          "highway": "footway",
+          "footway": "sidewalk",
+          "surface": "paving_stones",
+          "lit": "yes",
+          "covered": "yes",
+          "bicycle": "dismount"
+        },
+        "yAtFacadeMidM": -8.542
+      }
+    ],
+    "sidewalkCoveredTagCaveat": "Both sidewalk ways carry covered=yes. Recorded verbatim because it would mean the sidewalks here are roofed, which is a visible feature the art layer would have to render. It has NOT been independently checked by a human and the tag applies to ways extending 860 m east of this block, well beyond what was examined. Treat as tagged-not-verified; see gap G7 for the general accuracy caveat.",
+    "beneathTheBlock": [
+      {
+        "osmWayId": 30415728,
+        "tags": {
+          "railway": "rail",
+          "name": "阪急電鉄京都線",
+          "gauge": "1435",
+          "electrified": "contact_line",
+          "voltage": "1500",
+          "layer": "-1",
+          "tunnel": "yes",
+          "source": "KSJ2"
+        },
+        "xRangeM": [
+          -9.767,
+          632.95
+        ],
+        "yRangeM": [
+          2.663,
+          8.431
+        ]
+      },
+      {
+        "osmWayId": 741839582,
+        "tags": {
+          "railway": "rail",
+          "name": "阪急電鉄京都線",
+          "gauge": "1435",
+          "electrified": "contact_line",
+          "voltage": "1500",
+          "layer": "-1",
+          "tunnel": "yes",
+          "source": "KSJ2"
+        },
+        "xRangeM": [
+          -9.676,
+          611.225
+        ],
+        "yRangeM": [
+          -1.553,
+          1.22
+        ]
+      },
+      {
+        "osmWayId": 1517818402,
+        "tags": {
+          "public_transport": "platform",
+          "railway": "platform",
+          "area": "yes",
+          "level": "-2",
+          "ref": "1;2"
+        },
+        "xRangeM": [
+          -94.477,
+          221.542
+        ],
+        "yRangeM": [
+          0.222,
+          6.767
+        ]
+      }
+    ],
+    "beneathTheBlockNote": "The block sits directly above the 阪急京都線: two tracks down the middle of 四条通 at layer -1, tunnel=yes, and a railway platform area at level -2 with ref '1;2'. Source is National-Land Numerical Information (Railway) 2007, MLIT Japan, i.e. MLIT open data (KSJ2), not a survey. Tags quoted are a subset; see contradiction C5."
+  },
+  "evidenceFiles": [
+    {
+      "path": "city-packs/kyoto-shijo/evidence/osm-block-q1-footprints.json",
+      "sha256": "36806863EC546AF798C284A96D9F70AAA0A12E19FC4BC9A3A3BB68D6B468820E",
+      "bytes": 47032,
+      "query": "way[building] + way[highway] + node[entrance] + node[shop] over lat 35.00320..35.00460 lon 135.75940..135.76060, out body geom",
+      "fetchedAtUtc": "2026-09-29T16:39:40Z",
+      "osmBaseTimestamp": "2026-09-29T16:37:26Z",
+      "usedFor": "footprint geometry for the two facades, sidewalk centrelines, the street centreline, and every node id cited in doors[] and facades[]"
+    },
+    {
+      "path": "city-packs/kyoto-shijo/evidence/osm-block-q2-everything.json",
+      "sha256": "11D059737D3FABE9592D2E3AC12DF91A599698FF6108BF5AD3DD38369C39D0A5",
+      "bytes": 19288,
+      "query": "EVERY node and way inside the exact block bbox lat 35.003478..35.003838 lon 135.759719..135.760157, out body geom",
+      "fetchedAtUtc": "2026-09-29T16:41:01Z",
+      "osmBaseTimestamp": "2026-09-29T16:38:26Z",
+      "usedFor": "the exhaustive negative evidence for gap G1 (no entrance node exists in the block) and the occupancy POI"
+    }
+  ],
+  "evidenceFilesNote": "These paths, byte counts, sha256 digests and in-band osm3s timestamps live here rather than in doors.json, because they describe ODbL content and the provenance chain belongs on the ODbL side of the boundary. The digests were moved out of doors.json in task-9. Fetched with curl --tlsv1.2 --ssl-no-revoke; the plain schannel handshake fails in this sandbox with exit 35. validate-doors.mjs assertion V10 verifies these digests against the bytes on disk, and V19 verifies that this chain is complete.",
+  "unusedSourceCandidates": [
+    {
+      "candidateId": "C-north-corner",
+      "kind": "corner-facade-facing-the-四条烏丸-junction",
+      "osmBuildingId": 205732558,
+      "edgeNodes": [
+        2157078412,
+        2157078408
+      ],
+      "fromUdeg": {
+        "lonUdeg": 135759809,
+        "latUdeg": 35003844
+      },
+      "toUdeg": {
+        "lonUdeg": 135759900,
+        "latUdeg": 35003781
+      },
+      "fromM": {
+        "xM": 8.215,
+        "yM": 20.635
+      },
+      "toM": {
+        "xM": 16.522,
+        "yM": 13.646
+      },
+      "lengthM": 10.856,
+      "inBlockPortion": "yM <= 20.0, i.e. cellY <= 39",
+      "whyUnused": "It faces 烏丸通, not 四条通. A door here would be a 側門 and would change the block's declared two-sided 四条通 frontage model. Offered so the level designer can choose; no door is placed on it.",
+      "valueKind": "observed",
+      "movedFrom": "doors.json in task-9 -- a full geometry record with integer-microdegree corners; 'unused' does not make it ours"
+    },
+    {
+      "candidateId": "C-south-corner",
+      "kind": "corner-facade-facing-the-四条烏丸-junction",
+      "osmBuildingId": 205732536,
+      "edgeNodes": [
+        2157078403,
+        2157078404
+      ],
+      "fromUdeg": {
+        "lonUdeg": 135759824,
+        "latUdeg": 35003479
+      },
+      "toUdeg": {
+        "lonUdeg": 135759911,
+        "latUdeg": 35003559
+      },
+      "fromM": {
+        "xM": 9.585,
+        "yM": -19.858
+      },
+      "toM": {
+        "xM": 17.526,
+        "yM": -10.983
+      },
+      "lengthM": 11.91,
+      "inBlockPortion": "whole edge, cellY 0..9",
+      "whyUnused": "Same reason as C-north-corner.",
+      "valueKind": "observed",
+      "movedFrom": "doors.json in task-9"
+    }
+  ]
+}

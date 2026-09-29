@@ -1,0 +1,929 @@
+[
+  {
+    "id": "kyoto-shijo-bldg-mitsui",
+    "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/places[placeId=kyoto-shijo-bldg-mitsui]",
+    "nameJa": "京都三井ビルディング",
+    "nameZh": "",
+    "nameEn": "",
+    "category": "building-commercial",
+    "factTier": "static",
+    "addressJa": "京都市下京区四条通烏丸東入長刀鉾町8",
+    "latUdeg": 35004094,
+    "lngUdeg": 135760073,
+    "origin": "osm",
+    "hours": [],
+    "admission": {},
+    "closedDays": [],
+    "stateNoteJa": "",
+    "source_url": "https://www.openstreetmap.org/way/205732558",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "verifiedBy": "city-data-architect (pack-curator, task-10)",
+      "readWhat": "OSM way 205732558 のタグを実際に読んだ：building=commercial、building:levels=8、addr:city 京都市、addr:province 京都府、addr:suburb 下京区、addr:quarter 長刀鉾町、addr:block_number 8、start_date 1984-09、source Bing。座標は同 way の頂点平均（evidence/osm-corridor-map.json、マイクロ度に丸め）。",
+      "attestedFields": [
+        "nameJa",
+        "addressJa",
+        "latUdeg",
+        "lonUdeg",
+        "category"
+      ],
+      "valueKindPerField": {
+        "nameJa": "observed",
+        "addressJa": "observed",
+        "latUdeg": "observed",
+        "lonUdeg": "observed",
+        "category": "licenced",
+        "entrances": "licenced"
+      },
+      "notAttested": [
+        "hours",
+        "admission",
+        "closedDays"
+      ],
+      "whyEmpty": "OSM は営業時間・料金の来源ではない。この建物に入る店舗の情報を述べた来源を本パックは 1 件も開いていない。",
+      "guideVerifiedColumnAllowed": true
+    },
+    "entrances": {
+      "blockDoors": 7,
+      "doorIds": [
+        "D-N1",
+        "D-N2",
+        "D-N3",
+        "D-N4",
+        "D-N5",
+        "D-N6",
+        "D-N7"
+      ],
+      "valueKind": "authored",
+      "whyNotObserved": "doors.json は各門を valueKind=authored とする（world-grid.mjs が task-2 で追加した第 4 の enum メンバ。OSM は block に 2 つの footprint と entrance node ゼロしか記録しておらず、門の位置はキュレーターの配置であってライセンス由来のテンプレートではない）。",
+      "doorsFile": "city-packs/kyoto-shijo/doors.json",
+      "guideVerifiedColumnAllowed": false
+    },
+    "lat": 35.004094,
+    "lng": 135.760073
+  },
+  {
+    "id": "kyoto-shijo-bldg-daiya",
+    "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/places[placeId=kyoto-shijo-bldg-daiya]",
+    "nameJa": "京都ダイヤビル",
+    "nameZh": "",
+    "nameEn": "",
+    "category": "building-commercial",
+    "factTier": "static",
+    "addressJa": "京都市下京区四条通烏丸東入長刀鉾町10",
+    "latUdeg": 35003232,
+    "lngUdeg": 135760033,
+    "origin": "osm",
+    "hours": [],
+    "admission": {},
+    "closedDays": [],
+    "stateNoteJa": "",
+    "source_url": "https://www.openstreetmap.org/way/205732536",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "verifiedBy": "city-data-architect (pack-curator, task-10)",
+      "readWhat": "OSM way 205732536 のタグを実際に読んだ：building=commercial、building:levels=8、addr:suburb 下京区、addr:quarter 長刀鉾町、addr:block_number 10、start_date 2007-10、wikidata Q110701885、source Bing。座標は同 way の頂点平均。",
+      "attestedFields": [
+        "nameJa",
+        "addressJa",
+        "latUdeg",
+        "lonUdeg",
+        "category"
+      ],
+      "valueKindPerField": {
+        "nameJa": "observed",
+        "addressJa": "observed",
+        "latUdeg": "observed",
+        "lonUdeg": "observed",
+        "category": "licenced",
+        "entrances": "licenced"
+      },
+      "notAttested": [
+        "hours",
+        "admission",
+        "closedDays"
+      ],
+      "whyEmpty": "同上。",
+      "guideVerifiedColumnAllowed": true
+    },
+    "entrances": {
+      "blockDoors": 5,
+      "doorIds": [
+        "D-S1",
+        "D-S2",
+        "D-S3",
+        "D-S4",
+        "D-S5"
+      ],
+      "valueKind": "authored",
+      "whyNotObserved": "doors.json は各門を valueKind=authored とする（world-grid.mjs が task-2 で追加した第 4 の enum メンバ。OSM は block に 2 つの footprint と entrance node ゼロしか記録しておらず、門の位置はキュレーターの配置であってライセンス由来のテンプレートではない）。",
+      "doorsFile": "city-packs/kyoto-shijo/doors.json",
+      "guideVerifiedColumnAllowed": false
+    },
+    "lat": 35.003232,
+    "lng": 135.760033
+  },
+  {
+    "id": "kyoto-shijo-bank-mufg-kyoto",
+    "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/places[placeId=kyoto-shijo-bank-mufg-kyoto]",
+    "nameJa": "三菱ＵＦＪ銀行 京都支店",
+    "nameZh": "",
+    "nameEn": "",
+    "category": "bank",
+    "factTier": "static",
+    "addressJa": "",
+    "latUdeg": 35003511,
+    "lngUdeg": 135759918,
+    "origin": "osm",
+    "hours": [],
+    "admission": {},
+    "closedDays": [],
+    "stateNoteJa": "",
+    "source_url": "https://www.openstreetmap.org/node/14196400744",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "verifiedBy": "city-data-architect (pack-curator, task-10)",
+      "readWhat": "OSM node 14196400744 のタグを実際に読んだ：amenity=bank、atm=yes、name=三菱ＵＦＪ銀行 京都支店。block 0 の footprint（way 205732536）内にある唯一のマップ済み入居者であることも kyoto-shijo-osm.json の observedBlockFeatures.occupant で確認した。",
+      "attestedFields": [
+        "nameJa",
+        "latUdeg",
+        "lonUdeg",
+        "category"
+      ],
+      "valueKindPerField": {
+        "nameJa": "observed",
+        "latUdeg": "observed",
+        "lonUdeg": "observed",
+        "category": "observed"
+      },
+      "notAttested": [
+        "hours",
+        "admission",
+        "closedDays",
+        "addressJa"
+      ],
+      "whyEmpty": "営業時間・ATM 稼働時間・住所は OSM に無く、銀行公式のページを本パックは開いていない。窓口が閉まっている可能性を残すより空欄にして攻略に『要確認』を出させる。",
+      "guideVerifiedColumnAllowed": true
+    },
+    "lat": 35.003511,
+    "lng": 135.759918
+  },
+  {
+    "id": "kyoto-shijo-hist-bank-sign-1",
+    "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/places[placeId=kyoto-shijo-hist-bank-sign-1]",
+    "nameJa": "旧三菱銀行京都支店の歴史継承（案内板）",
+    "nameZh": "",
+    "nameEn": "",
+    "category": "information-board",
+    "factTier": "static",
+    "addressJa": "",
+    "latUdeg": 35003532,
+    "lngUdeg": 135759900,
+    "origin": "osm",
+    "hours": [],
+    "admission": {},
+    "closedDays": [],
+    "stateNoteJa": "",
+    "source_url": "https://www.openstreetmap.org/node/10220936881",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "verifiedBy": "city-data-architect (pack-curator, task-10)",
+      "readWhat": "OSM node 10220936881 のタグ：tourism=information、information=board、board_type=history、name=旧三菱銀行京都支店の歴史継承。屋外の案内板なので開場時間は無い。",
+      "attestedFields": [
+        "nameJa",
+        "latUdeg",
+        "lonUdeg",
+        "category"
+      ],
+      "valueKindPerField": {
+        "nameJa": "observed",
+        "latUdeg": "observed",
+        "lonUdeg": "observed",
+        "category": "observed"
+      },
+      "notAttested": [
+        "hours",
+        "admission",
+        "closedDays"
+      ],
+      "whyEmpty": "屋外の案内板に開場時間・料金・休みは存在しない（該当しない項目であり、缺口ではない）。",
+      "guideVerifiedColumnAllowed": true
+    },
+    "lat": 35.003532,
+    "lng": 135.7599
+  },
+  {
+    "id": "kyoto-shijo-hist-bank-sign-2",
+    "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/places[placeId=kyoto-shijo-hist-bank-sign-2]",
+    "nameJa": "旧三菱銀行京都支店（案内板）",
+    "nameZh": "",
+    "nameEn": "",
+    "category": "information-board",
+    "factTier": "static",
+    "addressJa": "",
+    "latUdeg": 35003490,
+    "lngUdeg": 135759850,
+    "origin": "osm",
+    "hours": [],
+    "admission": {},
+    "closedDays": [],
+    "stateNoteJa": "",
+    "source_url": "https://www.openstreetmap.org/node/10220936882",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "verifiedBy": "city-data-architect (pack-curator, task-10)",
+      "readWhat": "OSM node 10220936882 のタグ：tourism=information、information=board、board_type=history、name=旧三菱銀行京都支店。",
+      "attestedFields": [
+        "nameJa",
+        "latUdeg",
+        "lonUdeg",
+        "category"
+      ],
+      "valueKindPerField": {
+        "nameJa": "observed",
+        "latUdeg": "observed",
+        "lonUdeg": "observed",
+        "category": "observed"
+      },
+      "notAttested": [
+        "hours",
+        "admission",
+        "closedDays"
+      ],
+      "whyEmpty": "屋外の案内板に該当しない項目。",
+      "guideVerifiedColumnAllowed": true
+    },
+    "lat": 35.00349,
+    "lng": 135.75985
+  },
+  {
+    "id": "kyoto-shijo-crossing-karasuma-east",
+    "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/places[placeId=kyoto-shijo-crossing-karasuma-east]",
+    "nameJa": "四条烏丸交差点 東側横断歩道",
+    "nameZh": "",
+    "nameEn": "",
+    "category": "crossing",
+    "factTier": "static",
+    "addressJa": "",
+    "latUdeg": 35003659,
+    "lngUdeg": 135759946,
+    "origin": "osm",
+    "hours": [],
+    "admission": {},
+    "closedDays": [],
+    "stateNoteJa": "",
+    "source_url": "https://www.openstreetmap.org/node/2737069286",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "verifiedBy": "city-data-architect (pack-curator, task-10)",
+      "readWhat": "OSM node 2737069286 のタグ：highway=crossing、crossing=traffic_signals、crossing:markings=zebra、crossing:island=no、tactile_paving=yes、traffic_signals:sound=yes、traffic_signals:vibration=no。kyoto-shijo-osm.json の observedBlockFeatures.crossing と同一ノード。",
+      "attestedFields": [
+        "nameJa",
+        "latUdeg",
+        "lonUdeg",
+        "category"
+      ],
+      "valueKindPerField": {
+        "nameJa": "licenced",
+        "latUdeg": "observed",
+        "lonUdeg": "observed",
+        "category": "observed"
+      },
+      "notAttested": [
+        "hours",
+        "admission",
+        "closedDays",
+        "nameJa"
+      ],
+      "whyEmpty": "横断歩道に開場時間・料金・休みは該当しない。nameJa は OSM に name タグが無く、本パックの位置記述（東側横断歩道）は curator の記述なので licenced とした。",
+      "guideVerifiedColumnAllowed": true
+    },
+    "lat": 35.003659,
+    "lng": 135.759946
+  },
+  {
+    "id": "kyoto-shijo-subway-shijo-exit1",
+    "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/places[placeId=kyoto-shijo-subway-shijo-exit1]",
+    "nameJa": "地下鉄四条駅 1番出入口",
+    "nameZh": "四条站出口1",
+    "nameEn": "Subway Shijō Station Exit 1",
+    "category": "station-entrance",
+    "factTier": "static",
+    "addressJa": "",
+    "latUdeg": 35003247,
+    "lngUdeg": 135759825,
+    "origin": "osm",
+    "hours": [],
+    "admission": {},
+    "closedDays": [],
+    "stateNoteJa": "",
+    "source_url": "https://www.openstreetmap.org/node/11283562286",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "verifiedBy": "city-data-architect (pack-curator, task-10)",
+      "readWhat": "OSM node 11283562286：railway=subway_entrance、ref=1、wheelchair=yes、name=Exit 1。同じ出入口が京都三井ビルディングの南西角に位置することは evidence/osm-block-q2-everything.json と kyoto-shijo-osm.json の observedBlockFeatures で確認した。",
+      "attestedFields": [
+        "nameJa",
+        "nameEn",
+        "latUdeg",
+        "lonUdeg",
+        "category"
+      ],
+      "valueKindPerField": {
+        "nameJa": "observed",
+        "nameEn": "observed",
+        "latUdeg": "observed",
+        "lonUdeg": "observed",
+        "category": "observed",
+        "nameZh": "licenced"
+      },
+      "notAttested": [
+        "hours",
+        "admission",
+        "closedDays"
+      ],
+      "whyEmpty": "出入口自体の開閉時間は OSM に無い。駅の初発/終電は事実層にキャッシュせず攻略側で『要確認』にする。",
+      "guideVerifiedColumnAllowed": true
+    },
+    "lat": 35.003247,
+    "lng": 135.759825
+  },
+  {
+    "id": "kyoto-shijo-subway-shijo-exit19",
+    "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/places[placeId=kyoto-shijo-subway-shijo-exit19]",
+    "nameJa": "地下鉄四条駅 19番出入口",
+    "nameZh": "",
+    "nameEn": "",
+    "category": "station-entrance",
+    "factTier": "static",
+    "addressJa": "",
+    "latUdeg": 35003555,
+    "lngUdeg": 135760460,
+    "origin": "osm",
+    "hours": [],
+    "admission": {},
+    "closedDays": [],
+    "stateNoteJa": "",
+    "source_url": "https://www.openstreetmap.org/node/4229848161",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "verifiedBy": "city-data-architect (pack-curator, task-10)",
+      "readWhat": "OSM node 4229848161：railway=subway_entrance、ref=19、level=0、source=local knowledge。ref は 19 であり、この出入口がブロックの東側にあることは座標で確認した。",
+      "attestedFields": [
+        "nameJa",
+        "latUdeg",
+        "lonUdeg",
+        "category"
+      ],
+      "valueKindPerField": {
+        "nameJa": "observed",
+        "latUdeg": "observed",
+        "lonUdeg": "observed",
+        "category": "observed"
+      },
+      "notAttested": [
+        "hours",
+        "admission",
+        "closedDays"
+      ],
+      "whyEmpty": "出入口自体の開閉時間は OSM に無い。",
+      "guideVerifiedColumnAllowed": true
+    },
+    "lat": 35.003555,
+    "lng": 135.76046
+  },
+  {
+    "id": "kyoto-shijo-bus-shijo-karasuma-F",
+    "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/places[placeId=kyoto-shijo-bus-shijo-karasuma-F]",
+    "nameJa": "四条烏丸 バス停 Fのりば",
+    "nameZh": "四条乌丸（地铁四条站）",
+    "nameEn": "Shijō Karasuma (Subway Shijō Station)",
+    "category": "bus-stop",
+    "factTier": "static",
+    "addressJa": "",
+    "latUdeg": 35003760,
+    "lngUdeg": 135758973,
+    "origin": "osm",
+    "hours": [],
+    "admission": {},
+    "closedDays": [],
+    "stateNoteJa": "",
+    "source_url": "https://www.openstreetmap.org/node/2787253037",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "verifiedBy": "city-data-architect (pack-curator, task-10)",
+      "readWhat": "OSM node 2787253037 のタグ：highway=bus_stop、public_transport=platform、local_ref=F、operator=京都市交通局、network=京都市営バス、official_name=四条烏丸（地下鉄四条駅）、shelter=yes、tactile_paving=yes、bench=yes、lit=yes。note 欄の『停車する系統:3,11,12,32,46,201,203,207』は路線の列挙であって所要時間でも本数でもないので採用しない。",
+      "attestedFields": [
+        "nameJa",
+        "nameEn",
+        "latUdeg",
+        "lonUdeg",
+        "category"
+      ],
+      "valueKindPerField": {
+        "nameJa": "observed",
+        "nameEn": "observed",
+        "latUdeg": "observed",
+        "lonUdeg": "observed",
+        "category": "observed",
+        "nameZh": "observed"
+      },
+      "notAttested": [
+        "hours",
+        "admission",
+        "closedDays"
+      ],
+      "whyEmpty": "停留所の営業時間は無い。バスの運賃は transit.json の gapReport に出典付きで記載し、運行間隔・初発/終電は本パックのどの来源にも無いので空欄。",
+      "guideVerifiedColumnAllowed": true
+    },
+    "lat": 35.00376,
+    "lng": 135.758973
+  },
+  {
+    "id": "kyoto-shijo-bus-shijo-karasuma-G",
+    "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/places[placeId=kyoto-shijo-bus-shijo-karasuma-G]",
+    "nameJa": "四条烏丸 バス停 Gのりば",
+    "nameZh": "",
+    "nameEn": "Shijō Karasuma",
+    "category": "bus-stop",
+    "factTier": "static",
+    "addressJa": "",
+    "latUdeg": 35004403,
+    "lngUdeg": 135759538,
+    "origin": "osm",
+    "hours": [],
+    "admission": {},
+    "closedDays": [],
+    "stateNoteJa": "",
+    "source_url": "https://www.openstreetmap.org/node/8447615881",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "verifiedBy": "city-data-architect (pack-curator, task-10)",
+      "readWhat": "OSM node 8447615881：highway=bus_stop、public_transport=platform、local_ref=G、operator=京都市交通局;ケイルック、official_name=四条烏丸（地下鉄四条駅）、note=Gのりば 高野・岩倉・京大病院方面行 停車する系統:65。",
+      "attestedFields": [
+        "nameJa",
+        "nameEn",
+        "latUdeg",
+        "lonUdeg",
+        "category"
+      ],
+      "valueKindPerField": {
+        "nameJa": "observed",
+        "nameEn": "observed",
+        "latUdeg": "observed",
+        "lonUdeg": "observed",
+        "category": "observed"
+      },
+      "notAttested": [
+        "hours",
+        "admission",
+        "closedDays",
+        "nameZh"
+      ],
+      "whyEmpty": "停留所の営業時間は無い。nameZh はこの node に中国語タグが無いので空欄。",
+      "guideVerifiedColumnAllowed": true
+    },
+    "lat": 35.004403,
+    "lng": 135.759538
+  },
+  {
+    "id": "kyoto-shijo-bus-shijo-takakura-A",
+    "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/places[placeId=kyoto-shijo-bus-shijo-takakura-A]",
+    "nameJa": "四条高倉 バス停 Aのりば",
+    "nameZh": "四条高仓",
+    "nameEn": "Shijō Takakura",
+    "category": "bus-stop",
+    "factTier": "static",
+    "addressJa": "",
+    "latUdeg": 35003718,
+    "lngUdeg": 135761625,
+    "origin": "osm",
+    "hours": [],
+    "admission": {},
+    "closedDays": [],
+    "stateNoteJa": "",
+    "source_url": "https://www.openstreetmap.org/node/8886543723",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "verifiedBy": "city-data-architect (pack-curator, task-10)",
+      "readWhat": "OSM node 8886543723：highway=bus_stop、public_transport=platform、local_ref=A、operator=京都市交通局;京都バス、departures_board=realtime、shelter=yes;no、tactile_paving=yes。",
+      "attestedFields": [
+        "nameJa",
+        "nameEn",
+        "latUdeg",
+        "lonUdeg",
+        "category"
+      ],
+      "valueKindPerField": {
+        "nameJa": "observed",
+        "nameEn": "observed",
+        "latUdeg": "observed",
+        "lonUdeg": "observed",
+        "category": "observed",
+        "nameZh": "observed"
+      },
+      "notAttested": [
+        "hours",
+        "admission",
+        "closedDays"
+      ],
+      "whyEmpty": "停留所の営業時間は無い。",
+      "guideVerifiedColumnAllowed": true
+    },
+    "lat": 35.003718,
+    "lng": 135.761625
+  },
+  {
+    "id": "kyoto-shijo-bus-shijo-kawaramachi-E",
+    "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/places[placeId=kyoto-shijo-bus-shijo-kawaramachi-E]",
+    "nameJa": "四条河原町 バス停 Eのりば",
+    "nameZh": "四条河原町",
+    "nameEn": "Shijō Kawaramachi",
+    "category": "bus-stop",
+    "factTier": "static",
+    "addressJa": "",
+    "latUdeg": 35003785,
+    "lngUdeg": 135767749,
+    "origin": "osm",
+    "hours": [],
+    "admission": {},
+    "closedDays": [],
+    "stateNoteJa": "",
+    "source_url": "https://www.openstreetmap.org/node/4387240005",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "verifiedBy": "city-data-architect (pack-curator, task-10)",
+      "readWhat": "OSM node 4387240005：highway=bus_stop、public_transport=platform、local_ref=E、operator=京都市交通局;京都バス;京阪バス、shelter=yes、tactile_paving=yes、note=Eのりば 祇園・平安神宮・清水寺方面行 停車する系統:11,12,31,46,201,203,207。",
+      "attestedFields": [
+        "nameJa",
+        "nameEn",
+        "latUdeg",
+        "lonUdeg",
+        "category"
+      ],
+      "valueKindPerField": {
+        "nameJa": "observed",
+        "nameEn": "observed",
+        "latUdeg": "observed",
+        "lonUdeg": "observed",
+        "category": "observed",
+        "nameZh": "observed"
+      },
+      "notAttested": [
+        "hours",
+        "admission",
+        "closedDays"
+      ],
+      "whyEmpty": "停留所の営業時間は無い。",
+      "guideVerifiedColumnAllowed": true
+    },
+    "lat": 35.003785,
+    "lng": 135.767749
+  },
+  {
+    "id": "kyoto-shijo-bus-shijo-kawaramachi-D",
+    "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/places[placeId=kyoto-shijo-bus-shijo-kawaramachi-D]",
+    "nameJa": "四条河原町 バス停 Dのりば",
+    "nameZh": "四条河原町",
+    "nameEn": "Shijō Kawaramachi",
+    "category": "bus-stop",
+    "factTier": "static",
+    "addressJa": "",
+    "latUdeg": 35003702,
+    "lngUdeg": 135768198,
+    "origin": "osm",
+    "hours": [],
+    "admission": {},
+    "closedDays": [],
+    "stateNoteJa": "",
+    "source_url": "https://www.openstreetmap.org/node/2503718438",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "verifiedBy": "city-data-architect (pack-curator, task-10)",
+      "readWhat": "OSM node 2503718438：highway=bus_stop、public_transport=platform、local_ref=D、operator=京都市交通局;京都バス、shelter=yes、bench=yes、note=Dのりば 嵐山・二条城・上賀茂神社・四条大宮・北野白梅町・千本今出川・東寺方面行 停車する系統:3,11,12,31,32,46,201,203,58,207。",
+      "attestedFields": [
+        "nameJa",
+        "nameEn",
+        "latUdeg",
+        "lonUdeg",
+        "category"
+      ],
+      "valueKindPerField": {
+        "nameJa": "observed",
+        "nameEn": "observed",
+        "latUdeg": "observed",
+        "lonUdeg": "observed",
+        "category": "observed",
+        "nameZh": "observed"
+      },
+      "notAttested": [
+        "hours",
+        "admission",
+        "closedDays"
+      ],
+      "whyEmpty": "停留所の営業時間は無い。",
+      "guideVerifiedColumnAllowed": true
+    },
+    "lat": 35.003702,
+    "lng": 135.768198
+  },
+  {
+    "id": "kyoto-shijo-station-hankyu-kawaramachi",
+    "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/places[placeId=kyoto-shijo-station-hankyu-kawaramachi]",
+    "nameJa": "阪急電鉄 京都河原町駅",
+    "nameZh": "",
+    "nameEn": "Kyoto Kawaramachi Station (Hankyu)",
+    "category": "rail-station",
+    "factTier": "static",
+    "addressJa": "",
+    "latUdeg": 35003763,
+    "lngUdeg": 135769608,
+    "origin": "osm",
+    "hours": [],
+    "admission": {},
+    "closedDays": [],
+    "stateNoteJa": "",
+    "source_url": "https://www.openstreetmap.org/node/6944607675",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "verifiedBy": "city-data-architect (pack-curator, task-10)",
+      "readWhat": "OSM node 6944607675：railway=station、public_transport=station、ref=HK86、name=京都河原町、operator は阪急電鉄（同駅の stop_position node 6944607600 系列および way 30415728 の operator=阪急電鉄 で確認）、wikidata Q2085248。座標は駅ノードの値。",
+      "attestedFields": [
+        "nameJa",
+        "nameEn",
+        "latUdeg",
+        "lonUdeg",
+        "category"
+      ],
+      "valueKindPerField": {
+        "nameJa": "observed",
+        "nameEn": "observed",
+        "latUdeg": "observed",
+        "lonUdeg": "observed",
+        "category": "observed"
+      },
+      "notAttested": [
+        "hours",
+        "admission",
+        "closedDays"
+      ],
+      "whyEmpty": "駅の営業時間・運賃は阪急の公式ページを本パックは開いていない。阪急は本パックの許可来源一覧に無い事業者であり、運賃を推測で置かない。",
+      "guideVerifiedColumnAllowed": true
+    },
+    "lat": 35.003763,
+    "lng": 135.769608
+  },
+  {
+    "id": "kyoto-shijo-station-keihan-gion-shijo",
+    "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/places[placeId=kyoto-shijo-station-keihan-gion-shijo]",
+    "nameJa": "京阪電鉄 祇園四条駅",
+    "nameZh": "",
+    "nameEn": "Gion-shijō Station (Keihan)",
+    "category": "rail-station",
+    "factTier": "static",
+    "addressJa": "",
+    "latUdeg": 35003233,
+    "lngUdeg": 135771931,
+    "origin": "osm",
+    "hours": [],
+    "admission": {},
+    "closedDays": [],
+    "stateNoteJa": "",
+    "source_url": "https://www.openstreetmap.org/node/6883622225",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "verifiedBy": "city-data-architect (pack-curator, task-10)",
+      "readWhat": "OSM node 6883622225：railway=station、public_transport=station、ref=KH39、old_name=四条、wikidata Q2153263、wikipedia ja:祇園四条駅、contact:website は京阪の駅ページ。運営者が京阪電気鉄道であることは way 30430485（京阪本線、operator=京阪電気鉄道）で確認。",
+      "attestedFields": [
+        "nameJa",
+        "nameEn",
+        "latUdeg",
+        "lonUdeg",
+        "category"
+      ],
+      "valueKindPerField": {
+        "nameJa": "observed",
+        "nameEn": "observed",
+        "latUdeg": "observed",
+        "lonUdeg": "observed",
+        "category": "observed"
+      },
+      "notAttested": [
+        "hours",
+        "admission",
+        "closedDays"
+      ],
+      "whyEmpty": "京阪の運賃ページを本パックは開いていない。運賃を推測で置かない。",
+      "guideVerifiedColumnAllowed": true
+    },
+    "lat": 35.003233,
+    "lng": 135.771931
+  },
+  {
+    "id": "kyoto-shijo-bus-shijo-keihan-mae-A",
+    "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/places[placeId=kyoto-shijo-bus-shijo-keihan-mae-A]",
+    "nameJa": "四条京阪前 バス停 Aのりば",
+    "nameZh": "",
+    "nameEn": "Shijō Keihan-mae",
+    "category": "bus-stop",
+    "factTier": "static",
+    "addressJa": "",
+    "latUdeg": 35003906,
+    "lngUdeg": 135772518,
+    "origin": "osm",
+    "hours": [],
+    "admission": {},
+    "closedDays": [],
+    "stateNoteJa": "",
+    "source_url": "https://www.openstreetmap.org/node/2930865877",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "verifiedBy": "city-data-architect (pack-curator, task-10)",
+      "readWhat": "OSM node 2930865877：highway=bus_stop、public_transport=platform、local_ref=A、operator=京都市交通局・京阪バス、shelter=yes、lit=yes、tactile_paving=yes、note=Aのりば 祇園・百万遍・平安神宮・清水寺方面行 停車する系統:31,46,86,201,203,58,207。",
+      "attestedFields": [
+        "nameJa",
+        "nameEn",
+        "latUdeg",
+        "lonUdeg",
+        "category"
+      ],
+      "valueKindPerField": {
+        "nameJa": "observed",
+        "nameEn": "observed",
+        "latUdeg": "observed",
+        "lonUdeg": "observed",
+        "category": "observed"
+      },
+      "notAttested": [
+        "hours",
+        "admission",
+        "closedDays",
+        "nameZh"
+      ],
+      "whyEmpty": "停留所の営業時間は無い。nameZh はこの node に中国語タグが無い。",
+      "guideVerifiedColumnAllowed": true
+    },
+    "lat": 35.003906,
+    "lng": 135.772518
+  },
+  {
+    "id": "kyoto-shijo-bus-gion-A",
+    "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/places[placeId=kyoto-shijo-bus-gion-A]",
+    "nameJa": "祇園 バス停 Aのりば",
+    "nameZh": "",
+    "nameEn": "Gion",
+    "category": "bus-stop",
+    "factTier": "static",
+    "addressJa": "",
+    "latUdeg": 35003257,
+    "lngUdeg": 135777225,
+    "origin": "osm",
+    "hours": [],
+    "admission": {},
+    "closedDays": [],
+    "stateNoteJa": "",
+    "source_url": "https://www.openstreetmap.org/node/2503718437",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "verifiedBy": "city-data-architect (pack-curator, task-10)",
+      "readWhat": "OSM node 2503718437：highway=bus_stop、public_transport=platform、local_ref=A、operator=京都市交通局・京都バス、shelter=yes、lit=yes、tactile_paving=yes、note=Aのりば 清水寺・京都駅・東福寺・鉄道博物館方面行 停車する系統:86,202,206,58,207。八坂神社公式（S7）の『JR京都駅より市バス100・206番「祇園」下車すぐ』と、この停留所名が一致する。",
+      "attestedFields": [
+        "nameJa",
+        "nameEn",
+        "latUdeg",
+        "lonUdeg",
+        "category"
+      ],
+      "valueKindPerField": {
+        "nameJa": "observed",
+        "nameEn": "observed",
+        "latUdeg": "observed",
+        "lonUdeg": "observed",
+        "category": "observed"
+      },
+      "notAttested": [
+        "hours",
+        "admission",
+        "closedDays",
+        "nameZh"
+      ],
+      "whyEmpty": "停留所の営業時間は無い。nameZh はこの node に中国語タグが無い。",
+      "guideVerifiedColumnAllowed": true
+    },
+    "lat": 35.003257,
+    "lng": 135.777225
+  },
+  {
+    "id": "kyoto-shijo-yasaka-nishiromon",
+    "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/places[placeId=kyoto-shijo-yasaka-nishiromon]",
+    "nameJa": "八坂神社 西楼門",
+    "nameZh": "",
+    "nameEn": "Yasaka Shrine, West Tower Gate",
+    "category": "shrine",
+    "factTier": "static",
+    "addressJa": "京都市東山区祇園町北側125",
+    "latUdeg": 35003741,
+    "lngUdeg": 135777526,
+    "origin": "osm",
+    "hours": [],
+    "admission": {},
+    "closedDays": [],
+    "stateNoteJa": "24時間参拝可能",
+    "source_url": "https://www.yasaka-jinja.or.jp/access/",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "verifiedBy": "city-data-architect (pack-curator, task-10)",
+      "readWhat": "公式アクセスページ（S7）を実際に読んだ：『9：00～17：00（社務所）』『24時間参拝可能』『京都府京都市東山区祇園町北側（Googlemapで見る）』『〒605-0073 京都府京都市東山区祇園町北側625』『TEL 075-561-6155』『京阪電車「祇園四条」駅より徒歩約5分』『阪急電鉄「京都河原町」駅より徒歩約8分』『JR京都駅より市バス100・206番「祇園」下車すぐ』『※境内には駐車場がございません』。京都市 CSV（S1）row 1000039 も『四条通に西面する門』『常時公開』と述べており、四条通の東端の目印として一致する。座標は OSM way 105449683 の頂点平均（ODbL 分離ファイルに収録）。",
+      "attestedFields": [
+        "nameJa",
+        "nameEn",
+        "addressJa",
+        "state",
+        "category"
+      ],
+      "valueKindPerField": {
+        "nameJa": "observed",
+        "nameEn": "observed",
+        "addressJa": "observed",
+        "state": "observed",
+        "category": "observed",
+        "latUdeg": "observed",
+        "lonUdeg": "observed"
+      },
+      "notAttested": [
+        "admission"
+      ],
+      "whyEmpty": "参拝は無料で、公式ページに拝観料の記載は無い。『0 円』と書くのは出典の無い断定なので空欄にし、無料である旨は state と note で述べる。",
+      "hoursNote": "社務所 9:00–17:00、境内は 24 時間参拝可能。社務所の時間を境内の開門時間として使ってはならない。",
+      "admissionNote": "公式アクセスページに拝観料の記載なし。賽銭のみ。",
+      "guideVerifiedColumnAllowed": true
+    },
+    "lat": 35.003741,
+    "lng": 135.777526
+  },
+  {
+    "id": "kyoto-shijo-yasaka-honden",
+    "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm-places.json#/places[placeId=kyoto-shijo-yasaka-honden]",
+    "nameJa": "八坂神社 本殿",
+    "nameZh": "",
+    "nameEn": "Yasaka Shrine, Main Hall (Honden)",
+    "category": "shrine-building",
+    "factTier": "static",
+    "addressJa": "京都市東山区祇園町北側125",
+    "latUdeg": 35003645,
+    "lngUdeg": 135778590,
+    "origin": "osm",
+    "hours": [],
+    "admission": {},
+    "closedDays": [],
+    "stateNoteJa": "",
+    "source_url": "https://www.yasaka-jinja.or.jp/about/architecture/",
+    "verified_at": "2026-09-29",
+    "provenance": {
+      "valueKind": "observed",
+      "verifiedBy": "city-data-architect (pack-curator, task-10)",
+      "readWhat": "公式建造物ページ（S8）を実際に読んだ（本殿・祇園造に関する記述を含む 6,717 字の抽出）。京都市 CSV（S1）row 1000040 も読み、『現在の社殿は、承応３年（１６５４）徳川家綱が再建』『祇園造と呼ばれる神社建築の一様式』『平成14年４月15日本殿遷座祭を斎行し、色彩豊かな本殿が竣功』を確認した。座標は OSM way 88108397 の頂点平均（同 way は heritage=国宝、heritage:since 2020-12-23、historic:period edo、wikidata Q107020629 を持つ）。",
+      "attestedFields": [
+        "nameJa",
+        "nameEn",
+        "addressJa",
+        "category"
+      ],
+      "valueKindPerField": {
+        "nameJa": "observed",
+        "nameEn": "observed",
+        "addressJa": "observed",
+        "category": "observed",
+        "latUdeg": "observed",
+        "lonUdeg": "observed"
+      },
+      "notAttested": [
+        "admission",
+        "closedDays"
+      ],
+      "whyEmpty": "本殿の特別拝観は CSV（S1）に平成28年（2016年）の予定として残っており、10 年落ちの動的情報である。事実層にキャッシュしない（skill: dynamic は never cache as truth）ので admission は空欄。CSV row 1000040 col21/23 の『900 / 1600』は同日の駐車場に関する col26 の記述と同居しており、本殿の拝観時間なのか境内施設の時間なのか判別できないため採用しない。",
+      "hoursNote": "CSV の 900/1600 は同じ行の col26『駐車場　自家用車50台(有料)』と並んでおり、何の時間か確定できない。採用しない（矛盾 C4 に記録）。",
+      "guideVerifiedColumnAllowed": true
+    },
+    "lat": 35.003645,
+    "lng": 135.77859
+  }
+]

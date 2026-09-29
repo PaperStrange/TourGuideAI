@@ -61,3 +61,22 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
+
+# --- content-addressed evidence: bytes must survive a checkout untouched ------------
+# The fact layer is content-addressed. world-grid.mjs A12/A13, validate-doors V10/V11/V18
+# and pack.json all assert SHA-256 over these files, so a checkout that normalises line
+# endings silently invalidates every hash assertion in the pack while leaving every
+# gate that reads the DATA perfectly happy.
+#
+# That is exactly what happened: with core.autocrlf=true plus `* text=auto`, git stored
+# and re-materialised these files with converted newlines, so the extracted bytes hashed
+# to something the measurement record had never seen - and nothing noticed until the
+# gates were run against a real clean checkout instead of in place.
+#
+# -text disables all line-ending conversion for these paths, for every contributor,
+# regardless of their local core.autocrlf.
+*.json                                        -text
+docs/handOff/archive/corpora/geo-japan/*.txt  -text
+city-packs/**/evidence/**                     -text
+iteration/recon/_fetch-*/**                   -text
+iteration/recon/_raw-*/**                     -text

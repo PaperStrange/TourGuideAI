@@ -18,9 +18,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       
-      - name: Configure Branch Protection for Main
+      - name: Configure Branch Protection for master (production)
         run: |
-          gh api --method PUT repos/${{ github.repository }}/branches/main/protection \
+          gh api --method PUT repos/${{ github.repository }}/branches/master/protection \
           -f enforce_admins=true \
           -f required_status_checks[0].context=security-scan \
           -f required_status_checks[1].context=build-and-test \
@@ -44,9 +44,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       
-      - name: Configure Branch Protection for Develop
+      - name: Configure Branch Protection for iteration (integration)
         run: |
-          gh api --method PUT repos/${{ github.repository }}/branches/develop/protection \
+          gh api --method PUT repos/${{ github.repository }}/branches/iteration/protection \
           -f enforce_admins=true \
           -f required_status_checks[0].context=build-and-test \
           -f required_status_checks[].strict=true \

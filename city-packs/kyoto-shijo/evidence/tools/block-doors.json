@@ -1,0 +1,27 @@
+{
+  "note": "The 12 authored doors of block 0. They are NOT place records: door \"names\" are the word 本門 (a type, not a proper name) and no source states where any doorway actually is, so a place record for one would carry an invented name and an invented position. They live in doors.json (our content) and kyoto-shijo-osm.json (the ODbL geometry).",
+  "count": 12,
+  "doorIds": [
+    "D-N1",
+    "D-N2",
+    "D-N3",
+    "D-N4",
+    "D-N5",
+    "D-N6",
+    "D-N7",
+    "D-S1",
+    "D-S2",
+    "D-S3",
+    "D-S4",
+    "D-S5"
+  ],
+  "northBuilding": "kyoto-shijo-bldg-mitsui",
+  "southBuilding": "kyoto-shijo-bldg-daiya",
+  "valueKind": "licenced",
+  "guideVerifiedColumnAllowed": false,
+  "files": [
+    "city-packs/kyoto-shijo/doors.json",
+    "city-packs/kyoto-shijo/kyoto-shijo-osm.json"
+  ],
+  "why": "doors.json provenance.fields marks cellX/cellY/entrancePointJa/interiorTemplate as licenced and provenance.guideVerifiedColumnAllowed is false for every door; validator.notAsserted states that no source records a doorway position in this block."
+}

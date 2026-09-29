@@ -1,0 +1,43 @@
+feat(ci): the fact-integrity gates, released to the production branch
+
+First change to master since 2025-03-19 (069f93d, PR #32). Deliberately scoped to CI
+infrastructure and the fact layer - NOT the application code, which stays on iteration
+until it is release-worthy. master goes 508 -> 647 tracked files.
+
+Why each piece is required rather than optional:
+
+  .github/workflows/fact-integrity.yml   the gates
+  .github/workflows/*.yml                branch filters corrected from main/develop, which
+                                         do not exist, to master/iteration. Those five had
+                                         never run, and per GitHub's documentation a workflow
+                                         skipped by branch filtering leaves its checks Pending
+                                         forever, which blocks any PR that requires them.
+  iteration/tools/run-gates.mjs          the runner the workflow invokes
+  iteration/tools/{check-repo-hygiene,find-untracked-deps}.mjs
+  iteration/design/                      the contracts and models those tools assert against
+  city-packs/kyoto-shijo/                the fact layer: 19 places, 6 legs, 12 doors, evidence
+  docs/handOff/dsh-bundle-tourguide-2.5d/  world-grid.mjs (frozen geo contract, 18
+                                         assertions), the export-boundary guard, the stock
+                                         city-pack validator
+  docs/handOff/archive/corpora/geo-japan/kyoto-slice-*.json   three measurement records the
+                                         two gates above read. Including them is the point:
+                                         without them the geo contract degrades to 16/18 with
+                                         two SKIPs and the doors gate cannot resolve a single
+                                         building id. It degrades honestly, but a runner that
+                                         prints only the "assertions passed" line hides it.
+  .gitattributes                         *.json -text, so a checkout cannot re-encode bytes
+                                         and invalidate every hash assertion in the pack
+  CONTRIBUTING.md                        corrected: it told contributors to branch from main,
+                                         which does not exist. It was UTF-16, which is
+                                         plausibly why nobody noticed.
+
+Also reconciled the workflows README with the 8 workflows master actually carries. That
+number differs per branch - master has mvp-release.yml, iteration has fact-integrity.yml
+and not mvp-release.yml - so a single hand-kept list would drift on the first edit. R2 of
+check-repo-hygiene.mjs asserts the README against the files on disk, and it caught this.
+
+Verified before pushing, in a detached worktree at origin/master: 8/8 gates,
+world-grid 18/18 with zero skips, doors 21/21, pack 15 checks, build idempotent,
+hygiene R1-R5 pass with R6 known-accepted.
+
+Rollback: origin/master was at 069f93d.

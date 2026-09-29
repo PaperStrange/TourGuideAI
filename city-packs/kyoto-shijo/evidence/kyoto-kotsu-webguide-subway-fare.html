@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<!-- favicon -->
+<link rel="apple-touch-icon" sizes="57x57" href="../../img/favicons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../../img/favicons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../../img/favicons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../../img/favicons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../../img/favicons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../../img/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="../../img/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../../img/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../img/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="../../img/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../img/favicons/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="../../img/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../img/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../img/favicons/manifest.json">
+<link rel="mask-icon" href="../../img/favicons/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="../../img/favicons/favicon.ico">
+<meta name="apple-mobile-web-app-title" content="KYOTO CITY BUS and SUBWAY">
+<meta name="application-name" content="KYOTO CITY BUS and SUBWAY">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="../../img/favicons/mstile-144x144.png">
+<meta name="msapplication-config" content="../../img/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<!-- Bootstrap -->
+<link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="../../bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+<!-- icon -->
+<link rel="stylesheet" href="../../font-awesome/css/all.min.css">
+
+<!-- user style -->
+<link href="../../css/style.css" rel="stylesheet">
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="../../js/html5shiv/dist/html5shiv.min.js"></script>
+		<script src="../../js/respond/dest/respond.min.js"></script>
+	<![endif]-->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../../js/jquery_import.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+<!-- user script -->
+<!-- utility -->
+    <script src="../../js/utility.js"></script>
+	<script src="../../js/disp_tika_fare.js"></script>
+<!-- scroll up -->
+    <script src="../../js/scrollup/js/jquery.scrollUp.min.js"></script>
+	<link id="scrollUpTheme" rel="stylesheet" type="text/css" href="../../js/scrollup/css/themes/image.css">
+<!-- cookie -->
+	<!-- already read in jquery_import -->
+<script>
+<!-- 
+$(document).ready(function(){
+//disp JST
+//localization ja:japanese,en:english,tcn:traditional chinese(hantaiji),cn:chinese(kantaiji),ko:korean
+	var local_code = "ja";
+	getTime(local_code);
+	$(function(){$.scrollUp({scrollText: ''});});
+	$(document).on("click",'a[href^=#]',function(){var href= $(this).attr("href");scrollHash(href);});
+//---------------------------------------
+//disp subway fare
+//---------------------------------------
+	var cookieid;
+//get cookie
+	cookieid = Cookies.get('fare_sta');
+	//alert(cookieid);
+	if(cookieid == null){cookieid = "";}
+//set fare
+	dispTikaFare(local_code,cookieid);
+//delete cookie
+	Cookies.remove('fare_sta', { path: '/' });
+//---------------------------------------
+	//setFontSize();
+});
+ -->
+</script>
+
+
+<title>京都市バス・地下鉄ガイド：地下鉄運賃</title>
+
+<!-- Analytics -->
+<script src="../../js/ga_tracking.js"></script>
+</head>
+<body class="ja">
+    <!-- Fixed navbar -->
+    <nav class="header navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="#main-contents" class="navbar-brand"><img src="../../img/kmtb_logo_white.gif" alt="to Main Contents" class="kmtb-logo-img"><div class="nav-clock-div"><span id="city_name_s"></span> <span id="ymd_s"></span><br><span id="jst_s"></span><span id="sec_s"></span> <span id="ampm_s"></span></div></a>
+		</div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <!-- 全ページ共通メニュー -->
+            <li><a href="../index.html"><i class="fa fa-home fa-fw"></i>ホーム</a></li>
+            <li><a href="../bus/index_bus.html"><img src="../../img/icon/bus_white.png" alt="" class="nav-bus-img">市バス</a></li>
+			<li><a href="../tika/index_tika.html"><img src="../../img/icon/subway_white.png" alt="" class="nav-tika-img">地下鉄</a></li>
+<!-- 文字サイズ削除 -->
+			<li><a href="../sitemap.html"><i class="fa fa-sitemap fa-fw"></i>サイトマップ</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown langsel">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-language fa-fw"></i>言語切替 <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+				<!-- 言語ごとに名前を分ける。 -->
+				<li><a href="#" class="ja cnglang" lang="ja-JP"><span class="label label-default comm-mg-r">JA</span>日本語</a></li>
+				<li><a href="#" class="en cnglang" lang="en-US"><span class="label label-default comm-mg-r">EN</span>English</a></li>
+				<li><a href="#" class="sc cnglang" lang="zh-CN"><span class="label label-default comm-mg-r">SC</span>简体中文</a></li>
+				<li><a href="#" class="tc cnglang" lang="zh-TW"><span class="label label-default comm-mg-r">TC</span>繁體中文</a></li>
+				<li><a href="#" class="ko cnglang" lang="ko"><span class="label label-default comm-mg-r">KO</span>한국어</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+     </div><!-- container -->
+    </nav><!-- Fixed navbar -->
+
+<!-- document header -->
+<div class="docs-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-9">
+				<div>
+				<ol class="breadcrumb">
+	  				<li><a href="../index.html"><i class="fa fa-home"></i></a></li>
+	  				<li><a href="index_fare.html">運賃</a></li>
+	  				<li class="active">地下鉄運賃</li>
+	  				</ol>
+  					<h1 class="h2"><i class="fa fa-jpy"></i>地下鉄運賃</h1>
+					<div class="panel panel-primary">
+					<div class="panel-heading"><p class="h4 panel-title text-center font-strong"><i class="fa fa-exclamation-triangle"></i>ご注意</p></div>
+						<ul class="list-group">
+							<li class="list-group-item">乗車駅を選択すると、乗車駅からの運賃を表示します。</li>
+							<li class="list-group-item">駅などであらかじめ乗車券を購入してご乗車ください。</li>
+							<li class="list-group-item">令和７年（2025年）10月1日からの運賃です。</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- このページのメニュー -->
+			<div class="col-lg-3">
+				<div class="panel panel-primary">
+				<div class="panel-heading"><p class="h4 panel-title">Menu</p></div>
+				<div class="list-group">
+					<a href="#p1" class="list-group-item"><span class="step-num">1</span>地下鉄普通運賃</a>
+					<a href="#h1" class="list-group-item">烏丸線</a>
+					<a href="#h2" class="list-group-item">東西線</a>
+					<a href="#h3" class="list-group-item">区数と運賃</a>
+					<a href="#" onClick="javascript:history.back();" class="list-group-item">前のページに戻る</a>
+				</div>
+			</div>
+			</div><!-- col 3 -->
+		</div><!-- row -->
+	</div><!-- container -->
+</div><!-- document header -->
+
+<!-- main -->
+<div class="main" id="main-contents">
+	<div class="container">
+		<div class="row">
+			<div class="contents col-lg-9">
+			<!-- main contents area この中を書き換える。 -->
+			<h2 class="h3" id="p1"><span class="step-num">1</span>地下鉄普通運賃</h2>
+			<!-- リモートモーダルダイアログ1 の読込先 -->
+  			<div class="modal fade" id="remotedialog1" tabindex="-1" role="dialog" aria-hidden="true" data-show="true" data-keyboard="false" data-backdrop="static">
+    			<div class="modal-dialog">
+      				<div class="modal-content">
+        			<!-- Bootstrap: modal.js v3.3.5 では、[this.$element.find('.modal-content')...] している -->
+      				</div> <!-- /.modal-content -->
+    			</div> <!-- /.modal-dialog -->
+  			</div> <!-- /.modal -->
+  			<!-- リモートモーダルダイアログ2 の読込先 -->
+  			<div class="modal fade" id="remotedialog2" tabindex="-1" role="dialog" aria-hidden="true" data-show="true" data-keyboard="false" data-backdrop="static">
+    			<div class="modal-dialog">
+      				<div class="modal-content">
+        			<!-- Bootstrap: modal.js v3.3.5 では、[this.$element.find('.modal-content')...] している -->
+      				</div> <!-- /.modal-content -->
+    			</div> <!-- /.modal-dialog -->
+  			</div> <!-- /.modal -->
+				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+				  <div class="panel panel-default list-group">
+				    <div class="panel-heading" role="tab" id="h1">
+				      <h3 class="panel-title">
+				        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#c1" aria-expanded="false" aria-controls="c1" id="ac1"><img src="../../img/icon/line_mark02.png" alt="K" style="width:24px;height:24px;vertical-align:middle;margin-right:8px;">烏丸線<i class="fa fa-chevron-down pull-right"></i></a>
+				      </h3>
+				    </div>
+				    <div id="c1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="h1">
+						<table class="table table-striped table-hover table-condensed route">
+							<tr><th class="text-center" colspan="2">駅名</th><th class="text-center"><span class="fare-adult">大人運賃</span><br><span class="fare-child">小児運賃</span><br><a role="button" class="btn btn-default btn-sm" href="../fare/pop_fare_age.html" data-target="#remotedialog1" data-toggle="modal"><i class="fa fa-clone"></i>運賃区分</a></th></tr>
+				 			<tr><td class="text-center k_line_y_top"><img src="../../img/tika/station/k01.png" alt="K01"></td><td class="height10"><span class="ja" lang="ja-JP">国際会館</span><span class="ja small" lang="ja-JP">（こくさいかいかん）</span><br><span class="small en" lang="en-US">Kokusaikaikan</span><span class="small"><br>(Kyoto International Conference Center)</span></td><td id="fstp0" class="text-center"></td></tr>
+							<tr><td class="text-center k_line_y"><img src="../../img/tika/station/k02.png" alt="K02"></td><td class="height10"><span class="ja" lang="ja-JP">松ヶ崎</span><span class="ja small" lang="ja-JP">（まつがさき）</span><br><span class="small en" lang="en-US">Matsugasaki</span></td><td id="fstp1" class="text-center"></td></tr>
+							<tr><td class="text-center k_line_y"><img src="../../img/tika/station/k03.png" alt="K03"></td><td class="height10"><span class="ja" lang="ja-JP">北山</span><span class="ja small" lang="ja-JP">（きたやま）</span><br><span class="small en" lang="en-US">Kitayama</span></td><td id="fstp2" class="text-center"></td></tr>
+							<tr><td class="text-center k_line_y"><img src="../../img/tika/station/k04.png" alt="K04"></td><td class="height10"><span class="ja" lang="ja-JP">北大路</span><span class="ja small" lang="ja-JP">（きたおおじ）</span><br><span class="small en" lang="en-US">Kitaoji</span></td><td id="fstp3" class="text-center"></td></tr>
+							<tr><td class="text-center k_line_y"><img src="../../img/tika/station/k05.png" alt="K05"></td><td class="height10"><span class="ja" lang="ja-JP">鞍馬口</span><span class="ja small" lang="ja-JP">（くらまぐち）</span><br><span class="small en" lang="en-US">Kuramaguchi</span></td><td id="fstp4" class="text-center"></td></tr>
+							<tr><td class="text-center k_line_y"><img src="../../img/tika/station/k06.png" alt="K06"></td><td class="height10"><span class="ja" lang="ja-JP">今出川</span><span class="ja small" lang="ja-JP">（いまでがわ）</span><br><span class="small en" lang="en-US">Imadegawa</span></td><td id="fstp5" class="text-center"></td></tr>
+							<tr><td class="text-center k_line_y"><img src="../../img/tika/station/k07.png" alt="K07"></td><td class="height10"><span class="ja" lang="ja-JP">丸太町</span><span class="ja small" lang="ja-JP">（まるたまち）</span><br><span class="small en" lang="en-US">Marutamachi</span></td><td id="fstp6" class="text-center"></td></tr>
+							<tr><td class="text-center k_line_y"><img src="../../img/tika/station/k08.png" alt="K08"></td><td class="height10"><span class="ja" lang="ja-JP">烏丸御池（烏丸線）</span><span class="ja small" lang="ja-JP">（からすまおいけ）</span><br><span class="small en" lang="en-US">Karasuma Oike</span></td><td id="fstp7" class="text-center"></td></tr>
+							<tr><td class="text-center k_line_y"><img src="../../img/tika/station/k09.png" alt="K09"></td><td class="height10"><span class="ja" lang="ja-JP">四条</span><span class="ja small" lang="ja-JP">（しじょう）</span><br><span class="small en" lang="en-US">Shijo</span></td><td id="fstp8" class="text-center"></td></tr>
+							<tr><td class="text-center k_line_y"><img src="../../img/tika/station/k10.png" alt="K10"></td><td class="height10"><span class="ja" lang="ja-JP">五条</span><span class="ja small" lang="ja-JP">（ごじょう）</span><br><span class="small en" lang="en-US">Gojo</span></td><td id="fstp9" class="text-center"></td></tr>
+							<tr><td class="text-center k_line_y"><img src="../../img/tika/station/k11.png" alt="K11"></td><td class="height10"><span class="ja" lang="ja-JP">京都</span><span class="ja small" lang="ja-JP">（きょうと）</span><br><span class="small en" lang="en-US">Kyoto</span></td><td id="fstp10" class="text-center"></td></tr>
+							<tr><td class="text-center k_line_y"><img src="../../img/tika/station/k12.png" alt="K12"></td><td class="height10"><span class="ja" lang="ja-JP">九条</span><span class="ja small" lang="ja-JP">（くじょう）</span><br><span class="small en" lang="en-US">Kujo</span></td><td id="fstp11" class="text-center"></td></tr>
+							<tr><td class="text-center k_line_y"><img src="../../img/tika/station/k13.png" alt="K13"></td><td class="height10"><span class="ja" lang="ja-JP">十条</span><span class="ja small" lang="ja-JP">（じゅうじょう）</span><br><span class="small en" lang="en-US">Jujo</span></td><td id="fstp12" class="text-center"></td></tr>
+							<tr><td class="text-center k_line_y"><img src="../../img/tika/station/k14.png" alt="K14"></td><td class="height10"><span class="ja" lang="ja-JP">くいな橋</span><span class="ja small" lang="ja-JP">（くいなばし）</span><br><span class="small en" lang="en-US">Kuinabashi</span></td><td id="fstp13" class="text-center"></td></tr>
+							<tr><td class="text-center k_line_y_bottom"><img src="../../img/tika/station/k15.png" alt="K15"></td><td class="height10"><span class="ja" lang="ja-JP">竹田</span><span class="ja small" lang="ja-JP">（たけだ）</span><br><span class="small en" lang="en-US">Takeda</span></td><td id="fstp14" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"></td><td colspan="2" class="small bg-primary">近鉄線（相互直通区間）</td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b en" lang="en-US">B06</span></td><td class="small height10">伏見<span class="ja small" lang="ja-JP">（ふしみ）</span><br><span class="en small" lang="en-US">Fushimi</span></td><td id="fstp200" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b kin-exp en" lang="en-US">B07</span></td><td class="small height10">近鉄丹波橋<span class="ja small" lang="ja-JP">（きんてつたんばばし）</span><br><span class="en small" lang="en-US">Kintetsu-Tambabashi</span></td><td id="fstp201" class="text-center"></td></tr>
+
+
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b kin-exp en" lang="en-US">B08</span></td><td class="small height10">桃山御陵前<span class="ja small" lang="ja-JP">（ももやまごりょうまえ）</span><br><span class="en small" lang="en-US">Momoyama-Goryomae</span></td><td id="fstp202" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b en" lang="en-US">B09</span></td><td class="small height10">向島<span class="ja small" lang="ja-JP">（むかいじま）</span><br><span class="en small" lang="en-US">Mukaijima</span></td><td id="fstp203" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b en" lang="en-US">B10</span></td><td class="small height10">小倉<span class="ja small" lang="ja-JP">（おぐら）</span><br><span class="en small" lang="en-US">Ogura</span></td><td id="fstp204" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b en" lang="en-US">B11</span></td><td class="small height10">伊勢田<span class="ja small" lang="ja-JP">（いせだ）</span><br><span class="en small" lang="en-US">Iseda</span></td><td id="fstp205" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b kin-exp en" lang="en-US">B12</span></td><td class="small height10">大久保<span class="ja small" lang="ja-JP">（おおくぼ）</span><br><span class="en small" lang="en-US">Okubo</span></td><td id="fstp206" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b en" lang="en-US">B13</span></td><td class="small height10">久津川<span class="ja small" lang="ja-JP">（くつかわ）</span><br><span class="en small" lang="en-US">Kutsukawa</span></td><td id="fstp207" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b en" lang="en-US">B14</span></td><td class="small height10">寺田<span class="ja small" lang="ja-JP">（てらだ）</span><br><span class="en small" lang="en-US">Terada</span></td><td id="fstp208" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b en" lang="en-US">B15</span></td><td class="small height10">富野荘<span class="ja small" lang="ja-JP">（とのしょう）</span><br><span class="en small" lang="en-US">Tonosho</span></td><td id="fstp209" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b kin-exp en" lang="en-US">B16</span></td><td class="small height10">新田辺<span class="ja small" lang="ja-JP">（しんたなべ）</span><br><span class="en small" lang="en-US">Shin-Tanabe</span></td><td id="fstp210" class="text-center"></td></tr>
+
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b en" lang="en-US">B17</span></td><td class="small height10">興戸<span class="ja small" lang="ja-JP">（こうど）</span><br><span class="en small" lang="en-US">Kodo</span></td><td id="fstp211" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b en" lang="en-US">B18</span></td><td class="small height10">三山木<span class="ja small" lang="ja-JP">（みやまき）</span><br><span class="en small" lang="en-US">Miyamaki</span></td><td id="fstp212" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b en" lang="en-US">B19</span></td><td class="small height10">近鉄宮津<span class="ja small" lang="ja-JP">（きんてつみやづ）</span><br><span class="en small" lang="en-US">Kintetsu-Miyazu</span></td><td id="fstp213" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b en" lang="en-US">B20</span></td><td class="small height10">狛田<span class="ja small" lang="ja-JP">（こまだ）</span><br><span class="en small" lang="en-US">Komada</span></td><td id="fstp214" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b kin-exp en" lang="en-US">B21</span></td><td class="small height10">新祝園<span class="ja small" lang="ja-JP">（しんほうその）</span><br><span class="en small" lang="en-US">Shin-Hosono</span></td><td id="fstp215" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b en" lang="en-US">B22</span></td><td class="small height10">木津川台<span class="ja small" lang="ja-JP">（きづがわだい）</span><br><span class="en small" lang="en-US">Kizugawadai</span></td><td id="fstp216" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b en" lang="en-US">B23</span></td><td class="small height10">山田川<span class="ja small" lang="ja-JP">（やまだがわ）</span><br><span class="en small" lang="en-US">Yamadagawa</span></td><td id="fstp217" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b kin-exp en" lang="en-US">B24</span></td><td class="small height10">高の原<span class="ja small" lang="ja-JP">（たかのはら）</span><br><span class="en small" lang="en-US">Takanohara</span></td><td id="fstp218" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b en" lang="en-US">B25</span></td><td class="small height10">平城<span class="ja small" lang="ja-JP">（へいじょう）</span><br><span class="en small" lang="en-US">Heijo</span></td><td id="fstp219" class="text-center"></td></tr>
+
+
+
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b kin-exp en" lang="en-US">B26</span></td><td class="small height10">大和西大寺<span class="ja small" lang="ja-JP">（やまとさいだいじ）</span><br><span class="en small" lang="en-US">Yamato-Saidaiji</span></td><td id="fstp220" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-a kin-exp en" lang="en-US">A27</span></td><td class="small height10">新大宮<span class="ja small" lang="ja-JP">（しんおおみや）</span><br><span class="en small" lang="en-US">Shin-Omiya</span></td><td id="fstp223" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y_bottom"><span class="kin-num-a kin-exp en" lang="en-US">A28</span></td><td class="small height10">近鉄奈良<span class="ja small" lang="ja-JP">（きんてつなら）</span><br><span class="en small" lang="en-US">Kintetsu-Nara</span></td><td id="fstp230" class="text-center"></td></tr>
+
+
+							<tr><td class="bg-primary" colspan="3">近鉄奈良線</td></tr>
+							<tr><td class="small" colspan="3">至　近鉄奈良</td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-a en" lang="en-US">A26</span></td><td class="small height10">大和西大寺<span class="ja small" lang="ja-JP">（やまとさいだいじ）</span><br><span class="en small" lang="en-US">Yamato-Saidaiji</span></td><td class="text-center"><span class="kin-num-b kin-exp en" lang="en-US">B26</span></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-a en" lang="en-US">A21</span></td><td class="small height10">菖蒲池<span class="ja small" lang="ja-JP">（あやめいけ）</span><br><span class="en small" lang="en-US">Ayameike</span></td><td id="fstp221" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-a en" lang="en-US">A20</span></td><td class="small height10">学園前<span class="ja small" lang="ja-JP">（がくえんまえ）</span><br><span class="en small" lang="en-US">Gakuenmae</span></td><td id="fstp222" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-a en" lang="en-US">A19</span></td><td class="small height10">富雄<span class="ja small" lang="ja-JP">（とみお）</span><br><span class="en small" lang="en-US">Tomio</span></td><td id="fstp227" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-a en" lang="en-US">A18</span></td><td class="small height10">東生駒<span class="ja small" lang="ja-JP">（ひがしいこま）</span><br><span class="en small" lang="en-US">Higashi Ikoma</span></td><td id="fstp228" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-a en" lang="en-US">A17</span></td><td class="small height10">生駒<span class="ja small" lang="ja-JP">（いこま）</span><br><span class="en small" lang="en-US">Ikoma</span></td><td id="fstp229" class="text-center"></td></tr>
+							<tr><td class="small" colspan="3">至　大阪難波・大阪上本町（難波線）<br>至　王寺（生駒線）<br>至　長田／学研奈良登美ヶ丘（けいはんな線）</td></tr>
+
+
+							<tr><td class="bg-primary" colspan="3">近鉄橿原線</td></tr>
+							<tr><td class="small" colspan="3">至　大和西大寺</td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b en" lang="en-US">B26</span></td><td class="small height10">大和西大寺<span class="ja small" lang="ja-JP">（やまとさいだいじ）</span><br><span class="en small" lang="en-US">Yamato-Saidaiji</span></td><td class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b en" lang="en-US">B27</span></td><td class="small height10">尼ヶ辻<span class="ja small" lang="ja-JP">（あまがつじ）</span><br><span class="en small" lang="en-US">Amagatsuji</span></td><td id="fstp224" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b en" lang="en-US">B28</span></td><td class="small height10">西ノ京<span class="ja small" lang="ja-JP">（にしのきょう）</span><br><span class="en small" lang="en-US">Nishinokyo</span></td><td id="fstp225" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b en" lang="en-US">B29</span></td><td class="small height10">九条<span class="ja small" lang="ja-JP">（くじょう）</span><br><span class="en small" lang="en-US">Kujo</span></td><td id="fstp226" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b en" lang="en-US">B30</span></td><td class="small height10">近鉄郡山<span class="ja small" lang="ja-JP">（きんてつこおりやま）</span><br><span class="en small" lang="en-US">Kintetsu-Koriyama</span></td><td id="fstp231" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b en" lang="en-US">B31</span></td><td class="small height10">筒井<span class="ja small" lang="ja-JP">（つつい）</span><br><span class="en small" lang="en-US">Tsutsui</span></td><td id="fstp232" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b en" lang="en-US">B32</span></td><td class="small height10">平端<span class="ja small" lang="ja-JP">（ひらはた）</span><br><span class="en small" lang="en-US">Hirahata</span></td><td id="fstp233" class="text-center"></td></tr>
+							<tr><td class="small" colspan="3">至　橿原神宮前・大和八木</td></tr>
+				
+							<tr><td class="bg-primary" colspan="3">近鉄天理線</td></tr>
+							<tr><td class="small" colspan="3">至　大和西大寺／橿原神宮前・大和八木（橿原線）</td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b en" lang="en-US">H32</span></td><td class="small height10">平端<span class="ja small" lang="ja-JP">（ひらはた）</span><br><span class="en small" lang="en-US">Hirahata</span></td><td class="text-center"><span class="kin-num-b kin-exp en" lang="en-US">B32</span></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b en" lang="en-US">H33</span></td><td class="small height10">二階堂<span class="ja small" lang="ja-JP">（にかいどう）</span><br><span class="en small" lang="en-US">Nikaido</span></td><td id="fstp234" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y"><span class="kin-num-b en" lang="en-US">H34</span></td><td class="small height10">前栽<span class="ja small" lang="ja-JP">（せんざい）</span><br><span class="en small" lang="en-US">Senzai</span></td><td id="fstp235" class="text-center"></td></tr>
+							<tr><td class="text-center kin_line_y_bottom"><span class="kin-num-b en" lang="en-US">H35</span></td><td class="small height10">天理<span class="ja small" lang="ja-JP">（てんり）</span><br><span class="en small" lang="en-US">Tenri</span></td><td id="fstp236" class="text-center"></td></tr>
+  				</table>
+
+				    </div>
+				  </div>
+				  <div class="panel panel-default list-group">
+				    <div class="panel-heading" role="tab" id="h2">
+				      <h3 class="panel-title">
+				        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#c2" aria-expanded="false" aria-controls="c2" id="ac2"><img src="../../img/icon/line_mark01.png" alt="T" style="width:24px;height:24px;vertical-align:middle;margin-right:8px;">東西線<i class="fa fa-chevron-down pull-right"></i></a>
+				      </h3>
+				    </div>
+				    <div id="c2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="h2">
+						<table class="table table-striped table-hover table-condensed route">
+							<tr><th class="text-center" colspan="3">駅名</th><th class="text-center"><span class="fare-adult">大人運賃</span><br><span class="fare-child">小児運賃</span><br><a role="button" class="btn btn-default btn-sm" href="../fare/pop_fare_age.html" data-target="#remotedialog1" data-toggle="modal"><i class="fa fa-clone"></i>運賃区分</a></th></tr>
+							<tr><td colspan="2" class="bg-primary small">京阪京津線</td><td colspan="2"></td></tr>
+							<tr><td class="text-center kei_line_y_top" style="line-height:0.8em;"><span class="ot-num-1 en" lang="en-US">OT<br><span class="ot-num-2 en" lang="en-US">12</span></span></td><td class="small height10" colspan="2">びわ湖浜大津<span class="ja small" lang="ja-JP">（びわこはまおおつ）</span><br><span class="en small" lang="en-US">Biwako-Hamaotsu</span></td><td id="fstp105" class="text-center"></td></tr>
+							<tr><td class="text-center kei_line_y" style="line-height:0.8em;"><span class="ot-num-1 en" lang="en-US">OT<br><span class="ot-num-2 en" lang="en-US">35</span></span></td><td class="small height10" colspan="2">上栄町<span class="ja small" lang="ja-JP">（かみさかえまち）</span><br><span class="en small" lang="en-US">Kamisakaemachi</span></td><td id="fstp104" class="text-center"></td></tr>
+							<tr><td class="text-center kei_line_y" style="line-height:0.8em;"><span class="ot-num-1 en" lang="en-US">OT<br><span class="ot-num-2 en" lang="en-US">34</span></span></td><td class="small height10" colspan="2">大谷<span class="ja small" lang="ja-JP">（おおたに）</span><br><span class="en small" lang="en-US">Otani</span></td><td id="fstp103" class="text-center"></td></tr>
+							<tr><td class="text-center kei_line_y" style="line-height:0.8em;"><span class="ot-num-1 en" lang="en-US">OT<br><span class="ot-num-2 en" lang="en-US">33</span></span></td><td class="small height10" colspan="2">追分<span class="ja small" lang="ja-JP">（おいわけ）</span><br><span class="en small" lang="en-US">Oiwake</span></td><td id="fstp102" class="text-center"></td></tr>
+							<tr><td class="text-center kei_line_y" style="line-height:0.8em;"><span class="ot-num-1 en" lang="en-US">OT<br><span class="ot-num-2 en" lang="en-US">32</span></span></td><td class="small height10" colspan="2">四宮<span class="ja small" lang="ja-JP">（しのみや）</span><br><span class="en small" lang="en-US">Shinomiya</span></td><td id="fstp101" class="text-center"></td></tr>
+
+							<tr><td class="text-center kei_line_y" style="line-height:0.8em;"><span class="ot-num-1 en" lang="en-US">OT<br><span class="ot-num-2 en" lang="en-US">31</span></span></td><td class="small height10" colspan="2">京阪山科<span class="ja small" lang="ja-JP">（けいはんやましな）</span><br><span class="en small" lang="en-US">Keihan-yamashina</span></td><td id="fstp100" class="text-center"></td></tr>
+
+							<tr><td class="text-center kei_line_y"></td><td class="text-center t_line_y_top"><img src="../../img/tika/station/t01.png" alt="T01"></td><td class="height10"><span class="ja" lang="ja-JP">六地蔵</span><span class="ja small" lang="ja-JP">（ろくじぞう）</span><br><span class="small en" lang="en-US">Rokujizo</span></td><td id="fstp31" class="text-center"></td></tr>
+							<tr><td class="text-center kei_line_y"></td><td class="text-center t_line_y"><img src="../../img/tika/station/t02.png" alt="T02"></td><td class="height10"><span class="ja" lang="ja-JP">石田</span><span class="ja small" lang="ja-JP">（いしだ）</span><br><span class="small en" lang="en-US">Ishida</span></td><td id="fstp30" class="text-center"></td></tr>
+							<tr><td class="text-center kei_line_y"></td><td class="text-center t_line_y"><img src="../../img/tika/station/t03.png" alt="T03"></td><td class="height10"><span class="ja" lang="ja-JP">醍醐</span><span class="ja small" lang="ja-JP">（だいご）</span><br><span class="small en" lang="en-US">Daigo</span></td><td id="fstp29" class="text-center"></td></tr>
+							<tr><td class="text-center kei_line_y"></td><td class="text-center t_line_y"><img src="../../img/tika/station/t04.png" alt="T04"></td><td class="height10"><span class="ja" lang="ja-JP">小野</span><span class="ja small" lang="ja-JP">（おの）</span><br><span class="small en" lang="en-US">Ono</span></td><td id="fstp28" class="text-center"></td></tr>
+							<tr><td class="text-center kei_line_y"></td><td class="text-center t_line_y"><img src="../../img/tika/station/t05.png" alt="T05"></td><td class="height10"><span class="ja" lang="ja-JP">椥&#36795;&#xE0100;</span><span class="ja small" lang="ja-JP">（なぎつじ）</span><br><span class="small en" lang="en-US">Nagitsuji</span></td><td id="fstp27" class="text-center"></td></tr>
+							<tr><td class="text-center kei_line_y"></td><td class="text-center t_line_y"><img src="../../img/tika/station/t06.png" alt="T06"></td><td class="height10"><span class="ja" lang="ja-JP">東野</span><span class="ja small" lang="ja-JP">（ひがしの）</span><br><span class="small en" lang="en-US">Higashino</span></td><td id="fstp26" class="text-center"></td></tr>
+							<tr><td class="text-center kei_line_y"></td><td class="text-center t_line_y"><img src="../../img/tika/station/t07.png" alt="T07"></td><td class="height10"><span class="ja" lang="ja-JP">山科</span><span class="ja small" lang="ja-JP">（やましな）</span><br><span class="small en" lang="en-US">Yamashina</span></td><td id="fstp25" class="text-center"></td></tr>
+							<tr><td class="kei_line_misasagi"></td><td class="text-center tk_line_y_misasagi"><img src="../../img/tika/station/t08.png" alt="T08"></td><td class="height10"><span class="ja" lang="ja-JP">御陵</span><span class="ja small" lang="ja-JP">（みささぎ）</span><br><span class="small en" lang="en-US">Misasagi</span></td><td id="fstp24" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center tk_line_y"><img src="../../img/tika/station/t09.png" alt="T09"></td><td class="height10"><span class="ja" lang="ja-JP">蹴上</span><span class="ja small" lang="ja-JP">（けあげ）</span><br><span class="small en" lang="en-US">Keage</span></td><td id="fstp23" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center tk_line_y"><img src="../../img/tika/station/t10.png" alt="T10"></td><td class="height10"><span class="ja" lang="ja-JP">東山</span><span class="ja small" lang="ja-JP">（ひがしやま）</span><br><span class="small en" lang="en-US">Higashiyama</span></td><td id="fstp22" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center tk_line_y"><img src="../../img/tika/station/t11.png" alt="T11"></td><td class="height10"><span class="ja" lang="ja-JP">三条京阪</span><span class="ja small" lang="ja-JP">（さんじょうけいはん）</span><br><span class="small en" lang="en-US">Sanjo Keihan</span></td><td id="fstp21" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center tk_line_y"><img src="../../img/tika/station/t12.png" alt="T12"></td><td class="height10"><span class="ja" lang="ja-JP">京都市役所前</span><span class="ja small" lang="ja-JP">（きょうとしやくしょまえ）</span><br><span class="small en" lang="en-US">Kyoto Shiyakusho-mae(Kyoto City Hall)</span></td><td id="fstp20" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center tk_line_y"><img src="../../img/tika/station/t13.png" alt="T13"></td><td class="height10"><span class="ja" lang="ja-JP">烏丸御池（東西線）</span><span class="ja small" lang="ja-JP">（からすまおいけ）</span><br><span class="small en" lang="en-US">Karasuma Oike</span></td><td id="fstp19" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center tk_line_y"><img src="../../img/tika/station/t14.png" alt="T14"></td><td class="height10"><span class="ja" lang="ja-JP">二条城前</span><span class="ja small" lang="ja-JP">（にじょうじょうまえ）</span><br><span class="small en" lang="en-US">Nijojo-mae(Nijo-jo Castle)</span></td><td id="fstp18" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center tk_line_y"><img src="../../img/tika/station/t15.png" alt="T15"></td><td class="height10"><span class="ja" lang="ja-JP">二条</span><span class="ja small" lang="ja-JP">（にじょう）</span><br><span class="small en" lang="en-US">Nijo</span></td><td id="fstp17" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center tk_line_y"><img src="../../img/tika/station/t16.png" alt="T16"></td><td class="height10"><span class="ja" lang="ja-JP">西大路御池</span><span class="ja small" lang="ja-JP">（にしおおじおいけ）</span><br><span class="small en" lang="en-US">Nishioji Oike</span></td><td id="fstp16" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center tk_line_y_bottom"><img src="../../img/tika/station/t17.png" alt="T17"></td><td class="height10"><span class="ja" lang="ja-JP">太秦天神川</span><span class="ja small" lang="ja-JP">（うずまさてんじんがわ）</span><br><span class="small en" lang="en-US">Uzumasa Tenjingawa</span></td><td id="fstp15" class="text-center"></td></tr>
+
+
+							<tr><td class="bg-primary" colspan="4">京阪石山坂本線</td></tr>
+							<tr><td></td><td class="text-center kei_line_y_top"><span class="ot-num-1 en" lang="en-US">OT<br><span class="ot-num-2 en" lang="en-US">21</span></span></td><td class="small height10">坂本比叡山口<span class="ja small" lang="ja-JP">（さかもとひえいざんぐち）</span><br><span class="en small" lang="en-US">Sakamoto-hieizanguchi</span></td><td id="fstp125" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center kei_line_y"><span class="ot-num-1 en" lang="en-US">OT<br><span class="ot-num-2 en" lang="en-US">20</span></span></td><td class="small height10">松ノ馬場<span class="ja small" lang="ja-JP">（まつのばんば）</span><br><span class="en small" lang="en-US">Matsunobamba</span></td><td id="fstp124" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center kei_line_y"><span class="ot-num-1 en" lang="en-US">OT<br><span class="ot-num-2 en" lang="en-US">19</span></span></td><td class="small height10">穴太<span class="ja small" lang="ja-JP">（あのお）</span><br><span class="en small" lang="en-US">Anoo</span></td><td id="fstp123" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center kei_line_y"><span class="ot-num-1 en" lang="en-US">OT<br><span class="ot-num-2 en" lang="en-US">18</span></span></td><td class="small height10">滋賀里<span class="ja small" lang="ja-JP">（しがさと）</span><br><span class="en small" lang="en-US">Shigasato</span></td><td id="fstp122" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center kei_line_y"><span class="ot-num-1 en" lang="en-US">OT<br><span class="ot-num-2 en" lang="en-US">17</span></span></td><td class="small height10">南滋賀<span class="ja small" lang="ja-JP">（みなみしが）</span><br><span class="en small" lang="en-US">Minami-shiga</span></td><td id="fstp121" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center kei_line_y"><span class="ot-num-1 en" lang="en-US">OT<br><span class="ot-num-2 en" lang="en-US">16</span></span></td><td class="small height10">近江神宮前<span class="ja small" lang="ja-JP">（おうみじんぐうまえ）</span><br><span class="en small" lang="en-US">Omi-jingu-mae</span></td><td id="fstp113" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center kei_line_y"><span class="ot-num-1 en" lang="en-US">OT<br><span class="ot-num-2 en" lang="en-US">15</span></span></td><td class="small height10">京阪大津京<span class="ja small" lang="ja-JP">（けいはんおおつきょう）</span><br><span class="en small" lang="en-US">Keihan-otsukyo</span></td><td id="fstp112" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center kei_line_y"><span class="ot-num-1 en" lang="en-US">OT<br><span class="ot-num-2 en" lang="en-US">14</span></span></td><td class="small height10">大津市役所前<span class="ja small" lang="ja-JP">（おおつしやくしょまえ）</span><br><span class="en small" lang="en-US">Otsu-shiyakusho-mae</span></td><td id="fstp111" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center kei_line_y"><span class="ot-num-1 en" lang="en-US">OT<br><span class="ot-num-2 en" lang="en-US">13</span></span></td><td class="small height10">三井寺<span class="ja small" lang="ja-JP">（みいでら）</span><br><span class="en small" lang="en-US">Miidera</span></td><td id="fstp107" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center kei_line_y"><span class="ot-num-1 en" lang="en-US">OT<br><span class="ot-num-2 en" lang="en-US">12</span></span></td><td class="small height10">びわ湖浜大津<span class="ja small" lang="ja-JP">（びわこはまおおつ）</span><br><span class="en small" lang="en-US">Biowako-hamaotsu</span></td><td class="text-center"></td></tr>
+							<tr><td></td><td class="text-center kei_line_y"><span class="ot-num-1 en" lang="en-US">OT<br><span class="ot-num-2 en" lang="en-US">11</span></span></td><td class="small height10">島ノ関<span class="ja small" lang="ja-JP">（しまのせき）</span><br><span class="en small" lang="en-US">Shimanoseki</span></td><td id="fstp106" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center kei_line_y"><span class="ot-num-1 en" lang="en-US">OT<br><span class="ot-num-2 en" lang="en-US">10</span></span></td><td class="small height10">石場<span class="ja small" lang="ja-JP">（いしば）</span><br><span class="en small" lang="en-US">Ishiba</span></td><td id="fstp108" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center kei_line_y"><span class="ot-num-1 en" lang="en-US">OT<br><span class="ot-num-2 en" lang="en-US">09</span></span></td><td class="small height10">京阪膳所<span class="ja small" lang="ja-JP">（けいはんぜぜ）</span><br><span class="en small" lang="en-US">Keihan-zeze</span></td><td id="fstp109" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center kei_line_y"><span class="ot-num-1 en" lang="en-US">OT<br><span class="ot-num-2 en" lang="en-US">08</span></span></td><td class="small height10">錦<span class="ja small" lang="ja-JP">（にしき）</span><br><span class="en small" lang="en-US">Nishiki</span></td><td id="fstp110" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center kei_line_y"><span class="ot-num-1 en" lang="en-US">OT<br><span class="ot-num-2 en" lang="en-US">07</span></span></td><td class="small height10">膳所本町<span class="ja small" lang="ja-JP">（ぜぜほんまち）</span><br><span class="en small" lang="en-US">Zeze-hommachi</span></td><td id="fstp114" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center kei_line_y"><span class="ot-num-1 en" lang="en-US">OT<br><span class="ot-num-2 en" lang="en-US">06</span></span></td><td class="small height10">中ノ庄<span class="ja small" lang="ja-JP">（なかのしょう）</span><br><span class="en small" lang="en-US">Nakanosho</span></td><td id="fstp115" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center kei_line_y"><span class="ot-num-1 en" lang="en-US">OT<br><span class="ot-num-2 en" lang="en-US">05</span></span></td><td class="small height10">瓦ヶ浜<span class="ja small" lang="ja-JP">（かわらがはま）</span><br><span class="en small" lang="en-US">Kawaragahama</span></td><td id="fstp116" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center kei_line_y"><span class="ot-num-1 en" lang="en-US">OT<br><span class="ot-num-2 en" lang="en-US">04</span></span></td><td class="small height10">粟津<span class="ja small" lang="ja-JP">（あわづ）</span><br><span class="en small" lang="en-US">Awazu</span></td><td id="fstp117" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center kei_line_y"><span class="ot-num-1 en" lang="en-US">OT<br><span class="ot-num-2 en" lang="en-US">03</span></span></td><td class="small height10">京阪石山<span class="ja small" lang="ja-JP">（けいはんいしやま）</span><br><span class="en small" lang="en-US">Keihan-ishiyama</span></td><td id="fstp118" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center kei_line_y"><span class="ot-num-1 en" lang="en-US">OT<br><span class="ot-num-2 en" lang="en-US">02</span></span></td><td class="small height10">唐橋前<span class="ja small" lang="ja-JP">（からはしまえ）</span><br><span class="en small" lang="en-US">Karahashimae</span></td><td id="fstp119" class="text-center"></td></tr>
+							<tr><td></td><td class="text-center kei_line_y_bottom"><span class="ot-num-1 en" lang="en-US">OT<br><span class="ot-num-2 en" lang="en-US">01</span></span></td><td class="small height10">石山寺<span class="ja small" lang="ja-JP">（いしやまでら）</span><br><span class="en small" lang="en-US">Ishiyamadera</span></td><td id="fstp120" class="text-center"></td></tr>
+
+
+						</table>
+				    </div>
+				  </div>
+ 					<div class="panel panel-default list-group">
+					    <div class="panel-heading" role="tab" id="h3">
+					      <h3 class="panel-title">
+					        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#c3" aria-expanded="false" aria-controls="c3" id="ac3">区数と運賃<i class="fa fa-chevron-down pull-right"></i></a>
+					      </h3>
+					    </div>
+	 					<div id="c3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="h3">
+							<table class="table table-striped table-hover table-condensed route">
+								<tr><td class="cell-middle">1区</td><td class="cell-middle">3kmまで</td><td>大人 <span class="fare-adult">220</span><span class="cash-unit">円</span><br>小児 <span class="fare-child">110</span><span class="cash-unit">円</span></td></tr>
+								<tr><td class="cell-middle">2区</td><td class="cell-middle">3kmを超え7km以下</td><td>大人 <span class="fare-adult">260</span><span class="cash-unit">円</span><br>小児 <span class="fare-child">130</span><span class="cash-unit">円</span></td></tr>
+								<tr><td class="cell-middle">3区</td><td class="cell-middle">7kmを超え11km以下</td><td>大人 <span class="fare-adult">290</span><span class="cash-unit">円</span><br>小児 <span class="fare-child">150</span><span class="cash-unit">円</span></td></tr>
+								<tr><td class="cell-middle">4区</td><td class="cell-middle">11kmを超え15km以下</td><td>大人 <span class="fare-adult">330</span><span class="cash-unit">円</span><br>小児 <span class="fare-child">170</span><span class="cash-unit">円</span></td></tr>
+								<tr><td class="cell-middle">5区</td><td class="cell-middle">15kmを超える区間</td><td>大人 <span class="fare-adult">360</span><span class="cash-unit">円</span><br>小児 <span class="fare-child">180</span><span class="cash-unit">円</span></td></tr>
+							</table>
+						</div>
+					</div>
+				</div><!-- accordion penel -->
+			</div><!-- col 9 -->
+			
+			<!-- メニュー表示 -->
+			<aside class="aside col-lg-3">
+			
+			</aside><!-- aside -->
+		</div><!-- row -->
+	</div><!-- container -->
+</div><!-- main -->
+
+
+<!-- footer -->
+<footer class="footer navbar-fixed-bottom">
+<div>
+<label for="ekicode">乗車駅を選択してください。</label><br>
+<form class="navbar-form" method="post" name="seleki" action="#" style="margin:0px auto 4px auto;padding:2px;">
+<select class="form-control" id="ekicode" title="Select Station" style="width:90%;margin:auto;border:2px solid orange;border-radius:4px;">
+<optgroup label="烏丸線">
+<option value="0">K01 国際会館 Kokusaikaikan</option>
+<option value="1">K02 松ヶ崎 Matsugasaki</option>
+<option value="2">K03 北山 Kitayama</option>
+<option value="3">K04 北大路 Kitaoji</option>
+<option value="4">K05 鞍馬口 Kuramaguchi</option>
+<option value="5">K06 今出川 Imadegawa</option>
+<option value="6">K07 丸太町 Marutamachi</option>
+<option value="7">K08 烏丸御池(烏丸線) Karasuma Oike</option>
+<option value="8">K09 四条 Shijo</option>
+<option value="9">K10 五条 Gojo</option>
+<option value="10" selected="selected">K11 京都 Kyoto</option>
+<option value="11">K12 九条 Kujo</option>
+<option value="12">K13 十条 Jujo</option>
+<option value="13">K14 くいな橋 Kuinabashi</option>
+<option value="14">K15 竹田 Takeda</option>
+</optgroup>
+<optgroup label="東西線">
+<option value="31">T01 六地蔵 Rokujizo</option>
+<option value="30">T02 石田 Ishida</option>
+<option value="29">T03 醍醐 Daigo</option>
+<option value="28">T04 小野 Ono</option>
+<option value="27">T05 椥&#36795;&#xE0100; Nagitsuji</option>
+<option value="26">T06 東野 Higashino</option>
+<option value="25">T07 山科 Yamashina</option>
+<option value="24">T08 御陵 Misasagi</option>
+<option value="23">T09 蹴上 Keage</option>
+<option value="22">T10 東山 Higashiyama</option>
+<option value="21">T11 三条京阪 Sanjo Keihan</option>
+<option value="20">T12 京都市役所前 Kyoto Shiyakusho-mae</option>
+<option value="19">T13 烏丸御池(東西線) Karasuma Oike</option>
+<option value="18">T14 二条城前 Nijojo-mae</option>
+<option value="17">T15 二条 Nijo</option>
+<option value="16">T16 西大路御池 Nishioji Oike</option>
+<option value="15">T17 太秦天神川 Uzumasa Tenjingawa</option>
+</optgroup>
+</select>
+</form>
+
+
+</div>
+<div class="footer-logo"><i class="fa fa-qrcode fa-lg"></i><span class="label label-default footer-lang">JA</span>京都市バス・地下鉄ガイド<span class="filenum">No.3200</span></div>
+</footer><!-- footer -->
+</body>
+</html>

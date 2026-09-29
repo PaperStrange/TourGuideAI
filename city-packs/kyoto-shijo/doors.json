@@ -1,0 +1,674 @@
+{
+  "schema": "tourguide.city-pack.doors/v1",
+  "pack": "kyoto-shijo",
+  "block": {
+    "blockIndex": 0,
+    "note": "Block 0 of the frozen corridor: the first 40 m of 四条通 east of 四条烏丸. The 2.5D world is exactly one block deep (GRID.blocksAcrossY = 1), so this is the only block that can hold authored interiors.",
+    "cellXRange": [
+      0,
+      40
+    ],
+    "cellYRange": [
+      0,
+      40
+    ],
+    "cellMetres": 1,
+    "subTilesPerTile": 16,
+    "worldDepthM": 40,
+    "facadeFrontageNorthM": 23.477931,
+    "facadeFrontageSouthM": 18.165148,
+    "facadeFrontageTotalM": 41.643079,
+    "frontageFreeWestM": {
+      "north": 16.522069,
+      "south": 17.526173,
+      "note": "The block's west end is the 四条烏丸 junction, not shop frontage. See gaps G2."
+    }
+  },
+  "cellYConvention": {
+    "formula": "cellY = row = tileY + 20, where tileY = tileFromSub(subY) = floor(y_m) on the canonical sub-tile",
+    "why": "四条通's centreline passes through the origin, so y_m = 0 IS the street centreline and the 40 m corridor spans y_m in [-20, +20) with row in [0, 40). The corridor is therefore 20 m of block on each side of the street.",
+    "evidenceStreetCentrelineAtOrigin": {
+      "osmWayId": 465069436,
+      "nodeIndex": 3,
+      "alsoNodeOfWay": 678103923,
+      "alsoNodeIndex": 0,
+      "tags": {
+        "highway": "primary",
+        "name": "四条通",
+        "lanes": "2",
+        "maxspeed": "40"
+      },
+      "measuredYM": 0,
+      "note": "ORIGIN equals BOTH way 465069436 node#3 AND way 678103923 node#0 -- the two are the same node. Both are geometry nodes of 四条通 (highway=primary), so the origin lies ON 四条通's centreline. Way 678103923 runs west (lanes=4) and way 465069436 runs east (lanes=2): this IS the 四条烏丸 way boundary the contract describes."
+    },
+    "conflictWithTaskCard": "Task card task-2 states the grid conversion as 'cellY = floor(y_m)' while also requiring cellY in [0,40). Those two are joint-inconsistent: floor(y_m) over the corridor [-20,20) yields [-20,20), and it would place the street centreline at cellY = 0 (the block's south edge) instead of cellY = 20 (its middle), putting every south-side door at negative cellY. The card's own next sentence ('blocksAcrossY: 1 -- so cellY's whole range is [0,40)') and its '两侧' (both sides) frontage model are only satisfiable by the row reading. cellY = row is used here; see contradictions C1."
+  },
+  "frozenConstants": {
+    "mustImport": "docs/handOff/dsh-bundle-tourguide-2.5d/tools/world-grid.mjs",
+    "note": "These literals are a MIRROR for readers of this JSON only. Nothing may be computed from them: validate-doors.mjs imports the real constants and asserts every value below equals the import (assertion V1). Retyping them is how the corridor length silently drifted once already (wTiles 2000 -> 1600).",
+    "ORIGIN": {
+      "status": "frozen",
+      "lonUdeg": 135759719,
+      "latUdeg": 35003658
+    },
+    "PROJECTION": {
+      "kind": "local-tangent-equirectangular",
+      "metresPerDegreeLon": 91282.15,
+      "metresPerDegreeLat": 110940.65,
+      "coefficientLatitudeDeg": 35.0055
+    },
+    "worldGrid": {
+      "wTiles": 1600,
+      "hTiles": 40,
+      "blockSize": 40
+    },
+    "GRID": {
+      "halfCrossTiles": 20,
+      "blocksAcrossY": 1
+    },
+    "valueKinds": [
+      "observed",
+      "authored",
+      "licenced",
+      "abstract"
+    ],
+    "guideVerifiedColumnAllowed": [
+      "observed"
+    ]
+  },
+  "method": {
+    "osmBuildingIdResolution": {
+      "requirement": "Every osmBuildingId must resolve in the corpus slice docs/handOff/archive/corpora/geo-japan/kyoto-slice-overpass.json.",
+      "how": "Load the slice, index elements by (type, id), and look each door's osmBuildingId up in that index. Assert the element exists, is a way, and carries a building tag. Implemented as assertion V6 in validate-doors.mjs and printed as a resolution table.",
+      "whyItIsNecessaryButNotSufficient": "The slice was fetched with 'out tags center' (see its own measurement record), so its 1,212 building ways carry a CENTROID ONLY -- no geometry and no node refs. The slice can therefore resolve a building IDENTITY but cannot resolve a facade line. Facade geometry was re-fetched under a narrow bbox; see facadeGeometrySource."
+    },
+    "facadeGeometrySource": {
+      "endpoint": "https://overpass-api.de/api/interpreter",
+      "query": "[out:json][timeout:60];(way[\"building\"](35.00320,135.75940,35.00460,135.76060);way[\"highway\"](35.00320,135.75940,35.00460,135.76060);node[\"entrance\"](35.00320,135.75940,35.00460,135.76060);node[\"shop\"](35.00320,135.75940,35.00460,135.76060););out body geom;",
+      "outMode": "out body geom (tags + node refs + inline geometry)",
+      "fetchedAtUtc": "2026-09-29T16:39:40Z",
+      "secondQuery": {
+        "purpose": "Exhaustive: EVERY node and way inside the exact block bbox lon 135.759719..135.760157 lat 35.003478..35.003838 (x in [0,40), y in [-20,20)). This is the negative evidence for gap G1.",
+        "query": "[out:json][timeout:90];(node(35.003478,135.759719,35.003838,135.760157);way(35.003478,135.759719,35.003838,135.760157););out body geom;",
+        "fetchedAtUtc": "2026-09-29T16:41:01Z",
+        "elementsInBlock": 41
+      },
+      "rawBytesRecordedIn": {
+        "file": "city-packs/kyoto-shijo/kyoto-shijo-osm.json",
+        "field": "evidenceFiles",
+        "why": "The raw Overpass responses ARE ODbL content, so their paths, sizes, hashes and in-band osm3s timestamps live in the ODbL half, not here. Before the split these digests sat in this file, which had the provenance chain on the wrong side of the licence boundary. validate-doors.mjs assertion V10 reads them from there, and V19 asserts that the ODbL half's chain is complete and hashes correctly."
+      },
+      "freshness": "OSM is a live database. These two responses are the frozen evidence for this pack version; a later re-fetch may legitimately differ. Static field tier -> annual re-check.",
+      "toolingNote": "curl needed --tlsv1.2 --ssl-no-revoke in this sandbox; plain schannel handshake fails with exit 35. Overpass returned 504 once on an identical query and succeeded on retry."
+    },
+    "doorPlacement": {
+      "step1_measure": "Take each footprint's street-facing edge from real OSM geometry, identified by OSM NODE ID pair (not by coordinate matching). North: way 205732558, nodes 2157078408 -> 2157078409. South: way 205732536, nodes 2157078404 -> 2157078405.",
+      "step2_clip": "Clip each edge to the block, x_m in [0, 40). The west ends are already inside the block; the north edge is cut at x_m = 40 by the block boundary.",
+      "step3_allocate": "Allocate the 12 doors between the two facades in proportion to measured frontage, largest-remainder: north 7, south 5. This yields near-uniform storefront widths of 3.3540 m and 3.6330 m (design module is 3 m; measured mean is 3.4703 m).",
+      "step4_place": "Place each door at the midpoint of its storefront module, projected onto the measured facade edge.",
+      "step5_quantise": "Quantise to the canonical integer 1/16 sub-tile with the imported quantizeToSubTile(), then cellX = tileFromSub(subX) and cellY = tileFromSub(subY) + 20. The canonical sub-tile governs; floor(x_m) is a reference oracle only (contract clause 3 / assertion A3). Two doors land within 1/32 m of a tile boundary and the two paths disagree there -- see doors D-N6 and D-S2.",
+      "noLanestUsed": "No facade positioning uses the `lanes` tag. LANES_QUALITY.usableAsFact = false; the frozen contract asserts it (A15). Frontage geometry here is footprint edges only."
+    },
+    "doorExistence": {
+      "authored": true,
+      "statement": "No OSM entrance node exists anywhere in this block, so all 12 doorways are AUTHORED placements on measured facades. The building identity and the facade line are observed; the position along the facade is authored. Hence provenance.valueKind = authored for every door, and none may enter the guide's verified column.",
+      "notMerged": "No two distinct storefronts were merged into one door. Each door registers to the footprint it opens into, which is what the source says: OSM records ONE footprint per building here, with no building:part and no shop way inside either footprint (Q2 returned no such element). Splitting one footprint into 7 and 5 doorways is authored, and is labelled as such rather than being passed off as observed subdivision."
+    },
+    "curator": {
+      "verifiedBy": "city-data-architect (doors-author, shared task task-2)",
+      "verifiedAtUtc": "2026-09-29T16:45:00Z",
+      "verifiedAtLocal": "2026-09-30T01:45:00+09:00",
+      "sourcesOpened": [
+        "docs/handOff/archive/corpora/geo-japan/kyoto-slice-overpass.json (read: 1415 elements, 1212 building ways, 203 nodes)",
+        "docs/handOff/archive/corpora/geo-japan/kyoto-slice-measurement-summary.json (read)",
+        "docs/handOff/archive/corpora/geo-japan/kyoto-slice-origin-candidate.json (read)",
+        "city-packs/kyoto-shijo/evidence/osm-block-q1-footprints.json (fetched by curator, parsed, read)",
+        "city-packs/kyoto-shijo/evidence/osm-block-q2-everything.json (fetched by curator, parsed, read)",
+        "docs/handOff/dsh-bundle-tourguide-2.5d/tools/world-grid.mjs (read; imported by the validator)",
+        "iteration/tools/freeze-origin.mjs (read)"
+      ]
+    }
+  },
+  "contentFieldsRule": {
+    "note": "entrancePointJa and interiorTemplate are NOT facts. They are authored content decisions, which is why their valueKind is `authored` and not `observed`. The rules behind them are stated here so a consumer can disagree with the rule rather than guess at it.",
+    "provenanceClass": {
+      "whyAuthored": "All 12 doors carry provenance.valueKind = authored, and so do the four placement-derived fields (cellX, cellY, entrancePointJa, interiorTemplate). A human READ the building identity and the facade line off OSM, so those two fields stay `observed`. Nobody read 'there is a doorway at x m' off any source: the doorway position is a placement this project made along a measured facade. Before VALUE_KIND gained `authored` these rows said `licenced`, which is the vocabulary for licence-derived defaults such as a road-width template -- the wrong class, and the file contradicted itself by saying `authored: true` in prose while the field said `licenced`. `authored` is the truthful member.",
+      "whyItChangesNothingDownstream": "`authored` does NOT reach the guide's verified column. GUIDE_VERIFIED_COLUMN_ALLOWED is still exactly ['observed'], so re-labelling licenced -> authored moved no door into the verified column and moved none out of it. Every door still carries guideVerifiedColumnAllowed: false, which is why re-labelling is a provenance correction and not a product change. world-grid.mjs assertion A9b asserts that the gate did not widen when the fourth member was added.",
+      "cannotDriftAgain": "validate-doors.mjs imports VALUE_KINDS from world-grid.mjs and asserts this file's embedded frozenConstants mirror equals it (assertion V1). That is what caught this drift: the mirror was written before `authored` existed, and V1 went red the moment the contract changed rather than waiting for a human to notice."
+    },
+    "entrancePointJa": {
+      "rule": "Every door is on the 四条通 street frontage, so every door is 本門.",
+      "whyNoSideDoors": "A 側門 needs a side street or alley to face. Measured: the north footprint's only other street-facing edges are its 烏丸通 corner wall (nodes 2157078412 -> 2157078408), and the south footprint's is its 烏丸通 corner wall (nodes 2157078403 -> 2157078404). Both are recorded under unusedSourceCandidates. No door is placed on either, because doing so would change this block's declared two-sided 四条通 frontage model and the card does not define 本門/側門 for a corner.",
+      "whyNoAlleyDoors": "路地奥 requires a mapped alley. Gap G4: no footway, service way or barrier is mapped anywhere on the south side of x in [35.69, 40), and Q2 (every way inside the block bbox) found no alley at all. So no 路地奥 entrance can be sourced and none is claimed.",
+      "consequence": "The field is uniform across all 12 doors. That is the measured truth about this block, not a failure to populate it."
+    },
+    "interiorTemplate": {
+      "rule": "One template per storefront module. S 10×7 for the 11 plain modules; M 13×9 for the single module that contains a sourced occupant (D-S1, whose module holds OSM node 14196400744, 三菱ＵＦＪ銀行 京都支店). L 16×10 is not used: no source in this block supports a large interior.",
+      "whyTheTemplatesDoNotNeedToFit": "They cannot fit, and that is informative rather than a defect. The smallest template is 10 m wide; the storefront modules are 3.354 m and 3.633 m. So a template is about 3x wider than the frontage it belongs to, and it cannot be a volume carved out of the ground-plane block. The interiors must therefore be separate scenes entered through the doorway -- which is what design-core section 2.4 describes (the 如龙 神室町 precedent: 'one wall and one staircase away is a completely different scene'), and contract section 9 excludes vertical proportion from the geo contract for the same reason.",
+      "recordedForTheLevelDesigner": "If interiors ARE ever required to nest inside the single-block-deep ground plane, the numbers that forbid it are: usable depth behind the north facade inside the block is 20.0 - 13.646 = 6.354 m (less than even S's 7 m), and behind the south facade it is 20.0 - 10.983 = 9.017 m (less than L's 10 m). Both were measured from the facade geometry in this file, not assumed."
+    }
+  },
+  "doors": [
+    {
+      "doorId": "D-N1",
+      "cellX": 18,
+      "cellY": 33,
+      "tileY": 13,
+      "entrancePointJa": "本門",
+      "interiorTemplate": "S 10×7",
+      "provenance": {
+        "valueKind": "authored",
+        "source": "OSM way 205732558 (footprint edge nodes 2157078408..2157078409) + 3 m storefront module template applied by the curator",
+        "verifiedAt": "2026-09-29T16:45:00Z",
+        "verifiedBy": "city-data-architect (doors-author, shared task task-2)",
+        "fields": {
+          "osmBuildingId": "observed",
+          "facadeLineRun": "observed",
+          "cellX": "authored",
+          "cellY": "authored",
+          "entrancePointJa": "authored",
+          "interiorTemplate": "authored"
+        },
+        "guideVerifiedColumnAllowed": false,
+        "whyNotObserved": "A human read the building identity and the facade line off OSM. Nobody read 'there is a doorway at 18.199 m' off any source. Labelling this observed would print a template placement in the guide's verified column -- contract clause 4, counter-example B."
+      },
+      "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm.json#/doors[doorId=D-N1]"
+    },
+    {
+      "doorId": "D-N2",
+      "cellX": 21,
+      "cellY": 33,
+      "tileY": 13,
+      "entrancePointJa": "本門",
+      "interiorTemplate": "S 10×7",
+      "provenance": {
+        "valueKind": "authored",
+        "source": "OSM way 205732558 (footprint edge nodes 2157078408..2157078409) + 3 m storefront module template applied by the curator",
+        "verifiedAt": "2026-09-29T16:45:00Z",
+        "verifiedBy": "city-data-architect (doors-author, shared task task-2)",
+        "fields": {
+          "osmBuildingId": "observed",
+          "facadeLineRun": "observed",
+          "cellX": "authored",
+          "cellY": "authored",
+          "entrancePointJa": "authored",
+          "interiorTemplate": "authored"
+        },
+        "guideVerifiedColumnAllowed": false,
+        "whyNotObserved": "Same as D-N1."
+      },
+      "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm.json#/doors[doorId=D-N2]"
+    },
+    {
+      "doorId": "D-N3",
+      "cellX": 24,
+      "cellY": 33,
+      "tileY": 13,
+      "entrancePointJa": "本門",
+      "interiorTemplate": "S 10×7",
+      "provenance": {
+        "valueKind": "authored",
+        "source": "OSM way 205732558 (footprint edge nodes 2157078408..2157078409) + 3 m storefront module template applied by the curator",
+        "verifiedAt": "2026-09-29T16:45:00Z",
+        "verifiedBy": "city-data-architect (doors-author, shared task task-2)",
+        "fields": {
+          "osmBuildingId": "observed",
+          "facadeLineRun": "observed",
+          "cellX": "authored",
+          "cellY": "authored",
+          "entrancePointJa": "authored",
+          "interiorTemplate": "authored"
+        },
+        "guideVerifiedColumnAllowed": false,
+        "whyNotObserved": "Same as D-N1."
+      },
+      "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm.json#/doors[doorId=D-N3]"
+    },
+    {
+      "doorId": "D-N4",
+      "cellX": 28,
+      "cellY": 33,
+      "tileY": 13,
+      "entrancePointJa": "本門",
+      "interiorTemplate": "S 10×7",
+      "provenance": {
+        "valueKind": "authored",
+        "source": "OSM way 205732558 (footprint edge nodes 2157078408..2157078409) + 3 m storefront module template applied by the curator",
+        "verifiedAt": "2026-09-29T16:45:00Z",
+        "verifiedBy": "city-data-architect (doors-author, shared task task-2)",
+        "fields": {
+          "osmBuildingId": "observed",
+          "facadeLineRun": "observed",
+          "cellX": "authored",
+          "cellY": "authored",
+          "entrancePointJa": "authored",
+          "interiorTemplate": "authored"
+        },
+        "guideVerifiedColumnAllowed": false,
+        "whyNotObserved": "Same as D-N1."
+      },
+      "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm.json#/doors[doorId=D-N4]"
+    },
+    {
+      "doorId": "D-N5",
+      "cellX": 31,
+      "cellY": 33,
+      "tileY": 13,
+      "entrancePointJa": "本門",
+      "interiorTemplate": "S 10×7",
+      "provenance": {
+        "valueKind": "authored",
+        "source": "OSM way 205732558 (footprint edge nodes 2157078408..2157078409) + 3 m storefront module template applied by the curator",
+        "verifiedAt": "2026-09-29T16:45:00Z",
+        "verifiedBy": "city-data-architect (doors-author, shared task task-2)",
+        "fields": {
+          "osmBuildingId": "observed",
+          "facadeLineRun": "observed",
+          "cellX": "authored",
+          "cellY": "authored",
+          "entrancePointJa": "authored",
+          "interiorTemplate": "authored"
+        },
+        "guideVerifiedColumnAllowed": false,
+        "whyNotObserved": "Same as D-N1."
+      },
+      "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm.json#/doors[doorId=D-N5]"
+    },
+    {
+      "doorId": "D-N6",
+      "cellX": 35,
+      "cellY": 33,
+      "tileY": 13,
+      "entrancePointJa": "本門",
+      "interiorTemplate": "S 10×7",
+      "provenance": {
+        "valueKind": "authored",
+        "source": "OSM way 205732558 (footprint edge nodes 2157078408..2157078409) + 3 m storefront module template applied by the curator",
+        "verifiedAt": "2026-09-29T16:45:00Z",
+        "verifiedBy": "city-data-architect (doors-author, shared task task-2)",
+        "fields": {
+          "osmBuildingId": "observed",
+          "facadeLineRun": "observed",
+          "cellX": "authored",
+          "cellY": "authored",
+          "entrancePointJa": "authored",
+          "interiorTemplate": "authored"
+        },
+        "guideVerifiedColumnAllowed": false,
+        "whyNotObserved": "Same as D-N1."
+      },
+      "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm.json#/doors[doorId=D-N6]"
+    },
+    {
+      "doorId": "D-N7",
+      "cellX": 38,
+      "cellY": 33,
+      "tileY": 13,
+      "entrancePointJa": "本門",
+      "interiorTemplate": "S 10×7",
+      "provenance": {
+        "valueKind": "authored",
+        "source": "OSM way 205732558 (footprint edge nodes 2157078408..2157078409) + 3 m storefront module template applied by the curator",
+        "verifiedAt": "2026-09-29T16:45:00Z",
+        "verifiedBy": "city-data-architect (doors-author, shared task task-2)",
+        "fields": {
+          "osmBuildingId": "observed",
+          "facadeLineRun": "observed",
+          "cellX": "authored",
+          "cellY": "authored",
+          "entrancePointJa": "authored",
+          "interiorTemplate": "authored"
+        },
+        "guideVerifiedColumnAllowed": false,
+        "whyNotObserved": "Same as D-N1."
+      },
+      "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm.json#/doors[doorId=D-N7]"
+    },
+    {
+      "doorId": "D-S1",
+      "cellX": 19,
+      "cellY": 9,
+      "tileY": -11,
+      "entrancePointJa": "本門",
+      "interiorTemplate": "M 13×9",
+      "provenance": {
+        "valueKind": "authored",
+        "source": "OSM way 205732536 (footprint edge nodes 2157078404..2157078405) + 3 m storefront module template applied by the curator; module contains OSM node 14196400744 (amenity=bank)",
+        "verifiedAt": "2026-09-29T16:45:00Z",
+        "verifiedBy": "city-data-architect (doors-author, shared task task-2)",
+        "fields": {
+          "osmBuildingId": "observed",
+          "facadeLineRun": "observed",
+          "cellX": "authored",
+          "cellY": "authored",
+          "entrancePointJa": "authored",
+          "interiorTemplate": "authored"
+        },
+        "guideVerifiedColumnAllowed": false,
+        "whyNotObserved": "The module contains the block's only mapped occupant, which is why this door is given the M template. The bank's existence is observed; the position of its doorway is a perpendicular projection of the POI node onto the facade, which is an inference by the curator, not a value read off a source. It therefore stays authored -- see osmRecord for the recorded anchor."
+      },
+      "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm.json#/doors[doorId=D-S1]"
+    },
+    {
+      "doorId": "D-S2",
+      "cellX": 23,
+      "cellY": 9,
+      "tileY": -11,
+      "entrancePointJa": "本門",
+      "interiorTemplate": "S 10×7",
+      "provenance": {
+        "valueKind": "authored",
+        "source": "OSM way 205732536 (footprint edge nodes 2157078404..2157078405) + 3 m storefront module template applied by the curator",
+        "verifiedAt": "2026-09-29T16:45:00Z",
+        "verifiedBy": "city-data-architect (doors-author, shared task task-2)",
+        "fields": {
+          "osmBuildingId": "observed",
+          "facadeLineRun": "observed",
+          "cellX": "authored",
+          "cellY": "authored",
+          "entrancePointJa": "authored",
+          "interiorTemplate": "authored"
+        },
+        "guideVerifiedColumnAllowed": false,
+        "whyNotObserved": "Same as D-N1."
+      },
+      "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm.json#/doors[doorId=D-S2]"
+    },
+    {
+      "doorId": "D-S3",
+      "cellX": 26,
+      "cellY": 9,
+      "tileY": -11,
+      "entrancePointJa": "本門",
+      "interiorTemplate": "S 10×7",
+      "provenance": {
+        "valueKind": "authored",
+        "source": "OSM way 205732536 (footprint edge nodes 2157078404..2157078405) + 3 m storefront module template applied by the curator",
+        "verifiedAt": "2026-09-29T16:45:00Z",
+        "verifiedBy": "city-data-architect (doors-author, shared task task-2)",
+        "fields": {
+          "osmBuildingId": "observed",
+          "facadeLineRun": "observed",
+          "cellX": "authored",
+          "cellY": "authored",
+          "entrancePointJa": "authored",
+          "interiorTemplate": "authored"
+        },
+        "guideVerifiedColumnAllowed": false,
+        "whyNotObserved": "Same as D-N1."
+      },
+      "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm.json#/doors[doorId=D-S3]"
+    },
+    {
+      "doorId": "D-S4",
+      "cellX": 30,
+      "cellY": 9,
+      "tileY": -11,
+      "entrancePointJa": "本門",
+      "interiorTemplate": "S 10×7",
+      "provenance": {
+        "valueKind": "authored",
+        "source": "OSM way 205732536 (footprint edge nodes 2157078404..2157078405) + 3 m storefront module template applied by the curator",
+        "verifiedAt": "2026-09-29T16:45:00Z",
+        "verifiedBy": "city-data-architect (doors-author, shared task task-2)",
+        "fields": {
+          "osmBuildingId": "observed",
+          "facadeLineRun": "observed",
+          "cellX": "authored",
+          "cellY": "authored",
+          "entrancePointJa": "authored",
+          "interiorTemplate": "authored"
+        },
+        "guideVerifiedColumnAllowed": false,
+        "whyNotObserved": "Same as D-N1."
+      },
+      "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm.json#/doors[doorId=D-S4]"
+    },
+    {
+      "doorId": "D-S5",
+      "cellX": 33,
+      "cellY": 9,
+      "tileY": -11,
+      "entrancePointJa": "本門",
+      "interiorTemplate": "S 10×7",
+      "provenance": {
+        "valueKind": "authored",
+        "source": "OSM way 205732536 (footprint edge nodes 2157078404..2157078405) + 3 m storefront module template applied by the curator",
+        "verifiedAt": "2026-09-29T16:45:00Z",
+        "verifiedBy": "city-data-architect (doors-author, shared task task-2)",
+        "fields": {
+          "osmBuildingId": "observed",
+          "facadeLineRun": "observed",
+          "cellX": "authored",
+          "cellY": "authored",
+          "entrancePointJa": "authored",
+          "interiorTemplate": "authored"
+        },
+        "guideVerifiedColumnAllowed": false,
+        "whyNotObserved": "Same as D-N1."
+      },
+      "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm.json#/doors[doorId=D-S5]"
+    }
+  ],
+  "summary": {
+    "doorCount": 12,
+    "byValueKind": {
+      "observed": 0,
+      "authored": 12,
+      "licenced": 0,
+      "abstract": 0
+    },
+    "guideVerifiedColumnAdmitted": 0,
+    "doorsNorthSide": 7,
+    "doorsSouthSide": 5,
+    "distinctBuildingIds": [
+      205732558,
+      205732536
+    ],
+    "storefrontWidthNorthM": 3.35399,
+    "storefrontWidthSouthM": 3.63303,
+    "storefrontWidthMeanM": 3.470257,
+    "minPairwiseDoorSeparationM": 3.3125,
+    "minSameFacadeCellSpacing": 3,
+    "maxQuantisationShiftM": 0.030985,
+    "derivedOnlyNote": "maxPerpendicularOffsetFromFacadeM was REMOVED here. The stored per-door perpendicularOffsetFromFacadeM did not reproduce from the facade geometry (worst 3.600 mm, D-S4), and a derived value stored beside its source is a second source of truth that drifts. The ODbL half no longer stores it either; validate-doors.mjs assertion V5 computes the true perpendicular offset from the facade line and prints the maximum (0.029069 m)."
+  },
+  "gaps": [
+    {
+      "gapId": "G1",
+      "claim": "No OSM entrance node exists inside this block.",
+      "severity": "blocks observed doors",
+      "measured": "The corpus slice contains exactly 10 entrance nodes; 0 fall in x in [0,40), y in [-20,20). The nearest node of any kind to the block centre is 57.7 m away (node 12749347474, shop=gift). Query Q2 (exhaustive over the exact block bbox: every node and way) returned 41 elements and ZERO entrance nodes.",
+      "consequence": "All 12 doorways are authored. No door in this pack can be valueKind observed.",
+      "closesWhen": "A field survey or a municipal open dataset supplies entrance positions; or the project accepts authored doors permanently (then the valueKind enum needs a member that means 'authored')."
+    },
+    {
+      "gapId": "G2",
+      "claim": "The block's west end is the 四条烏丸 junction, not shop frontage. The design's 40 m-per-side frontage does not exist.",
+      "severity": "changes the art and level budget",
+      "measured": "North facade begins at node 2157078408 (xM 16.522069). South facade begins at node 2157078404 (xM 17.526173). x in [0, 16.52) contains the 烏丸通 carriageway and its sidewalks (ways 907059193 x[5.57,20.72], 907059194 x[7.39,20.81]), two barrier=hedge ways (907059199 x[5.84,15.61]; 907059200 x[4.84,13.97]) and the signalised pedestrian crossing node 2737069286 at (20.72, 0.11).",
+      "consequence": "16.5-17.5 m of each 40 m side is not frontage. See also C3.",
+      "closesWhen": "The design re-states the block's usable frontage, or the block is re-anchored so the origin sits at the frontage start."
+    },
+    {
+      "gapId": "G3",
+      "claim": "The block contains exactly 2 building footprints, not ~26 storefront modules.",
+      "severity": "changes the art and level budget",
+      "measured": "Frontage 23.477931 m (way 205732558) + 18.165148 m (way 205732536) = 41.643079 m. At the design's 3 m module that is 13.88 modules, not 26.",
+      "consequence": "12 doors occupy 86% of the block's storefront modules, not 46%. There is almost no non-enterable filler frontage.",
+      "closesWhen": "See C3."
+    },
+    {
+      "gapId": "G4",
+      "claim": "The south frontage stops at xM 35.691321; x in [35.69, 40) has no south footprint, and no source describes what is there.",
+      "severity": "limits doors; forbids a sourced 路地奥 door",
+      "measured": "Way 205732536 turns south at node 2157078405 (35.691321, -10.761243); way 205732545 (四条烏丸ＦＴスクエア) starts at xM 40.7. No footway, service way or barrier is mapped in x in [35.69, 40) on the south side (Q2 found none).",
+      "consequence": "The gap is most likely a service alley, but OSM does not say so. No door is placed there and no 路地奥 entrance is claimed anywhere in this block.",
+      "closesWhen": "A source (survey, municipal data, street-level imagery opened by a human) describes the gap."
+    },
+    {
+      "gapId": "G5",
+      "claim": "There is no source for the existence of 11 of the 12 storefronts.",
+      "severity": "bounds what the guide may say",
+      "measured": "The exact block bbox contains exactly one occupant POI: node 14196400744 (amenity=bank, 三菱ＵＦＪ銀行 京都支店). The other 27 nodes in the block are 22 geometry vertices, two history boards, a tree, two surveillance cameras and a crossing node.",
+      "consequence": "No door may be given a business identity. The guide must not name a shop at any of the 12 doors; it may name the BUILDING (observed) and must label the doorway position as template-derived.",
+      "closesWhen": "Per-door sources are curated (20 min/place budget) or the doors are declared as game content rather than real storefronts."
+    },
+    {
+      "gapId": "G6",
+      "claim": "The corpus slice cannot resolve a facade line.",
+      "severity": "required a fresh fetch",
+      "measured": "kyoto-slice-overpass.json was fetched with 'out tags center': its 1,212 building ways carry a centroid only -- no geometry array and no node refs.",
+      "consequence": "Facade geometry had to be re-fetched (Q1) and is now stored under city-packs/kyoto-shijo/evidence/. The slice remains the authority for building IDENTITY only.",
+      "closesWhen": "The slice is re-fetched with 'out body geom', or the pack's evidence directory becomes the declared geometry source."
+    },
+    {
+      "gapId": "G7",
+      "claim": "Both footprint outlines are Bing-traced, not surveyed.",
+      "severity": "accuracy caveat",
+      "measured": "Way 205732558 and way 205732536 both carry source=Bing.",
+      "consequence": "Facade lines are aerial-imagery grade. The doors inherit that accuracy; the 3 m module assumption is far coarser than the imagery error, so it does not dominate, but the facade line itself should not be treated as survey-grade.",
+      "closesWhen": "PLATEAU 京都市 building LOD data is available (design-core 8.2.1 item 3) -- but note PLATEAU LOD is abstract height, so it would NOT upgrade the facade line."
+    },
+    {
+      "gapId": "G8",
+      "claim": "The frozen valueKind enum has no member meaning 'authored by the curator'.",
+      "status": "CLOSED",
+      "closedAt": "2026-09-30",
+      "closedBy": "geo-contract added VALUE_KIND.AUTHORED to world-grid.mjs; doors-author re-labelled this pack (shared task task-9)",
+      "wasMeasuredAs": "VALUE_KIND = observed | licenced | abstract, with this pack's 12 authored doorways recorded as licenced because a template produced the position -- the closest of three, but the wrong class, since the contract defines licenced as licence-derived defaults such as road width.",
+      "resolution": "VALUE_KIND now has four members: observed | authored | licenced | abstract. `authored` is deliberately NOT admitted to the guide's verified column; GUIDE_VERIFIED_COLUMN_ALLOWED is still exactly ['observed'], and world-grid.mjs assertion A9b asserts the gate did not widen. All 12 doors now carry provenance.valueKind = authored, as do the four placement-derived per-field entries, so the file's prose and its fields finally agree. summary.byValueKind reads {observed:0, authored:12, licenced:0, abstract:0}, and every door keeps guideVerifiedColumnAllowed: false.",
+      "whyItCannotRecur": "validate-doors.mjs imports VALUE_KINDS from world-grid.mjs and asserts this file's embedded frozenConstants mirror equals it. That guard is what caught the drift: the mirror was written before `authored` existed, and V1 went red the moment the contract changed rather than waiting for a human to notice.",
+      "consequenceOfTheOldGap": "None shipped. Because neither licenced nor authored reaches the guide's verified column, re-labelling moved no door into or out of it; the correction is to the provenance class, not to the product."
+    }
+  ],
+  "contradictionsWithDesign": [
+    {
+      "id": "C1",
+      "document": "shared task task-2 (card) vs docs/handOff/dsh-bundle-tourguide-2.5d/tools/world-grid.mjs",
+      "what": "The card gives the grid conversion as 'cellY = floor(y_m)' and in the same breath requires cellY in [0,40) and calls the block two-sided.",
+      "measured": "world-grid.mjs locateSubTile() defines row = tileY + GRID.halfCrossTiles (line 477), i.e. row = floor(y_m) + 20. The corridor is y_m in [-20, +20) -> row in [0,40).",
+      "whyItMatters": "Under the card's literal formula the whole south half of the corridor (y_m < 0) gets a negative cellY and no south-side door can exist -- which kills the card's own '两侧' model and its [0,40) requirement. This pack uses cellY = row.",
+      "needs": "Card correction. The card's own next sentence already describes the row reading."
+    },
+    {
+      "id": "C2",
+      "document": "iteration/tools/freeze-origin.mjs line 54 + design-core.md section 8.2.1 (1)b",
+      "what": "freeze-origin.mjs hardcodes ANCHOR = { name: '四条烏丸', lat: 35.003825, lon: 135.759680 } with the comment 'Coordinates for 四条烏丸 intersection (四条通 x 烏丸通)'. design-core publishes the result as '四条烏丸东南 18.87 m (东 3.56 m + 南 18.53 m)'.",
+      "measured": "Both the anchor (the 四条通 x 烏丸通 crossing) and the origin (way 465069436 node#3, a 四条通 highway=primary geometry node) are supposed to lie ON 四条通's centreline. They differ by 18.527 m of latitude over 3.560 m of longitude -- an implied grade of 520%, impossible for one street. The origin is the measured value, so the hardcoded ANCHOR.latitude is ~18.5 m north of 四条通.",
+      "harmlessBecause": "freeze-origin.mjs line 73 clamps on LONGITUDE only (p.lon >= ANCHOR.lon), so the bad latitude never entered the derivation. The damage is confined to the cosmetic distanceFromAnchorM = 18.9 cross-check, which design-core then published as if the anchor were on the street.",
+      "whyItMatters": "The 18.87 m figure is now load-bearing in the reading of the origin: it is the reason a reader might expect the origin to sit off the street. It does not. 四条通's centreline passes through the origin -- verified directly: way 465069436 node#3 and way 678103923 node#0 are the SAME node at (0.000, 0.000), and the street's geometry through the block runs at y_m = 0.000 to 0.111.",
+      "needs": "Correct ANCHOR.lat in freeze-origin.mjs, or delete the distanceFromAnchorM cross-check, or restate design-core section 8.2.1 (1)b. File is outside this task's write scope."
+    },
+    {
+      "id": "C3",
+      "document": "design-core.md section 8.2.1 (1) and shared task task-2",
+      "what": "'Gate 1 手作美术 = 一个 40x40 街区（约 26 个店面模块，含 12 扇门）' / '一个街区约 26 个店面模块（两侧 x 40 m / 3 m），其中 12 个可进入 (46%)'.",
+      "measured": "Measured frontage is 41.643079 m over 2 footprints = 13.88 three-metre modules. The 26 figure assumes both sides are shop-fronted for the full 40 m; measured, 16.5-17.5 m per side is the 四条烏丸 junction (G2), and there are 2 footprints rather than many small ones (G3).",
+      "whyItMatters": "26 vs 13.9 is a 1.9x over-count of authored storefront modules, and 12 enterable out of 13.9 modules is 86%, not 46%. The design's implied 'half the frontage is non-enterable filler' does not exist in this block: nearly every frontage metre is a door. That changes the art budget (less facade to dress, more interiors to build) in the opposite direction from the one the design assumed.",
+      "needs": "design-core correction, or a decision to author filler frontage. Parent document is Lead-owned; reported, not edited."
+    },
+    {
+      "id": "C4",
+      "document": "design-core.md section 8.2.1 (1)c, contract clause 4b (LANES_QUALITY)",
+      "what": "contract-geo-pipeline.md GAP-8 / design-core leave 'is 四条通 really 4 lanes?' open, and note that OSM's lanes=1 sits over 四条河原町 while L2 says about 4.",
+      "measured": "Independent geometric measure, using no lanes tag at all: the two 四条通-facing facades are at yM 13.646 (north) and yM -10.983 (south), a 24.6 m right-of-way between building walls. Sidewalk centrelines are ways 465066447 at yM 11.322 and 465069406 at yM -8.544, i.e. 19.9 m apart. That leaves roughly 15 m of carriageway, consistent with 4 lanes of about 3.5 m and NOT with the lanes=2 on way 465069436, the first way east of 四条烏丸.",
+      "supports": "The frozen LANES_QUALITY.usableAsFact = false. This measurement is independent of the contradictory tag and does not discharge GAP-8 (a human check is still owed); it is a second, geometric opinion.",
+      "needs": "Nothing here. Recorded as supporting evidence for a decision already frozen."
+    },
+    {
+      "id": "C5",
+      "document": "design-core.md section 4 (world model) / vertical layering",
+      "what": "The design's world model is a single ground layer plus interiors.",
+      "measured": "The block sits directly above the 阪急京都線: ways 30415728 and 741839582 are layer=-1, gauge=1435, electrified=contact_line, name=阪急電鉄京都線, and way 1517818402 is railway=platform, level=-2, ref='1;2', an area spanning xM -94.48..221.54.",
+      "whyItMatters": "There is real, sourced geometry at level -1 and -2 under this block. That is a free vertical layer for the 2.5D vertical band budget (contract section 9 excludes vertical proportion from the geo contract, so this is a level-design input, not a geo one). It is not in the design's block description.",
+      "needs": "Level designer and Lead to decide whether underground levels are in scope. Reported, not acted on."
+    }
+  ],
+  "validator": {
+    "path": "city-packs/kyoto-shijo/validate-doors.mjs",
+    "run": "node city-packs/kyoto-shijo/validate-doors.mjs",
+    "lastResult": "Not recorded here. A hand-copied result is a second source of truth and will drift, so run the command above; it prints its own count and exits 0 only when every assertion passes.",
+    "assertions": [
+      "V1  frozen constants in this file equal an actual import of world-grid.mjs (12 literals + the valueKind enum + the guide admitted-set)",
+      "V2  every door cellX and cellY is an integer in [0, 40)",
+      "V3  all 12 cells are pairwise distinct, and every pair of doors is >= 1 m apart",
+      "V4  each door's declared cell is re-derived from the stored OSM geometry (node ids re-projected, module midpoint recomputed, imported quantiser reapplied)",
+      "V5  each door's canonical sub-tile lies inside its declared cell, within 1/32 m of its facade line, and within its facade run; the perpendicular offset is COMPUTED here and its maximum printed (the ODbL half no longer stores it)",
+      "V6  each osmBuildingId resolves in kyoto-slice-overpass.json as a way carrying a building tag (the acceptance criterion)",
+      "V7  each osmBuildingId is the way that actually owns the facade edge the door cites",
+      "V8  provenance: every door carries a valid valueKind; authored/licenced/abstract doors are not admitted to the guide's verified column; per-field valueKind cannot be laundered upward",
+      "V9  the facade lines are consistent with the mapped sidewalks: each facade lies on the far side of its sidewalk from the street centreline, 1.5-4.5 m beyond it, and the two facades straddle y = 0",
+      "V10 the raw-bytes provenance chain in the ODbL half's evidenceFiles still hashes to what it records (tamper detection)",
+      "V11 the corpus slice on disk hashes to the value its own measurement record names, and the record's counts match the slice",
+      "V12 the summary block is self-consistent with the doors and facades it summarises (15 fields)",
+      "V13 every door stands in the wall of the footprint it registers to (within one 1/16 sub-tile of that outline)",
+      "V14 no door stands inside the wrong footprint, nor deeper than half a sub-tile into its own",
+      "V15 every coordinate quoted in observedBlockFeatures equals the evidence bytes (the block's real features were transcribed, so they are machine-checked rather than trusted)",
+      "V16 SEPARATION: doors.json carries no OSM-derived value -- each door record's key set is closed, no moved field is back at top level, and the top-level section inventory is closed",
+      "V17 SEPARATION: the OSM-derived residual in this file is exactly the declared census, so it can neither grow nor shrink silently",
+      "V18 every door's osmRecord pointer resolves to the SAME doorId in the ODbL half, bijectively, and the ODbL file's sha256 matches the one recorded here",
+      "V19 the ODbL half names the raw bytes it was derived from, and they hash correctly",
+      "V20 an assertion-count floor (MIN_ASSERTIONS in the validator, currently 21). It must execute LAST because it counts the others, which is why it is numbered before V21 but printed after it. Without it, deleting V16 or V17 would turn the run green -- the very bypass the separation assertions exist to prevent",
+      "V21 our attribution record is as complete as the licence we elected: the five CC BY 4.0 section 3(a)(1) slots are present and non-empty, every ODbL source slot is accounted for (mapped to a field of ours, or declared not-applicable with a reason), and contentCreator is either a resolved credit with plausible, correctly ordered years or an explicitly declared blocker. Under --strict it is the release gate."
+    ],
+    "assertionsNote": "This list is a reader's index, not the authority. The validator is the authority; if the two disagree, the validator is right and this list is stale.",
+    "strictMode": "The default run exits 0 while a declared blocker stands, and prints it under a BLOCKED heading. --strict makes a standing blocker exit non-zero. The distinction is deliberate: nothing in the pack is FALSE, it is not yet SHIPPABLE, and a suite that is permanently red for an unrelated reason is a suite people learn to skip.",
+    "notAsserted": [
+      "That any doorway exists in reality. No source states a doorway position in this block; see gaps G1 and G5. That is exactly why every door is valueKind authored and none is admitted to the guide's verified column.",
+      "That the storefronts are 11 separate businesses plus one bank. Only the bank is sourced."
+    ]
+  },
+  "licence": {
+    "thisFile": "our own content -- NOT under ODbL. See odblNote.",
+    "odblAppliesToThisFile": false,
+    "odblHalf": "city-packs/kyoto-shijo/kyoto-shijo-osm.json",
+    "derivedFrom": "OpenStreetMap contributors (via the ODbL half; this file holds only references to it)",
+    "source": "Overpass API (overpass-api.de)",
+    "attributionRequired": true,
+    "attribution": "© OpenStreetMap contributors -- required because the pack as a whole uses OSM data, and it must travel with any distribution of the pack",
+    "odblNote": "The split is DONE. This file is ours and is not under ODbL; the ODbL half is city-packs/kyoto-shijo/kyoto-shijo-osm.json, which carries the ODbL 1.0 licence, the attribution and the raw-bytes provenance chain. Our content and the ODbL content sit in separate files, each under its own licence -- a Collective Database per ODbL 4.5(a). This file contains no OSM-derived value, only references into the ODbL half by doorId. validate-doors.mjs assertions V16 and V17 hold that boundary: V16 asserts no OSM-derived value appears in any door record, and V17 pins the small residual of derived counts and contract mirrors that we deliberately keep here.",
+    "residualNote": "Some ODbL-adjacent derived material stays in this file on purpose: counts and widths measured from the ODbL half (summary, block), the frozen origin/grid mirror that contract clause 1 requires readers of this file to see, and the way/node ids proving the origin sits on the street centreline (cellYConvention). Those are declared and pinned by V17. Raw OSM geometry does not stay here -- unusedSourceCandidates was moved to the ODbL half in task-9.",
+    "contentLicence": "CC BY 4.0",
+    "odblUrl": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "osmCopyrightUrl": "https://www.openstreetmap.org/copyright",
+    "contentLicenceWhy": "Lead decision, 2026-09-30. The repository LICENSE is MIT and covers the SOFTWARE only;\nit does not reach curated data under city-packs/.\n\nChosen: CC BY 4.0 for our curated content. Reasons:\n1. It is the licence our two upstream data sources already use (京都市 京都観光見もの情報\n   is CC-BY 4.0; Japanese government open data is PDL 1.0, which states CC BY 4.0\n   compatibility), so the obligations we take on and the ones we pass on are the same shape.\n2. It has NO share-alike, so it creates no viral obligation over the product.\n3. CC BY 4.0 is one-way compatible with ODbL, so nothing here fights the ODbL half.\n\nWhat remains unchanged and non-negotiable: this file is NOT under ODbL. OSM-derived values\nlive only in the -osm.json halves, which are.",
+    "contentLicenceUri": "https://creativecommons.org/licenses/by/4.0/",
+    "contentLicenceNotice": "This curated content is licensed under CC BY 4.0. You must give appropriate credit, provide a link to the licence, and indicate if changes were made.",
+    "contentCreator": {
+      "name": "NemoHuang",
+      "nameAscii": "NemoHuang",
+      "contact": "nemo010713@gmail.com",
+      "firstPublicationYear": 2024,
+      "yearOfThisEdition": 2026,
+      "status": "RESOLVED",
+      "resolvedOn": "2026-09-30",
+      "resolvedBy": "the rights holder, relayed by the Lead (shared task task-9)",
+      "twoYearsWhy": "Both years are recorded rather than collapsed into one. 2024 is the year of FIRST PUBLICATION -- the repository's first commit is 2024-02-28 (git log --reverse). 2026 is the year of the EDITION being licensed. CC BY 4.0 section 3(a)(1) asks for creator identification, and being precise about which year means what costs nothing.",
+      "wasBlockedBecause": "Kept as history. CC BY 4.0 section 3(a)(1) requires creator identification to travel with the work.\nIt cannot be derived mechanically: git history contains FOUR distinct author identities\n  NemoHuang <nemo010713@gmail.com>\n  NemoHuang <Dr_in_Dream@163.com>\n  Huangziqiang <Dr_in_Dream@163.com>\n  PaperStrange <dr_in_dream@163.com>\nand the repository LICENSE still read the unedited MIT placeholder\n  Copyright (c) [year] [fullname]\nwhile package.json has no author field. Selecting one of the four would have been a guess\npresented as a decision, and inventing a name would have been a false attribution. None of\nthat was resolved by guessing: the rights holder was asked, and answered on 2026-09-30.",
+      "wasNeeded": "The name the rights holder wants credited, and the year of first publication. SUPPLIED 2026-09-30; see name, firstPublicationYear, yearOfThisEdition."
+    },
+    "contentWarrantyDisclaimer": "This pack is provided without warranties of any kind. Opening hours, admission fees, closed days and transit times are recorded as observed at the verified_at timestamps and may have changed since. Confirm before travelling."
+  },
+  "osmDerived": {
+    "file": "city-packs/kyoto-shijo/kyoto-shijo-osm.json",
+    "sha256": "aa3d34cf99f79c6cfaf43329a8e840951305253dc31cd88ad6c72787d7c2c226",
+    "sha256Note": "Re-recorded in task-9 after three authorised edits to the ODbL half: evidenceFiles gained the raw-bytes chain, source.extractedAt was set, and the non-reproducing per-door perpendicularOffsetFromFacadeM was dropped. V18 asserts this matches the file on disk.",
+    "licence": "ODbL 1.0",
+    "licenceUri": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "attribution": "© OpenStreetMap contributors",
+    "carriedFields": [
+      "osmBuildingId",
+      "osmBuildingName",
+      "facadeLineRun",
+      "observedAnchors",
+      "placement",
+      "facades",
+      "observedBlockFeatures",
+      "unusedSourceCandidates"
+    ],
+    "relation": "Collective Database per ODbL 4.5(a): our content and the ODbL content sit in separate files, each under its own licence. This file is ours and is NOT itself under ODbL; it contains no OSM-derived value, only references into the ODbL file by doorId. The ODbL half also carries the raw-bytes provenance chain (evidenceFiles), because those digests are derived from ODbL content and belong on that side of the boundary.",
+    "why": "Separating is what ODbL 4.2 and 4.4 ask for, and 4.5(a) is what keeps our curated rows from being absorbed.",
+    "movedInTask9": "unusedSourceCandidates -- two unused corner-facade records carrying integer-microdegree corners and a footprint id. 'Unused' does not make them ours."
+  }
+}

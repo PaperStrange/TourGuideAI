@@ -1,0 +1,70 @@
+{
+  "note": "Transit legs whose endpoint is an ungeoreferenced place. Removed from transit.json because validate-city-pack.mjs raises DANGLING_REF, and repairing it would mean inventing a coordinate or silently redirecting the leg to a different place. The sourced durations below are kept as annotations, not as fact records.",
+  "whyNotInTransitJson": "validate-city-pack.mjs: \"a place referenced by transit must exist in places.json (no dangling ids)\".",
+  "whatWouldCloseThis": "A coordinate for the endpoint, from a source that is opened and read.",
+  "count": 2,
+  "legs": [
+    {
+      "id": "L07",
+      "from": "kyoto-shijo-station-keihan-gion-shijo",
+      "to": "kyoto-shijo-kennin-ji",
+      "mode": "walk",
+      "lineName": null,
+      "minutes": 7,
+      "alongStreetM": null,
+      "minutesRule": "operator-published: 徒歩7分",
+      "minutesProvenance": "operator-published",
+      "fareIC": null,
+      "fareTicket": null,
+      "transfers": 0,
+      "source_url": "https://www.kenninji.jp/access/",
+      "verified_at": "2026-09-29",
+      "provenance": {
+        "valueKind": "observed",
+        "distanceValueKind": "absent",
+        "minutesValueKind": "observed",
+        "verifiedBy": "city-data-architect (pack-curator, shared task task-10)",
+        "readWhat": "evidence/kenninji-access.txt L20『京阪電車「祇園四条駅」より 徒歩7分』。これは運営者自身が公表した徒歩分数であり、80 m/分 の規約で算出した値ではない。",
+        "whyNoDistance": "建仁寺の座標が無いため、本パックが距離を実測できない。したがって alongStreetM は null。分だけが来源を持つ。",
+        "notAttested": [
+          "徒歩経路",
+          "実際の道路距離"
+        ],
+        "guideVerifiedColumnAllowed": true
+      },
+      "droppedBecause": "endpoint to=kyoto-shijo-kennin-ji has no place record in places.json (no coordinate in any source)",
+      "droppedBy": "rule 5, drop don't correct"
+    },
+    {
+      "id": "L08",
+      "from": "kyoto-shijo-station-hankyu-kawaramachi",
+      "to": "kyoto-shijo-kennin-ji",
+      "mode": "walk",
+      "lineName": null,
+      "minutes": 10,
+      "alongStreetM": null,
+      "minutesRule": "operator-published: 徒歩10分",
+      "minutesProvenance": "operator-published",
+      "fareIC": null,
+      "fareTicket": null,
+      "transfers": 0,
+      "source_url": "https://www.kenninji.jp/access/",
+      "verified_at": "2026-09-29",
+      "provenance": {
+        "valueKind": "observed",
+        "distanceValueKind": "absent",
+        "minutesValueKind": "observed",
+        "verifiedBy": "city-data-architect (pack-curator, shared task task-10)",
+        "readWhat": "evidence/kenninji-access.txt L21『阪急電車「河原町駅」より 徒歩10分』。運営者公表値。",
+        "whyNoDistance": "L07 に同じ。",
+        "notAttested": [
+          "徒歩経路",
+          "実際の道路距離"
+        ],
+        "guideVerifiedColumnAllowed": true
+      },
+      "droppedBecause": "endpoint to=kyoto-shijo-kennin-ji has no place record in places.json (no coordinate in any source)",
+      "droppedBy": "rule 5, drop don't correct"
+    }
+  ]
+}

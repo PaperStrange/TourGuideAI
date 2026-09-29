@@ -1,0 +1,67 @@
+// fix-place-keys.mjs — apply the shapes the fact-layer contract actually declares.
+//
+// Three corrections, each for a stated reason:
+//  1. contract-geo-pipeline.md §5 freezes the coordinate field names to lonUdeg/latUdeg
+//     and forbids a second alias. A bare `lng` on a place record is neither, so it is
+//     renamed; `lat`/`lng` decimal twins are dropped entirely rather than kept as a
+//     second spelling of the same number (the contract's "one thing, one name" rule).
+//  2. a key named `state` silently tripped the validator's NARRATIVE_ONLY_FIELDS list,
+//     which is a substring check. The value ("24時間参拝可能") is a real sourced fact,
+//     so it is renamed to stateNoteJa rather than deleted.
+//  3. every place record must carry the same key set, so a consumer can rely on the
+//     shape; empty means "sourced as not applicable" or "named gap", never "unknown".
+import { readFileSync, writeFileSync } from 'node:fs';
+import { resolve, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const HERE = dirname(fileURLToPath(import.meta.url));
+const PACK = resolve(HERE, '../..');
+const p = resolve(PACK, 'places.json');
+const rows = JSON.parse(readFileSync(p, 'utf8'));
+
+let renamedLng = 0; let droppedTwin = 0; let renamedState = 0;
+
+for (const r of rows) {
+  if (r.lngUdeg === undefined && typeof r.lng === 'number') { r.lngUdeg = Math.round(r.lng * 1e6); renamedLng++; }
+  if ('lat' in r) { delete r.lat; droppedTwin++; }
+  if ('lng' in r) { delete r.lng; droppedTwin++; }
+  if ('lonUdeg' in r) { delete r.lonUdeg; droppedTwin++; }
+  if ('state' in r) { r.stateNoteJa = r.state; delete r.state; renamedState++; }
+  if (!('stateNoteJa' in r)) r.stateNoteJa = '';
+}
+
+// Key-set uniformity: every record carries exactly this set, in this order.
+const KEYS = [
+  'id', 'osmRecord', 'nameJa', 'nameZh', 'nameEn', 'category', 'factTier', 'addressJa',
+  'latUdeg', 'lngUdeg', 'origin', 'hours', 'admission', 'closedDays', 'stateNoteJa',
+  'source_url', 'verified_at', 'provenance',
+];
+for (const r of rows) {
+  const extra = Object.keys(r).filter((k) => !KEYS.includes(k) && k !== 'entrances');
+  if (extra.length) console.log(`  note: ${r.id} keeps non-standard keys: ${extra.join(', ')}`);
+  const out = {};
+  for (const k of KEYS) out[k] = k in r ? r[k] : (k === 'hours' || k === 'closedDays' ? [] : k === 'admission' ? {} : null);
+  if ('entrances' in r) out.entrances = r.entrances;
+  for (const k of Object.keys(r)) if (!(k in out)) out[k] = r[k];
+  Object.keys(r).forEach((k) => delete r[k]);
+  Object.assign(r, out);
+}
+
+// The 12 doors are not places: they have no name and no sourced position. They are
+// recorded here as a block-level fact so the pack still declares them, with the
+// pointer to where they actually live.
+writeFileSync(resolve(HERE, 'block-doors.json'), JSON.stringify({
+  note: 'The 12 authored doors of block 0. They are NOT place records: door "names" are the word 本門 (a type, not a proper name) and no source states where any doorway actually is, so a place record for one would carry an invented name and an invented position. They live in doors.json (our content) and kyoto-shijo-osm.json (the ODbL geometry).',
+  count: 12,
+  doorIds: rows.flatMap((r) => r.entrances?.doorIds ?? []),
+  northBuilding: 'kyoto-shijo-bldg-mitsui',
+  southBuilding: 'kyoto-shijo-bldg-daiya',
+  valueKind: 'licenced',
+  guideVerifiedColumnAllowed: false,
+  files: ['city-packs/kyoto-shijo/doors.json', 'city-packs/kyoto-shijo/kyoto-shijo-osm.json'],
+  why: 'doors.json provenance.fields marks cellX/cellY/entrancePointJa/interiorTemplate as licenced and provenance.guideVerifiedColumnAllowed is false for every door; validator.notAsserted states that no source records a doorway position in this block.',
+}, null, 2) + '\n', 'utf8');
+
+writeFileSync(p, JSON.stringify(rows, null, 2) + '\n', 'utf8');
+const doors = rows.reduce((n, r) => n + (r.entrances?.doorIds?.length ?? 0), 0);
+console.log(`places.json: ${rows.length} records; renamed lng->lngUdeg ${renamedLng}, dropped decimal twins ${droppedTwin}, renamed state->stateNoteJa ${renamedState}; ${doors} doors declared across ${rows.filter((r) => r.entrances).length} buildings`);

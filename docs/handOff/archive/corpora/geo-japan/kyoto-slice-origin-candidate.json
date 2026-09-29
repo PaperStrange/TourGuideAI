@@ -1,0 +1,51 @@
+{
+  "note": "A1 origin — derived candidate to freeze into the geo contract (GAP-1)",
+  "method": "方案 1: westernmost geometry point of 四条通 AT OR EAST OF the declared slice anchor (四条烏丸)",
+  "corrections": [
+    "bbox-wide \"westernmost node\" returned 錦小路通, a residential lane.",
+    "road-wide \"westernmost point\" returned 松尾大社, ~1.0 km west of the slice, because 四条通 IS 市道186号 嵐山祇園線."
+  ],
+  "road": "四条通",
+  "sliceAnchor": {
+    "name": "四条烏丸",
+    "lat": 35.003825,
+    "lon": 135.75968
+  },
+  "source": "Overpass API (overpass-api.de), OpenStreetMap contributors",
+  "licence": "ODbL 1.0",
+  "coefficients": {
+    "LON_M_PER_DEG": 91282.15,
+    "LAT_M_PER_DEG": 110940.65
+  },
+  "derivedOrigin": {
+    "lonUdeg": 135759719,
+    "latUdeg": 35003658,
+    "lonDeg": 135.7597188,
+    "latDeg": 35.0036577,
+    "osmWayId": 465069436,
+    "nodeIndex": 3,
+    "highway": "primary",
+    "lanes": "2",
+    "width": null
+  },
+  "eastEnd": {
+    "lonUdeg": 135777193,
+    "latUdeg": 35003749,
+    "lonDeg": 135.7771926,
+    "latDeg": 35.0037491
+  },
+  "corridor": {
+    "measuredSpanM": 1595.05,
+    "marginM": -4.95,
+    "wTiles": 1600,
+    "note": "wTiles read from the frozen contract, not hardcoded here; marginM = measuredSpanM - wTiles"
+  },
+  "crossCheck": {
+    "anchor": "四条烏丸",
+    "distanceFromAnchorM": 18.9
+  },
+  "counts": {
+    "ways": 16,
+    "nodes": 68
+  }
+}

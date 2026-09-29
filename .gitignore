@@ -3,6 +3,85 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# Planning / research — SPLIT BY LIFETIME (revised after the `iteration` move)
+#
+# Long-lived assets live under iteration/ and ARE version-controlled:
+#   iteration/design/      design kernel, appendix, frozen contracts
+#   iteration/recon/       recon reports + section drafts (crawl caches excluded)
+#   iteration/reference/   external inputs (plugin survey, research plan)
+#
+# What remains excluded is genuinely one-off:
+#   docs/handOff/archive/            ~90 MB of raw crawl snapshots (HTML + txt)
+#   iteration/recon/sections/*/_raw* raw fetch caches behind the section drafts
+#   the bundle's node_modules/       install artifacts, not source
+#
+# NOTE the trailing /* rather than /. A bare directory pattern excludes the directory
+# itself, and git then refuses to descend into it at all, so NO later `!` negation
+# inside it can ever take effect. That is what silently defeated the three
+# re-inclusions below on the first attempt. `dir/*` keeps the directory traversable
+# while excluding its contents, which is what makes a targeted re-inclusion possible.
+docs/handOff/archive/*
+iteration/recon/sections/_raw/
+iteration/recon/sections/_raw_q4q6/
+docs/project_lifecycle/knowledge/_recon_tmp/
+docs/handOff/dsh-bundle-tourguide-2.5d/node_modules/
+
+# Re-include the directory chain down to the three load-bearing measurement records.
+# Each ancestor has to be re-included explicitly, because "It is not possible to
+# re-include a file if a parent directory of that file is excluded."
+!docs/handOff/archive/corpora/
+!docs/handOff/archive/corpora/geo-japan/
+!docs/handOff/archive/corpora/geo-japan/kyoto-slice-origin-candidate.json
+!docs/handOff/archive/corpora/geo-japan/kyoto-slice-measurement-summary.json
+!docs/handOff/archive/corpora/geo-japan/kyoto-slice-overpass.json
+# Everything else under geo-japan stays excluded, so the re-included parents do not
+# drag 24 MB of unmined corpus in with them.
+docs/handOff/archive/corpora/geo-japan/*
+!docs/handOff/archive/corpora/geo-japan/kyoto-slice-origin-candidate.json
+!docs/handOff/archive/corpora/geo-japan/kyoto-slice-measurement-summary.json
+!docs/handOff/archive/corpora/geo-japan/kyoto-slice-overpass.json
+
+# The gate scripts ARE tracked, and this reverses an earlier decision that was made on
+# a premise I never checked. The exclusion was justified as "the bundle is
+# junction-linked into the DSH profile, so moving it forces a reinstall". Measured:
+# neither docs/handOff/dsh-bundle-tourguide-2.5d/ nor its tools/ has a LinkType -- the
+# junction is created BY the DSH install and points AT this directory, so this
+# directory was never the link and nothing here is pinned by it.
+#
+# The cost of the exclusion was severe and silent: world-grid.mjs (18 assertions over
+# the frozen projection, grid, origin and valueKind), assert-export-boundary.mjs and
+# validate-city-pack.mjs were ABSENT from every clean checkout, so a Fact Integrity CI
+# job would have skipped exactly the gates it exists to run. Tracking is not moving:
+# the files keep their paths, so the DSH profile is unaffected.
+#
+# Everything except node_modules under the bundle is therefore tracked. The scripts are
+# zero-dependency by construction; the CI job asserts that rather than assuming it.
+!docs/handOff/dsh-bundle-tourguide-2.5d/
+!docs/handOff/dsh-bundle-tourguide-2.5d/tools/
+!docs/handOff/dsh-bundle-tourguide-2.5d/tools/**
+
+# Three measurement records inside archive/ are LOAD-BEARING, and excluding the whole
+# archive hid that. Found by scanning every tracked script for on-disk paths it reads
+# that are not themselves tracked (iteration/tools/find-untracked-deps.mjs) - the same
+# class of defect as the untracked gate scripts above, caught by a mechanical sweep
+# instead of by hand.
+#
+#   kyoto-slice-origin-candidate.json     1.4 KB  asserted by world-grid.mjs A13
+#   kyoto-slice-measurement-summary.json  1.0 KB  world-grid.mjs A12 + validate-doors V11 + pack.json
+#   kyoto-slice-overpass.json           286.9 KB  validate-doors: resolves all 12 osmBuildingIds
+#
+# Without them the geo contract and the doors gate cannot run in a clean checkout, which
+# is exactly how the doors gate failed the first time the gates were tested against one.
+!docs/handOff/archive/corpora/geo-japan/kyoto-slice-origin-candidate.json
+!docs/handOff/archive/corpora/geo-japan/kyoto-slice-measurement-summary.json
+!docs/handOff/archive/corpora/geo-japan/kyoto-slice-overpass.json
+
+# DSH harness state for this workspace (agent config, not project source).
+# Trailing /* rather than / on purpose: a bare directory pattern makes git refuse to
+# descend, which defeats every `!` re-inclusion below it. That is a trap this branch
+# has now hit three times - twice on the evidence corpus and once here.
+.dsh/*
+
 # React/Node.js specific
 /build
 /dist
@@ -468,7 +547,6 @@ server/.env.*
 .env.development.local
 .env.test.local
 .env.production.local
-.env.production.example
 
 # Cursor configuration usage
 .cursorignore
@@ -476,3 +554,20 @@ server/.env.*
 # Ignore all test results, reports, and records
 docs/project_lifecycle/all_tests/results/
 server/coverage/lcov-report
+
+# The project's own normative spec must survive a clean checkout. `.dsh/` is harness
+# state and stays ignored, but one directory under it is not harness state: this skill
+# is the document that states the fact-layer contract's rules, and pack-curator updated
+# it normatively during task-10. It was untracked, so a clean checkout had every gate
+# but not the spec they enforce.
+#
+# Ancestors are re-included explicitly because a file cannot be re-included while a
+# parent directory is excluded - the same trap that silently defeated the evidence
+# re-inclusions earlier in this branch.
+!.dsh/skills/
+!.dsh/skills/tourguide-fact-integrity/
+!.dsh/skills/tourguide-fact-integrity/**
+.dsh/*
+!.dsh/skills/
+!.dsh/skills/tourguide-fact-integrity/
+!.dsh/skills/tourguide-fact-integrity/**

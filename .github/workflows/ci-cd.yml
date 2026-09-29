@@ -1,16 +1,16 @@
-﻿name: TourGuideAI CI/CD Pipeline
+name: TourGuideAI CI/CD Pipeline
 
 on:
   push:
     branches: 
-      - main
-      - develop
+      - master
+      - iteration
       - 'feat-*'
       - 'release-*'
   pull_request:
     branches: 
-      - main
-      - develop
+      - master
+      - iteration
       - 'release-*'
   workflow_dispatch:
     inputs:
