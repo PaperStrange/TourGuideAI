@@ -75,7 +75,7 @@
 #
 # -text disables all line-ending conversion for these paths, for every contributor,
 # regardless of their local core.autocrlf.
-docs/handOff/archive/corpora/geo-japan/*.json -text
+*.json                                        -text
 docs/handOff/archive/corpora/geo-japan/*.txt  -text
 city-packs/**/evidence/**                     -text
 iteration/recon/_fetch-*/**                   -text
