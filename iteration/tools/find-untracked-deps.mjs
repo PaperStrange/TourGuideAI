@@ -8,7 +8,18 @@ import { readFileSync, existsSync, statSync } from 'node:fs';
 import { resolve, join, dirname } from 'node:path';
 
 const REPO = resolve(import.meta.dirname, '../..');
-const tracked = execSync('git ls-files', { cwd: REPO, encoding: 'utf8' }).split('\n').filter(Boolean);
+
+// A git-archive export has no .git, so there is no tracked-file list to compare against.
+// Reporting an empty list as a pass would be the exact false negative this scanner exists
+// to prevent, so it exits 2 (environment) rather than 0 (clean).
+let tracked;
+try {
+  tracked = execSync('git ls-files', { cwd: REPO, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).split('\n').filter(Boolean);
+} catch {
+  console.log(`ENV  cannot list tracked files: ${REPO} is not a git working tree.`);
+  console.log('     Run this in a clone, not in a git-archive export.');
+  process.exit(2);
+}
 const trackedSet = new Set(tracked.map((p) => p.replace(/\\/g, '/')));
 
 // Only scripts and JSON can declare a dependency.

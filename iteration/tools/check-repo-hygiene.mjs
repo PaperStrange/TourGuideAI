@@ -18,6 +18,21 @@ const results = [];
 const add = (id, ok, title, detail, status) =>
   results.push({ id, ok, title, detail, status: status ?? (ok ? 'pass' : 'fail') });
 
+// R1, R3 and R4 need git. An export produced by `git archive` has no .git directory, and
+// asking git anything there crashes the checker instead of reporting honestly. That is
+// an ENVIRONMENT problem, not a rule violation, and the two want different responses --
+// so this exits 2 with a statement rather than dying or, worse, reporting PASS on an
+// empty branch list.
+function gitOk() {
+  try { execSync('git rev-parse --git-dir', { cwd: REPO, stdio: ['ignore', 'ignore', 'ignore'] }); return true; } catch { return false; }
+}
+if (!gitOk()) {
+  const msg = `${REPO} is not a git working tree, so branch refs, the tracked-file list and the gitignore rules cannot be inspected. Run this in a clone, not in a git-archive export.`;
+  if (JSON_OUT) console.log(JSON.stringify({ repo: REPO, passed: false, exitCode: 2, envError: msg, checks: [] }));
+  else console.log(`ENV  repo hygiene could not run\n      ${msg}`);
+  process.exit(2);
+}
+
 // ── R1 · workflow branch references must name branches that exist ─────────────
 // Defect: five workflows filtered on main/develop, which do not exist. GitHub leaves
 // their checks Pending forever, so any branch protection requiring them blocks merges.
@@ -29,7 +44,7 @@ const add = (id, ok, title, detail, status) =>
 {
   let branches = [];
   try {
-    const out = execSync('git for-each-ref --format=%(refname:short) refs/heads refs/remotes/origin', { cwd: REPO, encoding: 'utf8' });
+    const out = execSync('git for-each-ref --format=%(refname:short) refs/heads refs/remotes/origin', { cwd: REPO, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] });
     branches = out.split('\n').map((b) => b.replace(/^origin\//, '').trim()).filter((b) => b && b !== 'origin' && b !== 'HEAD');
   } catch { /* fall through to the empty set and let the check fail loudly */ }
   const known = new Set(branches);
@@ -86,7 +101,7 @@ const add = (id, ok, title, detail, status) =>
   const ENFORCED = /\.(md|yml|yaml|json|mjs|js|cjs|ts|tsx|jsx|sh|ps1)$/i;
   const EXEMPT = /^(iteration\/recon\/_raw-|iteration\/recon\/_fetch-|docs\/handOff\/archive\/|city-packs\/[^/]+\/evidence\/)/;
   let tracked = [];
-  try { tracked = execSync('git ls-files', { cwd: REPO, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 }).split('\n').filter(Boolean); } catch { /* ignore */ }
+  try { tracked = execSync('git ls-files', { cwd: REPO, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024, stdio: ['ignore', 'pipe', 'ignore'] }).split('\n').filter(Boolean); } catch { /* ignore */ }
   const offenders = [];
   let scanned = 0, exempted = 0;
   const scan = (b) => {
@@ -157,7 +172,7 @@ const add = (id, ok, title, detail, status) =>
     if (!/^\*\.json\s+-text\s*$/m.test(text)) problems.push('no `*.json -text` rule: JSON bytes may be re-encoded on checkout');
   }
   let autocrlf = '';
-  try { autocrlf = execSync('git config --get core.autocrlf', { cwd: REPO, encoding: 'utf8' }).trim(); } catch { autocrlf = '(unset)'; }
+  try { autocrlf = execSync('git config --get core.autocrlf', { cwd: REPO, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim(); } catch { autocrlf = '(unset)'; }
   if (autocrlf === 'true') problems.push('core.autocrlf=true in this working copy; the .gitattributes rule is what protects other contributors, and it is present, so this is a warning only');
   const hard = problems.filter((p) => !p.includes('warning only'));
   add('R5', hard.length === 0, 'line-ending re-encoding is disabled for content-addressed files',
@@ -176,7 +191,7 @@ const add = (id, ok, title, detail, status) =>
 {
   const dirs = new Set(readdirSync(REPO, { withFileTypes: true }).filter((e) => e.isDirectory()).map((e) => e.name).filter((n) => !n.startsWith('.')));
   let branches = [];
-  try { branches = execSync('git for-each-ref --format=%(refname:short) refs/heads', { cwd: REPO, encoding: 'utf8' }).split('\n').filter(Boolean); } catch { /* ignore */ }
+  try { branches = execSync('git for-each-ref --format=%(refname:short) refs/heads', { cwd: REPO, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).split('\n').filter(Boolean); } catch { /* ignore */ }
   const clashes = branches.filter((b) => dirs.has(b));
   add('R6', clashes.length === 0, 'no local branch shadows a top-level directory',
     clashes.length
