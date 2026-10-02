@@ -23,6 +23,28 @@
 
 > 表内"结论"只回答**该源能否承担"永久离线/打印的评论内容"**这一个用途。OS Places 与 Wikivoyage 标"可用"是因为它们在**各自用途**上确实授权存储再分发，而两者都**不提供用户评论文本**——**不能**用它们去满足"5 条近期用户评论"。
 
+### 1.1 版本锚点清单（R7/R8 用；2026-09-30 逐字节核）
+
+| 源 | 锚点 | 落在哪个抓取文件 | 复核方式 |
+|---|---|---|---|
+| Google Maps Platform ToS §3.2.4(e) | `Last modified August 26, 2026` + `Previous versions` 入口 | `google-maps-platform-terms.html` | 读页内日期（可 diff 旧版） |
+| Google Maps Service Specific Terms §14 | `Last modified June 10, 2026` | `docs/handOff/evidence/google-maps-service-terms.html` | 读页内日期 |
+| Yelp API Terms | `Last Updated: September 22, 2026`（URL 亦为 `20260922_en_us`） | `yelp-terms.html` | 读页内日期 / URL 日期 |
+| **Yelp Display Requirements** | **无 → 显式 `anchor: none`** | `yelp-display-req.html` | **只能重抓 + diff** |
+| Foursquare Places PAYG EULA | `Last Updated: February 29, 2024` | `fsq-payg-legal.html` | 读页内日期 |
+| Foursquare Usage Guidelines（retention 规则） | `updatedAt 2026-02-12` | `fsq-usage-guidelines.md` | 读 front-matter |
+| Foursquare Place Tips | `updatedAt 2026-07-21` | `fsq-place-tips.md` | 读 front-matter |
+| Foursquare OS Places | HF `lastModified 2026-09-15`；许可 Apache-2.0（文本不可变） | `fsq-os-places-api.json` | 读 API 字段 |
+| TripAdvisor Terra（5 页） | `updatedAt` 2025-10-09 / 2026-02-18 / 2026-04-30 / 2026-06-16 ×2 | `terra-*.md` | 读 front-matter |
+| TripAdvisor legacy Content API | **仅相对时间 "Updated 22 days ago" → 显式 `anchor: none`** | `terra-overview.md` | **只能重抓** |
+| HERE Platform Terms | URL slug `here-platform-terms-september-2023` | `here-platform.html` | 读 URL slug |
+| **Wikivoyage（Copyright / re-use 两页）** | **无 → 显式 `anchor: none`** | `wikivoyage-*.html` | **只能重抓 + diff** |
+| CC BY-SA 4.0 / Apache-2.0 | 版本号本身即锚点（法律文本不可变） | `cc-by-sa-4.0.html` / `apache-2.0.txt` | 无需复核 |
+| TomTom | 未取到 | — | — |
+
+**复核只需 7 个 URL（5 个 vendor）**：Google ToS · Google Service Specific Terms · Yelp `api_terms` · Yelp `display_requirements` · Foursquare `usage-guidelines` · HERE platform · Terra `caching-policy`+`linking-policy`。
+**显式无锚点的 3 条**：Yelp Display Requirements 的 24 小时句 · Wikivoyage 的打印署名句 · TripAdvisor legacy overview —— 按 R7，**不得作为任何待裁项的唯一依据**。
+
 ## 2. 逐源原文（URL + 逐字引文）
 
 ### 2.1 Google — 不可用
