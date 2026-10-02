@@ -577,3 +577,17 @@ server/coverage/lcov-report
 # 311 KB file that every emit-scene invalidates would put a stale copy in history.
 # check-viewer.mjs --bake-if-absent and gate-viewer.mjs regenerate it on demand instead.
 iteration/viewer/index.html
+
+# ── the evidence store added 2026-09-30 (plan C) ──────────────────────────────────────────────
+# Negations must be PER PATH, never a bare directory. This file's own history says the bare-directory
+# trap "has now hit three times - twice on the evidence corpus and once here", because a bare
+# negation re-includes everything beneath it. So each level is negated explicitly, and raw/ is
+# deliberately NOT negated -- process caches stay excluded.
+!.dsh/artifacts/
+.dsh/artifacts/*
+!.dsh/artifacts/evidence/
+!.dsh/artifacts/evidence/**
+!.dsh/artifacts/licences/
+!.dsh/artifacts/licences/**
+!.dsh/artifacts/README.md
+# .dsh/artifacts/raw/ is intentionally left excluded: it holds crawl caches, not cited sources.
