@@ -225,13 +225,27 @@ for (const [, paths] of bySize) {
   }
 }
 
-// ── the handoff deliverable must be byte-identical to its baseline ───────────────────────────────
+// Hash CRLF-normalised bytes, NOT the working-copy bytes.
+//
+// THIS GATE FAILED IN A CLEAN CLONE ON THE DAY I WROTE IT, and the cause is the one this repo has
+// already paid for: a verdict that depends on how the working copy was produced. CLAUSES-verbatim.md
+// is 6107 bytes here and 6222 in a fresh clone -- the difference is exactly its line count, and
+// odpt-developer.html (a single line) matched in both. So a baseline of raw working-tree bytes
+// encodes this machine's line endings, which is a second truth about the handoff deliverable.
+//
+// WHAT THIS BASELINE ACTUALLY GUARDS: that nobody EDITS, ADDS or DELETES a file in the frozen
+// handoff directory. It does not need byte-identity across platforms to do that, and it must not
+// silently claim it. Normalising CRLF to LF before hashing makes the check environment-independent
+// while still catching any content change.
+const hashCanonical = (p) =>
+  createHash('sha256').update(readFileSync(p, 'utf8').replace(/\r\n/g, '\n'), 'utf8').digest('hex').toUpperCase();
+// ── the handoff deliverable must be unedited, judged on normalised bytes ───────────────────────────────
 const HANDOFF_DIR = join(REPO, 'docs', 'handOff', 'evidence');
 if (process.argv.includes('--accept-handoff-baseline')) {
   const snap = {};
   for (const e of readdirSync(HANDOFF_DIR)) {
     const p = join(HANDOFF_DIR, e);
-    if (statSync(p).isFile()) snap[e] = createHash('sha256').update(readFileSync(p)).digest('hex').toUpperCase();
+    if (statSync(p).isFile()) snap[e] = hashCanonical(p);
   }
   writeFileSync(BASELINE_PATH, JSON.stringify({ note: 'FROZEN handoff deliverable; see iteration/design/licence-register.md', files: snap }, null, 2) + '\n', 'utf8');
   console.log(`handoff baseline accepted: ${Object.keys(snap).length} files -> ${relative(REPO, BASELINE_PATH).replace(/\\/g, '/')}`);
@@ -240,7 +254,7 @@ if (process.argv.includes('--accept-handoff-baseline')) {
   const now = {};
   for (const e of readdirSync(HANDOFF_DIR)) {
     const p = join(HANDOFF_DIR, e);
-    if (statSync(p).isFile()) now[e] = createHash('sha256').update(readFileSync(p)).digest('hex').toUpperCase();
+    if (statSync(p).isFile()) now[e] = hashCanonical(p);
   }
   for (const [name, hash] of Object.entries(base)) {
     if (!(name in now)) {
