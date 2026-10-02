@@ -365,8 +365,6 @@ const html = `<!DOCTYPE html>
   var ZOOM_LEVELS = [1, 2, 3];           // spec §1.2: integers only, non-integers shimmer
   var DEFAULT_ZOOM_INDEX = 1;            // -> zoom 2, the level the spec's rules assume
   var zoomIdx = DEFAULT_ZOOM_INDEX;
-  /** The corridor is 40 rows tall; show all of it so the walk is never vertically blind. */
-  var VIEW_TILES_Y = H;
 
   function zoomLevel() { return ZOOM_LEVELS[zoomIdx]; }
   /** Screen pixels per WORLD pixel. Spec L131: zoom 2 maps 640 world px onto 1280. */
@@ -381,6 +379,22 @@ const html = `<!DOCTYPE html>
    * the WIDTH from the spec. The adaptation is recorded rather than hidden.
    */
   function viewTilesX() { return Math.round(1280 / TILE_PX / screenScale()); }
+  /**
+   * Visible rows, from the same table. Spec §1.2 L31-33 gives the vertical field as
+   * 22.5 / 11.25 / 7.5 tiles at zoom 1 / 2 / 3, on a logical height of 720 px.
+   *
+   * THE CORRIDOR IS 40 ROWS AND THE DEFAULT WINDOW IS 11.25, so the camera MUST follow
+   * vertically — 28.75 rows of world are off screen at zoom 2 by the spec's own numbers.
+   * (This is also why the spec puts "interiors never scroll" as a HARD RULE at L35: an
+   * interior template is <= 16x10 and fits, so that rule is about interiors, not about
+   * the street.) A first cut of this file showed all 40 rows at once instead, which made
+   * a 1280x2560 canvas whose browser-scaled reduction was an unreadable sliver — correct
+   * arithmetic, useless artefact.
+   *
+   * At zoom 1 all 40 rows fit (22.5 x ... the pano view is static and shows the block),
+   * so the camera is pinned there; at zoom 2 and 3 it follows.
+   */
+  function viewTilesY() { return Math.min(H, Math.max(1, Math.round(720 / TILE_PX / screenScale()))); }
 
   /* --- THE ASSET INTERFACE ---------------------------------------------
      A cell is rendered by cellPixelSource(cellX, cellY), which returns either
@@ -403,7 +417,21 @@ const html = `<!DOCTYPE html>
     return Object.prototype.hasOwnProperty.call(TILE_ASSETS, key) ? TILE_ASSETS[key] : null;
   }
 
-  function camTop() { return 0; }      // the corridor fits in the window vertically
+  /**
+   * The top row of the window. Pinned at zoom 1 (all 40 rows fit); follows the walker
+   * otherwise, because the spec's default window is 11.25 rows and the corridor is 40.
+   * Centred on the walker and clamped to the world, which is the deterministic core of
+   * the follow; the spec also asks for a deadzone and lerp 0.1, and those are smoothing
+   * and therefore belong with the rest of the interaction design rather than here.
+   */
+  function camTop() {
+    var spanY = viewTilesY();
+    if (spanY >= H) return 0;
+    var top = walker.row - Math.floor(spanY / 2);
+    if (top < 0) top = 0;
+    if (top > H - spanY) top = H - spanY;
+    return top;
+  }
   function camLeft() {
     var span = viewTilesX();
     var left = walker.x - Math.floor(span / 2);
@@ -421,14 +449,15 @@ const html = `<!DOCTYPE html>
     var span = viewTilesX();
     var left = camLeft();
     var top = camTop();
-    var pw = span * S, ph = VIEW_TILES_Y * S;
+    var spanY = viewTilesY();
+    var pw = span * S, ph = spanY * S;
     if (cv.width !== pw || cv.height !== ph) {
       cv.width = pw; cv.height = ph;
       img = ctx.createImageData(pw, ph);
     }
     var d = img.data;
     var si = Math.round(S);            // integer blit size so tiles never half-pixel
-    for (var ty = 0; ty < VIEW_TILES_Y; ty++) {
+    for (var ty = 0; ty < spanY; ty++) {
       var r = top + ty;
       for (var tx = 0; tx < span; tx++) {
         var x = left + tx;
