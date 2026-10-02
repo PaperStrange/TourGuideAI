@@ -327,8 +327,15 @@ const SERIALISABLE = {
   openDoor: INTERACTION.openDoor,
   placeholderDoors: INTERACTION.placeholderDoors,
   measuredDoors: INTERACTION.measuredDoors,
+  // P1: the target function and the HUD slots. Serialised like everything else, so the
+  // browser runs the same bodies the assertions check.
+  nextAnchor: INTERACTION.nextAnchor,
+  anchorDist: INTERACTION.anchorDist,
+  isVisible: INTERACTION.isVisible,
+  signedMetres: INTERACTION.signedMetres,
+  statusReadout: INTERACTION.statusReadout,
+  counters: INTERACTION.counters,
 };
-
 /**
  * The interaction layer, and the constants it needs.
  *

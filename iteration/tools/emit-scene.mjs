@@ -235,6 +235,15 @@ export function streetFit(line) {
       flat,
       peakX,
       peakY: Number(peakY.toFixed(2)),
+      // The sweep's LOWER end and its true span. Without these the report could
+      // only print "[0, peakY]", which silently drops the south half of a street
+      // that crosses the datum - it understated the northing requirement by
+      // (peakY - minY) - peakY, i.e. 8.99 m in the post-ruling datum. A sweep
+      // printed as [0, 10.87] when it is [-8.99, +10.87] is not a rounding
+      // difference; it is a different requirement.
+      minY: Number(minY.toFixed(2)),
+      maxY: Number(maxY.toFixed(2)),
+      spanM: Number((peakY - minY).toFixed(2)),
       endY: Number(endY.toFixed(2)),
       fallAfterPeakM: Number((peakY - endY).toFixed(2)),
       isMonotonic: falls === 0,
@@ -1738,7 +1747,11 @@ function report(scene, outPath, hash) {
     lines.push(`      ${String(s.halfWidthM).padStart(5)} m -> ${String(s.shortM).padStart(4)} m of corridor short (${s.shortPct}%), worst ${s.worstShortfallM} m   |  hTiles needed ${s.hTilesNeeded}`);
   }
   lines.push('  what each candidate reading would change:');
-  lines.push(`      widen hTiles   : needs halfCrossTiles >= ${fit.readings.widenHtiles.needHalfCrossTiles} -> hTiles ${fit.readings.widenHtiles.needHtilesEven} (from ${worldGrid.hTiles})`);
+  lines.push('      NOTE: these three readings were computed to decide GAP-12 and are still reported, but');
+      lines.push('            they are measured AGAINST THE CURRENT DATUM, in which reading (2) has ALREADY been');
+      lines.push('            applied (latShiftUdeg 81). So "widen" shows a SMALLER hTiles than 40 rather than a');
+      lines.push('            larger one, and "re-datum" shows only the residual - read them as paper trail, not as choices.');
+      lines.push(`      widen hTiles   : needs halfCrossTiles >= ${fit.readings.widenHtiles.needHalfCrossTiles} -> hTiles ${fit.readings.widenHtiles.needHtilesEven} (from ${worldGrid.hTiles})`);
   lines.push(`      re-datum origin: shift ${fit.readings.redatum.shiftNorthM} m north -> minimum margin becomes ${fit.readings.redatum.resultingMinMarginM} m (moves every door cellY)`);
   lines.push(`      street-relative: ${fit.readings.streetRelative.note}`);
   lines.push('');
@@ -1747,7 +1760,7 @@ function report(scene, outPath, hash) {
   lines.push(`  (1) carriageway half-width : NOT DERIVABLE - lanes on the road = ${JSON.stringify(we.lanesValues)}, usableAsFact=${we.lanesUsableAsFact};`);
   lines.push(`      width tag coverage: ${we.roadWaysWithWidthTag}/${we.roadWays} 四条通 ways (${we.roadWidthCoveragePct}%), ${we.dumpWaysWithWidthTag}/${we.dumpWays} dump ways (${we.dumpWidthCoveragePct}%); kerb/sidewalk ways ${we.kerbSewerWays ?? we.kerbOrSidewalkWays}`);
   lines.push(`      -> requirement is reported as a FUNCTION of W, not asserted against an invented width`);
-  lines.push(`  (2) northing the street needs : drift ${(fit.monotonic.peakY - 0).toFixed(2)} m, street sweeps y in [0, ${fit.monotonic.peakY}]`);
+  lines.push(`  (2) northing the street needs : SPAN ${fit.monotonic.spanM} m - the street sweeps y in [${fit.monotonic.minY}, ${fit.monotonic.maxY}] about the CURRENT datum (latUdeg ${ORIGIN.latUdeg})`);
   lines.push('      W      required half   required hTiles   total northing');
   for (const n of fit.northing) lines.push(`      ${String(n.halfWidthM).padStart(5)}   ${String(n.requiredHalfCrossTiles).padStart(13)}   ${String(n.requiredHtilesEven).padStart(14)}   ${String(n.totalNorthingM).padStart(13)}`);
   lines.push(`  (3) frontage band : room north of the peak = ${fit.roomAtPeakM} m, and it must cover carriageway half-width AND frontage depth TOGETHER`);
@@ -1771,6 +1784,21 @@ function report(scene, outPath, hash) {
   lines.push(`  observed (a human read it)                 : ${fmt(c.heightObserved)}`);
   lines.push(`  abstract (no source, NO number)            : ${fmt(c.heightAbstract)}`);
   lines.push(`  abstract rows carrying a number            : ${scene.manifest.heightGrading.unsourcedCarryNumbers}  (must be 0)`);
+  /* Openings: the S4b deliverable, reported rather than only asserted. An
+   * assertions-only layer is invisible to the person reading the bake. */
+  {
+    const op = scene.openings ?? { records: [], tiles: 0, authored: 0, observed: 0, source: null, walls: [] };
+    const depth = op.records.map((r) => r.depthTiles);
+    const bounded = op.records.filter((r) => Array.isArray(r.backWall)).length;
+    lines.push('');
+    lines.push(`  openings (S4b)   : ${op.records.length} room(s) opened from the fact layer, ${op.tiles} tile(s), ${(op.walls ?? []).length} back wall(s)`);
+    lines.push(`    source                : ${op.source ?? 'ABSENT - no doors.json, so NO door is enterable in this bake'}`);
+    lines.push(`    depth per room        : ${depth.length ? `${depth.join(', ')} tiles (${depth[0]} m each)` : '-'}`);
+    lines.push(`    bounded (D-43)        : ${bounded} of ${op.records.length} - the rest would be PASSAGES, which is not an enterable place`);
+    lines.push(`    valueKind             : authored ${op.authored}, observed ${op.observed}   (observed MUST be 0: nobody has seen a door)`);
+    lines.push(`    guide verified column : ${op.records.every((r) => r.guideVerifiedColumnAllowed === false) ? 'NOT allowed - an opening is something we PLACED' : 'ALLOWED for some record - THIS IS A DEFECT'}`);
+    lines.push(`    south doors           : NOT opened - their door row is the world LAST row, so there is nothing behind to open`);
+  }
   lines.push(`  e.g. parsed  : ${JSON.stringify(scene.manifest.records.find((r) => r.valueKind === 'parsed') ?? null)}`);
   lines.push(`  e.g. abstract: ${JSON.stringify(scene.manifest.records.find((r) => r.valueKind === 'abstract') ?? null)}`);
   lines.push('');

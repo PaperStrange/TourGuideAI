@@ -143,8 +143,94 @@ function measuredDoors(openerContract) {
   return list.filter((d) => d.surface === SURFACE_MEASURED).map((d) => d.doorId);
 }
 
+/* ==================================================================== *
+ * P1 · the target function and the HUD slots   (play-systems.md §1.4, §1.7)
+ *
+ * Everything below is a PURE function of its arguments plus the two growing sets.
+ * No scripts, no priority tables, no persistence, no clock. That is the point: the
+ * target is an argmin of a distance, so it cannot quietly become a tutorial.
+ * ==================================================================== */
+
+/**
+ * next := argmin{ grid distance to the walker : a not in derived }, ties to the smaller
+ * alongStreetM. Spec §1.7 states it in one line and forbids a priority table; this is
+ * that line.
+ *
+ * At spawn (0, 11) with derived empty this selects 四条烏丸交差点 東側横断歩道 — a place
+ * WITH a source — and not a door. That is not luck, it is what the function does, and it
+ * is what keeps the first thing the player is pointed at from being one of the three
+ * placeholders (SOW §8.6's ordering trap).
+ */
+function nextAnchor(anchors, walker, derived) {
+  var best = null, bestD = null;
+  for (var i = 0; i < anchors.length; i += 1) {
+    var a = anchors[i];
+    if (derived && derived[a.id]) continue;
+    var d = Math.abs(a.cellX - walker.x) + Math.abs(a.cellY - walker.row);
+    if (bestD === null || d < bestD || (d === bestD && a.alongStreetM < best.alongStreetM)) {
+      best = a; bestD = d;
+    }
+  }
+  return best === null ? null : { anchor: best, dist: bestD };
+}
+
+/** Grid (Manhattan) distance, the same metric next minimises. */
+function anchorDist(anchor, walker) {
+  return anchor === null ? null : Math.abs(anchor.cellX - walker.x) + Math.abs(anchor.cellY - walker.row);
+}
+
+/** Is the anchor inside the current window? The S1 indicator hides when it is. */
+function isVisible(anchor, camLeft, camTop, viewX, viewY) {
+  if (!anchor) return false;
+  return anchor.cellX >= camLeft && anchor.cellX < camLeft + viewX &&
+    anchor.cellY >= camTop && anchor.cellY < camTop + viewY;
+}
+
+/** Integer metres, signed, from the walker to the anchor — the S1 readout. */
+function signedMetres(anchor, walker) {
+  return {
+    dx: anchor.cellX - walker.x,
+    dy: anchor.cellY - walker.row,
+    manhattan: Math.abs(anchor.cellX - walker.x) + Math.abs(anchor.cellY - walker.row),
+  };
+}
+
+/**
+ * S3 — the status readout: 四条通 · 东行 x m · 最近 <real name> ±d m.
+ * The name is a VALUE from the fact layer, never a string written here.
+ */
+function statusReadout(anchor, walker) {
+  return {
+    street: '四条通',
+    direction: '东行',
+    alongM: walker.x,
+    nearestName: anchor === null ? null : anchor.nameJa,
+    nearestDistM: anchor === null ? null : anchorDist(anchor, walker),
+  };
+}
+
+/**
+ * S2 — three counters that must NEVER be merged, with all three denominators taken
+ * from the INPUT rather than from a literal. This repository has already gone red twice
+ * for a hardcoded door count (task-23), so the denominators are arguments here.
+ */
+function counters(anchors, derived, guideCounts) {
+  var streetTotal = 0, doorTotal = 0, streetDone = 0, doorDone = 0;
+  for (var i = 0; i < anchors.length; i += 1) {
+    var a = anchors[i];
+    if (a.kind === 'place') { streetTotal += 1; if (derived[a.id]) streetDone += 1; }
+    else { doorTotal += 1; if (derived[a.id]) doorDone += 1; }
+  }
+  return {
+    streetDone: streetDone, streetTotal: streetTotal,
+    doorDone: doorDone, doorTotal: doorTotal,
+    outsideTotal: guideCounts.placeTotal - guideCounts.placeInWindow,
+  };
+}
+
 export {
   openDoor, placeholderDoors, measuredDoors,
+  nextAnchor, anchorDist, isVisible, signedMetres, statusReadout, counters,
   PLACEHOLDER_TEXT, PLACEHOLDER_NOTE_ZH,
   SURFACE_MEASURED, SURFACE_UNMODELLED,
 };

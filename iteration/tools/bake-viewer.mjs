@@ -82,7 +82,7 @@ const OUT_DIR = (() => {
 })();
 const OUT = join(OUT_DIR, 'index.html');
 
-const { worldGrid, GRID, ORIGIN } = await import(
+const { worldGrid, GRID, ORIGIN, quantizeToSubTile, locateSubTile } = await import(
   new URL('../../docs/handOff/dsh-bundle-tourguide-2.5d/tools/world-grid.mjs', import.meta.url).href
 );
 
@@ -250,7 +250,94 @@ const payload = {
     // only what the overlay needs, so the page cannot become a second export
     stops: guide.stops.map((s) => ({ seq: s.seq, placeId: s.placeId, nameJa: s.nameJa, nameZh: s.nameZh, alongStreetM: s.alongStreetM })),
   },
+  anchors: ANCHORS,
+  /**
+   * THE TWO VARIANTS. V-A is bare (no instructional text at all), V-B adds a keymap
+   * that says ONLY which keys move — no goal, no colour legend. They exist to separate
+   * the third cause of "nothing happens": the keys may simply not be discoverable. A
+   * keymap that also explained the goal would confound that, so it does not.
+   */
+  variants: {
+    'V-A': { id: 'V-A', label: 'bare', keymap: false, instructionalText: [] },
+    'V-B': { id: 'V-B', label: 'keymap', keymap: true, instructionalText: ['keymap: arrows or WASD move · E opens the door you stand at'] },
+  },
+  defaultVariant: 'V-A',
 };
+
+/* ------------------------------------------------------------------ *
+ * THE ANCHORS — the pure-function target set for `next` (play-systems.md §1.7)
+ *
+ * `anchors := guide.json's inSceneWindow records ∪ doors.json's doorways`, each with a
+ * real name, a cell, per-field provenance and a source. Nothing here is invented: the
+ * name and its valueKind come from guide.json's cells, the source URL from the same
+ * cell, and the CELL is computed by the contract's own quantiser — quantizeToSubTile +
+ * locateSubTile — NOT by rounding.
+ *
+ * That last point is a correction worth recording: `cellX = round(alongStreetM)` looked
+ * obvious and DISAGREED with guide.json on 3 of its 4 recorded tiles (e.g. 四条河原町
+ * バス停D: round gives row 16, the contract's quantiser gives row 15). The quantiser
+ * reproduced all four exactly. A second, plausible-looking conversion was wrong.
+ * ------------------------------------------------------------------ */
+function cellOf(alongStreetM, acrossStreetM) {
+  const sub = quantizeToSubTile(alongStreetM, acrossStreetM);
+  const at = locateSubTile(sub.subX, sub.subY);
+  return { cellX: at.tileX, cellY: at.row, subX: sub.subX, subY: sub.subY, inWindow: at.inWindow };
+}
+
+const placeByAnchorId = new Map();
+for (const p of placesFile) placeByAnchorId.set(p.id, p);
+
+function cellsFromGuideRow(r) {
+  const all = [...(r.verified || []), ...(r.otherKinds || [])];
+  const nameCell = all.find((c) => c.field === r.nameFieldUsed) || all.find((c) => c.field === 'nameJa') || null;
+  return {
+    nameFieldKind: nameCell ? nameCell.valueKind : null,
+    sourceUrl: nameCell ? nameCell.sourceUrl : null,
+    verifiedFields: (r.verified || []).map((c) => ({ field: c.field, value: c.value, valueKind: c.valueKind, sourceUrl: c.sourceUrl })),
+  };
+}
+
+const ANCHORS = [];
+for (const r of [...guide.stops, ...guide.nearby]) {
+  if (!r.inSceneWindow) continue;
+  const p = placeByAnchorId.get(r.placeId) || null;
+  const c = cellOf(r.alongStreetM, r.acrossStreetM);
+  const cells = cellsFromGuideRow(r);
+  ANCHORS.push({
+    kind: 'place',
+    id: r.placeId,
+    nameJa: r.nameJa,
+    nameZh: r.nameZh || null,
+    alongStreetM: r.alongStreetM,
+    acrossStreetM: r.acrossStreetM,
+    cellX: c.cellX,
+    cellY: c.cellY,
+    nameFieldKind: cells.nameFieldKind,
+    verifiedFields: cells.verifiedFields,
+    sourceUrl: cells.sourceUrl || (p ? p.source_url : null),
+    verifiedAt: p ? p.verified_at : null,
+  });
+}
+for (const d of doorMarkers) {
+  ANCHORS.push({
+    kind: 'doorway',
+    id: d.doorId,
+    nameJa: d.placeNameJa || d.doorId,
+    nameZh: null,
+    alongStreetM: d.cellX,
+    acrossStreetM: d.cellY - GRID.halfCrossTiles,
+    cellX: d.cellX,
+    cellY: d.cellY,
+    nameFieldKind: 'authored',
+    verifiedFields: [],
+    sourceUrl: null,
+    verifiedAt: null,
+    surface: d.surface,
+    openable: d.openable,
+  });
+}
+// deterministic order, so `next`'s tie-break is reproducible rather than incidental
+ANCHORS.sort((a, b) => (a.alongStreetM - b.alongStreetM) || (a.id < b.id ? -1 : 1));
 
 /* ------------------------------------------------------------------ *
  * The page. Plain HTML + one classic <script>. No imports, no fetch.
