@@ -70,6 +70,7 @@ const {
   ORIGIN, PROJECTION, worldGrid, GRID, VALUE_KIND, VALUE_KINDS, WORLD_UNITS,
   GUIDE_VERIFIED_COLUMN_ALLOWED, isValueKind, mayAppearInGuideVerifiedColumn,
   quantizeToSubTile, tileFromSub, projectMicroDeg, LANES_QUALITY,
+  DOOR_TYPES, isDoorType,
 } = WGEO;
 
 /** One canonical 1/16 sub-tile in metres (0.0625 m), derived from the import. */
@@ -771,11 +772,16 @@ const CARRIED_FIELDS = Object.freeze([
 ]);
 /** Carried fields that live at the TOP LEVEL of the ODbL half, not on a door record. */
 const TOP_LEVEL_CARRIED = Object.freeze(['facades', 'observedBlockFeatures', 'unusedSourceCandidates']);
-/** Our own content: the complete, closed key set of one door record. */
+/** Our own content: the complete, closed key set of one door record.
+ *  `doorType` joined this list in task-19; `doorTypeSource` is the ONE optional
+ *  member, permitted only on a door that is actually classified (see V22). Keeping
+ *  the set closed is what makes adding a field a review event. */
 const OWN_DOOR_KEYS = Object.freeze([
-  'doorId', 'cellX', 'cellY', 'tileY', 'entrancePointJa', 'interiorTemplate',
-  'provenance', 'osmRecord',
+  'doorId', 'cellX', 'cellY', 'tileY', 'entrancePointJa', 'doorType',
+  'interiorTemplate', 'provenance', 'osmRecord',
 ]);
+/** The one optional door key, and the condition under which it is legal. */
+const OPTIONAL_DOOR_KEYS = Object.freeze(['doorTypeSource']);
 /** Closed inventory of top-level sections. A new section is a review event.
  *  unusedSourceCandidates left this list in task-9, when it moved to the ODbL half. */
 const TOP_LEVEL_SECTIONS = Object.freeze([
@@ -936,15 +942,19 @@ const DECLARED_VALUE_CENSUS = Object.freeze({
   const problems = [];
   const raw = doorsDoc.doors;
 
-  // (a) every door record has exactly our own keys -- no more, no fewer
+  // (a) every door record has exactly our own keys, plus at most a declared optional
+  //     key. The set stays closed so that adding a FIELD is a review event -- that is
+  //     the property task-19 needed when it added doorType. DoorType SEMANTICS are
+  //     V22's job, not this one: this checks shape only.
   for (const d of raw) {
     const keys = Object.keys(d).sort();
     const want = [...OWN_DOOR_KEYS].sort();
-    if (keys.join() !== want.join()) {
-      const extra = keys.filter((k) => !want.includes(k));
-      const missing = want.filter((k) => !keys.includes(k));
+    const extra = keys.filter((k) => !want.includes(k));
+    const undeclared = extra.filter((k) => !OPTIONAL_DOOR_KEYS.includes(k));
+    const missing = want.filter((k) => !keys.includes(k));
+    if (undeclared.length || missing.length) {
       problems.push(`${d.doorId}: key set differs` +
-        `${extra.length ? ` -- EXTRA [${extra.join(', ')}]` : ''}${missing.length ? ` -- missing [${missing.join(', ')}]` : ''}`);
+        `${undeclared.length ? ` -- EXTRA [${undeclared.join(', ')}]` : ''}${missing.length ? ` -- missing [${missing.join(', ')}]` : ''}`);
     }
   }
 
@@ -1253,9 +1263,97 @@ const DECLARED_BLOCKERS = [];
 }
 
 /* ------------------------------------------------------------------ *
+ * V22 — every door declares a doorType, from the IMPORTED vocabulary
+ *
+ * The user ruled (D-24, task-19): the first version does NOT classify doors, but the
+ * structure must exist so that a later classification pass is an EDIT rather than a
+ * MIGRATION. Twelve doors all reading `entrancePointJa: "本門"` is not "unclassified",
+ * it is having nowhere to put a classification.
+ *
+ * `unclassified` is a FINISHED STATE, not a gap. This assertion is what makes that
+ * distinction mechanical rather than a promise: the field must be PRESENT on every
+ * door, so "not classified" cannot decay into "field quietly dropped".
+ *
+ * Three guards, and the third is the one that matters most:
+ *   (1) present on every door            -- structure exists;
+ *   (2) value is a member of DOOR_TYPES  -- imported, never copied (D-12);
+ *   (3) DOOR_TYPES is exactly the v1 set -- so EXTENDING the vocabulary turns this
+ *       RED until the pin and the model doc are updated together. Without (3), adding
+ *       a member silently widens what a door may claim, and the classification rules
+ *       in iteration/design/door-type-model.md would drift away from the code.
+ *   (4) a classified door must carry doorTypeSource -- vacuous in v1, live the first
+ *       time anyone classifies anything, and the reason a type cannot be invented.
+ * ------------------------------------------------------------------ */
+{
+  /** The v1 vocabulary, pinned EXACTLY. This is not a copy of the enum -- the enum is
+   *  imported above. It is the EXPECTATION, and pinning it is what converts "someone
+   *  extended the vocabulary" from a silent change into a red assertion. */
+  const DECLARED_V1_DOOR_TYPES = Object.freeze(['unclassified']);
+  /** The neutral member: the name of the state "this version does not decide".
+   *  This is a sentinel the guard has to recognise, not a copy of the value set --
+   *  the set itself is DOOR_TYPES, imported. If the neutral member is ever renamed,
+   *  guard (3) fails first and points here. */
+  const NEUTRAL_DOOR_TYPE = 'unclassified';
+
+  const problems = [];
+
+  // (1) the field is PRESENT on every door
+  for (const d of doorsDoc.doors) {
+    if (!Object.prototype.hasOwnProperty.call(d, 'doorType')) {
+      problems.push(`${d.doorId}: carries no doorType field -- "not classified" must be a value, not an absent key`);
+    }
+  }
+
+  // (2) every value is a member of the LIVE imported vocabulary
+  for (const d of doorsDoc.doors) {
+    if (d.doorType !== undefined && !isDoorType(d.doorType)) {
+      problems.push(`${d.doorId}: doorType ${JSON.stringify(d.doorType)} is not in DOOR_TYPES [${DOOR_TYPES.join(', ')}]`);
+    }
+  }
+
+  // (3) the imported vocabulary is exactly what v1 declared
+  const setMatches = JSON.stringify([...DOOR_TYPES]) === JSON.stringify([...DECLARED_V1_DOOR_TYPES]);
+  if (!setMatches) {
+    problems.push(`DOOR_TYPES is now [${DOOR_TYPES.join(', ')}] but v1 declared [${DECLARED_V1_DOOR_TYPES.join(', ')}] -- ` +
+      `extend DECLARED_V1_DOOR_TYPES here AND the classification rules in iteration/design/door-type-model.md in the same commit`);
+  }
+
+  // (4) a classified door must say where the classification came from; and a source
+  //     on an unclassified door is a dangling pointer
+  for (const d of doorsDoc.doors) {
+    const classified = d.doorType !== undefined && d.doorType !== NEUTRAL_DOOR_TYPE;
+    const src = d.doorTypeSource;
+    if (classified) {
+      const ok = src && typeof src === 'object' && typeof src.url === 'string' && src.url.trim() !== ''
+        && typeof src.verifiedAt === 'string' && src.verifiedAt.trim() !== '';
+      if (!ok) {
+        problems.push(`${d.doorId}: doorType ${JSON.stringify(d.doorType)} with no doorTypeSource {url, verifiedAt} -- ` +
+          `a classification must point at a source; without one it is an invented claim`);
+      }
+    } else if (src !== undefined) {
+      problems.push(`${d.doorId}: carries doorTypeSource but is ${JSON.stringify(d.doorType)} -- a source for a classification that was not made is a dangling pointer`);
+    }
+  }
+
+  const counts = {};
+  for (const d of doorsDoc.doors) counts[d.doorType] = (counts[d.doorType] || 0) + 1;
+  const classifiedCount = doorsDoc.doors.filter((d) => d.doorType !== undefined && d.doorType !== NEUTRAL_DOOR_TYPE).length;
+
+  check('V22', 'every door declares a doorType from the imported vocabulary',
+    problems.length === 0,
+    `${doorsDoc.doors.length} doors, all carrying doorType: ${JSON.stringify(counts)}; ` +
+    `vocabulary imported from world-grid.mjs = [${DOOR_TYPES.join(', ')}], ` +
+    `pinned here as the v1 set = [${DECLARED_V1_DOOR_TYPES.join(', ')}], match=${setMatches}` +
+    (setMatches ? '' : ' -- extending the vocabulary is a review event, see the note above') +
+    `; classified doors=${classifiedCount} (v1 classifies nothing, so 0 is the finished state, not a shortfall); ` +
+    `no door carries a doorTypeSource while unclassified; ` +
+    `problems=${problems.length}${problems.length ? ' -> ' + problems.join('; ') : ''}`);
+}
+
+/* ------------------------------------------------------------------ *
  * guard — an assertion may not be silently deleted to make the run green
  * ------------------------------------------------------------------ */
-const MIN_ASSERTIONS = 21;
+const MIN_ASSERTIONS = 22;
 {
   check('V20', `at least ${MIN_ASSERTIONS} assertions exist`,
     results.length + 1 >= MIN_ASSERTIONS,

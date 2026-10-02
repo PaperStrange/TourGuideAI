@@ -303,6 +303,50 @@ export function mayAppearInGuideVerifiedColumn(kind) {
 }
 
 /**
+ * WHAT KIND OF OPENING A DOOR IS — a frozen vocabulary with exactly one definition
+ * point. `doors.json` stores a `doorType` per door and IMPORTS this list; it does
+ * not copy it, for the same reason VALUE_KINDS is not copied (D-12: a mirrored copy
+ * drifts, an import does not).
+ *
+ * v1 IS `unclassified` AND NOTHING ELSE. The user ruled (D-24, shared task task-19):
+ * the first version does not classify doors, but the structure has to exist so that a
+ * later pass is an EDIT rather than a MIGRATION. Those are different things — twelve
+ * doors all reading `entrancePointJa: "本門"` is not "unclassified", it is having
+ * nowhere to put a classification, and it would force a data migration the first time
+ * anyone wants to classify anything. Migrations are what this repo keeps paying for.
+ *
+ * `unclassified` IS A FINISHED STATE, NOT A GAP. It records "v1 does not decide this",
+ * which is true and checkable. An omitted field records nothing.
+ *
+ * NOTE WHAT THIS VOCABULARY IS NOT: it is structural, not provenance. A doorType does
+ * not say whether anyone read a source — that is VALUE_KIND's job — so this does not
+ * touch VALUE_KINDS and does not touch the guide's verified column. A door stays
+ * `authored` and stays out of that column whatever its type turns out to be.
+ *
+ * ADDING A MEMBER IS A DELIBERATE ACT, and deliberately hard to do silently:
+ * validate-doors.mjs pins the v1 set exactly, so extending this array turns that
+ * assertion RED until someone updates the pin AND the model document
+ * (iteration/design/door-type-model.md), where the classification rules, the candidate
+ * members and the material-attribute mounting point are registered. Adding a class must
+ * go through THIS array; no consumer may keep its own list.
+ *
+ * A value other than `unclassified` additionally requires a source: the door assertion
+ * refuses a classified door that cannot point at where the classification came from.
+ * That rule is vacuous in v1 and becomes live the moment anyone tries to use it.
+ *
+ * THIS ARRAY IS DELIBERATELY ABSENT FROM contractFingerprint()'s list below. The
+ * vocabulary is content-side, and scene.bin's `openings` layer is type-independent
+ * today, so growing the vocabulary must not invalidate every baked scene. If the scene
+ * ever renders per-type geometry, DOOR_TYPES must join that list — and that will
+ * correctly force a re-bake of every scene.
+ */
+export const DOOR_TYPES = Object.freeze(['unclassified']);
+
+export function isDoorType(v) {
+  return typeof v === 'string' && DOOR_TYPES.includes(v);
+}
+
+/**
  * `lanes` on 四条通 is self-contradictory and MAY NOT BE USED AS A FACT until a
  * human checks it once. Measured segments (design-core section 8.2.1 (1)c):
  *

@@ -112,11 +112,20 @@
     }
   },
   "contentFieldsRule": {
-    "note": "entrancePointJa and interiorTemplate are NOT facts. They are authored content decisions, which is why their valueKind is `authored` and not `observed`. The rules behind them are stated here so a consumer can disagree with the rule rather than guess at it.",
+    "note": "entrancePointJa, doorType and interiorTemplate are NOT facts. They are authored content decisions, which is why their valueKind is `authored` and not `observed`. The rules behind them are stated here so a consumer can disagree with the rule rather than guess at it.",
     "provenanceClass": {
       "whyAuthored": "All 12 doors carry provenance.valueKind = authored, and so do the four placement-derived fields (cellX, cellY, entrancePointJa, interiorTemplate). A human READ the building identity and the facade line off OSM, so those two fields stay `observed`. Nobody read 'there is a doorway at x m' off any source: the doorway position is a placement this project made along a measured facade. Before VALUE_KIND gained `authored` these rows said `licenced`, which is the vocabulary for licence-derived defaults such as a road-width template -- the wrong class, and the file contradicted itself by saying `authored: true` in prose while the field said `licenced`. `authored` is the truthful member.",
       "whyItChangesNothingDownstream": "`authored` does NOT reach the guide's verified column. GUIDE_VERIFIED_COLUMN_ALLOWED is still exactly ['observed'], so re-labelling licenced -> authored moved no door into the verified column and moved none out of it. Every door still carries guideVerifiedColumnAllowed: false, which is why re-labelling is a provenance correction and not a product change. world-grid.mjs assertion A9b asserts that the gate did not widen when the fourth member was added.",
-      "cannotDriftAgain": "validate-doors.mjs imports VALUE_KINDS from world-grid.mjs and asserts this file's embedded frozenConstants mirror equals it (assertion V1). That is what caught this drift: the mirror was written before `authored` existed, and V1 went red the moment the contract changed rather than waiting for a human to notice."
+      "cannotDriftAgain": "Two assertions, guarding opposite directions, and readers should not confuse them. V1 (in validate-doors.mjs) forbids this file from carrying a copy of any contract literal at all -- it scans for contract-mirror key names and high-entropy contract values, and it fails if one reappears. V8 checks every declared valueKind against the LIVE imported enum, so an incompatible kind is still noticed even though no copy is stored. The two together are what removed the drift: before task-15 this file held a mirrored enum and went red when the contract grew; now it holds none and follows the import."
+    },
+    "doorType": {
+      "rule": "Every door carries doorType, and in v1 every door's value is `unclassified`.",
+      "whyTheFieldExistsWhenTheValueIsAlwaysTheSame": "Because twelve doors all reading the same entrancePointJa is not 'unclassified' -- it is having nowhere to put a classification. The user ruled (D-24, shared task task-19) that v1 does not classify doors but that the structure must exist, so that the first classification pass is an EDIT rather than a MIGRATION. Those are different things, and migrations are what this repo keeps paying for (D-12 / D-23 / D-36 / D-44).",
+      "unclassifiedIsAFinishedState": "It is not a gap waiting to be filled and it is not 'unknown'. It records a decision this version made: v1 does not decide the type. A gap is recorded in `gaps`; this is a value. `unclassified` is the correct, complete state for v1.",
+      "whereTheLegalValueSetLives": "world-grid.mjs, exported as DOOR_TYPES and imported by validate-doors.mjs. This file deliberately carries NO copy of the set -- not as a value, not as a list, not as prose enumerating the members -- because a mirrored copy drifts and an import does not (D-12). v1's set is exactly ['unclassified'].",
+      "whyNothingIsClassifiedYet": "A type is a claim about what is behind a door, and this project does not print claims it cannot point at a source for. Textual sources DO exist and are enumerated in iteration/recon/door-identity-from-text-sources.md -- the north building's 1F tenant list, the south building's 1F list, and a subway exit the tenant page names. But a tenant list says which entities exist on a floor; it does NOT say which doorway each one uses. So those sources ground the COUNT of doors (tasks D2/D3) without grounding any individual door's TYPE. Classifying from them would be inventing the join between a tenant and a door.",
+      "whereTheFuturePathIsRegistered": "iteration/design/door-type-model.md registers the candidate members, the material-attribute mounting point the user named, the interior-template derivation question, and the rule that a new class must go through DOOR_TYPES rather than being carried by each consumer. That document is the extension point; this file is not.",
+      "addingAClass": "Extend DOOR_TYPES in world-grid.mjs. validate-doors.mjs pins the v1 set exactly, so extending it turns the door assertion RED until the pin and iteration/design/door-type-model.md are updated in the same commit -- the extension is a review event, not a silent change. A door whose doorType is anything other than `unclassified` must also carry doorTypeSource, so a classification cannot be recorded without saying where it came from; that guard is vacuous in v1 and becomes live the moment anyone classifies a door."
     },
     "entrancePointJa": {
       "rule": "Every door is on the 四条通 street frontage, so every door is 本門.",
@@ -127,7 +136,7 @@
     "interiorTemplate": {
       "rule": "One template per storefront module. S 10×7 for the 11 plain modules; M 13×9 for the single module that contains a sourced occupant (D-S1, whose module holds OSM node 14196400744, 三菱ＵＦＪ銀行 京都支店). L 16×10 is not used: no source in this block supports a large interior.",
       "whyTheTemplatesDoNotNeedToFit": "They cannot fit, and that is informative rather than a defect. The smallest template is 10 m wide; the storefront modules are 3.354 m and 3.633 m. So a template is about 3x wider than the frontage it belongs to, and it cannot be a volume carved out of the ground-plane block. The interiors must therefore be separate scenes entered through the doorway -- which is what design-core section 2.4 describes (the 如龙 神室町 precedent: 'one wall and one staircase away is a completely different scene'), and contract section 9 excludes vertical proportion from the geo contract for the same reason.",
-      "recordedForTheLevelDesigner": "If interiors ARE ever required to nest inside the single-block-deep ground plane, the numbers that forbid it are: usable depth behind the north facade inside the block is 20.0 - 13.646 = 6.354 m (less than even S's 7 m), and behind the south facade it is 20.0 - 10.983 = 9.017 m (less than L's 10 m). Both were measured from the facade geometry in this file, not assumed."
+      "recordedForTheLevelDesigner": "If interiors ARE ever required to nest inside the single-block-deep ground plane, the numbers that forbid it are, under the task-16 datum: usable depth behind the north facade is 20.0 - 4.660 = 15.34 m at the west end and 20.0 - 4.722 = 15.28 m at the east end, which is actually ENOUGH for every template; and behind the SOUTH facade it is -19.969 - (-20) = 0.031 m at the west end and -19.747 - (-20) = 0.253 m at the east end, which is enough for nothing. The datum move is what produced that asymmetry: centring the corridor on the street pushed the south facade to within 31 mm of the world's southern edge. So the binding constraint is no longer 'no template fits' as this note said before task-16; it is 'nothing fits behind the south doors, and everything fits behind the north ones'. Both figures are measured from the facade geometry in this file, not assumed. This does not block anything today, because the interiors are separate scenes -- see whyTheTemplatesDoNotNeedToFit."
     }
   },
   "doors": [
@@ -137,6 +146,7 @@
       "cellY": 24,
       "tileY": 4,
       "entrancePointJa": "本門",
+      "doorType": "unclassified",
       "interiorTemplate": "S 10×7",
       "provenance": {
         "valueKind": "authored",
@@ -162,6 +172,7 @@
       "cellY": 24,
       "tileY": 4,
       "entrancePointJa": "本門",
+      "doorType": "unclassified",
       "interiorTemplate": "S 10×7",
       "provenance": {
         "valueKind": "authored",
@@ -187,6 +198,7 @@
       "cellY": 24,
       "tileY": 4,
       "entrancePointJa": "本門",
+      "doorType": "unclassified",
       "interiorTemplate": "S 10×7",
       "provenance": {
         "valueKind": "authored",
@@ -212,6 +224,7 @@
       "cellY": 24,
       "tileY": 4,
       "entrancePointJa": "本門",
+      "doorType": "unclassified",
       "interiorTemplate": "S 10×7",
       "provenance": {
         "valueKind": "authored",
@@ -237,6 +250,7 @@
       "cellY": 24,
       "tileY": 4,
       "entrancePointJa": "本門",
+      "doorType": "unclassified",
       "interiorTemplate": "S 10×7",
       "provenance": {
         "valueKind": "authored",
@@ -262,6 +276,7 @@
       "cellY": 24,
       "tileY": 4,
       "entrancePointJa": "本門",
+      "doorType": "unclassified",
       "interiorTemplate": "S 10×7",
       "provenance": {
         "valueKind": "authored",
@@ -287,6 +302,7 @@
       "cellY": 24,
       "tileY": 4,
       "entrancePointJa": "本門",
+      "doorType": "unclassified",
       "interiorTemplate": "S 10×7",
       "provenance": {
         "valueKind": "authored",
@@ -312,6 +328,7 @@
       "cellY": 0,
       "tileY": -20,
       "entrancePointJa": "本門",
+      "doorType": "unclassified",
       "interiorTemplate": "M 13×9",
       "provenance": {
         "valueKind": "authored",
@@ -337,6 +354,7 @@
       "cellY": 0,
       "tileY": -20,
       "entrancePointJa": "本門",
+      "doorType": "unclassified",
       "interiorTemplate": "S 10×7",
       "provenance": {
         "valueKind": "authored",
@@ -362,6 +380,7 @@
       "cellY": 0,
       "tileY": -20,
       "entrancePointJa": "本門",
+      "doorType": "unclassified",
       "interiorTemplate": "S 10×7",
       "provenance": {
         "valueKind": "authored",
@@ -387,6 +406,7 @@
       "cellY": 0,
       "tileY": -20,
       "entrancePointJa": "本門",
+      "doorType": "unclassified",
       "interiorTemplate": "S 10×7",
       "provenance": {
         "valueKind": "authored",
@@ -412,6 +432,7 @@
       "cellY": 0,
       "tileY": -20,
       "entrancePointJa": "本門",
+      "doorType": "unclassified",
       "interiorTemplate": "S 10×7",
       "provenance": {
         "valueKind": "authored",
