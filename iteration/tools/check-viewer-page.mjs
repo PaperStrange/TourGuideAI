@@ -30,6 +30,10 @@
  * USAGE
  *   node iteration/tools/check-viewer-page.mjs
  *   node iteration/tools/check-viewer-page.mjs --json
+ *   node iteration/tools/check-viewer-page.mjs --page <path>   FIRE DRILL: check an
+ *       ALTERNATE baked page, so an assertion whose expectation is a count can be shown
+ *       to FOLLOW its input rather than redden. Same shape as
+ *       `check-viewer.mjs --doors` and `validate-doors.mjs --doors`.
  *
  * Exit codes: 0 = all pass, 1 = an assertion failed, 2 = environment.
  */
@@ -39,7 +43,12 @@ import { join, resolve } from 'node:path';
 import vm from 'node:vm';
 
 const REPO = resolve(import.meta.dirname, '..', '..');
-const PAGE = join(REPO, 'iteration', 'viewer', 'index.html');
+const PAGE = (() => {
+  const i = process.argv.indexOf('--page');
+  return i >= 0 && process.argv[i + 1]
+    ? resolve(process.argv[i + 1])
+    : join(REPO, 'iteration', 'viewer', 'index.html');
+})();
 const SCENE = join(REPO, 'build', 'scene.bin');
 
 class EnvError extends Error {}
@@ -150,21 +159,36 @@ function main() {
   /* ---- which layers a page can actually READ is a real limit ----------- *
    * layers.json (2.2 MB raw) is not realistic to inline four times over; base64
    * costs 33%. This records the honest cost of the choice, not a wish.
+   *
+   * EXPECTATIONS ARE DERIVED, NOT LITERAL. This check used to read
+   * `rawBytes === 64000 * 3 + 1600`, i.e. the four-layer layout written out as
+   * arithmetic; when the scene gained the `openings` layer it reddened a check
+   * that had nothing to say about whether the page was correct. The expected total
+   * now comes from the payload's OWN declared byte lengths — the same input the
+   * check is validating.
    */
   const payloadMatch = html.match(/<script id="__TG_SCENE__"[^>]*>([\s\S]*?)<\/script>/);
   const payload = payloadMatch ? JSON.parse(payloadMatch[1]) : null;
+  const declaredLengths = payload && payload.layers ? payload.layers.byteLengths : {};
+  const layerNames = Object.keys(declaredLengths);
+  const grid = payload ? payload.scene.grid : null;
+  const n = grid ? grid.wTiles * grid.hTiles : 0;
+  // every layer is either a full grid layer or the one-per-column occlusion layer
+  const expectedTotal = layerNames.reduce((a, k) => a + declaredLengths[k], 0);
+  const everyLengthPlausible = layerNames.length > 0 && layerNames.every((k) => (
+    declaredLengths[k] === n || declaredLengths[k] === (grid ? grid.wTiles : -1)
+  ));
   const b64Bytes = payload
-    ? ['ground', 'collision', 'heights', 'occlusionHalf'].reduce((a, k) => a + payload.layers[k].length, 0)
+    ? layerNames.reduce((a, k) => a + payload.layers[k].length, 0)
     : 0;
-  const rawBytes = payload
-    ? Object.values(payload.layers.byteLengths).reduce((a, b) => a + b, 0)
-    : 0;
+  const rawBytes = payload ? expectedTotal : 0;
   check(
     'P0',
-    'the page carries the four layers, and the base64 cost is recorded rather than hidden',
-    Boolean(payload) && rawBytes === 64000 * 3 + 1600,
-    `${rawBytes} raw layer bytes -> ${b64Bytes} base64 chars (+${((b64Bytes / rawBytes - 1) * 100).toFixed(1)}%), ` +
-      `page ${html.length} B total`,
+    `the page carries every layer the scene declares (${layerNames.length}), and the base64 cost is recorded rather than hidden`,
+    Boolean(payload) && everyLengthPlausible && rawBytes > 0,
+    `${layerNames.length} layer(s) ${JSON.stringify(layerNames)} · declared byte lengths ` +
+      `${JSON.stringify(declaredLengths)} · ${rawBytes} raw -> ${b64Bytes} base64 chars ` +
+      `(+${rawBytes ? ((b64Bytes / rawBytes - 1) * 100).toFixed(1) : '?'}%), page ${html.length} B total`,
   );
 
   /* ---- extract the page's code block and run it ------------------------ */
@@ -245,31 +269,156 @@ function main() {
       `and the tile above it is blocked=${blockedAbove}`,
   );
 
-  /* ---- the page's own summary agrees with the page's own data ---------- */
+  /* ---- the page's own summary agrees with the page's own data ---------- *
+   * THE EXPECTATIONS ARE THE PAYLOAD'S OWN NUMBERS, NOT LITERALS.
+   *
+   * This check used to read `payload.doors.length === 10 && dReachable === 10 &&
+   * dEnterable === 7`, and before that `=== 12` / `=== 7`. Every one of those is the
+   * same defect: an expectation that is a constant rather than a comparison against
+   * the input being validated. §3a moved the door count 12 -> 10 and reddened a check
+   * with nothing to say about whether the page was correct. The counts below are now
+   * derived from the payload, and the assertion is that the page's PRINTED numbers
+   * equal the payload's numbers — which is what P5 was always reaching for.
+   */
   const leg = elements['legend'] ? elements['legend'].innerHTML : '';
-  // P5 used to require `payload.doors.every((d) => d.reachable && d.inWall)`, and that criterion
-  // expired with D-43: an enterable door now opens into a room, so it has no blocked neighbour and
-  // `inWall` is FALSE for all seven working doors. The page itself computes reachable and enterable
-  // from its own payload and prints both, so the honest assertion is that the three NUMBERS the page
-  // prints equal the three numbers in the payload it printed them from -- rather than that the page
-  // contains a substring such as "12", which a broken page would contain just as readily.
   const dReachable = payload.doors.filter((d) => d.reachable).length;
   const dEnterable = payload.doors.filter((d) => d.enterable).length;
+  const doorCount = payload.doors.length;
   const doorsOk =
-    payload.doors.length === 10 &&
-    dReachable === 10 &&
-    dEnterable === 7 &&
+    doorCount > 0 &&
     leg.includes(`reached x=${payload.walk.reachedX}`) &&
-    leg.includes(`${dReachable} of ${payload.doors.length} reachable`) &&
-    leg.includes(`${dEnterable} of ${payload.doors.length} enterable`);
+    leg.includes(`${dReachable} of ${doorCount} reachable`) &&
+    leg.includes(`${dEnterable} of ${doorCount} enterable`);
   check(
     'P5',
-    "the page's printed summary equals the payload it printed it from (walk, reachable and enterable counts)",
+    `the page's printed summary equals the payload it printed it from (${doorCount} doors)`,
     doorsOk,
-    `legend says reached x=${payload.walk.reachedX}, ${dReachable} of ${payload.doors.length} reachable, ` +
-      `${dEnterable} of ${payload.doors.length} enterable; payload: ${dReachable} reachable, ${dEnterable} enterable, ` +
-      `inWall ${payload.doors.filter((d) => d.inWall).length}/10 -- false for an enterable door by design (D-43)`,
+    `legend says reached x=${payload.walk.reachedX}, ${dReachable} of ${doorCount} reachable, ` +
+      `${dEnterable} of ${doorCount} enterable; payload: ${dReachable} reachable, ${dEnterable} enterable · ` +
+      `both numbers compared against the payload's own door list, not against a literal`,
   );
+
+  /* ---- the interaction, driven through the PAGE's own handler ---------- *
+   * The card's third deliverable is that triggering a south door shows the
+   * placeholder rather than doing nothing. `"Nothing happens" is the worst outcome,
+   * because the player concludes the game is broken.` So the page's OWN
+   * `openNearestDoor()` runs here, through the same DOM stub, and the panel it
+   * renders is read back.
+   */
+  const panel = elements['panel'] ? elements['panel'].innerHTML : '';
+  {
+    const contract = payload.openerContract;
+    const unmodelled = contract.openable.filter((d) => d.surface === 'unmodelled-interior');
+    const measured = contract.openable.filter((d) => d.surface === 'measured-interior');
+    const placeholder = (payload.doors.find((d) => d.interaction && d.interaction.placeholder) || {}).interaction;
+
+    // stand on a south door and press E
+    const southDoor = payload.doors.find((d) => d.surface === 'unmodelled-interior');
+    let southPanel = '';
+    let southOutcome = null;
+    if (southDoor && typeof TG.openNearestDoor === 'function') {
+      TG.walker.x = southDoor.cellX;
+      TG.walker.row = southDoor.cellY;
+      TG.openNearestDoor();
+      southOutcome = TG.lastInteraction();
+      southPanel = elements['panel'] ? elements['panel'].innerHTML : '';
+    } else if (southDoor) {
+      // the page may not expose openNearestDoor; fall back to the door marker's own
+      // pre-resolved interaction, which the baker computed with the same body
+      southOutcome = southDoor.interaction;
+      southPanel = '';
+    }
+
+    // stand on a north door and press E
+    const northDoor = payload.doors.find((d) => d.surface === 'measured-interior');
+    let northPanel = '';
+    let northOutcome = null;
+    if (northDoor && typeof TG.openNearestDoor === 'function') {
+      TG.walker.x = northDoor.cellX;
+      TG.walker.row = northDoor.cellY;
+      TG.openNearestDoor();
+      northOutcome = TG.lastInteraction();
+      northPanel = elements['panel'] ? elements['panel'].innerHTML : '';
+    } else if (northDoor) {
+      northOutcome = northDoor.interaction;
+    }
+
+    const southShowsPlaceholder = Boolean(southOutcome) &&
+      southOutcome.placeholder === (placeholder ? placeholder.placeholder : '内容开发中') &&
+      southPanel.includes(southOutcome.placeholder);
+    const southDrawsNothing = Boolean(southOutcome) && southOutcome.drawRoom === false &&
+      !southPanel.includes('id="room"');
+    const northIsDifferent = Boolean(northOutcome) && northOutcome.kind === 'measured-interior' &&
+      northOutcome.placeholder === null && northOutcome.drawRoom === true &&
+      northPanel.includes('measured interior') && !northPanel.includes('内容开发中');
+
+    check(
+      'P8',
+      "opening a SOUTH door shows the placeholder in the page's own panel; opening a NORTH door does not",
+      southShowsPlaceholder && southDrawsNothing && northIsDifferent,
+      `${unmodelled.length} unmodelled / ${measured.length} measured doors · ` +
+        `south ${southDoor ? southDoor.doorId : '(none)'} -> kind ${southOutcome ? southOutcome.kind : '?'}, ` +
+        `placeholder ${JSON.stringify(southOutcome ? southOutcome.placeholder : null)}, drawRoom ${southOutcome ? southOutcome.drawRoom : '?'}, ` +
+        `panel shows it=${Boolean(southOutcome) && southPanel.includes(southOutcome.placeholder)}, no room canvas drawn=${southDrawsNothing} · ` +
+        `north ${northDoor ? northDoor.doorId : '(none)'} -> kind ${northOutcome ? northOutcome.kind : '?'}, ` +
+        `placeholder ${JSON.stringify(northOutcome ? northOutcome.placeholder : null)}, drawRoom ${northOutcome ? northOutcome.drawRoom : '?'}, ` +
+        `panel says "measured interior"=${northPanel.includes('measured interior')}, ` +
+        `panel carries the south placeholder=${northPanel.includes('内容开发中')} (must be false)`,
+    );
+
+    /* P8b — the page does not carry its own copy of the decision. If the baked
+       contract and the page's door markers disagreed, the page would show one thing
+       while the assertions checked another. */
+    const markerAgreesWithContract = payload.doors.every((d) => {
+      const c = contract.openable.find((o) => o.doorId === d.doorId);
+      if (!c) return false;
+      return d.surface === c.surface &&
+        d.interaction.kind === (c.surface === 'unmodelled-interior' ? 'unmodelled-interior' : 'measured-interior') &&
+        d.openable === c.openable;
+    });
+    check(
+      'P8b',
+      'every door marker on the page carries the surface kind the fact-layer declaration states',
+      markerAgreesWithContract,
+      payload.doors.map((d) => `${d.doorId}:${d.surface}`).join(' '),
+    );
+
+    /**
+     * P8c — ON THE PAGE, the placeholder is not something the layout can be mistaken for.
+     *
+     * The Lead's criterion is that a player with no background knowledge must not come
+     * away believing they saw the real interior. "Not misleadable" is not fully
+     * mechanisable, but two properties are:
+     *
+     *   1. the placeholder string appears EXACTLY ONCE in the page's executable source,
+     *      so it cannot drift between branches — and it appears in the payload at all,
+     *      so the page cannot be a version that forgot it;
+     *   2. the panel for an unmodelled door carries the placeholder and NO room canvas,
+     *      while the panel for a modelled door carries no placeholder.
+     *
+     * What this deliberately does NOT claim: that the WORDING is good. That is a design
+     * judgement, and it is reported rather than asserted.
+     */
+    const pageCode = code
+      .replace(/\/\*[\s\S]*?\*\//g, '')
+      .split('\n')
+      .filter((l) => !/^\s*(\/\/|\*)/.test(l))
+      .join('\n');
+    const pageLiteralUses = (pageCode.match(/内容开发中/g) || []).length;
+    const placeholderInPayload = (JSON.stringify(payload).match(/内容开发中/g) || []).length;
+    const unmodelledNoRoom = unmodelled.every((d) => {
+      const m = payload.doors.find((x) => x.doorId === d.doorId);
+      return m && m.interaction.placeholder !== null && m.interaction.drawRoom === false;
+    });
+    check(
+      'P8c',
+      'on the page, an unmodelled door is a placeholder and nothing room-shaped, and the string exists once in executable code',
+      pageLiteralUses === 1 && placeholderInPayload >= unmodelled.length && unmodelledNoRoom,
+      `executable occurrences of the placeholder in the page script=${pageLiteralUses} (must be 1) · ` +
+        `occurrences in the payload=${placeholderInPayload} (>= one per unmodelled door, ${unmodelled.length}) · ` +
+        `every unmodelled door has a placeholder and draws no room=${unmodelledNoRoom}`,
+    );
+  }
 
   /* ---- the guide overlay is the export, not a fresh invention ---------- */
   {

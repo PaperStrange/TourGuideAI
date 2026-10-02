@@ -9,6 +9,19 @@ This project is a 2.5D travel-simulation game whose output is **executed in the 
 
 That single fact is the source of every rule below. **A hallucinated place, a stale opening time, or a wrong fare is not a cosmetic bug — it strands a real person in a city where they do not speak the language.** The legacy version of this project failed precisely because it treated generated content as advice rather than as instruction.
 
+## Before you report anything as verified
+
+**六条，因为每一条都对应一次我实际犯过的错。**
+
+1. **引用来源就打开来源。** 不要引"我读过的文件里的某句"。要引**那一句**，回原始字节核**主谓**——我引 `★四条烏丸、交差点の角の立地。` 说"银行在街角"，而该句主语是**建物**、谓语是**立地**。
+2. **我算出来的中间值，先与独立来源交叉验证，再拿它当证据。** 我报过一个"三个互相矛盾的实测事实"，其中两个是我自己的算术（datum 平移减了两次）。
+3. **说"已落档"之前先查。** 我说三个错都记了，实际只记了一个。
+4. **"哪些文件要改"沿【数据流】走，不沿卡里提到的字段走。** 我漏了 `evidence/tools/block-doors.json`——它是 `attestations/` 的**上游**，只改下游会在下次构建被静默回退。
+5. **写进卡或文件的判据，必须是【能失败的】**，并**贴出它失败过的输出**。只见过通过的检查还没有被测试过——`gate-scene-read` 的 `R3` 把版本写成字面量，于是在容器换代后仍然通过。
+6. **不知道就说不知道。** 把假设写成事实是本项目最严重的失职；而"我以为我核过了"与"事实"之间没有中间地带。
+
+**而这六条的效力不在于被写下来。** 本项目自己已经证明四次：**写下教训不阻止它发生，接线才阻止。** 所以每条后面那句"我犯过"是必须的——**它把规则绑在一个具体的、可查的实例上，而不是一个抽象的告诫。**
+
 ## The iron rules
 
 1. **The game world IS the fact.** Places, hours, prices, transit, and travel times in the game must equal the real world's. The player's playthrough is the itinerary — the guide is a projection of it, not a separate generated artifact.

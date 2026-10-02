@@ -1,0 +1,181 @@
+{
+  "schema": "tourguide.opener-contract/v1",
+  "generatedBy": "iteration/tools/build-opener-fact.mjs",
+  "generatedFrom": {
+    "doors": "city-packs/kyoto-shijo/doors.json",
+    "places": "city-packs/kyoto-shijo/places.json",
+    "sceneProbe": "build/scene.bin",
+    "sceneSha256": "DDA21AF92ABD270AE219FF2E49A04698F7E370448E33627E0F2484F04EDDFCF8"
+  },
+  "surfaceKinds": {
+    "measured-interior": {
+      "realInteriorExists": true,
+      "modelled": true,
+      "playerFacingJa": "实际存在的店内（已建模）",
+      "interaction": "enter-measured"
+    },
+    "unmodelled-interior": {
+      "realInteriorExists": true,
+      "modelled": false,
+      "playerFacingJa": "实际存在的店（本版本未建模）",
+      "interaction": "placeholder",
+      "placeholderTextJa": "内容开发中",
+      "placeholderTextZh": "内容开发中",
+      "mustNot": [
+        "draw a room, lobby or wall that no source describes",
+        "present an unmodelled surface as if it were the real layout"
+      ]
+    }
+  },
+  "modelRule": "The emitted corridor is 40 m deep (worldGrid.hTiles), so the collision layer can only carry an interior that falls inside it. A north-side door opens into a modelled room; a south-side door opens onto a building that lies OUTSIDE that window, so the engine has no geometry for it at all. The shortfall is in the MODEL, not in the world: both shopfronts exist in reality, and doors.json records both as valueKind=authored.",
+  "counts": {
+    "doors": 10,
+    "openable": 10,
+    "bySurface": {
+      "measured-interior": 7,
+      "unmodelled-interior": 3
+    }
+  },
+  "openable": [
+    {
+      "doorId": "D-N1",
+      "cellX": 18,
+      "cellY": 24,
+      "side": "north",
+      "placeId": "kyoto-shijo-bldg-mitsui",
+      "placeNameJa": "京都三井ビルディング",
+      "source": "city-packs/kyoto-shijo/doors.json#D-N1 + places.json#kyoto-shijo-bldg-mitsui",
+      "openable": true,
+      "surface": "measured-interior",
+      "modelledInteriorRows": 3,
+      "modelledInteriorM": 3,
+      "ifUnmodelled": null
+    },
+    {
+      "doorId": "D-N2",
+      "cellX": 21,
+      "cellY": 24,
+      "side": "north",
+      "placeId": "kyoto-shijo-bldg-mitsui",
+      "placeNameJa": "京都三井ビルディング",
+      "source": "city-packs/kyoto-shijo/doors.json#D-N2 + places.json#kyoto-shijo-bldg-mitsui",
+      "openable": true,
+      "surface": "measured-interior",
+      "modelledInteriorRows": 3,
+      "modelledInteriorM": 3,
+      "ifUnmodelled": null
+    },
+    {
+      "doorId": "D-N3",
+      "cellX": 24,
+      "cellY": 24,
+      "side": "north",
+      "placeId": "kyoto-shijo-bldg-mitsui",
+      "placeNameJa": "京都三井ビルディング",
+      "source": "city-packs/kyoto-shijo/doors.json#D-N3 + places.json#kyoto-shijo-bldg-mitsui",
+      "openable": true,
+      "surface": "measured-interior",
+      "modelledInteriorRows": 3,
+      "modelledInteriorM": 3,
+      "ifUnmodelled": null
+    },
+    {
+      "doorId": "D-N4",
+      "cellX": 28,
+      "cellY": 24,
+      "side": "north",
+      "placeId": "kyoto-shijo-bldg-mitsui",
+      "placeNameJa": "京都三井ビルディング",
+      "source": "city-packs/kyoto-shijo/doors.json#D-N4 + places.json#kyoto-shijo-bldg-mitsui",
+      "openable": true,
+      "surface": "measured-interior",
+      "modelledInteriorRows": 3,
+      "modelledInteriorM": 3,
+      "ifUnmodelled": null
+    },
+    {
+      "doorId": "D-N5",
+      "cellX": 31,
+      "cellY": 24,
+      "side": "north",
+      "placeId": "kyoto-shijo-bldg-mitsui",
+      "placeNameJa": "京都三井ビルディング",
+      "source": "city-packs/kyoto-shijo/doors.json#D-N5 + places.json#kyoto-shijo-bldg-mitsui",
+      "openable": true,
+      "surface": "measured-interior",
+      "modelledInteriorRows": 3,
+      "modelledInteriorM": 3,
+      "ifUnmodelled": null
+    },
+    {
+      "doorId": "D-N6",
+      "cellX": 35,
+      "cellY": 24,
+      "side": "north",
+      "placeId": "kyoto-shijo-bldg-mitsui",
+      "placeNameJa": "京都三井ビルディング",
+      "source": "city-packs/kyoto-shijo/doors.json#D-N6 + places.json#kyoto-shijo-bldg-mitsui",
+      "openable": true,
+      "surface": "measured-interior",
+      "modelledInteriorRows": 3,
+      "modelledInteriorM": 3,
+      "ifUnmodelled": null
+    },
+    {
+      "doorId": "D-N7",
+      "cellX": 38,
+      "cellY": 24,
+      "side": "north",
+      "placeId": "kyoto-shijo-bldg-mitsui",
+      "placeNameJa": "京都三井ビルディング",
+      "source": "city-packs/kyoto-shijo/doors.json#D-N7 + places.json#kyoto-shijo-bldg-mitsui",
+      "openable": true,
+      "surface": "measured-interior",
+      "modelledInteriorRows": 3,
+      "modelledInteriorM": 3,
+      "ifUnmodelled": null
+    },
+    {
+      "doorId": "D-S1",
+      "cellX": 19,
+      "cellY": 0,
+      "side": "south",
+      "placeId": "kyoto-shijo-bldg-daiya",
+      "placeNameJa": "京都ダイヤビル",
+      "source": "city-packs/kyoto-shijo/doors.json#D-S1 + places.json#kyoto-shijo-bldg-daiya",
+      "openable": true,
+      "surface": "unmodelled-interior",
+      "modelledInteriorRows": 0,
+      "modelledInteriorM": 0,
+      "ifUnmodelled": "the shopfront exists in the real world; the engine has no interior geometry for it, because the south building falls outside the emitted 40 m corridor"
+    },
+    {
+      "doorId": "D-S3",
+      "cellX": 26,
+      "cellY": 0,
+      "side": "south",
+      "placeId": "kyoto-shijo-bldg-daiya",
+      "placeNameJa": "京都ダイヤビル",
+      "source": "city-packs/kyoto-shijo/doors.json#D-S3 + places.json#kyoto-shijo-bldg-daiya",
+      "openable": true,
+      "surface": "unmodelled-interior",
+      "modelledInteriorRows": 0,
+      "modelledInteriorM": 0,
+      "ifUnmodelled": "the shopfront exists in the real world; the engine has no interior geometry for it, because the south building falls outside the emitted 40 m corridor"
+    },
+    {
+      "doorId": "D-S5",
+      "cellX": 33,
+      "cellY": 0,
+      "side": "south",
+      "placeId": "kyoto-shijo-bldg-daiya",
+      "placeNameJa": "京都ダイヤビル",
+      "source": "city-packs/kyoto-shijo/doors.json#D-S5 + places.json#kyoto-shijo-bldg-daiya",
+      "openable": true,
+      "surface": "unmodelled-interior",
+      "modelledInteriorRows": 0,
+      "modelledInteriorM": 0,
+      "ifUnmodelled": "the shopfront exists in the real world; the engine has no interior geometry for it, because the south building falls outside the emitted 40 m corridor"
+    }
+  ]
+}

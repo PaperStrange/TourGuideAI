@@ -38,6 +38,11 @@
  *   node iteration/tools/check-viewer.mjs                  run the assertions
  *   node iteration/tools/check-viewer.mjs --json
  *   node iteration/tools/check-viewer.mjs --bake-if-absent  bake scene.bin first
+ *   node iteration/tools/check-viewer.mjs --doors <path>    FIRE DRILL: run against an
+ *       ALTERNATE doors.json, so the count-dependent assertions can be shown to FOLLOW
+ *       their input rather than redden. Same flag and same reason as
+ *       `city-packs/kyoto-shijo/validate-doors.mjs --doors` (task-9 asked for exactly
+ *       that demonstration there).
  *
  * Exit codes: 0 = all pass, 1 = an assertion failed, 2 = environment/usage.
  */
@@ -47,6 +52,7 @@ import { SCENE_VERSION, SCENE_MAGIC } from './emit-scene.mjs';
 import { join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import * as INTERACTION from './viewer-interaction.mjs';
 
 /**
  * The contract is IMPORTED, never mirrored. `doors.json` already learned this
@@ -61,6 +67,27 @@ const REPO = resolve(import.meta.dirname, '..', '..');
 const SCENE = join(REPO, 'build', 'scene.bin');
 const GUIDE = join(REPO, 'build', 'guide.json');
 const DOORS = join(REPO, 'city-packs', 'kyoto-shijo', 'doors.json');
+/**
+ * Fire-drill overrides. The assertions that depend on the door count read their
+ * expectations from these files, so pointing them at an alternate, INTERNALLY
+ * CONSISTENT fact layer must move the expectations rather than redden the checks —
+ * that is the property being demonstrated.
+ *
+ * `--places` and `--opener` are needed for the drill to be coherent: `doors.json`
+ * declares the doors, `places.json` declares which place owns each one, and
+ * `opener-contract.json` declares which are openable. Pointing only `--doors` at a
+ * 9-door file while the other two still say 10 produces V4c/V5 failures that mean
+ * "these three files disagree", which is a true and useful failure — but it is not
+ * the demonstration, and reporting it as one would be dishonest.
+ */
+function argPath(flag, fallback) {
+  const i = process.argv.indexOf(flag);
+  return i >= 0 && process.argv[i + 1] ? resolve(process.argv[i + 1]) : fallback;
+}
+const DOORS_OVERRIDE = argPath('--doors', null);
+const DOORS_PATH = DOORS_OVERRIDE || DOORS;
+const PLACES_PATH = argPath('--places', join(REPO, 'city-packs', 'kyoto-shijo', 'places.json'));
+const OPENER_PATH = argPath('--opener', join(REPO, 'iteration', 'viewer', 'opener-contract.json'));
 const VIEWER_DIR = join(REPO, 'iteration', 'viewer');
 
 class EnvError extends Error {}
@@ -297,6 +324,29 @@ function frameHashInput(canvasW, canvasH, scale, collision, wTiles, hTiles, walk
 
 const SERIALISABLE = {
   idx, isBlocked, streetRowAt, walkStreet, reachableSet, doorReport, frameHashInput,
+  openDoor: INTERACTION.openDoor,
+  placeholderDoors: INTERACTION.placeholderDoors,
+  measuredDoors: INTERACTION.measuredDoors,
+};
+
+/**
+ * The interaction layer, and the constants it needs.
+ *
+ * `openDoor` decides what happens when a door is opened, and it is serialised into
+ * the page exactly like the walker, so the browser runs the body asserted here.
+ * The constants travel WITH it: `PLACEHOLDER_TEXT` is the one placeholder string the
+ * user's ruling authorised, and if the page carried its own copy of that literal the
+ * copy could drift from the asserted one — which is D-12's shape (a mirrored enum
+ * that went stale) applied to a player-facing string.
+ *
+ * They cannot live in `SERIALISABLE` because that returns a bare object and
+ * `PLACEHOLDER_TEXT` has to be a VALUE. They are emitted as declarations ahead of it.
+ */
+const SERIALISABLE_CONSTANTS = {
+  PLACEHOLDER_TEXT: INTERACTION.PLACEHOLDER_TEXT,
+  PLACEHOLDER_NOTE_ZH: INTERACTION.PLACEHOLDER_NOTE_ZH,
+  SURFACE_MEASURED: INTERACTION.SURFACE_MEASURED,
+  SURFACE_UNMODELLED: INTERACTION.SURFACE_UNMODELLED,
 };
 
 /**
@@ -328,9 +378,12 @@ const SERIALISABLE = {
  * name included, so the emitted text is exactly the body under test.
  */
 function serialiseSimulation() {
+  const vars = Object.entries(SERIALISABLE_CONSTANTS)
+    .map(([name, value]) => `var ${name} = ${JSON.stringify(value)};`)
+    .join('\n');
   const decls = Object.entries(SERIALISABLE).map(([, fn]) => fn.toString()).join('\n');
   const names = Object.keys(SERIALISABLE).join(', ');
-  return `(function () {\n${decls}\nreturn { ${names} };\n})()`;
+  return `(function () {\n${vars}\n${decls}\nreturn { ${names} };\n})()`;
 }
 
 function sha256Hex(buf) {
@@ -437,12 +490,20 @@ function main() {
   const ground = buf.subarray(o, o + n);
   const collision = buf.subarray(o + n, o + 2 * n);
   const heights = buf.subarray(o + 2 * n, o + 3 * n);
-  const openings = buf.subarray(o + 3 * n, o + 4 * n);
-  // occlusionHalf comes AFTER all four n-sized layers. It read `o + 3*n` while openings was read
-  // from `o + 3*n + W`, so the two buffers OVERLAPPED and the occlusion count was taken from bytes
-  // belonging to the openings layer. The layer arithmetic above had already been updated to
-  // `W*H*4 + W`; the offsets had not, which is why the two disagreed while both looked right.
-  const occlusionHalf = buf.subarray(o + 4 * n, o + 4 * n + W);
+  /**
+   * LAYER ORDER, read off `emit-scene.mjs#packScene` rather than assumed:
+   *   ground[n], collision[n], heights[n], occlusionHalf[wTiles], openings[n]
+   *
+   * `occlusionHalf` is the SHORT layer and sits BEFORE `openings`, not after it. An
+   * earlier revision of this reader had the last two swapped, which made V8b report
+   * `occlusionHalf identical false, openings identical false` while the first three
+   * layers matched — a shape that reads like a stale bake and is actually an offset
+   * error. It was caught only because V8b compares EVERY layer instead of the two it
+   * used to compare (ground and collision); a check that spot-checks is a check that
+   * can be wrong about the layers it does not look at.
+   */
+  const occlusionHalf = buf.subarray(o + 3 * n, o + 3 * n + W);
+  const openings = buf.subarray(o + 3 * n + W, o + 4 * n + W);
   let blockedCount = 0;
   for (const v of collision) if (v !== 0) blockedCount += 1;
   let groundCount = 0;
@@ -489,14 +550,23 @@ function main() {
     `${walk.path.length} positions, ${clipped} on a blocked tile`,
   );
 
-  /* --- V4: doors */
-  const doorsFile = JSON.parse(readFileSync(DOORS, 'utf8'));
+  /* --- V4: doors -------------------------------------------------------
+   *
+   * THE EXPECTATIONS HERE ARE COMPARISONS, NOT CONSTANTS.
+   *
+   * V4 used to read `doorRows.length === 10`, and before that `=== 12`. Both were
+   * the same defect: an assertion whose expectation is a literal rather than a
+   * comparison against its input. §3a changed the door count from 12 to 10 and reddened
+   * two checks that had nothing to say about whether the world was correct; the next
+   * count change would do it again. `doors` is read eleven lines above, so every
+   * expectation below is derived from it or from the opener contract.
+   */
+  const doorsFile = JSON.parse(readFileSync(DOORS_PATH, 'utf8'));
   const doors = doorsFile.doors;
   const reached = reachableSet(collision, W, H, 0);
   const doorRows = doorReport(doors, profile, collision, W, H, GRID.halfCrossTiles, reached);
-  const allPresent = doorRows.length === 10;
+  const allPresent = doorRows.length === doors.length;
   const allReachable = doorRows.every((d) => d.reachable);
-  const allInWall = doorRows.every((d) => d.inWall);
   const maxDepth = Math.max(...doorRows.map((d) => d.depthBehind));
   // V4 USED TO ASSERT "all twelve doors are in a wall" and NOTHING about being enterable, which is
   // how it passed for rounds while the world had nowhere to go behind any of them (D-40). A check
@@ -524,9 +594,9 @@ function main() {
   const framed = doorRows.every(sitsInItsFacade);
   check(
     'V4',
-    'all 10 doors present and reachable; the 7 north doors are ENTERABLE into a bounded room; the 3 south doors are not, which is the measured state (D-40/D-42/D-43)',
-    allPresent && allReachable && framed && northEnterable === 7 && southEnterable === 0 && roomsClosed,
-    `${doorRows.length} doors · reachable ${doorRows.filter((d) => d.reachable).length} · ` +
+    `every door in doors.json is present and reachable, and the enterable split matches the world (${doors.length} doors)`,
+    allPresent && allReachable && framed && roomsClosed && northEnterable === north.length && southEnterable === 0,
+    `${doorRows.length} of ${doors.length} doors present · reachable ${doorRows.filter((d) => d.reachable).length} · ` +
       `framed by a facade or a closed room ${doorRows.filter(sitsInItsFacade).length}/${doorRows.length} · ` +
       `ENTERABLE north ${northEnterable}/${north.length}, south ${southEnterable}/${south.length} · ` +
       `max depth behind any door ${maxDepth} row(s) · every open room closed by a back wall ${roomsClosed}`,
@@ -534,9 +604,167 @@ function main() {
   check(
     'V4b',
     'every door cellX/cellY matches doors.json (the page must not relocate a door)',
-    doorRows.every((d, i) => d.cellX === doors[i].cellX && d.cellY === doors[i].cellY),
+    doorRows.length === doors.length && doorRows.every((d, i) => d.cellX === doors[i].cellX && d.cellY === doors[i].cellY),
     doorRows.map((d) => `${d.doorId}:${d.cellX},${d.cellY}`).join(' '),
   );
+
+  /* --- V4c: ENTERABILITY COMES FROM THE FACT LAYER, NOT FROM COLLISION ---
+   *
+   * The user's ruling made enterability a SET INTERACTION rather than a consequence
+   * of geometry, and the whole point is that the two can disagree:
+   *
+   *   - `collisionEnterable` is DERIVED from the collision bytes: a door is
+   *     geometrically enterable when it has a free row behind it.
+   *   - `declaredEnterable` comes from the opener contract, which is a fact-layer
+   *     declaration: which side of the street the shopfront is on.
+   *
+   * If enterability were still a collision side-effect, `declaredEnterable` would be
+   * a restatement of `collisionEnterable` and the south side could never be openable.
+   * So the assertion is that every door is DECLARED openable while only a subset is
+   * geometrically enterable, and that the two sides reach their answer by different
+   * routes: every measured surface has nonzero measured depth, every unmodelled
+   * surface has ZERO measured depth. That is what makes it a declaration rather than
+   * a coincidence, and V4d proves the direction by injecting a contradiction.
+   */
+  const openerPath = OPENER_PATH;
+  let opener = null;
+  let openerErr = null;
+  if (existsSync(openerPath)) {
+    try { opener = JSON.parse(readFileSync(openerPath, 'utf8')); } catch (e) { openerErr = e.message; }
+  }
+  const declared = opener && Array.isArray(opener.openable) ? opener.openable : [];
+  const declaredById = new Map(declared.map((d) => [d.doorId, d]));
+  const declaredIds = new Set(declared.map((d) => d.doorId));
+  const geometricIds = new Set(doors.map((d) => d.doorId));
+  const missingDeclarations = [...geometricIds].filter((id) => !declaredIds.has(id));
+  const extraDeclarations = [...declaredIds].filter((id) => !geometricIds.has(id));
+  const allDeclaredOpenable = declared.every((d) => d.openable === true);
+  const declaredEnterable = declared.filter((d) => d.openable).length;
+  const collisionEnterable = doorRows.filter((d) => d.enterable).length;
+  // the separation: measured surface <=> nonzero measured depth
+  const measuredWithDepth = declared
+    .filter((d) => d.surface === INTERACTION.SURFACE_MEASURED)
+    .every((d) => typeof d.modelledInteriorRows === 'number' && d.modelledInteriorRows > 0);
+  const unmodelledWithZero = declared
+    .filter((d) => d.surface === INTERACTION.SURFACE_UNMODELLED)
+    .every((d) => d.modelledInteriorRows === 0);
+  const northDeclared = declared.filter((d) => d.side === 'north').length;
+  const southDeclared = declared.filter((d) => d.side === 'south').length;
+  check(
+    'V4c',
+    'enterability is DECLARED by the fact layer, not derived from collision: every door is openable while only some have geometry behind them',
+    Boolean(opener) &&
+      openerErr === null &&
+      missingDeclarations.length === 0 &&
+      extraDeclarations.length === 0 &&
+      allDeclaredOpenable &&
+      declaredEnterable === declared.length &&
+      collisionEnterable < declaredEnterable &&
+      measuredWithDepth &&
+      unmodelledWithZero &&
+      northDeclared + southDeclared === declared.length,
+    openerErr
+      ? `opener-contract.json is unreadable: ${openerErr}`
+      : `declared openable ${declaredEnterable}/${declared.length} (fact layer) vs geometrically enterable ` +
+        `${collisionEnterable}/${doorRows.length} (collision bytes) — the gap of ` +
+        `${declaredEnterable - collisionEnterable} is the point · doors with no declaration ${JSON.stringify(missingDeclarations)} · ` +
+        `declarations with no door ${JSON.stringify(extraDeclarations)} · ` +
+        `measured surfaces all have nonzero depth=${measuredWithDepth}, unmodelled surfaces all have zero=${unmodelledWithZero} · ` +
+        `sides north ${northDeclared} / south ${southDeclared}`,
+  );
+
+  /* --- V4d: THE COUNTERFACTUAL — flip a declaration, the outcome follows ---
+   *
+   * V4c could pass by accident if the declaration happened to agree with the collision
+   * on this data. So: take a SOUTH door (zero measured depth, an unmodelled surface),
+   * re-declare it as a measured interior, and require the outcome to CHANGE — the
+   * interaction must resolve to a modelled room for that door, and the probe/declaration
+   * reconciliation must report the disagreement. Nothing about the collision bytes moves.
+   */
+  {
+    const southDoor = declared.find((d) => d.side === 'south');
+    let flipDetail = 'no south door to flip';
+    let flipOk = false;
+    if (southDoor && opener) {
+      const flippedDoorId = southDoor.doorId;
+      const before = INTERACTION.openDoor(flippedDoorId, opener, { doors: doorRows });
+      const flippedContract = JSON.parse(JSON.stringify(opener));
+      const target = flippedContract.openable.find((d) => d.doorId === flippedDoorId);
+      target.surface = INTERACTION.SURFACE_MEASURED; // the declaration changes
+      const after = INTERACTION.openDoor(flippedDoorId, flippedContract, { doors: doorRows });
+      // the collision bytes are untouched, so a collision-derived reading cannot move
+      const collisionUnchanged = doorRows.find((d) => d.doorId === flippedDoorId).enterable === false;
+      flipOk =
+        before.kind === 'unmodelled-interior' &&
+        before.placeholder === INTERACTION.PLACEHOLDER_TEXT &&
+        before.drawRoom === false &&
+        after.kind === 'measured-interior' &&
+        after.placeholder === null &&
+        after.drawRoom === true &&
+        collisionUnchanged;
+      flipDetail =
+        `${flippedDoorId} (south, measured depth ${southDoor.modelledInteriorRows}): ` +
+        `declared unmodelled -> placeholder ${JSON.stringify(before.placeholder)}, drawRoom ${before.drawRoom}; ` +
+        `declared measured -> annotation ${JSON.stringify(after.annotation)}, drawRoom ${after.drawRoom}; ` +
+        `collision bytes unchanged (still geometrically not enterable)=${collisionUnchanged}`;
+    }
+    check(
+      'V4d',
+      'counterfactual: re-declaring a south door as a measured interior changes the interaction, with the collision untouched',
+      flipOk,
+      flipDetail,
+    );
+  }
+
+  /* --- V4e: the placeholder is legible, singular, and never a fake room ---
+   *
+   * The criterion the Lead set is that a player with NO background knowledge must not
+   * come away believing they saw the real interior. That is not fully mechanisable, so
+   * what is mechanised is the part that can be: exactly ONE placeholder string exists,
+   * it appears on every unmodelled door and on no modelled door, an unmodelled door
+   * draws nothing, and a door with no declaration is not silently enterable.
+   */
+  {
+    const ph = INTERACTION.PLACEHOLDER_TEXT;
+    const resultsByDoor = declared.map((d) => INTERACTION.openDoor(d.doorId, opener, { doors: doorRows }));
+    const withPlaceholder = resultsByDoor.filter((r) => r.placeholder !== null);
+    const placeholderIsOnly = withPlaceholder.every((r) => r.placeholder === ph);
+    const unmodelledIds = INTERACTION.placeholderDoors(opener);
+    const measuredIds = INTERACTION.measuredDoors(opener);
+    const placeholderSet = new Set(withPlaceholder.map((r) => r.doorId));
+    const rightDoors = unmodelledIds.every((id) => placeholderSet.has(id)) &&
+      measuredIds.every((id) => !placeholderSet.has(id));
+    const nothingDrawn = resultsByDoor.filter((r) => r.kind === 'unmodelled-interior').every((r) => r.drawRoom === false);
+    const undeclared = INTERACTION.openDoor('D-NOT-A-DOOR', opener, { doors: doorRows });
+    /**
+     * The placeholder string must be a single literal in the interaction SOURCE, not
+     * repeated per branch — a second copy is a second thing that can drift.
+     *
+     * Comments are stripped first, and that is not a loophole: the ruling that
+     * authorised the string is quoted verbatim in this file's header, and a scan that
+     * counted prose would fail a file for DOCUMENTING its own requirement. What must
+     * be unique is the executable literal.
+     */
+    const src = readFileSync(join(REPO, 'iteration', 'tools', 'viewer-interaction.mjs'), 'utf8');
+    const code = src
+      .replace(/\/\*[\s\S]*?\*\//g, '')
+      .split('\n')
+      .filter((l) => !/^\s*(\/\/|\*)/.test(l))
+      .join('\n');
+    const literalUses = (code.match(/内容开发中/g) || []).length;
+    const inComment = (src.match(/内容开发中/g) || []).length - literalUses;
+    check(
+      'V4e',
+      'the placeholder is one string, on exactly the unmodelled doors, draws nothing, and is not a fake room',
+      placeholderIsOnly && rightDoors && nothingDrawn && withPlaceholder.length === unmodelledIds.length &&
+        undeclared.enterable === false && literalUses === 1,
+      `placeholder ${JSON.stringify(ph)} on ${withPlaceholder.length} of ${declared.length} doors ` +
+        `(unmodelled ${unmodelledIds.length}: ${unmodelledIds.join(',')}) · nothing drawn behind any unmodelled door=${nothingDrawn} · ` +
+        `a door with no declaration is enterable=${undeclared.enterable} (must be false) · ` +
+        `executable occurrences of the literal in viewer-interaction.mjs=${literalUses} (must be 1; ` +
+        `${inComment} further occurrence(s) are prose quoting the ruling)`,
+    );
+  }
 
   /* --- V5: reconcile with the game's export */
   let guideOk = false;
@@ -554,7 +782,7 @@ function main() {
      * through it checks all three files at once instead of comparing two id
      * spaces that were never meant to be equal.
      */
-    const placesFile = JSON.parse(readFileSync(join(REPO, 'city-packs', 'kyoto-shijo', 'places.json'), 'utf8'));
+    const placesFile = JSON.parse(readFileSync(PLACES_PATH, 'utf8'));
     const placesWithDoors = placesFile.filter((p) => p.entrances && Array.isArray(p.entrances.doorIds));
     const declaredDoorIds = placesWithDoors.flatMap((p) => p.entrances.doorIds);
 
@@ -628,44 +856,73 @@ function main() {
       const html = readFileSync(htmlPath, 'utf8');
       const sceneHash = sha256Hex(buf);
       const pinsScene = html.includes(sceneHash);
-      // the three layer payloads must be present and distinct
+      // the layer payloads must be present and distinct
       const m = html.match(/id="__TG_SCENE__"[^>]*>([\s\S]*?)<\/script>/);
       let parsed = null;
       let parseErr = null;
       if (m) { try { parsed = JSON.parse(m[1]); } catch (e) { parseErr = e.message; } }
       const n = W * H;
       const b64ToLen = (s) => (s ? Buffer.from(s, 'base64').length : -1);
-      const lens = parsed
-        ? [b64ToLen(parsed.layers.ground), b64ToLen(parsed.layers.collision), b64ToLen(parsed.layers.heights), b64ToLen(parsed.layers.occlusionHalf)]
-        : [];
-      const layerLensOk = parsed && lens[0] === n && lens[1] === n && lens[2] === n && lens[3] === W;
+      /**
+       * DERIVED FROM THE CONTAINER, not from a literal list.
+       *
+       * This used to be hardcoded `[n, n, n, W]` for four layers, and when the scene
+       * gained a fifth (`openings`) it reddened a check that had nothing to say about
+       * whether the page was correct — the same defect class as the hardcoded door
+       * counts: an expectation that is a constant rather than a comparison. The
+       * expected sizes now come from the encoded layer names the page declares and the
+       * grid the container states.
+       */
+      const expectedLayerBytes = (name) => {
+        if (name === 'occlusionHalf') return W;
+        if (name === 'openings') return n;
+        return n; // ground, collision, heights
+      };
+      const declaredLayers = parsed && parsed.layers ? Object.keys(parsed.layers.byteLengths || {}) : [];
+      // the container's own layer set, read from the header arithmetic
+      const layerBytes = buf.length - 108 - manifestLen;
+      const containerLayers = layerBytes === n * 4 + W ? ['ground', 'collision', 'heights', 'occlusionHalf', 'openings']
+        : layerBytes === n * 3 + W ? ['ground', 'collision', 'heights', 'occlusionHalf']
+          : [];
+      const lens = declaredLayers.map((k) => b64ToLen(parsed.layers[k]));
+      const layerLensOk = declaredLayers.length > 0 &&
+        declaredLayers.every((k) => b64ToLen(parsed.layers[k]) === expectedLayerBytes(k));
+      const layerSetMatches = containerLayers.length > 0 &&
+        containerLayers.length === declaredLayers.length &&
+        containerLayers.every((k) => declaredLayers.includes(k));
       // the page must carry LITERALLY the same simulation source this file asserts
       const sim = serialiseSimulation();
       const embedsSim = html.includes('function walkStreet') && html.includes('function streetRowAt') &&
-        html.includes('function doorReport') && html.includes('function reachableSet');
+        html.includes('function doorReport') && html.includes('function reachableSet') &&
+        html.includes('function openDoor');
       const noNetwork = !/<script[^>]+src\s*=\s*["'](?!#)/i.test(html) && !/\bfetch\s*\(/.test(html) &&
         !/XMLHttpRequest/.test(html) && !/@import\s+url/i.test(html);
       const hasWalkerInput = /addEventListener\(\s*['"]keydown['"]/.test(html);
       check(
         'V8',
         'the page artefact exists, is self-contained, and carries THIS scene',
-        pinsScene && layerLensOk && embedsSim && noNetwork && hasWalkerInput && parseErr === null,
+        pinsScene && layerLensOk && layerSetMatches && embedsSim && noNetwork && hasWalkerInput && parseErr === null,
         `${html.length} B single file · pins scene sha256 ${pinsScene} · payload parses ${parseErr === null} · ` +
-        `layer byte lengths ${JSON.stringify(lens)} (expect ${n},${n},${n},${W}) · ` +
-        `embeds the walker source ${embedsSim} (${sim.length} B of simulation) · ` +
+        `layers ${JSON.stringify(declaredLayers)} at ${JSON.stringify(lens)} B (the container declares ` +
+        `${JSON.stringify(containerLayers)}, all sizes as the grid implies=${layerLensOk}) · ` +
+        `embeds the walker and interaction source ${embedsSim} (${sim.length} B) · ` +
         `no network of any kind ${noNetwork} · keyboard-driven ${hasWalkerInput}`,
       );
       // and the embedded bytes must BE the scene's bytes, not a re-encode
       if (parsed && layerLensOk) {
-        const g = Buffer.from(parsed.layers.ground, 'base64');
-        const c = Buffer.from(parsed.layers.collision, 'base64');
-        const sameGround = Buffer.compare(g, Buffer.from(ground)) === 0;
-        const sameCollision = Buffer.compare(c, Buffer.from(collision)) === 0;
+        const same = {};
+        for (const k of declaredLayers) {
+          const got = Buffer.from(parsed.layers[k], 'base64');
+          const want = k === 'occlusionHalf' ? occlusionHalf : k === 'ground' ? ground : k === 'collision' ? collision
+            : k === 'heights' ? heights : k === 'openings' ? openings : null;
+          same[k] = want ? Buffer.compare(got, Buffer.from(want)) === 0 : false;
+        }
+        const allSame = Object.values(same).every(Boolean);
         check(
           'V8b',
           'the bytes embedded in the page are the scene.bin layer bytes, unmodified',
-          sameGround && sameCollision,
-          `ground identical ${sameGround}, collision identical ${sameCollision}`,
+          allSame,
+          Object.entries(same).map(([k, v]) => `${k} identical ${v}`).join(', '),
         );
       } else {
         check('V8b', 'the bytes embedded in the page are the scene.bin layer bytes, unmodified', false,
@@ -720,4 +977,4 @@ if (IS_ENTRY) {
   }
 }
 
-export { walkStreet, doorReport, reachableSet, streetRowAt, frameHashInput, isBlocked, idx, serialiseSimulation, sha256Hex };
+export { walkStreet, doorReport, reachableSet, streetRowAt, frameHashInput, isBlocked, idx, serialiseSimulation, sha256Hex, SERIALISABLE, SERIALISABLE_CONSTANTS };
