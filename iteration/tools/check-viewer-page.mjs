@@ -282,20 +282,30 @@ function main() {
    */
   const leg = elements['legend'] ? elements['legend'].innerHTML : '';
   const dReachable = payload.doors.filter((d) => d.reachable).length;
-  const dEnterable = payload.doors.filter((d) => d.enterable).length;
+  const withRoom = payload.doors.filter((d) => d.interaction && d.interaction.drawRoom).length;
+  const placeholderOnly = payload.doors.filter((d) => d.interaction && d.interaction.placeholder).length;
   const doorCount = payload.doors.length;
+  /**
+   * The page must print BOTH numbers and print them as different things. Printing one
+   * and calling it "enterable" was the old wording, and it became untrue the moment the
+   * ruling made every door enterable: what differs is whether an interior is MODELLED.
+   * A summary that collapses the two would hide exactly the distinction the task exists
+   * to make legible, so the assertion requires both, each with its own phrase.
+   */
   const doorsOk =
     doorCount > 0 &&
     leg.includes(`reached x=${payload.walk.reachedX}`) &&
-    leg.includes(`${dReachable} of ${doorCount} reachable`) &&
-    leg.includes(`${dEnterable} of ${doorCount} enterable`);
+    leg.includes(`${dReachable} of ${doorCount} reachable from the street`) &&
+    leg.includes(`${withRoom} of ${doorCount} open into a modelled interior`) &&
+    leg.includes(`${placeholderOnly} of ${doorCount}`) &&
+    leg.includes('placeholder only');
   check(
     'P5',
-    `the page's printed summary equals the payload it printed it from (${doorCount} doors)`,
+    `the page's summary states the measured and the modelled counts SEPARATELY (${doorCount} doors)`,
     doorsOk,
-    `legend says reached x=${payload.walk.reachedX}, ${dReachable} of ${doorCount} reachable, ` +
-      `${dEnterable} of ${doorCount} enterable; payload: ${dReachable} reachable, ${dEnterable} enterable · ` +
-      `both numbers compared against the payload's own door list, not against a literal`,
+    `legend says reached x=${payload.walk.reachedX} · ${dReachable}/${doorCount} reachable from the street · ` +
+      `${withRoom}/${doorCount} open into a modelled interior · ${placeholderOnly}/${doorCount} placeholder only; ` +
+      `all four numbers are the payload's own, not literals`,
   );
 
   /* ---- the interaction, driven through the PAGE's own handler ---------- *

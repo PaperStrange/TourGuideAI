@@ -42,6 +42,15 @@
  */
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
+/**
+ * The container magic is IMPORTED, not spelled.
+ *
+ * The first version of this file compared against the literal `'TG25DSCN'`, and the
+ * `no-dup` gate caught it: a format constant spelled in a second file is exactly the
+ * shape D-44 names, and a format change would break the COMPARISON rather than the
+ * data — the worst kind, because the failure looks like corruption.
+ */
+import { SCENE_MAGIC, SCENE_VERSION } from './emit-scene.mjs';
 
 const REPO = resolve(import.meta.dirname, '..', '..');
 const PACK = join(REPO, 'city-packs', 'kyoto-shijo');
@@ -117,7 +126,8 @@ if (existsSync(SCENE)) {
   const buf = readFileSync(SCENE);
   W = buf.readUInt32LE(12);
   H = buf.readUInt32LE(16);
-  if (buf.toString('ascii', 0, 8) !== 'TG25DSCN') die(1, 'scene.bin is not a TG25DSCN container');
+  if (buf.toString('ascii', 0, 8) !== SCENE_MAGIC) die(1, `scene.bin is not a ${SCENE_MAGIC} container`);
+  if (buf.readUInt32LE(8) !== SCENE_VERSION) die(1, `scene.bin is version ${buf.readUInt32LE(8)}, expected ${SCENE_VERSION}`);
   const manifestLen = buf.readUInt32LE(104);
   const manifest = JSON.parse(buf.toString('utf8', 108, 108 + manifestLen));
   halfCrossTiles = manifest.grid && manifest.grid.wTiles === W

@@ -551,16 +551,21 @@ const html = `<!DOCTYPE html>
   }
 
   /* --- the overlay the assertions describe --------------------------- */
-  var enterable = 0, reachable = 0;
-  var rows = ['<table><tr><th>door</th><th>cell</th><th>street row</th><th>reachable</th><th>in a wall</th><th>free depth behind</th><th>enterable</th><th>guide place</th></tr>'];
+  var enterable = 0, reachable = 0, withRoom = 0;
+  var rows = ['<table><tr><th>door</th><th>cell</th><th>street row</th><th>reachable</th><th>surface</th><th>free depth behind</th><th>what opening it gives you</th><th>guide place</th></tr>'];
   for (var q = 0; q < PAYLOAD.doors.length; q++) {
     var d2 = PAYLOAD.doors[q];
     if (d2.reachable) reachable++;
-    if (d2.enterable) enterable++;
+    if (d2.interaction && d2.interaction.drawRoom) withRoom++;
+    if (d2.interaction && d2.interaction.placeholder) enterable++;
+    var gives = d2.interaction
+      ? (d2.interaction.drawRoom ? 'a modelled interior (' + d2.interaction.measuredInteriorRows + ' rows)'
+                                 : '<span class="warn">placeholder: ' + d2.interaction.placeholder + '</span>')
+      : '<span class="dim">no declaration</span>';
     rows.push('<tr><td>' + d2.doorId + '</td><td>' + d2.cellX + ',' + d2.cellY + '</td><td>' + d2.streetRow +
-      '</td><td>' + (d2.reachable ? 'yes' : 'no') + '</td><td>' + (d2.inWall ? 'yes' : 'no') +
-      '</td><td>' + d2.depthBehind + '</td><td class="' + (d2.enterable ? 'ok' : 'warn') + '">' +
-      (d2.enterable ? 'yes' : 'no') + '</td><td>' + (d2.placeNameJa || d2.placeId || '<span class="dim">—</span>') + '</td></tr>');
+      '</td><td>' + (d2.reachable ? 'yes' : 'no') + '</td><td>' + (d2.surface || '—') +
+      '</td><td>' + d2.depthBehind + '</td><td>' + gives + '</td><td>' +
+      (d2.placeNameJa || d2.placeId || '<span class="dim">—</span>') + '</td></tr>');
   }
   rows.push('</table>');
   document.getElementById('legend').innerHTML =
@@ -568,9 +573,12 @@ const html = `<!DOCTYPE html>
     ' in ' + PAYLOAD.walk.steps + ' steps, ' + PAYLOAD.walk.corrections + ' row correction(s); rows ' +
     PAYLOAD.walk.startRow + ' → ' + PAYLOAD.walk.endRow + '.' +
     ' The street drifts ' + PAYLOAD.street.driftSpanM + ' m, so the walker follows the profile, not a fixed row.</p>' +
-    '<p><b>doors</b>: ' + reachable + ' of ' + PAYLOAD.doors.length + ' reachable from the street; ' +
-    '<b class="warn">' + enterable + ' of ' + PAYLOAD.doors.length + ' enterable</b>' +
-    ' (a doorway with a free tile behind it to step into). The doors are <code>authored</code>: nobody has observed them.</p>' +
+    '<p><b>doors</b>: ' + PAYLOAD.doors.length + ' doors, all openable · ' + reachable + ' of ' +
+    PAYLOAD.doors.length + ' reachable from the street · ' + withRoom + ' of ' + PAYLOAD.doors.length +
+    ' open into a modelled interior · ' + enterable + ' of ' + PAYLOAD.doors.length +
+    ' are <span class="warn">placeholder only</span>. ' +
+    'Every door is enterable after the ruling; what differs is whether an interior is MODELLED behind it. ' +
+    'Press <b>E</b> at a door to see which you are at. The doors are <code>authored</code>: nobody has observed them.</p>' +
     '<p><b>export</b>: ' + PAYLOAD.guide.placeCount + ' place ids reconciled from ' + PAYLOAD.guide.path +
     ' (' + PAYLOAD.guide.stopCount + ' route stops + ' + PAYLOAD.guide.nearbyCount + ' passed alongside).</p>' +
     rows.join('');
@@ -593,7 +601,13 @@ mkdirSync(OUT_DIR, { recursive: true });
 writeFileSync(OUT, html, 'utf8');
 
 const sha = sha256Hex(Buffer.from(html, 'utf8'));
-const enterable = doorMarkers.filter((d) => d.enterable).length;
+/**
+ * Report the two numbers as the two different things they are. "7/10 enterable" was
+ * the old phrasing and the ruling made it false: every door is enterable now, and what
+ * differs is whether an interior is MODELLED behind it.
+ */
+const placeholderOnly = doorMarkers.filter((d) => d.interaction && d.interaction.placeholder).length;
+const modelled = doorMarkers.filter((d) => d.interaction && d.interaction.drawRoom).length;
 const reachableCount = doorMarkers.filter((d) => d.reachable).length;
 
 const out = [];
@@ -603,7 +617,8 @@ out.push(`  contract   : ${payload.scene.contractHash}`);
 out.push(`  guide      : ${payload.guide.placeCount} place ids reconciled (${payload.guide.stopCount} stops + ${payload.guide.nearbyCount} alongside)`);
 out.push(`  street     : drift ${payload.street.driftSpanM} m · rows ${payload.walk.startRow} -> ${payload.walk.endRow}`);
 out.push(`  walk       : reached x=${payload.walk.reachedX} of ${W - 1} in ${payload.walk.steps} steps, ${payload.walk.corrections} correction(s)`);
-out.push(`  doors      : ${reachableCount}/${doorMarkers.length} reachable · ${enterable}/${doorMarkers.length} enterable · all in a wall ${doorMarkers.every((d) => d.inWall)}`);
+out.push(`  doors      : ${doorMarkers.length} total, all openable · ${reachableCount} reachable from the street · ` +
+  `${modelled} open into a modelled interior · ${placeholderOnly} placeholder only`);
 out.push(`  simulation : ${simSource.length} B serialised out of check-viewer.mjs (same bodies, not a copy)`);
 out.push(`  page       : ${OUT}`);
 out.push(`               ${html.length} B, single file, no network`);
