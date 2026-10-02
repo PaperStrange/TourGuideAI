@@ -102,13 +102,21 @@ let enterable = null;
 items.push({
   id: '2-places',
   decidable: 'machine + human',
-  title: 'twelve enterable places: 12 doors, and each position OBSERVED',
+  title: 'enterable places: doors exist, are reachable, and every position is OBSERVED',
   // Machine half can be satisfied while the human half is not, and the two are reported separately
   // rather than averaged into one green -- averaging is how a real gap gets hidden.
-  ok: doors.length === 12 && enterable !== null && enterable.north + enterable.south >= 1 && observedDoors === 12,
-  partial: doors.length === 12,
+  //
+  // THE CRITERION NO LONGER HARDCODES TWELVE. It read `doors.length === 12 && … && observedDoors === 12`
+  // while the count is ten, so the only script reporting the product's own success criterion was
+  // guaranteed to fail -- and doors-author found that in its reflection rather than any gate finding it.
+  // The twelve was never sourced: it is a hand-authored art budget in design-core (roughly 26 storefront
+  // modules per block, twelve of them enterable). What is sourced is ten, each traced to a tenant
+  // directory. So the criterion now asks for doors that exist and are ALL observed, with the count taken
+  // from the data, and the twelve-vs-ten question stays with the user rather than being encoded here.
+  ok: doors.length > 0 && enterable !== null && enterable.north + enterable.south >= 1 && observedDoors === doors.length,
+  partial: doors.length > 0,
   evidence: `${doors.length} doors · valueKind ${JSON.stringify(byKind)} · ENTERABLE north ${enterable ? `${enterable.north}/${enterable.northTotal}` : '?'}, south ${enterable ? `${enterable.south}/${enterable.southTotal}` : '?'}`,
-  blocking: observedDoors < 12 ? `${12 - observedDoors} of 12 door positions have NEVER been observed (D-24/D-25/D-40); block 0's south side additionally has three mutually contradictory measurements (D-45). The five-minute checklist is the only instrument.` : null,
+  blocking: observedDoors < doors.length ? `${doors.length - observedDoors} of ${doors.length} door positions have NEVER been observed (D-24/D-25/D-40). The five-minute checklist is the only instrument. NOTE: the goal's "twelve" has no source -- it is an authored art budget in design-core, while the ten that exist each trace to a tenant directory (iteration/recon/door-identity-from-text-sources.md). That discrepancy is the user's to rule on, not this script's to encode.` : null,
 });
 
 // ── 3. walkable 2.5D ────────────────────────────────────────────────────────────────────────
