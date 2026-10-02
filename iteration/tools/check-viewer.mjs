@@ -396,13 +396,26 @@ function main() {
   // V8 asserts the baked PAGE, so under --bake-if-absent the page must be produced too. Same
   // reasoning as the export above: an assertion about an artefact is only meaningful if the
   // artefact is produced rather than assumed, and gate order is not a dependency.
+  //
+  // AND "ABSENT" WAS THE WRONG TEST. The flag asked whether the page EXISTS, not whether it is
+  // CURRENT, so a stale page passed this block and then failed V8 and V8b -- which is what happened
+  // after doors-author landed the doorType field: scene.bin had moved on, the page still pinned the
+  // old scene hash, and the gate reported a failure whose real cause was that nobody had re-baked.
+  // That is this repository's most expensive recurring shape: a verdict that depends on how the
+  // working copy was produced. The test is now whether the page carries THIS scene.bin, which is the
+  // same question V8 asks, asked before the assertion runs rather than after it fails.
   const PAGE = join(REPO, 'iteration', 'viewer', 'index.html');
-  if (!existsSync(PAGE) && process.argv.includes('--bake-if-absent')) {
-    const b = spawnSync(process.execPath, [join(REPO, 'iteration', 'tools', 'bake-viewer.mjs'), '--bake-if-absent'], { cwd: REPO, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
-    if (b.status !== 0 || !existsSync(PAGE)) {
-      throw new EnvError(`could not bake the page (exit ${b.status}): ${((b.stdout || '') + (b.stderr || '')).slice(-400)}`);
+  if (process.argv.includes('--bake-if-absent')) {
+    const sceneHash = existsSync(SCENE) ? sha256Hex(readFileSync(SCENE)).toUpperCase() : null;
+    const pageCarries = Boolean(sceneHash) && existsSync(PAGE) && readFileSync(PAGE, 'utf8').toUpperCase().includes(sceneHash);
+    if (!pageCarries) {
+      const why = !existsSync(PAGE) ? 'the page was absent' : 'the page was STALE (it did not carry the current scene.bin hash)';
+      const b = spawnSync(process.execPath, [join(REPO, 'iteration', 'tools', 'bake-viewer.mjs'), '--bake-if-absent'], { cwd: REPO, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+      if (b.status !== 0 || !existsSync(PAGE)) {
+        throw new EnvError(`could not bake the page (exit ${b.status}): ${((b.stdout || '') + (b.stderr || '')).slice(-400)}`);
+      }
+      console.log(`(${why}, so this check ran bake-viewer to produce it)`);
     }
-    console.log('(the page was absent and this check ran bake-viewer to produce it)');
   }
 
   const W = buf.readUInt32LE(12);
