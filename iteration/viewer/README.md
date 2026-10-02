@@ -2,7 +2,11 @@
 
 **Gate 1's "walkable 2.5D", in a browser, driven by `scene.bin`.**
 
-Open it directly. No server, no build step, no dependencies:
+Open it directly. No server, no build step at run time, no dependencies:
+
+> **On a clean clone the page does not exist yet** — `index.html` is gitignored as a derived
+> artefact (see below). Bake it once: `node iteration/tools/bake-viewer.mjs`. After that it
+> is a file you open, not a server you start.
 
 ```powershell
 Start-Process iteration/viewer/index.html      # Windows
@@ -111,12 +115,17 @@ Chrome and Firefox refuse to load a module script from `file://` — it is treat
 as a CORS request — and even a classic `<script src="…">` is refused. A viewer
 that needs `python -m http.server` before it opens is a viewer someone has to
 explain first, and the acceptance criterion is that **one real person walks it**.
-So the four layers, the manifest, the street profile, the doors and the walker are
+So every layer the container declares, the manifest, the street profile, the doors and the
+walker are
 all inlined, and the page makes no network request of any kind.
 
-The cost is real and is measured rather than hidden: 193,600 raw layer bytes become
-258,136 base64 characters (**+33.3%**), for a page around 311 KB. Base64 is not an
-arbitrary choice — the payload lives inside a `<script>` tag, and any denser
+The cost is real and is measured rather than hidden: every layer the container declares is
+base64-encoded into the page, which costs **+33.3%** — a fixed price, so it is stated as a
+rate rather than as two byte counts that go stale the next time the scene gains a layer (the
+`openings` layer did exactly that to the numbers that used to sit here). `check-viewer-page.mjs`
+P0 prints the current raw and encoded totals on every run; read them there.
+
+Base64 is not an arbitrary choice — the payload lives inside a `<script>` tag, and any denser
 encoding whose alphabet contains `<` or a quote can terminate the tag early. Base64's
 alphabet is `[A-Za-z0-9+/=]`, which cannot appear in `</script>`.
 
@@ -148,16 +157,29 @@ a page that silently renders nothing — this harness has already had seven verd
 that depended on how the working copy was prepared, and a viewer that is green
 only on a warmed machine would be the eighth.
 
-## Staleness is detectable, so this file can be tracked
+## `index.html` is gitignored, and that is a decision
 
-`index.html` **is** tracked, deliberately, so that a fresh clone gives a person
-something they can open immediately. That is only safe because the page **pins the
-scene's sha256 in its header**, and `check-viewer.mjs` asserts the pin equals the
-hash of the `scene.bin` on disk. A stale page therefore fails the check loudly
-instead of quietly drawing a world that no longer exists.
+`.gitignore` excludes it for the same reason `build/` is excluded: it is a derived artefact
+that every `emit-scene.mjs` run invalidates, and tracking a ~400 KB file that goes stale on
+each bake would put dead copies in history. The gates regenerate it on demand instead —
+`V8`/`P8` accept `--bake-if-absent`, and the viewer gates in `run-gates.mjs` bake it.
 
-So: **if `scene.bin` changes, re-bake and commit the page, or the viewer check
-goes red.** That is the intended behaviour, not an inconvenience.
+**So a clean clone does not contain an openable page; it contains the means to make one.**
+That is a real cost, and it is the trade the project chose. To get the page:
+
+```bash
+node iteration/tools/emit-scene.mjs        # if build/scene.bin is absent
+node iteration/tools/emit-guide.mjs        # if build/guide.json is absent
+node iteration/tools/build-opener-fact.mjs # the door declarations
+node iteration/tools/bake-viewer.mjs       # -> iteration/viewer/index.html
+```
+
+**Staleness is still detectable**, which is what makes ignoring it safe rather than merely
+convenient: the page **pins the scene's sha256 in its header**, `check-viewer.mjs` V8 asserts
+that pin equals the hash of the `scene.bin` on disk, and V8b compares every embedded layer
+byte-for-byte against the container. A page baked from a different scene fails loudly instead
+of quietly drawing a world that no longer exists — and that check has already earned its keep:
+it is what proved a layer-offset error in this reader rather than a stale bake.
 
 ## Assertions
 
