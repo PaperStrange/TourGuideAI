@@ -5,7 +5,7 @@
  * WHY THIS FILE EXISTS
  * --------------------
  * The city pack's fact layer is only worth what it can prove. doors.json claims
- * 12 doorways, each bound to a real OSM building footprint, each sitting in an
+ * the authored doorways, each bound to a real OSM building footprint, each sitting in an
  * integer cell inside a 40x40 m block, each with an honest valueKind. Every one
  * of those claims is re-derived here from the stored evidence bytes and the
  * FROZEN constants -- nothing is taken on the file's word.
@@ -563,7 +563,7 @@ let sliceHash = null;
 }
 
 /* ------------------------------------------------------------------ *
- * V12 — the summary block a consumer reads without parsing all 12 doors
+ * V12 — the summary block a consumer reads without parsing every door
  * ------------------------------------------------------------------ */
 {
   const s = doorsDoc.summary;
@@ -581,8 +581,30 @@ let sliceHash = null;
   const north = doors.filter((d) => d.facadeLineRun.facadeId === 'F-north').length;
   const south = doors.filter((d) => d.facadeLineRun.facadeId === 'F-south').length;
   const widths = facades.map((f) => f.facadeRunClippedToBlock.frontageXM);
-  const modules = facades.map((f, i) => f.facadeRunClippedToBlock.frontageXM / (i === 0 ? north : south));
+  // The storefront MODULE width is a measured artefact recorded per door in the ODbL
+  // half. It is NOT frontage divided by door count. The two agreed only while every
+  // facade was fully tiled by its doors; they stopped agreeing in task-20 (D3), when the
+  // south side was cut from five doors to three WITHOUT moving any door, so two of the
+  // south facade's five modules now carry no door. frontage/count would have reported
+  // 6.055049 m -- a partition the doors do not form. So the width is READ from the
+  // records, checked uniform within each facade, and the un-tiled module count is
+  // reported here so the consequence stays visible instead of quietly re-deriving.
+  const moduleOf = (facadeId) => {
+    const w = doors.filter((d) => d.facadeLineRun.facadeId === facadeId)
+      .map((d) => d.facadeLineRun.storefrontModule.widthM);
+    const uniq = [...new Set(w)];
+    if (uniq.length !== 1) problems.push(`${facadeId}: storefrontModule.widthM is not uniform across its doors (${uniq.join(', ')})`);
+    return uniq[0];
+  };
+  const modules = [moduleOf('F-north'), moduleOf('F-south')];
+  const moduleCounts = facades.map((f, i) => Math.round(widths[i] / modules[i]));
+  const doorsPerFacade = [north, south];
+  moduleCounts.forEach((mc, i) => {
+    if (doorsPerFacade[i] > mc) problems.push(`${facades[i].facadeId}: ${doorsPerFacade[i]} doors but only ${mc} modules of ${modules[i]} m fit its ${widths[i].toFixed(6)} m frontage`);
+  });
+  const untiled = moduleCounts.reduce((a, mc, i) => a + (mc - doorsPerFacade[i]), 0);
   const total = widths.reduce((a, b) => a + b, 0);
+  const meanModule = modules.reduce((a, m, i) => a + m * doorsPerFacade[i], 0) / doors.length;
   const declaredTotal = doorsDoc.block.facadeFrontageTotalM;
   // Re-derive the residual maxima in summary, so they cannot be edited in place:
   // the census in V17 pins a section's COUNT, and a value edited in place does not
@@ -607,7 +629,7 @@ let sliceHash = null;
     ['minPairwiseDoorSeparationM', s.minPairwiseDoorSeparationM, Number(minD.toFixed(4))],
     ['storefrontWidthNorthM', s.storefrontWidthNorthM, Number(modules[0].toFixed(6))],
     ['storefrontWidthSouthM', s.storefrontWidthSouthM, Number(modules[1].toFixed(6))],
-    ['storefrontWidthMeanM', s.storefrontWidthMeanM, Number((total / doors.length).toFixed(6))],
+    ['storefrontWidthMeanM', s.storefrontWidthMeanM, Number(meanModule.toFixed(6))],
     ['facadeFrontageNorthM', doorsDoc.block.facadeFrontageNorthM, Number(widths[0].toFixed(6))],
     ['facadeFrontageSouthM', doorsDoc.block.facadeFrontageSouthM, Number(widths[1].toFixed(6))],
     ['facadeFrontageTotalM', declaredTotal, Number(total.toFixed(6))],
@@ -620,7 +642,10 @@ let sliceHash = null;
   check('V12', 'summary block is self-consistent with the doors and facades it summarises',
     problems.length === 0,
     `checked ${cmp.length} summary fields; cellX ${Math.min(...xs)}..${Math.max(...xs)}, cellY ${Math.min(...ys)}..${Math.max(...ys)}; ` +
-    `problems=${problems.length}${problems.length ? ' -> ' + problems.join('; ') : ''}`);
+    `storefront module widths read from the ODbL records: north ${modules[0]} m x ${moduleCounts[0]} modules, south ${modules[1]} m x ${moduleCounts[1]} modules; ` +
+    `doors per facade ${doorsPerFacade.join('/')}; modules carrying NO door = ${untiled}` +
+    (untiled ? ` (the south facade is no longer fully tiled -- task-20 cut it from 5 doors to 3 without moving any door; this is recorded, not an error)` : '') +
+    `; problems=${problems.length}${problems.length ? ' -> ' + problems.join('; ') : ''}`);
 }
 
 /* ------------------------------------------------------------------ *
@@ -1267,7 +1292,7 @@ const DECLARED_BLOCKERS = [];
  *
  * The user ruled (D-24, task-19): the first version does NOT classify doors, but the
  * structure must exist so that a later classification pass is an EDIT rather than a
- * MIGRATION. Twelve doors all reading `entrancePointJa: "本門"` is not "unclassified",
+ * MIGRATION. Doors that all read `entrancePointJa: "本門"` is not "unclassified",
  * it is having nowhere to put a classification.
  *
  * `unclassified` is a FINISHED STATE, not a gap. This assertion is what makes that

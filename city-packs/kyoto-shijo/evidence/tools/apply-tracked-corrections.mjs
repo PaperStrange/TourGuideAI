@@ -22,6 +22,7 @@
  * is erased by the next build. That is the same drift the fix is about.
  */
 import { readFileSync, writeFileSync, existsSync, unlinkSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -211,6 +212,20 @@ if (meta.transit?.gaps) {
       edits++;
     }
   }
+}
+
+// ---- 6. task-22: keep the door inventory in step with doors.json ----------------
+// `doors-author` cut the south side from 5 doors to 3. `evidence/tools/block-doors.json` is UPSTREAM
+// of `attestations/block-doors.json` — this repo publishes the latter from the former on every build
+// — so a stale inventory here would silently revert a correct downstream fix. Its count and doorIds
+// are therefore regenerated from doors.json, the authority, instead of being hand-maintained.
+try {
+  const out = execFileSync(process.execPath, [resolve(HERE, 'sync-block-doors.mjs')], { encoding: 'utf8', cwd: PACK });
+  console.log('  ' + out.trim().split('\n').join('\n  '));
+} catch (e) {
+  console.error(e.stdout ?? '');
+  console.error(`sync-block-doors failed: ${e.message}`);
+  process.exit(1);
 }
 
 writeJson(metaPath, meta);

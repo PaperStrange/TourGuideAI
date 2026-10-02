@@ -256,8 +256,8 @@ function main() {
   const dReachable = payload.doors.filter((d) => d.reachable).length;
   const dEnterable = payload.doors.filter((d) => d.enterable).length;
   const doorsOk =
-    payload.doors.length === 12 &&
-    dReachable === 12 &&
+    payload.doors.length === 10 &&
+    dReachable === 10 &&
     dEnterable === 7 &&
     leg.includes(`reached x=${payload.walk.reachedX}`) &&
     leg.includes(`${dReachable} of ${payload.doors.length} reachable`) &&
@@ -268,7 +268,7 @@ function main() {
     doorsOk,
     `legend says reached x=${payload.walk.reachedX}, ${dReachable} of ${payload.doors.length} reachable, ` +
       `${dEnterable} of ${payload.doors.length} enterable; payload: ${dReachable} reachable, ${dEnterable} enterable, ` +
-      `inWall ${payload.doors.filter((d) => d.inWall).length}/12 -- false for an enterable door by design (D-43)`,
+      `inWall ${payload.doors.filter((d) => d.inWall).length}/10 -- false for an enterable door by design (D-43)`,
   );
 
   /* ---- the guide overlay is the export, not a fresh invention ---------- */

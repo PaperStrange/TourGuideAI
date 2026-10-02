@@ -57,6 +57,12 @@ run('0/10 snapshot the pack before the build (losslessness guard)', join(HERE, '
 
 run('1/10 measure the corridor walk', join(HERE, 'measure-shijo-walk.mjs'), [join(EVID, 'osm-corridor-map.json'), '--out', join(EVID, 'transit-measurement.json')]);
 run('2/10 build the ODbL half', join(HERE, 'build-osm-places.mjs'));
+// Sync the door inventory HERE, before anything reads it. merge-pack-meta.mjs publishes
+// attestations/block-doors.json FROM evidence/tools/block-doors.json, so if the sync only ran later
+// in the build a drifted inventory would be published once before being corrected. Running it early
+// removes that window; apply-tracked-corrections.mjs runs it again as a self-healing safety net, and
+// both invocations are idempotent.
+run('2b/10 sync the door inventory from doors.json', join(HERE, 'sync-block-doors.mjs'));
 if (!Array.isArray(JSON.parse(execFileSync(node, ['-e', `process.stdout.write(require('fs').readFileSync(${JSON.stringify(join(PACK, 'places.json'))},'utf8'))`], { encoding: 'utf8' })))) {
   run('3/10 split the metadata head', join(HERE, 'split-pack-meta.mjs'));
 } else {
@@ -65,6 +71,7 @@ if (!Array.isArray(JSON.parse(execFileSync(node, ['-e', `process.stdout.write(re
 run('4/10 apply the F2 corrections (D-15 temples, labels, gates, pointers)', join(HERE, 'apply-f2-corrections.mjs'));
 run('4b/10 apply the F3 corrections (subway zones, station coordinates, gap wording)', join(HERE, 'apply-f3-corrections.mjs'));
 run('5/10 restore the temple legs whose endpoints now resolve', join(HERE, 'restore-temple-legs.mjs'));
+run('5b/10 sync the building records to doors.json (the south door cut)', join(HERE, 'apply-door-cut.mjs'));
 run('6/10 extract the remaining non-fact rows', join(HERE, 'extract-nonfact-rows.mjs'));
 run('7/10 correct the tracked metadata sources', join(HERE, 'apply-tracked-corrections.mjs'));
 run('8/10 derive freshness tiers', join(HERE, 'classify-freshness.mjs'));

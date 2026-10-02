@@ -22,7 +22,7 @@
  * V3  traversal      — a collision-constrained walker reaches x = 1599 following the
  *                      STREET'S OWN centreline. It does not assume a fixed row: the
  *                      centreline drifts 19.86 m and returns, per the manifest.
- * V4  doors          — 12 doors present, at the recorded cellX/cellY, each reachable,
+ * V4  doors          — 10 doors present, at the recorded cellX/cellY, each reachable,
  *                      and each 4-adjacent to a blocked tile (a door in a wall).
  * V5  guide.json     — ids reconcile with the game's export, not with a screenshot
  * V6  determinism    — the same scene.bin renders byte-identical frames twice
@@ -494,7 +494,7 @@ function main() {
   const doors = doorsFile.doors;
   const reached = reachableSet(collision, W, H, 0);
   const doorRows = doorReport(doors, profile, collision, W, H, GRID.halfCrossTiles, reached);
-  const allPresent = doorRows.length === 12;
+  const allPresent = doorRows.length === 10;
   const allReachable = doorRows.every((d) => d.reachable);
   const allInWall = doorRows.every((d) => d.inWall);
   const maxDepth = Math.max(...doorRows.map((d) => d.depthBehind));
@@ -524,7 +524,7 @@ function main() {
   const framed = doorRows.every(sitsInItsFacade);
   check(
     'V4',
-    'all 12 doors present and reachable; the 7 north doors are ENTERABLE into a bounded room; the 5 south doors are not, which is the measured state (D-40/D-42/D-43)',
+    'all 10 doors present and reachable; the 7 north doors are ENTERABLE into a bounded room; the 3 south doors are not, which is the measured state (D-40/D-42/D-43)',
     allPresent && allReachable && framed && northEnterable === 7 && southEnterable === 0 && roomsClosed,
     `${doorRows.length} doors · reachable ${doorRows.filter((d) => d.reachable).length} · ` +
       `framed by a facade or a closed room ${doorRows.filter(sitsInItsFacade).length}/${doorRows.length} · ` +

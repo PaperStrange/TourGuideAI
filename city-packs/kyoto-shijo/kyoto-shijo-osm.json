@@ -479,43 +479,6 @@
       ]
     },
     {
-      "doorId": "D-S2",
-      "osmBuildingId": 205732536,
-      "osmBuildingName": "京都ダイヤビル",
-      "facadeLineRun": {
-        "facadeId": "F-south",
-        "axis": "x",
-        "fromM": 17.526173,
-        "toM": 35.691321,
-        "yFromM": -19.969317,
-        "yToM": -19.747436,
-        "clippedByBlock": false,
-        "storefrontModule": {
-          "indexOnFacade": 1,
-          "widthM": 3.63303
-        }
-      },
-      "placement": {
-        "authoredXM": 22.975717,
-        "authoredYM": -19.902753,
-        "subX": 368,
-        "subY": -318,
-        "quantisedXM": 23,
-        "quantisedYM": -19.875,
-        "quantisationShiftM": {
-          "x": 0.024283,
-          "y": 0.027753
-        },
-        "floorXMVersusCanonical": {
-          "floorXM": 22,
-          "floorYM": -20,
-          "disagree": true
-        },
-        "boundaryCaseNote": "The authored module midpoint 22.975717 m lies 24.283 mm west of the x = 23 tile boundary -- inside the 1/32 m band where floor(x_m) and the canonical sub-tile path disagree (contract clause 3, assertion A3). floor() would give cellX = 22; the canonical sub-tile (368) gives 23. The canonical value governs and is what is declared."
-      },
-      "observedAnchors": []
-    },
-    {
       "doorId": "D-S3",
       "osmBuildingId": 205732536,
       "osmBuildingName": "京都ダイヤビル",
@@ -545,42 +508,6 @@
         },
         "floorXMVersusCanonical": {
           "floorXM": 26,
-          "floorYM": -20,
-          "disagree": false
-        }
-      },
-      "observedAnchors": []
-    },
-    {
-      "doorId": "D-S4",
-      "osmBuildingId": 205732536,
-      "osmBuildingName": "京都ダイヤビル",
-      "facadeLineRun": {
-        "facadeId": "F-south",
-        "axis": "x",
-        "fromM": 17.526173,
-        "toM": 35.691321,
-        "yFromM": -19.969317,
-        "yToM": -19.747436,
-        "clippedByBlock": false,
-        "storefrontModule": {
-          "indexOnFacade": 3,
-          "widthM": 3.63303
-        }
-      },
-      "placement": {
-        "authoredXM": 30.241776,
-        "authoredYM": -19.814,
-        "subX": 484,
-        "subY": -317,
-        "quantisedXM": 30.25,
-        "quantisedYM": -19.8125,
-        "quantisationShiftM": {
-          "x": 0.008224,
-          "y": 0.0015
-        },
-        "floorXMVersusCanonical": {
-          "floorXM": 30,
           "floorYM": -20,
           "disagree": false
         }

@@ -42,7 +42,7 @@
       "datumChange": {
         "whatHappened": "In task-16 the contract moved ORIGIN north by 81 microdegrees, which is 8.986 m measured in the frozen projection.",
         "whyItHadToMove": "The street climbs 19.86 m and then falls 9.76 m across the corridor. With the datum pinned at the western end, the north clearance at x=1388 fell to 0.14 m and the street left the world; the scene gate's S14 assertion caught it.",
-        "why8_986AndNotTheBandMidpoint": "The move was chosen INSIDE the feasible band rather than at its midpoint so that all twelve authored doorways shift by the SAME nine rows. At the band midpoint the north doors would have moved eight rows and the south doors nine, which would have changed the twelve doors' positions relative to each other -- a content change dressed as a datum change. At 8.986 m every door moves by exactly -9 rows and nothing else about the set moves: north doors cellY 33 -> 24, south doors cellY 9 -> 0.",
+        "why8_986AndNotTheBandMidpoint": "The move was chosen INSIDE the feasible band rather than at its midpoint so that all twelve authored doorways then in the set shift by the SAME nine rows (the south side was later cut from five to three in task-20, and the ten that remain kept that shift). At the band midpoint the north doors would have moved eight rows and the south doors nine, which would have changed the twelve doors' positions relative to each other -- a content change dressed as a datum change. At 8.986 m every door moves by exactly -9 rows and nothing else about the set moves: north doors cellY 33 -> 24, south doors cellY 9 -> 0.",
         "whatDidNotMove": "Door count, door order, cellX, the frontage widths, the storefront modules and the pairwise minimum separation are all unchanged, because x depends on longitude and the move was purely in latitude. Every y-valued field in both halves was recomputed from the stored microdegrees against the new datum rather than shifted by hand."
       }
     },
@@ -86,14 +86,14 @@
     "doorPlacement": {
       "step1_measure": "Take each footprint's street-facing edge from real OSM geometry, identified by OSM NODE ID pair (not by coordinate matching). North: way 205732558, nodes 2157078408 -> 2157078409. South: way 205732536, nodes 2157078404 -> 2157078405.",
       "step2_clip": "Clip each edge to the block, x_m in [0, 40). The west ends are already inside the block; the north edge is cut at x_m = 40 by the block boundary.",
-      "step3_allocate": "Allocate the 12 doors between the two facades in proportion to measured frontage, largest-remainder: north 7, south 5. This yields near-uniform storefront widths of 3.3540 m and 3.6330 m (design module is 3 m; measured mean is 3.4703 m).",
+      "step3_allocate": "Allocate the doors between the two facades in proportion to measured frontage, largest-remainder: north 7, south 5, giving near-uniform storefront module widths of 3.3540 m and 3.6330 m (design module is 3 m). The south allocation was cut from 5 to 3 in task-20 (D3); the mean over the doors that now exist is 3.4377 m, and the south facade is no longer fully tiled -- see doorRemovals below.",
       "step4_place": "Place each door at the midpoint of its storefront module, projected onto the measured facade edge.",
       "step5_quantise": "Quantise to the canonical integer 1/16 sub-tile with the imported quantizeToSubTile(), then cellX = tileFromSub(subX) and cellY = tileFromSub(subY) + 20. The canonical sub-tile governs; floor(x_m) is a reference oracle only (contract clause 3 / assertion A3). Two doors land within 1/32 m of a tile boundary and the two paths disagree there -- see doors D-N6 and D-S2. These cells are a function of the FROZEN DATUM and of nothing else: when the datum moved in task-16 the cells were recomputed from the stored microdegrees rather than adjusted by hand, and the validator re-derives them on every run (assertion V4), which is how the stale cells were caught.",
       "noLanestUsed": "No facade positioning uses the `lanes` tag. LANES_QUALITY.usableAsFact = false; the frozen contract asserts it (A15). Frontage geometry here is footprint edges only."
     },
     "doorExistence": {
       "authored": true,
-      "statement": "No OSM entrance node exists anywhere in this block, so all 12 doorways are AUTHORED placements on measured facades. The building identity and the facade line are observed; the position along the facade is authored. Hence provenance.valueKind = authored for every door, and none may enter the guide's verified column.",
+      "statement": "No OSM entrance node exists anywhere in this block, so all 10 doorways are AUTHORED placements on measured facades. The building identity and the facade line are observed; the position along the facade is authored. Hence provenance.valueKind = authored for every door, and none may enter the guide's verified column.",
       "notMerged": "No two distinct storefronts were merged into one door. Each door registers to the footprint it opens into, which is what the source says: OSM records ONE footprint per building here, with no building:part and no shop way inside either footprint (Q2 returned no such element). Splitting one footprint into 7 and 5 doorways is authored, and is labelled as such rather than being passed off as observed subdivision."
     },
     "curator": {
@@ -109,18 +109,34 @@
         "docs/handOff/dsh-bundle-tourguide-2.5d/tools/world-grid.mjs (read; imported by the validator)",
         "iteration/tools/freeze-origin.mjs (read)"
       ]
+    },
+    "doorRemovals": {
+      "removedIn": "task-20 (D3), executing the user ruling: 南侧可砍到 ~3 个",
+      "removed": [
+        "D-S2",
+        "D-S4"
+      ],
+      "kept": [
+        "D-S1",
+        "D-S3",
+        "D-S5"
+      ],
+      "whyTheseThreeAndNotTheOtherTwo": "Chosen by GEOMETRY ALONE, because the sources give a count and no positions. {D-S1, D-S3, D-S5} is the unique choice of three from the five existing cellX (19, 23, 26, 30, 33) that maximises the minimum door-to-door spacing: it yields 7.27 m, whereas all nine other choices yield 3.63 m. It is also the only choice that retains BOTH facade ends -- the westernmost and the easternmost existing doors -- which keeps a doorway on the corner frontage. No door was moved: the three survivors keep their original cellX and cellY.",
+      "whyNotByTenant": "The tenant listing gives the COUNT of south ground-floor entities -- three, namely 三菱UFJ銀行 ATMコーナー 外貨両替（ワールドカレンシーショップ）, A.P.C. and アークテリクス -- and gives NO position for any of them. The letting page's 交差点の角の立地 predicates the BUILDING's site, not any tenant's unit, so it cannot put the bank at the corner end of the facade; reading it that way is an over-read, and it was withdrawn. The tenant-to-door mapping is therefore UNKNOWN and is recorded as gap G9 rather than guessed.",
+      "theSouthFacadeWasNotRetiled": "The survivors are NOT a re-partition of the south facade. Each keeps the storefrontModule it was originally placed in (3.63303 m, indices 0 / 2 / 4), so two of the facade's five modules now carry no door. summary.storefrontWidthSouthM is therefore the MODULE WIDTH ACTUALLY USED, not frontage divided by door count (which would be 6.055049 m and would describe a partition the doors do not form). V12 derives it from the ODbL records for exactly that reason.",
+      "countAfter": 10
     }
   },
   "contentFieldsRule": {
     "note": "entrancePointJa, doorType and interiorTemplate are NOT facts. They are authored content decisions, which is why their valueKind is `authored` and not `observed`. The rules behind them are stated here so a consumer can disagree with the rule rather than guess at it.",
     "provenanceClass": {
-      "whyAuthored": "All 12 doors carry provenance.valueKind = authored, and so do the four placement-derived fields (cellX, cellY, entrancePointJa, interiorTemplate). A human READ the building identity and the facade line off OSM, so those two fields stay `observed`. Nobody read 'there is a doorway at x m' off any source: the doorway position is a placement this project made along a measured facade. Before VALUE_KIND gained `authored` these rows said `licenced`, which is the vocabulary for licence-derived defaults such as a road-width template -- the wrong class, and the file contradicted itself by saying `authored: true` in prose while the field said `licenced`. `authored` is the truthful member.",
+      "whyAuthored": "All 10 doors carry provenance.valueKind = authored, and so do the four placement-derived fields (cellX, cellY, entrancePointJa, interiorTemplate). A human READ the building identity and the facade line off OSM, so those two fields stay `observed`. Nobody read 'there is a doorway at x m' off any source: the doorway position is a placement this project made along a measured facade. Before VALUE_KIND gained `authored` these rows said `licenced`, which is the vocabulary for licence-derived defaults such as a road-width template -- the wrong class, and the file contradicted itself by saying `authored: true` in prose while the field said `licenced`. `authored` is the truthful member.",
       "whyItChangesNothingDownstream": "`authored` does NOT reach the guide's verified column. GUIDE_VERIFIED_COLUMN_ALLOWED is still exactly ['observed'], so re-labelling licenced -> authored moved no door into the verified column and moved none out of it. Every door still carries guideVerifiedColumnAllowed: false, which is why re-labelling is a provenance correction and not a product change. world-grid.mjs assertion A9b asserts that the gate did not widen when the fourth member was added.",
       "cannotDriftAgain": "Two assertions, guarding opposite directions, and readers should not confuse them. V1 (in validate-doors.mjs) forbids this file from carrying a copy of any contract literal at all -- it scans for contract-mirror key names and high-entropy contract values, and it fails if one reappears. V8 checks every declared valueKind against the LIVE imported enum, so an incompatible kind is still noticed even though no copy is stored. The two together are what removed the drift: before task-15 this file held a mirrored enum and went red when the contract grew; now it holds none and follows the import."
     },
     "doorType": {
       "rule": "Every door carries doorType, and in v1 every door's value is `unclassified`.",
-      "whyTheFieldExistsWhenTheValueIsAlwaysTheSame": "Because twelve doors all reading the same entrancePointJa is not 'unclassified' -- it is having nowhere to put a classification. The user ruled (D-24, shared task task-19) that v1 does not classify doors but that the structure must exist, so that the first classification pass is an EDIT rather than a MIGRATION. Those are different things, and migrations are what this repo keeps paying for (D-12 / D-23 / D-36 / D-44).",
+      "whyTheFieldExistsWhenTheValueIsAlwaysTheSame": "Because doors that all read the same entrancePointJa is not 'unclassified' -- it is having nowhere to put a classification. The user ruled (D-24, shared task task-19) that v1 does not classify doors but that the structure must exist, so that the first classification pass is an EDIT rather than a MIGRATION. Those are different things, and migrations are what this repo keeps paying for (D-12 / D-23 / D-36 / D-44).",
       "unclassifiedIsAFinishedState": "It is not a gap waiting to be filled and it is not 'unknown'. It records a decision this version made: v1 does not decide the type. A gap is recorded in `gaps`; this is a value. `unclassified` is the correct, complete state for v1.",
       "whereTheLegalValueSetLives": "world-grid.mjs, exported as DOOR_TYPES and imported by validate-doors.mjs. This file deliberately carries NO copy of the set -- not as a value, not as a list, not as prose enumerating the members -- because a mirrored copy drifts and an import does not (D-12). v1's set is exactly ['unclassified'].",
       "whyNothingIsClassifiedYet": "A type is a claim about what is behind a door, and this project does not print claims it cannot point at a source for. Textual sources DO exist and are enumerated in iteration/recon/door-identity-from-text-sources.md -- the north building's 1F tenant list, the south building's 1F list, and a subway exit the tenant page names. But a tenant list says which entities exist on a floor; it does NOT say which doorway each one uses. So those sources ground the COUNT of doors (tasks D2/D3) without grounding any individual door's TYPE. Classifying from them would be inventing the join between a tenant and a door.",
@@ -131,7 +147,7 @@
       "rule": "Every door is on the 四条通 street frontage, so every door is 本門.",
       "whyNoSideDoors": "A 側門 needs a side street or alley to face. Measured: the north footprint's only other street-facing edges are its 烏丸通 corner wall (nodes 2157078412 -> 2157078408), and the south footprint's is its 烏丸通 corner wall (nodes 2157078403 -> 2157078404). Both are recorded under unusedSourceCandidates. No door is placed on either, because doing so would change this block's declared two-sided 四条通 frontage model and the card does not define 本門/側門 for a corner.",
       "whyNoAlleyDoors": "路地奥 requires a mapped alley. Gap G4: no footway, service way or barrier is mapped anywhere on the south side of x in [35.69, 40), and Q2 (every way inside the block bbox) found no alley at all. So no 路地奥 entrance can be sourced and none is claimed.",
-      "consequence": "The field is uniform across all 12 doors. That is the measured truth about this block, not a failure to populate it."
+      "consequence": "The field is uniform across all 10 doors. That is the measured truth about this block, not a failure to populate it."
     },
     "interiorTemplate": {
       "rule": "One template per storefront module. S 10×7 for the 11 plain modules; M 13×9 for the single module that contains a sourced occupant (D-S1, whose module holds OSM node 14196400744, 三菱ＵＦＪ銀行 京都支店). L 16×10 is not used: no source in this block supports a large interior.",
@@ -349,32 +365,6 @@
       "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm.json#/doors[doorId=D-S1]"
     },
     {
-      "doorId": "D-S2",
-      "cellX": 23,
-      "cellY": 0,
-      "tileY": -20,
-      "entrancePointJa": "本門",
-      "doorType": "unclassified",
-      "interiorTemplate": "S 10×7",
-      "provenance": {
-        "valueKind": "authored",
-        "source": "OSM way 205732536 (footprint edge nodes 2157078404..2157078405) + 3 m storefront module template applied by the curator",
-        "verifiedAt": "2026-09-29T16:45:00Z",
-        "verifiedBy": "city-data-architect (doors-author, shared task task-2)",
-        "fields": {
-          "osmBuildingId": "observed",
-          "facadeLineRun": "observed",
-          "cellX": "authored",
-          "cellY": "authored",
-          "entrancePointJa": "authored",
-          "interiorTemplate": "authored"
-        },
-        "guideVerifiedColumnAllowed": false,
-        "whyNotObserved": "Same as D-N1."
-      },
-      "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm.json#/doors[doorId=D-S2]"
-    },
-    {
       "doorId": "D-S3",
       "cellX": 26,
       "cellY": 0,
@@ -399,32 +389,6 @@
         "whyNotObserved": "Same as D-N1."
       },
       "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm.json#/doors[doorId=D-S3]"
-    },
-    {
-      "doorId": "D-S4",
-      "cellX": 30,
-      "cellY": 0,
-      "tileY": -20,
-      "entrancePointJa": "本門",
-      "doorType": "unclassified",
-      "interiorTemplate": "S 10×7",
-      "provenance": {
-        "valueKind": "authored",
-        "source": "OSM way 205732536 (footprint edge nodes 2157078404..2157078405) + 3 m storefront module template applied by the curator",
-        "verifiedAt": "2026-09-29T16:45:00Z",
-        "verifiedBy": "city-data-architect (doors-author, shared task task-2)",
-        "fields": {
-          "osmBuildingId": "observed",
-          "facadeLineRun": "observed",
-          "cellX": "authored",
-          "cellY": "authored",
-          "entrancePointJa": "authored",
-          "interiorTemplate": "authored"
-        },
-        "guideVerifiedColumnAllowed": false,
-        "whyNotObserved": "Same as D-N1."
-      },
-      "osmRecord": "city-packs/kyoto-shijo/kyoto-shijo-osm.json#/doors[doorId=D-S4]"
     },
     {
       "doorId": "D-S5",
@@ -454,23 +418,23 @@
     }
   ],
   "summary": {
-    "doorCount": 12,
+    "doorCount": 10,
     "byValueKind": {
       "observed": 0,
-      "authored": 12,
+      "authored": 10,
       "licenced": 0,
       "abstract": 0
     },
     "guideVerifiedColumnAdmitted": 0,
     "doorsNorthSide": 7,
-    "doorsSouthSide": 5,
+    "doorsSouthSide": 3,
     "distinctBuildingIds": [
       205732558,
       205732536
     ],
     "storefrontWidthNorthM": 3.35399,
     "storefrontWidthSouthM": 3.63303,
-    "storefrontWidthMeanM": 3.470257,
+    "storefrontWidthMeanM": 3.437702,
     "minPairwiseDoorSeparationM": 3.3125,
     "minSameFacadeCellSpacing": 3,
     "maxQuantisationShiftM": 0.030985,
@@ -482,7 +446,7 @@
       "claim": "No OSM entrance node exists inside this block.",
       "severity": "blocks observed doors",
       "measured": "The corpus slice contains exactly 10 entrance nodes; 0 fall in x in [0,40), y in [-20,20). The nearest node IN THE SLICE -- which carries only entrance and shop nodes, so this is not a claim about every node that exists -- is 53.3 m from the block centre (node 12749347474, shop=gift, at xM 68.28 / yM 22.63 in the task-16 datum). Query Q2 (exhaustive over the exact block bbox: every node and way) returned 41 elements and ZERO entrance nodes.",
-      "consequence": "All 12 doorways are authored. No door in this pack can be valueKind observed.",
+      "consequence": "All 10 doorways are authored. No door in this pack can be valueKind observed.",
       "closesWhen": "A field survey or a municipal open dataset supplies entrance positions; or the project accepts authored doors permanently (then the valueKind enum needs a member that means 'authored')."
     },
     {
@@ -498,7 +462,7 @@
       "claim": "The block contains exactly 2 building footprints, not ~26 storefront modules.",
       "severity": "changes the art and level budget",
       "measured": "Frontage 23.477931 m (way 205732558) + 18.165148 m (way 205732536) = 41.643079 m. At the design's 3 m module that is 13.88 modules, not 26.",
-      "consequence": "12 doors occupy 86% of the block's storefront modules, not 46%. There is almost no non-enterable filler frontage.",
+      "consequence": "10 doors occupy 72% of the block's storefront modules, not 46%. There is almost no non-enterable filler frontage.",
       "closesWhen": "See C3."
     },
     {
@@ -511,10 +475,10 @@
     },
     {
       "gapId": "G5",
-      "claim": "There is no source for the existence of 11 of the 12 storefronts.",
+      "claim": "There is no source for the existence of 9 of the 10 storefronts.",
       "severity": "bounds what the guide may say",
       "measured": "The exact block bbox contains exactly one occupant POI: node 14196400744 (amenity=bank, 三菱ＵＦＪ銀行 京都支店). The other 27 nodes in the block are 22 geometry vertices, two history boards, a tree, two surveillance cameras and a crossing node.",
-      "consequence": "No door may be given a business identity. The guide must not name a shop at any of the 12 doors; it may name the BUILDING (observed) and must label the doorway position as template-derived.",
+      "consequence": "No door may be given a business identity. The guide must not name a shop at any of the 10 doors; it may name the BUILDING (observed) and must label the doorway position as template-derived.",
       "closesWhen": "Per-door sources are curated (20 min/place budget) or the doors are declared as game content rather than real storefronts."
     },
     {
@@ -539,10 +503,18 @@
       "status": "CLOSED",
       "closedAt": "2026-09-30",
       "closedBy": "geo-contract added VALUE_KIND.AUTHORED to world-grid.mjs; doors-author re-labelled this pack (shared task task-9)",
-      "wasMeasuredAs": "VALUE_KIND = observed | licenced | abstract, with this pack's 12 authored doorways recorded as licenced because a template produced the position -- the closest of three, but the wrong class, since the contract defines licenced as licence-derived defaults such as road width.",
+      "wasMeasuredAs": "VALUE_KIND = observed | licenced | abstract, with this pack's authored doorways recorded as licenced because a template produced the position -- the closest of three, but the wrong class, since the contract defines licenced as licence-derived defaults such as road width.",
       "resolution": "VALUE_KIND now has four members: observed | authored | licenced | abstract. `authored` is deliberately NOT admitted to the guide's verified column; GUIDE_VERIFIED_COLUMN_ALLOWED is still exactly ['observed'], and world-grid.mjs assertion A9b asserts the gate did not widen. All 12 doors now carry provenance.valueKind = authored, as do the four placement-derived per-field entries, so the file's prose and its fields finally agree. summary.byValueKind reads {observed:0, authored:12, licenced:0, abstract:0}, and every door keeps guideVerifiedColumnAllowed: false.",
       "whyItCannotRecur": "validate-doors.mjs imports VALUE_KINDS from world-grid.mjs and asserts this file's embedded frozenConstants mirror equals it. That guard is what caught the drift: the mirror was written before `authored` existed, and V1 went red the moment the contract changed rather than waiting for a human to notice.",
       "consequenceOfTheOldGap": "None shipped. Because neither licenced nor authored reaches the guide's verified column, re-labelling moved no door into or out of it; the correction is to the provenance class, not to the product."
+    },
+    {
+      "gapId": "G9",
+      "claim": "Which south ground-floor tenant sits behind which of the three surviving doors.",
+      "severity": "blocks a shop NAME at those three doors; does not block the doors",
+      "measured": "The 1F tenant list names three entities (三菱UFJ銀行 ATMコーナー 外貨両替（ワールドカレンシーショップ）, A.P.C., アークテリクス) and gives no position for any of them: it is a floor-by-floor listing, and its within-floor order groups affiliated companies rather than tracing the facade. The letting page adds 交差点の角の立地, which is about the BUILDING site, not a tenant unit.",
+      "consequence": "The three south doors stay doorType=unclassified, carry no business identity, and the guide must not name a shop at any of them. This is recorded rather than resolved because inventing the join between a tenant and a doorway is exactly the class of claim this project exists to refuse.",
+      "closesWhen": "A source states a position along the south facade for at least one 1F tenant -- a floor guide with unit numbers, a storefront photograph, or a human street check."
     }
   ],
   "contradictionsWithDesign": [
@@ -568,7 +540,7 @@
       "document": "design-core.md section 8.2.1 (1) and shared task task-2",
       "what": "'Gate 1 手作美术 = 一个 40x40 街区（约 26 个店面模块，含 12 扇门）' / '一个街区约 26 个店面模块（两侧 x 40 m / 3 m），其中 12 个可进入 (46%)'.",
       "measured": "Measured frontage is 41.643079 m over 2 footprints = 13.88 three-metre modules. The 26 figure assumes both sides are shop-fronted for the full 40 m; measured, 16.5-17.5 m per side is the 四条烏丸 junction (G2), and there are 2 footprints rather than many small ones (G3).",
-      "whyItMatters": "26 vs 13.9 is a 1.9x over-count of authored storefront modules, and 12 enterable out of 13.9 modules is 86%, not 46%. The design's implied 'half the frontage is non-enterable filler' does not exist in this block: nearly every frontage metre is a door. That changes the art budget (less facade to dress, more interiors to build) in the opposite direction from the one the design assumed.",
+      "whyItMatters": "26 vs 13.9 is a 1.9x over-count of authored storefront modules, and 10 enterable out of 13.9 modules is 72%, not 46%. The design's implied 'half the frontage is non-enterable filler' does not exist in this block: nearly every frontage metre is a door. That changes the art budget (less facade to dress, more interiors to build) in the opposite direction from the one the design assumed.",
       "needs": "design-core correction, or a decision to author filler frontage. Parent document is Lead-owned; reported, not edited."
     },
     {
@@ -595,7 +567,7 @@
     "assertions": [
       "V1  the contract is IMPORTED, not copied (D-12): no contract-mirror key name and no high-entropy contract literal appears anywhere in this file, frozenConstants.mustImport resolves, and the module it names still exports the contract's shape. It used to compare twelve mirrored literals plus the enum; that mirror is gone, so this now holds the ABSENCE of the drift surface. Companion: V8 checks every declared valueKind against the LIVE imported enum",
       "V2  every door cellX and cellY is an integer in [0, 40)",
-      "V3  all 12 cells are pairwise distinct, and every pair of doors is >= 1 m apart",
+      "V3  all 10 cells are pairwise distinct, and every pair of doors is >= 1 m apart",
       "V4  each door's declared cell is re-derived from the stored OSM geometry (node ids re-projected, module midpoint recomputed, imported quantiser reapplied)",
       "V5  each door's canonical sub-tile lies inside its declared cell, within 1/32 m of its facade line, and within its facade run; the perpendicular offset is COMPUTED here and its maximum printed (the ODbL half no longer stores it)",
       "V6  each osmBuildingId resolves in kyoto-slice-overpass.json as a way carrying a building tag (the acceptance criterion)",
@@ -655,7 +627,7 @@
   },
   "osmDerived": {
     "file": "city-packs/kyoto-shijo/kyoto-shijo-osm.json",
-    "sha256": "416d763bf0ce30f6e29b47b423310bc030ffa8601bcc601dfafeafaab6d30963",
+    "sha256": "2c8443b1cb588aebcf3ad172ee6732ec8ae36de0b9c58ea0904edb8662d7bc4b",
     "sha256Note": "Re-recorded whenever the ODbL half changes: task-9 (evidenceFiles, extractedAt, and dropping the non-reproducing perpendicular offset) and task-16 (the datum move). V18 asserts this value equals the file on disk, so editing one without the other fails rather than passing quietly.",
     "licence": "ODbL 1.0",
     "licenceUri": "https://opendatacommons.org/licenses/odbl/1-0/",

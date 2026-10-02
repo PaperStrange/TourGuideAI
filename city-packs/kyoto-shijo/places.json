@@ -121,12 +121,10 @@
       "whyNotObserved": "addressJa（京都市下京区四条通烏丸東入長刀鉾町10）は OSM のタグを連結した値である。個々の断片（addr:province 京都府／addr:city 京都市／addr:suburb 下京区／addr:quarter 長刀鉾町／addr:block_number）は OSM から読んだ observed だが、連結そのもの——区の順序と番地の繋ぎ方——は本パックが行った編集であり、どの来源もこの文字列を述べていない（addressProvenance.kind = osm-fragments-composed）。同じ記録の中で addressJa を observed と呼ぶのは、この記録自身の addressProvenance と矛盾していた。加えて entrances は 12 門の配置で authored である。したがって建物名・座標・category は OSM から読んだ observed だが、この記録は攻略の「已验证」欄に出してはならない。"
     },
     "entrances": {
-      "blockDoors": 5,
+      "blockDoors": 3,
       "doorIds": [
         "D-S1",
-        "D-S2",
         "D-S3",
-        "D-S4",
         "D-S5"
       ],
       "valueKind": "authored",

@@ -25,7 +25,8 @@
 //   104-107  manifestLen (u32)
 //   108...   manifest (JSON, manifestLen bytes)
 //   then     ground[n], collision[n], heights[n], occlusionHalf[wTiles]   where n = wTiles*hTiles
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 import { ORIGIN, worldGrid, GRID } from '../../docs/handOff/dsh-bundle-tourguide-2.5d/tools/world-grid.mjs';
 import { SCENE_MAGIC, SCENE_VERSION } from './emit-scene.mjs';
@@ -83,6 +84,7 @@ const contractHash = buf.toString('ascii', 40, 104);
 const manifestLen = buf.readUInt32LE(104);
 
 ok('R3', version === SCENE_VERSION, `version ${version} equals the IMPORTED SCENE_VERSION ${SCENE_VERSION}`);
+
 // The container must agree with the FROZEN CONTRACT, not merely with itself. A scene baked
 // under a different grid is a scene of a different world.
 ok('R4', wTiles === worldGrid.wTiles && hTiles === worldGrid.hTiles,
@@ -106,6 +108,32 @@ let o = 108;
 let manifest;
 try { manifest = JSON.parse(buf.toString('utf8', o, o + manifestLen)); }
 catch (e) { console.log(`FAIL  manifest is not JSON: ${e.message}`); process.exit(1); }
+
+// R3b -- the scene must describe the CURRENT doors.json, not one it was baked from earlier.
+//
+// WHY THIS IS HERE. doors-author re-baked scene.bin by hand and found the bytes on disk were
+// 3E4B16DC..., 473312 B, where a fresh bake of the same inputs gives 9EA9FECB..., 473654 B. This reader
+// had been passing 9/9 against them. So a reader whose whole purpose is to verify the container
+// independently was verifying a container the emitter no longer produced -- and nothing in run-gates
+// could tell, because this file never opened doors.json and compared no input hash. The only staleness
+// check in the repo lives in gate-gate1.mjs, which is a status report and not a gate.
+//
+// emit-scene already records the sha256 of the doors.json it read, in manifest.openings.sourceSha256.
+// Asserting that against the file on disk is the difference between "the scene is self-consistent"
+// (R1-R8, all of which are true of a stale scene) and "the scene is current".
+{
+  const doorsPath = join(REPO, 'city-packs', 'kyoto-shijo', 'doors.json');
+  const bakedDoorsSha = manifest && manifest.openings ? manifest.openings.sourceSha256 : null;
+  if (bakedDoorsSha && existsSync(doorsPath)) {
+    const liveDoorsSha = createHash('sha256').update(readFileSync(doorsPath)).digest('hex').toUpperCase();
+    ok('R3b', liveDoorsSha === bakedDoorsSha,
+      liveDoorsSha === bakedDoorsSha
+        ? `scene was baked from the current doors.json (${liveDoorsSha.slice(0, 16)}...)`
+        : `STALE: scene records doors.json ${String(bakedDoorsSha).slice(0, 16)}... but doors.json is now ${liveDoorsSha.slice(0, 16)}... -- re-run emit-scene.mjs`);
+  } else {
+    ok('R3b', true, `not applicable: ${bakedDoorsSha ? 'doors.json absent' : 'the scene records no doors.json hash'}`);
+  }
+}
 o += manifestLen;
 const ground = buf.subarray(o, o + n); o += n;
 const collision = buf.subarray(o, o + n); o += n;
