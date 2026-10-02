@@ -123,11 +123,17 @@ repository's own documentation conventions again and do not keep adding planning
 no longer exists sends the next session looking in the wrong place — the same failure as D-07's
 README describing workflows that never existed:
 
-1. `evidence/` was described as snapshots "the gate scripts read by relative path". **No gate reads
-   it.** Verified by searching every script in the repo: the only hits are `gate-artifact-layout.mjs`,
-   which asserts the directory is unmodified, and a comment in `handoff-consolidate.mjs`. The
-   directory's value is as a citable frozen snapshot, not as an input to a check.
-2. `dsh-bundle-tourguide-2.5d/` was described as junction-linked into the DSH profile and therefore
+1. `evidence/` was described as snapshots "the gate scripts read by relative path". **The archive is
+   still not read by any gate, and should not be** — it is the pipeline's OUTPUT, so a gate depending
+   on it would invert the dependency: someone else's handoff folder changes and our gate goes red
+   while our code is untouched. What was missing was the other half: nothing verified that a licence
+   snapshot still EXISTED, so deleting one left every gate green while a compliance claim lost its
+   basis. That is now fixed by copying the snapshots to `.dsh/artifacts/licences/` (2.4 MB, tracked)
+   and having `gate-artifact-layout.mjs` assert each one's presence and hash against
+   `.dsh/artifacts/licences/MANIFEST.json`. So the claim became true, in the correct direction:
+   the gate reads the pipeline's own copy, and `docs/handOff/evidence/` stays exactly as found.
+   Deleting or editing a snapshot now fails the gate (`licence-missing` / `licence-modified`), and
+   `--self-test` proves it.2. `dsh-bundle-tourguide-2.5d/` was described as junction-linked into the DSH profile and therefore
    unable to move. **It is not a link** (`LinkType` is empty, no `Target`). It still should not move,
    on the simpler and true reason that it is the tool bundle.
 3. `archive/` was not mentioned at all, so the folder's real bulk went undeclared.

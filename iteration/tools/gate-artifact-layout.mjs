@@ -147,6 +147,8 @@ const FORBIDDEN_FOR_CAPTURES = [
   { re: /^\.dsh\/(?!artifacts\/|skills\/)/, why: 'inside .dsh/ only artifacts/ and skills/ are declared' },
 ];
 
+const hashCanonical = (p) =>
+  createHash('sha256').update(readFileSync(p, 'utf8').replace(/\r\n/g, '\n'), 'utf8').digest('hex').toUpperCase();
 // ── collect what is on disk ─────────────────────────────────────────────────────────────────────
 let tracked = new Set();
 try {
@@ -209,19 +211,65 @@ for (const f of all) {
   }
 }
 
-// 3. the same bytes must not sit in two declared stores (D-23: duplicate evidence splits citations)
-const bySize = new Map();
+// 3. the same CONTENT must not sit in two declared stores (D-23: duplicate evidence splits
+// citations across two truths).
+//
+// The first version keyed on filename + byte count, which is not the same question and produced a
+// false verdict the moment a legitimate pair appeared: the licence archive and the pipeline's working
+// copy are both named the same and were sized the same, so all 14 were reported as duplicates. Two
+// files agreeing on a name and a length are not known to be one file -- this repo has measured that
+// exact confusion, since gsi-kiban.txt is 5832 bytes in the working tree and 6222 in a fresh clone
+// purely from line endings.
+//
+// So this hashes, and it needs an explicit allowance for pairs that are deliberately two copies with
+// two roles. A norm that forces the archive and the working copy into one file would push the gate
+// back to reading the handoff deliverable, which is the dependency inversion the user caught.
+// ORDER-PROOF ON PURPOSE. I wrote these keys as 'fact-evidence+curated-recon' while the code builds
+// them sorted, so the pair never matched and two real duplicates were reported as allowed -- and I
+// misread the truncated output as one of them passing. This is the fourth ordering mistake in one
+// session (twice a broad class swallowing a narrow one in the table above, once an exit code read
+// from the wrong side of a pipe). So the keys are compared as UNORDERED PAIRS: a set of sorted
+// two-element arrays, with the lookup sorting both sides. Writing a key in the wrong order can no
+// longer silently disable it.
+// Sorts the two class ids so a key written in either order matches.
+const twinKey = (s) => s.split('+').sort().join('+');
+const DELIBERATE_TWIN_STORES = new Set([
+  // One PDF under two names in two stores. Found only after this rule started hashing instead of
+  // comparing names and sizes. Kept as twins on purpose: the pack's copy is cited from the fact layer
+  // and the recon copy is cited from the clause sweep, and deleting either would break a citation
+  // from a document that legitimately needs it. Recorded here rather than silently tolerated.
+  // Both pairs are Kyoto open-data captures held once by the pack and once by the clause sweep, under
+  // DIFFERENT names -- which is why the earlier name+size rule never saw them and hashing did. Kept
+  // as twins: the pack's copies are cited from the fact layer and the recon copies from the clause
+  // sweep, so removing either breaks a citation from a document that needs it. Listed by name, so a
+  // NEW byte-identical pair still fails until someone records it here deliberately.
+  'curated-recon+fact-evidence', // kyoto-city-kiyaku-syoban.pdf == kyoto-kiyaku.pdf
+                                 //   and kyoto-sight-DSIGHT_1.csv == kyoto-sight.csv
+  'licence-evidence+new-capture', // docs/handOff/evidence (frozen archive) vs .dsh/artifacts/licences (gate-readable)
+]);
+const byContent = new Map();
 for (const f of all) {
   const cls = CLASSES.find((c) => c.match(f.rel));
   if (!cls || cls.id === 'build-output') continue;
-  const key = `${f.bytes}:${f.rel.split('/').pop()}`;
-  if (!bySize.has(key)) bySize.set(key, []);
-  bySize.get(key).push(f.rel);
+  // Manifest files describe other files rather than being evidence, so they are not candidates.
+  if (/MANIFEST\.json$/.test(f.rel)) continue;
+  const abs = join(REPO, f.rel);
+  let h;
+  try {
+    h = hashCanonical(abs);
+  } catch {
+    continue; // unreadable or binary; not a duplicate question
+  }
+  if (!byContent.has(h)) byContent.set(h, []);
+  byContent.get(h).push(f.rel);
 }
-for (const [, paths] of bySize) {
+for (const [h, paths] of byContent) {
   const stores = new Set(paths.map((p) => (CLASSES.find((c) => c.match(p)) ?? {}).id));
   if (paths.length > 1 && stores.size > 1) {
-    violations.push({ rule: 'duplicate', file: paths.join(' + '), cls: [...stores].join(','), detail: 'the same filename and size in two declared stores', why: 'D-23: duplicate evidence splits citations across two truths; one copy must be removed' });
+    const pair = [...stores].sort().join('+');
+    if (process.env.NORM_DEBUG) console.log(`    DEBUG bucket ${h.slice(0, 12)} pair=[${pair}] allowed=${DELIBERATE_TWIN_STORES.has(pair)} files=${paths.length} :: ${paths.join(' | ')}`);
+    if (DELIBERATE_TWIN_STORES.has(twinKey(pair))) continue;
+    violations.push({ rule: 'duplicate', file: paths.join(' + '), cls: [...stores].join(','), detail: `byte-identical content (sha256 ${h.slice(0, 16)}…) in two declared stores`, why: 'D-23: duplicate evidence splits citations across two truths; one copy must be removed, or the pair must be added to DELIBERATE_TWIN_STORES with its reason' });
   }
 }
 
@@ -237,8 +285,7 @@ for (const [, paths] of bySize) {
 // handoff directory. It does not need byte-identity across platforms to do that, and it must not
 // silently claim it. Normalising CRLF to LF before hashing makes the check environment-independent
 // while still catching any content change.
-const hashCanonical = (p) =>
-  createHash('sha256').update(readFileSync(p, 'utf8').replace(/\r\n/g, '\n'), 'utf8').digest('hex').toUpperCase();
+
 // ── the handoff deliverable must be unedited, judged on normalised bytes ───────────────────────────────
 const HANDOFF_DIR = join(REPO, 'docs', 'handOff', 'evidence');
 if (process.argv.includes('--accept-handoff-baseline')) {
@@ -266,6 +313,39 @@ if (process.argv.includes('--accept-handoff-baseline')) {
   for (const name of Object.keys(now)) {
     if (!(name in base)) {
       violations.push({ rule: 'handoff-frozen', file: `docs/handOff/evidence/${name}`, cls: 'licence-evidence', detail: 'ADDED to the frozen handoff deliverable', why: 'new captures belong in .dsh/artifacts/, not in a frozen handoff artefact' });
+    }
+  }
+}
+// ── the licence store: every snapshot must be present AND unchanged ──────────────────────────────
+// This is what makes the licence claims checkable rather than merely written down. Before it, the 14
+// snapshots had integrity protection (the archive baseline) but no EXISTENCE protection: deleting one
+// left every gate green while a compliance claim silently lost its basis. Measured before building
+// it -- removing osm-block-q1-footprints.json made validate-doors exit 1, so that gate does read its
+// evidence, but nothing read these.
+//
+// Note the direction, which the user caught: this reads .dsh/artifacts/licences/, the pipeline's own
+// copy, NOT docs/handOff/evidence/. A gate that depended on the handoff deliverable would invert the
+// dependency, since that folder is the pipeline's output.
+const LICENCE_DIR = join(REPO, '.dsh', 'artifacts', 'licences');
+const LICENCE_MANIFEST = join(LICENCE_DIR, 'MANIFEST.json');
+if (existsSync(LICENCE_MANIFEST)) {
+  const man = JSON.parse(readFileSync(LICENCE_MANIFEST, 'utf8'));
+  const present = new Set(existsSync(LICENCE_DIR) ? readdirSync(LICENCE_DIR) : []);
+  for (const entry of man.files ?? []) {
+    if (!present.has(entry.name)) {
+      violations.push({ rule: 'licence-missing', file: `.dsh/artifacts/licences/${entry.name}`, cls: 'new-capture', detail: `MISSING. It constrains: ${entry.constrains}`, why: 'a licence claim whose snapshot is absent cannot be verified, which is exactly the state that let six snapshots sit unread' });
+      continue;
+    }
+    const now = hashCanonical(join(LICENCE_DIR, entry.name));
+    if (now !== entry.sha256Canonical) {
+      violations.push({ rule: 'licence-modified', file: `.dsh/artifacts/licences/${entry.name}`, cls: 'new-capture', detail: `CHANGED: manifest ${entry.sha256Canonical.slice(0, 16)}… now ${now.slice(0, 16)}…`, why: 'the record says what this snapshot said; a silent edit would leave the register describing a document that no longer exists' });
+    }
+  }
+  // A file in the store that the record does not mention is an unreviewed addition.
+  for (const name of present) {
+    if (name === 'MANIFEST.json') continue;
+    if (!(man.files ?? []).some((e) => e.name === name)) {
+      violations.push({ rule: 'licence-unrecorded', file: `.dsh/artifacts/licences/${name}`, cls: 'new-capture', detail: 'present in the store but absent from the record', why: 'an unreviewed snapshot is how a store stops describing itself' });
     }
   }
 }
@@ -306,6 +386,32 @@ if (SELF_TEST) {
     ? 'SELF-TEST PASS  a single byte appended to a frozen handoff file is reported by rule handoff-frozen'
     : 'SELF-TEST FAIL  the frozen-handoff guard did not fire on an edited byte; it is not a guard');
   if (!frozenCaught) process.exit(1);
+  // Third self-test: the licence store's existence and integrity guard must fire. Deleting a licence
+  // snapshot used to leave every gate green while a compliance claim quietly lost its basis, so the
+  // guard gets a regression test rather than my word for it.
+  const LIC = join(REPO, '.dsh', 'artifacts', 'licences');
+  let licenceCaught = false;
+  let licenceVictim = null;
+  if (existsSync(LIC)) {
+    const name = readdirSync(LIC).find((n) => n !== 'MANIFEST.json');
+    if (name) {
+      licenceVictim = join(LIC, name);
+      const held = readFileSync(licenceVictim);
+      unlinkSync(licenceVictim);
+      try {
+        execSync(`node ${JSON.stringify(join(import.meta.dirname, 'gate-artifact-layout.mjs'))} --json`, { cwd: REPO, encoding: 'utf8' });
+      } catch (e) {
+        try {
+          licenceCaught = JSON.parse(e.stdout).violations.some((v) => v.rule === 'licence-missing' && v.file.endsWith(name));
+        } catch { licenceCaught = false; }
+      }
+      writeFileSync(licenceVictim, held);
+    }
+  }
+  console.log(licenceCaught
+    ? 'SELF-TEST PASS  a deleted licence snapshot is reported by rule licence-missing'
+    : 'SELF-TEST FAIL  deleting a licence snapshot did not fail the gate; the claim has no basis guard');
+  if (!licenceCaught) process.exit(1);
   unlinkSync(probe);
   console.log(caught
     ? 'SELF-TEST PASS  a capture placed in a forbidden directory is reported by rule unknown-place'

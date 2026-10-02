@@ -1,0 +1,105 @@
+{
+  "note": "The pipeline's own copy of the licence snapshots. docs/handOff/evidence/ is the frozen archive and is NOT read by any gate; this copy is what the layout gate verifies. Both are deliberate: an archive that must not change and a working copy that a check can fail on.",
+  "hashBasis": "sha256 of CRLF-normalised bytes, so the check does not encode one machine's line endings",
+  "copiedAt": "2026-10-02",
+  "files": [
+    {
+      "name": "CLAUSES-verbatim.md",
+      "bytes": 6107,
+      "sha256Canonical": "8A2A573BB62F32221B9DFEAA2195CEAA027623FD072682206994B9F16D3676F1",
+      "sourcePath": "docs/handOff/evidence/CLAUSES-verbatim.md",
+      "constrains": "the verbatim clause extracts the design cites"
+    },
+    {
+      "name": "SOURCES-plaintext.txt",
+      "bytes": 110064,
+      "sha256Canonical": "951C36E4643404B96322507EF5C9BE586D2D79A38A89A139F43C31E72DB2FBC0",
+      "sourcePath": "docs/handOff/evidence/SOURCES-plaintext.txt",
+      "constrains": "the plain-text rendering of the fetched sources, for searching without HTML tags"
+    },
+    {
+      "name": "geofabrik-japan.html",
+      "bytes": 17287,
+      "sha256Canonical": "6B6C28251DA734CE84477FFD6854EC764640D4A6824F4F5EFD99F202087D8AC6",
+      "sourcePath": "docs/handOff/evidence/geofabrik-japan.html",
+      "constrains": "the licence of the bulk OSM extract the geometry was derived from"
+    },
+    {
+      "name": "google-maps-service-terms.html",
+      "bytes": 2088832,
+      "sha256Canonical": "8B14ABC24278D61892E83AC1632FDC87C99C0DA24B1352820CB2735DD3E8E1F5",
+      "sourcePath": "docs/handOff/evidence/google-maps-service-terms.html",
+      "constrains": "whether Google Maps content may be cached, stored or used offline at all"
+    },
+    {
+      "name": "google-places-billing.html",
+      "bytes": 209299,
+      "sha256Canonical": "363D01A2066BF11F00234FB4018F2D3DDD886A1D6727BD07EFCB0C0B51E25184",
+      "sourcePath": "docs/handOff/evidence/google-places-billing.html",
+      "constrains": "the billing model behind any Places lookup, i.e. whether a runtime fetch is affordable"
+    },
+    {
+      "name": "gsi-kiban.txt",
+      "bytes": 5832,
+      "sha256Canonical": "F56213885B91CC893C557A3A9AA9E146687E687DF6AFDC6B16D01F5B72FA7159",
+      "sourcePath": "docs/handOff/evidence/gsi-kiban.txt",
+      "constrains": "the base-map download service terms, i.e. whether the geometry base layer is usable"
+    },
+    {
+      "name": "gsi-law-2930.txt",
+      "bytes": 11282,
+      "sha256Canonical": "3FC2447F573BD8E6CB384EFE25205768F943291855AEB19E55F09945F01E77C1",
+      "sourcePath": "docs/handOff/evidence/gsi-law-2930.txt",
+      "constrains": "whether GSI survey products need an approval application (測量法 29/30)"
+    },
+    {
+      "name": "mlit-ksj-agreement.txt",
+      "bytes": 9431,
+      "sha256Canonical": "5E23680BD36F8DDACE349B79326A514B2DA5503CE733071192FF9CB4EA8481E1",
+      "sourcePath": "docs/handOff/evidence/mlit-ksj-agreement.txt",
+      "constrains": "whether an authoritative address-point dataset exists (CC BY 4.0) -- relevant to D-45"
+    },
+    {
+      "name": "odpt-developer.html",
+      "bytes": 636,
+      "sha256Canonical": "54F082046F4F78FB5DF5D9FC6D0752014DC8831F923AEBC29D5C39ABC1268A3E",
+      "sourcePath": "docs/handOff/evidence/odpt-developer.html",
+      "constrains": "NOT a terms page: 636 bytes of a JavaScript shell, so the transit-terms question is UNANSWERED"
+    },
+    {
+      "name": "osm-copyright-odbl.html",
+      "bytes": 21314,
+      "sha256Canonical": "056960F6CC8E8B051741C4F73754805B77176BC2D7D980F7B681AF9CC9303519",
+      "sourcePath": "docs/handOff/evidence/osm-copyright-odbl.html",
+      "constrains": "the ODbL obligations for the Derivative Database in city-packs/*/kyoto-shijo-osm*.json"
+    },
+    {
+      "name": "osm-nominatim-policy.html",
+      "bytes": 8274,
+      "sha256Canonical": "19054224850561FD66851158B3ACA27AC87481E46174AA9B4E0F19D1FDB50ED4",
+      "sourcePath": "docs/handOff/evidence/osm-nominatim-policy.html",
+      "constrains": "the rate and caching limits on any geocoding step"
+    },
+    {
+      "name": "osm-tile-usage-policy.html",
+      "bytes": 18563,
+      "sha256Canonical": "43EB4EA02CB38E1E1CC7DF34F39D5E8B32202D2302F46935600C19C7F85D5EF2",
+      "sourcePath": "docs/handOff/evidence/osm-tile-usage-policy.html",
+      "constrains": "whether map tiles may be baked into a scene or a guide"
+    },
+    {
+      "name": "plateau-faq.txt",
+      "bytes": 7211,
+      "sha256Canonical": "E6B94EAFF4E832D7C3654CB4B75F711D459C2082B5664217073300B6C1583CDD",
+      "sourcePath": "docs/handOff/evidence/plateau-faq.txt",
+      "constrains": "where the PLATEAU data is actually downloadable from"
+    },
+    {
+      "name": "plateau-geospatial-kyoto-2025.txt",
+      "bytes": 10857,
+      "sha256Canonical": "FECAFC2B7BE9961A94ED733D72F0751817F0666D68A8801558209BF72FEC297A",
+      "sourcePath": "docs/handOff/evidence/plateau-geospatial-kyoto-2025.txt",
+      "constrains": "whether the height layer may be sourced from PLATEAU (CC BY 4.0) -- relevant to GAP-HEIGHT-UNSOURCED"
+    }
+  ]
+}
