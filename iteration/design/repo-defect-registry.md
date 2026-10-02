@@ -542,6 +542,19 @@
 **教训** | **一套纪律的作用域若按"记录类型"划分，那么不在该类型里的东西会【看起来】被覆盖。** 这与 `D-12`（镜像副本）是同一族：**你以为有一条规则在管，而它管的是别的东西。** |
 **处置** | 把 `factTier` 的语义从"place 记录上的字段"改为"**任何进入构建产物的事实的属性**"，**并让几何事实也带它**。见 `iteration/design/temporal-variability.md` 的三层区分。 |
 
+### D-53 · **L09 的「15 分」在它的来源里不存在，而它被标成了 `publishedMinutes`** —— `fact-verifier` 报出，Lead 独立复核
+
+| | |
+|---|---|
+**触发** | `fact-verifier` 在写反思时随口核了一个数字，发现一个问题。**它说这是"我核过的所有数字里唯一一个我认为会让人真的走错的一个"** |
+**它记了什么** | `transit.json` 的 `L09`（祇園バス停 → 清水寺）：`minutes: 15` · `minutesRule: "ceil(1122.6 m / 80 m per min) = 15"` · `measuredCrossCheck.publishedMinutes: 15` · `divergenceMinutes: 0` · `note: "The two agree"` |
+**我逐行核了那份被引页**（`evidence/kiyomizudera-access-hours.txt`，185 行） | `L107/108/111/112/116`：五条坂 / 清水道下車 **徒歩10分**<br>`L114`：**約徒歩25分**（京阪 清水五条駅から）<br>`L128/142`：**約2時間15分**（新幹線 東京→京都）<br>**「祇園バス停 → 清水寺 15 分」该页从未公布。** |
+**所以是三层错叠在一起** | **① `1122.6 m` 是直线距离**（产出者自己在 `distanceBasis` 里如实标了），**而 RFTC 的 80 m/分 要的是【道路距離】——用在直线上必然低估**<br>**② `publishedMinutes: 15` 是把上面那个算出来的数写成了"运营者公布"**——**它和自己比，`divergenceMinutes: 0` 因此毫无意义**<br>**③ 更重的：`measuredCrossCheck` 里是 `"publishedMinutes": 15`，而 `provenance.valueKind` 是 `observed`**——**一个由 `licenced` 规则算出的派生值，在下一步被记成了"观察到的"** |
+**为什么 ③ 最重** | **它绕过了可信度阶梯。** `licenced` 按契约**不得进入攻略的"已验证"栏**；而同一个数一旦在 `measuredCrossCheck` 里成为 `observed`/`publishedMinutes`，**它就换了一条路进来了。** 这不是算错，是**数值在同一份记录里换了一次类别**。 |
+**而它为什么没被任何门抓到** | **21 条 `validate-doors` 断言、16 项 pack 检查、`V20` 那种"断言数量下限"都在跑，而 `15` 是 JSON 里一个合法整数。** 没有任何东西比对「这个数是否出现在它引用的那一页里」——`D-14`（`addressJa` 写 125、被引页写 625）是同一个缺口的另一个实例，**而那次是靠 `check-source-alignment.mjs` 事后补的，只覆盖了地址类字段。** |
+**处置（未做，待裁）** | **① 改 `publishedMinutes`**——要么删掉，要么改为按道路距离粗估的 17–20 分并标明"未实测"；**② `minutesValueKind` 保持 `licenced`，并把 `measuredCrossCheck` 里的那个 `observed` 痕迹清掉**；**③ 真正需要的是把"这个值是否出现在它引用的来源里"机械化**——那是 `check-source-alignment.mjs` 的职责范围，而它目前只覆盖地址。 |
+**教训** | **一个数字在同一份记录里换类别，比一个数字算错更难发现，也比它更危险。** 算错会被运算抓住；换类别只会被"读那一页"抓住，**而读那一页是没有人被要求做的事。** |
+
 ### D-19 · 核验者判"无法判定"的 5 项（**显式列出，未省略**） —— **OPEN**
 
 | # | 项 |
