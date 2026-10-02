@@ -107,14 +107,37 @@ supports the hours recorded against it. That gap is why every place's source mus
 - Roadmap, phases, acceptance gates, monetization design, and open questions: `iteration/recon/gap-analysis-and-plan.md`
 - What the legacy codebase can donate and what it cannot: `iteration/recon/recon-codebase-salvage.md`
 - Engine/visual-tier/LLM-boundary research: `iteration/recon/recon-2.5d-game-research.md` — the canonical recon document. Read its **Appendix A** for the concrete React↔Phaser directory layout, **Appendix B** for the seven-layer enforcement mechanism, and **"Authored by"** for which agent session produced which content. It also pointed at the Japanese-geodata corpus now at `docs/handOff/archive/corpora/geo-japan/` (134 files). That corpus is **still not mined by any report** — but the licence questions it existed for were answered separately: the PLATEAU / GSI / MLIT-KSJ clauses were fetched into `docs/handOff/evidence/`, and the review-source lines landed as `iteration/recon/review-source-{matrix,japan,zh}.md`.
-- Verbatim licensing evidence (Google Maps ToS, ODbL, OSM tile policy) plus the research plan and plugin survey: `docs/handOff/` (`evidence/`, `reference/`)
+- Verbatim licensing evidence (Google Maps ToS, ODbL, OSM tile policy): `docs/handOff/evidence/` (14 snapshots, **frozen** — see below). The research plan and plugin survey are **not** there: they are `iteration/reference/` (`DSH-PLUGINS-FOR-2.5D.md`, `research-plan-jobs1.txt`, `Q5_ai_in_the_loop.md`), which is where both `iteration/README.md` and the files' own README put them.
 
 Planning and research artefacts for this reboot live under `iteration/` (moved there from
-`docs/handOff/` so they are version-controlled). `docs/handOff/` now holds only referenced
-assets: `evidence/` (licence-clause snapshots the gate scripts read by relative path) and
-`dsh-bundle-tourguide-2.5d/` (the tools), which must not move because it is junction-linked
-into the DSH profile. When implementation starts, follow the repository's own documentation
-conventions again and do not keep adding planning files.
+`docs/handOff/` so they are version-controlled); `iteration/README.md` is the entry point and lists
+what to read in what order. `docs/handOff/` now holds three things: `evidence/` (licence-clause
+snapshots, **frozen by the user's ruling as a handoff-stage artefact** — a sha256 baseline at
+`iteration/design/handoff-evidence-baseline.json` is enforced by
+`iteration/tools/gate-artifact-layout.mjs`, so any edit, addition or deletion in that directory
+fails the layout gate), `dsh-bundle-tourguide-2.5d/` (the tool bundle), and `archive/` (576 files,
+~90 MB of raw crawl and corpus material, mostly gitignored). When implementation starts, follow the
+repository's own documentation conventions again and do not keep adding planning files.
+
+**Three corrections to earlier versions of this paragraph.** A skill that describes a workspace that
+no longer exists sends the next session looking in the wrong place — the same failure as D-07's
+README describing workflows that never existed:
+
+1. `evidence/` was described as snapshots "the gate scripts read by relative path". **No gate reads
+   it.** Verified by searching every script in the repo: the only hits are `gate-artifact-layout.mjs`,
+   which asserts the directory is unmodified, and a comment in `handoff-consolidate.mjs`. The
+   directory's value is as a citable frozen snapshot, not as an input to a check.
+2. `dsh-bundle-tourguide-2.5d/` was described as junction-linked into the DSH profile and therefore
+   unable to move. **It is not a link** (`LinkType` is empty, no `Target`). It still should not move,
+   on the simpler and true reason that it is the tool bundle.
+3. `archive/` was not mentioned at all, so the folder's real bulk went undeclared.
+
+**And the reference/ correction has a direction**, recorded because I initially got it backwards:
+`iteration/reference/` stays where it is and THIS FILE was the stale one. `iteration/README.md`
+(2026-09-30 02:37) is 22 minutes newer than this skill (02:15), it names `reference/` explicitly in
+its reading order, and the files are physically there. Moving them into `docs/handOff/reference/`
+would have contradicted the project's own entry point — which is why the earlier statement here was
+corrected rather than acted on.
 
 ## Retrieval reality in this environment (verified, do not re-derive)
 
