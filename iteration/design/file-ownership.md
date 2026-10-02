@@ -138,6 +138,18 @@
 
 **而我违反的正是这一条**：`task-21` 给了 `geo-contract`，**而同一批文件（`validate-doors.mjs`）已归 `doors-author`。** 我当时用"串行化"去补，**那补的是并发，不是归属。**
 
+## 4d · **一个角色一个提交**（我在 `41cb0ae` 里违反了它）
+
+**事实**：我那一个提交含 **16 个文件、三个角色的改动**（`doors-author` 的 `doors.json`/`validate-doors.mjs`/`kyoto-shijo-osm.json`/两个 viewer checker，`pack-curator` 的 `places.json`/`attestations`/`evidence/tools`，我自己的 `gate-scene-read`/`file-ownership`/`check-task-ownership`），**而提交信息只讲了我做的那一件事。**
+
+**为什么这有害**：`git log` 是"谁为什么改了什么"的账。**一个信息只描述六分之一内容的提交，让下一个读者无法把改动归因到决定。** 而本项目的全部努力都在"每个值能指回它的来源"——**提交历史是同一件事的另一面。**
+
+**规则**：
+> **每个角色提交自己的文件，用自己的验证状态作信息。** Lead 的 `git add -A` **不得**用来收拾别人的工作区。
+> **若 Lead 必须代为提交**（角色已停工、我要收口），**提交信息必须逐角色分段**，说清每段是谁的、依据是什么。
+
+**而它同时解释了为什么我该让角色自己提交**：`doors-author` 报了完成却"未提交"——因为它一直等我说。**那是我造成了这次混装。**
+
 ## 5 · 为什么"串行化"不够（写给下一次的我）
 
 我当时的推理是：「三张卡都写 `validate-doors.mjs`，所以串行化就安全了。」
