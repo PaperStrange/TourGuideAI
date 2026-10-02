@@ -78,6 +78,9 @@ function makeContext(preloaded) {
       putImageData: (img) => { canvas.__put = img; canvas.__putCount = (canvas.__putCount || 0) + 1; },
       fillRect: () => { canvas.__fillRects = (canvas.__fillRects || 0) + 1; },
       beginPath: () => {}, moveTo: () => {}, lineTo: () => {}, stroke: () => {},
+      closePath: () => {}, fill: () => {}, arc: () => {}, rect: () => {},
+      clearRect: () => {}, save: () => {}, restore: () => {}, translate: () => {}, scale: () => {},
+      fillText: () => {}, strokeText: () => {}, measureText: () => ({ width: 0 }),
       set fillStyle(v) { canvas.__fillStyle = v; }, get fillStyle() { return canvas.__fillStyle; },
       set strokeStyle(v) { canvas.__strokeStyle = v; }, get strokeStyle() { return canvas.__strokeStyle; },
       set lineWidth(v) { canvas.__lineWidth = v; }, get lineWidth() { return canvas.__lineWidth; },
@@ -92,7 +95,17 @@ function makeContext(preloaded) {
         elements[id] = c;
       } else {
         elements[id] = {
-          id, textContent: '', innerHTML: '', style: {},
+          id, textContent: '', innerHTML: '', style: {}, value: '', className: '',
+          /**
+           * Elements carry their own listeners. The page has a BUTTON now (the key-log
+           * export), and a stub without `addEventListener` fails the page at load with a
+           * TypeError that belongs to the harness rather than to the page — the same shape
+           * as the empty `textContent` that made the page parse an empty payload.
+           */
+          addEventListener: (type, fn) => {
+            const k = `${id}:${type}`;
+            (listeners[k] = listeners[k] || []).push(fn);
+          },
         };
       }
     }
@@ -111,6 +124,10 @@ function makeContext(preloaded) {
   const ctx = {
     document: documentStub,
     window: windowStub,
+    /* The variant is chosen by URL fragment (`index.html#V-B`), so the page reads
+     * `location`. The stub supplies both, and a test can select a variant by setting
+     * `ctx.location.hash` before evaluating. */
+    location: { hash: '', href: 'file:///index.html' },
     atob: (s) => Buffer.from(s, 'base64').toString('binary'),
     console,
     Math, JSON, Uint8Array, Uint8ClampedArray, Array, Object, String, Number, Error, isNaN, parseInt, parseFloat,
@@ -295,42 +312,49 @@ function main() {
    * derived from the payload, and the assertion is that the page's PRINTED numbers
    * equal the payload's numbers — which is what P5 was always reaching for.
    */
-  const leg = elements['legend'] ? elements['legend'].innerHTML : '';
-  const dReachable = payload.doors.filter((d) => d.reachable).length;
-  const withRoom = payload.doors.filter((d) => d.interaction && d.interaction.drawRoom).length;
-  const placeholderOnly = payload.doors.filter((d) => d.interaction && d.interaction.placeholder).length;
-  const doorCount = payload.doors.length;
   /**
-   * The page must print BOTH numbers and print them as different things. Printing one
-   * and calling it "enterable" was the old wording, and it became untrue the moment the
-   * ruling made every door enterable: what differs is whether an interior is MODELLED.
-   * A summary that collapses the two would hide exactly the distinction the task exists
-   * to make legible, so the assertion requires both, each with its own phrase.
+   * P5 — S2, THE THREE COUNTERS, AND ALL THREE DENOMINATORS FROM THE INPUT.
+   *
+   * The old P5 read a `#legend` block that the P1 card required DELETED (the 10-row debug
+   * table). The counting did not go away, it became S2 (`街上 n/6 · 门洞 n/10 · 街外 16`),
+   * so the assertion follows the slot rather than the block — and it takes the three
+   * denominators from the payload, never from a literal. `play-systems-designer` was
+   * explicit that 1/1 could not prove this and that the numbers must come from the page's
+   * OWN counters().
    */
-  const doorsOk =
-    doorCount > 0 &&
-    leg.includes(`reached x=${payload.walk.reachedX}`) &&
-    leg.includes(`${dReachable} of ${doorCount} reachable from the street`) &&
-    leg.includes(`${withRoom} of ${doorCount} open into a modelled interior`) &&
-    leg.includes(`${placeholderOnly} of ${doorCount}`) &&
-    leg.includes('placeholder only');
+  const s2 = elements['s2'] ? elements['s2'].innerHTML : '';
+  const gc = payload.guideCounts;
+  const anchors = payload.anchors;
+  const streetTotal = anchors.filter((a) => a.kind === 'place').length;
+  const doorTotal = anchors.filter((a) => a.kind === 'doorway').length;
+  const outsideTotal = gc.placeTotal - gc.placeInWindow;
+  const countersOk =
+    streetTotal === gc.placeInWindow && doorTotal === gc.doorwayTotal &&
+    outsideTotal === 16 &&
+    s2.includes(`街上 <b>0</b>/${streetTotal}`) &&
+    s2.includes(`门洞 <b>0</b>/${doorTotal}`) &&
+    s2.includes(`街外 <b>${outsideTotal}</b>`);
   check(
     'P5',
-    `the page's summary states the measured and the modelled counts SEPARATELY (${doorCount} doors)`,
-    doorsOk,
-    `legend says reached x=${payload.walk.reachedX} · ${dReachable}/${doorCount} reachable from the street · ` +
-      `${withRoom}/${doorCount} open into a modelled interior · ${placeholderOnly}/${doorCount} placeholder only; ` +
-      `all four numbers are the payload's own, not literals`,
+    `S2 prints three counters with all three denominators from input (街上 ${streetTotal} · 门洞 ${doorTotal} · 街外 ${outsideTotal})`,
+    countersOk,
+    `S2 says ${JSON.stringify(s2.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim())} · denominators derived: ` +
+      `placeInWindow=${gc.placeInWindow}, doorwayTotal=${gc.doorwayTotal}, placeTotal-placeInWindow=${outsideTotal}; ` +
+      `all from payload.guideCounts and payload.anchors, no literal`,
   );
 
   /* ---- the interaction, driven through the PAGE's own handler ---------- *
    * The card's third deliverable is that triggering a south door shows the
    * placeholder rather than doing nothing. `"Nothing happens" is the worst outcome,
    * because the player concludes the game is broken.` So the page's OWN
-   * `openNearestDoor()` runs here, through the same DOM stub, and the panel it
-   * renders is read back.
+   * `openNearestDoor()` runs here, through the same DOM stub, and the receipt it
+   * renders into S4 is read back.
+   *
+   * P8 now reads `#s4` instead of `#panel`: the P1 card replaced the old panel with the
+   * four HUD slots, and S4 is the doorway receipt. The assertion's SUBJECT did not change
+   * — a south door still must say 内容开发中 and draw no room, a north door still must not.
    */
-  const panel = elements['panel'] ? elements['panel'].innerHTML : '';
+  const s4 = () => (elements['s4'] ? elements['s4'].innerHTML : '');
   {
     const contract = payload.openerContract;
     const unmodelled = contract.openable.filter((d) => d.surface === 'unmodelled-interior');
@@ -346,7 +370,7 @@ function main() {
       TG.walker.row = southDoor.cellY;
       TG.openNearestDoor();
       southOutcome = TG.lastInteraction();
-      southPanel = elements['panel'] ? elements['panel'].innerHTML : '';
+      southPanel = s4();
     } else if (southDoor) {
       // the page may not expose openNearestDoor; fall back to the door marker's own
       // pre-resolved interaction, which the baker computed with the same body
@@ -363,7 +387,7 @@ function main() {
       TG.walker.row = northDoor.cellY;
       TG.openNearestDoor();
       northOutcome = TG.lastInteraction();
-      northPanel = elements['panel'] ? elements['panel'].innerHTML : '';
+      northPanel = s4();
     } else if (northDoor) {
       northOutcome = northDoor.interaction;
     }
@@ -379,7 +403,7 @@ function main() {
 
     check(
       'P8',
-      "opening a SOUTH door shows the placeholder in the page's own panel; opening a NORTH door does not",
+      "opening a SOUTH door shows the placeholder in the page's own S4 receipt; opening a NORTH door does not",
       southShowsPlaceholder && southDrawsNothing && northIsDifferent,
       `${unmodelled.length} unmodelled / ${measured.length} measured doors · ` +
         `south ${southDoor ? southDoor.doorId : '(none)'} -> kind ${southOutcome ? southOutcome.kind : '?'}, ` +

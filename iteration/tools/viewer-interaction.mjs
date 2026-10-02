@@ -196,8 +196,22 @@ function nextAnchor(anchors, walker, derived) {
 
 /**
  * The full target sequence from a fixed walker, marking each target reached as it goes.
- * This exists because asserting on target #1 cannot distinguish the two rules — that is
- * exactly how the v1 defect survived my step-1 check.
+ *
+ * ASSERTION DISCIPLINE — READ THIS BEFORE ADDING A CHECK ON `next`.
+ *
+ * Every assertion on `next` must state WHICH STATE it fixes. `t=0` (walker at spawn,
+ * `derived` empty) is the only static state worth asserting: it is the state the first
+ * frame depends on, and it is sufficient to separate the two candidate rules, because
+ * among the first four targets the count of `modelled:false` is 1 under pure distance and
+ * 0 under `eligible`.
+ *
+ * It must NOT be read as "the whole journey is tested". The live sequence — the distances
+ * a player actually experiences — depends on the path that player walked and is NOT
+ * assertable without a reference path. So `targetSequence(anchors, SPAWN, n)` proves a
+ * RULE; it does not prove an EXPERIENCE.
+ *
+ * This function exists because a check on target #1 alone could not tell the two rules
+ * apart, which is exactly how the v1 defect survived my first step-1 assertion.
  */
 function targetSequence(anchors, walker, count) {
   var derived = {};
@@ -215,7 +229,20 @@ function targetSequence(anchors, walker, count) {
   return out;
 }
 
-/** Grid (Manhattan) distance, the same metric next minimises. */
+/**
+ * Grid distance = MANHATTAN (`|ΔcellX| + |ΔcellY|`), reference point = the walker's current
+ * cell, recomputed every step. Spec §1.7 defines `格距` this way and gives the reason:
+ *
+ *   Movement has four directions and one key press = one cell, so Manhattan IS "how many
+ *   steps". Euclidean UNDER-reports it. This project has already paid for that mistake once:
+ *   D-53 / P3's L09 declared 15 minutes from a STRAIGHT-LINE distance where the 規約 wanted
+ *   a ROAD distance. Using Euclidean in-game would replay that defect, scaled.
+ *
+ * AND: the number this feeds (S1's metre readout) is a GAME number, not a fact number. It
+ * must never reach any export. Distances in the guide are `alongStreetM` from the fact
+ * layer, and minutes come from the pack's road-distance ÷ 80 m/min. The two are not
+ * interchangeable and must never be mixed.
+ */
 function anchorDist(anchor, walker) {
   return anchor === null ? null : Math.abs(anchor.cellX - walker.x) + Math.abs(anchor.cellY - walker.row);
 }
@@ -233,6 +260,35 @@ function signedMetres(anchor, walker) {
     dx: anchor.cellX - walker.x,
     dy: anchor.cellY - walker.row,
     manhattan: Math.abs(anchor.cellX - walker.x) + Math.abs(anchor.cellY - walker.row),
+  };
+}
+
+/**
+ * The receipt TITLE for an anchor.
+ *
+ * Seven of the ten doors belong to ONE building, so a title of just the building name reads
+ * identically seven times running. The spec's remedy is to lead with a discriminator the
+ * data ALREADY has — the door id, the along-street metre and the cell — rather than to
+ * invent a label. Those seven doors genuinely stand at seven measured positions on a
+ * 41.8 m frontage; showing that is using the real data, not manufacturing content.
+ *
+ *   D-N2 · 京都三井ビルディング · 沿街 21 m
+ *
+ * For a place the name is already unique, so it leads.
+ */
+function anchorTitle(anchor) {
+  if (!anchor) return { title: null, sub: null, discriminator: null };
+  if (anchor.kind === 'doorway') {
+    return {
+      title: anchor.id + ' · ' + anchor.nameJa,
+      sub: '沿街 ' + anchor.alongStreetM + ' m · 格 (' + anchor.cellX + ', ' + anchor.cellY + ')',
+      discriminator: { doorId: anchor.id, alongStreetM: anchor.alongStreetM, cellX: anchor.cellX, cellY: anchor.cellY },
+    };
+  }
+  return {
+    title: anchor.nameJa,
+    sub: '沿街 ' + anchor.alongStreetM + ' m · 格 (' + anchor.cellX + ', ' + anchor.cellY + ')',
+    discriminator: { alongStreetM: anchor.alongStreetM, cellX: anchor.cellX, cellY: anchor.cellY },
   };
 }
 
@@ -271,7 +327,7 @@ function counters(anchors, derived, guideCounts) {
 
 export {
   openDoor, placeholderDoors, measuredDoors,
-  nextAnchor, targetSequence, anchorDist, isVisible, signedMetres, statusReadout, counters,
+  nextAnchor, targetSequence, anchorDist, isVisible, signedMetres, statusReadout, counters, anchorTitle,
   PLACEHOLDER_TEXT, PLACEHOLDER_NOTE_ZH,
   SURFACE_MEASURED, SURFACE_UNMODELLED,
 };

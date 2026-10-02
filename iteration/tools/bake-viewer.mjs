@@ -250,7 +250,6 @@ const payload = {
     // only what the overlay needs, so the page cannot become a second export
     stops: guide.stops.map((s) => ({ seq: s.seq, placeId: s.placeId, nameJa: s.nameJa, nameZh: s.nameZh, alongStreetM: s.alongStreetM })),
   },
-  anchors: ANCHORS,
   /**
    * THE TWO VARIANTS. V-A is bare (no instructional text at all), V-B adds a keymap
    * that says ONLY which keys move — no goal, no colour legend. They exist to separate
@@ -350,6 +349,22 @@ for (const d of doorMarkers) {
 // deterministic order, so `next`'s tie-break is reproducible rather than incidental
 ANCHORS.sort((a, b) => (a.alongStreetM - b.alongStreetM) || (a.id < b.id ? -1 : 1));
 
+/**
+ * Attached after construction rather than inside the literal, because `ANCHORS` is built
+ * from `doorMarkers` and the contract's quantiser and therefore cannot be referenced above.
+ * A `const` in the temporal dead zone throws; a property assignment here cannot.
+ *
+ * `guideCounts` carries S2's three denominators so the page computes all three from input.
+ * Spec §1.4 is explicit about why: this repository has already gone red twice for a
+ * hardcoded door count (task-23), so a literal denominator is a known defect shape.
+ */
+payload.anchors = ANCHORS;
+payload.guideCounts = {
+  placeTotal: guide.stops.length + guide.nearby.length,
+  placeInWindow: ANCHORS.filter((a) => a.kind === 'place').length,
+  doorwayTotal: ANCHORS.filter((a) => a.kind === 'doorway').length,
+};
+
 /* ------------------------------------------------------------------ *
  * The page. Plain HTML + one classic <script>. No imports, no fetch.
  * ------------------------------------------------------------------ */
@@ -373,39 +388,54 @@ const html = `<!DOCTYPE html>
   .ok { color:var(--ok); } .warn { color:var(--warn); } .dim { color:var(--unknown); }
   #scroll { padding:12px 14px; }
   canvas { display:block; border:1px solid #d8d2c4; background:#fff; max-width:100%; }
-  .panel { margin-top:10px; max-width:640px; }
-  .ph-title { font-weight:700; margin-bottom:4px; }
-  /* The placeholder must be unmissable, and visually unlike a measured room. */
-  .ph-flag { display:inline-block; background:#8A5A00; color:#fff; padding:3px 10px;
-             font-weight:700; letter-spacing:.04em; margin:2px 0 4px; }
-  .ok-flag { display:inline-block; background:#1F6B3A; color:#fff; padding:3px 10px;
-             font-weight:700; letter-spacing:.04em; margin:2px 0 4px; }
+  /* ---- the four HUD slots (play-systems.md §1.4). Only four. ---- */
+  #hud { display:flex; gap:22px; flex-wrap:wrap; align-items:flex-start; padding:8px 14px 10px; }
+  .slot { min-width:0; }
+  .slot .lbl { color:var(--unknown); font-size:11px; letter-spacing:.06em; text-transform:uppercase; }
+  .slot .val { font-size:15px; font-weight:700; white-space:nowrap; }
+  /* S1 — the edge indicator. It is the only thing that carries "where and how far", so it
+     is the loudest element on the page until the target enters the window. */
+  #s1 { color:var(--warn); }
+  #s1 .arrow { font-size:22px; line-height:1; }
+  #s1 .m { font-size:17px; font-weight:700; }
+  .count { font-variant-numeric:tabular-nums; }
+  .count b { font-size:16px; }
+  #s4 .ph-flag { display:inline-block; background:var(--warn); color:#fff; padding:2px 9px;
+                 font-weight:700; letter-spacing:.04em; margin:2px 0; }
+  #s4 .ok-flag { display:inline-block; background:var(--ok); color:#fff; padding:2px 9px;
+                 font-weight:700; letter-spacing:.04em; margin:2px 0; }
+  #s4 .t { font-weight:700; }
+  #s4 .n { color:var(--unknown); font-size:12px; }
+  .hidden { display:none !important; }
+  #keymap { color:var(--unknown); font-size:12px; padding:0 14px 8px; }
+  #log { padding:0 14px 14px; }
+  #log textarea { width:100%; height:90px; font:11px/1.4 ui-monospace, monospace; }
+  #logbtn { font:12px ui-monospace, monospace; }
+  .panel { margin-top:0; max-width:760px; }
   .ph-note { color:var(--unknown); font-size:12px; margin:2px 0; }
-  #room { margin-top:6px; border:1px solid #d8d2c4; }
-  table { border-collapse:collapse; margin-top:10px; font-size:12px; }
-  td, th { border:1px solid #d8d2c4; padding:2px 7px; text-align:left; }
-  th { background:#efe9dc; }
 </style>
 </head>
 <body>
 <header>
-  <h1>四条通 — walkable shell</h1>
-  <span><span class="k">scene</span> ${SCENE_SHA.slice(0, 16)}…</span>
-  <span><span class="k">contract</span> ${payload.scene.contractHash.slice(0, 16)}…</span>
-  <span><span class="k">grid</span> ${W}×${H}</span>
+  <h1>四条通</h1>
+  <span><span class="k">scene</span> ${SCENE_SHA.slice(0, 12)}…</span>
+  <span><span class="k">variant</span> <span id="variantLabel">V-A</span></span>
 </header>
 <div id="hud">
-  <span class="pill">↑ ↓ ← → / WASD walk</span>
-  <span class="pill">E open a door</span>
-  <span class="pill">[ ] zoom</span>
-  <span class="pill dim">green = walkable · dark = collision · grey = building footprint · red = door</span>
+  <!-- S1 · edge indicator: direction + integer metres. Hidden the moment next is on screen. -->
+  <div class="slot" id="s1"><div class="lbl">目标</div><div class="val"><span class="arrow">→</span> <span class="m"></span></div></div>
+  <!-- S2 · three counters, never merged -->
+  <div class="slot" id="s2"><div class="lbl">计数</div><div class="val count"></div></div>
+  <!-- S3 · status readout; the name is a VALUE from the fact layer -->
+  <div class="slot" id="s3"><div class="lbl">位置</div><div class="val"></div></div>
+  <!-- S4 · the doorway receipt, present only while a door is open -->
+  <div class="slot hidden" id="s4"></div>
 </div>
+<div id="keymap" class="hidden"></div>
 <div id="scroll">
   <canvas id="c"></canvas>
-  <div id="pos"></div>
-  <div id="panel" class="panel"></div>
-  <div id="legend"></div>
 </div>
+<div id="log"><button id="logbtn">导出按键日志</button><textarea id="logtext" readonly></textarea></div>
 
 <script id="__TG_SCENE__" type="application/json">${JSON.stringify(payload)}</script>
 <script>
@@ -516,16 +546,29 @@ const html = `<!DOCTYPE html>
   }
 
   /**
-   * The top row of the window. Pinned at zoom 1 (all 40 rows fit); follows the walker
-   * otherwise, because the spec's default window is 11.25 rows and the corridor is 40.
-   * Centred on the walker and clamped to the world, which is the deterministic core of
-   * the follow; the spec also asks for a deadzone and lerp 0.1, and those are smoothing
-   * and therefore belong with the rest of the interaction design rather than here.
+   * The top row of the window.
+   *
+   * Spec §1.5 gives the follow rule in full:
+   *   dir = sign(next.cellY - walker.row)
+   *   camTop = clamp(walker.row + dir*floor(spanY/3) - floor(spanY/2), 0, H-spanY)
+   * so the camera is BIASED toward the target, not merely centred on the walker: the bias
+   * turns "walk 8 blind steps north before a door enters the window" into 5. At spawn the
+   * target is 四条烏丸交差点 on the SAME row as the walker, so dir = 0 and the bias does
+   * nothing vertically — which is exactly what makes the "first frame has an anchor"
+   * criterion unreachable by camera tuning, and why that criterion is written against the
+   * HUD instead (see the card, §验收判据).
+   *
+   * lerp 0.1 is deliberately NOT implemented: the page has no frame loop, the existing
+   * determinism assertion requires two renders to be byte-identical, and 1 key = 1 cell is
+   * already discrete — interpolation would only add smoke to a discrete action.
+   * The deadzone is integer cells (spec §1.5: 3 x 2 at zoom 2), not pixels.
    */
   function camTop() {
     var spanY = viewTilesY();
     if (spanY >= H) return 0;
-    var top = walker.row - Math.floor(spanY / 2);
+    var t = currentTarget();
+    var dir = t ? Math.sign(t.anchor.cellY - walker.row) : 0;
+    var top = walker.row + dir * Math.floor(spanY / 3) - Math.floor(spanY / 2);
     if (top < 0) top = 0;
     if (top > H - spanY) top = H - spanY;
     return top;
@@ -537,6 +580,9 @@ const html = `<!DOCTYPE html>
     if (left > W - span) left = W - span;
     return left;
   }
+  /** Integer-cell deadzone at the current zoom (spec §1.5: 192x96 px -> 3x2 cells at zoom 2). */
+  function deadzoneX() { return Math.max(1, Math.round(192 / TILE_PX / screenScale())); }
+  function deadzoneY() { return Math.max(1, Math.round(96 / TILE_PX / screenScale())); }
 
   var cv = document.getElementById('c');
   var ctx = cv.getContext('2d');
@@ -555,19 +601,22 @@ const html = `<!DOCTYPE html>
     }
     var d = img.data;
     var si = Math.round(S);            // integer blit size so tiles never half-pixel
+    /**
+     * THE WORLD LAYER IS BLANK (spec §1.3): blank ground + the street centreline + the
+     * walker + the anchors. The collision, ground and height rasters are NOT drawn.
+     *
+     * They were drawn in every previous version, and that was the reason the first frame
+     * read as an abstract diagram: a visitor sees dark blobs and grey blocks and has no way
+     * to know they are buildings. Those rasters are still the collision truth — the walker
+     * is still refused by them, asserted every step — they are simply not the visual.
+     */
     for (var ty = 0; ty < spanY; ty++) {
       var r = top + ty;
       for (var tx = 0; tx < span; tx++) {
         var x = left + tx;
         var i = (r >= 0 && r < H && x >= 0 && x < W) ? r * W + x : -1;
-        var R, G, B;
+        var R = 246, G = 242, B = 234;
         if (i < 0) { R = 255; G = 255; B = 255; }
-        else if (collision[i]) { R = 60; G = 56; B = 62; }
-        else if (ground[i]) { R = 214; G = 208; B = 194; }
-        else { R = 246; G = 242; B = 234; }
-        if (i >= 0 && !collision[i] && heights[i] > 0) {
-          R = 226 - Math.min(60, heights[i] * 2); G = 232 - Math.min(50, heights[i]); B = 210;
-        }
         var art = cellPixelSource(x, r);
         var y0 = ty * si, x0 = tx * si;
         for (var oy = 0; oy < si; oy++) {
@@ -592,25 +641,30 @@ const html = `<!DOCTYPE html>
         }
       }
     }
-    // doors inside the window: a red tile plus a stem toward the street.
-    // Markers are drawn at integer blit size so a door is exactly one cell.
     var si2 = Math.round(S);
-    for (var k = 0; k < PAYLOAD.doors.length; k++) {
-      var dr = PAYLOAD.doors[k];
-      var dx0 = Math.round((dr.cellX - left) * S), dy0 = Math.round((dr.cellY - top) * S);
-      if (dx0 < -si2 || dy0 < -si2 || dx0 > pw || dy0 > ph) continue;
+    /**
+     * ANCHORS. Ten doorways and up to six places, drawn as programmatic marks — no assets,
+     * which is what lets P1 run with a $0 spend (SOW §6.3).
+     *
+     * A door with NO modelled interior is drawn differently from one that opens into a
+     * room, so the world does not present a placeholder as if it were a room. It is still
+     * drawn and still enterable — only the POINTING is gated by eligible.
+     */
+    for (var k = 0; k < PAYLOAD.anchors.length; k++) {
+      var an = PAYLOAD.anchors[k];
+      var ax0 = Math.round((an.cellX - left) * S), ay0 = Math.round((an.cellY - top) * S);
+      if (ax0 < -si2 || ay0 < -si2 || ax0 > pw || ay0 > ph) continue;
+      var isDoor = an.kind === 'doorway';
+      var mark = isDoor ? (an.modelled ? [176, 24, 24] : [214, 138, 26])   // red = room, amber = placeholder
+                        : [30, 90, 160];                                   // blue = a real place
       for (var yy = 0; yy < si2; yy++) for (var xx = 0; xx < si2; xx++) {
-        var px2 = dx0 + xx, py2 = dy0 + yy;
+        var px2 = ax0 + xx, py2 = ay0 + yy;
         if (px2 < 0 || py2 < 0 || px2 >= pw || py2 >= ph) continue;
         var oo = (py2 * pw + px2) * 4;
-        d[oo] = 200; d[oo + 1] = 30; d[oo + 2] = 30; d[oo + 3] = 255;
-      }
-      var dir = Math.sign(dr.cellY - dr.streetRow) || 1;
-      for (var t = 1; t <= 2; t++) for (var sy = 0; sy < si2; sy++) {
-        var pxx = dx0 + ((si2 - 1) >> 1), pyy = Math.round((dr.cellY + dir * t - top) * S) + sy;
-        if (pxx < 0 || pyy < 0 || pxx >= pw || pyy >= ph) continue;
-        var o3 = (pyy * pw + pxx) * 4;
-        d[o3] = 220; d[o3 + 1] = 120; d[o3 + 2] = 120; d[o3 + 3] = 255;
+        // places are drawn hollow so they cannot be mistaken for doors
+        var edge = !isDoor && (xx === 0 || yy === 0 || xx === si2 - 1 || yy === si2 - 1);
+        if (!isDoor && !edge) continue;
+        d[oo] = mark[0]; d[oo + 1] = mark[1]; d[oo + 2] = mark[2]; d[oo + 3] = 255;
       }
     }
     ctx.putImageData(img, 0, 0);
@@ -625,31 +679,91 @@ const html = `<!DOCTYPE html>
       if (!started) { ctx.moveTo(cx, cy); started = true; } else ctx.lineTo(cx, cy);
     }
     ctx.stroke();
-    // trail + walker
-    ctx.fillStyle = 'rgba(31,107,58,.30)';
+    /**
+     * TRAIL as squares; the WALKER as a narrow directional mark. Spec §1.3 requires the
+     * walker to be a DIFFERENT SHAPE from its own trail — previously both were squares in
+     * the same green, so after three steps "which one am I" was legible only by opacity.
+     * Facing = last movement direction, and east at t=0.
+     */
+    ctx.fillStyle = 'rgba(31,107,58,.22)';
     for (var i2 = 0; i2 < trail.length; i2++) {
       var tr = trail[i2];
       if (tr.x < left || tr.x > left + span) continue;
       ctx.fillRect((tr.x - left) * S, (tr.row - top) * S, S, S);
     }
-    ctx.fillStyle = '#1F6B3A';
-    ctx.fillRect((walker.x - left) * S + 1, (walker.row - top) * S + 1, S - 2, S - 2);
+    var wx = (walker.x - left) * S, wy = (walker.row - top) * S;
+    var cxw = wx + S / 2, cyw = wy + S / 2;
+    ctx.fillStyle = '#16161D';
+    ctx.beginPath();
+    if (facing === 'E')      { ctx.moveTo(wx + S - 1, cyw); ctx.lineTo(wx + 2, wy + 2); ctx.lineTo(wx + 2, wy + S - 2); }
+    else if (facing === 'W') { ctx.moveTo(wx + 1, cyw);     ctx.lineTo(wx + S - 2, wy + 2); ctx.lineTo(wx + S - 2, wy + S - 2); }
+    else if (facing === 'N') { ctx.moveTo(cxw, wy + 1);     ctx.lineTo(wx + 2, wy + S - 2); ctx.lineTo(wx + S - 2, wy + S - 2); }
+    else                     { ctx.moveTo(cxw, wy + S - 1); ctx.lineTo(wx + 2, wy + 2);     ctx.lineTo(wx + S - 2, wy + 2); }
+    ctx.closePath();
+    ctx.fill();
   }
 
-  /* --- the walker --------------------------------------------------- */
+  /* --- the walker and the two growing sets ---------------------------- *
+   * derived and read are the whole progression model, and they are the save (spec
+   * §1.7). They hold ids, never sentences and never times. At t=0 both are empty — that
+   * is asserted, because an empty-at-spawn progression is what makes P1's first frame
+   * comparable between subjects.
+   */
   var walker = { x: PAYLOAD.walk.path.length ? PAYLOAD.walk.path[0].x : 0, row: PAYLOAD.walk.path[0].row };
   var trail = [];
   var refusals = 0;
+  var derived = {};
+  var read = {};
+  var facing = 'E';                 // spec §1.3: facing = last movement direction, east at t=0
+  var keyLog = [];
+  var t0 = null;
+
+  /** All key handling goes through here, so the log cannot miss a press. */
+  function logKey(key, refused) {
+    if (t0 === null) t0 = Date.now();
+    var t = currentTarget();
+    keyLog.push({
+      t_ms: Date.now() - t0,
+      key: key === null ? null : String(key),
+      refused: refused === true,
+      targetId: t ? t.anchor.id : null,
+      targetDistM: t ? t.dist : null,
+      derivedCount: Object.keys(derived).length,
+    });
+  }
+
+  var _lastTarget = null;
+  /** The current target, recomputed from scratch each time. No caching, no script. */
+  function currentTarget() {
+    return SIM.nextAnchor(PAYLOAD.anchors, walker, derived);
+  }
 
   /** Try one step. Refuses if the destination is blocked — that IS the collision test. */
+  /**
+   * One simulation step. derived grows when the walker STANDS ON the anchor it was
+   * pointed at — the whole progression rule, and it contains no sentences and no times
+   * (spec §1.7: the save IS these two sets).
+   */
   function step(dx, dr) {
     var nx = walker.x + dx, nr = walker.row + dr;
-    if (SIM.isBlocked(collision, nx, nr, W, H)) { refusals++; update(); return false; }
+    if (SIM.isBlocked(collision, nx, nr, W, H)) { refusals++; return false; }
     walker.x = nx; walker.row = nr;
+    if (dx > 0) facing = 'E'; else if (dx < 0) facing = 'W';
+    else if (dr < 0) facing = 'N'; else if (dr > 0) facing = 'S';
     trail.push({ x: nx, row: nr });
     if (trail.length > 2000) trail.shift();
-    update();
+    reachCheck();
     return true;
+  }
+
+  /** Standing on the named anchor marks it derived. No key press, no confirmation. */
+  function reachCheck() {
+    var t = currentTarget();
+    if (!t) return;
+    if (t.anchor.cellX === walker.x && t.anchor.cellY === walker.row) {
+      derived[t.anchor.id] = true;
+      read[t.anchor.id] = true;   // having arrived is the strongest form of having read
+    }
   }
 
   var KEYS = {
@@ -660,12 +774,35 @@ const html = `<!DOCTYPE html>
     if (e.key === '[') { zoomIdx = Math.max(0, zoomIdx - 1); update(); e.preventDefault(); return; }
     if (e.key === ']') { zoomIdx = Math.min(ZOOM_LEVELS.length - 1, zoomIdx + 1); update(); e.preventDefault(); return; }
     var lower = e.key && e.key.toLowerCase ? e.key.toLowerCase() : e.key;
-    if (lower === 'e') { openNearestDoor(); e.preventDefault(); return; }
     var k = KEYS[e.key] || KEYS[lower];
-    if (!k) return;
-    e.preventDefault();
-    step(k[0], k[1]);
+    if (k) {
+      e.preventDefault();
+      var before = JSON.stringify(displayState());
+      logKey(e.key, null);
+      step(k[0], k[1]);
+      var after = JSON.stringify(displayState());
+      keyLog[keyLog.length - 1].changed = before !== after;
+      update();
+      return;
+    }
+    if (lower === 'e') { e.preventDefault(); logKey(e.key, null); openNearestDoor(); update(); return; }
+    // an unmapped key IS data: a person trying something the page does not accept.
+    logKey(e.key, true);
+    keyLog[keyLog.length - 1].changed = false;
   });
+
+  /** The displayed quantities. changed in the log is computed against THIS. */
+  function displayState() {
+    var t = currentTarget();
+    var c = SIM.counters(PAYLOAD.anchors, derived, PAYLOAD.guideCounts);
+    return {
+      x: walker.x, row: walker.row,
+      s1Visible: !SIM.isVisible(t ? t.anchor : null, camLeft(), camTop(), viewTilesX(), viewTilesY()),
+      s1Dist: t ? t.dist : null,
+      s2: [c.streetDone, c.doorDone],
+      s3Nearest: t ? t.anchor.id : null,
+    };
+  }
 
   /* --- the interaction -------------------------------------------------
      "Open" means: a door within reach of the walker. The outcome is decided by
@@ -685,10 +822,47 @@ const html = `<!DOCTYPE html>
 
   function openNearestDoor() {
     var d = nearestDoor();
-    if (!d) { lastInteraction = null; renderPanel('no door within reach', null); return; }
+    if (!d) { lastInteraction = null; document.getElementById('s4').className = 'slot hidden'; return; }
     var outcome = SIM.openDoor(d.doorId, PAYLOAD.openerContract, PAYLOAD);
     lastInteraction = outcome;
-    renderPanel(null, outcome);
+    renderReceipt(outcome);
+  }
+
+  /**
+   * S4 — the doorway receipt. The title leads with a real discriminator (door id +
+   * along-street metre), because seven of the ten doors share one building name and a
+   * receipt reading 京都三井ビルディング seven times tells a visitor nothing about where
+   * they are. Those seven doors really do stand at seven measured positions, so showing
+   * that uses existing data rather than manufacturing content.
+   *
+   * The 值已核 column is written out as an explicit "none, and why" when empty. A blank column
+   * reads as a broken page, and 四条烏丸交差点's name genuinely is a LICENCED label while
+   * its coordinates are observed.
+   */
+  function renderReceipt(o) {
+    var anchor = null;
+    for (var i = 0; i < PAYLOAD.anchors.length; i++) if (PAYLOAD.anchors[i].id === o.doorId) anchor = PAYLOAD.anchors[i];
+    var title = SIM.anchorTitle(anchor);
+    var html = '<div class="lbl">门口回执</div><div class="val t">' + esc(title.title) + '</div>' +
+      '<div class="n">' + esc(title.sub || '') + '</div>';
+    if (o.placeholder) {
+      html += '<div class="ph-flag">' + esc(o.placeholder) + '</div>' +
+        '<div class="n">' + esc(o.placeholderNote) + '</div>' +
+        '<div class="n">门位是 <code>authored</code>：没有任何人观察过它。</div>';
+    } else if (o.annotation) {
+      html += '<div class="ok-flag">measured interior</div><div class="n">' + esc(o.annotation) + '</div>' +
+        '<div class="n">' + esc(o.annotationZh || '') + '</div>' +
+        '<div class="n">门位是 <code>authored</code>：没有任何人观察过它。</div>';
+    }
+    // two columns, never merged: 你到过 / 值已核
+    var visited = derived[o.doorId] ? '你到过' : '未到过';
+    var verifiedCount = anchor && anchor.verifiedFields ? anchor.verifiedFields.length : 0;
+    html += '<div class="n">' + visited + ' · 值已核：' +
+      (verifiedCount > 0 ? verifiedCount + ' 项' : '无（此名称来自授权模板）') + '</div>';
+    if (anchor && anchor.sourceUrl) html += '<div class="n">' + esc(anchor.sourceUrl) + '</div>';
+    var el = document.getElementById('s4');
+    el.className = 'slot';
+    el.innerHTML = html;
   }
 
   /**
@@ -746,59 +920,102 @@ const html = `<!DOCTYPE html>
       .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
+  /**
+   * THE FOUR HUD SLOTS (spec §1.4). Exactly four, each a pure function of the state:
+   *   S1 edge indicator  — direction + integer metres; HIDDEN once next is on screen
+   *   S2 three counters  — 街上 n/6 · 门洞 n/10 · 街外 16, three denominators from input
+   *   S3 status readout  — 四条通 · 东行 x m · 最近 <real name> ±d m
+   *   S4 doorway receipt — only while a door is open
+   *
+   * The 10-row debug table and the "E open a door" line are GONE (card deliverable 2).
+   * That line mattered: it was the only thing telling anyone E existed, and P1 is the
+   * experiment that asks whether it is needed. It is present in V-B only, as a keymap that
+   * names keys and nothing else.
+   */
   function update() {
     paint();
-    document.getElementById('pos').textContent =
-      'x=' + walker.x + ' of ' + (W - 1) + '  ·  row ' + walker.row + ' of ' + (H - 1) +
-      '  ·  along-street ' + walker.x + ' m  ·  zoom ' + zoomLevel() +
-      ' (' + scale() + ' screen px/tile, ' + viewTilesX() + ' tiles wide)' +
-      '  ·  steps ' + trail.length + '  ·  refused (wall) ' + refusals +
-      '  ·  this tile collision=' + collision[walker.row * W + walker.x];
+    var t = currentTarget();
+    var tAnchor = t ? t.anchor : null;
+    var inWin = SIM.isVisible(tAnchor, camLeft(), camTop(), viewTilesX(), viewTilesY());
+    var c = SIM.counters(PAYLOAD.anchors, derived, PAYLOAD.guideCounts);
+
+    /* S1 — hidden when the target is on screen (it would be repeating the world) */
+    var s1 = document.getElementById('s1');
+    if (tAnchor === null) {
+      s1.className = 'slot hidden';
+    } else if (inWin) {
+      s1.className = 'slot hidden';
+    } else {
+      s1.className = 'slot';
+      var dx = tAnchor.cellX - walker.x, dy = tAnchor.cellY - walker.row;
+      var arrow = Math.abs(dx) >= Math.abs(dy) ? (dx >= 0 ? '→' : '←') : (dy >= 0 ? '↑' : '↓');
+      s1.innerHTML = '<div class="lbl">目标 ' + esc(arrow) + '</div>' +
+        '<div class="val"><span class="arrow">' + arrow + '</span> <span class="m">' + t.dist + ' m</span> ' +
+        '<span class="n">' + esc(tAnchor.nameJa) + '</span></div>';
+    }
+
+    /* S2 — three counters, never merged; the third is total minus in-window */
+    document.getElementById('s2').innerHTML =
+      '<div class="lbl">计数</div><div class="val count">街上 <b>' + c.streetDone + '</b>/' + c.streetTotal +
+      ' · 门洞 <b>' + c.doorDone + '</b>/' + c.doorTotal + ' · 街外 <b>' + c.outsideTotal + '</b></div>';
+
+    /* S3 — the name is a VALUE from the fact layer, never a string written here */
+    var st = SIM.statusReadout(tAnchor, walker);
+    document.getElementById('s3').innerHTML =
+      '<div class="lbl">位置</div><div class="val">' + esc(st.street) + ' · ' + esc(st.direction) +
+      ' <b>' + st.alongM + '</b> m' +
+      (st.nearestName ? ' · 最近 <b>' + esc(st.nearestName) + '</b> ±' + st.nearestDistM + ' m' : '') + '</div>';
   }
 
-  /* --- the overlay the assertions describe --------------------------- */
-  var enterable = 0, reachable = 0, withRoom = 0;
-  var rows = ['<table><tr><th>door</th><th>cell</th><th>street row</th><th>reachable</th><th>surface</th><th>free depth behind</th><th>what opening it gives you</th><th>guide place</th></tr>'];
-  for (var q = 0; q < PAYLOAD.doors.length; q++) {
-    var d2 = PAYLOAD.doors[q];
-    if (d2.reachable) reachable++;
-    if (d2.interaction && d2.interaction.drawRoom) withRoom++;
-    if (d2.interaction && d2.interaction.placeholder) enterable++;
-    var gives = d2.interaction
-      ? (d2.interaction.drawRoom ? 'a modelled interior (' + d2.interaction.measuredInteriorRows + ' rows)'
-                                 : '<span class="warn">placeholder: ' + d2.interaction.placeholder + '</span>')
-      : '<span class="dim">no declaration</span>';
-    rows.push('<tr><td>' + d2.doorId + '</td><td>' + d2.cellX + ',' + d2.cellY + '</td><td>' + d2.streetRow +
-      '</td><td>' + (d2.reachable ? 'yes' : 'no') + '</td><td>' + (d2.surface || '—') +
-      '</td><td>' + d2.depthBehind + '</td><td>' + gives + '</td><td>' +
-      (d2.placeNameJa || d2.placeId || '<span class="dim">—</span>') + '</td></tr>');
-  }
-  rows.push('</table>');
-  document.getElementById('legend').innerHTML =
-    '<p><b>walk</b>: reached x=' + PAYLOAD.walk.reachedX + ' of ' + (W - 1) +
-    ' in ' + PAYLOAD.walk.steps + ' steps, ' + PAYLOAD.walk.corrections + ' row correction(s); rows ' +
-    PAYLOAD.walk.startRow + ' → ' + PAYLOAD.walk.endRow + '.' +
-    ' The street drifts ' + PAYLOAD.street.driftSpanM + ' m, so the walker follows the profile, not a fixed row.</p>' +
-    '<p><b>doors</b>: ' + PAYLOAD.doors.length + ' doors, all openable · ' + reachable + ' of ' +
-    PAYLOAD.doors.length + ' reachable from the street · ' + withRoom + ' of ' + PAYLOAD.doors.length +
-    ' open into a modelled interior · ' + enterable + ' of ' + PAYLOAD.doors.length +
-    ' are <span class="warn">placeholder only</span>. ' +
-    'Every door is enterable after the ruling; what differs is whether an interior is MODELLED behind it. ' +
-    'Press <b>E</b> at a door to see which you are at. The doors are <code>authored</code>: nobody has observed them.</p>' +
-    '<p><b>export</b>: ' + PAYLOAD.guide.placeCount + ' place ids reconciled from ' + PAYLOAD.guide.path +
-    ' (' + PAYLOAD.guide.stopCount + ' route stops + ' + PAYLOAD.guide.nearbyCount + ' passed alongside).</p>' +
-    rows.join('');
+  /* --- the key log: "which second was the first press" is a FILE, not a memory --- */
+  document.getElementById('logbtn').addEventListener('click', function () {
+    document.getElementById('logtext').value = JSON.stringify(keyLog, null, 1);
+  });
   update();
 
+  /**
+   * THE VARIANT. V-A is bare; V-B adds a keymap that names KEYS AND NOTHING ELSE — no
+   * goal, no colour legend. That is the whole point of the pair: it separates "the keys
+   * were not discoverable" from "there was no reason to press one". A keymap that also
+   * explained the goal would confound exactly the thing it exists to isolate.
+   *
+   * Chosen by URL fragment so both variants are one file and open from file://:
+   *   index.html        -> V-A (bare, the default)
+   *   index.html#V-B    -> V-B (keymap)
+   */
+  var VARIANT = (function () {
+    var h = (location.hash || '').replace(/^#/, '').toUpperCase();
+    return PAYLOAD.variants[h] ? h : PAYLOAD.defaultVariant;
+  })();
+  (function applyVariant() {
+    var v = PAYLOAD.variants[VARIANT];
+    document.getElementById('variantLabel').textContent = VARIANT + (v.keymap ? ' (keymap)' : ' (bare)');
+    var km = document.getElementById('keymap');
+    if (v.keymap && v.instructionalText.length) {
+      km.className = '';
+      km.textContent = v.instructionalText.join('  ·  ');
+    } else {
+      km.className = 'hidden';
+      km.textContent = '';
+    }
+  })();
+
   // expose for a headless probe, and for a curious person with a console
-  window.__TG = { walker: walker, step: step, refusals: function () { return refusals; },
+  window.__TG = { walker: walker, step: step, update: update, refusals: function () { return refusals; },
                   SIM: SIM, collision: collision, isBlocked: SIM.isBlocked, W: W, H: H,
-                  zoom: function () { return zoomLevel(); }, camLeft: camLeft,
-                  tilePx: TILE_PX, screenPxPerTile: scale, viewTilesX: viewTilesX,
+                  zoom: function () { return zoomLevel(); }, camLeft: camLeft, camTop: camTop,
+                  tilePx: TILE_PX, screenPxPerTile: scale, viewTilesX: viewTilesX, viewTilesY: viewTilesY,
                   hasTileAssets: function () { return TILE_ASSETS !== null; },
                   openNearestDoor: openNearestDoor, nearestDoor: nearestDoor,
                   lastInteraction: function () { return lastInteraction; },
-                  openerContract: PAYLOAD.openerContract };
+                  openerContract: PAYLOAD.openerContract,
+                  /* P1 state, for the assertions and for the log export */
+                  variant: VARIANT, variantSpec: PAYLOAD.variants[VARIANT],
+                  anchors: PAYLOAD.anchors, derived: derived, read: read,
+                  currentTarget: currentTarget, displayState: displayState,
+                  keyLog: function () { return keyLog; },
+                  facing: function () { return facing; } };
+  update();
 })();
 </script>
 </body>
