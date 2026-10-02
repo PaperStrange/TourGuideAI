@@ -41,6 +41,12 @@ HOW TO USE THIS BEFORE WRITING A CARD
   3. If every owner is the same, create ONE card for that owner.
   4. If they differ, SPLIT the card by owner -- do not hand one card's files to two roles.
   5. Never create a second card for a file another card already has open.
+  6. ASK FIRST: do these files, for this owner, already have a card -- completed or not? If yes,
+     REOPEN that card instead of creating one. Same owner + same files + new work = extend, not spawn.
+     This is the one I got wrong five times in a row: every new card I wrote overlapped a completed one,
+     and each overlap stayed on the board as a warning nothing could clear, because the board compares
+     every card's historical scope against current cards and cannot tell 'this role edited these files'
+     from 'this role owns these files'.
 
 WHY STEP 3 AND NOT "SERIALISE THEM"
   I serialised task-19/20/21 and called it solved. Serialising removes concurrency; it does not remove
