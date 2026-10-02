@@ -46,7 +46,24 @@
 现在 22/22 有 `verified_at`（**"我什么时候核过"**），几乎 None 有 `valid_from`（**"这个值从什么时候起是真的"**）。
 **两者不同**：一个 2024 年核过的营业时间，可能 2026 年就改了，而 `verified_at` 不会告诉你。
 
-**建议**：对 ② 类的值加 `validFrom` / `supersededFrom`（**`transit.json` 里已有 `effectiveFrom`/`supersededFrom` 的先例**——建仁寺涨价的记录就是这么写的）。**所以这不是新概念，是把它推广到几何类事实。**
+**建议**：对 ② 类的值加 `validFrom` / `supersededFrom`。
+**而这不是新概念，本项目已经用过一次**——但它**只在一条记录、一个嵌套字段里**：
+
+```
+places.json → kyoto-shijo-kennin-ji
+    "effectiveFrom": "2026-09-29"
+    "supersededFrom": "2027-01-01"        ← 建仁寺涨价（一般 800 → 1,000 円）
+```
+
+**实测口径（我先前写错过一次，这里是核准的）**：
+
+| | |
+|---|---|
+`places.json` | **22 条**：**22/22 带 `verified_at`**（"我何时核过"）· **1 条**带有效期字段（就是上面那条，且嵌在 `admission` 内，不在顶层） |
+`transit.json` | **9 条**：**0 条**带有效期字段 |
+`transit.json` 的字段名 | `id, from, to, mode, lineName, minutes, alongStreetM, minutesRule, fareIC, fareTicket, transfers, source_url, verified_at, provenance, measuredStraightM, minutesProvenance, distanceBasis` |
+
+**所以"有效期"这件事在本项目里出现过一次、被证明可用、然后没有被推广。** **本裁定的第一部分就是把它推广到 ② 类的全部值。**
 
 ### 3b · `scene.bin` 记**它依赖了哪些事实的哪个版本**
 **现在它记了 `openings.sourceSha256`（doors.json 的哈希）——那是 `task-18` 做对的一步，而我刚给 `gate-scene-read` 补了 `R3b` 去核它。**
