@@ -338,18 +338,74 @@ const html = `<!DOCTYPE html>
   var SIM = ${simSource};
 
   /* --- the camera ----------------------------------------------------
-     A 1.6 km street at 4 px/tile is a 6400x160 sliver: technically a render,
-     useless for walking. The camera shows a WINDOW of the corridor at a readable
-     scale and follows the walker. This is not "game feel" — it is the difference
-     between the page showing the geometry and the page showing a line. */
-  var ZOOMS = [2, 4, 8, 16, 32];
-  var zoomIdx = 3;                     // 16 px/tile
-  var VIEW_TILES_X = 96, VIEW_TILES_Y = 40;
+     SCALE IS FROM THE SPEC, NOT FROM TASTE. appendix-visual-and-ui-spec.md:
+       §1.1 L17  tile is 32x32 px, 1 tile = 1 m, one block = 40x40 tiles = 1280x1280 px
+       §1.2 L25  zoom is an INTEGER, 1/2/3 only (non-integers make the pixels shimmer)
+       §1.2 L27  logical canvas 1280x720
+       §1.2 L29  zoom table: zoom 1 sees 1280 px of world = 40 tiles; zoom 2 sees 640 px
+                 = 20 tiles; zoom 3 sees 426.7 px = 13.3 tiles
+       §1.2 L35  every interior fits on one screen at zoom 2; interiors never scroll
+       L131      "zoom 2 -> 640x360 world pixels, x2 -> 1280x720"
 
-  function scale() { return ZOOMS[zoomIdx]; }
-  function camTop() { return 0; }      // the corridor is exactly H tiles tall: no vertical scroll
+     => screenScale = zoom. A tile is 32 world px, so on screen it is 32 x zoom px: 32 at
+        zoom 1, 64 at zoom 2, 96 at zoom 3. zoom 1 is the pano/debug view, zoom 2 is the
+        default the rest of the spec assumes, zoom 3 is signboard study. L22 confirms it
+        independently: a 12 px world glyph is 24 px on screen at zoom 2.
+
+     THE FIRST VERSION OF THIS CORRECTION HAD THE RATIO INVERTED (32/zoom), which made
+     zoom 2 show 80 tiles instead of 20 — it zoomed OUT where the spec zooms IN. The
+     arithmetic looked plausible and my own new assertion passed, because that assertion
+     had been written from the same wrong reading. What settled it was L131's "x2", not
+     any table cell. A wrong reading and an assertion built on it agree with each other.
+
+     NO BACKTICKS IN THIS BLOCK: the page's JavaScript is emitted inside a template
+     literal, so a backtick here terminates it early — the same failure class as a literal
+     closing script tag. */
+  var TILE_PX = 32;                      // spec §1.1: one tile is 32x32 world px
+  var ZOOM_LEVELS = [1, 2, 3];           // spec §1.2: integers only, non-integers shimmer
+  var DEFAULT_ZOOM_INDEX = 1;            // -> zoom 2, the level the spec's rules assume
+  var zoomIdx = DEFAULT_ZOOM_INDEX;
+  /** The corridor is 40 rows tall; show all of it so the walk is never vertically blind. */
+  var VIEW_TILES_Y = H;
+
+  function zoomLevel() { return ZOOM_LEVELS[zoomIdx]; }
+  /** Screen pixels per WORLD pixel. Spec L131: zoom 2 maps 640 world px onto 1280. */
+  function screenScale() { return zoomLevel(); }
+  /** Screen pixels per tile: 32 world px, each screenScale() screen px across. */
+  function scale() { return TILE_PX * screenScale(); }
+  /**
+   * The spec's logical width is 1280 px and its zoom table is that width over the 32
+   * world px in a tile, so 1280 / 32 / zoom reproduces the table exactly: 40 / 20 / 13.3.
+   * The logical HEIGHT assumes 16:9, while this corridor is 40 rows — so the HEIGHT comes
+   * from the world (all 40 rows always visible, the walk is never vertically blind) and
+   * the WIDTH from the spec. The adaptation is recorded rather than hidden.
+   */
+  function viewTilesX() { return Math.round(1280 / TILE_PX / screenScale()); }
+
+  /* --- THE ASSET INTERFACE ---------------------------------------------
+     A cell is rendered by cellPixelSource(cellX, cellY), which returns either
+       { width, height, data }   raw RGBA bytes, width/height = TILE_PX, or
+       null                      -> fall back to the procedural colour below.
+     Nothing else in the render loop needs to change when real tiles arrive: the
+     provider is the seam, and it is deliberately the ONLY one.
+
+     Why raw RGBA and not an img/PNG: the page is opened from file://, where a
+     canvas may not draw an image it did not originate (the canvas is tainted) and
+     where fetch of a sibling file is refused. So a tile must arrive as PIXELS —
+     an asset build step decodes the PNG and inlines the bytes. That is a
+     consequence of the offline single-file constraint, not a preference.
+
+     It is null today: §6.3 of the SOW records ZERO art assets in the repository. */
+  var TILE_ASSETS = null;
+  function cellPixelSource(cellX, cellY) {
+    if (!TILE_ASSETS) return null;
+    var key = cellX + ',' + cellY;
+    return Object.prototype.hasOwnProperty.call(TILE_ASSETS, key) ? TILE_ASSETS[key] : null;
+  }
+
+  function camTop() { return 0; }      // the corridor fits in the window vertically
   function camLeft() {
-    var span = Math.min(VIEW_TILES_X, W);
+    var span = viewTilesX();
     var left = walker.x - Math.floor(span / 2);
     if (left < 0) left = 0;
     if (left > W - span) left = W - span;
@@ -358,51 +414,73 @@ const html = `<!DOCTYPE html>
 
   var cv = document.getElementById('c');
   var ctx = cv.getContext('2d');
-  var img = null, imgW = 0, imgH = 0;
+  var img = null;
 
   function paint() {
     var S = scale();
-    var span = Math.min(VIEW_TILES_X, W);
+    var span = viewTilesX();
     var left = camLeft();
     var top = camTop();
     var pw = span * S, ph = VIEW_TILES_Y * S;
     if (cv.width !== pw || cv.height !== ph) {
       cv.width = pw; cv.height = ph;
       img = ctx.createImageData(pw, ph);
-      imgW = pw; imgH = ph;
     }
     var d = img.data;
-    for (var py = 0; py < ph; py++) {
-      var r = top + ((py / S) | 0);
-      for (var px = 0; px < pw; px++) {
-        var x = left + ((px / S) | 0);
+    var si = Math.round(S);            // integer blit size so tiles never half-pixel
+    for (var ty = 0; ty < VIEW_TILES_Y; ty++) {
+      var r = top + ty;
+      for (var tx = 0; tx < span; tx++) {
+        var x = left + tx;
+        var i = (r >= 0 && r < H && x >= 0 && x < W) ? r * W + x : -1;
         var R, G, B;
-        var i = r * W + x;
-        if (r < 0 || r >= H || x < 0 || x >= W) { R = 255; G = 255; B = 255; }
+        if (i < 0) { R = 255; G = 255; B = 255; }
         else if (collision[i]) { R = 60; G = 56; B = 62; }
         else if (ground[i]) { R = 214; G = 208; B = 194; }
         else { R = 246; G = 242; B = 234; }
-        if (r >= 0 && r < H && x >= 0 && x < W && !collision[i] && heights[i] > 0) {
+        if (i >= 0 && !collision[i] && heights[i] > 0) {
           R = 226 - Math.min(60, heights[i] * 2); G = 232 - Math.min(50, heights[i]); B = 210;
         }
-        var o = (py * pw + px) * 4;
-        d[o] = R; d[o + 1] = G; d[o + 2] = B; d[o + 3] = 255;
+        var art = cellPixelSource(x, r);
+        var y0 = ty * si, x0 = tx * si;
+        for (var oy = 0; oy < si; oy++) {
+          var pyy = y0 + oy;
+          if (pyy >= ph) break;
+          var rowBase = (pyy * pw + x0) * 4;
+          for (var ox = 0; ox < si; ox++) {
+            var pxx = x0 + ox;
+            if (pxx >= pw) break;
+            var o = rowBase + ox * 4;
+            if (art) {
+              // sample the 32x32 source; nearest-neighbour, which is what pixel art wants
+              var sx = Math.min(art.width - 1, Math.floor((ox * art.width) / si));
+              var sy = Math.min(art.height - 1, Math.floor((oy * art.height) / si));
+              var so = (sy * art.width + sx) * 4;
+              d[o] = art.data[so]; d[o + 1] = art.data[so + 1]; d[o + 2] = art.data[so + 2];
+              d[o + 3] = art.data[so + 3];
+            } else {
+              d[o] = R; d[o + 1] = G; d[o + 2] = B; d[o + 3] = 255;
+            }
+          }
+        }
       }
     }
-    // doors inside the window: a red tile plus a stem toward the street
+    // doors inside the window: a red tile plus a stem toward the street.
+    // Markers are drawn at integer blit size so a door is exactly one cell.
+    var si2 = Math.round(S);
     for (var k = 0; k < PAYLOAD.doors.length; k++) {
       var dr = PAYLOAD.doors[k];
-      var dx0 = (dr.cellX - left) * S, dy0 = (dr.cellY - top) * S;
-      if (dx0 < -S || dy0 < -S || dx0 > pw || dy0 > ph) continue;
-      for (var yy = 0; yy < S; yy++) for (var xx = 0; xx < S; xx++) {
+      var dx0 = Math.round((dr.cellX - left) * S), dy0 = Math.round((dr.cellY - top) * S);
+      if (dx0 < -si2 || dy0 < -si2 || dx0 > pw || dy0 > ph) continue;
+      for (var yy = 0; yy < si2; yy++) for (var xx = 0; xx < si2; xx++) {
         var px2 = dx0 + xx, py2 = dy0 + yy;
         if (px2 < 0 || py2 < 0 || px2 >= pw || py2 >= ph) continue;
         var oo = (py2 * pw + px2) * 4;
         d[oo] = 200; d[oo + 1] = 30; d[oo + 2] = 30; d[oo + 3] = 255;
       }
       var dir = Math.sign(dr.cellY - dr.streetRow) || 1;
-      for (var t = 1; t <= 2; t++) for (var sy = 0; sy < S; sy++) {
-        var pxx = dx0 + ((S - 1) >> 1), pyy = (dr.cellY + dir * t - top) * S + sy;
+      for (var t = 1; t <= 2; t++) for (var sy = 0; sy < si2; sy++) {
+        var pxx = dx0 + ((si2 - 1) >> 1), pyy = Math.round((dr.cellY + dir * t - top) * S) + sy;
         if (pxx < 0 || pyy < 0 || pxx >= pw || pyy >= ph) continue;
         var o3 = (pyy * pw + pxx) * 4;
         d[o3] = 220; d[o3 + 1] = 120; d[o3 + 2] = 120; d[o3 + 3] = 255;
@@ -453,7 +531,7 @@ const html = `<!DOCTYPE html>
   };
   window.addEventListener('keydown', function (e) {
     if (e.key === '[') { zoomIdx = Math.max(0, zoomIdx - 1); update(); e.preventDefault(); return; }
-    if (e.key === ']') { zoomIdx = Math.min(ZOOMS.length - 1, zoomIdx + 1); update(); e.preventDefault(); return; }
+    if (e.key === ']') { zoomIdx = Math.min(ZOOM_LEVELS.length - 1, zoomIdx + 1); update(); e.preventDefault(); return; }
     var lower = e.key && e.key.toLowerCase ? e.key.toLowerCase() : e.key;
     if (lower === 'e') { openNearestDoor(); e.preventDefault(); return; }
     var k = KEYS[e.key] || KEYS[lower];
@@ -545,7 +623,8 @@ const html = `<!DOCTYPE html>
     paint();
     document.getElementById('pos').textContent =
       'x=' + walker.x + ' of ' + (W - 1) + '  ·  row ' + walker.row + ' of ' + (H - 1) +
-      '  ·  along-street ' + walker.x + ' m  ·  ' + scale() + ' px/tile' +
+      '  ·  along-street ' + walker.x + ' m  ·  zoom ' + zoomLevel() +
+      ' (' + scale() + ' screen px/tile, ' + viewTilesX() + ' tiles wide)' +
       '  ·  steps ' + trail.length + '  ·  refused (wall) ' + refusals +
       '  ·  this tile collision=' + collision[walker.row * W + walker.x];
   }
@@ -587,7 +666,9 @@ const html = `<!DOCTYPE html>
   // expose for a headless probe, and for a curious person with a console
   window.__TG = { walker: walker, step: step, refusals: function () { return refusals; },
                   SIM: SIM, collision: collision, isBlocked: SIM.isBlocked, W: W, H: H,
-                  zoom: function () { return scale(); }, camLeft: camLeft,
+                  zoom: function () { return zoomLevel(); }, camLeft: camLeft,
+                  tilePx: TILE_PX, screenPxPerTile: scale, viewTilesX: viewTilesX,
+                  hasTileAssets: function () { return TILE_ASSETS !== null; },
                   openNearestDoor: openNearestDoor, nearestDoor: nearestDoor,
                   lastInteraction: function () { return lastInteraction; },
                   openerContract: PAYLOAD.openerContract };

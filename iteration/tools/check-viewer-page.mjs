@@ -221,23 +221,38 @@ function main() {
   );
   if (!TG) return finish(jsonOut);
 
-  /* ---- the page drew something, at a size a person can read ----------- *
-   * The first bake drew the WHOLE corridor at 4 px/tile: a correct 6400x160
-   * render that shows a 1.6 km street as a sliver. "It rendered" is not "you can
-   * see the geometry", so the camera is asserted, not assumed.
+  /* ---- the page drew something, at THE SPEC'S scale ------------------- *
+   * This check used to assert `zoom >= 8 && viewW < 1600 * zoom`, encoding the OLD
+   * 2/4/8/16/32 screen-pixel ladder this viewer happened to be written with. When the
+   * scale was corrected to appendix-visual-and-ui-spec §1.1–1.2 — tile 32 px, zoom in
+   * {1,2,3} integers, zoom 2 the default — that threshold stopped describing the page
+   * and the check went red on a CORRECT artefact. So it is re-anchored to the spec
+   * rather than to any ladder: the tile is 32 px, the zoom is one of the three legal
+   * integers, screen pixels per tile is 32/zoom, and the view is a WINDOW rather than
+   * the whole corridor. A future scale change must move the spec, not this constant.
    */
   const c = canvases.c;
   const zoom = TG.zoom ? TG.zoom() : null;
-  const viewW = c ? c.width : 0;
-  const readable = zoom >= 8 && viewW > 0 && viewW < 1600 * zoom; // a window, not the whole grid
+  const tilePx = TG.tilePx;
+  const pxPerTile = TG.screenPxPerTile ? TG.screenPxPerTile() : null;
+  const viewTiles = TG.viewTilesX ? TG.viewTilesX() : null;
+  const LEGAL_ZOOMS = [1, 2, 3];
+  const specConformant =
+    tilePx === 32 &&
+    LEGAL_ZOOMS.includes(zoom) &&
+    Math.abs(pxPerTile - 32 * zoom) < 1e-9 &&
+    viewTiles === Math.round(1280 / 32 / zoom) &&
+    viewTiles > 0 && viewTiles < 1600;
   check(
     'P3',
-    'the page painted the grid through a readable camera window',
-    Boolean(c) && c.__put && c.__putCount >= 1 && readable,
+    'the page paints at the SPEC scale: 32 px tiles, integer zoom, a window not a sliver',
+    Boolean(c) && c.__put && c.__putCount >= 1 && specConformant,
     c
-      ? `canvas ${c.width}x${c.height} at ${zoom} px/tile, putImageData called ${c.__putCount} time(s), ` +
-        `${c.__put ? c.__put.data.length : 0} bytes of ImageData · ` +
-        `window is ${viewW}/${1600 * zoom} px of the full corridor (a window, not a sliver)=${readable}`
+      ? `canvas ${c.width}x${c.height} · tile ${tilePx} px · zoom ${zoom} of ${JSON.stringify(LEGAL_ZOOMS)} ` +
+        `· ${pxPerTile} screen px/tile (=32/zoom) · ${viewTiles} tiles wide ` +
+        `(1280 logical px = one 40-tile block at zoom 1) · window is ${viewTiles}/1600 tiles ` +
+        `of the corridor, a window not a sliver=${viewTiles < 1600} · ` +
+        `${c.__put ? c.__put.data.length : 0} bytes of ImageData`
       : 'no canvas',
   );
 

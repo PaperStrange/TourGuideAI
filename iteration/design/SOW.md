@@ -190,6 +190,28 @@ vite.config / tsconfig                  【不存在】
 
 ---
 
+## 8b · 本阶段【已关闭】的成员与工作线
+
+> **为什么有这一节。** 用户要求不再消耗 token 在不需要的同事身上。**而这个名册在设计上不可移除**（`@deepseek-ai/dsh-experimental-agent-team` 的 `roster.js` 写着 "maximum **immutable** roster entries"；journal 只有 `team/member` 与 `team/task` 两种事件，**没有移除事件类型**）。
+> **所以"关闭"只能靠【写明 + 不派单】，而这一节就是那个写明。** 任何后来者（包括下一个会话的 Lead）**在派单前读到这里，就不该再开这三条线。**
+
+| 成员 | 状态 | 它的活 | **为什么关闭** |
+|---|---|---|---|
+**`review-src-intl`** | **已关闭** | 国际许可线 · `review-source-matrix.md` + `_fetch-intl/`（20 文件） | **它的结论是排他性的**：Google Places 内容不得与非 Google 地图同用（Maps Service Specific Terms §14.2，逐字在盘上），**而本项目底图是 OSM 派生 → Google 系当场死**。三条线里唯一具备许可资质的 POI 候选（Foursquare OS Places / OSM）它已判完 |
+**`review-src-jp`** | **已关闭** | 日本线 · `review-source-japan.md`（149 行，26,626 B）+ 22 份证据 | **它自己判定**：「**作为背景它扎实且仍然有效；作为待办它已经死了。**」**而它给出的建设性反提案（A4b 换成官方 `説明`）已记入 §4.2 与 §11** |
+**`review-src-zh`** | **已关闭**（**除非用户裁定保留 A4b**） | 中文线 · `review-source-zh.md` + `_raw-review-zh/`（36/36 引文可回溯）+ `wikivoyage-zh-coverage.md` | **它的判定已交付**（9/9 平台排除我们的用途）**而 A4b 的裁定权在用户**。若用户裁定保留 A4b，**这一条要重开**——因为 A4b 的许可依据全在它手里 |
+
+**这三条线的产物全部留在仓库里（tracked）。** 关闭的是**执行者**，不是证据。
+
+**而机制上为什么这等于关闭**（查过源码，不是推测）：
+```
+全插件只有两处 startContinuable —— index.js L573 与 roster.js L253，都在 spawnAdmitted() 里（"创建成员那一刻"）
+成员的动作面只有: spawn · send · interrupt · createTask · createAssignment
+recoverFor 只在成员【下次启动】时重投递未送达消息
+⇒ 一个 inactive 且收件箱为空的成员，【没有任何代码路径】会唤醒它
+```
+**三条线的收件箱都是空的。** 所以"不会再消耗 token"这件事**不依赖任何人记住**：它依赖"没有人给它发消息"，而那是可观测、可审计的动作。
+
 ## 9 · 交接与验收
 
 | 角色 | 拥有什么 | 交付什么 |

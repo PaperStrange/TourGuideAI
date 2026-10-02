@@ -189,6 +189,20 @@ ReferenceError: existsSync is not defined   at gate-scene-read.mjs:126
 **由此得到一条可查的判据**（`check-task-ownership.mjs` 的第 6 步）：
 > **新卡的文件集若与某张已完成卡的范围相交，且 owner 相同 → 你要的不是新卡。**
 
+## 4g · 三条许可线【已关闭】——派单前先读这一段
+
+| 成员 | 状态 | 依据 |
+|---|---|---|
+`review-src-intl` | **已关闭** | 结论排他（Google §14.2 + 底图 OSM 派生）；POI 候选已判完 |
+`review-src-jp` | **已关闭** | **它自己判定"作为待办已死"** |
+`review-src-zh` | **已关闭**（**除非用户裁定保留 A4b**） | A4b 的许可依据全在它手里，所以只有 A4b 被保留时才重开 |
+
+**名册在设计上不可移除**（`roster.js`："maximum **immutable** roster entries"）。**所以"关闭"= 写明 + 不派单**，而这一行就是那个写明。
+
+**机制（查过源码）**：全插件只有两处 `startContinuable`，都在 `spawnAdmitted()`（创建那一刻）。**inactive 且收件箱为空的成员没有任何代码路径会唤醒它。** 三条线收件箱为空。
+
+**⇒ 下一个人若要重开这三条线，先回答：§8b 里那个关闭理由现在还不成立吗？**
+
 ## 5 · 为什么"串行化"不够（写给下一次的我）
 
 我当时的推理是：「三张卡都写 `validate-doors.mjs`，所以串行化就安全了。」
