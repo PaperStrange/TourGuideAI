@@ -76,21 +76,22 @@ files copy is D-12 — the defect this project has already paid for four times.
 
 ```bash
 node iteration/tools/check-viewer.mjs                # 14 assertions — the walk, the container, the export, the declaration
-node iteration/tools/check-viewer-page.mjs           # 11 assertions — the BAKED PAGE's own JavaScript, run headlessly
+node iteration/tools/check-viewer-page.mjs           # 18 assertions — the BAKED PAGE's own JavaScript, run headlessly
 node iteration/tools/build-opener-fact.mjs --check   # the artefacts match the declaration
 ```
 
 `check-viewer-page.mjs` extracts the page's real `<script>` and evaluates it in `node:vm`
-against a minimal DOM stub, so the page's own layer decode, walker, panel and key handler
-execute. It is not a screenshot check: it drives the page's own `E` handler at a south door
-and reads the panel back.
+against a minimal DOM stub, so the page's own layer decode, walker, HUD, receipt and key
+handler execute. It is not a screenshot check: it drives the page's own `E` handler at a south
+door and reads the receipt back, and it runs the page a second time under `#V-B` to compare
+the variants.
 
 **No assertion's expectation is a constant.** `check-viewer.mjs` compares the door count
-against `doors.json`; `check-viewer-page.mjs` compares the page's printed numbers against the
-payload it printed them from; `check-viewer.mjs` compares the page's embedded layer list
-against the container's own layout arithmetic. This matters because a previous round moved
-the door count 12 → 10 and reddened checks that had nothing to say about whether the world
-was correct. Each has a fire drill, the same shape as `validate-doors.mjs --doors`:
+against `doors.json`; `check-viewer-page.mjs` compares the page's printed counters against the
+payload they came from, and compares its anchor set against `build/guide.json` re-read from
+disk rather than against the page's own copy of it. This matters because a previous round moved
+the door count 12 → 10 and reddened checks that had nothing to say about whether the world was
+correct. Each has a fire drill, the same shape as `validate-doors.mjs --doors`:
 
 ```bash
 node iteration/tools/check-viewer.mjs --doors <f> --places <f> --opener <f>   # follow, not redden
@@ -98,16 +99,108 @@ node iteration/tools/check-viewer-page.mjs --page <baked variant>             # 
 node iteration/tools/bake-viewer.mjs --doors <f> --opener <f> --out <dir>     # bake a variant; the shipped page is untouched
 ```
 
+**Two assertions record their own limits rather than claiming more.** P10 fixes `t=0` and says
+so: it proves a RULE, not an EXPERIENCE, because the live sequence depends on the path a player
+actually walked and is not assertable without a reference path. P14 searches the delivered text
+with comments stripped, because the phrase it forbids survives in the comments that document
+its removal, and a check that counted prose would fail the page for explaining itself.
+
+---
+
+## P1 · why a player presses the first arrow key
+
+The shell is also the apparatus for P1, the project's most expensive untested assumption —
+that anyone wants to walk this world at all. The spec is `iteration/design/play-systems.md`;
+what this page implements from it:
+
+**Four HUD slots, and exactly four** (§1.4):
+
+| | slot | content |
+|---|---|---|
+| **S1** | edge indicator | direction + integer metres to the current target — **hidden the moment that target is on screen** |
+| **S2** | three counters | `街上 n/6 · 门洞 n/10 · 街外 16` — never merged, and all three denominators computed from input |
+| **S3** | status readout | `四条通 · 东行 x m · 最近 <real name> ±d m` — the name is a fact-layer VALUE, not a string in the page |
+| **S4** | doorway receipt | only while a door is open; the title leads with the door id and along-street metre because seven of the ten doors share one building name |
+
+**Deleted, and the deletion is asserted:** the 10-row debug table, and the line
+`E open a door`. That line mattered — it was the only thing telling anyone `E` existed, and
+P1 is the experiment that asks whether it is needed. P14 searches the *delivered* text (HTML
+and JS comments stripped) so the page is not failed for documenting its own removal.
+
+### Two things the spec and the code disagree about, resolved by measurement
+
+**1. The target sequence must skip placeholder doors.** `next` is
+`argmin{distance : a ∈ eligible}` where `eligible` excludes `modelled === false`. Without that
+clause the first target is still the crossing — so the trap looks avoided — but targets 2, 3
+and 4 are `D-S1 → D-S3 → D-S5`, the three south placeholders, because they sit in a 7 m chain.
+A green check on target #1 said nothing about #2–#4, which is why the assertion is on the
+**sequence** (`targetSequence`) and not on the first step. Placeholder doors are still drawn,
+still enterable, still counted in 门洞 n/10: existing is not gated, **being named** is.
+
+**2. The camera keeps the walker visible before it keeps the target visible.** `camLeft()`
+clamps to the world *first* and only then slides toward the target. My first version nudged
+toward the target first, which at the western end pushed the window to columns 1..20 and put
+the walker **outside** it — P13 reported 1,371 violations starting at step 0. A rule that
+keeps the target visible must never outrank one that keeps the player visible.
+
+The measured consequence, and why the camera slides at all: the nearest anchor is at column 20
+while the spawn window is columns 0..19, so under a pure centre-and-clamp the world stays
+**empty for ten steps** while S1 counts 20 m down to 10 m — only the HUD responding. With the
+slide, the first keystroke brings the crosswalk into view and S1 hides because its target is
+now on screen:
+
+```
+step  x   camLeft  window cols   anchors visible        S1
+   0    0        0     0..  19    0                     → 20 m   (0 content cells: the walker is at the world's edge)
+   1    1        1     1..  20    1  crossing-karasuma-east   HIDDEN
+```
+
+At `t = 0` the world layer holds the centreline and the walker and **nothing else**. That is
+not a defect to fix by tuning: §1.1 measured that all 5,601 non-zero `ground` cells are
+building footprints, and the nearest anchor is one column beyond a clamped window. It is why
+the "first frame is not empty" criterion is written against the **HUD** — `t=0` must name at
+least one real fact-layer place, which it does (四条烏丸交差点 東側横断歩道, ±20 m) — rather
+than against the window, where it could never go green and would teach people to ignore red.
+
+### Two variants, and they differ in the keymap ALONE
+
+The pair separates "the keys were not discoverable" from "there was no reason to press one".
+That separation is only valid if nothing else changes, so P15 runs the page **twice** — in two
+independent VM contexts — and requires the same first target and the same counters:
+
+```
+iteration/viewer/index.html          V-A  bare      (the default)
+iteration/viewer/index.html#V-B      V-B  keymap    ("arrows or WASD move · E opens the door you stand at")
+```
+
+The keymap names **keys only** — no goal, no colour legend — because a keymap that explained
+the goal would confound the very thing it exists to isolate.
+
+### The key log is a file, not a memory
+
+The page's own handler records every press (`iteration/viewer/index.html` → **导出按键日志**):
+
+```jsonc
+[{ "t_ms": 4120, "key": "ArrowRight", "refused": false, "targetId": "kyoto-shijo-crossing-karasuma-east",
+   "targetDistM": 19, "derivedCount": 0, "changed": true }]
+```
+
+`changed` is computed against the page's `displayState()`, so **"the first press changed
+something on screen" is a recorded boolean** rather than a judgement. Unmapped keys are logged
+too — a person trying a key the page does not accept is data, not noise.
+
 ---
 
 ## What this is, and what it is not
 
 | | |
 |---|---|
-| **Is** | a top-down view of the frozen corridor read from `build/scene.bin`: collision, building footprints, sourced heights, the street's own drifting centreline, and the 10 authored doors |
+| **Is** | a top-down view of the frozen corridor read from `build/scene.bin`: the street's own drifting centreline, the walker, and 16 anchors (6 sourced places + 10 authored doors) |
 | **Is** | the third independent reader of the container (`emit-guide.mjs` and `gate-scene-read.mjs` are the other two) |
-| **Is not** | a game. No engine, no Phaser, no `src/`. Gate 1's criterion is *walkable*, plus one real person walking it — not game feel. Proving the world is correct comes before deciding whether it needs an engine |
-| **Is not** | a second export. Every id on the page comes from `build/guide.json` |
+| **Is** | P1's apparatus: four HUD slots, a pure-function target, two variants, a key log |
+| **Is not** | a game. No engine, no Phaser, no `src/`, and no art assets (`cellPixelSource()` returns `null`; §6.3 records 0 assets) |
+| **Is not** | a second export. Every id on the page comes from `build/guide.json` and `city-packs/` |
+| **Does not draw** | collision, ground or height rasters. They are still the collision truth — every step is still refused by them — they are simply not the visual. Drawing them is what made the world read as an abstract diagram |
 
 ## Why it is ONE self-contained file
 
@@ -181,23 +274,8 @@ byte-for-byte against the container. A page baked from a different scene fails l
 of quietly drawing a world that no longer exists — and that check has already earned its keep:
 it is what proved a layer-offset error in this reader rather than a stale bake.
 
-## Assertions
-
-```bash
-node iteration/tools/check-viewer.mjs        # 11 assertions — the simulation, the container, the export
-node iteration/tools/check-viewer-page.mjs   # 8 assertions  — the BAKED PAGE's own JavaScript, run headlessly
-```
-
-`check-viewer-page.mjs` extracts the page's real `<script>` and evaluates it in
-`node:vm` against a minimal DOM stub, so the page's own layer decode, walker,
-overlay and key handler execute. It is not a screenshot check: it drives the page's
-own `step()` into a wall and reads back the refusal.
-
-Neither script is wired into `run-gates.mjs`. See the task report for the proposed
-fourteenth gate.
-
 ## Licence
 
 The geometry in `scene.bin` derives from OpenStreetMap (**ODbL 1.0**, © OpenStreetMap
-contributors) and is described in `city-packs/kyoto-shijo/`. The twelve doors are
+contributors) and is described in `city-packs/kyoto-shijo/`. The ten doors are
 `authored` — nobody has observed them; see `doors.json` `provenance.whyNotObserved`.

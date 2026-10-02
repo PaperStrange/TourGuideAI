@@ -1,7 +1,38 @@
 // v15-scene-bytes.mjs — read build/scene.bin directly with my own reader, to test the
 // SOW §4.1 claim: do the three south doors stand on emitted geometry or on nothing?
 // Layout taken from unpackScene (emit-scene.mjs L1036-1057) and re-implemented here.
-import { readFileSync } from 'node:fs';
+//
+// ---------------------------------------------------------------------------
+// R2″ DEPENDENCY JUDGEMENT — required before this read. WHY IT IS NECESSARY:
+//
+//   build/scene.bin is DERIVED (gitignored, .gitignore:86 = `/build`). Reading it is
+//   unavoidable HERE, and the reason is the entire point of the script:
+//
+//     The claim under test is about the EMITTED BYTES, not about the emitter. "The three
+//     south doors stand on emitted geometry or on nothing" is a statement about what
+//     emit-scene.mjs actually produced. Re-deriving that from the tracked inputs would
+//     test the emitter's intent, not whether it DROPPED the south footprint -- and
+//     dropping is what is alleged (manifest.rejectedFeatures lists 205732536 as
+//     "clipped to zero area"). A script that re-derives cannot observe an omission.
+//
+//   So this is the "why it must be read" case, written down rather than assumed.
+//   If build/scene.bin is absent this script must FAIL, not degrade: an absent scene means
+//   the claim is UNTESTED, and reporting "0 bytes" would read as "no defect".
+//   (check-viewer.mjs:431-436 takes the same position, and can bake on demand instead.)
+//
+//   Note for whoever reads this next: find-untracked-deps.mjs does NOT flag this read,
+//   because it filters to owner dirs docs/ city-packs/ iteration/ (its L80), so build/ is
+//   outside that scanner's scope. That exemption is a scope limit, not a judgement that
+//   this dependency is fine. The judgement is the paragraph above, and it is the only
+//   record that this read was decided rather than defaulted into.
+// ---------------------------------------------------------------------------
+import { readFileSync, existsSync } from 'node:fs';
+if (!existsSync('build/scene.bin')) {
+  console.error('FATAL: build/scene.bin is absent (gitignored, so a clean clone has none).');
+  console.error('       The claim under test is about EMITTED bytes; without them it is UNTESTED.');
+  console.error('       Run: node iteration/tools/emit-scene.mjs');
+  process.exit(2);
+}
 const buf = readFileSync('build/scene.bin');
 if (buf.toString('ascii', 0, 8) !== 'TG25DSCN') throw new Error('bad magic');
 const wTiles = buf.readUInt32LE(12), hTiles = buf.readUInt32LE(16);

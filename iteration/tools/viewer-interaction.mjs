@@ -247,6 +247,27 @@ function anchorDist(anchor, walker) {
   return anchor === null ? null : Math.abs(anchor.cellX - walker.x) + Math.abs(anchor.cellY - walker.row);
 }
 
+/**
+ * S3's readout says 最近 — NEAREST, which is a DIFFERENT question from `next`.
+ *
+ * `next` is gated by `eligible` (progress: where should I go) and skips anything already
+ * derived. "Nearest" is ungated (orientation: what is the closest real thing to me), it
+ * will name a placeholder door, and it ignores whether that anchor was visited. Collapsing
+ * the two would make S3 answer "where next" while claiming "what is near", and they diverge
+ * the moment the nearest door is a placeholder — which is the normal case on the south side.
+ */
+function nearestAnchor(anchors, walker) {
+  var best = null, bestD = null;
+  for (var i = 0; i < anchors.length; i += 1) {
+    var a = anchors[i];
+    var d = Math.abs(a.cellX - walker.x) + Math.abs(a.cellY - walker.row);
+    if (bestD === null || d < bestD || (d === bestD && a.alongStreetM < best.alongStreetM)) {
+      best = a; bestD = d;
+    }
+  }
+  return best === null ? null : { anchor: best, dist: bestD };
+}
+
 /** Is the anchor inside the current window? The S1 indicator hides when it is. */
 function isVisible(anchor, camLeft, camTop, viewX, viewY) {
   if (!anchor) return false;
@@ -295,6 +316,9 @@ function anchorTitle(anchor) {
 /**
  * S3 — the status readout: 四条通 · 东行 x m · 最近 <real name> ±d m.
  * The name is a VALUE from the fact layer, never a string written here.
+ *
+ * It reports the NEAREST anchor (ungated), not `next` — see nearestAnchor for why those are
+ * different questions and why collapsing them would misreport what S3 claims to say.
  */
 function statusReadout(anchor, walker) {
   return {
@@ -327,7 +351,7 @@ function counters(anchors, derived, guideCounts) {
 
 export {
   openDoor, placeholderDoors, measuredDoors,
-  nextAnchor, targetSequence, anchorDist, isVisible, signedMetres, statusReadout, counters, anchorTitle,
+  nextAnchor, targetSequence, nearestAnchor, anchorDist, isVisible, signedMetres, statusReadout, counters, anchorTitle,
   PLACEHOLDER_TEXT, PLACEHOLDER_NOTE_ZH,
   SURFACE_MEASURED, SURFACE_UNMODELLED,
 };

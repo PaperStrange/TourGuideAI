@@ -573,11 +573,45 @@ const html = `<!DOCTYPE html>
     if (top > H - spanY) top = H - spanY;
     return top;
   }
+  /**
+   * Horizontal window: centred on the walker and clamped to the world, PLUS one adjustment —
+   * if the walker's current target is off the left or right edge, the window slides the
+   * minimum distance that brings it in.
+   *
+   * WHY, MEASURED RATHER THAN ASSUMED. The nearest anchor to the spawn is
+   * 四条烏丸交差点 東側横断歩道 at column 20. The window is 20 columns wide and camLeft clamps
+   * to 0, so at spawn the window is columns 0..19 and the target sits exactly ONE column
+   * outside it. The CLAMP, not the distance, is what hides it: the target does not enter the
+   * view until x=11, so the first TEN steps show an empty world while S1 counts 20 m down to
+   * 10 m. That attacks P1's goal directly — "the first key press gets a response from the
+   * world" — because for those ten steps only the HUD responds; the world does not.
+   *
+   * Sliding the window one column makes the world answer on the first step. The walker stays
+   * strictly inside the window either way (P13 asserts it at every step) and the horizontal
+   * field of view is unchanged, so this is not a camera redesign — it is the same 20-column
+   * window choosing where to sit. §1.5's vertical bias is untouched and still applies.
+   */
   function camLeft() {
     var span = viewTilesX();
     var left = walker.x - Math.floor(span / 2);
+    /* HARD RULE FIRST: the walker never leaves the frame (asserted at every step by P13).
+       So the window is clamped to the world BEFORE any attempt to reach the target — at the
+       western end the walker is AT the boundary, the window is 0..19, and there is simply no
+       room to slide toward a target at column 20.
+       My first version of this nudged toward the target first, which pushed the window to
+       1..20 at spawn and put the walker OUTSIDE it. P13 caught that on the very first frame
+       with 1,371 violations across the walk — the assertion was written for exactly this and
+       it worked. A rule that keeps the target visible must never outrank one that keeps the
+       PLAYER visible. */
     if (left < 0) left = 0;
     if (left > W - span) left = W - span;
+    var t = currentTarget();
+    if (t) {
+      if (t.anchor.cellX > left + span - 1) left = Math.min(t.anchor.cellX - span + 1, walker.x);
+      else if (t.anchor.cellX < left) left = Math.max(t.anchor.cellX, walker.x - span + 1);
+      if (left < 0) left = 0;
+      if (left > W - span) left = W - span;
+    }
     return left;
   }
   /** Integer-cell deadzone at the current zoom (spec §1.5: 192x96 px -> 3x2 cells at zoom 2). */
@@ -959,8 +993,11 @@ const html = `<!DOCTYPE html>
       '<div class="lbl">计数</div><div class="val count">街上 <b>' + c.streetDone + '</b>/' + c.streetTotal +
       ' · 门洞 <b>' + c.doorDone + '</b>/' + c.doorTotal + ' · 街外 <b>' + c.outsideTotal + '</b></div>';
 
-    /* S3 — the name is a VALUE from the fact layer, never a string written here */
-    var st = SIM.statusReadout(tAnchor, walker);
+    /* S3 — the name is a VALUE from the fact layer, never a string written here.
+       It reports the NEAREST anchor, which is a different question from next: nearest is
+       ungated and will name a placeholder door, while next skips placeholders. */
+    var near = SIM.nearestAnchor(PAYLOAD.anchors, walker);
+    var st = SIM.statusReadout(near ? near.anchor : null, walker);
     document.getElementById('s3').innerHTML =
       '<div class="lbl">位置</div><div class="val">' + esc(st.street) + ' · ' + esc(st.direction) +
       ' <b>' + st.alongM + '</b> m' +
@@ -1014,7 +1051,9 @@ const html = `<!DOCTYPE html>
                   anchors: PAYLOAD.anchors, derived: derived, read: read,
                   currentTarget: currentTarget, displayState: displayState,
                   keyLog: function () { return keyLog; },
-                  facing: function () { return facing; } };
+                  facing: function () { return facing; },
+                  keymapVisible: function () { return document.getElementById('keymap').className === ''; },
+                  keymapText: function () { return document.getElementById('keymap').textContent; } };
   update();
 })();
 </script>

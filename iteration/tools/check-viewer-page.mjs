@@ -66,7 +66,7 @@ function check(id, name, ok, detail) {
  * SyntaxError that belongs to the harness, not to the page. First run of this
  * file did exactly that.
  */
-function makeContext(preloaded) {
+function makeContext(preloaded, hash) {
   const canvases = {};
   const elements = {};
   for (const [id, text] of Object.entries(preloaded || {})) elements[id] = { id, textContent: text, innerHTML: '', style: {} };
@@ -127,12 +127,18 @@ function makeContext(preloaded) {
     /* The variant is chosen by URL fragment (`index.html#V-B`), so the page reads
      * `location`. The stub supplies both, and a test can select a variant by setting
      * `ctx.location.hash` before evaluating. */
-    location: { hash: '', href: 'file:///index.html' },
+    location: { hash: hash || '', href: 'file:///index.html' + (hash || '') },
     atob: (s) => Buffer.from(s, 'base64').toString('binary'),
     console,
     Math, JSON, Uint8Array, Uint8ClampedArray, Array, Object, String, Number, Error, isNaN, parseInt, parseFloat,
   };
   ctx.globalThis = ctx;
+  /**
+   * A second, independent context for the OTHER variant. P15 needs to run the same page with
+   * a different URL fragment and compare the two, and the experiment is only valid if the two
+   * runs share nothing: a reused DOM stub would let V-A's state leak into V-B's.
+   */
+  ctx.__makeSibling = (hash) => makeContext(preloaded, hash);
   return { ctx, listeners, elements, canvases };
 }
 
@@ -238,6 +244,26 @@ function main() {
   );
   if (!TG) return finish(jsonOut);
 
+  /* ==================================================================== *
+   * CAPTURE t=0 BEFORE ANY EARLIER CHECK MOVES THE WALKER.
+   *
+   * This is not tidiness. My first version of P12 read `#s3` where it stood in the file —
+   * after P4 had walked the walker to x=100 and north into a wall — so it asked "does the
+   * first frame name a real place" about a state that was not the first frame, and reported
+   * 0 of 6 names. The page was right; the check was reading a stale DOM. Every t=0 claim
+   * below reads these two frozen values, and a checker that mutates state must say which
+   * snapshot it is asserting about — the same discipline `next`'s assertions are under.
+   * ==================================================================== */
+  const T0 = {
+    derived: TG.derived ? Object.keys(TG.derived).length : -1,
+    read: TG.read ? Object.keys(TG.read).length : -1,
+    walker: { x: TG.walker.x, row: TG.walker.row },
+    s3: elements['s3'] ? elements['s3'].innerHTML : '',
+    s2: elements['s2'] ? elements['s2'].innerHTML : '',
+    display: TG.displayState(),
+    targetId: (TG.currentTarget() || { anchor: {} }).anchor.id || null,
+  };
+
   /* ---- the page drew something, at THE SPEC'S scale ------------------- *
    * This check used to assert `zoom >= 8 && viewW < 1600 * zoom`, encoding the OLD
    * 2/4/8/16/32 screen-pixel ladder this viewer happened to be written with. When the
@@ -341,6 +367,211 @@ function main() {
     `S2 says ${JSON.stringify(s2.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim())} · denominators derived: ` +
       `placeInWindow=${gc.placeInWindow}, doorwayTotal=${gc.doorwayTotal}, placeTotal-placeInWindow=${outsideTotal}; ` +
       `all from payload.guideCounts and payload.anchors, no literal`,
+  );
+
+  /* ==================================================================== *
+   * THE P1 CRITERIA (task-24). Four assertions, all read off the PAGE's own state
+   * through `window.__TG` — never off an external model of the page. That distinction is
+   * not pedantry: while wiring step 1 I passed a two-record STUB into the page's own
+   * counters() and reported denominators of 1/1, which was a probe error that looked like
+   * a payload error. The page must be the source of its own numbers.
+   * ==================================================================== */
+
+  /* ---- P9 · t=0 has an empty progression ------------------------------ */
+  const derivedAt0 = T0.derived;
+  const readAt0 = T0.read;
+  check(
+    'P9',
+    't=0: the progression sets are empty, so the first frame is comparable between subjects',
+    derivedAt0 === 0 && readAt0 === 0,
+    `derived=${derivedAt0} read=${readAt0} (both must be 0 at spawn; spec §1.7: the save IS these two sets) · ` +
+      `walker at spawn (${T0.walker.x}, ${T0.walker.row})`,
+  );
+
+  /* ---- P10 · the target set equals the fact layer's in-window set ------ *
+   * The first-frame NAME SET must equal the fact layer's `inSceneWindow` set. The set is
+   * compared AS A SET against the payload's own records, so a change in places.json moves
+   * the expectation rather than reddening a constant.
+   */
+  const inWinNames = payload.anchors.filter((a) => a.kind === 'place').map((a) => a.id).sort();
+  /**
+   * The fact-layer side of the comparison comes from `build/guide.json` itself, read here
+   * rather than taken from the page's payload — otherwise the assertion would compare the
+   * page against a copy of itself and could never catch a wrong copy.
+   */
+  const guideDoc = JSON.parse(readFileSync(new URL('../../build/guide.json', import.meta.url), 'utf8'));
+  const guideInWin = [
+    ...guideDoc.stops.filter((s) => s.inSceneWindow).map((s) => s.placeId),
+    ...guideDoc.nearby.filter((s) => s.inSceneWindow).map((s) => s.placeId),
+  ].sort();
+  const sameSet = inWinNames.length === guideInWin.length &&
+    inWinNames.every((n, i) => n === guideInWin[i]);
+  check(
+    'P10',
+    `the page's anchor name set equals the fact layer's inSceneWindow set (${inWinNames.length} places)`,
+    sameSet && inWinNames.length > 0,
+    `page: ${JSON.stringify(inWinNames)} · guide.json inSceneWindow: ${JSON.stringify(guideInWin)} · equal=${sameSet}`,
+  );
+
+  /* ---- P11 · one step() changes at least one DISPLAYED quantity ------- *
+   * "The first key press gets a response from the world" is P1's second criterion. This is
+   * the mechanical half of it: at least one displayed value must differ after one step.
+   */
+  const beforeStep = TG.displayState();
+  const movedOk = TG.step(1, 0);
+  const afterStep = TG.displayState();
+  TG.update();
+  const changedKeys = Object.keys(beforeStep).filter(
+    (k) => JSON.stringify(beforeStep[k]) !== JSON.stringify(afterStep[k]),
+  );
+  check(
+    'P11',
+    'one step() changes at least one displayed quantity (the first key press has a response)',
+    movedOk === true && changedKeys.length > 0,
+    `step(1,0) accepted=${movedOk} · before ${JSON.stringify(beforeStep)} · after ${JSON.stringify(afterStep)} · ` +
+      `changed: ${JSON.stringify(changedKeys)}`,
+  );
+
+  /* ---- P12 · the first frame NAMES a real place from the fact layer ---- *
+   * The card's rewritten "the first frame is not empty" criterion, and the reason it is
+   * written against the HUD rather than the window:
+   *
+   *   The nearest anchor sits at column 20 and the spawn window is columns 0..19, because
+   *   camLeft clamps to 0. The camera bias is VERTICAL and its direction is
+   *   sign(11 - 11) = 0, so no amount of camera tuning brings a sourced cell into the first
+   *   frame. A criterion demanding one would be permanently red for a reason that is not a
+   *   defect — and a criterion that can never go green teaches people to ignore red.
+   *
+   * The name is checked against the payload's own records, so it is the fact layer's value
+   * and not a string this check knows in advance.
+   */
+  const s3Html = T0.s3;
+  const realNames = payload.anchors.filter((a) => a.kind === 'place').map((a) => a.nameJa);
+  const namedInS3 = realNames.filter((n) => s3Html.includes(n));
+  check(
+    'P12',
+    `t=0: the HUD names at least one real fact-layer place (${namedInS3.length} of ${realNames.length})`,
+    namedInS3.length >= 1,
+    `S3 at spawn says ${JSON.stringify(s3Html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim())} · ` +
+      `matched real names: ${JSON.stringify(namedInS3)} · window-sourced cells at t=0 would be 0 by construction ` +
+      `(nearest anchor col 20, window cols 0..19, and the camera bias is vertical with dir=sign(11-11)=0)`,
+  );
+
+  /* ---- P13 · the walker NEVER leaves the frame (hard rule, spec §1.5) -- *
+   * Walk the whole corridor one step at a time and require the walker's cell to stay inside
+   * the camera window at EVERY step. This is the hard rule the card calls assertable, and it
+   * is what catches a bias or a clamp pushing the walker off-screen — a spot check at spawn
+   * would not.
+   *
+   * The walker follows the street profile rather than a fixed row, which is the only way to
+   * get across: the street drifts 19.86 m (rows 11 -> 21), so a walker holding row 11 is
+   * correctly REFUSED by the north facade at x=836. My first version held the row, stopped
+   * there, and failed on a threshold — the refusal was right and the test was wrong.
+   */
+  TG.walker.x = T0.walker.x;
+  TG.walker.row = T0.walker.row;
+  const offFrame = [];
+  let walked = 0;
+  let lastRow = TG.walker.row;
+  for (let i = 0; i < 2000; i += 1) {
+    const cl = TG.camLeft(), ct = TG.camTop();
+    const vx = TG.viewTilesX(), vy = TG.viewTilesY();
+    if (!(TG.walker.x >= cl && TG.walker.x < cl + vx && TG.walker.row >= ct && TG.walker.row < ct + vy)) {
+      offFrame.push({ step: i, x: TG.walker.x, row: TG.walker.row, camLeft: cl, camTop: ct });
+    }
+    // follow the street's own centreline, the way the shipped walker does
+    const want = TG.SIM.streetRowAt(payload.street.profile, payload.halfCrossTiles, TG.walker.x + 1);
+    let ok = false;
+    if (want !== null && want !== TG.walker.row) ok = TG.step(0, want > TG.walker.row ? 1 : -1);
+    if (!ok) ok = TG.step(1, 0);
+    if (!ok && want !== null && want !== TG.walker.row) ok = TG.step(1, 0);
+    if (!ok) break;
+    lastRow = TG.walker.row;
+    walked += 1;
+  }
+  check(
+    'P13',
+    `the walker never leaves the frame while walking the corridor (reached x=${TG.walker.x}, ${walked} steps)`,
+    offFrame.length === 0 && TG.walker.x > 1500,
+    `walked ${walked} step(s) to x=${TG.walker.x}, ending row ${lastRow} (street ends near row 21) · ` +
+      `frames with the walker outside the camera window: ${offFrame.length}` +
+      (offFrame.length ? ` · first: ${JSON.stringify(offFrame[0])}` : '') +
+      ` · window is 20x11 tiles at zoom 2 with a bias of floor(11/3)=3 rows toward the target`,
+  );
+
+  /* ---- P14 · the two deleted things are really gone ------------------- *
+   * Card deliverable 2: the 10-row debug table must leave the first screen, and the
+   * "E open a door" line must be DELETED. That line is the specific thing under test: it was
+   * the only thing telling anyone E existed, and P1 exists to ask whether it is needed.
+   *
+   * The check searches what a PERSON RECEIVES: HTML comments, JS comments, <style> and the
+   * payload all come out first. The phrase legitimately survives in comments that DOCUMENT
+   * its removal, in both syntaxes — my first version searched the raw bytes and failed the
+   * page for explaining itself, and the fix is not to delete the explanation but to ask the
+   * question of the delivered text.
+   */
+  const delivered = html
+    .replace(/<script[\s\S]*?<\/script>/g, '')
+    .replace(/<style[\s\S]*?<\/style>/g, '')
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .replace(/\/\*[\s\S]*?\*\//g, '')
+    .replace(/^[ \t]*\/\/.*$/gm, '');
+  const hasPanelMarkup = /id="panel"/.test(delivered);
+  const hasTableMarkup = /<table/i.test(delivered);
+  const hasEHint = /E open a door/.test(delivered);
+  const hasWASDPill = /↑ ↓ ← → \/ WASD walk/.test(delivered);
+  /* the V-B keymap IS allowed to name the E key — it is the variant that exists to test
+     whether the key was merely undiscoverable. It must name KEYS and nothing else. It lives
+     in the payload, which the delivered-text search strips, so it is checked on the payload
+     itself; that the page APPLIES it is asserted separately in P15. */
+  const keymapLine = (payload.variants['V-B'].instructionalText || []).join(' ');
+  const keymapHasGoal = /目标|找|去|goal|target|objective/i.test(keymapLine);
+  const vAHasNoText = (payload.variants['V-A'].instructionalText || []).length === 0;
+  check(
+    'P14',
+    'the debug table is off the first screen and the "E open a door" line is gone from the page',
+    !hasPanelMarkup && !hasTableMarkup && !hasEHint && !hasWASDPill && !keymapHasGoal && vAHasNoText && keymapLine.length > 0,
+    `#panel markup present=${hasPanelMarkup} · <table> present=${hasTableMarkup} · ` +
+      `"E open a door" present=${hasEHint} · WASD pill present=${hasWASDPill} · ` +
+      `V-A has no instructional text=${vAHasNoText} · V-B keymap names no goal=${!keymapHasGoal} · ` +
+      `(searched with HTML/JS comments and the payload stripped; the phrase survives only in the comments recording its removal)`,
+  );
+
+  /* ---- P15 · both variants run, and they differ in EXACTLY the keymap - *
+   * The pair exists to separate "the keys were not discoverable" from "there was no reason
+   * to press one". That separation is only valid if the two variants are identical except
+   * for the keymap, so this evaluates the page a SECOND time with `location.hash = '#V-B'`
+   * and compares the two runs' state key by key. If V-B also changed the goal, the target or
+   * the counters, the experiment would be confounded rather than conducted.
+   */
+  let vB = null;
+  let vBError = null;
+  try {
+    const sib = ctx.__makeSibling('#V-B');
+    vm.runInContext(code, vm.createContext(sib.ctx), { filename: 'index.html#V-B', timeout: 20000 });
+    vB = { tg: sib.ctx.window.__TG, els: sib.elements };
+  } catch (e) {
+    vBError = e.message;
+  }
+  const vBvariant = vB && vB.tg ? vB.tg.variant : null;
+  const vAkeymapVisible = TG.keymapVisible ? TG.keymapVisible() : null;
+  const vBkeymapVisible = vB && vB.tg ? vB.tg.keymapVisible() : null;
+  const vBkeymapText = vB && vB.tg ? vB.tg.keymapText() : '';
+  const sameTarget = vB && vB.tg ? vB.tg.currentTarget().anchor.id === T0.targetId : false;
+  const sameCounters = vB && vB.tg
+    ? JSON.stringify(vB.tg.displayState().s2) === JSON.stringify(T0.display.s2)
+    : false;
+  check(
+    'P15',
+    'both variants run, and they differ in the keymap ALONE (the third cause is isolated)',
+    vBvariant === 'V-B' && vAkeymapVisible === false && vBkeymapVisible === true &&
+      vBkeymapText === keymapLine && vBkeymapText.length > 0 && sameTarget && sameCounters,
+    vBError
+      ? `V-B failed to run: ${vBError}`
+      : `V-A keymap visible=${vAkeymapVisible} · V-B keymap visible=${vBkeymapVisible} ` +
+        `saying ${JSON.stringify(vBkeymapText)} · both variants pick the same first target=${sameTarget} ` +
+        `and show the same counters=${sameCounters} · labels V-A=${TG.variant}, V-B=${vBvariant} · ` +
+        `so any difference in outcome is attributable to the KEYMAP and not to the goal`,
   );
 
   /* ---- the interaction, driven through the PAGE's own handler ---------- *

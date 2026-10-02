@@ -331,6 +331,7 @@ const SERIALISABLE = {
   // browser runs the same bodies the assertions check.
   nextAnchor: INTERACTION.nextAnchor,
   targetSequence: INTERACTION.targetSequence,
+  nearestAnchor: INTERACTION.nearestAnchor,
   anchorTitle: INTERACTION.anchorTitle,
   anchorDist: INTERACTION.anchorDist,
   isVisible: INTERACTION.isVisible,
