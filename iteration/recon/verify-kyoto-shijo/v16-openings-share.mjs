@@ -14,7 +14,6 @@
 // a page they have baked, without this script depending on one.
 import { readFileSync } from 'node:fs';
 const buf = readFileSync('build/scene.bin');
-const page = hasPage ? readFileSync(PAGE) : null;
 const w = 1600, h = 40, n = w * h;
 const manifestLen = buf.readUInt32LE(104);
 let o = 108 + manifestLen;
