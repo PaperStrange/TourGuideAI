@@ -284,6 +284,28 @@ if (SELF_TEST) {
       caught = JSON.parse(e.stdout).violations.some((v) => v.rule === 'unknown-place' && v.file.includes('_norm-selftest-probe'));
     } catch { caught = false; }
   }
+  // Second self-test: the frozen-handoff guard must actually fire. I shipped it once on the strength
+  // of a test that read the wrong exit code -- $LASTEXITCODE after a Select-String in a pipeline,
+  // which returns 0 when it matches nothing -- and reported OK while the guard was working. So the
+  // guard gets its own regression test here rather than relying on anyone's reading of a shell.
+  const frozenProbe = join(REPO, 'docs', 'handOff', 'evidence', 'gsi-kiban.txt');
+  let frozenCaught = false;
+  if (existsSync(frozenProbe) && existsSync(BASELINE_PATH)) {
+    const original = readFileSync(frozenProbe);
+    writeFileSync(frozenProbe, Buffer.concat([original, Buffer.from('x')]), null);
+    try {
+      execSync(`node ${JSON.stringify(join(import.meta.dirname, 'gate-artifact-layout.mjs'))} --json`, { cwd: REPO, encoding: 'utf8' });
+    } catch (e) {
+      try {
+        frozenCaught = JSON.parse(e.stdout).violations.some((v) => v.rule === 'handoff-frozen' && v.file.includes('gsi-kiban'));
+      } catch { frozenCaught = false; }
+    }
+    writeFileSync(frozenProbe, original);
+  }
+  console.log(frozenCaught
+    ? 'SELF-TEST PASS  a single byte appended to a frozen handoff file is reported by rule handoff-frozen'
+    : 'SELF-TEST FAIL  the frozen-handoff guard did not fire on an edited byte; it is not a guard');
+  if (!frozenCaught) process.exit(1);
   unlinkSync(probe);
   console.log(caught
     ? 'SELF-TEST PASS  a capture placed in a forbidden directory is reported by rule unknown-place'
