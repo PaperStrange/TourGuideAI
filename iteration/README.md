@@ -2,7 +2,7 @@
 
 **本目录是入口。** 长期存活的文档与工具在这里（已进 git）；一次性的抓取语料留在 [`../docs/handOff/`](../docs/handOff/)。
 
-- **回归线运行时产出的说明**：`docs/handOff/` 下只剩被引用的资产（evidence 快照、bundle 工具），**没有需要索引的文档**
+- **回归线运行时产出的说明**：`docs/handOff/` 下是被引用的资产与归档，**没有需要索引的文档**。现有三样：`evidence/`（**14 份许可原文，已冻结**，基线在 `design/handoff-evidence-baseline.json`）· `dsh-bundle-tourguide-2.5d/`（工具包，30 文件）· `archive/`（**576 文件 ≈90 MB** 原始抓取与旧语料，多数被 gitignore）。**判据与错位记录见 [`../docs/handOff/README.md`](../docs/handOff/README.md)**
 - **需求初始来源（产品原型）**：[`../docs/prototype/`](../docs/prototype/) —— 3 份 JSON。**未读完之前不要讨论范围**（见下 §3）
 
 ---
