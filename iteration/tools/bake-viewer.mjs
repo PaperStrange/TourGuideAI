@@ -313,6 +313,7 @@ for (const r of [...guide.stops, ...guide.nearby]) {
     cellX: c.cellX,
     cellY: c.cellY,
     nameFieldKind: cells.nameFieldKind,
+    modelled: true,   // a real place with a source: always eligible to be named
     verifiedFields: cells.verifiedFields,
     sourceUrl: cells.sourceUrl || (p ? p.source_url : null),
     verifiedAt: p ? p.verified_at : null,
@@ -334,6 +335,16 @@ for (const d of doorMarkers) {
     verifiedAt: null,
     surface: d.surface,
     openable: d.openable,
+    /**
+     * The spec's `modelled` flag, and it is the one that decides whether this door can be
+     * NAMED as the next target (§1.7's `eligible`). `modelled: false` means the shopfront
+     * is real but this engine has no interior geometry behind it — a placeholder door.
+     *
+     * It is still drawn, still enterable, still counted in 门洞 n/10. Only the pointing is
+     * gated. Without this clause the target sequence walks the player through three
+     * 「内容开发中」 doors in a row, because they sit in a 7 m chain on row 0.
+     */
+    modelled: d.surface !== 'unmodelled-interior',
   });
 }
 // deterministic order, so `next`'s tie-break is reproducible rather than incidental

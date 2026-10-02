@@ -330,6 +330,7 @@ const SERIALISABLE = {
   // P1: the target function and the HUD slots. Serialised like everything else, so the
   // browser runs the same bodies the assertions check.
   nextAnchor: INTERACTION.nextAnchor,
+  targetSequence: INTERACTION.targetSequence,
   anchorDist: INTERACTION.anchorDist,
   isVisible: INTERACTION.isVisible,
   signedMetres: INTERACTION.signedMetres,

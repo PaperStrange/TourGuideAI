@@ -152,26 +152,67 @@ function measuredDoors(openerContract) {
  * ==================================================================== */
 
 /**
- * next := argmin{ grid distance to the walker : a not in derived }, ties to the smaller
- * alongStreetM. Spec §1.7 states it in one line and forbids a priority table; this is
- * that line.
+ * next := argmin{ grid distance to the walker : a in eligible }, ties to the smaller
+ * alongStreetM. If eligible is empty, fall back to the whole set so the HUD still names
+ * something rather than idling.
  *
- * At spawn (0, 11) with derived empty this selects 四条烏丸交差点 東側横断歩道 — a place
- * WITH a source — and not a door. That is not luck, it is what the function does, and it
- * is what keeps the first thing the player is pointed at from being one of the three
- * placeholders (SOW §8.6's ordering trap).
+ *   eligible := { a : a not in derived  AND  a.modelled !== false }
+ *
+ * WHY THE `modelled` CLAUSE EXISTS — AND WHY MY FIRST VERSION PASSED WITHOUT IT.
+ * Spec §1.7 v1 was an argmin over everything, and that is what I implemented. At spawn it
+ * returns 四条烏丸交差点 東側横断歩道, a place WITH a source, so it looked as though the
+ * ordering trap had been avoided. But that holds only for the FIRST target. The three south
+ * doors sit in a chain 7 m apart on row 0, so under pure distance targets 2, 3 and 4 are
+ * D-S1 → D-S3 → D-S5: all three placeholders. The world would have walked the player
+ * through 「内容开发中」 three times with the card green the whole way.
+ *
+ * `play-systems-designer` ran the full sequence and caught it. My step-1 assertion was
+ * TRUE and did not cover the failure — which is the more useful half of the lesson: a green
+ * assertion about target #1 says nothing about targets #2–#4.
+ *
+ * This is not hiding: a placeholder door is still drawn, still enterable, still counted in
+ * 门洞 n/10. The world simply does not POINT at it. Existing is not gated; being named is.
  */
 function nextAnchor(anchors, walker, derived) {
-  var best = null, bestD = null;
+  var eligible = [];
+  var fallback = [];
   for (var i = 0; i < anchors.length; i += 1) {
     var a = anchors[i];
     if (derived && derived[a.id]) continue;
-    var d = Math.abs(a.cellX - walker.x) + Math.abs(a.cellY - walker.row);
-    if (bestD === null || d < bestD || (d === bestD && a.alongStreetM < best.alongStreetM)) {
-      best = a; bestD = d;
+    fallback.push(a);
+    if (a.modelled !== false) eligible.push(a);
+  }
+  var pool = eligible.length ? eligible : fallback;
+  var best = null, bestD = null;
+  for (var j = 0; j < pool.length; j += 1) {
+    var c = pool[j];
+    var d = Math.abs(c.cellX - walker.x) + Math.abs(c.cellY - walker.row);
+    if (bestD === null || d < bestD || (d === bestD && c.alongStreetM < best.alongStreetM)) {
+      best = c; bestD = d;
     }
   }
-  return best === null ? null : { anchor: best, dist: bestD };
+  return best === null ? null : { anchor: best, dist: bestD, usedFallback: eligible.length === 0 };
+}
+
+/**
+ * The full target sequence from a fixed walker, marking each target reached as it goes.
+ * This exists because asserting on target #1 cannot distinguish the two rules — that is
+ * exactly how the v1 defect survived my step-1 check.
+ */
+function targetSequence(anchors, walker, count) {
+  var derived = {};
+  var out = [];
+  for (var n = 0; n < count; n += 1) {
+    var nx = nextAnchor(anchors, walker, derived);
+    if (!nx) break;
+    out.push({
+      id: nx.anchor.id, kind: nx.anchor.kind,
+      modelled: nx.anchor.modelled !== false,
+      nameJa: nx.anchor.nameJa, dist: nx.dist,
+    });
+    derived[nx.anchor.id] = true;
+  }
+  return out;
 }
 
 /** Grid (Manhattan) distance, the same metric next minimises. */
@@ -230,7 +271,7 @@ function counters(anchors, derived, guideCounts) {
 
 export {
   openDoor, placeholderDoors, measuredDoors,
-  nextAnchor, anchorDist, isVisible, signedMetres, statusReadout, counters,
+  nextAnchor, targetSequence, anchorDist, isVisible, signedMetres, statusReadout, counters,
   PLACEHOLDER_TEXT, PLACEHOLDER_NOTE_ZH,
   SURFACE_MEASURED, SURFACE_UNMODELLED,
 };
