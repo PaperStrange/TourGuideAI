@@ -29,6 +29,8 @@
 **`city-packs/kyoto-shijo/places.json`** · `transit.json` · `pack.json` | task-10, 12, 14 | **`pack-curator`** | ✅ |
 **`iteration/tools/run-gates.mjs`** | 多张卡 | **`lead`** | ✅（成员不得自行改门数） |
 **`iteration/design/door-type-model.md`** | task-19 | **`doors-author`** | ✅（**门类型分类的扩展点**；§7 是"新增一个门类型"的更新路径，**所以下一张分类卡会想改它**——无主即是 §5 所说的下一个冲突种子） |
+**`city-packs/kyoto-shijo/kyoto-shijo-osm.json`** | task-20 | **`doors-author`** | ✅ **`doors-author` 于 2026-10-03 报领**（它持有门的 ODbL 记录；§4：首次出现的文件由产物所属角色认领）。**它一直是事实层 ODbL 分表（GAP-6）的半边，此前无行**——又一个"没有 owner 的文件是下一个冲突的种子"的实例。 |
+**`city-packs/kyoto-shijo/attestations/`** | task-3, 10, 20 | **目录不是所有权单位，文件才是** | ⚠️ **两个角色都写这个目录、但写不同文件**：`source-attestations.json` 与 `block-doors.json` 是 **`pack-curator`**（产出者）的，`verification-verifier.json` 是 **`fact-verifier`**（核验者）的。**所以所有权按文件记，不按目录记。** |
 
 ---
 
