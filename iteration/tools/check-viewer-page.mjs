@@ -621,7 +621,23 @@ function main() {
    * these cells would carry one. Counts are reported so a change in marker coverage shows up
    * as a number rather than as a pass.
    */
+  /**
+   * RESET THE PROGRESSION SET FIRST, AND ASSERT THE RESET TOOK.
+   *
+   * P16 ran GREEN on a build whose markers were gated behind `derived`, and the cause was
+   * ORDERING. P10 runs earlier and writes `TG.derived[a.id] = true` for all 16 anchors while it
+   * probes whether the draw path reads `derived`; under the helper-mediated break it does, so
+   * P10 leaves every anchor marked. P16 then saw a non-empty `derived`, the gate skipped
+   * nothing, every mark was drawn, and "derived empty" — the entire premise — was false.
+   *
+   * A check whose precondition is "this set is empty" must CLEAR it and CONFIRM it, not assume
+   * that an earlier check left the world alone. This is the same defect as P12 reading a stale
+   * `#s3`: there, a previous check had moved the walker; here, a previous check had filled the
+   * set. Both are checks mutating shared state and a later check trusting it.
+   */
   for (const k of Object.keys(TG.derived)) delete TG.derived[k];
+  for (const k of Object.keys(TG.read)) delete TG.read[k];
+  const derivedIsEmpty = Object.keys(TG.derived).length === 0 && Object.keys(TG.read).length === 0;
   /**
    * PARK WHERE AN ANCHOR IS ACTUALLY ON SCREEN — and assert that precondition rather than
    * assuming it.
@@ -673,14 +689,18 @@ function main() {
   check(
     'P16',
     `every anchor inside the window is DRAWN with derived empty (${inWindow.length} in window: ${doorwayMarks} door, ${placeMarks} place)`,
-    inWindow.length > 0 && missing.length === 0,
-    !parked
-      ? 'VACUOUS: no anchor enters the window from any cell tried, so nothing could be checked'
-      : `parked at x=${parked.cx} row ${parked.row} (the first cell where an anchor is visible) · ` +
-        `window cols ${cl}..${cl + vx - 1} rows ${ct}..${ct + vy - 1} · ` +
-        `anchors carrying their own mark with derived EMPTY: ${inWindow.length - missing.length} of ${inWindow.length}` +
-        (missing.length ? ` · NOT drawn: ${JSON.stringify(missing)}` : '') +
-        ` · a mark gated behind arrival would be absent here, because nothing has been reached`,
+    derivedIsEmpty && inWindow.length > 0 && missing.length === 0,
+    !derivedIsEmpty
+      ? `VACUOUS: the progression set could not be cleared (derived=${Object.keys(TG.derived).length}), ` +
+        `so a gate would have skipped nothing and this check could not fail`
+      : !parked
+        ? 'VACUOUS: no anchor enters the window from any cell tried, so nothing could be checked'
+        : `parked at x=${parked.cx} row ${parked.row} (the first cell where an anchor is visible) · ` +
+          `derived and read both cleared and confirmed empty · ` +
+          `window cols ${cl}..${cl + vx - 1} rows ${ct}..${ct + vy - 1} · ` +
+          `anchors carrying their own mark with derived EMPTY: ${inWindow.length - missing.length} of ${inWindow.length}` +
+          (missing.length ? ` · NOT drawn: ${JSON.stringify(missing)}` : '') +
+          ` · a mark gated behind arrival would be absent here, because nothing has been reached`,
   );
   for (const k of Object.keys(TG.derived)) delete TG.derived[k];
   TG.walker.x = T0.walker.x;

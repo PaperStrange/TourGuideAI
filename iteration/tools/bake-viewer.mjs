@@ -618,7 +618,6 @@ const html = `<!DOCTYPE html>
   function deadzoneX() { return Math.max(1, Math.round(192 / TILE_PX / screenScale())); }
   function deadzoneY() { return Math.max(1, Math.round(96 / TILE_PX / screenScale())); }
 
-  function isEarned(a) { return derived[a.id] === true; }   // FIRE DRILL 3: helper-mediated gate
   var cv = document.getElementById('c');
   var ctx = cv.getContext('2d');
   var img = null;
