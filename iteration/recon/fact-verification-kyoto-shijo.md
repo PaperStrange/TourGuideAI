@@ -451,11 +451,28 @@ ACCEPTANCE: PASS
 
 | 文件 | 结论 |
 |---|---|
-| `places.json` / `transit.json` / `pack.json` | 未改动 |
+| `places.json` / `transit.json` / `pack.json` | 未改动**（核验当时；此后已被他人改写，见 §7.5）** |
 | `attestations/source-attestations.json` | 未改动（`verification-verifier.json` **并列存在**，不覆盖它） |
-| `evidence/kyoto-sight-DSIGHT_1.csv` | sha256 **`233736CE…`**，与产出者记录**逐位吻合** |
-| `evidence/osm-corridor-map.json` | sha256 **`56B45615…`**，与产出者记录**逐位吻合** |
+| `evidence/kyoto-sight-DSIGHT_1.csv` | sha256 **`233736CE87051B584D34000B7AD6D84B1DE8EF450DAE0801926488FACE67AD7A`**，与产出者记录**逐位吻合**，且**至今未变** |
+| `evidence/osm-corridor-map.json` | sha256 **`56B456152B2F5CFC6854EA5EDFBD2C92B236D4BA67E7978D591E359999C294A2`**，与产出者记录**逐位吻合**，且**至今未变** |
 | `evidence/` 其余文件 | 只读打开 |
+
+### 7.5 版本锚点（**本报告核的是哪一版**）
+
+**规则**：核验结论必须记录它所核文件的 sha256。**本报告最初未记录 `places.json` / `transit.json` / `pack.json` 在被核时的哈希——只记了两份 evidence 的。那是本报告的形式缺陷，在此补上，并把此后发生的变化显式登记。**
+
+| 文件 | 本报告核验时（2026-09-30） | 现在 | 变化 |
+|---|---|---|---|
+| `places.json` | **19 条** | **`1E5D84C817D2E7769FE2C29B02A4B86F…` / 22 条** | 🔴 **已变。本报告对 `places.json` 的裁决只覆盖那 19 条。新增的 3 条（知恩院 / 清水寺 / 建仁寺）我另行核过坐标与来源，但那是另一份判断，不在本报告的 42 行里。** |
+| `transit.json` | **6 条** | **`6BB34CD1B3D65A35D122FC7EAC48C98E…` / 9 条** | 🔴 **已变。新增 3 条腿，其中 `L09` 我另行核出偏低问题（`D-53`），同样不在本报告的 42 行里。** |
+| `pack.json` | 未记 | **`4F15DFF5240A068E402A0F2012833A22…`** | 🔴 **未记录基准，无法比对。** |
+| `attestations/source-attestations.json` | 9 页 | **`EBC613CC1F6743C0BB4D287466D15449…`** | 🔴 **未记录基准，无法比对。** |
+| `evidence/kyoto-sight-DSIGHT_1.csv` | `233736CE87051B58…` | **同左** | ✅ **未变** |
+| `evidence/osm-corridor-map.json` | `56B456152B2F5CFC…` | **同左** | ✅ **未变** |
+
+**⇒ 本报告的正确读法**：**§3–§4 的 42 行裁决对 `places.json` 的 19 条记录与 `transit.json` 的 6 条腿成立。`places.json` 现为 22 条、`transit.json` 现为 9 条——超出这 19 + 6 的部分，本报告没有核过。**
+
+**⇒ 而这份表本身就是那条规则要防的东西**：两行证据有 sha 且至今未变，四行事实文件**要么没记基准、要么已经变了**——**读者现在可以自己看出本报告哪一部分还有效，而不必相信我**。按 Lead 的裁定不加自动 stale 标记：判断"是否过期"是读者的动作，这张表把材料交给他。
 
 ### 7.4 独立性
 
