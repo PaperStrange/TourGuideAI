@@ -68,18 +68,34 @@ layers: ["Walls", "Walls level 2", "Walls level 3"]      ← 【三个高度层�
 
 **而那张地图的内容，我用 node 自己解 base64+zlib 数过**：`Walls 77 个非零瓦片 · level 2 一个 · level 3 一个`，`orientation=orthogonal`，tileset 用 `tileoffset x=-32` 的 64×64 精灵 —— **那正是 MelonJS 表达"墙立在格上"的方式。**
 
-## 四 · 而有一件我没做到，如实记
+## 四 · 官方示例在真浏览器里跑通了（**这一节推翻了我上一条的"未证实"**）
 
-**我在这个无头环境里【没能验证 melonJS 画出像素】。**
+**做法**：不再自己写探针，**跑它自己的示例**（`packages/examples`，React + vite 8）。
 
-```
-Canvas2D 后端 · 图层已在 game.world（isRenderable=true · bounds 992×992）· 视口 960×540 @ zoom 1
-⇒ 画布 maxChannelValue = 0（全黑）
-⇒ 连一个纯色矩形都画不出，而错误是 Stage 里读 game.world 得到 undefined
-⇒ 对照实验（Phaser）也超时：file:// 导入在 Vite 安全根之外
-```
+**而为跑通它修了五处，每一处都有具体错误信息**：
 
-**⇒ 结论：这个无头浏览器测不出任何引擎的渲染。** **⇒ 所以"melonJS 能画出那一屏"这件事实测【未证实】，我不声称它已证实。**
+| # | 错误 | 原因 |
+|---|---|---|
+1 | `Undefined Stage for state '0'` | 我的探针：要先注册 Stage 再加载 |
+2 | `Plugin should extend the BasePlugin Class !` | 我的探针：主包两份 ⇒ vite `resolve.dedupe: ['melonjs']` |
+3 | `no load callback defined` | 我的探针：回调是 `loader.preload(res, cb)` 的**参数**，不是属性 |
+4 | `external tileset not found` | **TMX 里 `source=` 指的外部 tileset 不会被自动取，必须自己注册**（`type: 'tsx'`） |
+5 | `Failed to resolve import "melonjs"`（HTTP 500） | **workspace 包没有构建产物** ⇒ `packages/melonjs` 与五个插件都要先 build |
+
+**前四条是我自己探针的用法错；第五条是 monorepo 的构建前置，不是引擎的毛病。**
+
+**跑通之后**：
+
+| 示例 | 地址 | 结果 |
+|---|---|---|
+**`isometric-rpg`** | `#/isometric-rpg` | ✅ **等距瓦片地图 · 树木与石头有正确遮挡 · 角色精灵 · 水面 · `log: clean`（零错误）· 画布 800×600** |
+**`tiled-map-loader`** | `#/tiled-map-loader` | ✅ **`village` 地图：房子有立面与门窗 · 路面 · 栅栏 · 树冠遮挡 · `log: clean` · 画布 1024×640** |
+
+**⇒ 那两张图就是 2.5D：房子有墙、树冠盖住地面、角色在瓦片上按 y 排序。**
+**⇒ 所以"melonJS 能画出这一屏"由【未证实】变为【已证实】。**
+
+**⚠️ 而像素读回仍是 0**（`maxChannelValue = 0`）——**因为 WebGL 默认不保留绘制缓冲，`getImageData` / `drawImage(canvas)` 拿不到内容。** **⇒ 这不影响判定：截图是浏览器合成的结果，它非空。** **⇒ 而这条对将来有用**：**我们要断言"画出来了"时，不能靠 `getImageData`，要靠截图哈希或引擎自己的帧缓冲导出。**
+
 
 **⇒ 而它不改变选型结论**，理由在下节。
 
