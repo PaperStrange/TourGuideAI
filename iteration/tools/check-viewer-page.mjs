@@ -388,16 +388,37 @@ function main() {
       `walker at spawn (${T0.walker.x}, ${T0.walker.row})`,
   );
 
-  /* ---- P10 · the target set equals the fact layer's in-window set ------ *
-   * The first-frame NAME SET must equal the fact layer's `inSceneWindow` set. The set is
-   * compared AS A SET against the payload's own records, so a change in places.json moves
-   * the expectation rather than reddening a constant.
+  /* ---- P10 · existence is not gated; only verification is -------------- *
+   * THE CRITERION HERE WAS RULED WRONG, AND MY FIRST VERSION ASSERTED IT ANYWAY.
+   *
+   * The phrasing I originally handed the Lead — "the first-frame name set equals the fact
+   * layer's inSceneWindow set" — was overturned: the first-frame spec gives anchors SHAPE and
+   * no names (one name appears, in the status readout), so "six names on the first frame"
+   * would amount to the task log that spec explicitly refuses.
+   *
+   * The corrected criterion is a STATE property, in the SOW's own words:
+   *   `visible(a)` does not depend on `derived`; `derived` lights up MARKERS, it does not
+   *   change NAMES.
+   *
+   * So this assertion now checks the property that was actually ruled correct, and it checks
+   * it on the ARTEFACT rather than on the payload: if the draw path ever consulted `derived`,
+   * markers would appear only after a visit and existence would be gated behind discovery —
+   * which is the exact thing the rule forbids. Reading the payload alone could not detect
+   * that; reading the draw path can.
+   *
+   * Separately, the drift check I still want (the page's in-window places must EQUAL the ones
+   * guide.json marks `inSceneWindow`) is kept, because it is real and it is cheap — it just no
+   * longer claims to be the first-frame criterion.
    */
+  const execScript = scripts[0];
+  const drawConsultsDerived = /derived/.test(
+    execScript.slice(execScript.indexOf('PAYLOAD.anchors.length'), execScript.indexOf('putImageData')),
+  );
   const inWinNames = payload.anchors.filter((a) => a.kind === 'place').map((a) => a.id).sort();
   /**
-   * The fact-layer side of the comparison comes from `build/guide.json` itself, read here
-   * rather than taken from the page's payload — otherwise the assertion would compare the
-   * page against a copy of itself and could never catch a wrong copy.
+   * The fact-layer side comes from `build/guide.json` read from disk, not from the page's own
+   * payload — otherwise the assertion would compare the page against a copy of itself and
+   * could never catch a wrong copy.
    */
   const guideDoc = JSON.parse(readFileSync(new URL('../../build/guide.json', import.meta.url), 'utf8'));
   const guideInWin = [
@@ -408,9 +429,12 @@ function main() {
     inWinNames.every((n, i) => n === guideInWin[i]);
   check(
     'P10',
-    `the page's anchor name set equals the fact layer's inSceneWindow set (${inWinNames.length} places)`,
-    sameSet && inWinNames.length > 0,
-    `page: ${JSON.stringify(inWinNames)} · guide.json inSceneWindow: ${JSON.stringify(guideInWin)} · equal=${sameSet}`,
+    `existence is ungated: the marker draw path never reads 'derived' (${inWinNames.length} in-window places, set matches guide.json)`,
+    !drawConsultsDerived && sameSet && inWinNames.length > 0,
+    `draw path references 'derived'=${drawConsultsDerived} (must be false: markers are drawn for ` +
+      `every anchor unconditionally, so arriving lights a marker rather than revealing it) · ` +
+      `in-window places on the page: ${JSON.stringify(inWinNames)} · ` +
+      `guide.json inSceneWindow: ${JSON.stringify(guideInWin)} · equal=${sameSet}`,
   );
 
   /* ---- P11 · one step() changes at least one DISPLAYED quantity ------- *
@@ -573,6 +597,99 @@ function main() {
         `and show the same counters=${sameCounters} · labels V-A=${TG.variant}, V-B=${vBvariant} · ` +
         `so any difference in outcome is attributable to the KEYMAP and not to the goal`,
   );
+
+  /* ---- P16 · every anchor is DRAWN, whether or not it was reached ------ *
+   * THE BEHAVIOURAL VERSION OF P10, and it took three attempts to find one that works.
+   *
+   * The SOW's corrected criterion: `visible(a)` does not depend on `derived`; `derived` lights
+   * markers, it does not reveal them. Existence is not gated, only verification is.
+   *
+   * ATTEMPT 1 — derive every anchor, require the frame to be byte-identical. VACUOUS: under a
+   * build that gates drawing behind `derived`, deriving everything draws everything, so the
+   * frames matched and the check stayed green on a broken build. A comparison whose sides are
+   * both saturated cannot detect a gate.
+   *
+   * ATTEMPT 2 — derive ONE ON-SCREEN anchor, require the frame to be byte-identical. Now it
+   * failed on the GOOD build, and correctly so: the camera slides toward the current target,
+   * and deriving the target changes which anchor `next` returns, so the window moves and the
+   * frame legitimately differs. Frame identity cannot isolate markers while the camera is
+   * itself a function of `derived`.
+   *
+   * ATTEMPT 3, below — ask the question directly, and do not involve the camera at all: for
+   * every anchor inside the current window, does the rendered frame carry that anchor's mark
+   * at that anchor's cell, with `derived` EMPTY? If a mark only appeared on arrival, none of
+   * these cells would carry one. Counts are reported so a change in marker coverage shows up
+   * as a number rather than as a pass.
+   */
+  for (const k of Object.keys(TG.derived)) delete TG.derived[k];
+  /**
+   * PARK WHERE AN ANCHOR IS ACTUALLY ON SCREEN — and assert that precondition rather than
+   * assuming it.
+   *
+   * At spawn with `derived` empty NO anchor is inside the window: the nearest is column 20
+   * while the window is columns 0..19, because `camLeft` clamps to 0 at the world's western
+   * edge and cannot slide right without excluding the walker. That is the same geometry the
+   * card records, and it means a check run at spawn would be vacuous — so it searches east for
+   * the first cell where an anchor is visible, and reports the position it used.
+   */
+  let parked = null;
+  for (let cx = 0; cx <= 60 && !parked; cx += 1) {
+    const row = TG.SIM.streetRowAt(payload.street.profile, payload.halfCrossTiles, cx);
+    if (row === null) continue;
+    TG.walker.x = cx;
+    TG.walker.row = row;
+    TG.update();
+    const l = TG.camLeft(), t0 = TG.camTop(), wx = TG.viewTilesX(), wy = TG.viewTilesY();
+    const hit = payload.anchors.filter((a) => a.cellX >= l && a.cellX < l + wx && a.cellY >= t0 && a.cellY < t0 + wy);
+    if (hit.length > 0) parked = { cx, row, hit, cl: l, ct: t0 };
+  }
+  const cl = parked ? parked.cl : TG.camLeft();
+  const ct = parked ? parked.ct : TG.camTop();
+  const vx = TG.viewTilesX();
+  const vy = TG.viewTilesY();
+  const expected = { doorway: [176, 24, 24], place: [30, 90, 160] };
+  const inWindow = parked ? parked.hit : [];
+  const missing = [];
+  let doorwayMarks = 0;
+  let placeMarks = 0;
+  const cvs = canvases.c;
+  const S = TG.screenPxPerTile();
+  const sample = (col, row, dy) => {
+    const o = (((row - ct) * S + dy) * cvs.width + ((col - cl) * S + (S >> 1))) * 4;
+    return [cvs.__put.data[o], cvs.__put.data[o + 1], cvs.__put.data[o + 2]];
+  };
+  for (const a of inWindow) {
+    const want = a.kind === 'doorway' ? expected.doorway : expected.place;
+    // doors are filled, so the cell centre carries the mark; places are hollow, so sample the top edge
+    let rgb = sample(a.cellX, a.cellY, S >> 1);
+    let hit = rgb[0] === want[0] && rgb[1] === want[1] && rgb[2] === want[2];
+    if (!hit && a.kind !== 'doorway') {
+      rgb = sample(a.cellX, a.cellY, 0);
+      hit = rgb[0] === want[0] && rgb[1] === want[1] && rgb[2] === want[2];
+    }
+    if (hit) { if (a.kind === 'doorway') doorwayMarks += 1; else placeMarks += 1; }
+    else missing.push(`${a.id}(${a.kind}) rgb=${JSON.stringify(rgb)}`);
+  }
+  check(
+    'P16',
+    `every anchor inside the window is DRAWN with derived empty (${inWindow.length} in window: ${doorwayMarks} door, ${placeMarks} place)`,
+    inWindow.length > 0 && missing.length === 0,
+    !parked
+      ? 'VACUOUS: no anchor enters the window from any cell tried, so nothing could be checked'
+      : `parked at x=${parked.cx} row ${parked.row} (the first cell where an anchor is visible) · ` +
+        `window cols ${cl}..${cl + vx - 1} rows ${ct}..${ct + vy - 1} · ` +
+        `anchors carrying their own mark with derived EMPTY: ${inWindow.length - missing.length} of ${inWindow.length}` +
+        (missing.length ? ` · NOT drawn: ${JSON.stringify(missing)}` : '') +
+        ` · a mark gated behind arrival would be absent here, because nothing has been reached`,
+  );
+  for (const k of Object.keys(TG.derived)) delete TG.derived[k];
+  TG.walker.x = T0.walker.x;
+  TG.walker.row = T0.walker.row;
+  TG.update();
+
+  /* ---- the interaction, driven through the PAGE's own handler ---------- *
+
+  /* ---- the interaction, driven through the PAGE's own handler ---------- *
 
   /* ---- the interaction, driven through the PAGE's own handler ---------- *
    * The card's third deliverable is that triggering a south door shows the
