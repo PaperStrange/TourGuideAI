@@ -605,6 +605,34 @@ next     := argmin{ 格距 : a ∈ eligible }     // eligible = ∅ 时退回全
 
 ## 10 · 交接与验收
 
+### 10.1 交付物 × 验收（**五列：这是本文件的主表**）
+
+> **形状取自标准 SOW 的验收表**（英国 Contracts Finder 的列名：`Outcome | Sub Deliverable/Description | Acceptance criteria | Accepted by | Achieved by`）。
+> **⇒ `Accepted by`（谁判）与 `Achieved by`（谁交）是【独立的两列】——而本文件此前把两者写在同一段散文里，于是"谁验收"这件事从没被单独问过。**
+
+| Outcome | 交付物 | **验收判据（可失败）** | **Accepted by（谁判）** | **Achieved by（谁交）** |
+|---|---|---|---|---|
+| **一个网页** | `iteration/viewer/index.html` | 在浏览器里打开、能走、**烘焙两次哈希相同**（确定性）· `check-viewer` 14/14 · `check-viewer-page` 19/19 | `export-guard`（自跑）→ **⚠️ 需独立复核，见 §10.3** | `export-guard` |
+| **一条街可走，2.5D** | 2,000 m 派生走廊 + 手作 block 0 | 走廊 **1600 × 40 格** · 走者 `row 11` · `world-grid.mjs` **18/18 断言** · `V4/V5` 反解精度 1/32 m | `geo-contract` → `fact-verifier` | `geo-contract` |
+| **12 个可进入地点** | `doors.json` + `openings` 层 | **⚠️ 今天 7 扇在世界上、3 扇的楼不在世界里**（见 `status.md` §7.1）⇒ **这条判据今天红** | `doors-author` → `fact-verifier` | `doors-author` |
+| **事实层的每一个数有来源** | `places.json` · `transit.json` · `pack.json` | **每个值能指到 `source_url` + `verified_at` + `valueKind`**（`D-1`）· `validate-city-pack-v2` **16/16** · 幂等（`build-pack` 跑两次同哈希） | `pack-curator` → **`fact-verifier`（不同人）** | `pack-curator` |
+| **一键生成攻略** | `emit-guide.mjs` → `guide.json` | 导出物**不含游戏内时钟**（`D-3`：可写"16:00 关门"，**不得**写"你有 10 小时"）· `assert-export-boundary` 过 | `export-guard` → `fact-verifier` | `export-guard` |
+| **回忆录** | 未开工 | **0 行**——**今天不存在判据** | — | — |
+| **一次真人走通**（Gate 1 第 4 条） | 录入 + 记忆 + 一次真人产物 | **P1 的 2×2**：30 秒内知道做什么 · 第一次按键有回应 · 按键日志可导出 · 两变体各跑一次 · 缺录屏 | **用户**（唯一不知情的受试者） | `export-guard`（实现）+ `play-systems-designer`（规格） |
+| **"不因文化差异害怕"** | §3 的三条机械判据 | **A 类 · 攻略的数**（判据 2 · ④）→ **今天红**（`D-53`/`L09`）· **B 类 · 人的行为**（判据 1 · 3）→ **今天未测** | `fact-verifier` | `play-systems-designer` |
+| **框架不越界** | 17 道门 | `run-gates.mjs` **17/17，无 skip** · 每条门能报出**它拦下过什么**（`R2′`） | **Lead** | `geo-contract`（几何）· `export-guard`（页面）· `pack-curator`（数据） |
+
+### 10.2 双门验收（**口径**）
+**可玩性与可执行性必须同时成立，不许用一门过关去补另一门。**
+
+### 10.3 ⚠️ 而这张表暴露出一处结构缺陷：**两行的 `Accepted by` 与 `Achieved by` 是同一批人**
+
+> **`export-guard` 既是 P1 的实现者，又是 P1 机械判据的跑者**；**`geo-contract` 既是几何的实现者，又是几何断言的作者。**
+> **⇒ `R4` 那句判据（"哪个文件读它，它错了那个读者会做什么？"）在【角色】层面的形态是**：**一个自己跑自己门的人，与一个没人跑的门，形状相同。**
+> **⇒ 这不是要改派谁，是要求**：**每一行若 `Accepted by` 与 `Achieved by` 同人，必须【写明为什么独立复核不可能】，或者换成别人。** **今天这张表里，只有"事实层的每一个数"那一行的两个人不同**（`pack-curator` 交、`fact-verifier` 判）——**而它恰好是唯一出过真缺陷的那一行**（`D-53` 与 `L09` 都是 `fact-verifier` 抓的）。
+
+### 10.4 角色拥有表
+
 | 角色 | 拥有什么 | 交付什么 |
 |---|---|---|
 | **Lead** | 目标 · `run-gates.mjs` · 派单 · 登记册 · **本文件** | 唯一的汇总人；产品定义级冲突上报用户 |
@@ -612,9 +640,6 @@ next     := argmin{ 格距 : a ∈ eligible }     // eligible = ∅ 时退回全
 | **play-systems-designer** | `play-systems.md` · 四层引导 · 整数时钟 · 三支柱 · 门洞级内容 | 时间系统、事件形状、层叠常量与**界面信息位清单**（交给客户端工程师） |
 | **client-engineer**（`export-guard`） | `iteration/viewer/` · `bake-viewer.mjs` · `check-viewer*.mjs` · `emit-guide.mjs` | 可回放存档、整数账本、内容寻址缓存 |
 | **verification-gatekeeper**（`fact-verifier`） | 验收判据 · 事实断言 · 反漂移 · 许可合规 | 双门验收结论、事实断言报告 |
-
-### 双门验收（**口径**）
-**可玩性与可执行性必须同时成立，不许用一门过关去补另一门。**
 
 ---
 
