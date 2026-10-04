@@ -194,7 +194,7 @@ ReferenceError: existsSync is not defined   at gate-scene-read.mjs:126
 | 成员 | 状态 | 依据 |
 |---|---|---|
 `review-src-intl` | **已关闭** | 结论排他（Google §14.2 + 底图 OSM 派生）；POI 候选已判完 |
-`review-src-jp` | **已关闭** | **它自己判定"作为待办已死"** |
+`review-src-jp` | **已关闭** | **它自己判定：调研作为【背景】有效，但作为【待办】没有落点。** **⚠️ 而这里原先引的是"作为待办已死"——那句话是 Lead 编的，它已复核否认**（且即使按它原话写，只留后半句也会让读者以为"日本线什么都没找到"，**而日本线是三条线里唯一取到肯定结论的**）。**详见 `status.md` 的同一行** |
 `review-src-zh` | **已关闭**（**除非用户裁定保留 A4b**） | A4b 的许可依据全在它手里，所以只有 A4b 被保留时才重开 |
 
 **名册在设计上不可移除**（`roster.js`："maximum **immutable** roster entries"）。**所以"关闭"= 写明 + 不派单**，而这一行就是那个写明。
