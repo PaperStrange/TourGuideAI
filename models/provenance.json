@@ -1,0 +1,215 @@
+{
+  "status": "complete",
+  "blenderVersion": "4.3.2",
+  "scriptSHA256": "c1c16812b7d66d26478289b18adb8ce4492f9f3f0586311a5bb7002789ea0f50",
+  "canonicalSource": "experience/src/content/kyoto.js",
+  "canonicalSHA256": "cfef7654e1bca051f84861d6ec446e588c1d6ef2d8e8e5cf12a9421224a22859",
+  "source": {
+    "buildings": {
+      "north": {
+        "nameJa": "京都三井ビルディング",
+        "name": {
+          "en": "Kyoto Mitsui Building",
+          "zh": "京都三井大厦"
+        },
+        "osmId": 205732558,
+        "minX": 16.522069,
+        "maxX": 58.329294,
+        "yFrom": 4.659507,
+        "yTo": 4.770448,
+        "levels": 8,
+        "levelsProvenance": {
+          "valueKind": "observed",
+          "sourceId": "osm-mitsui",
+          "verifiedAt": "2026-09-29",
+          "meaning": "OSM building:levels tag; not surveyed height in metres."
+        }
+      },
+      "south": {
+        "nameJa": "京都ダイヤビル",
+        "name": {
+          "en": "Kyoto Daiya Building",
+          "zh": "京都钻石大厦"
+        },
+        "osmId": 205732536,
+        "minX": 17.526173,
+        "maxX": 35.691321,
+        "yFrom": -19.969317,
+        "yTo": -19.747436,
+        "levels": 8,
+        "levelsProvenance": {
+          "valueKind": "observed",
+          "sourceId": "osm-daiya",
+          "verifiedAt": "2026-09-29",
+          "meaning": "OSM building:levels tag; not surveyed height in metres."
+        }
+      }
+    },
+    "crossing": {
+      "x": 20.721,
+      "northY": 2.33,
+      "southY": -17.529,
+      "width": 2.6,
+      "widthKind": "authored"
+    },
+    "roadSurface": {
+      "northY": 1.68,
+      "southY": -16.879,
+      "valueKind": "authored",
+      "basis": "Presentation bounds inset 0.65 m from mapped crossing endpoints on sidewalk centrelines; these are not observed kerbs."
+    }
+  },
+  "authored": [
+    "storey heights {'north': 25.249999999999996, 'south': 26.049999999999997}",
+    "flat frontage Y approximation",
+    "building depths/backfaces/roofs",
+    "photo-informed facade character; authored bay dimensions, corner simplification, materials and reflection cues",
+    "door treatments/thresholds without tenant bindings",
+    "furniture and planting",
+    "traveller and pose",
+    "camera and lighting"
+  ],
+  "axes": "Blender(east,north,height) -> glTF(east,height,-north), metres",
+  "materials": "core opaque PBR; original embedded colour textures; glass reflection cues authored, runtime PMREM adds environmental reflection; no baked light or transparency",
+  "facadeReferences": [
+    {
+      "id": "mitsui-exterior-2021",
+      "buildingId": "osm-mitsui",
+      "title": "Kyoto Mitsui Building night 20210103183745.jpg",
+      "author": "inunami",
+      "capturedAt": "2021-01-03",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kyoto_Mitsui_Building_night_20210103183745.jpg",
+      "sourceRevisionUrl": "https://commons.wikimedia.org/w/index.php?title=File:Kyoto_Mitsui_Building_night_20210103183745.jpg&oldid=1261825325",
+      "originalPublicationUrl": "https://www.flickr.com/photos/94693136@N05/51340177505/",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/75/Kyoto_Mitsui_Building_night_20210103183745.jpg",
+      "license": "CC-BY-2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "imageSha256": "3d5854c871fbadc2984cc783ad9da846f784c2c951c8eb23a2d5adbb31a0db03",
+      "visuallyInspected": true,
+      "observations": [
+        "Pale solid cladding with individual dark rectangular windows",
+        "Classical curved columned corner feature",
+        "Sidewalk canopy on Shijo face"
+      ],
+      "limits": "2021 nighttime perspective; not surveyed dimensions, current tenancy, or authored-door correspondence."
+    },
+    {
+      "id": "mitsui-frontage-2026",
+      "buildingId": "osm-mitsui",
+      "title": "Sumitomo Mitsui Banking Corporation Kyoto Branch & Shijo Branch & Fushimi Branch.jpg",
+      "author": "Suikotei",
+      "capturedAt": "2026-01-04",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sumitomo_Mitsui_Banking_Corporation_Kyoto_Branch_%26_Shijo_Branch_%26_Fushimi_Branch.jpg",
+      "sourceRevisionUrl": "https://commons.wikimedia.org/w/index.php?title=File:Sumitomo_Mitsui_Banking_Corporation_Kyoto_Branch_%26_Shijo_Branch_%26_Fushimi_Branch.jpg&oldid=1260218652",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/59/Sumitomo_Mitsui_Banking_Corporation_Kyoto_Branch_%26_Shijo_Branch_%26_Fushimi_Branch.jpg",
+      "license": "CC-BY-4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "imageSha256": "190b4cba7fea31fc484c4eb7e705eb912e3c002bc3689ea69e81e52b8f37d218",
+      "visuallyInspected": true,
+      "observations": [
+        "Speckled grey fascia and dark glazed frames",
+        "Pale canopy and ribbed support",
+        "SMBC sign and lime accent visible in photo"
+      ],
+      "limits": "Close-up does not locate the entrance against authored door slots or establish its street-face orientation."
+    },
+    {
+      "id": "daiya-exterior-2021",
+      "buildingId": "osm-daiya",
+      "title": "Kyoto Dia Building at Shijo-Karasuma intersection 20210103183825.jpg",
+      "author": "inunami",
+      "capturedAt": "2021-01-03",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kyoto_Dia_Building_at_Shijo-Karasuma_intersection_20210103183825.jpg",
+      "sourceRevisionUrl": "https://commons.wikimedia.org/w/index.php?title=File:Kyoto_Dia_Building_at_Shijo-Karasuma_intersection_20210103183825.jpg&oldid=1214410836",
+      "originalPublicationUrl": "https://www.flickr.com/photos/94693136@N05/51339907094/",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Kyoto_Dia_Building_at_Shijo-Karasuma_intersection_20210103183825.jpg",
+      "license": "CC-BY-2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "imageSha256": "db5fb0d0378ed6430a9acf959bc8e08fa0a8058f0640394ec4f91b137596c04f",
+      "visuallyInspected": true,
+      "observations": [
+        "Pale vertical ribs with tall dark glazing strips",
+        "Arched stone-like ground base",
+        "Classical columned intersection corner"
+      ],
+      "limits": "2021 nighttime perspective; two street faces differ. Not surveyed height, bay widths or door correspondence."
+    },
+    {
+      "id": "daiya-frontage-2026",
+      "buildingId": "osm-daiya",
+      "title": "MUFG Bank Kyoto Branch & Kyoto-Chuo Branch.jpg",
+      "author": "Suikotei",
+      "capturedAt": "2026-01-04",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:MUFG_Bank_Kyoto_Branch_%26_Kyoto-Chuo_Branch.jpg",
+      "sourceRevisionUrl": "https://commons.wikimedia.org/w/index.php?title=File:MUFG_Bank_Kyoto_Branch_%26_Kyoto-Chuo_Branch.jpg&oldid=1229623996",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e2/MUFG_Bank_Kyoto_Branch_%26_Kyoto-Chuo_Branch.jpg",
+      "license": "CC-BY-4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "imageSha256": "5b809e5619c9ee820cf739e81edd135575ea7cadfe914f3be289453650f6a89e",
+      "visuallyInspected": true,
+      "observations": [
+        "Clear glazing with grey metal framing",
+        "White MUFG lightbox and thin red stripe",
+        "Curved warm soffit above opening"
+      ],
+      "limits": "Entrance appearance only; no mapping to authored D-S slots, interior layout reconstruction or access guarantee."
+    }
+  ],
+  "facadeReferenceMetadataSHA256": "2633e98dd95ba7160bb4c54acde94a8ed4de5f1f7b335904abf79da41ab0d8e2",
+  "referenceUse": "Visual reference for original simplified facade geometry and materials; photograph pixels are not included. No Google Street View asset derivation.",
+  "textureCount": 6,
+  "semanticGroups": [
+    "Street",
+    "NorthBuilding",
+    "SouthBuilding",
+    "NorthShell",
+    "NorthGround",
+    "NorthUpper",
+    "NorthRoof",
+    "NorthCanopy",
+    "NorthCanopyPosts",
+    "SouthShell",
+    "SouthGround",
+    "SouthUpper",
+    "SouthRoof",
+    "SouthCanopy",
+    "SouthCanopyPosts"
+  ],
+  "actorPivots": [
+    "Traveller",
+    "LeftLeg",
+    "RightLeg",
+    "LeftArm",
+    "RightArm",
+    "Torso",
+    "Head"
+  ],
+  "sourceObjects": 986,
+  "font": "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
+  "limitations": [
+    "Facade appearance is authored, not a photographic reconstruction.",
+    "Eight levels are OSM metadata; metres per storey are authored.",
+    "Full south volume requires runtime occlusion; beauty selectively hides south upper/shell/roof.",
+    "No rigged fingers, interiors, observed entry claims or facial animation.",
+    "Cycles area lighting is a reference; runtime materials and lighting require browser review."
+  ],
+  "block": {
+    "bytes": 3682648,
+    "sha256": "68c2afa632505ddb6ae2a65d93c615403a476f4859885ca5860fbc3bfcd6980b",
+    "nodes": 77,
+    "primitives": 56,
+    "triangles": 44852,
+    "textures": 6,
+    "extensionsUsed": []
+  },
+  "traveller": {
+    "bytes": 44608,
+    "sha256": "e2e8f62e07f188b2bfcb4919f51b3dec84c9cf01e63d4af7031a4afa185e4a4b",
+    "nodes": 22,
+    "primitives": 14,
+    "triangles": 752,
+    "textures": 0,
+    "extensionsUsed": []
+  },
+  "seconds": 12.57
+}
