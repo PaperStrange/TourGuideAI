@@ -1,0 +1,824 @@
+{
+  "recordedAt": "2026-10-05T05:11:38.834Z",
+  "scope": "Independent bounded Blender→GLB→browser proof; not game integration or human art acceptance",
+  "artifact": {
+    "path": "/workspace/scratch/blender-depth/depth-proof.html",
+    "sha256": "3bab295e28b0d102e196424c63ba1362f176265045dd4b76b7a83b4b6053399e",
+    "bytes": 8793038
+  },
+  "model": {
+    "path": "/workspace/scratch/blender-depth/block.glb",
+    "sha256": "52fb13711fd2fdf3e63f244c5a42e871e15dc903a845120bcbc7ce1c4116f47d",
+    "bytes": 5293648
+  },
+  "checks": [
+    {
+      "name": "HTML embeds the exact independently hashed GLB bytes",
+      "status": "PASS"
+    },
+    {
+      "name": "GLB contains no external asset URIs",
+      "status": "PASS",
+      "details": []
+    },
+    {
+      "name": "Crossing and actor retain world-to-glTF axes and authored heights",
+      "status": "PASS",
+      "details": {
+        "crossing": [
+          20.72100067138672,
+          0.25,
+          -2.3299999237060547
+        ],
+        "actor": [
+          23.799999237060547,
+          0.23000000417232513,
+          -2.0999999046325684
+        ]
+      }
+    },
+    {
+      "name": "Browser reports the same imported model hash",
+      "status": "PASS"
+    },
+    {
+      "name": "Real WebGL2 canvas has drawn imported meshes",
+      "status": "PASS",
+      "details": {
+        "ready": true,
+        "lost": false,
+        "frame": 6,
+        "loadMs": 641.1,
+        "firstFrameMs": 733,
+        "firstRender": {
+          "frame": 1,
+          "calls": 56,
+          "triangles": 218312,
+          "points": 0,
+          "lines": 0
+        },
+        "shadowPolicy": "Static proof geometry and lighting: shadow map drawn once, camera remains interactive. Animated production actors need shadow invalidation.",
+        "loadTiming": "Measured from GLB base64 decoding through parse/setup and first renderer.render; excludes HTML transfer and JS parsing.",
+        "metadata": {
+          "generatedAt": "2026-10-05T05:10:55.001Z",
+          "modelPath": "/workspace/scratch/blender-depth/block.glb",
+          "modelSha256": "52fb13711fd2fdf3e63f244c5a42e871e15dc903a845120bcbc7ce1c4116f47d",
+          "modelBytes": 5293648,
+          "generator": "Khronos glTF Blender I/O v4.3.47",
+          "threeVersion": "0.186.1",
+          "renderer": "WebGL2",
+          "meshes": 28,
+          "nodes": 35,
+          "primitives": 28,
+          "materials": 28,
+          "textures": 0,
+          "embeddedImageBytes": 0,
+          "externalUris": [],
+          "extensionsUsed": [],
+          "extensionsRequired": [],
+          "coordinates": "source(x,north,height) => glTF/Three(x,height,-north), metres",
+          "fallback": {
+            "path": "/workspace/scratch/blender-depth/render.png",
+            "sha256": "d2c2cee4230140201b06e6836189aefac0ae1dc1d0dd8eecbd1537059cca8aaa"
+          }
+        },
+        "worldBounds": {
+          "minX": 0,
+          "maxX": 64,
+          "minY": -25,
+          "maxY": 15
+        },
+        "camera": {
+          "position": [
+            41.11368228546672,
+            50.5659304852025,
+            62.08245604251855
+          ],
+          "target": [
+            32,
+            1.3,
+            8.990000000000002
+          ],
+          "distance": 73,
+          "azimuth": 0.16999999999999996,
+          "polar": 0.83,
+          "preset": "guided"
+        },
+        "webgl": {
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "maxTextureSize": 8192
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        },
+        "render": {
+          "frame": 6,
+          "calls": 28,
+          "triangles": 109156,
+          "points": 0,
+          "lines": 0,
+          "memory": {
+            "geometries": 28,
+            "textures": 3
+          }
+        },
+        "model": {
+          "bounds": [
+            0,
+            -0.9599999785423279,
+            -15,
+            64,
+            12.789999961853027,
+            25
+          ],
+          "meshInstances": 28,
+          "triangles": 109156
+        },
+        "frameIntervalMs": null
+      }
+    },
+    {
+      "name": "Existing journey storage is untouched by this isolated proof",
+      "status": "PASS"
+    },
+    {
+      "name": "Chinese camera instructions and accessible controls are translated",
+      "status": "PASS",
+      "details": {
+        "lang": "zh-Hans",
+        "title": "四条街，有了纵深",
+        "buttons": [
+          "向左看",
+          "恢复视角",
+          "向右看",
+          "靠近"
+        ],
+        "canvasLabel": "可交互 Blender 街景。拖动旋转镜头，滚动缩放。",
+        "toolsLabel": "引导镜头"
+      }
+    },
+    {
+      "name": "Locale switch preserves camera",
+      "status": "PASS"
+    },
+    {
+      "name": "Actual pointer drag rotates camera",
+      "status": "PASS",
+      "details": {
+        "before": {
+          "position": [
+            41.11368228546672,
+            50.5659304852025,
+            62.08245604251855
+          ],
+          "target": [
+            32,
+            1.3,
+            8.990000000000002
+          ],
+          "distance": 73,
+          "azimuth": 0.16999999999999996,
+          "polar": 0.83,
+          "preset": "guided"
+        },
+        "after": {
+          "position": [
+            56.97944865616346,
+            56.02087641113881,
+            50.35003904290908
+          ],
+          "target": [
+            32,
+            1.3,
+            8.990000000000002
+          ],
+          "distance": 72.99999999999999,
+          "azimuth": 0.5433197916454182,
+          "polar": 0.7233372023870231,
+          "preset": "guided"
+        }
+      }
+    },
+    {
+      "name": "Actual wheel changes camera distance within bounds",
+      "status": "PASS",
+      "details": {
+        "before": {
+          "position": [
+            56.97944865616346,
+            56.02087641113881,
+            50.35003904290908
+          ],
+          "target": [
+            32,
+            1.3,
+            8.990000000000002
+          ],
+          "distance": 72.99999999999999,
+          "azimuth": 0.5433197916454182,
+          "polar": 0.7233372023870231,
+          "preset": "guided"
+        },
+        "after": {
+          "position": [
+            56.20424920936033,
+            51.50251080303827,
+            44.43978288521603
+          ],
+          "target": [
+            32,
+            1.3,
+            8.990000000000002
+          ],
+          "distance": 66.05168337996352,
+          "azimuth": 0.599072232090435,
+          "polar": 0.707407933688447,
+          "preset": "guided"
+        }
+      }
+    },
+    {
+      "name": "Reset returns to guided camera",
+      "status": "PASS",
+      "details": {
+        "position": [
+          41.11368228546672,
+          50.5659304852025,
+          62.08245604251855
+        ],
+        "target": [
+          32,
+          1.3,
+          8.990000000000002
+        ],
+        "distance": 73,
+        "azimuth": 0.16999999999999996,
+        "polar": 0.83,
+        "preset": "guided"
+      }
+    },
+    {
+      "name": "Camera buttons give distinct bounded viewpoints",
+      "status": "PASS",
+      "details": {
+        "left": {
+          "position": [
+            8.146706188985178,
+            48.5413032049887,
+            54.807896567386486
+          ],
+          "target": [
+            32,
+            1.3,
+            8.990000000000002
+          ],
+          "distance": 70,
+          "azimuth": -0.48,
+          "polar": 0.83,
+          "preset": "left"
+        },
+        "right": {
+          "position": [
+            55.85329381101482,
+            48.5413032049887,
+            54.807896567386486
+          ],
+          "target": [
+            32,
+            1.3,
+            8.990000000000002
+          ],
+          "distance": 70,
+          "azimuth": 0.48,
+          "polar": 0.83,
+          "preset": "right"
+        }
+      }
+    },
+    {
+      "name": "Compact desktop canvas matches stage after screenshot/resize",
+      "status": "PASS",
+      "details": {
+        "canvas": [
+          1280,
+          720
+        ],
+        "stage": [
+          1280,
+          720
+        ],
+        "bitmap": [
+          1280,
+          720
+        ],
+        "document": [
+          1280,
+          720
+        ]
+      }
+    },
+    {
+      "name": "Context-loss injection supported",
+      "status": "PASS"
+    },
+    {
+      "name": "Context loss shows localized fixed view and stops camera controls",
+      "status": "PASS",
+      "details": {
+        "fallback": true,
+        "imageLoaded": true,
+        "toolsHidden": true,
+        "status": "此设备暂时无法显示实时 3D。这里呈现同一 Blender 场景的固定视图。现有游戏和已保存旅程不受影响。",
+        "intro": "当前显示 Blender 参考渲染图。固定视图不支持镜头控制。",
+        "save": "QA existing journey sentinel"
+      }
+    },
+    {
+      "name": "Context loss does not touch existing saved journey",
+      "status": "PASS"
+    },
+    {
+      "name": "Failure message switches to English",
+      "status": "PASS"
+    },
+    {
+      "name": "Normal/context-loss run made zero secondary requests",
+      "status": "PASS",
+      "details": []
+    },
+    {
+      "name": "Normal/context-loss run had no uncaught or console errors",
+      "status": "PASS",
+      "details": {
+        "secondaryRequests": [],
+        "consoleErrors": [],
+        "pageErrors": [],
+        "documentLoadWallMs": 2376
+      }
+    },
+    {
+      "name": "Reduced motion has no continuing camera inertia after release",
+      "status": "PASS",
+      "details": {
+        "afterRelease": {
+          "position": [
+            60.40216594950468,
+            54.203631947544835,
+            50.505330856630664
+          ],
+          "target": [
+            32,
+            1.3,
+            8.990000000000002
+          ],
+          "distance": 73,
+          "azimuth": 0.6,
+          "polar": 0.7601868299202269,
+          "preset": "guided"
+        },
+        "later": {
+          "position": [
+            60.40216594950468,
+            54.203631947544835,
+            50.505330856630664
+          ],
+          "target": [
+            32,
+            1.3,
+            8.990000000000002
+          ],
+          "distance": 73,
+          "azimuth": 0.6,
+          "polar": 0.7601868299202269,
+          "preset": "guided"
+        },
+        "initialGuidedPosition": [
+          41.11368228546672,
+          50.5659304852025,
+          62.08245604251855
+        ],
+        "actualDragDisplacement": 22.7883369633834,
+        "postReleaseDisplacement": 0.0
+      }
+    },
+    {
+      "name": "Reduced-motion scenario has no secondary requests or errors",
+      "status": "PASS",
+      "details": {
+        "secondaryRequests": [],
+        "consoleErrors": [],
+        "pageErrors": [],
+        "documentLoadWallMs": 2540
+      }
+    },
+    {
+      "name": "WebGL creation failure displays honest fixed-view recovery",
+      "status": "PASS",
+      "details": {
+        "imageLoaded": true,
+        "status": "Live 3D is unavailable on this device. This fixed view shows the same Blender scene. The playable game and saved journey are unchanged.",
+        "intro": "This fixed image is the Blender reference render. Camera controls are unavailable.",
+        "toolsHidden": true
+      }
+    },
+    {
+      "name": "WebGL-unavailable recovery also localizes to Chinese",
+      "status": "PASS"
+    },
+    {
+      "name": "WebGL-unavailable scenario has zero secondary requests and uncaught errors",
+      "status": "PASS",
+      "details": {
+        "secondaryRequests": [],
+        "consoleErrors": [
+          "THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context."
+        ],
+        "pageErrors": [],
+        "documentLoadWallMs": 1072
+      }
+    }
+  ],
+  "observations": {
+    "anchors": [
+      {
+        "extras": {
+          "id": "crossing",
+          "modelled": true,
+          "position_kind": "authored interaction; not a surveyed doorway"
+        },
+        "name": "ReadingPoint_crossing",
+        "translation": [
+          20.72100067138672,
+          0.25,
+          -2.3299999237060547
+        ]
+      },
+      {
+        "extras": {
+          "id": "mitsui",
+          "modelled": true,
+          "position_kind": "authored interaction; not a surveyed doorway"
+        },
+        "name": "ReadingPoint_mitsui",
+        "translation": [
+          32,
+          0.25,
+          -3.200000047683716
+        ]
+      },
+      {
+        "extras": {
+          "id": "mufg",
+          "modelled": true,
+          "position_kind": "authored interaction; not a surveyed doorway"
+        },
+        "name": "ReadingPoint_mufg",
+        "translation": [
+          24.700000762939453,
+          0.25,
+          18.5
+        ]
+      },
+      {
+        "extras": {
+          "id": "D-S1",
+          "modelled": false,
+          "position_kind": "authored interaction; not a surveyed doorway"
+        },
+        "name": "ReadingPoint_D-S1",
+        "translation": [
+          19.3125,
+          0.25,
+          19.9375
+        ]
+      },
+      {
+        "extras": {
+          "id": "D-S3",
+          "modelled": false,
+          "position_kind": "authored interaction; not a surveyed doorway"
+        },
+        "name": "ReadingPoint_D-S3",
+        "translation": [
+          26.625,
+          0.25,
+          19.875
+        ]
+      },
+      {
+        "extras": {
+          "id": "D-S5",
+          "modelled": false,
+          "position_kind": "authored interaction; not a surveyed doorway"
+        },
+        "name": "ReadingPoint_D-S5",
+        "translation": [
+          33.875,
+          0.25,
+          19.75
+        ]
+      }
+    ],
+    "opening": {
+      "ready": true,
+      "lost": false,
+      "frame": 6,
+      "loadMs": 641.1,
+      "firstFrameMs": 733,
+      "firstRender": {
+        "frame": 1,
+        "calls": 56,
+        "triangles": 218312,
+        "points": 0,
+        "lines": 0
+      },
+      "shadowPolicy": "Static proof geometry and lighting: shadow map drawn once, camera remains interactive. Animated production actors need shadow invalidation.",
+      "loadTiming": "Measured from GLB base64 decoding through parse/setup and first renderer.render; excludes HTML transfer and JS parsing.",
+      "metadata": {
+        "generatedAt": "2026-10-05T05:10:55.001Z",
+        "modelPath": "/workspace/scratch/blender-depth/block.glb",
+        "modelSha256": "52fb13711fd2fdf3e63f244c5a42e871e15dc903a845120bcbc7ce1c4116f47d",
+        "modelBytes": 5293648,
+        "generator": "Khronos glTF Blender I/O v4.3.47",
+        "threeVersion": "0.186.1",
+        "renderer": "WebGL2",
+        "meshes": 28,
+        "nodes": 35,
+        "primitives": 28,
+        "materials": 28,
+        "textures": 0,
+        "embeddedImageBytes": 0,
+        "externalUris": [],
+        "extensionsUsed": [],
+        "extensionsRequired": [],
+        "coordinates": "source(x,north,height) => glTF/Three(x,height,-north), metres",
+        "fallback": {
+          "path": "/workspace/scratch/blender-depth/render.png",
+          "sha256": "d2c2cee4230140201b06e6836189aefac0ae1dc1d0dd8eecbd1537059cca8aaa"
+        }
+      },
+      "worldBounds": {
+        "minX": 0,
+        "maxX": 64,
+        "minY": -25,
+        "maxY": 15
+      },
+      "camera": {
+        "position": [
+          41.11368228546672,
+          50.5659304852025,
+          62.08245604251855
+        ],
+        "target": [
+          32,
+          1.3,
+          8.990000000000002
+        ],
+        "distance": 73,
+        "azimuth": 0.16999999999999996,
+        "polar": 0.83,
+        "preset": "guided"
+      },
+      "webgl": {
+        "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "maxTextureSize": 8192
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "render": {
+        "frame": 6,
+        "calls": 28,
+        "triangles": 109156,
+        "points": 0,
+        "lines": 0,
+        "memory": {
+          "geometries": 28,
+          "textures": 3
+        }
+      },
+      "model": {
+        "bounds": [
+          0,
+          -0.9599999785423279,
+          -15,
+          64,
+          12.789999961853027,
+          25
+        ],
+        "meshInstances": 28,
+        "triangles": 109156
+      },
+      "frameIntervalMs": null
+    },
+    "beforeContextLoss": {
+      "ready": true,
+      "lost": false,
+      "frame": 159,
+      "loadMs": 641.1,
+      "firstFrameMs": 733,
+      "firstRender": {
+        "frame": 1,
+        "calls": 56,
+        "triangles": 218312,
+        "points": 0,
+        "lines": 0
+      },
+      "shadowPolicy": "Static proof geometry and lighting: shadow map drawn once, camera remains interactive. Animated production actors need shadow invalidation.",
+      "loadTiming": "Measured from GLB base64 decoding through parse/setup and first renderer.render; excludes HTML transfer and JS parsing.",
+      "metadata": {
+        "generatedAt": "2026-10-05T05:10:55.001Z",
+        "modelPath": "/workspace/scratch/blender-depth/block.glb",
+        "modelSha256": "52fb13711fd2fdf3e63f244c5a42e871e15dc903a845120bcbc7ce1c4116f47d",
+        "modelBytes": 5293648,
+        "generator": "Khronos glTF Blender I/O v4.3.47",
+        "threeVersion": "0.186.1",
+        "renderer": "WebGL2",
+        "meshes": 28,
+        "nodes": 35,
+        "primitives": 28,
+        "materials": 28,
+        "textures": 0,
+        "embeddedImageBytes": 0,
+        "externalUris": [],
+        "extensionsUsed": [],
+        "extensionsRequired": [],
+        "coordinates": "source(x,north,height) => glTF/Three(x,height,-north), metres",
+        "fallback": {
+          "path": "/workspace/scratch/blender-depth/render.png",
+          "sha256": "d2c2cee4230140201b06e6836189aefac0ae1dc1d0dd8eecbd1537059cca8aaa"
+        }
+      },
+      "worldBounds": {
+        "minX": 0,
+        "maxX": 64,
+        "minY": -25,
+        "maxY": 15
+      },
+      "camera": {
+        "position": [
+          41.11368228546672,
+          50.5659304852025,
+          62.08245604251855
+        ],
+        "target": [
+          32,
+          1.3,
+          8.990000000000002
+        ],
+        "distance": 73,
+        "azimuth": 0.16999999999999996,
+        "polar": 0.83,
+        "preset": "guided"
+      },
+      "webgl": {
+        "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "maxTextureSize": 8192
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1
+      },
+      "render": {
+        "frame": 159,
+        "calls": 28,
+        "triangles": 109156,
+        "points": 0,
+        "lines": 0,
+        "memory": {
+          "geometries": 28,
+          "textures": 3
+        }
+      },
+      "model": {
+        "bounds": [
+          0,
+          -0.9599999785423279,
+          -15,
+          64,
+          12.789999961853027,
+          25
+        ],
+        "meshInstances": 28,
+        "triangles": 109156
+      },
+      "frameIntervalMs": {
+        "count": 148,
+        "median": 799.8999999999942,
+        "max": 1799.8999999999996,
+        "note": "Cloud browser observation only; not a device performance budget."
+      }
+    },
+    "expectedUnavailableConsoleErrors": [
+      "THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context."
+    ]
+  },
+  "scenarios": {
+    "normal": {
+      "secondaryRequests": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "documentLoadWallMs": 2376
+    },
+    "reduced-motion": {
+      "secondaryRequests": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "documentLoadWallMs": 2540
+    },
+    "webgl-unavailable": {
+      "secondaryRequests": [],
+      "consoleErrors": [
+        "THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context."
+      ],
+      "pageErrors": [],
+      "documentLoadWallMs": 1072
+    }
+  },
+  "screenshots": [
+    "/workspace/scratch/blender-depth/qa-en-initial.png",
+    "/workspace/scratch/blender-depth/qa-zh-initial.png",
+    "/workspace/scratch/blender-depth/qa-zh-pointer-zoom.png",
+    "/workspace/scratch/blender-depth/qa-zh-left.png",
+    "/workspace/scratch/blender-depth/qa-zh-right.png",
+    "/workspace/scratch/blender-depth/qa-zh-1280x720.png",
+    "/workspace/scratch/blender-depth/qa-zh-context-lost.png",
+    "/workspace/scratch/blender-depth/qa-en-context-lost.png",
+    "/workspace/scratch/blender-depth/qa-en-webgl-unavailable.png",
+    "/workspace/scratch/blender-depth/qa-zh-webgl-unavailable.png"
+  ],
+  "limitations": [
+    "Software-rendered cloud Chromium timings are not desktop GPU acceptance.",
+    "No character gameplay, bilingual game encounters, save migration, collision, picking-to-walk or journey export was implemented or tested by this camera proof.",
+    "No actual file:// launch: managed browser policy blocks that scheme.",
+    "No human acceptance or field test."
+  ],
+  "browser": "151.0.7922.173",
+  "summary": {
+    "passed": 24,
+    "failed": 0
+  },
+  "status": "technical proof checks passed; visual review and user acceptance separate",
+  "visualReview": {
+    "reviewer": "qa_release",
+    "status": "Browser volume/material transfer inspected; no human quality or gameplay acceptance",
+    "observed": [
+      "Final actual-browser views retain modeled thickness, facade recesses, curb/paver geometry, glazing palette, foliage and contact shadows.",
+      "Previous surface striping is absent in inspected final views; smoothing survived the revised export.",
+      "English and Chinese camera instructions, target labels and failure-state messages are readable in inspected1440×900 and1280×720 views.",
+      "Camera rotation changes visible sides and perspective; the live view is geometry, not the fallback image.",
+      "WebGL context loss and creation failure show the embedded Blender image with explicit fixed-view instructions."
+    ],
+    "limits": [
+      "Overview traveler and factual facade lettering are small; gameplay needs a closer actor/target composition.",
+      "Default camera sees the authored south cutaway roof/back, not its actionable front facade. Actor-follow and semantic occlusion are not proved.",
+      "No production animation, movement, collision, click-to-walk, encounters, save migration or export integration exists in this proof.",
+      "UI uses system fonts; cross-platform offline CJK font coverage is not newly established.",
+      "The collected software-rendered automation sample had approximately800ms median frame intervals; this is visibly low cadence in this executor and is not a fluency pass or hardware GPU benchmark.",
+      "No layered-sprite gameplay fallback was built; only a fixed-reference-image failure state was exercised."
+    ]
+  },
+  "performanceInterpretation": {
+    "hardware": "ANGLE Vulkan SwiftShader software renderer",
+    "sceneTriangles": 109156,
+    "steadyCalls": 28,
+    "firstFrameCallsIncludingShadow": 56,
+    "texturesMeaning": "No GLB image textures; renderer reports3 texture objects including rendering resources, not3 source assets or a byte measure.",
+    "judgment": "Compatibility/import evidence only. Named desktop GPU and fixed test conditions required before performance/fluency acceptance."
+  },
+  "correctedDefects": [
+    {
+      "area": "camera reset",
+      "beforeHtmlSha256": "c622b3c807b4cd11c8e3c317c4076617dc5d558ec228225dd27c017e1810d82c",
+      "observedBefore": "After actual drag/wheel then reset: azimuth0.1737702588, polar0.8289227832 rather than canonical0.17/0.83.",
+      "after": "Public OrbitControls damping flush restores canonical pose; final independent check passed."
+    },
+    {
+      "area": "surface rendering",
+      "observedBefore": "Preliminary browser capture showed repeated surface striping and lost smooth foliage normals.",
+      "after": "Shadow settings and GLB batch normals corrected before final artifact; final views inspected."
+    }
+  ],
+  "screenshotHashes": {
+    "qa-en-initial.png": "f02dd44473fa1466d0af919de3e04d82ae445cc9269971064051053a3b4ddd97",
+    "qa-zh-initial.png": "fd7b9484db283c8f7bfe3226d3768fa8c95de289dbe4ff6c7b5b26aacf1f8cf7",
+    "qa-zh-pointer-zoom.png": "510c71debea63e054082db94b3aef997fe050e1abf89c6701a16ca968781be0d",
+    "qa-zh-left.png": "cb353c8eea867e07fac14524fa1eb04df95214726160d4e2dadcfc2b0e07ab7f",
+    "qa-zh-right.png": "91894523657fb42cc5f666c147bbc740bd2ad1e1cd2e961903517d0ddafa914a",
+    "qa-zh-1280x720.png": "f6b9d2d4385ba8ac9438108f0a08f3e13186c6c2139fd8ce5ba35cb2245e7788",
+    "qa-zh-context-lost.png": "6be8b6b9c80a8c1232c59277d6f038da920f9be6a7e823a2e3d559bc48f162e0",
+    "qa-en-context-lost.png": "45560dca0bd9989b8d17910dfd2b5ab186dcc67d8b4f6f510d2bcfbb22f0a4cd",
+    "qa-en-webgl-unavailable.png": "2acc38e82d29fdd1c83e732019521457c550a7d4ff7ce1a4887c898f2947b14f",
+    "qa-zh-webgl-unavailable.png": "7a20b7736b8b2f8601d0793876d93645d94d063e2dd70ac60c57c5bf6b4228b5"
+  },
+  "qaRunnerTemporaryPath": "/tmp/blender-proof-qa.cjs",
+  "qaRunnerSha256": "31e273adcac514255e1bde9ad554986e401d2ca78e04079097bb208f6a3f8ab9"
+}

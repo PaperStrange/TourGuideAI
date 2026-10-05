@@ -114,6 +114,13 @@ const CLASSES = [
   // have to lie about one of them. Both exist because an .html extension must not be enough to make
   // a file look like captured evidence.
   new FileClass(
+    'game-entry-source',
+    (rel) => rel === 'iteration/game/index.html',
+    ['iteration/game/index.html'],
+    true,
+    'authored Vite entry source for the isolated first playable, not a fetched page or generated artifact. Only this exact source path is declared; new captured pages still require an evidence-store row. The generated single-file game stays in ignored dist/.',
+  ),
+  new FileClass(
     'baked-page',
     (rel) => /^iteration\/viewer\/index\.html$/.test(rel),
     ['iteration/viewer/'],

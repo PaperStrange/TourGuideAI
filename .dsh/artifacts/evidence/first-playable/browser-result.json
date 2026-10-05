@@ -1,0 +1,1101 @@
+{
+  "artifact": "/workspace/TourGuideAI-iteration-plan/iteration/game/dist/index.html",
+  "sha256": "237ce97bd3d9ff25b3b0667e75aafd7038fda70264c81d5f7b480af0b80902bc",
+  "bytes": 647462,
+  "time": "2026-10-05T04:44:39.997Z",
+  "browser": "151.0.7922.173",
+  "checks": [
+    {
+      "id": "visible-production-canvas",
+      "pass": true,
+      "evidence": [
+        {
+          "width": 1130,
+          "height": 780,
+          "rect": {
+            "x": 288,
+            "y": 126,
+            "width": 1130,
+            "height": 780
+          }
+        }
+      ]
+    },
+    {
+      "id": "initial-viewport-width",
+      "pass": true,
+      "evidence": {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentWidth": 1440,
+        "canvas": [
+          {
+            "width": 1130,
+            "height": 780,
+            "rect": {
+              "x": 288,
+              "y": 126,
+              "width": 1130,
+              "height": 780
+            }
+          }
+        ],
+        "controls": [
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "text": "EN",
+            "hidden": false
+          },
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "text": "中文",
+            "hidden": false
+          },
+          {
+            "tag": "BUTTON",
+            "id": "reset-button",
+            "text": "↺",
+            "hidden": false
+          },
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "text": "01Shijō–Karasuma crossingGET YOUR BEARINGS",
+            "hidden": false
+          },
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "text": "02Kyoto Mitsui BuildingREAD THE CITY",
+            "hidden": false
+          },
+          {
+            "tag": "BUTTON",
+            "id": "",
+            "text": "03MUFG · Kyoto BranchMAKE A TRAVEL CHOICE",
+            "hidden": false
+          },
+          {
+            "tag": "BUTTON",
+            "id": "export-notes",
+            "text": "Save field notes↗",
+            "hidden": false
+          },
+          {
+            "tag": "BUTTON",
+            "id": "interact-button",
+            "text": "EView details↗",
+            "hidden": true
+          },
+          {
+            "tag": "BUTTON",
+            "id": "hint-toggle",
+            "text": "Hide hints",
+            "hidden": false
+          },
+          {
+            "tag": "BUTTON",
+            "id": "confirm-reset",
+            "text": "Begin again",
+            "hidden": false
+          },
+          {
+            "tag": "BUTTON",
+            "id": "cancel-reset",
+            "text": "Keep my walk",
+            "hidden": false
+          }
+        ],
+        "storage": {
+          "tourguideai:first-walk:v1": "{\"locale\":\"en\",\"hints\":true,\"game\":{\"x\":23.8,\"y\":2.1,\"tick\":0,\"facing\":\"east\",\"moving\":false,\"paused\":false,\"visitedIds\":[],\"readSourceIds\":[],\"choiceIds\":{},\"selectedTargetId\":\"crossing\",\"nearbyTargetId\":null,\"nearestTargetId\":\"crossing\",\"targetDistance\":3.1,\"destination\":null,\"waypoints\":[]}}"
+        }
+      }
+    },
+    {
+      "id": "chinese-goal-and-context-controls",
+      "pass": true,
+      "evidence": "从 四条乌丸路口 开始漫步"
+    },
+    {
+      "id": "locale-preserves-initial-position-progress",
+      "pass": true,
+      "evidence": {
+        "before": {
+          "locale": "en",
+          "hints": true,
+          "game": {
+            "x": 23.8,
+            "y": 2.1,
+            "tick": 0,
+            "facing": "east",
+            "moving": false,
+            "paused": false,
+            "visitedIds": [],
+            "readSourceIds": [],
+            "choiceIds": {},
+            "selectedTargetId": "crossing",
+            "nearbyTargetId": null,
+            "nearestTargetId": "crossing",
+            "targetDistance": 3.1,
+            "destination": null,
+            "waypoints": []
+          }
+        },
+        "after": {
+          "locale": "zh",
+          "hints": true,
+          "game": {
+            "x": 23.8,
+            "y": 2.1,
+            "tick": 113,
+            "facing": "east",
+            "moving": false,
+            "paused": false,
+            "visitedIds": [],
+            "readSourceIds": [],
+            "choiceIds": {},
+            "selectedTargetId": "crossing",
+            "nearbyTargetId": null,
+            "nearestTargetId": "crossing",
+            "targetDistance": 3.1,
+            "destination": null,
+            "waypoints": []
+          }
+        }
+      }
+    },
+    {
+      "id": "1280px-no-horizontal-overflow",
+      "pass": true,
+      "evidence": {
+        "viewport": 1280,
+        "document": 1280
+      }
+    },
+    {
+      "id": "resize-renders-road-across-canvas",
+      "pass": true,
+      "evidence": {
+        "width": 970,
+        "height": 520,
+        "left": [
+          127,
+          136,
+          128,
+          255
+        ],
+        "center": [
+          123,
+          132,
+          126,
+          255
+        ],
+        "right": [
+          120,
+          130,
+          123,
+          255
+        ]
+      }
+    },
+    {
+      "id": "short-desktop-controls-and-footer-do-not-overlap",
+      "pass": true,
+      "evidence": {
+        "viewportHeight": 720,
+        "documentHeight": 720,
+        "exportBottom": 671,
+        "footerTop": 685,
+        "controlsBottom": 673
+      }
+    },
+    {
+      "id": "resized-canvas-still-covers-stage-after-capture",
+      "pass": true,
+      "evidence": {
+        "canvas": {
+          "width": 970,
+          "height": 520
+        },
+        "stage": {
+          "width": 970,
+          "height": 520
+        }
+      }
+    },
+    {
+      "id": "held-key-moves-player",
+      "pass": true,
+      "evidence": {
+        "before": {
+          "x": 23.8,
+          "y": 2.1
+        },
+        "after": {
+          "x": 25.472,
+          "y": 2.1
+        }
+      }
+    },
+    {
+      "id": "released-key-stops-player",
+      "pass": true,
+      "evidence": {
+        "released": {
+          "x": 25.472,
+          "y": 2.1
+        },
+        "later": {
+          "x": 25.472,
+          "y": 2.1
+        }
+      }
+    },
+    {
+      "id": "north-facade-collision",
+      "pass": true,
+      "evidence": {
+        "atFacade": {
+          "x": 25.472,
+          "y": 4.34
+        },
+        "continuedInput": {
+          "x": 25.472,
+          "y": 4.34
+        }
+      }
+    },
+    {
+      "id": "nearby-prompt-stable",
+      "pass": true,
+      "evidence": [
+        {
+          "visible": true,
+          "label": "EShijō–Karasuma crossingView details↗"
+        },
+        {
+          "visible": true,
+          "label": "EShijō–Karasuma crossingView details↗"
+        },
+        {
+          "visible": true,
+          "label": "EShijō–Karasuma crossingView details↗"
+        },
+        {
+          "visible": true,
+          "label": "EShijō–Karasuma crossingView details↗"
+        },
+        {
+          "visible": true,
+          "label": "EShijō–Karasuma crossingView details↗"
+        }
+      ]
+    },
+    {
+      "id": "opening-is-not-a-visit-or-source-read",
+      "pass": true,
+      "evidence": {
+        "x": 20.721,
+        "y": 2.33,
+        "tick": 708,
+        "facing": "west",
+        "moving": false,
+        "paused": false,
+        "visitedIds": [],
+        "readSourceIds": [],
+        "choiceIds": {},
+        "selectedTargetId": "crossing",
+        "nearbyTargetId": "crossing",
+        "nearestTargetId": "crossing",
+        "targetDistance": 0,
+        "destination": null,
+        "waypoints": []
+      }
+    },
+    {
+      "id": "modal-pauses-movement",
+      "pass": true,
+      "evidence": {
+        "before": {
+          "x": 20.721,
+          "y": 2.33
+        },
+        "after": {
+          "x": 20.721,
+          "y": 2.33
+        }
+      }
+    },
+    {
+      "id": "open-card-locale-retains-state",
+      "pass": true,
+      "evidence": {
+        "title": "一条街，两种选择",
+        "before": {
+          "locale": "en",
+          "hints": true,
+          "game": {
+            "x": 20.721,
+            "y": 2.33,
+            "tick": 708,
+            "facing": "west",
+            "moving": false,
+            "paused": false,
+            "visitedIds": [],
+            "readSourceIds": [],
+            "choiceIds": {},
+            "selectedTargetId": "crossing",
+            "nearbyTargetId": "crossing",
+            "nearestTargetId": "crossing",
+            "targetDistance": 0,
+            "destination": null,
+            "waypoints": []
+          }
+        },
+        "after": {
+          "locale": "zh",
+          "hints": true,
+          "game": {
+            "x": 20.721,
+            "y": 2.33,
+            "tick": 852,
+            "facing": "west",
+            "moving": false,
+            "paused": false,
+            "visitedIds": [],
+            "readSourceIds": [],
+            "choiceIds": {},
+            "selectedTargetId": "crossing",
+            "nearbyTargetId": "crossing",
+            "nearestTargetId": "crossing",
+            "targetDistance": 0,
+            "destination": null,
+            "waypoints": []
+          }
+        }
+      }
+    },
+    {
+      "id": "modal-language-switch-retains-keyboard-focus",
+      "pass": true,
+      "evidence": {
+        "tag": "BUTTON",
+        "locale": "zh"
+      }
+    },
+    {
+      "id": "close-does-not-reopen",
+      "pass": true,
+      "evidence": {
+        "dialogOpen": false,
+        "focused": "game-stage"
+      }
+    },
+    {
+      "id": "close-restores-movement-focus",
+      "pass": true,
+      "evidence": "game-stage"
+    },
+    {
+      "id": "source-read-distinct-from-visit",
+      "pass": true,
+      "evidence": {
+        "x": 20.721,
+        "y": 2.33,
+        "tick": 886,
+        "facing": "west",
+        "moving": false,
+        "paused": false,
+        "visitedIds": [],
+        "readSourceIds": [
+          "crossing"
+        ],
+        "choiceIds": {},
+        "selectedTargetId": "crossing",
+        "nearbyTargetId": "crossing",
+        "nearestTargetId": "crossing",
+        "targetDistance": 0,
+        "destination": null,
+        "waypoints": []
+      }
+    },
+    {
+      "id": "choice-records-one-visit-and-next-target",
+      "pass": true,
+      "evidence": {
+        "x": 20.721,
+        "y": 2.33,
+        "tick": 886,
+        "facing": "west",
+        "moving": false,
+        "paused": false,
+        "visitedIds": [
+          "crossing"
+        ],
+        "readSourceIds": [
+          "crossing"
+        ],
+        "choiceIds": {
+          "crossing": "north-first"
+        },
+        "selectedTargetId": "mitsui",
+        "nearbyTargetId": "crossing",
+        "nearestTargetId": "crossing",
+        "targetDistance": 0,
+        "destination": null,
+        "waypoints": []
+      }
+    },
+    {
+      "id": "locale-keeps-chosen-outcome",
+      "pass": true,
+      "evidence": "先逛北侧，将路口记作地标。"
+    },
+    {
+      "id": "close-resumes-movement",
+      "pass": true,
+      "evidence": {
+        "before": {
+          "x": 20.721,
+          "y": 2.33
+        },
+        "after": {
+          "x": 22.241,
+          "y": 2.33
+        }
+      }
+    },
+    {
+      "id": "save-reload-position-progress-locale",
+      "pass": true,
+      "evidence": {
+        "before": {
+          "locale": "zh",
+          "hints": true,
+          "game": {
+            "x": 22.241,
+            "y": 2.33,
+            "tick": 927,
+            "facing": "east",
+            "moving": false,
+            "paused": false,
+            "visitedIds": [
+              "crossing"
+            ],
+            "readSourceIds": [
+              "crossing"
+            ],
+            "choiceIds": {
+              "crossing": "north-first"
+            },
+            "selectedTargetId": "mitsui",
+            "nearbyTargetId": "crossing",
+            "nearestTargetId": "crossing",
+            "targetDistance": 1.5,
+            "destination": null,
+            "waypoints": []
+          }
+        },
+        "after": {
+          "locale": "zh",
+          "hints": true,
+          "game": {
+            "x": 22.241,
+            "y": 2.33,
+            "tick": 964,
+            "facing": "east",
+            "moving": false,
+            "paused": false,
+            "visitedIds": [
+              "crossing"
+            ],
+            "readSourceIds": [
+              "crossing"
+            ],
+            "choiceIds": {
+              "crossing": "north-first"
+            },
+            "selectedTargetId": "mitsui",
+            "nearbyTargetId": "crossing",
+            "nearestTargetId": "crossing",
+            "targetDistance": 1.5,
+            "destination": null,
+            "waypoints": []
+          }
+        }
+      }
+    },
+    {
+      "id": "alternate-choice-keeps-visit-with-different-route-intent",
+      "pass": true,
+      "evidence": {
+        "x": 32,
+        "y": 3.2,
+        "tick": 1249,
+        "facing": "east",
+        "moving": false,
+        "paused": false,
+        "visitedIds": [
+          "crossing",
+          "mitsui"
+        ],
+        "readSourceIds": [
+          "crossing"
+        ],
+        "choiceIds": {
+          "crossing": "north-first",
+          "mitsui": "street-only"
+        },
+        "selectedTargetId": "mufg",
+        "nearbyTargetId": "mitsui",
+        "nearestTargetId": "mitsui",
+        "targetDistance": 0,
+        "destination": null,
+        "waypoints": []
+      }
+    },
+    {
+      "id": "export-reflects-distinct-player-choices",
+      "pass": true,
+      "evidence": {
+        "path": "/workspace/scratch/first-playable-evidence/final/played-field-notes-en.html",
+        "bytes": 2750
+      }
+    },
+    {
+      "id": "canvas-click-walks-to-pavement",
+      "pass": true,
+      "evidence": {
+        "before": {
+          "x": 32,
+          "y": 3.2
+        },
+        "screenPoint": {
+          "x": 606.8518518518518,
+          "y": 271.55925925925925
+        },
+        "intended": {
+          "x": 35,
+          "y": 2
+        },
+        "after": {
+          "x": 35,
+          "y": 2.001
+        }
+      }
+    },
+    {
+      "id": "autowalk-crosses-at-mapped-crossing",
+      "pass": true,
+      "evidence": [
+        {
+          "x": 20.721,
+          "y": -4.358
+        },
+        {
+          "x": 20.721,
+          "y": -4.358
+        },
+        {
+          "x": 20.721,
+          "y": -4.358
+        },
+        {
+          "x": 20.721,
+          "y": -4.358
+        },
+        {
+          "x": 20.721,
+          "y": -4.358
+        },
+        {
+          "x": 20.721,
+          "y": -7.55
+        },
+        {
+          "x": 20.721,
+          "y": -7.55
+        },
+        {
+          "x": 20.721,
+          "y": -7.55
+        },
+        {
+          "x": 20.721,
+          "y": -10.286
+        },
+        {
+          "x": 20.721,
+          "y": -10.286
+        },
+        {
+          "x": 20.721,
+          "y": -10.286
+        },
+        {
+          "x": 20.721,
+          "y": -10.286
+        },
+        {
+          "x": 20.721,
+          "y": -13.478
+        },
+        {
+          "x": 20.721,
+          "y": -13.478
+        },
+        {
+          "x": 20.721,
+          "y": -13.478
+        },
+        {
+          "x": 20.721,
+          "y": -13.478
+        }
+      ]
+    },
+    {
+      "id": "chinese-approach-reaches-bank",
+      "pass": true,
+      "evidence": {
+        "x": 24.7,
+        "y": -18.5,
+        "tick": 1971,
+        "facing": "east",
+        "moving": false,
+        "paused": false,
+        "visitedIds": [
+          "crossing",
+          "mitsui"
+        ],
+        "readSourceIds": [
+          "crossing"
+        ],
+        "choiceIds": {
+          "crossing": "north-first",
+          "mitsui": "street-only"
+        },
+        "selectedTargetId": "mufg",
+        "nearbyTargetId": "mufg",
+        "nearestTargetId": "mufg",
+        "targetDistance": 0,
+        "destination": null,
+        "waypoints": []
+      }
+    },
+    {
+      "id": "chinese-choice-retained",
+      "pass": true,
+      "evidence": {
+        "x": 24.7,
+        "y": -18.5,
+        "tick": 1975,
+        "facing": "east",
+        "moving": false,
+        "paused": false,
+        "visitedIds": [
+          "crossing",
+          "mitsui",
+          "mufg"
+        ],
+        "readSourceIds": [
+          "crossing"
+        ],
+        "choiceIds": {
+          "crossing": "north-first",
+          "mitsui": "street-only",
+          "mufg": "no-cash-stop"
+        },
+        "selectedTargetId": "mufg",
+        "nearbyTargetId": "mufg",
+        "nearestTargetId": "mufg",
+        "targetDistance": 0,
+        "destination": null,
+        "waypoints": []
+      }
+    },
+    {
+      "id": "chinese-full-chain-resumes",
+      "pass": true,
+      "evidence": {
+        "before": {
+          "x": 24.7,
+          "y": -18.5
+        },
+        "after": {
+          "x": 25.992,
+          "y": -18.5
+        }
+      }
+    },
+    {
+      "id": "placeholder-can-be-approached",
+      "pass": true,
+      "evidence": {
+        "x": 26.676,
+        "y": -19.48,
+        "tick": 2150,
+        "facing": "south",
+        "moving": false,
+        "paused": false,
+        "visitedIds": [
+          "crossing",
+          "mitsui",
+          "mufg"
+        ],
+        "readSourceIds": [
+          "crossing"
+        ],
+        "choiceIds": {
+          "crossing": "north-first",
+          "mitsui": "street-only",
+          "mufg": "no-cash-stop"
+        },
+        "selectedTargetId": "mufg",
+        "nearbyTargetId": "D-S3",
+        "nearestTargetId": "D-S3",
+        "targetDistance": 0.6,
+        "destination": null,
+        "waypoints": []
+      }
+    },
+    {
+      "id": "placeholder-honestly-unfinished",
+      "pass": true,
+      "evidence": "内容开发中"
+    },
+    {
+      "id": "placeholder-never-counts-as-real-visit",
+      "pass": true,
+      "evidence": [
+        "crossing",
+        "mitsui",
+        "mufg"
+      ]
+    },
+    {
+      "id": "chinese-export-reflects-no-cash-choice",
+      "pass": true,
+      "evidence": {
+        "path": "/workspace/scratch/first-playable-evidence/final/played-field-notes-zh.html",
+        "bytes": 3934
+      }
+    },
+    {
+      "id": "export-readable-width-on-phone",
+      "pass": true,
+      "evidence": {
+        "width": 390,
+        "document": 390,
+        "lang": "zh"
+      }
+    },
+    {
+      "id": "deterministic-replay-across-save-restore",
+      "pass": true,
+      "evidence": {
+        "commands": 1426,
+        "checkpoint": {
+          "x": 37.48,
+          "y": 4.34,
+          "tick": 420
+        },
+        "final": {
+          "x": 2.22,
+          "y": -1.74,
+          "tick": 1426,
+          "facing": "east",
+          "moving": false,
+          "paused": false,
+          "visitedIds": [
+            "crossing"
+          ],
+          "readSourceIds": [],
+          "choiceIds": {
+            "crossing": "north-first"
+          },
+          "selectedTargetId": "crossing",
+          "nearbyTargetId": null,
+          "nearestTargetId": "crossing",
+          "targetDistance": 18.9,
+          "destination": null,
+          "waypoints": []
+        }
+      }
+    },
+    {
+      "id": "replay-is-not-a-no-op-or-vacuous-comparison",
+      "pass": true,
+      "evidence": {
+        "standard": {
+          "x": 2.22,
+          "y": -1.74
+        },
+        "changedLastCommand": {
+          "x": 2.22,
+          "y": -1.816
+        }
+      }
+    },
+    {
+      "id": "paused-simulation-does-not-advance",
+      "pass": true,
+      "evidence": {
+        "tickBefore": 1426,
+        "tickAfter": 1426,
+        "before": {
+          "x": 2.22,
+          "y": -1.74
+        },
+        "after": {
+          "x": 2.22,
+          "y": -1.74
+        }
+      }
+    },
+    {
+      "id": "corrupt-save-null-recovers",
+      "pass": true,
+      "evidence": {
+        "position": {
+          "x": 23.8,
+          "y": 2.1
+        },
+        "visits": [],
+        "locale": "en"
+      }
+    },
+    {
+      "id": "corrupt-save-primitive-recovers",
+      "pass": true,
+      "evidence": {
+        "position": {
+          "x": 23.8,
+          "y": 2.1
+        },
+        "visits": [],
+        "locale": "en"
+      }
+    },
+    {
+      "id": "corrupt-save-invalid-json-recovers",
+      "pass": true,
+      "evidence": {
+        "position": {
+          "x": 23.8,
+          "y": 2.1
+        },
+        "visits": [],
+        "locale": "en"
+      }
+    },
+    {
+      "id": "corrupt-save-invalid-game-recovers",
+      "pass": true,
+      "evidence": {
+        "position": {
+          "x": 23.8,
+          "y": 2.1
+        },
+        "visits": [],
+        "locale": "zh"
+      }
+    },
+    {
+      "id": "no-secondary-network-requests",
+      "pass": true,
+      "evidence": []
+    },
+    {
+      "id": "no-browser-errors",
+      "pass": true,
+      "evidence": {
+        "pageErrors": [],
+        "consoleErrors": []
+      }
+    }
+  ],
+  "actions": [
+    {
+      "name": "Open the exact production bundle with all secondary requests denied",
+      "time": "2026-10-05T04:44:40.631Z"
+    },
+    {
+      "name": "Select zh",
+      "time": "2026-10-05T04:44:43.273Z"
+    },
+    {
+      "name": "Select en",
+      "time": "2026-10-05T04:44:44.526Z"
+    },
+    {
+      "name": "Select en",
+      "time": "2026-10-05T04:44:45.064Z"
+    },
+    {
+      "name": "Hold ArrowRight for 350 ms, then release",
+      "time": "2026-10-05T04:44:45.320Z"
+    },
+    {
+      "name": "Hold ArrowUp for 1600 ms, then release",
+      "time": "2026-10-05T04:44:47.460Z"
+    },
+    {
+      "name": "Hold ArrowUp for 500 ms, then release",
+      "time": "2026-10-05T04:44:49.956Z"
+    },
+    {
+      "name": "Use the visible journey destination crossing and walk there",
+      "time": "2026-10-05T04:44:51.795Z"
+    },
+    {
+      "name": "Hold E; repeated keydown must not duplicate the open action",
+      "time": "2026-10-05T04:44:55.730Z"
+    },
+    {
+      "name": "Hold ArrowRight for 500 ms, then release",
+      "time": "2026-10-05T04:44:56.603Z"
+    },
+    {
+      "name": "Select zh with card open",
+      "time": "2026-10-05T04:44:57.977Z"
+    },
+    {
+      "name": "Select en with card open",
+      "time": "2026-10-05T04:44:58.867Z"
+    },
+    {
+      "name": "Close card without choosing",
+      "time": "2026-10-05T04:44:59.135Z"
+    },
+    {
+      "name": "Open the nearby crossing again with E",
+      "time": "2026-10-05T04:44:59.816Z"
+    },
+    {
+      "name": "Read provenance disclosure",
+      "time": "2026-10-05T04:44:59.899Z"
+    },
+    {
+      "name": "Choose north side from the actual card",
+      "time": "2026-10-05T04:45:00.961Z"
+    },
+    {
+      "name": "Select zh with card open",
+      "time": "2026-10-05T04:45:01.143Z"
+    },
+    {
+      "name": "Continue walking after choice",
+      "time": "2026-10-05T04:45:01.888Z"
+    },
+    {
+      "name": "Hold ArrowRight for 300 ms, then release",
+      "time": "2026-10-05T04:45:02.108Z"
+    },
+    {
+      "name": "Reload the production document",
+      "time": "2026-10-05T04:45:03.330Z"
+    },
+    {
+      "name": "Select en",
+      "time": "2026-10-05T04:45:04.876Z"
+    },
+    {
+      "name": "Use the visible journey destination mitsui and walk there",
+      "time": "2026-10-05T04:45:05.032Z"
+    },
+    {
+      "name": "Open Mitsui with E",
+      "time": "2026-10-05T04:45:08.377Z"
+    },
+    {
+      "name": "Keep walking outside instead of adding the station clue",
+      "time": "2026-10-05T04:45:08.427Z"
+    },
+    {
+      "name": "Export the player field notes",
+      "time": "2026-10-05T04:45:08.716Z"
+    },
+    {
+      "name": "Click a visible unmarked pavement point",
+      "time": "2026-10-05T04:45:09.510Z"
+    },
+    {
+      "name": "Select zh",
+      "time": "2026-10-05T04:45:12.192Z"
+    },
+    {
+      "name": "Chinese journey control: walk to MUFG using the crossing",
+      "time": "2026-10-05T04:45:12.281Z"
+    },
+    {
+      "name": "Hold ArrowRight for 250 ms, then release",
+      "time": "2026-10-05T04:45:21.758Z"
+    },
+    {
+      "name": "Hold ArrowRight for 139 ms, then release",
+      "time": "2026-10-05T04:45:22.993Z"
+    },
+    {
+      "name": "Hold ArrowDown for 300 ms, then release",
+      "time": "2026-10-05T04:45:23.996Z"
+    },
+    {
+      "name": "Export Chinese field notes after the real Chinese choice",
+      "time": "2026-10-05T04:45:25.717Z"
+    },
+    {
+      "name": "Reload with a corrupt null save",
+      "time": "2026-10-05T04:45:26.707Z"
+    },
+    {
+      "name": "Reload with a corrupt primitive save",
+      "time": "2026-10-05T04:45:28.049Z"
+    },
+    {
+      "name": "Reload with a corrupt invalid-json save",
+      "time": "2026-10-05T04:45:29.238Z"
+    },
+    {
+      "name": "Reload with a corrupt invalid-game save",
+      "time": "2026-10-05T04:45:30.405Z"
+    }
+  ],
+  "network": [],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "screenshots": [
+    "/workspace/scratch/first-playable-evidence/final/first-playable-initial.png",
+    "/workspace/scratch/first-playable-evidence/final/first-playable-zh-initial.png",
+    "/workspace/scratch/first-playable-evidence/final/first-playable-zh-1280x720.png",
+    "/workspace/scratch/first-playable-evidence/final/first-playable-en-1280x720.png",
+    "/workspace/scratch/first-playable-evidence/final/first-playable-at-facade.png",
+    "/workspace/scratch/first-playable-evidence/final/first-playable-near-crossing.png",
+    "/workspace/scratch/first-playable-evidence/final/first-playable-en-card.png",
+    "/workspace/scratch/first-playable-evidence/final/first-playable-zh-card.png",
+    "/workspace/scratch/first-playable-evidence/final/first-playable-zh-choice.png",
+    "/workspace/scratch/first-playable-evidence/final/first-playable-zh-restored.png",
+    "/workspace/scratch/first-playable-evidence/final/first-playable-en-progress.png",
+    "/workspace/scratch/first-playable-evidence/final/first-playable-zh-bank.png",
+    "/workspace/scratch/first-playable-evidence/final/first-playable-zh-placeholder.png",
+    "/workspace/scratch/first-playable-evidence/final/field-notes-zh-mobile.png",
+    "/workspace/scratch/first-playable-evidence/final/field-notes-zh-print.png"
+  ],
+  "limitations": [
+    "Managed Chromium blocks file:// navigation. This run fulfills an allowed HTTP document directly from the exact bundle bytes and denies every secondary request; file:// launch is unverified.",
+    "Automation and agent visual review do not establish fresh-user comprehension, human art approval, or a real-world field walk."
+  ],
+  "simulationSourceSha256": "2d0c914280b238c1b6272c06c1828ebf957528013f665d98e58e5c9552856d84",
+  "frameIntervals": {
+    "sampleFrames": 90,
+    "medianMs": 16.700000000000273,
+    "p95Ms": 50,
+    "maxMs": 66.60000000000014
+  },
+  "interactionStatus": "browser chain executed; see individual checks",
+  "bodyText": "漫游\nTourGuideAI 旅行手记\n旅程的第一页\nEN\n中文\n↺\n旅程的第一页\n京都。\n四条通\n\n跟着好奇心走走，留下一段属于自己的旅程。\n\n一份小小的邀请\n从 四条乌丸路口 开始漫步\n\n第一次发现，就在前方。\n\n01\n四条乌丸路口\n认清方向\n02\n京都三井大厦\n读懂城市\n03\n三菱 UFJ · 京都支店\n做一个旅行选择\n旅行手记\n0 / 3\n保存旅行手记\n↗\n京都 · 四条通\n首个可玩版本 · 四条通一角\n旅程的第一页\n四条烏丸\n↑\nN\n点击人行道即可行走\nW A S D移动\nE查看地点\nEsc关闭卡片\n隐藏提示\n© OpenStreetMap contributors · ODbL\n这段旅程已保存在此设备上"
+}

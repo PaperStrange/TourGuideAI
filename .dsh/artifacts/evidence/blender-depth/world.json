@@ -1,0 +1,183 @@
+{
+  "WORLD": {
+    "bounds": {
+      "minX": 0,
+      "maxX": 64,
+      "minY": -25,
+      "maxY": 15
+    },
+    "roadCenterY": -8.99,
+    "northFacadeY": 4.66,
+    "southFacadeY": -19.8,
+    "roadSurface": {
+      "northY": 1.68,
+      "southY": -16.879,
+      "valueKind": "authored",
+      "basis": "Presentation bounds inset 0.65 m from mapped crossing endpoints on sidewalk centrelines; these are not observed kerbs."
+    },
+    "spawn": {
+      "x": 23.8,
+      "y": 2.1,
+      "valueKind": "authored"
+    },
+    "crossing": {
+      "x": 20.721,
+      "northY": 2.33,
+      "southY": -17.529,
+      "width": 2.6,
+      "widthKind": "authored"
+    },
+    "buildings": {
+      "north": {
+        "nameJa": "京都三井ビルディング",
+        "name": {
+          "en": "Kyoto Mitsui Building",
+          "zh": "京都三井大厦"
+        },
+        "osmId": 205732558,
+        "minX": 16.522069,
+        "maxX": 58.329294,
+        "yFrom": 4.659507,
+        "yTo": 4.770448
+      },
+      "south": {
+        "nameJa": "京都ダイヤビル",
+        "name": {
+          "en": "Kyoto Daiya Building",
+          "zh": "京都钻石大厦"
+        },
+        "osmId": 205732536,
+        "minX": 17.526173,
+        "maxX": 35.691321,
+        "yFrom": -19.969317,
+        "yTo": -19.747436
+      }
+    }
+  },
+  "DOORS": [
+    {
+      "id": "D-N1",
+      "x": 18.1875,
+      "y": 4.6875,
+      "side": "north",
+      "valueKind": "authored",
+      "tenant": null
+    },
+    {
+      "id": "D-N2",
+      "x": 21.5625,
+      "y": 4.6875,
+      "side": "north",
+      "valueKind": "authored",
+      "tenant": null
+    },
+    {
+      "id": "D-N3",
+      "x": 24.9375,
+      "y": 4.6875,
+      "side": "north",
+      "valueKind": "authored",
+      "tenant": null
+    },
+    {
+      "id": "D-N4",
+      "x": 28.25,
+      "y": 4.6875,
+      "side": "north",
+      "valueKind": "authored",
+      "tenant": null
+    },
+    {
+      "id": "D-N5",
+      "x": 31.625,
+      "y": 4.6875,
+      "side": "north",
+      "valueKind": "authored",
+      "tenant": null
+    },
+    {
+      "id": "D-N6",
+      "x": 35,
+      "y": 4.6875,
+      "side": "north",
+      "valueKind": "authored",
+      "tenant": null
+    },
+    {
+      "id": "D-N7",
+      "x": 38.3125,
+      "y": 4.6875,
+      "side": "north",
+      "valueKind": "authored",
+      "tenant": null
+    },
+    {
+      "id": "D-S1",
+      "x": 19.3125,
+      "y": -19.9375,
+      "side": "south",
+      "valueKind": "authored",
+      "tenant": null
+    },
+    {
+      "id": "D-S3",
+      "x": 26.625,
+      "y": -19.875,
+      "side": "south",
+      "valueKind": "authored",
+      "tenant": null
+    },
+    {
+      "id": "D-S5",
+      "x": 33.875,
+      "y": -19.75,
+      "side": "south",
+      "valueKind": "authored",
+      "tenant": null
+    }
+  ],
+  "TARGETS": [
+    {
+      "id": "crossing",
+      "x": 20.721,
+      "y": 2.33,
+      "modelled": true,
+      "originalJapaneseName": "四条烏丸交差点 東側横断歩道"
+    },
+    {
+      "id": "mitsui",
+      "x": 32,
+      "y": 3.2,
+      "modelled": true,
+      "originalJapaneseName": "京都三井ビルディング"
+    },
+    {
+      "id": "mufg",
+      "x": 24.7,
+      "y": -18.5,
+      "modelled": true,
+      "originalJapaneseName": "三菱ＵＦＪ銀行 京都支店"
+    },
+    {
+      "id": "D-S1",
+      "x": 19.3125,
+      "y": -19.9375,
+      "modelled": false,
+      "originalJapaneseName": "京都ダイヤビル"
+    },
+    {
+      "id": "D-S3",
+      "x": 26.625,
+      "y": -19.875,
+      "modelled": false,
+      "originalJapaneseName": "京都ダイヤビル"
+    },
+    {
+      "id": "D-S5",
+      "x": 33.875,
+      "y": -19.75,
+      "modelled": false,
+      "originalJapaneseName": "京都ダイヤビル"
+    }
+  ]
+}

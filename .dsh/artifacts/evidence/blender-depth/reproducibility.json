@@ -1,0 +1,8 @@
+{
+  "command": "/usr/bin/blender -b --python iteration/experiments/blender-depth/build_scene.py -- --output-dir /workspace/scratch/blender-depth-repro --skip-render",
+  "scriptSHA256": "04ccfa4c902d60575892c98d7510d7cbf244ec167d4798ec741d0e534daec090",
+  "originalGLBSHA256": "52fb13711fd2fdf3e63f244c5a42e871e15dc903a845120bcbc7ce1c4116f47d",
+  "repeatGLBSHA256": "52fb13711fd2fdf3e63f244c5a42e871e15dc903a845120bcbc7ce1c4116f47d",
+  "glbByteIdentical": true,
+  "scope": "GLB exact bytes from two fresh Blender runs on installed4.3.2. Does not claim .blend or noisy CPU render byte reproducibility."
+}

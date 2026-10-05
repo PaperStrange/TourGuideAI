@@ -23,6 +23,43 @@
 `iteration/design/sow-iteration-log.md` | **本文件的讨论与裁决记录（9 人评审，C1–C27+）** |
 `iteration/design/stage-tracker.md` | 阶段追踪（只记外部证据） |
 `iteration/design/file-ownership.md` | 一个文件一个 owner + 派单前检查 |
+`iteration/design/delivery-board.md` | 当前团队、分阶段 sprint 计划与决策状态 |
+`iteration/design/first-playable-brief.md` | 首个可玩里程碑的美术质量、交互流畅度与英中界面验收 |
+
+---
+
+## 0a · 当前用户裁定（2026-10-05）
+
+**来源：本次对话。用户接受推荐方案，并明确补充：**
+> "Use recommended option. For player guidance, objectives and contextual control s are displayed in two languages suite, English and Chinese cause China is just one target market here. Plus, the comments on first playable milestone I'd like to leave are about the validations of high-quality performed art design and the interaction fluency."
+
+**这次裁定优先于下文保留的历史提案与实验限制；不改写原始产品目标。**
+
+- **美术路线**：精细、可辨认真实京都街道的风格化 2.5D。先提交有来源依据的目标画面与交互分镜，再制作对应的实际可玩场景。
+- **首个可玩里程碑**：先完成较小而精致的街区和一个完整、有来源的地点交互；之后完成 Gate 1 的 12 地点目标。地点按有实际内容与可核进入方式的真实目的地计，同楼重复门与「内容开发中」占位不充数。
+- **首个里程碑的两项重点**：**实际呈现的高质量美术 + 实际操作的交互流畅度，必须分别通过。** 概念图只能通过美术方向评审，不能证明游戏实现质量；能移动、能打开卡片也不等于交互流畅。
+- **目标与情境操作提示**：提供**英语、中文两套完整界面**，面向多个市场。允许清楚的目标和情境提示；历史 P1 的「不许提示语」限制不再是产品验收要求。日文实景招牌与有来源的地名保持真实，界面语言不改写事实、不自动解锁学习内容。
+- **排期与资源**：采用质量优先、按里程碑推进的方式，先用现有/免费素材；未指定发布日、付费额度或实地测试人员，不能把这些记为已落实。
+- **实地成功标准**：初次到访者可依导出攻略完成约定路线与活动，无须额外查资料或找地陪；分别记录事实错误、放弃动作与信心反馈，不能把停顿或切 App 自动等同于害怕。
+
+**实现默认方案（团队选择，不冒充用户逐字要求）**：英语/中文可切换，切换保留游玩与交互状态；评审材料展示两种语言。两套目标、操作提示、相关状态与反馈需语义一致、无截断、无缺字；不要求每行同时堆放两种语言。
+
+**验收分工**：美术/UX 交付目标与实现对照，客户端 owner 交付实际交互；QA 独立复核，两种语言都在真实浏览器演示；用户判美术与整体手感。具体失败条件见 [first-playable-brief.md](first-playable-brief.md)，排期见 [delivery-board.md](delivery-board.md)。当前是需求裁定，**不是已实现、已实测或已通过的声明**。
+
+---
+
+## 0b · 下一迭代主目标：更鲜活、更立体（2026-10-05）
+
+**用户新增方向**："could we enhance the website experience by making it feel more vivid and three-dimensional? Conduct some technology research and consider using Blender for generating and rendering art assets, treat it as an iteration's main target"
+
+- 下一迭代优先验证**真实可见的空间深度、材质与光影、克制的环境动态，以及保持流畅的操作**。此项排在扩充地点数量和完整攻略功能之前；原产品目标与事实纪律继续有效。
+- **Blender 是本轮重点调研的资产制作/离线渲染工具**，不预先把它当作浏览器运行时。比较 Blender 预渲染素材配合现有 2.5D、Blender → glTF/GLB → 浏览器实时 3D，以及混合方案。
+- 允许在独立实验中重新评估渲染技术；既有 melonJS 首个可玩版保留为行为与视觉对照。调研结论、实际浏览器证据与迁移决定分别记录，不因一张 Blender 渲染图就宣称游戏升级完成。
+- 继续保留英语/中文目标与情境操作、真实地名、来源与到访状态分离、保存/导出能力，以及美术质量和交互流畅度的分别验收。
+- 实验只使用现有街区，不扩张为自由漫游整座城市、未核实的内部空间或新的到店事实。新增高度、背面、材质等为创作表达，需在资产记录中标明。
+- **首个发布版本的镜头已获用户认可**（2026-10-05）："Guided 3D view is okay for the first launched version." 采用引导式 3D 视角；团队方案为受限旋转/缩放与恢复视角。具体构图、跟随和遮挡行为在首个整合交互中验证。
+
+调研与迭代判据见 [blender-depth-research.md](blender-depth-research.md)。这是新的工作优先级，**不是对首版美术的最终认可，也不是对 3D 版本完成的声明**。
 
 ---
 
@@ -323,7 +360,9 @@ S14 的 minSouthMarginM       = 11.02    <- L228，minSouth 来自 L144-157 的�
 | **玩家数** | **1 人**（Gate 1）；多人 = S4，**不得插队** |
 | **离线** | **攻略必须能离线看**——这是核心承诺，**不是可以卖的功能**（见 §9） |
 
-### 6.2 技术架构 —— ⚠️ **一处不一致，用户待裁**
+### 6.2 技术架构 —— 历史分歧与后续选型
+
+> **当前选型已由用户授权团队决定：melonJS 为地基、Phaser 为备选，见 [foundation-research.md](foundation-research.md) §5。下面保留早期架构分歧，不再是待用户选择引擎的请求；是否集成成功仍需实际验证。**
 
 **文档声明**（`design-core.md` L295 / L244 / L202）：
 > **Vite + React 18 + Phaser 4.2.1 + 单一事件总线 + 整数 tick 时钟 + IndexedDB 存档 + 命令日志回放 + 调试覆盖层**
@@ -428,7 +467,7 @@ index.html（418,897 B）                   Phaser 0 · WebGL 0 · requestAnimat
 
 ### 6.5 语言
 `design-core.md` **L108**（逐字）：**「实测修正（2026-09，client-engineer）：世界文字不能用字体，必须用位图字形图集。」** 那一段讲的是 **harfbuzzjs WASM 651,027 B + 全量源字体 2,793,024 B ≈ 3.4 MB 的字体成本**——**与"区域声明"无关**。
-玩家面向中文；招牌上的日文是**沉浸素材**（`時`/`駅`/`線` 等）。
+**当前裁定见 §0a：玩家目标市场包含英语与中文受众；目标和情境操作提示提供英语、中文两套界面。** 招牌上的日文是**沉浸素材**（`時`/`駅`/`線` 等），界面本地化不改变实景文字或事实。
 
 > 〔修订史 A10〕本节写过一句假引用，已删——抓出者：review-src-jp。
 
@@ -481,6 +520,8 @@ index.html（418,897 B）                   Phaser 0 · WebGL 0 · requestAnimat
 | **「你不让任何引导层持久化散文；存句子等于让过期的营业时间穿上友好的外衣。」** | 与事实层的时效纪律同源。**⚠️ 而它在 §8.2 里是三句纪律中唯一没有机械形式的**（`play-systems-designer` 自己指出），**所以它此前不可失败。** 它给了三段可机械的检查（写在 `play-systems.md` §2.1）：<br>**(a) 静态白名单**——首帧与 S1–S4 的字符串字面量 **⊆ `ALLOWED_UI_STRINGS`**（闭集，住在被跟踪的 `bake-viewer.mjs`），每条带类别 + 来源；**闭集里没有"祈使句"这一类 ⇒ 想加"按 E 开门"，diff 上无处安放**<br>**(b) 动态集合比较**——`t=0` 渲染出的字符串 \ 白名单 **⊆ payload 里逐字存在的值**（纯读，不跑实验）<br>**(c) 差分烘焙**——**用另一份 payload 再烘一次**，比较两次 `t=0` 的字符串集合：**变了的 = 事实层派生（合法）；没变的必须在白名单里；不在白名单又没变 = 持久化散文，判失败**<br>**⇒ 而 (c) 有现成入口，不需要新增工具**：`bake-viewer.mjs --doors --opener --out` 与 `check-viewer.mjs --doors/--places/--opener` 已存在（viewer README 的两个 fire drill）。**⇒ 所以不要写"这需要一次受控改动"——写成"两次烘焙 + 集合比较"，它就从"听起来很贵所以会被跳过"变成"顺手就做"。**<br>**检验者**：执行 = `export-guard`（它拥有 bake 与那三个脚本）；判读 = `fact-verifier`。**它仍然不是门**（R2′ 第五类）。<br>**而 (c) 的 fixture 契约本身是副产品检查**：fixture 必须改掉四个信息位可能显示的**每一个**事实层字段（名称 ja/zh · `source_url` · `verified_at` · `valueKind` · 三个分母 · 位置与距离）。**若列不出这些字段，说明信息位规格本身还不完整。**<br>**⚠️ 而 `play-systems-designer` 给它加了一条防伪条件，必须写明**：**那份字段清单必须【从渲染路径里抽出来】，不得手写。** **方向必须写明：宁可过宽。** **过宽只会让差分里"变了"的集合变大（无害）；过窄才会让一条硬编码顶替掉一个事实层字段——而那正是要抓的。** **理由：手写的清单会变成一张可以凑的表，而凑长它并不等于规格完整。**<br>**而它把丑话说在前面**：「**若 `export-guard` 列出的字段比我 §1.4 写的多，那是我漏了——那正是我要的那种反馈，不是它的错。**」 |
 
 ### 8.6 P1 的首帧规格（`play-systems-designer`，Lead 已核其算术）
+
+> **2026-10-05 更新：本节保留历史 P1 实验规格。§0a 已批准英中两套明确目标与情境操作提示，故下文「删除 E 提示」/裸版实验不再限制产品实现。30 秒意图探针也不能替代首个可玩里程碑的美术质量与交互流畅度验收。**
 
 **⚠️ 出生点：不换坐标，换【来源】**（`play-systems-designer` 的判断；**我上一轮说"已移到实现判据"而它在字节上不存在——`SPAWN` 与 `xStart` 当时在全文各出现 0 次，它复核抓出**）
 两条算术理由：**① 换 x 修不了首帧**——街上 `row ≥ 19` 最早出现在 **`x = 700 m`**，而 10 扇门全在 `x = 18..38` ⇒ **街上任何位置在 zoom 2 都看不见门**；**空是"垂直 13 行 > 可见 11 行"造成的，不是一个位置的属性。② `x = 0` 有可指认的身份**——它就是冻结的 `ORIGIN`，契约定义为四条烏丸。**它缺的不是位置，是形态：它的值【继承】自"沿街走通"那条断言的 `xStart = 0` 默认值。**
@@ -593,6 +634,8 @@ next     := argmin{ 格距 : a ∈ eligible }     // eligible = ∅ 时退回全
 
 ## 10 · 交接与验收
 
+> **首个可玩里程碑另需同时通过 §0a 的美术质量、交互流畅度及英中界面验收，见 [first-playable-brief.md](first-playable-brief.md)。下方历史机械读数不代表这些项目已通过。**
+
 ### 10.1 交付物 × 验收（**五列：这是本文件的主表**）
 
 > **形状取自标准 SOW 的验收表**（英国 Contracts Finder 的列名：`Outcome | Sub Deliverable/Description | Acceptance criteria | Accepted by | Achieved by`）。
@@ -606,7 +649,8 @@ next     := argmin{ 格距 : a ∈ eligible }     // eligible = ∅ 时退回全
 | **事实层的每一个数有来源** | `places.json` · `transit.json` · `pack.json` | **每个值能指到 `source_url` + `verified_at` + `valueKind`**（`D-1`）· `validate-city-pack-v2` **16/16** · 幂等（`build-pack` 跑两次同哈希） | `pack-curator` → **`fact-verifier`（不同人）** | `pack-curator` |
 | **一键生成攻略** | `emit-guide.mjs` → `guide.json` | 导出物**不含游戏内时钟**（`D-3`：可写"16:00 关门"，**不得**写"你有 10 小时"）· `assert-export-boundary` 过 | `export-guard` → `fact-verifier` | `export-guard` |
 | **回忆录** | 未开工 | **0 行**——**今天不存在判据** | — | — |
-| **一次真人走通**（Gate 1 第 4 条） | 录入 + 记忆 + 一次真人产物 | **P1 的 2×2**：30 秒内知道做什么 · 第一次按键有回应 · 按键日志可导出 · 两变体各跑一次 · 缺录屏 | **用户**（唯一不知情的受试者） | `export-guard`（实现）+ `play-systems-designer`（规格） |
+| **P1 浏览器首次使用**（不等于实地走通） | 实际浏览器、首次使用记录与输入反馈 | 30 秒内知道做什么、第一次按键有回应；英中分别验证；90 秒赏金探针是诊断项；不替代 §0a 美术与流畅度验收 | QA 独立观察 + 未被讲解的新受试者；用户仍判产品质量 | 客户端 owner + game design |
+| **一次真人实地走通**（Gate 1 第 4 条） | 导出攻略 + 真实路线使用证据 | 按 §0a 完成约定路线和活动；见 `gate1-acceptance.md` 与 `delivery-board.md` SP6；当前未完成 | QA 整理独立实地证据，用户验收 | World/content + 实地参与者；lead 安排人员与日期 |
 | **"不因文化差异害怕"** | §3 的三条机械判据 | **A 类 · 攻略的数**（判据 2 · ④）→ **今天红**（`D-53`/`L09`）· **B 类 · 人的行为**（判据 1 · 3）→ **今天未测** | `fact-verifier` | `play-systems-designer` |
 | **框架不越界** | 17 道门 | `run-gates.mjs` **17/17，无 skip** · 每条门能报出**它拦下过什么**（`R2′`） | **Lead** | `geo-contract`（几何）· `export-guard`（页面）· `pack-curator`（数据） |
 
@@ -636,7 +680,9 @@ next     := argmin{ 格距 : a ∈ eligible }     // eligible = ∅ 时退回全
 > **⇒ 已搬至 [`engineering-rules.md`](engineering-rules.md)**（2026-10-03，整段逐字搬出）。
 > **理由**：它是全文最长的一节（237 行），而"SOW 自己的规则"不是 SOW 的一节——它管【怎么造】，不造【造什么】。
 
-## 12 · ⚠️ 待用户裁定（**本文件不替用户决定**）
+## 12 · 历史待裁项与后续裁定（**本文件不替用户决定**）
+
+> **当前状态更新（2026-10-05）**：① 引擎已按用户授权选型，见 §6.2；⑤ 实地成功语义已按 §0a 确认，下面保留旧讨论，不能重新当作未回答的问题。已批准的首个里程碑与英中提示同以 §0a 为准；未指定的具体日期、预算和测试人员仍待落实。
 
 | # | 问题 | 选项 | 谁提出 |
 |---|---|---|---|

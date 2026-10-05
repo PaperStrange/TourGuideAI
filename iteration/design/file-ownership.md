@@ -28,6 +28,21 @@
 **`city-packs/kyoto-shijo/evidence/`** | task-10, 12, 14 | **`pack-curator`** | ✅ |
 **`city-packs/kyoto-shijo/places.json`** · `transit.json` · `pack.json` | task-10, 12, 14 | **`pack-curator`** | ✅ |
 **`iteration/tools/run-gates.mjs`** | 多张卡 | **`lead`** | ✅（成员不得自行改门数） |
+**`iteration/design/delivery-board.md`** | task-SP0 (2026-10-05 SOW delivery planning) | **`lead`** | ✅ 当前计划、澄清状态与 sprint 索引；专业 agent 只读评审，不共享写权限 |
+**`iteration/design/first-playable-brief.md`** | task-SP1 (2026-10-05 first playable definition) | **`art-ux`** | ✅ 当前 `art_ux` agent 唯一写入；game design / QA 给判据、只读评审；不转移既有客户端或事实层文件的所有权 |
+**`iteration/game/package.json`** · `iteration/game/package-lock.json` · `iteration/game/vite.config.js` · `iteration/game/src/game.js` · `iteration/game/src/simulation.js` · `iteration/game/src/scene-config.js` | task-SP2-runtime | **`engineering`** | 新隔离运行时；不改变旧 viewer / geo 文件所有权 |
+**`iteration/game/src/render-world.js`** · `iteration/design/visual-target.md` | task-SP2-art | **`art-ux`** | 新场景绘制与目标说明；`iteration/game/public/art/` 新素材逐项由此角色交付 |
+**`iteration/game/src/content.js`** | task-SP3-content | **`world-content`** | 新切片消费数据；`iteration/game/public/content-evidence/` 来源快照由此角色交付，不改旧 city-pack |
+**`iteration/game/src/i18n.js`** | task-SP3-localization | **`product-design`** | 英中界面文案与插值 |
+**`iteration/game/index.html`** · `iteration/game/src/app.js` · `iteration/game/src/styles.css` · `iteration/game/README.md` · `iteration/game/.gitignore` | task-SP3-integration | **`lead`** | 页面整合、可访问界面与使用说明 |
+**`iteration/game/src/assets/kyoto-sans.woff`** · `iteration/game/src/assets/NOTO-LICENSE.txt` · `iteration/game/src/assets/THIRD-PARTY-NOTICES.txt` | task-SP3-fonts | **`lead`** | 离线英中字体子集与随包授权声明 |
+**`iteration/tools/gate-artifact-layout.mjs`** | task-SP3-integration | **`lead`** | 明确登记 authored game entry HTML；保持来源快照与派生产物规则 |
+**`iteration/design/blender-depth-research.md`** · `iteration/experiments/blender-depth/README.md` | task-V3D-research | **`lead`** | 下一迭代立体表现目标、技术评估与阶段计划 |
+**`iteration/experiments/blender-depth/build_scene.py`** | task-V3D-art-spike | **`art-ux`** | Blender 可复现小场景与导出；研究产物写入 workspace scratch，不覆盖首个可玩版 |
+**`iteration/experiments/blender-depth/package.json`** · `package-lock.json` · `probe.mjs` | task-V3D-runtime-spike | **`engineering`** | 独立 glTF 浏览器验证，临时页面/资产写入 scratch；现有 game 运行时保持原样 |
+**`.dsh/artifacts/evidence/blender-depth/`** 本次复制的 Blender/浏览器 PNG 与 `metrics.json`、`world.json`、`build-report.json`、`qa-result.json`、`reproducibility.json`、`qa-runner.cjs` | task-V3D-research-evidence | **`lead`** | 原样保留最终研究证据与执行器专用 QA 脚本；不把静态资产实验算作可玩版本验收 |
+**`iteration/design/first-playable-result.md`** | task-SP3-review | **`qa-release`** | 独立浏览器验收记录；`iteration/game/qa/` 临时验证代码由此角色独占 |
+**`.dsh/artifacts/evidence/first-playable/`** 本次交付的 `browser-result.json`、`manifest.json`、15 张 PNG 与英中 `played-field-notes-*.html` | task-SP3-delivery | **`lead`** | 从 QA 最终构建记录原样复制的交付证据；不把截图/技术检查标记为用户验收 |
 **`iteration/design/door-type-model.md`** | task-19 | **`doors-author`** | ✅（**门类型分类的扩展点**；§7 是"新增一个门类型"的更新路径，**所以下一张分类卡会想改它**——无主即是 §5 所说的下一个冲突种子） |
 **`city-packs/kyoto-shijo/kyoto-shijo-osm.json`** | task-20 | **`doors-author`** | ✅ **`doors-author` 于 2026-10-03 报领**（它持有门的 ODbL 记录；§4：首次出现的文件由产物所属角色认领）。**它一直是事实层 ODbL 分表（GAP-6）的半边，此前无行**——又一个"没有 owner 的文件是下一个冲突的种子"的实例。 |
 **`iteration/viewer/`**（含 `index.html` 与 `scene-data.js`） | task-17 | **`export-guard`** | ✅（**`index.html` 是 `baked-page`，忽略且由 `bake-viewer` 重烤**） |

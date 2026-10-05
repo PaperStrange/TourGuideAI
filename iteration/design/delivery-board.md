@@ -1,99 +1,278 @@
-# 交付看板（Delivery board）
+# Delivery board · TourGuideAI 2.5D
 
-> **这份文件是"当前目标 ↔ 团队分工 ↔ 实测状态 ↔ 卡在哪"的单一入口。**
-> 存在理由：GUI 的 Team panel 只对当前会话可见，而**仓库里没有任何一处能回答"现在在做什么、谁在做、卡在哪"**。这是登记册里 D-06/D-07/D-08 的同一类缺陷——**状态只在某个人脑子里，而那个人会换**。
->
-> **更新规则**：每次共享任务状态变化时更新本文件。
-> **本文件只做索引**：判定在门与登记册里，这里只给**命令与结论**。**抄了判断的看板会变成下一条"文档承诺 ≠ 仓库实况"（D-07）。**
+Updated 2026-10-05. Owner: lead. Planning baseline: `origin/iteration` at
+`eae982f4ba20a107bf21a35b70f635b4935a4c70`.
 
-**最后更新**：2026-09-30 · `iteration` = `76ebfc2` · **门 15 道**
+**Status: recommended options approved on 2026-10-05, with English/Chinese guidance
+and explicit art-quality/interaction-fluency acceptance.** The user's current
+decisions are recorded in [SOW §0a](SOW.md#0a--当前用户裁定2026-10-05).
+**Latest priority:** the user requested a more vivid, three-dimensional experience
+and Blender technology research as the next iteration's main target. See
+[SOW §0b](SOW.md) and the [3D/Blender research and iteration plan](blender-depth-research.md).
+The V3D iteration below takes priority over full-guide work and destination expansion.
+SP0 clarification is complete. SP1–SP3 now have an implemented, runnable first
+playable in [`iteration/game/`](../game/README.md): detailed street art, three
+sourced encounters, English/Chinese guidance and player-derived field notes.
+The delivered build passed **44/44 browser checks** and **17/17 existing repository
+gates**, with no browser errors or required secondary network requests. Independent
+art and product review found no remaining blocking defect in the final captures.
+User art/fluency acceptance and fresh-user evidence remain pending; implementation
+and technical verification do not substitute for those decisions. Direct `file://`
+launch is unverified because managed Chromium blocks that scheme; exact bundle
+bytes were exercised over HTTP with every secondary request denied.
 
----
+### First-playable delivery · 2026-10-05
 
-## 一 · 总目标
-
-**把项目从"调研与契约"推进到 Gate 1 的可验证结果：一支真人在京都四条通上按游戏导出物走通一次。**
-
-**Gate 1 的原文定义**（`design-core.md` L341 / L355，**引用而非转述**）：
-> **一条街 + 12 个可进入地点 + 可走的 2.5D + 一次真人走通**
-> 且 **2 km 走廊 = 派生几何**（攻略路线 + 可走网格）；**Gate 1 手作美术 = 一个 40 m 街区**
-
-| 项 | 状态 | 证据 |
+| Outcome | Delivered evidence | Status |
 |---|---|---|
-**① 一条街** | ✅ **达成** | 224 栋发射（171 裁剪）· 轴线覆盖 **81.1%** · `S14` 最小北侧余量 **9.13 m** · 第 13 道门从字节独立可读 9/9 |
-**② 12 个可进入地点** | ⚠️ **机械部分达成，可进入性 0/12** | 门 **21/21** 断言过 · 但 **ENTERABLE 0/12**（**D-40/D-42**）· **12 个位置 0 个被观察** |
-**③ 可走的 2.5D** | ✅ **达成** | 走者从 **x=0 到 x=1599**，1600 步 0 次偏离中线 · 1600 个位置 0 个在阻挡格上 · 两次渲染逐字节相同 |
-**④ 一次真人走通** | ❌ **未做** | **只能人判**：见 `gate1-acceptance.md` §1 第 4 项 |
+| SP1 visual proposal | Actual-size EN/ZH opening, approach, card and choice captures; [visual record](visual-target.md) | Implemented proposal reviewed by agents; user art approval pending |
+| SP2 rendered block | melonJS street, character, facade depth, mapped crossing, reduced motion and resized laptop layout | Browser-verified; source/fact versus authored-art boundaries retained |
+| SP3 meaningful loop | Three sourced encounters, useful cash-service choice, bilingual guidance, clear pause/close/resume, honest south placeholders | 44/44 browser checks; [QA result](first-playable-result.md) |
+| Early SP4 support | Save/resume, distinct choices, player-derived offline field notes | Demonstrated preview; full travel-ready guide and memoir scope remain open |
+| Product acceptance | Implemented art quality, interaction fluency and fresh-user next-action probe | Awaiting actual user review; no invented tester or pass |
 
-**完整的可核验判据见 `iteration/design/gate1-acceptance.md`**——它把"机械可判"与"只能人判"**分成两栏**，因为把后者伪装成前者正是本项目要防的。
+Runnable source and commands: [game README](../game/README.md). Exact build and
+source hashes: [delivery manifest](../../.dsh/artifacts/evidence/first-playable/manifest.json).
+This delivery does not complete the full Gate 1 street, twelve destinations or
+real-world field walk. The user's new depth/vividness request is the actionable
+direction for the next iteration; it does not retroactively approve the first artwork.
 
----
+### Current iteration · V3D, a vivid three-dimensional Kyoto
 
-## 二 · 分工（共享任务板实况，**task-1…17 全部完成**）
+Main outcome: the same small block gains convincing volume, materials, lighting
+and restrained life while preserving fluent play and complete EN/ZH guidance.
+Recommended research route: Blender → GLB → Three.js browser rendering with the
+existing HTML UI and journey state. Final runtime adoption follows the bounded
+proof and an integrated encounter; the current playable stays available as baseline.
 
-| 卡 | 主题 | owner | 状态 |
+**V3D-0 complete:** Blender 4.3.2 generated a reproducible 5.29 MB GLB; the live
+Three.js proof passed 24/24 independent technical checks, including EN/ZH camera
+controls and graphics-failure recovery. [Evidence and limits](blender-depth-research.md#final-browser-evidence)
+are recorded separately from gameplay and art/fluency acceptance. V3D-1–3 remain
+planned; software-rendered cloud cadence is not a performance pass.
+
+| Sprint | Owner | Deliverable and exit |
+|---|---|---|
+| V3D-0 · Technical/art feasibility | Engineering + art, QA independent | Complete: reproducible Blender scene/export, browser proof, cost/material/axis checks and written recommendation; research does not count as integrated gameplay |
+| V3D-1 · Camera contract and art kit | Engineering + art + world/content | Graybox encounter proves camera/input/picking/occlusion before modular assets, lighting and player animation are polished; actual-size direction review |
+| V3D-2 · Playable integration | Engineering + design | Same three encounters, constrained camera, picking/collision/occlusion, EN/ZH cards, preserved saves and note choices |
+| V3D-3 · Polish and acceptance | QA + art + design + user | Restrained ambient life, hardware/performance and offline/fallback evidence, full bilingual walkthrough, separate user art/fluency acceptance |
+
+The user approved guided 3D for the first launched version on 2026-10-05. The
+camera uses a three-quarter view with limited orbit/zoom and reset; framing and
+player-follow behavior are validated in V3D-1. Scope excludes city expansion, invented
+interiors, new venue facts and multiplayer. Performance thresholds are provisional
+until measured on named target hardware. Detail and primary sources are in the
+[research document](blender-depth-research.md).
+
+## 1. Product goal and established decisions
+
+The product is a browser game where a player explores real Japanese cities,
+makes travel choices, receives an itinerary reflecting that play, follows it in
+Japan, and adds real photos to a memoir. The complete goal includes 3–5 cities
+and playing with friends; Gate 1 is a smaller validation milestone.
+
+Carry forward these decisions without asking again:
+
+- Art direction and legibility first, mechanics design second, implementation
+  follows the design. A good-looking but invented street does not meet the goal.
+- First city: Kyoto; first street: Shijo. Gate 1: one street, 12 enterable places,
+  playable 2.5D and a real-world walk. The approved first milestone is a smaller
+  polished block with a complete, source-backed encounter. Count real destinations
+  with meaningful content and evidenced access; repeated doors and placeholders
+  do not inflate the count. The interim demo does not complete Gate 1.
+- Detailed, recognizable stylized 2.5D is approved. The first playable must pass
+  both high-quality implemented art and fluent interaction review, independently.
+- Desktop-first gameplay, English/Chinese guidance and Japanese world signs. Exported guides
+  must be phone-readable, printable and usable offline. Touch gameplay is outside
+  the current scope.
+- Source-backed facts belong to the city pack. Narrative cannot invent places,
+  opening hours, prices or transport. Unknowns stay unknown; mandatory trip facts
+  must be resolved before declaring a route independently usable.
+- Keep the existing three south-side placeholder interactions until their
+  representation is repaired; they do not count as finished venue experiences.
+- The official long-description field was already approved by the user. Preserve
+  text, provenance and attribution; implementation details do not reopen approval.
+- Latest recorded engine decision: melonJS, Phaser fallback, in an isolated
+  `iteration/game/` workspace. Engine selection was delegated by the user.
+- No deadline-pressure mechanic in the initial slice without sourced constraints
+  and a visible recovery option. Game-clock values never become travel facts.
+- No community feed or imported third-party review corpus in the planned slice.
+  No mandatory live LLM calls. Offline guide access cannot become a paid feature;
+  selling time shortcuts would violate the real-cost contract.
+
+Sources: [SOW](SOW.md) §§1–6, 9, 12; [design core](design-core.md) §§7–8;
+[foundation decision](foundation-research.md) §§5–6;
+[placeholder contract](../viewer/opener-contract.md).
+
+## 2. Evidence baseline, not percent complete
+
+| Area | Current evidence | Planning consequence |
+|---|---|---|
+| Existing technical checks | On 2026-10-05, `node iteration/tools/run-gates.mjs --json` passed all 17 current checks, no skips, in a fresh worktree at the baseline commit; no tracked files changed | Preserve useful coverage; green checks do not approve art, fun or field accuracy |
+| Player comprehension | [P1 trial](p1-trial-01-result.md) records failure: participant could not understand the scene or goal | Retest after the visual/design correction; older “untested” status summaries are stale |
+| Visual/runtime at planning baseline | Historical baker has `TILE_ASSETS = null`; the independent `iteration/game/` playable was subsequently delivered above | Keep baseline history distinct from the new playable and the V3D research proof |
+| Places and doors | [Status §7.1](status.md) distinguishes 12 budget slots, 10 authored doors, 7 supported north recesses and no confirmed door-to-tenant mapping | Never count door markers as distinct real experiences; source and scope decide what can ship |
+| Player-derived itinerary | [Emitter](../tools/emit-guide.mjs) explicitly exports a fixed curated chain; current page exports a key log | A journey-to-guide feature still needs implementation and acceptance |
+| Save/memoir | Current visit state is in memory; real-photo memoir loop not implemented | Persistence and photo return are explicit roadmap deliverables |
+| Fact quality | Known D-53/L09 duration and coordinate classification issues are recorded in [status](status.md); sparse hours/transport facts | Reconcile against current source, then correct before the field route; technical checks alone do not close them |
+| Physical validation | No accepted Kyoto field walk is recorded | Final real-world claim waits for a human route test |
+
+Source files were reviewed at the immutable baseline above. SOW SHA-256:
+`0991dad212510f76da205f53235f3e3836ede5e2960a74d8cdce89dd43d39fcd`.
+Current counts are baseline observations, not fixed acceptance totals.
+
+## 3. Team and decision rights
+
+Five specialist agents were convened for the initial planning review; lead is the
+sixth role. That review was read-only, with dependencies discussed directly between
+roles. The same team subsequently implemented and independently reviewed the first
+playable and V3D-0 proof under the ownership table. Historical closed source-review
+teams were not restarted.
+
+| Role / agent | Accountability | Delivery and independent review |
+|---|---|---|
+| Producer / lead | Scope, priorities, sprint board, integration, decision log | Maintains this board; user resolves product tradeoffs |
+| Game design / `product_design` | Core loop, choices, onboarding, reward and pacing | Supplies mechanics and playtest intent; art/QA challenge comprehension and outcomes |
+| Art direction + UX / `art_ux` | Reference frame, asset language, scene composition, English/Chinese UI, first-playable brief | Delivers visual design; user judges direction and implemented quality, QA observes real-browser readability/fluency |
+| Technical direction / `engineering` | Runtime, controls, camera, persistence, journey/export integration | Supplies code and technical evidence; QA independently checks behavior |
+| World + content / `world_content` | Real geography, entrances, venue content, source/rights records | Supplies sourced city content; QA independently checks release-route claims |
+| QA + playtest / `qa_release` | Regression, browser observation, usability and field acceptance | Does not self-approve authored runtime/content; lead resolves defects, user accepts product |
+
+Before implementation, map every ticket to the existing owner in
+[file-ownership.md](file-ownership.md). These planning agents do not implicitly
+replace `geo-contract`, `doors-author`, `pack-curator` or `export-guard` ownership.
+Existing file changes go through their recorded role; lead records any explicit
+handoff before an agent writes. New runtime and art paths need one named owner.
+Allow parallel art/content/runtime work only after their shared contracts are
+clear; integration and final verification are sequential.
+
+Planning-tool limitation: `check-task-ownership.mjs` failed to run here because it
+hardcodes a Windows repository path. The two planning edits were checked directly
+against the ownership table and belong to lead. Repair the helper's portability
+before relying on it for implementation tickets; its failure does not invalidate
+the separately passing integrity suite.
+
+## 4. Team discussion and resulting plan
+
+- Art + engineering: framing must be tested in the actual 2.5D projection. The
+  old orthographic viewport arithmetic cannot settle final camera visibility.
+  Agree on a representative frame before producing a whole asset library.
+- World + engineering: do not widen the road constant using a single midpoint
+  calculation. Street drift and both facade envelopes need per-location support.
+  Correct geometry is an engineering obligation, not a request to approve false facts.
+- Design + art: first scene communicates place, purpose and action. A visit card
+  should reward the player with a useful sourced discovery; raw door IDs and
+  provenance diagnostics belong in detail views, not the main game experience.
+- QA + engineering: guide existence is insufficient. Distinct journeys must
+  produce appropriately different guides, and saved progress must survive reopen.
+- Design + world: seven receipts with the same building name cannot establish a
+  meaningful game loop. Find a real, source-supported encounter; do not attach
+  a remote temple or invented shop to an unverified block-zero entrance.
+- All roles: retain separate visual, playability, factual and field acceptance.
+  The plan places the memoir loop before multiplying cities. That ordering is
+  the team's delivery sequence relative to the older S2/S3 status sequence.
+- User clarification: guidance serves English and Chinese audiences; the first
+  playable validates the quality of executed art and the fluency of interaction.
+  A static frame, green checks or working buttons alone cannot pass this milestone.
+
+## 5. Phases and sprint backlog
+
+Sprints below are ordered delivery units, **not calendar estimates**. No dates,
+asset purchases, external staff or field-test availability have been assumed.
+Set the next sprint's timebox from available capacity, then estimate from measured
+asset/content throughput. Later city and multiplayer work remains a coarse backlog.
+
+| Phase | Sprint | Demonstrable outcome | Lead roles | Dependency / exit |
+|---|---|---|---|---|
+| 0 · Align | SP0 · Definition | Source-grounded scope, approved options, team and risks | Producer + all | Complete: recommended package approved with bilingual guidance and art/fluency emphasis; operational dates/resources remain unset |
+| 1 · Visual foundation | SP1 · Art target | Actual-size target frame and opening/interaction/visit-card storyboard for the real block, in both English and Chinese; limited asset vocabulary | Art + world | Approved direction; user reviews recognizable place/style, player, walkable area and possible action before broad asset production; concept approval is not first-playable acceptance |
+| 1 · Visual foundation | SP2 · Rendered block | Integrated melonJS scene with sourced road/sidewalk/crossing geometry, recognizable frontage, signs, actor and depth ordering | Engineering + art + world | SP1; real browser review, readable names, visible actor, correct occlusion, coherent camera; existing three south placeholders retained honestly; carried-forward offline single-file `file://` build works with inlined assets; integer simulation replays to the same state |
+| 2 · Playable loop | SP3 · First playable: meaningful encounter | Integrated rendered block, sourced choice, English/Chinese goals and controls, and visit-card payoff | Design + art + world + engineering; QA reviews | SP2 and sourced venue/access; implemented art and fluent interaction must both pass the first-playable brief; player understands choice/consequence and sees visit/route update; retain the separate 30-second fresh-user discoverability and first-input checks; only the 90-second reward probe is diagnostic |
+| 2a · Current visual iteration | V3D-0 → V3D-3 · Vivid three-dimensional Kyoto | Blender/browser proof → camera contract and art kit → integrated 3D encounters → polish and acceptance | Art + engineering + design + world; QA independent | New user priority before SP4/SP5; see current-iteration table above and [research plan](blender-depth-research.md); first-playable regression/EN-ZH/source boundaries retained |
+| 2 · Playable loop | SP4 · Play to guide | Save/resume, chosen visit order, one-click personal guide and a small travel keepsake | Engineering + design; QA accepts | SP3; two different journeys produce matching different outputs; reload preserves state; phone/print guide works offline with complete required glyphs |
+| 3 · Gate 1 | SP5 · Complete agreed street scope | Twelve real destinations with evidenced access and meaningful content; usable end-to-end route; correct applicable durations, hours, cost and next-leg facts | World + engineering + art | Approved Q2 definition; no fabricated entrances to meet a number; documented corridor coverage; source freshness/unknowns reviewed |
+| 3 · Gate 1 | SP6 · Human and field validation | Browser traversal and a recorded real Kyoto walk using the exported guide; fix discovered blockers | QA + world + producer | SP5 and approved Q5 criterion; named tester/date still needed under Q4; separate visual, playability, factual and field evidence must all pass |
+| 4 · Complete one-city experience | SP7 · Photo memoir | Player adds a real photo to the corresponding journey/place, revisits and exports the memoir | Design + engineering + art | SP4; storage model settled before build; real photo persists after reopen with correct association and deletion/replacement behavior |
+| 4 · Complete one-city experience | SP8 · City alpha | Coherent multi-day loop, supported cultural interactions, readable language progression, sourced time/cost choices, satisfying journey ending | Design + world + engineering + art | Gate 1 evidence and memoir; no required live AI; pacing and repeat-play evidence; original 4–10-hour target remains unproven until tested |
+| 5 · Replication | SP9 · Second city | Same product loop using a new city/style/content pack | World + art + engineering | One-city quality accepted; measure actual production cost; second city works through data/style/content changes only; any required runtime code or new tile type fails replication and must be repaired before SP10 |
+| 5 · Replication | SP10 · Reach 3–5 cities | Agreed additional cities meeting the same game and guide standard | Producer + world + art + QA | Select cities/count after SP9 economics; do not promise dates before that measurement |
+| 6 · Friends and release | SP11 · Play together | Agreed cooperative journey, consistent shared choices and individual/shared guide/memoir behavior | Engineering + design + QA | Solo product and city pipeline accepted; multiplayer model, group size, host/disconnect rules agreed first |
+| 6 · Friends and release | SP12 · Release candidate | Accepted target browsers, stable saves, usable offline outputs, polished content and release package | QA + producer + all | No unresolved blocker against agreed release criteria; multiplayer recovery checks; release branch from iteration, stable release only to master |
+
+No sprint passes solely because it ends. If its outcome is not demonstrated,
+repair or rescope explicitly before starting dependent work. SP7 may proceed
+while arranging SP6 logistics, but that must not imply the field claim passed.
+
+## 6. Clarifications and boundaries
+
+**Answered by the user on 2026-10-05: use the recommended options**, with English
+and Chinese guidance and explicit first-playable art/fluency validation. The
+table records decisions; the absence of dates/budget/testers is not an approval
+to invent them. The first-playable acceptance brief is linked below.
+
+| ID | Decision | Approved choice / impact | Remaining action |
 |---|---|---|---|
-| task-1 / 8 | Geo 契约冻结 + 修正 wTiles/冻结原点 | `geo-contract` | ✅ |
-| task-2 / 9 / 15 | 12 门清单 + ODbL 分表 + 拆枚举镜像 | `doors-author` | ✅ |
-| task-3 / 11 | 事实核验（非产出者）+ 12 门现实核对 | `fact-verifier` | ✅ |
-| task-4 | 导出边界断言（七层守卫唯一没守的一边） | `export-guard` | ✅ |
-| task-5 / 6 / 7 | L-A / L-B / L-C 评价源条款横评 | `review-src-intl` / `jp` / `zh` | ✅ |
-| task-10 / 12 / 14 | 事实层落地 + 收尾 + 车站坐标/地铁分区 | `pack-curator` | ✅ |
-| task-13 | 投影与栅格化（发射器 + `scene.bin`） | `geo-contract` | ✅ |
-| task-16 | 导出层（可带出门的路线攻略） | `export-guard` | ✅ |
-| task-17 | 可走外壳（项目第一次真的"走"世界） | `export-guard` | ✅ |
-| **task-18** | **北侧 7 扇门真的可进入（`openings` 层）** | `geo-contract` | 🔄 **进行中** |
+| Q1 | Visual direction | Detailed recognizable stylized Kyoto 2.5D; high-quality implemented art is required | Produce target frame, then review corresponding browser implementation |
+| Q2 | First playable and place counting | Smaller polished block with complete sourced encounter first, retaining 12 real destinations later; repeated doors/placeholders do not count; art quality and interaction fluency are both first-playable requirements | Source the selected encounter; pass the first-playable brief before expanding |
+| Q3 | Player guidance | Clear objectives/contextual controls in complete English and Chinese UI suites; optional exploration assistance; Japanese world signs remain authentic | Review both locales for parity, readability and smooth interaction; default to state-preserving language selection |
+| Q4 | Delivery/resources | Quality-led milestone delivery, existing/free assets first; estimate later work from throughput | Dates, paid budget and human testers still unset; arrange before dependent scheduling/field work |
+| Q5 | Real-world acceptance | First-time visitor completes agreed route and activities without required outside research/guide; record factual errors, abandoned actions and confidence separately | Specify selected route and schedule independent field session |
 
-**团队编制**：**8 个 teammate，上限即 8，当前满编**。
-**派新活时优先复用已收工的成员**——第一次派 `task-11`/`task-12` 就因满编被拒。**要真正新增成员必须先腾位，而那是决定不是疏忽。**
+The [first-playable brief](first-playable-brief.md) defines the art and interaction
+review. English/Chinese selection is an implementation default; the user requires
+both suites, not simultaneous duplicate text on every screen. Changing UI language
+must preserve progress and must not change Japanese world facts or learned content.
 
----
+Decisions to resolve when they become actionable, without blocking the art review:
 
-## 三 · 实测状态（真相在这些命令里）
+- Route endpoints/length and venue selection: inherited documents mix
+  approximately 2 km, a 1,600 m grid and a different measured centerline length.
+  Reconcile measurement conventions first; ask the user only if intended coverage
+  must change. Geometry cannot be falsified to fit a budget.
+- Memoir storage: local import versus account-backed/cloud upload, cross-device
+  behavior and photo retention. The SOW's “upload” needs this product definition
+  before SP7; no backend scope is silently assumed.
+- Cultural/language mechanics, complete-city playtime, performance budget and
+  target browser/device list: design proposes measurable contracts before the
+  corresponding implementation. The historical 30-minute “want to continue”
+  probe is a design proposal, not a user-approved pass percentage.
+- City selection and exact 3–5 count follow SP9; multiplayer interaction model,
+  party size, account/network needs and shared ownership precede SP11.
+- Third-party review text remains unresolved in conflicting old notes. Do not
+  import it; any later request requires an eligible source and explicit scope.
 
-| 项 | 命令 | 当前 |
-|---|---|---|
-**全部门** | `node iteration/tools/run-gates.mjs` | **15 道**，本地与**干净克隆都 15/15**（`build/` 与 `viewer/index.html` 都不存在时自动烤） |
-**仓库规则** | `iteration/tools/check-repo-hygiene.mjs` | **7 条**，R1–R5 过 · R6 KNOWN-ACCEPTED · **R7 NOTE（信息性）** |
-**契约** | 跑 `world-grid.mjs` | **18/18**，`contract sha256=E2E9307C…`，几何夹具 `7059980F…` **未动** |
-**场景** | `emit-scene.mjs --assert` | **15/15** · 两次运行 / 逆序 / `lanes` 污染后 sha256 相同 |
-**从字节读场景** | `gate-scene-read.mjs` | **9/9**（第 13 道门，独立于发射器的第二个读取器） |
-**走世界** | `check-viewer.mjs` | **11/11** · 走者到 **x=1599** · **ENTERABLE 0/12** |
-**页面真的能跑** | `check-viewer-page.mjs` | **8/8**（把"烤出来了"变成"能跑"） |
-**门** | `validate-doors.mjs --strict` | **21/21** · `cellY` 北 **24** / 南 **0** |
-**事实层** | `validate-city-pack-v2.mjs --json` | **16 passed / 0 failed** |
-**溯源对齐** | `check-source-alignment.mjs` | `ABSENT 0 · NEAR-VARIANT 0 · UNKNOWN 4`（4 是诚实下限） |
-**攻略** | `validate-guide.mjs` | **19/19** · verified 栏 **111 条，0 条非 `observed`** |
-**登记册** | `repo-defect-registry.md` | **42 条**（D-01…D-42） |
+Settled items are not new permission requests: approved Q1–Q5 choices, engine
+selection, desktop game/mobile guide, English and Chinese audiences, south
+placeholders and official long text.
 
----
+## 7. Completion standard and working rhythm
 
-## 四 · 卡在哪（按优先级）
+For each sprint, the ticket names its player outcome, dependencies, exact file
+owner, independent reviewer, demonstration and failure condition. At kickoff,
+assign human acceptance dates; until then the criteria above are **unscheduled**,
+not completed or active experiments. Approval of scope is not evidence of quality.
 
-| # | 阻塞 | 谁能解 |
-|---|---|---|
-**B1** | **`iteration/recon/DOOR-CHECKLIST-for-human.md`（约 5 分钟）。** 它解 **D-24**（门的类型）· **D-25**（南侧数量）· **D-40**（门后应该有什么）——**三者都是 Gate 1 第 2 项的定义本身**。**12 个门位至今 0 个被观察**；街景在 agent 环境取不到（Street View 无 key、3D Tiles 403、Bing 无数据、Mapillary 需 OAuth、Commons 800 m 内 0 张） | **用户** |
-**B2** | **南侧 5 扇门的 A/B/C 选择**（A 门向北移 · B `hTiles 40→48` · C 改标为"临街面"）——见 `d42-corridor-capacity.md`。**它们的门行是世界最后一行，所以南侧室内会住在世界之外** | **用户** |
-**B3** | 227 条依赖告警（**遗留代码**） | 用户已定暂不管；npm 更新块已按此关闭 |
-**B4** | 遗留代码搬迁（**22 个 npm scripts + 4 个 CI 作业受影响**）——见 `legacy-code-map.md` | **用户** |
+The team reports what the player can now do, what evidence supports it and what
+still fails. Review in a real browser for visual/UI claims; the existing VM/DOM
+stub checks cannot prove readability. Preserve existing integrity checks without
+skips; adapt conflicting prototype checks intentionally when the engine changes.
+Do not add a new gate framework or use assertion counts as progress.
 
----
+Human tests use a frozen build and a recorded route/task. A repeat participant
+can judge art but cannot stand in for a fresh first-use tester. Field evidence
+separates wrong guide facts from normal pauses or personal choices; use the SOW's
+24–48-hour follow-up against specific events. A fluent observer, if available,
+can catch incorrect facts a visitor would not recognize. Agents cannot claim
+this test has occurred without the external evidence.
 
-## 五 · 只在对话里存在、还没落进仓库的
+At each demo: QA reviews independently, design/art assess the player experience,
+and producer records pass/fail and the next highest-value correction. The approved
+interim milestone does not reduce the final SOW. External spending, publication
+and production release are not performed by this planning update. Work branches
+start from `iteration`; `master` remains the stable
+release line under [branching-model.md](branching-model.md).
 
-| 事项 | 状态 |
-|---|---|
-`DOOR-CHECKLIST-for-human.md` | ✅ 已落盘，**等用户填** |
-`door-type-model.md`（D-24 解法 v2） | ✅ 已落盘（**提案**，未落进 `doors.json`） |
-`legacy-code-map.md` | ✅ 已落盘（**未执行搬迁**） |
-`gate1-scope.md` · `gate1-acceptance.md` | ✅ **已落盘**——它们更正了我此前把 Gate 1 读成"12 套室内"的错误 |
-`d42-corridor-capacity.md` · `scene-door-dependency.md` | ✅ **已落盘**（D-42 的裁定依据 + 依赖形状） |
-
-**（本栏目已从"多项只在对话里"降到"全部已落盘"——但每次改动后要重新检查，不能假定它一直干净。）**
-
----
-
-## 六 · 本文件不做什么
-
-**不复制门的内容，也不复制登记册的缺陷描述。** 判定在门的输出与登记册里。
-**一份抄了判断的看板，会在下一次改动后变成新的"文档承诺 ≠ 仓库实况"**——也就是 D-07 那一类。
+Historical board and task-1…task-18 records remain available in Git at the
+baseline commit. This board replaces their stale “current” summary; it does not
+rewrite their history or the SOW.

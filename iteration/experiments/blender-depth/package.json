@@ -1,0 +1,10 @@
+{
+  "name": "tourguide-blender-depth-proof",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "scripts": { "probe": "node probe.mjs" },
+  "dependencies": { "three": "0.186.1" },
+  "devDependencies": { "esbuild": "0.28.2" }
+}

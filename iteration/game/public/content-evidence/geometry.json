@@ -1,0 +1,400 @@
+{
+  "title": "Selected OSM-derived geometry for Kyoto first walk",
+  "licence": "ODbL 1.0",
+  "licenceUrl": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "attribution": "© OpenStreetMap contributors",
+  "sourceFile": "city-packs/kyoto-shijo/kyoto-shijo-osm.json",
+  "sourceFileSha256": "2c8443b1cb588aebcf3ad172ee6732ec8ae36de0b9c58ea0904edb8662d7bc4b",
+  "snapshotVerifiedAt": "2026-09-29",
+  "crossing": [
+    {
+      "osmNodeId": 2737069286,
+      "m": {
+        "xM": 20.721,
+        "yM": -8.875
+      },
+      "tags": {
+        "highway": "crossing",
+        "crossing": "traffic_signals",
+        "crossing:markings": "zebra",
+        "crossing:island": "no",
+        "tactile_paving": "yes",
+        "traffic_signals:sound": "yes",
+        "traffic_signals:vibration": "no"
+      },
+      "note": "Signalised crossing over 四条通 on the east arm of the 四条烏丸 junction, carried by footway way 465069430 which links the two sidewalks between yM -17.529 and yM 2.330 in the task-16 datum."
+    }
+  ],
+  "facades": [
+    {
+      "facadeId": "F-north",
+      "side": "north",
+      "street": "四条通",
+      "sideOfStreet": "north",
+      "osmBuildingId": 205732558,
+      "osmBuildingName": "京都三井ビルディング",
+      "osmBuildingLevels": 8,
+      "osmBuildingTags": {
+        "building": "commercial",
+        "addr:quarter": "長刀鉾町",
+        "addr:suburb": "下京区",
+        "addr:block_number": "8",
+        "source": "Bing",
+        "start_date": "1984-09"
+      },
+      "facadeRunFull": {
+        "fromNode": 2157078408,
+        "fromUdeg": {
+          "lonUdeg": 135759900,
+          "latUdeg": 35003781
+        },
+        "toNode": 2157078409,
+        "toUdeg": {
+          "lonUdeg": 135760358,
+          "latUdeg": 35003782
+        },
+        "fromM": {
+          "xM": 16.522069,
+          "yM": 4.659507
+        },
+        "toM": {
+          "xM": 58.329294,
+          "yM": 4.770448
+        },
+        "frontageXM": 41.807225,
+        "edgeLengthM": 41.807372,
+        "lengthNote": "frontageXM is the ALONG-STREET (x) extent, which is what storefront modules are counted against; edgeLengthM is the Euclidean edge length. The two differ by 0.15 mm here because the facade is nearly parallel to the street. Every module width in this file is an x-extent."
+      },
+      "facadeRunClippedToBlock": {
+        "fromM": 16.522069,
+        "toM": 40,
+        "frontageXM": 23.477931,
+        "clipped": true
+      },
+      "sidewalkFootway": {
+        "osmWayId": 465066447,
+        "footway": "sidewalk",
+        "yM": 2.259,
+        "note": "north sidewalk centreline; the facade lies 2.4 m beyond it, on the far side from the street.",
+        "yMethod": "y of the sidewalk way at the facade run midpoint (x = 28.261), projected against the frozen ORIGIN. Recomputed in task-16: the stored value did not reproduce from the sidewalk geometry, and it duplicated observedBlockFeatures.sidewalks[].yAtFacadeMidM, which is the same quantity. Both now carry the same number."
+      },
+      "valueKind": "observed"
+    },
+    {
+      "facadeId": "F-south",
+      "side": "south",
+      "street": "四条通",
+      "sideOfStreet": "south",
+      "osmBuildingId": 205732536,
+      "osmBuildingName": "京都ダイヤビル",
+      "osmBuildingLevels": 8,
+      "osmBuildingTags": {
+        "building": "commercial",
+        "addr:quarter": "長刀鉾町",
+        "addr:suburb": "下京区",
+        "addr:block_number": "10",
+        "source": "Bing",
+        "start_date": "2007-10",
+        "wikidata": "Q110701885"
+      },
+      "facadeRunFull": {
+        "fromNode": 2157078404,
+        "fromUdeg": {
+          "lonUdeg": 135759911,
+          "latUdeg": 35003559
+        },
+        "toNode": 2157078405,
+        "toUdeg": {
+          "lonUdeg": 135760110,
+          "latUdeg": 35003561
+        },
+        "fromM": {
+          "xM": 17.526173,
+          "yM": -19.969317
+        },
+        "toM": {
+          "xM": 35.691321,
+          "yM": -19.747436
+        },
+        "frontageXM": 18.165148,
+        "edgeLengthM": 18.166503,
+        "lengthNote": "See F-north.lengthNote."
+      },
+      "facadeRunClippedToBlock": {
+        "fromM": 17.526173,
+        "toM": 35.691321,
+        "frontageXM": 18.165148,
+        "clipped": false
+      },
+      "sidewalkFootway": {
+        "osmWayId": 465069406,
+        "footway": "sidewalk",
+        "yM": -17.529,
+        "note": "south sidewalk centreline; the facade lies 2.4 m beyond it, on the far side from the street.",
+        "yMethod": "y of the sidewalk way at the facade run midpoint (x = 26.609), projected against the frozen ORIGIN. Recomputed in task-16: the stored value did not reproduce from the sidewalk geometry, and it duplicated observedBlockFeatures.sidewalks[].yAtFacadeMidM, which is the same quantity. Both now carry the same number."
+      },
+      "valueKind": "observed",
+      "observedOccupantPoi": {
+        "osmNodeId": 14196400744,
+        "tags": {
+          "amenity": "bank",
+          "atm": "yes",
+          "name": "三菱ＵＦＪ銀行 京都支店"
+        },
+        "nodeM": {
+          "xM": 18.165,
+          "yM": -25.294
+        },
+        "insideThisFootprint": true,
+        "perpendicularProjectionOntoFacadeXM": 18.165,
+        "note": "The block's ONLY mapped occupant. The node position is observed; the position of the bank's doorway is NOT -- hence the projection is recorded as an anchor candidate (see doors[7].observedAnchors) and the door itself remains valueKind licenced.",
+        "corroboration": "addr:block_number=10 with addr:quarter=長刀鉾町 matches the published address of 三菱ＵＦＪ銀行京都支店 (四条通烏丸東入長刀鉾町10). Two independent fields inside the same response agree; recorded as corroboration, not as proof."
+      }
+    }
+  ],
+  "authoredDoors": [
+    {
+      "id": "D-N1",
+      "buildingId": 205732558,
+      "placement": {
+        "authoredXM": 18.199064,
+        "authoredYM": 4.663957,
+        "subX": 291,
+        "subY": 75,
+        "quantisedXM": 18.1875,
+        "quantisedYM": 4.6875,
+        "quantisationShiftM": {
+          "x": 0.011564,
+          "y": 0.023543
+        },
+        "floorXMVersusCanonical": {
+          "floorXM": 18,
+          "floorYM": 4,
+          "disagree": false
+        }
+      },
+      "valueKind": "authored",
+      "tenantMapping": null
+    },
+    {
+      "id": "D-N2",
+      "buildingId": 205732558,
+      "placement": {
+        "authoredXM": 21.553054,
+        "authoredYM": 4.672858,
+        "subX": 345,
+        "subY": 75,
+        "quantisedXM": 21.5625,
+        "quantisedYM": 4.6875,
+        "quantisationShiftM": {
+          "x": 0.009446,
+          "y": 0.014642
+        },
+        "floorXMVersusCanonical": {
+          "floorXM": 21,
+          "floorYM": 4,
+          "disagree": false
+        }
+      },
+      "valueKind": "authored",
+      "tenantMapping": null
+    },
+    {
+      "id": "D-N3",
+      "buildingId": 205732558,
+      "placement": {
+        "authoredXM": 24.907044,
+        "authoredYM": 4.681758,
+        "subX": 399,
+        "subY": 75,
+        "quantisedXM": 24.9375,
+        "quantisedYM": 4.6875,
+        "quantisationShiftM": {
+          "x": 0.030456,
+          "y": 0.005742
+        },
+        "floorXMVersusCanonical": {
+          "floorXM": 24,
+          "floorYM": 4,
+          "disagree": false
+        }
+      },
+      "valueKind": "authored",
+      "tenantMapping": null
+    },
+    {
+      "id": "D-N4",
+      "buildingId": 205732558,
+      "placement": {
+        "authoredXM": 28.261035,
+        "authoredYM": 4.690658,
+        "subX": 452,
+        "subY": 75,
+        "quantisedXM": 28.25,
+        "quantisedYM": 4.6875,
+        "quantisationShiftM": {
+          "x": 0.011035,
+          "y": 0.003158
+        },
+        "floorXMVersusCanonical": {
+          "floorXM": 28,
+          "floorYM": 4,
+          "disagree": false
+        }
+      },
+      "valueKind": "authored",
+      "tenantMapping": null
+    },
+    {
+      "id": "D-N5",
+      "buildingId": 205732558,
+      "placement": {
+        "authoredXM": 31.615025,
+        "authoredYM": 4.699558,
+        "subX": 506,
+        "subY": 75,
+        "quantisedXM": 31.625,
+        "quantisedYM": 4.6875,
+        "quantisationShiftM": {
+          "x": 0.009975,
+          "y": 0.012058
+        },
+        "floorXMVersusCanonical": {
+          "floorXM": 31,
+          "floorYM": 4,
+          "disagree": false
+        }
+      },
+      "valueKind": "authored",
+      "tenantMapping": null
+    },
+    {
+      "id": "D-N6",
+      "buildingId": 205732558,
+      "placement": {
+        "authoredXM": 34.969015,
+        "authoredYM": 4.708459,
+        "subX": 560,
+        "subY": 75,
+        "quantisedXM": 35,
+        "quantisedYM": 4.6875,
+        "quantisationShiftM": {
+          "x": 0.030985,
+          "y": 0.020959
+        },
+        "floorXMVersusCanonical": {
+          "floorXM": 34,
+          "floorYM": 4,
+          "disagree": true
+        },
+        "boundaryCaseNote": "The authored module midpoint 34.969015 m lies 30.985 mm west of the x = 35 tile boundary -- inside the 1/32 m (31.25 mm) band where floor(x_m) and the canonical sub-tile path disagree (contract clause 3, assertion A3). floor() would give cellX = 34; the canonical sub-tile (560) gives 35. The canonical value governs and is what is declared. The door therefore sits at the west edge of cell 35 rather than the middle of it."
+      },
+      "valueKind": "authored",
+      "tenantMapping": null
+    },
+    {
+      "id": "D-N7",
+      "buildingId": 205732558,
+      "placement": {
+        "authoredXM": 38.323005,
+        "authoredYM": 4.717359,
+        "subX": 613,
+        "subY": 75,
+        "quantisedXM": 38.3125,
+        "quantisedYM": 4.6875,
+        "quantisationShiftM": {
+          "x": 0.010505,
+          "y": 0.029859
+        },
+        "floorXMVersusCanonical": {
+          "floorXM": 38,
+          "floorYM": 4,
+          "disagree": false
+        }
+      },
+      "valueKind": "authored",
+      "tenantMapping": null
+    },
+    {
+      "id": "D-S1",
+      "buildingId": 205732536,
+      "placement": {
+        "authoredXM": 19.342688,
+        "authoredYM": -19.947129,
+        "subX": 309,
+        "subY": -319,
+        "quantisedXM": 19.3125,
+        "quantisedYM": -19.9375,
+        "quantisationShiftM": {
+          "x": 0.030188,
+          "y": 0.009629
+        },
+        "floorXMVersusCanonical": {
+          "floorXM": 19,
+          "floorYM": -20,
+          "disagree": false
+        }
+      },
+      "valueKind": "authored",
+      "tenantMapping": null
+    },
+    {
+      "id": "D-S3",
+      "buildingId": 205732536,
+      "placement": {
+        "authoredXM": 26.608747,
+        "authoredYM": -19.858376,
+        "subX": 426,
+        "subY": -318,
+        "quantisedXM": 26.625,
+        "quantisedYM": -19.875,
+        "quantisationShiftM": {
+          "x": 0.016253,
+          "y": 0.016624
+        },
+        "floorXMVersusCanonical": {
+          "floorXM": 26,
+          "floorYM": -20,
+          "disagree": false
+        }
+      },
+      "valueKind": "authored",
+      "tenantMapping": null
+    },
+    {
+      "id": "D-S5",
+      "buildingId": 205732536,
+      "placement": {
+        "authoredXM": 33.874806,
+        "authoredYM": -19.769624,
+        "subX": 542,
+        "subY": -316,
+        "quantisedXM": 33.875,
+        "quantisedYM": -19.75,
+        "quantisationShiftM": {
+          "x": 0.000194,
+          "y": 0.019624
+        },
+        "floorXMVersusCanonical": {
+          "floorXM": 33,
+          "floorYM": -20,
+          "disagree": false
+        }
+      },
+      "valueKind": "authored",
+      "tenantMapping": null
+    }
+  ],
+  "gameReadingPoints": {
+    "valueKind": "authored",
+    "note": "Mitsui and MUFG markers are public-frontage reading positions, not surveyed doors or venue-centre coordinates."
+  },
+  "notClaimed": [
+    "measured entrance locations",
+    "tenant-to-door mapping",
+    "reconstructed interiors",
+    "real signal timing",
+    "measured zebra width",
+    "current open-now status"
+  ]
+}

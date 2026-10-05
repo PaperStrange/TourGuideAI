@@ -1,0 +1,125 @@
+{
+  "status": "complete",
+  "blenderVersion": "4.3.2",
+  "scriptSHA256": "04ccfa4c902d60575892c98d7510d7cbf244ec167d4798ec741d0e534daec090",
+  "worldDependency": "iteration/game/src/content.js",
+  "worldDependencySHA256": "a3e84871093837e6ab39023efec6c5de0b4214c8fa5390c5cec9208100ead1ea",
+  "units": "metres",
+  "axes": {
+    "blender": [
+      "source east X",
+      "source north Y",
+      "height Z"
+    ],
+    "gltf": [
+      "source east X",
+      "height Y",
+      "negative source north Z"
+    ]
+  },
+  "source": {
+    "buildingSpans": {
+      "north": {
+        "nameJa": "京都三井ビルディング",
+        "name": {
+          "en": "Kyoto Mitsui Building",
+          "zh": "京都三井大厦"
+        },
+        "osmId": 205732558,
+        "minX": 16.522069,
+        "maxX": 58.329294,
+        "yFrom": 4.659507,
+        "yTo": 4.770448
+      },
+      "south": {
+        "nameJa": "京都ダイヤビル",
+        "name": {
+          "en": "Kyoto Daiya Building",
+          "zh": "京都钻石大厦"
+        },
+        "osmId": 205732536,
+        "minX": 17.526173,
+        "maxX": 35.691321,
+        "yFrom": -19.969317,
+        "yTo": -19.747436
+      }
+    },
+    "crossing": {
+      "x": 20.721,
+      "northY": 2.33,
+      "southY": -17.529,
+      "width": 2.6,
+      "widthKind": "authored"
+    },
+    "roadSurface": {
+      "northY": 1.68,
+      "southY": -16.879,
+      "valueKind": "authored",
+      "basis": "Presentation bounds inset 0.65 m from mapped crossing endpoints on sidewalk centrelines; these are not observed kerbs."
+    },
+    "attribution": "© OpenStreetMap contributors · ODbL 1.0"
+  },
+  "authored": [
+    "flat WORLD facadeY approximation of the slightly sloped sourced frontage",
+    "all heights and depths",
+    "south building cutaway height",
+    "materials and facade modules",
+    "roof and back faces",
+    "door appearance and tenant-free placements",
+    "planting/street furniture",
+    "traveller scale silhouette",
+    "lighting and camera"
+  ],
+  "materialPolicy": "Core opaque Principled base color, metallic and roughness only; stylized opaque glass. No image textures, external model/texture URLs, transmission extensions, baked lighting, or proprietary assets.",
+  "font": {
+    "source": "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
+    "usage": "Noto CJK Japanese factual names converted to mesh; no runtime font dependency"
+  },
+  "render": {
+    "width": 960,
+    "height": 640,
+    "samples": 32,
+    "engine": "Cycles CPU",
+    "denoising": false,
+    "viewTransform": "Khronos PBR Neutral",
+    "lightingBaked": false,
+    "status": "rendered",
+    "seconds": 9.48,
+    "bytes": 812828,
+    "sha256": "d2c2cee4230140201b06e6836189aefac0ae1dc1d0dd8eecbd1537059cca8aaa"
+  },
+  "camera": {
+    "positionBlender": [
+      75.0,
+      -88.0,
+      69.0
+    ],
+    "targetBlender": [
+      32.0,
+      -4.0,
+      2.299999952316284
+    ],
+    "focalLengthMM": 49.0
+  },
+  "sourceObjects": 888,
+  "sourceMeshDatablocks": 106,
+  "limitations": [
+    "Research proof, not final art or game integration.",
+    "Foreground south volume is an authored low cutaway for visibility, not actual building height.",
+    "Static traveller has no animation or gameplay controls.",
+    "Cycles area light/environment and browser directional/hemisphere lighting differ; compare materials and shadows in actual browser.",
+    "No source photograph or actual elevation has been used; detail expresses modern architecture, not an observed facade reconstruction."
+  ],
+  "glb": {
+    "bytes": 5293648,
+    "sha256": "52fb13711fd2fdf3e63f244c5a42e871e15dc903a845120bcbc7ce1c4116f47d",
+    "nodes": 35,
+    "meshes": 28,
+    "materials": 28,
+    "primitives": 28,
+    "triangles": 109156,
+    "extensionsUsed": []
+  },
+  "totalSeconds": 17.4,
+  "blendBytes": 3995872
+}
