@@ -1,0 +1,2570 @@
+{
+  "startedAt": "2026-10-05T06:53:03.638Z",
+  "artifact": {
+    "directory": "/workspace/TourGuideAI-iteration-plan/experience/dist",
+    "manifestSha256": "ebe2883e971a6e00cbb73cc3e171718e28d04998c3716f8c009b9ee5b292fe79",
+    "files": [
+      {
+        "path": "/assets/index-BaUP8L_C.css",
+        "bytes": 14433,
+        "sha256": "9540bc80190250cedf250b0d932cfa95e09926640b57f7946e0178e7e54228bd"
+      },
+      {
+        "path": "/assets/index-DHReIO-L.js",
+        "bytes": 711916,
+        "sha256": "0d56797624e13406ab2605fb2fc835b8d4fd33eb2d46181882139c1964a12e29"
+      },
+      {
+        "path": "/assets/index-DHReIO-L.js.map",
+        "bytes": 3330708,
+        "sha256": "21465018639056b638736a89091434123aabbcb942745701f831977230b04c6b"
+      },
+      {
+        "path": "/assets/kyoto-sans-B-r8Uim3.woff",
+        "bytes": 148864,
+        "sha256": "603e2ccaec500e7acfde5bcffac2192b81dec371a58bc3c250be72b397c0892b"
+      },
+      {
+        "path": "/content-evidence/facade-references.json",
+        "bytes": 5056,
+        "sha256": "2633e98dd95ba7160bb4c54acde94a8ed4de5f1f7b335904abf79da41ab0d8e2"
+      },
+      {
+        "path": "/content-evidence/geometry.json",
+        "bytes": 12083,
+        "sha256": "e27f5fa137100ac4786c341cf13cc84acc6a94b71120178871320955984670b7"
+      },
+      {
+        "path": "/content-evidence/operator-facts.json",
+        "bytes": 4911,
+        "sha256": "58d5ff4a3c6b722609a39e45e74df132313066feabb442afc575564d659afcc0"
+      },
+      {
+        "path": "/credits.html",
+        "bytes": 14123,
+        "sha256": "1ffa98f5499dbcea4957208b588faba4b0ec90cc1b2b7188c39cc1848d2cc8e5"
+      },
+      {
+        "path": "/index.html",
+        "bytes": 893,
+        "sha256": "287ad688c5d091a701a59881108506f2d3a76fc441a860525ad2009538a3d81c"
+      },
+      {
+        "path": "/models/provenance.json",
+        "bytes": 9209,
+        "sha256": "6eb5717c71597736eb4c1f5d7d2cf7621e214f1f073f70af9999f8cc767bf80c"
+      },
+      {
+        "path": "/models/shijo-block.glb",
+        "bytes": 3682648,
+        "sha256": "68c2afa632505ddb6ae2a65d93c615403a476f4859885ca5860fbc3bfcd6980b"
+      },
+      {
+        "path": "/models/traveller.glb",
+        "bytes": 44608,
+        "sha256": "e2e8f62e07f188b2bfcb4919f51b3dec84c9cf01e63d4af7031a4afa185e4a4b"
+      }
+    ]
+  },
+  "driverSha256": "381ac0667f0c93f40cb230e92acdac96c37766c39926c880ed1a07b6470ef61e",
+  "conditions": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "compactViewport": [
+      1280,
+      720
+    ],
+    "deviceScaleFactor": 1,
+    "readOnlyObserver": "?qa=1",
+    "timeoutMs": 240000
+  },
+  "scope": "Complete browser behavior and saved-journey validation",
+  "checks": [
+    {
+      "id": "actual-webgl-scene-ready",
+      "pass": true,
+      "evidence": {
+        "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      }
+    },
+    {
+      "id": "chinese-goals-controls-and-camera-guidance",
+      "pass": true
+    },
+    {
+      "id": "locale-preserves-position-and-journey",
+      "pass": true
+    },
+    {
+      "id": "keyboard-movement-is-camera-relative",
+      "pass": true,
+      "evidence": {
+        "displacement": {
+          "x": 1.0359999999999978,
+          "y": 0.238
+        },
+        "rightAxis": {
+          "x": 0.9758974493306055,
+          "y": 0.21822962308086938
+        },
+        "alignment": 0.9999831122263524
+      }
+    },
+    {
+      "id": "key-release-stops-walking",
+      "pass": true
+    },
+    {
+      "id": "blur-event-clears-held-input",
+      "pass": true,
+      "evidence": {
+        "method": "Injected blur while real ArrowRight remains held; headless tab switching does not emulate focus loss.",
+        "beforeFocusLoss": {
+          "x": 24.836,
+          "y": 2.338,
+          "tick": 175,
+          "facing": "east",
+          "heading": 1.350796,
+          "moving": false,
+          "paused": false,
+          "visitedIds": [],
+          "readSourceIds": [],
+          "choiceIds": {},
+          "selectedTargetId": "crossing",
+          "nearbyTargetId": null,
+          "nearestTargetId": "crossing",
+          "targetDistance": 4.1,
+          "destination": null,
+          "waypoints": []
+        },
+        "afterBlur": {
+          "x": 25.428,
+          "y": 2.474,
+          "tick": 189,
+          "facing": "east",
+          "heading": 1.350796,
+          "moving": false,
+          "paused": false,
+          "visitedIds": [],
+          "readSourceIds": [],
+          "choiceIds": {},
+          "selectedTargetId": "crossing",
+          "nearbyTargetId": null,
+          "nearestTargetId": "crossing",
+          "targetDistance": 4.7,
+          "destination": null,
+          "waypoints": []
+        }
+      }
+    },
+    {
+      "id": "drag-orbits-without-queuing-a-walk",
+      "pass": true,
+      "evidence": {
+        "beforeCamera": {
+          "position": [
+            30.664753320861454,
+            16.191627460765925,
+            17.777890544418437
+          ],
+          "target": [
+            26.628,
+            0.9,
+            -0.274
+          ],
+          "azimuth": 0.21999999999999997,
+          "polar": 0.8800000000000001,
+          "distance": 24.000000000000004,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": 0.21999999999999997,
+          "enabled": true,
+          "damping": false,
+          "projectionMatrix": [
+            1.806105562893383,
+            0,
+            0,
+            0,
+            0,
+            2.605089064693802,
+            0,
+            0,
+            0,
+            0,
+            -1.0015011258443833,
+            -1,
+            0,
+            0,
+            -0.3002251688766575,
+            0
+          ],
+          "matrixWorld": [
+            0.9758974493306055,
+            1.3877787807814457e-17,
+            -0.21822962308086932,
+            0,
+            -0.13904525404400075,
+            0.7707388788989694,
+            -0.6217941764614712,
+            0,
+            0.16819805503589388,
+            0.6371511441985802,
+            0.7521621060174347,
+            0,
+            30.664753320861454,
+            16.191627460765925,
+            17.777890544418437,
+            1
+          ],
+          "limits": {
+            "azimuth": [
+              -0.65,
+              0.65
+            ],
+            "polar": [
+              0.66,
+              1.05
+            ],
+            "distance": [
+              22,
+              48
+            ]
+          }
+        },
+        "afterCamera": {
+          "position": [
+            36.78522010117497,
+            18.05546618218352,
+            13.087169854778622
+          ],
+          "target": [
+            26.628,
+            0.9,
+            -0.274
+          ],
+          "azimuth": 0.65,
+          "polar": 0.7744423910368659,
+          "distance": 24.000000000000007,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": 0.6499999999999999,
+          "enabled": true,
+          "damping": false,
+          "projectionMatrix": [
+            1.806105562893383,
+            0,
+            0,
+            0,
+            0,
+            2.605089064693802,
+            0,
+            0,
+            0,
+            0,
+            -1.0015011258443833,
+            -1,
+            0,
+            0,
+            -0.3002251688766575,
+            0
+          ],
+          "matrixWorld": [
+            0.796083798549056,
+            2.7755575615628914e-17,
+            -0.6051864057360394,
+            0,
+            -0.43259395489674235,
+            0.6993175990146347,
+            -0.5690495285080218,
+            0,
+            0.42321750421562365,
+            0.7148110909243132,
+            0.5567154106157759,
+            0,
+            36.78522010117497,
+            18.05546618218352,
+            13.087169854778622,
+            1
+          ],
+          "limits": {
+            "azimuth": [
+              -0.65,
+              0.65
+            ],
+            "polar": [
+              0.66,
+              1.05
+            ],
+            "distance": [
+              22,
+              48
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "reduced-motion-orbit-stops-after-release",
+      "pass": true
+    },
+    {
+      "id": "walking-adapts-to-rotated-camera",
+      "pass": true,
+      "evidence": {
+        "rotatedDelta": {
+          "x": 0.7929999999999993,
+          "y": 0.5979999999999999
+        },
+        "rotatedAxis": {
+          "x": 0.796083798549056,
+          "y": 0.6051864057360394
+        },
+        "rotatedAlignment": 0.9999924685558322
+      }
+    },
+    {
+      "id": "actual-raycast-click-reaches-the-world-point",
+      "pass": true,
+      "evidence": {
+        "screen": {
+          "x": 806.2521315082242,
+          "y": 376.6255051382364
+        },
+        "intended": {
+          "x": 28.421,
+          "y": 2.33
+        },
+        "arrived": {
+          "x": 28.421,
+          "y": 2.33,
+          "tick": 442,
+          "facing": "east",
+          "heading": 1.897897,
+          "moving": false,
+          "paused": false,
+          "visitedIds": [],
+          "readSourceIds": [],
+          "choiceIds": {},
+          "selectedTargetId": "crossing",
+          "nearbyTargetId": null,
+          "nearestTargetId": "mitsui",
+          "targetDistance": 3.7,
+          "destination": null,
+          "waypoints": []
+        }
+      }
+    },
+    {
+      "id": "road-height-picking-is-not-a-fixed-pavement-plane",
+      "pass": true,
+      "evidence": {
+        "screen": {
+          "x": 767.536605631043,
+          "y": 392.9866724418257
+        },
+        "intended": {
+          "x": 29.921,
+          "y": 0.17999999999999994
+        },
+        "arrived": {
+          "x": 29.921,
+          "y": 0.18,
+          "tick": 539,
+          "facing": "south",
+          "heading": 2.536044,
+          "moving": false,
+          "paused": false,
+          "visitedIds": [],
+          "readSourceIds": [],
+          "choiceIds": {},
+          "selectedTargetId": "crossing",
+          "nearbyTargetId": null,
+          "nearestTargetId": "mitsui",
+          "targetDistance": 3.7,
+          "destination": null,
+          "waypoints": []
+        }
+      }
+    },
+    {
+      "id": "compact-layout-and-canvas-fit-after-capture",
+      "pass": true,
+      "evidence": {
+        "viewport": [
+          1280,
+          720
+        ],
+        "document": [
+          1280,
+          720
+        ],
+        "canvas": [
+          1004,
+          527
+        ],
+        "stage": [
+          1004,
+          527
+        ],
+        "exportBottom": 675,
+        "footerTop": 689
+      }
+    },
+    {
+      "id": "reset-view-preserves-position-and-journey",
+      "pass": true
+    },
+    {
+      "id": "north-facade-blocks-forward-motion",
+      "pass": true,
+      "evidence": {
+        "before": {
+          "x": 28.867,
+          "y": 4.34,
+          "tick": 664,
+          "facing": "north",
+          "heading": -0.22,
+          "moving": false,
+          "paused": false,
+          "visitedIds": [],
+          "readSourceIds": [],
+          "choiceIds": {},
+          "selectedTargetId": "crossing",
+          "nearbyTargetId": null,
+          "nearestTargetId": "mitsui",
+          "targetDistance": 3.3,
+          "destination": null,
+          "waypoints": []
+        },
+        "after": {
+          "x": 28.731,
+          "y": 4.34,
+          "tick": 690,
+          "facing": "north",
+          "heading": -0.22,
+          "moving": false,
+          "paused": false,
+          "visitedIds": [],
+          "readSourceIds": [],
+          "choiceIds": {},
+          "selectedTargetId": "crossing",
+          "nearbyTargetId": null,
+          "nearestTargetId": "mitsui",
+          "targetDistance": 3.5,
+          "destination": null,
+          "waypoints": []
+        }
+      }
+    },
+    {
+      "id": "nearby-prompt-is-stable",
+      "pass": true
+    },
+    {
+      "id": "opening-does-not-award-visit-or-source-read",
+      "pass": true
+    },
+    {
+      "id": "modal-pauses-movement",
+      "pass": true
+    },
+    {
+      "id": "open-card-locale-keeps-state-and-focus",
+      "pass": true
+    },
+    {
+      "id": "close-does-not-reopen-and-restores-focus",
+      "pass": true
+    },
+    {
+      "id": "source-reading-remains-separate-from-visiting",
+      "pass": true
+    },
+    {
+      "id": "choice-records-visit-and-next-target",
+      "pass": true
+    },
+    {
+      "id": "note-draft-survives-locale-without-autosaving",
+      "pass": true
+    },
+    {
+      "id": "note-draft-survives-close-and-reopen-without-autosaving",
+      "pass": true
+    },
+    {
+      "id": "note-input-enforces-500-character-bound",
+      "pass": true
+    },
+    {
+      "id": "explicit-note-save-preserves-journey-meaning",
+      "pass": true
+    },
+    {
+      "id": "card-close-resumes-walking",
+      "pass": true
+    },
+    {
+      "id": "reload-retains-world-position-choices-locale-and-note",
+      "pass": true,
+      "evidence": {
+        "before": {
+          "version": 2,
+          "locale": "zh",
+          "hints": true,
+          "notes": {
+            "crossing": "<b data-personal-note>晚风 & \"灯光\"</b>\nA quiet crossing."
+          },
+          "game": {
+            "x": 21.239,
+            "y": 2.449,
+            "tick": 924,
+            "facing": "east",
+            "heading": 1.350796,
+            "moving": false,
+            "paused": false,
+            "visitedIds": [
+              "crossing"
+            ],
+            "readSourceIds": [
+              "crossing"
+            ],
+            "choiceIds": {
+              "crossing": "north-first"
+            },
+            "selectedTargetId": "crossing",
+            "nearbyTargetId": "crossing",
+            "nearestTargetId": "crossing",
+            "targetDistance": 0.5,
+            "destination": null,
+            "waypoints": []
+          }
+        },
+        "after": {
+          "version": 2,
+          "locale": "zh",
+          "hints": true,
+          "notes": {
+            "crossing": "<b data-personal-note>晚风 & \"灯光\"</b>\nA quiet crossing."
+          },
+          "game": {
+            "x": 21.239,
+            "y": 2.449,
+            "tick": 938,
+            "facing": "east",
+            "heading": 1.350796,
+            "moving": false,
+            "paused": false,
+            "visitedIds": [
+              "crossing"
+            ],
+            "readSourceIds": [
+              "crossing"
+            ],
+            "choiceIds": {
+              "crossing": "north-first"
+            },
+            "selectedTargetId": "crossing",
+            "nearbyTargetId": "crossing",
+            "nearestTargetId": "crossing",
+            "targetDistance": 0.5,
+            "destination": null,
+            "waypoints": []
+          }
+        }
+      }
+    },
+    {
+      "id": "mitsui-skip-retains-visit-without-planned-station-stop",
+      "pass": true
+    },
+    {
+      "id": "real-bank-walk-uses-the-mapped-crossing",
+      "pass": true,
+      "evidence": [
+        {
+          "elapsedMs": 89014,
+          "renderedFrames": 74,
+          "tick": 1380,
+          "x": 20.721,
+          "y": -2.382
+        },
+        {
+          "elapsedMs": 91058,
+          "renderedFrames": 75,
+          "tick": 1386,
+          "x": 20.721,
+          "y": -2.838
+        },
+        {
+          "elapsedMs": 92990,
+          "renderedFrames": 76,
+          "tick": 1392,
+          "x": 20.721,
+          "y": -3.294
+        },
+        {
+          "elapsedMs": 94883,
+          "renderedFrames": 77,
+          "tick": 1398,
+          "x": 20.721,
+          "y": -3.75
+        },
+        {
+          "elapsedMs": 96897,
+          "renderedFrames": 78,
+          "tick": 1404,
+          "x": 20.721,
+          "y": -4.206
+        },
+        {
+          "elapsedMs": 98844,
+          "renderedFrames": 79,
+          "tick": 1410,
+          "x": 20.721,
+          "y": -4.662
+        },
+        {
+          "elapsedMs": 100749,
+          "renderedFrames": 80,
+          "tick": 1416,
+          "x": 20.721,
+          "y": -5.118
+        },
+        {
+          "elapsedMs": 102708,
+          "renderedFrames": 81,
+          "tick": 1422,
+          "x": 20.721,
+          "y": -5.574
+        },
+        {
+          "elapsedMs": 104713,
+          "renderedFrames": 82,
+          "tick": 1428,
+          "x": 20.721,
+          "y": -6.03
+        },
+        {
+          "elapsedMs": 106936,
+          "renderedFrames": 83,
+          "tick": 1434,
+          "x": 20.721,
+          "y": -6.486
+        },
+        {
+          "elapsedMs": 109176,
+          "renderedFrames": 84,
+          "tick": 1440,
+          "x": 20.721,
+          "y": -6.942
+        },
+        {
+          "elapsedMs": 111468,
+          "renderedFrames": 85,
+          "tick": 1446,
+          "x": 20.721,
+          "y": -7.398
+        },
+        {
+          "elapsedMs": 113867,
+          "renderedFrames": 86,
+          "tick": 1452,
+          "x": 20.721,
+          "y": -7.854
+        },
+        {
+          "elapsedMs": 116292,
+          "renderedFrames": 87,
+          "tick": 1458,
+          "x": 20.721,
+          "y": -8.31
+        },
+        {
+          "elapsedMs": 118891,
+          "renderedFrames": 88,
+          "tick": 1464,
+          "x": 20.721,
+          "y": -8.766
+        },
+        {
+          "elapsedMs": 121344,
+          "renderedFrames": 89,
+          "tick": 1470,
+          "x": 20.721,
+          "y": -9.222
+        },
+        {
+          "elapsedMs": 124252,
+          "renderedFrames": 90,
+          "tick": 1476,
+          "x": 20.721,
+          "y": -9.678
+        },
+        {
+          "elapsedMs": 126862,
+          "renderedFrames": 91,
+          "tick": 1482,
+          "x": 20.721,
+          "y": -10.134
+        },
+        {
+          "elapsedMs": 129296,
+          "renderedFrames": 92,
+          "tick": 1488,
+          "x": 20.721,
+          "y": -10.59
+        },
+        {
+          "elapsedMs": 132201,
+          "renderedFrames": 93,
+          "tick": 1494,
+          "x": 20.721,
+          "y": -11.046
+        },
+        {
+          "elapsedMs": 135963,
+          "renderedFrames": 94,
+          "tick": 1500,
+          "x": 20.721,
+          "y": -11.502
+        },
+        {
+          "elapsedMs": 138813,
+          "renderedFrames": 95,
+          "tick": 1506,
+          "x": 20.721,
+          "y": -11.958
+        },
+        {
+          "elapsedMs": 142506,
+          "renderedFrames": 96,
+          "tick": 1512,
+          "x": 20.721,
+          "y": -12.414
+        },
+        {
+          "elapsedMs": 145411,
+          "renderedFrames": 97,
+          "tick": 1518,
+          "x": 20.721,
+          "y": -12.87
+        },
+        {
+          "elapsedMs": 147961,
+          "renderedFrames": 98,
+          "tick": 1524,
+          "x": 20.721,
+          "y": -13.326
+        },
+        {
+          "elapsedMs": 150396,
+          "renderedFrames": 99,
+          "tick": 1530,
+          "x": 20.721,
+          "y": -13.782
+        },
+        {
+          "elapsedMs": 152757,
+          "renderedFrames": 100,
+          "tick": 1536,
+          "x": 20.721,
+          "y": -14.238
+        },
+        {
+          "elapsedMs": 154575,
+          "renderedFrames": 101,
+          "tick": 1542,
+          "x": 20.721,
+          "y": -14.694
+        }
+      ]
+    },
+    {
+      "id": "bank-camera-faces-actionable-frontage",
+      "pass": true,
+      "evidence": {
+        "position": [
+          19.463246679138553,
+          16.191627460765925,
+          -1.7518905444184298
+        ],
+        "target": [
+          23.500000000000004,
+          0.9,
+          16.3
+        ],
+        "azimuth": -2.9215926535897934,
+        "polar": 0.88,
+        "distance": 24,
+        "frontage": "south",
+        "azimuthBase": 3.141592653589793,
+        "relativeAzimuth": 0.2200000000000002,
+        "enabled": true,
+        "damping": true,
+        "projectionMatrix": [
+          1.806105562893383,
+          0,
+          0,
+          0,
+          0,
+          2.605089064693802,
+          0,
+          0,
+          0,
+          0,
+          -1.0015011258443833,
+          -1,
+          0,
+          0,
+          -0.3002251688766575,
+          0
+        ],
+        "matrixWorld": [
+          -0.9758974493306056,
+          1.3877787807814457e-17,
+          0.21822962308086918,
+          0,
+          0.1390452540440007,
+          0.7707388788989693,
+          0.6217941764614713,
+          0,
+          -0.16819805503589375,
+          0.6371511441985803,
+          -0.7521621060174348,
+          0,
+          19.463246679138553,
+          16.191627460765925,
+          -1.7518905444184298,
+          1
+        ],
+        "limits": {
+          "azimuth": [
+            -0.65,
+            0.65
+          ],
+          "polar": [
+            0.66,
+            1.05
+          ],
+          "distance": [
+            22,
+            48
+          ]
+        }
+      }
+    },
+    {
+      "id": "all-three-encounters-complete-with-distinct-choices",
+      "pass": true
+    },
+    {
+      "id": "chinese-encounter-chain-resumes",
+      "pass": true
+    },
+    {
+      "id": "south-facing-walk-is-blocked-by-south-facade",
+      "pass": true,
+      "evidence": {
+        "before": {
+          "x": 24.329,
+          "y": -19.48,
+          "tick": 1757,
+          "facing": "south",
+          "heading": 2.921592,
+          "moving": false,
+          "paused": false,
+          "visitedIds": [
+            "crossing",
+            "mitsui",
+            "mufg"
+          ],
+          "readSourceIds": [
+            "crossing"
+          ],
+          "choiceIds": {
+            "crossing": "north-first",
+            "mitsui": "street-only",
+            "mufg": "no-cash-stop"
+          },
+          "selectedTargetId": "mufg",
+          "nearbyTargetId": "mufg",
+          "nearestTargetId": "mufg",
+          "targetDistance": 1,
+          "destination": null,
+          "waypoints": []
+        },
+        "after": {
+          "x": 24.635,
+          "y": -19.48,
+          "tick": 1793,
+          "facing": "south",
+          "heading": 2.921592,
+          "moving": false,
+          "paused": false,
+          "visitedIds": [
+            "crossing",
+            "mitsui",
+            "mufg"
+          ],
+          "readSourceIds": [
+            "crossing"
+          ],
+          "choiceIds": {
+            "crossing": "north-first",
+            "mitsui": "street-only",
+            "mufg": "no-cash-stop"
+          },
+          "selectedTargetId": "mufg",
+          "nearbyTargetId": "mufg",
+          "nearestTargetId": "mufg",
+          "targetDistance": 1,
+          "destination": null,
+          "waypoints": []
+        }
+      }
+    },
+    {
+      "id": "download-reflects-choices-and-escaped-personal-note",
+      "pass": true,
+      "evidence": {
+        "text": "把这段漫步寄给自己\n\n京都 · 四条通 · 2026-10-05\n\n一段简短的探索预览，尚非完整旅行攻略。\n\n你的小小旅程\n四条乌丸路口\n\n四条烏丸交差点 東側横断歩道\n\n先逛北侧，将路口记作地标。\n\n横道\n地图记录为信号控制横道，设有盲道与声音提示。\n南侧地标\n三菱 UFJ 官方将京都支店标在路口东南角的京都钻石大厦内。\n\n互动点位于地图中横道 465069430 的北端。位置描述名称、斑马线宽度和游戏信号为设计表达。\n\n我的个人笔记\n\n<b data-personal-note>晚风 & \"灯光\"</b>\nA quiet crossing.\n\n来源与详情\n旅行手记\n京都三井大厦\n\n京都三井ビルディング\n\n继续走地面；三井大厦留在回忆里，不加入车站计划。\n\n楼名\n地图中的日文楼名是「京都三井ビルディング」。\n交通线索\n店家 2024 年官方开店说明列出阪急烏丸站、地铁四条站与 20 号出口。\n出发前\n请以现场站内指示为准。本场景未还原地下通道，也未据此确认店铺现行营业时间。\n\n这是楼前的游戏互动点；尚未还原实际入口与室内。\n\n来源与详情\n旅行手记\n三菱 UFJ · 京都支店\n\n三菱ＵＦＪ銀行 京都支店\n\n不安排现金服务停留，仅将此处保留在散步回忆里。\n\nATM 场所时间\n每日 06:00–24:00；每月第二个周六 21:00 至次日 07:00 停用。\n境外银行卡\n支持的卡可提取日元。银联／JCB／DISCOVER 服务于 23:50 停止。请向 MUFG 与发卡行确认卡片可用性及费用。\n现金换汇\nWorld Currency Shop：一层，工作日 10:00–17:00。请至少提前 30 分钟到达；周末及公众假日休息。\n行前确认\n这些是公示时间，并非实时营业状态。本页不提供汇率或你的最终费用。\n\n这是楼前的游戏互动点；尚未还原实际入口与室内。\n\n来源与详情\n© OpenStreetMap contributors · ODbL 1.0\n街景经过风格化处理，已核实的旅行详情请查看来源。",
+        "personal": "<b data-personal-note>晚风 & \"灯光\"</b>\nA quiet crossing.",
+        "injectedElement": false,
+        "width": 390,
+        "language": "zh"
+      }
+    },
+    {
+      "id": "export-fits-phone-width",
+      "pass": true,
+      "evidence": 390
+    },
+    {
+      "id": "packaged-artwork-credits-retain-authors-sources-and-licenses",
+      "pass": true,
+      "evidence": {
+        "text": "← Back to the walk / 返回散步\nPhoto credits / 照片署名\nData & software / 数据与软件\nSources & credits\n资料来源与署名\n\nThe street combines sourced place facts with an original, simplified 3D interpretation. The photographs below are visual references for façade geometry and materials. Photograph pixels are not included in the scene, and the photographers do not endorse this project.\n\n这条街结合了有来源的地点事实与原创的简化三维表达。以下照片为建筑立面的造型和材质提供视觉参考；场景未使用照片像素，摄影作者也未为本项目背书。\n\nArchitecture photographs / 建筑照片\n\nUse and changes for all four references: Visual reference for original simplified façade geometry and materials; photograph pixels are not included. Shapes and finishes are interpreted, not measured reproductions. Capture dates describe the photographs; they do not guarantee present-day appearance, entrances or access.\n\n四张照片的使用与改动说明：用于原创简化立面造型和材质的视觉参考，未将照片像素用于场景。形状与表面经过简化设计，并非实测复刻。拍摄日期仅说明照片时间，不保证当前外观、入口或通行条件。\n\nKyoto Mitsui Building night 20210103183745.jpg\n\ninunami · 2021-01-03 · CC-BY-2.0\n\nPhotograph and attribution / 照片与署名 · Reviewed source revision / 核对版本\n\nSumitomo Mitsui Banking Corporation Kyoto Branch & Shijo Branch & Fushimi Branch.jpg\n\nSuikotei · 2026-01-04 · CC-BY-4.0\n\nPhotograph and attribution / 照片与署名 · Reviewed source revision / 核对版本\n\nKyoto Dia Building at Shijo-Karasuma intersection 20210103183825.jpg\n\ninunami · 2021-01-03 · CC-BY-2.0\n\nPhotograph and attribution / 照片与署名 · Reviewed source revision / 核对版本\n\nMUFG Bank Kyoto Branch & Kyoto-Chuo Branch.jpg\n\nSuikotei · 2026-01-04 · CC-BY-4.0\n\nPhotograph and attribution / 照片与署名 · Reviewed source revision / 核对版本\n\nReference metadata, licenses and original-image hashes / 参考资料、许可与原图校验值\n\nMap data & place facts / 地图数据与地点事实\n\n© OpenStreetMap contributors. Building spans and crossing positions use OpenStreetMap data under the Open Database License (ODbL) 1.0. Geometry source extract. Materials, model heights, interaction points and unassigned doors include authored approximations.\n\n建筑沿街范围与横道位置使用 OpenStreetMap 数据，遵循 ODbL 1.0。材质、模型高度、互动位置和未匹配租户的门包含设计近似值。到达游戏互动点不等于现实到访或事实核验。\n\nService and access details are paraphrased from the operators linked inside each encounter. Operator fact sources and review dates / 运营方事实来源与核对日期.\n\nSoftware & fonts / 软件与字体\n\nThe scene uses Three.js, licensed under MIT. UI text uses a renamed subset of Noto Sans CJK (“Kyoto Sans”); the model's lettering also uses Noto. The font remains under the SIL Open Font License 1.1.\n\n三维场景使用 MIT 许可的 Three.js。界面使用重命名为「Kyoto Sans」的 Noto Sans CJK 字体子集，模型文字也使用 Noto 字体；字体遵循 SIL Open Font License 1.1。\n\nThree.js · MIT license / 许可全文\nNoto · SIL Open Font License 1.1 / 许可全文\nExplore the real places / 查看真实地点\n\nMitsui on Google Maps · Daiya on Google Maps\n\n这些链接在 Google Maps 中搜索大楼，供你自行查看。它们不是经过核对的街景全景链接；本场景未从 Google Street View 提取图像或建筑模型。\n\nThese are external building searches, not verified panorama links. No Google Street View imagery or geometry was extracted for this scene.\n\nSources reviewed 2026-10-05 · 资料核对日期：2026-10-05",
+        "links": [
+          "http://127.0.0.1:4187/",
+          "http://127.0.0.1:4187/credits.html#photos",
+          "http://127.0.0.1:4187/credits.html#data",
+          "https://creativecommons.org/licenses/by/2.0/",
+          "https://commons.wikimedia.org/wiki/File:Kyoto_Mitsui_Building_night_20210103183745.jpg",
+          "https://commons.wikimedia.org/w/index.php?title=File:Kyoto_Mitsui_Building_night_20210103183745.jpg&oldid=1261825325",
+          "https://creativecommons.org/licenses/by/4.0/",
+          "https://commons.wikimedia.org/wiki/File:Sumitomo_Mitsui_Banking_Corporation_Kyoto_Branch_%26_Shijo_Branch_%26_Fushimi_Branch.jpg",
+          "https://commons.wikimedia.org/w/index.php?title=File:Sumitomo_Mitsui_Banking_Corporation_Kyoto_Branch_%26_Shijo_Branch_%26_Fushimi_Branch.jpg&oldid=1260218652",
+          "https://creativecommons.org/licenses/by/2.0/",
+          "https://commons.wikimedia.org/wiki/File:Kyoto_Dia_Building_at_Shijo-Karasuma_intersection_20210103183825.jpg",
+          "https://commons.wikimedia.org/w/index.php?title=File:Kyoto_Dia_Building_at_Shijo-Karasuma_intersection_20210103183825.jpg&oldid=1214410836",
+          "https://creativecommons.org/licenses/by/4.0/",
+          "https://commons.wikimedia.org/wiki/File:MUFG_Bank_Kyoto_Branch_%26_Kyoto-Chuo_Branch.jpg",
+          "https://commons.wikimedia.org/w/index.php?title=File:MUFG_Bank_Kyoto_Branch_%26_Kyoto-Chuo_Branch.jpg&oldid=1229623996",
+          "http://127.0.0.1:4187/content-evidence/facade-references.json",
+          "https://www.openstreetmap.org/copyright",
+          "https://opendatacommons.org/licenses/odbl/1-0/",
+          "http://127.0.0.1:4187/content-evidence/geometry.json",
+          "http://127.0.0.1:4187/content-evidence/operator-facts.json",
+          "https://threejs.org/",
+          "https://github.com/notofonts/noto-cjk",
+          "https://www.google.com/maps/search/?api=1&query=%E4%BA%AC%E9%83%BD%E4%B8%89%E4%BA%95%E3%83%93%E3%83%AB",
+          "https://www.google.com/maps/search/?api=1&query=%E4%BA%AC%E9%83%BD%E3%83%80%E3%82%A4%E3%83%A4%E3%83%93%E3%83%AB"
+        ],
+        "localCreditLinks": [
+          "/index.html",
+          "/credits.html",
+          "/credits.html",
+          "/content-evidence/facade-references.json",
+          "/content-evidence/geometry.json",
+          "/content-evidence/operator-facts.json"
+        ]
+      }
+    },
+    {
+      "id": "context-loss-injection-is-supported",
+      "pass": true
+    },
+    {
+      "id": "context-loss-keeps-journey-notes-and-localized-recovery",
+      "pass": true
+    },
+    {
+      "id": "retry-restores-rendering-with-the-same-saved-journey",
+      "pass": true
+    },
+    {
+      "id": "cancel-restart-retains-journey-and-notes",
+      "pass": true
+    },
+    {
+      "id": "confirmed-restart-clears-progress-and-personal-notes",
+      "pass": true
+    },
+    {
+      "id": "walk-has-no-external-requests-or-browser-errors",
+      "pass": true,
+      "evidence": {
+        "requests": [
+          "/index.html",
+          "/assets/index-DHReIO-L.js",
+          "/assets/index-BaUP8L_C.css",
+          "/assets/kyoto-sans-B-r8Uim3.woff",
+          "/models/shijo-block.glb",
+          "/models/traveller.glb",
+          "/index.html",
+          "/assets/index-DHReIO-L.js",
+          "/assets/index-BaUP8L_C.css",
+          "/assets/kyoto-sans-B-r8Uim3.woff",
+          "/models/shijo-block.glb",
+          "/models/traveller.glb",
+          "/credits.html",
+          "/index.html",
+          "/assets/index-DHReIO-L.js",
+          "/assets/index-BaUP8L_C.css",
+          "/assets/kyoto-sans-B-r8Uim3.woff",
+          "/models/shijo-block.glb",
+          "/models/traveller.glb"
+        ],
+        "externalRequests": [],
+        "pageErrors": [],
+        "consoleErrors": []
+      }
+    },
+    {
+      "id": "legacy-v1-mid-journey-migrates-in-the-real-app",
+      "pass": true,
+      "evidence": {
+        "before": {
+          "locale": "zh",
+          "hints": true,
+          "game": {
+            "x": 22.241,
+            "y": 2.33,
+            "tick": 927,
+            "facing": "east",
+            "moving": false,
+            "paused": false,
+            "visitedIds": [
+              "crossing"
+            ],
+            "readSourceIds": [
+              "crossing"
+            ],
+            "choiceIds": {
+              "crossing": "north-first"
+            },
+            "selectedTargetId": "mitsui",
+            "nearbyTargetId": "crossing",
+            "nearestTargetId": "crossing",
+            "targetDistance": 1.5,
+            "destination": null,
+            "waypoints": []
+          }
+        },
+        "after": {
+          "version": 2,
+          "locale": "zh",
+          "hints": true,
+          "notes": {},
+          "game": {
+            "x": 22.241,
+            "y": 2.33,
+            "tick": 927,
+            "facing": "east",
+            "heading": 1.5707963267948966,
+            "moving": false,
+            "paused": false,
+            "visitedIds": [
+              "crossing"
+            ],
+            "readSourceIds": [
+              "crossing"
+            ],
+            "choiceIds": {
+              "crossing": "north-first"
+            },
+            "selectedTargetId": "mitsui",
+            "nearbyTargetId": "crossing",
+            "nearestTargetId": "crossing",
+            "targetDistance": 1.5,
+            "destination": null,
+            "waypoints": []
+          }
+        }
+      }
+    },
+    {
+      "id": "legacy-v1-mid-journey-migration-survives-reload",
+      "pass": true
+    },
+    {
+      "id": "legacy-v1-mid-journey-no-external-requests-or-errors",
+      "pass": true,
+      "evidence": {
+        "requests": [
+          "/index.html",
+          "/assets/index-DHReIO-L.js",
+          "/assets/index-BaUP8L_C.css",
+          "/assets/kyoto-sans-B-r8Uim3.woff",
+          "/models/shijo-block.glb",
+          "/models/traveller.glb",
+          "/index.html",
+          "/assets/index-DHReIO-L.js",
+          "/assets/index-BaUP8L_C.css",
+          "/assets/kyoto-sans-B-r8Uim3.woff",
+          "/models/shijo-block.glb",
+          "/models/traveller.glb"
+        ],
+        "externalRequests": [],
+        "pageErrors": [],
+        "consoleErrors": []
+      }
+    },
+    {
+      "id": "legacy-v1-completed-migrates-in-the-real-app",
+      "pass": true,
+      "evidence": {
+        "before": {
+          "locale": "zh",
+          "hints": true,
+          "game": {
+            "x": 24.7,
+            "y": -18.5,
+            "tick": 1975,
+            "facing": "east",
+            "moving": false,
+            "paused": false,
+            "visitedIds": [
+              "crossing",
+              "mitsui",
+              "mufg"
+            ],
+            "readSourceIds": [
+              "crossing"
+            ],
+            "choiceIds": {
+              "crossing": "north-first",
+              "mitsui": "street-only",
+              "mufg": "no-cash-stop"
+            },
+            "selectedTargetId": "mufg",
+            "nearbyTargetId": "mufg",
+            "nearestTargetId": "mufg",
+            "targetDistance": 0,
+            "destination": null,
+            "waypoints": []
+          }
+        },
+        "after": {
+          "version": 2,
+          "locale": "zh",
+          "hints": true,
+          "notes": {},
+          "game": {
+            "x": 24.7,
+            "y": -18.5,
+            "tick": 1975,
+            "facing": "east",
+            "heading": 1.5707963267948966,
+            "moving": false,
+            "paused": false,
+            "visitedIds": [
+              "crossing",
+              "mitsui",
+              "mufg"
+            ],
+            "readSourceIds": [
+              "crossing"
+            ],
+            "choiceIds": {
+              "crossing": "north-first",
+              "mitsui": "street-only",
+              "mufg": "no-cash-stop"
+            },
+            "selectedTargetId": "mufg",
+            "nearbyTargetId": "mufg",
+            "nearestTargetId": "mufg",
+            "targetDistance": 0,
+            "destination": null,
+            "waypoints": []
+          }
+        }
+      }
+    },
+    {
+      "id": "legacy-v1-completed-migration-survives-reload",
+      "pass": true
+    },
+    {
+      "id": "restarting-migrated-journey-does-not-resurrect-legacy-progress",
+      "pass": true
+    },
+    {
+      "id": "legacy-v1-completed-no-external-requests-or-errors",
+      "pass": true,
+      "evidence": {
+        "requests": [
+          "/index.html",
+          "/assets/index-DHReIO-L.js",
+          "/assets/index-BaUP8L_C.css",
+          "/assets/kyoto-sans-B-r8Uim3.woff",
+          "/models/shijo-block.glb",
+          "/models/traveller.glb",
+          "/index.html",
+          "/assets/index-DHReIO-L.js",
+          "/assets/index-BaUP8L_C.css",
+          "/assets/kyoto-sans-B-r8Uim3.woff",
+          "/models/shijo-block.glb",
+          "/models/traveller.glb",
+          "/index.html",
+          "/assets/index-DHReIO-L.js",
+          "/assets/index-BaUP8L_C.css",
+          "/assets/kyoto-sans-B-r8Uim3.woff",
+          "/models/shijo-block.glb",
+          "/models/traveller.glb"
+        ],
+        "externalRequests": [],
+        "pageErrors": [],
+        "consoleErrors": []
+      }
+    },
+    {
+      "id": "webgl-failure-keeps-existing-journey-and-notes",
+      "pass": true
+    },
+    {
+      "id": "webgl-failure-leaves-field-note-export-available",
+      "pass": true
+    },
+    {
+      "id": "webgl-failure-recovery-translates",
+      "pass": true
+    },
+    {
+      "id": "webgl-failure-has-no-uncaught-errors-or-external-requests",
+      "pass": true,
+      "evidence": {
+        "requests": [
+          "/index.html",
+          "/assets/index-DHReIO-L.js",
+          "/assets/index-BaUP8L_C.css",
+          "/assets/kyoto-sans-B-r8Uim3.woff"
+        ],
+        "externalRequests": [],
+        "pageErrors": [],
+        "consoleErrors": [
+          "THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context."
+        ],
+        "consoleNote": "Three context-creation diagnostics are expected in this deliberately unavailable scenario."
+      }
+    }
+  ],
+  "actions": [
+    {
+      "description": "Walk right relative to the guided camera",
+      "time": "2026-10-05T06:53:20.595Z"
+    },
+    {
+      "description": "Click visible ground after orbit and resize",
+      "time": "2026-10-05T06:54:09.787Z"
+    },
+    {
+      "description": "Click the actual lower road surface",
+      "time": "2026-10-05T06:54:19.181Z"
+    },
+    {
+      "description": "Walk through the journey control to crossing",
+      "time": "2026-10-05T06:55:12.567Z"
+    },
+    {
+      "description": "Walk through the journey control to mitsui",
+      "time": "2026-10-05T06:57:17.035Z"
+    },
+    {
+      "description": "Walk through the journey control to mufg",
+      "time": "2026-10-05T06:58:49.664Z"
+    }
+  ],
+  "scenarios": {
+    "three-encounter-walk": {
+      "requests": [
+        "/index.html",
+        "/assets/index-DHReIO-L.js",
+        "/assets/index-BaUP8L_C.css",
+        "/assets/kyoto-sans-B-r8Uim3.woff",
+        "/models/shijo-block.glb",
+        "/models/traveller.glb",
+        "/index.html",
+        "/assets/index-DHReIO-L.js",
+        "/assets/index-BaUP8L_C.css",
+        "/assets/kyoto-sans-B-r8Uim3.woff",
+        "/models/shijo-block.glb",
+        "/models/traveller.glb",
+        "/credits.html",
+        "/index.html",
+        "/assets/index-DHReIO-L.js",
+        "/assets/index-BaUP8L_C.css",
+        "/assets/kyoto-sans-B-r8Uim3.woff",
+        "/models/shijo-block.glb",
+        "/models/traveller.glb"
+      ],
+      "externalRequests": [],
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    "legacy-v1-mid-journey": {
+      "requests": [
+        "/index.html",
+        "/assets/index-DHReIO-L.js",
+        "/assets/index-BaUP8L_C.css",
+        "/assets/kyoto-sans-B-r8Uim3.woff",
+        "/models/shijo-block.glb",
+        "/models/traveller.glb",
+        "/index.html",
+        "/assets/index-DHReIO-L.js",
+        "/assets/index-BaUP8L_C.css",
+        "/assets/kyoto-sans-B-r8Uim3.woff",
+        "/models/shijo-block.glb",
+        "/models/traveller.glb"
+      ],
+      "externalRequests": [],
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    "legacy-v1-completed": {
+      "requests": [
+        "/index.html",
+        "/assets/index-DHReIO-L.js",
+        "/assets/index-BaUP8L_C.css",
+        "/assets/kyoto-sans-B-r8Uim3.woff",
+        "/models/shijo-block.glb",
+        "/models/traveller.glb",
+        "/index.html",
+        "/assets/index-DHReIO-L.js",
+        "/assets/index-BaUP8L_C.css",
+        "/assets/kyoto-sans-B-r8Uim3.woff",
+        "/models/shijo-block.glb",
+        "/models/traveller.glb",
+        "/index.html",
+        "/assets/index-DHReIO-L.js",
+        "/assets/index-BaUP8L_C.css",
+        "/assets/kyoto-sans-B-r8Uim3.woff",
+        "/models/shijo-block.glb",
+        "/models/traveller.glb"
+      ],
+      "externalRequests": [],
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    "webgl-unavailable": {
+      "requests": [
+        "/index.html",
+        "/assets/index-DHReIO-L.js",
+        "/assets/index-BaUP8L_C.css",
+        "/assets/kyoto-sans-B-r8Uim3.woff"
+      ],
+      "externalRequests": [],
+      "pageErrors": [],
+      "consoleErrors": [
+        "THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context."
+      ]
+    }
+  },
+  "screenshots": [
+    {
+      "name": "opening-en",
+      "path": "/workspace/scratch/experience-qa/final-facades/opening-en.png",
+      "sha256": "1600be263eae50ea747937edd53d77ea4240b393348604e989206007a5e34bd7"
+    },
+    {
+      "name": "opening-zh",
+      "path": "/workspace/scratch/experience-qa/final-facades/opening-zh.png",
+      "sha256": "9c2ca8a1a1f016056251a1061ced58225fb621a0c096945342bfd63e6a88da18"
+    },
+    {
+      "name": "compact-zh",
+      "path": "/workspace/scratch/experience-qa/final-facades/compact-zh.png",
+      "sha256": "0d6636a5bdfc5b5a204f483069f2a477130370cad89b5bfea3fe1abe6ad5698e"
+    },
+    {
+      "name": "actor-near-facade",
+      "path": "/workspace/scratch/experience-qa/final-facades/actor-near-facade.png",
+      "sha256": "45f699e64196379b86c2a5d02b5cb4c37eb898b7c254c337aad903410723a9cc"
+    },
+    {
+      "name": "crossing-card-en",
+      "path": "/workspace/scratch/experience-qa/final-facades/crossing-card-en.png",
+      "sha256": "1b7aed62b112a98f328102869bf5c4e2fc9af5c9c94ed4bb9cae1a546c9e97c0"
+    },
+    {
+      "name": "crossing-card-zh",
+      "path": "/workspace/scratch/experience-qa/final-facades/crossing-card-zh.png",
+      "sha256": "5bda179a3a4ea3b56d4de1aab54d2364f5144f7e84b5bfbe806691c5f9bec936"
+    },
+    {
+      "name": "saved-personal-note-zh",
+      "path": "/workspace/scratch/experience-qa/final-facades/saved-personal-note-zh.png",
+      "sha256": "085180f591eadbc48451859ab504f15fd7a43edddbc70fa6fc1b2af1129c4e2b"
+    },
+    {
+      "name": "south-bank-approach",
+      "path": "/workspace/scratch/experience-qa/final-facades/south-bank-approach.png",
+      "sha256": "e3ce5053d5712bb548b9a724f4accb73ffe49da9b0210d594b7b642bec608a41"
+    },
+    {
+      "name": "bank-card-zh",
+      "path": "/workspace/scratch/experience-qa/final-facades/bank-card-zh.png",
+      "sha256": "b44701da3e73e543e1d8e7e6778ba272371f183ffb30009e117ed50a65477355"
+    },
+    {
+      "name": "completed-walk-zh",
+      "path": "/workspace/scratch/experience-qa/final-facades/completed-walk-zh.png",
+      "sha256": "3e96a02fdb3d7450be6f99af53dc239bd226a3f5079be673fd3c6438c999734a"
+    },
+    {
+      "name": "field-notes-zh-mobile",
+      "path": "/workspace/scratch/experience-qa/final-facades/field-notes-zh-mobile.png",
+      "sha256": "fefd17c12f1a110972c756ff147870ef7b726cfd9ff51e84cd1ef352b970a3b4"
+    },
+    {
+      "name": "field-notes-zh-print",
+      "path": "/workspace/scratch/experience-qa/final-facades/field-notes-zh-print.png",
+      "sha256": "6a13652a18f626b20707a126b2cc0a9c74d9925e60b28d5fa26d6aec3cf09a57"
+    },
+    {
+      "name": "artwork-credits",
+      "path": "/workspace/scratch/experience-qa/final-facades/artwork-credits.png",
+      "sha256": "2627ef3801d5902f74553830b94f551eb0d36c562d25400424089f9c0a2da945"
+    },
+    {
+      "name": "context-loss-zh",
+      "path": "/workspace/scratch/experience-qa/final-facades/context-loss-zh.png",
+      "sha256": "6ff1c5c9c500a22ff909ce6e9fdba61f411703f62ceb456a40762ca2e3028073"
+    },
+    {
+      "name": "webgl-unavailable-en",
+      "path": "/workspace/scratch/experience-qa/final-facades/webgl-unavailable-en.png",
+      "sha256": "c2eb658e6944523f1c1e6467902f02e98f2321e042299aa0371c9870d589d586"
+    }
+  ],
+  "observations": {
+    "openingCamera": {
+      "position": [
+        29.036753320861457,
+        16.191627460765925,
+        18.151890544418432
+      ],
+      "target": [
+        25.000000000000004,
+        0.9,
+        0.1000000000000001
+      ],
+      "azimuth": 0.22000000000000006,
+      "polar": 0.88,
+      "distance": 24,
+      "frontage": "north",
+      "azimuthBase": 0,
+      "relativeAzimuth": 0.22000000000000006,
+      "enabled": true,
+      "damping": true,
+      "projectionMatrix": [
+        1.806105562893383,
+        0,
+        0,
+        0,
+        0,
+        2.605089064693802,
+        0,
+        0,
+        0,
+        0,
+        -1.0015011258443833,
+        -1,
+        0,
+        0,
+        -0.3002251688766575,
+        0
+      ],
+      "matrixWorld": [
+        0.9758974493306055,
+        1.3877787807814457e-17,
+        -0.21822962308086938,
+        0,
+        -0.1390452540440008,
+        0.7707388788989693,
+        -0.6217941764614714,
+        0,
+        0.16819805503589388,
+        0.6371511441985804,
+        0.7521621060174346,
+        0,
+        29.036753320861457,
+        16.191627460765925,
+        18.151890544418432,
+        1
+      ],
+      "limits": {
+        "azimuth": [
+          -0.65,
+          0.65
+        ],
+        "polar": [
+          0.66,
+          1.05
+        ],
+        "distance": [
+          22,
+          48
+        ]
+      }
+    },
+    "renderer": {
+      "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    "approach-crossing": {
+      "status": "arrived",
+      "elapsedMs": 53429,
+      "final": {
+        "x": 20.721,
+        "y": 2.33,
+        "tick": 837,
+        "facing": "west",
+        "heading": -1.815775,
+        "moving": false,
+        "paused": false,
+        "visitedIds": [],
+        "readSourceIds": [],
+        "choiceIds": {},
+        "selectedTargetId": "crossing",
+        "nearbyTargetId": "crossing",
+        "nearestTargetId": "crossing",
+        "targetDistance": 0,
+        "destination": null,
+        "waypoints": []
+      },
+      "samples": [
+        {
+          "elapsedMs": 4,
+          "renderedFrames": 58,
+          "tick": 723,
+          "x": 28.731,
+          "y": 4.34
+        },
+        {
+          "elapsedMs": 2660,
+          "renderedFrames": 59,
+          "tick": 723,
+          "x": 28.731,
+          "y": 4.34
+        },
+        {
+          "elapsedMs": 6036,
+          "renderedFrames": 60,
+          "tick": 729,
+          "x": 28.287,
+          "y": 4.229
+        },
+        {
+          "elapsedMs": 8760,
+          "renderedFrames": 61,
+          "tick": 735,
+          "x": 27.843,
+          "y": 4.117
+        },
+        {
+          "elapsedMs": 13172,
+          "renderedFrames": 62,
+          "tick": 741,
+          "x": 27.399,
+          "y": 4.006
+        },
+        {
+          "elapsedMs": 17429,
+          "renderedFrames": 63,
+          "tick": 747,
+          "x": 26.955,
+          "y": 3.895
+        },
+        {
+          "elapsedMs": 20206,
+          "renderedFrames": 64,
+          "tick": 753,
+          "x": 26.511,
+          "y": 3.783
+        },
+        {
+          "elapsedMs": 22464,
+          "renderedFrames": 65,
+          "tick": 759,
+          "x": 26.067,
+          "y": 3.672
+        },
+        {
+          "elapsedMs": 24738,
+          "renderedFrames": 66,
+          "tick": 765,
+          "x": 25.623,
+          "y": 3.56
+        },
+        {
+          "elapsedMs": 26967,
+          "renderedFrames": 67,
+          "tick": 771,
+          "x": 25.179,
+          "y": 3.449
+        },
+        {
+          "elapsedMs": 29179,
+          "renderedFrames": 68,
+          "tick": 777,
+          "x": 24.735,
+          "y": 3.337
+        },
+        {
+          "elapsedMs": 31331,
+          "renderedFrames": 69,
+          "tick": 783,
+          "x": 24.291,
+          "y": 3.226
+        },
+        {
+          "elapsedMs": 33445,
+          "renderedFrames": 70,
+          "tick": 789,
+          "x": 23.847,
+          "y": 3.115
+        },
+        {
+          "elapsedMs": 35588,
+          "renderedFrames": 71,
+          "tick": 795,
+          "x": 23.403,
+          "y": 3.003
+        },
+        {
+          "elapsedMs": 37852,
+          "renderedFrames": 72,
+          "tick": 801,
+          "x": 22.959,
+          "y": 2.892
+        },
+        {
+          "elapsedMs": 39930,
+          "renderedFrames": 73,
+          "tick": 807,
+          "x": 22.515,
+          "y": 2.78
+        },
+        {
+          "elapsedMs": 42565,
+          "renderedFrames": 74,
+          "tick": 813,
+          "x": 22.071,
+          "y": 2.669
+        },
+        {
+          "elapsedMs": 44973,
+          "renderedFrames": 75,
+          "tick": 819,
+          "x": 21.627,
+          "y": 2.557
+        },
+        {
+          "elapsedMs": 47269,
+          "renderedFrames": 76,
+          "tick": 825,
+          "x": 21.183,
+          "y": 2.446
+        },
+        {
+          "elapsedMs": 49820,
+          "renderedFrames": 77,
+          "tick": 831,
+          "x": 20.739,
+          "y": 2.335
+        },
+        {
+          "elapsedMs": 53429,
+          "renderedFrames": 78,
+          "tick": 837,
+          "x": 20.721,
+          "y": 2.33
+        }
+      ]
+    },
+    "approach-mitsui": {
+      "status": "arrived",
+      "elapsedMs": 51719,
+      "final": {
+        "x": 32,
+        "y": 3.2,
+        "tick": 1107,
+        "facing": "east",
+        "heading": 1.496553,
+        "moving": false,
+        "paused": false,
+        "visitedIds": [
+          "crossing"
+        ],
+        "readSourceIds": [
+          "crossing"
+        ],
+        "choiceIds": {
+          "crossing": "north-first"
+        },
+        "selectedTargetId": "mitsui",
+        "nearbyTargetId": "mitsui",
+        "nearestTargetId": "mitsui",
+        "targetDistance": 0,
+        "destination": null,
+        "waypoints": []
+      },
+      "samples": [
+        {
+          "elapsedMs": 2259,
+          "renderedFrames": 5,
+          "tick": 975,
+          "x": 22.227,
+          "y": 2.514
+        },
+        {
+          "elapsedMs": 4573,
+          "renderedFrames": 6,
+          "tick": 981,
+          "x": 22.683,
+          "y": 2.544
+        },
+        {
+          "elapsedMs": 6750,
+          "renderedFrames": 7,
+          "tick": 987,
+          "x": 23.139,
+          "y": 2.574
+        },
+        {
+          "elapsedMs": 8939,
+          "renderedFrames": 8,
+          "tick": 993,
+          "x": 23.595,
+          "y": 2.604
+        },
+        {
+          "elapsedMs": 11082,
+          "renderedFrames": 9,
+          "tick": 999,
+          "x": 24.051,
+          "y": 2.634
+        },
+        {
+          "elapsedMs": 13305,
+          "renderedFrames": 10,
+          "tick": 1005,
+          "x": 24.507,
+          "y": 2.664
+        },
+        {
+          "elapsedMs": 15551,
+          "renderedFrames": 11,
+          "tick": 1011,
+          "x": 24.963,
+          "y": 2.694
+        },
+        {
+          "elapsedMs": 17597,
+          "renderedFrames": 12,
+          "tick": 1017,
+          "x": 25.419,
+          "y": 2.724
+        },
+        {
+          "elapsedMs": 19757,
+          "renderedFrames": 13,
+          "tick": 1023,
+          "x": 25.875,
+          "y": 2.756
+        },
+        {
+          "elapsedMs": 21920,
+          "renderedFrames": 14,
+          "tick": 1029,
+          "x": 26.331,
+          "y": 2.789
+        },
+        {
+          "elapsedMs": 24116,
+          "renderedFrames": 15,
+          "tick": 1035,
+          "x": 26.787,
+          "y": 2.822
+        },
+        {
+          "elapsedMs": 26300,
+          "renderedFrames": 16,
+          "tick": 1041,
+          "x": 27.243,
+          "y": 2.855
+        },
+        {
+          "elapsedMs": 28498,
+          "renderedFrames": 17,
+          "tick": 1047,
+          "x": 27.699,
+          "y": 2.888
+        },
+        {
+          "elapsedMs": 30802,
+          "renderedFrames": 18,
+          "tick": 1053,
+          "x": 28.155,
+          "y": 2.921
+        },
+        {
+          "elapsedMs": 33091,
+          "renderedFrames": 19,
+          "tick": 1059,
+          "x": 28.611,
+          "y": 2.954
+        },
+        {
+          "elapsedMs": 35396,
+          "renderedFrames": 20,
+          "tick": 1065,
+          "x": 29.067,
+          "y": 2.987
+        },
+        {
+          "elapsedMs": 37671,
+          "renderedFrames": 21,
+          "tick": 1071,
+          "x": 29.523,
+          "y": 3.02
+        },
+        {
+          "elapsedMs": 39946,
+          "renderedFrames": 22,
+          "tick": 1077,
+          "x": 29.979,
+          "y": 3.053
+        },
+        {
+          "elapsedMs": 42184,
+          "renderedFrames": 23,
+          "tick": 1083,
+          "x": 30.435,
+          "y": 3.086
+        },
+        {
+          "elapsedMs": 44482,
+          "renderedFrames": 24,
+          "tick": 1089,
+          "x": 30.891,
+          "y": 3.12
+        },
+        {
+          "elapsedMs": 46769,
+          "renderedFrames": 25,
+          "tick": 1095,
+          "x": 31.347,
+          "y": 3.153
+        },
+        {
+          "elapsedMs": 49255,
+          "renderedFrames": 26,
+          "tick": 1101,
+          "x": 31.803,
+          "y": 3.186
+        },
+        {
+          "elapsedMs": 51719,
+          "renderedFrames": 27,
+          "tick": 1107,
+          "x": 32,
+          "y": 3.2
+        }
+      ]
+    },
+    "approach-mufg": {
+      "status": "arrived",
+      "elapsedMs": 183091,
+      "final": {
+        "x": 24.7,
+        "y": -18.5,
+        "tick": 1638,
+        "facing": "east",
+        "heading": 1.81757,
+        "moving": false,
+        "paused": false,
+        "visitedIds": [
+          "crossing",
+          "mitsui"
+        ],
+        "readSourceIds": [
+          "crossing"
+        ],
+        "choiceIds": {
+          "crossing": "north-first",
+          "mitsui": "street-only"
+        },
+        "selectedTargetId": "mufg",
+        "nearbyTargetId": "mufg",
+        "nearestTargetId": "mufg",
+        "targetDistance": 0,
+        "destination": null,
+        "waypoints": []
+      },
+      "samples": [
+        {
+          "elapsedMs": 2,
+          "renderedFrames": 38,
+          "tick": 1169,
+          "x": 32,
+          "y": 3.2
+        },
+        {
+          "elapsedMs": 2422,
+          "renderedFrames": 39,
+          "tick": 1170,
+          "x": 31.924,
+          "y": 3.194
+        },
+        {
+          "elapsedMs": 4812,
+          "renderedFrames": 40,
+          "tick": 1176,
+          "x": 31.468,
+          "y": 3.158
+        },
+        {
+          "elapsedMs": 7160,
+          "renderedFrames": 41,
+          "tick": 1182,
+          "x": 31.012,
+          "y": 3.122
+        },
+        {
+          "elapsedMs": 9517,
+          "renderedFrames": 42,
+          "tick": 1188,
+          "x": 30.556,
+          "y": 3.086
+        },
+        {
+          "elapsedMs": 11778,
+          "renderedFrames": 43,
+          "tick": 1194,
+          "x": 30.1,
+          "y": 3.05
+        },
+        {
+          "elapsedMs": 14021,
+          "renderedFrames": 44,
+          "tick": 1200,
+          "x": 29.644,
+          "y": 3.014
+        },
+        {
+          "elapsedMs": 16282,
+          "renderedFrames": 45,
+          "tick": 1206,
+          "x": 29.188,
+          "y": 2.978
+        },
+        {
+          "elapsedMs": 18607,
+          "renderedFrames": 46,
+          "tick": 1212,
+          "x": 28.732,
+          "y": 2.942
+        },
+        {
+          "elapsedMs": 21465,
+          "renderedFrames": 47,
+          "tick": 1218,
+          "x": 28.276,
+          "y": 2.906
+        },
+        {
+          "elapsedMs": 23961,
+          "renderedFrames": 48,
+          "tick": 1224,
+          "x": 27.82,
+          "y": 2.87
+        },
+        {
+          "elapsedMs": 26467,
+          "renderedFrames": 49,
+          "tick": 1230,
+          "x": 27.364,
+          "y": 2.834
+        },
+        {
+          "elapsedMs": 28687,
+          "renderedFrames": 50,
+          "tick": 1236,
+          "x": 26.908,
+          "y": 2.798
+        },
+        {
+          "elapsedMs": 31047,
+          "renderedFrames": 51,
+          "tick": 1242,
+          "x": 26.452,
+          "y": 2.762
+        },
+        {
+          "elapsedMs": 33254,
+          "renderedFrames": 52,
+          "tick": 1248,
+          "x": 25.996,
+          "y": 2.726
+        },
+        {
+          "elapsedMs": 35377,
+          "renderedFrames": 53,
+          "tick": 1254,
+          "x": 25.54,
+          "y": 2.69
+        },
+        {
+          "elapsedMs": 37588,
+          "renderedFrames": 54,
+          "tick": 1260,
+          "x": 25.084,
+          "y": 2.654
+        },
+        {
+          "elapsedMs": 40196,
+          "renderedFrames": 55,
+          "tick": 1266,
+          "x": 24.628,
+          "y": 2.618
+        },
+        {
+          "elapsedMs": 42359,
+          "renderedFrames": 56,
+          "tick": 1272,
+          "x": 24.172,
+          "y": 2.582
+        },
+        {
+          "elapsedMs": 44401,
+          "renderedFrames": 57,
+          "tick": 1278,
+          "x": 23.716,
+          "y": 2.547
+        },
+        {
+          "elapsedMs": 46601,
+          "renderedFrames": 58,
+          "tick": 1284,
+          "x": 23.26,
+          "y": 2.514
+        },
+        {
+          "elapsedMs": 48992,
+          "renderedFrames": 59,
+          "tick": 1290,
+          "x": 22.804,
+          "y": 2.481
+        },
+        {
+          "elapsedMs": 51201,
+          "renderedFrames": 60,
+          "tick": 1296,
+          "x": 22.348,
+          "y": 2.448
+        },
+        {
+          "elapsedMs": 53699,
+          "renderedFrames": 61,
+          "tick": 1302,
+          "x": 21.892,
+          "y": 2.415
+        },
+        {
+          "elapsedMs": 57017,
+          "renderedFrames": 62,
+          "tick": 1308,
+          "x": 21.436,
+          "y": 2.382
+        },
+        {
+          "elapsedMs": 61449,
+          "renderedFrames": 63,
+          "tick": 1314,
+          "x": 20.98,
+          "y": 2.349
+        },
+        {
+          "elapsedMs": 66747,
+          "renderedFrames": 64,
+          "tick": 1320,
+          "x": 20.721,
+          "y": 2.178
+        },
+        {
+          "elapsedMs": 68859,
+          "renderedFrames": 65,
+          "tick": 1326,
+          "x": 20.721,
+          "y": 1.722
+        },
+        {
+          "elapsedMs": 70959,
+          "renderedFrames": 66,
+          "tick": 1332,
+          "x": 20.721,
+          "y": 1.266
+        },
+        {
+          "elapsedMs": 72949,
+          "renderedFrames": 67,
+          "tick": 1338,
+          "x": 20.721,
+          "y": 0.81
+        },
+        {
+          "elapsedMs": 74971,
+          "renderedFrames": 68,
+          "tick": 1344,
+          "x": 20.721,
+          "y": 0.354
+        },
+        {
+          "elapsedMs": 76941,
+          "renderedFrames": 69,
+          "tick": 1350,
+          "x": 20.721,
+          "y": -0.102
+        },
+        {
+          "elapsedMs": 79587,
+          "renderedFrames": 70,
+          "tick": 1356,
+          "x": 20.721,
+          "y": -0.558
+        },
+        {
+          "elapsedMs": 82000,
+          "renderedFrames": 71,
+          "tick": 1362,
+          "x": 20.721,
+          "y": -1.014
+        },
+        {
+          "elapsedMs": 84458,
+          "renderedFrames": 72,
+          "tick": 1368,
+          "x": 20.721,
+          "y": -1.47
+        },
+        {
+          "elapsedMs": 86812,
+          "renderedFrames": 73,
+          "tick": 1374,
+          "x": 20.721,
+          "y": -1.926
+        },
+        {
+          "elapsedMs": 89014,
+          "renderedFrames": 74,
+          "tick": 1380,
+          "x": 20.721,
+          "y": -2.382
+        },
+        {
+          "elapsedMs": 91058,
+          "renderedFrames": 75,
+          "tick": 1386,
+          "x": 20.721,
+          "y": -2.838
+        },
+        {
+          "elapsedMs": 92990,
+          "renderedFrames": 76,
+          "tick": 1392,
+          "x": 20.721,
+          "y": -3.294
+        },
+        {
+          "elapsedMs": 94883,
+          "renderedFrames": 77,
+          "tick": 1398,
+          "x": 20.721,
+          "y": -3.75
+        },
+        {
+          "elapsedMs": 96897,
+          "renderedFrames": 78,
+          "tick": 1404,
+          "x": 20.721,
+          "y": -4.206
+        },
+        {
+          "elapsedMs": 98844,
+          "renderedFrames": 79,
+          "tick": 1410,
+          "x": 20.721,
+          "y": -4.662
+        },
+        {
+          "elapsedMs": 100749,
+          "renderedFrames": 80,
+          "tick": 1416,
+          "x": 20.721,
+          "y": -5.118
+        },
+        {
+          "elapsedMs": 102708,
+          "renderedFrames": 81,
+          "tick": 1422,
+          "x": 20.721,
+          "y": -5.574
+        },
+        {
+          "elapsedMs": 104713,
+          "renderedFrames": 82,
+          "tick": 1428,
+          "x": 20.721,
+          "y": -6.03
+        },
+        {
+          "elapsedMs": 106936,
+          "renderedFrames": 83,
+          "tick": 1434,
+          "x": 20.721,
+          "y": -6.486
+        },
+        {
+          "elapsedMs": 109176,
+          "renderedFrames": 84,
+          "tick": 1440,
+          "x": 20.721,
+          "y": -6.942
+        },
+        {
+          "elapsedMs": 111468,
+          "renderedFrames": 85,
+          "tick": 1446,
+          "x": 20.721,
+          "y": -7.398
+        },
+        {
+          "elapsedMs": 113867,
+          "renderedFrames": 86,
+          "tick": 1452,
+          "x": 20.721,
+          "y": -7.854
+        },
+        {
+          "elapsedMs": 116292,
+          "renderedFrames": 87,
+          "tick": 1458,
+          "x": 20.721,
+          "y": -8.31
+        },
+        {
+          "elapsedMs": 118891,
+          "renderedFrames": 88,
+          "tick": 1464,
+          "x": 20.721,
+          "y": -8.766
+        },
+        {
+          "elapsedMs": 121344,
+          "renderedFrames": 89,
+          "tick": 1470,
+          "x": 20.721,
+          "y": -9.222
+        },
+        {
+          "elapsedMs": 124252,
+          "renderedFrames": 90,
+          "tick": 1476,
+          "x": 20.721,
+          "y": -9.678
+        },
+        {
+          "elapsedMs": 126862,
+          "renderedFrames": 91,
+          "tick": 1482,
+          "x": 20.721,
+          "y": -10.134
+        },
+        {
+          "elapsedMs": 129296,
+          "renderedFrames": 92,
+          "tick": 1488,
+          "x": 20.721,
+          "y": -10.59
+        },
+        {
+          "elapsedMs": 132201,
+          "renderedFrames": 93,
+          "tick": 1494,
+          "x": 20.721,
+          "y": -11.046
+        },
+        {
+          "elapsedMs": 135963,
+          "renderedFrames": 94,
+          "tick": 1500,
+          "x": 20.721,
+          "y": -11.502
+        },
+        {
+          "elapsedMs": 138813,
+          "renderedFrames": 95,
+          "tick": 1506,
+          "x": 20.721,
+          "y": -11.958
+        },
+        {
+          "elapsedMs": 142506,
+          "renderedFrames": 96,
+          "tick": 1512,
+          "x": 20.721,
+          "y": -12.414
+        },
+        {
+          "elapsedMs": 145411,
+          "renderedFrames": 97,
+          "tick": 1518,
+          "x": 20.721,
+          "y": -12.87
+        },
+        {
+          "elapsedMs": 147961,
+          "renderedFrames": 98,
+          "tick": 1524,
+          "x": 20.721,
+          "y": -13.326
+        },
+        {
+          "elapsedMs": 150396,
+          "renderedFrames": 99,
+          "tick": 1530,
+          "x": 20.721,
+          "y": -13.782
+        },
+        {
+          "elapsedMs": 152757,
+          "renderedFrames": 100,
+          "tick": 1536,
+          "x": 20.721,
+          "y": -14.238
+        },
+        {
+          "elapsedMs": 154575,
+          "renderedFrames": 101,
+          "tick": 1542,
+          "x": 20.721,
+          "y": -14.694
+        },
+        {
+          "elapsedMs": 155970,
+          "renderedFrames": 102,
+          "tick": 1548,
+          "x": 20.721,
+          "y": -15.15
+        },
+        {
+          "elapsedMs": 157814,
+          "renderedFrames": 103,
+          "tick": 1554,
+          "x": 20.721,
+          "y": -15.606
+        },
+        {
+          "elapsedMs": 159573,
+          "renderedFrames": 104,
+          "tick": 1560,
+          "x": 20.721,
+          "y": -16.062
+        },
+        {
+          "elapsedMs": 161270,
+          "renderedFrames": 105,
+          "tick": 1566,
+          "x": 20.721,
+          "y": -16.518
+        },
+        {
+          "elapsedMs": 163113,
+          "renderedFrames": 106,
+          "tick": 1572,
+          "x": 20.721,
+          "y": -16.974
+        },
+        {
+          "elapsedMs": 164864,
+          "renderedFrames": 107,
+          "tick": 1578,
+          "x": 20.721,
+          "y": -17.43
+        },
+        {
+          "elapsedMs": 166663,
+          "renderedFrames": 108,
+          "tick": 1584,
+          "x": 21.017,
+          "y": -17.601
+        },
+        {
+          "elapsedMs": 168466,
+          "renderedFrames": 109,
+          "tick": 1590,
+          "x": 21.461,
+          "y": -17.709
+        },
+        {
+          "elapsedMs": 170260,
+          "renderedFrames": 110,
+          "tick": 1596,
+          "x": 21.905,
+          "y": -17.817
+        },
+        {
+          "elapsedMs": 172213,
+          "renderedFrames": 111,
+          "tick": 1602,
+          "x": 22.349,
+          "y": -17.925
+        },
+        {
+          "elapsedMs": 173993,
+          "renderedFrames": 112,
+          "tick": 1608,
+          "x": 22.793,
+          "y": -18.033
+        },
+        {
+          "elapsedMs": 176043,
+          "renderedFrames": 113,
+          "tick": 1614,
+          "x": 23.237,
+          "y": -18.141
+        },
+        {
+          "elapsedMs": 177780,
+          "renderedFrames": 114,
+          "tick": 1620,
+          "x": 23.681,
+          "y": -18.249
+        },
+        {
+          "elapsedMs": 179461,
+          "renderedFrames": 115,
+          "tick": 1626,
+          "x": 24.125,
+          "y": -18.357
+        },
+        {
+          "elapsedMs": 181172,
+          "renderedFrames": 116,
+          "tick": 1632,
+          "x": 24.569,
+          "y": -18.467
+        },
+        {
+          "elapsedMs": 183091,
+          "renderedFrames": 117,
+          "tick": 1638,
+          "x": 24.7,
+          "y": -18.5
+        }
+      ]
+    },
+    "finalJourney": {
+      "version": 2,
+      "locale": "zh",
+      "hints": true,
+      "notes": {
+        "crossing": "<b data-personal-note>晚风 & \"灯光\"</b>\nA quiet crossing."
+      },
+      "game": {
+        "x": 24.635,
+        "y": -19.48,
+        "tick": 1784,
+        "facing": "south",
+        "heading": 2.921592,
+        "moving": false,
+        "paused": false,
+        "visitedIds": [
+          "crossing",
+          "mitsui",
+          "mufg"
+        ],
+        "readSourceIds": [
+          "crossing"
+        ],
+        "choiceIds": {
+          "crossing": "north-first",
+          "mitsui": "street-only",
+          "mufg": "no-cash-stop"
+        },
+        "selectedTargetId": "mufg",
+        "nearbyTargetId": "mufg",
+        "nearestTargetId": "mufg",
+        "targetDistance": 1,
+        "destination": null,
+        "waypoints": []
+      }
+    },
+    "rendererStatistics": {
+      "status": "ready",
+      "loadMs": 3986,
+      "renderedFrames": 145,
+      "render": {
+        "frame": 179,
+        "calls": 76,
+        "triangles": 43998,
+        "points": 0,
+        "lines": 0
+      },
+      "memory": {
+        "geometries": 77,
+        "textures": 11
+      },
+      "scene": {
+        "meshes": 71,
+        "triangles": 45648,
+        "walkableSurfaces": 3,
+        "fadedGroups": [],
+        "actorPosition": [
+          24.635,
+          0.17000000178813934,
+          19.48
+        ],
+        "actorHeading": -2.921592,
+        "streetBounds": [
+          0,
+          -0.2800000011920929,
+          -15,
+          64,
+          26.639999389648438,
+          25
+        ]
+      },
+      "reducedMotion": false
+    }
+  },
+  "limitations": [
+    "Agent/automation evidence is not human art, fluency or immersion acceptance.",
+    "Software GPU timings are not desktop hardware performance acceptance.",
+    "Headless Chromium does not reproduce real tab focus changes here; focus-loss cleanup uses an injected blur event.",
+    "HTTP packaged-resource loading is exercised; native file:// launch requires a browser environment permitting that scheme."
+  ],
+  "browser": "151.0.7922.173",
+  "status": "Browser walkthrough completed; independent visual review and human acceptance remain separate.",
+  "summary": {
+    "passed": 53,
+    "failed": 0
+  },
+  "finishedAt": "2026-10-05T07:03:45.658Z"
+}

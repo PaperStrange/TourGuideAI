@@ -8,7 +8,7 @@
 
 ---
 
-## 实际存在的 workflow（7 个）
+## 实际存在的 workflow（8 个）
 
 <!-- BEGIN GENERATED WORKFLOW TABLE -->
 | File | Trigger | Purpose |
@@ -17,6 +17,7 @@
 | **ci-cd.yml** | push/PR → `master` `iteration` `feat-*` `release-*`; + `workflow_dispatch` | Infrastructure-aware build and test; its `build-and-test` job is one of the checks branch protection requires |
 | **dependency-updates.yml** | Mon schedule; + `workflow_dispatch` | Dependabot metadata |
 | **e2e-tests.yml** | Mon/Thu schedule + PR; + `workflow_dispatch` | End-to-end tests |
+| **experience.yml** | push/PR limited to `experience/**` and this workflow; + `workflow_dispatch` | Independent guided 3D application: Node 24 install, logic checks, Vite build, packaged-browser walkthrough and evidence artifact; no deployment |
 | **fact-integrity.yml** | push/PR → `master` `iteration` `release-*`, limited to `city-packs/**`, `iteration/**`, `dsh-bundle/tools/**`; + `workflow_dispatch` | **Fact-integrity gates**: runs `iteration/tools/run-gates.mjs`. See below |
 | **security-scan.yml** | weekly schedule + push → `master` `release-*`, limited to source and `package*.json` | Security scan; `security-scan` is one of the checks branch protection requires |
 | **stability-tests.yml** | Wed schedule + PR (limited to `src/**`); + `workflow_dispatch` | Stability and load tests |

@@ -16,6 +16,10 @@ authorized a clean project structure and incremental remote commits/pushes. The
 new application is `experience/`; current delivery details continue in its
 [iteration plan](../../experience/docs/iteration.md) and
 [immersion design](../../experience/docs/immersion.md).
+The Street View request now has a concrete reference route: linked Maps comparison
+plus independently licensed photographs of the exact buildings, recorded in
+[facade references](../../experience/docs/facade-references.md). This does not
+claim a Google panorama was inspected or extracted into the model.
 SP0 clarification is complete. SP1–SP3 now have an implemented, runnable first
 playable in [`iteration/game/`](../game/README.md): detailed street art, three
 sourced encounters, English/Chinese guidance and player-derived field notes.
@@ -47,21 +51,26 @@ direction for the next iteration; it does not retroactively approve the first ar
 
 Main outcome: the same small block gains convincing volume, materials, lighting
 and restrained life while preserving fluent play and complete EN/ZH guidance.
-Recommended research route: Blender → GLB → Three.js browser rendering with the
-existing HTML UI and journey state. Final runtime adoption follows the bounded
-proof and an integrated encounter; the current playable stays available as baseline.
+Adopted route: Blender → GLB → Three.js browser rendering with HTML UI and journey
+state in the independent `experience/` package. The earlier playable stays
+available as a historical baseline.
 
 **V3D-0 complete:** Blender 4.3.2 generated a reproducible 5.29 MB GLB; the live
 Three.js proof passed 24/24 independent technical checks, including EN/ZH camera
 controls and graphics-failure recovery. [Evidence and limits](blender-depth-research.md#final-browser-evidence)
-are recorded separately from gameplay and art/fluency acceptance. V3D-1–3 remain
-planned; software-rendered cloud cadence is not a performance pass.
+are recorded separately from gameplay and art/fluency acceptance. V3D-1/2 are now
+implemented in `experience/`; the photo-informed facades and integrated journey
+passed **53/53 browser checks**, **16/16 pure tests** and **17/17 repository gates**.
+Exact built bytes, screenshots and limits are in
+[validation](../../experience/docs/validation.md).
+V3D-3 human acceptance and hardware fluency remain open; software-rendered cloud
+cadence is not a performance pass.
 
 | Sprint | Owner | Deliverable and exit |
 |---|---|---|
 | V3D-0 · Technical/art feasibility | Engineering + art, QA independent | Complete: reproducible Blender scene/export, browser proof, cost/material/axis checks and written recommendation; research does not count as integrated gameplay |
-| V3D-1 · Camera contract and art kit | Engineering + art + world/content | Graybox encounter proves camera/input/picking/occlusion before modular assets, lighting and player animation are polished; actual-size direction review |
-| V3D-2 · Playable integration | Engineering + design | Same three encounters, constrained camera, picking/collision/occlusion, EN/ZH cards, preserved saves and note choices |
+| V3D-1 · Camera contract and art kit | Engineering + art + world/content | Implemented guided camera, ground picking, occlusion, animated traveller and photo-informed facades; actual browser art review found no blocker in inspected frames, with recorded polish limits |
+| V3D-2 · Playable integration | Engineering + design | Three encounters, EN/ZH cards, preserved saves and personal notes verified; 16 pure tests and 53 packaged browser checks pass |
 | V3D-3 · Polish and acceptance | QA + art + design + user | Restrained ambient life, hardware/performance and offline/fallback evidence, full bilingual walkthrough, separate user art/fluency acceptance |
 
 The user approved guided 3D for the first launched version on 2026-10-05. The

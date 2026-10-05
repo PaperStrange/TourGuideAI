@@ -104,7 +104,7 @@ export async function createWorldView(renderer, { signal, onProgress } = {}) {
     object.receiveShadow = true;
     if (object.userData.walkable) walkable.push(object);
     const group = object.userData.semanticGroup;
-    if (/^(North|South)(Ground|Upper|Roof|Shell)$/.test(group ?? '')) {
+    if (/^(North|South)(Ground|Upper|Roof|Shell|Canopy|CanopyPosts)$/.test(group ?? '')) {
       object.material = object.material.clone();
       object.material.forceSinglePass = true;
       if (!groups.has(group)) groups.set(group, { meshes: [], opacity: 1 });
@@ -135,6 +135,7 @@ export async function createWorldView(renderer, { signal, onProgress } = {}) {
     return { target, ring };
   });
   const sightRay = new THREE.Ray(), intersection = new THREE.Vector3();
+  const occlusionRay = new THREE.Raycaster();
   let lastActor = '', lastCue = '', fadedGroups = [];
 
   return {
@@ -174,10 +175,14 @@ export async function createWorldView(renderer, { signal, onProgress } = {}) {
       const aim = toScene(state.x, state.y, height + 0.9);
       const distance = camera.position.distanceTo(aim);
       sightRay.set(camera.position, aim.sub(camera.position).normalize());
+      occlusionRay.ray.copy(sightRay); occlusionRay.far = Math.max(0, distance - 0.4);
       fadedGroups = [];
       for (const group of occluders) {
         const hit = sightRay.intersectBox(group.box, intersection);
-        const blocked = group.box.containsPoint(camera.position) || (hit && camera.position.distanceTo(hit) < distance - 0.4);
+        // Bounds handle cameras inside a volume. Outside, real mesh hits avoid
+        // erasing a whole frontage merely because the ray passes between posts.
+        const blocked = group.box.containsPoint(camera.position) ||
+          (hit && camera.position.distanceTo(hit) < distance - 0.4 && occlusionRay.intersectObjects(group.meshes, false).length > 0);
         const target = blocked ? 0 : 1;
         const next = reducedMotion ? target : group.opacity + (target - group.opacity) * Math.min(1, dt / 90);
         const opacity = Math.abs(next - target) < 0.005 ? target : next;

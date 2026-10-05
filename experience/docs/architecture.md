@@ -45,7 +45,7 @@ Moving between ports/domains does not automatically transfer localStorage.
 The record contains `version`, `locale`, `hints`, `game` and `notes`. Notes use
 known place IDs, plain strings and a 500 UTF-16 code-unit limit matching HTML
 `maxlength`. They are user memories, not facts. Explicit saving gives success or
-failure feedback; a locale change preserves the current text draft. Reset clears
+failure feedback; locale changes and closing/reopening the encounter preserve the current in-memory draft. Only explicitly saved text survives reload and enters the export. Reset clears
 this walk and its notes after the existing confirmation. There is no archive or
 cloud sync yet.
 

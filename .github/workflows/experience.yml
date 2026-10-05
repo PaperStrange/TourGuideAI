@@ -1,0 +1,50 @@
+name: Guided 3D experience
+
+on:
+  push:
+    paths:
+      - 'experience/**'
+      - '.github/workflows/experience.yml'
+  pull_request:
+    paths:
+      - 'experience/**'
+      - '.github/workflows/experience.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: experience-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: experience
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: experience/package-lock.json
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - name: Exercise the packaged game in Chromium
+        run: npm run test:browser -- dist
+        env:
+          EXPERIENCE_QA_OUTPUT: test-results/browser
+          EXPERIENCE_QA_TIMEOUT: '240000'
+      - name: Preserve browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: experience-browser-evidence
+          path: experience/test-results/browser
+          if-no-files-found: ignore

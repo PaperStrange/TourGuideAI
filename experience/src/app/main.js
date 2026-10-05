@@ -7,7 +7,7 @@ import { renderFieldNotes } from './field-notes.js';
 import fontLicense from '../ui/assets/NOTO-LICENSE.txt?raw';
 import runtimeNotices from '../ui/assets/THIRD-PARTY-NOTICES.txt?raw';
 
-// Keep the font's redistribution notice inside the standalone HTML artifact.
+// Keep the font and runtime notices available in the application document.
 const fontNotice = document.createElement('script');
 fontNotice.type = 'text/plain';
 fontNotice.id = 'font-license';
@@ -22,6 +22,7 @@ try { saved = readSavedJourney(localStorage); } catch { saved = {}; }
 if (!saved || typeof saved !== 'object' || Array.isArray(saved)) saved = {};
 let notes = readPersonalNotes(saved.notes, byId);
 let noteDraft = '';
+const noteDrafts = new Map();
 let sceneStatus = 'loading';
 const returning = Boolean(saved.game?.visitedIds?.length);
 let locale = saved.locale === 'zh' ? 'zh' : 'en';
@@ -56,7 +57,7 @@ app.innerHTML = `
     <div class="controls-bar"><div class="control-hints" id="controls"><span><kbd>W A S D</kbd><span data-i18n="controlsMove"></span></span><span><kbd>E</kbd><span data-i18n="controlsInteract"></span></span><span><kbd>Esc</kbd><span data-i18n="controlsClose"></span></span></div><button class="hint-toggle" id="hint-toggle" type="button"></button></div>
   </section>
 </main>
-<footer class="bottom-bar"><span>© OpenStreetMap contributors · ODbL</span><span class="save-status" id="save-status"></span></footer>
+<footer class="bottom-bar"><span>© OpenStreetMap contributors · ODbL · <a href="./credits.html" target="_blank" rel="noopener" data-i18n="photoCredits"></a></span><span class="save-status" id="save-status"></span></footer>
 <dialog id="place-dialog" aria-labelledby="card-title"></dialog>
 <dialog id="reset-dialog" aria-labelledby="reset-title"><div class="card-top"><h2 id="reset-title" class="card-title" data-i18n="reset"></h2></div><div class="card-body"><p class="card-description" data-i18n="resetConfirm"></p><div class="choices"><button class="choice-button" type="button" id="confirm-reset" data-i18n="reset"></button><button class="choice-button secondary" type="button" id="cancel-reset" data-i18n="resetCancel"></button></div></div></dialog>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -148,7 +149,7 @@ function updateHints() {
 }
 function openPlace(id) {
   const target=byId.get(id);if(!target||dialog.open||resetDialog.open)return;
-  activeTarget=target;sourceExpanded=false;chosenOutcome=null;noteDraft=notes[id]??'';
+  activeTarget=target;sourceExpanded=false;chosenOutcome=null;noteDraft=noteDrafts.get(id)??notes[id]??'';
   game.setPaused(true);renderCard();dialog.showModal();
   $('#card-close').focus();
 }
@@ -199,10 +200,10 @@ document.addEventListener('click',event=>{
   if(button.id==='export-notes')exportNotes();
   if(button.id==='camera-reset'){game?.resetCamera();$('#game-stage').focus({preventScroll:true});}
   if(button.id==='retry-scene')location.reload();
-  if(button.id==='save-memory' && activeTarget){notes[activeTarget.id]=noteDraft.slice(0,500);save(true);showToast(text(saveAvailable?'memorySaved':'memorySaveUnavailable'));}
+  if(button.id==='save-memory' && activeTarget){notes[activeTarget.id]=noteDraft.slice(0,500);noteDrafts.delete(activeTarget.id);save(true);showToast(text(saveAvailable?'memorySaved':'memorySaveUnavailable'));}
   if(button.id==='reset-button'){game?.setPaused(true);resetDialog.showModal();$('#cancel-reset').focus();}
   if(button.id==='cancel-reset'){resetDialog.close();game?.setPaused(false);$('#game-stage').focus();}
-  if(button.id==='confirm-reset'){resetDialog.close();notes={};noteDraft='';game.reset();lastUI='';updateUI();save(true);$('#game-stage').focus();}
+  if(button.id==='confirm-reset'){resetDialog.close();notes={};noteDraft='';noteDrafts.clear();game.reset();lastUI='';updateUI();save(true);$('#game-stage').focus();}
 });
 dialog.addEventListener('cancel',event=>{event.preventDefault();closePlace();});
 resetDialog.addEventListener('cancel',()=>{game?.setPaused(false);$('#game-stage').focus();});
@@ -222,6 +223,7 @@ function updateSceneStatus() {
 document.addEventListener('input',event=>{
   if(event.target.id==='memory-note'){
     noteDraft=event.target.value.slice(0,500);
+    if(activeTarget)noteDrafts.set(activeTarget.id,noteDraft);
     $('#memory-limit').textContent=text('memoryLimit',{count:noteDraft.length,max:500});
   }
 });

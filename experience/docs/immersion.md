@@ -14,17 +14,20 @@ The user also found the 3D experiment more spatially convincing but its building
 realistic. The next improvement is recognizable architecture, believable materials and light, and
 responsive actions in that place. A renderer change alone does not establish immersion.
 
-This increment stays in the existing Kyoto/Shijo block with the existing sourced encounters. Lead
-approved a small continuity feature: an optional personal note for each completed encounter, saved
+This increment stays in the existing Kyoto/Shijo block with the existing sourced encounters. It
+implements a small continuity feature: an optional personal note for each completed encounter, saved
 alongside the current walk and included in the player's exported field notes. The UI supports complete
 selectable English and Chinese, while Japanese source signs remain Japanese.
 
-The implementation target below is not a completion claim. Confirm persistence, export and browser
-behavior against the final build before recording this feature as delivered. It is not a full photo memoir.
+The personal-note implementation is verified in the reviewed browser build; see
+[independent validation](validation.md) for the build evidence and its limits. The final checks passed
+53/53 browser checks, 16/16 pure tests and 17/17 repository gates. Human judgment of immersion,
+art quality and interaction fluency remains pending. This increment is not a full photo memoir;
+the approved trip/day/action/sharing direction extends beyond it.
 
 ## Four scales of experience
 
-| Scale | Player experience | Product proposal and evidence of success |
+| Approved scale | Player experience | Scope and evidence of success |
 |---|---|---|
 | Whole trip | Anticipate a place, rehearse choices, travel, remember, decide what to share | Preserve the player's intentions, selected stops and memories across those stages. A player can explain which choices shaped the resulting itinerary and which observations came from the real trip. |
 | Each day | Arrive with a purpose, adapt during the day, close the day with a useful keepsake | Later: a day opening, a readable plan with sourced constraints and alternatives, and a closing summary. Day assignment is the player's plan, not proof of a real reservation or opening time. |
@@ -44,7 +47,7 @@ guilt message or a score for how much personal material someone contributes.
   preset is presentation, not a claim about the real weather, local time or current operating conditions.
 - Restrained ambient movement may support the place, but must not block controls, imply verified
   crowd/traffic patterns or introduce unsourced interactive businesses. Respect reduced motion.
-- The current camera proposal is guided framing with bounded orbit/zoom and a reset. Judge it while
+- The approved 3D camera uses guided framing with bounded orbit/zoom and a reset. Judge it while
   walking: the player remains findable, nearby actions remain readable and orientation is recoverable.
   Orbiting must not accidentally walk or activate an encounter. Resetting the view must not reset play.
 - Keep HTML objectives, controls and encounter cards stable while the world moves. A player should

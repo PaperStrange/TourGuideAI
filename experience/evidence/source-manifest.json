@@ -1,0 +1,175 @@
+{
+  "purpose": "Source and deployable-input snapshot for the final facade walkthrough; documentation and generated evidence are excluded to avoid recursive hashes.",
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 796,
+      "sha256": "73d6e5a5f2b940b4f762bfbf4b94344df3771709e5a4c6c8a775f085731c7a93"
+    },
+    {
+      "path": "package.json",
+      "bytes": 488,
+      "sha256": "5b108c503a6fe51f6fad1db12198142207f1dc2cf6289df4e10bbc1926a5a355"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 26909,
+      "sha256": "c06b91d07a077198bc89edbd161fbdae3145aacc8ec59f81c90a110f5d934d43"
+    },
+    {
+      "path": "vite.config.js",
+      "bytes": 166,
+      "sha256": "4b877b2cd45f9542ac8f90f95d503a28b971f42a2609dd99b5b96d0d27ee26e7"
+    },
+    {
+      "path": "src/app/field-notes.js",
+      "bytes": 2748,
+      "sha256": "0a86f77c29829bdae0ce8fbc5e75e37fc9223958050914f44caf76457c6e1596"
+    },
+    {
+      "path": "src/app/journey-store.js",
+      "bytes": 913,
+      "sha256": "e0cc8a7109988b3ce7d4dfde926268650847eed8d170ab87cb149e697be76fc8"
+    },
+    {
+      "path": "src/app/main.js",
+      "bytes": 19727,
+      "sha256": "aaaaf8f0cffcdde086b46ad12ac0a666e7d8366d75342ce05348a975cc6e6f54"
+    },
+    {
+      "path": "src/content/kyoto.js",
+      "bytes": 14985,
+      "sha256": "cfef7654e1bca051f84861d6ec446e588c1d6ef2d8e8e5cf12a9421224a22859"
+    },
+    {
+      "path": "src/runtime/camera.js",
+      "bytes": 4956,
+      "sha256": "cb92c8f0e97db97af8c591609c6bb03b6894b2a62cd879d14d032a5b74324422"
+    },
+    {
+      "path": "src/runtime/create-game.js",
+      "bytes": 13647,
+      "sha256": "ce37181edc47e4d8ec86f2bfee22bdfe6c00823a1ff828ead37d3fa3f449e8ca"
+    },
+    {
+      "path": "src/runtime/world-view.js",
+      "bytes": 11007,
+      "sha256": "7714b836d4a507d670862a8f565a664b1178e7342ea52d037f4276912259d8e5"
+    },
+    {
+      "path": "src/simulation/index.js",
+      "bytes": 4707,
+      "sha256": "692515b0674c8d6b75e853c98f14d4c92c9e0d3c3dde0895e4c762c574396f34"
+    },
+    {
+      "path": "src/simulation/world.js",
+      "bytes": 1395,
+      "sha256": "a363e6193006493346ef10aac44c447db3673ca202fed5be347ae77f6119d40f"
+    },
+    {
+      "path": "src/ui/assets/NOTO-LICENSE.txt",
+      "bytes": 14712,
+      "sha256": "849f4ea9c214fa4ac3593b770c699f387534b11ce671264c1b10d85bdcb5997b"
+    },
+    {
+      "path": "src/ui/assets/THIRD-PARTY-NOTICES.txt",
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+    },
+    {
+      "path": "src/ui/assets/font-manifest.json",
+      "bytes": 953,
+      "sha256": "b1e23870702a6870ec4958ce862947b4ba1a687123c65a46898a678dd306f250"
+    },
+    {
+      "path": "src/ui/assets/kyoto-sans.woff",
+      "bytes": 148864,
+      "sha256": "603e2ccaec500e7acfde5bcffac2192b81dec371a58bc3c250be72b397c0892b"
+    },
+    {
+      "path": "src/ui/i18n.js",
+      "bytes": 15067,
+      "sha256": "2023e0df1f66ba0119fe9c7bd8f1a7073a8babbc00e27501d0f35f8763677518"
+    },
+    {
+      "path": "src/ui/styles.css",
+      "bytes": 14514,
+      "sha256": "7651b7a43d6257c16f55d9c9a3bd57ae731bf1da5418e0e05923d7fb63fa7d25"
+    },
+    {
+      "path": "public/content-evidence/facade-references.json",
+      "bytes": 5056,
+      "sha256": "2633e98dd95ba7160bb4c54acde94a8ed4de5f1f7b335904abf79da41ab0d8e2"
+    },
+    {
+      "path": "public/content-evidence/geometry.json",
+      "bytes": 12083,
+      "sha256": "e27f5fa137100ac4786c341cf13cc84acc6a94b71120178871320955984670b7"
+    },
+    {
+      "path": "public/content-evidence/operator-facts.json",
+      "bytes": 4911,
+      "sha256": "58d5ff4a3c6b722609a39e45e74df132313066feabb442afc575564d659afcc0"
+    },
+    {
+      "path": "public/credits.html",
+      "bytes": 14123,
+      "sha256": "1ffa98f5499dbcea4957208b588faba4b0ec90cc1b2b7188c39cc1848d2cc8e5"
+    },
+    {
+      "path": "public/models/provenance.json",
+      "bytes": 9209,
+      "sha256": "6eb5717c71597736eb4c1f5d7d2cf7621e214f1f073f70af9999f8cc767bf80c"
+    },
+    {
+      "path": "public/models/shijo-block.glb",
+      "bytes": 3682648,
+      "sha256": "68c2afa632505ddb6ae2a65d93c615403a476f4859885ca5860fbc3bfcd6980b"
+    },
+    {
+      "path": "public/models/traveller.glb",
+      "bytes": 44608,
+      "sha256": "e2e8f62e07f188b2bfcb4919f51b3dec84c9cf01e63d4af7031a4afa185e4a4b"
+    },
+    {
+      "path": "art/COPYING-GPL-3.0.txt",
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "path": "art/build_scene.py",
+      "bytes": 32135,
+      "sha256": "c1c16812b7d66d26478289b18adb8ce4492f9f3f0586311a5bb7002789ea0f50"
+    },
+    {
+      "path": "tools/build-font.py",
+      "bytes": 1836,
+      "sha256": "addf84d1347e949cb6c20917fb642b9a926184e30dd2cda9f28f79fbec41efee"
+    },
+    {
+      "path": "tests/browser-check.mjs",
+      "bytes": 33918,
+      "sha256": "381ac0667f0c93f40cb230e92acdac96c37766c39926c880ed1a07b6470ef61e"
+    },
+    {
+      "path": "tests/fixtures/legacy-v1-completed.json",
+      "bytes": 535,
+      "sha256": "d8388add44fe0e782cbad00f73bbe1842ad386fe0708b11f27ee2d6f59fd25c2"
+    },
+    {
+      "path": "tests/fixtures/legacy-v1-mid-journey.json",
+      "bytes": 456,
+      "sha256": "d8fee691f7e167751f9d3132c9267a61159857156bd2653f5dda9a872f607efa"
+    },
+    {
+      "path": "tests/journey.test.mjs",
+      "bytes": 4016,
+      "sha256": "d5803f2edbfeb928d5c938d44939d3f13beb9c1eb4c9fd731db0418253e482f9"
+    },
+    {
+      "path": "tests/simulation.test.mjs",
+      "bytes": 6615,
+      "sha256": "57832b16cef458097fe7dd167cd3388dfb15edff0048f56e0142ff2eaac2aa7f"
+    }
+  ]
+}

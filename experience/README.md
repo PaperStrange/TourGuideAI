@@ -37,9 +37,11 @@ build, keep the entire `dist/` directory, including `models/` and `assets/`.
 - [Current iteration](docs/iteration.md)
 - [Asset direction and reproduction](docs/art-direction.md)
 - [Content and source boundaries](docs/content-contract.md)
+- [Building photographs, Street View research and facade references](docs/facade-references.md)
 
-The scene uses original Blender-authored assets and local source evidence. Physical
-heights, surface appearance and lighting are authored; source-backed building
+The scene uses original Blender-authored assets and local source evidence. Licensed
+building photographs guide facade details; [artwork credits](public/credits.html)
+ship with the application. Physical heights, exact dimensions and lighting are authored; source-backed building
 levels do not constitute a surveyed reconstruction. Public-frontage encounters do
 not assert permission to enter unverified interiors.
 

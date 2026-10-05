@@ -14,6 +14,15 @@ encounters forward. Add a personal note to a completed encounter and include it 
 the user's field-note export. Keep this work reviewable through meaningful commits
 and pushes to the working remote branch, as explicitly requested by the user.
 
+The user also requested building details informed by Google Maps Street View.
+Keep Maps as an optional linked comparison, and use independently licensed photos
+of the exact buildings for authored facade geometry and materials. The current
+pass distinguishes Mitsui's stone window bays and classical corner from Daiya's
+vertical fins, dark glazing and arched base. It does not extract Google imagery,
+claim a surveyed reconstruction, or verify authored doorway assignments. The
+research, source dates, licenses and limitations are recorded in
+[facade-references.md](facade-references.md).
+
 ## Ordered delivery slices
 
 | Slice | Outcome | Review evidence |

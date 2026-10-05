@@ -1,5 +1,23 @@
 # TourGuideAI
 
+## Current guided 3D experience
+
+The current Kyoto playable lives in the independent [`experience/`](experience/README.md)
+application: Blender-authored architecture, guided 3D walking, English/Chinese
+encounters, saved personal notes and a local field-note export.
+
+```sh
+cd experience
+npm ci
+npm run dev
+```
+
+Requires Node.js 24+. Open `http://localhost:4185/`. See the
+[iteration plan](experience/docs/iteration.md), [building references](experience/docs/facade-references.md)
+and [validation record](experience/docs/validation.md) for delivered scope and
+remaining art, hardware and user acceptance. This package builds independently;
+the sections below document the earlier application.
+
 TourGuideAI is an intelligent virtual tour guide application that uses AI to create personalized travel experiences.
 
 ## Features

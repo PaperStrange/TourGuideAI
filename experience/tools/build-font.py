@@ -14,7 +14,7 @@ paths = [root / 'src/ui/i18n.js', root / 'src/content/kyoto.js', *sorted((root /
 characters = set(''.join(p.read_text() for p in paths)) | set(chr(i) for i in range(32, 127))
 options = subset.Options()
 options.flavor = 'woff'
-font = TTFont(args.source, fontNumber=2)
+font = TTFont(args.source, fontNumber=2, recalcTimestamp=False)
 subsetter = subset.Subsetter(options=options)
 subsetter.populate(unicodes={ord(c) for c in characters})
 subsetter.subset(font)

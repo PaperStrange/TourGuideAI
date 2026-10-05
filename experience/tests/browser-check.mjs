@@ -16,8 +16,11 @@ if (!process.argv[2]) {
   process.exit(2);
 }
 const dist = resolve(process.argv[2]);
+const reviewOnly = process.argv.includes('--review');
 const output = resolve(process.env.EXPERIENCE_QA_OUTPUT || join(tmpdir(), 'experience-qa'));
-const timeout = Number(process.env.EXPERIENCE_QA_TIMEOUT || 90000);
+// Software rendering can advance the bounded fixed-step simulation slowly.
+// This is a tooling ceiling, not an accepted product response time or FPS target.
+const timeout = Number(process.env.EXPERIENCE_QA_TIMEOUT || 240000);
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const assets = new Map();
 function collect(directory) {
@@ -35,9 +38,11 @@ const report = {
   startedAt: new Date().toISOString(), artifact: { directory: dist, manifestSha256: sha(JSON.stringify(manifest)), files: manifest },
   driverSha256: sha(readFileSync(fileURLToPath(import.meta.url))),
   conditions: { viewport: [1440, 1000], compactViewport: [1280, 720], deviceScaleFactor: 1, readOnlyObserver: '?qa=1', timeoutMs: timeout },
+  scope: reviewOnly ? 'Opening and bank visual-review capture only' : 'Complete browser behavior and saved-journey validation',
   checks: [], actions: [], scenarios: {}, screenshots: [], observations: {},
   limitations: ['Agent/automation evidence is not human art, fluency or immersion acceptance.',
     'Software GPU timings are not desktop hardware performance acceptance.',
+    'Headless Chromium does not reproduce real tab focus changes here; focus-loss cleanup uses an injected blur event.',
     'HTTP packaged-resource loading is exercised; native file:// launch requires a browser environment permitting that scheme.'],
 };
 const persist = () => writeFileSync(join(output, 'browser-result.json'), JSON.stringify(report, null, 2) + '\n');
@@ -59,7 +64,7 @@ const length = v => Math.hypot(v.x, v.y);
 const fixture = name => JSON.parse(readFileSync(new URL(`./fixtures/${name}.json`, import.meta.url)));
 let browser;
 const contexts = [];
-async function scenario(name, seed = {}, options = {}) {
+async function scenario(name, seed = {}, options = {}, noWebGL = false) {
   const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 1, ...options });
   contexts.push(context);
   const record = report.scenarios[name] = { requests: [], externalRequests: [], pageErrors: [], consoleErrors: [] };
@@ -72,18 +77,29 @@ async function scenario(name, seed = {}, options = {}) {
     }
     record.externalRequests.push(url.href); await route.abort('blockedbyclient');
   });
-  await context.addInitScript(seed => {
+  await context.addInitScript(({ seed, noWebGL, origin }) => {
+    if (location.origin !== origin) return;
     if (!sessionStorage.getItem('qa-seeded')) {
       for (const [key, value] of Object.entries(seed)) localStorage.setItem(key, value);
       sessionStorage.setItem('qa-seeded', '1');
     }
-  }, seed);
+    if (noWebGL) {
+      const original = HTMLCanvasElement.prototype.getContext;
+      HTMLCanvasElement.prototype.getContext = function (type, ...args) {
+        return ['webgl', 'webgl2', 'experimental-webgl'].includes(type) ? null : original.call(this, type, ...args);
+      };
+    }
+  }, { seed, noWebGL, origin });
+  context.on('page', openedPage => {
+    openedPage.on('pageerror', error => { record.pageErrors.push(error.message); persist(); });
+    openedPage.on('console', message => { if (message.type() === 'error') { record.consoleErrors.push(message.text()); persist(); } });
+  });
   const page = await context.newPage();
   page.setDefaultTimeout(timeout);
-  page.on('pageerror', error => { record.pageErrors.push(error.message); persist(); });
-  page.on('console', message => { if (message.type() === 'error') { record.consoleErrors.push(message.text()); persist(); } });
   await page.goto(entry);
-  await page.waitForFunction(() => window.__TOUR_GAME__ && document.querySelector('#loading')?.hidden, null, { timeout });
+  await page.waitForFunction(noWebGL => noWebGL
+    ? document.querySelector('#retry-scene') && document.querySelector('#game-stage').dataset.sceneStatus === 'unavailable'
+    : window.__TOUR_GAME__ && document.querySelector('#loading')?.hidden, noWebGL, { timeout });
   return { context, page, record };
 }
 const observed = page => page.evaluate(() => window.__TOUR_GAME__.snapshot());
@@ -110,12 +126,26 @@ async function moveKey(page, key, minimum = 0.35) {
 }
 async function approach(page, id, trace = []) {
   await action(`Walk through the journey control to ${id}`, () => page.locator(`[data-target="${id}"]`).click());
+  const started = Date.now();
   const deadline = Date.now() + timeout;
+  let lastProgress = 0;
   while (Date.now() < deadline) {
-    const state = await observed(page); trace.push({ x: state.x, y: state.y });
-    if (state.nearbyTargetId === id && state.targetDistance <= 0.2 && !state.destination) return state;
+    const sample = await page.evaluate(() => ({ state: window.__TOUR_GAME__.snapshot(), renderedFrames: window.__TOUR_GAME__.renderer().renderedFrames }));
+    const state = sample.state;
+    const elapsedMs = Date.now() - started;
+    trace.push({ elapsedMs, renderedFrames: sample.renderedFrames, tick: state.tick, x: state.x, y: state.y });
+    if (elapsedMs - lastProgress >= 5000) {
+      lastProgress = elapsedMs;
+      report.observations[`approach-${id}`] = { status: 'walking', elapsedMs, current: state, samples: trace }; persist();
+      console.log(`PROGRESS ${id}: ${elapsedMs}ms, tick ${state.tick}, position ${state.x},${state.y}`);
+    }
+    if (state.nearbyTargetId === id && state.targetDistance <= 0.2 && !state.destination) {
+      report.observations[`approach-${id}`] = { status: 'arrived', elapsedMs, final: state, samples: trace }; persist();
+      return state;
+    }
     await page.waitForTimeout(150);
   }
+  report.observations[`approach-${id}`] = { elapsedMs: Date.now() - started, samples: trace }; persist();
   throw new Error(`Visible journey control did not reach ${id}`);
 }
 async function open(page) {
@@ -152,6 +182,15 @@ try {
   check('locale-preserves-position-and-journey', samePosition(initial, await observed(page)) && journey(initial) === journey(await observed(page)));
   await capture(page, 'opening-zh'); await locale(page, 'en');
 
+  if (reviewOnly) {
+    await approach(page, 'mufg');
+    await page.waitForFunction(() => window.__TOUR_GAME__.camera().frontage === 'south', null, { timeout });
+    report.observations.bankCamera = await camera(page);
+    check('bank-camera-faces-the-south-frontage', report.observations.bankCamera.frontage === 'south', report.observations.bankCamera);
+    await capture(page, 'south-bank-approach'); await open(page); await capture(page, 'bank-card-en');
+    report.observations.rendererStatistics = await page.evaluate(() => window.__TOUR_GAME__.renderer());
+  } else {
+
   // Remove optional inertia for numerical picking checks, then restore normal
   // motion for the walkthrough. This uses the actual system preference contract.
   await page.emulateMedia({ reducedMotion: 'reduce' }); await page.locator('#camera-reset').click();
@@ -163,6 +202,14 @@ try {
   check('keyboard-movement-is-camera-relative', alignment > 0.999, { displacement, rightAxis, alignment });
   const released = await observed(page); await settle(page);
   check('key-release-stops-walking', samePosition(released, await observed(page)));
+  await page.locator('#game-stage').focus(); await page.keyboard.down('ArrowRight');
+  const beforeFocusLoss = await observed(page);
+  await page.waitForFunction(before => { const s = window.__TOUR_GAME__.snapshot(); return Math.hypot(s.x - before.x, s.y - before.y) > .2; }, beforeFocusLoss, { timeout });
+  await page.evaluate(() => window.dispatchEvent(new Event('blur')));
+  const afterBlur = await observed(page);
+  await page.waitForFunction(tick => window.__TOUR_GAME__.snapshot().tick >= tick + 12, afterBlur.tick, { timeout });
+  check('blur-event-clears-held-input', samePosition(afterBlur, await observed(page)), { method: 'Injected blur while real ArrowRight remains held; headless tab switching does not emulate focus loss.', beforeFocusLoss, afterBlur });
+  await page.keyboard.up('ArrowRight');
   const rect = await page.locator('#game-stage canvas').boundingBox();
   const beforeDrag = await observed(page), beforeCamera = await camera(page);
   await page.mouse.move(rect.x + rect.width * .72, rect.y + rect.height * .63);
@@ -198,7 +245,9 @@ try {
     return { viewport: [innerWidth, innerHeight], document: [document.documentElement.scrollWidth, document.documentElement.scrollHeight], canvas: [canvas.width, canvas.height], stage: [stage.width, stage.height], exportBottom: document.querySelector('#export-notes').getBoundingClientRect().bottom, footerTop: footer.top };
   });
   check('compact-layout-and-canvas-fit-after-capture', layout.document[0] === 1280 && layout.document[1] === 720 && layout.canvas.every((v, i) => Math.abs(v - layout.stage[i]) <= 1) && layout.exportBottom <= layout.footerTop, layout);
-  await page.setViewportSize({ width: 1440, height: 1000 }); await locale(page, 'en'); await page.locator('#camera-reset').click();
+  await page.setViewportSize({ width: 1440, height: 1000 }); await locale(page, 'en');
+  const beforeResetView = await observed(page); await page.locator('#camera-reset').click();
+  check('reset-view-preserves-position-and-journey', samePosition(beforeResetView, await observed(page)) && journey(beforeResetView) === journey(await observed(page)));
   await page.locator('#game-stage').focus(); await page.keyboard.down('ArrowUp');
   try { await page.waitForFunction(max => window.__TOUR_GAME__.snapshot().y >= max - .002, WORLD.northFacadeY - PLAYER_RADIUS, { timeout }); }
   finally { await page.keyboard.up('ArrowUp'); }
@@ -230,11 +279,13 @@ try {
   const note = '<b data-personal-note>晚风 & "灯光"</b>\nA quiet crossing.';
   await page.locator('#memory-note').fill(note); await locale(page, 'zh', true);
   check('note-draft-survives-locale-without-autosaving', await page.locator('#memory-note').inputValue() === note && !(await saved(page)).notes.crossing);
+  await close(page); await open(page);
+  check('note-draft-survives-close-and-reopen-without-autosaving', await page.locator('#memory-note').inputValue() === note && !(await saved(page)).notes.crossing);
   await page.locator('#memory-note').fill('x'.repeat(500)); await page.locator('#memory-note').press('End'); await page.keyboard.type('extra');
   check('note-input-enforces-500-character-bound', (await page.locator('#memory-note').inputValue()).length === 500 && /500/.test(await page.locator('#memory-limit').innerText()));
   await page.locator('#memory-note').fill(note); const beforeNote = await observed(page); await page.locator('#save-memory').click();
   check('explicit-note-save-preserves-journey-meaning', (await saved(page)).notes.crossing === note && journey(beforeNote) === journey(await observed(page)));
-  await capture(page, 'saved-personal-note-zh'); await page.locator('#card-continue').click();
+  await capture(page, 'saved-personal-note-zh'); await close(page);
   const resumed = await moveKey(page, 'ArrowRight'); check('card-close-resumes-walking', length(delta(resumed.before, resumed.after)) > .2);
   await settle(page); const beforeReload = await saved(page); await page.reload();
   await page.waitForFunction(() => window.__TOUR_GAME__ && document.querySelector('#loading').hidden, null, { timeout }); await settle(page);
@@ -247,11 +298,20 @@ try {
   const roadTrace = []; await approach(page, 'mufg', roadTrace);
   const road = roadTrace.filter(p => p.y < -2 && p.y > -15);
   check('real-bank-walk-uses-the-mapped-crossing', road.length > 0 && road.every(p => Math.abs(p.x - WORLD.crossing.x) < .08), road);
+  await page.waitForFunction(() => window.__TOUR_GAME__.camera().frontage === 'south', null, { timeout });
+  check('bank-camera-faces-actionable-frontage', (await camera(page)).frontage === 'south', await camera(page));
   await capture(page, 'south-bank-approach'); await open(page); await capture(page, 'bank-card-zh');
   await page.locator('[data-choice="no-cash-stop"]').click();
   check('all-three-encounters-complete-with-distinct-choices', JSON.stringify((await observed(page)).visitedIds) === JSON.stringify(['crossing', 'mitsui', 'mufg']) && (await observed(page)).choiceIds.mufg === 'no-cash-stop');
   await page.locator('#card-continue').click(); const chineseResume = await moveKey(page, 'ArrowRight');
   check('chinese-encounter-chain-resumes', length(delta(chineseResume.before, chineseResume.after)) > .2 && !await page.locator('#place-dialog').evaluate(el => el.open));
+  await page.locator('#game-stage').focus(); await page.keyboard.down('ArrowUp');
+  try { await page.waitForFunction(min => window.__TOUR_GAME__.snapshot().y <= min + .002, WORLD.southFacadeY + PLAYER_RADIUS, { timeout }); }
+  finally { await page.keyboard.up('ArrowUp'); }
+  const southWall = await observed(page); await page.keyboard.down('ArrowUp');
+  try { await page.waitForFunction(tick => window.__TOUR_GAME__.snapshot().tick >= tick + 12, southWall.tick, { timeout }); }
+  finally { await page.keyboard.up('ArrowUp'); }
+  check('south-facing-walk-is-blocked-by-south-facade', Math.abs((await observed(page)).y - southWall.y) <= .001, { before: southWall, after: await observed(page) });
   await capture(page, 'completed-walk-zh');
   const downloadEvent = page.waitForEvent('download'); await page.locator('#export-notes').click();
   const download = await downloadEvent, notesPath = join(output, 'played-field-notes-zh.html'); await download.saveAs(notesPath);
@@ -263,7 +323,36 @@ try {
   check('download-reflects-choices-and-escaped-personal-note', exported.personal === note && !exported.injectedElement && exported.text.includes('不安排现金服务停留') && !exported.text.includes('现金计划：'), exported);
   check('export-fits-phone-width', exported.width <= 390 && exported.language === 'zh', exported.width);
   await capture(notesPage, 'field-notes-zh-mobile'); await notesPage.emulateMedia({ media: 'print' }); await notesPage.setViewportSize({ width: 850, height: 1100 }); await capture(notesPage, 'field-notes-zh-print'); await notesPage.close();
+  const creditsEvent = page.waitForEvent('popup'); await page.locator('.bottom-bar a[href="./credits.html"]').click();
+  const creditsPage = await creditsEvent; await creditsPage.waitForLoadState('domcontentloaded');
+  const credits = await creditsPage.evaluate(() => ({ text: document.body.innerText, links: [...document.querySelectorAll('a[href]')].map(a => a.href) }));
+  const references = JSON.parse(assets.get('/content-evidence/facade-references.json')).references;
+  const localCreditLinks = credits.links.map(link => new URL(link)).filter(url => url.origin === origin).map(url => url.pathname === '/' ? '/index.html' : url.pathname);
+  check('packaged-artwork-credits-retain-authors-sources-and-licenses', creditsPage.url() === origin + '/credits.html' && localCreditLinks.every(path => assets.has(path)) && references.every(reference => credits.text.includes(reference.author) && credits.links.includes(reference.sourceUrl) && credits.links.includes(reference.licenseUrl)), { ...credits, localCreditLinks });
+  await capture(creditsPage, 'artwork-credits'); await creditsPage.close(); await page.bringToFront();
   report.observations.finalJourney = await saved(page);
+  report.observations.rendererStatistics = await page.evaluate(() => window.__TOUR_GAME__.renderer());
+  const contextLost = await page.evaluate(() => {
+    const extension = document.querySelector('canvas').getContext('webgl2').getExtension('WEBGL_lose_context');
+    if (!extension) return false; extension.loseContext(); return true;
+  });
+  check('context-loss-injection-is-supported', contextLost);
+  if (contextLost) {
+    await page.waitForSelector('#retry-scene');
+    const afterLoss = await saved(page), beforeLoss = report.observations.finalJourney;
+    check('context-loss-keeps-journey-notes-and-localized-recovery', samePosition(beforeLoss.game, afterLoss.game) && journey(beforeLoss.game) === journey(afterLoss.game) && JSON.stringify(beforeLoss.notes) === JSON.stringify(afterLoss.notes) && /[\u3400-\u9fff]/.test(await page.locator('.scene-error').innerText()));
+    await capture(page, 'context-loss-zh');
+    await page.locator('#retry-scene').click();
+    await page.waitForFunction(() => window.__TOUR_GAME__ && document.querySelector('#loading')?.hidden && document.querySelector('#game-stage').dataset.sceneStatus === 'ready', null, { timeout });
+    const afterRetry = await saved(page);
+    check('retry-restores-rendering-with-the-same-saved-journey', samePosition(beforeLoss.game, afterRetry.game) && journey(beforeLoss.game) === journey(afterRetry.game) && JSON.stringify(beforeLoss.notes) === JSON.stringify(afterRetry.notes));
+  }
+  const beforeResetJourney = await saved(page);
+  await page.locator('#reset-button').click(); await page.locator('#cancel-reset').click();
+  check('cancel-restart-retains-journey-and-notes', journey((await saved(page)).game) === journey(beforeResetJourney.game) && JSON.stringify((await saved(page)).notes) === JSON.stringify(beforeResetJourney.notes));
+  await page.locator('#reset-button').click(); await page.locator('#confirm-reset').click();
+  const freshJourney = await saved(page);
+  check('confirmed-restart-clears-progress-and-personal-notes', samePosition(freshJourney.game, WORLD.spawn) && !freshJourney.game.visitedIds.length && !freshJourney.game.readSourceIds.length && !Object.keys(freshJourney.game.choiceIds).length && !Object.keys(freshJourney.notes).length && freshJourney.locale === 'zh');
   check('walk-has-no-external-requests-or-browser-errors', !main.record.externalRequests.length && !main.record.pageErrors.length && !main.record.consoleErrors.length, main.record);
   await main.context.close();
 
@@ -273,14 +362,33 @@ try {
     check(`${name}-migrates-in-the-real-app`, current.version === 2 && current.locale === old.locale && samePosition(current.game, old.game) && journey(current.game) === journey(old.game), { before: old, after: current });
     await migrated.page.reload(); await migrated.page.waitForFunction(() => window.__TOUR_GAME__ && document.querySelector('#loading').hidden, null, { timeout });
     check(`${name}-migration-survives-reload`, samePosition((await saved(migrated.page)).game, old.game) && journey((await saved(migrated.page)).game) === journey(old.game));
+    if (name === 'legacy-v1-completed') {
+      await migrated.page.locator('#reset-button').click(); await migrated.page.locator('#confirm-reset').click();
+      await migrated.page.reload(); await migrated.page.waitForFunction(() => window.__TOUR_GAME__ && document.querySelector('#loading').hidden, null, { timeout });
+      const afterRestart = await saved(migrated.page);
+      check('restarting-migrated-journey-does-not-resurrect-legacy-progress', samePosition(afterRestart.game, WORLD.spawn) && !afterRestart.game.visitedIds.length && !Object.keys(afterRestart.game.choiceIds).length);
+    }
     check(`${name}-no-external-requests-or-errors`, !migrated.record.externalRequests.length && !migrated.record.pageErrors.length && !migrated.record.consoleErrors.length, migrated.record);
     await migrated.context.close();
   }
-  report.status = 'Browser walkthrough completed; independent visual review and human acceptance remain separate.';
+  const retained = { ...report.observations.finalJourney, locale: 'en' };
+  const unsupported = await scenario('webgl-unavailable', { [STORAGE_KEY]: JSON.stringify(retained) }, {}, true);
+  const unavailableSave = await saved(unsupported.page);
+  check('webgl-failure-keeps-existing-journey-and-notes', samePosition(retained.game, unavailableSave.game) && journey(retained.game) === journey(unavailableSave.game) && JSON.stringify(retained.notes) === JSON.stringify(unavailableSave.notes));
+  check('webgl-failure-leaves-field-note-export-available', await unsupported.page.locator('#export-notes').isEnabled() && await unsupported.page.locator('#retry-scene').isVisible());
+  await capture(unsupported.page, 'webgl-unavailable-en'); await locale(unsupported.page, 'zh');
+  check('webgl-failure-recovery-translates', /[\u3400-\u9fff]/.test(await unsupported.page.locator('.scene-error').innerText()));
+  check('webgl-failure-has-no-uncaught-errors-or-external-requests', !unsupported.record.pageErrors.length && !unsupported.record.externalRequests.length, { ...unsupported.record, consoleNote: 'Three context-creation diagnostics are expected in this deliberately unavailable scenario.' });
+  await unsupported.context.close();
+  }
+  report.status = reviewOnly ? 'Limited visual-review capture completed; the full behavior suite was not run.' : 'Browser walkthrough completed; independent visual review and human acceptance remain separate.';
 } catch (error) {
   check('browser-run-completed', false, error.stack || String(error)); report.status = 'Incomplete or failed; do not claim playable validation.';
   const page = contexts.flatMap(context => context.pages()).findLast(page => !page.isClosed());
-  if (page) await capture(page, 'failure').catch(() => {});
+  if (page) {
+    report.observations.failure = await page.evaluate(() => ({ state: window.__TOUR_GAME__?.snapshot(), camera: window.__TOUR_GAME__?.camera(), sceneStatus: document.querySelector('#game-stage')?.dataset.sceneStatus })).catch(() => null);
+    await capture(page, 'failure').catch(() => {});
+  }
 } finally {
   report.summary = { passed: report.checks.filter(c => c.pass).length, failed: report.checks.filter(c => !c.pass).length };
   report.finishedAt = new Date().toISOString(); persist();
