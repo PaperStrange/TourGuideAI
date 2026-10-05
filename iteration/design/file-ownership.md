@@ -33,6 +33,7 @@
 以上路径均相对 `experience/`；专业 owner 间通过 API/资产契约协作，不交叉覆盖文件。
 独立应用的 `.github/workflows/experience.yml` 及其 `.github/workflows/README.md` 登记项由 lead 维护，只负责构建/测试与证据，不部署。
 仓库根 `README.md` 的新版入口说明由 lead 维护，旧应用说明保留为历史索引。
+仓库根 `PREVIEW.md` 及独立 `gh-pages` 分支的已验证静态构建由 lead 维护，用于跨会话评审与托管交接。
 
 | 文件 | 历史卡 | **owner（唯一）** | 判定 |
 |---|---|---|---|

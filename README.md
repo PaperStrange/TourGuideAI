@@ -18,6 +18,8 @@ and [validation record](experience/docs/validation.md) for delivered scope and
 remaining art, hardware and user acceptance. This package builds independently;
 the sections below document the earlier application.
 
+For review without localhost, see [remote review and GitHub Pages activation](PREVIEW.md).
+
 TourGuideAI is an intelligent virtual tour guide application that uses AI to create personalized travel experiences.
 
 ## Features
