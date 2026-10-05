@@ -16,6 +16,23 @@
 
 ## 2 · 现况：四个文件被多张卡写过，其中一个是真问题
 
+### 2026-10-05 · 新版独立结构
+
+用户明确允许另建结构，无须适配历史目录。新的 `experience/` 是独立 Vite/Three.js
+应用；参考已有内容与状态契约，但运行时不得导入 `iteration/`。旧证据与源码保留。
+
+| 新路径 | 唯一 owner | 本次职责 |
+|---|---|---|
+| `experience/package.json`, `package-lock.json`, `vite.config.js`, `src/runtime/`, `src/simulation/` | engineering | 独立构建、3D 镜头/渲染/输入与模拟；先交付可验证的 encounter |
+| `experience/art/`, `experience/public/models/`, `experience/docs/art-direction.md` | art-ux | 改进建筑/光影资产、语义分组、Blender 生成与 provenance |
+| `experience/src/content/`, `experience/public/content-evidence/`, `experience/docs/content-contract.md` | world-content | 迁移已证实内容与几何，保留事实来源 |
+| `experience/src/ui/i18n.js`, `experience/docs/immersion.md` | product-design | 英中交互与沉浸设计，区分用户意图与提案 |
+| `experience/tests/`, `experience/docs/validation.md` | qa-release | 独立测试与最终验收记录 |
+| `experience/index.html`, `.gitignore`, `README.md`, `src/app/`, `src/ui/styles.css`, `src/ui/assets/`, `tools/`, `docs/architecture.md`, `docs/github-research.md`, `docs/iteration.md`, `evidence/` | lead | 新应用 UI 整合、技术研究、计划与证据打包 |
+
+以上路径均相对 `experience/`；专业 owner 间通过 API/资产契约协作，不交叉覆盖文件。
+独立应用的 `.github/workflows/experience.yml` 由 lead 维护，只负责构建/测试与证据，不部署。
+
 | 文件 | 历史卡 | **owner（唯一）** | 判定 |
 |---|---|---|---|
 **`city-packs/kyoto-shijo/doors.json`** | task-2, 15, 19, 20 | **`doors-author`** | ✅ 一直一个 owner |

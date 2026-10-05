@@ -1,0 +1,25 @@
+{
+  "locale": "zh",
+  "hints": true,
+  "game": {
+    "x": 24.7,
+    "y": -18.5,
+    "tick": 1975,
+    "facing": "east",
+    "moving": false,
+    "paused": false,
+    "visitedIds": ["crossing", "mitsui", "mufg"],
+    "readSourceIds": ["crossing"],
+    "choiceIds": {
+      "crossing": "north-first",
+      "mitsui": "street-only",
+      "mufg": "no-cash-stop"
+    },
+    "selectedTargetId": "mufg",
+    "nearbyTargetId": "mufg",
+    "nearestTargetId": "mufg",
+    "targetDistance": 0,
+    "destination": null,
+    "waypoints": []
+  }
+}

@@ -10,6 +10,12 @@ decisions are recorded in [SOW §0a](SOW.md#0a--当前用户裁定2026-10-05).
 and Blender technology research as the next iteration's main target. See
 [SOW §0b](SOW.md) and the [3D/Blender research and iteration plan](blender-depth-research.md).
 The V3D iteration below takes priority over full-guide work and destination expansion.
+The latest user feedback asks for more believable architecture/light and immersion
+across trips, days, individual actions and whole-trip sharing. The user also
+authorized a clean project structure and incremental remote commits/pushes. The
+new application is `experience/`; current delivery details continue in its
+[iteration plan](../../experience/docs/iteration.md) and
+[immersion design](../../experience/docs/immersion.md).
 SP0 clarification is complete. SP1–SP3 now have an implemented, runnable first
 playable in [`iteration/game/`](../game/README.md): detailed street art, three
 sourced encounters, English/Chinese guidance and player-derived field notes.

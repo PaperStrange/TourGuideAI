@@ -1,0 +1,125 @@
+{
+  "status": "complete",
+  "blenderVersion": "4.3.2",
+  "scriptSHA256": "68915b30c4b666536032ce32b69fdc30f1bbb521f413781ca6db2181268cd1da",
+  "canonicalSource": "experience/src/content/kyoto.js",
+  "canonicalSHA256": "cfef7654e1bca051f84861d6ec446e588c1d6ef2d8e8e5cf12a9421224a22859",
+  "source": {
+    "buildings": {
+      "north": {
+        "nameJa": "京都三井ビルディング",
+        "name": {
+          "en": "Kyoto Mitsui Building",
+          "zh": "京都三井大厦"
+        },
+        "osmId": 205732558,
+        "minX": 16.522069,
+        "maxX": 58.329294,
+        "yFrom": 4.659507,
+        "yTo": 4.770448,
+        "levels": 8,
+        "levelsProvenance": {
+          "valueKind": "observed",
+          "sourceId": "osm-mitsui",
+          "verifiedAt": "2026-09-29",
+          "meaning": "OSM building:levels tag; not surveyed height in metres."
+        }
+      },
+      "south": {
+        "nameJa": "京都ダイヤビル",
+        "name": {
+          "en": "Kyoto Daiya Building",
+          "zh": "京都钻石大厦"
+        },
+        "osmId": 205732536,
+        "minX": 17.526173,
+        "maxX": 35.691321,
+        "yFrom": -19.969317,
+        "yTo": -19.747436,
+        "levels": 8,
+        "levelsProvenance": {
+          "valueKind": "observed",
+          "sourceId": "osm-daiya",
+          "verifiedAt": "2026-09-29",
+          "meaning": "OSM building:levels tag; not surveyed height in metres."
+        }
+      }
+    },
+    "crossing": {
+      "x": 20.721,
+      "northY": 2.33,
+      "southY": -17.529,
+      "width": 2.6,
+      "widthKind": "authored"
+    },
+    "roadSurface": {
+      "northY": 1.68,
+      "southY": -16.879,
+      "valueKind": "authored",
+      "basis": "Presentation bounds inset 0.65 m from mapped crossing endpoints on sidewalk centrelines; these are not observed kerbs."
+    }
+  },
+  "authored": [
+    "storey heights {'north': 25.249999999999996, 'south': 25.249999999999996}",
+    "flat frontage Y approximation",
+    "building depths/backfaces/roofs",
+    "facade modules/materials/reflection cues",
+    "door treatments/thresholds without tenant bindings",
+    "furniture and planting",
+    "traveller and pose",
+    "camera and lighting"
+  ],
+  "axes": "Blender(east,north,height) -> glTF(east,height,-north), metres",
+  "materials": "core opaque PBR; original embedded colour textures; glass reflection cues authored, runtime PMREM adds environmental reflection; no baked light or transparency",
+  "textureCount": 5,
+  "semanticGroups": [
+    "Street",
+    "NorthBuilding",
+    "SouthBuilding",
+    "NorthShell",
+    "NorthGround",
+    "NorthUpper",
+    "NorthRoof",
+    "SouthShell",
+    "SouthGround",
+    "SouthUpper",
+    "SouthRoof"
+  ],
+  "actorPivots": [
+    "Traveller",
+    "LeftLeg",
+    "RightLeg",
+    "LeftArm",
+    "RightArm",
+    "Torso",
+    "Head"
+  ],
+  "sourceObjects": 1101,
+  "font": "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
+  "limitations": [
+    "Facade appearance is authored, not a photographic reconstruction.",
+    "Eight levels are OSM metadata; metres per storey are authored.",
+    "Full south volume requires runtime occlusion; beauty selectively hides south upper/shell/roof.",
+    "No rigged fingers, interiors, observed entry claims or facial animation.",
+    "Cycles area lighting is a reference; runtime materials and lighting require browser review."
+  ],
+  "block": {
+    "bytes": 3915308,
+    "sha256": "4a4b1e8aeb4051e7761ee3012e9f73480ed7aed547a354fe8fc8264176c086af",
+    "nodes": 63,
+    "primitives": 46,
+    "triangles": 48068,
+    "textures": 5,
+    "extensionsUsed": []
+  },
+  "traveller": {
+    "bytes": 44608,
+    "sha256": "e3aa2620e3a2f9a4a7288444e4950679062a413b3cf05467b89c136d474e2c8f",
+    "nodes": 22,
+    "primitives": 14,
+    "triangles": 752,
+    "textures": 0,
+    "extensionsUsed": []
+  },
+  "seconds": 16.53
+}
