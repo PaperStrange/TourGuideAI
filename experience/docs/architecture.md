@@ -20,7 +20,7 @@ experience/
     content-evidence/  local snapshots behind verified content
     render-study/   Blender stills with the exact shared camera manifest
   content-tools/    build-time extraction from frozen source geometry
-  tests/            simulation, persistence, export and real-browser checks
+  tests/            simulation, persistence, sharing and real-browser checks
   docs/             product direction, decisions, research and validation
   evidence/         selected delivery evidence and exact build/source inventory
   dist/             generated deployable files (ignored)
@@ -48,7 +48,7 @@ Moving between ports/domains does not automatically transfer localStorage.
 The record contains `version`, `locale`, `hints`, `game` and `notes`. Notes use
 known place IDs, plain strings and a 500 UTF-16 code-unit limit matching HTML
 `maxlength`. They are user memories, not facts. Explicit saving gives success or
-failure feedback; locale changes and closing/reopening the encounter preserve the current in-memory draft. Only explicitly saved text survives reload and enters the export. Reset clears
+failure feedback; locale changes and closing/reopening the encounter preserve the current in-memory draft. Only explicitly saved text survives reload; sharing also requires the user to select that note in the preview. Reset clears
 this walk and its notes after the existing confirmation. There is no archive or
 cloud sync yet.
 

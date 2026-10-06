@@ -2,12 +2,11 @@
 
 Owner: QA. Current status, 2026-10-06: **the user accepts fluency and guidance
 for the Pages build they played; building/street realism is not accepted**.
-The subsequent expanded-street/comparison/sharing revision is under validation;
-the baseline's acceptance does not automatically extend to those changes.
-The historical 2026-10-05 evidence remains **53/53 packaged-browser checks and
-16/16 pure tests passing**. Representative-device coverage remains unestablished.
-The production browser run completed on 2026-10-05, 06:53:03–07:03:45 UTC.
-Earlier 2D and Blender-proof results are baselines, not passes for this application.
+The expanded-street/comparison/sharing revision now passes **97/97 packaged-browser
+checks, 22/22 pure tests and 17/17 repository gates**. Its new visual quality and
+sharing experience still need user acceptance; the baseline's acceptance does not
+automatically extend to those changes. Representative-device coverage remains
+unestablished. The historical 2026-10-05 evidence remains unchanged below.
 
 The focused revision must preserve the three sourced encounters while adding
 guided 3D navigation, more convincing executed art, and a small personal record
@@ -38,10 +37,11 @@ remain the evidence for the separate 2026-10-05 automated run.
 
 ## Current revision QA plan · 2026-10-06
 
-Implementation and QA preparation are in progress; no new visual/sharing pass is
-claimed. The scope is a matched real-time/Cycles comparison plus in-app preview,
-recipient link, native sharing where available, PNG and print/PDF-reader outputs.
-Reuse the existing runner and tests; historical evidence stays immutable.
+The frozen revision has completed the automated checks below. The scope is a
+matched real-time/Cycles comparison plus in-app preview, recipient link, native
+sharing where available, PNG and print/PDF-reader outputs. This evidence establishes
+observed behavior and delivered outputs; preferred art quality and real recipient
+use remain separate reviews. Historical evidence stays immutable.
 
 | Review point | Evidence and observable failure |
 |---|---|
@@ -52,17 +52,111 @@ Reuse the existing runner and tests; historical evidence stays immutable.
 | Recipient handoff | Copy a link and open it in a separate browser context without the author's storage/session. The recipient must read the same choices, selected personal content, sources and EN/ZH text without WebGL or journey-storage writes. Malformed, unsupported-version and oversized fragments must show a usable error rather than a partial or fabricated recap. Untrusted text must remain text. |
 | Multiple outputs | Verify PNG signature, decodable dimensions and visible recap content; verify the print reader's content and print layout separately from link delivery. Native-share payload and cancellation can be exercised with a browser-API stub, but the device share sheet requires a supported-device check. Do not claim that browser print-layout inspection establishes every OS PDF printer or that copying a link publishes server-side content. |
 
-The new recap/storage/simulation suite currently passes **22/22 pure tests**.
-A focused restored-journey sharing run passed **21/21 browser checks** on
-2026-10-06, with WebGL deliberately unavailable. It exercised the actual clipboard,
-a fresh recipient context, a 500-character Chinese selected note, unchecked-note
-exclusion, PNG download/decode, Chromium PDF, localized invalid links and native
-handoff/cancellation stubs. It did not walk the expanded scene or exercise an
-unsaved draft created in gameplay. Its package-manifest hash is
-`6071e73c17d0b7abc4034e3a45d752caba645129c4e03b50a0bbef8726c78b2b`;
-temporary evidence is `/workspace/scratch/experience-qa/sharing-20261006/`.
-Subsequent startup-race, native-unavailable, western-ground and comparison checks
-are prepared for the final frozen package; they are not yet passes.
+## Current results · 2026-10-06
+
+The [final browser report](../evidence/detail-study-20261006/browser/browser-result.json)
+records **97 passing checks, zero failures**, 11 scenarios and 27 screenshot hashes.
+It ran against source commit `6a532aa9a2ef0e9d4366ff8159f497f0843b737e` on
+2026-10-06, **04:51:57–05:01:14 UTC**. The driver snapshots all built file bytes
+before launching the browser; its report also records hashes of all three driver
+modules. The [pure test output](../evidence/detail-study-20261006/unit-tests.tap)
+records **22/22 passing**, and the separate
+[repository report](../evidence/detail-study-20261006/repo-gates.json) records
+**17/17 passing with no skips**.
+
+| Frozen artifact | SHA-256 |
+|---|---|
+| Built-file manifest in browser report | `90f1e630c30f6094cff2ed17d6007658f156635f673c431ebf29bdefe9ec96e4` |
+| Street GLB | `f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c` |
+| Matched-render manifest | `70db2117cae68ecb751a0f860009ccbcf2a2424b60dd2d0060d4cdb92c4b490f` |
+| Browser report | `e2e117bcfed6b5cd59e627273f634d4a109e48cba767d04a2a624d394b7d0da0` |
+
+The actual walk completed crossing → Mitsui → MUFG with distinct choices and
+separate source-reading/visiting state. Camera-relative movement, drag-versus-walk,
+real pavement/road picking, both facade bounds, EN/ZH modal focus/pause/resume,
+saved notes, unsaved draft return, v1 migration and restart precedence passed.
+Context-loss retry retained the journey. Opening sharing before the scene finished
+loading retained pause and dialog focus. The
+[western road probe](../evidence/detail-study-20261006/browser/western-asphalt-restored.png)
+restored `(8,2.1)` and clicked the actual asphalt at `(9,2.1)`; the
+[eastern camera probe](../evidence/detail-study-20261006/browser/eastern-context-occlusion-restored.png)
+retained `(50,-2)` while hiding the contextual building containing the camera.
+Both grounded the actor on the actual `.05` surface, and independent image review
+found the actor visible. Expanded context does not expand the accepted walking
+bounds or establish additional visitable entrances.
+
+The sharing checks used this played journey, not only a completed-save fixture.
+The [preview](../evidence/detail-study-20261006/browser/share-preview-zh.png) and
+[fresh recipient](../evidence/detail-study-20261006/browser/shared-recipient-zh-mobile.png)
+matched exactly. Selected saved notes appeared; unchecked notes and the unsaved
+bank draft did not. The recipient required no WebGL or author storage and made no
+journey-storage writes. Malformed, unsupported and oversized links showed localized
+errors. The downloaded [PNG](../evidence/detail-study-20261006/browser/shared-recap-zh.png)
+is 1080×3357 and includes the complete 500-character Chinese note, its final line,
+Japanese names, choices and sources. The actual
+[PDF](../evidence/detail-study-20261006/browser/shared-recap-zh.pdf) was inspected on
+all four A4 pages; no content was lost. Its long-note case leaves a sparse title-only
+first page because encounter blocks avoid page breaks, a remaining layout polish
+issue. Clipboard transfer was real; native link/image handoff and cancellation used
+observed API stubs. These do not establish an OS share sheet, actual delivery or
+every device's PDF printer.
+
+All three comparison views loaded the exact model and 1200×750/64-sample still
+hashes. Camera matrices, field of view, aspect and actual mesh visibility matched
+the manifest. A/B/side-by-side modes, EN/ZH, context-loss retry and the usable still
+when WebGL is unavailable passed. The page did not alter the existing journey.
+Missing manifest/image fixtures exposed localized recoverable errors. Normal
+scenarios had no external requests, uncaught exceptions or console errors;
+deliberate unavailable-WebGL and missing-asset fixtures produced only their
+expected context-creation/404 diagnostics.
+
+Independent QA/art review inspected the final
+[opening](../evidence/detail-study-20261006/browser/opening-en.png),
+[south arrival](../evidence/detail-study-20261006/browser/south-bank-approach.png),
+[intersection comparison](../evidence/detail-study-20261006/browser/comparison-intersection-both-en.png),
+[Mitsui comparison](../evidence/detail-study-20261006/browser/comparison-mitsui-frontage-both-en.png)
+and [Daiya comparison](../evidence/detail-study-20261006/browser/comparison-daiya-frontage-both-en.png).
+Asphalt is distinct from pavement, corner returns/context survive browser rendering,
+and the two treatments retain the same composition and geometry. The live image
+is brighter with flatter recess shading; Cycles gives stronger sill/column/contact
+depth but darker under-canopy glazing/lettering and visible grain. Other remaining
+limits are the bright canopy, repeated stylized foliage, broad asphalt mottling and
+subtle actor contact shadow. At the
+[wall-adjacent pose](../evidence/detail-study-20261006/browser/actor-near-facade.png),
+a canopy post and edge partly obscure the actor's silhouette. No new compatibility
+blocker was observed; this is not a realism or art-preference acceptance claim.
+
+Conditions: Chromium 151, WebGL 2, ANGLE Vulkan SwiftShader, DPR 1, desktop
+1440×1000 and 1280×720, recipient width 390px. The traced Mitsui-to-bank route took
+144.608 seconds and advanced continuously through 79 rendered-frame increments.
+The recorded game frame submitted 99 calls / 132,552 triangles, with 110 geometries
+and 19 textures allocated; allocation counts are not memory bytes. These are
+software-GPU observations, not hardware budgets or fluency acceptance. Headless
+focus-loss testing injected a blur event; actual OS focus switching, representative
+hardware, fresh-user discoverability, physical field use, recipient usability and
+whole-trip immersion remain unverified. The bundle was served as packaged HTTP
+resources with external requests denied; native `file://` launch was not tested.
+
+### Separate CI status
+
+[CI run 37415711959](https://github.com/PaperStrange/TourGuideAI/actions/runs/37415711959)
+failed after 29 passing checks when the bank approach exceeded its 240,000ms
+software-rendering allowance; the [failed-run log](../evidence/detail-study-20261006/ci-initial-timeout.log)
+is retained separately. Its trace advanced continuously through the mapped
+crossing to `(21.091,-17.619)` at 241,316ms; it does not show a stuck route. This is
+classified as a tooling deadline failure, not a completed CI pass or a desktop
+performance result. A workflow-only change raises the allowance to 600,000ms and
+the job cap to 30 minutes. [Rerun 37416980474](https://github.com/PaperStrange/TourGuideAI/actions/runs/37416980474)
+on workflow-only commit `2006b912ed3febf39b63a1902fd5c24db7e0749d` is **in progress**.
+Runtime, assets and assertions remain unchanged. The separate local 97-check result and its delivered package
+hash remain valid; they do not imply that CI has passed.
+
+The earlier focused sharing run passed 21/21 on a different preliminary package
+(manifest `6071e73c17d0b7abc4034e3a45d752caba645129c4e03b50a0bbef8726c78b2b`).
+Preliminary browser review exposed tiled carriageways, while the independent ground
+audit found incomplete western coverage. Those results are superseded by the frozen
+result above, not counted as final visual acceptance. The final full run needed no
+source or driver edits.
 
 ## Behavioral evidence
 

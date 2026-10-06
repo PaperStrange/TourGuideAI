@@ -15,7 +15,7 @@ Direct review of
 records and metadata hash match this evidence file. The fourteen embedded image
 maps are generated original color, normal and roughness materials, not copied
 photographs. The expanded `shijo-block.glb` reviewed here has SHA-256:
-`55434bdf1eb4f98f018a35cdf05669d6e422b45d2f1062b0d1383431492071d0`.
+`f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c`.
 Binary checks found every vertex of all seven mapped footprint rings at their
 authored roof heights within 0.000005 m of the source. Both primary diagonal
 outward normals match `(east, height, −north)`, and all six reading anchors retain

@@ -85,6 +85,61 @@ there must be no blocking foreground mass, ghost façade, checkerboard masonry
 artifact or dominant exposed stage edge. The user judges whether the resulting
 street appearance is convincing enough. Technical checks do not supply that vote.
 
+### Review of the rendered candidate
+
+The final Cycles images were inspected at 1200×750, 64 samples, without denoising.
+The [intersection view](../public/render-study/intersection.png) now exposes all
+four Mitsui columns and Daiya's paired columns on separate diagonal faces. The
+road/pavement distinction, curved planted corners and eastward continuation are
+visible together. The two close views reveal window recesses and sills, continuous
+stone courses, canopy supports and kerb transitions; the previous checkerboard
+masonry artifact is absent.
+
+Visible limits remain: the glazing and lettering beneath both canopies are dark;
+fine sampling grain remains in shaded surfaces; foliage is simplified, street
+activity is sparse, and repeated contextual windows are still authored background
+architecture. The study is a material and construction comparison, not a finished
+photographic reconstruction. Final browser comparison and walking captures must
+be reviewed separately; these offline observations do not establish user approval.
+
+The final-build [English opening](../evidence/detail-study-20261006/browser/opening-en.png)
+and [Chinese opening](../evidence/detail-study-20261006/browser/opening-zh.png) were
+also inspected: source-shaped corner returns, planting, window sills and road
+contrast carry into realtime rendering, while the traveller and target rings
+remain readable. The high gameplay camera makes the canopy look bright and flat;
+asphalt shows broad mottling, and the repeated foliage remains visibly stylized.
+At the [façade collision wall](../evidence/detail-study-20261006/browser/actor-near-facade.png),
+a canopy post overlaps the traveller's torso and legs and the canopy partly covers
+the hat. The actor remains locatable, but this is not an unobstructed silhouette
+in every pose. These findings do not override the user's pending art judgment.
+
+The [south bank approach](../evidence/detail-study-20261006/browser/south-bank-approach.png)
+was captured after an actual walk through the crossing. Its arrival camera shows
+Daiya's vertical glazing and diagonal corner separately from Mitsui's punched
+windows; the traveller, destination ring and Chinese action prompt remain readable.
+The [bank card](../evidence/detail-study-20261006/browser/bank-card-zh.png) opens over
+that scene with clear localized choices. Bright canopy surfaces, opaque dark glass
+and repeated planting still limit realism in this view.
+
+The restored-position [western asphalt](../evidence/detail-study-20261006/browser/western-asphalt-restored.png)
+and [eastern context-occlusion](../evidence/detail-study-20261006/browser/eastern-context-occlusion-restored.png)
+probes also keep the traveller visible; the eastern contextual building no longer
+overlays the camera. These are restored test positions, not additional walked-route
+evidence. Ground-height checks establish contact coordinates, while the subtle
+actor contact shadow still leaves room for stronger visual grounding.
+
+The actual browser comparisons—[intersection](../evidence/detail-study-20261006/browser/comparison-intersection-both-en.png),
+[Mitsui](../evidence/detail-study-20261006/browser/comparison-mitsui-frontage-both-en.png)
+and [Daiya](../evidence/detail-study-20261006/browser/comparison-daiya-frontage-both-en.png)—
+were independently inspected. Framing, four-column versus paired-column corners,
+traveller placement and frontage construction align. A is brighter and cleaner,
+with more readable ground glazing, but strong ambient fill flattens its recesses
+and canopy junctions. B gives stronger sill, column and contact-shadow depth,
+while losing some ground-level glass and lettering in shade and retaining fine
+sampling grain. This is a meaningful implemented comparison; it does not establish
+that B is preferable, that either is photorealistic, or that the user has accepted
+the revised art. Actual-device performance remains unmeasured by this visual review.
+
 ## Runtime asset contract
 
 | Group / asset | Contract |

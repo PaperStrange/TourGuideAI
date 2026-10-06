@@ -1,0 +1,271 @@
+{
+  "purpose": "Frozen application, art, source-evidence and QA-driver inputs for the expanded-street rendering and multiple-format sharing review. Documentation, historical evidence, installed dependencies and generated dist are excluded to avoid recursive hashes. Paths are relative to experience/.",
+  "sourceCommit": "6a532aa9a2ef0e9d4366ff8159f497f0843b737e",
+  "files": [
+    {
+      "path": "art/COPYING-GPL-3.0.txt",
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "path": "art/build_scene.py",
+      "bytes": 44715,
+      "sha256": "46c013c7d7267e69461a33b714e28768a8f223af83663561c155d48c6042f359"
+    },
+    {
+      "path": "art/render_study.py",
+      "bytes": 8707,
+      "sha256": "5a201055b8098ecbf63aa9dfce12436411faf7804871ddb52771db26cd4ece5e"
+    },
+    {
+      "path": "comparison.html",
+      "bytes": 794,
+      "sha256": "ad2e3453c3c6600c8da7e3c47ebc1ed0362fc8658fa4b5288143a9f57f6932e9"
+    },
+    {
+      "path": "content-tools/build-street-context.mjs",
+      "bytes": 12244,
+      "sha256": "4ec3bbf280777ef927a6c02c99362a5658dfa279bed776744139e1ff91d739aa"
+    },
+    {
+      "path": "index.html",
+      "bytes": 796,
+      "sha256": "73d6e5a5f2b940b4f762bfbf4b94344df3771709e5a4c6c8a775f085731c7a93"
+    },
+    {
+      "path": "journey.html",
+      "bytes": 334,
+      "sha256": "11ac6f28ed10435668650c9d52dcd9770a8b287894364f34d29834f06b2e77e6"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 26909,
+      "sha256": "c06b91d07a077198bc89edbd161fbdae3145aacc8ec59f81c90a110f5d934d43"
+    },
+    {
+      "path": "package.json",
+      "bytes": 488,
+      "sha256": "5b108c503a6fe51f6fad1db12198142207f1dc2cf6289df4e10bbc1926a5a355"
+    },
+    {
+      "path": "public/content-evidence/facade-references.json",
+      "bytes": 5056,
+      "sha256": "2633e98dd95ba7160bb4c54acde94a8ed4de5f1f7b335904abf79da41ab0d8e2"
+    },
+    {
+      "path": "public/content-evidence/geometry.json",
+      "bytes": 12083,
+      "sha256": "e27f5fa137100ac4786c341cf13cc84acc6a94b71120178871320955984670b7"
+    },
+    {
+      "path": "public/content-evidence/operator-facts.json",
+      "bytes": 4911,
+      "sha256": "58d5ff4a3c6b722609a39e45e74df132313066feabb442afc575564d659afcc0"
+    },
+    {
+      "path": "public/content-evidence/street-context.json",
+      "bytes": 39636,
+      "sha256": "f222a6d2346317d8fdaeb55bd81d743ddf565589dc9931a2abfb922907a81f37"
+    },
+    {
+      "path": "public/credits.html",
+      "bytes": 14872,
+      "sha256": "ac88dc855fee8e5a7f8c4066ffe8cd25ecd1e6fa4819a7b03795c482331210c5"
+    },
+    {
+      "path": "public/models/provenance.json",
+      "bytes": 10306,
+      "sha256": "7354dd88601d9be7b7b13f0e2688721b893f9890c7865ff6decb645d59bfc467"
+    },
+    {
+      "path": "public/models/shijo-block.glb",
+      "bytes": 14267180,
+      "sha256": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c"
+    },
+    {
+      "path": "public/models/traveller.glb",
+      "bytes": 35556,
+      "sha256": "ee5307da94f4d1994e5323a0d31d6f79a255c9f2f10459e0a0e6434fb051fdb1"
+    },
+    {
+      "path": "public/render-study/daiya-frontage.png",
+      "bytes": 1420180,
+      "sha256": "36eea15771c011e9fc5a83f4007a712045736a8217261872de17f2245bfe0f98"
+    },
+    {
+      "path": "public/render-study/intersection.png",
+      "bytes": 1343824,
+      "sha256": "980eeb06b336d3568961d3324b6713cf325dc48910355bd0f5a70b88ab65b29b"
+    },
+    {
+      "path": "public/render-study/manifest.json",
+      "bytes": 4620,
+      "sha256": "70db2117cae68ecb751a0f860009ccbcf2a2424b60dd2d0060d4cdb92c4b490f"
+    },
+    {
+      "path": "public/render-study/mitsui-frontage.png",
+      "bytes": 1426541,
+      "sha256": "fb7cb44ff5c6d31ac81ae0892f44b16f6b28aafcdd7a77b3889ef242e97cb2ad"
+    },
+    {
+      "path": "src/app/journey-reader.js",
+      "bytes": 1957,
+      "sha256": "635fc63fc72c6d37fba563b3d257dcd9804f7f9d07f38827f1855606da5c1daf"
+    },
+    {
+      "path": "src/app/journey-store.js",
+      "bytes": 913,
+      "sha256": "e0cc8a7109988b3ce7d4dfde926268650847eed8d170ab87cb149e697be76fc8"
+    },
+    {
+      "path": "src/app/main.js",
+      "bytes": 20324,
+      "sha256": "31ec7f2e54e8b568262679492475a9f803ceb45eab00fd80b9d2670fff988548"
+    },
+    {
+      "path": "src/app/recap.css",
+      "bytes": 2466,
+      "sha256": "d3084e061d0199101e41e37e88626af78040f70323e2e2e8e078e4ee64bcc282"
+    },
+    {
+      "path": "src/app/share-dialog.js",
+      "bytes": 7134,
+      "sha256": "b2c147767b4f9549c5b0bb998fb7ed529cf1ce8b8dff31a6215a0316e880425c"
+    },
+    {
+      "path": "src/app/share.js",
+      "bytes": 8243,
+      "sha256": "d6f86b12fad42d7afc2c7a4b8dc022a5d002c6b3ddbf77ea1882ffd58538ba89"
+    },
+    {
+      "path": "src/comparison/main.js",
+      "bytes": 10251,
+      "sha256": "59fc328083f08787278f2b1aa5031d2e6ffb2a1c55942310664bf1c8d350716e"
+    },
+    {
+      "path": "src/comparison/manifest.js",
+      "bytes": 2523,
+      "sha256": "728b6b72b1ac4484eee138b1ddedec2df23802fc0b9c9e22205820b93b057fa6"
+    },
+    {
+      "path": "src/comparison/study-renderer.js",
+      "bytes": 10067,
+      "sha256": "21026b8f7771b039257bb3d4cc59b4a9658b5d1f26542a7d7a73d7db16502d9e"
+    },
+    {
+      "path": "src/comparison/styles.css",
+      "bytes": 4199,
+      "sha256": "b6b8bd894d8423f021606fc5032307647e99ac966f6a48ead29b9ed9a320fbef"
+    },
+    {
+      "path": "src/content/kyoto.js",
+      "bytes": 14985,
+      "sha256": "cfef7654e1bca051f84861d6ec446e588c1d6ef2d8e8e5cf12a9421224a22859"
+    },
+    {
+      "path": "src/runtime/camera.js",
+      "bytes": 4956,
+      "sha256": "cb92c8f0e97db97af8c591609c6bb03b6894b2a62cd879d14d032a5b74324422"
+    },
+    {
+      "path": "src/runtime/create-game.js",
+      "bytes": 13647,
+      "sha256": "ce37181edc47e4d8ec86f2bfee22bdfe6c00823a1ff828ead37d3fa3f449e8ca"
+    },
+    {
+      "path": "src/runtime/world-view.js",
+      "bytes": 11057,
+      "sha256": "ccfb68efd6b54029be83b25717831a9380e24f6398522d82a3e4feec59f0a0a0"
+    },
+    {
+      "path": "src/simulation/index.js",
+      "bytes": 4707,
+      "sha256": "692515b0674c8d6b75e853c98f14d4c92c9e0d3c3dde0895e4c762c574396f34"
+    },
+    {
+      "path": "src/simulation/world.js",
+      "bytes": 1395,
+      "sha256": "a363e6193006493346ef10aac44c447db3673ca202fed5be347ae77f6119d40f"
+    },
+    {
+      "path": "src/ui/assets/NOTO-LICENSE.txt",
+      "bytes": 14712,
+      "sha256": "849f4ea9c214fa4ac3593b770c699f387534b11ce671264c1b10d85bdcb5997b"
+    },
+    {
+      "path": "src/ui/assets/THIRD-PARTY-NOTICES.txt",
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+    },
+    {
+      "path": "src/ui/assets/font-manifest.json",
+      "bytes": 1147,
+      "sha256": "f1fa24a7d0cbb599707446582d17c74ae9f3a9b5fd247244cc24ac93408c941d"
+    },
+    {
+      "path": "src/ui/assets/kyoto-sans.woff",
+      "bytes": 162304,
+      "sha256": "362d1672531350057cb7e33a343425b6d54ce23e6e057d26b787b65280f69aa1"
+    },
+    {
+      "path": "src/ui/i18n.js",
+      "bytes": 22493,
+      "sha256": "a5153f326e8f0b1312a08cd99195c725807462784f90ca2c06b2c5cd6c9d5b10"
+    },
+    {
+      "path": "src/ui/styles.css",
+      "bytes": 17223,
+      "sha256": "96b6bc8865f4fc616d8ace88d31a21542cf6033f9b404b50142b7f42ef69e08d"
+    },
+    {
+      "path": "tests/browser-check.mjs",
+      "bytes": 42005,
+      "sha256": "9533d993cf273a87043646f76e712558872373583901b6d9642de157ec823c29"
+    },
+    {
+      "path": "tests/browser-comparison.mjs",
+      "bytes": 8914,
+      "sha256": "d2058d97d88471f405231a17db5bd25bda26b6771fc5d6257fc09576e82847ee"
+    },
+    {
+      "path": "tests/browser-sharing.mjs",
+      "bytes": 12179,
+      "sha256": "1d210049426accb18bdaeba7771664b958ae5a1b738e24f520dae2dbfb6ebe3d"
+    },
+    {
+      "path": "tests/fixtures/legacy-v1-completed.json",
+      "bytes": 535,
+      "sha256": "d8388add44fe0e782cbad00f73bbe1842ad386fe0708b11f27ee2d6f59fd25c2"
+    },
+    {
+      "path": "tests/fixtures/legacy-v1-mid-journey.json",
+      "bytes": 456,
+      "sha256": "d8fee691f7e167751f9d3132c9267a61159857156bd2653f5dda9a872f607efa"
+    },
+    {
+      "path": "tests/journey.test.mjs",
+      "bytes": 1819,
+      "sha256": "d041a0bf1ab48767b1e710f714e1878d32a7e9c6f1ca99b819ba99a36c644812"
+    },
+    {
+      "path": "tests/share.test.mjs",
+      "bytes": 6605,
+      "sha256": "f9cfcbf5a7723e93d4b41d44f617df6b99e386f8b73165eaecef9ca097ab08fa"
+    },
+    {
+      "path": "tests/simulation.test.mjs",
+      "bytes": 6615,
+      "sha256": "57832b16cef458097fe7dd167cd3388dfb15edff0048f56e0142ff2eaac2aa7f"
+    },
+    {
+      "path": "tools/build-font.py",
+      "bytes": 1836,
+      "sha256": "addf84d1347e949cb6c20917fb642b9a926184e30dd2cda9f28f79fbec41efee"
+    },
+    {
+      "path": "vite.config.js",
+      "bytes": 399,
+      "sha256": "6aff2d7df34c6fb9414c080024fca61551dd781d4a9b53bbf99cda163530f183"
+    }
+  ]
+}

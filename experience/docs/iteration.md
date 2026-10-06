@@ -25,8 +25,18 @@ formats rather than a single-choice product decision.
 4. Verify the new paths and matched views, preserve previous immutable evidence,
    commit/push meaningful slices, then update the existing GitHub Pages review.
 
-The implementation and new realism review remain in progress. The following
-paragraphs describe the preceding delivered increment.
+Implementation is complete in source commit
+`6a532aa9a2ef0e9d4366ff8159f497f0843b737e`. Seven sourced building footprints now
+frame the street; construction and material details are original authored work.
+The comparison has one intersection and two close frontage views, with identical
+geometry and camera poses in both treatments. Sharing provides all three formats
+from one reviewed selection. The exact package passed 97 browser checks, 22 pure
+tests and 17 repository gates, and is published on the existing
+[Pages site](https://paperstrange.github.io/TourGuideAI/). All 31 hosted package
+files match the tested hashes. See the [delivery evidence](../evidence/detail-study-20261006/README.md).
+New-art acceptance remains with the user.
+
+The following paragraphs describe the preceding delivered increment.
 
 Build one clean application under `experience/`, independent of historical folder
 constraints. Improve facade proportions, detail and illumination; integrate the

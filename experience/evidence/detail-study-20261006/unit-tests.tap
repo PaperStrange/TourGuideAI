@@ -1,0 +1,142 @@
+TAP version 13
+# Subtest: legacy import occurs only when the current save is absent
+ok 1 - legacy import occurs only when the current save is absent
+  ---
+  duration_ms: 1.330711
+  type: 'test'
+  ...
+# Subtest: malformed current saves cannot resurrect an older completed journey
+ok 2 - malformed current saves cannot resurrect an older completed journey
+  ---
+  duration_ms: 0.280926
+  type: 'test'
+  ...
+# Subtest: personal notes retain plain text, reject invalid targets/types and enforce the input limit
+ok 3 - personal notes retain plain text, reject invalid targets/types and enforce the input limit
+  ---
+  duration_ms: 0.219024
+  type: 'test'
+  ...
+# Subtest: recaps default to no personal notes and do not expose or mutate game state
+ok 4 - recaps default to no personal notes and do not expose or mutate game state
+  ---
+  duration_ms: 10.451829
+  type: 'test'
+  ...
+# Subtest: only explicitly selected saved notes on real visited targets enter a recap
+ok 5 - only explicitly selected saved notes on real visited targets enter a recap
+  ---
+  duration_ms: 0.259394
+  type: 'test'
+  ...
+# Subtest: English and Chinese recap fragments round-trip without losing selected Unicode text
+ok 6 - English and Chinese recap fragments round-trip without losing selected Unicode text
+  ---
+  duration_ms: 1.104406
+  type: 'test'
+  ...
+# Subtest: share links retain a Pages subdirectory and discard author query/hash data
+ok 7 - share links retain a Pages subdirectory and discard author query/hash data
+  ---
+  duration_ms: 8.059666
+  type: 'test'
+  ...
+# Subtest: route choices and remembered stops remain semantically distinct in both languages
+ok 8 - route choices and remembered stops remain semantically distinct in both languages
+  ---
+  duration_ms: 0.887194
+  type: 'test'
+  ...
+# Subtest: untrusted recap notes remain escaped text in both language presentations
+ok 9 - untrusted recap notes remain escaped text in both language presentations
+  ---
+  duration_ms: 0.664624
+  type: 'test'
+  ...
+# Subtest: invalid structure, targets, choices, dates and note types cannot become partial recaps
+ok 10 - invalid structure, targets, choices, dates and note types cannot become partial recaps
+  ---
+  duration_ms: 0.807075
+  type: 'test'
+  ...
+# Subtest: unsupported, malformed and oversized links produce distinct bounded failures
+ok 11 - unsupported, malformed and oversized links produce distinct bounded failures
+  ---
+  duration_ms: 0.308216
+  type: 'test'
+  ...
+# Subtest: creation bounds selected text and repairs a split Unicode surrogate before encoding
+ok 12 - creation bounds selected text and repairs a split Unicode surrogate before encoding
+  ---
+  duration_ms: 0.450036
+  type: 'test'
+  ...
+# Subtest: camera-relative axes remain correct at cardinal and intermediate headings
+ok 13 - camera-relative axes remain correct at cardinal and intermediate headings
+  ---
+  duration_ms: 9.54822
+  type: 'test'
+  ...
+# Subtest: a rotated walk preserves its angle instead of snapping to a diagonal
+ok 14 - a rotated walk preserves its angle instead of snapping to a diagonal
+  ---
+  duration_ms: 1.697094
+  type: 'test'
+  ...
+# Subtest: legacy-v1-mid-journey retains position and journey meaning
+ok 15 - legacy-v1-mid-journey retains position and journey meaning
+  ---
+  duration_ms: 0.719776
+  type: 'test'
+  ...
+# Subtest: legacy-v1-completed retains position and journey meaning
+ok 16 - legacy-v1-completed retains position and journey meaning
+  ---
+  duration_ms: 12.690375
+  type: 'test'
+  ...
+# Subtest: legacy facing initializes the 3D actor heading consistently
+ok 17 - legacy facing initializes the 3D actor heading consistently
+  ---
+  duration_ms: 0.367634
+  type: 'test'
+  ...
+# Subtest: facade bounds stop continuing input, allowing only millimetre quantization
+ok 18 - facade bounds stop continuing input, allowing only millimetre quantization
+  ---
+  duration_ms: 21.247376
+  type: 'test'
+  ...
+# Subtest: automatic north-to-bank walk uses the mapped crossing without awarding progress
+ok 19 - automatic north-to-bank walk uses the mapped crossing without awarding progress
+  ---
+  duration_ms: 6.579794
+  type: 'test'
+  ...
+# Subtest: modal pause freezes navigation and simulation time; resume continues the route
+ok 20 - modal pause freezes navigation and simulation time; resume continues the route
+  ---
+  duration_ms: 0.359953
+  type: 'test'
+  ...
+# Subtest: fixed world-input replay survives a save checkpoint and responds to changed input
+ok 21 - fixed world-input replay survives a save checkpoint and responds to changed input
+  ---
+  duration_ms: 19.505227
+  type: 'test'
+  ...
+# Subtest: invalid restore data cannot manufacture a valid position or unsupported target
+ok 22 - invalid restore data cannot manufacture a valid position or unsupported target
+  ---
+  duration_ms: 27.663518
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 409.617682

@@ -7,11 +7,11 @@ Updated 2026-10-06. Owner: lead. Planning baseline: `origin/iteration` at
 review; building/street realism did not. The previous art “no blocker” assessment
 was a technical usability check, not user realism acceptance. Current work:
 
-| Sprint | Owners | Concrete exit |
-|---|---|---|
-| Detail-1 · Shared source and interface | world, engineering, art, lead | Sourced enlarged intersection context; fixed matched camera contract; explicit multi-format recap schema |
-| Detail-2 · Implement both comparisons and sharing | art, engineering, product, lead | Correct diagonal corners and detailed streetscape; realtime PBR versus Blender path-traced stills; one preview with link, PNG, print/PDF |
-| Detail-3 · Verify and publish review | QA, art, product, lead | Actual matched browser views; note-selection/privacy, recipient and format checks; incremental commits/pushes; updated existing Pages site |
+| Sprint | Owners | Concrete exit | Current state |
+|---|---|---|---|
+| Detail-1 · Shared source and interface | world, engineering, art, lead | Sourced enlarged intersection context; fixed matched camera contract; explicit multi-format recap schema | Complete: seven source footprints, three shared view definitions, bounded presentation-only recap |
+| Detail-2 · Implement both comparisons and sharing | art, engineering, product, lead | Correct diagonal corners and detailed streetscape; realtime PBR versus Blender path-traced stills; one preview with link, PNG, print/PDF | Implemented and pushed in `6a532aa`; original game bounds and encounters preserved |
+| Detail-3 · Verify and publish review | QA, art, product, lead | Actual matched browser views; note-selection/privacy, recipient and format checks; incremental commits/pushes; updated existing Pages site | Complete technical delivery: 97 browser / 22 pure / 17 repository checks passed; Pages `28dc489` serves the exact 31 tested files. User art acceptance remains open |
 
 These sprints continue the existing owners' work. They do not expand the playable
 boundary or claim new verified entrances. [SOW §0d](SOW.md) supersedes older
@@ -177,11 +177,10 @@ handoff before an agent writes. New runtime and art paths need one named owner.
 Allow parallel art/content/runtime work only after their shared contracts are
 clear; integration and final verification are sequential.
 
-Planning-tool limitation: `check-task-ownership.mjs` failed to run here because it
-hardcodes a Windows repository path. The two planning edits were checked directly
-against the ownership table and belong to lead. Repair the helper's portability
-before relying on it for implementation tickets; its failure does not invalidate
-the separately passing integrity suite.
+The original planning run found a hardcoded Windows path in
+`check-task-ownership.mjs`. The lead repaired it in this follow-up to resolve the
+table relative to the script, and the helper now runs in this checkout. The
+explicit ownership table remains authoritative; the helper does not replace it.
 
 ## 4. Team discussion and resulting plan
 

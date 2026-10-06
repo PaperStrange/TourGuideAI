@@ -4,7 +4,9 @@
 
 The current Kyoto playable lives in the independent [`experience/`](experience/README.md)
 application: Blender-authored architecture, guided 3D walking, English/Chinese
-encounters, saved personal notes and a local field-note export.
+encounters, saved personal notes, and preview-based link/image/print sharing.
+An expanded street study compares realtime PBR and Blender path tracing at
+matching viewpoints.
 
 ```sh
 cd experience
@@ -18,7 +20,7 @@ and [validation record](experience/docs/validation.md) for delivered scope and
 remaining art, hardware and user acceptance. This package builds independently;
 the sections below document the earlier application.
 
-For review without localhost, see [remote review and GitHub Pages activation](PREVIEW.md).
+For review without localhost, see [the hosted review and comparison](PREVIEW.md).
 
 TourGuideAI is an intelligent virtual tour guide application that uses AI to create personalized travel experiences.
 

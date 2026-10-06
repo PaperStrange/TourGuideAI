@@ -1,26 +1,41 @@
 # Review without a local server
 
-The verified guided 3D build is published as source files on the `gh-pages`
-branch at `e7fa424`. It contains the exact distribution tested from application
-commit `6641f1a78c4d882741714c444aa8471560a299c1`, plus `.nojekyll` and
-`review-build.json`. No additional application changes were made for hosting.
+- [Play the guided Kyoto walk](https://paperstrange.github.io/TourGuideAI/)
+- [Compare the expanded street renderings](https://paperstrange.github.io/TourGuideAI/comparison.html)
+- [Published build identity](https://paperstrange.github.io/TourGuideAI/review-build.json)
 
-## Playable review link
+The 2026-10-06 revision is live from application commit `6a532aa` and Pages commit
+`28dc489`. Its 97 browser checks passed; all 31 hosted package files were fetched
+and verified against the exact tested hashes. [Delivery evidence](experience/evidence/detail-study-20261006/README.md)
+records the checks and remaining limitations.
 
-GitHub Pages is enabled and the user has tested
-[the live experience](https://paperstrange.github.io/TourGuideAI/).
-The configured source is `gh-pages`, `/ (root)`; GitHub reports its status as built.
+The comparison offers the intersection and two closer frontage views. Switch
+between side-by-side and full-width display to inspect building construction,
+materials and light. A is live PBR; B contains Blender path-traced stills. They
+share scene geometry and camera poses. Offline stills do not demonstrate gameplay
+performance or a freely navigable second renderer.
 
-The repository and resulting Pages site are public. Personal notes are stored
-only in each visitor's browser; there is no note-upload or online-sharing service.
-The hosted origin starts with its own local save, separate from localhost.
+After making a choice in the walk, select **Preview & share**. Choose which saved
+personal notes to include (all start unselected), then use any of these formats:
 
-## Visual review available now
+- Share/copy a link to a readable webpage. The selected recap travels in its URL
+  fragment; anyone receiving that link can read or forward it.
+- Download a PNG card; supported browsers also offer native image sharing.
+- Open the print reader, then print or use the browser's Save as PDF destination.
 
-- [English opening](https://github.com/PaperStrange/TourGuideAI/blob/6641f1a78c4d882741714c444aa8471560a299c1/experience/evidence/browser/opening-en.png)
-- [Chinese bank approach](https://github.com/PaperStrange/TourGuideAI/blob/6641f1a78c4d882741714c444aa8471560a299c1/experience/evidence/browser/south-bank-approach.png)
-- [Validation record and further evidence](https://github.com/PaperStrange/TourGuideAI/blob/6641f1a78c4d882741714c444aa8471560a299c1/experience/docs/validation.md)
+Both the interface and reader support English and Chinese. The reader needs no
+game or account and does not modify a recipient's saved walk. Sharing never
+includes unsaved drafts or unchecked notes. The current recap covers this simulated
+Shijō walk, not a completed real trip or a full travel itinerary.
 
-The user accepted fluency and guidance on the tested hosted build. Building and
-street realism remains unaccepted. A larger, detailed street comparison and
-preview-based link/image/print sharing are the current follow-up iteration.
+GitHub Pages uses the `gh-pages` branch, `/ (root)`. The source branch is
+`chore-sow-delivery-plan`; the published build descriptor identifies the tested
+distribution and source commit. Keep the whole `experience/dist/` folder when
+hosting independently. This hosted origin has its own local save, separate from
+localhost and other devices.
+
+The user accepted fluency and guidance on the preceding hosted build. Revised
+realism remains a user review criterion. See the [current validation record](experience/docs/validation.md)
+and [art direction and limitations](experience/docs/art-direction.md) for the
+new checks, actual browser evidence and authored approximations. Historical
+2026-10-05 reports remain unchanged in `experience/evidence/`.
