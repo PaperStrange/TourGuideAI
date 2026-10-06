@@ -1,9 +1,10 @@
 {
   "status": "complete",
   "blenderVersion": "4.3.2",
-  "scriptSHA256": "c1c16812b7d66d26478289b18adb8ce4492f9f3f0586311a5bb7002789ea0f50",
+  "scriptSHA256": "46c013c7d7267e69461a33b714e28768a8f223af83663561c155d48c6042f359",
   "canonicalSource": "experience/src/content/kyoto.js",
   "canonicalSHA256": "cfef7654e1bca051f84861d6ec446e588c1d6ef2d8e8e5cf12a9421224a22859",
+  "streetContextSHA256": "f222a6d2346317d8fdaeb55bd81d743ddf565589dc9931a2abfb922907a81f37",
   "source": {
     "buildings": {
       "north": {
@@ -57,20 +58,30 @@
       "southY": -16.879,
       "valueKind": "authored",
       "basis": "Presentation bounds inset 0.65 m from mapped crossing endpoints on sidewalk centrelines; these are not observed kerbs."
+    },
+    "streetContext": "experience/public/content-evidence/street-context.json",
+    "renderBounds": {
+      "minX": -95,
+      "maxX": 100,
+      "minY": -90,
+      "maxY": 75
     }
   },
   "authored": [
-    "storey heights {'north': 25.249999999999996, 'south': 26.049999999999997}",
-    "flat frontage Y approximation",
-    "building depths/backfaces/roofs",
+    "storey heights {'mitsui': 25.249999999999996, 'daiya': 26.049999999999997, 'northwest-context': 22.199999999999996, 'southwest-context': 25.249999999999996, 'southwest-background': 19.15, 'northeast-context': 28.299999999999997, 'southeast-context': 34.4}",
+    "facade construction on mapped footprint planes",
+    "roof form and storey heights",
     "photo-informed facade character; authored bay dimensions, corner simplification, materials and reflection cues",
     "door treatments/thresholds without tenant bindings",
+    "distant neutral ground and Shijo road continuation beyond clipped source are authored visual background",
+    "display road buffers 9.7m per one-way centreline / 18.3m Shijo, sidewalk buffers 3.3m, kerbs and tactile layout are authored",
+    "supplemental clipped movement surfaces are simulation surfaces within existing bounds, not verified walkability",
     "furniture and planting",
     "traveller and pose",
     "camera and lighting"
   ],
   "axes": "Blender(east,north,height) -> glTF(east,height,-north), metres",
-  "materials": "core opaque PBR; original embedded colour textures; glass reflection cues authored, runtime PMREM adds environmental reflection; no baked light or transparency",
+  "materials": "core opaque PBR; original embedded albedo/normal/roughness maps; authored glazing cues and environment reflections; no baked direct light or reconstructed interiors",
   "facadeReferences": [
     {
       "id": "mitsui-exterior-2021",
@@ -157,9 +168,11 @@
   ],
   "facadeReferenceMetadataSHA256": "2633e98dd95ba7160bb4c54acde94a8ed4de5f1f7b335904abf79da41ab0d8e2",
   "referenceUse": "Visual reference for original simplified facade geometry and materials; photograph pixels are not included. No Google Street View asset derivation.",
-  "textureCount": 6,
+  "textureCount": 14,
+  "normalRoughnessSets": 4,
   "semanticGroups": [
     "Street",
+    "Context",
     "NorthBuilding",
     "SouthBuilding",
     "NorthShell",
@@ -173,7 +186,12 @@
     "SouthUpper",
     "SouthRoof",
     "SouthCanopy",
-    "SouthCanopyPosts"
+    "SouthCanopyPosts",
+    "ContextBuilding_344477489",
+    "ContextBuilding_1317905647",
+    "ContextBuilding_205732486",
+    "ContextBuilding_205749104",
+    "ContextBuilding_205732545"
   ],
   "actorPivots": [
     "Traveller",
@@ -184,32 +202,32 @@
     "Torso",
     "Head"
   ],
-  "sourceObjects": 986,
+  "sourceObjects": 5392,
   "font": "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
   "limitations": [
     "Facade appearance is authored, not a photographic reconstruction.",
     "Eight levels are OSM metadata; metres per storey are authored.",
-    "Full south volume requires runtime occlusion; beauty selectively hides south upper/shell/roof.",
+    "Gameplay uses semantic visibility; optional old beauty hides groups, while render-study uses full visible geometry with matching cameras.",
     "No rigged fingers, interiors, observed entry claims or facial animation.",
     "Cycles area lighting is a reference; runtime materials and lighting require browser review."
   ],
   "block": {
-    "bytes": 3682648,
-    "sha256": "68c2afa632505ddb6ae2a65d93c615403a476f4859885ca5860fbc3bfcd6980b",
-    "nodes": 77,
-    "primitives": 56,
-    "triangles": 44852,
-    "textures": 6,
+    "bytes": 14267180,
+    "sha256": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c",
+    "nodes": 123,
+    "primitives": 96,
+    "triangles": 148170,
+    "textures": 14,
     "extensionsUsed": []
   },
   "traveller": {
-    "bytes": 44608,
-    "sha256": "e2e8f62e07f188b2bfcb4919f51b3dec84c9cf01e63d4af7031a4afa185e4a4b",
+    "bytes": 35556,
+    "sha256": "ee5307da94f4d1994e5323a0d31d6f79a255c9f2f10459e0a0e6434fb051fdb1",
     "nodes": 22,
-    "primitives": 14,
-    "triangles": 752,
+    "primitives": 10,
+    "triangles": 520,
     "textures": 0,
     "extensionsUsed": []
   },
-  "seconds": 12.57
+  "seconds": 135.44
 }
