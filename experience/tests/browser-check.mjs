@@ -215,7 +215,8 @@ try {
     const seed = { version: 2, ...old, notes: { crossing: SELECTED_NOTE, mitsui: UNSELECTED_NOTE } };
     const main = await scenario('sharing-with-unavailable-webgl', { [STORAGE_KEY]: JSON.stringify(seed) }, {}, true);
     await verifySharing({ main, scenario, saved, check, capture, report, output, origin, timeout, persist, includeDraftCheck: false });
-    check('focused-sharing-has-no-uncaught-errors-or-external-requests', !main.record.pageErrors.length && !main.record.externalRequests.length, main.record);
+    check('focused-sharing-has-no-unexpected-errors-or-external-requests', !main.record.pageErrors.length && !main.record.externalRequests.length
+      && main.record.consoleErrors.every(message => message.includes('Error creating WebGL context.')), main.record);
     await main.context.close();
   } else {
   const main = await scenario('three-encounter-walk');
@@ -424,6 +425,19 @@ try {
   check('western-road-probe-has-no-external-requests-or-errors', !western.record.externalRequests.length && !western.record.pageErrors.length && !western.record.consoleErrors.length, western.record);
   await western.context.close();
 
+  const eastSeed = { version: 2, locale: 'en', hints: true, notes: {},
+    game: { x: 50, y: -2, visitedIds: [], readSourceIds: [], choiceIds: {}, selectedTargetId: 'crossing' } };
+  const eastern = await scenario('restored-eastern-camera-envelope', { [STORAGE_KEY]: JSON.stringify(eastSeed) });
+  await eastern.page.waitForFunction(() => window.__TOUR_GAME__.renderer().scene.fadedGroups.includes('ContextBuilding_205732545'), null, { timeout });
+  const eastState = await eastern.page.evaluate(() => ({ state: window.__TOUR_GAME__.snapshot(), camera: window.__TOUR_GAME__.camera(), renderer: window.__TOUR_GAME__.renderer() }));
+  check('expanded-context-building-does-not-enclose-the-restored-camera', eastState.state.x === 50 && eastState.state.y === -2
+    && Math.abs(eastState.renderer.scene.actorPosition[1] - .05) < .003
+    && eastState.camera.position.every((value, i) => Math.abs(value - [55.23675, 16.19163, 22.25189][i]) < .0001),
+  { ...eastState, method: 'Restored valid save under unchanged guided camera; actual contextual occluder must fade. Screenshot review establishes actor visibility.' });
+  await capture(eastern.page, 'eastern-context-occlusion-restored');
+  check('eastern-camera-probe-has-no-external-requests-or-errors', !eastern.record.externalRequests.length && !eastern.record.pageErrors.length && !eastern.record.consoleErrors.length, eastern.record);
+  await eastern.context.close();
+
   for (const name of ['legacy-v1-mid-journey', 'legacy-v1-completed']) {
     const old = fixture(name);
     let releaseAssets;
@@ -462,7 +476,8 @@ try {
   check('webgl-failure-leaves-field-note-export-available', await unsupported.page.locator('#export-notes').isEnabled() && await unsupported.page.locator('#retry-scene').isVisible());
   await capture(unsupported.page, 'webgl-unavailable-en'); await locale(unsupported.page, 'zh');
   check('webgl-failure-recovery-translates', /[\u3400-\u9fff]/.test(await unsupported.page.locator('.scene-error').innerText()));
-  check('webgl-failure-has-no-uncaught-errors-or-external-requests', !unsupported.record.pageErrors.length && !unsupported.record.externalRequests.length, { ...unsupported.record, consoleNote: 'Three context-creation diagnostics are expected in this deliberately unavailable scenario.' });
+  check('webgl-failure-has-no-uncaught-errors-or-external-requests', !unsupported.record.pageErrors.length && !unsupported.record.externalRequests.length
+    && unsupported.record.consoleErrors.every(message => message.includes('Error creating WebGL context.')), { ...unsupported.record, consoleNote: 'Only Three context-creation diagnostics are expected in this deliberately unavailable scenario.' });
   await unsupported.context.close();
   await verifyComparison({ scenario, assets, origin, check, capture, report, timeout, persist });
   }
@@ -470,10 +485,16 @@ try {
   report.status = comparisonOnly ? 'Focused comparison checks completed; no gameplay or sharing acceptance.' : sharingOnly ? 'Focused sharing checks completed; no gameplay or art acceptance.' : reviewOnly ? 'Limited visual-review capture completed; the full behavior suite was not run.' : 'Browser walkthrough completed; independent visual review and human acceptance remain separate.';
 } catch (error) {
   check('browser-run-completed', false, error.stack || String(error)); report.status = 'Incomplete or failed; do not claim playable validation.';
-  const page = contexts.flatMap(context => context.pages()).findLast(page => !page.isClosed());
-  if (page) {
-    report.observations.failure = await page.evaluate(() => ({ state: window.__TOUR_GAME__?.snapshot(), camera: window.__TOUR_GAME__?.camera(), sceneStatus: document.querySelector('#game-stage')?.dataset.sceneStatus })).catch(() => null);
-    await capture(page, 'failure').catch(() => {});
+  const failurePages = contexts.flatMap(context => context.pages()).filter(page => !page.isClosed());
+  report.observations.failure = [];
+  for (const [index, page] of failurePages.entries()) {
+    report.observations.failure.push(await page.evaluate(() => ({ url: location.href,
+      state: window.__TOUR_GAME__?.snapshot(), camera: window.__TOUR_GAME__?.camera(),
+      sceneStatus: document.querySelector('#game-stage')?.dataset.sceneStatus,
+      comparison: window.__TOUR_COMPARISON__?.snapshot(),
+      sharing: { open: document.querySelector('#share-dialog')?.open, status: document.querySelector('#share-status')?.textContent },
+    })).catch(() => null));
+    await capture(page, failurePages.length === 1 ? 'failure' : `failure-${index + 1}`).catch(() => {});
   }
 } finally {
   report.summary = { passed: report.checks.filter(c => c.pass).length, failed: report.checks.filter(c => !c.pass).length };

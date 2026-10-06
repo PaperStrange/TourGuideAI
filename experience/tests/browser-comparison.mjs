@@ -32,12 +32,17 @@ export async function verifyComparison({ scenario, assets, origin, check, captur
     camera.up.fromArray(config.up ?? [0, 1, 0]); camera.position.fromArray(config.position);
     camera.lookAt(new Vector3().fromArray(config.target)); camera.updateMatrixWorld(true);
     const actual = observed.renderer.camera;
+    const visibility = observed.renderer.visibility;
+    const appliedVisibility = visibility && visibility.requestedGroups.length === view.hiddenGroups.length
+      && visibility.requestedGroups.every(group => view.hiddenGroups.includes(group.name) && group.matchedNodes > 0
+        && group.totalMeshes > 0 && group.hiddenMeshes === group.totalMeshes)
+      && (view.hiddenGroups.length > 0 || visibility.visibleMeshes === visibility.totalMeshes);
     check(`comparison-${view.id}-uses-matched-camera-and-visibility`, same(actual.position, config.position)
       && same(actual.target, config.target) && same(actual.up, config.up ?? [0, 1, 0])
       && close(actual.fov, config.fov) && close(actual.aspect, config.aspect)
       && same(actual.projectionMatrix, camera.projectionMatrix.toArray())
       && same(actual.matrixWorld, new Matrix4().copy(camera.matrixWorld).toArray())
-      && JSON.stringify(observed.renderer.hiddenGroups) === JSON.stringify(view.hiddenGroups), observed.renderer);
+      && JSON.stringify(observed.renderer.hiddenGroups) === JSON.stringify(view.hiddenGroups) && appliedVisibility, observed.renderer);
     const imagePath = new URL(view.file, origin + manifestPath).pathname;
     const layout = await page.evaluate(() => {
       const img = document.querySelector('#study-image'), image = img.getBoundingClientRect();
@@ -81,7 +86,8 @@ export async function verifyComparison({ scenario, assets, origin, check, captur
   }, null, { timeout });
   check('comparison-without-webgl-still-presents-the-still-treatment', await unavailable.page.locator('#study-image').isVisible()
     && /[\u3400-\u9fff]/.test(await unavailable.page.locator('#realtime-status').innerText())
-    && !unavailable.record.pageErrors.length && !unavailable.record.externalRequests.length, unavailable.record);
+    && !unavailable.record.pageErrors.length && !unavailable.record.externalRequests.length
+    && unavailable.record.consoleErrors.every(message => message.includes('Error creating WebGL context.')), unavailable.record);
   await capture(unavailable.page, 'comparison-no-webgl-zh'); await unavailable.context.close();
 
   for (const [label, path, statusId] of [
@@ -95,7 +101,8 @@ export async function verifyComparison({ scenario, assets, origin, check, captur
     await missing.page.locator('#study-language [data-locale="zh"]').click();
     check(`comparison-missing-${label}-has-localized-recoverable-error`, Boolean(english)
       && /[\u3400-\u9fff]/.test(await missing.page.locator(statusId).innerText())
-      && await missing.page.locator('#study-retry').isVisible() && !missing.record.pageErrors.length && !missing.record.externalRequests.length,
+      && await missing.page.locator('#study-retry').isVisible() && !missing.record.pageErrors.length && !missing.record.externalRequests.length
+      && missing.record.consoleErrors.every(message => message.includes('Error creating WebGL context.') || message.includes('404 (Not Found)')),
     { ...missing.record, note: '404 asset and unavailable-WebGL diagnostics are deliberate fault fixtures.' });
     await capture(missing.page, `comparison-missing-${label}-zh`); await missing.context.close();
   }

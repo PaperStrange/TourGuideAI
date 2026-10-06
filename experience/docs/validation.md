@@ -2,6 +2,8 @@
 
 Owner: QA. Current status, 2026-10-06: **the user accepts fluency and guidance
 for the Pages build they played; building/street realism is not accepted**.
+The subsequent expanded-street/comparison/sharing revision is under validation;
+the baseline's acceptance does not automatically extend to those changes.
 The historical 2026-10-05 evidence remains **53/53 packaged-browser checks and
 16/16 pure tests passing**. Representative-device coverage remains unestablished.
 The production browser run completed on 2026-10-05, 06:53:03–07:03:45 UTC.
