@@ -3,11 +3,27 @@ name: Guided 3D experience
 on:
   push:
     paths:
-      - 'experience/**'
+      - 'experience/src/**'
+      - 'experience/public/**'
+      - 'experience/art/**'
+      - 'experience/content-tools/**'
+      - 'experience/tools/**'
+      - 'experience/tests/**'
+      - 'experience/*.html'
+      - 'experience/package*.json'
+      - 'experience/vite.config.js'
       - '.github/workflows/experience.yml'
   pull_request:
     paths:
-      - 'experience/**'
+      - 'experience/src/**'
+      - 'experience/public/**'
+      - 'experience/art/**'
+      - 'experience/content-tools/**'
+      - 'experience/tools/**'
+      - 'experience/tests/**'
+      - 'experience/*.html'
+      - 'experience/package*.json'
+      - 'experience/vite.config.js'
       - '.github/workflows/experience.yml'
   workflow_dispatch:
 
