@@ -124,6 +124,9 @@ height in metres and façade appearance are unknown. They fill the immediate
 background beyond the primary façades, without adding signs, tenant bindings
 or encounters. Expanding the display selection to X 100 does not extend the
 X 64 navigation limit or establish a complete street beyond the selected masses.
+The art generator may add neutral ground and a distant road continuation beyond
+this source clip to avoid a visible stage edge. Such background geometry is
+explicitly authored scenery; its placement does not extend the map evidence.
 
 Regenerate from the complete repository with:
 
