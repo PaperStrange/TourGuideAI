@@ -104,7 +104,7 @@ export async function createWorldView(renderer, { signal, onProgress } = {}) {
     object.receiveShadow = true;
     if (object.userData.walkable) walkable.push(object);
     const group = object.userData.semanticGroup;
-    if (/^(North|South)(Ground|Upper|Roof|Shell|Canopy|CanopyPosts)$/.test(group ?? '')) {
+    if (/^(?:(North|South)(Ground|Upper|Roof|Shell|Canopy|CanopyPosts)|ContextBuilding_\d+)$/.test(group ?? '')) {
       object.material = object.material.clone();
       object.material.forceSinglePass = true;
       if (!groups.has(group)) groups.set(group, { meshes: [], opacity: 1 });

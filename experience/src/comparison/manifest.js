@@ -25,6 +25,14 @@ export function validateManifest(value) {
   }
   if (value.actor && (typeof value.actor.model !== 'string' || !vector(value.actor.position) ||
       !Number.isFinite(value.actor.rotationY ?? 0))) throw new Error('Invalid study scale figure');
+  if (value.fog && (typeof value.fog.color !== 'string' || !Number.isFinite(value.fog.near) ||
+      !Number.isFinite(value.fog.far) || value.fog.near < 0 || value.fog.far <= value.fog.near)) {
+    throw new Error('Invalid study haze range');
+  }
+  if (value.renderBounds && (!['minX', 'maxX', 'minY', 'maxY'].every(key => Number.isFinite(value.renderBounds[key])) ||
+      value.renderBounds.minX >= value.renderBounds.maxX || value.renderBounds.minY >= value.renderBounds.maxY)) {
+    throw new Error('Invalid study source bounds');
+  }
   return value;
 }
 

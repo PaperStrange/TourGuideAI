@@ -61,6 +61,7 @@ export async function createStudyRenderer(host, manifest, { manifestURL, appURL,
     renderer.domElement.addEventListener('webglcontextlost', contextLost);
     host.appendChild(renderer.domElement);
     scene.background = new THREE.Color(manifest.lighting?.background ?? '#dbe3e9');
+    if (manifest.fog) scene.fog = new THREE.Fog(manifest.fog.color, manifest.fog.near, manifest.fog.far);
     environment = daylightEnvironment(renderer);
     scene.environment = environment.texture;
     scene.environmentIntensity = manifest.lighting?.environmentIntensity ?? 0.52;
@@ -110,6 +111,13 @@ export async function createStudyRenderer(host, manifest, { manifestURL, appURL,
     });
     scene.updateMatrixWorld(true);
     const bounds = new THREE.Box3().setFromObject(street);
+    // Distant ground closes the horizon; it must not dilute shadow resolution
+    // across hundreds of metres outside the source-backed study area.
+    if (manifest.renderBounds) {
+      const area = manifest.renderBounds;
+      bounds.min.x = Math.max(bounds.min.x, area.minX); bounds.max.x = Math.min(bounds.max.x, area.maxX);
+      bounds.min.z = Math.max(bounds.min.z, -area.maxY); bounds.max.z = Math.min(bounds.max.z, -area.minY);
+    }
     const shadowCamera = sun.shadow.camera;
     shadowCamera.position.copy(sun.position); shadowCamera.lookAt(sun.target.position); shadowCamera.updateMatrixWorld(true);
     const lightBounds = bounds.clone().applyMatrix4(shadowCamera.matrixWorldInverse);
@@ -130,6 +138,24 @@ export async function createStudyRenderer(host, manifest, { manifestURL, appURL,
       renderer.shadowMap.needsUpdate = true;
       requestDraw();
     };
+    const visible = node => {
+      for (let parent = node; parent; parent = parent.parent) if (!parent.visible) return false;
+      return true;
+    };
+    const visibility = () => {
+      const meshes = []; street.traverse(node => { if (node.isMesh) meshes.push(node); });
+      return {
+        totalMeshes: meshes.length, visibleMeshes: meshes.filter(visible).length,
+        hiddenMeshNames: meshes.filter(node => !visible(node)).map(node => node.name),
+        requestedGroups: current.hiddenGroups.map(name => {
+          const matches = [], children = new Set();
+          street.traverse(node => { if (node.name === name || node.userData.semanticGroup === name) matches.push(node); });
+          for (const match of matches) match.traverse(node => { if (node.isMesh) children.add(node); });
+          return { name, matchedNodes: matches.length, totalMeshes: children.size,
+            hiddenMeshes: [...children].filter(node => !visible(node)).length };
+        }),
+      };
+    };
     selectView(manifest.views[0]);
     await renderer.compileAsync(scene, camera); abort();
     observer = new ResizeObserver(requestDraw); observer.observe(host);
@@ -144,6 +170,8 @@ export async function createStudyRenderer(host, manifest, { manifestURL, appURL,
             up: camera.up.toArray(), fov: camera.fov, aspect: camera.aspect, near: camera.near, far: camera.far,
             projectionMatrix: camera.projectionMatrix.toArray(), matrixWorld: camera.matrixWorld.toArray() },
           hiddenGroups: [...current.hiddenGroups], render: { ...renderer.info.render },
+          visibility: visibility(), shadowBounds: { min: bounds.min.toArray(), max: bounds.max.toArray() },
+          fog: scene.fog ? { color: `#${scene.fog.color.getHexString()}`, near: scene.fog.near, far: scene.fog.far } : null,
           memory: { ...renderer.info.memory }, pixelRatio: renderer.getPixelRatio(),
           canvas: { width: renderer.domElement.width, height: renderer.domElement.height } };
       },
