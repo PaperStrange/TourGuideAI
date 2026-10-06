@@ -73,7 +73,7 @@ export async function createWorldView(renderer, { signal, onProgress } = {}) {
   const assetBase = new URL(import.meta.env.BASE_URL + 'models/', document.baseURI);
   const loaded = [];
   async function asset(name) {
-    const response = await fetch(new URL(name, assetBase), { signal });
+    const response = await fetch(new URL(name, assetBase), { signal, cache: 'no-cache' });
     if (!response.ok) throw new Error('Could not load scene asset ' + name + ' (' + response.status + ')');
     const gltf = await loader.parseAsync(await response.arrayBuffer(), assetBase.href);
     loaded.push(gltf.scene);
