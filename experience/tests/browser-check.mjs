@@ -10,6 +10,8 @@ import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { WORLD, PLAYER_RADIUS } from '../src/simulation/world.js';
 import { STORAGE_KEY, LEGACY_KEY } from '../src/app/journey-store.js';
+import { verifySharing, SELECTED_NOTE, UNSELECTED_NOTE, UNSAVED_DRAFT } from './browser-sharing.mjs';
+import { verifyComparison } from './browser-comparison.mjs';
 
 if (!process.argv[2]) {
   console.error('Usage: npm run test:browser -- <built-dist-directory>');
@@ -17,6 +19,9 @@ if (!process.argv[2]) {
 }
 const dist = resolve(process.argv[2]);
 const reviewOnly = process.argv.includes('--review');
+const savedBankReview = reviewOnly && process.argv.includes('--saved-bank');
+const sharingOnly = process.argv.includes('--sharing');
+const comparisonOnly = process.argv.includes('--comparison');
 const output = resolve(process.env.EXPERIENCE_QA_OUTPUT || join(tmpdir(), 'experience-qa'));
 // Software rendering can advance the bounded fixed-step simulation slowly.
 // This is a tooling ceiling, not an accepted product response time or FPS target.
@@ -37,12 +42,18 @@ const manifest = [...assets].sort(([a], [b]) => a.localeCompare(b)).map(([path, 
 const report = {
   startedAt: new Date().toISOString(), artifact: { directory: dist, manifestSha256: sha(JSON.stringify(manifest)), files: manifest },
   driverSha256: sha(readFileSync(fileURLToPath(import.meta.url))),
+  driverSources: ['browser-check.mjs', 'browser-sharing.mjs', 'browser-comparison.mjs'].map(file => ({ file,
+    sha256: sha(readFileSync(new URL(file, import.meta.url))) })),
   conditions: { viewport: [1440, 1000], compactViewport: [1280, 720], deviceScaleFactor: 1, readOnlyObserver: '?qa=1', timeoutMs: timeout },
-  scope: reviewOnly ? 'Opening and bank visual-review capture only' : 'Complete browser behavior and saved-journey validation',
+  scope: comparisonOnly ? 'Rendering-comparison behavior and failure fixtures only; no gameplay or sharing acceptance'
+    : sharingOnly ? 'Sharing/recipient checks from a restored completed journey with WebGL deliberately unavailable; no gameplay or art acceptance'
+    : savedBankReview ? 'Opening plus restored-bank rendering review only; no walked-route validation'
+    : reviewOnly ? 'Opening and bank visual-review capture only' : 'Complete browser behavior, sharing and saved-journey validation',
   checks: [], actions: [], scenarios: {}, screenshots: [], observations: {},
   limitations: ['Agent/automation evidence is not human art, fluency or immersion acceptance.',
     'Software GPU timings are not desktop hardware performance acceptance.',
     'Headless Chromium does not reproduce real tab focus changes here; focus-loss cleanup uses an injected blur event.',
+    'Native sharing uses an observed API stub, not an OS share sheet or recipient delivery. Browser PDF output does not establish every OS printer.',
     'HTTP packaged-resource loading is exercised; native file:// launch requires a browser environment permitting that scheme.'],
 };
 const persist = () => writeFileSync(join(output, 'browser-result.json'), JSON.stringify(report, null, 2) + '\n');
@@ -64,40 +75,70 @@ const length = v => Math.hypot(v.x, v.y);
 const fixture = name => JSON.parse(readFileSync(new URL(`./fixtures/${name}.json`, import.meta.url)));
 let browser;
 const contexts = [];
-async function scenario(name, seed = {}, options = {}, noWebGL = false) {
+async function scenario(name, seed = {}, options = {}, noWebGL = false, settings = {}) {
   const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 1, ...options });
   contexts.push(context);
   const record = report.scenarios[name] = { requests: [], externalRequests: [], pageErrors: [], consoleErrors: [] };
   await context.route('**/*', async route => {
     const url = new URL(route.request().url());
     const path = url.pathname === '/' ? '/index.html' : decodeURIComponent(url.pathname);
+    if (path.endsWith('.glb') && settings.assetBarrier) await settings.assetBarrier;
+    if (url.origin === origin && settings.blockedPaths?.includes(path)) {
+      record.requests.push(path); return route.fulfill({ status: 404, body: 'Deliberate QA missing-asset fixture' });
+    }
     if (url.origin === origin && assets.has(path)) {
       record.requests.push(path);
       return route.fulfill({ status: 200, contentType: types[extname(path)] || 'application/octet-stream', body: assets.get(path) });
     }
     record.externalRequests.push(url.href); await route.abort('blockedbyclient');
   });
-  await context.addInitScript(({ seed, noWebGL, origin }) => {
+  await context.addInitScript(({ seed, noWebGL, origin, staticEntry }) => {
     if (location.origin !== origin) return;
     if (!sessionStorage.getItem('qa-seeded')) {
       for (const [key, value] of Object.entries(seed)) localStorage.setItem(key, value);
       sessionStorage.setItem('qa-seeded', '1');
     }
-    if (noWebGL) {
-      const original = HTMLCanvasElement.prototype.getContext;
-      HTMLCanvasElement.prototype.getContext = function (type, ...args) {
-        return ['webgl', 'webgl2', 'experimental-webgl'].includes(type) ? null : original.call(this, type, ...args);
-      };
+    window.__QA_ENTRY__ = { storageWrites: [], webglContexts: 0 };
+    if (staticEntry) {
+      for (const method of ['setItem', 'removeItem', 'clear']) {
+        const original = Storage.prototype[method];
+        Storage.prototype[method] = function (...args) {
+          if (this === localStorage) window.__QA_ENTRY__.storageWrites.push({ method, key: args[0] });
+          return original.apply(this, args);
+        };
+      }
     }
-  }, { seed, noWebGL, origin });
+    const originalContext = HTMLCanvasElement.prototype.getContext;
+    HTMLCanvasElement.prototype.getContext = function (type, ...args) {
+      if (['webgl', 'webgl2', 'experimental-webgl'].includes(type)) {
+        window.__QA_ENTRY__.webglContexts++;
+        if (noWebGL) return null;
+      }
+      return originalContext.call(this, type, ...args);
+    };
+    window.__QA_NATIVE_CALLS__ = []; window.__QA_NATIVE_ABORT__ = false;
+    Object.defineProperty(navigator, 'share', { configurable: true, value: async payload => {
+      window.__QA_NATIVE_CALLS__.push({ title: payload.title, text: payload.text, url: payload.url,
+        files: payload.files?.map(file => ({ name: file.name, type: file.type, size: file.size })) });
+      if (window.__QA_NATIVE_ABORT__) throw new DOMException('QA cancelled share sheet', 'AbortError');
+    } });
+    Object.defineProperty(navigator, 'canShare', { configurable: true, value: () => true });
+    window.__QA_IMAGE_TEXT__ = [];
+    const originalText = CanvasRenderingContext2D.prototype.fillText;
+    CanvasRenderingContext2D.prototype.fillText = function (text, x, y, ...args) {
+      if (this.canvas.width === 1080) window.__QA_IMAGE_TEXT__.push({ text, x, y, font: this.font, height: this.canvas.height });
+      return originalText.call(this, text, x, y, ...args);
+    };
+  }, { seed, noWebGL, origin, staticEntry: Boolean(settings.staticEntry) });
   context.on('page', openedPage => {
     openedPage.on('pageerror', error => { record.pageErrors.push(error.message); persist(); });
     openedPage.on('console', message => { if (message.type() === 'error') { record.consoleErrors.push(message.text()); persist(); } });
   });
   const page = await context.newPage();
   page.setDefaultTimeout(timeout);
-  await page.goto(entry);
-  await page.waitForFunction(noWebGL => noWebGL
+  await page.goto(settings.entryUrl || entry, { waitUntil: settings.beforeReady ? 'commit' : 'load' });
+  if (settings.beforeReady) await settings.beforeReady(page);
+  if (!settings.staticEntry) await page.waitForFunction(noWebGL => noWebGL
     ? document.querySelector('#retry-scene') && document.querySelector('#game-stage').dataset.sceneStatus === 'unavailable'
     : window.__TOUR_GAME__ && document.querySelector('#loading')?.hidden, noWebGL, { timeout });
   return { context, page, record };
@@ -167,6 +208,16 @@ function screenPoint(x, north, height, view, rect) {
 try {
   browser = await chromium.launch({ executablePath: process.env.EXPERIENCE_QA_CHROMIUM || undefined, headless: true, args: ['--no-sandbox'] });
   report.browser = browser.version(); persist();
+  if (comparisonOnly) {
+    await verifyComparison({ scenario, assets, origin, check, capture, report, timeout, persist });
+  } else if (sharingOnly) {
+    const old = fixture('legacy-v1-completed');
+    const seed = { version: 2, ...old, notes: { crossing: SELECTED_NOTE, mitsui: UNSELECTED_NOTE } };
+    const main = await scenario('sharing-with-unavailable-webgl', { [STORAGE_KEY]: JSON.stringify(seed) }, {}, true);
+    await verifySharing({ main, scenario, saved, check, capture, report, output, origin, timeout, persist, includeDraftCheck: false });
+    check('focused-sharing-has-no-uncaught-errors-or-external-requests', !main.record.pageErrors.length && !main.record.externalRequests.length, main.record);
+    await main.context.close();
+  } else {
   const main = await scenario('three-encounter-walk');
   const { page } = main;
   report.observations.openingCamera = await camera(page);
@@ -175,6 +226,9 @@ try {
     return gl ? { version: gl.getParameter(gl.VERSION), renderer: gl.getParameter(ext?.UNMASKED_RENDERER_WEBGL || gl.RENDERER) } : null;
   });
   check('actual-webgl-scene-ready', Boolean(report.observations.renderer), report.observations.renderer);
+  const emptyShare = await page.locator('#export-notes').evaluate(button => ({ disabled: button.disabled,
+    explanation: (button.getAttribute('aria-describedby') || '').split(/\s+/).map(id => document.getElementById(id)?.textContent || '').join(' ').trim() }));
+  check('empty-walk-explains-why-sharing-is-disabled', emptyShare.disabled && Boolean(emptyShare.explanation), emptyShare);
   await capture(page, 'opening-en');
   const initial = await observed(page);
   await locale(page, 'zh');
@@ -183,12 +237,18 @@ try {
   await capture(page, 'opening-zh'); await locale(page, 'en');
 
   if (reviewOnly) {
-    await approach(page, 'mufg');
-    await page.waitForFunction(() => window.__TOUR_GAME__.camera().frontage === 'south', null, { timeout });
-    report.observations.bankCamera = await camera(page);
+    let reviewPage = page;
+    if (savedBankReview) {
+      await main.context.close();
+      const seed = { version: 2, ...fixture('legacy-v1-completed'), locale: 'en', notes: {} };
+      reviewPage = (await scenario('restored-bank-render-review', { [STORAGE_KEY]: JSON.stringify(seed) })).page;
+      report.observations.bankReviewMethod = 'Restored recorded completed-bank save; no walked-route claim.';
+    } else await approach(page, 'mufg');
+    await reviewPage.waitForFunction(() => window.__TOUR_GAME__.camera().frontage === 'south', null, { timeout });
+    report.observations.bankCamera = await camera(reviewPage);
     check('bank-camera-faces-the-south-frontage', report.observations.bankCamera.frontage === 'south', report.observations.bankCamera);
-    await capture(page, 'south-bank-approach'); await open(page); await capture(page, 'bank-card-en');
-    report.observations.rendererStatistics = await page.evaluate(() => window.__TOUR_GAME__.renderer());
+    await capture(reviewPage, savedBankReview ? 'south-bank-restored' : 'south-bank-approach'); await open(reviewPage); await capture(reviewPage, 'bank-card-en');
+    report.observations.rendererStatistics = await reviewPage.evaluate(() => window.__TOUR_GAME__.renderer());
   } else {
 
   // Remove optional inertia for numerical picking checks, then restore normal
@@ -276,7 +336,7 @@ try {
   await page.locator('[data-choice="north-first"]').click();
   check('choice-records-visit-and-next-target', (await observed(page)).choiceIds.crossing === 'north-first' && (await observed(page)).visitedIds.length === 1 && (await observed(page)).selectedTargetId === 'mitsui');
 
-  const note = '<b data-personal-note>晚风 & "灯光"</b>\nA quiet crossing.';
+  const note = SELECTED_NOTE;
   await page.locator('#memory-note').fill(note); await locale(page, 'zh', true);
   check('note-draft-survives-locale-without-autosaving', await page.locator('#memory-note').inputValue() === note && !(await saved(page)).notes.crossing);
   await close(page); await open(page);
@@ -294,6 +354,7 @@ try {
 
   await locale(page, 'en'); await approach(page, 'mitsui'); await open(page); await page.locator('[data-choice="street-only"]').click();
   check('mitsui-skip-retains-visit-without-planned-station-stop', (await observed(page)).choiceIds.mitsui === 'street-only' && (await observed(page)).visitedIds.includes('mitsui'));
+  await page.locator('#memory-note').fill(UNSELECTED_NOTE); await page.locator('#save-memory').click();
   await page.locator('#card-continue').click(); await locale(page, 'zh');
   const roadTrace = []; await approach(page, 'mufg', roadTrace);
   const road = roadTrace.filter(p => p.y < -2 && p.y > -15);
@@ -303,6 +364,7 @@ try {
   await capture(page, 'south-bank-approach'); await open(page); await capture(page, 'bank-card-zh');
   await page.locator('[data-choice="no-cash-stop"]').click();
   check('all-three-encounters-complete-with-distinct-choices', JSON.stringify((await observed(page)).visitedIds) === JSON.stringify(['crossing', 'mitsui', 'mufg']) && (await observed(page)).choiceIds.mufg === 'no-cash-stop');
+  await page.locator('#memory-note').fill(UNSAVED_DRAFT);
   await page.locator('#card-continue').click(); const chineseResume = await moveKey(page, 'ArrowRight');
   check('chinese-encounter-chain-resumes', length(delta(chineseResume.before, chineseResume.after)) > .2 && !await page.locator('#place-dialog').evaluate(el => el.open));
   await page.locator('#game-stage').focus(); await page.keyboard.down('ArrowUp');
@@ -313,16 +375,7 @@ try {
   finally { await page.keyboard.up('ArrowUp'); }
   check('south-facing-walk-is-blocked-by-south-facade', Math.abs((await observed(page)).y - southWall.y) <= .001, { before: southWall, after: await observed(page) });
   await capture(page, 'completed-walk-zh');
-  const downloadEvent = page.waitForEvent('download'); await page.locator('#export-notes').click();
-  const download = await downloadEvent, notesPath = join(output, 'played-field-notes-zh.html'); await download.saveAs(notesPath);
-  const notesHtml = readFileSync(notesPath);
-  const notesPage = await main.context.newPage(); const notesUrl = origin + '/qa-export.html';
-  await notesPage.route(notesUrl, route => route.fulfill({ status: 200, contentType: 'text/html', body: notesHtml }));
-  await notesPage.setViewportSize({ width: 390, height: 844 }); await notesPage.goto(notesUrl);
-  const exported = await notesPage.evaluate(() => ({ text: document.body.innerText, personal: document.querySelector('.personal-note p')?.textContent, injectedElement: Boolean(document.querySelector('[data-personal-note]')), width: document.documentElement.scrollWidth, language: document.documentElement.lang }));
-  check('download-reflects-choices-and-escaped-personal-note', exported.personal === note && !exported.injectedElement && exported.text.includes('不安排现金服务停留') && !exported.text.includes('现金计划：'), exported);
-  check('export-fits-phone-width', exported.width <= 390 && exported.language === 'zh', exported.width);
-  await capture(notesPage, 'field-notes-zh-mobile'); await notesPage.emulateMedia({ media: 'print' }); await notesPage.setViewportSize({ width: 850, height: 1100 }); await capture(notesPage, 'field-notes-zh-print'); await notesPage.close();
+  await verifySharing({ main, scenario, saved, check, capture, report, output, origin, timeout, persist, includeDraftCheck: true });
   const creditsEvent = page.waitForEvent('popup'); await page.locator('.bottom-bar a[href="./credits.html"]').click();
   const creditsPage = await creditsEvent; await creditsPage.waitForLoadState('domcontentloaded');
   const credits = await creditsPage.evaluate(() => ({ text: document.body.innerText, links: [...document.querySelectorAll('a[href]')].map(a => a.href) }));
@@ -356,8 +409,39 @@ try {
   check('walk-has-no-external-requests-or-browser-errors', !main.record.externalRequests.length && !main.record.pageErrors.length && !main.record.consoleErrors.length, main.record);
   await main.context.close();
 
+  // A restored position inside the accepted navigation bounds targets the exact
+  // western road wedge that had missing walkable geometry in the first expansion.
+  const westSeed = { version: 2, locale: 'en', hints: true, notes: {},
+    game: { x: 8, y: 2.1, visitedIds: [], readSourceIds: [], choiceIds: {}, selectedTargetId: 'crossing' } };
+  const western = await scenario('restored-western-road', { [STORAGE_KEY]: JSON.stringify(westSeed) });
+  const westGoal = { x: 9, y: 2.1 };
+  const westPoint = screenPoint(westGoal.x, westGoal.y, .05, await camera(western.page), await western.page.locator('#game-stage canvas').boundingBox());
+  await western.page.mouse.click(westPoint.x, westPoint.y);
+  await western.page.waitForFunction(goal => { const s = window.__TOUR_GAME__.snapshot(); return Math.hypot(s.x - goal.x, s.y - goal.y) < .08 && !s.destination; }, westGoal, { timeout });
+  const westGround = await western.page.evaluate(() => ({ state: window.__TOUR_GAME__.snapshot(), renderer: window.__TOUR_GAME__.renderer() }));
+  check('restored-western-road-has-real-pickable-ground', Math.abs(westGround.renderer.scene.actorPosition[1] - .05) < .003, { ...westGround, method: 'Restored valid position (8,2.1), then real pointer click at independently projected road point (9,2.1).' });
+  await capture(western.page, 'western-asphalt-restored');
+  check('western-road-probe-has-no-external-requests-or-errors', !western.record.externalRequests.length && !western.record.pageErrors.length && !western.record.consoleErrors.length, western.record);
+  await western.context.close();
+
   for (const name of ['legacy-v1-mid-journey', 'legacy-v1-completed']) {
-    const old = fixture(name); const migrated = await scenario(name, { [LEGACY_KEY]: JSON.stringify(old) });
+    const old = fixture(name);
+    let releaseAssets;
+    const coldShare = name === 'legacy-v1-completed' ? {
+      assetBarrier: new Promise(resolve => { releaseAssets = resolve; }),
+      beforeReady: async page => {
+        try {
+          await page.locator('#export-notes').click();
+          await page.waitForFunction(() => document.querySelector('#share-dialog')?.open);
+        } finally { releaseAssets(); }
+      },
+    } : {};
+    const migrated = await scenario(name, { [LEGACY_KEY]: JSON.stringify(old) }, {}, false, coldShare);
+    if (name === 'legacy-v1-completed') {
+      check('sharing-opened-during-scene-load-remains-paused-and-focused', (await observed(migrated.page)).paused
+        && await migrated.page.evaluate(() => Boolean(document.activeElement.closest('#share-dialog'))));
+      await migrated.page.locator('#share-close').click();
+    }
     await settle(migrated.page); const current = await saved(migrated.page);
     check(`${name}-migrates-in-the-real-app`, current.version === 2 && current.locale === old.locale && samePosition(current.game, old.game) && journey(current.game) === journey(old.game), { before: old, after: current });
     await migrated.page.reload(); await migrated.page.waitForFunction(() => window.__TOUR_GAME__ && document.querySelector('#loading').hidden, null, { timeout });
@@ -380,8 +464,10 @@ try {
   check('webgl-failure-recovery-translates', /[\u3400-\u9fff]/.test(await unsupported.page.locator('.scene-error').innerText()));
   check('webgl-failure-has-no-uncaught-errors-or-external-requests', !unsupported.record.pageErrors.length && !unsupported.record.externalRequests.length, { ...unsupported.record, consoleNote: 'Three context-creation diagnostics are expected in this deliberately unavailable scenario.' });
   await unsupported.context.close();
+  await verifyComparison({ scenario, assets, origin, check, capture, report, timeout, persist });
   }
-  report.status = reviewOnly ? 'Limited visual-review capture completed; the full behavior suite was not run.' : 'Browser walkthrough completed; independent visual review and human acceptance remain separate.';
+  }
+  report.status = comparisonOnly ? 'Focused comparison checks completed; no gameplay or sharing acceptance.' : sharingOnly ? 'Focused sharing checks completed; no gameplay or art acceptance.' : reviewOnly ? 'Limited visual-review capture completed; the full behavior suite was not run.' : 'Browser walkthrough completed; independent visual review and human acceptance remain separate.';
 } catch (error) {
   check('browser-run-completed', false, error.stack || String(error)); report.status = 'Incomplete or failed; do not claim playable validation.';
   const page = contexts.flatMap(context => context.pages()).findLast(page => !page.isClosed());

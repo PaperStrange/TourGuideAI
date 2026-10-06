@@ -1,7 +1,9 @@
 # Playable 3D revision · independent validation
 
-Owner: QA. Status: **53/53 packaged-browser checks and 16/16 pure tests pass;
-human art/interaction and representative-device acceptance remain pending**.
+Owner: QA. Current status, 2026-10-06: **the user accepts fluency and guidance
+for the Pages build they played; building/street realism is not accepted**.
+The historical 2026-10-05 evidence remains **53/53 packaged-browser checks and
+16/16 pure tests passing**. Representative-device coverage remains unestablished.
 The production browser run completed on 2026-10-05, 06:53:03–07:03:45 UTC.
 Earlier 2D and Blender-proof results are baselines, not passes for this application.
 
@@ -9,6 +11,56 @@ The focused revision must preserve the three sourced encounters while adding
 guided 3D navigation, more convincing executed art, and a small personal record
 of the journey. A browser check cannot establish human immersion, accepted visual
 quality, a real entrance, or a successful Kyoto field walk.
+
+## User review · 2026-10-06
+
+After playing the deployed Pages experience, the user reported that it
+“successfully achieved fluency and guidance.” This accepts those aspects for the
+build they tested. The same review says the buildings and streets are too simple
+to represent reality, so visual realism remains an unmet acceptance criterion.
+The earlier agent review found no blocking rendering defect in its inspected
+frames; it did not establish the realism the user now explicitly rejects.
+
+The user also found standalone HTML sharing unusual. The historical export checks
+prove that the file reflects the played choices and escapes personal text; they
+do not establish that downloading and sending HTML is a suitable sharing flow.
+In a subsequent decision on the same day, the user requested multiple sharing
+formats and both visual treatments on an expanded street. Those new outputs
+require their own validation; the earlier download checks do not establish them.
+
+The review did not specify browser, device, GPU or viewport, and it was not bound
+to a recorded deployment hash. Do not generalize its acceptance to every build or
+device. It is not a fresh-user study, a Kyoto field test, or acceptance of
+whole-trip immersion/sharing. The frozen reports, counts and artifact hashes below
+remain the evidence for the separate 2026-10-05 automated run.
+
+## Current revision QA plan · 2026-10-06
+
+Implementation and QA preparation are in progress; no new visual/sharing pass is
+claimed. The scope is a matched real-time/Cycles comparison plus in-app preview,
+recipient link, native sharing where available, PNG and print/PDF-reader outputs.
+Reuse the existing runner and tests; historical evidence stays immutable.
+
+| Review point | Evidence and observable failure |
+|---|---|
+| Reality comparison | Compare the current and revised **browser-rendered** street at matched opening, crossing and north/south approach views against the cited real-place references. Judge facade proportions, material/light response, street detail and recognizable place identity at actual playing size. More props or a Blender beauty image cannot establish success. The user must confirm that the buildings and street now represent the intended reality; record remaining authored approximations. |
+| Preserve accepted play | Walk the same three encounters with EN and ZH controls after the rendering changes. A hidden actor, unstable prompt, changed collision/ground picking, camera obstruction or lost choice/note is a regression. Record device/browser and moving-scene timings on the device reviewed; software-GPU timings alone cannot preserve the user's fluency acceptance. Reuse the relevant existing checks rather than duplicating the entire suite for each art edit. |
+| Matched treatment comparison | Verify the same expanded geometry, camera position/target, vertical field of view, aspect and hidden groups from the comparison manifest. Inspect real-time output and the supplied Cycles still at their intended uncropped aspect in A/B and side-by-side modes. Check EN/ZH, local asset loading, usable still-image fallback when WebGL is unavailable and visible failure for a missing manifest/image. A successful import or matching camera alone cannot establish preferred art quality. |
+| Preview before sharing | Create an in-app preview from an actual played journey. It must retain the selected choices, distinguish skipped stops, and include only saved personal notes explicitly selected for sharing; unsaved drafts and unchecked notes stay absent. Returning to the walk preserves position, progress and notes. Compare the preview with the recipient content and each selected output. |
+| Recipient handoff | Copy a link and open it in a separate browser context without the author's storage/session. The recipient must read the same choices, selected personal content, sources and EN/ZH text without WebGL or journey-storage writes. Malformed, unsupported-version and oversized fragments must show a usable error rather than a partial or fabricated recap. Untrusted text must remain text. |
+| Multiple outputs | Verify PNG signature, decodable dimensions and visible recap content; verify the print reader's content and print layout separately from link delivery. Native-share payload and cancellation can be exercised with a browser-API stub, but the device share sheet requires a supported-device check. Do not claim that browser print-layout inspection establishes every OS PDF printer or that copying a link publishes server-side content. |
+
+The new recap/storage/simulation suite currently passes **22/22 pure tests**.
+A focused restored-journey sharing run passed **21/21 browser checks** on
+2026-10-06, with WebGL deliberately unavailable. It exercised the actual clipboard,
+a fresh recipient context, a 500-character Chinese selected note, unchecked-note
+exclusion, PNG download/decode, Chromium PDF, localized invalid links and native
+handoff/cancellation stubs. It did not walk the expanded scene or exercise an
+unsaved draft created in gameplay. Its package-manifest hash is
+`6071e73c17d0b7abc4034e3a45d752caba645129c4e03b50a0bbef8726c78b2b`;
+temporary evidence is `/workspace/scratch/experience-qa/sharing-20261006/`.
+Subsequent startup-race, native-unavailable, western-ground and comparison checks
+are prepared for the final frozen package; they are not yet passes.
 
 ## Behavioral evidence
 
@@ -68,7 +120,7 @@ unbriefed participant. The new personal notes support a memory of this slice;
 whole-day immersion, a completed trip memoir and sharing remain distinct product
 outcomes until demonstrated.
 
-## Results
+## Historical results · 2026-10-05
 
 The 16 pure tests pass on 2026-10-05. They cover camera-relative vectors, movement
 quantization, collision, crossing navigation, pause/replay, legacy save meaning,
@@ -144,6 +196,12 @@ executable path is hardcoded.
   240,000. This is a tooling timeout, not a promised loading time or walking speed.
 - `npm run test:browser -- dist --review`: limited opening/bank visual captures;
   the report explicitly states that the complete behavior suite was not run.
+- `npm run test:browser -- dist --review --saved-bank`: fresh opening and a
+  restored recorded bank save; this does not establish a newly walked route.
+- `npm run test:browser -- dist --sharing`: focused sharing from restored progress
+  with WebGL deliberately unavailable; no gameplay or art acceptance.
+- `npm run test:browser -- dist --comparison`: comparison views, modes and failure
+  fixtures only; no gameplay or sharing acceptance.
 
 The runner snapshots the complete built directory and records each file hash.
 Playwright serves those immutable bytes at a local HTTP origin and denies requests
