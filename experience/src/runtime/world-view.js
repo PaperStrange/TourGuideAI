@@ -15,7 +15,7 @@ function disposeTree(root) {
   for (const item of [...textures, ...materials, ...geometries]) item.dispose();
 }
 
-function daylightEnvironment(renderer) {
+export function daylightEnvironment(renderer) {
   const environment = new THREE.Scene();
   const material = new THREE.ShaderMaterial({
     side: THREE.BackSide,
