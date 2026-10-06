@@ -37,7 +37,7 @@ concurrency:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     defaults:
       run:
         working-directory: experience
@@ -56,7 +56,9 @@ jobs:
         run: npm run test:browser -- dist
         env:
           EXPERIENCE_QA_OUTPUT: test-results/browser
-          EXPERIENCE_QA_TIMEOUT: '240000'
+          # The hosted runner uses software rendering. A moving bank approach
+          # exceeded four minutes; this bounds tooling, not accepted game speed.
+          EXPERIENCE_QA_TIMEOUT: '600000'
       - name: Preserve browser evidence
         if: always()
         uses: actions/upload-artifact@v4
