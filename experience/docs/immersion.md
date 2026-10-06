@@ -1,6 +1,6 @@
 # Immersion across a travel journey
 
-Updated 2026-10-05. Owner: `product_design`.
+Updated 2026-10-06. Owner: `product_design`.
 
 ## Approved direction and this increment
 
@@ -19,11 +19,16 @@ implements a small continuity feature: an optional personal note for each comple
 alongside the current walk and included in the player's exported field notes. The UI supports complete
 selectable English and Chinese, while Japanese source signs remain Japanese.
 
-The personal-note implementation is verified in the reviewed browser build; see
-[independent validation](validation.md) for the build evidence and its limits. The final checks passed
-53/53 browser checks, 16/16 pure tests and 17/17 repository gates. Human judgment of immersion,
-art quality and interaction fluency remains pending. This increment is not a full photo memoir;
-the approved trip/day/action/sharing direction extends beyond it.
+The personal-note implementation was verified in the 2026-10-05 browser build; see
+[independent validation](validation.md) for its evidence and limits. That build passed 53/53 browser
+checks, 16/16 pure tests and 17/17 repository gates. On 2026-10-06 the user accepted its fluency and
+guidance on GitHub Pages, but rejected the overly simple appearance and standalone HTML sharing
+experience. The next slice therefore improves appearance and sharing while preserving the accepted
+interaction. It requires its own verification; earlier checks do not certify new changes.
+
+The user requested both rendered visual solutions and multiple sharing formats. They are not mutually
+exclusive alternatives. The sharing contract below is authorized implementation work, not a claim
+that it is already verified. This remains a short simulated walk, not a complete trip or photo memoir.
 
 ## Four scales of experience
 
@@ -56,6 +61,12 @@ guilt message or a score for how much personal material someone contributes.
 Blender is an authoring tool for the implemented geometry/material pipeline. Judge the exported browser
 scene, including near views and movement, rather than accepting a Blender render as the product.
 
+The next comparison presents both a live browser view and a Blender-rendered still, using the same
+street model and matched framing. Both must be available for review, with their fixed comparison
+views identified. An improved still does not prove gameplay rendering quality, and authored context
+does not add verified venues, entrances or navigable territory. Comparison controls leave the saved
+walk unchanged. User acceptance of the revised appearance remains open.
+
 ## The interaction rhythm
 
 | Moment | Current public-frontage experience | Observable failure |
@@ -82,7 +93,7 @@ The current increment is deliberately personal and local:
    current note; there is no claimed note-version history or trip archive.
 3. Reload restores valid visit order, choices and saved notes. A quiet returning-walk message supports
    resuming; it does not add a blocking welcome flow or pretend the player visited Japan physically.
-4. Export includes saved personal notes clearly separate from source-backed travel information.
+4. Sharing includes only explicitly selected saved personal notes, clearly separate from source-backed travel information.
    Changing a route choice changes route intent; a skipped stop may remain a memory without becoming
    a planned stop. Notes cannot overwrite source facts or create a verification badge.
 5. Locale/camera changes preserve current play and any note draft. Saved notes retain the player's
@@ -113,6 +124,51 @@ other. Source validity, technical checks and agent review also remain distinct f
 Do not invent performance, satisfaction or retention thresholds; observe the targeted failures and
 record remaining problems against the reviewed build.
 
+## Current sharing slice: one preview, multiple formats
+
+The old action immediately downloaded standalone HTML. The replacement opens an in-app preview
+before anything is copied, handed to a device share service, downloaded or printed. The user requested
+all three output styles below. None is a substitute for the others.
+
+| Format | What the recipient gets | Capability and limit |
+|---|---|---|
+| Web link | A readable mobile page containing the selected walk, choices, notes and source details | Explicit native Share or Copy link. The static page reads a versioned fragment payload; no account, game loading or WebGL is required to read it. No short-link service, revocation or personalized social-preview promise. |
+| PNG card | A purpose-built image of the same selected walk | Download image, plus native image sharing where supported. A static card is easy to view but has no interactive source expansion or recipient language switch. Keep an accessible HTML counterpart. |
+| Print / PDF | A readable layout opened from the dedicated journey reader | The browser print dialog handles printing or Save as PDF where supported. Opening the dialog is not proof of a saved file. |
+
+The selection contract is the same across formats:
+
+- Start with completed supported encounters in recorded order. Distinguish choices added to the
+  planned route from discoveries merely remembered. Unfinished placeholder doors never become stops.
+- Personal notes start unchecked individually. Only explicitly saved notes can be selected; an unsaved
+  draft remains local. A note change in the preview affects every output, not the underlying saved note.
+- Show the simulated-walk label and creation date. Creation date is the artifact date, not a claimed
+  real visit or a new source-verification date. Notes remain player prose, separate from sourced facts.
+- Make selected notes visible in the preview and explain that recipients can read them. Anyone who
+  receives or is forwarded a link, image or PDF can keep its contents. There is no revocation promise.
+- Keep EN/ZH controls and outcomes complete. Interface changes do not translate personal prose,
+  alter original Japanese place names, change the chosen stops or clear note selections.
+- Explicit native sharing only hands content to a device service; it does not prove recipient delivery.
+  Clipboard success means copied. Download initiation and print-dialog opening do not prove saving.
+- Close or cancel returns to the same play state and retains drafts. Native cancellation is neutral;
+  an error retains the preview and selection. No completed encounter means no output action, with a
+  clear invitation to discover a place first. Sharing with no personal notes is valid.
+
+The agreed transport record is a versioned DTO with `v: 1`, `pack: kyoto-shijo`, language, creation
+date and ordered stops containing known place/choice IDs plus optional selected notes. Validate those
+IDs and the schema before rendering; imported share content never changes the recipient's saved walk.
+The full fragment URL is limited to 8192 characters for this bounded slice. This is an implementation
+limit, not a guarantee that every messaging application accepts that length. Reject an oversized,
+unsupported or malformed link clearly; never silently truncate notes or reinterpret unknown choices.
+Sources and their checking dates stay distinct from the shared artifact's creation date.
+
+Verification must compare sender preview against a fresh-browser recipient and each output: include
+one selected note and exclude another, preserve add-versus-remembered choices, switch EN/ZH, inspect
+Chinese wrapping, and exercise cancel, unavailable native sharing/clipboard, malformed link and empty
+walk states. A PNG must preserve selected content rather than silently cut off long notes. Browser
+checks cannot establish that an external messaging service delivered the artifact. The revised sharing
+experience and revised art both require review against their actual delivered outputs.
+
 ## Later journey continuity: proposals, not this build
 
 - **Before departure:** preserve intentions and must-do places, then rehearse sourced decisions in
@@ -123,9 +179,10 @@ record remaining problems against the reviewed build.
   Mark them as player-reported real visits, separately from simulated visits and verified source facts.
 - **After the trip:** later let the player select photos, notes and route moments for a complete memoir,
   compare intention with experience and carry chosen interests into another trip.
-- **Sharing:** later provide a reviewable, user-initiated export/share artifact with selected days and
-  source attribution. Personal notes/photos require explicit inclusion. No community feed, automatic
-  posting, account service or multiplayer expansion is included in this increment.
+- **Whole-trip sharing:** extend the current short-walk formats to selected days and a complete trip,
+  retaining source attribution and the simulated/real-reported distinction. Personal notes/photos
+  require explicit inclusion. No community feed, automatic posting, account service or multiplayer
+  expansion is included in this increment.
 
 ## Public implementation references read for this proposal
 
