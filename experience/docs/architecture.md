@@ -8,7 +8,8 @@ comparison evidence; the new package does not import them.
 ```text
 experience/
   src/
-    app/            application orchestration, journey storage, field-note export
+    app/            orchestration, storage, recap codec/preview/image and reader
+    comparison/     matched realtime / Blender rendering study (no journey state)
     runtime/        Three.js scene, camera, input, loading and disposal
     simulation/     fixed-step movement, bounds, proximity and serializable state
     content/        sourced Kyoto geometry, places and choice content
@@ -17,6 +18,8 @@ experience/
   public/
     models/         exported scene/player GLBs and asset provenance
     content-evidence/  local snapshots behind verified content
+    render-study/   Blender stills with the exact shared camera manifest
+  content-tools/    build-time extraction from frozen source geometry
   tests/            simulation, persistence, export and real-browser checks
   docs/             product direction, decisions, research and validation
   evidence/         selected delivery evidence and exact build/source inventory
@@ -49,10 +52,25 @@ failure feedback; locale changes and closing/reopening the encounter preserve th
 this walk and its notes after the existing confirmation. There is no archive or
 cloud sync yet.
 
-`field-notes.js` creates a local, user-triggered HTML download from recorded visits,
-choices and saved personal notes. Text is escaped. Exporting does not publish the
-journey to a service. Future whole-trip sharing requires a preview of the selected
-days, notes and images and an explicit sharing action.
+`share.js` validates a versioned presentation snapshot: pack, language, creation
+date and completed encounters with choices and individually selected saved notes.
+It excludes position, logs and local save details. Notes default to unselected.
+The same snapshot produces the dialog preview, recipient reader and designed PNG.
+Known facts and source URLs resolve from the canonical content; received text is
+escaped. A strict 8192-character URL limit fails explicitly without truncation.
+
+`journey.html#recap=...` is a separate static entry. Its URL fragment carries the
+snapshot without a backend. The reader imports no WebGL code and never imports or
+mutates a recipient journey. Native share is an explicit user action; copy reports
+success only after clipboard resolution. PNG download is a separate format; the
+reader's print action supports the browser's PDF destination. Whole-trip/day/photo
+sharing, short links, revocation and tailored social previews remain future work.
+The previous standalone HTML-download implementation is replaced by these paths.
+
+`comparison.html` uses one manifest for both the realtime camera and the Blender
+render camera. It is an inspection study, with static offline frames explicitly
+labelled. The expanded visual-context dataset and bounds do not alter collision
+or walkability; the accepted guided-play controls remain independent.
 
 ## Delivery and quality
 

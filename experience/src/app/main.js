@@ -3,7 +3,7 @@ import { createGame } from '../runtime/create-game.js';
 import { TARGETS, PRIMARY_TARGET_IDS } from '../content/kyoto.js';
 import { t } from '../ui/i18n.js';
 import { STORAGE_KEY, readSavedJourney, readPersonalNotes } from './journey-store.js';
-import { renderFieldNotes } from './field-notes.js';
+import { installShareDialog } from './share-dialog.js';
 import fontLicense from '../ui/assets/NOTO-LICENSE.txt?raw';
 import runtimeNotices from '../ui/assets/THIRD-PARTY-NOTICES.txt?raw';
 
@@ -52,7 +52,7 @@ app.innerHTML = `
     <div class="journal-footer"><div class="journal-progress"><span data-i18n="journalTitle"></span><span id="progress-count"></span></div><div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="3" id="progress"><div class="progress-fill" id="progress-fill"></div></div><button type="button" class="export-button" id="export-notes"><span data-i18n="exportJournal"></span><span aria-hidden="true">↗</span></button></div>
   </aside>
   <section class="stage-wrap">
-    <div class="scene-toolbar"><div class="scene-location" data-i18n="eyebrow"></div><span class="scene-edition" data-i18n="sceneEdition3D"></span></div>
+    <div class="scene-toolbar"><div class="scene-location" data-i18n="eyebrow"></div><a id="comparison-link" href="./comparison.html" target="_blank" rel="noopener" data-i18n="comparisonEntryLabel"></a><span class="scene-edition" data-i18n="sceneEdition3D"></span></div>
     <div class="scene-window"><div id="game-stage" tabindex="0" role="application"></div><div class="scene-corner"><span data-i18n="chapterLabel"></span><strong lang="ja">四条烏丸</strong></div><div class="camera-toolbar" role="group" id="camera-toolbar"><button type="button" id="camera-reset" data-i18n="cameraReset"></button><span data-i18n="cameraHelp"></span></div><div class="walk-hint" id="walk-hint" data-i18n="mapHint"></div><button type="button" class="context-prompt" id="interact-button" hidden><kbd>E</kbd><span class="prompt-copy"><small id="prompt-name"></small><span data-i18n="viewDetails"></span></span><span aria-hidden="true">↗</span></button><div class="loading-screen" id="loading"><div class="loading-mark"></div><span data-i18n="loading"></span></div></div>
     <div class="controls-bar"><div class="control-hints" id="controls"><span><kbd>W A S D</kbd><span data-i18n="controlsMove"></span></span><span><kbd>E</kbd><span data-i18n="controlsInteract"></span></span><span><kbd>Esc</kbd><span data-i18n="controlsClose"></span></span></div><button class="hint-toggle" id="hint-toggle" type="button"></button></div>
   </section>
@@ -66,6 +66,11 @@ app.innerHTML = `
 const $ = selector => document.querySelector(selector);
 const dialog = $('#place-dialog');
 const resetDialog = $('#reset-dialog');
+const shareEmpty = document.createElement('p');
+shareEmpty.id='share-empty';shareEmpty.className='share-empty';
+$('#export-notes').after(shareEmpty);
+$('#export-notes').setAttribute('aria-describedby','share-empty');
+const sharing = installShareDialog({getSnapshot:()=>({locale,state,notes}),setPaused:value=>game?.setPaused(value),onLocale:applyLocale,onClose:()=>save(true)});
 
 function save(force = false) {
   if (!game) return;
@@ -98,6 +103,9 @@ function applyLocale(next) {
   game?.setLocale(locale);
   lastUI='';lastPrompt='';updateUI();
   if(activeTarget) renderCard();
+  sharing.setLocale(locale);
+  $('#comparison-link').href=`./comparison.html?lang=${locale}`;
+  $('#export-notes').querySelector('[data-i18n]').textContent=text('shareOpen');
   updateHints();save(true);
 }
 
@@ -122,6 +130,8 @@ function updateUI() {
     $('#progress').setAttribute('aria-valuenow',String(count));
     $('#progress-fill').style.width=`${count/primary.length*100}%`;
     $('#export-notes').disabled=count===0;
+    $('#export-notes').title=count===0?text('shareEmpty'):text('shareOpen');
+    shareEmpty.hidden=count>0;shareEmpty.textContent=text('shareEmpty');
   }
   const near=byId.get(state.nearbyTargetId);
   const promptSignature=JSON.stringify([locale,near?.id,state.paused]);
@@ -148,7 +158,7 @@ function updateHints() {
   $('#walk-hint').hidden=!hints||Boolean(state.nearbyTargetId)||state.paused;
 }
 function openPlace(id) {
-  const target=byId.get(id);if(!target||dialog.open||resetDialog.open)return;
+  const target=byId.get(id);if(!target||dialog.open||resetDialog.open||sharing.open)return;
   activeTarget=target;sourceExpanded=false;chosenOutcome=null;noteDraft=noteDrafts.get(id)??notes[id]??'';
   game.setPaused(true);renderCard();dialog.showModal();
   $('#card-close').focus();
@@ -181,16 +191,12 @@ function choose(id) {
   showToast(text(choice.addsToRoute?'addedToRoute':'noteSaved'));save(true);
 }
 function exportNotes() {
-  const html=renderFieldNotes({locale,state,notes});
-  try {
-    const url=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'}));
-    const a=document.createElement('a');a.href=url;a.download=`kyoto-field-notes-${locale}.html`;a.click();setTimeout(()=>URL.revokeObjectURL(url),30000);
-  }catch{showToast(text('downloadUnavailable'));}
+  sharing.show();
 }
 
 document.addEventListener('click',event=>{
   const button=event.target.closest('button');if(!button)return;
-  if(button.dataset.locale){applyLocale(button.dataset.locale);return;}
+  if(button.dataset.locale){if(!button.closest('#share-dialog'))applyLocale(button.dataset.locale);return;}
   if(!game && (button.dataset.target || button.dataset.choice || ['reset-button','confirm-reset','interact-button'].includes(button.id)))return;
   if(button.dataset.target){const target=byId.get(button.dataset.target);game.setSelectedTarget(target.id);game.moveTo(target.approachX??target.x,target.approachY??target.y);$('#game-stage').focus({preventScroll:true});return;}
   if(button.dataset.choice){choose(button.dataset.choice);return;}
@@ -236,7 +242,8 @@ try {
     onStatus(next){sceneStatus=next.status;updateSceneStatus();},
     onReady(next){sceneStatus=next.status;updateSceneStatus();},
   });
-  applyLocale(locale);save(true);$('#game-stage').focus({preventScroll:true});
+  if(sharing.open)game.setPaused(true);
+  applyLocale(locale);save(true);if(!sharing.open)$('#game-stage').focus({preventScroll:true});
   if(returning)showToast(text('returningBody'));
 }catch(error){
   console.error('Game initialization failed',error);
