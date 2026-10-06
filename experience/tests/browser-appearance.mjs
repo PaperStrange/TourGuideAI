@@ -16,10 +16,12 @@ export const waitForLighting = (page, mode, timeout, phase = 'ready') => page.wa
 
 export function lightingMatchesRig(actual, mode, rig, assets) {
   const expected = rig.modes[mode];
+  const environmentPath = new URL(expected.environment.file, 'http://qa.test/lighting/rig.json').pathname;
   const expectedFixtures = expected.fixtures.filter(light => light.enabled && light.intensity > 0);
   const fixtures = actual.lights.filter(light => expected.fixtures.some(config => config.id === light.id));
   return actual.phase === 'ready' && actual.mode === mode && actual.requestedMode === mode
     && actual.rig.sha256 === sha(assets.get('/lighting/rig.json'))
+    && assets.has(environmentPath) && sha(assets.get(environmentPath)) === expected.environment.sha256
     && actual.environment.sha256 === expected.environment.sha256
     && Boolean(actual.environment.textureId)
     && Math.abs(actual.environmentIntensity - expected.environment.intensity) < 1e-8
@@ -165,8 +167,11 @@ export async function verifyAppearanceFaults({ scenario, assets, origin, seed, s
   const beforeMissing = await saved(missing.page);
   await missing.page.locator('#appearance-controls [data-appearance="night"]').click();
   await waitForLighting(missing.page, 'night', timeout, 'fallback');
+  const missingLight = await lightingState(missing.page);
   check('missing-hdr-keeps-a-usable-night-fallback-and-journey', await missing.page.locator('#appearance-retry').isVisible()
-    && await missing.page.locator('#game-stage canvas').isVisible() && stable(await saved(missing.page)) === stable(beforeMissing));
+    && await missing.page.locator('#game-stage canvas').isVisible() && stable(await saved(missing.page)) === stable(beforeMissing)
+    && missingLight.environment.status === 'fallback' && missingLight.environment.sha256 === null
+    && Boolean(missingLight.environment.textureId), missingLight);
   await missing.page.locator('#language-switch [data-locale="zh"]').click();
   check('missing-hdr-fallback-is-localized', /[\u3400-\u9fff]/.test(await missing.page.locator('#appearance-status').innerText()));
   await capture(missing.page, 'missing-night-hdr-zh');

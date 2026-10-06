@@ -60,7 +60,9 @@ function updateStatus() {
     stillRenderer: manifest?.renderEngine ?? 'Blender Cycles',
     realtimeRenderer: 'Three.js r186 · WebGL2 · PBR Neutral',
     appearance, lighting: renderer?.getLightingState() ?? lighting,
-    offlineLighting: manifest?.offlineLighting?.[appearance] ?? null,
+    offlineLighting: manifest?.version === 2 ? manifest.modes[appearance].offline : manifest?.offlineLighting ?? null,
+    denoising: manifest?.denoising ?? null,
+    stillSamples: manifest?.samples ?? null,
     renderingDifference: label(manifest?.renderDifference) || null,
   }, null, 2);
 }

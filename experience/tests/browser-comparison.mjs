@@ -97,21 +97,44 @@ export async function verifyComparison({ scenario, assets, origin, check, captur
   check('comparison-context-loss-leaves-the-cycles-view-usable', await page.locator('#study-image').isVisible() && (await snapshot(page)).status.image === 'ready');
   await page.locator('#study-retry').click(); await ready(page);
   check('comparison-retry-replaces-the-lost-canvas-once', !await oldCanvas.evaluate(node => node.isConnected)
-    && await page.locator('#realtime-stage canvas').count() === 1 && (await snapshot(page)).selectedViewId === beforeLocale.selectedViewId);
+    && await page.locator('#realtime-stage canvas').count() === 1 && (await snapshot(page)).selectedViewId === beforeLocale.selectedViewId
+    && (await snapshot(page)).renderer.lighting.mode === beforeLocale.renderer.lighting.mode);
   const untouched = await page.evaluate(key => ({ ...window.__QA_ENTRY__, value: localStorage.getItem(key) }), seedKey);
   check('comparison-does-not-write-the-existing-journey', !untouched.storageWrites.length && untouched.value === seed, untouched);
   check('comparison-has-no-external-requests-or-browser-errors', !main.record.externalRequests.length && !main.record.pageErrors.length && !main.record.consoleErrors.length, main.record);
   report.observations.comparison = await snapshot(page); persist(); await main.context.close();
 
-  const unavailable = await scenario('comparison-no-webgl', {}, {}, true, { entryUrl: entryUrl + '&lang=zh', staticEntry: true });
+  const unavailable = await scenario('comparison-no-webgl', {}, {}, true, { entryUrl: entryUrl + '&lang=zh&lighting=night', staticEntry: true });
   await unavailable.page.waitForFunction(() => {
     const s = window.__TOUR_COMPARISON__?.snapshot(); return s?.status.realtime === 'unavailable' && s.status.image === 'ready';
   }, null, { timeout });
   check('comparison-without-webgl-still-presents-the-still-treatment', await unavailable.page.locator('#study-image').isVisible()
+    && new URL((await snapshot(unavailable.page)).image.src).pathname === new URL(expected.views[0].renders.night.file, origin + manifestPath).pathname
     && /[\u3400-\u9fff]/.test(await unavailable.page.locator('#realtime-status').innerText())
     && !unavailable.record.pageErrors.length && !unavailable.record.externalRequests.length
     && unavailable.record.consoleErrors.every(message => message.includes('Error creating WebGL context.')), unavailable.record);
   await capture(unavailable.page, 'comparison-no-webgl-zh'); await unavailable.context.close();
+
+  let failHDR = true;
+  const nightPath = new URL(rig.modes.night.environment.file, origin + '/lighting/rig.json').pathname;
+  const missingHDR = await scenario('comparison-missing-hdr', {}, {}, false,
+    { entryUrl: entryUrl + '&lang=zh&lighting=night', staticEntry: true, failAsset: path => failHDR && path === nightPath });
+  await missingHDR.page.waitForFunction(() => {
+    const s = window.__TOUR_COMPARISON__?.snapshot(); return s?.renderer?.lighting.phase === 'fallback' && s.status.image === 'ready';
+  }, null, { timeout });
+  const fallback = await snapshot(missingHDR.page);
+  check('comparison-hdr-fallback-retains-the-matched-night-still', fallback.renderer.lighting.mode === 'night'
+    && new URL(fallback.image.src).pathname === new URL(expected.views[0].renders.night.file, origin + manifestPath).pathname
+    && await missingHDR.page.locator('#study-lighting-retry').isVisible()
+    && /[\u3400-\u9fff]/.test(await missingHDR.page.locator('#study-lighting-status').innerText()), fallback);
+  await capture(missingHDR.page, 'comparison-missing-night-hdr-zh');
+  failHDR = false; await missingHDR.page.locator('#study-lighting-retry').click(); await ready(missingHDR.page);
+  check('comparison-hdr-retry-restores-the-local-asset-without-changing-view',
+    lightingMatchesRig((await snapshot(missingHDR.page)).renderer.lighting, 'night', rig, assets)
+    && (await snapshot(missingHDR.page)).selectedViewId === fallback.selectedViewId);
+  check('comparison-hdr-fault-has-only-expected-diagnostics', !missingHDR.record.externalRequests.length && !missingHDR.record.pageErrors.length
+    && missingHDR.record.consoleErrors.every(message => message.includes('404 (Not Found)')), missingHDR.record);
+  await missingHDR.context.close();
 
   for (const [label, path, statusId] of [
     ['manifest', manifestPath, '#manifest-status'],
