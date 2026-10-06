@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto';
 import { Matrix4, PerspectiveCamera, Vector3 } from 'three';
+import { lightingMatchesRig } from './browser-appearance.mjs';
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const close = (a, b) => Math.abs(a - b) < 1e-8;
@@ -10,10 +11,12 @@ export async function verifyComparison({ scenario, assets, origin, check, captur
   if (!assets.has(manifestPath)) throw new Error('Comparison assets are not ready: no packaged render-study/manifest.json.');
   const expected = JSON.parse(assets.get(manifestPath));
   const modelPath = new URL(expected.model, origin + manifestPath).pathname;
+  const rig = JSON.parse(assets.get('/lighting/rig.json'));
+  const rigPath = new URL(expected.lightingRig, origin + manifestPath).pathname;
   const snapshot = page => page.evaluate(() => window.__TOUR_COMPARISON__.snapshot());
   const ready = page => page.waitForFunction(() => {
     const s = window.__TOUR_COMPARISON__?.snapshot();
-    return s?.status.manifest === 'ready' && s.status.image === 'ready' && s.status.realtime === 'ready' && s.renderer.renderedFrames > 0;
+    return s?.status.manifest === 'ready' && s.status.image === 'ready' && s.status.realtime === 'ready' && s.renderer.renderedFrames > 0 && s.renderer.lighting.phase === 'ready';
   }, null, { timeout });
   const entryUrl = origin + '/comparison.html?qa=1';
   const seedKey = 'tourguideai:journey:v2', seed = JSON.stringify({ version: 2, locale: 'zh', notes: { crossing: 'Existing private journey' }, game: { x: 23.8, y: 2.1 } });
@@ -22,11 +25,19 @@ export async function verifyComparison({ scenario, assets, origin, check, captur
   await ready(page);
   check('comparison-loads-the-exact-manifest-and-model', (await snapshot(page)).renderer.modelHash === expected.modelSha256
     && expected.modelSha256 === sha(assets.get(modelPath)), { modelPath, modelSha256: expected.modelSha256 });
-  for (const [index, view] of expected.views.entries()) {
-    if (index) await page.locator('#study-view').selectOption(view.id);
-    await page.waitForFunction(id => {
-      const s = window.__TOUR_COMPARISON__.snapshot(); return s.selectedViewId === id && s.renderer.viewId === id && s.status.image === 'ready';
-    }, view.id, { timeout });
+  check('comparison-binds-the-shared-lighting-rig', expected.lightingRigSha256 === sha(assets.get(rigPath)));
+  for (const appearance of ['day', 'night']) {
+    await page.locator(`#study-appearance [data-appearance="${appearance}"]`).click();
+    await ready(page);
+    check(`comparison-${appearance}-applies-the-real-local-lighting`, lightingMatchesRig((await snapshot(page)).renderer.lighting, appearance, rig, assets));
+    for (const view of expected.views) {
+    await page.locator('#study-view').selectOption(view.id);
+    const render = view.renders[appearance];
+    const imagePath = new URL(render.file, origin + manifestPath).pathname;
+    await page.waitForFunction(({ id, imagePath, appearance }) => {
+      const s = window.__TOUR_COMPARISON__.snapshot(); return s.selectedViewId === id && s.renderer.viewId === id && s.status.image === 'ready'
+        && s.renderer.lighting.mode === appearance && new URL(s.image.src).pathname === imagePath;
+    }, { id: view.id, imagePath, appearance }, { timeout });
     const observed = await snapshot(page), config = view.camera;
     const camera = new PerspectiveCamera(config.fov, config.aspect, config.near ?? .15, config.far ?? 260);
     camera.up.fromArray(config.up ?? [0, 1, 0]); camera.position.fromArray(config.position);
@@ -37,24 +48,24 @@ export async function verifyComparison({ scenario, assets, origin, check, captur
       && visibility.requestedGroups.every(group => view.hiddenGroups.includes(group.name) && group.matchedNodes > 0
         && group.totalMeshes > 0 && group.hiddenMeshes === group.totalMeshes)
       && (view.hiddenGroups.length > 0 || visibility.visibleMeshes === visibility.totalMeshes);
-    check(`comparison-${view.id}-uses-matched-camera-and-visibility`, same(actual.position, config.position)
+    check(`comparison-${view.id}-${appearance}-uses-matched-camera-and-visibility`, same(actual.position, config.position)
       && same(actual.target, config.target) && same(actual.up, config.up ?? [0, 1, 0])
       && close(actual.fov, config.fov) && close(actual.aspect, config.aspect)
       && same(actual.projectionMatrix, camera.projectionMatrix.toArray())
       && same(actual.matrixWorld, new Matrix4().copy(camera.matrixWorld).toArray())
       && JSON.stringify(observed.renderer.hiddenGroups) === JSON.stringify(view.hiddenGroups) && appliedVisibility, observed.renderer);
-    const imagePath = new URL(view.file, origin + manifestPath).pathname;
     const layout = await page.evaluate(() => {
       const img = document.querySelector('#study-image'), image = img.getBoundingClientRect();
       const canvas = document.querySelector('#realtime-stage canvas').getBoundingClientRect();
       return { image: [image.width, image.height], canvas: [canvas.width, canvas.height], objectFit: getComputedStyle(img).objectFit };
     });
-    check(`comparison-${view.id}-keeps-the-hashed-still-uncropped`, view.renderSha256 === sha(assets.get(imagePath))
+    check(`comparison-${view.id}-${appearance}-keeps-the-hashed-still-uncropped`, render.renderSha256 === sha(assets.get(imagePath))
       && new URL(observed.image.src).pathname === imagePath && Math.abs(observed.image.width / observed.image.height - config.aspect) < .005
       && Math.abs(layout.image[0] / layout.image[1] - config.aspect) < .01
       && Math.abs(layout.canvas[0] / layout.canvas[1] - config.aspect) < .01
-      && layout.objectFit === 'contain', { imagePath, renderSha256: view.renderSha256, image: observed.image, layout });
-    await capture(page, `comparison-${view.id}-both-en`);
+      && layout.objectFit === 'contain', { imagePath, renderSha256: render.renderSha256, image: observed.image, layout });
+    await capture(page, `comparison-${view.id}-${appearance}-both-en`);
+    }
   }
   for (const mode of ['realtime', 'still', 'both']) {
     await page.locator(`#study-mode input[value="${mode}"]`).check();
@@ -64,6 +75,18 @@ export async function verifyComparison({ scenario, assets, origin, check, captur
       && await page.locator('#still-panel').isVisible() === (mode !== 'realtime'));
   }
   const beforeLocale = await snapshot(page);
+  const warmMemory = beforeLocale.renderer.memory;
+  for (let cycle = 0; cycle < 2; cycle++) {
+    for (const appearance of ['day', 'night']) {
+      await page.locator(`#study-appearance [data-appearance="${appearance}"]`).click(); await ready(page);
+    }
+  }
+  await page.locator('#realtime-stage canvas').screenshot();
+  const afterSwitches = await snapshot(page);
+  check('comparison-appearance-switches-preserve-view-and-bounded-resources', afterSwitches.selectedViewId === beforeLocale.selectedViewId
+    && afterSwitches.mode === beforeLocale.mode && afterSwitches.renderer.memory.textures === warmMemory.textures
+    && afterSwitches.renderer.memory.geometries === warmMemory.geometries
+    && afterSwitches.renderer.lighting.cacheEntries <= 2 && afterSwitches.renderer.lighting.pendingRequests === 0, afterSwitches.renderer);
   await page.locator('#study-language [data-locale="zh"]').click();
   check('comparison-language-switch-keeps-view-and-mode', (await snapshot(page)).selectedViewId === beforeLocale.selectedViewId
     && (await snapshot(page)).mode === beforeLocale.mode && /[\u3400-\u9fff]/.test(await page.locator('h1').innerText()));
@@ -92,7 +115,7 @@ export async function verifyComparison({ scenario, assets, origin, check, captur
 
   for (const [label, path, statusId] of [
     ['manifest', manifestPath, '#manifest-status'],
-    ['image', new URL(expected.views[0].file, origin + manifestPath).pathname, '#image-status'],
+    ['image', new URL(expected.views[0].renders.day.file, origin + manifestPath).pathname, '#image-status'],
   ]) {
     const missing = await scenario(`comparison-missing-${label}`, {}, {}, true,
       { entryUrl, staticEntry: true, blockedPaths: [path] });

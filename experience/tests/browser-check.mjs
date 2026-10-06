@@ -12,6 +12,8 @@ import { WORLD, PLAYER_RADIUS } from '../src/simulation/world.js';
 import { STORAGE_KEY, LEGACY_KEY } from '../src/app/journey-store.js';
 import { verifySharing, SELECTED_NOTE, UNSELECTED_NOTE, UNSAVED_DRAFT } from './browser-sharing.mjs';
 import { verifyComparison } from './browser-comparison.mjs';
+import { APPEARANCE_KEY } from '../src/app/appearance.js';
+import { lightingState, waitForLighting, verifyAppearanceOpening, verifyAppearanceWithJourney, verifyAppearanceFaults } from './browser-appearance.mjs';
 
 if (!process.argv[2]) {
   console.error('Usage: npm run test:browser -- <built-dist-directory>');
@@ -20,6 +22,7 @@ if (!process.argv[2]) {
 const dist = resolve(process.argv[2]);
 const reviewOnly = process.argv.includes('--review');
 const savedBankReview = reviewOnly && process.argv.includes('--saved-bank');
+const lightingReview = reviewOnly && process.argv.includes('--lighting');
 const sharingOnly = process.argv.includes('--sharing');
 const comparisonOnly = process.argv.includes('--comparison');
 const output = resolve(process.env.EXPERIENCE_QA_OUTPUT || join(tmpdir(), 'experience-qa'));
@@ -42,7 +45,7 @@ const manifest = [...assets].sort(([a], [b]) => a.localeCompare(b)).map(([path, 
 const report = {
   startedAt: new Date().toISOString(), artifact: { directory: dist, manifestSha256: sha(JSON.stringify(manifest)), files: manifest },
   driverSha256: sha(readFileSync(fileURLToPath(import.meta.url))),
-  driverSources: ['browser-check.mjs', 'browser-sharing.mjs', 'browser-comparison.mjs'].map(file => ({ file,
+  driverSources: ['browser-check.mjs', 'browser-sharing.mjs', 'browser-comparison.mjs', 'browser-appearance.mjs'].map(file => ({ file,
     sha256: sha(readFileSync(new URL(file, import.meta.url))) })),
   conditions: { viewport: [1440, 1000], compactViewport: [1280, 720], deviceScaleFactor: 1, readOnlyObserver: '?qa=1', timeoutMs: timeout },
   scope: comparisonOnly ? 'Rendering-comparison behavior and failure fixtures only; no gameplay or sharing acceptance'
@@ -83,7 +86,8 @@ async function scenario(name, seed = {}, options = {}, noWebGL = false, settings
     const url = new URL(route.request().url());
     const path = url.pathname === '/' ? '/index.html' : decodeURIComponent(url.pathname);
     if (path.endsWith('.glb') && settings.assetBarrier) await settings.assetBarrier;
-    if (url.origin === origin && settings.blockedPaths?.includes(path)) {
+    if (url.origin === origin) await settings.delayAsset?.(path);
+    if (url.origin === origin && (settings.blockedPaths?.includes(path) || settings.failAsset?.(path))) {
       record.requests.push(path); return route.fulfill({ status: 404, body: 'Deliberate QA missing-asset fixture' });
     }
     if (url.origin === origin && assets.has(path)) {
@@ -221,6 +225,7 @@ try {
   } else {
   const main = await scenario('three-encounter-walk');
   const { page } = main;
+  await waitForLighting(page, 'day', timeout);
   report.observations.openingCamera = await camera(page);
   report.observations.renderer = await page.locator('canvas').evaluate(canvas => {
     const gl = canvas.getContext('webgl2'); const ext = gl?.getExtension('WEBGL_debug_renderer_info');
@@ -239,18 +244,30 @@ try {
 
   if (reviewOnly) {
     let reviewPage = page;
+    if (lightingReview) {
+      await page.locator('#appearance-controls [data-appearance="night"]').click(); await waitForLighting(page, 'night', timeout);
+      await capture(page, 'opening-night-en'); await locale(page, 'zh'); await capture(page, 'opening-night-zh');
+      await locale(page, 'en'); report.observations.openingLighting = await lightingState(page);
+    }
     if (savedBankReview) {
       await main.context.close();
       const seed = { version: 2, ...fixture('legacy-v1-completed'), locale: 'en', notes: {} };
       reviewPage = (await scenario('restored-bank-render-review', { [STORAGE_KEY]: JSON.stringify(seed) })).page;
+      await waitForLighting(reviewPage, 'day', timeout);
       report.observations.bankReviewMethod = 'Restored recorded completed-bank save; no walked-route claim.';
     } else await approach(page, 'mufg');
     await reviewPage.waitForFunction(() => window.__TOUR_GAME__.camera().frontage === 'south', null, { timeout });
     report.observations.bankCamera = await camera(reviewPage);
     check('bank-camera-faces-the-south-frontage', report.observations.bankCamera.frontage === 'south', report.observations.bankCamera);
-    await capture(reviewPage, savedBankReview ? 'south-bank-restored' : 'south-bank-approach'); await open(reviewPage); await capture(reviewPage, 'bank-card-en');
+    await capture(reviewPage, savedBankReview ? 'south-bank-restored' : 'south-bank-approach');
+    if (lightingReview) {
+      await reviewPage.locator('#appearance-controls [data-appearance="night"]').click(); await waitForLighting(reviewPage, 'night', timeout);
+      await capture(reviewPage, 'south-bank-night'); report.observations.bankLighting = await lightingState(reviewPage);
+    }
+    await open(reviewPage); await capture(reviewPage, 'bank-card-en');
     report.observations.rendererStatistics = await reviewPage.evaluate(() => window.__TOUR_GAME__.renderer());
   } else {
+  await verifyAppearanceOpening({ page, saved, check, capture, assets, timeout, report });
 
   // Remove optional inertia for numerical picking checks, then restore normal
   // motion for the walkthrough. This uses the actual system preference contract.
@@ -306,6 +323,18 @@ try {
     return { viewport: [innerWidth, innerHeight], document: [document.documentElement.scrollWidth, document.documentElement.scrollHeight], canvas: [canvas.width, canvas.height], stage: [stage.width, stage.height], exportBottom: document.querySelector('#export-notes').getBoundingClientRect().bottom, footerTop: footer.top };
   });
   check('compact-layout-and-canvas-fit-after-capture', layout.document[0] === 1280 && layout.document[1] === 720 && layout.canvas.every((v, i) => Math.abs(v - layout.stage[i]) <= 1) && layout.exportBottom <= layout.footerTop, layout);
+  for (const language of ['zh', 'en']) {
+    await locale(page, language);
+    const controls = await page.locator('#appearance-controls [data-appearance]').evaluateAll(buttons => buttons.map(button => {
+      const rect = button.getBoundingClientRect(), top = document.elementFromPoint(rect.x + rect.width / 2, rect.y + rect.height / 2);
+      return { language: document.documentElement.lang, text: button.textContent, clipped: button.scrollWidth > button.clientWidth,
+        withinViewport: rect.left >= 0 && rect.top >= 0 && rect.right <= innerWidth && rect.bottom <= innerHeight,
+        reachable: top === button || button.contains(top) };
+    }));
+    check(`compact-${language}-appearance-controls-fit-and-remain-reachable`, controls.length === 2
+      && controls.every(button => !button.clipped && button.withinViewport && button.reachable), controls);
+  }
+  await capture(page, 'compact-night-en');
   await page.setViewportSize({ width: 1440, height: 1000 }); await locale(page, 'en');
   const beforeResetView = await observed(page); await page.locator('#camera-reset').click();
   check('reset-view-preserves-position-and-journey', samePosition(beforeResetView, await observed(page)) && journey(beforeResetView) === journey(await observed(page)));
@@ -376,6 +405,7 @@ try {
   finally { await page.keyboard.up('ArrowUp'); }
   check('south-facing-walk-is-blocked-by-south-facade', Math.abs((await observed(page)).y - southWall.y) <= .001, { before: southWall, after: await observed(page) });
   await capture(page, 'completed-walk-zh');
+  await verifyAppearanceWithJourney({ page, saved, check, capture, timeout, draft: UNSAVED_DRAFT });
   await verifySharing({ main, scenario, saved, check, capture, report, output, origin, timeout, persist, includeDraftCheck: true });
   const creditsEvent = page.waitForEvent('popup'); await page.locator('.bottom-bar a[href="./credits.html"]').click();
   const creditsPage = await creditsEvent; await creditsPage.waitForLoadState('domcontentloaded');
@@ -400,6 +430,8 @@ try {
     await page.waitForFunction(() => window.__TOUR_GAME__ && document.querySelector('#loading')?.hidden && document.querySelector('#game-stage').dataset.sceneStatus === 'ready', null, { timeout });
     const afterRetry = await saved(page);
     check('retry-restores-rendering-with-the-same-saved-journey', samePosition(beforeLoss.game, afterRetry.game) && journey(beforeLoss.game) === journey(afterRetry.game) && JSON.stringify(beforeLoss.notes) === JSON.stringify(afterRetry.notes));
+    await waitForLighting(page, 'night', timeout);
+    check('graphics-recovery-retains-the-night-preference', (await lightingState(page)).mode === 'night');
   }
   const beforeResetJourney = await saved(page);
   await page.locator('#reset-button').click(); await page.locator('#cancel-reset').click();
@@ -407,6 +439,8 @@ try {
   await page.locator('#reset-button').click(); await page.locator('#confirm-reset').click();
   const freshJourney = await saved(page);
   check('confirmed-restart-clears-progress-and-personal-notes', samePosition(freshJourney.game, WORLD.spawn) && !freshJourney.game.visitedIds.length && !freshJourney.game.readSourceIds.length && !Object.keys(freshJourney.game.choiceIds).length && !Object.keys(freshJourney.notes).length && freshJourney.locale === 'zh');
+  check('journey-restart-does-not-reset-appearance', await page.evaluate(key => JSON.parse(localStorage.getItem(key))?.lighting === 'night', APPEARANCE_KEY)
+    && (await lightingState(page)).mode === 'night');
   check('walk-has-no-external-requests-or-browser-errors', !main.record.externalRequests.length && !main.record.pageErrors.length && !main.record.consoleErrors.length, main.record);
   await main.context.close();
 
@@ -479,6 +513,7 @@ try {
   check('webgl-failure-has-no-uncaught-errors-or-external-requests', !unsupported.record.pageErrors.length && !unsupported.record.externalRequests.length
     && unsupported.record.consoleErrors.every(message => message.includes('Error creating WebGL context.')), { ...unsupported.record, consoleNote: 'Only Three context-creation diagnostics are expected in this deliberately unavailable scenario.' });
   await unsupported.context.close();
+  await verifyAppearanceFaults({ scenario, assets, origin, seed: report.observations.finalJourney, saved, check, capture, timeout });
   await verifyComparison({ scenario, assets, origin, check, capture, report, timeout, persist });
   }
   }

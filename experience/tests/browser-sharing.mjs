@@ -46,6 +46,7 @@ export async function verifySharing({ main, scenario, saved, check, capture, rep
   const copied = await page.evaluate(() => navigator.clipboard.readText());
   const recap = decode(copied);
   check('copied-link-contains-only-the-previewed-snapshot', new URL(copied).pathname === '/journey.html'
+    && Object.keys(recap).sort().join(',') === 'created,lang,pack,stops,v'
     && recap.lang === 'zh' && recap.stops.length === 3 && recap.stops[0].note === SELECTED_NOTE
     && recap.stops[1].choice === 'street-only' && recap.stops[2].choice === 'no-cash-stop'
     && recap.stops.slice(1).every(stop => !Object.hasOwn(stop, 'note')), recap);
@@ -60,7 +61,7 @@ export async function verifySharing({ main, scenario, saved, check, capture, rep
   const recipientState = await recipient.page.evaluate(() => ({ ...window.__QA_ENTRY__, storageKeys: Object.keys(localStorage),
     width: document.documentElement.scrollWidth, editors: document.querySelectorAll('textarea,input:not([type=button])').length }));
   check('recipient-needs-no-webgl-storage-write-or-editor', recipientState.webglContexts === 0 && !recipientState.storageWrites.length
-    && !recipientState.storageKeys.length && !recipientState.editors && !recipient.record.requests.some(path => path.endsWith('.glb')), recipientState);
+    && !recipientState.storageKeys.length && !recipientState.editors && !recipient.record.requests.some(path => /\.(glb|hdr)$/.test(path)), recipientState);
   check('recipient-long-chinese-note-fits-phone-width', recipientState.width <= 390);
   await capture(recipient.page, 'shared-recipient-zh-mobile');
   await recipient.page.locator('[data-recap-locale="en"]').click();
