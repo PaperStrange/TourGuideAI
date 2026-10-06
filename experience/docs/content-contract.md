@@ -83,9 +83,9 @@ difference between a photographed feature and an authored approximation.
 ## Expanded visual context — separate from gameplay
 
 `public/content-evidence/street-context.json` is a self-contained ODbL derivative
-database in the same frozen metre coordinates. It supplies five complete closed
+database in the same frozen metre coordinates. It supplies seven complete closed
 building rings, the two primary diagonal corners, selected road/sidewalk/crossing
-paths, two mapped hedges and one mapped tree. The three additional building
+paths, two mapped hedges and one mapped tree. The five additional building
 identities are background context, not new encounters. Point positions are
 projected from tracked OSM snapshots, quantizing longitude/latitude to integer
 microdegrees with the existing projection helper. This is traced map geometry,
@@ -94,7 +94,7 @@ not a survey or a new field verification.
 | Field | Consumer meaning |
 |---|---|
 | `projection`, `sources`, `licence` | Frozen datum, exact upstream input hashes and OSM/ODbL attribution; upstream paths are authoring citations only |
-| `renderBounds` | Authored display selection: X −95…70 m, Y −90…75 m |
+| `renderBounds` | Authored display selection: X −95…100 m, Y −90…75 m |
 | `playableBounds` | Original `WORLD.bounds`: X 0…64 m, Y −25…15 m; descriptive copy, not a replacement runtime authority |
 | `buildings[].footprint` | Complete closed counterclockwise rings of `{x,y,nodeId}`; footprint height is not implied |
 | `buildings[].chamfer` | Source diagonal endpoints, midpoint, length, tangent and outward unit normal; no inferred column or cornice offsets |
@@ -117,6 +117,13 @@ than copying rounded prose. Full footprints extend beyond gameplay bounds:
 roughly Y 70.114 north and −83.982 south. Rendering those depths does not extend
 walking. The two Karasuma directional centrelines near X 0 and −10.315 establish
 road alignment, not an observed road-surface envelope.
+
+The nearest eastward context masses are way `205749104` north of Shijō and
+way `205732545` south of it. Their nine and eleven levels are source tags;
+height in metres and façade appearance are unknown. They fill the immediate
+background beyond the primary façades, without adding signs, tenant bindings
+or encounters. Expanding the display selection to X 100 does not extend the
+X 64 navigation limit or establish a complete street beyond the selected masses.
 
 Regenerate from the complete repository with:
 

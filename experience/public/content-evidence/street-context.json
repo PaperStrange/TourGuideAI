@@ -49,7 +49,7 @@
   },
   "renderBounds": {
     "minX": -95,
-    "maxX": 70,
+    "maxX": 100,
     "minY": -90,
     "maxY": 75
   },
@@ -432,6 +432,147 @@
       "winding": "counterclockwise",
       "closed": true,
       "note": "OSM traced footprint. Floor count is a tag, not measured height. Context identity does not add an encounter or entrance."
+    },
+    {
+      "sourceId": "footprints",
+      "osmType": "way",
+      "osmId": 205749104,
+      "url": "https://www.openstreetmap.org/way/205749104",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "northeast-context",
+      "role": "context",
+      "name": "三光ビル",
+      "levels": 9,
+      "heightMetres": null,
+      "footprint": [
+        {
+          "x": 54.76929,
+          "y": 57.800079,
+          "nodeId": 2157249030
+        },
+        {
+          "x": 54.586726,
+          "y": 51.365521,
+          "nodeId": 12749813656
+        },
+        {
+          "x": 61.15904,
+          "y": 51.14364,
+          "nodeId": 12749813657
+        },
+        {
+          "x": 59.789808,
+          "y": 4.548567,
+          "nodeId": 2157247585
+        },
+        {
+          "x": 66.635969,
+          "y": 4.326685,
+          "nodeId": 12749813654
+        },
+        {
+          "x": 66.635969,
+          "y": 4.770448,
+          "nodeId": 12749813655
+        },
+        {
+          "x": 78.046238,
+          "y": 4.437626,
+          "nodeId": 2157247572
+        },
+        {
+          "x": 79.41547,
+          "y": 53.029631,
+          "nodeId": 12749813659
+        },
+        {
+          "x": 78.320085,
+          "y": 53.029631,
+          "nodeId": 12749813658
+        },
+        {
+          "x": 78.411367,
+          "y": 56.579732,
+          "nodeId": 2157249019
+        },
+        {
+          "x": 65.175455,
+          "y": 56.912553,
+          "nodeId": 12749813652
+        },
+        {
+          "x": 65.175455,
+          "y": 57.578197,
+          "nodeId": 12749813653
+        },
+        {
+          "x": 54.76929,
+          "y": 57.800079,
+          "nodeId": 2157249030
+        }
+      ],
+      "winding": "counterclockwise",
+      "closed": true,
+      "note": "OSM traced footprint. Floor count is a tag, not measured height. Context identity does not add an encounter or entrance."
+    },
+    {
+      "sourceId": "footprints",
+      "osmType": "way",
+      "osmId": 205732545,
+      "url": "https://www.openstreetmap.org/way/205732545",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "southeast-context",
+      "role": "context",
+      "name": "四条烏丸ＦＴスクエア",
+      "levels": 11,
+      "heightMetres": null,
+      "footprint": [
+        {
+          "x": 76.311877,
+          "y": -20.41308,
+          "nodeId": 2157078407
+        },
+        {
+          "x": 67.640073,
+          "y": -20.41308,
+          "nodeId": 4229848161
+        },
+        {
+          "x": 40.711839,
+          "y": -20.41308,
+          "nodeId": 2157078406
+        },
+        {
+          "x": 40.711839,
+          "y": -56.135969,
+          "nodeId": 2157078400
+        },
+        {
+          "x": 49.383643,
+          "y": -56.135969,
+          "nodeId": 2157078399
+        },
+        {
+          "x": 49.383643,
+          "y": -84.425835,
+          "nodeId": 2157078391
+        },
+        {
+          "x": 76.40316,
+          "y": -84.425835,
+          "nodeId": 2157078392
+        },
+        {
+          "x": 76.311877,
+          "y": -20.41308,
+          "nodeId": 2157078407
+        }
+      ],
+      "winding": "counterclockwise",
+      "closed": true,
+      "note": "OSM traced footprint. Floor count is a tag, not measured height. Context identity does not add an encounter or entrance."
     }
   ],
   "roads": [
@@ -508,8 +649,8 @@
       "id": "road-465069436-0",
       "path": [
         {
-          "x": 70,
-          "y": -8.58814,
+          "x": 100,
+          "y": -8.413352,
           "nodeId": null
         },
         {
@@ -844,8 +985,8 @@
           "nodeId": 4600871814
         },
         {
-          "x": 70,
-          "y": 1.869491,
+          "x": 100,
+          "y": 1.589293,
           "nodeId": null
         }
       ],
@@ -877,8 +1018,8 @@
           "nodeId": 13362971360
         },
         {
-          "x": 70,
-          "y": -17.534629,
+          "x": 100,
+          "y": -17.603035,
           "nodeId": null
         }
       ],

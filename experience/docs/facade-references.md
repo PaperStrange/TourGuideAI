@@ -37,18 +37,30 @@ Photographs guide the curved Mitsui feature and planar Daiya classical panel;
 their trim, column dimensions and height remain estimates. Photographs alone
 do not establish whether the visible fabric is original, retained, or rebuilt.
 
-Render bounds now cover X −95…70 m / Y −90…75 m and include complete source
+Render bounds now cover X −95…100 m / Y −90…75 m and include complete source
 footprints, west-side background buildings, Karasuma road alignment, curved
 sidewalks and mapped corner planting. Earlier claims of a full south volume
 referred to full authored model height, not the complete real footprint. The
 source building extends to about Y −83.982 m, beyond the original −25 m gameplay
 limit. New displayed context does not create additional walkable space.
 
+The dataset now contains seven building rings. The two nearest eastward masses,
+ways `205749104` and `205732545`, were added from the already tracked footprint
+snapshot to reduce the abrupt scene edge. Their source tags report nine and
+eleven levels; their façades and height in metres are not established by these
+records. These are background masses, not new photographed façades or venues.
+
 The source tree and hedge positions can replace arbitrary corner planting.
 Species, crown/hedge dimensions and planting-bed construction are still
 authored. OSM records tactile paving at the east crossing, not an uninterrupted
 64 m yellow strip, exact kerb heights or ramp locations. Road and sidewalk
 paths are centrelines; display widths remain explicit authored choices.
+The current art construction uses total display widths of 9.7 m around one-way
+road centrelines, 18.3 m around other road centrelines, and 3.3 m around sidewalk
+centrelines. These buffers, kerbs, ramps and tactile layout are authored geometry,
+not verified road edges. Any supplemental movement patches within the original
+`WORLD` bounds are simulated surfaces, not surveyed access; rendered surroundings
+beyond those bounds do not become navigable.
 
 The existing CC BY photographs permit adaptations under their license terms.
 A future cropped/rectified photographic material requires its own crop source,

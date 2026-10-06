@@ -45,7 +45,7 @@ for (const [id, path] of Object.entries({
   primaryContent: 'experience/src/content/kyoto.js',
 })) sources[id] = { path, sha256: hash(readFileSync(resolve(repo, path))) };
 
-const renderBounds = { minX: -95, maxX: 70, minY: -90, maxY: 75 };
+const renderBounds = { minX: -95, maxX: 100, minY: -90, maxY: 75 };
 const round = n => Number(n.toFixed(6));
 function project(p, nodeId = null) {
   if (!Number.isFinite(p?.lon) || !Number.isFinite(p?.lat)) throw new Error(`Missing geometry for node ${nodeId}`);
@@ -102,6 +102,8 @@ const buildingSpecs = [
   ['corridor', 344477489, 'northwest-context', 'context', null],
   ['corridor', 1317905647, 'southwest-context', 'context', null],
   ['corridor', 205732486, 'southwest-background', 'context', null],
+  ['footprints', 205749104, 'northeast-context', 'context', null],
+  ['footprints', 205732545, 'southeast-context', 'context', null],
 ];
 const buildings = buildingSpecs.map(([sourceId, osmId, id, role, cornerNodes]) => {
   const { feature, path } = way(sourceId, osmId);
