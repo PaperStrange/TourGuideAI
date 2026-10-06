@@ -1,19 +1,27 @@
 {
   "sourceRepository": "https://github.com/PaperStrange/TourGuideAI",
   "sourceBranch": "chore-sow-delivery-plan",
-  "sourceCommit": "6a532aa9a2ef0e9d4366ff8159f497f0843b737e",
-  "browserChecksPassed": 97,
-  "unitTestsPassed": 22,
+  "sourceCommit": "a176cf38fbf1645fa8a5a0eb72a99d017ba705ab",
+  "browserChecksPassed": 130,
+  "unitTestsPassed": 33,
   "repositoryGatesPassed": 17,
-  "builtManifestSha256": "90f1e630c30f6094cff2ed17d6007658f156635f673c431ebf29bdefe9ec96e4",
-  "browserReportSha256": "e2e117bcfed6b5cd59e627273f634d4a109e48cba767d04a2a624d394b7d0da0",
+  "builtManifestSha256": "06bd6490029b8067c43a19dde5c957c467441fc829d5b00b91d2d21056938bef",
+  "browserReportSha256": "cb2ef0c473ca29d93f22bb01702f6beba1f3f6ccd95e69bc5ceba70e18c5343d",
   "modelSha256": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c",
-  "renderStudyManifestSha256": "70db2117cae68ecb751a0f860009ccbcf2a2424b60dd2d0060d4cdb92c4b490f",
+  "renderStudyManifestSha256": "e2274732cff1a12fde5df1074cdf2dee2d00673c56e9bd1311b8935697c401e1",
+  "lightingRigSha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+  "lightingResourcesSha256": "d8015c1d2d837ad27fb4c4851acaceb96fe9901b45f37b9a6d13331149c4822b",
+  "lightingModes": [
+    "day",
+    "night"
+  ],
+  "comparisonViewsPerMode": 3,
+  "nightPath": "?lighting=night",
   "comparisonPath": "comparison.html",
   "sharingFormats": [
     "web-link",
     "png-image",
     "print-pdf"
   ],
-  "reviewStatus": "Revised art ready for user review; automated checks do not establish realism or target-device performance."
+  "reviewStatus": "Daylight/night implementation ready for user review; automated checks do not establish realism or target-device performance."
 }
