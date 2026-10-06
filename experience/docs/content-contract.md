@@ -1,8 +1,10 @@
 # Kyoto content contract
 
-Owner: world-content. Current scope: the existing Shijō–Karasuma street slice,
-three useful encounters, and three unfinished south door interactions. No new
-venues or reconstructed interiors are claimed.
+Owner: world-content. The gameplay scope remains three useful encounters and
+three unfinished south door interactions in the Shijō–Karasuma slice. The visual
+context now supplies the surrounding intersection and building footprints for
+two approved treatments: live PBR and Blender Cycles renders from matching
+viewpoints. Context does not add venue encounters or reconstructed interiors.
 
 ## Independent application boundary
 
@@ -20,7 +22,7 @@ consume the same exports:
 | `SOURCES` | Stable source IDs, direct URLs, checked dates and reuse/provenance notes |
 | `CONTENT_PROVENANCE` | Local evidence URLs, attribution, translation and presentation boundaries |
 
-The two evidence files are shipped under `public/content-evidence/` and are
+The base fact evidence files are shipped under `public/content-evidence/` and are
 available without a network request to the original websites. `geometry.json`
 contains the selected source-derived geometry and classifications;
 `operator-facts.json` contains the checked operator facts, direct source URLs,
@@ -58,8 +60,10 @@ building; retain that distinction in asset metadata and review materials.
 slightly sloped source frontages. Use `yFrom`/`yTo` for the actual mapped slope
 when refining geometry. The source crossing lies at X 20.721; its mapped footway
 links Y −17.529 to 2.330. Those endpoints are sidewalk centrelines, not surveyed
-kerbs. Zebra width, stripe arrangement, road surface bounds, paving, street
-furniture and signal appearance/timing remain authored.
+kerbs. Zebra width, stripe arrangement, road surface bounds, paving appearance,
+furniture dimensions and signal appearance/timing remain authored. The expanded
+context supplies selected mapped furniture positions separately; it does not
+validate the original decorative placements.
 
 The main encounter markers are reading points in public space. The MUFG marker
 at `(24.7, −18.5)` is not a surveyed bank entrance or the bank's mapped centre.
@@ -68,10 +72,65 @@ doorways has a known tenant binding. Do not attach the bank, shirt shop or stati
 exit to a specific doorway because it happens to be nearby.
 
 The available evidence supports names, frontage relationships, reported floor
-counts and useful access/service facts. It does not provide a licensed facade
-photograph or observed material palette. Refinements should preserve that modern
-commercial identity without inventing a temple, traditional shop, advertising
-copy, floor plan, entrance sign or an observed roof profile.
+counts and useful access/service facts. Four separately licensed façade
+photographs now support visible building character; their dates, licenses and
+limits are recorded in `facade-references.json` and
+[`facade-references.md`](facade-references.md). The photographs do not establish
+surveyed dimensions, exact door assignments, current interiors or hidden roofs.
+Refinements must preserve the commercial buildings' actual character and the
+difference between a photographed feature and an authored approximation.
+
+## Expanded visual context — separate from gameplay
+
+`public/content-evidence/street-context.json` is a self-contained ODbL derivative
+database in the same frozen metre coordinates. It supplies five complete closed
+building rings, the two primary diagonal corners, selected road/sidewalk/crossing
+paths, two mapped hedges and one mapped tree. The three additional building
+identities are background context, not new encounters. Point positions are
+projected from tracked OSM snapshots, quantizing longitude/latitude to integer
+microdegrees with the existing projection helper. This is traced map geometry,
+not a survey or a new field verification.
+
+| Field | Consumer meaning |
+|---|---|
+| `projection`, `sources`, `licence` | Frozen datum, exact upstream input hashes and OSM/ODbL attribution; upstream paths are authoring citations only |
+| `renderBounds` | Authored display selection: X −95…70 m, Y −90…75 m |
+| `playableBounds` | Original `WORLD.bounds`: X 0…64 m, Y −25…15 m; descriptive copy, not a replacement runtime authority |
+| `buildings[].footprint` | Complete closed counterclockwise rings of `{x,y,nodeId}`; footprint height is not implied |
+| `buildings[].chamfer` | Source diagonal endpoints, midpoint, length, tangent and outward unit normal; no inferred column or cornice offsets |
+| `roads`, `sidewalks`, `crossings` | Source centreline paths clipped to display bounds; `widthMetres: null`; no navigable surface implied |
+| `hedges`, `trees`, `crossingControls` | Mapped locations or hedge lines; dimensions, species, tactile layout and signal-pole positions remain unknown |
+
+Every feature has `gameplay: false`. Source node IDs survive projection; an
+endpoint introduced by clipping has `nodeId: null`. The render selection does
+not establish kerbs, lane widths, ramp geometry, road/sidewalk elevations or
+safe access. Artists may construct display surfaces with recorded authored
+dimensions; these surfaces must not enter collision, movement or pointer target
+sets merely because they are drawn. Both visual treatments consume the same
+source geometry and preserve `WORLD`, ten `DOORS`, `TARGETS` and primary IDs.
+
+The source chamfers restore the intersection-facing planes omitted by the former
+rectangular shells. Mitsui's diagonal joins `(16.522069, 4.659507)` to roughly
+`(8.215394, 11.648768)`; Daiya's joins `(9.584626, −28.844569)` to
+`(17.526173, −19.969317)`. Read exact stored coordinates from the JSON rather
+than copying rounded prose. Full footprints extend beyond gameplay bounds:
+roughly Y 70.114 north and −83.982 south. Rendering those depths does not extend
+walking. The two Karasuma directional centrelines near X 0 and −10.315 establish
+road alignment, not an observed road-surface envelope.
+
+Regenerate from the complete repository with:
+
+```sh
+node experience/content-tools/build-street-context.mjs
+node experience/content-tools/build-street-context.mjs --check
+```
+
+This authoring command needs the tracked upstream OSM snapshots and frozen
+projection contract because the earlier frontage-only extract omitted the
+surrounding geometry. The normal Vite build, browser, and shipped JSON have no
+runtime dependency on those legacy paths. Generation has no network access,
+wall-clock timestamp, or mutable external data input. The output records input
+hashes, so the checked-in file can be compared byte-for-byte with regeneration.
 
 ## Interaction and itinerary meaning
 
@@ -104,7 +163,9 @@ choice and must not erase the encounter from a personal memory.
 ## Continuity and memories — confirmed travel-journey direction
 
 The user confirmed the broad travel journey and specifically requested day
-segments, small actions such as opening a door, and sharing the whole trip.
+segments, small actions such as opening a door, and sharing the whole trip;
+multiple sharing formats are now an approved direction. A format approval does
+not itself mean a hosted link, social posting or account synchronization exists.
 Personal notes are part of the current application integration. The schema below
 is a recommended implementation model; recording the direction does not claim
 that every proposed lifecycle, media or sharing feature is already implemented.
