@@ -1,0 +1,307 @@
+{
+  "verifiedAt": "2026-10-06T06:07:17.961831+00:00",
+  "site": "https://paperstrange.github.io/TourGuideAI/",
+  "pagesCommit": "afea7b97d8a3e349d1b454de27d59aeb1dd6725b",
+  "reviewBuild": {
+    "sourceRepository": "https://github.com/PaperStrange/TourGuideAI",
+    "sourceBranch": "chore-sow-delivery-plan",
+    "sourceCommit": "a176cf38fbf1645fa8a5a0eb72a99d017ba705ab",
+    "browserChecksPassed": 130,
+    "unitTestsPassed": 33,
+    "repositoryGatesPassed": 17,
+    "builtManifestSha256": "06bd6490029b8067c43a19dde5c957c467441fc829d5b00b91d2d21056938bef",
+    "browserReportSha256": "cb2ef0c473ca29d93f22bb01702f6beba1f3f6ccd95e69bc5ceba70e18c5343d",
+    "modelSha256": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c",
+    "renderStudyManifestSha256": "e2274732cff1a12fde5df1074cdf2dee2d00673c56e9bd1311b8935697c401e1",
+    "lightingRigSha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+    "lightingResourcesSha256": "d8015c1d2d837ad27fb4c4851acaceb96fe9901b45f37b9a6d13331149c4822b",
+    "lightingModes": [
+      "day",
+      "night"
+    ],
+    "comparisonViewsPerMode": 3,
+    "nightPath": "?lighting=night",
+    "comparisonPath": "comparison.html",
+    "sharingFormats": [
+      "web-link",
+      "png-image",
+      "print-pdf"
+    ],
+    "reviewStatus": "Daylight/night implementation ready for user review; automated checks do not establish realism or target-device performance."
+  },
+  "pagesBuild": {
+    "status": "built",
+    "commit": "afea7b97d8a3e349d1b454de27d59aeb1dd6725b",
+    "updatedAt": "2026-10-06T06:06:59Z"
+  },
+  "allMatch": true,
+  "fileCount": 38,
+  "files": [
+    {
+      "path": "/assets/comparison-CZhj6b0w.css",
+      "bytes": 4604,
+      "expectedSha256": "8982cd847f90ba03c875e2214c0caed1de510a21319ce34eab7867852a3d00d3",
+      "actualSha256": "8982cd847f90ba03c875e2214c0caed1de510a21319ce34eab7867852a3d00d3",
+      "matches": true
+    },
+    {
+      "path": "/assets/comparison-Dyjx-SDT.js",
+      "bytes": 17720,
+      "expectedSha256": "109d5cd22f2aa0392623573134dfc72b365f6030edafea9aa70830ec88c6208a",
+      "actualSha256": "109d5cd22f2aa0392623573134dfc72b365f6030edafea9aa70830ec88c6208a",
+      "matches": true
+    },
+    {
+      "path": "/assets/comparison-Dyjx-SDT.js.map",
+      "bytes": 47340,
+      "expectedSha256": "059f2d5b96beb1a540e112c9790afb528defcb73c47bfc64c9f04316589746ee",
+      "actualSha256": "059f2d5b96beb1a540e112c9790afb528defcb73c47bfc64c9f04316589746ee",
+      "matches": true
+    },
+    {
+      "path": "/assets/i18n-BC-gq2wQ.js",
+      "bytes": 21758,
+      "expectedSha256": "6793e52d061e983329d68b62a113679d100541abdba0b7d5640fcac0495d8ff5",
+      "actualSha256": "6793e52d061e983329d68b62a113679d100541abdba0b7d5640fcac0495d8ff5",
+      "matches": true
+    },
+    {
+      "path": "/assets/i18n-BC-gq2wQ.js.map",
+      "bytes": 30807,
+      "expectedSha256": "5049076fdb9d32b2d8df53b0898b02cc9e35a0826148aea75dbaa104da006fcc",
+      "actualSha256": "5049076fdb9d32b2d8df53b0898b02cc9e35a0826148aea75dbaa104da006fcc",
+      "matches": true
+    },
+    {
+      "path": "/assets/index-3s4CS1ZI.css",
+      "bytes": 18360,
+      "expectedSha256": "161aab9282b5e4ed7631b5eb824ac4328b94f064bfc8632bdde1ae81ac3699f4",
+      "actualSha256": "161aab9282b5e4ed7631b5eb824ac4328b94f064bfc8632bdde1ae81ac3699f4",
+      "matches": true
+    },
+    {
+      "path": "/assets/index-CQAnJAb-.js",
+      "bytes": 60547,
+      "expectedSha256": "06348ec0a37c6c6f9384090cbb2030fb5771c46f17ecc1e65cb51e2cdf09c369",
+      "actualSha256": "06348ec0a37c6c6f9384090cbb2030fb5771c46f17ecc1e65cb51e2cdf09c369",
+      "matches": true
+    },
+    {
+      "path": "/assets/index-CQAnJAb-.js.map",
+      "bytes": 181753,
+      "expectedSha256": "d5646e37fee223ed7d7a9d81fa74e6c21451eb9e01986d7b3fb3db5405a8116f",
+      "actualSha256": "d5646e37fee223ed7d7a9d81fa74e6c21451eb9e01986d7b3fb3db5405a8116f",
+      "matches": true
+    },
+    {
+      "path": "/assets/journey-ChhjGF2Z.js",
+      "bytes": 1463,
+      "expectedSha256": "e2b38ca056b4d246bacbbada21f85069cc6745d633a33b1678bfad8d64656654",
+      "actualSha256": "e2b38ca056b4d246bacbbada21f85069cc6745d633a33b1678bfad8d64656654",
+      "matches": true
+    },
+    {
+      "path": "/assets/journey-ChhjGF2Z.js.map",
+      "bytes": 3463,
+      "expectedSha256": "a3fcf957d33f1fb5b520f9eab054eb40096f9e3f847b998da5445bb2eedd798e",
+      "actualSha256": "a3fcf957d33f1fb5b520f9eab054eb40096f9e3f847b998da5445bb2eedd798e",
+      "matches": true
+    },
+    {
+      "path": "/assets/kyoto-sans-MmiTDp5F.woff",
+      "bytes": 164532,
+      "expectedSha256": "597f93d98341f5a98661bcae9abe3a13d7f2c4dc5012a436259b4fb5a5271e81",
+      "actualSha256": "597f93d98341f5a98661bcae9abe3a13d7f2c4dc5012a436259b4fb5a5271e81",
+      "matches": true
+    },
+    {
+      "path": "/assets/share-djLRApCT.js",
+      "bytes": 18317,
+      "expectedSha256": "912970b5c2c2ccf570974d91540207fbe55b7f6a209f44ca27207719888c6548",
+      "actualSha256": "912970b5c2c2ccf570974d91540207fbe55b7f6a209f44ca27207719888c6548",
+      "matches": true
+    },
+    {
+      "path": "/assets/share-djLRApCT.js.map",
+      "bytes": 36040,
+      "expectedSha256": "9822f4f5f965c15859f2c30a25409196dcba5a5d281257b94ce702565e0d5cf8",
+      "actualSha256": "9822f4f5f965c15859f2c30a25409196dcba5a5d281257b94ce702565e0d5cf8",
+      "matches": true
+    },
+    {
+      "path": "/assets/share-zf2EH_Ik.css",
+      "bytes": 2442,
+      "expectedSha256": "d60c4860fb0f04b16475759a62aabf7ba31ed7756aa66d110960ca73c2996c46",
+      "actualSha256": "d60c4860fb0f04b16475759a62aabf7ba31ed7756aa66d110960ca73c2996c46",
+      "matches": true
+    },
+    {
+      "path": "/assets/THIRD-PARTY-NOTICES-DGkxU5ov.js",
+      "bytes": 645523,
+      "expectedSha256": "1327d00beb1d6f9371bdeb1f4438ffb8b0ad2b692fb155b0d9a09274c599a5d5",
+      "actualSha256": "1327d00beb1d6f9371bdeb1f4438ffb8b0ad2b692fb155b0d9a09274c599a5d5",
+      "matches": true
+    },
+    {
+      "path": "/assets/THIRD-PARTY-NOTICES-DGkxU5ov.js.map",
+      "bytes": 3175036,
+      "expectedSha256": "d758f22332e89f4358b0eda2680eb8ae4b87128e25422e2e27547ac22d9d2b94",
+      "actualSha256": "d758f22332e89f4358b0eda2680eb8ae4b87128e25422e2e27547ac22d9d2b94",
+      "matches": true
+    },
+    {
+      "path": "/comparison.html",
+      "bytes": 1061,
+      "expectedSha256": "ef11bd393e2ec724908046cc59ab56dbcc89977b04874ae0cb44a5eae7376e75",
+      "actualSha256": "ef11bd393e2ec724908046cc59ab56dbcc89977b04874ae0cb44a5eae7376e75",
+      "matches": true
+    },
+    {
+      "path": "/content-evidence/facade-references.json",
+      "bytes": 5056,
+      "expectedSha256": "2633e98dd95ba7160bb4c54acde94a8ed4de5f1f7b335904abf79da41ab0d8e2",
+      "actualSha256": "2633e98dd95ba7160bb4c54acde94a8ed4de5f1f7b335904abf79da41ab0d8e2",
+      "matches": true
+    },
+    {
+      "path": "/content-evidence/geometry.json",
+      "bytes": 12083,
+      "expectedSha256": "e27f5fa137100ac4786c341cf13cc84acc6a94b71120178871320955984670b7",
+      "actualSha256": "e27f5fa137100ac4786c341cf13cc84acc6a94b71120178871320955984670b7",
+      "matches": true
+    },
+    {
+      "path": "/content-evidence/operator-facts.json",
+      "bytes": 4911,
+      "expectedSha256": "58d5ff4a3c6b722609a39e45e74df132313066feabb442afc575564d659afcc0",
+      "actualSha256": "58d5ff4a3c6b722609a39e45e74df132313066feabb442afc575564d659afcc0",
+      "matches": true
+    },
+    {
+      "path": "/content-evidence/street-context.json",
+      "bytes": 39636,
+      "expectedSha256": "f222a6d2346317d8fdaeb55bd81d743ddf565589dc9931a2abfb922907a81f37",
+      "actualSha256": "f222a6d2346317d8fdaeb55bd81d743ddf565589dc9931a2abfb922907a81f37",
+      "matches": true
+    },
+    {
+      "path": "/credits.html",
+      "bytes": 17559,
+      "expectedSha256": "91112afea8999500ceef7c172d3b719e5a4d32a5c3bd710e2cb69f804e24f582",
+      "actualSha256": "91112afea8999500ceef7c172d3b719e5a4d32a5c3bd710e2cb69f804e24f582",
+      "matches": true
+    },
+    {
+      "path": "/index.html",
+      "bytes": 1212,
+      "expectedSha256": "3fb4222fedcd1ae0c809997687916d88fd68e4d85a2730035cef862cf8f32ead",
+      "actualSha256": "3fb4222fedcd1ae0c809997687916d88fd68e4d85a2730035cef862cf8f32ead",
+      "matches": true
+    },
+    {
+      "path": "/journey.html",
+      "bytes": 573,
+      "expectedSha256": "d420ac8ddef5658089d50ddf01ae6c1ec048e2edc01bec269333b5af4024a8de",
+      "actualSha256": "d420ac8ddef5658089d50ddf01ae6c1ec048e2edc01bec269333b5af4024a8de",
+      "matches": true
+    },
+    {
+      "path": "/lighting/environments/day-1k.hdr",
+      "bytes": 1724368,
+      "expectedSha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+      "actualSha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+      "matches": true
+    },
+    {
+      "path": "/lighting/environments/night-1k.hdr",
+      "bytes": 1655510,
+      "expectedSha256": "a690048dcecabf5ed1ad773f7abdec7cce7b1fea4d89b17f054a18f3e0fa2919",
+      "actualSha256": "a690048dcecabf5ed1ad773f7abdec7cce7b1fea4d89b17f054a18f3e0fa2919",
+      "matches": true
+    },
+    {
+      "path": "/lighting/resources.json",
+      "bytes": 10825,
+      "expectedSha256": "d8015c1d2d837ad27fb4c4851acaceb96fe9901b45f37b9a6d13331149c4822b",
+      "actualSha256": "d8015c1d2d837ad27fb4c4851acaceb96fe9901b45f37b9a6d13331149c4822b",
+      "matches": true
+    },
+    {
+      "path": "/lighting/rig.json",
+      "bytes": 20983,
+      "expectedSha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+      "actualSha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+      "matches": true
+    },
+    {
+      "path": "/models/provenance.json",
+      "bytes": 10306,
+      "expectedSha256": "7354dd88601d9be7b7b13f0e2688721b893f9890c7865ff6decb645d59bfc467",
+      "actualSha256": "7354dd88601d9be7b7b13f0e2688721b893f9890c7865ff6decb645d59bfc467",
+      "matches": true
+    },
+    {
+      "path": "/models/shijo-block.glb",
+      "bytes": 14267180,
+      "expectedSha256": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c",
+      "actualSha256": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c",
+      "matches": true
+    },
+    {
+      "path": "/models/traveller.glb",
+      "bytes": 35556,
+      "expectedSha256": "ee5307da94f4d1994e5323a0d31d6f79a255c9f2f10459e0a0e6434fb051fdb1",
+      "actualSha256": "ee5307da94f4d1994e5323a0d31d6f79a255c9f2f10459e0a0e6434fb051fdb1",
+      "matches": true
+    },
+    {
+      "path": "/render-study/daiya-frontage-day.png",
+      "bytes": 476341,
+      "expectedSha256": "e51336a9e6e1484330009c413b642773e88603d920525a5d4d9b9dc1b4da1b55",
+      "actualSha256": "e51336a9e6e1484330009c413b642773e88603d920525a5d4d9b9dc1b4da1b55",
+      "matches": true
+    },
+    {
+      "path": "/render-study/daiya-frontage-night.png",
+      "bytes": 644937,
+      "expectedSha256": "7df4ed4f5966141278d27de376201105b7186bdc7eba8ee1f9fe82f3409d3260",
+      "actualSha256": "7df4ed4f5966141278d27de376201105b7186bdc7eba8ee1f9fe82f3409d3260",
+      "matches": true
+    },
+    {
+      "path": "/render-study/intersection-day.png",
+      "bytes": 804403,
+      "expectedSha256": "3d52543253d35c022c34ca83b60a663e7fb7f77af4f482a4bd178a06ef9d5cee",
+      "actualSha256": "3d52543253d35c022c34ca83b60a663e7fb7f77af4f482a4bd178a06ef9d5cee",
+      "matches": true
+    },
+    {
+      "path": "/render-study/intersection-night.png",
+      "bytes": 787535,
+      "expectedSha256": "7d2041f3a93207bd7265c251187ec5a7215d28d397befc3a77bae2284d275573",
+      "actualSha256": "7d2041f3a93207bd7265c251187ec5a7215d28d397befc3a77bae2284d275573",
+      "matches": true
+    },
+    {
+      "path": "/render-study/manifest.json",
+      "bytes": 10398,
+      "expectedSha256": "e2274732cff1a12fde5df1074cdf2dee2d00673c56e9bd1311b8935697c401e1",
+      "actualSha256": "e2274732cff1a12fde5df1074cdf2dee2d00673c56e9bd1311b8935697c401e1",
+      "matches": true
+    },
+    {
+      "path": "/render-study/mitsui-frontage-day.png",
+      "bytes": 644192,
+      "expectedSha256": "7064066ce31cc0ad082cb6a3e3179004071fc0d6723208830a6c313e5b4a3421",
+      "actualSha256": "7064066ce31cc0ad082cb6a3e3179004071fc0d6723208830a6c313e5b4a3421",
+      "matches": true
+    },
+    {
+      "path": "/render-study/mitsui-frontage-night.png",
+      "bytes": 686798,
+      "expectedSha256": "20f5dc14c1fe2145736effdf6180b5bf025be3e3a79a09094bdd91ee42b410bb",
+      "actualSha256": "20f5dc14c1fe2145736effdf6180b5bf025be3e3a79a09094bdd91ee42b410bb",
+      "matches": true
+    }
+  ]
+}

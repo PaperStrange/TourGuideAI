@@ -1,15 +1,23 @@
 # Review without a local server
 
-- [Play the guided Kyoto walk](https://paperstrange.github.io/TourGuideAI/)
+- [Play in daylight](https://paperstrange.github.io/TourGuideAI/?lighting=day)
+- [Play at night](https://paperstrange.github.io/TourGuideAI/?lighting=night)
 - [Compare the expanded street renderings](https://paperstrange.github.io/TourGuideAI/comparison.html)
 - [Published build identity](https://paperstrange.github.io/TourGuideAI/review-build.json)
 
-The 2026-10-06 revision is live from application commit `6a532aa` and Pages commit
-`28dc489`. Its 97 browser checks passed; all 31 hosted package files were fetched
-and verified against the exact tested hashes. [Delivery evidence](experience/evidence/detail-study-20261006/README.md)
+The day/night revision is live from application commit `a176cf3` and Pages
+commit `afea7b9`. Its 130 browser checks and 33 pure tests passed; all 38
+hosted package files match the tested hashes. [Delivery evidence](experience/evidence/day-night-20261006/README.md)
 records the checks and remaining limitations.
 
-The comparison offers the intersection and two closer frontage views. Switch
+Use **Daylight / Night** above the street to change its atmosphere at any time
+outside an open encounter. The selected mode is remembered separately from your
+journey. It does not change choices, notes, progress or actual venue opening hours.
+Warm local fixtures, shadows and licensed HDR environments change the lighting and
+reflections; the maps are not panorama backgrounds.
+
+The comparison offers the intersection and two closer frontage views in both
+lighting modes, for six matched live/Blender pairs. Switch
 between side-by-side and full-width display to inspect building construction,
 materials and light. A is live PBR; B contains Blender path-traced stills. They
 share scene geometry and camera poses. Offline stills do not demonstrate gameplay

@@ -1,0 +1,208 @@
+TAP version 13
+# Subtest: an explicit valid appearance overrides storage without changing the preference
+ok 1 - an explicit valid appearance overrides storage without changing the preference
+  ---
+  duration_ms: 1.334186
+  type: 'test'
+  ...
+# Subtest: malformed, absent and blocked appearance storage leaves a usable day default
+ok 2 - malformed, absent and blocked appearance storage leaves a usable day default
+  ---
+  duration_ms: 0.395336
+  type: 'test'
+  ...
+# Subtest: appearance writes are bounded to their own key and denied writes are recoverable
+ok 3 - appearance writes are bounded to their own key and denied writes are recoverable
+  ---
+  duration_ms: 13.415959
+  type: 'test'
+  ...
+# Subtest: appearance changes do not change a shared journey snapshot or its creation date
+ok 4 - appearance changes do not change a shared journey snapshot or its creation date
+  ---
+  duration_ms: 2.260347
+  type: 'test'
+  ...
+# Subtest: a complete six-image v2 lighting study is accepted without rewriting its camera or provenance
+ok 5 - a complete six-image v2 lighting study is accepted without rewriting its camera or provenance
+  ---
+  duration_ms: 12.372984
+  type: 'test'
+  ...
+# Subtest: partial, missing-mode, duplicate-image and mismatched-aspect studies cannot appear complete
+ok 6 - partial, missing-mode, duplicate-image and mismatched-aspect studies cannot appear complete
+  ---
+  duration_ms: 5.65833
+  type: 'test'
+  ...
+# Subtest: v2 lighting and denoising provenance requires valid identities and finite calibration
+ok 7 - v2 lighting and denoising provenance requires valid identities and finite calibration
+  ---
+  duration_ms: 0.313504
+  type: 'test'
+  ...
+# Subtest: legacy v1 remains explicitly day-only and cannot silently masquerade as six paired renders
+ok 8 - legacy v1 remains explicitly day-only and cannot silently masquerade as six paired renders
+  ---
+  duration_ms: 0.187968
+  type: 'test'
+  ...
+# Subtest: legacy import occurs only when the current save is absent
+ok 9 - legacy import occurs only when the current save is absent
+  ---
+  duration_ms: 10.623233
+  type: 'test'
+  ...
+# Subtest: malformed current saves cannot resurrect an older completed journey
+ok 10 - malformed current saves cannot resurrect an older completed journey
+  ---
+  duration_ms: 0.37833
+  type: 'test'
+  ...
+# Subtest: personal notes retain plain text, reject invalid targets/types and enforce the input limit
+ok 11 - personal notes retain plain text, reject invalid targets/types and enforce the input limit
+  ---
+  duration_ms: 0.336308
+  type: 'test'
+  ...
+# Subtest: the authored rig is valid, but malformed HDR identities and invalid intensities are rejected
+ok 12 - the authored rig is valid, but malformed HDR identities and invalid intensities are rejected
+  ---
+  duration_ms: 17.103741
+  type: 'test'
+  ...
+# Subtest: authored local shadow limits reject an extra shadow caster or a shadowed point light
+ok 13 - authored local shadow limits reject an extra shadow caster or a shadowed point light
+  ---
+  duration_ms: 0.814647
+  type: 'test'
+  ...
+# Subtest: environment URLs stay inside the packaged application even on a Pages subdirectory
+ok 14 - environment URLs stay inside the packaged application even on a Pages subdirectory
+  ---
+  duration_ms: 0.574902
+  type: 'test'
+  ...
+# Subtest: recaps default to no personal notes and do not expose or mutate game state
+ok 15 - recaps default to no personal notes and do not expose or mutate game state
+  ---
+  duration_ms: 16.977393
+  type: 'test'
+  ...
+# Subtest: only explicitly selected saved notes on real visited targets enter a recap
+ok 16 - only explicitly selected saved notes on real visited targets enter a recap
+  ---
+  duration_ms: 0.400444
+  type: 'test'
+  ...
+# Subtest: English and Chinese recap fragments round-trip without losing selected Unicode text
+ok 17 - English and Chinese recap fragments round-trip without losing selected Unicode text
+  ---
+  duration_ms: 7.560997
+  type: 'test'
+  ...
+# Subtest: share links retain a Pages subdirectory and discard author query/hash data
+ok 18 - share links retain a Pages subdirectory and discard author query/hash data
+  ---
+  duration_ms: 7.95385
+  type: 'test'
+  ...
+# Subtest: route choices and remembered stops remain semantically distinct in both languages
+ok 19 - route choices and remembered stops remain semantically distinct in both languages
+  ---
+  duration_ms: 1.233687
+  type: 'test'
+  ...
+# Subtest: untrusted recap notes remain escaped text in both language presentations
+ok 20 - untrusted recap notes remain escaped text in both language presentations
+  ---
+  duration_ms: 1.004208
+  type: 'test'
+  ...
+# Subtest: invalid structure, targets, choices, dates and note types cannot become partial recaps
+ok 21 - invalid structure, targets, choices, dates and note types cannot become partial recaps
+  ---
+  duration_ms: 33.808009
+  type: 'test'
+  ...
+# Subtest: unsupported, malformed and oversized links produce distinct bounded failures
+ok 22 - unsupported, malformed and oversized links produce distinct bounded failures
+  ---
+  duration_ms: 0.603715
+  type: 'test'
+  ...
+# Subtest: creation bounds selected text and repairs a split Unicode surrogate before encoding
+ok 23 - creation bounds selected text and repairs a split Unicode surrogate before encoding
+  ---
+  duration_ms: 5.848872
+  type: 'test'
+  ...
+# Subtest: camera-relative axes remain correct at cardinal and intermediate headings
+ok 24 - camera-relative axes remain correct at cardinal and intermediate headings
+  ---
+  duration_ms: 1.004978
+  type: 'test'
+  ...
+# Subtest: a rotated walk preserves its angle instead of snapping to a diagonal
+ok 25 - a rotated walk preserves its angle instead of snapping to a diagonal
+  ---
+  duration_ms: 1.164765
+  type: 'test'
+  ...
+# Subtest: legacy-v1-mid-journey retains position and journey meaning
+ok 26 - legacy-v1-mid-journey retains position and journey meaning
+  ---
+  duration_ms: 0.911129
+  type: 'test'
+  ...
+# Subtest: legacy-v1-completed retains position and journey meaning
+ok 27 - legacy-v1-completed retains position and journey meaning
+  ---
+  duration_ms: 0.975475
+  type: 'test'
+  ...
+# Subtest: legacy facing initializes the 3D actor heading consistently
+ok 28 - legacy facing initializes the 3D actor heading consistently
+  ---
+  duration_ms: 0.232244
+  type: 'test'
+  ...
+# Subtest: facade bounds stop continuing input, allowing only millimetre quantization
+ok 29 - facade bounds stop continuing input, allowing only millimetre quantization
+  ---
+  duration_ms: 38.611554
+  type: 'test'
+  ...
+# Subtest: automatic north-to-bank walk uses the mapped crossing without awarding progress
+ok 30 - automatic north-to-bank walk uses the mapped crossing without awarding progress
+  ---
+  duration_ms: 1.419963
+  type: 'test'
+  ...
+# Subtest: modal pause freezes navigation and simulation time; resume continues the route
+ok 31 - modal pause freezes navigation and simulation time; resume continues the route
+  ---
+  duration_ms: 0.230111
+  type: 'test'
+  ...
+# Subtest: fixed world-input replay survives a save checkpoint and responds to changed input
+ok 32 - fixed world-input replay survives a save checkpoint and responds to changed input
+  ---
+  duration_ms: 18.017904
+  type: 'test'
+  ...
+# Subtest: invalid restore data cannot manufacture a valid position or unsupported target
+ok 33 - invalid restore data cannot manufacture a valid position or unsupported target
+  ---
+  duration_ms: 0.358321
+  type: 'test'
+  ...
+1..33
+# tests 33
+# suites 0
+# pass 33
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 825.585064

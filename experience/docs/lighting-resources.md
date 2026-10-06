@@ -24,8 +24,8 @@ Both are 1024 × 512 equirectangular Radiance RGBE files, with header
 3.22 MiB. These are exact official 1K downloads, renamed locally; this project
 did not resample, crop, recolor or otherwise edit their pixels. Provider MD5 and
 byte counts match both downloaded files. SHA-256 values were computed locally.
-Runtime PMREM filtering is a separate rendering step, not a change to the
-distributed source HDR files.
+Runtime PMREM filtering and the offline shader/image processing described below
+are separate rendering steps, not changes to the distributed source HDR files.
 
 The official information and file APIs are linked separately because descriptive
 metadata and downloadable file records answer different questions:
@@ -73,8 +73,38 @@ renderer shadow settings remain necessary. Day and night should keep the same
 mapped building positions; changing the lighting mode does not alter opening
 hours, traffic signals, access, or simulated/real-visit status.
 
-The inspection previews were generated only in temporary workspace files using
-a simple Reinhard-to-sRGB view transform. They are not distributed assets,
+### Offline daylight correction and image processing
+
+The final lighting pass uses the source files through different rendering
+pipelines. Their unchanged download hashes describe the input files, not a
+promise that every rendered pixel uses unfiltered original radiance.
+
+| Stage | Actual processing and boundary |
+| --- | --- |
+| Browser environment | PMREM filters the local HDR for material lighting/reflections. The authored directional light and shadow maps establish the direct solar shadow; PMREM does not cast the captured sun's separate geometric shadow. |
+| Cycles daylight environment | `render_study.py` applies a component-wise `MINIMUM(1,1,1)` to the sampled HDR RGB before environment strength on the non-glossy illumination branch. `Is Glossy Ray` selects the original, uncapped HDR branch for glossy rays. Camera rays receive the separately authored background. The cap therefore affects non-glossy environment illumination, not merely a file's metadata or only rays flagged `Is Diffuse Ray`. |
+| Cycles night environment | This daylight-specific environment cap is absent. Rig exposure, environment strength and other renderer sampling controls still apply. |
+| Offline image denoising | Intel Open Image Denoise filters the traced scene-linear HDR beauty image using its CPU RT filter without guide passes. The filtered image then receives the Khronos PBR Neutral view transform and mode exposure. This changes the output still, not either source HDR. |
+
+The daylight cap removes the captured HDR sun as a competing dominant diffuse
+light, leaving the authored directional key responsible for the intended solar
+shadow. Independent comparison of the bounded correction preview found that
+the displaced second tree shadow was removed while the local tree shadow
+remained. This is an authored rendering approximation: the component-wise cap
+changes energy and can change highlight color. It is not a measured Kyoto
+lighting condition or physically identical transport between the two engines.
+
+The exact rig calibration is in [`rig.json`](../public/lighting/rig.json).
+The render [script](../art/render_study.py) and
+[manifest](../public/render-study/manifest.json) record the processing,
+source/rig hashes, denoiser identity and output hashes. Both original environment
+file SHA-256 values were rechecked after the correction and remain those in the
+table above. Final rendered-image and browser acceptance remain separate QA
+checks; inspecting the bounded preview does not certify a later artifact.
+
+The HDR inspection previews made during resource selection were generated only
+in temporary workspace files using a simple Reinhard-to-sRGB view transform.
+They are not distributed assets,
 alternate HDR files, or evidence of the final application's appearance.
 
 ## Kyoto-specific photographic guidance

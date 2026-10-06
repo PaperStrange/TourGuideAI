@@ -2,11 +2,12 @@
 
 Owner: QA. Current status, 2026-10-06: **the user accepts fluency and guidance
 for the Pages build they played; building/street realism is not accepted**.
-The expanded-street/comparison/sharing revision now passes **97/97 packaged-browser
-checks, 22/22 pure tests and 17/17 repository gates**. Its new visual quality and
-sharing experience still need user acceptance; the baseline's acceptance does not
-automatically extend to those changes. Representative-device coverage remains
-unestablished. The historical 2026-10-05 evidence remains unchanged below.
+The day/night and local-HDR revision passes **130/130 packaged-browser checks,
+33/33 pure tests and 17/17 repository gates**. It is published on Pages with all
+38 hosted files matching the tested package. The preceding expanded-street and
+sharing revision passed 97 browser checks. Neither automated result establishes
+user acceptance of revised art or representative-device performance.
+The historical 2026-10-05 evidence remains unchanged below.
 
 The focused revision must preserve the three sourced encounters while adding
 guided 3D navigation, more convincing executed art, and a small personal record
@@ -52,7 +53,63 @@ use remain separate reviews. Historical evidence stays immutable.
 | Recipient handoff | Copy a link and open it in a separate browser context without the author's storage/session. The recipient must read the same choices, selected personal content, sources and EN/ZH text without WebGL or journey-storage writes. Malformed, unsupported-version and oversized fragments must show a usable error rather than a partial or fabricated recap. Untrusted text must remain text. |
 | Multiple outputs | Verify PNG signature, decodable dimensions and visible recap content; verify the print reader's content and print layout separately from link delivery. Native-share payload and cancellation can be exercised with a browser-API stub, but the device share sheet requires a supported-device check. Do not claim that browser print-layout inspection establishes every OS PDF printer or that copying a link publishes server-side content. |
 
-## Current results · 2026-10-06
+## Day/night delivery · 2026-10-06
+
+The [frozen browser report](../evidence/day-night-20261006/browser/browser-result.json)
+records **130 passing checks, zero failures**, 14 scenarios and 37 screenshot hashes.
+One full night walkthrough ran **05:49:52–06:05:36 UTC** in Chromium 151 with
+SwiftShader against application `a176cf38fbf1645fa8a5a0eb72a99d017ba705ab`.
+The [33 pure tests](../evidence/day-night-20261006/unit-tests.tap) and
+[17 repository gates](../evidence/day-night-20261006/repo-gates.json) pass.
+The [asset preflight](../evidence/day-night-20261006/browser/asset-preflight.json)
+independently verified the unchanged models, shared rig, both HDR files and all
+six 1200×750 image hashes before the browser opened. Four driver-module hashes
+and the exact built-file inventory are recorded in the browser report.
+
+| Contract | Observed result |
+|---|---|
+| Real appearance change | Applied rig/HDR identities, active fixture and emissive state, and fixed-camera scene pixels distinguish day and night. EN/ZH and compact controls remain readable and preserve the world/camera. |
+| Preserve the walk | The actual crossing → Mitsui → MUFG route, collision/picking, modal pause/focus, choices, saved notes and unsaved draft behavior pass at night. Completing a delayed HDR load leaves an open card, its draft and keyboard focus intact. |
+| Separate preference | Appearance remains in its own local-storage key, outside journey saves and recaps. Graphics-loss reload retains the selected night preference; comparison selection is query-local and makes no journey/preference writes. |
+| Loading and resources | Stale requests cannot override the latest selection. Missing night HDRs show localized fallback/retry in both the game and comparison. Three warm-switch samples remain at 29 textures, 116 geometries and two cached environments, with no extra canvas. This bounded check is not a lifetime memory guarantee. |
+| Six matched views | Both modes at all three views use the exact still/model/HDR/rig hashes, camera matrices, aspect and mesh visibility. Mode/view selection survives comparison recovery; no-WebGL fallback retains the selected night still. Missing image and manifest fixtures remain usable and localized. |
+| Sharing and continuity | The completed night journey retains link, PNG and print/PDF-reader outputs, opt-in saved notes, excluded drafts, fresh-recipient isolation, legacy-save migration and reset behavior. Native-share APIs use stubs; OS sheets and actual delivery are not established. |
+
+The night bank route took 222.985 seconds over 79 observed frame increments on the
+software renderer. The final moving scene recorded 100 calls and 132,564 triangles,
+with 29 textures and 124 geometries; the different allocation state must not be
+confused with the fixed-camera warm-switch samples. These figures are tooling
+conditions, not a passed hardware fluency target. Agent art/product review of the
+actual opening, compact, walked-bank and six comparison frames found no new
+blocking readability or matching defect. The dark Daiya daylight still, dark glass,
+simplified vegetation, bright physical plaque and geometric shadow wedges remain
+visible limitations; human realism acceptance remains open.
+
+[Pages verification](../evidence/day-night-20261006/hosted-verification.json) confirms
+commit `afea7b97d8a3e349d1b454de27d59aeb1dd6725b` serves all 38 exact tested files.
+Package manifest SHA-256 is
+`06bd6490029b8067c43a19dde5c957c467441fc829d5b00b91d2d21056938bef`;
+browser report SHA-256 is
+`cb2ef0c473ca29d93f22bb01702f6beba1f3f6ccd95e69bc5ceba70e18c5343d`.
+The shared rig hash is
+`29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766`;
+the six-image study hash is
+`e2274732cff1a12fde5df1074cdf2dee2d00673c56e9bd1311b8935697c401e1`.
+Full source and asset identities are in the [delivery evidence](../evidence/day-night-20261006/README.md).
+
+The separate [GitHub CI run 37420468044](https://github.com/PaperStrange/TourGuideAI/actions/runs/37420468044)
+passed install, pure tests and build; its browser stage is still in progress at
+this handoff. It is not included in the complete local 130-pass claim above.
+No redundant full local run was made after the frozen candidate passed.
+
+The earlier five-check draft capture used rig `d5afc0ab…`; it is superseded by this
+complete result. The final Cycles daylight correction removes a competing HDR sun
+on non-glossy rays, and both modes use scene-linear OIDN denoising. Source HDRs
+remain unchanged; [resource documentation](lighting-resources.md) records licenses,
+processing and authored-versus-observed limits. No asset implies actual Kyoto
+weather, time, occupancy or venue opening hours.
+
+## Preceding expanded-street results · 2026-10-06
 
 The [final browser report](../evidence/detail-study-20261006/browser/browser-result.json)
 records **97 passing checks, zero failures**, 11 scenarios and 27 screenshot hashes.
@@ -147,9 +204,11 @@ crossing to `(21.091,-17.619)` at 241,316ms; it does not show a stuck route. Thi
 classified as a tooling deadline failure, not a completed CI pass or a desktop
 performance result. A workflow-only change raises the allowance to 600,000ms and
 the job cap to 30 minutes. [Rerun 37416980474](https://github.com/PaperStrange/TourGuideAI/actions/runs/37416980474)
-on workflow-only commit `2006b912ed3febf39b63a1902fd5c24db7e0749d` is **in progress**.
-Runtime, assets and assertions remain unchanged. The separate local 97-check result and its delivered package
-hash remain valid; they do not imply that CI has passed.
+on workflow-only commit `2006b912ed3febf39b63a1902fd5c24db7e0749d` **succeeded**,
+confirmed through the GitHub run status. Runtime, assets and assertions remained
+unchanged for that rerun. The local 97-check report retains its own package hash;
+no uninspected CI artifact hash is claimed. This success predates the new day/night
+revision, which still requires its own validation.
 
 The earlier focused sharing run passed 21/21 on a different preliminary package
 (manifest `6071e73c17d0b7abc4034e3a45d752caba645129c4e03b50a0bbef8726c78b2b`).

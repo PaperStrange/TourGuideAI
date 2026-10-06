@@ -1,0 +1,80 @@
+{
+  "checkedAt": "2026-10-06T05:49:45.125Z",
+  "manifestSha256": "e2274732cff1a12fde5df1074cdf2dee2d00673c56e9bd1311b8935697c401e1",
+  "rigSha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+  "modelSha256": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c",
+  "environment": [
+    {
+      "mode": "day",
+      "sha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+      "bytes": 1724368
+    },
+    {
+      "mode": "night",
+      "sha256": "a690048dcecabf5ed1ad773f7abdec7cce7b1fea4d89b17f054a18f3e0fa2919",
+      "bytes": 1655510
+    }
+  ],
+  "images": [
+    {
+      "view": "intersection",
+      "mode": "day",
+      "file": "intersection-day.png",
+      "sha256": "3d52543253d35c022c34ca83b60a663e7fb7f77af4f482a4bd178a06ef9d5cee",
+      "size": [
+        1200,
+        750
+      ]
+    },
+    {
+      "view": "intersection",
+      "mode": "night",
+      "file": "intersection-night.png",
+      "sha256": "7d2041f3a93207bd7265c251187ec5a7215d28d397befc3a77bae2284d275573",
+      "size": [
+        1200,
+        750
+      ]
+    },
+    {
+      "view": "mitsui-frontage",
+      "mode": "day",
+      "file": "mitsui-frontage-day.png",
+      "sha256": "7064066ce31cc0ad082cb6a3e3179004071fc0d6723208830a6c313e5b4a3421",
+      "size": [
+        1200,
+        750
+      ]
+    },
+    {
+      "view": "mitsui-frontage",
+      "mode": "night",
+      "file": "mitsui-frontage-night.png",
+      "sha256": "20f5dc14c1fe2145736effdf6180b5bf025be3e3a79a09094bdd91ee42b410bb",
+      "size": [
+        1200,
+        750
+      ]
+    },
+    {
+      "view": "daiya-frontage",
+      "mode": "day",
+      "file": "daiya-frontage-day.png",
+      "sha256": "e51336a9e6e1484330009c413b642773e88603d920525a5d4d9b9dc1b4da1b55",
+      "size": [
+        1200,
+        750
+      ]
+    },
+    {
+      "view": "daiya-frontage",
+      "mode": "night",
+      "file": "daiya-frontage-night.png",
+      "sha256": "7df4ed4f5966141278d27de376201105b7186bdc7eba8ee1f9fe82f3409d3260",
+      "size": [
+        1200,
+        750
+      ]
+    }
+  ]
+}

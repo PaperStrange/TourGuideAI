@@ -4,9 +4,9 @@
 
 The current Kyoto playable lives in the independent [`experience/`](experience/README.md)
 application: Blender-authored architecture, guided 3D walking, English/Chinese
-encounters, saved personal notes, and preview-based link/image/print sharing.
-An expanded street study compares realtime PBR and Blender path tracing at
-matching viewpoints.
+encounters, saved personal notes, daylight/night lighting, and preview-based
+link/image/print sharing. An expanded street study compares realtime PBR and
+Blender path tracing at three matching viewpoints in both lighting modes.
 
 ```sh
 cd experience

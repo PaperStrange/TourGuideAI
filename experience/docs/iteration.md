@@ -10,7 +10,7 @@ opening a door, and sharing the completed travel experience.
 ### Current follow-up · daylight and night, 2026-10-06
 
 The user requests selectable daylight/night atmosphere and online building-related
-resources for better lighting and shadows. The team is implementing two authored
+resources for better lighting and shadows. The team implemented two authored
 lighting modes in the playable walk and the existing live/Blender comparison.
 Local licensed urban HDR environments supply reflections and ambient light;
 directional light, warm night fixtures, shadows and selective material emission
@@ -25,8 +25,12 @@ come from a shared rig. They do not replace the sourced Kyoto geometry.
 4. Publish the exact tested package and push the source, attribution and evidence.
 
 Manual mode selection is independent of real time, weather, opening hours and the
-recap. The camera/encounter scope remains unchanged. This slice is in progress;
-user realism acceptance and representative-device performance remain separate.
+recap. The camera/encounter scope remains unchanged. Implementation and six matched
+images are committed in `a176cf38fbf1645fa8a5a0eb72a99d017ba705ab`. The frozen
+package passed 130 browser checks, 33 pure tests and 17 repository gates. It is
+published on the existing Pages site, with all 38 hosted files hash-verified.
+See the [day/night delivery evidence](../evidence/day-night-20261006/README.md). User realism acceptance and representative-device performance
+remain separate.
 
 ### Delivered expanded-street and sharing follow-up · 2026-10-06
 

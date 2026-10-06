@@ -14,14 +14,21 @@ npm run dev
 Requires Node.js 24+. Open `http://localhost:4185/`. Walk with WASD/arrow keys or a
 click on the ground. Drag to orbit, scroll to zoom, and use Reset view to recover
 framing. E opens a nearby encounter; Escape closes it. After a choice, optionally
-save a personal note. **Preview & share** offers a browser link, a PNG card and a
+save a personal note. **Daylight / Night** changes the street's lighting while
+keeping the camera and journey. Your explicit selection is remembered separately
+from the walk; resetting the journey keeps that preference. Night uses local warm
+lights and illuminated building features. The mode does not indicate real time or
+whether a venue is open.
+
+**Preview & share** offers a browser link, a PNG card and a
 print/PDF reader. Saved notes are individually opt-in and visible before sharing.
 The link carries the selected recap in its fragment; recipients can read and
 forward it. The reader runs without the game and does not alter their own journey.
 
 **Compare street renderings** opens matching views of the expanded street in
 realtime PBR and Blender path tracing. The offline images are labelled static;
-they are an art comparison, not a demonstration of realtime frame rate.
+they are an art comparison, not a demonstration of realtime frame rate. Both
+treatments offer daylight and night at the same three camera positions.
 
 ```sh
 npm test
@@ -44,6 +51,7 @@ build, keep the entire `dist/` directory, including `models/` and `assets/`.
 - [Asset direction and reproduction](docs/art-direction.md)
 - [Content and source boundaries](docs/content-contract.md)
 - [Building photographs, Street View research and facade references](docs/facade-references.md)
+- [Licensed lighting environments and online resource research](docs/lighting-resources.md)
 
 The scene uses original Blender-authored assets and local source evidence. Licensed
 building photographs guide facade details; [artwork credits](public/credits.html)

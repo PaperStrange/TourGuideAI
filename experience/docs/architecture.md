@@ -19,6 +19,7 @@ experience/
     models/         exported scene/player GLBs and asset provenance
     content-evidence/  local snapshots behind verified content
     render-study/   Blender stills with the exact shared camera manifest
+    lighting/       shared authored rig and licensed local HDR environments
   content-tools/    build-time extraction from frozen source geometry
   tests/            simulation, persistence, sharing and real-browser checks
   docs/             product direction, decisions, research and validation
@@ -67,9 +68,31 @@ reader's print action supports the browser's PDF destination. Whole-trip/day/pho
 sharing, short links, revocation and tailored social previews remain future work.
 The previous standalone HTML-download implementation is replaced by these paths.
 
+`appearance.js` reads an explicit valid `?lighting=day|night`, then the independent
+`tourguideai:appearance:v1` preference, then daylight. Only explicit toolbar
+selections save `{lighting}` to that key. Journey reset leaves the preference
+intact. Mode selection never becomes a choice, visit, personal note or recap field.
+
+`runtime/lighting.js` consumes `public/lighting/rig.json` in both the walk and
+comparison. Local HDRs are hash-checked and filtered into at most two cached PMREM
+environments. The shared rig supplies exposure, fog, directional/hemisphere light,
+night fixtures and material emission rules. Lighting changes invalidate rendering
+without resetting the camera or simulation. Each async selection cancels the
+previous request; late resources cannot replace a newer selection. Disposal
+releases the environment, cached textures, local lights and their shadow maps.
+
+An unavailable HDR retains the requested rig with basic environment lighting and
+a retry action. An unavailable rig preserves the preceding applied view and
+reports that the requested mode could not be applied. The interface distinguishes
+requested from applied mode. Finishing a load cannot close a subsequently opened
+encounter/share dialog or take keyboard focus from its input. Main scene controls
+remain inert while a native modal is open.
+
 `comparison.html` uses one manifest for both the realtime camera and the Blender
-render camera. It is an inspection study, with static offline frames explicitly
-labelled. The expanded visual-context dataset and bounds do not alter collision
+render camera. Each of the three views pairs a daylight and night Cycles image
+with its matching live rig mode. It is an inspection study, with static offline
+frames explicitly labelled. Its selected mode is query-local and does not write
+journey or appearance storage. The expanded visual-context dataset and bounds do not alter collision
 or walkability; the accepted guided-play controls remain independent.
 
 ## Delivery and quality
