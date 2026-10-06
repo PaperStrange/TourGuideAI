@@ -3,14 +3,15 @@
 
 Blender4.3.2: blender -b --python experience/art/build_scene.py --
 Canonical inputs are experience/src/content/kyoto.js; no legacy runtime dependency.
-Mapped spans and OSM floor counts are retained. Storey heights, facade treatment,
-roof/depth, materials, threshold detail, planting and light remain AUTHORED.
+Mapped footprints, corner planes and OSM floor counts are retained. Storey heights,
+facade/roof treatment, materials, threshold detail, planting form and light remain AUTHORED.
 Generated PBR textures contain original procedural surface/reflection cues, not
 photographs or surveyed facades. Runtime lighting must be evaluated independently.
 """
 import argparse, hashlib, json, math, random, struct, subprocess, sys, tempfile, time
 from pathlib import Path
 import bpy
+import numpy as np
 from mathutils import Vector
 
 START=time.perf_counter()
@@ -31,6 +32,9 @@ W=data['WORLD']; B=W['bounds']; road=W['roadSurface']; cross=W['crossing']
 # Tracked reference metadata is required to carry licensed visual-study attribution.
 reference_path=repo/'experience/public/content-evidence/facade-references.json'
 reference_data=json.loads(reference_path.read_text())
+# Tracked OSM context supplies visual geometry; gameplay bounds remain in WORLD.
+context_path=repo/'experience/public/content-evidence/street-context.json'
+context=json.loads(context_path.read_text())
 (out/'world.json').write_text(json.dumps(data,ensure_ascii=False,indent=2))
 def stage(message): print('[experience-art] '+message,flush=True)
 def sha(path): return hashlib.sha256(Path(path).read_bytes()).hexdigest()
@@ -40,40 +44,51 @@ bpy.ops.object.select_all(action='SELECT'); bpy.ops.object.delete(use_global=Fal
 scene=bpy.context.scene; scene.unit_settings.system='METRIC'
 materials={}; material_repeat={}; texture_images=[]
 
-def texture(name,kind,size=256):
-    """Small seamless original colour textures; no outside imagery or runtime nodes."""
+surface_maps={}
+def save_texture(name, rgb, noncolor=False):
+    size=rgb.shape[0]
     image=bpy.data.images.new(name,width=size,height=size,alpha=False)
-    rng=random.Random(81+len(texture_images)); pixels=[]
-    for iy in range(size):
-        for ix in range(size):
-            n=rng.uniform(-1,1)
-            if kind=='paving':
-                tilex=(ix//64); tiley=iy//64
-                tone=[.0,.017,-.01,.025][(tilex+3*tiley)%4]
-                edge=ix%64<1 or iy%64<1
-                v=.55+tone+n*.018-(.12 if edge else 0)
-                rgb=(v,v*.997,v*.975)
-            elif kind=='asphalt':
-                v=.26+n*.029
-                rgb=(v*.95,v,v*1.03)
-            elif kind=='stone':
-                joint=iy%64<1 or (ix+(64 if (iy//64)%2 else 0))%128<1
-                v=.72+n*.018-(.11 if joint else 0)
-                rgb=(v,v*.985,v*.957)
-            elif kind=='granite':
-                v=.46+n*.065
-                rgb=(v,v*.995,v*.98)
-            else:
-                # Authored soft sky/building reflection cues, not an observed reflection.
-                top=iy/(size-1)
-                band=.026*math.sin(ix/size*math.pi*8)+.014*math.sin(ix/size*math.pi*18)
-                v=.25+.17*top+band+n*.004
-                if kind=='glass_blind' and iy%18<2: v+=.08
-                rgb=(v*.84,v*.94,v)
-            pixels.extend((*rgb,1))
-    image.pixels=pixels
+    if noncolor: image.colorspace_settings.name='Non-Color'
+    rgba=np.ones((size,size,4),dtype=np.float32); rgba[:,:,:3]=rgb
+    image.pixels.foreach_set(rgba.ravel())
     image.filepath_raw=str(out/(name+'.png')); image.file_format='PNG'; image.save(); image.pack()
     texture_images.append(image)
+    return image
+
+def texture(name,kind,size=512):
+    """Original tileable material maps in metre-scaled UVs, never photo pixels."""
+    rng=np.random.default_rng(81+len(texture_images)); yy,xx=np.mgrid[:size,:size]
+    n=rng.normal(0,.32,(size,size)); nx=xx/size; ny=yy/size
+    broad=np.sin(nx*math.tau*3)*np.sin(ny*math.tau*2)
+    if kind=='paving':
+        joint=((xx%128)<2)|((yy%128)<2)
+        tile=((xx//128+3*(yy//128))%7)/7
+        h=n*.003-joint*.06; v=.43+tile*.055+n*.015-joint*.09
+        rough=.80+tile*.10+n*.045
+        tint=(1,.985,.956)
+    elif kind=='asphalt':
+        h=n*.022; v=.16+n*.020+broad*.010
+        rough=.82+n*.09+broad*.04; tint=(.97,1,1.035)
+    elif kind=='stone':
+        joint=((yy%128)<2)|(((xx+128*((yy//128)%2))%256)<2)
+        h=n*.002-joint*.025; v=.57+n*.012-joint*.065+broad*.006
+        rough=.55+n*.035; tint=(1,.982,.945)
+    elif kind=='granite':
+        h=n*.006; v=.32+n*.085; rough=.45+n*.10; tint=(1,1.005,1.015)
+    else:
+        h=n*.0001; v=.12+.085*ny+.018*np.sin(nx*math.tau*4)
+        if kind=='glass_blind': v=v+((yy%36)<3)*.052
+        rough=.16+n*.009; tint=(.82,.94,1)
+    rgb=np.stack([v*c for c in tint],axis=-1).clip(.005,.95)
+    image=save_texture(name,rgb)
+    if kind in ('paving','asphalt','stone','granite'):
+        dx=(np.roll(h,-1,1)-np.roll(h,1,1))*3
+        dy=(np.roll(h,-1,0)-np.roll(h,1,0))*3
+        normal=np.stack([-dx,-dy,np.ones_like(h)],axis=-1)
+        normal/=np.linalg.norm(normal,axis=-1,keepdims=True)
+        normal=save_texture(name+'-normal',normal*.5+.5,True)
+        rough=save_texture(name+'-roughness',np.repeat(rough.clip(.15,.98)[:,:,None],3,axis=2),True)
+        surface_maps[image.name]=(normal,rough)
     return image
 
 tex_paving=texture('paving-colour','paving')
@@ -91,6 +106,14 @@ def material(name,color,rough=.6,metal=0,image=None,repeat=1):
     if image:
         node=mat.node_tree.nodes.new('ShaderNodeTexImage'); node.image=image
         mat.node_tree.links.new(node.outputs['Color'],bsdf.inputs['Base Color'])
+        if image.name in surface_maps:
+            normal_image,rough_image=surface_maps[image.name]
+            nm=mat.node_tree.nodes.new('ShaderNodeTexImage'); nm.image=normal_image
+            norm=mat.node_tree.nodes.new('ShaderNodeNormalMap'); norm.inputs['Strength'].default_value=.65
+            mat.node_tree.links.new(nm.outputs['Color'],norm.inputs['Color'])
+            mat.node_tree.links.new(norm.outputs['Normal'],bsdf.inputs['Normal'])
+            rough_node=mat.node_tree.nodes.new('ShaderNodeTexImage'); rough_node.image=rough_image
+            mat.node_tree.links.new(rough_node.outputs['Color'],bsdf.inputs['Roughness'])
     mat.diffuse_color=(*color,1); materials[name]=mat; material_repeat[name]=repeat
     return mat
 
@@ -111,18 +134,18 @@ for name,col,rough,metal in [
  ('trousers',(.055,.08,.105),.88,0),('skin',(.58,.35,.22),.82,0),
  ('hat',(.51,.42,.29),.86,0),('shoe',(.085,.065,.048),.9,0),
  ('mufg-red',(.37,.025,.035),.6,0),('off-white',(.83,.84,.82),.58,0),
- ('bronze-frame',(.085,.073,.061),.33,.55),('canopy',(.71,.70,.655),.64,.08),
+ ('bronze-frame',(.085,.073,.061),.33,.55),('canopy',(.53,.525,.50),.60,.02),
  ('lime-accent',(.48,.60,.06),.65,0),
 ]: material(name,col,rough,metal)
-material('glazing',(.27,.31,.35),.18,.32,tex_glass,3)
-material('glazing-blinds',(.27,.31,.35),.25,.2,tex_blind,3)
+material('glazing',(.12,.15,.18),.17,.12,tex_glass,4)
+material('glazing-blinds',(.12,.15,.18),.22,.10,tex_blind,4)
 
 roots={}; static=[]; actor_parts=[]; meshes={}; active_group='Street'
 def empty(name,parent=None,loc=(0,0,0)):
     obj=bpy.data.objects.new(name,None); bpy.context.collection.objects.link(obj); obj.location=loc
     if parent: obj.parent=parent
     return obj
-for name in ('Street','NorthBuilding','SouthBuilding'):
+for name in ('Street','Context','NorthBuilding','SouthBuilding'):
     roots[name]=empty(name)
 for side in ('North','South'):
     for part in ('Shell','Ground','Upper','Roof','Canopy','CanopyPosts'):
@@ -159,16 +182,28 @@ def box(name,loc,size,mat,bevel=.015,parent=None):
         add_uv(obj.data,mat); meshes[key]=obj.data
     return remember(obj,parent)
 
+primitive_meshes={}
 def cylinder(name,loc,radius,depth,mat,parent=None,top=None,vertices=10):
-    bpy.ops.mesh.primitive_cone_add(vertices=vertices,radius1=radius,radius2=radius if top is None else top,depth=depth,location=loc)
-    obj=bpy.context.object; obj.name=name; obj.data.materials.append(materials[mat])
-    for p in obj.data.polygons: p.use_smooth=True
+    ratio=1 if top is None else top/radius
+    key=('cone',vertices,round(ratio,7),mat)
+    if key not in primitive_meshes:
+        bpy.ops.mesh.primitive_cone_add(vertices=vertices,radius1=1,radius2=ratio,depth=1)
+        template=bpy.context.object; mesh=template.data; mesh.materials.append(materials[mat])
+        for p in mesh.polygons: p.use_smooth=True
+        primitive_meshes[key]=mesh; bpy.data.objects.remove(template,do_unlink=True)
+    obj=bpy.data.objects.new(name,primitive_meshes[key]); bpy.context.collection.objects.link(obj)
+    obj.location=loc; obj.scale=(radius,radius,depth)
     return remember(obj,parent)
 
 def oval(name,loc,scale,mat,parent=None,subdivision=2):
-    bpy.ops.mesh.primitive_ico_sphere_add(subdivisions=subdivision,radius=1,location=loc)
-    obj=bpy.context.object; obj.name=name; obj.scale=scale; obj.data.materials.append(materials[mat])
-    for p in obj.data.polygons: p.use_smooth=True
+    key=('ico',subdivision,mat)
+    if key not in primitive_meshes:
+        bpy.ops.mesh.primitive_ico_sphere_add(subdivisions=subdivision,radius=1)
+        template=bpy.context.object; mesh=template.data; mesh.materials.append(materials[mat])
+        for p in mesh.polygons: p.use_smooth=True
+        primitive_meshes[key]=mesh; bpy.data.objects.remove(template,do_unlink=True)
+    obj=bpy.data.objects.new(name,primitive_meshes[key]); bpy.context.collection.objects.link(obj)
+    obj.location=loc; obj.scale=scale
     return remember(obj,parent)
 
 font_path=Path('/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc')
@@ -183,174 +218,296 @@ def text(name,label,loc,size,facing='south',mat='off-white'):
     bpy.ops.object.convert(target='MESH'); obj['factual_name']=label
     return remember(obj)
 
+# Ground/context geometry is source-positioned; all display widths are authored.
+from mathutils.geometry import tessellate_polygon
+
+def slab(name,points,z,depth,mat):
+    pts=[Vector((p['x'],p['y'],z)) if isinstance(p,dict) else Vector((p[0],p[1],z)) for p in points]
+    if (pts[0]-pts[-1]).length<.001: pts=pts[:-1]
+    n=len(pts); verts=[tuple(p) for p in pts]+[(p.x,p.y,z-depth) for p in pts]
+    triangles=tessellate_polygon([pts]); faces=[]
+    for tri in triangles:
+        ids=[v if isinstance(v,int) else min(range(n),key=lambda i:(pts[i]-v).length) for v in tri]
+        faces.append(tuple(ids)); faces.append(tuple(i+n for i in reversed(ids)))
+    faces.extend((i,(i+1)%n,(i+1)%n+n,i+n) for i in range(n))
+    mesh=bpy.data.meshes.new(name); mesh.from_pydata(verts,[],faces); mesh.update(); mesh.materials.append(materials[mat]); add_uv(mesh,mat)
+    obj=bpy.data.objects.new(name,mesh); bpy.context.collection.objects.link(obj); return remember(obj)
+
+def segment(name,a,b,width,z,depth,mat,bevel=0):
+    a=Vector((a['x'],a['y'])) if isinstance(a,dict) else Vector(a)
+    b=Vector((b['x'],b['y'])) if isinstance(b,dict) else Vector(b)
+    d=b-a; mid=(a+b)/2
+    obj=box(name,(mid.x,mid.y,z-depth/2),(d.length,width,depth),mat,bevel)
+    obj.rotation_euler.z=math.atan2(d.y,d.x); return obj
+
+def ribbon(name,path,width,z,depth,mat):
+    for a,b in zip(path,path[1:]): segment(name,a,b,width,z,depth,mat)
+
+R=context['renderBounds']; rx0=R['minX']; rx1=R['maxX']; ry0=R['minY']; ry1=R['maxY']
 xmid=(B['minX']+B['maxX'])/2; span=B['maxX']-B['minX']
-# No raised presentation plinth: world extends as pavement/road at human scale.
-box('Street substrate',(xmid,(B['minY']+B['maxY'])/2,-.14),(span,B['maxY']-B['minY'],.28),'concrete',0)
-walkables=[]
-obj=box('WalkableRoad',(xmid,(road['northY']+road['southY'])/2,.025),(span,road['northY']-road['southY'],.05),'asphalt',0)
+active_group='Context'
+box('Expanded source context ground',((rx0+rx1)/2,(ry0+ry1)/2,-.13),(rx1-rx0,ry1-ry0,.18),'pavement',0)
+# Explicitly authored horizon continuation avoids a hard stage edge; no new building claims.
+box('Authored distant neutral ground',(15,-5,-.25),(560,420,.18),'concrete',0)
+last=next(r for r in context['roads'] if r['osmId']==465069436)['path'][0]
+segment('Authored distant Shijo continuation',(last['x'],last['y']),(260,last['y']),18.3,.038,.08,'asphalt')
+# Road centreline buffers are expressly authored display surfaces, not surveyed kerbs.
+for feature in context['roads']:
+    width=9.7 if feature.get('oneway') else 18.3
+    ribbon('Context road '+str(feature['osmId']),feature['path'],width,.04,.08,'asphalt')
+for feature in context['sidewalks']:
+    ribbon('Mapped sidewalk '+str(feature['osmId']),feature['path'],3.3,.165,.16,'pavement')
+# The accepted playable surface remains the same, over the display-only context.
+active_group='Street'; walkables=[]
+east_start=cross['x']
+obj=box('WalkableRoad',((east_start+B['maxX'])/2,(road['northY']+road['southY'])/2,.025),(B['maxX']-east_start,road['northY']-road['southY'],.05),'asphalt',0)
+obj['walkable']=True; walkables.append(obj)
+obj=box('WalkableWesternIntersection',(cross['x']/2,(W['northFacadeY']+W['southFacadeY'])/2,.025),(cross['x'],W['northFacadeY']-W['southFacadeY'],.05),'asphalt',0)
 obj['walkable']=True; walkables.append(obj)
 for side in ('north','south'):
     a,b=sorted((W[side+'FacadeY'],road[side+'Y']))
-    obj=box('Walkable'+side.title()+'Sidewalk',(xmid,(a+b)/2,.085),(span,b-a,.17),'pavement',.012)
+    start=cross['x']
+    obj=box('Walkable'+side.title()+'Sidewalk',((start+B['maxX'])/2,(a+b)/2,.085),(B['maxX']-start,b-a,.17),'pavement',.012)
     obj['walkable']=True; walkables.append(obj)
-    box(side+' curb',(xmid,road[side+'Y'],.12),(span,.16,.2),'curb',.01)
-    box(side+' tactile strip',(xmid,road[side+'Y']+(.50 if side=='north' else -.50),.181),(span,.28,.015),'tactile',0)
-    for i in range(20):
-        x=B['minX']+i*3.2+1.6
-        box('Curb expansion joint',(x,road[side+'Y']-.085 if side=='north' else road[side+'Y']+.085,.12),(.012,.012,.15),'mortar',0)
+    # Stop visual curb at the crossing-corner transition rather than bridging Karasuma.
+    start=cross['x']-1.2
+    box(side+' curb',((start+B['maxX'])/2,road[side+'Y'],.12),(B['maxX']-start,.16,.2),'curb',.01)
+    # Surface relief distinguishes tactile paving from a solid yellow painted strip.
+    ty=road[side+'Y']+(.50 if side=='north' else -.50)
+    box(side+' tactile approach',((cross['x']+B['maxX'])/2,ty,.178),(B['maxX']-cross['x'],.28,.014),'tactile',0)
+    for k in range(4):
+        box('Tactile directional rib',((cross['x']+B['maxX'])/2,ty-.105+k*.07,.188),(B['maxX']-cross['x'],.024,.012),'tactile',.004)
+    for x in (cross['x']-1,cross['x']+1):
+        box('Crossing warning pad',(x,ty,.19),(.55,.55,.028),'tactile',.004)
+        for i in range(4):
+            for j in range(4): cylinder('Tactile warning dot',(x-.19+i*.125,ty-.19+j*.125,.211),.019,.012,'tactile',vertices=6)
+    for x in range(25,64,7):
+        gy=road[side+'Y']+(.16 if side=='north' else -.16)
+        box('Drainage inset',(x,gy,.176),(.55,.19,.019),'dark-metal',.008)
+        for j in range(7): box('Drain grate slots',(x-.22+j*.075,gy,.189),(.023,.16,.009),'mortar',0)
 y=road['southY']+.45
 while y<road['northY']-.25:
-    box('Zebra stripe',(cross['x'],y,.057),(cross['width'],.68,.012),'paint',0); y+=1.32
+    box('Mapped crossing authored paint',(cross['x'],y,.057),(cross['width'],.68,.012),'paint',0); y+=1.32
 for x in range(3,int(B['maxX'])-1,6):
-    if abs(x-cross['x'])>cross['width']+1:
-        box('Authored lane marking',(x,W['roadCenterY'],.057),(2.6,.11,.01),'paint',0)
+    if abs(x-cross['x'])>cross['width']+1: box('Authored lane marking',(x,W['roadCenterY'],.057),(2.6,.11,.01),'paint',0)
+# Clip supplemental authored surface patches to EXISTING play bounds. No new navigation.
+def clip_to_play(points):
+    for axis,bound,sign in ((0,B['minX'],1),(0,B['maxX'],-1),(1,B['minY'],1),(1,B['maxY'],-1)):
+        result=[]
+        for a,b in zip(points,points[1:]+points[:1]):
+            ia=(a[axis]-bound)*sign>=0; ib=(b[axis]-bound)*sign>=0
+            if ia: result.append(a)
+            if ia!=ib:
+                t=(bound-a[axis])/(b[axis]-a[axis]); result.append(tuple(a[j]+t*(b[j]-a[j]) for j in range(2)))
+        points=result
+        if not points: break
+    return points
+for category in ('sidewalks',):
+    for feature in context[category]:
+        # East straight surfaces are supplied by the original encounter meshes.
+        if feature['osmId'] in (465066447,465069406,465069436): continue
+        width=(9.7 if feature.get('oneway') else 18.3) if category=='roads' else 3.3
+        z=.05 if category=='roads' else .17
+        for a,b in zip(feature['path'],feature['path'][1:]):
+            a=Vector((a['x'],a['y'])); b=Vector((b['x'],b['y'])); d=(b-a).normalized(); n=Vector((-d.y,d.x))*width/2
+            poly=clip_to_play([tuple(a-n),tuple(b-n),tuple(b+n),tuple(a+n)])
+            area=abs(sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(poly,poly[1:]+poly[:1])))/2 if poly else 0
+            if len(poly)>2 and area>1e-5:
+                obj=slab('WalkableContext'+('Road' if category=='roads' else 'Sidewalk'),poly,z,.08,'asphalt' if category=='roads' else 'pavement'); obj['walkable']=True; walkables.append(obj)
 
-# Photograph-informed character, not traced dimensions or inferred entrance bindings.
-def prism(name, polygon, depth, mat, loc=(0,0,0), rotation=0):
-    n=len(polygon)
-    verts=[(x,-depth/2,z) for x,z in polygon]+[(x,depth/2,z) for x,z in polygon]
-    faces=[tuple(range(n)),tuple(range(2*n-1,n-1,-1))]
-    faces.extend((i,i+n,(i+1)%n+n,(i+1)%n) for i in range(n))
-    mesh=bpy.data.meshes.new(name); mesh.from_pydata(verts,[],faces); mesh.update(); mesh.materials.append(materials[mat]); add_uv(mesh,mat)
-    obj=bpy.data.objects.new(name,mesh); bpy.context.collection.objects.link(obj); obj.location=loc; obj.rotation_euler.z=rotation
-    return remember(obj)
+# Other mapped crossing centrelines receive simple authored zebra paint.
+active_group='Context'
+for feature in context['crossings']:
+    if str(feature.get('osmId'))=='465069430': continue
+    path=feature['path']; a=Vector((path[0]['x'],path[0]['y'])); b=Vector((path[-1]['x'],path[-1]['y'])); d=b-a
+    if d.length<2: continue
+    u=d.normalized(); angle=math.atan2(d.y,d.x)
+    for t in np.arange(.4,d.length-.3,1.3):
+        p=a+u*t; obj=box('Context crossing stripe',(p.x,p.y,.046),(.66,2.65,.01),'paint',0); obj.rotation_euler.z=angle
+for x,y in ((-4,-8),(27,-9),(-36,-7),(0,28),(0,-47)):
+    cylinder('Authored flush access cover',(x,y,.06),.35,.013,'dark-metal',vertices=24)
+    for j in range(5): box('Cover shallow slot',(x-.20+j*.10,y,.071),(.027,.40,.007),'metal',0)
 
-def arch_detail(name,center,front,spring,radius,rotation=0):
+# Local facade coordinates: x along a COUNTERCLOCKWISE footprint edge, +y inward.
+def place_local(start_index,a,b):
+    a=Vector((a['x'],a['y'])); d=Vector((b['x'],b['y']))-a; angle=math.atan2(d.y,d.x)
+    ca,sa=math.cos(angle),math.sin(angle)
+    for obj in static[start_index:]:
+        p=obj.location.copy(); obj.location.x=a.x+ca*p.x-sa*p.y; obj.location.y=a.y+sa*p.x+ca*p.y
+        obj.rotation_euler.z+=angle
+
+def arch_detail(name,center,front,spring,radius):
+    # An opaque recess establishes depth without fabricating an enterable interior.
     polygon=[(-radius,.22),(radius,.22)]+[(radius*math.cos(i*math.pi/24),spring+radius*math.sin(i*math.pi/24)) for i in range(25)]
-    prism(name+' dark arched recess',polygon,.075,'glass-dark',(center,front,0),rotation)
-    for i in range(24):
-        a=i*math.pi/24+.002; b=(i+1)*math.pi/24-.002
-        poly=[((radius+.28)*math.cos(a),spring+(radius+.28)*math.sin(a)),((radius+.28)*math.cos(b),spring+(radius+.28)*math.sin(b)),(radius*math.cos(b),spring+radius*math.sin(b)),(radius*math.cos(a),spring+radius*math.sin(a))]
-        prism(name+' stone voussoir',poly,.28,'pale-stone',(center,front-.10,0),rotation)
+    n=len(polygon); verts=[(center+x,front,z) for x,z in polygon]
+    mesh=bpy.data.meshes.new(name); mesh.from_pydata(verts,[],[tuple(range(n))]); mesh.update(); mesh.materials.append(materials['glass-dark']); add_uv(mesh,'glass-dark')
+    obj=bpy.data.objects.new(name,mesh); bpy.context.collection.objects.link(obj); remember(obj)
+    for i in range(16):
+        a=(i+.5)*math.pi/16
+        obj=box('Arch stone voussoir',(center+(radius+.14)*math.cos(a),front-.13,spring+(radius+.14)*math.sin(a)),(.25,.34,.34),'pale-stone',.008)
+        obj.rotation_euler.y=math.pi/2-a
+    for sign in (-1,1): box('Arch stone jamb',(center+sign*(radius+.14),front-.10,(spring+.22)/2),(.28,.34,spring-.22),'pale-stone',.012)
 
-def classical_column(x,y,base,height,radius=.23):
-    cylinder('Classical column shaft',(x,y,base+height/2),radius,height,'pale-stone',top=radius*.89,vertices=16)
-    for z,r,h in ((base-.11,radius*1.35,.18),(base+.05,radius*1.17,.10),(base+height-.04,radius*1.12,.12),(base+height+.11,radius*1.42,.18)):
-        cylinder('Column base or capital moulding',(x,y,z),r,h,'pale-stone',vertices=16)
-    box('Capital abacus',(x,y,base+height+.23),(radius*3.2,radius*3.2,.12),'pale-stone',.02)
+def column(x,y,base,height,radius):
+    cylinder('Classical tapered shaft',(x,y,base+height/2),radius,height,'pale-stone',top=radius*.85,vertices=20)
+    for z,r,h in ((base-.17,radius*1.55,.16),(base-.055,radius*1.30,.12),(base+.07,radius*1.12,.10),(base+height-.04,radius*1.12,.12),(base+height+.15,radius*1.45,.24)):
+        cylinder('Column moulding',(x,y,z),r,h,'pale-stone',vertices=20)
+    box('Capital abacus',(x,y,base+height+.35),(radius*3.2,radius*3.2,.16),'pale-stone',.025)
+    for a in range(8):
+        theta=a*math.pi/4
+        obj=box('Simplified capital leaf',(x+radius*1.1*math.cos(theta),y+radius*1.1*math.sin(theta),base+height+.12),(.12,.11,.28),'pale-stone',.022); obj.rotation_euler.z=theta
+
+def canopy(length,title):
+    global active_group
+    active_group=title+'Canopy'
+    # Single smooth curved sheet per bay, structural ribs run across rather than roof stripes.
+    bay_count=max(1,round(length/3.6)); bay=length/bay_count; width=2.05
+    for i in range(bay_count):
+        verts=[]
+        for x in (i*bay,(i+1)*bay-.016):
+            for j in range(13):
+                t=j/12; verts.append((x,-.12-t*width,3.36+.27*math.sin(t*math.pi)))
+        faces=[(j,j+1,14+j,13+j) for j in range(12)]
+        mesh=bpy.data.meshes.new('Canopy curved panel'); mesh.from_pydata(verts,[],faces); mesh.update(); mesh.materials.append(materials['canopy']); add_uv(mesh,'canopy')
+        for p in mesh.polygons: p.use_smooth=True
+        obj=bpy.data.objects.new('Canopy curved panel',mesh); bpy.context.collection.objects.link(obj); remember(obj)
+        for j in range(6):
+            t=(j+.5)/6; z=3.32+.27*math.sin(t*math.pi)
+            obj=box('Canopy cross rib',(i*bay,-.12-t*width,z),(.047,width/6+.018,.085),'metal',.005)
+            obj.rotation_euler.x=-.27*math.pi/width*math.cos(t*math.pi)
+        box('Recessed soffit lamp',((i+.5)*bay,-1.12,3.31),(.46,.18,.045),'off-white',.015)
+    box('Canopy outer gutter',(length/2,-2.18,3.31),(length,.12,.16),'canopy',.012)
+    box('Canopy wall flashing',(length/2,-.07,3.38),(length,.13,.14),'metal',.008)
+    active_group=title+'CanopyPosts'
+    for x in np.arange(.45,length-.3,5.6):
+        box('Pale ribbed canopy support',(x,-2.07,1.73),(.12,.14,3.12),'canopy',.012)
+        for k in (-1,0,1): box('Support flute',(x+k*.032,-2.148,1.76),(.010,.009,2.98),'metal',.002)
+        box('Support shoe',(x,-2.07,.24),(.20,.23,.16),'metal',.015)
+
+def facade(length,height,levels,title,style,street_face=False,karasuma=False):
+    global active_group
+    ground=3.9 if style=='mitsui' else 4.7
+    storey=(height-ground)/(levels-1); count=max(1,round(length/(2.75 if style=='mitsui' else 2.0))); bay=length/count
+    active_group=title+'Upper' if title else 'Context'
+    if style=='mitsui':
+        for floor in range(1,levels):
+            base=ground+(floor-1)*storey; gh=1.62; bottom=.72; ww=bay*.43
+            box('Continuous lower stone course',(length/2,0,base+bottom/2),(length,.46,bottom),'pale-stone',.008)
+            top=storey-bottom-gh
+            box('Continuous upper stone course',(length/2,0,base+storey-top/2),(length,.46,top),'pale-stone',.008)
+            for i in range(count):
+                x=(i+.5)*bay; z=base+bottom+gh/2
+                box('Deep window reveal',(x,.26,z),(ww+.11,.22,gh+.10),'bronze-frame',.007)
+                box('Recessed glazing',(x,.075,z),(ww,.018,gh),'glazing-blinds' if (i+floor)%8==0 else 'glazing',0)
+                box('Window sash',(x,.027,z),(.026,.045,gh),'bronze-frame',.002)
+                box('Projecting stone sill',(x,-.08,base+bottom-.025),(ww+.22,.46,.095),'granite-fascia',.006)
+            for j in range(count+1):
+                pw=(bay-ww)/2 if j in(0,count) else bay-ww; x=j*bay+(pw/2 if j==0 else -pw/2 if j==count else 0)
+                box('Solid pale stone pier',(x,0,base+bottom+gh/2),(pw,.46,gh),'pale-stone',.009)
+    else:
+        for i in range(count):
+            x=(i+.5)*bay; clear=bay-.42
+            box('Tall inset glazing',(x,.20,(ground+height)/2),(clear,.025,height-ground),'glazing-blinds' if i%6==2 else 'glazing',0)
+            for floor in range(1,levels):
+                z=ground+floor*storey
+                box('Quiet floor transom',(x,.11,z),(clear,.09,.065),'dark-metal',.002)
+            box('Tall slender window mullion',(x,.10,(ground+height)/2),(.038,.12,height-ground),'metal',.002)
+        for j in range(count+1):
+            pw=.21 if j in(0,count) else .42; x=j*bay+(pw/2 if j==0 else -pw/2 if j==count else 0)
+            box('Vertical pale stone rib',(x,-.02,(ground+height)/2),(pw,.68,height-ground),'pale-stone',.013)
+        for z in (ground,ground+storey*3.6,height): box('Expressed facade belt',(length/2,-.05,z),(length,.69,.29),'pale-stone',.015)
+    active_group=title+'Ground' if title else 'Context'
+    if style=='daiya' and karasuma:
+        bays=max(1,round(length/4.5)); step=length/bays
+        box('Podium stone backing',(length/2,.34,ground/2),(length,.30,ground),'pale-stone',.01)
+        for i in range(bays): arch_detail('Karasuma arched glazing',(i+.5)*step,.01,2.20,min(1.44,step*.36))
+    else:
+        bays=max(1,round(length/3.05)); step=length/bays
+        for i in range(bays):
+            x=(i+.5)*step
+            box('Ground recessed glazing',(x,.23,1.62),(step-.11,.035,2.80),'glazing',0)
+            box('Ground frame',(i*step+.03,0,1.62),(.065,.26,2.88),'bronze-frame' if style=='mitsui' else 'metal',.006)
+            box('Ground window sill',(x,-.025,.26),(step,.32,.16),'granite-fascia',.009)
+            if i%3==0:
+                box('Interior visual depth cue',(x,.54,2.86),(step-.35,.1,.08),'off-white',0)
+        box('Ground transom',(length/2,-.015,3.05),(length,.27,.32),'bronze-frame' if style=='mitsui' else 'metal',.008)
+        box('Textured stone fascia',(length/2,.005,(3.23+ground)/2),(length,.50,ground-3.23),'granite-fascia' if style=='mitsui' else 'pale-stone',.012)
+        if street_face:
+            box('Restrained institution colour',(length/2,.01,2.68 if style=='mitsui' else 1.26),(length,.03,.045 if style=='mitsui' else .021),'lime-accent' if style=='mitsui' else 'mufg-red',0)
+            label='京都三井ビルディング' if style=='mitsui' else '三菱UFJ銀行'
+            x=length*.50
+            box('Building name plaque',(x,-.17,2.96),(min(length-.4,7.6),.12,.46),'bronze-frame' if style=='mitsui' else 'off-white',.009)
+            text('Plain sourced name',label,(x,-.235,2.96),.31,mat='off-white' if style=='mitsui' else 'dark-metal')
+    box('Stone base plinth',(length/2,-.015,.22),(length,.44,.28),'granite-fascia',.01)
+    if title and street_face: canopy(length,title)
+
+def corner(length,height,title,style):
+    global active_group
+    active_group=title+'Upper'; center=length/2; flank=(length-6.4)/2
+    for x in (flank/2,length-flank/2): box('Chamfer solid side pier',(x,.16,height/2),(flank,.65,height),'pale-stone',.018)
+    box('Chamfer upper field',(center,.20,(height+15.0)/2),(6.4,.48,height-15.0),'pale-stone' if style=='mitsui' else 'glass-dark',.01)
+    if style=='daiya':
+        for x in (center-1.6,center,center+1.6): box('Chamfer high glazing mullion',(x,-.06,(height+15.0)/2),(.055,.10,height-15.0),'metal',.005)
+    base=4.8; h=7.9 if style=='mitsui' else 8.6
+    box('Classical feature recessed backing',(center,4.10 if style=='mitsui' else .85,9.8),(6.4,.3,10.0),'pale-stone',.014)
+    if style=='mitsui':
+        # Cylindrical classical fragment is centred on the DIAGONAL mapped face.
+        for i in range(16):
+            a=math.pi+(i+.5)*math.pi/16; r=2.82
+            obj=box('Curved classical stone drum',(center+r*math.cos(a),3.45+r*math.sin(a),8.0),(.61,.22,7.2),'pale-stone',.01); obj.rotation_euler.z=a+math.pi/2
+        for degree in (209,247,293,331):
+            a=math.radians(degree); column(center+3.20*math.cos(a),3.45+3.20*math.sin(a),base,h,.30)
+        for i in range(18):
+            a=math.pi+(i+.5)*math.pi/18
+            for dz,r,w in ((.0,3.46,.27),(.25,3.63,.23),(.48,3.50,.16)):
+                obj=box('Curved stepped classical cornice',(center+r*math.cos(a),3.45+r*math.sin(a),base+h+.55+dz),(.67,w,.18),'pale-stone',.012); obj.rotation_euler.z=a+math.pi/2
+        text('Corner building sign','MITSUI BUILDING',(center,-.08,height-1.8),.44,mat='dark-metal')
+    else:
+        for dx in (-2.05,2.05): column(center+dx,-.46,base,h,.34)
+        for dz,width,depth in ((.0,6.2,.75),(.24,6.7,.94),(.49,6.35,.86)):
+            box('Classical entablature',(center,-.32,base+h+.55+dz),(width,depth,.20),'pale-stone',.015)
+        for x in np.arange(center-2.8,center+2.81,.36): box('Cornice dentil',(x,-.78,base+h+.48),(.16,.20,.14),'pale-stone',.008)
+    active_group=title+'Ground'
+    box('Chamfer podium',(center,.35,2.45),(length,.5,4.7),'pale-stone',.018)
+    if style=='daiya': arch_detail('Corner arched recess',center,-.035,2.22,1.45)
+    else:
+        for x in (center-1.7,center,center+1.7): box('Classical podium recessed panel',(x,.01,2.05),(1.28,.06,2.80),'granite-fascia',.008)
+    for x in (center-3.3,center+3.3):
+        box('Wall lantern housing',(x,-.39,2.66),(.22,.20,.50),'bronze-frame',.016)
+        box('Wall lantern glass',(x,-.50,2.66),(.15,.035,.35),'off-white',.004)
+    box('Corner foot course',(center,-.12,.32),(length,.78,.35),'granite-fascia',.014)
 
 heights={}
-for side in ('north','south'):
-    title=side.title(); building=W['buildings'][side]; x0=building['minX']; x1=building['maxX']; front=W[side+'FacadeY']
-    direction=1 if side=='north' else -1
-    levels=building['levels']; ground_height=3.9 if side=='north' else 4.7; storey=3.05
-    height=ground_height+(levels-1)*storey; heights[side]=height
-    depth=min(8.7,B['maxY']-front-.15) if side=='north' else max(3.3,front-B['minY']-.15)
-    corner_width=6.3 if side=='north' else 3.7
-    active_group=title+'Shell'
-    obj=box(title+' back wall',((x0+x1)/2,front+direction*depth,height/2),(x1-x0,.22,height),'pale-stone',.025)
-    obj['osmId']=building['osmId']; obj['heightValueKind']='authored'
-    for x in (x0,x1): box(title+' return wall',(x,front+direction*depth/2,height/2),(.20,depth,height),'pale-stone',.025)
-
-    active_group=title+'Upper'
-    # The blank corner field is part of the observed massing; proportions remain authored.
-    box(title+' corner field',(x0+corner_width/2,front+.22*direction,(height+ground_height)/2),(corner_width,.40,height-ground_height),'pale-stone' if side=='north' else 'glass-dark',.015)
-    start=x0+corner_width; count=max(1,round((x1-start)/(2.6 if side=='north' else 2.0))); bay=(x1-start)/count
-    if side=='north':
-        # Mitsui: individual punched windows, substantial solid piers, panel joints.
-        window_width=bay*.49
-        for floor in range(1,levels):
-            base=ground_height+(floor-1)*storey; glass_h=1.88; bottom=.60
-            for i in range(count):
-                x=start+(i+.5)*bay; z=base+bottom+glass_h/2
-                box('Mitsui inset dark bronze surround',(x,front+.16,z),(window_width+.13,.15,glass_h+.12),'bronze-frame',.009)
-                box('Mitsui punched glazing',(x,front+.06,z),(window_width,.028,glass_h),'glazing-blinds' if (floor+i)%7==0 else 'glazing',.003)
-                box('Mitsui slender central sash',(x,front+.025,z),(.024,.04,glass_h),'bronze-frame',.002)
-                box('Mitsui recessed sill',(x,front-.035,base+bottom-.02),(window_width+.18,.36,.075),'granite-fascia',.008)
-            pier=bay-window_width-.15
-            for j in range(count+1):
-                width=pier/2 if j in (0,count) else pier
-                x=start+j*bay+(pier/4 if j==0 else -pier/4 if j==count else 0)
-                box('Mitsui solid stone pier',(x,front,base+storey/2),(width,.48,storey),'pale-stone',.012)
-            box('Mitsui lower stone spandrel',((start+x1)/2,front,base+bottom/2),(x1-start,.48,bottom),'pale-stone',.01)
-            top=storey-bottom-glass_h
-            box('Mitsui upper stone spandrel',((start+x1)/2,front,base+storey-top/2),(x1-start,.48,top),'pale-stone',.01)
-    else:
-        # Daiya Shijo face: vertical pale piers and tall glazing, not the Karasuma arch array.
-        for i in range(count):
-            x=start+(i+.5)*bay; clear=bay-.46
-            box('Daiya tall dark glazing',(x,front-.19,(ground_height+height)/2),(clear,.075,height-ground_height),'glazing',.008)
-            for floor in range(1,levels):
-                z=ground_height+floor*storey
-                box('Daiya quiet floor transom',(x,front-.08,z),(clear,.08,.045),'dark-metal',.004)
-            box('Daiya inset vertical mullion',(x,front-.07,(ground_height+height)/2),(.035,.10,height-ground_height),'metal',.004)
-        for j in range(count+1):
-            x=start+j*bay; width=.25 if j in (0,count) else .46
-            if j==0: x+=.125
-            elif j==count: x-=.125
-            box('Daiya vertical pale rib',(x,front+.06,(ground_height+height)/2),(width,.58,height-ground_height),'pale-stone',.016)
-        for z in (ground_height,ground_height+storey*3.6,height):
-            box('Daiya expressed horizontal belt',((x0+x1)/2,front+.08,z),(x1-x0,.62,.27),'pale-stone',.015)
-        for x in (x0+.22,x0+corner_width-.22):
-            box('Daiya corner frame',(x,front+.07,(ground_height+height)/2),(.44,.60,height-ground_height),'pale-stone',.015)
-
-    active_group=title+'Ground'
-    ground_bays=max(1,round((x1-x0)/3.1)); ground_bay=(x1-x0)/ground_bays
-    for i in range(ground_bays):
-        x=x0+(i+.5)*ground_bay
-        box(title+' deep ground glazing',(x,front+.20*direction,1.60),(ground_bay-.12,.09,2.78),'glazing' if side=='south' else 'glass-dark',.006)
-        box(title+' full height ground frame',(x0+i*ground_bay+.035,front+.03*direction,1.64),(.070,.24,2.91),'metal' if side=='south' else 'bronze-frame',.006)
-    box(title+' dark transom',((x0+x1)/2,front,3.03),(x1-x0,.20,.34),'bronze-frame' if side=='north' else 'metal',.01)
-    fascia_h=ground_height-3.23
-    box(title+' stone fascia',((x0+x1)/2,front+.015*direction,3.23+fascia_h/2),(x1-x0,.45,fascia_h),'granite-fascia' if side=='north' else 'pale-stone',.018)
-    box(title+' stone plinth',((x0+x1)/2,front-.025*direction,.23),(x1-x0,.42,.32),'granite-fascia',.015)
-    # Color accents are original geometry; no logo textures or tenant-to-door mapping.
-    box(title+' restrained glazing accent',((start+x1)/2,front-.075*direction,2.64 if side=='north' else 1.26),(x1-start,.025,.055 if side=='north' else .023),'lime-accent' if side=='north' else 'mufg-red',0)
-    plaque_width=min(x1-start,9.4)
-    plaque_x=(start+x1)/2
-    box(title+' readable name plaque',(plaque_x,front-.145*direction,3.00),(plaque_width,.12,.46),'bronze-frame' if side=='north' else 'off-white',.012)
-    text(title+' sourced building name',building['nameJa'],(plaque_x,front-.215*direction,3.00),.32,'south' if side=='north' else 'north',mat='off-white' if side=='north' else 'dark-metal')
-    if side=='south':
-        # Plain sourced institution name, positioned as an authored frontage landmark.
-        text('MUFG plain bank name','三菱UFJ銀行',(plaque_x,front+.22,2.39),.30,'north',mat='off-white')
-
-    # Classical corner remnant is simplified within the west frontage, not a measured corner reconstruction.
-    active_group=title+'Upper'
-    center=x0+corner_width/2
-    column_base=4.95; column_h=5.9 if side=='north' else 6.6
-    box(title+' classical corner backing',(center,front-.05*direction,column_base+column_h/2),(corner_width-.70,.28,column_h+.5),'pale-stone',.015)
-    if side=='north':
-        for angle in (218,247,293,322):
-            a=math.radians(angle)
-            classical_column(center+2.25*math.cos(a),front+1.65+2.25*math.sin(a),column_base,column_h,.23)
-        for i in range(14):
-            a=math.radians(207+(i+.5)*126/14)
-            for dz,rad,width in ((0,2.60,.27),(.22,2.73,.19),(.41,2.65,.12)):
-                obj=box('Mitsui curved cornice',(center+rad*math.cos(a),front+1.65+rad*math.sin(a),column_base+column_h+.35+dz),(.49,width,.16),'pale-stone',.012)
-                obj.rotation_euler.z=a+math.pi/2
-        text('Mitsui upper source sign','MITSUI BUILDING',(center,front-.235,height-1.25),.30,mat='dark-metal')
-    else:
-        for dx in (-.95,.95): classical_column(center+dx,front+.43,column_base,column_h,.25)
-        for z,width,h in ((column_base+column_h+.34,corner_width,.20),(column_base+column_h+.56,corner_width+.24,.19),(column_base+column_h+.74,corner_width,.15)):
-            box('Daiya classical entablature',(center,front+.30,z),(width,.82,h),'pale-stone',.018)
-        # One bounded arch is on the WEST RETURN (Karasuma), never copied across Shijo.
-        active_group=title+'Ground'
-        arch_detail('Daiya west return',x0-.16,front-depth/2,2.05,min(1.43,depth*.3),rotation=-math.pi/2)
-
-    # The pale covered sidewalk is independently occludable from its supports.
-    active_group=title+'Canopy'
-    width=2.20; canopy_z=3.32
-    segments=12
-    for i in range(segments):
-        t=(i+.5)/segments
-        y=front-direction*(.12+t*width)
-        z=canopy_z+.20*math.sin(t*math.pi)
-        obj=box(title+' shallow curved canopy',((x0+x1)/2,y,z),(x1-x0,width/segments+.012,.055),'canopy',.006)
-        obj.rotation_euler.x=direction*.20*math.pi/width*math.cos(t*math.pi)
-    for y in (front-direction*.12,front-direction*(width+.12)):
-        box('Canopy edge rail',((x0+x1)/2,y,canopy_z),(x1-x0,.085,.14),'canopy',.012)
-    active_group=title+'CanopyPosts'
-    for i in range(max(2,round((x1-x0)/6.0))):
-        x=x0+.65+i*6.0
-        if x>x1-.35: continue
-        y=front-direction*(width+.12)
-        box('Slim pale canopy support',(x,y,1.72),(.075,.095,3.10),'canopy',.008)
-        box('Canopy post shoe',(x,y,.23),(.14,.17,.14),'metal',.009)
-
-    active_group=title+'Roof'
-    box(title+' flat roof',((x0+x1)/2,front+direction*depth/2,height+.045),(x1-x0+.2,depth+.22,.17),'concrete',.025)
-    for x in (x0,x1): box('Roof parapet',(x,front+direction*depth/2,height+.34),(.15,depth,.50),'pale-stone',.012)
-    box('Rear parapet',((x0+x1)/2,front+direction*depth,height+.34),(x1-x0,.15,.50),'pale-stone',.012)
+for building in context['buildings']:
+    stage('Building mapped footprint '+building['id'])
+    primary=building['role']=='primary'; style=building['id'] if primary else 'mitsui'
+    title=('North' if style=='mitsui' else 'South') if primary else ''
+    context_group='ContextBuilding_'+str(building['osmId'])
+    if not primary: roots[context_group]=empty(context_group,roots['Context'])
+    levels=building.get('levels') or 6; ground=3.9 if style=='mitsui' else 4.7; height=ground+(levels-1)*3.05
+    heights[building['id']]=height
+    ring=building['footprint']; active_group=title+'Roof' if primary else context_group
+    roof=slab(building['id']+' mapped footprint roof',ring,height+.08,.25,'concrete'); roof['osmId']=building['osmId']
+    for a,b in zip(ring,ring[1:]):
+        dx=b['x']-a['x']; dy=b['y']-a['y']; length=math.hypot(dx,dy)
+        if length<.35: continue
+        is_corner=primary and {a.get('nodeId'),b.get('nodeId')}=={building['chamfer']['from']['nodeId'],building['chamfer']['to']['nodeId']}
+        is_shijo=primary and ((style=='mitsui' and abs((a['y']+b['y'])/2-4.7)<.2 and length>20) or (style=='daiya' and abs((a['y']+b['y'])/2+19.86)<.3 and length>10))
+        is_return=primary and max(a['x'],b['x'])<10.1 and abs(dy)>5
+        index=len(static)
+        if is_corner: corner(length,height,title,style)
+        elif is_shijo or is_return: facade(length,height,levels,title,style,is_shijo,is_return)
+        else:
+            active_group=title+'Shell' if primary else context_group
+            box('Mapped contextual wall',(length/2,.13,height/2),(length,.26,height),'pale-stone',0)
+            if length>5:
+                count=max(1,int(length/3.6))
+                for floor in range(1,levels):
+                    for i in range(count):
+                        box('Authored background window',((i+.5)*length/count,-.022,ground+(floor-.5)*3.05),(1.45,.035,1.74),'glazing',0)
+        active_group=title+'Roof' if primary else context_group
+        box('Footprint parapet',(length/2,.06,height+.36),(length,.26,.55),'pale-stone',.009)
+        place_local(index,a,b)
 
 for door in data['DOORS']:
     side=door['side']; direction=1 if side=='north' else -1; active_group=side.title()+'Ground'
@@ -361,17 +518,46 @@ for door in data['DOORS']:
     for dx in (-.51,.51): box('Door jamb',(door['x']+dx,y,1.47),(.045,.18,2.56),'metal',.005)
     box('Door handle',(door['x']+.30,y-direction*.08,1.30),(.025,.05,.46),'metal',.006)
 
+active_group='Context'
+# Mapped planting, with authored species, branching, soil-bed dimensions and season.
+for feature in context['hedges']:
+    path=feature['path']; ribbon('Mapped hedge stone bed',path,.95,.45,.34,'granite-fascia')
+    ribbon('Mapped hedge soil',path,.74,.47,.08,'soil')
+    for a,b in zip(path,path[1:]):
+        a=Vector((a['x'],a['y'])); b=Vector((b['x'],b['y'])); d=b-a
+        for t in np.arange(.2,d.length,.48):
+            p=a+d.normalized()*t
+            for side in (-1,1):
+                oval('Hedge small-leaf silhouette',(p.x+side*.19,p.y+random.uniform(-.15,.15),.79+random.uniform(-.08,.10)),(.33,.27,.35),random.choice(['leaf-dark','leaf-mid','leaf-light']),subdivision=1)
+
+def branch(a,b,radius):
+    a,b=Vector(a),Vector(b); obj=cylinder('Authored tree branch',(a+b)/2,radius,(b-a).length,'bark',top=radius*.55,vertices=8)
+    obj.rotation_euler=(b-a).to_track_quat('Z','Y').to_euler()
+for tree in context['trees']:
+    x,y=tree['x'],tree['y']; cylinder('Mapped tree soil ring',(x,y,.20),.66,.08,'soil',vertices=24)
+    branch((x,y,.18),(x+.15,y,3.9),.14)
+    for i in range(11):
+        a=i*2.4; start=(x+.06,y,1.8+i*.17); end=(x+math.cos(a)*(1.1+(i%3)*.21),y+math.sin(a)*(1.1+(i%3)*.21),3.7+(i%4)*.39)
+        branch(start,end,.043)
+        for j in range(3):
+            p=Vector(end)+Vector((random.uniform(-.50,.50),random.uniform(-.45,.45),random.uniform(-.05,.35)))
+            branch(Vector(end)*.65+Vector(start)*.35,p,.013)
+            # Disconnected thin leaf clusters reveal the branch network and cast broken shadows.
+            for k in range(3):
+                q=p+Vector((random.uniform(-.30,.30),random.uniform(-.30,.30),random.uniform(-.20,.20)))
+                oval('Sparse authored foliage',q,(.30,.22,.17),random.choice(['leaf-dark','leaf-mid','leaf-light']),subdivision=1)
+# Static signal housing is an authored representation, not a real-time signal state.
+for feature in context['crossings']:
+    for point in (feature['path'][0],feature['path'][-1]):
+        x,y=point['x']+.60,point['y']+.42
+        cylinder('Crossing signal post',(x,y,2.55),.067,4.8,'dark-metal',vertices=10)
+        box('Pedestrian signal housing',(x,y,3.27),(.30,.22,.48),'dark-metal',.025)
+        for dz in (-.11,.11): cylinder('Unlit pedestrian signal lens',(x,y-.13,3.27+dz),.066,.018,'glass-dark',vertices=12).rotation_euler.x=math.pi/2
+        box('Signal support arm',(x+.48,y,4.82),(1.1,.085,.085),'dark-metal',.008)
+        box('Static vehicle signal housing',(x+.88,y,4.69),(.84,.22,.28),'dark-metal',.035)
+        for dx in (-.26,0,.26):
+            obj=cylinder('Unlit traffic signal lens',(x+.88+dx,y-.13,4.69),.093,.02,'glass-dark',vertices=16); obj.rotation_euler.x=math.pi/2
 active_group='Street'
-def tree(x,y):
-    cylinder('Street tree planter',(x,y,.40),.47,.45,'planter',top=.53,vertices=12)
-    cylinder('Soil',(x,y,.64),.48,.035,'soil',vertices=12)
-    cylinder('Tapered trunk',(x,y,2.16),.09,3.05,'bark',top=.045,vertices=9)
-    # Irregular lobed crown: fewer meshes/polygons than the old spherical clumps.
-    for i in range(6):
-        angle=i*2.4; radius=.38 if i<5 else .20
-        oval('Foliage crown',(x+math.sin(angle)*radius,y+math.cos(angle)*radius,3.7+(i%3)*.30),(.66,.59,.79),['leaf-dark','leaf-mid','leaf-light'][i%3],subdivision=2)
-for x,y in ((W['buildings']['north']['minX']-3.1,W['northFacadeY']-1.15),(W['buildings']['north']['maxX']+1.8,W['northFacadeY']-1.15),(W['buildings']['south']['maxX']+4,W['southFacadeY']+1.15)):
-    tree(x,y)
 for x,y in ((cross['x']-1.9,road['northY']+.70),(cross['x']+1.9,road['southY']-.70)):
     cylinder('Street light pole',(x,y,2.56),.045,4.8,'dark-metal',vertices=10)
     box('Light head',(x,y,4.97),(.42,.28,.085),'metal',.012)
@@ -418,7 +604,7 @@ scene.view_settings.view_transform='Khronos PBR Neutral'; scene.view_settings.lo
 scene.view_settings.exposure=0; scene.render.film_transparent=False
 bpy.context.view_layer.update()
 
-metrics={'status':'source','blenderVersion':bpy.app.version_string,'scriptSHA256':sha(__file__),'canonicalSource':'experience/src/content/kyoto.js','canonicalSHA256':sha(source),'source':{'buildings':W['buildings'],'crossing':cross,'roadSurface':road},'authored':['storey heights '+str(heights),'flat frontage Y approximation','building depths/backfaces/roofs','photo-informed facade character; authored bay dimensions, corner simplification, materials and reflection cues','door treatments/thresholds without tenant bindings','furniture and planting','traveller and pose','camera and lighting'],'axes':'Blender(east,north,height) -> glTF(east,height,-north), metres','materials':'core opaque PBR; original embedded colour textures; glass reflection cues authored, runtime PMREM adds environmental reflection; no baked light or transparency','facadeReferences':reference_data['references'],'facadeReferenceMetadataSHA256':sha(reference_path),'referenceUse':'Visual reference for original simplified facade geometry and materials; photograph pixels are not included. No Google Street View asset derivation.','textureCount':len(texture_images),'semanticGroups':list(roots),'actorPivots':['Traveller','LeftLeg','RightLeg','LeftArm','RightArm','Torso','Head'],'sourceObjects':len(static)+len(actor_parts),'font':str(font_path),'limitations':['Facade appearance is authored, not a photographic reconstruction.','Eight levels are OSM metadata; metres per storey are authored.','Full south volume requires runtime occlusion; beauty selectively hides south upper/shell/roof.','No rigged fingers, interiors, observed entry claims or facial animation.','Cycles area lighting is a reference; runtime materials and lighting require browser review.']}
+metrics={'status':'source','blenderVersion':bpy.app.version_string,'scriptSHA256':sha(__file__),'canonicalSource':'experience/src/content/kyoto.js','canonicalSHA256':sha(source),'streetContextSHA256':sha(context_path),'source':{'buildings':W['buildings'],'crossing':cross,'roadSurface':road,'streetContext':'experience/public/content-evidence/street-context.json','renderBounds':R},'authored':['storey heights '+str(heights),'facade construction on mapped footprint planes','roof form and storey heights','photo-informed facade character; authored bay dimensions, corner simplification, materials and reflection cues','door treatments/thresholds without tenant bindings','distant neutral ground and Shijo road continuation beyond clipped source are authored visual background','display road buffers 9.7m per one-way centreline / 18.3m Shijo, sidewalk buffers 3.3m, kerbs and tactile layout are authored','supplemental clipped movement surfaces are simulation surfaces within existing bounds, not verified walkability','furniture and planting','traveller and pose','camera and lighting'],'axes':'Blender(east,north,height) -> glTF(east,height,-north), metres','materials':'core opaque PBR; original embedded albedo/normal/roughness maps; authored glazing cues and environment reflections; no baked direct light or reconstructed interiors','facadeReferences':reference_data['references'],'facadeReferenceMetadataSHA256':sha(reference_path),'referenceUse':'Visual reference for original simplified facade geometry and materials; photograph pixels are not included. No Google Street View asset derivation.','textureCount':len(texture_images),'normalRoughnessSets':len(surface_maps),'semanticGroups':list(roots),'actorPivots':['Traveller','LeftLeg','RightLeg','LeftArm','RightArm','Torso','Head'],'sourceObjects':len(static)+len(actor_parts),'font':str(font_path),'limitations':['Facade appearance is authored, not a photographic reconstruction.','Eight levels are OSM metadata; metres per storey are authored.','Gameplay uses semantic visibility; optional old beauty hides groups, while render-study uses full visible geometry with matching cameras.','No rigged fingers, interiors, observed entry claims or facial animation.','Cycles area lighting is a reference; runtime materials and lighting require browser review.']}
 def write_metrics():
     (out/'metrics.json').write_text(json.dumps(metrics,ensure_ascii=False,indent=2))
 write_metrics()

@@ -1,0 +1,177 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-06T04:48:16.275090+00:00",
+  "status": "complete",
+  "model": "../models/shijo-block.glb",
+  "modelSha256": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c",
+  "axes": "Three(east,height,-north), metres",
+  "imageSize": [
+    1200,
+    750
+  ],
+  "actor": {
+    "model": "../models/traveller.glb",
+    "modelSha256": "ee5307da94f4d1994e5323a0d31d6f79a255c9f2f10459e0a0e6434fb051fdb1",
+    "position": [
+      23.8,
+      0.17,
+      -2.1
+    ],
+    "rotationY": 0
+  },
+  "lighting": {
+    "sunPosition": [
+      4,
+      105,
+      36
+    ],
+    "sunTarget": [
+      32,
+      0,
+      7
+    ],
+    "sunColor": "#fff5e8",
+    "sunIntensity": 2.25,
+    "environmentIntensity": 0.52,
+    "hemisphereIntensity": 1.35,
+    "exposure": 1.189207115
+  },
+  "fog": {
+    "color": "#dbe3e9",
+    "near": 85,
+    "far": 190
+  },
+  "offlineLighting": {
+    "worldColorLinear": [
+      0.67,
+      0.75,
+      0.86
+    ],
+    "worldStrength": 0.9,
+    "sunEnergy": 2.25,
+    "sunAngularDiameterDegrees": 2.0,
+    "exposureStops": 0.25,
+    "mistStart": 85,
+    "mistDepth": 105,
+    "note": "Calibrated Cycles environment fill, not numerically equivalent to realtime PMREM/hemisphere."
+  },
+  "renderEngine": "Blender Cycles CPU",
+  "rendererVersion": "4.3.2",
+  "samples": 64,
+  "denoising": false,
+  "sourceSceneSha256": "95e89cc5497d3f6051102b762dd10299d8236fa794a6cca0c5885c6d4548c194",
+  "renderScriptSha256": "5a201055b8098ecbf63aa9dfce12436411faf7804871ddb52771db26cd4ece5e",
+  "contextSha256": "f222a6d2346317d8fdaeb55bd81d743ddf565589dc9931a2abfb922907a81f37",
+  "renderBounds": {
+    "minX": -95,
+    "maxX": 100,
+    "minY": -90,
+    "maxY": 75
+  },
+  "sourceScope": {
+    "en": "Mapped footprints, corner planes, road/sidewalk centrelines and planting positions. Heights, widths, construction, materials and daylight are authored. No photograph pixels or interiors.",
+    "zh": "采用地图建筑轮廓、转角平面、道路与人行道中心线及种植位置。高度、宽度、构造、材质与日光均为设计表达；未使用照片像素，也未还原室内。"
+  },
+  "renderDifference": {
+    "en": "A uses realtime PBR with approximate environment lighting and shadow maps. B is a fixed Cycles image with traced indirect light and reflections. The geometry and camera are shared; this is not a surveyed or photorealistic replica.",
+    "zh": "A 使用实时 PBR、近似环境光与阴影贴图；B 是具有路径追踪间接光与反射的 Cycles 固定图片。两者共用几何与视角，并非测绘级或照片级复刻。"
+  },
+  "views": [
+    {
+      "id": "intersection",
+      "label": {
+        "en": "01 · Shijō–Karasuma intersection",
+        "zh": "01 · 四条乌丸路口"
+      },
+      "file": "intersection.png",
+      "camera": {
+        "position": [
+          -22,
+          18,
+          9
+        ],
+        "target": [
+          20,
+          10,
+          9
+        ],
+        "fov": 55,
+        "aspect": 1.6,
+        "near": 0.15,
+        "far": 260,
+        "up": [
+          0,
+          1,
+          0
+        ]
+      },
+      "hiddenGroups": [],
+      "renderSha256": "980eeb06b336d3568961d3324b6713cf325dc48910355bd0f5a70b88ab65b29b",
+      "renderSeconds": 45.9
+    },
+    {
+      "id": "mitsui-frontage",
+      "label": {
+        "en": "02 · Kyoto Mitsui frontage",
+        "zh": "02 · 京都三井大厦沿街"
+      },
+      "file": "mitsui-frontage.png",
+      "camera": {
+        "position": [
+          38,
+          3.2,
+          8
+        ],
+        "target": [
+          31,
+          3,
+          -4.7
+        ],
+        "fov": 50,
+        "aspect": 1.6,
+        "near": 0.15,
+        "far": 260,
+        "up": [
+          0,
+          1,
+          0
+        ]
+      },
+      "hiddenGroups": [],
+      "renderSha256": "fb7cb44ff5c6d31ac81ae0892f44b16f6b28aafcdd7a77b3889ef242e97cb2ad",
+      "renderSeconds": 58.49
+    },
+    {
+      "id": "daiya-frontage",
+      "label": {
+        "en": "03 · Kyoto Daiya frontage",
+        "zh": "03 · 京都钻石大厦沿街"
+      },
+      "file": "daiya-frontage.png",
+      "camera": {
+        "position": [
+          29,
+          3.2,
+          7
+        ],
+        "target": [
+          24,
+          3,
+          20
+        ],
+        "fov": 50,
+        "aspect": 1.6,
+        "near": 0.15,
+        "far": 260,
+        "up": [
+          0,
+          1,
+          0
+        ]
+      },
+      "hiddenGroups": [],
+      "renderSha256": "36eea15771c011e9fc5a83f4007a712045736a8217261872de17f2245bfe0f98",
+      "renderSeconds": 56.49
+    }
+  ]
+}
