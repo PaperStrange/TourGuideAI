@@ -67,6 +67,46 @@ views identified. An improved still does not prove gameplay rendering quality, a
 does not add verified venues, entrances or navigable territory. Comparison controls leave the saved
 walk unchanged. User acceptance of the revised appearance remains open.
 
+## Daylight and night atmosphere
+
+The user requested daylight/night modes and better use of online building resources for lighting and
+shadows. This is authorized work; the new modes still need review in the runnable browser build.
+Any externally sourced geometry, materials or lighting assets need the art/content owners' provenance
+and license review. A reusable building asset is visual material, not evidence of a particular Kyoto
+building, tenant, entrance or opening time.
+
+The product behavior is a compact, explicit **Daylight / Night** choice, with an accessible **Time of
+day** group and complete EN/ZH states. Start in daylight unless a valid local appearance preference
+exists. Apply the player's choice immediately; no animated clock or automatic day cycle is required.
+If assets are still loading, distinguish the requested mode from the applied scene and do not announce
+success before it appears. A recoverable lighting failure uses readable basic lighting with a retry,
+without blocking the walk or pretending the richer lighting loaded.
+
+Store appearance preference separately as `tourguideai:appearance:v1 = { lighting }` and preserve it
+when the player resets the walk. A `?lighting=` override supports review of a chosen mode. Failure to
+store the preference does not prevent the current scene from switching. Changing
+light must preserve position, camera framing, selected place, visit/choice state, open modal, keyboard
+focus and saved or draft personal notes. The toggle should not create an entry action or unpause an
+open encounter. Controls stay in the main toolbar; a native modal makes that toolbar inert, so no
+duplicate controls are needed inside encounter cards. An already requested asynchronous switch must
+not disturb a card opened while its lighting assets finish loading. Recap DTOs and their creation
+dates remain unchanged: lighting is presentation, not
+a real visit fact, a schedule, current weather or proof that any business is open.
+
+The comparison page exposes the same daylight/night choice. For a chosen view, its live renderer and
+Blender still must both identify the selected lighting. If a matching still is unavailable, say so;
+never relabel a daylight image as night. Camera/view selection stays fixed across mode changes to
+make building depth, material response and shadows comparable.
+
+Review both modes at actual browser size in EN and ZH, including the compact layout. Labels and
+focus rings must remain visible without crowding the scene controls. Walk and orbit, request a lighting
+switch, then open an encounter before it finishes; the card and play state must survive. Type an
+unsaved note, close the card, switch lighting and reopen it; the draft must remain. Night must retain a findable actor,
+readable Japanese signs and available actions; daylight must show coherent material and shadow
+response without washing out those cues. Exercise loading, rapid mode changes, fallback and retry,
+then reload and reset the walk to check appearance retention. Technical checks remain separate from
+the user's judgment of the revised lighting and realism.
+
 ## The interaction rhythm
 
 | Moment | Current public-frontage experience | Observable failure |

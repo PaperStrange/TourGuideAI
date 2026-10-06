@@ -4,6 +4,7 @@ import { TARGETS, PRIMARY_TARGET_IDS } from '../content/kyoto.js';
 import { t } from '../ui/i18n.js';
 import { STORAGE_KEY, readSavedJourney, readPersonalNotes } from './journey-store.js';
 import { installShareDialog } from './share-dialog.js';
+import { readAppearance, writeAppearance } from './appearance.js';
 import fontLicense from '../ui/assets/NOTO-LICENSE.txt?raw';
 import runtimeNotices from '../ui/assets/THIRD-PARTY-NOTICES.txt?raw';
 
@@ -27,6 +28,11 @@ let sceneStatus = 'loading';
 const returning = Boolean(saved.game?.visitedIds?.length);
 let locale = saved.locale === 'zh' ? 'zh' : 'en';
 let hints = saved.hints !== false;
+let appearanceStorage;
+try { appearanceStorage = localStorage; } catch { /* The scene also works without storage. */ }
+let appearanceMode = readAppearance(appearanceStorage, location.search);
+let lightingState = { mode: null, requestedMode: appearanceMode, phase: 'loading' };
+let appearanceRemembered = true, appearanceTouched = false, appearanceRequest = 0;
 // The engine validates saved game data before publishing the initial snapshot.
 // Render a safe empty state until that snapshot arrives.
 let state = {visitedIds:[],readSourceIds:[],choiceIds:{},selectedTargetId:'crossing'};
@@ -52,7 +58,8 @@ app.innerHTML = `
     <div class="journal-footer"><div class="journal-progress"><span data-i18n="journalTitle"></span><span id="progress-count"></span></div><div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="3" id="progress"><div class="progress-fill" id="progress-fill"></div></div><button type="button" class="export-button" id="export-notes"><span data-i18n="exportJournal"></span><span aria-hidden="true">↗</span></button></div>
   </aside>
   <section class="stage-wrap">
-    <div class="scene-toolbar"><div class="scene-location" data-i18n="eyebrow"></div><a id="comparison-link" href="./comparison.html" target="_blank" rel="noopener" data-i18n="comparisonEntryLabel"></a><span class="scene-edition" data-i18n="sceneEdition3D"></span></div>
+    <div class="scene-toolbar"><div class="scene-location" data-i18n="eyebrow"></div><div class="scene-actions"><div class="appearance-controls" id="appearance-controls" role="group"><button type="button" data-appearance="day" data-i18n="timeOfDayDaylight"></button><button type="button" data-appearance="night" data-i18n="timeOfDayNight"></button></div><a id="comparison-link" href="./comparison.html" target="_blank" rel="noopener" data-i18n="comparisonEntryLabel"></a></div></div>
+    <div class="appearance-feedback"><span id="appearance-status" role="status" aria-live="polite"></span><button type="button" id="appearance-retry" hidden data-i18n="lightingRetry"></button></div>
     <div class="scene-window"><div id="game-stage" tabindex="0" role="application"></div><div class="scene-corner"><span data-i18n="chapterLabel"></span><strong lang="ja">四条烏丸</strong></div><div class="camera-toolbar" role="group" id="camera-toolbar"><button type="button" id="camera-reset" data-i18n="cameraReset"></button><span data-i18n="cameraHelp"></span></div><div class="walk-hint" id="walk-hint" data-i18n="mapHint"></div><button type="button" class="context-prompt" id="interact-button" hidden><kbd>E</kbd><span class="prompt-copy"><small id="prompt-name"></small><span data-i18n="viewDetails"></span></span><span aria-hidden="true">↗</span></button><div class="loading-screen" id="loading"><div class="loading-mark"></div><span data-i18n="loading"></span></div></div>
     <div class="controls-bar"><div class="control-hints" id="controls"><span><kbd>W A S D</kbd><span data-i18n="controlsMove"></span></span><span><kbd>E</kbd><span data-i18n="controlsInteract"></span></span><span><kbd>Esc</kbd><span data-i18n="controlsClose"></span></span></div><button class="hint-toggle" id="hint-toggle" type="button"></button></div>
   </section>
@@ -71,6 +78,46 @@ shareEmpty.id='share-empty';shareEmpty.className='share-empty';
 $('#export-notes').after(shareEmpty);
 $('#export-notes').setAttribute('aria-describedby','share-empty');
 const sharing = installShareDialog({getSnapshot:()=>({locale,state,notes}),setPaused:value=>game?.setPaused(value),onLocale:applyLocale,onClose:()=>save(true)});
+
+function renderAppearance() {
+  const ready = sceneStatus === 'ready';
+  const loading = lightingState.phase === 'loading';
+  const failed = lightingState.phase === 'fallback' || lightingState.phase === 'unavailable';
+  $('#appearance-controls').setAttribute('aria-label', text('timeOfDayLabel'));
+  $('#appearance-controls').setAttribute('aria-busy', String(loading && (ready || sceneStatus === 'loading')));
+  document.querySelectorAll('[data-appearance]').forEach(button => {
+    button.setAttribute('aria-pressed', String(button.dataset.appearance === appearanceMode));
+    button.disabled = !ready;
+  });
+  let message = '';
+  if (sceneStatus === 'loading' || ready) {
+    if (loading) message = text(game ? 'timeOfDaySwitching' : 'timeOfDayLoading');
+    else if (failed) message = text(lightingState.fallbackReason === 'rig-unavailable'
+      ? 'lightingModeUnavailable' : lightingState.phase === 'fallback' ? 'lightingFallback' : 'lightingRetryFailed');
+    else if (appearanceTouched) message = text('timeOfDayChanged', { mode: text(appearanceMode === 'night' ? 'timeOfDayNight' : 'timeOfDayDaylight') });
+  }
+  if (!appearanceRemembered) message += `${message ? ' ' : ''}${text('lightingPreferenceUnavailable')}`;
+  $('#appearance-status').textContent = message;
+  $('#appearance-retry').hidden = !ready || !failed;
+  document.documentElement.dataset.lighting = lightingState.mode ?? 'day';
+  $('#comparison-link').href = `./comparison.html?lang=${locale}&lighting=${appearanceMode}`;
+}
+
+async function selectAppearance(mode) {
+  if (!game || sceneStatus !== 'ready' || !['day', 'night'].includes(mode)) return;
+  const request = ++appearanceRequest;
+  appearanceMode = mode; appearanceTouched = true;
+  appearanceRemembered = writeAppearance(appearanceStorage, mode);
+  lightingState = { ...lightingState, requestedMode: mode, phase: 'loading' };
+  renderAppearance();
+  try { await game.setLightingMode(mode); }
+  catch {
+    if (request === appearanceRequest) {
+      lightingState = { ...lightingState, phase: 'unavailable' };
+      renderAppearance();
+    }
+  }
+}
 
 function save(force = false) {
   if (!game) return;
@@ -104,7 +151,7 @@ function applyLocale(next) {
   lastUI='';lastPrompt='';updateUI();
   if(activeTarget) renderCard();
   sharing.setLocale(locale);
-  $('#comparison-link').href=`./comparison.html?lang=${locale}`;
+  renderAppearance();
   $('#export-notes').querySelector('[data-i18n]').textContent=text('shareOpen');
   updateHints();save(true);
 }
@@ -197,6 +244,8 @@ function exportNotes() {
 document.addEventListener('click',event=>{
   const button=event.target.closest('button');if(!button)return;
   if(button.dataset.locale){if(!button.closest('#share-dialog'))applyLocale(button.dataset.locale);return;}
+  if(button.dataset.appearance){void selectAppearance(button.dataset.appearance);return;}
+  if(button.id==='appearance-retry'){void selectAppearance(appearanceMode);return;}
   if(!game && (button.dataset.target || button.dataset.choice || ['reset-button','confirm-reset','interact-button'].includes(button.id)))return;
   if(button.dataset.target){const target=byId.get(button.dataset.target);game.setSelectedTarget(target.id);game.moveTo(target.approachX??target.x,target.approachY??target.y);$('#game-stage').focus({preventScroll:true});return;}
   if(button.dataset.choice){choose(button.dataset.choice);return;}
@@ -220,6 +269,7 @@ function updateSceneStatus() {
   const ready=sceneStatus==='ready';
   $('#loading').hidden=ready;
   $('#camera-reset').disabled=!ready;
+  renderAppearance();
   if(ready)return;
   $('#loading').innerHTML=sceneStatus==='loading'
     ? `<div class="loading-mark"></div><span>${escape(text('loading'))}</span>`
@@ -237,7 +287,8 @@ document.addEventListener('input',event=>{
 try {
   await document.fonts.load('16px "Kyoto Sans"');
   game=await createGame($('#game-stage'),{
-    locale,saved:saved.game,
+    locale,saved:saved.game,lightingMode:appearanceMode,
+    onLightingStatus(next){lightingState=next;renderAppearance();},
     onState(next){state=next;updateUI();},onInteract:openPlace,
     onStatus(next){sceneStatus=next.status;updateSceneStatus();},
     onReady(next){sceneStatus=next.status;updateSceneStatus();},
