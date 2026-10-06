@@ -31,6 +31,17 @@
 | `experience/index.html`, `.gitignore`, `README.md`, `src/app/`, `src/ui/styles.css`, `src/ui/assets/`, `tools/`, `docs/architecture.md`, `docs/github-research.md`, `docs/iteration.md`, `evidence/` | lead | 新应用 UI 整合、技术研究、计划与证据打包 |
 
 以上路径均相对 `experience/`；专业 owner 间通过 API/资产契约协作，不交叉覆盖文件。
+
+2026-10-06 扩展街景与多格式分享续开范围：
+
+| 新文件/范围（相对 `experience/`） | 唯一 owner | 契约 |
+|---|---|---|
+| `journey.html`, `src/app/share.js`, `src/app/share-dialog.js`, `src/app/journey-reader.js`, `src/app/recap.css` | lead | 只读分享接收页、显式选择笔记、链接/PNG/打印；不导入接收者存档 |
+| `comparison.html`, `src/comparison/` | engineering | 同一几何与固定相机的实时 PBR / Blender 离线光追对照 |
+| `art/render_study.py`, `public/render-study/` | art-ux | 相机、渲染图与来源 manifest；离线图不冒充实时帧 |
+| `content-tools/build-street-context.mjs`, `public/content-evidence/street-context.json` | world-content | 扩展视觉上下文来源；不扩大可玩或可通行范围 |
+
+当前用户已接受被测 Pages 版本的流畅度与引导；建筑真实感仍待验收。两种视觉方案都须交付可比较的扩大街景，分享格式同时提供，不再作为单选澄清。
 独立应用的 `.github/workflows/experience.yml` 及其 `.github/workflows/README.md` 登记项由 lead 维护，只负责构建/测试与证据，不部署。
 仓库根 `README.md` 的新版入口说明由 lead 维护，旧应用说明保留为历史索引。
 仓库根 `PREVIEW.md` 及独立 `gh-pages` 分支的已验证静态构建由 lead 维护，用于跨会话评审与托管交接。

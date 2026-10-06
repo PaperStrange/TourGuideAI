@@ -14,8 +14,7 @@
 // reliable than they are. It is here because running it takes seconds and remembering does not.
 import { readFileSync } from 'node:fs';
 
-const REPO = 'D:/All-Downloads/TourGuideAI';
-const TABLE = `${REPO}/iteration/design/file-ownership.md`;
+const TABLE = new URL('../design/file-ownership.md', import.meta.url);
 
 // The authoritative owner table, parsed rather than retyped -- a second copy would drift, which is D-12.
 const table = readFileSync(TABLE, 'utf8');

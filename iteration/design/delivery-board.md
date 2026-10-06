@@ -1,7 +1,22 @@
 # Delivery board · TourGuideAI 2.5D
 
-Updated 2026-10-05. Owner: lead. Planning baseline: `origin/iteration` at
+Updated 2026-10-06. Owner: lead. Planning baseline: `origin/iteration` at
 `eae982f4ba20a107bf21a35b70f635b4935a4c70`.
+
+**Current user review:** the hosted 3D build passed the user's fluency/guidance
+review; building/street realism did not. The previous art “no blocker” assessment
+was a technical usability check, not user realism acceptance. Current work:
+
+| Sprint | Owners | Concrete exit |
+|---|---|---|
+| Detail-1 · Shared source and interface | world, engineering, art, lead | Sourced enlarged intersection context; fixed matched camera contract; explicit multi-format recap schema |
+| Detail-2 · Implement both comparisons and sharing | art, engineering, product, lead | Correct diagonal corners and detailed streetscape; realtime PBR versus Blender path-traced stills; one preview with link, PNG, print/PDF |
+| Detail-3 · Verify and publish review | QA, art, product, lead | Actual matched browser views; note-selection/privacy, recipient and format checks; incremental commits/pushes; updated existing Pages site |
+
+These sprints continue the existing owners' work. They do not expand the playable
+boundary or claim new verified entrances. [SOW §0d](SOW.md) supersedes older
+pending-fluency and HTML-only-sharing statements below. Final new-art acceptance
+remains with the user.
 
 **Status: recommended options approved on 2026-10-05, with English/Chinese guidance
 and explicit art-quality/interaction-fluency acceptance.** The user's current

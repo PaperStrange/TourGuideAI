@@ -7,6 +7,27 @@ opening a door, and sharing the completed travel experience.
 
 ## This delivery
 
+### Current follow-up · 2026-10-06
+
+The user played the hosted version and accepted fluency and guidance. Architecture
+and streets still look too simple; realism is not accepted. The user requests two
+concrete visual solutions on a larger, more detailed street, and several sharing
+formats rather than a single-choice product decision.
+
+1. Correct the source-backed diagonal building corners and extend visual context
+   around Karasuma. Finish facade recesses, trim, canopy structure, pavement and
+   surface response. Keep gameplay bounds separate from visual context.
+2. Compare live PBR with offline Blender path tracing of the same geometry at
+   matching intersection/north/south views. Label static renders clearly; their
+   quality and render time are not evidence of realtime interaction performance.
+3. Replace immediate HTML download with a preview, individually opt-in saved
+   notes, web-link sharing/copy, PNG image and a printable reader/PDF workflow.
+4. Verify the new paths and matched views, preserve previous immutable evidence,
+   commit/push meaningful slices, then update the existing GitHub Pages review.
+
+The implementation and new realism review remain in progress. The following
+paragraphs describe the preceding delivered increment.
+
 Build one clean application under `experience/`, independent of historical folder
 constraints. Improve facade proportions, detail and illumination; integrate the
 existing small block into guided playable 3D; carry saved choices and bilingual
