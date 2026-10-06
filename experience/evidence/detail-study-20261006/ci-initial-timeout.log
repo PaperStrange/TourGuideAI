@@ -1,0 +1,105 @@
+validate	Exercise the packaged game in Chromium	﻿2026-10-06T04:52:34.1357631Z ##[group]Run npm run test:browser -- dist
+validate	Exercise the packaged game in Chromium	2026-10-06T04:52:34.1358017Z [36;1mnpm run test:browser -- dist[0m
+validate	Exercise the packaged game in Chromium	2026-10-06T04:52:34.1420548Z shell: /usr/bin/bash -e {0}
+validate	Exercise the packaged game in Chromium	2026-10-06T04:52:34.1420843Z env:
+validate	Exercise the packaged game in Chromium	2026-10-06T04:52:34.1421078Z   EXPERIENCE_QA_OUTPUT: test-results/browser
+validate	Exercise the packaged game in Chromium	2026-10-06T04:52:34.1421393Z   EXPERIENCE_QA_TIMEOUT: 240000
+validate	Exercise the packaged game in Chromium	2026-10-06T04:52:34.1421644Z ##[endgroup]
+validate	Exercise the packaged game in Chromium	2026-10-06T04:52:34.2460641Z 
+validate	Exercise the packaged game in Chromium	2026-10-06T04:52:34.2461256Z > kyoto-guided-experience@0.2.0 test:browser
+validate	Exercise the packaged game in Chromium	2026-10-06T04:52:34.2461813Z > node tests/browser-check.mjs dist
+validate	Exercise the packaged game in Chromium	2026-10-06T04:52:34.2462065Z 
+validate	Exercise the packaged game in Chromium	2026-10-06T04:52:44.8527604Z PASS actual-webgl-scene-ready
+validate	Exercise the packaged game in Chromium	2026-10-06T04:52:44.8592472Z PASS empty-walk-explains-why-sharing-is-disabled
+validate	Exercise the packaged game in Chromium	2026-10-06T04:52:49.6616039Z PASS chinese-goals-controls-and-camera-guidance
+validate	Exercise the packaged game in Chromium	2026-10-06T04:52:49.6684455Z PASS locale-preserves-position-and-journey
+validate	Exercise the packaged game in Chromium	2026-10-06T04:52:53.8861474Z ACTION Walk right relative to the guided camera
+validate	Exercise the packaged game in Chromium	2026-10-06T04:53:11.4073905Z PASS keyboard-movement-is-camera-relative
+validate	Exercise the packaged game in Chromium	2026-10-06T04:53:12.3083763Z PASS key-release-stops-walking
+validate	Exercise the packaged game in Chromium	2026-10-06T04:53:30.0318316Z PASS blur-event-clears-held-input
+validate	Exercise the packaged game in Chromium	2026-10-06T04:53:58.4667369Z PASS drag-orbits-without-queuing-a-walk
+validate	Exercise the packaged game in Chromium	2026-10-06T04:53:59.3722543Z PASS reduced-motion-orbit-stops-after-release
+validate	Exercise the packaged game in Chromium	2026-10-06T04:54:13.1162258Z PASS walking-adapts-to-rotated-camera
+validate	Exercise the packaged game in Chromium	2026-10-06T04:54:15.2581366Z ACTION Click visible ground after orbit and resize
+validate	Exercise the packaged game in Chromium	2026-10-06T04:54:30.0487094Z PASS actual-raycast-click-reaches-the-world-point
+validate	Exercise the packaged game in Chromium	2026-10-06T04:54:30.9581053Z ACTION Click the actual lower road surface
+validate	Exercise the packaged game in Chromium	2026-10-06T04:54:45.5838113Z PASS road-height-picking-is-not-a-fixed-pavement-plane
+validate	Exercise the packaged game in Chromium	2026-10-06T04:54:47.8917955Z PASS compact-layout-and-canvas-fit-after-capture
+validate	Exercise the packaged game in Chromium	2026-10-06T04:54:58.7611453Z PASS reset-view-preserves-position-and-journey
+validate	Exercise the packaged game in Chromium	2026-10-06T04:55:52.2877105Z PASS north-facade-blocks-forward-motion
+validate	Exercise the packaged game in Chromium	2026-10-06T04:55:52.5658629Z ACTION Walk through the journey control to crossing
+validate	Exercise the packaged game in Chromium	2026-10-06T04:56:03.3356714Z PROGRESS crossing: 7146ms, tick 687, position 28.987,4.221
+validate	Exercise the packaged game in Chromium	2026-10-06T04:56:10.5085519Z PROGRESS crossing: 14319ms, tick 699, position 28.099,4.017
+validate	Exercise the packaged game in Chromium	2026-10-06T04:56:17.6431792Z PROGRESS crossing: 21453ms, tick 711, position 27.211,3.813
+validate	Exercise the packaged game in Chromium	2026-10-06T04:56:24.7845872Z PROGRESS crossing: 28595ms, tick 723, position 26.323,3.609
+validate	Exercise the packaged game in Chromium	2026-10-06T04:56:31.9353731Z PROGRESS crossing: 35746ms, tick 735, position 25.435,3.405
+validate	Exercise the packaged game in Chromium	2026-10-06T04:56:39.0464634Z PROGRESS crossing: 42855ms, tick 747, position 24.547,3.201
+validate	Exercise the packaged game in Chromium	2026-10-06T04:56:46.2216101Z PROGRESS crossing: 50029ms, tick 759, position 23.659,2.997
+validate	Exercise the packaged game in Chromium	2026-10-06T04:56:53.3024751Z PROGRESS crossing: 57112ms, tick 771, position 22.771,2.793
+validate	Exercise the packaged game in Chromium	2026-10-06T04:57:00.2328875Z PROGRESS crossing: 64044ms, tick 783, position 21.883,2.589
+validate	Exercise the packaged game in Chromium	2026-10-06T04:57:07.0691739Z PROGRESS crossing: 70876ms, tick 795, position 20.995,2.391
+validate	Exercise the packaged game in Chromium	2026-10-06T04:57:20.6742382Z PASS nearby-prompt-is-stable
+validate	Exercise the packaged game in Chromium	2026-10-06T04:57:27.4747670Z PASS opening-does-not-award-visit-or-source-read
+validate	Exercise the packaged game in Chromium	2026-10-06T04:57:28.6821458Z PASS modal-pauses-movement
+validate	Exercise the packaged game in Chromium	2026-10-06T04:57:28.7200960Z PASS open-card-locale-keeps-state-and-focus
+validate	Exercise the packaged game in Chromium	2026-10-06T04:57:49.3726512Z PASS close-does-not-reopen-and-restores-focus
+validate	Exercise the packaged game in Chromium	2026-10-06T04:57:53.7985040Z PASS source-reading-remains-separate-from-visiting
+validate	Exercise the packaged game in Chromium	2026-10-06T04:57:53.8297193Z PASS choice-records-visit-and-next-target
+validate	Exercise the packaged game in Chromium	2026-10-06T04:57:57.3423903Z PASS note-draft-survives-locale-without-autosaving
+validate	Exercise the packaged game in Chromium	2026-10-06T04:58:07.6557954Z PASS note-draft-survives-close-and-reopen-without-autosaving
+validate	Exercise the packaged game in Chromium	2026-10-06T04:58:07.6749335Z PASS note-input-enforces-500-character-bound
+validate	Exercise the packaged game in Chromium	2026-10-06T04:58:07.7280469Z PASS explicit-note-save-preserves-journey-meaning
+validate	Exercise the packaged game in Chromium	2026-10-06T04:58:14.8842526Z PASS card-close-resumes-walking
+validate	Exercise the packaged game in Chromium	2026-10-06T04:58:29.9854990Z PASS reload-retains-world-position-choices-locale-and-note
+validate	Exercise the packaged game in Chromium	2026-10-06T04:58:30.0449995Z ACTION Walk through the journey control to mitsui
+validate	Exercise the packaged game in Chromium	2026-10-06T04:58:40.2324265Z PROGRESS mitsui: 6779ms, tick 910, position 21.547,2.445
+validate	Exercise the packaged game in Chromium	2026-10-06T04:58:47.0789237Z PROGRESS mitsui: 13630ms, tick 922, position 22.459,2.508
+validate	Exercise the packaged game in Chromium	2026-10-06T04:58:53.9654230Z PROGRESS mitsui: 20515ms, tick 934, position 23.371,2.574
+validate	Exercise the packaged game in Chromium	2026-10-06T04:59:00.9061445Z PROGRESS mitsui: 27456ms, tick 946, position 24.283,2.64
+validate	Exercise the packaged game in Chromium	2026-10-06T04:59:07.8906724Z PROGRESS mitsui: 34441ms, tick 958, position 25.195,2.706
+validate	Exercise the packaged game in Chromium	2026-10-06T04:59:14.8853932Z PROGRESS mitsui: 41435ms, tick 970, position 26.107,2.772
+validate	Exercise the packaged game in Chromium	2026-10-06T04:59:21.9131372Z PROGRESS mitsui: 48463ms, tick 982, position 27.019,2.839
+validate	Exercise the packaged game in Chromium	2026-10-06T04:59:29.0166046Z PROGRESS mitsui: 55567ms, tick 994, position 27.931,2.905
+validate	Exercise the packaged game in Chromium	2026-10-06T04:59:36.0629879Z PROGRESS mitsui: 62613ms, tick 1006, position 28.843,2.971
+validate	Exercise the packaged game in Chromium	2026-10-06T04:59:43.1671974Z PROGRESS mitsui: 69715ms, tick 1018, position 29.755,3.037
+validate	Exercise the packaged game in Chromium	2026-10-06T04:59:50.2257868Z PROGRESS mitsui: 76772ms, tick 1030, position 30.667,3.103
+validate	Exercise the packaged game in Chromium	2026-10-06T04:59:57.2044010Z PROGRESS mitsui: 83755ms, tick 1042, position 31.579,3.169
+validate	Exercise the packaged game in Chromium	2026-10-06T05:00:21.5412966Z PASS mitsui-skip-retains-visit-without-planned-station-stop
+validate	Exercise the packaged game in Chromium	2026-10-06T05:00:42.6878140Z ACTION Walk through the journey control to mufg
+validate	Exercise the packaged game in Chromium	2026-10-06T05:00:49.6461588Z PROGRESS mufg: 6928ms, tick 1121, position 31.392,3.152
+validate	Exercise the packaged game in Chromium	2026-10-06T05:00:56.6275533Z PROGRESS mufg: 13909ms, tick 1133, position 30.48,3.08
+validate	Exercise the packaged game in Chromium	2026-10-06T05:01:03.6825354Z PROGRESS mufg: 20964ms, tick 1145, position 29.568,3.008
+validate	Exercise the packaged game in Chromium	2026-10-06T05:01:10.7478251Z PROGRESS mufg: 28029ms, tick 1157, position 28.656,2.936
+validate	Exercise the packaged game in Chromium	2026-10-06T05:01:17.8281662Z PROGRESS mufg: 35109ms, tick 1169, position 27.744,2.864
+validate	Exercise the packaged game in Chromium	2026-10-06T05:01:24.8753603Z PROGRESS mufg: 42157ms, tick 1181, position 26.832,2.792
+validate	Exercise the packaged game in Chromium	2026-10-06T05:01:31.9231522Z PROGRESS mufg: 49204ms, tick 1193, position 25.92,2.72
+validate	Exercise the packaged game in Chromium	2026-10-06T05:01:38.9941402Z PROGRESS mufg: 56267ms, tick 1205, position 25.008,2.648
+validate	Exercise the packaged game in Chromium	2026-10-06T05:01:45.9780908Z PROGRESS mufg: 63259ms, tick 1217, position 24.096,2.576
+validate	Exercise the packaged game in Chromium	2026-10-06T05:01:52.9498873Z PROGRESS mufg: 70230ms, tick 1229, position 23.184,2.509
+validate	Exercise the packaged game in Chromium	2026-10-06T05:01:59.8628225Z PROGRESS mufg: 77144ms, tick 1241, position 22.272,2.443
+validate	Exercise the packaged game in Chromium	2026-10-06T05:02:06.6954866Z PROGRESS mufg: 83977ms, tick 1253, position 21.36,2.376
+validate	Exercise the packaged game in Chromium	2026-10-06T05:02:13.4683160Z PROGRESS mufg: 90750ms, tick 1265, position 20.721,2.102
+validate	Exercise the packaged game in Chromium	2026-10-06T05:02:20.1886180Z PROGRESS mufg: 97470ms, tick 1277, position 20.721,1.19
+validate	Exercise the packaged game in Chromium	2026-10-06T05:02:26.8970265Z PROGRESS mufg: 104178ms, tick 1289, position 20.721,0.278
+validate	Exercise the packaged game in Chromium	2026-10-06T05:02:33.5534325Z PROGRESS mufg: 110834ms, tick 1301, position 20.721,-0.634
+validate	Exercise the packaged game in Chromium	2026-10-06T05:02:40.1631214Z PROGRESS mufg: 117444ms, tick 1313, position 20.721,-1.546
+validate	Exercise the packaged game in Chromium	2026-10-06T05:02:46.7321679Z PROGRESS mufg: 124011ms, tick 1325, position 20.721,-2.458
+validate	Exercise the packaged game in Chromium	2026-10-06T05:02:53.2967478Z PROGRESS mufg: 130578ms, tick 1337, position 20.721,-3.37
+validate	Exercise the packaged game in Chromium	2026-10-06T05:02:59.9839857Z PROGRESS mufg: 137265ms, tick 1349, position 20.721,-4.282
+validate	Exercise the packaged game in Chromium	2026-10-06T05:03:06.6987326Z PROGRESS mufg: 143980ms, tick 1361, position 20.721,-5.194
+validate	Exercise the packaged game in Chromium	2026-10-06T05:03:13.6710892Z PROGRESS mufg: 150952ms, tick 1373, position 20.721,-6.106
+validate	Exercise the packaged game in Chromium	2026-10-06T05:03:20.9351872Z PROGRESS mufg: 158217ms, tick 1385, position 20.721,-7.018
+validate	Exercise the packaged game in Chromium	2026-10-06T05:03:28.5888657Z PROGRESS mufg: 165870ms, tick 1397, position 20.721,-7.93
+validate	Exercise the packaged game in Chromium	2026-10-06T05:03:36.4326470Z PROGRESS mufg: 173713ms, tick 1409, position 20.721,-8.842
+validate	Exercise the packaged game in Chromium	2026-10-06T05:03:44.2381854Z PROGRESS mufg: 181518ms, tick 1421, position 20.721,-9.754
+validate	Exercise the packaged game in Chromium	2026-10-06T05:03:51.9858295Z PROGRESS mufg: 189267ms, tick 1433, position 20.721,-10.666
+validate	Exercise the packaged game in Chromium	2026-10-06T05:03:59.5124664Z PROGRESS mufg: 196793ms, tick 1445, position 20.721,-11.578
+validate	Exercise the packaged game in Chromium	2026-10-06T05:04:06.8490988Z PROGRESS mufg: 204130ms, tick 1457, position 20.721,-12.49
+validate	Exercise the packaged game in Chromium	2026-10-06T05:04:13.9934151Z PROGRESS mufg: 211275ms, tick 1469, position 20.721,-13.402
+validate	Exercise the packaged game in Chromium	2026-10-06T05:04:20.9694305Z PROGRESS mufg: 218251ms, tick 1481, position 20.721,-14.314
+validate	Exercise the packaged game in Chromium	2026-10-06T05:04:27.2238116Z PROGRESS mufg: 224505ms, tick 1493, position 20.721,-15.226
+validate	Exercise the packaged game in Chromium	2026-10-06T05:04:32.8871637Z PROGRESS mufg: 230168ms, tick 1505, position 20.721,-16.138
+validate	Exercise the packaged game in Chromium	2026-10-06T05:04:38.4755523Z PROGRESS mufg: 235756ms, tick 1517, position 20.721,-17.05
+validate	Exercise the packaged game in Chromium	2026-10-06T05:04:44.0349950Z PROGRESS mufg: 241316ms, tick 1529, position 21.091,-17.619
+validate	Exercise the packaged game in Chromium	2026-10-06T05:04:44.1904004Z FAIL browser-run-completed
+validate	Exercise the packaged game in Chromium	2026-10-06T05:05:08.6476186Z ##[error]Process completed with exit code 1.
