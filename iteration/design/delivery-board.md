@@ -5,7 +5,17 @@ Updated 2026-10-06. Owner: lead. Planning baseline: `origin/iteration` at
 
 **Current user review:** the hosted 3D build passed the user's fluency/guidance
 review; building/street realism did not. The previous art “no blocker” assessment
-was a technical usability check, not user realism acceptance. Current work:
+was a technical usability check, not user realism acceptance. The user now requests
+daylight/night modes and online building-related resources for richer lighting.
+
+| Sprint | Owners | Exit | State |
+|---|---|---|---|
+| Light-1 · Sources and rig | world, art, engineering | Verified licensed local HDR assets; shared presets and shadow/material contract | Resources selected; shared rig under calibration |
+| Light-2 · Experience and comparison | engineering, art, product, lead | EN/ZH switching in the walk; separate appearance preference; six matched live/Cycles views | In progress |
+| Light-3 · Verify and publish | QA, art, lead | Readable night route, state/notes preserved, rapid/failing load recovery, matched views and exact hosted bytes | Pending integrated candidate |
+
+[SOW §0e](SOW.md) records the new direction. The following expanded-street/sharing
+sprints are the preceding delivered increment:
 
 | Sprint | Owners | Concrete exit | Current state |
 |---|---|---|---|

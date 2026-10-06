@@ -46,6 +46,16 @@
 仓库根 `README.md` 的新版入口说明由 lead 维护，旧应用说明保留为历史索引。
 仓库根 `PREVIEW.md` 及独立 `gh-pages` 分支的已验证静态构建由 lead 维护，用于跨会话评审与托管交接。
 
+2026-10-06 日间 / 夜间灯光续开范围（同一专业角色续接，不重复派单）：
+
+| 新文件/范围（相对 `experience/`） | 唯一 owner | 契约 |
+|---|---|---|
+| `public/lighting/rig.json` | art-ux | Three.js 与 Blender 共用的日夜灯光、灯具与材质发光配置；既有相机与来源几何不变 |
+| `public/lighting/environments/`, `public/lighting/resources.json`, `docs/lighting-resources.md` | world-content | 在线授权 HDR 环境资源、许可、来源与哈希；仅作照明/反射，不替换京都街景 |
+| `src/app/appearance.js` | lead | 独立于旅程的本地视觉偏好、合法查询参数优先级；不进入分享内容 |
+
+既有 runtime/comparison、界面文案、Blender 对照渲染、测试和文档继续由上表 owner 维护。
+
 | 文件 | 历史卡 | **owner（唯一）** | 判定 |
 |---|---|---|---|
 **`city-packs/kyoto-shijo/doors.json`** | task-2, 15, 19, 20 | **`doors-author`** | ✅ 一直一个 owner |

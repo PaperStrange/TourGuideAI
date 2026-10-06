@@ -7,7 +7,28 @@ opening a door, and sharing the completed travel experience.
 
 ## This delivery
 
-### Current follow-up · 2026-10-06
+### Current follow-up · daylight and night, 2026-10-06
+
+The user requests selectable daylight/night atmosphere and online building-related
+resources for better lighting and shadows. The team is implementing two authored
+lighting modes in the playable walk and the existing live/Blender comparison.
+Local licensed urban HDR environments supply reflections and ambient light;
+directional light, warm night fixtures, shadows and selective material emission
+come from a shared rig. They do not replace the sourced Kyoto geometry.
+
+1. Verify source/license/size of the selected environment maps; establish a shared
+   lighting, material and matching-view contract.
+2. Add EN/ZH controls and separate local appearance preferences. Preserve the
+   journey, notes, camera and any card opened while lighting finishes loading.
+3. Inspect actual daylight/night gameplay before rendering the six final matched
+   images, then verify switching, failure/retry, resource lifetime and night play.
+4. Publish the exact tested package and push the source, attribution and evidence.
+
+Manual mode selection is independent of real time, weather, opening hours and the
+recap. The camera/encounter scope remains unchanged. This slice is in progress;
+user realism acceptance and representative-device performance remain separate.
+
+### Delivered expanded-street and sharing follow-up · 2026-10-06
 
 The user played the hosted version and accepted fluency and guidance. Architecture
 and streets still look too simple; realism is not accepted. The user requests two
