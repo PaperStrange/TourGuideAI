@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { daylightEnvironment } from '../runtime/world-view.js';
+import { createSceneLighting } from '../runtime/lighting.js';
 import { localAsset } from './manifest.js';
 
 function disposeTree(root) {
@@ -19,8 +19,8 @@ function disposeTree(root) {
   for (const image of images) image.close();
 }
 
-export async function createStudyRenderer(host, manifest, { manifestURL, appURL, signal, onContextLost }) {
-  let disposed = false, renderer, environment, observer, frame = 0, current;
+export async function createStudyRenderer(host, manifest, { manifestURL, appURL, signal, onContextLost, lightingMode = 'day', onLightingStatus }) {
+  let disposed = false, renderer, lighting, observer, frame = 0, current;
   let modelHash = null, renderCount = 0;
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera();
@@ -41,9 +41,9 @@ export async function createStudyRenderer(host, manifest, { manifestURL, appURL,
     disposed = true; cancelAnimationFrame(frame); observer?.disconnect();
     document.removeEventListener('visibilitychange', requestDraw);
     renderer?.domElement.removeEventListener('webglcontextlost', contextLost);
+    lighting?.dispose();
     for (const model of models) disposeTree(model);
     models.length = 0;
-    environment?.dispose();
     scene.traverse(node => node.shadow?.map?.dispose());
     scene.clear(); renderer?.dispose(); renderer?.forceContextLoss(); renderer?.domElement.remove();
   };
@@ -54,24 +54,12 @@ export async function createStudyRenderer(host, manifest, { manifestURL, appURL,
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.NeutralToneMapping;
-    renderer.toneMappingExposure = manifest.lighting?.exposure ?? 1;
+
     renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFShadowMap;
     renderer.shadowMap.autoUpdate = false;
     renderer.domElement.setAttribute('role', 'img');
     renderer.domElement.addEventListener('webglcontextlost', contextLost);
     host.appendChild(renderer.domElement);
-    scene.background = new THREE.Color(manifest.lighting?.background ?? '#dbe3e9');
-    if (manifest.fog) scene.fog = new THREE.Fog(manifest.fog.color, manifest.fog.near, manifest.fog.far);
-    environment = daylightEnvironment(renderer);
-    scene.environment = environment.texture;
-    scene.environmentIntensity = manifest.lighting?.environmentIntensity ?? 0.52;
-    scene.add(new THREE.HemisphereLight('#f3f7fa', '#9b9992', manifest.lighting?.hemisphereIntensity ?? 1.35));
-    const sun = new THREE.DirectionalLight(manifest.lighting?.sunColor ?? '#fff5e8', manifest.lighting?.sunIntensity ?? 2.25);
-    sun.position.fromArray(manifest.lighting?.sunPosition ?? [4, 105, 36]);
-    sun.target.position.fromArray(manifest.lighting?.sunTarget ?? [32, 0, 7]);
-    sun.castShadow = true; sun.shadow.mapSize.set(2048, 2048);
-    sun.shadow.bias = -0.0007; sun.shadow.normalBias = 0.07;
-    scene.add(sun, sun.target);
     const manager = new THREE.LoadingManager();
     manager.setURLModifier(url => url.startsWith('blob:') || url.startsWith('data:') ? url : localAsset(url, manifestURL, appURL).href);
     const loader = new GLTFLoader(manager);
@@ -118,13 +106,10 @@ export async function createStudyRenderer(host, manifest, { manifestURL, appURL,
       bounds.min.x = Math.max(bounds.min.x, area.minX); bounds.max.x = Math.min(bounds.max.x, area.maxX);
       bounds.min.z = Math.max(bounds.min.z, -area.maxY); bounds.max.z = Math.min(bounds.max.z, -area.minY);
     }
-    const shadowCamera = sun.shadow.camera;
-    shadowCamera.position.copy(sun.position); shadowCamera.lookAt(sun.target.position); shadowCamera.updateMatrixWorld(true);
-    const lightBounds = bounds.clone().applyMatrix4(shadowCamera.matrixWorldInverse);
-    Object.assign(shadowCamera, { left: lightBounds.min.x - 2, right: lightBounds.max.x + 2,
-      bottom: lightBounds.min.y - 2, top: lightBounds.max.y + 2,
-      near: Math.max(0.1, -lightBounds.max.z - 5), far: Math.max(180, -lightBounds.min.z + 5) });
-    shadowCamera.updateProjectionMatrix();
+    lighting = createSceneLighting(renderer, scene, { roots: [street, ...(actor ? [actor] : [])], signal,
+      rigURL: manifest.lightingRig ? localAsset(manifest.lightingRig, manifestURL, appURL) : new URL('lighting/rig.json', appURL),
+      expectedRigHash: manifest.lightingRigSha256, onStatus: onLightingStatus, onChange: requestDraw });
+    await lighting.setMode(lightingMode); abort();
     const selectView = view => {
       current = view;
       const config = view.camera;
@@ -135,7 +120,7 @@ export async function createStudyRenderer(host, manifest, { manifestURL, appURL,
       camera.updateProjectionMatrix(); camera.updateMatrixWorld(true);
       const hidden = new Set(view.hiddenGroups);
       street.traverse(node => { node.visible = !hidden.has(node.name) && !hidden.has(node.userData.semanticGroup); });
-      renderer.shadowMap.needsUpdate = true;
+      lighting.invalidateShadows();
       requestDraw();
     };
     const visible = node => {
@@ -163,6 +148,7 @@ export async function createStudyRenderer(host, manifest, { manifestURL, appURL,
     requestDraw();
     return {
       selectView, resize: requestDraw,
+      setLightingMode: lighting.setMode, getLightingState: lighting.snapshot,
       setLabel(value) { renderer.domElement.setAttribute('aria-label', value); },
       snapshot() {
         return { disposed, viewId: current?.id, modelHash, renderedFrames: renderCount,
@@ -170,7 +156,7 @@ export async function createStudyRenderer(host, manifest, { manifestURL, appURL,
             up: camera.up.toArray(), fov: camera.fov, aspect: camera.aspect, near: camera.near, far: camera.far,
             projectionMatrix: camera.projectionMatrix.toArray(), matrixWorld: camera.matrixWorld.toArray() },
           hiddenGroups: [...current.hiddenGroups], render: { ...renderer.info.render },
-          visibility: visibility(), shadowBounds: { min: bounds.min.toArray(), max: bounds.max.toArray() },
+          lighting: lighting.snapshot(), visibility: visibility(), shadowBounds: { min: bounds.min.toArray(), max: bounds.max.toArray() },
           fog: scene.fog ? { color: `#${scene.fog.color.getHexString()}`, near: scene.fog.near, far: scene.fog.far } : null,
           memory: { ...renderer.info.memory }, pixelRatio: renderer.getPixelRatio(),
           canvas: { width: renderer.domElement.width, height: renderer.domElement.height } };

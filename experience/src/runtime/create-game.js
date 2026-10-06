@@ -3,6 +3,7 @@ import { WORLD, TARGETS, TICK_MS, INTERACTION_RADIUS, approachPoint } from '../s
 import { createState, stepSimulation, refreshProximity, snapshot, setDestination, cameraRelativeInput } from '../simulation/index.js';
 import { createGuidedCamera } from './camera.js';
 import { createWorldView } from './world-view.js';
+import { lightingMode as normalizeLightingMode } from './lighting-contract.js';
 
 const keys = { KeyW: [0, 1], ArrowUp: [0, 1], KeyS: [0, -1], ArrowDown: [0, -1],
   KeyA: [-1, 0], ArrowLeft: [-1, 0], KeyD: [1, 0], ArrowRight: [1, 0] };
@@ -19,6 +20,9 @@ export async function createGame(host, options = {}) {
   let accumulator = 0, lastTime = null, notifications = 0, renderedFrames = 0;
   let width = 1, height = 1, queuedInteraction = null, pointer = null;
   let arrivalIdleMs = 0;
+  let requestedLightingMode = normalizeLightingMode(options.lightingMode);
+  let lightingState = { requestedMode: requestedLightingMode, mode: null, phase: 'loading' };
+  const lightingStatus = value => { lightingState = value; if (!destroyed) options.onLightingStatus?.(value); };
   const abort = new AbortController();
   const held = new Set(), activePointers = new Set(), cleanups = [], commandTrace = [];
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
@@ -58,6 +62,12 @@ export async function createGame(host, options = {}) {
   const api = {
     getState: () => snapshot(player),
     getCameraState: () => rig?.snapshot() ?? null,
+    getLightingState: () => view?.getLightingState() ?? structuredClone(lightingState),
+    async setLightingMode(value) {
+      requestedLightingMode = normalizeLightingMode(value);
+      if (!view) return structuredClone(lightingState);
+      return view.setLightingMode(requestedLightingMode);
+    },
     setPaused(value) { clearMovement(); player.paused = Boolean(value); rig?.setEnabled(!player.paused && status === 'ready'); publish(); },
     setLocale(value) { locale = value === 'zh' ? 'zh' : 'en'; localize(); dirty = true; },
     reset() {
@@ -176,7 +186,8 @@ export async function createGame(host, options = {}) {
       dirty = true; publish();
     });
     const started = performance.now();
-    view = await createWorldView(renderer, { signal: abort.signal, onProgress: progress => notify('loading', progress) });
+    view = await createWorldView(renderer, { signal: abort.signal, onProgress: progress => notify('loading', progress),
+      lightingMode: requestedLightingMode, onLightingStatus: lightingStatus, onInvalidate: invalidate });
     if (destroyed || abort.signal.aborted) { view.dispose(); return api; }
     view.update(player, rig.camera, { dt: 1000, reducedMotion: true });
     notify('loading', 0.85);
@@ -193,7 +204,7 @@ export async function createGame(host, options = {}) {
         targets: () => TARGETS.map(({ id, x, y, approachX, approachY }) => ({ id, x, y, approachX, approachY })),
         commands: () => commandTrace.map(command => ({ ...command })),
         renderer: () => ({ status, loadMs, renderedFrames, render: { ...renderer.info.render },
-          memory: { ...renderer.info.memory }, scene: view.stats(), reducedMotion }),
+          memory: { ...renderer.info.memory }, scene: view.stats(), reducedMotion, lighting: view.getLightingState() }),
       });
     }
     function animate(now) {

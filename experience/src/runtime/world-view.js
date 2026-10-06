@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { WORLD, TARGETS, approachPoint } from '../simulation/world.js';
 import { toScene } from './camera.js';
+import { createSceneLighting } from './lighting.js';
 
 function disposeTree(root) {
   const geometries = new Set(), materials = new Set(), textures = new Set();
@@ -15,29 +16,6 @@ function disposeTree(root) {
   for (const item of [...textures, ...materials, ...geometries]) item.dispose();
 }
 
-export function daylightEnvironment(renderer) {
-  const environment = new THREE.Scene();
-  const material = new THREE.ShaderMaterial({
-    side: THREE.BackSide,
-    vertexShader: 'varying vec3 direction; void main(){direction=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}',
-    fragmentShader: `varying vec3 direction; void main(){
-      vec3 d=normalize(direction);
-      vec3 horizon=vec3(0.77,0.83,0.87), zenith=vec3(0.43,0.60,0.75), ground=vec3(0.24,0.26,0.28);
-      vec3 sky=mix(horizon,zenith,pow(max(d.y,0.0),0.65));
-      float cloud=smoothstep(0.25,0.9,sin(d.x*7.0+d.z*2.0)*cos(d.z*5.0-d.x*3.0));
-      sky=mix(sky,vec3(0.93,0.94,0.94),cloud*0.4*max(d.y,0.0));
-      vec3 color=mix(ground,sky,smoothstep(-0.08,0.12,d.y));
-      float sun=pow(max(dot(d,normalize(vec3(-0.26,0.93,0.27))),0.0),180.0);
-      gl_FragColor=vec4(color+vec3(4.5,4.3,4.0)*sun,1.0);
-    }`,
-  });
-  const sphere = new THREE.Mesh(new THREE.SphereGeometry(80, 24, 12), material);
-  environment.add(sphere);
-  const generator = new THREE.PMREMGenerator(renderer);
-  const target = generator.fromScene(environment, 0.04, 0.1, 120);
-  generator.dispose(); sphere.geometry.dispose(); material.dispose();
-  return target;
-}
 
 function contactShadow() {
   const canvas = document.createElement('canvas'); canvas.width = canvas.height = 64;
@@ -55,20 +33,9 @@ function contactShadow() {
   return mesh;
 }
 
-export async function createWorldView(renderer, { signal, onProgress } = {}) {
+export async function createWorldView(renderer, { signal, onProgress, lightingMode = 'day', onLightingStatus, onInvalidate } = {}) {
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color('#dbe3e9');
-  scene.fog = new THREE.Fog('#dbe3e9', 105, 185);
-  const environment = daylightEnvironment(renderer);
-  scene.environment = environment.texture;
-  scene.environmentIntensity = 0.52;
-  scene.add(new THREE.HemisphereLight('#f3f7fa', '#9b9992', 1.35));
-  const sun = new THREE.DirectionalLight('#fff5e8', 2.25);
-  sun.position.set(4, 105, 36); sun.target.position.set(32, 0, 7);
-  sun.castShadow = true; sun.shadow.mapSize.set(2048, 2048);
-  Object.assign(sun.shadow.camera, { left: -48, right: 48, top: 46, bottom: -44, near: 1, far: 175 });
-  sun.shadow.bias = -0.0007; sun.shadow.normalBias = 0.07;
-  scene.add(sun, sun.target);
+  let lighting;
   const loader = new GLTFLoader();
   const assetBase = new URL(import.meta.env.BASE_URL + 'models/', document.baseURI);
   const loaded = [];
@@ -90,7 +57,7 @@ export async function createWorldView(renderer, { signal, onProgress } = {}) {
     onProgress?.(0.65);
   } catch (error) {
     for (const model of loaded) disposeTree(model);
-    environment.dispose(); disposeTree(scene);
+    lighting?.dispose(); disposeTree(scene);
     throw error;
   }
   scene.add(street, traveller);
@@ -137,9 +104,12 @@ export async function createWorldView(renderer, { signal, onProgress } = {}) {
   const sightRay = new THREE.Ray(), intersection = new THREE.Vector3();
   const occlusionRay = new THREE.Raycaster();
   let lastActor = '', lastCue = '', fadedGroups = [];
+  lighting = createSceneLighting(renderer, scene, { roots: [street, traveller], signal, onStatus: onLightingStatus, onChange: onInvalidate });
+  await lighting.setMode(lightingMode);
 
   return {
     scene, actor, floorHeight,
+    setLightingMode: lighting.setMode, getLightingState: lighting.snapshot,
     pickGround(camera, x, y, width, height) {
       pointerRay.setFromCamera(new THREE.Vector2(x / width * 2 - 1, 1 - y / height * 2), camera);
       const hit = pointerRay.intersectObjects(walkable, false)[0];
@@ -190,7 +160,9 @@ export async function createWorldView(renderer, { signal, onProgress } = {}) {
         if (opacity !== group.opacity) {
           group.opacity = opacity; changed = true;
           for (const mesh of group.meshes) {
-            mesh.visible = opacity > 0.01;
+            const visible = opacity > 0.01;
+            if (mesh.visible !== visible) lighting.invalidateShadows();
+            mesh.visible = visible;
             mesh.material.opacity = opacity;
             const transparent = opacity < 0.999;
             if (mesh.material.transparent !== transparent) {
@@ -212,6 +184,6 @@ export async function createWorldView(renderer, { signal, onProgress } = {}) {
         actorPosition: actor.position.toArray(), actorHeading: actor.rotation.y,
         streetBounds: [...bounds.min.toArray(), ...bounds.max.toArray()] };
     },
-    dispose() { disposeTree(scene); environment.dispose(); scene.clear(); },
+    dispose() { lighting.dispose(); disposeTree(scene); scene.clear(); },
   };
 }

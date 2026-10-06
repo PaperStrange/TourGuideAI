@@ -9,7 +9,8 @@ export function validateManifest(value) {
   const ids = new Set();
   for (const view of value.views) {
     const camera = view.camera;
-    if (typeof view.id !== 'string' || ids.has(view.id) || typeof view.file !== 'string' ||
+    if (typeof view.id !== 'string' || ids.has(view.id) ||
+        (typeof view.file !== 'string' && !view.renders) ||
         typeof view.label?.en !== 'string' || typeof view.label?.zh !== 'string' ||
         !camera || !vector(camera.position) || !vector(camera.target) ||
         !Number.isFinite(camera.fov) || camera.fov <= 5 || camera.fov >= 130 ||
@@ -20,6 +21,9 @@ export function validateManifest(value) {
         !Number.isFinite(camera.far ?? 260) || (camera.far ?? 260) <= (camera.near ?? 0.15) ||
         !Array.isArray(view.hiddenGroups) || view.hiddenGroups.some(name => typeof name !== 'string')) {
       throw new Error('Invalid rendering viewpoint');
+    }
+    if (view.renders) for (const render of Object.values(view.renders)) {
+      if (!render || typeof render.file !== 'string') throw new Error('Invalid lighting render');
     }
     ids.add(view.id);
   }

@@ -1,0 +1,869 @@
+{
+  "version": 1,
+  "status": "candidate-frozen",
+  "defaultMode": "day",
+  "axes": "Three(east,height,-north), metres",
+  "scope": {
+    "en": "Authored lighting studies. Local lights and glowing glazing do not indicate actual operating hours, occupied rooms or enterable interiors. External HDRIs illuminate and reflect; their city panoramas are never visible backgrounds.",
+    "zh": "设计灯光方案。局部照明和发光玻璃不代表实际营业时间、房间使用状态或可进入的室内。外部 HDRI 仅用于照明与反射，不作为可见城市背景。"
+  },
+  "limits": {
+    "maxShadowCastingLocalLights": 4,
+    "staticShadowCaching": true,
+    "pointLightShadows": false
+  },
+  "renderBounds": {
+    "minX": -95,
+    "maxX": 100,
+    "minY": -90,
+    "maxY": 75
+  },
+  "modes": {
+    "day": {
+      "label": {
+        "en": "Daylight",
+        "zh": "日光"
+      },
+      "environment": {
+        "file": "environments/day-1k.hdr",
+        "sha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+        "intensity": 0.65,
+        "rotationY": 1.0,
+        "use": "illumination-and-reflections-only"
+      },
+      "backgroundColor": "#cbd8e4",
+      "fog": {
+        "color": "#cbd8e4",
+        "near": 85,
+        "far": 190
+      },
+      "exposure": 1.05,
+      "hemisphere": {
+        "skyColor": "#d4e1ef",
+        "groundColor": "#777269",
+        "intensity": 0.34
+      },
+      "sun": {
+        "enabled": true,
+        "position": [
+          4,
+          105,
+          36
+        ],
+        "target": [
+          32,
+          0,
+          7
+        ],
+        "color": "#fff2df",
+        "intensity": 2.8,
+        "shadow": {
+          "enabled": true,
+          "mapSize": 2048,
+          "bias": -0.00045,
+          "normalBias": 0.045,
+          "radius": 2.4,
+          "near": 0.5,
+          "far": 220,
+          "fit": "source-render-bounds"
+        }
+      },
+      "fixtures": [
+        {
+          "id": "north-crossing",
+          "type": "spot",
+          "enabled": false,
+          "position": [
+            21.75,
+            3.255,
+            -3.55
+          ],
+          "target": [
+            21.75,
+            0.17,
+            -2.4
+          ],
+          "color": "#ffdeb2",
+          "intensity": 0,
+          "distance": 12,
+          "decay": 2,
+          "angle": 1.12,
+          "penumbra": 0.72,
+          "offlinePowerWatts": 95,
+          "offlineRadiusMetres": 0.28,
+          "shadow": {
+            "enabled": true,
+            "mapSize": 1024,
+            "bias": -0.0002,
+            "normalBias": 0.018,
+            "radius": 4.5,
+            "near": 0.15,
+            "far": 14
+          }
+        },
+        {
+          "id": "north-frontage",
+          "type": "spot",
+          "enabled": false,
+          "position": [
+            32.2,
+            3.255,
+            -3.58
+          ],
+          "target": [
+            32.2,
+            0.17,
+            -2.43
+          ],
+          "color": "#ffdeb2",
+          "intensity": 0,
+          "distance": 12,
+          "decay": 2,
+          "angle": 1.12,
+          "penumbra": 0.72,
+          "offlinePowerWatts": 95,
+          "offlineRadiusMetres": 0.28,
+          "shadow": {
+            "enabled": true,
+            "mapSize": 1024,
+            "bias": -0.0002,
+            "normalBias": 0.018,
+            "radius": 4.5,
+            "near": 0.15,
+            "far": 14
+          }
+        },
+        {
+          "id": "south-bank",
+          "type": "spot",
+          "enabled": false,
+          "position": [
+            22.98,
+            3.255,
+            18.73
+          ],
+          "target": [
+            22.98,
+            0.17,
+            17.580000000000002
+          ],
+          "color": "#ffdeb2",
+          "intensity": 0,
+          "distance": 12,
+          "decay": 2,
+          "angle": 1.12,
+          "penumbra": 0.72,
+          "offlinePowerWatts": 95,
+          "offlineRadiusMetres": 0.28,
+          "shadow": {
+            "enabled": true,
+            "mapSize": 1024,
+            "bias": -0.0002,
+            "normalBias": 0.018,
+            "radius": 4.5,
+            "near": 0.15,
+            "far": 14
+          }
+        },
+        {
+          "id": "south-frontage",
+          "type": "spot",
+          "enabled": false,
+          "position": [
+            30.24,
+            3.255,
+            18.82
+          ],
+          "target": [
+            30.24,
+            0.17,
+            17.67
+          ],
+          "color": "#ffdeb2",
+          "intensity": 0,
+          "distance": 12,
+          "decay": 2,
+          "angle": 1.12,
+          "penumbra": 0.72,
+          "offlinePowerWatts": 95,
+          "offlineRadiusMetres": 0.28,
+          "shadow": {
+            "enabled": true,
+            "mapSize": 1024,
+            "bias": -0.0002,
+            "normalBias": 0.018,
+            "radius": 4.5,
+            "near": 0.15,
+            "far": 14
+          }
+        },
+        {
+          "id": "north-east",
+          "type": "spot",
+          "enabled": false,
+          "position": [
+            43,
+            3.255,
+            -3.61
+          ],
+          "target": [
+            43,
+            0.17,
+            -2.46
+          ],
+          "color": "#ffdeb2",
+          "intensity": 0,
+          "distance": 12,
+          "decay": 2,
+          "angle": 1.12,
+          "penumbra": 0.72,
+          "offlinePowerWatts": 95,
+          "offlineRadiusMetres": 0.28,
+          "shadow": {
+            "enabled": false,
+            "mapSize": 1024,
+            "bias": -0.0002,
+            "normalBias": 0.018,
+            "radius": 2.5,
+            "near": 0.15,
+            "far": 14
+          }
+        },
+        {
+          "id": "north-far-east",
+          "type": "spot",
+          "enabled": false,
+          "position": [
+            54,
+            3.255,
+            -3.64
+          ],
+          "target": [
+            54,
+            0.17,
+            -2.49
+          ],
+          "color": "#ffdeb2",
+          "intensity": 0,
+          "distance": 12,
+          "decay": 2,
+          "angle": 1.12,
+          "penumbra": 0.72,
+          "offlinePowerWatts": 95,
+          "offlineRadiusMetres": 0.28,
+          "shadow": {
+            "enabled": false,
+            "mapSize": 1024,
+            "bias": -0.0002,
+            "normalBias": 0.018,
+            "radius": 2.5,
+            "near": 0.15,
+            "far": 14
+          }
+        },
+        {
+          "id": "mitsui-corner-wash",
+          "type": "spot",
+          "enabled": false,
+          "position": [
+            8.51,
+            2.5,
+            -3.57
+          ],
+          "target": [
+            12.37,
+            10,
+            -8.15
+          ],
+          "color": "#ffe7c4",
+          "intensity": 0,
+          "distance": 21,
+          "decay": 2,
+          "angle": 0.62,
+          "penumbra": 0.8,
+          "offlinePowerWatts": 260,
+          "offlineRadiusMetres": 0.28,
+          "shadow": {
+            "enabled": false,
+            "mapSize": 512,
+            "bias": -0.0002,
+            "normalBias": 0.018,
+            "radius": 2,
+            "near": 0.15,
+            "far": 22
+          }
+        },
+        {
+          "id": "daiya-corner-wash",
+          "type": "spot",
+          "enabled": false,
+          "position": [
+            9.08,
+            2.5,
+            20.4
+          ],
+          "target": [
+            13.55,
+            10,
+            24.41
+          ],
+          "color": "#ffe7c4",
+          "intensity": 0,
+          "distance": 21,
+          "decay": 2,
+          "angle": 0.62,
+          "penumbra": 0.8,
+          "offlinePowerWatts": 260,
+          "offlineRadiusMetres": 0.28,
+          "shadow": {
+            "enabled": false,
+            "mapSize": 512,
+            "bias": -0.0002,
+            "normalBias": 0.018,
+            "radius": 2,
+            "near": 0.15,
+            "far": 22
+          }
+        },
+        {
+          "id": "north-street",
+          "type": "spot",
+          "enabled": false,
+          "position": [
+            18.821,
+            4.88,
+            -2.38
+          ],
+          "target": [
+            18.821,
+            0.05,
+            0.6200000000000001
+          ],
+          "color": "#ffe5bd",
+          "intensity": 0,
+          "distance": 17,
+          "decay": 2,
+          "angle": 0.95,
+          "penumbra": 0.82,
+          "offlinePowerWatts": 240,
+          "offlineRadiusMetres": 0.28,
+          "shadow": {
+            "enabled": false,
+            "mapSize": 512,
+            "bias": -0.0002,
+            "normalBias": 0.018,
+            "radius": 2.5,
+            "near": 0.15,
+            "far": 18
+          }
+        },
+        {
+          "id": "south-street",
+          "type": "spot",
+          "enabled": false,
+          "position": [
+            22.621,
+            4.88,
+            17.579
+          ],
+          "target": [
+            22.621,
+            0.05,
+            14.579
+          ],
+          "color": "#ffe5bd",
+          "intensity": 0,
+          "distance": 17,
+          "decay": 2,
+          "angle": 0.95,
+          "penumbra": 0.82,
+          "offlinePowerWatts": 240,
+          "offlineRadiusMetres": 0.28,
+          "shadow": {
+            "enabled": false,
+            "mapSize": 512,
+            "bias": -0.0002,
+            "normalBias": 0.018,
+            "radius": 2.5,
+            "near": 0.15,
+            "far": 18
+          }
+        }
+      ],
+      "materials": [
+        {
+          "match": [
+            "off-white"
+          ],
+          "emissiveColor": "#ffe3b5",
+          "emissiveIntensity": 0,
+          "emissiveFromBaseColor": false,
+          "semanticGroups": [
+            "NorthCanopy",
+            "SouthCanopy",
+            "NorthGround",
+            "SouthGround"
+          ]
+        },
+        {
+          "match": [
+            "glazing"
+          ],
+          "semanticGroups": [
+            "NorthGround",
+            "SouthGround"
+          ],
+          "emissiveColor": "#e2b67c",
+          "emissiveIntensity": 0,
+          "emissiveFromBaseColor": true
+        },
+        {
+          "match": [
+            "glazing-blinds"
+          ],
+          "semanticGroups": [
+            "NorthUpper",
+            "SouthUpper"
+          ],
+          "emissiveColor": "#ffd9a0",
+          "emissiveIntensity": 0,
+          "emissiveFromBaseColor": true
+        }
+      ],
+      "offline": {
+        "environmentStrength": 0.6,
+        "sunEnergy": 2.8,
+        "sunAngularDiameterDegrees": 2.8,
+        "exposureStops": 0.1,
+        "note": "Authored Cycles power/environment calibration, not numeric equivalence to Three illuminance/candela or a measured lighting survey.",
+        "sampleClampDirect": 0,
+        "sampleClampIndirect": 3,
+        "filterGlossy": 0.5,
+        "adaptiveThreshold": 0.012
+      }
+    },
+    "night": {
+      "label": {
+        "en": "Night",
+        "zh": "夜晚"
+      },
+      "environment": {
+        "file": "environments/night-1k.hdr",
+        "sha256": "a690048dcecabf5ed1ad773f7abdec7cce7b1fea4d89b17f054a18f3e0fa2919",
+        "intensity": 0.085,
+        "rotationY": 0.55,
+        "use": "illumination-and-reflections-only"
+      },
+      "backgroundColor": "#101824",
+      "fog": {
+        "color": "#101824",
+        "near": 85,
+        "far": 190
+      },
+      "exposure": 1.18,
+      "hemisphere": {
+        "skyColor": "#718bb6",
+        "groundColor": "#2a2422",
+        "intensity": 0.18
+      },
+      "sun": {
+        "enabled": true,
+        "position": [
+          4,
+          105,
+          36
+        ],
+        "target": [
+          32,
+          0,
+          7
+        ],
+        "color": "#9bb9eb",
+        "intensity": 0.18,
+        "shadow": {
+          "enabled": true,
+          "mapSize": 2048,
+          "bias": -0.00045,
+          "normalBias": 0.045,
+          "radius": 2.4,
+          "near": 0.5,
+          "far": 220,
+          "fit": "source-render-bounds"
+        }
+      },
+      "fixtures": [
+        {
+          "id": "north-crossing",
+          "type": "spot",
+          "enabled": true,
+          "position": [
+            21.75,
+            3.255,
+            -3.55
+          ],
+          "target": [
+            21.75,
+            0.17,
+            -2.4
+          ],
+          "color": "#ffdeb2",
+          "intensity": 170,
+          "distance": 12,
+          "decay": 2,
+          "angle": 1.12,
+          "penumbra": 0.72,
+          "offlinePowerWatts": 280,
+          "offlineRadiusMetres": 0.28,
+          "shadow": {
+            "enabled": true,
+            "mapSize": 1024,
+            "bias": -0.0002,
+            "normalBias": 0.018,
+            "radius": 4.5,
+            "near": 0.15,
+            "far": 14
+          }
+        },
+        {
+          "id": "north-frontage",
+          "type": "spot",
+          "enabled": true,
+          "position": [
+            32.2,
+            3.255,
+            -3.58
+          ],
+          "target": [
+            32.2,
+            0.17,
+            -2.43
+          ],
+          "color": "#ffdeb2",
+          "intensity": 170,
+          "distance": 12,
+          "decay": 2,
+          "angle": 1.12,
+          "penumbra": 0.72,
+          "offlinePowerWatts": 280,
+          "offlineRadiusMetres": 0.28,
+          "shadow": {
+            "enabled": true,
+            "mapSize": 1024,
+            "bias": -0.0002,
+            "normalBias": 0.018,
+            "radius": 4.5,
+            "near": 0.15,
+            "far": 14
+          }
+        },
+        {
+          "id": "south-bank",
+          "type": "spot",
+          "enabled": true,
+          "position": [
+            22.98,
+            3.255,
+            18.73
+          ],
+          "target": [
+            22.98,
+            0.17,
+            17.580000000000002
+          ],
+          "color": "#ffdeb2",
+          "intensity": 170,
+          "distance": 12,
+          "decay": 2,
+          "angle": 1.12,
+          "penumbra": 0.72,
+          "offlinePowerWatts": 280,
+          "offlineRadiusMetres": 0.28,
+          "shadow": {
+            "enabled": true,
+            "mapSize": 1024,
+            "bias": -0.0002,
+            "normalBias": 0.018,
+            "radius": 4.5,
+            "near": 0.15,
+            "far": 14
+          }
+        },
+        {
+          "id": "south-frontage",
+          "type": "spot",
+          "enabled": true,
+          "position": [
+            30.24,
+            3.255,
+            18.82
+          ],
+          "target": [
+            30.24,
+            0.17,
+            17.67
+          ],
+          "color": "#ffdeb2",
+          "intensity": 170,
+          "distance": 12,
+          "decay": 2,
+          "angle": 1.12,
+          "penumbra": 0.72,
+          "offlinePowerWatts": 280,
+          "offlineRadiusMetres": 0.28,
+          "shadow": {
+            "enabled": true,
+            "mapSize": 1024,
+            "bias": -0.0002,
+            "normalBias": 0.018,
+            "radius": 4.5,
+            "near": 0.15,
+            "far": 14
+          }
+        },
+        {
+          "id": "north-east",
+          "type": "spot",
+          "enabled": true,
+          "position": [
+            43,
+            3.255,
+            -3.61
+          ],
+          "target": [
+            43,
+            0.17,
+            -2.46
+          ],
+          "color": "#ffdeb2",
+          "intensity": 170,
+          "distance": 12,
+          "decay": 2,
+          "angle": 1.12,
+          "penumbra": 0.72,
+          "offlinePowerWatts": 280,
+          "offlineRadiusMetres": 0.28,
+          "shadow": {
+            "enabled": false,
+            "mapSize": 1024,
+            "bias": -0.0002,
+            "normalBias": 0.018,
+            "radius": 2.5,
+            "near": 0.15,
+            "far": 14
+          }
+        },
+        {
+          "id": "north-far-east",
+          "type": "spot",
+          "enabled": true,
+          "position": [
+            54,
+            3.255,
+            -3.64
+          ],
+          "target": [
+            54,
+            0.17,
+            -2.49
+          ],
+          "color": "#ffdeb2",
+          "intensity": 170,
+          "distance": 12,
+          "decay": 2,
+          "angle": 1.12,
+          "penumbra": 0.72,
+          "offlinePowerWatts": 280,
+          "offlineRadiusMetres": 0.28,
+          "shadow": {
+            "enabled": false,
+            "mapSize": 1024,
+            "bias": -0.0002,
+            "normalBias": 0.018,
+            "radius": 2.5,
+            "near": 0.15,
+            "far": 14
+          }
+        },
+        {
+          "id": "mitsui-corner-wash",
+          "type": "spot",
+          "enabled": true,
+          "position": [
+            8.51,
+            2.5,
+            -3.57
+          ],
+          "target": [
+            12.37,
+            10,
+            -8.15
+          ],
+          "color": "#ffe7c4",
+          "intensity": 1100,
+          "distance": 21,
+          "decay": 2,
+          "angle": 0.62,
+          "penumbra": 0.8,
+          "offlinePowerWatts": 1200,
+          "offlineRadiusMetres": 0.28,
+          "shadow": {
+            "enabled": false,
+            "mapSize": 512,
+            "bias": -0.0002,
+            "normalBias": 0.018,
+            "radius": 2,
+            "near": 0.15,
+            "far": 22
+          }
+        },
+        {
+          "id": "daiya-corner-wash",
+          "type": "spot",
+          "enabled": true,
+          "position": [
+            9.08,
+            2.5,
+            20.4
+          ],
+          "target": [
+            13.55,
+            10,
+            24.41
+          ],
+          "color": "#ffe7c4",
+          "intensity": 1100,
+          "distance": 21,
+          "decay": 2,
+          "angle": 0.62,
+          "penumbra": 0.8,
+          "offlinePowerWatts": 1200,
+          "offlineRadiusMetres": 0.28,
+          "shadow": {
+            "enabled": false,
+            "mapSize": 512,
+            "bias": -0.0002,
+            "normalBias": 0.018,
+            "radius": 2,
+            "near": 0.15,
+            "far": 22
+          }
+        },
+        {
+          "id": "north-street",
+          "type": "spot",
+          "enabled": true,
+          "position": [
+            18.821,
+            4.88,
+            -2.38
+          ],
+          "target": [
+            18.821,
+            0.05,
+            0.6200000000000001
+          ],
+          "color": "#ffe5bd",
+          "intensity": 300,
+          "distance": 17,
+          "decay": 2,
+          "angle": 0.95,
+          "penumbra": 0.82,
+          "offlinePowerWatts": 240,
+          "offlineRadiusMetres": 0.28,
+          "shadow": {
+            "enabled": false,
+            "mapSize": 512,
+            "bias": -0.0002,
+            "normalBias": 0.018,
+            "radius": 2.5,
+            "near": 0.15,
+            "far": 18
+          }
+        },
+        {
+          "id": "south-street",
+          "type": "spot",
+          "enabled": true,
+          "position": [
+            22.621,
+            4.88,
+            17.579
+          ],
+          "target": [
+            22.621,
+            0.05,
+            14.579
+          ],
+          "color": "#ffe5bd",
+          "intensity": 300,
+          "distance": 17,
+          "decay": 2,
+          "angle": 0.95,
+          "penumbra": 0.82,
+          "offlinePowerWatts": 240,
+          "offlineRadiusMetres": 0.28,
+          "shadow": {
+            "enabled": false,
+            "mapSize": 512,
+            "bias": -0.0002,
+            "normalBias": 0.018,
+            "radius": 2.5,
+            "near": 0.15,
+            "far": 18
+          }
+        }
+      ],
+      "materials": [
+        {
+          "match": [
+            "off-white"
+          ],
+          "emissiveColor": "#ffe3b5",
+          "emissiveIntensity": 2.6,
+          "emissiveFromBaseColor": false,
+          "semanticGroups": [
+            "NorthCanopy",
+            "SouthCanopy",
+            "NorthGround",
+            "SouthGround"
+          ]
+        },
+        {
+          "match": [
+            "glazing"
+          ],
+          "semanticGroups": [
+            "NorthGround",
+            "SouthGround"
+          ],
+          "emissiveColor": "#e2b67c",
+          "emissiveIntensity": 0.18,
+          "emissiveFromBaseColor": true
+        },
+        {
+          "match": [
+            "glazing-blinds"
+          ],
+          "semanticGroups": [
+            "NorthUpper",
+            "SouthUpper"
+          ],
+          "emissiveColor": "#ffd9a0",
+          "emissiveIntensity": 0.055,
+          "emissiveFromBaseColor": true
+        }
+      ],
+      "offline": {
+        "environmentStrength": 0.18,
+        "sunEnergy": 0.2,
+        "sunAngularDiameterDegrees": 3.0,
+        "exposureStops": 0.7,
+        "note": "Authored Cycles power/environment calibration, not numeric equivalence to Three illuminance/candela or a measured lighting survey.",
+        "sampleClampDirect": 10,
+        "sampleClampIndirect": 3,
+        "filterGlossy": 1.0,
+        "adaptiveThreshold": 0.012
+      }
+    }
+  }
+}

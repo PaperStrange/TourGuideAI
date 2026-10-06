@@ -2,6 +2,7 @@ import './styles.css';
 import { t } from '../ui/i18n.js';
 import { validateManifest, localAsset } from './manifest.js';
 import { createStudyRenderer } from './study-renderer.js';
+import { lightingMode } from '../runtime/lighting-contract.js';
 import fontLicense from '../ui/assets/NOTO-LICENSE.txt?raw';
 import runtimeNotices from '../ui/assets/THIRD-PARTY-NOTICES.txt?raw';
 
@@ -11,6 +12,9 @@ const params = new URLSearchParams(location.search);
 let locale = params.get('lang') === 'zh' ? 'zh' : 'en';
 let manifest, selected, renderer, controller, requestId = 0, mode = 'both';
 let manifestStatus = 'loading', realtimeStatus = 'loading', imageStatus = 'loading';
+let appearance = lightingMode(params.get('lighting')), imageRequest = 0;
+let lighting = { requestedMode: appearance, mode: null, phase: 'loading' };
+const selectedRender = () => selected?.renders?.[appearance] ?? (appearance === 'day' && !selected?.renders ? selected : null);
 const text = (key, vars) => t(locale, key, vars);
 const label = value => value?.[locale] ?? value?.en ?? '';
 const $ = selector => document.querySelector(selector);
@@ -23,6 +27,8 @@ $('#comparison-app').innerHTML = `
   <main>
     <div class="study-heading"><span class="eyebrow">KYOTO · SHIJO</span><h1 data-i18n="comparisonTitle"></h1><p data-i18n="comparisonIntro"></p></div>
     <section class="study-controls"><label class="view-control" for="study-view"><span data-i18n="comparisonViewLabel"></span><select id="study-view" disabled></select></label><fieldset id="study-mode"><legend data-i18n="comparisonModeLabel"></legend><label><input type="radio" name="mode" value="both" checked><span data-i18n="comparisonSideBySide"></span></label><label><input type="radio" name="mode" value="realtime"><span data-i18n="comparisonRealtimeOnly"></span></label><label><input type="radio" name="mode" value="still"><span data-i18n="comparisonStillOnly"></span></label></fieldset></section>
+    <div class="appearance-row"><div id="study-appearance" role="group" aria-labelledby="study-appearance-label"><span id="study-appearance-label" data-i18n="comparisonTimeOfDayLabel"></span><button type="button" data-appearance="day" data-i18n="timeOfDayDaylight"></button><button type="button" data-appearance="night" data-i18n="timeOfDayNight"></button></div><span id="study-lighting-status" role="status"></span><button type="button" id="study-lighting-retry" data-i18n="lightingRetry" hidden></button></div>
+    <p class="local-note" data-i18n="timeOfDayAuthored"></p>
     <div id="manifest-status" role="status"></div><button type="button" id="study-retry" data-i18n="comparisonRetry" hidden></button>
     <div class="study-panels" id="study-panels" data-mode="both">
       <section class="study-panel" id="realtime-panel" aria-labelledby="realtime-title"><div class="panel-heading"><span class="panel-letter" aria-hidden="true">A</span><h2 id="realtime-title" data-i18n="comparisonRealtimeTitle"></h2></div><div class="study-frame"><div id="realtime-stage"></div><div class="frame-status" id="realtime-status" role="status"></div></div><p class="panel-caption" data-i18n="comparisonRealtimeCaption"></p></section>
@@ -37,21 +43,24 @@ function updateStatus() {
   $('#manifest-status').textContent = manifestStatus === 'ready' ? '' : text(manifestStatus === 'loading' ? 'comparisonLoading' : 'comparisonManifestUnavailable');
   const statuses = [['#realtime-status', realtimeStatus, 'comparisonUnavailable'], ['#image-status', imageStatus, 'comparisonImageUnavailable']];
   for (const [id, status, failureKey] of statuses) {
-    $(id).textContent = status === 'ready' ? '' : text(status === 'loading' ? 'comparisonLoading' : failureKey);
-    $(id).hidden = status === 'ready';
+    const switching = id === '#realtime-status' && status === 'ready' && lighting.phase === 'loading';
+    $(id).textContent = switching ? text('timeOfDaySwitching') : status === 'ready' ? '' : text(status === 'loading' ? 'comparisonLoading' : status === 'missing-lighting' ? 'comparisonLightingUnavailable' : failureKey);
+    $(id).hidden = status === 'ready' && !switching;
   }
   $('#study-retry').hidden = ![manifestStatus, realtimeStatus, imageStatus].includes('unavailable');
   $('#study-view').disabled = manifestStatus !== 'ready';
+  document.querySelectorAll('[data-appearance]').forEach(node => node.setAttribute('aria-pressed', String(node.dataset.appearance === appearance)));
+  $('#study-lighting-status').textContent = realtimeStatus === 'unavailable' ? '' : text(lighting.phase === 'fallback' ? (lighting.fallbackReason === 'rig-unavailable' ? 'lightingModeUnavailable' : 'lightingFallback') : lighting.phase === 'loading' ? (lighting.mode ? 'timeOfDaySwitching' : 'timeOfDayLoading') : 'timeOfDayChanged', { mode: text(lighting.mode === 'night' ? 'timeOfDayNight' : 'timeOfDayDaylight') });
+  $('#study-lighting-retry').hidden = !renderer || lighting.phase !== 'fallback';
   $('#study-metrics').textContent = JSON.stringify({
     view: selected?.id ?? null, camera: selected?.camera ?? null,
     hiddenGroups: selected?.hiddenGroups ?? [],
     modelSha256: renderer?.snapshot().modelHash ?? manifest?.modelSha256 ?? null,
-    renderSha256: selected?.renderSha256 ?? null,
+    renderSha256: selectedRender()?.renderSha256 ?? null,
     stillRenderer: manifest?.renderEngine ?? 'Blender Cycles',
     realtimeRenderer: 'Three.js r186 · WebGL2 · PBR Neutral',
-    lighting: manifest?.lighting ?? null,
-    fog: manifest?.fog ?? null,
-    offlineLighting: manifest?.offlineLighting ?? null,
+    appearance, lighting: renderer?.getLightingState() ?? lighting,
+    offlineLighting: manifest?.offlineLighting?.[appearance] ?? null,
     renderingDifference: label(manifest?.renderDifference) || null,
   }, null, 2);
 }
@@ -68,6 +77,9 @@ function applyLocale(next) {
   $('#study-image').alt = `${text('comparisonImageLabel')}${name ? ` · ${name}` : ''}`;
   renderer?.setLabel(`${text('comparisonCanvasLabel')}${name ? ` · ${name}` : ''}`);
   updateStatus();
+  const url = new URL(location.href); url.searchParams.set('lang', locale); url.searchParams.set('lighting', appearance);
+  history.replaceState(null, '', url);
+  $('#back-link').href = `./index.html?lang=${locale}&lighting=${appearance}`;
 }
 
 function setMode(value) {
@@ -78,40 +90,57 @@ function setMode(value) {
   renderer?.resize();
 }
 
+function loadStill() {
+  const token = ++imageRequest, view = selected, render = selectedRender();
+  imageStatus = 'loading'; $('#study-image').hidden = true;
+  if (!render) {
+    $('#study-image').removeAttribute('src'); imageStatus = 'missing-lighting'; updateStatus(); return;
+  }
+  const imageAsset = localAsset(render.file, manifestURL, appURL);
+  if (render.renderSha256) imageAsset.searchParams.set('v', render.renderSha256);
+  const imageURL = imageAsset.href;
+  $('#study-image').onload = () => {
+    if (token !== imageRequest || $('#study-image').src !== imageURL) return;
+    const ratio = $('#study-image').naturalWidth / $('#study-image').naturalHeight;
+    imageStatus = Math.abs(ratio - view.camera.aspect) < 0.005 ? 'ready' : 'unavailable';
+    $('#study-image').hidden = imageStatus !== 'ready'; updateStatus();
+  };
+  $('#study-image').onerror = () => {
+    if (token === imageRequest && $('#study-image').src === imageURL) { imageStatus = 'unavailable'; updateStatus(); }
+  };
+  $('#study-image').src = imageURL;
+}
+
 function selectView(id, announce = true) {
   selected = manifest.views.find(view => view.id === id) ?? manifest.views[0];
   $('#study-view').value = selected.id;
   document.querySelectorAll('.study-frame').forEach(node => node.style.setProperty('--view-aspect', selected.camera.aspect));
-  renderer?.selectView(selected);
-  imageStatus = 'loading'; $('#study-image').hidden = true;
-  const imageAsset = localAsset(selected.file, manifestURL, appURL);
-  if (selected.renderSha256) imageAsset.searchParams.set('v', selected.renderSha256);
-  const imageURL = imageAsset.href;
-  $('#study-image').onload = () => {
-    if ($('#study-image').src !== imageURL) return;
-    const ratio = $('#study-image').naturalWidth / $('#study-image').naturalHeight;
-    imageStatus = Math.abs(ratio - selected.camera.aspect) < 0.005 ? 'ready' : 'unavailable';
-    $('#study-image').hidden = imageStatus !== 'ready'; updateStatus();
-  };
-  $('#study-image').onerror = () => {
-    if ($('#study-image').src === imageURL) { imageStatus = 'unavailable'; updateStatus(); }
-  };
-  $('#study-image').src = imageURL;
+  renderer?.selectView(selected); loadStill();
   if (announce) $('#study-announcement').textContent = text('comparisonViewChanged', { name: label(selected.label) });
   applyLocale(locale);
+}
+
+async function setAppearance(value) {
+  appearance = lightingMode(value);
+  if (selected) loadStill();
+  const operation = renderer?.setLightingMode(appearance);
+  applyLocale(locale);
+  await operation;
 }
 
 async function load() {
   const sequence = ++requestId;
   controller?.abort(); renderer?.dispose(); renderer = null;
   controller = new AbortController(); const signal = controller.signal;
+  lighting = { requestedMode: appearance, mode: null, phase: 'loading' };
   manifestStatus = realtimeStatus = imageStatus = 'loading'; updateStatus();
   try {
     const response = await fetch(manifestURL, { signal, cache: 'no-cache' });
     if (!response.ok) throw new Error('Study manifest unavailable');
     manifest = validateManifest(await response.json());
     localAsset(manifest.model, manifestURL, appURL);
-    for (const view of manifest.views) localAsset(view.file, manifestURL, appURL);
+    if (manifest.lightingRig) localAsset(manifest.lightingRig, manifestURL, appURL);
+    for (const view of manifest.views) for (const render of Object.values(view.renders ?? { day: view })) localAsset(render.file, manifestURL, appURL);
     if (sequence !== requestId) return;
     manifestStatus = 'ready';
     $('#study-view').replaceChildren(...manifest.views.map(view => {
@@ -124,11 +153,15 @@ async function load() {
   }
   try {
     const candidate = await createStudyRenderer($('#realtime-stage'), manifest, {
-      manifestURL, appURL, signal,
+      manifestURL, appURL, signal, lightingMode: appearance,
+      onLightingStatus(state) { if (sequence === requestId && !signal.aborted) { lighting = state; updateStatus(); } },
       onContextLost() { controller.abort(); renderer = null; realtimeStatus = 'unavailable'; updateStatus(); },
     });
     if (sequence !== requestId || signal.aborted) { candidate.dispose(); return; }
-    renderer = candidate; renderer.selectView(selected); realtimeStatus = 'ready'; applyLocale(locale);
+    renderer = candidate;
+    if (renderer.getLightingState().requestedMode !== appearance) await renderer.setLightingMode(appearance);
+    if (sequence !== requestId || signal.aborted) { candidate.dispose(); return; }
+    renderer.selectView(selected); realtimeStatus = 'ready'; applyLocale(locale);
   } catch (error) {
     if (sequence !== requestId || signal.aborted) return;
     realtimeStatus = 'unavailable'; updateStatus();
@@ -138,6 +171,10 @@ async function load() {
 $('#study-view').addEventListener('change', event => selectView(event.target.value));
 $('#study-mode').addEventListener('change', event => setMode(event.target.value));
 $('#study-retry').addEventListener('click', load);
+$('#study-appearance').addEventListener('click', event => {
+  const button = event.target.closest('[data-appearance]'); if (button) setAppearance(button.dataset.appearance);
+});
+$('#study-lighting-retry').addEventListener('click', () => setAppearance(appearance));
 $('#study-language').addEventListener('click', event => {
   const button = event.target.closest('[data-locale]'); if (button) applyLocale(button.dataset.locale);
 });
@@ -145,11 +182,11 @@ window.addEventListener('pagehide', () => { controller?.abort(); renderer?.dispo
 window.addEventListener('pageshow', event => { if (event.persisted) load(); });
 if (import.meta.env.DEV || params.get('qa') === '1') {
   window.__TOUR_COMPARISON__ = Object.freeze({
-    snapshot: () => ({ locale, mode, selectedViewId: selected?.id ?? null,
+    snapshot: () => ({ locale, mode, appearance, lighting: structuredClone(lighting), selectedViewId: selected?.id ?? null,
       status: { manifest: manifestStatus, realtime: realtimeStatus, image: imageStatus },
       manifest: manifest ? structuredClone(manifest) : null,
       renderer: renderer?.snapshot() ?? null,
-      image: { src: $('#study-image').src, width: $('#study-image').naturalWidth, height: $('#study-image').naturalHeight },
+      image: { src: $('#study-image').src, mode: appearance, width: $('#study-image').naturalWidth, height: $('#study-image').naturalHeight },
     }),
   });
 }
