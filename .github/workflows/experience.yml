@@ -66,3 +66,15 @@ jobs:
           name: experience-browser-evidence
           path: experience/test-results/browser
           if-no-files-found: ignore
+      - name: Exercise the shared-perspective journey
+        run: npm run test:perspective -- dist
+        env:
+          EXPERIENCE_QA_OUTPUT: test-results/perspective
+          EXPERIENCE_QA_TIMEOUT: '600000'
+      - name: Preserve perspective evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: perspective-browser-evidence
+          path: experience/test-results/perspective
+          if-no-files-found: ignore
