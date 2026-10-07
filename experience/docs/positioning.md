@@ -1,6 +1,6 @@
 # Product directions to explore
 
-2026-10-07 · Owner: product-design · Exploratory team recommendation; no new runtime delivered.
+2026-10-07 · Owner: product-design · Shared-perspective experiment approved; effectiveness unproven.
 
 ## Start from the experience, not a fixed product category
 
@@ -20,21 +20,32 @@ The question to explore is now: **can another person's way of noticing a real pl
 interesting to me, and give me something of my own to leave there?** Orientation and real travel
 can be useful consequences, but they are not the sole reason for the experience to exist.
 
+The user now approves **Borrow someone's eyes and an A/B test**. The test compares the same story,
+personal contribution and source facts in flat media versus live 3D, with enjoyment as the primary
+experience question. This is distinct from the earlier live-A/pre-rendered-B art comparison. Approval
+authorizes the experiment; it does not establish benefit, contribution demand or willingness to pay.
+No sample size or success rate is inferred from the earlier informal feedback.
+
+The broader objective is to evaluate the original city/country travel ambition across production and
+operating cost, enjoyment, and competition from games, AI travel agents and other internet products.
+See [city-country strategy](city-country-strategy.md) for that evaluation. Preserve experiential
+continuity across places even if presentation varies; no hybrid format or expansion is selected yet.
+
 ## Three materially different hypotheses
 
 These are alternatives to investigate, not three feature packages we have committed to build.
 
 | Hypothesis | Experience and primary value | Small experiment and decisive evidence |
 |---|---|---|
-| **A · Borrow someone’s eyes — recommended** | Encounter an explicitly shared view, follow what caught that person's attention, discover a detail and hear their short personal remark. Frame your own view and optionally leave a sentence. Value: attention, curiosity and a feeling of human connection. | One short connected walk with a shared view/remark and an optional personal response. Does the recipient notice something new, explain why that perspective mattered, or want to offer a different observation? A generic fact popup or an anonymous decorative marker does not prove this hypothesis. |
+| **A · Borrow someone’s eyes — approved experiment** | Encounter an explicitly shared view, follow what caught that person's attention, discover a detail and hear their short personal remark. Frame your own view and optionally leave a sentence. Value: attention, curiosity and a feeling of human connection. | One short connected walk with a shared view/remark and an optional personal response. Does the recipient enjoy the experience, notice something new or want to offer a different observation? A generic fact popup or an anonymous decorative marker does not prove this hypothesis. |
 | **B · Curiosity-led discovery** | A recognizable place becomes a small visual discovery: look from another angle, notice a pattern or follow a spatial clue. Value: playful investigation, even alone and without a travel plan. | One environmental discovery with a readable reveal and an optional continuation. Does exploring the space produce enjoyment or understanding that merely reading the answer does not? No copied combat, loot economy or menu quiz is needed. |
 | **C · A place to return to** | Keep a view and a personal thought, then revisit how the place or its meaning has changed for you. A later physical visit can add a reflection, but is optional. Value: personal memory and continuity. | One private place capsule and one actual return, if a participant is available. Does it recover a meaningful memory or invite a new observation? A saved log that the person finds no reason to reopen does not establish value. |
 
-Choose A for the next small prototype because it directly develops the user's interest in other
-people's footprints and tests a purpose beyond planning. B or C may be stronger after evidence;
+A is approved for the next small prototype. It develops the user's interest in other people's
+footprints and tests a purpose beyond planning. B or C may be stronger after evidence;
 we should be willing to change direction. No uniqueness or market-advantage claim follows yet.
 
-## Recommended prototype: one shared look, one personal response
+## Approved experiment: one shared look, one personal response
 
 Use one recognizable place and a short coherent approach, discovery and departure. A shared moment
 invites the player to pause and look up or turn toward a specific feature. Let them notice it, then
@@ -69,7 +80,7 @@ separate Ginza reference into a Kyoto walk as though the locations were adjacent
 |---|---|
 | Delivered | The Kyoto slice has guided exploration, three sourced encounters, EN/ZH, notes, authored day/night and selected-note link/PNG/print recaps. See [delivery](iteration.md) and [validation](validation.md). The user accepted fluency/guidance for the build they played. |
 | Limitation | Its 64 m strip/one crossing and encounter-choice recap do not yet offer a richer connected travel experience, arbitrary shared viewpoints, continuous footprints or another person's perspective. Expanded background geometry is not expanded navigation. |
-| Proposed now | The small shared-look prototype and experience tests. Existing note/preview/recipient patterns can help, but their three-ID, choice-required recap model is not already a free personal-moment system. |
+| Approved, not yet delivered | The small shared-look prototype and same-content flat-media/3D A/B test. Existing note/preview/recipient patterns can help, but their three-ID, choice-required recap model is not already a free personal-moment system. |
 | Open | Whether the best experience is social, exploratory, reflective, useful for travel, or a combination; whether 3D participation adds value; whether people want to contribute or return. |
 
 A footprint can mean a deliberately marked moment, not necessarily a movement log. If path recording
@@ -104,8 +115,9 @@ broader complaint about travel depth; that remains a separate question if people
 
 ## What would change our minds?
 
-Compare the same personal moment in the 3D scene with a static view/story card, and with a scene
-containing the same factual information alone. Record what was noticed, enjoyed, remembered or
+The approved A/B compares the same story, personal contribution and facts in the 3D scene and a
+flat view/story presentation. Enjoyment is primary; notice what each person likes and wants to continue.
+Record what was noticed, enjoyed, remembered or
 expressed, plus assistance and confusion. If a static card provides the same value with less friction,
 consider a simpler format. If this is only clicking map facts or menus, we have not proved that play
 adds value. Do not protect the “game” category from that result.

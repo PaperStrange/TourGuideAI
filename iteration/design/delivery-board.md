@@ -11,7 +11,15 @@ They ask what follows and how it affects real life. They also explicitly free th
 team to challenge the SOW: it is initial design guidance, not a product boundary.
 The earlier accepted fluency/guidance remains evidence for the version played.
 
-**Current recommendation:** test “borrow someone's eyes”—follow a deliberately
+**New user approval:** Borrow someone's eyes and its A/B experiment are approved.
+The user also requests a city/country comparison across cost, enjoyment and
+competition from games, AI travel agents and internet products. The
+[strategy evaluation](../../experience/docs/city-country-strategy.md) preserves
+the wider ambition and compares six approaches. Selective immersive chapters are
+the leading conditional recommendation; larger implementation/budget decisions
+remain dependent on experience, continuity and production evidence.
+
+**Approved experiment:** test “borrow someone's eyes”—follow a deliberately
 shared viewpoint, notice a real detail, frame your own view and optionally leave a
 short thought for another visitor. Curiosity and connection may matter without a
 planned trip. Preparation and real-visit reflection are optional benefits to test.
@@ -20,14 +28,16 @@ map, full route recorder, community feed or all candidate concepts.
 
 | Proposed sprint | Owners | Bounded outcome | State |
 |---|---|---|---|
-| Focus-1 · Discover through another view | product, art, world, engineering, QA | One coherent short approach and contrasting, explicitly authored or consented personal moments; movement/viewpoint reveals a supported detail | Creative prototype proposed; no implemented shared trail or recruited contributors |
+| Focus-1 · Discover through another view | product, art, world, engineering, QA | One coherent short approach and contrasting, explicitly authored or consented personal moments; movement/viewpoint reveals a supported detail | Experience experiment approved; implementation and contributors pending |
 | Focus-2 · Leave my moment | product, engineering, QA | Frame a view and optionally keep a short thought without completing a choice menu; preview selected sharing | Proposed; current encounter notes/recap do not yet represent independent viewpoints or footprints |
-| Focus-3 · Someone sees differently | product, QA, available participants | Recipient follows a selected moment and explains what it changed; assess enjoyment/connection, with real-photo or field transfer separately if relevant | Human evidence pending; no claim that game, social or practical benefit is proven |
+| Focus-3 · Experience A/B and recipient | product, QA, available participants | Compare same story/facts/contribution in live 3D and map/photo/story; assess voluntary enjoyment and recipient meaning, with travel utility separately | A/B approved; implementation and human evidence pending; distinct from earlier rendering comparison |
 | Parallel · Architectural recognition | world, art, engineering, QA, lead | Bounded live Ginza/Wako study with reference-supported architecture | Reference selection, licensed photograph and validation brief complete; scene implementation pending |
 
 [SOW §0f](SOW.md), [positioning](../../experience/docs/positioning.md) and
 [Ginza recognition study](../../experience/docs/recognition-study.md) distinguish
-user feedback, selected reference and unproven recommendations. The following
+user feedback, selected reference and unproven recommendations. After the experience
+test, assess one city journey and then a two-city corridor before expanding coverage;
+these are conditional decision stages, not committed release dates. The following
 lighting sprints are already delivered:
 
 | Sprint | Owners | Exit | State |

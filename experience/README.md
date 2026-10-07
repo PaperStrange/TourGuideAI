@@ -53,6 +53,7 @@ build, keep the entire `dist/` directory, including `models/` and `assets/`.
 - [Building photographs, Street View research and facade references](docs/facade-references.md)
 - [Licensed lighting environments and online resource research](docs/lighting-resources.md)
 - [Product positioning and proposed next sprints](docs/positioning.md)
+- [City/country solutions, costs, competition and approved experience A/B](docs/city-country-strategy.md)
 - [Selected Ginza building-recognition reference](docs/recognition-study.md)
 
 The scene uses original Blender-authored assets and local source evidence. Licensed

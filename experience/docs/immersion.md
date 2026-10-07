@@ -15,9 +15,10 @@ Live-browser A is favored informally; the reported “roughly 60% positive feedb
 an unknown denominator/method and is not a fidelity score. Retain B as a reference unless retired.
 More menu cards or a larger movement log are not established answers to the experience gap.
 
-## Recommended experiment: borrow someone's eyes
+## Approved experiment: borrow someone's eyes
 
-The current team recommendation is a **short connected approach → explicitly shared view → follow
+The user has approved this experience and a same-content flat-media/3D A/B test. The loop is a
+**short connected approach → explicitly shared view → follow
 curiosity and notice a detail → hear the author's brief remark → optionally frame a view and leave
 one sentence → another person gains a new way to notice**. A later real visit/reflection is possible,
 but is not necessary to give the interaction value. Attention, enjoyment and connection are primary
@@ -38,16 +39,25 @@ not record one's own visit or change one's saved walk. Virtual exploration, shar
 user-reported real visits and sourced facts remain distinct. No automatic GPS tracking, public home
 or exact-time history, popularity ranking, co-presence or social feed is required for this proof.
 
-Compare the same story/view in a flat card and in the moving scene. Does the invitation make a person
+Compare the same story, personal contribution and source facts in flat media and in the moving 3D
+scene. Enjoyment is the primary experience question; approval of the test does not prove effectiveness.
+This is a new comparison, distinct from the earlier live-A/pre-rendered-B art comparison. No sample
+size or success rate has been established. Does the invitation make a person
 notice something, understand the author's perspective or want to express something of their own?
 If a static card provides the same value with less friction, simplify. If interaction is only clicking
 facts or menus, added value from play remains unproven. Reported connection/confidence, virtual
 recognition, unseen-photo/map transfer and actual field use are different observations.
 
-[Positioning](positioning.md) compares three creative hypotheses: shared perspectives (recommended),
+[Positioning](positioning.md) compares three creative hypotheses: shared perspectives (approved experiment),
 curiosity-led discovery and personal return/memory. Its three exploratory sprints are discovery →
-private authorship → recipient experience. This is a recommendation to test one small prototype,
-not a commitment to implement all hypotheses or an announcement of new runtime capabilities.
+private authorship → recipient experience. The sprint sequence remains a team recommendation for
+the approved experiment; the alternatives and new runtime capabilities are not already delivered.
+
+The user also requests evaluation of the original city/country travel ambition across cost, enjoyment
+and competition from games, AI travel agents and internet products. The [city-country strategy](city-country-strategy.md)
+will compare approaches while preserving the feeling of a connected journey across places. A varied
+presentation may serve that continuity, but a hybrid has not been selected. Monetization and
+willingness to pay remain hypotheses rather than evidence of demand.
 
 ## Delivered baseline and parallel art work
 

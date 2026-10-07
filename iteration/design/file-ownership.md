@@ -62,6 +62,7 @@
 |---|---|---|
 | `docs/positioning.md` | product-design | 用户指定比较对象、团队定位建议、实际能力与未证实效果分开 |
 | `docs/recognition-study.md`, `evidence/recognition-selection-20261007/` | lead | 整合 world/art/engineering/QA 只读评审；选址、许可参考、观察与后续判据 |
+| `docs/city-country-strategy.md` | lead | 城市/国家体验方案、成本情景、官方竞争资料与已批准的新体验 A/B 设计；专业成员只读提供评审 |
 
 本轮 `docs/validation.md` 的上一轮 CI 完成状态由 lead 做一次关闭更新；QA 只读提供已核对结果，不并发编辑。
 

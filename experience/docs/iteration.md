@@ -8,6 +8,21 @@ the team to rethink that framing; the current creative proposal is below.
 
 ## This delivery
 
+### Approved experience experiment and city/country evaluation · 2026-10-07
+
+The user approves Borrow someone's eyes and its A/B test. They reaffirm the wider
+city/country travel ambition and ask for a comparison of costs, enjoyment and market
+competition, including AI travel agents and internet products. The
+[strategy evaluation](city-country-strategy.md) compares six approaches, published
+service rates, explicit production-cost scenarios and current official competitor
+claims. The leading recommendation connects selective immersive chapters through
+a continuing journey, conditional on experience and production evidence.
+
+The approved experiment compares live 3D against a credible map/photo/story version
+with the same contribution and facts. It is distinct from the existing live-versus-
+Blender rendering study. Implementation and human results remain pending. This
+delivery updates research and planning only; the hosted app is unchanged.
+
 ### Current direction · discover a place through another person, 2026-10-07
 
 The user reports a friend's preference for the live browser view and roughly
