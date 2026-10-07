@@ -1,27 +1,40 @@
 {
   "sourceRepository": "https://github.com/PaperStrange/TourGuideAI",
   "sourceBranch": "chore-sow-delivery-plan",
-  "sourceCommit": "a176cf38fbf1645fa8a5a0eb72a99d017ba705ab",
-  "browserChecksPassed": 130,
-  "unitTestsPassed": 33,
+  "sourceCommit": "f701bdaf98f98a47d112220763009f35cbdf28c0",
+  "experience": "Borrow someone\u2019s eyes",
+  "entryPath": "perspective.html",
+  "formats": [
+    "walk",
+    "story"
+  ],
+  "languages": [
+    "en",
+    "zh"
+  ],
+  "perspectiveBrowserChecksPassed": 80,
+  "originalBrowserSuiteChecks": 130,
+  "originalBrowserSuiteConclusion": "success",
+  "layoutRepairChecksPassed": 15,
+  "mobileLiveChecksPassed": 10,
+  "unitTestsPassed": 44,
   "repositoryGatesPassed": 17,
-  "builtManifestSha256": "06bd6490029b8067c43a19dde5c957c467441fc829d5b00b91d2d21056938bef",
-  "browserReportSha256": "cb2ef0c473ca29d93f22bb01702f6beba1f3f6ccd95e69bc5ceba70e18c5343d",
+  "builtManifestSha256": "0dcb86bc7247f0b790627ecc61799a8c60268475e802da8f940995fe2791e613",
+  "perspectiveBrowserReportSha256": "90751752d56f1cf9fdb6b70f006400b5eda015d74441f982bf7e44580c58ca8d",
+  "perspectiveArtManifestSha256": "54563b7bf87afd3a8e5d3521aed12ddd64f72c58dc4d883509706aeb7b7541cc",
   "modelSha256": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c",
-  "renderStudyManifestSha256": "e2274732cff1a12fde5df1074cdf2dee2d00673c56e9bd1311b8935697c401e1",
-  "lightingRigSha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
-  "lightingResourcesSha256": "d8015c1d2d837ad27fb4c4851acaceb96fe9901b45f37b9a6d13331149c4822b",
-  "lightingModes": [
-    "day",
-    "night"
-  ],
-  "comparisonViewsPerMode": 3,
-  "nightPath": "?lighting=night",
-  "comparisonPath": "comparison.html",
-  "sharingFormats": [
-    "web-link",
-    "png-image",
-    "print-pdf"
-  ],
-  "reviewStatus": "Daylight/night implementation ready for user review; automated checks do not establish realism or target-device performance."
+  "ciRun": "https://github.com/PaperStrange/TourGuideAI/actions/runs/37580389117",
+  "reviewStatus": "Technical delivery; human enjoyment, social value, architectural realism and ordinary-device fluency remain review questions.",
+  "originalWalk": {
+    "entryPath": "index.html",
+    "lightingModes": [
+      "day",
+      "night"
+    ],
+    "sharingFormats": [
+      "web-link",
+      "png-image",
+      "print-pdf"
+    ]
+  }
 }
