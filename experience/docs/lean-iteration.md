@@ -61,6 +61,8 @@ The table is a sequence of decision gates, not a commitment to unstaffed dates.
 | Corridor · Sprint 4, conditional | Same team: carry the experience between two cities | Regional continuity, repeat value, recovery and repeatable source/art/update work justify expansion. Replace illustrative cost assumptions with observed comparable work. |
 
 Sprint 2 uses the same author, facts, destinations and response opportunities.
+The [review protocol](perspective-review.md) supplies neutral EN/ZH prompts and
+explains assignment, crossover and the single local feedback record.
 Record differences in walking time and framing: this compares delivered formats,
 not a perfectly isolated rendering variable. Missing participants leaves this
 human gate pending. Real consenting contributors and recipients are needed before
