@@ -37,7 +37,20 @@ concurrency:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    name: Validate ${{ matrix.suite }}
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - suite: original walk
+            command: test:browser
+            output: browser
+            artifact: experience-browser-evidence
+          - suite: shared perspective
+            command: test:perspective
+            output: perspective
+            artifact: perspective-browser-evidence
     defaults:
       run:
         working-directory: experience
@@ -52,29 +65,16 @@ jobs:
       - run: npm test
       - run: npm run build
       - run: npx playwright install --with-deps chromium
-      - name: Exercise the packaged game in Chromium
-        run: npm run test:browser -- dist
+      - name: Exercise the packaged experience in Chromium
+        run: npm run ${{ matrix.command }} -- dist
         env:
-          EXPERIENCE_QA_OUTPUT: test-results/browser
-          # The hosted runner uses software rendering. A moving bank approach
-          # exceeded four minutes; this bounds tooling, not accepted game speed.
+          EXPERIENCE_QA_OUTPUT: test-results/${{ matrix.output }}
+          # A bounded tooling allowance for software rendering, not a fluency target.
           EXPERIENCE_QA_TIMEOUT: '600000'
       - name: Preserve browser evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: experience-browser-evidence
-          path: experience/test-results/browser
-          if-no-files-found: ignore
-      - name: Exercise the shared-perspective journey
-        run: npm run test:perspective -- dist
-        env:
-          EXPERIENCE_QA_OUTPUT: test-results/perspective
-          EXPERIENCE_QA_TIMEOUT: '600000'
-      - name: Preserve perspective evidence
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: perspective-browser-evidence
-          path: experience/test-results/perspective
+          name: ${{ matrix.artifact }}
+          path: experience/test-results/${{ matrix.output }}
           if-no-files-found: ignore
