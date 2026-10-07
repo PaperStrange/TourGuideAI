@@ -51,8 +51,8 @@ app.innerHTML = `
 </header>
 <main class="workspace">
   <aside class="sidebar">
-    <div class="intro-section"><div class="eyebrow" data-i18n="chapterLabel"></div><h1 class="city-heading" id="city-title">Kyoto.</h1><div class="city-jp" lang="ja">四条通</div><p class="intro" data-i18n="intro"></p></div>
-    <a class="perspective-entry" id="perspective-link" href="./perspective.html" style="display:block;margin:0 0 18px;font-size:12px;text-decoration:underline;text-underline-offset:4px"></a><div class="divider"></div>
+    <div class="intro-section"><div class="eyebrow" data-i18n="chapterLabel"></div><h1 class="city-heading" id="city-title">Kyoto.</h1><div class="city-jp" style="display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap"><span lang="ja">四条通</span><a id="perspective-link" href="./perspective.html" style="font-size:10px;letter-spacing:normal;line-height:1.4;text-decoration:underline;text-underline-offset:3px"></a></div><p class="intro" data-i18n="intro"></p></div>
+    <div class="divider"></div>
     <section class="objective-section" aria-labelledby="objective-label"><div class="section-label" id="objective-label" data-i18n="objectiveLabel"></div><h2 class="objective" id="objective"></h2><p class="objective-support" id="objective-support"></p></section>
     <ol class="journey-list" id="journey-list"></ol>
     <div class="journal-footer"><div class="journal-progress"><span data-i18n="journalTitle"></span><span id="progress-count"></span></div><div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="3" id="progress"><div class="progress-fill" id="progress-fill"></div></div><button type="button" class="export-button" id="export-notes"><span data-i18n="exportJournal"></span><span aria-hidden="true">↗</span></button></div>
@@ -142,7 +142,7 @@ function applyLocale(next) {
   $('#language-switch').setAttribute('aria-label',text('languageLabel'));
   $('#reset-button').setAttribute('aria-label',text('reset'));
   $('#city-title').textContent=locale==='zh'?'京都。':'Kyoto.';
-  $('#perspective-link').textContent=locale==='zh'?'新体验：借一双眼睛 ↗':'New: Borrow someone’s eyes ↗';
+  $('#perspective-link').textContent=locale==='zh'?'借一双眼睛 ↗':'Borrow a view ↗';
   $('#perspective-link').href=`./perspective.html?lang=${locale}`;
   $('#game-stage').setAttribute('aria-label',text('mapLabel'));
   $('#camera-toolbar').setAttribute('aria-label',text('cameraOrbit'));
