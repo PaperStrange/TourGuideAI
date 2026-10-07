@@ -364,9 +364,12 @@ try {
         percentOrigin: origin.every(value => value.endsWith('%')), rawOrigin: img.style.transformOrigin };
     });
     const expectedFrame = sharedPayload(storyURL).view;
+    // Chromium exposes CSS matrix coefficients at float32 precision. Allow one
+    // relative float32 epsilon; this is arithmetic tolerance, not visual drift.
+    const scaleTolerance = 2 ** -23 * Math.max(1, expectedFrame.scale);
     check('fresh-story-recipient-matches-selected-note-and-frame', await page.locator('.recipient-note').innerText() === note
-      && recipientFrame.percentOrigin && Math.abs(recipientFrame.scaleX - expectedFrame.scale) < 1e-8
-      && Math.abs(recipientFrame.scaleY - expectedFrame.scale) < 1e-8
+      && recipientFrame.percentOrigin && Math.abs(recipientFrame.scaleX - expectedFrame.scale) <= scaleTolerance
+      && Math.abs(recipientFrame.scaleY - expectedFrame.scale) <= scaleTolerance
       && Math.abs(recipientFrame.x - expectedFrame.x) < 1e-8 && Math.abs(recipientFrame.y - expectedFrame.y) < 1e-8
       && recipientFrame.skewX === 0 && recipientFrame.skewY === 0 && recipientFrame.translateX === 0 && recipientFrame.translateY === 0,
     { expectedFrame, recipientFrame });
