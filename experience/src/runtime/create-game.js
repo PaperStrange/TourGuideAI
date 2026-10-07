@@ -4,6 +4,7 @@ import { createState, stepSimulation, refreshProximity, snapshot, setDestination
 import { createGuidedCamera } from './camera.js';
 import { createWorldView } from './world-view.js';
 import { lightingMode as normalizeLightingMode } from './lighting-contract.js';
+import { CAMERA_DEFAULTS, normalizePerspectiveView } from './view-state.js';
 
 const keys = { KeyW: [0, 1], ArrowUp: [0, 1], KeyS: [0, -1], ArrowDown: [0, -1],
   KeyA: [-1, 0], ArrowLeft: [-1, 0], KeyD: [1, 0], ArrowRight: [1, 0] };
@@ -12,7 +13,10 @@ const observing = () => import.meta.env.DEV || new URLSearchParams(location.sear
 
 export async function createGame(host, options = {}) {
   if (!(host instanceof HTMLElement)) throw new Error('A scene host is required.');
+  const encounters = options.encounters !== false;
+  const initialView = normalizePerspectiveView(options.initialView);
   let player = refreshProximity(createState(options.saved?.game ?? options.saved ?? options.initialState));
+  if (initialView) { player.x = initialView.player.x; player.y = initialView.player.y; refreshProximity(player); }
   let locale = options.locale === 'zh' ? 'zh' : 'en';
   let previous = { x: player.x, y: player.y };
   let renderer, canvas, view, rig, observer, frameHandle;
@@ -40,14 +44,14 @@ export async function createGame(host, options = {}) {
     target.addEventListener(type, handler, config);
     cleanups.push(() => target.removeEventListener(type, handler, config));
   };
-  const invalidate = () => { dirty = true; };
+  const invalidate = () => { dirty = true; if (rig) options.onViewChange?.(api.captureView()); };
   const clearMovement = () => {
     held.clear(); player.destination = null; player.waypoints = []; player.moving = false;
     queuedInteraction = null; accumulator = 0; previous = { x: player.x, y: player.y }; dirty = true;
   };
   const interact = id => {
     const target = byId.get(id);
-    if (status !== 'ready' || player.paused || !target) return;
+    if (!encounters || status !== 'ready' || player.paused || !target) return;
     const point = approachPoint(target);
     if (Math.hypot(player.x - point.x, player.y - point.y) > INTERACTION_RADIUS) return;
     clearMovement(); player.selectedTargetId = id;
@@ -56,12 +60,42 @@ export async function createGame(host, options = {}) {
   };
   function localize() {
     canvas?.setAttribute('aria-label', locale === 'zh'
-      ? '京都四条街景。WASD 或方向键行走，拖动环视，滚动缩放，靠近后按 E 互动。'
-      : 'Kyoto Shijo street. Walk with WASD or arrow keys, drag to look around, scroll to zoom, and press E nearby to interact.');
+      ? `京都四条街景。WASD 或方向键行走，拖动环视，滚动缩放${encounters ? '，靠近后按 E 互动' : ''}。`
+      : `Kyoto Shijo street. Walk with WASD or arrow keys, drag to look around, and scroll to zoom${encounters ? '. Press E nearby to interact' : ''}.`);
   }
   const api = {
     getState: () => snapshot(player),
     getCameraState: () => rig?.snapshot() ?? null,
+    captureView() {
+      const camera = rig?.snapshot();
+      if (!camera || camera.transitioning) return null;
+      return normalizePerspectiveView({ version: 1, player: { x: player.x, y: player.y }, camera: {
+        azimuth: camera.azimuth, polar: camera.polar, distance: camera.distance,
+        targetOffset: { x: camera.target[0] - player.x, y: -camera.target[2] - player.y, height: camera.target[1] },
+      } });
+    },
+    restoreView(value) {
+      const next = normalizePerspectiveView(value);
+      if (!next || !rig || status !== 'ready' || destroyed) return false;
+      clearMovement(); player.x = next.player.x; player.y = next.player.y;
+      previous = { ...next.player }; refreshProximity(player);
+      rig.restorePose(next.camera, player); dirty = true; publish();
+      return true;
+    },
+    focusMoment(moment) {
+      const point = moment?.lookAt ?? moment?.focus;
+      if (!rig || status !== 'ready' || destroyed || !point ||
+          ![point.x, point.y, point.height].every(Number.isFinite)) return false;
+      const dx = point.x - player.x, dy = point.y - player.y;
+      const next = normalizePerspectiveView({ version: 1, player, camera: {
+        ...CAMERA_DEFAULTS, ...moment.camera,
+        azimuth: moment.camera?.azimuth ?? Math.atan2(-dx, dy),
+        targetOffset: { x: dx, y: dy, height: point.height },
+      } });
+      if (!next) return false;
+      clearMovement(); rig.restorePose(next.camera, player, !player.paused);
+      dirty = true; publish(); return true;
+    },
     getLightingState: () => view?.getLightingState() ?? structuredClone(lightingState),
     async setLightingMode(value) {
       requestedLightingMode = normalizeLightingMode(value);
@@ -79,18 +113,20 @@ export async function createGame(host, options = {}) {
     rotateCamera(delta) { if (!player.paused && Number.isFinite(delta)) rig?.rotate(delta); },
     zoomCamera(delta) { if (!player.paused && Number.isFinite(delta)) rig?.zoom(delta); },
     markVisited(id, choiceId) {
-      if (!byId.has(id)) return;
+      if (!encounters || !byId.has(id)) return;
       if (!player.visitedIds.includes(id)) player.visitedIds.push(id);
       if (typeof choiceId === 'string') player.choiceIds[id] = choiceId;
       dirty = true; publish();
     },
     markSourceRead(id) {
+      if (!encounters) return;
       if (byId.has(id) && !player.readSourceIds.includes(id)) player.readSourceIds.push(id);
       publish();
     },
-    setSelectedTarget(id) { if (byId.has(id)) { player.selectedTargetId = id; dirty = true; publish(); } },
+    setSelectedTarget(id) { if (encounters && byId.has(id)) { player.selectedTargetId = id; dirty = true; publish(); } },
     moveTo(x, y) {
       if (player.paused || status !== 'ready' || !Number.isFinite(x) || !Number.isFinite(y)) return;
+      rig.resumeFollow();
       held.clear(); queuedInteraction = null; setDestination(player, x, y); dirty = true; publish();
     },
     destroy() {
@@ -118,6 +154,7 @@ export async function createGame(host, options = {}) {
     Object.assign(canvas.style, { display: 'block', width: '100%', height: '100%', touchAction: 'none', cursor: 'grab' });
     host.prepend(canvas); localize();
     rig = createGuidedCamera(canvas, player, reducedMotion, invalidate);
+    if (initialView) rig.restorePose(initialView.camera, player);
     rig.setEnabled(false);
     const resize = () => {
       width = Math.max(1, host.clientWidth); height = Math.max(1, host.clientHeight);
@@ -130,8 +167,8 @@ export async function createGame(host, options = {}) {
       (event.target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target.tagName));
     listen(window, 'keydown', event => {
       if (status !== 'ready' || player.paused || isText(event) || event.altKey || event.ctrlKey || event.metaKey) return;
-      if (keys[event.code]) { event.preventDefault(); held.add(event.code); queuedInteraction = null; }
-      if (event.code === 'KeyE' && !event.repeat) { event.preventDefault(); interact(player.nearbyTargetId); }
+      if (keys[event.code]) { event.preventDefault(); rig.resumeFollow(); held.add(event.code); queuedInteraction = null; }
+      if (encounters && event.code === 'KeyE' && !event.repeat) { event.preventDefault(); interact(player.nearbyTargetId); }
     });
     listen(window, 'keyup', event => { held.delete(event.code); });
     listen(window, 'blur', clearMovement);
@@ -141,6 +178,7 @@ export async function createGame(host, options = {}) {
       return { x: (event.clientX - rect.left) * width / rect.width, y: (event.clientY - rect.top) * height / rect.height };
     };
     const targetAt = point => {
+      if (!encounters) return null;
       let nearest = null, distance = 27;
       for (const target of TARGETS) {
         const approach = approachPoint(target);
@@ -156,6 +194,7 @@ export async function createGame(host, options = {}) {
       activePointers.add(event.pointerId);
       if (activePointers.size > 1) { if (pointer) pointer.cancelled = true; return; }
       if (event.button !== 0) return;
+      rig.finishTransition();
       host.focus({ preventScroll: true });
       pointer = { id: event.pointerId, x: event.clientX, y: event.clientY, distance: 0, cancelled: false };
     });
@@ -181,12 +220,12 @@ export async function createGame(host, options = {}) {
         else { setDestination(player, approach.x, approach.y); queuedInteraction = target.id; }
       } else {
         const destination = view.pickGround(rig.camera, point.x, point.y, width, height);
-        if (destination) setDestination(player, destination.x, destination.y);
+        if (destination) { rig.resumeFollow(); setDestination(player, destination.x, destination.y); }
       }
       dirty = true; publish();
     });
     const started = performance.now();
-    view = await createWorldView(renderer, { signal: abort.signal, onProgress: progress => notify('loading', progress),
+    view = await createWorldView(renderer, { encounters, signal: abort.signal, onProgress: progress => notify('loading', progress),
       lightingMode: requestedLightingMode, onLightingStatus: lightingStatus, onInvalidate: invalidate });
     if (destroyed || abort.signal.aborted) { view.dispose(); return api; }
     view.update(player, rig.camera, { dt: 1000, reducedMotion: true });
@@ -201,7 +240,7 @@ export async function createGame(host, options = {}) {
         host, snapshot: api.getState, camera: api.getCameraState,
         viewport: () => ({ width, height, dpr: renderer.getPixelRatio(), rect: canvas.getBoundingClientRect().toJSON() }),
         screenPoint: (x, y, h = 0.2) => rig.project(x, y, h, width, height),
-        targets: () => TARGETS.map(({ id, x, y, approachX, approachY }) => ({ id, x, y, approachX, approachY })),
+        targets: () => encounters ? TARGETS.map(({ id, x, y, approachX, approachY }) => ({ id, x, y, approachX, approachY })) : [],
         commands: () => commandTrace.map(command => ({ ...command })),
         renderer: () => ({ status, loadMs, renderedFrames, render: { ...renderer.info.render },
           memory: { ...renderer.info.memory }, scene: view.stats(), reducedMotion, lighting: view.getLightingState() }),
@@ -228,7 +267,7 @@ export async function createGame(host, options = {}) {
           if (player.paused) break;
         }
         rig.follow(player, dt, reducedMotion);
-        const arrived = byId.get(player.selectedTargetId);
+        const arrived = encounters ? byId.get(player.selectedTargetId) : null;
         if (arrived && player.nearbyTargetId === arrived.id && !player.destination && !player.moving && !held.size && !pointer) {
           arrivalIdleMs += dt;
           if (arrivalIdleMs >= 200) rig.faceTarget(arrived, player);

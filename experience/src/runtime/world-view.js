@@ -33,7 +33,7 @@ function contactShadow() {
   return mesh;
 }
 
-export async function createWorldView(renderer, { signal, onProgress, lightingMode = 'day', onLightingStatus, onInvalidate } = {}) {
+export async function createWorldView(renderer, { encounters = true, signal, onProgress, lightingMode = 'day', onLightingStatus, onInvalidate } = {}) {
   const scene = new THREE.Scene();
   let lighting;
   const loader = new GLTFLoader();
@@ -92,7 +92,7 @@ export async function createWorldView(renderer, { signal, onProgress, lightingMo
     return down.intersectObjects(walkable, false)[0]?.point.y ?? 0.05;
   }
   const shadow = contactShadow(); scene.add(shadow);
-  const markers = TARGETS.map(target => {
+  const markers = (encounters ? TARGETS : []).map(target => {
     const point = approachPoint(target);
     const ring = new THREE.Mesh(new THREE.RingGeometry(0.45, 0.56, 40),
       new THREE.MeshBasicMaterial({ color: '#b38642', transparent: true, opacity: 0.55, depthWrite: false, side: THREE.DoubleSide }));
@@ -180,7 +180,7 @@ export async function createWorldView(renderer, { signal, onProgress, lightingMo
         if (object.isMesh) { meshes++; triangles += (object.geometry.index?.count ?? object.geometry.attributes.position.count) / 3; }
       });
       const bounds = new THREE.Box3().setFromObject(street);
-      return { meshes, triangles, walkableSurfaces: walkable.length, fadedGroups: [...fadedGroups],
+      return { meshes, triangles, walkableSurfaces: walkable.length, markerCount: markers.length, fadedGroups: [...fadedGroups],
         actorPosition: actor.position.toArray(), actorHeading: actor.rotation.y,
         streetBounds: [...bounds.min.toArray(), ...bounds.max.toArray()] };
     },
