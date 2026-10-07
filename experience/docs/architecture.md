@@ -9,6 +9,7 @@ comparison evidence; the new package does not import them.
 experience/
   src/
     app/            orchestration, storage, recap codec/preview/image and reader
+    perspective/    independent experience, framing, local state and selected sharing
     comparison/     matched realtime / Blender rendering study (no journey state)
     runtime/        Three.js scene, camera, input, loading and disposal
     simulation/     fixed-step movement, bounds, proximity and serializable state
@@ -19,6 +20,7 @@ experience/
     models/         exported scene/player GLBs and asset provenance
     content-evidence/  local snapshots behind verified content
     render-study/   Blender stills with the exact shared camera manifest
+    perspectives/   matched live-browser captures and producer provenance
     lighting/       shared authored rig and licensed local HDR environments
   content-tools/    build-time extraction from frozen source geometry
   tests/            simulation, persistence, sharing and real-browser checks
@@ -94,6 +96,20 @@ with its matching live rig mode. It is an inspection study, with static offline
 frames explicitly labelled. Its selected mode is query-local and does not write
 journey or appearance storage. The expanded visual-context dataset and bounds do not alter collision
 or walkability; the accepted guided-play controls remain independent.
+
+`perspective.html` adds a separate presentation and local record under
+`tourguideai:perspective:v1`. Its adapter opts out of encounter markers and actions,
+without changing default gameplay. A saved moment contains a known content ID,
+plain-text note and bounded live pose or story crop. It contains no journey history.
+Live views save player position plus independent camera direction, distance and
+aim offset; explicit restoration is distinct from walked traversal. A recipient
+restores that view read-only and never writes storage. When WebGL cannot open,
+a labelled canonical illustration stands in for the saved 3D view.
+
+The first format choice is recorded as random, link-selected or user-selected;
+switching after starting marks crossover. Optional feedback is local and explicitly
+exportable. Reports exclude personal saved notes and camera positions. There is
+no analytics collector, public traveler feed or real-world location tracking.
 
 ## Delivery and quality
 

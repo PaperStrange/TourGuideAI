@@ -42,6 +42,25 @@ The preview serves `dist/` on port 4186. See [validation](docs/validation.md) fo
 browser prerequisites, exact verification and known limits. To host or move the
 build, keep the entire `dist/` directory, including `models/` and `assets/`.
 
+## Shared-perspective iteration
+
+Open `perspective.html` for **Borrow someone’s eyes**: three studio-authored
+observations around the crossing, a personal saved frame with an optional note,
+and one selected moment shared as a read-only browser link. English and Chinese
+are available throughout. `?mode=walk` opens the live format;
+`?mode=story` opens the matched map/story format. This experience comparison is
+separate from the earlier live/Blender rendering study.
+
+The story format uses actual illustrated captures of our live scene. This first
+comparison holds daylight constant. The original walk retains daylight/night and
+its multi-format recap. Perspective notes and feedback use their own local save;
+they do not migrate or change the original journey. Notes are excluded from share
+links until explicitly selected. Links carry readable data in their fragment and
+can be forwarded. No account or feedback collection server is involved.
+
+Run `npm run test:perspective -- dist` after building to exercise the new flow.
+See [the lean iteration and decision gates](docs/lean-iteration.md).
+
 ## Project map
 
 - [Architecture and directory boundaries](docs/architecture.md)

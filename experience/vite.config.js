@@ -6,7 +6,7 @@ export default defineConfig({
   build: {
     target: 'es2022', sourcemap: true,
     rollupOptions: {
-      input: Object.fromEntries(['index', 'comparison', 'journey'].map(name =>
+      input: Object.fromEntries(['index', 'comparison', 'journey', 'perspective'].map(name =>
         [name, fileURLToPath(new URL(`./${name}.html`, import.meta.url))])),
     },
   },

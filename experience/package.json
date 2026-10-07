@@ -9,7 +9,8 @@
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0 --port 4186",
     "test": "node --test tests/*.test.mjs",
-    "test:browser": "node tests/browser-check.mjs"
+    "test:browser": "node tests/browser-check.mjs",
+    "test:perspective": "node tests/browser-perspective.mjs"
   },
   "dependencies": { "three": "0.186.1" },
   "devDependencies": { "vite": "8.3.2", "playwright": "1.62.1" }
