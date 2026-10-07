@@ -26,12 +26,16 @@ planned trip. Preparation and real-visit reflection are optional benefits to tes
 The following stages explore one hypothesis; they are not a commitment to a larger
 map, full route recorder, community feed or all candidate concepts.
 
-| Proposed sprint | Owners | Bounded outcome | State |
+| Delivery slice | Owners | Bounded outcome | State |
 |---|---|---|---|
-| Focus-1 · Discover through another view | product, art, world, engineering, QA | One coherent short approach and contrasting, explicitly authored or consented personal moments; movement/viewpoint reveals a supported detail | Experience experiment approved; implementation and contributors pending |
-| Focus-2 · Leave my moment | product, engineering, QA | Frame a view and optionally keep a short thought without completing a choice menu; preview selected sharing | Proposed; current encounter notes/recap do not yet represent independent viewpoints or footprints |
-| Focus-3 · Experience A/B and recipient | product, QA, available participants | Compare same story/facts/contribution in live 3D and map/photo/story; assess voluntary enjoyment and recipient meaning, with travel utility separately | A/B approved; implementation and human evidence pending; distinct from earlier rendering comparison |
+| Focus-1 · Discover through another view | product, art, world, engineering, QA | One coherent short approach and contrasting, explicitly authored or consented personal moments; movement/viewpoint reveals a supported detail | Implemented with three clearly labelled studio samples; integrated verification in progress |
+| Focus-2 · Leave my moment | product, engineering, QA | Frame a view and optionally keep a short thought without completing a choice menu; preview selected sharing | Implemented independent saved view/note, edit/remove and selected sharing; integrated verification in progress |
+| Focus-3 · Experience A/B and recipient | product, QA, available participants | Compare same story/facts/contribution in live 3D and map/photo/story; assess voluntary enjoyment and recipient meaning, with travel utility separately | Both formats and read-only recipient implemented; technical verification in progress, human evidence pending |
 | Parallel · Architectural recognition | world, art, engineering, QA, lead | Bounded live Ginza/Wako study with reference-supported architecture | Reference selection, licensed photograph and validation brief complete; scene implementation pending |
+
+The [lean delivery plan](../../experience/docs/lean-iteration.md) groups these into
+one complete Sprint 1, followed by human comparison, then conditional city and
+corridor sprints.
 
 [SOW §0f](SOW.md), [positioning](../../experience/docs/positioning.md) and
 [Ginza recognition study](../../experience/docs/recognition-study.md) distinguish

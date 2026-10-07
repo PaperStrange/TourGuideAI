@@ -64,6 +64,19 @@
 | `docs/recognition-study.md`, `evidence/recognition-selection-20261007/` | lead | 整合 world/art/engineering/QA 只读评审；选址、许可参考、观察与后续判据 |
 | `docs/city-country-strategy.md` | lead | 城市/国家体验方案、成本情景、官方竞争资料与已批准的新体验 A/B 设计；专业成员只读提供评审 |
 
+2026-10-07 · 已批准体验的精益交付（共同接口先约定，lead 统一提交）：
+
+| 新范围（相对 `experience/`） | 唯一 owner | 本轮交付 |
+|---|---|---|
+| `perspective.html`, `src/perspective/main.js`, `state.js`, `share.js`, `styles.css`, `docs/lean-iteration.md`, `evidence/perspective-20261007/` | lead | 体验与对照 UI、独立存档、预览分享、本地反馈、发布整合 |
+| `src/perspective/live-view.js`, `src/runtime/view-state.js`, 既有 `src/runtime/` | engineering | 复用步行运行时、可保存视角、无旧互动的可选模式，保持原入口默认行为 |
+| `src/content/perspectives.js` | world-content | 同一三段英中观察、来源与明确的工作室示例作者 |
+| `src/perspective/copy.js` | product-design | 新流程完整英中文案 |
+| `public/perspectives/` | art-ux | 由实时视角生成的三张示意图与可核来源清单 |
+| `tests/perspective.test.mjs`, `tests/browser-perspective.mjs` | qa-release | 独立状态、分享、浏览器与恢复验证 |
+
+lead 同时维护构建入口、package 命令、CI、字体覆盖及发布说明；不新增全国场景或预订服务。
+
 本轮 `docs/validation.md` 的上一轮 CI 完成状态由 lead 做一次关闭更新；QA 只读提供已核对结果，不并发编辑。
 
 | 文件 | 历史卡 | **owner（唯一）** | 判定 |
