@@ -1,12 +1,34 @@
 # Delivery board · TourGuideAI 2.5D
 
-Updated 2026-10-06. Owner: lead. Planning baseline: `origin/iteration` at
+Updated 2026-10-07. Owner: lead. Planning baseline: `origin/iteration` at
 `eae982f4ba20a107bf21a35b70f635b4935a4c70`.
 
-**Current user review:** the hosted 3D build passed the user's fluency/guidance
-review; building/street realism did not. The previous art “no blocker” assessment
-was a technical usability check, not user realism acceptance. The user now requests
-daylight/night modes and online building-related resources for richer lighting.
+**Current user review:** the user relays a friend's preference for live A and
+roughly “60% positive” feedback on realism; the method and denominator are unknown.
+The user affirms real-place recognition, finds choices and the small street's
+travel experience less convincing, and likes their own/other travelers' footprints.
+They ask what follows and how it affects real life. They also explicitly free the
+team to challenge the SOW: it is initial design guidance, not a product boundary.
+The earlier accepted fluency/guidance remains evidence for the version played.
+
+**Current recommendation:** test “borrow someone's eyes”—follow a deliberately
+shared viewpoint, notice a real detail, frame your own view and optionally leave a
+short thought for another visitor. Curiosity and connection may matter without a
+planned trip. Preparation and real-visit reflection are optional benefits to test.
+The following stages explore one hypothesis; they are not a commitment to a larger
+map, full route recorder, community feed or all candidate concepts.
+
+| Proposed sprint | Owners | Bounded outcome | State |
+|---|---|---|---|
+| Focus-1 · Discover through another view | product, art, world, engineering, QA | One coherent short approach and contrasting, explicitly authored or consented personal moments; movement/viewpoint reveals a supported detail | Creative prototype proposed; no implemented shared trail or recruited contributors |
+| Focus-2 · Leave my moment | product, engineering, QA | Frame a view and optionally keep a short thought without completing a choice menu; preview selected sharing | Proposed; current encounter notes/recap do not yet represent independent viewpoints or footprints |
+| Focus-3 · Someone sees differently | product, QA, available participants | Recipient follows a selected moment and explains what it changed; assess enjoyment/connection, with real-photo or field transfer separately if relevant | Human evidence pending; no claim that game, social or practical benefit is proven |
+| Parallel · Architectural recognition | world, art, engineering, QA, lead | Bounded live Ginza/Wako study with reference-supported architecture | Reference selection, licensed photograph and validation brief complete; scene implementation pending |
+
+[SOW §0f](SOW.md), [positioning](../../experience/docs/positioning.md) and
+[Ginza recognition study](../../experience/docs/recognition-study.md) distinguish
+user feedback, selected reference and unproven recommendations. The following
+lighting sprints are already delivered:
 
 | Sprint | Owners | Exit | State |
 |---|---|---|---|
@@ -27,6 +49,12 @@ These sprints continue the existing owners' work. They do not expand the playabl
 boundary or claim new verified entrances. [SOW §0d](SOW.md) supersedes older
 pending-fluency and HTML-only-sharing statements below. Final new-art acceptance
 remains with the user.
+
+### Historical delivery baseline · 2026-10-05–06
+
+The following goals, sequencing and scope record earlier decisions and delivered
+increments. They do not override the user's 2026-10-07 instruction to reconsider
+the product freely. Current exploratory recommendations are above.
 
 **Status: recommended options approved on 2026-10-05, with English/Chinese guidance
 and explicit art-quality/interaction-fluency acceptance.** The user's current

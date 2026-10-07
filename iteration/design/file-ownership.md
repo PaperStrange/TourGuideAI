@@ -56,6 +56,15 @@
 
 既有 runtime/comparison、界面文案、Blender 对照渲染、测试和文档继续由上表 owner 维护。
 
+2026-10-07 定位与第二街景参考（本轮仅文档/研究，不改运行时）：
+
+| 新文件/范围（相对 `experience/`） | 唯一 owner | 契约 |
+|---|---|---|
+| `docs/positioning.md` | product-design | 用户指定比较对象、团队定位建议、实际能力与未证实效果分开 |
+| `docs/recognition-study.md`, `evidence/recognition-selection-20261007/` | lead | 整合 world/art/engineering/QA 只读评审；选址、许可参考、观察与后续判据 |
+
+本轮 `docs/validation.md` 的上一轮 CI 完成状态由 lead 做一次关闭更新；QA 只读提供已核对结果，不并发编辑。
+
 | 文件 | 历史卡 | **owner（唯一）** | 判定 |
 |---|---|---|---|
 **`city-packs/kyoto-shijo/doors.json`** | task-2, 15, 19, 20 | **`doors-author`** | ✅ 一直一个 owner |

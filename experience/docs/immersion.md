@@ -1,46 +1,89 @@
 # Immersion across a travel journey
 
-Updated 2026-10-06. Owner: `product_design`.
+Updated 2026-10-07. Owner: `product_design`.
 
-## Approved direction and this increment
+## Current direction is open to discovery
 
-The user confirmed that immersion should span the travel journey, with smaller scenes for each day,
-individual actions such as opening a door, and sharing the whole trip. This is a direction for the
-product; it does not mean daily itineraries, reconstructed interiors or sharing services already exist.
-The game remains the main experience: choices made while playing become a useful route, then a
-personal record of a real trip. It must remain enjoyable to explore before anything is exported.
+The user explicitly says the SOW was initial product-design guidance and may be broken in pursuit
+of a more interesting idea. It records prior ambitions; it no longer binds us to game-first, traveler
+preparation, mandatory planning outputs or a trip → day → moment hierarchy. Those purposes can be
+retested alongside delight, curiosity, social connection and memory without a booked trip.
 
-The user also found the 3D experiment more spatially convincing but its buildings and lighting less
-realistic. The next improvement is recognizable architecture, believable materials and light, and
-responsive actions in that place. A renderer change alone does not establish immersion.
+Recognition of a real place is affirmed qualitatively. The user is less positive about menu choices
+and finds the tiny street's interaction/travel weak, while seeing promise in people's footprints.
+Live-browser A is favored informally; the reported “roughly 60% positive feedback on realism” has
+an unknown denominator/method and is not a fidelity score. Retain B as a reference unless retired.
+More menu cards or a larger movement log are not established answers to the experience gap.
 
-This increment stays in the existing Kyoto/Shijo block with the existing sourced encounters. It
-implements a small continuity feature: an optional personal note for each completed encounter, saved
-alongside the current walk and included in the player's exported field notes. The UI supports complete
-selectable English and Chinese, while Japanese source signs remain Japanese.
+## Recommended experiment: borrow someone's eyes
 
-The personal-note implementation was verified in the 2026-10-05 browser build; see
-[independent validation](validation.md) for its evidence and limits. That build passed 53/53 browser
-checks, 16/16 pure tests and 17/17 repository gates. On 2026-10-06 the user accepted its fluency and
-guidance on GitHub Pages, but rejected the overly simple appearance and standalone HTML sharing
-experience. The next slice therefore improves appearance and sharing while preserving the accepted
-interaction. It requires its own verification; earlier checks do not certify new changes.
+The current team recommendation is a **short connected approach → explicitly shared view → follow
+curiosity and notice a detail → hear the author's brief remark → optionally frame a view and leave
+one sentence → another person gains a new way to notice**. A later real visit/reflection is possible,
+but is not necessary to give the interaction value. Attention, enjoyment and connection are primary
+questions for this experiment; orientation is a useful secondary benefit to measure separately.
 
-The user requested both rendered visual solutions and multiple sharing formats. They are not mutually
-exclusive alternatives. The sharing contract below is authorized implementation work, not a claim
-that it is already verified. This remains a short simulated walk, not a complete trip or photo memoir.
+Begin with a framed view and short text. Photos, sketches, audio, stories and longer annotated trails
+are possible expressive forms later, not a feature list to build now. A full path recorder is not a
+prerequisite. A purpose invites exploration; reading, contributing, sharing and planning a trip remain
+optional. The approach and departure should feel connected rather than like an isolated popup.
+Include contrasting viewpoints and a reveal/ending; another landmark turntable cannot answer the
+depth concern. The current 64 m strip is not assumed sufficient. Establish the smallest connected
+space that supports the experience, with source evidence before any navigable extension.
 
-## Four scales of experience
+Use an available person's explicitly shared moment. A clearly labelled team-authored example may
+support a usability prototype, but cannot prove connection with another traveler. Personal material
+starts private; sharing previews exactly the selected view/text. Reading a friend's contribution does
+not record one's own visit or change one's saved walk. Virtual exploration, shared personal material,
+user-reported real visits and sourced facts remain distinct. No automatic GPS tracking, public home
+or exact-time history, popularity ranking, co-presence or social feed is required for this proof.
 
-| Approved scale | Player experience | Scope and evidence of success |
+Compare the same story/view in a flat card and in the moving scene. Does the invitation make a person
+notice something, understand the author's perspective or want to express something of their own?
+If a static card provides the same value with less friction, simplify. If interaction is only clicking
+facts or menus, added value from play remains unproven. Reported connection/confidence, virtual
+recognition, unseen-photo/map transfer and actual field use are different observations.
+
+[Positioning](positioning.md) compares three creative hypotheses: shared perspectives (recommended),
+curiosity-led discovery and personal return/memory. Its three exploratory sprints are discovery →
+private authorship → recipient experience. This is a recommendation to test one small prototype,
+not a commitment to implement all hypotheses or an announcement of new runtime capabilities.
+
+## Delivered baseline and parallel art work
+
+The current Kyoto slice supplies working EN/ZH guidance, three sourced encounters, local personal
+notes, authored day/night and previewed selected-note link/PNG/print recaps. The user accepted
+fluency/guidance for the Pages build they played. See [validation.md](validation.md) and
+[iteration.md](iteration.md) for exact technical evidence and its limits. These results do not prove
+that people enjoy shared perspectives, want to contribute, return, or can use a complete field route.
+
+The navigable 64 m strip/one crossing is not a wider connected travel experience. Existing recaps
+require supported encounter IDs and choices; they do not already store arbitrary shared viewpoints
+or continuous footprints. Reuse working patterns where helpful, and do not fabricate historical paths
+from old saves. New connected movement needs supported geometry/access rather than background
+meshes becoming navigable by accident.
+
+[Ginza 4-chome/Wako](recognition-study.md) stays a parallel bounded architecture study with three
+live camera views. It checks recognizable building features, not the whole product proposition.
+It does not add a Ginza walk, venue interactions or a second-city game.
+
+The user's Minecraft, Terraria, Animal Crossing, The Sims 4 and Scriptum references contribute agency,
+discovery, attachment, personal stories and situated investigation. They do not require construction,
+household simulation or AR equipment. Mainline Animal Crossing/The Sims 4 are life-simulation
+references. The positioning document retains the source checks and Scriptum availability limits.
+
+## Scales we can explore
+
+| Scale | Possible experience | Status |
 |---|---|---|
-| Whole trip | Anticipate a place, rehearse choices, travel, remember, decide what to share | Preserve the player's intentions, selected stops and memories across those stages. A player can explain which choices shaped the resulting itinerary and which observations came from the real trip. |
-| Each day | Arrive with a purpose, adapt during the day, close the day with a useful keepsake | Later: a day opening, a readable plan with sourced constraints and alternatives, and a closing summary. Day assignment is the player's plan, not proof of a real reservation or opening time. |
-| Each interaction | Approach, anticipate an action, act, receive feedback, transition and return | Now: visible destination, stable nearby cue, responsive action, readable encounter and choice outcome, then return to the same street with control restored. Later: sourced door/interior transitions. |
-| Whole-trip sharing | Select what matters and present it to someone else | Later: review a curated artifact covering selected days, routes and memories before explicitly saving or sharing it. The user chooses whether personal notes/photos are included. No automatic social post. |
+| One moment | Follow another person's gaze, notice a feature, form a personal response | Recommended first experiment: view plus short text, clearly shared or labelled authored |
+| A short connected walk | Arrival, curiosity, an optional discovery and a natural departure | Enough continuity to test the moment in place; no full-city promise |
+| Another person's perspective | Read a selected contribution and decide what it means to you | Explicit opt-in sharing; meaningful recipient experience remains unproven |
+| Return and memory | Revisit one's own observation; optionally connect a later real visit | A creative hypothesis, not a required travel or retention loop |
+| Days or whole trips | Turn selected discoveries into practical intentions and later memoirs | Earlier ambitions retained as optional directions; not prerequisites for delight or connection |
 
-A reason to return should be a remembered intention or a new journey, not a streak, expiring reward,
-guilt message or a score for how much personal material someone contributes.
+A reason to return can be curiosity, a remembered moment or a person's perspective. Avoid making
+participation compulsory through expiring rewards, streaks or guilt about not contributing.
 
 ## Embodied place: art, light and camera
 
@@ -61,7 +104,7 @@ guilt message or a score for how much personal material someone contributes.
 Blender is an authoring tool for the implemented geometry/material pipeline. Judge the exported browser
 scene, including near views and movement, rather than accepting a Blender render as the product.
 
-The next comparison presents both a live browser view and a Blender-rendered still, using the same
+The delivered comparison presents both a live browser view and a Blender-rendered still, using the same
 street model and matched framing. Both must be available for review, with their fixed comparison
 views identified. An improved still does not prove gameplay rendering quality, and authored context
 does not add verified venues, entrances or navigable territory. Comparison controls leave the saved
@@ -70,7 +113,7 @@ walk unchanged. User acceptance of the revised appearance remains open.
 ## Daylight and night atmosphere
 
 The user requested daylight/night modes and better use of online building resources for lighting and
-shadows. This is authorized work; the new modes still need review in the runnable browser build.
+shadows. The modes are delivered and browser-checked; user judgment of realism remains separate.
 Any externally sourced geometry, materials or lighting assets need the art/content owners' provenance
 and license review. A reusable building asset is visual material, not evidence of a particular Kyoto
 building, tenant, entrance or opening time.
@@ -209,7 +252,10 @@ walk states. A PNG must preserve selected content rather than silently cut off l
 checks cannot establish that an external messaging service delivered the artifact. The revised sharing
 experience and revised art both require review against their actual delivered outputs.
 
-## Later journey continuity: proposals, not this build
+## Optional travel continuity, if it earns its place
+
+These earlier ideas remain possible directions. The shared-perspective experiment does not require
+them, and traveler preparation is one hypothesis rather than the sole product purpose.
 
 - **Before departure:** preserve intentions and must-do places, then rehearse sourced decisions in
   the game. Export a practical route with required facts, current verification dates and honest gaps.

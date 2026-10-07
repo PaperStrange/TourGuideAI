@@ -98,8 +98,10 @@ the six-image study hash is
 Full source and asset identities are in the [delivery evidence](../evidence/day-night-20261006/README.md).
 
 The separate [GitHub CI run 37420468044](https://github.com/PaperStrange/TourGuideAI/actions/runs/37420468044)
-passed install, pure tests and build; its browser stage is still in progress at
-this handoff. It is not included in the complete local 130-pass claim above.
+completed successfully on 2026-10-06 at 06:19:13 UTC against `a176cf38…`, as
+rechecked on 2026-10-07. Install, pure tests, build, packaged Chromium checks and
+evidence upload all succeeded. Its result is separate from the complete local
+130-pass report above; no uninspected CI artifact hash is claimed.
 No redundant full local run was made after the frozen candidate passed.
 
 The earlier five-check draft capture used rig `d5afc0ab…`; it is superseded by this

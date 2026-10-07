@@ -1,13 +1,43 @@
 # A believable place, a continuing journey
 
 The user likes the new spatial depth and asks for more believable buildings and
-lighting. Guided 3D is approved for the first launched version. The latest product
-direction connects the whole travel journey, each day, small interactions such as
-opening a door, and sharing the completed travel experience.
+lighting. Guided 3D is approved for the first launched version. Earlier product
+exploration connected the whole travel journey, each day, small interactions such
+as opening a door, and sharing the completed travel experience. The user now invites
+the team to rethink that framing; the current creative proposal is below.
 
 ## This delivery
 
-### Current follow-up · daylight and night, 2026-10-06
+### Current direction · discover a place through another person, 2026-10-07
+
+The user reports a friend's preference for the live browser view and roughly
+“60% positive” realism feedback, with unknown method and denominator. The user
+names Minecraft, Terraria, Animal Crossing, The Sims 4 and Scriptum as comparison
+references, and asks for another famous street whose building features can be
+recognised from the real world.
+
+The user affirms that recognition helps, but finds choices and the tiny street's
+travel experience less convincing. They like recording their own and other
+travelers' footprints, and ask what follows and how it affects the real world.
+They explicitly clarify that the SOW is initial guidance: the team may break its
+product assumptions while exploring more interesting ideas together.
+
+The current recommendation is to explore a recognizable place through another
+person's perspective, notice something yourself and leave a selected moment for
+the next visitor. Test curiosity, personal meaning and connection on one coherent
+small walk. A future real visit may add a new layer; a booked trip or itinerary
+export is not required for value. Orientation and field usefulness remain separate
+possible benefits. [Creative hypotheses and proposed sprints](positioning.md)
+describe the prototype and what would justify continuing it.
+
+**Selected next reference:** [Ginza 4-chōme / Wako–SEIKO HOUSE](recognition-study.md).
+The source photograph, official identity and mapped footprint are checked; the
+new live scene is not built. Keep it as a parallel architectural study alongside
+the discovery, personal-moment and recipient-experience prototype.
+The present delivery records these decisions and sources; it makes no runtime,
+asset-pipeline or hosted-app change. The previous live A/B comparison remains available.
+
+### Delivered daylight and night follow-up · 2026-10-06
 
 The user requests selectable daylight/night atmosphere and online building-related
 resources for better lighting and shadows. The team implemented two authored
@@ -94,10 +124,10 @@ Human art and interaction-fluency acceptance remain separate.
 
 ## Following slices
 
-Use the trip → day → moment → memory model in [immersion.md](immersion.md). Add a
-purposeful day plan and a readable daily recap before multiplying cities. A door
+Treat the trip → day → moment → memory model in [immersion.md](immersion.md) as one
+useful lens, open to revision after the creative prototype. A door
 interaction needs a meaningful destination, visible reach/open/enter feedback and
 a clear way back; current unverified entrances must not gain invented access or
-interiors. Extend local notes into user-selected trip memories, then previewable
-whole-trip sharing. Personal memory, simulated discovery, real-world visit and
+interiors. Extending local notes into user-selected trip memories and previewable
+whole-trip sharing remains a candidate direction. Personal memory, simulated discovery, real-world visit and
 verified source information remain distinct throughout.
