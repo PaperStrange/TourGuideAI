@@ -28,9 +28,9 @@ map, full route recorder, community feed or all candidate concepts.
 
 | Delivery slice | Owners | Bounded outcome | State |
 |---|---|---|---|
-| Focus-1 · Discover through another view | product, art, world, engineering, QA | One coherent short approach and contrasting, explicitly authored or consented personal moments; movement/viewpoint reveals a supported detail | Implemented with three clearly labelled studio samples; integrated verification in progress |
-| Focus-2 · Leave my moment | product, engineering, QA | Frame a view and optionally keep a short thought without completing a choice menu; preview selected sharing | Implemented independent saved view/note, edit/remove and selected sharing; integrated verification in progress |
-| Focus-3 · Experience A/B and recipient | product, QA, available participants | Compare same story/facts/contribution in live 3D and map/photo/story; assess voluntary enjoyment and recipient meaning, with travel utility separately | Both formats and read-only recipient implemented; technical verification in progress, human evidence pending |
+| Focus-1 · Discover through another view | product, art, world, engineering, QA | One coherent short approach and contrasting, explicitly authored or consented personal moments; movement/viewpoint reveals a supported detail | Delivered in the bilingual live/story release, with three clearly labelled studio samples |
+| Focus-2 · Leave my moment | product, engineering, QA | Frame a view and optionally keep a short thought without completing a choice menu; preview selected sharing | Delivered: independent saved view/note, edit/remove and selected read-only sharing |
+| Focus-3 · Experience A/B and recipient | product, QA, available participants | Compare same story/facts/contribution in live 3D and map/photo/story; assess voluntary enjoyment and recipient meaning, with travel utility separately | Technical release complete: 80 new-flow / 130 original browser checks, 44 pure / 17 gates; human evidence pending |
 | Parallel · Architectural recognition | world, art, engineering, QA, lead | Bounded live Ginza/Wako study with reference-supported architecture | Reference selection, licensed photograph and validation brief complete; scene implementation pending |
 
 The [lean delivery plan](../../experience/docs/lean-iteration.md) groups these into

@@ -1,6 +1,24 @@
 # Playable 3D revision · independent validation
 
-Owner: QA. Current status, 2026-10-06: **the user accepts fluency and guidance
+## Current shared-perspective delivery · 2026-10-07
+
+Application `f701bda` passes **80/80 perspective browser checks,
+130/130 original browser checks, 44/44 pure tests and 17/17 repository gates**.
+All 57 hosted package files match the tested hashes. Independent QA's
+local diagnostics found and verified repairs for compact-layout clipping and a
+test precision issue; both final CI jobs pass for the released source. The new-flow report and layout
+repair proof bind the exact published package; the CI provider status is retained
+separately because this environment could not download the remote artifact archive.
+[Complete evidence](../evidence/perspective-20261007/README.md).
+
+This establishes technical delivery of the approved live-versus-map/story experience.
+It does not establish human A/B outcomes, reciprocal social value, architectural
+realism or ordinary-device performance. The [next review](perspective-review.md)
+separates enjoyment, continuation, recognition and possible real-visit transfer.
+
+## Historical validation status · 2026-10-06
+
+Owner: QA. Recorded status, 2026-10-06: **the user accepts fluency and guidance
 for the Pages build they played; building/street realism is not accepted**.
 The day/night and local-HDR revision passes **130/130 packaged-browser checks,
 33/33 pure tests and 17/17 repository gates**. It is published on Pages with all

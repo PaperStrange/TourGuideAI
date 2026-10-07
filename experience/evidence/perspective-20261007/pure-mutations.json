@@ -1,0 +1,34 @@
+{
+  "testSha256": "b85ad731dc59641e17aa2f8f3606b80683b9cf108fab9a9c7a9ec7f270d32ee6",
+  "isolatedTemporaryCopies": true,
+  "results": [
+    {
+      "name": "note inclusion silently defaults on",
+      "detected": true,
+      "exitCode": 1,
+      "sourceSha256": "7648ff3837e787ede70752076aefd7f1d513a0fafa2e652678fe644fa6bd8d31",
+      "sourceUnchanged": true
+    },
+    {
+      "name": "private save overwrites Kyoto journey",
+      "detected": true,
+      "exitCode": 1,
+      "sourceSha256": "a6a79aae890e0c40b102a34d09a3dca721248193414de93279fac83b83c90301",
+      "sourceUnchanged": true
+    },
+    {
+      "name": "feedback export leaks private moments",
+      "detected": true,
+      "exitCode": 1,
+      "sourceSha256": "a6a79aae890e0c40b102a34d09a3dca721248193414de93279fac83b83c90301",
+      "sourceUnchanged": true
+    },
+    {
+      "name": "decoder leaks native errors",
+      "detected": true,
+      "exitCode": 1,
+      "sourceSha256": "7648ff3837e787ede70752076aefd7f1d513a0fafa2e652678fe644fa6bd8d31",
+      "sourceUnchanged": true
+    }
+  ]
+}

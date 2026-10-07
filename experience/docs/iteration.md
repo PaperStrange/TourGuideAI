@@ -20,8 +20,12 @@ a continuing journey, conditional on experience and production evidence.
 
 The approved experiment compares live 3D against a credible map/photo/story version
 with the same contribution and facts. It is distinct from the existing live-versus-
-Blender rendering study. Implementation and human results remain pending. This
-delivery updates research and planning only; the hosted app is unchanged.
+Blender rendering study. Sprint 1 is now delivered as `perspective.html`: a
+three-observation loop, personal saved framing/notes, selected sharing and optional
+local reflection. The matched alternative uses actual illustrated browser captures.
+Human results remain pending. The [lean iteration](lean-iteration.md) sequences
+the review and conditional city/corridor stages; [delivery evidence](../evidence/perspective-20261007/README.md)
+binds the hosted package to application `f701bda`.
 
 ### Current direction · discover a place through another person, 2026-10-07
 
@@ -49,8 +53,8 @@ describe the prototype and what would justify continuing it.
 The source photograph, official identity and mapped footprint are checked; the
 new live scene is not built. Keep it as a parallel architectural study alongside
 the discovery, personal-moment and recipient-experience prototype.
-The present delivery records these decisions and sources; it makes no runtime,
-asset-pipeline or hosted-app change. The previous live A/B comparison remains available.
+The reference selection remains separate from the delivered perspective experiment.
+The previous live/Blender rendering comparison remains available.
 
 ### Delivered daylight and night follow-up · 2026-10-06
 

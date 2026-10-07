@@ -1,0 +1,27 @@
+{
+  "artifactManifestSha256": "69c6232301259f25f4eed3d92fd8719a3748f78d3454a12f155cf98066e8f678",
+  "scope": "Focused real recipient rerun of corrected CSS assertion; no new full walkthrough",
+  "observed": {
+    "noteMatches": true,
+    "scaleX": 1.0499999523162842,
+    "scaleY": 1.0499999523162842,
+    "skewX": 0,
+    "skewY": 0,
+    "translateX": 0,
+    "translateY": 0,
+    "x": 0.55,
+    "y": 0.5,
+    "percentOrigin": true,
+    "rawOrigin": "55% 50%"
+  },
+  "expected": {
+    "kind": "story",
+    "scale": 1.05,
+    "x": 0.55,
+    "y": 0.5
+  },
+  "correctPosePasses": true,
+  "changedScaleDetected": true,
+  "changedOriginDetected": true,
+  "driverSha256": "32400beab9c937501d946a08f8da7bc4100c09af3fefb08fafa13dd121a8fa74"
+}

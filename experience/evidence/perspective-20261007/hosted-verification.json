@@ -1,0 +1,453 @@
+{
+  "verifiedAt": "2026-10-07T06:45:47.758385+00:00",
+  "site": "https://paperstrange.github.io/TourGuideAI/",
+  "pagesCommit": "89ff73ea3577721e6a5aab312b6814dd6d65ee5c",
+  "reviewBuild": {
+    "sourceRepository": "https://github.com/PaperStrange/TourGuideAI",
+    "sourceBranch": "chore-sow-delivery-plan",
+    "sourceCommit": "f701bdaf98f98a47d112220763009f35cbdf28c0",
+    "experience": "Borrow someone\u2019s eyes",
+    "entryPath": "perspective.html",
+    "formats": [
+      "walk",
+      "story"
+    ],
+    "languages": [
+      "en",
+      "zh"
+    ],
+    "perspectiveBrowserChecksPassed": 80,
+    "originalBrowserSuiteChecks": 130,
+    "originalBrowserSuiteConclusion": "success",
+    "layoutRepairChecksPassed": 15,
+    "mobileLiveChecksPassed": 10,
+    "unitTestsPassed": 44,
+    "repositoryGatesPassed": 17,
+    "builtManifestSha256": "0dcb86bc7247f0b790627ecc61799a8c60268475e802da8f940995fe2791e613",
+    "perspectiveBrowserReportSha256": "90751752d56f1cf9fdb6b70f006400b5eda015d74441f982bf7e44580c58ca8d",
+    "perspectiveArtManifestSha256": "54563b7bf87afd3a8e5d3521aed12ddd64f72c58dc4d883509706aeb7b7541cc",
+    "modelSha256": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c",
+    "ciRun": "https://github.com/PaperStrange/TourGuideAI/actions/runs/37580389117",
+    "reviewStatus": "Technical delivery; human enjoyment, social value, architectural realism and ordinary-device fluency remain review questions.",
+    "originalWalk": {
+      "entryPath": "index.html",
+      "lightingModes": [
+        "day",
+        "night"
+      ],
+      "sharingFormats": [
+        "web-link",
+        "png-image",
+        "print-pdf"
+      ]
+    }
+  },
+  "pagesBuild": {
+    "status": "built",
+    "commit": "89ff73ea3577721e6a5aab312b6814dd6d65ee5c",
+    "updatedAt": "2026-10-07T06:45:20Z"
+  },
+  "allMatch": true,
+  "fileCount": 57,
+  "files": [
+    {
+      "path": "/assets/comparison-B1v_BYyi.js",
+      "bytes": 17796,
+      "expectedSha256": "d3876afe2133f1fbf884ce6c622d58ca5b55373896ebaed7b7182ce519f83a48",
+      "actualSha256": "d3876afe2133f1fbf884ce6c622d58ca5b55373896ebaed7b7182ce519f83a48",
+      "matches": true
+    },
+    {
+      "path": "/assets/comparison-B1v_BYyi.js.map",
+      "bytes": 47342,
+      "expectedSha256": "6c9b07852fa45cc299f7e275e0b07664bfd4d9d332a8f0f89dcd066a33f0ad9c",
+      "actualSha256": "6c9b07852fa45cc299f7e275e0b07664bfd4d9d332a8f0f89dcd066a33f0ad9c",
+      "matches": true
+    },
+    {
+      "path": "/assets/comparison-BsN3DCqv.css",
+      "bytes": 4604,
+      "expectedSha256": "b183e9359c5b654bf5b06f358096e770bb71dbaa1b82f21a1f422d4dab4087eb",
+      "actualSha256": "b183e9359c5b654bf5b06f358096e770bb71dbaa1b82f21a1f422d4dab4087eb",
+      "matches": true
+    },
+    {
+      "path": "/assets/create-game-B0Oh7Opc.js",
+      "bytes": 39020,
+      "expectedSha256": "6a7f610d98a94b13b8c8fab88aec334c5f9d97ba1d2e578de99aeca5e63af948",
+      "actualSha256": "6a7f610d98a94b13b8c8fab88aec334c5f9d97ba1d2e578de99aeca5e63af948",
+      "matches": true
+    },
+    {
+      "path": "/assets/create-game-B0Oh7Opc.js.map",
+      "bytes": 134287,
+      "expectedSha256": "0feae71fb2174f72965846a1c286d1580d456679367550be4bc76b0eac12f094",
+      "actualSha256": "0feae71fb2174f72965846a1c286d1580d456679367550be4bc76b0eac12f094",
+      "matches": true
+    },
+    {
+      "path": "/assets/i18n-BdOPO8Au.js",
+      "bytes": 21088,
+      "expectedSha256": "1e856eb2c645cc33077037394181c091f4994ef2cca0a7da227f5c4b8a207997",
+      "actualSha256": "1e856eb2c645cc33077037394181c091f4994ef2cca0a7da227f5c4b8a207997",
+      "matches": true
+    },
+    {
+      "path": "/assets/i18n-BdOPO8Au.js.map",
+      "bytes": 30714,
+      "expectedSha256": "b292a5706fd28d621b33265e4b042eb39d03f5e0e2a2f41192b1821ce8b9a091",
+      "actualSha256": "b292a5706fd28d621b33265e4b042eb39d03f5e0e2a2f41192b1821ce8b9a091",
+      "matches": true
+    },
+    {
+      "path": "/assets/index-CF7c-AAu.js",
+      "bytes": 23720,
+      "expectedSha256": "27836687f2ac7c3b3b2a18e2abfde7338e84da43d486259a2299a12e5c83e6b7",
+      "actualSha256": "27836687f2ac7c3b3b2a18e2abfde7338e84da43d486259a2299a12e5c83e6b7",
+      "matches": true
+    },
+    {
+      "path": "/assets/index-CF7c-AAu.js.map",
+      "bytes": 54594,
+      "expectedSha256": "8867229e51308bd031d6278beab5315d5e6c6f4074a4d8b1a146e61c9e31ded8",
+      "actualSha256": "8867229e51308bd031d6278beab5315d5e6c6f4074a4d8b1a146e61c9e31ded8",
+      "matches": true
+    },
+    {
+      "path": "/assets/index-DCqFiNrE.css",
+      "bytes": 18360,
+      "expectedSha256": "ce83ab782dfc651b680d52e96eae2f56b877465ef07ed902694973f30c681d4c",
+      "actualSha256": "ce83ab782dfc651b680d52e96eae2f56b877465ef07ed902694973f30c681d4c",
+      "matches": true
+    },
+    {
+      "path": "/assets/journey-Dj8NTvU0.js",
+      "bytes": 1508,
+      "expectedSha256": "0729fbc2a36c7f1c1cf0e8745448385c233bc7e8395e28e5f03b95510dd186e3",
+      "actualSha256": "0729fbc2a36c7f1c1cf0e8745448385c233bc7e8395e28e5f03b95510dd186e3",
+      "matches": true
+    },
+    {
+      "path": "/assets/journey-Dj8NTvU0.js.map",
+      "bytes": 3463,
+      "expectedSha256": "fc25323c9e0b6893b160fbde4e672560b845af6b62ca31a59b6ed7e629502a59",
+      "actualSha256": "fc25323c9e0b6893b160fbde4e672560b845af6b62ca31a59b6ed7e629502a59",
+      "matches": true
+    },
+    {
+      "path": "/assets/kyoto-B8LsYbyV.js",
+      "bytes": 12986,
+      "expectedSha256": "2e85113c56e5f03a8abc2be2f4029f5dd8545aa42da7ea8307bb777ba2ee4959",
+      "actualSha256": "2e85113c56e5f03a8abc2be2f4029f5dd8545aa42da7ea8307bb777ba2ee4959",
+      "matches": true
+    },
+    {
+      "path": "/assets/kyoto-B8LsYbyV.js.map",
+      "bytes": 20396,
+      "expectedSha256": "4a6a7301df009cc0fe0c58c6c4e73533622d08f367315815f08dbc00eef83f59",
+      "actualSha256": "4a6a7301df009cc0fe0c58c6c4e73533622d08f367315815f08dbc00eef83f59",
+      "matches": true
+    },
+    {
+      "path": "/assets/kyoto-sans-Cui4YOo3.woff",
+      "bytes": 200916,
+      "expectedSha256": "e8b288536cab2191fa10cafd9e1a0ad58a8858fea913c80c494956195d5d8b8b",
+      "actualSha256": "e8b288536cab2191fa10cafd9e1a0ad58a8858fea913c80c494956195d5d8b8b",
+      "matches": true
+    },
+    {
+      "path": "/assets/lighting-E2ELDqjd.js",
+      "bytes": 629687,
+      "expectedSha256": "a95349c6673e053d5206bfa185869eafcd17560febfb8029b811b74ebf0b8a3e",
+      "actualSha256": "a95349c6673e053d5206bfa185869eafcd17560febfb8029b811b74ebf0b8a3e",
+      "matches": true
+    },
+    {
+      "path": "/assets/lighting-E2ELDqjd.js.map",
+      "bytes": 3174972,
+      "expectedSha256": "47e741b2b7525b25d61217bf6c28615ee420075e87d15f9801f2f05ec6638c52",
+      "actualSha256": "47e741b2b7525b25d61217bf6c28615ee420075e87d15f9801f2f05ec6638c52",
+      "matches": true
+    },
+    {
+      "path": "/assets/live-view-CyWQvK9F.js",
+      "bytes": 1632,
+      "expectedSha256": "70f9908301586bae57962ce74c6b85da84db7bbeb52fce11429609dae644c219",
+      "actualSha256": "70f9908301586bae57962ce74c6b85da84db7bbeb52fce11429609dae644c219",
+      "matches": true
+    },
+    {
+      "path": "/assets/live-view-CyWQvK9F.js.map",
+      "bytes": 4888,
+      "expectedSha256": "837fd7cb2f81cce46c4a47f99e5781e6a57711c196df709a279dc39bed474c77",
+      "actualSha256": "837fd7cb2f81cce46c4a47f99e5781e6a57711c196df709a279dc39bed474c77",
+      "matches": true
+    },
+    {
+      "path": "/assets/modulepreload-polyfill-P2Xu9kJm.js",
+      "bytes": 670,
+      "expectedSha256": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f",
+      "actualSha256": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f",
+      "matches": true
+    },
+    {
+      "path": "/assets/perspective-DowszHqk.js",
+      "bytes": 42766,
+      "expectedSha256": "6a2c8cba25f91e87382519841ff3058a20e240b6077ab5b77774f4f207dca6cf",
+      "actualSha256": "6a2c8cba25f91e87382519841ff3058a20e240b6077ab5b77774f4f207dca6cf",
+      "matches": true
+    },
+    {
+      "path": "/assets/perspective-DowszHqk.js.map",
+      "bytes": 83352,
+      "expectedSha256": "6df927c769e4c5266450cd02c2ac4e7cd536a3bbf31a0f70ce296511987dbe03",
+      "actualSha256": "6df927c769e4c5266450cd02c2ac4e7cd536a3bbf31a0f70ce296511987dbe03",
+      "matches": true
+    },
+    {
+      "path": "/assets/perspective-Kn99u5Xx.css",
+      "bytes": 15021,
+      "expectedSha256": "25b4d0df4c7e6a608cef4463189aaaf8642dc63963629b75c6319c94001ab486",
+      "actualSha256": "25b4d0df4c7e6a608cef4463189aaaf8642dc63963629b75c6319c94001ab486",
+      "matches": true
+    },
+    {
+      "path": "/assets/share-BmDCRBOQ.js",
+      "bytes": 5447,
+      "expectedSha256": "93f2769fa4f37ac44922309448582458cd139e740c128f89d82b03a1419f3afe",
+      "actualSha256": "93f2769fa4f37ac44922309448582458cd139e740c128f89d82b03a1419f3afe",
+      "matches": true
+    },
+    {
+      "path": "/assets/share-BmDCRBOQ.js.map",
+      "bytes": 15788,
+      "expectedSha256": "981806f7bbf057f78c1a38d81af8fc78c55486c14438827ed668f110c4ae206e",
+      "actualSha256": "981806f7bbf057f78c1a38d81af8fc78c55486c14438827ed668f110c4ae206e",
+      "matches": true
+    },
+    {
+      "path": "/assets/share-Vuaior3-.css",
+      "bytes": 2442,
+      "expectedSha256": "a2d8c61799dee439326978db1eee71dcc9424576ff701e1cd3ec80275e576912",
+      "actualSha256": "a2d8c61799dee439326978db1eee71dcc9424576ff701e1cd3ec80275e576912",
+      "matches": true
+    },
+    {
+      "path": "/assets/THIRD-PARTY-NOTICES-BAyKaB7a.js",
+      "bytes": 15881,
+      "expectedSha256": "6a8be19b1ec4b1f59be82d31d65f3909958ee2c92a62d75df29b3c3e56be2fae",
+      "actualSha256": "6a8be19b1ec4b1f59be82d31d65f3909958ee2c92a62d75df29b3c3e56be2fae",
+      "matches": true
+    },
+    {
+      "path": "/assets/THIRD-PARTY-NOTICES-BAyKaB7a.js.map",
+      "bytes": 144,
+      "expectedSha256": "d412713bf677d9a484d7157b881c125bad92e2968ebaa1d666fe383dfe038fa8",
+      "actualSha256": "d412713bf677d9a484d7157b881c125bad92e2968ebaa1d666fe383dfe038fa8",
+      "matches": true
+    },
+    {
+      "path": "/assets/view-state-Cajz5ATi.js",
+      "bytes": 1731,
+      "expectedSha256": "a52f42eada1568efe3a1b1110d62f51cb1f986d07643ca9a2b13bae1df7ee900",
+      "actualSha256": "a52f42eada1568efe3a1b1110d62f51cb1f986d07643ca9a2b13bae1df7ee900",
+      "matches": true
+    },
+    {
+      "path": "/assets/view-state-Cajz5ATi.js.map",
+      "bytes": 6603,
+      "expectedSha256": "2c54704b33c0814d805507e49be3979c949500444578cc399df8a8437ea866b5",
+      "actualSha256": "2c54704b33c0814d805507e49be3979c949500444578cc399df8a8437ea866b5",
+      "matches": true
+    },
+    {
+      "path": "/comparison.html",
+      "bytes": 1235,
+      "expectedSha256": "209aee2f16be33f6bf38e4b5be1023c94adc40bc51d3e5cf146973042ea92e69",
+      "actualSha256": "209aee2f16be33f6bf38e4b5be1023c94adc40bc51d3e5cf146973042ea92e69",
+      "matches": true
+    },
+    {
+      "path": "/content-evidence/facade-references.json",
+      "bytes": 5056,
+      "expectedSha256": "2633e98dd95ba7160bb4c54acde94a8ed4de5f1f7b335904abf79da41ab0d8e2",
+      "actualSha256": "2633e98dd95ba7160bb4c54acde94a8ed4de5f1f7b335904abf79da41ab0d8e2",
+      "matches": true
+    },
+    {
+      "path": "/content-evidence/geometry.json",
+      "bytes": 12083,
+      "expectedSha256": "e27f5fa137100ac4786c341cf13cc84acc6a94b71120178871320955984670b7",
+      "actualSha256": "e27f5fa137100ac4786c341cf13cc84acc6a94b71120178871320955984670b7",
+      "matches": true
+    },
+    {
+      "path": "/content-evidence/operator-facts.json",
+      "bytes": 4911,
+      "expectedSha256": "58d5ff4a3c6b722609a39e45e74df132313066feabb442afc575564d659afcc0",
+      "actualSha256": "58d5ff4a3c6b722609a39e45e74df132313066feabb442afc575564d659afcc0",
+      "matches": true
+    },
+    {
+      "path": "/content-evidence/street-context.json",
+      "bytes": 39636,
+      "expectedSha256": "f222a6d2346317d8fdaeb55bd81d743ddf565589dc9931a2abfb922907a81f37",
+      "actualSha256": "f222a6d2346317d8fdaeb55bd81d743ddf565589dc9931a2abfb922907a81f37",
+      "matches": true
+    },
+    {
+      "path": "/credits.html",
+      "bytes": 17559,
+      "expectedSha256": "91112afea8999500ceef7c172d3b719e5a4d32a5c3bd710e2cb69f804e24f582",
+      "actualSha256": "91112afea8999500ceef7c172d3b719e5a4d32a5c3bd710e2cb69f804e24f582",
+      "matches": true
+    },
+    {
+      "path": "/index.html",
+      "bytes": 1628,
+      "expectedSha256": "380421a2bfc048c673ddc048d9110ca61745a4061404ada80b31cba3b307be2f",
+      "actualSha256": "380421a2bfc048c673ddc048d9110ca61745a4061404ada80b31cba3b307be2f",
+      "matches": true
+    },
+    {
+      "path": "/journey.html",
+      "bytes": 740,
+      "expectedSha256": "5a978d61728c8f66c8e66174dedfee8ebaf169d9ad5d08ad12ad870e81ddae3e",
+      "actualSha256": "5a978d61728c8f66c8e66174dedfee8ebaf169d9ad5d08ad12ad870e81ddae3e",
+      "matches": true
+    },
+    {
+      "path": "/lighting/environments/day-1k.hdr",
+      "bytes": 1724368,
+      "expectedSha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+      "actualSha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+      "matches": true
+    },
+    {
+      "path": "/lighting/environments/night-1k.hdr",
+      "bytes": 1655510,
+      "expectedSha256": "a690048dcecabf5ed1ad773f7abdec7cce7b1fea4d89b17f054a18f3e0fa2919",
+      "actualSha256": "a690048dcecabf5ed1ad773f7abdec7cce7b1fea4d89b17f054a18f3e0fa2919",
+      "matches": true
+    },
+    {
+      "path": "/lighting/resources.json",
+      "bytes": 10825,
+      "expectedSha256": "d8015c1d2d837ad27fb4c4851acaceb96fe9901b45f37b9a6d13331149c4822b",
+      "actualSha256": "d8015c1d2d837ad27fb4c4851acaceb96fe9901b45f37b9a6d13331149c4822b",
+      "matches": true
+    },
+    {
+      "path": "/lighting/rig.json",
+      "bytes": 20983,
+      "expectedSha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+      "actualSha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+      "matches": true
+    },
+    {
+      "path": "/models/provenance.json",
+      "bytes": 10306,
+      "expectedSha256": "7354dd88601d9be7b7b13f0e2688721b893f9890c7865ff6decb645d59bfc467",
+      "actualSha256": "7354dd88601d9be7b7b13f0e2688721b893f9890c7865ff6decb645d59bfc467",
+      "matches": true
+    },
+    {
+      "path": "/models/shijo-block.glb",
+      "bytes": 14267180,
+      "expectedSha256": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c",
+      "actualSha256": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c",
+      "matches": true
+    },
+    {
+      "path": "/models/traveller.glb",
+      "bytes": 35556,
+      "expectedSha256": "ee5307da94f4d1994e5323a0d31d6f79a255c9f2f10459e0a0e6434fb051fdb1",
+      "actualSha256": "ee5307da94f4d1994e5323a0d31d6f79a255c9f2f10459e0a0e6434fb051fdb1",
+      "matches": true
+    },
+    {
+      "path": "/perspective.html",
+      "bytes": 965,
+      "expectedSha256": "9aa1b1d1bcf4b5980be17e0d1b4551c25c415efb4e2f08c41dc68622a1cb4d07",
+      "actualSha256": "9aa1b1d1bcf4b5980be17e0d1b4551c25c415efb4e2f08c41dc68622a1cb4d07",
+      "matches": true
+    },
+    {
+      "path": "/perspectives/arrive.jpg",
+      "bytes": 221746,
+      "expectedSha256": "5b88a84cd1cdb0297c552f8f5ee0f095d3e54fb4a0cc8b8b9f0afd1c54db3c07",
+      "actualSha256": "5b88a84cd1cdb0297c552f8f5ee0f095d3e54fb4a0cc8b8b9f0afd1c54db3c07",
+      "matches": true
+    },
+    {
+      "path": "/perspectives/daiya-rhythm.jpg",
+      "bytes": 266874,
+      "expectedSha256": "231d68794a8eca8f85dfff124a0f233ab9a6d78859d13c49845320f005adfacb",
+      "actualSha256": "231d68794a8eca8f85dfff124a0f233ab9a6d78859d13c49845320f005adfacb",
+      "matches": true
+    },
+    {
+      "path": "/perspectives/manifest.json",
+      "bytes": 10956,
+      "expectedSha256": "54563b7bf87afd3a8e5d3521aed12ddd64f72c58dc4d883509706aeb7b7541cc",
+      "actualSha256": "54563b7bf87afd3a8e5d3521aed12ddd64f72c58dc4d883509706aeb7b7541cc",
+      "matches": true
+    },
+    {
+      "path": "/perspectives/mitsui-rhythm.jpg",
+      "bytes": 341401,
+      "expectedSha256": "0904230ef4cd0eaf28ae5a092bda9ae03bc01b57d93b5b7db432632393d3e351",
+      "actualSha256": "0904230ef4cd0eaf28ae5a092bda9ae03bc01b57d93b5b7db432632393d3e351",
+      "matches": true
+    },
+    {
+      "path": "/render-study/daiya-frontage-day.png",
+      "bytes": 476341,
+      "expectedSha256": "e51336a9e6e1484330009c413b642773e88603d920525a5d4d9b9dc1b4da1b55",
+      "actualSha256": "e51336a9e6e1484330009c413b642773e88603d920525a5d4d9b9dc1b4da1b55",
+      "matches": true
+    },
+    {
+      "path": "/render-study/daiya-frontage-night.png",
+      "bytes": 644937,
+      "expectedSha256": "7df4ed4f5966141278d27de376201105b7186bdc7eba8ee1f9fe82f3409d3260",
+      "actualSha256": "7df4ed4f5966141278d27de376201105b7186bdc7eba8ee1f9fe82f3409d3260",
+      "matches": true
+    },
+    {
+      "path": "/render-study/intersection-day.png",
+      "bytes": 804403,
+      "expectedSha256": "3d52543253d35c022c34ca83b60a663e7fb7f77af4f482a4bd178a06ef9d5cee",
+      "actualSha256": "3d52543253d35c022c34ca83b60a663e7fb7f77af4f482a4bd178a06ef9d5cee",
+      "matches": true
+    },
+    {
+      "path": "/render-study/intersection-night.png",
+      "bytes": 787535,
+      "expectedSha256": "7d2041f3a93207bd7265c251187ec5a7215d28d397befc3a77bae2284d275573",
+      "actualSha256": "7d2041f3a93207bd7265c251187ec5a7215d28d397befc3a77bae2284d275573",
+      "matches": true
+    },
+    {
+      "path": "/render-study/manifest.json",
+      "bytes": 10398,
+      "expectedSha256": "e2274732cff1a12fde5df1074cdf2dee2d00673c56e9bd1311b8935697c401e1",
+      "actualSha256": "e2274732cff1a12fde5df1074cdf2dee2d00673c56e9bd1311b8935697c401e1",
+      "matches": true
+    },
+    {
+      "path": "/render-study/mitsui-frontage-day.png",
+      "bytes": 644192,
+      "expectedSha256": "7064066ce31cc0ad082cb6a3e3179004071fc0d6723208830a6c313e5b4a3421",
+      "actualSha256": "7064066ce31cc0ad082cb6a3e3179004071fc0d6723208830a6c313e5b4a3421",
+      "matches": true
+    },
+    {
+      "path": "/render-study/mitsui-frontage-night.png",
+      "bytes": 686798,
+      "expectedSha256": "20f5dc14c1fe2145736effdf6180b5bf025be3e3a79a09094bdd91ee42b410bb",
+      "actualSha256": "20f5dc14c1fe2145736effdf6180b5bf025be3e3a79a09094bdd91ee42b410bb",
+      "matches": true
+    }
+  ]
+}

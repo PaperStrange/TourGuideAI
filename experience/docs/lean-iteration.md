@@ -91,5 +91,13 @@ corridor. Ginza/Wako remains a separate architectural study.
 
 ## Delivery record
 
-Implementation in progress. Final verified behavior, checks, build identity and
-review links will replace this paragraph when the release is frozen.
+Sprint 1 is delivered at `perspective.html` in application `f701bda`.
+Discover, Respond and Learn are implemented in both languages and both formats.
+The package passes 80 perspective browser checks, 130 original-walk
+browser checks, 44 pure tests and 17 repository gates. All 57 hosted files
+match the tested package. [Delivery record](../evidence/perspective-20261007/README.md).
+
+The three matched JPEGs add 830,021 bytes; existing geometry and lighting are reused.
+No new paid service, account, public feed or country asset pipeline was introduced.
+Sprint 2's human comparison remains pending and uses the prepared review protocol.
+Technical completion is not acceptance of enjoyment, realism or market demand.

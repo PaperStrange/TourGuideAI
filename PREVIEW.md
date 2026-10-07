@@ -5,10 +5,27 @@
 - [Compare the expanded street renderings](https://paperstrange.github.io/TourGuideAI/comparison.html)
 - [Published build identity](https://paperstrange.github.io/TourGuideAI/review-build.json)
 
-The day/night revision is live from application commit `a176cf3` and Pages
-commit `afea7b9`. Its 130 browser checks and 33 pure tests passed; all 38
-hosted package files match the tested hashes. [Delivery evidence](experience/evidence/day-night-20261006/README.md)
-records the checks and remaining limitations.
+The current package is live from application `f701bda` and Pages `89ff73e`.
+It adds **Borrow someone’s eyes**, a three-observation Kyoto loop with saved
+perspectives and selected moment links. Both formats support English and Chinese:
+
+- [Try Walk & look](https://paperstrange.github.io/TourGuideAI/perspective.html?mode=walk)
+- [Try Map & story](https://paperstrange.github.io/TourGuideAI/perspective.html?mode=story)
+- [中文体验](https://paperstrange.github.io/TourGuideAI/perspective.html?mode=walk&lang=zh)
+
+Save a frame with an optional note, reopen/edit it, then preview one selected moment.
+The note checkbox starts off. A shared link opens a read-only view and does not
+change the recipient's saved walk. Notes and optional feedback stay on the device;
+use **Download my feedback** to provide the local reflection explicitly.
+
+The package passes 80 new-flow browser checks, 130 original-walk browser
+checks, 44 pure tests and 17 repository gates. All 57 hosted package files
+match the tested hashes. [Evidence and limits](experience/evidence/perspective-20261007/README.md).
+Human enjoyment and differentiation remain the next sprint's questions; this is
+an implemented comparison, not a completed user study.
+
+The following controls and multiple recap formats belong to the original walk,
+which remains available at the links above.
 
 Use **Daylight / Night** above the street to change its atmosphere at any time
 outside an open encounter. The selected mode is remembered separately from your

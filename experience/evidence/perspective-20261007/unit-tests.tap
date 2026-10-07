@@ -1,0 +1,56 @@
+
+> kyoto-guided-experience@0.2.0 test
+> node --test tests/*.test.mjs
+
+✔ an explicit valid appearance overrides storage without changing the preference (0.775878ms)
+✔ malformed, absent and blocked appearance storage leaves a usable day default (0.292212ms)
+✔ appearance writes are bounded to their own key and denied writes are recoverable (0.772613ms)
+✔ appearance changes do not change a shared journey snapshot or its creation date (1.112176ms)
+✔ a complete six-image v2 lighting study is accepted without rewriting its camera or provenance (2.002584ms)
+✔ partial, missing-mode, duplicate-image and mismatched-aspect studies cannot appear complete (1.552618ms)
+✔ v2 lighting and denoising provenance requires valid identities and finite calibration (0.5408ms)
+✔ legacy v1 remains explicitly day-only and cannot silently masquerade as six paired renders (0.193066ms)
+✔ legacy import occurs only when the current save is absent (1.584535ms)
+✔ malformed current saves cannot resurrect an older completed journey (0.252674ms)
+✔ personal notes retain plain text, reject invalid targets/types and enforce the input limit (0.333944ms)
+✔ the authored rig is valid, but malformed HDR identities and invalid intensities are rejected (3.208928ms)
+✔ authored local shadow limits reject an extra shadow caster or a shadowed point light (0.477276ms)
+✔ environment URLs stay inside the packaged application even on a Pages subdirectory (0.337339ms)
+✔ a private viewing pose preserves independent camera direction and strips journey data without mutation (1.963766ms)
+✔ untrusted viewing poses reject nonfinite/type/version errors and bound camera/player ranges (0.422084ms)
+✔ old framing without a target offset receives a facing-appropriate default, not journey meaning (0.149221ms)
+✔ private saves read and write only their own key; invalid or denied storage cannot import the Kyoto journey (0.706586ms)
+✔ record normalization allows only known moments, explicit presentation fields and bounded local feedback (0.487171ms)
+✔ saving, editing and deleting one private moment preserve the other moments and the caller record (0.813034ms)
+✔ story framing is bounded independently and never becomes an invented live-camera pose (0.166496ms)
+✔ sharing defaults to no personal note and serializes only the explicitly selected saved moment (1.511697ms)
+✔ explicitly included English/Chinese personal text and either framing round-trip as plain data (0.895766ms)
+✔ recipient fragments reject malformed, unsupported, oversized and invalid-UTF8 data without exposing extra fields (1.557786ms)
+✔ optional feedback export is one local report and excludes private notes, camera positions and invented aggregates (0.346783ms)
+✔ recaps default to no personal notes and do not expose or mutate game state (2.52745ms)
+✔ only explicitly selected saved notes on real visited targets enter a recap (0.346403ms)
+✔ English and Chinese recap fragments round-trip without losing selected Unicode text (1.37179ms)
+✔ share links retain a Pages subdirectory and discard author query/hash data (1.566599ms)
+✔ route choices and remembered stops remain semantically distinct in both languages (1.105496ms)
+✔ untrusted recap notes remain escaped text in both language presentations (1.20641ms)
+✔ invalid structure, targets, choices, dates and note types cannot become partial recaps (1.595832ms)
+✔ unsupported, malformed and oversized links produce distinct bounded failures (0.457858ms)
+✔ creation bounds selected text and repairs a split Unicode surrogate before encoding (0.733726ms)
+✔ camera-relative axes remain correct at cardinal and intermediate headings (0.874113ms)
+✔ a rotated walk preserves its angle instead of snapping to a diagonal (1.444467ms)
+✔ legacy-v1-mid-journey retains position and journey meaning (0.433501ms)
+✔ legacy-v1-completed retains position and journey meaning (0.194197ms)
+✔ legacy facing initializes the 3D actor heading consistently (0.570774ms)
+✔ facade bounds stop continuing input, allowing only millimetre quantization (2.794936ms)
+✔ automatic north-to-bank walk uses the mapped crossing without awarding progress (1.436176ms)
+✔ modal pause freezes navigation and simulation time; resume continues the route (0.275037ms)
+✔ fixed world-input replay survives a save checkpoint and responds to changed input (1.793434ms)
+✔ invalid restore data cannot manufacture a valid position or unsupported target (0.274025ms)
+ℹ tests 44
+ℹ suites 0
+ℹ pass 44
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 176.994157
