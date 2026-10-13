@@ -1,6 +1,29 @@
 # Product directions to explore
 
-2026-10-07 · Owner: product-design · Shared-perspective experiment approved; effectiveness unproven.
+Updated 2026-10-13 · Owner: product-design · Shared-perspective prototype delivered;
+immersive and expressive value unaccepted.
+
+## Latest review: find your own place
+
+The user says the narrative works when reading but immersive play is weak:
+responses stay at checkpoints, details remain text, and the final link/card does
+not express discovering an interesting place or a place one feels called to.
+Usefulness includes emotional affinity, personal expression and a reason to return,
+alongside practical travel preparation. This is qualitative feedback, not a formal
+A/B result.
+
+Product and engineering recommend a responsive place that can be explored freely,
+followed by an optional short personal moment: actual approach, pause and chosen
+view, with the person's own words if desired. A recipient could inhabit that
+moment and then explore independently. This is proposed work; the existing app
+saves a single view and has no recorded-approach replay.
+
+The [revised lean experiment](lean-iteration.md#latest-review-and-proposed-correction--2026-10-13)
+defines scope, team ownership, place-selection constraints and review. The central
+test is whether space and pacing convey something an image and caption cannot.
+Do not prescribe a correct emotion or assume a longer visit proves attachment.
+
+The sections below preserve the earlier hypotheses and strategic context.
 
 ## Start from the experience, not a fixed product category
 
@@ -41,7 +64,7 @@ These are alternatives to investigate, not three feature packages we have commit
 | **B · Curiosity-led discovery** | A recognizable place becomes a small visual discovery: look from another angle, notice a pattern or follow a spatial clue. Value: playful investigation, even alone and without a travel plan. | One environmental discovery with a readable reveal and an optional continuation. Does exploring the space produce enjoyment or understanding that merely reading the answer does not? No copied combat, loot economy or menu quiz is needed. |
 | **C · A place to return to** | Keep a view and a personal thought, then revisit how the place or its meaning has changed for you. A later physical visit can add a reflection, but is optional. Value: personal memory and continuity. | One private place capsule and one actual return, if a participant is available. Does it recover a meaningful memory or invite a new observation? A saved log that the person finds no reason to reopen does not establish value. |
 
-A is approved for the next small prototype. It develops the user's interest in other people's
+A was selected for the delivered first prototype. It develops the user's interest in other people's
 footprints and tests a purpose beyond planning. B or C may be stronger after evidence;
 we should be willing to change direction. No uniqueness or market-advantage claim follows yet.
 
@@ -79,8 +102,8 @@ separate Ginza reference into a Kyoto walk as though the locations were adjacent
 | Status | Scope |
 |---|---|
 | Delivered | The Kyoto slice has guided exploration, three sourced encounters, EN/ZH, notes, authored day/night and selected-note link/PNG/print recaps. See [delivery](iteration.md) and [validation](validation.md). The user accepted fluency/guidance for the build they played. |
-| Limitation | Its 64 m strip/one crossing and encounter-choice recap do not yet offer a richer connected travel experience, arbitrary shared viewpoints, continuous footprints or another person's perspective. Expanded background geometry is not expanded navigation. |
-| Approved, not yet delivered | The small shared-look prototype and same-content flat-media/3D A/B test. Existing note/preview/recipient patterns can help, but their three-ID, choice-required recap model is not already a free personal-moment system. |
+| Limitation | The 64 m strip/one crossing offers a limited connected journey. The new perspective flow supports chosen framing but confines saved moments to three authored slots; there is no short movement replay or actual reciprocal traveler interaction. Expanded background geometry is not expanded navigation. |
+| Delivered experiment, human value unaccepted | The three-observation EN/ZH live/story comparison, independent saved frames/notes, selected read-only sharing and optional local feedback are delivered. See [release evidence](../evidence/perspective-20261007/README.md). The user's latest review identifies weak immersive play and expression; automated checks do not resolve those outcomes. |
 | Open | Whether the best experience is social, exploratory, reflective, useful for travel, or a combination; whether 3D participation adds value; whether people want to contribute or return. |
 
 A footprint can mean a deliberately marked moment, not necessarily a movement log. If path recording
@@ -88,10 +111,10 @@ is useful later, start private and never invent old paths from existing encounte
 exploration, explicitly shared personal material, user-reported physical visits and sourced place
 facts distinct. A personal story does not verify opening hours, access or historical claims.
 
-## Three proposed exploratory sprints
+## Earlier three exploratory slices · implementation now delivered
 
-These replace the earlier proposals. They test A only and add no roadmap layer, fixed dates or
-full-city promise. Content/art establish the place and contribution rights; engineering implements
+These earlier proposals tested A only and made no full-city promise. The shared-look, personal-save and read-only recipient pieces are
+now delivered; reciprocal interaction, human connection and retention remain unproven. Content/art establish the place and contribution rights; engineering implements
 only what the experience requires; product and QA observe it with available people.
 
 | Sprint | Small deliverable | Decision evidence |
@@ -100,9 +123,9 @@ only what the experience requires; product and QA observe it with available peop
 | 2 · Leave something of your own | Frame a view and add a short private sentence without completing a menu choice. Reopen, edit or remove it; preview exactly what would be shared. | Does the person have something they want to express and understand who can see it? A forced submission or generic task answer does not establish authorship value. Retain the option to enjoy the walk without contributing. |
 | 3 · Another person receives it | An available recipient opens one explicitly shared moment, explores its context and may leave an optional response. Observe later virtual return or real-world follow-up only if naturally available. | Does the recipient gain a specific way to notice, feel a connection they can explain, or want to explore further? Does the author care about the response? If nobody is available, mark this human evidence pending rather than claiming a social result. |
 
-The next deliverable is the **small connected shared-look prototype**, not all three hypotheses.
-Its exact place/contribution depends on evidence and availability. It will not by itself settle the
-broader complaint about travel depth; that remains a separate question if people want a longer walk.
+The shared-look prototype is delivered. The proposed next correction is **Find your own place**,
+as specified in the revised lean experiment above. A richer responsive setting and expressive
+moment remain hypotheses; wider travel depth is still conditional on experience evidence.
 
 ## How could this matter outside the screen?
 
