@@ -1,9 +1,20 @@
 # Delivery board · TourGuideAI 2.5D
 
-Updated 2026-10-07. Owner: lead. Planning baseline: `origin/iteration` at
+Updated 2026-10-13. Owner: lead. Planning baseline: `origin/iteration` at
 `eae982f4ba20a107bf21a35b70f635b4935a4c70`.
 
-**Current user review:** the user relays a friend's preference for live A and
+**Latest user review · 2026-10-13:** narrative reads well but immersive play is weak.
+The user identifies all three issues: checkpoint-only responses, textual detail,
+and final sharing that fails to express discovering an interesting or personally
+meaningful place. Usefulness includes emotional affinity and expression.
+The [proposed Sprint 2 correction](../../experience/docs/lean-iteration.md#latest-review-and-proposed-correction--2026-10-13)
+is **Find your own place**: continuous exploration and world response, then an
+optional short personal approach/pause/view that a recipient can enter and explore.
+Product and engineering supplied the diagnosis; world-content is reviewing a
+separate street/riverside candidate. No new scene or replay feature is delivered.
+The hosted build remains the baseline; immersive and expressive value is unaccepted.
+
+**Earlier user review:** the user relays a friend's preference for live A and
 roughly “60% positive” feedback on realism; the method and denominator are unknown.
 The user affirms real-place recognition, finds choices and the small street's
 travel experience less convincing, and likes their own/other travelers' footprints.
