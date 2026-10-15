@@ -1,15 +1,18 @@
 # Agent checkpoint · Explore and Together homepage
 
 2026-10-15 · Lead owns integration, commits and publication.
-**State: homepage published and verified. Local room service is running; the active increment connects GitHub Pages to a locally deployed backend before paid hosting.**
+**State: local deployment with GitHub Pages verified and published. Public access to the workspace backend awaits explicit tunnel approval; no paid hosting is active.**
 
 ## Resume from saved work
 
 - Workspace: `/workspace/TourGuideAI`; source branch: `chore-sow-delivery-plan`.
 - Current milestone starts from checkpoint commit `3794918`.
-- Runtime source: `c3bf2309329eb1ff212f14d3e24697f38d98a23d`;
+- Local connection runtime: `bdc85fd4cd5dd90f390f042c0112b8d80fc19768`;
+  verified Pages runtime: `53cf8647a46d365bf2b7774e0971d9bcd24b1711`;
+  Pages verification metadata: `ad9fc10d6b90ca824fd8203cba1cff8b33366665`.
+- Homepage baseline: `c3bf2309329eb1ff212f14d3e24697f38d98a23d`;
+  baseline Pages: `eb8647d622d983280fba08fe9c23752aac1e81a4`;
   art refinement: `2767263`.
-- Homepage Pages: `eb8647d622d983280fba08fe9c23752aac1e81a4`.
   [Homepage evidence](../evidence/homepage-20261015/README.md).
 - Latest direction: test a local backend with GitHub Pages before paying for
   Render. `render.yaml` and [setup guide](render-setup.md) remain optional future
@@ -20,6 +23,17 @@
   room data and authorization tokens would pass through that third party.
   Do not start another tunnel as a workaround. A proxy-mediated WebSocket
   handshake succeeded; no public forwarding endpoint was created.
+- Repeatable setup: `npm ci` then `npm run local:pages` in `experience/server`.
+  [Local guide](../server/docs/local-pages.md). The current workspace process uses
+  ignored `server/.data/local-test.sqlite`; the launcher default is
+  `server/.data/rooms.sqlite`. Recheck the process before resuming; no availability
+  beyond the execution environment's lifetime is promised.
+- Together's **Testing connection** supports an explicitly chosen HTTPS or
+  loopback HTTP endpoint and live or periodic updates. Selection stays in the
+  tab. Member credentials are endpoint-scoped; unfamiliar invitations require
+  confirmation before any token-bearing request. Endpoint changes clear the
+  active invitation and cancel pending room operations. Existing journey saves
+  are retained. AI remains unavailable without a configured model provider.
 - Previously released companion application: `a8c3e493058198e8e5012bc9fd470190dc358148`.
 - Previous Pages: `6b5b1ea41a658badc8d364ad2267d07028b8fdbe`; publication worktree:
   `/workspace/TourGuideAI-pages`, branch `publish-travel-20261015`.
@@ -72,11 +86,11 @@ Ginza remains a separate architectural study.
 
 | Owner | Current boundary | Next action |
 |---|---|---|
-| Lead | Integration, checkpoint, build/CI and publication | Verify local connection increment, synchronize source and Pages; report tunnel approval boundary |
-| Engineering | `server/`, `src/home/room-client.js` | Local launcher and explicit polling transport; real-service verification |
+| Lead | Integration, checkpoint, build/CI and publication | Local delivery complete; obtain tunnel approval before exposing workspace API |
+| Engineering | `server/`, `src/home/room-client.js` | Completed launcher, polling, 13 service checks and independent invitation review |
 | World-content | `src/discovery/`, provider evidence and source documentation | Completed; preserve source coverage and suggested-order semantics |
-| QA-release | `tests/browser-homepage.mjs` and release checks | Validate connection controls and actual Pages-to-loopback two-browser flow; monitor CI |
-| Product-design | Home UI/copy/styles and service configuration | EN/ZH connection panel, endpoint-scoped credentials and safe service switching |
+| QA-release | `tests/browser-homepage.mjs` and release checks | Completed 38 actual published-page checks; broader runtime CI remains separate |
+| Product-design | Home UI/copy/styles and service configuration | Completed EN/ZH connection panel, credential scoping and invitation confirmation |
 | Art/UX | Detailed Kyoto runtime appearance and visual review | Completed matched lighting/material review; realism remains a user review priority |
 
 Paths in the ownership table are relative to `experience/`. Do not edit another
@@ -128,9 +142,16 @@ The published homepage baseline passes 65 browser checks, 82 unit tests, 7 serve
 checks, 11 client integration checks and 17 repository gates. The Docker service
 retains room state across restart. All 80 published files match the tested hashes.
 Evidence lives in `experience/evidence/homepage-20261015/`. The local connection
-increment requires its own source/build and browser evidence. No model call or
-public room-service availability has been established. Do not include service
-secrets or participant credentials in the checkpoint.
+increment passes 37 candidate and 38 actual published-page browser checks, 87 unit tests, 13 service tests and
+17 repository gates; its evidence lives in that directory's `local-pages/` folder.
+Candidate tests use real loopback APIs and candidate frontend bytes served under
+the Pages origin. The published run uses actual HTTPS assets with two loopback
+APIs; all 112 captured static responses match. A separate comparison verifies all
+80 published files. Browser local-network permission was granted by automation;
+manual permission UX and physical-device access remain untested.
+The font includes all known homepage and companion copy with no missing glyphs.
+No model call or public room-service availability has been established. Do not
+include service secrets or participant credentials in the checkpoint.
 
 ## Previous companion release evidence
 

@@ -151,7 +151,11 @@ async function isolate(page, id) {
   const current = await page.evaluate(keys => Object.fromEntries(keys.map(key => [key, localStorage.getItem(key)])), Object.keys(baseline));
   check(id, Object.entries(baseline).every(([key, value]) => current[key] === value), current);
 }
-async function closeContext(context) { await context.close(); contexts.delete(context); }
+async function closeContext(context) {
+  // 等待已经开始读取的静态资源，避免关闭 context 中断证据采集。
+  if (hostedFrontend) await Promise.all(bodyReads);
+  await context.close(); contexts.delete(context);
+}
 
 const home = page => page.evaluate(() => window.__HOME__?.snapshot());
 const position = page => page.evaluate(() => window.__TOUR_GAME__?.snapshot());
