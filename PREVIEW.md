@@ -12,13 +12,16 @@ country overview, with a prompt to choose a city or landmark for local explorati
 
 Together opens a world map. The implemented room service supports invitation
 links, each person's dream places, shared selected views and reviewed AI proposals.
-Its hosted API and model credentials are still required before public collaboration
-and AI planning become available. The published frontend reports that state.
+Local backend testing with this GitHub Pages frontend is the current delivery
+target, before paid hosting. A running room service enables collaboration;
+model credentials are separately required for AI planning. The frontend reports
+the service's actual availability.
 Detailed facade interpretation is available in Kyoto; wider views use mapped
 building shapes and heights. Existing notes and the on-site companion remain usable.
 
 [Current delivery checkpoint](experience/docs/agent-checkpoint.md) ·
 [Service deployment](experience/server/README.md) ·
+[Optional future Render setup](experience/docs/render-setup.md) ·
 [Place sources](experience/docs/discovery-sources.md)
 
 ## Previous companion release

@@ -1,0 +1,18 @@
+PASS actual service capabilities
+PASS create and authenticated read
+PASS actual initial SSE snapshot
+PASS second participant joins and first receives update
+PASS real mutation synchronizes both clients
+PASS stale action reports current room without retrying
+PASS authentication rejection ends subscription
+PASS unconfigured model reports unavailable planning
+PASS explicit reconnect receives the current snapshot
+CHECK restarting server
+CHECK old server closed
+CHECK new server started
+PASS actual server restart preserves room and reconnects
+PASS closed subscription stops receiving later changes
+11 actual-service client checks passed.
+CHECK closing client subscriptions
+CHECK closing final server
+CHECK cleanup complete

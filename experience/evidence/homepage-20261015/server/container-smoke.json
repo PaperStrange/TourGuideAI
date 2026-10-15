@@ -1,0 +1,35 @@
+{
+  "image": "tourguideai-rooms:qa-20261015",
+  "checks": [
+    "actual container health with explicit unconfigured provider",
+    "two participants and a contributed destination persisted on the named volume",
+    "same authenticated room and revision recovered after container restart",
+    "non-root runtime and build-only proxy CA absent from container"
+  ],
+  "sourceHashes": {
+    "config.js": "c3e9b37f919cbe1f1ce3ea2cf307274d0cceb42b11dc5f8070ca7500e56d4804",
+    "errors.js": "b7a9b9cc20971fc47911029b68881ca9e3947d25a3e6e0127f95ba25221af5dc",
+    "planner.js": "9a3e2ee446f32a6c1e4422be0543ec095fa6c79c1ba6bad50d2c6d1dfd48d597",
+    "schemas.js": "687f7bba303dd30ccac8fc178f655eca0cc60980b5a4135f4928bba4d8823c1b",
+    "server.js": "ac6a8dfbcb5a1cef24901968e335f285214ddc74aa353dc09ede1aca5921fde4",
+    "store.js": "437c98475d65d9b9900f7577c39ea4a8b9fc58221670252a0c91ae932ff5fe3a"
+  },
+  "health": {
+    "ok": true,
+    "capabilities": {
+      "rooms": true,
+      "events": true,
+      "planning": false
+    },
+    "provider": {
+      "configured": false
+    }
+  },
+  "persisted": {
+    "participantCount": 2,
+    "wishCount": 1,
+    "revision": 2
+  },
+  "imageId": "sha256:5c33da50be741fae36bcbb30560281135cedc04009b7aa1ee94d5bfa595d22ba",
+  "cleanup": "owned container and volume removed"
+}

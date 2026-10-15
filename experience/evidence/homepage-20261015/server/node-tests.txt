@@ -1,0 +1,24 @@
+
+> tourguideai-rooms@0.1.0 test
+> node --test test/*.test.js --test-reporter=spec
+
+✔ two real HTTP clients collaborate, receive SSE snapshots and recover the persisted room after restart (4150.362092ms)
+✔ room credentials, contributor ownership, request validation and origin allowlist are enforced over HTTP (45.060594ms)
+✔ proposal validation allows catalog-grounded IDs and rejects invented or omitted contributed destinations (1.598522ms)
+✔ service shutdown completes while an invited client keeps its SSE connection open (14.685135ms)
+✔ changed wishes clear group acceptance and prevent an outdated proposal from omitting the new destination (49.16068ms)
+✔ shutdown closes an actual incomplete HTTP connection within its configured grace period (109.105676ms)
+✔ a valid catalog larger than the HTTP high-water mark still streams its committed update (33.559147ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4603.295408
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

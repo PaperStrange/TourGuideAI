@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: tourguideai-rooms
+    runtime: docker
+    repo: https://github.com/PaperStrange/TourGuideAI
+    branch: chore-sow-delivery-plan
+    plan: 0.5c-512mb
+    region: singapore
+    numInstances: 1
+    autoDeployTrigger: "off"
+    dockerfilePath: ./experience/server/Dockerfile
+    dockerContext: ./experience/server
+    healthCheckPath: /api/health
+    maxShutdownDelaySeconds: 30
+    disk:
+      name: journey-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: DATABASE_PATH
+        value: /data/rooms.sqlite
+      - key: ALLOWED_ORIGINS
+        value: https://paperstrange.github.io
+      - key: TRUST_PROXY_HOPS
+        value: "1"

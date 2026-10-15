@@ -1,12 +1,25 @@
 # Agent checkpoint · Explore and Together homepage
 
 2026-10-15 · Lead owns integration, commits and publication.
-**State: homepage and shared-room implementation in progress. New hosted frontend/backend delivery is pending.**
+**State: homepage published and verified. Local room service is running; the active increment connects GitHub Pages to a locally deployed backend before paid hosting.**
 
 ## Resume from saved work
 
 - Workspace: `/workspace/TourGuideAI`; source branch: `chore-sow-delivery-plan`.
 - Current milestone starts from checkpoint commit `3794918`.
+- Runtime source: `c3bf2309329eb1ff212f14d3e24697f38d98a23d`;
+  art refinement: `2767263`.
+- Homepage Pages: `eb8647d622d983280fba08fe9c23752aac1e81a4`.
+  [Homepage evidence](../evidence/homepage-20261015/README.md).
+- Latest direction: test a local backend with GitHub Pages before paying for
+  Render. `render.yaml` and [setup guide](render-setup.md) remain optional future
+  hosting preparation. No paid account or service has been created.
+- Local service runs on loopback port 8787 with durable ignored SQLite storage
+  and the exact Pages origin allowed. A public HTTPS tunnel is pending explicit
+  authorization: automatic approval review rejected starting Tunnelmole because
+  room data and authorization tokens would pass through that third party.
+  Do not start another tunnel as a workaround. A proxy-mediated WebSocket
+  handshake succeeded; no public forwarding endpoint was created.
 - Previously released companion application: `a8c3e493058198e8e5012bc9fd470190dc358148`.
 - Previous Pages: `6b5b1ea41a658badc8d364ad2267d07028b8fdbe`; publication worktree:
   `/workspace/TourGuideAI-pages`, branch `publish-travel-20261015`.
@@ -59,12 +72,12 @@ Ginza remains a separate architectural study.
 
 | Owner | Current boundary | Next action |
 |---|---|---|
-| Lead | `src/home/` UI/map/copy/styles except room client; entries, build/CI, release | Complete integration, preserve old links, verify and publish frontend/backend identities |
-| Engineering | `server/` service, persistence, planning and tests | Verify real HTTP/SSE, participant permissions, conflicts and restart persistence; document hosted configuration |
-| World-content | `src/discovery/`, provider evidence and source documentation | Verify search/nearby sources, place coverage and suggested-order semantics |
-| QA-release | `tests/browser-homepage.mjs` and release checks | Exercise actual two-browser room flow, EN/ZH layouts, local scenes and old-link/save preservation |
-| Product-design | `src/home/room-client.js`, `docs/homepage-journeys.md`, this checkpoint | Verify actual-service client behavior, review UI/API consistency and maintain pending release state |
-| Art/UX | Detailed Kyoto runtime appearance and visual review | Review matched lighting/material views and preserve geometry, camera and journey behavior |
+| Lead | Integration, checkpoint, build/CI and publication | Verify local connection increment, synchronize source and Pages; report tunnel approval boundary |
+| Engineering | `server/`, `src/home/room-client.js` | Local launcher and explicit polling transport; real-service verification |
+| World-content | `src/discovery/`, provider evidence and source documentation | Completed; preserve source coverage and suggested-order semantics |
+| QA-release | `tests/browser-homepage.mjs` and release checks | Validate connection controls and actual Pages-to-loopback two-browser flow; monitor CI |
+| Product-design | Home UI/copy/styles and service configuration | EN/ZH connection panel, endpoint-scoped credentials and safe service switching |
+| Art/UX | Detailed Kyoto runtime appearance and visual review | Completed matched lighting/material review; realism remains a user review priority |
 
 Paths in the ownership table are relative to `experience/`. Do not edit another
 owner's files; report interface conflicts to that owner. Preserve unrelated changes.
@@ -111,12 +124,13 @@ using the same `PLAYWRIGHT_BROWSERS_PATH`. Coordinate GPU-heavy suites with QA.
 
 ## Current release checks
 
-Final homepage browser evidence, source push and hosted frontend/backend verification
-are pending. Keep service availability and model configuration visible; a local
-room test does not establish that a Pages visitor can use Together. The lead must
-record the actual deployed API URL/version, allowed frontend origin, model capability,
-tested source/build identities and hosted-file comparison before marking delivery.
-Do not include service secrets or participant credentials in the checkpoint.
+The published homepage baseline passes 65 browser checks, 82 unit tests, 7 server
+checks, 11 client integration checks and 17 repository gates. The Docker service
+retains room state across restart. All 80 published files match the tested hashes.
+Evidence lives in `experience/evidence/homepage-20261015/`. The local connection
+increment requires its own source/build and browser evidence. No model call or
+public room-service availability has been established. Do not include service
+secrets or participant credentials in the checkpoint.
 
 ## Previous companion release evidence
 
