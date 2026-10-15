@@ -54,6 +54,7 @@ async function responseJSON(response) {
 
 export function createRoomClient({
   baseURL = '', fetchImpl = globalThis.fetch, reconnectDelayMs = 2000,
+  transport = 'sse', pollIntervalMs = 3000, pollTimeoutMs = 10000,
 } = {}) {
   if (typeof fetchImpl !== 'function') throw new TypeError('A fetch implementation is required.');
   if (typeof baseURL !== 'string' || /[?#]/.test(baseURL)) {
@@ -61,6 +62,10 @@ export function createRoomClient({
   }
   if (!Number.isFinite(reconnectDelayMs) || reconnectDelayMs < 0) {
     throw new RangeError('The reconnect delay must be a nonnegative number.');
+  }
+  if (!['sse', 'poll'].includes(transport)) throw new TypeError('Choose the sse or poll transport.');
+  for (const value of [pollIntervalMs, pollTimeoutMs]) {
+    if (!Number.isFinite(value) || value <= 0) throw new RangeError('Polling intervals and deadlines must be positive numbers.');
   }
   const base = baseURL.replace(/\/+$/, '');
 
@@ -81,8 +86,90 @@ export function createRoomClient({
     });
   }
 
+  function poll(session, { onRoom, onStatus, onError, signal }) {
+    const path = roomPath(session);
+    let stopped = false;
+    let generation = 0;
+    let currentController = null;
+    let timer = null;
+    let lastRevision = -1;
+    let retryCount = 0;
+    let connected = false;
+
+    function close() {
+      if (stopped) return;
+      stopped = true;
+      generation++;
+      clearTimeout(timer);
+      currentController?.abort();
+      signal?.removeEventListener('abort', close);
+      onStatus?.('closed');
+    }
+
+    function reconnect() {
+      if (stopped) return;
+      clearTimeout(timer);
+      currentController?.abort();
+      retryCount = 0;
+      connected = false;
+      void readSnapshot();
+    }
+
+    function schedule(delay) {
+      timer = setTimeout(() => { if (!stopped) void readSnapshot(); }, delay);
+    }
+
+    async function readSnapshot() {
+      const connection = ++generation;
+      const controller = new AbortController();
+      currentController = controller;
+      let timedOut = false;
+      const deadline = setTimeout(() => { timedOut = true; controller.abort(); }, pollTimeoutMs);
+      if (!connected) onStatus?.(retryCount ? 'reconnecting' : 'connecting');
+      try {
+        const { room } = await request(path, { session, signal: controller.signal });
+        if (stopped || connection !== generation) return;
+        if (!room || room.id !== session.roomId || !Number.isSafeInteger(room.revision) || room.revision < 0) {
+          throw new RoomClientError('The room snapshot is invalid.', { code: 'invalid_snapshot' });
+        }
+        retryCount = 0;
+        if (!connected) { connected = true; onStatus?.('connected'); }
+        // 定时读取完整状态；相同版本无需重复渲染，较早版本不得覆盖当前状态。
+        if (room.revision > lastRevision) {
+          lastRevision = room.revision;
+          onRoom(room);
+        }
+        if (!stopped && connection === generation) schedule(pollIntervalMs);
+      } catch (cause) {
+        if (stopped || connection !== generation || (controller.signal.aborted && !timedOut)) return;
+        const error = timedOut
+          ? new RoomClientError('The room update timed out.', { code: 'poll_timeout' }) : cause;
+        const willRetry = timedOut || error instanceof TypeError || error.status === 429 || error.status >= 500;
+        connected = false;
+        onError?.(error, { willRetry });
+        if (willRetry) {
+          retryCount++;
+          onStatus?.('reconnecting');
+          const delay = Math.min(Math.max(pollIntervalMs, reconnectDelayMs) * 2 ** Math.min(retryCount - 1, 4), 30000);
+          if (!stopped && connection === generation) schedule(delay);
+        } else close();
+      } finally {
+        clearTimeout(deadline);
+        controller.abort();
+      }
+    }
+
+    if (signal?.aborted) close();
+    else {
+      signal?.addEventListener('abort', close, { once: true });
+      void readSnapshot();
+    }
+    return { close, reconnect };
+  }
+
   function subscribe(session, { onRoom, onStatus, onError, signal } = {}) {
     if (typeof onRoom !== 'function') throw new TypeError('An onRoom callback is required.');
+    if (transport === 'poll') return poll(session, { onRoom, onStatus, onError, signal });
     const path = `${roomPath(session)}/events`;
     const headers = { ...headersFor(session), Accept: 'text/event-stream' };
     let stopped = false;

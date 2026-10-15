@@ -14,6 +14,8 @@ npm start
 
 The default address is `http://127.0.0.1:8787`. The default database is `.data/rooms.sqlite`, relative to the process working directory. The frontend development server can proxy `/api` to this address. For a separately hosted API, the frontend uses `VITE_TRAVEL_API_URL` and the service allows its exact origin through `ALLOWED_ORIGINS`.
 
+For the published GitHub Pages frontend, run `npm run local:pages` and use its Together connection settings. The [local Pages guide](docs/local-pages.md) covers same-computer access, persistent data, and explicit periodic synchronization for an approved HTTPS tunnel.
+
 `.env.example` documents the variables. Supply them through the shell, hosting service, or Node's `--env-file` option:
 
 ```sh
@@ -105,6 +107,8 @@ Reconnect by opening a new stream and replacing the local snapshot with the late
 
 Service shutdown ends live streams, rejects new requests and closes remaining HTTP sockets after a five-second grace period. This also covers unfinished connections created during client reconnects.
 
+Clients explicitly configured with `transport: 'poll'` read `GET /api/rooms/:id` every three seconds after a completed request. They use the same invitation header and revision checks. Each read has a ten-second deadline; network failures, timeouts, HTTP 429 and server errors retry with increasing delays capped at 30 seconds. Authentication and invalid snapshots close the subscription. Unchanged revisions produce no repeated update callback. Closing or reconnecting cancels the prior request and prevents delayed responses from updating the new session. SSE remains the default transport.
+
 ### LLM proposal
 
 `POST /api/plan` requires both invitation and participant headers, with body `{roomId,participantId,preferences?,locale?}`. `locale` is `en` or `zh`; preferences are limited to 2,000 characters. The room must contain at least one contributed destination.
@@ -114,6 +118,10 @@ The response is `{plan:{title,summary,stopIds},basedOnRevision}`. Every returned
 Generation leaves room state unchanged. Publish a chosen result with `plan.propose` at its `basedOnRevision`, so intervening group changes trigger a visible conflict. Provider failures, malformed output, unknown places, omitted wishes and incomplete responses return explicit errors. No substitute plan is produced.
 
 ## Deployment
+
+For the recommended managed host, use the repository's `render.yaml` and
+[Render setup guide](../docs/render-setup.md). It preserves the existing GitHub
+Pages frontend and provides one room service with a persistent disk.
 
 Deploy one service process with a durable local volume. SQLite transactions serialize writes; SSE subscriptions are held in that process. Multiple replicas would require a shared event service before clients can receive changes across replicas.
 
@@ -143,6 +151,8 @@ Public deployment still requires a hosting account, HTTPS hostname, durable prod
 `npm test` starts actual local HTTP servers on assigned ports and uses isolated SQLite files under ignored `.data/tests/`. It covers two clients, initial and live SSE snapshots, concurrent edits and explicit conflict retry, participant authorization, contributor ownership, proposal acceptance/reordering, CORS, invalid inputs, restart persistence, reconnect and service shutdown with an open stream.
 
 The grounding function is tested directly with catalog data. The suite does not substitute a successful model provider. An unconfigured planning request is verified as HTTP 503 and leaves the room unchanged.
+
+Periodic synchronization tests use two clients against the real service. A local TCP forwarder buffers actual backend responses to exercise request deadlines, retry delays, recovery and cancellation. The local Pages launcher is exercised as a separate Node process, including Pages CORS preflight and database recovery after restart.
 
 QA can import `startServer` from `src/server.js` with `{port:0,host:'127.0.0.1',databasePath,config:{provider:{apiKey:'',model:''}}}`. It returns `{url,app,store,close}`; call `close()` after each isolated run.
 

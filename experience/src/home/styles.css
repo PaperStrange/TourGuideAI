@@ -9,3 +9,14 @@
 @font-face{font-family:Kyoto;src:url('../ui/assets/kyoto-sans.woff') format('woff');font-display:swap}
 
 :root{font-family:Inter,Kyoto,'Noto Sans SC',system-ui,sans-serif}.home-footer{flex-wrap:wrap}.data-attribution{display:flex;flex-wrap:wrap;gap:20px;flex-basis:100%;font-size:.65rem;margin:0}
+
+.testing-connection{margin:0 0 20px;border:1px solid var(--line);border-radius:8px;background:#f1f3ea;font-size:.8rem}
+.testing-connection summary{padding:14px 16px;cursor:pointer;font-weight:500;min-height:44px}
+.testing-connection form{padding:0 16px 16px}
+.testing-connection label{display:block;margin:14px 0 7px;font-size:.78rem}
+.testing-connection input,.testing-connection select{display:block;width:100%;min-width:0;min-height:44px;padding:10px;border:1px solid #c5cfc1;border-radius:5px;background:var(--paper);color:var(--ink);font:inherit}
+.testing-connection input[aria-invalid=true]{border-color:#a34b35;outline:1px solid #a34b35}
+.testing-connection .small{font-size:.74rem;margin:10px 0;overflow-wrap:anywhere}
+.testing-connection .small:last-child{margin-bottom:0}
+.service-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.service-actions button{flex:1;font-size:.76rem}

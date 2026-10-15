@@ -6,6 +6,7 @@
   "engines": { "node": ">=24.19.0" },
   "scripts": {
     "start": "node src/server.js",
+    "local:pages": "node --env-file-if-exists=.env src/local-pages.js",
     "dev": "node --watch src/server.js",
     "test": "node --test test/*.test.js"
   },

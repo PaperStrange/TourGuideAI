@@ -1,6 +1,6 @@
 # Deploy the shared-trip service
 
-Recommended setup: retain the existing GitHub Pages website and deploy the room
+Optional future hosting, after local testing: retain the existing GitHub Pages website and deploy the room
 service to Render in Singapore. The repository's `render.yaml` selects one
 512 MB web instance and a 1 GB persistent disk for the trip database. It leaves
 automatic deployment off so source pushes do not change the running service.
@@ -16,9 +16,10 @@ separate LLM-provider charges. Review the amount shown by Render before creation
    Grant access to this repository if Render requests it. Review the one service
    and disk, and approve its displayed subscription cost.
 2. Wait for the service to become healthy. Share its public `https://…onrender.com`
-   address with the developer. It contains no secret. The frontend must be rebuilt
-   with that address as `VITE_TRAVEL_API_URL` and published before room invitations
-   work on GitHub Pages. The deployment does not automatically change Pages.
+   address with the developer. It contains no secret. For test sessions, explicitly
+   select that address in the homepage's Together connection panel. The frontend
+   can later be rebuilt with it as `VITE_TRAVEL_API_URL` to make it the default
+   service. The Render deployment does not automatically change Pages.
 3. For AI planning, add `LLM_API_KEY` and `LLM_MODEL` in the Render service's
    Environment settings. The provider must support the server's structured Chat
    Completions request. `LLM_BASE_URL` defaults to the OpenAI API; set a different

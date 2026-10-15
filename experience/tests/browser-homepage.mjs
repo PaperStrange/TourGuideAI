@@ -11,6 +11,9 @@ if (!process.argv[2]) {
   process.exit(2);
 }
 const dist = resolve(process.argv[2]);
+const connectionOnly = process.argv.includes('--connection-only');
+const hostedFrontend = connectionOnly && process.env.EXPERIENCE_QA_FRONTEND === 'hosted';
+const pagesURL = connectionOnly ? new URL(process.env.EXPERIENCE_QA_PAGES_URL || 'https://paperstrange.github.io/TourGuideAI/') : null;
 const artifactRoot = resolve('..', 'artifacts', 'homepage-qa');
 const output = resolve(process.env.EXPERIENCE_QA_OUTPUT || join(artifactRoot, 'browser'));
 const timeout = Number(process.env.EXPERIENCE_QA_TIMEOUT || 120000);
@@ -36,7 +39,10 @@ const report = {
   artifact: { directory: dist, manifestSha256: sha(JSON.stringify(files)), files },
   server: { sourceManifestSha256: sha(JSON.stringify(backendFiles)), files: backendFiles, databaseDirectory },
   driverSha256: sha(readFileSync(fileURLToPath(import.meta.url))),
-  conditions: { desktop: [1440, 1000], phone: [390, 844], timeoutMs: timeout },
+  conditions: { desktop: [1440, 1000], phone: [390, 844], timeoutMs: timeout,
+    suite: connectionOnly ? 'explicit-local-connection' : 'homepage',
+    frontend: connectionOnly ? hostedFrontend ? 'actual-published-https' : 'packaged-candidate-at-pages-origin' : 'packaged-local',
+    ...(connectionOnly ? { pagesURL: pagesURL.href, localNetworkPermission: 'granted-by-automation' } : {}) },
   checks: [], scenarios: {}, screenshots: [], observations: {},
   limitations: [
     'Automated participants are test inputs; this run does not measure human enjoyment, shared understanding or trip usefulness.',
@@ -45,7 +51,7 @@ const report = {
     'Software-rendered Chromium supplies rendering compatibility evidence; hardware frame-rate acceptance is outside this run.',
   ],
 };
-const persist = () => writeFileSync(join(output, 'homepage-result.json'), JSON.stringify(report, null, 2) + '\n');
+const persist = () => writeFileSync(join(output, connectionOnly ? 'connection-result.json' : 'homepage-result.json'), JSON.stringify(report, null, 2) + '\n');
 function check(id, passed, evidence) {
   report.checks.push({ id, pass: Boolean(passed), evidence });
   persist(); console.log(`${passed ? 'PASS' : 'FAIL'} ${id}`);
@@ -64,32 +70,47 @@ const baseline = {
   'tourguideai:travel:v1': '{"selected":["mufg","crossing"],"meaningful":["mitsui"]}',
   'tourguideai:appearance:v1': '{"lighting":"night"}',
 };
-let browser, service, origin;
+let browser, service, secondService, origin;
 const contexts = new Set();
+const apiOrigins = new Set(), bodyReads = [];
 const safeURL = href => {
   const url = new URL(href);
   for (const key of [...url.searchParams.keys()]) if (/token|invite/i.test(key)) url.searchParams.set(key, '[redacted]');
   if (url.hash) url.hash = '[redacted]';
   return url.href;
 };
+function apiRequestRecord(request) {
+  const headers = request.headers();
+  return { method: request.method(), url: safeURL(request.url()),
+    hasInviteHeader: Boolean(headers.authorization), hasParticipantHeader: Boolean(headers['x-participant-token']) };
+}
 async function scenario(name, { mobile = false, language = 'en', url, seed = baseline, blockProviders = false, blockAPI = false } = {}) {
   const context = await browser.newContext({ viewport: mobile ? { width: 390, height: 844 } : { width: 1440, height: 1000 },
     deviceScaleFactor: 1, hasTouch: mobile, isMobile: mobile });
   contexts.add(context);
-  const record = report.scenarios[name] = { assets: [], api: [], providers: [], providerResponses: [], blockedProviders: [], external: [], pageErrors: [], consoleErrors: [], requestFailures: [] };
+  if (connectionOnly) await context.grantPermissions(['local-network-access'], { origin });
+  const record = report.scenarios[name] = { assets: [], api: [], providers: [], providerResponses: [], blockedProviders: [], external: [], pageErrors: [], consoleErrors: [], requestFailures: [], hostedAssets: [] };
   await context.route('**/*', route => {
-    const requested = new URL(route.request().url()), path = decodeURIComponent(requested.pathname === '/' ? '/index.html' : requested.pathname);
+    const requested = new URL(route.request().url());
+    const staticPath = connectionOnly && requested.pathname.startsWith(pagesURL.pathname)
+      ? '/' + requested.pathname.slice(pagesURL.pathname.length) : requested.pathname;
+    const path = decodeURIComponent(staticPath === '/' ? '/index.html' : staticPath);
     if (providerOrigins.has(requested.origin)) {
       record.providers.push(safeURL(requested.href));
       if (blockProviders) { record.blockedProviders.push(safeURL(requested.href)); return route.abort('blockedbyclient'); }
       return route.continue();
     }
+    if (apiOrigins.has(requested.origin) && requested.pathname.startsWith('/api/')) {
+      record.api.push(apiRequestRecord(route.request()));
+      return blockAPI ? route.abort('connectionfailed') : route.continue();
+    }
     if (requested.origin !== origin) { record.external.push(safeURL(requested.href)); return route.abort('blockedbyclient'); }
-    if (path.startsWith('/api/')) {
-      record.api.push({ method: route.request().method(), url: safeURL(requested.href) });
+    if (requested.pathname.startsWith('/api/')) {
+      record.api.push(apiRequestRecord(route.request()));
       return blockAPI ? route.abort('connectionfailed') : route.continue();
     }
     record.assets.push(path);
+    if (hostedFrontend) return route.continue();
     if (!assets.has(path)) return route.fulfill({ status: 404, body: 'Missing packaged resource' });
     return route.fulfill({ status: 200, contentType: mime[extname(path)] || 'application/octet-stream', body: assets.get(path) });
   });
@@ -106,10 +127,20 @@ async function scenario(name, { mobile = false, language = 'en', url, seed = bas
     page.on('requestfailed', request => record.requestFailures.push({ url: safeURL(request.url()), error: request.failure()?.errorText }));
     page.on('response', response => {
       if (providerOrigins.has(new URL(response.url()).origin)) record.providerResponses.push({ url: safeURL(response.url()), status: response.status() });
+      const requested = new URL(response.url());
+      if (hostedFrontend && requested.origin === origin && requested.pathname.startsWith(pagesURL.pathname)) {
+        const path = '/' + requested.pathname.slice(pagesURL.pathname.length) || '/index.html';
+        const assetPath = path === '/' ? '/index.html' : path;
+        bodyReads.push(response.body().then(bytes => record.hostedAssets.push({ path: assetPath, status: response.status(),
+          sha256: sha(bytes), expectedSha256: assets.has(assetPath) ? sha(assets.get(assetPath)) : null,
+          matches: assets.has(assetPath) && sha(bytes) === sha(assets.get(assetPath)) }))
+          .catch(error => record.hostedAssets.push({ path: assetPath, error: error.message, matches: false })));
+      }
     });
   });
   const page = await context.newPage(); page.setDefaultTimeout(timeout);
-  await page.goto(url ?? `${origin}/?qa=1&lang=${language}`, { waitUntil: 'domcontentloaded' });
+  await page.goto(url ?? (connectionOnly ? new URL(`./index.html?qa=1&lang=${language}&mode=together`, pagesURL).href
+    : `${origin}/?qa=1&lang=${language}`), { waitUntil: 'domcontentloaded' });
   return { context, page, record };
 }
 async function capture(page, name, mobile = false) {
@@ -165,10 +196,181 @@ async function section(id, operation) {
   catch (error) { check(id + '-completed', false, { error: error.message, stack: error.stack }); }
 }
 
+async function openConnectionPanel(page) {
+  if (!await page.locator('#testing-connection').evaluate(node => node.open)) await page.locator('#testing-connection summary').click();
+}
+async function connectService(page, endpoint, transport = 'sse') {
+  await openConnectionPanel(page);
+  await page.locator('#service-endpoint').fill(endpoint);
+  await page.locator('#service-transport').selectOption(transport);
+  await page.locator('#service-connect').click();
+  await page.waitForFunction(endpoint => {
+    const value = JSON.parse(sessionStorage.getItem('tourguideai:room-service:v1') || 'null');
+    return value?.endpoint === endpoint && window.__HOME__?.snapshot().serviceReady;
+  }, endpoint);
+}
+const serviceRequests = (record, endpoint) => record.api.filter(item => new URL(item.url).origin === endpoint);
+async function createRoom(page, name) {
+  await page.locator('#traveler-name').fill(name);
+  await page.locator('#room-title').fill('Local connection QA');
+  await page.locator('#room-create').click(); await roomSettled(page, 1, 0);
+}
+async function runConnectionSuite() {
+  report.limitations.push('Both browser sessions run on one test host. Local Network Access permission is granted by automation; no physical permission-prompt or cross-person network study is claimed.');
+  const first = await scenario('connection-alice'); const alice = first.page;
+  await alice.waitForFunction(() => Boolean(window.__HOME__));
+  check('connection-panel-is-collapsed-by-default', !(await alice.locator('#testing-connection').evaluate(node => node.open)));
+  await openConnectionPanel(alice);
+  const beforeTyping = first.record.api.length;
+  await alice.locator('#service-endpoint').fill(service.url);
+  await alice.locator('#service-endpoint').press('Tab');
+  check('typing-endpoint-does-not-contact-it', serviceRequests(first.record, service.url).length === 0,
+    { apiBefore: beforeTyping, apiAfter: first.record.api.length });
+  for (const endpoint of ['not a URL', 'http://example.com']) {
+    await alice.locator('#service-endpoint').fill(endpoint); await alice.locator('#service-connect').click();
+    check(`invalid-endpoint-rejected-${endpoint.startsWith('http') ? 'public-http' : 'syntax'}`,
+      serviceRequests(first.record, service.url).length === 0 && first.record.external.length === 0
+      && !(await home(alice)).serviceReady,
+      { status: await alice.locator('#service-connection-status').innerText(), external: first.record.external });
+  }
+  await connectService(alice, service.url);
+  check('explicit-connect-only-checks-actual-service-health', serviceRequests(first.record, service.url).length === 1
+    && serviceRequests(first.record, service.url)[0].url.endsWith('/api/health'), serviceRequests(first.record, service.url));
+  await createRoom(alice, 'Alice connection QA');
+  const invite = alice.url(), roomId = (await home(alice)).room.id;
+  const inviteFields = [...new URLSearchParams(new URL(invite).hash.slice(1)).keys()];
+  check('connection-invitation-has-no-endpoint-or-member-secret', inviteFields.includes('room') && inviteFields.includes('invite')
+    && inviteFields.every(key => ['room', 'invite'].includes(key)), { fragmentFields: inviteFields });
+
+  const second = await scenario('connection-bob'); const bob = second.page;
+  await bob.waitForFunction(() => Boolean(window.__HOME__));
+  await connectService(bob, service.url, 'poll');
+  const endpointKey = `tourguideai:room-session:v2:${encodeURIComponent(service.url)}:${encodeURIComponent(roomId)}`;
+  const legacyCredential = await alice.evaluate(key => sessionStorage.getItem(key), endpointKey);
+  await bob.evaluate(({ roomId, credential }) => sessionStorage.setItem(`tourguideai:room-session:${roomId}`, credential),
+    { roomId, credential: legacyCredential });
+  const observedInvite = new URL(invite); observedInvite.searchParams.set('qa', '1');
+  const beforeInviteRequests = second.record.api.length;
+  await bob.goto(observedInvite.href, { waitUntil: 'domcontentloaded' }); await ready(bob);
+  check('unbound-invitation-waits-for-explicit-endpoint-confirmation', !(await home(bob)).room
+    && (await home(bob)).invitationNeedsConfirmation
+    && second.record.api.slice(beforeInviteRequests).every(item => item.url.endsWith('/api/health') && !item.hasInviteHeader && !item.hasParticipantHeader),
+    { requests: second.record.api.slice(beforeInviteRequests) });
+  await connectService(bob, service.url, 'poll');
+  await bob.waitForFunction(() => window.__HOME__?.snapshot().room?.participants.length === 1);
+  check('fresh-client-reopens-invite-with-selected-local-service', await bob.locator('#room-join').isVisible()
+    && (await home(bob)).room.id === roomId, { roomId, paths: serviceRequests(second.record, service.url).map(item => new URL(item.url).pathname) });
+  check('unscoped-legacy-member-credential-requires-rejoin', await bob.locator('#room-join').isVisible()
+    && await bob.evaluate(key => sessionStorage.getItem(key) === null, endpointKey), { scopedKeyPresentBeforeJoin: false });
+  await bob.locator('#traveler-name').fill('Bob connection QA'); await bob.locator('#room-join').click();
+  await roomSettled(alice, 2, 0); await roomSettled(bob, 2, 0);
+  const found = await search(alice, 'Eiffel Tower');
+  if (!found.length) throw new Error('Actual place provider did not supply a wish for transport verification.');
+  await chooseResult(alice); await alice.locator('#add-dream').click();
+  await roomSettled(alice, 2, 1); await roomSettled(bob, 2, 1);
+  check('two-pages-clients-share-real-sse-and-poll-updates',
+    serviceRequests(first.record, service.url).some(item => item.url.endsWith('/events'))
+    && !serviceRequests(second.record, service.url).some(item => item.url.endsWith('/events'))
+    && serviceRequests(second.record, service.url).filter(item => item.method === 'GET' && item.url.endsWith(`/rooms/${roomId}`)).length >= 2,
+    { participants: (await home(bob)).room.participants.map(person => person.displayName), revision: (await home(bob)).room.revision,
+      bobRequestPaths: serviceRequests(second.record, service.url).map(item => new URL(item.url).pathname) });
+  await capture(alice, 'connection-two-clients-en');
+  await bob.locator('#locale-zh').click(); await openConnectionPanel(bob); await capture(bob, 'connection-two-clients-zh');
+  const credentialKeys = await alice.evaluate(() => Object.keys(sessionStorage).filter(key => key.startsWith('tourguideai:room-session:')));
+  check('member-session-is-scoped-to-endpoint-and-room', credentialKeys.includes(endpointKey), { keys: credentialKeys });
+  const savedURL = new URL(bob.url()); savedURL.searchParams.set('qa', '1');
+  await bob.goto(savedURL.href, { waitUntil: 'domcontentloaded' }); await ready(bob); await roomSettled(bob, 2, 1);
+  check('reload-retains-selected-endpoint-transport-and-member', await bob.evaluate(endpoint => {
+    const value = JSON.parse(sessionStorage.getItem('tourguideai:room-service:v1'));
+    return value.endpoint === endpoint && value.transport === 'poll';
+  }, service.url) && await bob.locator('#room-setup').isHidden(), { roomId: (await home(bob)).room.id });
+
+  await connectService(alice, secondService.url);
+  check('endpoint-change-clears-room-and-invitation', !(await home(alice)).room && !new URL(alice.url()).hash
+    && await alice.locator('#room-create').isVisible(), { hasRoom: Boolean((await home(alice)).room), hashPresent: Boolean(new URL(alice.url()).hash) });
+  check('new-endpoint-receives-only-health-until-explicit-room-action', serviceRequests(first.record, secondService.url).length === 1
+    && serviceRequests(first.record, secondService.url)[0].url.endsWith('/api/health'), serviceRequests(first.record, secondService.url));
+  await alice.waitForFunction(() => Boolean(window.__HOME__?.snapshot().serviceReady));
+  check('previous-endpoint-stream-is-cancelled', first.record.requestFailures.some(item => item.url.startsWith(service.url)
+    && item.url.endsWith('/events') && /ABORTED/.test(item.error)), first.record.requestFailures.filter(item => item.url.endsWith('/events')));
+  await createRoom(alice, 'Alice second service QA');
+  const secondRoom = (await home(alice)).room.id;
+  check('new-endpoint-creates-independent-room', secondRoom !== roomId && (await home(alice)).room.participants.length === 1
+    && (await home(bob)).room.id === roomId && (await home(bob)).room.participants.length === 2,
+    { firstRoomId: roomId, secondRoomId: secondRoom });
+  await openConnectionPanel(alice); await alice.locator('#service-reset').click();
+  await alice.waitForFunction(() => sessionStorage.getItem('tourguideai:room-service:v1') === null);
+  check('reset-returns-default-and-clears-current-room', !(await home(alice)).room && !new URL(alice.url()).hash,
+    { endpointField: await alice.locator('#service-endpoint').inputValue() });
+  await isolate(alice, 'connection-alice-preserves-private-saves'); await isolate(bob, 'connection-bob-preserves-private-saves');
+  await closeContext(second.context); await closeContext(first.context);
+
+  const injected = new URL(invite); injected.searchParams.set('qa', '1');
+  injected.searchParams.set('api', secondService.url); injected.searchParams.set('endpoint', secondService.url);
+  const query = await scenario('connection-query', { url: injected.href });
+  await query.page.waitForFunction(() => Boolean(window.__HOME__));
+  await openConnectionPanel(query.page);
+  check('query-endpoint-does-not-autoconnect', serviceRequests(query.record, secondService.url).length === 0
+    && await query.page.locator('#service-endpoint').inputValue() !== secondService.url
+    && await query.page.evaluate(() => sessionStorage.getItem('tourguideai:room-service:v1')) === null,
+    { requestsToInjectedEndpoint: serviceRequests(query.record, secondService.url).length });
+  await query.page.waitForFunction(() => !window.__HOME__?.snapshot().connectionPending);
+  await query.page.locator('#service-reset').click();
+  await query.page.waitForFunction(() => !window.__HOME__?.snapshot().connectionPending);
+  check('reset-does-not-confirm-an-unbound-invitation', (await home(query.page)).invitationNeedsConfirmation
+    && query.record.api.every(item => !item.hasInviteHeader && !item.hasParticipantHeader),
+    { hasPendingInvitation: (await home(query.page)).invitationNeedsConfirmation, requests: query.record.api });
+  await closeContext(query.context);
+
+  const pending = await scenario('connection-pending'); const waiting = pending.page;
+  await waiting.waitForFunction(() => Boolean(window.__HOME__)); await connectService(waiting, service.url);
+  let releaseRequest;
+  const released = new Promise(resolve => { releaseRequest = resolve; });
+  await pending.context.route(service.url + '/api/rooms', async route => {
+    if (route.request().method() !== 'POST') return route.fallback();
+    report.observations.delayedAction = { method: 'POST', path: '/api/rooms', stage: 'held-before-network-dispatch' };
+    await released;
+    await route.fallback().catch(error => { report.observations.delayedAction.releaseError = error.message; });
+  });
+  try {
+    await waiting.locator('#traveler-name').fill('Pending connection QA');
+    await Promise.all([waiting.waitForRequest(request => request.url() === service.url + '/api/rooms' && request.method() === 'POST', { timeout: 10000 }),
+      waiting.locator('#room-create').click()]);
+    const aborted = waiting.waitForEvent('requestfailed', { predicate: request => request.url() === service.url + '/api/rooms', timeout: 10000 })
+      .then(() => true, () => false);
+    await connectService(waiting, secondService.url); const abortObserved = await aborted; releaseRequest();
+    check('endpoint-change-aborts-pending-action-before-dispatch', !(await home(waiting)).room
+      && abortObserved && pending.record.requestFailures.some(item => item.url === service.url + '/api/rooms' && /ABORTED/.test(item.error)),
+      { observedFailure: pending.record.requestFailures.filter(item => item.url === service.url + '/api/rooms'),
+        limitation: 'Controlled request delay before dispatch; this does not test reversal of an already committed server action.' });
+    await isolate(waiting, 'pending-action-switch-preserves-private-saves');
+  } finally { releaseRequest(); await closeContext(pending.context); }
+
+  const phone = await scenario('connection-phone', { mobile: true });
+  await phone.page.waitForFunction(() => Boolean(window.__HOME__));
+  await connectService(phone.page, service.url, 'poll');
+  await layout(phone.page, 'connection-phone-en-layout');
+  await phone.page.locator('#testing-connection').scrollIntoViewIfNeeded(); await capture(phone.page, 'connection-phone-en', true);
+  await phone.page.locator('#locale-zh').tap(); await layout(phone.page, 'connection-phone-zh-layout');
+  await phone.page.locator('#testing-connection').scrollIntoViewIfNeeded(); await capture(phone.page, 'connection-phone-zh', true);
+  check('connection-phone-localizes-without-dropping-selection', await phone.page.locator('html').getAttribute('lang') === 'zh'
+    && (await home(phone.page)).serviceReady && await phone.page.locator('#service-endpoint').inputValue() === service.url,
+    { copy: await phone.page.locator('#testing-connection').innerText() });
+  await isolate(phone.page, 'connection-phone-preserves-private-saves'); await closeContext(phone.context);
+}
+
 try {
+  if (connectionOnly) origin = pagesURL.origin;
   service = await startServer({ port: 0, host: '127.0.0.1', databasePath: join(databaseDirectory, 'rooms.sqlite'),
-    config: { provider: { apiKey: '', model: '', baseUrl: 'https://api.openai.com/v1' } } });
-  origin = service.url;
+    config: { provider: { apiKey: '', model: '', baseUrl: 'https://api.openai.com/v1' },
+      ...(connectionOnly ? { allowedOrigins: [origin] } : {}) } });
+  apiOrigins.add(service.url);
+  if (connectionOnly) {
+    secondService = await startServer({ port: 0, host: '127.0.0.1', databasePath: join(databaseDirectory, 'second.sqlite'),
+      config: { provider: { apiKey: '', model: '', baseUrl: 'https://api.openai.com/v1' }, allowedOrigins: [origin] } });
+    apiOrigins.add(secondService.url);
+    report.conditions.localServices = [...apiOrigins];
+  } else origin = service.url;
   const proxyValue = process.env.HTTPS_PROXY || process.env.HTTP_PROXY;
   const proxy = proxyValue ? new URL(proxyValue) : null;
   browser = await chromium.launch({ headless: true, args: ['--no-sandbox'],
@@ -179,6 +381,8 @@ try {
   report.conditions.externalProxyConfigured = Boolean(proxy);
   persist();
 
+  if (connectionOnly) await section('connection-panel', runConnectionSuite);
+  else {
   await section('explore-and-two-clients', async () => {
     const first = await scenario('alice'); const page = first.page;
     await ready(page); await sceneReady(page);
@@ -279,7 +483,8 @@ try {
     if (!new URL(bob.url()).searchParams.has('qa')) {
       const observe = new URL(bob.url()); observe.searchParams.set('qa', '1'); await bob.goto(observe.href, { waitUntil: 'domcontentloaded' });
     }
-    await ready(bob); await bob.waitForFunction(() => window.__HOME__?.snapshot().room?.participants.length === 1);
+    await ready(bob); await connectService(bob, service.url);
+    await bob.waitForFunction(() => window.__HOME__?.snapshot().room?.participants.length === 1);
     check('fresh-invite-is-read-only-until-join', await bob.locator('#room-join').isVisible()
       && await bob.locator('#room-create').isHidden(), { participants: (await home(bob)).room.participants.length });
     await bob.locator('#traveler-name').fill('Bob QA'); await bob.locator('#room-join').click();
@@ -387,16 +592,22 @@ try {
       && new URL(item.page.url()).searchParams.get('lighting') === 'night', safeURL(item.page.url()));
     await closeContext(item.context);
   });
+  }
+  await Promise.all(bodyReads);
+  if (hostedFrontend) {
+    const downloaded = Object.values(report.scenarios).flatMap(item => item.hostedAssets);
+    check('published-frontend-responses-match-reviewed-package', downloaded.length > 0 && downloaded.every(item => item.matches), downloaded);
+  }
   for (const [name, value] of Object.entries(report.scenarios)) {
     check(`${name}-no-page-exceptions`, value.pageErrors.length === 0, value.pageErrors);
-    if (!name.startsWith('unavailable')) check(`${name}-no-console-errors`, value.consoleErrors.length === 0, value.consoleErrors);
+    if (!connectionOnly && !name.startsWith('unavailable')) check(`${name}-no-console-errors`, value.consoleErrors.length === 0, value.consoleErrors);
     check(`${name}-requests-use-declared-origins`, value.external.length === 0, value.external);
   }
 } catch (error) {
   report.fatal = { message: error.message, stack: error.stack };
 } finally {
   for (const context of [...contexts]) await closeContext(context);
-  await browser?.close(); await service?.close();
+  await browser?.close(); await service?.close(); await secondService?.close();
   report.finishedAt = new Date().toISOString();
   report.summary = { passed: report.checks.filter(item => item.pass).length, failed: report.checks.filter(item => !item.pass).length,
     fatal: Boolean(report.fatal) };

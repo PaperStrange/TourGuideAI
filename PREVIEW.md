@@ -19,7 +19,17 @@ the service's actual availability.
 Detailed facade interpretation is available in Kyoto; wider views use mapped
 building shapes and heights. Existing notes and the on-site companion remain usable.
 
+For local room tests, run `npm ci` and `npm run local:pages` from
+`experience/server` on your computer. Open Together on Pages on that same computer,
+expand **Testing connection**, enter `http://127.0.0.1:8787`, and choose **Connect**.
+Allow the browser's local-network prompt if shown. Keep the terminal running.
+An unfamiliar invitation asks you to confirm the service before opening its room.
+Other devices require a reachable HTTPS endpoint; a room invitation alone does
+not expose a local server. The [local guide](experience/server/docs/local-pages.md)
+covers both paths and the optional periodic-update setting.
+
 [Current delivery checkpoint](experience/docs/agent-checkpoint.md) ·
+[Local backend with GitHub Pages](experience/server/docs/local-pages.md) ·
 [Service deployment](experience/server/README.md) ·
 [Optional future Render setup](experience/docs/render-setup.md) ·
 [Place sources](experience/docs/discovery-sources.md)

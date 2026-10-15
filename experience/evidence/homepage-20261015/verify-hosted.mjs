@@ -2,12 +2,18 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { createHash } from 'node:crypto';
+import { resolve, dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const sourceCommit = process.argv[2];
 if (!/^[a-f0-9]{40}$/.test(sourceCommit || '')) throw new Error('Provide the full released source commit.');
 const run = promisify(execFile);
 const base = 'https://paperstrange.github.io/TourGuideAI/';
-const evidence = JSON.parse(readFileSync(new URL('./final/homepage-result.json', import.meta.url), 'utf8'));
+const evidencePath = process.argv[3] ? resolve(process.argv[3])
+  : fileURLToPath(new URL('./final/homepage-result.json', import.meta.url));
+const evidence = JSON.parse(readFileSync(evidencePath, 'utf8'));
+const outputPath = process.argv[3] ? join(dirname(evidencePath), 'hosted-verification.json')
+  : fileURLToPath(new URL('./hosted-verification.json', import.meta.url));
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const report = { checkedAt: new Date().toISOString(), base, sourceCommit,
   manifestSha256: evidence.artifact.manifestSha256, passed: false, files: [] };
@@ -39,7 +45,7 @@ try {
   report.passed = report.descriptorMatches && report.files.length === evidence.artifact.files.length
     && report.files.every(file => file.matches);
 } catch (error) { report.error = error.message; }
-writeFileSync(new URL('./hosted-verification.json', import.meta.url), JSON.stringify(report, null, 2) + '\n');
+writeFileSync(outputPath, JSON.stringify(report, null, 2) + '\n');
 console.log(JSON.stringify({ passed: report.passed, files: report.files.length,
   matched: report.files.filter(file => file.matches).length, servedSourceCommit: report.servedSourceCommit,
   failed: report.files.filter(file => !file.matches).map(file => file.path), error: report.error }));
