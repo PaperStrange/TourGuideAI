@@ -1,31 +1,31 @@
 {
   "sourceRepository": "https://github.com/PaperStrange/TourGuideAI",
   "sourceBranch": "chore-sow-delivery-plan",
-  "sourceCommit": "a8c3e493058198e8e5012bc9fd470190dc358148",
-  "experience": "Take the journey with you",
-  "entryPath": "travel.html",
+  "sourceCommit": "c3bf2309329eb1ff212f14d3e24697f38d98a23d",
+  "experience": "Explore and plan together",
+  "entryPath": "index.html",
   "languages": ["en", "zh"],
-  "builtManifestSha256": "6a4f5b2f11d67153058305d73ffc715d3dd7bdd5c16531bd2a89b2a933fe0608",
-  "companionBrowserChecksPassed": 73,
-  "companionBrowserReportSha256": "ea7fa1080a00b55825ba273cdbfadb608ece2cebba9f98834df0465058469c68",
-  "unitTestsPassed": 74,
+  "builtManifestSha256": "fac5a7418a388b09033b2670ded3394a86e477bc3c9100a25b9d30f85a2dd642",
+  "homepageBrowserChecksPassed": 65,
+  "homepageBrowserReportSha256": "1ac4aa8010fda2b48c2a4ca9d61f95ce9291156ed12e61d8cccdf9a99f9ac8b4",
+  "unitTestsPassed": 82,
+  "serverTestsPassed": 7,
+  "serverClientChecksPassed": 11,
   "repositoryGatesPassed": 17,
-  "perspectiveBrowserChecksPassed": 80,
-  "originalBrowserChecksPassed": 130,
-  "focusedSharingChecksPassed": 24,
-  "ciRun": "https://github.com/PaperStrange/TourGuideAI/actions/runs/38779049743",
-  "features": ["ordered Google Maps links", "manual My Maps CSV import", "foreground location", "private meaningful-place marks"],
-  "location": {
-    "start": "explicit user action",
-    "hiddenPage": "paused; explicit resume required",
-    "persistence": "none",
-    "automaticVisitMarks": false
+  "ciRun": "https://github.com/PaperStrange/TourGuideAI/actions/runs/38790342241",
+  "features": ["live Kyoto street preview", "daylight and night", "place search", "sourced nearby suggestions", "world and local 3D maps", "Google Maps handoff"],
+  "backend": {
+    "localVerification": "Two browser participants, persisted rooms, streamed edits and container restart passed.",
+    "hosted": false,
+    "modelConfigured": false,
+    "nextStep": "Deploy the prepared service, configure model credentials, and rebuild the frontend with its API URL."
   },
-  "scope": "Three sourced place anchors around Shijo-Karasuma, Kyoto. Directions are Google-computed routes, not GPS recordings.",
-  "reviewStatus": "Technical validation. Physical GPS, OS sharing, field usefulness and emotional value need human review.",
+  "scope": "Detailed Kyoto interpretation and wider mapped building geometry; route lines show suggested visiting order. Directions are computed by Google Maps.",
+  "reviewStatus": "Technical checks passed. Hosted room/AI availability, human realism and field usefulness remain open.",
   "existingExperiences": {
     "perspective": "perspective.html",
-    "originalWalk": "index.html",
+    "companion": "travel.html",
+    "originalWalk": "walk.html",
     "renderComparison": "comparison.html"
   }
 }
