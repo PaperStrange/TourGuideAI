@@ -1,0 +1,46 @@
+# Place search and nearby suggestions
+
+Checked on 2026-10-15. The browser reads Photon for a deliberately submitted place-name search and English Wikipedia for articles near the chosen point. `src/discovery/provider.js` contains the provider adapters; `src/discovery/transport.js` manages requests; `src/discovery/routes.js` creates suggested stop orders. The hosted journey service is a separate component. These modules contain no partner credential or LLM integration.
+
+## Source access
+
+| Service | Official basis | Use in this application |
+| --- | --- | --- |
+| Photon | [README](https://github.com/komoot/photon/blob/master/README.md) permits project API use within a “reasonable limit,” warns that extensive use may be throttled or banned, and gives no availability guarantee. [API documentation](https://github.com/komoot/photon/blob/master/docs/api-v1.md) describes name queries and OSM identifiers. | A submitted query requests at most six matches from `photon.komoot.io/api/`. Global OSM coverage can contain missing, stale or ambiguous places. Larger demand requires an appropriately hosted service. |
+| Wikipedia | [GeoSearch](https://www.mediawiki.org/wiki/API:Geosearch) supports coordinate-based article queries. [CORS documentation](https://www.mediawiki.org/wiki/API:Cross-site_requests) explicitly supports anonymous requests with `origin=*`. [API etiquette](https://www.mediawiki.org/wiki/API:Etiquette) calls for serial requests, caching and an informative browser `Api-User-Agent`. [Wikimedia policy](https://foundation.wikimedia.org/wiki/Policy:Wikimedia_Foundation_API_Usage_Guidelines) requires respecting throttling, content licenses and provider identity. | One request selects up to 30 English Wikipedia articles within 1,200 meters of the selected point. Configurable radius is 100–2,000 meters. Article coordinates, descriptions and page IDs are read together. The provider remains visibly attributed; its availability is not guaranteed. |
+| Public Nominatim | [OSMF policy](https://operations.osmfoundation.org/policies/nominatim/) sets an application-wide maximum of one request per second, requires identification and attribution, prohibits client autocomplete and systematic POI collection, and requires cache and service-switching measures. | Reviewed as a geocoding option. This application makes no request to the OSMF public Nominatim endpoint. Its policy concerns that public service; separately hosted instances have their own terms. |
+| Public Overpass | [Maintainer commons guidance](https://dev.overpass-api.de/overpass-doc/en/preface/commons.html) identifies a general application's reliance on public instances as problematic and recommends own hosting. Shared-resource quotas and load shedding apply. | Reviewed for POI categories. No public Overpass request is made by this discovery feature. |
+| Tripadvisor | [Content API authentication](https://tripadvisor-content-api.readme.io/reference/authentication) requires an API key over HTTPS and warns about exposing keys in client code. | No configured key or partnership. No Tripadvisor results, ratings or reviews are claimed. |
+| Klook | [Klook merchant specification](https://klook.gitbook.io/openapi) addresses merchants, reservation systems and channel managers. [Authentication](https://klook.gitbook.io/openapi/getting-started/authentication) describes Bearer credentials issued by the integrating supplier/system provider. | These merchant-integration documents do not establish access to a public sightseeing search feed. No Klook integration, inventory, booking or availability claim is made. |
+
+## Meaning of a returned place
+
+Every accepted place contains `id`, `title`, numeric WGS84 `latitude`/`longitude`, `kind`, `source` and `url`. Search results also include available country, city and locality text. OSM node/way/relation IDs remain in source URLs. These coordinates are provider reference points; entrance or accessibility knowledge is not inferred.
+
+Nearby results identify the English Wikipedia page with `wikipedia:en:<pageid>` and an exact article link. `kind` is a transparent inference from the article description, or from its title when no description exists. The allowed groups are culture, heritage, outdoors and street. Event articles, administrative areas, transport stations, unrecognized subjects and explicitly former/demolished places are omitted by the current classifier. This is a limited discovery filter, and its coverage depends on article wording. It does not establish official tourism status, opening hours, admission, public access or present-day condition. The `kindBasis` field records which text was used. English article names and descriptions remain English in both interface languages.
+
+The query requests primary Earth coordinates and validates the returned distance against the radius. It does not follow pagination or enlarge the radius automatically. An incomplete response produces an error. A successful query can yield zero usable places. Even a country-level search match remains one representative center; nearby selection does not represent the country's full attractions.
+
+`DISCOVERY_ATTRIBUTION` provides [OpenStreetMap contributors / ODbL](https://www.openstreetmap.org/copyright) and [Wikipedia contributors / CC BY-SA](https://en.wikipedia.org/wiki/Wikipedia:Copyrights) notices. The interface should show these notices and each place's source link wherever results are presented. No photograph is fetched by these modules.
+
+## Suggested orders
+
+`suggestRoutes(center, places, { locale })` returns up to three distinct place sets: art/heritage, outdoor/street, and a mixture of available categories. Each contains the chosen center plus at most four nearby places. Nearest-next ordering uses great-circle proximity. The result explicitly uses `kind: 'suggested-order'`, with no path geometry, travel time or road-access assertion. Fewer categories or places produce fewer alternatives. Duplicate IDs and duplicate sets cannot manufacture extra alternatives. Google Maps handoff can use all returned coordinates through the existing travel Maps module.
+
+The categories and ordering are deterministic application logic. Place names, coordinates and source descriptions come from the providers. A line connecting these points must be labelled an ordering illustration; walking navigation requires a routing provider's actual result.
+
+## Requests and failure behavior
+
+Only user-submitted searches and selected-center lookups should call the adapters. A provider instance serializes its requests, waits at least 1.1 seconds after a successful HTTP response before another uncached request to the same service, and keeps at most 50 in-memory responses per service for one hour. The interval is an application choice, not a provider quota or an application-wide traffic guarantee across users. Scaling requires an operator-controlled service plan and aggregate traffic monitoring.
+
+Requests omit credentials. Wikipedia receives an informative `Api-User-Agent`; the browser provides its normal origin/referrer information. The transport has a 20-second deadline including queue time, accepts `AbortSignal`, and honors HTTP `Retry-After` plus MediaWiki rate-limit/maxlag errors. It does not automatically retry or rotate providers. Timeouts, cancellation, HTTP/API errors and malformed/incomplete responses are observable by the interface. Queries and selected-center coordinates go to these providers; personal notes and device GPS are not supplied by the discovery adapters.
+
+`createDiscoveryProvider({ photonEndpoint, wikipediaEndpoint })` allows deliberate endpoint replacement. Replacement endpoints must implement the corresponding response formats. Hosted service deployment, credentials and operating guarantees remain separately configured work.
+
+## Verification
+
+`node --test tests/discovery.test.mjs` passed six tests on 2026-10-15. The tests check observed source identity/coordinates, category filtering, bounded distances, distinct suggested sets, Maps export, insufficient coverage, cancellation before dispatch and `Retry-After` interpretation. `tests/fixtures/discovery-kyoto-observed.json` contains identified excerpts of actual provider responses for pure normalization checks.
+
+`tests/discovery-live.mjs` imports the production modules into Chromium from a real local HTTP server and contacts the real providers. On 2026-10-15 both the Kyoto query and `Paris, France` query passed: each produced one Photon HTTP 200 and one Wikipedia HTTP 200, both with `Access-Control-Allow-Origin: *`; each returned nine eligible nearby places and three suggested orders. Repeat search used the in-memory cache; an already-cancelled search made no additional request. No external response was replaced in this check. English Wikipedia coverage and service availability in other locations remain variable.
+
+Run explicitly with `EXPERIENCE_QA_CHROMIUM=/usr/bin/chromium node tests/discovery-live.mjs 'Paris, France'` when external live verification is intended. Results are written under ignored `test-results/discovery-live/`. The managed environment needed writable Chromium NSS certificate-store access to use its configured proxy CA. TLS and CORS checks remained enabled.

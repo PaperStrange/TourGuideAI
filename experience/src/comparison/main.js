@@ -81,7 +81,7 @@ function applyLocale(next) {
   updateStatus();
   const url = new URL(location.href); url.searchParams.set('lang', locale); url.searchParams.set('lighting', appearance);
   history.replaceState(null, '', url);
-  $('#back-link').href = `./index.html?lang=${locale}&lighting=${appearance}`;
+  $('#back-link').href = `./walk.html?lang=${locale}&lighting=${appearance}`;
 }
 
 function setMode(value) {

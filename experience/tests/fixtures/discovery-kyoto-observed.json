@@ -1,0 +1,32 @@
+{
+  "retrievedAt": "2026-10-15",
+  "scope": "Selected unmodified feature/page objects from actual provider GET responses. Used to test pure normalization, not to replace network responses.",
+  "photonRequest": "https://photon.komoot.io/api/?q=Kyoto&limit=3&lang=en",
+  "wikipediaRequest": "https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&generator=geosearch&ggscoord=35.00376%7C135.7599457&ggsradius=1200&ggslimit=30&ggsnamespace=0&prop=coordinates%7Cpageprops%7Cdescription&coprimary=primary&colimit=max&ppprop=wikibase_item%7Cdisambiguation&origin=*",
+  "photon": {
+    "type": "FeatureCollection",
+    "features": [
+      {"type":"Feature","properties":{"osm_type":"N","osm_id":3628707764,"osm_key":"railway","osm_value":"station","type":"house","name":"Kyoto","street":"North-South Free Passage","locality":"Higashikujo-Kamitonodacho","district":"Minami Ward","city":"Kyoto","state":"Kyoto Prefecture","country":"Japan","postcode":"601-8002","countrycode":"JP"},"geometry":{"type":"Point","coordinates":[135.7584303,34.9846076]}},
+      {"type":"Feature","properties":{"osm_type":"R","osm_id":357794,"osm_key":"place","osm_value":"city","type":"city","name":"Kyoto","state":"Kyoto Prefecture","country":"Japan","countrycode":"JP","extra":{"admin_level":"7"},"extent":[135.559006,35.3212207,135.878442,34.874916]},"geometry":{"type":"Point","coordinates":[135.7681441,35.0115754]}},
+      {"type":"Feature","properties":{"osm_type":"N","osm_id":267316272,"osm_key":"railway","osm_value":"station","type":"house","name":"Kyoto","street":"Hachijō Street","locality":"Nishikujo-Kitanouchicho","district":"Minami Ward","city":"Kyoto","state":"Kyoto Prefecture","country":"Japan","postcode":"601-8412","countrycode":"JP"},"geometry":{"type":"Point","coordinates":[135.758766,34.9853497]}}
+    ]
+  },
+  "wikipedia": {
+    "batchcomplete": true,
+    "query": {
+      "pages": [
+        {"pageid":248973,"ns":0,"title":"Kenmu Restoration","index":-1,"coordinates":[{"lat":35,"lon":135.76666667,"primary":true,"globe":"earth"}],"pageprops":{"wikibase_item":"Q826021"},"description":"Period of Japanese history, 1333–1336","descriptionsource":"local"},
+        {"pageid":3785271,"ns":0,"title":"Karasuma Station","index":6,"coordinates":[{"lat":35.00361111,"lon":135.76027778,"primary":true,"globe":"earth"}],"pageprops":{"wikibase_item":"Q3969852"},"description":"Railway station in Kyoto, Japan","descriptionsource":"local"},
+        {"pageid":7560174,"ns":0,"title":"Bukkō-ji","index":8,"coordinates":[{"lat":35.0007,"lon":135.7623,"primary":true,"globe":"earth"}],"pageprops":{"wikibase_item":"Q2413893"},"description":"Buddhist temple in Kyoto, Japan","descriptionsource":"local"},
+        {"pageid":14538385,"ns":0,"title":"Nishiki Market","index":12,"coordinates":[{"lat":35.00502778,"lon":135.76613889,"primary":true,"globe":"earth"}],"pageprops":{"wikibase_item":"Q11650434"},"description":"Marketplace in downtown Kyoto, Japan","descriptionsource":"local"},
+        {"pageid":14845316,"ns":0,"title":"Kyoto International Manga Museum","index":14,"coordinates":[{"lat":35.011649,"lon":135.759243,"primary":true,"globe":"earth"}],"pageprops":{"wikibase_item":"Q783923"},"description":"Museum in Kyoto, Japan","descriptionsource":"local"},
+        {"pageid":20888642,"ns":0,"title":"Rokkaku-dō","index":18,"coordinates":[{"lat":35.00766111,"lon":135.76023611,"primary":true,"globe":"earth"}],"pageprops":{"wikibase_item":"Q599378"},"description":"Buddhist temple in Nakagyo-ku, Kyoto, Japan","descriptionsource":"local"},
+        {"pageid":29547058,"ns":0,"title":"Kyoto Art Center","index":19,"coordinates":[{"lat":35.00541667,"lon":135.75833333,"primary":true,"globe":"earth"}],"pageprops":{"wikibase_item":"Q6452114"},"description":"Art center","descriptionsource":"local"},
+        {"pageid":50398320,"ns":0,"title":"Byōdō-ji","index":22,"coordinates":[{"lat":34.9995,"lon":135.7603,"primary":true,"globe":"earth"}],"pageprops":{"wikibase_item":"Q11483471"},"description":"Buddhist temple in Kyoto Prefecture, Japan","descriptionsource":"local"},
+        {"pageid":61592832,"ns":0,"title":"Museum of Kyoto","index":26,"coordinates":[{"lat":35.00938889,"lon":135.76233333,"primary":true,"globe":"earth"}],"pageprops":{"wikibase_item":"Q11375592"},"description":"Museum in Kyoto, Japan","descriptionsource":"local"},
+        {"pageid":69681667,"ns":0,"title":"Nishiki Tenmangū","index":27,"coordinates":[{"lat":35.00502,"lon":135.76739,"primary":true,"globe":"earth"}],"pageprops":{"wikibase_item":"Q11650427"},"description":"Shrine in Kyoto, Japan","descriptionsource":"local"},
+        {"pageid":82441354,"ns":0,"title":"Chisō Gallery","index":28,"coordinates":[{"lat":35.008321,"lon":135.758947,"primary":true,"globe":"earth"}],"pageprops":{"wikibase_item":"Q138315086"},"description":"Museum in Kyoto, Japan","descriptionsource":"local"}
+      ]
+    }
+  }
+}

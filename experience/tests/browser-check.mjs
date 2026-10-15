@@ -69,7 +69,7 @@ const action = async (description, run) => {
   console.log(`ACTION ${description}`); return run();
 };
 const origin = 'http://127.0.0.1:4187';
-const entry = origin + '/?qa=1';
+const entry = origin + '/walk.html?qa=1';
 const types = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.glb': 'model/gltf-binary', '.png': 'image/png', '.jpg': 'image/jpeg', '.woff': 'font/woff', '.woff2': 'font/woff2', '.json': 'application/json' };
 const samePosition = (a, b) => a.x === b.x && a.y === b.y;
 const journey = state => JSON.stringify({ visited: state.visitedIds, read: state.readSourceIds, choices: state.choiceIds, selected: state.selectedTargetId });

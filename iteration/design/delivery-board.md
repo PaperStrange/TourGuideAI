@@ -3,6 +3,16 @@
 Updated 2026-10-15. Owner: lead. Planning baseline: `origin/iteration` at
 `eae982f4ba20a107bf21a35b70f635b4935a4c70`.
 
+**Current iteration · Explore and Together homepage:** the lead integrates the
+live street homepage, search and world/local navigation; world-content provides
+live Photon/Wikipedia discovery; engineering provides the persisted room/model
+service; art refines Kyoto facade materials and lighting; QA checks actual desktop,
+phone and two-client journeys. The user chose a small hosted backend. Its hosting
+account and model secrets remain required for public room/AI availability.
+[Current checkpoint](../../experience/docs/agent-checkpoint.md) records exact
+source/publication identities and separates local verification from hosted service
+readiness. The former companion remains available at `travel.html`.
+
 **Delivered milestone · 2026-10-15:** bilingual phone-friendly
 travel companion for the three existing Kyoto place references. Selected ordered
 places open/share through Google Maps; longer journeys retain every place across

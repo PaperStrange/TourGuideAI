@@ -1,4 +1,18 @@
-# Kyoto · a guided 3D travel experience
+# TourGuideAI · Explore and plan together
+
+The homepage opens a live Kyoto street preview and a worldwide place search.
+Explore offers nearby sightseeing suggestions and Google Maps handoff. Together
+uses a 2D world map, invited rooms, shared dream destinations and local 3D previews.
+English/Chinese guidance is available throughout. Countries remain overview-level
+until a city or landmark is chosen.
+
+The frontend is built for GitHub Pages. [The separate Node service](server/README.md)
+provides persisted rooms and configured-provider AI proposals; start it on port 8787
+for the Vite development proxy, or set `VITE_TRAVEL_API_URL` before a production
+build. Public hosting and model credentials remain deployment prerequisites.
+[Journey behavior](docs/homepage-journeys.md) · [Data sources](docs/discovery-sources.md)
+
+## Original Kyoto walk
 
 A small walk through Shijo: approach source-backed places, make a choice, keep a
 personal note, then take those notes with you. Complete English/Chinese guidance
@@ -11,7 +25,8 @@ npm ci
 npm run dev
 ```
 
-Requires Node.js 24+. Open `http://localhost:4185/`. Walk with WASD/arrow keys or a
+Requires Node.js 24.19+. Open `http://localhost:4185/` for the homepage or
+`http://localhost:4185/walk.html` for the original walk. Walk with WASD/arrow keys or a
 click on the ground. Drag to orbit, scroll to zoom, and use Reset view to recover
 framing. E opens a nearby encounter; Escape closes it. After a choice, optionally
 save a personal note. **Daylight / Night** changes the street's lighting while

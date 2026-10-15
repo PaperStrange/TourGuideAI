@@ -2,7 +2,21 @@
 
 Updated 2026-10-15 · Lead: release/integration.
 
-## Current milestone · approved travel companion
+## Current milestone · Explore and Together homepage
+
+The approved journey has two modes: a center-place search with live street/3D-map
+preview and sourced local suggestions; and an invited group's world map of dream
+countries/cities, shared local views and reviewed AI proposals. The source service
+uses persisted rooms and revision-checked updates. Public collaboration requires
+the chosen host, persistent volume and model configuration. The frontend and
+backend have separate release evidence in the [checkpoint](agent-checkpoint.md).
+
+Building/material readability and day/night lighting remain active acceptance
+criteria. Matched camera captures record the current art refinement. Generic map
+geometry, detailed Kyoto interpretation and real-place recognition retain distinct
+coverage claims. Human realism, enjoyment and field usefulness remain open.
+
+## Previous milestone · approved travel companion
 
 The user approved Google Maps selected-journey sharing and foreground phone
 location for nearby context. The milestone is published at `travel.html`, with

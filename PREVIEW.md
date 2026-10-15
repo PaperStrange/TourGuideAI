@@ -1,5 +1,28 @@
 # Review without a local server
 
+## Explore and plan together · homepage iteration
+
+[Open the homepage](https://paperstrange.github.io/TourGuideAI/) ·
+[中文首页](https://paperstrange.github.io/TourGuideAI/?lang=zh)
+
+Explore starts with the live Kyoto street window, day/night controls and a place
+search. Choose another center to see its mapped buildings and nearby Wikipedia
+places; choose a suggested order and open it in Google Maps. A country opens a
+country overview, with a prompt to choose a city or landmark for local exploration.
+
+Together opens a world map. The implemented room service supports invitation
+links, each person's dream places, shared selected views and reviewed AI proposals.
+Its hosted API and model credentials are still required before public collaboration
+and AI planning become available. The published frontend reports that state.
+Detailed facade interpretation is available in Kyoto; wider views use mapped
+building shapes and heights. Existing notes and the on-site companion remain usable.
+
+[Current delivery checkpoint](experience/docs/agent-checkpoint.md) ·
+[Service deployment](experience/server/README.md) ·
+[Place sources](experience/docs/discovery-sources.md)
+
+## Previous companion release
+
 - [Travel companion · English](https://paperstrange.github.io/TourGuideAI/travel.html?lang=en)
 - [地图与实地散步 · 中文](https://paperstrange.github.io/TourGuideAI/travel.html?lang=zh)
 - [Play in daylight](https://paperstrange.github.io/TourGuideAI/?lighting=day)
@@ -7,7 +30,7 @@
 - [Compare the expanded street renderings](https://paperstrange.github.io/TourGuideAI/comparison.html)
 - [Published build identity](https://paperstrange.github.io/TourGuideAI/review-build.json)
 
-The current package is live from application `a8c3e49` and Pages `6b5b1ea`.
+The previous companion package was released from application `a8c3e49` and Pages `6b5b1ea`.
 **Take the journey with you** lets you choose and reorder Kyoto places, share the
 journey through Google Maps, or export pins for manual Google My Maps import.
 Use **Use my location** when there to update nearby context. Location pauses when

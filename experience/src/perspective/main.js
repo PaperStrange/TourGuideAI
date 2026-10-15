@@ -73,6 +73,8 @@ function applyCopy() {
   document.documentElement.lang = locale;
   $('#travel-link').textContent = locale === 'zh' ? '地图与实地散步 ↗' : 'Maps & real-world walking ↗';
   $('#travel-link').href = buildCompanionURL(PLACE_IDS, location.href, locale);
+  const existingWalk = document.querySelector('[data-copy="existingWalk"]');
+  if (existingWalk) existingWalk.href = `./walk.html?lang=${locale}`;
   document.title = `${ct('title')} · TourGuideAI`;
   document.querySelectorAll('[data-copy]').forEach(node => { node.textContent = ct(node.dataset.copy); });
   document.querySelectorAll('[data-locale]').forEach(node => node.setAttribute('aria-pressed', String(node.dataset.locale === locale)));
