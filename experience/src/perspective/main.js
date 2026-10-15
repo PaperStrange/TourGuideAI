@@ -3,6 +3,8 @@ import { MOMENTS, PERSPECTIVE_CHAPTER } from '../content/perspectives.js';
 import { text } from './copy.js';
 import { createRecord, readRecord, writeRecord, saveMoment, removeMoment, feedbackReport, MAX_NOTE_LENGTH } from './state.js';
 import { createShareURL, readSharedMoment } from './share.js';
+import { buildCompanionURL } from '../travel/state.js';
+import { PLACE_IDS } from '../travel/places.js';
 import fontLicense from '../ui/assets/NOTO-LICENSE.txt?raw';
 import runtimeNotices from '../ui/assets/THIRD-PARTY-NOTICES.txt?raw';
 
@@ -62,13 +64,15 @@ function mapHTML() {
 $('#perspective-app').innerHTML = `
   <header class="header"><a class="wordmark" href="./index.html"><span class="brand-icon" aria-hidden="true">↗</span>TourGuideAI</a><span class="header-place">KYOTO <span>京都</span></span><nav class="locale-switch" aria-label="Language"><button id="locale-en" data-locale="en">EN</button><button id="locale-zh" data-locale="zh">中文</button></nav></header>
   <main id="content"></main>
-  <footer class="footer"><span data-copy="scope"></span><span>© OpenStreetMap contributors · <a href="./credits.html">Credits / 来源</a></span></footer>
+  <footer class="footer"><span data-copy="scope"></span><a id="travel-link" href="./travel.html"></a><span>© OpenStreetMap contributors · <a href="./credits.html">Credits / 来源</a></span></footer>
   <div id="storage-status" class="storage-status" role="status"></div><div id="status" class="status" role="status" aria-live="polite"></div>
   <dialog id="share-dialog" aria-labelledby="share-title"><form method="dialog"><button class="close" aria-label="Close">×</button></form><span class="eyebrow" data-copy="sharePreview"></span><h2 id="share-title" data-copy="shareTitle"></h2><div id="share-preview"></div><label class="check-row"><input type="checkbox" id="include-note"><span data-copy="includeNote"></span></label><label class="link-label" for="share-url" data-copy="copyManually"></label><textarea id="share-url" rows="3" readonly></textarea><div class="button-row"><button id="copy-link" class="primary" data-copy="shareCopy"></button><button id="native-share" class="secondary" data-copy="shareNative"></button></div><p id="share-status" role="status"></p></dialog>
   <dialog id="reset-dialog" aria-labelledby="reset-title"><h2 id="reset-title" data-copy="reset"></h2><p data-copy="resetConfirm"></p><div class="button-row"><button id="confirm-reset" class="primary" data-copy="resetConfirmAction"></button><button id="cancel-reset" class="secondary" data-copy="resetCancel"></button></div></dialog>`;
 
 function applyCopy() {
   document.documentElement.lang = locale;
+  $('#travel-link').textContent = locale === 'zh' ? '地图与实地散步 ↗' : 'Maps & real-world walking ↗';
+  $('#travel-link').href = buildCompanionURL(PLACE_IDS, location.href, locale);
   document.title = `${ct('title')} · TourGuideAI`;
   document.querySelectorAll('[data-copy]').forEach(node => { node.textContent = ct(node.dataset.copy); });
   document.querySelectorAll('[data-locale]').forEach(node => node.setAttribute('aria-pressed', String(node.dataset.locale === locale)));

@@ -1,12 +1,13 @@
 # Agent checkpoint · travel companion
 
 2026-10-15 · Lead owns integration, commits and publication.
-**State: implementation in progress; this milestone is not yet verified or hosted.**
+**State: companion implementation verified; publication and existing 3D regression suites are in progress.**
 
 ## Resume from saved work
 
 - Workspace: `/workspace/TourGuideAI`; source branch: `chore-sow-delivery-plan`.
 - Starting source: `23171a05413cd41bb5cacc493a85c7b1e5726ee7`, a documentation update.
+- Foundations and focused tests pushed: `6452aae90d1e1c8c882cf953eacd0b474101e827`.
 - Previously released application: `f701bda`; Pages:
   `89ff73ea3577721e6a5aab312b6814dd6d65ee5c`. See [existing review entry](../../PREVIEW.md).
 - The preceding environment was unavailable and in-memory work was not committed.
@@ -44,9 +45,9 @@ is claimed. Ginza remains a separate architectural study.
 | Owner | Current boundary | Next action |
 |---|---|---|
 | Lead | Companion entry/UI/integration/copy, package/CI/navigation, release evidence and publication | Integrate agreed modules; review EN/ZH and state boundaries; commit coherent slices; publish verified bytes |
-| Engineering | Foreground location module and its unit tests | Finish explicit start, accuracy/freshness, hidden-page cleanup and explicit resume behavior |
-| World-content | `src/travel/places.js`, `maps.js`, `state.js`; `tests/travel-maps.test.mjs` | Source place references; preserve selection order and every stop across bounded links/CSV; isolate companion state |
-| QA-release | `tests/browser-travel.mjs` | Independently exercise built EN/ZH phone/desktop flow, permissions, failures, export and regression boundaries |
+| Engineering | Foreground location module and its unit tests | Complete: 20 focused tests and integration review |
+| World-content | `src/travel/places.js`, `maps.js`, `state.js`; `tests/travel-maps.test.mjs` | Complete: sourced references, all-stop export and 10 focused tests |
+| QA-release | `tests/browser-travel.mjs` | Complete: 73 packaged-browser checks, EN/ZH captures, recovery, export and save isolation |
 | Product-design | This checkpoint, `docs/travel-companion.md`, small current-milestone updates to lean plan/delivery board | Keep implementation, evidence and human acceptance separate; hand final status update to lead |
 
 Paths in the ownership table are relative to `experience/`. Do not edit another
@@ -65,31 +66,37 @@ git diff --stat
 node --version
 ```
 
-After integration is ready, run from the independent application. The lead is
-adding `test:travel`; the direct equivalent is `node tests/browser-travel.mjs dist`.
+Run from the independent application. The direct equivalent of `test:travel` is
+`node tests/browser-travel.mjs dist`.
 QA serves an immutable build snapshot internally; no preview server is needed.
 
 ```sh
 cd /workspace/TourGuideAI/experience
-npm ci
+npm ci --cache /workspace/.npm-cache
 npm test
 npm run build
-EXPERIENCE_QA_CHROMIUM=/usr/bin/chromium EXPERIENCE_QA_OUTPUT=/workspace/scratch/travel-qa-20261015 npm run test:travel -- dist
-EXPERIENCE_QA_CHROMIUM=/usr/bin/chromium npm run test:perspective -- dist
-EXPERIENCE_QA_CHROMIUM=/usr/bin/chromium npm run test:browser -- dist
+export TMPDIR=/workspace/TourGuideAI/artifacts/travel-tmp
+export PLAYWRIGHT_BROWSERS_PATH=/workspace/.cache/ms-playwright
+mkdir -p "$TMPDIR"
+EXPERIENCE_QA_OUTPUT=/workspace/TourGuideAI/artifacts/travel-qa npm run test:travel -- dist
+EXPERIENCE_QA_TIMEOUT=600000 npm run test:perspective -- dist
+EXPERIENCE_QA_TIMEOUT=600000 npm run test:browser -- dist
 cd /workspace/TourGuideAI
 node iteration/tools/run-gates.mjs
 ```
 
-The Chromium path above exists in this environment. On a fresh environment install
-the repository's Playwright browser/prerequisites or supply the available executable.
-Do not run competing browser suites on the shared GPU; coordinate with QA.
+The matching Playwright Chromium is installed at the browser path above. On a fresh
+environment install it with `npm exec --cache /workspace/.npm-cache -- playwright install chromium`
+using the same `PLAYWRIGHT_BROWSERS_PATH`. Coordinate GPU-heavy suites with QA.
 
 ## Completion record to fill from actual evidence
 
-At this checkpoint, companion implementation, final unit/browser checks, source
-push, hosted package verification and physical review are **pending**. Old test
-counts belong to the old release and cannot validate these changes.
+The companion passes **73/73 browser checks**, the application passes **74/74 unit
+tests**, and **17/17 repository gates** pass. The final companion report is
+`experience/evidence/travel-20261015/final/travel-result.json`; its package manifest
+is `6a4f5b2f11d67153058305d73ffc715d3dd7bdd5c16531bd2a89b2a933fe0608`.
+Original and perspective regression sessions are running separately. Final UI
+source push, hosted verification and physical review are still pending here.
 
 The lead closes technical delivery only after recording the tested source commit,
 unit and packaged-browser results, EN/ZH captures, built-file hashes, pushed source

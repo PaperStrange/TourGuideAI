@@ -51,6 +51,10 @@ jobs:
             command: test:perspective
             output: perspective
             artifact: perspective-browser-evidence
+          - suite: travel companion
+            command: test:travel
+            output: travel
+            artifact: travel-browser-evidence
     defaults:
       run:
         working-directory: experience
