@@ -1,40 +1,31 @@
 {
   "sourceRepository": "https://github.com/PaperStrange/TourGuideAI",
   "sourceBranch": "chore-sow-delivery-plan",
-  "sourceCommit": "f701bdaf98f98a47d112220763009f35cbdf28c0",
-  "experience": "Borrow someone\u2019s eyes",
-  "entryPath": "perspective.html",
-  "formats": [
-    "walk",
-    "story"
-  ],
-  "languages": [
-    "en",
-    "zh"
-  ],
-  "perspectiveBrowserChecksPassed": 80,
-  "originalBrowserSuiteChecks": 130,
-  "originalBrowserSuiteConclusion": "success",
-  "layoutRepairChecksPassed": 15,
-  "mobileLiveChecksPassed": 10,
-  "unitTestsPassed": 44,
+  "sourceCommit": "a8c3e493058198e8e5012bc9fd470190dc358148",
+  "experience": "Take the journey with you",
+  "entryPath": "travel.html",
+  "languages": ["en", "zh"],
+  "builtManifestSha256": "6a4f5b2f11d67153058305d73ffc715d3dd7bdd5c16531bd2a89b2a933fe0608",
+  "companionBrowserChecksPassed": 73,
+  "companionBrowserReportSha256": "ea7fa1080a00b55825ba273cdbfadb608ece2cebba9f98834df0465058469c68",
+  "unitTestsPassed": 74,
   "repositoryGatesPassed": 17,
-  "builtManifestSha256": "0dcb86bc7247f0b790627ecc61799a8c60268475e802da8f940995fe2791e613",
-  "perspectiveBrowserReportSha256": "90751752d56f1cf9fdb6b70f006400b5eda015d74441f982bf7e44580c58ca8d",
-  "perspectiveArtManifestSha256": "54563b7bf87afd3a8e5d3521aed12ddd64f72c58dc4d883509706aeb7b7541cc",
-  "modelSha256": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c",
-  "ciRun": "https://github.com/PaperStrange/TourGuideAI/actions/runs/37580389117",
-  "reviewStatus": "Technical delivery; human enjoyment, social value, architectural realism and ordinary-device fluency remain review questions.",
-  "originalWalk": {
-    "entryPath": "index.html",
-    "lightingModes": [
-      "day",
-      "night"
-    ],
-    "sharingFormats": [
-      "web-link",
-      "png-image",
-      "print-pdf"
-    ]
+  "perspectiveBrowserChecksPassed": 80,
+  "originalBrowserChecksPassed": 130,
+  "focusedSharingChecksPassed": 24,
+  "ciRun": "https://github.com/PaperStrange/TourGuideAI/actions/runs/38779049743",
+  "features": ["ordered Google Maps links", "manual My Maps CSV import", "foreground location", "private meaningful-place marks"],
+  "location": {
+    "start": "explicit user action",
+    "hiddenPage": "paused; explicit resume required",
+    "persistence": "none",
+    "automaticVisitMarks": false
+  },
+  "scope": "Three sourced place anchors around Shijo-Karasuma, Kyoto. Directions are Google-computed routes, not GPS recordings.",
+  "reviewStatus": "Technical validation. Physical GPS, OS sharing, field usefulness and emotional value need human review.",
+  "existingExperiences": {
+    "perspective": "perspective.html",
+    "originalWalk": "index.html",
+    "renderComparison": "comparison.html"
   }
 }
