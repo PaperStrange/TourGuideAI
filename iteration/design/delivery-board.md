@@ -1,7 +1,21 @@
 # Delivery board · TourGuideAI 2.5D
 
-Updated 2026-10-13. Owner: lead. Planning baseline: `origin/iteration` at
+Updated 2026-10-15. Owner: lead. Planning baseline: `origin/iteration` at
 `eae982f4ba20a107bf21a35b70f635b4935a4c70`.
+
+**Current approved milestone · 2026-10-15:** implement a bilingual phone-friendly
+travel companion for the three existing Kyoto place references. Selected ordered
+places open/share through Google Maps; longer journeys retain every place across
+route parts. Explicit foreground location supplies nearby context, pauses when
+hidden and requires Resume. Meaningful-place marks remain separate from physical
+visit claims. Google computes directions; the app records no GPS history.
+Implementation and technical verification are in progress. Lead owns integration
+and synchronized source/Pages publication; engineering owns location, world-content
+owns place/export/state modules, QA owns browser verification, and product maintains
+the [companion brief](../../experience/docs/travel-companion.md) and
+[agent checkpoint](../../experience/docs/agent-checkpoint.md). Field usefulness and
+emotional value remain pending human review. The proposed immersive correction
+below remains a separate next sprint.
 
 **Latest user review · 2026-10-13:** narrative reads well but immersive play is weak.
 The user identifies all three issues: checkpoint-only responses, textual detail,

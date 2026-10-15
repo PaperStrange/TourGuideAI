@@ -1,7 +1,23 @@
 # Lean iteration · Borrow someone's eyes
 
-Updated 2026-10-13 · Lead: release/integration. The original experience experiment
-was approved; the revision below is proposed in response to the user's review.
+Updated 2026-10-15 · Lead: release/integration.
+
+## Current milestone · approved travel companion
+
+The user approved Google Maps selected-journey sharing and foreground phone
+location for nearby context. Implementation is in progress at `travel.html`, with
+English/Chinese UI and the three existing Kyoto place references. Ordered route
+parts preserve every selected place; Google calculates the routes. Location starts
+explicitly, pauses when hidden and requires Resume. It creates no GPS history or
+automatic real-visit marks. Personal meaning and existing view/note sharing remain
+separate from directions.
+
+See [companion behavior](travel-companion.md) and the [agent checkpoint](agent-checkpoint.md)
+for owners, resume commands and pending release evidence. Technical delivery requires
+the unit/browser checks, pushed source and verification of the exact hosted package.
+Field usefulness and emotional value remain unaccepted. The proposed experience
+correction below continues as a separate next sprint; this utility milestone does
+not deliver continuous world response or personal replay.
 
 ## Latest review and proposed correction · 2026-10-13
 
