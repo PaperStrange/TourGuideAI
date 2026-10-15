@@ -3,6 +3,8 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { WORLD, TARGETS, approachPoint } from '../simulation/world.js';
 import { toScene } from './camera.js';
 import { createSceneLighting } from './lighting.js';
+import { KYOTO_ARCHITECTURAL_PROFILE } from './architectural-profile.js';
+import { prepareArchitecturalMaterials } from './architectural-materials.js';
 
 function disposeTree(root) {
   const geometries = new Set(), materials = new Set(), textures = new Set();
@@ -61,6 +63,7 @@ export async function createWorldView(renderer, { encounters = true, signal, onP
     throw error;
   }
   scene.add(street, traveller);
+  const architecturalMaterials = prepareArchitecturalMaterials(street, renderer.capabilities.getMaxAnisotropy());
   const actor = traveller.getObjectByName('Traveller') ?? traveller;
   const limbs = Object.fromEntries(['LeftLeg', 'RightLeg', 'LeftArm', 'RightArm'].map(name => [name, actor.getObjectByName(name)]));
   const walkable = [], occluders = [];
@@ -104,7 +107,8 @@ export async function createWorldView(renderer, { encounters = true, signal, onP
   const sightRay = new THREE.Ray(), intersection = new THREE.Vector3();
   const occlusionRay = new THREE.Raycaster();
   let lastActor = '', lastCue = '', fadedGroups = [];
-  lighting = createSceneLighting(renderer, scene, { roots: [street, traveller], signal, onStatus: onLightingStatus, onChange: onInvalidate });
+  lighting = createSceneLighting(renderer, scene, { roots: [street, traveller], signal,
+    profile: KYOTO_ARCHITECTURAL_PROFILE, onStatus: onLightingStatus, onChange: onInvalidate });
   await lighting.setMode(lightingMode);
 
   return {
@@ -180,7 +184,7 @@ export async function createWorldView(renderer, { encounters = true, signal, onP
         if (object.isMesh) { meshes++; triangles += (object.geometry.index?.count ?? object.geometry.attributes.position.count) / 3; }
       });
       const bounds = new THREE.Box3().setFromObject(street);
-      return { meshes, triangles, walkableSurfaces: walkable.length, markerCount: markers.length, fadedGroups: [...fadedGroups],
+      return { meshes, triangles, architecturalMaterials, walkableSurfaces: walkable.length, markerCount: markers.length, fadedGroups: [...fadedGroups],
         actorPosition: actor.position.toArray(), actorHeading: actor.rotation.y,
         streetBounds: [...bounds.min.toArray(), ...bounds.max.toArray()] };
     },

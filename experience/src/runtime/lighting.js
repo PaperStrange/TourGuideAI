@@ -2,13 +2,14 @@ import * as THREE from 'three';
 import { HDRLoader } from 'three/addons/loaders/HDRLoader.js';
 import { daylightEnvironment } from './lighting-fallback.js';
 import { lightingMode, validateLightingRig, localLightingURL } from './lighting-contract.js';
+import { applyLightingProfile } from './architectural-profile.js';
 
 const digest = async bytes => [...new Uint8Array(await crypto.subtle.digest('SHA-256', bytes))]
   .map(byte => byte.toString(16).padStart(2, '0')).join('');
 
 export function createSceneLighting(renderer, scene, {
   roots, signal, rigURL = new URL(import.meta.env.BASE_URL + 'lighting/rig.json', document.baseURI),
-  expectedRigHash, onStatus, onChange,
+  expectedRigHash, profile, onStatus, onChange,
 } = {}) {
   const appURL = new URL(import.meta.env.BASE_URL, document.baseURI);
   rigURL = localLightingURL(rigURL, document.baseURI, appURL);
@@ -36,7 +37,9 @@ export function createSceneLighting(renderer, scene, {
 
   const snapshot = () => ({
     requestedMode, mode, phase, disposed, fallbackReason,
-    rig: { status: rig ? 'ready' : phase === 'loading' ? 'loading' : 'unavailable', sha256: rigHash, expectedSha256: expectedRigHash ?? null },
+    rig: { status: rig ? 'ready' : phase === 'loading' ? 'loading' : 'unavailable', sha256: rigHash, expectedSha256: expectedRigHash ?? null,
+      profile: profile?.id ?? null },
+    shadowBounds: rig?.renderBounds ? { ...rig.renderBounds } : null,
     environment: { ...environmentInfo, textureId: scene.environment?.uuid ?? null },
     environmentIntensity: scene.environmentIntensity, environmentRotationY: scene.environmentRotation.y,
     exposure: renderer.toneMappingExposure,
@@ -121,7 +124,7 @@ export function createSceneLighting(renderer, scene, {
     if (expectedRigHash && hash !== expectedRigHash) throw new Error('rig-version-mismatch');
     const parsed = validateLightingRig(JSON.parse(new TextDecoder().decode(bytes)));
     for (const config of Object.values(parsed.modes)) localLightingURL(config.environment.file, rigURL, appURL);
-    return { parsed, hash };
+    return { parsed: applyLightingProfile(parsed, profile), hash };
   }
   async function loadEnvironment(config, abortSignal, token) {
     const url = localLightingURL(config.file, rigURL, appURL);

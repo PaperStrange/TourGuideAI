@@ -1,0 +1,2143 @@
+{
+  "stage": "after",
+  "errors": [],
+  "frames": [
+    {
+      "name": "opening",
+      "mode": "day",
+      "pose": {
+        "version": 1,
+        "player": {
+          "x": 23.8,
+          "y": 2.1
+        },
+        "camera": {
+          "azimuth": 0.22,
+          "polar": 0.88,
+          "distance": 24,
+          "targetOffset": {
+            "x": 1.2,
+            "y": -2.2,
+            "height": 0.9
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          29.036753320861457,
+          16.191627460765925,
+          18.151890544418432
+        ],
+        "target": [
+          25.000000000000004,
+          0.9,
+          0.1000000000000001
+        ],
+        "azimuth": 0.22000000000000006,
+        "polar": 0.88,
+        "distance": 24,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": 0.22000000000000006,
+        "enabled": true,
+        "damping": false,
+        "transitioning": false,
+        "projectionMatrix": [
+          1.6281806654336262,
+          0,
+          0,
+          0,
+          0,
+          2.605089064693802,
+          0,
+          0,
+          0,
+          0,
+          -1.0015011258443833,
+          -1,
+          0,
+          0,
+          -0.3002251688766575,
+          0
+        ],
+        "matrixWorld": [
+          0.9758974493306055,
+          1.3877787807814457e-17,
+          -0.21822962308086938,
+          0,
+          -0.1390452540440008,
+          0.7707388788989693,
+          -0.6217941764614714,
+          0,
+          0.16819805503589388,
+          0.6371511441985804,
+          0.7521621060174346,
+          0,
+          29.036753320861457,
+          16.191627460765925,
+          18.151890544418432,
+          1
+        ],
+        "limits": {
+          "azimuth": [
+            -0.65,
+            0.65
+          ],
+          "polar": [
+            0.66,
+            1.05
+          ],
+          "distance": [
+            22,
+            48
+          ]
+        }
+      },
+      "renderer": {
+        "status": "ready",
+        "loadMs": 584.1000000005588,
+        "renderedFrames": 2,
+        "render": {
+          "frame": 23,
+          "calls": 178,
+          "triangles": 286366,
+          "points": 0,
+          "lines": 0
+        },
+        "memory": {
+          "geometries": 114,
+          "textures": 20
+        },
+        "scene": {
+          "meshes": 111,
+          "triangles": 148966,
+          "architecturalMaterials": {
+            "materials": 25,
+            "filteredTextures": 14
+          },
+          "walkableSurfaces": 12,
+          "markerCount": 0,
+          "fadedGroups": [],
+          "actorPosition": [
+            23.8,
+            0.17000000178813934,
+            -2.1
+          ],
+          "actorHeading": -1.5707963267948966,
+          "streetBounds": [
+            -265,
+            -0.3400000035762787,
+            -205,
+            295,
+            35.03499984741211,
+            215
+          ]
+        },
+        "reducedMotion": true,
+        "lighting": {
+          "requestedMode": "day",
+          "mode": "day",
+          "phase": "ready",
+          "disposed": false,
+          "fallbackReason": null,
+          "rig": {
+            "status": "ready",
+            "sha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+            "expectedSha256": null,
+            "profile": "kyoto-street-materials-20261015"
+          },
+          "shadowBounds": {
+            "minX": -12,
+            "maxX": 76,
+            "minY": -38,
+            "maxY": 30
+          },
+          "environment": {
+            "status": "ready",
+            "file": "/lighting/environments/day-1k.hdr",
+            "sha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+            "expectedSha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+            "textureId": "508da794-47a1-4de5-a783-89e89b31a48e"
+          },
+          "environmentIntensity": 0.78,
+          "environmentRotationY": 1,
+          "exposure": 1.05,
+          "lights": [
+            {
+              "id": "hemisphere",
+              "type": "HemisphereLight",
+              "intensity": 0.24,
+              "color": "#d4e1ef",
+              "position": [
+                0,
+                1,
+                0
+              ],
+              "target": null,
+              "castShadow": false,
+              "mapSize": null,
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "sun",
+              "type": "DirectionalLight",
+              "intensity": 2.55,
+              "color": "#fff4e5",
+              "position": [
+                -24,
+                68,
+                45
+              ],
+              "target": [
+                30,
+                0,
+                5
+              ],
+              "castShadow": true,
+              "mapSize": [
+                2048,
+                2048
+              ],
+              "shadowNeedsUpdate": false
+            }
+          ],
+          "emissiveMeshes": [],
+          "cacheEntries": 1,
+          "pendingRequests": 0,
+          "staleRequests": 0,
+          "shadowUpdates": 2,
+          "memory": {
+            "geometries": 114,
+            "textures": 20
+          }
+        }
+      }
+    },
+    {
+      "name": "opening",
+      "mode": "night",
+      "pose": {
+        "version": 1,
+        "player": {
+          "x": 23.8,
+          "y": 2.1
+        },
+        "camera": {
+          "azimuth": 0.22,
+          "polar": 0.88,
+          "distance": 24,
+          "targetOffset": {
+            "x": 1.2,
+            "y": -2.2,
+            "height": 0.9
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          29.036753320861457,
+          16.191627460765925,
+          18.151890544418432
+        ],
+        "target": [
+          25.000000000000004,
+          0.9,
+          0.1000000000000001
+        ],
+        "azimuth": 0.22000000000000006,
+        "polar": 0.88,
+        "distance": 24,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": 0.22000000000000006,
+        "enabled": true,
+        "damping": false,
+        "transitioning": false,
+        "projectionMatrix": [
+          1.6281806654336262,
+          0,
+          0,
+          0,
+          0,
+          2.605089064693802,
+          0,
+          0,
+          0,
+          0,
+          -1.0015011258443833,
+          -1,
+          0,
+          0,
+          -0.3002251688766575,
+          0
+        ],
+        "matrixWorld": [
+          0.9758974493306055,
+          1.3877787807814457e-17,
+          -0.21822962308086938,
+          0,
+          -0.1390452540440008,
+          0.7707388788989693,
+          -0.6217941764614714,
+          0,
+          0.16819805503589388,
+          0.6371511441985804,
+          0.7521621060174346,
+          0,
+          29.036753320861457,
+          16.191627460765925,
+          18.151890544418432,
+          1
+        ],
+        "limits": {
+          "azimuth": [
+            -0.65,
+            0.65
+          ],
+          "polar": [
+            0.66,
+            1.05
+          ],
+          "distance": [
+            22,
+            48
+          ]
+        }
+      },
+      "renderer": {
+        "status": "ready",
+        "loadMs": 584.1000000005588,
+        "renderedFrames": 3,
+        "render": {
+          "frame": 45,
+          "calls": 457,
+          "triangles": 823834,
+          "points": 0,
+          "lines": 0
+        },
+        "memory": {
+          "geometries": 114,
+          "textures": 29
+        },
+        "scene": {
+          "meshes": 111,
+          "triangles": 148966,
+          "architecturalMaterials": {
+            "materials": 25,
+            "filteredTextures": 14
+          },
+          "walkableSurfaces": 12,
+          "markerCount": 0,
+          "fadedGroups": [],
+          "actorPosition": [
+            23.8,
+            0.17000000178813934,
+            -2.1
+          ],
+          "actorHeading": -1.5707963267948966,
+          "streetBounds": [
+            -265,
+            -0.3400000035762787,
+            -205,
+            295,
+            35.03499984741211,
+            215
+          ]
+        },
+        "reducedMotion": true,
+        "lighting": {
+          "requestedMode": "night",
+          "mode": "night",
+          "phase": "ready",
+          "disposed": false,
+          "fallbackReason": null,
+          "rig": {
+            "status": "ready",
+            "sha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+            "expectedSha256": null,
+            "profile": "kyoto-street-materials-20261015"
+          },
+          "shadowBounds": {
+            "minX": -12,
+            "maxX": 76,
+            "minY": -38,
+            "maxY": 30
+          },
+          "environment": {
+            "status": "ready",
+            "file": "/lighting/environments/night-1k.hdr",
+            "sha256": "a690048dcecabf5ed1ad773f7abdec7cce7b1fea4d89b17f054a18f3e0fa2919",
+            "expectedSha256": "a690048dcecabf5ed1ad773f7abdec7cce7b1fea4d89b17f054a18f3e0fa2919",
+            "textureId": "ea71439e-4161-49cb-b187-7b4727df4869"
+          },
+          "environmentIntensity": 0.085,
+          "environmentRotationY": 0.55,
+          "exposure": 1.18,
+          "lights": [
+            {
+              "id": "hemisphere",
+              "type": "HemisphereLight",
+              "intensity": 0.18,
+              "color": "#718bb6",
+              "position": [
+                0,
+                1,
+                0
+              ],
+              "target": null,
+              "castShadow": false,
+              "mapSize": null,
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "sun",
+              "type": "DirectionalLight",
+              "intensity": 0.18,
+              "color": "#9bb9eb",
+              "position": [
+                4,
+                105,
+                36
+              ],
+              "target": [
+                32,
+                0,
+                7
+              ],
+              "castShadow": true,
+              "mapSize": [
+                2048,
+                2048
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "north-crossing",
+              "type": "SpotLight",
+              "intensity": 170,
+              "color": "#ffdeb2",
+              "position": [
+                21.75,
+                3.255,
+                -3.55
+              ],
+              "target": [
+                21.75,
+                0.17,
+                -2.4
+              ],
+              "castShadow": true,
+              "mapSize": [
+                1024,
+                1024
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "north-frontage",
+              "type": "SpotLight",
+              "intensity": 170,
+              "color": "#ffdeb2",
+              "position": [
+                32.2,
+                3.255,
+                -3.58
+              ],
+              "target": [
+                32.2,
+                0.17,
+                -2.43
+              ],
+              "castShadow": true,
+              "mapSize": [
+                1024,
+                1024
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "south-bank",
+              "type": "SpotLight",
+              "intensity": 170,
+              "color": "#ffdeb2",
+              "position": [
+                22.98,
+                3.255,
+                18.73
+              ],
+              "target": [
+                22.98,
+                0.17,
+                17.580000000000002
+              ],
+              "castShadow": true,
+              "mapSize": [
+                1024,
+                1024
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "south-frontage",
+              "type": "SpotLight",
+              "intensity": 170,
+              "color": "#ffdeb2",
+              "position": [
+                30.24,
+                3.255,
+                18.82
+              ],
+              "target": [
+                30.24,
+                0.17,
+                17.67
+              ],
+              "castShadow": true,
+              "mapSize": [
+                1024,
+                1024
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "north-east",
+              "type": "SpotLight",
+              "intensity": 170,
+              "color": "#ffdeb2",
+              "position": [
+                43,
+                3.255,
+                -3.61
+              ],
+              "target": [
+                43,
+                0.17,
+                -2.46
+              ],
+              "castShadow": false,
+              "mapSize": [
+                512,
+                512
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "north-far-east",
+              "type": "SpotLight",
+              "intensity": 170,
+              "color": "#ffdeb2",
+              "position": [
+                54,
+                3.255,
+                -3.64
+              ],
+              "target": [
+                54,
+                0.17,
+                -2.49
+              ],
+              "castShadow": false,
+              "mapSize": [
+                512,
+                512
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "mitsui-corner-wash",
+              "type": "SpotLight",
+              "intensity": 1100,
+              "color": "#ffe7c4",
+              "position": [
+                8.51,
+                2.5,
+                -3.57
+              ],
+              "target": [
+                12.37,
+                10,
+                -8.15
+              ],
+              "castShadow": false,
+              "mapSize": [
+                512,
+                512
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "daiya-corner-wash",
+              "type": "SpotLight",
+              "intensity": 1100,
+              "color": "#ffe7c4",
+              "position": [
+                9.08,
+                2.5,
+                20.4
+              ],
+              "target": [
+                13.55,
+                10,
+                24.41
+              ],
+              "castShadow": false,
+              "mapSize": [
+                512,
+                512
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "north-street",
+              "type": "SpotLight",
+              "intensity": 300,
+              "color": "#ffe5bd",
+              "position": [
+                18.821,
+                4.88,
+                -2.38
+              ],
+              "target": [
+                18.821,
+                0.05,
+                0.6200000000000001
+              ],
+              "castShadow": false,
+              "mapSize": [
+                512,
+                512
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "south-street",
+              "type": "SpotLight",
+              "intensity": 300,
+              "color": "#ffe5bd",
+              "position": [
+                22.621,
+                4.88,
+                17.579
+              ],
+              "target": [
+                22.621,
+                0.05,
+                14.579
+              ],
+              "castShadow": false,
+              "mapSize": [
+                512,
+                512
+              ],
+              "shadowNeedsUpdate": false
+            }
+          ],
+          "emissiveMeshes": [
+            {
+              "name": "NorthCanopy_off-white",
+              "material": "off-white",
+              "semanticGroup": "NorthCanopy",
+              "color": "#ffe3b5",
+              "intensity": 2.6,
+              "usesBaseColorMap": false
+            },
+            {
+              "name": "NorthGround_glazing",
+              "material": "glazing",
+              "semanticGroup": "NorthGround",
+              "color": "#e2b67c",
+              "intensity": 0.18,
+              "usesBaseColorMap": true
+            },
+            {
+              "name": "NorthGround_off-white",
+              "material": "off-white",
+              "semanticGroup": "NorthGround",
+              "color": "#ffe3b5",
+              "intensity": 2.6,
+              "usesBaseColorMap": false
+            },
+            {
+              "name": "NorthUpper_glazing-blinds",
+              "material": "glazing-blinds",
+              "semanticGroup": "NorthUpper",
+              "color": "#ffd9a0",
+              "intensity": 0.055,
+              "usesBaseColorMap": true
+            },
+            {
+              "name": "SouthCanopy_off-white",
+              "material": "off-white",
+              "semanticGroup": "SouthCanopy",
+              "color": "#ffe3b5",
+              "intensity": 2.6,
+              "usesBaseColorMap": false
+            },
+            {
+              "name": "SouthGround_glazing",
+              "material": "glazing",
+              "semanticGroup": "SouthGround",
+              "color": "#e2b67c",
+              "intensity": 0.18,
+              "usesBaseColorMap": true
+            },
+            {
+              "name": "SouthGround_off-white",
+              "material": "off-white",
+              "semanticGroup": "SouthGround",
+              "color": "#ffe3b5",
+              "intensity": 2.6,
+              "usesBaseColorMap": false
+            },
+            {
+              "name": "SouthUpper_glazing-blinds",
+              "material": "glazing-blinds",
+              "semanticGroup": "SouthUpper",
+              "color": "#ffd9a0",
+              "intensity": 0.055,
+              "usesBaseColorMap": true
+            }
+          ],
+          "cacheEntries": 2,
+          "pendingRequests": 0,
+          "staleRequests": 0,
+          "shadowUpdates": 3,
+          "memory": {
+            "geometries": 114,
+            "textures": 29
+          }
+        }
+      }
+    },
+    {
+      "name": "mitsui-rhythm",
+      "mode": "day",
+      "pose": {
+        "version": 1,
+        "player": {
+          "x": 24.7,
+          "y": -18.5
+        },
+        "camera": {
+          "azimuth": -0.4,
+          "polar": 1.05,
+          "distance": 36,
+          "targetOffset": {
+            "x": -4.7,
+            "y": 25,
+            "height": 11
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          7.839541474729591,
+          28.91255772410217,
+          22.262189141925308
+        ],
+        "target": [
+          20,
+          11,
+          -6.5
+        ],
+        "azimuth": -0.4,
+        "polar": 1.05,
+        "distance": 36,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": -0.4,
+        "enabled": true,
+        "damping": false,
+        "transitioning": false,
+        "projectionMatrix": [
+          1.6281806654336262,
+          0,
+          0,
+          0,
+          0,
+          2.605089064693802,
+          0,
+          0,
+          0,
+          0,
+          -1.0015011258443833,
+          -1,
+          0,
+          0,
+          -0.3002251688766575,
+          0
+        ],
+        "matrixWorld": [
+          0.9210609940028851,
+          2.7755575615628914e-17,
+          0.3894183423086505,
+          0,
+          0.1937632926507745,
+          0.8674232255940169,
+          -0.4582932839582111,
+          0,
+          -0.3377905145908447,
+          0.4975710478917269,
+          0.798949698386814,
+          0,
+          7.839541474729591,
+          28.91255772410217,
+          22.262189141925308,
+          1
+        ],
+        "limits": {
+          "azimuth": [
+            -0.65,
+            0.65
+          ],
+          "polar": [
+            0.66,
+            1.05
+          ],
+          "distance": [
+            22,
+            48
+          ]
+        }
+      },
+      "renderer": {
+        "status": "ready",
+        "loadMs": 584.1000000005588,
+        "renderedFrames": 4,
+        "render": {
+          "frame": 46,
+          "calls": 141,
+          "triangles": 239012,
+          "points": 0,
+          "lines": 0
+        },
+        "memory": {
+          "geometries": 114,
+          "textures": 21
+        },
+        "scene": {
+          "meshes": 111,
+          "triangles": 148966,
+          "architecturalMaterials": {
+            "materials": 25,
+            "filteredTextures": 14
+          },
+          "walkableSurfaces": 12,
+          "markerCount": 0,
+          "fadedGroups": [
+            "SouthCanopy",
+            "SouthUpper"
+          ],
+          "actorPosition": [
+            24.7,
+            0.17000000178814645,
+            18.5
+          ],
+          "actorHeading": -1.5707963267948966,
+          "streetBounds": [
+            -265,
+            -0.3400000035762787,
+            -205,
+            295,
+            35.03499984741211,
+            215
+          ]
+        },
+        "reducedMotion": true,
+        "lighting": {
+          "requestedMode": "day",
+          "mode": "day",
+          "phase": "ready",
+          "disposed": false,
+          "fallbackReason": null,
+          "rig": {
+            "status": "ready",
+            "sha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+            "expectedSha256": null,
+            "profile": "kyoto-street-materials-20261015"
+          },
+          "shadowBounds": {
+            "minX": -12,
+            "maxX": 76,
+            "minY": -38,
+            "maxY": 30
+          },
+          "environment": {
+            "status": "ready",
+            "file": "/lighting/environments/day-1k.hdr",
+            "sha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+            "expectedSha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+            "textureId": "508da794-47a1-4de5-a783-89e89b31a48e"
+          },
+          "environmentIntensity": 0.78,
+          "environmentRotationY": 1,
+          "exposure": 1.05,
+          "lights": [
+            {
+              "id": "hemisphere",
+              "type": "HemisphereLight",
+              "intensity": 0.24,
+              "color": "#d4e1ef",
+              "position": [
+                0,
+                1,
+                0
+              ],
+              "target": null,
+              "castShadow": false,
+              "mapSize": null,
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "sun",
+              "type": "DirectionalLight",
+              "intensity": 2.55,
+              "color": "#fff4e5",
+              "position": [
+                -24,
+                68,
+                45
+              ],
+              "target": [
+                30,
+                0,
+                5
+              ],
+              "castShadow": true,
+              "mapSize": [
+                2048,
+                2048
+              ],
+              "shadowNeedsUpdate": false
+            }
+          ],
+          "emissiveMeshes": [],
+          "cacheEntries": 2,
+          "pendingRequests": 0,
+          "staleRequests": 0,
+          "shadowUpdates": 13,
+          "memory": {
+            "geometries": 114,
+            "textures": 21
+          }
+        }
+      }
+    },
+    {
+      "name": "mitsui-rhythm",
+      "mode": "night",
+      "pose": {
+        "version": 1,
+        "player": {
+          "x": 24.7,
+          "y": -18.5
+        },
+        "camera": {
+          "azimuth": -0.4,
+          "polar": 1.05,
+          "distance": 36,
+          "targetOffset": {
+            "x": -4.7,
+            "y": 25,
+            "height": 11
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          7.839541474729591,
+          28.91255772410217,
+          22.262189141925308
+        ],
+        "target": [
+          20,
+          11,
+          -6.5
+        ],
+        "azimuth": -0.4,
+        "polar": 1.05,
+        "distance": 36,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": -0.4,
+        "enabled": true,
+        "damping": false,
+        "transitioning": false,
+        "projectionMatrix": [
+          1.6281806654336262,
+          0,
+          0,
+          0,
+          0,
+          2.605089064693802,
+          0,
+          0,
+          0,
+          0,
+          -1.0015011258443833,
+          -1,
+          0,
+          0,
+          -0.3002251688766575,
+          0
+        ],
+        "matrixWorld": [
+          0.9210609940028851,
+          2.7755575615628914e-17,
+          0.3894183423086505,
+          0,
+          0.1937632926507745,
+          0.8674232255940169,
+          -0.4582932839582111,
+          0,
+          -0.3377905145908447,
+          0.4975710478917269,
+          0.798949698386814,
+          0,
+          7.839541474729591,
+          28.91255772410217,
+          22.262189141925308,
+          1
+        ],
+        "limits": {
+          "azimuth": [
+            -0.65,
+            0.65
+          ],
+          "polar": [
+            0.66,
+            1.05
+          ],
+          "distance": [
+            22,
+            48
+          ]
+        }
+      },
+      "renderer": {
+        "status": "ready",
+        "loadMs": 584.1000000005588,
+        "renderedFrames": 5,
+        "render": {
+          "frame": 47,
+          "calls": 388,
+          "triangles": 695776,
+          "points": 0,
+          "lines": 0
+        },
+        "memory": {
+          "geometries": 114,
+          "textures": 29
+        },
+        "scene": {
+          "meshes": 111,
+          "triangles": 148966,
+          "architecturalMaterials": {
+            "materials": 25,
+            "filteredTextures": 14
+          },
+          "walkableSurfaces": 12,
+          "markerCount": 0,
+          "fadedGroups": [
+            "SouthCanopy",
+            "SouthUpper"
+          ],
+          "actorPosition": [
+            24.7,
+            0.17000000178814645,
+            18.5
+          ],
+          "actorHeading": -1.5707963267948966,
+          "streetBounds": [
+            -265,
+            -0.3400000035762787,
+            -205,
+            295,
+            35.03499984741211,
+            215
+          ]
+        },
+        "reducedMotion": true,
+        "lighting": {
+          "requestedMode": "night",
+          "mode": "night",
+          "phase": "ready",
+          "disposed": false,
+          "fallbackReason": null,
+          "rig": {
+            "status": "ready",
+            "sha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+            "expectedSha256": null,
+            "profile": "kyoto-street-materials-20261015"
+          },
+          "shadowBounds": {
+            "minX": -12,
+            "maxX": 76,
+            "minY": -38,
+            "maxY": 30
+          },
+          "environment": {
+            "status": "ready",
+            "file": "/lighting/environments/night-1k.hdr",
+            "sha256": "a690048dcecabf5ed1ad773f7abdec7cce7b1fea4d89b17f054a18f3e0fa2919",
+            "expectedSha256": "a690048dcecabf5ed1ad773f7abdec7cce7b1fea4d89b17f054a18f3e0fa2919",
+            "textureId": "ea71439e-4161-49cb-b187-7b4727df4869"
+          },
+          "environmentIntensity": 0.085,
+          "environmentRotationY": 0.55,
+          "exposure": 1.18,
+          "lights": [
+            {
+              "id": "hemisphere",
+              "type": "HemisphereLight",
+              "intensity": 0.18,
+              "color": "#718bb6",
+              "position": [
+                0,
+                1,
+                0
+              ],
+              "target": null,
+              "castShadow": false,
+              "mapSize": null,
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "sun",
+              "type": "DirectionalLight",
+              "intensity": 0.18,
+              "color": "#9bb9eb",
+              "position": [
+                4,
+                105,
+                36
+              ],
+              "target": [
+                32,
+                0,
+                7
+              ],
+              "castShadow": true,
+              "mapSize": [
+                2048,
+                2048
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "north-crossing",
+              "type": "SpotLight",
+              "intensity": 170,
+              "color": "#ffdeb2",
+              "position": [
+                21.75,
+                3.255,
+                -3.55
+              ],
+              "target": [
+                21.75,
+                0.17,
+                -2.4
+              ],
+              "castShadow": true,
+              "mapSize": [
+                1024,
+                1024
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "north-frontage",
+              "type": "SpotLight",
+              "intensity": 170,
+              "color": "#ffdeb2",
+              "position": [
+                32.2,
+                3.255,
+                -3.58
+              ],
+              "target": [
+                32.2,
+                0.17,
+                -2.43
+              ],
+              "castShadow": true,
+              "mapSize": [
+                1024,
+                1024
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "south-bank",
+              "type": "SpotLight",
+              "intensity": 170,
+              "color": "#ffdeb2",
+              "position": [
+                22.98,
+                3.255,
+                18.73
+              ],
+              "target": [
+                22.98,
+                0.17,
+                17.580000000000002
+              ],
+              "castShadow": true,
+              "mapSize": [
+                1024,
+                1024
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "south-frontage",
+              "type": "SpotLight",
+              "intensity": 170,
+              "color": "#ffdeb2",
+              "position": [
+                30.24,
+                3.255,
+                18.82
+              ],
+              "target": [
+                30.24,
+                0.17,
+                17.67
+              ],
+              "castShadow": true,
+              "mapSize": [
+                1024,
+                1024
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "north-east",
+              "type": "SpotLight",
+              "intensity": 170,
+              "color": "#ffdeb2",
+              "position": [
+                43,
+                3.255,
+                -3.61
+              ],
+              "target": [
+                43,
+                0.17,
+                -2.46
+              ],
+              "castShadow": false,
+              "mapSize": [
+                512,
+                512
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "north-far-east",
+              "type": "SpotLight",
+              "intensity": 170,
+              "color": "#ffdeb2",
+              "position": [
+                54,
+                3.255,
+                -3.64
+              ],
+              "target": [
+                54,
+                0.17,
+                -2.49
+              ],
+              "castShadow": false,
+              "mapSize": [
+                512,
+                512
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "mitsui-corner-wash",
+              "type": "SpotLight",
+              "intensity": 1100,
+              "color": "#ffe7c4",
+              "position": [
+                8.51,
+                2.5,
+                -3.57
+              ],
+              "target": [
+                12.37,
+                10,
+                -8.15
+              ],
+              "castShadow": false,
+              "mapSize": [
+                512,
+                512
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "daiya-corner-wash",
+              "type": "SpotLight",
+              "intensity": 1100,
+              "color": "#ffe7c4",
+              "position": [
+                9.08,
+                2.5,
+                20.4
+              ],
+              "target": [
+                13.55,
+                10,
+                24.41
+              ],
+              "castShadow": false,
+              "mapSize": [
+                512,
+                512
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "north-street",
+              "type": "SpotLight",
+              "intensity": 300,
+              "color": "#ffe5bd",
+              "position": [
+                18.821,
+                4.88,
+                -2.38
+              ],
+              "target": [
+                18.821,
+                0.05,
+                0.6200000000000001
+              ],
+              "castShadow": false,
+              "mapSize": [
+                512,
+                512
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "south-street",
+              "type": "SpotLight",
+              "intensity": 300,
+              "color": "#ffe5bd",
+              "position": [
+                22.621,
+                4.88,
+                17.579
+              ],
+              "target": [
+                22.621,
+                0.05,
+                14.579
+              ],
+              "castShadow": false,
+              "mapSize": [
+                512,
+                512
+              ],
+              "shadowNeedsUpdate": false
+            }
+          ],
+          "emissiveMeshes": [
+            {
+              "name": "NorthCanopy_off-white",
+              "material": "off-white",
+              "semanticGroup": "NorthCanopy",
+              "color": "#ffe3b5",
+              "intensity": 2.6,
+              "usesBaseColorMap": false
+            },
+            {
+              "name": "NorthGround_glazing",
+              "material": "glazing",
+              "semanticGroup": "NorthGround",
+              "color": "#e2b67c",
+              "intensity": 0.18,
+              "usesBaseColorMap": true
+            },
+            {
+              "name": "NorthGround_off-white",
+              "material": "off-white",
+              "semanticGroup": "NorthGround",
+              "color": "#ffe3b5",
+              "intensity": 2.6,
+              "usesBaseColorMap": false
+            },
+            {
+              "name": "NorthUpper_glazing-blinds",
+              "material": "glazing-blinds",
+              "semanticGroup": "NorthUpper",
+              "color": "#ffd9a0",
+              "intensity": 0.055,
+              "usesBaseColorMap": true
+            },
+            {
+              "name": "SouthCanopy_off-white",
+              "material": "off-white",
+              "semanticGroup": "SouthCanopy",
+              "color": "#ffe3b5",
+              "intensity": 2.6,
+              "usesBaseColorMap": false
+            },
+            {
+              "name": "SouthGround_glazing",
+              "material": "glazing",
+              "semanticGroup": "SouthGround",
+              "color": "#e2b67c",
+              "intensity": 0.18,
+              "usesBaseColorMap": true
+            },
+            {
+              "name": "SouthGround_off-white",
+              "material": "off-white",
+              "semanticGroup": "SouthGround",
+              "color": "#ffe3b5",
+              "intensity": 2.6,
+              "usesBaseColorMap": false
+            },
+            {
+              "name": "SouthUpper_glazing-blinds",
+              "material": "glazing-blinds",
+              "semanticGroup": "SouthUpper",
+              "color": "#ffd9a0",
+              "intensity": 0.055,
+              "usesBaseColorMap": true
+            }
+          ],
+          "cacheEntries": 2,
+          "pendingRequests": 0,
+          "staleRequests": 0,
+          "shadowUpdates": 14,
+          "memory": {
+            "geometries": 114,
+            "textures": 29
+          }
+        }
+      }
+    },
+    {
+      "name": "daiya-rhythm",
+      "mode": "day",
+      "pose": {
+        "version": 1,
+        "player": {
+          "x": 23.8,
+          "y": 2.1
+        },
+        "camera": {
+          "azimuth": 3.541593,
+          "polar": 1.05,
+          "distance": 36,
+          "targetOffset": {
+            "x": -6.8,
+            "y": -24.1,
+            "height": 10
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          4.8395315112144335,
+          27.91255772410217,
+          -6.762184929416627
+        ],
+        "target": [
+          17,
+          10.000000000000002,
+          22.000000000000004
+        ],
+        "azimuth": -2.7415923071795865,
+        "polar": 1.05,
+        "distance": 36,
+        "frontage": "south",
+        "azimuthBase": 3.141592653589793,
+        "relativeAzimuth": 0.40000034641020665,
+        "enabled": true,
+        "damping": false,
+        "transitioning": false,
+        "projectionMatrix": [
+          1.6281806654336262,
+          0,
+          0,
+          0,
+          0,
+          2.605089064693802,
+          0,
+          0,
+          0,
+          0,
+          -1.0015011258443833,
+          -1,
+          0,
+          0,
+          -0.3002251688766575,
+          0
+        ],
+        "matrixWorld": [
+          -0.921060859104341,
+          -1.3877787807814457e-17,
+          0.3894186613735565,
+          0,
+          0.1937634514082341,
+          0.867423225594017,
+          0.4582932168366013,
+          0,
+          -0.33779079135515455,
+          0.4975710478917269,
+          -0.7989495813726839,
+          0,
+          4.8395315112144335,
+          27.91255772410217,
+          -6.762184929416627,
+          1
+        ],
+        "limits": {
+          "azimuth": [
+            -0.65,
+            0.65
+          ],
+          "polar": [
+            0.66,
+            1.05
+          ],
+          "distance": [
+            22,
+            48
+          ]
+        }
+      },
+      "renderer": {
+        "status": "ready",
+        "loadMs": 584.1000000005588,
+        "renderedFrames": 7,
+        "render": {
+          "frame": 49,
+          "calls": 156,
+          "triangles": 272244,
+          "points": 0,
+          "lines": 0
+        },
+        "memory": {
+          "geometries": 118,
+          "textures": 21
+        },
+        "scene": {
+          "meshes": 111,
+          "triangles": 148966,
+          "architecturalMaterials": {
+            "materials": 25,
+            "filteredTextures": 14
+          },
+          "walkableSurfaces": 12,
+          "markerCount": 0,
+          "fadedGroups": [
+            "NorthCanopy"
+          ],
+          "actorPosition": [
+            23.8,
+            0.17000000178813934,
+            -2.1
+          ],
+          "actorHeading": -1.5707963267948966,
+          "streetBounds": [
+            -265,
+            -0.3400000035762787,
+            -205,
+            295,
+            35.03499984741211,
+            215
+          ]
+        },
+        "reducedMotion": true,
+        "lighting": {
+          "requestedMode": "day",
+          "mode": "day",
+          "phase": "ready",
+          "disposed": false,
+          "fallbackReason": null,
+          "rig": {
+            "status": "ready",
+            "sha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+            "expectedSha256": null,
+            "profile": "kyoto-street-materials-20261015"
+          },
+          "shadowBounds": {
+            "minX": -12,
+            "maxX": 76,
+            "minY": -38,
+            "maxY": 30
+          },
+          "environment": {
+            "status": "ready",
+            "file": "/lighting/environments/day-1k.hdr",
+            "sha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+            "expectedSha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+            "textureId": "508da794-47a1-4de5-a783-89e89b31a48e"
+          },
+          "environmentIntensity": 0.78,
+          "environmentRotationY": 1,
+          "exposure": 1.05,
+          "lights": [
+            {
+              "id": "hemisphere",
+              "type": "HemisphereLight",
+              "intensity": 0.24,
+              "color": "#d4e1ef",
+              "position": [
+                0,
+                1,
+                0
+              ],
+              "target": null,
+              "castShadow": false,
+              "mapSize": null,
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "sun",
+              "type": "DirectionalLight",
+              "intensity": 2.55,
+              "color": "#fff4e5",
+              "position": [
+                -24,
+                68,
+                45
+              ],
+              "target": [
+                30,
+                0,
+                5
+              ],
+              "castShadow": true,
+              "mapSize": [
+                2048,
+                2048
+              ],
+              "shadowNeedsUpdate": false
+            }
+          ],
+          "emissiveMeshes": [],
+          "cacheEntries": 2,
+          "pendingRequests": 0,
+          "staleRequests": 0,
+          "shadowUpdates": 27,
+          "memory": {
+            "geometries": 118,
+            "textures": 21
+          }
+        }
+      }
+    },
+    {
+      "name": "daiya-rhythm",
+      "mode": "night",
+      "pose": {
+        "version": 1,
+        "player": {
+          "x": 23.8,
+          "y": 2.1
+        },
+        "camera": {
+          "azimuth": 3.541593,
+          "polar": 1.05,
+          "distance": 36,
+          "targetOffset": {
+            "x": -6.8,
+            "y": -24.1,
+            "height": 10
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          4.8395315112144335,
+          27.91255772410217,
+          -6.762184929416627
+        ],
+        "target": [
+          17,
+          10.000000000000002,
+          22.000000000000004
+        ],
+        "azimuth": -2.7415923071795865,
+        "polar": 1.05,
+        "distance": 36,
+        "frontage": "south",
+        "azimuthBase": 3.141592653589793,
+        "relativeAzimuth": 0.40000034641020665,
+        "enabled": true,
+        "damping": false,
+        "transitioning": false,
+        "projectionMatrix": [
+          1.6281806654336262,
+          0,
+          0,
+          0,
+          0,
+          2.605089064693802,
+          0,
+          0,
+          0,
+          0,
+          -1.0015011258443833,
+          -1,
+          0,
+          0,
+          -0.3002251688766575,
+          0
+        ],
+        "matrixWorld": [
+          -0.921060859104341,
+          -1.3877787807814457e-17,
+          0.3894186613735565,
+          0,
+          0.1937634514082341,
+          0.867423225594017,
+          0.4582932168366013,
+          0,
+          -0.33779079135515455,
+          0.4975710478917269,
+          -0.7989495813726839,
+          0,
+          4.8395315112144335,
+          27.91255772410217,
+          -6.762184929416627,
+          1
+        ],
+        "limits": {
+          "azimuth": [
+            -0.65,
+            0.65
+          ],
+          "polar": [
+            0.66,
+            1.05
+          ],
+          "distance": [
+            22,
+            48
+          ]
+        }
+      },
+      "renderer": {
+        "status": "ready",
+        "loadMs": 584.1000000005588,
+        "renderedFrames": 8,
+        "render": {
+          "frame": 50,
+          "calls": 423,
+          "triangles": 793424,
+          "points": 0,
+          "lines": 0
+        },
+        "memory": {
+          "geometries": 118,
+          "textures": 29
+        },
+        "scene": {
+          "meshes": 111,
+          "triangles": 148966,
+          "architecturalMaterials": {
+            "materials": 25,
+            "filteredTextures": 14
+          },
+          "walkableSurfaces": 12,
+          "markerCount": 0,
+          "fadedGroups": [
+            "NorthCanopy"
+          ],
+          "actorPosition": [
+            23.8,
+            0.17000000178813934,
+            -2.1
+          ],
+          "actorHeading": -1.5707963267948966,
+          "streetBounds": [
+            -265,
+            -0.3400000035762787,
+            -205,
+            295,
+            35.03499984741211,
+            215
+          ]
+        },
+        "reducedMotion": true,
+        "lighting": {
+          "requestedMode": "night",
+          "mode": "night",
+          "phase": "ready",
+          "disposed": false,
+          "fallbackReason": null,
+          "rig": {
+            "status": "ready",
+            "sha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+            "expectedSha256": null,
+            "profile": "kyoto-street-materials-20261015"
+          },
+          "shadowBounds": {
+            "minX": -12,
+            "maxX": 76,
+            "minY": -38,
+            "maxY": 30
+          },
+          "environment": {
+            "status": "ready",
+            "file": "/lighting/environments/night-1k.hdr",
+            "sha256": "a690048dcecabf5ed1ad773f7abdec7cce7b1fea4d89b17f054a18f3e0fa2919",
+            "expectedSha256": "a690048dcecabf5ed1ad773f7abdec7cce7b1fea4d89b17f054a18f3e0fa2919",
+            "textureId": "ea71439e-4161-49cb-b187-7b4727df4869"
+          },
+          "environmentIntensity": 0.085,
+          "environmentRotationY": 0.55,
+          "exposure": 1.18,
+          "lights": [
+            {
+              "id": "hemisphere",
+              "type": "HemisphereLight",
+              "intensity": 0.18,
+              "color": "#718bb6",
+              "position": [
+                0,
+                1,
+                0
+              ],
+              "target": null,
+              "castShadow": false,
+              "mapSize": null,
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "sun",
+              "type": "DirectionalLight",
+              "intensity": 0.18,
+              "color": "#9bb9eb",
+              "position": [
+                4,
+                105,
+                36
+              ],
+              "target": [
+                32,
+                0,
+                7
+              ],
+              "castShadow": true,
+              "mapSize": [
+                2048,
+                2048
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "north-crossing",
+              "type": "SpotLight",
+              "intensity": 170,
+              "color": "#ffdeb2",
+              "position": [
+                21.75,
+                3.255,
+                -3.55
+              ],
+              "target": [
+                21.75,
+                0.17,
+                -2.4
+              ],
+              "castShadow": true,
+              "mapSize": [
+                1024,
+                1024
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "north-frontage",
+              "type": "SpotLight",
+              "intensity": 170,
+              "color": "#ffdeb2",
+              "position": [
+                32.2,
+                3.255,
+                -3.58
+              ],
+              "target": [
+                32.2,
+                0.17,
+                -2.43
+              ],
+              "castShadow": true,
+              "mapSize": [
+                1024,
+                1024
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "south-bank",
+              "type": "SpotLight",
+              "intensity": 170,
+              "color": "#ffdeb2",
+              "position": [
+                22.98,
+                3.255,
+                18.73
+              ],
+              "target": [
+                22.98,
+                0.17,
+                17.580000000000002
+              ],
+              "castShadow": true,
+              "mapSize": [
+                1024,
+                1024
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "south-frontage",
+              "type": "SpotLight",
+              "intensity": 170,
+              "color": "#ffdeb2",
+              "position": [
+                30.24,
+                3.255,
+                18.82
+              ],
+              "target": [
+                30.24,
+                0.17,
+                17.67
+              ],
+              "castShadow": true,
+              "mapSize": [
+                1024,
+                1024
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "north-east",
+              "type": "SpotLight",
+              "intensity": 170,
+              "color": "#ffdeb2",
+              "position": [
+                43,
+                3.255,
+                -3.61
+              ],
+              "target": [
+                43,
+                0.17,
+                -2.46
+              ],
+              "castShadow": false,
+              "mapSize": [
+                512,
+                512
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "north-far-east",
+              "type": "SpotLight",
+              "intensity": 170,
+              "color": "#ffdeb2",
+              "position": [
+                54,
+                3.255,
+                -3.64
+              ],
+              "target": [
+                54,
+                0.17,
+                -2.49
+              ],
+              "castShadow": false,
+              "mapSize": [
+                512,
+                512
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "mitsui-corner-wash",
+              "type": "SpotLight",
+              "intensity": 1100,
+              "color": "#ffe7c4",
+              "position": [
+                8.51,
+                2.5,
+                -3.57
+              ],
+              "target": [
+                12.37,
+                10,
+                -8.15
+              ],
+              "castShadow": false,
+              "mapSize": [
+                512,
+                512
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "daiya-corner-wash",
+              "type": "SpotLight",
+              "intensity": 1100,
+              "color": "#ffe7c4",
+              "position": [
+                9.08,
+                2.5,
+                20.4
+              ],
+              "target": [
+                13.55,
+                10,
+                24.41
+              ],
+              "castShadow": false,
+              "mapSize": [
+                512,
+                512
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "north-street",
+              "type": "SpotLight",
+              "intensity": 300,
+              "color": "#ffe5bd",
+              "position": [
+                18.821,
+                4.88,
+                -2.38
+              ],
+              "target": [
+                18.821,
+                0.05,
+                0.6200000000000001
+              ],
+              "castShadow": false,
+              "mapSize": [
+                512,
+                512
+              ],
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "south-street",
+              "type": "SpotLight",
+              "intensity": 300,
+              "color": "#ffe5bd",
+              "position": [
+                22.621,
+                4.88,
+                17.579
+              ],
+              "target": [
+                22.621,
+                0.05,
+                14.579
+              ],
+              "castShadow": false,
+              "mapSize": [
+                512,
+                512
+              ],
+              "shadowNeedsUpdate": false
+            }
+          ],
+          "emissiveMeshes": [
+            {
+              "name": "NorthCanopy_off-white",
+              "material": "off-white",
+              "semanticGroup": "NorthCanopy",
+              "color": "#ffe3b5",
+              "intensity": 2.6,
+              "usesBaseColorMap": false
+            },
+            {
+              "name": "NorthGround_glazing",
+              "material": "glazing",
+              "semanticGroup": "NorthGround",
+              "color": "#e2b67c",
+              "intensity": 0.18,
+              "usesBaseColorMap": true
+            },
+            {
+              "name": "NorthGround_off-white",
+              "material": "off-white",
+              "semanticGroup": "NorthGround",
+              "color": "#ffe3b5",
+              "intensity": 2.6,
+              "usesBaseColorMap": false
+            },
+            {
+              "name": "NorthUpper_glazing-blinds",
+              "material": "glazing-blinds",
+              "semanticGroup": "NorthUpper",
+              "color": "#ffd9a0",
+              "intensity": 0.055,
+              "usesBaseColorMap": true
+            },
+            {
+              "name": "SouthCanopy_off-white",
+              "material": "off-white",
+              "semanticGroup": "SouthCanopy",
+              "color": "#ffe3b5",
+              "intensity": 2.6,
+              "usesBaseColorMap": false
+            },
+            {
+              "name": "SouthGround_glazing",
+              "material": "glazing",
+              "semanticGroup": "SouthGround",
+              "color": "#e2b67c",
+              "intensity": 0.18,
+              "usesBaseColorMap": true
+            },
+            {
+              "name": "SouthGround_off-white",
+              "material": "off-white",
+              "semanticGroup": "SouthGround",
+              "color": "#ffe3b5",
+              "intensity": 2.6,
+              "usesBaseColorMap": false
+            },
+            {
+              "name": "SouthUpper_glazing-blinds",
+              "material": "glazing-blinds",
+              "semanticGroup": "SouthUpper",
+              "color": "#ffd9a0",
+              "intensity": 0.055,
+              "usesBaseColorMap": true
+            }
+          ],
+          "cacheEntries": 2,
+          "pendingRequests": 0,
+          "staleRequests": 0,
+          "shadowUpdates": 28,
+          "memory": {
+            "geometries": 118,
+            "textures": 29
+          }
+        }
+      }
+    }
+  ],
+  "sources": {
+    "src/runtime/world-view.js": "d1acff0b71e79243b88debe55e994cd146f46394b133ab00489ff4e0e63074d5",
+    "src/runtime/lighting.js": "62982dac3fa84809f659fad2134aae0d55170fe66619bf3a63b27361cc9ce61d",
+    "public/models/shijo-block.glb": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c",
+    "public/lighting/rig.json": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766"
+  }
+}
