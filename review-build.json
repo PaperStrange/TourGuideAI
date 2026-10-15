@@ -8,6 +8,9 @@
   "builtManifestSha256": "2550220e09dea51021564de8cafd0fb16df8c15b7140a1c466628679a5424ab9",
   "connectionBrowserChecksPassed": 37,
   "connectionBrowserReportSha256": "e6e30ab3e7cf6b6ec89f3ec7685ffb1617f7b7df7b6fd9cc11ba8c28f94c6309",
+  "publishedConnectionChecksPassed": 38,
+  "publishedConnectionReportSha256": "85edcd8335ed4e1fde97eb90619f0a9d70af0fcc911758927a8ab04eb62dbc8e",
+  "publishedConnectionCondition": "Actual HTTPS Pages frontend with two real loopback APIs; browser local-network permission granted by automation.",
   "unitTestsPassed": 87,
   "serverTestsPassed": 13,
   "repositoryGatesPassed": 17,
@@ -20,7 +23,7 @@
     "nextStep": "Run npm run local:pages in experience/server, then explicitly select that endpoint in Together > Testing connection. Other devices need an approved reachable HTTPS service. Model credentials remain optional and unconfigured."
   },
   "scope": "Detailed Kyoto interpretation and wider mapped building geometry; route lines show suggested visiting order. Directions are computed by Google Maps.",
-  "reviewStatus": "Local connection candidate checks passed. Actual published-page connection verification follows publication. Public tunnel and model availability remain pending.",
+  "reviewStatus": "Actual published-page local connection verified. Public tunnel, model availability and manual physical-device permission review remain pending.",
   "existingExperiences": {
     "perspective": "perspective.html",
     "companion": "travel.html",
