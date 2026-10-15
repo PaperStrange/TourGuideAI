@@ -1,7 +1,13 @@
 # Travel companion · selected places and on-site context
 
-2026-10-15 · Approved implementation in progress. Entry: `travel.html`.
+2026-10-15 · Technically delivered and published. Entry: `travel.html`.
 Release evidence and resume state: [agent checkpoint](agent-checkpoint.md).
+
+Runtime source `a8c3e49`; Pages `6b5b1ea`. The release passes 73 companion browser
+checks, 74 unit tests, 130 original-walk checks, 80 perspective checks, 24 focused
+sharing checks and 17 repository gates. All 63 hosted files match the final package.
+All three GitHub Actions jobs pass for the runtime source.
+[Evidence and boundaries](../evidence/travel-20261015/README.md).
 
 ## What this milestone is for
 
@@ -70,7 +76,7 @@ is implemented. Private personal notes must not enter an external export silentl
 Location begins only after **Use my location / 使用我的位置** and the browser's
 permission flow. Watch only while the companion is visible and the user has
 started it. Hiding the page stops the watch; returning requires an explicit
-**Resume / 继续定位**. Stop, navigation away and denied/unavailable location must
+**Resume location / 恢复定位**. Stop, navigation away and denied/unavailable location must
 also release the watch. Manual place exploration remains usable without location.
 
 Use reported accuracy and freshness when presenting nearby context. An imprecise,

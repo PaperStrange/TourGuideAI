@@ -1,13 +1,27 @@
 # Review without a local server
 
+- [Travel companion · English](https://paperstrange.github.io/TourGuideAI/travel.html?lang=en)
+- [地图与实地散步 · 中文](https://paperstrange.github.io/TourGuideAI/travel.html?lang=zh)
 - [Play in daylight](https://paperstrange.github.io/TourGuideAI/?lighting=day)
 - [Play at night](https://paperstrange.github.io/TourGuideAI/?lighting=night)
 - [Compare the expanded street renderings](https://paperstrange.github.io/TourGuideAI/comparison.html)
 - [Published build identity](https://paperstrange.github.io/TourGuideAI/review-build.json)
 
-The current package is live from application `f701bda` and Pages `89ff73e`.
-It adds **Borrow someone’s eyes**, a three-observation Kyoto loop with saved
-perspectives and selected moment links. Both formats support English and Chinese:
+The current package is live from application `a8c3e49` and Pages `6b5b1ea`.
+**Take the journey with you** lets you choose and reorder Kyoto places, share the
+journey through Google Maps, or export pins for manual Google My Maps import.
+Use **Use my location** when there to update nearby context. Location pauses when
+the page is hidden and requires Resume; GPS samples stay out of saves and shares.
+The pilot covers three places around Shijō–Karasuma. Directions are recalculated
+by Google. Physical GPS and external-app handoffs still need device review.
+
+The package passes 73 companion browser checks, 130 original-walk checks,
+80 perspective checks, 24 focused sharing checks, 74 unit tests and 17 repository
+gates. All three runtime CI jobs pass; all 63 hosted files match the tested hashes.
+[Evidence and limits](experience/evidence/travel-20261015/README.md).
+
+**Borrow someone’s eyes** remains available: a three-observation Kyoto loop with
+saved perspectives and selected moment links. Both formats support English and Chinese:
 
 - [Try Walk & look](https://paperstrange.github.io/TourGuideAI/perspective.html?mode=walk)
 - [Try Map & story](https://paperstrange.github.io/TourGuideAI/perspective.html?mode=story)
@@ -18,9 +32,6 @@ The note checkbox starts off. A shared link opens a read-only view and does not
 change the recipient's saved walk. Notes and optional feedback stay on the device;
 use **Download my feedback** to provide the local reflection explicitly.
 
-The package passes 80 new-flow browser checks, 130 original-walk browser
-checks, 44 pure tests and 17 repository gates. All 57 hosted package files
-match the tested hashes. [Evidence and limits](experience/evidence/perspective-20261007/README.md).
 Human enjoyment and differentiation remain the next sprint's questions; this is
 an implemented comparison, not a completed user study.
 

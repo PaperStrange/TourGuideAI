@@ -3,15 +3,17 @@
 Updated 2026-10-15. Owner: lead. Planning baseline: `origin/iteration` at
 `eae982f4ba20a107bf21a35b70f635b4935a4c70`.
 
-**Current approved milestone · 2026-10-15:** implement a bilingual phone-friendly
+**Delivered milestone · 2026-10-15:** bilingual phone-friendly
 travel companion for the three existing Kyoto place references. Selected ordered
 places open/share through Google Maps; longer journeys retain every place across
 route parts. Explicit foreground location supplies nearby context, pauses when
 hidden and requires Resume. Meaningful-place marks remain separate from physical
 visit claims. Google computes directions; the app records no GPS history.
-Implementation and technical verification are in progress. Lead owns integration
-and synchronized source/Pages publication; engineering owns location, world-content
-owns place/export/state modules, QA owns browser verification, and product maintains
+Runtime `a8c3e49` and Pages `6b5b1ea` are pushed. The release passes 73 companion,
+130 original, 80 perspective and 24 focused sharing browser checks, 74 unit tests
+and 17 repository gates; all 63 hosted files match and all three CI jobs pass.
+Lead completed integration/publication; engineering completed location, world-content
+completed place/export/state modules, QA completed browser verification, and product maintains
 the [companion brief](../../experience/docs/travel-companion.md) and
 [agent checkpoint](../../experience/docs/agent-checkpoint.md). Field usefulness and
 emotional value remain pending human review. The proposed immersive correction
@@ -26,7 +28,7 @@ is **Find your own place**: continuous exploration and world response, then an
 optional short personal approach/pause/view that a recipient can enter and explore.
 Product and engineering supplied the diagnosis; world-content is reviewing a
 separate street/riverside candidate. No new scene or replay feature is delivered.
-The hosted build remains the baseline; immersive and expressive value is unaccepted.
+That review evaluated the preceding hosted baseline; immersive and expressive value is unaccepted.
 
 **Earlier user review:** the user relays a friend's preference for live A and
 roughly “60% positive” feedback on realism; the method and denominator are unknown.

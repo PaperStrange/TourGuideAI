@@ -61,6 +61,18 @@ can be forwarded. No account or feedback collection server is involved.
 Run `npm run test:perspective -- dist` after building to exercise the new flow.
 See [the lean iteration and decision gates](docs/lean-iteration.md).
 
+## Travel companion
+
+Open `travel.html` to carry selected Kyoto places into Google Maps. Arrange the
+stops, copy/share the route links, or download pins for manual Google My Maps
+import. **Use my location** starts foreground nearby context; leaving the page
+pauses it and returning requires Resume. GPS samples are neither saved nor included
+in shares. Personal meaningful-place marks stay separate from visits and the
+existing virtual views/notes. All controls support English and Chinese.
+
+Run `npm run test:travel -- dist` after building. See the
+[companion behavior](docs/travel-companion.md) and [agent checkpoint](docs/agent-checkpoint.md).
+
 ## Project map
 
 - [Architecture and directory boundaries](docs/architecture.md)

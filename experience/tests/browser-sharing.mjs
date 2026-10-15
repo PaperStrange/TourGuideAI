@@ -20,6 +20,11 @@ export async function verifySharing({ main, scenario, saved, check, capture, rep
   const before = await saved(page);
   await page.locator('#export-notes').click();
   await page.waitForFunction(() => document.querySelector('#share-dialog')?.open);
+  const companionURL = new URL(await page.locator('#share-travel').getAttribute('href'));
+  check('recap-companion-link-preserves-stop-order-without-private-notes', companionURL.pathname.endsWith('/travel.html')
+    && companionURL.searchParams.get('stops') === before.game.visitedIds.join(',')
+    && [...companionURL.searchParams.keys()].sort().join(',') === 'lang,stops' && companionURL.hash === '',
+  { url: companionURL.href, visitedIds: before.game.visitedIds });
   check('share-preview-excludes-personal-notes-by-default', await page.locator('#share-preview .recap-note').count() === 0
     && await page.locator('[data-share-note]:checked').count() === 0);
   if (includeDraftCheck) check('unsaved-note-draft-is-not-a-share-option', await page.locator('[data-share-note="mufg"]').count() === 0
@@ -31,6 +36,9 @@ export async function verifySharing({ main, scenario, saved, check, capture, rep
   await capture(page, 'share-preview-en');
   await page.evaluate(() => { window.__QA_IMAGE_TEXT__ = []; });
   await page.locator('#share-dialog [data-locale="zh"]').click();
+  check('recap-companion-link-follows-chinese-locale',
+    new URL(await page.locator('#share-travel').getAttribute('href')).searchParams.get('lang') === 'zh'
+    && (await page.locator('#share-travel').innerText()).includes('地图'));
   await page.waitForFunction(() => !document.querySelector('#share-image').disabled, null, { timeout });
   const preview = await page.locator('#share-preview').evaluate(element => ({
     html: element.innerHTML, text: element.innerText, note: element.querySelector('.recap-note p')?.textContent,

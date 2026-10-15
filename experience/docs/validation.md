@@ -1,6 +1,20 @@
 # Playable 3D revision · independent validation
 
-## Current shared-perspective delivery · 2026-10-07
+## Current travel-companion delivery · 2026-10-15
+
+Application `a8c3e49` / Pages `6b5b1ea` passes **73 companion browser checks,
+74 unit tests, 130 original-walk checks, 80 shared-perspective checks,
+24 focused sharing checks and 17 repository gates**. All three CI jobs pass for
+the runtime source. All **63** hosted package files match the final companion
+browser manifest. Regression bindings verify the exact resources requested by
+the older flows against that final manifest.
+[Evidence, captures and deployment verification](../evidence/travel-20261015/README.md).
+
+This establishes ordered Google Maps handoff, EN/ZH foreground location behavior,
+save separation, recovery and page layout. Physical GPS, OS sharing, Google route
+display, My Maps import, emotional value and field usefulness remain human review.
+
+## Historical shared-perspective delivery · 2026-10-07
 
 Application `f701bda` passes **80/80 perspective browser checks,
 130/130 original browser checks, 44/44 pure tests and 17/17 repository gates**.

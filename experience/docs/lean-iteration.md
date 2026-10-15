@@ -5,7 +5,7 @@ Updated 2026-10-15 · Lead: release/integration.
 ## Current milestone · approved travel companion
 
 The user approved Google Maps selected-journey sharing and foreground phone
-location for nearby context. Implementation is in progress at `travel.html`, with
+location for nearby context. The milestone is published at `travel.html`, with
 English/Chinese UI and the three existing Kyoto place references. Ordered route
 parts preserve every selected place; Google calculates the routes. Location starts
 explicitly, pauses when hidden and requires Resume. It creates no GPS history or
@@ -13,8 +13,10 @@ automatic real-visit marks. Personal meaning and existing view/note sharing rema
 separate from directions.
 
 See [companion behavior](travel-companion.md) and the [agent checkpoint](agent-checkpoint.md)
-for owners, resume commands and pending release evidence. Technical delivery requires
-the unit/browser checks, pushed source and verification of the exact hosted package.
+for owners, resume commands and release evidence. Runtime `a8c3e49` / Pages `6b5b1ea`
+passes 73 companion, 130 original, 80 perspective and 24 focused sharing browser
+checks, 74 unit tests and 17 repository gates. All 63 hosted files match the package;
+all three CI jobs pass for the runtime source.
 Field usefulness and emotional value remain unaccepted. The proposed experience
 correction below continues as a separate next sprint; this utility milestone does
 not deliver continuous world response or personal replay.
