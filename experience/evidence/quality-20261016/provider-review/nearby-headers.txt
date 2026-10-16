@@ -1,0 +1,38 @@
+HTTP/1.1 200 OK
+date: Fri, 16 Oct 2026 03:47:48 GMT
+server: envoy
+
+HTTP/2 200 
+date: Fri, 16 Oct 2026 03:43:23 GMT
+server: envoy
+x-content-type-options: nosniff
+mediawiki-login-suppressed: true
+access-control-allow-origin: *
+access-control-allow-credentials: false
+access-control-expose-headers: MediaWiki-API-Error, Retry-After, X-Database-Lag, MediaWiki-Login-Suppressed
+x-search-id: 5r63p6aac81wgvndulvxkq4gp
+content-security-policy: default-src 'self'; script-src 'none'; object-src 'none'
+x-frame-options: DENY
+content-disposition: inline; filename=api-result.json
+expires: Fri, 16 Oct 2026 04:43:24 GMT
+cache-control: s-maxage=3600, max-age=3600, public
+content-type: application/json; charset=utf-8
+age: 266
+accept-ranges: bytes
+x-cache: cp4043 miss, cp4043 hit/4
+x-cache-status: hit-front
+strict-transport-security: max-age=106384710; includeSubDomains; preload
+report-to: { "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0" }] }
+nel: { "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction": 0.0}
+set-cookie: WMF-Last-Access=16-Oct-2026;Path=/;HttpOnly;secure;Expires=Tue, 17 Nov 2026 00:00:00 GMT
+set-cookie: WMF-Last-Access-Global=16-Oct-2026;Path=/;Domain=.wikipedia.org;HttpOnly;secure;Expires=Tue, 17 Nov 2026 00:00:00 GMT
+set-cookie: GeoIP=US:::37.75:-97.82:v4; Path=/; secure; Domain=.wikipedia.org
+set-cookie: NetworkProbeLimit=0.001;Path=/;Secure;SameSite=None;Max-Age=3600
+set-cookie: WMF-Uniq=aS00KcF-ZpzJNkuCjzqqbAP7AAAAAFvd0yuXgbK5X2GTUpuyyhnCABfOzBZM4xOI;Domain=.wikipedia.org;Path=/;HttpOnly;secure;SameSite=None;Expires=Sat, 16 Oct 2027 00:00:00 GMT
+x-client-ip: 90.96.180.206
+vary: Accept-Encoding,X-Subdomain,Treat-as-Untrusted,X-Forwarded-Proto,Cookie,Authorization,User-Agent
+content-length: 8151
+x-request-id: 24e95b1b-b9eb-4a43-9675-c55b4861adf2
+server-timing: cache;desc="hit-front", host;desc="cp4043",co_id;desc="363535319"
+x-envoy-upstream-service-time: 278
+

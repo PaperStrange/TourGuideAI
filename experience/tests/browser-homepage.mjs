@@ -427,19 +427,25 @@ try {
       && (await position(page)).x === poseBeforeLocale.x && (await position(page)).y === poseBeforeLocale.y,
       { heading: await page.locator('h1').innerText(), position: await position(page) });
     check('desktop-zh-curated-route-and-memory-link-localize', /四条/.test(await page.locator('#route-title').innerText())
-      && /视角/.test(await page.locator('[data-link="memories"]').innerText()),
+      && await page.locator('[data-link="memories"]').innerText() === copy('zh', 'memories')
+      && new URL(await page.locator('[data-link="memories"]').getAttribute('href'), page.url()).pathname.endsWith('/perspective.html'),
       { routeTitle: await page.locator('#route-title').innerText(), memories: await page.locator('[data-link="memories"]').innerText() });
     await capture(page, 'home-explore-zh');
     await page.locator('#locale-en').click();
     const beforeLighting = await position(page);
+    const dayFrames = await page.evaluate(() => window.__TOUR_GAME__.renderer().renderedFrames);
     await page.locator('#lighting-night').click();
-    await page.waitForFunction(() => window.__HOME__?.snapshot().lighting === 'night');
+    await page.waitForFunction(previous => {
+      const renderer = window.__TOUR_GAME__?.renderer();
+      return renderer?.lighting.phase === 'ready' && renderer.lighting.mode === 'night' && renderer.renderedFrames > previous;
+    }, dayFrames);
+    await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
     check('homepage-night-switch-preserves-position-and-route', (await position(page)).x === beforeLighting.x
       && (await position(page)).y === beforeLighting.y && (await home(page)).routes[0].stops.length === 3,
       { home: await home(page), position: await position(page) });
     await capture(page, 'home-explore-night');
     await page.locator('#lighting-day').click();
-    await page.waitForFunction(() => window.__HOME__?.snapshot().lighting === 'day');
+    await page.waitForFunction(() => { const light = window.__TOUR_GAME__?.renderer().lighting; return light?.phase === 'ready' && light.mode === 'day'; });
     const links = await page.locator('#walk-link, #companion-link, [data-link="memories"]').evaluateAll(nodes => nodes.map(node => ({ id: node.id || node.dataset.link, href: node.href })));
     check('preserved-experience-links-have-correct-entries', links.some(link => new URL(link.href).pathname === '/walk.html')
       && links.some(link => new URL(link.href).pathname === '/travel.html') && links.some(link => new URL(link.href).pathname === '/perspective.html'), links);
@@ -454,7 +460,7 @@ try {
     check('selected-center-retains-provider-source', searched.center.id.startsWith('osm:')
       && new URL(await page.locator('#center-source').getAttribute('href')).hostname === 'www.openstreetmap.org', searched.center);
     check('non-kyoto-center-shows-geographic-map', await page.locator('#live-stage').isHidden()
-      && await page.locator('#world-map').isVisible() && /AREA|区域/.test(await page.locator('#preview-kind').innerText()), searched);
+      && await page.locator('#world-map').isVisible() && await page.locator('#preview-kind').innerText() === copy('en', 'map3d'), searched);
     await page.waitForFunction(() => window.__HOME__?.snapshot().map?.ready || document.querySelector('#world-map').dataset.mapStatus === 'error');
     if ((await home(page)).map?.ready) {
       await page.waitForFunction(() => { const map = window.__HOME__?.snapshot().map; return map.zoom > 16 && map.pitch > 55; });

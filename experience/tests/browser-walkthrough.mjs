@@ -201,7 +201,7 @@ try {
       await test.capture(file.replace('.html', '') + '-zh-navigation');
     }
     await test.go('credits.html?lang=zh', 'main nav'); navigation = await links(page);
-    const walkLinks = navigation.filter(link => /Back to the walk|返回散步|返回京都散步/.test(link.text));
+    const walkLinks = await page.locator('#credits-walk-link').evaluateAll(nodes => nodes.map(node => ({ text: node.textContent.trim(), href: node.href })));
     check('credits-walk-label-opens-walk-in-chinese', walkLinks.length > 0 && walkLinks.every(link => new URL(link.href).pathname.endsWith('/walk.html') && localizedInternal(link, 'zh')), walkLinks);
     await test.capture('credits-zh-navigation');
     const recap = createRecap({ locale: 'zh', state: { visitedIds: ['crossing'], choiceIds: { crossing: 'north-first' } }, notes: {}, created: '2026-10-16' });
@@ -259,7 +259,7 @@ try {
     const shared = createShareURL({ momentId: 'arrive', note: 'Selected QA shared note', view: { kind: 'story', scale: 1.2, x: 0.45, y: 0.55 } }, base.href, { locale, includeNote: true });
     await test.go(shared, '#recipient-view');
     const originalHash = new URL(page.url()).hash;
-    check(id + '-legacy-recipient-keeps-selected-note', (await page.locator('#recipient-view').innerText()).includes('Selected QA shared note'));
+    check(id + '-legacy-recipient-keeps-selected-note', (await page.locator('.recipient-note').innerText()) === 'Selected QA shared note');
     await page.locator('#locale-' + other).click(); await page.reload({ waitUntil: 'domcontentloaded' }); await page.locator('#recipient-view').waitFor();
     check(id + '-recipient-locale-persists-with-unchanged-fragment', await page.locator('html').getAttribute('lang') === other && new URL(page.url()).hash === originalHash);
     await page.locator('#perspective-home-link').click(); await page.locator('#mode-explore').waitFor();
@@ -311,8 +311,15 @@ try {
     if (mobile) await page.touchscreen.tap(walkPoint.x, walkPoint.y); else await page.mouse.click(walkPoint.x, walkPoint.y);
     await page.waitForFunction(target => { const value = window.__TOUR_GAME__.snapshot(); return !value.moving && Math.hypot(value.x - target.worldX, value.y - target.worldY) < 0.13; }, walkPoint);
     check(id + '-pavement-input-walks', true, await state(page));
+    const dayFrames = await page.evaluate(() => window.__TOUR_GAME__.renderer().renderedFrames);
     await page.locator('#lighting-night').click();
-    await page.waitForFunction(() => window.__HOME__?.snapshot().lighting === 'night');
+    await page.waitForFunction(previous => {
+      const renderer = window.__TOUR_GAME__?.renderer();
+      return renderer?.lighting.phase === 'ready' && renderer.lighting.mode === 'night' && renderer.renderedFrames > previous;
+    }, dayFrames);
+    await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+    check(id + '-night-view-has-applied-environment-and-rendered-frame', true,
+      await page.evaluate(() => ({ lighting: window.__TOUR_GAME__.renderer().lighting, renderedFrames: window.__TOUR_GAME__.renderer().renderedFrames })));
     await page.locator('#live-stage').scrollIntoViewIfNeeded(); await test.capture(id + '-night-ready');
     await page.locator('#mode-together').click(); await page.waitForFunction(() => window.__HOME__?.snapshot().map?.ready);
     const stopped = await page.evaluate(() => window.__TOUR_GAME__.renderer().updateFrames);
@@ -341,6 +348,9 @@ try {
       && new URL(await page.locator('#center-source').getAttribute('href')).hostname === 'www.openstreetmap.org', origin);
     const selectedRoute = (await home(page)).routes[0];
     check(id + '-nearby-order-has-real-source-links', selectedRoute?.stops.length > 1 && await page.locator('#route-stops a').count() > 1, selectedRoute);
+    const reviewedRoutes = (await home(page)).routes;
+    check(id + '-nearby-order-excludes-reviewed-coordinate-conflict', reviewedRoutes.length > 0
+      && reviewedRoutes.every(route => !route.stops.includes('wikipedia:en:48435351')), reviewedRoutes);
     if (await page.locator('#route-stops [data-stop]').count() > 1) {
       await page.locator('#route-stops [data-stop]').nth(1).click();
       const routesBefore = (await home(page)).routes, mapBefore = (await home(page)).map;
@@ -351,8 +361,8 @@ try {
         && switched.map.cameraTransitions === mapBefore.cameraTransitions && Math.abs(switched.map.zoom - mapBefore.zoom) < 0.01,
         { before: mapBefore, after: switched.map });
     }
-    const controls = await page.locator('#world-map button[aria-label]').evaluateAll(nodes => nodes.map(node => node.getAttribute('aria-label')));
-    check(id + '-map-controls-follow-locale', controls.length > 0 && controls.every(label => locale === 'zh' ? /[\u3400-\u9fff]/.test(label) : !/[\u3400-\u9fff]/.test(label)), controls);
+    const controls = await page.locator('#world-map .maplibregl-ctrl button[aria-label]').evaluateAll(nodes => nodes.map(node => node.getAttribute('aria-label')));
+    check(id + '-map-controls-follow-locale', controls.length >= 3 && controls.every(label => locale === 'zh' ? /[\u3400-\u9fff]/.test(label) : !/[\u3400-\u9fff]/.test(label)), controls);
     await page.locator('#world-map').scrollIntoViewIfNeeded(); await test.capture(id + '-wider-map');
     const maps = await page.locator('#route-maps a').evaluateAll(nodes => nodes.map(node => node.href));
     check(id + '-maps-handoff-preserves-route-coordinates', maps.length > 0 && maps.every(href => {
@@ -379,7 +389,7 @@ try {
       && (await countryLink.innerText()).includes(copy(locale, 'openPlaceMaps')), { center: country.center, label: await countryLink.innerText() });
     await context.setOffline(true); await search(page, 'Osaka'); await context.setOffline(false);
     check(id + '-failed-query-keeps-country-selection', (await home(page)).center.id === country.center.id);
-    const empty = await search(page, 'zzqaxxyy9988776655-no-place');
+    const empty = await search(page, 'zzqaxxyy9988776655zzqaxxyy');
     check(id + '-real-empty-query-shows-empty-state', !empty.length && await page.locator('#search-status').innerText() === copy(locale, 'noResults'), { returned: empty, text: await page.locator('#search-status').innerText() });
     await test.close();
   });
@@ -406,10 +416,13 @@ try {
     await first.go(`index.html?qa=1&lang=${locale}&mode=together`, '#room-create'); await connect(alice);
     await alice.locator('#traveler-name').fill('Walkthrough QA A'); await alice.locator('#room-title').fill('Local QA journey');
     await alice.locator('#room-create').click(); await room(alice, 1, 0);
-    const second = await scenario(id + '-recipient', mobile), bob = second.page;
-    await second.go(alice.url(), '#room-join');
+    const invite = alice.url(), second = await scenario(id + '-recipient', mobile), bob = second.page;
+    await second.go(`index.html?qa=1&lang=${locale}&mode=together`, '#room-create');
+    await connect(bob, 'poll');
+    const requestsBeforeInvite = second.record.authenticatedRequests.length;
+    await second.go(invite, '#room-join');
     await bob.waitForFunction(() => window.__HOME__?.snapshot().invitationNeedsConfirmation);
-    check(id + '-fresh-invite-sends-no-auth-before-confirmation', second.record.authenticatedRequests.length === 0);
+    check(id + '-fresh-invite-sends-no-auth-before-confirmation', second.record.authenticatedRequests.length === requestsBeforeInvite);
     await connect(bob, 'poll'); await room(bob, 1, 0);
     await bob.locator('#traveler-name').fill('Walkthrough QA B'); await bob.locator('#room-join').click();
     await room(alice, 2, 0); await room(bob, 2, 0);
@@ -449,6 +462,23 @@ try {
     check(id + '-night-fallback-is-disclosed', /fallback|simplified|could not load|unavailable|备用|简化|未能|无法.*光/i.test(feedback), { actual, feedback });
     check(id + '-night-fallback-has-retry', await page.locator('#scene-retry').isVisible());
     await page.locator('#live-stage').scrollIntoViewIfNeeded(); await test.capture(id + '-night-fallback');
+    const resetPose = await camera(page);
+    if (mobile) await touchGesture(page, false);
+    else {
+      const canvas = await page.locator('#live-stage canvas').boundingBox();
+      await page.mouse.move(canvas.x + canvas.width / 2, canvas.y + canvas.height / 2);
+      await page.mouse.down(); await page.mouse.move(canvas.x + canvas.width / 2 + 70, canvas.y + canvas.height / 2, { steps: 8 }); await page.mouse.up();
+    }
+    await page.waitForFunction(previous => Math.abs(window.__TOUR_GAME__.camera().azimuth - previous) > 0.01, resetPose.azimuth);
+    await page.locator('#preview-reset').click();
+    await page.waitForFunction(previous => Math.abs(window.__TOUR_GAME__.camera().azimuth - previous) < 0.01, resetPose.azimuth);
+    const fallbackLayout = await page.evaluate(() => {
+      const status = document.querySelector('#scene-status'), reset = document.querySelector('#preview-reset'), retry = document.querySelector('#scene-retry');
+      return { status: status.getBoundingClientRect().toJSON(), reset: reset.getBoundingClientRect().toJSON(), retry: retry.getBoundingClientRect().toJSON(),
+        completeText: status.scrollWidth <= status.clientWidth + 1 && status.scrollHeight <= status.clientHeight + 1 };
+    });
+    check(id + '-fallback-reset-is-usable-and-status-text-fits', fallbackLayout.completeText
+      && (await state(page)).x === position.x && (await state(page)).y === position.y, fallbackLayout);
     await context.unroute('**/lighting/environments/night-1k.hdr');
     if (await page.locator('#scene-retry').isVisible()) {
       await page.locator('#scene-retry').click();

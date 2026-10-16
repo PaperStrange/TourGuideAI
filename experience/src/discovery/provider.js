@@ -1,4 +1,5 @@
 import { createJSONReader, DiscoveryError } from './transport.js';
+import { WIKIPEDIA_COORDINATE_REVIEWS } from './coordinate-reviews.js';
 
 export { DiscoveryError } from './transport.js';
 export const DEFAULT_RADIUS_METERS = 1200;
@@ -83,6 +84,8 @@ export function normalizeWikipedia(data, center, radiusMeters = DEFAULT_RADIUS_M
       ...(text(page.pageprops?.wikibase_item) ? { wikidataId: text(page.pageprops.wikibase_item) } : {}),
     };
     if (!validCoordinates(place)) continue;
+    const reviewed = WIKIPEDIA_COORDINATE_REVIEWS[page.pageid];
+    if (reviewed && distanceMeters(reviewed, place) > reviewed.toleranceMeters) continue;
     const distance = distanceMeters(center, place);
     if (distance <= radiusMeters) result.set(place.id, { ...place, distanceMeters: Math.round(distance) });
   }

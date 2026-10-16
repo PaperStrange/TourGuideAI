@@ -173,10 +173,9 @@ function updatePreviewCopy() {
 }
 
 async function selectLighting(value) {
-  lighting = value;
   const pending = liveView.setLightingMode(value);
   updatePreviewCopy();
-  try { await pending; }
+  try { await pending; lighting = liveView.getLightingState().mode || lighting; }
   finally { updatePreviewCopy(); }
 }
 

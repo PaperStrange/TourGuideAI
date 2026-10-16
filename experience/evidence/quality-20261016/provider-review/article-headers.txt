@@ -1,0 +1,36 @@
+HTTP/1.1 200 OK
+date: Fri, 16 Oct 2026 03:48:16 GMT
+server: envoy
+
+HTTP/2 200 
+date: Fri, 16 Oct 2026 03:48:16 GMT
+server: envoy
+x-content-type-options: nosniff
+mediawiki-login-suppressed: true
+access-control-allow-origin: *
+access-control-allow-credentials: false
+access-control-expose-headers: MediaWiki-API-Error, Retry-After, X-Database-Lag, MediaWiki-Login-Suppressed
+content-security-policy: default-src 'self'; script-src 'none'; object-src 'none'
+x-frame-options: DENY
+content-disposition: inline; filename=api-result.json
+cache-control: private, must-revalidate, max-age=0
+content-type: application/json; charset=utf-8
+age: 0
+accept-ranges: bytes
+x-cache: cp4043 miss, cp4043 pass
+x-cache-status: pass
+strict-transport-security: max-age=106384710; includeSubDomains; preload
+report-to: { "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0" }] }
+nel: { "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction": 0.0}
+set-cookie: WMF-Last-Access=16-Oct-2026;Path=/;HttpOnly;secure;Expires=Tue, 17 Nov 2026 00:00:00 GMT
+set-cookie: WMF-Last-Access-Global=16-Oct-2026;Path=/;Domain=.wikipedia.org;HttpOnly;secure;Expires=Tue, 17 Nov 2026 00:00:00 GMT
+set-cookie: GeoIP=US:::37.75:-97.82:v4; Path=/; secure; Domain=.wikipedia.org
+set-cookie: NetworkProbeLimit=0.001;Path=/;Secure;SameSite=None;Max-Age=3600
+set-cookie: WMF-Uniq=RxqKWigu4Ie222JLLLQSmAP7AAAAAFvd64787_h2MzRtuPSlzu9lIRLvgMNttuxA;Domain=.wikipedia.org;Path=/;HttpOnly;secure;SameSite=None;Expires=Sat, 16 Oct 2027 00:00:00 GMT
+x-client-ip: 90.96.180.206
+vary: Accept-Encoding,X-Subdomain,Treat-as-Untrusted,X-Forwarded-Proto,Cookie,Authorization,User-Agent
+content-length: 2109
+x-request-id: 7d562ac9-b163-44e3-be87-dee12db1cee1
+server-timing: cache;desc="pass", host;desc="cp4043",co_id;desc="2387684075"
+x-envoy-upstream-service-time: 303
+

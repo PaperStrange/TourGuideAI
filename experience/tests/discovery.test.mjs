@@ -8,6 +8,8 @@ import { PLACES } from '../src/travel/places.js';
 import { buildMapsJourney } from '../src/travel/maps.js';
 
 const observed = JSON.parse(readFileSync(new URL('./fixtures/discovery-kyoto-observed.json', import.meta.url)));
+const observedEiffel = JSON.parse(readFileSync(new URL('../evidence/quality-20261016/provider-review/nearby-eiffel.json', import.meta.url)));
+const reviewedPalazzo = JSON.parse(readFileSync(new URL('../evidence/quality-20261016/provider-review/palazzo-wikidata.json', import.meta.url)));
 const crossing = PLACES.find(place => place.id === 'crossing');
 const center = { ...crossing, title: crossing.title.en };
 const nearby = normalizeWikipedia(observed.wikipedia, center);
@@ -65,6 +67,48 @@ test('three distinct suggestions preserve sourced places and export every select
   assert.equal(sets.size, 3);
   assert.deepEqual(nearby, original);
   assert.equal(suggestRoutes(center, nearby, { locale: 'zh' })[0].title, '艺术与历史');
+});
+
+test('the captured Paris response excludes its reviewed Venice coordinate conflict and retains other nearby places', () => {
+  const eiffel = { id: 'osm:way:5013364', title: 'Eiffel Tower', latitude: 48.8582599, longitude: 2.2945006, source: 'OpenStreetMap · Photon' };
+  const original = structuredClone(observedEiffel);
+  const palazzo = observedEiffel.query.pages.find(page => page.pageid === 48435351);
+  assert.equal(palazzo.description, 'Palace on the Grand Canal, Venice');
+  assert.deepEqual(palazzo.coordinates[0], { lat: 48.8583, lon: 2.2923, primary: true, globe: 'earth' });
+  const places = normalizeWikipedia(observedEiffel, eiffel);
+  assert.deepEqual(places.map(place => place.id), [
+    'wikipedia:en:5455300', 'wikipedia:en:212301', 'wikipedia:en:56929702', 'wikipedia:en:49887902',
+  ]);
+  for (const place of places) {
+    const source = observedEiffel.query.pages.find(page => `wikipedia:en:${page.pageid}` === place.id);
+    assert.equal(place.latitude, source.coordinates[0].lat);
+    assert.equal(place.longitude, source.coordinates[0].lon);
+  }
+  const routes = suggestRoutes(eiffel, places);
+  assert.ok(routes.length > 0);
+  for (const route of routes) {
+    assert.equal(route.stops.some(place => place.id === 'wikipedia:en:48435351'), false);
+    assert.equal(buildMapsJourney(route.stops).parts.flatMap(part => part.stops).some(place => place.id === 'wikipedia:en:48435351'), false);
+  }
+  assert.deepEqual(observedEiffel, original);
+});
+
+test('a candidate corrected upstream record is accepted near Venice with its supplied coordinates unchanged', () => {
+  const corrected = structuredClone(observedEiffel);
+  const palazzo = corrected.query.pages.find(page => page.pageid === 48435351);
+  const coordinate = reviewedPalazzo.entities.Q16585996.claims.P625[0].mainsnak.datavalue.value;
+  palazzo.coordinates[0].lat = coordinate.latitude;
+  palazzo.coordinates[0].lon = coordinate.longitude;
+  const venice = { latitude: coordinate.latitude, longitude: coordinate.longitude };
+  const places = normalizeWikipedia(corrected, venice);
+  assert.equal(places.length, 1);
+  assert.equal(places[0].id, 'wikipedia:en:48435351');
+  assert.equal(places[0].title, palazzo.title);
+  assert.equal(places[0].latitude, coordinate.latitude);
+  assert.equal(places[0].longitude, coordinate.longitude);
+  assert.equal(places[0].source, 'Wikipedia');
+  assert.equal(places[0].url, 'https://en.wikipedia.org/?curid=48435351');
+  assert.equal(normalizeWikipedia(observedEiffel, { latitude: 48.8583, longitude: 2.2923 }).some(place => place.id === 'wikipedia:en:48435351'), false);
 });
 
 test('insufficient nearby coverage stays explicit and duplicate inputs cannot manufacture alternatives', () => {
