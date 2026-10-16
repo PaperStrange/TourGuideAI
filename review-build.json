@@ -8,6 +8,8 @@
   "builtManifestSha256": "8751ba4ecb6f6fcec70d1c2d25cff41b074671ea4433d3bf5b4a087ac810d2fb",
   "homepageBrowserChecksPassed": 65,
   "homepageBrowserReportSha256": "4a8a70c36730a4e44946bed8fe5e4d8f8967f09aec24d6b672faa76994506ebb",
+  "originalWalkBrowserChecksPassed": 133,
+  "originalWalkBrowserReportSha256": "6104289ec5c34993a96ead5fe1c1ff69930f3316c93cbb036a592ea0f4ddd34e",
   "walkthroughChecksPassed": 264,
   "walkthroughCondition": "264 EN/ZH desktop and touch phone checks on package 6cdc0ad9; search-grid CSS independently passes six layout stages and bundled-browser homepage checks. Final startup scheduling is checked by 65 homepage, 8 startup interaction and 19 focused original-walk pause/appearance checks on package 8751ba4e. Art assets are retained.",
   "unitTestsPassed": 89,
@@ -21,7 +23,7 @@
     "nextStep": "Run npm run local:pages in experience/server, then select the endpoint in Together > Testing connection. The service remains local to the computer running it."
   },
   "scope": "Detailed Kyoto is an authored interpretation. Wider mapped building coverage comes from providers. Route lines show suggested visiting order; Google Maps computes directions.",
-  "reviewStatus": "All 79 published files match the tested package. Final checks pass: 65 local homepage, 8 startup interaction, 19 original-walk pause/appearance, 3 credits/return and 21 actual hosted homepage/phone. Twelve matched published timing observations confirm zero Together street dependencies, zero hidden updates/draws and one initial Explore draw. Warm Together language actions remain 1177.8/1113.4/1134.5 ms against the 500 ms target; Q03 stays open P1. Full original-walk regression and source CI are running. Physical-device and human realism acceptance remain separate.",
+  "reviewStatus": "Local walkthrough milestone complete: 133 complete original-walk, 65 homepage, 8 startup interaction, 19 pause/appearance, 3 credits/return and 21 actual hosted homepage/phone checks pass on final bytes. All 79 published files match. Final-source CI confirms homepage65, perspective80 and companion73; aggregate CI is still running. Twelve matched timing observations confirm zero Together street dependencies, zero hidden updates/draws and one initial Explore draw. Warm Together language actions remain 1177.8/1113.4/1134.5 ms against 500 ms; Q03 stays open P1. Physical-device and human realism acceptance remain separate.",
   "existingExperiences": {
     "perspective": "perspective.html",
     "companion": "travel.html",
