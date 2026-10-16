@@ -47,6 +47,10 @@ test('zero selected places produce no links; one place produces a coordinate sea
   assert.deepEqual(journey.legs, []);
   assert.deepEqual(urlStops(journey.parts[0].url), [pair(stops[0])]);
   assert.equal(new URL(journey.parts[0].url).searchParams.has('origin'), false);
+  for (const locale of ['en', 'zh']) {
+    assert.doesNotMatch(mapsShareText([stops[0]], locale), /walking directions|步行路线/);
+    assert.match(mapsShareText(stops.slice(0, 2), locale), /walking directions|步行路线/);
+  }
 });
 
 test('route groups preserve every occurrence and boundary from 2 through 1000 selected places', () => {

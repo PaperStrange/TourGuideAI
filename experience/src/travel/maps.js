@@ -59,7 +59,9 @@ export function mapsShareText(input, locale = 'en') {
   const stops = validatedStops(input);
   if (!stops.length) return '';
   const zh = locale === 'zh', { parts } = journeyFor(stops);
-  const heading = zh ? '选定地点 · Google Maps 步行路线' : 'Selected places · Google Maps walking directions';
+  const heading = stops.length === 1
+    ? (zh ? '选定地点 · Google Maps' : 'Selected place · Google Maps')
+    : (zh ? '选定地点 · Google Maps 步行路线' : 'Selected places · Google Maps walking directions');
   const placeLines = stops.map((stop, index) => `${index + 1}. ${stop.title || coordinates(stop)}`);
   const linkLines = parts.map(part => {
     const range = `${part.startIndex + 1}–${part.endIndex + 1}`;

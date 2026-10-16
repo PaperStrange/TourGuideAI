@@ -91,3 +91,17 @@ jobs:
           name: ${{ matrix.artifact }}
           path: experience/test-results/${{ matrix.output }}
           if-no-files-found: ignore
+      - name: Walk through both homepage journeys
+        if: matrix.suite == 'journey homepage'
+        run: npm run test:walkthrough -- dist
+        env:
+          EXPERIENCE_QA_FRONTEND: packaged
+          EXPERIENCE_QA_OUTPUT: test-results/walkthrough
+          EXPERIENCE_QA_TIMEOUT: '120000'
+      - name: Preserve walkthrough evidence
+        if: always() && matrix.suite == 'journey homepage'
+        uses: actions/upload-artifact@v4
+        with:
+          name: homepage-walkthrough-evidence
+          path: experience/test-results/walkthrough
+          if-no-files-found: ignore

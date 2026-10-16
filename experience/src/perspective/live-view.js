@@ -32,6 +32,7 @@ export async function createPerspectiveView(host, { locale = 'en', onState, onSt
     restoreView: value => update(() => game.restoreView(value)),
     setLocale: value => update(() => game.setLocale(value)),
     setPaused: value => update(() => game.setPaused(value)),
+    setVisible: value => update(() => game.setVisible(value)),
     resetCamera: () => update(() => game.resetCamera()),
     setLightingMode: value => destroyed ? Promise.resolve(null) : game.setLightingMode(value),
     getLightingState: () => destroyed ? null : game.getLightingState(),

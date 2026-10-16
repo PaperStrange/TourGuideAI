@@ -23,7 +23,7 @@ notice.type = 'text/plain'; notice.id = 'third-party-notices';
 notice.textContent = `${fontLicense}\n\n${runtimeNotices}`; document.head.appendChild(notice);
 
 $('#comparison-app').innerHTML = `
-  <header class="study-header"><a id="back-link" href="./index.html" data-i18n="comparisonBack"></a><div class="language-switch" id="study-language" role="group"><button type="button" data-locale="en">EN</button><button type="button" data-locale="zh">中文</button></div></header>
+  <header class="study-header"><a id="comparison-home-link" href="./index.html" data-i18n="homeLink"></a><a id="back-link" href="./walk.html" data-i18n="comparisonBack"></a><div class="language-switch" id="study-language" role="group"><button type="button" data-locale="en">EN</button><button type="button" data-locale="zh">中文</button></div></header>
   <main>
     <div class="study-heading"><span class="eyebrow">KYOTO · SHIJO</span><h1 data-i18n="comparisonTitle"></h1><p data-i18n="comparisonIntro"></p></div>
     <section class="study-controls"><label class="view-control" for="study-view"><span data-i18n="comparisonViewLabel"></span><select id="study-view" disabled></select></label><fieldset id="study-mode"><legend data-i18n="comparisonModeLabel"></legend><label><input type="radio" name="mode" value="both" checked><span data-i18n="comparisonSideBySide"></span></label><label><input type="radio" name="mode" value="realtime"><span data-i18n="comparisonRealtimeOnly"></span></label><label><input type="radio" name="mode" value="still"><span data-i18n="comparisonStillOnly"></span></label></fieldset></section>
@@ -37,7 +37,7 @@ $('#comparison-app').innerHTML = `
     <p class="scope" data-i18n="comparisonScope"></p><p class="local-note" data-i18n="comparisonLocalOnly"></p>
     <details id="study-details"><summary data-i18n="comparisonRendererDetails"></summary><pre id="study-metrics"></pre></details>
     <div class="sr-only" id="study-announcement" role="status" aria-live="polite"></div>
-  </main><footer>© OpenStreetMap contributors · ODbL · <a href="./credits.html" data-i18n="photoCredits"></a></footer>`;
+  </main><footer>© OpenStreetMap contributors · ODbL · <a id="comparison-credits-link" href="./credits.html" data-i18n="photoCredits"></a></footer>`;
 
 function updateStatus() {
   $('#manifest-status').textContent = manifestStatus === 'ready' ? '' : text(manifestStatus === 'loading' ? 'comparisonLoading' : 'comparisonManifestUnavailable');
@@ -82,6 +82,8 @@ function applyLocale(next) {
   const url = new URL(location.href); url.searchParams.set('lang', locale); url.searchParams.set('lighting', appearance);
   history.replaceState(null, '', url);
   $('#back-link').href = `./walk.html?lang=${locale}&lighting=${appearance}`;
+  $('#comparison-home-link').href = `./index.html?lang=${locale}`;
+  $('#comparison-credits-link').href = `./credits.html?lang=${locale}`;
 }
 
 function setMode(value) {

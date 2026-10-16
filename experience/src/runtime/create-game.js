@@ -19,9 +19,10 @@ export async function createGame(host, options = {}) {
   if (initialView) { player.x = initialView.player.x; player.y = initialView.player.y; refreshProximity(player); }
   let locale = options.locale === 'zh' ? 'zh' : 'en';
   let previous = { x: player.x, y: player.y };
-  let renderer, canvas, view, rig, observer, frameHandle;
+  let renderer, canvas, view, rig, observer, frameHandle, firstFrameHandle, animateFrame;
   let status = 'loading', destroyed = false, dirty = true, readyNotified = false;
   let accumulator = 0, lastTime = null, notifications = 0, renderedFrames = 0;
+  let visible = true, updateFrames = 0;
   let width = 1, height = 1, queuedInteraction = null, pointer = null;
   let arrivalIdleMs = 0;
   let requestedLightingMode = normalizeLightingMode(options.lightingMode);
@@ -44,7 +45,13 @@ export async function createGame(host, options = {}) {
     target.addEventListener(type, handler, config);
     cleanups.push(() => target.removeEventListener(type, handler, config));
   };
-  const invalidate = () => { dirty = true; if (rig) options.onViewChange?.(api.captureView()); };
+  const scheduleFrame = () => {
+    if (!destroyed && status === 'ready' && visible && !document.hidden && animateFrame && frameHandle === undefined) {
+      frameHandle = requestAnimationFrame(animateFrame);
+    }
+  };
+  const stopFrames = () => { cancelAnimationFrame(frameHandle); frameHandle = undefined; lastTime = null; };
+  const invalidate = () => { dirty = true; scheduleFrame(); if (rig) options.onViewChange?.(api.captureView()); };
   const clearMovement = () => {
     held.clear(); player.destination = null; player.waypoints = []; player.moving = false;
     queuedInteraction = null; accumulator = 0; previous = { x: player.x, y: player.y }; dirty = true;
@@ -102,11 +109,18 @@ export async function createGame(host, options = {}) {
       if (!view) return structuredClone(lightingState);
       return view.setLightingMode(requestedLightingMode);
     },
-    setPaused(value) { clearMovement(); player.paused = Boolean(value); rig?.setEnabled(!player.paused && status === 'ready'); publish(); },
+    setPaused(value) { clearMovement(); player.paused = Boolean(value); rig?.setEnabled(visible && !player.paused && status === 'ready'); scheduleFrame(); publish(); },
+    setVisible(value) {
+      const next = Boolean(value);
+      if (visible === next) return;
+      visible = next; clearMovement(); lastTime = null;
+      rig?.setEnabled(visible && !player.paused && status === 'ready');
+      if (visible) scheduleFrame(); else stopFrames();
+    },
     setLocale(value) { locale = value === 'zh' ? 'zh' : 'en'; localize(); dirty = true; },
     reset() {
       clearMovement(); player = refreshProximity(createState());
-      previous = { x: player.x, y: player.y }; rig?.reset(player); rig?.setEnabled(status === 'ready');
+      previous = { x: player.x, y: player.y }; rig?.reset(player); rig?.setEnabled(visible && status === 'ready');
       publish();
     },
     resetCamera() { if (!player.paused) { rig?.reset(player); dirty = true; } },
@@ -131,7 +145,7 @@ export async function createGame(host, options = {}) {
     },
     destroy() {
       if (destroyed) return;
-      destroyed = true; abort.abort(); clearMovement(); cancelAnimationFrame(frameHandle);
+      destroyed = true; abort.abort(); clearMovement(); stopFrames(); cancelAnimationFrame(firstFrameHandle);
       observer?.disconnect(); for (const cleanup of cleanups) cleanup();
       rig?.dispose(); view?.dispose(); renderer?.dispose(); canvas?.remove();
       if (window.__TOUR_GAME__?.host === host) delete window.__TOUR_GAME__;
@@ -166,13 +180,16 @@ export async function createGame(host, options = {}) {
     const isText = event => event.target instanceof HTMLElement &&
       (event.target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target.tagName));
     listen(window, 'keydown', event => {
-      if (status !== 'ready' || player.paused || isText(event) || event.altKey || event.ctrlKey || event.metaKey) return;
+      if (status !== 'ready' || !visible || player.paused || isText(event) || event.altKey || event.ctrlKey || event.metaKey) return;
       if (keys[event.code]) { event.preventDefault(); rig.resumeFollow(); held.add(event.code); queuedInteraction = null; }
       if (encounters && event.code === 'KeyE' && !event.repeat) { event.preventDefault(); interact(player.nearbyTargetId); }
     });
     listen(window, 'keyup', event => { held.delete(event.code); });
     listen(window, 'blur', clearMovement);
-    listen(document, 'visibilitychange', () => { if (document.hidden) clearMovement(); lastTime = null; });
+    listen(document, 'visibilitychange', () => {
+      if (document.hidden) { clearMovement(); stopFrames(); }
+      else scheduleFrame();
+    });
     const pointerPoint = event => {
       const rect = canvas.getBoundingClientRect();
       return { x: (event.clientX - rect.left) * width / rect.width, y: (event.clientY - rect.top) * height / rect.height };
@@ -228,11 +245,30 @@ export async function createGame(host, options = {}) {
     view = await createWorldView(renderer, { encounters, signal: abort.signal, onProgress: progress => notify('loading', progress),
       lightingMode: requestedLightingMode, onLightingStatus: lightingStatus, onInvalidate: invalidate });
     if (destroyed || abort.signal.aborted) { view.dispose(); return api; }
+    const assetsReadyAt = performance.now();
     view.update(player, rig.camera, { dt: 1000, reducedMotion: true });
     notify('loading', 0.85);
     await renderer.compileAsync(view.scene, rig.camera);
     if (destroyed || abort.signal.aborted) return api;
+    const compiledAt = performance.now();
+    let firstRenderMs = 0;
+    // 首次绘制包含纹理上传与阴影准备；完成后才报告街景可用。
+    await new Promise((resolve, reject) => {
+      const cancelled = () => { cancelAnimationFrame(firstFrameHandle); reject(abort.signal.reason); };
+      abort.signal.addEventListener('abort', cancelled, { once: true });
+      firstFrameHandle = requestAnimationFrame(() => {
+        abort.signal.removeEventListener('abort', cancelled);
+        try {
+          const renderStarted = performance.now();
+          renderer.render(view.scene, rig.camera); renderedFrames++; dirty = false;
+          firstRenderMs = performance.now() - renderStarted;
+          resolve();
+        } catch (error) { reject(error); }
+      });
+    });
+    if (destroyed || abort.signal.aborted) return api;
     const loadMs = performance.now() - started;
+    const startup = { assetsAndLightingMs: assetsReadyAt - started, compileMs: compiledAt - assetsReadyAt, firstRenderMs, readyMs: loadMs };
     rig.setEnabled(!player.paused);
     notify('ready', 1); publish();
     if (observing()) {
@@ -242,12 +278,14 @@ export async function createGame(host, options = {}) {
         screenPoint: (x, y, h = 0.2) => rig.project(x, y, h, width, height),
         targets: () => encounters ? TARGETS.map(({ id, x, y, approachX, approachY }) => ({ id, x, y, approachX, approachY })) : [],
         commands: () => commandTrace.map(command => ({ ...command })),
-        renderer: () => ({ status, loadMs, renderedFrames, render: { ...renderer.info.render },
+        renderer: () => ({ status, loadMs, startup: { ...startup }, renderedFrames, updateFrames, visible, render: { ...renderer.info.render },
           memory: { ...renderer.info.memory }, scene: view.stats(), reducedMotion, lighting: view.getLightingState() }),
       });
     }
-    function animate(now) {
-      if (destroyed || status !== 'ready') return;
+    animateFrame = function animate(now) {
+      frameHandle = undefined;
+      if (destroyed || status !== 'ready' || !visible || document.hidden) { lastTime = null; return; }
+      updateFrames++;
       const dt = lastTime === null ? 0 : Math.min(100, now - lastTime); lastTime = now;
       if (!document.hidden && !player.paused) {
         accumulator = Math.min(accumulator + dt, TICK_MS * 6);
@@ -280,9 +318,9 @@ export async function createGame(host, options = {}) {
       if (dirty && !document.hidden) {
         renderer.render(view.scene, rig.camera); renderedFrames++; dirty = false;
       }
-      frameHandle = requestAnimationFrame(animate);
-    }
-    frameHandle = requestAnimationFrame(animate);
+      scheduleFrame();
+    };
+    scheduleFrame();
   } catch (error) {
     if (!destroyed && status !== 'context-lost') unavailable('unavailable', error);
   }

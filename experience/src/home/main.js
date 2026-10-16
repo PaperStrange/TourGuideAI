@@ -1,6 +1,5 @@
 import './styles.css';
 import { copy } from './copy.js';
-import { createPerspectiveView } from '../perspective/live-view.js';
 import { createRoomClient } from './room-client.js';
 import { SERVICE_SELECTION_KEY, defaultServiceURL, normalizeServiceURL, parseServiceSelection, roomCredentialKey } from './service-config.js';
 import { searchCenters, findNearby, DISCOVERY_ATTRIBUTION } from '../discovery/provider.js';
@@ -14,10 +13,10 @@ const params = new URLSearchParams(location.search);
 let locale = params.get('lang') === 'zh' ? 'zh' : 'en';
 const t = key => copy(locale, key);
 let mode = params.get('mode') === 'together' ? 'together' : 'explore';
-let center = kyotoCenter(), results = [], routes = [], nearbyPlaces = [], selectedRoute = 0;
+let center = kyotoCenter(), discoveryCenter = center, results = [], routes = [], nearbyPlaces = [], selectedRoute = 0;
 let liveView, worldMap, scenePromise, mapPromise, localPreview = false, lighting = 'day', room = null, session = null, subscription;
 let serviceReady = false, aiReady = false, searchRequest, nearbyRequest, routeState = '', sceneState = 'loading';
-let messageKey = '', roomMessage = 'serviceChecking', busy = false;
+let messageKey = '', searchMessage = '', roomMessage = 'serviceChecking', busy = false;
 const defaultEndpoint = defaultServiceURL(import.meta.env.VITE_TRAVEL_API_URL || '', location.href);
 let serviceSettings = { endpoint: defaultEndpoint, transport: 'sse' }, serviceSettingsSaved = true;
 try { serviceSettings = parseServiceSelection(sessionStorage.getItem(SERVICE_SELECTION_KEY)) || serviceSettings; }
@@ -42,16 +41,16 @@ function setMessage(key) { messageKey = key; $('#action-status').textContent = t
 
 function markup() {
   return `<header class="home-header"><a class="brand" href="./index.html"><span aria-hidden="true">↗</span> TourGuideAI</a><nav aria-label="${t('language')}"><a data-link="memories" href="./perspective.html?lang=${locale}">${t('memories')}</a><button id="locale-en" data-locale="en">EN</button><button id="locale-zh" data-locale="zh">中文</button></nav></header>
-  <main class="home-main"><div class="opening"><div><p class="eyebrow">A WORLD TO FEEL / 一个值得感受的世界</p><h1 data-copy="title"></h1><p class="subtitle" data-copy="subtitle"></p></div><div class="mode-switch" aria-label="Travel mode"><button id="mode-explore" data-mode="explore" data-copy="explore"></button><button id="mode-together" data-mode="together" data-copy="together"></button></div></div>
+  <main class="home-main"><div class="opening"><div><p class="eyebrow" data-copy="opening"></p><h1 data-copy="title"></h1><p class="subtitle" data-copy="subtitle"></p></div><div class="mode-switch" role="group"><button id="mode-explore" data-mode="explore" data-copy="explore"></button><button id="mode-together" data-mode="together" data-copy="together"></button></div></div>
   <section class="search-panel" aria-labelledby="search-label"><div><p class="eyebrow" id="journey-step"></p><h2 id="search-label"></h2></div><form id="place-search"><label class="sr-only" for="place-query" data-copy="searchLabel"></label><input id="place-query" name="place" type="search" maxlength="160" autocomplete="off" required><button id="search-submit" class="primary" type="submit" data-copy="search"></button></form><div id="search-status" role="status"></div><div id="search-results" class="search-results"></div></section>
   <div class="journey-layout"><section class="visual-column"><div class="preview-heading"><div><span id="preview-kind" class="eyebrow"></span><h2 id="preview-title"></h2></div><div class="preview-actions"><div id="lighting-controls" class="segmented"><button id="lighting-day" data-lighting="day" data-copy="day"></button><button id="lighting-night" data-lighting="night" data-copy="night"></button></div><button id="back-world" class="secondary" data-copy="backWorld" hidden></button></div></div>
   <div class="preview-frame"><div id="live-stage" tabindex="0" role="region"></div><div id="world-map" hidden></div><div class="preview-tools"><button id="preview-reset" data-copy="reset"></button></div><div id="scene-status" class="scene-status" role="status"></div><button id="scene-retry" class="primary scene-retry" data-copy="retry" hidden></button><div id="view-guidance" class="view-guidance"></div></div>
   <div class="preview-caption"><span id="preview-note"></span><a id="center-source" target="_blank" rel="noopener noreferrer" data-copy="source"></a></div>
   <div id="center-actions" class="center-actions"><button id="add-dream" class="primary" data-copy="addDream" hidden></button><a class="text-link" id="walk-link" href="./walk.html" data-copy="legacy"></a><a class="text-link" id="companion-link" href="./travel.html" data-copy="companion"></a></div>
-  <section id="routes-section" class="route-section" aria-labelledby="routes-heading"><p class="eyebrow">02 / A LITTLE FURTHER</p><h2 id="routes-heading" data-copy="routesTitle"></h2><p id="routes-status" role="status"></p><div id="route-options" class="route-options"></div><p class="small" data-copy="routeNote"></p></section>
-  </section><aside class="journey-sidebar"><section id="explore-plan" class="paper-card"><span class="eyebrow">YOUR WALK / 你的漫步</span><h2 id="route-title"></h2><ol id="route-stops" class="stop-list"></ol><div id="route-maps" class="map-links"></div><button id="copy-maps" class="secondary" data-copy="copyMaps"></button><label class="sr-only" for="maps-text" data-copy="copyMaps"></label><textarea id="maps-text" readonly hidden></textarea></section>
+  <section id="routes-section" class="route-section" aria-labelledby="routes-heading"><p class="eyebrow" data-copy="furtherStep"></p><h2 id="routes-heading" data-copy="routesTitle"></h2><p id="routes-status" role="status"></p><div id="route-options" class="route-options"></div><p class="small" data-copy="routeNote"></p></section>
+  </section><aside class="journey-sidebar"><section id="explore-plan" class="paper-card"><span class="eyebrow" data-copy="yourWalk"></span><h2 id="route-title"></h2><ol id="route-stops" class="stop-list"></ol><div id="route-maps" class="map-links"></div><button id="copy-maps" class="secondary" data-copy="copyMaps"></button><label class="sr-only" for="maps-text" data-copy="copyMaps"></label><textarea id="maps-text" readonly hidden></textarea></section>
   <section id="together-panel" hidden><div class="paper-card" id="room-setup"><h2 data-copy="together"></h2><p data-copy="roomIntro"></p><label for="traveler-name" data-copy="name"></label><input id="traveler-name" maxlength="60" autocomplete="nickname"><label for="room-title" data-copy="roomTitle"></label><input id="room-title" maxlength="120"><button id="room-create" class="primary" data-copy="create"></button><button id="room-join" class="primary" data-copy="join" hidden></button></div>
-  <div class="paper-card" id="room-shared" hidden><span class="eyebrow">OUR JOURNEY / 共同旅程</span><h2 id="shared-title"></h2><button id="room-invite" class="secondary" data-copy="invite"></button><label class="sr-only" for="invite-url" data-copy="inviteLabel"></label><textarea id="invite-url" readonly hidden></textarea><p class="small" data-copy="inviteNote"></p><h3 data-copy="people"></h3><div id="participant-list"></div><h3 data-copy="dreams"></h3><div id="dream-list"></div></div>
+  <div class="paper-card" id="room-shared" hidden><span class="eyebrow" data-copy="ourJourney"></span><h2 id="shared-title"></h2><button id="room-invite" class="secondary" data-copy="invite"></button><label class="sr-only" for="invite-url" data-copy="inviteLabel"></label><textarea id="invite-url" readonly hidden></textarea><p class="small" data-copy="inviteNote"></p><h3 data-copy="people"></h3><div id="participant-list"></div><h3 data-copy="dreams"></h3><div id="dream-list"></div></div>
   <p id="room-status" class="service-status" role="status"></p><details id="testing-connection" class="testing-connection"><summary data-copy="testingConnection"></summary><form id="service-connection-form" novalidate><label for="service-endpoint" data-copy="serviceAddress"></label><input id="service-endpoint" type="url" inputmode="url" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="http://localhost:8787" aria-describedby="service-data service-connection-status"><p id="service-data" class="small" data-copy="serviceData"></p><label for="service-transport" data-copy="serviceTransport"></label><select id="service-transport" aria-describedby="service-transport-help"><option value="sse" data-copy="serviceSse"></option><option value="poll" data-copy="servicePoll"></option></select><p id="service-transport-help" class="small" data-copy="serviceTransportHelp"></p><div class="service-actions"><button id="service-connect" type="submit" class="primary" data-copy="serviceConnect"></button><button id="service-reset" type="button" class="secondary" data-copy="serviceReset"></button></div><p id="service-connection-status" class="small" role="status" aria-live="polite"></p><p class="small" data-copy="serviceLocal"></p><p class="small" data-copy="serviceInvite"></p><p class="small" data-copy="serviceSession"></p></form></details><div class="paper-card" id="ai-panel" hidden><h2 data-copy="planTitle"></h2><label for="preferences" data-copy="preferences"></label><textarea id="preferences" maxlength="2000" rows="3"></textarea><button id="generate-plan" class="primary" data-copy="generate"></button><p class="small" id="ai-status"></p><div id="shared-plan"></div><button id="accept-plan" class="secondary" data-copy="accept" hidden></button></div></section>
   <p id="action-status" role="status" aria-live="polite"></p></aside></div>
   </main><footer class="home-footer"><span data-copy="footer"></span><div><span data-copy="networkNote"></span><a href="./credits.html" data-copy="credits"></a></div></footer>`;
@@ -64,7 +63,7 @@ function applyCopy() {
     if (translated) center = { ...center, title: translated.title };
   } else if (nearbyPlaces.length) {
     const previousId = routes[selectedRoute]?.id;
-    routes = suggestRoutes(center, nearbyPlaces, { locale });
+    routes = suggestRoutes(discoveryCenter, nearbyPlaces, { locale });
     selectedRoute = Math.max(0, routes.findIndex(route => route.id === previousId));
   }
   document.documentElement.lang = locale;
@@ -73,11 +72,16 @@ function applyCopy() {
   document.querySelectorAll('[data-locale]').forEach(node => node.setAttribute('aria-pressed', String(node.dataset.locale === locale)));
   $('#place-query').placeholder = t('searchPlaceholder'); $('#traveler-name').placeholder = t('namePlaceholder');
   $('#room-title').placeholder = t('roomPlaceholder'); $('#preferences').placeholder = t('preferencesPlaceholder');
+  $('.home-header .brand').href = `./index.html?lang=${locale}`;
+  $('.home-header nav').setAttribute('aria-label', t('language'));
+  $('.mode-switch').setAttribute('aria-label', t('travelMode'));
+  $('.home-footer [data-copy="credits"]').href = `./credits.html?lang=${locale}`;
   $('[data-link="memories"]').href = `./perspective.html?lang=${locale}`;
   $('[data-link="memories"]').textContent = t('memories');
   $('#walk-link').href = `./walk.html?lang=${locale}`; $('#companion-link').href = `./travel.html?lang=${locale}`;
-  $('#live-stage').setAttribute('aria-label', t('live')); $('#world-map').setAttribute('aria-label', t('world'));
-  liveView?.setLocale(locale); updateMode(); renderResults(); renderRoutes(); renderRoom(); renderConnection();
+  $('#live-stage').setAttribute('aria-label', t('live'));
+  liveView?.setLocale(locale); worldMap?.setLocale(locale); updateMode(); renderResults(); renderRoutes(); renderRoom(); renderConnection();
+  $('#search-status').textContent = searchMessage ? t(searchMessage) : '';
   if (messageKey) setMessage(messageKey);
 }
 
@@ -101,9 +105,9 @@ function updateMode() {
 async function ensureScene() {
   if (liveView || scenePromise) return scenePromise;
   sceneState = 'loading'; updatePreviewCopy();
-  scenePromise = createPerspectiveView($('#live-stage'), { locale,
+  scenePromise = import('../perspective/live-view.js').then(({ createPerspectiveView }) => createPerspectiveView($('#live-stage'), { locale,
     onStatus(value) { sceneState = value.status; updatePreviewCopy(); },
-  }).then(view => { liveView = view; sceneState = 'ready'; view.setPaused(!usesStreet()); updatePreviewCopy(); })
+  })).then(view => { liveView = view; view.setLocale(locale); sceneState = 'ready'; view.setPaused(!usesStreet()); view.setVisible(usesStreet()); updatePreviewCopy(); })
     .catch(() => { sceneState = 'error'; updatePreviewCopy(); })
     .finally(() => { scenePromise = null; });
   return scenePromise;
@@ -113,7 +117,7 @@ async function ensureMap() {
   if (worldMap || mapPromise) return mapPromise;
   $('#world-map').dataset.mapStatus = 'loading';
   mapPromise = import('./world-map.js').then(({ createWorldMap }) => {
-    worldMap = createWorldMap($('#world-map'), { onSelect: selectCenter,
+    worldMap = createWorldMap($('#world-map'), { locale, onSelect: selectCenter,
       onStatus() { updatePreviewCopy(); } });
     worldMap.resize(); updateMap();
   }).catch(() => { $('#world-map').dataset.mapStatus = 'error'; updatePreviewCopy(); })
@@ -132,27 +136,48 @@ function showPreview() {
   const street = usesStreet();
   $('#live-stage').hidden = !street; $('#world-map').hidden = street;
   liveView?.setPaused(!street);
+  liveView?.setVisible(street);
   if (street) ensureScene(); else { ensureMap().then(() => { worldMap?.resize(); updateMap(); }); }
   updatePreviewCopy();
 }
 function updatePreviewCopy() {
   if (!$('#preview-kind')) return;
   const world = mode === 'together' && !localPreview, street = usesStreet();
+  $('#world-map').setAttribute('aria-label', t(world ? 'world' : center.kind === 'country' ? 'country' : 'map3d'));
   $('#preview-kind').textContent = t(world ? 'world' : street ? 'live' : center.kind === 'country' ? 'country' : 'map3d');
   $('#preview-title').textContent = world ? room?.title || t('together') : center.title;
   $('#preview-note').textContent = t(world ? 'worldNote' : street ? 'streetNote' : center.kind === 'country' ? 'countryNote' : 'areaNote');
-  $('#view-guidance').textContent = t(street ? 'walkHelp' : 'mapHelp');
+  const touch = matchMedia('(pointer: coarse)').matches;
+  $('#view-guidance').textContent = t(street ? touch ? 'walkTouchHelp' : 'walkHelp' : touch ? 'mapTouchHelp' : 'mapHelp');
   $('#lighting-controls').hidden = !street; $('#preview-reset').hidden = !street;
   $('#back-world').hidden = mode !== 'together' || !localPreview;
   $('#walk-link').hidden = !street; $('#companion-link').hidden = !street;
   $('#center-source').hidden = world || !center.url;
   if (center.url) $('#center-source').href = center.url;
-  for (const value of ['day', 'night']) $('#lighting-' + value).setAttribute('aria-pressed', String(lighting === value));
+  const light = liveView?.getLightingState();
+  const lightingFailed = light && ['fallback', 'unavailable'].includes(light.phase);
+  for (const value of ['day', 'night']) {
+    const button = $('#lighting-' + value);
+    button.setAttribute('aria-pressed', String((light?.requestedMode || lighting) === value));
+    button.disabled = sceneState !== 'ready' || light?.phase === 'loading';
+  }
+  $('#lighting-controls').setAttribute('aria-busy', String(light?.phase === 'loading'));
   const mapState = $('#world-map').dataset.mapStatus;
-  $('#scene-status').textContent = street ? sceneState === 'ready' ? '' : t(sceneState === 'loading' ? 'sceneLoading' : 'sceneError')
+  const lightingMessage = light?.phase === 'loading' ? 'lightingLoading' : lightingFailed
+    ? light.fallbackReason === 'rig-unavailable' || light.phase === 'unavailable' ? 'lightingUnavailable' : 'lightingFallback' : '';
+  $('#scene-status').textContent = street ? sceneState === 'ready' ? lightingMessage ? t(lightingMessage) : '' : t(sceneState === 'loading' ? 'sceneLoading' : 'sceneError')
     : mapState === 'ready' ? '' : t(mapState === 'error' ? 'mapError' : 'mapLoading');
   $('#scene-status').hidden = !$('#scene-status').textContent;
-  $('#scene-retry').hidden = !(street && !['ready', 'loading'].includes(sceneState));
+  $('#scene-retry').hidden = street ? sceneState === 'loading' || (sceneState === 'ready' && !lightingFailed) : mapState !== 'error';
+  $('#scene-retry').textContent = t(street && sceneState === 'ready' && lightingFailed ? 'lightingRetry' : 'retry');
+}
+
+async function selectLighting(value) {
+  lighting = value;
+  const pending = liveView.setLightingMode(value);
+  updatePreviewCopy();
+  try { await pending; }
+  finally { updatePreviewCopy(); }
 }
 
 function renderResults() {
@@ -162,16 +187,18 @@ function renderRoutes() {
   $('#routes-status').textContent = routeState ? t(routeState) : '';
   $('#route-options').innerHTML = routes.map((route, index) => `<button class="route-option" data-route="${index}" aria-pressed="${index === selectedRoute}"><span class="route-index">0${index + 1}</span><strong>${escape(route.title)}</strong><span>${route.stops.length} ${t('stops')}</span></button>`).join('');
   const route = routes[selectedRoute], stops = currentStops();
+  $('[data-copy="routeNote"]').textContent = t(center.kind === 'country' ? 'countryNote'
+    : route?.id === 'shijo' ? 'routeCuratedNote' : nearbyPlaces.length ? 'routeNearbyNote' : 'routeNote');
   $('#route-title').textContent = route?.title || center.title;
   $('#route-stops').innerHTML = stops.map((place, index) => `<li><span class="stop-index">${index + 1}</span><div><button data-stop="${index}">${escape(place.title)}</button>${place.url ? `<a href="${escape(place.url)}" target="_blank" rel="noopener noreferrer">${t('source')} ↗</a>` : ''}</div></li>`).join('');
-  $('#route-maps').innerHTML = buildMapsJourney(stops).parts.map((part, index, parts) => `<a class="primary" href="${escape(part.url)}" target="_blank" rel="noopener noreferrer">${t('openMaps')}${parts.length > 1 ? ` · ${index + 1}/${parts.length}` : ''} ↗</a>`).join('');
+  $('#route-maps').innerHTML = buildMapsJourney(stops).parts.map((part, index, parts) => `<a class="primary" href="${escape(part.url)}" target="_blank" rel="noopener noreferrer">${t(part.stops.length === 1 ? 'openPlaceMaps' : 'openMaps')}${parts.length > 1 ? ` · ${index + 1}/${parts.length}` : ''} ↗</a>`).join('');
   $('#maps-text').value = mapsShareText(stops, locale);
 }
 
 async function selectCenter(place) {
   nearbyRequest?.abort(); nearbyRequest = new AbortController();
   const request = nearbyRequest;
-  center = place; localPreview = mode === 'together'; results = []; renderResults();
+  center = place; discoveryCenter = place; localPreview = mode === 'together'; results = []; renderResults();
   routes = []; nearbyPlaces = []; selectedRoute = 0; routeState = 'routesLoading'; renderRoutes(); updateMode();
   if (session?.participantToken) mutate({ type: 'presence.focus', destinationId: catalogPlace(place.id) ? place.id : null });
   if (place.kind === 'country') { routeState = 'countryNote'; renderRoutes(); updateMap(); return; }
@@ -329,13 +356,19 @@ async function handleClick(event) {
   if (button.dataset.preview || button.dataset.follow) { await selectCenter(fromCatalog(catalogPlace(button.dataset.preview || button.dataset.follow))); return; }
   if (button.dataset.removeDream) { await mutate({ type: 'dream.remove', dreamId: button.dataset.removeDream }); return; }
   if (button.dataset.lighting && liveView) {
-    button.disabled = true;
-    try { await liveView.setLightingMode(button.dataset.lighting); lighting = liveView.getLightingState().mode; }
-    finally { button.disabled = false; updatePreviewCopy(); }
+    await selectLighting(button.dataset.lighting);
     return;
   }
   if (button.id === 'preview-reset') { liveView?.resetCamera(); return; }
-  if (button.id === 'scene-retry') { liveView?.destroy(); liveView = null; await ensureScene(); return; }
+  if (button.id === 'scene-retry') {
+    if (usesStreet()) {
+      if (sceneState === 'ready' && liveView) await selectLighting(liveView.getLightingState().requestedMode || lighting);
+      else { liveView?.destroy(); liveView = null; await ensureScene(); }
+    }
+    else if (worldMap) worldMap.retry();
+    else await ensureMap();
+    return;
+  }
   if (button.id === 'back-world') { localPreview = false; updateMode(); return; }
   if (button.id === 'copy-maps') { await copyValue($('#maps-text').value, $('#maps-text')); return; }
   if (button.id === 'service-reset') { await connectService(true); return; }
@@ -413,13 +446,13 @@ function boot() {
   $('#traveler-name').addEventListener('input', () => $('#traveler-name').setCustomValidity(''));
   $('#place-search').addEventListener('submit', async event => {
     event.preventDefault(); searchRequest?.abort(); searchRequest = new AbortController(); const request = searchRequest;
-    $('#search-submit').disabled = true; $('#search-status').textContent = t('searching');
+    $('#place-search').setAttribute('aria-busy', 'true'); searchMessage = 'searching'; $('#search-status').textContent = t(searchMessage);
     try {
       const found = await searchCenters($('#place-query').value, { locale, signal: request.signal });
       if (request !== searchRequest) return;
-      results = found; renderResults(); $('#search-status').textContent = t(results.length ? 'selectResult' : 'noResults');
-    } catch (error) { if (!request.signal.aborted) $('#search-status').textContent = t('searchError'); }
-    finally { if (request === searchRequest) $('#search-submit').disabled = false; }
+      results = found; renderResults(); searchMessage = results.length ? 'selectResult' : 'noResults'; $('#search-status').textContent = t(searchMessage);
+    } catch (error) { if (!request.signal.aborted) { searchMessage = 'searchError'; $('#search-status').textContent = t(searchMessage); } }
+    finally { if (request === searchRequest) $('#place-search').setAttribute('aria-busy', 'false'); }
   });
   window.addEventListener('pagehide', event => {
     serviceGeneration++; serviceController.abort(); subscription?.close(); nearbyRequest?.abort(); searchRequest?.abort();

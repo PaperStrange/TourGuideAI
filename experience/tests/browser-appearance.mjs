@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
 import { APPEARANCE_KEY } from '../src/app/appearance.js';
 import { STORAGE_KEY } from '../src/app/journey-store.js';
+import { KYOTO_ARCHITECTURAL_PROFILE } from '../src/runtime/architectural-profile.js';
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const stable = value => JSON.stringify({ x: value.game.x, y: value.game.y, locale: value.locale,
@@ -14,12 +15,18 @@ export const waitForLighting = (page, mode, timeout, phase = 'ready') => page.wa
   return light?.requestedMode === mode && light.mode === mode && light.phase === phase;
 }, { mode, phase }, { timeout });
 
-export function lightingMatchesRig(actual, mode, rig, assets) {
-  const expected = rig.modes[mode];
+export function lightingMatchesRig(actual, mode, rig, assets, profile = null) {
+  const base = rig.modes[mode], adjustment = profile?.modes[mode];
+  const expected = { ...base,
+    environment: { ...base.environment, ...adjustment?.environment },
+    hemisphere: { ...base.hemisphere, ...adjustment?.hemisphere },
+    sun: { ...base.sun, ...adjustment?.sun },
+  };
   const environmentPath = new URL(expected.environment.file, 'http://qa.test/lighting/rig.json').pathname;
   const expectedFixtures = expected.fixtures.filter(light => light.enabled && light.intensity > 0);
   const fixtures = actual.lights.filter(light => expected.fixtures.some(config => config.id === light.id));
   return actual.phase === 'ready' && actual.mode === mode && actual.requestedMode === mode
+    && actual.rig.profile === (profile?.id ?? null)
     && actual.rig.sha256 === sha(assets.get('/lighting/rig.json'))
     && assets.has(environmentPath) && sha(assets.get(environmentPath)) === expected.environment.sha256
     && actual.environment.sha256 === expected.environment.sha256
@@ -27,6 +34,12 @@ export function lightingMatchesRig(actual, mode, rig, assets) {
     && Math.abs(actual.environmentIntensity - expected.environment.intensity) < 1e-8
     && Math.abs(actual.environmentRotationY - expected.environment.rotationY) < 1e-8
     && Math.abs(actual.exposure - expected.exposure) < 1e-8
+    && actual.lights.some(light => light.id === 'hemisphere'
+      && Math.abs(light.intensity - expected.hemisphere.intensity) < 1e-8)
+    && (!expected.sun.enabled || actual.lights.some(light => light.id === 'sun'
+      && Math.abs(light.intensity - expected.sun.intensity) < 1e-8
+      && light.position.every((value, index) => Math.abs(value - expected.sun.position[index]) < 1e-8)
+      && light.target.every((value, index) => Math.abs(value - expected.sun.target[index]) < 1e-8)))
     && expectedFixtures.every(config => fixtures.some(light => light.id === config.id
       && Math.abs(light.intensity - config.intensity) < 1e-8 && light.castShadow === Boolean(config.shadow?.enabled)))
     && fixtures.filter(light => light.intensity > 0 && light.castShadow).length <= rig.limits.maxShadowCastingLocalLights
@@ -65,11 +78,11 @@ export async function verifyAppearanceOpening({ page, saved, check, capture, ass
   const before = await saved(page), camera = pose(await page.evaluate(() => window.__TOUR_GAME__.camera()));
   const day = await lightingState(page), canvas = page.locator('#game-stage canvas');
   const dayPixels = await canvas.screenshot(), repeatPixels = await canvas.screenshot();
-  check('day-applies-the-local-environment-and-unlit-fixtures', lightingMatchesRig(day, 'day', rig, assets), day);
+  check('day-applies-the-local-environment-and-unlit-fixtures', lightingMatchesRig(day, 'day', rig, assets, KYOTO_ARCHITECTURAL_PROFILE), day);
   await page.locator('#appearance-controls [data-appearance="night"]').click();
   await waitForLighting(page, 'night', timeout);
   const night = await lightingState(page), nightPixels = await canvas.screenshot();
-  check('night-applies-distinct-local-environment-lights-and-emission', lightingMatchesRig(night, 'night', rig, assets)
+  check('night-applies-distinct-local-environment-lights-and-emission', lightingMatchesRig(night, 'night', rig, assets, KYOTO_ARCHITECTURAL_PROFILE)
     && night.environment.sha256 !== day.environment.sha256, night);
   const baseline = await pixels(page, dayPixels, repeatPixels), contrast = await pixels(page, dayPixels, nightPixels);
   check('day-night-change-appears-in-actual-fixed-camera-pixels', contrast.meanAbsoluteChannelDifference > baseline.meanAbsoluteChannelDifference + 1,
@@ -176,7 +189,7 @@ export async function verifyAppearanceFaults({ scenario, assets, origin, seed, s
   check('missing-hdr-fallback-is-localized', /[\u3400-\u9fff]/.test(await missing.page.locator('#appearance-status').innerText()));
   await capture(missing.page, 'missing-night-hdr-zh');
   failNight = false; await missing.page.locator('#appearance-retry').click(); await waitForLighting(missing.page, 'night', timeout);
-  check('hdr-retry-applies-the-real-local-asset', lightingMatchesRig(await lightingState(missing.page), 'night', rig, assets));
+  check('hdr-retry-applies-the-real-local-asset', lightingMatchesRig(await lightingState(missing.page), 'night', rig, assets, KYOTO_ARCHITECTURAL_PROFILE));
   check('hdr-faults-have-only-deliberate-diagnostics', !missing.record.externalRequests.length && !missing.record.pageErrors.length
     && missing.record.consoleErrors.every(message => message.includes('404 (Not Found)')), missing.record);
   await missing.context.close();

@@ -26,7 +26,8 @@ let noteDraft = '';
 const noteDrafts = new Map();
 let sceneStatus = 'loading';
 const returning = Boolean(saved.game?.visitedIds?.length);
-let locale = saved.locale === 'zh' ? 'zh' : 'en';
+const requestedLocale = new URLSearchParams(location.search).get('lang');
+let locale = ['en', 'zh'].includes(requestedLocale) ? requestedLocale : saved.locale === 'zh' ? 'zh' : 'en';
 let hints = saved.hints !== false;
 let appearanceStorage;
 try { appearanceStorage = localStorage; } catch { /* The scene also works without storage. */ }
@@ -45,7 +46,7 @@ const label = target => local(target.title);
 const app = document.querySelector('#app');
 app.innerHTML = `
 <header class="topbar">
-  <div class="brand"><span class="brand-mark" aria-hidden="true"></span><div><span data-i18n="brand"></span><small data-i18n="productTag"></small></div></div>
+  <a class="brand" id="walk-home-link" href="./index.html" style="color:inherit;text-decoration:none"><span class="brand-mark" aria-hidden="true"></span><span><span data-i18n="brand"></span><small data-i18n="homeLink"></small></span></a>
   <div class="topbar-center" data-i18n="chapterLabel"></div>
   <div class="header-actions"><div class="language-switch" role="group" id="language-switch"><button type="button" data-locale="en">EN</button><button type="button" data-locale="zh">中文</button></div><button type="button" class="icon-button" id="reset-button" aria-label="Restart"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10a8 8 0 1 1 1 7M4 4v6h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
 </header>
@@ -64,7 +65,7 @@ app.innerHTML = `
     <div class="controls-bar"><div class="control-hints" id="controls"><span><kbd>W A S D</kbd><span data-i18n="controlsMove"></span></span><span><kbd>E</kbd><span data-i18n="controlsInteract"></span></span><span><kbd>Esc</kbd><span data-i18n="controlsClose"></span></span></div><button class="hint-toggle" id="hint-toggle" type="button"></button></div>
   </section>
 </main>
-<footer class="bottom-bar"><span>© OpenStreetMap contributors · ODbL · <a href="./credits.html" target="_blank" rel="noopener" data-i18n="photoCredits"></a></span><span class="save-status" id="save-status"></span></footer>
+<footer class="bottom-bar"><span>© OpenStreetMap contributors · ODbL · <a id="walk-credits-link" href="./credits.html" target="_blank" rel="noopener" data-i18n="photoCredits"></a></span><span class="save-status" id="save-status"></span></footer>
 <dialog id="place-dialog" aria-labelledby="card-title"></dialog>
 <dialog id="reset-dialog" aria-labelledby="reset-title"><div class="card-top"><h2 id="reset-title" class="card-title" data-i18n="reset"></h2></div><div class="card-body"><p class="card-description" data-i18n="resetConfirm"></p><div class="choices"><button class="choice-button" type="button" id="confirm-reset" data-i18n="reset"></button><button class="choice-button secondary" type="button" id="cancel-reset" data-i18n="resetCancel"></button></div></div></dialog>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -134,9 +135,15 @@ function save(force = false) {
 
 function applyLocale(next) {
   locale=next==='zh'?'zh':'en';
+  const url=new URL(location.href);
+  url.searchParams.set('lang',locale);
+  history.replaceState(null,'',url);
   clearTimeout(toastTimer);$('#toast').classList.remove('show');
   document.documentElement.lang=locale;
   document.title=`TourGuideAI · ${text('title')}`;
+  $('#walk-home-link').href=`./index.html?lang=${locale}`;
+  $('#walk-home-link').setAttribute('aria-label',text('homeLink'));
+  $('#walk-credits-link').href=`./credits.html?lang=${locale}`;
   document.querySelectorAll('[data-i18n]').forEach(el=>{el.textContent=text(el.dataset.i18n);});
   document.querySelectorAll('[data-locale]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.locale===locale)));
   $('#language-switch').setAttribute('aria-label',text('languageLabel'));

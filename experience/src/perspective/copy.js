@@ -3,6 +3,8 @@
 export const COPY = {
   en: {
     brand: 'TourGuideAI',
+    home: 'Home', credits: 'Sources & credits', placeName: 'Kyoto',
+    chapterEyebrow: 'FIELD NOTES / 01', chapterPlace: '01 / KYOTO', notebookEyebrow: 'PERSONAL FIELD NOTES',
     title: 'Borrow someone’s eyes',
     subtitle: 'A little Kyoto, from another point of view.',
     intro: 'Follow a view. Notice a detail. Leave a thought of your own.',
@@ -104,7 +106,7 @@ export const COPY = {
     momentSaved: 'Your view and note are saved on this device.',
     deleteMoment: 'Remove this moment',
     remaining: 'Three observations, one small loop',
-    existingWalk: 'Open the original walk',
+    existingWalk: 'Open the Kyoto walk',
     stop: 'Finish for now',
     resume: 'Resume this view',
     scope: 'A short virtual walk around Shijō–Karasuma, Kyoto.',
@@ -113,6 +115,8 @@ export const COPY = {
   },
   zh: {
     brand: 'TourGuideAI',
+    home: '首页', credits: '来源与鸣谢', placeName: '京都',
+    chapterEyebrow: '旅行手记 / 01', chapterPlace: '01 / 京都', notebookEyebrow: '我的旅行手记',
     title: '借一双眼睛',
     subtitle: '换个视角，看一小段京都。',
     intro: '跟随一个视角，留意一个细节，留下你的发现。',
@@ -214,7 +218,7 @@ export const COPY = {
     momentSaved: '视角与笔记已保存在此设备上。',
     deleteMoment: '删除这条记录',
     remaining: '三处发现，一段小小的漫步',
-    existingWalk: '打开原版漫步',
+    existingWalk: '打开京都漫步',
     stop: '先到这里',
     resume: '回到这个视角',
     scope: '京都四条乌丸附近的一段简短虚拟漫步。',

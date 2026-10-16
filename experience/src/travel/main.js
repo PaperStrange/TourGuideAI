@@ -58,7 +58,7 @@ function render(focusId = document.activeElement?.id) {
   document.title = `${t('title')} · TourGuideAI`;
   const stops = selectedStops(), maps = buildMapsJourney(stops), disabled = stops.length ? '' : 'disabled';
   $('#travel-app').innerHTML = `
-    <header class="header"><a class="brand" href="./index.html">↗ TourGuideAI</a><nav aria-label="${escape(t('language'))}"><a class="back" href="./perspective.html?lang=${locale}">${escape(t('preview'))}</a><button id="locale-en" class="language" data-locale="en" aria-pressed="${locale === 'en'}">EN</button><button id="locale-zh" class="language" data-locale="zh" aria-pressed="${locale === 'zh'}">中文</button></nav></header>
+    <header class="header"><a id="travel-home-link" class="brand" href="./index.html?lang=${locale}" aria-label="${escape(t('home'))}">↗ TourGuideAI · ${escape(t('home'))}</a><nav aria-label="${escape(t('language'))}"><a class="back" href="./perspective.html?lang=${locale}">${escape(t('preview'))}</a><button id="locale-en" class="language" data-locale="en" aria-pressed="${locale === 'en'}">EN</button><button id="locale-zh" class="language" data-locale="zh" aria-pressed="${locale === 'zh'}">中文</button></nav></header>
     <main><span class="eyebrow">${escape(t('eyebrow'))}</span><h1>${escape(t('title'))}</h1><p class="intro">${escape(t('intro'))}</p>
     <div class="layout"><div class="left">
       <section class="panel location-panel" aria-labelledby="location-heading"><h2 id="location-heading">${escape(t('locationTitle'))}</h2><p>${escape(t('locationPurpose'))}</p>
@@ -84,7 +84,7 @@ function render(focusId = document.activeElement?.id) {
       </section>
       <section class="panel memory-panel"><h2>${escape(t('memories'))}</h2><p>${escape(t('memoriesBody'))}</p><a class="button secondary" href="./perspective.html?lang=${locale}">${escape(t('memoryLink'))} ↗</a></section>
     </aside></div></main>
-    <footer class="footer"><p>${escape(t('scope'))}</p><details><summary>${escape(t('sources'))}</summary><p>${escape(t('sourceNote'))}</p><ul class="source-list">${PLACES.map(place => `<li><a href="${escape(place.source)}" target="_blank" rel="noopener noreferrer">${escape(local(place.title))}</a> · ${escape(typeof place.anchor === 'object' ? local(place.anchor) : place.anchor)}</li>`).join('')}</ul><a href="./credits.html">${escape(t('sourceLinks'))}</a></details><p>© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors · ODbL</a></p></footer>`;
+    <footer class="footer"><p>${escape(t('scope'))}</p><details><summary>${escape(t('sources'))}</summary><p>${escape(t('sourceNote'))}</p><ul class="source-list">${PLACES.map(place => `<li><a href="${escape(place.source)}" target="_blank" rel="noopener noreferrer">${escape(local(place.title))}</a> · ${escape(typeof place.anchor === 'object' ? local(place.anchor) : place.anchor)}</li>`).join('')}</ul><a id="travel-credits-link" href="./credits.html?lang=${locale}">${escape(t('sourceLinks'))}</a></details><p>© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors · ODbL</a></p></footer>`;
   renderLocation();
   if (focusId) document.getElementById(focusId)?.focus({ preventScroll: true });
 }

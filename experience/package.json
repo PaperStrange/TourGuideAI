@@ -14,7 +14,8 @@
     "test:browser": "node tests/browser-check.mjs",
     "test:perspective": "node tests/browser-perspective.mjs",
     "test:travel": "node tests/browser-travel.mjs",
-    "test:homepage": "node tests/browser-homepage.mjs"
+    "test:homepage": "node tests/browser-homepage.mjs",
+    "test:walkthrough": "node tests/browser-walkthrough.mjs"
   },
   "dependencies": {
     "eventsource-parser": "4.1.2",

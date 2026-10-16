@@ -5,6 +5,7 @@ import { resolve, join, relative, extname, sep } from 'node:path';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { startServer } from '../server/src/server.js';
+import { copy } from '../src/home/copy.js';
 
 if (!process.argv[2]) {
   console.error('Usage: node tests/browser-homepage.mjs <built-dist-directory>');
@@ -176,7 +177,7 @@ async function sceneReady(page) {
 async function search(page, query) {
   await page.locator('#place-query').fill(query);
   await page.locator('#search-submit').click();
-  await page.waitForFunction(() => !document.querySelector('#search-submit').disabled);
+  await page.waitForFunction(() => document.querySelector('#place-search').getAttribute('aria-busy') !== 'true');
   return page.locator('#search-results [data-result]').allTextContents();
 }
 async function chooseResult(page, index = 0) {
@@ -190,10 +191,11 @@ async function roomSettled(page, participants, dreams) {
   }, { participants, dreams });
 }
 async function layout(page, id) {
+  const viewport = page.viewportSize().width;
   const value = await page.evaluate(() => ({ width: innerWidth, documentWidth: document.documentElement.scrollWidth,
-    controls: [...document.querySelectorAll('#place-search, .mode-switch, #live-stage, #world-map')]
+    controls: [...document.querySelectorAll('#place-search, .mode-switch, .preview-frame, #live-stage, #world-map')]
       .filter(node => !node.hidden).map(node => { const r = node.getBoundingClientRect(); return { id: node.id || node.className, x: r.x, right: r.right, width: r.width }; }) }));
-  check(id, value.documentWidth <= value.width + 1 && value.controls.every(item => item.x >= -1 && item.right <= value.width + 1), value);
+  check(id, value.documentWidth <= viewport + 1 && value.controls.every(item => item.x >= -1 && item.right <= viewport + 1), { viewport, ...value });
 }
 async function section(id, operation) {
   try { await operation(); }
@@ -584,7 +586,11 @@ try {
   });
   await section('unavailable-room-service', async () => {
     const item = await scenario('unavailable-service', { blockAPI: true, blockProviders: true, url: `${origin}/?qa=1&mode=together&lang=zh` }); const page = item.page;
-    await page.waitForFunction(() => /托管服务/.test(document.querySelector('#room-status').textContent));
+    await page.waitForFunction(expected => {
+      const state = window.__HOME__?.snapshot();
+      return state && !state.connectionPending && !state.serviceReady
+        && document.querySelector('#room-status').textContent === expected;
+    }, copy('zh', 'serviceUnavailable'), { timeout: 20000 });
     check('unavailable-service-disables-creation-with-honest-copy', await page.locator('#room-create').isDisabled()
       && !(await home(page)).serviceReady && !(await home(page)).aiReady, await page.locator('#room-status').innerText());
     await isolate(page, 'unavailable-service-keeps-private-saves'); await closeContext(item.context);

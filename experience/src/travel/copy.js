@@ -1,7 +1,7 @@
 const copy = {
   en: {
     title: 'Take the journey with you', eyebrow: 'KYOTO · SHIJŌ–KARASUMA', intro: 'The places you noticed, ready for a real walk.',
-    preview: 'Explore virtually', language: 'Language', locationTitle: 'Explore around me', start: 'Use my location', resume: 'Resume location', stop: 'Stop location',
+    home: 'Home', preview: 'Kyoto perspectives', language: 'Language', locationTitle: 'Explore around me', start: 'Use my location', resume: 'Resume location', stop: 'Stop location',
     locationPurpose: 'While this page is visible, your phone can update nearby context as you walk.',
     privacy: 'Location stays in this page. We do not save a GPS trail or put your position in shared links.',
     idle: 'Choose places below, or use your location when you are there.', requesting: 'Waiting for your phone’s location…', tracking: 'Location is updating',
@@ -28,7 +28,7 @@ const copy = {
   },
   zh: {
     title: '把这段旅程带到身边', eyebrow: '京都 · 四条乌丸', intro: '把虚拟探索中留意的地方，带进真实的散步。',
-    preview: '虚拟探索', language: '语言', locationTitle: '探索身边', start: '使用我的位置', resume: '恢复定位', stop: '停止定位',
+    home: '首页', preview: '京都视角', language: '语言', locationTitle: '探索身边', start: '使用我的位置', resume: '恢复定位', stop: '停止定位',
     locationPurpose: '页面显示时，手机会随你的步行更新附近信息。',
     privacy: '位置仅在当前页面使用。我们不保存GPS轨迹，也不将你的位置放入分享链接。',
     idle: '可以先选择地点，到达当地后再使用定位。', requesting: '正在等待手机定位…', tracking: '正在更新位置',
