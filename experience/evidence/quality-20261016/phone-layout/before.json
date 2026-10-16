@@ -1,0 +1,4184 @@
+{
+  "startedAt": "2026-10-16T04:15:03.824Z",
+  "executablePath": "/workspace/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell",
+  "errors": [],
+  "snapshots": [
+    {
+      "stage": "initial",
+      "passed": false,
+      "now": 440.90000000596046,
+      "innerWidth": 463,
+      "scrollX": 0,
+      "scrollY": 0,
+      "documentWidth": 463,
+      "documentClientWidth": 390,
+      "bodyWidth": 463,
+      "visualViewport": {
+        "width": 390,
+        "height": 844,
+        "scale": 1,
+        "offsetLeft": 0,
+        "pageLeft": 0
+      },
+      "fonts": {
+        "status": "loaded",
+        "kyoto": true,
+        "entries": [
+          {
+            "family": "Kyoto",
+            "status": "loaded"
+          }
+        ]
+      },
+      "controls": [
+        {
+          "tag": "HEADER",
+          "id": "",
+          "className": "home-header",
+          "text": "↗ TourGuideAIKyoto perspectivesEN中文",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 104,
+            "top": 0,
+            "right": 390,
+            "bottom": 104,
+            "left": 0
+          },
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "style": {
+            "width": "390px",
+            "minWidth": "0px",
+            "maxWidth": "1500px",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "DIV",
+          "id": "",
+          "className": "mode-switch",
+          "text": "Explore a placePlan together",
+          "rect": {
+            "x": 18,
+            "y": 308.703125,
+            "width": 354,
+            "height": 58,
+            "top": 308.703125,
+            "right": 372,
+            "bottom": 366.703125,
+            "left": 18
+          },
+          "clientWidth": 352,
+          "scrollWidth": 352,
+          "style": {
+            "width": "354px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "FORM",
+          "id": "place-search",
+          "className": "",
+          "text": "Where would you like to explore?Find a place",
+          "rect": {
+            "x": 37,
+            "y": 470.59375,
+            "width": 426,
+            "height": 46,
+            "top": 470.59375,
+            "right": 463,
+            "bottom": 516.59375,
+            "left": 37
+          },
+          "clientWidth": 426,
+          "scrollWidth": 426,
+          "style": {
+            "width": "426px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "SECTION",
+          "id": "",
+          "className": "visual-column",
+          "text": "INTERACTIVE STREET PREVIEWShijō–Karasuma crossingDaylightNightBack to world\n  Reset viewOpening the street…Retry previewTap the pavement to walk · Drag to look ",
+          "rect": {
+            "x": 18,
+            "y": 574.59375,
+            "width": 354,
+            "height": 823.578125,
+            "top": 574.59375,
+            "right": 372,
+            "bottom": 1398.171875,
+            "left": 18
+          },
+          "clientWidth": 354,
+          "scrollWidth": 354,
+          "style": {
+            "width": "354px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "DIV",
+          "id": "",
+          "className": "preview-frame",
+          "text": "Reset viewOpening the street…Retry previewTap the pavement to walk · Drag to look · Pinch to zoom",
+          "rect": {
+            "x": 18,
+            "y": 644.59375,
+            "width": 354,
+            "height": 430,
+            "top": 644.59375,
+            "right": 372,
+            "bottom": 1074.59375,
+            "left": 18
+          },
+          "clientWidth": 352,
+          "scrollWidth": 352,
+          "style": {
+            "width": "354px",
+            "minWidth": "0px",
+            "maxWidth": "100%",
+            "position": "relative",
+            "display": "block",
+            "overflowX": "hidden",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "DIV",
+          "id": "live-stage",
+          "className": "",
+          "text": "",
+          "rect": {
+            "x": 19,
+            "y": 645.59375,
+            "width": 352,
+            "height": 428,
+            "top": 645.59375,
+            "right": 371,
+            "bottom": 1073.59375,
+            "left": 19
+          },
+          "clientWidth": 352,
+          "scrollWidth": 352,
+          "style": {
+            "width": "352px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "absolute",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "className": "",
+          "text": "",
+          "rect": {
+            "x": 19,
+            "y": 645.59375,
+            "width": 352,
+            "height": 428,
+            "top": 645.59375,
+            "right": 371,
+            "bottom": 1073.59375,
+            "left": 19
+          },
+          "clientWidth": 352,
+          "scrollWidth": 352,
+          "style": {
+            "width": "352px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "clip",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "ASIDE",
+          "id": "",
+          "className": "journey-sidebar",
+          "text": "YOUR WALKA closer look at Shijō1Shijō–Karasuma crossingPlace source ↗2Kyoto Mitsui BuildingPlace source ↗3MUFG · Kyoto BranchPlace source ↗Open walk in Google M",
+          "rect": {
+            "x": 18,
+            "y": 1418.171875,
+            "width": 354,
+            "height": 486.625,
+            "top": 1418.171875,
+            "right": 372,
+            "bottom": 1904.796875,
+            "left": 18
+          },
+          "clientWidth": 354,
+          "scrollWidth": 354,
+          "style": {
+            "width": "354px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        }
+      ],
+      "offenders": [
+        {
+          "tag": "DIV",
+          "id": "",
+          "className": "",
+          "text": "01 / FIND YOUR STARTING POINTWhere would you like to explore?",
+          "rect": {
+            "x": 37,
+            "y": 409.703125,
+            "width": 426,
+            "height": 45.890625,
+            "top": 409.703125,
+            "right": 463,
+            "bottom": 455.59375,
+            "left": 37
+          },
+          "clientWidth": 426,
+          "scrollWidth": 426,
+          "style": {
+            "width": "426px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "P",
+          "id": "journey-step",
+          "className": "eyebrow",
+          "text": "01 / FIND YOUR STARTING POINT",
+          "rect": {
+            "x": 37,
+            "y": 409.703125,
+            "width": 426,
+            "height": 16.890625,
+            "top": 409.703125,
+            "right": 463,
+            "bottom": 426.59375,
+            "left": 37
+          },
+          "clientWidth": 426,
+          "scrollWidth": 426,
+          "style": {
+            "width": "426px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "10.56px",
+            "fontWeight": "600",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "H2",
+          "id": "search-label",
+          "className": "",
+          "text": "Where would you like to explore?",
+          "rect": {
+            "x": 37,
+            "y": 431.59375,
+            "width": 426,
+            "height": 24,
+            "top": 431.59375,
+            "right": 463,
+            "bottom": 455.59375,
+            "left": 37
+          },
+          "clientWidth": 426,
+          "scrollWidth": 426,
+          "style": {
+            "width": "426px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Georgia, \"Noto Serif SC\", serif",
+            "fontSize": "20px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "FORM",
+          "id": "place-search",
+          "className": "",
+          "text": "Where would you like to explore?Find a place",
+          "rect": {
+            "x": 37,
+            "y": 470.59375,
+            "width": 426,
+            "height": 46,
+            "top": 470.59375,
+            "right": 463,
+            "bottom": 516.59375,
+            "left": 37
+          },
+          "clientWidth": 426,
+          "scrollWidth": 426,
+          "style": {
+            "width": "426px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "BUTTON",
+          "id": "search-submit",
+          "className": "primary",
+          "text": "Find a place",
+          "rect": {
+            "x": 364,
+            "y": 470.59375,
+            "width": 99,
+            "height": 46,
+            "top": 470.59375,
+            "right": 463,
+            "bottom": 516.59375,
+            "left": 364
+          },
+          "clientWidth": 97,
+          "scrollWidth": 97,
+          "style": {
+            "width": "99px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "13.28px",
+            "fontWeight": "500",
+            "whiteSpace": "nowrap",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "DIV",
+          "id": "search-status",
+          "className": "",
+          "text": "",
+          "rect": {
+            "x": 37,
+            "y": 531.59375,
+            "width": 426,
+            "height": 0,
+            "top": 531.59375,
+            "right": 463,
+            "bottom": 531.59375,
+            "left": 37
+          },
+          "clientWidth": 426,
+          "scrollWidth": 426,
+          "style": {
+            "width": "426px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "12.8px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        }
+      ],
+      "home": {
+        "mode": "explore",
+        "center": {
+          "id": "crossing",
+          "latitude": 35.00376,
+          "longitude": 135.7599457,
+          "title": "Shijō–Karasuma crossing",
+          "detail": "The north end of the crossing, beside Kyoto Mitsui Building.",
+          "image": "perspectives/arrive.jpg",
+          "source": "OpenStreetMap",
+          "anchor": "Mapped north sidewalk node 4600871814 on crossing way 465069430; OSM snapshot 2026-09-29.",
+          "kind": "poi",
+          "url": "https://www.openstreetmap.org/node/4600871814"
+        },
+        "localPreview": false,
+        "sceneState": "loading",
+        "lighting": "day",
+        "room": null,
+        "serviceReady": true,
+        "aiReady": false,
+        "serviceEndpoint": "http://127.0.0.1:45321",
+        "serviceTransport": "sse",
+        "connectionPending": false,
+        "invitationNeedsConfirmation": false,
+        "map": null,
+        "routes": [
+          {
+            "id": "shijo",
+            "stops": [
+              "crossing",
+              "mitsui",
+              "mufg"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "stage": "en-explore-scene-ready",
+      "passed": false,
+      "now": 3717.8000000044703,
+      "innerWidth": 463,
+      "scrollX": 0,
+      "scrollY": 0,
+      "documentWidth": 463,
+      "documentClientWidth": 390,
+      "bodyWidth": 463,
+      "visualViewport": {
+        "width": 390,
+        "height": 844,
+        "scale": 1,
+        "offsetLeft": 0,
+        "pageLeft": 0
+      },
+      "fonts": {
+        "status": "loaded",
+        "kyoto": true,
+        "entries": [
+          {
+            "family": "Kyoto",
+            "status": "loaded"
+          }
+        ]
+      },
+      "controls": [
+        {
+          "tag": "HEADER",
+          "id": "",
+          "className": "home-header",
+          "text": "↗ TourGuideAIKyoto perspectivesEN中文",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 104,
+            "top": 0,
+            "right": 390,
+            "bottom": 104,
+            "left": 0
+          },
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "style": {
+            "width": "390px",
+            "minWidth": "0px",
+            "maxWidth": "1500px",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "DIV",
+          "id": "",
+          "className": "mode-switch",
+          "text": "Explore a placePlan together",
+          "rect": {
+            "x": 18,
+            "y": 308.703125,
+            "width": 354,
+            "height": 58,
+            "top": 308.703125,
+            "right": 372,
+            "bottom": 366.703125,
+            "left": 18
+          },
+          "clientWidth": 352,
+          "scrollWidth": 352,
+          "style": {
+            "width": "354px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "FORM",
+          "id": "place-search",
+          "className": "",
+          "text": "Where would you like to explore?Find a place",
+          "rect": {
+            "x": 37,
+            "y": 470.59375,
+            "width": 426,
+            "height": 46,
+            "top": 470.59375,
+            "right": 463,
+            "bottom": 516.59375,
+            "left": 37
+          },
+          "clientWidth": 426,
+          "scrollWidth": 426,
+          "style": {
+            "width": "426px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "SECTION",
+          "id": "",
+          "className": "visual-column",
+          "text": "INTERACTIVE STREET PREVIEWShijō–Karasuma crossingDaylightNightBack to world\n  Reset viewRetry previewTap the pavement to walk · Drag to look · Pinch to zoom\n  S",
+          "rect": {
+            "x": 18,
+            "y": 574.59375,
+            "width": 354,
+            "height": 823.578125,
+            "top": 574.59375,
+            "right": 372,
+            "bottom": 1398.171875,
+            "left": 18
+          },
+          "clientWidth": 354,
+          "scrollWidth": 354,
+          "style": {
+            "width": "354px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "DIV",
+          "id": "",
+          "className": "preview-frame",
+          "text": "Reset viewRetry previewTap the pavement to walk · Drag to look · Pinch to zoom",
+          "rect": {
+            "x": 18,
+            "y": 644.59375,
+            "width": 354,
+            "height": 430,
+            "top": 644.59375,
+            "right": 372,
+            "bottom": 1074.59375,
+            "left": 18
+          },
+          "clientWidth": 352,
+          "scrollWidth": 352,
+          "style": {
+            "width": "354px",
+            "minWidth": "0px",
+            "maxWidth": "100%",
+            "position": "relative",
+            "display": "block",
+            "overflowX": "hidden",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "DIV",
+          "id": "live-stage",
+          "className": "",
+          "text": "",
+          "rect": {
+            "x": 19,
+            "y": 645.59375,
+            "width": 352,
+            "height": 428,
+            "top": 645.59375,
+            "right": 371,
+            "bottom": 1073.59375,
+            "left": 19
+          },
+          "clientWidth": 352,
+          "scrollWidth": 352,
+          "style": {
+            "width": "352px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "absolute",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "className": "",
+          "text": "",
+          "rect": {
+            "x": 19,
+            "y": 645.59375,
+            "width": 352,
+            "height": 428,
+            "top": 645.59375,
+            "right": 371,
+            "bottom": 1073.59375,
+            "left": 19
+          },
+          "clientWidth": 352,
+          "scrollWidth": 352,
+          "style": {
+            "width": "352px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "clip",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "ASIDE",
+          "id": "",
+          "className": "journey-sidebar",
+          "text": "YOUR WALKA closer look at Shijō1Shijō–Karasuma crossingPlace source ↗2Kyoto Mitsui BuildingPlace source ↗3MUFG · Kyoto BranchPlace source ↗Open walk in Google M",
+          "rect": {
+            "x": 18,
+            "y": 1418.171875,
+            "width": 354,
+            "height": 486.625,
+            "top": 1418.171875,
+            "right": 372,
+            "bottom": 1904.796875,
+            "left": 18
+          },
+          "clientWidth": 354,
+          "scrollWidth": 354,
+          "style": {
+            "width": "354px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        }
+      ],
+      "offenders": [
+        {
+          "tag": "DIV",
+          "id": "",
+          "className": "",
+          "text": "01 / FIND YOUR STARTING POINTWhere would you like to explore?",
+          "rect": {
+            "x": 37,
+            "y": 409.703125,
+            "width": 426,
+            "height": 45.890625,
+            "top": 409.703125,
+            "right": 463,
+            "bottom": 455.59375,
+            "left": 37
+          },
+          "clientWidth": 426,
+          "scrollWidth": 426,
+          "style": {
+            "width": "426px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "P",
+          "id": "journey-step",
+          "className": "eyebrow",
+          "text": "01 / FIND YOUR STARTING POINT",
+          "rect": {
+            "x": 37,
+            "y": 409.703125,
+            "width": 426,
+            "height": 16.890625,
+            "top": 409.703125,
+            "right": 463,
+            "bottom": 426.59375,
+            "left": 37
+          },
+          "clientWidth": 426,
+          "scrollWidth": 426,
+          "style": {
+            "width": "426px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "10.56px",
+            "fontWeight": "600",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "H2",
+          "id": "search-label",
+          "className": "",
+          "text": "Where would you like to explore?",
+          "rect": {
+            "x": 37,
+            "y": 431.59375,
+            "width": 426,
+            "height": 24,
+            "top": 431.59375,
+            "right": 463,
+            "bottom": 455.59375,
+            "left": 37
+          },
+          "clientWidth": 426,
+          "scrollWidth": 426,
+          "style": {
+            "width": "426px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Georgia, \"Noto Serif SC\", serif",
+            "fontSize": "20px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "FORM",
+          "id": "place-search",
+          "className": "",
+          "text": "Where would you like to explore?Find a place",
+          "rect": {
+            "x": 37,
+            "y": 470.59375,
+            "width": 426,
+            "height": 46,
+            "top": 470.59375,
+            "right": 463,
+            "bottom": 516.59375,
+            "left": 37
+          },
+          "clientWidth": 426,
+          "scrollWidth": 426,
+          "style": {
+            "width": "426px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "BUTTON",
+          "id": "search-submit",
+          "className": "primary",
+          "text": "Find a place",
+          "rect": {
+            "x": 364,
+            "y": 470.59375,
+            "width": 99,
+            "height": 46,
+            "top": 470.59375,
+            "right": 463,
+            "bottom": 516.59375,
+            "left": 364
+          },
+          "clientWidth": 97,
+          "scrollWidth": 97,
+          "style": {
+            "width": "99px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "13.28px",
+            "fontWeight": "500",
+            "whiteSpace": "nowrap",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "DIV",
+          "id": "search-status",
+          "className": "",
+          "text": "",
+          "rect": {
+            "x": 37,
+            "y": 531.59375,
+            "width": 426,
+            "height": 0,
+            "top": 531.59375,
+            "right": 463,
+            "bottom": 531.59375,
+            "left": 37
+          },
+          "clientWidth": 426,
+          "scrollWidth": 426,
+          "style": {
+            "width": "426px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "12.8px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        }
+      ],
+      "home": {
+        "mode": "explore",
+        "center": {
+          "id": "crossing",
+          "latitude": 35.00376,
+          "longitude": 135.7599457,
+          "title": "Shijō–Karasuma crossing",
+          "detail": "The north end of the crossing, beside Kyoto Mitsui Building.",
+          "image": "perspectives/arrive.jpg",
+          "source": "OpenStreetMap",
+          "anchor": "Mapped north sidewalk node 4600871814 on crossing way 465069430; OSM snapshot 2026-09-29.",
+          "kind": "poi",
+          "url": "https://www.openstreetmap.org/node/4600871814"
+        },
+        "localPreview": false,
+        "sceneState": "ready",
+        "lighting": "day",
+        "room": null,
+        "serviceReady": true,
+        "aiReady": false,
+        "serviceEndpoint": "http://127.0.0.1:45321",
+        "serviceTransport": "sse",
+        "connectionPending": false,
+        "invitationNeedsConfirmation": false,
+        "map": null,
+        "routes": [
+          {
+            "id": "shijo",
+            "stops": [
+              "crossing",
+              "mitsui",
+              "mufg"
+            ]
+          }
+        ]
+      },
+      "renderer": {
+        "status": "ready",
+        "loadMs": 604.5,
+        "startup": {
+          "assetsAndLightingMs": 424.5,
+          "compileMs": 27.200000002980232,
+          "firstRenderMs": 152.29999999701977,
+          "readyMs": 604.5
+        },
+        "renderedFrames": 2,
+        "updateFrames": 1,
+        "visible": true,
+        "render": {
+          "frame": 23,
+          "calls": 88,
+          "triangles": 134188,
+          "points": 0,
+          "lines": 0
+        },
+        "memory": {
+          "geometries": 112,
+          "textures": 20
+        },
+        "scene": {
+          "meshes": 111,
+          "triangles": 148966,
+          "architecturalMaterials": {
+            "materials": 25,
+            "filteredTextures": 14
+          },
+          "walkableSurfaces": 12,
+          "markerCount": 0,
+          "fadedGroups": [],
+          "actorPosition": [
+            23.8,
+            0.17000000178813934,
+            -2.1
+          ],
+          "actorHeading": -1.5707963267948966,
+          "streetBounds": [
+            -265,
+            -0.3400000035762787,
+            -205,
+            295,
+            35.03499984741211,
+            215
+          ]
+        },
+        "reducedMotion": false,
+        "lighting": {
+          "requestedMode": "day",
+          "mode": "day",
+          "phase": "ready",
+          "disposed": false,
+          "fallbackReason": null,
+          "rig": {
+            "status": "ready",
+            "sha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+            "expectedSha256": null,
+            "profile": "kyoto-street-materials-20261015"
+          },
+          "shadowBounds": {
+            "minX": -12,
+            "maxX": 76,
+            "minY": -38,
+            "maxY": 30
+          },
+          "environment": {
+            "status": "ready",
+            "file": "/lighting/environments/day-1k.hdr",
+            "sha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+            "expectedSha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+            "textureId": "bbcb5648-20ac-49c9-8adb-5e4f59bada94"
+          },
+          "environmentIntensity": 0.78,
+          "environmentRotationY": 1,
+          "exposure": 1.05,
+          "lights": [
+            {
+              "id": "hemisphere",
+              "type": "HemisphereLight",
+              "intensity": 0.24,
+              "color": "#d4e1ef",
+              "position": [
+                0,
+                1,
+                0
+              ],
+              "target": null,
+              "castShadow": false,
+              "mapSize": null,
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "sun",
+              "type": "DirectionalLight",
+              "intensity": 2.55,
+              "color": "#fff4e5",
+              "position": [
+                -24,
+                68,
+                45
+              ],
+              "target": [
+                30,
+                0,
+                5
+              ],
+              "castShadow": true,
+              "mapSize": [
+                2048,
+                2048
+              ],
+              "shadowNeedsUpdate": false
+            }
+          ],
+          "emissiveMeshes": [],
+          "cacheEntries": 1,
+          "pendingRequests": 0,
+          "staleRequests": 0,
+          "shadowUpdates": 1,
+          "memory": {
+            "geometries": 112,
+            "textures": 20
+          }
+        }
+      }
+    },
+    {
+      "stage": "en-explore-fonts-ready",
+      "passed": false,
+      "now": 3731.5,
+      "innerWidth": 463,
+      "scrollX": 0,
+      "scrollY": 0,
+      "documentWidth": 463,
+      "documentClientWidth": 390,
+      "bodyWidth": 463,
+      "visualViewport": {
+        "width": 390,
+        "height": 844,
+        "scale": 1,
+        "offsetLeft": 0,
+        "pageLeft": 0
+      },
+      "fonts": {
+        "status": "loaded",
+        "kyoto": true,
+        "entries": [
+          {
+            "family": "Kyoto",
+            "status": "loaded"
+          }
+        ]
+      },
+      "controls": [
+        {
+          "tag": "HEADER",
+          "id": "",
+          "className": "home-header",
+          "text": "↗ TourGuideAIKyoto perspectivesEN中文",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 104,
+            "top": 0,
+            "right": 390,
+            "bottom": 104,
+            "left": 0
+          },
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "style": {
+            "width": "390px",
+            "minWidth": "0px",
+            "maxWidth": "1500px",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "DIV",
+          "id": "",
+          "className": "mode-switch",
+          "text": "Explore a placePlan together",
+          "rect": {
+            "x": 18,
+            "y": 308.703125,
+            "width": 354,
+            "height": 58,
+            "top": 308.703125,
+            "right": 372,
+            "bottom": 366.703125,
+            "left": 18
+          },
+          "clientWidth": 352,
+          "scrollWidth": 352,
+          "style": {
+            "width": "354px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "FORM",
+          "id": "place-search",
+          "className": "",
+          "text": "Where would you like to explore?Find a place",
+          "rect": {
+            "x": 37,
+            "y": 470.59375,
+            "width": 426,
+            "height": 46,
+            "top": 470.59375,
+            "right": 463,
+            "bottom": 516.59375,
+            "left": 37
+          },
+          "clientWidth": 426,
+          "scrollWidth": 426,
+          "style": {
+            "width": "426px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "SECTION",
+          "id": "",
+          "className": "visual-column",
+          "text": "INTERACTIVE STREET PREVIEWShijō–Karasuma crossingDaylightNightBack to world\n  Reset viewRetry previewTap the pavement to walk · Drag to look · Pinch to zoom\n  S",
+          "rect": {
+            "x": 18,
+            "y": 574.59375,
+            "width": 354,
+            "height": 823.578125,
+            "top": 574.59375,
+            "right": 372,
+            "bottom": 1398.171875,
+            "left": 18
+          },
+          "clientWidth": 354,
+          "scrollWidth": 354,
+          "style": {
+            "width": "354px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "DIV",
+          "id": "",
+          "className": "preview-frame",
+          "text": "Reset viewRetry previewTap the pavement to walk · Drag to look · Pinch to zoom",
+          "rect": {
+            "x": 18,
+            "y": 644.59375,
+            "width": 354,
+            "height": 430,
+            "top": 644.59375,
+            "right": 372,
+            "bottom": 1074.59375,
+            "left": 18
+          },
+          "clientWidth": 352,
+          "scrollWidth": 352,
+          "style": {
+            "width": "354px",
+            "minWidth": "0px",
+            "maxWidth": "100%",
+            "position": "relative",
+            "display": "block",
+            "overflowX": "hidden",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "DIV",
+          "id": "live-stage",
+          "className": "",
+          "text": "",
+          "rect": {
+            "x": 19,
+            "y": 645.59375,
+            "width": 352,
+            "height": 428,
+            "top": 645.59375,
+            "right": 371,
+            "bottom": 1073.59375,
+            "left": 19
+          },
+          "clientWidth": 352,
+          "scrollWidth": 352,
+          "style": {
+            "width": "352px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "absolute",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "className": "",
+          "text": "",
+          "rect": {
+            "x": 19,
+            "y": 645.59375,
+            "width": 352,
+            "height": 428,
+            "top": 645.59375,
+            "right": 371,
+            "bottom": 1073.59375,
+            "left": 19
+          },
+          "clientWidth": 352,
+          "scrollWidth": 352,
+          "style": {
+            "width": "352px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "clip",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "ASIDE",
+          "id": "",
+          "className": "journey-sidebar",
+          "text": "YOUR WALKA closer look at Shijō1Shijō–Karasuma crossingPlace source ↗2Kyoto Mitsui BuildingPlace source ↗3MUFG · Kyoto BranchPlace source ↗Open walk in Google M",
+          "rect": {
+            "x": 18,
+            "y": 1418.171875,
+            "width": 354,
+            "height": 486.625,
+            "top": 1418.171875,
+            "right": 372,
+            "bottom": 1904.796875,
+            "left": 18
+          },
+          "clientWidth": 354,
+          "scrollWidth": 354,
+          "style": {
+            "width": "354px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        }
+      ],
+      "offenders": [
+        {
+          "tag": "DIV",
+          "id": "",
+          "className": "",
+          "text": "01 / FIND YOUR STARTING POINTWhere would you like to explore?",
+          "rect": {
+            "x": 37,
+            "y": 409.703125,
+            "width": 426,
+            "height": 45.890625,
+            "top": 409.703125,
+            "right": 463,
+            "bottom": 455.59375,
+            "left": 37
+          },
+          "clientWidth": 426,
+          "scrollWidth": 426,
+          "style": {
+            "width": "426px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "P",
+          "id": "journey-step",
+          "className": "eyebrow",
+          "text": "01 / FIND YOUR STARTING POINT",
+          "rect": {
+            "x": 37,
+            "y": 409.703125,
+            "width": 426,
+            "height": 16.890625,
+            "top": 409.703125,
+            "right": 463,
+            "bottom": 426.59375,
+            "left": 37
+          },
+          "clientWidth": 426,
+          "scrollWidth": 426,
+          "style": {
+            "width": "426px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "10.56px",
+            "fontWeight": "600",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "H2",
+          "id": "search-label",
+          "className": "",
+          "text": "Where would you like to explore?",
+          "rect": {
+            "x": 37,
+            "y": 431.59375,
+            "width": 426,
+            "height": 24,
+            "top": 431.59375,
+            "right": 463,
+            "bottom": 455.59375,
+            "left": 37
+          },
+          "clientWidth": 426,
+          "scrollWidth": 426,
+          "style": {
+            "width": "426px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Georgia, \"Noto Serif SC\", serif",
+            "fontSize": "20px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "FORM",
+          "id": "place-search",
+          "className": "",
+          "text": "Where would you like to explore?Find a place",
+          "rect": {
+            "x": 37,
+            "y": 470.59375,
+            "width": 426,
+            "height": 46,
+            "top": 470.59375,
+            "right": 463,
+            "bottom": 516.59375,
+            "left": 37
+          },
+          "clientWidth": 426,
+          "scrollWidth": 426,
+          "style": {
+            "width": "426px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "BUTTON",
+          "id": "search-submit",
+          "className": "primary",
+          "text": "Find a place",
+          "rect": {
+            "x": 364,
+            "y": 470.59375,
+            "width": 99,
+            "height": 46,
+            "top": 470.59375,
+            "right": 463,
+            "bottom": 516.59375,
+            "left": 364
+          },
+          "clientWidth": 97,
+          "scrollWidth": 97,
+          "style": {
+            "width": "99px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "13.28px",
+            "fontWeight": "500",
+            "whiteSpace": "nowrap",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "DIV",
+          "id": "search-status",
+          "className": "",
+          "text": "",
+          "rect": {
+            "x": 37,
+            "y": 531.59375,
+            "width": 426,
+            "height": 0,
+            "top": 531.59375,
+            "right": 463,
+            "bottom": 531.59375,
+            "left": 37
+          },
+          "clientWidth": 426,
+          "scrollWidth": 426,
+          "style": {
+            "width": "426px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "12.8px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        }
+      ],
+      "home": {
+        "mode": "explore",
+        "center": {
+          "id": "crossing",
+          "latitude": 35.00376,
+          "longitude": 135.7599457,
+          "title": "Shijō–Karasuma crossing",
+          "detail": "The north end of the crossing, beside Kyoto Mitsui Building.",
+          "image": "perspectives/arrive.jpg",
+          "source": "OpenStreetMap",
+          "anchor": "Mapped north sidewalk node 4600871814 on crossing way 465069430; OSM snapshot 2026-09-29.",
+          "kind": "poi",
+          "url": "https://www.openstreetmap.org/node/4600871814"
+        },
+        "localPreview": false,
+        "sceneState": "ready",
+        "lighting": "day",
+        "room": null,
+        "serviceReady": true,
+        "aiReady": false,
+        "serviceEndpoint": "http://127.0.0.1:45321",
+        "serviceTransport": "sse",
+        "connectionPending": false,
+        "invitationNeedsConfirmation": false,
+        "map": null,
+        "routes": [
+          {
+            "id": "shijo",
+            "stops": [
+              "crossing",
+              "mitsui",
+              "mufg"
+            ]
+          }
+        ]
+      },
+      "renderer": {
+        "status": "ready",
+        "loadMs": 604.5,
+        "startup": {
+          "assetsAndLightingMs": 424.5,
+          "compileMs": 27.200000002980232,
+          "firstRenderMs": 152.29999999701977,
+          "readyMs": 604.5
+        },
+        "renderedFrames": 2,
+        "updateFrames": 3,
+        "visible": true,
+        "render": {
+          "frame": 23,
+          "calls": 88,
+          "triangles": 134188,
+          "points": 0,
+          "lines": 0
+        },
+        "memory": {
+          "geometries": 112,
+          "textures": 20
+        },
+        "scene": {
+          "meshes": 111,
+          "triangles": 148966,
+          "architecturalMaterials": {
+            "materials": 25,
+            "filteredTextures": 14
+          },
+          "walkableSurfaces": 12,
+          "markerCount": 0,
+          "fadedGroups": [],
+          "actorPosition": [
+            23.8,
+            0.17000000178813934,
+            -2.1
+          ],
+          "actorHeading": -1.5707963267948966,
+          "streetBounds": [
+            -265,
+            -0.3400000035762787,
+            -205,
+            295,
+            35.03499984741211,
+            215
+          ]
+        },
+        "reducedMotion": false,
+        "lighting": {
+          "requestedMode": "day",
+          "mode": "day",
+          "phase": "ready",
+          "disposed": false,
+          "fallbackReason": null,
+          "rig": {
+            "status": "ready",
+            "sha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+            "expectedSha256": null,
+            "profile": "kyoto-street-materials-20261015"
+          },
+          "shadowBounds": {
+            "minX": -12,
+            "maxX": 76,
+            "minY": -38,
+            "maxY": 30
+          },
+          "environment": {
+            "status": "ready",
+            "file": "/lighting/environments/day-1k.hdr",
+            "sha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+            "expectedSha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+            "textureId": "bbcb5648-20ac-49c9-8adb-5e4f59bada94"
+          },
+          "environmentIntensity": 0.78,
+          "environmentRotationY": 1,
+          "exposure": 1.05,
+          "lights": [
+            {
+              "id": "hemisphere",
+              "type": "HemisphereLight",
+              "intensity": 0.24,
+              "color": "#d4e1ef",
+              "position": [
+                0,
+                1,
+                0
+              ],
+              "target": null,
+              "castShadow": false,
+              "mapSize": null,
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "sun",
+              "type": "DirectionalLight",
+              "intensity": 2.55,
+              "color": "#fff4e5",
+              "position": [
+                -24,
+                68,
+                45
+              ],
+              "target": [
+                30,
+                0,
+                5
+              ],
+              "castShadow": true,
+              "mapSize": [
+                2048,
+                2048
+              ],
+              "shadowNeedsUpdate": false
+            }
+          ],
+          "emissiveMeshes": [],
+          "cacheEntries": 1,
+          "pendingRequests": 0,
+          "staleRequests": 0,
+          "shadowUpdates": 1,
+          "memory": {
+            "geometries": 112,
+            "textures": 20
+          }
+        }
+      }
+    },
+    {
+      "stage": "zh-explore",
+      "passed": false,
+      "now": 3811,
+      "innerWidth": 442,
+      "scrollX": 0,
+      "scrollY": 0,
+      "documentWidth": 442,
+      "documentClientWidth": 390,
+      "bodyWidth": 442,
+      "visualViewport": {
+        "width": 390,
+        "height": 844,
+        "scale": 1,
+        "offsetLeft": 0,
+        "pageLeft": 0
+      },
+      "fonts": {
+        "status": "loaded",
+        "kyoto": true,
+        "entries": [
+          {
+            "family": "Kyoto",
+            "status": "loaded"
+          }
+        ]
+      },
+      "controls": [
+        {
+          "tag": "HEADER",
+          "id": "",
+          "className": "home-header",
+          "text": "↗ TourGuideAI京都观察笔记EN中文",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 104,
+            "top": 0,
+            "right": 390,
+            "bottom": 104,
+            "left": 0
+          },
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "style": {
+            "width": "390px",
+            "minWidth": "0px",
+            "maxWidth": "1500px",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "DIV",
+          "id": "",
+          "className": "mode-switch",
+          "text": "探索一个地方一起规划旅行",
+          "rect": {
+            "x": 18,
+            "y": 264.65625,
+            "width": 354,
+            "height": 58,
+            "top": 264.65625,
+            "right": 372,
+            "bottom": 322.65625,
+            "left": 18
+          },
+          "clientWidth": 352,
+          "scrollWidth": 352,
+          "style": {
+            "width": "354px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "FORM",
+          "id": "place-search",
+          "className": "",
+          "text": "想从哪里开始探索？寻找地点",
+          "rect": {
+            "x": 37,
+            "y": 426.546875,
+            "width": 405,
+            "height": 46,
+            "top": 426.546875,
+            "right": 442,
+            "bottom": 472.546875,
+            "left": 37
+          },
+          "clientWidth": 405,
+          "scrollWidth": 405,
+          "style": {
+            "width": "405px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "SECTION",
+          "id": "",
+          "className": "visual-column",
+          "text": "可交互街景预览四条乌丸路口日间夜间返回世界地图\n  重置视角重新加载预览轻触人行道行走 · 拖动查看 · 双指缩放\n  四条乌丸 · 依据地图中的建筑特征制作的街景演绎。地点来源\n  加入我们的心愿漫步京都打开京都实地旅行助手\n  02 / 再走远一点用不同方式感受这里01细看四条通3 个地点这是一段精选京都漫步。Go",
+          "rect": {
+            "x": 18,
+            "y": 530.546875,
+            "width": 354,
+            "height": 807.5,
+            "top": 530.546875,
+            "right": 372,
+            "bottom": 1338.046875,
+            "left": 18
+          },
+          "clientWidth": 354,
+          "scrollWidth": 354,
+          "style": {
+            "width": "354px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "DIV",
+          "id": "",
+          "className": "preview-frame",
+          "text": "重置视角重新加载预览轻触人行道行走 · 拖动查看 · 双指缩放",
+          "rect": {
+            "x": 18,
+            "y": 600.546875,
+            "width": 354,
+            "height": 430,
+            "top": 600.546875,
+            "right": 372,
+            "bottom": 1030.546875,
+            "left": 18
+          },
+          "clientWidth": 352,
+          "scrollWidth": 352,
+          "style": {
+            "width": "354px",
+            "minWidth": "0px",
+            "maxWidth": "100%",
+            "position": "relative",
+            "display": "block",
+            "overflowX": "hidden",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "DIV",
+          "id": "live-stage",
+          "className": "",
+          "text": "",
+          "rect": {
+            "x": 19,
+            "y": 601.546875,
+            "width": 352,
+            "height": 428,
+            "top": 601.546875,
+            "right": 371,
+            "bottom": 1029.546875,
+            "left": 19
+          },
+          "clientWidth": 352,
+          "scrollWidth": 352,
+          "style": {
+            "width": "352px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "absolute",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "className": "",
+          "text": "",
+          "rect": {
+            "x": 19,
+            "y": 601.546875,
+            "width": 352,
+            "height": 428,
+            "top": 601.546875,
+            "right": 371,
+            "bottom": 1029.546875,
+            "left": 19
+          },
+          "clientWidth": 352,
+          "scrollWidth": 352,
+          "style": {
+            "width": "352px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "clip",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "ASIDE",
+          "id": "",
+          "className": "journey-sidebar",
+          "text": "你的漫步细看四条通1四条乌丸路口地点来源 ↗2京都三井大厦地点来源 ↗3三菱 UFJ · 京都支店地点来源 ↗在 Google Maps 打开步行路线 ↗复制地图链接复制地图链接\n  一起规划旅行邀请同行的人，收集每个人向往的地方，一起决定旅程的方向。你的名字给旅程取个名字创建共同旅程加入这次旅行\n  共同旅程复制邀请",
+          "rect": {
+            "x": 18,
+            "y": 1358.046875,
+            "width": 354,
+            "height": 486.625,
+            "top": 1358.046875,
+            "right": 372,
+            "bottom": 1844.671875,
+            "left": 18
+          },
+          "clientWidth": 354,
+          "scrollWidth": 354,
+          "style": {
+            "width": "354px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        }
+      ],
+      "offenders": [
+        {
+          "tag": "DIV",
+          "id": "",
+          "className": "",
+          "text": "01 / 找到旅程的起点想从哪里开始探索？",
+          "rect": {
+            "x": 37,
+            "y": 365.65625,
+            "width": 405,
+            "height": 45.890625,
+            "top": 365.65625,
+            "right": 442,
+            "bottom": 411.546875,
+            "left": 37
+          },
+          "clientWidth": 405,
+          "scrollWidth": 405,
+          "style": {
+            "width": "405px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "P",
+          "id": "journey-step",
+          "className": "eyebrow",
+          "text": "01 / 找到旅程的起点",
+          "rect": {
+            "x": 37,
+            "y": 365.65625,
+            "width": 405,
+            "height": 16.890625,
+            "top": 365.65625,
+            "right": 442,
+            "bottom": 382.546875,
+            "left": 37
+          },
+          "clientWidth": 405,
+          "scrollWidth": 405,
+          "style": {
+            "width": "405px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "10.56px",
+            "fontWeight": "600",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "H2",
+          "id": "search-label",
+          "className": "",
+          "text": "想从哪里开始探索？",
+          "rect": {
+            "x": 37,
+            "y": 387.546875,
+            "width": 405,
+            "height": 24,
+            "top": 387.546875,
+            "right": 442,
+            "bottom": 411.546875,
+            "left": 37
+          },
+          "clientWidth": 405,
+          "scrollWidth": 405,
+          "style": {
+            "width": "405px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Georgia, \"Noto Serif SC\", serif",
+            "fontSize": "20px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "FORM",
+          "id": "place-search",
+          "className": "",
+          "text": "想从哪里开始探索？寻找地点",
+          "rect": {
+            "x": 37,
+            "y": 426.546875,
+            "width": 405,
+            "height": 46,
+            "top": 426.546875,
+            "right": 442,
+            "bottom": 472.546875,
+            "left": 37
+          },
+          "clientWidth": 405,
+          "scrollWidth": 405,
+          "style": {
+            "width": "405px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "BUTTON",
+          "id": "search-submit",
+          "className": "primary",
+          "text": "寻找地点",
+          "rect": {
+            "x": 364,
+            "y": 426.546875,
+            "width": 78,
+            "height": 46,
+            "top": 426.546875,
+            "right": 442,
+            "bottom": 472.546875,
+            "left": 364
+          },
+          "clientWidth": 76,
+          "scrollWidth": 76,
+          "style": {
+            "width": "78px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "13.28px",
+            "fontWeight": "500",
+            "whiteSpace": "nowrap",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "DIV",
+          "id": "search-status",
+          "className": "",
+          "text": "",
+          "rect": {
+            "x": 37,
+            "y": 487.546875,
+            "width": 405,
+            "height": 0,
+            "top": 487.546875,
+            "right": 442,
+            "bottom": 487.546875,
+            "left": 37
+          },
+          "clientWidth": 405,
+          "scrollWidth": 405,
+          "style": {
+            "width": "405px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "12.8px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        }
+      ],
+      "home": {
+        "mode": "explore",
+        "center": {
+          "id": "crossing",
+          "latitude": 35.00376,
+          "longitude": 135.7599457,
+          "title": "四条乌丸路口",
+          "detail": "The north end of the crossing, beside Kyoto Mitsui Building.",
+          "image": "perspectives/arrive.jpg",
+          "source": "OpenStreetMap",
+          "anchor": "Mapped north sidewalk node 4600871814 on crossing way 465069430; OSM snapshot 2026-09-29.",
+          "kind": "poi",
+          "url": "https://www.openstreetmap.org/node/4600871814"
+        },
+        "localPreview": false,
+        "sceneState": "ready",
+        "lighting": "day",
+        "room": null,
+        "serviceReady": true,
+        "aiReady": false,
+        "serviceEndpoint": "http://127.0.0.1:45321",
+        "serviceTransport": "sse",
+        "connectionPending": false,
+        "invitationNeedsConfirmation": false,
+        "map": null,
+        "routes": [
+          {
+            "id": "shijo",
+            "stops": [
+              "crossing",
+              "mitsui",
+              "mufg"
+            ]
+          }
+        ]
+      },
+      "renderer": {
+        "status": "ready",
+        "loadMs": 604.5,
+        "startup": {
+          "assetsAndLightingMs": 424.5,
+          "compileMs": 27.200000002980232,
+          "firstRenderMs": 152.29999999701977,
+          "readyMs": 604.5
+        },
+        "renderedFrames": 2,
+        "updateFrames": 7,
+        "visible": true,
+        "render": {
+          "frame": 23,
+          "calls": 88,
+          "triangles": 134188,
+          "points": 0,
+          "lines": 0
+        },
+        "memory": {
+          "geometries": 112,
+          "textures": 20
+        },
+        "scene": {
+          "meshes": 111,
+          "triangles": 148966,
+          "architecturalMaterials": {
+            "materials": 25,
+            "filteredTextures": 14
+          },
+          "walkableSurfaces": 12,
+          "markerCount": 0,
+          "fadedGroups": [],
+          "actorPosition": [
+            23.8,
+            0.17000000178813934,
+            -2.1
+          ],
+          "actorHeading": -1.5707963267948966,
+          "streetBounds": [
+            -265,
+            -0.3400000035762787,
+            -205,
+            295,
+            35.03499984741211,
+            215
+          ]
+        },
+        "reducedMotion": false,
+        "lighting": {
+          "requestedMode": "day",
+          "mode": "day",
+          "phase": "ready",
+          "disposed": false,
+          "fallbackReason": null,
+          "rig": {
+            "status": "ready",
+            "sha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+            "expectedSha256": null,
+            "profile": "kyoto-street-materials-20261015"
+          },
+          "shadowBounds": {
+            "minX": -12,
+            "maxX": 76,
+            "minY": -38,
+            "maxY": 30
+          },
+          "environment": {
+            "status": "ready",
+            "file": "/lighting/environments/day-1k.hdr",
+            "sha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+            "expectedSha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+            "textureId": "bbcb5648-20ac-49c9-8adb-5e4f59bada94"
+          },
+          "environmentIntensity": 0.78,
+          "environmentRotationY": 1,
+          "exposure": 1.05,
+          "lights": [
+            {
+              "id": "hemisphere",
+              "type": "HemisphereLight",
+              "intensity": 0.24,
+              "color": "#d4e1ef",
+              "position": [
+                0,
+                1,
+                0
+              ],
+              "target": null,
+              "castShadow": false,
+              "mapSize": null,
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "sun",
+              "type": "DirectionalLight",
+              "intensity": 2.55,
+              "color": "#fff4e5",
+              "position": [
+                -24,
+                68,
+                45
+              ],
+              "target": [
+                30,
+                0,
+                5
+              ],
+              "castShadow": true,
+              "mapSize": [
+                2048,
+                2048
+              ],
+              "shadowNeedsUpdate": false
+            }
+          ],
+          "emissiveMeshes": [],
+          "cacheEntries": 1,
+          "pendingRequests": 0,
+          "staleRequests": 0,
+          "shadowUpdates": 1,
+          "memory": {
+            "geometries": 112,
+            "textures": 20
+          }
+        }
+      }
+    },
+    {
+      "stage": "zh-together-map-settled",
+      "passed": false,
+      "now": 7959.30000000447,
+      "innerWidth": 442,
+      "scrollX": 0,
+      "scrollY": 0,
+      "documentWidth": 442,
+      "documentClientWidth": 390,
+      "bodyWidth": 442,
+      "visualViewport": {
+        "width": 390,
+        "height": 844,
+        "scale": 1,
+        "offsetLeft": 0,
+        "pageLeft": 0
+      },
+      "fonts": {
+        "status": "loaded",
+        "kyoto": true,
+        "entries": [
+          {
+            "family": "Kyoto",
+            "status": "loaded"
+          }
+        ]
+      },
+      "controls": [
+        {
+          "tag": "HEADER",
+          "id": "",
+          "className": "home-header",
+          "text": "↗ TourGuideAI京都观察笔记EN中文",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 104,
+            "top": 0,
+            "right": 390,
+            "bottom": 104,
+            "left": 0
+          },
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "style": {
+            "width": "390px",
+            "minWidth": "0px",
+            "maxWidth": "1500px",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "DIV",
+          "id": "",
+          "className": "mode-switch",
+          "text": "探索一个地方一起规划旅行",
+          "rect": {
+            "x": 18,
+            "y": 264.65625,
+            "width": 354,
+            "height": 58,
+            "top": 264.65625,
+            "right": 372,
+            "bottom": 322.65625,
+            "left": 18
+          },
+          "clientWidth": 352,
+          "scrollWidth": 352,
+          "style": {
+            "width": "354px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "FORM",
+          "id": "place-search",
+          "className": "",
+          "text": "哪个国家或城市让你心动？寻找地点",
+          "rect": {
+            "x": 37,
+            "y": 426.546875,
+            "width": 405,
+            "height": 46,
+            "top": 426.546875,
+            "right": 442,
+            "bottom": 472.546875,
+            "left": 37
+          },
+          "clientWidth": 405,
+          "scrollWidth": 405,
+          "style": {
+            "width": "405px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "SECTION",
+          "id": "",
+          "className": "visual-column",
+          "text": "我们的旅行地图一起规划旅行日间夜间返回世界地图\n  按住 Ctrl 并滚动以缩放地图使用双指移动地图OpenFreeMap © OpenMapTiles Data from OpenStreetMap重置视角重新加载预览双指移动地图 · 双指缩放 · 轻触地点近距离查看\n  连线表示目的地顺序。预订前请核实交通、日期与",
+          "rect": {
+            "x": 18,
+            "y": 530.546875,
+            "width": 354,
+            "height": 569.078125,
+            "top": 530.546875,
+            "right": 372,
+            "bottom": 1099.625,
+            "left": 18
+          },
+          "clientWidth": 354,
+          "scrollWidth": 354,
+          "style": {
+            "width": "354px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "DIV",
+          "id": "",
+          "className": "preview-frame",
+          "text": "按住 Ctrl 并滚动以缩放地图使用双指移动地图OpenFreeMap © OpenMapTiles Data from OpenStreetMap重置视角重新加载预览双指移动地图 · 双指缩放 · 轻触地点近距离查看",
+          "rect": {
+            "x": 18,
+            "y": 600.546875,
+            "width": 354,
+            "height": 430,
+            "top": 600.546875,
+            "right": 372,
+            "bottom": 1030.546875,
+            "left": 18
+          },
+          "clientWidth": 352,
+          "scrollWidth": 352,
+          "style": {
+            "width": "354px",
+            "minWidth": "0px",
+            "maxWidth": "100%",
+            "position": "relative",
+            "display": "block",
+            "overflowX": "hidden",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "className": "",
+          "text": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "clientWidth": 0,
+          "scrollWidth": 0,
+          "style": {
+            "width": "100%",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "clip",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "DIV",
+          "id": "world-map",
+          "className": "maplibregl-map",
+          "text": "按住 Ctrl 并滚动以缩放地图使用双指移动地图OpenFreeMap © OpenMapTiles Data from OpenStreetMap",
+          "rect": {
+            "x": 19,
+            "y": 601.546875,
+            "width": 352,
+            "height": 428,
+            "top": 601.546875,
+            "right": 371,
+            "bottom": 1029.546875,
+            "left": 19
+          },
+          "clientWidth": 352,
+          "scrollWidth": 352,
+          "style": {
+            "width": "352px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "absolute",
+            "display": "block",
+            "overflowX": "hidden",
+            "boxSizing": "border-box",
+            "fontFamily": "\"Helvetica Neue\", Arial, Helvetica, sans-serif",
+            "fontSize": "12px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "ASIDE",
+          "id": "",
+          "className": "journey-sidebar",
+          "text": "你的漫步细看四条通1四条乌丸路口地点来源 ↗2京都三井大厦地点来源 ↗3三菱 UFJ · 京都支店地点来源 ↗在 Google Maps 打开步行路线 ↗复制地图链接复制地图链接\n  一起规划旅行邀请同行的人，收集每个人向往的地方，一起决定旅程的方向。你的名字给旅程取个名字创建共同旅程加入这次旅行\n  共同旅程复制邀请",
+          "rect": {
+            "x": 18,
+            "y": 1119.625,
+            "width": 354,
+            "height": 509.515625,
+            "top": 1119.625,
+            "right": 372,
+            "bottom": 1629.140625,
+            "left": 18
+          },
+          "clientWidth": 354,
+          "scrollWidth": 354,
+          "style": {
+            "width": "354px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        }
+      ],
+      "offenders": [
+        {
+          "tag": "DIV",
+          "id": "",
+          "className": "",
+          "text": "01 / 把每个人的向往放上地图哪个国家或城市让你心动？",
+          "rect": {
+            "x": 37,
+            "y": 365.65625,
+            "width": 405,
+            "height": 45.890625,
+            "top": 365.65625,
+            "right": 442,
+            "bottom": 411.546875,
+            "left": 37
+          },
+          "clientWidth": 405,
+          "scrollWidth": 405,
+          "style": {
+            "width": "405px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "P",
+          "id": "journey-step",
+          "className": "eyebrow",
+          "text": "01 / 把每个人的向往放上地图",
+          "rect": {
+            "x": 37,
+            "y": 365.65625,
+            "width": 405,
+            "height": 16.890625,
+            "top": 365.65625,
+            "right": 442,
+            "bottom": 382.546875,
+            "left": 37
+          },
+          "clientWidth": 405,
+          "scrollWidth": 405,
+          "style": {
+            "width": "405px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "10.56px",
+            "fontWeight": "600",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "H2",
+          "id": "search-label",
+          "className": "",
+          "text": "哪个国家或城市让你心动？",
+          "rect": {
+            "x": 37,
+            "y": 387.546875,
+            "width": 405,
+            "height": 24,
+            "top": 387.546875,
+            "right": 442,
+            "bottom": 411.546875,
+            "left": 37
+          },
+          "clientWidth": 405,
+          "scrollWidth": 405,
+          "style": {
+            "width": "405px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Georgia, \"Noto Serif SC\", serif",
+            "fontSize": "20px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "FORM",
+          "id": "place-search",
+          "className": "",
+          "text": "哪个国家或城市让你心动？寻找地点",
+          "rect": {
+            "x": 37,
+            "y": 426.546875,
+            "width": 405,
+            "height": 46,
+            "top": 426.546875,
+            "right": 442,
+            "bottom": 472.546875,
+            "left": 37
+          },
+          "clientWidth": 405,
+          "scrollWidth": 405,
+          "style": {
+            "width": "405px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "BUTTON",
+          "id": "search-submit",
+          "className": "primary",
+          "text": "寻找地点",
+          "rect": {
+            "x": 364,
+            "y": 426.546875,
+            "width": 78,
+            "height": 46,
+            "top": 426.546875,
+            "right": 442,
+            "bottom": 472.546875,
+            "left": 364
+          },
+          "clientWidth": 76,
+          "scrollWidth": 76,
+          "style": {
+            "width": "78px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "13.28px",
+            "fontWeight": "500",
+            "whiteSpace": "nowrap",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "DIV",
+          "id": "search-status",
+          "className": "",
+          "text": "",
+          "rect": {
+            "x": 37,
+            "y": 487.546875,
+            "width": 405,
+            "height": 0,
+            "top": 487.546875,
+            "right": 442,
+            "bottom": 487.546875,
+            "left": 37
+          },
+          "clientWidth": 405,
+          "scrollWidth": 405,
+          "style": {
+            "width": "405px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "12.8px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        }
+      ],
+      "home": {
+        "mode": "together",
+        "center": {
+          "id": "crossing",
+          "latitude": 35.00376,
+          "longitude": 135.7599457,
+          "title": "四条乌丸路口",
+          "detail": "The north end of the crossing, beside Kyoto Mitsui Building.",
+          "image": "perspectives/arrive.jpg",
+          "source": "OpenStreetMap",
+          "anchor": "Mapped north sidewalk node 4600871814 on crossing way 465069430; OSM snapshot 2026-09-29.",
+          "kind": "poi",
+          "url": "https://www.openstreetmap.org/node/4600871814"
+        },
+        "localPreview": false,
+        "sceneState": "ready",
+        "lighting": "day",
+        "room": null,
+        "serviceReady": true,
+        "aiReady": false,
+        "serviceEndpoint": "http://127.0.0.1:45321",
+        "serviceTransport": "sse",
+        "connectionPending": false,
+        "invitationNeedsConfirmation": false,
+        "map": {
+          "ready": true,
+          "failed": false,
+          "center": [
+            35,
+            24.00000000000003
+          ],
+          "zoom": 1.5,
+          "pitch": 0,
+          "locale": "zh",
+          "readyMs": 3530.2999999970198,
+          "renderedFrames": 85,
+          "cameraTransitions": 1,
+          "requestedView": "world",
+          "places": [],
+          "routes": [],
+          "buildingLayer": "fill-extrusion",
+          "renderedBuildings": 0
+        },
+        "routes": [
+          {
+            "id": "shijo",
+            "stops": [
+              "crossing",
+              "mitsui",
+              "mufg"
+            ]
+          }
+        ]
+      },
+      "renderer": {
+        "status": "ready",
+        "loadMs": 604.5,
+        "startup": {
+          "assetsAndLightingMs": 424.5,
+          "compileMs": 27.200000002980232,
+          "firstRenderMs": 152.29999999701977,
+          "readyMs": 604.5
+        },
+        "renderedFrames": 3,
+        "updateFrames": 13,
+        "visible": false,
+        "render": {
+          "frame": 24,
+          "calls": 88,
+          "triangles": 134188,
+          "points": 0,
+          "lines": 0
+        },
+        "memory": {
+          "geometries": 112,
+          "textures": 20
+        },
+        "scene": {
+          "meshes": 111,
+          "triangles": 148966,
+          "architecturalMaterials": {
+            "materials": 25,
+            "filteredTextures": 14
+          },
+          "walkableSurfaces": 12,
+          "markerCount": 0,
+          "fadedGroups": [],
+          "actorPosition": [
+            23.8,
+            0.17000000178813934,
+            -2.1
+          ],
+          "actorHeading": -1.5707963267948966,
+          "streetBounds": [
+            -265,
+            -0.3400000035762787,
+            -205,
+            295,
+            35.03499984741211,
+            215
+          ]
+        },
+        "reducedMotion": false,
+        "lighting": {
+          "requestedMode": "day",
+          "mode": "day",
+          "phase": "ready",
+          "disposed": false,
+          "fallbackReason": null,
+          "rig": {
+            "status": "ready",
+            "sha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+            "expectedSha256": null,
+            "profile": "kyoto-street-materials-20261015"
+          },
+          "shadowBounds": {
+            "minX": -12,
+            "maxX": 76,
+            "minY": -38,
+            "maxY": 30
+          },
+          "environment": {
+            "status": "ready",
+            "file": "/lighting/environments/day-1k.hdr",
+            "sha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+            "expectedSha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+            "textureId": "bbcb5648-20ac-49c9-8adb-5e4f59bada94"
+          },
+          "environmentIntensity": 0.78,
+          "environmentRotationY": 1,
+          "exposure": 1.05,
+          "lights": [
+            {
+              "id": "hemisphere",
+              "type": "HemisphereLight",
+              "intensity": 0.24,
+              "color": "#d4e1ef",
+              "position": [
+                0,
+                1,
+                0
+              ],
+              "target": null,
+              "castShadow": false,
+              "mapSize": null,
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "sun",
+              "type": "DirectionalLight",
+              "intensity": 2.55,
+              "color": "#fff4e5",
+              "position": [
+                -24,
+                68,
+                45
+              ],
+              "target": [
+                30,
+                0,
+                5
+              ],
+              "castShadow": true,
+              "mapSize": [
+                2048,
+                2048
+              ],
+              "shadowNeedsUpdate": false
+            }
+          ],
+          "emissiveMeshes": [],
+          "cacheEntries": 1,
+          "pendingRequests": 0,
+          "staleRequests": 0,
+          "shadowUpdates": 1,
+          "memory": {
+            "geometries": 112,
+            "textures": 20
+          }
+        }
+      }
+    },
+    {
+      "stage": "en-together",
+      "passed": false,
+      "now": 8022.4000000059605,
+      "innerWidth": 463,
+      "scrollX": 0,
+      "scrollY": 0,
+      "documentWidth": 463,
+      "documentClientWidth": 390,
+      "bodyWidth": 463,
+      "visualViewport": {
+        "width": 390,
+        "height": 844,
+        "scale": 1,
+        "offsetLeft": 0,
+        "pageLeft": 0
+      },
+      "fonts": {
+        "status": "loaded",
+        "kyoto": true,
+        "entries": [
+          {
+            "family": "Kyoto",
+            "status": "loaded"
+          }
+        ]
+      },
+      "controls": [
+        {
+          "tag": "HEADER",
+          "id": "",
+          "className": "home-header",
+          "text": "↗ TourGuideAIKyoto perspectivesEN中文",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 104,
+            "top": 0,
+            "right": 390,
+            "bottom": 104,
+            "left": 0
+          },
+          "clientWidth": 390,
+          "scrollWidth": 390,
+          "style": {
+            "width": "390px",
+            "minWidth": "0px",
+            "maxWidth": "1500px",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "DIV",
+          "id": "",
+          "className": "mode-switch",
+          "text": "Explore a placePlan together",
+          "rect": {
+            "x": 18,
+            "y": 308.703125,
+            "width": 354,
+            "height": 58,
+            "top": 308.703125,
+            "right": 372,
+            "bottom": 366.703125,
+            "left": 18
+          },
+          "clientWidth": 352,
+          "scrollWidth": 352,
+          "style": {
+            "width": "354px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "FORM",
+          "id": "place-search",
+          "className": "",
+          "text": "Which country or city is calling you?Find a place",
+          "rect": {
+            "x": 37,
+            "y": 470.59375,
+            "width": 426,
+            "height": 46,
+            "top": 470.59375,
+            "right": 463,
+            "bottom": 516.59375,
+            "left": 37
+          },
+          "clientWidth": 426,
+          "scrollWidth": 426,
+          "style": {
+            "width": "426px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "SECTION",
+          "id": "",
+          "className": "visual-column",
+          "text": "YOUR SHARED WORLDPlan togetherDaylightNightBack to world\n  Use Ctrl + scroll to zoom the mapUse two fingers to move the mapOpenFreeMap © OpenMapTiles Data from ",
+          "rect": {
+            "x": 18,
+            "y": 574.59375,
+            "width": 354,
+            "height": 585.15625,
+            "top": 574.59375,
+            "right": 372,
+            "bottom": 1159.75,
+            "left": 18
+          },
+          "clientWidth": 354,
+          "scrollWidth": 354,
+          "style": {
+            "width": "354px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "DIV",
+          "id": "",
+          "className": "preview-frame",
+          "text": "Use Ctrl + scroll to zoom the mapUse two fingers to move the mapOpenFreeMap © OpenMapTiles Data from OpenStreetMapReset viewRetry previewMove with two fingers ·",
+          "rect": {
+            "x": 18,
+            "y": 644.59375,
+            "width": 354,
+            "height": 430,
+            "top": 644.59375,
+            "right": 372,
+            "bottom": 1074.59375,
+            "left": 18
+          },
+          "clientWidth": 352,
+          "scrollWidth": 352,
+          "style": {
+            "width": "354px",
+            "minWidth": "0px",
+            "maxWidth": "100%",
+            "position": "relative",
+            "display": "block",
+            "overflowX": "hidden",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "className": "",
+          "text": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "clientWidth": 0,
+          "scrollWidth": 0,
+          "style": {
+            "width": "100%",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "clip",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "DIV",
+          "id": "world-map",
+          "className": "maplibregl-map",
+          "text": "Use Ctrl + scroll to zoom the mapUse two fingers to move the mapOpenFreeMap © OpenMapTiles Data from OpenStreetMap",
+          "rect": {
+            "x": 19,
+            "y": 645.59375,
+            "width": 352,
+            "height": 428,
+            "top": 645.59375,
+            "right": 371,
+            "bottom": 1073.59375,
+            "left": 19
+          },
+          "clientWidth": 352,
+          "scrollWidth": 352,
+          "style": {
+            "width": "352px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "absolute",
+            "display": "block",
+            "overflowX": "hidden",
+            "boxSizing": "border-box",
+            "fontFamily": "\"Helvetica Neue\", Arial, Helvetica, sans-serif",
+            "fontSize": "12px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "ASIDE",
+          "id": "",
+          "className": "journey-sidebar",
+          "text": "YOUR WALKA closer look at Shijō1Shijō–Karasuma crossingPlace source ↗2Kyoto Mitsui BuildingPlace source ↗3MUFG · Kyoto BranchPlace source ↗Open walk in Google M",
+          "rect": {
+            "x": 18,
+            "y": 1179.75,
+            "width": 354,
+            "height": 509.515625,
+            "top": 1179.75,
+            "right": 372,
+            "bottom": 1689.265625,
+            "left": 18
+          },
+          "clientWidth": 354,
+          "scrollWidth": 354,
+          "style": {
+            "width": "354px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        }
+      ],
+      "offenders": [
+        {
+          "tag": "DIV",
+          "id": "",
+          "className": "",
+          "text": "01 / BRING YOUR DREAMS TO THE MAPWhich country or city is calling you?",
+          "rect": {
+            "x": 37,
+            "y": 409.703125,
+            "width": 426,
+            "height": 45.890625,
+            "top": 409.703125,
+            "right": 463,
+            "bottom": 455.59375,
+            "left": 37
+          },
+          "clientWidth": 426,
+          "scrollWidth": 426,
+          "style": {
+            "width": "426px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "P",
+          "id": "journey-step",
+          "className": "eyebrow",
+          "text": "01 / BRING YOUR DREAMS TO THE MAP",
+          "rect": {
+            "x": 37,
+            "y": 409.703125,
+            "width": 426,
+            "height": 16.890625,
+            "top": 409.703125,
+            "right": 463,
+            "bottom": 426.59375,
+            "left": 37
+          },
+          "clientWidth": 426,
+          "scrollWidth": 426,
+          "style": {
+            "width": "426px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "10.56px",
+            "fontWeight": "600",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "H2",
+          "id": "search-label",
+          "className": "",
+          "text": "Which country or city is calling you?",
+          "rect": {
+            "x": 37,
+            "y": 431.59375,
+            "width": 426,
+            "height": 24,
+            "top": 431.59375,
+            "right": 463,
+            "bottom": 455.59375,
+            "left": 37
+          },
+          "clientWidth": 426,
+          "scrollWidth": 426,
+          "style": {
+            "width": "426px",
+            "minWidth": "0px",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Georgia, \"Noto Serif SC\", serif",
+            "fontSize": "20px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "FORM",
+          "id": "place-search",
+          "className": "",
+          "text": "Which country or city is calling you?Find a place",
+          "rect": {
+            "x": 37,
+            "y": 470.59375,
+            "width": 426,
+            "height": 46,
+            "top": 470.59375,
+            "right": 463,
+            "bottom": 516.59375,
+            "left": 37
+          },
+          "clientWidth": 426,
+          "scrollWidth": 426,
+          "style": {
+            "width": "426px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "BUTTON",
+          "id": "search-submit",
+          "className": "primary",
+          "text": "Find a place",
+          "rect": {
+            "x": 364,
+            "y": 470.59375,
+            "width": 99,
+            "height": 46,
+            "top": 470.59375,
+            "right": 463,
+            "bottom": 516.59375,
+            "left": 364
+          },
+          "clientWidth": 97,
+          "scrollWidth": 97,
+          "style": {
+            "width": "99px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "flex",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "13.28px",
+            "fontWeight": "500",
+            "whiteSpace": "nowrap",
+            "overflowWrap": "normal"
+          }
+        },
+        {
+          "tag": "DIV",
+          "id": "search-status",
+          "className": "",
+          "text": "",
+          "rect": {
+            "x": 37,
+            "y": 531.59375,
+            "width": 426,
+            "height": 0,
+            "top": 531.59375,
+            "right": 463,
+            "bottom": 531.59375,
+            "left": 37
+          },
+          "clientWidth": 426,
+          "scrollWidth": 426,
+          "style": {
+            "width": "426px",
+            "minWidth": "auto",
+            "maxWidth": "none",
+            "position": "static",
+            "display": "block",
+            "overflowX": "visible",
+            "boxSizing": "border-box",
+            "fontFamily": "Inter, Kyoto, \"Noto Sans SC\", system-ui, sans-serif",
+            "fontSize": "12.8px",
+            "fontWeight": "400",
+            "whiteSpace": "normal",
+            "overflowWrap": "normal"
+          }
+        }
+      ],
+      "home": {
+        "mode": "together",
+        "center": {
+          "id": "crossing",
+          "latitude": 35.00376,
+          "longitude": 135.7599457,
+          "title": "Shijō–Karasuma crossing",
+          "detail": "The north end of the crossing, beside Kyoto Mitsui Building.",
+          "image": "perspectives/arrive.jpg",
+          "source": "OpenStreetMap",
+          "anchor": "Mapped north sidewalk node 4600871814 on crossing way 465069430; OSM snapshot 2026-09-29.",
+          "kind": "poi",
+          "url": "https://www.openstreetmap.org/node/4600871814"
+        },
+        "localPreview": false,
+        "sceneState": "ready",
+        "lighting": "day",
+        "room": null,
+        "serviceReady": true,
+        "aiReady": false,
+        "serviceEndpoint": "http://127.0.0.1:45321",
+        "serviceTransport": "sse",
+        "connectionPending": false,
+        "invitationNeedsConfirmation": false,
+        "map": {
+          "ready": true,
+          "failed": false,
+          "center": [
+            35,
+            24.00000000000003
+          ],
+          "zoom": 1.5,
+          "pitch": 0,
+          "locale": "en",
+          "readyMs": 3530.2999999970198,
+          "renderedFrames": 85,
+          "cameraTransitions": 1,
+          "requestedView": "world",
+          "places": [],
+          "routes": [],
+          "buildingLayer": "fill-extrusion",
+          "renderedBuildings": 0
+        },
+        "routes": [
+          {
+            "id": "shijo",
+            "stops": [
+              "crossing",
+              "mitsui",
+              "mufg"
+            ]
+          }
+        ]
+      },
+      "renderer": {
+        "status": "ready",
+        "loadMs": 604.5,
+        "startup": {
+          "assetsAndLightingMs": 424.5,
+          "compileMs": 27.200000002980232,
+          "firstRenderMs": 152.29999999701977,
+          "readyMs": 604.5
+        },
+        "renderedFrames": 3,
+        "updateFrames": 13,
+        "visible": false,
+        "render": {
+          "frame": 24,
+          "calls": 88,
+          "triangles": 134188,
+          "points": 0,
+          "lines": 0
+        },
+        "memory": {
+          "geometries": 112,
+          "textures": 20
+        },
+        "scene": {
+          "meshes": 111,
+          "triangles": 148966,
+          "architecturalMaterials": {
+            "materials": 25,
+            "filteredTextures": 14
+          },
+          "walkableSurfaces": 12,
+          "markerCount": 0,
+          "fadedGroups": [],
+          "actorPosition": [
+            23.8,
+            0.17000000178813934,
+            -2.1
+          ],
+          "actorHeading": -1.5707963267948966,
+          "streetBounds": [
+            -265,
+            -0.3400000035762787,
+            -205,
+            295,
+            35.03499984741211,
+            215
+          ]
+        },
+        "reducedMotion": false,
+        "lighting": {
+          "requestedMode": "day",
+          "mode": "day",
+          "phase": "ready",
+          "disposed": false,
+          "fallbackReason": null,
+          "rig": {
+            "status": "ready",
+            "sha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+            "expectedSha256": null,
+            "profile": "kyoto-street-materials-20261015"
+          },
+          "shadowBounds": {
+            "minX": -12,
+            "maxX": 76,
+            "minY": -38,
+            "maxY": 30
+          },
+          "environment": {
+            "status": "ready",
+            "file": "/lighting/environments/day-1k.hdr",
+            "sha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+            "expectedSha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+            "textureId": "bbcb5648-20ac-49c9-8adb-5e4f59bada94"
+          },
+          "environmentIntensity": 0.78,
+          "environmentRotationY": 1,
+          "exposure": 1.05,
+          "lights": [
+            {
+              "id": "hemisphere",
+              "type": "HemisphereLight",
+              "intensity": 0.24,
+              "color": "#d4e1ef",
+              "position": [
+                0,
+                1,
+                0
+              ],
+              "target": null,
+              "castShadow": false,
+              "mapSize": null,
+              "shadowNeedsUpdate": false
+            },
+            {
+              "id": "sun",
+              "type": "DirectionalLight",
+              "intensity": 2.55,
+              "color": "#fff4e5",
+              "position": [
+                -24,
+                68,
+                45
+              ],
+              "target": [
+                30,
+                0,
+                5
+              ],
+              "castShadow": true,
+              "mapSize": [
+                2048,
+                2048
+              ],
+              "shadowNeedsUpdate": false
+            }
+          ],
+          "emissiveMeshes": [],
+          "cacheEntries": 1,
+          "pendingRequests": 0,
+          "staleRequests": 0,
+          "shadowUpdates": 1,
+          "memory": {
+            "geometries": 112,
+            "textures": 20
+          }
+        }
+      }
+    }
+  ],
+  "driverSha256": "115c3d2d32b04dc87ff1d6cc670fceb3ac4331cbf3c4dcc381f775bf78258d14",
+  "files": [
+    {
+      "path": "/assets/THIRD-PARTY-NOTICES-BAyKaB7a.js",
+      "bytes": 15881,
+      "sha256": "6a8be19b1ec4b1f59be82d31d65f3909958ee2c92a62d75df29b3c3e56be2fae"
+    },
+    {
+      "path": "/assets/THIRD-PARTY-NOTICES-BAyKaB7a.js.map",
+      "bytes": 144,
+      "sha256": "d412713bf677d9a484d7157b881c125bad92e2968ebaa1d666fe383dfe038fa8"
+    },
+    {
+      "path": "/assets/comparison-Cuz-jgK3.js",
+      "bytes": 18016,
+      "sha256": "2a27b64da5c46d86b502a7bbc9359a714c62c6b6a3c00e826f977955ba38de69"
+    },
+    {
+      "path": "/assets/comparison-Cuz-jgK3.js.map",
+      "bytes": 47672,
+      "sha256": "be159f8382e0d8a55be9fc07a4d1a26b51cebfedf48ca907bc4f47e9f2ef474d"
+    },
+    {
+      "path": "/assets/comparison-DRtoapUx.css",
+      "bytes": 4604,
+      "sha256": "e8536c75e04ae128dc18c6dedd055c3ec0e333356014eaf275b9b25880e0ecaa"
+    },
+    {
+      "path": "/assets/create-game-BEP8gAiK.js",
+      "bytes": 41100,
+      "sha256": "b7937b896f18516f716824ba62cebf53a23082bc6d9cdba65e74769c3a8b4da5"
+    },
+    {
+      "path": "/assets/create-game-BEP8gAiK.js.map",
+      "bytes": 141661,
+      "sha256": "8e7b22e8fb41fa9548fc8f7d3e7d4b9b43169e0b55d3d6535e77ecd4585960ad"
+    },
+    {
+      "path": "/assets/i18n-DkfUIDNq.js",
+      "bytes": 21204,
+      "sha256": "4d7f2d8c8c1bd553fc68afe5dc2a70bde91ef6c06e3e0a259f700b50768ed8e7"
+    },
+    {
+      "path": "/assets/i18n-DkfUIDNq.js.map",
+      "bytes": 30864,
+      "sha256": "09e16c0a1a0622864c428a0c49cb6dad88e1e31feb90244e096b446abc720ed2"
+    },
+    {
+      "path": "/assets/index-CvexfL0g.css",
+      "bytes": 14254,
+      "sha256": "763496c53e6b3e82a8e4ce114bb64b1864943ac1f2df1375c678c5c71d8358a4"
+    },
+    {
+      "path": "/assets/index-DeUcnjho.js",
+      "bytes": 59977,
+      "sha256": "f27d0ce0fcfd13657e9a839f4f6f7b5b8eac0f2458df68badddd0def4410ed6d"
+    },
+    {
+      "path": "/assets/index-DeUcnjho.js.map",
+      "bytes": 160995,
+      "sha256": "614b68a508fb5037501d3ef15d1fd98a66b3f488fbd9a82c7bb4651948011e7a"
+    },
+    {
+      "path": "/assets/journey-DJ5KDZ-L.js",
+      "bytes": 1885,
+      "sha256": "edf52ae861bdd2c7b46bf1e8d0ae1308b5b2d01008b4e9862a13a999abb541c4"
+    },
+    {
+      "path": "/assets/journey-DJ5KDZ-L.js.map",
+      "bytes": 4431,
+      "sha256": "762352bac7144f8f2a8d949b284b729fed0f3667dae32b3bab3af7c4edd7bcdf"
+    },
+    {
+      "path": "/assets/kyoto-B8LsYbyV.js",
+      "bytes": 12986,
+      "sha256": "2e85113c56e5f03a8abc2be2f4029f5dd8545aa42da7ea8307bb777ba2ee4959"
+    },
+    {
+      "path": "/assets/kyoto-B8LsYbyV.js.map",
+      "bytes": 20396,
+      "sha256": "4a6a7301df009cc0fe0c58c6c4e73533622d08f367315815f08dbc00eef83f59"
+    },
+    {
+      "path": "/assets/kyoto-sans-BwDDdMo9.woff",
+      "bytes": 239960,
+      "sha256": "26df61e42f2efcbd9411f0f5f6cf8ec279514f75974cb231f45524de00d322da"
+    },
+    {
+      "path": "/assets/lighting-lhioegDu.js",
+      "bytes": 630664,
+      "sha256": "92163f28208ec423e139d02304157b8a79cdf19ca6e3c5b980d93fe8ce420650"
+    },
+    {
+      "path": "/assets/lighting-lhioegDu.js.map",
+      "bytes": 3178157,
+      "sha256": "fa4589ae6628cfc675968a9cb43d787085aab598f3df73e10b0ce18a8546b3fa"
+    },
+    {
+      "path": "/assets/live-view-3c0rr5sT.js",
+      "bytes": 1669,
+      "sha256": "875e4a18047c8e7afc0fde2f01d72aab23d3e778898cd648d21452c79109458b"
+    },
+    {
+      "path": "/assets/live-view-3c0rr5sT.js.map",
+      "bytes": 4996,
+      "sha256": "b97a3ef89bde3250ec3d24987dd6b4f8f1ee39ccb299ba20c3eea720819f15d1"
+    },
+    {
+      "path": "/assets/maplibre-gl-worker-Bh1S--WG.js",
+      "bytes": 508021,
+      "sha256": "12b615e3bb01919718abd39a2784f11b082c29666843ad62d8b95928f35bdd9d"
+    },
+    {
+      "path": "/assets/maplibre-gl-worker-Bh1S--WG.js.map",
+      "bytes": 1116625,
+      "sha256": "8b37f8e5348d18d2787ebed5a89b44678d853a93de773818e504a189029a2028"
+    },
+    {
+      "path": "/assets/maps-2TGVCB_Q.js",
+      "bytes": 2359,
+      "sha256": "860607252c572fb37867dcab832f9d174df5dca36bfe6d7082837641ea91fc49"
+    },
+    {
+      "path": "/assets/maps-2TGVCB_Q.js.map",
+      "bytes": 7326,
+      "sha256": "4b4d5e9f4d576aa329fbd8f8ee1f8febcff89fe988bd543fca60864627938e59"
+    },
+    {
+      "path": "/assets/modulepreload-polyfill-P2Xu9kJm.js",
+      "bytes": 670,
+      "sha256": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f"
+    },
+    {
+      "path": "/assets/perspective-C4aS1dlJ.js",
+      "bytes": 42583,
+      "sha256": "05fe1f2f9e5e0f369d26b91db42db9f73e17686858495efb5de91bc1b4c85dd9"
+    },
+    {
+      "path": "/assets/perspective-C4aS1dlJ.js.map",
+      "bytes": 85548,
+      "sha256": "4c659ad0405ba7daa121f89749727e1f889c91a8e87714abe7bacfe5c53f844b"
+    },
+    {
+      "path": "/assets/perspective-DYdayzYg.css",
+      "bytes": 15021,
+      "sha256": "7a1f3c5c0963db6d87e1a9a06cb19c92966af7277a9014c09f1d89a905872dff"
+    },
+    {
+      "path": "/assets/places-_F3XEqgH.js",
+      "bytes": 2214,
+      "sha256": "29fa0f382345a9f0135e733198bcc2f78240ba7717356d4884fcae34728a5cce"
+    },
+    {
+      "path": "/assets/places-_F3XEqgH.js.map",
+      "bytes": 4032,
+      "sha256": "6b7d0cd9227772488dba1d15f873e6df60af36d5646708af7fb36907161913bf"
+    },
+    {
+      "path": "/assets/preload-helper-BaNbYf_w.js",
+      "bytes": 1398,
+      "sha256": "49e31bba082196935782ac14bbedbc2a8e7c4229f918bc086ab5dd08ca015034"
+    },
+    {
+      "path": "/assets/share-CcT-uzzQ.js",
+      "bytes": 5447,
+      "sha256": "809699ce186ac100d10e0e67d3611881ded0071f5f843e177b7e0f009d9ab2a5"
+    },
+    {
+      "path": "/assets/share-CcT-uzzQ.js.map",
+      "bytes": 15788,
+      "sha256": "16e8fe186929324a9314527bafcabde34a70bc488f8b9dadcec22a5b2c328ef3"
+    },
+    {
+      "path": "/assets/share-D64L0a38.css",
+      "bytes": 2442,
+      "sha256": "ff1c0b4d152f45f8f9d30698f91481300468083f16881a8b8ea7a2b9878005ff"
+    },
+    {
+      "path": "/assets/state-DwlyKbZV.js",
+      "bytes": 1108,
+      "sha256": "31fc7fbe10efbacc5e2bd888ba4f9cfc3f39db939fe9e948b9db14e95648ca68"
+    },
+    {
+      "path": "/assets/state-DwlyKbZV.js.map",
+      "bytes": 3662,
+      "sha256": "d3958d9c7f6d6e50fa4200bd73f491c6a6d04639fa845e4065f3e438b531b942"
+    },
+    {
+      "path": "/assets/travel-DVyvPLCM.css",
+      "bytes": 5908,
+      "sha256": "52d31e6f608acbe57bde5bbc3628458d18f8a9074cfdc9840b64544b3ccc464a"
+    },
+    {
+      "path": "/assets/travel-N1tolctY.js",
+      "bytes": 22648,
+      "sha256": "2170c3b64fe2207df9264ca2f89b83ff80291ead06a163b7627012f3114fadaf"
+    },
+    {
+      "path": "/assets/travel-N1tolctY.js.map",
+      "bytes": 52265,
+      "sha256": "781f301d527dd696de9c2823a624e6650c3b09e56ef414c45f9a3d6eed153f1e"
+    },
+    {
+      "path": "/assets/view-state-Cajz5ATi.js",
+      "bytes": 1731,
+      "sha256": "a52f42eada1568efe3a1b1110d62f51cb1f986d07643ca9a2b13bae1df7ee900"
+    },
+    {
+      "path": "/assets/view-state-Cajz5ATi.js.map",
+      "bytes": 6603,
+      "sha256": "2c54704b33c0814d805507e49be3979c949500444578cc399df8a8437ea866b5"
+    },
+    {
+      "path": "/assets/walk-BE1_f6BW.js",
+      "bytes": 24723,
+      "sha256": "ff4bfcdc89ec3568d97afbbd3e30b1b55e4fb02664481ff35cf78180061e4b9e"
+    },
+    {
+      "path": "/assets/walk-BE1_f6BW.js.map",
+      "bytes": 56589,
+      "sha256": "077fd293138e88742686ea82fa5e91976bd6201fb91f1862f8ac17fd51fbba58"
+    },
+    {
+      "path": "/assets/walk-BMHxqJ-B.css",
+      "bytes": 18360,
+      "sha256": "ba9f804fab7f3fbc636338f0d7d8fc897f46710bcd353ceb8028a2c1b3b0f917"
+    },
+    {
+      "path": "/assets/world-map-DBE96hFo.css",
+      "bytes": 82935,
+      "sha256": "7d70296c647f8ae4b9b9cc0ed943d5bf81cedef828a348f81c5e89d3ed128856"
+    },
+    {
+      "path": "/assets/world-map-EEzUQmF0.js",
+      "bytes": 1053715,
+      "sha256": "fd2dbf383d137c7d703c19239422db7a590de2812ade1f323e2aa87fdfebc732"
+    },
+    {
+      "path": "/assets/world-map-EEzUQmF0.js.map",
+      "bytes": 2218209,
+      "sha256": "b02d930b54d02ec50c8726970a964c80059964cd42602c23c0ebf57a7fd1262b"
+    },
+    {
+      "path": "/comparison.html",
+      "bytes": 1235,
+      "sha256": "5b37bd81830d7fb82d1e4eaeda2539271f5f1c8afb22aabf7e906194691effb9"
+    },
+    {
+      "path": "/content-evidence/facade-references.json",
+      "bytes": 5056,
+      "sha256": "2633e98dd95ba7160bb4c54acde94a8ed4de5f1f7b335904abf79da41ab0d8e2"
+    },
+    {
+      "path": "/content-evidence/geometry.json",
+      "bytes": 12083,
+      "sha256": "e27f5fa137100ac4786c341cf13cc84acc6a94b71120178871320955984670b7"
+    },
+    {
+      "path": "/content-evidence/operator-facts.json",
+      "bytes": 4911,
+      "sha256": "58d5ff4a3c6b722609a39e45e74df132313066feabb442afc575564d659afcc0"
+    },
+    {
+      "path": "/content-evidence/street-context.json",
+      "bytes": 39636,
+      "sha256": "f222a6d2346317d8fdaeb55bd81d743ddf565589dc9931a2abfb922907a81f37"
+    },
+    {
+      "path": "/credits.html",
+      "bytes": 23637,
+      "sha256": "46231e6fe05170f4404549b58619b6690b4ed75f18fd6ec96e933a4deeeb6fdf"
+    },
+    {
+      "path": "/index.html",
+      "bytes": 1277,
+      "sha256": "7a8f15733a5b2f2514df87e558fbbf85d8afba8e8bc898e24870cfe3312a8f2d"
+    },
+    {
+      "path": "/journey.html",
+      "bytes": 740,
+      "sha256": "d7c7c7b2ada4b536e444ee024b832381fc02fb442d7c68d99a8d87988d910922"
+    },
+    {
+      "path": "/licenses/eventsource-parser.txt",
+      "bytes": 1098,
+      "sha256": "835eb611a23301b27115ca1be9f754c876e643ceb7fe63049c6b50609a1cafeb"
+    },
+    {
+      "path": "/licenses/maplibre-gl.txt",
+      "bytes": 5984,
+      "sha256": "ee5fc05a0677eaf69601d2c7db0d9ecd6cc27c3abc1d0733bc9ed34707cf8ef2"
+    },
+    {
+      "path": "/lighting/environments/day-1k.hdr",
+      "bytes": 1724368,
+      "sha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2"
+    },
+    {
+      "path": "/lighting/environments/night-1k.hdr",
+      "bytes": 1655510,
+      "sha256": "a690048dcecabf5ed1ad773f7abdec7cce7b1fea4d89b17f054a18f3e0fa2919"
+    },
+    {
+      "path": "/lighting/resources.json",
+      "bytes": 10825,
+      "sha256": "d8015c1d2d837ad27fb4c4851acaceb96fe9901b45f37b9a6d13331149c4822b"
+    },
+    {
+      "path": "/lighting/rig.json",
+      "bytes": 20983,
+      "sha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766"
+    },
+    {
+      "path": "/models/provenance.json",
+      "bytes": 10306,
+      "sha256": "7354dd88601d9be7b7b13f0e2688721b893f9890c7865ff6decb645d59bfc467"
+    },
+    {
+      "path": "/models/shijo-block.glb",
+      "bytes": 14267180,
+      "sha256": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c"
+    },
+    {
+      "path": "/models/traveller.glb",
+      "bytes": 35556,
+      "sha256": "ee5307da94f4d1994e5323a0d31d6f79a255c9f2f10459e0a0e6434fb051fdb1"
+    },
+    {
+      "path": "/perspective.html",
+      "bytes": 1206,
+      "sha256": "1dc10a3e87ba76d63036d73716f41596da0ff50c43286754065653a60cc399eb"
+    },
+    {
+      "path": "/perspectives/arrive.jpg",
+      "bytes": 221746,
+      "sha256": "5b88a84cd1cdb0297c552f8f5ee0f095d3e54fb4a0cc8b8b9f0afd1c54db3c07"
+    },
+    {
+      "path": "/perspectives/daiya-rhythm.jpg",
+      "bytes": 266874,
+      "sha256": "231d68794a8eca8f85dfff124a0f233ab9a6d78859d13c49845320f005adfacb"
+    },
+    {
+      "path": "/perspectives/manifest.json",
+      "bytes": 10956,
+      "sha256": "54563b7bf87afd3a8e5d3521aed12ddd64f72c58dc4d883509706aeb7b7541cc"
+    },
+    {
+      "path": "/perspectives/mitsui-rhythm.jpg",
+      "bytes": 341401,
+      "sha256": "0904230ef4cd0eaf28ae5a092bda9ae03bc01b57d93b5b7db432632393d3e351"
+    },
+    {
+      "path": "/render-study/daiya-frontage-day.png",
+      "bytes": 476341,
+      "sha256": "e51336a9e6e1484330009c413b642773e88603d920525a5d4d9b9dc1b4da1b55"
+    },
+    {
+      "path": "/render-study/daiya-frontage-night.png",
+      "bytes": 644937,
+      "sha256": "7df4ed4f5966141278d27de376201105b7186bdc7eba8ee1f9fe82f3409d3260"
+    },
+    {
+      "path": "/render-study/intersection-day.png",
+      "bytes": 804403,
+      "sha256": "3d52543253d35c022c34ca83b60a663e7fb7f77af4f482a4bd178a06ef9d5cee"
+    },
+    {
+      "path": "/render-study/intersection-night.png",
+      "bytes": 787535,
+      "sha256": "7d2041f3a93207bd7265c251187ec5a7215d28d397befc3a77bae2284d275573"
+    },
+    {
+      "path": "/render-study/manifest.json",
+      "bytes": 10398,
+      "sha256": "e2274732cff1a12fde5df1074cdf2dee2d00673c56e9bd1311b8935697c401e1"
+    },
+    {
+      "path": "/render-study/mitsui-frontage-day.png",
+      "bytes": 644192,
+      "sha256": "7064066ce31cc0ad082cb6a3e3179004071fc0d6723208830a6c313e5b4a3421"
+    },
+    {
+      "path": "/render-study/mitsui-frontage-night.png",
+      "bytes": 686798,
+      "sha256": "20f5dc14c1fe2145736effdf6180b5bf025be3e3a79a09094bdd91ee42b410bb"
+    },
+    {
+      "path": "/travel.html",
+      "bytes": 935,
+      "sha256": "4258fcb73e952bb038bec95e718e6163f18fe7956532c0fcb4c812f95d29be2f"
+    },
+    {
+      "path": "/walk.html",
+      "bytes": 1499,
+      "sha256": "0d01abddbd1bf8b6387f56eaf4dfc90eebc16d28d9f94a3fe00b253bf1c8b6ba"
+    }
+  ],
+  "conditions": {
+    "viewport": [
+      390,
+      844
+    ],
+    "isMobile": true,
+    "hasTouch": true,
+    "dpr": 1,
+    "tlsVerification": true,
+    "browser": "151.0.7922.34"
+  },
+  "finishedAt": "2026-10-16T04:15:12.175Z"
+}

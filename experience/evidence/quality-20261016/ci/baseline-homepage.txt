@@ -1,0 +1,669 @@
+﻿2026-10-15T19:36:13.2842859Z Current runner version: '2.337.0'
+2026-10-15T19:36:13.2869126Z ##[group]Runner Image Provisioner
+2026-10-15T19:36:13.2870114Z Hosted Compute Agent
+2026-10-15T19:36:13.2870730Z Version: 20261012.601
+2026-10-15T19:36:13.2871376Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+2026-10-15T19:36:13.2872123Z Build Date: 2026-10-12T17:48:21Z
+2026-10-15T19:36:13.2872775Z Worker ID: {75793536-44ba-4316-ae26-903f2e3ad2d4}
+2026-10-15T19:36:13.2873514Z Region: southcentralus
+2026-10-15T19:36:13.2874092Z Cloud: Azure
+2026-10-15T19:36:13.2874630Z ##[endgroup]
+2026-10-15T19:36:13.2876413Z ##[group]Operating System
+2026-10-15T19:36:13.2877038Z Ubuntu
+2026-10-15T19:36:13.2877584Z 24.04.5
+2026-10-15T19:36:13.2878129Z LTS
+2026-10-15T19:36:13.2879006Z ##[endgroup]
+2026-10-15T19:36:13.2879663Z ##[group]Runner Image
+2026-10-15T19:36:13.2880266Z Image: ubuntu-24.04
+2026-10-15T19:36:13.2880830Z Version: 20261012.334.1
+2026-10-15T19:36:13.2882089Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-15T19:36:13.2883606Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-15T19:36:13.2884537Z ##[endgroup]
+2026-10-15T19:36:13.2885952Z ##[group]GITHUB_TOKEN Permissions
+2026-10-15T19:36:13.2888558Z Contents: read
+2026-10-15T19:36:13.2889203Z Metadata: read
+2026-10-15T19:36:13.2889749Z ##[endgroup]
+2026-10-15T19:36:13.2891920Z Secret source: Actions
+2026-10-15T19:36:13.2892891Z Cache mode: write
+2026-10-15T19:36:13.2893552Z Prepare workflow directory
+2026-10-15T19:36:13.3308748Z Prepare all required actions
+2026-10-15T19:36:13.3360578Z Getting action download info
+2026-10-15T19:36:13.6640180Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-15T19:36:13.7493103Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-10-15T19:36:13.8841965Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-15T19:36:14.1741461Z Complete job name: Validate journey homepage
+2026-10-15T19:36:14.2592499Z ##[group]Run actions/checkout@v4
+2026-10-15T19:36:14.2593645Z with:
+2026-10-15T19:36:14.2594342Z   repository: PaperStrange/TourGuideAI
+2026-10-15T19:36:14.2602523Z   token: ***
+2026-10-15T19:36:14.2603165Z   ssh-strict: true
+2026-10-15T19:36:14.2603780Z   ssh-user: git
+2026-10-15T19:36:14.2604506Z   persist-credentials: true
+2026-10-15T19:36:14.2605245Z   clean: true
+2026-10-15T19:36:14.2606028Z   sparse-checkout-cone-mode: true
+2026-10-15T19:36:14.2606834Z   fetch-depth: 1
+2026-10-15T19:36:14.2607445Z   fetch-tags: false
+2026-10-15T19:36:14.2608140Z   show-progress: true
+2026-10-15T19:36:14.2608829Z   lfs: false
+2026-10-15T19:36:14.2609437Z   submodules: false
+2026-10-15T19:36:14.2610093Z   set-safe-directory: true
+2026-10-15T19:36:14.2610856Z   allow-unsafe-pr-checkout: false
+2026-10-15T19:36:14.2612093Z ##[endgroup]
+2026-10-15T19:36:14.3746494Z Syncing repository: PaperStrange/TourGuideAI
+2026-10-15T19:36:14.3749421Z ##[group]Getting Git version info
+2026-10-15T19:36:14.3750758Z Working directory is '/home/runner/work/TourGuideAI/TourGuideAI'
+2026-10-15T19:36:14.3752515Z [command]/usr/bin/git version
+2026-10-15T19:36:14.3793918Z git version 2.55.0
+2026-10-15T19:36:14.3814303Z ##[endgroup]
+2026-10-15T19:36:14.3831225Z Temporarily overriding HOME='/home/runner/work/_temp/29f4dd8b-f822-41ee-baa0-47ffe67e22c1' before making global git config changes
+2026-10-15T19:36:14.3835349Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-15T19:36:14.3839088Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/TourGuideAI/TourGuideAI
+2026-10-15T19:36:14.3902123Z Deleting the contents of '/home/runner/work/TourGuideAI/TourGuideAI'
+2026-10-15T19:36:14.3908647Z ##[group]Initializing the repository
+2026-10-15T19:36:14.3914421Z [command]/usr/bin/git init /home/runner/work/TourGuideAI/TourGuideAI
+2026-10-15T19:36:14.4009482Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-15T19:36:14.4011618Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-15T19:36:14.4013976Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-15T19:36:14.4015359Z hint: call:
+2026-10-15T19:36:14.4016260Z hint:
+2026-10-15T19:36:14.4017472Z hint: 	git config --global init.defaultBranch <name>
+2026-10-15T19:36:14.4018801Z hint:
+2026-10-15T19:36:14.4020034Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-15T19:36:14.4022189Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-15T19:36:14.4023875Z hint:
+2026-10-15T19:36:14.4024961Z hint: 	git branch -m <name>
+2026-10-15T19:36:14.4026187Z hint:
+2026-10-15T19:36:14.4028212Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-15T19:36:14.4030991Z Initialized empty Git repository in /home/runner/work/TourGuideAI/TourGuideAI/.git/
+2026-10-15T19:36:14.4036355Z [command]/usr/bin/git remote add origin https://github.com/PaperStrange/TourGuideAI
+2026-10-15T19:36:14.4092548Z ##[endgroup]
+2026-10-15T19:36:14.4094386Z ##[group]Disabling automatic garbage collection
+2026-10-15T19:36:14.4097644Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-15T19:36:14.4140459Z ##[endgroup]
+2026-10-15T19:36:14.4142172Z ##[group]Setting up auth
+2026-10-15T19:36:14.4147281Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-15T19:36:14.4182227Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-15T19:36:14.4576173Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-15T19:36:14.4611823Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-15T19:36:14.4849882Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-15T19:36:14.4886114Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-15T19:36:14.5087402Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-15T19:36:14.5128774Z ##[endgroup]
+2026-10-15T19:36:14.5130836Z ##[group]Fetching the repository
+2026-10-15T19:36:14.5141873Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +18bbeec8af77dab0c503ada51ba1bb7ef3e97b33:refs/remotes/origin/chore-sow-delivery-plan
+2026-10-15T19:36:21.9613205Z From https://github.com/PaperStrange/TourGuideAI
+2026-10-15T19:36:21.9616443Z  * [new ref]         18bbeec8af77dab0c503ada51ba1bb7ef3e97b33 -> origin/chore-sow-delivery-plan
+2026-10-15T19:36:21.9621676Z ##[endgroup]
+2026-10-15T19:36:21.9623688Z ##[group]Determining the checkout info
+2026-10-15T19:36:21.9626199Z ##[endgroup]
+2026-10-15T19:36:21.9627594Z [command]/usr/bin/git sparse-checkout disable
+2026-10-15T19:36:21.9680984Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-15T19:36:21.9715190Z ##[group]Checking out the ref
+2026-10-15T19:36:21.9719904Z [command]/usr/bin/git checkout --progress --force -B chore-sow-delivery-plan refs/remotes/origin/chore-sow-delivery-plan
+2026-10-15T19:36:22.5039315Z Switched to a new branch 'chore-sow-delivery-plan'
+2026-10-15T19:36:22.5042518Z branch 'chore-sow-delivery-plan' set up to track 'origin/chore-sow-delivery-plan'.
+2026-10-15T19:36:22.5072802Z ##[endgroup]
+2026-10-15T19:36:22.5117144Z [command]/usr/bin/git log -1 --format=%H
+2026-10-15T19:36:22.5143289Z 18bbeec8af77dab0c503ada51ba1bb7ef3e97b33
+2026-10-15T19:36:22.5431236Z ##[group]Run actions/setup-node@v4
+2026-10-15T19:36:22.5431707Z with:
+2026-10-15T19:36:22.5432290Z   node-version: 24
+2026-10-15T19:36:22.5432611Z   cache: npm
+2026-10-15T19:36:22.5433000Z   cache-dependency-path: experience/package-lock.json
+2026-10-15T19:36:22.5433445Z   always-auth: false
+2026-10-15T19:36:22.5433758Z   check-latest: false
+2026-10-15T19:36:22.5436613Z   token: ***
+2026-10-15T19:36:22.5436947Z ##[endgroup]
+2026-10-15T19:36:22.6914066Z Found in cache @ /opt/hostedtoolcache/node/24.21.0/x64
+2026-10-15T19:36:22.6919036Z (node:2216) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-15T19:36:22.6920558Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-15T19:36:22.6921892Z ##[group]Environment details
+2026-10-15T19:36:23.1010418Z node: v24.21.0
+2026-10-15T19:36:23.1011011Z npm: 11.19.0
+2026-10-15T19:36:23.1060680Z yarn: 1.22.22
+2026-10-15T19:36:23.1062222Z ##[endgroup]
+2026-10-15T19:36:23.1062879Z [command]/opt/hostedtoolcache/node/24.21.0/x64/bin/npm config get cache
+2026-10-15T19:36:23.2171543Z /home/runner/.npm
+2026-10-15T19:36:23.3898898Z Cache hit for: node-cache-Linux-x64-npm-81723226006ab6b7f07536c9fdbe10b931da3c4f042bf3215560d40e41972927
+2026-10-15T19:36:23.4002403Z (node:2216) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-15T19:36:24.2736097Z Received 41675893 of 41675893 (100.0%), 55.4 MBs/sec
+2026-10-15T19:36:24.2736835Z Cache Size: ~40 MB (41675893 B)
+2026-10-15T19:36:24.2763929Z [command]/usr/bin/tar -xf /home/runner/work/_temp/df944595-994c-485e-9443-b9a236bd7fc4/cache.tzst -P -C /home/runner/work/TourGuideAI/TourGuideAI --use-compress-program unzstd
+2026-10-15T19:36:24.3305046Z Cache restored successfully
+2026-10-15T19:36:24.3326154Z Cache restored from key: node-cache-Linux-x64-npm-81723226006ab6b7f07536c9fdbe10b931da3c4f042bf3215560d40e41972927
+2026-10-15T19:36:24.3486249Z ##[group]Run npm ci
+2026-10-15T19:36:24.3486783Z [36;1mnpm ci[0m
+2026-10-15T19:36:24.3788272Z shell: /usr/bin/bash -e {0}
+2026-10-15T19:36:24.3788955Z ##[endgroup]
+2026-10-15T19:36:26.3969504Z 
+2026-10-15T19:36:26.3978732Z added 46 packages, and audited 47 packages in 2s
+2026-10-15T19:36:26.3979157Z 
+2026-10-15T19:36:26.3979424Z 11 packages are looking for funding
+2026-10-15T19:36:26.3980059Z   run `npm fund` for details
+2026-10-15T19:36:26.3980676Z 
+2026-10-15T19:36:26.3981178Z found 0 vulnerabilities
+2026-10-15T19:36:26.4347662Z ##[group]Run npm ci --prefix server && npm test --prefix server
+2026-10-15T19:36:26.4348259Z [36;1mnpm ci --prefix server && npm test --prefix server[0m
+2026-10-15T19:36:26.4391302Z shell: /usr/bin/bash -e {0}
+2026-10-15T19:36:26.4391693Z ##[endgroup]
+2026-10-15T19:36:27.5996439Z 
+2026-10-15T19:36:27.5997836Z added 72 packages, and audited 73 packages in 1s
+2026-10-15T19:36:27.5998329Z 
+2026-10-15T19:36:27.5998607Z 32 packages are looking for funding
+2026-10-15T19:36:27.5999319Z   run `npm fund` for details
+2026-10-15T19:36:27.6007845Z 
+2026-10-15T19:36:27.6008096Z found 0 vulnerabilities
+2026-10-15T19:36:27.7091457Z 
+2026-10-15T19:36:27.7092542Z > tourguideai-rooms@0.1.0 test
+2026-10-15T19:36:27.7093215Z > node --test test/*.test.js
+2026-10-15T19:36:27.7093456Z 
+2026-10-15T19:36:32.4515831Z ✔ two real HTTP clients collaborate, receive SSE snapshots and recover the persisted room after restart (4337.026244ms)
+2026-10-15T19:36:32.9424542Z ✔ room credentials, contributor ownership, request validation and origin allowlist are enforced over HTTP (489.856727ms)
+2026-10-15T19:36:32.9426800Z ✔ proposal validation allows catalog-grounded IDs and rejects invented or omitted contributed destinations (1.70158ms)
+2026-10-15T19:36:33.0619473Z ✔ service shutdown completes while an invited client keeps its SSE connection open (119.09694ms)
+2026-10-15T19:36:33.6161991Z ✔ changed wishes clear group acceptance and prevent an outdated proposal from omitting the new destination (554.105556ms)
+2026-10-15T19:36:33.8755576Z ✔ shutdown closes an actual incomplete HTTP connection within its configured grace period (259.289621ms)
+2026-10-15T19:36:34.0740955Z ✔ a valid catalog larger than the HTTP high-water mark still streams its committed update (198.677172ms)
+2026-10-15T19:36:34.0847708Z ✔ Pages local configuration retains a stable database and exact additional origins (3.468135ms)
+2026-10-15T19:36:34.0849006Z ✔ the actual local launcher accepts Pages preflight and recovers its room after process restart (642.623802ms)
+2026-10-15T19:36:34.0850338Z ✔ two polling clients receive actual committed changes once per revision and stop after cancellation (628.752753ms)
+2026-10-15T19:36:34.0851584Z ✔ actual buffered HTTP responses time out with backoff and periodic reads recover when transport resumes (692.112759ms)
+2026-10-15T19:36:34.0852812Z ✔ closing a pending periodic read suppresses its delayed response and callbacks (168.380119ms)
+2026-10-15T19:36:34.0854020Z ✔ polling invitation rejection is terminal and the default subscription retains real SSE (171.048259ms)
+2026-10-15T19:36:34.0854832Z ℹ tests 13
+2026-10-15T19:36:34.0855290Z ℹ suites 0
+2026-10-15T19:36:34.0855835Z ℹ pass 13
+2026-10-15T19:36:34.0856543Z ℹ fail 0
+2026-10-15T19:36:34.0856977Z ℹ cancelled 0
+2026-10-15T19:36:34.0857398Z ℹ skipped 0
+2026-10-15T19:36:34.0857806Z ℹ todo 0
+2026-10-15T19:36:34.0858294Z ℹ duration_ms 6337.751471
+2026-10-15T19:36:34.1061806Z ##[group]Run npm test
+2026-10-15T19:36:34.1062204Z [36;1mnpm test[0m
+2026-10-15T19:36:34.1104622Z shell: /usr/bin/bash -e {0}
+2026-10-15T19:36:34.1105136Z ##[endgroup]
+2026-10-15T19:36:34.2253947Z 
+2026-10-15T19:36:34.2255107Z > kyoto-guided-experience@0.2.0 test
+2026-10-15T19:36:34.2256076Z > node --test tests/*.test.mjs
+2026-10-15T19:36:34.2256393Z 
+2026-10-15T19:36:34.3289632Z ✔ an explicit valid appearance overrides storage without changing the preference (0.897317ms)
+2026-10-15T19:36:34.3291363Z ✔ malformed, absent and blocked appearance storage leaves a usable day default (0.426733ms)
+2026-10-15T19:36:34.3318626Z ✔ appearance writes are bounded to their own key and denied writes are recoverable (0.978733ms)
+2026-10-15T19:36:34.3335808Z ✔ appearance changes do not change a shared journey snapshot or its creation date (1.31973ms)
+2026-10-15T19:36:34.3898056Z ✔ runtime profile preserves packaged study lighting and all night fixtures (3.707397ms)
+2026-10-15T19:36:34.3915954Z ✔ facade materials preserve maps, metadata, opacity and shared-material identity (1.761599ms)
+2026-10-15T19:36:34.4058105Z ✔ a complete six-image v2 lighting study is accepted without rewriting its camera or provenance (3.199437ms)
+2026-10-15T19:36:34.4098203Z ✔ partial, missing-mode, duplicate-image and mismatched-aspect studies cannot appear complete (2.572778ms)
+2026-10-15T19:36:34.4100119Z ✔ v2 lighting and denoising provenance requires valid identities and finite calibration (0.693568ms)
+2026-10-15T19:36:34.4101781Z ✔ legacy v1 remains explicitly day-only and cannot silently masquerade as six paired renders (0.458691ms)
+2026-10-15T19:36:34.4348438Z ✔ Photon keeps source identity, coordinate order and disambiguating country metadata (2.159613ms)
+2026-10-15T19:36:34.4350600Z ✔ Wikipedia filters actual non-place articles, keeps nearby source coordinates and descriptive categories (1.772806ms)
+2026-10-15T19:36:34.4367209Z ✔ three distinct suggestions preserve sourced places and export every selected pin (3.405039ms)
+2026-10-15T19:36:34.4368719Z ✔ insufficient nearby coverage stays explicit and duplicate inputs cannot manufacture alternatives (0.733609ms)
+2026-10-15T19:36:34.4370178Z ✔ requests reject invalid inputs and already-cancelled reads before contacting a provider (3.29326ms)
+2026-10-15T19:36:34.4371398Z ✔ Retry-After preserves server delays for seconds and HTTP dates (0.305449ms)
+2026-10-15T19:36:34.4391909Z ✔ legacy import occurs only when the current save is absent (2.204648ms)
+2026-10-15T19:36:34.4393307Z ✔ malformed current saves cannot resurrect an older completed journey (0.421632ms)
+2026-10-15T19:36:34.4394631Z ✔ personal notes retain plain text, reject invalid targets/types and enforce the input limit (1.50737ms)
+2026-10-15T19:36:34.4608553Z ✔ the authored rig is valid, but malformed HDR identities and invalid intensities are rejected (4.192997ms)
+2026-10-15T19:36:34.4637085Z ✔ authored local shadow limits reject an extra shadow caster or a shadowed point light (0.75018ms)
+2026-10-15T19:36:34.4639651Z ✔ environment URLs stay inside the packaged application even on a Pages subdirectory (0.402646ms)
+2026-10-15T19:36:34.5000971Z ✔ normalization copies only finite coordinates, estimated accuracy and epoch timestamps (3.317853ms)
+2026-10-15T19:36:34.5017883Z ✔ normalization rejects malformed, stale, nonfinite and future-skewed samples (0.506887ms)
+2026-10-15T19:36:34.5037558Z ✔ nearby estimates require the reported accuracy circle to fit within the chosen radius (0.447035ms)
+2026-10-15T19:36:34.5067439Z ✔ a boundary overlap is uncertain, a separated estimate is outside, and missing/stale data is unknown (0.304797ms)
+2026-10-15T19:36:34.5073056Z ✔ distance calculation follows the short path across the dateline and stays finite at the poles (0.209508ms)
+2026-10-15T19:36:34.5087471Z ✔ construction requests nothing; explicit Start creates one uncached foreground watch (0.942876ms)
+2026-10-15T19:36:34.5089949Z ✔ accepted fixes distinguish adequate precision from uncertainty without changing journey state (0.630735ms)
+2026-10-15T19:36:34.5091647Z ✔ freshness expires without a second GPS callback and resumes only with a newer fresh fix (0.252854ms)
+2026-10-15T19:36:34.5093245Z ✔ getState detects expiry even when browser timers are delayed (0.23806ms)
+2026-10-15T19:36:34.5094605Z ✔ invalid initial samples stay unusable; delayed or invalid samples cannot replace a fresh fix (0.343995ms)
+2026-10-15T19:36:34.5096183Z ✔ Stop clears watch id zero, timers and usable fix, and ignores every late callback (0.440886ms)
+2026-10-15T19:36:34.5097451Z ✔ new sessions reject late callbacks from an earlier generation (0.17378ms)
+2026-10-15T19:36:34.5098691Z ✔ hiding pauses immediately; showing never silently restarts tracking (0.233699ms)
+2026-10-15T19:36:34.5100185Z ✔ hidden construction and unannounced hiding cannot start or keep a live watch (0.192044ms)
+2026-10-15T19:36:34.5101651Z ✔ denial, unavailable fixes and timeouts stop the watch and expose stable localized message keys (1.47701ms)
+2026-10-15T19:36:34.5103177Z ✔ missing geolocation and provider exceptions leave manual fallback available (0.253073ms)
+2026-10-15T19:36:34.5104212Z ✔ a synchronous denial cannot leak the watch returned after its callback (0.232229ms)
+2026-10-15T19:36:34.5105334Z ✔ a synchronous consumer Stop during requesting prevents permission initiation (0.223045ms)
+2026-10-15T19:36:34.5107028Z ✔ destroy unsubscribes, cancels work and permanently prevents future starts (0.258057ms)
+2026-10-15T19:36:34.5108580Z ✔ freshness, precision and watch timeout are configurable with safe defaults for invalid options (0.47681ms)
+2026-10-15T19:36:34.5537511Z ✔ a private viewing pose preserves independent camera direction and strips journey data without mutation (2.81424ms)
+2026-10-15T19:36:34.5553446Z ✔ untrusted viewing poses reject nonfinite/type/version errors and bound camera/player ranges (0.501797ms)
+2026-10-15T19:36:34.5568620Z ✔ old framing without a target offset receives a facing-appropriate default, not journey meaning (0.274645ms)
+2026-10-15T19:36:34.5574379Z ✔ private saves read and write only their own key; invalid or denied storage cannot import the Kyoto journey (1.099588ms)
+2026-10-15T19:36:34.5576739Z ✔ record normalization allows only known moments, explicit presentation fields and bounded local feedback (1.158947ms)
+2026-10-15T19:36:34.5578634Z ✔ saving, editing and deleting one private moment preserve the other moments and the caller record (0.978547ms)
+2026-10-15T19:36:34.5580196Z ✔ story framing is bounded independently and never becomes an invented live-camera pose (0.276458ms)
+2026-10-15T19:36:34.5628212Z ✔ sharing defaults to no personal note and serializes only the explicitly selected saved moment (2.956581ms)
+2026-10-15T19:36:34.5657805Z ✔ explicitly included English/Chinese personal text and either framing round-trip as plain data (32.636729ms)
+2026-10-15T19:36:34.5667429Z ✔ recipient fragments reject malformed, unsupported, oversized and invalid-UTF8 data without exposing extra fields (2.366606ms)
+2026-10-15T19:36:34.5669494Z ✔ optional feedback export is one local report and excludes private notes, camera positions and invented aggregates (0.573539ms)
+2026-10-15T19:36:34.5722694Z ✔ explicit services allow HTTPS and the three loopback hosts with canonical identities (1.625249ms)
+2026-10-15T19:36:34.5757558Z ✔ unsafe and ambiguous explicit service addresses fail before a request is possible (0.626202ms)
+2026-10-15T19:36:34.5817546Z ✔ build-time default retains same-origin and configured base-path behavior (0.22993ms)
+2026-10-15T19:36:34.5847859Z ✔ saved selections require a valid endpoint and explicit update method (2.740241ms)
+2026-10-15T19:36:34.5877502Z ✔ room credentials remain isolated by normalized service URL, path and room ID (0.438142ms)
+2026-10-15T19:36:34.6043861Z ✔ recaps default to no personal notes and do not expose or mutate game state (3.166561ms)
+2026-10-15T19:36:34.6077858Z ✔ only explicitly selected saved notes on real visited targets enter a recap (0.449739ms)
+2026-10-15T19:36:34.6087778Z ✔ English and Chinese recap fragments round-trip without losing selected Unicode text (1.815771ms)
+2026-10-15T19:36:34.6107208Z ✔ share links retain a Pages subdirectory and discard author query/hash data (2.373051ms)
+2026-10-15T19:36:34.6127711Z ✔ route choices and remembered stops remain semantically distinct in both languages (1.339108ms)
+2026-10-15T19:36:34.6129396Z ✔ untrusted recap notes remain escaped text in both language presentations (1.1045ms)
+2026-10-15T19:36:34.6130840Z ✔ invalid structure, targets, choices, dates and note types cannot become partial recaps (1.717083ms)
+2026-10-15T19:36:34.6132483Z ✔ unsupported, malformed and oversized links produce distinct bounded failures (0.580201ms)
+2026-10-15T19:36:34.6133909Z ✔ creation bounds selected text and repairs a split Unicode surrogate before encoding (0.90859ms)
+2026-10-15T19:36:34.6597833Z ✔ camera-relative axes remain correct at cardinal and intermediate headings (1.161698ms)
+2026-10-15T19:36:34.6600758Z ✔ a rotated walk preserves its angle instead of snapping to a diagonal (1.472707ms)
+2026-10-15T19:36:34.6633393Z ✔ legacy-v1-mid-journey retains position and journey meaning (0.563465ms)
+2026-10-15T19:36:34.6648502Z ✔ legacy-v1-completed retains position and journey meaning (0.297706ms)
+2026-10-15T19:36:34.6650030Z ✔ legacy facing initializes the 3D actor heading consistently (0.392582ms)
+2026-10-15T19:36:34.6651359Z ✔ facade bounds stop continuing input, allowing only millimetre quantization (5.861975ms)
+2026-10-15T19:36:34.6653207Z ✔ automatic north-to-bank walk uses the mapped crossing without awarding progress (2.478796ms)
+2026-10-15T19:36:34.6667494Z ✔ modal pause freezes navigation and simulation time; resume continues the route (0.424159ms)
+2026-10-15T19:36:34.6669303Z ✔ fixed world-input replay survives a save checkpoint and responds to changed input (4.212236ms)
+2026-10-15T19:36:34.6670880Z ✔ invalid restore data cannot manufacture a valid position or unsupported target (0.576487ms)
+2026-10-15T19:36:34.7332949Z ✔ canonical anchors match raw OSM nodes and the derived Mitsui frontage midpoint (2.188ms)
+2026-10-15T19:36:34.7347027Z ✔ resolving places preserves selected order, removes unknown IDs and resolves both languages (1.108577ms)
+2026-10-15T19:36:34.7357673Z ✔ zero selected places produce no links; one place produces a coordinate search (1.088254ms)
+2026-10-15T19:36:34.7367113Z ✔ route groups preserve every occurrence and boundary from 2 through 1000 selected places (34.110709ms)
+2026-10-15T19:36:34.7368416Z ✔ invalid coordinates, sparse inputs and excessive place counts are rejected without partial output (1.483004ms)
+2026-10-15T19:36:34.7369732Z ✔ sharing uses selected place data and excludes notes, device position and unrelated fields (1.15258ms)
+2026-10-15T19:36:34.7371629Z ✔ CSV retains every selected pin and escapes punctuation, line breaks and formula names (1.903681ms)
+2026-10-15T19:36:34.7373064Z ✔ journey normalization preserves cleared selections and independent meaningful marks (0.632924ms)
+2026-10-15T19:36:34.7374366Z ✔ native Web Storage retains only canonical selection and meaningful IDs (36.422275ms)
+2026-10-15T19:36:34.7375941Z ✔ companion URLs retain deployment paths and carry only explicit locale and known selected IDs (0.719423ms)
+2026-10-15T19:36:34.7436561Z ℹ tests 87
+2026-10-15T19:36:34.7436965Z ℹ suites 0
+2026-10-15T19:36:34.7437502Z ℹ pass 87
+2026-10-15T19:36:34.7437826Z ℹ fail 0
+2026-10-15T19:36:34.7438164Z ℹ cancelled 0
+2026-10-15T19:36:34.7438564Z ℹ skipped 0
+2026-10-15T19:36:34.7438868Z ℹ todo 0
+2026-10-15T19:36:34.7439294Z ℹ duration_ms 481.960812
+2026-10-15T19:36:34.7708316Z ##[group]Run npm run build
+2026-10-15T19:36:34.7708771Z [36;1mnpm run build[0m
+2026-10-15T19:36:34.7749280Z shell: /usr/bin/bash -e {0}
+2026-10-15T19:36:34.7749727Z ##[endgroup]
+2026-10-15T19:36:34.8767958Z 
+2026-10-15T19:36:34.8768827Z > kyoto-guided-experience@0.2.0 build
+2026-10-15T19:36:34.8769420Z > vite build
+2026-10-15T19:36:34.8769750Z 
+2026-10-15T19:36:35.1075281Z [36mvite v8.3.2 [32mbuilding client environment for production...[36m[39m
+2026-10-15T19:36:35.1212397Z transforming...
+2026-10-15T19:36:35.4669448Z ✓ 72 modules transformed.
+2026-10-15T19:36:35.9877684Z rendering chunks...
+2026-10-15T19:36:36.2027305Z computing gzip size...
+2026-10-15T19:36:36.2192881Z dist/journey.html                                   0.74 kB │ gzip:   0.36 kB
+2026-10-15T19:36:36.2193964Z dist/travel.html                                    0.93 kB │ gzip:   0.45 kB
+2026-10-15T19:36:36.2194651Z dist/perspective.html                               1.20 kB │ gzip:   0.51 kB
+2026-10-15T19:36:36.2195846Z dist/comparison.html                                1.23 kB │ gzip:   0.63 kB
+2026-10-15T19:36:36.2196645Z dist/walk.html                                      1.49 kB │ gzip:   0.57 kB
+2026-10-15T19:36:36.2197474Z dist/index.html                                     1.68 kB │ gzip:   0.72 kB
+2026-10-15T19:36:36.2198051Z dist/assets/kyoto-sans-Ne47nkl6.woff              235.65 kB
+2026-10-15T19:36:36.2198676Z dist/assets/maplibre-gl-worker-Bh1S--WG.js        508.02 kB
+2026-10-15T19:36:36.2199376Z dist/assets/share-tIc3J9fA.css                      2.44 kB │ gzip:   1.03 kB
+2026-10-15T19:36:36.2200113Z dist/assets/comparison-D3Q3aa5l.css                 4.60 kB │ gzip:   1.67 kB
+2026-10-15T19:36:36.2200889Z dist/assets/travel-DVyvPLCM.css                     5.90 kB │ gzip:   2.13 kB
+2026-10-15T19:36:36.2201589Z dist/assets/index-D2unfJUQ.css                     13.93 kB │ gzip:   3.93 kB
+2026-10-15T19:36:36.2202572Z dist/assets/perspective-6PJ6d1Ou.css               15.02 kB │ gzip:   4.19 kB
+2026-10-15T19:36:36.2203442Z dist/assets/walk-BjrO7ASt.css                      18.36 kB │ gzip:   4.89 kB
+2026-10-15T19:36:36.2204149Z dist/assets/world-map-DBE96hFo.css                 82.93 kB │ gzip:  10.72 kB
+2026-10-15T19:36:36.2204856Z dist/assets/live-view-Dppkozja.js                   0.07 kB │ gzip:   0.09 kB
+2026-10-15T19:36:36.2205763Z dist/assets/modulepreload-polyfill-P2Xu9kJm.js      0.67 kB │ gzip:   0.38 kB
+2026-10-15T19:36:36.2206622Z dist/assets/state-DwlyKbZV.js                       1.10 kB │ gzip:   0.63 kB │ map:     3.66 kB
+2026-10-15T19:36:36.2207374Z dist/assets/preload-helper-BaNbYf_w.js              1.39 kB │ gzip:   0.75 kB
+2026-10-15T19:36:36.2208181Z dist/assets/journey-Cae7rup2.js                     1.50 kB │ gzip:   0.80 kB │ map:     3.46 kB
+2026-10-15T19:36:36.2208956Z dist/assets/live-view-CvnZHy1T.js                   1.61 kB │ gzip:   0.83 kB │ map:     4.88 kB
+2026-10-15T19:36:36.2209924Z dist/assets/view-state-Cajz5ATi.js                  1.73 kB │ gzip:   0.86 kB │ map:     6.60 kB
+2026-10-15T19:36:36.2210936Z dist/assets/places-_F3XEqgH.js                      2.21 kB │ gzip:   1.23 kB │ map:     4.03 kB
+2026-10-15T19:36:36.2212036Z dist/assets/maps-CQX5FhP0.js                        2.28 kB │ gzip:   1.14 kB │ map:     7.18 kB
+2026-10-15T19:36:36.2212892Z dist/assets/share-9xZu3ErL.js                       5.44 kB │ gzip:   2.53 kB │ map:    15.78 kB
+2026-10-15T19:36:36.2213633Z dist/assets/kyoto-B8LsYbyV.js                      12.98 kB │ gzip:   5.99 kB │ map:    20.39 kB
+2026-10-15T19:36:36.2214570Z dist/assets/THIRD-PARTY-NOTICES-BAyKaB7a.js        15.88 kB │ gzip:   3.79 kB │ map:     0.14 kB
+2026-10-15T19:36:36.2215765Z dist/assets/comparison-C6A3aisu.js                 17.79 kB │ gzip:   6.69 kB │ map:    47.33 kB
+2026-10-15T19:36:36.2216899Z dist/assets/i18n-BdOPO8Au.js                       21.08 kB │ gzip:   7.86 kB │ map:    30.71 kB
+2026-10-15T19:36:36.2218085Z dist/assets/travel-DghsUVLx.js                     22.50 kB │ gzip:   9.40 kB │ map:    51.98 kB
+2026-10-15T19:36:36.2219612Z dist/assets/walk-BhSmkErl.js                       24.28 kB │ gzip:   8.45 kB │ map:    55.66 kB
+2026-10-15T19:36:36.2220485Z dist/assets/create-game-Bm7uFjU9.js                40.30 kB │ gzip:  12.87 kB │ map:   138.35 kB
+2026-10-15T19:36:36.2221355Z dist/assets/perspective-Dy1o8vqG.js                41.82 kB │ gzip:  15.30 kB │ map:    84.08 kB
+2026-10-15T19:36:36.2222204Z dist/assets/index-Bu1W31b_.js                      56.15 kB │ gzip:  20.96 kB │ map:   153.82 kB
+2026-10-15T19:36:36.2223019Z dist/assets/lighting-lhioegDu.js                  630.66 kB │ gzip: 160.66 kB │ map: 3,178.15 kB
+2026-10-15T19:36:36.2223809Z dist/assets/world-map-COUseVJJ.js               1,050.81 kB │ gzip: 285.38 kB │ map: 2,211.02 kB
+2026-10-15T19:36:36.2224179Z 
+2026-10-15T19:36:36.2224994Z [33m[plugin builtin:vite-reporter] 
+2026-10-15T19:36:36.2225773Z (!) Some chunks are larger than 500 kB after minification. Consider:
+2026-10-15T19:36:36.2226937Z - Using dynamic import() to code-split the application
+2026-10-15T19:36:36.2227810Z - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+2026-10-15T19:36:36.2228797Z - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+2026-10-15T19:36:36.2229752Z [32m✓ built in 1.11s[39m
+2026-10-15T19:36:36.3687072Z ##[group]Run npx playwright install --with-deps chromium
+2026-10-15T19:36:36.3687612Z [36;1mnpx playwright install --with-deps chromium[0m
+2026-10-15T19:36:36.3729923Z shell: /usr/bin/bash -e {0}
+2026-10-15T19:36:36.3730353Z ##[endgroup]
+2026-10-15T19:36:37.1686701Z Installing dependencies...
+2026-10-15T19:36:37.1779466Z Switching to root user to install dependencies...
+2026-10-15T19:36:37.6190423Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-10-15T19:36:37.6818041Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2026-10-15T19:36:37.6819566Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2026-10-15T19:36:37.7391575Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2026-10-15T19:36:37.7710507Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2026-10-15T19:36:37.7973721Z Get:6 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2026-10-15T19:36:38.0810184Z Get:7 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1397 kB]
+2026-10-15T19:36:38.1912522Z Get:8 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [308 kB]
+2026-10-15T19:36:38.2413263Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1702 kB]
+2026-10-15T19:36:38.2641163Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1805 kB]
+2026-10-15T19:36:38.3014529Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [411 kB]
+2026-10-15T19:36:38.3202362Z Get:18 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [581 kB]
+2026-10-15T19:36:38.3334542Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1144 kB]
+2026-10-15T19:36:38.3873467Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [231 kB]
+2026-10-15T19:36:38.3981465Z Get:19 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [12.4 kB]
+2026-10-15T19:36:38.4067959Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1221 kB]
+2026-10-15T19:36:38.4232533Z Get:20 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [523 kB]
+2026-10-15T19:36:38.4672001Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [246 kB]
+2026-10-15T19:36:38.4751548Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1713 kB]
+2026-10-15T19:36:38.5677075Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [392 kB]
+2026-10-15T19:36:42.1162497Z Fetched 12.1 MB in 2s (6899 kB/s)
+2026-10-15T19:36:43.1424267Z Reading package lists...
+2026-10-15T19:36:43.1730630Z Reading package lists...
+2026-10-15T19:36:43.4155245Z Building dependency tree...
+2026-10-15T19:36:43.4163503Z Reading state information...
+2026-10-15T19:36:43.6442481Z libasound2t64 is already the newest version (1.2.11-1ubuntu0.3).
+2026-10-15T19:36:43.6444138Z libasound2t64 set to manually installed.
+2026-10-15T19:36:43.6445261Z libatk-bridge2.0-0t64 is already the newest version (2.52.0-1build1).
+2026-10-15T19:36:43.6446670Z libatk-bridge2.0-0t64 set to manually installed.
+2026-10-15T19:36:43.6447641Z libatk1.0-0t64 is already the newest version (2.52.0-1build1).
+2026-10-15T19:36:43.6448616Z libatk1.0-0t64 set to manually installed.
+2026-10-15T19:36:43.6449568Z libatspi2.0-0t64 is already the newest version (2.52.0-1build1).
+2026-10-15T19:36:43.6450559Z libatspi2.0-0t64 set to manually installed.
+2026-10-15T19:36:43.6451545Z libcairo2 is already the newest version (1.18.0-3build1).
+2026-10-15T19:36:43.6452380Z libcairo2 set to manually installed.
+2026-10-15T19:36:43.6453066Z libcups2t64 is already the newest version (2.4.7-1.2ubuntu7.14).
+2026-10-15T19:36:43.6453824Z libcups2t64 set to manually installed.
+2026-10-15T19:36:43.6454390Z libdbus-1-3 is already the newest version (1.14.10-4ubuntu4.1).
+2026-10-15T19:36:43.6455656Z libdbus-1-3 set to manually installed.
+2026-10-15T19:36:43.6456254Z libdrm2 is already the newest version (2.4.125-1ubuntu0.1~24.04.2).
+2026-10-15T19:36:43.6456760Z libdrm2 set to manually installed.
+2026-10-15T19:36:43.6457373Z libgbm1 is already the newest version (25.2.8-0ubuntu0.24.04.4).
+2026-10-15T19:36:43.6458039Z libgbm1 set to manually installed.
+2026-10-15T19:36:43.6458602Z libglib2.0-0t64 is already the newest version (2.80.0-6ubuntu3.9).
+2026-10-15T19:36:43.6459096Z libglib2.0-0t64 set to manually installed.
+2026-10-15T19:36:43.6459674Z libnspr4 is already the newest version (2:4.35-1.1build1).
+2026-10-15T19:36:43.6460258Z libnspr4 set to manually installed.
+2026-10-15T19:36:43.6460796Z libnss3 is already the newest version (2:3.98-1ubuntu0.2).
+2026-10-15T19:36:43.6461295Z libnss3 set to manually installed.
+2026-10-15T19:36:43.6461776Z libpango-1.0-0 is already the newest version (1.52.1+ds-1build1).
+2026-10-15T19:36:43.6462327Z libpango-1.0-0 set to manually installed.
+2026-10-15T19:36:43.6463019Z libx11-6 is already the newest version (2:1.8.7-1ubuntu0.1).
+2026-10-15T19:36:43.6463625Z libx11-6 set to manually installed.
+2026-10-15T19:36:43.6464218Z libxcb1 is already the newest version (1.15-1ubuntu2).
+2026-10-15T19:36:43.6464872Z libxcb1 set to manually installed.
+2026-10-15T19:36:43.6465734Z libxcomposite1 is already the newest version (1:0.4.5-1build3).
+2026-10-15T19:36:43.6466353Z libxcomposite1 set to manually installed.
+2026-10-15T19:36:43.6466906Z libxdamage1 is already the newest version (1:1.1.6-1build1).
+2026-10-15T19:36:43.6467373Z libxdamage1 set to manually installed.
+2026-10-15T19:36:43.6468009Z libxext6 is already the newest version (2:1.3.4-1build2).
+2026-10-15T19:36:43.6468792Z libxext6 set to manually installed.
+2026-10-15T19:36:43.6469427Z libxfixes3 is already the newest version (1:6.0.0-2build1).
+2026-10-15T19:36:43.6470853Z libxfixes3 set to manually installed.
+2026-10-15T19:36:43.6471507Z libxkbcommon0 is already the newest version (1.6.0-1build1).
+2026-10-15T19:36:43.6472285Z libxkbcommon0 set to manually installed.
+2026-10-15T19:36:43.6473089Z libxrandr2 is already the newest version (2:1.5.2-2build1).
+2026-10-15T19:36:43.6473922Z libxrandr2 set to manually installed.
+2026-10-15T19:36:43.6474911Z xvfb is already the newest version (2:21.1.12-1ubuntu1.8).
+2026-10-15T19:36:43.6476088Z fonts-noto-color-emoji is already the newest version (2.047-0ubuntu0.24.04.1).
+2026-10-15T19:36:43.6477099Z libfontconfig1 is already the newest version (2.15.0-1.1ubuntu2).
+2026-10-15T19:36:43.6477888Z libfontconfig1 set to manually installed.
+2026-10-15T19:36:43.6478674Z libfreetype6 is already the newest version (2.13.2+dfsg-1ubuntu0.2).
+2026-10-15T19:36:43.6479435Z libfreetype6 set to manually installed.
+2026-10-15T19:36:43.6480213Z fonts-liberation is already the newest version (1:2.1.5-3).
+2026-10-15T19:36:43.6480988Z fonts-liberation set to manually installed.
+2026-10-15T19:36:43.6481680Z The following additional packages will be installed:
+2026-10-15T19:36:43.6482433Z   xfonts-encodings xfonts-utils
+2026-10-15T19:36:43.6483022Z Recommended packages:
+2026-10-15T19:36:43.6483587Z   fonts-ipafont-mincho fonts-tlwg-loma
+2026-10-15T19:36:43.6838423Z The following NEW packages will be installed:
+2026-10-15T19:36:43.6839100Z   fonts-freefont-ttf fonts-ipafont-gothic fonts-tlwg-loma-otf fonts-unifont
+2026-10-15T19:36:43.6857891Z   fonts-wqy-zenhei xfonts-cyrillic xfonts-encodings xfonts-scalable
+2026-10-15T19:36:43.6858477Z   xfonts-utils
+2026-10-15T19:36:43.7054459Z 0 upgraded, 9 newly installed, 0 to remove and 43 not upgraded.
+2026-10-15T19:36:43.7055297Z Need to get 21.1 MB of archives.
+2026-10-15T19:36:43.7056234Z After this operation, 79.5 MB of additional disk space will be used.
+2026-10-15T19:36:43.7056858Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-10-15T19:36:43.7937453Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-ipafont-gothic all 00303-21ubuntu1 [3513 kB]
+2026-10-15T19:36:44.0534247Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 fonts-freefont-ttf all 20211204+svn4273-2 [5641 kB]
+2026-10-15T19:36:44.1403317Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-tlwg-loma-otf all 1:0.7.3-1 [107 kB]
+2026-10-15T19:36:44.1697458Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-unifont all 1:15.1.01-1build1 [2993 kB]
+2026-10-15T19:36:44.2288334Z Get:6 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-wqy-zenhei all 0.9.45-8 [7472 kB]
+2026-10-15T19:36:44.3267351Z Get:7 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 xfonts-encodings all 1:1.0.5-0ubuntu2 [578 kB]
+2026-10-15T19:36:44.3594032Z Get:8 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 xfonts-utils amd64 1:7.7+6build3 [94.4 kB]
+2026-10-15T19:36:44.3894631Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 xfonts-cyrillic all 1:1.0.5+nmu1 [384 kB]
+2026-10-15T19:36:44.4209458Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 xfonts-scalable all 1:1.0.3-1.3 [304 kB]
+2026-10-15T19:36:44.6993562Z Fetched 21.1 MB in 1s (29.0 MB/s)
+2026-10-15T19:36:44.7320641Z Selecting previously unselected package fonts-ipafont-gothic.
+2026-10-15T19:36:44.7521076Z (Reading database ... 
+2026-10-15T19:36:44.7521834Z (Reading database ... 5%
+2026-10-15T19:36:44.7522364Z (Reading database ... 10%
+2026-10-15T19:36:44.7522949Z (Reading database ... 15%
+2026-10-15T19:36:44.7523613Z (Reading database ... 20%
+2026-10-15T19:36:44.7524951Z (Reading database ... 25%
+2026-10-15T19:36:44.7525761Z (Reading database ... 30%
+2026-10-15T19:36:44.7526151Z (Reading database ... 35%
+2026-10-15T19:36:44.7526572Z (Reading database ... 40%
+2026-10-15T19:36:44.7526988Z (Reading database ... 45%
+2026-10-15T19:36:44.7527426Z (Reading database ... 50%
+2026-10-15T19:36:44.7564102Z (Reading database ... 55%
+2026-10-15T19:36:44.8353485Z (Reading database ... 60%
+2026-10-15T19:36:45.0840589Z (Reading database ... 65%
+2026-10-15T19:36:45.2326795Z (Reading database ... 70%
+2026-10-15T19:36:45.4335822Z (Reading database ... 75%
+2026-10-15T19:36:45.5414051Z (Reading database ... 80%
+2026-10-15T19:36:45.7375076Z (Reading database ... 85%
+2026-10-15T19:36:45.9060809Z (Reading database ... 90%
+2026-10-15T19:36:46.0507160Z (Reading database ... 95%
+2026-10-15T19:36:46.0507813Z (Reading database ... 100%
+2026-10-15T19:36:46.0508748Z (Reading database ... 203540 files and directories currently installed.)
+2026-10-15T19:36:46.0554257Z Preparing to unpack .../0-fonts-ipafont-gothic_00303-21ubuntu1_all.deb ...
+2026-10-15T19:36:46.0728212Z Unpacking fonts-ipafont-gothic (00303-21ubuntu1) ...
+2026-10-15T19:36:46.3664791Z Selecting previously unselected package fonts-freefont-ttf.
+2026-10-15T19:36:46.3797334Z Preparing to unpack .../1-fonts-freefont-ttf_20211204+svn4273-2_all.deb ...
+2026-10-15T19:36:46.3809411Z Unpacking fonts-freefont-ttf (20211204+svn4273-2) ...
+2026-10-15T19:36:46.5040646Z Selecting previously unselected package fonts-tlwg-loma-otf.
+2026-10-15T19:36:46.5172060Z Preparing to unpack .../2-fonts-tlwg-loma-otf_1%3a0.7.3-1_all.deb ...
+2026-10-15T19:36:46.5184883Z Unpacking fonts-tlwg-loma-otf (1:0.7.3-1) ...
+2026-10-15T19:36:46.5379338Z Selecting previously unselected package fonts-unifont.
+2026-10-15T19:36:46.5511195Z Preparing to unpack .../3-fonts-unifont_1%3a15.1.01-1build1_all.deb ...
+2026-10-15T19:36:46.5521515Z Unpacking fonts-unifont (1:15.1.01-1build1) ...
+2026-10-15T19:36:46.7906483Z Selecting previously unselected package fonts-wqy-zenhei.
+2026-10-15T19:36:46.8040394Z Preparing to unpack .../4-fonts-wqy-zenhei_0.9.45-8_all.deb ...
+2026-10-15T19:36:46.8140298Z Unpacking fonts-wqy-zenhei (0.9.45-8) ...
+2026-10-15T19:36:47.4224011Z Selecting previously unselected package xfonts-encodings.
+2026-10-15T19:36:47.4356799Z Preparing to unpack .../5-xfonts-encodings_1%3a1.0.5-0ubuntu2_all.deb ...
+2026-10-15T19:36:47.4370334Z Unpacking xfonts-encodings (1:1.0.5-0ubuntu2) ...
+2026-10-15T19:36:47.4633639Z Selecting previously unselected package xfonts-utils.
+2026-10-15T19:36:47.4767406Z Preparing to unpack .../6-xfonts-utils_1%3a7.7+6build3_amd64.deb ...
+2026-10-15T19:36:47.4781158Z Unpacking xfonts-utils (1:7.7+6build3) ...
+2026-10-15T19:36:47.5332316Z Selecting previously unselected package xfonts-cyrillic.
+2026-10-15T19:36:47.5467124Z Preparing to unpack .../7-xfonts-cyrillic_1%3a1.0.5+nmu1_all.deb ...
+2026-10-15T19:36:47.5480268Z Unpacking xfonts-cyrillic (1:1.0.5+nmu1) ...
+2026-10-15T19:36:47.5746762Z Selecting previously unselected package xfonts-scalable.
+2026-10-15T19:36:47.5882290Z Preparing to unpack .../8-xfonts-scalable_1%3a1.0.3-1.3_all.deb ...
+2026-10-15T19:36:47.5892156Z Unpacking xfonts-scalable (1:1.0.3-1.3) ...
+2026-10-15T19:36:47.6361568Z Setting up fonts-wqy-zenhei (0.9.45-8) ...
+2026-10-15T19:36:47.6487255Z Setting up fonts-freefont-ttf (20211204+svn4273-2) ...
+2026-10-15T19:36:47.6509358Z Setting up fonts-tlwg-loma-otf (1:0.7.3-1) ...
+2026-10-15T19:36:47.6531431Z Setting up xfonts-encodings (1:1.0.5-0ubuntu2) ...
+2026-10-15T19:36:47.6553708Z Setting up fonts-ipafont-gothic (00303-21ubuntu1) ...
+2026-10-15T19:36:47.6621898Z update-alternatives: using /usr/share/fonts/opentype/ipafont-gothic/ipag.ttf to provide /usr/share/fonts/truetype/fonts-japanese-gothic.ttf (fonts-japanese-gothic.ttf) in auto mode
+2026-10-15T19:36:47.6640395Z Setting up fonts-unifont (1:15.1.01-1build1) ...
+2026-10-15T19:36:47.6662811Z Setting up xfonts-utils (1:7.7+6build3) ...
+2026-10-15T19:36:47.6709440Z Setting up xfonts-cyrillic (1:1.0.5+nmu1) ...
+2026-10-15T19:36:47.7012507Z Setting up xfonts-scalable (1:1.0.3-1.3) ...
+2026-10-15T19:36:47.7280967Z Processing triggers for man-db (2.12.0-4build2) ...
+2026-10-15T19:36:47.7305159Z Not building database; man-db/auto-update is not 'true'.
+2026-10-15T19:36:47.7321629Z Processing triggers for fontconfig (2.15.0-1.1ubuntu2) ...
+2026-10-15T19:36:48.4212546Z 
+2026-10-15T19:36:48.4213474Z Running kernel seems to be up-to-date.
+2026-10-15T19:36:48.4214405Z 
+2026-10-15T19:36:48.4214716Z No services need to be restarted.
+2026-10-15T19:36:48.4215276Z 
+2026-10-15T19:36:48.4215722Z No containers need to be restarted.
+2026-10-15T19:36:48.4216072Z 
+2026-10-15T19:36:48.4216412Z No user sessions are running outdated binaries.
+2026-10-15T19:36:48.4216759Z 
+2026-10-15T19:36:48.4217292Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-10-15T19:36:49.6099896Z Downloading Chrome for Testing 151.0.7922.34 (playwright chromium v1234) from https://cdn.playwright.dev/builds/cft/151.0.7922.34/linux64/chrome-linux64.zip
+2026-10-15T19:36:50.6400818Z |                                                                                |   0% of 184.3 MiB
+2026-10-15T19:36:50.8229212Z |■■■■■■■■                                                                        |  10% of 184.3 MiB
+2026-10-15T19:36:50.9302634Z |■■■■■■■■■■■■■■■■                                                                |  20% of 184.3 MiB
+2026-10-15T19:36:50.9857048Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 184.3 MiB
+2026-10-15T19:36:51.0649445Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 184.3 MiB
+2026-10-15T19:36:51.1256841Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 184.3 MiB
+2026-10-15T19:36:51.2003412Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 184.3 MiB
+2026-10-15T19:36:51.2564409Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 184.3 MiB
+2026-10-15T19:36:51.3270856Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 184.3 MiB
+2026-10-15T19:36:51.4153700Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 184.3 MiB
+2026-10-15T19:36:51.4721325Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 184.3 MiB
+2026-10-15T19:36:54.8320295Z Chrome for Testing 151.0.7922.34 (playwright chromium v1234) downloaded to /home/runner/.cache/ms-playwright/chromium-1234
+2026-10-15T19:36:54.8324823Z Downloading FFmpeg (playwright ffmpeg v1011) from https://cdn.playwright.dev/dbazure/download/playwright/builds/ffmpeg/1011/ffmpeg-linux.zip
+2026-10-15T19:36:55.8922796Z |                                                                                |   0% of 2.3 MiB
+2026-10-15T19:36:55.9239459Z |■■■■■■■■                                                                        |  10% of 2.3 MiB
+2026-10-15T19:36:55.9418184Z |■■■■■■■■■■■■■■■■                                                                |  20% of 2.3 MiB
+2026-10-15T19:36:55.9542830Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 2.3 MiB
+2026-10-15T19:36:55.9664078Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 2.3 MiB
+2026-10-15T19:36:55.9780813Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 2.3 MiB
+2026-10-15T19:36:55.9818801Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 2.3 MiB
+2026-10-15T19:36:55.9854167Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 2.3 MiB
+2026-10-15T19:36:55.9939882Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 2.3 MiB
+2026-10-15T19:36:55.9972510Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 2.3 MiB
+2026-10-15T19:36:56.0001874Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 2.3 MiB
+2026-10-15T19:36:56.0577007Z FFmpeg (playwright ffmpeg v1011) downloaded to /home/runner/.cache/ms-playwright/ffmpeg-1011
+2026-10-15T19:36:56.0579781Z Downloading Chrome Headless Shell 151.0.7922.34 (playwright chromium-headless-shell v1234) from https://cdn.playwright.dev/builds/cft/151.0.7922.34/linux64/chrome-headless-shell-linux64.zip
+2026-10-15T19:36:57.1068630Z |                                                                                |   0% of 114.7 MiB
+2026-10-15T19:36:57.2846540Z |■■■■■■■■                                                                        |  10% of 114.7 MiB
+2026-10-15T19:36:57.3482719Z |■■■■■■■■■■■■■■■■                                                                |  20% of 114.7 MiB
+2026-10-15T19:36:57.4142870Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 114.7 MiB
+2026-10-15T19:36:57.4537589Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 114.7 MiB
+2026-10-15T19:36:57.4905214Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 114.7 MiB
+2026-10-15T19:36:57.5412275Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 114.7 MiB
+2026-10-15T19:36:57.5759129Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 114.7 MiB
+2026-10-15T19:36:57.6170603Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 114.7 MiB
+2026-10-15T19:36:57.6680257Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 114.7 MiB
+2026-10-15T19:36:57.7021461Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 114.7 MiB
+2026-10-15T19:37:00.1563927Z Chrome Headless Shell 151.0.7922.34 (playwright chromium-headless-shell v1234) downloaded to /home/runner/.cache/ms-playwright/chromium_headless_shell-1234
+2026-10-15T19:37:00.1888173Z ##[group]Run npm run test:homepage -- dist
+2026-10-15T19:37:00.1888693Z [36;1mnpm run test:homepage -- dist[0m
+2026-10-15T19:37:00.1929555Z shell: /usr/bin/bash -e {0}
+2026-10-15T19:37:00.1930000Z env:
+2026-10-15T19:37:00.1930350Z   EXPERIENCE_QA_OUTPUT: test-results/homepage
+2026-10-15T19:37:00.1930836Z   EXPERIENCE_QA_TIMEOUT: 600000
+2026-10-15T19:37:00.1931197Z ##[endgroup]
+2026-10-15T19:37:00.2938887Z 
+2026-10-15T19:37:00.2939783Z > kyoto-guided-experience@0.2.0 test:homepage
+2026-10-15T19:37:00.2940375Z > node tests/browser-homepage.mjs dist
+2026-10-15T19:37:00.2940626Z 
+2026-10-15T19:37:07.6842226Z PASS default-explore-has-real-kyoto-canvas
+2026-10-15T19:37:07.7220631Z PASS default-local-scene-does-not-fetch-discovery-or-tiles
+2026-10-15T19:37:07.8679842Z PASS desktop-en-layout
+2026-10-15T19:37:20.4920662Z PASS homepage-pavement-click-walks-without-old-encounter-markers
+2026-10-15T19:37:38.3081093Z PASS search-typing-does-not-move-traveller
+2026-10-15T19:37:38.3144400Z PASS default-route-has-all-three-sourced-stops
+2026-10-15T19:37:38.3189030Z PASS default-google-maps-is-real-coordinate-route
+2026-10-15T19:37:40.9122403Z PASS desktop-zh-copy-preserves-scene-position
+2026-10-15T19:37:40.9719620Z PASS desktop-zh-curated-route-and-memory-link-localize
+2026-10-15T19:37:52.2041285Z PASS homepage-night-switch-preserves-position-and-route
+2026-10-15T19:37:52.6177255Z PASS preserved-experience-links-have-correct-entries
+2026-10-15T19:37:52.6202347Z PASS explore-preserves-all-private-saves
+2026-10-15T19:38:04.4954780Z PASS actual-photon-search-returns-identified-results
+2026-10-15T19:38:07.2479974Z PASS selected-center-retains-provider-source
+2026-10-15T19:38:07.2533569Z PASS non-kyoto-center-shows-geographic-map
+2026-10-15T19:38:12.6560328Z PASS actual-openfreemap-ready
+2026-10-15T19:38:13.9517911Z PASS local-area-renders-actual-building-extrusions
+2026-10-15T19:38:14.4660346Z PASS actual-wikipedia-nearby-produces-sourced-options
+2026-10-15T19:38:16.0389432Z PASS route-choice-updates-ordered-stops-and-map
+2026-10-15T19:38:16.6998333Z PASS mode-change-preserves-selected-center
+2026-10-15T19:38:17.6259450Z PASS invitation-fragment-has-no-participant-credential
+2026-10-15T19:38:20.1722476Z PASS fresh-invite-is-read-only-until-join
+2026-10-15T19:38:22.4009854Z PASS two-browser-clients-share-actual-joined-room
+2026-10-15T19:38:31.0350810Z PASS first-wish-streams-to-other-client
+2026-10-15T19:38:44.9566893Z PASS country-result-shows-country-context-without-nearby-walk
+2026-10-15T19:38:49.1854372Z PASS two-participants-have-distinct-contributions
+2026-10-15T19:38:50.2485225Z PASS unconfigured-ai-never-claims-a-generated-plan
+2026-10-15T19:38:51.4856237Z PASS world-order-line-retains-both-destinations
+2026-10-15T19:38:53.5635318Z PASS room-reload-restores-participant-and-current-snapshot
+2026-10-15T19:38:57.6017802Z PASS removing-own-wish-updates-other-client
+2026-10-15T19:39:01.3999726Z PASS shared-place-can-open-local-geographic-preview
+2026-10-15T19:39:04.1331954Z PASS back-world-restores-shared-context
+2026-10-15T19:39:04.1943298Z PASS alice-shared-journey-preserves-private-saves
+2026-10-15T19:39:04.2047229Z PASS bob-shared-journey-preserves-private-saves
+2026-10-15T19:39:04.6887393Z PASS private-notes-and-credentials-excluded-from-room
+2026-10-15T19:39:09.7273654Z PASS phone-en-no-horizontal-overflow
+2026-10-15T19:39:09.9404691Z PASS phone-search-entry-keeps-traveller-position
+2026-10-15T19:39:09.9984535Z PASS phone-zh-no-horizontal-overflow
+2026-10-15T19:39:10.7757985Z PASS phone-zh-controls-and-legacy-links-localize
+2026-10-15T19:39:11.1786858Z PASS phone-together-zh-no-horizontal-overflow
+2026-10-15T19:39:12.1937684Z PASS phone-together-room-controls-are-operable
+2026-10-15T19:39:13.0371265Z PASS phone-together-en-no-horizontal-overflow
+2026-10-15T19:39:13.0860311Z PASS phone-preserves-existing-private-saves
+2026-10-15T19:39:13.4491929Z PASS blocked-live-search-reports-error-with-query-retained
+2026-10-15T19:39:13.4564931Z PASS blocked-map-has-visible-error
+2026-10-15T19:39:13.5638302Z PASS failed-provider-keeps-private-saves
+2026-10-15T19:49:13.6856697Z FAIL unavailable-room-service-completed
+2026-10-15T19:49:13.8709288Z PASS old-lighting-link-redirects-to-preserved-walk
+2026-10-15T19:49:13.8822096Z PASS alice-no-page-exceptions
+2026-10-15T19:49:13.8864818Z PASS alice-no-console-errors
+2026-10-15T19:49:13.8889266Z PASS alice-requests-use-declared-origins
+2026-10-15T19:49:13.8910786Z PASS bob-no-page-exceptions
+2026-10-15T19:49:13.8941585Z PASS bob-no-console-errors
+2026-10-15T19:49:13.8964658Z PASS bob-requests-use-declared-origins
+2026-10-15T19:49:13.8986085Z PASS mobile-no-page-exceptions
+2026-10-15T19:49:13.9006484Z PASS mobile-no-console-errors
+2026-10-15T19:49:13.9060530Z PASS mobile-requests-use-declared-origins
+2026-10-15T19:49:13.9094911Z PASS unavailable-providers-no-page-exceptions
+2026-10-15T19:49:13.9115584Z PASS unavailable-providers-requests-use-declared-origins
+2026-10-15T19:49:13.9140333Z PASS unavailable-service-no-page-exceptions
+2026-10-15T19:49:13.9161152Z PASS unavailable-service-requests-use-declared-origins
+2026-10-15T19:49:13.9180888Z PASS legacy-redirect-no-page-exceptions
+2026-10-15T19:49:13.9201449Z PASS legacy-redirect-no-console-errors
+2026-10-15T19:49:13.9226313Z PASS legacy-redirect-requests-use-declared-origins
+2026-10-15T19:49:13.9604809Z {"passed":63,"failed":1,"fatal":false}
+2026-10-15T19:49:13.9792615Z ##[error]Process completed with exit code 1.
+2026-10-15T19:49:13.9881158Z ##[group]Run actions/upload-artifact@v4
+2026-10-15T19:49:13.9881581Z with:
+2026-10-15T19:49:13.9881966Z   name: homepage-browser-evidence
+2026-10-15T19:49:13.9882788Z   path: experience/test-results/homepage
+2026-10-15T19:49:13.9883188Z   if-no-files-found: ignore
+2026-10-15T19:49:13.9883598Z   compression-level: 6
+2026-10-15T19:49:13.9883935Z   overwrite: false
+2026-10-15T19:49:13.9884277Z   include-hidden-files: false
+2026-10-15T19:49:13.9884671Z ##[endgroup]
+2026-10-15T19:49:14.1532708Z (node:3498) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-15T19:49:14.1534297Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-15T19:49:14.1641017Z With the provided path, there will be 13 files uploaded
+2026-10-15T19:49:14.1642113Z Artifact name is valid!
+2026-10-15T19:49:14.1642708Z Root directory input is valid!
+2026-10-15T19:49:14.4663767Z Beginning upload of artifact content to blob storage
+2026-10-15T19:49:14.7199734Z (node:3498) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-15T19:49:15.3476982Z Uploaded bytes 6369520
+2026-10-15T19:49:15.3895800Z Finished uploading artifact content to blob storage!
+2026-10-15T19:49:15.3896878Z SHA256 digest of uploaded artifact zip is 1acd1df7efb56d89195ae6ed673c4927e6f47b91656b311eec9b8204cb251134
+2026-10-15T19:49:15.3897858Z Finalizing artifact upload
+2026-10-15T19:49:15.6305893Z Artifact homepage-browser-evidence.zip successfully finalized. Artifact ID 12002616240
+2026-10-15T19:49:15.6306869Z Artifact homepage-browser-evidence has been successfully uploaded! Final size is 6369520 bytes. Artifact ID is 12002616240
+2026-10-15T19:49:15.6311710Z Artifact download URL: https://github.com/PaperStrange/TourGuideAI/actions/runs/38795043403/artifacts/12002616240
+2026-10-15T19:49:15.6508142Z Post job cleanup.
+2026-10-15T19:49:15.7390974Z [command]/usr/bin/git version
+2026-10-15T19:49:15.7432200Z git version 2.55.0
+2026-10-15T19:49:15.7467670Z Temporarily overriding HOME='/home/runner/work/_temp/e26cf555-2d60-409d-a79a-e1f05fdcb41c' before making global git config changes
+2026-10-15T19:49:15.7469130Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-15T19:49:15.7474498Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/TourGuideAI/TourGuideAI
+2026-10-15T19:49:15.7514975Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-15T19:49:15.7550645Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-15T19:49:15.7765722Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-15T19:49:15.7795060Z http.https://github.com/.extraheader
+2026-10-15T19:49:15.7805671Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-15T19:49:15.7842467Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-15T19:49:15.8077094Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-15T19:49:15.8121892Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-15T19:49:15.8544683Z Cleaning up orphan processes
+2026-10-15T19:49:15.8960346Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

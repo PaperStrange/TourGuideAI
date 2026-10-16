@@ -1,11 +1,40 @@
 # Agent checkpoint · Explore and Together homepage
 
 2026-10-16 · Lead owns integration, commits and publication.
-**State: next sprint targets navigation, language clarity and loading latency. Plan precedes an independent walkthrough; backend tests stay in this workspace.**
+**State: quality fixes are published and source is synchronized through `54fdbaf`. Final full original-walk regression and CI are running. Q03's latency target remains open. Backend tests stay in this workspace.**
 
 ## Resume from saved work
 
 - Workspace: `/workspace/TourGuideAI`; source branch: `chore-sow-delivery-plan`.
+- Quality runtime: `828a405194d82e465887b15c8bcaedfaa3d04f9d`.
+  [Sprint plan](sprint-quality-20261016.md) was issued and pushed as `a834cc5`
+  before implementation. Pages runtime commit is `c3bcceb` and package manifest is
+  `8751ba4ecb6f6fcec70d1c2d25cff41b074671ea4433d3bf5b4a087ac810d2fb`.
+  [CI for the preceding runtime](https://github.com/PaperStrange/TourGuideAI/actions/runs/38847943226)
+  passes perspective/travel. Its homepage failure identified the search-grid sizing
+  issue repaired in `d21c708`; the original walk passed 69 checks before a stale
+  localized-credits selector prevented a click. The driver is repaired and its
+  focused credits/attribution/return checks pass 3/3. [Final source CI](https://github.com/PaperStrange/TourGuideAI/actions/runs/38851871150)
+  runs on `54fdbaf9bed4328e36a70aeee23e73d0d4aed564`; it is currently in progress.
+- Candidate fixes preserve locale and route origin, restore phone navigation,
+  constrain the phone scene width, load the street engine on demand, suspend hidden
+  scene updates, and provide map/lighting recovery. The approved model, photographic
+  environments and architectural profile are retained. Full EN/ZH desktop/phone
+  walkthrough passes 264 checks on package `6cdc0ad9`. The CSS repair passes six
+  matching-browser layout stages. Final startup package `8751ba4e` passes 65 homepage,
+  8 startup interaction and 19 original-walk pause/appearance checks. Unit/service
+  suites pass 89/13. CI perspective 80/80 and travel 73/73 are preceding-runtime
+  results; their asset binding applies to the CSS package `9a55e7b5`.
+  [Quality evidence](../evidence/quality-20261016/README.md) records the separate
+  conditions. The preceding CSS publication matches all 79 files and passes 38
+  hosted connection, 21 homepage/phone and 9 navigation checks. Final startup
+  publication also matches all 79 files and passes 21 actual hosted homepage/phone
+  checks. All 12 final timing observations use the published bytes and record no
+  failed requests or page exceptions. Together street payload and hidden updates/
+  draws are zero; Explore draws once at startup. Warm Together locale actions
+  take 1177.8 / 1113.4 / 1134.5 ms and miss the unchanged <500 ms target. Q03 remains
+  open P1. Retain functional fixes; investigate the remaining delay before broader
+  expansion. The original baseline remains faster for warm Explore readiness.
 - Current milestone starts from checkpoint commit `3794918`.
 - Local connection runtime: `bdc85fd4cd5dd90f390f042c0112b8d80fc19768`;
   verified Pages runtime: `53cf8647a46d365bf2b7774e0971d9bcd24b1711`;
@@ -87,12 +116,12 @@ Ginza remains a separate architectural study.
 
 | Owner | Current boundary | Next action |
 |---|---|---|
-| Lead | Home UI/copy, integration, checkpoint, release | Localize current journey, correct navigation/claims, integrate measured fixes and synchronize release |
-| Engineering | Runtime loading/pause, world map and performance evidence | Profile actual latency; improve loading and hidden-view cost without reducing art quality |
-| World-content | Cross-entry navigation, language and source meanings | Audit and repair old destinations/labels and locale loss; retain historical URL compatibility |
-| QA-release | Browser drivers and independent walkthrough | Reproduce current CI failures; exercise EN/ZH desktop/phone journeys and measure before/after |
-| Product-design | Sprint plan, current delivery board and lean iteration | Prioritize traveler outcomes, acceptance criteria and review gates before execution |
-| Art/UX | Detailed Kyoto runtime appearance and visual review | Completed matched lighting/material review; realism remains a user review priority |
+| Lead | Integration, checkpoint, release | Complete publication evidence and source synchronization; carry the explicit Q03 latency limit |
+| Engineering | Runtime loading/pause, map and performance | Final matched timing; investigate remaining latency without reducing art detail |
+| World-content | Navigation, language and source meanings | Completed locale/link audit; next review recognizable building references and source quality |
+| QA-release | Browser drivers and independent walkthrough | Complete final original-walk regression and actual published homepage verification |
+| Product-design | Sprint plan, delivery board and lean iteration | Record delivered scope and open latency target; use Sprint 2A/2B experiential exits |
+| Art/UX | Detailed Kyoto appearance and visual review | Retained day/night art reviewed; next compare identifiable facade cues and coherent lighting |
 
 Paths in the ownership table are relative to `experience/`. Do not edit another
 owner's files; report interface conflicts to that owner. Preserve unrelated changes.

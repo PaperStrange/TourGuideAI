@@ -1,0 +1,112 @@
+﻿2026-10-16T03:41:03.6910441Z ##[group]Run npm run test:browser -- dist
+2026-10-16T03:41:03.6910840Z [36;1mnpm run test:browser -- dist[0m
+2026-10-16T03:41:03.6973101Z shell: /usr/bin/bash -e {0}
+2026-10-16T03:41:03.6973369Z env:
+2026-10-16T03:41:03.6973605Z   EXPERIENCE_QA_OUTPUT: test-results/browser
+2026-10-16T03:41:03.6973952Z   EXPERIENCE_QA_TIMEOUT: 600000
+2026-10-16T03:41:03.6974206Z ##[endgroup]
+2026-10-16T03:41:03.8025575Z 
+2026-10-16T03:41:03.8026123Z > kyoto-guided-experience@0.2.0 test:browser
+2026-10-16T03:41:03.8026775Z > node tests/browser-check.mjs dist
+2026-10-16T03:41:03.8026990Z 
+2026-10-16T03:41:18.8116640Z PASS actual-webgl-scene-ready
+2026-10-16T03:41:18.8178264Z PASS empty-walk-explains-why-sharing-is-disabled
+2026-10-16T03:41:22.9810891Z PASS chinese-goals-controls-and-camera-guidance
+2026-10-16T03:41:22.9820651Z PASS locale-preserves-position-and-journey
+2026-10-16T03:41:27.7487211Z PASS day-applies-the-local-environment-and-unlit-fixtures
+2026-10-16T03:41:38.2429402Z PASS night-applies-distinct-local-environment-lights-and-emission
+2026-10-16T03:41:38.5264698Z PASS day-night-change-appears-in-actual-fixed-camera-pixels
+2026-10-16T03:41:38.5295243Z PASS appearance-switch-preserves-opening-camera-and-world
+2026-10-16T03:41:45.2197277Z PASS appearance-controls-translate-and-keep-night-selected
+2026-10-16T03:42:22.4629115Z PASS repeated-warm-switches-do-not-grow-live-renderer-resources
+2026-10-16T03:42:22.5065192Z ACTION Walk right relative to the guided camera
+2026-10-16T03:42:40.4766557Z PASS keyboard-movement-is-camera-relative
+2026-10-16T03:42:41.3818001Z PASS key-release-stops-walking
+2026-10-16T03:42:59.4838958Z PASS blur-event-clears-held-input
+2026-10-16T03:43:47.5152212Z PASS drag-orbits-without-queuing-a-walk
+2026-10-16T03:43:48.4209209Z PASS reduced-motion-orbit-stops-after-release
+2026-10-16T03:44:05.9748823Z PASS walking-adapts-to-rotated-camera
+2026-10-16T03:44:09.5412161Z ACTION Click visible ground after orbit and resize
+2026-10-16T03:44:30.7375173Z PASS actual-raycast-click-reaches-the-world-point
+2026-10-16T03:44:31.6465776Z ACTION Click the actual lower road surface
+2026-10-16T03:44:56.3610013Z PASS road-height-picking-is-not-a-fixed-pavement-plane
+2026-10-16T03:45:00.1497769Z PASS compact-layout-and-canvas-fit-after-capture
+2026-10-16T03:45:00.1911664Z PASS compact-zh-appearance-controls-fit-and-remain-reachable
+2026-10-16T03:45:03.8060082Z PASS compact-en-appearance-controls-fit-and-remain-reachable
+2026-10-16T03:45:19.3894664Z PASS reset-view-preserves-position-and-journey
+2026-10-16T03:46:51.9030882Z PASS north-facade-blocks-forward-motion
+2026-10-16T03:46:52.2021611Z ACTION Walk through the journey control to crossing
+2026-10-16T03:47:04.4113357Z PROGRESS crossing: 6055ms, tick 928, position 27.677,4.319
+2026-10-16T03:47:10.8472243Z PROGRESS crossing: 12495ms, tick 934, position 27.239,4.193
+2026-10-16T03:47:17.0441339Z PROGRESS crossing: 18694ms, tick 940, position 26.801,4.067
+2026-10-16T03:47:23.1827367Z PROGRESS crossing: 24833ms, tick 946, position 26.363,3.941
+2026-10-16T03:47:29.3244743Z PROGRESS crossing: 30974ms, tick 952, position 25.925,3.815
+2026-10-16T03:47:35.4870493Z PROGRESS crossing: 37136ms, tick 958, position 25.487,3.689
+2026-10-16T03:47:41.5484489Z PROGRESS crossing: 43198ms, tick 964, position 25.049,3.563
+2026-10-16T03:47:47.6710836Z PROGRESS crossing: 49321ms, tick 970, position 24.611,3.437
+2026-10-16T03:47:53.7607390Z PROGRESS crossing: 55411ms, tick 976, position 24.173,3.311
+2026-10-16T03:47:59.7080511Z PROGRESS crossing: 61357ms, tick 982, position 23.735,3.185
+2026-10-16T03:48:05.7556290Z PROGRESS crossing: 67405ms, tick 988, position 23.297,3.059
+2026-10-16T03:48:11.7197587Z PROGRESS crossing: 73370ms, tick 994, position 22.859,2.933
+2026-10-16T03:48:17.6531587Z PROGRESS crossing: 79302ms, tick 1000, position 22.421,2.807
+2026-10-16T03:48:23.6682946Z PROGRESS crossing: 85315ms, tick 1006, position 21.983,2.683
+2026-10-16T03:48:29.5561639Z PROGRESS crossing: 91207ms, tick 1012, position 21.545,2.561
+2026-10-16T03:48:35.4301406Z PROGRESS crossing: 97077ms, tick 1018, position 21.107,2.438
+2026-10-16T03:48:41.3091980Z PROGRESS crossing: 102959ms, tick 1024, position 20.721,2.33
+2026-10-16T03:48:58.8818207Z PASS nearby-prompt-is-stable
+2026-10-16T03:49:10.5835232Z PASS opening-does-not-award-visit-or-source-read
+2026-10-16T03:49:11.8232500Z PASS modal-pauses-movement
+2026-10-16T03:49:11.8669279Z PASS open-card-locale-keeps-state-and-focus
+2026-10-16T03:49:29.6981860Z PASS close-does-not-reopen-and-restores-focus
+2026-10-16T03:49:59.9918199Z PASS source-reading-remains-separate-from-visiting
+2026-10-16T03:50:00.0291083Z PASS choice-records-visit-and-next-target
+2026-10-16T03:50:05.8832772Z PASS note-draft-survives-locale-without-autosaving
+2026-10-16T03:50:17.7123877Z PASS note-draft-survives-close-and-reopen-without-autosaving
+2026-10-16T03:50:23.5773350Z PASS note-input-enforces-500-character-bound
+2026-10-16T03:50:23.6801237Z PASS explicit-note-save-preserves-journey-meaning
+2026-10-16T03:50:41.5211265Z PASS card-close-resumes-walking
+2026-10-16T03:51:09.8342877Z PASS reload-retains-world-position-choices-locale-and-note
+2026-10-16T03:51:09.8909204Z ACTION Walk through the journey control to mitsui
+2026-10-16T03:51:33.3919517Z PROGRESS mitsui: 5891ms, tick 1144, position 22.227,2.514
+2026-10-16T03:51:39.3118049Z PROGRESS mitsui: 11814ms, tick 1150, position 22.683,2.544
+2026-10-16T03:51:45.3100236Z PROGRESS mitsui: 17809ms, tick 1156, position 23.139,2.574
+2026-10-16T03:51:51.2072937Z PROGRESS mitsui: 23711ms, tick 1162, position 23.595,2.604
+2026-10-16T03:51:57.1351151Z PROGRESS mitsui: 29639ms, tick 1168, position 24.051,2.634
+2026-10-16T03:52:03.1118594Z PROGRESS mitsui: 35615ms, tick 1174, position 24.507,2.664
+2026-10-16T03:52:09.0544690Z PROGRESS mitsui: 41558ms, tick 1180, position 24.963,2.694
+2026-10-16T03:52:15.1638359Z PROGRESS mitsui: 47667ms, tick 1186, position 25.419,2.724
+2026-10-16T03:52:21.2650652Z PROGRESS mitsui: 53769ms, tick 1192, position 25.875,2.756
+2026-10-16T03:52:27.4374575Z PROGRESS mitsui: 59938ms, tick 1198, position 26.331,2.789
+2026-10-16T03:52:33.5338452Z PROGRESS mitsui: 66038ms, tick 1204, position 26.787,2.822
+2026-10-16T03:52:39.5962709Z PROGRESS mitsui: 72100ms, tick 1210, position 27.243,2.855
+2026-10-16T03:52:45.6373424Z PROGRESS mitsui: 78141ms, tick 1216, position 27.699,2.888
+2026-10-16T03:52:51.9854804Z PROGRESS mitsui: 84489ms, tick 1222, position 28.155,2.921
+2026-10-16T03:52:58.3100128Z PROGRESS mitsui: 90813ms, tick 1228, position 28.611,2.954
+2026-10-16T03:53:04.4063327Z PROGRESS mitsui: 96910ms, tick 1234, position 29.067,2.987
+2026-10-16T03:53:10.6307355Z PROGRESS mitsui: 103134ms, tick 1240, position 29.523,3.02
+2026-10-16T03:53:16.7818867Z PROGRESS mitsui: 109280ms, tick 1246, position 29.979,3.053
+2026-10-16T03:53:22.8253152Z PROGRESS mitsui: 115329ms, tick 1252, position 30.435,3.086
+2026-10-16T03:53:28.9941612Z PROGRESS mitsui: 121498ms, tick 1258, position 30.891,3.12
+2026-10-16T03:53:35.1578174Z PROGRESS mitsui: 127660ms, tick 1264, position 31.347,3.153
+2026-10-16T03:53:41.1341804Z PROGRESS mitsui: 133637ms, tick 1270, position 31.803,3.186
+2026-10-16T03:53:47.2281112Z PROGRESS mitsui: 139733ms, tick 1276, position 32,3.2
+2026-10-16T03:54:23.7336263Z PASS mitsui-skip-retains-visit-without-planned-station-stop
+2026-10-16T03:54:54.1644828Z ACTION Walk through the journey control to mufg
+2026-10-16T03:55:12.2277915Z PROGRESS mufg: 5982ms, tick 1347, position 31.468,3.158
+2026-10-16T03:55:18.2846566Z PROGRESS mufg: 12037ms, tick 1353, position 31.012,3.122
+2026-10-16T03:55:24.3052816Z PROGRESS mufg: 18059ms, tick 1359, position 30.556,3.086
+2026-10-16T03:55:30.3330322Z PROGRESS mufg: 24087ms, tick 1365, position 30.1,3.05
+2026-10-16T03:55:36.3951250Z PROGRESS mufg: 30146ms, tick 1371, position 29.644,3.014
+2026-10-16T03:55:42.5253820Z PROGRESS mufg: 36277ms, tick 1377, position 29.188,2.978
+2026-10-16T03:55:48.6897835Z PROGRESS mufg: 42443ms, tick 1383, position 28.732,2.942
+2026-10-16T03:55:54.7983197Z PROGRESS mufg: 48550ms, tick 1389, position 28.276,2.906
+2026-10-16T03:56:00.8702066Z PROGRESS mufg: 54625ms, tick 1395, position 27.82,2.87
+2026-10-16T03:56:07.0754187Z PROGRESS mufg: 60828ms, tick 1401, position 27.364,2.834
+2026-10-16T03:56:13.2248521Z PROGRESS mufg: 66979ms, tick 1407, position 26.908,2.798
+2026-10-16T03:56:19.3294470Z PROGRESS mufg: 73083ms, tick 1413, position 26.452,2.762
+2026-10-16T03:56:25.5071615Z PROGRESS mufg: 79260ms, tick 1419, position 25.996,2.726
+2026-10-16T03:56:31.6488036Z PROGRESS mufg: 85403ms, tick 1425, position 25.54,2.69
+2026-10-16T03:56:37.6480258Z PROGRESS mufg: 91402ms, tick 1431, position 25.084,2.654
+2026-10-16T03:56:43.7295969Z PROGRESS mufg: 97480ms, tick 1437, position 24.628,2.618
+2026-10-16T03:56:49.7614005Z PROGRESS mufg: 103514ms, tick 1443, position 24.172,2.582
+2026-10-16T03:56:51.3189404Z ##[error]The operation was canceled.

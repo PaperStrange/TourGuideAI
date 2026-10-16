@@ -17,6 +17,40 @@ the model stays unconfigured. These observations do not approve emotional value
 or establish the cause of latency. The earlier expansion proposals below remain
 separate backlog items while this quality sprint is active.
 
+Q03 now has measured baseline targets: defer detailed-street payload from Together,
+warm Together language change below 500 ms in each of three matching observations,
+zero hidden scene updates over two seconds, and readiness after an actual rendered
+frame. The final 12 observations prove zero Together street-dependency bytes,
+zero hidden updates/draws/script time and one initial Explore draw across all six
+applicable observations. Warm Together locale actions are **1177.8 / 1113.4 /
+1134.5 ms**: all miss the unchanged <500 ms target. **Release the functional fixes;
+carry Q03 latency as open P1**, with measured performance work before broader
+expansion. Warm Explore readiness improves over the first published candidate but
+remains slower than the original baseline; make no overall 3D-speedup claim.
+
+The full walkthrough passes 264/264 on package `6cdc0ad9…`. CSS-release runtime `d21c708`
+and package `9a55e7b5…` include the CSS search-grid repair, verified by a matching
+6/6 probe and 65/65 homepage suite; 75 other package files are identical. Perspective
+80/80 and companion 73/73 CI checks consume assets identical to that CSS package.
+Pages `86868bf` passes 79/79 file verification plus 38 connection, 21 homepage and
+9 navigation checks, retaining that CSS-package scope. Final runtime `828a405` /
+drivers `54fdbaf` / package `8751ba4e…` passes engineering 8/8, bundled homepage 65/65,
+original-walk pause/appearance/startup 19/19 and localized credits/license/save-return
+3/3. Pages `c3bcceb` passes 79/79 file verification and 21/21 actual homepage/phone
+checks. Final local original-walk and CI `38851871150` reruns remain pending after
+the prior license-link driver failure was corrected; Q00 is not closed. Exact
+hashes, performance values and package scope limits are in the sprint acceptance table.
+The English fallback-banner/Reset 3.36 px edge overlap is accepted as P2 spacing
+polish after readable text and actual Reset/Retry checks. This sprint retains
+existing art. Recognizable building features/lighting and meaningful continuous
+exploration remain the next product priorities; their value is not established by
+navigation, copy or latency checks.
+Concrete [2A/2B exit criteria](sprint-quality-20261016.md#concrete-exits-for-the-existing-sprint-2a2b-proposal)
+now tie source-recognizable art and continuous player response to an actual
+approach/discovery/pause, followed conditionally by a deliberate personal moment.
+They preserve the existing bounded experiment and separate technical proof from
+observed enjoyment, affinity and practical transfer.
+
 ## Delivered baseline · Explore and Together homepage
 
 The approved journey has two modes: a center-place search with live street/3D-map

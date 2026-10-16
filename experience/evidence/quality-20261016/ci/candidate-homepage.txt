@@ -1,0 +1,78 @@
+﻿2026-10-16T03:41:06.3560977Z ##[group]Run npm run test:homepage -- dist
+2026-10-16T03:41:06.3561195Z [36;1mnpm run test:homepage -- dist[0m
+2026-10-16T03:41:06.3611292Z shell: /usr/bin/bash -e {0}
+2026-10-16T03:41:06.3611441Z env:
+2026-10-16T03:41:06.3611572Z   EXPERIENCE_QA_OUTPUT: test-results/homepage
+2026-10-16T03:41:06.3611739Z   EXPERIENCE_QA_TIMEOUT: 600000
+2026-10-16T03:41:06.3611875Z ##[endgroup]
+2026-10-16T03:41:06.4235068Z 
+2026-10-16T03:41:06.4235787Z > kyoto-guided-experience@0.2.0 test:homepage
+2026-10-16T03:41:06.4236177Z > node tests/browser-homepage.mjs dist
+2026-10-16T03:41:06.4236339Z 
+2026-10-16T03:41:13.1547417Z PASS default-explore-has-real-kyoto-canvas
+2026-10-16T03:41:13.1550044Z PASS default-local-scene-does-not-fetch-discovery-or-tiles
+2026-10-16T03:41:13.1565972Z PASS desktop-en-layout
+2026-10-16T03:41:20.1742843Z PASS homepage-pavement-click-walks-without-old-encounter-markers
+2026-10-16T03:41:30.5289868Z PASS search-typing-does-not-move-traveller
+2026-10-16T03:41:30.5336045Z PASS default-route-has-all-three-sourced-stops
+2026-10-16T03:41:30.5363048Z PASS default-google-maps-is-real-coordinate-route
+2026-10-16T03:41:30.5753743Z PASS desktop-zh-copy-preserves-scene-position
+2026-10-16T03:41:32.0173986Z FAIL desktop-zh-curated-route-and-memory-link-localize
+2026-10-16T03:41:38.1560256Z PASS homepage-night-switch-preserves-position-and-route
+2026-10-16T03:41:38.4360544Z PASS preserved-experience-links-have-correct-entries
+2026-10-16T03:41:38.4372600Z PASS explore-preserves-all-private-saves
+2026-10-16T03:41:40.4157989Z PASS actual-photon-search-returns-identified-results
+2026-10-16T03:41:40.9296938Z PASS selected-center-retains-provider-source
+2026-10-16T03:41:40.9369453Z PASS non-kyoto-center-shows-geographic-map
+2026-10-16T03:41:43.1983657Z PASS actual-openfreemap-ready
+2026-10-16T03:41:43.2636763Z PASS local-area-renders-actual-building-extrusions
+2026-10-16T03:41:43.3016222Z PASS actual-wikipedia-nearby-produces-sourced-options
+2026-10-16T03:41:43.5131030Z PASS route-choice-updates-ordered-stops-and-map
+2026-10-16T03:41:43.6681814Z PASS mode-change-preserves-selected-center
+2026-10-16T03:41:43.8492458Z PASS invitation-fragment-has-no-participant-credential
+2026-10-16T03:41:44.8846772Z PASS fresh-invite-is-read-only-until-join
+2026-10-16T03:41:46.9599089Z PASS two-browser-clients-share-actual-joined-room
+2026-10-16T03:41:48.7299823Z PASS first-wish-streams-to-other-client
+2026-10-16T03:41:52.3868408Z PASS country-result-shows-country-context-without-nearby-walk
+2026-10-16T03:41:53.5441899Z PASS two-participants-have-distinct-contributions
+2026-10-16T03:41:54.0696838Z PASS unconfigured-ai-never-claims-a-generated-plan
+2026-10-16T03:41:54.9816994Z PASS world-order-line-retains-both-destinations
+2026-10-16T03:41:56.5835615Z PASS room-reload-restores-participant-and-current-snapshot
+2026-10-16T03:41:58.0161384Z PASS removing-own-wish-updates-other-client
+2026-10-16T03:42:00.6733795Z PASS shared-place-can-open-local-geographic-preview
+2026-10-16T03:42:03.0846632Z PASS back-world-restores-shared-context
+2026-10-16T03:42:03.0946763Z PASS alice-shared-journey-preserves-private-saves
+2026-10-16T03:42:03.0978060Z PASS bob-shared-journey-preserves-private-saves
+2026-10-16T03:42:03.1054666Z PASS private-notes-and-credentials-excluded-from-room
+2026-10-16T03:42:06.1201329Z FAIL phone-en-no-horizontal-overflow
+2026-10-16T03:42:06.3122657Z PASS phone-search-entry-keeps-traveller-position
+2026-10-16T03:42:06.3671944Z FAIL phone-zh-no-horizontal-overflow
+2026-10-16T03:42:06.3706823Z PASS phone-zh-controls-and-legacy-links-localize
+2026-10-16T03:42:06.9997903Z FAIL phone-together-zh-no-horizontal-overflow
+2026-10-16T03:42:07.2164283Z PASS phone-together-room-controls-are-operable
+2026-10-16T03:42:07.4924382Z FAIL phone-together-en-no-horizontal-overflow
+2026-10-16T03:42:07.5562948Z PASS phone-preserves-existing-private-saves
+2026-10-16T03:42:07.7846349Z PASS blocked-live-search-reports-error-with-query-retained
+2026-10-16T03:42:07.7883607Z PASS blocked-map-has-visible-error
+2026-10-16T03:42:07.8726002Z PASS failed-provider-keeps-private-saves
+2026-10-16T03:42:08.0204798Z PASS unavailable-service-disables-creation-with-honest-copy
+2026-10-16T03:42:08.0226027Z PASS unavailable-service-keeps-private-saves
+2026-10-16T03:42:08.1097844Z PASS old-lighting-link-redirects-to-preserved-walk
+2026-10-16T03:42:08.1140436Z PASS alice-no-page-exceptions
+2026-10-16T03:42:08.1154085Z PASS alice-no-console-errors
+2026-10-16T03:42:08.1166036Z PASS alice-requests-use-declared-origins
+2026-10-16T03:42:08.1177931Z PASS bob-no-page-exceptions
+2026-10-16T03:42:08.1188654Z PASS bob-no-console-errors
+2026-10-16T03:42:08.1199757Z PASS bob-requests-use-declared-origins
+2026-10-16T03:42:08.1210439Z PASS mobile-no-page-exceptions
+2026-10-16T03:42:08.1221019Z PASS mobile-no-console-errors
+2026-10-16T03:42:08.1324294Z PASS mobile-requests-use-declared-origins
+2026-10-16T03:42:08.1341421Z PASS unavailable-providers-no-page-exceptions
+2026-10-16T03:42:08.1351883Z PASS unavailable-providers-requests-use-declared-origins
+2026-10-16T03:42:08.1362074Z PASS unavailable-service-no-page-exceptions
+2026-10-16T03:42:08.1372362Z PASS unavailable-service-requests-use-declared-origins
+2026-10-16T03:42:08.1383561Z PASS legacy-redirect-no-page-exceptions
+2026-10-16T03:42:08.1394006Z PASS legacy-redirect-no-console-errors
+2026-10-16T03:42:08.1404520Z PASS legacy-redirect-requests-use-declared-origins
+2026-10-16T03:42:08.1656579Z {"passed":60,"failed":5,"fatal":false}
+2026-10-16T03:42:08.1961943Z ##[error]Process completed with exit code 1.

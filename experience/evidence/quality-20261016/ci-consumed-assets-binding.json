@@ -1,0 +1,271 @@
+{
+  "ciRun": 38847943226,
+  "ciSource": "e9959dff35609324c804821001b8382a27a21a06",
+  "finalPackageManifest": "9a55e7b5d8fdc5c5202f18d81ee4ced0e0b6cfc2c945ef1e66a43088047d2d10",
+  "finalHomepageReportSha256": "6bcaf003e94938d95b74103a311c7384941043562bae1010bf1b4a3a057f5817",
+  "suites": [
+    {
+      "name": "perspective",
+      "report": "ci-e9959df-perspective/perspective-result.json",
+      "reportSha256": "ffe9e4a224eaf3f64632c1c3ff88be5f3345fdaf954069ce435916cf59ae9727",
+      "summary": {
+        "passed": 80,
+        "failed": 0
+      },
+      "browser": "151.0.7922.34",
+      "ciPackageManifest": "6cdc0ad9abd0ed507c3a883299164d04569b7a6ef7c789b30bcec7b8dd064935",
+      "assets": [
+        {
+          "path": "/assets/THIRD-PARTY-NOTICES-BAyKaB7a.js",
+          "ciSha256": "6a8be19b1ec4b1f59be82d31d65f3909958ee2c92a62d75df29b3c3e56be2fae",
+          "finalSha256": "6a8be19b1ec4b1f59be82d31d65f3909958ee2c92a62d75df29b3c3e56be2fae",
+          "matches": true
+        },
+        {
+          "path": "/assets/create-game-BEP8gAiK.js",
+          "ciSha256": "b7937b896f18516f716824ba62cebf53a23082bc6d9cdba65e74769c3a8b4da5",
+          "finalSha256": "b7937b896f18516f716824ba62cebf53a23082bc6d9cdba65e74769c3a8b4da5",
+          "matches": true
+        },
+        {
+          "path": "/assets/kyoto-B8LsYbyV.js",
+          "ciSha256": "2e85113c56e5f03a8abc2be2f4029f5dd8545aa42da7ea8307bb777ba2ee4959",
+          "finalSha256": "2e85113c56e5f03a8abc2be2f4029f5dd8545aa42da7ea8307bb777ba2ee4959",
+          "matches": true
+        },
+        {
+          "path": "/assets/kyoto-sans-BwDDdMo9.woff",
+          "ciSha256": "26df61e42f2efcbd9411f0f5f6cf8ec279514f75974cb231f45524de00d322da",
+          "finalSha256": "26df61e42f2efcbd9411f0f5f6cf8ec279514f75974cb231f45524de00d322da",
+          "matches": true
+        },
+        {
+          "path": "/assets/lighting-lhioegDu.js",
+          "ciSha256": "92163f28208ec423e139d02304157b8a79cdf19ca6e3c5b980d93fe8ce420650",
+          "finalSha256": "92163f28208ec423e139d02304157b8a79cdf19ca6e3c5b980d93fe8ce420650",
+          "matches": true
+        },
+        {
+          "path": "/assets/live-view-3c0rr5sT.js",
+          "ciSha256": "875e4a18047c8e7afc0fde2f01d72aab23d3e778898cd648d21452c79109458b",
+          "finalSha256": "875e4a18047c8e7afc0fde2f01d72aab23d3e778898cd648d21452c79109458b",
+          "matches": true
+        },
+        {
+          "path": "/assets/modulepreload-polyfill-P2Xu9kJm.js",
+          "ciSha256": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f",
+          "finalSha256": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f",
+          "matches": true
+        },
+        {
+          "path": "/assets/perspective-C4aS1dlJ.js",
+          "ciSha256": "05fe1f2f9e5e0f369d26b91db42db9f73e17686858495efb5de91bc1b4c85dd9",
+          "finalSha256": "05fe1f2f9e5e0f369d26b91db42db9f73e17686858495efb5de91bc1b4c85dd9",
+          "matches": true
+        },
+        {
+          "path": "/assets/perspective-DYdayzYg.css",
+          "ciSha256": "7a1f3c5c0963db6d87e1a9a06cb19c92966af7277a9014c09f1d89a905872dff",
+          "finalSha256": "7a1f3c5c0963db6d87e1a9a06cb19c92966af7277a9014c09f1d89a905872dff",
+          "matches": true
+        },
+        {
+          "path": "/assets/places-_F3XEqgH.js",
+          "ciSha256": "29fa0f382345a9f0135e733198bcc2f78240ba7717356d4884fcae34728a5cce",
+          "finalSha256": "29fa0f382345a9f0135e733198bcc2f78240ba7717356d4884fcae34728a5cce",
+          "matches": true
+        },
+        {
+          "path": "/assets/preload-helper-BaNbYf_w.js",
+          "ciSha256": "49e31bba082196935782ac14bbedbc2a8e7c4229f918bc086ab5dd08ca015034",
+          "finalSha256": "49e31bba082196935782ac14bbedbc2a8e7c4229f918bc086ab5dd08ca015034",
+          "matches": true
+        },
+        {
+          "path": "/assets/state-DwlyKbZV.js",
+          "ciSha256": "31fc7fbe10efbacc5e2bd888ba4f9cfc3f39db939fe9e948b9db14e95648ca68",
+          "finalSha256": "31fc7fbe10efbacc5e2bd888ba4f9cfc3f39db939fe9e948b9db14e95648ca68",
+          "matches": true
+        },
+        {
+          "path": "/assets/view-state-Cajz5ATi.js",
+          "ciSha256": "a52f42eada1568efe3a1b1110d62f51cb1f986d07643ca9a2b13bae1df7ee900",
+          "finalSha256": "a52f42eada1568efe3a1b1110d62f51cb1f986d07643ca9a2b13bae1df7ee900",
+          "matches": true
+        },
+        {
+          "path": "/lighting/environments/day-1k.hdr",
+          "ciSha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+          "finalSha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+          "matches": true
+        },
+        {
+          "path": "/lighting/rig.json",
+          "ciSha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+          "finalSha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+          "matches": true
+        },
+        {
+          "path": "/models/shijo-block.glb",
+          "ciSha256": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c",
+          "finalSha256": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c",
+          "matches": true
+        },
+        {
+          "path": "/models/traveller.glb",
+          "ciSha256": "ee5307da94f4d1994e5323a0d31d6f79a255c9f2f10459e0a0e6434fb051fdb1",
+          "finalSha256": "ee5307da94f4d1994e5323a0d31d6f79a255c9f2f10459e0a0e6434fb051fdb1",
+          "matches": true
+        },
+        {
+          "path": "/perspective.html",
+          "ciSha256": "1dc10a3e87ba76d63036d73716f41596da0ff50c43286754065653a60cc399eb",
+          "finalSha256": "1dc10a3e87ba76d63036d73716f41596da0ff50c43286754065653a60cc399eb",
+          "matches": true
+        },
+        {
+          "path": "/perspectives/arrive.jpg",
+          "ciSha256": "5b88a84cd1cdb0297c552f8f5ee0f095d3e54fb4a0cc8b8b9f0afd1c54db3c07",
+          "finalSha256": "5b88a84cd1cdb0297c552f8f5ee0f095d3e54fb4a0cc8b8b9f0afd1c54db3c07",
+          "matches": true
+        },
+        {
+          "path": "/perspectives/daiya-rhythm.jpg",
+          "ciSha256": "231d68794a8eca8f85dfff124a0f233ab9a6d78859d13c49845320f005adfacb",
+          "finalSha256": "231d68794a8eca8f85dfff124a0f233ab9a6d78859d13c49845320f005adfacb",
+          "matches": true
+        },
+        {
+          "path": "/perspectives/mitsui-rhythm.jpg",
+          "ciSha256": "0904230ef4cd0eaf28ae5a092bda9ae03bc01b57d93b5b7db432632393d3e351",
+          "finalSha256": "0904230ef4cd0eaf28ae5a092bda9ae03bc01b57d93b5b7db432632393d3e351",
+          "matches": true
+        }
+      ],
+      "allConsumedAssetsUnchanged": true
+    },
+    {
+      "name": "travel",
+      "report": "ci-e9959df-travel/travel-result.json",
+      "reportSha256": "d76d62affa73714b3ea9e45ecb7f88081361daec2c9e9605131f88128b58ea4b",
+      "summary": {
+        "passed": 73,
+        "failed": 0
+      },
+      "browser": "151.0.7922.34",
+      "ciPackageManifest": "6cdc0ad9abd0ed507c3a883299164d04569b7a6ef7c789b30bcec7b8dd064935",
+      "assets": [
+        {
+          "path": "/assets/THIRD-PARTY-NOTICES-BAyKaB7a.js",
+          "ciSha256": "6a8be19b1ec4b1f59be82d31d65f3909958ee2c92a62d75df29b3c3e56be2fae",
+          "finalSha256": "6a8be19b1ec4b1f59be82d31d65f3909958ee2c92a62d75df29b3c3e56be2fae",
+          "matches": true
+        },
+        {
+          "path": "/assets/kyoto-B8LsYbyV.js",
+          "ciSha256": "2e85113c56e5f03a8abc2be2f4029f5dd8545aa42da7ea8307bb777ba2ee4959",
+          "finalSha256": "2e85113c56e5f03a8abc2be2f4029f5dd8545aa42da7ea8307bb777ba2ee4959",
+          "matches": true
+        },
+        {
+          "path": "/assets/kyoto-sans-BwDDdMo9.woff",
+          "ciSha256": "26df61e42f2efcbd9411f0f5f6cf8ec279514f75974cb231f45524de00d322da",
+          "finalSha256": "26df61e42f2efcbd9411f0f5f6cf8ec279514f75974cb231f45524de00d322da",
+          "matches": true
+        },
+        {
+          "path": "/assets/maps-2TGVCB_Q.js",
+          "ciSha256": "860607252c572fb37867dcab832f9d174df5dca36bfe6d7082837641ea91fc49",
+          "finalSha256": "860607252c572fb37867dcab832f9d174df5dca36bfe6d7082837641ea91fc49",
+          "matches": true
+        },
+        {
+          "path": "/assets/modulepreload-polyfill-P2Xu9kJm.js",
+          "ciSha256": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f",
+          "finalSha256": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f",
+          "matches": true
+        },
+        {
+          "path": "/assets/perspective-C4aS1dlJ.js",
+          "ciSha256": "05fe1f2f9e5e0f369d26b91db42db9f73e17686858495efb5de91bc1b4c85dd9",
+          "finalSha256": "05fe1f2f9e5e0f369d26b91db42db9f73e17686858495efb5de91bc1b4c85dd9",
+          "matches": true
+        },
+        {
+          "path": "/assets/perspective-DYdayzYg.css",
+          "ciSha256": "7a1f3c5c0963db6d87e1a9a06cb19c92966af7277a9014c09f1d89a905872dff",
+          "finalSha256": "7a1f3c5c0963db6d87e1a9a06cb19c92966af7277a9014c09f1d89a905872dff",
+          "matches": true
+        },
+        {
+          "path": "/assets/places-_F3XEqgH.js",
+          "ciSha256": "29fa0f382345a9f0135e733198bcc2f78240ba7717356d4884fcae34728a5cce",
+          "finalSha256": "29fa0f382345a9f0135e733198bcc2f78240ba7717356d4884fcae34728a5cce",
+          "matches": true
+        },
+        {
+          "path": "/assets/preload-helper-BaNbYf_w.js",
+          "ciSha256": "49e31bba082196935782ac14bbedbc2a8e7c4229f918bc086ab5dd08ca015034",
+          "finalSha256": "49e31bba082196935782ac14bbedbc2a8e7c4229f918bc086ab5dd08ca015034",
+          "matches": true
+        },
+        {
+          "path": "/assets/state-DwlyKbZV.js",
+          "ciSha256": "31fc7fbe10efbacc5e2bd888ba4f9cfc3f39db939fe9e948b9db14e95648ca68",
+          "finalSha256": "31fc7fbe10efbacc5e2bd888ba4f9cfc3f39db939fe9e948b9db14e95648ca68",
+          "matches": true
+        },
+        {
+          "path": "/assets/travel-DVyvPLCM.css",
+          "ciSha256": "52d31e6f608acbe57bde5bbc3628458d18f8a9074cfdc9840b64544b3ccc464a",
+          "finalSha256": "52d31e6f608acbe57bde5bbc3628458d18f8a9074cfdc9840b64544b3ccc464a",
+          "matches": true
+        },
+        {
+          "path": "/assets/travel-N1tolctY.js",
+          "ciSha256": "2170c3b64fe2207df9264ca2f89b83ff80291ead06a163b7627012f3114fadaf",
+          "finalSha256": "2170c3b64fe2207df9264ca2f89b83ff80291ead06a163b7627012f3114fadaf",
+          "matches": true
+        },
+        {
+          "path": "/assets/view-state-Cajz5ATi.js",
+          "ciSha256": "a52f42eada1568efe3a1b1110d62f51cb1f986d07643ca9a2b13bae1df7ee900",
+          "finalSha256": "a52f42eada1568efe3a1b1110d62f51cb1f986d07643ca9a2b13bae1df7ee900",
+          "matches": true
+        },
+        {
+          "path": "/perspective.html",
+          "ciSha256": "1dc10a3e87ba76d63036d73716f41596da0ff50c43286754065653a60cc399eb",
+          "finalSha256": "1dc10a3e87ba76d63036d73716f41596da0ff50c43286754065653a60cc399eb",
+          "matches": true
+        },
+        {
+          "path": "/perspectives/arrive.jpg",
+          "ciSha256": "5b88a84cd1cdb0297c552f8f5ee0f095d3e54fb4a0cc8b8b9f0afd1c54db3c07",
+          "finalSha256": "5b88a84cd1cdb0297c552f8f5ee0f095d3e54fb4a0cc8b8b9f0afd1c54db3c07",
+          "matches": true
+        },
+        {
+          "path": "/perspectives/daiya-rhythm.jpg",
+          "ciSha256": "231d68794a8eca8f85dfff124a0f233ab9a6d78859d13c49845320f005adfacb",
+          "finalSha256": "231d68794a8eca8f85dfff124a0f233ab9a6d78859d13c49845320f005adfacb",
+          "matches": true
+        },
+        {
+          "path": "/perspectives/mitsui-rhythm.jpg",
+          "ciSha256": "0904230ef4cd0eaf28ae5a092bda9ae03bc01b57d93b5b7db432632393d3e351",
+          "finalSha256": "0904230ef4cd0eaf28ae5a092bda9ae03bc01b57d93b5b7db432632393d3e351",
+          "matches": true
+        },
+        {
+          "path": "/travel.html",
+          "ciSha256": "4258fcb73e952bb038bec95e718e6163f18fe7956532c0fcb4c812f95d29be2f",
+          "finalSha256": "4258fcb73e952bb038bec95e718e6163f18fe7956532c0fcb4c812f95d29be2f",
+          "matches": true
+        }
+      ],
+      "allConsumedAssetsUnchanged": true
+    }
+  ],
+  "limitation": "This binds the recorded requested assets of successful CI suites to the final package. It does not claim that the whole CI package is identical or that the suites were rerun after the homepage CSS repair."
+}

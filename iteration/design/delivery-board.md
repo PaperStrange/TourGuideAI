@@ -11,13 +11,43 @@ defines P0 CI-failure triage plus navigation/locale/meaning corrections, P1 meas
 local group behavior, then frozen-build EN/ZH desktop/phone walkthroughs including
 legacy navigation and sharing. Lead owns integration, engineering performance and
 transport, world-content source/link inventory, product acceptance criteria,
-art/UX appearance review, and QA independent execution. Planning is complete;
-walkthrough results and measured performance targets are still pending.
+art/UX appearance review, and QA independent execution. Planning and the performance
+baseline are complete. Q03 targets deferred street payload in Together, three warm
+locale changes below 500 ms, zero hidden updates over two seconds and rendered-frame
+readiness; the sprint plan defines exact conditions. The 264/264 walkthrough passes
+on `6cdc0ad9…`; CSS-release runtime `d21c708` / package `9a55e7b5…` adds the search-grid
+repair and passes a 6/6 matching-browser probe plus 65/65 homepage checks. The exact
+delta preserves 75 other package files. Perspective 80/80 and companion 73/73 CI
+consumed assets match that CSS package. Pages `86868bf` passes 79/79 file hashes,
+38 hosted-connection, 21 homepage and 9 navigation checks with a local backend.
+Final runtime `828a405` / drivers `54fdbaf` / package `8751ba4e…` passes engineering
+8/8, bundled homepage 65/65, original-walk pause/appearance/startup 19/19 and
+credits/license/save-return 3/3. Pages `c3bcceb` passes 79/79 file verification and
+21/21 actual homepage/phone checks. Earlier connection/navigation checks retain
+their CSS-release scope. Final performance records 12 observations: Together street
+dependency bytes are zero, hidden updates/draws/script time are zero, and Explore
+has one initial draw in all six applicable observations. Warm Together locale
+**1177.8 / 1113.4 / 1134.5 ms fails the unchanged <500 ms target**. Lead releases
+functional corrections and carries Q03 latency as **open P1**, with measured work
+before broader expansion. Warm Explore improves over the first published candidate
+but remains slower than the original baseline; no overall 3D-speedup claim. Full
+final local original-walk and fresh CI `38851871150` remain pending after correction
+of the prior license-link driver failure; Q00 is not closed.
+
+**Functional acceptance and open gates:** corrections cover phone crop, lighting/map recovery,
+route/locale preservation, supporting navigation and deferred/hidden street work.
+A bounded guard excludes one source-reviewed Wikipedia coordinate conflict without
+relocating the place or adding runtime requests. Application 89/89, service 13/13,
+repository 17/17, local-room 17/17 and lighting-recovery 15/15 checks pass with their
+recorded package scope. English fallback-banner/Reset 3.36 px edge contact is
+accepted P2 spacing polish after actual operability checks. The sprint claims retained
+art; building realism/lighting and meaningful exploration remain the next product
+priorities.
 
 **Delivered baseline · Explore and Together homepage:** search and world/local
 navigation use Photon/Wikipedia discovery; the local persisted room service has
 explicit endpoint selection and invitation confirmation. Model planning remains
-unconfigured. Public hosting is deferred during this local quality sprint.
+unconfigured. Public backend hosting is deferred during this local quality sprint.
 [Current checkpoint](../../experience/docs/agent-checkpoint.md) records exact
 source/publication identities and separates local verification from hosted service
 readiness. The former companion remains available at `travel.html`.
