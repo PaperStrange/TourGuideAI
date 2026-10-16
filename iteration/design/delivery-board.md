@@ -1,14 +1,23 @@
 # Delivery board · TourGuideAI 2.5D
 
-Updated 2026-10-15. Owner: lead. Planning baseline: `origin/iteration` at
+Updated 2026-10-16. Owner: lead. Planning baseline: `origin/iteration` at
 `eae982f4ba20a107bf21a35b70f635b4935a4c70`.
 
-**Current iteration · Explore and Together homepage:** the lead integrates the
-live street homepage, search and world/local navigation; world-content provides
-live Photon/Wikipedia discovery; engineering provides the persisted room/model
-service; art refines Kyoto facade materials and lighting; QA checks actual desktop,
-phone and two-client journeys. The user chose a small hosted backend. Its hosting
-account and model secrets remain required for public room/AI availability.
+**Active sprint · journey clarity and responsiveness:** the user requests a plan
+followed by a thorough walkthrough, continuing tests inside the workspace with no
+tunnel. Interactions feel fluent; reported defects concern old links, high latency
+and misleading/mixed-language text. The [quality sprint](../../experience/docs/sprint-quality-20261016.md)
+defines P0 CI-failure triage plus navigation/locale/meaning corrections, P1 measured responsiveness and
+local group behavior, then frozen-build EN/ZH desktop/phone walkthroughs including
+legacy navigation and sharing. Lead owns integration, engineering performance and
+transport, world-content source/link inventory, product acceptance criteria,
+art/UX appearance review, and QA independent execution. Planning is complete;
+walkthrough results and measured performance targets are still pending.
+
+**Delivered baseline · Explore and Together homepage:** search and world/local
+navigation use Photon/Wikipedia discovery; the local persisted room service has
+explicit endpoint selection and invitation confirmation. Model planning remains
+unconfigured. Public hosting is deferred during this local quality sprint.
 [Current checkpoint](../../experience/docs/agent-checkpoint.md) records exact
 source/publication identities and separates local verification from hosted service
 readiness. The former companion remains available at `travel.html`.

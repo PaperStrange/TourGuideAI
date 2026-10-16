@@ -1,7 +1,7 @@
 # Agent checkpoint · Explore and Together homepage
 
-2026-10-15 · Lead owns integration, commits and publication.
-**State: local deployment with GitHub Pages verified and published. Public access to the workspace backend awaits explicit tunnel approval; no paid hosting is active.**
+2026-10-16 · Lead owns integration, commits and publication.
+**State: next sprint targets navigation, language clarity and loading latency. Plan precedes an independent walkthrough; backend tests stay in this workspace.**
 
 ## Resume from saved work
 
@@ -14,15 +14,16 @@
   baseline Pages: `eb8647d622d983280fba08fe9c23752aac1e81a4`;
   art refinement: `2767263`.
   [Homepage evidence](../evidence/homepage-20261015/README.md).
-- Latest direction: test a local backend with GitHub Pages before paying for
-  Render. `render.yaml` and [setup guide](render-setup.md) remain optional future
-  hosting preparation. No paid account or service has been created.
+- Latest direction: keep testing on our own computer, plan the next sprint using
+  agile project management, then perform a thorough walkthrough. The user reports
+  fluent interaction alongside old links, latency and misleading/mixed-language
+  descriptions. Make routine product decisions independently; do not ask the user
+  to identify the defects. Building realism, lighting and useful travel remain
+  core product challenges. No public tunnel or paid service is authorized for this sprint.
 - Local service runs on loopback port 8787 with durable ignored SQLite storage
-  and the exact Pages origin allowed. A public HTTPS tunnel is pending explicit
-  authorization: automatic approval review rejected starting Tunnelmole because
-  room data and authorization tokens would pass through that third party.
-  Do not start another tunnel as a workaround. A proxy-mediated WebSocket
-  handshake succeeded; no public forwarding endpoint was created.
+  and the exact Pages origin allowed. Continue same-computer browser testing;
+  the user chose this path after the previous tunnel proposal. No public
+  forwarding endpoint exists.
 - Repeatable setup: `npm ci` then `npm run local:pages` in `experience/server`.
   [Local guide](../server/docs/local-pages.md). The current workspace process uses
   ignored `server/.data/local-test.sqlite`; the launcher default is
@@ -86,11 +87,11 @@ Ginza remains a separate architectural study.
 
 | Owner | Current boundary | Next action |
 |---|---|---|
-| Lead | Integration, checkpoint, build/CI and publication | Local delivery complete; obtain tunnel approval before exposing workspace API |
-| Engineering | `server/`, `src/home/room-client.js` | Completed launcher, polling, 13 service checks and independent invitation review |
-| World-content | `src/discovery/`, provider evidence and source documentation | Completed; preserve source coverage and suggested-order semantics |
-| QA-release | `tests/browser-homepage.mjs` and release checks | Completed 38 actual published-page checks; broader runtime CI remains separate |
-| Product-design | Home UI/copy/styles and service configuration | Completed EN/ZH connection panel, credential scoping and invitation confirmation |
+| Lead | Home UI/copy, integration, checkpoint, release | Localize current journey, correct navigation/claims, integrate measured fixes and synchronize release |
+| Engineering | Runtime loading/pause, world map and performance evidence | Profile actual latency; improve loading and hidden-view cost without reducing art quality |
+| World-content | Cross-entry navigation, language and source meanings | Audit and repair old destinations/labels and locale loss; retain historical URL compatibility |
+| QA-release | Browser drivers and independent walkthrough | Reproduce current CI failures; exercise EN/ZH desktop/phone journeys and measure before/after |
+| Product-design | Sprint plan, current delivery board and lean iteration | Prioritize traveler outcomes, acceptance criteria and review gates before execution |
 | Art/UX | Detailed Kyoto runtime appearance and visual review | Completed matched lighting/material review; realism remains a user review priority |
 
 Paths in the ownership table are relative to `experience/`. Do not edit another

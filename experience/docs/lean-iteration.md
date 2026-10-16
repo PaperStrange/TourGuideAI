@@ -1,14 +1,31 @@
 # Lean iteration · Borrow someone's eyes
 
-Updated 2026-10-15 · Lead: release/integration.
+Updated 2026-10-16 · Lead: release/integration.
 
-## Current milestone · Explore and Together homepage
+## Active sprint · journey clarity and responsiveness
+
+The user asks for the next sprint plan followed by a thorough walkthrough, with
+testing inside the workspace and no tunnel. They find interactions fluent and
+report old links, high latency and misleading text, including Chinese within the
+English interface. The [quality sprint](sprint-quality-20261016.md) is written before
+browser execution: triage the current homepage/original-walk CI failures,
+navigation/locale/meaning corrections, measured loading and
+response experiments, then the complete EN/ZH desktop/phone Explore/Together and
+supporting-link walkthrough. Tickets name owners, reviewers, dependencies and exit
+evidence. The local room service remains available only where actually tested;
+the model stays unconfigured. These observations do not approve emotional value
+or establish the cause of latency. The earlier expansion proposals below remain
+separate backlog items while this quality sprint is active.
+
+## Delivered baseline · Explore and Together homepage
 
 The approved journey has two modes: a center-place search with live street/3D-map
 preview and sourced local suggestions; and an invited group's world map of dream
 countries/cities, shared local views and reviewed AI proposals. The source service
-uses persisted rooms and revision-checked updates. Public collaboration requires
-the chosen host, persistent volume and model configuration. The frontend and
+uses persisted rooms and revision-checked updates. Current testing uses the local
+service and explicit endpoint connection; no tunnel is authorized for this sprint.
+Future public collaboration requires separately configured hosting, persistence
+and, for AI proposals, a model provider. The frontend and
 backend have separate release evidence in the [checkpoint](agent-checkpoint.md).
 
 Building/material readability and day/night lighting remain active acceptance
