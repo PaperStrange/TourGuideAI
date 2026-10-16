@@ -109,7 +109,12 @@ export async function createGame(host, options = {}) {
       if (!view) return structuredClone(lightingState);
       return view.setLightingMode(requestedLightingMode);
     },
-    setPaused(value) { clearMovement(); player.paused = Boolean(value); rig?.setEnabled(visible && !player.paused && status === 'ready'); scheduleFrame(); publish(); },
+    setPaused(value) {
+      const next = Boolean(value);
+      if (player.paused === next) return;
+      clearMovement(); player.paused = next;
+      rig?.setEnabled(visible && !player.paused && status === 'ready'); scheduleFrame(); publish();
+    },
     setVisible(value) {
       const next = Boolean(value);
       if (visible === next) return;
@@ -117,7 +122,7 @@ export async function createGame(host, options = {}) {
       rig?.setEnabled(visible && !player.paused && status === 'ready');
       if (visible) scheduleFrame(); else stopFrames();
     },
-    setLocale(value) { locale = value === 'zh' ? 'zh' : 'en'; localize(); dirty = true; },
+    setLocale(value) { locale = value === 'zh' ? 'zh' : 'en'; localize(); },
     reset() {
       clearMovement(); player = refreshProximity(createState());
       previous = { x: player.x, y: player.y }; rig?.reset(player); rig?.setEnabled(visible && status === 'ready');
@@ -259,6 +264,7 @@ export async function createGame(host, options = {}) {
       firstFrameHandle = requestAnimationFrame(() => {
         abort.signal.removeEventListener('abort', cancelled);
         try {
+          rig.setEnabled(visible && !player.paused);
           const renderStarted = performance.now();
           renderer.render(view.scene, rig.camera); renderedFrames++; dirty = false;
           firstRenderMs = performance.now() - renderStarted;
@@ -269,7 +275,6 @@ export async function createGame(host, options = {}) {
     if (destroyed || abort.signal.aborted) return api;
     const loadMs = performance.now() - started;
     const startup = { assetsAndLightingMs: assetsReadyAt - started, compileMs: compiledAt - assetsReadyAt, firstRenderMs, readyMs: loadMs };
-    rig.setEnabled(!player.paused);
     notify('ready', 1); publish();
     if (observing()) {
       window.__TOUR_GAME__ = Object.freeze({

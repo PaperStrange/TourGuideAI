@@ -31,3 +31,11 @@ node experience/tools/map-failure-probe.mjs
 This probe snapshots `experience/dist`, serves those immutable bytes on an ephemeral loopback port, and deliberately aborts one actual OpenFreeMap raster tile request. Other provider requests proceed normally. It checks that the map retains its error and Retry control, that language switching preserves the failed view, and that Retry recovers through the actual provider while preserving camera position and places. It performs no room writes. `MAP_PROBE_DIST` and `MAP_PROBE_OUTPUT` override the input and output paths; the default report is `artifacts/map-failure/result.json`.
 
 Both drivers exit unsuccessfully when their required observations fail. Reports retain the evidence and errors for diagnosis. Schedule these browser runs separately from other rendering checks to keep shared cloud GPU contention out of timing comparisons.
+
+## Initial street drawing
+
+```sh
+node experience/tools/startup-probe.mjs
+```
+
+This focused check serves an immutable build with an isolated local room service. Actual keyboard and homepage controls verify one initial draw before readiness, walking, language accessibility, rendered night lighting, paused hidden work and resumed walking. `STARTUP_PROBE_DIST` selects the build and `STARTUP_PROBE_OUTPUT` selects its report directory, defaulting to `artifacts/startup-probe`. This local check verifies rendering and interaction behavior; the published performance driver supplies network timing evidence.
