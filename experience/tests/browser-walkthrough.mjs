@@ -117,7 +117,13 @@ async function section(id, operation) {
   const existing = new Set(contexts);
   try { await operation(); }
   catch (error) { check(id + '-completed', false, { message: error.message, stack: error.stack }); }
-  finally { for (const context of [...contexts]) if (!existing.has(context)) await cleanups.get(context)(); }
+  finally {
+    for (const context of [...contexts]) if (!existing.has(context)) {
+      const cleanup = cleanups.get(context);
+      if (cleanup) await cleanup();
+      else { await context.close(); contexts.delete(context); }
+    }
+  }
 }
 async function links(page) { return page.locator('a[href]').evaluateAll(nodes => nodes.map(node => ({ text: node.textContent.trim(), href: node.href }))); }
 function localizedInternal(link, locale) { const url = new URL(link.href); return url.origin !== base.origin || url.searchParams.get('lang') === locale; }
@@ -416,11 +422,12 @@ try {
     await first.go(`index.html?qa=1&lang=${locale}&mode=together`, '#room-create'); await connect(alice);
     await alice.locator('#traveler-name').fill('Walkthrough QA A'); await alice.locator('#room-title').fill('Local QA journey');
     await alice.locator('#room-create').click(); await room(alice, 1, 0);
-    const invite = alice.url(), second = await scenario(id + '-recipient', mobile), bob = second.page;
+    const invite = new URL(alice.url()), second = await scenario(id + '-recipient', mobile), bob = second.page;
+    invite.searchParams.set('qa', '1');
     await second.go(`index.html?qa=1&lang=${locale}&mode=together`, '#room-create');
     await connect(bob, 'poll');
     const requestsBeforeInvite = second.record.authenticatedRequests.length;
-    await second.go(invite, '#room-join');
+    await second.go(invite.href, '#room-join');
     await bob.waitForFunction(() => window.__HOME__?.snapshot().invitationNeedsConfirmation);
     check(id + '-fresh-invite-sends-no-auth-before-confirmation', second.record.authenticatedRequests.length === requestsBeforeInvite);
     await connect(bob, 'poll'); await room(bob, 1, 0);
@@ -435,7 +442,8 @@ try {
       && !(await home(alice)).room.plan && await alice.locator('#ai-status').innerText() === copy(locale, 'aiUnavailable'));
     await alice.locator('[data-preview]').first().click(); await alice.locator('#back-world').waitFor();
     await alice.locator('#back-world').click(); check(id + '-shared-preview-returns-to-world', !(await home(alice)).localPreview);
-    await bob.reload({ waitUntil: 'domcontentloaded' }); await room(bob, 2, 2);
+    const memberURL = new URL(bob.url()); memberURL.searchParams.set('qa', '1');
+    await bob.goto(memberURL.href, { waitUntil: 'domcontentloaded' }); await room(bob, 2, 2);
     check(id + '-member-reload-keeps-confirmed-service', (await home(bob)).serviceEndpoint === service.url && !(await home(bob)).invitationNeedsConfirmation);
     await bob.locator('[data-remove-dream]').first().click(); await room(alice, 2, 1);
     check(id + '-removal-synchronizes', (await home(alice)).room.dreams.length === 1);
