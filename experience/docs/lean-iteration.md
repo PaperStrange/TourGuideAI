@@ -37,9 +37,13 @@ Pages `86868bf` passes 79/79 file verification plus 38 connection, 21 homepage a
 drivers `54fdbaf` / package `8751ba4e…` passes engineering 8/8, bundled homepage 65/65,
 original-walk pause/appearance/startup 19/19 and localized credits/license/save-return
 3/3. Pages `c3bcceb` passes 79/79 file verification and 21/21 actual homepage/phone
-checks. Final local original-walk and CI `38851871150` reruns remain pending after
-the prior license-link driver failure was corrected; Q00 is not closed. Exact
-hashes, performance values and package scope limits are in the sprint acceptance table.
+checks. The full local original-walk suite passes **133/133** on that final package,
+as do final CI artifact reports for homepage **65/65**, perspective **80/80** and
+companion **73/73**. **The local walkthrough milestone is achieved**, and all known
+runtime/driver P0 reproductions are verified fixed on final bytes. Remote
+original-walk and full walkthrough jobs in CI `38851871150` remain in progress;
+Q00 aggregate verification is pending, with no all-CI-green claim. Exact hashes,
+performance values and package scope limits are in the sprint acceptance table.
 The English fallback-banner/Reset 3.36 px edge overlap is accepted as P2 spacing
 polish after readable text and actual Reset/Retry checks. This sprint retains
 existing art. Recognizable building features/lighting and meaningful continuous

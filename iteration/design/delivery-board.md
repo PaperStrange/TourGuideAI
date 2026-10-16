@@ -22,7 +22,9 @@ consumed assets match that CSS package. Pages `86868bf` passes 79/79 file hashes
 38 hosted-connection, 21 homepage and 9 navigation checks with a local backend.
 Final runtime `828a405` / drivers `54fdbaf` / package `8751ba4e…` passes engineering
 8/8, bundled homepage 65/65, original-walk pause/appearance/startup 19/19 and
-credits/license/save-return 3/3. Pages `c3bcceb` passes 79/79 file verification and
+credits/license/save-return 3/3, followed by the full local original-walk **133/133**.
+Final CI artifact reports also pass homepage 65/65, perspective 80/80 and companion
+73/73 on that same package. Pages `c3bcceb` passes 79/79 file verification and
 21/21 actual homepage/phone checks. Earlier connection/navigation checks retain
 their CSS-release scope. Final performance records 12 observations: Together street
 dependency bytes are zero, hidden updates/draws/script time are zero, and Explore
@@ -30,9 +32,11 @@ has one initial draw in all six applicable observations. Warm Together locale
 **1177.8 / 1113.4 / 1134.5 ms fails the unchanged <500 ms target**. Lead releases
 functional corrections and carries Q03 latency as **open P1**, with measured work
 before broader expansion. Warm Explore improves over the first published candidate
-but remains slower than the original baseline; no overall 3D-speedup claim. Full
-final local original-walk and fresh CI `38851871150` remain pending after correction
-of the prior license-link driver failure; Q00 is not closed.
+but remains slower than the original baseline; no overall 3D-speedup claim.
+**The local walkthrough milestone is achieved**: all known runtime/driver P0
+reproductions are verified fixed on final bytes. Remote original-walk and full
+walkthrough jobs in CI `38851871150` remain in progress; Q00 aggregate verification
+is pending, without an all-CI-green claim.
 
 **Functional acceptance and open gates:** corrections cover phone crop, lighting/map recovery,
 route/locale preservation, supporting navigation and deferred/hidden street work.

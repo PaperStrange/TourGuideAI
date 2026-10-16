@@ -1,7 +1,7 @@
 # Agent checkpoint · Explore and Together homepage
 
 2026-10-16 · Lead owns integration, commits and publication.
-**State: quality fixes are published and source is synchronized through `54fdbaf`. Final full original-walk regression and CI are running. Q03's latency target remains open. Backend tests stay in this workspace.**
+**State: the local quality milestone is complete and published; complete original-walk regression passes 133/133. Runtime/drivers and evidence are synchronized. Aggregate CI is still running; Q03's latency target remains open P1. Backend tests stay in this workspace.**
 
 ## Resume from saved work
 
@@ -23,8 +23,9 @@
   walkthrough passes 264 checks on package `6cdc0ad9`. The CSS repair passes six
   matching-browser layout stages. Final startup package `8751ba4e` passes 65 homepage,
   8 startup interaction and 19 original-walk pause/appearance checks. Unit/service
-  suites pass 89/13. CI perspective 80/80 and travel 73/73 are preceding-runtime
-  results; their asset binding applies to the CSS package `9a55e7b5`.
+  suites pass 89/13. The complete final local original walk also passes 133/133.
+  Final-source CI reports homepage 65/65, perspective 80/80 and travel 73/73 on
+  exact `8751ba4e`. The older asset binding remains preceding-runtime evidence.
   [Quality evidence](../evidence/quality-20261016/README.md) records the separate
   conditions. The preceding CSS publication matches all 79 files and passes 38
   hosted connection, 21 homepage/phone and 9 navigation checks. Final startup
@@ -116,10 +117,10 @@ Ginza remains a separate architectural study.
 
 | Owner | Current boundary | Next action |
 |---|---|---|
-| Lead | Integration, checkpoint, release | Complete publication evidence and source synchronization; carry the explicit Q03 latency limit |
-| Engineering | Runtime loading/pause, map and performance | Final matched timing; investigate remaining latency without reducing art detail |
+| Lead | Integration, checkpoint, release | Local milestone verified and published; review remaining aggregate CI result and carry Q03 latency |
+| Engineering | Runtime loading/pause, map and performance | Matched timing completed; investigate remaining latency without reducing art detail |
 | World-content | Navigation, language and source meanings | Completed locale/link audit; next review recognizable building references and source quality |
-| QA-release | Browser drivers and independent walkthrough | Complete final original-walk regression and actual published homepage verification |
+| QA-release | Browser drivers and independent walkthrough | Final local original walk 133/133 and hosted homepage 21/21 completed; collect remaining CI jobs |
 | Product-design | Sprint plan, delivery board and lean iteration | Record delivered scope and open latency target; use Sprint 2A/2B experiential exits |
 | Art/UX | Detailed Kyoto appearance and visual review | Retained day/night art reviewed; next compare identifiable facade cues and coherent lighting |
 
@@ -167,6 +168,23 @@ environment install it with `npm exec --cache /workspace/.npm-cache -- playwrigh
 using the same `PLAYWRIGHT_BROWSERS_PATH`. Coordinate GPU-heavy suites with QA.
 
 ## Current release checks
+
+The quality package `8751ba4e` passes 89 application tests, 13 service tests,
+17 repository gates, 65 homepage checks, 8 startup interaction checks,
+19 original-walk pause/appearance checks and 3 credits/return checks. Actual Pages
+passes 21 homepage/phone checks and all 79 files match the tested package.
+Final-source CI confirms homepage 65/65, perspective 80/80 and companion 73/73
+on the same manifest. Its complete walkthrough and original-walk jobs are running.
+The separate final local original-walk run passes **133/133**, with actual movement
+through all three encounters, selected sharing, graphics recovery and migrations.
+
+The preceding 264-check matrix and later focused checks retain their own package
+identities in the [quality evidence](../evidence/quality-20261016/README.md).
+Twelve matched final timing observations establish the startup and hidden-work
+improvements; warm Together language-action latency remains above its target.
+This remains an explicit open P1, with no general physical-device speed claim.
+
+## Previous homepage and local-connection checks
 
 The published homepage baseline passes 65 browser checks, 82 unit tests, 7 server
 checks, 11 client integration checks and 17 repository gates. The Docker service

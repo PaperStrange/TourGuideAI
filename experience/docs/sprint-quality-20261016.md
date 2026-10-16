@@ -1,6 +1,6 @@
 # Quality sprint · a clear, responsive travel journey
 
-2026-10-16 · Functional corrections published; Q03 latency open at P1, Q00 final rerun pending.
+2026-10-16 · Local walkthrough milestone achieved; Q03 latency open at P1, aggregate CI pending.
 Lead owns integration and the [checkpoint](agent-checkpoint.md). This plan records
 the user's latest direction: continue testing inside the workspace, use no tunnel,
 and address old links, high latency and misleading or mixed-language interface text.
@@ -84,7 +84,8 @@ The source audit covers editorial headings, mode-group accessible names, scene
 representation, route provenance and supporting-link destinations. The integrated
 matrix and published checks below verify these corrections within their recorded
 scope. Baseline CI failures included copy/lighting expectation drift and an actual
-phone search-grid defect. Q00 still requires the final original-walk and CI reruns.
+phone search-grid defect. All known runtime/driver P0 reproductions are verified
+fixed on final bytes; Q00's aggregate CI verification remains pending.
 
 ## Performance experiments and decision gates
 
@@ -209,8 +210,9 @@ experience remains a separate review of the actual delivered walkthrough.
 
 ## Acceptance notes · verified scope and remaining gates
 
-**Disposition: release the verified functional corrections; carry Q03 latency as
-open P1. Q00 final original-walk and CI reruns remain pending.**
+**Disposition: the local walkthrough milestone is achieved. Release the verified
+functional corrections; carry Q03 latency as open P1. All known runtime/driver P0
+reproductions are verified fixed on final bytes; aggregate CI remains pending.**
 The earlier CSS release uses runtime source
 `d21c708bc3d196ca97c5b038fea68c4c73ea92aa`; this CSS package manifest is
 `9a55e7b5d8fdc5c5202f18d81ee4ced0e0b6cfc2c945ef1e66a43088047d2d10`.
@@ -235,6 +237,14 @@ with [**21/21** actual published homepage/phone checks](../evidence/quality-2026
 The final performance report is recorded above. Earlier complete-suite results
 retain their package scopes; they are not reruns of this changed runtime.
 
+The final [full local original-walk suite](../evidence/quality-20261016/original-walk-result.json)
+passes **133/133** on package `8751ba4e…` (04:41:19–04:57:59 UTC, 16 minutes
+40 seconds). Report SHA-256:
+`6104289ec5c34993a96ead5fe1c1ff69930f3316c93cbb036a592ea0f4ddd34e`.
+It completes all three encounters, sharing/recipient/PNG/PDF, credits and return,
+graphics recovery, restart, legacy migrations, HDR retries and six matched A/B
+views. This verifies the original-walk path after the focused checks above.
+
 The [full walkthrough](../evidence/quality-20261016/walkthrough-result.json) passes
 **264/264** on package
 `6cdc0ad9abd0ed507c3a883299164d04569b7a6ef7c789b30bcec7b8dd064935`.
@@ -242,21 +252,26 @@ The CSS-release search-grid change passes a matching-browser **6/6** probe and
 [65/65 homepage checks](../evidence/quality-20261016/release-homepage-result.json)
 on package `9a55e7b5…`. The [exact delta](../evidence/quality-20261016/final-css-delta.json)
 records CSS and generated filename metadata changes, with **75 other files identical**.
-The full 264-check matrix was not rerun on that CSS package or the startup release.
+The full 264-check matrix was not rerun locally on that CSS package or the startup
+release; its remote rerun is still in progress.
 
 Application **89/89**, service **13/13** and repository **17/17** checks pass.
-CI perspective **80/80** and companion **73/73** pass; their
+Earlier CI perspective **80/80** and companion **73/73** pass; their
 [consumed assets match package 9a55e7b5…](../evidence/quality-20261016/ci-consumed-assets-binding.json).
 That binding preserves the checks' stated scope; it does not claim a rerun of
 every suite against the startup release's changed runtime. Original-walk CI at
 `e9959df` completed 69 passing checks before a stale license-link selector blocked
 the click. The repaired driver verifies the actual new-tab license destination
-while preserving its existing checks; the focused 3/3 result above passes. The full
-local original-walk rerun and fresh CI run `38851871150` remain pending.
+while preserving its existing checks; the focused 3/3 and final local 133/133 results
+pass. Final CI artifact reports now pass [homepage **65/65**](../evidence/quality-20261016/ci/final-homepage-result.json),
+[perspective **80/80**](../evidence/quality-20261016/ci/final-perspective-result.json)
+and [companion **73/73**](../evidence/quality-20261016/ci/final-travel-result.json),
+all on package `8751ba4e…`. Remote original-walk and full walkthrough jobs in
+run `38851871150` are still in progress. Do not describe aggregate CI as green.
 
 | Area | Verified correction and scope | Remaining gate |
 |---|---|---|
-| Q00 · CI | Homepage defect reproduced and repaired; final homepage 65/65 and original-walk pause/appearance/startup 19/19 pass. License-link driver corrected with 3/3 focused checks. Earlier perspective/companion CI assets bind to `9a55e7b5…`. | Full final local original-walk and fresh CI `38851871150` remain pending; do not mark all CI green. |
+| Q00 · CI | All known runtime/driver P0 reproductions are verified fixed on final bytes. Full local original-walk 133/133 and final CI homepage 65/65, perspective 80/80 and companion 73/73 pass on `8751ba4e…`. | Remote original-walk and full walkthrough jobs in CI `38851871150` remain pending; aggregate CI is not yet green. |
 | Q01/Q02 · Journey and language | The 264-check matrix covers EN/ZH desktop/phone navigation, locale/route preservation, supporting links, private saves and recipient behavior. Final published package passes 79/79 file verification and 21/21 homepage/phone checks; earlier CSS-release navigation checks retain their scope. | Physical native permission/share UI is outside this evidence; full earlier suites are not relabeled as final-package reruns. |
 | Q03 · Responsiveness | Final measurements prove zero Together street-dependency bytes, zero hidden updates/draws/script time and one initial Explore draw, each across six applicable observations. | **Open P1: 1177.8 / 1113.4 / 1134.5 ms versus <500 ms each.** Continue measured work before broader expansion. No overall 3D-speedup claim. |
 | Q04 · Local groups | [17/17 targeted room checks](../evidence/quality-20261016/local-rooms/walkthrough-result.json) and 38 actual published-frontend/local-service checks pass within the recorded package scopes. Local health reports rooms/events available and model unavailable. | No remote shared service or model-generation claim; earlier connection evidence remains explicitly scoped to the CSS release. |
@@ -315,6 +330,24 @@ the current crossing is not assumed sufficient merely because it already exists.
 | 2A · A place that responds · product + engineering → QA + experience reviewer | Walk, change direction, investigate a visible detail and pause by choice. The agreed continuous visual/ambient response changes with position or action between locations; an optional short explanation follows discovery. Keyboard/touch, mute/reduced motion and EN/ZH guidance remain usable. A sequence of fixed text unlocks does not meet this exit. |
 | 2A · Meaning before expansion · product → lead + available human reviewer | Review actual play and the same detail/story in the flat-media reference. Record what attracted attention, which action contributed, what the person wants to keep or revisit, and why. A source-linked place cue may support an optional later visit. Agent walkthrough establishes behavior; enjoyment, personal affinity and practical transfer require their own observations. If moving/looking contributes no identifiable value, revise this bounded interaction before broader production. |
 | 2B · Keep and inhabit a moment · engineering + product/art → QA + experience reviewer | After 2A's experience review supports proceeding, deliberately record a bounded approach, pause and final view; review, keep privately or discard, then optionally share selected material. Preserve actual motion/pacing and optional words. The recipient can replay, skip and take control without changing private saves. Version/size/failure tests must retain meaning; compare the same contribution's replay against its final image and words to assess what motion adds. |
+
+#### Sprint 2A art review supplement
+
+Use the [facade references](facade-references.md#visible-building-character-and-limits)
+and [art direction](art-direction.md). Freeze three walking poses—intersection,
+Mitsui approach and Daiya approach—and compare them with annotated reference crops.
+Record camera, viewport, model/profile hashes and capture conditions; review at
+desktop and phone scale. This is a bounded review of the existing setting.
+
+| Review | Observable exit and failure condition |
+|---|---|
+| Building identity | Using `mitsui-exterior-2021` and `daiya-exterior-2021`, distinguish Mitsui's pale continuous wall, punched windows and curved four-column corner from Daiya's vertical ribs and paired-column diagonal. Fail if both read as interchangeable office grids or a signature feature stays concealed across all three poses. |
+| Depth and material response | Agree one representative bay per building and repeat a matched lateral move. Sill, reveal and frame depth, changing glass response and canopy contact shadows must remain readable. Flat black panels or indistinguishable material responses fail this review. Dimensions remain authored; this creates no verified entrance or interior claim. |
+| Coherent day/night approach | Repeat the same approach and chosen pause in both modes. Shadows stay attached to their actual casters with coherent direction; night light pools preserve columns, reveals, actor and pavement. Detached or competing shadows, clipped silhouettes or a black band erasing those shapes fail. |
+
+The existing startup day/night review identifies dark window slots and long shadow
+wedges as improvement targets; its retained-appearance acceptance still stands.
+These new exits require comparison evidence. Human recognition remains pending.
 
 The meaningful outcome may be noticing, personal attachment or a desire to return;
 a booking, mandatory menu choice or compulsory share is unnecessary. Source-linked
