@@ -25,6 +25,7 @@ const savedBankReview = reviewOnly && process.argv.includes('--saved-bank');
 const lightingReview = reviewOnly && process.argv.includes('--lighting');
 const sharingOnly = process.argv.includes('--sharing');
 const comparisonOnly = process.argv.includes('--comparison');
+const creditsOnly = process.argv.includes('--credits');
 const output = resolve(process.env.EXPERIENCE_QA_OUTPUT || join(tmpdir(), 'experience-qa'));
 // Software rendering can advance the bounded fixed-step simulation slowly.
 // This is a tooling ceiling, not an accepted product response time or FPS target.
@@ -48,7 +49,8 @@ const report = {
   driverSources: ['browser-check.mjs', 'browser-sharing.mjs', 'browser-comparison.mjs', 'browser-appearance.mjs'].map(file => ({ file,
     sha256: sha(readFileSync(new URL(file, import.meta.url))) })),
   conditions: { viewport: [1440, 1000], compactViewport: [1280, 720], deviceScaleFactor: 1, readOnlyObserver: '?qa=1', timeoutMs: timeout },
-  scope: comparisonOnly ? 'Rendering-comparison behavior and failure fixtures only; no gameplay or sharing acceptance'
+  scope: creditsOnly ? 'Credits popup, attribution and return navigation with a restored journey only'
+    : comparisonOnly ? 'Rendering-comparison behavior and failure fixtures only; no gameplay or sharing acceptance'
     : sharingOnly ? 'Sharing/recipient checks from a restored completed journey with WebGL deliberately unavailable; no gameplay or art acceptance'
     : savedBankReview ? 'Opening plus restored-bank rendering review only; no walked-route validation'
     : reviewOnly ? 'Opening and bank visual-review capture only' : 'Complete browser behavior, sharing and saved-journey validation',
@@ -209,10 +211,40 @@ function screenPoint(x, north, height, view, rect) {
   return { x: rect.x + (p.x + 1) * rect.width / 2, y: rect.y + (1 - p.y) * rect.height / 2 };
 }
 
+async function verifyCredits(page) {
+  const creditsLocale = await page.locator('html').getAttribute('lang');
+  const beforeCredits = await saved(page);
+  const [creditsPage] = await Promise.all([
+    page.waitForEvent('popup', { timeout: 30000 }),
+    page.locator('#walk-credits-link').click({ timeout: 30000 }),
+  ]);
+  await creditsPage.waitForLoadState('domcontentloaded');
+  const credits = await creditsPage.evaluate(() => ({ text: document.body.innerText, links: [...document.querySelectorAll('a[href]')].map(a => a.href) }));
+  const references = JSON.parse(assets.get('/content-evidence/facade-references.json')).references;
+  const localCreditLinks = credits.links.map(link => new URL(link)).filter(url => url.origin === origin).map(url => url.pathname === '/' ? '/index.html' : url.pathname);
+  check('packaged-artwork-credits-retain-authors-sources-and-licenses', creditsPage.url() === origin + '/credits.html?lang=' + creditsLocale && localCreditLinks.every(path => assets.has(path)) && references.every(reference => credits.text.includes(reference.author) && credits.links.includes(reference.sourceUrl) && credits.links.includes(reference.licenseUrl)), { ...credits, localCreditLinks });
+  await capture(creditsPage, 'artwork-credits');
+  await creditsPage.locator('#credits-walk-link').click();
+  await creditsPage.waitForFunction(() => document.querySelector('#loading')?.hidden, null, { timeout: 90000 });
+  const afterCredits = await saved(creditsPage);
+  check('credits-return-keeps-walk-locale-and-saved-progress', new URL(creditsPage.url()).pathname === '/walk.html'
+    && new URL(creditsPage.url()).searchParams.get('lang') === creditsLocale
+    && await creditsPage.locator('html').getAttribute('lang') === creditsLocale
+    && samePosition(beforeCredits.game, afterCredits.game) && journey(beforeCredits.game) === journey(afterCredits.game)
+    && JSON.stringify(beforeCredits.notes) === JSON.stringify(afterCredits.notes), { before: beforeCredits, after: afterCredits });
+  await creditsPage.close(); await page.bringToFront();
+}
+
 try {
   browser = await chromium.launch({ executablePath: process.env.EXPERIENCE_QA_CHROMIUM || undefined, headless: true, args: ['--no-sandbox'] });
   report.browser = browser.version(); persist();
-  if (comparisonOnly) {
+  if (creditsOnly) {
+    const seed = { version: 2, ...fixture('legacy-v1-completed'), notes: { crossing: SELECTED_NOTE } };
+    const main = await scenario('credits-with-restored-journey', { [STORAGE_KEY]: JSON.stringify(seed) });
+    await verifyCredits(main.page);
+    check('focused-credits-have-no-browser-errors-or-external-requests', !main.record.pageErrors.length
+      && !main.record.consoleErrors.length && !main.record.externalRequests.length, main.record);
+  } else if (comparisonOnly) {
     await verifyComparison({ scenario, assets, origin, check, capture, report, timeout, persist });
   } else if (sharingOnly) {
     const old = fixture('legacy-v1-completed');
@@ -407,13 +439,7 @@ try {
   await capture(page, 'completed-walk-zh');
   await verifyAppearanceWithJourney({ page, saved, check, capture, timeout, draft: UNSAVED_DRAFT });
   await verifySharing({ main, scenario, saved, check, capture, report, output, origin, timeout, persist, includeDraftCheck: true });
-  const creditsEvent = page.waitForEvent('popup'); await page.locator('.bottom-bar a[href="./credits.html"]').click();
-  const creditsPage = await creditsEvent; await creditsPage.waitForLoadState('domcontentloaded');
-  const credits = await creditsPage.evaluate(() => ({ text: document.body.innerText, links: [...document.querySelectorAll('a[href]')].map(a => a.href) }));
-  const references = JSON.parse(assets.get('/content-evidence/facade-references.json')).references;
-  const localCreditLinks = credits.links.map(link => new URL(link)).filter(url => url.origin === origin).map(url => url.pathname === '/' ? '/index.html' : url.pathname);
-  check('packaged-artwork-credits-retain-authors-sources-and-licenses', creditsPage.url() === origin + '/credits.html' && localCreditLinks.every(path => assets.has(path)) && references.every(reference => credits.text.includes(reference.author) && credits.links.includes(reference.sourceUrl) && credits.links.includes(reference.licenseUrl)), { ...credits, localCreditLinks });
-  await capture(creditsPage, 'artwork-credits'); await creditsPage.close(); await page.bringToFront();
+  await verifyCredits(page);
   report.observations.finalJourney = await saved(page);
   report.observations.rendererStatistics = await page.evaluate(() => window.__TOUR_GAME__.renderer());
   const contextLost = await page.evaluate(() => {
@@ -517,7 +543,7 @@ try {
   await verifyComparison({ scenario, assets, origin, check, capture, report, timeout, persist });
   }
   }
-  report.status = comparisonOnly ? 'Focused comparison checks completed; no gameplay or sharing acceptance.' : sharingOnly ? 'Focused sharing checks completed; no gameplay or art acceptance.' : reviewOnly ? 'Limited visual-review capture completed; the full behavior suite was not run.' : 'Browser walkthrough completed; independent visual review and human acceptance remain separate.';
+  report.status = creditsOnly ? 'Focused credits and return navigation completed.' : comparisonOnly ? 'Focused comparison checks completed; no gameplay or sharing acceptance.' : sharingOnly ? 'Focused sharing checks completed; no gameplay or art acceptance.' : reviewOnly ? 'Limited visual-review capture completed; the full behavior suite was not run.' : 'Browser walkthrough completed; independent visual review and human acceptance remain separate.';
 } catch (error) {
   check('browser-run-completed', false, error.stack || String(error)); report.status = 'Incomplete or failed; do not claim playable validation.';
   const failurePages = contexts.flatMap(context => context.pages()).filter(page => !page.isClosed());
