@@ -3,7 +3,7 @@
 Updated 2026-10-18. Owner: lead. Planning baseline: `origin/iteration` at
 `eae982f4ba20a107bf21a35b70f635b4935a4c70`.
 
-**Solo exploration · reviewed candidate, publication pending:** the user authorizes the next iteration
+**Delivered solo exploration · published:** the user authorizes the next iteration
 and research into broader solo travel, preserving art, quality and usable interaction.
 The [new sprint plan](../../experience/docs/sprint-solo-20261018.md) is recorded
 before production. One homepage flow connects free Kyoto exploration and visible
@@ -16,24 +16,27 @@ product acceptance criteria and QA independent review. Existing routes, locales,
 saves and shared links remain usable. Detailed Kyoto and approximate wider maps
 retain separate coverage claims. Replay in 2B stays conditional; research compares
 provider geometry, reviewed area packs, photographs and scans before wider production.
-Current source `a1dbd362…` / package `0a624409…` implements this flow and the shared map palette.
-Application 105/105, service 13/13 and repository 17/17 pass. The full solo run on
-`9b1ba2b1…` retains 69/71 plus two harness diagnostics; final map/phone/resize/save/
-return checks pass 39/39, with earlier street behavior bound to unchanged runtime
-resources. Product reviewed final tap-driven EN/ZH phone guidance without a new
+Runtime `a1dbd362…`, CI/test source `02c2d63…` and package `0a624409…` deliver this
+flow and the shared map palette. The current [full solo suite](../../experience/evidence/solo-20261018/ci/current/solo-result.json)
+passes **75/75**. Application 105/105, service 13/13 and repository 17/17 pass.
+The earlier 69/71 run remains diagnostic history; its focused 39/39 follow-up
+retains its own scope. Product reviewed final tap-driven EN/ZH phone guidance without a new
 control obstruction. The [art review](../../experience/evidence/solo-20261018/art/reviewed-art.md)
 accepts bounded material/lighting refinement; human realism remains unproven.
 Final local startup **8/8** and pause/appearance **19/19** pass on `0a624409…`; the
 [portable validation record](../../experience/evidence/solo-20261018/final/validation-boundaries.json)
-preserves report and package boundaries. CI at source `1ce9360` passes homepage
-65/65, walkthrough 264/264, perspective 80/80 and companion 73/73. Original-walk
-finished **131/133** with an omitted expected appearance-fixture override; QA's
-driver correction and focused check are pending, with runtime unchanged.
-Current-source CI and publication remain pending. Broader coverage is recommended through a global
+preserves report and package boundaries. Corrected original-walk appearance checks
+pass **14/14** on final bytes; the initial 131/133 CI report remains diagnostic history.
+Current CI `39133355919` passes solo 75/75, homepage 65/65, perspective 80/80 and
+companion 73/73. Extended walkthrough and original-walk jobs are running;
+aggregate CI remains pending. Pages `9e8ecadd…` is deployed with [all 90 files verified](../../experience/evidence/solo-20261018/hosted/published-files.json)
+against `0a624409…`. Actual hosted solo **19/19** and homepage **21/21** pass across
+EN/ZH desktop/phone. The backend remains local and model planning unconfigured.
+Broader coverage is recommended through a global
 shared-style map and selectively reviewed area packs; replay 2B stays conditional.
 Q03 remains open P1: **1121.1 / 1221.9 / 1097.9 ms** exceed the unchanged <500 ms
 target in matched local observations. Extra resizes were removed without a reliable
-latency gain. This section makes no new publication or overall speedup claim.
+latency gain. Overall speedup and human experiential value remain unproven.
 The [next sprint exits](../../experience/docs/sprint-solo-20261018.md#next-sprint-priorities-and-decision-exits)
 are three matched warm locale actions each below 500 ms, one demonstrated-area
 pack decision supported by source/cost/art-budget evidence, and human meaning and

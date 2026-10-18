@@ -225,7 +225,10 @@ try {
     });
     if (!drag) throw new Error('No unobstructed map canvas drag path is visible.');
     await page.mouse.move(drag.x, drag.y); await page.mouse.down(); await page.mouse.move(drag.endX, drag.endY, { steps: 8 }); await page.mouse.up();
-    await page.waitForFunction(before => JSON.stringify(window.__HOME__.snapshot().currentView.center) !== JSON.stringify(before), before.center);
+    await page.waitForFunction(before => {
+      const current = window.__HOME__.snapshot().currentView;
+      return current && JSON.stringify(current.center) !== JSON.stringify(before);
+    }, before.center);
     await mapReady(page);
     const panned = await view(page);
     check('map-pan-keeps-place-and-makes-no-nearby-query', record.requests.filter(request => new URL(request.url).hostname === 'en.wikipedia.org').length === count

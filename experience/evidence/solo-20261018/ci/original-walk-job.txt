@@ -1,0 +1,217 @@
+Validate original walk	Exercise the packaged experience in Chromium	﻿2026-10-18T13:20:15.2433393Z ##[group]Run npm run test:browser -- dist
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:20:15.2433888Z [36;1mnpm run test:browser -- dist[0m
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:20:15.2475161Z shell: /usr/bin/bash -e {0}
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:20:15.2475699Z env:
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:20:15.2476081Z   EXPERIENCE_QA_OUTPUT: test-results/browser
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:20:15.2476507Z   EXPERIENCE_QA_TIMEOUT: 600000
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:20:15.2476844Z ##[endgroup]
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:20:15.4351397Z 
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:20:15.4352664Z > kyoto-guided-experience@0.2.0 test:browser
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:20:15.4353504Z > node tests/browser-check.mjs dist
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:20:15.4353811Z 
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:20:24.4502231Z PASS actual-webgl-scene-ready
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:20:24.4615087Z PASS empty-walk-explains-why-sharing-is-disabled
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:20:24.9012983Z PASS chinese-goals-controls-and-camera-guidance
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:20:24.9046114Z PASS locale-preserves-position-and-journey
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:20:29.3807908Z PASS day-applies-the-local-environment-and-unlit-fixtures
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:20:38.3916443Z FAIL night-applies-distinct-local-environment-lights-and-emission
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:20:38.7841062Z PASS day-night-change-appears-in-actual-fixed-camera-pixels
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:20:38.9050351Z PASS appearance-switch-preserves-opening-camera-and-world
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:20:39.7671892Z PASS appearance-controls-translate-and-keep-night-selected
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:21:05.4930669Z PASS repeated-warm-switches-do-not-grow-live-renderer-resources
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:21:05.5480519Z ACTION Walk right relative to the guided camera
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:21:19.5331278Z PASS keyboard-movement-is-camera-relative
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:21:20.4388305Z PASS key-release-stops-walking
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:21:34.5764784Z PASS blur-event-clears-held-input
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:22:12.0617833Z PASS drag-orbits-without-queuing-a-walk
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:22:12.9682574Z PASS reduced-motion-orbit-stops-after-release
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:22:26.5063909Z PASS walking-adapts-to-rotated-camera
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:22:29.3111176Z ACTION Click visible ground after orbit and resize
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:22:45.9355412Z PASS actual-raycast-click-reaches-the-world-point
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:22:46.8458218Z ACTION Click the actual lower road surface
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:23:06.1340807Z PASS road-height-picking-is-not-a-fixed-pavement-plane
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:23:06.3553869Z PASS compact-layout-and-canvas-fit-after-capture
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:23:06.4012787Z PASS compact-zh-appearance-controls-fit-and-remain-reachable
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:23:06.4502960Z PASS compact-en-appearance-controls-fit-and-remain-reachable
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:23:11.1938468Z PASS reset-view-preserves-position-and-journey
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:24:23.3443671Z PASS north-facade-blocks-forward-motion
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:24:23.6314709Z ACTION Walk through the journey control to crossing
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:24:38.3806264Z PROGRESS crossing: 9924ms, tick 919, position 27.296,4.193
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:24:47.9049257Z PROGRESS crossing: 19449ms, tick 931, position 26.42,3.941
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:24:57.4313873Z PROGRESS crossing: 28974ms, tick 943, position 25.544,3.689
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:25:07.0547217Z PROGRESS crossing: 38599ms, tick 955, position 24.668,3.437
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:25:16.4074070Z PROGRESS crossing: 47949ms, tick 967, position 23.792,3.19
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:25:25.7058096Z PROGRESS crossing: 57250ms, tick 979, position 22.916,2.945
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:25:34.9313168Z PROGRESS crossing: 66475ms, tick 991, position 22.04,2.699
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:25:44.1216492Z PROGRESS crossing: 75665ms, tick 1003, position 21.164,2.454
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:25:53.1653364Z PROGRESS crossing: 84708ms, tick 1015, position 20.721,2.33
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:26:06.9183407Z PASS nearby-prompt-is-stable
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:26:15.8512226Z PASS opening-does-not-award-visit-or-source-read
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:26:17.1004780Z PASS modal-pauses-movement
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:26:17.1470270Z PASS open-card-locale-keeps-state-and-focus
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:26:39.9967276Z PASS close-does-not-reopen-and-restores-focus
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:26:45.5255923Z PASS source-reading-remains-separate-from-visiting
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:26:45.5730204Z PASS choice-records-visit-and-next-target
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:26:50.2482446Z PASS note-draft-survives-locale-without-autosaving
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:26:50.3607837Z PASS note-draft-survives-close-and-reopen-without-autosaving
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:26:50.3821908Z PASS note-input-enforces-500-character-bound
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:26:55.0667992Z PASS explicit-note-save-preserves-journey-meaning
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:27:09.0368182Z PASS card-close-resumes-walking
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:27:28.1393643Z PASS reload-retains-world-position-choices-locale-and-note
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:27:28.1891932Z ACTION Walk through the journey control to mitsui
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:27:37.4529416Z PROGRESS mitsui: 9218ms, tick 1162, position 21.697,2.467
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:27:46.6262160Z PROGRESS mitsui: 18391ms, tick 1174, position 22.609,2.527
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:27:55.9174406Z PROGRESS mitsui: 27684ms, tick 1186, position 23.521,2.587
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:28:05.1902218Z PROGRESS mitsui: 36955ms, tick 1198, position 24.433,2.651
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:28:14.7244682Z PROGRESS mitsui: 46490ms, tick 1210, position 25.345,2.717
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:28:24.2410201Z PROGRESS mitsui: 56006ms, tick 1222, position 26.257,2.783
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:28:33.8262907Z PROGRESS mitsui: 65592ms, tick 1234, position 27.169,2.849
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:28:43.3198464Z PROGRESS mitsui: 75085ms, tick 1246, position 28.081,2.916
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:28:52.9836360Z PROGRESS mitsui: 84749ms, tick 1258, position 28.993,2.982
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:29:02.4044861Z PROGRESS mitsui: 94168ms, tick 1270, position 29.905,3.048
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:29:11.8879536Z PROGRESS mitsui: 103652ms, tick 1282, position 30.817,3.114
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:29:21.4160294Z PROGRESS mitsui: 113182ms, tick 1294, position 31.729,3.18
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:29:54.3326200Z PASS mitsui-skip-retains-visit-without-planned-station-stop
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:30:13.6440579Z ACTION Walk through the journey control to mufg
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:30:27.6397241Z PROGRESS mufg: 9271ms, tick 1364, position 31.544,3.164
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:30:37.1159936Z PROGRESS mufg: 18747ms, tick 1376, position 30.632,3.092
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:30:46.5984026Z PROGRESS mufg: 28229ms, tick 1388, position 29.72,3.02
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:30:56.0289842Z PROGRESS mufg: 37659ms, tick 1400, position 28.808,2.948
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:31:05.4852307Z PROGRESS mufg: 47115ms, tick 1412, position 27.896,2.876
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:31:14.9226153Z PROGRESS mufg: 56553ms, tick 1424, position 26.984,2.804
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:31:24.4231106Z PROGRESS mufg: 66054ms, tick 1436, position 26.072,2.732
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:31:33.9191461Z PROGRESS mufg: 75547ms, tick 1448, position 25.16,2.66
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:31:43.2432932Z PROGRESS mufg: 84871ms, tick 1460, position 24.248,2.588
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:31:52.5691341Z PROGRESS mufg: 94196ms, tick 1472, position 23.336,2.52
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:32:01.8232637Z PROGRESS mufg: 103454ms, tick 1484, position 22.424,2.454
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:32:10.9582727Z PROGRESS mufg: 112589ms, tick 1496, position 21.512,2.387
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:32:20.1333255Z PROGRESS mufg: 121764ms, tick 1508, position 20.721,2.254
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:32:29.1869546Z PROGRESS mufg: 130818ms, tick 1520, position 20.721,1.342
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:32:38.3804569Z PROGRESS mufg: 140011ms, tick 1532, position 20.721,0.43
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:32:47.8597331Z PROGRESS mufg: 149490ms, tick 1544, position 20.721,-0.482
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:32:56.7078523Z PROGRESS mufg: 158339ms, tick 1556, position 20.721,-1.394
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:33:05.5736125Z PROGRESS mufg: 167204ms, tick 1568, position 20.721,-2.306
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:33:14.4330745Z PROGRESS mufg: 176064ms, tick 1580, position 20.721,-3.218
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:33:23.3097285Z PROGRESS mufg: 184940ms, tick 1592, position 20.721,-4.13
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:33:32.2577010Z PROGRESS mufg: 193888ms, tick 1604, position 20.721,-5.042
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:33:41.6390873Z PROGRESS mufg: 203269ms, tick 1616, position 20.721,-5.954
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:33:51.5287887Z PROGRESS mufg: 213159ms, tick 1628, position 20.721,-6.866
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:33:56.6399714Z PROGRESS mufg: 218271ms, tick 1634, position 20.721,-7.322
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:34:01.8123689Z PROGRESS mufg: 223443ms, tick 1640, position 20.721,-7.778
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:34:07.1136455Z PROGRESS mufg: 228743ms, tick 1646, position 20.721,-8.234
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:34:12.3654276Z PROGRESS mufg: 233995ms, tick 1652, position 20.721,-8.69
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:34:17.6749733Z PROGRESS mufg: 239305ms, tick 1658, position 20.721,-9.146
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:34:23.0416467Z PROGRESS mufg: 244672ms, tick 1664, position 20.721,-9.602
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:34:28.4102430Z PROGRESS mufg: 250041ms, tick 1670, position 20.721,-10.058
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:34:33.5783569Z PROGRESS mufg: 255206ms, tick 1676, position 20.721,-10.514
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:34:38.7483501Z PROGRESS mufg: 260377ms, tick 1682, position 20.721,-10.97
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:34:43.9493796Z PROGRESS mufg: 265580ms, tick 1688, position 20.721,-11.426
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:34:49.1311127Z PROGRESS mufg: 270762ms, tick 1694, position 20.721,-11.882
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:34:54.2753639Z PROGRESS mufg: 275906ms, tick 1700, position 20.721,-12.338
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:35:03.9796063Z PROGRESS mufg: 285610ms, tick 1712, position 20.721,-13.25
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:35:13.4692437Z PROGRESS mufg: 295100ms, tick 1724, position 20.721,-14.162
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:35:22.6377973Z PROGRESS mufg: 304269ms, tick 1736, position 20.721,-15.074
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:35:30.4010870Z PROGRESS mufg: 312032ms, tick 1748, position 20.721,-15.986
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:35:37.9705246Z PROGRESS mufg: 319597ms, tick 1760, position 20.721,-16.898
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:35:45.8583231Z PROGRESS mufg: 327488ms, tick 1772, position 20.943,-17.583
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:35:53.4431372Z PROGRESS mufg: 335074ms, tick 1784, position 21.831,-17.799
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:36:01.0494423Z PROGRESS mufg: 342679ms, tick 1796, position 22.719,-18.015
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:36:08.4214321Z PROGRESS mufg: 350051ms, tick 1808, position 23.607,-18.231
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:36:15.9102174Z PROGRESS mufg: 357541ms, tick 1820, position 24.495,-18.448
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:36:19.5713807Z PASS real-bank-walk-uses-the-mapped-crossing
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:36:24.4816585Z PASS bank-camera-faces-actionable-frontage
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:36:29.7834664Z PASS all-three-encounters-complete-with-distinct-choices
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:37:21.3475769Z PASS chinese-encounter-chain-resumes
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:38:13.1233541Z PASS south-facing-walk-is-blocked-by-south-facade
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:38:43.0949527Z PASS completed-journey-and-camera-survive-appearance-switching
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:38:52.7825460Z PASS unsaved-note-survives-close-switch-and-reopen
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:38:53.1075992Z PASS appearance-is-a-separate-persisted-preference
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:02.5240874Z PASS recap-companion-link-preserves-stop-order-without-private-notes
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:02.5287487Z PASS share-preview-excludes-personal-notes-by-default
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:02.5342990Z PASS unsaved-note-draft-is-not-a-share-option
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:02.7994654Z PASS share-locale-preserves-note-selection-and-focus
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:03.1203007Z PASS recap-companion-link-follows-chinese-locale
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:03.1921755Z PASS share-preview-keeps-selected-saved-text-and-route-meaning
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:03.4509374Z PASS copied-link-contains-only-the-previewed-snapshot
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:03.5772184Z PASS fresh-recipient-matches-exact-preview-without-author-state
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:03.5812755Z PASS recipient-needs-no-webgl-storage-write-or-editor
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:03.5828953Z PASS recipient-long-chinese-note-fits-phone-width
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:03.7129688Z PASS recipient-language-change-preserves-personal-text-and-focus
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:07.4000878Z PASS png-is-decodable-and-draws-the-whole-selected-note
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:07.5427678Z PASS print-reader-matches-the-previewed-selection
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:07.5733562Z PASS print-action-opens-sources-and-restores-reading-state
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:07.6222573Z PASS browser-pdf-output-and-print-layout-are-valid
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:07.7895508Z PASS native-link-handoff-uses-the-previewed-link
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:07.8286212Z PASS native-share-cancel-retains-selection-preview-and-save
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:07.8725778Z PASS native-image-handoff-uses-the-generated-png
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:07.9089062Z PASS closing-share-restores-walk-state-and-focus
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:17.2485678Z PASS without-native-sharing-copy-and-image-remain-available
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:22.1110572Z PASS recipient-malformed-link-has-localized-error-without-partial-recap
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:22.2408934Z PASS recipient-unsupported-link-has-localized-error-without-partial-recap
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:22.3578367Z PASS recipient-oversized-link-has-localized-error-without-partial-recap
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:22.3882665Z PASS recipient-has-no-external-requests-or-browser-errors
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:22.5236046Z PASS packaged-artwork-credits-retain-authors-sources-and-licenses
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:32.2369970Z PASS credits-return-keeps-walk-locale-and-saved-progress
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:32.2870595Z PASS context-loss-injection-is-supported
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:32.3003728Z PASS context-loss-keeps-journey-notes-and-localized-recovery
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:41.7003085Z PASS retry-restores-rendering-with-the-same-saved-journey
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:41.7145156Z PASS graphics-recovery-retains-the-night-preference
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:46.5005150Z PASS cancel-restart-retains-journey-and-notes
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:39:55.8463890Z PASS confirmed-restart-clears-progress-and-personal-notes
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:40:00.6089303Z PASS journey-restart-does-not-reset-appearance
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:40:00.6132983Z PASS walk-has-no-external-requests-or-browser-errors
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:40:15.7371360Z PASS restored-western-road-has-real-pickable-ground
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:40:38.1209649Z PASS western-road-probe-has-no-external-requests-or-errors
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:40:47.5343816Z PASS expanded-context-building-does-not-enclose-the-restored-camera
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:40:47.8773568Z PASS eastern-camera-probe-has-no-external-requests-or-errors
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:40:55.7261859Z PASS legacy-v1-mid-journey-migrates-in-the-real-app
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:41:02.5511337Z PASS legacy-v1-mid-journey-migration-survives-reload
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:41:02.5539864Z PASS legacy-v1-mid-journey-no-external-requests-or-errors
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:41:14.4147550Z PASS sharing-opened-during-scene-load-remains-paused-and-focused
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:41:17.5192838Z PASS legacy-v1-completed-migrates-in-the-real-app
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:41:24.3485778Z PASS legacy-v1-completed-migration-survives-reload
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:41:34.3462140Z PASS restarting-migrated-journey-does-not-resurrect-legacy-progress
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:41:34.3542458Z PASS legacy-v1-completed-no-external-requests-or-errors
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:41:34.5167668Z PASS webgl-failure-keeps-existing-journey-and-notes
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:41:34.5402784Z PASS webgl-failure-leaves-field-note-export-available
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:41:34.6608246Z PASS webgl-failure-recovery-translates
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:41:34.6639955Z PASS webgl-failure-has-no-uncaught-errors-or-external-requests
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:41:53.3540892Z PASS delayed-hdr-commit-preserves-open-card-draft-pause-and-focus
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:42:08.7080132Z PASS late-hdr-request-cannot-override-the-last-mode-choice
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:42:08.7103402Z PASS delayed-appearance-has-no-external-requests-or-browser-errors
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:42:29.8544751Z PASS missing-hdr-keeps-a-usable-night-fallback-and-journey
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:42:29.9014237Z PASS missing-hdr-fallback-is-localized
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:42:42.1521075Z FAIL hdr-retry-applies-the-real-local-asset
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:42:42.1549065Z PASS hdr-faults-have-only-deliberate-diagnostics
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:42:48.3467511Z PASS comparison-loads-the-exact-manifest-and-model
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:42:48.3498919Z PASS comparison-binds-the-shared-lighting-rig
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:42:50.9576950Z PASS comparison-day-applies-the-real-local-lighting
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:42:52.3133784Z PASS comparison-intersection-day-uses-matched-camera-and-visibility
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:42:52.3184875Z PASS comparison-intersection-day-keeps-the-hashed-still-uncropped
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:42:54.0327392Z PASS comparison-mitsui-frontage-day-uses-matched-camera-and-visibility
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:42:54.0381304Z PASS comparison-mitsui-frontage-day-keeps-the-hashed-still-uncropped
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:42:55.4999479Z PASS comparison-daiya-frontage-day-uses-matched-camera-and-visibility
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:42:55.5077989Z PASS comparison-daiya-frontage-day-keeps-the-hashed-still-uncropped
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:43:01.4665592Z PASS comparison-night-applies-the-real-local-lighting
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:43:03.8385484Z PASS comparison-intersection-night-uses-matched-camera-and-visibility
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:43:03.8442564Z PASS comparison-intersection-night-keeps-the-hashed-still-uncropped
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:43:06.4776680Z PASS comparison-mitsui-frontage-night-uses-matched-camera-and-visibility
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:43:06.4827713Z PASS comparison-mitsui-frontage-night-keeps-the-hashed-still-uncropped
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:43:08.7982781Z PASS comparison-daiya-frontage-night-uses-matched-camera-and-visibility
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:43:08.8029159Z PASS comparison-daiya-frontage-night-keeps-the-hashed-still-uncropped
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:43:13.8288738Z PASS comparison-realtime-mode-shows-the-intended-panels
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:43:18.6751113Z PASS comparison-still-mode-shows-the-intended-panels
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:43:18.7232202Z PASS comparison-both-mode-shows-the-intended-panels
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:43:29.4220312Z PASS comparison-appearance-switches-preserve-view-and-bounded-resources
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:43:29.4823451Z PASS comparison-language-switch-keeps-view-and-mode
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:43:29.7333263Z PASS comparison-context-loss-leaves-the-cycles-view-usable
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:43:39.6493798Z PASS comparison-retry-replaces-the-lost-canvas-once
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:43:39.6539605Z PASS comparison-does-not-write-the-existing-journey
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:43:39.6570288Z PASS comparison-has-no-external-requests-or-browser-errors
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:43:39.8669420Z PASS comparison-without-webgl-still-presents-the-still-treatment
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:43:51.1397726Z PASS comparison-hdr-fallback-retains-the-matched-night-still
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:43:56.2519259Z PASS comparison-hdr-retry-restores-the-local-asset-without-changing-view
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:43:56.2563037Z PASS comparison-hdr-fault-has-only-expected-diagnostics
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:43:56.4699310Z PASS comparison-missing-manifest-has-localized-recoverable-error
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:43:56.7545874Z PASS comparison-missing-image-has-localized-recoverable-error
+Validate original walk	Exercise the packaged experience in Chromium	2026-10-18T13:43:56.8983216Z ##[error]Process completed with exit code 1.

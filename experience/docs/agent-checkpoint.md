@@ -1,7 +1,7 @@
 # Agent checkpoint · Explore and Together homepage
 
 2026-10-18 · Lead owns integration, commits and publication.
-**State: solo runtime `a1dbd36` / package `0a624409…` passes final local map/phone 39/39, startup 8/8, original-walk pause/lighting 19/19 and appearance 14/14 checks. Bounded art refinement is accepted. Publication is prepared; actual hosted checks follow. Q03 remains open P1. Backend tests stay local.**
+**State: solo iteration is published as Pages `9e8ecad`, runtime `a1dbd36` / package `0a624409…`. All 90 hosted files match; actual published solo 19/19 and homepage 21/21 checks pass. Current full solo CI passes 75/75. The extended walkthrough and original-walk CI jobs remain running. Q03 remains open P1; backend tests stay local.**
 
 ## Current iteration · solo exploration
 
@@ -24,7 +24,8 @@ service **13/13** and repository **17/17** checks pass. The
 [portable local evidence](../evidence/solo-20261018/final/validation-boundaries.json)
 binds the final 90-file package
 `0a6244091b50c9ee7220d698e1109c86bd397dba54384c8db20e68bc57c728e7`.
-The preceding complete solo run passes 69/71 and retains two phone-driver
+Current source CI at `02c2d63ff407f706054d1029ebee46b39216a01d` passes the complete
+solo suite **75/75** on these exact bytes. The preceding solo run passes 69/71 and retains two phone-driver
 diagnostics. Final focused 39/39 checks establish correct actual touch guidance,
 two-finger map movement, saved return and resizing; shared street runtime bytes
 match that complete run. Final startup/hidden work passes 8/8 and original-walk
@@ -39,7 +40,16 @@ two expectations omitted the calibrated canopy fixture overrides while actual
 lights match the profile. The corrected expectation passes
 [14/14 focused appearance checks](../evidence/solo-20261018/final/appearance/browser-result.json)
 on final bytes, including actual HDR retry. The raw CI failure stays in its evidence.
-Current-source CI and hosted verification are pending.
+The [current CI record](../evidence/solo-20261018/ci/current/README.md) binds source
+`02c2d63` to full solo 75/75, homepage 65/65, perspective 80/80 and companion 73/73.
+[Run 39133355919](https://github.com/PaperStrange/TourGuideAI/actions/runs/39133355919)
+continues its extended walkthrough and original-walk jobs; aggregate completion
+is pending. Final hosted verification passes
+[90/90 files](../evidence/solo-20261018/hosted/published-files.json),
+[19/19 solo checks](../evidence/solo-20261018/hosted/solo/README.md) and
+[21/21 homepage checks](../evidence/solo-20261018/hosted/homepage/walkthrough-result.json).
+All checks use actual HTTPS Pages and providers. The default service-health 404
+is recorded separately from JavaScript exceptions; no hosted service is configured.
 [Q03 observations](../evidence/solo-20261018/performance/README.md)
 remain **1121.1 / 1221.9 / 1097.9 ms**, all above the unchanged 500 ms threshold.
 The map resize guard removes unnecessary work and establishes no latency gain.
@@ -50,8 +60,11 @@ shared links must retain their meaning.
 
 - Workspace: `/workspace/TourGuideAI`; source branch: `chore-sow-delivery-plan`.
 - Current solo plan/runtime: `1babfc6` / `a1dbd36`; package `0a624409…` is frozen.
-  Inspect current QA/doc changes before building. Root has prepared exact build
-  bytes in the Pages worktree; publication and hosted checks remain pending.
+  CI/test source is `02c2d63`; Pages runtime is
+  `9e8ecadd1fa3efe44d69396e55b6375ca4097fd4`. Source branch and Pages are pushed.
+  Actual published file/solo/homepage checks pass. Inspect the current working
+  tree before edits; release documentation may have a later commit than runtime.
+  Check the two remaining CI jobs before claiming aggregate CI success.
 - Quality runtime: `828a405194d82e465887b15c8bcaedfaa3d04f9d`.
   [Sprint plan](sprint-quality-20261016.md) was issued and pushed as `a834cc5`
   before implementation. Pages runtime commit is `c3bcceb` and package manifest is
@@ -154,7 +167,7 @@ Directions represent Google-computed routes through selected places, not a perso
 recorded movement. Planned places, personal significance, virtual moments and
 user-reported real visits must remain distinct.
 
-The **Find your own place** direction now has a locally verified Sprint 2A solo slice:
+The **Find your own place** direction now has a published, verified Sprint 2A solo slice:
 continuous exploration response and deliberate private view/place return. Personal
 approach/pause replay and recipient handoff remain conditional Sprint 2B work.
 Current implementation does not establish emotional value or complete that
@@ -165,11 +178,11 @@ Ginza remains a separate architectural study.
 
 | Owner | Current boundary | Next action |
 |---|---|---|
-| Lead | Homepage/map/solo state, integration, checkpoint, release | Publish frozen bytes, verify all downloaded files, sync source and release evidence |
-| Engineering | Runtime exploration camera/inspection and performance | Preserve completed CI evidence and Q03 attribution; runtime is frozen |
-| World-content | Source features, coverage research and hosted solo check | Exercise actual published solo journeys after publication; shared map plus reviewed packs is the documented recommendation |
-| QA-release | Browser drivers and independent walkthrough | Fixture expectation and 14/14 appearance checks are complete; verify published homepage after publication |
-| Product-design | Solo sprint, delivery board and lean iteration | Record technical completion, next sprint exits and pending human acceptance |
+| Lead | Homepage/map/solo state, integration, checkpoint, release | Published verification is complete; preserve final identities and check remaining aggregate CI on resume |
+| Engineering | Runtime exploration camera/inspection and performance | Q03 remains open; next exit retains each of three matched warm actions below 500 ms |
+| World-content | Source features, coverage research and hosted solo check | Hosted 19/19 is complete; next evaluate one reviewed area pack with source, art and cost evidence |
+| QA-release | Browser drivers and independent walkthrough | Hosted 21/21 and focused 14/14 appearance are complete; retain the separate evidence scopes |
+| Product-design | Solo sprint, delivery board and lean iteration | Human meaning/recognition and an observed reason for replay remain the next decision gates |
 | Art/UX | Detailed Kyoto facade/material/lighting assets | Matched bounded review is complete; preserve asset and capture identities |
 
 Paths in the ownership table are relative to `experience/`. Do not edit another

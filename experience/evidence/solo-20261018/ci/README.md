@@ -41,7 +41,7 @@ updated assertion and subsequent run have their own evidence.
 
 [run-status.json](run-status.json) retains job/step results and source identity;
 [artifacts.json](artifacts.json) retains GitHub artifact metadata.
-[original-walk-job.log](original-walk-job.log) preserves the failed browser step's
+[original-walk-job.txt](original-walk-job.txt) preserves the failed browser step's
 GitHub log. The downloaded
 ZIP digests match GitHub's published SHA-256 digests. JSON reports are extracted
 unchanged. The GitHub connector retrieved artifacts after CLI artifact downloads

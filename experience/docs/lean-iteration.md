@@ -2,7 +2,7 @@
 
 Updated 2026-10-18 · Lead: release/integration.
 
-## Solo exploration · reviewed candidate, publication pending
+## Delivered solo exploration · published
 
 The user authorizes the next iteration and research into broader solo travel while
 preserving art, quality and usable interaction. The [solo sprint](sprint-solo-20261018.md)
@@ -20,24 +20,26 @@ and scans. Detailed authored Kyoto and wider approximate map geometry retain cle
 coverage labels. Sprint 2B replay remains conditional on evidence that movement,
 viewpoint and personal return add value. Root owns homepage/map/solo integration;
 engineering owns runtime interaction; art owns facade/material/lighting refinement.
-The plan preceded production. Current source `a1dbd362…` and package `0a624409…` implement the solo
-flow, shared map palette and private view/lighting/note/order return. Application
-105/105, service 13/13 and repository 17/17 checks pass. The full solo run on
-`9b1ba2b1…` records 69/71 with two harness diagnostics; final focused map/phone/
-resize/save/return checks pass 39/39. Previously checked street resources are
-byte-identical, preserving that evidence's scope. Final tap-driven EN/ZH guidance
-and layouts received product review without a new obstruction.
+The plan preceded production. Runtime `a1dbd362…`, CI/test source `02c2d63…` and
+package `0a624409…` deliver the solo flow, shared map palette and private
+view/lighting/note/order return. The current [full solo suite](../evidence/solo-20261018/ci/current/solo-result.json)
+passes **75/75**. Application 105/105, service 13/13 and repository 17/17 checks pass.
+The earlier 69/71 run remains diagnostic history; its 39/39 focused follow-up retains
+its own scope. Final tap-driven EN/ZH guidance and layouts received product review
+without a new obstruction.
 
 The [art review](../evidence/solo-20261018/art/reviewed-art.md) accepts bounded
 glazing/frame/rib and canopy-shadow improvements. Human recognition, realism
 preference and emotional value remain unproven. Final local startup **8/8** and
 pause/appearance **19/19** pass on `0a624409…`; the
 [portable validation record](../evidence/solo-20261018/final/validation-boundaries.json)
-retains each report's scope. At source `1ce9360`, CI homepage 65/65, walkthrough
-264/264, perspective 80/80 and companion 73/73 pass. Original-walk finished 131/133
-with an omitted expected appearance-fixture override; its driver correction and
-focused verification are pending, with runtime unchanged. Current-source CI and
-publication are pending.
+retains each report's scope. Corrected original-walk appearance checks pass **14/14**;
+the initial 131/133 CI report remains diagnostic history, with runtime unchanged.
+Current CI `39133355919` passes solo 75/75, homepage 65/65, perspective 80/80 and
+companion 73/73; extended walkthrough and original-walk jobs are running, leaving
+aggregate CI pending. Pages `9e8ecadd…` is deployed: [all 90 files match](../evidence/solo-20261018/hosted/published-files.json)
+package `0a624409…`, and actual hosted solo **19/19** plus homepage **21/21** pass
+across EN/ZH desktop/phone. The room backend remains local and the model unconfigured.
 The breadth recommendation is a shared-style global map with selectively reviewed
 area packs; further authored locations require source/art/cost review. Replay 2B
 remains conditional. Q03 is open P1: local repeats **1121.1 / 1221.9 / 1097.9 ms**

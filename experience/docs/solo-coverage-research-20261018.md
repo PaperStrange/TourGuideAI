@@ -1,6 +1,6 @@
 # Solo exploration coverage · 18 October 2026
 
-The 18 October candidate implements explicit area discovery, the shared map palette and private return views. Its package manifest SHA-256 is `0a6244091b50c9ee7220d698e1109c86bd397dba54384c8db20e68bc57c728e7`. Local browser evidence for this package records 39 passing map/phone checks; published-site validation is pending. Reviewed area packs, optional media and scans remain research recommendations. The initial source inspection used `245a1f364aa3b04e270d2d6ee402e31ec3b9d3ce`. All production-cost rankings below are engineering estimates, separate from supplier quotations or measured development time.
+The 18 October release implements explicit area discovery, the shared map palette and private return views. Its package manifest SHA-256 is `0a6244091b50c9ee7220d698e1109c86bd397dba54384c8db20e68bc57c728e7`. Local browser evidence for this package records 39 passing map/phone checks; the published-site solo smoke records 19 passing checks. Reviewed area packs, optional media and scans remain research recommendations. The initial source inspection used `245a1f364aa3b04e270d2d6ee402e31ec3b9d3ce`. All production-cost rankings below are engineering estimates, separate from supplier quotations or measured development time.
 
 ## Recommended method
 
@@ -17,6 +17,15 @@ The delivered solo action is **move the map toward an interesting spatial featur
 - The detailed Kyoto world has explicit 64 m bounds in `src/content/kyoto.js`. `src/simulation/world.js` clamps movement to a rectangle; click travel in `src/simulation/index.js` uses one mapped crossing. These rules cannot serve as a global pedestrian simulator. The current `public/models/shijo-block.glb` is **14,267,180 bytes** on disk; that is one asset measurement, not a representative city-size estimate.
 
 ## Methods compared
+
+The [actual published Paris view](../evidence/solo-20261018/hosted/solo/hosted-paris-reopened.png)
+also exposes a quality boundary: the provider renders the Eiffel Tower as tall
+extruded volumes, without its recognizable open lattice silhouette. The shared
+palette and controls transfer across areas; landmark fidelity does not follow
+from that consistency. Treat this geometry as orientation coverage. A reviewed
+landmark or area pack needs an explicit silhouette/feature comparison before it
+can claim detailed place representation. This is a concrete reason for the
+selective pack recommendation and a suitable case for its next cost/quality decision.
 
 | Method | Coverage and solo value | Style and geographic consistency | Production, updates and operating cost | Traversal and interaction limits |
 | --- | --- | --- | --- | --- |
@@ -65,7 +74,7 @@ The acceptance task for each area is to orient using the visible water/green/str
 
 Acceptance checks: map movement alone produces no nearby-search request; explicit exploration searches the current view center and shows radius/source status; cancellation prevents a previous area overwriting the current one; no-results and provider-denial states preserve the map and private saves; selected records retain identity/coordinates through Maps handoff; English/Chinese navigation and source notices remain consistent; saved views survive reload; the known Paris conflict stays excluded. Browser checks must record transferred bytes, rendering responsiveness and recovery on the same desktop/mobile configurations used by the quality sprint. Targets should be set against that measured baseline rather than invented city-wide performance guarantees.
 
-The delivered movement presentation is map-camera exploration with deliberate area discovery and private return views, alongside the bounded Kyoto street scene. The package-bound report `artifacts/solo-exploration-20261018/final-map-phone/solo-result.json` records **39 passing checks, zero failures** on manifest `0a6244091b50c9ee7220d698e1109c86bd397dba54384c8db20e68bc57c728e7`. Its checks include actual Shijō/Paris provider results, deliberate area requests, saved view/order restoration, source-conflict exclusion, language changes and phone touch behavior. `tests/browser-solo-hosted.mjs` is prepared for the published-site check; that result is pending. Physical-device fluency and emotional value still need human evaluation. Ground-level traversal beyond Kyoto, reviewed area packs, optional photographic layers and scans retain separate data and quality decisions.
+The delivered movement presentation is map-camera exploration with deliberate area discovery and private return views, alongside the bounded Kyoto street scene. The package-bound report `artifacts/solo-exploration-20261018/final-map-phone/solo-result.json` records **39 passing checks, zero failures** on manifest `0a6244091b50c9ee7220d698e1109c86bd397dba54384c8db20e68bc57c728e7`. Its checks include actual Shijō/Paris provider results, deliberate area requests, saved view/order restoration, source-conflict exclusion, language changes and phone touch behavior. The [published-site solo smoke](../evidence/solo-20261018/hosted/solo/README.md) records **19 passing checks** against actual Pages and real provider responses, with downloaded-resource hashes bound to this package. Physical-device fluency and emotional value still need human evaluation. Ground-level traversal beyond Kyoto, reviewed area packs, optional photographic layers and scans retain separate data and quality decisions.
 
 Evidence: [research manifest and source ledger](../evidence/solo-20261018/research/README.md), [observations](../evidence/solo-20261018/research/observations.json). Reproduce local interpretation with `node evidence/solo-20261018/research/inspect.mjs` from `experience/`; this command uses saved actual responses and makes no network request.
 
@@ -73,6 +82,6 @@ Evidence: [research manifest and source ledger](../evidence/solo-20261018/resear
 
 `src/home/map-style.js` defines `TRAVEL_MAP_STYLE_ID = 'tourguideai-travel-map-v1'` and exports `applyTravelMapStyle(map)`. `world-map.js` calls it inside every `style.load` callback, including a retry after `setStyle`. It preflights the captured Liberty layer names/types and then assigns color paint properties. Repeated calls assign the same values. A missing or incompatible layer throws before any paint update; the map exposes its explicit error/retry presentation.
 
-The warm stone, sage vegetation, blue-grey water and cream roads are authored colors. Road widths, dashes, filters, source data, building height/base, label layers, attribution and light settings retain their provider configuration. Road/tunnel/bridge classes share a palette while their original geometry rules remain. The module's layer assumptions are tied to `openfreemap-liberty.json` in the research evidence. `tests/map-style.test.mjs` checks those actual layer identities and validates the resulting style through MapLibre's installed style-spec validator. The local map/phone walkthrough exercises the integrated palette; published-site verification remains pending.
+The warm stone, sage vegetation, blue-grey water and cream roads are authored colors. Road widths, dashes, filters, source data, building height/base, label layers, attribution and light settings retain their provider configuration. Road/tunnel/bridge classes share a palette while their original geometry rules remain. The module's layer assumptions are tied to `openfreemap-liberty.json` in the research evidence. `tests/map-style.test.mjs` checks those actual layer identities and validates the resulting style through MapLibre's installed style-spec validator. The local map/phone walkthrough and published-site solo smoke exercise the integrated palette.
 
 Official technical basis: [MapLibre `setPaintProperty`](https://maplibre.org/maplibre-gl-js/docs/API/classes/Map/#setpaintproperty) sets paint values on a named layer; the [style specification](https://maplibre.org/maplibre-style-spec/layers/#fill-extrusion-color) distinguishes extrusion color from its height/base properties. Sources checked 2026-10-18. No geometry or real-world lighting accuracy is added by this palette.

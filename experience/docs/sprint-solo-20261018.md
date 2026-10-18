@@ -1,9 +1,9 @@
 # Solo exploration · 2026-10-18
 
-Status: implemented candidate has scoped browser verification, completed local
-startup/pause checks and accepted material refinements. An original-walk CI driver
-correction, current-source CI and publication remain pending. Lead owns integration
-and release; Q03 latency remains open P1.
+Status: delivered and published. The current full solo suite and actual hosted
+walkthrough pass; all 90 published files match the reviewed package. Extended
+walkthrough/original-walk CI jobs are still running, so aggregate CI remains pending.
+Lead owns integration and release; Q03 latency remains open P1.
 The user authorizes the next iteration and research into broader solo travel while
 preserving art, quality and usable interaction. Sprint 2A is active; 2B replay
 remains conditional on the experience evidence below.
@@ -147,12 +147,14 @@ Release evidence identifies source/package, actual checks, reviewed visual state
 provider conditions and open limits. Root owns checkpoint, publication and final
 acceptance. This plan authorizes no agent to edit another owner's files.
 
-## S06 review record · current candidate
+## S06 review record · delivered release
 
 Plan commit: `1babfc636c75006550646e371759aa2dba46f77c`.
 Initial implemented source: `1ce9360a89e3ab72943bb2d1876051f80a14bf1e`.
-Current source: `a1dbd36298e56109a396d2df1a9031851859b3c9`.
-The current reviewed package manifest is
+Runtime source: `a1dbd36298e56109a396d2df1a9031851859b3c9`.
+CI/test source: `02c2d63ff407f706054d1029ebee46b39216a01d`.
+Pages commit: `9e8ecadd1fa3efe44d69396e55b6375ca4097fd4`.
+The published and reviewed package manifest is
 `0a6244091b50c9ee7220d698e1109c86bd397dba54384c8db20e68bc57c728e7`.
 It provides continuous solo movement/full camera control, optional source-backed
 surface inspection, explicit map-area discovery using actual providers, private
@@ -161,26 +163,28 @@ view/lighting/note/order return and the shared map palette.
 | Evidence | Result and scope |
 |---|---|
 | Application/service/repository | **105/105** unit, **13/13** service and **17/17** repository checks pass. |
-| Solo walkthrough | The full `9b1ba2b1…` run records **69/71**, with two harness diagnostics retained. Final package `0a624409…` passes **39/39** focused map/phone/resize/save/return checks. Previously verified street behavior uses byte-identical runtime resources; this does not relabel the full run as 71/71. |
+| Solo walkthrough | The current [full solo suite](../evidence/solo-20261018/ci/current/solo-result.json) passes **75/75** on package `0a624409…`. This is the primary integrated solo evidence. The earlier **39/39** focused checks retain their own scope. |
 | Final shared runtime | Local [startup checks](../evidence/solo-20261018/final/startup/result.json) pass **8/8** and [pause/appearance checks](../evidence/solo-20261018/final/runtime-pause/runtime-pause-result.json) pass **19/19**, both on package `0a624409…`. |
 | Phone UX | Actual taps retain EN/ZH touch guidance; mouse-to-touch switching updates it correctly. Two-finger map movement, explicit area discovery and private return pass. Product reviewed the final phone captures without finding a new text/control obstruction. |
 | Art | [Matched review](../evidence/solo-20261018/art/reviewed-art.md) accepts the bounded material/lighting refinement: readable glazing/frame/sill separation, distinct Daiya ribs and reduced outward canopy-shadow wedges. Eight reviewed fixed-pose captures retain their exact source/package scope. Human recognition and the user's realism preference remain unproven. |
-| CI | At source `1ce9360`, homepage **65/65**, walkthrough **264/264**, perspective **80/80** and companion **73/73** pass. Original-walk finished **131/133** with an omitted expected appearance-fixture override. QA is correcting the driver and running its focused check; runtime is unchanged. Current-source CI remains pending. |
+| CI | Current run `39133355919` passes full solo **75/75**, homepage **65/65**, perspective **80/80** and companion **73/73**. Extended walkthrough and original-walk jobs are running; [aggregate CI](../evidence/solo-20261018/ci/current/run-status.json) remains pending. Corrected [original-walk appearance checks](../evidence/solo-20261018/final/appearance/browser-result.json) pass **14/14** on final bytes; the earlier source `1ce9360` result **131/133** remains in the diagnostic record. |
+| Publication | Pages `9e8ecadd…` serves the reviewed package: [all 90 files match](../evidence/solo-20261018/hosted/published-files.json). Actual hosted [solo **19/19**](../evidence/solo-20261018/hosted/solo/solo-hosted-result.json) and [homepage **21/21**](../evidence/solo-20261018/hosted/homepage/walkthrough-result.json) checks pass across EN/ZH desktop/phone. The room backend remains local; model planning remains unconfigured. |
 | Q03 | [Matched local observations](../evidence/solo-20261018/performance/README.md) record **1121.1 / 1221.9 / 1097.9 ms**, each exceeding the unchanged **<500 ms** target. Extra map resizes are removed; the repeats establish no reliable latency gain. Local immutable assets and actual providers differ from the preceding published-HTTPS baseline. |
 
-The portable [validation boundaries](../evidence/solo-20261018/final/validation-boundaries.json)
-identify the [39/39 focused report](../evidence/solo-20261018/final/map-phone/solo-result.json)
+The earlier [validation boundaries](../evidence/solo-20261018/final/validation-boundaries.json)
+retain the [39/39 focused report](../evidence/solo-20261018/final/map-phone/solo-result.json)
 and [69/71 full diagnostic report](../evidence/solo-20261018/final/solo-full-diagnostic/solo-result.json)
-separately. The package comparison preserves 85 other files, including the street
-runtime resources. Check counts overlap and retain their individual scope.
-Publication and exact hosted-byte verification remain pending.
+as diagnostic history. Their package comparison preserves 85 other files, including
+the street runtime resources. Current full-suite evidence above supersedes that
+limited coverage; the historical counts stay unchanged. Counts overlap and are
+never added into a product-success rate.
 
 The [coverage recommendation](solo-coverage-research-20261018.md) is global provider
 maps with a shared visual style, supplemented selectively by reviewed area packs.
 Provider maps support broad discovery; authored detail requires an explicit source,
 quality and production-cost review. No further handcrafted city is delivered by
 this recommendation. Sprint 2B replay remains conditional on observed experiential
-value. Root will record final source/CI/publication identities and remaining gates.
+value. Remaining gates are aggregate CI, Q03 latency and human experience evidence.
 
 ## Next sprint priorities and decision exits
 

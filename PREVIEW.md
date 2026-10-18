@@ -1,18 +1,20 @@
 # Review TourGuideAI
 
-## Solo exploration candidate · publication pending
+## Published solo exploration
 
-The workspace candidate adds a free-orbit Kyoto view with optional **Look closer**
+[Explore TourGuideAI](https://paperstrange.github.io/TourGuideAI/) ·
+[中文首页](https://paperstrange.github.io/TourGuideAI/?lang=zh)
+
+The live homepage offers a free-orbit Kyoto view with optional **Look closer**
 inspection, explicit **Explore this area** discovery on the wider map, and private
 **Keep this place** views with lighting, optional words and the selected place order.
-Current source is `a1dbd36298e56109a396d2df1a9031851859b3c9`; its reviewed package manifest is
+Runtime source is `a1dbd36298e56109a396d2df1a9031851859b3c9`;
+CI/test source is `02c2d63ff407f706054d1029ebee46b39216a01d`.
+Pages `9e8ecadd1fa3efe44d69396e55b6375ca4097fd4` serves all 90 verified files from package
 `0a6244091b50c9ee7220d698e1109c86bd397dba54384c8db20e68bc57c728e7`.
-The published links below still refer to the preceding verified quality release
-until the lead records the new publication and exact-byte verification.
 
-For the workspace candidate, use `npm run preview` in `experience` with its current
-built package, and open `http://localhost:4186/`. The solo flow needs no room service
-or model credentials. Walk and orbit Kyoto, choose **Look closer**, move laterally
+The solo flow needs no room service or model credentials. Walk and orbit Kyoto,
+choose **Look closer**, move laterally
 to inspect a visible facade detail, and optionally keep your view. Search for
 another place, pan its map and select **Explore this area**. Choose an actual
 source-linked visiting order, keep it, and reopen it from **Places to return to**.
@@ -20,20 +22,23 @@ Touch and keyboard guidance are available in English and Chinese. Stored places
 are private to that browser/origin; Maps calculates directions through selected stops.
 
 The material review accepts clearer facade/glazing separation and reduced canopy
-shadow wedges. User realism and experiential value remain open. Final focused
-browser checks pass 39/39, with earlier street checks retaining their own package
-scope. Final local startup 8/8 and pause/appearance 19/19 pass. Original-walk CI
-recorded 131/133; an expected appearance-fixture correction is undergoing focused
-verification, with runtime unchanged. Current-source CI and publication remain
-pending. Warm Together
-language actions still miss the unchanged 500 ms target; this release makes no
-latency-gain claim. See the [solo acceptance record](experience/docs/sprint-solo-20261018.md)
+shadow wedges. User realism and experiential value remain open. The current full
+solo suite passes **75/75**; actual hosted solo **19/19** and homepage **21/21** checks
+pass across EN/ZH desktop/phone. Local startup 8/8, pause/appearance 19/19 and
+corrected original-walk appearance 14/14 checks pass. Extended walkthrough and
+original-walk CI jobs are still running; aggregate CI remains pending. Warm Together
+language actions remain about **1.1–1.2 seconds**, above the unchanged 500 ms target.
+See the [solo acceptance record](experience/docs/sprint-solo-20261018.md)
 and [coverage recommendation](experience/docs/solo-coverage-research-20261018.md).
 Broader coverage uses a shared-style provider map with selectively reviewed area
 packs proposed for richer detail. The next decision gates are three matched warm
 locale actions each below 500 ms, one sourced area-pack decision within an explicit
 art/cost budget, and human meaning/recognition evidence. Replay remains conditional
 Sprint 2B work; no further area pack is delivered by this recommendation.
+
+For an optional workspace preview, run `npm run preview` in `experience` with the
+current built package and open `http://localhost:4186/`. Browser saves stay on their
+own origin; localhost and the published site have separate private collections.
 
 ## Published Explore and Together homepage
 
