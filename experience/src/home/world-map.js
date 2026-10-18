@@ -1,6 +1,8 @@
 import { Map, Marker, NavigationControl, setWorkerUrl } from 'maplibre-gl';
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
 import 'maplibre-gl/dist/maplibre-gl.css';
+import { normalizeMapView } from '../solo/state.js';
+import { applyTravelMapStyle, TRAVEL_MAP_STYLE_ID } from './map-style.js';
 
 setWorkerUrl(workerUrl);
 const collection = features => ({ type: 'FeatureCollection', features });
@@ -42,7 +44,7 @@ export function itineraryCoordinates(places) {
   return result;
 }
 
-export function createWorldMap(host, { onSelect, onStatus, locale = 'en' } = {}) {
+export function createWorldMap(host, { onSelect, onStatus, onViewChange, locale = 'en' } = {}) {
   let ready = false, styleReady = false, failed = false, destroyed = false, markers = [], pendingPlaces = [], pendingRoutes = [], pendingView = null;
   let selectedLocale = locale === 'zh' ? 'zh' : 'en', viewSignature = null, cameraTransitions = 0, renderedFrames = 0;
   let viewStarted = performance.now(), readyMs = null, markerSignature = null, featureSignature = null;
@@ -82,7 +84,15 @@ export function createWorldMap(host, { onSelect, onStatus, locale = 'en' } = {})
     host.dataset.mapStatus = 'error'; onStatus?.('error', event.error);
   });
   map.on('render', () => { renderedFrames++; });
+  map.on('movestart', () => {
+    ready = false; readyMs = null; viewStarted = performance.now();
+    host.dataset.mapStatus = failed ? 'error' : 'loading'; onStatus?.(failed ? 'error' : 'loading');
+    onViewChange?.();
+  });
+  map.on('moveend', () => { onViewChange?.(); });
   map.on('style.load', () => {
+    try { applyTravelMapStyle(map); }
+    catch (error) { failed = true; ready = false; host.dataset.mapStatus = 'error'; onStatus?.('error', error); return; }
     styleReady = true; featureSignature = null;
     map.addSource('journeys', { type: 'geojson', data: collection([]) });
     map.addLayer({ id: 'journey-halo', type: 'line', source: 'journeys', paint: {
@@ -96,7 +106,7 @@ export function createWorldMap(host, { onSelect, onStatus, locale = 'en' } = {})
   map.on('idle', () => {
     if (ready || !styleReady || failed || destroyed) return;
     ready = true; readyMs = performance.now() - viewStarted;
-    host.dataset.mapStatus = 'ready'; onStatus?.('ready');
+    host.dataset.mapStatus = 'ready'; onStatus?.('ready'); onViewChange?.();
   });
   function render() {
     if (!styleReady) return;
@@ -126,11 +136,12 @@ export function createWorldMap(host, { onSelect, onStatus, locale = 'en' } = {})
       map.getSource('journeys').setData(collection(features));
     }
   }
-  function move(view) {
-    pendingView = view;
-    const signature = JSON.stringify(view.kind === 'local'
+  const signatureFor = view => JSON.stringify(view.kind === 'local'
       ? [view.kind, view.place.kind, view.place.longitude, view.place.latitude]
       : [view.kind, ...view.places.map(place => [place.longitude, place.latitude])]);
+  function move(view) {
+    pendingView = view;
+    const signature = signatureFor(view);
     if (signature === viewSignature) return;
     viewSignature = signature; cameraTransitions++;
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -151,7 +162,37 @@ export function createWorldMap(host, { onSelect, onStatus, locale = 'en' } = {})
   return {
     setPlaces(places, routes = []) { pendingPlaces = places; pendingRoutes = routes; render(); },
     local(place) { move({ kind: 'local', place }); },
+    retainLocal(place) { pendingView = { kind: 'local', place }; viewSignature = signatureFor(pendingView); },
     world(places = []) { move({ kind: 'world', places }); },
+    captureView() {
+      if (!ready || failed || map.isMoving()) return null;
+      return normalizeMapView({ version: 1, center: map.getCenter().wrap().toArray(), zoom: map.getZoom(),
+        bearing: map.getBearing(), pitch: map.getPitch() });
+    },
+    restoreView(value, place) {
+      const view = normalizeMapView(value);
+      if (!view || destroyed) return false;
+      pendingView = { kind: 'local', place }; viewSignature = signatureFor(pendingView);
+      ready = false; readyMs = null; viewStarted = performance.now();
+      host.dataset.mapStatus = failed ? 'error' : 'loading';
+      map.stop(); map.jumpTo(view); map.triggerRepaint(); onStatus?.(failed ? 'error' : 'loading'); return true;
+    },
+    whenReady(signal) {
+      if (signal?.aborted) return Promise.reject(signal.reason);
+      if (failed || destroyed) return Promise.reject(new Error('map-unavailable'));
+      if (ready && !map.isMoving()) return Promise.resolve();
+      return new Promise((resolve, reject) => {
+        const finish = error => {
+          clearTimeout(timer); map.off('idle', onIdle); map.off('error', onError); signal?.removeEventListener('abort', onAbort);
+          if (error) reject(error); else resolve();
+        };
+        const onIdle = () => { if (ready) finish(); };
+        const onError = () => finish(new Error('map-unavailable'));
+        const onAbort = () => finish(signal.reason);
+        const timer = setTimeout(() => finish(new Error('map-timeout')), 30000);
+        map.on('idle', onIdle); map.on('error', onError); signal?.addEventListener('abort', onAbort, { once: true });
+      });
+    },
     resize() { map.resize(); },
     setLocale(value) { selectedLocale = value === 'zh' ? 'zh' : 'en'; localizeControls(); },
     retry() {
@@ -160,7 +201,7 @@ export function createWorldMap(host, { onSelect, onStatus, locale = 'en' } = {})
       host.dataset.mapStatus = 'loading'; onStatus?.('loading');
       map.setStyle(styleURL, { diff: false });
     },
-    snapshot() { return { ready, failed, center: map.getCenter().toArray(), zoom: map.getZoom(), pitch: map.getPitch(),
+    snapshot() { return { ready, failed, center: map.getCenter().toArray(), zoom: map.getZoom(), pitch: map.getPitch(), bearing: map.getBearing(), style: TRAVEL_MAP_STYLE_ID,
       locale: selectedLocale, readyMs, renderedFrames, cameraTransitions, requestedView: pendingView?.kind ?? null,
       places: pendingPlaces.map(p => p.id), routes: pendingRoutes.map(r => r.stops.map(p => p.id)),
       buildingLayer: map.getLayer('building-3d')?.type || null,

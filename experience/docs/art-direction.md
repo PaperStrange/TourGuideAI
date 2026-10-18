@@ -1,5 +1,42 @@
 # Expanded Shijō street: two rendering approaches
 
+## Sprint 2A runtime finishes — 2026-10-18
+
+The live-scene candidate uses four original 512×512 albedo maps for pale stone,
+granite fascia, glazing and glazing with an authored blind cue. The package is
+316,118 bytes including its [provenance manifest](../public/materials/architectural/manifest.json).
+The existing GLB, fourteen embedded maps, normal/roughness data, UVs, footprint
+geometry and classical corner features retain their recorded bytes. Runtime
+replacement transfers four new color maps into the scene and disposes the unused
+templates and replaced maps. Geometry, light count and shadow-map count are unchanged.
+
+The reviewed `mitsui-exterior-2021`, `mitsui-frontage-2026`, `daiya-exterior-2021`
+and `daiya-frontage-2026` references support the distinction between pale cladding,
+speckled fascia, metal frames and glazing. Exact color, grain, surface joints,
+blind cues and reflection strength remain authored. No photographic pixels or
+interior reconstruction are included. The named finish rules are reusable where
+another asset identifies compatible surfaces; they confer no Kyoto identity on
+generic mapped buildings.
+
+The runtime profile directs the four existing canopy spotlights toward the
+pavement with a 0.95-radian half-cone, 0.85 penumbra, 9 m range and intensity 150.
+These values are artistic calibration. Corner washes, source HDR files and the
+historical comparison rig retain their settings. Asset fetch, hash or image-decode
+failures propagate to the application's scene failure and Retry flow.
+
+Generate only the runtime maps with `blender -b --python experience/art/build_scene.py -- --materials-only`.
+Intermediate output is under the ignored `artifacts/art-sprint2a-20261018` directory.
+The generated manifest records the exact generator, reference metadata and image
+hashes. The historical GLB provenance retains its original generator hash.
+
+Matched live-browser review is pending on this candidate. The frozen baseline uses
+the canonical intersection, Mitsui and Daiya poses in both modes, plus the phone
+opening. Review must establish visible recess/frame separation, distinct opening
+patterns and coherent pavement shadows. User recognition and realism acceptance
+remain separate from source integrity and runtime checks.
+
+## Earlier rendering studies
+
 On 2026-10-06 the user accepted the play guidance and interaction fluency, but
 rejected the previous building/street art as too simple and artificial. Earlier
 “no blocker” observations established usability, not acceptable visual quality.

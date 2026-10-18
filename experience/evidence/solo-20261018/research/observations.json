@@ -1,0 +1,670 @@
+{
+  "checkedAt": "2026-10-18",
+  "scope": "One actual z14 tile and one nearby query per area; no topology, access or visual reconstruction verification.",
+  "results": [
+    {
+      "area": "shijo",
+      "center": {
+        "id": "osm:way:532008156",
+        "title": "Shijō Bridge",
+        "latitude": 35.0037898,
+        "longitude": 135.7714948,
+        "kind": "bridge",
+        "source": "OpenStreetMap · Photon",
+        "url": "https://www.openstreetmap.org/way/532008156",
+        "country": "Japan",
+        "city": "Kyoto",
+        "locality": "Shimogyo Ward",
+        "anchor": "provider-representative-point"
+      },
+      "nearby": [
+        {
+          "id": "wikipedia:en:8915930",
+          "title": "Kennin-ji",
+          "kind": "heritage",
+          "latitude": 35.00098611,
+          "longitude": 135.77366389,
+          "url": "https://en.wikipedia.org/?curid=8915930"
+        },
+        {
+          "id": "wikipedia:en:69681667",
+          "title": "Nishiki Tenmangū",
+          "kind": "heritage",
+          "latitude": 35.00502,
+          "longitude": 135.76739,
+          "url": "https://en.wikipedia.org/?curid=69681667"
+        },
+        {
+          "id": "wikipedia:en:14538385",
+          "title": "Nishiki Market",
+          "kind": "street",
+          "latitude": 35.00502778,
+          "longitude": 135.76613889,
+          "url": "https://en.wikipedia.org/?curid=14538385"
+        },
+        {
+          "id": "wikipedia:en:1584824",
+          "title": "Yasaka Shrine",
+          "kind": "heritage",
+          "latitude": 35.00361111,
+          "longitude": 135.77861111,
+          "url": "https://en.wikipedia.org/?curid=1584824"
+        },
+        {
+          "id": "wikipedia:en:50921429",
+          "title": "St. Francis Xavier Cathedral, Kyoto",
+          "kind": "heritage",
+          "latitude": 35.0097,
+          "longitude": 135.7694,
+          "url": "https://en.wikipedia.org/?curid=50921429"
+        },
+        {
+          "id": "wikipedia:en:31615605",
+          "title": "Rokuharamitsu-ji",
+          "kind": "heritage",
+          "latitude": 34.99710278,
+          "longitude": 135.77330833,
+          "url": "https://en.wikipedia.org/?curid=31615605"
+        },
+        {
+          "id": "wikipedia:en:1255543",
+          "title": "Honnō-ji",
+          "kind": "heritage",
+          "latitude": 35.010294,
+          "longitude": 135.768281,
+          "url": "https://en.wikipedia.org/?curid=1255543"
+        },
+        {
+          "id": "wikipedia:en:13327188",
+          "title": "Yasaka Kōshin-dō",
+          "kind": "heritage",
+          "latitude": 34.99827778,
+          "longitude": 135.77872222,
+          "url": "https://en.wikipedia.org/?curid=13327188"
+        },
+        {
+          "id": "wikipedia:en:5755678",
+          "title": "Maruyama Park (Kyoto)",
+          "kind": "outdoors",
+          "latitude": 35.00333333,
+          "longitude": 135.78138889,
+          "url": "https://en.wikipedia.org/?curid=5755678"
+        },
+        {
+          "id": "wikipedia:en:7560174",
+          "title": "Bukkō-ji",
+          "kind": "heritage",
+          "latitude": 35.0007,
+          "longitude": 135.7623,
+          "url": "https://en.wikipedia.org/?curid=7560174"
+        }
+      ],
+      "suggestedOrders": [
+        {
+          "id": "culture",
+          "stops": [
+            "osm:way:532008156",
+            "wikipedia:en:8915930",
+            "wikipedia:en:1584824",
+            "wikipedia:en:69681667",
+            "wikipedia:en:50921429"
+          ]
+        },
+        {
+          "id": "outdoors",
+          "stops": [
+            "osm:way:532008156",
+            "wikipedia:en:14538385",
+            "wikipedia:en:5755678"
+          ]
+        },
+        {
+          "id": "nearby",
+          "stops": [
+            "osm:way:532008156",
+            "wikipedia:en:8915930",
+            "wikipedia:en:69681667",
+            "wikipedia:en:14538385",
+            "wikipedia:en:5755678"
+          ]
+        }
+      ],
+      "tile": {
+        "z": 14,
+        "x": 14371,
+        "y": 6489,
+        "bytes": 866364,
+        "sha256": "1034476c0fc9b1723e9ccd85fdd240cf04a678863549045fd78523be56ca61c5",
+        "layers": {
+          "building": {
+            "features": 50,
+            "fields": [
+              "colour",
+              "hide_3d",
+              "render_height",
+              "render_min_height"
+            ],
+            "classes": {},
+            "heights": {
+              "2": 1,
+              "3": 1,
+              "4": 3,
+              "5": 2,
+              "6": 1,
+              "7": 1,
+              "8": 2,
+              "9": 1,
+              "10": 1,
+              "11": 3,
+              "12": 1,
+              "13": 1,
+              "14": 1,
+              "15": 1,
+              "16": 1,
+              "17": 1,
+              "18": 1,
+              "19": 1,
+              "20": 2,
+              "21": 1,
+              "22": 1,
+              "23": 1,
+              "25": 1,
+              "26": 1,
+              "27": 1,
+              "29": 1,
+              "30": 4,
+              "31": 1,
+              "32": 1,
+              "33": 1,
+              "35": 1,
+              "36": 1,
+              "37": 1,
+              "38": 1,
+              "39": 1,
+              "41": 1,
+              "44": 1,
+              "46": 1,
+              "52": 1,
+              "63": 1
+            }
+          },
+          "transportation": {
+            "features": 444,
+            "fields": [
+              "access",
+              "bicycle",
+              "brunnel",
+              "class",
+              "foot",
+              "horse",
+              "layer",
+              "oneway",
+              "ramp",
+              "service",
+              "subclass",
+              "surface"
+            ],
+            "classes": {
+              "path": 145,
+              "pier": 1,
+              "bridge": 40,
+              "rail": 5,
+              "transit": 3,
+              "minor": 112,
+              "service": 58,
+              "track": 2,
+              "trunk": 24,
+              "secondary": 11,
+              "primary": 20,
+              "tertiary": 23
+            },
+            "heights": {}
+          },
+          "water": {
+            "features": 127,
+            "fields": [
+              "brunnel",
+              "class",
+              "id",
+              "intermittent"
+            ],
+            "classes": {
+              "pond": 31,
+              "lake": 60,
+              "river": 31,
+              "swimming_pool": 5
+            },
+            "heights": {}
+          },
+          "waterway": {
+            "features": 124,
+            "fields": [
+              "brunnel",
+              "class",
+              "intermittent",
+              "name",
+              "name:ar",
+              "name:az",
+              "name:ca",
+              "name:cy",
+              "name:de",
+              "name:en",
+              "name:eo",
+              "name:es",
+              "name:et",
+              "name:fa",
+              "name:fi",
+              "name:fr",
+              "name:ga",
+              "name:he",
+              "name:id",
+              "name:it",
+              "name:ja",
+              "name:ja-Hira",
+              "name:ja-Latn",
+              "name:ko",
+              "name:la",
+              "name:latin",
+              "name:mk",
+              "name:nl",
+              "name:nonlatin",
+              "name:pl",
+              "name:pt",
+              "name:ru",
+              "name:sl",
+              "name:tr",
+              "name:uk",
+              "name:zh",
+              "name_de",
+              "name_en",
+              "name_int"
+            ],
+            "classes": {
+              "canal": 28,
+              "stream": 49,
+              "river": 8,
+              "drain": 24,
+              "ditch": 15
+            },
+            "heights": {}
+          },
+          "landuse": {
+            "features": 98,
+            "fields": [
+              "class"
+            ],
+            "classes": {
+              "quarter": 1,
+              "zoo": 1,
+              "school": 6,
+              "pitch": 15,
+              "university": 2,
+              "cemetery": 55,
+              "hospital": 1,
+              "retail": 9,
+              "industrial": 1,
+              "playground": 5,
+              "library": 1,
+              "residential": 1
+            },
+            "heights": {}
+          },
+          "landcover": {
+            "features": 598,
+            "fields": [
+              "class",
+              "subclass"
+            ],
+            "classes": {
+              "grass": 349,
+              "wood": 246,
+              "sand": 2,
+              "rock": 1
+            },
+            "heights": {}
+          },
+          "park": {
+            "features": 10,
+            "fields": [
+              "class",
+              "name",
+              "name:ar",
+              "name:br",
+              "name:ca",
+              "name:cs",
+              "name:cy",
+              "name:de",
+              "name:en",
+              "name:eo",
+              "name:es",
+              "name:et",
+              "name:fa",
+              "name:fi",
+              "name:fr",
+              "name:ga",
+              "name:he",
+              "name:hu",
+              "name:id",
+              "name:it",
+              "name:ja",
+              "name:ja-Hira",
+              "name:ja-Latn",
+              "name:ka",
+              "name:ko",
+              "name:latin",
+              "name:nl",
+              "name:nonlatin",
+              "name:pl",
+              "name:pt",
+              "name:ru",
+              "name:sl",
+              "name:sq",
+              "name:sr",
+              "name:sv",
+              "name:th",
+              "name:tr",
+              "name:uk",
+              "name:vi",
+              "name:zh",
+              "name_de",
+              "name_en",
+              "name_int",
+              "rank"
+            ],
+            "classes": {
+              "historic": 10
+            },
+            "heights": {}
+          }
+        }
+      }
+    },
+    {
+      "area": "eiffel",
+      "center": {
+        "id": "osm:way:5013364",
+        "title": "Eiffel Tower",
+        "latitude": 48.8582599,
+        "longitude": 2.2945006,
+        "kind": "tower",
+        "source": "OpenStreetMap · Photon",
+        "url": "https://www.openstreetmap.org/way/5013364",
+        "country": "France",
+        "city": "Paris",
+        "locality": "Paris",
+        "anchor": "provider-representative-point"
+      },
+      "nearby": [
+        {
+          "id": "wikipedia:en:5455300",
+          "title": "Musée du Quai Branly – Jacques Chirac",
+          "kind": "culture",
+          "latitude": 48.8608,
+          "longitude": 2.2975,
+          "url": "https://en.wikipedia.org/?curid=5455300"
+        },
+        {
+          "id": "wikipedia:en:212301",
+          "title": "Champ de Mars",
+          "kind": "outdoors",
+          "latitude": 48.85611111,
+          "longitude": 2.29833333,
+          "url": "https://en.wikipedia.org/?curid=212301"
+        },
+        {
+          "id": "wikipedia:en:56929702",
+          "title": "Monument to the French Declaration of the Rights of Man and of the Citizen",
+          "kind": "heritage",
+          "latitude": 48.8552,
+          "longitude": 2.3011,
+          "url": "https://en.wikipedia.org/?curid=56929702"
+        },
+        {
+          "id": "wikipedia:en:49887902",
+          "title": "Holy Trinity Cathedral and the Russian Orthodox Spiritual and Cultural Center",
+          "kind": "heritage",
+          "latitude": 48.862,
+          "longitude": 2.3011,
+          "url": "https://en.wikipedia.org/?curid=49887902"
+        }
+      ],
+      "suggestedOrders": [
+        {
+          "id": "culture",
+          "stops": [
+            "osm:way:5013364",
+            "wikipedia:en:5455300",
+            "wikipedia:en:49887902",
+            "wikipedia:en:56929702"
+          ]
+        },
+        {
+          "id": "outdoors",
+          "stops": [
+            "osm:way:5013364",
+            "wikipedia:en:212301"
+          ]
+        },
+        {
+          "id": "nearby",
+          "stops": [
+            "osm:way:5013364",
+            "wikipedia:en:5455300",
+            "wikipedia:en:49887902",
+            "wikipedia:en:212301",
+            "wikipedia:en:56929702"
+          ]
+        }
+      ],
+      "tile": {
+        "z": 14,
+        "x": 8296,
+        "y": 5636,
+        "bytes": 510889,
+        "sha256": "9d901879655cd521f66b4f56c91d016818607bf8e86b3b7b3c7954ebe842418a",
+        "layers": {
+          "building": {
+            "features": 91,
+            "fields": [
+              "colour",
+              "render_height",
+              "render_min_height"
+            ],
+            "classes": {},
+            "heights": {
+              "1": 1,
+              "2": 1,
+              "3": 1,
+              "4": 5,
+              "5": 2,
+              "6": 2,
+              "7": 1,
+              "8": 2,
+              "9": 1,
+              "10": 1,
+              "11": 4,
+              "12": 1,
+              "13": 4,
+              "14": 3,
+              "15": 5,
+              "16": 1,
+              "17": 1,
+              "19": 2,
+              "21": 1,
+              "22": 3,
+              "23": 1,
+              "24": 1,
+              "26": 2,
+              "27": 1,
+              "28": 1,
+              "29": 1,
+              "30": 2,
+              "31": 1,
+              "32": 2,
+              "33": 1,
+              "35": 1,
+              "36": 1,
+              "37": 1,
+              "38": 1,
+              "39": 1,
+              "40": 2,
+              "41": 2,
+              "42": 2,
+              "43": 1,
+              "44": 4,
+              "45": 1,
+              "46": 1,
+              "48": 1,
+              "52": 1,
+              "55": 1,
+              "58": 1,
+              "59": 1,
+              "61": 1,
+              "63": 1,
+              "64": 1,
+              "93": 1,
+              "96": 1,
+              "98": 2,
+              "116": 1,
+              "120": 1,
+              "130": 1,
+              "277": 1,
+              "300": 1,
+              "330": 1
+            }
+          },
+          "transportation": {
+            "features": 868,
+            "fields": [
+              "access",
+              "bicycle",
+              "brunnel",
+              "class",
+              "foot",
+              "horse",
+              "indoor",
+              "layer",
+              "level",
+              "official",
+              "oneway",
+              "ramp",
+              "service",
+              "subclass",
+              "surface"
+            ],
+            "classes": {
+              "path": 276,
+              "pier": 3,
+              "bridge": 7,
+              "transit": 7,
+              "primary": 129,
+              "rail": 4,
+              "service": 138,
+              "minor": 211,
+              "ferry": 1,
+              "tertiary": 27,
+              "secondary": 65
+            },
+            "heights": {}
+          },
+          "water": {
+            "features": 24,
+            "fields": [
+              "class",
+              "id",
+              "intermittent"
+            ],
+            "classes": {
+              "river": 1,
+              "pond": 12,
+              "lake": 11
+            },
+            "heights": {}
+          },
+          "waterway": {
+            "features": 7,
+            "fields": [
+              "brunnel",
+              "class",
+              "intermittent",
+              "name",
+              "name:ar",
+              "name:be",
+              "name:br",
+              "name:de",
+              "name:en",
+              "name:eo",
+              "name:fa",
+              "name:fr",
+              "name:latin",
+              "name:pa",
+              "name:pl",
+              "name:pnb",
+              "name:pt",
+              "name:ru",
+              "name:sk",
+              "name:ur",
+              "name:vi",
+              "name:zh",
+              "name:zh-Hans",
+              "name:zh-Hant",
+              "name_de",
+              "name_en",
+              "name_int"
+            ],
+            "classes": {
+              "river": 7
+            },
+            "heights": {}
+          },
+          "landuse": {
+            "features": 48,
+            "fields": [
+              "class"
+            ],
+            "classes": {
+              "suburb": 1,
+              "track": 4,
+              "pitch": 15,
+              "school": 10,
+              "cemetery": 1,
+              "military": 1,
+              "playground": 10,
+              "college": 2,
+              "kindergarten": 1,
+              "neighbourhood": 2,
+              "residential": 1
+            },
+            "heights": {}
+          },
+          "landcover": {
+            "features": 282,
+            "fields": [
+              "class",
+              "subclass"
+            ],
+            "classes": {
+              "grass": 282
+            },
+            "heights": {}
+          },
+          "park": {
+            "features": 1,
+            "fields": [
+              "class",
+              "name",
+              "name:latin",
+              "name_de",
+              "name_en",
+              "name_int"
+            ],
+            "classes": {
+              "protected_area": 1
+            },
+            "heights": {}
+          }
+        }
+      }
+    }
+  ]
+}

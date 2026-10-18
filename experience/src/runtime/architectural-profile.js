@@ -1,7 +1,7 @@
 import { validateLightingRig } from './lighting-contract.js';
 
 export const KYOTO_ARCHITECTURAL_PROFILE = Object.freeze({
-  id: 'kyoto-street-materials-20261015',
+  id: 'kyoto-street-materials-20261018',
   shadowBounds: { minX: -12, maxX: 76, minY: -38, maxY: 30 },
   modes: {
     day: {
@@ -15,6 +15,12 @@ export const KYOTO_ARCHITECTURAL_PROFILE = Object.freeze({
     },
     night: {
       sun: { shadow: { bias: -0.00018, normalBias: 0.025, radius: 2.8 } },
+      fixtures: {
+        'north-crossing': { target: [21.75, 0.17, -3.05], angle: 0.95, penumbra: 0.85, distance: 9, intensity: 150 },
+        'north-frontage': { target: [32.2, 0.17, -3.08], angle: 0.95, penumbra: 0.85, distance: 9, intensity: 150 },
+        'south-bank': { target: [22.98, 0.17, 18.23], angle: 0.95, penumbra: 0.85, distance: 9, intensity: 150 },
+        'south-frontage': { target: [30.24, 0.17, 18.32], angle: 0.95, penumbra: 0.85, distance: 9, intensity: 150 },
+      },
     },
   },
 });
@@ -36,6 +42,13 @@ export function applyLightingProfile(rig, profile) {
     }
     if (changes.sun) target.sun = { ...target.sun, ...changes.sun,
       shadow: { ...target.sun.shadow, ...changes.sun.shadow } };
+    for (const [id, patch] of Object.entries(changes.fixtures ?? {})) {
+      const index = target.fixtures.findIndex(fixture => fixture.id === id);
+      if (index < 0) throw new Error('Unknown architectural fixture: ' + id);
+      const fixture = target.fixtures[index];
+      target.fixtures[index] = { ...fixture, ...patch, id,
+        shadow: { ...fixture.shadow, ...patch.shadow } };
+    }
   }
   return validateLightingRig(result);
 }

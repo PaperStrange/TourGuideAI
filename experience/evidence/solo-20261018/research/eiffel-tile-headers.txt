@@ -1,0 +1,26 @@
+HTTP/1.1 200 OK
+date: Sun, 18 Oct 2026 13:03:42 GMT
+server: envoy
+
+HTTP/2 200 
+date: Sun, 18 Oct 2026 13:03:42 GMT
+content-type: application/vnd.mapbox-vector-tile
+server: envoy
+last-modified: Sun, 11 Oct 2026 13:56:48 GMT
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=xMVyGST5OHCYnjrIGomE8rcm2TaFpsWMUpxnNJAEehHlf2wuDzfX6PWEyZtRx6KEZQlfAc%2BM%2BoGGJ8s94GXvfXLx81Ko8wpjxymJQt9qnMPI4uh79IbnwYL4y2C4vnC4JSluptjfVQ%3D%3D"}]}
+expires: Fri, 10 Oct 2036 19:45:51 GMT
+cache-control: max-age=315360000,public
+etag: W/"6acb95a0-493f8"
+access-control-allow-origin: *
+x-robots-tag: noindex, nofollow
+strict-transport-security: max-age=15552000; includeSubDomains; preload
+x-ofm-debug: specific PBF planet 20261011_080001_pt
+age: 407871
+x-content-type-options: nosniff
+cf-cache-status: HIT
+vary: accept-encoding
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+cf-ray: a4c7bea51abc47a4-DFW
+alt-svc: h3=":443"; ma=86400
+x-envoy-upstream-service-time: 144
+

@@ -2,16 +2,18 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { WORLD } from '../simulation/world.js';
 import { CAMERA_DEFAULTS, CAMERA_LIMITS, normalizeCameraPose } from './view-state.js';
+import { EXPLORATION_CAMERA_LIMITS, normalizeExplorationCamera } from './exploration-state.js';
 
 export { CAMERA_DEFAULTS };
-const limits = CAMERA_LIMITS;
 export const toScene = (x, north, height = 0) => new THREE.Vector3(x, height, -north);
 
-export function createGuidedCamera(canvas, initial, reducedMotion, onChange) {
+export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { solo = false } = {}) {
+  const limits = solo ? EXPLORATION_CAMERA_LIMITS : CAMERA_LIMITS;
   const camera = new THREE.PerspectiveCamera(42, 1, 0.15, 200);
   let frontage = initial.y < WORLD.roadCenterY ? 'south' : 'north';
   let base = frontage === 'south' ? Math.PI : 0;
-  let aimOffset = null, transition = null;
+  let aimOffset = null, transition = null, inspecting = false;
+  let currentState = { x: initial.x, y: initial.y };
   const controls = new OrbitControls(camera, canvas);
   controls.enablePan = false;
   controls.enableDamping = !reducedMotion;
@@ -19,13 +21,26 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange) {
   controls.rotateSpeed = 0.42;
   controls.zoomSpeed = 0.65;
   const setAzimuthBounds = () => {
-    controls.minAzimuthAngle = base + limits.azimuth[0];
-    controls.maxAzimuthAngle = base + limits.azimuth[1];
+    controls.minAzimuthAngle = solo ? -Infinity : base + limits.azimuth[0];
+    controls.maxAzimuthAngle = solo ? Infinity : base + limits.azimuth[1];
   };
   setAzimuthBounds();
   [controls.minPolarAngle, controls.maxPolarAngle] = limits.polar;
   [controls.minDistance, controls.maxDistance] = limits.distance;
-  controls.addEventListener('change', onChange);
+  const changed = () => {
+    if (solo && inspecting) {
+      const before = controls.target.clone();
+      controls.target.set(THREE.MathUtils.clamp(before.x, currentState.x - 32, currentState.x + 32),
+        THREE.MathUtils.clamp(before.y, 0.5, 20),
+        THREE.MathUtils.clamp(before.z, -currentState.y - 32, -currentState.y + 32));
+      camera.position.add(controls.target.clone().sub(before));
+      aimOffset = { x: controls.target.x - currentState.x, y: -controls.target.z - currentState.y,
+        height: controls.target.y };
+      camera.updateMatrixWorld();
+    }
+    onChange();
+  };
+  controls.addEventListener('change', changed);
   const targetFor = state => toScene(state.x + (aimOffset?.x ?? (frontage === 'north' ? 1.2 : -1.2)),
     state.y + (aimOffset?.y ?? (frontage === 'north' ? -2.2 : 2.2)), aimOffset?.height ?? 0.9);
   const unwrap = angle => base + Math.atan2(Math.sin(angle - base), Math.cos(angle - base));
@@ -37,11 +52,12 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange) {
     camera.position.copy(controls.target).add(new THREE.Vector3().setFromSphericalCoords(
       THREE.MathUtils.clamp(distance, ...limits.distance),
       THREE.MathUtils.clamp(polar, ...limits.polar),
-      THREE.MathUtils.clamp(unwrap(azimuth), base + limits.azimuth[0], base + limits.azimuth[1])));
+      solo ? azimuth : THREE.MathUtils.clamp(unwrap(azimuth), base + limits.azimuth[0], base + limits.azimuth[1])));
     controls.update(); controls.enableDamping = damping;
     camera.updateMatrixWorld(); onChange();
   }
   function reset(state = initial) {
+    currentState = { x: state.x, y: state.y };
     finishTransition(); aimOffset = null;
     frontage = state.y < WORLD.roadCenterY ? 'south' : 'north';
     base = frontage === 'south' ? Math.PI : 0; setAzimuthBounds();
@@ -49,8 +65,9 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange) {
     pose(base + CAMERA_DEFAULTS.azimuth, CAMERA_DEFAULTS.polar, CAMERA_DEFAULTS.distance);
   }
   function restorePose(value, state, animate = false) {
-    const next = normalizeCameraPose(value);
+    const next = (solo ? normalizeExplorationCamera : normalizeCameraPose)(value);
     if (!next) return false;
+    currentState = { x: state.x, y: state.y };
     const fromTarget = controls.target.clone(), fromPosition = camera.position.clone();
     const wasEnabled = transition?.enabled ?? controls.enabled;
     transition = null;
@@ -86,6 +103,14 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange) {
       // Looking at an architectural feature may put the actor outside the frame.
       // A deliberate walk returns the aim to the actor without reversing yaw.
       aimOffset = null;
+      if (solo && inspecting) {
+        const next = targetFor(currentState);
+        camera.position.add(next.clone().sub(controls.target)); controls.target.copy(next);
+        controls.update(); changed();
+      }
+    },
+    setInspecting(value) {
+      inspecting = solo && Boolean(value); controls.enablePan = inspecting;
     },
     faceTarget(target, state) {
       const next = target.y < WORLD.roadCenterY ? 'south' : 'north';
@@ -97,6 +122,7 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange) {
       return true;
     },
     follow(state, dt, immediate = false) {
+      currentState = { x: state.x, y: state.y };
       if (transition) {
         transition.elapsed += dt;
         const t = immediate ? 1 : Math.min(1, transition.elapsed / 420);
@@ -131,6 +157,15 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange) {
       controls.enabled = value;
     },
     rotate(delta) { pose(unwrap(controls.getAzimuthalAngle()) + delta, controls.getPolarAngle(), controls.getDistance()); },
+    tilt(delta) { pose(controls.getAzimuthalAngle(), controls.getPolarAngle() + delta, controls.getDistance()); },
+    pan(right, up) {
+      if (!solo || !inspecting) return;
+      camera.updateMatrixWorld();
+      const delta = new THREE.Vector3().setFromMatrixColumn(camera.matrixWorld, 0).multiplyScalar(right)
+        .add(new THREE.Vector3().setFromMatrixColumn(camera.matrixWorld, 1).multiplyScalar(up));
+      controls.target.add(delta); camera.position.add(delta);
+      changed(); controls.update();
+    },
     zoom(delta) { pose(controls.getAzimuthalAngle(), controls.getPolarAngle(), controls.getDistance() + delta); },
     resize(width, height) { camera.aspect = width / height; camera.updateProjectionMatrix(); onChange(); },
     project(x, north, height, width, viewportHeight) {
@@ -144,9 +179,10 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange) {
         azimuth: controls.getAzimuthalAngle(), polar: controls.getPolarAngle(), distance: controls.getDistance(),
         frontage, azimuthBase: base, relativeAzimuth: unwrap(controls.getAzimuthalAngle()) - base,
         enabled: controls.enabled, damping: controls.enableDamping, transitioning: Boolean(transition),
+        solo, inspecting, panning: controls.enablePan,
         projectionMatrix: camera.projectionMatrix.toArray(), matrixWorld: camera.matrixWorld.toArray(),
         limits: structuredClone(limits) };
     },
-    dispose() { controls.removeEventListener('change', onChange); controls.dispose(); },
+    dispose() { controls.removeEventListener('change', changed); controls.dispose(); },
   };
 }

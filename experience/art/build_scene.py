@@ -1,27 +1,22 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
-"""Original editable Shijo scene and independently animated traveller.
-
-Blender4.3.2: blender -b --python experience/art/build_scene.py --
-Canonical inputs are experience/src/content/kyoto.js; no legacy runtime dependency.
-Mapped footprints, corner planes and OSM floor counts are retained. Storey heights,
-facade/roof treatment, materials, threshold detail, planting form and light remain AUTHORED.
-Generated PBR textures contain original procedural surface/reflection cues, not
-photographs or surveyed facades. Runtime lighting must be evaluated independently.
-"""
-import argparse, hashlib, json, math, random, struct, subprocess, sys, tempfile, time
+# Blender 4.3.2：从已记录的建筑轮廓生成场景；材料、层高和细节属于作者设计。
+# --materials-only 仅生成运行时颜色图片，并保留现有 GLB。
+import argparse, hashlib, json, math, random, shutil, struct, subprocess, sys, time
 from pathlib import Path
 import bpy
 import numpy as np
 from mathutils import Vector
 
 START=time.perf_counter()
+repo=Path(__file__).resolve().parents[2]
 parser=argparse.ArgumentParser()
-parser.add_argument('--output-dir',default=str(Path(tempfile.gettempdir())/'tourguideai-experience-art'))
+parser.add_argument('--output-dir',default=str(repo/'artifacts/art-sprint2a-20261018'))
 parser.add_argument('--asset-dir')
 parser.add_argument('--samples',type=int,default=48)
 parser.add_argument('--skip-render',action='store_true')
+parser.add_argument('--materials-only',action='store_true')
+parser.add_argument('--finish-dir',default=str(repo/'experience/public/materials/architectural'))
 args=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
-repo=Path(__file__).resolve().parents[2]
 out=Path(args.output_dir).resolve(); out.mkdir(parents=True,exist_ok=True)
 assets=Path(args.asset_dir).resolve() if args.asset_dir else repo/'experience/public/models'
 assets.mkdir(parents=True,exist_ok=True)
@@ -55,7 +50,7 @@ def save_texture(name, rgb, noncolor=False):
     texture_images.append(image)
     return image
 
-def texture(name,kind,size=512):
+def texture(name,kind,size=512,runtime=False):
     """Original tileable material maps in metre-scaled UVs, never photo pixels."""
     rng=np.random.default_rng(81+len(texture_images)); yy,xx=np.mgrid[:size,:size]
     n=rng.normal(0,.32,(size,size)); nx=xx/size; ny=yy/size
@@ -79,9 +74,19 @@ def texture(name,kind,size=512):
         h=n*.0001; v=.12+.085*ny+.018*np.sin(nx*math.tau*4)
         if kind=='glass_blind': v=v+((yy%36)<3)*.052
         rough=.16+n*.009; tint=(.82,.94,1)
+    if runtime:
+        # 表面色彩支持石材、玻璃和框架的区分；反光仍由运行时环境决定。
+        grain=np.round(np.repeat(np.repeat(n[::2,::2],2,axis=0),2,axis=1)*3)/3
+        if kind=='stone':
+            v=.70+grain*.009-joint*.045+broad*.004; tint=(1,.985,.96)
+        elif kind=='granite':
+            v=.44+grain*.060; tint=(.99,1,1.01)
+        else:
+            v=.42+.10*ny+.018*np.sin(nx*math.tau*2); tint=(.88,.94,1)
+            if kind=='glass_blind': v=v+((yy%36)<3)*.035
     rgb=np.stack([v*c for c in tint],axis=-1).clip(.005,.95)
     image=save_texture(name,rgb)
-    if kind in ('paving','asphalt','stone','granite'):
+    if kind in ('paving','asphalt','stone','granite') and not runtime:
         dx=(np.roll(h,-1,1)-np.roll(h,1,1))*3
         dy=(np.roll(h,-1,0)-np.roll(h,1,0))*3
         normal=np.stack([-dx,-dy,np.ones_like(h)],axis=-1)
@@ -90,6 +95,30 @@ def texture(name,kind,size=512):
         rough=save_texture(name+'-roughness',np.repeat(rough.clip(.15,.98)[:,:,None],3,axis=2),True)
         surface_maps[image.name]=(normal,rough)
     return image
+
+if args.materials_only:
+    entries=[]
+    for name,kind in (('pale-stone','stone'),('granite-fascia','granite'),('glazing','glass'),('glazing-blinds','glass_blind')):
+        texture(name,kind,runtime=True)
+        path=out/(name+'.png')
+        entries.append({'material':name,'file':path.name,'width':512,'height':512,'bytes':path.stat().st_size,'sha256':sha(path)})
+    manifest={'version':1,'id':'kyoto-architectural-finishes-20261018','maps':entries,
+        'generator':'experience/art/build_scene.py','generatorSHA256':sha(__file__),'blenderVersion':bpy.app.version_string,
+        'sourceReferenceMetadata':'experience/public/content-evidence/facade-references.json','sourceReferenceMetadataSHA256':sha(reference_path),
+        'referenceIds':[item['id'] for item in reference_data['references']],
+        'referenceUse':'Reviewed facade photographs inform pale stone, speckled granite and differentiated glazed frames. Photograph pixels are not included.',
+        'authored':'Original procedural albedo textures; exact color, grain, joints and blind cues are authored. No surveyed material values, occupancy or interior reconstruction.',
+        'application':'Runtime replacement of four existing albedo maps. Existing GLB geometry, UVs, normal and roughness maps remain unchanged.',
+        'colorSpace':'sRGB','dimensions':[512,512],'seedRule':'numpy PCG64 seed 81 plus prior generated image count',
+        'reuse':'Named finish policy may be applied only where the source asset identifies a compatible surface; generic mapped buildings do not acquire Kyoto facade facts.'}
+    manifest_text=json.dumps(manifest,ensure_ascii=False,indent=2)+'\n'
+    total=sum(item['bytes'] for item in entries)+len(manifest_text.encode('utf-8'))
+    if total>512*1024: raise ValueError('Architectural finish transfer budget exceeded: '+str(total))
+    finish_dir=Path(args.finish_dir).resolve(); finish_dir.mkdir(parents=True,exist_ok=True)
+    for entry in entries: shutil.copyfile(out/entry['file'],finish_dir/entry['file'])
+    (finish_dir/'manifest.json').write_text(manifest_text)
+    stage('Exported runtime finishes '+json.dumps({'bytes':total,'maps':len(entries),'manifestSHA256':sha(finish_dir/'manifest.json')}))
+    raise SystemExit(0)
 
 tex_paving=texture('paving-colour','paving')
 tex_asphalt=texture('asphalt-colour','asphalt')

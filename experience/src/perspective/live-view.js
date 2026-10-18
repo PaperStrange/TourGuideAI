@@ -1,9 +1,11 @@
 import { createGame } from '../runtime/create-game.js';
 import { normalizePerspectiveView } from '../runtime/view-state.js';
+import { normalizeExplorationView } from '../runtime/exploration-state.js';
 
 // This adapter owns only a live presentation. Saving, attribution and sharing are
 // the application's responsibility; it never opens or mutates a Kyoto journey.
-export async function createPerspectiveView(host, { locale = 'en', onState, onStatus, initialView } = {}) {
+export async function createPerspectiveView(host, { locale = 'en', onState, onStatus, onViewChange,
+  onInspectionChange, initialView, solo = false } = {}) {
   let game, latest = null, status = 'loading', currentView = null, destroyed = false;
   const snapshot = () => ({
     position: latest ? { x: latest.x, y: latest.y } : null,
@@ -13,9 +15,14 @@ export async function createPerspectiveView(host, { locale = 'en', onState, onSt
   });
   const publish = () => { if (!destroyed) onState?.(snapshot()); };
   game = await createGame(host, {
-    locale, encounters: false, lightingMode: 'day', initialView: normalizePerspectiveView(initialView),
+    locale, solo, encounters: false, lightingMode: 'day',
+    initialView: (solo ? normalizeExplorationView : normalizePerspectiveView)(initialView),
     onState(value) { latest = value; if (game) currentView = game.captureView(); publish(); },
-    onViewChange(value) { if (game) latest = game.getState(); currentView = value; publish(); },
+    onViewChange(value) {
+      if (game) latest = game.getState(); currentView = value; publish();
+      if (!destroyed) onViewChange?.(value);
+    },
+    onInspectionChange(value) { if (!destroyed) onInspectionChange?.(value); },
     onStatus(value) { status = value.status; onStatus?.(value); publish(); },
   });
   if (status !== 'ready') {
@@ -33,7 +40,15 @@ export async function createPerspectiveView(host, { locale = 'en', onState, onSt
     setLocale: value => update(() => game.setLocale(value)),
     setPaused: value => update(() => game.setPaused(value)),
     setVisible: value => update(() => game.setVisible(value)),
+    setInspecting: value => update(() => game.setInspecting(value)),
+    clearInspection: () => update(() => game.clearInspection()),
+    inspectAt: (x, y) => update(() => game.inspectAt(x, y)),
+    getInspectionState: () => destroyed ? null : game.getInspectionState(),
     resetCamera: () => update(() => game.resetCamera()),
+    rotateCamera: delta => update(() => game.rotateCamera(delta)),
+    tiltCamera: delta => update(() => game.tiltCamera(delta)),
+    panCamera: (right, up) => update(() => game.panCamera(right, up)),
+    zoomCamera: delta => update(() => game.zoomCamera(delta)),
     setLightingMode: value => destroyed ? Promise.resolve(null) : game.setLightingMode(value),
     getLightingState: () => destroyed ? null : game.getLightingState(),
     destroy() {
@@ -44,6 +59,7 @@ export async function createPerspectiveView(host, { locale = 'en', onState, onSt
   };
   if (import.meta.env.DEV || new URLSearchParams(location.search).get('qa') === '1') {
     window.__PERSPECTIVE_VIEW__ = Object.freeze({ host, snapshot,
+      inspection: () => game.getInspectionState(),
       camera: () => game.getCameraState(), renderer: () => window.__TOUR_GAME__?.host === host ? window.__TOUR_GAME__.renderer() : null });
   }
   return api;

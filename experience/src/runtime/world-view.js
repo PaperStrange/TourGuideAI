@@ -4,7 +4,9 @@ import { WORLD, TARGETS, approachPoint } from '../simulation/world.js';
 import { toScene } from './camera.js';
 import { createSceneLighting } from './lighting.js';
 import { KYOTO_ARCHITECTURAL_PROFILE } from './architectural-profile.js';
-import { prepareArchitecturalMaterials } from './architectural-materials.js';
+import { prepareArchitecturalMaterials, loadArchitecturalFinishTextures,
+  disposeArchitecturalFinishTextures } from './architectural-materials.js';
+import { createSurfaceInspection } from './inspection.js';
 
 function disposeTree(root) {
   const geometries = new Set(), materials = new Set(), textures = new Set();
@@ -35,11 +37,12 @@ function contactShadow() {
   return mesh;
 }
 
-export async function createWorldView(renderer, { encounters = true, signal, onProgress, lightingMode = 'day', onLightingStatus, onInvalidate } = {}) {
+export async function createWorldView(renderer, { encounters = true, solo = false, signal, onProgress, lightingMode = 'day', onLightingStatus, onInvalidate } = {}) {
   const scene = new THREE.Scene();
   let lighting;
   const loader = new GLTFLoader();
   const assetBase = new URL(import.meta.env.BASE_URL + 'models/', document.baseURI);
+  const finishBase = new URL(import.meta.env.BASE_URL + 'materials/architectural/', document.baseURI);
   const loaded = [];
   async function asset(name) {
     const response = await fetch(new URL(name, assetBase), { signal, cache: 'no-cache' });
@@ -49,21 +52,25 @@ export async function createWorldView(renderer, { encounters = true, signal, onP
     if (signal?.aborted) { disposeTree(gltf.scene); throw new DOMException('Scene loading cancelled', 'AbortError'); }
     return gltf.scene;
   }
-  let street, traveller;
+  let street, traveller, finishAssets, architecturalMaterials;
   try {
     onProgress?.(0.15);
-    const results = await Promise.allSettled([asset('shijo-block.glb'), asset('traveller.glb')]);
+    const results = await Promise.allSettled([asset('shijo-block.glb'), asset('traveller.glb'),
+      loadArchitecturalFinishTextures(finishBase, { signal })]);
+    if (results[2].status === 'fulfilled') finishAssets = results[2].value;
     const failed = results.find(result => result.status === 'rejected');
     if (failed) throw failed.reason;
     [street, traveller] = results.map(result => result.value);
+    architecturalMaterials = prepareArchitecturalMaterials(street, renderer.capabilities.getMaxAnisotropy(), finishAssets);
+    finishAssets = null;
     onProgress?.(0.65);
   } catch (error) {
+    disposeArchitecturalFinishTextures(finishAssets);
     for (const model of loaded) disposeTree(model);
     lighting?.dispose(); disposeTree(scene);
     throw error;
   }
   scene.add(street, traveller);
-  const architecturalMaterials = prepareArchitecturalMaterials(street, renderer.capabilities.getMaxAnisotropy());
   const actor = traveller.getObjectByName('Traveller') ?? traveller;
   const limbs = Object.fromEntries(['LeftLeg', 'RightLeg', 'LeftArm', 'RightArm'].map(name => [name, actor.getObjectByName(name)]));
   const walkable = [], occluders = [];
@@ -106,6 +113,7 @@ export async function createWorldView(renderer, { encounters = true, signal, onP
   });
   const sightRay = new THREE.Ray(), intersection = new THREE.Vector3();
   const occlusionRay = new THREE.Raycaster();
+  const inspection = solo ? createSurfaceInspection([street, traveller]) : null;
   let lastActor = '', lastCue = '', fadedGroups = [];
   lighting = createSceneLighting(renderer, scene, { roots: [street, traveller], signal,
     profile: KYOTO_ARCHITECTURAL_PROFILE, onStatus: onLightingStatus, onChange: onInvalidate });
@@ -114,6 +122,16 @@ export async function createWorldView(renderer, { encounters = true, signal, onP
   return {
     scene, actor, floorHeight,
     setLightingMode: lighting.setMode, getLightingState: lighting.snapshot,
+    getInspectionState: () => inspection?.snapshot() ?? { enabled: false, focus: null, selected: null },
+    setInspecting(value) { inspection?.setEnabled(value); },
+    setInspectionPoint(x, y) { inspection?.point(x, y); },
+    clearInspection() { inspection?.clear(); },
+    selectInspection: () => inspection?.select() ?? null,
+    updateInspection(camera, player, width, height) {
+      if (!inspection?.isEnabled()) return false;
+      scene.updateMatrixWorld(true);
+      return inspection.update(camera, player, width, height);
+    },
     pickGround(camera, x, y, width, height) {
       pointerRay.setFromCamera(new THREE.Vector2(x / width * 2 - 1, 1 - y / height * 2), camera);
       const hit = pointerRay.intersectObjects(walkable, false)[0];

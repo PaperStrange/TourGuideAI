@@ -2,10 +2,12 @@ import './styles.css';
 import { copy } from './copy.js';
 import { createRoomClient } from './room-client.js';
 import { SERVICE_SELECTION_KEY, defaultServiceURL, normalizeServiceURL, parseServiceSelection, roomCredentialKey } from './service-config.js';
-import { searchCenters, findNearby, DISCOVERY_ATTRIBUTION } from '../discovery/provider.js';
+import { searchCenters, findNearby, DEFAULT_RADIUS_METERS, DISCOVERY_ATTRIBUTION } from '../discovery/provider.js';
 import { suggestRoutes } from '../discovery/routes.js';
 import { resolveStops } from '../travel/places.js';
 import { buildMapsJourney, mapsShareText } from '../travel/maps.js';
+import { areaAtView, hasDetailedStreet } from '../solo/state.js';
+import { createSoloController, soloControlsMarkup, keptPlacesMarkup, soloDialogsMarkup } from '../solo/controller.js';
 
 const $ = selector => document.querySelector(selector);
 const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
@@ -25,12 +27,14 @@ let api = createRoomClient({ baseURL: serviceSettings.endpoint, transport: servi
 let serviceGeneration = 0, serviceController = new AbortController();
 let connectionMessage = 'serviceChecking', connectionPending = false;
 let invitationNeedsConfirmation = false;
+let solo, soloPaused = false, restoring = false, keptRoute = false, mapViewToRestore = null, restoreGeneration = 0;
+let previewRepresentation = null, restoreController;
 
 function kyotoCenter() {
   const place = resolveStops(['crossing'], locale)[0];
   return { ...place, kind: 'poi', source: 'OpenStreetMap', url: place.source };
 }
-const isDetailed = place => Math.abs(place.latitude - 35.00376) < 0.00055 && Math.abs(place.longitude - 135.75995) < 0.00065;
+const isDetailed = hasDetailedStreet;
 const fromCatalog = place => ({ ...place, title: place.name, url: place.sourceUrl, source: 'Shared destination' });
 const toCatalog = place => ({ id: place.id, name: place.title, latitude: place.latitude, longitude: place.longitude,
   kind: ['country', 'city'].includes(place.kind) ? place.kind : 'poi', sourceUrl: place.url || undefined,
@@ -44,23 +48,29 @@ function markup() {
   <main class="home-main"><div class="opening"><div><p class="eyebrow" data-copy="opening"></p><h1 data-copy="title"></h1><p class="subtitle" data-copy="subtitle"></p></div><div class="mode-switch" role="group"><button id="mode-explore" data-mode="explore" data-copy="explore"></button><button id="mode-together" data-mode="together" data-copy="together"></button></div></div>
   <section class="search-panel" aria-labelledby="search-label"><div><p class="eyebrow" id="journey-step"></p><h2 id="search-label"></h2></div><form id="place-search"><label class="sr-only" for="place-query" data-copy="searchLabel"></label><input id="place-query" name="place" type="search" maxlength="160" autocomplete="off" required><button id="search-submit" class="primary" type="submit" data-copy="search"></button></form><div id="search-status" role="status"></div><div id="search-results" class="search-results"></div></section>
   <div class="journey-layout"><section class="visual-column"><div class="preview-heading"><div><span id="preview-kind" class="eyebrow"></span><h2 id="preview-title"></h2></div><div class="preview-actions"><div id="lighting-controls" class="segmented"><button id="lighting-day" data-lighting="day" data-copy="day"></button><button id="lighting-night" data-lighting="night" data-copy="night"></button></div><button id="back-world" class="secondary" data-copy="backWorld" hidden></button></div></div>
-  <div class="preview-frame"><div id="live-stage" tabindex="0" role="region"></div><div id="world-map" hidden></div><div class="preview-tools"><button id="preview-reset" data-copy="reset"></button></div><div id="scene-status" class="scene-status" role="status"></div><button id="scene-retry" class="primary scene-retry" data-copy="retry" hidden></button><div id="view-guidance" class="view-guidance"></div></div>
+  <div class="preview-frame"><div id="live-stage" tabindex="0" role="region"></div><div id="world-map" hidden></div><span id="inspection-cue" class="inspection-cue" aria-hidden="true" hidden></span><div class="preview-tools"><button id="preview-reset" data-copy="reset"></button></div><div id="scene-status" class="scene-status" role="status"></div><button id="scene-retry" class="primary scene-retry" data-copy="retry" hidden></button><div id="view-guidance" class="view-guidance"></div></div>
   <div class="preview-caption"><span id="preview-note"></span><a id="center-source" target="_blank" rel="noopener noreferrer" data-copy="source"></a></div>
+  ${soloControlsMarkup()}
   <div id="center-actions" class="center-actions"><button id="add-dream" class="primary" data-copy="addDream" hidden></button><a class="text-link" id="walk-link" href="./walk.html" data-copy="legacy"></a><a class="text-link" id="companion-link" href="./travel.html" data-copy="companion"></a></div>
-  <section id="routes-section" class="route-section" aria-labelledby="routes-heading"><p class="eyebrow" data-copy="furtherStep"></p><h2 id="routes-heading" data-copy="routesTitle"></h2><p id="routes-status" role="status"></p><div id="route-options" class="route-options"></div><p class="small" data-copy="routeNote"></p></section>
+  <section id="routes-section" class="route-section" aria-labelledby="routes-heading"><p class="eyebrow" data-copy="furtherStep"></p><h2 id="routes-heading" data-copy="routesTitle"></h2><p id="routes-status" role="status"></p><button id="routes-retry" class="secondary" data-copy="retryNearby" hidden></button><div id="route-options" class="route-options"></div><p class="small" data-copy="routeNote"></p></section>
   </section><aside class="journey-sidebar"><section id="explore-plan" class="paper-card"><span class="eyebrow" data-copy="yourWalk"></span><h2 id="route-title"></h2><ol id="route-stops" class="stop-list"></ol><div id="route-maps" class="map-links"></div><button id="copy-maps" class="secondary" data-copy="copyMaps"></button><label class="sr-only" for="maps-text" data-copy="copyMaps"></label><textarea id="maps-text" readonly hidden></textarea></section>
+  ${keptPlacesMarkup()}
   <section id="together-panel" hidden><div class="paper-card" id="room-setup"><h2 data-copy="together"></h2><p data-copy="roomIntro"></p><label for="traveler-name" data-copy="name"></label><input id="traveler-name" maxlength="60" autocomplete="nickname"><label for="room-title" data-copy="roomTitle"></label><input id="room-title" maxlength="120"><button id="room-create" class="primary" data-copy="create"></button><button id="room-join" class="primary" data-copy="join" hidden></button></div>
   <div class="paper-card" id="room-shared" hidden><span class="eyebrow" data-copy="ourJourney"></span><h2 id="shared-title"></h2><button id="room-invite" class="secondary" data-copy="invite"></button><label class="sr-only" for="invite-url" data-copy="inviteLabel"></label><textarea id="invite-url" readonly hidden></textarea><p class="small" data-copy="inviteNote"></p><h3 data-copy="people"></h3><div id="participant-list"></div><h3 data-copy="dreams"></h3><div id="dream-list"></div></div>
   <p id="room-status" class="service-status" role="status"></p><details id="testing-connection" class="testing-connection"><summary data-copy="testingConnection"></summary><form id="service-connection-form" novalidate><label for="service-endpoint" data-copy="serviceAddress"></label><input id="service-endpoint" type="url" inputmode="url" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="http://localhost:8787" aria-describedby="service-data service-connection-status"><p id="service-data" class="small" data-copy="serviceData"></p><label for="service-transport" data-copy="serviceTransport"></label><select id="service-transport" aria-describedby="service-transport-help"><option value="sse" data-copy="serviceSse"></option><option value="poll" data-copy="servicePoll"></option></select><p id="service-transport-help" class="small" data-copy="serviceTransportHelp"></p><div class="service-actions"><button id="service-connect" type="submit" class="primary" data-copy="serviceConnect"></button><button id="service-reset" type="button" class="secondary" data-copy="serviceReset"></button></div><p id="service-connection-status" class="small" role="status" aria-live="polite"></p><p class="small" data-copy="serviceLocal"></p><p class="small" data-copy="serviceInvite"></p><p class="small" data-copy="serviceSession"></p></form></details><div class="paper-card" id="ai-panel" hidden><h2 data-copy="planTitle"></h2><label for="preferences" data-copy="preferences"></label><textarea id="preferences" maxlength="2000" rows="3"></textarea><button id="generate-plan" class="primary" data-copy="generate"></button><p class="small" id="ai-status"></p><div id="shared-plan"></div><button id="accept-plan" class="secondary" data-copy="accept" hidden></button></div></section>
   <p id="action-status" role="status" aria-live="polite"></p></aside></div>
-  </main><footer class="home-footer"><span data-copy="footer"></span><div><span data-copy="networkNote"></span><a href="./credits.html" data-copy="credits"></a></div></footer>`;
+  </main><footer class="home-footer"><span data-copy="footer"></span><div><span data-copy="networkNote"></span><a href="./credits.html" data-copy="credits"></a></div></footer>${soloDialogsMarkup()}`;
 }
 
 function applyCopy() {
+  if (center.kind === 'area') center = { ...center, title: t('unnamedArea') };
+  if (discoveryCenter.kind === 'area') discoveryCenter = { ...discoveryCenter, title: t('unnamedArea') };
   if (routes[0]?.id === 'shijo') {
     routes = [{ id: 'shijo', title: t('localRoute'), stops: resolveStops(['crossing', 'mitsui', 'mufg'], locale).map(place => ({ ...place, url: place.source })) }];
     const translated = routes[0].stops.find(place => place.id === center.id);
     if (translated) center = { ...center, title: translated.title };
+  } else if (keptRoute) {
+    routes = routes.map(route => ({ ...route, title: t('keptOrder'), stops: route.stops.map(place => place.kind === 'area' ? { ...place, title: t('unnamedArea') } : place) }));
   } else if (nearbyPlaces.length) {
     const previousId = routes[selectedRoute]?.id;
     routes = suggestRoutes(discoveryCenter, nearbyPlaces, { locale });
@@ -83,6 +93,7 @@ function applyCopy() {
   liveView?.setLocale(locale); worldMap?.setLocale(locale); updateMode(); renderResults(); renderRoutes(); renderRoom(); renderConnection();
   $('#search-status').textContent = searchMessage ? t(searchMessage) : '';
   if (messageKey) setMessage(messageKey);
+  solo?.render();
 }
 
 function syncURL() {
@@ -99,26 +110,29 @@ function updateMode() {
   $('#together-panel').hidden = !together; $('#explore-plan').hidden = together && !localPreview;
   $('#routes-section').hidden = together && !localPreview;
   $('#add-dream').hidden = !together || !localPreview;
+  if (together) liveView?.setInspecting(false);
   showPreview();
 }
 
 async function ensureScene() {
   if (liveView || scenePromise) return scenePromise;
   sceneState = 'loading'; updatePreviewCopy();
-  scenePromise = import('../perspective/live-view.js').then(({ createPerspectiveView }) => createPerspectiveView($('#live-stage'), { locale,
+  scenePromise = import('../perspective/live-view.js').then(({ createPerspectiveView }) => createPerspectiveView($('#live-stage'), { locale, solo: true,
     onStatus(value) { sceneState = value.status; updatePreviewCopy(); },
-  })).then(view => { liveView = view; view.setLocale(locale); sceneState = 'ready'; view.setPaused(!usesStreet()); view.setVisible(usesStreet()); updatePreviewCopy(); })
+    onInspectionChange(value) { solo?.onInspection(value); },
+    onViewChange() { solo?.update(); },
+  })).then(view => { liveView = view; view.setLocale(locale); sceneState = 'ready'; view.setPaused(!usesStreet() || soloPaused); view.setVisible(usesStreet()); updatePreviewCopy(); })
     .catch(() => { sceneState = 'error'; updatePreviewCopy(); })
     .finally(() => { scenePromise = null; });
   return scenePromise;
 }
-function usesStreet() { return (mode === 'explore' || localPreview) && isDetailed(center); }
+function usesStreet() { return previewRepresentation !== 'map' && (mode === 'explore' || localPreview) && isDetailed(center); }
 async function ensureMap() {
   if (worldMap || mapPromise) return mapPromise;
   $('#world-map').dataset.mapStatus = 'loading';
   mapPromise = import('./world-map.js').then(({ createWorldMap }) => {
     worldMap = createWorldMap($('#world-map'), { locale, onSelect: selectCenter,
-      onStatus() { updatePreviewCopy(); } });
+      onStatus() { updatePreviewCopy(); }, onViewChange() { solo?.update(); } });
     worldMap.resize(); updateMap();
   }).catch(() => { $('#world-map').dataset.mapStatus = 'error'; updatePreviewCopy(); })
     .finally(() => { mapPromise = null; });
@@ -130,12 +144,16 @@ function updateMap() {
     const ids = room?.plan?.stopIds || [...new Set(room?.dreams.map(dream => dream.destinationId) || [])];
     const places = ids.map(catalogPlace).filter(Boolean).map(fromCatalog);
     worldMap.setPlaces(places, places.length ? [{ stops: places }] : []); worldMap.world(places);
-  } else { worldMap.setPlaces(currentStops(), [{ stops: currentStops() }]); worldMap.local(center); }
+  } else {
+    worldMap.setPlaces(currentStops(), [{ stops: currentStops() }]);
+    if (mapViewToRestore) { worldMap.restoreView(mapViewToRestore, center); mapViewToRestore = null; }
+    else worldMap.local(center);
+  }
 }
 function showPreview() {
   const street = usesStreet();
   $('#live-stage').hidden = !street; $('#world-map').hidden = street;
-  liveView?.setPaused(!street);
+  liveView?.setPaused(!street || soloPaused);
   liveView?.setVisible(street);
   if (street) ensureScene(); else { ensureMap().then(() => { worldMap?.resize(); updateMap(); }); }
   updatePreviewCopy();
@@ -170,6 +188,7 @@ function updatePreviewCopy() {
   $('#scene-status').hidden = !$('#scene-status').textContent;
   $('#scene-retry').hidden = street ? sceneState === 'loading' || (sceneState === 'ready' && !lightingFailed) : mapState !== 'error';
   $('#scene-retry').textContent = t(street && sceneState === 'ready' && lightingFailed ? 'lightingRetry' : 'retry');
+  solo?.update();
 }
 
 async function selectLighting(value) {
@@ -184,22 +203,25 @@ function renderResults() {
 }
 function renderRoutes() {
   $('#routes-status').textContent = routeState ? t(routeState) : '';
+  $('#routes-retry').hidden = routeState !== 'routesError';
   $('#route-options').innerHTML = routes.map((route, index) => `<button class="route-option" data-route="${index}" aria-pressed="${index === selectedRoute}"><span class="route-index">0${index + 1}</span><strong>${escape(route.title)}</strong><span>${route.stops.length} ${t('stops')}</span></button>`).join('');
   const route = routes[selectedRoute], stops = currentStops();
   $('[data-copy="routeNote"]').textContent = t(center.kind === 'country' ? 'countryNote'
-    : route?.id === 'shijo' ? 'routeCuratedNote' : nearbyPlaces.length ? 'routeNearbyNote' : 'routeNote');
+    : route?.id === 'shijo' ? 'routeCuratedNote' : keptRoute ? 'keptOrderNote' : nearbyPlaces.length ? 'routeNearbyNote' : 'routeNote').replace('{radius}', new Intl.NumberFormat(locale).format(DEFAULT_RADIUS_METERS / 1000));
   $('#route-title').textContent = route?.title || center.title;
   $('#route-stops').innerHTML = stops.map((place, index) => `<li><span class="stop-index">${index + 1}</span><div><button data-stop="${index}">${escape(place.title)}</button>${place.url ? `<a href="${escape(place.url)}" target="_blank" rel="noopener noreferrer">${t('source')} ↗</a>` : ''}</div></li>`).join('');
   $('#route-maps').innerHTML = buildMapsJourney(stops).parts.map((part, index, parts) => `<a class="primary" href="${escape(part.url)}" target="_blank" rel="noopener noreferrer">${t(part.stops.length === 1 ? 'openPlaceMaps' : 'openMaps')}${parts.length > 1 ? ` · ${index + 1}/${parts.length}` : ''} ↗</a>`).join('');
   $('#maps-text').value = mapsShareText(stops, locale);
 }
 
-async function selectCenter(place) {
+async function selectCenter(place, { preserveMapView = false } = {}) {
+  restoreGeneration++; restoreController?.abort(); restoring = false; keptRoute = false; mapViewToRestore = null; previewRepresentation = null;
+  if (preserveMapView) worldMap?.retainLocal(place);
   nearbyRequest?.abort(); nearbyRequest = new AbortController();
   const request = nearbyRequest;
   center = place; discoveryCenter = place; localPreview = mode === 'together'; results = []; renderResults();
   routes = []; nearbyPlaces = []; selectedRoute = 0; routeState = 'routesLoading'; renderRoutes(); updateMode();
-  if (session?.participantToken) mutate({ type: 'presence.focus', destinationId: catalogPlace(place.id) ? place.id : null });
+  if (mode === 'together' && session?.participantToken) mutate({ type: 'presence.focus', destinationId: catalogPlace(place.id) ? place.id : null });
   if (place.kind === 'country') { routeState = 'countryNote'; renderRoutes(); updateMap(); return; }
   try {
     const places = await findNearby(place, { locale, signal: request.signal });
@@ -207,6 +229,39 @@ async function selectCenter(place) {
     nearbyPlaces = places; routes = suggestRoutes(place, places, { locale }); routeState = routes.length ? '' : 'routesEmpty';
   } catch (error) { if (request.signal.aborted) return; routeState = 'routesError'; }
   renderRoutes(); updateMap();
+}
+
+function soloContext() {
+  const street = usesStreet(), light = liveView?.getLightingState();
+  return { mode, center, origin: discoveryCenter, street, restoring,
+    ready: street ? sceneState === 'ready' && light?.phase === 'ready' : $('#world-map')?.dataset.mapStatus === 'ready',
+    lighting: light?.mode || lighting, view: street ? liveView?.captureView() : worldMap?.captureView(),
+    route: routes[selectedRoute] || { id: 'selected-place', title: center.title, stops: [center] } };
+}
+
+async function openKeptPlace(place) {
+  const generation = ++restoreGeneration;
+  restoreController?.abort(); restoreController = new AbortController(); const request = restoreController;
+  nearbyRequest?.abort(); searchRequest?.abort(); restoring = true;
+  mode = 'explore'; localPreview = false; center = place.center; discoveryCenter = place.origin;
+  results = []; nearbyPlaces = []; routes = [place.route]; selectedRoute = 0; routeState = ''; keptRoute = true;
+  mapViewToRestore = place.representation === 'map' ? place.view : null;
+  previewRepresentation = place.representation;
+  syncURL(); applyCopy();
+  try {
+    if (place.representation === 'street') {
+      await ensureScene();
+      if (generation !== restoreGeneration) return false;
+      if (!liveView || !liveView.restoreView(place.view)) throw new Error('solo-view-unavailable');
+      await selectLighting(place.lighting);
+      if (liveView.getLightingState().phase !== 'ready') throw new Error('solo-lighting-unavailable');
+    } else {
+      await ensureMap(); if (!worldMap) throw new Error('solo-map-unavailable');
+      if (generation !== restoreGeneration) return false;
+      await worldMap.whenReady(request.signal);
+    }
+    return generation === restoreGeneration;
+  } finally { if (generation === restoreGeneration) { restoring = false; solo?.update(); } }
 }
 
 function roomSessionKey(id) { return roomCredentialKey(serviceSettings.endpoint, id); }
@@ -343,13 +398,15 @@ async function copyValue(value, field) {
 }
 async function handleClick(event) {
   const button = event.target.closest('button'); if (!button || button.disabled) return;
+  if (button.id.startsWith('solo-') || button.dataset.keptOpen || button.dataset.keptRemove) { await solo.handleClick(button); return; }
   if (button.dataset.locale) {
     locale = button.dataset.locale; syncURL(); applyCopy(); return;
   }
-  if (button.dataset.mode) { mode = button.dataset.mode; localPreview = false; syncURL(); updateMode(); return; }
+  if (button.dataset.mode) { restoreGeneration++; restoreController?.abort(); restoring = false; mode = button.dataset.mode; localPreview = false; syncURL(); updateMode(); return; }
   if (button.dataset.result !== undefined) { await selectCenter(results[Number(button.dataset.result)]); return; }
   if (button.dataset.route !== undefined) { selectedRoute = Number(button.dataset.route); renderRoutes(); updateMap(); return; }
   if (button.dataset.stop !== undefined) {
+    restoreGeneration++; restoreController?.abort(); restoring = false; previewRepresentation = null;
     const place = currentStops()[Number(button.dataset.stop)]; center = place; localPreview = mode === 'together'; showPreview(); return;
   }
   if (button.dataset.preview || button.dataset.follow) { await selectCenter(fromCatalog(catalogPlace(button.dataset.preview || button.dataset.follow))); return; }
@@ -370,6 +427,7 @@ async function handleClick(event) {
   }
   if (button.id === 'back-world') { localPreview = false; updateMode(); return; }
   if (button.id === 'copy-maps') { await copyValue($('#maps-text').value, $('#maps-text')); return; }
+  if (button.id === 'routes-retry') { await selectCenter(discoveryCenter, { preserveMapView: !usesStreet() }); return; }
   if (button.id === 'service-reset') { await connectService(true); return; }
   if (button.id === 'room-invite') {
     const url = new URL('./index.html', location.href); url.searchParams.set('lang', locale); url.searchParams.set('mode', 'together');
@@ -438,6 +496,16 @@ function boot() {
   }
   $('.home-footer').append(attribution);
   routes = [{ id: 'shijo', title: t('localRoute'), stops: resolveStops(['crossing', 'mitsui', 'mufg'], locale).map(place => ({ ...place, url: place.source })) }];
+  solo = createSoloController({ t, locale: () => locale, context: soloContext, openPlace: openKeptPlace,
+    pause(value) { soloPaused = value; liveView?.setPaused(value || !usesStreet()); },
+    inspect(value) { liveView?.setInspecting(value); if (value) $('#live-stage').focus({ preventScroll: true }); },
+    inspectCenter() { const point = liveView?.getInspectionState()?.focus?.screen; if (point) liveView.inspectAt(point.x, point.y); },
+    clearInspection() { liveView?.clearInspection(); },
+    async exploreArea() {
+      const area = areaAtView(worldMap?.captureView(), t('unnamedArea'));
+      if (area) await selectCenter(area, { preserveMapView: true });
+    },
+  });
   applyCopy(); checkService();
   $('#home-app').addEventListener('click', handleClick);
   $('#service-connection-form').addEventListener('submit', event => { event.preventDefault(); void connectService(); });
@@ -466,6 +534,7 @@ function boot() {
   });
   if (import.meta.env.DEV || params.get('qa') === '1') window.__HOME__ = Object.freeze({ snapshot: () => ({ mode, center: { ...center }, localPreview, sceneState,
     lighting, room: room ? structuredClone(room) : null, serviceReady, aiReady,
+    solo: solo?.snapshot(), currentView: soloContext().view,
     serviceEndpoint: serviceSettings.endpoint, serviceTransport: serviceSettings.transport, connectionPending, invitationNeedsConfirmation, map: worldMap?.snapshot() || null,
     routes: routes.map(route => ({ id: route.id, stops: route.stops.map(p => p.id) })) }) });
 }

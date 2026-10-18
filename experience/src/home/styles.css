@@ -22,5 +22,20 @@
 .service-actions button{flex:1;font-size:.76rem}
 .preview-frame{width:100%;max-width:100%}
 .search-panel>form{min-width:0}
+.solo-controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:6px 0 16px}
+.solo-controls .small{flex-basis:100%;margin:0;max-width:70ch;font-size:.75rem}
+.inspection-cue{position:absolute;z-index:2;width:18px;height:18px;border:2px solid #fffbed;border-radius:50%;box-shadow:0 0 0 2px #335d51b0;transform:translate(-50%,-50%);pointer-events:none}
+.inspection-card{background:#ecefe4;border:1px solid #cfd8c8;border-radius:8px;padding:18px;margin-bottom:16px}
+.inspection-card>div:first-child{display:flex;gap:15px;align-items:center;justify-content:space-between}
+.inspection-card h3{margin:0;font-size:.95rem}.inspection-card p{font-size:.85rem;margin:12px 0}.inspection-card a{font-size:.7rem;overflow-wrap:anywhere}
+.kept-place-list{list-style:none;margin:0;padding:0;max-height:520px;overflow:auto}
+.kept-place-list li{border-top:1px solid var(--line);padding:14px 0;display:flex;gap:10px;align-items:flex-start}
+.kept-place-list li>div{min-width:0;flex:1}.kept-place-list .kept-open{display:block;padding:8px 0;min-height:44px;text-align:left;overflow-wrap:anywhere;font-size:.9rem;text-decoration:underline;text-underline-offset:3px}
+.kept-place-list .small{font-size:.68rem;display:block}.kept-place-list p{margin:8px 0 0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:.8rem}
+.kept-place-list .quiet{min-height:44px;flex-shrink:0}
+.solo-dialog{width:min(480px,calc(100vw - 32px));max-height:calc(100dvh - 40px);overflow:auto;border:1px solid #c5cfc1;border-radius:12px;padding:26px;background:var(--paper);color:var(--ink)}
+.solo-dialog::backdrop{background:#18342b66}.solo-dialog h2{font-size:1.7rem}.solo-dialog label{display:block;font-size:.85rem;margin:18px 0 8px}
+.solo-dialog input,.solo-dialog textarea{width:100%;min-width:0;padding:12px;border:1px solid #c5cfc1;border-radius:5px;color:inherit;background:#f8f9f2;font:inherit}
+.solo-dialog-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px;margin-top:20px}
 @media(max-width:1100px){.search-panel{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:760px){.home-header{align-items:flex-start;gap:8px}.home-header .brand{white-space:nowrap}.home-header nav{flex-wrap:wrap;justify-content:flex-end}.home-header nav>a{display:block;order:1;flex-basis:100%;margin:0;min-height:32px;line-height:32px;text-align:right}}

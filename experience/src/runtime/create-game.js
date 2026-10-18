@@ -5,6 +5,7 @@ import { createGuidedCamera } from './camera.js';
 import { createWorldView } from './world-view.js';
 import { lightingMode as normalizeLightingMode } from './lighting-contract.js';
 import { CAMERA_DEFAULTS, normalizePerspectiveView } from './view-state.js';
+import { normalizeExplorationView } from './exploration-state.js';
 
 const keys = { KeyW: [0, 1], ArrowUp: [0, 1], KeyS: [0, -1], ArrowDown: [0, -1],
   KeyA: [-1, 0], ArrowLeft: [-1, 0], KeyD: [1, 0], ArrowRight: [1, 0] };
@@ -14,7 +15,9 @@ const observing = () => import.meta.env.DEV || new URLSearchParams(location.sear
 export async function createGame(host, options = {}) {
   if (!(host instanceof HTMLElement)) throw new Error('A scene host is required.');
   const encounters = options.encounters !== false;
-  const initialView = normalizePerspectiveView(options.initialView);
+  const solo = options.solo === true;
+  const normalizeView = solo ? normalizeExplorationView : normalizePerspectiveView;
+  const initialView = normalizeView(options.initialView);
   let player = refreshProximity(createState(options.saved?.game ?? options.saved ?? options.initialState));
   if (initialView) { player.x = initialView.player.x; player.y = initialView.player.y; refreshProximity(player); }
   let locale = options.locale === 'zh' ? 'zh' : 'en';
@@ -23,6 +26,7 @@ export async function createGame(host, options = {}) {
   let status = 'loading', destroyed = false, dirty = true, readyNotified = false;
   let accumulator = 0, lastTime = null, notifications = 0, renderedFrames = 0;
   let visible = true, updateFrames = 0;
+  let inspecting = false, previousInspection = '', previousView = '';
   let width = 1, height = 1, queuedInteraction = null, pointer = null;
   let arrivalIdleMs = 0;
   let requestedLightingMode = normalizeLightingMode(options.lightingMode);
@@ -32,7 +36,9 @@ export async function createGame(host, options = {}) {
   const held = new Set(), activePointers = new Set(), cleanups = [], commandTrace = [];
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   let reducedMotion = motion.matches;
-  const publish = () => { if (!destroyed) (options.onState ?? options.onUpdate)?.(snapshot(player)); };
+  const publish = () => {
+    if (!destroyed) { (options.onState ?? options.onUpdate)?.(snapshot(player)); publishView(); }
+  };
   const notify = (next, progress) => {
     status = next;
     host.dataset.sceneStatus = next;
@@ -51,7 +57,22 @@ export async function createGame(host, options = {}) {
     }
   };
   const stopFrames = () => { cancelAnimationFrame(frameHandle); frameHandle = undefined; lastTime = null; };
-  const invalidate = () => { dirty = true; scheduleFrame(); if (rig) options.onViewChange?.(api.captureView()); };
+  function publishView() {
+    if (!rig || destroyed || !options.onViewChange) return;
+    const captured = api.captureView(), signature = JSON.stringify(captured);
+    if (signature === previousView) return;
+    previousView = signature; options.onViewChange(captured);
+  }
+  const invalidate = () => { dirty = true; scheduleFrame(); publishView(); };
+  const publishInspection = () => {
+    if (!solo || destroyed || !view) return;
+    const value = view.getInspectionState(), signature = JSON.stringify(value);
+    if (signature === previousInspection) return;
+    previousInspection = signature; options.onInspectionChange?.(value);
+  };
+  const updateInspection = () => {
+    if (view && inspecting) { view.updateInspection(rig.camera, player, width, height); publishInspection(); }
+  };
   const clearMovement = () => {
     held.clear(); player.destination = null; player.waypoints = []; player.moving = false;
     queuedInteraction = null; accumulator = 0; previous = { x: player.x, y: player.y }; dirty = true;
@@ -66,6 +87,12 @@ export async function createGame(host, options = {}) {
     options.onInteract?.(id); publish();
   };
   function localize() {
+    if (solo) {
+      canvas?.setAttribute('aria-label', locale === 'zh'
+        ? '京都四条街景。WASD 或方向键行走，拖动环视，滚动缩放。近看模式中，右键拖动或双指移动构图；J/L 左右环视，I/K 调整俯仰，按住 Shift 配合这些键平移构图，+/- 缩放，E 查看中央细节，Esc 退出近看。'
+        : 'Kyoto Shijo street. Walk with WASD or arrow keys, drag to look around, and scroll to zoom. In Look closer mode, right-drag or use two fingers to frame; J/L orbit, I/K tilt, hold Shift with these keys to pan, +/- zoom, E inspects the center, and Escape leaves Look closer.');
+      return;
+    }
     canvas?.setAttribute('aria-label', locale === 'zh'
       ? `京都四条街景。WASD 或方向键行走，拖动环视，滚动缩放${encounters ? '，靠近后按 E 互动' : ''}。`
       : `Kyoto Shijo street. Walk with WASD or arrow keys, drag to look around, and scroll to zoom${encounters ? '. Press E nearby to interact' : ''}.`);
@@ -76,13 +103,13 @@ export async function createGame(host, options = {}) {
     captureView() {
       const camera = rig?.snapshot();
       if (!camera || camera.transitioning) return null;
-      return normalizePerspectiveView({ version: 1, player: { x: player.x, y: player.y }, camera: {
+      return normalizeView({ version: solo ? 2 : 1, player: { x: player.x, y: player.y }, camera: {
         azimuth: camera.azimuth, polar: camera.polar, distance: camera.distance,
         targetOffset: { x: camera.target[0] - player.x, y: -camera.target[2] - player.y, height: camera.target[1] },
       } });
     },
     restoreView(value) {
-      const next = normalizePerspectiveView(value);
+      const next = normalizeView(value);
       if (!next || !rig || status !== 'ready' || destroyed) return false;
       clearMovement(); player.x = next.player.x; player.y = next.player.y;
       previous = { ...next.player }; refreshProximity(player);
@@ -94,7 +121,7 @@ export async function createGame(host, options = {}) {
       if (!rig || status !== 'ready' || destroyed || !point ||
           ![point.x, point.y, point.height].every(Number.isFinite)) return false;
       const dx = point.x - player.x, dy = point.y - player.y;
-      const next = normalizePerspectiveView({ version: 1, player, camera: {
+      const next = normalizeView({ version: solo ? 2 : 1, player, camera: {
         ...CAMERA_DEFAULTS, ...moment.camera,
         azimuth: moment.camera?.azimuth ?? Math.atan2(-dx, dy),
         targetOffset: { x: dx, y: dy, height: point.height },
@@ -104,6 +131,21 @@ export async function createGame(host, options = {}) {
       dirty = true; publish(); return true;
     },
     getLightingState: () => view?.getLightingState() ?? structuredClone(lightingState),
+    getInspectionState: () => view?.getInspectionState() ?? { enabled: false, focus: null, selected: null },
+    setInspecting(value) {
+      if (!solo || destroyed) return false;
+      const next = Boolean(value);
+      if (inspecting === next) return inspecting;
+      if (next) clearMovement();
+      inspecting = next; rig?.setInspecting(inspecting); view?.setInspecting(inspecting);
+      updateInspection(); publishInspection(); return inspecting;
+    },
+    clearInspection() { view?.clearInspection(); publishInspection(); },
+    inspectAt(x, y) {
+      if (!solo || !inspecting || !visible || player.paused || status !== 'ready') return null;
+      view.setInspectionPoint(x, y); updateInspection();
+      const result = view.selectInspection(); publishInspection(); return result?.selected ?? null;
+    },
     async setLightingMode(value) {
       requestedLightingMode = normalizeLightingMode(value);
       if (!view) return structuredClone(lightingState);
@@ -130,6 +172,8 @@ export async function createGame(host, options = {}) {
     },
     resetCamera() { if (!player.paused) { rig?.reset(player); dirty = true; } },
     rotateCamera(delta) { if (!player.paused && Number.isFinite(delta)) rig?.rotate(delta); },
+    tiltCamera(delta) { if (!player.paused && Number.isFinite(delta)) rig?.tilt(delta); },
+    panCamera(right, up) { if (!player.paused && Number.isFinite(right) && Number.isFinite(up)) rig?.pan(right, up); },
     zoomCamera(delta) { if (!player.paused && Number.isFinite(delta)) rig?.zoom(delta); },
     markVisited(id, choiceId) {
       if (!encounters || !byId.has(id)) return;
@@ -172,7 +216,7 @@ export async function createGame(host, options = {}) {
     canvas = renderer.domElement;
     Object.assign(canvas.style, { display: 'block', width: '100%', height: '100%', touchAction: 'none', cursor: 'grab' });
     host.prepend(canvas); localize();
-    rig = createGuidedCamera(canvas, player, reducedMotion, invalidate);
+    rig = createGuidedCamera(canvas, player, reducedMotion, invalidate, { solo });
     if (initialView) rig.restorePose(initialView.camera, player);
     rig.setEnabled(false);
     const resize = () => {
@@ -187,6 +231,22 @@ export async function createGame(host, options = {}) {
     listen(window, 'keydown', event => {
       if (status !== 'ready' || !visible || player.paused || isText(event) || event.altKey || event.ctrlKey || event.metaKey) return;
       if (keys[event.code]) { event.preventDefault(); rig.resumeFollow(); held.add(event.code); queuedInteraction = null; }
+      if (solo && inspecting && event.code === 'KeyE' && !event.repeat) { event.preventDefault(); api.inspectAt(); }
+      if (solo && inspecting && event.code === 'Escape') { event.preventDefault(); api.setInspecting(false); }
+      if (solo && inspecting && host.contains(document.activeElement)) {
+        const orbit = { KeyJ: -0.08, KeyL: 0.08 }[event.code];
+        const tilt = { KeyI: -0.06, KeyK: 0.06 }[event.code];
+        const zoom = { Equal: -1, NumpadAdd: -1, Minus: 1, NumpadSubtract: 1 }[event.code];
+        if (orbit || tilt || zoom) {
+          event.preventDefault(); view.setInspectionPoint();
+          if (event.shiftKey && (orbit || tilt)) rig.pan(orbit ? Math.sign(orbit) : 0, tilt ? -Math.sign(tilt) : 0);
+          else {
+            if (orbit) rig.rotate(orbit);
+            if (tilt) rig.tilt(tilt);
+          }
+          if (zoom) rig.zoom(zoom);
+        }
+      }
       if (encounters && event.code === 'KeyE' && !event.repeat) { event.preventDefault(); interact(player.nearbyTargetId); }
     });
     listen(window, 'keyup', event => { held.delete(event.code); });
@@ -225,7 +285,12 @@ export async function createGame(host, options = {}) {
         pointer.distance = Math.max(pointer.distance, Math.hypot(event.clientX - pointer.x, event.clientY - pointer.y));
         canvas.style.cursor = pointer.distance > 6 ? 'grabbing' : 'grab';
       } else if (status === 'ready' && !player.paused) canvas.style.cursor = targetAt(pointerPoint(event)) ? 'pointer' : 'grab';
+      if (inspecting && status === 'ready' && !player.paused) {
+        const point = pointerPoint(event);
+        view.setInspectionPoint(pointer?.distance > 6 ? undefined : point.x, pointer?.distance > 6 ? undefined : point.y);
+      }
     });
+    listen(canvas, 'pointerleave', () => { if (inspecting) view?.setInspectionPoint(); });
     listen(canvas, 'pointercancel', event => { activePointers.delete(event.pointerId); pointer = null; });
     listen(canvas, 'pointerup', event => {
       activePointers.delete(event.pointerId);
@@ -234,6 +299,7 @@ export async function createGame(host, options = {}) {
       pointer = null; canvas.style.cursor = 'grab';
       if (gesture.cancelled || gesture.distance > 6 || player.paused || status !== 'ready') return;
       const point = pointerPoint(event), target = targetAt(point);
+      if (solo && inspecting && api.inspectAt(point.x, point.y)) return;
       held.clear(); queuedInteraction = null;
       if (target) {
         player.selectedTargetId = target.id;
@@ -247,9 +313,10 @@ export async function createGame(host, options = {}) {
       dirty = true; publish();
     });
     const started = performance.now();
-    view = await createWorldView(renderer, { encounters, signal: abort.signal, onProgress: progress => notify('loading', progress),
+    view = await createWorldView(renderer, { encounters, solo, signal: abort.signal, onProgress: progress => notify('loading', progress),
       lightingMode: requestedLightingMode, onLightingStatus: lightingStatus, onInvalidate: invalidate });
     if (destroyed || abort.signal.aborted) { view.dispose(); return api; }
+    view.setInspecting(inspecting); rig.setInspecting(inspecting);
     const assetsReadyAt = performance.now();
     view.update(player, rig.camera, { dt: 1000, reducedMotion: true });
     notify('loading', 0.85);
@@ -276,6 +343,7 @@ export async function createGame(host, options = {}) {
     const loadMs = performance.now() - started;
     const startup = { assetsAndLightingMs: assetsReadyAt - started, compileMs: compiledAt - assetsReadyAt, firstRenderMs, readyMs: loadMs };
     notify('ready', 1); publish();
+    updateInspection(); publishInspection();
     if (observing()) {
       window.__TOUR_GAME__ = Object.freeze({
         host, snapshot: api.getState, camera: api.getCameraState,
@@ -283,6 +351,7 @@ export async function createGame(host, options = {}) {
         screenPoint: (x, y, h = 0.2) => rig.project(x, y, h, width, height),
         targets: () => encounters ? TARGETS.map(({ id, x, y, approachX, approachY }) => ({ id, x, y, approachX, approachY })) : [],
         commands: () => commandTrace.map(command => ({ ...command })),
+        inspection: api.getInspectionState,
         renderer: () => ({ status, loadMs, startup: { ...startup }, renderedFrames, updateFrames, visible, render: { ...renderer.info.render },
           memory: { ...renderer.info.memory }, scene: view.stats(), reducedMotion, lighting: view.getLightingState() }),
       });
@@ -320,6 +389,7 @@ export async function createGame(host, options = {}) {
       const rendered = { ...player, x: previous.x + (player.x - previous.x) * alpha,
         y: previous.y + (player.y - previous.y) * alpha };
       dirty = view.update(rendered, rig.camera, { dt, reducedMotion }) || dirty;
+      updateInspection();
       if (dirty && !document.hidden) {
         renderer.render(view.scene, rig.camera); renderedFrames++; dirty = false;
       }
