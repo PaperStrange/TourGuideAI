@@ -21,11 +21,16 @@ export function lightingMatchesRig(actual, mode, rig, assets, profile = null) {
     environment: { ...base.environment, ...adjustment?.environment },
     hemisphere: { ...base.hemisphere, ...adjustment?.hemisphere },
     sun: { ...base.sun, ...adjustment?.sun },
+    fixtures: base.fixtures.map(fixture => ({ ...fixture, ...adjustment?.fixtures?.[fixture.id],
+      shadow: { ...fixture.shadow, ...adjustment?.fixtures?.[fixture.id]?.shadow } })),
   };
   const environmentPath = new URL(expected.environment.file, 'http://qa.test/lighting/rig.json').pathname;
   const expectedFixtures = expected.fixtures.filter(light => light.enabled && light.intensity > 0);
   const fixtures = actual.lights.filter(light => expected.fixtures.some(config => config.id === light.id));
+  const vectorMatches = (values, target) => Array.isArray(values) && values.length === target.length
+    && values.every((value, index) => Math.abs(value - target[index]) < 1e-8);
   return actual.phase === 'ready' && actual.mode === mode && actual.requestedMode === mode
+    && Object.keys(adjustment?.fixtures ?? {}).every(id => base.fixtures.some(fixture => fixture.id === id))
     && actual.rig.profile === (profile?.id ?? null)
     && actual.rig.sha256 === sha(assets.get('/lighting/rig.json'))
     && assets.has(environmentPath) && sha(assets.get(environmentPath)) === expected.environment.sha256
@@ -41,7 +46,13 @@ export function lightingMatchesRig(actual, mode, rig, assets, profile = null) {
       && light.position.every((value, index) => Math.abs(value - expected.sun.position[index]) < 1e-8)
       && light.target.every((value, index) => Math.abs(value - expected.sun.target[index]) < 1e-8)))
     && expectedFixtures.every(config => fixtures.some(light => light.id === config.id
-      && Math.abs(light.intensity - config.intensity) < 1e-8 && light.castShadow === Boolean(config.shadow?.enabled)))
+      && Math.abs(light.intensity - config.intensity) < 1e-8
+      && light.color.toLowerCase() === config.color.toLowerCase()
+      && vectorMatches(light.position, config.position)
+      && (!config.target || vectorMatches(light.target, config.target))
+      && light.castShadow === Boolean(config.shadow?.enabled)
+      && (!config.shadow?.enabled || vectorMatches(light.mapSize, [config.shadow.mapSize, config.shadow.mapSize]))))
+    && fixtures.every(light => light.intensity === 0 || expectedFixtures.some(config => config.id === light.id))
     && fixtures.filter(light => light.intensity > 0 && light.castShadow).length <= rig.limits.maxShadowCastingLocalLights
     && (mode === 'night' ? actual.emissiveMeshes.some(mesh => mesh.intensity > 0)
       : fixtures.every(light => light.intensity === 0) && actual.emissiveMeshes.every(mesh => mesh.intensity === 0));

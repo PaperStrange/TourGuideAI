@@ -3,7 +3,7 @@
 Updated 2026-10-18. Owner: lead. Planning baseline: `origin/iteration` at
 `eae982f4ba20a107bf21a35b70f635b4935a4c70`.
 
-**Active iteration · solo exploration:** the user authorizes the next iteration
+**Solo exploration · reviewed candidate, publication pending:** the user authorizes the next iteration
 and research into broader solo travel, preserving art, quality and usable interaction.
 The [new sprint plan](../../experience/docs/sprint-solo-20261018.md) is recorded
 before production. One homepage flow connects free Kyoto exploration and visible
@@ -16,7 +16,28 @@ product acceptance criteria and QA independent review. Existing routes, locales,
 saves and shared links remain usable. Detailed Kyoto and approximate wider maps
 retain separate coverage claims. Replay in 2B stays conditional; research compares
 provider geometry, reviewed area packs, photographs and scans before wider production.
-Q03 latency remains open P1 with its unchanged measured target.
+Current source `a1dbd362…` / package `0a624409…` implements this flow and the shared map palette.
+Application 105/105, service 13/13 and repository 17/17 pass. The full solo run on
+`9b1ba2b1…` retains 69/71 plus two harness diagnostics; final map/phone/resize/save/
+return checks pass 39/39, with earlier street behavior bound to unchanged runtime
+resources. Product reviewed final tap-driven EN/ZH phone guidance without a new
+control obstruction. The [art review](../../experience/evidence/solo-20261018/art/reviewed-art.md)
+accepts bounded material/lighting refinement; human realism remains unproven.
+Final local startup **8/8** and pause/appearance **19/19** pass on `0a624409…`; the
+[portable validation record](../../experience/evidence/solo-20261018/final/validation-boundaries.json)
+preserves report and package boundaries. CI at source `1ce9360` passes homepage
+65/65, walkthrough 264/264, perspective 80/80 and companion 73/73. Original-walk
+finished **131/133** with an omitted expected appearance-fixture override; QA's
+driver correction and focused check are pending, with runtime unchanged.
+Current-source CI and publication remain pending. Broader coverage is recommended through a global
+shared-style map and selectively reviewed area packs; replay 2B stays conditional.
+Q03 remains open P1: **1121.1 / 1221.9 / 1097.9 ms** exceed the unchanged <500 ms
+target in matched local observations. Extra resizes were removed without a reliable
+latency gain. This section makes no new publication or overall speedup claim.
+The [next sprint exits](../../experience/docs/sprint-solo-20261018.md#next-sprint-priorities-and-decision-exits)
+are three matched warm locale actions each below 500 ms, one demonstrated-area
+pack decision supported by source/cost/art-budget evidence, and human meaning and
+recognition before conditional replay. New area production remains a later decision.
 
 **Delivered quality milestone · journey clarity and responsiveness:** the user requested a plan
 followed by a thorough walkthrough, continuing tests inside the workspace with no

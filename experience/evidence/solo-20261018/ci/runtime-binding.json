@@ -1,0 +1,1553 @@
+{
+  "capturedAt": "2026-10-18T13:46:10.948Z",
+  "runId": 39131040477,
+  "ciSource": "1ce9360a89e3ab72943bb2d1876051f80a14bf1e",
+  "ciPackageManifest": "81e885e64a92adb6140d230e3819bc3ace119ff4475b50159bc56a5a88c5c268",
+  "comparisonPackageManifest": "0a6244091b50c9ee7220d698e1109c86bd397dba54384c8db20e68bc57c728e7",
+  "artifactFiles": [
+    {
+      "id": 12138386789,
+      "name": "perspective-browser-evidence",
+      "expectedDigest": "sha256:e87cb01b8f3bbe609eb14d6d040927c17efa480cad4bfd5e6092025a0581cf86",
+      "downloadedDigest": "sha256:e87cb01b8f3bbe609eb14d6d040927c17efa480cad4bfd5e6092025a0581cf86",
+      "matches": true,
+      "obtainedThrough": "GitHub connector artifact download; ZIP read with system unzip"
+    },
+    {
+      "id": 12138338277,
+      "name": "homepage-walkthrough-evidence",
+      "expectedDigest": "sha256:8a1e9bfc43fae35e10595172408cf8aa52f5fa3ed558441a561d7b1ffd29c771",
+      "downloadedDigest": "sha256:8a1e9bfc43fae35e10595172408cf8aa52f5fa3ed558441a561d7b1ffd29c771",
+      "matches": true,
+      "obtainedThrough": "GitHub connector artifact download; ZIP read with system unzip"
+    },
+    {
+      "id": 12138219656,
+      "name": "experience-browser-evidence",
+      "expectedDigest": "sha256:86b2fb353326066c42365e7f9516617f863bcd52c5149d79458ce5d81131681d",
+      "downloadedDigest": "sha256:86b2fb353326066c42365e7f9516617f863bcd52c5149d79458ce5d81131681d",
+      "matches": true,
+      "obtainedThrough": "GitHub connector artifact download; ZIP read with system unzip"
+    },
+    {
+      "id": 12137987866,
+      "name": "homepage-browser-evidence",
+      "expectedDigest": "sha256:6ba5948c8ab91c045e83a5bb884e1a3500134ea02598239db3eabccabc6eaf72",
+      "downloadedDigest": "sha256:6ba5948c8ab91c045e83a5bb884e1a3500134ea02598239db3eabccabc6eaf72",
+      "matches": true,
+      "obtainedThrough": "GitHub connector artifact download; ZIP read with system unzip"
+    },
+    {
+      "id": 12137808491,
+      "name": "travel-browser-evidence",
+      "expectedDigest": "sha256:a9987254dc6660f5ff178aaaf28aeeaa677e6bf0c963ffa11c2115c5441242c6",
+      "downloadedDigest": "sha256:a9987254dc6660f5ff178aaaf28aeeaa677e6bf0c963ffa11c2115c5441242c6",
+      "matches": true,
+      "obtainedThrough": "GitHub connector artifact download; ZIP read with system unzip"
+    }
+  ],
+  "packageChanges": [
+    {
+      "path": "/assets/index-DNueoaRF.js",
+      "ciSha256": "05ead38423b18df76742ea10bb89ef46775a2ad6226ab397bd9e1d6d8002a333",
+      "finalSha256": null
+    },
+    {
+      "path": "/assets/index-DNueoaRF.js.map",
+      "ciSha256": "7de317db93991868202d54129e0cb5ca82fd08d4f1cbb13da8de1294a3c99fd6",
+      "finalSha256": null
+    },
+    {
+      "path": "/assets/index-PAbyRFuv.js",
+      "ciSha256": null,
+      "finalSha256": "3227efd5088e8e0f16a33bc79c7887f64836f20897698f095b3b4d47a81cdd2d"
+    },
+    {
+      "path": "/assets/index-PAbyRFuv.js.map",
+      "ciSha256": null,
+      "finalSha256": "61c28b25cd391f96c0fc2864cd0e35200433544035bacb668aaddb511a5de63d"
+    },
+    {
+      "path": "/assets/world-map-BBBq9nv9.js",
+      "ciSha256": "95f2527219188f6b0225f47b64ea5016e75f34e3dff800162fd8beef93f8448a",
+      "finalSha256": null
+    },
+    {
+      "path": "/assets/world-map-BBBq9nv9.js.map",
+      "ciSha256": "f8544519be47a2c920a3710951efbc954c4b39798b8daeb271fbca4523d09138",
+      "finalSha256": null
+    },
+    {
+      "path": "/assets/world-map-BvI_hb72.js",
+      "ciSha256": null,
+      "finalSha256": "385bc8be12273d314ab2397329a39e83571f829b1b143e35d8fd4f0d60fc78a8"
+    },
+    {
+      "path": "/assets/world-map-BvI_hb72.js.map",
+      "ciSha256": null,
+      "finalSha256": "5fd1897cad369cf82061b28785b3ed45db85dd332869f38a861af99cc6bc48b4"
+    },
+    {
+      "path": "/index.html",
+      "ciSha256": "069e8b747ba0237d9fd6ed1f1c3ec929220a97697a10131e87b3338ba8164f5c",
+      "finalSha256": "91b610d810783c21b80667b0124891ebb0aa8c35c28b3dacb3c17575f3d718fd"
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "experience/src/app/appearance.js",
+      "ciSha256": "67672102e32a2807c35aef591d14c2e8a2050aaced0f86f152761f5cb35a914e",
+      "finalWorkspaceSha256": "67672102e32a2807c35aef591d14c2e8a2050aaced0f86f152761f5cb35a914e",
+      "matches": true
+    },
+    {
+      "path": "experience/src/app/journey-reader.js",
+      "ciSha256": "f7d4a6344ce10779c49b00687d7ee164cccef9447ee1b0ebc0e9816057110a58",
+      "finalWorkspaceSha256": "f7d4a6344ce10779c49b00687d7ee164cccef9447ee1b0ebc0e9816057110a58",
+      "matches": true
+    },
+    {
+      "path": "experience/src/app/journey-store.js",
+      "ciSha256": "e0cc8a7109988b3ce7d4dfde926268650847eed8d170ab87cb149e697be76fc8",
+      "finalWorkspaceSha256": "e0cc8a7109988b3ce7d4dfde926268650847eed8d170ab87cb149e697be76fc8",
+      "matches": true
+    },
+    {
+      "path": "experience/src/app/main.js",
+      "ciSha256": "793b990ed81de82fa0aaf4959b0017016ca314af6412445f37d959bb92b2a191",
+      "finalWorkspaceSha256": "793b990ed81de82fa0aaf4959b0017016ca314af6412445f37d959bb92b2a191",
+      "matches": true
+    },
+    {
+      "path": "experience/src/app/recap.css",
+      "ciSha256": "d3084e061d0199101e41e37e88626af78040f70323e2e2e8e078e4ee64bcc282",
+      "finalWorkspaceSha256": "d3084e061d0199101e41e37e88626af78040f70323e2e2e8e078e4ee64bcc282",
+      "matches": true
+    },
+    {
+      "path": "experience/src/app/share-dialog.js",
+      "ciSha256": "ca8cdfb095bdd84583e4080caf0d2dc7b4767f071efd391592b2a88cece77d63",
+      "finalWorkspaceSha256": "ca8cdfb095bdd84583e4080caf0d2dc7b4767f071efd391592b2a88cece77d63",
+      "matches": true
+    },
+    {
+      "path": "experience/src/app/share.js",
+      "ciSha256": "d6f86b12fad42d7afc2c7a4b8dc022a5d002c6b3ddbf77ea1882ffd58538ba89",
+      "finalWorkspaceSha256": "d6f86b12fad42d7afc2c7a4b8dc022a5d002c6b3ddbf77ea1882ffd58538ba89",
+      "matches": true
+    },
+    {
+      "path": "experience/src/comparison/main.js",
+      "ciSha256": "39f16070ca76847f58cea1de2fa220d7c560a79504a36344b0246cd9a437629f",
+      "finalWorkspaceSha256": "39f16070ca76847f58cea1de2fa220d7c560a79504a36344b0246cd9a437629f",
+      "matches": true
+    },
+    {
+      "path": "experience/src/comparison/manifest.js",
+      "ciSha256": "4181c9e35d19f881f5bf29390e9a0eaadef53f33bb7ce1efef236f9023e50a4c",
+      "finalWorkspaceSha256": "4181c9e35d19f881f5bf29390e9a0eaadef53f33bb7ce1efef236f9023e50a4c",
+      "matches": true
+    },
+    {
+      "path": "experience/src/comparison/study-renderer.js",
+      "ciSha256": "966cb2f2bd9036d72e4367279ad9179291f26d67a85df95d3dddeeee2e4666be",
+      "finalWorkspaceSha256": "966cb2f2bd9036d72e4367279ad9179291f26d67a85df95d3dddeeee2e4666be",
+      "matches": true
+    },
+    {
+      "path": "experience/src/comparison/styles.css",
+      "ciSha256": "6ecaa485ee7be3265256d743ca1c4a52534be28561040b7a60b71f3db82ac9c1",
+      "finalWorkspaceSha256": "6ecaa485ee7be3265256d743ca1c4a52534be28561040b7a60b71f3db82ac9c1",
+      "matches": true
+    },
+    {
+      "path": "experience/src/content/kyoto.js",
+      "ciSha256": "cfef7654e1bca051f84861d6ec446e588c1d6ef2d8e8e5cf12a9421224a22859",
+      "finalWorkspaceSha256": "cfef7654e1bca051f84861d6ec446e588c1d6ef2d8e8e5cf12a9421224a22859",
+      "matches": true
+    },
+    {
+      "path": "experience/src/content/perspectives.js",
+      "ciSha256": "d7439b5ed6c3e06ae5c40a82b15678deec19204f4dadd10e73fd28b418fa5cac",
+      "finalWorkspaceSha256": "d7439b5ed6c3e06ae5c40a82b15678deec19204f4dadd10e73fd28b418fa5cac",
+      "matches": true
+    },
+    {
+      "path": "experience/src/discovery/coordinate-reviews.js",
+      "ciSha256": "503d848a668c7a28672b980eaded18b68dc8ee2fbb0bc66a25a92b0c253da1c4",
+      "finalWorkspaceSha256": "503d848a668c7a28672b980eaded18b68dc8ee2fbb0bc66a25a92b0c253da1c4",
+      "matches": true
+    },
+    {
+      "path": "experience/src/discovery/provider.js",
+      "ciSha256": "794af940f9234cd6b18038f922cf745030ad05db6de02e1fdfcf08d8fa0eb587",
+      "finalWorkspaceSha256": "794af940f9234cd6b18038f922cf745030ad05db6de02e1fdfcf08d8fa0eb587",
+      "matches": true
+    },
+    {
+      "path": "experience/src/discovery/routes.js",
+      "ciSha256": "5de798b0a5e0ab1f61fcf54a561a1eac9f1e2917ba62086107ea3143eae75260",
+      "finalWorkspaceSha256": "5de798b0a5e0ab1f61fcf54a561a1eac9f1e2917ba62086107ea3143eae75260",
+      "matches": true
+    },
+    {
+      "path": "experience/src/discovery/transport.js",
+      "ciSha256": "4cdd426605dc9bba262233834080140e2b398c5be5493d049dc4325377e676ce",
+      "finalWorkspaceSha256": "4cdd426605dc9bba262233834080140e2b398c5be5493d049dc4325377e676ce",
+      "matches": true
+    },
+    {
+      "path": "experience/src/home/copy.js",
+      "ciSha256": "c34a13fe06b70736af9eba7a65032563ffe329a9c99498f0b991a687df622e57",
+      "finalWorkspaceSha256": "c34a13fe06b70736af9eba7a65032563ffe329a9c99498f0b991a687df622e57",
+      "matches": true
+    },
+    {
+      "path": "experience/src/home/main.js",
+      "ciSha256": "f46ee0eda74cc1ee4aad164c4b102efaaeb38ee529b25b2fd7570f4859a65185",
+      "finalWorkspaceSha256": "f3a19f9e7de5682a609bd01e16251d0bc5ca89707ffb7d4fbf840ecc62ae8812",
+      "matches": false
+    },
+    {
+      "path": "experience/src/home/map-style.js",
+      "ciSha256": "2849b93c0de41850a08ed4d5a150c9e814df07ef3fe30cf1c612ebdd89103d87",
+      "finalWorkspaceSha256": "2849b93c0de41850a08ed4d5a150c9e814df07ef3fe30cf1c612ebdd89103d87",
+      "matches": true
+    },
+    {
+      "path": "experience/src/home/room-client.js",
+      "ciSha256": "39a84bddfb9a7a25f98697921b5e07f5d47f68311e91759654ef71f056c6a397",
+      "finalWorkspaceSha256": "39a84bddfb9a7a25f98697921b5e07f5d47f68311e91759654ef71f056c6a397",
+      "matches": true
+    },
+    {
+      "path": "experience/src/home/service-config.js",
+      "ciSha256": "d03a81eb0fd7842ecb0c2b68e1b3f008f0697d5c65ea5b5dd81fbf226357e25b",
+      "finalWorkspaceSha256": "d03a81eb0fd7842ecb0c2b68e1b3f008f0697d5c65ea5b5dd81fbf226357e25b",
+      "matches": true
+    },
+    {
+      "path": "experience/src/home/styles.css",
+      "ciSha256": "881efb1f26256b436f978ac6926b34a64779acf7bd2a959644c4255080280a33",
+      "finalWorkspaceSha256": "881efb1f26256b436f978ac6926b34a64779acf7bd2a959644c4255080280a33",
+      "matches": true
+    },
+    {
+      "path": "experience/src/home/world-map.js",
+      "ciSha256": "bbc29b5748a6db8b0046d4ad0ce356a7ffdae6f8a5cbd258af9239cfe4d7324e",
+      "finalWorkspaceSha256": "7f808c08d4ba53f227c7b9cbb43697bbdabb1c8341fa0fd65834f850571f7c35",
+      "matches": false
+    },
+    {
+      "path": "experience/src/perspective/copy.js",
+      "ciSha256": "be9617d12caca154be39dcfad16d5069754a421820d29d9f77fab874e74f9582",
+      "finalWorkspaceSha256": "be9617d12caca154be39dcfad16d5069754a421820d29d9f77fab874e74f9582",
+      "matches": true
+    },
+    {
+      "path": "experience/src/perspective/live-view.js",
+      "ciSha256": "1d1e13c6323d9d1ff67fddaf034e445b3dcf83ed9c4f01eda7826236e88b44c9",
+      "finalWorkspaceSha256": "1d1e13c6323d9d1ff67fddaf034e445b3dcf83ed9c4f01eda7826236e88b44c9",
+      "matches": true
+    },
+    {
+      "path": "experience/src/perspective/main.js",
+      "ciSha256": "740a98883c6ec9b3084fe840eee42845709e338853f36b49c70c7172efb63cb3",
+      "finalWorkspaceSha256": "740a98883c6ec9b3084fe840eee42845709e338853f36b49c70c7172efb63cb3",
+      "matches": true
+    },
+    {
+      "path": "experience/src/perspective/share.js",
+      "ciSha256": "7648ff3837e787ede70752076aefd7f1d513a0fafa2e652678fe644fa6bd8d31",
+      "finalWorkspaceSha256": "7648ff3837e787ede70752076aefd7f1d513a0fafa2e652678fe644fa6bd8d31",
+      "matches": true
+    },
+    {
+      "path": "experience/src/perspective/state.js",
+      "ciSha256": "a6a79aae890e0c40b102a34d09a3dca721248193414de93279fac83b83c90301",
+      "finalWorkspaceSha256": "a6a79aae890e0c40b102a34d09a3dca721248193414de93279fac83b83c90301",
+      "matches": true
+    },
+    {
+      "path": "experience/src/perspective/styles.css",
+      "ciSha256": "cb8f5faeff2bd1439f4aa5c719d4fb156431891c49ed018a13e461ef67dd8f7a",
+      "finalWorkspaceSha256": "cb8f5faeff2bd1439f4aa5c719d4fb156431891c49ed018a13e461ef67dd8f7a",
+      "matches": true
+    },
+    {
+      "path": "experience/src/runtime/architectural-materials.js",
+      "ciSha256": "c380455d098a053f79cd11b541077c5a994d36ad642d70f791ecc9fe011293da",
+      "finalWorkspaceSha256": "c380455d098a053f79cd11b541077c5a994d36ad642d70f791ecc9fe011293da",
+      "matches": true
+    },
+    {
+      "path": "experience/src/runtime/architectural-profile.js",
+      "ciSha256": "31fa3b3afb98ef1080af202562192d9de17d8cf11ef1fb96716a1890e18454a7",
+      "finalWorkspaceSha256": "31fa3b3afb98ef1080af202562192d9de17d8cf11ef1fb96716a1890e18454a7",
+      "matches": true
+    },
+    {
+      "path": "experience/src/runtime/camera.js",
+      "ciSha256": "f59b0a2fe620f20d2f0cd8739e46d1bc3dd5e7614c084170799714b6fa71d377",
+      "finalWorkspaceSha256": "f59b0a2fe620f20d2f0cd8739e46d1bc3dd5e7614c084170799714b6fa71d377",
+      "matches": true
+    },
+    {
+      "path": "experience/src/runtime/create-game.js",
+      "ciSha256": "62c6dadcc6f534f2af96b620d808a7d77347678a030d2a28887189b80f85aa83",
+      "finalWorkspaceSha256": "62c6dadcc6f534f2af96b620d808a7d77347678a030d2a28887189b80f85aa83",
+      "matches": true
+    },
+    {
+      "path": "experience/src/runtime/exploration-state.js",
+      "ciSha256": "2ea0033730ba313815d95b55f23870b76b506c16a2d87ef353ba3479b6651e88",
+      "finalWorkspaceSha256": "2ea0033730ba313815d95b55f23870b76b506c16a2d87ef353ba3479b6651e88",
+      "matches": true
+    },
+    {
+      "path": "experience/src/runtime/inspection-features.js",
+      "ciSha256": "af8acc5de4e9d21725d18e13ab76698f6805ade30318cb18c478fe97fe13853c",
+      "finalWorkspaceSha256": "af8acc5de4e9d21725d18e13ab76698f6805ade30318cb18c478fe97fe13853c",
+      "matches": true
+    },
+    {
+      "path": "experience/src/runtime/inspection.js",
+      "ciSha256": "d9de872e959f41b54282049609499c9f8099a747fcb6dc19ff8f20b07245e38f",
+      "finalWorkspaceSha256": "d9de872e959f41b54282049609499c9f8099a747fcb6dc19ff8f20b07245e38f",
+      "matches": true
+    },
+    {
+      "path": "experience/src/runtime/lighting-contract.js",
+      "ciSha256": "8fbeaacbc6722cd2b7656800f3d514a554902d0866fb676bead66d4aaa8649d1",
+      "finalWorkspaceSha256": "8fbeaacbc6722cd2b7656800f3d514a554902d0866fb676bead66d4aaa8649d1",
+      "matches": true
+    },
+    {
+      "path": "experience/src/runtime/lighting-fallback.js",
+      "ciSha256": "d6b833feef4927c8c801e19f37214999d81667cf7ceaa7c28fc6671e50f2eaf3",
+      "finalWorkspaceSha256": "d6b833feef4927c8c801e19f37214999d81667cf7ceaa7c28fc6671e50f2eaf3",
+      "matches": true
+    },
+    {
+      "path": "experience/src/runtime/lighting.js",
+      "ciSha256": "62982dac3fa84809f659fad2134aae0d55170fe66619bf3a63b27361cc9ce61d",
+      "finalWorkspaceSha256": "62982dac3fa84809f659fad2134aae0d55170fe66619bf3a63b27361cc9ce61d",
+      "matches": true
+    },
+    {
+      "path": "experience/src/runtime/view-state.js",
+      "ciSha256": "84c5525423264c13eeb4d0606055a0a93fc41314bc930014e358bbed1a3ed442",
+      "finalWorkspaceSha256": "84c5525423264c13eeb4d0606055a0a93fc41314bc930014e358bbed1a3ed442",
+      "matches": true
+    },
+    {
+      "path": "experience/src/runtime/world-view.js",
+      "ciSha256": "864fc4b2c1ecdc5699b4f09c6d6b90aff6f6e46a9d4446512e63373f6b24d5e8",
+      "finalWorkspaceSha256": "864fc4b2c1ecdc5699b4f09c6d6b90aff6f6e46a9d4446512e63373f6b24d5e8",
+      "matches": true
+    },
+    {
+      "path": "experience/src/simulation/index.js",
+      "ciSha256": "692515b0674c8d6b75e853c98f14d4c92c9e0d3c3dde0895e4c762c574396f34",
+      "finalWorkspaceSha256": "692515b0674c8d6b75e853c98f14d4c92c9e0d3c3dde0895e4c762c574396f34",
+      "matches": true
+    },
+    {
+      "path": "experience/src/simulation/world.js",
+      "ciSha256": "a363e6193006493346ef10aac44c447db3673ca202fed5be347ae77f6119d40f",
+      "finalWorkspaceSha256": "a363e6193006493346ef10aac44c447db3673ca202fed5be347ae77f6119d40f",
+      "matches": true
+    },
+    {
+      "path": "experience/src/solo/controller.js",
+      "ciSha256": "5b7d0007a528b8dfc10260e083d8381fea7e02a4e8365040a68557fafab32b43",
+      "finalWorkspaceSha256": "002f831d6cd1260afa7c81de14ac5eb04dcf2d96784842e6408894fa6cfa84a3",
+      "matches": false
+    },
+    {
+      "path": "experience/src/solo/state.js",
+      "ciSha256": "136f82029903f0365d3d95e25838318a0e996a2ad15acc0af17719b64f4212bf",
+      "finalWorkspaceSha256": "136f82029903f0365d3d95e25838318a0e996a2ad15acc0af17719b64f4212bf",
+      "matches": true
+    },
+    {
+      "path": "experience/src/travel/copy.js",
+      "ciSha256": "5d4026ef4473cc089a4904a3d02bf2fb24d634f573e3555b3ba0d4b6e39872ae",
+      "finalWorkspaceSha256": "5d4026ef4473cc089a4904a3d02bf2fb24d634f573e3555b3ba0d4b6e39872ae",
+      "matches": true
+    },
+    {
+      "path": "experience/src/travel/location.js",
+      "ciSha256": "ab5a0d3cb2829f884ba7f3162ea9f496a77f1eec11ca0a2af427949d719ac175",
+      "finalWorkspaceSha256": "ab5a0d3cb2829f884ba7f3162ea9f496a77f1eec11ca0a2af427949d719ac175",
+      "matches": true
+    },
+    {
+      "path": "experience/src/travel/main.js",
+      "ciSha256": "e5e39098a66f80cf2bde9e1eb7c98304d86caec9b33276f1906b08f4920ecbd8",
+      "finalWorkspaceSha256": "e5e39098a66f80cf2bde9e1eb7c98304d86caec9b33276f1906b08f4920ecbd8",
+      "matches": true
+    },
+    {
+      "path": "experience/src/travel/maps.js",
+      "ciSha256": "e510e812cc866b10febcfbbcbbc9915cd14aaece425e948769051b5fba229285",
+      "finalWorkspaceSha256": "e510e812cc866b10febcfbbcbbc9915cd14aaece425e948769051b5fba229285",
+      "matches": true
+    },
+    {
+      "path": "experience/src/travel/places.js",
+      "ciSha256": "785ecee89e8931a7af436e3bb8f1b9226de51654756c45a1725bd91237f504b5",
+      "finalWorkspaceSha256": "785ecee89e8931a7af436e3bb8f1b9226de51654756c45a1725bd91237f504b5",
+      "matches": true
+    },
+    {
+      "path": "experience/src/travel/state.js",
+      "ciSha256": "ed3c4abdc0ad59b1241f0a5c3b4fda5e82d0e383535705a9d79e3c3324e43c81",
+      "finalWorkspaceSha256": "ed3c4abdc0ad59b1241f0a5c3b4fda5e82d0e383535705a9d79e3c3324e43c81",
+      "matches": true
+    },
+    {
+      "path": "experience/src/travel/styles.css",
+      "ciSha256": "ab3286daac7a1596b7f7865f53b1f83bbefdb1ffdfbac6bd6c1adae2041f37f2",
+      "finalWorkspaceSha256": "ab3286daac7a1596b7f7865f53b1f83bbefdb1ffdfbac6bd6c1adae2041f37f2",
+      "matches": true
+    },
+    {
+      "path": "experience/src/ui/assets/NOTO-LICENSE.txt",
+      "ciSha256": "849f4ea9c214fa4ac3593b770c699f387534b11ce671264c1b10d85bdcb5997b",
+      "finalWorkspaceSha256": "849f4ea9c214fa4ac3593b770c699f387534b11ce671264c1b10d85bdcb5997b",
+      "matches": true
+    },
+    {
+      "path": "experience/src/ui/assets/THIRD-PARTY-NOTICES.txt",
+      "ciSha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+      "finalWorkspaceSha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+      "matches": true
+    },
+    {
+      "path": "experience/src/ui/assets/font-manifest.json",
+      "ciSha256": "3b273f3ce69210cb3ddfe066dc1bfc08e4d69ac429639457f7980c79fb1a4dbc",
+      "finalWorkspaceSha256": "ccbc319194ec127d99c9da0ea5b51c0623f4d57e9b7865feb1585f4a1ab92011",
+      "matches": false
+    },
+    {
+      "path": "experience/src/ui/assets/kyoto-sans.woff",
+      "ciSha256": "6f76d36c6d7bf885eee36697d9e1a1c6e6938389815b238add4fb2612092552b",
+      "finalWorkspaceSha256": "6f76d36c6d7bf885eee36697d9e1a1c6e6938389815b238add4fb2612092552b",
+      "matches": true
+    },
+    {
+      "path": "experience/src/ui/i18n.js",
+      "ciSha256": "cc0a531608ca68c2daa6b6a81109718cd9e009b40849c9d44c57390ea616608e",
+      "finalWorkspaceSha256": "cc0a531608ca68c2daa6b6a81109718cd9e009b40849c9d44c57390ea616608e",
+      "matches": true
+    },
+    {
+      "path": "experience/src/ui/styles.css",
+      "ciSha256": "f9c8f01dd2cb05f787f6d0e216c1285c82f133b52d7ce8a965571c8e4a8232e7",
+      "finalWorkspaceSha256": "f9c8f01dd2cb05f787f6d0e216c1285c82f133b52d7ce8a965571c8e4a8232e7",
+      "matches": true
+    }
+  ],
+  "suites": [
+    {
+      "report": "homepage-result.json",
+      "reportSha256": "7b7fbfd43cc373077045c3724911837f1af4cc1021de86c9ce2663bc76568397",
+      "summary": {
+        "passed": 65,
+        "failed": 0,
+        "fatal": false
+      },
+      "ciPackageManifest": "81e885e64a92adb6140d230e3819bc3ace119ff4475b50159bc56a5a88c5c268",
+      "browser": "151.0.7922.34",
+      "consumedAssets": [
+        {
+          "path": "/assets/THIRD-PARTY-NOTICES-BAyKaB7a.js",
+          "ciSha256": "6a8be19b1ec4b1f59be82d31d65f3909958ee2c92a62d75df29b3c3e56be2fae",
+          "finalSha256": "6a8be19b1ec4b1f59be82d31d65f3909958ee2c92a62d75df29b3c3e56be2fae",
+          "matches": true
+        },
+        {
+          "path": "/assets/create-game-DuqiFdJz.js",
+          "ciSha256": "e949a12273de1af726bffcd2c6244f32a5fd9313d5a1c56501b536f165357391",
+          "finalSha256": "e949a12273de1af726bffcd2c6244f32a5fd9313d5a1c56501b536f165357391",
+          "matches": true
+        },
+        {
+          "path": "/assets/exploration-state-Cdg5EQwB.js",
+          "ciSha256": "9a57b044536aed71864f406d2cecc0f99c17cd0d04667c20460a4c1b17ec01d2",
+          "finalSha256": "9a57b044536aed71864f406d2cecc0f99c17cd0d04667c20460a4c1b17ec01d2",
+          "matches": true
+        },
+        {
+          "path": "/assets/i18n-DkfUIDNq.js",
+          "ciSha256": "4d7f2d8c8c1bd553fc68afe5dc2a70bde91ef6c06e3e0a259f700b50768ed8e7",
+          "finalSha256": "4d7f2d8c8c1bd553fc68afe5dc2a70bde91ef6c06e3e0a259f700b50768ed8e7",
+          "matches": true
+        },
+        {
+          "path": "/assets/index-D5OzsOu2.css",
+          "ciSha256": "659f8e9ebd3127bc96dd1501c93205d84f9baed86faf89234d047b4419dcc05b",
+          "finalSha256": "659f8e9ebd3127bc96dd1501c93205d84f9baed86faf89234d047b4419dcc05b",
+          "matches": true
+        },
+        {
+          "path": "/assets/index-DNueoaRF.js",
+          "ciSha256": "05ead38423b18df76742ea10bb89ef46775a2ad6226ab397bd9e1d6d8002a333",
+          "finalSha256": null,
+          "matches": false
+        },
+        {
+          "path": "/assets/inspection-features-Dho6Tdb_.js",
+          "ciSha256": "b557cd0807cbe26d923862baed328e2f7de267fedecc43aa47055ce2c31b7996",
+          "finalSha256": "b557cd0807cbe26d923862baed328e2f7de267fedecc43aa47055ce2c31b7996",
+          "matches": true
+        },
+        {
+          "path": "/assets/kyoto-B8LsYbyV.js",
+          "ciSha256": "2e85113c56e5f03a8abc2be2f4029f5dd8545aa42da7ea8307bb777ba2ee4959",
+          "finalSha256": "2e85113c56e5f03a8abc2be2f4029f5dd8545aa42da7ea8307bb777ba2ee4959",
+          "matches": true
+        },
+        {
+          "path": "/assets/kyoto-sans-BdiSoCHn.woff",
+          "ciSha256": "6f76d36c6d7bf885eee36697d9e1a1c6e6938389815b238add4fb2612092552b",
+          "finalSha256": "6f76d36c6d7bf885eee36697d9e1a1c6e6938389815b238add4fb2612092552b",
+          "matches": true
+        },
+        {
+          "path": "/assets/lighting-2vgXaX2R.js",
+          "ciSha256": "01a9e9efd929fe2372a8135c219c40e3a9f7165799b299abc685c7e70d5e0015",
+          "finalSha256": "01a9e9efd929fe2372a8135c219c40e3a9f7165799b299abc685c7e70d5e0015",
+          "matches": true
+        },
+        {
+          "path": "/assets/live-view-BPORqjdI.js",
+          "ciSha256": "4e68bba450d3705e654aece67e0b226452d32d7cb6b0d15a1d5400cec79b8a34",
+          "finalSha256": "4e68bba450d3705e654aece67e0b226452d32d7cb6b0d15a1d5400cec79b8a34",
+          "matches": true
+        },
+        {
+          "path": "/assets/maplibre-gl-worker-Bh1S--WG.js",
+          "ciSha256": "12b615e3bb01919718abd39a2784f11b082c29666843ad62d8b95928f35bdd9d",
+          "finalSha256": "12b615e3bb01919718abd39a2784f11b082c29666843ad62d8b95928f35bdd9d",
+          "matches": true
+        },
+        {
+          "path": "/assets/maps-2TGVCB_Q.js",
+          "ciSha256": "860607252c572fb37867dcab832f9d174df5dca36bfe6d7082837641ea91fc49",
+          "finalSha256": "860607252c572fb37867dcab832f9d174df5dca36bfe6d7082837641ea91fc49",
+          "matches": true
+        },
+        {
+          "path": "/assets/modulepreload-polyfill-P2Xu9kJm.js",
+          "ciSha256": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f",
+          "finalSha256": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f",
+          "matches": true
+        },
+        {
+          "path": "/assets/places-_F3XEqgH.js",
+          "ciSha256": "29fa0f382345a9f0135e733198bcc2f78240ba7717356d4884fcae34728a5cce",
+          "finalSha256": "29fa0f382345a9f0135e733198bcc2f78240ba7717356d4884fcae34728a5cce",
+          "matches": true
+        },
+        {
+          "path": "/assets/preload-helper-BaNbYf_w.js",
+          "ciSha256": "49e31bba082196935782ac14bbedbc2a8e7c4229f918bc086ab5dd08ca015034",
+          "finalSha256": "49e31bba082196935782ac14bbedbc2a8e7c4229f918bc086ab5dd08ca015034",
+          "matches": true
+        },
+        {
+          "path": "/assets/share-B9lfBiEf.js",
+          "ciSha256": "dfb68966d40c2e215893011d569839257d037399ebd321ff9ef91ca1eb181a1b",
+          "finalSha256": "dfb68966d40c2e215893011d569839257d037399ebd321ff9ef91ca1eb181a1b",
+          "matches": true
+        },
+        {
+          "path": "/assets/share-xJE6SJ2m.css",
+          "ciSha256": "4417d7ba511898ab01b97bdae1373c90c1616f0721f4257e145c90c319c4ee23",
+          "finalSha256": "4417d7ba511898ab01b97bdae1373c90c1616f0721f4257e145c90c319c4ee23",
+          "matches": true
+        },
+        {
+          "path": "/assets/state-BF0AOpXx.js",
+          "ciSha256": "731c5dd28fe8efff9456fd0b9794864641ca8fff766a9b7d9d8713dd565738ed",
+          "finalSha256": "731c5dd28fe8efff9456fd0b9794864641ca8fff766a9b7d9d8713dd565738ed",
+          "matches": true
+        },
+        {
+          "path": "/assets/state-DwlyKbZV.js",
+          "ciSha256": "31fc7fbe10efbacc5e2bd888ba4f9cfc3f39db939fe9e948b9db14e95648ca68",
+          "finalSha256": "31fc7fbe10efbacc5e2bd888ba4f9cfc3f39db939fe9e948b9db14e95648ca68",
+          "matches": true
+        },
+        {
+          "path": "/assets/view-state-Cajz5ATi.js",
+          "ciSha256": "a52f42eada1568efe3a1b1110d62f51cb1f986d07643ca9a2b13bae1df7ee900",
+          "finalSha256": "a52f42eada1568efe3a1b1110d62f51cb1f986d07643ca9a2b13bae1df7ee900",
+          "matches": true
+        },
+        {
+          "path": "/assets/walk-DdcaPyjo.js",
+          "ciSha256": "4896bebffd196bc672bf981bbb3f5c896ed3a5b5a8fd88e5e512b2ed9c4dcc79",
+          "finalSha256": "4896bebffd196bc672bf981bbb3f5c896ed3a5b5a8fd88e5e512b2ed9c4dcc79",
+          "matches": true
+        },
+        {
+          "path": "/assets/walk-DyZMkF3a.css",
+          "ciSha256": "9f1273c963396b6d33d7f7feaad23e0ff290eaa97cc30fc6eaf75cc80076eaf1",
+          "finalSha256": "9f1273c963396b6d33d7f7feaad23e0ff290eaa97cc30fc6eaf75cc80076eaf1",
+          "matches": true
+        },
+        {
+          "path": "/assets/world-map-BBBq9nv9.js",
+          "ciSha256": "95f2527219188f6b0225f47b64ea5016e75f34e3dff800162fd8beef93f8448a",
+          "finalSha256": null,
+          "matches": false
+        },
+        {
+          "path": "/assets/world-map-DBE96hFo.css",
+          "ciSha256": "7d70296c647f8ae4b9b9cc0ed943d5bf81cedef828a348f81c5e89d3ed128856",
+          "finalSha256": "7d70296c647f8ae4b9b9cc0ed943d5bf81cedef828a348f81c5e89d3ed128856",
+          "matches": true
+        },
+        {
+          "path": "/index.html",
+          "ciSha256": "069e8b747ba0237d9fd6ed1f1c3ec929220a97697a10131e87b3338ba8164f5c",
+          "finalSha256": "91b610d810783c21b80667b0124891ebb0aa8c35c28b3dacb3c17575f3d718fd",
+          "matches": false
+        },
+        {
+          "path": "/lighting/environments/day-1k.hdr",
+          "ciSha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+          "finalSha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+          "matches": true
+        },
+        {
+          "path": "/lighting/environments/night-1k.hdr",
+          "ciSha256": "a690048dcecabf5ed1ad773f7abdec7cce7b1fea4d89b17f054a18f3e0fa2919",
+          "finalSha256": "a690048dcecabf5ed1ad773f7abdec7cce7b1fea4d89b17f054a18f3e0fa2919",
+          "matches": true
+        },
+        {
+          "path": "/lighting/rig.json",
+          "ciSha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+          "finalSha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+          "matches": true
+        },
+        {
+          "path": "/materials/architectural/glazing-blinds.png",
+          "ciSha256": "a8c00a6bb8128bf5fffdcb6929e0fd0cde4b4d5fe6943da870886ba9acc38bc8",
+          "finalSha256": "a8c00a6bb8128bf5fffdcb6929e0fd0cde4b4d5fe6943da870886ba9acc38bc8",
+          "matches": true
+        },
+        {
+          "path": "/materials/architectural/glazing.png",
+          "ciSha256": "a41740b9992939047049fa4d35faa4075e00c4bcdcc3d4d8e19be1459044aa04",
+          "finalSha256": "a41740b9992939047049fa4d35faa4075e00c4bcdcc3d4d8e19be1459044aa04",
+          "matches": true
+        },
+        {
+          "path": "/materials/architectural/granite-fascia.png",
+          "ciSha256": "e6afb5b0f12deea6e3aa8c2274bba65f3d9edce8bb16b8fcdd82a68f51535cb2",
+          "finalSha256": "e6afb5b0f12deea6e3aa8c2274bba65f3d9edce8bb16b8fcdd82a68f51535cb2",
+          "matches": true
+        },
+        {
+          "path": "/materials/architectural/manifest.json",
+          "ciSha256": "5947c4fe04f6bc6ced85b4c6920e7a1f7f88cbec6ea67180133eea69d8c48813",
+          "finalSha256": "5947c4fe04f6bc6ced85b4c6920e7a1f7f88cbec6ea67180133eea69d8c48813",
+          "matches": true
+        },
+        {
+          "path": "/materials/architectural/pale-stone.png",
+          "ciSha256": "95d64e228c33892294a2ee8061bac759f3793e8628b7229518a681ec8d4a7373",
+          "finalSha256": "95d64e228c33892294a2ee8061bac759f3793e8628b7229518a681ec8d4a7373",
+          "matches": true
+        },
+        {
+          "path": "/models/shijo-block.glb",
+          "ciSha256": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c",
+          "finalSha256": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c",
+          "matches": true
+        },
+        {
+          "path": "/models/traveller.glb",
+          "ciSha256": "ee5307da94f4d1994e5323a0d31d6f79a255c9f2f10459e0a0e6434fb051fdb1",
+          "finalSha256": "ee5307da94f4d1994e5323a0d31d6f79a255c9f2f10459e0a0e6434fb051fdb1",
+          "matches": true
+        },
+        {
+          "path": "/walk.html",
+          "ciSha256": "0746607f1560bf1ba8be55cc0dca4d58e83b9c923132ab6fad901c9c38a99932",
+          "finalSha256": "0746607f1560bf1ba8be55cc0dca4d58e83b9c923132ab6fad901c9c38a99932",
+          "matches": true
+        }
+      ],
+      "allRecordedConsumedAssetsUnchanged": false
+    },
+    {
+      "report": "original-walk-result.json",
+      "reportSha256": "eedc17fda08f84638ee7fbf1b57bf27977cc3e96469f438cf358dd676f22bf29",
+      "summary": {
+        "passed": 131,
+        "failed": 2
+      },
+      "ciPackageManifest": "81e885e64a92adb6140d230e3819bc3ace119ff4475b50159bc56a5a88c5c268",
+      "browser": "151.0.7922.34",
+      "consumedAssets": [
+        {
+          "path": "/assets/THIRD-PARTY-NOTICES-BAyKaB7a.js",
+          "ciSha256": "6a8be19b1ec4b1f59be82d31d65f3909958ee2c92a62d75df29b3c3e56be2fae",
+          "finalSha256": "6a8be19b1ec4b1f59be82d31d65f3909958ee2c92a62d75df29b3c3e56be2fae",
+          "matches": true
+        },
+        {
+          "path": "/assets/comparison-DD5nrEwi.js",
+          "ciSha256": "9a7e06ded49203c91ce7e076e0f9e6fbb8922ceb0e157022612fcdb80a0a5f18",
+          "finalSha256": "9a7e06ded49203c91ce7e076e0f9e6fbb8922ceb0e157022612fcdb80a0a5f18",
+          "matches": true
+        },
+        {
+          "path": "/assets/comparison-c05QBnOh.css",
+          "ciSha256": "eee135bae7025bb0be1400378461fce5e6d88b0c1676cc3a21cfd3dee61b7a0e",
+          "finalSha256": "eee135bae7025bb0be1400378461fce5e6d88b0c1676cc3a21cfd3dee61b7a0e",
+          "matches": true
+        },
+        {
+          "path": "/assets/create-game-DuqiFdJz.js",
+          "ciSha256": "e949a12273de1af726bffcd2c6244f32a5fd9313d5a1c56501b536f165357391",
+          "finalSha256": "e949a12273de1af726bffcd2c6244f32a5fd9313d5a1c56501b536f165357391",
+          "matches": true
+        },
+        {
+          "path": "/assets/exploration-state-Cdg5EQwB.js",
+          "ciSha256": "9a57b044536aed71864f406d2cecc0f99c17cd0d04667c20460a4c1b17ec01d2",
+          "finalSha256": "9a57b044536aed71864f406d2cecc0f99c17cd0d04667c20460a4c1b17ec01d2",
+          "matches": true
+        },
+        {
+          "path": "/assets/i18n-DkfUIDNq.js",
+          "ciSha256": "4d7f2d8c8c1bd553fc68afe5dc2a70bde91ef6c06e3e0a259f700b50768ed8e7",
+          "finalSha256": "4d7f2d8c8c1bd553fc68afe5dc2a70bde91ef6c06e3e0a259f700b50768ed8e7",
+          "matches": true
+        },
+        {
+          "path": "/assets/inspection-features-Dho6Tdb_.js",
+          "ciSha256": "b557cd0807cbe26d923862baed328e2f7de267fedecc43aa47055ce2c31b7996",
+          "finalSha256": "b557cd0807cbe26d923862baed328e2f7de267fedecc43aa47055ce2c31b7996",
+          "matches": true
+        },
+        {
+          "path": "/assets/journey-BInvbvH6.js",
+          "ciSha256": "e8188a324c090409eb43c1b7484d705d235ac3b210ccb2dfa80149914fc1a648",
+          "finalSha256": "e8188a324c090409eb43c1b7484d705d235ac3b210ccb2dfa80149914fc1a648",
+          "matches": true
+        },
+        {
+          "path": "/assets/kyoto-B8LsYbyV.js",
+          "ciSha256": "2e85113c56e5f03a8abc2be2f4029f5dd8545aa42da7ea8307bb777ba2ee4959",
+          "finalSha256": "2e85113c56e5f03a8abc2be2f4029f5dd8545aa42da7ea8307bb777ba2ee4959",
+          "matches": true
+        },
+        {
+          "path": "/assets/kyoto-sans-BdiSoCHn.woff",
+          "ciSha256": "6f76d36c6d7bf885eee36697d9e1a1c6e6938389815b238add4fb2612092552b",
+          "finalSha256": "6f76d36c6d7bf885eee36697d9e1a1c6e6938389815b238add4fb2612092552b",
+          "matches": true
+        },
+        {
+          "path": "/assets/lighting-2vgXaX2R.js",
+          "ciSha256": "01a9e9efd929fe2372a8135c219c40e3a9f7165799b299abc685c7e70d5e0015",
+          "finalSha256": "01a9e9efd929fe2372a8135c219c40e3a9f7165799b299abc685c7e70d5e0015",
+          "matches": true
+        },
+        {
+          "path": "/assets/modulepreload-polyfill-P2Xu9kJm.js",
+          "ciSha256": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f",
+          "finalSha256": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f",
+          "matches": true
+        },
+        {
+          "path": "/assets/places-_F3XEqgH.js",
+          "ciSha256": "29fa0f382345a9f0135e733198bcc2f78240ba7717356d4884fcae34728a5cce",
+          "finalSha256": "29fa0f382345a9f0135e733198bcc2f78240ba7717356d4884fcae34728a5cce",
+          "matches": true
+        },
+        {
+          "path": "/assets/share-B9lfBiEf.js",
+          "ciSha256": "dfb68966d40c2e215893011d569839257d037399ebd321ff9ef91ca1eb181a1b",
+          "finalSha256": "dfb68966d40c2e215893011d569839257d037399ebd321ff9ef91ca1eb181a1b",
+          "matches": true
+        },
+        {
+          "path": "/assets/share-xJE6SJ2m.css",
+          "ciSha256": "4417d7ba511898ab01b97bdae1373c90c1616f0721f4257e145c90c319c4ee23",
+          "finalSha256": "4417d7ba511898ab01b97bdae1373c90c1616f0721f4257e145c90c319c4ee23",
+          "matches": true
+        },
+        {
+          "path": "/assets/state-DwlyKbZV.js",
+          "ciSha256": "31fc7fbe10efbacc5e2bd888ba4f9cfc3f39db939fe9e948b9db14e95648ca68",
+          "finalSha256": "31fc7fbe10efbacc5e2bd888ba4f9cfc3f39db939fe9e948b9db14e95648ca68",
+          "matches": true
+        },
+        {
+          "path": "/assets/view-state-Cajz5ATi.js",
+          "ciSha256": "a52f42eada1568efe3a1b1110d62f51cb1f986d07643ca9a2b13bae1df7ee900",
+          "finalSha256": "a52f42eada1568efe3a1b1110d62f51cb1f986d07643ca9a2b13bae1df7ee900",
+          "matches": true
+        },
+        {
+          "path": "/assets/walk-DdcaPyjo.js",
+          "ciSha256": "4896bebffd196bc672bf981bbb3f5c896ed3a5b5a8fd88e5e512b2ed9c4dcc79",
+          "finalSha256": "4896bebffd196bc672bf981bbb3f5c896ed3a5b5a8fd88e5e512b2ed9c4dcc79",
+          "matches": true
+        },
+        {
+          "path": "/assets/walk-DyZMkF3a.css",
+          "ciSha256": "9f1273c963396b6d33d7f7feaad23e0ff290eaa97cc30fc6eaf75cc80076eaf1",
+          "finalSha256": "9f1273c963396b6d33d7f7feaad23e0ff290eaa97cc30fc6eaf75cc80076eaf1",
+          "matches": true
+        },
+        {
+          "path": "/comparison.html",
+          "ciSha256": "3556e395049f9e5aba3f1ac8de91f02c53596b7ab571367a3e98015edda6634b",
+          "finalSha256": "3556e395049f9e5aba3f1ac8de91f02c53596b7ab571367a3e98015edda6634b",
+          "matches": true
+        },
+        {
+          "path": "/credits.html",
+          "ciSha256": "46231e6fe05170f4404549b58619b6690b4ed75f18fd6ec96e933a4deeeb6fdf",
+          "finalSha256": "46231e6fe05170f4404549b58619b6690b4ed75f18fd6ec96e933a4deeeb6fdf",
+          "matches": true
+        },
+        {
+          "path": "/journey.html",
+          "ciSha256": "46cc36c27c930a07ffec2c75d9ce41f1bd125f026d0402cfa5ec30a4547d7cac",
+          "finalSha256": "46cc36c27c930a07ffec2c75d9ce41f1bd125f026d0402cfa5ec30a4547d7cac",
+          "matches": true
+        },
+        {
+          "path": "/lighting/environments/day-1k.hdr",
+          "ciSha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+          "finalSha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+          "matches": true
+        },
+        {
+          "path": "/lighting/environments/night-1k.hdr",
+          "ciSha256": "a690048dcecabf5ed1ad773f7abdec7cce7b1fea4d89b17f054a18f3e0fa2919",
+          "finalSha256": "a690048dcecabf5ed1ad773f7abdec7cce7b1fea4d89b17f054a18f3e0fa2919",
+          "matches": true
+        },
+        {
+          "path": "/lighting/rig.json",
+          "ciSha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+          "finalSha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+          "matches": true
+        },
+        {
+          "path": "/materials/architectural/glazing-blinds.png",
+          "ciSha256": "a8c00a6bb8128bf5fffdcb6929e0fd0cde4b4d5fe6943da870886ba9acc38bc8",
+          "finalSha256": "a8c00a6bb8128bf5fffdcb6929e0fd0cde4b4d5fe6943da870886ba9acc38bc8",
+          "matches": true
+        },
+        {
+          "path": "/materials/architectural/glazing.png",
+          "ciSha256": "a41740b9992939047049fa4d35faa4075e00c4bcdcc3d4d8e19be1459044aa04",
+          "finalSha256": "a41740b9992939047049fa4d35faa4075e00c4bcdcc3d4d8e19be1459044aa04",
+          "matches": true
+        },
+        {
+          "path": "/materials/architectural/granite-fascia.png",
+          "ciSha256": "e6afb5b0f12deea6e3aa8c2274bba65f3d9edce8bb16b8fcdd82a68f51535cb2",
+          "finalSha256": "e6afb5b0f12deea6e3aa8c2274bba65f3d9edce8bb16b8fcdd82a68f51535cb2",
+          "matches": true
+        },
+        {
+          "path": "/materials/architectural/manifest.json",
+          "ciSha256": "5947c4fe04f6bc6ced85b4c6920e7a1f7f88cbec6ea67180133eea69d8c48813",
+          "finalSha256": "5947c4fe04f6bc6ced85b4c6920e7a1f7f88cbec6ea67180133eea69d8c48813",
+          "matches": true
+        },
+        {
+          "path": "/materials/architectural/pale-stone.png",
+          "ciSha256": "95d64e228c33892294a2ee8061bac759f3793e8628b7229518a681ec8d4a7373",
+          "finalSha256": "95d64e228c33892294a2ee8061bac759f3793e8628b7229518a681ec8d4a7373",
+          "matches": true
+        },
+        {
+          "path": "/models/shijo-block.glb",
+          "ciSha256": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c",
+          "finalSha256": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c",
+          "matches": true
+        },
+        {
+          "path": "/models/traveller.glb",
+          "ciSha256": "ee5307da94f4d1994e5323a0d31d6f79a255c9f2f10459e0a0e6434fb051fdb1",
+          "finalSha256": "ee5307da94f4d1994e5323a0d31d6f79a255c9f2f10459e0a0e6434fb051fdb1",
+          "matches": true
+        },
+        {
+          "path": "/render-study/daiya-frontage-day.png",
+          "ciSha256": "e51336a9e6e1484330009c413b642773e88603d920525a5d4d9b9dc1b4da1b55",
+          "finalSha256": "e51336a9e6e1484330009c413b642773e88603d920525a5d4d9b9dc1b4da1b55",
+          "matches": true
+        },
+        {
+          "path": "/render-study/daiya-frontage-night.png",
+          "ciSha256": "7df4ed4f5966141278d27de376201105b7186bdc7eba8ee1f9fe82f3409d3260",
+          "finalSha256": "7df4ed4f5966141278d27de376201105b7186bdc7eba8ee1f9fe82f3409d3260",
+          "matches": true
+        },
+        {
+          "path": "/render-study/intersection-day.png",
+          "ciSha256": "3d52543253d35c022c34ca83b60a663e7fb7f77af4f482a4bd178a06ef9d5cee",
+          "finalSha256": "3d52543253d35c022c34ca83b60a663e7fb7f77af4f482a4bd178a06ef9d5cee",
+          "matches": true
+        },
+        {
+          "path": "/render-study/intersection-night.png",
+          "ciSha256": "7d2041f3a93207bd7265c251187ec5a7215d28d397befc3a77bae2284d275573",
+          "finalSha256": "7d2041f3a93207bd7265c251187ec5a7215d28d397befc3a77bae2284d275573",
+          "matches": true
+        },
+        {
+          "path": "/render-study/manifest.json",
+          "ciSha256": "e2274732cff1a12fde5df1074cdf2dee2d00673c56e9bd1311b8935697c401e1",
+          "finalSha256": "e2274732cff1a12fde5df1074cdf2dee2d00673c56e9bd1311b8935697c401e1",
+          "matches": true
+        },
+        {
+          "path": "/render-study/mitsui-frontage-day.png",
+          "ciSha256": "7064066ce31cc0ad082cb6a3e3179004071fc0d6723208830a6c313e5b4a3421",
+          "finalSha256": "7064066ce31cc0ad082cb6a3e3179004071fc0d6723208830a6c313e5b4a3421",
+          "matches": true
+        },
+        {
+          "path": "/render-study/mitsui-frontage-night.png",
+          "ciSha256": "20f5dc14c1fe2145736effdf6180b5bf025be3e3a79a09094bdd91ee42b410bb",
+          "finalSha256": "20f5dc14c1fe2145736effdf6180b5bf025be3e3a79a09094bdd91ee42b410bb",
+          "matches": true
+        },
+        {
+          "path": "/walk.html",
+          "ciSha256": "0746607f1560bf1ba8be55cc0dca4d58e83b9c923132ab6fad901c9c38a99932",
+          "finalSha256": "0746607f1560bf1ba8be55cc0dca4d58e83b9c923132ab6fad901c9c38a99932",
+          "matches": true
+        }
+      ],
+      "allRecordedConsumedAssetsUnchanged": true
+    },
+    {
+      "report": "perspective-result.json",
+      "reportSha256": "618f1d0acf2bb7241860b8a383943d5c56ecbcd54924922a95d6d0a5605fc940",
+      "summary": {
+        "passed": 80,
+        "failed": 0
+      },
+      "ciPackageManifest": "81e885e64a92adb6140d230e3819bc3ace119ff4475b50159bc56a5a88c5c268",
+      "browser": "151.0.7922.34",
+      "consumedAssets": [
+        {
+          "path": "/assets/THIRD-PARTY-NOTICES-BAyKaB7a.js",
+          "ciSha256": "6a8be19b1ec4b1f59be82d31d65f3909958ee2c92a62d75df29b3c3e56be2fae",
+          "finalSha256": "6a8be19b1ec4b1f59be82d31d65f3909958ee2c92a62d75df29b3c3e56be2fae",
+          "matches": true
+        },
+        {
+          "path": "/assets/create-game-DuqiFdJz.js",
+          "ciSha256": "e949a12273de1af726bffcd2c6244f32a5fd9313d5a1c56501b536f165357391",
+          "finalSha256": "e949a12273de1af726bffcd2c6244f32a5fd9313d5a1c56501b536f165357391",
+          "matches": true
+        },
+        {
+          "path": "/assets/exploration-state-Cdg5EQwB.js",
+          "ciSha256": "9a57b044536aed71864f406d2cecc0f99c17cd0d04667c20460a4c1b17ec01d2",
+          "finalSha256": "9a57b044536aed71864f406d2cecc0f99c17cd0d04667c20460a4c1b17ec01d2",
+          "matches": true
+        },
+        {
+          "path": "/assets/inspection-features-Dho6Tdb_.js",
+          "ciSha256": "b557cd0807cbe26d923862baed328e2f7de267fedecc43aa47055ce2c31b7996",
+          "finalSha256": "b557cd0807cbe26d923862baed328e2f7de267fedecc43aa47055ce2c31b7996",
+          "matches": true
+        },
+        {
+          "path": "/assets/kyoto-B8LsYbyV.js",
+          "ciSha256": "2e85113c56e5f03a8abc2be2f4029f5dd8545aa42da7ea8307bb777ba2ee4959",
+          "finalSha256": "2e85113c56e5f03a8abc2be2f4029f5dd8545aa42da7ea8307bb777ba2ee4959",
+          "matches": true
+        },
+        {
+          "path": "/assets/kyoto-sans-BdiSoCHn.woff",
+          "ciSha256": "6f76d36c6d7bf885eee36697d9e1a1c6e6938389815b238add4fb2612092552b",
+          "finalSha256": "6f76d36c6d7bf885eee36697d9e1a1c6e6938389815b238add4fb2612092552b",
+          "matches": true
+        },
+        {
+          "path": "/assets/lighting-2vgXaX2R.js",
+          "ciSha256": "01a9e9efd929fe2372a8135c219c40e3a9f7165799b299abc685c7e70d5e0015",
+          "finalSha256": "01a9e9efd929fe2372a8135c219c40e3a9f7165799b299abc685c7e70d5e0015",
+          "matches": true
+        },
+        {
+          "path": "/assets/live-view-BPORqjdI.js",
+          "ciSha256": "4e68bba450d3705e654aece67e0b226452d32d7cb6b0d15a1d5400cec79b8a34",
+          "finalSha256": "4e68bba450d3705e654aece67e0b226452d32d7cb6b0d15a1d5400cec79b8a34",
+          "matches": true
+        },
+        {
+          "path": "/assets/modulepreload-polyfill-P2Xu9kJm.js",
+          "ciSha256": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f",
+          "finalSha256": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f",
+          "matches": true
+        },
+        {
+          "path": "/assets/perspective-BaVK2kAV.css",
+          "ciSha256": "cc5eff0fa4277d9c2091303024ab372e4df9d634a3d369a85573b799eec2ca56",
+          "finalSha256": "cc5eff0fa4277d9c2091303024ab372e4df9d634a3d369a85573b799eec2ca56",
+          "matches": true
+        },
+        {
+          "path": "/assets/perspective-zfyPLDj4.js",
+          "ciSha256": "8e386d72c08aec25d0b0f27fccafde442087be1fad8dba1174810db0f744ab4a",
+          "finalSha256": "8e386d72c08aec25d0b0f27fccafde442087be1fad8dba1174810db0f744ab4a",
+          "matches": true
+        },
+        {
+          "path": "/assets/places-_F3XEqgH.js",
+          "ciSha256": "29fa0f382345a9f0135e733198bcc2f78240ba7717356d4884fcae34728a5cce",
+          "finalSha256": "29fa0f382345a9f0135e733198bcc2f78240ba7717356d4884fcae34728a5cce",
+          "matches": true
+        },
+        {
+          "path": "/assets/preload-helper-BaNbYf_w.js",
+          "ciSha256": "49e31bba082196935782ac14bbedbc2a8e7c4229f918bc086ab5dd08ca015034",
+          "finalSha256": "49e31bba082196935782ac14bbedbc2a8e7c4229f918bc086ab5dd08ca015034",
+          "matches": true
+        },
+        {
+          "path": "/assets/state-DwlyKbZV.js",
+          "ciSha256": "31fc7fbe10efbacc5e2bd888ba4f9cfc3f39db939fe9e948b9db14e95648ca68",
+          "finalSha256": "31fc7fbe10efbacc5e2bd888ba4f9cfc3f39db939fe9e948b9db14e95648ca68",
+          "matches": true
+        },
+        {
+          "path": "/assets/view-state-Cajz5ATi.js",
+          "ciSha256": "a52f42eada1568efe3a1b1110d62f51cb1f986d07643ca9a2b13bae1df7ee900",
+          "finalSha256": "a52f42eada1568efe3a1b1110d62f51cb1f986d07643ca9a2b13bae1df7ee900",
+          "matches": true
+        },
+        {
+          "path": "/lighting/environments/day-1k.hdr",
+          "ciSha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+          "finalSha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+          "matches": true
+        },
+        {
+          "path": "/lighting/rig.json",
+          "ciSha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+          "finalSha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+          "matches": true
+        },
+        {
+          "path": "/materials/architectural/glazing-blinds.png",
+          "ciSha256": "a8c00a6bb8128bf5fffdcb6929e0fd0cde4b4d5fe6943da870886ba9acc38bc8",
+          "finalSha256": "a8c00a6bb8128bf5fffdcb6929e0fd0cde4b4d5fe6943da870886ba9acc38bc8",
+          "matches": true
+        },
+        {
+          "path": "/materials/architectural/glazing.png",
+          "ciSha256": "a41740b9992939047049fa4d35faa4075e00c4bcdcc3d4d8e19be1459044aa04",
+          "finalSha256": "a41740b9992939047049fa4d35faa4075e00c4bcdcc3d4d8e19be1459044aa04",
+          "matches": true
+        },
+        {
+          "path": "/materials/architectural/granite-fascia.png",
+          "ciSha256": "e6afb5b0f12deea6e3aa8c2274bba65f3d9edce8bb16b8fcdd82a68f51535cb2",
+          "finalSha256": "e6afb5b0f12deea6e3aa8c2274bba65f3d9edce8bb16b8fcdd82a68f51535cb2",
+          "matches": true
+        },
+        {
+          "path": "/materials/architectural/manifest.json",
+          "ciSha256": "5947c4fe04f6bc6ced85b4c6920e7a1f7f88cbec6ea67180133eea69d8c48813",
+          "finalSha256": "5947c4fe04f6bc6ced85b4c6920e7a1f7f88cbec6ea67180133eea69d8c48813",
+          "matches": true
+        },
+        {
+          "path": "/materials/architectural/pale-stone.png",
+          "ciSha256": "95d64e228c33892294a2ee8061bac759f3793e8628b7229518a681ec8d4a7373",
+          "finalSha256": "95d64e228c33892294a2ee8061bac759f3793e8628b7229518a681ec8d4a7373",
+          "matches": true
+        },
+        {
+          "path": "/models/shijo-block.glb",
+          "ciSha256": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c",
+          "finalSha256": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c",
+          "matches": true
+        },
+        {
+          "path": "/models/traveller.glb",
+          "ciSha256": "ee5307da94f4d1994e5323a0d31d6f79a255c9f2f10459e0a0e6434fb051fdb1",
+          "finalSha256": "ee5307da94f4d1994e5323a0d31d6f79a255c9f2f10459e0a0e6434fb051fdb1",
+          "matches": true
+        },
+        {
+          "path": "/perspective.html",
+          "ciSha256": "c85ea9261091887da1c63a004521dba867ead9473cccb9e73ad9b7e75a727c64",
+          "finalSha256": "c85ea9261091887da1c63a004521dba867ead9473cccb9e73ad9b7e75a727c64",
+          "matches": true
+        },
+        {
+          "path": "/perspectives/arrive.jpg",
+          "ciSha256": "5b88a84cd1cdb0297c552f8f5ee0f095d3e54fb4a0cc8b8b9f0afd1c54db3c07",
+          "finalSha256": "5b88a84cd1cdb0297c552f8f5ee0f095d3e54fb4a0cc8b8b9f0afd1c54db3c07",
+          "matches": true
+        },
+        {
+          "path": "/perspectives/daiya-rhythm.jpg",
+          "ciSha256": "231d68794a8eca8f85dfff124a0f233ab9a6d78859d13c49845320f005adfacb",
+          "finalSha256": "231d68794a8eca8f85dfff124a0f233ab9a6d78859d13c49845320f005adfacb",
+          "matches": true
+        },
+        {
+          "path": "/perspectives/mitsui-rhythm.jpg",
+          "ciSha256": "0904230ef4cd0eaf28ae5a092bda9ae03bc01b57d93b5b7db432632393d3e351",
+          "finalSha256": "0904230ef4cd0eaf28ae5a092bda9ae03bc01b57d93b5b7db432632393d3e351",
+          "matches": true
+        }
+      ],
+      "allRecordedConsumedAssetsUnchanged": true
+    },
+    {
+      "report": "travel-result.json",
+      "reportSha256": "804eb773afa6759e3a179610b2748615ea1dd2490e7aef0e58aaad2619393d64",
+      "summary": {
+        "passed": 73,
+        "failed": 0
+      },
+      "ciPackageManifest": "81e885e64a92adb6140d230e3819bc3ace119ff4475b50159bc56a5a88c5c268",
+      "browser": "151.0.7922.34",
+      "consumedAssets": [
+        {
+          "path": "/assets/THIRD-PARTY-NOTICES-BAyKaB7a.js",
+          "ciSha256": "6a8be19b1ec4b1f59be82d31d65f3909958ee2c92a62d75df29b3c3e56be2fae",
+          "finalSha256": "6a8be19b1ec4b1f59be82d31d65f3909958ee2c92a62d75df29b3c3e56be2fae",
+          "matches": true
+        },
+        {
+          "path": "/assets/kyoto-B8LsYbyV.js",
+          "ciSha256": "2e85113c56e5f03a8abc2be2f4029f5dd8545aa42da7ea8307bb777ba2ee4959",
+          "finalSha256": "2e85113c56e5f03a8abc2be2f4029f5dd8545aa42da7ea8307bb777ba2ee4959",
+          "matches": true
+        },
+        {
+          "path": "/assets/kyoto-sans-BdiSoCHn.woff",
+          "ciSha256": "6f76d36c6d7bf885eee36697d9e1a1c6e6938389815b238add4fb2612092552b",
+          "finalSha256": "6f76d36c6d7bf885eee36697d9e1a1c6e6938389815b238add4fb2612092552b",
+          "matches": true
+        },
+        {
+          "path": "/assets/maps-2TGVCB_Q.js",
+          "ciSha256": "860607252c572fb37867dcab832f9d174df5dca36bfe6d7082837641ea91fc49",
+          "finalSha256": "860607252c572fb37867dcab832f9d174df5dca36bfe6d7082837641ea91fc49",
+          "matches": true
+        },
+        {
+          "path": "/assets/modulepreload-polyfill-P2Xu9kJm.js",
+          "ciSha256": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f",
+          "finalSha256": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f",
+          "matches": true
+        },
+        {
+          "path": "/assets/perspective-BaVK2kAV.css",
+          "ciSha256": "cc5eff0fa4277d9c2091303024ab372e4df9d634a3d369a85573b799eec2ca56",
+          "finalSha256": "cc5eff0fa4277d9c2091303024ab372e4df9d634a3d369a85573b799eec2ca56",
+          "matches": true
+        },
+        {
+          "path": "/assets/perspective-zfyPLDj4.js",
+          "ciSha256": "8e386d72c08aec25d0b0f27fccafde442087be1fad8dba1174810db0f744ab4a",
+          "finalSha256": "8e386d72c08aec25d0b0f27fccafde442087be1fad8dba1174810db0f744ab4a",
+          "matches": true
+        },
+        {
+          "path": "/assets/places-_F3XEqgH.js",
+          "ciSha256": "29fa0f382345a9f0135e733198bcc2f78240ba7717356d4884fcae34728a5cce",
+          "finalSha256": "29fa0f382345a9f0135e733198bcc2f78240ba7717356d4884fcae34728a5cce",
+          "matches": true
+        },
+        {
+          "path": "/assets/preload-helper-BaNbYf_w.js",
+          "ciSha256": "49e31bba082196935782ac14bbedbc2a8e7c4229f918bc086ab5dd08ca015034",
+          "finalSha256": "49e31bba082196935782ac14bbedbc2a8e7c4229f918bc086ab5dd08ca015034",
+          "matches": true
+        },
+        {
+          "path": "/assets/state-DwlyKbZV.js",
+          "ciSha256": "31fc7fbe10efbacc5e2bd888ba4f9cfc3f39db939fe9e948b9db14e95648ca68",
+          "finalSha256": "31fc7fbe10efbacc5e2bd888ba4f9cfc3f39db939fe9e948b9db14e95648ca68",
+          "matches": true
+        },
+        {
+          "path": "/assets/travel-DVyvPLCM.css",
+          "ciSha256": "52d31e6f608acbe57bde5bbc3628458d18f8a9074cfdc9840b64544b3ccc464a",
+          "finalSha256": "52d31e6f608acbe57bde5bbc3628458d18f8a9074cfdc9840b64544b3ccc464a",
+          "matches": true
+        },
+        {
+          "path": "/assets/travel-N1tolctY.js",
+          "ciSha256": "2170c3b64fe2207df9264ca2f89b83ff80291ead06a163b7627012f3114fadaf",
+          "finalSha256": "2170c3b64fe2207df9264ca2f89b83ff80291ead06a163b7627012f3114fadaf",
+          "matches": true
+        },
+        {
+          "path": "/assets/view-state-Cajz5ATi.js",
+          "ciSha256": "a52f42eada1568efe3a1b1110d62f51cb1f986d07643ca9a2b13bae1df7ee900",
+          "finalSha256": "a52f42eada1568efe3a1b1110d62f51cb1f986d07643ca9a2b13bae1df7ee900",
+          "matches": true
+        },
+        {
+          "path": "/perspective.html",
+          "ciSha256": "c85ea9261091887da1c63a004521dba867ead9473cccb9e73ad9b7e75a727c64",
+          "finalSha256": "c85ea9261091887da1c63a004521dba867ead9473cccb9e73ad9b7e75a727c64",
+          "matches": true
+        },
+        {
+          "path": "/perspectives/arrive.jpg",
+          "ciSha256": "5b88a84cd1cdb0297c552f8f5ee0f095d3e54fb4a0cc8b8b9f0afd1c54db3c07",
+          "finalSha256": "5b88a84cd1cdb0297c552f8f5ee0f095d3e54fb4a0cc8b8b9f0afd1c54db3c07",
+          "matches": true
+        },
+        {
+          "path": "/perspectives/daiya-rhythm.jpg",
+          "ciSha256": "231d68794a8eca8f85dfff124a0f233ab9a6d78859d13c49845320f005adfacb",
+          "finalSha256": "231d68794a8eca8f85dfff124a0f233ab9a6d78859d13c49845320f005adfacb",
+          "matches": true
+        },
+        {
+          "path": "/perspectives/mitsui-rhythm.jpg",
+          "ciSha256": "0904230ef4cd0eaf28ae5a092bda9ae03bc01b57d93b5b7db432632393d3e351",
+          "finalSha256": "0904230ef4cd0eaf28ae5a092bda9ae03bc01b57d93b5b7db432632393d3e351",
+          "matches": true
+        },
+        {
+          "path": "/travel.html",
+          "ciSha256": "4258fcb73e952bb038bec95e718e6163f18fe7956532c0fcb4c812f95d29be2f",
+          "finalSha256": "4258fcb73e952bb038bec95e718e6163f18fe7956532c0fcb4c812f95d29be2f",
+          "matches": true
+        }
+      ],
+      "allRecordedConsumedAssetsUnchanged": true
+    },
+    {
+      "report": "walkthrough-result.json",
+      "reportSha256": "182fa936b9d85556b27beb45b17029f889b8e46762070fdabbe5013c322dd790",
+      "summary": {
+        "passed": 264,
+        "failed": 0
+      },
+      "ciPackageManifest": "81e885e64a92adb6140d230e3819bc3ace119ff4475b50159bc56a5a88c5c268",
+      "browser": "151.0.7922.34",
+      "consumedAssets": [
+        {
+          "path": "/assets/THIRD-PARTY-NOTICES-BAyKaB7a.js",
+          "ciSha256": "6a8be19b1ec4b1f59be82d31d65f3909958ee2c92a62d75df29b3c3e56be2fae",
+          "finalSha256": "6a8be19b1ec4b1f59be82d31d65f3909958ee2c92a62d75df29b3c3e56be2fae",
+          "matches": true
+        },
+        {
+          "path": "/assets/create-game-DuqiFdJz.js",
+          "ciSha256": "e949a12273de1af726bffcd2c6244f32a5fd9313d5a1c56501b536f165357391",
+          "finalSha256": "e949a12273de1af726bffcd2c6244f32a5fd9313d5a1c56501b536f165357391",
+          "matches": true
+        },
+        {
+          "path": "/assets/exploration-state-Cdg5EQwB.js",
+          "ciSha256": "9a57b044536aed71864f406d2cecc0f99c17cd0d04667c20460a4c1b17ec01d2",
+          "finalSha256": "9a57b044536aed71864f406d2cecc0f99c17cd0d04667c20460a4c1b17ec01d2",
+          "matches": true
+        },
+        {
+          "path": "/assets/i18n-DkfUIDNq.js",
+          "ciSha256": "4d7f2d8c8c1bd553fc68afe5dc2a70bde91ef6c06e3e0a259f700b50768ed8e7",
+          "finalSha256": "4d7f2d8c8c1bd553fc68afe5dc2a70bde91ef6c06e3e0a259f700b50768ed8e7",
+          "matches": true
+        },
+        {
+          "path": "/assets/index-D5OzsOu2.css",
+          "ciSha256": "659f8e9ebd3127bc96dd1501c93205d84f9baed86faf89234d047b4419dcc05b",
+          "finalSha256": "659f8e9ebd3127bc96dd1501c93205d84f9baed86faf89234d047b4419dcc05b",
+          "matches": true
+        },
+        {
+          "path": "/assets/index-DNueoaRF.js",
+          "ciSha256": "05ead38423b18df76742ea10bb89ef46775a2ad6226ab397bd9e1d6d8002a333",
+          "finalSha256": null,
+          "matches": false
+        },
+        {
+          "path": "/assets/inspection-features-Dho6Tdb_.js",
+          "ciSha256": "b557cd0807cbe26d923862baed328e2f7de267fedecc43aa47055ce2c31b7996",
+          "finalSha256": "b557cd0807cbe26d923862baed328e2f7de267fedecc43aa47055ce2c31b7996",
+          "matches": true
+        },
+        {
+          "path": "/assets/journey-BInvbvH6.js",
+          "ciSha256": "e8188a324c090409eb43c1b7484d705d235ac3b210ccb2dfa80149914fc1a648",
+          "finalSha256": "e8188a324c090409eb43c1b7484d705d235ac3b210ccb2dfa80149914fc1a648",
+          "matches": true
+        },
+        {
+          "path": "/assets/kyoto-B8LsYbyV.js",
+          "ciSha256": "2e85113c56e5f03a8abc2be2f4029f5dd8545aa42da7ea8307bb777ba2ee4959",
+          "finalSha256": "2e85113c56e5f03a8abc2be2f4029f5dd8545aa42da7ea8307bb777ba2ee4959",
+          "matches": true
+        },
+        {
+          "path": "/assets/kyoto-sans-BdiSoCHn.woff",
+          "ciSha256": "6f76d36c6d7bf885eee36697d9e1a1c6e6938389815b238add4fb2612092552b",
+          "finalSha256": "6f76d36c6d7bf885eee36697d9e1a1c6e6938389815b238add4fb2612092552b",
+          "matches": true
+        },
+        {
+          "path": "/assets/lighting-2vgXaX2R.js",
+          "ciSha256": "01a9e9efd929fe2372a8135c219c40e3a9f7165799b299abc685c7e70d5e0015",
+          "finalSha256": "01a9e9efd929fe2372a8135c219c40e3a9f7165799b299abc685c7e70d5e0015",
+          "matches": true
+        },
+        {
+          "path": "/assets/live-view-BPORqjdI.js",
+          "ciSha256": "4e68bba450d3705e654aece67e0b226452d32d7cb6b0d15a1d5400cec79b8a34",
+          "finalSha256": "4e68bba450d3705e654aece67e0b226452d32d7cb6b0d15a1d5400cec79b8a34",
+          "matches": true
+        },
+        {
+          "path": "/assets/maplibre-gl-worker-Bh1S--WG.js",
+          "ciSha256": "12b615e3bb01919718abd39a2784f11b082c29666843ad62d8b95928f35bdd9d",
+          "finalSha256": "12b615e3bb01919718abd39a2784f11b082c29666843ad62d8b95928f35bdd9d",
+          "matches": true
+        },
+        {
+          "path": "/assets/maps-2TGVCB_Q.js",
+          "ciSha256": "860607252c572fb37867dcab832f9d174df5dca36bfe6d7082837641ea91fc49",
+          "finalSha256": "860607252c572fb37867dcab832f9d174df5dca36bfe6d7082837641ea91fc49",
+          "matches": true
+        },
+        {
+          "path": "/assets/modulepreload-polyfill-P2Xu9kJm.js",
+          "ciSha256": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f",
+          "finalSha256": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f",
+          "matches": true
+        },
+        {
+          "path": "/assets/perspective-BaVK2kAV.css",
+          "ciSha256": "cc5eff0fa4277d9c2091303024ab372e4df9d634a3d369a85573b799eec2ca56",
+          "finalSha256": "cc5eff0fa4277d9c2091303024ab372e4df9d634a3d369a85573b799eec2ca56",
+          "matches": true
+        },
+        {
+          "path": "/assets/perspective-zfyPLDj4.js",
+          "ciSha256": "8e386d72c08aec25d0b0f27fccafde442087be1fad8dba1174810db0f744ab4a",
+          "finalSha256": "8e386d72c08aec25d0b0f27fccafde442087be1fad8dba1174810db0f744ab4a",
+          "matches": true
+        },
+        {
+          "path": "/assets/places-_F3XEqgH.js",
+          "ciSha256": "29fa0f382345a9f0135e733198bcc2f78240ba7717356d4884fcae34728a5cce",
+          "finalSha256": "29fa0f382345a9f0135e733198bcc2f78240ba7717356d4884fcae34728a5cce",
+          "matches": true
+        },
+        {
+          "path": "/assets/preload-helper-BaNbYf_w.js",
+          "ciSha256": "49e31bba082196935782ac14bbedbc2a8e7c4229f918bc086ab5dd08ca015034",
+          "finalSha256": "49e31bba082196935782ac14bbedbc2a8e7c4229f918bc086ab5dd08ca015034",
+          "matches": true
+        },
+        {
+          "path": "/assets/share-B9lfBiEf.js",
+          "ciSha256": "dfb68966d40c2e215893011d569839257d037399ebd321ff9ef91ca1eb181a1b",
+          "finalSha256": "dfb68966d40c2e215893011d569839257d037399ebd321ff9ef91ca1eb181a1b",
+          "matches": true
+        },
+        {
+          "path": "/assets/share-xJE6SJ2m.css",
+          "ciSha256": "4417d7ba511898ab01b97bdae1373c90c1616f0721f4257e145c90c319c4ee23",
+          "finalSha256": "4417d7ba511898ab01b97bdae1373c90c1616f0721f4257e145c90c319c4ee23",
+          "matches": true
+        },
+        {
+          "path": "/assets/state-BF0AOpXx.js",
+          "ciSha256": "731c5dd28fe8efff9456fd0b9794864641ca8fff766a9b7d9d8713dd565738ed",
+          "finalSha256": "731c5dd28fe8efff9456fd0b9794864641ca8fff766a9b7d9d8713dd565738ed",
+          "matches": true
+        },
+        {
+          "path": "/assets/state-DwlyKbZV.js",
+          "ciSha256": "31fc7fbe10efbacc5e2bd888ba4f9cfc3f39db939fe9e948b9db14e95648ca68",
+          "finalSha256": "31fc7fbe10efbacc5e2bd888ba4f9cfc3f39db939fe9e948b9db14e95648ca68",
+          "matches": true
+        },
+        {
+          "path": "/assets/travel-DVyvPLCM.css",
+          "ciSha256": "52d31e6f608acbe57bde5bbc3628458d18f8a9074cfdc9840b64544b3ccc464a",
+          "finalSha256": "52d31e6f608acbe57bde5bbc3628458d18f8a9074cfdc9840b64544b3ccc464a",
+          "matches": true
+        },
+        {
+          "path": "/assets/travel-N1tolctY.js",
+          "ciSha256": "2170c3b64fe2207df9264ca2f89b83ff80291ead06a163b7627012f3114fadaf",
+          "finalSha256": "2170c3b64fe2207df9264ca2f89b83ff80291ead06a163b7627012f3114fadaf",
+          "matches": true
+        },
+        {
+          "path": "/assets/view-state-Cajz5ATi.js",
+          "ciSha256": "a52f42eada1568efe3a1b1110d62f51cb1f986d07643ca9a2b13bae1df7ee900",
+          "finalSha256": "a52f42eada1568efe3a1b1110d62f51cb1f986d07643ca9a2b13bae1df7ee900",
+          "matches": true
+        },
+        {
+          "path": "/assets/walk-DdcaPyjo.js",
+          "ciSha256": "4896bebffd196bc672bf981bbb3f5c896ed3a5b5a8fd88e5e512b2ed9c4dcc79",
+          "finalSha256": "4896bebffd196bc672bf981bbb3f5c896ed3a5b5a8fd88e5e512b2ed9c4dcc79",
+          "matches": true
+        },
+        {
+          "path": "/assets/walk-DyZMkF3a.css",
+          "ciSha256": "9f1273c963396b6d33d7f7feaad23e0ff290eaa97cc30fc6eaf75cc80076eaf1",
+          "finalSha256": "9f1273c963396b6d33d7f7feaad23e0ff290eaa97cc30fc6eaf75cc80076eaf1",
+          "matches": true
+        },
+        {
+          "path": "/assets/world-map-BBBq9nv9.js",
+          "ciSha256": "95f2527219188f6b0225f47b64ea5016e75f34e3dff800162fd8beef93f8448a",
+          "finalSha256": null,
+          "matches": false
+        },
+        {
+          "path": "/assets/world-map-DBE96hFo.css",
+          "ciSha256": "7d70296c647f8ae4b9b9cc0ed943d5bf81cedef828a348f81c5e89d3ed128856",
+          "finalSha256": "7d70296c647f8ae4b9b9cc0ed943d5bf81cedef828a348f81c5e89d3ed128856",
+          "matches": true
+        },
+        {
+          "path": "/credits.html",
+          "ciSha256": "46231e6fe05170f4404549b58619b6690b4ed75f18fd6ec96e933a4deeeb6fdf",
+          "finalSha256": "46231e6fe05170f4404549b58619b6690b4ed75f18fd6ec96e933a4deeeb6fdf",
+          "matches": true
+        },
+        {
+          "path": "/index.html",
+          "ciSha256": "069e8b747ba0237d9fd6ed1f1c3ec929220a97697a10131e87b3338ba8164f5c",
+          "finalSha256": "91b610d810783c21b80667b0124891ebb0aa8c35c28b3dacb3c17575f3d718fd",
+          "matches": false
+        },
+        {
+          "path": "/journey.html",
+          "ciSha256": "46cc36c27c930a07ffec2c75d9ce41f1bd125f026d0402cfa5ec30a4547d7cac",
+          "finalSha256": "46cc36c27c930a07ffec2c75d9ce41f1bd125f026d0402cfa5ec30a4547d7cac",
+          "matches": true
+        },
+        {
+          "path": "/lighting/environments/day-1k.hdr",
+          "ciSha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+          "finalSha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+          "matches": true
+        },
+        {
+          "path": "/lighting/environments/night-1k.hdr",
+          "ciSha256": "a690048dcecabf5ed1ad773f7abdec7cce7b1fea4d89b17f054a18f3e0fa2919",
+          "finalSha256": "a690048dcecabf5ed1ad773f7abdec7cce7b1fea4d89b17f054a18f3e0fa2919",
+          "matches": true
+        },
+        {
+          "path": "/lighting/rig.json",
+          "ciSha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+          "finalSha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+          "matches": true
+        },
+        {
+          "path": "/materials/architectural/glazing-blinds.png",
+          "ciSha256": "a8c00a6bb8128bf5fffdcb6929e0fd0cde4b4d5fe6943da870886ba9acc38bc8",
+          "finalSha256": "a8c00a6bb8128bf5fffdcb6929e0fd0cde4b4d5fe6943da870886ba9acc38bc8",
+          "matches": true
+        },
+        {
+          "path": "/materials/architectural/glazing.png",
+          "ciSha256": "a41740b9992939047049fa4d35faa4075e00c4bcdcc3d4d8e19be1459044aa04",
+          "finalSha256": "a41740b9992939047049fa4d35faa4075e00c4bcdcc3d4d8e19be1459044aa04",
+          "matches": true
+        },
+        {
+          "path": "/materials/architectural/granite-fascia.png",
+          "ciSha256": "e6afb5b0f12deea6e3aa8c2274bba65f3d9edce8bb16b8fcdd82a68f51535cb2",
+          "finalSha256": "e6afb5b0f12deea6e3aa8c2274bba65f3d9edce8bb16b8fcdd82a68f51535cb2",
+          "matches": true
+        },
+        {
+          "path": "/materials/architectural/manifest.json",
+          "ciSha256": "5947c4fe04f6bc6ced85b4c6920e7a1f7f88cbec6ea67180133eea69d8c48813",
+          "finalSha256": "5947c4fe04f6bc6ced85b4c6920e7a1f7f88cbec6ea67180133eea69d8c48813",
+          "matches": true
+        },
+        {
+          "path": "/materials/architectural/pale-stone.png",
+          "ciSha256": "95d64e228c33892294a2ee8061bac759f3793e8628b7229518a681ec8d4a7373",
+          "finalSha256": "95d64e228c33892294a2ee8061bac759f3793e8628b7229518a681ec8d4a7373",
+          "matches": true
+        },
+        {
+          "path": "/models/shijo-block.glb",
+          "ciSha256": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c",
+          "finalSha256": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c",
+          "matches": true
+        },
+        {
+          "path": "/models/traveller.glb",
+          "ciSha256": "ee5307da94f4d1994e5323a0d31d6f79a255c9f2f10459e0a0e6434fb051fdb1",
+          "finalSha256": "ee5307da94f4d1994e5323a0d31d6f79a255c9f2f10459e0a0e6434fb051fdb1",
+          "matches": true
+        },
+        {
+          "path": "/perspective.html",
+          "ciSha256": "c85ea9261091887da1c63a004521dba867ead9473cccb9e73ad9b7e75a727c64",
+          "finalSha256": "c85ea9261091887da1c63a004521dba867ead9473cccb9e73ad9b7e75a727c64",
+          "matches": true
+        },
+        {
+          "path": "/perspectives/arrive.jpg",
+          "ciSha256": "5b88a84cd1cdb0297c552f8f5ee0f095d3e54fb4a0cc8b8b9f0afd1c54db3c07",
+          "finalSha256": "5b88a84cd1cdb0297c552f8f5ee0f095d3e54fb4a0cc8b8b9f0afd1c54db3c07",
+          "matches": true
+        },
+        {
+          "path": "/perspectives/daiya-rhythm.jpg",
+          "ciSha256": "231d68794a8eca8f85dfff124a0f233ab9a6d78859d13c49845320f005adfacb",
+          "finalSha256": "231d68794a8eca8f85dfff124a0f233ab9a6d78859d13c49845320f005adfacb",
+          "matches": true
+        },
+        {
+          "path": "/perspectives/mitsui-rhythm.jpg",
+          "ciSha256": "0904230ef4cd0eaf28ae5a092bda9ae03bc01b57d93b5b7db432632393d3e351",
+          "finalSha256": "0904230ef4cd0eaf28ae5a092bda9ae03bc01b57d93b5b7db432632393d3e351",
+          "matches": true
+        },
+        {
+          "path": "/travel.html",
+          "ciSha256": "4258fcb73e952bb038bec95e718e6163f18fe7956532c0fcb4c812f95d29be2f",
+          "finalSha256": "4258fcb73e952bb038bec95e718e6163f18fe7956532c0fcb4c812f95d29be2f",
+          "matches": true
+        },
+        {
+          "path": "/walk.html",
+          "ciSha256": "0746607f1560bf1ba8be55cc0dca4d58e83b9c923132ab6fad901c9c38a99932",
+          "finalSha256": "0746607f1560bf1ba8be55cc0dca4d58e83b9c923132ab6fad901c9c38a99932",
+          "matches": true
+        }
+      ],
+      "allRecordedConsumedAssetsUnchanged": false
+    }
+  ],
+  "limitation": "This compares actual CI report manifests/recorded requested assets to the final local package, plus checked source files. It does not claim the complete packages are identical or that this CI run tested later homepage changes. The new solo browser suite was not part of this run."
+}

@@ -26,6 +26,7 @@ const lightingReview = reviewOnly && process.argv.includes('--lighting');
 const sharingOnly = process.argv.includes('--sharing');
 const comparisonOnly = process.argv.includes('--comparison');
 const creditsOnly = process.argv.includes('--credits');
+const appearanceOnly = process.argv.includes('--appearance');
 const output = resolve(process.env.EXPERIENCE_QA_OUTPUT || join(tmpdir(), 'experience-qa'));
 // Software rendering can advance the bounded fixed-step simulation slowly.
 // This is a tooling ceiling, not an accepted product response time or FPS target.
@@ -49,7 +50,8 @@ const report = {
   driverSources: ['browser-check.mjs', 'browser-sharing.mjs', 'browser-comparison.mjs', 'browser-appearance.mjs'].map(file => ({ file,
     sha256: sha(readFileSync(new URL(file, import.meta.url))) })),
   conditions: { viewport: [1440, 1000], compactViewport: [1280, 720], deviceScaleFactor: 1, readOnlyObserver: '?qa=1', timeoutMs: timeout },
-  scope: creditsOnly ? 'Credits popup, attribution and return navigation with a restored journey only'
+  scope: appearanceOnly ? 'Original-walk appearance, resource stability, delayed HDR and failure/retry checks only'
+    : creditsOnly ? 'Credits popup, attribution and return navigation with a restored journey only'
     : comparisonOnly ? 'Rendering-comparison behavior and failure fixtures only; no gameplay or sharing acceptance'
     : sharingOnly ? 'Sharing/recipient checks from a restored completed journey with WebGL deliberately unavailable; no gameplay or art acceptance'
     : savedBankReview ? 'Opening plus restored-bank rendering review only; no walked-route validation'
@@ -238,7 +240,16 @@ async function verifyCredits(page) {
 try {
   browser = await chromium.launch({ executablePath: process.env.EXPERIENCE_QA_CHROMIUM || undefined, headless: true, args: ['--no-sandbox'] });
   report.browser = browser.version(); persist();
-  if (creditsOnly) {
+  if (appearanceOnly) {
+    const main = await scenario('appearance-opening');
+    await verifyAppearanceOpening({ page: main.page, saved, check, capture, assets, timeout, report });
+    check('focused-appearance-opening-has-no-browser-errors-or-external-requests', !main.record.pageErrors.length
+      && !main.record.consoleErrors.length && !main.record.externalRequests.length, main.record);
+    await main.context.close();
+    const seed = { version: 2, ...fixture('legacy-v1-completed'), locale: 'en', notes: {} };
+    await verifyAppearanceFaults({ scenario, assets, origin, seed, saved, check, capture, timeout });
+    report.limitations.push('The lighting observer exposes fixture intensity, color, position, target, shadow flag and map size. Spot angle, penumbra and range are not directly measured by this browser suite.');
+  } else if (creditsOnly) {
     const seed = { version: 2, ...fixture('legacy-v1-completed'), notes: { crossing: SELECTED_NOTE } };
     const main = await scenario('credits-with-restored-journey', { [STORAGE_KEY]: JSON.stringify(seed) });
     await verifyCredits(main.page);
@@ -543,7 +554,7 @@ try {
   await verifyComparison({ scenario, assets, origin, check, capture, report, timeout, persist });
   }
   }
-  report.status = creditsOnly ? 'Focused credits and return navigation completed.' : comparisonOnly ? 'Focused comparison checks completed; no gameplay or sharing acceptance.' : sharingOnly ? 'Focused sharing checks completed; no gameplay or art acceptance.' : reviewOnly ? 'Limited visual-review capture completed; the full behavior suite was not run.' : 'Browser walkthrough completed; independent visual review and human acceptance remain separate.';
+  report.status = appearanceOnly ? 'Focused original-walk appearance checks completed.' : creditsOnly ? 'Focused credits and return navigation completed.' : comparisonOnly ? 'Focused comparison checks completed; no gameplay or sharing acceptance.' : sharingOnly ? 'Focused sharing checks completed; no gameplay or art acceptance.' : reviewOnly ? 'Limited visual-review capture completed; the full behavior suite was not run.' : 'Browser walkthrough completed; independent visual review and human acceptance remain separate.';
 } catch (error) {
   check('browser-run-completed', false, error.stack || String(error)); report.status = 'Incomplete or failed; do not claim playable validation.';
   const failurePages = contexts.flatMap(context => context.pages()).filter(page => !page.isClosed());

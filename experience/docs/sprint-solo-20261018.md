@@ -1,8 +1,9 @@
 # Solo exploration · 2026-10-18
 
-Status: plan recorded before production; source implemented, S06 browser/art review
-pending. Lead owns integration and release; this document defines the reviewable
-slice and its decision gates.
+Status: implemented candidate has scoped browser verification, completed local
+startup/pause checks and accepted material refinements. An original-walk CI driver
+correction, current-source CI and publication remain pending. Lead owns integration
+and release; Q03 latency remains open P1.
 The user authorizes the next iteration and research into broader solo travel while
 preserving art, quality and usable interaction. Sprint 2A is active; 2B replay
 remains conditional on the experience evidence below.
@@ -149,11 +150,46 @@ acceptance. This plan authorizes no agent to edit another owner's files.
 ## S06 review record · current candidate
 
 Plan commit: `1babfc636c75006550646e371759aa2dba46f77c`.
-Implemented source: `1ce9360a89e3ab72943bb2d1876051f80a14bf1e`.
-Workspace output `artifacts/solo-unit-20261018.txt` confirms **105/105** unit checks
-with zero failures or skips; lead reports **17/17** repository gates.
-Actual solo browser behavior, EN/ZH desktop/phone usability, kept-view return and
-integrated legacy preservation remain pending. Matched glazing review has not
-passed; the corrected treatment awaits the same-pose comparison. Source completion
-does not close the art or experience gates. Q03 remains open P1, and root will
-record final package/publication evidence after the coordinated review.
+Initial implemented source: `1ce9360a89e3ab72943bb2d1876051f80a14bf1e`.
+Current source: `a1dbd36298e56109a396d2df1a9031851859b3c9`.
+The current reviewed package manifest is
+`0a6244091b50c9ee7220d698e1109c86bd397dba54384c8db20e68bc57c728e7`.
+It provides continuous solo movement/full camera control, optional source-backed
+surface inspection, explicit map-area discovery using actual providers, private
+view/lighting/note/order return and the shared map palette.
+
+| Evidence | Result and scope |
+|---|---|
+| Application/service/repository | **105/105** unit, **13/13** service and **17/17** repository checks pass. |
+| Solo walkthrough | The full `9b1ba2b1…` run records **69/71**, with two harness diagnostics retained. Final package `0a624409…` passes **39/39** focused map/phone/resize/save/return checks. Previously verified street behavior uses byte-identical runtime resources; this does not relabel the full run as 71/71. |
+| Final shared runtime | Local [startup checks](../evidence/solo-20261018/final/startup/result.json) pass **8/8** and [pause/appearance checks](../evidence/solo-20261018/final/runtime-pause/runtime-pause-result.json) pass **19/19**, both on package `0a624409…`. |
+| Phone UX | Actual taps retain EN/ZH touch guidance; mouse-to-touch switching updates it correctly. Two-finger map movement, explicit area discovery and private return pass. Product reviewed the final phone captures without finding a new text/control obstruction. |
+| Art | [Matched review](../evidence/solo-20261018/art/reviewed-art.md) accepts the bounded material/lighting refinement: readable glazing/frame/sill separation, distinct Daiya ribs and reduced outward canopy-shadow wedges. Eight reviewed fixed-pose captures retain their exact source/package scope. Human recognition and the user's realism preference remain unproven. |
+| CI | At source `1ce9360`, homepage **65/65**, walkthrough **264/264**, perspective **80/80** and companion **73/73** pass. Original-walk finished **131/133** with an omitted expected appearance-fixture override. QA is correcting the driver and running its focused check; runtime is unchanged. Current-source CI remains pending. |
+| Q03 | [Matched local observations](../evidence/solo-20261018/performance/README.md) record **1121.1 / 1221.9 / 1097.9 ms**, each exceeding the unchanged **<500 ms** target. Extra map resizes are removed; the repeats establish no reliable latency gain. Local immutable assets and actual providers differ from the preceding published-HTTPS baseline. |
+
+The portable [validation boundaries](../evidence/solo-20261018/final/validation-boundaries.json)
+identify the [39/39 focused report](../evidence/solo-20261018/final/map-phone/solo-result.json)
+and [69/71 full diagnostic report](../evidence/solo-20261018/final/solo-full-diagnostic/solo-result.json)
+separately. The package comparison preserves 85 other files, including the street
+runtime resources. Check counts overlap and retain their individual scope.
+Publication and exact hosted-byte verification remain pending.
+
+The [coverage recommendation](solo-coverage-research-20261018.md) is global provider
+maps with a shared visual style, supplemented selectively by reviewed area packs.
+Provider maps support broad discovery; authored detail requires an explicit source,
+quality and production-cost review. No further handcrafted city is delivered by
+this recommendation. Sprint 2B replay remains conditional on observed experiential
+value. Root will record final source/CI/publication identities and remaining gates.
+
+## Next sprint priorities and decision exits
+
+| Priority | Owner → reviewer | Concrete exit |
+|---|---|---|
+| Q03 latency · P1 | Engineering → QA + root | Each of three matched warm Together locale actions is **<500 ms**, using the unchanged action start/end, browser, viewport, cache and provider conditions. Retain every observation and package hash; preserve art, camera and private state. A miss keeps Q03 open. |
+| One reviewed area-pack decision | World + art + engineering → product + root | Evaluate one of the demonstrated map areas against its actual sources, media rights, coverage/access uncertainty, proposed visual detail, payload/art budget and maintenance cost. Record an approve/defer/reject decision and its evidence before production. This exit creates no new pack. |
+| Human meaning and recognition | Product + art → available participants + QA | Observe free approach/looking, recognition of sourced features and the reason to keep or reopen a view. Compare the same facts/story in flat media; record prior familiarity, assistance and what movement adds. Record whether a replay would help express the moment. Missing human participation leaves the gate pending; Sprint 2B remains conditional on this evidence. |
+
+These priorities continue the existing slice without a new city, feature count or
+calendar commitment. Wider production depends on the area decision and measured
+quality/cost; replay depends on an observed reason to preserve and share motion.

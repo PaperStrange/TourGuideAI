@@ -1,7 +1,7 @@
 # Agent checkpoint · Explore and Together homepage
 
 2026-10-18 · Lead owns integration, commits and publication.
-**State: solo source `1ce9360` is committed; actual solo browser and matched art review are pending. The preceding quality release is published and all five final CI reports pass on package `8751ba4e…`; Q03's latency target remains open P1. Backend tests stay in this workspace. No solo-iteration completion or publication is claimed.**
+**State: solo runtime `a1dbd36` / package `0a624409…` passes final local map/phone 39/39, startup 8/8, original-walk pause/lighting 19/19 and appearance 14/14 checks. Bounded art refinement is accepted. Publication is prepared; actual hosted checks follow. Q03 remains open P1. Backend tests stay local.**
 
 ## Current iteration · solo exploration
 
@@ -18,21 +18,40 @@ facade/material/day-night refinements. World-content owns the
 [broader coverage research](solo-coverage-research-20261018.md); product owns the
 plan and experience criteria; QA owns independent behavior and visual-evidence
 collection. Root coordinates shared interfaces, GPU windows and release.
-The plan is committed as `1babfc636c75006550646e371759aa2dba46f77c`; implemented
-source is `1ce9360a89e3ab72943bb2d1876051f80a14bf1e`. The workspace unit output
-`artifacts/solo-unit-20261018.txt` confirms **105/105**, with zero failures or skips;
-lead also reports **17/17** repository gates. These are pre-browser checks.
-Actual solo interaction/return, bilingual layout and integrated legacy behavior
-remain pending. The corrected glazing treatment awaits matched art review; visual
-acceptance is open. Root will bind the final package and preserve portable evidence.
+The plan is committed as `1babfc636c75006550646e371759aa2dba46f77c`; current runtime
+source is `a1dbd36298e56109a396d2df1a9031851859b3c9`. Application **105/105**,
+service **13/13** and repository **17/17** checks pass. The
+[portable local evidence](../evidence/solo-20261018/final/validation-boundaries.json)
+binds the final 90-file package
+`0a6244091b50c9ee7220d698e1109c86bd397dba54384c8db20e68bc57c728e7`.
+The preceding complete solo run passes 69/71 and retains two phone-driver
+diagnostics. Final focused 39/39 checks establish correct actual touch guidance,
+two-finger map movement, saved return and resizing; shared street runtime bytes
+match that complete run. Final startup/hidden work passes 8/8 and original-walk
+pause/lighting passes 19/19. Counts overlap and stay separate.
+[Matched art review](../evidence/solo-20261018/art/reviewed-art.md) accepts clearer
+glazing/frame/recess separation and reduced canopy-shadow wedges. Human realism,
+recognition and emotional value remain unverified.
+
+CI `39131040477` on initial source `1ce9360` passes homepage 65/65, walkthrough
+264/264, perspective 80/80 and companion 73/73. Original walk records 131/133:
+two expectations omitted the calibrated canopy fixture overrides while actual
+lights match the profile. The corrected expectation passes
+[14/14 focused appearance checks](../evidence/solo-20261018/final/appearance/browser-result.json)
+on final bytes, including actual HDR retry. The raw CI failure stays in its evidence.
+Current-source CI and hosted verification are pending.
+[Q03 observations](../evidence/solo-20261018/performance/README.md)
+remain **1121.1 / 1221.9 / 1097.9 ms**, all above the unchanged 500 ms threshold.
+The map resize guard removes unnecessary work and establishes no latency gain.
 Sprint 2B replay remains conditional; existing routes, locales, private saves and
 shared links must retain their meaning.
 
 ## Resume from saved work
 
 - Workspace: `/workspace/TourGuideAI`; source branch: `chore-sow-delivery-plan`.
-- Current solo plan/source: `1babfc6` / `1ce9360`; inspect uncommitted QA work before
-  building. The source candidate has not replaced the published quality package.
+- Current solo plan/runtime: `1babfc6` / `a1dbd36`; package `0a624409…` is frozen.
+  Inspect current QA/doc changes before building. Root has prepared exact build
+  bytes in the Pages worktree; publication and hosted checks remain pending.
 - Quality runtime: `828a405194d82e465887b15c8bcaedfaa3d04f9d`.
   [Sprint plan](sprint-quality-20261016.md) was issued and pushed as `a834cc5`
   before implementation. Pages runtime commit is `c3bcceb` and package manifest is
@@ -135,7 +154,7 @@ Directions represent Google-computed routes through selected places, not a perso
 recorded movement. Planned places, personal significance, virtual moments and
 user-reported real visits must remain distinct.
 
-The **Find your own place** direction now has an implementing Sprint 2A solo slice:
+The **Find your own place** direction now has a locally verified Sprint 2A solo slice:
 continuous exploration response and deliberate private view/place return. Personal
 approach/pause replay and recipient handoff remain conditional Sprint 2B work.
 Current implementation does not establish emotional value or complete that
@@ -146,12 +165,12 @@ Ginza remains a separate architectural study.
 
 | Owner | Current boundary | Next action |
 |---|---|---|
-| Lead | Homepage/map/solo state, integration, checkpoint, release | Implement explicit area discovery and private return flow; coordinate interfaces and publication |
-| Engineering | Runtime exploration camera/inspection and performance | Implement continuous visible-surface response; preserve legacy views and hidden-work behavior; carry Q03 investigation |
-| World-content | Source features and coverage research | Compare broader production methods and actual provider coverage; preserve sourced identity and uncertainty |
-| QA-release | Browser drivers and independent walkthrough | Verify the five connected solo scenarios, old-state isolation and final package; coordinate GPU with art/engineering |
-| Product-design | Solo sprint, delivery board and lean iteration | Review homepage experience against the saved plan; maintain explicit technical/human acceptance limits |
-| Art/UX | Detailed Kyoto facade/material/lighting assets | Refine recognizable features, depth and shadows; compare matched walking views at desktop/phone scale |
+| Lead | Homepage/map/solo state, integration, checkpoint, release | Publish frozen bytes, verify all downloaded files, sync source and release evidence |
+| Engineering | Runtime exploration camera/inspection and performance | Preserve completed CI evidence and Q03 attribution; runtime is frozen |
+| World-content | Source features, coverage research and hosted solo check | Exercise actual published solo journeys after publication; shared map plus reviewed packs is the documented recommendation |
+| QA-release | Browser drivers and independent walkthrough | Fixture expectation and 14/14 appearance checks are complete; verify published homepage after publication |
+| Product-design | Solo sprint, delivery board and lean iteration | Record technical completion, next sprint exits and pending human acceptance |
+| Art/UX | Detailed Kyoto facade/material/lighting assets | Matched bounded review is complete; preserve asset and capture identities |
 
 Paths in the ownership table are relative to `experience/`. Do not edit another
 owner's files; report interface conflicts to that owner. Preserve unrelated changes.
