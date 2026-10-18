@@ -2,6 +2,7 @@
   "sourceRepository": "https://github.com/PaperStrange/TourGuideAI",
   "sourceBranch": "chore-sow-delivery-plan",
   "sourceCommit": "a1dbd36298e56109a396d2df1a9031851859b3c9",
+  "validationSourceCommit": "02c2d63ff407f706054d1029ebee46b39216a01d",
   "experience": "Explore freely, keep a place, return to its view",
   "entryPath": "index.html",
   "languages": ["en", "zh"],
@@ -15,7 +16,11 @@
     "finalStartupHiddenWork": {"passed": 8, "failed": 0},
     "finalOriginalPauseLighting": {"passed": 19, "failed": 0},
     "finalOriginalAppearance": {"passed": 14, "failed": 0},
-    "scope": "The complete preceding solo report records 69 passing checks and two phone-driver diagnostics. Final focused checks verify the changed homepage/map behavior and corrected touch inputs. Shared runtime, art, CSS and other entries retain identical bytes. Counts overlap and remain separate.",
+    "currentFullSoloCI": {"passed": 75, "failed": 0},
+    "publishedFiles": {"passed": 90, "failed": 0},
+    "publishedSolo": {"passed": 19, "failed": 0},
+    "publishedHomepage": {"passed": 21, "failed": 0},
+    "scope": "Current complete solo CI and actual HTTPS desktop/phone journeys pass on the exact published package. Older diagnostic reports and focused checks retain their independent bindings. Counts overlap and remain separate.",
     "evidencePath": "experience/evidence/solo-20261018/"
   },
   "features": ["free solo walking and camera control in detailed Kyoto", "optional source-linked visible facade inspection", "explicit exploration around a wider map center", "private kept place, note, view, lighting and selected order", "shared map palette", "refined original facade materials and night light pools", "English and Chinese keyboard and touch guidance", "Google Maps handoff"],
@@ -26,7 +31,7 @@
     "nextStep": "Run npm run local:pages in experience/server, then select the endpoint in Together > Testing connection. The service remains local to the computer running it."
   },
   "scope": "Detailed Kyoto is an authored interpretation. Wider mapped buildings use approximate provider geometry. Route lines show suggested visiting order; Google Maps computes directions. Kept places are private intentions or virtual exploration, with no physical-visit claim.",
-  "reviewStatus": "Local behavior and bounded art review are complete. Actual published file and browser verification follows deployment. Q03 stays open P1: three warm Together language actions measure 1121.1/1221.9/1097.9 ms against each below 500 ms. Human enjoyment, place recognition and physical-device fluency remain unverified.",
+  "reviewStatus": "Published solo delivery is verified: all 90 files match, solo19 and homepage21 actual HTTPS checks pass. Current CI39133355919 passes solo75, homepage65, perspective80 and travel73; extended walkthrough and original walk remain running at this record. Q03 stays open P1: three warm Together language actions measure 1121.1/1221.9/1097.9 ms against each below 500 ms. Human enjoyment, place recognition and physical-device fluency remain unverified.",
   "existingExperiences": {
     "perspective": "perspective.html",
     "companion": "travel.html",
