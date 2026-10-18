@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "id": "kyoto-architectural-finishes-20261018",
+  "maps": [
+    {
+      "material": "pale-stone",
+      "file": "pale-stone.png",
+      "width": 512,
+      "height": 512,
+      "bytes": 112896,
+      "sha256": "95d64e228c33892294a2ee8061bac759f3793e8628b7229518a681ec8d4a7373"
+    },
+    {
+      "material": "granite-fascia",
+      "file": "granite-fascia.png",
+      "width": 512,
+      "height": 512,
+      "bytes": 67061,
+      "sha256": "e6afb5b0f12deea6e3aa8c2274bba65f3d9edce8bb16b8fcdd82a68f51535cb2"
+    },
+    {
+      "material": "glazing",
+      "file": "glazing.png",
+      "width": 512,
+      "height": 512,
+      "bytes": 66556,
+      "sha256": "a41740b9992939047049fa4d35faa4075e00c4bcdcc3d4d8e19be1459044aa04"
+    },
+    {
+      "material": "glazing-blinds",
+      "file": "glazing-blinds.png",
+      "width": 512,
+      "height": 512,
+      "bytes": 67347,
+      "sha256": "a8c00a6bb8128bf5fffdcb6929e0fd0cde4b4d5fe6943da870886ba9acc38bc8"
+    }
+  ],
+  "generator": "experience/art/build_scene.py",
+  "generatorSHA256": "4045c174b759313731d4f3822cc5c2b2179284b8662a997c276d930f189bd142",
+  "blenderVersion": "4.3.2",
+  "sourceReferenceMetadata": "experience/public/content-evidence/facade-references.json",
+  "sourceReferenceMetadataSHA256": "2633e98dd95ba7160bb4c54acde94a8ed4de5f1f7b335904abf79da41ab0d8e2",
+  "referenceIds": [
+    "mitsui-exterior-2021",
+    "mitsui-frontage-2026",
+    "daiya-exterior-2021",
+    "daiya-frontage-2026"
+  ],
+  "referenceUse": "Reviewed facade photographs inform pale stone, speckled granite and differentiated glazed frames. Photograph pixels are not included.",
+  "authored": "Original procedural albedo textures; exact color, grain, joints and blind cues are authored. No surveyed material values, occupancy or interior reconstruction.",
+  "application": "Runtime replacement of four existing albedo maps. Existing GLB geometry, UVs, normal and roughness maps remain unchanged.",
+  "colorSpace": "sRGB",
+  "dimensions": [
+    512,
+    512
+  ],
+  "seedRule": "numpy PCG64 seed 81 plus prior generated image count",
+  "reuse": "Named finish policy may be applied only where the source asset identifies a compatible surface; generic mapped buildings do not acquire Kyoto facade facts."
+}
