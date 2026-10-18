@@ -1,7 +1,7 @@
 # Agent checkpoint · Explore and Together homepage
 
 2026-10-18 · Lead owns integration, commits and publication.
-**State: the solo exploration iteration is implementing from its saved plan. The preceding quality release is published and all five final CI reports pass on package `8751ba4e…`; Q03's latency target remains open P1. Backend tests stay in this workspace. No solo-iteration completion or publication is claimed.**
+**State: solo source `1ce9360` is committed; actual solo browser and matched art review are pending. The preceding quality release is published and all five final CI reports pass on package `8751ba4e…`; Q03's latency target remains open P1. Backend tests stay in this workspace. No solo-iteration completion or publication is claimed.**
 
 ## Current iteration · solo exploration
 
@@ -18,12 +18,21 @@ facade/material/day-night refinements. World-content owns the
 [broader coverage research](solo-coverage-research-20261018.md); product owns the
 plan and experience criteria; QA owns independent behavior and visual-evidence
 collection. Root coordinates shared interfaces, GPU windows and release.
-Implementation and review are in progress. Sprint 2B replay remains conditional;
-existing routes, locales, private saves and shared links must retain their meaning.
+The plan is committed as `1babfc636c75006550646e371759aa2dba46f77c`; implemented
+source is `1ce9360a89e3ab72943bb2d1876051f80a14bf1e`. The workspace unit output
+`artifacts/solo-unit-20261018.txt` confirms **105/105**, with zero failures or skips;
+lead also reports **17/17** repository gates. These are pre-browser checks.
+Actual solo interaction/return, bilingual layout and integrated legacy behavior
+remain pending. The corrected glazing treatment awaits matched art review; visual
+acceptance is open. Root will bind the final package and preserve portable evidence.
+Sprint 2B replay remains conditional; existing routes, locales, private saves and
+shared links must retain their meaning.
 
 ## Resume from saved work
 
 - Workspace: `/workspace/TourGuideAI`; source branch: `chore-sow-delivery-plan`.
+- Current solo plan/source: `1babfc6` / `1ce9360`; inspect uncommitted QA work before
+  building. The source candidate has not replaced the published quality package.
 - Quality runtime: `828a405194d82e465887b15c8bcaedfaa3d04f9d`.
   [Sprint plan](sprint-quality-20261016.md) was issued and pushed as `a834cc5`
   before implementation. Pages runtime commit is `c3bcceb` and package manifest is

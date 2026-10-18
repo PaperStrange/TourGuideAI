@@ -29,11 +29,21 @@ Intermediate output is under the ignored `artifacts/art-sprint2a-20261018` direc
 The generated manifest records the exact generator, reference metadata and image
 hashes. The historical GLB provenance retains its original generator hash.
 
-Matched live-browser review is pending on this candidate. The frozen baseline uses
-the canonical intersection, Mitsui and Daiya poses in both modes, plus the phone
-opening. Review must establish visible recess/frame separation, distinct opening
-patterns and coherent pavement shadows. User recognition and realism acceptance
-remain separate from source integrity and runtime checks.
+The [matched browser review](../evidence/solo-20261018/art/reviewed-art.md) compares
+eight captures against the frozen baseline: intersection, Mitsui and Daiya in both
+modes, plus the phone opening. Mitsui's window planes, frames and sill borders are
+more legible; Daiya retains its distinct vertical ribs and glazed strips. Night
+canopy pools remain near the pavement with shorter outward shadow wedges. The
+reviewed candidate uses finish manifest `5947c4fe…` and package `81e885e6…`.
+All eight actual camera matrices match their baseline; texture counts are retained
+and four replaced maps are disposed in every capture. Day submitted geometry and
+draw calls match; narrower night shadow views submit fewer objects.
+
+This establishes a bounded material/lighting improvement in matched live frames.
+Opaque repeated glazing, simplified planting and strong corner highlights remain
+visible. Continuous inspection/movement and human recognition or realism require
+their separate reviews. The comparison reports preserve exact package and source
+hashes so later UI-only builds can retain this scoped art evidence accurately.
 
 ## Earlier rendering studies
 

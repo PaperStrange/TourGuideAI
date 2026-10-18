@@ -7,8 +7,8 @@ language, loading and complete-journey review. The source branch is
 `8751ba4ecb6f6fcec70d1c2d25cff41b074671ea4433d3bf5b4a087ac810d2fb`.
 Pages runtime commit is `c3bcceb`. [Published-byte verification](hosted-verification.json)
 matches all 79 files. Test drivers are pushed as `54fdbaf`. The complete final local
-original-walk regression passes 133 checks. Aggregate CI is still in progress;
-Q03's locale-action latency target remains open P1.
+original-walk regression passes 133 checks. All five final CI reports pass on this
+package; Q03's locale-action latency target remains open P1.
 
 ## Recorded checks
 
@@ -29,7 +29,7 @@ Q03's locale-action latency target remains open P1.
 | [Partial map failure](map-recovery/after.json) | One actual tile request deliberately denied; error persists through locale changes and real Retry preserves the map view. |
 | [Final performance](performance/final.json) | 12 actual HTTPS observations; exact final HTML in every run, zero page exceptions or failed requests. Together loads zero street dependencies, hidden updates/draws remain zero, and Explore draws once at startup. Warm Together locale actions are 1177.8 / 1113.4 / 1134.5 ms, failing the unchanged <500 ms target. |
 | [Published final homepage](startup/hosted-home-result.json) | 21 passed on actual final Pages resources, including phone layout and downloaded-response hash checks. |
-| Final-source CI [homepage](ci/final-homepage-result.json), [perspective](ci/final-perspective-result.json) and [companion](ci/final-travel-result.json) | 65, 80 and 73 passed, respectively, on exact final manifest `8751ba4e`. Original-walk and complete homepage walkthrough jobs in run `38851871150` remain in progress. |
+| [Final-source CI](ci/final-run-summary.json): [original walk](ci/final-original-walk-result.json), [complete walkthrough](ci/final-walkthrough-result.json), [homepage](ci/final-homepage-result.json), [perspective](ci/final-perspective-result.json), [companion](ci/final-travel-result.json) | 133, 264, 65, 80 and 73 passed, respectively, on exact final manifest `8751ba4e`. Run `38851871150` completed successfully for every scheduled suite. |
 | [Provider coordinate review](provider-review/README.md) | Captured Wikipedia/Wikidata evidence and a bounded correction for one conflicting record. |
 | [CI asset binding](ci-consumed-assets-binding.json) | Perspective 80/80 and companion 73/73 pass on `e9959df`. All requested assets match the CSS package `9a55e7b5`. Final startup scheduling changes renderer bytes; this is preceding-runtime evidence. |
 | [First publication verification](published-css-release/hosted-verification.json) | All 79 files match `9a55e7b5` on actual Pages HTTPS. Hosted checks pass: 38 connection, 21 homepage/phone, 9 supporting navigation. |
@@ -48,7 +48,8 @@ files. The homepage CSS and its HTML reference change. The generated homepage
 JavaScript differs only in its source-map filename; the source map differs only
 in file metadata. The full walkthrough's application behavior and art evidence
 apply to that CSS package, with layout independently verified. The 264 checks
-are not presented as a repeat run on a later package.
+from that earlier local report retain their package scope. The separate final CI
+walkthrough above repeats and passes all 264 checks on `8751ba4e`.
 
 The final startup package includes camera enabling in the first draw, avoids a
 draw for DOM-only locale changes, and treats a repeated pause state as unchanged.
@@ -87,5 +88,6 @@ intermediate original-walk run as diagnostic evidence; neither counts as a final
 pass. CI `e9959df` failed phone layout and the original walk's stale localized-credits
 selector. Its [original-walk report](ci/e9959df-original-walk-result.json) records
 69 passing checks before the selector prevents the click. The final local original
-walk passes 133 checks. The new CI reports establish their stated scopes; no
-aggregate CI success is inferred while the remaining jobs are running.
+walk passes 133 checks. The final CI reports establish their stated scopes and the
+completed run summary verifies aggregate success on `8751ba4e`. This evidence does
+not validate the later solo iteration or close Q03's latency target.

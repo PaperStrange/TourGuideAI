@@ -220,6 +220,7 @@ async function selectCenter(place, { preserveMapView = false } = {}) {
   nearbyRequest?.abort(); nearbyRequest = new AbortController();
   const request = nearbyRequest;
   center = place; discoveryCenter = place; localPreview = mode === 'together'; results = []; renderResults();
+  searchMessage = ''; $('#search-status').textContent = '';
   routes = []; nearbyPlaces = []; selectedRoute = 0; routeState = 'routesLoading'; renderRoutes(); updateMode();
   if (mode === 'together' && session?.participantToken) mutate({ type: 'presence.focus', destinationId: catalogPlace(place.id) ? place.id : null });
   if (place.kind === 'country') { routeState = 'countryNote'; renderRoutes(); updateMap(); return; }
@@ -244,6 +245,7 @@ async function openKeptPlace(place) {
   restoreController?.abort(); restoreController = new AbortController(); const request = restoreController;
   nearbyRequest?.abort(); searchRequest?.abort(); restoring = true;
   mode = 'explore'; localPreview = false; center = place.center; discoveryCenter = place.origin;
+  searchMessage = ''; $('#search-status').textContent = '';
   results = []; nearbyPlaces = []; routes = [place.route]; selectedRoute = 0; routeState = ''; keptRoute = true;
   mapViewToRestore = place.representation === 'map' ? place.view : null;
   previewRepresentation = place.representation;

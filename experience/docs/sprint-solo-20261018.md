@@ -1,7 +1,8 @@
 # Solo exploration · 2026-10-18
 
-Status: implementation plan recorded before production. Lead owns integration and
-release; this document defines the next reviewable slice and its decision gates.
+Status: plan recorded before production; source implemented, S06 browser/art review
+pending. Lead owns integration and release; this document defines the reviewable
+slice and its decision gates.
 The user authorizes the next iteration and research into broader solo travel while
 preserving art, quality and usable interaction. Sprint 2A is active; 2B replay
 remains conditional on the experience evidence below.
@@ -144,3 +145,15 @@ optional sharing and recipient control, with its own meaning and size tests.
 Release evidence identifies source/package, actual checks, reviewed visual states,
 provider conditions and open limits. Root owns checkpoint, publication and final
 acceptance. This plan authorizes no agent to edit another owner's files.
+
+## S06 review record · current candidate
+
+Plan commit: `1babfc636c75006550646e371759aa2dba46f77c`.
+Implemented source: `1ce9360a89e3ab72943bb2d1876051f80a14bf1e`.
+Workspace output `artifacts/solo-unit-20261018.txt` confirms **105/105** unit checks
+with zero failures or skips; lead reports **17/17** repository gates.
+Actual solo browser behavior, EN/ZH desktop/phone usability, kept-view return and
+integrated legacy preservation remain pending. Matched glazing review has not
+passed; the corrected treatment awaits the same-pose comparison. Source completion
+does not close the art or experience gates. Q03 remains open P1, and root will
+record final package/publication evidence after the coordinated review.
