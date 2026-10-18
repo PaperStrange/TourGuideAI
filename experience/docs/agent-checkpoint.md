@@ -1,7 +1,25 @@
 # Agent checkpoint · Explore and Together homepage
 
-2026-10-16 · Lead owns integration, commits and publication.
-**State: the local quality milestone is complete and published; complete original-walk regression passes 133/133. Runtime/drivers and evidence are synchronized. Aggregate CI is still running; Q03's latency target remains open P1. Backend tests stay in this workspace.**
+2026-10-18 · Lead owns integration, commits and publication.
+**State: the solo exploration iteration is implementing from its saved plan. The preceding quality release is published and all five final CI reports pass on package `8751ba4e…`; Q03's latency target remains open P1. Backend tests stay in this workspace. No solo-iteration completion or publication is claimed.**
+
+## Current iteration · solo exploration
+
+The user authorizes the next iteration and research into broader solo travel while
+preserving art, quality and usable interaction. The [solo sprint plan](sprint-solo-20261018.md)
+was recorded before production. Current scope connects free Kyoto exploration and
+source-bound visible-surface inspection, explicit discovery at the wider map's
+current area, and private chosen-place/view/selected-order continuity. Detailed
+authored Kyoto and approximate provider map coverage remain distinguishable.
+
+Root owns homepage/map presentation and solo-state integration. Engineering owns
+opt-in exploration camera and continuous inspection response; art owns existing
+facade/material/day-night refinements. World-content owns the
+[broader coverage research](solo-coverage-research-20261018.md); product owns the
+plan and experience criteria; QA owns independent behavior and visual-evidence
+collection. Root coordinates shared interfaces, GPU windows and release.
+Implementation and review are in progress. Sprint 2B replay remains conditional;
+existing routes, locales, private saves and shared links must retain their meaning.
 
 ## Resume from saved work
 
@@ -15,7 +33,7 @@
   issue repaired in `d21c708`; the original walk passed 69 checks before a stale
   localized-credits selector prevented a click. The driver is repaired and its
   focused credits/attribution/return checks pass 3/3. [Final source CI](https://github.com/PaperStrange/TourGuideAI/actions/runs/38851871150)
-  runs on `54fdbaf9bed4328e36a70aeee23e73d0d4aed564`; it is currently in progress.
+  completed successfully on `54fdbaf9bed4328e36a70aeee23e73d0d4aed564`.
 - Candidate fixes preserve locale and route origin, restore phone navigation,
   constrain the phone scene width, load the street engine on demand, suspend hidden
   scene updates, and provide map/lighting recovery. The approved model, photographic
@@ -24,8 +42,10 @@
   matching-browser layout stages. Final startup package `8751ba4e` passes 65 homepage,
   8 startup interaction and 19 original-walk pause/appearance checks. Unit/service
   suites pass 89/13. The complete final local original walk also passes 133/133.
-  Final-source CI reports homepage 65/65, perspective 80/80 and travel 73/73 on
-  exact `8751ba4e`. The older asset binding remains preceding-runtime evidence.
+  Final-source CI reports original-walk 133/133, full walkthrough 264/264, homepage
+  65/65, perspective 80/80 and travel 73/73 on exact `8751ba4e`.
+  [Final CI record](../evidence/quality-20261016/ci/final-run-summary.json).
+  The older asset binding remains preceding-runtime evidence.
   [Quality evidence](../evidence/quality-20261016/README.md) records the separate
   conditions. The preceding CSS publication matches all 79 files and passes 38
   hosted connection, 21 homepage/phone and 9 navigation checks. Final startup
@@ -36,7 +56,7 @@
   take 1177.8 / 1113.4 / 1134.5 ms and miss the unchanged <500 ms target. Q03 remains
   open P1. Retain functional fixes; investigate the remaining delay before broader
   expansion. The original baseline remains faster for warm Explore readiness.
-- Current milestone starts from checkpoint commit `3794918`.
+- The preceding quality milestone started from checkpoint commit `3794918`.
 - Local connection runtime: `bdc85fd4cd5dd90f390f042c0112b8d80fc19768`;
   verified Pages runtime: `53cf8647a46d365bf2b7774e0971d9bcd24b1711`;
   Pages verification metadata: `ad9fc10d6b90ca824fd8203cba1cff8b33366665`.
@@ -44,12 +64,11 @@
   baseline Pages: `eb8647d622d983280fba08fe9c23752aac1e81a4`;
   art refinement: `2767263`.
   [Homepage evidence](../evidence/homepage-20261015/README.md).
-- Latest direction: keep testing on our own computer, plan the next sprint using
-  agile project management, then perform a thorough walkthrough. The user reports
-  fluent interaction alongside old links, latency and misleading/mixed-language
-  descriptions. Make routine product decisions independently; do not ask the user
-  to identify the defects. Building realism, lighting and useful travel remain
-  core product challenges. No public tunnel or paid service is authorized for this sprint.
+- Latest direction: implement the next solo iteration and research broader coverage,
+  preserving art, quality and usable interaction. Continue workspace testing and
+  independent routine product decisions. Building realism, lighting and meaningful
+  exploration remain core challenges. No public tunnel or paid service is required
+  or introduced by the current plan.
 - Local service runs on loopback port 8787 with durable ignored SQLite storage
   and the exact Pages origin allowed. Continue same-computer browser testing;
   the user chose this path after the previous tunnel proposal. No public
@@ -107,22 +126,23 @@ Directions represent Google-computed routes through selected places, not a perso
 recorded movement. Planned places, personal significance, virtual moments and
 user-reported real visits must remain distinct.
 
-The broader **Find your own place** experiment is still proposed: continuous world
-response, deliberate personal approach/pause/view, and a recipient who can inhabit
-the moment. This milestone neither delivers replay nor settles emotional value.
-The new search/map scope does not complete that emotional-expression experiment.
+The **Find your own place** direction now has an implementing Sprint 2A solo slice:
+continuous exploration response and deliberate private view/place return. Personal
+approach/pause replay and recipient handoff remain conditional Sprint 2B work.
+Current implementation does not establish emotional value or complete that
+expressive experience.
 Ginza remains a separate architectural study.
 
 ## Active owners and next actions
 
 | Owner | Current boundary | Next action |
 |---|---|---|
-| Lead | Integration, checkpoint, release | Local milestone verified and published; review remaining aggregate CI result and carry Q03 latency |
-| Engineering | Runtime loading/pause, map and performance | Matched timing completed; investigate remaining latency without reducing art detail |
-| World-content | Navigation, language and source meanings | Completed locale/link audit; next review recognizable building references and source quality |
-| QA-release | Browser drivers and independent walkthrough | Final local original walk 133/133 and hosted homepage 21/21 completed; collect remaining CI jobs |
-| Product-design | Sprint plan, delivery board and lean iteration | Record delivered scope and open latency target; use Sprint 2A/2B experiential exits |
-| Art/UX | Detailed Kyoto appearance and visual review | Retained day/night art reviewed; next compare identifiable facade cues and coherent lighting |
+| Lead | Homepage/map/solo state, integration, checkpoint, release | Implement explicit area discovery and private return flow; coordinate interfaces and publication |
+| Engineering | Runtime exploration camera/inspection and performance | Implement continuous visible-surface response; preserve legacy views and hidden-work behavior; carry Q03 investigation |
+| World-content | Source features and coverage research | Compare broader production methods and actual provider coverage; preserve sourced identity and uncertainty |
+| QA-release | Browser drivers and independent walkthrough | Verify the five connected solo scenarios, old-state isolation and final package; coordinate GPU with art/engineering |
+| Product-design | Solo sprint, delivery board and lean iteration | Review homepage experience against the saved plan; maintain explicit technical/human acceptance limits |
+| Art/UX | Detailed Kyoto facade/material/lighting assets | Refine recognizable features, depth and shadows; compare matched walking views at desktop/phone scale |
 
 Paths in the ownership table are relative to `experience/`. Do not edit another
 owner's files; report interface conflicts to that owner. Preserve unrelated changes.
@@ -173,8 +193,9 @@ The quality package `8751ba4e` passes 89 application tests, 13 service tests,
 17 repository gates, 65 homepage checks, 8 startup interaction checks,
 19 original-walk pause/appearance checks and 3 credits/return checks. Actual Pages
 passes 21 homepage/phone checks and all 79 files match the tested package.
-Final-source CI confirms homepage 65/65, perspective 80/80 and companion 73/73
-on the same manifest. Its complete walkthrough and original-walk jobs are running.
+Final-source CI confirms original-walk 133/133, full walkthrough 264/264, homepage
+65/65, perspective 80/80 and companion 73/73 on the same manifest. All scheduled
+suites completed successfully; this evidence covers the preceding quality release.
 The separate final local original-walk run passes **133/133**, with actual movement
 through all three encounters, selected sharing, graphics recovery and migrations.
 

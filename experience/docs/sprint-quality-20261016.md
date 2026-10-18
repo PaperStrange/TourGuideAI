@@ -1,6 +1,6 @@
 # Quality sprint · a clear, responsive travel journey
 
-2026-10-16 · Local walkthrough milestone achieved; Q03 latency open at P1, aggregate CI pending.
+2026-10-16 · Local walkthrough milestone achieved; final CI verified 2026-10-18; Q03 latency open at P1.
 Lead owns integration and the [checkpoint](agent-checkpoint.md). This plan records
 the user's latest direction: continue testing inside the workspace, use no tunnel,
 and address old links, high latency and misleading or mixed-language interface text.
@@ -85,7 +85,7 @@ representation, route provenance and supporting-link destinations. The integrate
 matrix and published checks below verify these corrections within their recorded
 scope. Baseline CI failures included copy/lighting expectation drift and an actual
 phone search-grid defect. All known runtime/driver P0 reproductions are verified
-fixed on final bytes; Q00's aggregate CI verification remains pending.
+fixed on final bytes; Q00's aggregate CI verification is complete on `8751ba4e…`.
 
 ## Performance experiments and decision gates
 
@@ -212,7 +212,7 @@ experience remains a separate review of the actual delivered walkthrough.
 
 **Disposition: the local walkthrough milestone is achieved. Release the verified
 functional corrections; carry Q03 latency as open P1. All known runtime/driver P0
-reproductions are verified fixed on final bytes; aggregate CI remains pending.**
+reproductions are verified fixed on final bytes; all scheduled final CI suites pass.**
 The earlier CSS release uses runtime source
 `d21c708bc3d196ca97c5b038fea68c4c73ea92aa`; this CSS package manifest is
 `9a55e7b5d8fdc5c5202f18d81ee4ced0e0b6cfc2c945ef1e66a43088047d2d10`.
@@ -253,7 +253,8 @@ The CSS-release search-grid change passes a matching-browser **6/6** probe and
 on package `9a55e7b5…`. The [exact delta](../evidence/quality-20261016/final-css-delta.json)
 records CSS and generated filename metadata changes, with **75 other files identical**.
 The full 264-check matrix was not rerun locally on that CSS package or the startup
-release; its remote rerun is still in progress.
+release. Its [remote rerun passes 264/264](../evidence/quality-20261016/ci/final-walkthrough-result.json)
+on final startup package `8751ba4e…`.
 
 Application **89/89**, service **13/13** and repository **17/17** checks pass.
 Earlier CI perspective **80/80** and companion **73/73** pass; their
@@ -266,12 +267,16 @@ while preserving its existing checks; the focused 3/3 and final local 133/133 re
 pass. Final CI artifact reports now pass [homepage **65/65**](../evidence/quality-20261016/ci/final-homepage-result.json),
 [perspective **80/80**](../evidence/quality-20261016/ci/final-perspective-result.json)
 and [companion **73/73**](../evidence/quality-20261016/ci/final-travel-result.json),
-all on package `8751ba4e…`. Remote original-walk and full walkthrough jobs in
-run `38851871150` are still in progress. Do not describe aggregate CI as green.
+all on package `8751ba4e…`. The remote
+[original-walk **133/133**](../evidence/quality-20261016/ci/final-original-walk-result.json)
+and full walkthrough **264/264** also pass on that package.
+[Run `38851871150`](../evidence/quality-20261016/ci/final-run-summary.json) completed
+successfully for all scheduled suites. This closes Q00's aggregate verification;
+Q03's measured latency result remains open P1.
 
 | Area | Verified correction and scope | Remaining gate |
 |---|---|---|
-| Q00 · CI | All known runtime/driver P0 reproductions are verified fixed on final bytes. Full local original-walk 133/133 and final CI homepage 65/65, perspective 80/80 and companion 73/73 pass on `8751ba4e…`. | Remote original-walk and full walkthrough jobs in CI `38851871150` remain pending; aggregate CI is not yet green. |
+| Q00 · CI | All known runtime/driver P0 reproductions are verified fixed on final bytes. Local original-walk 133/133 and all five final CI reports pass on `8751ba4e…`: original-walk 133/133, walkthrough 264/264, homepage 65/65, perspective 80/80 and companion 73/73. | Closed for this release; later runtime changes require their own applicable verification. |
 | Q01/Q02 · Journey and language | The 264-check matrix covers EN/ZH desktop/phone navigation, locale/route preservation, supporting links, private saves and recipient behavior. Final published package passes 79/79 file verification and 21/21 homepage/phone checks; earlier CSS-release navigation checks retain their scope. | Physical native permission/share UI is outside this evidence; full earlier suites are not relabeled as final-package reruns. |
 | Q03 · Responsiveness | Final measurements prove zero Together street-dependency bytes, zero hidden updates/draws/script time and one initial Explore draw, each across six applicable observations. | **Open P1: 1177.8 / 1113.4 / 1134.5 ms versus <500 ms each.** Continue measured work before broader expansion. No overall 3D-speedup claim. |
 | Q04 · Local groups | [17/17 targeted room checks](../evidence/quality-20261016/local-rooms/walkthrough-result.json) and 38 actual published-frontend/local-service checks pass within the recorded package scopes. Local health reports rooms/events available and model unavailable. | No remote shared service or model-generation claim; earlier connection evidence remains explicitly scoped to the CSS release. |

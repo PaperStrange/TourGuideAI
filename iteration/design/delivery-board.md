@@ -1,9 +1,24 @@
 # Delivery board · TourGuideAI 2.5D
 
-Updated 2026-10-16. Owner: lead. Planning baseline: `origin/iteration` at
+Updated 2026-10-18. Owner: lead. Planning baseline: `origin/iteration` at
 `eae982f4ba20a107bf21a35b70f635b4935a4c70`.
 
-**Active sprint · journey clarity and responsiveness:** the user requests a plan
+**Active iteration · solo exploration:** the user authorizes the next iteration
+and research into broader solo travel, preserving art, quality and usable interaction.
+The [new sprint plan](../../experience/docs/sprint-solo-20261018.md) is recorded
+before production. One homepage flow connects free Kyoto exploration and visible
+facade inspection, explicit discovery at a wider map's current area, and private
+chosen-place/view continuity with the selected journey. Sprint 2A refines recognizable
+facades, material depth and day/night response; control remains with the player.
+Root owns homepage/map/solo-state integration, engineering runtime exploration,
+art existing facade/material/lighting assets, world-content broader coverage research,
+product acceptance criteria and QA independent review. Existing routes, locales,
+saves and shared links remain usable. Detailed Kyoto and approximate wider maps
+retain separate coverage claims. Replay in 2B stays conditional; research compares
+provider geometry, reviewed area packs, photographs and scans before wider production.
+Q03 latency remains open P1 with its unchanged measured target.
+
+**Delivered quality milestone · journey clarity and responsiveness:** the user requested a plan
 followed by a thorough walkthrough, continuing tests inside the workspace with no
 tunnel. Interactions feel fluent; reported defects concern old links, high latency
 and misleading/mixed-language text. The [quality sprint](../../experience/docs/sprint-quality-20261016.md)
@@ -34,9 +49,10 @@ functional corrections and carries Q03 latency as **open P1**, with measured wor
 before broader expansion. Warm Explore improves over the first published candidate
 but remains slower than the original baseline; no overall 3D-speedup claim.
 **The local walkthrough milestone is achieved**: all known runtime/driver P0
-reproductions are verified fixed on final bytes. Remote original-walk and full
-walkthrough jobs in CI `38851871150` remain in progress; Q00 aggregate verification
-is pending, without an all-CI-green claim.
+reproductions are verified fixed on final bytes. The
+[final CI record](../../experience/evidence/quality-20261016/ci/final-run-summary.json)
+closes run `38851871150`: original-walk 133/133, walkthrough 264/264, homepage 65/65,
+perspective 80/80 and companion 73/73 pass on package `8751ba4e…`.
 
 **Functional acceptance and open gates:** corrections cover phone crop, lighting/map recovery,
 route/locale preservation, supporting navigation and deferred/hidden street work.

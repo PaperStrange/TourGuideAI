@@ -1,8 +1,29 @@
 # Lean iteration · Borrow someone's eyes
 
-Updated 2026-10-16 · Lead: release/integration.
+Updated 2026-10-18 · Lead: release/integration.
 
-## Active sprint · journey clarity and responsiveness
+## Active iteration · solo exploration
+
+The user authorizes the next iteration and research into broader solo travel while
+preserving art, quality and usable interaction. The [solo sprint](sprint-solo-20261018.md)
+defines one homepage sequence: freely approach and inspect recognizable Kyoto
+features; explore a wider map area through an explicit query; deliberately keep
+and reopen a chosen place/view and selected journey. Full orbit and a source-bound
+inspection response preserve player control between features. The private return
+collection supports arbitrary chosen places; the older three-moment experience,
+existing routes and saved/share links retain their meanings.
+
+Sprint 2A includes matched facade/material/day-night refinement and continuous
+visual response. World-content's [coverage research](solo-coverage-research-20261018.md)
+compares shared-style provider geometry, reviewed area packs, licensed photographs
+and scans. Detailed authored Kyoto and wider approximate map geometry retain clear
+coverage labels. Sprint 2B replay remains conditional on evidence that movement,
+viewpoint and personal return add value. Root owns homepage/map/solo integration;
+engineering owns runtime interaction; art owns facade/material/lighting refinement.
+The new plan records acceptance, dependencies, WIP and failure exits before production.
+Q03 latency remains open P1 under its unchanged target.
+
+## Delivered quality milestone · journey clarity and responsiveness
 
 The user asks for the next sprint plan followed by a thorough walkthrough, with
 testing inside the workspace and no tunnel. They find interactions fluent and
@@ -14,8 +35,8 @@ response experiments, then the complete EN/ZH desktop/phone Explore/Together and
 supporting-link walkthrough. Tickets name owners, reviewers, dependencies and exit
 evidence. The local room service remains available only where actually tested;
 the model stays unconfigured. These observations do not approve emotional value
-or establish the cause of latency. The earlier expansion proposals below remain
-separate backlog items while this quality sprint is active.
+or establish the cause of latency. The new solo sprint above governs current work;
+the wider city/corridor proposals below retain their conditional gates.
 
 Q03 now has measured baseline targets: defer detailed-street payload from Together,
 warm Together language change below 500 ms in each of three matching observations,
@@ -40,9 +61,10 @@ original-walk pause/appearance/startup 19/19 and localized credits/license/save-
 checks. The full local original-walk suite passes **133/133** on that final package,
 as do final CI artifact reports for homepage **65/65**, perspective **80/80** and
 companion **73/73**. **The local walkthrough milestone is achieved**, and all known
-runtime/driver P0 reproductions are verified fixed on final bytes. Remote
-original-walk and full walkthrough jobs in CI `38851871150` remain in progress;
-Q00 aggregate verification is pending, with no all-CI-green claim. Exact hashes,
+runtime/driver P0 reproductions are verified fixed on final bytes. The
+[final CI record](../evidence/quality-20261016/ci/final-run-summary.json) closes run
+`38851871150`: original-walk 133/133, walkthrough 264/264, homepage 65/65,
+perspective 80/80 and companion 73/73 pass on package `8751ba4e…`. Exact hashes,
 performance values and package scope limits are in the sprint acceptance table.
 The English fallback-banner/Reset 3.36 px edge overlap is accepted as P2 spacing
 polish after readable text and actual Reset/Retry checks. This sprint retains
@@ -225,6 +247,9 @@ remove production costs, and a camera replay is not already implemented by the
 existing single-pose capture API.
 
 ### Sprint 2A and 2B: demonstrate before expanding
+
+The [2026-10-18 solo plan](sprint-solo-20261018.md) is the current bounded 2A
+implementation scope; the sequence below retains the later 2B experience gate.
 
 - **2A · A place that responds.** Product owns the free exploration sequence;
   world-content checks the compact setting and access; art makes its contrast

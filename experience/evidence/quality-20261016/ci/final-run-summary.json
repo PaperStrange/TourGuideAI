@@ -1,0 +1,196 @@
+{
+  "inspectedAt": "2026-10-18T13:03:45.956Z",
+  "run": {
+    "id": 38851871150,
+    "url": "https://github.com/PaperStrange/TourGuideAI/actions/runs/38851871150",
+    "source": "54fdbaf9bed4328e36a70aeee23e73d0d4aed564",
+    "attempt": 1,
+    "status": "completed",
+    "conclusion": "success",
+    "updatedAt": "2026-10-16T05:11:31Z"
+  },
+  "baseline": {
+    "source": "245a1f364aa3b04e270d2d6ee402e31ec3b9d3ce",
+    "comparedPaths": [
+      "experience/src",
+      "experience/public",
+      "experience/tests",
+      "experience/tools",
+      "experience/server",
+      "experience/package.json",
+      "experience/package-lock.json",
+      "experience/vite.config.js",
+      ".github/workflows/experience.yml"
+    ],
+    "changedFilesSinceCISource": []
+  },
+  "jobs": [
+    {
+      "id": 116814651412,
+      "name": "Validate shared perspective",
+      "status": "completed",
+      "conclusion": "success",
+      "conditionalSkippedSteps": [
+        "Install and test room service",
+        "Walk through both homepage journeys",
+        "Preserve walkthrough evidence"
+      ]
+    },
+    {
+      "id": 116814651477,
+      "name": "Validate travel companion",
+      "status": "completed",
+      "conclusion": "success",
+      "conditionalSkippedSteps": [
+        "Install and test room service",
+        "Walk through both homepage journeys",
+        "Preserve walkthrough evidence"
+      ]
+    },
+    {
+      "id": 116814651518,
+      "name": "Validate journey homepage",
+      "status": "completed",
+      "conclusion": "success",
+      "conditionalSkippedSteps": []
+    },
+    {
+      "id": 116814651594,
+      "name": "Validate original walk",
+      "status": "completed",
+      "conclusion": "success",
+      "conditionalSkippedSteps": [
+        "Install and test room service",
+        "Walk through both homepage journeys",
+        "Preserve walkthrough evidence"
+      ]
+    }
+  ],
+  "reports": [
+    {
+      "suite": "original-walk",
+      "report": "final-original-walk-result.json",
+      "reportSha256": "53e485f2b4a469004939ff101a4e372737e6d1ece2a36e70ae34b67c3c0229d6",
+      "summary": {
+        "passed": 133,
+        "failed": 0
+      },
+      "startedAt": "2026-10-16T04:41:46.308Z",
+      "finishedAt": "2026-10-16T05:11:25.240Z",
+      "packageManifestSha256": "8751ba4ecb6f6fcec70d1c2d25cff41b074671ea4433d3bf5b4a087ac810d2fb",
+      "fileCount": 79,
+      "browser": "151.0.7922.34",
+      "artifact": {
+        "id": 12026093308,
+        "name": "experience-browser-evidence",
+        "digest": "sha256:7156679676ab9441b88db2d528635e02a8c67594ab2b0df66106e0d172f7b6f1",
+        "bytes": 19422296,
+        "archiveDigestIndependentlyCheckedThisResume": true
+      }
+    },
+    {
+      "suite": "homepage-walkthrough",
+      "report": "final-walkthrough-result.json",
+      "reportSha256": "b87523177a345412ab4cde5ca431aa40c1f770e7644b3e6bda4de1405ab82c89",
+      "summary": {
+        "passed": 264,
+        "failed": 0
+      },
+      "startedAt": "2026-10-16T04:43:31.064Z",
+      "finishedAt": "2026-10-16T05:00:37.276Z",
+      "packageManifestSha256": "8751ba4ecb6f6fcec70d1c2d25cff41b074671ea4433d3bf5b4a087ac810d2fb",
+      "fileCount": 79,
+      "browser": "151.0.7922.34",
+      "artifact": {
+        "id": 12025344509,
+        "name": "homepage-walkthrough-evidence",
+        "digest": "sha256:ad34b930960468aa24ce97035a35e6737fa8085c277b86f1eda6793b04f54f51",
+        "bytes": 13986490,
+        "archiveDigestIndependentlyCheckedThisResume": true
+      }
+    },
+    {
+      "suite": "homepage",
+      "report": "final-homepage-result.json",
+      "reportSha256": "cc9ce866f28c0112cf45533f818ef7da93f49ca914a3b1dfa185e0eb20efee6b",
+      "summary": {
+        "passed": 65,
+        "failed": 0,
+        "fatal": false
+      },
+      "startedAt": "2026-10-16T04:41:50.196Z",
+      "finishedAt": "2026-10-16T04:43:28.648Z",
+      "packageManifestSha256": "8751ba4ecb6f6fcec70d1c2d25cff41b074671ea4433d3bf5b4a087ac810d2fb",
+      "fileCount": 79,
+      "browser": "151.0.7922.34",
+      "artifact": {
+        "id": 12025203964,
+        "name": "homepage-browser-evidence",
+        "digest": "sha256:10de738f1363003c8ca2266cb3565f318fe72598c61937e29b7d1d73ae9d7a22",
+        "bytes": 6075862,
+        "archiveDigestIndependentlyCheckedThisResume": false
+      }
+    },
+    {
+      "suite": "perspective",
+      "report": "final-perspective-result.json",
+      "reportSha256": "1685d5b1e45fd0addda1c5c4a65cb77d412f6461acf47bc3192cc83bfcba7c0d",
+      "summary": {
+        "passed": 80,
+        "failed": 0
+      },
+      "startedAt": "2026-10-16T04:42:10.915Z",
+      "finishedAt": "2026-10-16T04:51:09.439Z",
+      "packageManifestSha256": "8751ba4ecb6f6fcec70d1c2d25cff41b074671ea4433d3bf5b4a087ac810d2fb",
+      "fileCount": 79,
+      "browser": "151.0.7922.34",
+      "artifact": {
+        "id": 12025763592,
+        "name": "perspective-browser-evidence",
+        "digest": "sha256:e05268971f5c7e19c70f4a63e689cbeefc4bb065a6b0548611abe179176b028e",
+        "bytes": 7942134,
+        "archiveDigestIndependentlyCheckedThisResume": false
+      }
+    },
+    {
+      "suite": "travel",
+      "report": "final-travel-result.json",
+      "reportSha256": "0fcf52db7a06ba7416a0d39be26c510252a59496b476d78660f3c5e175d3638d",
+      "summary": {
+        "passed": 73,
+        "failed": 0
+      },
+      "startedAt": "2026-10-16T04:41:41.026Z",
+      "finishedAt": "2026-10-16T04:41:46.055Z",
+      "packageManifestSha256": "8751ba4ecb6f6fcec70d1c2d25cff41b074671ea4433d3bf5b4a087ac810d2fb",
+      "fileCount": 79,
+      "browser": "151.0.7922.34",
+      "artifact": {
+        "id": 12025287280,
+        "name": "travel-browser-evidence",
+        "digest": "sha256:cdf068c2f1552e2b5b76bc424b875a58b5bcd26ac07ff6caf09fdf9e71e627a5",
+        "bytes": 1834967,
+        "archiveDigestIndependentlyCheckedThisResume": false
+      }
+    }
+  ],
+  "packageManifestSha256": "8751ba4ecb6f6fcec70d1c2d25cff41b074671ea4433d3bf5b4a087ac810d2fb",
+  "outstanding": [
+    {
+      "id": "Q03",
+      "severity": "P1",
+      "issue": "Warm Together locale action exceeds the unchanged 500 ms target.",
+      "measurementsMs": [
+        1177.8,
+        1113.4,
+        1134.5
+      ],
+      "evidence": "../performance/final.json"
+    }
+  ],
+  "limits": [
+    "CI is automated compatibility and behavior evidence; human visual recognition, enjoyment and physical-device fluency remain separate.",
+    "Matrix steps skipped by job condition are recorded above; all scheduled browser suites completed successfully.",
+    "The three existing final suite reports were retained from the prior handoff; their archives were not downloaded again."
+  ]
+}
