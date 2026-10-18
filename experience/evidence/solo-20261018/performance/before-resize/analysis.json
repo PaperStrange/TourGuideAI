@@ -1,0 +1,3880 @@
+{
+  "manifestSha256": "81e885e64a92adb6140d230e3819bc3ace119ff4475b50159bc56a5a88c5c268",
+  "metric": "performance.now immediately before Playwright locale-zh.click to observed document.lang=zh",
+  "warm": [
+    {
+      "index": 0,
+      "profiled": true,
+      "metricMs": 1110.3999999999069,
+      "pass": false,
+      "beforeInputMs": 564.5,
+      "inputQueueMs": 2.6000000000931323,
+      "handlerMs": 12.199999999953434,
+      "afterHandlerToObservationMs": 531.0999999998603,
+      "eventPresentationDurationMs": 248,
+      "renderedMapFramesAtLaterDiagnosticRead": 16
+    },
+    {
+      "index": 1,
+      "profiled": false,
+      "metricMs": 1138.5999999998603,
+      "pass": false,
+      "beforeInputMs": 486.19999999995343,
+      "inputQueueMs": 40.89999999990687,
+      "handlerMs": 8.400000000139698,
+      "afterHandlerToObservationMs": 603.0999999998603,
+      "eventPresentationDurationMs": 104,
+      "renderedMapFramesAtLaterDiagnosticRead": 18
+    },
+    {
+      "index": 2,
+      "profiled": false,
+      "metricMs": 1155.3000000000466,
+      "pass": false,
+      "beforeInputMs": 519.8000000000466,
+      "inputQueueMs": 41.199999999953434,
+      "handlerMs": 5.800000000046566,
+      "afterHandlerToObservationMs": 588.5,
+      "eventPresentationDurationMs": 96,
+      "renderedMapFramesAtLaterDiagnosticRead": 18
+    },
+    {
+      "index": 3,
+      "profiled": false,
+      "metricMs": 1107.8000000000466,
+      "pass": false,
+      "beforeInputMs": 793.3000000000466,
+      "inputQueueMs": 68.89999999990687,
+      "handlerMs": 6.199999999953434,
+      "afterHandlerToObservationMs": 239.4000000001397,
+      "eventPresentationDurationMs": 152,
+      "renderedMapFramesAtLaterDiagnosticRead": 16
+    }
+  ],
+  "profileWindow": {
+    "actionStartPerformanceMs": 391.5,
+    "actionEndPerformanceMs": 1501.8999999999069,
+    "traceStartUs": 1777157023,
+    "traceEndUs": 1778267423,
+    "traceOriginUs": 1776765523
+  },
+  "traceCategories": [
+    {
+      "name": "RunTask",
+      "count": 804,
+      "inclusiveWallMs": 1103.5679999999963,
+      "threadMs": 358.993155688622
+    },
+    {
+      "name": "Commit",
+      "count": 12,
+      "inclusiveWallMs": 696.568,
+      "threadMs": 31.144000000000002
+    },
+    {
+      "name": "v8.callFunction",
+      "count": 91,
+      "inclusiveWallMs": 184.33300000000014,
+      "threadMs": 123.20400000000004
+    },
+    {
+      "name": "FunctionCall",
+      "count": 67,
+      "inclusiveWallMs": 130.497,
+      "threadMs": 80.684
+    },
+    {
+      "name": "FireAnimationFrame",
+      "count": 14,
+      "inclusiveWallMs": 120.021,
+      "threadMs": 69.857
+    },
+    {
+      "name": "HandlePostMessage",
+      "count": 18,
+      "inclusiveWallMs": 49.494,
+      "threadMs": 39.333999999999996
+    },
+    {
+      "name": "EventDispatch",
+      "count": 26,
+      "inclusiveWallMs": 14.100000000000003,
+      "threadMs": 13.373000000000003
+    },
+    {
+      "name": "UpdateLayoutTree",
+      "count": 12,
+      "inclusiveWallMs": 9.248000000000001,
+      "threadMs": 5.052
+    },
+    {
+      "name": "EvaluateScript",
+      "count": 1,
+      "inclusiveWallMs": 9.077,
+      "threadMs": 9.075
+    },
+    {
+      "name": "MinorGC",
+      "count": 2,
+      "inclusiveWallMs": 7.683999999999999,
+      "threadMs": 7.135
+    },
+    {
+      "name": "V8.GCScavenger",
+      "count": 2,
+      "inclusiveWallMs": 7.6080000000000005,
+      "threadMs": 7.066000000000001
+    },
+    {
+      "name": "V8.GC_SCAVENGER",
+      "count": 2,
+      "inclusiveWallMs": 7.574,
+      "threadMs": 7.035
+    },
+    {
+      "name": "V8.GC_SCAVENGER_SCAVENGE",
+      "count": 2,
+      "inclusiveWallMs": 7.545,
+      "threadMs": 7.0120000000000005
+    },
+    {
+      "name": "V8.GC_SCAVENGER_SCAVENGE_PARALLEL_PHASE",
+      "count": 2,
+      "inclusiveWallMs": 6.909999999999999,
+      "threadMs": 6.422000000000001
+    },
+    {
+      "name": "MajorGC",
+      "count": 1,
+      "inclusiveWallMs": 6.656,
+      "threadMs": 6.205
+    },
+    {
+      "name": "V8.GCFinalizeMC",
+      "count": 1,
+      "inclusiveWallMs": 6.619,
+      "threadMs": 6.171
+    },
+    {
+      "name": "V8.GC_SCAVENGER_SCAVENGE_PARALLEL",
+      "count": 2,
+      "inclusiveWallMs": 6.593,
+      "threadMs": 6.2
+    },
+    {
+      "name": "V8.GC_MARK_COMPACTOR",
+      "count": 1,
+      "inclusiveWallMs": 6.582,
+      "threadMs": 6.137
+    },
+    {
+      "name": "Layout",
+      "count": 5,
+      "inclusiveWallMs": 3.0120000000000005,
+      "threadMs": 3.012
+    },
+    {
+      "name": "V8.GC_MC_EVACUATE",
+      "count": 2,
+      "inclusiveWallMs": 2.4419999999999997,
+      "threadMs": 2.4219999999999997
+    },
+    {
+      "name": "PrePaint",
+      "count": 30,
+      "inclusiveWallMs": 2.1599999999999997,
+      "threadMs": 2.0599999999999996
+    },
+    {
+      "name": "Paint",
+      "count": 7,
+      "inclusiveWallMs": 2.092,
+      "threadMs": 2.065
+    },
+    {
+      "name": "V8.GC_MC_CLEAR",
+      "count": 1,
+      "inclusiveWallMs": 1.734,
+      "threadMs": 1.398
+    },
+    {
+      "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS",
+      "count": 1,
+      "inclusiveWallMs": 1.533,
+      "threadMs": 1.524
+    },
+    {
+      "name": "V8.GC_MC_CLEAR_JOIN_JOB",
+      "count": 1,
+      "inclusiveWallMs": 1.057,
+      "threadMs": 0.734
+    },
+    {
+      "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS_TO_NEW_ROOTS",
+      "count": 1,
+      "inclusiveWallMs": 1.023,
+      "threadMs": 1.023
+    },
+    {
+      "name": "V8.GC_MC_EVACUATE_COPY",
+      "count": 1,
+      "inclusiveWallMs": 0.869,
+      "threadMs": 0.863
+    },
+    {
+      "name": "V8.GC_HEAP_EXTERNAL_WEAK_GLOBAL_HANDLES",
+      "count": 1,
+      "inclusiveWallMs": 0.865,
+      "threadMs": 0.866
+    },
+    {
+      "name": "V8.GC_MC_EVACUATE_COPY_PARALLEL",
+      "count": 1,
+      "inclusiveWallMs": 0.802,
+      "threadMs": 0.798
+    },
+    {
+      "name": "ParseHTML",
+      "count": 7,
+      "inclusiveWallMs": 0.56,
+      "threadMs": 0.518
+    },
+    {
+      "name": "V8.GC_HEAP_EMBEDDER_TRACING_EPILOGUE",
+      "count": 1,
+      "inclusiveWallMs": 0.512,
+      "threadMs": 0.502
+    },
+    {
+      "name": "V8.GC_MC_CLEAR_WEAK_REFERENCES_TRIVIAL",
+      "count": 1,
+      "inclusiveWallMs": 0.468,
+      "threadMs": 0.41
+    },
+    {
+      "name": "UpdateLayer",
+      "count": 59,
+      "inclusiveWallMs": 0.4620000000000001,
+      "threadMs": 0.24000000000000005
+    },
+    {
+      "name": "Layerize",
+      "count": 12,
+      "inclusiveWallMs": 0.442,
+      "threadMs": 0.438
+    },
+    {
+      "name": "HitTest",
+      "count": 12,
+      "inclusiveWallMs": 0.44100000000000006,
+      "threadMs": 0.41200000000000003
+    },
+    {
+      "name": "V8.GC_MC_MARK",
+      "count": 1,
+      "inclusiveWallMs": 0.423,
+      "threadMs": 0.36
+    },
+    {
+      "name": "V8.GCIncrementalMarking",
+      "count": 4,
+      "inclusiveWallMs": 0.41300000000000003,
+      "threadMs": 0.396
+    },
+    {
+      "name": "V8.GC_MC_INCREMENTAL",
+      "count": 4,
+      "inclusiveWallMs": 0.399,
+      "threadMs": 0.389
+    },
+    {
+      "name": "V8.GCIncrementalMarkingStart",
+      "count": 1,
+      "inclusiveWallMs": 0.397,
+      "threadMs": 0.384
+    },
+    {
+      "name": "V8.GC_MC_INCREMENTAL_START",
+      "count": 1,
+      "inclusiveWallMs": 0.368,
+      "threadMs": 0.359
+    },
+    {
+      "name": "V8.DeoptimizeCode",
+      "count": 22,
+      "inclusiveWallMs": 0.36300000000000016,
+      "threadMs": 0.33800000000000013
+    },
+    {
+      "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+      "count": 4,
+      "inclusiveWallMs": 0.346,
+      "threadMs": 0.345
+    },
+    {
+      "name": "PaintImage",
+      "count": 5,
+      "inclusiveWallMs": 0.30399999999999994,
+      "threadMs": 0.2929999999999999
+    },
+    {
+      "name": "V8.GCPhantomHandleProcessingCallback",
+      "count": 1,
+      "inclusiveWallMs": 0.278,
+      "threadMs": 0.277
+    },
+    {
+      "name": "V8.GC_HEAP_EXTERNAL_SECOND_PASS_CALLBACKS",
+      "count": 1,
+      "inclusiveWallMs": 0.275,
+      "threadMs": 0.275
+    },
+    {
+      "name": "V8.GC_MC_MARK_ROOTS",
+      "count": 3,
+      "inclusiveWallMs": 0.272,
+      "threadMs": 0.271
+    },
+    {
+      "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS_SLOTS_MAIN",
+      "count": 1,
+      "inclusiveWallMs": 0.263,
+      "threadMs": 0.261
+    },
+    {
+      "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS_POINTER_TABLES",
+      "count": 1,
+      "inclusiveWallMs": 0.228,
+      "threadMs": 0.228
+    },
+    {
+      "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS_PARALLEL",
+      "count": 1,
+      "inclusiveWallMs": 0.203,
+      "threadMs": 0.214
+    },
+    {
+      "name": "V8.GC_SCAVENGER_SCAVENGE_ROOTS",
+      "count": 2,
+      "inclusiveWallMs": 0.184,
+      "threadMs": 0.184
+    },
+    {
+      "name": "V8.GC_MC_CLEAR_STRING_TABLE",
+      "count": 4,
+      "inclusiveWallMs": 0.164,
+      "threadMs": 0.162
+    },
+    {
+      "name": "V8.GC_SCAVENGER_SCAVENGE_WEAK_GLOBAL_HANDLES_IDENTIFY",
+      "count": 2,
+      "inclusiveWallMs": 0.163,
+      "threadMs": 0.159
+    },
+    {
+      "name": "V8.GC_SCAVENGER_SCAVENGE_WEAK_GLOBAL_HANDLES_PROCESS",
+      "count": 2,
+      "inclusiveWallMs": 0.131,
+      "threadMs": 0.10700000000000001
+    },
+    {
+      "name": "V8.GC_SCAVENGER_TRACED_HANDLES_COMPUTE_WEAKNESS_PARALLEL",
+      "count": 2,
+      "inclusiveWallMs": 0.127,
+      "threadMs": 0.127
+    },
+    {
+      "name": "V8.GC_MC_SWEEP",
+      "count": 4,
+      "inclusiveWallMs": 0.108,
+      "threadMs": 0.10500000000000001
+    },
+    {
+      "name": "V8.GC_SCAVENGER_FREE_REMEMBERED_SET",
+      "count": 2,
+      "inclusiveWallMs": 0.10700000000000001,
+      "threadMs": 0.10700000000000001
+    },
+    {
+      "name": "V8.GC_MC_MARK_FULL_CLOSURE_PARALLEL",
+      "count": 1,
+      "inclusiveWallMs": 0.105,
+      "threadMs": 0.053
+    },
+    {
+      "name": "v8.newInstance",
+      "count": 14,
+      "inclusiveWallMs": 0.09800000000000003,
+      "threadMs": 0.08200000000000002
+    },
+    {
+      "name": "V8.GC_SCAVENGER_SCAVENGE_FINALIZE",
+      "count": 2,
+      "inclusiveWallMs": 0.07999999999999999,
+      "threadMs": 0.07899999999999999
+    },
+    {
+      "name": "V8.GC_SCAVENGER_TRACED_HANDLES_RESET_PARALLEL",
+      "count": 2,
+      "inclusiveWallMs": 0.07,
+      "threadMs": 0.07
+    },
+    {
+      "name": "V8.GC_HEAP_EXTERNAL_EPILOGUE",
+      "count": 3,
+      "inclusiveWallMs": 0.061,
+      "threadMs": 0.056
+    },
+    {
+      "name": "V8.GC_MC_CLEAR_SWEEP_JS_DISPATCH_TABLE",
+      "count": 1,
+      "inclusiveWallMs": 0.061,
+      "threadMs": 0.06
+    },
+    {
+      "name": "V8.GC_MC_MARK_EMBEDDER_PROLOGUE",
+      "count": 2,
+      "inclusiveWallMs": 0.045,
+      "threadMs": 0.044
+    },
+    {
+      "name": "V8.GC_TIME_TO_SAFEPOINT",
+      "count": 4,
+      "inclusiveWallMs": 0.042,
+      "threadMs": 0.041
+    },
+    {
+      "name": "V8.GC_MC_FINISH",
+      "count": 1,
+      "inclusiveWallMs": 0.04,
+      "threadMs": 0.037
+    },
+    {
+      "name": "V8.GC_HEAP_EXTERNAL_PROLOGUE",
+      "count": 3,
+      "inclusiveWallMs": 0.038000000000000006,
+      "threadMs": 0.034
+    },
+    {
+      "name": "V8.GC_MC_MARK_RETAIN_MAPS",
+      "count": 1,
+      "inclusiveWallMs": 0.027,
+      "threadMs": 0.027
+    },
+    {
+      "name": "V8.GC_SCAVENGER_SCAVENGE_COLLECT_OLD_TO_NEW_PAGES",
+      "count": 2,
+      "inclusiveWallMs": 0.026,
+      "threadMs": 0.025
+    },
+    {
+      "name": "V8.GC_MC_INCREMENTAL_EXTERNAL_EPILOGUE",
+      "count": 1,
+      "inclusiveWallMs": 0.025,
+      "threadMs": 0.023
+    },
+    {
+      "name": "V8.GC_MC_MARK_WEAK_CLOSURE_EPHEMERON_MARKING",
+      "count": 4,
+      "inclusiveWallMs": 0.024999999999999994,
+      "threadMs": 0.019000000000000003
+    },
+    {
+      "name": "V8.GC_MC_CLEAR_WEAK_COLLECTIONS",
+      "count": 1,
+      "inclusiveWallMs": 0.023,
+      "threadMs": 0.022
+    },
+    {
+      "name": "V8.GC_MC_CLEAR_SWEEP_TRUSTED_POINTER_TABLE",
+      "count": 1,
+      "inclusiveWallMs": 0.022,
+      "threadMs": 0.021
+    },
+    {
+      "name": "V8.GC_MC_INCREMENTAL_EXTERNAL_PROLOGUE",
+      "count": 1,
+      "inclusiveWallMs": 0.019,
+      "threadMs": 0.019
+    },
+    {
+      "name": "V8.GC_MC_EVACUATE_EPILOGUE",
+      "count": 1,
+      "inclusiveWallMs": 0.019,
+      "threadMs": 0.018
+    },
+    {
+      "name": "V8.GC_MC_FINISH_SWEEP_ARRAY_BUFFERS",
+      "count": 1,
+      "inclusiveWallMs": 0.017,
+      "threadMs": 0.016
+    },
+    {
+      "name": "V8.GC_MC_MARK_EMBEDDER_TRACING",
+      "count": 4,
+      "inclusiveWallMs": 0.015,
+      "threadMs": 0.013999999999999999
+    },
+    {
+      "name": "V8.GC_HEAP_EPILOGUE",
+      "count": 3,
+      "inclusiveWallMs": 0.014000000000000002,
+      "threadMs": 0.012
+    },
+    {
+      "name": "V8.GC_MC_EVACUATE_PROLOGUE",
+      "count": 1,
+      "inclusiveWallMs": 0.014,
+      "threadMs": 0.014
+    },
+    {
+      "name": "V8.GC_MC_SWEEP_START_JOBS",
+      "count": 1,
+      "inclusiveWallMs": 0.012,
+      "threadMs": 0.011
+    },
+    {
+      "name": "V8.GC_SCAVENGER_SCAVENGE_RESTORE_AND_QUARANTINE_PINNED",
+      "count": 2,
+      "inclusiveWallMs": 0.011,
+      "threadMs": 0.01
+    },
+    {
+      "name": "V8.GC_HEAP_EPILOGUE_SAFEPOINT",
+      "count": 3,
+      "inclusiveWallMs": 0.011,
+      "threadMs": 0.009000000000000001
+    },
+    {
+      "name": "V8.GC_SCAVENGER_SWEEP_ARRAY_BUFFERS",
+      "count": 2,
+      "inclusiveWallMs": 0.01,
+      "threadMs": 0.009000000000000001
+    },
+    {
+      "name": "V8.GC_MC_PROLOGUE",
+      "count": 1,
+      "inclusiveWallMs": 0.009,
+      "threadMs": 0.009
+    },
+    {
+      "name": "V8.GC_HEAP_ENSURE_SWEEPING_COMPLETED",
+      "count": 1,
+      "inclusiveWallMs": 0.006,
+      "threadMs": 0.005
+    },
+    {
+      "name": "V8.GC_MC_MARK_FULL_CLOSURE_SERIAL",
+      "count": 1,
+      "inclusiveWallMs": 0.006,
+      "threadMs": 0.003
+    },
+    {
+      "name": "V8.GC_HEAP_PROLOGUE",
+      "count": 3,
+      "inclusiveWallMs": 0.005,
+      "threadMs": 0.004
+    },
+    {
+      "name": "Major concurrent marking rescheduled",
+      "count": 4,
+      "inclusiveWallMs": 0.005,
+      "threadMs": 0.002
+    },
+    {
+      "name": "ClearStringTableJob started",
+      "count": 5,
+      "inclusiveWallMs": 0.005,
+      "threadMs": 0.001
+    },
+    {
+      "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS_WEAK",
+      "count": 1,
+      "inclusiveWallMs": 0.005,
+      "threadMs": 0.005
+    },
+    {
+      "name": "Major concurrent marking started",
+      "count": 2,
+      "inclusiveWallMs": 0.004,
+      "threadMs": 0.002
+    },
+    {
+      "name": "V8.GC_MC_MARK_FINISH_INCREMENTAL",
+      "count": 1,
+      "inclusiveWallMs": 0.004,
+      "threadMs": 0.003
+    },
+    {
+      "name": "V8.GC_MC_CLEAR_FLUSHABLE_BYTECODE",
+      "count": 1,
+      "inclusiveWallMs": 0.004,
+      "threadMs": 0.003
+    },
+    {
+      "name": "Parallel scavenge started",
+      "count": 2,
+      "inclusiveWallMs": 0.003,
+      "threadMs": 0.002
+    },
+    {
+      "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS_CLIENT_HEAPS",
+      "count": 1,
+      "inclusiveWallMs": 0.003,
+      "threadMs": 0.002
+    },
+    {
+      "name": "ComputeWeaknessProcessor start",
+      "count": 2,
+      "inclusiveWallMs": 0.002,
+      "threadMs": 0.001
+    },
+    {
+      "name": "ClearWeaknessProcessor start",
+      "count": 2,
+      "inclusiveWallMs": 0.002,
+      "threadMs": 0.002
+    },
+    {
+      "name": "V8.GC_SCAVENGER_RESIZE_NEW_SPACE",
+      "count": 2,
+      "inclusiveWallMs": 0.002,
+      "threadMs": 0.002
+    },
+    {
+      "name": "V8.GC_CONSERVATIVE_STACK_SCANNING",
+      "count": 1,
+      "inclusiveWallMs": 0.002,
+      "threadMs": 0.001
+    },
+    {
+      "name": "ClearTrivialWeakRefJob started",
+      "count": 1,
+      "inclusiveWallMs": 0.002,
+      "threadMs": 0.001
+    },
+    {
+      "name": "PointersUpdatingJob started",
+      "count": 1,
+      "inclusiveWallMs": 0.002,
+      "threadMs": 0.001
+    },
+    {
+      "name": "V8.GC_MC_EVACUATE_CLEAN_UP",
+      "count": 1,
+      "inclusiveWallMs": 0.002,
+      "threadMs": 0.001
+    },
+    {
+      "name": "V8.GC_MC_EVACUATE_REBALANCE",
+      "count": 1,
+      "inclusiveWallMs": 0.002,
+      "threadMs": 0.001
+    },
+    {
+      "name": "V8.GC_HEAP_PROLOGUE_SAFEPOINT",
+      "count": 1,
+      "inclusiveWallMs": 0.001,
+      "threadMs": 0
+    },
+    {
+      "name": "V8.GC_MC_MARK_CLIENT_HEAPS",
+      "count": 1,
+      "inclusiveWallMs": 0.001,
+      "threadMs": 0.001
+    },
+    {
+      "name": "ClearTrustedWeakRefJob started",
+      "count": 1,
+      "inclusiveWallMs": 0.001,
+      "threadMs": 0
+    },
+    {
+      "name": "ClearNonTrivialWeakRefs started",
+      "count": 1,
+      "inclusiveWallMs": 0.001,
+      "threadMs": 0
+    },
+    {
+      "name": "V8.GC_MC_CLEAR_FLUSHED_JS_FUNCTIONS",
+      "count": 1,
+      "inclusiveWallMs": 0.001,
+      "threadMs": 0.001
+    },
+    {
+      "name": "PageEvacuationJob started",
+      "count": 1,
+      "inclusiveWallMs": 0.001,
+      "threadMs": 0.001
+    },
+    {
+      "name": "V8.GC_MC_SWEEP_NEW_LO",
+      "count": 1,
+      "inclusiveWallMs": 0.001,
+      "threadMs": 0.001
+    },
+    {
+      "name": "V8.GC_MC_EPILOGUE",
+      "count": 1,
+      "inclusiveWallMs": 0.001,
+      "threadMs": 0.001
+    }
+  ],
+  "longestMainEvents": [
+    {
+      "name": "Commit",
+      "startMs": 1029.35,
+      "durationMs": 162.447,
+      "threadMs": 4.815,
+      "data": {
+        "frameSeqId": 370,
+        "layerTreeId": 3
+      }
+    },
+    {
+      "name": "Commit",
+      "startMs": 1234.003,
+      "durationMs": 110.877,
+      "threadMs": 4.358,
+      "data": {
+        "frameSeqId": 383,
+        "layerTreeId": 3
+      }
+    },
+    {
+      "name": "Commit",
+      "startMs": 592.362,
+      "durationMs": 70.697,
+      "threadMs": 2.929,
+      "data": {
+        "frameSeqId": 342,
+        "layerTreeId": 3
+      }
+    },
+    {
+      "name": "Commit",
+      "startMs": 1436.796,
+      "durationMs": 64.363,
+      "threadMs": 2.262,
+      "data": {
+        "frameSeqId": 398,
+        "layerTreeId": 3
+      }
+    },
+    {
+      "name": "FireAnimationFrame",
+      "startMs": 971.851,
+      "durationMs": 55.782,
+      "threadMs": 15.263,
+      "data": {
+        "frame": "909F58F6917D7ACA8599F3DC936245F4",
+        "id": 15,
+        "sampleTraceId": 4859121984746543
+      }
+    },
+    {
+      "name": "FunctionCall",
+      "startMs": 971.881,
+      "durationMs": 55.698,
+      "threadMs": 15.184,
+      "data": {
+        "columnNumber": 24365,
+        "frame": "909F58F6917D7ACA8599F3DC936245F4",
+        "functionName": "",
+        "isolate": "10696575351090308183",
+        "lineNumber": 1,
+        "sampleTraceId": 4859121984746542,
+        "scriptId": "17",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js"
+      }
+    },
+    {
+      "name": "Commit",
+      "startMs": 1363.169,
+      "durationMs": 53.629,
+      "threadMs": 3.587,
+      "data": {
+        "frameSeqId": 393,
+        "layerTreeId": 3
+      }
+    },
+    {
+      "name": "Commit",
+      "startMs": 860.099,
+      "durationMs": 43.829,
+      "threadMs": 2.206,
+      "data": {
+        "frameSeqId": 357,
+        "layerTreeId": 3
+      }
+    },
+    {
+      "name": "HandlePostMessage",
+      "startMs": 514.641,
+      "durationMs": 39.965,
+      "threadMs": 30.097,
+      "data": {
+        "traceId": "12461815691291537745"
+      }
+    },
+    {
+      "name": "Commit",
+      "startMs": 908.989,
+      "durationMs": 39.213,
+      "threadMs": 1.872,
+      "data": {
+        "frameSeqId": 366,
+        "layerTreeId": 3
+      }
+    },
+    {
+      "name": "Commit",
+      "startMs": 432.45,
+      "durationMs": 36.815,
+      "threadMs": 1.844,
+      "data": {
+        "frameSeqId": 337,
+        "layerTreeId": 3
+      }
+    },
+    {
+      "name": "Commit",
+      "startMs": 728.342,
+      "durationMs": 33.478,
+      "threadMs": 2.684,
+      "data": {
+        "frameSeqId": 354,
+        "layerTreeId": 3
+      }
+    },
+    {
+      "name": "Commit",
+      "startMs": 674.512,
+      "durationMs": 29.812,
+      "threadMs": 1.882,
+      "data": {
+        "frameSeqId": 351,
+        "layerTreeId": 3
+      }
+    },
+    {
+      "name": "Commit",
+      "startMs": 482.868,
+      "durationMs": 28.722,
+      "threadMs": 1.47,
+      "data": {
+        "frameSeqId": 340,
+        "layerTreeId": 3
+      }
+    },
+    {
+      "name": "Commit",
+      "startMs": 397.743,
+      "durationMs": 22.686,
+      "threadMs": 1.235,
+      "data": {
+        "frameSeqId": 334,
+        "layerTreeId": 3
+      }
+    },
+    {
+      "name": "EventDispatch",
+      "startMs": 958.575,
+      "durationMs": 12.281,
+      "threadMs": 11.65,
+      "data": {
+        "sampleTraceId": 4859121984746515,
+        "type": "click"
+      }
+    },
+    {
+      "name": "FireAnimationFrame",
+      "startMs": 1223.655,
+      "durationMs": 10.126,
+      "threadMs": 10.096,
+      "data": {
+        "frame": "909F58F6917D7ACA8599F3DC936245F4",
+        "id": 16,
+        "sampleTraceId": 4859121984746977
+      }
+    },
+    {
+      "name": "FunctionCall",
+      "startMs": 1223.663,
+      "durationMs": 10.076,
+      "threadMs": 10.048,
+      "data": {
+        "columnNumber": 24365,
+        "frame": "909F58F6917D7ACA8599F3DC936245F4",
+        "functionName": "",
+        "isolate": "10696575351090308183",
+        "lineNumber": 1,
+        "sampleTraceId": 4859121984746976,
+        "scriptId": "17",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js"
+      }
+    },
+    {
+      "name": "EvaluateScript",
+      "startMs": 1419.134,
+      "durationMs": 9.077,
+      "threadMs": 9.075,
+      "data": {}
+    },
+    {
+      "name": "FireAnimationFrame",
+      "startMs": 583.281,
+      "durationMs": 8.854,
+      "threadMs": 5.919,
+      "data": {
+        "frame": "909F58F6917D7ACA8599F3DC936245F4",
+        "id": 8,
+        "sampleTraceId": 4859121984747125
+      }
+    },
+    {
+      "name": "FireAnimationFrame",
+      "startMs": 473.747,
+      "durationMs": 8.762,
+      "threadMs": 8.332,
+      "data": {
+        "frame": "909F58F6917D7ACA8599F3DC936245F4",
+        "id": 7,
+        "sampleTraceId": 4859121984745803
+      }
+    },
+    {
+      "name": "FireAnimationFrame",
+      "startMs": 423.556,
+      "durationMs": 8.737,
+      "threadMs": 3.22,
+      "data": {
+        "frame": "909F58F6917D7ACA8599F3DC936245F4",
+        "id": 6,
+        "sampleTraceId": 4859121984745775
+      }
+    },
+    {
+      "name": "FunctionCall",
+      "startMs": 423.567,
+      "durationMs": 8.695,
+      "threadMs": 3.18,
+      "data": {
+        "columnNumber": 24365,
+        "frame": "909F58F6917D7ACA8599F3DC936245F4",
+        "functionName": "",
+        "isolate": "10696575351090308183",
+        "lineNumber": 1,
+        "sampleTraceId": 4859121984745774,
+        "scriptId": "17",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js"
+      }
+    },
+    {
+      "name": "FunctionCall",
+      "startMs": 473.769,
+      "durationMs": 8.685,
+      "threadMs": 8.258,
+      "data": {
+        "columnNumber": 24365,
+        "frame": "909F58F6917D7ACA8599F3DC936245F4",
+        "functionName": "",
+        "isolate": "10696575351090308183",
+        "lineNumber": 1,
+        "sampleTraceId": 4859121984745802,
+        "scriptId": "17",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js"
+      }
+    },
+    {
+      "name": "FunctionCall",
+      "startMs": 583.289,
+      "durationMs": 8.56,
+      "threadMs": 5.627,
+      "data": {
+        "columnNumber": 24365,
+        "frame": "909F58F6917D7ACA8599F3DC936245F4",
+        "functionName": "",
+        "isolate": "10696575351090308183",
+        "lineNumber": 1,
+        "sampleTraceId": 4859121984747124,
+        "scriptId": "17",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js"
+      }
+    },
+    {
+      "name": "MajorGC",
+      "startMs": 1211.811,
+      "durationMs": 6.656,
+      "threadMs": 6.205,
+      "data": {
+        "type": "finalize incremental marking via stack guard",
+        "usedHeapSizeAfter": 10014036,
+        "usedHeapSizeBefore": 26337484
+      }
+    },
+    {
+      "name": "V8.GCFinalizeMC",
+      "startMs": 1211.816,
+      "durationMs": 6.619,
+      "threadMs": 6.171,
+      "data": {}
+    },
+    {
+      "name": "V8.GC_MARK_COMPACTOR",
+      "startMs": 1211.846,
+      "durationMs": 6.582,
+      "threadMs": 6.137,
+      "data": {
+        "epoch": 50
+      }
+    },
+    {
+      "name": "MinorGC",
+      "startMs": 475.099,
+      "durationMs": 6.326,
+      "threadMs": 5.904,
+      "data": {
+        "type": "allocation failure",
+        "usedHeapSizeAfter": 15741984,
+        "usedHeapSizeBefore": 22056604
+      }
+    },
+    {
+      "name": "V8.GCScavenger",
+      "startMs": 475.106,
+      "durationMs": 6.291,
+      "threadMs": 5.873,
+      "data": {}
+    }
+  ],
+  "sampled": {
+    "action": [
+      {
+        "name": "(program)",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 790.878,
+        "ancestors": [
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "_downloadAndCacheRangePromise",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+        "line": 1,
+        "column": 423658,
+        "selfMs": 52.69500000000001,
+        "ancestors": [
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "setTimeout",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 42.342999999999975,
+        "ancestors": [
+          {
+            "name": "_setTileReloadTimer",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 581468
+          },
+          {
+            "name": "_tileLoaded",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 575901
+          },
+          {
+            "name": "_loadTile",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 574410
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "getProgramParameter",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 18.652,
+        "ancestors": [
+          {
+            "name": "MA",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 125340
+          },
+          {
+            "name": "getProgram",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 16536
+          },
+          {
+            "name": "useProgram",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 55204
+          },
+          {
+            "name": "xM",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 34533
+          },
+          {
+            "name": "bM",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 34244
+          },
+          {
+            "name": "renderLayer",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 63589
+          },
+          {
+            "name": "render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 60774
+          },
+          {
+            "name": "_render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 177984
+          }
+        ]
+      },
+      {
+        "name": "draw",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+        "line": 1,
+        "column": 420797,
+        "selfMs": 17.62,
+        "ancestors": [
+          {
+            "name": "_drawGlyph",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 424717
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "(garbage collector)",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 17.282,
+        "ancestors": [
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "fetch",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 10.261,
+        "ancestors": [
+          {
+            "name": "Pn",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 29152
+          },
+          {
+            "name": "In",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 30822
+          },
+          {
+            "name": "c",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 32616
+          },
+          {
+            "name": "l",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 33233
+          },
+          {
+            "name": "c",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 32616
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "getProgramParameter",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 9.556999999999999,
+        "ancestors": [
+          {
+            "name": "MA",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 125340
+          },
+          {
+            "name": "getProgram",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 16536
+          },
+          {
+            "name": "useProgram",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 55204
+          },
+          {
+            "name": "tM",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 22694
+          },
+          {
+            "name": "Yj",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 19190
+          },
+          {
+            "name": "renderLayer",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 63589
+          },
+          {
+            "name": "render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 60774
+          },
+          {
+            "name": "_render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 177984
+          }
+        ]
+      },
+      {
+        "name": "requestAnimationFrame",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 8.632,
+        "ancestors": [
+          {
+            "name": "frame",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 24313
+          },
+          {
+            "name": "triggerRepaint",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 181604
+          },
+          {
+            "name": "_render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 177984
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 181708
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 24365
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "fetch",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 8.204,
+        "ancestors": [
+          {
+            "name": "Pn",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 29152
+          },
+          {
+            "name": "In",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 30822
+          },
+          {
+            "name": "Rn",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 31381
+          },
+          {
+            "name": "_loadGlyphRange",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 424121
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "getUniformBlockIndex",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 7.5440000000000005,
+        "ancestors": [
+          {
+            "name": "eA",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 112501
+          },
+          {
+            "name": "MA",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 125340
+          },
+          {
+            "name": "getProgram",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 16536
+          },
+          {
+            "name": "useProgram",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 55204
+          },
+          {
+            "name": "xM",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 34533
+          },
+          {
+            "name": "bM",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 34244
+          },
+          {
+            "name": "renderLayer",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 63589
+          },
+          {
+            "name": "render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 60774
+          }
+        ]
+      },
+      {
+        "name": "Blob",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 6.566,
+        "ancestors": [
+          {
+            "name": "qt",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 21370
+          },
+          {
+            "name": "s",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 32556
+          },
+          {
+            "name": "c",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 32616
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "Ty",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+        "line": 1,
+        "column": 422008,
+        "selfMs": 6.561999999999999,
+        "ancestors": [
+          {
+            "name": "wy",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 421889
+          },
+          {
+            "name": "draw",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 420797
+          },
+          {
+            "name": "_drawGlyph",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 424717
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "postMessage",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 6.207000000000001,
+        "ancestors": [
+          {
+            "name": "completeTask",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 434327
+          },
+          {
+            "name": "processTask",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 433881
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "_containerDimensions",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+        "line": 814,
+        "column": 174790,
+        "selfMs": 5.643999999999999,
+        "ancestors": [
+          {
+            "name": "_resizeInternal",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 158069
+          },
+          {
+            "name": "resize",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 157796
+          },
+          {
+            "name": "resize",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 210445
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/index-DNueoaRF.js",
+            "line": 24,
+            "column": 3951
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "texSubImage2D",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 5.361000000000001,
+        "ancestors": [
+          {
+            "name": "update",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 253548
+          },
+          {
+            "name": "Mf",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 253421
+          },
+          {
+            "name": "loadTile",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 448767
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "getProgramParameter",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 5.297,
+        "ancestors": [
+          {
+            "name": "MA",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 125340
+          },
+          {
+            "name": "getProgram",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 16536
+          },
+          {
+            "name": "useProgram",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 55204
+          },
+          {
+            "name": "renderTileMasks",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 56692
+          },
+          {
+            "name": "renderTileClippingMasks",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 56264
+          },
+          {
+            "name": "render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 60774
+          },
+          {
+            "name": "_render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 177984
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 181708
+          }
+        ]
+      },
+      {
+        "name": "getProgramParameter",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 5.103,
+        "ancestors": [
+          {
+            "name": "MA",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 125340
+          },
+          {
+            "name": "getProgram",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 16536
+          },
+          {
+            "name": "useProgram",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 55204
+          },
+          {
+            "name": "EM",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 37189
+          },
+          {
+            "name": "TM",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 36993
+          },
+          {
+            "name": "CM",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 36242
+          },
+          {
+            "name": "renderLayer",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 63589
+          },
+          {
+            "name": "render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 60774
+          }
+        ]
+      },
+      {
+        "name": "createImageBitmap",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 4.428,
+        "ancestors": [
+          {
+            "name": "qt",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 21370
+          },
+          {
+            "name": "s",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 32556
+          },
+          {
+            "name": "c",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 32616
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "(idle)",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 4.3740000000000006,
+        "ancestors": [
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      }
+    ],
+    "beforeInput": [
+      {
+        "name": "(program)",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 358.93599999999986,
+        "ancestors": [
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "_downloadAndCacheRangePromise",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+        "line": 1,
+        "column": 423658,
+        "selfMs": 52.69500000000001,
+        "ancestors": [
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "setTimeout",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 25.727999999999998,
+        "ancestors": [
+          {
+            "name": "_setTileReloadTimer",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 581468
+          },
+          {
+            "name": "_tileLoaded",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 575901
+          },
+          {
+            "name": "_loadTile",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 574410
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "draw",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+        "line": 1,
+        "column": 420797,
+        "selfMs": 17.62,
+        "ancestors": [
+          {
+            "name": "_drawGlyph",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 424717
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "(garbage collector)",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 10.521,
+        "ancestors": [
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "fetch",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 10.261,
+        "ancestors": [
+          {
+            "name": "Pn",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 29152
+          },
+          {
+            "name": "In",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 30822
+          },
+          {
+            "name": "c",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 32616
+          },
+          {
+            "name": "l",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 33233
+          },
+          {
+            "name": "c",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 32616
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "fetch",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 8.204,
+        "ancestors": [
+          {
+            "name": "Pn",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 29152
+          },
+          {
+            "name": "In",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 30822
+          },
+          {
+            "name": "Rn",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 31381
+          },
+          {
+            "name": "_loadGlyphRange",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 424121
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "Blob",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 6.566,
+        "ancestors": [
+          {
+            "name": "qt",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 21370
+          },
+          {
+            "name": "s",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 32556
+          },
+          {
+            "name": "c",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 32616
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "Ty",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+        "line": 1,
+        "column": 422008,
+        "selfMs": 6.561999999999999,
+        "ancestors": [
+          {
+            "name": "wy",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 421889
+          },
+          {
+            "name": "draw",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 420797
+          },
+          {
+            "name": "_drawGlyph",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 424717
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "postMessage",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 6.207000000000001,
+        "ancestors": [
+          {
+            "name": "completeTask",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 434327
+          },
+          {
+            "name": "processTask",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 433881
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "getProgramParameter",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 5.297,
+        "ancestors": [
+          {
+            "name": "MA",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 125340
+          },
+          {
+            "name": "getProgram",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 16536
+          },
+          {
+            "name": "useProgram",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 55204
+          },
+          {
+            "name": "renderTileMasks",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 56692
+          },
+          {
+            "name": "renderTileClippingMasks",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 56264
+          },
+          {
+            "name": "render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 60774
+          },
+          {
+            "name": "_render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 177984
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 181708
+          }
+        ]
+      },
+      {
+        "name": "requestAnimationFrame",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 5.1209999999999996,
+        "ancestors": [
+          {
+            "name": "frame",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 24313
+          },
+          {
+            "name": "triggerRepaint",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 181604
+          },
+          {
+            "name": "_render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 177984
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 181708
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 24365
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "createImageBitmap",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 4.428,
+        "ancestors": [
+          {
+            "name": "qt",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 21370
+          },
+          {
+            "name": "s",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 32556
+          },
+          {
+            "name": "c",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 32616
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "(idle)",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 4.3740000000000006,
+        "ancestors": [
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "measureText",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 3.226,
+        "ancestors": [
+          {
+            "name": "draw",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 420797
+          },
+          {
+            "name": "_drawGlyph",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 424717
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "ll",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+        "line": 1,
+        "column": 184619,
+        "selfMs": 3.049,
+        "ancestors": [
+          {
+            "name": "ll",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 184619
+          },
+          {
+            "name": "ll",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 184619
+          },
+          {
+            "name": "ll",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 184619
+          },
+          {
+            "name": "ll",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 184619
+          },
+          {
+            "name": "completeTask",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 434327
+          },
+          {
+            "name": "processTask",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 433881
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "postMessage",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 2.947,
+        "ancestors": [
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 432667
+          },
+          {
+            "name": "sendAsync",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 432642
+          },
+          {
+            "name": "loadTile",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 467465
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "evaluate",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+        "line": 1,
+        "column": 151452,
+        "selfMs": 2.262,
+        "ancestors": [
+          {
+            "name": "possiblyEvaluate",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 192486
+          },
+          {
+            "name": "possiblyEvaluate",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 187432
+          },
+          {
+            "name": "possiblyEvaluate",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 189977
+          },
+          {
+            "name": "possiblyEvaluate",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 190419
+          },
+          {
+            "name": "recalculate",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 199965
+          },
+          {
+            "name": "recalculate",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 405977
+          },
+          {
+            "name": "update",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 82527
+          },
+          {
+            "name": "_render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 177984
+          }
+        ]
+      },
+      {
+        "name": "texSubImage2D",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 2.237,
+        "ancestors": [
+          {
+            "name": "update",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 253548
+          },
+          {
+            "name": "Mf",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 253421
+          },
+          {
+            "name": "loadTile",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 448767
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "readSVarint",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+        "line": 1,
+        "column": 353413,
+        "selfMs": 2.2159999999999997,
+        "ancestors": [
+          {
+            "name": "c_",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 356423
+          },
+          {
+            "name": "readFields",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 352461
+          },
+          {
+            "name": "readMessage",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 352545
+          },
+          {
+            "name": "s_",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 356208
+          },
+          {
+            "name": "readFields",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 352461
+          },
+          {
+            "name": "readMessage",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 352545
+          },
+          {
+            "name": "o_",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 356162
+          },
+          {
+            "name": "readFields",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 352461
+          }
+        ]
+      }
+    ],
+    "handler": [
+      {
+        "name": "_containerDimensions",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+        "line": 814,
+        "column": 174790,
+        "selfMs": 5.643999999999999,
+        "ancestors": [
+          {
+            "name": "_resizeInternal",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 158069
+          },
+          {
+            "name": "resize",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 157796
+          },
+          {
+            "name": "resize",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 210445
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/index-DNueoaRF.js",
+            "line": 24,
+            "column": 3951
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "_resizeCanvas",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+        "line": 814,
+        "column": 177078,
+        "selfMs": 1.584,
+        "ancestors": [
+          {
+            "name": "_resizeInternal",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 158069
+          },
+          {
+            "name": "resize",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 157796
+          },
+          {
+            "name": "resize",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 210445
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/index-DNueoaRF.js",
+            "line": 24,
+            "column": 3951
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "Ot",
+        "url": "http://127.0.0.1:43899/assets/index-DNueoaRF.js",
+        "line": 24,
+        "column": 6050,
+        "selfMs": 1.3230000000000002,
+        "ancestors": [
+          {
+            "name": "vt",
+            "url": "http://127.0.0.1:43899/assets/index-DNueoaRF.js",
+            "line": 24,
+            "column": 196
+          },
+          {
+            "name": "Wt",
+            "url": "http://127.0.0.1:43899/assets/index-DNueoaRF.js",
+            "line": 24,
+            "column": 13954
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "_updateCompact",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+        "line": 814,
+        "column": 127615,
+        "selfMs": 0.831,
+        "ancestors": [
+          {
+            "name": "fire",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 34769
+          },
+          {
+            "name": "resize",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 157796
+          },
+          {
+            "name": "resize",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 210445
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/index-DNueoaRF.js",
+            "line": 24,
+            "column": 3951
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "_containerDimensions",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+        "line": 814,
+        "column": 174790,
+        "selfMs": 0.822,
+        "ancestors": [
+          {
+            "name": "_resizeTransform",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 158605
+          },
+          {
+            "name": "_resizeInternal",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 158069
+          },
+          {
+            "name": "resize",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 157796
+          },
+          {
+            "name": "resize",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 210445
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/index-DNueoaRF.js",
+            "line": 24,
+            "column": 3951
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "w",
+        "url": "http://127.0.0.1:43899/assets/index-DNueoaRF.js",
+        "line": 9,
+        "column": 22519,
+        "selfMs": 0.809,
+        "ancestors": [
+          {
+            "name": "onViewChange",
+            "url": "http://127.0.0.1:43899/assets/index-DNueoaRF.js",
+            "line": 24,
+            "column": 3411
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 207290
+          },
+          {
+            "name": "fire",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 34769
+          },
+          {
+            "name": "resize",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 157796
+          },
+          {
+            "name": "resize",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 210445
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/index-DNueoaRF.js",
+            "line": 24,
+            "column": 3951
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "(program)",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 0.49000000000000005,
+        "ancestors": [
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "querySelector",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 0.463,
+        "ancestors": [
+          {
+            "name": "A",
+            "url": "http://127.0.0.1:43899/assets/index-DNueoaRF.js",
+            "line": 9,
+            "column": 25333
+          },
+          {
+            "name": "vt",
+            "url": "http://127.0.0.1:43899/assets/index-DNueoaRF.js",
+            "line": 24,
+            "column": 196
+          },
+          {
+            "name": "Wt",
+            "url": "http://127.0.0.1:43899/assets/index-DNueoaRF.js",
+            "line": 24,
+            "column": 13954
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "Z",
+        "url": "http://127.0.0.1:43899/assets/index-DNueoaRF.js",
+        "line": 24,
+        "column": 3989,
+        "selfMs": 0.457,
+        "ancestors": [
+          {
+            "name": "onStatus",
+            "url": "http://127.0.0.1:43899/assets/index-DNueoaRF.js",
+            "line": 24,
+            "column": 3391
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 207165
+          },
+          {
+            "name": "fire",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 34769
+          },
+          {
+            "name": "resize",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 157796
+          },
+          {
+            "name": "resize",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 210445
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/index-DNueoaRF.js",
+            "line": 24,
+            "column": 3951
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "replaceState",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 0.347,
+        "ancestors": [
+          {
+            "name": "yt",
+            "url": "http://127.0.0.1:43899/assets/index-DNueoaRF.js",
+            "line": 24,
+            "column": 1864
+          },
+          {
+            "name": "Wt",
+            "url": "http://127.0.0.1:43899/assets/index-DNueoaRF.js",
+            "line": 24,
+            "column": 13954
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "vt",
+        "url": "http://127.0.0.1:43899/assets/index-DNueoaRF.js",
+        "line": 24,
+        "column": 196,
+        "selfMs": 0.324,
+        "ancestors": [
+          {
+            "name": "Wt",
+            "url": "http://127.0.0.1:43899/assets/index-DNueoaRF.js",
+            "line": 24,
+            "column": 13954
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "",
+        "url": "http://127.0.0.1:43899/assets/index-DNueoaRF.js",
+        "line": 24,
+        "column": 843,
+        "selfMs": 0.299,
+        "ancestors": [
+          {
+            "name": "vt",
+            "url": "http://127.0.0.1:43899/assets/index-DNueoaRF.js",
+            "line": 24,
+            "column": 196
+          },
+          {
+            "name": "Wt",
+            "url": "http://127.0.0.1:43899/assets/index-DNueoaRF.js",
+            "line": 24,
+            "column": 13954
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "_calculateNearFarZ",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+        "line": 812,
+        "column": 24812,
+        "selfMs": 0.262,
+        "ancestors": [
+          {
+            "name": "_calcMatrices",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 25479
+          },
+          {
+            "name": "calcMatrices",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 18611
+          },
+          {
+            "name": "_calcMatrices",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 9203
+          },
+          {
+            "name": "resize",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 8296
+          },
+          {
+            "name": "resize",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 15541
+          },
+          {
+            "name": "_resizeTransform",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 158605
+          },
+          {
+            "name": "_resizeInternal",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 158069
+          },
+          {
+            "name": "resize",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 157796
+          }
+        ]
+      },
+      {
+        "name": "mark",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 0.029,
+        "ancestors": [
+          {
+            "name": "document.addEventListener.capture",
+            "url": "",
+            "line": 12,
+            "column": 39
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      }
+    ],
+    "afterHandler": [
+      {
+        "name": "(program)",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 429.27400000000006,
+        "ancestors": [
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "getProgramParameter",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 18.652,
+        "ancestors": [
+          {
+            "name": "MA",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 125340
+          },
+          {
+            "name": "getProgram",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 16536
+          },
+          {
+            "name": "useProgram",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 55204
+          },
+          {
+            "name": "xM",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 34533
+          },
+          {
+            "name": "bM",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 34244
+          },
+          {
+            "name": "renderLayer",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 63589
+          },
+          {
+            "name": "render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 60774
+          },
+          {
+            "name": "_render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 177984
+          }
+        ]
+      },
+      {
+        "name": "setTimeout",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 16.615000000000002,
+        "ancestors": [
+          {
+            "name": "_setTileReloadTimer",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 581468
+          },
+          {
+            "name": "_tileLoaded",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 575901
+          },
+          {
+            "name": "_loadTile",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 574410
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "getProgramParameter",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 9.556999999999999,
+        "ancestors": [
+          {
+            "name": "MA",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 125340
+          },
+          {
+            "name": "getProgram",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 16536
+          },
+          {
+            "name": "useProgram",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 55204
+          },
+          {
+            "name": "tM",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 22694
+          },
+          {
+            "name": "Yj",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 19190
+          },
+          {
+            "name": "renderLayer",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 63589
+          },
+          {
+            "name": "render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 60774
+          },
+          {
+            "name": "_render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 177984
+          }
+        ]
+      },
+      {
+        "name": "getUniformBlockIndex",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 7.5440000000000005,
+        "ancestors": [
+          {
+            "name": "eA",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 112501
+          },
+          {
+            "name": "MA",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 125340
+          },
+          {
+            "name": "getProgram",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 16536
+          },
+          {
+            "name": "useProgram",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 55204
+          },
+          {
+            "name": "xM",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 34533
+          },
+          {
+            "name": "bM",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 34244
+          },
+          {
+            "name": "renderLayer",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 63589
+          },
+          {
+            "name": "render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 60774
+          }
+        ]
+      },
+      {
+        "name": "(garbage collector)",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 6.760999999999999,
+        "ancestors": [
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "getProgramParameter",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 5.103,
+        "ancestors": [
+          {
+            "name": "MA",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 125340
+          },
+          {
+            "name": "getProgram",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 16536
+          },
+          {
+            "name": "useProgram",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 55204
+          },
+          {
+            "name": "EM",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 37189
+          },
+          {
+            "name": "TM",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 36993
+          },
+          {
+            "name": "CM",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 36242
+          },
+          {
+            "name": "renderLayer",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 63589
+          },
+          {
+            "name": "render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 60774
+          }
+        ]
+      },
+      {
+        "name": "requestAnimationFrame",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 3.511,
+        "ancestors": [
+          {
+            "name": "frame",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 24313
+          },
+          {
+            "name": "triggerRepaint",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 181604
+          },
+          {
+            "name": "_render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 177984
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 181708
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 24365
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "texSubImage2D",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 3.124,
+        "ancestors": [
+          {
+            "name": "update",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 253548
+          },
+          {
+            "name": "Mf",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 253421
+          },
+          {
+            "name": "loadTile",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 448767
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "set",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+        "line": 812,
+        "column": 109280,
+        "selfMs": 2.742,
+        "ancestors": [
+          {
+            "name": "LM",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 43728
+          },
+          {
+            "name": "IM",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 43253
+          },
+          {
+            "name": "renderLayer",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 63589
+          },
+          {
+            "name": "render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 60774
+          },
+          {
+            "name": "_render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 177984
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 181708
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 24365
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "TM",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+        "line": 814,
+        "column": 36993,
+        "selfMs": 1.64,
+        "ancestors": [
+          {
+            "name": "CM",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 36242
+          },
+          {
+            "name": "renderLayer",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 63589
+          },
+          {
+            "name": "render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 60774
+          },
+          {
+            "name": "_render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 177984
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 181708
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 24365
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "get verticalTextBoxStartIndex",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+        "line": 1,
+        "column": 218232,
+        "selfMs": 1.453,
+        "ancestors": [
+          {
+            "name": "deserializeCollisionBoxes",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 397482
+          },
+          {
+            "name": "placeLayerBucketPart",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 607696
+          },
+          {
+            "name": "continuePlacement",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 622100
+          },
+          {
+            "name": "continuePlacement",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 622774
+          },
+          {
+            "name": "_updatePlacement",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 99401
+          },
+          {
+            "name": "_render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 177984
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 181708
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 24365
+          }
+        ]
+      },
+      {
+        "name": "recalculate",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+        "line": 1,
+        "column": 199965,
+        "selfMs": 1.364,
+        "ancestors": [
+          {
+            "name": "update",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 82527
+          },
+          {
+            "name": "_render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 177984
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 181708
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 24365
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "IM",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+        "line": 814,
+        "column": 43253,
+        "selfMs": 1.284,
+        "ancestors": [
+          {
+            "name": "renderLayer",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 63589
+          },
+          {
+            "name": "render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 60774
+          },
+          {
+            "name": "_render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 177984
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 181708
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 24365
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "OE",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+        "line": 1,
+        "column": 585800,
+        "selfMs": 1.276,
+        "ancestors": [
+          {
+            "name": "rD",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 597888
+          },
+          {
+            "name": "dD",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 605073
+          },
+          {
+            "name": "bD",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 622572
+          },
+          {
+            "name": "_updatePlacement",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 99401
+          },
+          {
+            "name": "_render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 177984
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 181708
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 24365
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "draw",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+        "line": 814,
+        "column": 1265,
+        "selfMs": 1.122,
+        "ancestors": [
+          {
+            "name": "xM",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 34533
+          },
+          {
+            "name": "bM",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 34244
+          },
+          {
+            "name": "renderLayer",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 63589
+          },
+          {
+            "name": "render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 60774
+          },
+          {
+            "name": "_render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 177984
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 181708
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 24365
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "addLayer",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+        "line": 1,
+        "column": 630166,
+        "selfMs": 1.1,
+        "ancestors": [
+          {
+            "name": "_updatePlacement",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 99401
+          },
+          {
+            "name": "_render",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 177984
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 814,
+            "column": 181708
+          },
+          {
+            "name": "",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 24365
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "loadVectorData",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+        "line": 1,
+        "column": 555479,
+        "selfMs": 1.093,
+        "ancestors": [
+          {
+            "name": "_afterTileLoadWorkerResponse",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 446619
+          },
+          {
+            "name": "loadTile",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 445026
+          },
+          {
+            "name": "(root)",
+            "url": "",
+            "line": 0,
+            "column": 0
+          }
+        ]
+      },
+      {
+        "name": "_calcMatrices",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+        "line": 812,
+        "column": 25479,
+        "selfMs": 1.093,
+        "ancestors": [
+          {
+            "name": "calcMatrices",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 18611
+          },
+          {
+            "name": "_calcMatrices",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 9203
+          },
+          {
+            "name": "apply",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 2917
+          },
+          {
+            "name": "apply",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 18784
+          },
+          {
+            "name": "clone",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 18738
+          },
+          {
+            "name": "dD",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 605073
+          },
+          {
+            "name": "bD",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 622572
+          },
+          {
+            "name": "_updatePlacement",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 812,
+            "column": 99401
+          }
+        ]
+      },
+      {
+        "name": "projectAndGetPerspectiveRatio",
+        "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+        "line": 1,
+        "column": 601815,
+        "selfMs": 1.091,
+        "ancestors": [
+          {
+            "name": "placeCollisionBox",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 598284
+          },
+          {
+            "name": "n",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 609481
+          },
+          {
+            "name": "A.t",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 609678
+          },
+          {
+            "name": "i",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 609227
+          },
+          {
+            "name": "A",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 608550
+          },
+          {
+            "name": "placeLayerBucketPart",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 607696
+          },
+          {
+            "name": "continuePlacement",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 622100
+          },
+          {
+            "name": "continuePlacement",
+            "url": "http://127.0.0.1:43899/assets/world-map-BBBq9nv9.js",
+            "line": 1,
+            "column": 622774
+          }
+        ]
+      }
+    ]
+  },
+  "notes": [
+    "Nested trace-category durations overlap and must not be added together.",
+    "CPU samples are statistical attribution, not exact function timers; native/program samples need trace context.",
+    "Primary metric ends before a separate diagnostic read; later map-frame counts and diagnostic end marks do not extend the metric."
+  ]
+}

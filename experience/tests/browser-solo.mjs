@@ -76,6 +76,8 @@ async function makeScenario(name, { mobile = false, locale = 'en', seed = {}, fa
     return route.fulfill({ status: bytes ? 200 : 404, body: bytes || 'Missing packaged resource', contentType: mime[extname(path)] || 'application/octet-stream' });
   });
   await context.addInitScript(({ origin, values }) => {
+    window.__QA_INPUT_LOG__ = [];
+    document.addEventListener('pointerdown', event => window.__QA_INPUT_LOG__.push({ type: event.pointerType, trusted: event.isTrusted, target: event.target.id || event.target.tagName }), true);
     if (location.origin === origin && !sessionStorage.getItem('solo-qa-seeded')) {
       for (const [key, value] of Object.entries(values)) localStorage.setItem(key, value);
       sessionStorage.setItem('solo-qa-seeded', '1');
@@ -92,8 +94,10 @@ async function makeScenario(name, { mobile = false, locale = 'en', seed = {}, fa
 }
 async function close(context) { await context.close(); contexts.delete(context); }
 async function capture(page, name) {
-  const path = join(output, `${name}.png`); await page.screenshot({ path, fullPage: true });
-  report.screenshots.push({ name, file: `${name}.png`, sha256: sha(readFileSync(path)) }); persist();
+  const phone = touchContexts.has(page.context());
+  if (phone) await page.locator('.preview-frame').scrollIntoViewIfNeeded();
+  const path = join(output, `${name}.png`); await page.screenshot({ path, fullPage: !phone });
+  report.screenshots.push({ name, file: `${name}.png`, sha256: sha(readFileSync(path)), fullPage: !phone }); persist();
 }
 async function streetReady(page, mode) {
   await page.waitForFunction(expected => {
@@ -155,12 +159,12 @@ async function drag(page, selector, { dx = 90, dy = 15, button = 'left' } = {}) 
 }
 async function touchGesture(page, selector, twoFingers = false) {
   const rect = await page.locator(selector).boundingBox();
-  const x = rect.x + rect.width / 2, y = rect.y + rect.height / 2;
+  const x = rect.x + rect.width * (selector.includes('world-map') ? 0.7 : 0.5), y = rect.y + rect.height / 2;
   const cdp = await page.context().newCDPSession(page);
   const points = delta => twoFingers ? [{ x: x - 35 + delta, y: y - delta / 2, id: 1 }, { x: x + 35 + delta, y: y - delta / 2, id: 2 }]
     : [{ x: x + delta, y, id: 1 }];
   await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: points(0) });
-  for (let i = 1; i <= 6; i++) await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: points(i * 7) });
+  for (let i = 1; i <= 6; i++) { await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: points(i * 7) }); await page.waitForTimeout(35); }
   await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] }); await cdp.detach();
 }
 async function run(name, body) {
@@ -171,6 +175,12 @@ async function run(name, body) {
 }
 
 let streetPlace, areaPlace, eiffelPlace;
+if (process.env.EXPERIENCE_QA_REUSE_REPORT) {
+  const path = resolve(process.env.EXPERIENCE_QA_REUSE_REPORT), bytes = readFileSync(path), previous = JSON.parse(bytes);
+  streetPlace = previous.checks.find(value => value.id === 'street-save-keeps-exact-v2-view-light-and-plain-note' && value.pass)?.evidence;
+  if (!streetPlace?.id || streetPlace.representation !== 'street') throw new Error('Previous report lacks a successful actual saved Kyoto view.');
+  report.reusedRecordSource = { path, sha256: sha(bytes), recordId: streetPlace.id, packageSha256: previous.artifact.manifestSha256 };
+}
 try {
   service = await startServer({ port: 0, host: '127.0.0.1', databasePath: join(output, 'rooms.sqlite'), config: { provider: { apiKey: '', model: '' } } });
   const proxyURL = process.env.HTTPS_PROXY || process.env.HTTP_PROXY;
@@ -354,6 +364,26 @@ try {
     await locale(page, 'en'); await mapReady(page);
     check('reopened-map-language-does-not-reframe', closeEnough(await view(page), areaPlace.view)
       && (await home(page)).map.cameraTransitions === beforeLocale.cameraTransitions, { before: beforeLocale, actual: await view(page), map: (await home(page)).map });
+    check('same-size-locale-change-does-not-resize-map', typeof beforeLocale.resizeEvents === 'number'
+      && (await home(page)).map.resizeEvents === beforeLocale.resizeEvents, { before: beforeLocale.resizeEvents, after: (await home(page)).map.resizeEvents });
+    await page.setViewportSize({ width: 1280, height: 900 });
+    await page.waitForFunction(previous => {
+      const canvas = document.querySelector('#world-map canvas');
+      return window.__HOME__.snapshot().map.resizeEvents > previous && Math.abs(canvas.width - canvas.closest('#world-map').clientWidth) < 2;
+    }, beforeLocale.resizeEvents);
+    await mapReady(page);
+    const resized = await page.locator('#world-map canvas').evaluate(canvas => ({ width: canvas.width, height: canvas.height,
+      rect: canvas.getBoundingClientRect().toJSON(), host: canvas.closest('#world-map').getBoundingClientRect().toJSON() }));
+    check('actual-viewport-resize-updates-canvas-and-keeps-map-pose', (await home(page)).map.resizeEvents > beforeLocale.resizeEvents
+      && Math.abs(resized.rect.width - resized.host.width) < 1 && Math.abs(resized.width - resized.host.width) < 2
+      && closeEnough(await view(page), areaPlace.view), { resized, map: (await home(page)).map, view: await view(page) });
+    if (streetPlace) {
+      await reopen(page, streetPlace); await streetReady(page, 'night');
+      await page.setViewportSize({ width: 1440, height: 1000 }); await reopen(page, areaPlace);
+      const returned = await page.locator('#world-map canvas').evaluate(canvas => ({ width: canvas.width, hostWidth: canvas.closest('#world-map').clientWidth }));
+      check('hidden-map-resize-reopens-correct-canvas-and-saved-pose', Math.abs(returned.width - returned.hostWidth) < 2
+        && closeEnough(await view(page), areaPlace.view), { returned, view: await view(page), map: (await home(page)).map });
+    }
     await page.locator(`[data-kept-remove="${eiffelPlace.id}"]`).click(); await page.locator('#solo-cancel-remove').click();
     check('remove-cancel-preserves-record', (await saved(page)).places.some(value => value.id === eiffelPlace.id), (await saved(page)).places.map(value => value.id));
     await page.locator(`[data-kept-remove="${eiffelPlace.id}"]`).click(); await page.locator('#solo-confirm-remove').click();
@@ -373,9 +403,18 @@ try {
       const mode = language === 'en' ? 'day' : 'night';
       await page.locator(`#lighting-${mode}`).tap(); await streetReady(page, mode);
       const touchHelp = await page.evaluate(() => ({ coarse: matchMedia('(pointer: coarse)').matches,
-        fine: matchMedia('(pointer: fine)').matches, guidance: document.querySelector('#view-guidance').textContent }));
-      check(`phone-${language}-actual-tap-keeps-touch-guidance`, touchHelp.coarse && !touchHelp.fine
+        fine: matchMedia('(pointer: fine)').matches, guidance: document.querySelector('#view-guidance').textContent, lastInput: window.__QA_INPUT_LOG__.at(-1) }));
+      check(`phone-${language}-actual-tap-keeps-touch-guidance`, touchHelp.lastInput?.type === 'touch' && touchHelp.lastInput.trusted
         && /Tap|轻触/.test(touchHelp.guidance), touchHelp);
+      if (language === 'en') {
+        await page.locator('#lighting-day').click();
+        const mouseHelp = await page.evaluate(() => ({ touch: window.__HOME__.snapshot().touchControls, input: window.__QA_INPUT_LOG__.at(-1), guidance: document.querySelector('#view-guidance').textContent }));
+        await page.locator('#lighting-day').tap();
+        const restoredTouchHelp = await page.evaluate(() => ({ touch: window.__HOME__.snapshot().touchControls, input: window.__QA_INPUT_LOG__.at(-1), guidance: document.querySelector('#view-guidance').textContent }));
+        check('hybrid-actual-mouse-and-touch-select-appropriate-guidance', mouseHelp.input?.type === 'mouse' && mouseHelp.touch === false
+          && /Click/.test(mouseHelp.guidance) && restoredTouchHelp.input?.type === 'touch' && restoredTouchHelp.touch === true
+          && /Tap/.test(restoredTouchHelp.guidance), { mouseHelp, restoredTouchHelp });
+      }
       if (!(await page.evaluate(() => window.__TOUR_GAME__.inspection().enabled))) await page.locator('#solo-inspect').tap();
       await page.locator('#live-stage canvas').scrollIntoViewIfNeeded();
       const before = await view(page); await touchGesture(page, '#live-stage canvas');
@@ -393,7 +432,7 @@ try {
     await search(page, 'Shijo Bridge Kyoto', text => /Shij[oō]|四条|四條/i.test(text));
     await page.locator('#world-map canvas').scrollIntoViewIfNeeded();
     const beforeMap = await view(page), queriesBeforePan = nearbyCount(record);
-    await touchGesture(page, '#world-map canvas'); await mapReady(page);
+    await touchGesture(page, '#world-map canvas', true); await mapReady(page);
     const pannedMap = await view(page);
     check('phone-touch-map-pan-is-deliberate-without-query', !closeEnough(beforeMap.center, pannedMap.center)
       && nearbyCount(record) === queriesBeforePan, { beforeMap, pannedMap });

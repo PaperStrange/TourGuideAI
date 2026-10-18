@@ -29,6 +29,7 @@ let connectionMessage = 'serviceChecking', connectionPending = false;
 let invitationNeedsConfirmation = false;
 let solo, soloPaused = false, restoring = false, keptRoute = false, mapViewToRestore = null, restoreGeneration = 0;
 let previewRepresentation = null, restoreController;
+let touchControls = matchMedia('(pointer: coarse)').matches, inputHelpDirty = false;
 
 function kyotoCenter() {
   const place = resolveStops(['crossing'], locale)[0];
@@ -160,12 +161,13 @@ function showPreview() {
 }
 function updatePreviewCopy() {
   if (!$('#preview-kind')) return;
+  inputHelpDirty = false;
   const world = mode === 'together' && !localPreview, street = usesStreet();
   $('#world-map').setAttribute('aria-label', t(world ? 'world' : center.kind === 'country' ? 'country' : 'map3d'));
   $('#preview-kind').textContent = t(world ? 'world' : street ? 'live' : center.kind === 'country' ? 'country' : 'map3d');
   $('#preview-title').textContent = world ? room?.title || t('together') : center.title;
   $('#preview-note').textContent = t(world ? 'worldNote' : street ? 'streetNote' : center.kind === 'country' ? 'countryNote' : 'areaNote');
-  const touch = matchMedia('(pointer: coarse)').matches;
+  const touch = touchControls;
   $('#view-guidance').textContent = t(street ? touch ? 'walkTouchHelp' : 'walkHelp' : touch ? 'mapTouchHelp' : 'mapHelp');
   $('#lighting-controls').hidden = !street; $('#preview-reset').hidden = !street;
   $('#back-world').hidden = mode !== 'together' || !localPreview;
@@ -234,7 +236,7 @@ async function selectCenter(place, { preserveMapView = false } = {}) {
 
 function soloContext() {
   const street = usesStreet(), light = liveView?.getLightingState();
-  return { mode, center, origin: discoveryCenter, street, restoring,
+  return { mode, center, origin: discoveryCenter, street, restoring, touch: touchControls,
     ready: street ? sceneState === 'ready' && light?.phase === 'ready' : $('#world-map')?.dataset.mapStatus === 'ready',
     lighting: light?.mode || lighting, view: street ? liveView?.captureView() : worldMap?.captureView(),
     route: routes[selectedRoute] || { id: 'selected-place', title: center.title, stops: [center] } };
@@ -510,6 +512,19 @@ function boot() {
   });
   applyCopy(); checkService();
   $('#home-app').addEventListener('click', handleClick);
+  $('#home-app').addEventListener('click', () => { if (inputHelpDirty) updatePreviewCopy(); });
+  // 混合输入设备以实际操作方式显示提示；媒体查询仅决定初始提示。
+  $('#home-app').addEventListener('pointerdown', event => {
+    if (!['touch', 'mouse'].includes(event.pointerType)) return;
+    const touch = event.pointerType === 'touch';
+    if (touch !== touchControls) {
+      touchControls = touch; inputHelpDirty = true;
+      if (event.target.closest('#live-stage, #world-map')) updatePreviewCopy();
+    }
+  }, { passive: true, capture: true });
+  $('#live-stage').addEventListener('keydown', event => {
+    if (touchControls && !event.altKey && !event.ctrlKey && !event.metaKey) { touchControls = false; updatePreviewCopy(); }
+  });
   $('#service-connection-form').addEventListener('submit', event => { event.preventDefault(); void connectService(); });
   $('#service-endpoint').addEventListener('input', () => $('#service-endpoint').removeAttribute('aria-invalid'));
   $('#traveler-name').addEventListener('input', () => $('#traveler-name').setCustomValidity(''));
@@ -536,7 +551,7 @@ function boot() {
   });
   if (import.meta.env.DEV || params.get('qa') === '1') window.__HOME__ = Object.freeze({ snapshot: () => ({ mode, center: { ...center }, localPreview, sceneState,
     lighting, room: room ? structuredClone(room) : null, serviceReady, aiReady,
-    solo: solo?.snapshot(), currentView: soloContext().view,
+    solo: solo?.snapshot(), currentView: soloContext().view, touchControls,
     serviceEndpoint: serviceSettings.endpoint, serviceTransport: serviceSettings.transport, connectionPending, invitationNeedsConfirmation, map: worldMap?.snapshot() || null,
     routes: routes.map(route => ({ id: route.id, stops: route.stops.map(p => p.id) })) }) });
 }

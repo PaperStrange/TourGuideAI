@@ -48,7 +48,7 @@ export function createSoloController({ t, locale, context, pause, openPlace, ins
     $('#solo-area').hidden = state.street; $('#solo-area').disabled = !state.view || state.view.zoom < 12;
     $('#solo-keep').disabled = !state.ready || !state.view || storageError || places.length >= MAX_KEPT_PLACES || state.restoring;
     $('#solo-hint').textContent = t(places.length >= MAX_KEPT_PLACES ? 'keptLimit'
-      : state.street ? inspection.enabled ? matchMedia('(pointer: coarse)').matches ? 'inspectionTouchHelp' : 'inspectionHelp' : 'soloHelp' : state.view?.zoom >= 12 ? 'areaHelp' : 'zoomArea');
+      : state.street ? inspection.enabled ? state.touch ? 'inspectionTouchHelp' : 'inspectionHelp' : 'soloHelp' : state.view?.zoom >= 12 ? 'areaHelp' : 'zoomArea');
     renderInspection();
   }
   const dialogClosed = () => { draft = null; pause(false); update(); };

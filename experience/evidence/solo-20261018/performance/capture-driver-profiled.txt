@@ -1,0 +1,150 @@
+import { chromium } from '../experience/node_modules/playwright/index.mjs';
+import { createServer } from 'node:http';
+import { readFileSync, readdirSync, mkdirSync, writeFileSync } from 'node:fs';
+import { extname, join, relative, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
+
+const repository = fileURLToPath(new URL('../', import.meta.url));
+const dist = join(repository, 'experience/dist');
+const output = resolve(repository, process.env.PERF_OUTPUT || 'artifacts/q03-attribution-20261018');
+mkdirSync(output, { recursive: true });
+process.env.TMPDIR = join(output, 'tmp');
+mkdirSync(process.env.TMPDIR, { recursive: true });
+const sha = bytes => createHash('sha256').update(bytes).digest('hex');
+const assets = new Map();
+function collect(directory) {
+  for (const entry of readdirSync(directory, { withFileTypes: true })) {
+    const path = join(directory, entry.name);
+    if (entry.isDirectory()) collect(path);
+    else assets.set('/' + relative(dist, path), readFileSync(path));
+  }
+}
+collect(dist);
+const manifest = [...assets].sort(([a], [b]) => a.localeCompare(b)).map(([path, bytes]) => ({ path, bytes: bytes.length, sha256: sha(bytes) }));
+const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json',
+  '.jpg': 'image/jpeg', '.png': 'image/png', '.glb': 'model/gltf-binary', '.hdr': 'application/octet-stream',
+  '.woff': 'font/woff', '.woff2': 'font/woff2', '.svg': 'image/svg+xml' };
+const server = createServer((request, response) => {
+  const path = new URL(request.url, 'http://localhost').pathname;
+  const key = path === '/' ? '/index.html' : decodeURIComponent(path);
+  const bytes = assets.get(key);
+  if (!bytes) { response.writeHead(404); response.end('Resource unavailable'); return; }
+  response.writeHead(200, { 'content-type': mime[extname(key)] || 'application/octet-stream',
+    'cache-control': key.startsWith('/assets/') ? 'public, max-age=3600' : 'no-cache' });
+  response.end(bytes);
+});
+await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+const origin = `http://127.0.0.1:${server.address().port}`;
+const proxyValue = process.env.HTTPS_PROXY || process.env.HTTP_PROXY;
+const proxy = proxyValue ? new URL(proxyValue) : null;
+const report = {
+  startedAt: new Date().toISOString(), artifact: { manifestSha256: sha(JSON.stringify(manifest)), files: manifest },
+  driverSha256: sha(readFileSync(fileURLToPath(import.meta.url))),
+  conditions: { viewport: [1440, 1000], dpr: 1, origin, realProviderRequests: true, networkInterception: false,
+    tlsVerification: true, externalProxyConfigured: Boolean(proxy), targetMs: 500,
+    metric: 'performance.now immediately before Playwright locale-zh.click to observed document.lang=zh',
+    protocol: 'Each independent context completes cold Together locale action, map readiness and Tokyo search, followed by warm same-URL navigation; three unprofiled warm measurements follow one separately profiled warm action.',
+    differences: 'Immutable current dist is served over local HTTP; prior release results were served through published HTTPS. Profiling is confined to the separate attribution observation. The unchanged action metric includes automation scheduling.',
+    limitations: 'Managed cloud software renderer; these measurements do not establish physical-device input latency.' },
+  runs: [],
+};
+const save = () => writeFileSync(join(output, 'result.json'), JSON.stringify(report, null, 2) + '\n');
+let browser;
+async function installObservers(context) {
+  await context.addInitScript(() => {
+    window.__PERF_TRACE__ = { longTasks: [], events: [], input: [] };
+    new PerformanceObserver(list => {
+      for (const entry of list.getEntries()) window.__PERF_TRACE__.longTasks.push({ start: entry.startTime, duration: entry.duration });
+    }).observe({ type: 'longtask', buffered: true });
+    new PerformanceObserver(list => {
+      for (const entry of list.getEntries()) window.__PERF_TRACE__.events.push({ name: entry.name, start: entry.startTime,
+        duration: entry.duration, processingStart: entry.processingStart, processingEnd: entry.processingEnd, interactionId: entry.interactionId });
+    }).observe({ type: 'event', buffered: true, durationThreshold: 16 });
+    for (const name of ['pointerdown', 'pointerup', 'click']) {
+      document.addEventListener(name, event => {
+        if (event.target.closest?.('#locale-zh, #locale-en')) {
+          window.__PERF_TRACE__.input.push({ name, target: event.target.id, timestamp: event.timeStamp, observed: performance.now() });
+          performance.mark(`locale-${name}`);
+        }
+      }, { capture: true });
+    }
+  });
+}
+async function action(page, run) {
+  await page.locator('#mode-explore').waitFor({ state: 'visible' });
+  run.shellObservedMs = await page.evaluate(() => performance.now());
+  await page.evaluate(() => { window.__PERF_ACTION_START__ = performance.now(); performance.mark('q03-action-start'); });
+  await page.locator('#locale-zh').click();
+  await page.waitForFunction(() => document.documentElement.lang === 'zh');
+  run.languageActionMs = await page.evaluate(() => performance.now() - window.__PERF_ACTION_START__);
+  run.observed = await page.evaluate(() => {
+    performance.mark('q03-action-observed');
+    return { start: window.__PERF_ACTION_START__, end: performance.now(), timeOrigin: performance.timeOrigin,
+      timeline: window.__PERF_TRACE__, map: window.__HOME__?.snapshot().map,
+      marks: performance.getEntriesByType('mark').map(item => item.toJSON()) };
+  });
+  run.targetPass = run.languageActionMs < 500;
+}
+async function settle(page, run) {
+  await page.locator('#locale-en').click();
+  await page.waitForFunction(() => window.__HOME__?.snapshot().map?.ready === true, null, { timeout: 120000 });
+  run.mapObservedMs = await page.evaluate(() => performance.now());
+  await page.locator('#place-query').fill('Tokyo');
+  await page.locator('#search-submit').click();
+  await page.waitForFunction(() => document.querySelector('#place-search').getAttribute('aria-busy') === 'false', null, { timeout: 30000 });
+  run.search = await page.evaluate(() => ({ status: document.querySelector('#search-status').textContent,
+    results: document.querySelectorAll('[data-result]').length }));
+  run.resources = await page.evaluate(() => performance.getEntriesByType('resource').map(item => item.toJSON()));
+}
+try {
+  browser = await chromium.launch({ headless: true, executablePath: '/usr/bin/chromium', args: ['--no-sandbox'],
+    ...(proxy ? { proxy: { server: proxy.origin, bypass: 'localhost,127.0.0.1',
+      ...(proxy.username ? { username: decodeURIComponent(proxy.username), password: decodeURIComponent(proxy.password) } : {}) } } : {}) });
+  report.conditions.browser = browser.version(); save();
+  for (let index = 0; index < 4; index++) {
+    const profiled = index === 0;
+    const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 1 });
+    await installObservers(context);
+    const page = await context.newPage(); page.setDefaultTimeout(90000);
+    const cdp = await context.newCDPSession(page);
+    const url = `${origin}/?qa=1&lang=en&mode=together`;
+    const pair = { index, profiled, startedAt: new Date().toISOString(), errors: [], failedRequests: [], network: [], cold: {}, warm: {} };
+    report.runs.push(pair); save();
+    page.on('pageerror', error => pair.errors.push(error.message));
+    page.on('requestfailed', request => pair.failedRequests.push({ url: request.url(), error: request.failure()?.errorText }));
+    page.on('response', response => pair.network.push({ url: response.url(), status: response.status() }));
+    console.log(`START ${profiled ? 'attribution' : `unprofiled ${index}`}`);
+    await page.goto(url, { waitUntil: 'domcontentloaded' });
+    await action(page, pair.cold); await settle(page, pair.cold); save();
+    let traceEvents;
+    if (profiled) {
+      traceEvents = [];
+      cdp.on('Tracing.dataCollected', event => traceEvents.push(...event.value));
+      await cdp.send('Profiler.enable');
+      await cdp.send('Profiler.setSamplingInterval', { interval: 1000 });
+      await cdp.send('Profiler.start');
+      await cdp.send('Tracing.start', { categories: 'devtools.timeline,v8,blink.user_timing,disabled-by-default-devtools.timeline,disabled-by-default-devtools.timeline.stack,disabled-by-default-v8.cpu_profiler', options: 'record-as-much-as-possible', transferMode: 'ReportEvents' });
+    }
+    await page.goto(url, { waitUntil: 'domcontentloaded' });
+    await action(page, pair.warm);
+    if (profiled) {
+      const { profile } = await cdp.send('Profiler.stop');
+      const completed = new Promise(resolve => cdp.once('Tracing.tracingComplete', resolve));
+      await cdp.send('Tracing.end'); await completed;
+      writeFileSync(join(output, 'cpu-profile.json'), JSON.stringify(profile));
+      writeFileSync(join(output, 'trace.json'), JSON.stringify({ traceEvents }));
+      pair.warm.profileFiles = ['cpu-profile.json', 'trace.json'];
+    }
+    await settle(page, pair.warm);
+    pair.finishedAt = new Date().toISOString(); save();
+    console.log(`END ${profiled ? 'attribution' : `unprofiled ${index}`} warm=${pair.warm.languageActionMs.toFixed(1)}ms target=${pair.warm.targetPass ? 'PASS' : 'FAIL'}`);
+    await context.close();
+  }
+} catch (error) {
+  report.error = error.stack; process.exitCode = 1;
+} finally {
+  if (browser) await browser.close();
+  await new Promise(resolve => server.close(resolve));
+  report.finishedAt = new Date().toISOString(); save();
+}

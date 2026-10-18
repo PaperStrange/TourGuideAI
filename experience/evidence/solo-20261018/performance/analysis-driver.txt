@@ -1,0 +1,68 @@
+import { readFileSync, writeFileSync } from 'node:fs';
+const directory = new URL('./q03-trace/', import.meta.url);
+const read = file => JSON.parse(readFileSync(new URL(file, directory)));
+const report = read('result.json'), trace = read('trace.json').traceEvents, profile = read('cpu-profile.json');
+const run = report.runs[0].warm;
+const mark = trace.find(event => event.name === 'q03-action-start');
+const origin = mark.ts - run.observed.start * 1000;
+const start = mark.ts, end = start + run.languageActionMs * 1000;
+const clip = (a, b, lo = start, hi = end) => Math.max(0, Math.min(b, hi) - Math.max(a, lo));
+const main = trace.filter(event => event.pid === mark.pid && event.tid === mark.tid && event.ph === 'X' && event.dur);
+const categories = new Map();
+for (const event of main) {
+  const overlap = clip(event.ts, event.ts + event.dur);
+  if (!overlap) continue;
+  const item = categories.get(event.name) || { name: event.name, count: 0, inclusiveWallMs: 0, threadMs: 0 };
+  item.count++; item.inclusiveWallMs += overlap / 1000;
+  item.threadMs += (event.tdur || 0) * overlap / event.dur / 1000;
+  categories.set(event.name, item);
+}
+const nodes = new Map(profile.nodes.map(node => [node.id, node]));
+const parents = new Map();
+for (const node of profile.nodes) for (const child of node.children || []) parents.set(child, node.id);
+const click = run.observed.timeline.events.find(event => event.name === 'click');
+const ranges = { action: [start, end], beforeInput: [start, origin + click.start * 1000],
+  handler: [origin + click.processingStart * 1000, origin + click.processingEnd * 1000],
+  afterHandler: [origin + click.processingEnd * 1000, end] };
+const samples = Object.fromEntries(Object.keys(ranges).map(key => [key, new Map()]));
+let timestamp = profile.startTime;
+for (let index = 0; index < profile.samples.length; index++) {
+  const next = timestamp + profile.timeDeltas[index], id = profile.samples[index];
+  for (const [label, bounds] of Object.entries(ranges)) {
+    const duration = clip(timestamp, next, ...bounds) / 1000;
+    if (duration) samples[label].set(id, (samples[label].get(id) || 0) + duration);
+  }
+  timestamp = next;
+}
+const callSite = node => ({ name: node.callFrame.functionName, url: node.callFrame.url,
+  line: node.callFrame.lineNumber + 1, column: node.callFrame.columnNumber + 1 });
+const sampled = Object.fromEntries(Object.entries(samples).map(([label, values]) => [label, [...values]
+  .sort((a, b) => b[1] - a[1]).slice(0, 20).map(([id, selfMs]) => {
+    const ancestors = []; let parent = parents.get(id);
+    while (parent && ancestors.length < 8) { ancestors.push(callSite(nodes.get(parent))); parent = parents.get(parent); }
+    return { ...callSite(nodes.get(id)), selfMs, ancestors };
+  })]));
+const analysis = {
+  manifestSha256: report.artifact.manifestSha256,
+  metric: report.conditions.metric,
+  warm: report.runs.map(pair => {
+    const value = pair.warm, event = value.observed.timeline.events.find(item => item.name === 'click');
+    return { index: pair.index, profiled: pair.profiled, metricMs: value.languageActionMs, pass: value.targetPass,
+      beforeInputMs: event.start - value.observed.start, inputQueueMs: event.processingStart - event.start,
+      handlerMs: event.processingEnd - event.processingStart,
+      afterHandlerToObservationMs: value.observed.start + value.languageActionMs - event.processingEnd,
+      eventPresentationDurationMs: event.duration, renderedMapFramesAtLaterDiagnosticRead: value.observed.map.renderedFrames };
+  }),
+  profileWindow: { actionStartPerformanceMs: run.observed.start, actionEndPerformanceMs: run.observed.start + run.languageActionMs,
+    traceStartUs: start, traceEndUs: end, traceOriginUs: origin },
+  traceCategories: [...categories.values()].sort((a, b) => b.inclusiveWallMs - a.inclusiveWallMs),
+  longestMainEvents: main.filter(event => clip(event.ts, event.ts + event.dur) && !['RunTask', 'v8.callFunction'].includes(event.name))
+    .sort((a, b) => b.dur - a.dur).slice(0, 30).map(event => ({ name: event.name, startMs: (event.ts - origin) / 1000,
+      durationMs: event.dur / 1000, threadMs: (event.tdur || 0) / 1000, data: event.args?.data || event.args })),
+  sampled,
+  notes: ['Nested trace-category durations overlap and must not be added together.',
+    'CPU samples are statistical attribution, not exact function timers; native/program samples need trace context.',
+    'Primary metric ends before a separate diagnostic read; later map-frame counts and diagnostic end marks do not extend the metric.'],
+};
+writeFileSync(new URL('analysis.json', directory), JSON.stringify(analysis, null, 2) + '\n');
+console.log(JSON.stringify({ warm: analysis.warm, traceCategories: analysis.traceCategories.slice(0, 14), sampledAction: sampled.action.slice(0, 12) }, null, 2));

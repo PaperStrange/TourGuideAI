@@ -79,6 +79,7 @@ async function capture(page, id, settings, requests, selector) {
     return value?.status === 'ready' && value.renderedFrames > 0 && value.lighting.phase === 'ready' && value.lighting.mode === mode;
   }, settings.mode);
   await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+  if (!selector) await page.locator('#live-stage canvas').scrollIntoViewIfNeeded();
   const observation = await page.evaluate(() => ({ state: window.__TOUR_GAME__.snapshot(), camera: window.__TOUR_GAME__.camera(),
     viewport: window.__TOUR_GAME__.viewport(), renderer: window.__TOUR_GAME__.renderer(),
     document: { width: document.documentElement.scrollWidth, height: document.documentElement.scrollHeight,
@@ -86,7 +87,8 @@ async function capture(page, id, settings, requests, selector) {
       guidance: document.querySelector('#view-guidance')?.textContent ?? null },
     canvas: document.querySelector('canvas').getBoundingClientRect().toJSON() }));
   const path = join(output, id + '.png');
-  if (selector) await page.locator(selector).screenshot({ path }); else await page.screenshot({ path, fullPage: true });
+  if (selector) await page.locator(selector).screenshot({ path });
+  else await page.screenshot({ path, fullPage: false });
   report.captures.push({ id, ...settings, file: id + '.png', sha256: sha(readFileSync(path)), observation, requests: [...new Set(requests)] });
   save(); console.log('CAPTURE ' + id);
 }

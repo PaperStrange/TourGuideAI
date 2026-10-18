@@ -1,0 +1,225 @@
+{
+  "preparedAt": "2026-10-18T13:43:21.853Z",
+  "finalPackage": "0a6244091b50c9ee7220d698e1109c86bd397dba54384c8db20e68bc57c728e7",
+  "earlierFull": {
+    "package": "9b1ba2b174e898ccea8214f5b70a51f44cb26a74029316550820bdc8454f9588",
+    "passed": 69,
+    "failed": 2,
+    "report": "solo-full-diagnostic/solo-result.json",
+    "diagnostics": [
+      {
+        "id": "phone-zh-actual-tap-keeps-touch-guidance",
+        "finding": "Full-page Chromium screenshots reset mobile emulation: maxTouchPoints becomes0 and primary-pointer media becomesfine. A bounded probe records the transition and trusted touch events.",
+        "proof": "phone-input-diagnostic/result.json"
+      },
+      {
+        "id": "phone-touch-map-pan-is-deliberate-without-query",
+        "finding": "The initial driver used one finger at the central marker. The map intentionally requires cooperative two-finger panning. Actual two-finger input on clear canvas moves the map.",
+        "proof": "phone-input-diagnostic/result.json"
+      }
+    ]
+  },
+  "focusedFinal": {
+    "passed": 39,
+    "failed": 0,
+    "report": "map-phone/solo-result.json",
+    "scenarios": [
+      "map",
+      "phone"
+    ],
+    "scope": "Real-provider map return and recovery, same-size locale versus real viewport resize, hidden return, EN/ZH touch and hybrid help, cooperative map pan, private map save/reload."
+  },
+  "sharedRuntimeFinal": {
+    "passed": 19,
+    "failed": 0,
+    "report": "runtime-pause/runtime-pause-result.json"
+  },
+  "startupFinal": {
+    "passed": 8,
+    "failed": 0,
+    "package": "0a6244091b50c9ee7220d698e1109c86bd397dba54384c8db20e68bc57c728e7",
+    "report": "startup/result.json"
+  },
+  "artifactDelta": {
+    "removed": [
+      {
+        "path": "/assets/index-lGfrmvt2.js",
+        "bytes": 73677,
+        "sha256": "fcb3e9a460506a114f052383ddcbb98323413b04c0f46160ee159b2f963fdcb8"
+      },
+      {
+        "path": "/assets/index-lGfrmvt2.js.map",
+        "bytes": 190495,
+        "sha256": "48fee7356dbfd52db97013634bb7bad7aebe0c537eae2fc9d079ba7c1b80b105"
+      },
+      {
+        "path": "/assets/world-map-BBBq9nv9.js",
+        "bytes": 1057585,
+        "sha256": "95f2527219188f6b0225f47b64ea5016e75f34e3dff800162fd8beef93f8448a"
+      },
+      {
+        "path": "/assets/world-map-BBBq9nv9.js.map",
+        "bytes": 2231843,
+        "sha256": "f8544519be47a2c920a3710951efbc954c4b39798b8daeb271fbca4523d09138"
+      }
+    ],
+    "added": [
+      {
+        "path": "/assets/index-PAbyRFuv.js",
+        "bytes": 74074,
+        "sha256": "3227efd5088e8e0f16a33bc79c7887f64836f20897698f095b3b4d47a81cdd2d"
+      },
+      {
+        "path": "/assets/index-PAbyRFuv.js.map",
+        "bytes": 191915,
+        "sha256": "61c28b25cd391f96c0fc2864cd0e35200433544035bacb668aaddb511a5de63d"
+      },
+      {
+        "path": "/assets/world-map-BvI_hb72.js",
+        "bytes": 1057745,
+        "sha256": "385bc8be12273d314ab2397329a39e83571f829b1b143e35d8fd4f0d60fc78a8"
+      },
+      {
+        "path": "/assets/world-map-BvI_hb72.js.map",
+        "bytes": 2232539,
+        "sha256": "5fd1897cad369cf82061b28785b3ed45db85dd332869f38a861af99cc6bc48b4"
+      }
+    ],
+    "changed": [
+      {
+        "path": "/index.html",
+        "before": "fd6125db8597b0b8df7db55e724db0ea2a414f3cb9f2a7e8583f7379ad98e13b",
+        "after": "91b610d810783c21b80667b0124891ebb0aa8c35c28b3dacb3c17575f3d718fd"
+      }
+    ],
+    "unchangedFiles": 85
+  },
+  "limits": [
+    "Counts overlap and must not be added into a single product-success rate.",
+    "The final local run is scoped to changed homepage/map behavior; the earlier full report remains immutable.",
+    "Agent/software-GPU observations do not establish human enjoyment, place recognition, real-world access or physical-device performance.",
+    "Q03 warm Together locale latency remains above the unchanged500ms target; see the separate measured performance evidence."
+  ],
+  "files": [
+    {
+      "path": "solo-full-diagnostic/finish-retry-ready.png",
+      "bytes": 1111648,
+      "sha256": "5784a938bf199778f317d6fadc6cfe1b526cf0ee9759a043d3118e3635265474"
+    },
+    {
+      "path": "solo-full-diagnostic/map-area-kept-zh.png",
+      "bytes": 1124937,
+      "sha256": "feb177b61bba8ea69d1349468e2dcf2ba94240a42ddd27b0263029c4a6071185"
+    },
+    {
+      "path": "solo-full-diagnostic/phone-en-inspection-controls.png",
+      "bytes": 306970,
+      "sha256": "d347529e6f915efd3ba1f5651c54c19a6e11eab6a338aa27c386e3e85cd41495"
+    },
+    {
+      "path": "solo-full-diagnostic/phone-zh-inspection-controls.png",
+      "bytes": 269353,
+      "sha256": "93f3a0437868ca0bc6a1150456d0675ceb12deba3f96498099ce3e7b50b44a8e"
+    },
+    {
+      "path": "solo-full-diagnostic/phone-zh-kept-map.png",
+      "bytes": 327457,
+      "sha256": "b604fb8dd14a389d2b3f5469f4585c36240398b7cf2d67eade165077acf510fe"
+    },
+    {
+      "path": "solo-full-diagnostic/solo-result.json",
+      "bytes": 236878,
+      "sha256": "b8f2897d97b254697050e82c0876a1f44e11952b36df8328a5b6f5829c4c0059"
+    },
+    {
+      "path": "solo-full-diagnostic/street-inspection-zh.png",
+      "bytes": 1164022,
+      "sha256": "ddd1415e0428e4efdb1117ef097d102affcbf526b67a2e8273f79f0a54cc77db"
+    },
+    {
+      "path": "solo-full-diagnostic/street-kept-night-en.png",
+      "bytes": 689946,
+      "sha256": "170773bea476a18702c61672e156ab41110b8f668fdaf6e4bc63ecc6faa2b88c"
+    },
+    {
+      "path": "map-phone/map-area-kept-zh.png",
+      "bytes": 1124937,
+      "sha256": "feb177b61bba8ea69d1349468e2dcf2ba94240a42ddd27b0263029c4a6071185"
+    },
+    {
+      "path": "map-phone/phone-en-inspection-controls.png",
+      "bytes": 217108,
+      "sha256": "2487f63810ad5ee8d976aeb70866dfc4ca312db19cb0f216f7ac9eb39d4d9a73"
+    },
+    {
+      "path": "map-phone/phone-zh-inspection-controls.png",
+      "bytes": 171455,
+      "sha256": "4bd7f6a24865879069ea2ea3e86b62da1db74912cd947cc16314db8e20f13441"
+    },
+    {
+      "path": "map-phone/phone-zh-kept-map.png",
+      "bytes": 219518,
+      "sha256": "1cbfe5247bb3e54831f80abd73da38e8e67783b9f63e9304755ef79612dd06b1"
+    },
+    {
+      "path": "map-phone/solo-result.json",
+      "bytes": 125181,
+      "sha256": "8c7b564a4de859c7b6227169df6b18a45efc4775745904c40781f649efb09836"
+    },
+    {
+      "path": "phone-art/art-poses-result.json",
+      "bytes": 44216,
+      "sha256": "24808e9fac07b5779e234a4851f3daf98814aff644c8f95c0c81893e9c3b4827"
+    },
+    {
+      "path": "phone-art/opening-day-phone.png",
+      "bytes": 237070,
+      "sha256": "fadd5df1226548938f1de879ba637892b2ca6940139a3f5015c53c362c835f17"
+    },
+    {
+      "path": "phone-art/opening-night-phone.png",
+      "bytes": 159424,
+      "sha256": "8807f144bdd11e60be7e170437ecb176aea9c4e76b4a3096d7aca7140bf114f6"
+    },
+    {
+      "path": "phone-input-diagnostic/full-page.png",
+      "bytes": 241157,
+      "sha256": "0223ebed833e78e491faaae397cc169800341ec956fd6b9f6001663fd9123811"
+    },
+    {
+      "path": "phone-input-diagnostic/result.json",
+      "bytes": 28104,
+      "sha256": "e7d87e59de0be7a457dc8a225a52ffebc8165955da62c3f4c30e9a821b79e0d2"
+    },
+    {
+      "path": "runtime-pause/runtime-pause-result.json",
+      "bytes": 50075,
+      "sha256": "305d51bac49e27d83b75eaf372c7fe8ed54968db0645d5322bf8d30b6fce445a"
+    },
+    {
+      "path": "runtime-pause/walk-night-modal-zh.png",
+      "bytes": 392471,
+      "sha256": "a14ec4ddb1913a68c58b110147457b3881613f39e47a081ad6bc38a5c0591030"
+    },
+    {
+      "path": "startup/result.json",
+      "bytes": 27567,
+      "sha256": "638f72e02a2f238657e37f9a06ebab24d4956cbf981eab448474be3b3580e9d2"
+    },
+    {
+      "path": "unit-checks.txt",
+      "bytes": 10826,
+      "sha256": "35191765e51561f5e0fbda59f8c12b806cc67ec9f473a2de4961f245ea296594"
+    },
+    {
+      "path": "service-checks.txt",
+      "bytes": 1636,
+      "sha256": "06380ccc0209ffcf86e4a406910819b38f642cb4239ec2c5934b7db244bf2aa7"
+    },
+    {
+      "path": "gates-checks.txt",
+      "bytes": 1901,
+      "sha256": "43a16b6a9e37d69799f7f711f656ea8ae0dc879d15558f6b93f7d192cf632332"
+    }
+  ]
+}

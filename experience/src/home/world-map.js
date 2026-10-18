@@ -52,6 +52,9 @@ export function createWorldMap(host, { onSelect, onStatus, onViewChange, locale 
     center: [35, 24], zoom: 1.5, minZoom: 1, maxZoom: 19, pitch: 0,
     attributionControl: { compact: true }, canvasContextAttributes: { antialias: true },
     cooperativeGestures: true });
+  const dimensions = () => `${host.clientWidth}:${host.clientHeight}:${map.getPixelRatio()}`;
+  let renderedDimensions = dimensions(), resizeEvents = 0;
+  map.on('resize', () => { renderedDimensions = dimensions(); resizeEvents++; });
   map.addControl(new NavigationControl({ visualizePitch: true }), 'top-right');
   function localizeControls() {
     if (destroyed) return;
@@ -193,7 +196,10 @@ export function createWorldMap(host, { onSelect, onStatus, onViewChange, locale 
         map.on('idle', onIdle); map.on('error', onError); signal?.addEventListener('abort', onAbort, { once: true });
       });
     },
-    resize() { map.resize(); },
+    resize() {
+      // MapLibre 6.14 每次 resize 都重设画布；语言变化保持已有尺寸和视角。
+      if (host.clientWidth && host.clientHeight && dimensions() !== renderedDimensions) map.resize();
+    },
     setLocale(value) { selectedLocale = value === 'zh' ? 'zh' : 'en'; localizeControls(); },
     retry() {
       if (destroyed) return;
@@ -202,7 +208,7 @@ export function createWorldMap(host, { onSelect, onStatus, onViewChange, locale 
       map.setStyle(styleURL, { diff: false });
     },
     snapshot() { return { ready, failed, center: map.getCenter().toArray(), zoom: map.getZoom(), pitch: map.getPitch(), bearing: map.getBearing(), style: TRAVEL_MAP_STYLE_ID,
-      locale: selectedLocale, readyMs, renderedFrames, cameraTransitions, requestedView: pendingView?.kind ?? null,
+      locale: selectedLocale, readyMs, renderedFrames, cameraTransitions, resizeEvents, requestedView: pendingView?.kind ?? null,
       places: pendingPlaces.map(p => p.id), routes: pendingRoutes.map(r => r.stops.map(p => p.id)),
       buildingLayer: map.getLayer('building-3d')?.type || null,
       renderedBuildings: ready && map.getLayer('building-3d') ? map.queryRenderedFeatures({ layers: ['building-3d'] }).length : 0 }; },
