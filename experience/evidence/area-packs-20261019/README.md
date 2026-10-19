@@ -11,8 +11,8 @@ production. Complete packaged regressions pass; publication verification is in p
 Shijō–Karasuma and Ginza/Wako share pack selection, walking, orbit/tilt/pan/zoom,
 day/night, optional visible-surface inspection and private saved return. Ginza
 follows approximately 55.28 m of connected mapped sidewalk around two frontages.
-Its corridor width and simulation surfaces are authored. Choosing Keep walking
-recovers an off-screen actor while retaining orbit and zoom. Older Shijō views
+Its corridor width and simulation surfaces are authored. In Ginza, choosing Keep
+walking recovers an off-screen actor while retaining orbit and zoom. Older Shijō views
 retain their coordinate interpretation; unavailable pack/revision records retain
 their notes and show an explicit unavailable state.
 

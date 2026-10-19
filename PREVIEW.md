@@ -1,40 +1,47 @@
 # Review TourGuideAI
 
-## Published solo exploration
+## Reviewed places · Kyoto and Ginza
 
 [Explore TourGuideAI](https://paperstrange.github.io/TourGuideAI/) ·
 [中文首页](https://paperstrange.github.io/TourGuideAI/?lang=zh)
 
-The live homepage offers a free-orbit Kyoto view with optional **Look closer**
-inspection, explicit **Explore this area** discovery on the wider map, and private
-**Keep this place** views with lighting, optional words and the selected place order.
-Runtime source is `a1dbd36298e56109a396d2df1a9031851859b3c9`;
-CI/test source is `02c2d63ff407f706054d1029ebee46b39216a01d`.
-Pages `9e8ecadd1fa3efe44d69396e55b6375ca4097fd4` serves all 90 verified files from package
-`0a6244091b50c9ee7220d698e1109c86bd397dba54384c8db20e68bc57c728e7`.
+The new homepage release offers two interactive walks: **Shijō–Karasuma, Kyoto**
+and **Ginza Wako corner, Tokyo**. Select either place above the street window,
+walk, orbit, tilt and zoom, or use **Look closer** to inspect visible features.
+Ginza follows approximately 55.28 m of connected sidewalk around Wako's curved
+corner and two frontages. Day/night, private **Keep this place** views, optional
+words and return to a saved viewpoint work in both areas. Shijō's existing art
+and guided journeys remain available.
 
-The solo flow needs no room service or model credentials. Walk and orbit Kyoto,
-choose **Look closer**, move laterally
-to inspect a visible facade detail, and optionally keep your view. Search for
-another place, pan its map and select **Explore this area**. Choose an actual
+Runtime and validation source: `379e9d3223d5352ca298e841a7ccbb3694c75d8c`.
+Pages package commit: `3362d6cf61c689a32ded9886a3ed1e45837fe6fe`.
+The 94-file tested package is
+`5a8e0f67506cd164e7422e8aaf22c6a77685c4a7996168aac16703a6b0d0deb7`.
+The package is pushed; GitHub deployment and actual HTTPS verification are pending.
+
+The solo flow needs no room service or model credentials. Search for another
+place, pan its shared-style map and select **Explore this area**. Choose a
 source-linked visiting order, keep it, and reopen it from **Places to return to**.
+Use **See surrounding map** to move between a reviewed street and the wider map.
 Touch and keyboard guidance are available in English and Chinese. Stored places
 are private to that browser/origin; Maps calculates directions through selected stops.
 
-The material review accepts clearer facade/glazing separation and reduced canopy
-shadow wedges. User realism and experiential value remain open. The current full
-solo suite passes **75/75**; actual hosted solo **19/19** and homepage **21/21** checks
-pass across EN/ZH desktop/phone. Local startup 8/8, pause/appearance 19/19 and
-corrected original-walk appearance 14/14 checks pass. Extended walkthrough and
-original-walk CI jobs are still running; aggregate CI remains pending. Warm Together
-language actions remain about **1.1–1.2 seconds**, above the unchanged 500 ms target.
-See the [solo acceptance record](experience/docs/sprint-solo-20261018.md)
-and [coverage recommendation](experience/docs/solo-coverage-research-20261018.md).
-Broader coverage uses a shared-style provider map with selectively reviewed area
-packs proposed for richer detail. The next decision gates are three matched warm
-locale actions each below 500 ms, one sourced area-pack decision within an explicit
-art/cost budget, and human meaning/recognition evidence. Replay remains conditional
-Sprint 2B work; no further area pack is delivered by this recommendation.
+All complete packaged browser reports pass: original walk **133**, perspective
+**80**, companion **73**, homepage **65**, solo **75**, reviewed packs **75** and
+extended walkthrough **264**. Local interaction, recovery, full solo, homepage
+and extended walkthrough checks also pass. Counts overlap. The
+[milestone record](experience/evidence/area-packs-20261019/README.md) preserves exact
+source, package and report identities.
+
+Ginza's model meets its 8 MiB, 100,000-triangle and 64-batch production limits.
+Surrounding buildings and roads remain simplified; simulation width, unseen detail
+and lighting are authored. Human realism, recognition and enjoyment remain open.
+Warm Together language actions measure **1223.2 / 1104.9 / 1170.7 ms**, above the
+unchanged 500 ms target; Q03 remains open P1. The
+[iteration plan](experience/docs/sprint-packs-20261019.md) and
+[authoring guide](experience/docs/area-pack-authoring.md) describe the reusable
+pack system and recurring source/art/review work. Replay remains conditional on
+experience evidence.
 
 For an optional workspace preview, run `npm run preview` in `experience` with the
 current built package and open `http://localhost:4186/`. Browser saves stay on their
@@ -56,7 +63,7 @@ Local backend testing with this GitHub Pages frontend is the current delivery
 target, before paid hosting. A running room service enables collaboration;
 model credentials are separately required for AI planning. The frontend reports
 the service's actual availability.
-Detailed facade interpretation is available in Kyoto; wider views use mapped
+Detailed facade interpretation is available in Kyoto and Ginza; wider views use mapped
 building shapes and heights. Existing notes and the on-site companion remain usable.
 
 For local room tests, run `npm ci` and `npm run local:pages` from
@@ -78,8 +85,8 @@ covers both paths and the optional periodic-update setting.
 
 - [Travel companion · English](https://paperstrange.github.io/TourGuideAI/travel.html?lang=en)
 - [地图与实地散步 · 中文](https://paperstrange.github.io/TourGuideAI/travel.html?lang=zh)
-- [Play in daylight](https://paperstrange.github.io/TourGuideAI/?lighting=day)
-- [Play at night](https://paperstrange.github.io/TourGuideAI/?lighting=night)
+- [Play in daylight](https://paperstrange.github.io/TourGuideAI/walk.html?lighting=day)
+- [Play at night](https://paperstrange.github.io/TourGuideAI/walk.html?lighting=night)
 - [Compare the expanded street renderings](https://paperstrange.github.io/TourGuideAI/comparison.html)
 - [Published build identity](https://paperstrange.github.io/TourGuideAI/review-build.json)
 

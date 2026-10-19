@@ -80,9 +80,10 @@ walk where that pack is appropriate.
 Reuse walking, rotation, tilt, inspection pan, zoom, day/night and optional visible
 surface inspection. Feature IDs connect real scene surfaces to short bilingual
 context and sources. Opening a detail does not move the camera or complete a visit.
-When the actor is outside the frame, Keep walking or deliberate movement restores
-actor framing while preserving orbit and zoom. A view that already contains the
-actor stays unchanged.
+Ginza enables `preserveFramingOnWalk`: when its actor is outside the frame, Keep
+walking or deliberate movement restores actor framing while preserving orbit and
+zoom. A view that already contains the actor stays unchanged. Shijō retains its
+existing framing behavior.
 Root owns homepage entry/exit, source labels and solo save integration.
 
 ## 4. Bind resources and saved-view compatibility

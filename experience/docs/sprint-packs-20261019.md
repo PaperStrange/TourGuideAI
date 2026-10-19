@@ -100,7 +100,7 @@ approach the first wing, follow the bend and choose a pause on the other frontag
 Movement stays within the pack's authored corridor and visible obstacles. Pointer
 travel follows the route's turns. Walk/orbit/tilt/pan/zoom remain under direct
 control; opening an inspection detail never auto-frames or completes a visit.
-Choosing Keep walking or starting movement restores an off-screen actor's framing
+In Ginza, choosing Keep walking or starting movement restores an off-screen actor's framing
 while preserving orbit and zoom; an already-visible actor retains the chosen view.
 Check visible, occluded and out-of-range detail cues while moving. The changed viewpoint must reveal a
 spatial/material difference before optional explanatory text is opened.

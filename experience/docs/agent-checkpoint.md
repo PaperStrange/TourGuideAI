@@ -219,18 +219,18 @@ continuous exploration response and deliberate private view/place return. Person
 approach/pause replay and recipient handoff remain conditional Sprint 2B work.
 Current implementation does not establish emotional value or complete that
 expressive experience.
-The current reviewed-pack milestone develops Ginza into a second interactive area.
+The reviewed-pack milestone adds Ginza as a second interactive area.
 
 ## Active owners and next actions
 
-| Owner | Current boundary | Next action |
+| Owner | Current boundary | Delivery state / continuing responsibility |
 |---|---|---|
-| Lead | Homepage/map/solo state, integration, checkpoint, release | Integrate pack selection, versioned private returns and publication |
-| Engineering | Pack registry, runtime, simulation and perspective adapter | Preserve shared controls while introducing bounded Ginza navigation and cancellation/disposal |
-| World-content | Ginza source data and provenance | Freeze mapped footprint, sidewalk chain, operator dimensions and reference rights |
-| QA-release | Browser drivers and independent walkthrough | Verify actual cross-area movement, saves, errors, resource lifecycle and existing journeys |
-| Product-design | Pack sprint and experience criteria | Review the connected approach, discovery and chosen pause against the plan |
-| Art/UX | Ginza generator, model, materials and lighting | Deliver recognizable architecture within the recorded budgets; preserve Kyoto assets |
+| Lead | Homepage/map/solo state, integration, checkpoint, release | Pack selection and versioned returns complete; finish actual HTTPS verification and release records |
+| Engineering | Pack registry, runtime, simulation and perspective adapter | Shared controls, bounded Ginza navigation, compatible saves and cancellation/disposal verified; preserve these interfaces |
+| World-content | Ginza source data and provenance | Source chain, operator dimensions and reference rights reviewed; recheck source changes before later revisions |
+| QA-release | Browser drivers and independent walkthrough | Local final interaction/recovery/solo/homepage/walkthrough checks pass; preserve driver and package identities |
+| Product-design | Pack sprint and experience criteria | Plan and final claims reviewed; human recognition, enjoyment and meaningful return remain unverified |
+| Art/UX | Ginza generator, model, materials and lighting | Final source-matched views and budgets reviewed; Kyoto assets preserved; surrounding realism remains open |
 
 Paths in the ownership table are relative to `experience/`. Do not edit another
 owner's files; report interface conflicts to that owner. Preserve unrelated changes.
@@ -275,7 +275,7 @@ The matching Playwright Chromium is installed at the browser path above. On a fr
 environment install it with `npm exec --cache /workspace/.npm-cache -- playwright install chromium`
 using the same `PLAYWRIGHT_BROWSERS_PATH`. Coordinate GPU-heavy suites with QA.
 
-## Current release checks
+## Preceding quality release checks
 
 The quality package `8751ba4e` passes 89 application tests, 13 service tests,
 17 repository gates, 65 homepage checks, 8 startup interaction checks,
