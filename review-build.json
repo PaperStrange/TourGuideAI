@@ -16,10 +16,13 @@
     "packRecoveryResources": {"passed": 23, "failed": 0},
     "fullSoloLocal": {"passed": 75, "failed": 0},
     "fullHomepageLocal": {"passed": 65, "failed": 0},
+    "fullWalkthroughLocal": {"passed": 264, "failed": 0},
     "ciBrowserReports": {"originalWalk": 133, "perspective": 80, "travelCompanion": 73, "homepage": 65, "solo": 75, "reviewedPacks": 75, "extendedWalkthrough": 264, "failed": 0},
     "remainingRegressionStatus": "All complete packaged browser reports pass on the identified 94-file package.",
-    "publishedVerificationStatus": "pending publication",
-    "ci": {"run": 39281251953, "status": "browser reports passed; workflow finalization in progress"},
+    "publishedFiles": {"passed": 94, "failed": 0},
+    "publishedJourney": {"passed": 16, "failed": 0},
+    "publishedVerificationStatus": "Actual HTTPS bytes and interactive cross-area journey verified on Pages runtime commit 3362d6cf61c689a32ded9886a3ed1e45837fe6fe.",
+    "ci": {"run": 39281251953, "status": "completed", "conclusion": "success"},
     "scope": "Actual packaged desktop/phone checks use immutable tested bytes and real providers. Older art captures retain their independent package bindings. Counts overlap and remain separate.",
     "evidencePath": "experience/evidence/area-packs-20261019/"
   },
@@ -31,7 +34,7 @@
     "nextStep": "Run npm run local:pages in experience/server, then select the endpoint in Together > Testing connection. The service remains local to the computer running it."
   },
   "scope": "Kyoto and Ginza are bounded authored interpretations. Ginza follows about 55.28 m of mapped sidewalk with authored width and simplified surroundings. Wider mapped buildings use approximate provider geometry. Route lines show suggested visiting order; Google Maps computes directions. Kept places are private intentions or virtual exploration, with no physical-visit claim.",
-  "reviewStatus": "Packaged regressions pass; hosted verification follows publication. Pack interactions 51, recovery/resources 23, full solo 75 and homepage 65 pass locally; all seven complete CI browser reports pass. Q03 remains open P1: three matched warm Together language actions measure 1223.2/1104.9/1170.7 ms against each below 500 ms. Human enjoyment, recognition and physical-device fluency remain unverified.",
+  "reviewStatus": "Published and verified: all 94 files match the tested package; 16 actual HTTPS journey checks pass. Pack interactions 51, recovery/resources 23, full solo 75, homepage 65 and extended walkthrough 264 pass locally; the complete CI workflow and all seven browser reports pass. Q03 remains open P1: three matched warm Together language actions measure 1223.2/1104.9/1170.7 ms against each below 500 ms. Human enjoyment, recognition and physical-device fluency remain unverified.",
   "existingExperiences": {
     "perspective": "perspective.html",
     "companion": "travel.html",
