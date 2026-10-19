@@ -21,7 +21,10 @@ recorded source boundary and asset budgets. Existing Kyoto assets, shared links,
 route identity and private records remain regression requirements. The next release
 requires source/Pages/evidence/checkpoint synchronization after actual testing.
 
-The plan is committed and pushed as `997afd8`. Current implementation passes
+The plan is committed and pushed as `997afd8`; implementation is committed and
+pushed as `379e9d3223d5352ca298e841a7ccbb3694c75d8c`. The final 94-file package is
+`5a8e0f67506cd164e7422e8aaf22c6a77685c4a7996168aac16703a6b0d0deb7`.
+CI `39281251953` runs all six suites. Current implementation passes
 **120/120** application checks. Source review passes **124/124**, with **5/5**
 public-source export checks. The frozen new model is `70870bc6…`: **7,970,296
 bytes**, **84,624 triangles**, **48 batches**, with twelve original embedded maps.
@@ -37,6 +40,9 @@ model/camera, including nineteen actual ground arrivals; it is not final-candida
 coverage. Final phone/continuity, cancellation, resource, regression and hosted
 verification remain pending. Full-street realism and human recognition remain
 unverified; Ginza's surrounding buildings and road are simplified context.
+Current [matched Q03 observations](../evidence/area-packs-20261019/performance/README.md)
+are **1223.2 / 1104.9 / 1170.7 ms**, retaining the open P1 status and unchanged
+500 ms threshold. Service **13/13** and repository **17/17** checks pass.
 
 ## Preceding release · solo exploration
 

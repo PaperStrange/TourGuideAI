@@ -1,0 +1,25 @@
+
+> tourguideai-rooms@0.1.0 test
+> node --test test/*.test.js
+
+✔ two real HTTP clients collaborate, receive SSE snapshots and recover the persisted room after restart (4285.888212ms)
+✔ room credentials, contributor ownership, request validation and origin allowlist are enforced over HTTP (106.808856ms)
+✔ proposal validation allows catalog-grounded IDs and rejects invented or omitted contributed destinations (2.848314ms)
+✔ service shutdown completes while an invited client keeps its SSE connection open (58.53691ms)
+✔ changed wishes clear group acceptance and prevent an outdated proposal from omitting the new destination (95.490135ms)
+✔ shutdown closes an actual incomplete HTTP connection within its configured grace period (132.404268ms)
+✔ a valid catalog larger than the HTTP high-water mark still streams its committed update (41.331277ms)
+✔ Pages local configuration retains a stable database and exact additional origins (3.287643ms)
+✔ the actual local launcher accepts Pages preflight and recovers its room after process restart (640.230181ms)
+✔ two polling clients receive actual committed changes once per revision and stop after cancellation (526.928624ms)
+✔ actual buffered HTTP responses time out with backoff and periodic reads recover when transport resumes (689.229783ms)
+✔ closing a pending periodic read suppresses its delayed response and callbacks (152.033689ms)
+✔ polling invitation rejection is terminal and the default subscription retains real SSE (176.444821ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4998.441428

@@ -1,10 +1,11 @@
 # Reviewed area packs · Ginza/Wako · 2026-10-19
 
-Status: plan recorded before production. The user approves consistent map styling
-and reviewed neighborhood/landmark packs, with Shijō's 3D interaction preserved.
-Lead commits this plan before implementation and owns integration/publication.
-This milestone delivers a reusable pack system and one second bounded walkable
-area: **Ginza 4-chōme / Wako (SEIKO HOUSE)**. All delivery checks below are pending.
+Status: implementation committed and pushed as `379e9d3`; final browser and
+publication checks are running. The plan was recorded before production in
+`997afd8`. The user approves consistent map styling and reviewed neighborhood/
+landmark packs, with Shijō's 3D interaction preserved. This milestone delivers a
+reusable pack system and one second bounded walkable area: **Ginza 4-chōme /
+Wako (SEIKO HOUSE)**. Lead owns integration, review and publication.
 
 ## Player outcome and boundary
 
@@ -97,8 +98,10 @@ Engineering owns the lightweight registry and its `getPack`, `getPackForPlace`,
 approach the first wing, follow the bend and choose a pause on the other frontage.
 Movement stays within the pack's authored corridor and visible obstacles. Pointer
 travel follows the route's turns. Walk/orbit/tilt/pan/zoom remain under direct
-control; inspection never auto-frames or completes a visit. Check visible, occluded
-and out-of-range detail cues while moving. The changed viewpoint must reveal a
+control; opening an inspection detail never auto-frames or completes a visit.
+Choosing Keep walking or starting movement restores an off-screen actor's framing
+while preserving orbit and zoom; an already-visible actor retains the chosen view.
+Check visible, occluded and out-of-range detail cues while moving. The changed viewpoint must reveal a
 spatial/material difference before optional explanatory text is opened.
 
 **Architecture, materials and light.** Freeze arrival, oblique corner and chosen
