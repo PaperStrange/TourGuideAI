@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "id": "ginza-wako-materials-v1",
+  "policy": "embedded-pbr",
+  "overrides": {},
+  "regions": [
+    {
+      "material": "wako-lower-polished-stone",
+      "sourceRegion": "lower-stone"
+    },
+    {
+      "material": "wako-upper-granite",
+      "sourceRegion": "upper-granite"
+    }
+  ],
+  "authored": "Original procedural PBR maps and parameters. Operator descriptions establish surface classes; colours, grain, UV scale, roughness and reflection response are authored. Photograph pixels are not included."
+}
