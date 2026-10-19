@@ -1,22 +1,21 @@
 import { createGame } from '../runtime/create-game.js';
-import { normalizePerspectiveView } from '../runtime/view-state.js';
-import { normalizeExplorationView } from '../runtime/exploration-state.js';
+import { DEFAULT_PACK_ID } from '../packs/registry.js';
 
 // This adapter owns only a live presentation. Saving, attribution and sharing are
 // the application's responsibility; it never opens or mutates a Kyoto journey.
 export async function createPerspectiveView(host, { locale = 'en', onState, onStatus, onViewChange,
-  onInspectionChange, initialView, solo = false } = {}) {
+  onInspectionChange, initialView, solo = false, packId = DEFAULT_PACK_ID, signal, initialLighting = 'day' } = {}) {
   let game, latest = null, status = 'loading', currentView = null, destroyed = false;
   const snapshot = () => ({
     position: latest ? { x: latest.x, y: latest.y } : null,
     moving: latest?.moving ?? false, paused: latest?.paused ?? false,
     ready: status === 'ready', settled: status === 'ready' && Boolean(currentView),
-    view: currentView ? structuredClone(currentView) : null,
+    view: currentView ? structuredClone(currentView) : null, pack: game?.getPackInfo() ?? { packId },
   });
-  const publish = () => { if (!destroyed) onState?.(snapshot()); };
+  const publish = () => { if (!destroyed && !signal?.aborted) onState?.(snapshot()); };
   game = await createGame(host, {
-    locale, solo, encounters: false, lightingMode: 'day',
-    initialView: (solo ? normalizeExplorationView : normalizePerspectiveView)(initialView),
+    locale, solo, packId, signal, encounters: false, lightingMode: initialLighting,
+    initialView,
     onState(value) { latest = value; if (game) currentView = game.captureView(); publish(); },
     onViewChange(value) {
       if (game) latest = game.getState(); currentView = value; publish();
@@ -33,6 +32,7 @@ export async function createPerspectiveView(host, { locale = 'en', onState, onSt
   latest = game.getState(); currentView = game.captureView(); publish();
   const update = action => { if (destroyed) return false; const result = action(); latest = game.getState(); currentView = game.captureView(); publish(); return result; };
   const api = {
+    getPackInfo: () => game.getPackInfo(),
     moveTo: (x, y) => update(() => game.moveTo(x, y)),
     focusMoment: moment => update(() => game.focusMoment(moment)),
     captureView: () => destroyed ? null : game.captureView(),
@@ -54,11 +54,13 @@ export async function createPerspectiveView(host, { locale = 'en', onState, onSt
     destroy() {
       if (destroyed) return;
       destroyed = true; game.destroy();
+      signal?.removeEventListener('abort', api.destroy);
       if (window.__PERSPECTIVE_VIEW__?.host === host) delete window.__PERSPECTIVE_VIEW__;
     },
   };
+  signal?.addEventListener('abort', api.destroy, { once: true });
   if (import.meta.env.DEV || new URLSearchParams(location.search).get('qa') === '1') {
-    window.__PERSPECTIVE_VIEW__ = Object.freeze({ host, snapshot,
+    window.__PERSPECTIVE_VIEW__ = Object.freeze({ host, snapshot, pack: game.getPackInfo,
       inspection: () => game.getInspectionState(),
       camera: () => game.getCameraState(), renderer: () => window.__TOUR_GAME__?.host === host ? window.__TOUR_GAME__.renderer() : null });
   }

@@ -1,16 +1,26 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { WORLD } from '../simulation/world.js';
+import { getPack, DEFAULT_PACK_ID } from '../packs/registry.js';
 import { CAMERA_DEFAULTS, CAMERA_LIMITS, normalizeCameraPose } from './view-state.js';
-import { EXPLORATION_CAMERA_LIMITS, normalizeExplorationCamera } from './exploration-state.js';
+import { normalizeExplorationCamera } from './exploration-state.js';
 
 export { CAMERA_DEFAULTS };
 export const toScene = (x, north, height = 0) => new THREE.Vector3(x, height, -north);
 
-export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { solo = false } = {}) {
-  const limits = solo ? EXPLORATION_CAMERA_LIMITS : CAMERA_LIMITS;
-  const camera = new THREE.PerspectiveCamera(42, 1, 0.15, 200);
-  let frontage = initial.y < WORLD.roadCenterY ? 'south' : 'north';
+export function isPlayerInFrame(camera, state) {
+  camera.updateMatrixWorld();
+  return [0, 1.75].every(height => {
+    const point = toScene(state.x, state.y, height).project(camera);
+    return point.z >= -1 && point.z <= 1 && Math.abs(point.x) <= 1 && Math.abs(point.y) <= 1;
+  });
+}
+
+export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { solo = false, pack = getPack(DEFAULT_PACK_ID) } = {}) {
+  const limits = solo ? pack.camera.limits : CAMERA_LIMITS;
+  const defaults = pack.camera.initial, legacyFrontage = pack.camera.legacyFrontage;
+  const initialFrontage = state => legacyFrontage && state.y < pack.world.roadCenterY ? 'south' : 'north';
+  const camera = new THREE.PerspectiveCamera(pack.camera.fov ?? 42, 1, 0.15, 200);
+  let frontage = initialFrontage(initial);
   let base = frontage === 'south' ? Math.PI : 0;
   let aimOffset = null, transition = null, inspecting = false;
   let currentState = { x: initial.x, y: initial.y };
@@ -28,11 +38,11 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
   [controls.minPolarAngle, controls.maxPolarAngle] = limits.polar;
   [controls.minDistance, controls.maxDistance] = limits.distance;
   const changed = () => {
-    if (solo && inspecting) {
+    if (solo && inspecting && !transition?.following) {
       const before = controls.target.clone();
-      controls.target.set(THREE.MathUtils.clamp(before.x, currentState.x - 32, currentState.x + 32),
-        THREE.MathUtils.clamp(before.y, 0.5, 20),
-        THREE.MathUtils.clamp(before.z, -currentState.y - 32, -currentState.y + 32));
+      controls.target.set(THREE.MathUtils.clamp(before.x, currentState.x - limits.targetXY, currentState.x + limits.targetXY),
+        THREE.MathUtils.clamp(before.y, ...limits.targetHeight),
+        THREE.MathUtils.clamp(before.z, -currentState.y - limits.targetXY, -currentState.y + limits.targetXY));
       camera.position.add(controls.target.clone().sub(before));
       aimOffset = { x: controls.target.x - currentState.x, y: -controls.target.z - currentState.y,
         height: controls.target.y };
@@ -41,8 +51,9 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
     onChange();
   };
   controls.addEventListener('change', changed);
-  const targetFor = state => toScene(state.x + (aimOffset?.x ?? (frontage === 'north' ? 1.2 : -1.2)),
-    state.y + (aimOffset?.y ?? (frontage === 'north' ? -2.2 : 2.2)), aimOffset?.height ?? 0.9);
+  const targetFor = state => toScene(state.x + (aimOffset?.x ?? pack.camera.followOffset?.x ?? (frontage === 'north' ? 1.2 : -1.2)),
+    state.y + (aimOffset?.y ?? pack.camera.followOffset?.y ?? (frontage === 'north' ? -2.2 : 2.2)),
+    aimOffset?.height ?? pack.camera.followOffset?.height ?? 0.9);
   const unwrap = angle => base + Math.atan2(Math.sin(angle - base), Math.cos(angle - base));
 
   function pose(azimuth, polar, distance) {
@@ -58,14 +69,14 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
   }
   function reset(state = initial) {
     currentState = { x: state.x, y: state.y };
-    finishTransition(); aimOffset = null;
-    frontage = state.y < WORLD.roadCenterY ? 'south' : 'north';
+    finishTransition(); aimOffset = defaults.targetOffset ? { ...defaults.targetOffset } : null;
+    frontage = initialFrontage(state);
     base = frontage === 'south' ? Math.PI : 0; setAzimuthBounds();
     controls.target.copy(targetFor(state));
-    pose(base + CAMERA_DEFAULTS.azimuth, CAMERA_DEFAULTS.polar, CAMERA_DEFAULTS.distance);
+    pose(base + defaults.azimuth, defaults.polar, defaults.distance);
   }
-  function restorePose(value, state, animate = false) {
-    const next = (solo ? normalizeExplorationCamera : normalizeCameraPose)(value);
+  function restorePose(value, state, animate = false, following = false) {
+    const next = solo ? normalizeExplorationCamera(value, limits) : normalizeCameraPose(value);
     if (!next) return false;
     currentState = { x: state.x, y: state.y };
     const fromTarget = controls.target.clone(), fromPosition = camera.position.clone();
@@ -80,7 +91,7 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
       const from = new THREE.Spherical().setFromVector3(fromPosition.clone().sub(fromTarget));
       transition = { fromTarget, from, toTarget: controls.target.clone(), toPosition: camera.position.clone(),
         angle: Math.atan2(Math.sin(next.azimuth - from.theta), Math.cos(next.azimuth - from.theta)),
-        polar: next.polar, distance: next.distance, elapsed: 0, enabled: wasEnabled };
+        polar: next.polar, distance: next.distance, elapsed: 0, enabled: wasEnabled, following };
       controls.enabled = false;
       controls.minAzimuthAngle = -Infinity; controls.maxAzimuthAngle = Infinity;
       controls.target.copy(fromTarget); camera.position.copy(fromPosition);
@@ -94,36 +105,49 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
     controls.target.copy(next.toTarget); camera.position.copy(next.toPosition);
     controls.enabled = next.enabled; setAzimuthBounds(); controls.update(); onChange();
   }
+  function resumeFollow() {
+    if (pack.camera.preserveFramingOnWalk) {
+      if (transition?.following || isPlayerInFrame(camera, currentState)) return;
+      // 开始行走时只恢复画面外的人物，保留用户的环视方向、俯仰与缩放。
+      restorePose({ azimuth: controls.getAzimuthalAngle(), polar: controls.getPolarAngle(),
+        distance: controls.getDistance(), targetOffset: pack.camera.followOffset }, currentState, true, true);
+      return;
+    }
+    finishTransition();
+    // 主动行走恢复人物构图，环视方向保持不变。
+    aimOffset = null;
+    if (solo && inspecting) {
+      const next = targetFor(currentState);
+      camera.position.add(next.clone().sub(controls.target)); controls.target.copy(next);
+      controls.update(); changed();
+    }
+  }
   reset(initial);
   return {
     camera, controls,
-    reset, restorePose, finishTransition,
-    resumeFollow() {
-      finishTransition();
-      // Looking at an architectural feature may put the actor outside the frame.
-      // A deliberate walk returns the aim to the actor without reversing yaw.
-      aimOffset = null;
-      if (solo && inspecting) {
-        const next = targetFor(currentState);
-        camera.position.add(next.clone().sub(controls.target)); controls.target.copy(next);
-        controls.update(); changed();
-      }
-    },
+    reset, restorePose, finishTransition, resumeFollow,
     setInspecting(value) {
+      const leaving = inspecting && !value;
       inspecting = solo && Boolean(value); controls.enablePan = inspecting;
+      if (leaving && pack.camera.preserveFramingOnWalk) resumeFollow();
     },
     faceTarget(target, state) {
-      const next = target.y < WORLD.roadCenterY ? 'south' : 'north';
+      if (!legacyFrontage) return false;
+      const next = initialFrontage(target);
       if (next === frontage) return false;
       finishTransition(); aimOffset = null;
       frontage = next; base = frontage === 'south' ? Math.PI : 0; setAzimuthBounds();
       controls.target.copy(targetFor(state));
-      pose(base + CAMERA_DEFAULTS.azimuth, CAMERA_DEFAULTS.polar, CAMERA_DEFAULTS.distance);
+      pose(base + defaults.azimuth, defaults.polar, defaults.distance);
       return true;
     },
     follow(state, dt, immediate = false) {
       currentState = { x: state.x, y: state.y };
       if (transition) {
+        if (transition.following) {
+          const movement = targetFor(state).sub(transition.toTarget);
+          transition.toTarget.add(movement); transition.toPosition.add(movement);
+        }
         transition.elapsed += dt;
         const t = immediate ? 1 : Math.min(1, transition.elapsed / 420);
         const eased = t * t * (3 - 2 * t);

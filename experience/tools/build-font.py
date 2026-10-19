@@ -11,7 +11,7 @@ args = parser.parse_args()
 root = Path(__file__).resolve().parents[1]
 paths = [root / 'src/ui/i18n.js', root / 'src/home/copy.js', root / 'src/home/world-map.js', root / 'src/travel/copy.js', root / 'src/content/kyoto.js', root / 'src/runtime/inspection-features.js',
          root / 'src/content/perspectives.js', *sorted((root / 'src/app').glob('*.js')),
-         *sorted((root / 'src/perspective').glob('*.js'))]
+         *sorted((root / 'src/perspective').glob('*.js')), *sorted((root / 'src/packs').glob('*.js'))]
 characters = set(''.join(p.read_text() for p in paths)) | set(chr(i) for i in range(32, 127))
 options = subset.Options()
 options.flavor = 'woff'

@@ -83,5 +83,6 @@ iteration/recon/_raw-*/**                     -text
 experience/evidence/travel-20261015/**/*.csv  -text whitespace=cr-at-eol
 # HTTP 原始响应头保留下载时的字节与换行。
 experience/evidence/solo-20261018/research/*-headers.txt -text
+experience/evidence/area-packs-20261019/ginza-wako/osm-map.headers -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
 # CI 原始日志保留下载时的字节与换行。
 experience/evidence/solo-20261018/ci/original-walk-job.txt -text

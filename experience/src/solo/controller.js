@@ -1,5 +1,4 @@
-import { SOLO_STORAGE_KEY, MAX_KEPT_PLACES, parseKeptPlaces, writeKeptPlaces, normalizeKeptPlace } from './state.js';
-import { getInspectionFeature } from '../runtime/inspection-features.js';
+import { SOLO_STORAGE_KEY, MAX_KEPT_PLACES, parseKeptPlaces, writeKeptPlaces, normalizeKeptPlace, isKeptPlaceAvailable } from './state.js';
 
 const $ = selector => document.querySelector(selector);
 const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
@@ -18,7 +17,7 @@ export function createSoloController({ t, locale, context, pause, openPlace, ins
   readStorage();
   function renderPlaces() {
     $('#solo-empty').hidden = Boolean(places.length) || storageError;
-    $('#kept-place-list').innerHTML = storageError ? '' : places.map(place => `<li><div><button class="kept-open" data-kept-open="${escape(place.id)}">${escape(place.title)}</button><span class="small">${t(place.representation === 'street' ? 'savedStreet' : 'savedMap')} · ${escape(new Date(place.savedAt).toLocaleDateString(locale()))}</span>${place.note ? `<p>${escape(place.note)}</p>` : ''}</div><button class="quiet" data-kept-remove="${escape(place.id)}" aria-label="${escape(t('remove') + ' ' + place.title)}">${t('remove')}</button></li>`).join('');
+    $('#kept-place-list').innerHTML = storageError ? '' : places.map(place => `<li><div><button class="kept-open" data-kept-open="${escape(place.id)}" ${isKeptPlaceAvailable(place) ? '' : 'disabled'}>${escape(place.title)}</button><span class="small">${t(place.representation === 'street' ? 'savedStreet' : 'savedMap')} · ${escape(new Date(place.savedAt).toLocaleDateString(locale()))}</span>${isKeptPlaceAvailable(place) ? '' : `<span class="kept-unavailable">${t('keptUnavailable')}</span>`}${place.note ? `<p>${escape(place.note)}</p>` : ''}</div><button class="quiet" data-kept-remove="${escape(place.id)}" aria-label="${escape(t('remove') + ' ' + place.title)}">${t('remove')}</button></li>`).join('');
     $('#solo-status').textContent = statusKey ? t(statusKey) : '';
   }
   function renderInspection() {
@@ -27,8 +26,8 @@ export function createSoloController({ t, locale, context, pause, openPlace, ins
     const cue = $('#inspection-cue');
     cue.hidden = !focus;
     if (focus) { cue.style.left = `${focus.screen.x}px`; cue.style.top = `${focus.screen.y}px`; }
-    const selected = active ? getInspectionFeature(inspection.selected?.id) : null;
-    const signature = selected ? `${selected.id}:${locale()}` : null;
+    const selected = active ? state.pack?.inspection.features.find(feature => feature.id === inspection.selected?.id) : null;
+    const signature = selected ? `${state.pack.id}:${selected.id}:${locale()}` : null;
     $('#solo-inspection').hidden = !selected;
     if (signature !== selectedId) {
       selectedId = signature;

@@ -7,6 +7,7 @@ on:
       - 'experience/public/**'
       - 'experience/art/**'
       - 'experience/content-tools/**'
+      - 'experience/content/**'
       - 'experience/tools/**'
       - 'experience/tests/**'
       - 'experience/server/**'
@@ -20,6 +21,7 @@ on:
       - 'experience/public/**'
       - 'experience/art/**'
       - 'experience/content-tools/**'
+      - 'experience/content/**'
       - 'experience/tools/**'
       - 'experience/tests/**'
       - 'experience/server/**'
@@ -65,11 +67,18 @@ jobs:
             command: test:solo
             output: solo
             artifact: solo-browser-evidence
+          - suite: reviewed place packs
+            command: test:packs
+            output: packs
+            artifact: packs-browser-evidence
+    env:
+      TMPDIR: ${{ github.workspace }}/artifacts/tmp
     defaults:
       run:
         working-directory: experience
     steps:
       - uses: actions/checkout@v4
+      - run: mkdir -p "$TMPDIR"
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
@@ -77,7 +86,7 @@ jobs:
           cache-dependency-path: experience/package-lock.json
       - run: npm ci
       - name: Install and test room service
-        if: matrix.suite == 'journey homepage' || matrix.suite == 'solo exploration'
+        if: matrix.suite == 'journey homepage' || matrix.suite == 'solo exploration' || matrix.suite == 'reviewed place packs'
         run: npm ci --prefix server && npm test --prefix server
       - run: npm test
       - run: npm run build

@@ -1,4 +1,6 @@
 const en = {
+  walkablePlaces: 'Places you can walk through', surroundingMap: 'See surrounding map', enterStreet: 'Enter street',
+  keptUnavailable: 'This street version is unavailable. Your saved view and words are preserved.',
   lookCloser: 'Look closer', keepWalking: 'Keep walking', inspectDetail: 'Inspect detail', closeDetail: 'Close detail',
   soloHelp: 'Turn all the way around. Choose Look closer to notice the facades.',
   inspectionHelp: 'Drag to look · Right-drag to aim · J/L turn, I/K tilt, Shift + J/L/I/K aim, +/− zoom · E inspect · Esc walk',
@@ -85,6 +87,8 @@ const en = {
   selected: 'Selected', saved: 'Shared trip updated.', planMissing: 'Add at least two dream places to suggest a journey.',
 };
 const zh = {
+  walkablePlaces: '可以自由漫步的地方', surroundingMap: '查看周边地图', enterStreet: '进入街道',
+  keptUnavailable: '这个街景版本暂不可用，收藏的视角与文字仍然保留。',
   lookCloser: '近距离观察', keepWalking: '继续漫步', inspectDetail: '查看细节', closeDetail: '关闭细节',
   soloHelp: '自由转动视角。选择“近距离观察”，留意建筑立面的特征。',
   inspectionHelp: '拖动查看 · 右键拖动观察点 · J/L 转向，I/K 俯仰，Shift + J/L/I/K 移动观察点，＋/− 缩放 · E 查看 · Esc 继续漫步',

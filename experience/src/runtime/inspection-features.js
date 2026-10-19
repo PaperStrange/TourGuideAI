@@ -28,6 +28,7 @@ export const getInspectionFeature = id => INSPECTION_FEATURES.find(feature => fe
 
 export function featureForSurface(mesh, materialIndex = 0, features = INSPECTION_FEATURES) {
   const material = Array.isArray(mesh.material) ? mesh.material[materialIndex] : mesh.material;
-  return features.find(feature => feature.semanticGroups.includes(mesh.userData.semanticGroup) &&
-    feature.materials.includes(material?.name)) ?? null;
+  return features.find(feature => (mesh.userData.inspectionFeatureIds?.includes(feature.id) &&
+    (!feature.materials || feature.materials.includes(material?.name))) ||
+    (feature.semanticGroups?.includes(mesh.userData.semanticGroup) && feature.materials?.includes(material?.name))) ?? null;
 }

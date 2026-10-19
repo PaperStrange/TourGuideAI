@@ -1,0 +1,694 @@
+// 使用实际构建文件和真实输入验证两个街区的切换、私人保存与恢复。
+import { chromium } from 'playwright';
+import { readFileSync, readdirSync, mkdirSync, writeFileSync } from 'node:fs';
+import { resolve, join, relative, extname, sep } from 'node:path';
+import { createHash } from 'node:crypto';
+import { Matrix4, Vector3 } from 'three';
+import { startServer } from '../server/src/server.js';
+
+if (!process.argv[2]) throw new Error('Usage: node tests/browser-packs.mjs <built-dist-directory>');
+const dist = resolve(process.argv[2]);
+const output = resolve(process.env.EXPERIENCE_QA_OUTPUT || '../artifacts/packs-20261019/browser');
+const timeout = Number(process.env.EXPERIENCE_QA_TIMEOUT || 120000);
+const selected = process.env.EXPERIENCE_QA_ONLY?.split(',').filter(Boolean);
+const sections = new Set(['openings', 'continuity', 'phone', 'framing-recovery', 'latest-intent', 'asset-recovery', 'unsupported-revision', 'search-cancellation', 'locale-pending', 'resources']);
+if (selected?.some(name => !sections.has(name))) throw new Error('EXPERIENCE_QA_ONLY contains an unknown section.');
+const storageKey = 'tourguideai.solo.places.v1';
+const sha = bytes => createHash('sha256').update(bytes).digest('hex');
+const assets = new Map();
+function collect(directory) {
+  for (const item of readdirSync(directory, { withFileTypes: true })) {
+    const path = join(directory, item.name);
+    if (item.isDirectory()) collect(path);
+    else assets.set('/' + relative(dist, path).split(sep).join('/'), readFileSync(path));
+  }
+}
+collect(dist);
+if (!assets.has('/index.html') || !assets.has('/packs/ginza-wako/scene.glb')) throw new Error('Build must include the homepage and Ginza scene.');
+mkdirSync(output, { recursive: true });
+const fixturePath = new URL('../evidence/solo-20261018/final/solo-full-diagnostic/solo-result.json', import.meta.url);
+const fixtureBytes = readFileSync(fixturePath), historical = JSON.parse(fixtureBytes);
+const legacyPlace = historical.checks.find(check => check.id === 'street-save-keeps-exact-v2-view-light-and-plain-note' && check.pass)?.evidence;
+if (legacyPlace?.view?.version !== 2) throw new Error('Recorded legacy Shijo saved view is required.');
+const sourceBytes = readFileSync(new URL('../content/ginza-wako/source.json', import.meta.url));
+const ginzaSource = JSON.parse(sourceBytes);
+const previousPackage = JSON.parse(readFileSync(new URL('../evidence/solo-20261018/hosted/published-files.json', import.meta.url)));
+const oldJourney = JSON.parse(readFileSync(new URL('./fixtures/legacy-v1-completed.json', import.meta.url)));
+const legacyStorage = {
+  'tourguideai:journey:v2': JSON.stringify({ version: 2, ...oldJourney, notes: { crossing: 'Existing walk memory' } }),
+  'tourguideai:perspective:v1': JSON.stringify({ version: 1, chapter: 'kyoto-looking-closer', locale: 'en', mode: 'story', index: 0,
+    revealedIds: [], moments: [], trial: { assignment: 'story', source: 'choice', crossover: false }, feedback: null }),
+  'tourguideai:travel:v1': '{"selected":["mufg","crossing"],"meaningful":["mitsui"]}',
+  'tourguideai:appearance:v1': '{"lighting":"night"}',
+};
+const files = [...assets].sort(([a], [b]) => a.localeCompare(b)).map(([path, bytes]) => ({ path, bytes: bytes.length, sha256: sha(bytes) }));
+const report = { startedAt: new Date().toISOString(), artifact: { directory: dist, manifestSha256: sha(JSON.stringify(files)), files },
+  driverSha256: sha(readFileSync(new URL(import.meta.url))),
+  legacyFixture: { path: relative(resolve('.'), fixturePath.pathname), sha256: sha(fixtureBytes), recordId: legacyPlace.id },
+  ginzaSource: { id: ginzaSource.id, revision: ginzaSource.revision, sha256: sha(sourceBytes) },
+  conditions: { desktop: [1440, 1000], phone: [390, 844], reducedMotion: 'reduce', timeoutMs: timeout, sections: selected || 'all' },
+  checks: [], scenarios: {}, screenshots: [], observations: {},
+  limitations: ['Automation does not establish human recognition, enjoyment, physical-device fluency or surveyed pedestrian access.',
+    'Successful asset loads use the actual immutable build. Recovery cases explicitly delay or abort those requests.',
+    'Map providers receive actual requests; their results are not replaced. Software-rendered timings do not establish hardware performance.'] };
+const persist = () => writeFileSync(join(output, 'packs-result.json'), JSON.stringify(report, null, 2) + '\n');
+function check(id, pass, evidence) {
+  report.checks.push({ id, pass: Boolean(pass), evidence }); persist(); console.log(`${pass ? 'PASS' : 'FAIL'} ${id}`);
+}
+const equal = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+function closeEnough(a, b, tolerance = 0.0001) {
+  if (typeof a === 'number' && typeof b === 'number') return Math.abs(a - b) <= tolerance;
+  if (!a || !b || typeof a !== 'object' || typeof b !== 'object') return a === b;
+  const keys = Object.keys(a); return keys.length === Object.keys(b).length && keys.every(key => closeEnough(a[key], b[key], tolerance));
+}
+const home = page => page.evaluate(() => window.__HOME__?.snapshot());
+const view = async page => (await home(page)).currentView;
+const renderer = page => page.evaluate(() => window.__TOUR_GAME__?.renderer());
+const state = page => page.evaluate(() => window.__TOUR_GAME__?.snapshot());
+const saved = page => page.evaluate(key => JSON.parse(localStorage.getItem(key) || '{"version":1,"places":[]}'), storageKey);
+const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json',
+  '.glb': 'model/gltf-binary', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.woff': 'font/woff', '.hdr': 'application/octet-stream' };
+const providers = new Set(['https://tiles.openfreemap.org', 'https://photon.komoot.io', 'https://en.wikipedia.org']);
+let browser, service, ginzaPlace;
+const contexts = new Set(), mobileContexts = new WeakSet();
+async function scenario(name, { mobile = false, locale = 'en', pack, mode, records = [legacyPlace], fault = {} } = {}) {
+  const context = await browser.newContext({ viewport: mobile ? { width: 390, height: 844 } : { width: 1440, height: 1000 },
+    hasTouch: mobile, isMobile: mobile, deviceScaleFactor: 1, reducedMotion: 'reduce' });
+  contexts.add(context); if (mobile) mobileContexts.add(context);
+  const record = report.scenarios[name] = { requests: [], denied: [], delayed: [], external: [], pageErrors: [], consoleErrors: [] };
+  await context.route(service.url + '/**', async route => {
+    const url = new URL(route.request().url()), path = url.pathname === '/' ? '/index.html' : url.pathname;
+    if (fault.deny?.(url)) { record.denied.push(url.href); return route.abort('blockedbyclient'); }
+    if (fault.delay?.(url)) { record.delayed.push(url.href); await fault.wait; }
+    if (path.startsWith('/api/')) return route.continue();
+    const bytes = assets.get(path);
+    return route.fulfill({ status: bytes ? 200 : 404, body: bytes || 'Missing packaged asset', contentType: mime[extname(path)] || 'application/octet-stream' });
+  });
+  await context.addInitScript(({ origin, values }) => {
+    window.__QA_INPUT_LOG__ = [];
+    document.addEventListener('pointerdown', event => window.__QA_INPUT_LOG__.push({ type: event.pointerType, trusted: event.isTrusted }), true);
+    if (location.origin === origin && !sessionStorage.getItem('pack-qa-seeded')) {
+      for (const [key, value] of Object.entries(values)) localStorage.setItem(key, value);
+      sessionStorage.setItem('pack-qa-seeded', '1');
+    }
+  }, { origin: service.url, values: { ...legacyStorage, [storageKey]: JSON.stringify({ version: 1, places: records }) } });
+  const page = await context.newPage(); page.setDefaultTimeout(timeout);
+  page.on('request', request => {
+    const url = new URL(request.url());
+    record.requests.push({ origin: url.origin, path: url.pathname, query: url.search, method: request.method() });
+    if (['http:', 'https:'].includes(url.protocol) && url.origin !== service.url && !providers.has(url.origin)) record.external.push(url.origin);
+  });
+  page.on('pageerror', error => { record.pageErrors.push(error.message); persist(); });
+  page.on('console', message => { if (message.type() === 'error') record.consoleErrors.push(message.text()); });
+  const url = new URL('/?qa=1', service.url); url.searchParams.set('lang', locale);
+  if (pack) url.searchParams.set('pack', pack); if (mode) url.searchParams.set('mode', mode);
+  await page.goto(url.href, { waitUntil: 'domcontentloaded' }); await page.waitForFunction(() => Boolean(window.__HOME__));
+  return { context, page, record, fault };
+}
+async function activate(page, selector) { await page.locator(selector)[mobileContexts.has(page.context()) ? 'tap' : 'click'](); }
+async function ready(page, packId, mode) {
+  await page.waitForFunction(({ packId, mode }) => {
+    const home = window.__HOME__?.snapshot(), renderer = window.__TOUR_GAME__?.renderer();
+    return home?.pack?.packId === packId && home.pack.revision === 1 && home.sceneState === 'ready'
+      && home.currentView?.version === 3 && home.currentView.packId === packId && home.currentView.revision === 1
+      && renderer?.status === 'ready' && renderer.renderedFrames > 0 && renderer.lighting.phase === 'ready'
+      && (!mode || renderer.lighting.mode === mode);
+  }, { packId, mode });
+}
+async function choose(page, packId, mode) {
+  await activate(page, `[data-pack="${packId}"]`); await ready(page, packId, mode);
+  await page.waitForFunction(() => !/Looking for places|正在寻找起点/.test(document.querySelector('#routes-status').textContent));
+}
+async function lighting(page, mode, packId) { await activate(page, `#lighting-${mode}`); await ready(page, packId, mode); }
+async function locale(page, language) { await activate(page, `#locale-${language}`); await page.waitForFunction(value => document.documentElement.lang === value, language); }
+async function capture(page, name) {
+  const mobile = mobileContexts.has(page.context()); if (mobile) await page.locator('.preview-frame').scrollIntoViewIfNeeded();
+  const path = join(output, name + '.png'); await page.screenshot({ path, fullPage: !mobile });
+  const observed = await page.evaluate(() => {
+    const home = window.__HOME__.snapshot(), renderer = window.__TOUR_GAME__?.renderer();
+    return { pack: home.pack, view: home.currentView, camera: window.__TOUR_GAME__?.camera(),
+      renderedFrames: renderer?.renderedFrames, assetHashes: renderer?.scene.assetHashes,
+      lighting: { mode: renderer?.lighting.mode, phase: renderer?.lighting.phase,
+        environmentSha256: renderer?.lighting.environment.sha256 } };
+  });
+  report.screenshots.push({ file: name + '.png', sha256: sha(readFileSync(path)), fullPage: !mobile, observed }); persist();
+}
+async function keep(page, title, note) {
+  await activate(page, '#solo-keep'); await page.locator('#kept-title').fill(title); await page.locator('#kept-note').fill(note);
+  await activate(page, '#keep-place-form button[type=submit]'); await page.locator('#keep-place-dialog').waitFor({ state: 'hidden' });
+  return (await saved(page)).places.find(place => place.title === title);
+}
+async function reopen(page, place, packId = place.view.packId || 'shijo-karasuma') {
+  await activate(page, `[data-kept-open="${place.id}"]`); await ready(page, packId, place.lighting);
+  await page.waitForFunction(() => /saved view and place order are open|已打开收藏/.test(document.querySelector('#solo-status').textContent));
+}
+async function isolated(page, id) {
+  const actual = await page.evaluate(keys => Object.fromEntries(keys.map(key => [key, localStorage.getItem(key)])), Object.keys(legacyStorage));
+  check(id, equal(actual, legacyStorage), actual);
+}
+async function mapsMatch(page, place, id) {
+  const links = await page.locator('#route-maps a').evaluateAll(nodes => nodes.map(node => node.href));
+  const coordinates = [];
+  for (const link of links) {
+    const url = new URL(link), query = url.searchParams;
+    if (url.origin !== 'https://www.google.com') throw new Error('Maps handoff has an unexpected origin.');
+    const part = query.has('query') ? [query.get('query')]
+      : [query.get('origin'), ...(query.get('waypoints')?.split('|') || []), query.get('destination')];
+    if (coordinates.at(-1) === part[0]) part.shift(); coordinates.push(...part);
+  }
+  check(id, equal(coordinates, place.route.stops.map(stop => `${stop.latitude},${stop.longitude}`)), { links, coordinates, stops: place.route.stops });
+}
+async function layout(page, id) {
+  const actual = await page.evaluate(() => ({ document: document.documentElement.scrollWidth,
+    controls: ['.preview-frame', '#solo-controls', '#solo-places'].map(selector => ({ selector, ...document.querySelector(selector).getBoundingClientRect().toJSON() })) }));
+  check(id, actual.document <= page.viewportSize().width + 1 && actual.controls.every(rect => rect.left >= -1 && rect.right <= page.viewportSize().width + 1), actual);
+}
+async function keyStep(page, key) {
+  const before = (await renderer(page)).renderedFrames; await page.keyboard.press(key);
+  await page.waitForFunction(before => window.__TOUR_GAME__.renderer().renderedFrames > before, before);
+}
+async function touchOrbit(page, distance = 48) {
+  await page.locator('#live-stage canvas').scrollIntoViewIfNeeded();
+  const rect = await page.locator('#live-stage canvas').boundingBox(), cdp = await page.context().newCDPSession(page);
+  const point = delta => [{ id: 1, x: rect.x + rect.width * .4 + delta, y: rect.y + rect.height * .5 }];
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: point(0) });
+  for (let i = 1; i <= 6; i++) { await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: point(i * distance / 6) }); await page.waitForTimeout(40); }
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] }); await cdp.detach();
+}
+async function touchZoom(page) {
+  await page.locator('#live-stage canvas').scrollIntoViewIfNeeded();
+  const rect = await page.locator('#live-stage canvas').boundingBox(), cdp = await page.context().newCDPSession(page);
+  const points = span => [{ id: 1, x: rect.x + rect.width / 2 - span, y: rect.y + rect.height / 2 },
+    { id: 2, x: rect.x + rect.width / 2 + span, y: rect.y + rect.height / 2 }];
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: points(30) });
+  for (let i = 1; i <= 6; i++) { await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: points(30 + i * 4) }); await page.waitForTimeout(40); }
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] }); await cdp.detach();
+}
+async function projectPoint(page, target, height) {
+  await page.locator('#live-stage canvas').scrollIntoViewIfNeeded();
+  const camera = await page.evaluate(() => window.__TOUR_GAME__.camera());
+  const rect = await page.locator('#live-stage canvas').boundingBox();
+  const projected = new Vector3(target.x, height, -target.y)
+    .applyMatrix4(new Matrix4().fromArray(camera.matrixWorld).invert())
+    .applyMatrix4(new Matrix4().fromArray(camera.projectionMatrix));
+  return { normalized: projected.toArray(), x: rect.x + (projected.x + 1) * rect.width / 2,
+    y: rect.y + (1 - projected.y) * rect.height / 2 };
+}
+async function touchPan(page, dx, dy) {
+  const rect = await page.locator('#live-stage canvas').boundingBox(), cdp = await page.context().newCDPSession(page);
+  const points = fraction => [1, 2].map(id => ({ id, x: rect.x + rect.width / 2 + (id === 1 ? -25 : 25) + dx * fraction,
+    y: rect.y + rect.height / 2 + dy * fraction }));
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: points(0) });
+  for (let i = 1; i <= 6; i++) { await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: points(i / 6) }); await page.waitForTimeout(40); }
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] }); await cdp.detach();
+}
+const secondFrontage = () => ({ x: (ginzaSource.building.footprint[3].x + ginzaSource.building.footprint[4].x) / 2,
+  y: (ginzaSource.building.footprint[3].y + ginzaSource.building.footprint[4].y) / 2 });
+async function frameSecondFrontage(page) {
+  const mobile = mobileContexts.has(page.context()), before = await view(page);
+  if (mobile) { await touchOrbit(page, -120); await touchOrbit(page, -120); await touchZoom(page); }
+  else {
+    await page.locator('#live-stage').focus();
+    for (let i = 0; i < 10; i++) await page.keyboard.press('l');
+    for (let i = 0; i < 40 && (await view(page)).camera.distance > 32; i++) await page.keyboard.press('=');
+  }
+  let projected;
+  for (let i = 0; i < 60; i++) {
+    projected = await projectPoint(page, secondFrontage(), 14);
+    const [x, y] = projected.normalized;
+    if (Math.abs(x) < .15 && Math.abs(y) < .15) break;
+    if (mobile) {
+      const rect = await page.locator('#live-stage canvas').boundingBox();
+      await touchPan(page, Math.max(-80, Math.min(80, -x * rect.width / 2)), Math.max(-80, Math.min(80, y * rect.height / 2)));
+    } else await page.keyboard.press(Math.abs(x) > Math.abs(y) ? x > 0 ? 'Shift+l' : 'Shift+j' : y > 0 ? 'Shift+i' : 'Shift+k');
+  }
+  check(`${mobile ? 'phone' : 'desktop'}-actual-controls-frame-second-frontage-detail`, projected.normalized.slice(0, 2).every(value => Math.abs(value) < .15)
+    && closeEnough((await view(page)).player, before.player), { before, after: await view(page), projected });
+}
+function insideFootprint(point) {
+  const ring = ginzaSource.building.footprint;
+  let inside = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const a = ring[i], b = ring[j];
+    if ((a.y > point.y) !== (b.y > point.y) && point.x < (b.x - a.x) * (point.y - a.y) / (b.y - a.y) + a.x) inside = !inside;
+  }
+  return inside;
+}
+async function groundClick(page, target) {
+  const point = await projectPoint(page, target, ginzaSource.authoredNavigation.groundHeightMetres + .01);
+  const [x, y, z] = point.normalized;
+  if (Math.abs(x) > .96 || Math.abs(y) > .96 || z < -1 || z > 1) throw new Error('The next authored sidewalk point is outside the actual camera.');
+  const trace = { target, screenPoint: point, startedAt: new Date().toISOString(), samples: [] };
+  report.observations.groundClicks ??= []; report.observations.groundClicks.push(trace); persist();
+  if (mobileContexts.has(page.context())) await page.touchscreen.tap(point.x, point.y); else await page.mouse.click(point.x, point.y);
+  const deadline = Date.now() + timeout;
+  while (Date.now() < deadline) {
+    const actual = await page.evaluate(() => ({ state: window.__TOUR_GAME__.snapshot(), ground: window.__TOUR_GAME__.grounding(),
+      renderedFrames: window.__TOUR_GAME__.renderer().renderedFrames, updateFrames: window.__TOUR_GAME__.renderer().updateFrames }));
+    trace.samples.push({ at: new Date().toISOString(), ...actual });
+    if (Math.hypot(actual.state.x - target.x, actual.state.y - target.y) < .15 && !actual.state.destination && !actual.state.moving) {
+      trace.arrivedAt = new Date().toISOString(); persist();
+      return { state: actual.state, ground: actual.ground, scene: (await renderer(page)).scene };
+    }
+    if (trace.samples.length % 4 === 0) persist();
+    await page.waitForTimeout(500);
+  }
+  trace.timeout = await page.evaluate(() => ({ state: window.__TOUR_GAME__.snapshot(), camera: window.__TOUR_GAME__.camera(),
+    ground: window.__TOUR_GAME__.grounding(), commands: window.__TOUR_GAME__.commands(), renderer: window.__TOUR_GAME__.renderer() }));
+  await capture(page, `ground-arrival-timeout-${report.observations.groundClicks.length}`); persist();
+  throw new Error('Actual ground-click arrival exceeded the tooling ceiling; target and movement trace were preserved.');
+}
+async function walkCorner(page, id) {
+  const line = ginzaSource.sidewalk.centerline, samples = [];
+  const nav = await page.evaluate(() => window.__TOUR_GAME__.navigation());
+  check(id + '-uses-reviewed-centerline-and-authored-clearance', nav.kind === 'corridor'
+    && closeEnough(nav.centerline, line.map(({ x, y }) => ({ x, y })))
+    && nav.width === ginzaSource.authoredNavigation.fullWidthMetres, nav);
+  const initial = await state(page);
+  let nearest = 0;
+  for (let i = 1; i < line.length; i++) if (Math.hypot(line[i].x - initial.x, line[i].y - initial.y) < Math.hypot(line[nearest].x - initial.x, line[nearest].y - initial.y)) nearest = i;
+  for (let i = nearest + 1; i < line.length; i++) {
+    const from = await state(page), to = line[i], count = Math.ceil(Math.hypot(to.x - from.x, to.y - from.y) / 2.5);
+    for (let part = 1; part <= count; part++) {
+      const target = { x: from.x + (to.x - from.x) * part / count, y: from.y + (to.y - from.y) * part / count };
+      samples.push(await groundClick(page, target));
+    }
+    await capture(page, `${id}-sidewalk-node-${i}`);
+  }
+  const final = await state(page);
+  check(id + '-actual-ground-travel-rounds-the-corner-to-second-frontage', samples.length > 0
+    && samples.every(sample => sample.ground.inside && sample.ground.hit && !insideFootprint(sample.state)
+      && Math.abs(sample.ground.height - ginzaSource.authoredNavigation.groundHeightMetres) < .003
+      && Math.abs(sample.scene.actorPosition[1] - sample.ground.height) < .003)
+    && Math.hypot(final.x - line.at(-1).x, final.y - line.at(-1).y) < .15
+    && !final.visitedIds.length && !Object.keys(final.choiceIds).length, { initial, final, samples });
+  const pose = await view(page), last = line.at(-1), previous = line.at(-2);
+  const direction = { x: last.x - previous.x, y: last.y - previous.y };
+  const yaw = pose.camera.azimuth;
+  const keys = [ ['ArrowUp', -Math.sin(yaw), Math.cos(yaw)], ['ArrowRight', Math.cos(yaw), Math.sin(yaw)],
+    ['ArrowDown', Math.sin(yaw), -Math.cos(yaw)], ['ArrowLeft', -Math.cos(yaw), -Math.sin(yaw)] ];
+  keys.sort((a, b) => (b[1] * direction.x + b[2] * direction.y) - (a[1] * direction.x + a[2] * direction.y));
+  await page.locator('#live-stage').focus(); await page.keyboard.down(keys[0][0]);
+  try { await page.waitForFunction(tick => window.__TOUR_GAME__.snapshot().tick >= tick + 90, final.tick); }
+  finally { await page.keyboard.up(keys[0][0]); }
+  const blocked = await page.evaluate(() => ({ state: window.__TOUR_GAME__.snapshot(), ground: window.__TOUR_GAME__.grounding() }));
+  await page.waitForTimeout(250);
+  check(id + '-held-input-respects-finite-endpoint-and-key-release', blocked.ground.inside && Boolean(blocked.ground.hit)
+    && !insideFootprint(blocked.state) && Math.hypot(blocked.state.x - last.x, blocked.state.y - last.y) <= nav.centerRadius + .003
+    && closeEnough({ x: (await state(page)).x, y: (await state(page)).y }, { x: blocked.state.x, y: blocked.state.y }), blocked);
+  return samples;
+}
+async function section(name, operation) {
+  if (selected && !selected.includes(name)) return;
+  try { await operation(); }
+  catch (error) {
+    const pages = [...contexts].flatMap(context => context.pages()).filter(page => !page.isClosed());
+    const diagnostics = await Promise.allSettled(pages.map(async (page, index) => {
+      const actual = await page.evaluate(() => ({ home: window.__HOME__?.snapshot(), state: window.__TOUR_GAME__?.snapshot(),
+        camera: window.__TOUR_GAME__?.camera(), ground: window.__TOUR_GAME__?.grounding(), renderer: window.__TOUR_GAME__?.renderer() }));
+      await capture(page, `${name}-failure-${index}`); return actual;
+    }));
+    check(name + '-completed', false, { message: error.message, stack: error.stack,
+      diagnostics: diagnostics.map(result => result.status === 'fulfilled' ? result.value : { error: String(result.reason) }) });
+  }
+  finally { for (const context of [...contexts]) { await context.close(); contexts.delete(context); } }
+}
+
+try {
+  service = await startServer({ port: 0, host: '127.0.0.1', databasePath: join(output, 'rooms.sqlite'), config: { provider: { apiKey: '', model: '' } } });
+  const address = process.env.HTTPS_PROXY || process.env.HTTP_PROXY, proxy = address ? new URL(address) : null;
+  browser = await chromium.launch({ executablePath: process.env.EXPERIENCE_QA_CHROMIUM || undefined, headless: true, args: ['--no-sandbox'],
+    ...(proxy ? { proxy: { server: proxy.origin, bypass: 'localhost,127.0.0.1', ...(proxy.username ? { username: decodeURIComponent(proxy.username), password: decodeURIComponent(proxy.password) } : {}) } } : {}) });
+  report.browser = browser.version(); persist();
+  const manifestBytes = assets.get('/packs/ginza-wako/manifest.json');
+  if (!manifestBytes) throw new Error('Ginza manifest is missing from the reviewed package.');
+  const manifest = JSON.parse(manifestBytes);
+  const boundAssets = ['model', 'lighting', 'materials', 'source', 'provenance'].map(key => {
+    const record = manifest[key], path = new URL(record.file, 'http://qa.test/packs/ginza-wako/manifest.json').pathname;
+    const bytes = assets.get(path);
+    return { key, path, expected: record, actual: bytes ? { bytes: bytes.length, sha256: sha(bytes) } : null };
+  });
+  check('ginza-manifest-binds-actual-asset-identities', manifest.id === 'ginza-wako' && manifest.revision === 1
+    && boundAssets.every(item => item.actual?.bytes === item.expected.bytes && item.actual.sha256 === item.expected.sha256), boundAssets);
+  check('ginza-pack-carries-reviewed-source-verbatim', manifest.source.sha256 === sha(sourceBytes)
+    && sha(assets.get('/packs/ginza-wako/source.json')) === sha(sourceBytes), report.ginzaSource);
+  const shijoAssets = previousPackage.files.filter(file => /^\/(models|materials|lighting)\//.test(file.path));
+  check('existing-shijo-model-finish-and-lighting-bytes-remain-unchanged', shijoAssets.length > 0
+    && shijoAssets.every(file => assets.has(file.path) && sha(assets.get(file.path)) === file.sha256),
+    { previousPackage: previousPackage.manifestSha256, files: shijoAssets.map(({ path, sha256 }) => ({ path, sha256 })) });
+  const marginal = files.filter(file => file.path.startsWith('/packs/ginza-wako/') && /\.(glb|png|jpe?g|webp)$/.test(file.path));
+  const marginalBytes = marginal.reduce((sum, file) => sum + file.bytes, 0);
+  check('ginza-model-and-place-specific-maps-fit-approved-byte-cap', marginalBytes <= 8 * 1024 * 1024,
+    { capBytes: 8 * 1024 * 1024, marginalBytes, marginal,
+      shared: files.filter(file => file.path === '/models/traveller.glb' || file.path.endsWith('.hdr')) });
+
+  await section('openings', async () => {
+    for (const mobile of [false, true]) {
+      const language = mobile ? 'zh' : 'en', label = mobile ? 'phone' : 'desktop';
+      const { page, context } = await scenario(`opening-${label}`, { mobile, locale: language, pack: 'ginza-wako', records: [] });
+      await ready(page, 'ginza-wako', 'day'); const initial = await view(page);
+      for (const mode of ['day', 'night']) {
+        await lighting(page, mode, 'ginza-wako'); await capture(page, `ginza-opening-${label}-${language}-${mode}`);
+        check(`ginza-${label}-${mode}-opening-is-actual-ready-and-keeps-pose`, closeEnough(await view(page), initial)
+          && (await renderer(page)).lighting.mode === mode, { view: await view(page), renderer: await renderer(page) });
+      }
+      await layout(page, `ginza-${label}-opening-controls-fit`);
+      await context.close(); contexts.delete(context);
+    }
+  });
+
+  await section('continuity', async () => {
+    const { page, record } = await scenario('continuity'); await ready(page, 'shijo-karasuma');
+    check('new-area-model-is-lazy', !record.requests.some(item => item.path === '/packs/ginza-wako/scene.glb'), record.requests);
+    await reopen(page, legacyPlace);
+    const migrated = await view(page);
+    check('legacy-v2-view-restores-only-in-shijo', migrated.version === 3 && migrated.packId === 'shijo-karasuma' && migrated.revision === 1
+      && closeEnough(migrated.player, legacyPlace.view.player) && closeEnough(migrated.camera, legacyPlace.view.camera), migrated);
+    await choose(page, 'ginza-wako');
+    const initial = await view(page), initialHome = await home(page);
+    check('ginza-load-has-distinct-pack-and-world-identity', initialHome.pack.packId === 'ginza-wako'
+      && initialHome.center.id !== legacyPlace.center.id && record.requests.some(item => item.path === '/packs/ginza-wako/scene.glb'), initialHome);
+    check('ginza-does-not-offer-kyoto-only-companion-or-guided-walk', await page.locator('#walk-link').isHidden()
+      && await page.locator('#companion-link').isHidden());
+    const scene = (await renderer(page)).scene;
+    check('actual-ginza-model-matches-packaged-bytes', scene.packId === 'ginza-wako' && scene.revision === 1
+      && scene.modelSha256 === sha(assets.get('/packs/ginza-wako/scene.glb')), scene);
+    check('loaded-ginza-geometry-fits-approved-production-caps', Number.isFinite(scene.streetTriangles) && scene.streetTriangles > 0 && scene.streetTriangles <= 100000
+      && Number.isFinite(scene.streetMeshes) && scene.streetMeshes > 0 && scene.streetMeshes <= 64,
+      { streetTriangles: scene.streetTriangles, streetMeshes: scene.streetMeshes, totalTriangles: scene.triangles, totalMeshes: scene.meshes });
+    await capture(page, 'ginza-opening-en');
+    await walkCorner(page, 'desktop-ginza');
+    const beforeCamera = await view(page);
+    await activate(page, '#solo-inspect');
+    check('ginza-inspection-toggle-focuses-stage', await page.locator('#live-stage').evaluate(node => node === document.activeElement));
+    await keyStep(page, 'l'); await keyStep(page, 'i'); await keyStep(page, '-');
+    const framed = await view(page);
+    check('ginza-keyboard-camera-is-direct-and-keeps-player', !closeEnough(framed.camera, beforeCamera.camera) && closeEnough(framed.player, beforeCamera.player), { beforeCamera, framed });
+    await frameSecondFrontage(page);
+    const rect = await page.locator('#live-stage canvas').boundingBox(); let focus = null;
+    for (const y of [.18, .32, .46, .60, .72]) {
+      for (const x of [.2, .35, .5, .65, .8]) {
+        const updates = (await renderer(page)).updateFrames;
+        await page.mouse.move(rect.x + rect.width * x, rect.y + rect.height * y);
+        await page.waitForFunction(before => window.__TOUR_GAME__.renderer().updateFrames > before, updates);
+        focus = await page.evaluate(() => window.__TOUR_GAME__.inspection().focus); if (focus) break;
+      }
+      if (focus) break;
+    }
+    check('ginza-visible-surface-produces-a-local-feature-cue', Boolean(focus)
+      && ['wako-clock', 'wako-rounded-corner', 'wako-window-hierarchy', 'wako-stone-cornice'].includes(focus.id), focus);
+    if (focus) {
+      const before = await view(page); await activate(page, '#solo-detail');
+      check('ginza-inspect-requires-action-and-keeps-framing', (await page.evaluate(() => window.__TOUR_GAME__.inspection().selected?.id)) === focus.id
+        && closeEnough(await view(page), before) && (await page.locator('#solo-inspection a[href]').count()) > 0, await page.locator('#solo-inspection').innerText());
+      await activate(page, '#solo-close-detail');
+    }
+    await lighting(page, 'day', 'ginza-wako');
+    const dayPose = await view(page), dayLighting = (await renderer(page)).lighting;
+    const dayPixels = await page.locator('#live-stage canvas').screenshot(); await capture(page, 'ginza-day-en');
+    await lighting(page, 'night', 'ginza-wako');
+    const nightLighting = (await renderer(page)).lighting, nightPixels = await page.locator('#live-stage canvas').screenshot();
+    check('ginza-day-night-changes-real-environment-and-pixels-with-same-pose', dayLighting.environment.sha256 !== nightLighting.environment.sha256
+      && sha(dayPixels) !== sha(nightPixels) && closeEnough(dayPose, await view(page)), { dayLighting, nightLighting, dayPixels: sha(dayPixels), nightPixels: sha(nightPixels) });
+    await capture(page, 'ginza-night-en');
+    const options = page.locator('#route-options [data-route]');
+    if (await options.count() > 1) await activate(page, '#route-options [data-route]:last-child');
+    const beforeKeep = await view(page), routes = (await home(page)).routes;
+    await activate(page, '#solo-keep');
+    await page.locator('#kept-note').pressSequentially('WASD private words');
+    await page.keyboard.press('ArrowLeft');
+    check('ginza-note-dialog-pauses-world-and-keeps-camera', (await state(page)).paused
+      && closeEnough(await view(page), beforeKeep) && (await page.locator('#kept-note').inputValue()) === 'WASD private words', await state(page));
+    await activate(page, '#solo-cancel-keep');
+    await page.waitForFunction(() => !window.__TOUR_GAME__.snapshot().paused);
+    check('canceling-note-dialog-resumes-without-creating-record', !(await state(page)).paused
+      && (await saved(page)).places.length === 1 && closeEnough(await view(page), beforeKeep), await saved(page));
+    const note = '<img src=x onerror="window.packInjected=1"> 銀座の夜';
+    ginzaPlace = await keep(page, 'Ginza return 銀座', note);
+    const retainedLegacy = (await saved(page)).places.find(place => place.id === legacyPlace.id);
+    check('ginza-save-binds-v3-pose-light-note-and-source', ginzaPlace?.view?.packId === 'ginza-wako' && ginzaPlace.view.revision === 1
+      && closeEnough(ginzaPlace.view, beforeKeep) && ginzaPlace.lighting === 'night' && ginzaPlace.note === note
+      && Boolean(ginzaPlace.center.source) && Boolean(ginzaPlace.center.url) && !await page.evaluate(() => window.packInjected), ginzaPlace);
+    report.observations.ginzaSaved = ginzaPlace;
+    await locale(page, 'zh'); await ready(page, 'ginza-wako', 'night');
+    check('pack-locale-preserves-pose-and-selected-order', closeEnough(await view(page), beforeKeep) && equal((await home(page)).routes, routes), await home(page));
+    const canonicalTitle = (await page.locator('[data-pack="ginza-wako"]').textContent()).trim();
+    check('canonical-ginza-name-localizes-in-place-route-and-maps-text', (await home(page)).center.title === canonicalTitle
+      && (await page.locator('#route-stops').innerText()).includes(canonicalTitle)
+      && (await page.locator('#maps-text').inputValue()).includes(canonicalTitle), { canonicalTitle, center: (await home(page)).center });
+    await activate(page, '#street-map-toggle'); await page.waitForFunction(() => window.__HOME__?.snapshot().map?.ready);
+    check('surrounding-map-retains-selected-place', (await home(page)).center.id === ginzaPlace.center.id && await page.locator('#world-map').isVisible(), await home(page));
+    await page.reload(); await page.waitForFunction(() => Boolean(window.__HOME__));
+    await reopen(page, legacyPlace); check('shijo-return-after-ginza-keeps-old-pose', closeEnough((await view(page)).player, legacyPlace.view.player)
+      && closeEnough((await view(page)).camera, legacyPlace.view.camera), await view(page));
+    check('return-to-shijo-restores-localized-legacy-links', await page.locator('#walk-link').isVisible()
+      && await page.locator('#companion-link').isVisible()
+      && new URL(await page.locator('#walk-link').getAttribute('href'), page.url()).searchParams.get('lang') === 'zh'
+      && new URL(await page.locator('#companion-link').getAttribute('href'), page.url()).searchParams.get('lang') === 'zh');
+    await reopen(page, ginzaPlace);
+    check('ginza-return-after-reload-keeps-exact-pose-and-note', closeEnough(await view(page), ginzaPlace.view)
+      && (await saved(page)).places.find(place => place.id === ginzaPlace.id)?.note === note
+      && equal((await home(page)).routes[0].stops, ginzaPlace.route.stops.map(stop => stop.id)), { saved: ginzaPlace, actual: await home(page) });
+    await mapsMatch(page, ginzaPlace, 'reopened-pack-maps-handoff-keeps-real-coordinate-order');
+    await locale(page, 'en'); await ready(page, 'ginza-wako', 'night');
+    const englishTitle = (await page.locator('[data-pack="ginza-wako"]').textContent()).trim();
+    check('saved-pack-english-label-keeps-private-words-and-order', (await page.locator('#maps-text').inputValue()).includes(englishTitle)
+      && (await saved(page)).places.find(place => place.id === ginzaPlace.id)?.note === note
+      && equal((await home(page)).routes[0].stops, ginzaPlace.route.stops.map(stop => stop.id)), await home(page));
+    await locale(page, 'zh'); await ready(page, 'ginza-wako', 'night');
+    await capture(page, 'ginza-return-zh'); await isolated(page, 'cross-pack-journey-preserves-all-legacy-storage');
+    await activate(page, `[data-kept-remove="${ginzaPlace.id}"]`); await activate(page, '#solo-cancel-remove');
+    check('canceling-ginza-removal-keeps-both-saved-areas', (await saved(page)).places.length === 2
+      && closeEnough(await view(page), ginzaPlace.view), await saved(page));
+    await activate(page, `[data-kept-remove="${ginzaPlace.id}"]`); await activate(page, '#solo-confirm-remove');
+    await page.reload(); await page.waitForFunction(() => Boolean(window.__HOME__));
+    check('explicit-ginza-removal-preserves-the-original-shijo-record', (await saved(page)).places.length === 1
+      && equal((await saved(page)).places[0], retainedLegacy)
+      && closeEnough(retainedLegacy.view.player, legacyPlace.view.player)
+      && closeEnough(retainedLegacy.view.camera, legacyPlace.view.camera)
+      && retainedLegacy.note === legacyPlace.note && equal(retainedLegacy.route, legacyPlace.route), await saved(page));
+  });
+
+  await section('phone', async () => {
+    const { page } = await scenario('phone', { mobile: true, pack: 'ginza-wako', records: [] }); await ready(page, 'ginza-wako');
+    await walkCorner(page, 'phone-ginza');
+    for (const language of ['en', 'zh']) {
+      await locale(page, language); await ready(page, 'ginza-wako');
+      await lighting(page, language === 'en' ? 'day' : 'night', 'ginza-wako');
+      if (!(await page.evaluate(() => window.__TOUR_GAME__.inspection().enabled))) await activate(page, '#solo-inspect');
+      const before = await view(page); await touchOrbit(page);
+      await page.waitForFunction(previous => Math.abs(window.__HOME__.snapshot().currentView.camera.azimuth - previous) > .05, before.camera.azimuth);
+      const after = await view(page), input = await page.evaluate(() => window.__QA_INPUT_LOG__.at(-1));
+      check(`ginza-${language}-actual-touch-orbit-keeps-player`, input?.type === 'touch' && input.trusted
+        && closeEnough(before.player, after.player) && !closeEnough(before.camera, after.camera), { before, after, input });
+      await layout(page, `ginza-${language}-phone-controls-fit`); await capture(page, `ginza-${language}-phone`);
+    }
+    const beforeZoom = await view(page); await touchZoom(page);
+    await page.waitForFunction(distance => Math.abs(window.__HOME__.snapshot().currentView.camera.distance - distance) > 1, beforeZoom.camera.distance);
+    check('phone-pinch-changes-real-camera-distance-without-walking', closeEnough((await view(page)).player, beforeZoom.player),
+      { before: beforeZoom, after: await view(page) });
+    await frameSecondFrontage(page); await capture(page, 'ginza-phone-second-frontage-close-zh');
+    await activate(page, '#preview-reset');
+    const facade = ginzaSource.building.footprint;
+    const detail = await projectPoint(page, { x: (facade[3].x + facade[4].x) / 2, y: (facade[3].y + facade[4].y) / 2 }, 14);
+    const beforeDetail = await view(page);
+    if (detail.normalized.slice(0, 2).some(value => Math.abs(value) > .96)) throw new Error('Second-frontage detail is outside the reset phone camera; actual pose is preserved in failure diagnostics.');
+    await page.touchscreen.tap(detail.x, detail.y);
+    await page.waitForFunction(() => Boolean(window.__TOUR_GAME__.inspection().selected));
+    await activate(page, '#solo-close-detail');
+    check('phone-explicit-detail-and-close-keep-the-chosen-frame', closeEnough(await view(page), beforeDetail)
+      && await page.locator('#solo-inspection').isHidden(), { detail, view: await view(page) });
+    await activate(page, '#solo-inspect'); await activate(page, '#preview-reset');
+    const endpoint = ginzaSource.sidewalk.centerline.at(-1), prior = ginzaSource.sidewalk.centerline.at(-2);
+    const length = Math.hypot(prior.x - endpoint.x, prior.y - endpoint.y);
+    const returned = await groundClick(page, { x: endpoint.x + (prior.x - endpoint.x) * 2.5 / length,
+      y: endpoint.y + (prior.y - endpoint.y) * 2.5 / length });
+    check('phone-reset-and-exit-inspection-restore-visible-ground-walking', !await page.evaluate(() => window.__TOUR_GAME__.inspection().enabled)
+      && returned.ground.inside && Boolean(returned.ground.hit), returned);
+    const kept = await keep(page, '手机银座视角', '选择停留的位置');
+    await page.reload(); await page.waitForFunction(() => Boolean(window.__HOME__)); await reopen(page, kept);
+    check('phone-pack-return-keeps-view-light-note', closeEnough(await view(page), kept.view)
+      && (await saved(page)).places[0].note === kept.note && (await renderer(page)).lighting.mode === kept.lighting, kept);
+    await isolated(page, 'phone-pack-preserves-legacy-storage');
+  });
+
+  await section('latest-intent', async () => {
+    let release; const fault = { delay: url => url.pathname === '/packs/ginza-wako/scene.glb', wait: new Promise(resolve => { release = resolve; }) };
+    const { page, record } = await scenario('latest-intent', { fault }); await ready(page, 'shijo-karasuma');
+    try {
+      await activate(page, '[data-pack="ginza-wako"]');
+      const deadline = Date.now() + timeout;
+      while (!record.delayed.length && Date.now() < deadline) await page.waitForTimeout(50);
+      if (!record.delayed.length) throw new Error('Ginza request never reached the deliberate delay.');
+      await activate(page, '[data-pack="shijo-karasuma"]');
+    } finally { fault.delay = null; release(); }
+    await ready(page, 'shijo-karasuma');
+    await page.waitForFunction(() => {
+      const lifecycle = window.__TOUR_RUNTIME__?.lifecycle();
+      return lifecycle?.pending === 0 && lifecycle.active === 1;
+    });
+    check('late-ginza-load-cannot-replace-latest-shijo-selection', (await home(page)).pack?.packId === 'shijo-karasuma'
+      && (await view(page)).packId === 'shijo-karasuma' && await page.locator('#live-stage canvas').count() === 1,
+      { actual: await home(page), delayed: record.delayed, lifecycle: await page.evaluate(() => window.__TOUR_RUNTIME__.lifecycle()) });
+    await isolated(page, 'canceled-pack-load-preserves-legacy-storage');
+  });
+
+  await section('framing-recovery', async () => {
+    for (const mobile of [false, true]) {
+      const label = mobile ? 'phone' : 'desktop';
+      const { page, context } = await scenario(`framing-recovery-${label}`, { mobile, pack: 'ginza-wako', records: [] }); await ready(page, 'ginza-wako');
+      await activate(page, '#solo-inspect');
+      if (mobile) {
+        await page.locator('#live-stage canvas').scrollIntoViewIfNeeded();
+        await touchPan(page, 0, 100); await touchPan(page, 0, 100);
+        for (let i = 0; i < 5; i++) await touchZoom(page);
+      } else {
+        for (let i = 0; i < 16; i++) await page.keyboard.press('Shift+i');
+        for (let i = 0; i < 54; i++) await page.keyboard.press('=');
+      }
+      const player = await state(page), closeView = await view(page), beforeProjection = await projectPoint(page, player, .9);
+      check(`${label}-high-detail-input-exercises-offscreen-actor-recovery`, beforeProjection.normalized.slice(0, 2).some(value => Math.abs(value) > 1),
+        { view: closeView, projection: beforeProjection });
+      await capture(page, `ginza-${label}-high-detail-before-walk`);
+      if (mobile) {
+        await activate(page, '#solo-inspect');
+        const next = ginzaSource.sidewalk.centerline[2], length = Math.hypot(next.x - player.x, next.y - player.y);
+        await groundClick(page, { x: player.x + (next.x - player.x) * 1.2 / length, y: player.y + (next.y - player.y) * 1.2 / length });
+      } else {
+        await page.locator('#live-stage').focus(); await page.keyboard.press('Escape'); await page.keyboard.down('ArrowUp');
+        try { await page.waitForFunction(before => Math.hypot(window.__TOUR_GAME__.snapshot().x - before.x,
+          window.__TOUR_GAME__.snapshot().y - before.y) > .3, player); }
+        finally { await page.keyboard.up('ArrowUp'); }
+      }
+      const after = await state(page), afterProjection = await projectPoint(page, after, .9);
+      check(`${label}-deliberate-walking-recovers-actor-without-reset-or-teleport`, afterProjection.normalized.every(value => value >= -1 && value <= 1)
+        && Math.hypot(after.x - player.x, after.y - player.y) < 2 && !await page.evaluate(() => window.__TOUR_GAME__.inspection().enabled),
+        { before: closeView, after: await view(page), beforeProjection, afterProjection, state: after });
+      await capture(page, `ginza-${label}-high-detail-walk-recovered`); await context.close(); contexts.delete(context);
+    }
+  });
+
+  await section('asset-recovery', async () => {
+    const fault = { deny: url => url.pathname === '/packs/ginza-wako/scene.glb' };
+    const { page, record } = await scenario('asset-recovery', { pack: 'ginza-wako', fault });
+    await page.waitForFunction(() => window.__HOME__?.snapshot().sceneState === 'error');
+    check('denied-ginza-model-exposes-error-and-retains-saves', record.denied.length > 0 && await page.locator('#scene-retry').isVisible()
+      && await page.locator('#solo-keep').isDisabled() && (await saved(page)).places.some(place => place.id === legacyPlace.id), await home(page));
+    fault.deny = null; await activate(page, '#scene-retry'); await ready(page, 'ginza-wako');
+    check('ginza-retry-loads-the-real-pack', (await home(page)).pack.packId === 'ginza-wako' && await page.locator('#solo-keep').isEnabled(), await renderer(page));
+    await capture(page, 'ginza-retry-ready'); await isolated(page, 'pack-failure-preserves-legacy-storage');
+  });
+
+  await section('unsupported-revision', async () => {
+    const unsupported = { ...structuredClone(legacyPlace), id: 'unsupported-pack-revision', title: 'Unavailable future view',
+      view: { ...structuredClone(legacyPlace.view), version: 3, packId: 'shijo-karasuma', revision: 999 } };
+    const unknown = { ...structuredClone(unsupported), id: 'unknown-pack', title: 'Unknown area 私人文字',
+      view: { ...structuredClone(unsupported.view), packId: 'unavailable-area', revision: 1 } };
+    const { page } = await scenario('unsupported-revision', { records: [unsupported, unknown, legacyPlace] }); await ready(page, 'shijo-karasuma');
+    const unavailable = page.locator('.kept-open').filter({ hasText: unsupported.title });
+    check('unknown-revision-remains-visible-disabled-and-unmodified', await unavailable.isDisabled()
+      && await page.locator('.kept-unavailable').count() === 2
+      && equal((await saved(page)).places.find(place => place.id === unsupported.id), unsupported), await saved(page));
+    check('unknown-pack-retains-its-own-identity-and-private-words', await page.locator(`[data-kept-open="${unknown.id}"]`).isDisabled()
+      && equal((await saved(page)).places.find(place => place.id === unknown.id), unknown), await saved(page));
+    await reopen(page, legacyPlace);
+    check('unsupported-record-does-not-block-valid-shijo-return', closeEnough((await view(page)).player, legacyPlace.view.player));
+    await isolated(page, 'unknown-pack-preserves-older-records');
+  });
+
+  await section('search-cancellation', async () => {
+    const { page, context } = await scenario('search-cancellation'); await ready(page, 'shijo-karasuma');
+    let release, received = false, terminal = null;
+    const barrier = new Promise(resolve => { release = resolve; });
+    page.on('requestfinished', request => { if (new URL(request.url()).origin === 'https://photon.komoot.io') terminal = 'finished'; });
+    page.on('requestfailed', request => { if (new URL(request.url()).origin === 'https://photon.komoot.io') terminal = request.failure()?.errorText || 'failed'; });
+    // 仅延迟实际请求；成功内容仍由 Photon 返回。
+    await context.route('https://photon.komoot.io/**', async route => { received = true; await barrier; await route.continue(); });
+    try {
+      await page.locator('#place-query').fill('Eiffel Tower'); await activate(page, '#search-submit');
+      const deadline = Date.now() + timeout;
+      while (!received && Date.now() < deadline) await page.waitForTimeout(50);
+      if (!received) throw new Error('Search did not reach the delayed real provider request.');
+      await activate(page, '[data-pack="ginza-wako"]');
+    } finally { release(); }
+    await ready(page, 'ginza-wako');
+    await page.waitForFunction(() => document.querySelector('#place-search').getAttribute('aria-busy') !== 'true');
+    const deadline = Date.now() + timeout;
+    while (!terminal && Date.now() < deadline) await page.waitForTimeout(50);
+    if (!terminal) throw new Error('Superseded real search request did not finish or abort within the tooling ceiling.');
+    check('selecting-pack-cancels-obsolete-search-and-status', received && (await home(page)).requestedPack === 'ginza-wako'
+      && await page.locator('#search-results [data-result]').count() === 0
+      && (await page.locator('#search-status').innerText()).trim() === '', { terminal, actual: await home(page) });
+  });
+
+  await section('locale-pending', async () => {
+    const { page, context } = await scenario('locale-pending', { locale: 'zh' }); await ready(page, 'shijo-karasuma');
+    let release, received = false;
+    const barrier = new Promise(resolve => { release = resolve; });
+    await context.route('https://en.wikipedia.org/**', async route => { received = true; await barrier; await route.continue(); });
+    const responsePromise = page.waitForResponse(response => new URL(response.url()).origin === 'https://en.wikipedia.org');
+    try {
+      await activate(page, '[data-pack="ginza-wako"]');
+      const deadline = Date.now() + timeout;
+      while (!received && Date.now() < deadline) await page.waitForTimeout(50);
+      if (!received) throw new Error('Nearby request did not reach the deliberate real-provider delay.');
+      await locale(page, 'en');
+    } finally { release(); }
+    const response = await responsePromise, bytes = await response.body();
+    writeFileSync(join(output, 'ginza-nearby-locale-response.json'), bytes);
+    await ready(page, 'ginza-wako');
+    await page.waitForFunction(() => !/Looking for places|正在寻找起点/.test(document.querySelector('#routes-status').textContent));
+    const title = (await page.locator('[data-pack="ginza-wako"]').innerText()).trim(), current = await home(page);
+    check('pending-real-nearby-result-respects-latest-pack-language', response.status() === 200 && current.center.title === title
+      && (await page.locator('#route-stops [data-stop]').first().innerText()) === title
+      && (await page.locator('#maps-text').inputValue()).includes(title)
+      && !(await page.locator('#maps-text').inputValue()).includes('东京银座和光转角'),
+      { current, title, provider: { url: response.url(), status: response.status(), sha256: sha(bytes), bytes: bytes.length } });
+    await isolated(page, 'pending-provider-language-keeps-private-records');
+  });
+
+  await section('resources', async () => {
+    const { page, record } = await scenario('resources', { mode: 'together' });
+    await page.waitForFunction(() => window.__HOME__?.snapshot().map?.ready);
+    const detailed = request => request.path.endsWith('.glb') || request.path.startsWith('/materials/')
+      || request.path.startsWith('/packs/') || request.path.endsWith('/rig.json') || request.path.endsWith('.hdr');
+    check('together-startup-does-not-fetch-detailed-area-assets', !record.requests.some(detailed), record.requests);
+    await activate(page, '#mode-explore'); await ready(page, 'shijo-karasuma'); await lighting(page, 'night', 'shijo-karasuma');
+    const samples = { 'shijo-karasuma': [], 'ginza-wako': [] };
+    for (let cycle = 0; cycle < 3; cycle++) for (const packId of ['ginza-wako', 'shijo-karasuma']) {
+      await choose(page, packId, 'night');
+      await page.locator('#live-stage canvas').screenshot();
+      samples[packId].push(await page.evaluate(() => ({ lifecycle: window.__TOUR_RUNTIME__.lifecycle(),
+        scene: window.__TOUR_GAME__.renderer().scene, memory: window.__TOUR_GAME__.renderer().memory,
+        lighting: window.__TOUR_GAME__.renderer().lighting, canvases: document.querySelectorAll('#live-stage canvas').length })));
+    }
+    check('repeated-pack-switches-dispose-old-instances-and-bound-resources', Object.values(samples).every(values => values.every(sample =>
+      sample.lifecycle.active === 1 && sample.lifecycle.pending === 0 && sample.lifecycle.disposed === sample.lifecycle.created - 1
+      && sample.canvases === 1 && sample.scene.disposed === false && sample.lighting.pendingRequests === 0
+      && sample.memory.textures === values[0].memory.textures && sample.memory.geometries === values[0].memory.geometries)), samples);
+    const before = await view(page); await activate(page, '#mode-together');
+    await page.waitForFunction(() => window.__HOME__?.snapshot().map?.ready);
+    const hidden = await renderer(page), requestsBefore = record.requests.filter(detailed).length;
+    await page.waitForTimeout(2000);
+    const after = await renderer(page);
+    check('hidden-pack-does-zero-updates-draws-or-detail-fetches', !after.visible && hidden.updateFrames === after.updateFrames
+      && hidden.renderedFrames === after.renderedFrames && record.requests.filter(detailed).length === requestsBefore, { hidden, after, requestsBefore });
+    await page.locator('#traveler-name').fill('Pack QA traveler'); await page.locator('#room-title').fill('Private area separation');
+    await activate(page, '#room-create'); await page.waitForFunction(() => Boolean(window.__HOME__.snapshot().room));
+    const room = (await home(page)).room;
+    check('actual-shared-room-does-not-contain-private-kept-view-or-note', !JSON.stringify(room).includes(legacyPlace.note)
+      && !JSON.stringify(room).includes(legacyPlace.title) && !JSON.stringify(room).includes(legacyPlace.id),
+      { roomId: room.id, participants: room.participants.length, dreams: room.dreams.length });
+    await activate(page, '#mode-explore'); await ready(page, 'shijo-karasuma', 'night');
+    check('return-from-together-keeps-private-view-and-light', closeEnough(await view(page), before)
+      && (await home(page)).room.id === room.id, await home(page));
+    await isolated(page, 'resource-cycles-preserve-legacy-storage');
+  });
+
+  check('pack-scenarios-have-no-page-exceptions-or-unexpected-external-calls', Object.values(report.scenarios).every(record => !record.pageErrors.length && !record.external.length),
+    Object.fromEntries(Object.entries(report.scenarios).map(([name, record]) => [name, { pageErrors: record.pageErrors, external: record.external }])));
+} finally {
+  for (const context of contexts) await context.close(); await browser?.close(); await service?.close();
+  report.finishedAt = new Date().toISOString(); report.summary = { passed: report.checks.filter(check => check.pass).length, failed: report.checks.filter(check => !check.pass).length };
+  persist(); if (report.summary.failed) process.exitCode = 1;
+}

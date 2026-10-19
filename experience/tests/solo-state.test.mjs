@@ -5,7 +5,9 @@ import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { SOLO_STORAGE_KEY, MAX_KEPT_PLACES, normalizeMapView, normalizeSoloPlace,
-  normalizeKeptPlace, parseKeptPlaces, writeKeptPlaces, areaAtView } from '../src/solo/state.js';
+  normalizeKeptPlace, parseKeptPlaces, writeKeptPlaces, areaAtView, isKeptPlaceAvailable } from '../src/solo/state.js';
+import { normalizeExplorationView } from '../src/runtime/exploration-state.js';
+import { getPack, getPackPlace } from '../src/packs/registry.js';
 
 const place = (id = 'crossing') => ({ id, title: 'Shijō–Karasuma crossing', kind: 'poi',
   latitude: 35.00376, longitude: 135.7599457, source: 'OpenStreetMap',
@@ -55,7 +57,7 @@ if (persistenceMode) {
       assert.equal(normalized.representation, representation);
       assert.deepEqual(normalized.center, value.center);
       assert.deepEqual(normalized.origin, value.origin);
-      assert.deepEqual(normalized.view, value.view);
+      assert.deepEqual(normalized.view, representation === 'street' ? normalizeExplorationView(value.view) : value.view);
       assert.equal(normalized.note, value.note);
       assert.deepEqual(normalized.route.stops.map(stop => stop.id), ['second', 'first']);
       assert.deepEqual(parseKeptPlaces(raw([normalized])), [normalized]);
@@ -82,6 +84,48 @@ if (persistenceMode) {
     assert.equal(normalizeKeptPlace({ ...kept(), center: area }), null);
     assert.equal(normalizeKeptPlace({ ...kept(), center: { ...place(), kind: 'country' } }), null);
     assert.ok(normalizeKeptPlace({ ...kept('map'), center: place() }), 'a provider map may depict the Kyoto area without becoming a street pose');
+  });
+
+  test('unavailable pack revisions retain private words and unrelated records without restoring foreign coordinates', () => {
+    const legacy = kept(), current = normalizeKeptPlace(legacy);
+    assert.equal(current.view.version, 3);
+    assert.equal(current.view.packId, 'shijo-karasuma');
+    assert.equal(isKeptPlaceAvailable(current), true);
+    const future = { ...current, id: 'future', view: { ...current.view, revision: 88 } };
+    const uninstalled = { ...current, id: 'uninstalled', view: { ...current.view, packId: 'future-place' } };
+    const bytes = raw([legacy, future, uninstalled]);
+    const records = parseKeptPlaces(bytes);
+    assert.equal(records.length, 3);
+    assert.equal(isKeptPlaceAvailable(records[1]), false);
+    assert.equal(isKeptPlaceAvailable(records[2]), false);
+    assert.deepEqual(records[1], future);
+    assert.deepEqual(records[2], uninstalled);
+    assert.equal(records[1].note, legacy.note);
+    assert.equal(bytes, raw([legacy, future, uninstalled]), 'reading performs no storage mutation');
+    const distant = { ...place(), latitude: 48.8566, longitude: 2.3522 };
+    assert.equal(normalizeKeptPlace({ ...current, center: distant }), null);
+    assert.equal(normalizeKeptPlace({ ...future, center: distant }), null);
+    assert.equal(normalizeKeptPlace({ ...future, view: { ...future.view, camera: { ...future.view.camera, distance: Infinity } } }), null);
+  });
+
+  test('Ginza and Shijo saves retain distinct coordinate spaces and selected real-world route order', () => {
+    const ginza = getPack('ginza-wako'), center = getPackPlace(ginza.id, 'en');
+    const rawView = { version: 3, packId: ginza.id, revision: ginza.revision,
+      player: { ...ginza.world.spawn }, camera: { ...ginza.camera.initial, targetOffset: { ...ginza.camera.followOffset } } };
+    const record = normalizeKeptPlace({ ...kept(), id: 'ginza-view', center, origin: center, view: rawView,
+      route: { id: 'ginza-order', title: 'A chosen order', stops: [center, place()] } });
+    assert.ok(record);
+    assert.equal(isKeptPlaceAvailable(record), true);
+    assert.equal(record.view.packId, ginza.id);
+    assert.deepEqual(record.center, center);
+    assert.deepEqual(record.route.stops.map(stop => [stop.longitude, stop.latitude]),
+      [[center.longitude, center.latitude], [place().longitude, place().latitude]]);
+    assert.equal(normalizeKeptPlace({ ...record, view: streetView() }), null, 'untagged coordinates belong only to legacy Shijo');
+    assert.equal(normalizeKeptPlace({ ...record, view: normalizeExplorationView(streetView()) }), null);
+    assert.equal(normalizeKeptPlace({ ...record, center: place() }), null);
+    const restored = parseKeptPlaces(raw([kept(), record]));
+    assert.deepEqual(restored.map(item => item.view.packId), ['shijo-karasuma', 'ginza-wako']);
+    assert.deepEqual(restored[1], record);
   });
 
   test('source references require bounded coordinates and a credential-free HTTPS URL', () => {

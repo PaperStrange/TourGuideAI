@@ -14,13 +14,15 @@ test('exploration saves retain arbitrary orbit while legacy sharing retains its 
   const before = structuredClone(raw), saved = normalizeExplorationView(raw);
   assert.deepEqual(raw, before);
   assert.ok(Math.abs(saved.camera.azimuth - Math.PI / 2) < 1e-6);
-  assert.deepEqual(Object.keys(saved).sort(), ['camera', 'player', 'version']);
+  assert.deepEqual(Object.keys(saved).sort(), ['camera', 'packId', 'player', 'revision', 'version']);
+  assert.equal(saved.packId, 'shijo-karasuma');
+  assert.equal(saved.revision, 1);
   assert.deepEqual(normalizeExplorationView(saved), saved);
   assert.equal(normalizePerspectiveView(raw), null);
   const old = { ...pose(), version: 1 };
   assert.equal(normalizePerspectiveView(old).camera.azimuth, 0.65);
   const migrated = normalizeExplorationView(old);
-  assert.equal(migrated.version, 2);
+  assert.equal(migrated.version, 3);
   assert.equal(migrated.camera.azimuth, 0.65);
   assert.equal(migrated.camera.distance, 22);
 });

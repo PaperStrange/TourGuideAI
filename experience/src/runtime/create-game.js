@@ -1,23 +1,33 @@
 import * as THREE from 'three';
-import { WORLD, TARGETS, TICK_MS, INTERACTION_RADIUS, approachPoint } from '../simulation/world.js';
-import { createState, stepSimulation, refreshProximity, snapshot, setDestination, cameraRelativeInput } from '../simulation/index.js';
+import { TICK_MS, INTERACTION_RADIUS, approachPoint, cameraRelativeInput } from '../simulation/world.js';
+import { createSimulation } from '../simulation/create-simulation.js';
+import { getPack, DEFAULT_PACK_ID } from '../packs/registry.js';
 import { createGuidedCamera } from './camera.js';
 import { createWorldView } from './world-view.js';
 import { lightingMode as normalizeLightingMode } from './lighting-contract.js';
-import { CAMERA_DEFAULTS, normalizePerspectiveView } from './view-state.js';
+import { normalizePerspectiveView } from './view-state.js';
 import { normalizeExplorationView } from './exploration-state.js';
+import { waitForTask } from './cancellation.js';
 
 const keys = { KeyW: [0, 1], ArrowUp: [0, 1], KeyS: [0, -1], ArrowDown: [0, -1],
   KeyA: [-1, 0], ArrowLeft: [-1, 0], KeyD: [1, 0], ArrowRight: [1, 0] };
-const byId = new Map(TARGETS.map(target => [target.id, target]));
 const observing = () => import.meta.env.DEV || new URLSearchParams(location.search).get('qa') === '1';
+const lifecycle = { created: 0, disposed: 0, pending: 0, aborted: 0 };
 
 export async function createGame(host, options = {}) {
   if (!(host instanceof HTMLElement)) throw new Error('A scene host is required.');
+  if (options.signal?.aborted) throw new DOMException('Scene loading cancelled', 'AbortError');
+  const pack = getPack(options.packId ?? DEFAULT_PACK_ID);
+  if (!pack) throw new Error('Unknown detailed pack');
+  const TARGETS = pack.targets, byId = new Map(TARGETS.map(target => [target.id, target]));
+  const simulation = createSimulation(pack);
+  const { createState, stepSimulation, refreshProximity, snapshot, setDestination } = simulation;
   const encounters = options.encounters !== false;
   const solo = options.solo === true;
-  const normalizeView = solo ? normalizeExplorationView : normalizePerspectiveView;
+  if (!solo && pack.id !== DEFAULT_PACK_ID) throw new Error('This pack requires exploration mode');
+  const normalizeView = solo ? value => normalizeExplorationView(value, pack.id) : normalizePerspectiveView;
   const initialView = normalizeView(options.initialView);
+  if (options.initialView != null && !initialView) throw new Error('Viewing pose does not match the selected detailed pack');
   let player = refreshProximity(createState(options.saved?.game ?? options.saved ?? options.initialState));
   if (initialView) { player.x = initialView.player.x; player.y = initialView.player.y; refreshProximity(player); }
   let locale = options.locale === 'zh' ? 'zh' : 'en';
@@ -40,6 +50,7 @@ export async function createGame(host, options = {}) {
     if (!destroyed) { (options.onState ?? options.onUpdate)?.(snapshot(player)); publishView(); }
   };
   const notify = (next, progress) => {
+    if (destroyed) return;
     status = next;
     host.dataset.sceneStatus = next;
     options.onStatus?.({ status: next, progress });
@@ -87,10 +98,11 @@ export async function createGame(host, options = {}) {
     options.onInteract?.(id); publish();
   };
   function localize() {
+    const title = pack.title[locale];
     if (solo) {
       canvas?.setAttribute('aria-label', locale === 'zh'
-        ? '京都四条街景。WASD 或方向键行走，拖动环视，滚动缩放。近看模式中，右键拖动或双指移动构图；J/L 左右环视，I/K 调整俯仰，按住 Shift 配合这些键平移构图，+/- 缩放，E 查看中央细节，Esc 退出近看。'
-        : 'Kyoto Shijo street. Walk with WASD or arrow keys, drag to look around, and scroll to zoom. In Look closer mode, right-drag or use two fingers to frame; J/L orbit, I/K tilt, hold Shift with these keys to pan, +/- zoom, E inspects the center, and Escape leaves Look closer.');
+        ? `${title}。WASD 或方向键行走，拖动环视，滚动缩放。近看模式中，右键拖动或双指移动构图；J/L 左右环视，I/K 调整俯仰，按住 Shift 配合这些键平移构图，+/- 缩放，E 查看中央细节，Esc 退出近看。`
+        : `${title}. Walk with WASD or arrow keys, drag to look around, and scroll to zoom. In Look closer mode, right-drag or use two fingers to frame; J/L orbit, I/K tilt, hold Shift with these keys to pan, +/- zoom, E inspects the center, and Escape leaves Look closer.`);
       return;
     }
     canvas?.setAttribute('aria-label', locale === 'zh'
@@ -98,12 +110,13 @@ export async function createGame(host, options = {}) {
       : `Kyoto Shijo street. Walk with WASD or arrow keys, drag to look around, and scroll to zoom${encounters ? '. Press E nearby to interact' : ''}.`);
   }
   const api = {
+    getPackInfo: () => ({ packId: pack.id, revision: pack.revision }),
     getState: () => snapshot(player),
     getCameraState: () => rig?.snapshot() ?? null,
     captureView() {
       const camera = rig?.snapshot();
       if (!camera || camera.transitioning) return null;
-      return normalizeView({ version: solo ? 2 : 1, player: { x: player.x, y: player.y }, camera: {
+      return normalizeView({ version: solo ? 3 : 1, ...(solo ? api.getPackInfo() : {}), player: { x: player.x, y: player.y }, camera: {
         azimuth: camera.azimuth, polar: camera.polar, distance: camera.distance,
         targetOffset: { x: camera.target[0] - player.x, y: -camera.target[2] - player.y, height: camera.target[1] },
       } });
@@ -121,8 +134,8 @@ export async function createGame(host, options = {}) {
       if (!rig || status !== 'ready' || destroyed || !point ||
           ![point.x, point.y, point.height].every(Number.isFinite)) return false;
       const dx = point.x - player.x, dy = point.y - player.y;
-      const next = normalizeView({ version: solo ? 2 : 1, player, camera: {
-        ...CAMERA_DEFAULTS, ...moment.camera,
+      const next = normalizeView({ version: solo ? 3 : 1, ...(solo ? api.getPackInfo() : {}), player, camera: {
+        ...pack.camera.initial, ...moment.camera,
         azimuth: moment.camera?.azimuth ?? Math.atan2(-dx, dy),
         targetOffset: { x: dx, y: dy, height: point.height },
       } });
@@ -194,12 +207,17 @@ export async function createGame(host, options = {}) {
     },
     destroy() {
       if (destroyed) return;
-      destroyed = true; abort.abort(); clearMovement(); stopFrames(); cancelAnimationFrame(firstFrameHandle);
+      destroyed = true; lifecycle.disposed++; abort.abort(new DOMException('Scene loading cancelled', 'AbortError'));
+      clearMovement(); stopFrames(); cancelAnimationFrame(firstFrameHandle);
       observer?.disconnect(); for (const cleanup of cleanups) cleanup();
-      rig?.dispose(); view?.dispose(); renderer?.dispose(); canvas?.remove();
+      rig?.dispose(); view?.dispose(); renderer?.dispose(); renderer?.forceContextLoss(); canvas?.remove();
       if (window.__TOUR_GAME__?.host === host) delete window.__TOUR_GAME__;
     },
   };
+  lifecycle.created++; lifecycle.pending++;
+  if (observing()) window.__TOUR_RUNTIME__ = Object.freeze({ lifecycle: () => ({ ...lifecycle,
+    active: lifecycle.created - lifecycle.disposed }) });
+  if (options.signal) listen(options.signal, 'abort', () => api.destroy(), { once: true });
   host.tabIndex = 0; notify('loading', 0); publish();
   function unavailable(next, error) {
     clearMovement(); cancelAnimationFrame(frameHandle); rig?.setEnabled(false);
@@ -216,7 +234,7 @@ export async function createGame(host, options = {}) {
     canvas = renderer.domElement;
     Object.assign(canvas.style, { display: 'block', width: '100%', height: '100%', touchAction: 'none', cursor: 'grab' });
     host.prepend(canvas); localize();
-    rig = createGuidedCamera(canvas, player, reducedMotion, invalidate, { solo });
+    rig = createGuidedCamera(canvas, player, reducedMotion, invalidate, { solo, pack });
     if (initialView) rig.restorePose(initialView.camera, player);
     rig.setEnabled(false);
     const resize = () => {
@@ -313,15 +331,16 @@ export async function createGame(host, options = {}) {
       dirty = true; publish();
     });
     const started = performance.now();
-    view = await createWorldView(renderer, { encounters, solo, signal: abort.signal, onProgress: progress => notify('loading', progress),
+    const loadedView = await createWorldView(renderer, { pack, encounters, solo, signal: abort.signal, onProgress: progress => notify('loading', progress),
       lightingMode: requestedLightingMode, onLightingStatus: lightingStatus, onInvalidate: invalidate });
-    if (destroyed || abort.signal.aborted) { view.dispose(); return api; }
+    if (destroyed || abort.signal.aborted) { loadedView.dispose(); throw abort.signal.reason; }
+    view = loadedView;
     view.setInspecting(inspecting); rig.setInspecting(inspecting);
     const assetsReadyAt = performance.now();
     view.update(player, rig.camera, { dt: 1000, reducedMotion: true });
     notify('loading', 0.85);
-    await renderer.compileAsync(view.scene, rig.camera);
-    if (destroyed || abort.signal.aborted) return api;
+    await waitForTask(renderer.compileAsync(view.scene, rig.camera), abort.signal);
+    if (destroyed || abort.signal.aborted) throw abort.signal.reason;
     const compiledAt = performance.now();
     let firstRenderMs = 0;
     // 首次绘制包含纹理上传与阴影准备；完成后才报告街景可用。
@@ -339,14 +358,17 @@ export async function createGame(host, options = {}) {
         } catch (error) { reject(error); }
       });
     });
-    if (destroyed || abort.signal.aborted) return api;
+    if (destroyed || abort.signal.aborted) throw abort.signal.reason;
     const loadMs = performance.now() - started;
     const startup = { assetsAndLightingMs: assetsReadyAt - started, compileMs: compiledAt - assetsReadyAt, firstRenderMs, readyMs: loadMs };
     notify('ready', 1); publish();
     updateInspection(); publishInspection();
     if (observing()) {
       window.__TOUR_GAME__ = Object.freeze({
-        host, snapshot: api.getState, camera: api.getCameraState,
+        host, snapshot: api.getState, camera: api.getCameraState, pack: api.getPackInfo,
+        navigation: () => simulation.navigation.snapshot(),
+        grounding: () => ({ x: player.x, y: player.y, height: view.floorHeight(player.x, player.y),
+          hit: view.groundAt(player.x, player.y), inside: simulation.navigation.contains(player.x, player.y) }),
         viewport: () => ({ width, height, dpr: renderer.getPixelRatio(), rect: canvas.getBoundingClientRect().toJSON() }),
         screenPoint: (x, y, h = 0.2) => rig.project(x, y, h, width, height),
         targets: () => encounters ? TARGETS.map(({ id, x, y, approachX, approachY }) => ({ id, x, y, approachX, approachY })) : [],
@@ -397,7 +419,10 @@ export async function createGame(host, options = {}) {
     };
     scheduleFrame();
   } catch (error) {
+    if (destroyed || options.signal?.aborted) { lifecycle.aborted++; api.destroy(); throw new DOMException('Scene loading cancelled', 'AbortError'); }
     if (!destroyed && status !== 'context-lost') unavailable('unavailable', error);
+  } finally {
+    lifecycle.pending--;
   }
   return api;
 }

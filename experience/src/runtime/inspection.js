@@ -10,7 +10,7 @@ export function visibleSurface(mesh) {
 }
 
 // 只检查最近的真实表面；其他建筑、地面或遮挡物会阻止穿透选择。
-export function inspectIntersection(hit, camera, player, width, height, features = INSPECTION_FEATURES) {
+export function inspectIntersection(hit, camera, player, width, height, features = INSPECTION_FEATURES, maxDistance = 65) {
   if (!hit?.face || !visibleSurface(hit.object)) return null;
   const material = Array.isArray(hit.object.material) ? hit.object.material[hit.face.materialIndex] : hit.object.material;
   if (!material || material.opacity < 0.98) return null;
@@ -21,7 +21,7 @@ export function inspectIntersection(hit, camera, player, width, height, features
   const facing = normal.dot(viewDirection);
   if (facing <= 0.12) return null;
   const distance = Math.hypot(hit.point.x - player.x, -hit.point.z - player.y);
-  if (distance > 65) return null;
+  if (distance > maxDistance) return null;
   const projected = hit.point.clone().project(camera);
   if (projected.z < -1 || projected.z > 1 || Math.abs(projected.x) > 1 || Math.abs(projected.y) > 1) return null;
   return {
@@ -33,7 +33,7 @@ export function inspectIntersection(hit, camera, player, width, height, features
   };
 }
 
-export function createSurfaceInspection(roots, features = INSPECTION_FEATURES) {
+export function createSurfaceInspection(roots, features = INSPECTION_FEATURES, maxDistance = 65) {
   const meshes = [];
   for (const root of roots) root.traverse(object => {
     if (object.isMesh) { object.geometry.computeBoundingBox(); meshes.push(object); }
@@ -63,7 +63,7 @@ export function createSurfaceInspection(roots, features = INSPECTION_FEATURES) {
       raycaster.setFromCamera(new THREE.Vector2(x / width * 2 - 1, 1 - y / height * 2), camera);
       const hit = raycaster.intersectObjects(visible, false)[0];
       const previous = JSON.stringify(focus);
-      focus = inspectIntersection(hit, camera, player, width, height, features);
+      focus = inspectIntersection(hit, camera, player, width, height, features, maxDistance);
       return previous !== JSON.stringify(focus);
     },
     select() { selected = focus ? structuredClone(focus) : null; return snapshot(); },

@@ -177,7 +177,8 @@ async function run(name, body) {
 let streetPlace, areaPlace, eiffelPlace;
 if (process.env.EXPERIENCE_QA_REUSE_REPORT) {
   const path = resolve(process.env.EXPERIENCE_QA_REUSE_REPORT), bytes = readFileSync(path), previous = JSON.parse(bytes);
-  streetPlace = previous.checks.find(value => value.id === 'street-save-keeps-exact-v2-view-light-and-plain-note' && value.pass)?.evidence;
+  streetPlace = previous.checks.find(value => ['street-save-keeps-exact-v2-view-light-and-plain-note',
+    'street-save-keeps-exact-v3-pack-view-light-and-plain-note'].includes(value.id) && value.pass)?.evidence;
   if (!streetPlace?.id || streetPlace.representation !== 'street') throw new Error('Previous report lacks a successful actual saved Kyoto view.');
   report.reusedRecordSource = { path, sha256: sha(bytes), recordId: streetPlace.id, packageSha256: previous.artifact.manifestSha256 };
 }
@@ -274,7 +275,8 @@ try {
     await page.locator('#kept-title').fill('Night windows 夜景'); await page.locator('#kept-note').fill(privateNote);
     await page.locator('#keep-place-form button[type=submit]').click(); await page.locator('#keep-place-dialog').waitFor({ state: 'hidden' });
     streetPlace = (await saved(page)).places[0];
-    check('street-save-keeps-exact-v2-view-light-and-plain-note', streetPlace.view.version === 2 && streetPlace.lighting === 'night'
+    check('street-save-keeps-exact-v3-pack-view-light-and-plain-note', streetPlace.view.version === 3
+      && streetPlace.view.packId === 'shijo-karasuma' && streetPlace.view.revision === 1 && streetPlace.lighting === 'night'
       && closeEnough(streetPlace.view, beforeKeep) && streetPlace.note === privateNote && !(await page.evaluate(() => window.soloInjected)), streetPlace);
     await page.reload(); await streetReady(page); await reopen(page, streetPlace);
     check('street-reopen-after-reload-restores-exact-view', closeEnough(await view(page), streetPlace.view)

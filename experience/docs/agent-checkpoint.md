@@ -1,7 +1,7 @@
 # Agent checkpoint · Explore and Together homepage
 
 2026-10-19 · Lead owns integration, commits and publication.
-**State: the reviewed-pack milestone is planned around a second walkable area at Ginza/Wako, preserving Shijō interaction and private saved views. The preceding solo release is published as Pages `9e8ecad`, runtime `a1dbd36` / package `0a624409…`; all five CI jobs succeeded. Q03 remains open P1; backend tests stay local.**
+**State: the reviewed-pack milestone is implemented and undergoing final browser verification. Ginza/Wako adds a second bounded walkable area through the shared runtime, preserving Shijō interaction and private saved views. The preceding solo release remains published as Pages `9e8ecad`, runtime `a1dbd36` / package `0a624409…`. Q03 remains open P1; backend tests stay local.**
 
 ## Current iteration · reviewed interactive places
 
@@ -21,7 +21,24 @@ recorded source boundary and asset budgets. Existing Kyoto assets, shared links,
 route identity and private records remain regression requirements. The next release
 requires source/Pages/evidence/checkpoint synchronization after actual testing.
 
-## Current iteration · solo exploration
+The plan is committed and pushed as `997afd8`. Current implementation passes
+**120/120** application checks. Source review passes **124/124**, with **5/5**
+public-source export checks. The frozen new model is `70870bc6…`: **7,970,296
+bytes**, **84,624 triangles**, **48 batches**, with twelve original embedded maps.
+The whole pack is **8,000,958 bytes**. Existing Kyoto model, actor, finishes and
+lighting remain unchanged. Corrected actual desktop EN and phone ZH day/night
+openings pass **11/11** checks and art review of framing/material hierarchy.
+The same local candidate passes **17/17** phone checks, including actual touch
+walking, orbit, zoom and private return. The final candidate additionally recovers
+an off-screen actor when the user chooses Keep walking or starts moving, retaining
+orbit and zoom; actual-browser verification of that recovery remains pending.
+The earlier diagnostic continuity run passes **33/33** on its separately recorded
+model/camera, including nineteen actual ground arrivals; it is not final-candidate
+coverage. Final phone/continuity, cancellation, resource, regression and hosted
+verification remain pending. Full-street realism and human recognition remain
+unverified; Ginza's surrounding buildings and road are simplified context.
+
+## Preceding release · solo exploration
 
 The user authorizes the next iteration and research into broader solo travel while
 preserving art, quality and usable interaction. The [solo sprint plan](sprint-solo-20261018.md)
@@ -124,8 +141,8 @@ shared links must retain their meaning.
   baseline Pages: `eb8647d622d983280fba08fe9c23752aac1e81a4`;
   art refinement: `2767263`.
   [Homepage evidence](../evidence/homepage-20261015/README.md).
-- Latest direction: implement the next solo iteration and research broader coverage,
-  preserving art, quality and usable interaction. Continue workspace testing and
+- Latest direction: implement reviewed interactive place packs, preserving the
+  shared map style and Shijō's usable 3D interaction. Continue workspace testing and
   independent routine product decisions. Building realism, lighting and meaningful
   exploration remain core challenges. No public tunnel or paid service is required
   or introduced by the current plan.

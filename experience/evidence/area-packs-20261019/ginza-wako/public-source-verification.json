@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "reviewedAt": "2026-10-19",
+  "scope": "Generated public source and provenance only; final model and browser validation are separate.",
+  "publicPath": "packs/ginza-wako/source.json",
+  "sha256": "6e583689dc460e4a9c496838c44f57925bb8dc4b546338e4ff58f6967eddf674",
+  "bytes": 13177,
+  "checks": [
+    "Public copy byte-identical to frozen canonical data",
+    "Manifest source filename, byte count and SHA256 match",
+    "Provenance source hash matches canonical data",
+    "Operator dimension quantities preserved exactly",
+    "Both photo reference records preserved exactly"
+  ]
+}
