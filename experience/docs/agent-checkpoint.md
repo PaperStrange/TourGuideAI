@@ -1,7 +1,25 @@
 # Agent checkpoint · Explore and Together homepage
 
-2026-10-18 · Lead owns integration, commits and publication.
-**State: solo iteration is published as Pages `9e8ecad`, runtime `a1dbd36` / package `0a624409…`. All 90 hosted files match; actual published solo 19/19 and homepage 21/21 checks pass. Current full solo CI passes 75/75. The extended walkthrough and original-walk CI jobs remain running. Q03 remains open P1; backend tests stay local.**
+2026-10-19 · Lead owns integration, commits and publication.
+**State: the reviewed-pack milestone is planned around a second walkable area at Ginza/Wako, preserving Shijō interaction and private saved views. The preceding solo release is published as Pages `9e8ecad`, runtime `a1dbd36` / package `0a624409…`; all five CI jobs succeeded. Q03 remains open P1; backend tests stay local.**
+
+## Current iteration · reviewed interactive places
+
+The user approves consistent map styling and selectively reviewed neighborhood and
+landmark packs, with Shijō–Karasuma's actual 3D interaction retained. The
+[pack sprint plan](sprint-packs-20261019.md) defines one integrated milestone:
+a reusable pack system demonstrated by Shijō and a source-reviewed Ginza/Wako
+sidewalk approach, with walking, full camera controls, optional surface inspection,
+day/night and private saved returns in both places.
+
+The team selects Ginza's connected same-side sidewalk chain and the operator's
+architectural dimensions. Sidewalk widths and unobserved geometry are authored.
+World owns source data; art owns the new Blender generator and assets; engineering
+owns pack definitions, runtime and navigation; lead owns homepage and private-state
+integration; QA owns actual-input cross-area verification. Production follows the
+recorded source boundary and asset budgets. Existing Kyoto assets, shared links,
+route identity and private records remain regression requirements. The next release
+requires source/Pages/evidence/checkpoint synchronization after actual testing.
 
 ## Current iteration · solo exploration
 
@@ -43,8 +61,9 @@ on final bytes, including actual HDR retry. The raw CI failure stays in its evid
 The [current CI record](../evidence/solo-20261018/ci/current/README.md) binds source
 `02c2d63` to full solo 75/75, homepage 65/65, perspective 80/80 and companion 73/73.
 [Run 39133355919](https://github.com/PaperStrange/TourGuideAI/actions/runs/39133355919)
-continues its extended walkthrough and original-walk jobs; aggregate completion
-is pending. Final hosted verification passes
+completed successfully. The [completion evidence](../evidence/solo-20261018/ci/completed/README.md)
+verifies original walk **133/133** and extended walkthrough **264/264**, including
+the exact 90-file published package binding. Final hosted verification passes
 [90/90 files](../evidence/solo-20261018/hosted/published-files.json),
 [19/19 solo checks](../evidence/solo-20261018/hosted/solo/README.md) and
 [21/21 homepage checks](../evidence/solo-20261018/hosted/homepage/walkthrough-result.json).
@@ -64,7 +83,7 @@ shared links must retain their meaning.
   `9e8ecadd1fa3efe44d69396e55b6375ca4097fd4`. Source branch and Pages are pushed.
   Actual published file/solo/homepage checks pass. Inspect the current working
   tree before edits; release documentation may have a later commit than runtime.
-  Check the two remaining CI jobs before claiming aggregate CI success.
+  All five CI jobs completed successfully; retain their separate evidence scopes.
 - Quality runtime: `828a405194d82e465887b15c8bcaedfaa3d04f9d`.
   [Sprint plan](sprint-quality-20261016.md) was issued and pushed as `a834cc5`
   before implementation. Pages runtime commit is `c3bcceb` and package manifest is
@@ -172,18 +191,18 @@ continuous exploration response and deliberate private view/place return. Person
 approach/pause replay and recipient handoff remain conditional Sprint 2B work.
 Current implementation does not establish emotional value or complete that
 expressive experience.
-Ginza remains a separate architectural study.
+The current reviewed-pack milestone develops Ginza into a second interactive area.
 
 ## Active owners and next actions
 
 | Owner | Current boundary | Next action |
 |---|---|---|
-| Lead | Homepage/map/solo state, integration, checkpoint, release | Published verification is complete; preserve final identities and check remaining aggregate CI on resume |
-| Engineering | Runtime exploration camera/inspection and performance | Q03 remains open; next exit retains each of three matched warm actions below 500 ms |
-| World-content | Source features, coverage research and hosted solo check | Hosted 19/19 is complete; next evaluate one reviewed area pack with source, art and cost evidence |
-| QA-release | Browser drivers and independent walkthrough | Hosted 21/21 and focused 14/14 appearance are complete; retain the separate evidence scopes |
-| Product-design | Solo sprint, delivery board and lean iteration | Human meaning/recognition and an observed reason for replay remain the next decision gates |
-| Art/UX | Detailed Kyoto facade/material/lighting assets | Matched bounded review is complete; preserve asset and capture identities |
+| Lead | Homepage/map/solo state, integration, checkpoint, release | Integrate pack selection, versioned private returns and publication |
+| Engineering | Pack registry, runtime, simulation and perspective adapter | Preserve shared controls while introducing bounded Ginza navigation and cancellation/disposal |
+| World-content | Ginza source data and provenance | Freeze mapped footprint, sidewalk chain, operator dimensions and reference rights |
+| QA-release | Browser drivers and independent walkthrough | Verify actual cross-area movement, saves, errors, resource lifecycle and existing journeys |
+| Product-design | Pack sprint and experience criteria | Review the connected approach, discovery and chosen pause against the plan |
+| Art/UX | Ginza generator, model, materials and lighting | Deliver recognizable architecture within the recorded budgets; preserve Kyoto assets |
 
 Paths in the ownership table are relative to `experience/`. Do not edit another
 owner's files; report interface conflicts to that owner. Preserve unrelated changes.

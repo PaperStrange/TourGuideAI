@@ -1,0 +1,50 @@
+{
+  "capturedAt": "2026-10-19T15:08:11.178Z",
+  "runId": 39133355919,
+  "source": "02c2d63ff407f706054d1029ebee46b39216a01d",
+  "runStatus": "completed",
+  "conclusion": "success",
+  "runUpdatedAt": "2026-10-18T14:21:37Z",
+  "publishedPackageManifest": "0a6244091b50c9ee7220d698e1109c86bd397dba54384c8db20e68bc57c728e7",
+  "suites": [
+    {
+      "report": "original-walk-result.json",
+      "reportSha256": "18b910b3a914792f5fb368e3b04035606cf5d6e21906598f4971d7f90de0ab86",
+      "artifactId": 12140050259,
+      "archiveDigest": "sha256:33a0032659433d9cf4038a801a51eb692c340e1420854ff289c46e3af9fa0098",
+      "metadataDigest": "sha256:33a0032659433d9cf4038a801a51eb692c340e1420854ff289c46e3af9fa0098",
+      "archiveMatches": true,
+      "summary": {
+        "passed": 133,
+        "failed": 0
+      },
+      "finishedAt": "2026-10-18T14:21:33.140Z",
+      "browser": "151.0.7922.34",
+      "packageManifest": "0a6244091b50c9ee7220d698e1109c86bd397dba54384c8db20e68bc57c728e7",
+      "packageFiles": 90,
+      "allPackageFilesMatch": true
+    },
+    {
+      "report": "walkthrough-result.json",
+      "reportSha256": "779f37bae4cc41ad80060e17bdf281d2af8832ea05472695d3a3e84a00cb8ecc",
+      "artifactId": 12139382661,
+      "archiveDigest": "sha256:d17269acb45b0a1e4aec4b45a046a4d0f7ebdfb9d68234e8afd3b00076e6b7fb",
+      "metadataDigest": "sha256:d17269acb45b0a1e4aec4b45a046a4d0f7ebdfb9d68234e8afd3b00076e6b7fb",
+      "archiveMatches": true,
+      "summary": {
+        "passed": 264,
+        "failed": 0
+      },
+      "finishedAt": "2026-10-18T14:10:12.499Z",
+      "browser": "151.0.7922.34",
+      "packageManifest": "0a6244091b50c9ee7220d698e1109c86bd397dba54384c8db20e68bc57c728e7",
+      "packageFiles": 90,
+      "allPackageFilesMatch": true
+    }
+  ],
+  "reference": "../current/runtime-binding.json",
+  "hostedReference": "../../hosted/published-files.json",
+  "earlierPendingSnapshotPreserved": "../current/run-status.json",
+  "acquisition": "GitHub connector ZIP download; original JSON extracted unchanged with system unzip.",
+  "limitations": "CI evidence establishes the recorded automated behavior. It does not establish human recognition, physical-device fluency, field safety or the separate Q03 timing target."
+}
