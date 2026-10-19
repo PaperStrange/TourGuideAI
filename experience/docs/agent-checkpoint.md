@@ -1,7 +1,7 @@
 # Agent checkpoint · Explore and Together homepage
 
 2026-10-19 · Lead owns integration, commits and publication.
-**State: the reviewed-pack milestone is implemented and undergoing final browser verification. Ginza/Wako adds a second bounded walkable area through the shared runtime, preserving Shijō interaction and private saved views. The preceding solo release remains published as Pages `9e8ecad`, runtime `a1dbd36` / package `0a624409…`. Q03 remains open P1; backend tests stay local.**
+**State: the reviewed-pack milestone passes complete packaged browser regressions. Pages `3362d6c` is pushed; deployment and actual HTTPS verification are pending. Ginza/Wako adds a second bounded walkable area through the shared runtime, preserving Shijō interaction and private saved views. Q03 remains open P1; backend tests stay local.**
 
 ## Current iteration · reviewed interactive places
 
@@ -24,22 +24,28 @@ requires source/Pages/evidence/checkpoint synchronization after actual testing.
 The plan is committed and pushed as `997afd8`; implementation is committed and
 pushed as `379e9d3223d5352ca298e841a7ccbb3694c75d8c`. The final 94-file package is
 `5a8e0f67506cd164e7422e8aaf22c6a77685c4a7996168aac16703a6b0d0deb7`.
-CI `39281251953` runs all six suites. Current implementation passes
-**120/120** application checks. Source review passes **124/124**, with **5/5**
-public-source export checks. The frozen new model is `70870bc6…`: **7,970,296
-bytes**, **84,624 triangles**, **48 batches**, with twelve original embedded maps.
-The whole pack is **8,000,958 bytes**. Existing Kyoto model, actor, finishes and
-lighting remain unchanged. Corrected actual desktop EN and phone ZH day/night
-openings pass **11/11** checks and art review of framing/material hierarchy.
-The same local candidate passes **17/17** phone checks, including actual touch
-walking, orbit, zoom and private return. The final candidate additionally recovers
-an off-screen actor when the user chooses Keep walking or starts moving, retaining
-orbit and zoom; actual-browser verification of that recovery remains pending.
-The earlier diagnostic continuity run passes **33/33** on its separately recorded
-model/camera, including nineteen actual ground arrivals; it is not final-candidate
-coverage. Final phone/continuity, cancellation, resource, regression and hosted
-verification remain pending. Full-street realism and human recognition remain
-unverified; Ginza's surrounding buildings and road are simplified context.
+CI `39281251953` supplies seven complete passing reports on those exact bytes:
+original walk **133**, perspective **80**, companion **73**, homepage **65**, solo
+**75**, reviewed packs **75** and extended walkthrough **264**. Workflow finalization
+remains in progress. [Final local evidence](../evidence/area-packs-20261019/README.md)
+records **51/51** interaction checks, **23/23** recovery/resource checks, full solo
+**75/75**, homepage **65/65** and extended walkthrough **264/264**. Actual keyboard/touch movement, second-frontage
+framing, off-screen actor recovery, both-area saved return, canceled loads, real
+delayed-provider locale changes and private-room isolation pass. Counts overlap.
+
+Application checks pass **120/120**. Source review passes **124/124**, with **5/5**
+public-source export checks. The frozen model `70870bc6…` is **7,970,296 bytes**,
+**84,624 triangles** and **48 batches**, with twelve original embedded maps and
+**1,376,256 decoded pixels**. The whole pack is **8,000,958 bytes**. Existing Kyoto
+model, actor, finishes and lighting remain unchanged. Three return cycles retain
+stable renderer counts and one active instance/canvas; hidden scenes perform zero
+updates/draws over two seconds. Actual GPU byte allocation remains unmeasured.
+
+Art review records source-matched openings, walking/closer views and actual
+high-detail-to-walking recovery with each capture's exact package binding.
+Full-street realism and human recognition remain unverified; Ginza's surrounding
+buildings and road are simplified context. The reusable
+[authoring guide](area-pack-authoring.md) records production and maintenance steps.
 Current [matched Q03 observations](../evidence/area-packs-20261019/performance/README.md)
 are **1223.2 / 1104.9 / 1170.7 ms**, retaining the open P1 status and unchanged
 500 ms threshold. Service **13/13** and repository **17/17** checks pass.
@@ -101,12 +107,11 @@ shared links must retain their meaning.
 ## Resume from saved work
 
 - Workspace: `/workspace/TourGuideAI`; source branch: `chore-sow-delivery-plan`.
-- Current solo plan/runtime: `1babfc6` / `a1dbd36`; package `0a624409…` is frozen.
-  CI/test source is `02c2d63`; Pages runtime is
-  `9e8ecadd1fa3efe44d69396e55b6375ca4097fd4`. Source branch and Pages are pushed.
-  Actual published file/solo/homepage checks pass. Inspect the current working
-  tree before edits; release documentation may have a later commit than runtime.
-  All five CI jobs completed successfully; retain their separate evidence scopes.
+- Current pack plan/runtime: `997afd8` / `379e9d3`; package `5a8e0f67…` is frozen.
+  Pages runtime `3362d6cf61c689a32ded9886a3ed1e45837fe6fe` is pushed. Publication
+  verification is pending. Complete CI browser reports and focused local checks
+  pass. Inspect the current working tree before edits; release documentation may
+  have a later commit than runtime. Keep report scopes and open Q03 explicit.
 - Quality runtime: `828a405194d82e465887b15c8bcaedfaa3d04f9d`.
   [Sprint plan](sprint-quality-20261016.md) was issued and pushed as `a834cc5`
   before implementation. Pages runtime commit is `c3bcceb` and package manifest is

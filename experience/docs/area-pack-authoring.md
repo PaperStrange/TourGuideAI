@@ -2,9 +2,10 @@
 
 2026-10-19 · Applies to the [Ginza milestone](sprint-packs-20261019.md).
 The current implementation uses a shared runtime with explicit Shijō and Ginza
-definitions. Ginza exports are available; final art review and integrated browser
-verification are in progress. This guide describes the process and current entry points;
-it makes no completed-art, performance or human-recognition claim.
+definitions. Ginza's export, art review and integrated interaction/resource checks
+are recorded in the [milestone evidence](../evidence/area-packs-20261019/README.md).
+This guide describes the reusable process and current entry points. Human recognition
+and enjoyment require separate participant evidence.
 
 ## 1. Establish the place and playable boundary
 
@@ -86,14 +87,16 @@ Root owns homepage entry/exit, source labels and solo save integration.
 
 ## 4. Bind resources and saved-view compatibility
 
-Ginza's proposed marginal caps are **≤8 MiB model plus place-specific maps**,
+Ginza's marginal production caps are **≤8 MiB model plus place-specific maps**,
 **≤100,000 triangles** and **≤64 mesh/material batches**. Record actual export and
 runtime measurements before accepting the pack. Identify reused assets separately;
 measure readiness, switching and disposal independently of file size. Fetch area
 geometry only after selection, cancel superseded loads, and suspend inactive
 updates/draws. The current [export manifest](../public/packs/ginza-wako/manifest.json)
 records file hashes, bytes, triangles and primitives; it establishes export
-measurements. Final runtime resource and appearance acceptance remain separate.
+measurements. The delivered model is 7,970,296 bytes, 84,624 triangles and 48 batches;
+its twelve maps contain 1,376,256 decoded pixels. Runtime resource and appearance
+checks retain their separate reports in the milestone evidence.
 
 Use `shijo-karasuma` revision 1 and `ginza-wako` revision 1. New solo captures carry
 `{version: 3, packId, revision, player, camera}`. Historical untagged v1/v2 street
@@ -109,11 +112,11 @@ QA coordinates browser/GPU use with art and engineering. From `experience/`, the
 existing package scripts and pack driver's argument parser support:
 
 ```bash
+mkdir -p /workspace/TourGuideAI/artifacts/tmp
+export TMPDIR=/workspace/TourGuideAI/artifacts/tmp
 npm test
 python3 tools/build-font.py
 npm run build
-mkdir -p /workspace/TourGuideAI/artifacts/tmp
-export TMPDIR=/workspace/TourGuideAI/artifacts/tmp
 PLAYWRIGHT_BROWSERS_PATH=/workspace/.cache/ms-playwright \
 EXPERIENCE_QA_OUTPUT=/workspace/TourGuideAI/artifacts/packs-20261019/browser \
 EXPERIENCE_QA_TIMEOUT=120000 node tests/browser-packs.mjs dist
@@ -123,13 +126,13 @@ The driver requires a built homepage and `packs/ginza-wako/scene.glb`. It serves
 immutable build bytes, uses real providers and an isolated local room service,
 and records package/driver hashes. Regenerate the font before the build so new
 pack EN/ZH text is included. The short ignored `TMPDIR` keeps browser temporary
-files inside the workspace and leaves room for Unix socket names. Final integrated
-acceptance remains pending; scoped diagnostic runs retain their limited coverage.
+files inside the workspace and leaves room for Unix socket names. Each report binds
+its exact package; scoped diagnostic runs retain their limited coverage.
 `EXPERIENCE_QA_CHROMIUM` optionally selects a browser executable; otherwise it uses
 Playwright's installed Chromium. Preserve the managed proxy and browser TLS trust.
 `EXPERIENCE_QA_ONLY` accepts comma-separated current sections: `openings`, `continuity`,
-`phone`, `latest-intent`, `asset-recovery`, `unsupported-revision`,
-`search-cancellation`, `resources`. A section run retains its limited coverage.
+`phone`, `framing-recovery`, `latest-intent`, `asset-recovery`, `unsupported-revision`,
+`search-cancellation`, `locale-pending`, `resources`. A section run retains its limited coverage.
 
 Review the actual sequence: old Shijō save → Ginza approach/corner/inspection →
 keep view/light/words → map → reload → return to both saved areas → Maps handoff.

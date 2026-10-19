@@ -32,7 +32,25 @@ The [phone continuity report](movement/packs-result.json) records 17/17 passing 
 - [At the second frontage endpoint](movement/phone-ginza-sidewalk-node-4.png): actor near `(19.628, 14.850)`; pavement and actor remain visible, while most of Wako lies beyond the left frame edge.
 - [English interaction state](movement/ginza-en-phone.png) and [Chinese night state](movement/ginza-zh-phone.png): guidance and actions remain visible below the canvas; the endpoint composition still emphasizes the authored background mass.
 
-All three route images preserve the opening camera offset, angle and distance while following the player's changing position. This provides visible travel continuity and also explains the endpoint framing limit. Manual orbit, pinch, inspection-close, Reset and resumed walking passed behaviorally. This report did not capture the transient closer inspection pose. The scheduled final review will add a user-framed second-wing detail image; these images alone establish no close-detail visual judgment.
+All three route images preserve the opening camera offset, angle and distance while following the player's changing position. This provides visible travel continuity and also explains the endpoint framing limit. Manual orbit, pinch, inspection-close, Reset and resumed walking passed behaviorally in that run. The separate closer-view evidence below records actual user framing from the later local package.
+
+## User-framed second wing
+
+The later tested local package has manifest SHA256 `5a8e0f67506cd164e7422e8aaf22c6a77685c4a7996168aac16703a6b0d0deb7` and retains model `70870bc6…`, the same materials and the same lighting resources. QA used actual keyboard orbit/pan/zoom on desktop and touch orbit/pinch/pan on phone after walking to the second-wing endpoint.
+
+- [Desktop daylight](second-wing/ginza-day-en.png) and [desktop night](second-wing/ginza-night-en.png) show the arched curved corner continuing into the straight wing's rectangular windows. Recessed glazing, projecting upper cornice and lower ornamental belts are visible. The actor remains on the pavement just above the walking guide. The crown extends beyond this deliberately closer frame; the opening images document the complete silhouette.
+- [Returned Chinese view](second-wing/ginza-return-zh.png) preserves the night composition and actor position after returning to the saved view.
+- [Phone closer night view](second-wing/ginza-phone-second-frontage-close-zh.png) shows the second wing, its rectangular bay rhythm and ground glazing. The actor remains visible at the lit pavement endpoint. The inspection reticle and Reset control are readable.
+
+The desktop pair uses player `(19.541, 16.504)`, azimuth `0.93`, polar `1.43`, distance `32`, and target offset `{x:10.190118, y:-6.114710, height:18.559373}`. The phone uses the same player position, azimuth `0.937867`, polar `1.49`, distance `29.807511`, and target offset `{x:9.268132, y:-7.016929, height:16.830025}`. The mode changes preserve the desktop pose. The [completed browser report](second-wing/packs-result.json) records 51/51 passing checks, finished at `2026-10-19T16:01:09.911Z`, with actual package, camera, HDR and image identities.
+
+These closer views demonstrate that user-controlled framing can recover the second frontage after walking around the corner. The visible limitations remain dark surrounding asphalt, simplified background masses, opaque reflective glazing and pronounced night shadow edges. No additional asset defect was observed in these frames.
+
+## Walking after high inspection
+
+The [desktop high inspection](second-wing/ginza-desktop-high-detail-before-walk.png) and [phone high inspection](second-wing/ginza-phone-high-detail-before-walk.png) show deliberately user-framed roof views with the actor outside the frame. Actual walking input subsequently returns the actor and pavement to view on [desktop](second-wing/ginza-desktop-high-detail-walk-recovered.png) and [phone](second-wing/ginza-phone-high-detail-walk-recovered.png). The report verifies recovery without Reset or player teleportation.
+
+The recovered views also expose the ground-floor construction at a useful scale: glazing sits behind the stone piers and projecting sills; metal mullions and the upper ornamental belt have separate depth; paving joints and surface variation are visible beside the actor. The actor's full silhouette remains visible in both images. The close glazing stays opaque and authored. These captures bind the recovery behavior to package `5a8e0f67…` and retain the same frozen `70870bc6…` model.
 
 ## Source and asset identity
 
@@ -72,6 +90,14 @@ The editable scene was generated with Blender 4.3.2 from canonical source JSON. 
 | Embedded original maps | 12 | Included in the byte cap |
 
 The generator records 107.62 seconds for its final export invocation. This is an export measurement; no authoring-hours estimate or device performance result is inferred. The shared traveller and HDR files are excluded from marginal pack bytes. The editable `.blend` remains in ignored `artifacts/ginza-art-20261019/build/`. No offline beauty image substitutes for the reviewed browser frames.
+
+The actual frozen GLB was imported with Blender 4.3.2's glTF importer for a separate [decoded-image audit](decoded-images.json). It contains **12 images: three at 512 × 512 and nine at 256 × 256**, totaling **1,376,256 pixels**. Blender reports four decoded channels and 24-bit image depth for each image. The base-level **RGBA8 equivalent is 5,505,024 bytes (5.25 MiB)**, calculated as width × height × four bytes. This accounting excludes mipmaps, driver overhead, duplicate uploads, render targets, HDR processing and shared assets. Actual GPU allocation was unavailable and is not claimed. Import and inspection left model `70870bc6…` unchanged.
+
+The retained [audit script](inspect-model-images.py) uses Blender's importer and records its own source hash. Reproduce from the repository root:
+
+```sh
+blender --background --factory-startup --python experience/evidence/area-packs-20261019/art/inspect-model-images.py -- --model experience/public/packs/ginza-wako/scene.glb --output experience/evidence/area-packs-20261019/art/decoded-images.json
+```
 
 ## Preserved Shijō assets
 

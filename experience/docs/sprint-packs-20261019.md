@@ -1,7 +1,8 @@
 # Reviewed area packs · Ginza/Wako · 2026-10-19
 
-Status: implementation committed and pushed as `379e9d3`; final browser and
-publication checks are running. The plan was recorded before production in
+Status: implementation committed and pushed as `379e9d3`; complete packaged browser
+regressions pass. Pages package `3362d6c` is pushed and awaits hosted verification.
+The plan was recorded before production in
 `997afd8`. The user approves consistent map styling and reviewed neighborhood/
 landmark packs, with Shijō's 3D interaction preserved. This milestone delivers a
 reusable pack system and one second bounded walkable area: **Ginza 4-chōme /
@@ -65,7 +66,7 @@ inside a different area or erase unrelated records.
 
 ## Phases, sprint tickets and owners
 
-One integrated milestone is in progress. These phases are ordered work boundaries,
+One integrated milestone follows the phases below. These phases are ordered work boundaries,
 with no promised calendar dates or velocity. Root confirms exact file ownership
 before production; reviewers report findings to the owner.
 
@@ -138,7 +139,7 @@ camera, note draft and journey. No essential cue depends only on sound or color;
 respect reduced-motion behavior. Proper names and original source text retain
 their identity without leaking untranslated interface instructions.
 
-**Resource and cost discipline.** Proposed marginal production caps are **≤8 MiB
+**Resource and cost discipline.** Marginal production caps are **≤8 MiB
 for the new model plus place-specific maps**, **≤100,000 triangles** and **≤64
 mesh/material batches**. Measure exported and loaded assets before accepting these
 caps; report shared assets separately. These caps are production controls, not
@@ -152,7 +153,7 @@ art/export, engineering, localization and review effort plus rework. Preserve th
 service fees, availability, rights and actual production cost.
 
 **Q03 remains open P1.** The latest matched warm Together locale observations are
-**1121.1 / 1221.9 / 1097.9 ms**. The unchanged exit is each of three matched actions
+**1223.2 / 1104.9 / 1170.7 ms** on the final package. The unchanged exit is each of three matched actions
 **<500 ms**, using the same action start/end, browser, viewport, cache and provider
 conditions. Record each observation with package identity and separate shell,
 map, scene and interaction timings. Reduced work or smaller assets do not close
@@ -179,3 +180,28 @@ evidence and its own bounded plan.
 Final evidence identifies source/package, source/asset rights, actual browser and
 resource results, art judgments, hosted-byte verification and every open gate.
 Root owns the final release decision, checkpoint and publication.
+
+## Milestone results
+
+P00–P05 are complete. The [evidence record](../evidence/area-packs-20261019/README.md)
+binds sources, licensed references, final assets and actual browser reports to the
+94-file package `5a8e0f67506cd164e7422e8aaf22c6a77685c4a7996168aac16703a6b0d0deb7`.
+Local application 120, service 13 and repository 17 checks pass. Final focused
+interactions 51, recovery/resources 23, full solo 75, full homepage 65 and extended
+walkthrough 264 pass.
+Complete CI reports pass original walk 133, perspective 80, companion 73,
+homepage 65, solo 75, packs 75 and extended walkthrough 264. Counts overlap.
+
+Ginza's model is 7,970,296 bytes, 84,624 triangles and 48 batches. The whole pack is
+8,000,958 bytes. Original maps contain 1,376,256 decoded pixels; actual GPU byte
+allocation is unmeasured. Repeated return cycles retain stable renderer counts,
+one active instance/canvas and zero pending loads. Hidden scenes record zero
+updates/draws over two seconds. Existing Kyoto art assets remain byte-identical.
+The Blender export invocation took 107.62 seconds; production hours and future
+content throughput were not measured. The [authoring guide](area-pack-authoring.md)
+records recurring source, art, localization, engineering and review work.
+
+P06 awaits actual HTTPS publication checks. Q03 remains open P1. Art review accepts
+the sourced feature hierarchy and walking views within the bounded model; simplified
+surroundings and authored lighting remain explicit. Human recognition, enjoyment
+and emotional value remain unverified. Those observations govern any replay work.
