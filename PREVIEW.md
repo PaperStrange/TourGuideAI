@@ -17,7 +17,9 @@ Runtime and validation source: `379e9d3223d5352ca298e841a7ccbb3694c75d8c`.
 Pages package commit: `3362d6cf61c689a32ded9886a3ed1e45837fe6fe`.
 The 94-file tested package is
 `5a8e0f67506cd164e7422e8aaf22c6a77685c4a7996168aac16703a6b0d0deb7`.
-The package is pushed; GitHub deployment and actual HTTPS verification are pending.
+The package is published: all **94/94** actual HTTPS files match, and **16/16**
+hosted journey checks pass with zero page exceptions. Verification metadata is
+committed as `d8fd0ef`; it changes no runtime files.
 
 The solo flow needs no room service or model credentials. Search for another
 place, pan its shared-style map and select **Explore this area**. Choose a
@@ -29,7 +31,8 @@ are private to that browser/origin; Maps calculates directions through selected 
 All complete packaged browser reports pass: original walk **133**, perspective
 **80**, companion **73**, homepage **65**, solo **75**, reviewed packs **75** and
 extended walkthrough **264**. Local interaction, recovery, full solo, homepage
-and extended walkthrough checks also pass. Counts overlap. The
+and extended walkthrough checks also pass. CI workflow `39281251953` completed
+successfully. Counts overlap. The
 [milestone record](experience/evidence/area-packs-20261019/README.md) preserves exact
 source, package and report identities.
 

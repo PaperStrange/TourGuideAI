@@ -4,7 +4,9 @@ Runtime source: `379e9d3223d5352ca298e841a7ccbb3694c75d8c`.
 Tested 94-file package:
 `5a8e0f67506cd164e7422e8aaf22c6a77685c4a7996168aac16703a6b0d0deb7`.
 The [plan](../../docs/sprint-packs-20261019.md) was committed as `997afd8` before
-production. Complete packaged regressions pass; publication verification is in progress.
+production. Complete packaged regressions and actual HTTPS publication checks pass.
+Pages runtime is `3362d6cf61c689a32ded9886a3ed1e45837fe6fe`; verification metadata
+is committed as `d8fd0ef` without runtime changes.
 
 ## Delivered behavior
 
@@ -34,9 +36,11 @@ model credential or paid deployment was added.
 | [Full local solo](final/solo/solo-result.json) | 75/75; both locales, desktop/phone, actual map interaction, private records and saved returns. |
 | [Full local homepage](final/homepage/homepage-result.json) | 65/65; real provider discovery, two participants, service availability, localized links and mode transitions. |
 | [Full local extended walkthrough](final/walkthrough/walkthrough-result.json) | 264/264; both journeys, legacy pages, touch/keyboard controls, real local rooms, service confirmation, denied model/HDR recovery and actual Reset controls. |
-| [Complete CI browser reports](ci/README.md) | Original walk 133, perspective 80, companion 73, homepage 65, solo 75, packs 75 and extended walkthrough 264; every report passes on the same 94-file package. Workflow finalization was still in progress at artifact retrieval. |
+| [Complete CI browser reports](ci/README.md) | Original walk 133, perspective 80, companion 73, homepage 65, solo 75, packs 75 and extended walkthrough 264; every report passes on the same 94-file package. Workflow `39281251953` completed successfully. |
 | [Art review](art/README.md) | Actual openings, moving/closer views and recovery frames compared with licensed references; capture/package boundaries are explicit. |
 | [Language latency](performance/README.md) | Three matched warm actions: 1223.2 /1104.9 /1170.7 ms. Q03 remains open P1 against each action below 500 ms. |
+| [Published files](hosted/published-files.json) | 94/94 actual HTTPS responses match the immutable tested package. |
+| [Published journey](hosted/README.md) | 16/16 actual desktop HTTPS checks; movement/camera, day/night, both-area saved returns, EN/ZH, real Maps coordinates/order and no page exceptions. |
 
 Counts overlap and remain separate. Actual browser reports bind complete package
 file hashes, driver hashes, requests, poses and captures. Successful loads use the

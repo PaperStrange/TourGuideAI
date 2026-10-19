@@ -1,7 +1,7 @@
 # Agent checkpoint · Explore and Together homepage
 
 2026-10-19 · Lead owns integration, commits and publication.
-**State: the reviewed-pack milestone passes complete packaged browser regressions. Pages `3362d6c` is pushed; deployment and actual HTTPS verification are pending. Ginza/Wako adds a second bounded walkable area through the shared runtime, preserving Shijō interaction and private saved views. Q03 remains open P1; backend tests stay local.**
+**State: the reviewed-pack milestone is published and verified. Pages runtime `3362d6c` passes all 94 published-file checks and 16 actual HTTPS journey checks. Ginza/Wako adds a second bounded walkable area through the shared runtime, preserving Shijō interaction and private saved views. Q03 remains open P1; backend tests stay local.**
 
 ## Current iteration · reviewed interactive places
 
@@ -18,16 +18,16 @@ World owns source data; art owns the new Blender generator and assets; engineeri
 owns pack definitions, runtime and navigation; lead owns homepage and private-state
 integration; QA owns actual-input cross-area verification. Production follows the
 recorded source boundary and asset budgets. Existing Kyoto assets, shared links,
-route identity and private records remain regression requirements. The next release
-requires source/Pages/evidence/checkpoint synchronization after actual testing.
+route identity and private records remain regression requirements. This release
+records source/Pages/evidence/checkpoint synchronization after actual testing.
 
 The plan is committed and pushed as `997afd8`; implementation is committed and
 pushed as `379e9d3223d5352ca298e841a7ccbb3694c75d8c`. The final 94-file package is
 `5a8e0f67506cd164e7422e8aaf22c6a77685c4a7996168aac16703a6b0d0deb7`.
 CI `39281251953` supplies seven complete passing reports on those exact bytes:
 original walk **133**, perspective **80**, companion **73**, homepage **65**, solo
-**75**, reviewed packs **75** and extended walkthrough **264**. Workflow finalization
-remains in progress. [Final local evidence](../evidence/area-packs-20261019/README.md)
+**75**, reviewed packs **75** and extended walkthrough **264**. The workflow
+completed successfully. [Final local evidence](../evidence/area-packs-20261019/README.md)
 records **51/51** interaction checks, **23/23** recovery/resource checks, full solo
 **75/75**, homepage **65/65** and extended walkthrough **264/264**. Actual keyboard/touch movement, second-frontage
 framing, off-screen actor recovery, both-area saved return, canceled loads, real
@@ -49,6 +49,13 @@ buildings and road are simplified context. The reusable
 Current [matched Q03 observations](../evidence/area-packs-20261019/performance/README.md)
 are **1223.2 / 1104.9 / 1170.7 ms**, retaining the open P1 status and unchanged
 500 ms threshold. Service **13/13** and repository **17/17** checks pass.
+
+[Published verification](../evidence/area-packs-20261019/hosted/README.md) confirms
+all **94/94** HTTPS files and **16/16** actual desktop journey checks: model draw,
+walking, orbit, night, both-area saves/reload/returns, EN/ZH, actual Maps order,
+surrounding map and localized Shijō links, with zero page exceptions. Pages runtime
+is `3362d6cf61c689a32ded9886a3ed1e45837fe6fe`; verification metadata is committed as
+`d8fd0ef`. The metadata update contains no runtime changes. P00–P06 are complete.
 
 ## Preceding release · solo exploration
 
@@ -108,10 +115,11 @@ shared links must retain their meaning.
 
 - Workspace: `/workspace/TourGuideAI`; source branch: `chore-sow-delivery-plan`.
 - Current pack plan/runtime: `997afd8` / `379e9d3`; package `5a8e0f67…` is frozen.
-  Pages runtime `3362d6cf61c689a32ded9886a3ed1e45837fe6fe` is pushed. Publication
-  verification is pending. Complete CI browser reports and focused local checks
-  pass. Inspect the current working tree before edits; release documentation may
-  have a later commit than runtime. Keep report scopes and open Q03 explicit.
+  Pages runtime `3362d6cf61c689a32ded9886a3ed1e45837fe6fe` is published and verified;
+  metadata update is `d8fd0ef`. Complete CI, focused local checks, all 94 published
+  files and 16 hosted journey checks pass. Inspect the current working tree before
+  edits; release documentation may have a later commit than runtime. Keep report
+  scopes and open Q03 explicit.
 - Quality runtime: `828a405194d82e465887b15c8bcaedfaa3d04f9d`.
   [Sprint plan](sprint-quality-20261016.md) was issued and pushed as `a834cc5`
   before implementation. Pages runtime commit is `c3bcceb` and package manifest is
@@ -225,7 +233,7 @@ The reviewed-pack milestone adds Ginza as a second interactive area.
 
 | Owner | Current boundary | Delivery state / continuing responsibility |
 |---|---|---|
-| Lead | Homepage/map/solo state, integration, checkpoint, release | Pack selection and versioned returns complete; finish actual HTTPS verification and release records |
+| Lead | Homepage/map/solo state, integration, checkpoint, release | Pack selection, versioned returns, publication and actual HTTPS verification complete; retain Q03 as the next technical priority |
 | Engineering | Pack registry, runtime, simulation and perspective adapter | Shared controls, bounded Ginza navigation, compatible saves and cancellation/disposal verified; preserve these interfaces |
 | World-content | Ginza source data and provenance | Source chain, operator dimensions and reference rights reviewed; recheck source changes before later revisions |
 | QA-release | Browser drivers and independent walkthrough | Local final interaction/recovery/solo/homepage/walkthrough checks pass; preserve driver and package identities |

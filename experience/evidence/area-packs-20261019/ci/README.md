@@ -4,9 +4,9 @@ GitHub Actions run `39281251953`, source
 `379e9d3223d5352ca298e841a7ccbb3694c75d8c`.
 All seven downloaded reports bind the same 94-file package:
 `5a8e0f67506cd164e7422e8aaf22c6a77685c4a7996168aac16703a6b0d0deb7`.
-Each complete browser report passes. Workflow finalization was still in progress
-when these artifacts were retrieved; a completed browser report does not establish
-the eventual job conclusion.
+Each complete browser report passes. The workflow completed successfully; the
+actual API [run response](run.json) preserves that conclusion separately from the
+browser reports. The [job response](jobs.json) retains its observed state at capture.
 
 | Report | Passed / failed | Artifact ID | Report SHA-256 |
 | --- | --- | --- | --- |

@@ -1,7 +1,7 @@
 # Reviewed area packs · Ginza/Wako · 2026-10-19
 
-Status: implementation committed and pushed as `379e9d3`; complete packaged browser
-regressions pass. Pages package `3362d6c` is pushed and awaits hosted verification.
+Status: milestone complete. Implementation `379e9d3` and Pages runtime `3362d6c`
+are pushed; complete packaged regressions and actual HTTPS verification pass.
 The plan was recorded before production in
 `997afd8`. The user approves consistent map styling and reviewed neighborhood/
 landmark packs, with Shijō's 3D interaction preserved. This milestone delivers a
@@ -201,7 +201,10 @@ The Blender export invocation took 107.62 seconds; production hours and future
 content throughput were not measured. The [authoring guide](area-pack-authoring.md)
 records recurring source, art, localization, engineering and review work.
 
-P06 awaits actual HTTPS publication checks. Q03 remains open P1. Art review accepts
+P06 is complete: all 94 published files match the tested package, and 16 actual
+HTTPS journey checks pass with zero page exceptions. Runtime Pages commit is
+`3362d6cf61c689a32ded9886a3ed1e45837fe6fe`; verification metadata commit is `d8fd0ef`.
+The complete CI workflow `39281251953` succeeded. Q03 remains open P1. Art review accepts
 the sourced feature hierarchy and walking views within the bounded model; simplified
 surroundings and authored lighting remain explicit. Human recognition, enjoyment
 and emotional value remain unverified. Those observations govern any replay work.

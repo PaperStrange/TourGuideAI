@@ -1,0 +1,1779 @@
+{
+  "startedAt": "2026-10-19T16:36:00.739Z",
+  "url": "https://paperstrange.github.io/TourGuideAI/",
+  "driverSha256": "8670d499cc2322eeecb5346b278223037aecf4ddf0dada57021114948f4a77f1",
+  "checks": [
+    {
+      "id": "published-descriptor-available",
+      "pass": true
+    },
+    {
+      "id": "published-homepage-available",
+      "pass": true
+    },
+    {
+      "id": "published-ginza-model-matches-manifest-and-draws",
+      "pass": true,
+      "evidence": {
+        "manifest": {
+          "version": 1,
+          "id": "ginza-wako",
+          "revision": 1,
+          "model": {
+            "file": "scene.glb",
+            "sha256": "70870bc6603a93067356674bd3674caf191d96d0c425b6c30d53003808023f56",
+            "bytes": 7970296
+          },
+          "lighting": {
+            "file": "lighting.json",
+            "sha256": "be44dd796f7933b8855c54fa36a75aa98b51f1176e425af94afecc2f159e639d",
+            "bytes": 10562
+          },
+          "materials": {
+            "file": "materials.json",
+            "sha256": "989f8a236a56d245f2999323785a6c740625e585bb713bcf4c1e7eb92d8242c2",
+            "bytes": 528
+          },
+          "provenance": {
+            "file": "provenance.json",
+            "sha256": "1f7d8cbf6fcc25e418817180683d6ad3498444b81f0d650ac28790fbbdb70174",
+            "bytes": 5392
+          },
+          "source": {
+            "file": "source.json",
+            "sha256": "6e583689dc460e4a9c496838c44f57925bb8dc4b546338e4ff58f6967eddf674",
+            "bytes": 13177,
+            "repositoryPath": "experience/content/ginza-wako/source.json"
+          },
+          "metrics": {
+            "triangles": 84624,
+            "primitives": 48,
+            "textures": 12,
+            "assetBytesExcludingManifest": 7999955
+          }
+        },
+        "renderer": {
+          "status": "ready",
+          "loadMs": 1326.300000000745,
+          "startup": {
+            "assetsAndLightingMs": 1148.800000000745,
+            "compileMs": 23.699999999254942,
+            "firstRenderMs": 141.29999999981374,
+            "readyMs": 1326.300000000745
+          },
+          "renderedFrames": 1,
+          "updateFrames": 7,
+          "visible": true,
+          "render": {
+            "frame": 22,
+            "calls": 111,
+            "triangles": 169890,
+            "points": 0,
+            "lines": 0
+          },
+          "memory": {
+            "geometries": 70,
+            "textures": 18
+          },
+          "scene": {
+            "packId": "ginza-wako",
+            "revision": 1,
+            "modelSha256": "70870bc6603a93067356674bd3674caf191d96d0c425b6c30d53003808023f56",
+            "assetHashes": {
+              "models/traveller.glb": "ee5307da94f4d1994e5323a0d31d6f79a255c9f2f10459e0a0e6434fb051fdb1",
+              "packs/ginza-wako/scene.glb": "70870bc6603a93067356674bd3674caf191d96d0c425b6c30d53003808023f56"
+            },
+            "disposed": false,
+            "meshes": 63,
+            "triangles": 85420,
+            "streetMeshes": 48,
+            "streetTriangles": 84624,
+            "architecturalMaterials": {
+              "policy": "embedded-pbr",
+              "appliedFinishes": 0
+            },
+            "walkableSurfaces": 1,
+            "markerCount": 0,
+            "fadedGroups": [],
+            "actorPosition": [
+              -13.728,
+              0,
+              -12.434
+            ],
+            "actorHeading": -1.5707963267948966,
+            "streetBounds": [
+              -225,
+              -0.41999998688697815,
+              -235,
+              225,
+              47.38999938964844,
+              215
+            ]
+          },
+          "reducedMotion": true,
+          "lighting": {
+            "requestedMode": "day",
+            "mode": "day",
+            "phase": "ready",
+            "disposed": false,
+            "fallbackReason": null,
+            "rig": {
+              "status": "ready",
+              "sha256": "be44dd796f7933b8855c54fa36a75aa98b51f1176e425af94afecc2f159e639d",
+              "expectedSha256": "be44dd796f7933b8855c54fa36a75aa98b51f1176e425af94afecc2f159e639d",
+              "profile": null
+            },
+            "shadowBounds": {
+              "minX": -29,
+              "maxX": 29,
+              "minY": -12,
+              "maxY": 48
+            },
+            "environment": {
+              "status": "ready",
+              "file": "/TourGuideAI/lighting/environments/day-1k.hdr",
+              "sha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+              "expectedSha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+              "textureId": "e8d18f91-26ec-4d75-9640-33d7450fc474"
+            },
+            "environmentIntensity": 0.72,
+            "environmentRotationY": 0.8,
+            "exposure": 1,
+            "lights": [
+              {
+                "id": "hemisphere",
+                "type": "HemisphereLight",
+                "intensity": 0.28,
+                "color": "#d4e1ef",
+                "position": [
+                  0,
+                  1,
+                  0
+                ],
+                "target": null,
+                "castShadow": false,
+                "mapSize": null,
+                "shadowNeedsUpdate": false
+              },
+              {
+                "id": "sun",
+                "type": "DirectionalLight",
+                "intensity": 2.55,
+                "color": "#fff4e5",
+                "position": [
+                  -24,
+                  68,
+                  45
+                ],
+                "target": [
+                  0,
+                  0,
+                  -18
+                ],
+                "castShadow": true,
+                "mapSize": [
+                  2048,
+                  2048
+                ],
+                "shadowNeedsUpdate": false
+              }
+            ],
+            "emissiveMeshes": [],
+            "cacheEntries": 1,
+            "pendingRequests": 0,
+            "staleRequests": 0,
+            "shadowUpdates": 1,
+            "memory": {
+              "geometries": 70,
+              "textures": 18
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "published-ginza-controls-and-source",
+      "pass": true,
+      "evidence": {
+        "mode": "explore",
+        "center": {
+          "id": "osm:way:103509469",
+          "kind": "poi",
+          "latitude": 35.6716444607219,
+          "longitude": 139.76502277971164,
+          "source": "OpenStreetMap · SEIKO HOUSE",
+          "url": "https://www.seiko.co.jp/en/seiko_house_ginza/",
+          "title": "Ginza Wako corner, Tokyo"
+        },
+        "localPreview": false,
+        "sceneState": "ready",
+        "pack": {
+          "packId": "ginza-wako",
+          "revision": 1
+        },
+        "requestedPack": "ginza-wako",
+        "lighting": "day",
+        "room": null,
+        "serviceReady": false,
+        "aiReady": false,
+        "solo": {
+          "count": 0,
+          "storageError": false,
+          "inspection": {
+            "enabled": false,
+            "focus": null,
+            "selected": null
+          }
+        },
+        "currentView": {
+          "version": 3,
+          "packId": "ginza-wako",
+          "revision": 1,
+          "player": {
+            "x": -13.728,
+            "y": 12.434
+          },
+          "camera": {
+            "azimuth": 0.05,
+            "polar": 1.49,
+            "distance": 64,
+            "targetOffset": {
+              "x": 13.7,
+              "y": 0,
+              "height": 24.5
+            }
+          }
+        },
+        "touchControls": false,
+        "serviceEndpoint": "https://paperstrange.github.io",
+        "serviceTransport": "sse",
+        "connectionPending": false,
+        "invitationNeedsConfirmation": false,
+        "map": null,
+        "routes": [
+          {
+            "id": "culture",
+            "stops": [
+              "osm:way:103509469",
+              "wikipedia:en:3606085",
+              "wikipedia:en:6191581",
+              "wikipedia:en:21651978",
+              "wikipedia:en:1336277"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "published-actual-keyboard-walk-stays-grounded",
+      "pass": true,
+      "evidence": {
+        "before": {
+          "version": 3,
+          "packId": "ginza-wako",
+          "revision": 1,
+          "player": {
+            "x": -13.728,
+            "y": 12.434
+          },
+          "camera": {
+            "azimuth": 0.05,
+            "polar": 1.49,
+            "distance": 64,
+            "targetOffset": {
+              "x": 13.7,
+              "y": 0,
+              "height": 24.5
+            }
+          }
+        },
+        "after": {
+          "version": 3,
+          "packId": "ginza-wako",
+          "revision": 1,
+          "player": {
+            "x": -13.756,
+            "y": 12.966
+          },
+          "camera": {
+            "azimuth": 0.05,
+            "polar": 1.49,
+            "distance": 64,
+            "targetOffset": {
+              "x": 13.7,
+              "y": 0,
+              "height": 24.5
+            }
+          }
+        },
+        "ground": {
+          "x": -13.756,
+          "y": 12.966,
+          "height": -7.105427357601002e-15,
+          "hit": {
+            "height": -7.105427357601002e-15,
+            "surfaceId": "ginza-wako-sidewalk"
+          },
+          "inside": true
+        }
+      }
+    },
+    {
+      "id": "published-camera-orbit-responds",
+      "pass": true
+    },
+    {
+      "id": "published-ginza-save-has-pack-and-note",
+      "pass": true,
+      "evidence": {
+        "id": "0ea63544-018d-4cc1-94c7-8f7726610703",
+        "title": "Hosted Ginza return",
+        "note": "A pause by the curved stone facade.",
+        "savedAt": "2026-10-19T16:36:18.522Z",
+        "center": {
+          "id": "osm:way:103509469",
+          "title": "Ginza Wako corner, Tokyo",
+          "latitude": 35.6716444607219,
+          "longitude": 139.76502277971164,
+          "kind": "poi",
+          "source": "OpenStreetMap · SEIKO HOUSE",
+          "url": "https://www.seiko.co.jp/en/seiko_house_ginza/"
+        },
+        "origin": {
+          "id": "osm:way:103509469",
+          "title": "Ginza Wako corner, Tokyo",
+          "latitude": 35.6716444607219,
+          "longitude": 139.76502277971164,
+          "kind": "poi",
+          "source": "OpenStreetMap · SEIKO HOUSE",
+          "url": "https://www.seiko.co.jp/en/seiko_house_ginza/"
+        },
+        "representation": "street",
+        "view": {
+          "version": 3,
+          "packId": "ginza-wako",
+          "revision": 1,
+          "player": {
+            "x": -13.756,
+            "y": 12.966
+          },
+          "camera": {
+            "azimuth": 0.13,
+            "polar": 1.49,
+            "distance": 64,
+            "targetOffset": {
+              "x": 13.7,
+              "y": 0,
+              "height": 24.5
+            }
+          }
+        },
+        "lighting": "night",
+        "route": {
+          "id": "culture",
+          "title": "Art and heritage",
+          "stops": [
+            {
+              "id": "osm:way:103509469",
+              "title": "Ginza Wako corner, Tokyo",
+              "latitude": 35.6716444607219,
+              "longitude": 139.76502277971164,
+              "kind": "poi",
+              "source": "OpenStreetMap · SEIKO HOUSE",
+              "url": "https://www.seiko.co.jp/en/seiko_house_ginza/"
+            },
+            {
+              "id": "wikipedia:en:3606085",
+              "title": "Kabuki-za",
+              "latitude": 35.6697,
+              "longitude": 139.7681,
+              "kind": "poi",
+              "source": "Wikipedia",
+              "url": "https://en.wikipedia.org/?curid=3606085"
+            },
+            {
+              "id": "wikipedia:en:6191581",
+              "title": "Tokyo Takarazuka Theater",
+              "latitude": 35.673,
+              "longitude": 139.75916667,
+              "kind": "poi",
+              "source": "Wikipedia",
+              "url": "https://en.wikipedia.org/?curid=6191581"
+            },
+            {
+              "id": "wikipedia:en:21651978",
+              "title": "Nissay Theatre",
+              "latitude": 35.673153,
+              "longitude": 139.758425,
+              "kind": "poi",
+              "source": "Wikipedia",
+              "url": "https://en.wikipedia.org/?curid=21651978"
+            },
+            {
+              "id": "wikipedia:en:1336277",
+              "title": "Imperial Theatre (Tokyo)",
+              "latitude": 35.67652778,
+              "longitude": 139.76075,
+              "kind": "poi",
+              "source": "Wikipedia",
+              "url": "https://en.wikipedia.org/?curid=1336277"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "published-shijo-retains-guided-links",
+      "pass": true
+    },
+    {
+      "id": "published-return-ginza-wako",
+      "pass": true,
+      "evidence": {
+        "expected": {
+          "id": "0ea63544-018d-4cc1-94c7-8f7726610703",
+          "title": "Hosted Ginza return",
+          "note": "A pause by the curved stone facade.",
+          "savedAt": "2026-10-19T16:36:18.522Z",
+          "center": {
+            "id": "osm:way:103509469",
+            "title": "Ginza Wako corner, Tokyo",
+            "latitude": 35.6716444607219,
+            "longitude": 139.76502277971164,
+            "kind": "poi",
+            "source": "OpenStreetMap · SEIKO HOUSE",
+            "url": "https://www.seiko.co.jp/en/seiko_house_ginza/"
+          },
+          "origin": {
+            "id": "osm:way:103509469",
+            "title": "Ginza Wako corner, Tokyo",
+            "latitude": 35.6716444607219,
+            "longitude": 139.76502277971164,
+            "kind": "poi",
+            "source": "OpenStreetMap · SEIKO HOUSE",
+            "url": "https://www.seiko.co.jp/en/seiko_house_ginza/"
+          },
+          "representation": "street",
+          "view": {
+            "version": 3,
+            "packId": "ginza-wako",
+            "revision": 1,
+            "player": {
+              "x": -13.756,
+              "y": 12.966
+            },
+            "camera": {
+              "azimuth": 0.13,
+              "polar": 1.49,
+              "distance": 64,
+              "targetOffset": {
+                "x": 13.7,
+                "y": 0,
+                "height": 24.5
+              }
+            }
+          },
+          "lighting": "night",
+          "route": {
+            "id": "culture",
+            "title": "Art and heritage",
+            "stops": [
+              {
+                "id": "osm:way:103509469",
+                "title": "Ginza Wako corner, Tokyo",
+                "latitude": 35.6716444607219,
+                "longitude": 139.76502277971164,
+                "kind": "poi",
+                "source": "OpenStreetMap · SEIKO HOUSE",
+                "url": "https://www.seiko.co.jp/en/seiko_house_ginza/"
+              },
+              {
+                "id": "wikipedia:en:3606085",
+                "title": "Kabuki-za",
+                "latitude": 35.6697,
+                "longitude": 139.7681,
+                "kind": "poi",
+                "source": "Wikipedia",
+                "url": "https://en.wikipedia.org/?curid=3606085"
+              },
+              {
+                "id": "wikipedia:en:6191581",
+                "title": "Tokyo Takarazuka Theater",
+                "latitude": 35.673,
+                "longitude": 139.75916667,
+                "kind": "poi",
+                "source": "Wikipedia",
+                "url": "https://en.wikipedia.org/?curid=6191581"
+              },
+              {
+                "id": "wikipedia:en:21651978",
+                "title": "Nissay Theatre",
+                "latitude": 35.673153,
+                "longitude": 139.758425,
+                "kind": "poi",
+                "source": "Wikipedia",
+                "url": "https://en.wikipedia.org/?curid=21651978"
+              },
+              {
+                "id": "wikipedia:en:1336277",
+                "title": "Imperial Theatre (Tokyo)",
+                "latitude": 35.67652778,
+                "longitude": 139.76075,
+                "kind": "poi",
+                "source": "Wikipedia",
+                "url": "https://en.wikipedia.org/?curid=1336277"
+              }
+            ]
+          }
+        },
+        "actual": {
+          "mode": "explore",
+          "center": {
+            "id": "osm:way:103509469",
+            "title": "Ginza Wako corner, Tokyo",
+            "latitude": 35.6716444607219,
+            "longitude": 139.76502277971164,
+            "kind": "poi",
+            "source": "OpenStreetMap · SEIKO HOUSE",
+            "url": "https://www.seiko.co.jp/en/seiko_house_ginza/"
+          },
+          "localPreview": false,
+          "sceneState": "ready",
+          "pack": {
+            "packId": "ginza-wako",
+            "revision": 1
+          },
+          "requestedPack": "ginza-wako",
+          "lighting": "night",
+          "room": null,
+          "serviceReady": false,
+          "aiReady": false,
+          "solo": {
+            "count": 2,
+            "storageError": false,
+            "inspection": {
+              "enabled": false,
+              "focus": null,
+              "selected": null
+            }
+          },
+          "currentView": {
+            "version": 3,
+            "packId": "ginza-wako",
+            "revision": 1,
+            "player": {
+              "x": -13.756,
+              "y": 12.966
+            },
+            "camera": {
+              "azimuth": 0.13,
+              "polar": 1.49,
+              "distance": 64,
+              "targetOffset": {
+                "x": 13.7,
+                "y": 0,
+                "height": 24.5
+              }
+            }
+          },
+          "touchControls": false,
+          "serviceEndpoint": "https://paperstrange.github.io",
+          "serviceTransport": "sse",
+          "connectionPending": false,
+          "invitationNeedsConfirmation": false,
+          "map": null,
+          "routes": [
+            {
+              "id": "culture",
+              "stops": [
+                "osm:way:103509469",
+                "wikipedia:en:3606085",
+                "wikipedia:en:6191581",
+                "wikipedia:en:21651978",
+                "wikipedia:en:1336277"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "published-zh-retains-view-and-private-note",
+      "pass": true
+    },
+    {
+      "id": "published-maps-preserves-real-selected-order",
+      "pass": true,
+      "evidence": {
+        "links": [
+          "https://www.google.com/maps/dir/?api=1&origin=35.6716444607219%2C139.76502277971164&destination=35.67652778%2C139.76075&travelmode=walking&waypoints=35.6697%2C139.7681%7C35.673%2C139.75916667%7C35.673153%2C139.758425"
+        ],
+        "coordinates": [
+          "35.6716444607219,139.76502277971164",
+          "35.6697,139.7681",
+          "35.673,139.75916667",
+          "35.673153,139.758425",
+          "35.67652778,139.76075"
+        ]
+      }
+    },
+    {
+      "id": "published-surrounding-map-retains-ginza",
+      "pass": true
+    },
+    {
+      "id": "published-return-shijo-karasuma",
+      "pass": true,
+      "evidence": {
+        "expected": {
+          "id": "e9f7eebb-c016-449d-8fd9-0c43385d1891",
+          "title": "Hosted Shijo return",
+          "note": "The crossing remains here.",
+          "savedAt": "2026-10-19T16:36:29.156Z",
+          "center": {
+            "id": "crossing",
+            "title": "Shijō–Karasuma, Kyoto",
+            "latitude": 35.00376,
+            "longitude": 135.7599457,
+            "kind": "poi",
+            "source": "OpenStreetMap",
+            "url": "https://www.openstreetmap.org/node/4600871814"
+          },
+          "origin": {
+            "id": "crossing",
+            "title": "Shijō–Karasuma, Kyoto",
+            "latitude": 35.00376,
+            "longitude": 135.7599457,
+            "kind": "poi",
+            "source": "OpenStreetMap",
+            "url": "https://www.openstreetmap.org/node/4600871814"
+          },
+          "representation": "street",
+          "view": {
+            "version": 3,
+            "packId": "shijo-karasuma",
+            "revision": 1,
+            "player": {
+              "x": 23.8,
+              "y": 2.1
+            },
+            "camera": {
+              "azimuth": 0.22,
+              "polar": 0.88,
+              "distance": 24,
+              "targetOffset": {
+                "x": 1.2,
+                "y": -2.2,
+                "height": 0.9
+              }
+            }
+          },
+          "lighting": "night",
+          "route": {
+            "id": "culture",
+            "title": "Art and heritage",
+            "stops": [
+              {
+                "id": "crossing",
+                "title": "Shijō–Karasuma, Kyoto",
+                "latitude": 35.00376,
+                "longitude": 135.7599457,
+                "kind": "poi",
+                "source": "OpenStreetMap",
+                "url": "https://www.openstreetmap.org/node/4600871814"
+              },
+              {
+                "id": "wikipedia:en:29547058",
+                "title": "Kyoto Art Center",
+                "latitude": 35.00541667,
+                "longitude": 135.75833333,
+                "kind": "poi",
+                "source": "Wikipedia",
+                "url": "https://en.wikipedia.org/?curid=29547058"
+              },
+              {
+                "id": "wikipedia:en:20888642",
+                "title": "Rokkaku-dō",
+                "latitude": 35.00766111,
+                "longitude": 135.76023611,
+                "kind": "poi",
+                "source": "Wikipedia",
+                "url": "https://en.wikipedia.org/?curid=20888642"
+              },
+              {
+                "id": "wikipedia:en:7560174",
+                "title": "Bukkō-ji",
+                "latitude": 35.0007,
+                "longitude": 135.7623,
+                "kind": "poi",
+                "source": "Wikipedia",
+                "url": "https://en.wikipedia.org/?curid=7560174"
+              },
+              {
+                "id": "wikipedia:en:50398320",
+                "title": "Byōdō-ji",
+                "latitude": 34.9995,
+                "longitude": 135.7603,
+                "kind": "poi",
+                "source": "Wikipedia",
+                "url": "https://en.wikipedia.org/?curid=50398320"
+              }
+            ]
+          }
+        },
+        "actual": {
+          "mode": "explore",
+          "center": {
+            "id": "crossing",
+            "title": "京都四条乌丸",
+            "latitude": 35.00376,
+            "longitude": 135.7599457,
+            "kind": "poi",
+            "source": "OpenStreetMap",
+            "url": "https://www.openstreetmap.org/node/4600871814"
+          },
+          "localPreview": false,
+          "sceneState": "ready",
+          "pack": {
+            "packId": "shijo-karasuma",
+            "revision": 1
+          },
+          "requestedPack": "shijo-karasuma",
+          "lighting": "night",
+          "room": null,
+          "serviceReady": false,
+          "aiReady": false,
+          "solo": {
+            "count": 2,
+            "storageError": false,
+            "inspection": {
+              "enabled": false,
+              "focus": null,
+              "selected": null
+            }
+          },
+          "currentView": {
+            "version": 3,
+            "packId": "shijo-karasuma",
+            "revision": 1,
+            "player": {
+              "x": 23.8,
+              "y": 2.1
+            },
+            "camera": {
+              "azimuth": 0.22,
+              "polar": 0.88,
+              "distance": 24,
+              "targetOffset": {
+                "x": 1.2,
+                "y": -2.2,
+                "height": 0.9
+              }
+            }
+          },
+          "touchControls": false,
+          "serviceEndpoint": "https://paperstrange.github.io",
+          "serviceTransport": "sse",
+          "connectionPending": false,
+          "invitationNeedsConfirmation": false,
+          "map": {
+            "ready": true,
+            "failed": false,
+            "center": [
+              139.76502277971167,
+              35.67164446072192
+            ],
+            "zoom": 16.3,
+            "pitch": 56,
+            "bearing": -18,
+            "style": "tourguideai-travel-map-v1",
+            "locale": "zh",
+            "readyMs": 601.4000000003725,
+            "renderedFrames": 26,
+            "cameraTransitions": 1,
+            "resizeEvents": 1,
+            "requestedView": "local",
+            "places": [
+              "osm:way:103509469",
+              "wikipedia:en:3606085",
+              "wikipedia:en:6191581",
+              "wikipedia:en:21651978",
+              "wikipedia:en:1336277"
+            ],
+            "routes": [
+              [
+                "osm:way:103509469",
+                "wikipedia:en:3606085",
+                "wikipedia:en:6191581",
+                "wikipedia:en:21651978",
+                "wikipedia:en:1336277"
+              ]
+            ],
+            "buildingLayer": "fill-extrusion",
+            "renderedBuildings": 27
+          },
+          "routes": [
+            {
+              "id": "culture",
+              "stops": [
+                "crossing",
+                "wikipedia:en:29547058",
+                "wikipedia:en:20888642",
+                "wikipedia:en:7560174",
+                "wikipedia:en:50398320"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "published-localized-shijo-links",
+      "pass": true
+    },
+    {
+      "id": "published-two-place-records-survive",
+      "pass": true
+    },
+    {
+      "id": "published-journey-has-no-page-exceptions",
+      "pass": true,
+      "evidence": []
+    }
+  ],
+  "pageErrors": [],
+  "responses": [
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/?qa=1&lang=en&mode=explore&pack=ginza-wako",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/index-BR9ojz5g.css",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/maps-2TGVCB_Q.js",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/index-CVfnHRK-.js",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/places-_F3XEqgH.js",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/modulepreload-polyfill-P2Xu9kJm.js",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/view-state-u4a6Z6NS.js",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/exploration-state-Bo0-H2a4.js",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/kyoto-B8LsYbyV.js",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/state-B6I38B8g.js",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/preload-helper-BaNbYf_w.js",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/create-game-8e7LLpvN.js",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/live-view-CqIayMf9.js",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/lighting-2vgXaX2R.js",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/kyoto-sans-BkISe6xg.woff",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/api/health",
+      "status": 404
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/packs/ginza-wako/manifest.json",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/packs/ginza-wako/materials.json",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/models/traveller.glb",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/packs/ginza-wako/scene.glb",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/0a9a0a9d-2fc7-46d4-ad9d-06f600f39630",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/5eb5ab92-b1cd-4dc6-8513-25a923c2e2d2",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/e6b1dc0c-27ff-458f-b22c-9128a8dab65a",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/55147631-9084-4d54-8352-e69970a4e3e0",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/3963d88f-528c-4692-9b92-59ebb3e9320c",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/926f8651-2fcc-4c23-ba02-e2646b4feb1d",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/87408d63-65c6-4c90-a8c9-519550e20698",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/0155b7a7-229f-4cec-a0d6-7a58ff8930a0",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/986dda6d-b78a-4744-b9a5-872cafa87a37",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/34da0113-7f89-4dd1-b662-de68929d167e",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/c38b7bb6-de29-4e13-b567-a59a6527daee",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/5b3ab189-154f-4f63-b7c2-524364974bbb",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/packs/ginza-wako/lighting.json",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/lighting/environments/day-1k.hdr",
+      "status": 200
+    },
+    {
+      "url": "https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&generator=geosearch&ggscoord=35.6716444607219%7C139.76502277971164&ggsradius=1200&ggslimit=30&ggsnamespace=0&prop=coordinates%7Cpageprops%7Cdescription&coprimary=primary&colimit=max&ppprop=wikibase_item%7Cdisambiguation&origin=*&maxage=3600&smaxage=3600",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/lighting/environments/night-1k.hdr",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/models/traveller.glb",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/materials/architectural/manifest.json",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/materials/architectural/pale-stone.png",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/073def74-6a08-4f81-bd12-d77416961ebc",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/materials/architectural/glazing-blinds.png",
+      "status": 200
+    },
+    {
+      "url": "https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&generator=geosearch&ggscoord=35.00376%7C135.7599457&ggsradius=1200&ggslimit=30&ggsnamespace=0&prop=coordinates%7Cpageprops%7Cdescription&coprimary=primary&colimit=max&ppprop=wikibase_item%7Cdisambiguation&origin=*&maxage=3600&smaxage=3600",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/materials/architectural/glazing.png",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/aabf4e1a-00b6-49fb-8d1d-a3d14756b591",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/materials/architectural/granite-fascia.png",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/0768b156-142b-4749-b57e-7fa21a1939a0",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/models/shijo-block.glb",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/7976fcb6-b238-4723-8beb-94fd67ae7236",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/c04923a2-9abc-47bf-addf-1886de575af9",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/626b555a-d325-4c50-89ea-d53a1c889506",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/f0ed5a84-e9c3-4106-a58c-ad061d095e42",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/13481731-dedc-4bdb-b565-253c444ca69b",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/0bd3c4e0-5638-45b3-9e72-00b4f335e0c6",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/0e5a1cee-0cea-4b05-8d32-1b28b74cbb11",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/4adf6d11-9e9d-4fd9-aedc-259f6d23e6bb",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/6cd95761-5a03-4666-acac-94df2d5abde0",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/d4ab76b9-c835-4b97-bc94-7103aaa6ad6c",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/3eee19c5-06f1-4d17-af48-84ce109203e1",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/bb0d6810-1e21-4285-a45a-a81156460bf9",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/e72e2de1-b156-4975-9d4c-a5db11d4f0b0",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/a1cd8d71-9a26-4113-9151-0ee3b30a3664",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/5b79353d-0972-426b-a3d6-27aa5d5b289f",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/lighting/rig.json",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/lighting/environments/night-1k.hdr",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/?qa=1&lang=en&mode=explore&pack=shijo-karasuma",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/index-CVfnHRK-.js",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/modulepreload-polyfill-P2Xu9kJm.js",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/places-_F3XEqgH.js",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/maps-2TGVCB_Q.js",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/kyoto-B8LsYbyV.js",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/view-state-u4a6Z6NS.js",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/exploration-state-Bo0-H2a4.js",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/state-B6I38B8g.js",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/preload-helper-BaNbYf_w.js",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/index-BR9ojz5g.css",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/live-view-CqIayMf9.js",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/create-game-8e7LLpvN.js",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/lighting-2vgXaX2R.js",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/kyoto-sans-BkISe6xg.woff",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/api/health",
+      "status": 404
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/materials/architectural/manifest.json",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/models/shijo-block.glb",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/materials/architectural/pale-stone.png",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/materials/architectural/granite-fascia.png",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/materials/architectural/glazing.png",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/materials/architectural/glazing-blinds.png",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/models/traveller.glb",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/fd0d763e-a762-4e99-a786-1da7864b4241",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/b9606a2c-7f82-4772-b952-38419b9e9d02",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/47d9b9af-32dd-442e-b027-09c6038780a6",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/cc3601c7-ca1f-404c-8077-567e33433a54",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/831c3cf0-b76f-4bed-af8a-bd6f9e6c3415",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/d98c6a42-523b-4a8a-88df-93984da55f20",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/e03ebaee-5d3d-47d6-8be0-9cd896af24c0",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/6a41b2f2-8bf4-4e6f-a946-700dff108cf8",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/096d77df-de64-4a24-91b6-5bcf8c4cc60a",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/0b939ec6-a18e-4ac6-9e01-a214c79585e0",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/114f4719-4bf7-4b6f-9bc5-964321e3c716",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/6bb966c5-788e-4d9b-a437-07e8d07f92ac",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/3a524c24-0d7b-477e-bf25-d47acee5ad40",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/7a3b9788-90d5-4642-88f3-76e53259c5de",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/34851e46-0400-4b1e-9f20-d5cc27eca1de",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/98d0ffcf-1d6c-4861-a58a-a7860da336a7",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/236d5256-d739-465d-a24a-bf4a73eaa2ef",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/0e24bb23-f37c-4989-9c82-b3a9cb220f8f",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/lighting/rig.json",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/lighting/environments/day-1k.hdr",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/packs/ginza-wako/manifest.json",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/packs/ginza-wako/materials.json",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/models/traveller.glb",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/packs/ginza-wako/scene.glb",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/6040b15a-d60f-48ed-a0aa-e72119686f9b",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/d3830e3e-fba4-4590-a855-4e414552dc5d",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/87af890c-cadb-4191-9702-8886dcf231be",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/1f0bc124-c9d9-490e-8919-4f24384b3489",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/eb58387f-a160-4b08-9d2e-041d19aba80b",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/13ebea49-8cef-4891-8dac-5a34d45850ff",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/2f18e5d0-0b2e-4587-95d4-bd5307124c92",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/33a00a6a-01d7-4af4-b0c2-e262788a2a31",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/ba1c2b59-a468-40c5-b9b0-3c83bd5eb3bf",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/57242815-ca17-4fd0-b270-c18d59973b72",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/c5c2d96d-3486-4a1e-a77b-b2ed51dbceb0",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/57859756-e7c7-425c-b7fe-f84c054d65e8",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/packs/ginza-wako/lighting.json",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/lighting/environments/night-1k.hdr",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/world-map-DBE96hFo.css",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/world-map-DZohAcRL.js",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/assets/maplibre-gl-worker-Bh1S--WG.js",
+      "status": 200
+    },
+    {
+      "url": "https://tiles.openfreemap.org/styles/liberty",
+      "status": 200
+    },
+    {
+      "url": "https://tiles.openfreemap.org/sprites/ofm_f384/ofm.json",
+      "status": 200
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet",
+      "status": 200
+    },
+    {
+      "url": "https://tiles.openfreemap.org/sprites/ofm_f384/ofm.png",
+      "status": 200
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/14/14553/6452.pbf",
+      "status": 200
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/14/14552/6451.pbf",
+      "status": 200
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/14/14552/6451.pbf",
+      "status": 200
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/14/14553/6451.pbf",
+      "status": 200
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/14/14552/6452.pbf",
+      "status": 200
+    },
+    {
+      "url": "https://tiles.openfreemap.org/planet/20261011_080001_pt/14/14552/6452.pbf",
+      "status": 200
+    },
+    {
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/256-511.pbf",
+      "status": 200
+    },
+    {
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Italic/0-255.pbf",
+      "status": 200
+    },
+    {
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/0-255.pbf",
+      "status": 200
+    },
+    {
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Italic/256-511.pbf",
+      "status": 200
+    },
+    {
+      "url": "https://tiles.openfreemap.org/fonts/Noto%20Sans%20Bold/0-255.pbf",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/models/traveller.glb",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/models/shijo-block.glb",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/materials/architectural/manifest.json",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/materials/architectural/granite-fascia.png",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/materials/architectural/pale-stone.png",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/materials/architectural/glazing.png",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/materials/architectural/glazing-blinds.png",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/e4626d8c-c748-4b7c-b7ba-3740d1997b16",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/4b0a7de0-a818-4273-8849-ef29a2da6e3a",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/c216d9e9-22bd-419b-bc2a-b9a06407014a",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/4e49e18b-b773-45f2-9024-2c701f7d8201",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/b9edb666-6c08-4772-aaf5-0e67410bbcc3",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/e0e7c31f-382f-46e9-b1c0-93cd8b03ac55",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/11d1f99f-fb47-41be-bf63-ba88de8df402",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/417b778a-89a8-4723-a125-672c4a04086a",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/0ac866b9-f13f-4eaa-bbaa-19afabdb0d66",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/699ae14e-dec6-4be9-b976-0bf922d7c7c2",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/84ca33c3-bd6f-4ed4-8aca-c638801d4a37",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/92d683a9-56c8-4e68-8a36-e3385466397a",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/d7023b79-5304-4c1e-bf8e-79bb1a5f4017",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/0c59e1c0-359f-4f78-9906-cfbdbaa5e720",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/b34a5eb8-ccbe-4ee9-a79e-04193b1b782d",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/fb986cbd-66b2-463e-95c6-6f978095591b",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/12d8dfbc-7e26-46a3-bd09-2cc5bb708044",
+      "status": 200
+    },
+    {
+      "url": "blob:https://paperstrange.github.io/9ca2acd7-c7fe-4ae2-abad-47ddd4a2aa8f",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/lighting/rig.json",
+      "status": 200
+    },
+    {
+      "url": "https://paperstrange.github.io/TourGuideAI/lighting/environments/night-1k.hdr",
+      "status": 200
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "ginza-night-en.png",
+      "sha256": "8ce177e9a90543ed900f0086f95fc9fe44624c802ab96b1b08db8cf6a6b70f4f",
+      "state": {
+        "mode": "explore",
+        "center": {
+          "id": "osm:way:103509469",
+          "kind": "poi",
+          "latitude": 35.6716444607219,
+          "longitude": 139.76502277971164,
+          "source": "OpenStreetMap · SEIKO HOUSE",
+          "url": "https://www.seiko.co.jp/en/seiko_house_ginza/",
+          "title": "Ginza Wako corner, Tokyo"
+        },
+        "localPreview": false,
+        "sceneState": "ready",
+        "pack": {
+          "packId": "ginza-wako",
+          "revision": 1
+        },
+        "requestedPack": "ginza-wako",
+        "lighting": "night",
+        "room": null,
+        "serviceReady": false,
+        "aiReady": false,
+        "solo": {
+          "count": 0,
+          "storageError": false,
+          "inspection": {
+            "enabled": false,
+            "focus": null,
+            "selected": null
+          }
+        },
+        "currentView": {
+          "version": 3,
+          "packId": "ginza-wako",
+          "revision": 1,
+          "player": {
+            "x": -13.756,
+            "y": 12.966
+          },
+          "camera": {
+            "azimuth": 0.13,
+            "polar": 1.49,
+            "distance": 64,
+            "targetOffset": {
+              "x": 13.7,
+              "y": 0,
+              "height": 24.5
+            }
+          }
+        },
+        "touchControls": false,
+        "serviceEndpoint": "https://paperstrange.github.io",
+        "serviceTransport": "sse",
+        "connectionPending": false,
+        "invitationNeedsConfirmation": false,
+        "map": null,
+        "routes": [
+          {
+            "id": "culture",
+            "stops": [
+              "osm:way:103509469",
+              "wikipedia:en:3606085",
+              "wikipedia:en:6191581",
+              "wikipedia:en:21651978",
+              "wikipedia:en:1336277"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "file": "ginza-return-zh.png",
+      "sha256": "199ced9e769890aeaef874c46338d5e21f8ddad5784541eb256b34c4fb91b56a",
+      "state": {
+        "mode": "explore",
+        "center": {
+          "id": "osm:way:103509469",
+          "title": "东京银座和光转角",
+          "latitude": 35.6716444607219,
+          "longitude": 139.76502277971164,
+          "kind": "poi",
+          "source": "OpenStreetMap · SEIKO HOUSE",
+          "url": "https://www.seiko.co.jp/en/seiko_house_ginza/"
+        },
+        "localPreview": false,
+        "sceneState": "ready",
+        "pack": {
+          "packId": "ginza-wako",
+          "revision": 1
+        },
+        "requestedPack": "ginza-wako",
+        "lighting": "night",
+        "room": null,
+        "serviceReady": false,
+        "aiReady": false,
+        "solo": {
+          "count": 2,
+          "storageError": false,
+          "inspection": {
+            "enabled": false,
+            "focus": null,
+            "selected": null
+          }
+        },
+        "currentView": {
+          "version": 3,
+          "packId": "ginza-wako",
+          "revision": 1,
+          "player": {
+            "x": -13.756,
+            "y": 12.966
+          },
+          "camera": {
+            "azimuth": 0.13,
+            "polar": 1.49,
+            "distance": 64,
+            "targetOffset": {
+              "x": 13.7,
+              "y": 0,
+              "height": 24.5
+            }
+          }
+        },
+        "touchControls": false,
+        "serviceEndpoint": "https://paperstrange.github.io",
+        "serviceTransport": "sse",
+        "connectionPending": false,
+        "invitationNeedsConfirmation": false,
+        "map": null,
+        "routes": [
+          {
+            "id": "culture",
+            "stops": [
+              "osm:way:103509469",
+              "wikipedia:en:3606085",
+              "wikipedia:en:6191581",
+              "wikipedia:en:21651978",
+              "wikipedia:en:1336277"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "conditions": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "reducedMotion": "reduce",
+    "interception": false,
+    "tlsVerification": true,
+    "scope": "Actual desktop published journey; phone, failure and resource coverage are separate packaged checks.",
+    "browser": "151.0.7922.34"
+  },
+  "descriptor": {
+    "sourceRepository": "https://github.com/PaperStrange/TourGuideAI",
+    "sourceBranch": "chore-sow-delivery-plan",
+    "sourceCommit": "379e9d3223d5352ca298e841a7ccbb3694c75d8c",
+    "validationSourceCommit": "379e9d3223d5352ca298e841a7ccbb3694c75d8c",
+    "experience": "Walk reviewed places in Kyoto and Ginza, keep a view, return",
+    "entryPath": "index.html",
+    "languages": [
+      "en",
+      "zh"
+    ],
+    "builtManifestSha256": "5a8e0f67506cd164e7422e8aaf22c6a77685c4a7996168aac16703a6b0d0deb7",
+    "builtFiles": 94,
+    "validation": {
+      "unit": {
+        "passed": 120,
+        "failed": 0
+      },
+      "service": {
+        "passed": 13,
+        "failed": 0
+      },
+      "repository": {
+        "passed": 17,
+        "failed": 0
+      },
+      "packInteractions": {
+        "passed": 51,
+        "failed": 0
+      },
+      "packRecoveryResources": {
+        "passed": 23,
+        "failed": 0
+      },
+      "fullSoloLocal": {
+        "passed": 75,
+        "failed": 0
+      },
+      "fullHomepageLocal": {
+        "passed": 65,
+        "failed": 0
+      },
+      "ciBrowserReports": {
+        "originalWalk": 133,
+        "perspective": 80,
+        "travelCompanion": 73,
+        "homepage": 65,
+        "solo": 75,
+        "reviewedPacks": 75,
+        "extendedWalkthrough": 264,
+        "failed": 0
+      },
+      "remainingRegressionStatus": "All complete packaged browser reports pass on the identified 94-file package.",
+      "publishedVerificationStatus": "pending publication",
+      "ci": {
+        "run": 39281251953,
+        "status": "browser reports passed; workflow finalization in progress"
+      },
+      "scope": "Actual packaged desktop/phone checks use immutable tested bytes and real providers. Older art captures retain their independent package bindings. Counts overlap and remain separate.",
+      "evidencePath": "experience/evidence/area-packs-20261019/"
+    },
+    "features": [
+      "shared-style wider map with reviewed Shijo and Ginza walks",
+      "source-reviewed Wako building and connected sidewalk approach",
+      "walking, orbit, tilt, inspection pan and zoom",
+      "day and night with source-linked visible surface details",
+      "private place, note, view, lighting and selected-order return across areas",
+      "legacy Shijo view compatibility and explicit unavailable revisions",
+      "English and Chinese keyboard and touch guidance",
+      "Google Maps handoff"
+    ],
+    "backend": {
+      "hosted": false,
+      "modelConfigured": false,
+      "localVerification": "Actual isolated participants, SQLite persistence, SSE and polling remain covered by the room tests.",
+      "nextStep": "Run npm run local:pages in experience/server, then select the endpoint in Together > Testing connection. The service remains local to the computer running it."
+    },
+    "scope": "Kyoto and Ginza are bounded authored interpretations. Ginza follows about 55.28 m of mapped sidewalk with authored width and simplified surroundings. Wider mapped buildings use approximate provider geometry. Route lines show suggested visiting order; Google Maps computes directions. Kept places are private intentions or virtual exploration, with no physical-visit claim.",
+    "reviewStatus": "Packaged regressions pass; hosted verification follows publication. Pack interactions 51, recovery/resources 23, full solo 75 and homepage 65 pass locally; all seven complete CI browser reports pass. Q03 remains open P1: three matched warm Together language actions measure 1223.2/1104.9/1170.7 ms against each below 500 ms. Human enjoyment, recognition and physical-device fluency remain unverified.",
+    "existingExperiences": {
+      "perspective": "perspective.html",
+      "companion": "travel.html",
+      "originalWalk": "walk.html",
+      "renderComparison": "comparison.html"
+    }
+  },
+  "htmlSha256": "3dfab58a4076ee5a73747ffa038050f7b7cac80ca4d6c5c5f69847367cb07df0",
+  "finishedAt": "2026-10-19T16:37:03.841Z",
+  "summary": {
+    "passed": 16,
+    "failed": 0,
+    "error": null
+  }
+}
