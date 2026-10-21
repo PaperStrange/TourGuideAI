@@ -3,6 +3,9 @@ import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { normalizeMapView } from '../solo/state.js';
 import { prepareTravelMapStyle, TRAVEL_MAP_STYLE_ID } from './map-style.js';
+import { itineraryCoordinates, journeyFeatures as routeFeatures } from './map-route-data.js';
+
+export { itineraryCoordinates } from './map-route-data.js';
 
 setWorkerUrl(workerUrl);
 const collection = features => ({ type: 'FeatureCollection', features });
@@ -28,21 +31,6 @@ const uiLocales = {
     'CooperativeGesturesHandler.MobileHelpText': '使用双指移动地图',
   },
 };
-
-// 跨越日期变更线时保留最短经度跨度；线条表达行程顺序，不表示交通路线。
-export function itineraryCoordinates(places) {
-  const result = [];
-  for (const place of places) {
-    let longitude = place.longitude;
-    const previous = result.at(-1)?.[0];
-    if (previous !== undefined) {
-      while (longitude - previous > 180) longitude -= 360;
-      while (longitude - previous < -180) longitude += 360;
-    }
-    result.push([longitude, place.latitude]);
-  }
-  return result;
-}
 
 export function createWorldMap(host, { onSelect, onStatus, onViewChange, locale = 'en' } = {}) {
   let ready = false, styleReady = false, failed = false, destroyed = false, markers = [], pendingPlaces = [], pendingRoutes = [], pendingView = null;
@@ -128,15 +116,12 @@ export function createWorldMap(host, { onSelect, onStatus, onViewChange, locale 
     }
   }
   function journeyFeatures() {
-    return pendingRoutes.filter(route => route.stops.length > 1).map((route, index) => ({
-      type: 'Feature', properties: { color: colors[index % colors.length] },
-      geometry: { type: 'LineString', coordinates: itineraryCoordinates(route.stops) },
-    }));
+    return routeFeatures(pendingRoutes, colors);
   }
   function loadStyle() {
     map.setStyle(styleURL, { diff: false, transformStyle(_previous, supplied) {
       const style = prepareTravelMapStyle(supplied), features = journeyFeatures();
-      if (style.sources.journeys || style.layers.some(layer => ['journey-halo', 'journey-lines'].includes(layer.id))) {
+      if (style.sources.journeys || style.layers.some(layer => ['journey-halo', 'journey-lines', 'journey-walking'].includes(layer.id))) {
         throw new Error('The source map style uses reserved journey identifiers.');
       }
       featureSignature = JSON.stringify(features);
@@ -145,9 +130,13 @@ export function createWorldMap(host, { onSelect, onStatus, onViewChange, locale 
           { id: 'journey-halo', type: 'line', source: 'journeys', paint: {
             'line-color': '#fffaf0', 'line-width': 8, 'line-opacity': 0.85,
           } },
-          { id: 'journey-lines', type: 'line', source: 'journeys', paint: {
+          { id: 'journey-lines', type: 'line', source: 'journeys', filter: ['==', ['get', 'path'], 'visiting-order'], paint: {
             'line-color': ['get', 'color'], 'line-width': 3, 'line-dasharray': [2, 1.5],
           } },
+          { id: 'journey-walking', type: 'line', source: 'journeys', filter: ['==', ['get', 'path'], 'walking-route'],
+            layout: { 'line-cap': 'round', 'line-join': 'round' }, paint: {
+              'line-color': ['get', 'color'], 'line-width': 3,
+            } },
         ] };
     } });
   }
