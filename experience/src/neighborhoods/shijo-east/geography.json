@@ -1,0 +1,5616 @@
+{
+  "schemaVersion": 1,
+  "id": "shijo-east",
+  "revision": 1,
+  "title": {
+    "en": "Shijo, Nishiki and the rivers",
+    "zh": "四条、锦市场与河畔"
+  },
+  "startNodeId": "osm:node:4600871814",
+  "origin": {
+    "longitude": 135.759719,
+    "latitude": 35.003739
+  },
+  "frame": {
+    "origin": {
+      "longitude": 135.759719,
+      "latitude": 35.003739
+    },
+    "kind": "local-tangent-equirectangular",
+    "metresPerDegreeLon": 91282.15,
+    "metresPerDegreeLat": 110940.65,
+    "axes": "x east, y north, height up; metres",
+    "gltfMapping": "[x,height,-y]"
+  },
+  "bounds": {
+    "minX": -44.303432578918105,
+    "minY": -63.65490443050328,
+    "maxX": 1142.2035119176844,
+    "maxY": 209.20433396360693
+  },
+  "geographicBounds": [
+    135.7593,
+    35.003,
+    135.7734,
+    35.0063
+  ],
+  "coverage": {
+    "kind": "reviewed-route-topology",
+    "metres": 1353.444059858351,
+    "sights": 6,
+    "currentAccess": "unverified",
+    "terrain": "authored-flat-display"
+  },
+  "navigation": {
+    "kind": "route-graph",
+    "playerRadius": 0.32,
+    "nodes": [
+      {
+        "id": "osm:node:354840396",
+        "sourceId": "osm:node:354840396",
+        "longitude": 135.7625809,
+        "latitude": 35.0049984,
+        "x": 261.2403850849266,
+        "y": 139.71865460944812,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 4,
+        "sourceTimestamp": "2014-01-15T16:24:53Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:354840397",
+        "sourceId": "osm:node:354840397",
+        "longitude": 135.7632758,
+        "latitude": 35.0050033,
+        "x": 324.6723511211476,
+        "y": 140.26226379449454,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 4,
+        "sourceTimestamp": "2014-01-15T16:24:53Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:354840398",
+        "sourceId": "osm:node:354840398",
+        "longitude": 135.7639713,
+        "latitude": 35.0050046,
+        "x": 388.15908644671146,
+        "y": 140.4064866396034,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 6,
+        "sourceTimestamp": "2018-05-03T00:52:25Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:354840399",
+        "sourceId": "osm:node:354840399",
+        "longitude": 135.7649114,
+        "latitude": 35.0050192,
+        "x": 473.97343565986694,
+        "y": 142.02622012961302,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 6,
+        "sourceTimestamp": "2020-09-03T11:27:42Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:354840400",
+        "sourceId": "osm:node:354840400",
+        "longitude": 135.7668613,
+        "latitude": 35.0050292,
+        "x": 651.9644999448319,
+        "y": 143.13562662996517,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 6,
+        "sourceTimestamp": "2018-05-03T00:52:25Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:372657384",
+        "sourceId": "osm:node:372657384",
+        "longitude": 135.7663533,
+        "latitude": 35.0050389,
+        "x": 605.5931677451605,
+        "y": 144.21175093492838,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 7,
+        "sourceTimestamp": "2020-09-03T11:27:42Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:372657394",
+        "sourceId": "osm:node:372657394",
+        "longitude": 135.7656293,
+        "latitude": 35.0050299,
+        "x": 539.5048911459761,
+        "y": 143.21328508429613,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 4,
+        "sourceTimestamp": "2020-09-03T11:27:42Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:434344416",
+        "sourceId": "osm:node:434344416",
+        "longitude": 135.7671935,
+        "latitude": 35.0043494,
+        "x": 682.2884301750654,
+        "y": 67.71817275992731,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 2,
+        "sourceTimestamp": "2015-09-15T06:16:27Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:434344428",
+        "sourceId": "osm:node:434344428",
+        "longitude": 135.7671881,
+        "latitude": 35.0048224,
+        "x": 681.795506565791,
+        "y": 120.19310020987201,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 4,
+        "sourceTimestamp": "2018-01-08T12:52:30Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:434344433",
+        "sourceId": "osm:node:434344433",
+        "longitude": 135.7671845,
+        "latitude": 35.005019,
+        "x": 681.4668908271395,
+        "y": 142.00403199935374,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 3,
+        "sourceTimestamp": "2018-01-08T23:30:26Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:2367201411",
+        "sourceId": "osm:node:2367201411",
+        "longitude": 135.7710341,
+        "latitude": 35.0038967,
+        "x": 1032.8666554667045,
+        "y": 17.495340504499264,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 5,
+        "sourceTimestamp": "2018-03-21T04:08:25Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:2367201412",
+        "sourceId": "osm:node:2367201412",
+        "longitude": 135.7711602,
+        "latitude": 35.0039032,
+        "x": 1044.3773345806624,
+        "y": 18.216454730043466,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 5,
+        "sourceTimestamp": "2026-09-20T06:39:30Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:2737069399",
+        "sourceId": "osm:node:2737069399",
+        "longitude": 135.7693085,
+        "latitude": 35.0040551,
+        "x": 875.3501774253775,
+        "y": 35.06833946490605,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 13,
+        "sourceTimestamp": "2026-08-20T03:40:59Z",
+        "sourceTags": {
+          "button_operated": "no",
+          "crossing": "traffic_signals",
+          "crossing:island": "no",
+          "highway": "crossing",
+          "tactile_paving": "yes",
+          "traffic_signals:sound": "yes",
+          "traffic_signals:vibration": "no"
+        }
+      },
+      {
+        "id": "osm:node:2971080719",
+        "sourceId": "osm:node:2971080719",
+        "longitude": 135.7625812,
+        "latitude": 35.0049536,
+        "x": 261.26776973089517,
+        "y": 134.74851348969935,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2014-07-20T05:15:49Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600871686",
+        "sourceId": "osm:node:4600871686",
+        "longitude": 135.770379,
+        "latitude": 35.003881,
+        "x": 973.0677190001319,
+        "y": 15.753572299640089,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 3,
+        "sourceTimestamp": "2017-11-26T09:30:33Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600871687",
+        "sourceId": "osm:node:4600871687",
+        "longitude": 135.7696043,
+        "latitude": 35.0038669,
+        "x": 902.3514373956979,
+        "y": 14.189309134490415,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2017-01-11T01:52:32Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600871688",
+        "sourceId": "osm:node:4600871688",
+        "longitude": 135.7694448,
+        "latitude": 35.0040056,
+        "x": 887.7919344711356,
+        "y": 29.57677728958186,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2017-01-11T01:52:32Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600871801",
+        "sourceId": "osm:node:4600871801",
+        "longitude": 135.7691691,
+        "latitude": 35.0040055,
+        "x": 862.6254457158527,
+        "y": 29.56568322445221,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2017-01-11T01:52:33Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600871802",
+        "sourceId": "osm:node:4600871802",
+        "longitude": 135.7689914,
+        "latitude": 35.0038583,
+        "x": 846.4046076613339,
+        "y": 13.235219544376761,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2017-01-11T01:52:33Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600871803",
+        "sourceId": "osm:node:4600871803",
+        "longitude": 135.7688183,
+        "latitude": 35.0038519,
+        "x": 830.603667495236,
+        "y": 12.525199384750485,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 2,
+        "sourceTimestamp": "2018-01-08T21:56:38Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600871806",
+        "sourceId": "osm:node:4600871806",
+        "longitude": 135.7668712,
+        "latitude": 35.0037954,
+        "x": 652.8681932306636,
+        "y": 6.257052659810419,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 8,
+        "sourceTimestamp": "2023-10-13T03:56:26Z",
+        "sourceTags": {
+          "button_operated": "no",
+          "crossing": "traffic_signals",
+          "highway": "crossing",
+          "tactile_paving": "yes",
+          "traffic_signals:sound": "yes",
+          "traffic_signals:vibration": "no"
+        }
+      },
+      {
+        "id": "osm:node:4600871807",
+        "sourceId": "osm:node:4600871807",
+        "longitude": 135.7663493,
+        "latitude": 35.003789,
+        "x": 605.2280391460823,
+        "y": 5.547032499395861,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 4,
+        "sourceTimestamp": "2024-04-14T09:56:38Z",
+        "sourceTags": {
+          "crossing:signals": "yes",
+          "highway": "crossing",
+          "tactile_paving": "yes"
+        }
+      },
+      {
+        "id": "osm:node:4600871808",
+        "sourceId": "osm:node:4600871808",
+        "longitude": 135.7655976,
+        "latitude": 35.0037911,
+        "x": 536.6112469915364,
+        "y": 5.780007864753592,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 4,
+        "sourceTimestamp": "2024-04-14T10:02:26Z",
+        "sourceTags": {
+          "crossing:signals": "yes",
+          "highway": "crossing",
+          "tactile_paving": "yes"
+        }
+      },
+      {
+        "id": "osm:node:4600871809",
+        "sourceId": "osm:node:4600871809",
+        "longitude": 135.7649206,
+        "latitude": 35.0037823,
+        "x": 474.8132314418977,
+        "y": 4.803730144380646,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 8,
+        "sourceTimestamp": "2025-07-31T10:08:11Z",
+        "sourceTags": {
+          "button_operated": "no",
+          "crossing:signals": "yes",
+          "highway": "crossing",
+          "tactile_paving": "yes",
+          "traffic_signals:sound": "no",
+          "traffic_signals:vibration": "no"
+        }
+      },
+      {
+        "id": "osm:node:4600871810",
+        "sourceId": "osm:node:4600871810",
+        "longitude": 135.7639944,
+        "latitude": 35.0037736,
+        "x": 390.26770411105764,
+        "y": 3.8385464899256263,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 4,
+        "sourceTimestamp": "2024-04-13T23:10:44Z",
+        "sourceTags": {
+          "crossing:signals": "yes",
+          "highway": "crossing",
+          "tactile_paving": "yes"
+        }
+      },
+      {
+        "id": "osm:node:4600871811",
+        "sourceId": "osm:node:4600871811",
+        "longitude": 135.763272,
+        "latitude": 35.0037689,
+        "x": 324.3254789509856,
+        "y": 3.3171254343502143,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 8,
+        "sourceTimestamp": "2025-07-31T10:10:25Z",
+        "sourceTags": {
+          "button_operated": "no",
+          "crossing:signals": "yes",
+          "highway": "crossing",
+          "tactile_paving": "yes",
+          "traffic_signals:sound": "no",
+          "traffic_signals:vibration": "yes"
+        }
+      },
+      {
+        "id": "osm:node:4600871812",
+        "sourceId": "osm:node:4600871812",
+        "longitude": 135.7625919,
+        "latitude": 35.0037668,
+        "x": 262.24448873498585,
+        "y": 3.0841500697807644,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 7,
+        "sourceTimestamp": "2025-07-31T10:10:04Z",
+        "sourceTags": {
+          "button_operated": "no",
+          "crossing:signals": "yes",
+          "highway": "crossing",
+          "tactile_paving": "yes",
+          "traffic_signals:sound": "no",
+          "traffic_signals:vibration": "yes"
+        }
+      },
+      {
+        "id": "osm:node:4600871813",
+        "sourceId": "osm:node:4600871813",
+        "longitude": 135.7610935,
+        "latitude": 35.0037511,
+        "x": 125.46731517474163,
+        "y": 1.3423818649215906,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 6,
+        "sourceTimestamp": "2025-07-30T11:22:25Z",
+        "sourceTags": {
+          "button_operated": "no",
+          "crossing:signals": "yes",
+          "highway": "crossing",
+          "tactile_paving": "yes",
+          "traffic_signals:sound": "no"
+        }
+      },
+      {
+        "id": "osm:node:4600871814",
+        "sourceId": "osm:node:4600871814",
+        "longitude": 135.7599457,
+        "latitude": 35.00376,
+        "x": 20.693663406198052,
+        "y": 2.3297536496359026,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 2,
+        "sourceTimestamp": "2024-11-14T09:22:47Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600891602",
+        "sourceId": "osm:node:4600891602",
+        "longitude": 135.7667069,
+        "latitude": 35.0037905,
+        "x": 637.8705359861697,
+        "y": 5.713443474763995,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2017-01-11T02:26:35Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600891604",
+        "sourceId": "osm:node:4600891604",
+        "longitude": 135.767109,
+        "latitude": 35.0038007,
+        "x": 674.5750885013789,
+        "y": 6.845038104587148,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2017-01-11T02:26:35Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600891620",
+        "sourceId": "osm:node:4600891620",
+        "longitude": 135.7696771,
+        "latitude": 35.0038687,
+        "x": 908.9967779155241,
+        "y": 14.389002304459206,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 2,
+        "sourceTimestamp": "2017-10-12T16:20:31Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600891621",
+        "sourceId": "osm:node:4600891621",
+        "longitude": 135.7691701,
+        "latitude": 35.0040552,
+        "x": 862.7167278656223,
+        "y": 35.07943353003569,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 2,
+        "sourceTimestamp": "2017-10-12T16:20:31Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600891622",
+        "sourceId": "osm:node:4600891622",
+        "longitude": 135.7694421,
+        "latitude": 35.0040551,
+        "x": 887.5454726652013,
+        "y": 35.06833946490605,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 2,
+        "sourceTimestamp": "2017-10-12T16:20:31Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600891623",
+        "sourceId": "osm:node:4600891623",
+        "longitude": 135.7689282,
+        "latitude": 35.0038559,
+        "x": 840.6355757813707,
+        "y": 12.968961984418371,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 2,
+        "sourceTimestamp": "2018-03-21T00:34:00Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600891626",
+        "sourceId": "osm:node:4600891626",
+        "longitude": 135.7704554,
+        "latitude": 35.003882,
+        "x": 980.0416752612041,
+        "y": 15.864512949359991,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 3,
+        "sourceTimestamp": "2018-03-21T00:34:01Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600891628",
+        "sourceId": "osm:node:4600891628",
+        "longitude": 135.7706602,
+        "latitude": 35.0038936,
+        "x": 998.7362595817416,
+        "y": 17.15142448942163,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 2,
+        "sourceTimestamp": "2017-10-12T16:20:31Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600891642",
+        "sourceId": "osm:node:4600891642",
+        "longitude": 135.7662732,
+        "latitude": 35.0037892,
+        "x": 598.2814675309788,
+        "y": 5.569220629655154,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2017-01-11T02:26:36Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600891644",
+        "sourceId": "osm:node:4600891644",
+        "longitude": 135.765692,
+        "latitude": 35.0037908,
+        "x": 545.2282819510544,
+        "y": 5.746725669364653,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2017-01-11T02:26:36Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600891646",
+        "sourceId": "osm:node:4600891646",
+        "longitude": 135.7654871,
+        "latitude": 35.0037897,
+        "x": 526.5245694160589,
+        "y": 5.6246909545151045,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2017-01-11T02:26:36Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600891648",
+        "sourceId": "osm:node:4600891648",
+        "longitude": 135.7650045,
+        "latitude": 35.0037834,
+        "x": 482.4718038262413,
+        "y": 4.925764860018474,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2017-01-11T02:26:36Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600891650",
+        "sourceId": "osm:node:4600891650",
+        "longitude": 135.7648461,
+        "latitude": 35.0037816,
+        "x": 468.0127112659066,
+        "y": 4.726071690049683,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2017-01-11T02:26:36Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600891652",
+        "sourceId": "osm:node:4600891652",
+        "longitude": 135.7641027,
+        "latitude": 35.0037746,
+        "x": 400.15356095548555,
+        "y": 3.9494871396455284,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2017-01-11T02:26:36Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600891654",
+        "sourceId": "osm:node:4600891654",
+        "longitude": 135.7639204,
+        "latitude": 35.0037731,
+        "x": 383.5128250099513,
+        "y": 3.7830761642773947,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2017-01-11T02:26:36Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600891656",
+        "sourceId": "osm:node:4600891656",
+        "longitude": 135.7633519,
+        "latitude": 35.0037694,
+        "x": 331.6189227362511,
+        "y": 3.372595759998446,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2017-01-11T02:26:36Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600891658",
+        "sourceId": "osm:node:4600891658",
+        "longitude": 135.7632055,
+        "latitude": 35.0037687,
+        "x": 318.25521597574516,
+        "y": 3.2949373048792023,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2017-01-11T02:26:36Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600891660",
+        "sourceId": "osm:node:4600891660",
+        "longitude": 135.7626822,
+        "latitude": 35.0037671,
+        "x": 270.48726688096775,
+        "y": 3.1174322643814225,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2017-01-11T02:26:36Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600891662",
+        "sourceId": "osm:node:4600891662",
+        "longitude": 135.7625052,
+        "latitude": 35.0037659,
+        "x": 254.3303263302498,
+        "y": 2.9843034844022283,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2017-01-11T02:26:36Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600891664",
+        "sourceId": "osm:node:4600891664",
+        "longitude": 135.7611717,
+        "latitude": 35.0037519,
+        "x": 132.60557930643665,
+        "y": 1.4311343843821998,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2017-01-11T02:26:36Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:4600891666",
+        "sourceId": "osm:node:4600891666",
+        "longitude": 135.7609871,
+        "latitude": 35.0037519,
+        "x": 115.7548944153947,
+        "y": 1.4311343843821998,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2017-01-11T02:26:36Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:5163420172",
+        "sourceId": "osm:node:5163420172",
+        "longitude": 135.7711355,
+        "latitude": 35.0039008,
+        "x": 1042.1226654772038,
+        "y": 17.950197169296796,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 4,
+        "sourceTimestamp": "2018-05-03T06:47:31Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:5163420201",
+        "sourceId": "osm:node:5163420201",
+        "longitude": 135.7706194,
+        "latitude": 35.0038936,
+        "x": 995.0119478597293,
+        "y": 17.15142448942163,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2017-10-12T16:20:27Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:5163420202",
+        "sourceId": "osm:node:5163420202",
+        "longitude": 135.770502,
+        "latitude": 35.0038909,
+        "x": 984.295423450323,
+        "y": 16.851884734862583,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 2,
+        "sourceTimestamp": "2018-03-21T00:34:01Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:5163420203",
+        "sourceId": "osm:node:5163420203",
+        "longitude": 135.7706067,
+        "latitude": 35.0038996,
+        "x": 993.8526645560995,
+        "y": 17.8170683893176,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 3,
+        "sourceTimestamp": "2018-03-21T04:08:27Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:5163420204",
+        "sourceId": "osm:node:5163420204",
+        "longitude": 135.7705148,
+        "latitude": 35.003899,
+        "x": 985.4638349710052,
+        "y": 17.750503999328007,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 5,
+        "sourceTimestamp": "2024-04-14T10:02:09Z",
+        "sourceTags": {
+          "barrier": "kerb",
+          "kerb": "lowered",
+          "tactile_paving": "yes"
+        }
+      },
+      {
+        "id": "osm:node:5163420205",
+        "sourceId": "osm:node:5163420205",
+        "longitude": 135.7704874,
+        "latitude": 35.0038851,
+        "x": 982.9627040616124,
+        "y": 16.208428964437623,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 2,
+        "sourceTimestamp": "2018-03-21T00:34:01Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:5163420206",
+        "sourceId": "osm:node:5163420206",
+        "longitude": 135.7704377,
+        "latitude": 35.003882,
+        "x": 978.4259812061323,
+        "y": 15.864512949359991,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 2,
+        "sourceTimestamp": "2018-03-21T00:34:01Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:5204263033",
+        "sourceId": "osm:node:5204263033",
+        "longitude": 135.7669717,
+        "latitude": 35.0050249,
+        "x": 662.0420493058513,
+        "y": 142.65858183490835,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 3,
+        "sourceTimestamp": "2025-09-02T02:33:58Z",
+        "sourceTags": {
+          "ceremonial_gate": "torii",
+          "man_made": "ceremonial_gate",
+          "name": "錦天満宮",
+          "note": "鳥居",
+          "religion": "shinto"
+        }
+      },
+      {
+        "id": "osm:node:5248383670",
+        "sourceId": "osm:node:5248383670",
+        "longitude": 135.7710767,
+        "latitude": 35.0038978,
+        "x": 1036.7552750567454,
+        "y": 17.617375219348812,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2017-11-26T09:30:29Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:5492358876",
+        "sourceId": "osm:node:5492358876",
+        "longitude": 135.7704716,
+        "latitude": 35.0038821,
+        "x": 981.5204460916216,
+        "y": 15.875607014489637,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2018-03-21T00:34:00Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:5492582070",
+        "sourceId": "osm:node:5492582070",
+        "longitude": 135.7705889,
+        "latitude": 35.0038995,
+        "x": 992.2278422865696,
+        "y": 17.805974324976237,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 3,
+        "sourceTimestamp": "2024-04-14T10:02:10Z",
+        "sourceTags": {
+          "barrier": "kerb",
+          "kerb": "lowered",
+          "tactile_paving": "yes"
+        }
+      },
+      {
+        "id": "osm:node:5554417552",
+        "sourceId": "osm:node:5554417552",
+        "longitude": 135.7625989,
+        "latitude": 35.0049985,
+        "x": 262.88346378596697,
+        "y": 139.72974867457776,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 2,
+        "sourceTimestamp": "2020-02-13T11:49:44Z",
+        "sourceTags": {
+          "entrance": "yes"
+        }
+      },
+      {
+        "id": "osm:node:5554418336",
+        "sourceId": "osm:node:5554418336",
+        "longitude": 135.76682,
+        "latitude": 35.00503,
+        "x": 648.1945471505292,
+        "y": 143.22437914942577,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 2,
+        "sourceTimestamp": "2020-02-13T11:49:44Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:11791924469",
+        "sourceId": "osm:node:11791924469",
+        "longitude": 135.7671913,
+        "latitude": 35.0041613,
+        "x": 682.0876094466101,
+        "y": 46.850236494641315,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2024-04-05T10:42:30Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:11791924470",
+        "sourceId": "osm:node:11791924470",
+        "longitude": 135.7671917,
+        "latitude": 35.0045086,
+        "x": 682.1241223070368,
+        "y": 85.3799242397947,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2024-04-05T10:42:30Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:11791924472",
+        "sourceId": "osm:node:11791924472",
+        "longitude": 135.7671917,
+        "latitude": 35.003803,
+        "x": 682.1241223070368,
+        "y": 7.10020159941589,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2024-04-05T10:42:30Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:11791988811",
+        "sourceId": "osm:node:11791988811",
+        "longitude": 135.7671905,
+        "latitude": 35.0046151,
+        "x": 682.0145837257568,
+        "y": 97.19510346491892,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2024-04-05T10:56:00Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:11793855056",
+        "sourceId": "osm:node:11793855056",
+        "longitude": 135.7671914,
+        "latitude": 35.0040339,
+        "x": 682.0967376610682,
+        "y": 32.716397685010854,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2024-04-05T18:06:03Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:11793855057",
+        "sourceId": "osm:node:11793855057",
+        "longitude": 135.7678087,
+        "latitude": 35.0038215,
+        "x": 738.445208854937,
+        "y": 9.152603624752038,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2024-04-05T18:06:03Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:11795574950",
+        "sourceId": "osm:node:11795574950",
+        "longitude": 135.7705578,
+        "latitude": 35.0038989,
+        "x": 989.3889674214728,
+        "y": 17.73940993498664,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 7,
+        "sourceTimestamp": "2026-08-20T02:59:47Z",
+        "sourceTags": {
+          "button_operated": "no",
+          "crossing:signals": "yes",
+          "highway": "crossing",
+          "tactile_paving": "yes",
+          "traffic_signals:sound": "yes",
+          "traffic_signals:vibration": "no"
+        }
+      },
+      {
+        "id": "osm:node:13360574163",
+        "sourceId": "osm:node:13360574163",
+        "longitude": 135.7704153,
+        "latitude": 35.0038816,
+        "x": 976.3812610455869,
+        "y": 15.820136689629686,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2025-12-08T00:46:57Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "osm:node:13360574166",
+        "sourceId": "osm:node:13360574166",
+        "longitude": 135.7694428,
+        "latitude": 35.004043,
+        "x": 887.6093701715965,
+        "y": 33.72595759998446,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "sourceVersion": 1,
+        "sourceTimestamp": "2025-12-08T00:46:57Z",
+        "sourceTags": {}
+      },
+      {
+        "id": "authored:shijo-bridge-view",
+        "longitude": 135.77152,
+        "latitude": 35.00391,
+        "x": 1077.2206521517994,
+        "y": 18.970851149400048,
+        "height": 0,
+        "heightOrigin": "authored-flat-display",
+        "surveyedElevation": null,
+        "positionOrigin": "authored-representative-point-inside-mapped-pedestrian-area",
+        "sourceIds": [
+          "osm:way:1560746285",
+          "osm:way:532008156"
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "osm:way:1148700851:354840396:2971080719",
+        "from": "osm:node:354840396",
+        "to": "osm:node:2971080719",
+        "points": [
+          {
+            "x": 261.2403850849266,
+            "y": 139.71865460944812,
+            "height": 0
+          },
+          {
+            "x": 261.26776973089517,
+            "y": 134.74851348969935,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:1148700851",
+        "sourceIds": [
+          "osm:way:1148700851",
+          "osm:node:354840396",
+          "osm:node:2971080719"
+        ],
+        "sourceVersion": 9,
+        "sourceTimestamp": "2025-07-30T10:52:56Z",
+        "sourceTags": {
+          "bicycle:conditional": "dismount @ (12:00-18:00)",
+          "carriage:conditional": "no @ (12:00-18:00)",
+          "cycleway": "lane",
+          "foot": "yes",
+          "highway": "pedestrian",
+          "motor_vehicle:conditional": "no @ (12:00-18:00)",
+          "name": "高倉通",
+          "name:en": "Takakura Street",
+          "name:fr": "Rue Takakura",
+          "name:ja": "高倉通",
+          "name:ja-Hira": "たかくらどおり",
+          "name:ja-Latn": "Takakura-dōri",
+          "name:ru": "Такакура улица",
+          "oneway": "yes",
+          "oneway:bicycle": "no",
+          "surface": "asphalt",
+          "wikidata": "Q11668808"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": "yes",
+          "motorVehicleConditional": "no @ (12:00-18:00)",
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 4.97021656158486,
+        "geodesicLengthMetres": 4.970217262057557
+      },
+      {
+        "id": "osm:way:66703315:354840396:5554417552",
+        "from": "osm:node:354840396",
+        "to": "osm:node:5554417552",
+        "points": [
+          {
+            "x": 261.2403850849266,
+            "y": 139.71865460944812,
+            "height": 0
+          },
+          {
+            "x": 262.88346378596697,
+            "y": 139.72974867457776,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:66703315",
+        "sourceIds": [
+          "osm:way:66703315",
+          "osm:node:354840396",
+          "osm:node:5554417552"
+        ],
+        "sourceVersion": 10,
+        "sourceTimestamp": "2025-07-30T10:52:56Z",
+        "sourceTags": {
+          "abutters": "retail",
+          "covered": "yes",
+          "highway": "pedestrian",
+          "lit": "yes",
+          "name": "錦小路通",
+          "name:en": "Nishikikōji Street",
+          "name:fr": "Rue Nishikikōji",
+          "name:ja-Hira": "にしきこうじどおり",
+          "name:ja-Latn": "Nishikikōji-dōri",
+          "opening_hours": "09:00-18:00",
+          "smoothness": "excellent",
+          "surface": "paving_stones",
+          "wikidata": "Q11650428"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 1.643116154169781,
+        "geodesicLengthMetres": 1.6431245780137016
+      },
+      {
+        "id": "osm:way:66703315:354840397:354840398",
+        "from": "osm:node:354840397",
+        "to": "osm:node:354840398",
+        "points": [
+          {
+            "x": 324.6723511211476,
+            "y": 140.26226379449454,
+            "height": 0
+          },
+          {
+            "x": 388.15908644671146,
+            "y": 140.4064866396034,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:66703315",
+        "sourceIds": [
+          "osm:way:66703315",
+          "osm:node:354840397",
+          "osm:node:354840398"
+        ],
+        "sourceVersion": 10,
+        "sourceTimestamp": "2025-07-30T10:52:56Z",
+        "sourceTags": {
+          "abutters": "retail",
+          "covered": "yes",
+          "highway": "pedestrian",
+          "lit": "yes",
+          "name": "錦小路通",
+          "name:en": "Nishikikōji Street",
+          "name:fr": "Rue Nishikikōji",
+          "name:ja-Hira": "にしきこうじどおり",
+          "name:ja-Latn": "Nishikikōji-dōri",
+          "opening_hours": "09:00-18:00",
+          "smoothness": "excellent",
+          "surface": "paving_stones",
+          "wikidata": "Q11650428"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 63.486899140903475,
+        "geodesicLengthMetres": 63.487220386153545
+      },
+      {
+        "id": "osm:way:66703315:354840397:5554417552",
+        "from": "osm:node:354840397",
+        "to": "osm:node:5554417552",
+        "points": [
+          {
+            "x": 324.6723511211476,
+            "y": 140.26226379449454,
+            "height": 0
+          },
+          {
+            "x": 262.88346378596697,
+            "y": 139.72974867457776,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:66703315",
+        "sourceIds": [
+          "osm:way:66703315",
+          "osm:node:354840397",
+          "osm:node:5554417552"
+        ],
+        "sourceVersion": 10,
+        "sourceTimestamp": "2025-07-30T10:52:56Z",
+        "sourceTags": {
+          "abutters": "retail",
+          "covered": "yes",
+          "highway": "pedestrian",
+          "lit": "yes",
+          "name": "錦小路通",
+          "name:en": "Nishikikōji Street",
+          "name:fr": "Rue Nishikikōji",
+          "name:ja-Hira": "にしきこうじどおり",
+          "name:ja-Latn": "Nishikikōji-dōri",
+          "opening_hours": "09:00-18:00",
+          "smoothness": "excellent",
+          "surface": "paving_stones",
+          "wikidata": "Q11650428"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 61.791181979895676,
+        "geodesicLengthMetres": 61.791496916868574
+      },
+      {
+        "id": "osm:way:66703315:354840398:354840399",
+        "from": "osm:node:354840398",
+        "to": "osm:node:354840399",
+        "points": [
+          {
+            "x": 388.15908644671146,
+            "y": 140.4064866396034,
+            "height": 0
+          },
+          {
+            "x": 473.97343565986694,
+            "y": 142.02622012961302,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:66703315",
+        "sourceIds": [
+          "osm:way:66703315",
+          "osm:node:354840398",
+          "osm:node:354840399"
+        ],
+        "sourceVersion": 10,
+        "sourceTimestamp": "2025-07-30T10:52:56Z",
+        "sourceTags": {
+          "abutters": "retail",
+          "covered": "yes",
+          "highway": "pedestrian",
+          "lit": "yes",
+          "name": "錦小路通",
+          "name:en": "Nishikikōji Street",
+          "name:fr": "Rue Nishikikōji",
+          "name:ja-Hira": "にしきこうじどおり",
+          "name:ja-Latn": "Nishikikōji-dōri",
+          "opening_hours": "09:00-18:00",
+          "smoothness": "excellent",
+          "surface": "paving_stones",
+          "wikidata": "Q11650428"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 85.82963397018571,
+        "geodesicLengthMetres": 85.83005982206153
+      },
+      {
+        "id": "osm:way:66703315:354840399:372657394",
+        "from": "osm:node:354840399",
+        "to": "osm:node:372657394",
+        "points": [
+          {
+            "x": 473.97343565986694,
+            "y": 142.02622012961302,
+            "height": 0
+          },
+          {
+            "x": 539.5048911459761,
+            "y": 143.21328508429613,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:66703315",
+        "sourceIds": [
+          "osm:way:66703315",
+          "osm:node:354840399",
+          "osm:node:372657394"
+        ],
+        "sourceVersion": 10,
+        "sourceTimestamp": "2025-07-30T10:52:56Z",
+        "sourceTags": {
+          "abutters": "retail",
+          "covered": "yes",
+          "highway": "pedestrian",
+          "lit": "yes",
+          "name": "錦小路通",
+          "name:en": "Nishikikōji Street",
+          "name:fr": "Rue Nishikikōji",
+          "name:ja-Hira": "にしきこうじどおり",
+          "name:ja-Latn": "Nishikikōji-dōri",
+          "opening_hours": "09:00-18:00",
+          "smoothness": "excellent",
+          "surface": "paving_stones",
+          "wikidata": "Q11650428"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 65.5422061067107,
+        "geodesicLengthMetres": 65.5425212241571
+      },
+      {
+        "id": "osm:way:66703316:354840400:5204263033",
+        "from": "osm:node:354840400",
+        "to": "osm:node:5204263033",
+        "points": [
+          {
+            "x": 651.9644999448319,
+            "y": 143.13562662996517,
+            "height": 0
+          },
+          {
+            "x": 662.0420493058513,
+            "y": 142.65858183490835,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:66703316",
+        "sourceIds": [
+          "osm:way:66703316",
+          "osm:node:354840400",
+          "osm:node:5204263033"
+        ],
+        "sourceVersion": 7,
+        "sourceTimestamp": "2025-07-30T10:52:56Z",
+        "sourceTags": {
+          "highway": "pedestrian",
+          "name": "錦小路通",
+          "name:en": "Nishikikōji Street",
+          "name:fr": "Rue Nishikikōji",
+          "name:ja": "錦小路通",
+          "name:ja-Hira": "にしきこうじどおり",
+          "name:ja-Latn": "Nishikikōji-dōri",
+          "surface": "paving_stones",
+          "wikidata": "Q11650428"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 10.088834068427945,
+        "geodesicLengthMetres": 10.088882178178961
+      },
+      {
+        "id": "osm:way:66703315:354840400:5554418336",
+        "from": "osm:node:354840400",
+        "to": "osm:node:5554418336",
+        "points": [
+          {
+            "x": 651.9644999448319,
+            "y": 143.13562662996517,
+            "height": 0
+          },
+          {
+            "x": 648.1945471505292,
+            "y": 143.22437914942577,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:66703315",
+        "sourceIds": [
+          "osm:way:66703315",
+          "osm:node:354840400",
+          "osm:node:5554418336"
+        ],
+        "sourceVersion": 10,
+        "sourceTimestamp": "2025-07-30T10:52:56Z",
+        "sourceTags": {
+          "abutters": "retail",
+          "covered": "yes",
+          "highway": "pedestrian",
+          "lit": "yes",
+          "name": "錦小路通",
+          "name:en": "Nishikikōji Street",
+          "name:fr": "Rue Nishikikōji",
+          "name:ja-Hira": "にしきこうじどおり",
+          "name:ja-Latn": "Nishikikōji-dōri",
+          "opening_hours": "09:00-18:00",
+          "smoothness": "excellent",
+          "surface": "paving_stones",
+          "wikidata": "Q11650428"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 3.7709973589200168,
+        "geodesicLengthMetres": 3.771015253717818
+      },
+      {
+        "id": "osm:way:66703315:372657384:372657394",
+        "from": "osm:node:372657384",
+        "to": "osm:node:372657394",
+        "points": [
+          {
+            "x": 605.5931677451605,
+            "y": 144.21175093492838,
+            "height": 0
+          },
+          {
+            "x": 539.5048911459761,
+            "y": 143.21328508429613,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:66703315",
+        "sourceIds": [
+          "osm:way:66703315",
+          "osm:node:372657384",
+          "osm:node:372657394"
+        ],
+        "sourceVersion": 10,
+        "sourceTimestamp": "2025-07-30T10:52:56Z",
+        "sourceTags": {
+          "abutters": "retail",
+          "covered": "yes",
+          "highway": "pedestrian",
+          "lit": "yes",
+          "name": "錦小路通",
+          "name:en": "Nishikikōji Street",
+          "name:fr": "Rue Nishikikōji",
+          "name:ja-Hira": "にしきこうじどおり",
+          "name:ja-Latn": "Nishikikōji-dōri",
+          "opening_hours": "09:00-18:00",
+          "smoothness": "excellent",
+          "surface": "paving_stones",
+          "wikidata": "Q11650428"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 66.0958186113553,
+        "geodesicLengthMetres": 66.09612850101561
+      },
+      {
+        "id": "osm:way:66703315:372657384:5554418336",
+        "from": "osm:node:372657384",
+        "to": "osm:node:5554418336",
+        "points": [
+          {
+            "x": 605.5931677451605,
+            "y": 144.21175093492838,
+            "height": 0
+          },
+          {
+            "x": 648.1945471505292,
+            "y": 143.22437914942577,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:66703315",
+        "sourceIds": [
+          "osm:way:66703315",
+          "osm:node:372657384",
+          "osm:node:5554418336"
+        ],
+        "sourceVersion": 10,
+        "sourceTimestamp": "2025-07-30T10:52:56Z",
+        "sourceTags": {
+          "abutters": "retail",
+          "covered": "yes",
+          "highway": "pedestrian",
+          "lit": "yes",
+          "name": "錦小路通",
+          "name:en": "Nishikikōji Street",
+          "name:fr": "Rue Nishikikōji",
+          "name:ja-Hira": "にしきこうじどおり",
+          "name:ja-Latn": "Nishikikōji-dōri",
+          "opening_hours": "09:00-18:00",
+          "smoothness": "excellent",
+          "surface": "paving_stones",
+          "wikidata": "Q11650428"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 42.612820022652535,
+        "geodesicLengthMetres": 42.613019726928414
+      },
+      {
+        "id": "osm:way:1568699671:434344416:11791924469",
+        "from": "osm:node:434344416",
+        "to": "osm:node:11791924469",
+        "points": [
+          {
+            "x": 682.2884301750654,
+            "y": 67.71817275992731,
+            "height": 0
+          },
+          {
+            "x": 682.0876094466101,
+            "y": 46.850236494641315,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:1568699671",
+        "sourceIds": [
+          "osm:way:1568699671",
+          "osm:node:434344416",
+          "osm:node:11791924469"
+        ],
+        "sourceVersion": 1,
+        "sourceTimestamp": "2026-10-16T06:45:45Z",
+        "sourceTags": {
+          "abutters": "retail",
+          "bicycle": "dismount",
+          "carriage": "no",
+          "contact:facebook": "shinkyogoku",
+          "contact:tripadvisor": "1386092",
+          "contact:website": "https://www.shinkyogoku.or.jp/",
+          "covered": "yes",
+          "highway": "pedestrian",
+          "horse": "no",
+          "motor_vehicle": "no",
+          "name": "新京極通",
+          "name:en": "Shinkyogoku street",
+          "name:fr": "Rue Shinkyōgoku",
+          "name:ja-Hira": "しんきょうごくどおり",
+          "name:ja-Latn": "Shinkyōgoku-dōri",
+          "name:ru": "Синкёгоку улица",
+          "start_date": "1872",
+          "surface": "paving_stones",
+          "tourism": "attraction",
+          "wikidata": "Q11501300",
+          "wikimedia_commons": "Category:Shinkyogoku",
+          "wikipedia": "ja:新京極通"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 20.868902533123677,
+        "geodesicLengthMetres": 20.86890301709613
+      },
+      {
+        "id": "osm:way:1568699671:434344416:11791924470",
+        "from": "osm:node:434344416",
+        "to": "osm:node:11791924470",
+        "points": [
+          {
+            "x": 682.2884301750654,
+            "y": 67.71817275992731,
+            "height": 0
+          },
+          {
+            "x": 682.1241223070368,
+            "y": 85.3799242397947,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:1568699671",
+        "sourceIds": [
+          "osm:way:1568699671",
+          "osm:node:434344416",
+          "osm:node:11791924470"
+        ],
+        "sourceVersion": 1,
+        "sourceTimestamp": "2026-10-16T06:45:45Z",
+        "sourceTags": {
+          "abutters": "retail",
+          "bicycle": "dismount",
+          "carriage": "no",
+          "contact:facebook": "shinkyogoku",
+          "contact:tripadvisor": "1386092",
+          "contact:website": "https://www.shinkyogoku.or.jp/",
+          "covered": "yes",
+          "highway": "pedestrian",
+          "horse": "no",
+          "motor_vehicle": "no",
+          "name": "新京極通",
+          "name:en": "Shinkyogoku street",
+          "name:fr": "Rue Shinkyōgoku",
+          "name:ja-Hira": "しんきょうごくどおり",
+          "name:ja-Latn": "Shinkyōgoku-dōri",
+          "name:ru": "Синкёгоку улица",
+          "start_date": "1872",
+          "surface": "paving_stones",
+          "tourism": "attraction",
+          "wikidata": "Q11501300",
+          "wikimedia_commons": "Category:Shinkyogoku",
+          "wikipedia": "ja:新京極通"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 17.66251574414285,
+        "geodesicLengthMetres": 17.662516655047735
+      },
+      {
+        "id": "osm:way:1568699671:434344428:434344433",
+        "from": "osm:node:434344428",
+        "to": "osm:node:434344433",
+        "points": [
+          {
+            "x": 681.795506565791,
+            "y": 120.19310020987201,
+            "height": 0
+          },
+          {
+            "x": 681.4668908271395,
+            "y": 142.00403199935374,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:1568699671",
+        "sourceIds": [
+          "osm:way:1568699671",
+          "osm:node:434344428",
+          "osm:node:434344433"
+        ],
+        "sourceVersion": 1,
+        "sourceTimestamp": "2026-10-16T06:45:45Z",
+        "sourceTags": {
+          "abutters": "retail",
+          "bicycle": "dismount",
+          "carriage": "no",
+          "contact:facebook": "shinkyogoku",
+          "contact:tripadvisor": "1386092",
+          "contact:website": "https://www.shinkyogoku.or.jp/",
+          "covered": "yes",
+          "highway": "pedestrian",
+          "horse": "no",
+          "motor_vehicle": "no",
+          "name": "新京極通",
+          "name:en": "Shinkyogoku street",
+          "name:fr": "Rue Shinkyōgoku",
+          "name:ja-Hira": "しんきょうごくどおり",
+          "name:ja-Latn": "Shinkyōgoku-dōri",
+          "name:ru": "Синкёгоку улица",
+          "start_date": "1872",
+          "surface": "paving_stones",
+          "tourism": "attraction",
+          "wikidata": "Q11501300",
+          "wikimedia_commons": "Category:Shinkyogoku",
+          "wikipedia": "ja:新京極通"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 21.813407203578127,
+        "geodesicLengthMetres": 21.813410104427998
+      },
+      {
+        "id": "osm:way:1568699671:434344428:11791988811",
+        "from": "osm:node:434344428",
+        "to": "osm:node:11791988811",
+        "points": [
+          {
+            "x": 681.795506565791,
+            "y": 120.19310020987201,
+            "height": 0
+          },
+          {
+            "x": 682.0145837257568,
+            "y": 97.19510346491892,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:1568699671",
+        "sourceIds": [
+          "osm:way:1568699671",
+          "osm:node:434344428",
+          "osm:node:11791988811"
+        ],
+        "sourceVersion": 1,
+        "sourceTimestamp": "2026-10-16T06:45:45Z",
+        "sourceTags": {
+          "abutters": "retail",
+          "bicycle": "dismount",
+          "carriage": "no",
+          "contact:facebook": "shinkyogoku",
+          "contact:tripadvisor": "1386092",
+          "contact:website": "https://www.shinkyogoku.or.jp/",
+          "covered": "yes",
+          "highway": "pedestrian",
+          "horse": "no",
+          "motor_vehicle": "no",
+          "name": "新京極通",
+          "name:en": "Shinkyogoku street",
+          "name:fr": "Rue Shinkyōgoku",
+          "name:ja-Hira": "しんきょうごくどおり",
+          "name:ja-Latn": "Shinkyōgoku-dōri",
+          "name:ru": "Синкёгоку улица",
+          "start_date": "1872",
+          "surface": "paving_stones",
+          "tourism": "attraction",
+          "wikidata": "Q11501300",
+          "wikimedia_commons": "Category:Shinkyogoku",
+          "wikipedia": "ja:新京極通"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 22.999040177426796,
+        "geodesicLengthMetres": 22.9990424581026
+      },
+      {
+        "id": "osm:way:66703316:434344433:5204263033",
+        "from": "osm:node:434344433",
+        "to": "osm:node:5204263033",
+        "points": [
+          {
+            "x": 681.4668908271395,
+            "y": 142.00403199935374,
+            "height": 0
+          },
+          {
+            "x": 662.0420493058513,
+            "y": 142.65858183490835,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:66703316",
+        "sourceIds": [
+          "osm:way:66703316",
+          "osm:node:434344433",
+          "osm:node:5204263033"
+        ],
+        "sourceVersion": 7,
+        "sourceTimestamp": "2025-07-30T10:52:56Z",
+        "sourceTags": {
+          "highway": "pedestrian",
+          "name": "錦小路通",
+          "name:en": "Nishikikōji Street",
+          "name:fr": "Rue Nishikikōji",
+          "name:ja": "錦小路通",
+          "name:ja-Hira": "にしきこうじどおり",
+          "name:ja-Latn": "Nishikikōji-dōri",
+          "surface": "paving_stones",
+          "wikidata": "Q11650428"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 19.435866423043493,
+        "geodesicLengthMetres": 19.435960409098286
+      },
+      {
+        "id": "osm:way:532008167:2367201411:4600891628",
+        "from": "osm:node:2367201411",
+        "to": "osm:node:4600891628",
+        "points": [
+          {
+            "x": 1032.8666554667045,
+            "y": 17.495340504499264,
+            "height": 0
+          },
+          {
+            "x": 998.7362595817416,
+            "y": 17.15142448942163,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:532008167",
+        "sourceIds": [
+          "osm:way:532008167",
+          "osm:node:2367201411",
+          "osm:node:4600891628"
+        ],
+        "sourceVersion": 5,
+        "sourceTimestamp": "2026-08-20T02:56:21Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "smoothness": "excellent",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 34.132128581290104,
+        "geodesicLengthMetres": 34.132761736376075
+      },
+      {
+        "id": "osm:way:542888424:2367201411:5248383670",
+        "from": "osm:node:2367201411",
+        "to": "osm:node:5248383670",
+        "points": [
+          {
+            "x": 1032.8666554667045,
+            "y": 17.495340504499264,
+            "height": 0
+          },
+          {
+            "x": 1036.7552750567454,
+            "y": 17.617375219348812,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:542888424",
+        "sourceIds": [
+          "osm:way:542888424",
+          "osm:node:2367201411",
+          "osm:node:5248383670"
+        ],
+        "sourceVersion": 5,
+        "sourceTimestamp": "2026-08-20T04:54:07Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "smoothness": "excellent",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 3.8905339977538027,
+        "geodesicLengthMetres": 3.8906060045032382
+      },
+      {
+        "id": "osm:way:228073861:2367201412:5163420172",
+        "from": "osm:node:2367201412",
+        "to": "osm:node:5163420172",
+        "points": [
+          {
+            "x": 1044.3773345806624,
+            "y": 18.216454730043466,
+            "height": 0
+          },
+          {
+            "x": 1042.1226654772038,
+            "y": 17.950197169296796,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:228073861",
+        "sourceIds": [
+          "osm:way:228073861",
+          "osm:node:2367201412",
+          "osm:node:5163420172"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2026-08-20T04:54:16Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "smoothness": "excellent",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 2.2703360664768315,
+        "geodesicLengthMetres": 2.2703774189218002
+      },
+      {
+        "id": "osm:way:465069409:2737069399:4600891621",
+        "from": "osm:node:2737069399",
+        "to": "osm:node:4600891621",
+        "points": [
+          {
+            "x": 875.3501774253775,
+            "y": 35.06833946490605,
+            "height": 0
+          },
+          {
+            "x": 862.7167278656223,
+            "y": 35.07943353003569,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465069409",
+        "sourceIds": [
+          "osm:way:465069409",
+          "osm:node:2737069399",
+          "osm:node:4600891621"
+        ],
+        "sourceVersion": 6,
+        "sourceTimestamp": "2026-08-20T04:53:26Z",
+        "sourceTags": {
+          "crossing": "marked",
+          "footway": "crossing",
+          "highway": "footway",
+          "smoothness": "excellent",
+          "surface": "asphalt"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "marked",
+          "sourceNodeIds": [
+            "osm:node:2737069399"
+          ]
+        },
+        "lengthMetres": 12.633454430881585,
+        "geodesicLengthMetres": 12.633664210992395
+      },
+      {
+        "id": "osm:way:465069409:2737069399:4600891622",
+        "from": "osm:node:2737069399",
+        "to": "osm:node:4600891622",
+        "points": [
+          {
+            "x": 875.3501774253775,
+            "y": 35.06833946490605,
+            "height": 0
+          },
+          {
+            "x": 887.5454726652013,
+            "y": 35.06833946490605,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465069409",
+        "sourceIds": [
+          "osm:way:465069409",
+          "osm:node:2737069399",
+          "osm:node:4600891622"
+        ],
+        "sourceVersion": 6,
+        "sourceTimestamp": "2026-08-20T04:53:26Z",
+        "sourceTags": {
+          "crossing": "marked",
+          "footway": "crossing",
+          "highway": "footway",
+          "smoothness": "excellent",
+          "surface": "asphalt"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "marked",
+          "sourceNodeIds": [
+            "osm:node:2737069399"
+          ]
+        },
+        "lengthMetres": 12.195295239823736,
+        "geodesicLengthMetres": 12.195497751823071
+      },
+      {
+        "id": "osm:way:1148700851:2971080719:4600871812",
+        "from": "osm:node:2971080719",
+        "to": "osm:node:4600871812",
+        "points": [
+          {
+            "x": 261.26776973089517,
+            "y": 134.74851348969935,
+            "height": 0
+          },
+          {
+            "x": 262.24448873498585,
+            "y": 3.0841500697807644,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:1148700851",
+        "sourceIds": [
+          "osm:way:1148700851",
+          "osm:node:2971080719",
+          "osm:node:4600871812"
+        ],
+        "sourceVersion": 9,
+        "sourceTimestamp": "2025-07-30T10:52:56Z",
+        "sourceTags": {
+          "bicycle:conditional": "dismount @ (12:00-18:00)",
+          "carriage:conditional": "no @ (12:00-18:00)",
+          "cycleway": "lane",
+          "foot": "yes",
+          "highway": "pedestrian",
+          "motor_vehicle:conditional": "no @ (12:00-18:00)",
+          "name": "高倉通",
+          "name:en": "Takakura Street",
+          "name:fr": "Rue Takakura",
+          "name:ja": "高倉通",
+          "name:ja-Hira": "たかくらどおり",
+          "name:ja-Latn": "Takakura-dōri",
+          "name:ru": "Такакура улица",
+          "oneway": "yes",
+          "oneway:bicycle": "no",
+          "surface": "asphalt",
+          "wikidata": "Q11668808"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": "yes",
+          "motorVehicleConditional": "no @ (12:00-18:00)",
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "mapped-crossing-node",
+          "sourceNodeIds": [
+            "osm:node:4600871812"
+          ]
+        },
+        "lengthMetres": 131.66798614236242,
+        "geodesicLengthMetres": 131.66799139658625
+      },
+      {
+        "id": "osm:way:571488126:4600871686:4600891620",
+        "from": "osm:node:4600871686",
+        "to": "osm:node:4600891620",
+        "points": [
+          {
+            "x": 973.0677190001319,
+            "y": 15.753572299640089,
+            "height": 0
+          },
+          {
+            "x": 908.9967779155241,
+            "y": 14.389002304459206,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:571488126",
+        "sourceIds": [
+          "osm:way:571488126",
+          "osm:node:4600871686",
+          "osm:node:4600891620"
+        ],
+        "sourceVersion": 7,
+        "sourceTimestamp": "2026-08-20T04:53:35Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "smoothness": "excellent",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 64.08547060558286,
+        "geodesicLengthMetres": 64.08667480182196
+      },
+      {
+        "id": "osm:way:571488126:4600871686:13360574163",
+        "from": "osm:node:4600871686",
+        "to": "osm:node:13360574163",
+        "points": [
+          {
+            "x": 973.0677190001319,
+            "y": 15.753572299640089,
+            "height": 0
+          },
+          {
+            "x": 976.3812610455869,
+            "y": 15.820136689629686,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:571488126",
+        "sourceIds": [
+          "osm:way:571488126",
+          "osm:node:4600871686",
+          "osm:node:13360574163"
+        ],
+        "sourceVersion": 7,
+        "sourceTimestamp": "2026-08-20T04:53:35Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "smoothness": "excellent",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 3.3142105704093594,
+        "geodesicLengthMetres": 3.314272589118506
+      },
+      {
+        "id": "osm:way:465066445:4600871687:4600871688",
+        "from": "osm:node:4600871687",
+        "to": "osm:node:4600871688",
+        "points": [
+          {
+            "x": 902.3514373956979,
+            "y": 14.189309134490415,
+            "height": 0
+          },
+          {
+            "x": 887.7919344711356,
+            "y": 29.57677728958186,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066445",
+        "sourceIds": [
+          "osm:way:465066445",
+          "osm:node:4600871687",
+          "osm:node:4600871688"
+        ],
+        "sourceVersion": 11,
+        "sourceTimestamp": "2026-09-08T14:09:19Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "smoothness": "excellent",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 21.18379809274744,
+        "geodesicLengthMetres": 21.18397838855459
+      },
+      {
+        "id": "osm:way:571488126:4600871687:4600891620",
+        "from": "osm:node:4600871687",
+        "to": "osm:node:4600891620",
+        "points": [
+          {
+            "x": 902.3514373956979,
+            "y": 14.189309134490415,
+            "height": 0
+          },
+          {
+            "x": 908.9967779155241,
+            "y": 14.389002304459206,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:571488126",
+        "sourceIds": [
+          "osm:way:571488126",
+          "osm:node:4600871687",
+          "osm:node:4600891620"
+        ],
+        "sourceVersion": 7,
+        "sourceTimestamp": "2026-08-20T04:53:35Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "smoothness": "excellent",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 6.6483402429912655,
+        "geodesicLengthMetres": 6.648465682035329
+      },
+      {
+        "id": "osm:way:465066445:4600871688:13360574166",
+        "from": "osm:node:4600871688",
+        "to": "osm:node:13360574166",
+        "points": [
+          {
+            "x": 887.7919344711356,
+            "y": 29.57677728958186,
+            "height": 0
+          },
+          {
+            "x": 887.6093701715965,
+            "y": 33.72595759998446,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066445",
+        "sourceIds": [
+          "osm:way:465066445",
+          "osm:node:4600871688",
+          "osm:node:13360574166"
+        ],
+        "sourceVersion": 11,
+        "sourceTimestamp": "2026-09-08T14:09:19Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "smoothness": "excellent",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 4.153194790965003,
+        "geodesicLengthMetres": 4.153194860077848
+      },
+      {
+        "id": "osm:way:465066447:4600871801:4600871802",
+        "from": "osm:node:4600871801",
+        "to": "osm:node:4600871802",
+        "points": [
+          {
+            "x": 862.6254457158527,
+            "y": 29.56568322445221,
+            "height": 0
+          },
+          {
+            "x": 846.4046076613339,
+            "y": 13.235219544376761,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600871801",
+          "osm:node:4600871802"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 23.017376722754253,
+        "geodesicLengthMetres": 23.01758331662548
+      },
+      {
+        "id": "osm:way:465066447:4600871801:4600891621",
+        "from": "osm:node:4600871801",
+        "to": "osm:node:4600891621",
+        "points": [
+          {
+            "x": 862.6254457158527,
+            "y": 29.56568322445221,
+            "height": 0
+          },
+          {
+            "x": 862.7167278656223,
+            "y": 35.07943353003569,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600871801",
+          "osm:node:4600891621"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 5.514505858478028,
+        "geodesicLengthMetres": 5.514505799635891
+      },
+      {
+        "id": "osm:way:465066447:4600871802:4600891623",
+        "from": "osm:node:4600871802",
+        "to": "osm:node:4600891623",
+        "points": [
+          {
+            "x": 846.4046076613339,
+            "y": 13.235219544376761,
+            "height": 0
+          },
+          {
+            "x": 840.6355757813707,
+            "y": 12.968961984418371,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600871802",
+          "osm:node:4600891623"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 5.77517289094162,
+        "geodesicLengthMetres": 5.775282471969735
+      },
+      {
+        "id": "osm:way:465066447:4600871803:4600891623",
+        "from": "osm:node:4600871803",
+        "to": "osm:node:4600891623",
+        "points": [
+          {
+            "x": 830.603667495236,
+            "y": 12.525199384750485,
+            "height": 0
+          },
+          {
+            "x": 840.6355757813707,
+            "y": 12.968961984418371,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600871803",
+          "osm:node:4600891623"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 10.041718433927628,
+        "geodesicLengthMetres": 10.041909393694946
+      },
+      {
+        "id": "osm:way:465066447:4600871803:11793855057",
+        "from": "osm:node:4600871803",
+        "to": "osm:node:11793855057",
+        "points": [
+          {
+            "x": 830.603667495236,
+            "y": 12.525199384750485,
+            "height": 0
+          },
+          {
+            "x": 738.445208854937,
+            "y": 9.152603624752038,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600871803",
+          "osm:node:11793855057"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 92.22014910590879,
+        "geodesicLengthMetres": 92.22192318092311
+      },
+      {
+        "id": "osm:way:465066447:4600871806:4600891602",
+        "from": "osm:node:4600871806",
+        "to": "osm:node:4600891602",
+        "points": [
+          {
+            "x": 652.8681932306636,
+            "y": 6.257052659810419,
+            "height": 0
+          },
+          {
+            "x": 637.8705359861697,
+            "y": 5.713443474763995,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600871806",
+          "osm:node:4600891602"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "mapped-crossing-node",
+          "sourceNodeIds": [
+            "osm:node:4600871806"
+          ]
+        },
+        "lengthMetres": 15.007505914354557,
+        "geodesicLengthMetres": 15.007802605528697
+      },
+      {
+        "id": "osm:way:465066447:4600871806:4600891604",
+        "from": "osm:node:4600871806",
+        "to": "osm:node:4600891604",
+        "points": [
+          {
+            "x": 652.8681932306636,
+            "y": 6.257052659810419,
+            "height": 0
+          },
+          {
+            "x": 674.5750885013789,
+            "y": 6.845038104587148,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600871806",
+          "osm:node:4600891604"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "mapped-crossing-node",
+          "sourceNodeIds": [
+            "osm:node:4600871806"
+          ]
+        },
+        "lengthMetres": 21.714857337248915,
+        "geodesicLengthMetres": 21.715285532534374
+      },
+      {
+        "id": "osm:way:465066447:4600871807:4600891602",
+        "from": "osm:node:4600871807",
+        "to": "osm:node:4600891602",
+        "points": [
+          {
+            "x": 605.2280391460823,
+            "y": 5.547032499395861,
+            "height": 0
+          },
+          {
+            "x": 637.8705359861697,
+            "y": 5.713443474763995,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600871807",
+          "osm:node:4600891602"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "mapped-crossing-node",
+          "sourceNodeIds": [
+            "osm:node:4600871807"
+          ]
+        },
+        "lengthMetres": 32.64292101770054,
+        "geodesicLengthMetres": 32.64356845691027
+      },
+      {
+        "id": "osm:way:465066447:4600871807:4600891642",
+        "from": "osm:node:4600871807",
+        "to": "osm:node:4600891642",
+        "points": [
+          {
+            "x": 605.2280391460823,
+            "y": 5.547032499395861,
+            "height": 0
+          },
+          {
+            "x": 598.2814675309788,
+            "y": 5.569220629655154,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600871807",
+          "osm:node:4600891642"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "mapped-crossing-node",
+          "sourceNodeIds": [
+            "osm:node:4600871807"
+          ]
+        },
+        "lengthMetres": 6.946607050703672,
+        "geodesicLengthMetres": 6.946744886730692
+      },
+      {
+        "id": "osm:way:465066447:4600871808:4600891644",
+        "from": "osm:node:4600871808",
+        "to": "osm:node:4600891644",
+        "points": [
+          {
+            "x": 536.6112469915364,
+            "y": 5.780007864753592,
+            "height": 0
+          },
+          {
+            "x": 545.2282819510544,
+            "y": 5.746725669364653,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600871808",
+          "osm:node:4600891644"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "mapped-crossing-node",
+          "sourceNodeIds": [
+            "osm:node:4600871808"
+          ]
+        },
+        "lengthMetres": 8.617099233389732,
+        "geodesicLengthMetres": 8.617270020894155
+      },
+      {
+        "id": "osm:way:465066447:4600871808:4600891646",
+        "from": "osm:node:4600871808",
+        "to": "osm:node:4600891646",
+        "points": [
+          {
+            "x": 536.6112469915364,
+            "y": 5.780007864753592,
+            "height": 0
+          },
+          {
+            "x": 526.5245694160589,
+            "y": 5.6246909545151045,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600871808",
+          "osm:node:4600891646"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "mapped-crossing-node",
+          "sourceNodeIds": [
+            "osm:node:4600871808"
+          ]
+        },
+        "lengthMetres": 10.087873306809902,
+        "geodesicLengthMetres": 10.08807326699092
+      },
+      {
+        "id": "osm:way:465066447:4600871809:4600891648",
+        "from": "osm:node:4600871809",
+        "to": "osm:node:4600891648",
+        "points": [
+          {
+            "x": 474.8132314418977,
+            "y": 4.803730144380646,
+            "height": 0
+          },
+          {
+            "x": 482.4718038262413,
+            "y": 4.925764860018474,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600871809",
+          "osm:node:4600891648"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "mapped-crossing-node",
+          "sourceNodeIds": [
+            "osm:node:4600871809"
+          ]
+        },
+        "lengthMetres": 7.659544597301527,
+        "geodesicLengthMetres": 7.6596971248538095
+      },
+      {
+        "id": "osm:way:465066447:4600871809:4600891650",
+        "from": "osm:node:4600871809",
+        "to": "osm:node:4600891650",
+        "points": [
+          {
+            "x": 474.8132314418977,
+            "y": 4.803730144380646,
+            "height": 0
+          },
+          {
+            "x": 468.0127112659066,
+            "y": 4.726071690049683,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600871809",
+          "osm:node:4600891650"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "mapped-crossing-node",
+          "sourceNodeIds": [
+            "osm:node:4600871809"
+          ]
+        },
+        "lengthMetres": 6.80096357140597,
+        "geodesicLengthMetres": 6.801099092878604
+      },
+      {
+        "id": "osm:way:465066447:4600871810:4600891652",
+        "from": "osm:node:4600871810",
+        "to": "osm:node:4600891652",
+        "points": [
+          {
+            "x": 390.26770411105764,
+            "y": 3.8385464899256263,
+            "height": 0
+          },
+          {
+            "x": 400.15356095548555,
+            "y": 3.9494871396455284,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600871810",
+          "osm:node:4600891652"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "mapped-crossing-node",
+          "sourceNodeIds": [
+            "osm:node:4600871810"
+          ]
+        },
+        "lengthMetres": 9.886479321592816,
+        "geodesicLengthMetres": 9.88667727263998
+      },
+      {
+        "id": "osm:way:465066447:4600871810:4600891654",
+        "from": "osm:node:4600871810",
+        "to": "osm:node:4600891654",
+        "points": [
+          {
+            "x": 390.26770411105764,
+            "y": 3.8385464899256263,
+            "height": 0
+          },
+          {
+            "x": 383.5128250099513,
+            "y": 3.7830761642773947,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600871810",
+          "osm:node:4600891654"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "mapped-crossing-node",
+          "sourceNodeIds": [
+            "osm:node:4600871810"
+          ]
+        },
+        "lengthMetres": 6.75510685537916,
+        "geodesicLengthMetres": 6.755242178446722
+      },
+      {
+        "id": "osm:way:465066447:4600871811:4600891656",
+        "from": "osm:node:4600871811",
+        "to": "osm:node:4600891656",
+        "points": [
+          {
+            "x": 324.3254789509856,
+            "y": 3.3171254343502143,
+            "height": 0
+          },
+          {
+            "x": 331.6189227362511,
+            "y": 3.372595759998446,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600871811",
+          "osm:node:4600891656"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "mapped-crossing-node",
+          "sourceNodeIds": [
+            "osm:node:4600871811"
+          ]
+        },
+        "lengthMetres": 7.293654722144118,
+        "geodesicLengthMetres": 7.29380120788081
+      },
+      {
+        "id": "osm:way:465066447:4600871811:4600891658",
+        "from": "osm:node:4600871811",
+        "to": "osm:node:4600891658",
+        "points": [
+          {
+            "x": 324.3254789509856,
+            "y": 3.3171254343502143,
+            "height": 0
+          },
+          {
+            "x": 318.25521597574516,
+            "y": 3.2949373048792023,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600871811",
+          "osm:node:4600891658"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "mapped-crossing-node",
+          "sourceNodeIds": [
+            "osm:node:4600871811"
+          ]
+        },
+        "lengthMetres": 6.070303526320931,
+        "geodesicLengthMetres": 6.0704254735572265
+      },
+      {
+        "id": "osm:way:465066447:4600871812:4600891660",
+        "from": "osm:node:4600871812",
+        "to": "osm:node:4600891660",
+        "points": [
+          {
+            "x": 262.24448873498585,
+            "y": 3.0841500697807644,
+            "height": 0
+          },
+          {
+            "x": 270.48726688096775,
+            "y": 3.1174322643814225,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600871812",
+          "osm:node:4600891660"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "mapped-crossing-node",
+          "sourceNodeIds": [
+            "osm:node:4600871812"
+          ]
+        },
+        "lengthMetres": 8.242845338131383,
+        "geodesicLengthMetres": 8.24301111495476
+      },
+      {
+        "id": "osm:way:465066447:4600871812:4600891662",
+        "from": "osm:node:4600871812",
+        "to": "osm:node:4600891662",
+        "points": [
+          {
+            "x": 262.24448873498585,
+            "y": 3.0841500697807644,
+            "height": 0
+          },
+          {
+            "x": 254.3303263302498,
+            "y": 2.9843034844022283,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600871812",
+          "osm:node:4600891662"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "mapped-crossing-node",
+          "sourceNodeIds": [
+            "osm:node:4600871812"
+          ]
+        },
+        "lengthMetres": 7.914792221476785,
+        "geodesicLengthMetres": 7.914951435575327
+      },
+      {
+        "id": "osm:way:465066447:4600871813:4600891664",
+        "from": "osm:node:4600871813",
+        "to": "osm:node:4600891664",
+        "points": [
+          {
+            "x": 125.46731517474163,
+            "y": 1.3423818649215906,
+            "height": 0
+          },
+          {
+            "x": 132.60557930643665,
+            "y": 1.4311343843821998,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600871813",
+          "osm:node:4600891664"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "mapped-crossing-node",
+          "sourceNodeIds": [
+            "osm:node:4600871813"
+          ]
+        },
+        "lengthMetres": 7.138815855837319,
+        "geodesicLengthMetres": 7.138960750770022
+      },
+      {
+        "id": "osm:way:465066447:4600871813:4600891666",
+        "from": "osm:node:4600871813",
+        "to": "osm:node:4600891666",
+        "points": [
+          {
+            "x": 125.46731517474163,
+            "y": 1.3423818649215906,
+            "height": 0
+          },
+          {
+            "x": 115.7548944153947,
+            "y": 1.4311343843821998,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600871813",
+          "osm:node:4600891666"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "mapped-crossing-node",
+          "sourceNodeIds": [
+            "osm:node:4600871813"
+          ]
+        },
+        "lengthMetres": 9.712826263055657,
+        "geodesicLengthMetres": 9.713023416192117
+      },
+      {
+        "id": "osm:way:465066447:4600871814:4600891666",
+        "from": "osm:node:4600871814",
+        "to": "osm:node:4600891666",
+        "points": [
+          {
+            "x": 20.693663406198052,
+            "y": 2.3297536496359026,
+            "height": 0
+          },
+          {
+            "x": 115.7548944153947,
+            "y": 1.4311343843821998,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600871814",
+          "osm:node:4600891666"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 95.0654782640246,
+        "geodesicLengthMetres": 95.06740276554771
+      },
+      {
+        "id": "osm:way:465066447:4600891604:11791924472",
+        "from": "osm:node:4600891604",
+        "to": "osm:node:11791924472",
+        "points": [
+          {
+            "x": 674.5750885013789,
+            "y": 6.845038104587148,
+            "height": 0
+          },
+          {
+            "x": 682.1241223070368,
+            "y": 7.10020159941589,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600891604",
+          "osm:node:11791924472"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 7.553344941683746,
+        "geodesicLengthMetres": 7.553493476368766
+      },
+      {
+        "id": "osm:way:465066445:4600891622:13360574166",
+        "from": "osm:node:4600891622",
+        "to": "osm:node:13360574166",
+        "points": [
+          {
+            "x": 887.5454726652013,
+            "y": 35.06833946490605,
+            "height": 0
+          },
+          {
+            "x": 887.6093701715965,
+            "y": 33.72595759998446,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066445",
+        "sourceIds": [
+          "osm:way:465066445",
+          "osm:node:4600891622",
+          "osm:node:13360574166"
+        ],
+        "sourceVersion": 11,
+        "sourceTimestamp": "2026-09-08T14:09:19Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "smoothness": "excellent",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 1.3439017682084897,
+        "geodesicLengthMetres": 1.3439018026343816
+      },
+      {
+        "id": "osm:way:571488127:4600891626:5163420206",
+        "from": "osm:node:4600891626",
+        "to": "osm:node:5163420206",
+        "points": [
+          {
+            "x": 980.0416752612041,
+            "y": 15.864512949359991,
+            "height": 0
+          },
+          {
+            "x": 978.4259812061323,
+            "y": 15.864512949359991,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:571488127",
+        "sourceIds": [
+          "osm:way:571488127",
+          "osm:node:4600891626",
+          "osm:node:5163420206"
+        ],
+        "sourceVersion": 4,
+        "sourceTimestamp": "2026-08-20T03:30:09Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "smoothness": "excellent",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 1.615694055071799,
+        "geodesicLengthMetres": 1.6157242879641067
+      },
+      {
+        "id": "osm:way:532008170:4600891626:5492358876",
+        "from": "osm:node:4600891626",
+        "to": "osm:node:5492358876",
+        "points": [
+          {
+            "x": 980.0416752612041,
+            "y": 15.864512949359991,
+            "height": 0
+          },
+          {
+            "x": 981.5204460916216,
+            "y": 15.875607014489637,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:532008170",
+        "sourceIds": [
+          "osm:way:532008170",
+          "osm:node:4600891626",
+          "osm:node:5492358876"
+        ],
+        "sourceVersion": 7,
+        "sourceTimestamp": "2026-08-20T04:53:52Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "smoothness": "excellent",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 1.4788124448944597,
+        "geodesicLengthMetres": 1.4788401139837752
+      },
+      {
+        "id": "osm:way:532008167:4600891628:5163420201",
+        "from": "osm:node:4600891628",
+        "to": "osm:node:5163420201",
+        "points": [
+          {
+            "x": 998.7362595817416,
+            "y": 17.15142448942163,
+            "height": 0
+          },
+          {
+            "x": 995.0119478597293,
+            "y": 17.15142448942163,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:532008167",
+        "sourceIds": [
+          "osm:way:532008167",
+          "osm:node:4600891628",
+          "osm:node:5163420201"
+        ],
+        "sourceVersion": 5,
+        "sourceTimestamp": "2026-08-20T02:56:21Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "smoothness": "excellent",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 3.7243117220123167,
+        "geodesicLengthMetres": 3.724380885713505
+      },
+      {
+        "id": "osm:way:465066447:4600891642:4600891644",
+        "from": "osm:node:4600891642",
+        "to": "osm:node:4600891644",
+        "points": [
+          {
+            "x": 598.2814675309788,
+            "y": 5.569220629655154,
+            "height": 0
+          },
+          {
+            "x": 545.2282819510544,
+            "y": 5.746725669364653,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600891642",
+          "osm:node:4600891644"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 53.053482526758025,
+        "geodesicLengthMetres": 53.054534642925546
+      },
+      {
+        "id": "osm:way:465066447:4600891646:4600891648",
+        "from": "osm:node:4600891646",
+        "to": "osm:node:4600891648",
+        "points": [
+          {
+            "x": 526.5245694160589,
+            "y": 5.6246909545151045,
+            "height": 0
+          },
+          {
+            "x": 482.4718038262413,
+            "y": 4.925764860018474,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600891646",
+          "osm:node:4600891648"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 44.05830970199587,
+        "geodesicLengthMetres": 44.05918507115117
+      },
+      {
+        "id": "osm:way:465066447:4600891650:4600891652",
+        "from": "osm:node:4600891650",
+        "to": "osm:node:4600891652",
+        "points": [
+          {
+            "x": 468.0127112659066,
+            "y": 4.726071690049683,
+            "height": 0
+          },
+          {
+            "x": 400.15356095548555,
+            "y": 3.9494871396455284,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600891650",
+          "osm:node:4600891652"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 67.86359380710871,
+        "geodesicLengthMetres": 67.86494928962891
+      },
+      {
+        "id": "osm:way:465066447:4600891654:4600891656",
+        "from": "osm:node:4600891654",
+        "to": "osm:node:4600891656",
+        "points": [
+          {
+            "x": 383.5128250099513,
+            "y": 3.7830761642773947,
+            "height": 0
+          },
+          {
+            "x": 331.6189227362511,
+            "y": 3.372595759998446,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600891654",
+          "osm:node:4600891656"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 51.89552569687147,
+        "geodesicLengthMetres": 51.896566635395416
+      },
+      {
+        "id": "osm:way:465066447:4600891658:4600891660",
+        "from": "osm:node:4600891658",
+        "to": "osm:node:4600891660",
+        "points": [
+          {
+            "x": 318.25521597574516,
+            "y": 3.2949373048792023,
+            "height": 0
+          },
+          {
+            "x": 270.48726688096775,
+            "y": 3.1174322643814225,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600891658",
+          "osm:node:4600891660"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 47.76827889678095,
+        "geodesicLengthMetres": 47.76923904353309
+      },
+      {
+        "id": "osm:way:465066447:4600891662:4600891664",
+        "from": "osm:node:4600891662",
+        "to": "osm:node:4600891664",
+        "points": [
+          {
+            "x": 254.3303263302498,
+            "y": 2.9843034844022283,
+            "height": 0
+          },
+          {
+            "x": 132.60557930643665,
+            "y": 1.4311343843821998,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:4600891662",
+          "osm:node:4600891664"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 121.73465559266417,
+        "geodesicLengthMetres": 121.73711543303533
+      },
+      {
+        "id": "osm:way:228073861:5163420172:5248383670",
+        "from": "osm:node:5163420172",
+        "to": "osm:node:5248383670",
+        "points": [
+          {
+            "x": 1042.1226654772038,
+            "y": 17.950197169296796,
+            "height": 0
+          },
+          {
+            "x": 1036.7552750567454,
+            "y": 17.617375219348812,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:228073861",
+        "sourceIds": [
+          "osm:way:228073861",
+          "osm:node:5163420172",
+          "osm:node:5248383670"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2026-08-20T04:54:16Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "smoothness": "excellent",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 5.377699357159671,
+        "geodesicLengthMetres": 5.377798470832117
+      },
+      {
+        "id": "osm:way:532008159:5163420201:5163420203",
+        "from": "osm:node:5163420201",
+        "to": "osm:node:5163420203",
+        "points": [
+          {
+            "x": 995.0119478597293,
+            "y": 17.15142448942163,
+            "height": 0
+          },
+          {
+            "x": 993.8526645560995,
+            "y": 17.8170683893176,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:532008159",
+        "sourceIds": [
+          "osm:way:532008159",
+          "osm:node:5163420201",
+          "osm:node:5163420203"
+        ],
+        "sourceVersion": 6,
+        "sourceTimestamp": "2026-08-20T04:53:56Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "smoothness": "excellent",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 1.3367945165744275,
+        "geodesicLengthMetres": 1.3368131375921408
+      },
+      {
+        "id": "osm:way:532008170:5163420202:5163420204",
+        "from": "osm:node:5163420202",
+        "to": "osm:node:5163420204",
+        "points": [
+          {
+            "x": 984.295423450323,
+            "y": 16.851884734862583,
+            "height": 0
+          },
+          {
+            "x": 985.4638349710052,
+            "y": 17.750503999328007,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:532008170",
+        "sourceIds": [
+          "osm:way:532008170",
+          "osm:node:5163420202",
+          "osm:node:5163420204"
+        ],
+        "sourceVersion": 7,
+        "sourceTimestamp": "2026-08-20T04:53:52Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "smoothness": "excellent",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 1.4740088412663046,
+        "geodesicLengthMetres": 1.4740260043278586
+      },
+      {
+        "id": "osm:way:532008170:5163420202:5163420205",
+        "from": "osm:node:5163420202",
+        "to": "osm:node:5163420205",
+        "points": [
+          {
+            "x": 984.295423450323,
+            "y": 16.851884734862583,
+            "height": 0
+          },
+          {
+            "x": 982.9627040616124,
+            "y": 16.208428964437623,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:532008170",
+        "sourceIds": [
+          "osm:way:532008170",
+          "osm:node:5163420202",
+          "osm:node:5163420205"
+        ],
+        "sourceVersion": 7,
+        "sourceTimestamp": "2026-08-20T04:53:52Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "smoothness": "excellent",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 1.4799244229143764,
+        "geodesicLengthMetres": 1.4799467833613642
+      },
+      {
+        "id": "osm:way:571523296:5163420203:5492582070",
+        "from": "osm:node:5163420203",
+        "to": "osm:node:5492582070",
+        "points": [
+          {
+            "x": 993.8526645560995,
+            "y": 17.8170683893176,
+            "height": 0
+          },
+          {
+            "x": 992.2278422865696,
+            "y": 17.805974324976237,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:571523296",
+        "sourceIds": [
+          "osm:way:571523296",
+          "osm:node:5163420203",
+          "osm:node:5492582070"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2026-08-20T04:53:44Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "smoothness": "excellent",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 1.6248601434658496,
+        "geodesicLengthMetres": 1.6248901994958358
+      },
+      {
+        "id": "osm:way:532008165:5163420204:11795574950",
+        "from": "osm:node:5163420204",
+        "to": "osm:node:11795574950",
+        "points": [
+          {
+            "x": 985.4638349710052,
+            "y": 17.750503999328007,
+            "height": 0
+          },
+          {
+            "x": 989.3889674214728,
+            "y": 17.73940993498664,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:532008165",
+        "sourceIds": [
+          "osm:way:532008165",
+          "osm:node:5163420204",
+          "osm:node:11795574950"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2026-08-20T03:00:03Z",
+        "sourceTags": {
+          "covered": "yes",
+          "crossing": "traffic_signals",
+          "crossing:markings": "yes",
+          "footway": "crossing",
+          "highway": "footway",
+          "lit": "no",
+          "smoothness": "excellent",
+          "surface": "asphalt"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "traffic_signals",
+          "sourceNodeIds": [
+            "osm:node:11795574950"
+          ]
+        },
+        "lengthMetres": 3.925148128666889,
+        "geodesicLengthMetres": 3.9252207659700957
+      },
+      {
+        "id": "osm:way:532008170:5163420205:5492358876",
+        "from": "osm:node:5163420205",
+        "to": "osm:node:5492358876",
+        "points": [
+          {
+            "x": 982.9627040616124,
+            "y": 16.208428964437623,
+            "height": 0
+          },
+          {
+            "x": 981.5204460916216,
+            "y": 15.875607014489637,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:532008170",
+        "sourceIds": [
+          "osm:way:532008170",
+          "osm:node:5163420205",
+          "osm:node:5492358876"
+        ],
+        "sourceVersion": 7,
+        "sourceTimestamp": "2026-08-20T04:53:52Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "smoothness": "excellent",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 1.4801616473781434,
+        "geodesicLengthMetres": 1.4801879136424503
+      },
+      {
+        "id": "osm:way:571488126:5163420206:13360574163",
+        "from": "osm:node:5163420206",
+        "to": "osm:node:13360574163",
+        "points": [
+          {
+            "x": 978.4259812061323,
+            "y": 15.864512949359991,
+            "height": 0
+          },
+          {
+            "x": 976.3812610455869,
+            "y": 15.820136689629686,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:571488126",
+        "sourceIds": [
+          "osm:way:571488126",
+          "osm:node:5163420206",
+          "osm:node:13360574163"
+        ],
+        "sourceVersion": 7,
+        "sourceTimestamp": "2026-08-20T04:53:35Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "smoothness": "excellent",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 2.045201649561301,
+        "geodesicLengthMetres": 2.0452399063098468
+      },
+      {
+        "id": "osm:way:532008165:5492582070:11795574950",
+        "from": "osm:node:5492582070",
+        "to": "osm:node:11795574950",
+        "points": [
+          {
+            "x": 992.2278422865696,
+            "y": 17.805974324976237,
+            "height": 0
+          },
+          {
+            "x": 989.3889674214728,
+            "y": 17.73940993498664,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:532008165",
+        "sourceIds": [
+          "osm:way:532008165",
+          "osm:node:5492582070",
+          "osm:node:11795574950"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2026-08-20T03:00:03Z",
+        "sourceTags": {
+          "covered": "yes",
+          "crossing": "traffic_signals",
+          "crossing:markings": "yes",
+          "footway": "crossing",
+          "highway": "footway",
+          "lit": "no",
+          "smoothness": "excellent",
+          "surface": "asphalt"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "traffic_signals",
+          "sourceNodeIds": [
+            "osm:node:11795574950"
+          ]
+        },
+        "lengthMetres": 2.839655140627695,
+        "geodesicLengthMetres": 2.83970765306457
+      },
+      {
+        "id": "osm:way:1568699671:11791924469:11793855056",
+        "from": "osm:node:11791924469",
+        "to": "osm:node:11793855056",
+        "points": [
+          {
+            "x": 682.0876094466101,
+            "y": 46.850236494641315,
+            "height": 0
+          },
+          {
+            "x": 682.0967376610682,
+            "y": 32.716397685010854,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:1568699671",
+        "sourceIds": [
+          "osm:way:1568699671",
+          "osm:node:11791924469",
+          "osm:node:11793855056"
+        ],
+        "sourceVersion": 1,
+        "sourceTimestamp": "2026-10-16T06:45:45Z",
+        "sourceTags": {
+          "abutters": "retail",
+          "bicycle": "dismount",
+          "carriage": "no",
+          "contact:facebook": "shinkyogoku",
+          "contact:tripadvisor": "1386092",
+          "contact:website": "https://www.shinkyogoku.or.jp/",
+          "covered": "yes",
+          "highway": "pedestrian",
+          "horse": "no",
+          "motor_vehicle": "no",
+          "name": "新京極通",
+          "name:en": "Shinkyogoku street",
+          "name:fr": "Rue Shinkyōgoku",
+          "name:ja-Hira": "しんきょうごくどおり",
+          "name:ja-Latn": "Shinkyōgoku-dōri",
+          "name:ru": "Синкёгоку улица",
+          "start_date": "1872",
+          "surface": "paving_stones",
+          "tourism": "attraction",
+          "wikidata": "Q11501300",
+          "wikimedia_commons": "Category:Shinkyogoku",
+          "wikipedia": "ja:新京極通"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 14.133841757318335,
+        "geodesicLengthMetres": 14.133841699172445
+      },
+      {
+        "id": "osm:way:1568699671:11791924470:11791988811",
+        "from": "osm:node:11791924470",
+        "to": "osm:node:11791988811",
+        "points": [
+          {
+            "x": 682.1241223070368,
+            "y": 85.3799242397947,
+            "height": 0
+          },
+          {
+            "x": 682.0145837257568,
+            "y": 97.19510346491892,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:1568699671",
+        "sourceIds": [
+          "osm:way:1568699671",
+          "osm:node:11791924470",
+          "osm:node:11791988811"
+        ],
+        "sourceVersion": 1,
+        "sourceTimestamp": "2026-10-16T06:45:45Z",
+        "sourceTags": {
+          "abutters": "retail",
+          "bicycle": "dismount",
+          "carriage": "no",
+          "contact:facebook": "shinkyogoku",
+          "contact:tripadvisor": "1386092",
+          "contact:website": "https://www.shinkyogoku.or.jp/",
+          "covered": "yes",
+          "highway": "pedestrian",
+          "horse": "no",
+          "motor_vehicle": "no",
+          "name": "新京極通",
+          "name:en": "Shinkyogoku street",
+          "name:fr": "Rue Shinkyōgoku",
+          "name:ja-Hira": "しんきょうごくどおり",
+          "name:ja-Latn": "Shinkyōgoku-dōri",
+          "name:ru": "Синкёгоку улица",
+          "start_date": "1872",
+          "surface": "paving_stones",
+          "tourism": "attraction",
+          "wikidata": "Q11501300",
+          "wikimedia_commons": "Category:Shinkyogoku",
+          "wikipedia": "ja:新京極通"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 11.815686980560868,
+        "geodesicLengthMetres": 11.815687848862888
+      },
+      {
+        "id": "osm:way:1568699671:11791924472:11793855056",
+        "from": "osm:node:11791924472",
+        "to": "osm:node:11793855056",
+        "points": [
+          {
+            "x": 682.1241223070368,
+            "y": 7.10020159941589,
+            "height": 0
+          },
+          {
+            "x": 682.0967376610682,
+            "y": 32.716397685010854,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:1568699671",
+        "sourceIds": [
+          "osm:way:1568699671",
+          "osm:node:11791924472",
+          "osm:node:11793855056"
+        ],
+        "sourceVersion": 1,
+        "sourceTimestamp": "2026-10-16T06:45:45Z",
+        "sourceTags": {
+          "abutters": "retail",
+          "bicycle": "dismount",
+          "carriage": "no",
+          "contact:facebook": "shinkyogoku",
+          "contact:tripadvisor": "1386092",
+          "contact:website": "https://www.shinkyogoku.or.jp/",
+          "covered": "yes",
+          "highway": "pedestrian",
+          "horse": "no",
+          "motor_vehicle": "no",
+          "name": "新京極通",
+          "name:en": "Shinkyogoku street",
+          "name:fr": "Rue Shinkyōgoku",
+          "name:ja-Hira": "しんきょうごくどおり",
+          "name:ja-Latn": "Shinkyōgoku-dōri",
+          "name:ru": "Синкёгоку улица",
+          "start_date": "1872",
+          "surface": "paving_stones",
+          "tourism": "attraction",
+          "wikidata": "Q11501300",
+          "wikimedia_commons": "Category:Shinkyogoku",
+          "wikipedia": "ja:新京極通"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 25.616210723182412,
+        "geodesicLengthMetres": 25.61620985923152
+      },
+      {
+        "id": "osm:way:465066447:11791924472:11793855057",
+        "from": "osm:node:11791924472",
+        "to": "osm:node:11793855057",
+        "points": [
+          {
+            "x": 682.1241223070368,
+            "y": 7.10020159941589,
+            "height": 0
+          },
+          {
+            "x": 738.445208854937,
+            "y": 9.152603624752038,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "source-topology-reviewed; current-access-and-grade-unverified",
+        "sourceId": "osm:way:465066447",
+        "sourceIds": [
+          "osm:way:465066447",
+          "osm:node:11791924472",
+          "osm:node:11793855057"
+        ],
+        "sourceVersion": 8,
+        "sourceTimestamp": "2024-11-05T04:13:54Z",
+        "sourceTags": {
+          "bicycle": "dismount",
+          "covered": "yes",
+          "footway": "sidewalk",
+          "highway": "footway",
+          "lit": "yes",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-pedestrian-way",
+          "foot": null,
+          "motorVehicleConditional": null,
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 56.358470028999825,
+        "geodesicLengthMetres": 56.359570975652396
+      },
+      {
+        "id": "authored:shijo-bridge-view-approach",
+        "from": "osm:node:2367201412",
+        "to": "authored:shijo-bridge-view",
+        "points": [
+          {
+            "x": 1044.3773345806624,
+            "y": 18.216454730043466,
+            "height": 0
+          },
+          {
+            "x": 1077.2206521517994,
+            "y": 18.970851149400048,
+            "height": 0
+          }
+        ],
+        "width": 1.5,
+        "widthOrigin": "authored-simulation-corridor",
+        "measuredWidthMetres": null,
+        "heightOrigin": "authored-flat-display",
+        "surveyedGrade": null,
+        "bidirectional": true,
+        "accessible": true,
+        "reviewed": true,
+        "reviewStatus": "authored-path-contained-in-mapped-pedestrian-area; current-access-and-grade-unverified",
+        "sourceId": "osm:way:1560746285",
+        "sourceIds": [
+          "osm:way:1560746285",
+          "osm:way:532008156"
+        ],
+        "sourceVersion": 2,
+        "sourceTimestamp": "2026-10-18T22:11:31Z",
+        "sourceTags": {
+          "area": "yes",
+          "highway": "pedestrian",
+          "layer": "1",
+          "surface": "paving_stones"
+        },
+        "access": {
+          "basis": "mapped-public-pedestrian-area",
+          "currentClosure": "unknown",
+          "wheelchair": "unreviewed"
+        },
+        "crossing": {
+          "kind": "none-tagged",
+          "sourceNodeIds": []
+        },
+        "lengthMetres": 32.851980504013724,
+        "geodesicLengthMetres": 32.852585077544695
+      }
+    ]
+  },
+  "spawn": {
+    "x": 20.693663406198052,
+    "y": 2.3297536496359026,
+    "height": 0,
+    "nodeId": "osm:node:4600871814",
+    "edgeId": "osm:way:465066447:4600871814:4600891666"
+  },
+  "selectedRoute": {
+    "id": "shijo-east-six-sights",
+    "nodeIds": [
+      "osm:node:4600871814",
+      "osm:node:4600891666",
+      "osm:node:4600871813",
+      "osm:node:4600891664",
+      "osm:node:4600891662",
+      "osm:node:4600871812",
+      "osm:node:2971080719",
+      "osm:node:354840396",
+      "osm:node:5554417552",
+      "osm:node:354840397",
+      "osm:node:354840398",
+      "osm:node:354840399",
+      "osm:node:372657394",
+      "osm:node:372657384",
+      "osm:node:5554418336",
+      "osm:node:354840400",
+      "osm:node:5204263033",
+      "osm:node:434344433",
+      "osm:node:434344428",
+      "osm:node:11791988811",
+      "osm:node:11791924470",
+      "osm:node:434344416",
+      "osm:node:11791924469",
+      "osm:node:11793855056",
+      "osm:node:11791924472",
+      "osm:node:11793855057",
+      "osm:node:4600871803",
+      "osm:node:4600891623",
+      "osm:node:4600871802",
+      "osm:node:4600871801",
+      "osm:node:4600891621",
+      "osm:node:2737069399",
+      "osm:node:4600891622",
+      "osm:node:13360574166",
+      "osm:node:4600871688",
+      "osm:node:4600871687",
+      "osm:node:4600891620",
+      "osm:node:4600871686",
+      "osm:node:13360574163",
+      "osm:node:5163420206",
+      "osm:node:4600891626",
+      "osm:node:5492358876",
+      "osm:node:5163420205",
+      "osm:node:5163420202",
+      "osm:node:5163420204",
+      "osm:node:11795574950",
+      "osm:node:5492582070",
+      "osm:node:5163420203",
+      "osm:node:5163420201",
+      "osm:node:4600891628",
+      "osm:node:2367201411",
+      "osm:node:5248383670",
+      "osm:node:5163420172",
+      "osm:node:2367201412",
+      "authored:shijo-bridge-view"
+    ],
+    "edgeIds": [
+      "osm:way:465066447:4600871814:4600891666",
+      "osm:way:465066447:4600871813:4600891666",
+      "osm:way:465066447:4600871813:4600891664",
+      "osm:way:465066447:4600891662:4600891664",
+      "osm:way:465066447:4600871812:4600891662",
+      "osm:way:1148700851:2971080719:4600871812",
+      "osm:way:1148700851:354840396:2971080719",
+      "osm:way:66703315:354840396:5554417552",
+      "osm:way:66703315:354840397:5554417552",
+      "osm:way:66703315:354840397:354840398",
+      "osm:way:66703315:354840398:354840399",
+      "osm:way:66703315:354840399:372657394",
+      "osm:way:66703315:372657384:372657394",
+      "osm:way:66703315:372657384:5554418336",
+      "osm:way:66703315:354840400:5554418336",
+      "osm:way:66703316:354840400:5204263033",
+      "osm:way:66703316:434344433:5204263033",
+      "osm:way:1568699671:434344428:434344433",
+      "osm:way:1568699671:434344428:11791988811",
+      "osm:way:1568699671:11791924470:11791988811",
+      "osm:way:1568699671:434344416:11791924470",
+      "osm:way:1568699671:434344416:11791924469",
+      "osm:way:1568699671:11791924469:11793855056",
+      "osm:way:1568699671:11791924472:11793855056",
+      "osm:way:465066447:11791924472:11793855057",
+      "osm:way:465066447:4600871803:11793855057",
+      "osm:way:465066447:4600871803:4600891623",
+      "osm:way:465066447:4600871802:4600891623",
+      "osm:way:465066447:4600871801:4600871802",
+      "osm:way:465066447:4600871801:4600891621",
+      "osm:way:465069409:2737069399:4600891621",
+      "osm:way:465069409:2737069399:4600891622",
+      "osm:way:465066445:4600891622:13360574166",
+      "osm:way:465066445:4600871688:13360574166",
+      "osm:way:465066445:4600871687:4600871688",
+      "osm:way:571488126:4600871687:4600891620",
+      "osm:way:571488126:4600871686:4600891620",
+      "osm:way:571488126:4600871686:13360574163",
+      "osm:way:571488126:5163420206:13360574163",
+      "osm:way:571488127:4600891626:5163420206",
+      "osm:way:532008170:4600891626:5492358876",
+      "osm:way:532008170:5163420205:5492358876",
+      "osm:way:532008170:5163420202:5163420205",
+      "osm:way:532008170:5163420202:5163420204",
+      "osm:way:532008165:5163420204:11795574950",
+      "osm:way:532008165:5492582070:11795574950",
+      "osm:way:571523296:5163420203:5492582070",
+      "osm:way:532008159:5163420201:5163420203",
+      "osm:way:532008167:4600891628:5163420201",
+      "osm:way:532008167:2367201411:4600891628",
+      "osm:way:542888424:2367201411:5248383670",
+      "osm:way:228073861:5163420172:5248383670",
+      "osm:way:228073861:2367201412:5163420172",
+      "authored:shijo-bridge-view-approach"
+    ],
+    "lengthMetres": 1353.444059858351,
+    "geodesicLengthMetres": 1353.4582346830623
+  },
+  "sights": [
+    {
+      "id": "mitsui-frontage",
+      "nodeId": "osm:node:4600871814",
+      "approachNodeId": "osm:node:4600871814",
+      "x": 20.693663406198052,
+      "y": 2.3297536496359026,
+      "height": 0,
+      "latitude": 35.00376,
+      "longitude": 135.7599457,
+      "positionOrigin": "mapped-public-approach-node; not-an-entrance"
+    },
+    {
+      "id": "nishiki-market",
+      "nodeId": "osm:node:5554417552",
+      "approachNodeId": "osm:node:5554417552",
+      "x": 262.88346378596697,
+      "y": 139.72974867457776,
+      "height": 0,
+      "latitude": 35.0049985,
+      "longitude": 135.7625989,
+      "positionOrigin": "mapped-public-approach-node; not-an-entrance"
+    },
+    {
+      "id": "nishiki-tenmangu",
+      "nodeId": "osm:node:434344433",
+      "approachNodeId": "osm:node:434344433",
+      "x": 681.4668908271395,
+      "y": 142.00403199935374,
+      "height": 0,
+      "latitude": 35.005019,
+      "longitude": 135.7671845,
+      "positionOrigin": "mapped-public-approach-node; not-an-entrance"
+    },
+    {
+      "id": "takase-river",
+      "nodeId": "osm:node:5492358876",
+      "approachNodeId": "osm:node:5492358876",
+      "x": 981.5204460916216,
+      "y": 15.875607014489637,
+      "height": 0,
+      "latitude": 35.0038821,
+      "longitude": 135.7704716,
+      "positionOrigin": "mapped-public-approach-node; not-an-entrance"
+    },
+    {
+      "id": "pontocho-entrance",
+      "nodeId": "osm:node:5248383670",
+      "approachNodeId": "osm:node:5248383670",
+      "x": 1036.7552750567454,
+      "y": 17.617375219348812,
+      "height": 0,
+      "latitude": 35.0038978,
+      "longitude": 135.7710767,
+      "positionOrigin": "mapped-public-approach-node; not-an-entrance"
+    },
+    {
+      "id": "shijo-bridge",
+      "nodeId": "authored:shijo-bridge-view",
+      "approachNodeId": "authored:shijo-bridge-view",
+      "x": 1077.2206521517994,
+      "y": 18.970851149400048,
+      "height": 0,
+      "latitude": 35.00391,
+      "longitude": 135.77152,
+      "positionOrigin": "authored-representative-point-inside-mapped-pedestrian-area"
+    }
+  ],
+  "source": {
+    "id": "osm-shijo-east-20261021",
+    "url": "https://api.openstreetmap.org/api/0.6/map.json?bbox=135.7593%2C35.003%2C135.7734%2C35.0063",
+    "sha256": "45969d94df108b46f38cb4b13e9f41756c30a38ce602e504f1b92d6486afa787",
+    "retrievedAt": "2026-10-21T07:41:38.008383+00:00",
+    "license": "ODbL-1.0",
+    "licenseUrl": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "attribution": "© OpenStreetMap contributors",
+    "rawFile": "artifacts/neighborhood-20261021/world/raw/osm-map.json"
+  },
+  "heightPolicy": "All navigation uses authored level zero. Source layer tags express ordering, not surveyed metre heights.",
+  "accessLimitations": [
+    "Current closures and crowding are unknown.",
+    "Takakura permits motor vehicles outside its tagged restricted period.",
+    "Nishiki operator reports incomplete mobility-aid accessibility.",
+    "Bridge deck grade and canopy clearance remain unmeasured."
+  ],
+  "sceneFile": "scene.json",
+  "sourceLedgerFile": "source-ledger.json"
+}

@@ -52,10 +52,14 @@ jobs:
         with:
           python-version: '3.12'
           cache: pip
-          cache-dependency-path: experience/content-tools/requirements.txt
-      - run: python -m pip install -r experience/content-tools/requirements.txt
+          cache-dependency-path: |
+            experience/content-tools/requirements.txt
+            experience/content-tools/shijo-east-requirements.txt
+      - run: python -m pip install -r experience/content-tools/shijo-east-requirements.txt
       - name: Verify captured geographic data and prepared surfaces
         run: python experience/tests/site-workbench-test.py
+      - name: Verify the connected neighborhood against retained sources
+        run: python experience/tests/neighborhood-source-test.py
 
   validate:
     runs-on: ubuntu-latest
