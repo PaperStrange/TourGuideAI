@@ -6,6 +6,76 @@ The approved target is a continuous 1–2 km Shijō neighborhood with 5–8 sigh
 desktop-first delivery and richer solo routes. Published runtime `17b8f37` remains
 the verified baseline. Q03 is open P1; backend tests remain local.**
 
+## Immediate resume checkpoint · 2026-10-21 09:12 UTC
+
+The user requested immediate checkpoint preservation and remote synchronization
+because of token limits. Pause further implementation after this checkpoint.
+All application, content, asset and test changes are pushed to
+`origin/chore-sow-delivery-plan`, through **`6f9ccc247d269b8548b6103326bcf67431fd846a`**.
+`cd70174` contains final crossing assets, complete texture accounting and browser
+drivers; `6f9ccc2` strengthens successful detail-load checks, actual 15-second
+loading recovery and inspection-event synchronization. The checkpoint/evidence
+commit is metadata only. No new package has been published.
+
+**Release blocker:** actual walking reaches Nishiki Market and continues 20.14 m
+under its arcade, but the stopped default camera crops the actor's head. At source
+position **(287.127, 140.015)**, edge
+`osm:way:66703315:354840397:5554417552`, edge distance **37.546087771 m**, obstruction
+handling reduces the camera distance to **0.2 m** and head NDC Y is **1.019**.
+Ordinary interior day/night composition fails visual acceptance. Market surface
+inspection succeeds; the interior sampled rays find no selectable feature and
+also fail their assertion. Diagnose that independently of camera framing.
+Below-roof views expose the colored roof strip and downlights, but the present
+scene still reads as a narrow suspended canopy between repeated glazed facades.
+It does not yet establish the enclosed, varied commercial arcade character in
+the retained Nishiki reference. Review that architectural limitation separately
+from the camera correction; opening acceptance does not cover the whole route.
+
+The bounded arcade report finishes **6 passing / 2 failing** checks, with no runtime
+exceptions, at `2026-10-21T09:11:37.696Z`. SHA256:
+`4096de8b10722d34e3f52a6c5bf71b475b1a6630b5fba9583bbe34a5378fb408`.
+Its original driver SHA256 is
+`553b4a439bf36604abc28da8e8e3716328ca169a13cb8c990f2dc5a59521a00d`.
+The test returns to a previously actually visited pose through production session
+helpers, then uses actual controls. That regression does not replace complete
+outward-and-return traversal. Portable evidence is under
+`experience/evidence/neighborhood-20261021/`; original working output is
+`artifacts/neighborhood-20261021/qa/candidate-arcade-final/`.
+
+CI **39574644628** tests `6f9ccc2` and remains running at this checkpoint. Geographic
+source preparation and travel companion have passed; the six remaining jobs,
+including the full 2,706.888 m neighborhood walk, remain pending completion.
+Inspect that run before starting a replacement. Earlier runs `39571776352` and
+`39574180828` were superseded and cannot establish acceptance of the final package.
+
+Next actions, in order:
+
+1. Read the exact arcade report/captures and fix camera composition in
+   `src/runtime/camera-obstruction.js` / `route-world-view.js`. Preserve actor
+   grounding, actual building collision and desired saved camera intent. Verify
+   interior surface inspection using the actual rendered camera.
+2. Address the source/style findings in `evidence/neighborhood-20261021/art-review.md`,
+   build a new immutable candidate, and repeat bounded opening/arcade controls and
+   day/night visual checks. Current `candidate-build` is the blocked package;
+   preserve it for comparison.
+3. Review completed CI evidence, then validate the changed candidate with the
+   complete route, streaming delay/failure/retry, saved returns, private records,
+   EN/ZH, Maps export and existing journeys. Keep failed observations explicit.
+4. Run `experience/tools/neighborhood-performance.mjs` in an exclusive GPU window
+   after browser/art acceptance. The driver/protocol are committed and **have not
+   run** on this candidate. Thresholds remain 8 s cold, 3 s warm, 100 ms input p95,
+   33.3 ms observed frame p95; Q03 retains its separate unchanged threshold.
+5. Update evidence/checkpoint and push each coherent correction. Publish only the
+   accepted frozen package through the existing Pages worktree, then verify HTTPS
+   files and actual journeys.
+
+All local browser/server processes from arcade QA are closed. Product holds the
+performance benchmark. Engineering and navigation have no pending source edits;
+world/art assets remain frozen. Lead owns commits/builds/publication. Current
+working root is `/workspace/TourGuideAI`; use its ignored `artifacts/tmp` as TMPDIR.
+Browser NSS requires write access to `/home/agent/.pki`. Keep proxy/CA settings and
+TLS verification. Check local instructions before resuming edits.
+
 ## Active iteration · connected neighborhood
 
 The user approved the [connected-neighborhood plan](sprint-connected-neighborhood-20261021.md).
@@ -41,8 +111,9 @@ Focused browser checks pass **10/10**, including event-time Stop behavior,
 modal pause/resume, remaining-distance guidance, EN/ZH and private records.
 Full-page screenshots record scroll positions and normalize page scroll before
 capture so sticky layout and scene framing can be reviewed independently.
-Actual arcade regression, full-route acceptance and measured performance remain
-pending. The previous published package remains the release baseline.
+The bounded arcade regression exposes the camera/inspection blockers recorded
+above. Full-route acceptance and measured performance remain pending. The previous
+published package remains the release baseline.
 
 All 10,974 sampled corridor positions have required scenery coverage, with at most
 nine selected sections and three near-detail sections. This static coverage check

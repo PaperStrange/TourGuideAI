@@ -2,7 +2,9 @@
 
 The approved route joins six exterior sights over **1,353.444 m**. Source and
 navigation implementation is committed as `e0c726a`, scenery as `44f638a`, and
-integrated streaming/itineraries as `4f8a6ec`. Browser acceptance is in progress.
+integrated streaming/itineraries as `4f8a6ec`. Final scenery/resource accounting is
+committed as `cd70174`, with strengthened browser drivers in `6f9ccc2`.
+Browser acceptance is blocked by actual interior arcade camera composition.
 The published release remains the preceding package
 `3e72aa1c53596042a14d1fb2aae9556b0a2caa876be93d424ec9ebe2aebb0162`.
 
@@ -20,9 +22,14 @@ The current browser candidate is
 `9f3d1550c6263ca35d6c672da67952afcc3d2fb69ea4cf21d1c661ef06ebb4b6`.
 Its opening day/night art review passes, and the required daylight 3D startup assets
 total 4,152,813 bytes. Focused controls pass 10/10 actual browser checks, including
-modal pause/resume, Stop, EN/ZH guidance and retained private records. Complete
-traversal, arcade review and whole-entry performance measurements remain pending.
-Candidate reports stay in the ignored working artifacts until evidence is frozen.
+modal pause/resume, Stop, EN/ZH guidance and retained private records.
+[Executed art review](art-review.md) records opening and arcade evidence separately.
+The actual bounded arcade test finishes 6 passing and 2 failing checks: the
+interior default camera crops the actor's head, and sampled interior rays find no
+selectable feature. Market arrival and surface inspection pass. Complete traversal
+and whole-entry performance measurements remain pending. CI `39574644628` is
+running on `6f9ccc2` at the immediate user-requested checkpoint. The performance
+driver has not run on this package. No new release is accepted for publication.
 The walking/compositing diagnostic rows above retain their earlier package identity
 and do not measure this candidate.
 
