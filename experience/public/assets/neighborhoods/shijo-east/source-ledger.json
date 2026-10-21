@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "id": "shijo-east",
+  "reviewedAt": "2026-10-21",
+  "sources": [
+    {
+      "id": "osm-shijo-east-20261021",
+      "url": "https://api.openstreetmap.org/api/0.6/map.json?bbox=135.7593%2C35.003%2C135.7734%2C35.0063",
+      "sha256": "45969d94df108b46f38cb4b13e9f41756c30a38ce602e504f1b92d6486afa787",
+      "retrievedAt": "2026-10-21T07:41:38.008383+00:00",
+      "license": "ODbL-1.0",
+      "licenseUrl": "https://opendatacommons.org/licenses/odbl/1-0/",
+      "attribution": "© OpenStreetMap contributors",
+      "rawFile": "artifacts/neighborhood-20261021/world/raw/osm-map.json"
+    },
+    {
+      "id": "kyoto-city-lod1-2025",
+      "url": "https://data.city.kyoto.lg.jp/resource/?id=21422",
+      "datasetUrl": "https://data.city.kyoto.lg.jp/dataset/00661/",
+      "title": "京都市 3D都市モデル 建築物 LOD1_2025",
+      "license": "CC-BY-4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "京都市 3D都市モデル（LOD1_2025）, 京都市, CC BY 4.0",
+      "datasetUpdatedAt": "2026-08-31",
+      "sourceSurveyYear": "2025 (per-feature attributes retained)",
+      "sourceCRS": "EPSG:6674; source Z values retained separately from authored level-zero placement",
+      "retrievedAt": "2026-10-21T07:45:45.787825+00:00",
+      "archiveSha256": "15701dd9b876eeba5be4d9c45ac0cd39e72f43a30fb17164aea8d3b07618116d",
+      "archiveBytes": 116298045,
+      "changes": "Selected complete LOD1 solids; derived footprint union and Z range; converted horizontal coordinates; triangulated footprints and authored flat display placement."
+    }
+  ],
+  "inspectedOfficialCoverage": [
+    {
+      "resourceId": 20016,
+      "url": "https://data.city.kyoto.lg.jp/resource/?id=20016",
+      "license": "CC-BY-4.0",
+      "archiveSha256": "05a9db7988a991e10028b38c9eebffefec7ccbb604e88e980d85e8740910ee1a",
+      "trafficAreas": 31,
+      "bounds": [
+        135.771008,
+        35.003923,
+        135.775155,
+        35.006746
+      ],
+      "usedInScene": false
+    },
+    {
+      "resourceId": 20018,
+      "url": "https://data.city.kyoto.lg.jp/resource/?id=20018",
+      "license": "CC-BY-4.0",
+      "archiveSha256": "4e2bd46e53180da942a4c1d04193f640bf45721cc7af486e6fd709df30a9f1d0",
+      "bridges": 4,
+      "bounds": [
+        135.773176,
+        35.005292,
+        135.774761,
+        35.005834
+      ],
+      "usedInScene": false,
+      "coverage": "The captured LOD3 bridges do not cover Shijo Bridge."
+    }
+  ],
+  "retainedFiles": [
+    {
+      "file": "sources/kyoto-lod1.geojson",
+      "sha256": "da1af049906d736b6329e062673a84728640957475d3b46107cebf46b48a2d93",
+      "bytes": 6304053,
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "sources/route-osm.json",
+      "sha256": "5681dceac0c5d206a6e5315c77ca6a39a292ab3915f23b60cc17c77cecb4099e",
+      "bytes": 47176,
+      "license": "ODbL-1.0"
+    },
+    {
+      "file": "sources/scene-osm.json",
+      "sha256": "1e3ba265bc8dd3c6744ccd897ad915016a2cc0110c306bf3e064ca63ced5dd0c",
+      "bytes": 2390775,
+      "license": "ODbL-1.0"
+    }
+  ],
+  "sourcesForFacts": [
+    {
+      "id": "kyoto-tourism-access",
+      "url": "https://kyoto.travel/en/getting-around/comfortable-access-to-central-kyoto-city-nishiki-market/",
+      "supports": "Shijo via Takakura to Nishiki, and Shinkyogoku approach to Nishiki Tenmangu.",
+      "rights": "Facts paraphrased; operator imagery and text not redistributed."
+    },
+    {
+      "id": "nishiki-operator",
+      "url": "https://www.kyoto-nishiki.or.jp/en/union/",
+      "supports": "Takakura–Teramachi extent, approximately390m length,3.3m street width with some wider sections.",
+      "rights": "Facts paraphrased; source images not redistributed."
+    },
+    {
+      "id": "nishiki-faq",
+      "url": "https://www.kyoto-nishiki.or.jp/en/contact/",
+      "supports": "Public street; shop-specific hours; incomplete mobility-aid accessibility and crowding; stop when eating.",
+      "rights": "Facts paraphrased."
+    },
+    {
+      "id": "nishiki-tenmangu",
+      "url": "https://nishikitenmangu.or.jp/",
+      "supports": "Shrine faces Nishiki across Shinkyogoku; principal deity; published08:00–20:00 gate hours.",
+      "rights": "Facts paraphrased; source images not redistributed."
+    },
+    {
+      "id": "pontocho-city",
+      "url": "https://ja.kyoto.travel/komafuda/show.php?id=2203&lang=en",
+      "supports": "Shijo southern endpoint; approximately500m alley; two-storey buildings, continuous eaves and lattice details.",
+      "rights": "Facts paraphrased; source images not redistributed."
+    }
+  ],
+  "knownSourceDifferences": [
+    {
+      "subject": "Nishiki hours",
+      "osm": "Way66703315 opening_hours09:00–18:00; roof77213467210:00–18:00+",
+      "operator": "Street is public; shop hours vary.",
+      "productRule": "Do not treat OSM hours as whole-street opening or guaranteed shop availability."
+    }
+  ],
+  "authoredPresentation": {
+    "navigationWidthMetres": 1.5,
+    "navigationHeightMetres": 0,
+    "roadWidth": "Tagged lane count multiplied by authored3.2m, otherwise4.5m; explicit width tags take precedence.",
+    "waterHeightMetres": -2.5,
+    "canopyHeightMetres": 5,
+    "canopyClearanceMetres": 4.5,
+    "facadeRoofDoor": "Separate licensed-reference review required; detailed entrance/tenant identity is unknown."
+  },
+  "geometryAudit": {
+    "routeMetres": 1353.444059858351,
+    "geodesicMetres": 1353.4582346830623,
+    "officialGroundBuildingCorridorOverlaps": 0,
+    "displayPrecisionMetres": 0.001
+  },
+  "reproduction": {
+    "intake": "experience/content-tools/intake-shijo-east.py",
+    "preparation": "experience/content-tools/prepare-shijo-east.py",
+    "dependencies": {
+      "networkx": "3.5",
+      "osm2geojson": "0.3.2",
+      "shapely": "2.2.0"
+    },
+    "officialExtraction": "ogr2ogr GeoJSON; spatial query EPSG4326 bbox135.7593,35.0030,135.7722,35.0057; full source geometry retained; selected attributes and WGS84 output"
+  }
+}

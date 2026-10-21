@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "id": "shijo-east",
+  "geographySha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
+  "sceneSha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e",
+  "preparedArtSha256": "ddfae87cb1a13e234bf1c4e91645b68a9e88d1c71cb03df6cf3290c88a8a883c",
+  "preparedArtProducerSha256": "e57f86cef973762b5803a05b20ceb6c12dc07018b1c49f3e540a92769e6e6ae1",
+  "walkableMaterialAudit": [
+    {
+      "surfaceId": "shijo-east:walkable",
+      "originalAreaSquareMetres": 2658.929168499999,
+      "renderedAreaSquareMetres": 2658.9291684999916,
+      "unionDifferenceSquareMetres": 3.741753109610946e-12,
+      "overlapSquareMetres": 7.73070496506989e-12,
+      "hausdorffDistanceMetres": 8.881784197001252e-16,
+      "topHeightMetres": 0,
+      "canonicalGeometryChanged": false
+    }
+  ],
+  "sourceLedger": {
+    "file": "source-ledger.json",
+    "sha256": "be0f8065699a53f09293140e2499bca2468f0aa7cea503dc6436f45c9b17a24c",
+    "bytes": 5999
+  },
+  "references": {
+    "file": "references.json",
+    "sha256": "dffa91bf8616b4ce6657f972913c642249ce5be999fb52be736933a5b2ebd6ad",
+    "bytes": 7321
+  },
+  "styleSha256": "3dd0c20f3ccea49660fb2437d3af812f9dd6b8e05b4e4e52a5dcd77381f9dade",
+  "generatorSha256": "6ca12957a52cd5f8ced5dc73902b82e9456aff58b29308869cf65946b4202158",
+  "geometryHelperSha256": "fcdf5dc4d59e58e4b2819d47ae8e9f02f307ad68f70f03e0a0d264605d20d48f",
+  "blenderVersion": "4.3.2",
+  "elapsedSeconds": 10.271,
+  "geometryMeaning": "Source footprints and prepared surface polygons; reviewed original facade assemblies with explicit authored dimensions",
+  "rights": "source-ledger.json and references.json",
+  "referenceIds": [
+    "nishiki-arcade-2025",
+    "nishiki-entrance-2026",
+    "pontocho-approach-2026",
+    "pontocho-city-description",
+    "tenmangu-street-2007"
+  ],
+  "retainedLandmarks": {
+    "file": "experience/public/models/shijo-block.glb",
+    "sha256": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c",
+    "reviewedFinishManifestSha256": "5947c4fe04f6bc6ced85b4c6920e7a1f7f88cbec6ea67180133eea69d8c48813",
+    "groups": {
+      "North": 24,
+      "South": 25,
+      "Street": 7
+    }
+  },
+  "authored": [
+    "Facade bay counts and window dimensions",
+    "Material-family assignments on sourced building masses",
+    "Flat ground and display water/bridge heights",
+    "Canopy profile, torii/board/railing dimensions",
+    "Night fixtures, light intensity and emission"
+  ],
+  "sourceFramePreserved": true,
+  "originalPackAssetsChanged": false,
+  "visualAcceptance": "requires actual browser route review"
+}

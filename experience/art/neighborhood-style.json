@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "id": "shijo-east",
+  "cellSizeMetres": 100,
+  "nearRouteMetres": 35,
+  "limits": {"groundBytes": 2097152, "contextBytes": 2097152, "sectionBytes": 2097152},
+  "materials": {
+    "stone": {"color":"#c1b9a9","roughness":0.8,"metresPerRepeat":2,"authored":"Original pale mineral finish; reference-informed material family."},
+    "plaster": {"color":"#d6d1c4","roughness":0.88,"metresPerRepeat":2,"authored":"Original neutral plaster finish on source-derived geometry."},
+    "tile-wall": {"color":"#b9b2a5","roughness":0.73,"metresPerRepeat":1.2,"authored":"Original small ceramic cladding pattern; individual building finish unverified."},
+    "granite": {"color":"#9e9c94","roughness":0.65,"metresPerRepeat":1.4,"authored":"Original granular stone family; no photograph pixels."},
+    "glass": {"color":"#78888d","roughness":0.17,"metalness":0.12,"coatWeight":0.65,"coatRoughness":0.08,"metresPerRepeat":3.2,"authored":"Opaque reflective glazing with original subtle blind variation; no interior claim."},
+    "frame": {"color":"#4a4a43","roughness":0.33,"metalness":0.7,"metresPerRepeat":1,"authored":"Original anodised frame material."},
+    "roof": {"color":"#626867","roughness":0.82,"metresPerRepeat":3,"authored":"Authored neutral roof surface on official LOD1 top planes."},
+    "wood": {"color":"#6b4c35","roughness":0.73,"metresPerRepeat":1.8,"authored":"Original dark timber family; grain dimensions authored."},
+    "paving": {"color":"#aaa79b","roughness":0.88,"metresPerRepeat":2.4,"authored":"Original stone-paver pattern on explicitly authored flat walking surface."},
+    "asphalt": {"color":"#6e7373","roughness":0.93,"metresPerRepeat":3,"authored":"Original asphalt grain; authored road widths and grade."},
+    "land": {"color":"#a9aa9c","roughness":0.96,"metresPerRepeat":4,"authored":"Subdued mineral ground between mapped surfaces."},
+    "green": {"color":"#697a57","roughness":0.95,"metresPerRepeat":3,"authored":"Mapped green area with authored plant cover treatment."},
+    "water": {"color":"#6d8582","roughness":0.22,"metalness":0.22,"coatWeight":0.65,"metresPerRepeat":4,"authored":"Original river surface; display water level authored and unrelated to current conditions."},
+    "arcade-red": {"color":"#a9574c","roughness":0.47,"metresPerRepeat":2,"authored":"Reference-informed red roof-panel family; no copied sign artwork."},
+    "arcade-gold": {"color":"#cab85c","roughness":0.47,"metresPerRepeat":2,"authored":"Reference-informed yellow roof-panel family."},
+    "arcade-green": {"color":"#718f75","roughness":0.47,"metresPerRepeat":2,"authored":"Reference-informed green roof-panel family."},
+    "lamp": {"color":"#e6d5b6","roughness":0.6,"metresPerRepeat":1,"authored":"Authored lamp diffuser; emission does not imply operating hours."},
+    "ink": {"color":"#393a34","roughness":0.82,"metresPerRepeat":1,"authored":"Original simple factual place lettering."}
+  },
+  "recipes": {
+    "urban-stone": {"wallMaterial":"stone","roofMaterial":"roof","glassMaterial":"glass","frameMaterial":"frame","trimMaterial":"granite","storeyHeightMetres":3.35,"bayWidthMetres":2.8,"recessMetres":0.19,"openingWidthRatio":0.57,"referenceIds":["nishiki-entrance-2026","pontocho-approach-2026"],"authored":"Window count, proportions, material assignment and hidden elevations are original authored construction on source footprints and heights."},
+    "urban-plaster": {"wallMaterial":"plaster","roofMaterial":"roof","glassMaterial":"glass","frameMaterial":"frame","storeyHeightMetres":3.1,"bayWidthMetres":2.45,"recessMetres":0.14,"openingWidthRatio":0.63,"referenceIds":["tenmangu-street-2007","nishiki-entrance-2026"],"authored":"Original mixed commercial facade family; no tenant or exact storefront correspondence."},
+    "urban-tile": {"wallMaterial":"tile-wall","roofMaterial":"roof","glassMaterial":"glass","frameMaterial":"frame","storeyHeightMetres":3.2,"bayWidthMetres":2.65,"recessMetres":0.16,"openingWidthRatio":0.58,"referenceIds":["tenmangu-street-2007"],"authored":"Reference-informed small ceramic finish, with authored bays and opening dimensions."},
+    "market-front": {"wallMaterial":"plaster","roofMaterial":"roof","glassMaterial":"glass","frameMaterial":"wood","trimMaterial":"wood","storeyHeightMetres":3.05,"bayWidthMetres":2.5,"recessMetres":0.24,"openingWidthRatio":0.73,"groundSillMetres":0.18,"groundOpeningMetres":2.65,"referenceIds":["nishiki-arcade-2025","nishiki-entrance-2026"],"authored":"Original arcade frontage assemblies; shutter, frame and display rhythms do not identify individual shops or interiors."},
+    "lane-timber": {"wallMaterial":"plaster","roofMaterial":"roof","glassMaterial":"glass","frameMaterial":"wood","trimMaterial":"wood","storeyHeightMetres":2.9,"bayWidthMetres":1.8,"recessMetres":0.22,"openingWidthRatio":0.59,"canopyHeightMetres":2.7,"canopyProjectionMetres":0.45,"canopyMaterial":"wood","referenceIds":["pontocho-city-description","pontocho-approach-2026"],"authored":"Original two-storey eave/lattice family derived from the municipal description; individual building elevations remain unverified."}
+  },
+  "assignmentRules": {
+    "kind":"source-massing-with-explicit-authored-facade-families",
+    "marketBounds":{"minX":260,"maxX":655,"minY":125,"maxY":160},
+    "laneBounds":{"minX":1000,"maxX":1055,"minY":25,"maxY":130},
+    "urbanFamilySelection":"stable-source-id-choice; authored-material-assignment"
+  }
+}

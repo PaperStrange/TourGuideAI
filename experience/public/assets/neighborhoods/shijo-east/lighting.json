@@ -1,0 +1,270 @@
+{
+  "version": 1,
+  "status": "candidate-frozen",
+  "defaultMode": "day",
+  "axes": "Three(east,height,-north), metres",
+  "scope": {
+    "en": "Authored lighting studies. Local lights and glowing glazing do not indicate actual operating hours, occupied rooms or enterable interiors. External HDRIs illuminate and reflect; their city panoramas are never visible backgrounds.",
+    "zh": "设计灯光方案。局部照明和发光玻璃不代表实际营业时间、房间使用状态或可进入的室内。外部 HDRI 仅用于照明与反射，不作为可见城市背景。"
+  },
+  "limits": {
+    "maxShadowCastingLocalLights": 3,
+    "staticShadowCaching": true,
+    "pointLightShadows": false
+  },
+  "renderBounds": {
+    "minX": -44.303432578918105,
+    "minY": -63.65490443050328,
+    "maxX": 1142.2035119176844,
+    "maxY": 209.20433396360693
+  },
+  "modes": {
+    "day": {
+      "label": {
+        "en": "Daylight",
+        "zh": "日光"
+      },
+      "environment": {
+        "file": "shared/environments/day-512.hdr",
+        "sha256": "efb72f542365dfdc25d2f9ed20983b34e74fd33f90d55b8763813f4d6dd35717",
+        "intensity": 0.65,
+        "rotationY": 1.0,
+        "use": "illumination-and-reflections-only",
+        "source": {
+          "file": "experience/public/lighting/environments/day-1k.hdr",
+          "sha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+          "dimensions": [
+            1024,
+            512
+          ],
+          "operation": "Blender Image.scale to512x256 linear Radiance HDR; source exposure and mode intensity unchanged"
+        },
+        "bytes": 432312,
+        "dimensions": [
+          512,
+          256
+        ]
+      },
+      "backgroundColor": "#cbd8e4",
+      "fog": {
+        "color": "#cbd8e4",
+        "near": 100,
+        "far": 270
+      },
+      "exposure": 1.05,
+      "hemisphere": {
+        "skyColor": "#d4e1ef",
+        "groundColor": "#777269",
+        "intensity": 0.34
+      },
+      "sun": {
+        "enabled": true,
+        "position": [
+          4,
+          105,
+          36
+        ],
+        "target": [
+          32,
+          0,
+          7
+        ],
+        "color": "#fff2df",
+        "intensity": 2.8,
+        "shadow": {
+          "enabled": true,
+          "mapSize": 2048,
+          "bias": -0.00045,
+          "normalBias": 0.045,
+          "radius": 2.4,
+          "near": 0.5,
+          "far": 220,
+          "fit": "moving-local-region"
+        }
+      },
+      "fixtures": [],
+      "materials": [
+        {
+          "match": [
+            "off-white"
+          ],
+          "emissiveColor": "#ffe3b5",
+          "emissiveIntensity": 0,
+          "emissiveFromBaseColor": false,
+          "semanticGroups": [
+            "NorthCanopy",
+            "SouthCanopy",
+            "NorthGround",
+            "SouthGround"
+          ]
+        },
+        {
+          "match": [
+            "glazing"
+          ],
+          "semanticGroups": [
+            "NorthGround",
+            "SouthGround"
+          ],
+          "emissiveColor": "#e2b67c",
+          "emissiveIntensity": 0,
+          "emissiveFromBaseColor": true
+        },
+        {
+          "match": [
+            "glazing-blinds"
+          ],
+          "semanticGroups": [
+            "NorthUpper",
+            "SouthUpper"
+          ],
+          "emissiveColor": "#ffd9a0",
+          "emissiveIntensity": 0,
+          "emissiveFromBaseColor": true
+        },
+        {
+          "match": [
+            "lamp"
+          ],
+          "emissiveColor": "#ffe1b2",
+          "emissiveIntensity": 0.03
+        }
+      ],
+      "offline": {
+        "environmentStrength": 0.6,
+        "sunEnergy": 2.8,
+        "sunAngularDiameterDegrees": 2.8,
+        "exposureStops": 0.1,
+        "note": "Authored Cycles power/environment calibration, not numeric equivalence to Three illuminance/candela or a measured lighting survey.",
+        "sampleClampDirect": 0,
+        "sampleClampIndirect": 3,
+        "filterGlossy": 0.5,
+        "adaptiveThreshold": 0.012
+      }
+    },
+    "night": {
+      "label": {
+        "en": "Night",
+        "zh": "夜晚"
+      },
+      "environment": {
+        "file": "shared/environments/night-512.hdr",
+        "sha256": "b3a82ca4a2dcb3cf429b5f7b57f75877296fbc3d60b6a2ed2419be7f8971f41f",
+        "intensity": 0.085,
+        "rotationY": 0.55,
+        "use": "illumination-and-reflections-only",
+        "source": {
+          "file": "experience/public/lighting/environments/night-1k.hdr",
+          "sha256": "a690048dcecabf5ed1ad773f7abdec7cce7b1fea4d89b17f054a18f3e0fa2919",
+          "dimensions": [
+            1024,
+            512
+          ],
+          "operation": "Blender Image.scale to512x256 linear Radiance HDR; source exposure and mode intensity unchanged"
+        },
+        "bytes": 425076,
+        "dimensions": [
+          512,
+          256
+        ]
+      },
+      "backgroundColor": "#101824",
+      "fog": {
+        "color": "#101824",
+        "near": 100,
+        "far": 270
+      },
+      "exposure": 1.18,
+      "hemisphere": {
+        "skyColor": "#718bb6",
+        "groundColor": "#2a2422",
+        "intensity": 0.18
+      },
+      "sun": {
+        "enabled": true,
+        "position": [
+          4,
+          105,
+          36
+        ],
+        "target": [
+          32,
+          0,
+          7
+        ],
+        "color": "#9bb9eb",
+        "intensity": 0.18,
+        "shadow": {
+          "enabled": true,
+          "mapSize": 2048,
+          "bias": -0.00045,
+          "normalBias": 0.045,
+          "radius": 2.4,
+          "near": 0.5,
+          "far": 220,
+          "fit": "moving-local-region"
+        }
+      },
+      "fixtures": [],
+      "materials": [
+        {
+          "match": [
+            "off-white"
+          ],
+          "emissiveColor": "#ffe3b5",
+          "emissiveIntensity": 2.6,
+          "emissiveFromBaseColor": false,
+          "semanticGroups": [
+            "NorthCanopy",
+            "SouthCanopy",
+            "NorthGround",
+            "SouthGround"
+          ]
+        },
+        {
+          "match": [
+            "glazing"
+          ],
+          "semanticGroups": [
+            "NorthGround",
+            "SouthGround"
+          ],
+          "emissiveColor": "#e2b67c",
+          "emissiveIntensity": 0.18,
+          "emissiveFromBaseColor": true
+        },
+        {
+          "match": [
+            "glazing-blinds"
+          ],
+          "semanticGroups": [
+            "NorthUpper",
+            "SouthUpper"
+          ],
+          "emissiveColor": "#ffd9a0",
+          "emissiveIntensity": 0.055,
+          "emissiveFromBaseColor": true
+        },
+        {
+          "match": [
+            "lamp"
+          ],
+          "emissiveColor": "#ffe1b2",
+          "emissiveIntensity": 1.4
+        }
+      ],
+      "offline": {
+        "environmentStrength": 0.18,
+        "sunEnergy": 0.2,
+        "sunAngularDiameterDegrees": 3.0,
+        "exposureStops": 0.7,
+        "note": "Authored Cycles power/environment calibration, not numeric equivalence to Three illuminance/candela or a measured lighting survey.",
+        "sampleClampDirect": 10,
+        "sampleClampIndirect": 3,
+        "filterGlossy": 1.0,
+        "adaptiveThreshold": 0.012
+      }
+    }
+  },
+  "id": "shijo-east-lighting-v1"
+}
