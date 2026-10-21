@@ -1,7 +1,47 @@
 # Agent checkpoint · Explore and Together homepage
 
-2026-10-19 · Lead owns integration, commits and publication.
-**State: the reviewed-pack milestone is published and verified. Pages runtime `3362d6c` passes all 94 published-file checks and 16 actual HTTPS journey checks. Ginza/Wako adds a second bounded walkable area through the shared runtime, preserving Shijō interaction and private saved views. Q03 remains open P1; backend tests stay local.**
+2026-10-21 UTC · Lead owns integration, commits and publication.
+**State: sandbox-engine research is complete; the lively-streets iteration remains
+in progress. Published Pages runtime `3362d6c` remains the verified baseline.
+Q03 remains open P1; backend tests stay local.**
+
+## Active iteration · lively streets and geographic production
+
+The [iteration plan](sprint-lively-sites-20261021.md) is committed as `1f9fc77`.
+The user requested sandbox-engine research before further production changes.
+All implementation and browser work paused during the review. The
+[engine decision](sandbox-engine-research-20261021.md) and
+[geographic workflow research](global-site-workflow-research.md) recommend retaining
+the current browser runtime and borrowing spatial loading, selective activity,
+reusable architectural modules and distance-based detail. Engine migration has no
+measured benefit for the current problems; PlayCanvas remains a conditional
+authoring/lighting candidate and Babylon a conditional navigation/agent candidate.
+
+The actual OSM2World experiment converted the two captured international sites,
+retaining landmark IDs, but logged geometry errors despite exit code zero.
+[Portable evidence](../evidence/global-sites-20261021/converter/README.md) records
+the failed automatic-production gate. These outputs are research artifacts.
+Ginza's independently reviewed source context can proceed through art production;
+international geographic context requires explicit audit and manual review.
+
+Prepared work in the shared working tree is unvalidated unless separately noted:
+art owns `art/build_ginza.py`; engineering owns map-style initialization and an
+unmeasured `antialias:false` diagnostic; QA owns a syntax-checked normal-motion
+pack test. Lead's site preparation tool/configurations are incomplete, including
+Helsinki's required-building boundary failure. Existing public models are unchanged.
+Do not publish these candidates based on preceding release evidence.
+
+Fresh unchanged Q03 observations are **1206.2 / 1115.1 / 1131.6 ms**. Pre-load style
+initialization gives **1077.1 / 1031.2 / 1160.9 ms**; variation overlaps, so no
+reliable improvement is established. A desynchronized-context experiment was slower
+and its source option was removed. Preserve the unchanged driver and three
+independent warm-action threshold; the AA diagnostic needs matched visual review.
+
+Next: complete and verify the Ginza street-quality prototype, source-audited
+production tools, normal-motion regression and bounded map-latency diagnosis.
+Only the lead builds, commits and publishes. Browser/GPU windows remain exclusive.
+Update this checkpoint with exact tested package and source/Pages identities before
+claiming the new milestone is delivered.
 
 ## Current iteration · reviewed interactive places
 

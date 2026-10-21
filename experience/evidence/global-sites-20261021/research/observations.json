@@ -1,0 +1,613 @@
+{
+  "reviewedAt": "2026-10-21",
+  "status": "raw-source-identity-and-completeness-checked",
+  "sites": [
+    {
+      "id": "delft-markt",
+      "country": "NL",
+      "title": "Delft Markt / City Hall",
+      "bboxWgs84WestSouthEastNorth": [
+        4.357,
+        52.0108,
+        4.3595,
+        52.0121
+      ],
+      "source": {
+        "id": "delft-markt",
+        "url": "https://api.openstreetmap.org/api/0.6/map?bbox=4.3570,52.0108,4.3595,52.0121",
+        "effectiveUrl": "https://api.openstreetmap.org/api/0.6/map?bbox=4.3570,52.0108,4.3595,52.0121",
+        "retrievedAt": "2026-10-21T04:51:21.781506+00:00",
+        "status": 200,
+        "bytes": 703490,
+        "sha256": "69e5fb1b52dd50d95a1ac9c2fa59616bb668ed7db46d9bfcb8e93dd23f607b7e",
+        "capturePath": "experience/evidence/global-sites-20261021/research/delft-markt.osm"
+      },
+      "attribution": "© OpenStreetMap contributors",
+      "license": "ODbL-1.0",
+      "licenseUrl": "https://www.openstreetmap.org/copyright",
+      "rawCounts": {
+        "nodes": 1770,
+        "ways": 239,
+        "relations": 18,
+        "buildingWays": 135,
+        "highwayWays": 31
+      },
+      "landmark": {
+        "id": "osm:way:209351406",
+        "version": 28,
+        "timestamp": "2026-03-13T18:19:34Z",
+        "nodeCountIncludingClosure": 41,
+        "closed": true,
+        "missingNodeIds": [],
+        "tags": {
+          "building": "civic",
+          "height": "20",
+          "heritage": "2",
+          "heritage:operator": "rce",
+          "ref:bag": "0503100000014169",
+          "ref:rce": "11901",
+          "source": "BAG",
+          "source:date": "2013-11-26",
+          "start_date": "1290",
+          "wikidata": "Q732262",
+          "wikipedia": "nl:Stadhuis van Delft"
+        },
+        "fieldPresence": {
+          "height": "20",
+          "building:levels": null,
+          "roof:shape": null,
+          "roof:height": null,
+          "building:material": null,
+          "width": null,
+          "access": null,
+          "wheelchair": null
+        }
+      },
+      "buildingRelations": [
+        {
+          "id": "osm:relation:3404942",
+          "version": 3,
+          "tags": {
+            "building": "yes",
+            "heritage": "2",
+            "heritage:operator": "rce",
+            "name": "Middelburch",
+            "ref:bag": "0503100000026111",
+            "ref:rce": "12259",
+            "source": "BAG",
+            "source:date": "2013-11-26",
+            "start_date": "1800",
+            "type": "multipolygon",
+            "wikidata": "Q17330935"
+          },
+          "members": [
+            {
+              "type": "way",
+              "ref": "254140526",
+              "role": "outer"
+            }
+          ],
+          "missingWayIds": [],
+          "presentMembers": [
+            {
+              "id": "osm:way:254140526",
+              "version": 2,
+              "timestamp": "2025-06-28T14:15:39Z",
+              "nodeCountIncludingClosure": 10,
+              "closed": true,
+              "missingNodeIds": [],
+              "tags": {},
+              "fieldPresence": {
+                "height": null,
+                "building:levels": null,
+                "roof:shape": null,
+                "roof:height": null,
+                "building:material": null,
+                "width": null,
+                "access": null,
+                "wheelchair": null
+              }
+            }
+          ]
+        }
+      ],
+      "buildingTagPresenceCounts": {
+        "height": 1,
+        "building:levels": 74,
+        "roof:shape": 12,
+        "roof:height": 1,
+        "building:material": 0,
+        "width": 0,
+        "access": 0,
+        "wheelchair": 0
+      },
+      "highwayKinds": {
+        "footway": 8,
+        "pedestrian": 23
+      },
+      "limits": [
+        "Counts describe the complete response, including ways and relation members extending beyond the requested bbox.",
+        "Map editing timestamps and source dates are independent of capture/review date.",
+        "Height and access tags remain source reports; this intake does not certify facade shape or current walking access.",
+        "A building height does not specify individual roofs, domes, towers or facade elevations."
+      ]
+    },
+    {
+      "id": "helsinki-senate",
+      "country": "FI",
+      "title": "Helsinki Senate Square / Cathedral",
+      "bboxWgs84WestSouthEastNorth": [
+        24.9518,
+        60.1681,
+        24.9548,
+        60.1704
+      ],
+      "source": {
+        "id": "helsinki-senate",
+        "url": "https://api.openstreetmap.org/api/0.6/map?bbox=24.9518,60.1681,24.9548,60.1704",
+        "effectiveUrl": "https://api.openstreetmap.org/api/0.6/map?bbox=24.9518,60.1681,24.9548,60.1704",
+        "retrievedAt": "2026-10-21T04:51:23.356210+00:00",
+        "status": 200,
+        "bytes": 654698,
+        "sha256": "ca1efe4230b3022f9df213d05dfae50a1454dd1662c016faae22dba1b6644424",
+        "capturePath": "experience/evidence/global-sites-20261021/research/helsinki-senate.osm"
+      },
+      "attribution": "© OpenStreetMap contributors",
+      "license": "ODbL-1.0",
+      "licenseUrl": "https://www.openstreetmap.org/copyright",
+      "rawCounts": {
+        "nodes": 1872,
+        "ways": 355,
+        "relations": 26,
+        "buildingWays": 22,
+        "highwayWays": 160
+      },
+      "landmark": {
+        "id": "osm:way:1542850662",
+        "version": 3,
+        "timestamp": "2026-08-10T16:27:21Z",
+        "nodeCountIncludingClosure": 40,
+        "closed": true,
+        "missingNodeIds": [],
+        "tags": {
+          "addr:city": "Helsinki",
+          "addr:housenumber": "29",
+          "addr:postcode": "00170",
+          "addr:street": "Unioninkatu",
+          "amenity": "place_of_worship",
+          "architect": "Carl Ludvig Engel",
+          "architect:wikidata": "Q77103",
+          "building": "cathedral",
+          "building:colour": "#ffffff",
+          "building:material": "plaster",
+          "check_date": "2026-08-07",
+          "denomination": "lutheran",
+          "fee": "yes",
+          "height": "59",
+          "int_name": "Helsinki Cathedral",
+          "loc_name": "Suurtsyrkka",
+          "name": "Helsingin tuomiokirkko",
+          "name:ca": "Catedral Luterana Tuomiokirkko",
+          "name:de": "Kathedrale von Helsinki",
+          "name:en": "Helsinki Cathedral",
+          "name:es": "Catedral de Helsinki",
+          "name:et": "Helsingi toomkirik",
+          "name:fi": "Helsingin tuomiokirkko",
+          "name:fr": "Cathédrale d'Helsinki",
+          "name:ko": "헬싱키 대성당",
+          "name:ru": "Кафедральный собор",
+          "name:sv": "Helsingfors domkyrka",
+          "name:zh": "赫尔辛基主教座堂",
+          "old_name": "Suurkirkko",
+          "opening_hours": "Jun-Aug: Su-Sa 09:00-24:00; Sep-May: Su-Sa 09:00-18:00",
+          "religion": "christian",
+          "start_date": "1852",
+          "toilets": "yes",
+          "toilets:access": "customers",
+          "tourism": "attraction",
+          "website": "https://helsingintuomiokirkko.fi/",
+          "wheelchair": "limited",
+          "wikidata": "Q738015",
+          "wikimedia_commons": "Category:Helsinki Cathedral",
+          "wikipedia": "fi:Helsingin tuomiokirkko"
+        },
+        "fieldPresence": {
+          "height": "59",
+          "building:levels": null,
+          "roof:shape": null,
+          "roof:height": null,
+          "building:material": "plaster",
+          "width": null,
+          "access": null,
+          "wheelchair": "limited"
+        }
+      },
+      "buildingRelations": [
+        {
+          "id": "osm:relation:1331997",
+          "version": 2,
+          "tags": {
+            "building": "yes",
+            "building:levels": "3",
+            "building:min_level": "1",
+            "type": "multipolygon"
+          },
+          "members": [
+            {
+              "type": "way",
+              "ref": "123352926",
+              "role": "outer"
+            },
+            {
+              "type": "way",
+              "ref": "90619196",
+              "role": "inner"
+            }
+          ],
+          "missingWayIds": [],
+          "presentMembers": [
+            {
+              "id": "osm:way:123352926",
+              "version": 6,
+              "timestamp": "2024-08-15T12:02:39Z",
+              "nodeCountIncludingClosure": 65,
+              "closed": true,
+              "missingNodeIds": [],
+              "tags": {},
+              "fieldPresence": {
+                "height": null,
+                "building:levels": null,
+                "roof:shape": null,
+                "roof:height": null,
+                "building:material": null,
+                "width": null,
+                "access": null,
+                "wheelchair": null
+              }
+            },
+            {
+              "id": "osm:way:90619196",
+              "version": 4,
+              "timestamp": "2024-08-15T12:02:39Z",
+              "nodeCountIncludingClosure": 42,
+              "closed": true,
+              "missingNodeIds": [],
+              "tags": {},
+              "fieldPresence": {
+                "height": null,
+                "building:levels": null,
+                "roof:shape": null,
+                "roof:height": null,
+                "building:material": null,
+                "width": null,
+                "access": null,
+                "wheelchair": null
+              }
+            }
+          ]
+        },
+        {
+          "id": "osm:relation:1331998",
+          "version": 6,
+          "tags": {
+            "addr:city": "Helsinki",
+            "addr:housenumber": "1A",
+            "addr:postcode": "00170",
+            "addr:street": "Snellmaninkatu",
+            "architect": "Carl Ludvig Engel",
+            "building": "government",
+            "building:levels": "4",
+            "name": "Valtioneuvoston linna",
+            "name:en": "Government Palace",
+            "name:fi": "Valtioneuvoston linna",
+            "name:sv": "Statsrådsborgen",
+            "old_name": "Senaatintalo",
+            "start_date": "1822",
+            "type": "multipolygon",
+            "wikidata": "Q3129969",
+            "wikimedia_commons": "Category:Government Palace, Helsinki",
+            "wikipedia": "en:Government_Palace_(Finland)"
+          },
+          "members": [
+            {
+              "type": "way",
+              "ref": "90619197",
+              "role": "outer"
+            },
+            {
+              "type": "way",
+              "ref": "90619188",
+              "role": "inner"
+            }
+          ],
+          "missingWayIds": [],
+          "presentMembers": [
+            {
+              "id": "osm:way:90619197",
+              "version": 5,
+              "timestamp": "2026-08-22T02:31:54Z",
+              "nodeCountIncludingClosure": 57,
+              "closed": true,
+              "missingNodeIds": [],
+              "tags": {
+                "building:part": "yes"
+              },
+              "fieldPresence": {
+                "height": null,
+                "building:levels": null,
+                "roof:shape": null,
+                "roof:height": null,
+                "building:material": null,
+                "width": null,
+                "access": null,
+                "wheelchair": null
+              }
+            },
+            {
+              "id": "osm:way:90619188",
+              "version": 5,
+              "timestamp": "2024-08-15T12:02:39Z",
+              "nodeCountIncludingClosure": 33,
+              "closed": true,
+              "missingNodeIds": [],
+              "tags": {},
+              "fieldPresence": {
+                "height": null,
+                "building:levels": null,
+                "roof:shape": null,
+                "roof:height": null,
+                "building:material": null,
+                "width": null,
+                "access": null,
+                "wheelchair": null
+              }
+            }
+          ]
+        },
+        {
+          "id": "osm:relation:1688738",
+          "version": 8,
+          "tags": {
+            "architect": "Pehr Granstedt",
+            "architect:wikidata": "Q3374263",
+            "building": "yes",
+            "building:levels": "3",
+            "name": "Balderin talo",
+            "name:da": "Balders hus",
+            "name:en": "Balder´s House",
+            "name:fi": "Balderin talo",
+            "name:fr": "Maison balder",
+            "name:is": "Balders hus",
+            "name:no": "Balders hus",
+            "name:sv": "Balders hus",
+            "start_date": "1814",
+            "type": "multipolygon",
+            "wikidata": "Q1530608",
+            "wikimedia_commons": "Category:Balder House",
+            "wikipedia": "fi:Balderin talo"
+          },
+          "members": [
+            {
+              "type": "way",
+              "ref": "123403686",
+              "role": "outer"
+            },
+            {
+              "type": "way",
+              "ref": "24337140",
+              "role": "inner"
+            }
+          ],
+          "missingWayIds": [],
+          "presentMembers": [
+            {
+              "id": "osm:way:123403686",
+              "version": 8,
+              "timestamp": "2024-08-15T12:43:05Z",
+              "nodeCountIncludingClosure": 18,
+              "closed": true,
+              "missingNodeIds": [],
+              "tags": {},
+              "fieldPresence": {
+                "height": null,
+                "building:levels": null,
+                "roof:shape": null,
+                "roof:height": null,
+                "building:material": null,
+                "width": null,
+                "access": null,
+                "wheelchair": null
+              }
+            },
+            {
+              "id": "osm:way:24337140",
+              "version": 6,
+              "timestamp": "2024-08-15T12:43:05Z",
+              "nodeCountIncludingClosure": 14,
+              "closed": true,
+              "missingNodeIds": [],
+              "tags": {},
+              "fieldPresence": {
+                "height": null,
+                "building:levels": null,
+                "roof:shape": null,
+                "roof:height": null,
+                "building:material": null,
+                "width": null,
+                "access": null,
+                "wheelchair": null
+              }
+            }
+          ]
+        },
+        {
+          "id": "osm:relation:2105743",
+          "version": 11,
+          "tags": {
+            "addr:city": "Helsinki",
+            "addr:housenumber": "7B",
+            "addr:postcode": "00170",
+            "addr:street": "Pohjoisesplanadi",
+            "building": "government",
+            "building:levels": "4",
+            "country": "SE",
+            "diplomatic": "embassy",
+            "name": "Ruotsin suurlähetystö",
+            "name:da": "Sveriges ambassad",
+            "name:en": "Embassy of Sweden",
+            "name:fi": "Ruotsin suurlähetystö",
+            "name:fr": "Ambassade de Suède",
+            "name:is": "Sveriges ambassad",
+            "name:no": "Sveriges ambassad",
+            "name:sv": "Sveriges ambassad",
+            "office": "diplomatic",
+            "start_date": "1922-12-31",
+            "type": "multipolygon",
+            "wikidata": "Q2841849",
+            "wikipedia": "fi:Ruotsin Helsingin-suurlähetystö"
+          },
+          "members": [
+            {
+              "type": "way",
+              "ref": "123403693",
+              "role": "outer"
+            },
+            {
+              "type": "way",
+              "ref": "17426925",
+              "role": "inner"
+            }
+          ],
+          "missingWayIds": [],
+          "presentMembers": [
+            {
+              "id": "osm:way:123403693",
+              "version": 7,
+              "timestamp": "2024-08-15T12:43:05Z",
+              "nodeCountIncludingClosure": 20,
+              "closed": true,
+              "missingNodeIds": [],
+              "tags": {},
+              "fieldPresence": {
+                "height": null,
+                "building:levels": null,
+                "roof:shape": null,
+                "roof:height": null,
+                "building:material": null,
+                "width": null,
+                "access": null,
+                "wheelchair": null
+              }
+            },
+            {
+              "id": "osm:way:17426925",
+              "version": 6,
+              "timestamp": "2024-08-15T12:43:05Z",
+              "nodeCountIncludingClosure": 25,
+              "closed": true,
+              "missingNodeIds": [],
+              "tags": {},
+              "fieldPresence": {
+                "height": null,
+                "building:levels": null,
+                "roof:shape": null,
+                "roof:height": null,
+                "building:material": null,
+                "width": null,
+                "access": null,
+                "wheelchair": null
+              }
+            }
+          ]
+        },
+        {
+          "id": "osm:relation:7193165",
+          "version": 1,
+          "tags": {
+            "building": "yes",
+            "building:levels": "1",
+            "type": "multipolygon"
+          },
+          "members": [
+            {
+              "type": "way",
+              "ref": "123352926",
+              "role": "outer"
+            },
+            {
+              "type": "way",
+              "ref": "489781594",
+              "role": "inner"
+            }
+          ],
+          "missingWayIds": [],
+          "presentMembers": [
+            {
+              "id": "osm:way:123352926",
+              "version": 6,
+              "timestamp": "2024-08-15T12:02:39Z",
+              "nodeCountIncludingClosure": 65,
+              "closed": true,
+              "missingNodeIds": [],
+              "tags": {},
+              "fieldPresence": {
+                "height": null,
+                "building:levels": null,
+                "roof:shape": null,
+                "roof:height": null,
+                "building:material": null,
+                "width": null,
+                "access": null,
+                "wheelchair": null
+              }
+            },
+            {
+              "id": "osm:way:489781594",
+              "version": 3,
+              "timestamp": "2024-08-15T12:02:39Z",
+              "nodeCountIncludingClosure": 33,
+              "closed": true,
+              "missingNodeIds": [],
+              "tags": {},
+              "fieldPresence": {
+                "height": null,
+                "building:levels": null,
+                "roof:shape": null,
+                "roof:height": null,
+                "building:material": null,
+                "width": null,
+                "access": null,
+                "wheelchair": null
+              }
+            }
+          ]
+        }
+      ],
+      "buildingTagPresenceCounts": {
+        "height": 2,
+        "building:levels": 19,
+        "roof:shape": 6,
+        "roof:height": 0,
+        "building:material": 6,
+        "width": 0,
+        "access": 0,
+        "wheelchair": 2
+      },
+      "highwayKinds": {
+        "footway": 84,
+        "pedestrian": 11,
+        "platform": 2,
+        "residential": 5,
+        "service": 13,
+        "steps": 37,
+        "unclassified": 8
+      },
+      "limits": [
+        "Counts describe the complete response, including ways and relation members extending beyond the requested bbox.",
+        "Map editing timestamps and source dates are independent of capture/review date.",
+        "Height and access tags remain source reports; this intake does not certify facade shape or current walking access.",
+        "A building height does not specify individual roofs, domes, towers or facade elevations."
+      ]
+    }
+  ]
+}

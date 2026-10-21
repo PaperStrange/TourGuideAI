@@ -1,0 +1,155 @@
+{
+  "reviewedAt": "2026-10-21",
+  "status": "passed",
+  "tools": {
+    "shapely": "2.2.0",
+    "pyproj": "3.8.0"
+  },
+  "ginzaContextSourceSha256": "8afacd1d73dc1326466388f6e093538e775b97dafb6b3256c21721daf9c163e3",
+  "ginzaContext": [
+    {
+      "id": "osm:way:103509466",
+      "kind": "building",
+      "valid": true,
+      "distanceToWakoFootprintMetres": 6.702784275982677,
+      "intersectsWakoFootprint": false,
+      "distanceToFrozenCorridorMetres": 13.382558522727786,
+      "intersectsFrozenCorridor": false,
+      "wakoOverlapSquareMetres": 0.0,
+      "corridorOverlapSquareMetres": 0.0
+    },
+    {
+      "id": "osm:way:449618283",
+      "kind": "building",
+      "valid": true,
+      "distanceToWakoFootprintMetres": 0.31108476862440304,
+      "intersectsWakoFootprint": false,
+      "distanceToFrozenCorridorMetres": 6.100250702621053,
+      "intersectsFrozenCorridor": false,
+      "wakoOverlapSquareMetres": 0.0,
+      "corridorOverlapSquareMetres": 0.0
+    },
+    {
+      "id": "osm:way:522046473",
+      "kind": "crossing",
+      "valid": true,
+      "distanceToWakoFootprintMetres": 9.712773497097823,
+      "intersectsWakoFootprint": false,
+      "distanceToFrozenCorridorMetres": 1.5076211556127925,
+      "intersectsFrozenCorridor": false
+    },
+    {
+      "id": "osm:way:522926935",
+      "kind": "crossing",
+      "valid": true,
+      "distanceToWakoFootprintMetres": 2.5975552413043292,
+      "intersectsWakoFootprint": false,
+      "distanceToFrozenCorridorMetres": 0.0,
+      "intersectsFrozenCorridor": true
+    },
+    {
+      "id": "osm:way:522926937",
+      "kind": "crossing",
+      "valid": true,
+      "distanceToWakoFootprintMetres": 9.23395905064004,
+      "intersectsWakoFootprint": false,
+      "distanceToFrozenCorridorMetres": 2.0569328410754495,
+      "intersectsFrozenCorridor": false
+    },
+    {
+      "id": "osm:way:522926938",
+      "kind": "sidewalk",
+      "valid": true,
+      "distanceToWakoFootprintMetres": 5.494791417898848,
+      "intersectsWakoFootprint": false,
+      "distanceToFrozenCorridorMetres": 0.0,
+      "intersectsFrozenCorridor": true
+    },
+    {
+      "id": "osm:way:667867138",
+      "kind": "sidewalk",
+      "valid": true,
+      "distanceToWakoFootprintMetres": 6.730787168438547,
+      "intersectsWakoFootprint": false,
+      "distanceToFrozenCorridorMetres": 0.0,
+      "intersectsFrozenCorridor": true
+    },
+    {
+      "id": "osm:way:884274229",
+      "kind": "road",
+      "valid": true,
+      "distanceToWakoFootprintMetres": 11.87309833068387,
+      "intersectsWakoFootprint": false,
+      "distanceToFrozenCorridorMetres": 7.29288954377664,
+      "intersectsFrozenCorridor": false,
+      "maximumUniformHalfWidthBeforeCorridorContactMetres": 7.29288954377664
+    },
+    {
+      "id": "osm:way:1026056857",
+      "kind": "road",
+      "valid": true,
+      "distanceToWakoFootprintMetres": 10.773375573487588,
+      "intersectsWakoFootprint": false,
+      "distanceToFrozenCorridorMetres": 6.000595866056577,
+      "intersectsFrozenCorridor": false,
+      "maximumUniformHalfWidthBeforeCorridorContactMetres": 6.000595866056577
+    }
+  ],
+  "renderSurfaceValidation": [
+    {
+      "id": "road",
+      "valid": true,
+      "triangleCount": 21,
+      "triangleCoverageDifferenceSquareMetres": 0.0,
+      "triangleOverlapSquareMetres": 4.547473508864641e-13,
+      "excludedOverlapSquareMetres": 0.0
+    },
+    {
+      "id": "sidewalk",
+      "valid": true,
+      "triangleCount": 22,
+      "triangleCoverageDifferenceSquareMetres": 0.0,
+      "triangleOverlapSquareMetres": 0.0,
+      "excludedOverlapSquareMetres": 3.648636358092496e-17
+    },
+    {
+      "id": "land",
+      "valid": true,
+      "triangleCount": 95,
+      "triangleCoverageDifferenceSquareMetres": 0.0,
+      "triangleOverlapSquareMetres": 1.8189894035458565e-12,
+      "excludedOverlapSquareMetres": 5.439560840364596e-17
+    }
+  ],
+  "siteRepresentativePoints": [
+    {
+      "id": "delft-markt",
+      "sourceFeatureId": "osm:way:209351406",
+      "geometryValid": true,
+      "footprintAreaSquareMetres": 759.5842055057147,
+      "representativePoint": {
+        "longitude": 4.358433777698085,
+        "latitude": 52.011451300250975,
+        "classification": "derived building reference only",
+        "method": "Shapely representative_point on WGS84 footprint projected into local AEQD; inverse pyproj transform. No entrance/spawn/access meaning."
+      }
+    },
+    {
+      "id": "helsinki-senate",
+      "sourceFeatureId": "osm:way:1542850662",
+      "geometryValid": true,
+      "footprintAreaSquareMetres": 2566.0882357144133,
+      "representativePoint": {
+        "longitude": 24.952179871566393,
+        "latitude": 60.17042175087571,
+        "classification": "derived building reference only",
+        "method": "Shapely representative_point on WGS84 footprint projected into local AEQD; inverse pyproj transform. No entrance/spawn/access meaning."
+      }
+    }
+  ],
+  "limits": [
+    "Distances describe zero-width mapped centerlines; renderSurfaceValidation separately checks the authored-width layers, holes and frozen geometry exclusions.",
+    "Three context crossing/sidewalk features touch the existing corridor at its mapped junctions; this does not extend playable coverage.",
+    "No full-site survey or current-access validation is supplied."
+  ]
+}

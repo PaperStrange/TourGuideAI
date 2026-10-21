@@ -10,6 +10,13 @@ Existing local, CI and actual HTTPS evidence is retained under
 
 ## Deliverables and responsibilities
 
+The user adds a research-first review of sandbox game engines. The
+[engine research decision](sandbox-engine-research-20261021.md) precedes further
+production edits. Apply reusable world/content patterns and evaluate OSM2World
+with actual geographic inputs; preserve the current runtime while comparative
+engine benefits remain unmeasured. A converter experiment is part of L02/L04.
+Production edits and performance runs were paused during this research gate.
+
 | Sprint / ticket | Owner and review | Delivered outcome and acceptance |
 | --- | --- | --- |
 | 1 · L01 Language response | Engineering → lead/QA | Diagnose the actual rendering/input interval and remove demonstrated redundant work. Preserve the exact Q03 protocol, browser and three separate warm actions below 500 ms; report each result and any remaining gap. Preserve colors, labels, provider identity, camera, room and saved selection. |
