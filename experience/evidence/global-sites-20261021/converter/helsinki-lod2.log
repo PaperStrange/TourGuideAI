@@ -1,0 +1,82 @@
+WARNING[r14659098]: Relation is incomplete, missing members: ['part': Way 1101186166]
+WARNING[r14659097]: Relation is incomplete, missing members: ['part': Way 1101186164]
+WARNING[w90619194]: Non-integer building:levels value: 4.5
+WARNING[w90619194]: 2 similar log entries suppressed
+WARNING[w1542850667]: min_height exceeds building (part) height without roof
+WARNING[w1542850679]: min_height exceeds building (part) height without roof
+WARNING[w1542850684]: min_height exceeds building (part) height without roof
+ERROR[w29478214]: Degenerate triangle: (-92.24641260467887, 0.0, 84.15850197857159), (-92.24641260467887, 0.1, 84.15850197857159), (-92.24641260467887, 0.0, 84.15850197857159)
+Caused by: org.osm2world.util.exception.InvalidGeometryException: Degenerate triangle: (-92.24641260467887, 0.0, 84.15850197857159), (-92.24641260467887, 0.1, 84.15850197857159), (-92.24641260467887, 0.0, 84.15850197857159)
+	at org.osm2world.math.shapes.TriangleXYZ.<init>(TriangleXYZ.java:28)
+	at org.osm2world.world.modules.RoadModule$Road.renderStepsTo(RoadModule.java:1478)
+	at org.osm2world.world.modules.RoadModule$Road.buildMeshesAndModels(RoadModule.java:1596)
+	at org.osm2world.world.data.ProceduralWorldObject.getAttachmentSurfaces(ProceduralWorldObject.java:122)
+	at org.osm2world.O2WConverterImpl.lambda$attachConnectors$0(O2WConverterImpl.java:252)
+	at org.osm2world.util.FaultTolerantIterationUtil.forEach(FaultTolerantIterationUtil.java:25)
+	at org.osm2world.util.FaultTolerantIterationUtil.forEach(FaultTolerantIterationUtil.java:37)
+	at org.osm2world.O2WConverterImpl.attachConnectors(O2WConverterImpl.java:250)
+	at org.osm2world.O2WConverterImpl.runConversion(O2WConverterImpl.java:186)
+	at org.osm2world.O2WConverterImpl.convert(O2WConverterImpl.java:119)
+	at org.osm2world.O2WConverter.convert(O2WConverter.java:73)
+	at org.osm2world.console.commands.ConvertCommand.call(ConvertCommand.java:127)
+	at org.osm2world.console.commands.ConvertCommand.call(ConvertCommand.java:47)
+	at picocli.CommandLine.executeUserObject(CommandLine.java:2031)
+	at picocli.CommandLine.access$1500(CommandLine.java:148)
+	at picocli.CommandLine$RunLast.executeUserObjectOfLastSubcommandWithSameParent(CommandLine.java:2469)
+	at picocli.CommandLine$RunLast.handle(CommandLine.java:2461)
+	at picocli.CommandLine$RunLast.handle(CommandLine.java:2423)
+	at picocli.CommandLine$AbstractParseResultHandler.execute(CommandLine.java:2277)
+	at picocli.CommandLine$RunLast.execute(CommandLine.java:2425)
+	at picocli.CommandLine.execute(CommandLine.java:2174)
+	at org.osm2world.console.OSM2World.main(OSM2World.java:60)
+	at org.osm2world.console.OSM2World.main(OSM2World.java:32)
+
+WARNING[w90619197]: cannot construct top boundary of wall
+WARNING[w90619197]: 59 similar log entries suppressed
+WARNING[w1101186161]: cannot construct top boundary of wall
+WARNING[w1101186161]: 1 similar log entry suppressed
+WARNING[w87318457]: cannot construct top boundary of wall
+WARNING[w87318457]: 10 similar log entries suppressed
+WARNING[w87318456]: cannot construct top boundary of wall
+WARNING[w87318456]: 5 similar log entries suppressed
+WARNING[w33734047]: cannot construct top boundary of wall
+WARNING[w33734047]: 5 similar log entries suppressed
+WARNING[w17427154]: cannot construct top boundary of wall
+WARNING[w17427154]: 9 similar log entries suppressed
+ERROR[w29478214]: Degenerate triangle: (-92.24641260467887, 0.0, 84.15850197857159), (-92.24641260467887, 0.1, 84.15850197857159), (-92.24641260467887, 0.0, 84.15850197857159)
+Caused by: org.osm2world.util.exception.InvalidGeometryException: Degenerate triangle: (-92.24641260467887, 0.0, 84.15850197857159), (-92.24641260467887, 0.1, 84.15850197857159), (-92.24641260467887, 0.0, 84.15850197857159)
+	at org.osm2world.math.shapes.TriangleXYZ.<init>(TriangleXYZ.java:28)
+	at org.osm2world.world.modules.RoadModule$Road.renderStepsTo(RoadModule.java:1478)
+	at org.osm2world.world.modules.RoadModule$Road.buildMeshesAndModels(RoadModule.java:1596)
+	at org.osm2world.world.data.ProceduralWorldObject.buildMeshes(ProceduralWorldObject.java:108)
+	at org.osm2world.world.data.WorldObject.buildMeshes(WorldObject.java:40)
+	at org.osm2world.world.data.WorldObject.buildMeshesWithMetadata(WorldObject.java:54)
+	at org.osm2world.scene.Scene.lambda$sceneToMeshes$1(Scene.java:151)
+	at org.osm2world.util.FaultTolerantIterationUtil.forEach(FaultTolerantIterationUtil.java:25)
+	at org.osm2world.scene.Scene.sceneToMeshes(Scene.java:150)
+	at org.osm2world.scene.Scene.loadMeshStore(Scene.java:125)
+	at org.osm2world.scene.Scene.getMeshesWithMetadata(Scene.java:116)
+	at org.osm2world.console.commands.ConvertCommand.call(ConvertCommand.java:228)
+	at org.osm2world.console.commands.ConvertCommand.call(ConvertCommand.java:47)
+	at picocli.CommandLine.executeUserObject(CommandLine.java:2031)
+	at picocli.CommandLine.access$1500(CommandLine.java:148)
+	at picocli.CommandLine$RunLast.executeUserObjectOfLastSubcommandWithSameParent(CommandLine.java:2469)
+	at picocli.CommandLine$RunLast.handle(CommandLine.java:2461)
+	at picocli.CommandLine$RunLast.handle(CommandLine.java:2423)
+	at picocli.CommandLine$AbstractParseResultHandler.execute(CommandLine.java:2277)
+	at picocli.CommandLine$RunLast.execute(CommandLine.java:2425)
+	at picocli.CommandLine.execute(CommandLine.java:2174)
+	at org.osm2world.console.OSM2World.main(OSM2World.java:60)
+	at org.osm2world.console.OSM2World.main(OSM2World.java:32)
+
+WARNING[w90619197]: cannot construct top boundary of wall
+WARNING[w90619197]: 59 similar log entries suppressed
+WARNING[w1101186161]: cannot construct top boundary of wall
+WARNING[w1101186161]: 1 similar log entry suppressed
+WARNING[w87318457]: cannot construct top boundary of wall
+WARNING[w87318457]: 10 similar log entries suppressed
+WARNING[w87318456]: cannot construct top boundary of wall
+WARNING[w87318456]: 5 similar log entries suppressed
+WARNING[w33734047]: cannot construct top boundary of wall
+WARNING[w33734047]: 5 similar log entries suppressed
+WARNING[w17427154]: cannot construct top boundary of wall
