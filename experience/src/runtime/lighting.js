@@ -3,6 +3,7 @@ import { HDRLoader } from 'three/addons/loaders/HDRLoader.js';
 import { daylightEnvironment } from './lighting-fallback.js';
 import { lightingMode, validateLightingRig, localLightingURL } from './lighting-contract.js';
 import { applyLightingProfile } from './architectural-profile.js';
+import { estimateRenderTargetStorage } from './texture-memory.js';
 
 const digest = async bytes => [...new Uint8Array(await crypto.subtle.digest('SHA-256', bytes))]
   .map(byte => byte.toString(16).padStart(2, '0')).join('');
@@ -39,6 +40,32 @@ export function createSceneLighting(renderer, scene, {
   }
   for (const root of roots) registerRoot(root);
 
+  function textureMemory() {
+    const targets = [], seen = new Set();
+    const add = (kind, target, id) => {
+      if (!target || seen.has(target)) return;
+      seen.add(target);
+      const allocated = renderer.properties.get(target).__webglFramebuffer != null;
+      targets.push({ kind, id, ...estimateRenderTargetStorage(target, allocated) });
+    };
+    if (!disposed) {
+      for (const entry of cache.values()) add('environment-cache', entry.target, entry.file);
+      // 固定 Three 版本保留的 PMREM 工作目标也占用显存。
+      add('pmrem-workspace', pmrem._pingPongRenderTarget, 'PMREM workspace');
+      add('fallback-environment', fallback, 'Fallback environment');
+      for (const light of activeLights) {
+        add('shadow-map', light.shadow?.map, light.name);
+        add('shadow-pass', light.shadow?.mapPass, light.name);
+      }
+    }
+    return { estimatedBytes: targets.reduce((sum, target) => sum + (target.estimatedBytes ?? 0), 0),
+      complete: targets.every(target => target.estimatedBytes !== null), targets,
+      retainedRawHDRBytes: 0,
+      exclusions: ['Driver alignment/metadata, shader programs, vertex/index buffers and main canvas/compositor buffers',
+        'Transient HDR decoding/upload and conversion peak; the raw HDR texture is disposed after PMREM conversion'],
+      allocationEvidence: 'Existing WebGLRenderTarget framebuffer objects in the pinned Three WebGLRenderer' };
+  }
+
   const snapshot = () => ({
     requestedMode, mode, phase, disposed, fallbackReason,
     rig: { status: rig ? 'ready' : phase === 'loading' ? 'loading' : 'unavailable', sha256: rigHash, expectedSha256: expectedRigHash ?? null,
@@ -57,6 +84,7 @@ export function createSceneLighting(renderer, scene, {
         color: `#${material.emissive.getHexString()}`, intensity: material.emissiveIntensity,
         usesBaseColorMap: Boolean(material.map && material.emissiveMap === material.map) })),
     cacheEntries: cache.size, pendingRequests: pending ? 1 : 0, staleRequests, shadowUpdates,
+    textureMemory: textureMemory(),
     memory: { ...renderer.info.memory },
   });
   const publish = () => { if (!disposed) onStatus?.(snapshot()); };

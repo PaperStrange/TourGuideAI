@@ -456,7 +456,7 @@ def main():
                       'height': feature.get('height'), 'recipeId': feature.get('recipeId')}
                      for index, feature in enumerate(features)]
     source_indices = {feature['sourceId']: index for index, feature in enumerate(features)}
-    for surface in geography['surfaces']:
+    for surface in geography['surfaces'] + prepared.get('displayMaterialSurfaces', []):
         if surface['sourceId'] not in source_indices:
             source_indices[surface['sourceId']] = len(feature_table)
             feature_table.append({'index': len(feature_table), 'sourceId': surface['sourceId'],
@@ -470,9 +470,11 @@ def main():
             item['unionDifferenceSquareMetres'] > 1e-7 or item['overlapSquareMetres'] > 1e-7 or item['hausdorffDistanceMetres'] > 1e-8
             for item in prepared['walkableMaterialAudit']):
         raise ValueError('Prepared walking material surfaces must conserve the reviewed navigation union')
-    display_surfaces = [surface for surface in geography['surfaces'] if not surface.get('walkable')] + prepared['walkableMaterialSurfaces']
-    scene_surfaces = display_surfaces + [dict(feature, material={'road': 'asphalt', 'path': 'paving', 'water': 'water', 'green': 'green', 'bridge': 'paving'}[feature['kind']], walkable=False)
-                                            for feature in features if feature['kind'] in ('road', 'path', 'water', 'green', 'bridge')]
+    if not prepared.get('displayMaterialSurfaces'):
+        raise ValueError('Prepared source-led display surfaces and retained Shijo roadway are required')
+    display_surfaces = prepared['displayMaterialSurfaces'] + prepared['walkableMaterialSurfaces']
+    scene_surfaces = display_surfaces + [dict(feature, material={'water': 'water', 'green': 'green', 'bridge': 'paving'}[feature['kind']], walkable=False)
+                                            for feature in features if feature['kind'] in ('water', 'green', 'bridge')]
     for surface in scene_surfaces:
         key = (surface['material'], bool(surface.get('walkable')))
         data = ground_batches.setdefault(key, MeshBatch())
@@ -587,8 +589,13 @@ def main():
     write_json(asset_dir / 'references.json', references)
     provenance = {'version': 1, 'id': geography['id'], 'geographySha256': sha256(arguments.geography),
                   'sceneSha256': sha256(arguments.scene), 'preparedArtSha256': sha256(arguments.prepared_art),
+                  'preparedArtSourceHashes': prepared['sourceHashes'],
                   'preparedArtProducerSha256': sha256(ROOT / 'experience/content-tools/prepare-neighborhood-art.py'),
                   'walkableMaterialAudit': prepared['walkableMaterialAudit'],
+                  'reviewedRoadMask': {key: value for key, value in prepared['reviewedRoadMask'].items() if key not in ('polygons', 'input')},
+                  'reviewedRoadMaskSources': {key: value for key, value in prepared['reviewedRoadMask']['input'].items() if key != 'meshes'},
+                  'displayTriangulationAudit': [{'sourceId': surface['sourceId'], **surface['float32DisplayAudit']}
+                                               for surface in prepared['displayMaterialSurfaces'] if surface.get('float32DisplayAudit', {}).get('omittedTriangles')],
                   'sourceLedger': file_record(asset_dir / 'source-ledger.json', asset_dir),
                   'references': file_record(asset_dir / 'references.json', asset_dir),
                   'styleSha256': sha256(arguments.style), 'generatorSha256': sha256(__file__),

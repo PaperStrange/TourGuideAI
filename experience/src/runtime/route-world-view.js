@@ -11,6 +11,7 @@ import { toScene } from './camera.js';
 import { waitForTask } from './cancellation.js';
 import { PLAYER_RADIUS } from '../simulation/world.js';
 import { createCameraObstruction } from './camera-obstruction.js';
+import { estimateMaterialTextures } from './texture-memory.js';
 
 export async function createRouteWorldView(renderer, { pack, signal, onProgress, lightingMode = 'day',
   onLightingStatus, onInvalidate, onStreamingChange, initialPosition = pack.world.spawn, camera, qualityTier } = {}) {
@@ -227,7 +228,14 @@ export async function createRouteWorldView(renderer, { pack, signal, onProgress,
       for (const root of [ground.root, traveller, context?.root].filter(Boolean)) root.traverse(mesh => {
         if (mesh.isMesh) { residentMeshes++; residentTriangles += (mesh.geometry.index?.count ?? mesh.geometry.attributes.position.count) / 3; }
       });
-      return { packId: pack.id, revision: pack.revision, manifestSha256: manifestBytes.sha256, disposed,
+      const shared = assets.snapshot(), actorAndContact = estimateMaterialTextures([traveller, shadow]);
+      const lightingMemory = lighting.snapshot().textureMemory;
+      const textureMemory = { estimatedBytes: shared.estimatedTextureBytes + actorAndContact.estimatedBytes + lightingMemory.estimatedBytes,
+        sharedSceneBytes: shared.estimatedTextureBytes, actorAndContact, lightingBytes: lightingMemory.estimatedBytes,
+        complete: actorAndContact.complete && lightingMemory.complete,
+        sharedSceneAssumption: 'Unique shared image textures estimated as RGBA8 with a full mip chain (4/3 multiplier)',
+        exclusions: lightingMemory.exclusions };
+      return { packId: pack.id, revision: pack.revision, manifestSha256: manifestBytes.sha256, disposed, textureMemory,
         streetMeshes: meshes, streetTriangles: triangles, meshes: meshes + residentMeshes, triangles: triangles + residentTriangles,
         residentMeshes, residentTriangles, markerCount: 0,
         walkableSurfaces: walkable.length, actorPosition: actor.position.toArray(), actorHeading: actor.rotation.y,

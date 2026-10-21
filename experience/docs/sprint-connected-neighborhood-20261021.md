@@ -99,6 +99,13 @@ checkpoint, freezes the verified package, runs required CI and publishes through
 the existing Pages workflow. A source or quality gap is reported before reducing
 the approved scope. No paid infrastructure is required for the pilot.
 
+The connected-neighborhood CI job has a bounded 240-minute software-renderer
+execution allowance and a 40-minute limit per walking leg. The actual test covers
+2,706.888 m out and back, with a longest leg of 458.534 m. The initial software
+probe measured 0.593 m/s overall and 0.276 m/s during its final minute; these
+observations justify the tooling allowance and fail the intended fluent experience.
+This allowance does not change the startup, frame, input or Q03 acceptance targets.
+
 ## Geographic expansion
 
 Reuse source adapters, architectural components, route definitions and the same

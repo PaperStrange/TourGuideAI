@@ -1,0 +1,23 @@
+{
+  "checks": 16,
+  "passed": [
+    "suggestions start collapsed",
+    "recommendation generation preserves stored itinerary",
+    "all must-see sights produce one explicit choice",
+    "Find my walk opens suggestions",
+    "choosing persists selected preferences",
+    "choosing collapses suggestions",
+    "removing a must-see updates the preference field",
+    "removing a must-see updates persisted preferences",
+    "unavailable version blocks automatic entry",
+    "unavailable version disables Start",
+    "unavailable version blocks kept-order mutation",
+    "blocked mutation retains saved bytes",
+    "separate replacement commits available revision",
+    "replacement preserves private kept data",
+    "Chinese explicit choose is localized",
+    "no unhandled page errors"
+  ],
+  "errors": [],
+  "scope": "Actual browser DOM, production panel/planner/source modules and native localStorage; no 3D entry or busy streaming claim."
+}

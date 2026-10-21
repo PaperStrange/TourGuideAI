@@ -3,18 +3,90 @@
   "id": "shijo-east",
   "geographySha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
   "sceneSha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e",
-  "preparedArtSha256": "ddfae87cb1a13e234bf1c4e91645b68a9e88d1c71cb03df6cf3290c88a8a883c",
-  "preparedArtProducerSha256": "e57f86cef973762b5803a05b20ceb6c12dc07018b1c49f3e540a92769e6e6ae1",
+  "preparedArtSha256": "7b73c6ec4b19ec0f30b41c52024f551cd12da58353cc87d882130ecca73713ce",
+  "preparedArtSourceHashes": {
+    "scene.json": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e",
+    "geography.json": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55"
+  },
+  "preparedArtProducerSha256": "d90795e69837f3427ae11b079e750749ae743a470f518ad3d4af4dd051e3de7a",
   "walkableMaterialAudit": [
     {
       "surfaceId": "shijo-east:walkable",
       "originalAreaSquareMetres": 2658.929168499999,
-      "renderedAreaSquareMetres": 2658.9291684999916,
-      "unionDifferenceSquareMetres": 3.741753109610946e-12,
-      "overlapSquareMetres": 7.73070496506989e-12,
-      "hausdorffDistanceMetres": 8.881784197001252e-16,
+      "renderedAreaSquareMetres": 2658.9291684999844,
+      "unionDifferenceSquareMetres": 4.9774721504071876e-12,
+      "overlapSquareMetres": 1.4551915228366852e-11,
+      "hausdorffDistanceMetres": 1.4211288389453755e-14,
       "topHeightMetres": 0,
       "canonicalGeometryChanged": false
+    }
+  ],
+  "reviewedRoadMask": {
+    "inputFile": "artifacts/neighborhood-20261021/world/reviewed-road-mask.json",
+    "inputSha256": "6a5de3121e364dd4e9fec7a7382e20986d575b24209ee82f7f7cdf905d07c18f",
+    "bounds": {
+      "minX": 0,
+      "maxX": 64,
+      "minY": -25,
+      "maxY": 15
+    },
+    "maskAreaSquareMetres": 1251.6460039812446,
+    "sidewalkSubtractionAreaSquareMetres": 58.404572152772985,
+    "canonicalGeometryChanged": false,
+    "meaning": "Bounded original authored visual road plan, minus raised sidewalk top faces; no surveyed width or navigation claim."
+  },
+  "reviewedRoadMaskSources": {
+    "schemaVersion": 1,
+    "id": "authored:retained-shijo-roadway",
+    "model": {
+      "file": "experience/public/models/shijo-block.glb",
+      "sha256": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c"
+    },
+    "world": {
+      "file": "experience/src/content/kyoto.js",
+      "sha256": "cfef7654e1bca051f84861d6ec446e588c1d6ef2d8e8e5cf12a9421224a22859",
+      "bounds": {
+        "minX": 0,
+        "maxX": 64,
+        "minY": -25,
+        "maxY": 15
+      },
+      "roadSurface": {
+        "northY": 1.68,
+        "southY": -16.879,
+        "valueKind": "authored",
+        "basis": "Presentation bounds inset 0.65 m from mapped crossing endpoints on sidewalk centrelines; these are not observed kerbs."
+      }
+    },
+    "extractorSha256": "a30f157c0256371a9614a9bbffdc4fde9aa3dc04505b2d2675db87e9f9543d3a",
+    "meaning": "Original reviewed authored road display mask; bounded to its original 64 m scene. Does not establish measured curb width or new navigation."
+  },
+  "displayTriangulationAudit": [
+    {
+      "sourceId": "osm:way:571525880",
+      "omittedTriangles": [
+        {
+          "triangle": [
+            [
+              993.844,
+              19.017
+            ],
+            [
+              993.8525021431518,
+              17.817003733926363
+            ],
+            [
+              993.852499973436,
+              17.81700375019923
+            ]
+          ],
+          "areaSquareMetres": 1.3017562515123607e-06
+        }
+      ],
+      "areaDifferenceSquareMetres": 1.3017562515124928e-06,
+      "hausdorffDistanceMetres": 2.1695460612916375e-06,
+      "maximumAreaDifferenceSquareMetres": 1e-05,
+      "maximumBoundaryDifferenceMetres": 1e-05
     }
   ],
   "sourceLedger": {
@@ -28,10 +100,10 @@
     "bytes": 7321
   },
   "styleSha256": "3dd0c20f3ccea49660fb2437d3af812f9dd6b8e05b4e4e52a5dcd77381f9dade",
-  "generatorSha256": "6ca12957a52cd5f8ced5dc73902b82e9456aff58b29308869cf65946b4202158",
+  "generatorSha256": "fc2b6685391886a3548c1da51f2da7d1b2af32854a84a948765b85c8c3bdfcfb",
   "geometryHelperSha256": "fcdf5dc4d59e58e4b2819d47ae8e9f02f307ad68f70f03e0a0d264605d20d48f",
   "blenderVersion": "4.3.2",
-  "elapsedSeconds": 10.271,
+  "elapsedSeconds": 11.577,
   "geometryMeaning": "Source footprints and prepared surface polygons; reviewed original facade assemblies with explicit authored dimensions",
   "rights": "source-ledger.json and references.json",
   "referenceIds": [

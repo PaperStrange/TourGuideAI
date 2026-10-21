@@ -64,7 +64,7 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     name: Validate ${{ matrix.suite }}
-    timeout-minutes: 40
+    timeout-minutes: ${{ matrix.suite == 'connected neighborhood' && 240 || 40 }}
     strategy:
       fail-fast: false
       matrix:
@@ -93,6 +93,10 @@ jobs:
             command: test:packs
             output: packs
             artifact: packs-browser-evidence
+          - suite: connected neighborhood
+            command: test:neighborhood
+            output: neighborhood
+            artifact: neighborhood-browser-evidence
     env:
       TMPDIR: ${{ github.workspace }}/artifacts/tmp
     defaults:
@@ -108,7 +112,7 @@ jobs:
           cache-dependency-path: experience/package-lock.json
       - run: npm ci
       - name: Install and test room service
-        if: matrix.suite == 'journey homepage' || matrix.suite == 'solo exploration' || matrix.suite == 'reviewed place packs'
+        if: matrix.suite == 'journey homepage' || matrix.suite == 'solo exploration' || matrix.suite == 'reviewed place packs' || matrix.suite == 'connected neighborhood'
         run: npm ci --prefix server && npm test --prefix server
       - run: npm test
       - run: npm run build
@@ -119,6 +123,8 @@ jobs:
           EXPERIENCE_QA_OUTPUT: test-results/${{ matrix.output }}
           # A bounded tooling allowance for software rendering, not a fluency target.
           EXPERIENCE_QA_TIMEOUT: '600000'
+          # 软件渲染下完整往返的执行时限；体验性能门槛仍由独立基准验证。
+          EXPERIENCE_QA_WALK_TIMEOUT: '2400000'
       - name: Preserve browser evidence
         if: always()
         uses: actions/upload-artifact@v4

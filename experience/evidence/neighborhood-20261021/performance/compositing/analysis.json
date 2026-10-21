@@ -1,0 +1,6284 @@
+{
+  "artifact": "34aff7623cc8676541773bd26e45b69b6b325f34859d195a4f7a19b97cbb3e99",
+  "trustedInputWindowMs": 25004.482,
+  "deltas": {
+    "elapsedMs": 25015.60000000149,
+    "tick": 153,
+    "renderedFrames": 31,
+    "updateFrames": 32,
+    "distanceMeters": 11.252608053247036,
+    "shadowUpdates": 0
+  },
+  "observer": {
+    "count": 30,
+    "totalMs": 8.099999999627471,
+    "medianMs": 0.2000000011175871,
+    "p95Ms": 0.599999999627471
+  },
+  "mainThread": "32331:32331",
+  "frameTasks": [
+    {
+      "offsetMs": 13.971,
+      "durationMs": 4.968
+    },
+    {
+      "offsetMs": 38.196,
+      "durationMs": 3.679
+    },
+    {
+      "offsetMs": 860.934,
+      "durationMs": 14.903
+    },
+    {
+      "offsetMs": 1728.387,
+      "durationMs": 7.934
+    },
+    {
+      "offsetMs": 1742.687,
+      "durationMs": 19.262
+    },
+    {
+      "offsetMs": 2489.235,
+      "durationMs": 11.847
+    },
+    {
+      "offsetMs": 3335.208,
+      "durationMs": 26.361
+    },
+    {
+      "offsetMs": 4174.653,
+      "durationMs": 9.932
+    },
+    {
+      "offsetMs": 5070.98,
+      "durationMs": 12.37
+    },
+    {
+      "offsetMs": 6010.187,
+      "durationMs": 11.03
+    },
+    {
+      "offsetMs": 6931.169,
+      "durationMs": 29.725
+    },
+    {
+      "offsetMs": 7833.769,
+      "durationMs": 2675.195
+    },
+    {
+      "offsetMs": 10511.454,
+      "durationMs": 5.092
+    },
+    {
+      "offsetMs": 10517.962,
+      "durationMs": 3.152
+    },
+    {
+      "offsetMs": 10622.36,
+      "durationMs": 13.974
+    },
+    {
+      "offsetMs": 11503.09,
+      "durationMs": 16.899
+    },
+    {
+      "offsetMs": 12367.621,
+      "durationMs": 10.944
+    },
+    {
+      "offsetMs": 13193.762,
+      "durationMs": 7.764
+    },
+    {
+      "offsetMs": 13999.038,
+      "durationMs": 14.46
+    },
+    {
+      "offsetMs": 14945.077,
+      "durationMs": 7.577
+    },
+    {
+      "offsetMs": 15816.453,
+      "durationMs": 5.194
+    },
+    {
+      "offsetMs": 16712.622,
+      "durationMs": 8.61
+    },
+    {
+      "offsetMs": 17530.725,
+      "durationMs": 10.319
+    },
+    {
+      "offsetMs": 18390.022,
+      "durationMs": 12.619
+    },
+    {
+      "offsetMs": 19985.375,
+      "durationMs": 4.373
+    },
+    {
+      "offsetMs": 20005.316,
+      "durationMs": 6.178
+    },
+    {
+      "offsetMs": 20823.312,
+      "durationMs": 7.349
+    },
+    {
+      "offsetMs": 22670.014,
+      "durationMs": 15.587
+    },
+    {
+      "offsetMs": 22689.121,
+      "durationMs": 10.159
+    },
+    {
+      "offsetMs": 23633.67,
+      "durationMs": 28.695
+    },
+    {
+      "offsetMs": 24595.818,
+      "durationMs": 27.64
+    }
+  ],
+  "threadEvents": [
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "RunTask",
+      "count": 868,
+      "overlapWallMs": 24573.16600000003,
+      "completeEventThreadMs": 137.51900000000026,
+      "missingThreadDuration": 24,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "Scheduler::RunTask",
+      "count": 566,
+      "overlapWallMs": 22691.49200000002,
+      "completeEventThreadMs": 114.58600000000015,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "SkiaOutputSurfaceImplOnGpu::SwapBuffers",
+      "count": 28,
+      "overlapWallMs": 22559.678999999996,
+      "completeEventThreadMs": 38.81300000000001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "Graphics.Pipeline",
+      "count": 56,
+      "overlapWallMs": 22559.192999999996,
+      "completeEventThreadMs": 38.244,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "RunTask",
+      "count": 1052,
+      "overlapWallMs": 3274.8370000000327,
+      "completeEventThreadMs": 299.2380000000029,
+      "missingThreadDuration": 4,
+      "clipped": 2
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "ProxyMain::BeginMainFrame",
+      "count": 31,
+      "overlapWallMs": 3143.41,
+      "completeEventThreadMs": 244.43899999999996,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "v8.callFunction",
+      "count": 60,
+      "overlapWallMs": 3079.723000000001,
+      "completeEventThreadMs": 203.94500000000008,
+      "missingThreadDuration": 0,
+      "clipped": 2
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "FunctionCall",
+      "count": 60,
+      "overlapWallMs": 3058.1130000000007,
+      "completeEventThreadMs": 202.852,
+      "missingThreadDuration": 0,
+      "clipped": 2
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "FireAnimationFrame",
+      "count": 31,
+      "overlapWallMs": 3043.791000000001,
+      "completeEventThreadMs": 194.022,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "ImplementationBase::WaitForCmd",
+      "count": 4,
+      "overlapWallMs": 2664.803,
+      "completeEventThreadMs": 11.975,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "CommandBufferHelper::Finish",
+      "count": 4,
+      "overlapWallMs": 2664.769,
+      "completeEventThreadMs": 11.970999999999998,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "CommandBufferProxyImpl::WaitForGetOffset",
+      "count": 4,
+      "overlapWallMs": 2664.5550000000003,
+      "completeEventThreadMs": 11.832999999999998,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "CommandBufferStub::PerformWork",
+      "count": 220,
+      "overlapWallMs": 1878.519,
+      "completeEventThreadMs": 20.735999999999997,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "GPUTracer::ProcessTraces",
+      "count": 18,
+      "overlapWallMs": 1841.4840000000004,
+      "completeEventThreadMs": 5.271,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "GLES2Implementation::GetShaderiv",
+      "count": 2,
+      "overlapWallMs": 1683.689,
+      "completeEventThreadMs": 7.367,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "GLES2Implementation::GetProgramiv",
+      "count": 20,
+      "overlapWallMs": 981.1799999999996,
+      "completeEventThreadMs": 4.6770000000000005,
+      "missingThreadDuration": 18,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "GpuChannel::ExecuteDeferredRequest",
+      "count": 500,
+      "overlapWallMs": 116.64500000000017,
+      "completeEventThreadMs": 64.33800000000008,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "GPUTask",
+      "count": 501,
+      "overlapWallMs": 109.90400000000018,
+      "completeEventThreadMs": 60.657000000000096,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "CommandBuffer::Flush",
+      "count": 481,
+      "overlapWallMs": 104.27600000000022,
+      "completeEventThreadMs": 56.65700000000008,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "CommandBufferStub::OnAsyncFlush",
+      "count": 481,
+      "overlapWallMs": 103.85900000000017,
+      "completeEventThreadMs": 56.598000000000084,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "CommandBufferService:PutChanged",
+      "count": 481,
+      "overlapWallMs": 101.8980000000001,
+      "completeEventThreadMs": 56.23500000000007,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "WebGL",
+      "count": 452,
+      "overlapWallMs": 96.07200000000016,
+      "completeEventThreadMs": 49.77500000000002,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "CommandBufferHelper::Flush",
+      "count": 112,
+      "overlapWallMs": 73.35200000000007,
+      "completeEventThreadMs": 3.0089999999999972,
+      "missingThreadDuration": 1,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32289",
+      "threadName": "VizCompositorThread",
+      "name": "RunTask",
+      "count": 1667,
+      "overlapWallMs": 62.977000000000245,
+      "completeEventThreadMs": 37.54000000000016,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "RunTask",
+      "count": 510,
+      "overlapWallMs": 51.37999999999996,
+      "completeEventThreadMs": 25.759999999999994,
+      "missingThreadDuration": 33,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "Paint",
+      "count": 62,
+      "overlapWallMs": 50.656000000000006,
+      "completeEventThreadMs": 12.088999999999999,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "LocalFrameView::RunPaintLifecyclePhase",
+      "count": 31,
+      "overlapWallMs": 43.263,
+      "completeEventThreadMs": 14.617,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "Graphics.Pipeline",
+      "count": 144,
+      "overlapWallMs": 40.4,
+      "completeEventThreadMs": 19.701999999999988,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "TimerFire",
+      "count": 24,
+      "overlapWallMs": 38.51800000000001,
+      "completeEventThreadMs": 12.567999999999998,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "MajorGC",
+      "count": 3,
+      "overlapWallMs": 35.742,
+      "completeEventThreadMs": 16.016,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MARK_COMPACTOR",
+      "count": 3,
+      "overlapWallMs": 35.51,
+      "completeEventThreadMs": 15.797,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32289",
+      "threadName": "VizCompositorThread",
+      "name": "Graphics.Pipeline",
+      "count": 229,
+      "overlapWallMs": 34.685,
+      "completeEventThreadMs": 19.938999999999986,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "ProxyImpl::DidReceiveCompositorFrameAckOnImplThread",
+      "count": 29,
+      "overlapWallMs": 30.5,
+      "completeEventThreadMs": 1.0330000000000001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "ProxyImpl::ScheduledActionSendBeginMainFrame",
+      "count": 31,
+      "overlapWallMs": 30.195000000000004,
+      "completeEventThreadMs": 1.0070000000000003,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GCFinalizeMCReduceMemory",
+      "count": 2,
+      "overlapWallMs": 29.541,
+      "completeEventThreadMs": 12.722,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GCIncrementalMarking",
+      "count": 87,
+      "overlapWallMs": 27.975000000000012,
+      "completeEventThreadMs": 9.131000000000002,
+      "missingThreadDuration": 4,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_INCREMENTAL",
+      "count": 87,
+      "overlapWallMs": 27.87900000000001,
+      "completeEventThreadMs": 9.117999999999999,
+      "missingThreadDuration": 4,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32338",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_BACKGROUND_MARKING",
+      "count": 4,
+      "overlapWallMs": 26.282999999999998,
+      "completeEventThreadMs": 10.318000000000001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32354",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_BACKGROUND_MARKING",
+      "count": 5,
+      "overlapWallMs": 25.775999999999996,
+      "completeEventThreadMs": 12.359,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "LocalFrameView::RunStyleAndLayoutLifecyclePhases",
+      "count": 31,
+      "overlapWallMs": 23.94,
+      "completeEventThreadMs": 19.717,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "ProxyImpl::ScheduledActionDraw",
+      "count": 30,
+      "overlapWallMs": 23.247999999999994,
+      "completeEventThreadMs": 6.357,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "MainFrame.Draw",
+      "count": 30,
+      "overlapWallMs": 23.207999999999995,
+      "completeEventThreadMs": 6.332,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32353",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_BACKGROUND_MARKING",
+      "count": 5,
+      "overlapWallMs": 22.458,
+      "completeEventThreadMs": 12.230999999999998,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_BACKGROUND_MARKING",
+      "count": 11,
+      "overlapWallMs": 21.375,
+      "completeEventThreadMs": 15.288,
+      "missingThreadDuration": 1,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_EVACUATE",
+      "count": 6,
+      "overlapWallMs": 20.003000000000004,
+      "completeEventThreadMs": 7,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "GLContextEGL::MakeCurrent",
+      "count": 412,
+      "overlapWallMs": 19.974000000000057,
+      "completeEventThreadMs": 16.950999999999983,
+      "missingThreadDuration": 68,
+      "clipped": 0
+    },
+    {
+      "thread": "32232:32232",
+      "threadName": "CrBrowserMain",
+      "name": "RunTask",
+      "count": 1622,
+      "overlapWallMs": 18.29000000000055,
+      "completeEventThreadMs": 9.265999999999803,
+      "missingThreadDuration": 24,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32289",
+      "threadName": "VizCompositorThread",
+      "name": "DisplayScheduler::OnBeginFrameDeadline",
+      "count": 57,
+      "overlapWallMs": 16.937,
+      "completeEventThreadMs": 9.659999999999998,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32289",
+      "threadName": "VizCompositorThread",
+      "name": "DisplayScheduler::DrawAndSwap",
+      "count": 29,
+      "overlapWallMs": 16.642000000000003,
+      "completeEventThreadMs": 9.411,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32289",
+      "threadName": "VizCompositorThread",
+      "name": "Display::DrawAndSwap",
+      "count": 29,
+      "overlapWallMs": 16.560000000000002,
+      "completeEventThreadMs": 9.359,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "LocalFrameView::layout",
+      "count": 31,
+      "overlapWallMs": 15.898,
+      "completeEventThreadMs": 12.003000000000002,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "Layout",
+      "count": 31,
+      "overlapWallMs": 15.749,
+      "completeEventThreadMs": 11.881,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "GpuChannelHost::VerifyFlush",
+      "count": 22,
+      "overlapWallMs": 15.720999999999998,
+      "completeEventThreadMs": 0.40600000000000014,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "Commit",
+      "count": 31,
+      "overlapWallMs": 15.405999999999997,
+      "completeEventThreadMs": 5.664,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "LocalFrameView::performLayout",
+      "count": 31,
+      "overlapWallMs": 14.806999999999999,
+      "completeEventThreadMs": 11.003999999999998,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_EVACUATE_COPY",
+      "count": 3,
+      "overlapWallMs": 14.41,
+      "completeEventThreadMs": 3.1900000000000004,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32232:32256",
+      "threadName": "PerfettoTrace",
+      "name": "RunTask",
+      "count": 97,
+      "overlapWallMs": 13.998000000000001,
+      "completeEventThreadMs": 8.152999999999997,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_BACKGROUND_EVACUATE_COPY",
+      "count": 2,
+      "overlapWallMs": 13.747,
+      "completeEventThreadMs": 2.614,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "PrePaint",
+      "count": 31,
+      "overlapWallMs": 11.010000000000002,
+      "completeEventThreadMs": 6.139999999999998,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "ProxyImpl::ReadyToCommit",
+      "count": 31,
+      "overlapWallMs": 9.904000000000002,
+      "completeEventThreadMs": 8.245,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32289",
+      "threadName": "VizCompositorThread",
+      "name": "DelayBasedBeginFrameSource::OnTimerTick",
+      "count": 57,
+      "overlapWallMs": 9.757,
+      "completeEventThreadMs": 4.719,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "SkiaOutputSurfaceImplOnGpu::FinishPaintCurrentFrame",
+      "count": 29,
+      "overlapWallMs": 9.577999999999998,
+      "completeEventThreadMs": 8.312999999999999,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "RendererRasterWorker",
+      "count": 35,
+      "overlapWallMs": 9.080000000000002,
+      "completeEventThreadMs": 7.2959999999999985,
+      "missingThreadDuration": 2,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_EVACUATE_COPY_PARALLEL",
+      "count": 3,
+      "overlapWallMs": 9.038,
+      "completeEventThreadMs": 2.98,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "ExternalBeginFrameSource::OnBeginFrame",
+      "count": 57,
+      "overlapWallMs": 8.213999999999999,
+      "completeEventThreadMs": 7.488000000000002,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_INCREMENTAL_EMBEDDER_TRACING",
+      "count": 83,
+      "overlapWallMs": 7.701000000000002,
+      "completeEventThreadMs": 3.298999999999998,
+      "missingThreadDuration": 28,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32353",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_BACKGROUND_EVACUATE_COPY",
+      "count": 1,
+      "overlapWallMs": 7.693,
+      "completeEventThreadMs": 2.11,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "Scheduler::BeginFrame",
+      "count": 57,
+      "overlapWallMs": 7.573,
+      "completeEventThreadMs": 6.944,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "Scheduler::BeginImplFrame",
+      "count": 57,
+      "overlapWallMs": 7.127999999999999,
+      "completeEventThreadMs": 6.592,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "LayerTreeHost::DoUpdateLayers",
+      "count": 31,
+      "overlapWallMs": 6.768,
+      "completeEventThreadMs": 1.5379999999999996,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32335",
+      "threadName": "PerfettoTrace",
+      "name": "RunTask",
+      "count": 111,
+      "overlapWallMs": 6.636999999999998,
+      "completeEventThreadMs": 7.141,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32340",
+      "threadName": "Chrome_ChildIOThread",
+      "name": "RunTask",
+      "count": 211,
+      "overlapWallMs": 6.566999999999995,
+      "completeEventThreadMs": 4.615999999999994,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32354",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+      "count": 3,
+      "overlapWallMs": 6.424,
+      "completeEventThreadMs": 3.271,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "MinorGC",
+      "count": 6,
+      "overlapWallMs": 6.325,
+      "completeEventThreadMs": 2.699,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "LayerTreeHostImpl::CommitComplete",
+      "count": 31,
+      "overlapWallMs": 6.047,
+      "completeEventThreadMs": 4.774,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GCScavenger",
+      "count": 6,
+      "overlapWallMs": 6.045000000000001,
+      "completeEventThreadMs": 2.438,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GCFinalizeMC",
+      "count": 1,
+      "overlapWallMs": 5.999,
+      "completeEventThreadMs": 3.1,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "auto cc::Scheduler::FinishImplFrame()::(lambda)::operator()()::(lambda)::operator()(uint32_t) const",
+      "count": 58,
+      "overlapWallMs": 5.876000000000001,
+      "completeEventThreadMs": 4.289999999999999,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "LocalFrameView::RunPrePaintLifecyclePhase",
+      "count": 31,
+      "overlapWallMs": 5.866999999999999,
+      "completeEventThreadMs": 2.595999999999999,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "UpdateLayoutTree",
+      "count": 31,
+      "overlapWallMs": 5.841000000000001,
+      "completeEventThreadMs": 5.832000000000001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32338",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "RasterizerTaskImpl::RunOnWorkerThread",
+      "count": 26,
+      "overlapWallMs": 5.7010000000000005,
+      "completeEventThreadMs": 4.267,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "DidNotSubmitInLastFrame",
+      "count": 28,
+      "overlapWallMs": 5.685999999999999,
+      "completeEventThreadMs": 4.145,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32353",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+      "count": 5,
+      "overlapWallMs": 5.666,
+      "completeEventThreadMs": 2.6540000000000004,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "auto cc::LayerTreeHostImpl::PrepareTiles()::(lambda)::operator()()::(lambda)::operator()(uint32_t) const",
+      "count": 53,
+      "overlapWallMs": 5.535,
+      "completeEventThreadMs": 4.319,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "auto cc::Scheduler::SendDidNotProduceFrame(const viz::BeginFrameArgs &, FrameSkippedReason)::(lambda)::operator()()::(lambda)::operator()(uint32_t) const",
+      "count": 28,
+      "overlapWallMs": 5.526999999999999,
+      "completeEventThreadMs": 4.015999999999999,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32338",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "RasterTask",
+      "count": 26,
+      "overlapWallMs": 5.515,
+      "completeEventThreadMs": 4.1129999999999995,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_SCAVENGER",
+      "count": 6,
+      "overlapWallMs": 5.4590000000000005,
+      "completeEventThreadMs": 1.8940000000000001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32338",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "GpuRasterBuffer::Playback",
+      "count": 26,
+      "overlapWallMs": 5.403,
+      "completeEventThreadMs": 4.02,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "auto cc::TileManager::PrepareTiles(const GlobalStateThatImpactsTilePriority &)::(lambda)::operator()()::(lambda)::operator()(uint32_t) const",
+      "count": 53,
+      "overlapWallMs": 5.384,
+      "completeEventThreadMs": 4.218,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_SCAVENGER_SCAVENGE",
+      "count": 6,
+      "overlapWallMs": 5.372,
+      "completeEventThreadMs": 1.825,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS",
+      "count": 3,
+      "overlapWallMs": 5.369999999999999,
+      "completeEventThreadMs": 3.6020000000000003,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "LayerTreeHostImpl::DidNotProduceFrame",
+      "count": 27,
+      "overlapWallMs": 5.3229999999999995,
+      "completeEventThreadMs": 3.8390000000000004,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_HEAP_EMBEDDER_TRACING_EPILOGUE",
+      "count": 3,
+      "overlapWallMs": 5.319,
+      "completeEventThreadMs": 1.609,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32338",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_BACKGROUND_EVACUATE_COPY",
+      "count": 1,
+      "overlapWallMs": 5.279,
+      "completeEventThreadMs": 2.314,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "TileManager::PrepareTiles",
+      "count": 53,
+      "overlapWallMs": 5.253,
+      "completeEventThreadMs": 4.145999999999999,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32289",
+      "threadName": "VizCompositorThread",
+      "name": "DirectRenderer::DrawFrame",
+      "count": 29,
+      "overlapWallMs": 5.199000000000001,
+      "completeEventThreadMs": 4.724,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32288",
+      "threadName": "Chrome_ChildIOThread",
+      "name": "GpuChannelMessageFilter::FlushDeferredRequests",
+      "count": 168,
+      "overlapWallMs": 4.959999999999995,
+      "completeEventThreadMs": 1.2259999999999986,
+      "missingThreadDuration": 6,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32338",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+      "count": 17,
+      "overlapWallMs": 4.773,
+      "completeEventThreadMs": 2.343,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32336",
+      "threadName": "ThreadPoolServiceThread",
+      "name": "RunTask",
+      "count": 10,
+      "overlapWallMs": 4.765999999999999,
+      "completeEventThreadMs": 0.18,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32285",
+      "threadName": "PerfettoTrace",
+      "name": "RunTask",
+      "count": 114,
+      "overlapWallMs": 4.474999999999997,
+      "completeEventThreadMs": 4.601999999999998,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "SyncToken::Release",
+      "count": 33,
+      "overlapWallMs": 4.469999999999999,
+      "completeEventThreadMs": 0.13700000000000007,
+      "missingThreadDuration": 1,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32354",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "ConcurrentMarking::RunMajor Preempted",
+      "count": 2,
+      "overlapWallMs": 4.457999999999999,
+      "completeEventThreadMs": 0.011,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32338",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "RasterImplementation::RasterCHROMIUM",
+      "count": 26,
+      "overlapWallMs": 4.427,
+      "completeEventThreadMs": 3.141,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32289",
+      "threadName": "VizCompositorThread",
+      "name": "DirectRenderer::DrawRenderPass",
+      "count": 29,
+      "overlapWallMs": 4.214,
+      "completeEventThreadMs": 3.992000000000001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_SCAVENGER_SCAVENGE_PARALLEL_PHASE",
+      "count": 6,
+      "overlapWallMs": 4.178,
+      "completeEventThreadMs": 0.769,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "CommandBufferProxyImpl::OrderingBarrier",
+      "count": 36,
+      "overlapWallMs": 3.959999999999998,
+      "completeEventThreadMs": 0.13,
+      "missingThreadDuration": 10,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "ProxyMain::BeginMainFrame::commit",
+      "count": 31,
+      "overlapWallMs": 3.573,
+      "completeEventThreadMs": 0.6890000000000003,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_MARK",
+      "count": 3,
+      "overlapWallMs": 3.5629999999999997,
+      "completeEventThreadMs": 1.696,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "LocalFrameView::RunCompositingInputsLifecyclePhase",
+      "count": 31,
+      "overlapWallMs": 3.4659999999999993,
+      "completeEventThreadMs": 3.4579999999999993,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "TileManager::CheckForCompletedTasksAndIssueSignals",
+      "count": 75,
+      "overlapWallMs": 3.4559999999999995,
+      "completeEventThreadMs": 2.716999999999997,
+      "missingThreadDuration": 2,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "SharedImageStub::OnDestroySharedImage",
+      "count": 9,
+      "overlapWallMs": 3.3549999999999995,
+      "completeEventThreadMs": 1.1119999999999997,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "RasterDecoderImpl::DoEndRasterCHROMIUM",
+      "count": 28,
+      "overlapWallMs": 3.31,
+      "completeEventThreadMs": 3.2689999999999992,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS_TO_NEW_ROOTS",
+      "count": 3,
+      "overlapWallMs": 3.2859999999999996,
+      "completeEventThreadMs": 2.202,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.DeoptimizeCode",
+      "count": 21,
+      "overlapWallMs": 3.2020000000000004,
+      "completeEventThreadMs": 0.5920000000000002,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "TileManager::ScheduleTasks",
+      "count": 53,
+      "overlapWallMs": 3.1779999999999986,
+      "completeEventThreadMs": 2.246999999999999,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "RasterDecoderImpl::DoEndRasterCHROMIUM::Flush",
+      "count": 28,
+      "overlapWallMs": 3.1550000000000002,
+      "completeEventThreadMs": 3.1489999999999996,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "ProxyImpl::Commit",
+      "count": 31,
+      "overlapWallMs": 3.097000000000001,
+      "completeEventThreadMs": 2.8350000000000004,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "TileManager::CheckPendingGpuWorkAndIssueSignals",
+      "count": 104,
+      "overlapWallMs": 3.094999999999997,
+      "completeEventThreadMs": 2.5009999999999972,
+      "missingThreadDuration": 17,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "LocalFrameView::ScheduleAnimation",
+      "count": 67,
+      "overlapWallMs": 3.0759999999999983,
+      "completeEventThreadMs": 1.529999999999999,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "CommandBufferProxyImpl::Flush",
+      "count": 111,
+      "overlapWallMs": 3.0539999999999967,
+      "completeEventThreadMs": 2.5779999999999976,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32353",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "Sweeper::ConcurrentMajorSweeper Finished",
+      "count": 3,
+      "overlapWallMs": 3.014,
+      "completeEventThreadMs": 0.008,
+      "missingThreadDuration": 2,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_HEAP_EPILOGUE_SAFEPOINT",
+      "count": 9,
+      "overlapWallMs": 2.905,
+      "completeEventThreadMs": 2.9029999999999996,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32354",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "Sweeper::ConcurrentMajorSweeper Finished",
+      "count": 11,
+      "overlapWallMs": 2.8979999999999992,
+      "completeEventThreadMs": 0.021000000000000005,
+      "missingThreadDuration": 4,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32353",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "ConcurrentMarking::RunMajor Finished",
+      "count": 4,
+      "overlapWallMs": 2.5759999999999996,
+      "completeEventThreadMs": 0.025,
+      "missingThreadDuration": 1,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_SCAVENGER_SCAVENGE_PARALLEL",
+      "count": 6,
+      "overlapWallMs": 2.404,
+      "completeEventThreadMs": 0.22600000000000003,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "LayerTreeHostImpl::ActivateSyncTree",
+      "count": 31,
+      "overlapWallMs": 2.205,
+      "completeEventThreadMs": 1.7670000000000003,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_MARK_FULL_CLOSURE_PARALLEL",
+      "count": 3,
+      "overlapWallMs": 2.182,
+      "completeEventThreadMs": 1.428,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "SharedImageStub::OnCreateSharedImage",
+      "count": 4,
+      "overlapWallMs": 2.134,
+      "completeEventThreadMs": 2.132,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "LayerTreeHostImpl::PrepareToDraw",
+      "count": 30,
+      "overlapWallMs": 1.975,
+      "completeEventThreadMs": 1.793,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "RasterDecoderImpl::DoRasterCHROMIUM",
+      "count": 28,
+      "overlapWallMs": 1.9579999999999997,
+      "completeEventThreadMs": 1.686,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_BACKGROUND_SWEEPING",
+      "count": 7,
+      "overlapWallMs": 1.9050000000000002,
+      "completeEventThreadMs": 1.8910000000000002,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "RasterDecoderImpl::DoRasterCHROMIUM::Deserializing",
+      "count": 28,
+      "overlapWallMs": 1.8489999999999998,
+      "completeEventThreadMs": 1.5629999999999993,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "LayerTreeHostImpl::FinishCommit",
+      "count": 31,
+      "overlapWallMs": 1.8459999999999999,
+      "completeEventThreadMs": 1.6869999999999996,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_CLEAR",
+      "count": 3,
+      "overlapWallMs": 1.7850000000000001,
+      "completeEventThreadMs": 1.7269999999999999,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "ProxyImpl::ScheduledActionPrepareTiles",
+      "count": 22,
+      "overlapWallMs": 1.7749999999999997,
+      "completeEventThreadMs": 1.4480000000000002,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "LayerTreeImpl::PullProperties",
+      "count": 31,
+      "overlapWallMs": 1.6920000000000004,
+      "completeEventThreadMs": 1.559,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "CullRectUpdate",
+      "count": 31,
+      "overlapWallMs": 1.6519999999999995,
+      "completeEventThreadMs": 0.5620000000000002,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "Layerize",
+      "count": 31,
+      "overlapWallMs": 1.5890000000000004,
+      "completeEventThreadMs": 1.5710000000000002,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "LayerTreeImpl::UpdateDrawProperties",
+      "count": 31,
+      "overlapWallMs": 1.5770000000000004,
+      "completeEventThreadMs": 1.369,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS_SLOTS_MAIN",
+      "count": 3,
+      "overlapWallMs": 1.538,
+      "completeEventThreadMs": 0.87,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_BACKGROUND_FULL_ARRAY_BUFFER_SWEEP",
+      "count": 1,
+      "overlapWallMs": 1.364,
+      "completeEventThreadMs": 1.362,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_MARK_ROOTS",
+      "count": 9,
+      "overlapWallMs": 1.3519999999999994,
+      "completeEventThreadMs": 0.267,
+      "missingThreadDuration": 1,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "Major concurrent marking rescheduled",
+      "count": 59,
+      "overlapWallMs": 1.2479999999999962,
+      "completeEventThreadMs": 0.029000000000000005,
+      "missingThreadDuration": 47,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+      "count": 5,
+      "overlapWallMs": 1.214,
+      "completeEventThreadMs": 1.0370000000000001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "TileManager::AssignGpuMemoryToTiles",
+      "count": 53,
+      "overlapWallMs": 1.2100000000000002,
+      "completeEventThreadMs": 1.1510000000000002,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32289",
+      "threadName": "VizCompositorThread",
+      "name": "Surface::CommitFrame",
+      "count": 30,
+      "overlapWallMs": 1.1989999999999998,
+      "completeEventThreadMs": 1.0920000000000005,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32289",
+      "threadName": "VizCompositorThread",
+      "name": "DisplayScheduler::BeginFrame",
+      "count": 59,
+      "overlapWallMs": 1.1670000000000003,
+      "completeEventThreadMs": 0.9410000000000007,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_CLEAR_JOIN_JOB",
+      "count": 3,
+      "overlapWallMs": 1.1560000000000001,
+      "completeEventThreadMs": 1.128,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_FINISH",
+      "count": 3,
+      "overlapWallMs": 1.134,
+      "completeEventThreadMs": 0.205,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_MARK_WEAK_CLOSURE_EPHEMERON_MARKING",
+      "count": 13,
+      "overlapWallMs": 1.1259999999999997,
+      "completeEventThreadMs": 1.0979999999999999,
+      "missingThreadDuration": 5,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "TreeSynchronizer::PushLayerPropertiesTo.Active",
+      "count": 31,
+      "overlapWallMs": 1.0750000000000002,
+      "completeEventThreadMs": 0.9370000000000003,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GCIncrementalMarkingStart",
+      "count": 3,
+      "overlapWallMs": 1.061,
+      "completeEventThreadMs": 1.0270000000000001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32338",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "TaskSetFinishedTaskImpl::RunOnWorkerThread",
+      "count": 47,
+      "overlapWallMs": 1.0150000000000003,
+      "completeEventThreadMs": 0.40800000000000014,
+      "missingThreadDuration": 5,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "RasterDecoderImpl::DoBeginRasterCHROMIUM",
+      "count": 28,
+      "overlapWallMs": 1.0020000000000002,
+      "completeEventThreadMs": 0.3910000000000001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32353",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+      "count": 4,
+      "overlapWallMs": 1.0010000000000001,
+      "completeEventThreadMs": 0.9109999999999999,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32289",
+      "threadName": "VizCompositorThread",
+      "name": "Surface::ActivateFrame",
+      "count": 30,
+      "overlapWallMs": 0.9890000000000004,
+      "completeEventThreadMs": 0.9150000000000004,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32232:32263",
+      "threadName": "Chrome_IOThread",
+      "name": "RunTask",
+      "count": 26,
+      "overlapWallMs": 0.97,
+      "completeEventThreadMs": 0.5389999999999999,
+      "missingThreadDuration": 4,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_SWEEP_START_JOBS",
+      "count": 3,
+      "overlapWallMs": 0.961,
+      "completeEventThreadMs": 0.041999999999999996,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_SCAVENGER_SCAVENGE_ROOTS",
+      "count": 6,
+      "overlapWallMs": 0.932,
+      "completeEventThreadMs": 0.193,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "LayerTreeImpl::UpdateDrawProperties::CalculateDrawProperties",
+      "count": 31,
+      "overlapWallMs": 0.9190000000000004,
+      "completeEventThreadMs": 0.8140000000000004,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "HitTest",
+      "count": 26,
+      "overlapWallMs": 0.8660000000000001,
+      "completeEventThreadMs": 0.8600000000000003,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32289",
+      "threadName": "VizCompositorThread",
+      "name": "SkiaRenderer::SwapBuffers",
+      "count": 29,
+      "overlapWallMs": 0.8230000000000004,
+      "completeEventThreadMs": 0.6320000000000002,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_INCREMENTAL_START",
+      "count": 3,
+      "overlapWallMs": 0.8160000000000001,
+      "completeEventThreadMs": 0.792,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "LayerTreeHostImpl::CalculateRenderPasses",
+      "count": 30,
+      "overlapWallMs": 0.8100000000000003,
+      "completeEventThreadMs": 0.8050000000000004,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "TileTaskManagerImpl::ScheduleTasks",
+      "count": 53,
+      "overlapWallMs": 0.8100000000000002,
+      "completeEventThreadMs": 0.6430000000000002,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_SWEEP",
+      "count": 17,
+      "overlapWallMs": 0.733,
+      "completeEventThreadMs": 0.693,
+      "missingThreadDuration": 1,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS_PARALLEL",
+      "count": 3,
+      "overlapWallMs": 0.6980000000000001,
+      "completeEventThreadMs": 0.699,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "TileManager::PrepareToDraw",
+      "count": 30,
+      "overlapWallMs": 0.6960000000000002,
+      "completeEventThreadMs": 0.5800000000000002,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_HEAP_ENSURE_SWEEPING_COMPLETED",
+      "count": 5,
+      "overlapWallMs": 0.665,
+      "completeEventThreadMs": 0.657,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_CLEAR_WEAK_REFERENCES_TRIVIAL",
+      "count": 3,
+      "overlapWallMs": 0.6639999999999999,
+      "completeEventThreadMs": 0.6639999999999999,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "OverlayInterstitialAdDetector::MaybeFireDetection",
+      "count": 13,
+      "overlapWallMs": 0.6569999999999999,
+      "completeEventThreadMs": 0.636,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "LayerTreeHostImpl::BeginCommit",
+      "count": 31,
+      "overlapWallMs": 0.6400000000000003,
+      "completeEventThreadMs": 0.5980000000000003,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32289",
+      "threadName": "VizCompositorThread",
+      "name": "DisplayScheduler::ScheduleBeginFrameDeadline",
+      "count": 122,
+      "overlapWallMs": 0.6380000000000005,
+      "completeEventThreadMs": 0.43100000000000027,
+      "missingThreadDuration": 45,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "LatencyInfo.Flow",
+      "count": 4,
+      "overlapWallMs": 0.638,
+      "completeEventThreadMs": 0.018000000000000002,
+      "missingThreadDuration": 0,
+      "clipped": 2
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "WidgetBaseInputHandler::OnHandleInputEvent",
+      "count": 2,
+      "overlapWallMs": 0.624,
+      "completeEventThreadMs": 0,
+      "missingThreadDuration": 0,
+      "clipped": 2
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_BACKGROUND_EVACUATE_UPDATE_POINTERS",
+      "count": 3,
+      "overlapWallMs": 0.593,
+      "completeEventThreadMs": 0.591,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "LayerTreeImpl::UpdateDrawProperties::Occlusion",
+      "count": 31,
+      "overlapWallMs": 0.5870000000000002,
+      "completeEventThreadMs": 0.5200000000000002,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32354",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_BACKGROUND_EVACUATE_UPDATE_POINTERS",
+      "count": 3,
+      "overlapWallMs": 0.5840000000000001,
+      "completeEventThreadMs": 0.561,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32402",
+      "threadName": "GpuChannelManager Trace",
+      "name": "RendererRasterWorker-0x21e40002a300",
+      "count": 1,
+      "overlapWallMs": 0.583,
+      "completeEventThreadMs": 0,
+      "missingThreadDuration": 1,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "Scheduler::ScheduleBeginImplFrameDeadline",
+      "count": 104,
+      "overlapWallMs": 0.5600000000000004,
+      "completeEventThreadMs": 0.5270000000000004,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "auto viz::ClientResourceProvider::ReceiveReturnsFromParent(std::vector<ReturnedResource>)::(lambda)::operator()()::(lambda)::operator()(uint32_t) const",
+      "count": 58,
+      "overlapWallMs": 0.5450000000000003,
+      "completeEventThreadMs": 0.48400000000000026,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "EventDispatch",
+      "count": 2,
+      "overlapWallMs": 0.545,
+      "completeEventThreadMs": 0,
+      "missingThreadDuration": 0,
+      "clipped": 2
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "IntersectionObserverController::computeIntersections",
+      "count": 62,
+      "overlapWallMs": 0.5150000000000002,
+      "completeEventThreadMs": 0.3660000000000002,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "LocalFrameView::UpdateViewportIntersectionsForSubtree",
+      "count": 31,
+      "overlapWallMs": 0.4920000000000002,
+      "completeEventThreadMs": 0.45200000000000023,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "TileTaskManagerImpl::CheckForCompletedTasks",
+      "count": 103,
+      "overlapWallMs": 0.4840000000000002,
+      "completeEventThreadMs": 0.40300000000000014,
+      "missingThreadDuration": 8,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS_POINTER_TABLES",
+      "count": 3,
+      "overlapWallMs": 0.482,
+      "completeEventThreadMs": 0.481,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "draw_property_utils::ComputeDrawPropertiesOfVisibleLayers",
+      "count": 31,
+      "overlapWallMs": 0.4810000000000001,
+      "completeEventThreadMs": 0.49500000000000016,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32287",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "GpuPersistentCache::DiskCache::DoDelayedStoreToDisk",
+      "count": 5,
+      "overlapWallMs": 0.46099999999999997,
+      "completeEventThreadMs": 0.358,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "LocalFrameView::performPostLayoutTasks",
+      "count": 31,
+      "overlapWallMs": 0.44400000000000023,
+      "completeEventThreadMs": 0.4310000000000002,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "StickyAdDetector::MaybeFireDetection",
+      "count": 13,
+      "overlapWallMs": 0.4210000000000001,
+      "completeEventThreadMs": 0.403,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "TreeSynchronizer::PushLayerPropertiesTo.Main",
+      "count": 31,
+      "overlapWallMs": 0.4110000000000002,
+      "completeEventThreadMs": 0.3820000000000002,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32232:32257",
+      "threadName": "ThreadPoolServiceThread",
+      "name": "RunTask",
+      "count": 7,
+      "overlapWallMs": 0.40800000000000003,
+      "completeEventThreadMs": 0.125,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32353",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_BACKGROUND_EVACUATE_UPDATE_POINTERS",
+      "count": 2,
+      "overlapWallMs": 0.40700000000000003,
+      "completeEventThreadMs": 0.406,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32289",
+      "threadName": "VizCompositorThread",
+      "name": "auto viz::SkiaRenderer::FlushOutputSurface()::(lambda)::operator()()::(lambda)::operator()(uint32_t) const",
+      "count": 29,
+      "overlapWallMs": 0.4030000000000002,
+      "completeEventThreadMs": 0.29700000000000015,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32289",
+      "threadName": "VizCompositorThread",
+      "name": "SkiaOutputSurfaceImpl::FlushGpuTasks",
+      "count": 58,
+      "overlapWallMs": 0.3830000000000002,
+      "completeEventThreadMs": 0.2520000000000001,
+      "missingThreadDuration": 16,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "CommandBufferStub::OnDestroyTransferBuffer",
+      "count": 4,
+      "overlapWallMs": 0.35,
+      "completeEventThreadMs": 0.347,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32288",
+      "threadName": "Chrome_ChildIOThread",
+      "name": "Scheduler::ScheduleTask",
+      "count": 162,
+      "overlapWallMs": 0.3300000000000002,
+      "completeEventThreadMs": 0.20200000000000007,
+      "missingThreadDuration": 86,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32287",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "GpuPersistentCache::DiskCache::DoStoreToDisk",
+      "count": 3,
+      "overlapWallMs": 0.33,
+      "completeEventThreadMs": 0.326,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "CommandBuffer::OrderingBarrier",
+      "count": 205,
+      "overlapWallMs": 0.32500000000000023,
+      "completeEventThreadMs": 0.1620000000000001,
+      "missingThreadDuration": 104,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32287",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "GpuPersistentCache::DiskCache::Cache::Insert",
+      "count": 3,
+      "overlapWallMs": 0.323,
+      "completeEventThreadMs": 0.323,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "SkiaOutputSurfaceImplOnGpu::BeginAccessImages",
+      "count": 29,
+      "overlapWallMs": 0.3220000000000001,
+      "completeEventThreadMs": 0.3040000000000001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "LayerTreeImpl::UpdateTiles",
+      "count": 31,
+      "overlapWallMs": 0.3170000000000001,
+      "completeEventThreadMs": 0.30500000000000016,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "LayerTreeHostImpl::NotifyTileStateChanged",
+      "count": 49,
+      "overlapWallMs": 0.31700000000000006,
+      "completeEventThreadMs": 0.05500000000000002,
+      "missingThreadDuration": 19,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "RasterSource::PerformSolidColorAnalysis",
+      "count": 31,
+      "overlapWallMs": 0.3020000000000001,
+      "completeEventThreadMs": 0.2880000000000001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_SCAVENGER_SCAVENGE_WEAK_GLOBAL_HANDLES_IDENTIFY",
+      "count": 6,
+      "overlapWallMs": 0.292,
+      "completeEventThreadMs": 0.23300000000000004,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "RasterImplementation::SetAggressivelyFreeResources",
+      "count": 4,
+      "overlapWallMs": 0.29100000000000004,
+      "completeEventThreadMs": 0.268,
+      "missingThreadDuration": 2,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "UpdateLayer",
+      "count": 108,
+      "overlapWallMs": 0.28900000000000015,
+      "completeEventThreadMs": 0.2300000000000001,
+      "missingThreadDuration": 39,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32286",
+      "threadName": "ThreadPoolServiceThread",
+      "name": "RunTask",
+      "count": 5,
+      "overlapWallMs": 0.281,
+      "completeEventThreadMs": 0.10699999999999998,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "RasterizerTaskImpl::RunOnWorkerThread",
+      "count": 3,
+      "overlapWallMs": 0.273,
+      "completeEventThreadMs": 0.255,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "Scheduler::ContinueTask",
+      "count": 190,
+      "overlapWallMs": 0.2720000000000002,
+      "completeEventThreadMs": 0.08500000000000002,
+      "missingThreadDuration": 169,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "auto cc::(anonymous namespace)::InsertNodeForTask(TaskGraph *, TileTask *, uint16_t, uint16_t, size_t, bool)::(lambda)::operator()()::(lambda)::operator()(uint32_t) const",
+      "count": 145,
+      "overlapWallMs": 0.2680000000000002,
+      "completeEventThreadMs": 0.15300000000000008,
+      "missingThreadDuration": 90,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "Scheduler::FinishTask",
+      "count": 132,
+      "overlapWallMs": 0.2680000000000001,
+      "completeEventThreadMs": 0.058000000000000024,
+      "missingThreadDuration": 101,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_MARK_EMBEDDER_PROLOGUE",
+      "count": 6,
+      "overlapWallMs": 0.258,
+      "completeEventThreadMs": 0.254,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "LayerTreeHost::ApplyCompositorChanges",
+      "count": 31,
+      "overlapWallMs": 0.2560000000000001,
+      "completeEventThreadMs": 0.2350000000000001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "LayerTreeHost::WaitForCommitCompletion",
+      "count": 31,
+      "overlapWallMs": 0.25600000000000006,
+      "completeEventThreadMs": 0.06300000000000003,
+      "missingThreadDuration": 1,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "ImplementationBase::GetBucketContents",
+      "count": 1,
+      "overlapWallMs": 0.255,
+      "completeEventThreadMs": 0.033,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "auto cc::ResourcePool::OnResourceReleased(size_t, const gpu::SyncToken &, bool)::(lambda)::operator()()::(lambda)::operator()(uint32_t) const",
+      "count": 29,
+      "overlapWallMs": 0.25000000000000006,
+      "completeEventThreadMs": 0.2340000000000001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "RasterTask",
+      "count": 3,
+      "overlapWallMs": 0.25,
+      "completeEventThreadMs": 0.235,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_MARK_EMBEDDER_TRACING",
+      "count": 13,
+      "overlapWallMs": 0.24900000000000005,
+      "completeEventThreadMs": 0.25200000000000006,
+      "missingThreadDuration": 3,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "TileManager::IsReadyToDraw",
+      "count": 30,
+      "overlapWallMs": 0.24800000000000008,
+      "completeEventThreadMs": 0.23000000000000007,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "LayerTreeImpl::PushPropertyTreesTo",
+      "count": 31,
+      "overlapWallMs": 0.2410000000000001,
+      "completeEventThreadMs": 0.2270000000000001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "GpuRasterBuffer::Playback",
+      "count": 3,
+      "overlapWallMs": 0.235,
+      "completeEventThreadMs": 0.22299999999999998,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "WidgetBase::WillBeginMainFrame",
+      "count": 31,
+      "overlapWallMs": 0.22700000000000006,
+      "completeEventThreadMs": 0.21200000000000008,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "TileManager::DidFinishRunningTileTasksRequiredForActivation",
+      "count": 53,
+      "overlapWallMs": 0.20900000000000013,
+      "completeEventThreadMs": 0.18300000000000008,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "TileManager::DidFinishRunningTileTasksRequiredForDraw",
+      "count": 53,
+      "overlapWallMs": 0.2000000000000001,
+      "completeEventThreadMs": 0.1700000000000001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "RasterImplementation::RasterCHROMIUM",
+      "count": 3,
+      "overlapWallMs": 0.193,
+      "completeEventThreadMs": 0.19,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_CLEAR_STRING_TABLE",
+      "count": 9,
+      "overlapWallMs": 0.192,
+      "completeEventThreadMs": 0.187,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32288",
+      "threadName": "Chrome_ChildIOThread",
+      "name": "RunTask",
+      "count": 11,
+      "overlapWallMs": 0.184,
+      "completeEventThreadMs": 0.099,
+      "missingThreadDuration": 3,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "Scheduler::NotifyReadyToCommit",
+      "count": 31,
+      "overlapWallMs": 0.18300000000000008,
+      "completeEventThreadMs": 0.1740000000000001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "DiscardableImageMap::Generate",
+      "count": 31,
+      "overlapWallMs": 0.18200000000000008,
+      "completeEventThreadMs": 0.1620000000000001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_SCAVENGER_SCAVENGE_FINALIZE",
+      "count": 6,
+      "overlapWallMs": 0.174,
+      "completeEventThreadMs": 0.17200000000000001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "CommandBuffer::FlushComplete",
+      "count": 110,
+      "overlapWallMs": 0.1690000000000001,
+      "completeEventThreadMs": 0.07200000000000001,
+      "missingThreadDuration": 81,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "CalculateRenderSurfaceLayerList",
+      "count": 31,
+      "overlapWallMs": 0.1680000000000001,
+      "completeEventThreadMs": 0.15300000000000008,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "ProxyImpl::SetNeedsCommitOnImplThread",
+      "count": 31,
+      "overlapWallMs": 0.16800000000000007,
+      "completeEventThreadMs": 0.13000000000000003,
+      "missingThreadDuration": 3,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32289",
+      "threadName": "VizCompositorThread",
+      "name": "DirectRenderer::DrawFrame ProcessForOverlays",
+      "count": 29,
+      "overlapWallMs": 0.16500000000000006,
+      "completeEventThreadMs": 0.15200000000000008,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "TileManager::IsReadyToActivate",
+      "count": 31,
+      "overlapWallMs": 0.16500000000000004,
+      "completeEventThreadMs": 0.14300000000000004,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_SCAVENGER_SCAVENGE_WEAK_GLOBAL_HANDLES_PROCESS",
+      "count": 6,
+      "overlapWallMs": 0.16500000000000004,
+      "completeEventThreadMs": 0.137,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "CommandBufferHelper::Flush",
+      "count": 53,
+      "overlapWallMs": 0.1640000000000001,
+      "completeEventThreadMs": 0.09100000000000005,
+      "missingThreadDuration": 9,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "LatencyInfo.Flow",
+      "count": 3,
+      "overlapWallMs": 0.16300000000000003,
+      "completeEventThreadMs": 0.065,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "ConcurrentMarking::RunMajor Finished",
+      "count": 5,
+      "overlapWallMs": 0.163,
+      "completeEventThreadMs": 0.012,
+      "missingThreadDuration": 1,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32354",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_CLEAR_STRING_TABLE",
+      "count": 8,
+      "overlapWallMs": 0.16099999999999998,
+      "completeEventThreadMs": 0.162,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "Scheduler::OnBeginImplFrameDeadline",
+      "count": 57,
+      "overlapWallMs": 0.15600000000000008,
+      "completeEventThreadMs": 0.12800000000000006,
+      "missingThreadDuration": 6,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_EVACUATE_EPILOGUE",
+      "count": 3,
+      "overlapWallMs": 0.147,
+      "completeEventThreadMs": 0.148,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "LayerTreeImpl::InvalidateRegionForImages",
+      "count": 31,
+      "overlapWallMs": 0.14200000000000002,
+      "completeEventThreadMs": 0.15400000000000003,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "LayerTreeHostImpl::BuildHitTestData",
+      "count": 30,
+      "overlapWallMs": 0.14100000000000007,
+      "completeEventThreadMs": 0.12800000000000006,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "ProxyImpl::OnCanDrawStateChanged",
+      "count": 54,
+      "overlapWallMs": 0.14000000000000007,
+      "completeEventThreadMs": 0.10000000000000003,
+      "missingThreadDuration": 26,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32338",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+      "count": 2,
+      "overlapWallMs": 0.14,
+      "completeEventThreadMs": 0.121,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_FINISH_SWEEP_ARRAY_BUFFERS",
+      "count": 3,
+      "overlapWallMs": 0.138,
+      "completeEventThreadMs": 0.132,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32289",
+      "threadName": "VizCompositorThread",
+      "name": "SendBeginFrameDecision",
+      "count": 54,
+      "overlapWallMs": 0.13700000000000007,
+      "completeEventThreadMs": 0.11200000000000004,
+      "missingThreadDuration": 5,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "LocalFrameView::RunAccessibilitySteps",
+      "count": 31,
+      "overlapWallMs": 0.13700000000000004,
+      "completeEventThreadMs": 0.11600000000000002,
+      "missingThreadDuration": 2,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "LayerTreeImpl::PushPropertiesTo",
+      "count": 31,
+      "overlapWallMs": 0.13400000000000006,
+      "completeEventThreadMs": 0.12400000000000005,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32354",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL",
+      "count": 2,
+      "overlapWallMs": 0.132,
+      "completeEventThreadMs": 0.082,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32232:32264",
+      "threadName": "MemoryInfra",
+      "name": "RunTask",
+      "count": 2,
+      "overlapWallMs": 0.131,
+      "completeEventThreadMs": 0.01,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32353",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_CLEAR_STRING_TABLE",
+      "count": 5,
+      "overlapWallMs": 0.13,
+      "completeEventThreadMs": 0.128,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "TaskSetFinishedTaskImpl::RunOnWorkerThread",
+      "count": 33,
+      "overlapWallMs": 0.129,
+      "completeEventThreadMs": 0.10600000000000001,
+      "missingThreadDuration": 13,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "AnimationHost::TickAnimations",
+      "count": 78,
+      "overlapWallMs": 0.12700000000000009,
+      "completeEventThreadMs": 0.059000000000000045,
+      "missingThreadDuration": 24,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "CommandBuffer::OrderingBarrier",
+      "count": 51,
+      "overlapWallMs": 0.12500000000000006,
+      "completeEventThreadMs": 0.10000000000000005,
+      "missingThreadDuration": 7,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32338",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "CommandBufferProxyImpl::OrderingBarrier",
+      "count": 26,
+      "overlapWallMs": 0.12400000000000005,
+      "completeEventThreadMs": 0.09500000000000003,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "LayerTreeHost::AnimationHost::PushProperties",
+      "count": 31,
+      "overlapWallMs": 0.12200000000000007,
+      "completeEventThreadMs": 0.10900000000000006,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "ScrollTree::CollectScrollDeltas",
+      "count": 31,
+      "overlapWallMs": 0.11900000000000004,
+      "completeEventThreadMs": 0.10500000000000002,
+      "missingThreadDuration": 1,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "TaskSetFinishedTaskImpl::RunOnWorkerThread",
+      "count": 6,
+      "overlapWallMs": 0.11499999999999999,
+      "completeEventThreadMs": 0.08199999999999999,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "PaintController::commitNewDisplayItems",
+      "count": 31,
+      "overlapWallMs": 0.11300000000000006,
+      "completeEventThreadMs": 0.09000000000000004,
+      "missingThreadDuration": 3,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32353",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "RasterizerTaskImpl::RunOnWorkerThread",
+      "count": 1,
+      "overlapWallMs": 0.112,
+      "completeEventThreadMs": 0.108,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32338",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "CommandBuffer::OrderingBarrier",
+      "count": 27,
+      "overlapWallMs": 0.10900000000000001,
+      "completeEventThreadMs": 0.055000000000000014,
+      "missingThreadDuration": 9,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "SkiaOutputSurfaceImplOnGpu::EndAccessImages",
+      "count": 29,
+      "overlapWallMs": 0.10800000000000005,
+      "completeEventThreadMs": 0.08800000000000004,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "InputHandler::ClearCurrentlyScrollingNode",
+      "count": 31,
+      "overlapWallMs": 0.10500000000000004,
+      "completeEventThreadMs": 0.09100000000000004,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_HEAP_EXTERNAL_EPILOGUE",
+      "count": 9,
+      "overlapWallMs": 0.10500000000000001,
+      "completeEventThreadMs": 0.092,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_CLEAR_SWEEP_EXTERNAL_POINTER_TABLE",
+      "count": 2,
+      "overlapWallMs": 0.10200000000000001,
+      "completeEventThreadMs": 0.101,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32353",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "RasterTask",
+      "count": 1,
+      "overlapWallMs": 0.102,
+      "completeEventThreadMs": 0.098,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_FULL_ARRAY_BUFFER_SWEEP",
+      "count": 2,
+      "overlapWallMs": 0.1,
+      "completeEventThreadMs": 0.098,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32354",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "RasterizerTaskImpl::RunOnWorkerThread",
+      "count": 1,
+      "overlapWallMs": 0.095,
+      "completeEventThreadMs": 0.088,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "LocalFrameView::NotifyResizeObservers",
+      "count": 31,
+      "overlapWallMs": 0.09400000000000006,
+      "completeEventThreadMs": 0.08000000000000004,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32353",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "GpuRasterBuffer::Playback",
+      "count": 1,
+      "overlapWallMs": 0.094,
+      "completeEventThreadMs": 0.092,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_SCAVENGER_FREE_REMEMBERED_SET",
+      "count": 6,
+      "overlapWallMs": 0.09100000000000001,
+      "completeEventThreadMs": 0.08800000000000001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32232:32312",
+      "threadName": "DevToolsPipeHandlerWriteThread",
+      "name": "RunTask",
+      "count": 2,
+      "overlapWallMs": 0.089,
+      "completeEventThreadMs": 0.06,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_SCAVENGER_TRACED_HANDLES_COMPUTE_WEAKNESS_PARALLEL",
+      "count": 5,
+      "overlapWallMs": 0.089,
+      "completeEventThreadMs": 0.086,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32354",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "RasterTask",
+      "count": 1,
+      "overlapWallMs": 0.089,
+      "completeEventThreadMs": 0.083,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_SCAVENGER_TRACED_HANDLES_RESET_PARALLEL",
+      "count": 6,
+      "overlapWallMs": 0.088,
+      "completeEventThreadMs": 0.08600000000000001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32289",
+      "threadName": "VizCompositorThread",
+      "name": "Using new deadline",
+      "count": 56,
+      "overlapWallMs": 0.08700000000000006,
+      "completeEventThreadMs": 0.056000000000000036,
+      "missingThreadDuration": 6,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32354",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "GpuRasterBuffer::Playback",
+      "count": 1,
+      "overlapWallMs": 0.085,
+      "completeEventThreadMs": 0.08,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "CommandBufferStub::OnRegisterTransferBuffer",
+      "count": 6,
+      "overlapWallMs": 0.08300000000000002,
+      "completeEventThreadMs": 0.08300000000000002,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32353",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "RasterImplementation::RasterCHROMIUM",
+      "count": 1,
+      "overlapWallMs": 0.077,
+      "completeEventThreadMs": 0.077,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_PROLOGUE",
+      "count": 3,
+      "overlapWallMs": 0.074,
+      "completeEventThreadMs": 0.072,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32353",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "TaskSetFinishedTaskImpl::RunOnWorkerThread",
+      "count": 2,
+      "overlapWallMs": 0.074,
+      "completeEventThreadMs": 0.024,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "GpuChannel::Flush",
+      "count": 67,
+      "overlapWallMs": 0.07300000000000005,
+      "completeEventThreadMs": 0.016000000000000007,
+      "missingThreadDuration": 54,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32354",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "RasterImplementation::RasterCHROMIUM",
+      "count": 1,
+      "overlapWallMs": 0.072,
+      "completeEventThreadMs": 0.072,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "TextureLayer::PushPropertiesTo",
+      "count": 31,
+      "overlapWallMs": 0.07100000000000004,
+      "completeEventThreadMs": 0.05500000000000003,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32353",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_CLEAR_WEAK_GLOBAL_HANDLES",
+      "count": 1,
+      "overlapWallMs": 0.07,
+      "completeEventThreadMs": 0.069,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_CLEAR_SWEEP_JS_DISPATCH_TABLE",
+      "count": 2,
+      "overlapWallMs": 0.069,
+      "completeEventThreadMs": 0.068,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32338",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "DidFinishRunningAllTilesTask::RunOnWorkerThread",
+      "count": 26,
+      "overlapWallMs": 0.06600000000000002,
+      "completeEventThreadMs": 0.03700000000000001,
+      "missingThreadDuration": 1,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_SCAVENGER_SCAVENGE_COLLECT_OLD_TO_NEW_PAGES",
+      "count": 6,
+      "overlapWallMs": 0.066,
+      "completeEventThreadMs": 0.06199999999999999,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "TileManager::DidFinishRunningAllTileTasks",
+      "count": 51,
+      "overlapWallMs": 0.06500000000000004,
+      "completeEventThreadMs": 0.028000000000000018,
+      "missingThreadDuration": 26,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "auto cc::SchedulerStateMachine::SetNeedsBeginMainFrame(bool)::(lambda)::operator()()::(lambda)::operator()(uint32_t) const",
+      "count": 31,
+      "overlapWallMs": 0.06500000000000003,
+      "completeEventThreadMs": 0.05100000000000002,
+      "missingThreadDuration": 3,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GCPhantomHandleProcessingCallback",
+      "count": 2,
+      "overlapWallMs": 0.063,
+      "completeEventThreadMs": 0.061000000000000006,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_CLEAR_WEAK_COLLECTIONS",
+      "count": 3,
+      "overlapWallMs": 0.062,
+      "completeEventThreadMs": 0.06,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "Scheduler::NotifyBeginMainFrameStarted",
+      "count": 30,
+      "overlapWallMs": 0.06100000000000002,
+      "completeEventThreadMs": 0.04200000000000002,
+      "missingThreadDuration": 3,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32354",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "TaskSetFinishedTaskImpl::RunOnWorkerThread",
+      "count": 2,
+      "overlapWallMs": 0.06,
+      "completeEventThreadMs": 0.046,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "CommandBufferProxyImpl::Flush",
+      "count": 43,
+      "overlapWallMs": 0.05900000000000004,
+      "completeEventThreadMs": 0.034000000000000016,
+      "missingThreadDuration": 13,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "ImageAnimationController::AnimateImagesForSyncTree",
+      "count": 31,
+      "overlapWallMs": 0.05800000000000003,
+      "completeEventThreadMs": 0.04000000000000002,
+      "missingThreadDuration": 3,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "draw_property_utils::FindLayersThatNeedUpdates",
+      "count": 31,
+      "overlapWallMs": 0.05700000000000002,
+      "completeEventThreadMs": 0.048000000000000015,
+      "missingThreadDuration": 4,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "ProcessUIResourceRequestQueue",
+      "count": 29,
+      "overlapWallMs": 0.05700000000000002,
+      "completeEventThreadMs": 0.041000000000000016,
+      "missingThreadDuration": 4,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "SchedulerStateMachine::SetNeedsPrepareTiles",
+      "count": 41,
+      "overlapWallMs": 0.05600000000000003,
+      "completeEventThreadMs": 0.016000000000000004,
+      "missingThreadDuration": 30,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_HEAP_EXTERNAL_PROLOGUE",
+      "count": 9,
+      "overlapWallMs": 0.05500000000000001,
+      "completeEventThreadMs": 0.044,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32289",
+      "threadName": "VizCompositorThread",
+      "name": "SurfaceManager::GarbageCollectSurfaces",
+      "count": 29,
+      "overlapWallMs": 0.05400000000000002,
+      "completeEventThreadMs": 0.03400000000000002,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_HEAP_EXTERNAL_SECOND_PASS_CALLBACKS",
+      "count": 2,
+      "overlapWallMs": 0.052000000000000005,
+      "completeEventThreadMs": 0.051000000000000004,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32289",
+      "threadName": "VizCompositorThread",
+      "name": "SkiaRenderer::FinishDrawingFrame",
+      "count": 29,
+      "overlapWallMs": 0.05100000000000003,
+      "completeEventThreadMs": 0.035000000000000024,
+      "missingThreadDuration": 1,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_CLEAR_WEAK_GLOBAL_HANDLES",
+      "count": 1,
+      "overlapWallMs": 0.051,
+      "completeEventThreadMs": 0.05,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32289",
+      "threadName": "VizCompositorThread",
+      "name": "Scheduler::ScheduleTask",
+      "count": 43,
+      "overlapWallMs": 0.05000000000000003,
+      "completeEventThreadMs": 0.028000000000000014,
+      "missingThreadDuration": 21,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "Scheduler::SequenceUnblocked",
+      "count": 27,
+      "overlapWallMs": 0.05000000000000003,
+      "completeEventThreadMs": 0.031000000000000007,
+      "missingThreadDuration": 6,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "AnimationHost::TickAnimations",
+      "count": 29,
+      "overlapWallMs": 0.05000000000000001,
+      "completeEventThreadMs": 0.034000000000000016,
+      "missingThreadDuration": 3,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_CLEAR_WEAK_GLOBAL_HANDLES",
+      "count": 1,
+      "overlapWallMs": 0.049,
+      "completeEventThreadMs": 0.048,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "CommandBufferStub::SetGetBuffer",
+      "count": 4,
+      "overlapWallMs": 0.048,
+      "completeEventThreadMs": 0.046,
+      "missingThreadDuration": 1,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "GpuChannel::Flush",
+      "count": 39,
+      "overlapWallMs": 0.04600000000000003,
+      "completeEventThreadMs": 0.017000000000000008,
+      "missingThreadDuration": 22,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "WidgetBase::DidCommitAndDrawCompositorFrame",
+      "count": 29,
+      "overlapWallMs": 0.04600000000000002,
+      "completeEventThreadMs": 0.02600000000000001,
+      "missingThreadDuration": 11,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32353",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_CLEAR_SWEEP_JS_DISPATCH_TABLE",
+      "count": 1,
+      "overlapWallMs": 0.046,
+      "completeEventThreadMs": 0.045,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_CLEAR_EXTERNAL_STRING_TABLE",
+      "count": 1,
+      "overlapWallMs": 0.046,
+      "completeEventThreadMs": 0.046,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_CLEAR_MAPS",
+      "count": 1,
+      "overlapWallMs": 0.045,
+      "completeEventThreadMs": 0.044,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_HEAP_EPILOGUE",
+      "count": 9,
+      "overlapWallMs": 0.044000000000000004,
+      "completeEventThreadMs": 0.039,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32289",
+      "threadName": "VizCompositorThread",
+      "name": "SyncToken::Wait",
+      "count": 25,
+      "overlapWallMs": 0.043000000000000024,
+      "completeEventThreadMs": 0.03000000000000002,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "RecordingSource::FinishDisplayItemListUpdate",
+      "count": 29,
+      "overlapWallMs": 0.04300000000000002,
+      "completeEventThreadMs": 0.025000000000000012,
+      "missingThreadDuration": 6,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32354",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_CLEAR_WEAK_REFERENCES_NON_TRIVIAL",
+      "count": 2,
+      "overlapWallMs": 0.041999999999999996,
+      "completeEventThreadMs": 0.04,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "ProxyImpl::DidActivateSyncTreeOnImplThread",
+      "count": 27,
+      "overlapWallMs": 0.04100000000000001,
+      "completeEventThreadMs": 0.025,
+      "missingThreadDuration": 13,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_EVACUATE_REBALANCE",
+      "count": 3,
+      "overlapWallMs": 0.04,
+      "completeEventThreadMs": 0.039,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32354",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_CLEAR_EXTERNAL_STRING_TABLE",
+      "count": 2,
+      "overlapWallMs": 0.04,
+      "completeEventThreadMs": 0.038,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_CLEAR_STRING_TABLE",
+      "count": 2,
+      "overlapWallMs": 0.039,
+      "completeEventThreadMs": 0.038000000000000006,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32353",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_CLEAR_SWEEP_EXTERNAL_POINTER_TABLE",
+      "count": 1,
+      "overlapWallMs": 0.039,
+      "completeEventThreadMs": 0.039,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32354",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_CLEAR_MAPS",
+      "count": 1,
+      "overlapWallMs": 0.037,
+      "completeEventThreadMs": 0.026,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "DidFinishRunningAllTilesTask::RunOnWorkerThread",
+      "count": 22,
+      "overlapWallMs": 0.034000000000000016,
+      "completeEventThreadMs": 0.02700000000000001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32338",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_SCAVENGER_BACKGROUND_TRACED_HANDLES_COMPUTE_WEAKNESS_PARALLEL",
+      "count": 2,
+      "overlapWallMs": 0.034,
+      "completeEventThreadMs": 0.018000000000000002,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_COMPLETE_SWEEPING",
+      "count": 3,
+      "overlapWallMs": 0.031,
+      "completeEventThreadMs": 0.026999999999999996,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_CLEAR_SWEEP_TRUSTED_POINTER_TABLE",
+      "count": 2,
+      "overlapWallMs": 0.03,
+      "completeEventThreadMs": 0.028999999999999998,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_INCREMENTAL_EXTERNAL_EPILOGUE",
+      "count": 3,
+      "overlapWallMs": 0.028999999999999998,
+      "completeEventThreadMs": 0.024,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32338",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_SCAVENGER_BACKGROUND_TRACED_HANDLES_RESET_PARALLEL",
+      "count": 1,
+      "overlapWallMs": 0.028,
+      "completeEventThreadMs": 0.027,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "Major concurrent marking started",
+      "count": 4,
+      "overlapWallMs": 0.028,
+      "completeEventThreadMs": 0.004,
+      "missingThreadDuration": 1,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_CLEAR_WEAK_LISTS",
+      "count": 1,
+      "overlapWallMs": 0.028,
+      "completeEventThreadMs": 0.028,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_INCREMENTAL_EXTERNAL_PROLOGUE",
+      "count": 3,
+      "overlapWallMs": 0.027000000000000003,
+      "completeEventThreadMs": 0.025,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32402",
+      "threadName": "GpuChannelManager Trace",
+      "name": "RunTask",
+      "count": 1,
+      "overlapWallMs": 0.027,
+      "completeEventThreadMs": 0.004,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "ImageAnimationController::WillActivate",
+      "count": 24,
+      "overlapWallMs": 0.026000000000000016,
+      "completeEventThreadMs": 0.011000000000000003,
+      "missingThreadDuration": 13,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "GLES2::GetUniformLocation",
+      "count": 25,
+      "overlapWallMs": 0.026000000000000016,
+      "completeEventThreadMs": 0.001,
+      "missingThreadDuration": 24,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_CLEAR_MAPS",
+      "count": 1,
+      "overlapWallMs": 0.026,
+      "completeEventThreadMs": 0.025,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32289",
+      "threadName": "VizCompositorThread",
+      "name": "SkiaRenderer::BeginDrawingFrame",
+      "count": 24,
+      "overlapWallMs": 0.025000000000000015,
+      "completeEventThreadMs": 0.009000000000000001,
+      "missingThreadDuration": 15,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32344",
+      "threadName": "Compositor",
+      "name": "DrawLayers.FrameViewerTracing",
+      "count": 24,
+      "overlapWallMs": 0.025000000000000015,
+      "completeEventThreadMs": 0.009000000000000001,
+      "missingThreadDuration": 15,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32353",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_CLEAR_WEAK_REFERENCES_NON_TRIVIAL",
+      "count": 1,
+      "overlapWallMs": 0.023,
+      "completeEventThreadMs": 0.022,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32353",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_CLEAR_WEAK_LISTS",
+      "count": 1,
+      "overlapWallMs": 0.023,
+      "completeEventThreadMs": 0.023,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS_WEAK",
+      "count": 3,
+      "overlapWallMs": 0.021,
+      "completeEventThreadMs": 0.021,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32288",
+      "threadName": "Chrome_ChildIOThread",
+      "name": "SyncToken::Wait",
+      "count": 9,
+      "overlapWallMs": 0.02,
+      "completeEventThreadMs": 0.015,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_TIME_TO_SAFEPOINT",
+      "count": 10,
+      "overlapWallMs": 0.02,
+      "completeEventThreadMs": 0.014,
+      "missingThreadDuration": 2,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_HEAP_EXTERNAL_WEAK_GLOBAL_HANDLES",
+      "count": 2,
+      "overlapWallMs": 0.019,
+      "completeEventThreadMs": 0.019,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_CLEAR_SWEEP_TRUSTED_POINTER_TABLE",
+      "count": 1,
+      "overlapWallMs": 0.019,
+      "completeEventThreadMs": 0.018,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "CommandBufferProxyImpl::OrderingBarrier",
+      "count": 3,
+      "overlapWallMs": 0.018,
+      "completeEventThreadMs": 0.015,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_CLEAR_WEAK_LISTS",
+      "count": 1,
+      "overlapWallMs": 0.018,
+      "completeEventThreadMs": 0.018,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_HEAP_PROLOGUE",
+      "count": 9,
+      "overlapWallMs": 0.016,
+      "completeEventThreadMs": 0.01,
+      "missingThreadDuration": 2,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "GLES2::GetActiveUniform",
+      "count": 15,
+      "overlapWallMs": 0.015000000000000006,
+      "completeEventThreadMs": 0.018000000000000002,
+      "missingThreadDuration": 13,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_EVACUATE_PROLOGUE",
+      "count": 3,
+      "overlapWallMs": 0.015000000000000001,
+      "completeEventThreadMs": 0.013,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32338",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "ConcurrentMarking::RunMajor Preempted",
+      "count": 2,
+      "overlapWallMs": 0.015,
+      "completeEventThreadMs": 0.004,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_MARK_FINISH_INCREMENTAL",
+      "count": 3,
+      "overlapWallMs": 0.014000000000000002,
+      "completeEventThreadMs": 0.011,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32354",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "ConcurrentMarking::RunMajor Finished",
+      "count": 3,
+      "overlapWallMs": 0.014,
+      "completeEventThreadMs": 0.009000000000000001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_HEAP_PROLOGUE_SAFEPOINT",
+      "count": 8,
+      "overlapWallMs": 0.013000000000000001,
+      "completeEventThreadMs": 0.006,
+      "missingThreadDuration": 2,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_MARK_RETAIN_MAPS",
+      "count": 3,
+      "overlapWallMs": 0.013,
+      "completeEventThreadMs": 0.012,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32338",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "Sweeper::ConcurrentMajorSweeper Finished",
+      "count": 7,
+      "overlapWallMs": 0.012000000000000004,
+      "completeEventThreadMs": 0.005,
+      "missingThreadDuration": 5,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "CommandBuffer::OrderingBarrier",
+      "count": 3,
+      "overlapWallMs": 0.012,
+      "completeEventThreadMs": 0.011,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "Parallel scavenge started",
+      "count": 6,
+      "overlapWallMs": 0.012,
+      "completeEventThreadMs": 0.007,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_SCAVENGER_SCAVENGE_RESTORE_AND_QUARANTINE_PINNED",
+      "count": 6,
+      "overlapWallMs": 0.012,
+      "completeEventThreadMs": 0.009000000000000001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_COMPLETE_SWEEP_ARRAY_BUFFERS",
+      "count": 1,
+      "overlapWallMs": 0.012,
+      "completeEventThreadMs": 0.012,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "Sweeper::ConcurrentMajorSweeper Finished",
+      "count": 7,
+      "overlapWallMs": 0.011000000000000001,
+      "completeEventThreadMs": 0.002,
+      "missingThreadDuration": 5,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_SCAVENGER_RESIZE_NEW_SPACE",
+      "count": 6,
+      "overlapWallMs": 0.011,
+      "completeEventThreadMs": 0.008,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32338",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "ConcurrentMarking::RunMajor Finished",
+      "count": 3,
+      "overlapWallMs": 0.011,
+      "completeEventThreadMs": 0.006,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_CLEAR_SWEEP_WASM_CODE_POINTER_TABLE",
+      "count": 2,
+      "overlapWallMs": 0.011,
+      "completeEventThreadMs": 0.003,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "ConcurrentMarking::RunMajor Preempted",
+      "count": 4,
+      "overlapWallMs": 0.010000000000000002,
+      "completeEventThreadMs": 0.004,
+      "missingThreadDuration": 2,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "ClearStringTableJob started",
+      "count": 9,
+      "overlapWallMs": 0.010000000000000002,
+      "completeEventThreadMs": 0.002,
+      "missingThreadDuration": 7,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "ComputeWeaknessProcessor start",
+      "count": 6,
+      "overlapWallMs": 0.009000000000000001,
+      "completeEventThreadMs": 0.006,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_MARK_FULL_CLOSURE_SERIAL",
+      "count": 3,
+      "overlapWallMs": 0.009000000000000001,
+      "completeEventThreadMs": 0.002,
+      "missingThreadDuration": 1,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_EVACUATE_UPDATE_POINTERS_CLIENT_HEAPS",
+      "count": 3,
+      "overlapWallMs": 0.009000000000000001,
+      "completeEventThreadMs": 0.007,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32232:32232",
+      "threadName": "CrBrowserMain",
+      "name": "CommandBufferHelper::Flush",
+      "count": 1,
+      "overlapWallMs": 0.009,
+      "completeEventThreadMs": 0.008,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "TransferBuffer::Free",
+      "count": 2,
+      "overlapWallMs": 0.008,
+      "completeEventThreadMs": 0.005,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "ClearWeaknessProcessor start",
+      "count": 6,
+      "overlapWallMs": 0.007,
+      "completeEventThreadMs": 0.004,
+      "missingThreadDuration": 2,
+      "clipped": 0
+    },
+    {
+      "thread": "32274:32274",
+      "threadName": "CrGpuMain",
+      "name": "CommandBufferStub::WaitForGetOffsetInRange",
+      "count": 4,
+      "overlapWallMs": 0.007,
+      "completeEventThreadMs": 0.003,
+      "missingThreadDuration": 2,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "DidFinishRunningAllTilesTask::RunOnWorkerThread",
+      "count": 3,
+      "overlapWallMs": 0.006,
+      "completeEventThreadMs": 0.004,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "PointersUpdatingJob started",
+      "count": 3,
+      "overlapWallMs": 0.006,
+      "completeEventThreadMs": 0.004,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_CLEAR_SWEEP_WASM_CODE_POINTER_TABLE",
+      "count": 1,
+      "overlapWallMs": 0.005,
+      "completeEventThreadMs": 0.005,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_EVACUATE_CLEAN_UP",
+      "count": 3,
+      "overlapWallMs": 0.005,
+      "completeEventThreadMs": 0.005,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_MARK_CLIENT_HEAPS",
+      "count": 3,
+      "overlapWallMs": 0.004,
+      "completeEventThreadMs": 0.002,
+      "missingThreadDuration": 1,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32353",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_CLEAR_FLUSHED_JS_FUNCTIONS",
+      "count": 1,
+      "overlapWallMs": 0.004,
+      "completeEventThreadMs": 0.004,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "PageEvacuationJob started",
+      "count": 3,
+      "overlapWallMs": 0.004,
+      "completeEventThreadMs": 0.002,
+      "missingThreadDuration": 1,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32353",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "CommandBufferProxyImpl::OrderingBarrier",
+      "count": 1,
+      "overlapWallMs": 0.004,
+      "completeEventThreadMs": 0.003,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32354",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "CommandBufferProxyImpl::OrderingBarrier",
+      "count": 1,
+      "overlapWallMs": 0.004,
+      "completeEventThreadMs": 0.002,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_CONSERVATIVE_STACK_SCANNING",
+      "count": 3,
+      "overlapWallMs": 0.003,
+      "completeEventThreadMs": 0.002,
+      "missingThreadDuration": 1,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "ClearTrivialWeakRefJob started",
+      "count": 3,
+      "overlapWallMs": 0.003,
+      "completeEventThreadMs": 0.001,
+      "missingThreadDuration": 2,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "ClearNonTrivialWeakRefs started",
+      "count": 3,
+      "overlapWallMs": 0.003,
+      "completeEventThreadMs": 0.001,
+      "missingThreadDuration": 2,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_CLEAR_WEAK_REFERENCES_TRUSTED",
+      "count": 3,
+      "overlapWallMs": 0.003,
+      "completeEventThreadMs": 0.003,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_SWEEP_NEW_LO",
+      "count": 3,
+      "overlapWallMs": 0.003,
+      "completeEventThreadMs": 0.002,
+      "missingThreadDuration": 1,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_EPILOGUE",
+      "count": 2,
+      "overlapWallMs": 0.003,
+      "completeEventThreadMs": 0.001,
+      "missingThreadDuration": 1,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "ArrayBufferSweeper Finished",
+      "count": 1,
+      "overlapWallMs": 0.003,
+      "completeEventThreadMs": 0.002,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32354",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "DidFinishRunningAllTilesTask::RunOnWorkerThread",
+      "count": 1,
+      "overlapWallMs": 0.003,
+      "completeEventThreadMs": 0.002,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "ArrayBufferSweeper Finished",
+      "count": 2,
+      "overlapWallMs": 0.003,
+      "completeEventThreadMs": 0.002,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32353",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "ConcurrentMarking::RunMajor Preempted",
+      "count": 1,
+      "overlapWallMs": 0.002,
+      "completeEventThreadMs": 0.002,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_CLEAR_JS_WEAK_REFERENCES",
+      "count": 1,
+      "overlapWallMs": 0.002,
+      "completeEventThreadMs": 0.001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_CLEAR_FLUSHABLE_BYTECODE",
+      "count": 2,
+      "overlapWallMs": 0.002,
+      "completeEventThreadMs": 0.001,
+      "missingThreadDuration": 1,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32353",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "CommandBuffer::OrderingBarrier",
+      "count": 1,
+      "overlapWallMs": 0.002,
+      "completeEventThreadMs": 0.001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32353",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "DidFinishRunningAllTilesTask::RunOnWorkerThread",
+      "count": 1,
+      "overlapWallMs": 0.002,
+      "completeEventThreadMs": 0.002,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "GLES2::GetAttribLocation",
+      "count": 2,
+      "overlapWallMs": 0.002,
+      "completeEventThreadMs": 0.001,
+      "missingThreadDuration": 1,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "ClearTrustedWeakRefJob started",
+      "count": 2,
+      "overlapWallMs": 0.002,
+      "completeEventThreadMs": 0.001,
+      "missingThreadDuration": 1,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32353",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_CLEAR_JS_WEAK_REFERENCES",
+      "count": 1,
+      "overlapWallMs": 0.002,
+      "completeEventThreadMs": 0.001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_CLEAR_JS_WEAK_REFERENCES",
+      "count": 1,
+      "overlapWallMs": 0.002,
+      "completeEventThreadMs": 0.001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "GLES2::GetActiveAttrib",
+      "count": 1,
+      "overlapWallMs": 0.001,
+      "completeEventThreadMs": 0.001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32354",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "CommandBuffer::OrderingBarrier",
+      "count": 1,
+      "overlapWallMs": 0.001,
+      "completeEventThreadMs": 0.001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_CLEAR_FLUSHED_JS_FUNCTIONS",
+      "count": 1,
+      "overlapWallMs": 0.001,
+      "completeEventThreadMs": 0,
+      "missingThreadDuration": 1,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32343",
+      "threadName": "ThreadPoolForegroundWorker",
+      "name": "V8.GC_MC_CLEAR_FLUSHABLE_BYTECODE",
+      "count": 1,
+      "overlapWallMs": 0.001,
+      "completeEventThreadMs": 0.001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    },
+    {
+      "thread": "32331:32331",
+      "threadName": "CrRendererMain",
+      "name": "V8.GC_MC_CLEAR_FLUSHED_JS_FUNCTIONS",
+      "count": 1,
+      "overlapWallMs": 0.001,
+      "completeEventThreadMs": 0.001,
+      "missingThreadDuration": 0,
+      "clipped": 0
+    }
+  ],
+  "mainLongest": [
+    {
+      "name": "ProxyMain::BeginMainFrame",
+      "offsetMs": 7833.707,
+      "durationMs": 2677.505,
+      "threadMs": 19.764,
+      "data": {
+        "begin_frame_id": 851,
+        "main_frame_pipeline": {
+          "main_frame_id": 8027566964096268000,
+          "step": "BEGIN_MAIN_FRAME"
+        }
+      }
+    },
+    {
+      "name": "FireAnimationFrame",
+      "offsetMs": 7833.769,
+      "durationMs": 2675.195,
+      "threadMs": 18.168,
+      "data": {
+        "data": {
+          "frame": "8919466D6C745F988845F56C69F05DEF",
+          "id": 61,
+          "sampleTraceId": 2152428122044040
+        }
+      }
+    },
+    {
+      "name": "FunctionCall",
+      "offsetMs": 7833.799,
+      "durationMs": 2675.12,
+      "threadMs": 18.096,
+      "data": {
+        "data": {
+          "columnNumber": 15841,
+          "frame": "8919466D6C745F988845F56C69F05DEF",
+          "functionName": "pe",
+          "isolate": "12919792152835595197",
+          "lineNumber": 1,
+          "sampleTraceId": 2152428122044055,
+          "scriptId": "16",
+          "url": "http://127.0.0.1:42333/assets/create-game-DO0CA4xS.js"
+        }
+      }
+    },
+    {
+      "name": "GLES2Implementation::GetShaderiv",
+      "offsetMs": 8823.712,
+      "durationMs": 1683.075,
+      "threadMs": 7.313,
+      "data": {}
+    },
+    {
+      "name": "ImplementationBase::WaitForCmd",
+      "offsetMs": 8823.718,
+      "durationMs": 1683.068,
+      "threadMs": 7.281,
+      "data": {}
+    },
+    {
+      "name": "CommandBufferHelper::Finish",
+      "offsetMs": 8823.746,
+      "durationMs": 1683.039,
+      "threadMs": 7.279,
+      "data": {}
+    },
+    {
+      "name": "CommandBufferProxyImpl::WaitForGetOffset",
+      "offsetMs": 8823.835,
+      "durationMs": 1682.93,
+      "threadMs": 7.195,
+      "data": {
+        "end": 72269,
+        "start": 72269
+      }
+    },
+    {
+      "name": "GLES2Implementation::GetProgramiv",
+      "offsetMs": 7842.816,
+      "durationMs": 980.878,
+      "threadMs": 4.615,
+      "data": {}
+    },
+    {
+      "name": "ImplementationBase::WaitForCmd",
+      "offsetMs": 7842.819,
+      "durationMs": 980.873,
+      "threadMs": 4.612,
+      "data": {}
+    },
+    {
+      "name": "CommandBufferHelper::Finish",
+      "offsetMs": 7842.82,
+      "durationMs": 980.871,
+      "threadMs": 4.61,
+      "data": {}
+    },
+    {
+      "name": "CommandBufferProxyImpl::WaitForGetOffset",
+      "offsetMs": 7842.837,
+      "durationMs": 980.821,
+      "threadMs": 4.598,
+      "data": {
+        "end": 72264,
+        "start": 72264
+      }
+    },
+    {
+      "name": "ProxyMain::BeginMainFrame",
+      "offsetMs": 24595.749,
+      "durationMs": 34.593,
+      "threadMs": 13.611,
+      "data": {
+        "begin_frame_id": 1857,
+        "main_frame_pipeline": {
+          "main_frame_id": 8027566964096264000,
+          "step": "BEGIN_MAIN_FRAME"
+        }
+      }
+    },
+    {
+      "name": "ProxyMain::BeginMainFrame",
+      "offsetMs": 23633.607,
+      "durationMs": 33.876,
+      "threadMs": 8.463,
+      "data": {
+        "begin_frame_id": 1799,
+        "main_frame_pipeline": {
+          "main_frame_id": 8027566964096265000,
+          "step": "BEGIN_MAIN_FRAME"
+        }
+      }
+    },
+    {
+      "name": "ProxyMain::BeginMainFrame",
+      "offsetMs": 6931.082,
+      "durationMs": 31.677,
+      "threadMs": 9,
+      "data": {
+        "begin_frame_id": 797,
+        "main_frame_pipeline": {
+          "main_frame_id": 8027566964096268000,
+          "step": "BEGIN_MAIN_FRAME"
+        }
+      }
+    },
+    {
+      "name": "ProxyMain::BeginMainFrame",
+      "offsetMs": 3335.117,
+      "durationMs": 30.858,
+      "threadMs": 8.455,
+      "data": {
+        "begin_frame_id": 581,
+        "main_frame_pipeline": {
+          "main_frame_id": 8027566964096266000,
+          "step": "BEGIN_MAIN_FRAME"
+        }
+      }
+    },
+    {
+      "name": "FireAnimationFrame",
+      "offsetMs": 6931.169,
+      "durationMs": 29.725,
+      "threadMs": 7.089,
+      "data": {
+        "data": {
+          "frame": "8919466D6C745F988845F56C69F05DEF",
+          "id": 60,
+          "sampleTraceId": 2152428122044157
+        }
+      }
+    },
+    {
+      "name": "FireAnimationFrame",
+      "offsetMs": 23633.67,
+      "durationMs": 28.695,
+      "threadMs": 6.606,
+      "data": {
+        "data": {
+          "frame": "8919466D6C745F988845F56C69F05DEF",
+          "id": 79,
+          "sampleTraceId": 2152428122041111
+        }
+      }
+    },
+    {
+      "name": "FunctionCall",
+      "offsetMs": 23633.712,
+      "durationMs": 28.595,
+      "threadMs": 6.509,
+      "data": {
+        "data": {
+          "columnNumber": 15841,
+          "frame": "8919466D6C745F988845F56C69F05DEF",
+          "functionName": "pe",
+          "isolate": "12919792152835595197",
+          "lineNumber": 1,
+          "sampleTraceId": 2152428122041110,
+          "scriptId": "16",
+          "url": "http://127.0.0.1:42333/assets/create-game-DO0CA4xS.js"
+        }
+      }
+    },
+    {
+      "name": "FireAnimationFrame",
+      "offsetMs": 24595.818,
+      "durationMs": 27.64,
+      "threadMs": 11.643,
+      "data": {
+        "data": {
+          "frame": "8919466D6C745F988845F56C69F05DEF",
+          "id": 80,
+          "sampleTraceId": 2152428122040499
+        }
+      }
+    },
+    {
+      "name": "FunctionCall",
+      "offsetMs": 24595.898,
+      "durationMs": 27.512,
+      "threadMs": 11.517,
+      "data": {
+        "data": {
+          "columnNumber": 15841,
+          "frame": "8919466D6C745F988845F56C69F05DEF",
+          "functionName": "pe",
+          "isolate": "12919792152835595197",
+          "lineNumber": 1,
+          "sampleTraceId": 2152428122040497,
+          "scriptId": "16",
+          "url": "http://127.0.0.1:42333/assets/create-game-DO0CA4xS.js"
+        }
+      }
+    },
+    {
+      "name": "FireAnimationFrame",
+      "offsetMs": 3335.208,
+      "durationMs": 26.361,
+      "threadMs": 6.492,
+      "data": {
+        "data": {
+          "frame": "8919466D6C745F988845F56C69F05DEF",
+          "id": 56,
+          "sampleTraceId": 2152428122042459
+        }
+      }
+    },
+    {
+      "name": "FunctionCall",
+      "offsetMs": 3335.249,
+      "durationMs": 26.258,
+      "threadMs": 6.395,
+      "data": {
+        "data": {
+          "columnNumber": 15841,
+          "frame": "8919466D6C745F988845F56C69F05DEF",
+          "functionName": "pe",
+          "isolate": "12919792152835595197",
+          "lineNumber": 1,
+          "sampleTraceId": 2152428122042458,
+          "scriptId": "16",
+          "url": "http://127.0.0.1:42333/assets/create-game-DO0CA4xS.js"
+        }
+      }
+    },
+    {
+      "name": "ProxyMain::BeginMainFrame",
+      "offsetMs": 1742.663,
+      "durationMs": 20.537,
+      "threadMs": 5.655,
+      "data": {
+        "begin_frame_id": 485,
+        "main_frame_pipeline": {
+          "main_frame_id": 8027566964096266000,
+          "step": "BEGIN_MAIN_FRAME"
+        }
+      }
+    },
+    {
+      "name": "ProxyMain::BeginMainFrame",
+      "offsetMs": 5070.919,
+      "durationMs": 20.043,
+      "threadMs": 8.651,
+      "data": {
+        "begin_frame_id": 685,
+        "main_frame_pipeline": {
+          "main_frame_id": 8027566964096266000,
+          "step": "BEGIN_MAIN_FRAME"
+        }
+      }
+    },
+    {
+      "name": "FireAnimationFrame",
+      "offsetMs": 1742.687,
+      "durationMs": 19.262,
+      "threadMs": 4.416,
+      "data": {
+        "data": {
+          "frame": "8919466D6C745F988845F56C69F05DEF",
+          "id": 54,
+          "sampleTraceId": 2152428122042622
+        }
+      }
+    },
+    {
+      "name": "FunctionCall",
+      "offsetMs": 1742.704,
+      "durationMs": 19.206,
+      "threadMs": 4.362,
+      "data": {
+        "data": {
+          "columnNumber": 15841,
+          "frame": "8919466D6C745F988845F56C69F05DEF",
+          "functionName": "pe",
+          "isolate": "12919792152835595197",
+          "lineNumber": 1,
+          "sampleTraceId": 2152428122042621,
+          "scriptId": "16",
+          "url": "http://127.0.0.1:42333/assets/create-game-DO0CA4xS.js"
+        }
+      }
+    },
+    {
+      "name": "ProxyMain::BeginMainFrame",
+      "offsetMs": 11503.024,
+      "durationMs": 18.884,
+      "threadMs": 9.123,
+      "data": {
+        "begin_frame_id": 1071,
+        "main_frame_pipeline": {
+          "main_frame_id": 8027566964096268000,
+          "step": "BEGIN_MAIN_FRAME"
+        }
+      }
+    },
+    {
+      "name": "ProxyMain::BeginMainFrame",
+      "offsetMs": 13998.965,
+      "durationMs": 18.411,
+      "threadMs": 8.874,
+      "data": {
+        "begin_frame_id": 1221,
+        "main_frame_pipeline": {
+          "main_frame_id": 8027566964096267000,
+          "step": "BEGIN_MAIN_FRAME"
+        }
+      }
+    },
+    {
+      "name": "ProxyMain::BeginMainFrame",
+      "offsetMs": 10622.241,
+      "durationMs": 18.087,
+      "threadMs": 8.621,
+      "data": {
+        "begin_frame_id": 1018,
+        "main_frame_pipeline": {
+          "main_frame_id": 8027566964096268000,
+          "step": "BEGIN_MAIN_FRAME"
+        }
+      }
+    },
+    {
+      "name": "ProxyMain::BeginMainFrame",
+      "offsetMs": 22669.946,
+      "durationMs": 17.424,
+      "threadMs": 8.494,
+      "data": {
+        "begin_frame_id": 1741,
+        "main_frame_pipeline": {
+          "main_frame_id": 8027566964096265000,
+          "step": "BEGIN_MAIN_FRAME"
+        }
+      }
+    },
+    {
+      "name": "ProxyMain::BeginMainFrame",
+      "offsetMs": 860.859,
+      "durationMs": 16.955,
+      "threadMs": 8.349,
+      "data": {
+        "begin_frame_id": 431,
+        "main_frame_pipeline": {
+          "main_frame_id": 8027566964096267000,
+          "step": "BEGIN_MAIN_FRAME"
+        }
+      }
+    },
+    {
+      "name": "FireAnimationFrame",
+      "offsetMs": 11503.09,
+      "durationMs": 16.899,
+      "threadMs": 7.277,
+      "data": {
+        "data": {
+          "frame": "8919466D6C745F988845F56C69F05DEF",
+          "id": 65,
+          "sampleTraceId": 2152428122044207
+        }
+      }
+    },
+    {
+      "name": "FunctionCall",
+      "offsetMs": 11503.129,
+      "durationMs": 16.803,
+      "threadMs": 7.186,
+      "data": {
+        "data": {
+          "columnNumber": 15841,
+          "frame": "8919466D6C745F988845F56C69F05DEF",
+          "functionName": "pe",
+          "isolate": "12919792152835595197",
+          "lineNumber": 1,
+          "sampleTraceId": 2152428122044206,
+          "scriptId": "16",
+          "url": "http://127.0.0.1:42333/assets/create-game-DO0CA4xS.js"
+        }
+      }
+    },
+    {
+      "name": "TimerFire",
+      "offsetMs": 13944.724,
+      "durationMs": 16.472,
+      "threadMs": 0.491,
+      "data": {
+        "data": {
+          "frame": "8919466D6C745F988845F56C69F05DEF",
+          "timerId": 26
+        }
+      }
+    },
+    {
+      "name": "ProxyMain::BeginMainFrame",
+      "offsetMs": 6010.115,
+      "durationMs": 16.435,
+      "threadMs": 6.509,
+      "data": {
+        "begin_frame_id": 741,
+        "main_frame_pipeline": {
+          "main_frame_id": 8027566964096266000,
+          "step": "BEGIN_MAIN_FRAME"
+        }
+      }
+    },
+    {
+      "name": "FunctionCall",
+      "offsetMs": 13944.758,
+      "durationMs": 16.378,
+      "threadMs": 0.402,
+      "data": {
+        "data": {
+          "columnNumber": 41436,
+          "frame": "8919466D6C745F988845F56C69F05DEF",
+          "functionName": "",
+          "isolate": "12919792152835595197",
+          "lineNumber": 9,
+          "sampleTraceId": 2152428122043501,
+          "scriptId": "6",
+          "url": "http://127.0.0.1:42333/assets/index-cgP15UhV.js"
+        }
+      }
+    },
+    {
+      "name": "MajorGC",
+      "offsetMs": 24498.61,
+      "durationMs": 15.869,
+      "threadMs": 5.297,
+      "data": {
+        "type": "finalize incremental marking via task",
+        "usedHeapSizeAfter": 11382340,
+        "usedHeapSizeBefore": 11432088
+      }
+    },
+    {
+      "name": "V8.GCFinalizeMCReduceMemory",
+      "offsetMs": 24498.618,
+      "durationMs": 15.823,
+      "threadMs": 5.254,
+      "data": {}
+    },
+    {
+      "name": "V8.GC_MARK_COMPACTOR",
+      "offsetMs": 24498.624,
+      "durationMs": 15.816,
+      "threadMs": 5.248,
+      "data": {
+        "epoch": 32
+      }
+    },
+    {
+      "name": "FireAnimationFrame",
+      "offsetMs": 22670.014,
+      "durationMs": 15.587,
+      "threadMs": 6.707,
+      "data": {
+        "data": {
+          "frame": "8919466D6C745F988845F56C69F05DEF",
+          "id": 77,
+          "sampleTraceId": 2152428122041244
+        }
+      }
+    }
+  ],
+  "cpu": {
+    "totalSampleMs": 25045.686000000915,
+    "self": [
+      {
+        "id": 6,
+        "location": {
+          "name": "(idle)",
+          "url": ""
+        },
+        "selfSampleMs": 21625.958000000483,
+        "inclusiveSampleMs": 21625.958000000483,
+        "samples": 15643
+      },
+      {
+        "id": 154,
+        "location": {
+          "name": "getShaderInfoLog",
+          "url": ""
+        },
+        "selfSampleMs": 1684.134999999991,
+        "inclusiveSampleMs": 1684.134999999991,
+        "samples": 1193
+      },
+      {
+        "id": 153,
+        "location": {
+          "name": "getProgramInfoLog",
+          "url": ""
+        },
+        "selfSampleMs": 980.6749999999988,
+        "inclusiveSampleMs": 980.6749999999988,
+        "samples": 705
+      },
+      {
+        "id": 2,
+        "location": {
+          "name": "(program)",
+          "url": ""
+        },
+        "selfSampleMs": 350.43199999999985,
+        "inclusiveSampleMs": 350.43199999999985,
+        "samples": 259
+      },
+      {
+        "id": 123,
+        "location": {
+          "name": "(garbage collector)",
+          "url": ""
+        },
+        "selfSampleMs": 75.47,
+        "inclusiveSampleMs": 75.47,
+        "samples": 33
+      },
+      {
+        "id": 128,
+        "location": {
+          "name": "getVertexPosition",
+          "source": "../../../../experience/node_modules/three/build/three.core.js",
+          "line": 24135,
+          "column": 1,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 1,
+            "column": 138448
+          }
+        },
+        "selfSampleMs": 35.908,
+        "inclusiveSampleMs": 45.160000000000004,
+        "samples": 16
+      },
+      {
+        "id": 92,
+        "location": {
+          "name": "activeTexture",
+          "url": ""
+        },
+        "selfSampleMs": 26.053,
+        "inclusiveSampleMs": 26.053,
+        "samples": 4
+      },
+      {
+        "id": 75,
+        "location": {
+          "name": "update",
+          "source": "../../../../experience/src/solo/controller.js",
+          "line": 43,
+          "column": 11,
+          "generated": {
+            "path": "/assets/index-cgP15UhV.js",
+            "line": 9,
+            "column": 22949
+          }
+        },
+        "selfSampleMs": 18.684,
+        "inclusiveSampleMs": 22.259999999999998,
+        "samples": 51
+      },
+      {
+        "id": 197,
+        "location": {
+          "name": "renderObject",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 18192,
+          "column": 11,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4220,
+            "column": 37829
+          }
+        },
+        "selfSampleMs": 18.199,
+        "inclusiveSampleMs": 18.199,
+        "samples": 1
+      },
+      {
+        "id": 133,
+        "location": {
+          "name": "enable",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 10116,
+          "column": 10,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4196,
+            "column": 9817
+          }
+        },
+        "selfSampleMs": 17.102,
+        "inclusiveSampleMs": 17.102,
+        "samples": 1
+      },
+      {
+        "id": 177,
+        "location": {
+          "name": "timestamp",
+          "source": "../../../../experience/src/journey/session.js",
+          "line": 18,
+          "column": 9,
+          "generated": {
+            "path": "/assets/index-cgP15UhV.js",
+            "line": 9,
+            "column": 26187
+          }
+        },
+        "selfSampleMs": 16.047,
+        "inclusiveSampleMs": 16.047,
+        "samples": 1
+      },
+      {
+        "id": 132,
+        "location": {
+          "name": "bindVertexArray",
+          "url": ""
+        },
+        "selfSampleMs": 15.675,
+        "inclusiveSampleMs": 15.675,
+        "samples": 5
+      },
+      {
+        "id": 161,
+        "location": {
+          "name": "clear",
+          "url": ""
+        },
+        "selfSampleMs": 13.274999999999999,
+        "inclusiveSampleMs": 13.274999999999999,
+        "samples": 3
+      },
+      {
+        "id": 11,
+        "location": {
+          "name": "_computeIntersections",
+          "source": "../../../../experience/node_modules/three/build/three.core.js",
+          "line": 24243,
+          "column": 1,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 1,
+            "column": 139357
+          }
+        },
+        "selfSampleMs": 13.01,
+        "inclusiveSampleMs": 90.577,
+        "samples": 6
+      },
+      {
+        "id": 12,
+        "location": {
+          "name": "checkGeometryIntersection",
+          "source": "../../../../experience/node_modules/three/build/three.core.js",
+          "line": 24411,
+          "column": 9,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 1,
+            "column": 140939
+          }
+        },
+        "selfSampleMs": 11.449,
+        "inclusiveSampleMs": 66.78800000000001,
+        "samples": 7
+      },
+      {
+        "id": 169,
+        "location": {
+          "name": "getX",
+          "source": "../../../../experience/node_modules/three/build/three.core.js",
+          "line": 17333,
+          "column": 1,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 1,
+            "column": 91689
+          }
+        },
+        "selfSampleMs": 10.779,
+        "inclusiveSampleMs": 10.779,
+        "samples": 4
+      },
+      {
+        "id": 130,
+        "location": {
+          "name": "intersectTriangle",
+          "source": "../../../../experience/node_modules/three/build/three.core.js",
+          "line": 23536,
+          "column": 1,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 1,
+            "column": 135288
+          }
+        },
+        "selfSampleMs": 10.161999999999999,
+        "inclusiveSampleMs": 10.161999999999999,
+        "samples": 8
+      },
+      {
+        "id": 67,
+        "location": {
+          "name": "bindTexture",
+          "url": ""
+        },
+        "selfSampleMs": 8.021,
+        "inclusiveSampleMs": 8.021,
+        "samples": 4
+      },
+      {
+        "id": 142,
+        "location": {
+          "name": "getZ",
+          "source": "../../../../experience/node_modules/three/build/three.core.js",
+          "line": 17399,
+          "column": 1,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 1,
+            "column": 92051
+          }
+        },
+        "selfSampleMs": 7.627999999999999,
+        "inclusiveSampleMs": 7.627999999999999,
+        "samples": 7
+      },
+      {
+        "id": 117,
+        "location": {
+          "name": "uniformMatrix4fv",
+          "url": ""
+        },
+        "selfSampleMs": 6.772,
+        "inclusiveSampleMs": 6.772,
+        "samples": 2
+      },
+      {
+        "id": 70,
+        "location": {
+          "name": "clearTimeout",
+          "url": ""
+        },
+        "selfSampleMs": 6.687999999999998,
+        "inclusiveSampleMs": 6.687999999999998,
+        "samples": 24
+      },
+      {
+        "id": 140,
+        "location": {
+          "name": "uniformMatrix4fv",
+          "url": ""
+        },
+        "selfSampleMs": 6.418,
+        "inclusiveSampleMs": 6.418,
+        "samples": 2
+      },
+      {
+        "id": 77,
+        "location": {
+          "name": "setTimeout",
+          "url": ""
+        },
+        "selfSampleMs": 6.382999999999999,
+        "inclusiveSampleMs": 6.382999999999999,
+        "samples": 23
+      },
+      {
+        "id": 171,
+        "location": {
+          "name": "drawElements",
+          "url": ""
+        },
+        "selfSampleMs": 6.278,
+        "inclusiveSampleMs": 6.278,
+        "samples": 1
+      },
+      {
+        "id": 45,
+        "location": {
+          "name": "requestAnimationFrame",
+          "url": ""
+        },
+        "selfSampleMs": 5.43,
+        "inclusiveSampleMs": 5.43,
+        "samples": 31
+      },
+      {
+        "id": 121,
+        "location": {
+          "name": "needsUpdate",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 1759,
+          "column": 10,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 3823,
+            "column": 11671
+          }
+        },
+        "selfSampleMs": 4.965,
+        "inclusiveSampleMs": 4.965,
+        "samples": 6
+      },
+      {
+        "id": 60,
+        "location": {
+          "name": "renderBufferDirect",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 17233,
+          "column": 28,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4220,
+            "column": 29392
+          }
+        },
+        "selfSampleMs": 4.4670000000000005,
+        "inclusiveSampleMs": 2782.8120000000035,
+        "samples": 4
+      },
+      {
+        "id": 192,
+        "location": {
+          "name": "makeRotationFromEuler",
+          "source": "../../../../experience/node_modules/three/build/three.core.js",
+          "line": 10346,
+          "column": 1,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 1,
+            "column": 45650
+          }
+        },
+        "selfSampleMs": 4.005,
+        "inclusiveSampleMs": 4.005,
+        "samples": 1
+      },
+      {
+        "id": 85,
+        "location": {
+          "name": "updateMatrixWorld",
+          "source": "../../../../experience/node_modules/three/build/three.core.js",
+          "line": 13067,
+          "column": 1,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 1,
+            "column": 61361
+          }
+        },
+        "selfSampleMs": 3.952,
+        "inclusiveSampleMs": 3.952,
+        "samples": 2
+      },
+      {
+        "id": 101,
+        "location": {
+          "name": "te",
+          "source": "../../../../experience/src/home/journey-panel.js",
+          "line": 69,
+          "column": 27,
+          "generated": {
+            "path": "/assets/index-cgP15UhV.js",
+            "line": 9,
+            "column": 40637
+          }
+        },
+        "selfSampleMs": 3.223,
+        "inclusiveSampleMs": 3.223,
+        "samples": 5
+      },
+      {
+        "id": 113,
+        "location": {
+          "name": "update",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 4192,
+          "column": 10,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4072,
+            "column": 2930
+          }
+        },
+        "selfSampleMs": 2.782,
+        "inclusiveSampleMs": 5.26,
+        "samples": 1
+      },
+      {
+        "id": 114,
+        "location": {
+          "name": "update",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 242,
+          "column": 10,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 5,
+            "column": 57831
+          }
+        },
+        "selfSampleMs": 2.4779999999999998,
+        "inclusiveSampleMs": 2.4779999999999998,
+        "samples": 2
+      },
+      {
+        "id": 191,
+        "location": {
+          "name": "toArray",
+          "source": "../../../../experience/node_modules/three/build/three.core.js",
+          "line": 11302,
+          "column": 1,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 1,
+            "column": 52571
+          }
+        },
+        "selfSampleMs": 2.1630000000000003,
+        "inclusiveSampleMs": 2.1630000000000003,
+        "samples": 2
+      },
+      {
+        "id": 162,
+        "location": {
+          "name": "refreshUniformsStandard",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 15382,
+          "column": 10,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4220,
+            "column": 12751
+          }
+        },
+        "selfSampleMs": 2.159,
+        "inclusiveSampleMs": 2.159,
+        "samples": 1
+      },
+      {
+        "id": 7,
+        "location": {
+          "name": "update",
+          "source": "../../../../experience/src/runtime/route-world-view.js",
+          "line": 156,
+          "column": 4,
+          "generated": {
+            "path": "/assets/route-world-view-2w9Eyk6e.js",
+            "line": 1,
+            "column": 43079
+          }
+        },
+        "selfSampleMs": 2.123,
+        "inclusiveSampleMs": 94.50899999999999,
+        "samples": 2
+      },
+      {
+        "id": 49,
+        "location": {
+          "name": "update",
+          "source": "../../../../experience/src/solo/controller.js",
+          "line": 43,
+          "column": 11,
+          "generated": {
+            "path": "/assets/index-cgP15UhV.js",
+            "line": 9,
+            "column": 22949
+          }
+        },
+        "selfSampleMs": 2.081,
+        "inclusiveSampleMs": 5.071999999999999,
+        "samples": 12
+      },
+      {
+        "id": 64,
+        "location": {
+          "name": "setValueT1",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 5514,
+          "column": 9,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4118,
+            "column": 4944
+          }
+        },
+        "selfSampleMs": 1.84,
+        "inclusiveSampleMs": 37.572,
+        "samples": 1
+      },
+      {
+        "id": 65,
+        "location": {
+          "name": "setTexture2D",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 11571,
+          "column": 10,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4196,
+            "column": 23569
+          }
+        },
+        "selfSampleMs": 1.658,
+        "inclusiveSampleMs": 35.732,
+        "samples": 1
+      },
+      {
+        "id": 112,
+        "location": {
+          "name": "update",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 4612,
+          "column": 10,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4072,
+            "column": 6275
+          }
+        },
+        "selfSampleMs": 1.593,
+        "inclusiveSampleMs": 6.853,
+        "samples": 1
+      },
+      {
+        "id": 138,
+        "location": {
+          "name": "getHex",
+          "source": "../../../../experience/node_modules/three/build/three.core.js",
+          "line": 14606,
+          "column": 1,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 1,
+            "column": 76024
+          }
+        },
+        "selfSampleMs": 1.564,
+        "inclusiveSampleMs": 1.564,
+        "samples": 1
+      },
+      {
+        "id": 97,
+        "location": {
+          "name": "LinearToSRGB",
+          "source": "../../../../experience/node_modules/three/build/three.core.js",
+          "line": 6888,
+          "column": 9,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 1,
+            "column": 27259
+          }
+        },
+        "selfSampleMs": 1.289,
+        "inclusiveSampleMs": 1.289,
+        "samples": 3
+      },
+      {
+        "id": 63,
+        "location": {
+          "name": "setValueV3f",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 5159,
+          "column": 9,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4118,
+            "column": 2350
+          }
+        },
+        "selfSampleMs": 1.167,
+        "inclusiveSampleMs": 1.167,
+        "samples": 1
+      },
+      {
+        "id": 158,
+        "location": {
+          "name": "setMaterial",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 10409,
+          "column": 10,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4196,
+            "column": 12099
+          }
+        },
+        "selfSampleMs": 1.165,
+        "inclusiveSampleMs": 1.165,
+        "samples": 1
+      },
+      {
+        "id": 84,
+        "location": {
+          "name": "updateMatrixWorld",
+          "source": "../../../../experience/node_modules/three/build/three.core.js",
+          "line": 13067,
+          "column": 1,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 1,
+            "column": 61361
+          }
+        },
+        "selfSampleMs": 1.119,
+        "inclusiveSampleMs": 6.156,
+        "samples": 1
+      },
+      {
+        "id": 168,
+        "location": {
+          "name": "normalizeView",
+          "source": "../../../../experience/src/journey/session.js",
+          "line": 29,
+          "column": 9,
+          "generated": {
+            "path": "/assets/index-cgP15UhV.js",
+            "line": 9,
+            "column": 26420
+          }
+        },
+        "selfSampleMs": 1.116,
+        "inclusiveSampleMs": 1.116,
+        "samples": 1
+      },
+      {
+        "id": 150,
+        "location": {
+          "name": "setupLightsView",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 8990,
+          "column": 10,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4169,
+            "column": 21931
+          }
+        },
+        "selfSampleMs": 1.097,
+        "inclusiveSampleMs": 1.097,
+        "samples": 1
+      },
+      {
+        "id": 120,
+        "location": {
+          "name": "setup",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 1623,
+          "column": 10,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 3823,
+            "column": 10857
+          }
+        },
+        "selfSampleMs": 1.095,
+        "inclusiveSampleMs": 22.810000000000002,
+        "samples": 1
+      },
+      {
+        "id": 59,
+        "location": {
+          "name": "renderObject",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 18192,
+          "column": 11,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4220,
+            "column": 37829
+          }
+        },
+        "selfSampleMs": 1.091,
+        "inclusiveSampleMs": 2783.903000000004,
+        "samples": 1
+      },
+      {
+        "id": 87,
+        "location": {
+          "name": "setValue",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 5972,
+          "column": 1,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4118,
+            "column": 8550
+          }
+        },
+        "selfSampleMs": 1.09,
+        "inclusiveSampleMs": 1.09,
+        "samples": 1
+      },
+      {
+        "id": 91,
+        "location": {
+          "name": "copy",
+          "source": "../../../../experience/node_modules/three/build/three.core.js",
+          "line": 6190,
+          "column": 1,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 1,
+            "column": 21990
+          }
+        },
+        "selfSampleMs": 1.087,
+        "inclusiveSampleMs": 1.087,
+        "samples": 1
+      }
+    ],
+    "inclusive": [
+      {
+        "id": 1,
+        "location": {
+          "name": "(root)",
+          "url": ""
+        },
+        "selfSampleMs": 0,
+        "inclusiveSampleMs": 25045.686000000915,
+        "samples": 0
+      },
+      {
+        "id": 6,
+        "location": {
+          "name": "(idle)",
+          "url": ""
+        },
+        "selfSampleMs": 21625.958000000483,
+        "inclusiveSampleMs": 21625.958000000483,
+        "samples": 15643
+      },
+      {
+        "id": 3,
+        "location": {
+          "name": "pe",
+          "source": "../../../../experience/src/runtime/create-game.js",
+          "line": 418,
+          "column": 19,
+          "generated": {
+            "path": "/assets/create-game-DO0CA4xS.js",
+            "line": 1,
+            "column": 15840
+          }
+        },
+        "selfSampleMs": 0.847,
+        "inclusiveSampleMs": 2952.8160000000044,
+        "samples": 2
+      },
+      {
+        "id": 52,
+        "location": {
+          "name": "render",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 17674,
+          "column": 16,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4220,
+            "column": 32623
+          }
+        },
+        "selfSampleMs": 0,
+        "inclusiveSampleMs": 2815.5520000000047,
+        "samples": 0
+      },
+      {
+        "id": 57,
+        "location": {
+          "name": "renderScene",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 18015,
+          "column": 11,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4220,
+            "column": 35752
+          }
+        },
+        "selfSampleMs": 0,
+        "inclusiveSampleMs": 2786.016000000004,
+        "samples": 0
+      },
+      {
+        "id": 58,
+        "location": {
+          "name": "renderObjects",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 18165,
+          "column": 11,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4220,
+            "column": 37597
+          }
+        },
+        "selfSampleMs": 1.016,
+        "inclusiveSampleMs": 2784.919000000004,
+        "samples": 1
+      },
+      {
+        "id": 59,
+        "location": {
+          "name": "renderObject",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 18192,
+          "column": 11,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4220,
+            "column": 37829
+          }
+        },
+        "selfSampleMs": 1.091,
+        "inclusiveSampleMs": 2783.903000000004,
+        "samples": 1
+      },
+      {
+        "id": 60,
+        "location": {
+          "name": "renderBufferDirect",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 17233,
+          "column": 28,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4220,
+            "column": 29392
+          }
+        },
+        "selfSampleMs": 4.4670000000000005,
+        "inclusiveSampleMs": 2782.8120000000035,
+        "samples": 4
+      },
+      {
+        "id": 61,
+        "location": {
+          "name": "setProgram",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 18407,
+          "column": 11,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4220,
+            "column": 41314
+          }
+        },
+        "selfSampleMs": 0,
+        "inclusiveSampleMs": 2730.9900000000025,
+        "samples": 0
+      },
+      {
+        "id": 152,
+        "location": {
+          "name": "onFirstUse",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 7022,
+          "column": 10,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4162,
+            "column": 291
+          }
+        },
+        "selfSampleMs": 0,
+        "inclusiveSampleMs": 2664.8100000000004,
+        "samples": 0
+      },
+      {
+        "id": 151,
+        "location": {
+          "name": "Pl.getUniforms",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 7121,
+          "column": 20,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4169,
+            "column": 280
+          }
+        },
+        "selfSampleMs": 0,
+        "inclusiveSampleMs": 2664.8100000000004,
+        "samples": 0
+      },
+      {
+        "id": 154,
+        "location": {
+          "name": "getShaderInfoLog",
+          "url": ""
+        },
+        "selfSampleMs": 1684.134999999991,
+        "inclusiveSampleMs": 1684.134999999991,
+        "samples": 1193
+      },
+      {
+        "id": 153,
+        "location": {
+          "name": "getProgramInfoLog",
+          "url": ""
+        },
+        "selfSampleMs": 980.6749999999988,
+        "inclusiveSampleMs": 980.6749999999988,
+        "samples": 705
+      },
+      {
+        "id": 2,
+        "location": {
+          "name": "(program)",
+          "url": ""
+        },
+        "selfSampleMs": 350.43199999999985,
+        "inclusiveSampleMs": 350.43199999999985,
+        "samples": 259
+      },
+      {
+        "id": 7,
+        "location": {
+          "name": "update",
+          "source": "../../../../experience/src/runtime/route-world-view.js",
+          "line": 156,
+          "column": 4,
+          "generated": {
+            "path": "/assets/route-world-view-2w9Eyk6e.js",
+            "line": 1,
+            "column": 43079
+          }
+        },
+        "selfSampleMs": 2.123,
+        "inclusiveSampleMs": 94.50899999999999,
+        "samples": 2
+      },
+      {
+        "id": 11,
+        "location": {
+          "name": "_computeIntersections",
+          "source": "../../../../experience/node_modules/three/build/three.core.js",
+          "line": 24243,
+          "column": 1,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 1,
+            "column": 139357
+          }
+        },
+        "selfSampleMs": 13.01,
+        "inclusiveSampleMs": 90.577,
+        "samples": 6
+      },
+      {
+        "id": 10,
+        "location": {
+          "name": "raycast",
+          "source": "../../../../experience/node_modules/three/build/three.core.js",
+          "line": 24197,
+          "column": 1,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 1,
+            "column": 138860
+          }
+        },
+        "selfSampleMs": 0,
+        "inclusiveSampleMs": 90.577,
+        "samples": 0
+      },
+      {
+        "id": 9,
+        "location": {
+          "name": "intersect",
+          "source": "../../../../experience/node_modules/three/build/three.core.js",
+          "line": 56748,
+          "column": 9,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 5,
+            "column": 52267
+          }
+        },
+        "selfSampleMs": 0,
+        "inclusiveSampleMs": 90.577,
+        "samples": 0
+      },
+      {
+        "id": 8,
+        "location": {
+          "name": "intersectObjects",
+          "source": "../../../../experience/node_modules/three/build/three.core.js",
+          "line": 56726,
+          "column": 1,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 5,
+            "column": 52125
+          }
+        },
+        "selfSampleMs": 0,
+        "inclusiveSampleMs": 90.577,
+        "samples": 0
+      },
+      {
+        "id": 123,
+        "location": {
+          "name": "(garbage collector)",
+          "url": ""
+        },
+        "selfSampleMs": 75.47,
+        "inclusiveSampleMs": 75.47,
+        "samples": 33
+      },
+      {
+        "id": 12,
+        "location": {
+          "name": "checkGeometryIntersection",
+          "source": "../../../../experience/node_modules/three/build/three.core.js",
+          "line": 24411,
+          "column": 9,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 1,
+            "column": 140939
+          }
+        },
+        "selfSampleMs": 11.449,
+        "inclusiveSampleMs": 66.78800000000001,
+        "samples": 7
+      },
+      {
+        "id": 62,
+        "location": {
+          "name": "upload",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 6123,
+          "column": 8,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4118,
+            "column": 9515
+          }
+        },
+        "selfSampleMs": 1.085,
+        "inclusiveSampleMs": 49.49500000000002,
+        "samples": 1
+      },
+      {
+        "id": 128,
+        "location": {
+          "name": "getVertexPosition",
+          "source": "../../../../experience/node_modules/three/build/three.core.js",
+          "line": 24135,
+          "column": 1,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 1,
+            "column": 138448
+          }
+        },
+        "selfSampleMs": 35.908,
+        "inclusiveSampleMs": 45.160000000000004,
+        "samples": 16
+      },
+      {
+        "id": 64,
+        "location": {
+          "name": "setValueT1",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 5514,
+          "column": 9,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4118,
+            "column": 4944
+          }
+        },
+        "selfSampleMs": 1.84,
+        "inclusiveSampleMs": 37.572,
+        "samples": 1
+      },
+      {
+        "id": 65,
+        "location": {
+          "name": "setTexture2D",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 11571,
+          "column": 10,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4196,
+            "column": 23569
+          }
+        },
+        "selfSampleMs": 1.658,
+        "inclusiveSampleMs": 35.732,
+        "samples": 1
+      },
+      {
+        "id": 66,
+        "location": {
+          "name": "bindTexture",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 10573,
+          "column": 10,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4196,
+            "column": 13342
+          }
+        },
+        "selfSampleMs": 0,
+        "inclusiveSampleMs": 34.074,
+        "samples": 0
+      },
+      {
+        "id": 74,
+        "location": {
+          "name": "onViewChange",
+          "source": "../../../../experience/src/home/main.js",
+          "line": 166,
+          "column": 6,
+          "generated": {
+            "path": "/assets/index-cgP15UhV.js",
+            "line": 49,
+            "column": 3809
+          }
+        },
+        "selfSampleMs": 0.019,
+        "inclusiveSampleMs": 29.778,
+        "samples": 1
+      },
+      {
+        "id": 73,
+        "location": {
+          "name": "onViewChange",
+          "source": "../../../../experience/src/perspective/live-view.js",
+          "line": 20,
+          "column": 4,
+          "generated": {
+            "path": "/assets/live-view-DRjBI9Jr.js",
+            "line": 1,
+            "column": 714
+          }
+        },
+        "selfSampleMs": 0,
+        "inclusiveSampleMs": 29.778,
+        "samples": 0
+      },
+      {
+        "id": 72,
+        "location": {
+          "name": "publishView",
+          "source": "../../../../experience/src/runtime/create-game.js",
+          "line": 73,
+          "column": 11,
+          "generated": {
+            "path": "/assets/create-game-DO0CA4xS.js",
+            "line": 1,
+            "column": 5204
+          }
+        },
+        "selfSampleMs": 0,
+        "inclusiveSampleMs": 29.778,
+        "samples": 0
+      },
+      {
+        "id": 71,
+        "location": {
+          "name": "publish",
+          "source": "../../../../experience/src/runtime/create-game.js",
+          "line": 51,
+          "column": 8,
+          "generated": {
+            "path": "/assets/create-game-DO0CA4xS.js",
+            "line": 1,
+            "column": 4757
+          }
+        },
+        "selfSampleMs": 0,
+        "inclusiveSampleMs": 29.778,
+        "samples": 0
+      },
+      {
+        "id": 92,
+        "location": {
+          "name": "activeTexture",
+          "url": ""
+        },
+        "selfSampleMs": 26.053,
+        "inclusiveSampleMs": 26.053,
+        "samples": 4
+      },
+      {
+        "id": 120,
+        "location": {
+          "name": "setup",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 1623,
+          "column": 10,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 3823,
+            "column": 10857
+          }
+        },
+        "selfSampleMs": 1.095,
+        "inclusiveSampleMs": 22.810000000000002,
+        "samples": 1
+      },
+      {
+        "id": 69,
+        "location": {
+          "name": "flush",
+          "source": "../../../../experience/src/home/journey-panel.js",
+          "line": 86,
+          "column": 11,
+          "generated": {
+            "path": "/assets/index-cgP15UhV.js",
+            "line": 9,
+            "column": 41266
+          }
+        },
+        "selfSampleMs": 0,
+        "inclusiveSampleMs": 22.735,
+        "samples": 0
+      },
+      {
+        "id": 68,
+        "location": {
+          "name": "",
+          "source": "../../../../experience/src/home/journey-panel.js",
+          "line": 95,
+          "column": 32,
+          "generated": {
+            "path": "/assets/index-cgP15UhV.js",
+            "line": 9,
+            "column": 41435
+          }
+        },
+        "selfSampleMs": 0,
+        "inclusiveSampleMs": 22.735,
+        "samples": 0
+      },
+      {
+        "id": 75,
+        "location": {
+          "name": "update",
+          "source": "../../../../experience/src/solo/controller.js",
+          "line": 43,
+          "column": 11,
+          "generated": {
+            "path": "/assets/index-cgP15UhV.js",
+            "line": 9,
+            "column": 22949
+          }
+        },
+        "selfSampleMs": 18.684,
+        "inclusiveSampleMs": 22.259999999999998,
+        "samples": 51
+      },
+      {
+        "id": 197,
+        "location": {
+          "name": "renderObject",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 18192,
+          "column": 11,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4220,
+            "column": 37829
+          }
+        },
+        "selfSampleMs": 18.199,
+        "inclusiveSampleMs": 18.199,
+        "samples": 1
+      },
+      {
+        "id": 133,
+        "location": {
+          "name": "enable",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 10116,
+          "column": 10,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4196,
+            "column": 9817
+          }
+        },
+        "selfSampleMs": 17.102,
+        "inclusiveSampleMs": 17.102,
+        "samples": 1
+      },
+      {
+        "id": 177,
+        "location": {
+          "name": "timestamp",
+          "source": "../../../../experience/src/journey/session.js",
+          "line": 18,
+          "column": 9,
+          "generated": {
+            "path": "/assets/index-cgP15UhV.js",
+            "line": 9,
+            "column": 26187
+          }
+        },
+        "selfSampleMs": 16.047,
+        "inclusiveSampleMs": 16.047,
+        "samples": 1
+      },
+      {
+        "id": 176,
+        "location": {
+          "name": "storedTimestamp",
+          "source": "../../../../experience/src/journey/session.js",
+          "line": 24,
+          "column": 9,
+          "generated": {
+            "path": "/assets/index-cgP15UhV.js",
+            "line": 9,
+            "column": 26314
+          }
+        },
+        "selfSampleMs": 0,
+        "inclusiveSampleMs": 16.047,
+        "samples": 0
+      },
+      {
+        "id": 175,
+        "location": {
+          "name": "normalizeJourneySession",
+          "source": "../../../../experience/src/journey/session.js",
+          "line": 57,
+          "column": 16,
+          "generated": {
+            "path": "/assets/index-cgP15UhV.js",
+            "line": 9,
+            "column": 27623
+          }
+        },
+        "selfSampleMs": 0,
+        "inclusiveSampleMs": 16.047,
+        "samples": 0
+      },
+      {
+        "id": 174,
+        "location": {
+          "name": "isJourneySessionAvailable",
+          "source": "../../../../experience/src/journey/session.js",
+          "line": 107,
+          "column": 16,
+          "generated": {
+            "path": "/assets/index-cgP15UhV.js",
+            "line": 9,
+            "column": 29522
+          }
+        },
+        "selfSampleMs": 0,
+        "inclusiveSampleMs": 16.047,
+        "samples": 0
+      },
+      {
+        "id": 173,
+        "location": {
+          "name": "matchingSession",
+          "source": "../../../../experience/src/home/journey-panel.js",
+          "line": 57,
+          "column": 8,
+          "generated": {
+            "path": "/assets/index-cgP15UhV.js",
+            "line": 9,
+            "column": 40397
+          }
+        },
+        "selfSampleMs": 0,
+        "inclusiveSampleMs": 16.047,
+        "samples": 0
+      },
+      {
+        "id": 132,
+        "location": {
+          "name": "bindVertexArray",
+          "url": ""
+        },
+        "selfSampleMs": 15.675,
+        "inclusiveSampleMs": 15.675,
+        "samples": 5
+      },
+      {
+        "id": 131,
+        "location": {
+          "name": "bindVertexArrayObject",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 1668,
+          "column": 10,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 3823,
+            "column": 11129
+          }
+        },
+        "selfSampleMs": 0,
+        "inclusiveSampleMs": 15.675,
+        "samples": 0
+      },
+      {
+        "id": 161,
+        "location": {
+          "name": "clear",
+          "url": ""
+        },
+        "selfSampleMs": 13.274999999999999,
+        "inclusiveSampleMs": 13.274999999999999,
+        "samples": 3
+      },
+      {
+        "id": 160,
+        "location": {
+          "name": "clear",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 17002,
+          "column": 15,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 4220,
+            "column": 27629
+          }
+        },
+        "selfSampleMs": 0,
+        "inclusiveSampleMs": 13.274999999999999,
+        "samples": 0
+      },
+      {
+        "id": 159,
+        "location": {
+          "name": "render",
+          "source": "../../../../experience/node_modules/three/build/three.module.js",
+          "line": 1357,
+          "column": 10,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 3823,
+            "column": 7924
+          }
+        },
+        "selfSampleMs": 0,
+        "inclusiveSampleMs": 13.274999999999999,
+        "samples": 0
+      },
+      {
+        "id": 4,
+        "location": {
+          "name": "follow",
+          "source": "../../../../experience/src/runtime/camera.js",
+          "line": 144,
+          "column": 4,
+          "generated": {
+            "path": "/assets/cancellation-BhfKjVm9.js",
+            "line": 2,
+            "column": 23409
+          }
+        },
+        "selfSampleMs": 0,
+        "inclusiveSampleMs": 11.295999999999996,
+        "samples": 0
+      },
+      {
+        "id": 43,
+        "location": {
+          "name": "invalidate",
+          "source": "../../../../experience/src/runtime/create-game.js",
+          "line": 79,
+          "column": 8,
+          "generated": {
+            "path": "/assets/create-game-DO0CA4xS.js",
+            "line": 1,
+            "column": 5322
+          }
+        },
+        "selfSampleMs": 0,
+        "inclusiveSampleMs": 11.003999999999998,
+        "samples": 0
+      },
+      {
+        "id": 169,
+        "location": {
+          "name": "getX",
+          "source": "../../../../experience/node_modules/three/build/three.core.js",
+          "line": 17333,
+          "column": 1,
+          "generated": {
+            "path": "/assets/lighting-kqFoXYc4.js",
+            "line": 1,
+            "column": 91689
+          }
+        },
+        "selfSampleMs": 10.779,
+        "inclusiveSampleMs": 10.779,
+        "samples": 4
+      }
+    ]
+  },
+  "notes": [
+    "Nested trace durations and inclusive CPU samples overlap; do not add them as independent totals.",
+    "CPU sampling duration is sampled wall attribution, not measured CPU-thread running time.",
+    "Observer calibration preceded profiling. No RAF sampling loop ran during the keyboard hold.",
+    "Snapshot counters bracket the keyboard interval and include automation scheduling at its boundaries."
+  ]
+}

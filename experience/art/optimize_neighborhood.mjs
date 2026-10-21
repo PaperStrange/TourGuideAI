@@ -177,7 +177,10 @@ for (const name of ['source-ledger.json', 'source-review.json', 'references.json
 const sharedFiles = [...new Set(descriptors.flatMap(item => item.dependencies.map(resource => resource.file)).filter(file => file.includes('shared/')))];
 manifest.sharedResources = await Promise.all(sharedFiles.map(fileRecord));
 const featureMetadata = manifest.featureTable;
-manifest.featureTable = Object.fromEntries(Object.entries(featureMetadata).map(([index, entry]) => [index, { sourceId: entry.sourceId, featureIds: entry.featureIds ?? [], surfaceId: entry.surfaceId }]));
+manifest.featureTable = Object.fromEntries(Object.entries(featureMetadata).map(([index, entry]) => {
+  const featureIds = (entry.featureIds ?? []).filter(id => id !== entry.sourceId);
+  return [index, { sourceId: entry.sourceId, ...(featureIds.length ? { featureIds } : {}), surfaceId: entry.surfaceId }];
+}));
 for (const cell of manifest.cells) delete cell.featureTable;
 await writeJSON(path.join(targetDir, 'feature-provenance.json'), featureMetadata);
 for (const file of await fs.readdir(path.join(targetDir, 'shared/materials'))) {

@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "scope": "Actual captured-source regeneration and retained source hash bindings",
+  "canonicalDirectory": "experience/src/neighborhoods/shijo-east",
+  "repeatDirectory": "artifacts/neighborhood-20261021/world/repeat",
+  "files": [
+    {
+      "file": "geography.json",
+      "canonicalSha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
+      "repeatSha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
+      "bytes": 175219,
+      "identical": true
+    },
+    {
+      "file": "scene.json",
+      "canonicalSha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e",
+      "repeatSha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e",
+      "bytes": 8789674,
+      "identical": true
+    },
+    {
+      "file": "source-ledger.json",
+      "canonicalSha256": "be0f8065699a53f09293140e2499bca2468f0aa7cea503dc6436f45c9b17a24c",
+      "repeatSha256": "be0f8065699a53f09293140e2499bca2468f0aa7cea503dc6436f45c9b17a24c",
+      "bytes": 5999,
+      "identical": true
+    },
+    {
+      "file": "source-review.json",
+      "canonicalSha256": "4e3fbb9d2fd3134153d2b378f5de995c2f7e3135ea3d778a5fe2f19b55f00258",
+      "repeatSha256": "4e3fbb9d2fd3134153d2b378f5de995c2f7e3135ea3d778a5fe2f19b55f00258",
+      "bytes": 756,
+      "identical": true
+    },
+    {
+      "file": "sources/route-osm.json",
+      "canonicalSha256": "5681dceac0c5d206a6e5315c77ca6a39a292ab3915f23b60cc17c77cecb4099e",
+      "repeatSha256": "5681dceac0c5d206a6e5315c77ca6a39a292ab3915f23b60cc17c77cecb4099e",
+      "bytes": 47176,
+      "identical": true
+    },
+    {
+      "file": "sources/scene-osm.json",
+      "canonicalSha256": "1e3ba265bc8dd3c6744ccd897ad915016a2cc0110c306bf3e064ca63ced5dd0c",
+      "repeatSha256": "1e3ba265bc8dd3c6744ccd897ad915016a2cc0110c306bf3e064ca63ced5dd0c",
+      "bytes": 2390775,
+      "identical": true
+    },
+    {
+      "file": "sources/kyoto-lod1.geojson",
+      "canonicalSha256": "da1af049906d736b6329e062673a84728640957475d3b46107cebf46b48a2d93",
+      "repeatSha256": "da1af049906d736b6329e062673a84728640957475d3b46107cebf46b48a2d93",
+      "bytes": 6304053,
+      "identical": true
+    }
+  ],
+  "sourceBindings": [
+    {
+      "file": "sources/kyoto-lod1.geojson",
+      "boundSha256": "da1af049906d736b6329e062673a84728640957475d3b46107cebf46b48a2d93",
+      "matches": true
+    },
+    {
+      "file": "sources/route-osm.json",
+      "boundSha256": "5681dceac0c5d206a6e5315c77ca6a39a292ab3915f23b60cc17c77cecb4099e",
+      "matches": true
+    },
+    {
+      "file": "sources/scene-osm.json",
+      "boundSha256": "1e3ba265bc8dd3c6744ccd897ad915016a2cc0110c306bf3e064ca63ced5dd0c",
+      "matches": true
+    }
+  ],
+  "passed": true
+}

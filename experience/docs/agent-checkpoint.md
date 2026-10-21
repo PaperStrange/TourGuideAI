@@ -18,23 +18,46 @@ widths, canopy clearance and current access retain their explicit review limits.
 
 The source and navigation work is committed and pushed as `e0c726a`. Earlier
 reviewable units are the plan `3d8acd8`, wider solo suggestions `4a86db3` and mapped
-walking geometry `03f9a81`. Integrated application checks currently pass **162/162**.
+walking geometry `03f9a81`. The sourced scenery and authoring workflow are pushed
+as `44f638a`; integrated streaming, private editable routes, guidance and camera
+obstruction handling are pushed as `4f8a6ec`. Application checks pass **174/174**,
+local service checks **13/13**, and repository gates **17/17** with no skips.
 CI `39566220597` passes all seven jobs for the committed geographic increment;
-it does not cover the subsequent integrated runtime. Runtime scenery streaming,
-persistent journey editing and homepage integration are under review.
-The first immutable browser package passes **15/15** startup/interaction checks
-with zero page exceptions. Its art review requires corrected crossing surfaces
-and retained building finishes; its 8,828,032-byte critical load exceeds 4 MiB.
-The actual long walk also exposes slow movement on the software renderer.
-Full-route acceptance and measured performance remain pending.
-The previous published package and all evidence below remain the release baseline.
+it does not cover the subsequent integrated runtime. Actual browser acceptance
+of the integrated runtime remains in progress.
+The current immutable candidate has package identity
+`9f3d1550c6263ca35d6c672da67952afcc3d2fb69ea4cf21d1c661ef06ebb4b6`
+and scenery manifest
+`4b543ce1609d5fa90ca92949b99050d06b2607d9e74c5477373dd79d691bd721`.
+Its opening day/night art review passes: retained crossing surfaces, building
+finishes, windows and lighting remain readable. Required 3D startup assets total
+**4,152,813 bytes** in daylight, below 4 MiB; page scripts, styles and fonts have
+their own whole-entry measurement. A settled daylight frame records **79 draw
+calls**, **136,250 submitted triangles** and **47,906,815 bytes** of estimated
+active texture/render-target storage, including lighting allocations. These are
+opening observations; resource gates also apply throughout the actual route.
 
-The first browser package has manifest identity
-`34aff7623cc8676541773bd26e45b69b6b325f34859d195a4f7a19b97cbb3e99`.
+Focused browser checks pass **10/10**, including event-time Stop behavior,
+modal pause/resume, remaining-distance guidance, EN/ZH and private records.
+Full-page screenshots record scroll positions and normalize page scroll before
+capture so sticky layout and scene framing can be reviewed independently.
+Actual arcade regression, full-route acceptance and measured performance remain
+pending. The previous published package remains the release baseline.
+
 All 10,974 sampled corridor positions have required scenery coverage, with at most
 nine selected sections and three near-detail sections. This static coverage check
 does not replace the complete actual-input walk. The reusable production workflow
-is documented in `neighborhood-authoring.md`; final art identities remain pending.
+is documented in `neighborhood-authoring.md`. All 74 glTF exports pass validation;
+position, UV and source-index arrays remain exact through compression. The source
+ledger distinguishes retained geometry, authored surfaces and reviewed exceptions.
+
+The actual first-package walking profile records 30 frames and 12.51 m in 26.926 s.
+Animation-frame tasks average about 6.6 ms, while compositor readbacks wait for
+25,637 ms. A separately labelled SwiftShader GPU-compositing diagnostic removes
+those readbacks but retains approximately 1.2 fps, with 22,560 ms in GPU-thread
+buffer swaps. This establishes a software-rendering limit; changing compositor
+flags does not establish fluent travel. Simulation timing, quality and Q03 remain
+unchanged. Portable observations are in the connected-neighborhood evidence.
 
 Current unchanged Q03 diagnostics are **953.5 / 1406.1 / 1096.0 ms**, all above
 500 ms. A separate trace records 731.9 ms wall time in 15 synchronous WebGL
