@@ -222,9 +222,20 @@ try {
     console.log(`${currentEntry.id}: usable ${usable.toFixed(1)} ms`);
     await page.waitForFunction(() => {
       const stream = window.__TOUR_GAME__?.streaming();
-      return stream && !stream.downloads.active && !stream.downloads.queued && !stream.attachments.active && !stream.attachments.queued;
+      if (!stream) return false;
+      if (stream.cells.some(cell => cell.error)) return true;
+      const desired = stream.cells.filter(cell => cell.desired);
+      return !stream.downloads.active && !stream.downloads.queued && !stream.attachments.active && !stream.attachments.queued
+        && desired.length > 0 && desired.every(cell => cell.state === 'ready' && cell.level === cell.desired);
     }, null, { timeout });
-    currentEntry.settledMs = await page.evaluate(() => performance.now()); save();
+    const settled = await page.evaluate(() => ({ observedMs: performance.now(), stream: window.__TOUR_GAME__.streaming() }));
+    currentEntry.settledMs = settled.observedMs; currentEntry.settledStream = settled.stream;
+    const desired = settled.stream.cells.filter(cell => cell.desired);
+    const settledReady = !settled.stream.cells.some(cell => cell.error) && desired.length > 0
+      && desired.every(cell => cell.state === 'ready' && cell.level === cell.desired);
+    check(currentEntry.id + '-desired-sections-ready', settledReady, settled);
+    if (!settledReady) throw new Error('Neighborhood detail did not reach the requested resident quality.');
+    save();
   }
   currentEntry = null;
   report.conditions.graphics = await page.evaluate(() => {
@@ -285,7 +296,8 @@ try {
 } catch (error) {
   report.errors.push({ stage: currentEntry?.id || 'setup', message: error.message, stack: error.stack });
   if (page && !page.isClosed()) {
-    try { report.lastObservation = await page.evaluate(() => ({ home: window.__HOME__?.snapshot(), trace: window.__NEIGHBORHOOD_PERF__?.read() })); }
+    try { report.lastObservation = await page.evaluate(() => ({ home: window.__HOME__?.snapshot(),
+      trace: window.__NEIGHBORHOOD_PERF__?.read(), stream: window.__TOUR_GAME__?.streaming() })); }
     catch (observationError) { report.observationError = observationError.message; }
   }
   process.exitCode = 1;

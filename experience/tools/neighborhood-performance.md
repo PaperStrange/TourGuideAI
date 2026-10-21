@@ -32,7 +32,9 @@ Navigate directly to the neighborhood in a fresh browser context with an initial
 cleared browser cache. Record one cold entry, then three full-page warm reloads in
 that same context, retaining cache and the route session. Do not move between these
 entries. Wait for outstanding neighborhood downloads/attachments before each
-reload. Warm entry means a cached full-page load, not resuming a resident scene.
+reload and require every desired cell to reach its requested resident detail.
+Record and reject section errors even when base geometry remains available.
+Warm entry means a cached full-page load, not resuming a resident scene.
 
 First usable is the earliest browser animation-frame observation of a matching
 neighborhood with a submitted draw, ready lighting, enabled camera, unpaused

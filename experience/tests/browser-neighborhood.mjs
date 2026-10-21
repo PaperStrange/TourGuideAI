@@ -102,6 +102,7 @@ function cellsAlong(points) {
 function budget(stream) {
   return stream.downloads.peak <= 2 && stream.attachments.peak <= 1 && stream.residentCells <= 9
     && stream.retainedBytes <= 64 * 1024 * 1024 && stream.cells.filter(cell => cell.level === 'near').length <= 3
+    && stream.cells.every(cell => !cell.error && cell.state !== 'failed')
     && Number.isFinite(stream.estimatedTextureBytes) && stream.estimatedTextureBytes <= 96 * 1024 * 1024;
 }
 function resources(value) {
@@ -175,6 +176,10 @@ async function settled(page) {
     return stream && !stream.downloads.active && !stream.downloads.queued && !stream.attachments.active && !stream.attachments.queued
       && stream.cells.every(cell => !['downloading', 'queued', 'attaching'].includes(cell.state));
   });
+  const stream = await page.evaluate(() => window.__TOUR_GAME__.streaming());
+  const incomplete = stream.cells.filter(cell => cell.error || cell.state === 'failed'
+    || cell.desired && (cell.state !== 'ready' || cell.level !== cell.desired));
+  if (incomplete.length) throw new Error('Settled section quality is incomplete: ' + JSON.stringify(incomplete));
 }
 async function primaryFrameBudget(page, id) {
   const attempts = [];
@@ -366,9 +371,9 @@ async function inspectVisibleSurface(page, id) {
   const bounds = await page.locator('#live-stage canvas').boundingBox();
   let focus = null;
   for (const [x, y] of [[.5, .35], [.25, .4], [.75, .4], [.35, .25], [.65, .25], [.15, .6], [.85, .6], [.5, .15]]) {
-    const previous = (await observe(page)).renderer.renderedFrames;
+    const previous = (await observe(page)).renderer.updateFrames;
     await page.mouse.move(bounds.x + bounds.width * x, bounds.y + bounds.height * y);
-    await page.waitForFunction(previous => window.__TOUR_GAME__.renderer().renderedFrames > previous, previous);
+    await page.waitForFunction(previous => window.__TOUR_GAME__.renderer().updateFrames > previous, previous);
     focus = await page.evaluate(() => window.__TOUR_GAME__.inspection().focus);
     if (focus) break;
   }
@@ -534,7 +539,33 @@ try {
       && /未能加载/.test(failedChinese.detail) && near((await observe(page)).route.position, blocked.route.position),
     { failedStatus, failedChinese });
     await setLocale(page, 'en');
-    deny = false; await page.locator('#scene-retry').click(); await arrival(page, target, 'outbound-retry');
+    let releaseRetry;
+    const retryBarrier = new Promise(resolve => { releaseRetry = resolve; });
+    fault.delay = path => deniedPaths.has(path); fault.wait = retryBarrier;
+    deny = false;
+    try {
+      await page.locator('#scene-retry').click();
+      const requestDeadline = Date.now() + timeout;
+      while (!record.delayed.some(path => deniedPaths.has(path)) && Date.now() < requestDeadline) await page.waitForTimeout(100);
+      if (!record.delayed.some(path => deniedPaths.has(path))) throw new Error('Retry did not request the actual delayed base section.');
+      await page.waitForFunction(() => window.__TOUR_GAME__.streaming()?.blocked?.reason === 'section-loading');
+      const started = Date.now(), samples = [];
+      // 保持真实响应待定至少十五秒，检查边界等待期间的位置、路线和地面。
+      do {
+        const value = await observe(page);
+        samples.push({ elapsedMs: Date.now() - started, route: value.route, ground: value.ground, stream: value.stream });
+        if (Date.now() - started < 15000) await page.waitForTimeout(1000);
+      } while (Date.now() - started < 15000);
+      const final = await observe(page);
+      samples.push({ elapsedMs: Date.now() - started, route: final.route, ground: final.ground, stream: final.stream });
+      check('pending-base-section-holds-grounded-pose-and-goal-for-fifteen-seconds', samples.at(-1).elapsedMs >= 15000
+        && samples.every(sample => sample.stream.blocked?.reason === 'section-loading'
+          && near(sample.route.position, blocked.route.position) && equal(sample.route.goal, blocked.route.goal)
+          && equal(sample.route.destination, blocked.route.destination) && sample.route.remainingWaypoints === blocked.route.remainingWaypoints
+          && sample.ground.inside && sample.ground.hit && Math.abs(sample.ground.height - sample.route.position.height) < .003),
+      { delayedPaths: record.delayed.filter(path => deniedPaths.has(path)), samples });
+    } finally { fault.delay = undefined; releaseRetry(); }
+    await arrival(page, target, 'outbound-retry');
     await capture(page, 'outbound-nishiki-market-day');
     await inspectVisibleSurface(page, 'actual-market-surface-inspection-keeps-player-location');
     for (const sight of geography.sights.slice(2)) {
