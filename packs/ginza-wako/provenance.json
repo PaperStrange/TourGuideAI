@@ -4,11 +4,84 @@
   "revision": 1,
   "status": "exported-awaiting-browser-review",
   "generator": "experience/art/build_ginza.py",
-  "generatorSha256": "41f43ddc9f29fdfa386e04af3ac48622099eca0891cc32d0110081d8288ed03d",
+  "generatorSha256": "5b2d6e577eed889b9ae33ff0d07d1ed0aa98312e1cc5cdfd4e00168677de9a3c",
   "blenderVersion": "4.3.2",
   "source": {
     "path": "experience/content/ginza-wako/source.json",
     "sha256": "6e583689dc460e4a9c496838c44f57925bb8dc4b546338e4ff58f6967eddf674"
+  },
+  "context": {
+    "path": "experience/content/ginza-wako/context.json",
+    "sha256": "8afacd1d73dc1326466388f6e093538e775b97dafb6b3256c21721daf9c163e3",
+    "source": {
+      "path": "experience/evidence/area-packs-20261019/ginza-wako/osm-map.osm",
+      "sha256": "651fa5737c1b2b530d9a817daa6884cce38b1f1bb099ee7ef31ea88f02b88b64",
+      "retrievedAt": "2026-10-19T15:12:04Z",
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=139.7647,35.6714,139.7653,35.67185",
+      "license": "ODbL-1.0",
+      "licenseUrl": "https://www.openstreetmap.org/copyright",
+      "attribution": "© OpenStreetMap contributors"
+    },
+    "authoredSettings": {
+      "bounds": {
+        "minX": -65,
+        "maxX": 80,
+        "minY": -30,
+        "maxY": 70
+      },
+      "roadFullWidthsMetres": {
+        "osm:way:884274229": 9.6,
+        "osm:way:1026056857": 7.2
+      },
+      "branchSidewalkFullWidthMetres": 3.2,
+      "widthBasis": "Authored display policy. Three/two mapped lane tags inform road hierarchy; no measured lane or sidewalk width is available.",
+      "roadEndCaps": "flat",
+      "roadCornerJoins": "mitre",
+      "sidewalkRoundCapQuadrantSegments": 8
+    },
+    "layerValidation": [
+      {
+        "id": "road",
+        "valid": true,
+        "triangleCount": 21,
+        "triangleCoverageDifferenceSquareMetres": 0.0,
+        "triangleOverlapSquareMetres": 4.547473508864641e-13,
+        "excludedOverlapSquareMetres": 0.0
+      },
+      {
+        "id": "sidewalk",
+        "valid": true,
+        "triangleCount": 22,
+        "triangleCoverageDifferenceSquareMetres": 0.0,
+        "triangleOverlapSquareMetres": 0.0,
+        "excludedOverlapSquareMetres": 3.648636358092496e-17
+      },
+      {
+        "id": "land",
+        "valid": true,
+        "triangleCount": 95,
+        "triangleCoverageDifferenceSquareMetres": 0.0,
+        "triangleOverlapSquareMetres": 1.8189894035458565e-12,
+        "excludedOverlapSquareMetres": 5.439560840364596e-17
+      }
+    ],
+    "buildings": [
+      {
+        "sourceFeatureId": "osm:way:103509466",
+        "observedLevels": 8,
+        "authoredHeightMetres": 25.6,
+        "facadeAppearance": "authored",
+        "semanticGroup": "ContextBuilding_103509466"
+      },
+      {
+        "sourceFeatureId": "osm:way:449618283",
+        "observedLevels": 8,
+        "authoredHeightMetres": 25.6,
+        "facadeAppearance": "authored",
+        "semanticGroup": "ContextBuilding_449618283"
+      }
+    ],
+    "gameplay": false
   },
   "axes": "Source/Blender east,north,height → glTF east,height,-north; metres",
   "dimensions": {
@@ -71,19 +144,22 @@
     "simplified ornamental details",
     "original procedural PBR maps",
     "four-metre level corridor with rounded endpoint caps",
-    "road-facing curb, non-traversable facade paving apron, visual asphalt extent and two unlabelled distant background masses",
+    "non-traversable facade apron, neutral unmapped ground and distant asphalt continuation",
+    "source-path carriageway buffers, branch sidewalk widths and level presentation heights",
+    "0.12m road kerbs with authored crossing gaps and 2.8m zebra stripe width",
+    "nearby footprint masses with authored 3.2m storey height, glazing layout and materials",
     "day/night fixtures, materials emission and calibration"
   ],
   "noInteriorOrDoorAssignment": true,
   "noCurrentAccessClaim": true,
   "referenceUse": "Two licensed photographs guide original architectural geometry. No photograph pixels are used in runtime textures.",
-  "sourceObjects": 2688,
-  "primitives": 48,
-  "triangles": 84624,
-  "textures": 12,
+  "sourceObjects": 2905,
+  "primitives": 55,
+  "triangles": 87154,
+  "textures": 14,
   "model": {
-    "bytes": 7970296,
-    "sha256": "70870bc6603a93067356674bd3674caf191d96d0c425b6c30d53003808023f56"
+    "bytes": 8148792,
+    "sha256": "ca7098c975f745292a9fcb2743a6f6d08c5b3d3f3c948daaac5d409715f83e17"
   },
   "semanticGroups": [
     "WakoWingHarumiGround",
@@ -97,8 +173,8 @@
     "WakoTower",
     "Ground",
     "Context",
-    "ContextBuilding_authored_1",
-    "ContextBuilding_authored_2"
+    "ContextBuilding_103509466",
+    "ContextBuilding_449618283"
   ],
   "walkableTopMetres": 0,
   "preservedLegacyAssets": [
@@ -107,5 +183,5 @@
     "materials/architectural",
     "lighting/rig.json"
   ],
-  "seconds": 107.62
+  "seconds": 62.69
 }

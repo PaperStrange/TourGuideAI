@@ -3,10 +3,10 @@
   "defaultMode": "day",
   "axes": "Three(east,height,-north), metres",
   "renderBounds": {
-    "minX": -29,
-    "maxX": 29,
-    "minY": -12,
-    "maxY": 48
+    "minX": -32,
+    "maxX": 45,
+    "minY": -10,
+    "maxY": 68
   },
   "scope": {
     "en": "Authored daylight and night lighting. Reflections use licensed external HDR environments. Local fixtures and illuminated glazing do not establish actual lighting, opening hours, occupancy or entry.",
@@ -73,9 +73,9 @@
           "type": "spot",
           "enabled": false,
           "position": [
-            -13.426782,
-            4.35,
-            -15.45416
+            -13.53346,
+            4.05,
+            -15.334913
           ],
           "target": [
             -13.727744,
@@ -84,18 +84,18 @@
           ],
           "color": "#ffe2bc",
           "intensity": 0,
-          "distance": 17,
+          "distance": 15,
           "decay": 2,
-          "angle": 0.93,
-          "penumbra": 0.85,
+          "angle": 0.95,
+          "penumbra": 0.9,
           "shadow": {
             "enabled": true,
             "mapSize": 1024,
             "bias": -0.00018,
             "normalBias": 0.025,
             "radius": 4.5,
-            "near": 0.15,
-            "far": 75
+            "near": 0.1,
+            "far": 22
           }
         },
         {
@@ -103,9 +103,9 @@
           "type": "spot",
           "enabled": false,
           "position": [
-            3.079571,
-            4.35,
-            -6.43924
+            3.102132,
+            4.05,
+            -6.280838
           ],
           "target": [
             0.0,
@@ -114,18 +114,18 @@
           ],
           "color": "#ffe2bc",
           "intensity": 0,
-          "distance": 17,
+          "distance": 15,
           "decay": 2,
-          "angle": 0.93,
-          "penumbra": 0.85,
+          "angle": 0.95,
+          "penumbra": 0.9,
           "shadow": {
             "enabled": true,
             "mapSize": 1024,
             "bias": -0.00018,
             "normalBias": 0.025,
             "radius": 4.5,
-            "near": 0.15,
-            "far": 75
+            "near": 0.1,
+            "far": 22
           }
         },
         {
@@ -133,9 +133,9 @@
           "type": "spot",
           "enabled": false,
           "position": [
-            16.871511,
-            4.35,
-            -15.694117
+            16.990782,
+            4.05,
+            -15.587465
           ],
           "target": [
             19.633024,
@@ -144,18 +144,18 @@
           ],
           "color": "#ffe2bc",
           "intensity": 0,
-          "distance": 17,
+          "distance": 15,
           "decay": 2,
-          "angle": 0.93,
-          "penumbra": 0.85,
+          "angle": 0.95,
+          "penumbra": 0.9,
           "shadow": {
             "enabled": true,
             "mapSize": 1024,
             "bias": -0.00018,
             "normalBias": 0.025,
             "radius": 4.5,
-            "near": 0.15,
-            "far": 75
+            "near": 0.1,
+            "far": 22
           }
         },
         {
@@ -176,16 +176,16 @@
           "intensity": 0,
           "distance": 45,
           "decay": 2,
-          "angle": 0.62,
-          "penumbra": 0.85,
+          "angle": 0.76,
+          "penumbra": 0.92,
           "shadow": {
             "enabled": false,
             "mapSize": 512,
             "bias": -0.00018,
             "normalBias": 0.025,
             "radius": 4.5,
-            "near": 0.15,
-            "far": 75
+            "near": 0.1,
+            "far": 22
           }
         },
         {
@@ -206,16 +206,16 @@
           "intensity": 0,
           "distance": 45,
           "decay": 2,
-          "angle": 0.28,
-          "penumbra": 0.85,
+          "angle": 0.31,
+          "penumbra": 0.92,
           "shadow": {
             "enabled": false,
             "mapSize": 512,
             "bias": -0.00018,
             "normalBias": 0.025,
             "radius": 4.5,
-            "near": 0.15,
-            "far": 75
+            "near": 0.1,
+            "far": 22
           }
         }
       ],
@@ -276,9 +276,9 @@
           "type": "spot",
           "enabled": true,
           "position": [
-            -13.426782,
-            4.35,
-            -15.45416
+            -13.53346,
+            4.05,
+            -15.334913
           ],
           "target": [
             -13.727744,
@@ -287,18 +287,18 @@
           ],
           "color": "#ffe2bc",
           "intensity": 170,
-          "distance": 17,
+          "distance": 15,
           "decay": 2,
-          "angle": 0.93,
-          "penumbra": 0.85,
+          "angle": 0.95,
+          "penumbra": 0.9,
           "shadow": {
             "enabled": true,
             "mapSize": 1024,
             "bias": -0.00018,
             "normalBias": 0.025,
             "radius": 4.5,
-            "near": 0.15,
-            "far": 75
+            "near": 0.1,
+            "far": 22
           }
         },
         {
@@ -306,9 +306,9 @@
           "type": "spot",
           "enabled": true,
           "position": [
-            3.079571,
-            4.35,
-            -6.43924
+            3.102132,
+            4.05,
+            -6.280838
           ],
           "target": [
             0.0,
@@ -317,18 +317,18 @@
           ],
           "color": "#ffe2bc",
           "intensity": 170,
-          "distance": 17,
+          "distance": 15,
           "decay": 2,
-          "angle": 0.93,
-          "penumbra": 0.85,
+          "angle": 0.95,
+          "penumbra": 0.9,
           "shadow": {
             "enabled": true,
             "mapSize": 1024,
             "bias": -0.00018,
             "normalBias": 0.025,
             "radius": 4.5,
-            "near": 0.15,
-            "far": 75
+            "near": 0.1,
+            "far": 22
           }
         },
         {
@@ -336,9 +336,9 @@
           "type": "spot",
           "enabled": true,
           "position": [
-            16.871511,
-            4.35,
-            -15.694117
+            16.990782,
+            4.05,
+            -15.587465
           ],
           "target": [
             19.633024,
@@ -347,18 +347,18 @@
           ],
           "color": "#ffe2bc",
           "intensity": 170,
-          "distance": 17,
+          "distance": 15,
           "decay": 2,
-          "angle": 0.93,
-          "penumbra": 0.85,
+          "angle": 0.95,
+          "penumbra": 0.9,
           "shadow": {
             "enabled": true,
             "mapSize": 1024,
             "bias": -0.00018,
             "normalBias": 0.025,
             "radius": 4.5,
-            "near": 0.15,
-            "far": 75
+            "near": 0.1,
+            "far": 22
           }
         },
         {
@@ -376,19 +376,19 @@
             -7.944054
           ],
           "color": "#ffe3bf",
-          "intensity": 550,
+          "intensity": 450,
           "distance": 45,
           "decay": 2,
-          "angle": 0.62,
-          "penumbra": 0.85,
+          "angle": 0.76,
+          "penumbra": 0.92,
           "shadow": {
             "enabled": false,
             "mapSize": 512,
             "bias": -0.00018,
             "normalBias": 0.025,
             "radius": 4.5,
-            "near": 0.15,
-            "far": 75
+            "near": 0.1,
+            "far": 22
           }
         },
         {
@@ -406,19 +406,19 @@
             -10.864582
           ],
           "color": "#ffe3bf",
-          "intensity": 1250,
+          "intensity": 1150,
           "distance": 45,
           "decay": 2,
-          "angle": 0.28,
-          "penumbra": 0.85,
+          "angle": 0.31,
+          "penumbra": 0.92,
           "shadow": {
             "enabled": false,
             "mapSize": 512,
             "bias": -0.00018,
             "normalBias": 0.025,
             "radius": 4.5,
-            "near": 0.15,
-            "far": 75
+            "near": 0.1,
+            "far": 22
           }
         }
       ],
@@ -442,7 +442,7 @@
             "wako-ground-glass"
           ],
           "emissiveColor": "#d9b47f",
-          "emissiveIntensity": 0.085,
+          "emissiveIntensity": 0.035,
           "emissiveFromBaseColor": true
         }
       ]
