@@ -8,6 +8,8 @@ import { lightingMode as normalizeLightingMode } from './lighting-contract.js';
 import { normalizePerspectiveView } from './view-state.js';
 import { normalizeExplorationView } from './exploration-state.js';
 import { waitForTask } from './cancellation.js';
+import { createRestoreIntent } from './restore-intent.js';
+import { clearMovementState, getRouteProgress } from './route-progress.js';
 
 const keys = { KeyW: [0, 1], ArrowUp: [0, 1], KeyS: [0, -1], ArrowDown: [0, -1],
   KeyA: [-1, 0], ArrowLeft: [-1, 0], KeyD: [1, 0], ArrowRight: [1, 0] };
@@ -29,7 +31,7 @@ export async function createGame(host, options = {}) {
   const initialView = normalizeView(options.initialView);
   if (options.initialView != null && !initialView) throw new Error('Viewing pose does not match the selected detailed pack');
   let player = refreshProximity(createState(options.saved?.game ?? options.saved ?? options.initialState));
-  if (initialView) { player.x = initialView.player.x; player.y = initialView.player.y; refreshProximity(player); }
+  if (initialView) { Object.assign(player, initialView.player); refreshProximity(player); }
   let locale = options.locale === 'zh' ? 'zh' : 'en';
   let previous = { x: player.x, y: player.y };
   let renderer, canvas, view, rig, observer, frameHandle, firstFrameHandle, animateFrame;
@@ -39,6 +41,7 @@ export async function createGame(host, options = {}) {
   let inspecting = false, previousInspection = '', previousView = '';
   let width = 1, height = 1, queuedInteraction = null, pointer = null;
   let arrivalIdleMs = 0;
+  const restoration = createRestoreIntent();
   let requestedLightingMode = normalizeLightingMode(options.lightingMode);
   let lightingState = { requestedMode: requestedLightingMode, mode: null, phase: 'loading' };
   const lightingStatus = value => { lightingState = value; if (!destroyed) options.onLightingStatus?.(value); };
@@ -84,8 +87,8 @@ export async function createGame(host, options = {}) {
   const updateInspection = () => {
     if (view && inspecting) { view.updateInspection(rig.camera, player, width, height); publishInspection(); }
   };
-  const clearMovement = () => {
-    held.clear(); player.destination = null; player.waypoints = []; player.moving = false;
+  const clearMovement = (preserveDestination = false) => {
+    held.clear(); clearMovementState(player, { preserveDestination: preserveDestination === true });
     queuedInteraction = null; accumulator = 0; previous = { x: player.x, y: player.y }; dirty = true;
   };
   const interact = id => {
@@ -113,21 +116,41 @@ export async function createGame(host, options = {}) {
     getPackInfo: () => ({ packId: pack.id, revision: pack.revision }),
     getState: () => snapshot(player),
     getCameraState: () => rig?.snapshot() ?? null,
+    cancelRestore: restoration.cancel,
+    getStreamState: () => view?.getStreamState?.() ?? null,
+    retryStreaming() { view?.retryStreaming?.(); },
+    getRouteState: () => pack.route ? { id: pack.id, revision: pack.revision,
+      restoring: restoration.isPending(),
+      ...getRouteProgress(player),
+      position: { x: player.x, y: player.y, height: player.height, edgeId: player.edgeId, edgeDistance: player.edgeDistance },
+      destination: player.destination ? { ...player.destination } : null,
+      remainingWaypoints: player.waypoints.length, blocked: view?.getStreamState?.().blocked ?? null } : null,
+    focusSight(id) {
+      const sight = pack.route?.sights.find(item => item.id === id);
+      if (!sight || player.paused || status !== 'ready' || destroyed) return false;
+      api.moveTo(sight.x, sight.y); return true;
+    },
     captureView() {
       const camera = rig?.snapshot();
       if (!camera || camera.transitioning) return null;
-      return normalizeView({ version: solo ? 3 : 1, ...(solo ? api.getPackInfo() : {}), player: { x: player.x, y: player.y }, camera: {
+      return normalizeView({ version: solo ? 3 : 1, ...(solo ? api.getPackInfo() : {}), player: { x: player.x, y: player.y,
+        ...(pack.route ? { edgeId: player.edgeId, edgeDistance: player.edgeDistance, height: player.height } : {}) }, camera: {
         azimuth: camera.azimuth, polar: camera.polar, distance: camera.distance,
         targetOffset: { x: camera.target[0] - player.x, y: -camera.target[2] - player.y, height: camera.target[1] },
       } });
     },
-    restoreView(value) {
+    restoreView(value, { signal } = {}) {
+      restoration.cancel();
       const next = normalizeView(value);
       if (!next || !rig || status !== 'ready' || destroyed) return false;
-      clearMovement(); player.x = next.player.x; player.y = next.player.y;
-      previous = { ...next.player }; refreshProximity(player);
-      rig.restorePose(next.camera, player); dirty = true; publish();
-      return true;
+      clearMovement();
+      const apply = () => {
+        if (destroyed) return false;
+        Object.assign(player, next.player); previous = { ...next.player }; refreshProximity(player);
+        rig.restorePose(next.camera, player); dirty = true; publish(); return true;
+      };
+      return view.ensurePosition ? restoration.run({ signal,
+        prepare: abortSignal => view.ensurePosition(next.player, abortSignal), apply }) : apply();
     },
     focusMoment(moment) {
       const point = moment?.lookAt ?? moment?.focus;
@@ -140,6 +163,7 @@ export async function createGame(host, options = {}) {
         targetOffset: { x: dx, y: dy, height: point.height },
       } });
       if (!next) return false;
+      restoration.cancel();
       clearMovement(); rig.restorePose(next.camera, player, !player.paused);
       dirty = true; publish(); return true;
     },
@@ -149,6 +173,7 @@ export async function createGame(host, options = {}) {
       if (!solo || destroyed) return false;
       const next = Boolean(value);
       if (inspecting === next) return inspecting;
+      restoration.cancel();
       if (next) clearMovement();
       inspecting = next; rig?.setInspecting(inspecting); view?.setInspecting(inspecting);
       updateInspection(); publishInspection(); return inspecting;
@@ -156,6 +181,7 @@ export async function createGame(host, options = {}) {
     clearInspection() { view?.clearInspection(); publishInspection(); },
     inspectAt(x, y) {
       if (!solo || !inspecting || !visible || player.paused || status !== 'ready') return null;
+      restoration.cancel();
       view.setInspectionPoint(x, y); updateInspection();
       const result = view.selectInspection(); publishInspection(); return result?.selected ?? null;
     },
@@ -166,28 +192,32 @@ export async function createGame(host, options = {}) {
     },
     setPaused(value) {
       const next = Boolean(value);
+      if (next) restoration.cancel();
       if (player.paused === next) return;
-      clearMovement(); player.paused = next;
+      clearMovement(Boolean(pack.route)); player.paused = next;
       rig?.setEnabled(visible && !player.paused && status === 'ready'); scheduleFrame(); publish();
     },
     setVisible(value) {
       const next = Boolean(value);
+      if (!next) restoration.cancel();
       if (visible === next) return;
       visible = next; clearMovement(); lastTime = null;
+      view?.setSuspended?.(!visible || document.hidden);
       rig?.setEnabled(visible && !player.paused && status === 'ready');
       if (visible) scheduleFrame(); else stopFrames();
     },
     setLocale(value) { locale = value === 'zh' ? 'zh' : 'en'; localize(); },
     reset() {
+      restoration.cancel();
       clearMovement(); player = refreshProximity(createState());
       previous = { x: player.x, y: player.y }; rig?.reset(player); rig?.setEnabled(visible && status === 'ready');
       publish();
     },
-    resetCamera() { if (!player.paused) { rig?.reset(player); dirty = true; } },
-    rotateCamera(delta) { if (!player.paused && Number.isFinite(delta)) rig?.rotate(delta); },
-    tiltCamera(delta) { if (!player.paused && Number.isFinite(delta)) rig?.tilt(delta); },
-    panCamera(right, up) { if (!player.paused && Number.isFinite(right) && Number.isFinite(up)) rig?.pan(right, up); },
-    zoomCamera(delta) { if (!player.paused && Number.isFinite(delta)) rig?.zoom(delta); },
+    resetCamera() { if (!player.paused) { restoration.cancel(); rig?.reset(player); dirty = true; } },
+    rotateCamera(delta) { if (!player.paused && Number.isFinite(delta)) { restoration.cancel(); rig?.rotate(delta); } },
+    tiltCamera(delta) { if (!player.paused && Number.isFinite(delta)) { restoration.cancel(); rig?.tilt(delta); } },
+    panCamera(right, up) { if (!player.paused && Number.isFinite(right) && Number.isFinite(up)) { restoration.cancel(); rig?.pan(right, up); } },
+    zoomCamera(delta) { if (!player.paused && Number.isFinite(delta)) { restoration.cancel(); rig?.zoom(delta); } },
     markVisited(id, choiceId) {
       if (!encounters || !byId.has(id)) return;
       if (!player.visitedIds.includes(id)) player.visitedIds.push(id);
@@ -202,11 +232,17 @@ export async function createGame(host, options = {}) {
     setSelectedTarget(id) { if (encounters && byId.has(id)) { player.selectedTargetId = id; dirty = true; publish(); } },
     moveTo(x, y) {
       if (player.paused || status !== 'ready' || !Number.isFinite(x) || !Number.isFinite(y)) return;
+      restoration.cancel();
       rig.resumeFollow();
       held.clear(); queuedInteraction = null; setDestination(player, x, y); dirty = true; publish();
     },
+    stopWalking() {
+      if (destroyed) return false;
+      restoration.cancel(); clearMovement(); scheduleFrame(); publish(); return true;
+    },
     destroy() {
       if (destroyed) return;
+      restoration.cancel();
       destroyed = true; lifecycle.disposed++; abort.abort(new DOMException('Scene loading cancelled', 'AbortError'));
       clearMovement(); stopFrames(); cancelAnimationFrame(firstFrameHandle);
       observer?.disconnect(); for (const cleanup of cleanups) cleanup();
@@ -248,7 +284,7 @@ export async function createGame(host, options = {}) {
       (event.target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target.tagName));
     listen(window, 'keydown', event => {
       if (status !== 'ready' || !visible || player.paused || isText(event) || event.altKey || event.ctrlKey || event.metaKey) return;
-      if (keys[event.code]) { event.preventDefault(); rig.resumeFollow(); held.add(event.code); queuedInteraction = null; }
+      if (keys[event.code]) { event.preventDefault(); restoration.cancel(); rig.resumeFollow(); held.add(event.code); queuedInteraction = null; }
       if (solo && inspecting && event.code === 'KeyE' && !event.repeat) { event.preventDefault(); api.inspectAt(); }
       if (solo && inspecting && event.code === 'Escape') { event.preventDefault(); api.setInspecting(false); }
       if (solo && inspecting && host.contains(document.activeElement)) {
@@ -256,6 +292,7 @@ export async function createGame(host, options = {}) {
         const tilt = { KeyI: -0.06, KeyK: 0.06 }[event.code];
         const zoom = { Equal: -1, NumpadAdd: -1, Minus: 1, NumpadSubtract: 1 }[event.code];
         if (orbit || tilt || zoom) {
+          restoration.cancel();
           event.preventDefault(); view.setInspectionPoint();
           if (event.shiftKey && (orbit || tilt)) rig.pan(orbit ? Math.sign(orbit) : 0, tilt ? -Math.sign(tilt) : 0);
           else {
@@ -270,7 +307,8 @@ export async function createGame(host, options = {}) {
     listen(window, 'keyup', event => { held.delete(event.code); });
     listen(window, 'blur', clearMovement);
     listen(document, 'visibilitychange', () => {
-      if (document.hidden) { clearMovement(); stopFrames(); }
+      view?.setSuspended?.(!visible || document.hidden);
+      if (document.hidden) { restoration.cancel(); clearMovement(); stopFrames(); }
       else scheduleFrame();
     });
     const pointerPoint = event => {
@@ -291,6 +329,7 @@ export async function createGame(host, options = {}) {
     };
     listen(canvas, 'pointerdown', event => {
       if (player.paused || status !== 'ready') return;
+      restoration.cancel();
       activePointers.add(event.pointerId);
       if (activePointers.size > 1) { if (pointer) pointer.cancelled = true; return; }
       if (event.button !== 0) return;
@@ -298,6 +337,7 @@ export async function createGame(host, options = {}) {
       host.focus({ preventScroll: true });
       pointer = { id: event.pointerId, x: event.clientX, y: event.clientY, distance: 0, cancelled: false };
     });
+    listen(canvas, 'wheel', () => { if (visible && !player.paused) restoration.cancel(); }, { passive: true });
     listen(canvas, 'pointermove', event => {
       if (pointer?.id === event.pointerId) {
         pointer.distance = Math.max(pointer.distance, Math.hypot(event.clientX - pointer.x, event.clientY - pointer.y));
@@ -332,9 +372,12 @@ export async function createGame(host, options = {}) {
     });
     const started = performance.now();
     const loadedView = await createWorldView(renderer, { pack, encounters, solo, signal: abort.signal, onProgress: progress => notify('loading', progress),
-      lightingMode: requestedLightingMode, onLightingStatus: lightingStatus, onInvalidate: invalidate });
+      lightingMode: requestedLightingMode, onLightingStatus: lightingStatus, onInvalidate: invalidate,
+      onStreamingChange: value => { if (!destroyed) options.onStreamingChange?.(value); },
+      initialPosition: player, camera: rig.camera, qualityTier: options.qualityTier });
     if (destroyed || abort.signal.aborted) { loadedView.dispose(); throw abort.signal.reason; }
     view = loadedView;
+    rig.setObstructionResolver(view.resolveCamera);
     view.setInspecting(inspecting); rig.setInspecting(inspecting);
     const assetsReadyAt = performance.now();
     view.update(player, rig.camera, { dt: 1000, reducedMotion: true });
@@ -374,8 +417,9 @@ export async function createGame(host, options = {}) {
         targets: () => encounters ? TARGETS.map(({ id, x, y, approachX, approachY }) => ({ id, x, y, approachX, approachY })) : [],
         commands: () => commandTrace.map(command => ({ ...command })),
         inspection: api.getInspectionState,
+        streaming: api.getStreamState, route: api.getRouteState,
         renderer: () => ({ status, loadMs, startup: { ...startup }, renderedFrames, updateFrames, visible, render: { ...renderer.info.render },
-          memory: { ...renderer.info.memory }, scene: view.stats(), reducedMotion, lighting: view.getLightingState() }),
+          memory: { ...renderer.info.memory }, scene: view.stats(), reducedMotion, restoring: restoration.isPending(), lighting: view.getLightingState() }),
       });
     }
     animateFrame = function animate(now) {
@@ -390,7 +434,7 @@ export async function createGame(host, options = {}) {
           let right = 0, forward = 0;
           for (const code of held) { right += keys[code][0]; forward += keys[code][1]; }
           const input = cameraRelativeInput(right, forward, rig.controls.getAzimuthalAngle());
-          stepSimulation(player, input); accumulator -= TICK_MS;
+          stepSimulation(player, input, view.admit); accumulator -= TICK_MS;
           if (observing() && (input.x || input.y)) {
             commandTrace.push({ tick: player.tick, ...input }); if (commandTrace.length > 600) commandTrace.shift();
           }
@@ -410,6 +454,7 @@ export async function createGame(host, options = {}) {
       const alpha = reducedMotion || player.paused ? 1 : Math.max(0, Math.min(1, accumulator / TICK_MS));
       const rendered = { ...player, x: previous.x + (player.x - previous.x) * alpha,
         y: previous.y + (player.y - previous.y) * alpha };
+      rig.synchronizeCamera();
       dirty = view.update(rendered, rig.camera, { dt, reducedMotion }) || dirty;
       updateInspection();
       if (dirty && !document.hidden) {

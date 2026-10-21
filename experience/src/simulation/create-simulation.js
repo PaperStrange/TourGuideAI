@@ -12,10 +12,12 @@ export function createSimulation(pack = { world: WORLD, targets: TARGETS, naviga
     .filter(([id, value]) => validIds.has(id) && typeof value === 'string'));
   function createState(saved = {}) {
     if (!saved || typeof saved !== 'object') saved = {};
-    const point = navigation.project(finite(saved.x, world.spawn.x), finite(saved.y, world.spawn.y));
+    const requested = { ...(Number.isFinite(saved.x) && Number.isFinite(saved.y) ? saved : world.spawn),
+      x: finite(saved.x, world.spawn.x), y: finite(saved.y, world.spawn.y) };
+    const point = navigation.locate ? navigation.locate(requested) : navigation.project(requested.x, requested.y);
     const facing = ['north', 'south', 'east', 'west'].includes(saved.facing) ? saved.facing : 'east';
     return {
-      x: mm(point.x) / 1000, y: mm(point.y) / 1000, tick: Math.max(0, Math.floor(finite(saved.tick, 0))), facing,
+      ...point, x: mm(point.x) / 1000, y: mm(point.y) / 1000, tick: Math.max(0, Math.floor(finite(saved.tick, 0))), facing,
       heading: finite(saved.heading, { north: 0, east: Math.PI / 2, south: Math.PI, west: -Math.PI / 2 }[facing]),
       moving: false, paused: false, visitedIds: ids(saved.visitedIds), readSourceIds: ids(saved.readSourceIds),
       choiceIds: strings(saved.choiceIds), selectedTargetId: validIds.has(saved.selectedTargetId) ? saved.selectedTargetId : targets[0]?.id ?? null,
@@ -24,7 +26,7 @@ export function createSimulation(pack = { world: WORLD, targets: TARGETS, naviga
   }
   function setDestination(state, x, y) {
     if (![x, y].every(Number.isFinite)) return state;
-    state.waypoints = navigation.route(state, { x, y });
+    state.waypoints = navigation.route(state, { x, y }) ?? [];
     state.destination = state.waypoints.shift() ?? null;
     return state;
   }
@@ -39,7 +41,7 @@ export function createSimulation(pack = { world: WORLD, targets: TARGETS, naviga
     state.targetDistance = nearest ? Math.round(distance * 10) / 10 : null;
     return state;
   }
-  function stepSimulation(state, input = {}) {
+  function stepSimulation(state, input = {}, admit = () => true) {
     if (state.paused) { state.moving = false; return state; }
     state.tick++;
     let dx = finite(input.x, 0), dy = finite(input.y, 0);
@@ -47,9 +49,10 @@ export function createSimulation(pack = { world: WORLD, targets: TARGETS, naviga
     else if (state.destination) {
       dx = state.destination.x - state.x; dy = state.destination.y - state.y;
       if (Math.hypot(dx, dy) <= STEP_MM / 1000) {
-        const point = navigation.project(state.destination.x, state.destination.y);
+        const point = navigation.project(state.destination.x, state.destination.y, state);
+        if (!admit(state, point)) { state.moving = false; return refreshProximity(state); }
         state.moving = point.x !== state.x || point.y !== state.y;
-        state.x = mm(point.x) / 1000; state.y = mm(point.y) / 1000;
+        Object.assign(state, point); state.x = mm(point.x) / 1000; state.y = mm(point.y) / 1000;
         state.destination = state.waypoints.shift() ?? null;
         return refreshProximity(state);
       }
@@ -57,9 +60,10 @@ export function createSimulation(pack = { world: WORLD, targets: TARGETS, naviga
     const length = Math.hypot(dx, dy); state.moving = false;
     if (length > 1e-6) {
       const point = navigation.project((mm(state.x) + Math.round(dx / length * STEP_MM)) / 1000,
-        (mm(state.y) + Math.round(dy / length * STEP_MM)) / 1000);
+        (mm(state.y) + Math.round(dy / length * STEP_MM)) / 1000, state);
+      if (!admit(state, point)) return refreshProximity(state);
       state.moving = point.x !== state.x || point.y !== state.y;
-      state.x = mm(point.x) / 1000; state.y = mm(point.y) / 1000;
+      Object.assign(state, point); state.x = mm(point.x) / 1000; state.y = mm(point.y) / 1000;
       state.heading = Math.round(Math.atan2(dx, dy) * 1e6) / 1e6;
       state.facing = Math.abs(dx) >= Math.abs(dy) ? (dx > 0 ? 'east' : 'west') : (dy > 0 ? 'north' : 'south');
       if (!state.moving) { state.destination = null; state.waypoints = []; }

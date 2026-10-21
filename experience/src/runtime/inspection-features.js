@@ -26,9 +26,14 @@ export const INSPECTION_FEATURES = Object.freeze([
 
 export const getInspectionFeature = id => INSPECTION_FEATURES.find(feature => feature.id === id) ?? null;
 
-export function featureForSurface(mesh, materialIndex = 0, features = INSPECTION_FEATURES) {
+export function featureForSurface(mesh, materialIndex = 0, features = INSPECTION_FEATURES, face) {
   const material = Array.isArray(mesh.material) ? mesh.material[materialIndex] : mesh.material;
-  return features.find(feature => (mesh.userData.inspectionFeatureIds?.includes(feature.id) &&
+  const attribute = mesh.geometry?.getAttribute('_source_index');
+  const sourceIndex = attribute && face ? attribute.getX(face.a) : null;
+  const source = sourceIndex === null ? null : mesh.userData.featureTable?.[sourceIndex];
+  const sourceFeatures = Array.isArray(source) ? source : source?.featureIds ?? [];
+  const ids = source ? sourceFeatures : mesh.userData.inspectionFeatureIds ?? [];
+  return features.find(feature => (ids.includes(feature.id) &&
     (!feature.materials || feature.materials.includes(material?.name))) ||
-    (feature.semanticGroups?.includes(mesh.userData.semanticGroup) && feature.materials?.includes(material?.name))) ?? null;
+    (!source && feature.semanticGroups?.includes(mesh.userData.semanticGroup) && feature.materials?.includes(material?.name))) ?? null;
 }

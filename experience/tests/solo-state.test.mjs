@@ -8,6 +8,7 @@ import { SOLO_STORAGE_KEY, MAX_KEPT_PLACES, normalizeMapView, normalizeSoloPlace
   normalizeKeptPlace, parseKeptPlaces, writeKeptPlaces, areaAtView, isKeptPlaceAvailable } from '../src/solo/state.js';
 import { normalizeExplorationView } from '../src/runtime/exploration-state.js';
 import { getPack, getPackPlace } from '../src/packs/registry.js';
+import { createRouteNavigation } from '../src/simulation/route-navigation.js';
 
 const place = (id = 'crossing') => ({ id, title: 'Shijō–Karasuma crossing', kind: 'poi',
   latitude: 35.00376, longitude: 135.7599457, source: 'OpenStreetMap',
@@ -24,6 +25,21 @@ const kept = (representation = 'street') => ({ id: 'kept-example', title: 'A cor
   route: { id: 'personal-order', title: 'Selected order', stops: [place('second'), place('first')] },
 });
 const raw = places => JSON.stringify({ version: 1, places });
+function neighborhoodKept() {
+  const pack = getPack('shijo-east'), center = getPackPlace(pack.id, 'en');
+  const edge = pack.navigation.edges.find(value => value.reviewed !== false && value.accessible !== false);
+  const [start, end] = edge.points;
+  const player = createRouteNavigation(pack.navigation).locate({ edgeId: edge.id,
+    x: (start.x + end.x) / 2, y: (start.y + end.y) / 2 });
+  const view = normalizeExplorationView({ version: 3, packId: pack.id, revision: pack.revision, player,
+    camera: { ...pack.camera.initial, targetOffset: { ...pack.camera.followOffset } } }, pack.id);
+  return normalizeKeptPlace({ ...kept(), id: 'neighborhood-view', center, origin: center, view,
+    route: { id: 'neighborhood-order', title: 'My neighborhood walk', stops: [center] } });
+}
+const futureNeighborhood = () => {
+  const value = neighborhoodKept();
+  return { ...value, view: { ...value.view, revision: 88 } };
+};
 const legacyKey = 'tourguideai:journey:v2';
 const legacyValue = '{"notes":{"mitsui":"Existing private words"}}';
 const persistenceMode = process.argv.find(value => value.startsWith('--solo-persist='))?.split('=')[1];
@@ -33,18 +49,24 @@ if (persistenceMode) {
   if (persistenceMode === 'write') {
     localStorage.setItem(legacyKey, legacyValue);
     localStorage.setItem('tourguideai:perspective:v1', 'Existing perspective bytes');
-    assert.deepEqual(writeKeptPlaces(localStorage, [kept(), kept('map')].map((item, index) => ({ ...item, id: 'saved-' + index }))),
-      [kept(), kept('map')].map((item, index) => normalizeKeptPlace({ ...item, id: 'saved-' + index })));
+    assert.deepEqual(writeKeptPlaces(localStorage, [kept(), kept('map'), futureNeighborhood()].map((item, index) => ({ ...item, id: 'saved-' + index }))),
+      [kept(), kept('map'), futureNeighborhood()].map((item, index) => normalizeKeptPlace({ ...item, id: 'saved-' + index })));
     const persisted = localStorage.getItem(SOLO_STORAGE_KEY);
     assert.throws(() => writeKeptPlaces(localStorage, [kept(), { invalid: true }]));
     assert.equal(localStorage.getItem(SOLO_STORAGE_KEY), persisted);
   } else {
     const restored = parseKeptPlaces(localStorage.getItem(SOLO_STORAGE_KEY));
-    assert.equal(restored.length, 2);
+    assert.equal(restored.length, 3);
     assert.equal(restored[0].view.camera.azimuth, 1.7);
     assert.deepEqual(restored[1].view, mapView());
     assert.deepEqual(restored[0].route.stops.map(stop => stop.id), ['second', 'first']);
     assert.equal(restored[0].note, kept().note);
+    assert.equal(isKeptPlaceAvailable(restored[2]), false);
+    assert.deepEqual(restored[2].view.player, neighborhoodKept().view.player);
+    assert.ok(restored[2].view.player.edgeDistance > 0);
+    restored[0].note = 'An edited earlier note';
+    writeKeptPlaces(localStorage, restored);
+    assert.deepEqual(parseKeptPlaces(localStorage.getItem(SOLO_STORAGE_KEY))[2], restored[2]);
   }
   assert.equal(localStorage.getItem(legacyKey), legacyValue);
   assert.equal(localStorage.getItem('tourguideai:perspective:v1'), 'Existing perspective bytes');
@@ -128,6 +150,25 @@ if (persistenceMode) {
     assert.deepEqual(restored[1], record);
   });
 
+  test('unavailable neighborhood poses preserve the actual edge station and height through record normalization', () => {
+    const current = neighborhoodKept();
+    assert.ok(current.view.player.edgeDistance > 0);
+    for (const view of [{ ...current.view, revision: 88 }, { ...current.view, packId: 'uninstalled-neighborhood' }]) {
+      const unavailable = { ...current, view };
+      const restored = parseKeptPlaces(raw([kept(), unavailable]))[1];
+      assert.equal(isKeptPlaceAvailable(restored), false);
+      assert.deepEqual(restored, unavailable);
+      assert.deepEqual(normalizeExplorationView({ ...restored.view, packId: current.view.packId, revision: current.view.revision }, current.view.packId), current.view);
+      for (const edgeDistance of [-1, Infinity, NaN, 1e7 + 1]) {
+        assert.equal(normalizeKeptPlace({ ...unavailable, view: { ...view, player: { ...view.player, edgeDistance } } }), null);
+      }
+      for (const player of [{ ...view.player, edgeId: undefined }, { ...view.player, edgeId: 'invalid edge' },
+        { ...view.player, height: Infinity }]) {
+        assert.equal(normalizeKeptPlace({ ...unavailable, view: { ...view, player } }), null);
+      }
+    }
+  });
+
   test('source references require bounded coordinates and a credential-free HTTPS URL', () => {
     for (const invalid of [null, [], { ...place(), source: '' }, { ...place(), title: ' ' },
       { ...place(), latitude: 91 }, { ...place(), longitude: Infinity }, { ...place(), latitude: '35' },
@@ -159,10 +200,12 @@ if (persistenceMode) {
       { ...value, savedAt: 'not-a-date' }, { ...value, lighting: 'live weather' },
       { ...value, route: { ...value.route, stops: [] } },
       { ...value, route: { ...value.route, stops: [place(), place()] } },
-      { ...value, route: { ...value.route, stops: Array.from({ length: 9 }, (_, index) => place(String(index))) } },
+      { ...value, route: { ...value.route, stops: Array.from({ length: 10 }, (_, index) => place(String(index))) } },
       { ...value, representation: 'recorded-real-visit' }, { ...value, view: mapView() },
     ]) assert.equal(normalizeKeptPlace(invalid), null);
     assert.ok(normalizeKeptPlace({ ...value, title: '中'.repeat(100), note: '中'.repeat(280) }));
+    assert.equal(normalizeKeptPlace({ ...value, route: { ...value.route,
+      stops: Array.from({ length: 9 }, (_, index) => place(String(index))) } }).route.stops.length, 9);
     const maximum = Array.from({ length: MAX_KEPT_PLACES }, (_, index) => ({ ...kept(), id: 'kept-' + index }));
     assert.equal(parseKeptPlaces(raw(maximum)).length, MAX_KEPT_PLACES);
     for (const invalid of ['broken-json', '[]', '{"version":2,"places":[]}', 'x'.repeat(300001),

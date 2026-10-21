@@ -3,7 +3,7 @@ import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { normalizeMapView } from '../solo/state.js';
 import { prepareTravelMapStyle, TRAVEL_MAP_STYLE_ID } from './map-style.js';
-import { itineraryCoordinates, journeyFeatures as routeFeatures } from './map-route-data.js';
+import { itineraryCoordinates, journeyGeometry, journeyFeatures as routeFeatures } from './map-route-data.js';
 
 export { itineraryCoordinates } from './map-route-data.js';
 
@@ -142,6 +142,7 @@ export function createWorldMap(host, { onSelect, onStatus, onViewChange, locale 
   }
   const signatureFor = view => JSON.stringify(view.kind === 'local'
       ? [view.kind, view.place.kind, view.place.longitude, view.place.latitude]
+      : view.kind === 'route' ? [view.kind, view.points]
       : [view.kind, ...view.places.map(place => [place.longitude, place.latitude])]);
   function move(view) {
     pendingView = view;
@@ -156,17 +157,20 @@ export function createWorldMap(host, { onSelect, onStatus, onViewChange, locale 
       const country = view.place.kind === 'country';
       map.easeTo({ center: [view.place.longitude, view.place.latitude], zoom: country ? 4 : 16.3,
         pitch: country ? 0 : 56, bearing: country ? 0 : -18, duration });
-    } else if (view.places?.length) {
-      const points = itineraryCoordinates(view.places);
+    } else if (view.kind === 'route' || view.places?.length) {
+      const points = view.kind === 'route' ? view.points : itineraryCoordinates(view.places);
       const lngs = points.map(p => p[0]), lats = points.map(p => p[1]);
       map.fitBounds([[Math.min(...lngs), Math.min(...lats)], [Math.max(...lngs), Math.max(...lats)]],
-        { padding: 90, maxZoom: 7, pitch: 0, bearing: 0, duration });
+        { padding: view.kind === 'route' ? 40 : 90, maxZoom: view.kind === 'route' ? 17 : 7,
+          pitch: view.kind === 'route' ? 40 : 0, bearing: view.kind === 'route' ? -18 : 0, duration });
     } else map.easeTo({ center: [35, 24], zoom: 1.5, pitch: 0, bearing: 0, duration });
   }
   loadStyle();
   return {
     setPlaces(places, routes = []) { pendingPlaces = places; pendingRoutes = routes; render(); },
     local(place) { move({ kind: 'local', place }); },
+    fitRoute(route) { move({ kind: 'route', points: journeyGeometry(route).coordinates }); },
+    retainRoute(route) { pendingView = { kind: 'route', points: journeyGeometry(route).coordinates }; viewSignature = signatureFor(pendingView); },
     retainLocal(place) { pendingView = { kind: 'local', place }; viewSignature = signatureFor(pendingView); },
     world(places = []) { move({ kind: 'world', places }); },
     captureView() {

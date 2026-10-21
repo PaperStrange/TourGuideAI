@@ -3,8 +3,8 @@ import { DEFAULT_PACK_ID } from '../packs/registry.js';
 
 // This adapter owns only a live presentation. Saving, attribution and sharing are
 // the application's responsibility; it never opens or mutates a Kyoto journey.
-export async function createPerspectiveView(host, { locale = 'en', onState, onStatus, onViewChange,
-  onInspectionChange, initialView, solo = false, packId = DEFAULT_PACK_ID, signal, initialLighting = 'day' } = {}) {
+export async function createPerspectiveView(host, { locale = 'en', onState, onStatus, onViewChange, onStreamingChange,
+  onInspectionChange, initialView, solo = false, packId = DEFAULT_PACK_ID, signal, initialLighting = 'day', qualityTier } = {}) {
   let game, latest = null, status = 'loading', currentView = null, destroyed = false;
   const snapshot = () => ({
     position: latest ? { x: latest.x, y: latest.y } : null,
@@ -14,7 +14,7 @@ export async function createPerspectiveView(host, { locale = 'en', onState, onSt
   });
   const publish = () => { if (!destroyed && !signal?.aborted) onState?.(snapshot()); };
   game = await createGame(host, {
-    locale, solo, packId, signal, encounters: false, lightingMode: initialLighting,
+    locale, solo, packId, signal, qualityTier, encounters: false, lightingMode: initialLighting,
     initialView,
     onState(value) { latest = value; if (game) currentView = game.captureView(); publish(); },
     onViewChange(value) {
@@ -22,6 +22,7 @@ export async function createPerspectiveView(host, { locale = 'en', onState, onSt
       if (!destroyed) onViewChange?.(value);
     },
     onInspectionChange(value) { if (!destroyed) onInspectionChange?.(value); },
+    onStreamingChange(value) { if (!destroyed) onStreamingChange?.(value); },
     onStatus(value) { status = value.status; onStatus?.(value); publish(); },
   });
   if (status !== 'ready') {
@@ -30,13 +31,21 @@ export async function createPerspectiveView(host, { locale = 'en', onState, onSt
     throw Object.assign(new Error('Perspective view could not initialize'), { code: 'perspective-unavailable', status });
   }
   latest = game.getState(); currentView = game.captureView(); publish();
-  const update = action => { if (destroyed) return false; const result = action(); latest = game.getState(); currentView = game.captureView(); publish(); return result; };
+  const update = action => {
+    if (destroyed) return false;
+    const finish = result => { if (!destroyed) { latest = game.getState(); currentView = game.captureView(); publish(); } return result; };
+    const result = action(); return result?.then ? result.then(finish) : finish(result);
+  };
   const api = {
     getPackInfo: () => game.getPackInfo(),
+    getRouteState: () => game.getRouteState(), getStreamState: () => game.getStreamState(),
+    retryStreaming: () => update(() => game.retryStreaming()), focusSight: id => update(() => game.focusSight(id)),
     moveTo: (x, y) => update(() => game.moveTo(x, y)),
+    stopWalking: () => update(() => game.stopWalking()),
     focusMoment: moment => update(() => game.focusMoment(moment)),
     captureView: () => destroyed ? null : game.captureView(),
-    restoreView: value => update(() => game.restoreView(value)),
+    restoreView: (value, options) => update(() => game.restoreView(value, options)),
+    cancelRestore: () => game.cancelRestore(),
     setLocale: value => update(() => game.setLocale(value)),
     setPaused: value => update(() => game.setPaused(value)),
     setVisible: value => update(() => game.setVisible(value)),
@@ -61,7 +70,7 @@ export async function createPerspectiveView(host, { locale = 'en', onState, onSt
   signal?.addEventListener('abort', api.destroy, { once: true });
   if (import.meta.env.DEV || new URLSearchParams(location.search).get('qa') === '1') {
     window.__PERSPECTIVE_VIEW__ = Object.freeze({ host, snapshot, pack: game.getPackInfo,
-      inspection: () => game.getInspectionState(),
+      inspection: () => game.getInspectionState(), streaming: game.getStreamState, route: game.getRouteState,
       camera: () => game.getCameraState(), renderer: () => window.__TOUR_GAME__?.host === host ? window.__TOUR_GAME__.renderer() : null });
   }
   return api;

@@ -16,7 +16,7 @@ const pose = pack => ({ version: 3, packId: pack.id, revision: pack.revision, pl
 const near = (actual, expected, tolerance = 0.002) => assert.ok(Math.abs(actual - expected) <= tolerance, `${actual} != ${expected}`);
 
 test('reviewed registry retains the existing crossing and excludes broad or unsupported places', () => {
-  assert.deepEqual(listPacks().map(pack => pack.id), ['shijo-karasuma', 'ginza-wako']);
+  assert.deepEqual(listPacks().map(pack => pack.id), ['shijo-karasuma', 'ginza-wako', 'shijo-east']);
   const crossing = PLACES.find(place => place.id === 'crossing'), place = getPackPlace(shijo.id, 'zh');
   assert.equal(place.id, crossing.id); assert.equal(place.latitude, crossing.latitude);
   assert.equal(place.longitude, crossing.longitude); assert.equal(place.url, crossing.source);

@@ -1,9 +1,11 @@
 import { PLAYER_RADIUS } from './world.js';
+import { createRouteNavigation } from './route-navigation.js';
 
 const clamp = (value, low, high) => Math.min(high, Math.max(low, value));
 const distance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
 
 export function createNavigation(definition) {
+  if (definition.kind === 'route-graph') return createRouteNavigation(definition);
   if (definition.kind === 'rect-crossing') {
     const { world } = definition;
     const bounds = {

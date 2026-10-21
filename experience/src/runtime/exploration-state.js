@@ -8,6 +8,7 @@ const finite = value => typeof value === 'number' && Number.isFinite(value);
 const clamp = (value, low, high) => Math.min(high, Math.max(low, value));
 const round = value => Math.round(value * 1e6) / 1e6;
 const navigationByPack = new Map();
+const routeEdgeLengths = new Map();
 
 export function normalizeExplorationCamera(value, limits = { ...EXPLORATION_CAMERA_LIMITS, targetXY: 32, targetHeight: [0.5, 20] }) {
   if (!record(value) || !['azimuth', 'polar', 'distance'].every(key => finite(value[key]))) return null;
@@ -40,7 +41,22 @@ export function normalizeExplorationView(value, packId = DEFAULT_PACK_ID) {
   const camera = normalizeExplorationCamera(value.camera, pack.camera.limits);
   if (!camera) return null;
   if (!navigationByPack.has(pack.id)) navigationByPack.set(pack.id, createNavigation(pack.navigation));
-  const point = navigationByPack.get(pack.id).project(value.player.x, value.player.y);
-  return { version: 3, packId: pack.id, revision: pack.revision, player: { x: Math.round(point.x * 1000) / 1000,
+  const navigation = navigationByPack.get(pack.id);
+  const requested = { x: value.player.x, y: value.player.y };
+  if (navigation.locate) {
+    requested.x = Math.round(requested.x * 1000) / 1000;
+    requested.y = Math.round(requested.y * 1000) / 1000;
+    if (!routeEdgeLengths.has(pack.id)) routeEdgeLengths.set(pack.id,
+      new Map(navigation.snapshot().edges.map(edge => [edge.id, edge.length])));
+    const lengths = routeEdgeLengths.get(pack.id), { edgeId, edgeDistance } = value.player;
+    if (edgeId !== undefined && (typeof edgeId !== 'string' || !lengths.has(edgeId))) return null;
+    if (edgeDistance !== undefined && (!finite(edgeDistance) || edgeDistance < 0 ||
+        edgeId === undefined || edgeDistance > lengths.get(edgeId) + .001)) return null;
+    if (edgeId !== undefined) requested.edgeId = edgeId;
+    if (edgeDistance !== undefined) requested.edgeDistance = edgeDistance;
+  }
+  const point = navigation.locate ? navigation.locate(requested) : navigation.project(requested.x, requested.y);
+  return { version: 3, packId: pack.id, revision: pack.revision, player: { ...(navigation.locate ? {
+    edgeId: point.edgeId, edgeDistance: round(point.edgeDistance), height: round(point.height) } : {}), x: Math.round(point.x * 1000) / 1000,
     y: Math.round(point.y * 1000) / 1000 }, camera };
 }

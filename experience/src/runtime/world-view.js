@@ -10,7 +10,7 @@ import { prepareArchitecturalMaterials, loadArchitecturalFinishTextures,
 import { createSurfaceInspection } from './inspection.js';
 import { loadPackManifest, verifiedBytes } from './pack-assets.js';
 
-function disposeTree(root) {
+export function disposeTree(root) {
   const geometries = new Set(), materials = new Set(), textures = new Set();
   root.traverse(object => {
     if (object.geometry) geometries.add(object.geometry);
@@ -23,7 +23,7 @@ function disposeTree(root) {
 }
 
 
-function contactShadow() {
+export function contactShadow() {
   const canvas = document.createElement('canvas'); canvas.width = canvas.height = 64;
   const context = canvas.getContext('2d');
   const gradient = context.createRadialGradient(32, 32, 3, 32, 32, 31);
@@ -39,7 +39,13 @@ function contactShadow() {
   return mesh;
 }
 
-export async function createWorldView(renderer, { pack = getPack(DEFAULT_PACK_ID), encounters = true, solo = false, signal, onProgress, lightingMode = 'day', onLightingStatus, onInvalidate } = {}) {
+export async function createWorldView(renderer, options = {}) {
+  const { pack = getPack(DEFAULT_PACK_ID), encounters = true, solo = false, signal, onProgress,
+    lightingMode = 'day', onLightingStatus, onInvalidate } = options;
+  if (pack.assets.sections) {
+    const { createRouteWorldView } = await import('./route-world-view.js');
+    return createRouteWorldView(renderer, options);
+  }
   const scene = new THREE.Scene();
   let lighting;
   const loader = new GLTFLoader();

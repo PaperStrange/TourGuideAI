@@ -14,7 +14,7 @@ export function inspectIntersection(hit, camera, player, width, height, features
   if (!hit?.face || !visibleSurface(hit.object)) return null;
   const material = Array.isArray(hit.object.material) ? hit.object.material[hit.face.materialIndex] : hit.object.material;
   if (!material || material.opacity < 0.98) return null;
-  const feature = featureForSurface(hit.object, hit.face.materialIndex, features);
+  const feature = featureForSurface(hit.object, hit.face.materialIndex, features, hit.face);
   if (!feature) return null;
   const normal = hit.face.normal.clone().applyMatrix3(new THREE.Matrix3().getNormalMatrix(hit.object.matrixWorld)).normalize();
   const viewDirection = camera.position.clone().sub(hit.point).normalize();
@@ -26,6 +26,7 @@ export function inspectIntersection(hit, camera, player, width, height, features
   if (projected.z < -1 || projected.z > 1 || Math.abs(projected.x) > 1 || Math.abs(projected.y) > 1) return null;
   return {
     id: feature.id,
+    ...(hit.object.userData.cellId ? { cellId: hit.object.userData.cellId } : {}),
     point: { x: round(hit.point.x), y: round(-hit.point.z), height: round(hit.point.y) },
     screen: { x: round((projected.x + 1) * width / 2), y: round((1 - projected.y) * height / 2) },
     distance: round(distance), cameraDistance: round(hit.distance),
@@ -35,14 +36,21 @@ export function inspectIntersection(hit, camera, player, width, height, features
 
 export function createSurfaceInspection(roots, features = INSPECTION_FEATURES, maxDistance = 65) {
   const meshes = [];
-  for (const root of roots) root.traverse(object => {
+  const addRoot = root => root.traverse(object => {
     if (object.isMesh) { object.geometry.computeBoundingBox(); meshes.push(object); }
   });
+  for (const root of roots) addRoot(root);
   const raycaster = new THREE.Raycaster();
   let enabled = false, focus = null, selected = null, pointer = null, signature = null;
   const snapshot = () => structuredClone({ enabled, focus, selected });
   return {
     snapshot,
+    addRoot(root) { addRoot(root); signature = null; },
+    removeRoot(root) {
+      const removed = new Set(); root.traverse(object => removed.add(object));
+      for (let index = meshes.length - 1; index >= 0; index--) if (removed.has(meshes[index])) meshes.splice(index, 1);
+      signature = null;
+    },
     isEnabled: () => enabled,
     setEnabled(value) {
       enabled = Boolean(value); signature = null;

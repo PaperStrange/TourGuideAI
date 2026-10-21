@@ -9,7 +9,9 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--source', default='/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc')
 args = parser.parse_args()
 root = Path(__file__).resolve().parents[1]
-paths = [root / 'src/ui/i18n.js', root / 'src/home/copy.js', root / 'src/home/world-map.js', root / 'src/travel/copy.js', root / 'src/content/kyoto.js', root / 'src/runtime/inspection-features.js',
+paths = [root / 'src/ui/i18n.js', root / 'src/travel/copy.js', root / 'src/content/kyoto.js', root / 'src/runtime/inspection-features.js',
+         *sorted((root / 'src/home').glob('*.js')), *sorted((root / 'src/journey').glob('*.js')),
+         *sorted((root / 'src/neighborhoods').rglob('*.js')), *sorted((root / 'src/neighborhoods').rglob('geography.json')),
          root / 'src/content/perspectives.js', *sorted((root / 'src/app').glob('*.js')),
          *sorted((root / 'src/perspective').glob('*.js')), *sorted((root / 'src/packs').glob('*.js'))]
 characters = set(''.join(p.read_text() for p in paths)) | set(chr(i) for i in range(32, 127))

@@ -9,6 +9,10 @@ import { buildMapsJourney, mapsShareText } from '../travel/maps.js';
 import { areaAtView, hasDetailedStreet } from '../solo/state.js';
 import { createSoloController, soloControlsMarkup, keptPlacesMarkup, soloDialogsMarkup } from '../solo/controller.js';
 import { getPack, getPackForPlace, getPackPlace, listPacks } from '../packs/registry.js';
+import geography from '../neighborhoods/shijo-east/geography.json' with { type: 'json' };
+import { SIGHTS } from '../neighborhoods/shijo-east/sights.js';
+import { createJourneyPlanner } from '../journey/recommendations.js';
+import { createNeighborhoodJourney, journeyPanelMarkup } from './journey-panel.js';
 
 const $ = selector => document.querySelector(selector);
 const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
@@ -32,6 +36,10 @@ let invitationNeedsConfirmation = false;
 let solo, soloPaused = false, restoring = false, keptRoute = false, mapViewToRestore = null, restoreGeneration = 0;
 let previewRepresentation = null, restoreController;
 let touchControls = matchMedia('(pointer: coarse)').matches, inputHelpDirty = false;
+let neighborhood, streamingState = null;
+const neighborhoodId = geography.id;
+const showingNeighborhood = () => mode === 'explore' && getPackForPlace(center)?.id === neighborhoodId;
+const currentRoute = () => showingNeighborhood() ? neighborhood?.getRoute() : routes[selectedRoute];
 
 function kyotoCenter() {
   const place = resolveStops(['crossing'], locale)[0];
@@ -43,7 +51,7 @@ const toCatalog = place => ({ id: place.id, name: place.title, latitude: place.l
   kind: ['country', 'city'].includes(place.kind) ? place.kind : 'poi', sourceUrl: place.url || undefined,
   country: place.country || undefined, city: place.locality || undefined });
 const catalogPlace = id => room?.catalog.find(place => place.id === id);
-const currentStops = () => routes[selectedRoute]?.stops || [center];
+const currentStops = () => currentRoute()?.stops || [center];
 function setMessage(key) { messageKey = key; $('#action-status').textContent = t(key); }
 function localizePackPlace(place) {
   const translated = getPackPlace(getPackForPlace(place)?.id, locale);
@@ -61,7 +69,7 @@ function markup() {
   ${soloControlsMarkup()}
   <div id="center-actions" class="center-actions"><button id="street-map-toggle" class="secondary" hidden></button><button id="add-dream" class="primary" data-copy="addDream" hidden></button><a class="text-link" id="walk-link" href="./walk.html" data-copy="legacy"></a><a class="text-link" id="companion-link" href="./travel.html" data-copy="companion"></a></div>
   <section id="routes-section" class="route-section" aria-labelledby="routes-heading"><p class="eyebrow" data-copy="furtherStep"></p><h2 id="routes-heading" data-copy="routesTitle"></h2><p id="routes-status" role="status"></p><button id="routes-retry" class="secondary" data-copy="retryNearby" hidden></button><div id="route-options" class="route-options"></div><p class="small" data-copy="routeNote"></p></section>
-  </section><aside class="journey-sidebar"><section id="explore-plan" class="paper-card"><span class="eyebrow" data-copy="yourWalk"></span><h2 id="route-title"></h2><ol id="route-stops" class="stop-list"></ol><div id="route-maps" class="map-links"></div><button id="copy-maps" class="secondary" data-copy="copyMaps"></button><label class="sr-only" for="maps-text" data-copy="copyMaps"></label><textarea id="maps-text" readonly hidden></textarea></section>
+  </section><aside class="journey-sidebar">${journeyPanelMarkup()}<section id="explore-plan" class="paper-card"><span class="eyebrow" data-copy="yourWalk"></span><h2 id="route-title"></h2><ol id="route-stops" class="stop-list"></ol><div id="route-maps" class="map-links"></div><button id="copy-maps" class="secondary" data-copy="copyMaps"></button><label class="sr-only" for="maps-text" data-copy="copyMaps"></label><textarea id="maps-text" readonly hidden></textarea></section>
   ${keptPlacesMarkup()}
   <section id="together-panel" hidden><div class="paper-card" id="room-setup"><h2 data-copy="together"></h2><p data-copy="roomIntro"></p><label for="traveler-name" data-copy="name"></label><input id="traveler-name" maxlength="60" autocomplete="nickname"><label for="room-title" data-copy="roomTitle"></label><input id="room-title" maxlength="120"><button id="room-create" class="primary" data-copy="create"></button><button id="room-join" class="primary" data-copy="join" hidden></button></div>
   <div class="paper-card" id="room-shared" hidden><span class="eyebrow" data-copy="ourJourney"></span><h2 id="shared-title"></h2><button id="room-invite" class="secondary" data-copy="invite"></button><label class="sr-only" for="invite-url" data-copy="inviteLabel"></label><textarea id="invite-url" readonly hidden></textarea><p class="small" data-copy="inviteNote"></p><h3 data-copy="people"></h3><div id="participant-list"></div><h3 data-copy="dreams"></h3><div id="dream-list"></div></div>
@@ -105,6 +113,7 @@ function applyCopy() {
   $('#search-status').textContent = searchMessage ? t(searchMessage) : '';
   if (messageKey) setMessage(messageKey);
   solo?.render();
+  neighborhood?.render();
 }
 
 function syncURL() {
@@ -120,17 +129,21 @@ function updateMode() {
   $('#journey-step').textContent = t(together ? 'togetherStep' : 'exploreStep');
   $('#search-label').textContent = t(together ? 'dreamLabel' : 'searchLabel');
   $('label[for="place-query"]').textContent = t(together ? 'dreamLabel' : 'searchLabel');
-  $('#together-panel').hidden = !together; $('#explore-plan').hidden = together && !localPreview;
-  $('#routes-section').hidden = together && !localPreview;
+  $('#together-panel').hidden = !together; $('#explore-plan').hidden = together && !localPreview || showingNeighborhood();
+  $('#routes-section').hidden = together && !localPreview || showingNeighborhood();
   $('#add-dream').hidden = !together || !localPreview;
   $('#walkable-places').hidden = together;
+  $('.journey-layout').dataset.neighborhood = String(showingNeighborhood());
   if (together) liveView?.setInspecting(false);
+  neighborhood?.setContext({ mode, inNeighborhood: showingNeighborhood() });
   showPreview();
 }
 
 function releaseScene() {
+  neighborhood?.flush();
+  neighborhood?.updateWalking(null);
   sceneGeneration++; sceneController?.abort(); sceneController = null; scenePromise = null;
-  liveView?.destroy(); liveView = null; scenePackId = null;
+  liveView?.destroy(); liveView = null; scenePackId = null; streamingState = null;
   solo?.onInspection({ enabled: false, focus: null, selected: null });
 }
 async function ensureScene() {
@@ -144,11 +157,18 @@ async function ensureScene() {
   updatePreviewCopy();
   scenePromise = import('../perspective/live-view.js').then(({ createPerspectiveView }) => {
     if (!current()) return null;
+    const saved = neighborhood?.getSession();
     return createPerspectiveView($('#live-stage'), { locale, solo: true, packId: pack.id,
       signal: request.signal, initialLighting: lighting,
+      initialView: pack.id === neighborhoodId && saved?.routeId === pack.id && saved.revision === pack.revision ? saved.progress.view : undefined,
       onStatus(value) { if (current()) { sceneState = value.status; updatePreviewCopy(); } },
+      onState() { if (current()) updateNeighborhoodWalking(); },
       onInspectionChange(value) { if (current()) solo?.onInspection(value); },
-      onViewChange() { if (current()) solo?.update(); },
+      onStreamingChange(value) { if (current()) { streamingState = value; updatePreviewCopy(); updateNeighborhoodWalking(); } },
+      onViewChange(value) {
+        if (!current()) return;
+        solo?.update(); neighborhood?.capture(value, liveView?.getLightingState()?.mode || lighting);
+      },
     });
   }).then(view => {
     if (!view) return;
@@ -161,6 +181,10 @@ async function ensureScene() {
   return scenePromise;
 }
 function usesStreet() { return previewRepresentation !== 'map' && (mode === 'explore' || localPreview) && isDetailed(center); }
+function updateNeighborhoodWalking() {
+  neighborhood?.updateWalking(showingNeighborhood() && usesStreet() && scenePackId === neighborhoodId
+    ? liveView?.getRouteState() || null : null);
+}
 async function ensureMap() {
   if (worldMap || mapPromise) return mapPromise;
   $('#world-map').dataset.mapStatus = 'loading';
@@ -179,8 +203,11 @@ function updateMap() {
     const places = ids.map(catalogPlace).filter(Boolean).map(fromCatalog);
     worldMap.setPlaces(places, places.length ? [{ stops: places }] : []); worldMap.world(places);
   } else {
-    worldMap.setPlaces(currentStops(), [{ stops: currentStops() }]);
-    if (mapViewToRestore) { worldMap.restoreView(mapViewToRestore, center); mapViewToRestore = null; }
+    worldMap.setPlaces(currentStops(), [currentRoute() || { stops: currentStops() }]);
+    if (mapViewToRestore) {
+      worldMap.restoreView(mapViewToRestore, center); mapViewToRestore = null;
+      if (showingNeighborhood()) worldMap.retainRoute(currentRoute());
+    } else if (showingNeighborhood()) worldMap.fitRoute(currentRoute());
     else worldMap.local(center);
   }
 }
@@ -191,6 +218,7 @@ function showPreview() {
   $('#live-stage').hidden = !street; $('#world-map').hidden = street;
   liveView?.setPaused(!street || soloPaused);
   liveView?.setVisible(street);
+  updateNeighborhoodWalking();
   if (street) ensureScene(); else { ensureMap().then(() => { worldMap?.resize(); updateMap(); }); }
   updatePreviewCopy();
 }
@@ -225,11 +253,15 @@ function updatePreviewCopy() {
   const mapState = $('#world-map').dataset.mapStatus;
   const lightingMessage = light?.phase === 'loading' ? 'lightingLoading' : lightingFailed
     ? light.fallbackReason === 'rig-unavailable' || light.phase === 'unavailable' ? 'lightingUnavailable' : 'lightingFallback' : '';
-  $('#scene-status').textContent = street ? sceneState === 'ready' ? lightingMessage ? t(lightingMessage) : '' : t(sceneState === 'loading' ? 'sceneLoading' : 'sceneError')
+  const streamFailed = streamingState?.cells.some(cell => cell.error);
+  const streamMessage = streamingState?.blocked?.reason === 'section-failed' ? 'streetSectionFailed'
+    : streamingState?.blocked ? 'streetSectionLoading' : streamFailed ? 'streetDetailFailed' : '';
+  $('#scene-status').textContent = street ? sceneState === 'ready' ? streamMessage || lightingMessage ? t(streamMessage || lightingMessage) : '' : t(sceneState === 'loading' ? 'sceneLoading' : 'sceneError')
     : mapState === 'ready' ? '' : t(mapState === 'error' ? 'mapError' : 'mapLoading');
   $('#scene-status').hidden = !$('#scene-status').textContent;
-  $('#scene-retry').hidden = street ? sceneState === 'loading' || (sceneState === 'ready' && !lightingFailed) : mapState !== 'error';
-  $('#scene-retry').textContent = t(street && sceneState === 'ready' && lightingFailed ? 'lightingRetry' : 'retry');
+  $('#scene-retry').hidden = street ? sceneState === 'loading' || (sceneState === 'ready' && !lightingFailed && !streamFailed) : mapState !== 'error';
+  $('#scene-retry').textContent = t(street && sceneState === 'ready' && streamFailed ? 'streetSectionRetry'
+    : street && sceneState === 'ready' && lightingFailed ? 'lightingRetry' : 'retry');
   solo?.update();
 }
 
@@ -238,7 +270,7 @@ async function selectLighting(value) {
   if (!view) return;
   const pending = view.setLightingMode(value);
   updatePreviewCopy();
-  try { await pending; if (liveView === view) lighting = view.getLightingState()?.mode || lighting; }
+  try { await pending; if (liveView === view) { lighting = view.getLightingState()?.mode || lighting; neighborhood?.capture(view.captureView(), lighting); } }
   finally { updatePreviewCopy(); }
 }
 
@@ -249,7 +281,7 @@ function renderRoutes() {
   $('#routes-status').textContent = routeState ? t(routeState) : '';
   $('#routes-retry').hidden = routeState !== 'routesError';
   $('#route-options').innerHTML = routes.map((route, index) => `<button class="route-option" data-route="${index}" aria-pressed="${index === selectedRoute}"><span class="route-index">0${index + 1}</span><strong>${escape(route.title)}</strong><span>${route.stops.length} ${t('stops')}</span></button>`).join('');
-  const route = routes[selectedRoute], stops = currentStops();
+  const route = currentRoute(), stops = currentStops();
   $('[data-copy="routeNote"]').textContent = t(center.kind === 'country' ? 'countryNote'
     : route?.id === 'shijo' ? 'routeCuratedNote' : keptRoute ? 'keptOrderNote' : nearbyPlaces.length ? 'routeNearbyNote' : 'routeNote').replace('{radius}', new Intl.NumberFormat(locale).format(DEFAULT_RADIUS_METERS / 1000));
   $('#route-title').textContent = route?.title || center.title;
@@ -259,6 +291,10 @@ function renderRoutes() {
 }
 
 async function selectCenter(place, { preserveMapView = false } = {}) {
+  if (mode === 'explore' && place.id?.startsWith(neighborhoodId + ':')) {
+    const sightId = place.id.slice(neighborhoodId.length + 1);
+    if (SIGHTS.some(sight => sight.id === sightId)) return neighborhood.enter(sightId);
+  }
   restoreGeneration++; restoreController?.abort(); restoring = false; keptRoute = false; mapViewToRestore = null; previewRepresentation = null;
   searchRequest?.abort(); searchRequest = null; $('#place-search').setAttribute('aria-busy', 'false');
   if (preserveMapView) worldMap?.retainLocal(place);
@@ -268,6 +304,7 @@ async function selectCenter(place, { preserveMapView = false } = {}) {
   syncURL();
   searchMessage = ''; $('#search-status').textContent = '';
   routes = []; nearbyPlaces = []; selectedRoute = 0; routeState = 'routesLoading'; renderRoutes(); updateMode();
+  if (showingNeighborhood()) { routeState = ''; renderRoutes(); updateMap(); return; }
   if (mode === 'together' && session?.participantToken) mutate({ type: 'presence.focus', destinationId: catalogPlace(place.id) ? place.id : null });
   if (place.kind === 'country') { routeState = 'countryNote'; renderRoutes(); updateMap(); return; }
   try {
@@ -284,13 +321,17 @@ function soloContext() {
   return { mode, center, origin: discoveryCenter, street, pack, restoring, touch: touchControls,
     ready: street ? scenePackId === pack?.id && sceneState === 'ready' && light?.phase === 'ready' : $('#world-map')?.dataset.mapStatus === 'ready',
     lighting: light?.mode || lighting, view: street ? liveView?.captureView() : worldMap?.captureView(),
-    route: routes[selectedRoute] || { id: 'selected-place', title: center.title, stops: [center] } };
+    route: currentRoute() || { id: 'selected-place', title: center.title, stops: [center] } };
 }
 
 async function openKeptPlace(place) {
   if (place.representation === 'street') {
     const pack = getPack(place.view.packId);
     if (!pack || pack.revision !== place.view.revision || getPackForPlace(place.center)?.id !== pack.id) throw new Error('solo-pack-unavailable');
+  }
+  if (getPackForPlace(place.center)?.id === neighborhoodId) {
+    const selected = neighborhood.selectStops(place.route.stops.map(stop => stop.id).filter(id => id.startsWith(neighborhoodId + ':')).map(id => id.slice(neighborhoodId.length + 1)));
+    if (!selected) throw new Error('solo-view-unavailable');
   }
   const generation = ++restoreGeneration;
   restoreController?.abort(); restoreController = new AbortController(); const request = restoreController;
@@ -307,7 +348,10 @@ async function openKeptPlace(place) {
       await ensureScene();
       if (generation !== restoreGeneration) return false;
       const view = liveView;
-      if (!view || view.getPackInfo().packId !== place.view.packId || !view.restoreView(place.view)) throw new Error('solo-view-unavailable');
+      if (!view || view.getPackInfo().packId !== place.view.packId) throw new Error('solo-view-unavailable');
+      const restored = await view.restoreView(place.view, { signal: request.signal });
+      if (generation !== restoreGeneration || liveView !== view) return false;
+      if (!restored) return false;
       await selectLighting(place.lighting);
       if (generation !== restoreGeneration) return false;
       if (liveView !== view || view.getLightingState().phase !== 'ready') throw new Error('solo-lighting-unavailable');
@@ -454,12 +498,17 @@ async function copyValue(value, field) {
 }
 async function handleClick(event) {
   const button = event.target.closest('button'); if (!button || button.disabled) return;
+  if (await neighborhood?.handleClick(button)) return;
   if (button.id.startsWith('solo-') || button.dataset.keptOpen || button.dataset.keptRemove) { await solo.handleClick(button); return; }
   if (button.dataset.locale) {
     locale = button.dataset.locale; syncURL(); applyCopy(); return;
   }
   if (button.dataset.mode) { restoreGeneration++; restoreController?.abort(); restoring = false; mode = button.dataset.mode; localPreview = false; syncURL(); updateMode(); return; }
-  if (button.dataset.pack) { await selectCenter(getPackPlace(button.dataset.pack, locale)); return; }
+  if (button.dataset.pack) {
+    if (button.dataset.pack === neighborhoodId) await neighborhood.enter();
+    else await selectCenter(getPackPlace(button.dataset.pack, locale));
+    return;
+  }
   if (button.dataset.result !== undefined) { await selectCenter(results[Number(button.dataset.result)]); return; }
   if (button.dataset.route !== undefined) { selectedRoute = Number(button.dataset.route); renderRoutes(); updateMap(); return; }
   if (button.dataset.stop !== undefined) {
@@ -480,7 +529,8 @@ async function handleClick(event) {
   }
   if (button.id === 'scene-retry') {
     if (usesStreet()) {
-      if (sceneState === 'ready' && liveView) await selectLighting(liveView.getLightingState().requestedMode || lighting);
+      if (sceneState === 'ready' && streamingState?.cells.some(cell => cell.error)) liveView.retryStreaming();
+      else if (sceneState === 'ready' && liveView) await selectLighting(liveView.getLightingState().requestedMode || lighting);
       else { releaseScene(); await ensureScene(); }
     }
     else if (worldMap) worldMap.retry();
@@ -532,6 +582,31 @@ async function handleClick(event) {
   }
 }
 
+async function enterNeighborhood({ progress, sightId }) {
+  const generation = ++restoreGeneration;
+  restoreController?.abort(); nearbyRequest?.abort(); searchRequest?.abort();
+  const continuing = scenePackId === neighborhoodId && Boolean(liveView);
+  mode = 'explore'; localPreview = false; restoring = true; keptRoute = false;
+  previewRepresentation = null; mapViewToRestore = null;
+  center = getPackPlace(neighborhoodId, locale); discoveryCenter = center;
+  if (!continuing) lighting = progress.lighting;
+  results = []; routeState = ''; searchMessage = '';
+  $('#place-search').setAttribute('aria-busy', 'false');
+  syncURL(); applyCopy();
+  try {
+    await ensureScene();
+    if (generation !== restoreGeneration) throw new DOMException('Neighborhood opening cancelled', 'AbortError');
+    if (!liveView || scenePackId !== neighborhoodId || sceneState !== 'ready') throw new Error('Neighborhood view is unavailable');
+    if (sightId && !liveView.focusSight(sightId)) throw new Error('Neighborhood sight is unavailable');
+    if (sightId && matchMedia('(max-width: 1100px)').matches) {
+      $('#live-stage').scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+    }
+    neighborhood.capture(liveView.captureView(), liveView.getLightingState()?.mode || lighting);
+  } finally {
+    if (generation === restoreGeneration) { restoring = false; solo?.update(); }
+  }
+}
+
 function boot() {
   const invitation = new URLSearchParams(location.hash.slice(1));
   if (invitation.has('room') && invitation.has('invite')) {
@@ -557,6 +632,13 @@ function boot() {
     link.target = '_blank'; link.rel = 'noopener noreferrer'; attribution.append(link);
   }
   $('.home-footer').append(attribution);
+  const planner = createJourneyPlanner({ routeId: geography.id, revision: geography.revision,
+    graph: geography.navigation, startNodeId: geography.startNodeId, sights: SIGHTS });
+  neighborhood = createNeighborhoodJourney({ planner, frame: geography.frame, locale: () => locale,
+    startPlace: { ...getPackPlace(neighborhoodId, locale), title: geography.title }, interestLabels: planner.interestLabels,
+    onEnter: enterNeighborhood,
+    onStop() { return scenePackId === neighborhoodId && Boolean(liveView?.stopWalking()); },
+    onChange() { renderRoutes(); if (showingNeighborhood()) updateMap(); } });
   routes = getPackForPlace(center)?.id === 'ginza-wako' ? []
     : [{ id: 'shijo', title: t('localRoute'), stops: resolveStops(['crossing', 'mitsui', 'mufg'], locale).map(place => ({ ...place, url: place.source })) }];
   solo = createSoloController({ t, locale: () => locale, context: soloContext, openPlace: openKeptPlace,
@@ -598,9 +680,13 @@ function boot() {
     finally { if (request === searchRequest) $('#place-search').setAttribute('aria-busy', 'false'); }
   });
   window.addEventListener('pagehide', event => {
+    neighborhood?.capture(liveView?.captureView(), liveView?.getLightingState()?.mode || lighting); neighborhood?.flush();
     serviceGeneration++; serviceController.abort(); subscription?.close(); nearbyRequest?.abort(); searchRequest?.abort();
     if (event.persisted) liveView?.setPaused(true);
     else { releaseScene(); worldMap?.destroy(); }
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) { neighborhood?.capture(liveView?.captureView(), liveView?.getLightingState()?.mode || lighting); neighborhood?.flush(); }
   });
   window.addEventListener('pageshow', event => {
     if (event.persisted) {
@@ -611,10 +697,11 @@ function boot() {
   if (import.meta.env.DEV || params.get('qa') === '1') window.__HOME__ = Object.freeze({ snapshot: () => ({ mode, center: { ...center }, localPreview, sceneState,
     pack: liveView?.getPackInfo() || null, requestedPack: getPackForPlace(center)?.id || null,
     lighting, room: room ? structuredClone(room) : null, serviceReady, aiReady,
-    solo: solo?.snapshot(), currentView: soloContext().view, touchControls,
+    solo: solo?.snapshot(), currentView: soloContext().view, touchControls, neighborhood: neighborhood?.snapshot(), streaming: streamingState,
     serviceEndpoint: serviceSettings.endpoint, serviceTransport: serviceSettings.transport, connectionPending, invitationNeedsConfirmation, map: worldMap?.snapshot() || null,
     routes: routes.map(route => ({ id: route.id, stops: route.stops.map(p => p.id) })) }) });
   if (params.get('pack') === 'ginza-wako' && mode === 'explore') void selectCenter(center);
+  if (params.get('pack') === neighborhoodId && mode === 'explore') void neighborhood.enter();
 }
 
 if (params.has('lighting')) location.replace(`./walk.html${location.search}${location.hash}`);

@@ -27,8 +27,21 @@ function normalizeStoredStreetView(value, center) {
       !['x', 'y'].every(key => coordinate(player[key], 1e6)) ||
       !['azimuth', 'polar', 'distance'].every(key => coordinate(camera[key], 1e6)) ||
       !['x', 'y', 'height'].every(key => coordinate(camera.targetOffset[key], 1e6))) return null;
+  const storedPlayer = { x: player.x, y: player.y };
+  if (player.height !== undefined) {
+    if (!coordinate(player.height, 1e7)) return null;
+    storedPlayer.height = player.height;
+  }
+  if (player.edgeId !== undefined) {
+    if (!text(player.edgeId, 160) || !/^[a-zA-Z0-9:_.-]+$/.test(player.edgeId)) return null;
+    storedPlayer.edgeId = player.edgeId;
+  }
+  if (player.edgeDistance !== undefined) {
+    if (!storedPlayer.edgeId || !bounded(player.edgeDistance, 0, 1e7)) return null;
+    storedPlayer.edgeDistance = player.edgeDistance;
+  }
   return { version: 3, packId: value.packId, revision: value.revision,
-    player: { x: player.x, y: player.y }, camera: { azimuth: camera.azimuth, polar: camera.polar,
+    player: storedPlayer, camera: { azimuth: camera.azimuth, polar: camera.polar,
       distance: camera.distance, targetOffset: { x: camera.targetOffset.x, y: camera.targetOffset.y,
         height: camera.targetOffset.height } } };
 }
@@ -64,7 +77,7 @@ export function normalizeKeptPlace(value) {
   const center = normalizeSoloPlace(value.center), origin = normalizeSoloPlace(value.origin);
   if (!center || !origin || !object(value.route) || !text(value.route.id, 100) ||
       !text(value.route.title, 240) || !Array.isArray(value.route.stops) ||
-      !value.route.stops.length || value.route.stops.length > 8) return null;
+      !value.route.stops.length || value.route.stops.length > 9) return null;
   const stops = value.route.stops.map(normalizeSoloPlace);
   if (stops.some(stop => !stop) || new Set(stops.map(stop => stop.id)).size !== stops.length) return null;
   const representation = value.representation;

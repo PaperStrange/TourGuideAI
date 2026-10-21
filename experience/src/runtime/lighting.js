@@ -17,10 +17,11 @@ export function createSceneLighting(renderer, scene, {
   let sequence = 0, pending = null, disposed = false, staleRequests = 0, fallbackReason = null;
   let environmentInfo = { status: 'loading', file: null, sha256: null, expectedSha256: null };
   let fallback, activeLights = [], shadowUpdates = 0;
+  let activeConfig = null, activeEnvironment = null, region = null, regionSignature = '';
   const cache = new Map(), materials = [], originals = new Set();
   const pmrem = new THREE.PMREMGenerator(renderer);
   const group = new THREE.Group(); group.name = 'AuthoredLightingRig'; scene.add(group);
-  for (const root of roots) root.traverse(mesh => {
+  function registerRoot(root) { root.traverse(mesh => {
     if (!mesh.isMesh) return;
     const copied = [mesh.material].flat().map(material => {
       if (!material.emissive) return material;
@@ -33,13 +34,17 @@ export function createSceneLighting(renderer, scene, {
     });
     mesh.material = Array.isArray(mesh.material) ? copied : copied[0];
   });
-  for (const material of originals) material.dispose();
+    for (const material of originals) material.dispose(); originals.clear();
+    if (activeConfig) applyMaterials(activeConfig);
+  }
+  for (const root of roots) registerRoot(root);
 
   const snapshot = () => ({
     requestedMode, mode, phase, disposed, fallbackReason,
     rig: { status: rig ? 'ready' : phase === 'loading' ? 'loading' : 'unavailable', sha256: rigHash, expectedSha256: expectedRigHash ?? null,
       profile: profile?.id ?? null },
-    shadowBounds: rig?.renderBounds ? { ...rig.renderBounds } : null,
+    shadowBounds: region ? { minX: region.x - 50, maxX: region.x + 50, minY: region.y - 50, maxY: region.y + 50 }
+      : rig?.renderBounds ? { ...rig.renderBounds } : null,
     environment: { ...environmentInfo, textureId: scene.environment?.uuid ?? null },
     environmentIntensity: scene.environmentIntensity, environmentRotationY: scene.environmentRotation.y,
     exposure: renderer.toneMappingExposure,
@@ -74,9 +79,10 @@ export function createSceneLighting(renderer, scene, {
     if (light.isDirectionalLight) {
       const bounds = new THREE.Box3();
       for (const root of roots) bounds.union(new THREE.Box3().setFromObject(root));
-      if (rig.renderBounds) {
-        bounds.min.x = Math.max(bounds.min.x, rig.renderBounds.minX); bounds.max.x = Math.min(bounds.max.x, rig.renderBounds.maxX);
-        bounds.min.z = Math.max(bounds.min.z, -rig.renderBounds.maxY); bounds.max.z = Math.min(bounds.max.z, -rig.renderBounds.minY);
+      const renderBounds = region ? { minX: region.x - 50, maxX: region.x + 50, minY: region.y - 50, maxY: region.y + 50 } : rig.renderBounds;
+      if (renderBounds) {
+        bounds.min.x = Math.max(bounds.min.x, renderBounds.minX); bounds.max.x = Math.min(bounds.max.x, renderBounds.maxX);
+        bounds.min.z = Math.max(bounds.min.z, -renderBounds.maxY); bounds.max.z = Math.min(bounds.max.z, -renderBounds.minY);
       }
       const camera = light.shadow.camera;
       camera.position.copy(light.position); camera.lookAt(light.target.position); camera.updateMatrixWorld(true);
@@ -86,6 +92,15 @@ export function createSceneLighting(renderer, scene, {
     light.shadow.camera.updateProjectionMatrix();
   }
   function apply(config, environment) {
+    activeEnvironment = environment;
+    if (region) {
+      const [tx, ty, tz] = config.sun.target, [px, py, pz] = config.sun.position;
+      config = { ...config, sun: { ...config.sun, position: [region.x + px - tx, region.height + py - ty, -region.y + pz - tz],
+        target: [region.x, region.height, -region.y] },
+      fixtures: region.fixtures.filter(fixture => (fixture.modes ?? ['night']).includes(requestedMode)).slice(0, 4) };
+      validateLightingRig({ ...rig, modes: { ...rig.modes, [requestedMode]: config } });
+    }
+    activeConfig = config;
     scene.background = new THREE.Color(config.backgroundColor);
     scene.fog = config.fog ? new THREE.Fog(config.fog.color, config.fog.near, config.fog.far) : null;
     scene.environment = environment.texture; scene.environmentIntensity = config.environment.intensity;
@@ -105,6 +120,10 @@ export function createSceneLighting(renderer, scene, {
       if (light.target) { light.target.position.fromArray(configLight.target); group.add(light.target); }
       shadow(light, configLight.shadow); activeLights.push(light);
     }
+    applyMaterials(config);
+    scene.updateMatrixWorld(true); invalidateShadows();
+  }
+  function applyMaterials(config) {
     for (const item of materials) {
       const { material, semanticGroup } = item, previousMap = material.emissiveMap;
       material.emissive.copy(item.baseColor); material.emissiveIntensity = item.baseIntensity; material.emissiveMap = item.baseMap;
@@ -115,7 +134,6 @@ export function createSceneLighting(renderer, scene, {
       }
       if (previousMap !== material.emissiveMap) material.needsUpdate = true;
     }
-    scene.updateMatrixWorld(true); invalidateShadows();
   }
   async function loadRig(abortSignal) {
     const response = await fetch(rigURL, { signal: abortSignal, cache: 'no-cache' });
@@ -187,5 +205,26 @@ export function createSceneLighting(renderer, scene, {
   };
   signal?.addEventListener('abort', dispose, { once: true });
   if (signal?.aborted) dispose();
-  return { setMode, snapshot, invalidateShadows, dispose };
+  return { setMode, snapshot, invalidateShadows, dispose,
+    addRoot(root) {
+      roots.push(root); registerRoot(root);
+      for (const light of activeLights) if (light.isDirectionalLight) shadow(light, activeConfig?.sun.shadow);
+      invalidateShadows();
+    },
+    removeRoot(root) {
+      const index = roots.indexOf(root); if (index >= 0) roots.splice(index, 1);
+      const removed = new Set(); root.traverse(object => removed.add(object));
+      for (let index = materials.length - 1; index >= 0; index--) if (removed.has(materials[index].mesh)) materials.splice(index, 1);
+      for (const light of activeLights) if (light.isDirectionalLight) shadow(light, activeConfig?.sun.shadow);
+      invalidateShadows();
+    },
+    updateRegion(value) {
+      const next = { x: Math.round(value.x / 25) * 25, y: Math.round(value.y / 25) * 25,
+        height: value.height ?? 0, fixtures: value.fixtures ?? [] };
+      const signature = JSON.stringify(next);
+      if (signature === regionSignature) return;
+      regionSignature = signature; region = next;
+      if (rig && activeEnvironment) apply(rig.modes[requestedMode], activeEnvironment);
+    },
+  };
 }
