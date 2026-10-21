@@ -2,7 +2,7 @@ import { Map, Marker, NavigationControl, setWorkerUrl } from 'maplibre-gl';
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { normalizeMapView } from '../solo/state.js';
-import { applyTravelMapStyle, TRAVEL_MAP_STYLE_ID } from './map-style.js';
+import { prepareTravelMapStyle, TRAVEL_MAP_STYLE_ID } from './map-style.js';
 
 setWorkerUrl(workerUrl);
 const collection = features => ({ type: 'FeatureCollection', features });
@@ -48,7 +48,7 @@ export function createWorldMap(host, { onSelect, onStatus, onViewChange, locale 
   let ready = false, styleReady = false, failed = false, destroyed = false, markers = [], pendingPlaces = [], pendingRoutes = [], pendingView = null;
   let selectedLocale = locale === 'zh' ? 'zh' : 'en', viewSignature = null, cameraTransitions = 0, renderedFrames = 0;
   let viewStarted = performance.now(), readyMs = null, markerSignature = null, featureSignature = null;
-  const map = new Map({ container: host, style: styleURL, locale: uiLocales[selectedLocale],
+  const map = new Map({ container: host, locale: uiLocales[selectedLocale],
     center: [35, 24], zoom: 1.5, minZoom: 1, maxZoom: 19, pitch: 0,
     attributionControl: { compact: true }, canvasContextAttributes: { antialias: true },
     cooperativeGestures: true });
@@ -94,16 +94,7 @@ export function createWorldMap(host, { onSelect, onStatus, onViewChange, locale 
   });
   map.on('moveend', () => { onViewChange?.(); });
   map.on('style.load', () => {
-    try { applyTravelMapStyle(map); }
-    catch (error) { failed = true; ready = false; host.dataset.mapStatus = 'error'; onStatus?.('error', error); return; }
-    styleReady = true; featureSignature = null;
-    map.addSource('journeys', { type: 'geojson', data: collection([]) });
-    map.addLayer({ id: 'journey-halo', type: 'line', source: 'journeys', paint: {
-      'line-color': '#fffaf0', 'line-width': 8, 'line-opacity': 0.85,
-    }});
-    map.addLayer({ id: 'journey-lines', type: 'line', source: 'journeys', paint: {
-      'line-color': ['get', 'color'], 'line-width': 3, 'line-dasharray': [2, 1.5],
-    }});
+    styleReady = true;
     render();
   });
   map.on('idle', () => {
@@ -129,15 +120,36 @@ export function createWorldMap(host, { onSelect, onStatus, onViewChange, locale 
         markers.push(new Marker({ element }).setLngLat([place.longitude, place.latitude]).addTo(map));
       }
     }
-    const features = pendingRoutes.filter(route => route.stops.length > 1).map((route, index) => ({
-      type: 'Feature', properties: { color: colors[index % colors.length] },
-      geometry: { type: 'LineString', coordinates: itineraryCoordinates(route.stops) },
-    }));
+    const features = journeyFeatures();
     const nextFeatures = JSON.stringify(features);
     if (nextFeatures !== featureSignature) {
       featureSignature = nextFeatures;
       map.getSource('journeys').setData(collection(features));
     }
+  }
+  function journeyFeatures() {
+    return pendingRoutes.filter(route => route.stops.length > 1).map((route, index) => ({
+      type: 'Feature', properties: { color: colors[index % colors.length] },
+      geometry: { type: 'LineString', coordinates: itineraryCoordinates(route.stops) },
+    }));
+  }
+  function loadStyle() {
+    map.setStyle(styleURL, { diff: false, transformStyle(_previous, supplied) {
+      const style = prepareTravelMapStyle(supplied), features = journeyFeatures();
+      if (style.sources.journeys || style.layers.some(layer => ['journey-halo', 'journey-lines'].includes(layer.id))) {
+        throw new Error('The source map style uses reserved journey identifiers.');
+      }
+      featureSignature = JSON.stringify(features);
+      return { ...style, sources: { ...style.sources, journeys: { type: 'geojson', data: collection(features) } },
+        layers: [...style.layers,
+          { id: 'journey-halo', type: 'line', source: 'journeys', paint: {
+            'line-color': '#fffaf0', 'line-width': 8, 'line-opacity': 0.85,
+          } },
+          { id: 'journey-lines', type: 'line', source: 'journeys', paint: {
+            'line-color': ['get', 'color'], 'line-width': 3, 'line-dasharray': [2, 1.5],
+          } },
+        ] };
+    } });
   }
   const signatureFor = view => JSON.stringify(view.kind === 'local'
       ? [view.kind, view.place.kind, view.place.longitude, view.place.latitude]
@@ -162,6 +174,7 @@ export function createWorldMap(host, { onSelect, onStatus, onViewChange, locale 
         { padding: 90, maxZoom: 7, pitch: 0, bearing: 0, duration });
     } else map.easeTo({ center: [35, 24], zoom: 1.5, pitch: 0, bearing: 0, duration });
   }
+  loadStyle();
   return {
     setPlaces(places, routes = []) { pendingPlaces = places; pendingRoutes = routes; render(); },
     local(place) { move({ kind: 'local', place }); },
@@ -205,10 +218,11 @@ export function createWorldMap(host, { onSelect, onStatus, onViewChange, locale 
       if (destroyed) return;
       ready = false; styleReady = false; failed = false; readyMs = null; viewStarted = performance.now(); map.stop();
       host.dataset.mapStatus = 'loading'; onStatus?.('loading');
-      map.setStyle(styleURL, { diff: false });
+      loadStyle();
     },
     snapshot() { return { ready, failed, center: map.getCenter().toArray(), zoom: map.getZoom(), pitch: map.getPitch(), bearing: map.getBearing(), style: TRAVEL_MAP_STYLE_ID,
       locale: selectedLocale, readyMs, renderedFrames, cameraTransitions, resizeEvents, requestedView: pendingView?.kind ?? null,
+      contextAttributes: map.getCanvas().getContext('webgl2')?.getContextAttributes() ?? null,
       places: pendingPlaces.map(p => p.id), routes: pendingRoutes.map(r => r.stops.map(p => p.id)),
       buildingLayer: map.getLayer('building-3d')?.type || null,
       renderedBuildings: ready && map.getLayer('building-3d') ? map.queryRenderedFeatures({ layers: ['building-3d'] }).length : 0 }; },

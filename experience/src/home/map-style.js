@@ -38,14 +38,14 @@ export const TRAVEL_MAP_PAINT = Object.freeze([
   ], 'line', { 'line-color': '#dcc498' }),
 ]);
 
-// 在每次 style.load 后调用；先核对所有图层，再设置颜色，重试可重复调用。
-export function applyTravelMapStyle(map) {
+// 在 MapLibre 创建图层之前准备完整颜色，保留来源样式与所有几何规则。
+export function prepareTravelMapStyle(style) {
+  const layers = new Map(style.layers.map(layer => [layer.id, layer]));
   for (const { id, type } of TRAVEL_MAP_PAINT) {
-    const layer = map.getLayer(id);
+    const layer = layers.get(id);
     if (!layer || layer.type !== type) throw new Error(`Travel map style requires Liberty layer ${id} (${type}).`);
   }
-  for (const { id, paint } of TRAVEL_MAP_PAINT) {
-    for (const [property, color] of Object.entries(paint)) map.setPaintProperty(id, property, color);
-  }
-  return TRAVEL_MAP_STYLE_ID;
+  const paints = new Map(TRAVEL_MAP_PAINT.map(({ id, paint }) => [id, paint]));
+  return { ...style, layers: style.layers.map(layer => paints.has(layer.id)
+    ? { ...layer, paint: { ...layer.paint, ...paints.get(layer.id) } } : layer) };
 }

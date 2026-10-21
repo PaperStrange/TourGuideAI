@@ -18,11 +18,16 @@ from mathutils.geometry import tessellate_polygon
 ROOT = Path(__file__).resolve().parents[2]
 parser = argparse.ArgumentParser()
 parser.add_argument('--source', default=str(ROOT / 'experience/content/ginza-wako/source.json'))
-parser.add_argument('--output-dir', default=str(ROOT / 'artifacts/ginza-art-20261019/build'))
+parser.add_argument('--context', default=str(ROOT / 'experience/content/ginza-wako/context.json'))
+parser.add_argument('--output-dir', default=str(ROOT / 'artifacts/ginza-art-20261021/build'))
 parser.add_argument('--asset-dir', default=str(ROOT / 'experience/public/packs/ginza-wako'))
 args = parser.parse_args(sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else [])
 source_path = Path(args.source).resolve()
 source = json.loads(source_path.read_text())
+context_path = Path(args.context).resolve()
+context_source = json.loads(context_path.read_text())
+if context_source['projection']['origin'] != source['projection']['origin']:
+    raise ValueError('Context and landmark must use the same reviewed origin')
 output_dir = Path(args.output_dir).resolve()
 asset_dir = Path(args.asset_dir).resolve()
 output_dir.mkdir(parents=True, exist_ok=True)
@@ -32,6 +37,10 @@ STARTED = time.perf_counter()
 
 def sha256(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+if context_source['renderGeometry']['canonicalWakoSourceSha256'] != sha256(source_path):
+    raise ValueError('Context exclusions must match the reviewed landmark source')
 
 
 def progress(message):
@@ -46,6 +55,7 @@ materials = {}
 material_scale = {}
 objects = []
 mesh_cache = {}
+group_metadata = {}
 group_features = {
     'WakoCornerGround': ['wako-rounded-corner', 'wako-stone-cornice'],
     'WakoCornerUpper': ['wako-rounded-corner', 'wako-window-hierarchy', 'wako-stone-cornice'],
@@ -98,10 +108,11 @@ def surface_maps(name, kind):
         height = grain * .003 - joint * .025
         roughness = .85 + grain * .04
     else:
-        value = .145 + grain * .018 + broad * .008
-        tint = (.97, 1, 1.035)
-        height = grain * .008
-        roughness = .91 + grain * .04
+        aggregate = np.maximum(grain - .9, 0)
+        value = .215 + grain * .012 + aggregate * .012 + broad * .010
+        tint = (.98, 1, 1.025)
+        height = grain * .004 + aggregate * .003
+        roughness = .84 + grain * .025 + broad * .015
     albedo = image_map(name + '-albedo', np.stack([value * c for c in tint], axis=-1))
     dx = (np.roll(height, -1, 1) - np.roll(height, 1, 1)) * 2
     dy = (np.roll(height, -1, 0) - np.roll(height, 1, 0)) * 2
@@ -110,6 +121,22 @@ def surface_maps(name, kind):
     normals = image_map(name + '-normal', normal * .5 + .5, True)
     rough = image_map(name + '-roughness', np.repeat(np.clip(roughness, .12, .98)[:, :, None], 3, axis=2), True)
     return albedo, normals, rough
+
+
+def glazing_maps():
+    # 贴图只表达表面色差和粗糙度；高光由实时环境与观察方向产生。
+    size = 128
+    yy, xx = np.mgrid[:size, :size]
+    rng = np.random.default_rng(1936)
+    grain = rng.normal(0, 1, (size, size))
+    variation = np.sin(xx / size * math.tau * 3) * .009 + np.cos(yy / size * math.tau) * .006
+    linear_tint = np.stack([.18 + variation, .225 + variation, .24 + variation], axis=-1)
+    # glTF 的 Base Color 贴图使用 sRGB；将设计的线性反射颜色编码后写入 PNG。
+    tint = np.where(linear_tint <= .0031308, linear_tint * 12.92,
+                    1.055 * np.power(linear_tint, 1 / 2.4) - .055)
+    roughness = np.clip(.16 + grain * .008 + variation * 1.6, .10, .22)
+    return (image_map('wako-glazing-tint', tint),
+            image_map('wako-glazing-roughness', np.repeat(roughness[:, :, None], 3, axis=2), True))
 
 
 def material(name, color, roughness, metalness=0, maps=None, scale=2):
@@ -156,6 +183,18 @@ for name, color, roughness, metalness in [
 ]:
     material(name, color, roughness, metalness)
 
+glazing_tint, glazing_roughness = glazing_maps()
+for name in ['wako-glass', 'wako-ground-glass']:
+    node_tree = materials[name].node_tree
+    bsdf = node_tree.nodes.get('Principled BSDF')
+    for image, socket in [(glazing_tint, 'Base Color'), (glazing_roughness, 'Roughness')]:
+        texture = node_tree.nodes.new('ShaderNodeTexImage')
+        texture.image = image
+        node_tree.links.new(texture.outputs['Color'], bsdf.inputs[socket])
+    bsdf.inputs['Coat Weight'].default_value = .32
+    bsdf.inputs['Coat Roughness'].default_value = .075
+    material_scale[name] = 3.8
+
 
 def uv_map(mesh, material_name):
     uv = mesh.uv_layers.new(name='UVMap')
@@ -174,6 +213,8 @@ def remember(obj, group, walkable=False):
         obj['occlusionGroup'] = group
     if group in group_features:
         obj['inspectionFeatureIds'] = group_features[group]
+    for key, value in group_metadata.get(group, {}).items():
+        obj[key] = value
     if walkable:
         obj['walkable'] = True
         obj['surfaceId'] = 'ginza-wako-sidewalk'
@@ -227,6 +268,36 @@ def polygon_slab(name, points, top, thickness, material_name, group, walkable=Fa
     obj = bpy.data.objects.new(name, mesh)
     bpy.context.collection.objects.link(obj)
     return remember(obj, group, walkable)
+
+
+def triangulated_surface(name, triangles, top, material_name, group):
+    # 孔洞和重叠由来源预处理中的 Shapely 验证；这里只接收明确的三角形。
+    vertices, faces, indices = [], [], {}
+    for triangle in triangles:
+        if len(triangle) != 3:
+            raise ValueError('Context surface must contain triangle faces')
+        face = []
+        points = [Vector((float(point[0]), float(point[1]), top)) for point in triangle]
+        normal = (points[1] - points[0]).cross(points[2] - points[0])
+        if abs(normal.z) < 1e-10:
+            raise ValueError('Context surface contains a degenerate triangle')
+        if normal.z < 0:
+            points.reverse()
+        for point in points:
+            key = (point.x, point.y, point.z)
+            if key not in indices:
+                indices[key] = len(vertices)
+                vertices.append(key)
+            face.append(indices[key])
+        faces.append(tuple(face))
+    mesh = bpy.data.meshes.new(name)
+    mesh.from_pydata(vertices, [], faces)
+    mesh.update()
+    mesh.materials.append(materials[material_name])
+    uv_map(mesh, material_name)
+    obj = bpy.data.objects.new(name, mesh)
+    bpy.context.collection.objects.link(obj)
+    return remember(obj, group)
 
 
 def cylinder(name, center, radius, depth, material_name, group, rotation=None, sides=20):
@@ -506,22 +577,103 @@ polygon_slab('WalkableGinzaSidewalk', outline, ground_height, .18, 'wako-paving'
 # 立面前的连续铺装提供视觉环境；可行走范围仍由四米路径限定。
 apron = [footprint[1]] + corner_points + [footprint[3]] + list(reversed(inside_edge))
 polygon_slab('FacadePavingApron', apron, ground_height - .003, .17, 'wako-paving', 'Ground')
-for a, b in zip(outside_edge, outside_edge[1:]):
-    edge = Facade(a, b, 'Ground')
-    edge.band('SidewalkEdge', ground_height - .065, .13, .13, 'wako-curb', .065)
-box('StreetSurface', (0, 10, ground_height - .18), (160, 160, .12), 'wako-asphalt', 'Context', bevel=0)
 box('DistantGround', (0, 10, ground_height - .35), (450, 450, .14), 'wako-asphalt', 'Context', bevel=0)
 progress('Built four-metre authored sidewalk envelope at the mapped route')
 
-# 背景体量只提供环境尺度，不对应已确认的邻楼身份或立面。
-material('wako-context', (.29, .32, .34), .88)
-material('wako-context-glass', (.19, .23, .26), .35)
-for index, (x, y, width, depth, height) in enumerate([(-43, 43, 16, 25, 34), (41, 43, 18, 24, 39)]):
-    group = 'ContextBuilding_authored_' + str(index + 1)
-    box('AuthoredContextMass', (x, y, height / 2), (width, depth, height), 'wako-context', group, bevel=.03)
-    for z in np.arange(5, height - 2, 3.2):
-        box('AuthoredContextWindowBand', (x, y - depth / 2 - .02, float(z)),
-            (width - 1.2, .06, 1.4), 'wako-context-glass', group, bevel=0)
+context_features = context_source['features']
+render_geometry = context_source['renderGeometry']
+context_layers = {layer['id']: layer for layer in render_geometry['layers']}
+if set(context_layers) != {'road', 'sidewalk', 'land'}:
+    raise ValueError('Review the changed context surface layers')
+material('wako-context-ground', (.31, .33, .34), .90)
+context_surface_materials = {'road': 'wako-asphalt', 'sidewalk': 'wako-paving',
+                             'land': 'wako-context-ground'}
+for layer in context_layers.values():
+    surface = context_surface_materials[layer['id']]
+    triangulated_surface('MappedContext_' + layer['id'], layer['triangles'],
+                         layer['topHeightMetres'], surface, 'Context')
+
+
+def point_path_distance(point, points):
+    distances = []
+    for a, b in zip(points, points[1:]):
+        direction = b - a
+        ratio = min(1, max(0, (point - a).dot(direction) / direction.length_squared))
+        distances.append((point - a - direction * ratio).length)
+    return min(distances)
+
+
+crossings = [feature for feature in context_features if feature['kind'] == 'crossing']
+crossing_paths = [[Vector((point['x'], point['y'])) for point in item['points']] for item in crossings]
+for feature, points in zip(crossings, crossing_paths):
+    path = SurfacePath(points, 'Context')
+    for distance in np.arange(.32, path.length - .25, .96):
+        point, direction = path.sample(float(distance))
+        box('MappedCrossing_' + feature['id'].rsplit(':', 1)[-1], (*point, -.112),
+            (.46, 2.8, .006), 'wako-paint', 'Context', math.atan2(direction.y, direction.x), bevel=0)
+
+# 路缘宽度与断口属于作者设计；保留来源路段和斑马线路径的长度。
+display_bounds = render_geometry['authoredSettings']['bounds']
+for polygon in context_layers['road']['polygons']:
+    for ring in [polygon['outer']] + polygon['holes']:
+        for first, second in zip(ring, ring[1:]):
+            a, b = Vector(first), Vector(second)
+            midpoint = (a + b) / 2
+            if (b - a).length < .08 or midpoint.length > 48:
+                continue
+            # 展示矩形的裁切边界不代表现实路缘。
+            if any(abs(a[axis] - display_bounds[key]) < 1e-5 and
+                   abs(b[axis] - display_bounds[key]) < 1e-5
+                   for axis, key in [(0, 'minX'), (0, 'maxX'), (1, 'minY'), (1, 'maxY')]):
+                continue
+            if min(point_path_distance(midpoint, path) for path in crossing_paths) < 1.8:
+                continue
+            edge = Facade(a, b, 'Context')
+            edge.block('AuthoredRoadKerb', edge.length / 2, 0, -.065,
+                       (edge.length, .12, .13), 'wako-curb', bevel=0)
+
+material('wako-context', (.38, .395, .40), .82)
+material('wako-context-glass', (.19, .235, .25), .23)
+context_buildings = []
+street = next(feature for feature in context_features if feature['id'] == 'osm:way:1026056857')
+street_points = [Vector((point['x'], point['y'])) for point in street['points']]
+for feature in [item for item in context_features if item['kind'] == 'building']:
+    points = [Vector((point['x'], point['y'])) for point in feature['points'][:-1]]
+    area = sum(a.x * b.y - b.x * a.y for a, b in zip(points, points[1:] + points[:1]))
+    if area < 0:
+        points.reverse()
+    levels = int(feature['sourceLevels'])
+    height = levels * 3.2
+    group = 'ContextBuilding_' + feature['id'].rsplit(':', 1)[-1]
+    group_metadata[group] = {'sourceFeatureId': feature['id'], 'authoredHeightMetres': height,
+                             'heightValueKind': 'authored-from-observed-levels', 'gameplay': False}
+    polygon_slab('MappedContextBody', points, height - .18, height - .18,
+                 'wako-context', group)
+    polygon_slab('MappedContextRoof', points, height, .18, 'wako-roof', group)
+    edges = [Facade(a, b, group) for a, b in zip(points, points[1:] + points[:1])]
+    front = min(edges, key=lambda edge: point_path_distance((edge.a + edge.b) / 2, street_points))
+    count = max(2, round(front.length / 2.8))
+    spacing = front.length / count
+    # 邻楼只使用已知轮廓和层数；窗组、表面与高度明确属于作者设计。
+    for level in range(levels):
+        bottom = .4 + level * 3.2
+        for index in range(count):
+            center = spacing * (index + .5)
+            width = spacing - .44
+            front.block('ContextGlazing', center, -.035, bottom + 1.12,
+                        (width, .04, 2.24), 'wako-context-glass', bevel=0)
+            for offset in (-width / 2, width / 2):
+                front.block('ContextReveal', center + offset, -.10, bottom + 1.12,
+                            (.08, .18, 2.34), 'wako-curb', bevel=0)
+            front.block('ContextSill', center, -.13, bottom - .04,
+                        (width + .14, .24, .08), 'wako-curb', bevel=0)
+    for z in (3.15, height - .32):
+        front.block('ContextStoreyEdge', front.length / 2, -.08, z,
+                    (front.length, .20, .15), 'wako-curb', bevel=0)
+    context_buildings.append({'sourceFeatureId': feature['id'], 'observedLevels': levels,
+                               'authoredHeightMetres': height, 'facadeAppearance': 'authored',
+                               'semanticGroup': group})
+progress('Built source-derived streets and nearby footprints with authored finishes')
 
 
 def scene_point(point, height):
@@ -530,7 +682,7 @@ def scene_point(point, height):
 
 def shadow_settings(enabled=True, size=1024):
     return {'enabled': enabled, 'mapSize': size, 'bias': -.00018, 'normalBias': .025,
-            'radius': 4.5, 'near': .15, 'far': 75}
+            'radius': 4.5, 'near': .10, 'far': 22}
 
 
 fixtures = []
@@ -542,22 +694,31 @@ for index, (name, path_points) in enumerate(paths.items()):
     target_index = [1, 2, 4][index]
     target = sidewalk[target_index]
     cylinder('AuthoredFacadeLamp', (*lamp_point, 4.25), .11, .30, 'wako-lamp', name + 'Ground', sides=12)
+    # 光源位于灯罩下方及檐口外侧，保留灯具网格与建筑几何。
+    light_point = lamp_point - interior * .16
     fixtures.append({'id': 'wako-pavement-' + str(index + 1), 'type': 'spot', 'enabled': True,
-                     'position': scene_point(lamp_point, 4.35), 'target': scene_point(target, ground_height),
-                     'color': '#ffe2bc', 'intensity': 170, 'distance': 17, 'decay': 2,
-                     'angle': .93, 'penumbra': .85, 'shadow': shadow_settings()})
+                     'position': scene_point(light_point, 4.05), 'target': scene_point(target, ground_height),
+                     'color': '#ffe2bc', 'intensity': 170, 'distance': 15, 'decay': 2,
+                     'angle': .95, 'penumbra': .90, 'shadow': shadow_settings()})
 for index, z in enumerate([13.5, 34.5]):
     position = corner_mid - inward * (6 if index == 0 else 9)
     fixtures.append({'id': 'wako-facade-wash-' + str(index + 1), 'type': 'spot', 'enabled': True,
                      'position': scene_point(position, 3.0 if index == 0 else 9),
                      'target': scene_point(corner_mid + inward * (1.3 if index == 0 else 4.25), z),
-                     'color': '#ffe3bf', 'intensity': 550 if index == 0 else 1250,
-                     'distance': 45, 'decay': 2, 'angle': .62 if index == 0 else .28,
-                     'penumbra': .85, 'shadow': shadow_settings(False, 512)})
+                     'color': '#ffe3bf', 'intensity': 450 if index == 0 else 1150,
+                     'distance': 45, 'decay': 2, 'angle': .76 if index == 0 else .31,
+                     'penumbra': .92, 'shadow': shadow_settings(False, 512)})
 
+shadow_points = list(footprint) + [tuple(point) for point in sidewalk]
+shadow_points.extend((point['x'], point['y']) for feature in context_features
+                     if feature['kind'] == 'building' for point in feature['points'])
+shadow_bounds = {'minX': math.floor(min(point[0] for point in shadow_points)) - 10,
+                 'maxX': math.ceil(max(point[0] for point in shadow_points)) + 10,
+                 'minY': math.floor(min(point[1] for point in shadow_points)) - 10,
+                 'maxY': math.ceil(max(point[1] for point in shadow_points)) + 10}
 lighting = {
     'version': 1, 'defaultMode': 'day', 'axes': 'Three(east,height,-north), metres',
-    'renderBounds': {'minX': -29, 'maxX': 29, 'minY': -12, 'maxY': 48},
+    'renderBounds': shadow_bounds,
     'scope': {'en': 'Authored daylight and night lighting. Reflections use licensed external HDR environments. Local fixtures and illuminated glazing do not establish actual lighting, opening hours, occupancy or entry.',
               'zh': '设计日光与夜间灯光。反射使用已授权的外部 HDR 环境。局部灯具和发光玻璃不代表实际灯光、营业时间、使用状态或入口。'},
     'limits': {'maxShadowCastingLocalLights': 3, 'staticShadowCaching': True, 'pointLightShadows': False},
@@ -587,7 +748,7 @@ for mode in ['day', 'night']:
         'materials': [] if is_day else [
             {'match': ['wako-lamp'], 'emissiveColor': '#ffe2bc', 'emissiveIntensity': 1.6},
             {'match': ['wako-clock-dial'], 'emissiveColor': '#dceae4', 'emissiveIntensity': .7},
-            {'match': ['wako-ground-glass'], 'emissiveColor': '#d9b47f', 'emissiveIntensity': .085,
+            {'match': ['wako-ground-glass'], 'emissiveColor': '#d9b47f', 'emissiveIntensity': .035,
              'emissiveFromBaseColor': True},
         ],
     }
@@ -602,9 +763,20 @@ write_json(asset_dir / 'materials.json', {
     'version': 1, 'id': 'ginza-wako-materials-v1', 'policy': 'embedded-pbr', 'overrides': {},
     'regions': [{'material': 'wako-lower-polished-stone', 'sourceRegion': 'lower-stone'},
                 {'material': 'wako-upper-granite', 'sourceRegion': 'upper-granite'}],
+    'surfacePolicy': {
+        'albedo': 'Original unlit base colour; no photographed lighting or interiors',
+        'normalAndRoughness': 'Original deterministic surface variation at material-specific metre scales',
+        'glazing': {'materials': ['wako-glass', 'wako-ground-glass'],
+                    'mapSize': [128, 128], 'coatWeight': .32, 'coatRoughness': .075,
+                    'baseColorEncoding': 'sRGB, IEC 61966-2-1 transfer from authored linear colour',
+                    'intendedLinearBaseColor': [.18, .225, .24],
+                    'transmission': 0, 'reflectionSource': 'Shared licensed HDR, view-dependent'},
+        'context': 'Mapped footprints and tagged levels; authored heights, window layout and muted finishes',
+    },
     'authored': 'Original procedural PBR maps and parameters. Operator descriptions establish surface classes; colours, grain, UV scale, roughness and reflection response are authored. Photograph pixels are not included.',
 })
 shutil.copyfile(source_path, asset_dir / 'source.json')
+shutil.copyfile(context_path, asset_dir / 'context.json')
 bpy.context.view_layer.update()
 bpy.ops.wm.save_as_mainfile(filepath=str(output_dir / 'ginza-wako.blend'))
 progress('Saved editable source; batching runtime meshes')
@@ -637,6 +809,9 @@ for (group, material_name, walkable), (vertices, faces, smooth, uvs) in groups.i
     if group not in roots:
         root = bpy.data.objects.new(group, None)
         bpy.context.collection.objects.link(root)
+        root['semanticGroup'] = group
+        for key, value in group_metadata.get(group, {}).items():
+            root[key] = value
         roots[group] = root
     mesh = bpy.data.meshes.new(group + '_' + material_name)
     mesh.from_pydata(vertices, [], faces)
@@ -668,13 +843,20 @@ provenance = {
     'generator': 'experience/art/build_ginza.py', 'generatorSha256': sha256(__file__),
     'blenderVersion': bpy.app.version_string,
     'source': {'path': str(source_path.relative_to(ROOT)), 'sha256': sha256(source_path)},
+    'context': {'path': str(context_path.relative_to(ROOT)), 'sha256': sha256(context_path),
+                'source': context_source['source'], 'authoredSettings': render_geometry['authoredSettings'],
+                'layerValidation': render_geometry['validation'], 'buildings': context_buildings,
+                'gameplay': False},
     'axes': 'Source/Blender east,north,height → glTF east,height,-north; metres',
     'dimensions': dimensions, 'references': source['references'],
     'authored': ['individual storey levels and window bay spacing', 'window and cornice depths',
                  'tower footprint and placement within the source corner', 'clock mounting and representative 10:10 hand pose',
                  'unseen tower faces, rear enclosure and roof treatment', 'simplified ornamental details',
                  'original procedural PBR maps', 'four-metre level corridor with rounded endpoint caps',
-                 'road-facing curb, non-traversable facade paving apron, visual asphalt extent and two unlabelled distant background masses',
+                 'non-traversable facade apron, neutral unmapped ground and distant asphalt continuation',
+                 'source-path carriageway buffers, branch sidewalk widths and level presentation heights',
+                 '0.12m road kerbs with authored crossing gaps and 2.8m zebra stripe width',
+                 'nearby footprint masses with authored 3.2m storey height, glazing layout and materials',
                  'day/night fixtures, materials emission and calibration'],
     'noInteriorOrDoorAssignment': True, 'noCurrentAccessClaim': True,
     'referenceUse': 'Two licensed photographs guide original architectural geometry. No photograph pixels are used in runtime textures.',
@@ -698,6 +880,7 @@ manifest = {'version': 1, 'id': 'ginza-wako', 'revision': 1,
             'model': file_record('scene.glb'), 'lighting': file_record('lighting.json'),
             'materials': file_record('materials.json'), 'provenance': file_record('provenance.json'),
             'source': {**file_record('source.json'), 'repositoryPath': str(source_path.relative_to(ROOT))},
+            'context': {**file_record('context.json'), 'repositoryPath': str(context_path.relative_to(ROOT))},
             'metrics': {'triangles': triangles, 'primitives': len(batches), 'textures': provenance['textures'],
                         'assetBytesExcludingManifest': total_bytes}}
 write_json(asset_dir / 'manifest.json', manifest)

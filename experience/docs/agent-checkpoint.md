@@ -1,9 +1,10 @@
 # Agent checkpoint · Explore and Together homepage
 
 2026-10-21 UTC · Lead owns integration, commits and publication.
-**State: sandbox-engine research is complete; the lively-streets iteration remains
-in progress. Published Pages runtime `3362d6c` remains the verified baseline.
-Q03 remains open P1; backend tests stay local.**
+**State: sandbox-engine research and production implementation are complete;
+final browser/art review and release validation are in progress. Published Pages
+runtime `3362d6c` remains the verified baseline. Q03 remains open P1; backend tests
+stay local.**
 
 ## Active iteration · lively streets and geographic production
 
@@ -24,21 +25,35 @@ the failed automatic-production gate. These outputs are research artifacts.
 Ginza's independently reviewed source context can proceed through art production;
 international geographic context requires explicit audit and manual review.
 
-Prepared work in the shared working tree is unvalidated unless separately noted:
-art owns `art/build_ginza.py`; engineering owns map-style initialization and an
-unmeasured `antialias:false` diagnostic; QA owns a syntax-checked normal-motion
-pack test. Lead's site preparation tool/configurations are incomplete, including
-Helsinki's required-building boundary failure. Existing public models are unchanged.
-Do not publish these candidates based on preceding release evidence.
+The implemented [site workbench](../content-tools/README.md) prepares real Delft
+and Helsinki source data, preserves source geometry and courtyards, and exports
+editable Blender context plus GLB models. Source checks pass **18/18**, with strict
+coordinate, disjointness, triangulation, provenance and failure assertions.
+Displayed rings describe the actual retained triangles; numerical cleanup is
+recorded separately from original geographic geometry. The internal browser viewer
+checks model/context hashes and matching metadata identities. HTTP checks pass
+**40/40**; actual browser/art review remains pending. These scenes retain explicit
+unreviewed architecture and access status and are not registered as playable packs.
+
+The Ginza candidate adds mapped neighboring context, street layers, authored glass
+response and revised night pools. Model `ca7098c9…` has **8,148,792 bytes**, **87,154
+triangles** and **55 batches**; the whole pack has **8,268,894 bytes**. Independent
+binary audits preserve the original 42 landmark/navigation meshes and all 55 meshes
+across the final glazing correction. The preceding integrated candidate passes
+**81/81** pack browser checks, including normal-motion recovery. Final corrected
+material captures are pending. Application **121/121**, service **13/13** and
+repository **17/17** checks pass on the current source.
 
 Fresh unchanged Q03 observations are **1206.2 / 1115.1 / 1131.6 ms**. Pre-load style
 initialization gives **1077.1 / 1031.2 / 1160.9 ms**; variation overlaps, so no
-reliable improvement is established. A desynchronized-context experiment was slower
-and its source option was removed. Preserve the unchanged driver and three
-independent warm-action threshold; the AA diagnostic needs matched visual review.
+reliable improvement is established. The antialias-disabled diagnostic records
+**905.2 / 810.8 / 901.4 ms**, still above the target; matched visual review rejects
+its edge quality. The implementation retains antialiasing and prepares the existing
+map style before layer creation. These observations establish no final latency gain.
+Preserve the unchanged driver and three independent warm-action threshold.
 
-Next: complete and verify the Ginza street-quality prototype, source-audited
-production tools, normal-motion regression and bounded map-latency diagnosis.
+Next: finish matched corrected-material views, workbench browser review, complete
+packaged CI and actual HTTPS publication verification.
 Only the lead builds, commits and publishes. Browser/GPU windows remain exclusive.
 Update this checkpoint with exact tested package and source/Pages identities before
 claiming the new milestone is delivered.

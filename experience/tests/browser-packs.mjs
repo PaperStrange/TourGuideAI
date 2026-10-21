@@ -11,7 +11,7 @@ const dist = resolve(process.argv[2]);
 const output = resolve(process.env.EXPERIENCE_QA_OUTPUT || '../artifacts/packs-20261019/browser');
 const timeout = Number(process.env.EXPERIENCE_QA_TIMEOUT || 120000);
 const selected = process.env.EXPERIENCE_QA_ONLY?.split(',').filter(Boolean);
-const sections = new Set(['openings', 'continuity', 'phone', 'framing-recovery', 'latest-intent', 'asset-recovery', 'unsupported-revision', 'search-cancellation', 'locale-pending', 'resources']);
+const sections = new Set(['openings', 'continuity', 'phone', 'framing-recovery', 'normal-motion', 'latest-intent', 'asset-recovery', 'unsupported-revision', 'search-cancellation', 'locale-pending', 'resources', 'art-poses']);
 if (selected?.some(name => !sections.has(name))) throw new Error('EXPERIENCE_QA_ONLY contains an unknown section.');
 const storageKey = 'tourguideai.solo.places.v1';
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
@@ -46,7 +46,7 @@ const report = { startedAt: new Date().toISOString(), artifact: { directory: dis
   driverSha256: sha(readFileSync(new URL(import.meta.url))),
   legacyFixture: { path: relative(resolve('.'), fixturePath.pathname), sha256: sha(fixtureBytes), recordId: legacyPlace.id },
   ginzaSource: { id: ginzaSource.id, revision: ginzaSource.revision, sha256: sha(sourceBytes) },
-  conditions: { desktop: [1440, 1000], phone: [390, 844], reducedMotion: 'reduce', timeoutMs: timeout, sections: selected || 'all' },
+  conditions: { desktop: [1440, 1000], phone: [390, 844], reducedMotion: 'reduce; normal-motion uses no-preference', timeoutMs: timeout, sections: selected || [...sections].filter(name => name !== 'art-poses') },
   checks: [], scenarios: {}, screenshots: [], observations: {},
   limitations: ['Automation does not establish human recognition, enjoyment, physical-device fluency or surveyed pedestrian access.',
     'Successful asset loads use the actual immutable build. Recovery cases explicitly delay or abort those requests.',
@@ -71,11 +71,11 @@ const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css
 const providers = new Set(['https://tiles.openfreemap.org', 'https://photon.komoot.io', 'https://en.wikipedia.org']);
 let browser, service, ginzaPlace;
 const contexts = new Set(), mobileContexts = new WeakSet();
-async function scenario(name, { mobile = false, locale = 'en', pack, mode, records = [legacyPlace], fault = {} } = {}) {
+async function scenario(name, { mobile = false, locale = 'en', pack, mode, records = [legacyPlace], fault = {}, reducedMotion = 'reduce' } = {}) {
   const context = await browser.newContext({ viewport: mobile ? { width: 390, height: 844 } : { width: 1440, height: 1000 },
-    hasTouch: mobile, isMobile: mobile, deviceScaleFactor: 1, reducedMotion: 'reduce' });
+    hasTouch: mobile, isMobile: mobile, deviceScaleFactor: 1, reducedMotion });
   contexts.add(context); if (mobile) mobileContexts.add(context);
-  const record = report.scenarios[name] = { requests: [], denied: [], delayed: [], external: [], pageErrors: [], consoleErrors: [] };
+  const record = report.scenarios[name] = { reducedMotion, requests: [], denied: [], delayed: [], external: [], pageErrors: [], consoleErrors: [] };
   await context.route(service.url + '/**', async route => {
     const url = new URL(route.request().url()), path = url.pathname === '/' ? '/index.html' : url.pathname;
     if (fault.deny?.(url)) { record.denied.push(url.href); return route.abort('blockedbyclient'); }
@@ -342,6 +342,32 @@ try {
     { capBytes: 8 * 1024 * 1024, marginalBytes, marginal,
       shared: files.filter(file => file.path === '/models/traveller.glb' || file.path.endsWith('.hdr')) });
 
+  if (selected?.includes('art-poses')) await section('art-poses', async () => {
+    if (!process.env.EXPERIENCE_QA_POSE_REPORT) throw new Error('art-poses requires EXPERIENCE_QA_POSE_REPORT from an actual completed walkthrough.');
+    const path = resolve(process.env.EXPERIENCE_QA_POSE_REPORT), bytes = readFileSync(path), source = JSON.parse(bytes);
+    const savedPlace = source.checks.find(check => check.id === 'ginza-save-binds-v3-pose-light-note-and-source' && check.pass)?.evidence;
+    if (!source.finishedAt || source.checks.some(check => !check.pass) || savedPlace?.view?.version !== 3) throw new Error('A successful completed source walkthrough with a saved Ginza record is required.');
+    report.poseSource = { path, sha256: sha(bytes), package: source.artifact.manifestSha256 };
+    const names = ['ginza-opening-desktop-en-day.png', 'ginza-opening-desktop-en-night.png',
+      'ginza-opening-phone-zh-day.png', 'ginza-opening-phone-zh-night.png',
+      'ginza-day-en.png', 'ginza-night-en.png', 'ginza-phone-second-frontage-close-zh.png'];
+    for (const name of names) {
+      const prior = source.screenshots.find(item => item.file === name);
+      if (!prior?.observed?.view || prior.observed.lighting.phase !== 'ready') throw new Error('The requested recorded pose is absent or was not ready: ' + name);
+      const mobile = name.includes('phone'), locale = name.includes('zh') ? 'zh' : 'en';
+      const place = { ...structuredClone(savedPlace), view: prior.observed.view, lighting: prior.observed.lighting.mode };
+      const { page, context } = await scenario(`matched-${name}`, { mobile, locale, pack: 'ginza-wako', records: [place] });
+      await ready(page, 'ginza-wako'); await reopen(page, place);
+      if (!name.includes('opening')) await activate(page, '#solo-inspect');
+      const actual = await view(page);
+      check(`matched-pose-${name}`, closeEnough(actual, prior.observed.view)
+        && (await renderer(page)).lighting.mode === prior.observed.lighting.mode,
+      { sourceImage: name, sourceImageSha256: prior.sha256, expected: prior.observed.view, actual });
+      await capture(page, name.replace(/\.png$/, ''));
+      await context.close(); contexts.delete(context);
+    }
+  });
+
   await section('openings', async () => {
     for (const mobile of [false, true]) {
       const language = mobile ? 'zh' : 'en', label = mobile ? 'phone' : 'desktop';
@@ -566,6 +592,69 @@ try {
         { before: closeView, after: await view(page), beforeProjection, afterProjection, state: after });
       await capture(page, `ginza-${label}-high-detail-walk-recovered`); await context.close(); contexts.delete(context);
     }
+  });
+
+  await section('normal-motion', async () => {
+    const { page } = await scenario('normal-motion', { pack: 'ginza-wako', records: [], reducedMotion: 'no-preference' });
+    await ready(page, 'ginza-wako');
+    await activate(page, '#solo-inspect');
+    for (let i = 0; i < 16; i++) await page.keyboard.press('Shift+i');
+    for (let i = 0; i < 54; i++) await page.keyboard.press('=');
+    const before = await state(page), closeView = await view(page), closeProjection = await projectPoint(page, before, .9);
+    check('normal-motion-starts-from-actual-offscreen-detail', closeProjection.normalized.slice(0, 2).some(value => Math.abs(value) > 1)
+      && !await page.evaluate(() => matchMedia('(prefers-reduced-motion: reduce)').matches), { view: closeView, projection: closeProjection });
+    // 只记录真实 Escape 输入后的相机与人物状态，不调用相机控制接口。
+    await page.evaluate(() => {
+      document.addEventListener('keydown', function observe(event) {
+        if (event.code !== 'Escape') return;
+        document.removeEventListener('keydown', observe, true);
+        const read = () => ({ time: performance.now(), camera: window.__TOUR_GAME__.camera(), player: window.__TOUR_GAME__.snapshot() });
+        const result = window.__QA_NORMAL_MOTION__ = { samples: [read()], sawTransition: false, finished: false };
+        function sample() {
+          const current = read(); result.samples.push(current);
+          result.sawTransition ||= current.camera.transitioning;
+          if ((result.sawTransition && !current.camera.transitioning) || result.samples.length >= 120) {
+            result.finished = true; return;
+          }
+          requestAnimationFrame(sample);
+        }
+        requestAnimationFrame(sample);
+      }, true);
+    });
+    await page.locator('#live-stage').focus(); await page.keyboard.press('Escape'); await page.keyboard.down('ArrowUp');
+    try {
+      await page.waitForFunction(() => window.__QA_NORMAL_MOTION__?.finished);
+      await page.waitForFunction(previous => Math.hypot(window.__TOUR_GAME__.snapshot().x - previous.x,
+        window.__TOUR_GAME__.snapshot().y - previous.y) > .3, before);
+    } finally { await page.keyboard.up('ArrowUp'); }
+    await page.waitForFunction(() => !window.__TOUR_GAME__.snapshot().moving);
+    await page.waitForFunction(() => {
+      const target = window.__TOUR_GAME__.camera().target;
+      const prior = window.__QA_CAMERA_SETTLE__;
+      const stable = prior && target.every((value, index) => Math.abs(value - prior.target[index]) < .00001);
+      window.__QA_CAMERA_SETTLE__ = { target, frames: stable ? prior.frames + 1 : 0 };
+      return window.__QA_CAMERA_SETTLE__.frames >= 3;
+    });
+    const transition = await page.evaluate(() => window.__QA_NORMAL_MOTION__), after = await state(page), afterView = await view(page);
+    const feet = await projectPoint(page, after, 0), head = await projectPoint(page, after, 1.75);
+    const movingSamples = transition.samples.filter(sample => sample.camera.transitioning);
+    const distinctTargets = new Set(transition.samples.map(sample => JSON.stringify(sample.camera.target)));
+    check('normal-motion-recovery-has-observed-intermediate-frames', transition.sawTransition && movingSamples.length > 0
+      && distinctTargets.size > 2 && !transition.samples.at(-1).camera.transitioning, transition);
+    check('normal-motion-keeps-orbit-zoom-and-recovers-grounded-player', [feet, head].every(point => point.normalized.every(value => value >= -1 && value <= 1))
+      && closeEnough(afterView.camera.azimuth, closeView.camera.azimuth) && closeEnough(afterView.camera.polar, closeView.camera.polar)
+      && closeEnough(afterView.camera.distance, closeView.camera.distance) && !after.moving
+      && await page.evaluate(() => window.__TOUR_GAME__.grounding().inside && !window.__TOUR_GAME__.inspection().enabled),
+    { before: closeView, after: afterView, feet, head, state: after });
+    await capture(page, 'ginza-normal-motion-walk-recovered');
+    await activate(page, '#mode-together');
+    const hidden = await renderer(page); await page.waitForTimeout(2000); const hiddenAfter = await renderer(page);
+    check('normal-motion-hidden-scene-stops-after-recovery', hiddenAfter.updateFrames === hidden.updateFrames
+      && hiddenAfter.renderedFrames === hidden.renderedFrames && !hiddenAfter.visible,
+    { before: hidden, after: hiddenAfter, sampleMs: 2000 });
+    await activate(page, '#mode-explore'); await ready(page, 'ginza-wako');
+    check('normal-motion-return-preserves-recovered-view', closeEnough(await view(page), afterView), { expected: afterView, actual: await view(page) });
+    await isolated(page, 'normal-motion-preserves-legacy-storage');
   });
 
   await section('asset-recovery', async () => {

@@ -13,5 +13,30 @@
       "sourceRegion": "upper-granite"
     }
   ],
+  "surfacePolicy": {
+    "albedo": "Original unlit base colour; no photographed lighting or interiors",
+    "normalAndRoughness": "Original deterministic surface variation at material-specific metre scales",
+    "glazing": {
+      "materials": [
+        "wako-glass",
+        "wako-ground-glass"
+      ],
+      "mapSize": [
+        128,
+        128
+      ],
+      "coatWeight": 0.32,
+      "coatRoughness": 0.075,
+      "baseColorEncoding": "sRGB, IEC 61966-2-1 transfer from authored linear colour",
+      "intendedLinearBaseColor": [
+        0.18,
+        0.225,
+        0.24
+      ],
+      "transmission": 0,
+      "reflectionSource": "Shared licensed HDR, view-dependent"
+    },
+    "context": "Mapped footprints and tagged levels; authored heights, window layout and muted finishes"
+  },
   "authored": "Original procedural PBR maps and parameters. Operator descriptions establish surface classes; colours, grain, UV scale, roughness and reflection response are authored. Photograph pixels are not included."
 }

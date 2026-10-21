@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TourGuideAI · Site workbench</title>
+  <link rel="stylesheet" href="/style.css">
+  <script type="importmap">{"imports":{"three":"/vendor/three/build/three.module.js","three/addons/":"/vendor/three/examples/jsm/"}}</script>
+  <script type="module" src="/main.js"></script>
+</head>
+<body>
+  <header class="masthead">
+    <div><span class="brand">TourGuideAI</span><span class="edition" data-copy="internal">Internal review</span></div>
+    <nav aria-label="Language"><button type="button" data-locale="en" aria-pressed="true">English</button><button type="button" data-locale="zh" aria-pressed="false">中文</button></nav>
+  </header>
+  <main>
+    <aside class="sidebar">
+      <p class="eyebrow" data-copy="eyebrow">GEOGRAPHIC SITE WORKBENCH</p>
+      <h1 data-copy="title">A place, in context.</h1>
+      <label class="field-label" for="site-selector" data-copy="chooseSite">Review a site</label>
+      <select id="site-selector" disabled></select>
+      <p class="scope" data-copy="scope">Geographic context · architectural and access review required.</p>
+      <p class="small" data-copy="scopeDetail">Orbit the source-derived scene. Walking and real-world routes have not been reviewed.</p>
+      <details id="metadata-panel" open><summary data-copy="metadata">Review details</summary><dl id="site-stats"></dl>
+      <details open><summary data-copy="sources">Sources & assumptions</summary><div id="source-summary"></div><a href="/lighting/resources.json" target="_blank" rel="noopener" data-copy="lightingCredits">Lighting sources · CC0</a><p class="small" data-copy="illumination">Day and night are authored illumination studies. The HDR environments were photographed in London and Berlin.</p></details>
+      <details><summary data-copy="review">Review record</summary><pre id="review-record"></pre></details></details>
+    </aside>
+    <section class="workspace" aria-labelledby="scene-title">
+      <div class="scene-toolbar"><h2 id="scene-title">—</h2><div class="scene-actions"><div class="segmented" role="group" id="lighting-controls" aria-label="Illumination"><button type="button" data-lighting="day" aria-pressed="true" data-copy="day">Daylight</button><button type="button" data-lighting="night" aria-pressed="false" data-copy="night">Night</button></div><button type="button" id="reset-view" data-copy="reset">Reset view</button></div></div>
+      <div id="stage" tabindex="0" role="region" aria-label="Interactive geographic context" aria-describedby="camera-help"><div id="canvas-host"></div><div class="scene-caption"><span data-copy="contextTag">GEOGRAPHIC CONTEXT</span><span data-copy="reviewTag">REVIEW REQUIRED</span></div></div>
+      <div class="status-line"><p id="status" role="status" aria-live="polite"></p><button type="button" id="retry" hidden data-copy="retry">Retry</button></div>
+      <p id="camera-help" class="small" data-copy="controls">Drag to orbit · right-drag or two fingers to pan · scroll or pinch to zoom. Keyboard: arrows orbit, Shift + arrows pan, + / − zoom, R reset. Click a surface to inspect.</p>
+      <section class="inspector" aria-labelledby="inspector-title"><h3 id="inspector-title" data-copy="inspector">Surface record</h3><p id="inspector-hint" data-copy="inspectHint">Choose a surface to see its source identity.</p><pre id="feature-record" hidden></pre></section>
+    </section>
+  </main>
+</body>
+</html>

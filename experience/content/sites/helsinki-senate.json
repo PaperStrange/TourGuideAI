@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "id": "helsinki-senate",
+  "title": {"en": "Helsinki Senate Square · geographic context", "zh": "赫尔辛基参议院广场 · 地理环境模型"},
+  "countryCode": "FI",
+  "identity": "osm:way:1542850662",
+  "origin": {"longitude": 24.9533, "latitude": 60.16925},
+  "bounds": [24.9516, 60.1681, 24.9558, 60.1707],
+  "source": {
+    "file": "../../evidence/global-sites-20261021/research/helsinki-senate.osm",
+    "format": "osm-xml",
+    "queryBounds": [24.9518, 60.1681, 24.9548, 60.1704],
+    "sha256": "ca1efe4230b3022f9df213d05dfae50a1454dd1662c016faae22dba1b6644424",
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=24.9518,60.1681,24.9548,60.1704",
+    "retrievedAt": "2026-10-21T04:51:23.356210+00:00",
+    "license": "ODbL-1.0",
+    "attribution": "© OpenStreetMap contributors"
+  },
+  "authoredPolicy": {
+    "displayPrecisionMetres": 0.001,
+    "defaultBuildingHeightMetres": 12,
+    "storeyHeightMetres": 3.2,
+    "roadWidthMetres": 6,
+    "pathWidthMetres": 2.5,
+    "windowSpacingMetres": 3.2,
+    "ground": "level, without a surveyed elevation datum",
+    "facades": "shared authored neutral finishes and window rhythm; landmark-specific architecture requires review",
+    "lighting": "authored daylight/night presentation; no current occupancy or opening-hour claim"
+  },
+  "limits": {"radiusMetres": 500, "modelBytes": 8388608, "triangles": 100000, "batches": 128},
+  "review": {"representation": "geographic-context", "navigation": "unreviewed", "landmarkArchitecture": "unreviewed"}
+}

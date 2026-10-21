@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "id": "delft-markt",
+  "title": {"en": "Delft Markt · geographic context", "zh": "代尔夫特市场广场 · 地理环境模型"},
+  "countryCode": "NL",
+  "identity": "osm:way:209351406",
+  "origin": {"longitude": 4.35825, "latitude": 52.01145},
+  "bounds": [4.357, 52.0108, 4.3595, 52.0121],
+  "source": {
+    "file": "../../evidence/global-sites-20261021/research/delft-markt.osm",
+    "format": "osm-xml",
+    "queryBounds": [4.357, 52.0108, 4.3595, 52.0121],
+    "sha256": "69e5fb1b52dd50d95a1ac9c2fa59616bb668ed7db46d9bfcb8e93dd23f607b7e",
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=4.3570,52.0108,4.3595,52.0121",
+    "retrievedAt": "2026-10-21T04:51:21.781506+00:00",
+    "license": "ODbL-1.0",
+    "attribution": "© OpenStreetMap contributors"
+  },
+  "authoredPolicy": {
+    "displayPrecisionMetres": 0.001,
+    "defaultBuildingHeightMetres": 12,
+    "storeyHeightMetres": 3.2,
+    "roadWidthMetres": 6,
+    "pathWidthMetres": 2.5,
+    "windowSpacingMetres": 3.2,
+    "ground": "level, without a surveyed elevation datum",
+    "facades": "shared authored neutral finishes and window rhythm; landmark-specific architecture requires review",
+    "lighting": "authored daylight/night presentation; no current occupancy or opening-hour claim"
+  },
+  "limits": {"radiusMetres": 500, "modelBytes": 8388608, "triangles": 100000, "batches": 128},
+  "review": {"representation": "geographic-context", "navigation": "unreviewed", "landmarkArchitecture": "unreviewed"}
+}
