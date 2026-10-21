@@ -8,8 +8,11 @@ performance has priority; phones retain the interaction with reduced visual deta
 
 The pilot starts at Shijō–Karasuma and connects Mitsui's frontage, Nishiki Market,
 Nishiki Tenmangū's street approach, Takase River, Pontochō's southern entrance and
-the Shijō Bridge viewpoint. The source audit determines actual pedestrian edges,
-distance, crossings, grade and covered-market clearances before content acceptance.
+the Shijō Bridge viewpoint. The source audit verifies mapped pedestrian edges,
+distance and crossings, and records the evidence available for grades and covered
+market clearances. Actual grades, current access and surveyed clearances remain
+unverified in this pilot. The browser walkthrough must verify the authored virtual
+ground and arcade clearance independently of those real-world unknowns.
 The crossing is a departure waypoint. Shop interiors are outside the route.
 
 The player walks continuously, looks around, inspects visible architectural
@@ -65,6 +68,12 @@ Initial budgets: critical startup assets at most 4 MiB; ordinary sections at mos
 triangles, 120 draw calls and 96 MiB estimated active textures. Record exceptions
 and their evidence before accepting a package. Shadow and transient decoder costs
 are measured separately.
+
+The retained Mitsui near-detail assembly has an explicit 3.5 MiB transfer ceiling
+to preserve its reviewed architecture. Its base representation and all ordinary
+sections retain the 2 MiB ceiling; critical startup retains the 4 MiB gate. Geometry,
+UVs and source indices remain exact through compression. The near-detail exception
+requires matched visual review and actual streaming evidence.
 
 ## Verification and release
 

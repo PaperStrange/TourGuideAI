@@ -18,10 +18,23 @@ widths, canopy clearance and current access retain their explicit review limits.
 
 The source and navigation work is committed and pushed as `e0c726a`. Earlier
 reviewable units are the plan `3d8acd8`, wider solo suggestions `4a86db3` and mapped
-walking geometry `03f9a81`. Integrated application checks currently pass **155/155**.
-Runtime scenery streaming, persistent journey editing and homepage integration are
-under review; the art export and actual browser acceptance are still pending.
+walking geometry `03f9a81`. Integrated application checks currently pass **162/162**.
+CI `39566220597` passes all seven jobs for the committed geographic increment;
+it does not cover the subsequent integrated runtime. Runtime scenery streaming,
+persistent journey editing and homepage integration are under review.
+The first immutable browser package passes **15/15** startup/interaction checks
+with zero page exceptions. Its art review requires corrected crossing surfaces
+and retained building finishes; its 8,828,032-byte critical load exceeds 4 MiB.
+The actual long walk also exposes slow movement on the software renderer.
+Full-route acceptance and measured performance remain pending.
 The previous published package and all evidence below remain the release baseline.
+
+The first browser package has manifest identity
+`34aff7623cc8676541773bd26e45b69b6b325f34859d195a4f7a19b97cbb3e99`.
+All 10,974 sampled corridor positions have required scenery coverage, with at most
+nine selected sections and three near-detail sections. This static coverage check
+does not replace the complete actual-input walk. The reusable production workflow
+is documented in `neighborhood-authoring.md`; final art identities remain pending.
 
 Current unchanged Q03 diagnostics are **953.5 / 1406.1 / 1096.0 ms**, all above
 500 ms. A separate trace records 731.9 ms wall time in 15 synchronous WebGL
