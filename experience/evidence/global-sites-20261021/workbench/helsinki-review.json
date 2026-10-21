@@ -1,0 +1,602 @@
+{
+  "version": 1,
+  "siteId": "helsinki-senate",
+  "source": {
+    "format": "osm-xml",
+    "queryBounds": [
+      24.9518,
+      60.1681,
+      24.9548,
+      60.1704
+    ],
+    "sha256": "ca1efe4230b3022f9df213d05dfae50a1454dd1662c016faae22dba1b6644424",
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=24.9518,60.1681,24.9548,60.1704",
+    "retrievedAt": "2026-10-21T04:51:23.356210+00:00",
+    "license": "ODbL-1.0",
+    "attribution": "© OpenStreetMap contributors"
+  },
+  "configSha256": "cea413d4847f03ff02ebc36d49afcc5fefa968ceabaa4e00336182acbef1e37f",
+  "tools": {
+    "osm2geojson": "0.3.2",
+    "shapely": "2.2.0",
+    "pyproj": "3.8.0"
+  },
+  "representation": "geographic-context",
+  "navigation": "unreviewed",
+  "landmarkArchitecture": "unreviewed",
+  "displayPrecisionMetres": 0.001,
+  "booleanSurfaceNormalization": [
+    {
+      "sourceId": "osm:way:1542850661",
+      "toleranceMetres": 1e-10,
+      "minimumPolygonAreaSquareMetres": 1e-10,
+      "removedPolygonAreasSquareMetres": [
+        0.0
+      ],
+      "areaChangeSquareMetres": 0.0
+    },
+    {
+      "sourceId": "osm:way:165718853",
+      "toleranceMetres": 1e-10,
+      "minimumPolygonAreaSquareMetres": 1e-10,
+      "removedPolygonAreasSquareMetres": [],
+      "areaChangeSquareMetres": 4.292740214675645e-15
+    },
+    {
+      "sourceId": "osm:way:165718856",
+      "toleranceMetres": 1e-10,
+      "minimumPolygonAreaSquareMetres": 1e-10,
+      "removedPolygonAreasSquareMetres": [],
+      "areaChangeSquareMetres": 5.255122595768382e-16
+    },
+    {
+      "sourceId": "osm:way:165719057",
+      "toleranceMetres": 1e-10,
+      "minimumPolygonAreaSquareMetres": 1e-10,
+      "removedPolygonAreasSquareMetres": [
+        0.0
+      ],
+      "areaChangeSquareMetres": 0.0
+    },
+    {
+      "sourceId": "osm:way:48385947",
+      "toleranceMetres": 1e-10,
+      "minimumPolygonAreaSquareMetres": 1e-10,
+      "removedPolygonAreasSquareMetres": [],
+      "areaChangeSquareMetres": 1.9033976566886717e-17
+    },
+    {
+      "sourceId": "osm:way:4902958",
+      "toleranceMetres": 1e-10,
+      "minimumPolygonAreaSquareMetres": 1e-10,
+      "removedPolygonAreasSquareMetres": [
+        0.0
+      ],
+      "areaChangeSquareMetres": 0.0
+    },
+    {
+      "sourceId": "osm:way:643456007",
+      "toleranceMetres": 1e-10,
+      "minimumPolygonAreaSquareMetres": 1e-10,
+      "removedPolygonAreasSquareMetres": [
+        0.0
+      ],
+      "areaChangeSquareMetres": 0.0
+    },
+    {
+      "sourceId": "osm:way:818756746",
+      "toleranceMetres": 1e-10,
+      "minimumPolygonAreaSquareMetres": 1e-10,
+      "removedPolygonAreasSquareMetres": [
+        0.0
+      ],
+      "areaChangeSquareMetres": 0.0
+    },
+    {
+      "sourceId": "osm:way:818756747",
+      "toleranceMetres": 1e-10,
+      "minimumPolygonAreaSquareMetres": 1e-10,
+      "removedPolygonAreasSquareMetres": [
+        0.0
+      ],
+      "areaChangeSquareMetres": 0.0
+    },
+    {
+      "sourceId": "osm:way:818756751",
+      "toleranceMetres": 1e-10,
+      "minimumPolygonAreaSquareMetres": 1e-10,
+      "removedPolygonAreasSquareMetres": [],
+      "areaChangeSquareMetres": 1.4921397450961407e-16
+    },
+    {
+      "sourceId": "osm:way:818759730",
+      "toleranceMetres": 1e-10,
+      "minimumPolygonAreaSquareMetres": 1e-10,
+      "removedPolygonAreasSquareMetres": [
+        0.0
+      ],
+      "areaChangeSquareMetres": 0.0
+    },
+    {
+      "sourceId": "osm:way:818759731",
+      "toleranceMetres": 1e-10,
+      "minimumPolygonAreaSquareMetres": 1e-10,
+      "removedPolygonAreasSquareMetres": [
+        0.0
+      ],
+      "areaChangeSquareMetres": 0.0
+    },
+    {
+      "sourceId": "osm:way:819015925",
+      "toleranceMetres": 1e-10,
+      "minimumPolygonAreaSquareMetres": 1e-10,
+      "removedPolygonAreasSquareMetres": [
+        0.0
+      ],
+      "areaChangeSquareMetres": 0.0
+    },
+    {
+      "sourceId": "osm:way:819015926",
+      "toleranceMetres": 1e-10,
+      "minimumPolygonAreaSquareMetres": 1e-10,
+      "removedPolygonAreasSquareMetres": [
+        0.0
+      ],
+      "areaChangeSquareMetres": 0.0
+    },
+    {
+      "sourceId": "osm:way:86356192",
+      "toleranceMetres": 1e-10,
+      "minimumPolygonAreaSquareMetres": 1e-10,
+      "removedPolygonAreasSquareMetres": [],
+      "areaChangeSquareMetres": 2.4620305794088783e-15
+    },
+    {
+      "sourceId": "osm:way:912362783",
+      "toleranceMetres": 1e-10,
+      "minimumPolygonAreaSquareMetres": 1e-10,
+      "removedPolygonAreasSquareMetres": [],
+      "areaChangeSquareMetres": 2.9188119918997627e-15
+    },
+    {
+      "sourceId": "osm:way:921679117",
+      "toleranceMetres": 1e-10,
+      "minimumPolygonAreaSquareMetres": 1e-10,
+      "removedPolygonAreasSquareMetres": [
+        0.0
+      ],
+      "areaChangeSquareMetres": 0.0
+    },
+    {
+      "sourceId": "osm:way:930339632",
+      "toleranceMetres": 1e-10,
+      "minimumPolygonAreaSquareMetres": 1e-10,
+      "removedPolygonAreasSquareMetres": [
+        0.0
+      ],
+      "areaChangeSquareMetres": 0.0
+    },
+    {
+      "sourceId": "osm:way:54939017",
+      "toleranceMetres": 1e-10,
+      "minimumPolygonAreaSquareMetres": 1e-10,
+      "removedPolygonAreasSquareMetres": [
+        3.3772734253748903e-15
+      ],
+      "areaChangeSquareMetres": 3.3792413312028202e-15
+    }
+  ],
+  "features": 166,
+  "buildings": 17,
+  "courtyards": 2,
+  "authoredBuildingHeights": [
+    "osm:way:165718850",
+    "osm:way:643456011"
+  ],
+  "excluded": [
+    {
+      "sourceId": "osm:relation:1331998",
+      "reason": "overlapping-building-footprints-require-review"
+    },
+    {
+      "sourceId": "osm:relation:14659097",
+      "reason": "incomplete-building-assembly",
+      "missingMembers": [
+        "osm:way:1101186164"
+      ]
+    },
+    {
+      "sourceId": "osm:relation:14659098",
+      "reason": "incomplete-building-assembly",
+      "missingMembers": [
+        "osm:way:1101186166"
+      ]
+    },
+    {
+      "sourceId": "osm:relation:2105743",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:relation:7193165",
+      "reason": "overlapping-building-footprints-require-review"
+    },
+    {
+      "sourceId": "osm:way:1101186160",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1101186161",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1101186162",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1101186163",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:123403681",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:123403688",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:1409213267",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1426100664",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850661",
+      "reason": "surface-covered-by-prior-display-layer"
+    },
+    {
+      "sourceId": "osm:way:1542850663",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850667",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850668",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850669",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850670",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850671",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850672",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850673",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850674",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850675",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850676",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850677",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850678",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850679",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850680",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850681",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850682",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850683",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850684",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850685",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850686",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850687",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850688",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850689",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850690",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850691",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850692",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850693",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850723",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850724",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850728",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850729",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850731",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850732",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850733",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850734",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850735",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850736",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850737",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850738",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850739",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850740",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850742",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850743",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850744",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850745",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850746",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850747",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850748",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850749",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850750",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1542850751",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:165719057",
+      "reason": "surface-covered-by-prior-display-layer"
+    },
+    {
+      "sourceId": "osm:way:17426125",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:17426256",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:22115431",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:24337154",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:458107139",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:458107140",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:458107141",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:458107315",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:458107368",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:458107403",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:458107467",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:458107518",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:458107637",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:4902958",
+      "reason": "surface-covered-by-prior-display-layer"
+    },
+    {
+      "sourceId": "osm:way:643456007",
+      "reason": "surface-covered-by-prior-display-layer"
+    },
+    {
+      "sourceId": "osm:way:818756746",
+      "reason": "surface-covered-by-prior-display-layer"
+    },
+    {
+      "sourceId": "osm:way:818756747",
+      "reason": "surface-covered-by-prior-display-layer"
+    },
+    {
+      "sourceId": "osm:way:818759730",
+      "reason": "surface-covered-by-prior-display-layer"
+    },
+    {
+      "sourceId": "osm:way:818759731",
+      "reason": "surface-covered-by-prior-display-layer"
+    },
+    {
+      "sourceId": "osm:way:819015925",
+      "reason": "surface-covered-by-prior-display-layer"
+    },
+    {
+      "sourceId": "osm:way:819015926",
+      "reason": "surface-covered-by-prior-display-layer"
+    },
+    {
+      "sourceId": "osm:way:90619190",
+      "reason": "overlapping-building-footprints-require-review"
+    },
+    {
+      "sourceId": "osm:way:90619194",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:90619197",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:90620798",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:921679117",
+      "reason": "surface-covered-by-prior-display-layer"
+    },
+    {
+      "sourceId": "osm:way:930339632",
+      "reason": "surface-covered-by-prior-display-layer"
+    },
+    {
+      "sourceId": "osm:way:990281501",
+      "reason": "building-part-requires-architectural-review"
+    }
+  ],
+  "missingEvidence": [
+    "surveyed elevation/grade",
+    "reviewed walking/access graph",
+    "source-matched landmark silhouette",
+    "reviewed facade/roof details",
+    "actual lighting/occupancy"
+  ],
+  "policy": {
+    "displayPrecisionMetres": 0.001,
+    "defaultBuildingHeightMetres": 12,
+    "storeyHeightMetres": 3.2,
+    "roadWidthMetres": 6,
+    "pathWidthMetres": 2.5,
+    "windowSpacingMetres": 3.2,
+    "ground": "level, without a surveyed elevation datum",
+    "facades": "shared authored neutral finishes and window rhythm; landmark-specific architecture requires review",
+    "lighting": "authored daylight/night presentation; no current occupancy or opening-hour claim"
+  }
+}

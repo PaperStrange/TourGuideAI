@@ -1,0 +1,4476 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-21",
+  "method": "pygltflib GLB parsing; exact POSITION/index buffer-view hashes, accessor layout and complete ancestor/node transforms",
+  "scope": "All mesh POSITION/index payloads and ancestor/node transforms",
+  "baseline": {
+    "path": "artifacts/ginza-art-20261021/candidate/scene.glb",
+    "sha256": "b098e7755238836dcc83871026506036e4a3d01c3f62f19d9f8b8602c12ac99f"
+  },
+  "candidate": {
+    "path": "artifacts/ginza-art-20261021/glass-candidate/scene.glb",
+    "sha256": "ca7098c975f745292a9fcb2743a6f6d08c5b3d3f3c948daaac5d409715f83e17"
+  },
+  "checkedMeshes": 55,
+  "missingMeshes": [],
+  "addedMeshes": [],
+  "changedMeshes": [],
+  "passed": true,
+  "meshSignatures": [
+    {
+      "name": "ContextBuilding_103509466_wako-context",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 36,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 432,
+              "bufferViewSha256": "9127eb5aa1442cd035c0fb5a264c5f3c98987b6fb4ec881e139b7aed21458faa"
+            },
+            "indices": {
+              "count": 60,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 120,
+              "bufferViewSha256": "501ca37b604bf301effdbea0e893c3baa3d3a466b1b93c4c1648ecfe04d733a1"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 36,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 432,
+              "bufferViewSha256": "9127eb5aa1442cd035c0fb5a264c5f3c98987b6fb4ec881e139b7aed21458faa"
+            },
+            "indices": {
+              "count": 60,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 120,
+              "bufferViewSha256": "501ca37b604bf301effdbea0e893c3baa3d3a466b1b93c4c1648ecfe04d733a1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "ContextBuilding_103509466_wako-context-glass",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 768,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 9216,
+              "bufferViewSha256": "86d5e59a614d8c1d50cfc3145dd77d14d6caccea4df90e08894fc169dce65809"
+            },
+            "indices": {
+              "count": 1152,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 2304,
+              "bufferViewSha256": "80b76c89542fc7ba04f035b0c078eebd1fcb300ce84f8146c74842461be744bc"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 768,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 9216,
+              "bufferViewSha256": "86d5e59a614d8c1d50cfc3145dd77d14d6caccea4df90e08894fc169dce65809"
+            },
+            "indices": {
+              "count": 1152,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 2304,
+              "bufferViewSha256": "80b76c89542fc7ba04f035b0c078eebd1fcb300ce84f8146c74842461be744bc"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "ContextBuilding_103509466_wako-curb",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 2352,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 28224,
+              "bufferViewSha256": "0700e95f0a36237d5449cb3ffb38da2782097215cb4f6ff6e90bfc7909a215c7"
+            },
+            "indices": {
+              "count": 3528,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 7056,
+              "bufferViewSha256": "855df0d2e1703f2277d52f8fef22052897ec96af4f1520ab621e5edaa68efd67"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 2352,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 28224,
+              "bufferViewSha256": "0700e95f0a36237d5449cb3ffb38da2782097215cb4f6ff6e90bfc7909a215c7"
+            },
+            "indices": {
+              "count": 3528,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 7056,
+              "bufferViewSha256": "855df0d2e1703f2277d52f8fef22052897ec96af4f1520ab621e5edaa68efd67"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "ContextBuilding_103509466_wako-roof",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 36,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 432,
+              "bufferViewSha256": "96cf59ba23d9e44a5a6c268e1da75b2f5e286b25df877fac7de63f49579d113d"
+            },
+            "indices": {
+              "count": 60,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 120,
+              "bufferViewSha256": "501ca37b604bf301effdbea0e893c3baa3d3a466b1b93c4c1648ecfe04d733a1"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 36,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 432,
+              "bufferViewSha256": "96cf59ba23d9e44a5a6c268e1da75b2f5e286b25df877fac7de63f49579d113d"
+            },
+            "indices": {
+              "count": 60,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 120,
+              "bufferViewSha256": "501ca37b604bf301effdbea0e893c3baa3d3a466b1b93c4c1648ecfe04d733a1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "ContextBuilding_449618283_wako-context",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 24,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 288,
+              "bufferViewSha256": "73b345be09734e93adecf7a1f2fd75de8c5de3a654a4fa75c484dba36e96599f"
+            },
+            "indices": {
+              "count": 36,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 72,
+              "bufferViewSha256": "9f64abebb5c068e3df290ac2c469b13f076f1de654769b8d6c3219f2d0ebaa47"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 24,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 288,
+              "bufferViewSha256": "73b345be09734e93adecf7a1f2fd75de8c5de3a654a4fa75c484dba36e96599f"
+            },
+            "indices": {
+              "count": 36,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 72,
+              "bufferViewSha256": "9f64abebb5c068e3df290ac2c469b13f076f1de654769b8d6c3219f2d0ebaa47"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "ContextBuilding_449618283_wako-context-glass",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 384,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 4608,
+              "bufferViewSha256": "137c5331df38ff0016a607955dcd1794417848f3256c0715e1a0d8a8b2a5b454"
+            },
+            "indices": {
+              "count": 576,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 1152,
+              "bufferViewSha256": "73c8d00702ad4ee7622950a0fc72530172494c55569901d70adab8608e2f80d4"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 384,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 4608,
+              "bufferViewSha256": "137c5331df38ff0016a607955dcd1794417848f3256c0715e1a0d8a8b2a5b454"
+            },
+            "indices": {
+              "count": 576,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 1152,
+              "bufferViewSha256": "73c8d00702ad4ee7622950a0fc72530172494c55569901d70adab8608e2f80d4"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "ContextBuilding_449618283_wako-curb",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 1200,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 14400,
+              "bufferViewSha256": "4362fec3b6423cfd89a2dad3ce5c5f137f78788a22f0fb4b45612db07bc50268"
+            },
+            "indices": {
+              "count": 1800,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 3600,
+              "bufferViewSha256": "06211ad856239b6d317e6d400f186d1bc614f6ea7c3189717ca344a3548d0f77"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 1200,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 14400,
+              "bufferViewSha256": "4362fec3b6423cfd89a2dad3ce5c5f137f78788a22f0fb4b45612db07bc50268"
+            },
+            "indices": {
+              "count": 1800,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 3600,
+              "bufferViewSha256": "06211ad856239b6d317e6d400f186d1bc614f6ea7c3189717ca344a3548d0f77"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "ContextBuilding_449618283_wako-roof",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 24,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 288,
+              "bufferViewSha256": "7fa24796367ac5794b44ad07d9e7cbc85985179218dc023ba1b4e55233b367ad"
+            },
+            "indices": {
+              "count": 36,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 72,
+              "bufferViewSha256": "9f64abebb5c068e3df290ac2c469b13f076f1de654769b8d6c3219f2d0ebaa47"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 24,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 288,
+              "bufferViewSha256": "7fa24796367ac5794b44ad07d9e7cbc85985179218dc023ba1b4e55233b367ad"
+            },
+            "indices": {
+              "count": 36,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 72,
+              "bufferViewSha256": "9f64abebb5c068e3df290ac2c469b13f076f1de654769b8d6c3219f2d0ebaa47"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Context_wako-asphalt",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 47,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 564,
+              "bufferViewSha256": "4e7ab1fc393717e972ee6abfcec688eec31fbefd1dda0a7d223b8151d941d723"
+            },
+            "indices": {
+              "count": 99,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 198,
+              "bufferViewSha256": "2db52c08e25f9147ff601dc93c658c3c3f1a7a4adc1c44cd7a1fe0598696e67c"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 47,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 564,
+              "bufferViewSha256": "4e7ab1fc393717e972ee6abfcec688eec31fbefd1dda0a7d223b8151d941d723"
+            },
+            "indices": {
+              "count": 99,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 198,
+              "bufferViewSha256": "2db52c08e25f9147ff601dc93c658c3c3f1a7a4adc1c44cd7a1fe0598696e67c"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Context_wako-context-ground",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 103,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 1236,
+              "bufferViewSha256": "fad63844cb684cc798f3eb3a9941b86d1bdd3504034b36114a7c5c057f7ee475"
+            },
+            "indices": {
+              "count": 285,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 570,
+              "bufferViewSha256": "868889644638d589d30dfaed858d2a0cb4882aa40fa8d672d4b76802a32979eb"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 103,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 1236,
+              "bufferViewSha256": "fad63844cb684cc798f3eb3a9941b86d1bdd3504034b36114a7c5c057f7ee475"
+            },
+            "indices": {
+              "count": 285,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 570,
+              "bufferViewSha256": "868889644638d589d30dfaed858d2a0cb4882aa40fa8d672d4b76802a32979eb"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Context_wako-curb",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 240,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 2880,
+              "bufferViewSha256": "59e1f5b110f3fc7a0fe1fd876c769f74ed688c58cff061e0b764bbce6e1bde4b"
+            },
+            "indices": {
+              "count": 360,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 720,
+              "bufferViewSha256": "6ce5bd9233344976847937088b4dd957c09be6c97d39f3cb4c451403da8810e3"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 240,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 2880,
+              "bufferViewSha256": "59e1f5b110f3fc7a0fe1fd876c769f74ed688c58cff061e0b764bbce6e1bde4b"
+            },
+            "indices": {
+              "count": 360,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 720,
+              "bufferViewSha256": "6ce5bd9233344976847937088b4dd957c09be6c97d39f3cb4c451403da8810e3"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Context_wako-paint",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 720,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 8640,
+              "bufferViewSha256": "49c0a57afe29fc72a1c7af170573b4833c60b545079a884bb9bdf5a13b24a592"
+            },
+            "indices": {
+              "count": 1080,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 2160,
+              "bufferViewSha256": "8a2c045ef77739fa34aa78b338ea6fbbc8bef80b295c2dfa2597bc7d56205cb6"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 720,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 8640,
+              "bufferViewSha256": "49c0a57afe29fc72a1c7af170573b4833c60b545079a884bb9bdf5a13b24a592"
+            },
+            "indices": {
+              "count": 1080,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 2160,
+              "bufferViewSha256": "8a2c045ef77739fa34aa78b338ea6fbbc8bef80b295c2dfa2597bc7d56205cb6"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Context_wako-paving",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 26,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 312,
+              "bufferViewSha256": "5b036479625f856d489721f8a0cc8f4c92758fd1550df4755fb1c47ea7c39799"
+            },
+            "indices": {
+              "count": 66,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 132,
+              "bufferViewSha256": "836cc14bad7a9244184d833f0e3e680de40b84d58c152b3978d0ef862741eece"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 26,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 312,
+              "bufferViewSha256": "5b036479625f856d489721f8a0cc8f4c92758fd1550df4755fb1c47ea7c39799"
+            },
+            "indices": {
+              "count": 66,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 132,
+              "bufferViewSha256": "836cc14bad7a9244184d833f0e3e680de40b84d58c152b3978d0ef862741eece"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Ground_wako-paving",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 240,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 2880,
+              "bufferViewSha256": "16412a0086c3dbd90b1d3bb813b5835d318e08d6a935b74e1f0ef8e2ca61e469"
+            },
+            "indices": {
+              "count": 468,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 936,
+              "bufferViewSha256": "b53495b4727e1c41d5b035a043453d67a415e9cf8c8f6325e1c3fcf4de82e441"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 240,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 2880,
+              "bufferViewSha256": "16412a0086c3dbd90b1d3bb813b5835d318e08d6a935b74e1f0ef8e2ca61e469"
+            },
+            "indices": {
+              "count": 468,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 936,
+              "bufferViewSha256": "b53495b4727e1c41d5b035a043453d67a415e9cf8c8f6325e1c3fcf4de82e441"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Ground_wako-paving.001",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 96,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 1152,
+              "bufferViewSha256": "ba56d6630db9f96d6526b2868cda36483b11091fb3835f61ae2a5fad9a92bd3b"
+            },
+            "indices": {
+              "count": 180,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 360,
+              "bufferViewSha256": "16e1f54e9e144f1ffecf0308038ab48bf182c9ccda31be3575f572ab1532f2e5"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 96,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 1152,
+              "bufferViewSha256": "ba56d6630db9f96d6526b2868cda36483b11091fb3835f61ae2a5fad9a92bd3b"
+            },
+            "indices": {
+              "count": 180,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 360,
+              "bufferViewSha256": "16e1f54e9e144f1ffecf0308038ab48bf182c9ccda31be3575f572ab1532f2e5"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoCornerGround_wako-frame",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 2160,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 25920,
+              "bufferViewSha256": "03f2f19917f80df657fb41d703545438dc15869287e0ebd6791814c65493b6d0"
+            },
+            "indices": {
+              "count": 3024,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 6048,
+              "bufferViewSha256": "533328fa67995ab5831710ddeec92864cc0a6f9c1f77e683d707fbd9936b98c7"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 2160,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 25920,
+              "bufferViewSha256": "03f2f19917f80df657fb41d703545438dc15869287e0ebd6791814c65493b6d0"
+            },
+            "indices": {
+              "count": 3024,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 6048,
+              "bufferViewSha256": "533328fa67995ab5831710ddeec92864cc0a6f9c1f77e683d707fbd9936b98c7"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoCornerGround_wako-grille",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 2064,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 24768,
+              "bufferViewSha256": "09720c68614cf088b1aa550f8e790e50739e1943a63428cc6fc2b9e6c11d224b"
+            },
+            "indices": {
+              "count": 3024,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 6048,
+              "bufferViewSha256": "faaa153a937e8eb7ee304560e9ff0a2477a43b55fce4bd2c5b7b174f3afb9bc9"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 2064,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 24768,
+              "bufferViewSha256": "09720c68614cf088b1aa550f8e790e50739e1943a63428cc6fc2b9e6c11d224b"
+            },
+            "indices": {
+              "count": 3024,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 6048,
+              "bufferViewSha256": "faaa153a937e8eb7ee304560e9ff0a2477a43b55fce4bd2c5b7b174f3afb9bc9"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoCornerGround_wako-ground-glass",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 216,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 2592,
+              "bufferViewSha256": "bc7221d0d6d4292b3915bf063bfc04041c0c683c7b4c1e96ad2c61879807a500"
+            },
+            "indices": {
+              "count": 324,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 648,
+              "bufferViewSha256": "766d982554152c4cc5a3c82036623d731b80cf8996bcc9bf8109aa8a357460dc"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 216,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 2592,
+              "bufferViewSha256": "bc7221d0d6d4292b3915bf063bfc04041c0c683c7b4c1e96ad2c61879807a500"
+            },
+            "indices": {
+              "count": 324,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 648,
+              "bufferViewSha256": "766d982554152c4cc5a3c82036623d731b80cf8996bcc9bf8109aa8a357460dc"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoCornerGround_wako-lamp",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 56,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 672,
+              "bufferViewSha256": "7f40efd4d479fc42f833e10ab33e46fc899077fcd5833318fe62f2f74f7b8c0f"
+            },
+            "indices": {
+              "count": 132,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 264,
+              "bufferViewSha256": "0fec64df93bcf2a916f9a211ca671ec41e569e1996a6804ed4ec90f335523cd0"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 56,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 672,
+              "bufferViewSha256": "7f40efd4d479fc42f833e10ab33e46fc899077fcd5833318fe62f2f74f7b8c0f"
+            },
+            "indices": {
+              "count": 132,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 264,
+              "bufferViewSha256": "0fec64df93bcf2a916f9a211ca671ec41e569e1996a6804ed4ec90f335523cd0"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoCornerGround_wako-lower-polished-stone",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 4608,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 55296,
+              "bufferViewSha256": "8292f6d12faddbc2bd5c2d18ddb951d3868f6584d9e26b8bb7815f27beb6218e"
+            },
+            "indices": {
+              "count": 6336,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 12672,
+              "bufferViewSha256": "97dd74d6d9cc62d996403be93a5839c252fb2208ebbbaba1ef657c996da5da0c"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 4608,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 55296,
+              "bufferViewSha256": "8292f6d12faddbc2bd5c2d18ddb951d3868f6584d9e26b8bb7815f27beb6218e"
+            },
+            "indices": {
+              "count": 6336,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 12672,
+              "bufferViewSha256": "97dd74d6d9cc62d996403be93a5839c252fb2208ebbbaba1ef657c996da5da0c"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoCornerGround_wako-trim",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 7296,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 87552,
+              "bufferViewSha256": "ba2f0ade48d482604579e30d46ac7819de18369219ffbf7f56ea47fc46907f95"
+            },
+            "indices": {
+              "count": 10032,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 20064,
+              "bufferViewSha256": "271f5c89c39224d8faa58027e168b7d1a1d7517e8d373964827390fca6583946"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 7296,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 87552,
+              "bufferViewSha256": "ba2f0ade48d482604579e30d46ac7819de18369219ffbf7f56ea47fc46907f95"
+            },
+            "indices": {
+              "count": 10032,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 20064,
+              "bufferViewSha256": "271f5c89c39224d8faa58027e168b7d1a1d7517e8d373964827390fca6583946"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoCornerUpper_wako-frame",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 7200,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 86400,
+              "bufferViewSha256": "ee5ed1e2240b0a3bfbda8c0dae7c87a59cc1a9733bc0e681f06e2130a4a7145d"
+            },
+            "indices": {
+              "count": 10080,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 20160,
+              "bufferViewSha256": "612d67d238d5269c811147e10e945da33d762c718fdc120a259c04de3f087c99"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 7200,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 86400,
+              "bufferViewSha256": "ee5ed1e2240b0a3bfbda8c0dae7c87a59cc1a9733bc0e681f06e2130a4a7145d"
+            },
+            "indices": {
+              "count": 10080,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 20160,
+              "bufferViewSha256": "612d67d238d5269c811147e10e945da33d762c718fdc120a259c04de3f087c99"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoCornerUpper_wako-glass",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 720,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 8640,
+              "bufferViewSha256": "267e95fd1134313707390834c85f2451181c92fe4309551353b9e1d8abb9901d"
+            },
+            "indices": {
+              "count": 1080,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 2160,
+              "bufferViewSha256": "cabc80c950a239a35b3e58c90ce9371fdf42fbf2745120bc1f5567873131701b"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 720,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 8640,
+              "bufferViewSha256": "267e95fd1134313707390834c85f2451181c92fe4309551353b9e1d8abb9901d"
+            },
+            "indices": {
+              "count": 1080,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 2160,
+              "bufferViewSha256": "cabc80c950a239a35b3e58c90ce9371fdf42fbf2745120bc1f5567873131701b"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoCornerUpper_wako-grille",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 1152,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 13824,
+              "bufferViewSha256": "92e5fbde445c9df727152deb020f4db40d71e1a26138a44a698acb77c241cd23"
+            },
+            "indices": {
+              "count": 1656,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 3312,
+              "bufferViewSha256": "9442fe88924d28bb1fa44d7eaa379794e01203d3561feb53bcad8132085d25a2"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 1152,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 13824,
+              "bufferViewSha256": "92e5fbde445c9df727152deb020f4db40d71e1a26138a44a698acb77c241cd23"
+            },
+            "indices": {
+              "count": 1656,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 3312,
+              "bufferViewSha256": "9442fe88924d28bb1fa44d7eaa379794e01203d3561feb53bcad8132085d25a2"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoCornerUpper_wako-trim",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 16128,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 193536,
+              "bufferViewSha256": "ed8f81cf6a5ad198325fad95b48a76422d3758216a80bad1595267c61b0f95be"
+            },
+            "indices": {
+              "count": 22176,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 44352,
+              "bufferViewSha256": "9b7c780dabde69452c5c61d08339ff60b39f9834dcf1c6eff2e328eaa8df1f29"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 16128,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 193536,
+              "bufferViewSha256": "ed8f81cf6a5ad198325fad95b48a76422d3758216a80bad1595267c61b0f95be"
+            },
+            "indices": {
+              "count": 22176,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 44352,
+              "bufferViewSha256": "9b7c780dabde69452c5c61d08339ff60b39f9834dcf1c6eff2e328eaa8df1f29"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoCornerUpper_wako-upper-granite",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 24960,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 299520,
+              "bufferViewSha256": "00734638dc73b9dd3056be58ce5ac1c8abba6871e1214e05b77c86c65b46a8ed"
+            },
+            "indices": {
+              "count": 34608,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 69216,
+              "bufferViewSha256": "dd0879aec032fac8993b2fd4dc89411bf52d9e84975206f35ac0fd5b420cf5dd"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 24960,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 299520,
+              "bufferViewSha256": "00734638dc73b9dd3056be58ce5ac1c8abba6871e1214e05b77c86c65b46a8ed"
+            },
+            "indices": {
+              "count": 34608,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 69216,
+              "bufferViewSha256": "dd0879aec032fac8993b2fd4dc89411bf52d9e84975206f35ac0fd5b420cf5dd"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoRear_wako-lower-polished-stone",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 72,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 864,
+              "bufferViewSha256": "6d1cd31cfe307970be8cd27c51c71e28e9629edee13b84e81450e99f6b844db8"
+            },
+            "indices": {
+              "count": 132,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 264,
+              "bufferViewSha256": "ec7af2f2bd7b62dd9413c712fc2e7d76a9880e0b1d91e3b3523e559c1cf724f9"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 72,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 864,
+              "bufferViewSha256": "6d1cd31cfe307970be8cd27c51c71e28e9629edee13b84e81450e99f6b844db8"
+            },
+            "indices": {
+              "count": 132,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 264,
+              "bufferViewSha256": "ec7af2f2bd7b62dd9413c712fc2e7d76a9880e0b1d91e3b3523e559c1cf724f9"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoRear_wako-upper-granite",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 192,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 2304,
+              "bufferViewSha256": "ecd3960e86d2e0529836fc6e63f1b278ed6ebc53606a82dd88471e1240227626"
+            },
+            "indices": {
+              "count": 264,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 528,
+              "bufferViewSha256": "3b87eb64f104ea85cb6b00c71bf8d7f34fffff849f05797661f8536416841756"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 192,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 2304,
+              "bufferViewSha256": "ecd3960e86d2e0529836fc6e63f1b278ed6ebc53606a82dd88471e1240227626"
+            },
+            "indices": {
+              "count": 264,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 528,
+              "bufferViewSha256": "3b87eb64f104ea85cb6b00c71bf8d7f34fffff849f05797661f8536416841756"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoRoof_wako-roof",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 72,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 864,
+              "bufferViewSha256": "f6e2e65df100ddbd67dfacdfe53fcfc5071d99ea9bfab08393135465413b4b29"
+            },
+            "indices": {
+              "count": 132,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 264,
+              "bufferViewSha256": "ec7af2f2bd7b62dd9413c712fc2e7d76a9880e0b1d91e3b3523e559c1cf724f9"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 72,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 864,
+              "bufferViewSha256": "f6e2e65df100ddbd67dfacdfe53fcfc5071d99ea9bfab08393135465413b4b29"
+            },
+            "indices": {
+              "count": 132,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 264,
+              "bufferViewSha256": "ec7af2f2bd7b62dd9413c712fc2e7d76a9880e0b1d91e3b3523e559c1cf724f9"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoTower_wako-clock-dial",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 800,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 9600,
+              "bufferViewSha256": "e03d4ee10a1164a51aaf6c1a9b76e53c3a3fdb583eaffdcab0bb428f73ad3f4f"
+            },
+            "indices": {
+              "count": 2256,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 4512,
+              "bufferViewSha256": "499133a6750c5d8ec0ea23d59d9bac0f123567df0c0a6b9f6ba7420d63c3a84e"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 800,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 9600,
+              "bufferViewSha256": "e03d4ee10a1164a51aaf6c1a9b76e53c3a3fdb583eaffdcab0bb428f73ad3f4f"
+            },
+            "indices": {
+              "count": 2256,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 4512,
+              "bufferViewSha256": "499133a6750c5d8ec0ea23d59d9bac0f123567df0c0a6b9f6ba7420d63c3a84e"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoTower_wako-clock-ink",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 6304,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 75648,
+              "bufferViewSha256": "a86f9e72e10726347008a373f73f3363ab568830975ae157612cf084e5c75e59"
+            },
+            "indices": {
+              "count": 9840,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 19680,
+              "bufferViewSha256": "f086f756956f736fa79aaa2352f0fd8f9cbd4829a293fbae6edc6a374151b831"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 6304,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 75648,
+              "bufferViewSha256": "a86f9e72e10726347008a373f73f3363ab568830975ae157612cf084e5c75e59"
+            },
+            "indices": {
+              "count": 9840,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 19680,
+              "bufferViewSha256": "f086f756956f736fa79aaa2352f0fd8f9cbd4829a293fbae6edc6a374151b831"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoTower_wako-frame",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 384,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 4608,
+              "bufferViewSha256": "4d8498ae9bf348f2a0e833c5abfcbafeeac7c4dd5025623e5804372866b4870f"
+            },
+            "indices": {
+              "count": 528,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 1056,
+              "bufferViewSha256": "1cd8a1876cac13188daf7509dc20703b5d72ea094656a53d79fca1ac2daddff9"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 384,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 4608,
+              "bufferViewSha256": "4d8498ae9bf348f2a0e833c5abfcbafeeac7c4dd5025623e5804372866b4870f"
+            },
+            "indices": {
+              "count": 528,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 1056,
+              "bufferViewSha256": "1cd8a1876cac13188daf7509dc20703b5d72ea094656a53d79fca1ac2daddff9"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoTower_wako-grille",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 2856,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 34272,
+              "bufferViewSha256": "25b3371230da1df70554af75a3c30cc301c66daa59c441e81e4b2b1d656891a7"
+            },
+            "indices": {
+              "count": 5364,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 10728,
+              "bufferViewSha256": "6a3f0292a685d50d4cca96feddd8a79d9f096297d078a36ca00f08f1947ec200"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 2856,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 34272,
+              "bufferViewSha256": "25b3371230da1df70554af75a3c30cc301c66daa59c441e81e4b2b1d656891a7"
+            },
+            "indices": {
+              "count": 5364,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 10728,
+              "bufferViewSha256": "6a3f0292a685d50d4cca96feddd8a79d9f096297d078a36ca00f08f1947ec200"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoTower_wako-trim",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 4312,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 51744,
+              "bufferViewSha256": "a728e6ea71e954cc36a9fe2cdf60ae242a476067c7f4665531b90dbbd693cf50"
+            },
+            "indices": {
+              "count": 7140,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 14280,
+              "bufferViewSha256": "dec5048f63c2b6633548f79173d487eee608e97aca86b5a82efd19868ee22390"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 4312,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 51744,
+              "bufferViewSha256": "a728e6ea71e954cc36a9fe2cdf60ae242a476067c7f4665531b90dbbd693cf50"
+            },
+            "indices": {
+              "count": 7140,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 14280,
+              "bufferViewSha256": "dec5048f63c2b6633548f79173d487eee608e97aca86b5a82efd19868ee22390"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoTower_wako-upper-granite",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 96,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 1152,
+              "bufferViewSha256": "ed3b05eb3f5ec2f8e7f25534a13c9ea8e324068dd85ec2609bfb28c2365002e5"
+            },
+            "indices": {
+              "count": 132,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 264,
+              "bufferViewSha256": "de89d08234673394f1695d2f158bd29da545357cf271ca5e317b9cbd4b4d4a7b"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 96,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 1152,
+              "bufferViewSha256": "ed3b05eb3f5ec2f8e7f25534a13c9ea8e324068dd85ec2609bfb28c2365002e5"
+            },
+            "indices": {
+              "count": 132,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 264,
+              "bufferViewSha256": "de89d08234673394f1695d2f158bd29da545357cf271ca5e317b9cbd4b4d4a7b"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoWingChuoGround_wako-frame",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 2400,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 28800,
+              "bufferViewSha256": "552dce9af8f3a128dec187cf43aff3db138a36cfa69811bc2ed4cf6b5b8471f2"
+            },
+            "indices": {
+              "count": 3360,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 6720,
+              "bufferViewSha256": "355815f561b91d158e40a977a8096a9545c8f894af083eaa9f0782126fa68f22"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 2400,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 28800,
+              "bufferViewSha256": "552dce9af8f3a128dec187cf43aff3db138a36cfa69811bc2ed4cf6b5b8471f2"
+            },
+            "indices": {
+              "count": 3360,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 6720,
+              "bufferViewSha256": "355815f561b91d158e40a977a8096a9545c8f894af083eaa9f0782126fa68f22"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoWingChuoGround_wako-grille",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 2280,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 27360,
+              "bufferViewSha256": "8192ec670d17fd5633f7c12c59c9bba3f9e107c00a0f1f77116c473763ca3351"
+            },
+            "indices": {
+              "count": 3336,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 6672,
+              "bufferViewSha256": "cdc899759019224bbbc7d49614d7897635eda4ef8a49ff668b814775bc4917c7"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 2280,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 27360,
+              "bufferViewSha256": "8192ec670d17fd5633f7c12c59c9bba3f9e107c00a0f1f77116c473763ca3351"
+            },
+            "indices": {
+              "count": 3336,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 6672,
+              "bufferViewSha256": "cdc899759019224bbbc7d49614d7897635eda4ef8a49ff668b814775bc4917c7"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoWingChuoGround_wako-ground-glass",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 240,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 2880,
+              "bufferViewSha256": "beba9646f0309766256fd5f7c1f3915d0c6e59987db1f25f61068343084aaa36"
+            },
+            "indices": {
+              "count": 360,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 720,
+              "bufferViewSha256": "59e67041c475edec644b5f3739f8d7ad321c88e6bd2446bedcedbd213ce80d86"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 240,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 2880,
+              "bufferViewSha256": "beba9646f0309766256fd5f7c1f3915d0c6e59987db1f25f61068343084aaa36"
+            },
+            "indices": {
+              "count": 360,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 720,
+              "bufferViewSha256": "59e67041c475edec644b5f3739f8d7ad321c88e6bd2446bedcedbd213ce80d86"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoWingChuoGround_wako-lamp",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 56,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 672,
+              "bufferViewSha256": "4ffcfa53d4537a219d7ef4eabc46dd259ee87d0b8012238fd2a421768c10f4a0"
+            },
+            "indices": {
+              "count": 132,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 264,
+              "bufferViewSha256": "d5e61695fde4ca4b2fff78ddfed80da7fbde67a4e47682b2ddc8c1d24850701d"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 56,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 672,
+              "bufferViewSha256": "4ffcfa53d4537a219d7ef4eabc46dd259ee87d0b8012238fd2a421768c10f4a0"
+            },
+            "indices": {
+              "count": 132,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 264,
+              "bufferViewSha256": "d5e61695fde4ca4b2fff78ddfed80da7fbde67a4e47682b2ddc8c1d24850701d"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoWingChuoGround_wako-lower-polished-stone",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 1536,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 18432,
+              "bufferViewSha256": "506e93cae5ba92eac6742912bf716acc449477f1946a97bf3f24516618a627c1"
+            },
+            "indices": {
+              "count": 2112,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 4224,
+              "bufferViewSha256": "33e0e6599102b468caa8844415654f7df7254b43f65a1639fadb134e248cba05"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 1536,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 18432,
+              "bufferViewSha256": "506e93cae5ba92eac6742912bf716acc449477f1946a97bf3f24516618a627c1"
+            },
+            "indices": {
+              "count": 2112,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 4224,
+              "bufferViewSha256": "33e0e6599102b468caa8844415654f7df7254b43f65a1639fadb134e248cba05"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoWingChuoGround_wako-trim",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 4992,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 59904,
+              "bufferViewSha256": "3d5b1d5dda5e3acd149e0d3f8e7001b375b3eb62e71fb47e7b378581dd7f9342"
+            },
+            "indices": {
+              "count": 6864,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 13728,
+              "bufferViewSha256": "f6622a2aa9333dcaf802bdf2a838ab6996a0ab750ec22bf2e090861e89477022"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 4992,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 59904,
+              "bufferViewSha256": "3d5b1d5dda5e3acd149e0d3f8e7001b375b3eb62e71fb47e7b378581dd7f9342"
+            },
+            "indices": {
+              "count": 6864,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 13728,
+              "bufferViewSha256": "f6622a2aa9333dcaf802bdf2a838ab6996a0ab750ec22bf2e090861e89477022"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoWingChuoUpper_wako-frame",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 8400,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 100800,
+              "bufferViewSha256": "c6a8e5aa2912d9c7e4c357dfb7cc775913c247f6da83b10b2298c3b490c21e2c"
+            },
+            "indices": {
+              "count": 11760,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 23520,
+              "bufferViewSha256": "5e1980ae845e04630c7d68360dce9b5dc46e83b63cb5369b53d9733fab9b12e4"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 8400,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 100800,
+              "bufferViewSha256": "c6a8e5aa2912d9c7e4c357dfb7cc775913c247f6da83b10b2298c3b490c21e2c"
+            },
+            "indices": {
+              "count": 11760,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 23520,
+              "bufferViewSha256": "5e1980ae845e04630c7d68360dce9b5dc46e83b63cb5369b53d9733fab9b12e4"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoWingChuoUpper_wako-glass",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 840,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 10080,
+              "bufferViewSha256": "4d15c2171952e759409cc47655a01ffc8b658bb74e4c7d872a39d67e0cb86909"
+            },
+            "indices": {
+              "count": 1260,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 2520,
+              "bufferViewSha256": "e1c000dcd31ff984277c5f244200d5e0cb165379bdf4ab3847c1df0c4de5fc82"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 840,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 10080,
+              "bufferViewSha256": "4d15c2171952e759409cc47655a01ffc8b658bb74e4c7d872a39d67e0cb86909"
+            },
+            "indices": {
+              "count": 1260,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 2520,
+              "bufferViewSha256": "e1c000dcd31ff984277c5f244200d5e0cb165379bdf4ab3847c1df0c4de5fc82"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoWingChuoUpper_wako-trim",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 6048,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 72576,
+              "bufferViewSha256": "05243a08e974e2d34b75acdbc00f957b75fae941c469478a1b34ab005a28d468"
+            },
+            "indices": {
+              "count": 8316,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 16632,
+              "bufferViewSha256": "806b70f3f0b5cf9436055dfb1598fe507ef0a0124dc72947ed4eebd284b0067c"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 6048,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 72576,
+              "bufferViewSha256": "05243a08e974e2d34b75acdbc00f957b75fae941c469478a1b34ab005a28d468"
+            },
+            "indices": {
+              "count": 8316,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 16632,
+              "bufferViewSha256": "806b70f3f0b5cf9436055dfb1598fe507ef0a0124dc72947ed4eebd284b0067c"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoWingChuoUpper_wako-upper-granite",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 15552,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 186624,
+              "bufferViewSha256": "77511d16d1b40fd0caa4f798ba9268f430b7ab80bb111ca5574ec6e95e17e5d8"
+            },
+            "indices": {
+              "count": 21384,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 42768,
+              "bufferViewSha256": "6cf58f98b06dc551d68d975c8fbbfc3c2e4cc34286b55b1e6c87ba603f560d1f"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 15552,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 186624,
+              "bufferViewSha256": "77511d16d1b40fd0caa4f798ba9268f430b7ab80bb111ca5574ec6e95e17e5d8"
+            },
+            "indices": {
+              "count": 21384,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 42768,
+              "bufferViewSha256": "6cf58f98b06dc551d68d975c8fbbfc3c2e4cc34286b55b1e6c87ba603f560d1f"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoWingHarumiGround_wako-frame",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 3120,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 37440,
+              "bufferViewSha256": "eeffd83717ef5d9de5e52f1775f0e870ee665d8fa7cbafc1e07d3db2fc567ec3"
+            },
+            "indices": {
+              "count": 4368,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 8736,
+              "bufferViewSha256": "19d16100aa33ad2a286b91a3ab4d55e33e81b74edc9a77defa40666d6eee3df5"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 3120,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 37440,
+              "bufferViewSha256": "eeffd83717ef5d9de5e52f1775f0e870ee665d8fa7cbafc1e07d3db2fc567ec3"
+            },
+            "indices": {
+              "count": 4368,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 8736,
+              "bufferViewSha256": "19d16100aa33ad2a286b91a3ab4d55e33e81b74edc9a77defa40666d6eee3df5"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoWingHarumiGround_wako-grille",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 2904,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 34848,
+              "bufferViewSha256": "9f9465dc5c4e7d8c6ae62d2ec31a77b0331defd49c013e5004c16537ca22d638"
+            },
+            "indices": {
+              "count": 4248,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 8496,
+              "bufferViewSha256": "e6481826534873a21e985fa42a1e6384b7792b1b5c3a1a126294f3448fd8e6ab"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 2904,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 34848,
+              "bufferViewSha256": "9f9465dc5c4e7d8c6ae62d2ec31a77b0331defd49c013e5004c16537ca22d638"
+            },
+            "indices": {
+              "count": 4248,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 8496,
+              "bufferViewSha256": "e6481826534873a21e985fa42a1e6384b7792b1b5c3a1a126294f3448fd8e6ab"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoWingHarumiGround_wako-ground-glass",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 312,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 3744,
+              "bufferViewSha256": "9a6353c9e0a4d4d9fe09487863dc3839c89883741745777c3cf3dd8c5b2b7495"
+            },
+            "indices": {
+              "count": 468,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 936,
+              "bufferViewSha256": "e3a4df026ea3f992c99934ba8006f81dc36d588577791ec39aaee6bf1b144bce"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 312,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 3744,
+              "bufferViewSha256": "9a6353c9e0a4d4d9fe09487863dc3839c89883741745777c3cf3dd8c5b2b7495"
+            },
+            "indices": {
+              "count": 468,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 936,
+              "bufferViewSha256": "e3a4df026ea3f992c99934ba8006f81dc36d588577791ec39aaee6bf1b144bce"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoWingHarumiGround_wako-lamp",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 56,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 672,
+              "bufferViewSha256": "43cf42b906be62bf8469b5b7345a2a74184c10e5860c2e36c072f987584a601a"
+            },
+            "indices": {
+              "count": 132,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 264,
+              "bufferViewSha256": "d5e61695fde4ca4b2fff78ddfed80da7fbde67a4e47682b2ddc8c1d24850701d"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 56,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 672,
+              "bufferViewSha256": "43cf42b906be62bf8469b5b7345a2a74184c10e5860c2e36c072f987584a601a"
+            },
+            "indices": {
+              "count": 132,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 264,
+              "bufferViewSha256": "d5e61695fde4ca4b2fff78ddfed80da7fbde67a4e47682b2ddc8c1d24850701d"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoWingHarumiGround_wako-lower-polished-stone",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 1824,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 21888,
+              "bufferViewSha256": "0f991633f659c61896b20aea61c2b93083c6ee3a251e38aeac0076dc782b02a8"
+            },
+            "indices": {
+              "count": 2508,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 5016,
+              "bufferViewSha256": "dbaf5df6e66efea4f5c0adcf6001ac0063bbd84dfbaf5eb51cad37cfaad41a8a"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 1824,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 21888,
+              "bufferViewSha256": "0f991633f659c61896b20aea61c2b93083c6ee3a251e38aeac0076dc782b02a8"
+            },
+            "indices": {
+              "count": 2508,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 5016,
+              "bufferViewSha256": "dbaf5df6e66efea4f5c0adcf6001ac0063bbd84dfbaf5eb51cad37cfaad41a8a"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoWingHarumiGround_wako-trim",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 6336,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 76032,
+              "bufferViewSha256": "0a1b16f73ce2719087badbc8b9db72f77880269cccc6243dcf26f70490ec9b70"
+            },
+            "indices": {
+              "count": 8712,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 17424,
+              "bufferViewSha256": "0f0340ced5c89541d9badab8d64bc0c3356894ca43eeeb4192e6e54fb539a6e8"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 6336,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 76032,
+              "bufferViewSha256": "0a1b16f73ce2719087badbc8b9db72f77880269cccc6243dcf26f70490ec9b70"
+            },
+            "indices": {
+              "count": 8712,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 17424,
+              "bufferViewSha256": "0f0340ced5c89541d9badab8d64bc0c3356894ca43eeeb4192e6e54fb539a6e8"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoWingHarumiUpper_wako-frame",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 10800,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 129600,
+              "bufferViewSha256": "06d8b7de0b2cc6f3b25a566ff2461cad16225daccaf1c58a920171f5884026ad"
+            },
+            "indices": {
+              "count": 15120,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 30240,
+              "bufferViewSha256": "15b78e8a6e8ad24777102e5a9634c02f167cb743586b289ec52889b45b26849e"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 10800,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 129600,
+              "bufferViewSha256": "06d8b7de0b2cc6f3b25a566ff2461cad16225daccaf1c58a920171f5884026ad"
+            },
+            "indices": {
+              "count": 15120,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 30240,
+              "bufferViewSha256": "15b78e8a6e8ad24777102e5a9634c02f167cb743586b289ec52889b45b26849e"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoWingHarumiUpper_wako-glass",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 1080,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 12960,
+              "bufferViewSha256": "5c8fb30a64de100a38db9f3428c1e1ece21f17b55724470253b4c3e4401c3ad1"
+            },
+            "indices": {
+              "count": 1620,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 3240,
+              "bufferViewSha256": "0e5e6126168c1e12857c82d870ddfaa01d44a3cb7dc8ed6b6fba846ac54bedd9"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 1080,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 12960,
+              "bufferViewSha256": "5c8fb30a64de100a38db9f3428c1e1ece21f17b55724470253b4c3e4401c3ad1"
+            },
+            "indices": {
+              "count": 1620,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 3240,
+              "bufferViewSha256": "0e5e6126168c1e12857c82d870ddfaa01d44a3cb7dc8ed6b6fba846ac54bedd9"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoWingHarumiUpper_wako-trim",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 7584,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 91008,
+              "bufferViewSha256": "fe26ff0e65cb4ab5df726c6ccdb5e93a407a5675b62c49ee4d8c0a0759b4c38b"
+            },
+            "indices": {
+              "count": 10428,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 20856,
+              "bufferViewSha256": "03a9b7c3fd6c9dc556e83567a49a5c86869a4e11d941a95dbe78ea07e4d8d303"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 7584,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 91008,
+              "bufferViewSha256": "fe26ff0e65cb4ab5df726c6ccdb5e93a407a5675b62c49ee4d8c0a0759b4c38b"
+            },
+            "indices": {
+              "count": 10428,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 20856,
+              "bufferViewSha256": "03a9b7c3fd6c9dc556e83567a49a5c86869a4e11d941a95dbe78ea07e4d8d303"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WakoWingHarumiUpper_wako-upper-granite",
+      "baseline": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 19584,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 235008,
+              "bufferViewSha256": "73da492d3c56434832943fd6e852a79566fb7eb1a1291939e04f18f73e9f2361"
+            },
+            "indices": {
+              "count": 26928,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 53856,
+              "bufferViewSha256": "934b5a5f6eff24aca0103d0bdf06de488af2c41068022b8ff875e17114847d1e"
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "transforms": [
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          },
+          {
+            "translation": null,
+            "rotation": null,
+            "scale": null,
+            "matrix": null
+          }
+        ],
+        "primitives": [
+          {
+            "mode": 4,
+            "positions": {
+              "count": 19584,
+              "type": "VEC3",
+              "componentType": 5126,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 235008,
+              "bufferViewSha256": "73da492d3c56434832943fd6e852a79566fb7eb1a1291939e04f18f73e9f2361"
+            },
+            "indices": {
+              "count": 26928,
+              "type": "SCALAR",
+              "componentType": 5123,
+              "accessorByteOffset": 0,
+              "byteStride": null,
+              "bufferViewBytes": 53856,
+              "bufferViewSha256": "934b5a5f6eff24aca0103d0bdf06de488af2c41068022b8ff875e17114847d1e"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

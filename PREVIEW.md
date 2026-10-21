@@ -5,21 +5,22 @@
 [Explore TourGuideAI](https://paperstrange.github.io/TourGuideAI/) ·
 [中文首页](https://paperstrange.github.io/TourGuideAI/?lang=zh)
 
-The new homepage release offers two interactive walks: **Shijō–Karasuma, Kyoto**
+The homepage offers two interactive walks: **Shijō–Karasuma, Kyoto**
 and **Ginza Wako corner, Tokyo**. Select either place above the street window,
 walk, orbit, tilt and zoom, or use **Look closer** to inspect visible features.
 Ginza follows approximately 55.28 m of connected sidewalk around Wako's curved
 corner and two frontages. Day/night, private **Keep this place** views, optional
 words and return to a saved viewpoint work in both areas. Shijō's existing art
-and guided journeys remain available.
+and guided journeys remain available. The latest Ginza update adds source-supported
+neighboring buildings and street surfaces, revised glazing and night-light pools.
 
-Runtime and validation source: `379e9d3223d5352ca298e841a7ccbb3694c75d8c`.
-Pages package commit: `3362d6cf61c689a32ded9886a3ed1e45837fe6fe`.
-The 94-file tested package is
-`5a8e0f67506cd164e7422e8aaf22c6a77685c4a7996168aac16703a6b0d0deb7`.
-The package is published: all **94/94** actual HTTPS files match, and **16/16**
+Runtime and validation source: `9f5725d94e5a82e18acdf116e6da8a034c82fe65`.
+Pages package commit: `17b8f371e0f8a21d990837ea3f5606829a16c784`.
+The 95-file tested package is
+`3e72aa1c53596042a14d1fb2aae9556b0a2caa876be93d424ec9ebe2aebb0162`.
+The package is published: all **95/95** actual HTTPS files match, and **16/16**
 hosted journey checks pass with zero page exceptions. Verification metadata is
-committed as `d8fd0ef`; it changes no runtime files.
+committed as `09fec3a`; it changes no runtime files.
 
 The solo flow needs no room service or model credentials. Search for another
 place, pan its shared-style map and select **Explore this area**. Choose a
@@ -29,22 +30,31 @@ Touch and keyboard guidance are available in English and Chinese. Stored places
 are private to that browser/origin; Maps calculates directions through selected stops.
 
 All complete packaged browser reports pass: original walk **133**, perspective
-**80**, companion **73**, homepage **65**, solo **75**, reviewed packs **75** and
-extended walkthrough **264**. Local interaction, recovery, full solo, homepage
-and extended walkthrough checks also pass. CI workflow `39281251953` completed
-successfully. Counts overlap. The
-[milestone record](experience/evidence/area-packs-20261019/README.md) preserves exact
+**80**, companion **73**, homepage **65**, solo **75**, reviewed packs **81** and
+extended walkthrough **264**. Local provider-retry checks pass **18/18**, including
+actual style/tile failures and preserved camera, route and private data. CI workflow
+`39552515626` completed successfully. Counts overlap. The
+[milestone record](experience/evidence/global-sites-20261021/README.md) preserves exact
 source, package and report identities.
 
 Ginza's model meets its 8 MiB, 100,000-triangle and 64-batch production limits.
-Surrounding buildings and roads remain simplified; simulation width, unseen detail
+Surrounding facade details remain simplified; simulation width, unseen detail
 and lighting are authored. Human realism, recognition and enjoyment remain open.
-Warm Together language actions measure **1223.2 / 1104.9 / 1170.7 ms**, above the
+Warm Together language actions measure **1187.8 / 1061.8 / 1156.5 ms**, above the
 unchanged 500 ms target; Q03 remains open P1. The
-[iteration plan](experience/docs/sprint-packs-20261019.md) and
+[iteration plan](experience/docs/sprint-lively-sites-20261021.md) and
 [authoring guide](experience/docs/area-pack-authoring.md) describe the reusable
 pack system and recurring source/art/review work. Replay remains conditional on
 experience evidence.
+
+The [sandbox-engine research](experience/docs/sandbox-engine-research-20261021.md)
+retains Three.js and MapLibre with reusable content and scene-management patterns.
+The new [geographic site workbench](experience/content-tools/README.md) prepares
+audited OSM data, exports editable Blender scenes and GLBs, and provides a local
+EN/ZH day/night browser with source inspection. Delft and Helsinki exercise two
+countries; source checks **18/18**, browser checks **36/36** and HTTP checks
+**40/40** pass. These remain internal geographic-context previews. Architecture,
+roof forms, terrain and walking access require review before playable publication.
 
 For an optional workspace preview, run `npm run preview` in `experience` with the
 current built package and open `http://localhost:4186/`. Browser saves stay on their

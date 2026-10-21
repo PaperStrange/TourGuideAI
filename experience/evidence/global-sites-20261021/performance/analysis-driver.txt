@@ -1,0 +1,35 @@
+import { readFileSync, writeFileSync } from 'node:fs';
+import { resolve, join } from 'node:path';
+
+const directory = resolve(process.argv[2]);
+const read = file => JSON.parse(readFileSync(join(directory, file)));
+const report = read('result.json');
+const rows = report.runs.map(pair => {
+  const action = pair.warm, event = action.observed.timeline.events.find(value => value.name === 'click');
+  return { index: pair.index, profiled: pair.profiled, totalMs: action.languageActionMs,
+    beforeInputMs: event ? event.start - action.observed.start : null,
+    inputQueueMs: event ? event.processingStart - event.start : null,
+    handlerMs: event ? event.processingEnd - event.processingStart : null,
+    afterHandlerMs: event ? action.observed.start + action.languageActionMs - event.processingEnd : null,
+    presentationMs: event?.duration ?? null, framesAtLaterDiagnosticRead: action.observed.map?.renderedFrames };
+});
+const analysis = { package: report.artifact.manifestSha256, rows };
+if (report.runs.some(run => run.profiled)) {
+  const trace = read('trace.json').traceEvents;
+  const action = report.runs.find(run => run.profiled).warm;
+  const mark = trace.find(event => event.name === 'q03-action-start');
+  const start = mark.ts, end = start + action.languageActionMs * 1000;
+  const main = trace.filter(event => event.pid === mark.pid && event.tid === mark.tid && event.ph === 'X' && event.dur);
+  const totals = new Map();
+  for (const event of main) {
+    const overlap = Math.max(0, Math.min(end, event.ts + event.dur) - Math.max(start, event.ts));
+    if (!overlap) continue;
+    const total = totals.get(event.name) || { name: event.name, count: 0, wallMs: 0, cpuMs: 0 };
+    total.count++; total.wallMs += overlap / 1000; total.cpuMs += (event.tdur || 0) * overlap / event.dur / 1000;
+    totals.set(event.name, total);
+  }
+  analysis.categories = [...totals.values()].sort((a, b) => b.wallMs - a.wallMs);
+  analysis.note = 'Trace categories overlap and must not be added; event timing is diagnostic and does not replace the unchanged action metric.';
+}
+writeFileSync(join(directory, 'analysis.json'), JSON.stringify(analysis, null, 2) + '\n');
+console.log(JSON.stringify(analysis, null, 2));

@@ -1,0 +1,229 @@
+{
+  "verifiedAt": "2026-10-21T06:01:00.471Z",
+  "runId": 39550586927,
+  "runStatus": "completed",
+  "runConclusion": "cancelled",
+  "source": "3214398b7ab7d5eb9c4dec1baf188383167e6bf7",
+  "packageManifestSha256": "63f813639c87a260855d68b52222fc0dda4134668808132f85f7b7a4a7cb706f",
+  "verifiedPackageDirectory": "/workspace/TourGuideAI/artifacts/l21-app-before-retry",
+  "suites": [
+    {
+      "suite": "homepage",
+      "name": "homepage-browser-evidence",
+      "artifactId": 12323262875,
+      "source": "3214398b7ab7d5eb9c4dec1baf188383167e6bf7",
+      "jobId": 119058623899,
+      "jobStatus": "completed",
+      "jobConclusion": "failure",
+      "reportCompleted": true,
+      "archiveSha256": "5657243eb780690417670a0ca7f0bece348657bb5a780f6efa85680f7201c696",
+      "archiveBytes": 6265203,
+      "archiveDigestMatched": true,
+      "report": "homepage-result.json",
+      "reportSha256": "0df18eb47d9e6895b2af7bffad2de9fce053ac3d5c80b80e0c6f7e55054b2916",
+      "assetFiles": 95,
+      "packageManifestSha256": "63f813639c87a260855d68b52222fc0dda4134668808132f85f7b7a4a7cb706f",
+      "exactLocalPackageMatched": true,
+      "checks": 65,
+      "passed": 65,
+      "failures": [],
+      "startedAt": "2026-10-21T05:37:59.542Z",
+      "finishedAt": "2026-10-21T05:39:00.195Z"
+    },
+    {
+      "suite": "travel",
+      "name": "travel-browser-evidence",
+      "artifactId": 12324130086,
+      "source": "3214398b7ab7d5eb9c4dec1baf188383167e6bf7",
+      "jobId": 119058623877,
+      "jobStatus": "completed",
+      "jobConclusion": "success",
+      "reportCompleted": true,
+      "archiveSha256": "98ee53fd3c37fe02ab3f9c223588296e1bd07d7fd084576e293529228ca46a2b",
+      "archiveBytes": 1836180,
+      "archiveDigestMatched": true,
+      "report": "travel-result.json",
+      "reportSha256": "c1be517a08cc0203318e5d8505144d4861f06f112925a492b9cf789bc7f3f877",
+      "assetFiles": 95,
+      "packageManifestSha256": "63f813639c87a260855d68b52222fc0dda4134668808132f85f7b7a4a7cb706f",
+      "exactLocalPackageMatched": true,
+      "checks": 73,
+      "passed": 73,
+      "failures": [],
+      "browser": "151.0.7922.34",
+      "startedAt": "2026-10-21T05:38:02.369Z",
+      "finishedAt": "2026-10-21T05:38:07.552Z"
+    },
+    {
+      "suite": "perspective",
+      "name": "perspective-browser-evidence",
+      "artifactId": 12323456784,
+      "source": "3214398b7ab7d5eb9c4dec1baf188383167e6bf7",
+      "jobId": 119058623870,
+      "jobStatus": "completed",
+      "jobConclusion": "success",
+      "reportCompleted": true,
+      "archiveSha256": "23daad4a3924d070e2ff257f312ac9659db9345ba27f3d1b93cc9737f52d2ce9",
+      "archiveBytes": 7973387,
+      "archiveDigestMatched": true,
+      "report": "perspective-result.json",
+      "reportSha256": "b630ab31d5a0c1bd209cf3631f1202ce68a98db6926ec9c76c9c9d7cc823c5cf",
+      "assetFiles": 95,
+      "packageManifestSha256": "63f813639c87a260855d68b52222fc0dda4134668808132f85f7b7a4a7cb706f",
+      "exactLocalPackageMatched": true,
+      "checks": 80,
+      "passed": 80,
+      "failures": [],
+      "browser": "151.0.7922.34",
+      "startedAt": "2026-10-21T05:38:03.381Z",
+      "finishedAt": "2026-10-21T05:45:22.651Z"
+    },
+    {
+      "suite": "original",
+      "name": "experience-browser-evidence",
+      "artifactId": 12323578075,
+      "source": "3214398b7ab7d5eb9c4dec1baf188383167e6bf7",
+      "jobId": 119058623885,
+      "jobStatus": "completed",
+      "jobConclusion": "cancelled",
+      "reportCompleted": false,
+      "archiveSha256": "e8bcff1b623e7e3983e84302259aebe071cbafc0ef1cd79e60074cc28ef5734d",
+      "archiveBytes": 14032158,
+      "archiveDigestMatched": true,
+      "report": "browser-result.json",
+      "reportSha256": "9f5c21b9a427bf831f1c86adc1b4f52798ff5e94b6631a99b9269012abaa53d9",
+      "assetFiles": 95,
+      "packageManifestSha256": "63f813639c87a260855d68b52222fc0dda4134668808132f85f7b7a4a7cb706f",
+      "exactLocalPackageMatched": true,
+      "checks": 86,
+      "passed": 86,
+      "failures": [],
+      "browser": "151.0.7922.34",
+      "startedAt": "2026-10-21T05:38:01.813Z"
+    },
+    {
+      "suite": "solo",
+      "name": "solo-browser-evidence",
+      "artifactId": 12323708149,
+      "source": "3214398b7ab7d5eb9c4dec1baf188383167e6bf7",
+      "jobId": 119058623887,
+      "jobStatus": "completed",
+      "jobConclusion": "failure",
+      "reportCompleted": true,
+      "archiveSha256": "84fe502759f0cde27a48c7e59df6892d88b8c2c6c8ecc23d5b749b463d9752c4",
+      "archiveBytes": 4612358,
+      "archiveDigestMatched": true,
+      "report": "solo-result.json",
+      "reportSha256": "8b1beb0b844828923efc4d6e748a5cfe6800ce098d3ffd8f93c2a63cffb52bc5",
+      "assetFiles": 95,
+      "packageManifestSha256": "63f813639c87a260855d68b52222fc0dda4134668808132f85f7b7a4a7cb706f",
+      "exactLocalPackageMatched": true,
+      "checks": 74,
+      "passed": 73,
+      "failures": [
+        {
+          "id": "map-restore-recovery-completed",
+          "pass": false,
+          "evidence": {
+            "message": "page.waitForFunction: Timeout 600000ms exceeded.",
+            "stack": "page.waitForFunction: Timeout 600000ms exceeded.\n    at mapReady (/home/runner/work/TourGuideAI/TourGuideAI/experience/tests/browser-solo.mjs:112:14)\n    at /home/runner/work/TourGuideAI/TourGuideAI/experience/tests/browser-solo.mjs:474:74\n    at async run (/home/runner/work/TourGuideAI/TourGuideAI/experience/tests/browser-solo.mjs:172:9)\n    at async file:///home/runner/work/TourGuideAI/TourGuideAI/experience/tests/browser-solo.mjs:466:33"
+          }
+        }
+      ],
+      "browser": "151.0.7922.34",
+      "startedAt": "2026-10-21T05:37:59.667Z",
+      "finishedAt": "2026-10-21T05:50:50.803Z"
+    },
+    {
+      "suite": "packs",
+      "name": "packs-browser-evidence",
+      "artifactId": 12324345989,
+      "source": "3214398b7ab7d5eb9c4dec1baf188383167e6bf7",
+      "jobId": 119058623863,
+      "jobStatus": "completed",
+      "jobConclusion": "success",
+      "reportCompleted": true,
+      "archiveSha256": "f53968cf5599505e6f38c7bbbd747acf600bc9a5854ce444f2271ff41c437578",
+      "archiveBytes": 10266721,
+      "archiveDigestMatched": true,
+      "report": "packs-result.json",
+      "reportSha256": "a564bbfff75583952ff090dfb0b7a7893c9304c0751131f0bff6c2f02cef82f8",
+      "assetFiles": 95,
+      "packageManifestSha256": "63f813639c87a260855d68b52222fc0dda4134668808132f85f7b7a4a7cb706f",
+      "exactLocalPackageMatched": true,
+      "checks": 81,
+      "passed": 81,
+      "failures": [],
+      "browser": "151.0.7922.34",
+      "startedAt": "2026-10-21T05:38:07.235Z",
+      "finishedAt": "2026-10-21T05:54:20.555Z"
+    },
+    {
+      "suite": "extended",
+      "name": "homepage-walkthrough-evidence",
+      "artifactId": 12324630478,
+      "source": "3214398b7ab7d5eb9c4dec1baf188383167e6bf7",
+      "jobId": 119058623899,
+      "jobStatus": "completed",
+      "jobConclusion": "failure",
+      "reportCompleted": true,
+      "archiveSha256": "a9aa08323f40e1778f242d53213ab811361f61c0ada78286b8528c236c1cde16",
+      "archiveBytes": 14091470,
+      "archiveDigestMatched": true,
+      "report": "walkthrough-result.json",
+      "reportSha256": "22441889787a3d6d3d2bb563920f0c8a33bf00831115c5313102fbe3876f6ed7",
+      "assetFiles": 95,
+      "packageManifestSha256": "63f813639c87a260855d68b52222fc0dda4134668808132f85f7b7a4a7cb706f",
+      "exactLocalPackageMatched": true,
+      "checks": 264,
+      "passed": 260,
+      "failures": [
+        {
+          "id": "map-recovery-en-desktop-completed",
+          "pass": false,
+          "evidence": {
+            "message": "page.waitForFunction: Timeout 120000ms exceeded.",
+            "stack": "page.waitForFunction: Timeout 120000ms exceeded.\n    at /home/runner/work/TourGuideAI/TourGuideAI/experience/tests/browser-walkthrough.mjs:415:16\n    at async section (/home/runner/work/TourGuideAI/TourGuideAI/experience/tests/browser-walkthrough.mjs:118:9)\n    at async file:///home/runner/work/TourGuideAI/TourGuideAI/experience/tests/browser-walkthrough.mjs:402:111"
+          }
+        },
+        {
+          "id": "map-recovery-zh-desktop-completed",
+          "pass": false,
+          "evidence": {
+            "message": "page.waitForFunction: Timeout 120000ms exceeded.",
+            "stack": "page.waitForFunction: Timeout 120000ms exceeded.\n    at /home/runner/work/TourGuideAI/TourGuideAI/experience/tests/browser-walkthrough.mjs:415:16\n    at async section (/home/runner/work/TourGuideAI/TourGuideAI/experience/tests/browser-walkthrough.mjs:118:9)\n    at async file:///home/runner/work/TourGuideAI/TourGuideAI/experience/tests/browser-walkthrough.mjs:402:111"
+          }
+        },
+        {
+          "id": "map-recovery-en-phone-completed",
+          "pass": false,
+          "evidence": {
+            "message": "page.waitForFunction: Timeout 120000ms exceeded.",
+            "stack": "page.waitForFunction: Timeout 120000ms exceeded.\n    at /home/runner/work/TourGuideAI/TourGuideAI/experience/tests/browser-walkthrough.mjs:415:16\n    at async section (/home/runner/work/TourGuideAI/TourGuideAI/experience/tests/browser-walkthrough.mjs:118:9)\n    at async file:///home/runner/work/TourGuideAI/TourGuideAI/experience/tests/browser-walkthrough.mjs:402:111"
+          }
+        },
+        {
+          "id": "map-recovery-zh-phone-completed",
+          "pass": false,
+          "evidence": {
+            "message": "page.waitForFunction: Timeout 120000ms exceeded.",
+            "stack": "page.waitForFunction: Timeout 120000ms exceeded.\n    at /home/runner/work/TourGuideAI/TourGuideAI/experience/tests/browser-walkthrough.mjs:415:16\n    at async section (/home/runner/work/TourGuideAI/TourGuideAI/experience/tests/browser-walkthrough.mjs:118:9)\n    at async file:///home/runner/work/TourGuideAI/TourGuideAI/experience/tests/browser-walkthrough.mjs:402:111"
+          }
+        }
+      ],
+      "startedAt": "2026-10-21T05:39:02.143Z",
+      "finishedAt": "2026-10-21T05:56:33.365Z"
+    }
+  ],
+  "sourcePreparation": {
+    "checks": 18,
+    "conclusion": "success",
+    "evidence": "source-preparation-job.txt",
+    "sha256": "246570fec5bce3ada0ae2676fc50e1d30e5b01a6e68d485c72e5681646f17376",
+    "jobId": 119058625060
+  },
+  "limits": [
+    "Browser automation on software GPU; no physical-device or human acceptance claim.",
+    "The separately validated internal viewer shadow correction is outside the public app package."
+  ]
+}

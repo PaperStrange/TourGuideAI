@@ -1,0 +1,2365 @@
+{
+  "startedAt": "2026-10-21T05:47:40.419Z",
+  "driverSha256": "a91716160833accea352c81f2b05e760145d5ec43f4da8a189a68095e97d8be7",
+  "inputs": [
+    {
+      "directory": "/workspace/TourGuideAI/artifacts/site-workbench/delft",
+      "id": "delft-markt",
+      "files": [
+        {
+          "file": "manifest.json",
+          "bytes": 152488,
+          "sha256": "4328f20dbd3594d5ad8161e71d4175f6d309c81aca45e16a54fa987737e2f16e"
+        },
+        {
+          "file": "context.json",
+          "bytes": 758840,
+          "sha256": "f1f3ef1232781785296aca6f0b6475e0bcdce30c1554fcd939ac1344d6897fa8"
+        },
+        {
+          "file": "review.json",
+          "bytes": 12251,
+          "sha256": "4859dabbf8e0361e86d9de832cdd1fa4240fa61a48164a92b77bbb9495889eaf"
+        },
+        {
+          "file": "scene.glb",
+          "bytes": 844128,
+          "sha256": "b9a63090d9ab6a2335c214b8361519abf9c97ef0dfd33ca1e0fe6b78a08b23e9"
+        }
+      ]
+    },
+    {
+      "directory": "/workspace/TourGuideAI/artifacts/site-workbench/helsinki",
+      "id": "helsinki-senate",
+      "files": [
+        {
+          "file": "manifest.json",
+          "bytes": 120473,
+          "sha256": "f84e159ed951b26eaa8c0050a8800f87268bd4ced37e1ade3fafcbb593500903"
+        },
+        {
+          "file": "context.json",
+          "bytes": 1044545,
+          "sha256": "a07fe3b3c02337bcdd709d40c501ac9793f7b430ee9afef5946c7237c48fa1ce"
+        },
+        {
+          "file": "review.json",
+          "bytes": 16982,
+          "sha256": "bc4ab0b97cc6de9666f542238b57fdc695396cbce686a6ecbf73ea5c914c568c"
+        },
+        {
+          "file": "scene.glb",
+          "bytes": 928416,
+          "sha256": "e0a7da09e662c8b32ca577e6da5868bbfeadc904e776aefec28cb5f1bf4534d9"
+        }
+      ]
+    }
+  ],
+  "viewerFiles": [
+    {
+      "file": "preview-site.mjs",
+      "sha256": "d4449e32a18bfbd17bcb296b0c0b9f9ed24c89f84c7c849f0e036508bc17768a"
+    },
+    {
+      "file": "viewer/index.html",
+      "sha256": "821d4e4b2476bacae672cbd9fffab2ada11b4ffda65d70556559c70d9e4e507c"
+    },
+    {
+      "file": "viewer/main.js",
+      "sha256": "75e0ed4e4751a773e5caa5dd44738efd0452b3581c63d9ee523edb107f18fab9"
+    },
+    {
+      "file": "viewer/style.css",
+      "sha256": "386162d8afe732df630e52481cef85907194bfabc13db5076a6974476d8c16b3"
+    }
+  ],
+  "conditions": {
+    "desktop": [
+      1440,
+      1000
+    ],
+    "phone": [
+      390,
+      844
+    ],
+    "reducedMotion": "reduce",
+    "timeoutMs": 120000
+  },
+  "checks": [
+    {
+      "id": "delft-markt-actual-model-hash-and-unreviewed-scope",
+      "pass": true,
+      "evidence": {
+        "phase": "ready",
+        "siteId": "delft-markt",
+        "mode": "day",
+        "requestedMode": "day",
+        "error": null,
+        "renderedFrames": 5,
+        "selectedFeature": null,
+        "modelSha256": "b9a63090d9ab6a2335c214b8361519abf9c97ef0dfd33ca1e0fe6b78a08b23e9",
+        "locale": "en",
+        "hidden": false,
+        "camera": {
+          "position": [
+            108.14202438354492,
+            141.2253153192997,
+            154.48760681152345
+          ],
+          "target": [
+            0,
+            9.909999996423721,
+            -0.00099945068359375
+          ],
+          "near": 0.02,
+          "far": 5149.620208740234,
+          "projectionMatrix": [
+            1.5033564307817806,
+            0,
+            0,
+            0,
+            0,
+            2.414213562373095,
+            0,
+            0,
+            0,
+            0,
+            -1.0000077675932848,
+            -1,
+            0,
+            0,
+            -0.0400001553518657,
+            0
+          ],
+          "matrixWorld": [
+            0.8192319205190405,
+            0,
+            -0.5734623443633283,
+            0,
+            -0.3277043390756556,
+            0.8206377566768518,
+            -0.46814905582236516,
+            0,
+            0.47060485181697,
+            0.5714487486348923,
+            0.6722926454528143,
+            0,
+            108.14202438354492,
+            141.2253153192997,
+            154.48760681152345,
+            1
+          ]
+        },
+        "viewport": {
+          "x": 325,
+          "y": 154,
+          "width": 1090,
+          "height": 678,
+          "bufferWidth": 1092,
+          "bufferHeight": 680,
+          "pixelRatio": 1
+        },
+        "shadow": {
+          "mapSize": [
+            1024,
+            1024
+          ],
+          "bias": -0.00048214331803706243,
+          "normalBias": 0.08941608221612335,
+          "near": 145.29044853105862,
+          "far": 307.5639240977026,
+          "left": -114.45258523663786,
+          "right": 114.45258523663792,
+          "top": 91.5892694437424,
+          "bottom": -91.5892694437424
+        },
+        "renderer": {
+          "geometries": 10,
+          "textures": 4,
+          "calls": 20,
+          "triangles": 22270
+        },
+        "representation": "geographic-context",
+        "navigation": "unreviewed"
+      }
+    },
+    {
+      "id": "delft-markt-actual-roof-click-selects-source-identity",
+      "pass": true,
+      "evidence": {
+        "attempts": [
+          {
+            "point": {
+              "normalized": [
+                0.034085468773850096,
+                0.0028036285452422405,
+                0.9998195237581087
+              ],
+              "x": 888.5765804817484,
+              "y": 492.0495699231629
+            },
+            "selected": "osm:way:209351406"
+          }
+        ],
+        "text": "{\n  \"Source identity\": \"osm:way:209351406\",\n  \"Feature type\": \"building\",\n  \"Height evidence\": {\n    \"metres\": 20,\n    \"origin\": \"observed\",\n    \"sourceTag\": \"height\",\n    \"sourceValue\": \"20\"\n  },\n  \"Access review\": \"Unreviewed\",\n  \"Source tags\": {\n    \"building\": \"civic\",\n    \"height\": \"20\",\n    \"heritage\": \"2\",\n    \"heritage:operator\": \"rce\",\n    \"ref:bag\": \"0503100000014169\",\n    \"ref:rce\": \"11901\",\n    \"source\": \"BAG\",\n    \"source:date\": \"2013-11-26\",\n    \"start_date\": \"1290\",\n    \"wikidata\": \"Q732262\",\n    \"wikipedia\": \"nl:Stadhuis van Delft\"\n  }\n}"
+      }
+    },
+    {
+      "id": "delft-markt-keyboard-orbit-pan-zoom-affect-camera",
+      "pass": true,
+      "evidence": {
+        "before": {
+          "position": [
+            108.14202438354492,
+            141.2253153192997,
+            154.48760681152345
+          ],
+          "target": [
+            0,
+            9.909999996423721,
+            -0.00099945068359375
+          ],
+          "near": 0.02,
+          "far": 5149.620208740234,
+          "projectionMatrix": [
+            1.5033564307817806,
+            0,
+            0,
+            0,
+            0,
+            2.414213562373095,
+            0,
+            0,
+            0,
+            0,
+            -1.0000077675932848,
+            -1,
+            0,
+            0,
+            -0.0400001553518657,
+            0
+          ],
+          "matrixWorld": [
+            0.8192319205190405,
+            0,
+            -0.5734623443633283,
+            0,
+            -0.3277043390756556,
+            0.8206377566768518,
+            -0.46814905582236516,
+            0,
+            0.47060485181697,
+            0.5714487486348923,
+            0.6722926454528143,
+            0,
+            108.14202438354492,
+            141.2253153192997,
+            154.48760681152345,
+            1
+          ]
+        },
+        "after": {
+          "position": [
+            105.19973734349851,
+            134.69399196219098,
+            127.27358343735395
+          ],
+          "target": [
+            -2.9281203642362605,
+            16.510208171602578,
+            -3.543549151043377
+          ],
+          "near": 0.02,
+          "far": 5149.620208740234,
+          "projectionMatrix": [
+            1.5033564307817806,
+            0,
+            0,
+            0,
+            0,
+            2.414213562373095,
+            0,
+            0,
+            0,
+            0,
+            -1.0000077675932848,
+            -1,
+            0,
+            0,
+            -0.0400001553518657,
+            0
+          ],
+          "matrixWorld": [
+            0.7707837084783117,
+            -2.7755575615628914e-17,
+            -0.6370969115797227,
+            0,
+            -0.3640682328813871,
+            0.8206377566768517,
+            -0.44046338567809284,
+            0,
+            0.5228257803045342,
+            0.5714487486348923,
+            0.6325342134087062,
+            0,
+            105.19973734349851,
+            134.69399196219098,
+            127.27358343735395,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "id": "delft-markt-reset-restores-opening-camera",
+      "pass": true
+    },
+    {
+      "id": "delft-markt-locale-retains-camera-source-selection",
+      "pass": true
+    },
+    {
+      "id": "delft-markt-night-renders-different-pixels-with-same-pose",
+      "pass": true,
+      "evidence": {
+        "day": "d831c7f2eb5c9a218a97bf13da4e9152520cc3d4fd689e5f983fc7a706b5b894",
+        "night": "920ffcdcb58ee04af7408a99c10a7a5289c770a39eac59a7e3d65859e227735c"
+      }
+    },
+    {
+      "id": "delft-markt-desktop-layout",
+      "pass": true,
+      "evidence": {
+        "width": 1440,
+        "rects": [
+          {
+            "selector": "#stage",
+            "x": 324,
+            "y": 154,
+            "width": 1092,
+            "height": 680,
+            "top": 154,
+            "right": 1416,
+            "bottom": 834,
+            "left": 324
+          },
+          {
+            "selector": "#site-selector",
+            "x": 24,
+            "y": 270.84375,
+            "width": 251,
+            "height": 46,
+            "top": 270.84375,
+            "right": 275,
+            "bottom": 316.84375,
+            "left": 24
+          },
+          {
+            "selector": ".scene-actions",
+            "x": 1223,
+            "y": 96,
+            "width": 193,
+            "height": 40,
+            "top": 96,
+            "right": 1416,
+            "bottom": 136,
+            "left": 1223
+          }
+        ]
+      }
+    },
+    {
+      "id": "helsinki-senate-actual-model-hash-and-unreviewed-scope",
+      "pass": true,
+      "evidence": {
+        "phase": "ready",
+        "siteId": "helsinki-senate",
+        "mode": "day",
+        "requestedMode": "day",
+        "error": null,
+        "renderedFrames": 12,
+        "selectedFeature": null,
+        "modelSha256": "e0a7da09e662c8b32ca577e6da5868bbfeadc904e776aefec28cb5f1bf4534d9",
+        "locale": "en",
+        "hidden": false,
+        "camera": {
+          "position": [
+            204.70603439331057,
+            251.01596480965617,
+            243.9984069824219
+          ],
+          "target": [
+            22.20700454711914,
+            29.40999999642372,
+            -16.714492797851562
+          ],
+          "near": 0.02896809997558594,
+          "far": 8690.429992675781,
+          "projectionMatrix": [
+            1.5033564307817806,
+            0,
+            0,
+            0,
+            0,
+            2.4142135623730954,
+            0,
+            0,
+            0,
+            0,
+            -1.000006666688889,
+            -1,
+            0,
+            0,
+            -0.05793639307248212,
+            0
+          ],
+          "matrixWorld": [
+            0.8192319205190404,
+            5.551115123125783e-17,
+            -0.5734623443633284,
+            0,
+            -0.3277043390756557,
+            0.8206377566768517,
+            -0.4681490558223651,
+            0,
+            0.4706048518169701,
+            0.5714487486348923,
+            0.6722926454528142,
+            0,
+            204.70603439331057,
+            251.01596480965617,
+            243.9984069824219,
+            1
+          ]
+        },
+        "viewport": {
+          "x": 325,
+          "y": 154,
+          "width": 1090,
+          "height": 678,
+          "bufferWidth": 1092,
+          "bufferHeight": 680,
+          "pixelRatio": 1
+        },
+        "shadow": {
+          "mapSize": [
+            1024,
+            1024
+          ],
+          "bias": -0.00042403766622401936,
+          "normalBias": 0.1432821598613637,
+          "near": 234.28440544308833,
+          "far": 529.9465596925157,
+          "left": -183.40116462254548,
+          "right": 183.4011646225456,
+          "top": 164.3641707623812,
+          "bottom": -164.36417076238112
+        },
+        "renderer": {
+          "geometries": 11,
+          "textures": 4,
+          "calls": 22,
+          "triangles": 25114
+        },
+        "representation": "geographic-context",
+        "navigation": "unreviewed"
+      }
+    },
+    {
+      "id": "helsinki-senate-actual-roof-click-selects-source-identity",
+      "pass": true,
+      "evidence": {
+        "attempts": [
+          {
+            "point": {
+              "normalized": [
+                -0.028274011387697903,
+                0.45687697668614763,
+                0.9998811037839301
+              ],
+              "x": 854.5906637937046,
+              "y": 338.11870490339595
+            },
+            "selected": "osm:way:1542850662"
+          }
+        ],
+        "text": "{\n  \"Source identity\": \"osm:way:1542850662\",\n  \"Feature type\": \"building\",\n  \"Height evidence\": {\n    \"metres\": 59,\n    \"origin\": \"observed\",\n    \"sourceTag\": \"height\",\n    \"sourceValue\": \"59\"\n  },\n  \"Access review\": \"Unreviewed\",\n  \"Source tags\": {\n    \"addr:city\": \"Helsinki\",\n    \"addr:housenumber\": \"29\",\n    \"addr:postcode\": \"00170\",\n    \"addr:street\": \"Unioninkatu\",\n    \"amenity\": \"place_of_worship\",\n    \"architect\": \"Carl Ludvig Engel\",\n    \"architect:wikidata\": \"Q77103\",\n    \"building\": \"cathedral\",\n    \"building:colour\": \"#ffffff\",\n    \"building:material\": \"plaster\",\n    \"check_date\": \"2026-08-07\",\n    \"denomination\": \"lutheran\",\n    \"fee\": \"yes\",\n    \"height\": \"59\",\n    \"int_name\": \"Helsinki Cathedral\",\n    \"loc_name\": \"Suurtsyrkka\",\n    \"name\": \"Helsingin tuomiokirkko\",\n    \"name:ca\": \"Catedral Luterana Tuomiokirkko\",\n    \"name:de\": \"Kathedrale von Helsinki\",\n    \"name:en\": \"Helsinki Cathedral\",\n    \"name:es\": \"Catedral de Helsinki\",\n    \"name:et\": \"Helsingi toomkirik\",\n    \"name:fi\": \"Helsingin tuomiokirkko\",\n    \"name:fr\": \"Cathédrale d'Helsinki\",\n    \"name:ko\": \"헬싱키 대성당\",\n    \"name:ru\": \"Кафедральный собор\",\n    \"name:sv\": \"Helsingfors domkyrka\",\n    \"name:zh\": \"赫尔辛基主教座堂\",\n    \"old_name\": \"Suurkirkko\",\n    \"opening_hours\": \"Jun-Aug: Su-Sa 09:00-24:00; Sep-May: Su-Sa 09:00-18:00\",\n    \"religion\": \"christian\",\n    \"start_date\": \"1852\",\n    \"toilets\": \"yes\",\n    \"toilets:access\": \"customers\",\n    \"tourism\": \"attraction\",\n    \"website\": \"https://helsingintuomiokirkko.fi/\",\n    \"wheelchair\": \"limited\",\n    \"wikidata\": \"Q738015\",\n    \"wikimedia_commons\": \"Category:Helsinki Cathedral\",\n    \"wikipedia\": \"fi:Helsingin tuomiokirkko\"\n  }\n}"
+      }
+    },
+    {
+      "id": "helsinki-senate-keyboard-orbit-pan-zoom-affect-camera",
+      "pass": true,
+      "evidence": {
+        "before": {
+          "position": [
+            204.70603439331057,
+            251.01596480965617,
+            243.9984069824219
+          ],
+          "target": [
+            22.20700454711914,
+            29.40999999642372,
+            -16.714492797851562
+          ],
+          "near": 0.02896809997558594,
+          "far": 8690.429992675781,
+          "projectionMatrix": [
+            1.5033564307817806,
+            0,
+            0,
+            0,
+            0,
+            2.4142135623730954,
+            0,
+            0,
+            0,
+            0,
+            -1.000006666688889,
+            -1,
+            0,
+            0,
+            -0.05793639307248212,
+            0
+          ],
+          "matrixWorld": [
+            0.8192319205190404,
+            5.551115123125783e-17,
+            -0.5734623443633284,
+            0,
+            -0.3277043390756557,
+            0.8206377566768517,
+            -0.4681490558223651,
+            0,
+            0.4706048518169701,
+            0.5714487486348923,
+            0.6722926454528142,
+            0,
+            204.70603439331057,
+            251.01596480965617,
+            243.9984069824219,
+            1
+          ]
+        },
+        "after": {
+          "position": [
+            200.234233237496,
+            239.99379111650785,
+            197.6966117094397
+          ],
+          "target": [
+            17.759110883384864,
+            40.54842278459863,
+            -23.06862660318624
+          ],
+          "near": 0.02896809997558594,
+          "far": 8690.429992675781,
+          "projectionMatrix": [
+            1.5033564307817806,
+            0,
+            0,
+            0,
+            0,
+            2.4142135623730954,
+            0,
+            0,
+            0,
+            0,
+            -1.000006666688889,
+            -1,
+            0,
+            0,
+            -0.05793639307248212,
+            0
+          ],
+          "matrixWorld": [
+            0.7707837084783117,
+            -2.7755575615628914e-17,
+            -0.6370969115797227,
+            0,
+            -0.3640682328813871,
+            0.8206377566768517,
+            -0.44046338567809284,
+            0,
+            0.5228257803045342,
+            0.5714487486348923,
+            0.6325342134087062,
+            0,
+            200.234233237496,
+            239.99379111650785,
+            197.6966117094397,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "id": "helsinki-senate-reset-restores-opening-camera",
+      "pass": true
+    },
+    {
+      "id": "helsinki-senate-locale-retains-camera-source-selection",
+      "pass": true
+    },
+    {
+      "id": "helsinki-senate-night-renders-different-pixels-with-same-pose",
+      "pass": true,
+      "evidence": {
+        "day": "643d91238b77c1b9732e47f5f1c57ffeafaa3537228609fe23454c0a1162f508",
+        "night": "f02e81066314364d6867452ae1b6c1aed87b126cd715cd47ccb141506e84f892"
+      }
+    },
+    {
+      "id": "helsinki-senate-desktop-layout",
+      "pass": true,
+      "evidence": {
+        "width": 1440,
+        "rects": [
+          {
+            "selector": "#stage",
+            "x": 324,
+            "y": 154,
+            "width": 1092,
+            "height": 680,
+            "top": 154,
+            "right": 1416,
+            "bottom": 834,
+            "left": 324
+          },
+          {
+            "selector": "#site-selector",
+            "x": 24,
+            "y": 270.84375,
+            "width": 251,
+            "height": 46,
+            "top": 270.84375,
+            "right": 275,
+            "bottom": 316.84375,
+            "left": 24
+          },
+          {
+            "selector": ".scene-actions",
+            "x": 1223,
+            "y": 96,
+            "width": 193,
+            "height": 40,
+            "top": 96,
+            "right": 1416,
+            "bottom": 136,
+            "left": 1223
+          }
+        ]
+      }
+    },
+    {
+      "id": "delft-markt-repeat-1-resources-remain-bounded",
+      "pass": true,
+      "evidence": {
+        "previous": {
+          "geometries": 10,
+          "textures": 4,
+          "calls": 20,
+          "triangles": 22270
+        },
+        "actual": {
+          "geometries": 10,
+          "textures": 4,
+          "calls": 20,
+          "triangles": 22270
+        }
+      }
+    },
+    {
+      "id": "helsinki-senate-repeat-1-resources-remain-bounded",
+      "pass": true,
+      "evidence": {
+        "previous": {
+          "geometries": 11,
+          "textures": 4,
+          "calls": 22,
+          "triangles": 25114
+        },
+        "actual": {
+          "geometries": 11,
+          "textures": 4,
+          "calls": 22,
+          "triangles": 25114
+        }
+      }
+    },
+    {
+      "id": "delft-markt-repeat-2-resources-remain-bounded",
+      "pass": true,
+      "evidence": {
+        "previous": {
+          "geometries": 10,
+          "textures": 4,
+          "calls": 20,
+          "triangles": 22270
+        },
+        "actual": {
+          "geometries": 10,
+          "textures": 4,
+          "calls": 20,
+          "triangles": 22270
+        }
+      }
+    },
+    {
+      "id": "helsinki-senate-repeat-2-resources-remain-bounded",
+      "pass": true,
+      "evidence": {
+        "previous": {
+          "geometries": 11,
+          "textures": 4,
+          "calls": 22,
+          "triangles": 25114
+        },
+        "actual": {
+          "geometries": 11,
+          "textures": 4,
+          "calls": 22,
+          "triangles": 25114
+        }
+      }
+    },
+    {
+      "id": "workbench-keeps-private-journey-and-appearance-bytes",
+      "pass": true,
+      "evidence": {
+        "tourguideai:journey:v2": "{\"version\":2,\"locale\":\"zh\",\"notes\":{\"crossing\":\"Private note\"}}",
+        "tourguideai:appearance:v1": "{\"lighting\":\"night\"}"
+      }
+    },
+    {
+      "id": "idle-workbench-does-not-continuously-redraw",
+      "pass": true,
+      "evidence": {
+        "before": 28,
+        "after": 28,
+        "sampleMs": 2000
+      }
+    },
+    {
+      "id": "phone-touch-drag-changes-actual-camera",
+      "pass": true
+    },
+    {
+      "id": "phone-en-layout",
+      "pass": true,
+      "evidence": {
+        "width": 390,
+        "rects": [
+          {
+            "selector": "#stage",
+            "x": 12,
+            "y": 548,
+            "width": 366,
+            "height": 489.515625,
+            "top": 548,
+            "right": 378,
+            "bottom": 1037.515625,
+            "left": 12
+          },
+          {
+            "selector": "#site-selector",
+            "x": 16,
+            "y": 186.96875,
+            "width": 358,
+            "height": 46,
+            "top": 186.96875,
+            "right": 374,
+            "bottom": 232.96875,
+            "left": 16
+          },
+          {
+            "selector": ".scene-actions",
+            "x": 12,
+            "y": 491,
+            "width": 366,
+            "height": 39,
+            "top": 491,
+            "right": 378,
+            "bottom": 530,
+            "left": 12
+          }
+        ]
+      }
+    },
+    {
+      "id": "phone-en-controls-are-localized",
+      "pass": true
+    },
+    {
+      "id": "phone-zh-layout",
+      "pass": true,
+      "evidence": {
+        "width": 390,
+        "rects": [
+          {
+            "selector": "#stage",
+            "x": 12,
+            "y": 486.984375,
+            "width": 366,
+            "height": 489.515625,
+            "top": 486.984375,
+            "right": 378,
+            "bottom": 976.5,
+            "left": 12
+          },
+          {
+            "selector": "#site-selector",
+            "x": 16,
+            "y": 187.96875,
+            "width": 358,
+            "height": 46,
+            "top": 187.96875,
+            "right": 374,
+            "bottom": 233.96875,
+            "left": 16
+          },
+          {
+            "selector": ".scene-actions",
+            "x": 12,
+            "y": 428.984375,
+            "width": 366,
+            "height": 40,
+            "top": 428.984375,
+            "right": 378,
+            "bottom": 468.984375,
+            "left": 12
+          }
+        ]
+      }
+    },
+    {
+      "id": "phone-zh-controls-are-localized",
+      "pass": true
+    },
+    {
+      "id": "denied-real-model-is-visible-error",
+      "pass": true,
+      "evidence": {
+        "phase": "error",
+        "siteId": "helsinki-senate",
+        "mode": "day",
+        "requestedMode": "day",
+        "error": "Failed to fetch",
+        "renderedFrames": 5,
+        "selectedFeature": null,
+        "modelSha256": null,
+        "locale": "en",
+        "hidden": false,
+        "camera": {
+          "position": [
+            108.14202438354492,
+            141.2253153192997,
+            154.48760681152345
+          ],
+          "target": [
+            0,
+            9.909999996423721,
+            -0.00099945068359375
+          ],
+          "near": 0.02,
+          "far": 5149.620208740234,
+          "projectionMatrix": [
+            1.5033564307817806,
+            0,
+            0,
+            0,
+            0,
+            2.414213562373095,
+            0,
+            0,
+            0,
+            0,
+            -1.0000077675932848,
+            -1,
+            0,
+            0,
+            -0.0400001553518657,
+            0
+          ],
+          "matrixWorld": [
+            0.8192319205190405,
+            0,
+            -0.5734623443633283,
+            0,
+            -0.3277043390756556,
+            0.8206377566768518,
+            -0.46814905582236516,
+            0,
+            0.47060485181697,
+            0.5714487486348923,
+            0.6722926454528143,
+            0,
+            108.14202438354492,
+            141.2253153192997,
+            154.48760681152345,
+            1
+          ]
+        },
+        "viewport": {
+          "x": 325,
+          "y": 154,
+          "width": 1090,
+          "height": 678,
+          "bufferWidth": 1092,
+          "bufferHeight": 680,
+          "pixelRatio": 1
+        },
+        "shadow": {
+          "mapSize": [
+            1024,
+            1024
+          ],
+          "bias": -0.00048214331803706243,
+          "normalBias": 0.08941608221612335,
+          "near": 145.29044853105862,
+          "far": 307.5639240977026,
+          "left": -114.45258523663786,
+          "right": 114.45258523663792,
+          "top": 91.5892694437424,
+          "bottom": -91.5892694437424
+        },
+        "renderer": {
+          "geometries": 0,
+          "textures": 4,
+          "calls": 0,
+          "triangles": 0
+        },
+        "representation": null,
+        "navigation": null
+      }
+    },
+    {
+      "id": "model-retry-restores-exact-asset",
+      "pass": true
+    },
+    {
+      "id": "denied-night-hdr-keeps-visible-error-and-previous-applied-mode",
+      "pass": true,
+      "evidence": {
+        "phase": "error",
+        "siteId": "helsinki-senate",
+        "mode": "day",
+        "requestedMode": "night",
+        "error": "Failed to fetch",
+        "renderedFrames": 7,
+        "selectedFeature": null,
+        "modelSha256": "e0a7da09e662c8b32ca577e6da5868bbfeadc904e776aefec28cb5f1bf4534d9",
+        "locale": "en",
+        "hidden": false,
+        "camera": {
+          "position": [
+            204.70603439331057,
+            251.01596480965617,
+            243.9984069824219
+          ],
+          "target": [
+            22.20700454711914,
+            29.40999999642372,
+            -16.714492797851562
+          ],
+          "near": 0.02896809997558594,
+          "far": 8690.429992675781,
+          "projectionMatrix": [
+            1.5033564307817806,
+            0,
+            0,
+            0,
+            0,
+            2.4142135623730954,
+            0,
+            0,
+            0,
+            0,
+            -1.000006666688889,
+            -1,
+            0,
+            0,
+            -0.05793639307248212,
+            0
+          ],
+          "matrixWorld": [
+            0.8192319205190404,
+            5.551115123125783e-17,
+            -0.5734623443633284,
+            0,
+            -0.3277043390756557,
+            0.8206377566768517,
+            -0.4681490558223651,
+            0,
+            0.4706048518169701,
+            0.5714487486348923,
+            0.6722926454528142,
+            0,
+            204.70603439331057,
+            251.01596480965617,
+            243.9984069824219,
+            1
+          ]
+        },
+        "viewport": {
+          "x": 325,
+          "y": 154,
+          "width": 1090,
+          "height": 678,
+          "bufferWidth": 1092,
+          "bufferHeight": 680,
+          "pixelRatio": 1
+        },
+        "shadow": {
+          "mapSize": [
+            1024,
+            1024
+          ],
+          "bias": -0.00042403766622401936,
+          "normalBias": 0.1432821598613637,
+          "near": 234.28440544308833,
+          "far": 529.9465596925157,
+          "left": -183.40116462254548,
+          "right": 183.4011646225456,
+          "top": 164.3641707623812,
+          "bottom": -164.36417076238112
+        },
+        "renderer": {
+          "geometries": 11,
+          "textures": 4,
+          "calls": 22,
+          "triangles": 25114
+        },
+        "representation": "geographic-context",
+        "navigation": "unreviewed"
+      }
+    },
+    {
+      "id": "night-retry-renders-requested-mode-with-retained-camera",
+      "pass": true,
+      "evidence": {
+        "phase": "ready",
+        "siteId": "helsinki-senate",
+        "mode": "night",
+        "requestedMode": "night",
+        "error": null,
+        "renderedFrames": 8,
+        "selectedFeature": null,
+        "modelSha256": "e0a7da09e662c8b32ca577e6da5868bbfeadc904e776aefec28cb5f1bf4534d9",
+        "locale": "en",
+        "hidden": false,
+        "camera": {
+          "position": [
+            204.70603439331057,
+            251.01596480965617,
+            243.9984069824219
+          ],
+          "target": [
+            22.20700454711914,
+            29.40999999642372,
+            -16.714492797851562
+          ],
+          "near": 0.02896809997558594,
+          "far": 8690.429992675781,
+          "projectionMatrix": [
+            1.5033564307817806,
+            0,
+            0,
+            0,
+            0,
+            2.4142135623730954,
+            0,
+            0,
+            0,
+            0,
+            -1.000006666688889,
+            -1,
+            0,
+            0,
+            -0.05793639307248212,
+            0
+          ],
+          "matrixWorld": [
+            0.8192319205190404,
+            5.551115123125783e-17,
+            -0.5734623443633284,
+            0,
+            -0.3277043390756557,
+            0.8206377566768517,
+            -0.4681490558223651,
+            0,
+            0.4706048518169701,
+            0.5714487486348923,
+            0.6722926454528142,
+            0,
+            204.70603439331057,
+            251.01596480965617,
+            243.9984069824219,
+            1
+          ]
+        },
+        "viewport": {
+          "x": 325,
+          "y": 154,
+          "width": 1090,
+          "height": 678,
+          "bufferWidth": 1092,
+          "bufferHeight": 680,
+          "pixelRatio": 1
+        },
+        "shadow": {
+          "mapSize": [
+            1024,
+            1024
+          ],
+          "bias": -0.00042403766622401936,
+          "normalBias": 0.1432821598613637,
+          "near": 234.28440544308833,
+          "far": 529.9465596925157,
+          "left": -183.40116462254548,
+          "right": 183.4011646225456,
+          "top": 164.3641707623812,
+          "bottom": -164.36417076238112
+        },
+        "renderer": {
+          "geometries": 11,
+          "textures": 4,
+          "calls": 22,
+          "triangles": 25114
+        },
+        "representation": "geographic-context",
+        "navigation": "unreviewed"
+      }
+    },
+    {
+      "id": "desktop-uses-only-local-assets",
+      "pass": true,
+      "evidence": []
+    },
+    {
+      "id": "desktop-has-no-unhandled-page-errors",
+      "pass": true,
+      "evidence": []
+    },
+    {
+      "id": "phone-uses-only-local-assets",
+      "pass": true,
+      "evidence": []
+    },
+    {
+      "id": "phone-has-no-unhandled-page-errors",
+      "pass": true,
+      "evidence": []
+    },
+    {
+      "id": "recovery-uses-only-local-assets",
+      "pass": true,
+      "evidence": []
+    },
+    {
+      "id": "recovery-has-no-unhandled-page-errors",
+      "pass": true,
+      "evidence": []
+    },
+    {
+      "id": "reviewed-export-and-viewer-bytes-stay-unchanged",
+      "pass": true
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "delft-markt-day-en.png",
+      "sha256": "9aab97c4715c54dc75de740bfc7a74b45c9d97e52803d5f7ae01c77b864ce1f2",
+      "stageSha256": "d831c7f2eb5c9a218a97bf13da4e9152520cc3d4fd689e5f983fc7a706b5b894",
+      "snapshot": {
+        "phase": "ready",
+        "siteId": "delft-markt",
+        "mode": "day",
+        "requestedMode": "day",
+        "error": null,
+        "renderedFrames": 5,
+        "selectedFeature": null,
+        "modelSha256": "b9a63090d9ab6a2335c214b8361519abf9c97ef0dfd33ca1e0fe6b78a08b23e9",
+        "locale": "en",
+        "hidden": false,
+        "camera": {
+          "position": [
+            108.14202438354492,
+            141.2253153192997,
+            154.48760681152345
+          ],
+          "target": [
+            0,
+            9.909999996423721,
+            -0.00099945068359375
+          ],
+          "near": 0.02,
+          "far": 5149.620208740234,
+          "projectionMatrix": [
+            1.5033564307817806,
+            0,
+            0,
+            0,
+            0,
+            2.414213562373095,
+            0,
+            0,
+            0,
+            0,
+            -1.0000077675932848,
+            -1,
+            0,
+            0,
+            -0.0400001553518657,
+            0
+          ],
+          "matrixWorld": [
+            0.8192319205190405,
+            0,
+            -0.5734623443633283,
+            0,
+            -0.3277043390756556,
+            0.8206377566768518,
+            -0.46814905582236516,
+            0,
+            0.47060485181697,
+            0.5714487486348923,
+            0.6722926454528143,
+            0,
+            108.14202438354492,
+            141.2253153192997,
+            154.48760681152345,
+            1
+          ]
+        },
+        "viewport": {
+          "x": 325,
+          "y": 154,
+          "width": 1090,
+          "height": 678,
+          "bufferWidth": 1092,
+          "bufferHeight": 680,
+          "pixelRatio": 1
+        },
+        "shadow": {
+          "mapSize": [
+            1024,
+            1024
+          ],
+          "bias": -0.00048214331803706243,
+          "normalBias": 0.08941608221612335,
+          "near": 145.29044853105862,
+          "far": 307.5639240977026,
+          "left": -114.45258523663786,
+          "right": 114.45258523663792,
+          "top": 91.5892694437424,
+          "bottom": -91.5892694437424
+        },
+        "renderer": {
+          "geometries": 10,
+          "textures": 4,
+          "calls": 20,
+          "triangles": 22270
+        },
+        "representation": "geographic-context",
+        "navigation": "unreviewed"
+      }
+    },
+    {
+      "file": "delft-markt-night-zh.png",
+      "sha256": "d45f40ef728ef096f634a18a786a0cf3b383880d0d68b1eac21a0e5541524566",
+      "stageSha256": "920ffcdcb58ee04af7408a99c10a7a5289c770a39eac59a7e3d65859e227735c",
+      "snapshot": {
+        "phase": "ready",
+        "siteId": "delft-markt",
+        "mode": "night",
+        "requestedMode": "night",
+        "error": null,
+        "renderedFrames": 9,
+        "selectedFeature": "osm:way:209351406",
+        "modelSha256": "b9a63090d9ab6a2335c214b8361519abf9c97ef0dfd33ca1e0fe6b78a08b23e9",
+        "locale": "zh",
+        "hidden": false,
+        "camera": {
+          "position": [
+            108.14202438354492,
+            141.2253153192997,
+            154.48760681152345
+          ],
+          "target": [
+            0,
+            9.909999996423721,
+            -0.00099945068359375
+          ],
+          "near": 0.02,
+          "far": 5149.620208740234,
+          "projectionMatrix": [
+            1.5033564307817806,
+            0,
+            0,
+            0,
+            0,
+            2.414213562373095,
+            0,
+            0,
+            0,
+            0,
+            -1.0000077675932848,
+            -1,
+            0,
+            0,
+            -0.0400001553518657,
+            0
+          ],
+          "matrixWorld": [
+            0.8192319205190405,
+            0,
+            -0.5734623443633283,
+            0,
+            -0.3277043390756556,
+            0.8206377566768518,
+            -0.46814905582236516,
+            0,
+            0.47060485181697,
+            0.5714487486348923,
+            0.6722926454528143,
+            0,
+            108.14202438354492,
+            141.2253153192997,
+            154.48760681152345,
+            1
+          ]
+        },
+        "viewport": {
+          "x": 325,
+          "y": 155,
+          "width": 1090,
+          "height": 678,
+          "bufferWidth": 1092,
+          "bufferHeight": 680,
+          "pixelRatio": 1
+        },
+        "shadow": {
+          "mapSize": [
+            1024,
+            1024
+          ],
+          "bias": -0.00048214331803706243,
+          "normalBias": 0.08941608221612335,
+          "near": 145.29044853105862,
+          "far": 307.5639240977026,
+          "left": -114.45258523663786,
+          "right": 114.45258523663792,
+          "top": 91.5892694437424,
+          "bottom": -91.5892694437424
+        },
+        "renderer": {
+          "geometries": 10,
+          "textures": 4,
+          "calls": 20,
+          "triangles": 22270
+        },
+        "representation": "geographic-context",
+        "navigation": "unreviewed"
+      }
+    },
+    {
+      "file": "helsinki-senate-day-en.png",
+      "sha256": "a267a0068e62d7c8d570998fcbc28e7355a8e71ef8cff377b84329ab56f10127",
+      "stageSha256": "643d91238b77c1b9732e47f5f1c57ffeafaa3537228609fe23454c0a1162f508",
+      "snapshot": {
+        "phase": "ready",
+        "siteId": "helsinki-senate",
+        "mode": "day",
+        "requestedMode": "day",
+        "error": null,
+        "renderedFrames": 12,
+        "selectedFeature": null,
+        "modelSha256": "e0a7da09e662c8b32ca577e6da5868bbfeadc904e776aefec28cb5f1bf4534d9",
+        "locale": "en",
+        "hidden": false,
+        "camera": {
+          "position": [
+            204.70603439331057,
+            251.01596480965617,
+            243.9984069824219
+          ],
+          "target": [
+            22.20700454711914,
+            29.40999999642372,
+            -16.714492797851562
+          ],
+          "near": 0.02896809997558594,
+          "far": 8690.429992675781,
+          "projectionMatrix": [
+            1.5033564307817806,
+            0,
+            0,
+            0,
+            0,
+            2.4142135623730954,
+            0,
+            0,
+            0,
+            0,
+            -1.000006666688889,
+            -1,
+            0,
+            0,
+            -0.05793639307248212,
+            0
+          ],
+          "matrixWorld": [
+            0.8192319205190404,
+            5.551115123125783e-17,
+            -0.5734623443633284,
+            0,
+            -0.3277043390756557,
+            0.8206377566768517,
+            -0.4681490558223651,
+            0,
+            0.4706048518169701,
+            0.5714487486348923,
+            0.6722926454528142,
+            0,
+            204.70603439331057,
+            251.01596480965617,
+            243.9984069824219,
+            1
+          ]
+        },
+        "viewport": {
+          "x": 325,
+          "y": 154,
+          "width": 1090,
+          "height": 678,
+          "bufferWidth": 1092,
+          "bufferHeight": 680,
+          "pixelRatio": 1
+        },
+        "shadow": {
+          "mapSize": [
+            1024,
+            1024
+          ],
+          "bias": -0.00042403766622401936,
+          "normalBias": 0.1432821598613637,
+          "near": 234.28440544308833,
+          "far": 529.9465596925157,
+          "left": -183.40116462254548,
+          "right": 183.4011646225456,
+          "top": 164.3641707623812,
+          "bottom": -164.36417076238112
+        },
+        "renderer": {
+          "geometries": 11,
+          "textures": 4,
+          "calls": 22,
+          "triangles": 25114
+        },
+        "representation": "geographic-context",
+        "navigation": "unreviewed"
+      }
+    },
+    {
+      "file": "helsinki-senate-night-zh.png",
+      "sha256": "7cc988c4228bd1c30edfcd7c46e8f5ad2bc4844072812389f162247ef68f1034",
+      "stageSha256": "f02e81066314364d6867452ae1b6c1aed87b126cd715cd47ccb141506e84f892",
+      "snapshot": {
+        "phase": "ready",
+        "siteId": "helsinki-senate",
+        "mode": "night",
+        "requestedMode": "night",
+        "error": null,
+        "renderedFrames": 15,
+        "selectedFeature": "osm:way:1542850662",
+        "modelSha256": "e0a7da09e662c8b32ca577e6da5868bbfeadc904e776aefec28cb5f1bf4534d9",
+        "locale": "zh",
+        "hidden": false,
+        "camera": {
+          "position": [
+            204.70603439331057,
+            251.01596480965617,
+            243.9984069824219
+          ],
+          "target": [
+            22.20700454711914,
+            29.40999999642372,
+            -16.714492797851562
+          ],
+          "near": 0.02896809997558594,
+          "far": 8690.429992675781,
+          "projectionMatrix": [
+            1.5033564307817806,
+            0,
+            0,
+            0,
+            0,
+            2.4142135623730954,
+            0,
+            0,
+            0,
+            0,
+            -1.000006666688889,
+            -1,
+            0,
+            0,
+            -0.05793639307248212,
+            0
+          ],
+          "matrixWorld": [
+            0.8192319205190404,
+            5.551115123125783e-17,
+            -0.5734623443633284,
+            0,
+            -0.3277043390756557,
+            0.8206377566768517,
+            -0.4681490558223651,
+            0,
+            0.4706048518169701,
+            0.5714487486348923,
+            0.6722926454528142,
+            0,
+            204.70603439331057,
+            251.01596480965617,
+            243.9984069824219,
+            1
+          ]
+        },
+        "viewport": {
+          "x": 325,
+          "y": 155,
+          "width": 1090,
+          "height": 678,
+          "bufferWidth": 1092,
+          "bufferHeight": 680,
+          "pixelRatio": 1
+        },
+        "shadow": {
+          "mapSize": [
+            1024,
+            1024
+          ],
+          "bias": -0.00042403766622401936,
+          "normalBias": 0.1432821598613637,
+          "near": 234.28440544308833,
+          "far": 529.9465596925157,
+          "left": -183.40116462254548,
+          "right": 183.4011646225456,
+          "top": 164.3641707623812,
+          "bottom": -164.36417076238112
+        },
+        "renderer": {
+          "geometries": 11,
+          "textures": 4,
+          "calls": 22,
+          "triangles": 25114
+        },
+        "representation": "geographic-context",
+        "navigation": "unreviewed"
+      }
+    },
+    {
+      "file": "helsinki-phone-night-en.png",
+      "sha256": "e2d864df6c071cda6522552bc5a9cfe6ac2d552670fe6d59ab799bfe41813535",
+      "stageSha256": "61fa2294db64e669d8e93ba181b6e4f49ee70dd63640041915f05cfd0095f880",
+      "snapshot": {
+        "phase": "ready",
+        "siteId": "helsinki-senate",
+        "mode": "night",
+        "requestedMode": "night",
+        "error": null,
+        "renderedFrames": 11,
+        "selectedFeature": null,
+        "modelSha256": "e0a7da09e662c8b32ca577e6da5868bbfeadc904e776aefec28cb5f1bf4534d9",
+        "locale": "en",
+        "hidden": false,
+        "camera": {
+          "position": [
+            19.103162765974698,
+            325.80230155182664,
+            408.912909315217
+          ],
+          "target": [
+            22.20700454711914,
+            29.40999999642372,
+            -16.714492797851562
+          ],
+          "near": 0.02896809997558594,
+          "far": 8690.429992675781,
+          "projectionMatrix": [
+            3.2289488001872733,
+            0,
+            0,
+            0,
+            0,
+            2.4142135623730954,
+            0,
+            0,
+            0,
+            0,
+            -1.000006666688889,
+            -1,
+            0,
+            0,
+            -0.05793639307248212,
+            0
+          ],
+          "matrixWorld": [
+            0.9999734115713015,
+            4.336808689942018e-19,
+            0.007292197916439681,
+            0,
+            0.0041671173741474245,
+            0.8206377566768518,
+            -0.5714335547105842,
+            0,
+            -0.005984252939390672,
+            0.5714487486348923,
+            0.820615937208371,
+            0,
+            19.103162765974698,
+            325.80230155182664,
+            408.912909315217,
+            1
+          ]
+        },
+        "viewport": {
+          "x": 13,
+          "y": 356,
+          "width": 364,
+          "height": 487.515625,
+          "bufferWidth": 366,
+          "bufferHeight": 489,
+          "pixelRatio": 1
+        },
+        "shadow": {
+          "mapSize": [
+            1024,
+            1024
+          ],
+          "bias": -0.00042403766622401936,
+          "normalBias": 0.1432821598613637,
+          "near": 234.28440544308833,
+          "far": 529.9465596925157,
+          "left": -183.40116462254548,
+          "right": 183.4011646225456,
+          "top": 164.3641707623812,
+          "bottom": -164.36417076238112
+        },
+        "renderer": {
+          "geometries": 11,
+          "textures": 4,
+          "calls": 22,
+          "triangles": 25114
+        },
+        "representation": "geographic-context",
+        "navigation": "unreviewed"
+      }
+    },
+    {
+      "file": "helsinki-phone-night-zh.png",
+      "sha256": "ccc91961546631bcb1802a2444b77f20f118c14af097e6c751262450e5640815",
+      "stageSha256": "0f6aefd687c42c90983ce63db096059e0dd4b7cc090c1a6a5daeed00ab4903cc",
+      "snapshot": {
+        "phase": "ready",
+        "siteId": "helsinki-senate",
+        "mode": "night",
+        "requestedMode": "night",
+        "error": null,
+        "renderedFrames": 11,
+        "selectedFeature": null,
+        "modelSha256": "e0a7da09e662c8b32ca577e6da5868bbfeadc904e776aefec28cb5f1bf4534d9",
+        "locale": "zh",
+        "hidden": false,
+        "camera": {
+          "position": [
+            19.103162765974698,
+            325.80230155182664,
+            408.912909315217
+          ],
+          "target": [
+            22.20700454711914,
+            29.40999999642372,
+            -16.714492797851562
+          ],
+          "near": 0.02896809997558594,
+          "far": 8690.429992675781,
+          "projectionMatrix": [
+            3.2289488001872733,
+            0,
+            0,
+            0,
+            0,
+            2.4142135623730954,
+            0,
+            0,
+            0,
+            0,
+            -1.000006666688889,
+            -1,
+            0,
+            0,
+            -0.05793639307248212,
+            0
+          ],
+          "matrixWorld": [
+            0.9999734115713015,
+            4.336808689942018e-19,
+            0.007292197916439681,
+            0,
+            0.0041671173741474245,
+            0.8206377566768518,
+            -0.5714335547105842,
+            0,
+            -0.005984252939390672,
+            0.5714487486348923,
+            0.820615937208371,
+            0,
+            19.103162765974698,
+            325.80230155182664,
+            408.912909315217,
+            1
+          ]
+        },
+        "viewport": {
+          "x": 13,
+          "y": 355.984375,
+          "width": 364,
+          "height": 487.515625,
+          "bufferWidth": 366,
+          "bufferHeight": 489,
+          "pixelRatio": 1
+        },
+        "shadow": {
+          "mapSize": [
+            1024,
+            1024
+          ],
+          "bias": -0.00042403766622401936,
+          "normalBias": 0.1432821598613637,
+          "near": 234.28440544308833,
+          "far": 529.9465596925157,
+          "left": -183.40116462254548,
+          "right": 183.4011646225456,
+          "top": 164.3641707623812,
+          "bottom": -164.36417076238112
+        },
+        "renderer": {
+          "geometries": 11,
+          "textures": 4,
+          "calls": 22,
+          "triangles": 25114
+        },
+        "representation": "geographic-context",
+        "navigation": "unreviewed"
+      }
+    },
+    {
+      "file": "night-hdr-denied.png",
+      "sha256": "2e9dd0b27012eb0b5faa317aae1fae6d153f3b511196afc31e826a4e004deb59",
+      "stageSha256": "643d91238b77c1b9732e47f5f1c57ffeafaa3537228609fe23454c0a1162f508",
+      "snapshot": {
+        "phase": "error",
+        "siteId": "helsinki-senate",
+        "mode": "day",
+        "requestedMode": "night",
+        "error": "Failed to fetch",
+        "renderedFrames": 7,
+        "selectedFeature": null,
+        "modelSha256": "e0a7da09e662c8b32ca577e6da5868bbfeadc904e776aefec28cb5f1bf4534d9",
+        "locale": "en",
+        "hidden": false,
+        "camera": {
+          "position": [
+            204.70603439331057,
+            251.01596480965617,
+            243.9984069824219
+          ],
+          "target": [
+            22.20700454711914,
+            29.40999999642372,
+            -16.714492797851562
+          ],
+          "near": 0.02896809997558594,
+          "far": 8690.429992675781,
+          "projectionMatrix": [
+            1.5033564307817806,
+            0,
+            0,
+            0,
+            0,
+            2.4142135623730954,
+            0,
+            0,
+            0,
+            0,
+            -1.000006666688889,
+            -1,
+            0,
+            0,
+            -0.05793639307248212,
+            0
+          ],
+          "matrixWorld": [
+            0.8192319205190404,
+            5.551115123125783e-17,
+            -0.5734623443633284,
+            0,
+            -0.3277043390756557,
+            0.8206377566768517,
+            -0.4681490558223651,
+            0,
+            0.4706048518169701,
+            0.5714487486348923,
+            0.6722926454528142,
+            0,
+            204.70603439331057,
+            251.01596480965617,
+            243.9984069824219,
+            1
+          ]
+        },
+        "viewport": {
+          "x": 325,
+          "y": 154,
+          "width": 1090,
+          "height": 678,
+          "bufferWidth": 1092,
+          "bufferHeight": 680,
+          "pixelRatio": 1
+        },
+        "shadow": {
+          "mapSize": [
+            1024,
+            1024
+          ],
+          "bias": -0.00042403766622401936,
+          "normalBias": 0.1432821598613637,
+          "near": 234.28440544308833,
+          "far": 529.9465596925157,
+          "left": -183.40116462254548,
+          "right": 183.4011646225456,
+          "top": 164.3641707623812,
+          "bottom": -164.36417076238112
+        },
+        "renderer": {
+          "geometries": 11,
+          "textures": 4,
+          "calls": 22,
+          "triangles": 25114
+        },
+        "representation": "geographic-context",
+        "navigation": "unreviewed"
+      }
+    }
+  ],
+  "scenarios": {
+    "desktop": {
+      "requests": [
+        "/",
+        "/style.css",
+        "/main.js",
+        "/vendor/three/build/three.module.js",
+        "/vendor/three/examples/jsm/controls/OrbitControls.js",
+        "/vendor/three/examples/jsm/loaders/GLTFLoader.js",
+        "/vendor/three/examples/jsm/loaders/HDRLoader.js",
+        "/vendor/three/examples/jsm/utils/BufferGeometryUtils.js",
+        "/vendor/three/examples/jsm/utils/SkeletonUtils.js",
+        "/vendor/three/build/three.core.js",
+        "/api/sites",
+        "/sites/delft-markt/manifest.json",
+        "/sites/delft-markt/context.json",
+        "/sites/delft-markt/review.json",
+        "/lighting/resources.json",
+        "/lighting/environments/day-1k.hdr",
+        "/sites/delft-markt/manifest.json",
+        "/sites/delft-markt/context.json",
+        "/sites/delft-markt/review.json",
+        "/sites/delft-markt/scene.glb",
+        "/lighting/environments/night-1k.hdr",
+        "/lighting/environments/day-1k.hdr",
+        "/sites/helsinki-senate/manifest.json",
+        "/sites/helsinki-senate/context.json",
+        "/sites/helsinki-senate/review.json",
+        "/sites/helsinki-senate/scene.glb",
+        "/lighting/environments/night-1k.hdr",
+        "/lighting/environments/day-1k.hdr",
+        "/sites/delft-markt/manifest.json",
+        "/sites/delft-markt/context.json",
+        "/sites/delft-markt/review.json",
+        "/sites/delft-markt/scene.glb",
+        "/sites/helsinki-senate/manifest.json",
+        "/sites/helsinki-senate/context.json",
+        "/sites/helsinki-senate/review.json",
+        "/sites/helsinki-senate/scene.glb",
+        "/sites/delft-markt/manifest.json",
+        "/sites/delft-markt/context.json",
+        "/sites/delft-markt/review.json",
+        "/sites/delft-markt/scene.glb",
+        "/sites/helsinki-senate/manifest.json",
+        "/sites/helsinki-senate/context.json",
+        "/sites/helsinki-senate/review.json",
+        "/sites/helsinki-senate/scene.glb",
+        "/sites/delft-markt/manifest.json",
+        "/sites/delft-markt/context.json",
+        "/sites/delft-markt/review.json",
+        "/sites/delft-markt/scene.glb",
+        "/sites/helsinki-senate/manifest.json",
+        "/sites/helsinki-senate/context.json",
+        "/sites/helsinki-senate/review.json",
+        "/sites/helsinki-senate/scene.glb"
+      ],
+      "responses": [
+        {
+          "path": "/",
+          "status": 200
+        },
+        {
+          "path": "/style.css",
+          "status": 200
+        },
+        {
+          "path": "/main.js",
+          "status": 200
+        },
+        {
+          "path": "/vendor/three/examples/jsm/controls/OrbitControls.js",
+          "status": 200
+        },
+        {
+          "path": "/vendor/three/examples/jsm/loaders/HDRLoader.js",
+          "status": 200
+        },
+        {
+          "path": "/vendor/three/examples/jsm/loaders/GLTFLoader.js",
+          "status": 200
+        },
+        {
+          "path": "/vendor/three/build/three.module.js",
+          "status": 200
+        },
+        {
+          "path": "/vendor/three/examples/jsm/utils/BufferGeometryUtils.js",
+          "status": 200
+        },
+        {
+          "path": "/vendor/three/examples/jsm/utils/SkeletonUtils.js",
+          "status": 200
+        },
+        {
+          "path": "/vendor/three/build/three.core.js",
+          "status": 200
+        },
+        {
+          "path": "/api/sites",
+          "status": 200
+        },
+        {
+          "path": "/lighting/resources.json",
+          "status": 200
+        },
+        {
+          "path": "/lighting/environments/day-1k.hdr",
+          "status": 200
+        },
+        {
+          "path": "/sites/delft-markt/manifest.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/delft-markt/review.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/delft-markt/context.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/delft-markt/scene.glb",
+          "status": 200
+        },
+        {
+          "path": "/lighting/environments/night-1k.hdr",
+          "status": 200
+        },
+        {
+          "path": "/lighting/environments/day-1k.hdr",
+          "status": 200
+        },
+        {
+          "path": "/sites/helsinki-senate/manifest.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/helsinki-senate/review.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/helsinki-senate/context.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/helsinki-senate/scene.glb",
+          "status": 200
+        },
+        {
+          "path": "/lighting/environments/night-1k.hdr",
+          "status": 200
+        },
+        {
+          "path": "/lighting/environments/day-1k.hdr",
+          "status": 200
+        },
+        {
+          "path": "/sites/delft-markt/manifest.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/delft-markt/review.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/delft-markt/context.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/delft-markt/scene.glb",
+          "status": 200
+        },
+        {
+          "path": "/sites/helsinki-senate/review.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/helsinki-senate/manifest.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/helsinki-senate/context.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/helsinki-senate/scene.glb",
+          "status": 200
+        },
+        {
+          "path": "/sites/delft-markt/review.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/delft-markt/manifest.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/delft-markt/context.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/delft-markt/scene.glb",
+          "status": 200
+        },
+        {
+          "path": "/sites/helsinki-senate/manifest.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/helsinki-senate/review.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/helsinki-senate/context.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/helsinki-senate/scene.glb",
+          "status": 200
+        },
+        {
+          "path": "/sites/delft-markt/manifest.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/delft-markt/context.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/delft-markt/review.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/delft-markt/scene.glb",
+          "status": 200
+        },
+        {
+          "path": "/sites/helsinki-senate/manifest.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/helsinki-senate/review.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/helsinki-senate/context.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/helsinki-senate/scene.glb",
+          "status": 200
+        }
+      ],
+      "denied": [],
+      "external": [],
+      "errors": []
+    },
+    "phone": {
+      "requests": [
+        "/",
+        "/style.css",
+        "/main.js",
+        "/vendor/three/build/three.module.js",
+        "/vendor/three/examples/jsm/controls/OrbitControls.js",
+        "/vendor/three/examples/jsm/loaders/GLTFLoader.js",
+        "/vendor/three/examples/jsm/loaders/HDRLoader.js",
+        "/vendor/three/examples/jsm/utils/BufferGeometryUtils.js",
+        "/vendor/three/examples/jsm/utils/SkeletonUtils.js",
+        "/vendor/three/build/three.core.js",
+        "/api/sites",
+        "/sites/delft-markt/manifest.json",
+        "/sites/delft-markt/context.json",
+        "/sites/delft-markt/review.json",
+        "/lighting/resources.json",
+        "/sites/helsinki-senate/manifest.json",
+        "/sites/helsinki-senate/context.json",
+        "/sites/helsinki-senate/review.json",
+        "/lighting/environments/day-1k.hdr",
+        "/sites/helsinki-senate/scene.glb",
+        "/lighting/environments/night-1k.hdr"
+      ],
+      "responses": [
+        {
+          "path": "/",
+          "status": 200
+        },
+        {
+          "path": "/style.css",
+          "status": 200
+        },
+        {
+          "path": "/main.js",
+          "status": 200
+        },
+        {
+          "path": "/vendor/three/examples/jsm/controls/OrbitControls.js",
+          "status": 200
+        },
+        {
+          "path": "/vendor/three/examples/jsm/loaders/HDRLoader.js",
+          "status": 200
+        },
+        {
+          "path": "/vendor/three/examples/jsm/loaders/GLTFLoader.js",
+          "status": 200
+        },
+        {
+          "path": "/vendor/three/build/three.module.js",
+          "status": 200
+        },
+        {
+          "path": "/vendor/three/examples/jsm/utils/BufferGeometryUtils.js",
+          "status": 200
+        },
+        {
+          "path": "/vendor/three/examples/jsm/utils/SkeletonUtils.js",
+          "status": 200
+        },
+        {
+          "path": "/vendor/three/build/three.core.js",
+          "status": 200
+        },
+        {
+          "path": "/api/sites",
+          "status": 200
+        },
+        {
+          "path": "/lighting/resources.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/helsinki-senate/manifest.json",
+          "status": 200
+        },
+        {
+          "path": "/lighting/environments/day-1k.hdr",
+          "status": 200
+        },
+        {
+          "path": "/sites/helsinki-senate/review.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/helsinki-senate/context.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/helsinki-senate/scene.glb",
+          "status": 200
+        },
+        {
+          "path": "/lighting/environments/night-1k.hdr",
+          "status": 200
+        }
+      ],
+      "denied": [],
+      "external": [],
+      "errors": []
+    },
+    "recovery": {
+      "requests": [
+        "/",
+        "/style.css",
+        "/main.js",
+        "/vendor/three/build/three.module.js",
+        "/vendor/three/examples/jsm/controls/OrbitControls.js",
+        "/vendor/three/examples/jsm/loaders/GLTFLoader.js",
+        "/vendor/three/examples/jsm/loaders/HDRLoader.js",
+        "/vendor/three/build/three.core.js",
+        "/vendor/three/examples/jsm/utils/BufferGeometryUtils.js",
+        "/vendor/three/examples/jsm/utils/SkeletonUtils.js",
+        "/api/sites",
+        "/sites/delft-markt/manifest.json",
+        "/sites/delft-markt/context.json",
+        "/sites/delft-markt/review.json",
+        "/lighting/resources.json",
+        "/lighting/environments/day-1k.hdr",
+        "/sites/delft-markt/scene.glb",
+        "/sites/helsinki-senate/manifest.json",
+        "/sites/helsinki-senate/context.json",
+        "/sites/helsinki-senate/review.json",
+        "/sites/helsinki-senate/scene.glb",
+        "/sites/helsinki-senate/manifest.json",
+        "/sites/helsinki-senate/context.json",
+        "/sites/helsinki-senate/review.json",
+        "/sites/helsinki-senate/scene.glb",
+        "/lighting/environments/night-1k.hdr",
+        "/lighting/environments/night-1k.hdr"
+      ],
+      "responses": [
+        {
+          "path": "/",
+          "status": 200
+        },
+        {
+          "path": "/style.css",
+          "status": 200
+        },
+        {
+          "path": "/main.js",
+          "status": 200
+        },
+        {
+          "path": "/vendor/three/build/three.module.js",
+          "status": 200
+        },
+        {
+          "path": "/vendor/three/examples/jsm/controls/OrbitControls.js",
+          "status": 200
+        },
+        {
+          "path": "/vendor/three/examples/jsm/loaders/HDRLoader.js",
+          "status": 200
+        },
+        {
+          "path": "/vendor/three/examples/jsm/loaders/GLTFLoader.js",
+          "status": 200
+        },
+        {
+          "path": "/vendor/three/examples/jsm/utils/SkeletonUtils.js",
+          "status": 200
+        },
+        {
+          "path": "/vendor/three/examples/jsm/utils/BufferGeometryUtils.js",
+          "status": 200
+        },
+        {
+          "path": "/vendor/three/build/three.core.js",
+          "status": 200
+        },
+        {
+          "path": "/api/sites",
+          "status": 200
+        },
+        {
+          "path": "/lighting/resources.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/delft-markt/manifest.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/delft-markt/review.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/delft-markt/context.json",
+          "status": 200
+        },
+        {
+          "path": "/lighting/environments/day-1k.hdr",
+          "status": 200
+        },
+        {
+          "path": "/sites/delft-markt/scene.glb",
+          "status": 200
+        },
+        {
+          "path": "/sites/helsinki-senate/manifest.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/helsinki-senate/review.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/helsinki-senate/context.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/helsinki-senate/manifest.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/helsinki-senate/review.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/helsinki-senate/context.json",
+          "status": 200
+        },
+        {
+          "path": "/sites/helsinki-senate/scene.glb",
+          "status": 200
+        },
+        {
+          "path": "/lighting/environments/night-1k.hdr",
+          "status": 200
+        }
+      ],
+      "denied": [
+        "http://127.0.0.1:35159/sites/helsinki-senate/scene.glb",
+        "http://127.0.0.1:35159/lighting/environments/night-1k.hdr"
+      ],
+      "external": [],
+      "errors": []
+    }
+  },
+  "limits": [
+    "Internal geographic-context review only; architectural fidelity, access, grade and walking remain unreviewed.",
+    "Browser automation is not a physical-device or human recognition study.",
+    "Failure cases deny actual local requests; successful files and source responses are not substituted."
+  ],
+  "browser": "151.0.7922.34",
+  "finishedAt": "2026-10-21T05:48:08.864Z",
+  "passed": 36,
+  "failed": 0
+}

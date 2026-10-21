@@ -1,0 +1,5263 @@
+{
+  "schemaVersion": 1,
+  "id": "delft-markt",
+  "title": {
+    "en": "Delft Markt · geographic context",
+    "zh": "代尔夫特市场广场 · 地理环境模型"
+  },
+  "model": {
+    "file": "scene.glb",
+    "sha256": "b9a63090d9ab6a2335c214b8361519abf9c97ef0dfd33ca1e0fe6b78a08b23e9",
+    "bytes": 844128
+  },
+  "editable": {
+    "file": "site.blend",
+    "sha256": "7f759222af3a20b3a2abdc52c748bca89e3ff79f8304a88c092f10839fea2084",
+    "bytes": 3856288
+  },
+  "geometry": {
+    "triangles": 11135,
+    "batches": 10,
+    "features": 121,
+    "buildings": 84,
+    "courtyardRings": 0,
+    "windowPanels": 1699
+  },
+  "representation": "geographic-context",
+  "navigation": "unreviewed",
+  "landmarkArchitecture": "unreviewed",
+  "source": {
+    "format": "osm-xml",
+    "queryBounds": [
+      4.357,
+      52.0108,
+      4.3595,
+      52.0121
+    ],
+    "sha256": "69e5fb1b52dd50d95a1ac9c2fa59616bb668ed7db46d9bfcb8e93dd23f607b7e",
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=4.3570,52.0108,4.3595,52.0121",
+    "retrievedAt": "2026-10-21T04:51:21.781506+00:00",
+    "license": "ODbL-1.0",
+    "attribution": "© OpenStreetMap contributors"
+  },
+  "origin": {
+    "longitude": 4.35825,
+    "latitude": 52.01145
+  },
+  "projection": {
+    "sourceCRS": "EPSG:4326",
+    "localCRS": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"World Geodetic System 1984\",ELLIPSOID[\"WGS 84\",6378137,298.257223563,LENGTHUNIT[\"metre\",1]],ID[\"EPSG\",6326]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Azimuthal Equidistant\",ID[\"EPSG\",1125]],PARAMETER[\"Latitude of natural origin\",52.01145,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8801]],PARAMETER[\"Longitude of natural origin\",4.35825,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+    "axisOrder": "longitude, latitude",
+    "localAxes": "x east, y north, z height; metres",
+    "gltfMapping": "[x, height, -y]"
+  },
+  "bounds": [
+    -85.827,
+    -72.323,
+    85.827,
+    72.325
+  ],
+  "geographicBounds": [
+    4.357,
+    52.0108,
+    4.3595,
+    52.0121
+  ],
+  "contextSha256": "f1f3ef1232781785296aca6f0b6475e0bcdce30c1554fcd939ac1344d6897fa8",
+  "configSha256": "6634bd4c2740ef16bb69f79bee2c392176395e0af1d24330607926f6da3b1187",
+  "generatorSha256": "21828805503755c79b0bddfdf9d7365445feaaf37813a4465ac5ae66dcd256c2",
+  "blenderVersion": "4.3.2",
+  "limits": {
+    "modelBytes": 8388608,
+    "triangles": 100000,
+    "batches": 128
+  },
+  "authoredPolicy": {
+    "displayPrecisionMetres": 0.001,
+    "defaultBuildingHeightMetres": 12,
+    "storeyHeightMetres": 3.2,
+    "roadWidthMetres": 6,
+    "pathWidthMetres": 2.5,
+    "windowSpacingMetres": 3.2,
+    "ground": "level, without a surveyed elevation datum",
+    "facades": "shared authored neutral finishes and window rhythm; landmark-specific architecture requires review",
+    "lighting": "authored daylight/night presentation; no current occupancy or opening-hour claim"
+  },
+  "features": [
+    {
+      "sourceId": "osm:way:209351406",
+      "kind": "building",
+      "height": {
+        "metres": 20.0,
+        "origin": "observed",
+        "sourceTag": "height",
+        "sourceValue": "20"
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 28,
+      "sourceTimestamp": "2026-03-13T18:19:34Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:209351406",
+          "firstVertex": 0,
+          "vertexCount": 274,
+          "firstPolygon": 0,
+          "polygonCount": 78
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:209351406",
+          "firstVertex": 0,
+          "vertexCount": 114,
+          "firstPolygon": 0,
+          "polygonCount": 38
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:209351406",
+          "firstVertex": 0,
+          "vertexCount": 656,
+          "firstPolygon": 0,
+          "polygonCount": 164
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:209351406",
+          "firstVertex": 0,
+          "vertexCount": 528,
+          "firstPolygon": 0,
+          "polygonCount": 132
+        }
+      ],
+      "windowPanels": 132,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1009091673",
+      "kind": "building",
+      "height": {
+        "metres": 3.2,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "1",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2023-12-25T09:24:53Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:1009091673",
+          "firstVertex": 0,
+          "vertexCount": 22,
+          "firstPolygon": 0,
+          "polygonCount": 6
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:1009091673",
+          "firstVertex": 114,
+          "vertexCount": 6,
+          "firstPolygon": 38,
+          "polygonCount": 2
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:1009091673",
+          "firstVertex": 656,
+          "vertexCount": 16,
+          "firstPolygon": 164,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1410360244",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2026-06-13T12:18:01Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:1410360244",
+          "firstVertex": 22,
+          "vertexCount": 274,
+          "firstPolygon": 6,
+          "polygonCount": 78
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:1410360244",
+          "firstVertex": 120,
+          "vertexCount": 114,
+          "firstPolygon": 40,
+          "polygonCount": 38
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:1410360244",
+          "firstVertex": 672,
+          "vertexCount": 140,
+          "firstPolygon": 168,
+          "polygonCount": 35
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:1410360244",
+          "firstVertex": 528,
+          "vertexCount": 84,
+          "firstPolygon": 132,
+          "polygonCount": 21
+        }
+      ],
+      "windowPanels": 21,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:227924234",
+      "kind": "building",
+      "height": {
+        "metres": 3.2,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "1",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 8,
+      "sourceTimestamp": "2026-03-13T18:19:34Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:227924234",
+          "firstVertex": 0,
+          "vertexCount": 22,
+          "firstPolygon": 0,
+          "polygonCount": 6
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:227924234",
+          "firstVertex": 234,
+          "vertexCount": 6,
+          "firstPolygon": 78,
+          "polygonCount": 2
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:227924234",
+          "firstVertex": 812,
+          "vertexCount": 16,
+          "firstPolygon": 203,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254135528",
+      "kind": "building",
+      "height": {
+        "metres": 12.8,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "4",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 10,
+      "sourceTimestamp": "2026-03-13T21:38:51Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:254135528",
+          "firstVertex": 274,
+          "vertexCount": 281,
+          "firstPolygon": 78,
+          "polygonCount": 80
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254135528",
+          "firstVertex": 240,
+          "vertexCount": 117,
+          "firstPolygon": 80,
+          "polygonCount": 39
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254135528",
+          "firstVertex": 828,
+          "vertexCount": 240,
+          "firstPolygon": 207,
+          "polygonCount": 60
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254135528",
+          "firstVertex": 612,
+          "vertexCount": 156,
+          "firstPolygon": 153,
+          "polygonCount": 39
+        }
+      ],
+      "windowPanels": 39,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254135542",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2026-03-13T21:38:51Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254135542",
+          "firstVertex": 22,
+          "vertexCount": 29,
+          "firstPolygon": 6,
+          "polygonCount": 8
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254135542",
+          "firstVertex": 357,
+          "vertexCount": 9,
+          "firstPolygon": 119,
+          "polygonCount": 3
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254135542",
+          "firstVertex": 1068,
+          "vertexCount": 104,
+          "firstPolygon": 267,
+          "polygonCount": 26
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254135542",
+          "firstVertex": 768,
+          "vertexCount": 84,
+          "firstPolygon": 192,
+          "polygonCount": 21
+        }
+      ],
+      "windowPanels": 21,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254135598",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-03-13T21:38:51Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:254135598",
+          "firstVertex": 296,
+          "vertexCount": 64,
+          "firstPolygon": 84,
+          "polygonCount": 18
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254135598",
+          "firstVertex": 366,
+          "vertexCount": 24,
+          "firstPolygon": 122,
+          "polygonCount": 8
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254135598",
+          "firstVertex": 1172,
+          "vertexCount": 116,
+          "firstPolygon": 293,
+          "polygonCount": 29
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254135598",
+          "firstVertex": 852,
+          "vertexCount": 84,
+          "firstPolygon": 213,
+          "polygonCount": 21
+        }
+      ],
+      "windowPanels": 21,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254135605",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2026-08-18T18:16:19Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:254135605",
+          "firstVertex": 555,
+          "vertexCount": 85,
+          "firstPolygon": 158,
+          "polygonCount": 24
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254135605",
+          "firstVertex": 390,
+          "vertexCount": 33,
+          "firstPolygon": 130,
+          "polygonCount": 11
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254135605",
+          "firstVertex": 1288,
+          "vertexCount": 72,
+          "firstPolygon": 322,
+          "polygonCount": 18
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254135605",
+          "firstVertex": 936,
+          "vertexCount": 32,
+          "firstPolygon": 234,
+          "polygonCount": 8
+        }
+      ],
+      "windowPanels": 8,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254135688",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-03-13T21:38:51Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:254135688",
+          "firstVertex": 360,
+          "vertexCount": 64,
+          "firstPolygon": 102,
+          "polygonCount": 18
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254135688",
+          "firstVertex": 423,
+          "vertexCount": 24,
+          "firstPolygon": 141,
+          "polygonCount": 8
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254135688",
+          "firstVertex": 1360,
+          "vertexCount": 160,
+          "firstPolygon": 340,
+          "polygonCount": 40
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254135688",
+          "firstVertex": 968,
+          "vertexCount": 132,
+          "firstPolygon": 242,
+          "polygonCount": 33
+        }
+      ],
+      "windowPanels": 33,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254135703",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2026-03-13T21:38:51Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:254135703",
+          "firstVertex": 424,
+          "vertexCount": 71,
+          "firstPolygon": 120,
+          "polygonCount": 20
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254135703",
+          "firstVertex": 447,
+          "vertexCount": 27,
+          "firstPolygon": 149,
+          "polygonCount": 9
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254135703",
+          "firstVertex": 1520,
+          "vertexCount": 132,
+          "firstPolygon": 380,
+          "polygonCount": 33
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254135703",
+          "firstVertex": 1100,
+          "vertexCount": 96,
+          "firstPolygon": 275,
+          "polygonCount": 24
+        }
+      ],
+      "windowPanels": 24,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254135908",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2024-11-21T21:30:22Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:254135908",
+          "firstVertex": 640,
+          "vertexCount": 64,
+          "firstPolygon": 182,
+          "polygonCount": 18
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254135908",
+          "firstVertex": 474,
+          "vertexCount": 24,
+          "firstPolygon": 158,
+          "polygonCount": 8
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254135908",
+          "firstVertex": 1652,
+          "vertexCount": 168,
+          "firstPolygon": 413,
+          "polygonCount": 42
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254135908",
+          "firstVertex": 1196,
+          "vertexCount": 132,
+          "firstPolygon": 299,
+          "polygonCount": 33
+        }
+      ],
+      "windowPanels": 33,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254135934",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2026-03-13T21:38:51Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:254135934",
+          "firstVertex": 704,
+          "vertexCount": 71,
+          "firstPolygon": 200,
+          "polygonCount": 20
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254135934",
+          "firstVertex": 498,
+          "vertexCount": 27,
+          "firstPolygon": 166,
+          "polygonCount": 9
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254135934",
+          "firstVertex": 1820,
+          "vertexCount": 108,
+          "firstPolygon": 455,
+          "polygonCount": 27
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254135934",
+          "firstVertex": 1328,
+          "vertexCount": 80,
+          "firstPolygon": 332,
+          "polygonCount": 20
+        }
+      ],
+      "windowPanels": 20,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254135981",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-03-13T21:38:51Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:254135981",
+          "firstVertex": 495,
+          "vertexCount": 78,
+          "firstPolygon": 140,
+          "polygonCount": 22
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254135981",
+          "firstVertex": 525,
+          "vertexCount": 30,
+          "firstPolygon": 175,
+          "polygonCount": 10
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254135981",
+          "firstVertex": 1928,
+          "vertexCount": 100,
+          "firstPolygon": 482,
+          "polygonCount": 25
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254135981",
+          "firstVertex": 1408,
+          "vertexCount": 84,
+          "firstPolygon": 352,
+          "polygonCount": 21
+        }
+      ],
+      "windowPanels": 21,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254136006",
+      "kind": "building",
+      "height": {
+        "metres": 6.4,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "2",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2026-03-13T21:38:51Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:254136006",
+          "firstVertex": 775,
+          "vertexCount": 78,
+          "firstPolygon": 220,
+          "polygonCount": 22
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254136006",
+          "firstVertex": 555,
+          "vertexCount": 30,
+          "firstPolygon": 185,
+          "polygonCount": 10
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254136006",
+          "firstVertex": 2028,
+          "vertexCount": 92,
+          "firstPolygon": 507,
+          "polygonCount": 23
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254136006",
+          "firstVertex": 1492,
+          "vertexCount": 52,
+          "firstPolygon": 373,
+          "polygonCount": 13
+        }
+      ],
+      "windowPanels": 13,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254136101",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-03-13T21:38:51Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:254136101",
+          "firstVertex": 853,
+          "vertexCount": 78,
+          "firstPolygon": 242,
+          "polygonCount": 22
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254136101",
+          "firstVertex": 585,
+          "vertexCount": 30,
+          "firstPolygon": 195,
+          "polygonCount": 10
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254136101",
+          "firstVertex": 2120,
+          "vertexCount": 96,
+          "firstPolygon": 530,
+          "polygonCount": 24
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254136101",
+          "firstVertex": 1544,
+          "vertexCount": 72,
+          "firstPolygon": 386,
+          "polygonCount": 18
+        }
+      ],
+      "windowPanels": 18,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254136128",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-03-13T21:38:51Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:254136128",
+          "firstVertex": 573,
+          "vertexCount": 85,
+          "firstPolygon": 162,
+          "polygonCount": 24
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254136128",
+          "firstVertex": 615,
+          "vertexCount": 33,
+          "firstPolygon": 205,
+          "polygonCount": 11
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254136128",
+          "firstVertex": 2216,
+          "vertexCount": 112,
+          "firstPolygon": 554,
+          "polygonCount": 28
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254136128",
+          "firstVertex": 1616,
+          "vertexCount": 84,
+          "firstPolygon": 404,
+          "polygonCount": 21
+        }
+      ],
+      "windowPanels": 21,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254136136",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-03-13T21:38:51Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254136136",
+          "firstVertex": 51,
+          "vertexCount": 85,
+          "firstPolygon": 14,
+          "polygonCount": 24
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254136136",
+          "firstVertex": 648,
+          "vertexCount": 33,
+          "firstPolygon": 216,
+          "polygonCount": 11
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254136136",
+          "firstVertex": 2328,
+          "vertexCount": 168,
+          "firstPolygon": 582,
+          "polygonCount": 42
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254136136",
+          "firstVertex": 1700,
+          "vertexCount": 144,
+          "firstPolygon": 425,
+          "polygonCount": 36
+        }
+      ],
+      "windowPanels": 36,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254136234",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 7,
+      "sourceTimestamp": "2026-06-13T12:18:01Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254136234",
+          "firstVertex": 136,
+          "vertexCount": 71,
+          "firstPolygon": 38,
+          "polygonCount": 20
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254136234",
+          "firstVertex": 681,
+          "vertexCount": 27,
+          "firstPolygon": 227,
+          "polygonCount": 9
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254136234",
+          "firstVertex": 2496,
+          "vertexCount": 136,
+          "firstPolygon": 624,
+          "polygonCount": 34
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254136234",
+          "firstVertex": 1844,
+          "vertexCount": 112,
+          "firstPolygon": 461,
+          "polygonCount": 28
+        }
+      ],
+      "windowPanels": 28,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254136330",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 7,
+      "sourceTimestamp": "2026-03-13T21:38:51Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:254136330",
+          "firstVertex": 931,
+          "vertexCount": 99,
+          "firstPolygon": 264,
+          "polygonCount": 28
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254136330",
+          "firstVertex": 708,
+          "vertexCount": 39,
+          "firstPolygon": 236,
+          "polygonCount": 13
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254136330",
+          "firstVertex": 2632,
+          "vertexCount": 192,
+          "firstPolygon": 658,
+          "polygonCount": 48
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254136330",
+          "firstVertex": 1956,
+          "vertexCount": 144,
+          "firstPolygon": 489,
+          "polygonCount": 36
+        }
+      ],
+      "windowPanels": 36,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254136396",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2026-03-13T21:38:51Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254136396",
+          "firstVertex": 207,
+          "vertexCount": 99,
+          "firstPolygon": 58,
+          "polygonCount": 28
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254136396",
+          "firstVertex": 747,
+          "vertexCount": 39,
+          "firstPolygon": 249,
+          "polygonCount": 13
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254136396",
+          "firstVertex": 2824,
+          "vertexCount": 156,
+          "firstPolygon": 706,
+          "polygonCount": 39
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254136396",
+          "firstVertex": 2100,
+          "vertexCount": 120,
+          "firstPolygon": 525,
+          "polygonCount": 30
+        }
+      ],
+      "windowPanels": 30,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254136435",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2026-03-13T21:38:51Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254136435",
+          "firstVertex": 306,
+          "vertexCount": 78,
+          "firstPolygon": 86,
+          "polygonCount": 22
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254136435",
+          "firstVertex": 786,
+          "vertexCount": 30,
+          "firstPolygon": 262,
+          "polygonCount": 10
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254136435",
+          "firstVertex": 2980,
+          "vertexCount": 112,
+          "firstPolygon": 745,
+          "polygonCount": 28
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254136435",
+          "firstVertex": 2220,
+          "vertexCount": 80,
+          "firstPolygon": 555,
+          "polygonCount": 20
+        }
+      ],
+      "windowPanels": 20,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254136514",
+      "kind": "building",
+      "height": {
+        "metres": 6.4,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "2",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-03-13T21:38:51Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:254136514",
+          "firstVertex": 658,
+          "vertexCount": 141,
+          "firstPolygon": 186,
+          "polygonCount": 40
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254136514",
+          "firstVertex": 816,
+          "vertexCount": 57,
+          "firstPolygon": 272,
+          "polygonCount": 19
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254136514",
+          "firstVertex": 3092,
+          "vertexCount": 152,
+          "firstPolygon": 773,
+          "polygonCount": 38
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254136514",
+          "firstVertex": 2300,
+          "vertexCount": 72,
+          "firstPolygon": 575,
+          "polygonCount": 18
+        }
+      ],
+      "windowPanels": 18,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254136520",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2026-03-13T21:38:51Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:254136520",
+          "firstVertex": 1030,
+          "vertexCount": 120,
+          "firstPolygon": 292,
+          "polygonCount": 34
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254136520",
+          "firstVertex": 873,
+          "vertexCount": 48,
+          "firstPolygon": 291,
+          "polygonCount": 16
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254136520",
+          "firstVertex": 3244,
+          "vertexCount": 36,
+          "firstPolygon": 811,
+          "polygonCount": 9
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254136520",
+          "firstVertex": 2372,
+          "vertexCount": 16,
+          "firstPolygon": 593,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 4,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254136524",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2026-03-13T21:38:51Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254136524",
+          "firstVertex": 384,
+          "vertexCount": 22,
+          "firstPolygon": 108,
+          "polygonCount": 6
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254136524",
+          "firstVertex": 921,
+          "vertexCount": 6,
+          "firstPolygon": 307,
+          "polygonCount": 2
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254136524",
+          "firstVertex": 3280,
+          "vertexCount": 112,
+          "firstPolygon": 820,
+          "polygonCount": 28
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254136524",
+          "firstVertex": 2388,
+          "vertexCount": 96,
+          "firstPolygon": 597,
+          "polygonCount": 24
+        }
+      ],
+      "windowPanels": 24,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254136561",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-03-13T21:38:53Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:254136561",
+          "firstVertex": 1150,
+          "vertexCount": 127,
+          "firstPolygon": 326,
+          "polygonCount": 36
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254136561",
+          "firstVertex": 927,
+          "vertexCount": 51,
+          "firstPolygon": 309,
+          "polygonCount": 17
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254136561",
+          "firstVertex": 3392,
+          "vertexCount": 184,
+          "firstPolygon": 848,
+          "polygonCount": 46
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254136561",
+          "firstVertex": 2484,
+          "vertexCount": 136,
+          "firstPolygon": 621,
+          "polygonCount": 34
+        }
+      ],
+      "windowPanels": 34,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254136581",
+      "kind": "building",
+      "height": {
+        "metres": 3.2,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "1",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2026-03-13T21:38:53Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:254136581",
+          "firstVertex": 799,
+          "vertexCount": 141,
+          "firstPolygon": 226,
+          "polygonCount": 40
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254136581",
+          "firstVertex": 978,
+          "vertexCount": 57,
+          "firstPolygon": 326,
+          "polygonCount": 19
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254136581",
+          "firstVertex": 3576,
+          "vertexCount": 20,
+          "firstPolygon": 894,
+          "polygonCount": 5
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254136638",
+      "kind": "building",
+      "height": {
+        "metres": 12.8,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "4",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2026-03-13T21:38:53Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:254136638",
+          "firstVertex": 940,
+          "vertexCount": 148,
+          "firstPolygon": 266,
+          "polygonCount": 42
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254136638",
+          "firstVertex": 1035,
+          "vertexCount": 60,
+          "firstPolygon": 345,
+          "polygonCount": 20
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254136638",
+          "firstVertex": 3596,
+          "vertexCount": 164,
+          "firstPolygon": 899,
+          "polygonCount": 41
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254136638",
+          "firstVertex": 2620,
+          "vertexCount": 120,
+          "firstPolygon": 655,
+          "polygonCount": 30
+        }
+      ],
+      "windowPanels": 30,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254136732",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2026-03-13T21:38:53Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254136732",
+          "firstVertex": 406,
+          "vertexCount": 50,
+          "firstPolygon": 114,
+          "polygonCount": 14
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254136732",
+          "firstVertex": 1095,
+          "vertexCount": 18,
+          "firstPolygon": 365,
+          "polygonCount": 6
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254136732",
+          "firstVertex": 3760,
+          "vertexCount": 160,
+          "firstPolygon": 940,
+          "polygonCount": 40
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254136732",
+          "firstVertex": 2740,
+          "vertexCount": 132,
+          "firstPolygon": 685,
+          "polygonCount": 33
+        }
+      ],
+      "windowPanels": 33,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254136739",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 8,
+      "sourceTimestamp": "2024-11-21T21:30:22Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254136739",
+          "firstVertex": 456,
+          "vertexCount": 78,
+          "firstPolygon": 128,
+          "polygonCount": 22
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254136739",
+          "firstVertex": 1113,
+          "vertexCount": 30,
+          "firstPolygon": 371,
+          "polygonCount": 10
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254136739",
+          "firstVertex": 3920,
+          "vertexCount": 92,
+          "firstPolygon": 980,
+          "polygonCount": 23
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254136739",
+          "firstVertex": 2872,
+          "vertexCount": 48,
+          "firstPolygon": 718,
+          "polygonCount": 12
+        }
+      ],
+      "windowPanels": 12,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254136763",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2026-03-13T21:38:53Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:254136763",
+          "firstVertex": 1277,
+          "vertexCount": 71,
+          "firstPolygon": 362,
+          "polygonCount": 20
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254136763",
+          "firstVertex": 1143,
+          "vertexCount": 27,
+          "firstPolygon": 381,
+          "polygonCount": 9
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254136763",
+          "firstVertex": 4012,
+          "vertexCount": 124,
+          "firstPolygon": 1003,
+          "polygonCount": 31
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254136763",
+          "firstVertex": 2920,
+          "vertexCount": 80,
+          "firstPolygon": 730,
+          "polygonCount": 20
+        }
+      ],
+      "windowPanels": 20,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254136781",
+      "kind": "building",
+      "height": {
+        "metres": 12.8,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "4",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2026-03-13T21:38:53Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:254136781",
+          "firstVertex": 1088,
+          "vertexCount": 239,
+          "firstPolygon": 308,
+          "polygonCount": 68
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254136781",
+          "firstVertex": 1170,
+          "vertexCount": 99,
+          "firstPolygon": 390,
+          "polygonCount": 33
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254136781",
+          "firstVertex": 4136,
+          "vertexCount": 92,
+          "firstPolygon": 1034,
+          "polygonCount": 23
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254136781",
+          "firstVertex": 3000,
+          "vertexCount": 60,
+          "firstPolygon": 750,
+          "polygonCount": 15
+        }
+      ],
+      "windowPanels": 15,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254136868",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-07-14T20:18:45Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:254136868",
+          "firstVertex": 1348,
+          "vertexCount": 22,
+          "firstPolygon": 382,
+          "polygonCount": 6
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254136868",
+          "firstVertex": 1269,
+          "vertexCount": 6,
+          "firstPolygon": 423,
+          "polygonCount": 2
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254136868",
+          "firstVertex": 4228,
+          "vertexCount": 100,
+          "firstPolygon": 1057,
+          "polygonCount": 25
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254136868",
+          "firstVertex": 3060,
+          "vertexCount": 84,
+          "firstPolygon": 765,
+          "polygonCount": 21
+        }
+      ],
+      "windowPanels": 21,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254136908",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-03-13T21:38:53Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:254136908",
+          "firstVertex": 1327,
+          "vertexCount": 22,
+          "firstPolygon": 376,
+          "polygonCount": 6
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254136908",
+          "firstVertex": 1275,
+          "vertexCount": 6,
+          "firstPolygon": 425,
+          "polygonCount": 2
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254136908",
+          "firstVertex": 4328,
+          "vertexCount": 136,
+          "firstPolygon": 1082,
+          "polygonCount": 34
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254136908",
+          "firstVertex": 3144,
+          "vertexCount": 120,
+          "firstPolygon": 786,
+          "polygonCount": 30
+        }
+      ],
+      "windowPanels": 30,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254137111",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2026-03-13T21:38:53Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:254137111",
+          "firstVertex": 1349,
+          "vertexCount": 22,
+          "firstPolygon": 382,
+          "polygonCount": 6
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254137111",
+          "firstVertex": 1281,
+          "vertexCount": 6,
+          "firstPolygon": 427,
+          "polygonCount": 2
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254137111",
+          "firstVertex": 4464,
+          "vertexCount": 88,
+          "firstPolygon": 1116,
+          "polygonCount": 22
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254137111",
+          "firstVertex": 3264,
+          "vertexCount": 72,
+          "firstPolygon": 816,
+          "polygonCount": 18
+        }
+      ],
+      "windowPanels": 18,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254137191",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2026-03-13T21:38:53Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254137191",
+          "firstVertex": 534,
+          "vertexCount": 29,
+          "firstPolygon": 150,
+          "polygonCount": 8
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254137191",
+          "firstVertex": 1287,
+          "vertexCount": 9,
+          "firstPolygon": 429,
+          "polygonCount": 3
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254137191",
+          "firstVertex": 4552,
+          "vertexCount": 68,
+          "firstPolygon": 1138,
+          "polygonCount": 17
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254137191",
+          "firstVertex": 3336,
+          "vertexCount": 48,
+          "firstPolygon": 834,
+          "polygonCount": 12
+        }
+      ],
+      "windowPanels": 12,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254137223",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2026-03-13T21:38:53Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254137223",
+          "firstVertex": 563,
+          "vertexCount": 22,
+          "firstPolygon": 158,
+          "polygonCount": 6
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254137223",
+          "firstVertex": 1296,
+          "vertexCount": 6,
+          "firstPolygon": 432,
+          "polygonCount": 2
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254137223",
+          "firstVertex": 4620,
+          "vertexCount": 88,
+          "firstPolygon": 1155,
+          "polygonCount": 22
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254137223",
+          "firstVertex": 3384,
+          "vertexCount": 72,
+          "firstPolygon": 846,
+          "polygonCount": 18
+        }
+      ],
+      "windowPanels": 18,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254137227",
+      "kind": "building",
+      "height": {
+        "metres": 6.4,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "2",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2026-03-13T21:38:53Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254137227",
+          "firstVertex": 585,
+          "vertexCount": 22,
+          "firstPolygon": 164,
+          "polygonCount": 6
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254137227",
+          "firstVertex": 1302,
+          "vertexCount": 6,
+          "firstPolygon": 434,
+          "polygonCount": 2
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254137227",
+          "firstVertex": 4708,
+          "vertexCount": 32,
+          "firstPolygon": 1177,
+          "polygonCount": 8
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254137227",
+          "firstVertex": 3456,
+          "vertexCount": 16,
+          "firstPolygon": 864,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 4,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254137233",
+      "kind": "building",
+      "height": {
+        "metres": 6.4,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "2",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2026-03-13T21:38:53Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:254137233",
+          "firstVertex": 1370,
+          "vertexCount": 22,
+          "firstPolygon": 388,
+          "polygonCount": 6
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254137233",
+          "firstVertex": 1308,
+          "vertexCount": 6,
+          "firstPolygon": 436,
+          "polygonCount": 2
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254137233",
+          "firstVertex": 4740,
+          "vertexCount": 40,
+          "firstPolygon": 1185,
+          "polygonCount": 10
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254137233",
+          "firstVertex": 3472,
+          "vertexCount": 24,
+          "firstPolygon": 868,
+          "polygonCount": 6
+        }
+      ],
+      "windowPanels": 6,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254137271",
+      "kind": "building",
+      "height": {
+        "metres": 3.2,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "1",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-03-13T21:38:53Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254137271",
+          "firstVertex": 607,
+          "vertexCount": 22,
+          "firstPolygon": 170,
+          "polygonCount": 6
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254137271",
+          "firstVertex": 1314,
+          "vertexCount": 6,
+          "firstPolygon": 438,
+          "polygonCount": 2
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254137271",
+          "firstVertex": 4780,
+          "vertexCount": 16,
+          "firstPolygon": 1195,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254137292",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2026-03-13T21:38:53Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:254137292",
+          "firstVertex": 1371,
+          "vertexCount": 36,
+          "firstPolygon": 388,
+          "polygonCount": 10
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254137292",
+          "firstVertex": 1320,
+          "vertexCount": 12,
+          "firstPolygon": 440,
+          "polygonCount": 4
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254137292",
+          "firstVertex": 4796,
+          "vertexCount": 108,
+          "firstPolygon": 1199,
+          "polygonCount": 27
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254137292",
+          "firstVertex": 3496,
+          "vertexCount": 84,
+          "firstPolygon": 874,
+          "polygonCount": 21
+        }
+      ],
+      "windowPanels": 21,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254137436",
+      "kind": "building",
+      "height": {
+        "metres": 6.4,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "2",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 7,
+      "sourceTimestamp": "2026-03-13T21:38:53Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254137436",
+          "firstVertex": 629,
+          "vertexCount": 29,
+          "firstPolygon": 176,
+          "polygonCount": 8
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254137436",
+          "firstVertex": 1332,
+          "vertexCount": 9,
+          "firstPolygon": 444,
+          "polygonCount": 3
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254137436",
+          "firstVertex": 4904,
+          "vertexCount": 36,
+          "firstPolygon": 1226,
+          "polygonCount": 9
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254137436",
+          "firstVertex": 3580,
+          "vertexCount": 16,
+          "firstPolygon": 895,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 4,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254137568",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2024-11-21T21:30:22Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:254137568",
+          "firstVertex": 1392,
+          "vertexCount": 29,
+          "firstPolygon": 394,
+          "polygonCount": 8
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254137568",
+          "firstVertex": 1341,
+          "vertexCount": 9,
+          "firstPolygon": 447,
+          "polygonCount": 3
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254137568",
+          "firstVertex": 4940,
+          "vertexCount": 68,
+          "firstPolygon": 1235,
+          "polygonCount": 17
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254137568",
+          "firstVertex": 3596,
+          "vertexCount": 48,
+          "firstPolygon": 899,
+          "polygonCount": 12
+        }
+      ],
+      "windowPanels": 12,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254137702",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 7,
+      "sourceTimestamp": "2026-03-13T21:38:53Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:254137702",
+          "firstVertex": 1407,
+          "vertexCount": 29,
+          "firstPolygon": 398,
+          "polygonCount": 8
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254137702",
+          "firstVertex": 1350,
+          "vertexCount": 9,
+          "firstPolygon": 450,
+          "polygonCount": 3
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254137702",
+          "firstVertex": 5008,
+          "vertexCount": 160,
+          "firstPolygon": 1252,
+          "polygonCount": 40
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254137702",
+          "firstVertex": 3644,
+          "vertexCount": 144,
+          "firstPolygon": 911,
+          "polygonCount": 36
+        }
+      ],
+      "windowPanels": 36,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254137751",
+      "kind": "building",
+      "height": {
+        "metres": 6.4,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "2",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-03-13T21:38:53Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:254137751",
+          "firstVertex": 1421,
+          "vertexCount": 22,
+          "firstPolygon": 402,
+          "polygonCount": 6
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254137751",
+          "firstVertex": 1359,
+          "vertexCount": 6,
+          "firstPolygon": 453,
+          "polygonCount": 2
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254137751",
+          "firstVertex": 5168,
+          "vertexCount": 48,
+          "firstPolygon": 1292,
+          "polygonCount": 12
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254137751",
+          "firstVertex": 3788,
+          "vertexCount": 32,
+          "firstPolygon": 947,
+          "polygonCount": 8
+        }
+      ],
+      "windowPanels": 8,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254137971",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-03-13T21:38:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254137971",
+          "firstVertex": 658,
+          "vertexCount": 29,
+          "firstPolygon": 184,
+          "polygonCount": 8
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254137971",
+          "firstVertex": 1365,
+          "vertexCount": 9,
+          "firstPolygon": 455,
+          "polygonCount": 3
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254137971",
+          "firstVertex": 5216,
+          "vertexCount": 64,
+          "firstPolygon": 1304,
+          "polygonCount": 16
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254137971",
+          "firstVertex": 3820,
+          "vertexCount": 48,
+          "firstPolygon": 955,
+          "polygonCount": 12
+        }
+      ],
+      "windowPanels": 12,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254137973",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2026-03-13T21:38:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254137973",
+          "firstVertex": 687,
+          "vertexCount": 22,
+          "firstPolygon": 192,
+          "polygonCount": 6
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254137973",
+          "firstVertex": 1374,
+          "vertexCount": 6,
+          "firstPolygon": 458,
+          "polygonCount": 2
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254137973",
+          "firstVertex": 5280,
+          "vertexCount": 64,
+          "firstPolygon": 1320,
+          "polygonCount": 16
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254137973",
+          "firstVertex": 3868,
+          "vertexCount": 48,
+          "firstPolygon": 967,
+          "polygonCount": 12
+        }
+      ],
+      "windowPanels": 12,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254137992",
+      "kind": "building",
+      "height": {
+        "metres": 6.4,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "2",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2026-03-13T21:38:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:254137992",
+          "firstVertex": 1443,
+          "vertexCount": 22,
+          "firstPolygon": 408,
+          "polygonCount": 6
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254137992",
+          "firstVertex": 1380,
+          "vertexCount": 6,
+          "firstPolygon": 460,
+          "polygonCount": 2
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254137992",
+          "firstVertex": 5344,
+          "vertexCount": 48,
+          "firstPolygon": 1336,
+          "polygonCount": 12
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254137992",
+          "firstVertex": 3916,
+          "vertexCount": 32,
+          "firstPolygon": 979,
+          "polygonCount": 8
+        }
+      ],
+      "windowPanels": 8,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254138001",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2026-03-13T21:38:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254138001",
+          "firstVertex": 709,
+          "vertexCount": 29,
+          "firstPolygon": 198,
+          "polygonCount": 8
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254138001",
+          "firstVertex": 1386,
+          "vertexCount": 9,
+          "firstPolygon": 462,
+          "polygonCount": 3
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254138001",
+          "firstVertex": 5392,
+          "vertexCount": 88,
+          "firstPolygon": 1348,
+          "polygonCount": 22
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254138001",
+          "firstVertex": 3948,
+          "vertexCount": 72,
+          "firstPolygon": 987,
+          "polygonCount": 18
+        }
+      ],
+      "windowPanels": 18,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254138022",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-03-13T21:38:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:254138022",
+          "firstVertex": 1465,
+          "vertexCount": 36,
+          "firstPolygon": 414,
+          "polygonCount": 10
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254138022",
+          "firstVertex": 1395,
+          "vertexCount": 12,
+          "firstPolygon": 465,
+          "polygonCount": 4
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254138022",
+          "firstVertex": 5480,
+          "vertexCount": 192,
+          "firstPolygon": 1370,
+          "polygonCount": 48
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254138022",
+          "firstVertex": 4020,
+          "vertexCount": 168,
+          "firstPolygon": 1005,
+          "polygonCount": 42
+        }
+      ],
+      "windowPanels": 42,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254138032",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2026-03-13T21:38:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254138032",
+          "firstVertex": 738,
+          "vertexCount": 29,
+          "firstPolygon": 206,
+          "polygonCount": 8
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254138032",
+          "firstVertex": 1407,
+          "vertexCount": 9,
+          "firstPolygon": 469,
+          "polygonCount": 3
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254138032",
+          "firstVertex": 5672,
+          "vertexCount": 88,
+          "firstPolygon": 1418,
+          "polygonCount": 22
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254138032",
+          "firstVertex": 4188,
+          "vertexCount": 72,
+          "firstPolygon": 1047,
+          "polygonCount": 18
+        }
+      ],
+      "windowPanels": 18,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254138104",
+      "kind": "building",
+      "height": {
+        "metres": 6.4,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "2",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2026-03-13T21:38:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:254138104",
+          "firstVertex": 1501,
+          "vertexCount": 29,
+          "firstPolygon": 424,
+          "polygonCount": 8
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254138104",
+          "firstVertex": 1416,
+          "vertexCount": 9,
+          "firstPolygon": 472,
+          "polygonCount": 3
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254138104",
+          "firstVertex": 5760,
+          "vertexCount": 40,
+          "firstPolygon": 1440,
+          "polygonCount": 10
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254138104",
+          "firstVertex": 4260,
+          "vertexCount": 20,
+          "firstPolygon": 1065,
+          "polygonCount": 5
+        }
+      ],
+      "windowPanels": 5,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254138160",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2026-03-13T21:38:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254138160",
+          "firstVertex": 767,
+          "vertexCount": 22,
+          "firstPolygon": 214,
+          "polygonCount": 6
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254138160",
+          "firstVertex": 1425,
+          "vertexCount": 6,
+          "firstPolygon": 475,
+          "polygonCount": 2
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254138160",
+          "firstVertex": 5800,
+          "vertexCount": 112,
+          "firstPolygon": 1450,
+          "polygonCount": 28
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254138160",
+          "firstVertex": 4280,
+          "vertexCount": 96,
+          "firstPolygon": 1070,
+          "polygonCount": 24
+        }
+      ],
+      "windowPanels": 24,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254138190",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2026-03-13T21:38:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:254138190",
+          "firstVertex": 1436,
+          "vertexCount": 29,
+          "firstPolygon": 406,
+          "polygonCount": 8
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254138190",
+          "firstVertex": 1431,
+          "vertexCount": 9,
+          "firstPolygon": 477,
+          "polygonCount": 3
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254138190",
+          "firstVertex": 5912,
+          "vertexCount": 64,
+          "firstPolygon": 1478,
+          "polygonCount": 16
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254138190",
+          "firstVertex": 4376,
+          "vertexCount": 48,
+          "firstPolygon": 1094,
+          "polygonCount": 12
+        }
+      ],
+      "windowPanels": 12,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254138278",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2026-03-13T21:38:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254138278",
+          "firstVertex": 789,
+          "vertexCount": 22,
+          "firstPolygon": 220,
+          "polygonCount": 6
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254138278",
+          "firstVertex": 1440,
+          "vertexCount": 6,
+          "firstPolygon": 480,
+          "polygonCount": 2
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254138278",
+          "firstVertex": 5976,
+          "vertexCount": 112,
+          "firstPolygon": 1494,
+          "polygonCount": 28
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254138278",
+          "firstVertex": 4424,
+          "vertexCount": 96,
+          "firstPolygon": 1106,
+          "polygonCount": 24
+        }
+      ],
+      "windowPanels": 24,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254138318",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2026-03-13T21:38:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:254138318",
+          "firstVertex": 1530,
+          "vertexCount": 29,
+          "firstPolygon": 432,
+          "polygonCount": 8
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254138318",
+          "firstVertex": 1446,
+          "vertexCount": 9,
+          "firstPolygon": 482,
+          "polygonCount": 3
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254138318",
+          "firstVertex": 6088,
+          "vertexCount": 140,
+          "firstPolygon": 1522,
+          "polygonCount": 35
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254138318",
+          "firstVertex": 4520,
+          "vertexCount": 120,
+          "firstPolygon": 1130,
+          "polygonCount": 30
+        }
+      ],
+      "windowPanels": 30,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254138338",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-03-13T21:38:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:254138338",
+          "firstVertex": 1465,
+          "vertexCount": 36,
+          "firstPolygon": 414,
+          "polygonCount": 10
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254138338",
+          "firstVertex": 1455,
+          "vertexCount": 12,
+          "firstPolygon": 485,
+          "polygonCount": 4
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254138338",
+          "firstVertex": 6228,
+          "vertexCount": 124,
+          "firstPolygon": 1557,
+          "polygonCount": 31
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254138338",
+          "firstVertex": 4640,
+          "vertexCount": 108,
+          "firstPolygon": 1160,
+          "polygonCount": 27
+        }
+      ],
+      "windowPanels": 27,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254138368",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-03-13T21:38:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:254138368",
+          "firstVertex": 1501,
+          "vertexCount": 36,
+          "firstPolygon": 424,
+          "polygonCount": 10
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254138368",
+          "firstVertex": 1467,
+          "vertexCount": 12,
+          "firstPolygon": 489,
+          "polygonCount": 4
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254138368",
+          "firstVertex": 6352,
+          "vertexCount": 76,
+          "firstPolygon": 1588,
+          "polygonCount": 19
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254138368",
+          "firstVertex": 4748,
+          "vertexCount": 60,
+          "firstPolygon": 1187,
+          "polygonCount": 15
+        }
+      ],
+      "windowPanels": 15,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254138406",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2026-03-13T21:38:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:254138406",
+          "firstVertex": 1537,
+          "vertexCount": 36,
+          "firstPolygon": 434,
+          "polygonCount": 10
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254138406",
+          "firstVertex": 1479,
+          "vertexCount": 12,
+          "firstPolygon": 493,
+          "polygonCount": 4
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254138406",
+          "firstVertex": 6428,
+          "vertexCount": 80,
+          "firstPolygon": 1607,
+          "polygonCount": 20
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254138406",
+          "firstVertex": 4808,
+          "vertexCount": 64,
+          "firstPolygon": 1202,
+          "polygonCount": 16
+        }
+      ],
+      "windowPanels": 16,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254138408",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-03-13T21:38:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:254138408",
+          "firstVertex": 1573,
+          "vertexCount": 36,
+          "firstPolygon": 444,
+          "polygonCount": 10
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254138408",
+          "firstVertex": 1491,
+          "vertexCount": 12,
+          "firstPolygon": 497,
+          "polygonCount": 4
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254138408",
+          "firstVertex": 6508,
+          "vertexCount": 136,
+          "firstPolygon": 1627,
+          "polygonCount": 34
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254138408",
+          "firstVertex": 4872,
+          "vertexCount": 120,
+          "firstPolygon": 1218,
+          "polygonCount": 30
+        }
+      ],
+      "windowPanels": 30,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254138430",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-03-13T21:38:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:254138430",
+          "firstVertex": 1559,
+          "vertexCount": 36,
+          "firstPolygon": 440,
+          "polygonCount": 10
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254138430",
+          "firstVertex": 1503,
+          "vertexCount": 12,
+          "firstPolygon": 501,
+          "polygonCount": 4
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254138430",
+          "firstVertex": 6644,
+          "vertexCount": 144,
+          "firstPolygon": 1661,
+          "polygonCount": 36
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254138430",
+          "firstVertex": 4992,
+          "vertexCount": 120,
+          "firstPolygon": 1248,
+          "polygonCount": 30
+        }
+      ],
+      "windowPanels": 30,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254138609",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-03-13T21:38:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254138609",
+          "firstVertex": 811,
+          "vertexCount": 36,
+          "firstPolygon": 226,
+          "polygonCount": 10
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254138609",
+          "firstVertex": 1515,
+          "vertexCount": 12,
+          "firstPolygon": 505,
+          "polygonCount": 4
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254138609",
+          "firstVertex": 6788,
+          "vertexCount": 92,
+          "firstPolygon": 1697,
+          "polygonCount": 23
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254138609",
+          "firstVertex": 5112,
+          "vertexCount": 72,
+          "firstPolygon": 1278,
+          "polygonCount": 18
+        }
+      ],
+      "windowPanels": 18,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254138637",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 7,
+      "sourceTimestamp": "2026-03-13T21:38:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254138637",
+          "firstVertex": 847,
+          "vertexCount": 29,
+          "firstPolygon": 236,
+          "polygonCount": 8
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254138637",
+          "firstVertex": 1527,
+          "vertexCount": 9,
+          "firstPolygon": 509,
+          "polygonCount": 3
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254138637",
+          "firstVertex": 6880,
+          "vertexCount": 68,
+          "firstPolygon": 1720,
+          "polygonCount": 17
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254138637",
+          "firstVertex": 5184,
+          "vertexCount": 48,
+          "firstPolygon": 1296,
+          "polygonCount": 12
+        }
+      ],
+      "windowPanels": 12,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254138684",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-03-13T21:38:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:254138684",
+          "firstVertex": 1595,
+          "vertexCount": 36,
+          "firstPolygon": 450,
+          "polygonCount": 10
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254138684",
+          "firstVertex": 1536,
+          "vertexCount": 12,
+          "firstPolygon": 512,
+          "polygonCount": 4
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254138684",
+          "firstVertex": 6948,
+          "vertexCount": 176,
+          "firstPolygon": 1737,
+          "polygonCount": 44
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254138684",
+          "firstVertex": 5232,
+          "vertexCount": 156,
+          "firstPolygon": 1308,
+          "polygonCount": 39
+        }
+      ],
+      "windowPanels": 39,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254138752",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-03-13T21:38:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:254138752",
+          "firstVertex": 1609,
+          "vertexCount": 29,
+          "firstPolygon": 454,
+          "polygonCount": 8
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254138752",
+          "firstVertex": 1548,
+          "vertexCount": 9,
+          "firstPolygon": 516,
+          "polygonCount": 3
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254138752",
+          "firstVertex": 7124,
+          "vertexCount": 112,
+          "firstPolygon": 1781,
+          "polygonCount": 28
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254138752",
+          "firstVertex": 5388,
+          "vertexCount": 96,
+          "firstPolygon": 1347,
+          "polygonCount": 24
+        }
+      ],
+      "windowPanels": 24,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254138871",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-03-13T21:38:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254138871",
+          "firstVertex": 876,
+          "vertexCount": 36,
+          "firstPolygon": 244,
+          "polygonCount": 10
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254138871",
+          "firstVertex": 1557,
+          "vertexCount": 12,
+          "firstPolygon": 519,
+          "polygonCount": 4
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254138871",
+          "firstVertex": 7236,
+          "vertexCount": 108,
+          "firstPolygon": 1809,
+          "polygonCount": 27
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254138871",
+          "firstVertex": 5484,
+          "vertexCount": 84,
+          "firstPolygon": 1371,
+          "polygonCount": 21
+        }
+      ],
+      "windowPanels": 21,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254138953",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 7,
+      "sourceTimestamp": "2026-03-13T21:38:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254138953",
+          "firstVertex": 912,
+          "vertexCount": 43,
+          "firstPolygon": 254,
+          "polygonCount": 12
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254138953",
+          "firstVertex": 1569,
+          "vertexCount": 15,
+          "firstPolygon": 523,
+          "polygonCount": 5
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254138953",
+          "firstVertex": 7344,
+          "vertexCount": 84,
+          "firstPolygon": 1836,
+          "polygonCount": 21
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254138953",
+          "firstVertex": 5568,
+          "vertexCount": 64,
+          "firstPolygon": 1392,
+          "polygonCount": 16
+        }
+      ],
+      "windowPanels": 16,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254138955",
+      "kind": "building",
+      "height": {
+        "metres": 6.4,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "2",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2026-03-13T21:38:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:254138955",
+          "firstVertex": 1638,
+          "vertexCount": 43,
+          "firstPolygon": 462,
+          "polygonCount": 12
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254138955",
+          "firstVertex": 1584,
+          "vertexCount": 15,
+          "firstPolygon": 528,
+          "polygonCount": 5
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254138955",
+          "firstVertex": 7428,
+          "vertexCount": 40,
+          "firstPolygon": 1857,
+          "polygonCount": 10
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254138955",
+          "firstVertex": 5632,
+          "vertexCount": 16,
+          "firstPolygon": 1408,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 4,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254138987",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 7,
+      "sourceTimestamp": "2026-03-13T21:38:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:254138987",
+          "firstVertex": 1681,
+          "vertexCount": 36,
+          "firstPolygon": 474,
+          "polygonCount": 10
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254138987",
+          "firstVertex": 1599,
+          "vertexCount": 12,
+          "firstPolygon": 533,
+          "polygonCount": 4
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254138987",
+          "firstVertex": 7468,
+          "vertexCount": 80,
+          "firstPolygon": 1867,
+          "polygonCount": 20
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254138987",
+          "firstVertex": 5648,
+          "vertexCount": 64,
+          "firstPolygon": 1412,
+          "polygonCount": 16
+        }
+      ],
+      "windowPanels": 16,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254139050",
+      "kind": "building",
+      "height": {
+        "metres": 6.4,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "2",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-03-13T21:38:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254139050",
+          "firstVertex": 955,
+          "vertexCount": 43,
+          "firstPolygon": 266,
+          "polygonCount": 12
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254139050",
+          "firstVertex": 1611,
+          "vertexCount": 15,
+          "firstPolygon": 537,
+          "polygonCount": 5
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254139050",
+          "firstVertex": 7548,
+          "vertexCount": 40,
+          "firstPolygon": 1887,
+          "polygonCount": 10
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254139050",
+          "firstVertex": 5712,
+          "vertexCount": 16,
+          "firstPolygon": 1428,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 4,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254139118",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-03-13T21:38:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254139118",
+          "firstVertex": 998,
+          "vertexCount": 43,
+          "firstPolygon": 278,
+          "polygonCount": 12
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254139118",
+          "firstVertex": 1626,
+          "vertexCount": 15,
+          "firstPolygon": 542,
+          "polygonCount": 5
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254139118",
+          "firstVertex": 7588,
+          "vertexCount": 104,
+          "firstPolygon": 1897,
+          "polygonCount": 26
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254139118",
+          "firstVertex": 5728,
+          "vertexCount": 84,
+          "firstPolygon": 1432,
+          "polygonCount": 21
+        }
+      ],
+      "windowPanels": 21,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254139136",
+      "kind": "building",
+      "height": {
+        "metres": 6.4,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "2",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2026-03-13T21:38:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:254139136",
+          "firstVertex": 1717,
+          "vertexCount": 29,
+          "firstPolygon": 484,
+          "polygonCount": 8
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254139136",
+          "firstVertex": 1641,
+          "vertexCount": 9,
+          "firstPolygon": 547,
+          "polygonCount": 3
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254139136",
+          "firstVertex": 7692,
+          "vertexCount": 48,
+          "firstPolygon": 1923,
+          "polygonCount": 12
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254139136",
+          "firstVertex": 5812,
+          "vertexCount": 32,
+          "firstPolygon": 1453,
+          "polygonCount": 8
+        }
+      ],
+      "windowPanels": 8,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254139276",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2026-03-13T21:38:56Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254139276",
+          "firstVertex": 1041,
+          "vertexCount": 43,
+          "firstPolygon": 290,
+          "polygonCount": 12
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254139276",
+          "firstVertex": 1650,
+          "vertexCount": 15,
+          "firstPolygon": 550,
+          "polygonCount": 5
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254139276",
+          "firstVertex": 7740,
+          "vertexCount": 76,
+          "firstPolygon": 1935,
+          "polygonCount": 19
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254139276",
+          "firstVertex": 5844,
+          "vertexCount": 48,
+          "firstPolygon": 1461,
+          "polygonCount": 12
+        }
+      ],
+      "windowPanels": 12,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254139515",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2026-03-13T21:38:56Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:254139515",
+          "firstVertex": 1631,
+          "vertexCount": 50,
+          "firstPolygon": 460,
+          "polygonCount": 14
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254139515",
+          "firstVertex": 1665,
+          "vertexCount": 18,
+          "firstPolygon": 555,
+          "polygonCount": 6
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254139515",
+          "firstVertex": 7816,
+          "vertexCount": 72,
+          "firstPolygon": 1954,
+          "polygonCount": 18
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254139515",
+          "firstVertex": 5892,
+          "vertexCount": 48,
+          "firstPolygon": 1473,
+          "polygonCount": 12
+        }
+      ],
+      "windowPanels": 12,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254139618",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-03-13T21:38:56Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:254139618",
+          "firstVertex": 1746,
+          "vertexCount": 50,
+          "firstPolygon": 492,
+          "polygonCount": 14
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254139618",
+          "firstVertex": 1683,
+          "vertexCount": 18,
+          "firstPolygon": 561,
+          "polygonCount": 6
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254139618",
+          "firstVertex": 7888,
+          "vertexCount": 120,
+          "firstPolygon": 1972,
+          "polygonCount": 30
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254139618",
+          "firstVertex": 5940,
+          "vertexCount": 96,
+          "firstPolygon": 1485,
+          "polygonCount": 24
+        }
+      ],
+      "windowPanels": 24,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254139721",
+      "kind": "building",
+      "height": {
+        "metres": 12.8,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "4",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-03-13T21:38:56Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254139721",
+          "firstVertex": 1084,
+          "vertexCount": 57,
+          "firstPolygon": 302,
+          "polygonCount": 16
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254139721",
+          "firstVertex": 1701,
+          "vertexCount": 21,
+          "firstPolygon": 567,
+          "polygonCount": 7
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254139721",
+          "firstVertex": 8008,
+          "vertexCount": 168,
+          "firstPolygon": 2002,
+          "polygonCount": 42
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254139721",
+          "firstVertex": 6036,
+          "vertexCount": 144,
+          "firstPolygon": 1509,
+          "polygonCount": 36
+        }
+      ],
+      "windowPanels": 36,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254139735",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 7,
+      "sourceTimestamp": "2026-03-13T21:38:56Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:254139735",
+          "firstVertex": 1796,
+          "vertexCount": 64,
+          "firstPolygon": 506,
+          "polygonCount": 18
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254139735",
+          "firstVertex": 1722,
+          "vertexCount": 24,
+          "firstPolygon": 574,
+          "polygonCount": 8
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254139735",
+          "firstVertex": 8176,
+          "vertexCount": 140,
+          "firstPolygon": 2044,
+          "polygonCount": 35
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254139735",
+          "firstVertex": 6180,
+          "vertexCount": 104,
+          "firstPolygon": 1545,
+          "polygonCount": 26
+        }
+      ],
+      "windowPanels": 26,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254139806",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2026-03-13T21:38:56Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254139806",
+          "firstVertex": 1141,
+          "vertexCount": 57,
+          "firstPolygon": 318,
+          "polygonCount": 16
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254139806",
+          "firstVertex": 1746,
+          "vertexCount": 21,
+          "firstPolygon": 582,
+          "polygonCount": 7
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254139806",
+          "firstVertex": 8316,
+          "vertexCount": 84,
+          "firstPolygon": 2079,
+          "polygonCount": 21
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254139806",
+          "firstVertex": 6284,
+          "vertexCount": 64,
+          "firstPolygon": 1571,
+          "polygonCount": 16
+        }
+      ],
+      "windowPanels": 16,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254139843",
+      "kind": "building",
+      "height": {
+        "metres": 6.4,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "2",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-03-13T21:38:56Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254139843",
+          "firstVertex": 1198,
+          "vertexCount": 57,
+          "firstPolygon": 334,
+          "polygonCount": 16
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254139843",
+          "firstVertex": 1767,
+          "vertexCount": 21,
+          "firstPolygon": 589,
+          "polygonCount": 7
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254139843",
+          "firstVertex": 8400,
+          "vertexCount": 56,
+          "firstPolygon": 2100,
+          "polygonCount": 14
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254139843",
+          "firstVertex": 6348,
+          "vertexCount": 24,
+          "firstPolygon": 1587,
+          "polygonCount": 6
+        }
+      ],
+      "windowPanels": 6,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254139846",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-03-13T21:38:56Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:254139846",
+          "firstVertex": 1860,
+          "vertexCount": 57,
+          "firstPolygon": 524,
+          "polygonCount": 16
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254139846",
+          "firstVertex": 1788,
+          "vertexCount": 21,
+          "firstPolygon": 596,
+          "polygonCount": 7
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254139846",
+          "firstVertex": 8456,
+          "vertexCount": 128,
+          "firstPolygon": 2114,
+          "polygonCount": 32
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254139846",
+          "firstVertex": 6372,
+          "vertexCount": 104,
+          "firstPolygon": 1593,
+          "polygonCount": 26
+        }
+      ],
+      "windowPanels": 26,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254139853",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2026-03-13T21:38:56Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:254139853",
+          "firstVertex": 1681,
+          "vertexCount": 29,
+          "firstPolygon": 474,
+          "polygonCount": 8
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254139853",
+          "firstVertex": 1809,
+          "vertexCount": 9,
+          "firstPolygon": 603,
+          "polygonCount": 3
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254139853",
+          "firstVertex": 8584,
+          "vertexCount": 68,
+          "firstPolygon": 2146,
+          "polygonCount": 17
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254139853",
+          "firstVertex": 6476,
+          "vertexCount": 48,
+          "firstPolygon": 1619,
+          "polygonCount": 12
+        }
+      ],
+      "windowPanels": 12,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254139929",
+      "kind": "building",
+      "height": {
+        "metres": 12.8,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "4",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-03-13T21:38:56Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:254139929",
+          "firstVertex": 1710,
+          "vertexCount": 57,
+          "firstPolygon": 482,
+          "polygonCount": 16
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254139929",
+          "firstVertex": 1818,
+          "vertexCount": 21,
+          "firstPolygon": 606,
+          "polygonCount": 7
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254139929",
+          "firstVertex": 8652,
+          "vertexCount": 100,
+          "firstPolygon": 2163,
+          "polygonCount": 25
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254139929",
+          "firstVertex": 6524,
+          "vertexCount": 72,
+          "firstPolygon": 1631,
+          "polygonCount": 18
+        }
+      ],
+      "windowPanels": 18,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254140113",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 7,
+      "sourceTimestamp": "2026-03-13T21:38:56Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:254140113",
+          "firstVertex": 1767,
+          "vertexCount": 57,
+          "firstPolygon": 498,
+          "polygonCount": 16
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254140113",
+          "firstVertex": 1839,
+          "vertexCount": 21,
+          "firstPolygon": 613,
+          "polygonCount": 7
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254140113",
+          "firstVertex": 8752,
+          "vertexCount": 60,
+          "firstPolygon": 2188,
+          "polygonCount": 15
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254140113",
+          "firstVertex": 6596,
+          "vertexCount": 32,
+          "firstPolygon": 1649,
+          "polygonCount": 8
+        }
+      ],
+      "windowPanels": 8,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254140416",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2026-03-13T21:38:56Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:254140416",
+          "firstVertex": 1255,
+          "vertexCount": 50,
+          "firstPolygon": 350,
+          "polygonCount": 14
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254140416",
+          "firstVertex": 1860,
+          "vertexCount": 18,
+          "firstPolygon": 620,
+          "polygonCount": 6
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254140416",
+          "firstVertex": 8812,
+          "vertexCount": 96,
+          "firstPolygon": 2203,
+          "polygonCount": 24
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254140416",
+          "firstVertex": 6628,
+          "vertexCount": 72,
+          "firstPolygon": 1657,
+          "polygonCount": 18
+        }
+      ],
+      "windowPanels": 18,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:254140418",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-03-13T21:38:56Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:254140418",
+          "firstVertex": 1917,
+          "vertexCount": 57,
+          "firstPolygon": 540,
+          "polygonCount": 16
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:254140418",
+          "firstVertex": 1878,
+          "vertexCount": 21,
+          "firstPolygon": 626,
+          "polygonCount": 7
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:254140418",
+          "firstVertex": 8908,
+          "vertexCount": 120,
+          "firstPolygon": 2227,
+          "polygonCount": 30
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:254140418",
+          "firstVertex": 6700,
+          "vertexCount": 96,
+          "firstPolygon": 1675,
+          "polygonCount": 24
+        }
+      ],
+      "windowPanels": 24,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:relation:307536",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 14,
+      "sourceTimestamp": "2024-03-27T22:49:44Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:relation:307536",
+          "firstVertex": 0,
+          "vertexCount": 192,
+          "firstPolygon": 0,
+          "polygonCount": 64
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:125219664",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 13,
+      "sourceTimestamp": "2026-03-21T11:04:38Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:125219664",
+          "firstVertex": 192,
+          "vertexCount": 6,
+          "firstPolygon": 64,
+          "polygonCount": 2
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:125219665",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 10,
+      "sourceTimestamp": "2026-03-21T11:04:38Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:125219665",
+          "firstVertex": 198,
+          "vertexCount": 12,
+          "firstPolygon": 66,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:125219666",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 9,
+      "sourceTimestamp": "2026-03-21T11:04:38Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:125219666",
+          "firstVertex": 210,
+          "vertexCount": 15,
+          "firstPolygon": 70,
+          "polygonCount": 5
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:125219673",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 11,
+      "sourceTimestamp": "2026-03-21T11:04:38Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:125219673",
+          "firstVertex": 225,
+          "vertexCount": 15,
+          "firstPolygon": 75,
+          "polygonCount": 5
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:125219674",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 12,
+      "sourceTimestamp": "2026-03-21T11:04:38Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:125219674",
+          "firstVertex": 240,
+          "vertexCount": 18,
+          "firstPolygon": 80,
+          "polygonCount": 6
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:125219712",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 7,
+      "sourceTimestamp": "2022-10-13T13:35:00Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:125219712",
+          "firstVertex": 258,
+          "vertexCount": 33,
+          "firstPolygon": 86,
+          "polygonCount": 11
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:125219713",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2022-10-13T13:35:00Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:125219713",
+          "firstVertex": 291,
+          "vertexCount": 6,
+          "firstPolygon": 97,
+          "polygonCount": 2
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:125219715",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 10,
+      "sourceTimestamp": "2026-03-21T11:04:38Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:125219715",
+          "firstVertex": 297,
+          "vertexCount": 39,
+          "firstPolygon": 99,
+          "polygonCount": 13
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:125227111",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 8,
+      "sourceTimestamp": "2025-04-02T20:23:11Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:125227111",
+          "firstVertex": 336,
+          "vertexCount": 42,
+          "firstPolygon": 112,
+          "polygonCount": 14
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:125227122",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 13,
+      "sourceTimestamp": "2026-03-21T11:04:38Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:125227122",
+          "firstVertex": 378,
+          "vertexCount": 12,
+          "firstPolygon": 126,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:125227153",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 12,
+      "sourceTimestamp": "2026-03-21T11:04:38Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:125227153",
+          "firstVertex": 390,
+          "vertexCount": 18,
+          "firstPolygon": 130,
+          "polygonCount": 6
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:134657603",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 23,
+      "sourceTimestamp": "2026-03-21T11:04:38Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:134657603",
+          "firstVertex": 408,
+          "vertexCount": 6,
+          "firstPolygon": 136,
+          "polygonCount": 2
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:311563376",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 14,
+      "sourceTimestamp": "2026-03-21T11:04:38Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:311563376",
+          "firstVertex": 414,
+          "vertexCount": 36,
+          "firstPolygon": 138,
+          "polygonCount": 12
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:316445901",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 1,
+      "sourceTimestamp": "2014-12-08T21:19:53Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:316445901",
+          "firstVertex": 450,
+          "vertexCount": 3,
+          "firstPolygon": 150,
+          "polygonCount": 1
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:337170315",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 9,
+      "sourceTimestamp": "2026-03-21T11:04:38Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:337170315",
+          "firstVertex": 453,
+          "vertexCount": 12,
+          "firstPolygon": 151,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:337172370",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 13,
+      "sourceTimestamp": "2026-03-21T11:04:38Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:337172370",
+          "firstVertex": 465,
+          "vertexCount": 12,
+          "firstPolygon": 155,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:455100547",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 9,
+      "sourceTimestamp": "2026-03-21T11:04:38Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:455100547",
+          "firstVertex": 477,
+          "vertexCount": 6,
+          "firstPolygon": 159,
+          "polygonCount": 2
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:46121297",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 9,
+      "sourceTimestamp": "2025-04-02T20:23:11Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:46121297",
+          "firstVertex": 483,
+          "vertexCount": 30,
+          "firstPolygon": 161,
+          "polygonCount": 10
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:533042697",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2023-02-22T11:49:34Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:533042697",
+          "firstVertex": 513,
+          "vertexCount": 18,
+          "firstPolygon": 171,
+          "polygonCount": 6
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:547674809",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 8,
+      "sourceTimestamp": "2026-03-21T11:04:38Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:547674809",
+          "firstVertex": 531,
+          "vertexCount": 15,
+          "firstPolygon": 177,
+          "polygonCount": 5
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:547674813",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 9,
+      "sourceTimestamp": "2026-03-21T11:04:38Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:547674813",
+          "firstVertex": 546,
+          "vertexCount": 15,
+          "firstPolygon": 182,
+          "polygonCount": 5
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:547680581",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2025-04-02T20:23:11Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:547680581",
+          "firstVertex": 561,
+          "vertexCount": 15,
+          "firstPolygon": 187,
+          "polygonCount": 5
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:7538625",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 25,
+      "sourceTimestamp": "2026-03-21T11:04:38Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:7538625",
+          "firstVertex": 576,
+          "vertexCount": 18,
+          "firstPolygon": 192,
+          "polygonCount": 6
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:7538804",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 17,
+      "sourceTimestamp": "2026-03-21T11:04:38Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:7538804",
+          "firstVertex": 594,
+          "vertexCount": 12,
+          "firstPolygon": 198,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:7538871",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 15,
+      "sourceTimestamp": "2026-03-21T11:04:38Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:7538871",
+          "firstVertex": 606,
+          "vertexCount": 9,
+          "firstPolygon": 202,
+          "polygonCount": 3
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:7538921",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 20,
+      "sourceTimestamp": "2026-03-21T11:04:38Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:7538921",
+          "firstVertex": 615,
+          "vertexCount": 15,
+          "firstPolygon": 205,
+          "polygonCount": 5
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:7538969",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 20,
+      "sourceTimestamp": "2026-03-21T11:04:38Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:7538969",
+          "firstVertex": 630,
+          "vertexCount": 39,
+          "firstPolygon": 210,
+          "polygonCount": 13
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:7538979",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 16,
+      "sourceTimestamp": "2026-03-21T11:04:38Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:7538979",
+          "firstVertex": 669,
+          "vertexCount": 27,
+          "firstPolygon": 223,
+          "polygonCount": 9
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:7539010",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 12,
+      "sourceTimestamp": "2022-10-13T13:35:00Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:7539010",
+          "firstVertex": 696,
+          "vertexCount": 33,
+          "firstPolygon": 232,
+          "polygonCount": 11
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:138008433",
+      "kind": "water",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2017-12-18T13:58:31Z",
+      "renderRanges": [
+        {
+          "material": "context-water",
+          "sourceId": "osm:way:138008433",
+          "firstVertex": 0,
+          "vertexCount": 21,
+          "firstPolygon": 0,
+          "polygonCount": 7
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:138008438",
+      "kind": "water",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2017-01-14T18:31:33Z",
+      "renderRanges": [
+        {
+          "material": "context-water",
+          "sourceId": "osm:way:138008438",
+          "firstVertex": 21,
+          "vertexCount": 69,
+          "firstPolygon": 7,
+          "polygonCount": 23
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:138008441",
+      "kind": "water",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 12,
+      "sourceTimestamp": "2026-09-28T15:14:08Z",
+      "renderRanges": [
+        {
+          "material": "context-water",
+          "sourceId": "osm:way:138008441",
+          "firstVertex": 90,
+          "vertexCount": 15,
+          "firstPolygon": 30,
+          "polygonCount": 5
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:138008447",
+      "kind": "water",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2017-12-18T14:01:17Z",
+      "renderRanges": [
+        {
+          "material": "context-water",
+          "sourceId": "osm:way:138008447",
+          "firstVertex": 105,
+          "vertexCount": 84,
+          "firstPolygon": 35,
+          "polygonCount": 28
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:138008582",
+      "kind": "water",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 8,
+      "sourceTimestamp": "2023-06-29T16:51:47Z",
+      "renderRanges": [
+        {
+          "material": "context-water",
+          "sourceId": "osm:way:138008582",
+          "firstVertex": 189,
+          "vertexCount": 18,
+          "firstPolygon": 63,
+          "polygonCount": 6
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:460917782",
+      "kind": "water",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 10,
+      "sourceTimestamp": "2026-06-13T12:18:01Z",
+      "renderRanges": [
+        {
+          "material": "context-water",
+          "sourceId": "osm:way:460917782",
+          "firstVertex": 207,
+          "vertexCount": 114,
+          "firstPolygon": 69,
+          "polygonCount": 38
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1388047852",
+      "kind": "green",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2025-05-20T08:18:11Z",
+      "renderRanges": [
+        {
+          "material": "context-green",
+          "sourceId": "osm:way:1388047852",
+          "firstVertex": 0,
+          "vertexCount": 9,
+          "firstPolygon": 0,
+          "polygonCount": 3
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    }
+  ],
+  "presentation": {
+    "surfaceHeightsMetres": {
+      "ground": -0.18,
+      "road": -0.09,
+      "water": -0.12,
+      "green": -0.035,
+      "path": 0
+    },
+    "materials": {
+      "context-wall-warm": [
+        "b8b0a1",
+        0.86,
+        0
+      ],
+      "context-wall-light": [
+        "cdc9bf",
+        0.83,
+        0
+      ],
+      "context-wall-muted": [
+        "aaa79f",
+        0.88,
+        0
+      ],
+      "context-roof": [
+        "777c79",
+        0.9,
+        0
+      ],
+      "context-trim": [
+        "d1cdc2",
+        0.78,
+        0
+      ],
+      "context-glass": [
+        "536872",
+        0.24,
+        0.08
+      ],
+      "context-road": [
+        "737a7c",
+        0.94,
+        0
+      ],
+      "context-path": [
+        "c3bcac",
+        0.89,
+        0
+      ],
+      "context-green": [
+        "91a08b",
+        0.97,
+        0
+      ],
+      "context-water": [
+        "7897a3",
+        0.3,
+        0.03
+      ],
+      "context-ground": [
+        "c5c1b6",
+        0.97,
+        0
+      ]
+    },
+    "windows": "Neutral authored panels and rims; no source-matched facade, entrance, occupancy or storey assignment",
+    "height": "Maximum-height massing only; roof/body partition and local grade are unreviewed",
+    "lighting": "PBR surfaces accept authored runtime lighting; no actual-condition claim",
+    "sourceMapping": "Stable sourceId metadata roots and per-material sourceIds JSON; renderRanges describe the editable pre-export mesh order",
+    "sourceIndexAttribute": {
+      "gltf": "_SOURCE_INDEX",
+      "three": "_source_index",
+      "lookup": "manifest.features[index].sourceId",
+      "unassigned": -1
+    }
+  }
+}

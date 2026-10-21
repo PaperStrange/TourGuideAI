@@ -1,0 +1,455 @@
+{
+  "version": 1,
+  "siteId": "delft-markt",
+  "source": {
+    "format": "osm-xml",
+    "queryBounds": [
+      4.357,
+      52.0108,
+      4.3595,
+      52.0121
+    ],
+    "sha256": "69e5fb1b52dd50d95a1ac9c2fa59616bb668ed7db46d9bfcb8e93dd23f607b7e",
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=4.3570,52.0108,4.3595,52.0121",
+    "retrievedAt": "2026-10-21T04:51:21.781506+00:00",
+    "license": "ODbL-1.0",
+    "attribution": "© OpenStreetMap contributors"
+  },
+  "configSha256": "6634bd4c2740ef16bb69f79bee2c392176395e0af1d24330607926f6da3b1187",
+  "tools": {
+    "osm2geojson": "0.3.2",
+    "shapely": "2.2.0",
+    "pyproj": "3.8.0"
+  },
+  "representation": "geographic-context",
+  "navigation": "unreviewed",
+  "landmarkArchitecture": "unreviewed",
+  "displayPrecisionMetres": 0.001,
+  "booleanSurfaceNormalization": [
+    {
+      "sourceId": "osm:way:125227114",
+      "toleranceMetres": 1e-10,
+      "minimumPolygonAreaSquareMetres": 1e-10,
+      "removedPolygonAreasSquareMetres": [
+        0.0
+      ],
+      "areaChangeSquareMetres": 0.0
+    },
+    {
+      "sourceId": "osm:way:125227119",
+      "toleranceMetres": 1e-10,
+      "minimumPolygonAreaSquareMetres": 1e-10,
+      "removedPolygonAreasSquareMetres": [
+        2.1087488309354252e-14
+      ],
+      "areaChangeSquareMetres": 2.1087487803022883e-14
+    },
+    {
+      "sourceId": "osm:way:455100547",
+      "toleranceMetres": 1e-10,
+      "minimumPolygonAreaSquareMetres": 1e-10,
+      "removedPolygonAreasSquareMetres": [
+        2.114382580015531e-17
+      ],
+      "areaChangeSquareMetres": 2.1250362580715887e-17
+    }
+  ],
+  "features": 121,
+  "buildings": 84,
+  "courtyards": 0,
+  "authoredBuildingHeights": [
+    "osm:way:1410360244",
+    "osm:way:254135542",
+    "osm:way:254135598",
+    "osm:way:254135688",
+    "osm:way:254135908",
+    "osm:way:254135981",
+    "osm:way:254136101",
+    "osm:way:254136128",
+    "osm:way:254136136",
+    "osm:way:254136330",
+    "osm:way:254136396",
+    "osm:way:254136524",
+    "osm:way:254136732",
+    "osm:way:254136739",
+    "osm:way:254136868",
+    "osm:way:254136908",
+    "osm:way:254137111",
+    "osm:way:254137191",
+    "osm:way:254137223",
+    "osm:way:254137292",
+    "osm:way:254137568",
+    "osm:way:254137702",
+    "osm:way:254138001",
+    "osm:way:254138022",
+    "osm:way:254138160",
+    "osm:way:254138278",
+    "osm:way:254138318",
+    "osm:way:254138338",
+    "osm:way:254138368",
+    "osm:way:254138408",
+    "osm:way:254138430",
+    "osm:way:254138609",
+    "osm:way:254138684",
+    "osm:way:254138752",
+    "osm:way:254138871",
+    "osm:way:254139118",
+    "osm:way:254139276",
+    "osm:way:254139515",
+    "osm:way:254139618",
+    "osm:way:254140416"
+  ],
+  "excluded": [
+    {
+      "sourceId": "osm:relation:10744550",
+      "reason": "building-assembly-requires-architectural-review",
+      "missingMembers": []
+    },
+    {
+      "sourceId": "osm:relation:3404942",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:1009091674",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1230070640",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1230070641",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1230070642",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1230070643",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:125227114",
+      "reason": "surface-covered-by-prior-display-layer"
+    },
+    {
+      "sourceId": "osm:way:125227119",
+      "reason": "surface-covered-by-prior-display-layer"
+    },
+    {
+      "sourceId": "osm:way:1299554217",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1299554218",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1336638810",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:1345635631",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1529002576",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1529002577",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1529002578",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1529002579",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1529002580",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1529002581",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1529002582",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:1529002583",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:254135599",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254135608",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254135844",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254135982",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254136012",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254136037",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254136084",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254136116",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254136132",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254136140",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254136163",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254136180",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254136309",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254136320",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254136333",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254136419",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254136430",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254136495",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254136585",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254136586",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254136618",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254136650",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254136654",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254136656",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:254136677",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254136705",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254136743",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254136745",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254136809",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254136819",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254137131",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254137200",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254137592",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254137648",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254137651",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254138087",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254138091",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254138124",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254138354",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254138424",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254138437",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254138448",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254139059",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254139132",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254139177",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254139219",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254139478",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254139536",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254139634",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254140034",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:254140413",
+      "reason": "building-crosses-site-boundary"
+    },
+    {
+      "sourceId": "osm:way:558932900",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:775746402",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:775746403",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:775746404",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:775746405",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:775746406",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:775746407",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:775746408",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:775746409",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:775746410",
+      "reason": "building-part-requires-architectural-review"
+    },
+    {
+      "sourceId": "osm:way:775746411",
+      "reason": "building-part-requires-architectural-review"
+    }
+  ],
+  "missingEvidence": [
+    "surveyed elevation/grade",
+    "reviewed walking/access graph",
+    "source-matched landmark silhouette",
+    "reviewed facade/roof details",
+    "actual lighting/occupancy"
+  ],
+  "policy": {
+    "displayPrecisionMetres": 0.001,
+    "defaultBuildingHeightMetres": 12,
+    "storeyHeightMetres": 3.2,
+    "roadWidthMetres": 6,
+    "pathWidthMetres": 2.5,
+    "windowSpacingMetres": 3.2,
+    "ground": "level, without a surveyed elevation datum",
+    "facades": "shared authored neutral finishes and window rhythm; landmark-specific architecture requires review",
+    "lighting": "authored daylight/night presentation; no current occupancy or opening-hour claim"
+  }
+}

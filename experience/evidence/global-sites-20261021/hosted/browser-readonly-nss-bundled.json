@@ -1,0 +1,119 @@
+{
+  "startedAt": "2026-10-21T06:32:55.805Z",
+  "url": "https://paperstrange.github.io/TourGuideAI/",
+  "driverSha256": "8670d499cc2322eeecb5346b278223037aecf4ddf0dada57021114948f4a77f1",
+  "checks": [
+    {
+      "id": "published-descriptor-available",
+      "pass": true
+    }
+  ],
+  "pageErrors": [],
+  "responses": [],
+  "screenshots": [],
+  "conditions": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "reducedMotion": "reduce",
+    "interception": false,
+    "tlsVerification": true,
+    "scope": "Actual desktop published journey; phone, failure and resource coverage are separate packaged checks.",
+    "browser": "151.0.7922.34"
+  },
+  "descriptor": {
+    "sourceRepository": "https://github.com/PaperStrange/TourGuideAI",
+    "sourceBranch": "chore-sow-delivery-plan",
+    "sourceCommit": "9f5725d94e5a82e18acdf116e6da8a034c82fe65",
+    "validationSourceCommit": "9f5725d94e5a82e18acdf116e6da8a034c82fe65",
+    "experience": "Explore Kyoto and Ginza, discover street details, keep a view and return",
+    "entryPath": "index.html",
+    "languages": [
+      "en",
+      "zh"
+    ],
+    "builtManifestSha256": "3e72aa1c53596042a14d1fb2aae9556b0a2caa876be93d424ec9ebe2aebb0162",
+    "builtFiles": 95,
+    "validation": {
+      "unit": {
+        "passed": 121,
+        "failed": 0
+      },
+      "service": {
+        "passed": 13,
+        "failed": 0
+      },
+      "repository": {
+        "passed": 17,
+        "failed": 0
+      },
+      "mapRetryLocal": {
+        "passed": 18,
+        "failed": 0
+      },
+      "geographicSourcePreparation": {
+        "passed": 18,
+        "failed": 0
+      },
+      "internalWorkbenchBrowser": {
+        "passed": 36,
+        "failed": 0
+      },
+      "internalWorkbenchHTTP": {
+        "passed": 40,
+        "failed": 0
+      },
+      "ciBrowserReports": {
+        "originalWalk": 133,
+        "perspective": 80,
+        "travelCompanion": 73,
+        "homepage": 65,
+        "solo": 75,
+        "reviewedPacks": 81,
+        "extendedWalkthrough": 264,
+        "failed": 0
+      },
+      "remainingRegressionStatus": "All seven complete packaged browser reports pass on the identified 95-file package.",
+      "publishedVerificationStatus": "Actual HTTPS byte and journey verification follows publication.",
+      "ci": {
+        "run": 39552515626,
+        "status": "completed",
+        "conclusion": "success"
+      },
+      "scope": "Packaged checks use immutable tested bytes and real providers. Art captures retain their original package bindings; all place assets are byte-identical in the final package. Internal geographic previews are separately reviewed and remain unpublished. Counts overlap and remain separate.",
+      "evidencePath": "experience/evidence/global-sites-20261021/"
+    },
+    "features": [
+      "shared-style wider map with reviewed Shijo and Ginza walks",
+      "source-supported Ginza neighboring buildings and street surfaces",
+      "revised Ginza glazing and night-light response",
+      "walking, orbit, tilt, inspection pan and zoom",
+      "private place, note, view, lighting and selected-order return across areas",
+      "English and Chinese keyboard and touch guidance",
+      "Google Maps handoff",
+      "map retry preserves camera, selected places and route"
+    ],
+    "backend": {
+      "hosted": false,
+      "modelConfigured": false,
+      "localVerification": "Actual isolated participants, SQLite persistence, SSE and polling remain covered by the room tests.",
+      "nextStep": "Run npm run local:pages in experience/server, then select the endpoint in Together > Testing connection. The service remains local to the computer running it."
+    },
+    "scope": "Kyoto and Ginza are bounded authored interpretations. Ginza follows about 55.28 m of mapped sidewalk with authored width and simplified surrounding facades. Wider mapped buildings use approximate provider geometry. Route lines show suggested visiting order; Google Maps computes directions. Kept places are private intentions or virtual exploration, with no physical-visit claim. Delft and Helsinki are internal geographic-context workflow samples requiring architecture and navigation review before playable publication.",
+    "reviewStatus": "All seven complete packaged browser reports pass; actual HTTPS publication verification is pending. Q03 remains open P1: three matched warm Together language actions measure 1187.8/1061.8/1156.5 ms against each below 500 ms. Human enjoyment, recognition and physical-device fluency remain unverified.",
+    "existingExperiences": {
+      "perspective": "perspective.html",
+      "companion": "travel.html",
+      "originalWalk": "walk.html",
+      "renderComparison": "comparison.html"
+    }
+  },
+  "error": "page.goto: net::ERR_CERT_AUTHORITY_INVALID at https://paperstrange.github.io/TourGuideAI/?qa=1&lang=en&mode=explore&pack=ginza-wako\nCall log:\n\u001b[2m  - navigating to \"https://paperstrange.github.io/TourGuideAI/?qa=1&lang=en&mode=explore&pack=ginza-wako\", waiting until \"domcontentloaded\"\u001b[22m\n",
+  "finishedAt": "2026-10-21T06:32:56.339Z",
+  "summary": {
+    "passed": 1,
+    "failed": 0,
+    "error": "page.goto: net::ERR_CERT_AUTHORITY_INVALID at https://paperstrange.github.io/TourGuideAI/?qa=1&lang=en&mode=explore&pack=ginza-wako\nCall log:\n\u001b[2m  - navigating to \"https://paperstrange.github.io/TourGuideAI/?qa=1&lang=en&mode=explore&pack=ginza-wako\", waiting until \"domcontentloaded\"\u001b[22m\n"
+  }
+}

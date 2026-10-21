@@ -108,3 +108,30 @@ controls, invalid walking surfaces, failed cancellation/disposal, missing art
 anchors and unreviewed source/rights. Q03 remains an explicit open P1 until its
 unchanged gate passes. Human recognition, enjoyment and emotional value require
 participant evidence; agent art review and automated checks retain their scope.
+
+## Iteration checkpoint
+
+Research is committed as `9118573` with diagnostic logs in `d8a33a4`;
+implementation is committed as `3214398`, with final internal-viewer shadow and
+HTTP verification work in `218fd16` and provider retry recovery in `9f5725d`.
+L02 source/research, L03 Ginza art and
+L04 workbench implementation pass their local acceptance checks. L05 has 81 local
+interaction checks, 12 final material/pose checks, 18 source checks and 36 workbench
+browser checks, with scopes bound to their actual packages in the
+[evidence record](../evidence/global-sites-20261021/README.md). Final CI
+`39552515626` passes all seven complete browser suites on the exact 95-file package;
+L05 is complete. Pages runtime `17b8f37` passes **95/95** actual HTTPS file checks
+and **16/16** hosted journey checks with zero page exceptions. Metadata-only
+`09fec3a` records the result; L06 is complete. Final-package style/tile retry
+checks pass 18/18. L01 remains open P1 under the
+unchanged response threshold; the accepted map implementation keeps antialiasing.
+
+The next production sprint should promote one geographic context through a
+source-matched architecture review: establish roof/body proportions and facade
+modules, preserve the common material palette, review one usable walking graph,
+and verify the same movement/inspection/private-return journey on desktop and
+phone. The pipeline's global applicability depends on available source coverage
+and rights; each published location retains its own review. Spatial loading and
+distance-based detail need representative multi-neighborhood measurements before
+becoming required runtime work. A renderer comparison requires a demonstrated
+capability or authoring limitation in that measured scene.

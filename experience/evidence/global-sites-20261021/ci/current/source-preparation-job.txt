@@ -1,0 +1,241 @@
+﻿2026-10-21T05:58:58.7114318Z Current runner version: '2.337.0'
+2026-10-21T05:58:58.7133343Z ##[group]Runner Image Provisioner
+2026-10-21T05:58:58.7134005Z Hosted Compute Agent
+2026-10-21T05:58:58.7134476Z Version: 20261015.610
+2026-10-21T05:58:58.7134919Z Commit: 267fdb4e8bbec4ab5ea31367f3a00d5c480c7656
+2026-10-21T05:58:58.7135423Z Build Date: 2026-10-14T17:06:54Z
+2026-10-21T05:58:58.7135929Z Worker ID: {c5bf04b0-3e82-4bc1-8549-bf54e3c5779d}
+2026-10-21T05:58:58.7136425Z Region: centralus
+2026-10-21T05:58:58.7136831Z Cloud: Azure
+2026-10-21T05:58:58.7137252Z ##[endgroup]
+2026-10-21T05:58:58.7138192Z ##[group]Operating System
+2026-10-21T05:58:58.7138649Z Ubuntu
+2026-10-21T05:58:58.7139021Z 24.04.5
+2026-10-21T05:58:58.7139412Z LTS
+2026-10-21T05:58:58.7139833Z ##[endgroup]
+2026-10-21T05:58:58.7140215Z ##[group]Runner Image
+2026-10-21T05:58:58.7140648Z Image: ubuntu-24.04
+2026-10-21T05:58:58.7141043Z Version: 20261018.339.1
+2026-10-21T05:58:58.7142349Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261018.339/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-21T05:58:58.7143856Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261018.339
+2026-10-21T05:58:58.7144533Z ##[endgroup]
+2026-10-21T05:58:58.7145323Z ##[group]GITHUB_TOKEN Permissions
+2026-10-21T05:58:58.7147313Z Contents: read
+2026-10-21T05:58:58.7147705Z Metadata: read
+2026-10-21T05:58:58.7148122Z ##[endgroup]
+2026-10-21T05:58:58.7149735Z Secret source: Actions
+2026-10-21T05:58:58.7150498Z Cache mode: write
+2026-10-21T05:58:58.7150986Z Prepare workflow directory
+2026-10-21T05:58:58.8138598Z Prepare all required actions
+2026-10-21T05:58:58.8193403Z Getting action download info
+2026-10-21T05:58:59.0305220Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-21T05:58:59.2237264Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-21T05:58:59.5327238Z Complete job name: Validate geographic source preparation
+2026-10-21T05:58:59.5901935Z ##[group]Run actions/checkout@v4
+2026-10-21T05:58:59.5902838Z with:
+2026-10-21T05:58:59.5903266Z   repository: PaperStrange/TourGuideAI
+2026-10-21T05:58:59.5906274Z   token: ***
+2026-10-21T05:58:59.5906707Z   ssh-strict: true
+2026-10-21T05:58:59.5907126Z   ssh-user: git
+2026-10-21T05:58:59.5907551Z   persist-credentials: true
+2026-10-21T05:58:59.5907979Z   clean: true
+2026-10-21T05:58:59.5908402Z   sparse-checkout-cone-mode: true
+2026-10-21T05:58:59.5908870Z   fetch-depth: 1
+2026-10-21T05:58:59.5909256Z   fetch-tags: false
+2026-10-21T05:58:59.5909668Z   show-progress: true
+2026-10-21T05:58:59.5910065Z   lfs: false
+2026-10-21T05:58:59.5910476Z   submodules: false
+2026-10-21T05:58:59.5910924Z   set-safe-directory: true
+2026-10-21T05:58:59.5911396Z   allow-unsafe-pr-checkout: false
+2026-10-21T05:58:59.5912258Z env:
+2026-10-21T05:58:59.5912746Z   TMPDIR: /home/runner/work/TourGuideAI/TourGuideAI/artifacts/tmp
+2026-10-21T05:58:59.5913324Z ##[endgroup]
+2026-10-21T05:58:59.6757762Z Syncing repository: PaperStrange/TourGuideAI
+2026-10-21T05:58:59.6759676Z ##[group]Getting Git version info
+2026-10-21T05:58:59.6760427Z Working directory is '/home/runner/work/TourGuideAI/TourGuideAI'
+2026-10-21T05:58:59.6761412Z [command]/usr/bin/git version
+2026-10-21T05:58:59.6833269Z git version 2.55.0
+2026-10-21T05:58:59.6848295Z ##[endgroup]
+2026-10-21T05:58:59.6859664Z Temporarily overriding HOME='/home/runner/work/_temp/616a2edc-c665-4850-b379-9f4312d1d1d9' before making global git config changes
+2026-10-21T05:58:59.6861264Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-21T05:58:59.6890747Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/TourGuideAI/TourGuideAI
+2026-10-21T05:58:59.7672579Z Deleting the contents of '/home/runner/work/TourGuideAI/TourGuideAI'
+2026-10-21T05:58:59.7676845Z ##[group]Initializing the repository
+2026-10-21T05:58:59.7680603Z [command]/usr/bin/git init /home/runner/work/TourGuideAI/TourGuideAI
+2026-10-21T05:58:59.8871777Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-21T05:58:59.8873387Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-21T05:58:59.8874112Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-21T05:58:59.8874747Z hint: call:
+2026-10-21T05:58:59.8875244Z hint:
+2026-10-21T05:58:59.8875846Z hint: 	git config --global init.defaultBranch <name>
+2026-10-21T05:58:59.8876392Z hint:
+2026-10-21T05:58:59.8876903Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-21T05:58:59.8877773Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-21T05:58:59.8878423Z hint:
+2026-10-21T05:58:59.8878788Z hint: 	git branch -m <name>
+2026-10-21T05:58:59.8879210Z hint:
+2026-10-21T05:58:59.8879703Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-21T05:58:59.8880536Z Initialized empty Git repository in /home/runner/work/TourGuideAI/TourGuideAI/.git/
+2026-10-21T05:58:59.8884900Z [command]/usr/bin/git remote add origin https://github.com/PaperStrange/TourGuideAI
+2026-10-21T05:59:00.0074458Z ##[endgroup]
+2026-10-21T05:59:00.0075398Z ##[group]Disabling automatic garbage collection
+2026-10-21T05:59:00.0076951Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-21T05:59:00.0686099Z ##[endgroup]
+2026-10-21T05:59:00.0686857Z ##[group]Setting up auth
+2026-10-21T05:59:00.0687539Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-21T05:59:00.0719914Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-21T05:59:00.1026808Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-21T05:59:00.1057668Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-21T05:59:00.1228185Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-21T05:59:00.1257202Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-21T05:59:00.1426092Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-21T05:59:00.2462570Z ##[endgroup]
+2026-10-21T05:59:00.2464452Z ##[group]Fetching the repository
+2026-10-21T05:59:00.2475975Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +9f5725d94e5a82e18acdf116e6da8a034c82fe65:refs/remotes/origin/chore-sow-delivery-plan
+2026-10-21T05:59:08.1867072Z From https://github.com/PaperStrange/TourGuideAI
+2026-10-21T05:59:08.1868504Z  * [new ref]         9f5725d94e5a82e18acdf116e6da8a034c82fe65 -> origin/chore-sow-delivery-plan
+2026-10-21T05:59:08.1870554Z ##[endgroup]
+2026-10-21T05:59:08.1871301Z ##[group]Determining the checkout info
+2026-10-21T05:59:08.1872372Z ##[endgroup]
+2026-10-21T05:59:08.1877821Z [command]/usr/bin/git sparse-checkout disable
+2026-10-21T05:59:08.1925587Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-21T05:59:08.1953501Z ##[group]Checking out the ref
+2026-10-21T05:59:08.1958222Z [command]/usr/bin/git checkout --progress --force -B chore-sow-delivery-plan refs/remotes/origin/chore-sow-delivery-plan
+2026-10-21T05:59:08.9066866Z Switched to a new branch 'chore-sow-delivery-plan'
+2026-10-21T05:59:08.9069383Z branch 'chore-sow-delivery-plan' set up to track 'origin/chore-sow-delivery-plan'.
+2026-10-21T05:59:08.9097393Z ##[endgroup]
+2026-10-21T05:59:08.9137292Z [command]/usr/bin/git log -1 --format=%H
+2026-10-21T05:59:08.9159812Z 9f5725d94e5a82e18acdf116e6da8a034c82fe65
+2026-10-21T05:59:08.9340962Z ##[group]Run mkdir -p "$TMPDIR"
+2026-10-21T05:59:08.9341469Z [36;1mmkdir -p "$TMPDIR"[0m
+2026-10-21T05:59:08.9456697Z shell: /usr/bin/bash -e {0}
+2026-10-21T05:59:08.9457073Z env:
+2026-10-21T05:59:08.9457462Z   TMPDIR: /home/runner/work/TourGuideAI/TourGuideAI/artifacts/tmp
+2026-10-21T05:59:08.9457893Z ##[endgroup]
+2026-10-21T05:59:08.9636756Z ##[group]Run actions/setup-python@v5
+2026-10-21T05:59:08.9637107Z with:
+2026-10-21T05:59:08.9637377Z   python-version: 3.12
+2026-10-21T05:59:08.9637731Z   cache: pip
+2026-10-21T05:59:08.9638108Z   cache-dependency-path: experience/content-tools/requirements.txt
+2026-10-21T05:59:08.9638522Z   check-latest: false
+2026-10-21T05:59:08.9640673Z   token: ***
+2026-10-21T05:59:08.9640977Z   update-environment: true
+2026-10-21T05:59:08.9641338Z   allow-prereleases: false
+2026-10-21T05:59:08.9641856Z   freethreaded: false
+2026-10-21T05:59:08.9642173Z env:
+2026-10-21T05:59:08.9642532Z   TMPDIR: /home/runner/work/TourGuideAI/TourGuideAI/artifacts/tmp
+2026-10-21T05:59:08.9642921Z ##[endgroup]
+2026-10-21T05:59:09.0752895Z ##[group]Installed versions
+2026-10-21T05:59:09.0841559Z (node:2119) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-21T05:59:09.0842707Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-21T05:59:09.0843202Z Successfully set up CPython (3.12.15)
+2026-10-21T05:59:09.0863045Z ##[endgroup]
+2026-10-21T05:59:09.1045023Z [command]/opt/hostedtoolcache/Python/3.12.15/x64/bin/pip cache dir
+2026-10-21T05:59:09.3387050Z /home/runner/.cache/pip
+2026-10-21T05:59:09.5123982Z Cache hit for: setup-python-Linux-x64-24.04-Ubuntu-python-3.12.15-pip-7eb3b264ca4c4c019f7ab342077cd3b511dd59f29915eb2e40f8feed1c796fd7
+2026-10-21T05:59:09.5196319Z (node:2119) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-21T05:59:10.3943984Z Received 30768626 of 30768626 (100.0%), 42.2 MBs/sec
+2026-10-21T05:59:10.3952996Z Cache Size: ~29 MB (30768626 B)
+2026-10-21T05:59:10.3966576Z [command]/usr/bin/tar -xf /home/runner/work/_temp/da35fde2-0ff0-414f-8679-ac9c2d8c15f2/cache.tzst -P -C /home/runner/work/TourGuideAI/TourGuideAI --use-compress-program unzstd
+2026-10-21T05:59:10.4333897Z Cache restored successfully
+2026-10-21T05:59:10.4352023Z Cache restored from key: setup-python-Linux-x64-24.04-Ubuntu-python-3.12.15-pip-7eb3b264ca4c4c019f7ab342077cd3b511dd59f29915eb2e40f8feed1c796fd7
+2026-10-21T05:59:10.4495426Z ##[group]Run python -m pip install -r experience/content-tools/requirements.txt
+2026-10-21T05:59:10.4495988Z [36;1mpython -m pip install -r experience/content-tools/requirements.txt[0m
+2026-10-21T05:59:10.4533848Z shell: /usr/bin/bash -e {0}
+2026-10-21T05:59:10.4534280Z env:
+2026-10-21T05:59:10.4534617Z   TMPDIR: /home/runner/work/TourGuideAI/TourGuideAI/artifacts/tmp
+2026-10-21T05:59:10.4535054Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T05:59:10.4535567Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-21T05:59:10.4536170Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T05:59:10.4536592Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T05:59:10.4537007Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T05:59:10.4537425Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-21T05:59:10.4537762Z ##[endgroup]
+2026-10-21T05:59:11.0371517Z Collecting osm2geojson==0.3.2 (from -r experience/content-tools/requirements.txt (line 1))
+2026-10-21T05:59:11.0383969Z   Using cached osm2geojson-0.3.2-py3-none-any.whl.metadata (8.4 kB)
+2026-10-21T05:59:11.0984333Z Collecting shapely==2.2.0 (from -r experience/content-tools/requirements.txt (line 2))
+2026-10-21T05:59:11.0994321Z   Using cached shapely-2.2.0-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (6.7 kB)
+2026-10-21T05:59:11.1490538Z Collecting pyproj==3.8.0 (from -r experience/content-tools/requirements.txt (line 3))
+2026-10-21T05:59:11.1500556Z   Using cached pyproj-3.8.0-cp312-cp312-manylinux_2_28_x86_64.whl.metadata (40 kB)
+2026-10-21T05:59:11.2017103Z Collecting requests>=2.25.0 (from osm2geojson==0.3.2->-r experience/content-tools/requirements.txt (line 1))
+2026-10-21T05:59:11.2027110Z   Using cached requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+2026-10-21T05:59:11.3386043Z Collecting numpy>=1.26 (from shapely==2.2.0->-r experience/content-tools/requirements.txt (line 2))
+2026-10-21T05:59:11.3398422Z   Using cached numpy-2.5.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+2026-10-21T05:59:11.3613961Z Collecting certifi (from pyproj==3.8.0->-r experience/content-tools/requirements.txt (line 3))
+2026-10-21T05:59:11.3622973Z   Using cached certifi-2026.10.19-py3-none-any.whl.metadata (2.5 kB)
+2026-10-21T05:59:11.4434026Z Collecting charset_normalizer<4,>=2 (from requests>=2.25.0->osm2geojson==0.3.2->-r experience/content-tools/requirements.txt (line 1))
+2026-10-21T05:59:11.4443904Z   Using cached charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (46 kB)
+2026-10-21T05:59:11.4678953Z Collecting idna<4,>=2.5 (from requests>=2.25.0->osm2geojson==0.3.2->-r experience/content-tools/requirements.txt (line 1))
+2026-10-21T05:59:11.4686879Z   Using cached idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+2026-10-21T05:59:11.4984997Z Collecting urllib3<3,>=1.26 (from requests>=2.25.0->osm2geojson==0.3.2->-r experience/content-tools/requirements.txt (line 1))
+2026-10-21T05:59:11.4992952Z   Using cached urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+2026-10-21T05:59:11.5037846Z Using cached osm2geojson-0.3.2-py3-none-any.whl (18 kB)
+2026-10-21T05:59:11.5046058Z Using cached shapely-2.2.0-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (2.3 MB)
+2026-10-21T05:59:11.5063335Z Using cached pyproj-3.8.0-cp312-cp312-manylinux_2_28_x86_64.whl (10.0 MB)
+2026-10-21T05:59:11.5104565Z Using cached numpy-2.5.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)
+2026-10-21T05:59:11.5166587Z Using cached requests-2.34.2-py3-none-any.whl (73 kB)
+2026-10-21T05:59:11.5175285Z Using cached charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (257 kB)
+2026-10-21T05:59:11.5184185Z Using cached idna-3.20-py3-none-any.whl (69 kB)
+2026-10-21T05:59:11.5192560Z Using cached urllib3-2.8.0-py3-none-any.whl (135 kB)
+2026-10-21T05:59:11.5201171Z Using cached certifi-2026.10.19-py3-none-any.whl (136 kB)
+2026-10-21T05:59:11.6040343Z Installing collected packages: urllib3, numpy, idna, charset_normalizer, certifi, shapely, requests, pyproj, osm2geojson
+2026-10-21T05:59:13.4904543Z 
+2026-10-21T05:59:13.4917227Z Successfully installed certifi-2026.10.19 charset_normalizer-3.5.2 idna-3.20 numpy-2.5.4 osm2geojson-0.3.2 pyproj-3.8.0 requests-2.34.2 shapely-2.2.0 urllib3-2.8.0
+2026-10-21T05:59:13.4923556Z 
+2026-10-21T05:59:13.4924363Z [notice] A new release of pip is available: 26.2.1 -> 26.2.2
+2026-10-21T05:59:13.4924883Z [notice] To update, run: pip install --upgrade pip
+2026-10-21T05:59:13.5582520Z ##[group]Run python experience/tests/site-workbench-test.py
+2026-10-21T05:59:13.5582967Z [36;1mpython experience/tests/site-workbench-test.py[0m
+2026-10-21T05:59:13.5614210Z shell: /usr/bin/bash -e {0}
+2026-10-21T05:59:13.5614636Z env:
+2026-10-21T05:59:13.5614997Z   TMPDIR: /home/runner/work/TourGuideAI/TourGuideAI/artifacts/tmp
+2026-10-21T05:59:13.5615422Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T05:59:13.5615851Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-21T05:59:13.5616274Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T05:59:13.5616674Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T05:59:13.5617073Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-21T05:59:13.5617504Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-21T05:59:13.5617840Z ##[endgroup]
+2026-10-21T05:59:15.1319965Z test_actual_incomplete_relations_are_reported_and_never_rendered (__main__.SiteWorkbenchTests.test_actual_incomplete_relations_are_reported_and_never_rendered) ... ok
+2026-10-21T05:59:15.4640350Z test_actual_snapshot_and_feature_provenance_reach_all_outputs (__main__.SiteWorkbenchTests.test_actual_snapshot_and_feature_provenance_reach_all_outputs) ... ok
+2026-10-21T05:59:15.5372812Z test_all_render_triangles_preserve_surface_area_and_holes (__main__.SiteWorkbenchTests.test_all_render_triangles_preserve_surface_area_and_holes) ... ok
+2026-10-21T05:59:16.6256992Z test_cli_emits_the_same_complete_three_outputs (__main__.SiteWorkbenchTests.test_cli_emits_the_same_complete_three_outputs) ... ok
+2026-10-21T05:59:17.0338416Z test_five_actual_courtyard_relations_keep_inner_rings (__main__.SiteWorkbenchTests.test_five_actual_courtyard_relations_keep_inner_rings) ... ok
+2026-10-21T05:59:17.0351318Z test_landmark_footprints_retain_actual_nodes_and_reported_heights (__main__.SiteWorkbenchTests.test_landmark_footprints_retain_actual_nodes_and_reported_heights) ... ok
+2026-10-21T05:59:17.0356775Z test_missing_height_and_width_remain_explicitly_authored (__main__.SiteWorkbenchTests.test_missing_height_and_width_remain_explicitly_authored) ... ok
+2026-10-21T05:59:17.0412110Z test_missing_license_and_invalid_local_extent_are_rejected (__main__.SiteWorkbenchTests.test_missing_license_and_invalid_local_extent_are_rejected) ... ok
+2026-10-21T05:59:17.1696954Z test_missing_required_relation_member_is_rejected (__main__.SiteWorkbenchTests.test_missing_required_relation_member_is_rejected) ... ok
+2026-10-21T05:59:17.3003996Z test_missing_required_source_node_is_rejected (__main__.SiteWorkbenchTests.test_missing_required_source_node_is_rejected) ... ok
+2026-10-21T05:59:17.4335528Z test_open_required_building_is_rejected_without_closing_it (__main__.SiteWorkbenchTests.test_open_required_building_is_rejected_without_closing_it) ... ok
+2026-10-21T05:59:18.2488643Z test_preparation_is_deterministic_and_never_mutates_captured_files (__main__.SiteWorkbenchTests.test_preparation_is_deterministic_and_never_mutates_captured_files) ... ok
+2026-10-21T05:59:18.2660962Z test_projection_has_actual_east_north_metre_scale_and_inverse (__main__.SiteWorkbenchTests.test_projection_has_actual_east_north_metre_scale_and_inverse) ... ok
+2026-10-21T05:59:18.3089276Z test_render_surfaces_are_finite_bounded_and_disjoint (__main__.SiteWorkbenchTests.test_render_surfaces_are_finite_bounded_and_disjoint) ... ok
+2026-10-21T05:59:18.3964367Z test_required_identity_cannot_be_silently_replaced (__main__.SiteWorkbenchTests.test_required_identity_cannot_be_silently_replaced) ... ok
+2026-10-21T05:59:18.5635529Z test_self_intersection_is_rejected_without_repairing_landmark (__main__.SiteWorkbenchTests.test_self_intersection_is_rejected_without_repairing_landmark) ... ok
+2026-10-21T05:59:18.7853477Z test_source_hash_mismatch_stops_before_output (__main__.SiteWorkbenchTests.test_source_hash_mismatch_stops_before_output) ... ok
+2026-10-21T05:59:18.7947671Z test_truncated_actual_xml_is_rejected (__main__.SiteWorkbenchTests.test_truncated_actual_xml_is_rejected) ... ok
+2026-10-21T05:59:18.7948347Z 
+2026-10-21T05:59:18.7948550Z ----------------------------------------------------------------------
+2026-10-21T05:59:18.7949034Z Ran 18 tests in 4.248s
+2026-10-21T05:59:18.7949202Z 
+2026-10-21T05:59:18.7949294Z OK
+2026-10-21T05:59:18.9399150Z Post job cleanup.
+2026-10-21T05:59:19.0327806Z Cache hit occurred on the primary key setup-python-Linux-x64-24.04-Ubuntu-python-3.12.15-pip-7eb3b264ca4c4c019f7ab342077cd3b511dd59f29915eb2e40f8feed1c796fd7, not saving cache.
+2026-10-21T05:59:19.0329057Z (node:2202) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-21T05:59:19.0329655Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-21T05:59:19.0788099Z Post job cleanup.
+2026-10-21T05:59:19.1404980Z [command]/usr/bin/git version
+2026-10-21T05:59:19.1435623Z git version 2.55.0
+2026-10-21T05:59:19.1462955Z Temporarily overriding HOME='/home/runner/work/_temp/c70927dd-657b-410c-aeb9-c8df57dbdfaf' before making global git config changes
+2026-10-21T05:59:19.1464196Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-21T05:59:19.1466894Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/TourGuideAI/TourGuideAI
+2026-10-21T05:59:19.1631212Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-21T05:59:19.1664400Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-21T05:59:19.1826938Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-21T05:59:19.1848877Z http.https://github.com/.extraheader
+2026-10-21T05:59:19.1858882Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-21T05:59:19.2674928Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-21T05:59:19.2846020Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-21T05:59:19.2872337Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-21T05:59:19.3150386Z Cleaning up orphan processes
+2026-10-21T05:59:19.3353337Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

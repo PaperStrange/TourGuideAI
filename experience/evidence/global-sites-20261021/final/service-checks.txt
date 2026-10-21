@@ -1,0 +1,30 @@
+
+> tourguideai-rooms@0.1.0 test
+> node --test test/*.test.js
+
+✔ two real HTTP clients collaborate, receive SSE snapshots and recover the persisted room after restart (4204.342473ms)
+✔ room credentials, contributor ownership, request validation and origin allowlist are enforced over HTTP (47.88633ms)
+✔ proposal validation allows catalog-grounded IDs and rejects invented or omitted contributed destinations (1.313642ms)
+✔ service shutdown completes while an invited client keeps its SSE connection open (17.142514ms)
+✔ changed wishes clear group acceptance and prevent an outdated proposal from omitting the new destination (55.917828ms)
+✔ shutdown closes an actual incomplete HTTP connection within its configured grace period (117.787957ms)
+✔ a valid catalog larger than the HTTP high-water mark still streams its committed update (53.705431ms)
+✔ Pages local configuration retains a stable database and exact additional origins (2.528174ms)
+✔ the actual local launcher accepts Pages preflight and recovers its room after process restart (593.156822ms)
+✔ two polling clients receive actual committed changes once per revision and stop after cancellation (489.602108ms)
+✔ actual buffered HTTP responses time out with backoff and periodic reads recover when transport resumes (692.25248ms)
+✔ closing a pending periodic read suppresses its delayed response and callbacks (150.900759ms)
+✔ polling invitation rejection is terminal and the default subscription retains real SSE (171.817332ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4720.559808
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

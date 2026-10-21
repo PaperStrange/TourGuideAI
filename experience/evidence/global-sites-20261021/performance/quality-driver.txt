@@ -1,0 +1,122 @@
+import { chromium } from '../experience/node_modules/playwright/index.mjs';
+import { createServer } from 'node:http';
+import { readFileSync, readdirSync, mkdirSync, writeFileSync } from 'node:fs';
+import { extname, join, relative } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
+import { getPackPlace } from '../experience/src/packs/registry.js';
+import { resolveStops } from '../experience/src/travel/places.js';
+
+const root = fileURLToPath(new URL('../', import.meta.url));
+const output = join(root, 'artifacts/q21-map-quality');
+mkdirSync(output, { recursive: true });
+process.env.TMPDIR = join(output, 'tmp');
+mkdirSync(process.env.TMPDIR, { recursive: true });
+const hash = bytes => createHash('sha256').update(bytes).digest('hex');
+const report = { startedAt: new Date().toISOString(), driverSha256: hash(readFileSync(fileURLToPath(import.meta.url))),
+  conditions: { dpr: 1, reducedMotion: true, tlsVerification: true, realProviderRequests: true,
+    networkInterception: false, scope: 'Actual built world-map adapters in a fixed-size capture harness; no homepage workflow or performance claim.',
+    difference: 'Published baseline uses post-load color preparation and antialias:true; candidate uses pre-load identical colors and antialias:false. Both settle before capture.' },
+  packages: [], captures: [] };
+const save = () => writeFileSync(join(output, 'result.json'), JSON.stringify(report, null, 2) + '\n');
+const mime = { '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.woff': 'font/woff',
+  '.woff2': 'font/woff2', '.png': 'image/png', '.svg': 'image/svg+xml', '.jpg': 'image/jpeg' };
+const servers = [];
+let browser;
+
+// 两个版本均直接加载冻结后的构建字节；地图来源请求保持真实。
+async function serve(label, directory) {
+  const assets = new Map();
+  function collect(folder) {
+    for (const entry of readdirSync(folder, { withFileTypes: true })) {
+      if (entry.name === '.git') continue;
+      const path = join(folder, entry.name);
+      if (entry.isDirectory()) collect(path);
+      else assets.set('/' + relative(directory, path), readFileSync(path));
+    }
+  }
+  collect(directory);
+  const paths = [...assets.keys()];
+  const module = paths.find(path => /^\/assets\/world-map-[^/]+\.js$/.test(path));
+  const styles = paths.filter(path => /^\/assets\/(?:world-map|index)-[^/]+\.css$/.test(path));
+  if (!module || styles.length !== 2) throw new Error(`Unexpected built map assets: ${label}`);
+  const manifest = [...assets].sort(([a], [b]) => a.localeCompare(b)).map(([path, bytes]) => ({ path, bytes: bytes.length, sha256: hash(bytes) }));
+  report.packages.push({ label, directory, manifestSha256: hash(JSON.stringify(manifest)), module,
+    moduleSha256: hash(assets.get(module)), styles, files: manifest });
+  const html = `<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E">
+    ${styles.map(path => `<link rel="stylesheet" href="${path}">`).join('')}
+    <style>html,body{margin:0;width:100%;height:100%;overflow:hidden}#map{position:fixed;inset:0;width:100%;height:100%}</style></head>
+    <body><div id="map"></div><script type="module">
+    import {createWorldMap} from '${module}';
+    window.mapErrors=[];
+    window.adapter=createWorldMap(document.querySelector('#map'),{onStatus(status,error){if(error)window.mapErrors.push(error.message)},onSelect(place){window.selected=place.id}});
+    </script></body></html>`;
+  const server = createServer((request, response) => {
+    const path = decodeURIComponent(new URL(request.url, 'http://localhost').pathname);
+    const bytes = path === '/comparison.html' ? Buffer.from(html) : assets.get(path);
+    if (!bytes) { response.writeHead(404); response.end('Unavailable'); return; }
+    response.writeHead(200, { 'content-type': path === '/comparison.html' ? 'text/html' : mime[extname(path)] || 'application/octet-stream' });
+    response.end(bytes);
+  });
+  await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+  servers.push(server);
+  return { label, origin: `http://127.0.0.1:${server.address().port}` };
+}
+
+try {
+  const variants = [await serve('baseline-aa-true', '/workspace/TourGuideAI-pages'),
+    await serve('candidate-aa-false', join(root, 'experience/dist'))];
+  const proxyValue = process.env.HTTPS_PROXY || process.env.HTTP_PROXY;
+  const proxy = proxyValue ? new URL(proxyValue) : null;
+  browser = await chromium.launch({ headless: true, executablePath: '/usr/bin/chromium', args: ['--no-sandbox'],
+    ...(proxy ? { proxy: { server: proxy.origin, bypass: 'localhost,127.0.0.1',
+      ...(proxy.username ? { username: decodeURIComponent(proxy.username), password: decodeURIComponent(proxy.password) } : {}) } } : {}) });
+  report.conditions.browser = browser.version(); save();
+  for (const device of [{ id: 'desktop', width: 1280, height: 800, locale: 'en' },
+    { id: 'phone', width: 390, height: 844, locale: 'zh' }]) {
+    for (const scene of ['world', 'local']) {
+      for (const variant of variants) {
+        const context = await browser.newContext({ viewport: { width: device.width, height: device.height },
+          deviceScaleFactor: 1, reducedMotion: 'reduce' });
+        const page = await context.newPage(); page.setDefaultTimeout(90000);
+        const record = { variant: variant.label, scene, device, errors: [], failedRequests: [] };
+        report.captures.push(record); save();
+        page.on('pageerror', error => record.errors.push(error.message));
+        page.on('requestfailed', request => record.failedRequests.push({ url: request.url(), error: request.failure()?.errorText }));
+        await page.goto(`${variant.origin}/comparison.html`, { waitUntil: 'domcontentloaded' });
+        await page.waitForFunction(() => window.adapter?.snapshot().ready === true);
+        const places = scene === 'world' ? ['shijo-karasuma', 'ginza-wako'].map(id => getPackPlace(id, device.locale))
+          : resolveStops(['crossing', 'mitsui', 'mufg'], device.locale);
+        await page.evaluate(async ({ scene, places, locale }) => {
+          document.documentElement.lang = locale;
+          window.adapter.setLocale(locale);
+          window.adapter.setPlaces(places, [{ stops: places }]);
+          if (scene === 'world') window.adapter.world(places);
+          else window.adapter.restoreView({ version: 1, center: [places[0].longitude, places[0].latitude],
+            zoom: 16.3, pitch: 56, bearing: -18 }, places[0]);
+          await window.adapter.whenReady();
+          await document.fonts.ready;
+          await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+        }, { scene, places, locale: device.locale });
+        record.snapshot = await page.evaluate(() => ({ ...window.adapter.snapshot(), errors: window.mapErrors,
+          contextAttributes: document.querySelector('canvas').getContext('webgl2').getContextAttributes(),
+          canvas: { width: document.querySelector('canvas').width, height: document.querySelector('canvas').height },
+          pins: [...document.querySelectorAll('.destination-pin')].map(pin => ({ label: pin.getAttribute('aria-label'),
+            rect: pin.getBoundingClientRect().toJSON() })) }));
+        record.image = `${device.id}-${scene}-${variant.label}.png`;
+        const bytes = await page.screenshot({ path: join(output, record.image) });
+        record.imageSha256 = hash(bytes); record.capturedAt = new Date().toISOString(); save();
+        console.log(record.image, 'buildings=' + record.snapshot.renderedBuildings, 'AA=' + record.snapshot.contextAttributes.antialias);
+        await page.evaluate(() => window.adapter.destroy());
+        await context.close();
+      }
+    }
+  }
+} catch (error) {
+  report.failure = error.stack; save(); throw error;
+} finally {
+  await browser?.close();
+  for (const server of servers) await new Promise(resolve => server.close(resolve));
+  report.finishedAt = new Date().toISOString(); save();
+}

@@ -1,9 +1,9 @@
 # Agent checkpoint · Explore and Together homepage
 
 2026-10-21 UTC · Lead owns integration, commits and publication.
-**State: sandbox-engine research and production implementation are complete;
-final browser/art review and release validation are in progress. Published Pages
-runtime `3362d6c` remains the verified baseline. Q03 remains open P1; backend tests
+**State: sandbox-engine research, production implementation, local browser/art
+acceptance and complete CI pass. Pages runtime `17b8f37` is published and verified:
+95/95 files and 16/16 hosted journey checks pass. Q03 remains open P1; backend tests
 stay local.**
 
 ## Active iteration · lively streets and geographic production
@@ -22,8 +22,8 @@ The actual OSM2World experiment converted the two captured international sites,
 retaining landmark IDs, but logged geometry errors despite exit code zero.
 [Portable evidence](../evidence/global-sites-20261021/converter/README.md) records
 the failed automatic-production gate. These outputs are research artifacts.
-Ginza's independently reviewed source context can proceed through art production;
-international geographic context requires explicit audit and manual review.
+Ginza's independently reviewed source context passes art production and browser
+review. International geographic context retains explicit audit and manual review.
 
 The implemented [site workbench](../content-tools/README.md) prepares real Delft
 and Helsinki source data, preserves source geometry and courtyards, and exports
@@ -32,16 +32,20 @@ coordinate, disjointness, triangulation, provenance and failure assertions.
 Displayed rings describe the actual retained triangles; numerical cleanup is
 recorded separately from original geographic geometry. The internal browser viewer
 checks model/context hashes and matching metadata identities. HTTP checks pass
-**40/40**; actual browser/art review remains pending. These scenes retain explicit
+**40/40**; the final browser walkthrough passes **36/36**. Eight matched visual
+pairs accept the bounded shadow correction for context review. Faint Helsinki
+foreground modulation remains P2. These scenes retain explicit
 unreviewed architecture and access status and are not registered as playable packs.
 
 The Ginza candidate adds mapped neighboring context, street layers, authored glass
 response and revised night pools. Model `ca7098c9…` has **8,148,792 bytes**, **87,154
 triangles** and **55 batches**; the whole pack has **8,268,894 bytes**. Independent
 binary audits preserve the original 42 landmark/navigation meshes and all 55 meshes
-across the final glazing correction. The preceding integrated candidate passes
-**81/81** pack browser checks, including normal-motion recovery. Final corrected
-material captures are pending. Application **121/121**, service **13/13** and
+across the final glazing correction. The final package passes **81/81** CI pack
+browser checks, including normal-motion recovery. Corrected material passes
+**12/12** local checks at seven identical poses and independent art review; those
+captures retain their original package identity, with all art assets unchanged.
+Application **121/121**, service **13/13** and
 repository **17/17** checks pass on the current source.
 
 Fresh unchanged Q03 observations are **1206.2 / 1115.1 / 1131.6 ms**. Pre-load style
@@ -49,14 +53,32 @@ initialization gives **1077.1 / 1031.2 / 1160.9 ms**; variation overlaps, so no
 reliable improvement is established. The antialias-disabled diagnostic records
 **905.2 / 810.8 / 901.4 ms**, still above the target; matched visual review rejects
 its edge quality. The implementation retains antialiasing and prepares the existing
-map style before layer creation. These observations establish no final latency gain.
+map style before layer creation. Final package measurements are
+**1187.8 / 1061.8 / 1156.5 ms**; all miss the unchanged 500 ms threshold.
 Preserve the unchanged driver and three independent warm-action threshold.
 
-Next: finish matched corrected-material views, workbench browser review, complete
-packaged CI and actual HTTPS publication verification.
-Only the lead builds, commits and publishes. Browser/GPU windows remain exclusive.
-Update this checkpoint with exact tested package and source/Pages identities before
-claiming the new milestone is delivered.
+Runtime implementation `3214398`, final workbench correction `218fd16` and provider
+retry recovery `9f5725d` are committed and pushed. Retry releases the unloaded
+MapLibre style before requesting it again, preserving the selected view, route
+and private records. Focused EN/ZH style/tile recovery checks pass **18/18**.
+The frozen 95-file package is
+`3e72aa1c53596042a14d1fb2aae9556b0a2caa876be93d424ec9ebe2aebb0162`.
+CI `39552515626` completed successfully on this exact package: original walk
+**133**, perspective **80**, companion **73**, homepage **65**, solo **75**,
+reviewed packs **81**, extended walkthrough **264**, and geographic source
+preparation **18**. All seven browser reports match every packaged file and their
+downloaded artifact digests. Reports are retained under
+[iteration evidence](../evidence/global-sites-20261021/README.md).
+
+[Actual HTTPS verification](../evidence/global-sites-20261021/hosted/README.md)
+confirms **95/95** files and **16/16** live journey checks, with zero page exceptions.
+Pages runtime is `17b8f371e0f8a21d990837ea3f5606829a16c784`; metadata-only commit
+`09fec3a` records that result. L02–L06 are complete. L01 remains open P1.
+
+Next: promote one geographic context through source-matched architecture and
+navigation review using the existing Shijō/Ginza interaction requirements. The
+iteration plan records that scope and the separate performance gate. Only the lead
+builds, commits and publishes; browser/GPU windows remain exclusive.
 
 ## Current iteration · reviewed interactive places
 

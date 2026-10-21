@@ -1,0 +1,791 @@
+{
+  "startedAt": "2026-10-21T05:45:08.181Z",
+  "viewerSha256": "75e0ed4e4751a773e5caa5dd44738efd0452b3581c63d9ee523edb107f18fab9",
+  "models": [
+    {
+      "id": "delft-markt",
+      "file": "scene.glb",
+      "sha256": "b9a63090d9ab6a2335c214b8361519abf9c97ef0dfd33ca1e0fe6b78a08b23e9",
+      "bytes": 844128
+    },
+    {
+      "id": "helsinki-senate",
+      "file": "scene.glb",
+      "sha256": "e0a7da09e662c8b32ca577e6da5868bbfeadc904e776aefec28cb5f1bf4534d9",
+      "bytes": 928416
+    }
+  ],
+  "captures": [
+    {
+      "filename": "delft-markt-desktop-day.png",
+      "snapshot": {
+        "phase": "ready",
+        "siteId": "delft-markt",
+        "mode": "day",
+        "requestedMode": "day",
+        "error": null,
+        "renderedFrames": 6,
+        "selectedFeature": null,
+        "modelSha256": "b9a63090d9ab6a2335c214b8361519abf9c97ef0dfd33ca1e0fe6b78a08b23e9",
+        "locale": "en",
+        "hidden": false,
+        "camera": {
+          "position": [
+            108.14202438354492,
+            141.2253153192997,
+            154.48760681152345
+          ],
+          "target": [
+            0,
+            9.909999996423721,
+            -0.00099945068359375
+          ],
+          "near": 0.02,
+          "far": 5149.620208740234,
+          "projectionMatrix": [
+            1.5033564307817806,
+            0,
+            0,
+            0,
+            0,
+            2.414213562373095,
+            0,
+            0,
+            0,
+            0,
+            -1.0000077675932848,
+            -1,
+            0,
+            0,
+            -0.0400001553518657,
+            0
+          ],
+          "matrixWorld": [
+            0.8192319205190405,
+            0,
+            -0.5734623443633283,
+            0,
+            -0.3277043390756556,
+            0.8206377566768518,
+            -0.46814905582236516,
+            0,
+            0.47060485181697,
+            0.5714487486348923,
+            0.6722926454528143,
+            0,
+            108.14202438354492,
+            141.2253153192997,
+            154.48760681152345,
+            1
+          ]
+        },
+        "viewport": {
+          "x": 325,
+          "y": 154,
+          "width": 1090,
+          "height": 678,
+          "bufferWidth": 1092,
+          "bufferHeight": 680,
+          "pixelRatio": 1
+        },
+        "shadow": {
+          "mapSize": [
+            1024,
+            1024
+          ],
+          "bias": -0.00048214331803706243,
+          "normalBias": 0.08941608221612335,
+          "near": 145.29044853105862,
+          "far": 307.5639240977026,
+          "left": -114.45258523663786,
+          "right": 114.45258523663792,
+          "top": 91.5892694437424,
+          "bottom": -91.5892694437424
+        },
+        "renderer": {
+          "geometries": 10,
+          "textures": 4,
+          "calls": 20,
+          "triangles": 22270
+        },
+        "representation": "geographic-context",
+        "navigation": "unreviewed"
+      }
+    },
+    {
+      "filename": "delft-markt-desktop-night.png",
+      "snapshot": {
+        "phase": "ready",
+        "siteId": "delft-markt",
+        "mode": "night",
+        "requestedMode": "night",
+        "error": null,
+        "renderedFrames": 8,
+        "selectedFeature": null,
+        "modelSha256": "b9a63090d9ab6a2335c214b8361519abf9c97ef0dfd33ca1e0fe6b78a08b23e9",
+        "locale": "en",
+        "hidden": false,
+        "camera": {
+          "position": [
+            108.14202438354492,
+            141.2253153192997,
+            154.48760681152345
+          ],
+          "target": [
+            0,
+            9.909999996423721,
+            -0.00099945068359375
+          ],
+          "near": 0.02,
+          "far": 5149.620208740234,
+          "projectionMatrix": [
+            1.5033564307817806,
+            0,
+            0,
+            0,
+            0,
+            2.414213562373095,
+            0,
+            0,
+            0,
+            0,
+            -1.0000077675932848,
+            -1,
+            0,
+            0,
+            -0.0400001553518657,
+            0
+          ],
+          "matrixWorld": [
+            0.8192319205190405,
+            0,
+            -0.5734623443633283,
+            0,
+            -0.3277043390756556,
+            0.8206377566768518,
+            -0.46814905582236516,
+            0,
+            0.47060485181697,
+            0.5714487486348923,
+            0.6722926454528143,
+            0,
+            108.14202438354492,
+            141.2253153192997,
+            154.48760681152345,
+            1
+          ]
+        },
+        "viewport": {
+          "x": 325,
+          "y": 154,
+          "width": 1090,
+          "height": 678,
+          "bufferWidth": 1092,
+          "bufferHeight": 680,
+          "pixelRatio": 1
+        },
+        "shadow": {
+          "mapSize": [
+            1024,
+            1024
+          ],
+          "bias": -0.00048214331803706243,
+          "normalBias": 0.08941608221612335,
+          "near": 145.29044853105862,
+          "far": 307.5639240977026,
+          "left": -114.45258523663786,
+          "right": 114.45258523663792,
+          "top": 91.5892694437424,
+          "bottom": -91.5892694437424
+        },
+        "renderer": {
+          "geometries": 10,
+          "textures": 4,
+          "calls": 20,
+          "triangles": 22270
+        },
+        "representation": "geographic-context",
+        "navigation": "unreviewed"
+      }
+    },
+    {
+      "filename": "helsinki-senate-desktop-day.png",
+      "snapshot": {
+        "phase": "ready",
+        "siteId": "helsinki-senate",
+        "mode": "day",
+        "requestedMode": "day",
+        "error": null,
+        "renderedFrames": 11,
+        "selectedFeature": null,
+        "modelSha256": "e0a7da09e662c8b32ca577e6da5868bbfeadc904e776aefec28cb5f1bf4534d9",
+        "locale": "en",
+        "hidden": false,
+        "camera": {
+          "position": [
+            204.70603439331057,
+            251.01596480965617,
+            243.9984069824219
+          ],
+          "target": [
+            22.20700454711914,
+            29.40999999642372,
+            -16.714492797851562
+          ],
+          "near": 0.02896809997558594,
+          "far": 8690.429992675781,
+          "projectionMatrix": [
+            1.5033564307817806,
+            0,
+            0,
+            0,
+            0,
+            2.4142135623730954,
+            0,
+            0,
+            0,
+            0,
+            -1.000006666688889,
+            -1,
+            0,
+            0,
+            -0.05793639307248212,
+            0
+          ],
+          "matrixWorld": [
+            0.8192319205190404,
+            5.551115123125783e-17,
+            -0.5734623443633284,
+            0,
+            -0.3277043390756557,
+            0.8206377566768517,
+            -0.4681490558223651,
+            0,
+            0.4706048518169701,
+            0.5714487486348923,
+            0.6722926454528142,
+            0,
+            204.70603439331057,
+            251.01596480965617,
+            243.9984069824219,
+            1
+          ]
+        },
+        "viewport": {
+          "x": 325,
+          "y": 154,
+          "width": 1090,
+          "height": 678,
+          "bufferWidth": 1092,
+          "bufferHeight": 680,
+          "pixelRatio": 1
+        },
+        "shadow": {
+          "mapSize": [
+            1024,
+            1024
+          ],
+          "bias": -0.00042403766622401936,
+          "normalBias": 0.1432821598613637,
+          "near": 234.28440544308833,
+          "far": 529.9465596925157,
+          "left": -183.40116462254548,
+          "right": 183.4011646225456,
+          "top": 164.3641707623812,
+          "bottom": -164.36417076238112
+        },
+        "renderer": {
+          "geometries": 11,
+          "textures": 4,
+          "calls": 22,
+          "triangles": 25114
+        },
+        "representation": "geographic-context",
+        "navigation": "unreviewed"
+      }
+    },
+    {
+      "filename": "helsinki-senate-desktop-night.png",
+      "snapshot": {
+        "phase": "ready",
+        "siteId": "helsinki-senate",
+        "mode": "night",
+        "requestedMode": "night",
+        "error": null,
+        "renderedFrames": 13,
+        "selectedFeature": null,
+        "modelSha256": "e0a7da09e662c8b32ca577e6da5868bbfeadc904e776aefec28cb5f1bf4534d9",
+        "locale": "en",
+        "hidden": false,
+        "camera": {
+          "position": [
+            204.70603439331057,
+            251.01596480965617,
+            243.9984069824219
+          ],
+          "target": [
+            22.20700454711914,
+            29.40999999642372,
+            -16.714492797851562
+          ],
+          "near": 0.02896809997558594,
+          "far": 8690.429992675781,
+          "projectionMatrix": [
+            1.5033564307817806,
+            0,
+            0,
+            0,
+            0,
+            2.4142135623730954,
+            0,
+            0,
+            0,
+            0,
+            -1.000006666688889,
+            -1,
+            0,
+            0,
+            -0.05793639307248212,
+            0
+          ],
+          "matrixWorld": [
+            0.8192319205190404,
+            5.551115123125783e-17,
+            -0.5734623443633284,
+            0,
+            -0.3277043390756557,
+            0.8206377566768517,
+            -0.4681490558223651,
+            0,
+            0.4706048518169701,
+            0.5714487486348923,
+            0.6722926454528142,
+            0,
+            204.70603439331057,
+            251.01596480965617,
+            243.9984069824219,
+            1
+          ]
+        },
+        "viewport": {
+          "x": 325,
+          "y": 154,
+          "width": 1090,
+          "height": 678,
+          "bufferWidth": 1092,
+          "bufferHeight": 680,
+          "pixelRatio": 1
+        },
+        "shadow": {
+          "mapSize": [
+            1024,
+            1024
+          ],
+          "bias": -0.00042403766622401936,
+          "normalBias": 0.1432821598613637,
+          "near": 234.28440544308833,
+          "far": 529.9465596925157,
+          "left": -183.40116462254548,
+          "right": 183.4011646225456,
+          "top": 164.3641707623812,
+          "bottom": -164.36417076238112
+        },
+        "renderer": {
+          "geometries": 11,
+          "textures": 4,
+          "calls": 22,
+          "triangles": 25114
+        },
+        "representation": "geographic-context",
+        "navigation": "unreviewed"
+      }
+    },
+    {
+      "filename": "delft-markt-phone-day.png",
+      "snapshot": {
+        "phase": "ready",
+        "siteId": "delft-markt",
+        "mode": "day",
+        "requestedMode": "day",
+        "error": null,
+        "renderedFrames": 7,
+        "selectedFeature": null,
+        "modelSha256": "b9a63090d9ab6a2335c214b8361519abf9c97ef0dfd33ca1e0fe6b78a08b23e9",
+        "locale": "en",
+        "hidden": false,
+        "camera": {
+          "position": [
+            144.63718758162906,
+            185.540870631259,
+            206.62355423735792
+          ],
+          "target": [
+            0,
+            9.909999996423721,
+            -0.00099945068359375
+          ],
+          "near": 0.02,
+          "far": 5149.620208740234,
+          "projectionMatrix": [
+            3.2289488001872733,
+            0,
+            0,
+            0,
+            0,
+            2.414213562373095,
+            0,
+            0,
+            0,
+            0,
+            -1.0000077675932848,
+            -1,
+            0,
+            0,
+            -0.0400001553518657,
+            0
+          ],
+          "matrixWorld": [
+            0.8192319205190405,
+            0,
+            -0.5734623443633283,
+            0,
+            -0.3277043390756556,
+            0.8206377566768518,
+            -0.46814905582236516,
+            0,
+            0.47060485181697,
+            0.5714487486348923,
+            0.6722926454528143,
+            0,
+            144.63718758162906,
+            185.540870631259,
+            206.62355423735792,
+            1
+          ]
+        },
+        "viewport": {
+          "x": 13,
+          "y": 356.3125,
+          "width": 364,
+          "height": 487.515625,
+          "bufferWidth": 366,
+          "bufferHeight": 489,
+          "pixelRatio": 1
+        },
+        "shadow": {
+          "mapSize": [
+            1024,
+            1024
+          ],
+          "bias": -0.00048214331803706243,
+          "normalBias": 0.08941608221612335,
+          "near": 145.29044853105862,
+          "far": 307.5639240977026,
+          "left": -114.45258523663786,
+          "right": 114.45258523663792,
+          "top": 91.5892694437424,
+          "bottom": -91.5892694437424
+        },
+        "renderer": {
+          "geometries": 10,
+          "textures": 4,
+          "calls": 20,
+          "triangles": 22270
+        },
+        "representation": "geographic-context",
+        "navigation": "unreviewed"
+      }
+    },
+    {
+      "filename": "delft-markt-phone-night.png",
+      "snapshot": {
+        "phase": "ready",
+        "siteId": "delft-markt",
+        "mode": "night",
+        "requestedMode": "night",
+        "error": null,
+        "renderedFrames": 9,
+        "selectedFeature": null,
+        "modelSha256": "b9a63090d9ab6a2335c214b8361519abf9c97ef0dfd33ca1e0fe6b78a08b23e9",
+        "locale": "en",
+        "hidden": false,
+        "camera": {
+          "position": [
+            144.63718758162906,
+            185.540870631259,
+            206.62355423735792
+          ],
+          "target": [
+            0,
+            9.909999996423721,
+            -0.00099945068359375
+          ],
+          "near": 0.02,
+          "far": 5149.620208740234,
+          "projectionMatrix": [
+            3.2289488001872733,
+            0,
+            0,
+            0,
+            0,
+            2.414213562373095,
+            0,
+            0,
+            0,
+            0,
+            -1.0000077675932848,
+            -1,
+            0,
+            0,
+            -0.0400001553518657,
+            0
+          ],
+          "matrixWorld": [
+            0.8192319205190405,
+            0,
+            -0.5734623443633283,
+            0,
+            -0.3277043390756556,
+            0.8206377566768518,
+            -0.46814905582236516,
+            0,
+            0.47060485181697,
+            0.5714487486348923,
+            0.6722926454528143,
+            0,
+            144.63718758162906,
+            185.540870631259,
+            206.62355423735792,
+            1
+          ]
+        },
+        "viewport": {
+          "x": 13,
+          "y": 356.3125,
+          "width": 364,
+          "height": 487.515625,
+          "bufferWidth": 366,
+          "bufferHeight": 489,
+          "pixelRatio": 1
+        },
+        "shadow": {
+          "mapSize": [
+            1024,
+            1024
+          ],
+          "bias": -0.00048214331803706243,
+          "normalBias": 0.08941608221612335,
+          "near": 145.29044853105862,
+          "far": 307.5639240977026,
+          "left": -114.45258523663786,
+          "right": 114.45258523663792,
+          "top": 91.5892694437424,
+          "bottom": -91.5892694437424
+        },
+        "renderer": {
+          "geometries": 10,
+          "textures": 4,
+          "calls": 20,
+          "triangles": 22270
+        },
+        "representation": "geographic-context",
+        "navigation": "unreviewed"
+      }
+    },
+    {
+      "filename": "helsinki-senate-phone-day.png",
+      "snapshot": {
+        "phase": "ready",
+        "siteId": "helsinki-senate",
+        "mode": "day",
+        "requestedMode": "day",
+        "error": null,
+        "renderedFrames": 13,
+        "selectedFeature": null,
+        "modelSha256": "e0a7da09e662c8b32ca577e6da5868bbfeadc904e776aefec28cb5f1bf4534d9",
+        "locale": "en",
+        "hidden": false,
+        "camera": {
+          "position": [
+            266.2947822986274,
+            325.80230155182664,
+            331.982332561446
+          ],
+          "target": [
+            22.20700454711914,
+            29.40999999642372,
+            -16.714492797851562
+          ],
+          "near": 0.02896809997558594,
+          "far": 8690.429992675781,
+          "projectionMatrix": [
+            3.2289488001872733,
+            0,
+            0,
+            0,
+            0,
+            2.4142135623730954,
+            0,
+            0,
+            0,
+            0,
+            -1.000006666688889,
+            -1,
+            0,
+            0,
+            -0.05793639307248212,
+            0
+          ],
+          "matrixWorld": [
+            0.8192319205190405,
+            -2.7755575615628914e-17,
+            -0.5734623443633283,
+            0,
+            -0.32770433907565555,
+            0.8206377566768518,
+            -0.46814905582236516,
+            0,
+            0.47060485181697,
+            0.5714487486348921,
+            0.6722926454528143,
+            0,
+            266.2947822986274,
+            325.80230155182664,
+            331.982332561446,
+            1
+          ]
+        },
+        "viewport": {
+          "x": 13,
+          "y": 356,
+          "width": 364,
+          "height": 487.515625,
+          "bufferWidth": 366,
+          "bufferHeight": 489,
+          "pixelRatio": 1
+        },
+        "shadow": {
+          "mapSize": [
+            1024,
+            1024
+          ],
+          "bias": -0.00042403766622401936,
+          "normalBias": 0.1432821598613637,
+          "near": 234.28440544308833,
+          "far": 529.9465596925157,
+          "left": -183.40116462254548,
+          "right": 183.4011646225456,
+          "top": 164.3641707623812,
+          "bottom": -164.36417076238112
+        },
+        "renderer": {
+          "geometries": 11,
+          "textures": 4,
+          "calls": 22,
+          "triangles": 25114
+        },
+        "representation": "geographic-context",
+        "navigation": "unreviewed"
+      }
+    },
+    {
+      "filename": "helsinki-senate-phone-night.png",
+      "snapshot": {
+        "phase": "ready",
+        "siteId": "helsinki-senate",
+        "mode": "night",
+        "requestedMode": "night",
+        "error": null,
+        "renderedFrames": 15,
+        "selectedFeature": null,
+        "modelSha256": "e0a7da09e662c8b32ca577e6da5868bbfeadc904e776aefec28cb5f1bf4534d9",
+        "locale": "en",
+        "hidden": false,
+        "camera": {
+          "position": [
+            266.2947822986274,
+            325.80230155182664,
+            331.982332561446
+          ],
+          "target": [
+            22.20700454711914,
+            29.40999999642372,
+            -16.714492797851562
+          ],
+          "near": 0.02896809997558594,
+          "far": 8690.429992675781,
+          "projectionMatrix": [
+            3.2289488001872733,
+            0,
+            0,
+            0,
+            0,
+            2.4142135623730954,
+            0,
+            0,
+            0,
+            0,
+            -1.000006666688889,
+            -1,
+            0,
+            0,
+            -0.05793639307248212,
+            0
+          ],
+          "matrixWorld": [
+            0.8192319205190405,
+            -2.7755575615628914e-17,
+            -0.5734623443633283,
+            0,
+            -0.32770433907565555,
+            0.8206377566768518,
+            -0.46814905582236516,
+            0,
+            0.47060485181697,
+            0.5714487486348921,
+            0.6722926454528143,
+            0,
+            266.2947822986274,
+            325.80230155182664,
+            331.982332561446,
+            1
+          ]
+        },
+        "viewport": {
+          "x": 13,
+          "y": 356,
+          "width": 364,
+          "height": 487.515625,
+          "bufferWidth": 366,
+          "bufferHeight": 489,
+          "pixelRatio": 1
+        },
+        "shadow": {
+          "mapSize": [
+            1024,
+            1024
+          ],
+          "bias": -0.00042403766622401936,
+          "normalBias": 0.1432821598613637,
+          "near": 234.28440544308833,
+          "far": 529.9465596925157,
+          "left": -183.40116462254548,
+          "right": 183.4011646225456,
+          "top": 164.3641707623812,
+          "bottom": -164.36417076238112
+        },
+        "renderer": {
+          "geometries": 11,
+          "textures": 4,
+          "calls": 22,
+          "triangles": 25114
+        },
+        "representation": "geographic-context",
+        "navigation": "unreviewed"
+      }
+    }
+  ],
+  "errors": [],
+  "browser": "151.0.7922.34",
+  "finishedAt": "2026-10-21T05:45:30.243Z"
+}

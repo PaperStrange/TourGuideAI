@@ -1,0 +1,188 @@
+{
+  "startedAt": "2026-10-21T05:45:37.118Z",
+  "checks": [
+    {
+      "label": "site listing",
+      "passed": true
+    },
+    {
+      "label": "all supplied actual sites listed",
+      "passed": true
+    },
+    {
+      "label": "delft-markt: actual model HTTP",
+      "passed": true
+    },
+    {
+      "label": "delft-markt: actual model byte length",
+      "passed": true
+    },
+    {
+      "label": "delft-markt: actual model SHA-256",
+      "passed": true
+    },
+    {
+      "label": "delft-markt: actual context",
+      "passed": true
+    },
+    {
+      "label": "delft-markt: actual review",
+      "passed": true
+    },
+    {
+      "label": "helsinki-senate: actual model HTTP",
+      "passed": true
+    },
+    {
+      "label": "helsinki-senate: actual model byte length",
+      "passed": true
+    },
+    {
+      "label": "helsinki-senate: actual model SHA-256",
+      "passed": true
+    },
+    {
+      "label": "helsinki-senate: actual context",
+      "passed": true
+    },
+    {
+      "label": "helsinki-senate: actual review",
+      "passed": true
+    },
+    {
+      "label": "allowed /",
+      "passed": true
+    },
+    {
+      "label": "allowed /main.js",
+      "passed": true
+    },
+    {
+      "label": "allowed /style.css",
+      "passed": true
+    },
+    {
+      "label": "allowed /vendor/three/build/three.module.js",
+      "passed": true
+    },
+    {
+      "label": "allowed /vendor/three/build/three.core.js",
+      "passed": true
+    },
+    {
+      "label": "allowed /vendor/three/examples/jsm/loaders/GLTFLoader.js",
+      "passed": true
+    },
+    {
+      "label": "allowed /lighting/resources.json",
+      "passed": true
+    },
+    {
+      "label": "allowed /lighting/environments/day-1k.hdr",
+      "passed": true
+    },
+    {
+      "label": "allowed /lighting/environments/night-1k.hdr",
+      "passed": true
+    },
+    {
+      "label": "denied /package.json",
+      "passed": true
+    },
+    {
+      "label": "denied /../experience/package.json",
+      "passed": true
+    },
+    {
+      "label": "denied /%2e%2e/experience/package.json",
+      "passed": true
+    },
+    {
+      "label": "denied /sites/delft-markt/../../package.json",
+      "passed": true
+    },
+    {
+      "label": "denied /sites/delft-markt/%2e%2e/context.json",
+      "passed": true
+    },
+    {
+      "label": "denied /sites/delft-markt/site.blend",
+      "passed": true
+    },
+    {
+      "label": "denied /vendor/three/package.json",
+      "passed": true
+    },
+    {
+      "label": "denied /lighting/rig.json",
+      "passed": true
+    },
+    {
+      "label": "denied /%00",
+      "passed": true
+    },
+    {
+      "label": "denied /sites/delft-markt/%5c..%5cscene.glb",
+      "passed": true
+    },
+    {
+      "label": "writes denied",
+      "passed": true
+    },
+    {
+      "label": "foreign Host denied",
+      "passed": true
+    },
+    {
+      "label": "foreign Origin denied",
+      "passed": true
+    },
+    {
+      "label": "HEAD has no body",
+      "passed": true
+    },
+    {
+      "label": "duplicate site rejected",
+      "passed": true
+    },
+    {
+      "label": "escaping symlink rejected",
+      "passed": true
+    },
+    {
+      "label": "copied actual export metadata agrees",
+      "passed": true
+    },
+    {
+      "label": "mixed actual context rejected",
+      "passed": true
+    },
+    {
+      "label": "mixed actual review rejected",
+      "passed": true
+    }
+  ],
+  "sites": [
+    {
+      "id": "delft-markt",
+      "modelSha256": "b9a63090d9ab6a2335c214b8361519abf9c97ef0dfd33ca1e0fe6b78a08b23e9",
+      "contextSha256": "f1f3ef1232781785296aca6f0b6475e0bcdce30c1554fcd939ac1344d6897fa8",
+      "configSha256": "6634bd4c2740ef16bb69f79bee2c392176395e0af1d24330607926f6da3b1187",
+      "sourceSha256": "69e5fb1b52dd50d95a1ac9c2fa59616bb668ed7db46d9bfcb8e93dd23f607b7e"
+    },
+    {
+      "id": "helsinki-senate",
+      "modelSha256": "e0a7da09e662c8b32ca577e6da5868bbfeadc904e776aefec28cb5f1bf4534d9",
+      "contextSha256": "a07fe3b3c02337bcdd709d40c501ac9793f7b430ee9afef5946c7237c48fa1ce",
+      "configSha256": "cea413d4847f03ff02ebc36d49afcc5fefa968ceabaa4e00336182acbef1e37f",
+      "sourceSha256": "ca1efe4230b3022f9df213d05dfae50a1454dd1662c016faae22dba1b6644424"
+    }
+  ],
+  "server": "127.0.0.1",
+  "scope": "Actual generated asset HTTP, coherent metadata, read-only routes and traversal/origin/symlink restrictions; no browser rendering evidence",
+  "driverSha256": "925af86d4133a262692b0daf89a9fa2d03703b53a40fdb3013a3f00dd21831f9",
+  "serverSha256": "d4449e32a18bfbd17bcb296b0c0b9f9ed24c89f84c7c849f0e036508bc17768a",
+  "status": "passed",
+  "finishedAt": "2026-10-21T05:45:37.270Z",
+  "passed": 40
+}

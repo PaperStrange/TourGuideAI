@@ -1,6 +1,6 @@
 # Real-place 3D production and geographic engine research
 
-Reviewed 2026-10-21 against repository baseline `3836ee3` and current primary documentation. The user's engine-research request pauses further production changes. The two international extracts and Ginza context below are prepared research/source work; neither international site is a published walking pack. Engine migration and new geographic providers remain proposals.
+Reviewed 2026-10-21 against repository baseline `3836ee3` and current primary documentation. The user's engine-research request established a research gate before production. The delivered [geographic site workbench](../content-tools/README.md) now prepares the two international extracts, exports editable Blender scenes and supports browser review; [iteration evidence](../evidence/global-sites-20261021/README.md) records source, geometry, interaction and art checks. Delft and Helsinki retain unreviewed architecture/navigation and remain internal geographic contexts. Ginza receives independently reviewed surrounding context. Engine migration and new geographic providers remain proposals.
 
 ## Recommended production design
 
@@ -11,7 +11,7 @@ The resulting flow is:
 ```mermaid
 flowchart LR
   A[Versioned OSM or licensed city geometry] --> B[Identity, CRS, completeness and rights checks]
-  B --> C[OSM2World or dataset-specific conversion]
+  B --> C[Reviewed geographic preparation and conversion]
   C --> D[Shared material and detail rules]
   D --> E[Blender landmark refinement]
   E --> F[GLB pack or geographic tile delivery]

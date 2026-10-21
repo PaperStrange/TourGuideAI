@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-21",
+  "method": "Actual CPU Blender repeat export and Three GLTFLoader parsing; source metadata, per-vertex source identity, coordinates, projected roof area, budgets and manifest hashes",
+  "scope": "Internal geographic-context previews. Render inspection does not validate landmark architecture, facade appearance, terrain, public access or walkability. Independent source tests cover polygon hole containment.",
+  "editableFileDeterminism": "Actual .blend bytes differ between separate Blender processes; runtime GLB bytes and all non-editable-file manifest fields repeat exactly.",
+  "sites": [
+    {
+      "id": "delft-markt",
+      "passed": true,
+      "model": {
+        "file": "scene.glb",
+        "sha256": "b9a63090d9ab6a2335c214b8361519abf9c97ef0dfd33ca1e0fe6b78a08b23e9",
+        "bytes": 844128
+      },
+      "geometry": {
+        "triangles": 11135,
+        "batches": 10,
+        "features": 121,
+        "buildings": 84,
+        "courtyardRings": 0,
+        "windowPanels": 1699
+      },
+      "source": {
+        "format": "osm-xml",
+        "queryBounds": [
+          4.357,
+          52.0108,
+          4.3595,
+          52.0121
+        ],
+        "sha256": "69e5fb1b52dd50d95a1ac9c2fa59616bb668ed7db46d9bfcb8e93dd23f607b7e",
+        "url": "https://api.openstreetmap.org/api/0.6/map?bbox=4.3570,52.0108,4.3595,52.0121",
+        "retrievedAt": "2026-10-21T04:51:21.781506+00:00",
+        "license": "ODbL-1.0",
+        "attribution": "© OpenStreetMap contributors"
+      },
+      "contextSha256": "f1f3ef1232781785296aca6f0b6475e0bcdce30c1554fcd939ac1344d6897fa8",
+      "generatorSha256": "21828805503755c79b0bddfdf9d7365445feaaf37813a4465ac5ae66dcd256c2",
+      "repeatedModelSha256": "b9a63090d9ab6a2335c214b8361519abf9c97ef0dfd33ca1e0fe6b78a08b23e9",
+      "runtimeBytesIdentical": true,
+      "nonEditableManifestFieldsIdentical": true,
+      "editable": {
+        "original": {
+          "file": "site.blend",
+          "sha256": "7f759222af3a20b3a2abdc52c748bca89e3ff79f8304a88c092f10839fea2084",
+          "bytes": 3856288
+        },
+        "repeated": {
+          "file": "site.blend",
+          "sha256": "4ff19cd521d21bdd0e5d8b3dbb9ec2335fcd5d941d0e73e75fad8193e9cc1321",
+          "bytes": 3856288
+        },
+        "bytesIdentical": false
+      },
+      "inspectedSourceRoots": 121,
+      "inspectedSourceIndices": 121,
+      "maximumRoofCoordinateErrorMetres": 0.000003784179682497779,
+      "roofAreaMatchesPreparedPolygons": true,
+      "batches": [
+        {
+          "name": "context-ground",
+          "triangles": 2,
+          "sourceCount": 0,
+          "sourceAttribute": "_source_index"
+        },
+        {
+          "name": "context-wall-muted",
+          "triangles": 796,
+          "sourceCount": 25,
+          "sourceAttribute": "_source_index"
+        },
+        {
+          "name": "context-roof",
+          "triangles": 633,
+          "sourceCount": 84,
+          "sourceAttribute": "_source_index"
+        },
+        {
+          "name": "context-trim",
+          "triangles": 4514,
+          "sourceCount": 84,
+          "sourceAttribute": "_source_index"
+        },
+        {
+          "name": "context-glass",
+          "triangles": 3398,
+          "sourceCount": 80,
+          "sourceAttribute": "_source_index"
+        },
+        {
+          "name": "context-wall-warm",
+          "triangles": 862,
+          "sourceCount": 28,
+          "sourceAttribute": "_source_index"
+        },
+        {
+          "name": "context-wall-light",
+          "triangles": 577,
+          "sourceCount": 31,
+          "sourceAttribute": "_source_index"
+        },
+        {
+          "name": "context-path",
+          "triangles": 243,
+          "sourceCount": 30,
+          "sourceAttribute": "_source_index"
+        },
+        {
+          "name": "context-water",
+          "triangles": 107,
+          "sourceCount": 6,
+          "sourceAttribute": "_source_index"
+        },
+        {
+          "name": "context-green",
+          "triangles": 3,
+          "sourceCount": 1,
+          "sourceAttribute": "_source_index"
+        }
+      ]
+    },
+    {
+      "id": "helsinki-senate",
+      "passed": true,
+      "model": {
+        "file": "scene.glb",
+        "sha256": "e0a7da09e662c8b32ca577e6da5868bbfeadc904e776aefec28cb5f1bf4534d9",
+        "bytes": 928416
+      },
+      "geometry": {
+        "triangles": 12557,
+        "batches": 11,
+        "features": 166,
+        "buildings": 17,
+        "courtyardRings": 2,
+        "windowPanels": 2244
+      },
+      "source": {
+        "format": "osm-xml",
+        "queryBounds": [
+          24.9518,
+          60.1681,
+          24.9548,
+          60.1704
+        ],
+        "sha256": "ca1efe4230b3022f9df213d05dfae50a1454dd1662c016faae22dba1b6644424",
+        "url": "https://api.openstreetmap.org/api/0.6/map?bbox=24.9518,60.1681,24.9548,60.1704",
+        "retrievedAt": "2026-10-21T04:51:23.356210+00:00",
+        "license": "ODbL-1.0",
+        "attribution": "© OpenStreetMap contributors"
+      },
+      "contextSha256": "a07fe3b3c02337bcdd709d40c501ac9793f7b430ee9afef5946c7237c48fa1ce",
+      "generatorSha256": "21828805503755c79b0bddfdf9d7365445feaaf37813a4465ac5ae66dcd256c2",
+      "repeatedModelSha256": "e0a7da09e662c8b32ca577e6da5868bbfeadc904e776aefec28cb5f1bf4534d9",
+      "runtimeBytesIdentical": true,
+      "nonEditableManifestFieldsIdentical": true,
+      "editable": {
+        "original": {
+          "file": "site.blend",
+          "sha256": "e592687765a8fbfd93e4719fae8f3c74c91a4b98c695c6df4d540f28590cccf8",
+          "bytes": 3284852
+        },
+        "repeated": {
+          "file": "site.blend",
+          "sha256": "63db62c19eb8604aad2acacd9a1e73e59bec3e333911e538fe9468d47de4d003",
+          "bytes": 3284852
+        },
+        "bytesIdentical": false
+      },
+      "inspectedSourceRoots": 166,
+      "inspectedSourceIndices": 166,
+      "maximumRoofCoordinateErrorMetres": 0.000007568359364995558,
+      "roofAreaMatchesPreparedPolygons": true,
+      "batches": [
+        {
+          "name": "context-ground",
+          "triangles": 2,
+          "sourceCount": 0,
+          "sourceAttribute": "_source_index"
+        },
+        {
+          "name": "context-wall-warm",
+          "triangles": 391,
+          "sourceCount": 5,
+          "sourceAttribute": "_source_index"
+        },
+        {
+          "name": "context-roof",
+          "triangles": 355,
+          "sourceCount": 17,
+          "sourceAttribute": "_source_index"
+        },
+        {
+          "name": "context-trim",
+          "triangles": 5252,
+          "sourceCount": 17,
+          "sourceAttribute": "_source_index"
+        },
+        {
+          "name": "context-glass",
+          "triangles": 4488,
+          "sourceCount": 17,
+          "sourceAttribute": "_source_index"
+        },
+        {
+          "name": "context-wall-muted",
+          "triangles": 534,
+          "sourceCount": 7,
+          "sourceAttribute": "_source_index"
+        },
+        {
+          "name": "context-wall-light",
+          "triangles": 200,
+          "sourceCount": 5,
+          "sourceAttribute": "_source_index"
+        },
+        {
+          "name": "context-path",
+          "triangles": 1003,
+          "sourceCount": 121,
+          "sourceAttribute": "_source_index"
+        },
+        {
+          "name": "context-road",
+          "triangles": 302,
+          "sourceCount": 26,
+          "sourceAttribute": "_source_index"
+        },
+        {
+          "name": "context-water",
+          "triangles": 10,
+          "sourceCount": 1,
+          "sourceAttribute": "_source_index"
+        },
+        {
+          "name": "context-green",
+          "triangles": 20,
+          "sourceCount": 1,
+          "sourceAttribute": "_source_index"
+        }
+      ]
+    }
+  ]
+}

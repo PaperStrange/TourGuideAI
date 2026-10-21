@@ -1,0 +1,4604 @@
+{
+  "schemaVersion": 1,
+  "id": "helsinki-senate",
+  "title": {
+    "en": "Helsinki Senate Square · geographic context",
+    "zh": "赫尔辛基参议院广场 · 地理环境模型"
+  },
+  "model": {
+    "file": "scene.glb",
+    "sha256": "e0a7da09e662c8b32ca577e6da5868bbfeadc904e776aefec28cb5f1bf4534d9",
+    "bytes": 928416
+  },
+  "editable": {
+    "file": "site.blend",
+    "sha256": "e592687765a8fbfd93e4719fae8f3c74c91a4b98c695c6df4d540f28590cccf8",
+    "bytes": 3284852
+  },
+  "geometry": {
+    "triangles": 12557,
+    "batches": 11,
+    "features": 166,
+    "buildings": 17,
+    "courtyardRings": 2,
+    "windowPanels": 2244
+  },
+  "representation": "geographic-context",
+  "navigation": "unreviewed",
+  "landmarkArchitecture": "unreviewed",
+  "source": {
+    "format": "osm-xml",
+    "queryBounds": [
+      24.9518,
+      60.1681,
+      24.9548,
+      60.1704
+    ],
+    "sha256": "ca1efe4230b3022f9df213d05dfae50a1454dd1662c016faae22dba1b6644424",
+    "url": "https://api.openstreetmap.org/api/0.6/map?bbox=24.9518,60.1681,24.9548,60.1704",
+    "retrievedAt": "2026-10-21T04:51:23.356210+00:00",
+    "license": "ODbL-1.0",
+    "attribution": "© OpenStreetMap contributors"
+  },
+  "origin": {
+    "longitude": 24.9533,
+    "latitude": 60.16925
+  },
+  "projection": {
+    "sourceCRS": "EPSG:4326",
+    "localCRS": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"World Geodetic System 1984\",ELLIPSOID[\"WGS 84\",6378137,298.257223563,LENGTHUNIT[\"metre\",1]],ID[\"EPSG\",6326]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Azimuthal Equidistant\",ID[\"EPSG\",1125]],PARAMETER[\"Latitude of natural origin\",60.16925,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8801]],PARAMETER[\"Longitude of natural origin\",24.9533,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+    "axisOrder": "longitude, latitude",
+    "localAxes": "x east, y north, z height; metres",
+    "gltfMapping": "[x, height, -y]"
+  },
+  "bounds": [
+    -94.378,
+    -128.126,
+    138.792,
+    161.555
+  ],
+  "geographicBounds": [
+    24.9516,
+    60.1681,
+    24.9558,
+    60.1707
+  ],
+  "contextSha256": "a07fe3b3c02337bcdd709d40c501ac9793f7b430ee9afef5946c7237c48fa1ce",
+  "configSha256": "cea413d4847f03ff02ebc36d49afcc5fefa968ceabaa4e00336182acbef1e37f",
+  "generatorSha256": "21828805503755c79b0bddfdf9d7365445feaaf37813a4465ac5ae66dcd256c2",
+  "blenderVersion": "4.3.2",
+  "limits": {
+    "modelBytes": 8388608,
+    "triangles": 100000,
+    "batches": 128
+  },
+  "authoredPolicy": {
+    "displayPrecisionMetres": 0.001,
+    "defaultBuildingHeightMetres": 12,
+    "storeyHeightMetres": 3.2,
+    "roadWidthMetres": 6,
+    "pathWidthMetres": 2.5,
+    "windowSpacingMetres": 3.2,
+    "ground": "level, without a surveyed elevation datum",
+    "facades": "shared authored neutral finishes and window rhythm; landmark-specific architecture requires review",
+    "lighting": "authored daylight/night presentation; no current occupancy or opening-hour claim"
+  },
+  "features": [
+    {
+      "sourceId": "osm:way:1542850662",
+      "kind": "building",
+      "height": {
+        "metres": 59.0,
+        "origin": "observed",
+        "sourceTag": "height",
+        "sourceValue": "59"
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-08-10T16:27:21Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:1542850662",
+          "firstVertex": 0,
+          "vertexCount": 267,
+          "firstPolygon": 0,
+          "polygonCount": 76
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:1542850662",
+          "firstVertex": 0,
+          "vertexCount": 111,
+          "firstPolygon": 0,
+          "polygonCount": 37
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:1542850662",
+          "firstVertex": 0,
+          "vertexCount": 3756,
+          "firstPolygon": 0,
+          "polygonCount": 939
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:1542850662",
+          "firstVertex": 0,
+          "vertexCount": 3600,
+          "firstPolygon": 0,
+          "polygonCount": 900
+        }
+      ],
+      "windowPanels": 900,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:relation:1331997",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2017-04-27T10:13:54Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:relation:1331997",
+          "firstVertex": 0,
+          "vertexCount": 735,
+          "firstPolygon": 0,
+          "polygonCount": 210
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:relation:1331997",
+          "firstVertex": 111,
+          "vertexCount": 315,
+          "firstPolygon": 37,
+          "polygonCount": 105
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:relation:1331997",
+          "firstVertex": 3756,
+          "vertexCount": 1968,
+          "firstPolygon": 939,
+          "polygonCount": 492
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:relation:1331997",
+          "firstVertex": 3600,
+          "vertexCount": 1560,
+          "firstPolygon": 900,
+          "polygonCount": 390
+        }
+      ],
+      "windowPanels": 390,
+      "courtyardRings": 1
+    },
+    {
+      "sourceId": "osm:relation:1688738",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 8,
+      "sourceTimestamp": "2025-08-30T20:50:46Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:relation:1688738",
+          "firstVertex": 267,
+          "vertexCount": 210,
+          "firstPolygon": 76,
+          "polygonCount": 60
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:relation:1688738",
+          "firstVertex": 426,
+          "vertexCount": 90,
+          "firstPolygon": 142,
+          "polygonCount": 30
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:relation:1688738",
+          "firstVertex": 5724,
+          "vertexCount": 568,
+          "firstPolygon": 1431,
+          "polygonCount": 142
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:relation:1688738",
+          "firstVertex": 5160,
+          "vertexCount": 448,
+          "firstPolygon": 1290,
+          "polygonCount": 112
+        }
+      ],
+      "windowPanels": 112,
+      "courtyardRings": 1
+    },
+    {
+      "sourceId": "osm:way:1307749131",
+      "kind": "building",
+      "height": {
+        "metres": 12.8,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "4",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2026-09-15T12:28:42Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:1307749131",
+          "firstVertex": 0,
+          "vertexCount": 50,
+          "firstPolygon": 0,
+          "polygonCount": 14
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:1307749131",
+          "firstVertex": 516,
+          "vertexCount": 18,
+          "firstPolygon": 172,
+          "polygonCount": 6
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:1307749131",
+          "firstVertex": 6292,
+          "vertexCount": 356,
+          "firstPolygon": 1573,
+          "polygonCount": 89
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:1307749131",
+          "firstVertex": 5608,
+          "vertexCount": 324,
+          "firstPolygon": 1402,
+          "polygonCount": 81
+        }
+      ],
+      "windowPanels": 81,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:152309484",
+      "kind": "building",
+      "height": {
+        "metres": 6.4,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "2",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 10,
+      "sourceTimestamp": "2024-08-15T12:43:05Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:152309484",
+          "firstVertex": 735,
+          "vertexCount": 43,
+          "firstPolygon": 210,
+          "polygonCount": 12
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:152309484",
+          "firstVertex": 534,
+          "vertexCount": 15,
+          "firstPolygon": 178,
+          "polygonCount": 5
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:152309484",
+          "firstVertex": 6648,
+          "vertexCount": 80,
+          "firstPolygon": 1662,
+          "polygonCount": 20
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:152309484",
+          "firstVertex": 5932,
+          "vertexCount": 52,
+          "firstPolygon": 1483,
+          "polygonCount": 13
+        }
+      ],
+      "windowPanels": 13,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:165718850",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-09-15T12:27:52Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:165718850",
+          "firstVertex": 477,
+          "vertexCount": 92,
+          "firstPolygon": 136,
+          "polygonCount": 26
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:165718850",
+          "firstVertex": 549,
+          "vertexCount": 36,
+          "firstPolygon": 183,
+          "polygonCount": 12
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:165718850",
+          "firstVertex": 6728,
+          "vertexCount": 212,
+          "firstPolygon": 1682,
+          "polygonCount": 53
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:165718850",
+          "firstVertex": 5984,
+          "vertexCount": 156,
+          "firstPolygon": 1496,
+          "polygonCount": 39
+        }
+      ],
+      "windowPanels": 39,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:17426424",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 20,
+      "sourceTimestamp": "2025-08-30T20:50:46Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:17426424",
+          "firstVertex": 50,
+          "vertexCount": 211,
+          "firstPolygon": 14,
+          "polygonCount": 60
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:17426424",
+          "firstVertex": 585,
+          "vertexCount": 87,
+          "firstPolygon": 195,
+          "polygonCount": 29
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:17426424",
+          "firstVertex": 6940,
+          "vertexCount": 484,
+          "firstPolygon": 1735,
+          "polygonCount": 121
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:17426424",
+          "firstVertex": 6140,
+          "vertexCount": 360,
+          "firstPolygon": 1535,
+          "polygonCount": 90
+        }
+      ],
+      "windowPanels": 90,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:17427154",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 14,
+      "sourceTimestamp": "2025-08-30T20:50:46Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:17427154",
+          "firstVertex": 569,
+          "vertexCount": 309,
+          "firstPolygon": 162,
+          "polygonCount": 88
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:17427154",
+          "firstVertex": 672,
+          "vertexCount": 129,
+          "firstPolygon": 224,
+          "polygonCount": 43
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:17427154",
+          "firstVertex": 7424,
+          "vertexCount": 844,
+          "firstPolygon": 1856,
+          "polygonCount": 211
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:17427154",
+          "firstVertex": 6500,
+          "vertexCount": 664,
+          "firstPolygon": 1625,
+          "polygonCount": 166
+        }
+      ],
+      "windowPanels": 166,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:22115854",
+      "kind": "building",
+      "height": {
+        "metres": 6.4,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "2",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2026-09-15T12:26:25Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:22115854",
+          "firstVertex": 261,
+          "vertexCount": 22,
+          "firstPolygon": 74,
+          "polygonCount": 6
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:22115854",
+          "firstVertex": 801,
+          "vertexCount": 6,
+          "firstPolygon": 267,
+          "polygonCount": 2
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:22115854",
+          "firstVertex": 8268,
+          "vertexCount": 112,
+          "firstPolygon": 2067,
+          "polygonCount": 28
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:22115854",
+          "firstVertex": 7164,
+          "vertexCount": 96,
+          "firstPolygon": 1791,
+          "polygonCount": 24
+        }
+      ],
+      "windowPanels": 24,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:33084558",
+      "kind": "building",
+      "height": {
+        "metres": 12.8,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "4",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 7,
+      "sourceTimestamp": "2026-08-12T18:40:11Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:33084558",
+          "firstVertex": 778,
+          "vertexCount": 36,
+          "firstPolygon": 222,
+          "polygonCount": 10
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:33084558",
+          "firstVertex": 807,
+          "vertexCount": 12,
+          "firstPolygon": 269,
+          "polygonCount": 4
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:33084558",
+          "firstVertex": 8380,
+          "vertexCount": 156,
+          "firstPolygon": 2095,
+          "polygonCount": 39
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:33084558",
+          "firstVertex": 7260,
+          "vertexCount": 132,
+          "firstPolygon": 1815,
+          "polygonCount": 33
+        }
+      ],
+      "windowPanels": 33,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:33734047",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 10,
+      "sourceTimestamp": "2026-09-15T12:26:39Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:33734047",
+          "firstVertex": 814,
+          "vertexCount": 92,
+          "firstPolygon": 232,
+          "polygonCount": 26
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:33734047",
+          "firstVertex": 819,
+          "vertexCount": 36,
+          "firstPolygon": 273,
+          "polygonCount": 12
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:33734047",
+          "firstVertex": 8536,
+          "vertexCount": 120,
+          "firstPolygon": 2134,
+          "polygonCount": 30
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:33734047",
+          "firstVertex": 7392,
+          "vertexCount": 64,
+          "firstPolygon": 1848,
+          "polygonCount": 16
+        }
+      ],
+      "windowPanels": 16,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:38101163",
+      "kind": "building",
+      "height": {
+        "metres": 6.4,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "2",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 16,
+      "sourceTimestamp": "2023-10-11T20:47:17Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:38101163",
+          "firstVertex": 906,
+          "vertexCount": 57,
+          "firstPolygon": 258,
+          "polygonCount": 16
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:38101163",
+          "firstVertex": 855,
+          "vertexCount": 21,
+          "firstPolygon": 285,
+          "polygonCount": 7
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:38101163",
+          "firstVertex": 8656,
+          "vertexCount": 88,
+          "firstPolygon": 2164,
+          "polygonCount": 22
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:38101163",
+          "firstVertex": 7456,
+          "vertexCount": 52,
+          "firstPolygon": 1864,
+          "polygonCount": 13
+        }
+      ],
+      "windowPanels": 13,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:643456011",
+      "kind": "building",
+      "height": {
+        "metres": 12,
+        "origin": "authored",
+        "reason": "No supported source height or floor count",
+        "sourceHeight": null
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-09-15T12:28:36Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-warm",
+          "sourceId": "osm:way:643456011",
+          "firstVertex": 878,
+          "vertexCount": 29,
+          "firstPolygon": 250,
+          "polygonCount": 8
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:643456011",
+          "firstVertex": 876,
+          "vertexCount": 9,
+          "firstPolygon": 292,
+          "polygonCount": 3
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:643456011",
+          "firstVertex": 8744,
+          "vertexCount": 116,
+          "firstPolygon": 2186,
+          "polygonCount": 29
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:643456011",
+          "firstVertex": 7508,
+          "vertexCount": 96,
+          "firstPolygon": 1877,
+          "polygonCount": 24
+        }
+      ],
+      "windowPanels": 24,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:87317906",
+      "kind": "building",
+      "height": {
+        "metres": 12.8,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "4",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 8,
+      "sourceTimestamp": "2026-09-15T12:27:22Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:87317906",
+          "firstVertex": 963,
+          "vertexCount": 99,
+          "firstPolygon": 274,
+          "polygonCount": 28
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:87317906",
+          "firstVertex": 885,
+          "vertexCount": 39,
+          "firstPolygon": 295,
+          "polygonCount": 13
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:87317906",
+          "firstVertex": 8860,
+          "vertexCount": 504,
+          "firstPolygon": 2215,
+          "polygonCount": 126
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:87317906",
+          "firstVertex": 7604,
+          "vertexCount": 444,
+          "firstPolygon": 1901,
+          "polygonCount": 111
+        }
+      ],
+      "windowPanels": 111,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:87317909",
+      "kind": "building",
+      "height": {
+        "metres": 12.8,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "4",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2025-08-30T20:50:46Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:87317909",
+          "firstVertex": 283,
+          "vertexCount": 85,
+          "firstPolygon": 80,
+          "polygonCount": 24
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:87317909",
+          "firstVertex": 924,
+          "vertexCount": 33,
+          "firstPolygon": 308,
+          "polygonCount": 11
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:87317909",
+          "firstVertex": 9364,
+          "vertexCount": 256,
+          "firstPolygon": 2341,
+          "polygonCount": 64
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:87317909",
+          "firstVertex": 8048,
+          "vertexCount": 204,
+          "firstPolygon": 2012,
+          "polygonCount": 51
+        }
+      ],
+      "windowPanels": 51,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:87318456",
+      "kind": "building",
+      "height": {
+        "metres": 12.8,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "4",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 10,
+      "sourceTimestamp": "2026-09-15T12:27:22Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-light",
+          "sourceId": "osm:way:87318456",
+          "firstVertex": 368,
+          "vertexCount": 92,
+          "firstPolygon": 104,
+          "polygonCount": 26
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:87318456",
+          "firstVertex": 957,
+          "vertexCount": 36,
+          "firstPolygon": 319,
+          "polygonCount": 12
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:87318456",
+          "firstVertex": 9620,
+          "vertexCount": 452,
+          "firstPolygon": 2405,
+          "polygonCount": 113
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:87318456",
+          "firstVertex": 8252,
+          "vertexCount": 396,
+          "firstPolygon": 2063,
+          "polygonCount": 99
+        }
+      ],
+      "windowPanels": 99,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:87318457",
+      "kind": "building",
+      "height": {
+        "metres": 9.600000000000001,
+        "origin": "derived-with-authored-policy",
+        "sourceTag": "building:levels",
+        "sourceValue": "3",
+        "authoredStoreyHeightMetres": 3.2
+      },
+      "architecturalReview": "required: footprint/maximum-height massing only; roof, building parts, facade and ground levels are unreviewed",
+      "navigation": "unreviewed",
+      "sourceVersion": 19,
+      "sourceTimestamp": "2025-06-24T13:17:33Z",
+      "renderRanges": [
+        {
+          "material": "context-wall-muted",
+          "sourceId": "osm:way:87318457",
+          "firstVertex": 1062,
+          "vertexCount": 176,
+          "firstPolygon": 302,
+          "polygonCount": 50
+        },
+        {
+          "material": "context-roof",
+          "sourceId": "osm:way:87318457",
+          "firstVertex": 993,
+          "vertexCount": 72,
+          "firstPolygon": 331,
+          "polygonCount": 24
+        },
+        {
+          "material": "context-trim",
+          "sourceId": "osm:way:87318457",
+          "firstVertex": 10072,
+          "vertexCount": 432,
+          "firstPolygon": 2518,
+          "polygonCount": 108
+        },
+        {
+          "material": "context-glass",
+          "sourceId": "osm:way:87318457",
+          "firstVertex": 8648,
+          "vertexCount": 328,
+          "firstPolygon": 2162,
+          "polygonCount": 82
+        }
+      ],
+      "windowPanels": 82,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:relation:2919121",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 17,
+      "sourceTimestamp": "2025-06-04T15:08:31Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:relation:2919121",
+          "firstVertex": 0,
+          "vertexCount": 144,
+          "firstPolygon": 0,
+          "polygonCount": 48
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1101191250",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2023-11-25T16:07:33Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1101191250",
+          "firstVertex": 144,
+          "vertexCount": 12,
+          "firstPolygon": 48,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:119613063",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 23,
+      "sourceTimestamp": "2026-06-28T12:24:39Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:119613063",
+          "firstVertex": 156,
+          "vertexCount": 102,
+          "firstPolygon": 52,
+          "polygonCount": 34
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:123341418",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 10,
+      "sourceTimestamp": "2026-08-13T15:45:56Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:123341418",
+          "firstVertex": 258,
+          "vertexCount": 6,
+          "firstPolygon": 86,
+          "polygonCount": 2
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:123403675",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 20,
+      "sourceTimestamp": "2026-08-18T19:32:46Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:123403675",
+          "firstVertex": 264,
+          "vertexCount": 66,
+          "firstPolygon": 88,
+          "polygonCount": 22
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307749110",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 1,
+      "sourceTimestamp": "2024-08-14T13:54:49Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1307749110",
+          "firstVertex": 330,
+          "vertexCount": 12,
+          "firstPolygon": 110,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307749111",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 1,
+      "sourceTimestamp": "2024-08-14T13:54:49Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1307749111",
+          "firstVertex": 342,
+          "vertexCount": 21,
+          "firstPolygon": 114,
+          "polygonCount": 7
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307749116",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 1,
+      "sourceTimestamp": "2024-08-14T13:54:49Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1307749116",
+          "firstVertex": 363,
+          "vertexCount": 12,
+          "firstPolygon": 121,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307948076",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2026-06-28T12:24:41Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1307948076",
+          "firstVertex": 375,
+          "vertexCount": 6,
+          "firstPolygon": 125,
+          "polygonCount": 2
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307948077",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2026-06-28T12:24:42Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1307948077",
+          "firstVertex": 381,
+          "vertexCount": 6,
+          "firstPolygon": 127,
+          "polygonCount": 2
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307948078",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-08-17T16:36:09Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1307948078",
+          "firstVertex": 387,
+          "vertexCount": 18,
+          "firstPolygon": 129,
+          "polygonCount": 6
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307948079",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-08-17T16:36:06Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1307948079",
+          "firstVertex": 405,
+          "vertexCount": 12,
+          "firstPolygon": 135,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307948082",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-08-17T16:36:02Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1307948082",
+          "firstVertex": 417,
+          "vertexCount": 9,
+          "firstPolygon": 139,
+          "polygonCount": 3
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307948083",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2026-06-28T12:24:42Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1307948083",
+          "firstVertex": 426,
+          "vertexCount": 9,
+          "firstPolygon": 142,
+          "polygonCount": 3
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307948084",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-06-28T12:24:41Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1307948084",
+          "firstVertex": 435,
+          "vertexCount": 6,
+          "firstPolygon": 145,
+          "polygonCount": 2
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307948085",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2026-06-28T12:24:41Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1307948085",
+          "firstVertex": 441,
+          "vertexCount": 6,
+          "firstPolygon": 147,
+          "polygonCount": 2
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307948086",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2026-06-28T12:24:39Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1307948086",
+          "firstVertex": 447,
+          "vertexCount": 6,
+          "firstPolygon": 149,
+          "polygonCount": 2
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307948087",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2026-06-28T12:24:41Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1307948087",
+          "firstVertex": 453,
+          "vertexCount": 84,
+          "firstPolygon": 151,
+          "polygonCount": 28
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307948088",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2026-06-28T12:24:42Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1307948088",
+          "firstVertex": 537,
+          "vertexCount": 9,
+          "firstPolygon": 179,
+          "polygonCount": 3
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307948089",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2026-06-28T12:24:43Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1307948089",
+          "firstVertex": 546,
+          "vertexCount": 6,
+          "firstPolygon": 182,
+          "polygonCount": 2
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307948090",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-06-28T12:24:43Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1307948090",
+          "firstVertex": 552,
+          "vertexCount": 6,
+          "firstPolygon": 184,
+          "polygonCount": 2
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307948091",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2026-06-28T12:24:40Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1307948091",
+          "firstVertex": 558,
+          "vertexCount": 15,
+          "firstPolygon": 186,
+          "polygonCount": 5
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307948092",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-06-28T12:24:41Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1307948092",
+          "firstVertex": 573,
+          "vertexCount": 33,
+          "firstPolygon": 191,
+          "polygonCount": 11
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307948093",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-06-28T12:24:43Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1307948093",
+          "firstVertex": 606,
+          "vertexCount": 36,
+          "firstPolygon": 202,
+          "polygonCount": 12
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307948094",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2026-06-28T12:24:43Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1307948094",
+          "firstVertex": 642,
+          "vertexCount": 9,
+          "firstPolygon": 214,
+          "polygonCount": 3
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307948104",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 1,
+      "sourceTimestamp": "2024-08-15T12:02:39Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1307948104",
+          "firstVertex": 651,
+          "vertexCount": 12,
+          "firstPolygon": 217,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307948106",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 1,
+      "sourceTimestamp": "2024-08-15T12:02:39Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1307948106",
+          "firstVertex": 663,
+          "vertexCount": 15,
+          "firstPolygon": 221,
+          "polygonCount": 5
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307948107",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 1,
+      "sourceTimestamp": "2024-08-15T12:02:39Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1307948107",
+          "firstVertex": 678,
+          "vertexCount": 45,
+          "firstPolygon": 226,
+          "polygonCount": 15
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307952657",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 1,
+      "sourceTimestamp": "2024-08-15T12:43:05Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1307952657",
+          "firstVertex": 723,
+          "vertexCount": 9,
+          "firstPolygon": 241,
+          "polygonCount": 3
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307952658",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 1,
+      "sourceTimestamp": "2024-08-15T12:43:05Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1307952658",
+          "firstVertex": 732,
+          "vertexCount": 15,
+          "firstPolygon": 244,
+          "polygonCount": 5
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307952660",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 1,
+      "sourceTimestamp": "2024-08-15T12:43:05Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1307952660",
+          "firstVertex": 747,
+          "vertexCount": 9,
+          "firstPolygon": 249,
+          "polygonCount": 3
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1360887903",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 1,
+      "sourceTimestamp": "2025-02-18T12:07:29Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1360887903",
+          "firstVertex": 756,
+          "vertexCount": 6,
+          "firstPolygon": 252,
+          "polygonCount": 2
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1360887904",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 1,
+      "sourceTimestamp": "2025-02-18T12:07:29Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1360887904",
+          "firstVertex": 762,
+          "vertexCount": 9,
+          "firstPolygon": 254,
+          "polygonCount": 3
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1360887905",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 1,
+      "sourceTimestamp": "2025-02-18T12:07:29Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1360887905",
+          "firstVertex": 771,
+          "vertexCount": 12,
+          "firstPolygon": 257,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1395932034",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2026-08-13T15:45:59Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1395932034",
+          "firstVertex": 783,
+          "vertexCount": 18,
+          "firstPolygon": 261,
+          "polygonCount": 6
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1395932035",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2026-08-13T15:45:59Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1395932035",
+          "firstVertex": 801,
+          "vertexCount": 15,
+          "firstPolygon": 267,
+          "polygonCount": 5
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1395932039",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 1,
+      "sourceTimestamp": "2025-06-17T09:49:18Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1395932039",
+          "firstVertex": 816,
+          "vertexCount": 12,
+          "firstPolygon": 272,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:154413902",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2024-02-06T10:05:29Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:154413902",
+          "firstVertex": 828,
+          "vertexCount": 9,
+          "firstPolygon": 276,
+          "polygonCount": 3
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1550648446",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 1,
+      "sourceTimestamp": "2026-08-18T19:32:46Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:1550648446",
+          "firstVertex": 837,
+          "vertexCount": 39,
+          "firstPolygon": 279,
+          "polygonCount": 13
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:165718851",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2025-06-24T13:17:33Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:165718851",
+          "firstVertex": 876,
+          "vertexCount": 51,
+          "firstPolygon": 292,
+          "polygonCount": 17
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:165718852",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-06-28T12:24:44Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:165718852",
+          "firstVertex": 927,
+          "vertexCount": 6,
+          "firstPolygon": 309,
+          "polygonCount": 2
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:165718853",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 1,
+      "sourceTimestamp": "2012-06-01T11:24:48Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:165718853",
+          "firstVertex": 933,
+          "vertexCount": 15,
+          "firstPolygon": 311,
+          "polygonCount": 5
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:165718854",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2021-12-21T07:18:41Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:165718854",
+          "firstVertex": 948,
+          "vertexCount": 18,
+          "firstPolygon": 316,
+          "polygonCount": 6
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:165718855",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2021-12-21T07:18:41Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:165718855",
+          "firstVertex": 966,
+          "vertexCount": 6,
+          "firstPolygon": 322,
+          "polygonCount": 2
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:165718856",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 7,
+      "sourceTimestamp": "2024-08-15T12:43:05Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:165718856",
+          "firstVertex": 972,
+          "vertexCount": 21,
+          "firstPolygon": 324,
+          "polygonCount": 7
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:165719058",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2023-08-25T15:17:02Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:165719058",
+          "firstVertex": 993,
+          "vertexCount": 3,
+          "firstPolygon": 331,
+          "polygonCount": 1
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:28196951",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 14,
+      "sourceTimestamp": "2024-09-25T13:04:05Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:28196951",
+          "firstVertex": 996,
+          "vertexCount": 18,
+          "firstPolygon": 332,
+          "polygonCount": 6
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:28196953",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2026-08-13T15:45:55Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:28196953",
+          "firstVertex": 1014,
+          "vertexCount": 18,
+          "firstPolygon": 338,
+          "polygonCount": 6
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:28196955",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 8,
+      "sourceTimestamp": "2026-08-13T15:45:56Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:28196955",
+          "firstVertex": 1032,
+          "vertexCount": 24,
+          "firstPolygon": 344,
+          "polygonCount": 8
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:28322144",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 13,
+      "sourceTimestamp": "2026-06-28T12:24:39Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:28322144",
+          "firstVertex": 1056,
+          "vertexCount": 63,
+          "firstPolygon": 352,
+          "polygonCount": 21
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:28589691",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 13,
+      "sourceTimestamp": "2024-02-06T10:05:29Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:28589691",
+          "firstVertex": 1119,
+          "vertexCount": 15,
+          "firstPolygon": 373,
+          "polygonCount": 5
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:28589693",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 10,
+      "sourceTimestamp": "2025-06-17T09:49:18Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:28589693",
+          "firstVertex": 1134,
+          "vertexCount": 60,
+          "firstPolygon": 378,
+          "polygonCount": 20
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:29478214",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 13,
+      "sourceTimestamp": "2026-08-17T06:23:55Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:29478214",
+          "firstVertex": 1194,
+          "vertexCount": 27,
+          "firstPolygon": 398,
+          "polygonCount": 9
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:30779591",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 25,
+      "sourceTimestamp": "2026-08-13T15:45:57Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:30779591",
+          "firstVertex": 1221,
+          "vertexCount": 36,
+          "firstPolygon": 407,
+          "polygonCount": 12
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:308725000",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2026-08-27T15:03:17Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:308725000",
+          "firstVertex": 1257,
+          "vertexCount": 51,
+          "firstPolygon": 419,
+          "polygonCount": 17
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:308725029",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-08-13T15:45:54Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:308725029",
+          "firstVertex": 1308,
+          "vertexCount": 18,
+          "firstPolygon": 436,
+          "polygonCount": 6
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:308725065",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2026-08-13T15:45:58Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:308725065",
+          "firstVertex": 1326,
+          "vertexCount": 36,
+          "firstPolygon": 442,
+          "polygonCount": 12
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:308725068",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 8,
+      "sourceTimestamp": "2026-08-13T15:45:58Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:308725068",
+          "firstVertex": 1362,
+          "vertexCount": 78,
+          "firstPolygon": 454,
+          "polygonCount": 26
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:308725074",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2026-08-13T15:45:55Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:308725074",
+          "firstVertex": 1440,
+          "vertexCount": 36,
+          "firstPolygon": 480,
+          "polygonCount": 12
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:308725076",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2021-07-12T16:47:22Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:308725076",
+          "firstVertex": 1476,
+          "vertexCount": 39,
+          "firstPolygon": 492,
+          "polygonCount": 13
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:308725081",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 9,
+      "sourceTimestamp": "2026-08-13T15:45:57Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:308725081",
+          "firstVertex": 1515,
+          "vertexCount": 96,
+          "firstPolygon": 505,
+          "polygonCount": 32
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:30955889",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 9,
+      "sourceTimestamp": "2026-08-13T15:45:55Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:30955889",
+          "firstVertex": 1611,
+          "vertexCount": 36,
+          "firstPolygon": 537,
+          "polygonCount": 12
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:328813503",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 7,
+      "sourceTimestamp": "2026-08-13T15:45:55Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:328813503",
+          "firstVertex": 1647,
+          "vertexCount": 24,
+          "firstPolygon": 549,
+          "polygonCount": 8
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:328813506",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2025-05-30T06:19:25Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:328813506",
+          "firstVertex": 1671,
+          "vertexCount": 30,
+          "firstPolygon": 557,
+          "polygonCount": 10
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:33084988",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 12,
+      "sourceTimestamp": "2026-08-13T15:45:57Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:33084988",
+          "firstVertex": 1701,
+          "vertexCount": 48,
+          "firstPolygon": 567,
+          "polygonCount": 16
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:33084990",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 10,
+      "sourceTimestamp": "2024-01-15T12:25:39Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:33084990",
+          "firstVertex": 1749,
+          "vertexCount": 42,
+          "firstPolygon": 583,
+          "polygonCount": 14
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:37552780",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 9,
+      "sourceTimestamp": "2026-08-13T15:45:59Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:37552780",
+          "firstVertex": 1791,
+          "vertexCount": 21,
+          "firstPolygon": 597,
+          "polygonCount": 7
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:37935430",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 8,
+      "sourceTimestamp": "2024-08-15T12:02:39Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:37935430",
+          "firstVertex": 1812,
+          "vertexCount": 57,
+          "firstPolygon": 604,
+          "polygonCount": 19
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:419503378",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2026-07-22T09:40:34Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:419503378",
+          "firstVertex": 1869,
+          "vertexCount": 150,
+          "firstPolygon": 623,
+          "polygonCount": 50
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:48385947",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 13,
+      "sourceTimestamp": "2024-08-15T12:02:39Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:48385947",
+          "firstVertex": 2019,
+          "vertexCount": 24,
+          "firstPolygon": 673,
+          "polygonCount": 8
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:643455988",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2023-11-25T16:06:52Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:643455988",
+          "firstVertex": 2043,
+          "vertexCount": 21,
+          "firstPolygon": 681,
+          "polygonCount": 7
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:75623236",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 17,
+      "sourceTimestamp": "2026-08-13T15:45:57Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:75623236",
+          "firstVertex": 2064,
+          "vertexCount": 18,
+          "firstPolygon": 688,
+          "polygonCount": 6
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:75623238",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 10,
+      "sourceTimestamp": "2026-08-13T15:46:01Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:75623238",
+          "firstVertex": 2082,
+          "vertexCount": 12,
+          "firstPolygon": 694,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:818736948",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-08-13T15:46:01Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:818736948",
+          "firstVertex": 2094,
+          "vertexCount": 9,
+          "firstPolygon": 698,
+          "polygonCount": 3
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:818736949",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-08-13T15:46:00Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:818736949",
+          "firstVertex": 2103,
+          "vertexCount": 12,
+          "firstPolygon": 701,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:818736950",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-08-13T15:46:00Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:818736950",
+          "firstVertex": 2115,
+          "vertexCount": 9,
+          "firstPolygon": 705,
+          "polygonCount": 3
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:818736951",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2025-02-18T12:07:29Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:818736951",
+          "firstVertex": 2124,
+          "vertexCount": 9,
+          "firstPolygon": 708,
+          "polygonCount": 3
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:818736952",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2025-02-18T12:07:29Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:818736952",
+          "firstVertex": 2133,
+          "vertexCount": 69,
+          "firstPolygon": 711,
+          "polygonCount": 23
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:818736953",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 1,
+      "sourceTimestamp": "2020-06-23T10:44:19Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:818736953",
+          "firstVertex": 2202,
+          "vertexCount": 18,
+          "firstPolygon": 734,
+          "polygonCount": 6
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:818736954",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-08-13T15:46:00Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:818736954",
+          "firstVertex": 2220,
+          "vertexCount": 9,
+          "firstPolygon": 740,
+          "polygonCount": 3
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:818736955",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-08-13T15:46:00Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:818736955",
+          "firstVertex": 2229,
+          "vertexCount": 12,
+          "firstPolygon": 743,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:818736956",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-08-13T15:46:00Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:818736956",
+          "firstVertex": 2241,
+          "vertexCount": 12,
+          "firstPolygon": 747,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:818749273",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-08-18T13:41:08Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:818749273",
+          "firstVertex": 2253,
+          "vertexCount": 15,
+          "firstPolygon": 751,
+          "polygonCount": 5
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:818749274",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-08-18T13:41:07Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:818749274",
+          "firstVertex": 2268,
+          "vertexCount": 15,
+          "firstPolygon": 756,
+          "polygonCount": 5
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:818749275",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-08-18T13:41:07Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:818749275",
+          "firstVertex": 2283,
+          "vertexCount": 15,
+          "firstPolygon": 761,
+          "polygonCount": 5
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:818749276",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2021-04-14T08:49:06Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:818749276",
+          "firstVertex": 2298,
+          "vertexCount": 12,
+          "firstPolygon": 766,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:818756748",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2025-02-18T12:07:29Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:818756748",
+          "firstVertex": 2310,
+          "vertexCount": 69,
+          "firstPolygon": 770,
+          "polygonCount": 23
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:818756749",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2024-08-15T12:43:05Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:818756749",
+          "firstVertex": 2379,
+          "vertexCount": 12,
+          "firstPolygon": 793,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:818756750",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2024-08-15T12:43:05Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:818756750",
+          "firstVertex": 2391,
+          "vertexCount": 75,
+          "firstPolygon": 797,
+          "polygonCount": 25
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:818756751",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 1,
+      "sourceTimestamp": "2020-06-23T11:54:31Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:818756751",
+          "firstVertex": 2466,
+          "vertexCount": 15,
+          "firstPolygon": 822,
+          "polygonCount": 5
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:818987917",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-08-18T13:41:07Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:818987917",
+          "firstVertex": 2481,
+          "vertexCount": 9,
+          "firstPolygon": 827,
+          "polygonCount": 3
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:818987918",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2026-08-18T13:41:06Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:818987918",
+          "firstVertex": 2490,
+          "vertexCount": 12,
+          "firstPolygon": 830,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:818995520",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2021-03-03T16:15:34Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:818995520",
+          "firstVertex": 2502,
+          "vertexCount": 6,
+          "firstPolygon": 834,
+          "polygonCount": 2
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:818995522",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-08-13T15:46:00Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:818995522",
+          "firstVertex": 2508,
+          "vertexCount": 6,
+          "firstPolygon": 836,
+          "polygonCount": 2
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:819015922",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-07-07T13:36:54Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:819015922",
+          "firstVertex": 2514,
+          "vertexCount": 12,
+          "firstPolygon": 838,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:819015923",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2026-07-07T13:36:40Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:819015923",
+          "firstVertex": 2526,
+          "vertexCount": 15,
+          "firstPolygon": 842,
+          "polygonCount": 5
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:819015924",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2023-08-25T15:09:40Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:819015924",
+          "firstVertex": 2541,
+          "vertexCount": 15,
+          "firstPolygon": 847,
+          "polygonCount": 5
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:838146217",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2022-11-19T10:30:18Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:838146217",
+          "firstVertex": 2556,
+          "vertexCount": 3,
+          "firstPolygon": 852,
+          "polygonCount": 1
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:838146218",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 4,
+      "sourceTimestamp": "2022-11-19T10:30:13Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:838146218",
+          "firstVertex": 2559,
+          "vertexCount": 24,
+          "firstPolygon": 853,
+          "polygonCount": 8
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:86356192",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 13,
+      "sourceTimestamp": "2026-08-13T15:46:01Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:86356192",
+          "firstVertex": 2583,
+          "vertexCount": 177,
+          "firstPolygon": 861,
+          "polygonCount": 59
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:87036413",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2020-08-24T12:45:10Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:87036413",
+          "firstVertex": 2760,
+          "vertexCount": 18,
+          "firstPolygon": 920,
+          "polygonCount": 6
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:890752269",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2024-08-15T12:43:05Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:890752269",
+          "firstVertex": 2778,
+          "vertexCount": 24,
+          "firstPolygon": 926,
+          "polygonCount": 8
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:912362782",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2022-04-24T09:24:58Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:912362782",
+          "firstVertex": 2802,
+          "vertexCount": 12,
+          "firstPolygon": 934,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:912362783",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2023-08-25T15:11:55Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:912362783",
+          "firstVertex": 2814,
+          "vertexCount": 9,
+          "firstPolygon": 938,
+          "polygonCount": 3
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:912362785",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2023-08-25T15:11:51Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:912362785",
+          "firstVertex": 2823,
+          "vertexCount": 12,
+          "firstPolygon": 941,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:912362786",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2023-08-25T15:11:14Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:912362786",
+          "firstVertex": 2835,
+          "vertexCount": 15,
+          "firstPolygon": 945,
+          "polygonCount": 5
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:913233408",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 1,
+      "sourceTimestamp": "2021-03-03T16:15:34Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:913233408",
+          "firstVertex": 2850,
+          "vertexCount": 21,
+          "firstPolygon": 950,
+          "polygonCount": 7
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:913233409",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2026-08-18T13:41:08Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:913233409",
+          "firstVertex": 2871,
+          "vertexCount": 12,
+          "firstPolygon": 957,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:921671620",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-08-18T13:41:05Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:921671620",
+          "firstVertex": 2883,
+          "vertexCount": 9,
+          "firstPolygon": 961,
+          "polygonCount": 3
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:921671621",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2025-07-04T21:51:36Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:921671621",
+          "firstVertex": 2892,
+          "vertexCount": 6,
+          "firstPolygon": 964,
+          "polygonCount": 2
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:921671622",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-08-18T13:41:05Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:921671622",
+          "firstVertex": 2898,
+          "vertexCount": 9,
+          "firstPolygon": 966,
+          "polygonCount": 3
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:921671623",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-08-18T13:41:05Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:921671623",
+          "firstVertex": 2907,
+          "vertexCount": 9,
+          "firstPolygon": 969,
+          "polygonCount": 3
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:921671624",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2026-08-18T13:41:07Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:921671624",
+          "firstVertex": 2916,
+          "vertexCount": 15,
+          "firstPolygon": 972,
+          "polygonCount": 5
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:921671625",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2026-08-18T13:41:07Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:921671625",
+          "firstVertex": 2931,
+          "vertexCount": 15,
+          "firstPolygon": 977,
+          "polygonCount": 5
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:930575668",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2026-06-28T12:24:44Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:930575668",
+          "firstVertex": 2946,
+          "vertexCount": 9,
+          "firstPolygon": 982,
+          "polygonCount": 3
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:930575669",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2026-06-28T12:24:44Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:930575669",
+          "firstVertex": 2955,
+          "vertexCount": 9,
+          "firstPolygon": 985,
+          "polygonCount": 3
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:930575670",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2026-07-07T16:29:44Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:930575670",
+          "firstVertex": 2964,
+          "vertexCount": 3,
+          "firstPolygon": 988,
+          "polygonCount": 1
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:930575671",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2026-08-18T13:41:05Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:930575671",
+          "firstVertex": 2967,
+          "vertexCount": 9,
+          "firstPolygon": 989,
+          "polygonCount": 3
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:930575672",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2026-08-18T13:41:06Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:930575672",
+          "firstVertex": 2976,
+          "vertexCount": 9,
+          "firstPolygon": 992,
+          "polygonCount": 3
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:930575673",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 1,
+      "sourceTimestamp": "2021-04-14T08:49:06Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:930575673",
+          "firstVertex": 2985,
+          "vertexCount": 12,
+          "firstPolygon": 995,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:930575674",
+      "kind": "path",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 1,
+      "sourceTimestamp": "2021-04-14T08:49:06Z",
+      "renderRanges": [
+        {
+          "material": "context-path",
+          "sourceId": "osm:way:930575674",
+          "firstVertex": 2997,
+          "vertexCount": 12,
+          "firstPolygon": 999,
+          "polygonCount": 4
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1183737707",
+      "kind": "road",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2024-08-15T12:02:39Z",
+      "renderRanges": [
+        {
+          "material": "context-road",
+          "sourceId": "osm:way:1183737707",
+          "firstVertex": 0,
+          "vertexCount": 21,
+          "firstPolygon": 0,
+          "polygonCount": 7
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1183737708",
+      "kind": "road",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2023-12-31T15:34:33Z",
+      "renderRanges": [
+        {
+          "material": "context-road",
+          "sourceId": "osm:way:1183737708",
+          "firstVertex": 21,
+          "vertexCount": 27,
+          "firstPolygon": 7,
+          "polygonCount": 9
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:123341422",
+      "kind": "road",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 9,
+      "sourceTimestamp": "2026-08-13T15:45:56Z",
+      "renderRanges": [
+        {
+          "material": "context-road",
+          "sourceId": "osm:way:123341422",
+          "firstVertex": 48,
+          "vertexCount": 150,
+          "firstPolygon": 16,
+          "polygonCount": 50
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307948099",
+      "kind": "road",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2025-03-12T08:34:08Z",
+      "renderRanges": [
+        {
+          "material": "context-road",
+          "sourceId": "osm:way:1307948099",
+          "firstVertex": 198,
+          "vertexCount": 15,
+          "firstPolygon": 66,
+          "polygonCount": 5
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307948100",
+      "kind": "road",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2025-03-12T08:34:08Z",
+      "renderRanges": [
+        {
+          "material": "context-road",
+          "sourceId": "osm:way:1307948100",
+          "firstVertex": 213,
+          "vertexCount": 18,
+          "firstPolygon": 71,
+          "polygonCount": 6
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307948101",
+      "kind": "road",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 1,
+      "sourceTimestamp": "2024-08-15T12:02:39Z",
+      "renderRanges": [
+        {
+          "material": "context-road",
+          "sourceId": "osm:way:1307948101",
+          "firstVertex": 231,
+          "vertexCount": 9,
+          "firstPolygon": 77,
+          "polygonCount": 3
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307948103",
+      "kind": "road",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 2,
+      "sourceTimestamp": "2025-03-12T08:34:08Z",
+      "renderRanges": [
+        {
+          "material": "context-road",
+          "sourceId": "osm:way:1307948103",
+          "firstVertex": 240,
+          "vertexCount": 69,
+          "firstPolygon": 80,
+          "polygonCount": 23
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:149122522",
+      "kind": "road",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 10,
+      "sourceTimestamp": "2026-08-13T15:45:58Z",
+      "renderRanges": [
+        {
+          "material": "context-road",
+          "sourceId": "osm:way:149122522",
+          "firstVertex": 309,
+          "vertexCount": 6,
+          "firstPolygon": 103,
+          "polygonCount": 2
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:149122523",
+      "kind": "road",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 12,
+      "sourceTimestamp": "2026-08-13T15:45:58Z",
+      "renderRanges": [
+        {
+          "material": "context-road",
+          "sourceId": "osm:way:149122523",
+          "firstVertex": 315,
+          "vertexCount": 15,
+          "firstPolygon": 105,
+          "polygonCount": 5
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1543005485",
+      "kind": "road",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 1,
+      "sourceTimestamp": "2026-07-22T14:40:25Z",
+      "renderRanges": [
+        {
+          "material": "context-road",
+          "sourceId": "osm:way:1543005485",
+          "firstVertex": 330,
+          "vertexCount": 45,
+          "firstPolygon": 110,
+          "polygonCount": 15
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:193111908",
+      "kind": "road",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 5,
+      "sourceTimestamp": "2026-08-13T15:45:59Z",
+      "renderRanges": [
+        {
+          "material": "context-road",
+          "sourceId": "osm:way:193111908",
+          "firstVertex": 375,
+          "vertexCount": 36,
+          "firstPolygon": 125,
+          "polygonCount": 12
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:193114001",
+      "kind": "road",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 8,
+      "sourceTimestamp": "2026-08-13T15:45:58Z",
+      "renderRanges": [
+        {
+          "material": "context-road",
+          "sourceId": "osm:way:193114001",
+          "firstVertex": 411,
+          "vertexCount": 15,
+          "firstPolygon": 137,
+          "polygonCount": 5
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:193114002",
+      "kind": "road",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 9,
+      "sourceTimestamp": "2026-08-13T15:45:59Z",
+      "renderRanges": [
+        {
+          "material": "context-road",
+          "sourceId": "osm:way:193114002",
+          "firstVertex": 426,
+          "vertexCount": 36,
+          "firstPolygon": 142,
+          "polygonCount": 12
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:19705766",
+      "kind": "road",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 18,
+      "sourceTimestamp": "2026-08-13T15:45:55Z",
+      "renderRanges": [
+        {
+          "material": "context-road",
+          "sourceId": "osm:way:19705766",
+          "firstVertex": 462,
+          "vertexCount": 18,
+          "firstPolygon": 154,
+          "polygonCount": 6
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:26427722",
+      "kind": "road",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 30,
+      "sourceTimestamp": "2026-08-13T15:46:00Z",
+      "renderRanges": [
+        {
+          "material": "context-road",
+          "sourceId": "osm:way:26427722",
+          "firstVertex": 480,
+          "vertexCount": 108,
+          "firstPolygon": 160,
+          "polygonCount": 36
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:26427724",
+      "kind": "road",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 10,
+      "sourceTimestamp": "2026-08-13T15:45:56Z",
+      "renderRanges": [
+        {
+          "material": "context-road",
+          "sourceId": "osm:way:26427724",
+          "firstVertex": 588,
+          "vertexCount": 36,
+          "firstPolygon": 196,
+          "polygonCount": 12
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:28543806",
+      "kind": "road",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 25,
+      "sourceTimestamp": "2026-08-13T15:45:57Z",
+      "renderRanges": [
+        {
+          "material": "context-road",
+          "sourceId": "osm:way:28543806",
+          "firstVertex": 624,
+          "vertexCount": 78,
+          "firstPolygon": 208,
+          "polygonCount": 26
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:30528431",
+      "kind": "road",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 14,
+      "sourceTimestamp": "2026-08-13T15:45:54Z",
+      "renderRanges": [
+        {
+          "material": "context-road",
+          "sourceId": "osm:way:30528431",
+          "firstVertex": 702,
+          "vertexCount": 45,
+          "firstPolygon": 234,
+          "polygonCount": 15
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:36730358",
+      "kind": "road",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 12,
+      "sourceTimestamp": "2025-06-17T09:49:18Z",
+      "renderRanges": [
+        {
+          "material": "context-road",
+          "sourceId": "osm:way:36730358",
+          "firstVertex": 747,
+          "vertexCount": 27,
+          "firstPolygon": 249,
+          "polygonCount": 9
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:54939015",
+      "kind": "road",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 8,
+      "sourceTimestamp": "2026-08-27T15:03:19Z",
+      "renderRanges": [
+        {
+          "material": "context-road",
+          "sourceId": "osm:way:54939015",
+          "firstVertex": 774,
+          "vertexCount": 24,
+          "firstPolygon": 258,
+          "polygonCount": 8
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:54939016",
+      "kind": "road",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 9,
+      "sourceTimestamp": "2023-08-25T15:10:36Z",
+      "renderRanges": [
+        {
+          "material": "context-road",
+          "sourceId": "osm:way:54939016",
+          "firstVertex": 798,
+          "vertexCount": 18,
+          "firstPolygon": 266,
+          "polygonCount": 6
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:54939017",
+      "kind": "road",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 6,
+      "sourceTimestamp": "2023-08-25T15:10:52Z",
+      "renderRanges": [
+        {
+          "material": "context-road",
+          "sourceId": "osm:way:54939017",
+          "firstVertex": 816,
+          "vertexCount": 39,
+          "firstPolygon": 272,
+          "polygonCount": 13
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:75508865",
+      "kind": "road",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 9,
+      "sourceTimestamp": "2026-08-13T15:45:54Z",
+      "renderRanges": [
+        {
+          "material": "context-road",
+          "sourceId": "osm:way:75508865",
+          "firstVertex": 855,
+          "vertexCount": 6,
+          "firstPolygon": 285,
+          "polygonCount": 2
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:75508866",
+      "kind": "road",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 7,
+      "sourceTimestamp": "2026-08-13T15:45:54Z",
+      "renderRanges": [
+        {
+          "material": "context-road",
+          "sourceId": "osm:way:75508866",
+          "firstVertex": 861,
+          "vertexCount": 18,
+          "firstPolygon": 287,
+          "polygonCount": 6
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:75508867",
+      "kind": "road",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 13,
+      "sourceTimestamp": "2026-08-13T15:45:54Z",
+      "renderRanges": [
+        {
+          "material": "context-road",
+          "sourceId": "osm:way:75508867",
+          "firstVertex": 879,
+          "vertexCount": 6,
+          "firstPolygon": 293,
+          "polygonCount": 2
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:912362784",
+      "kind": "road",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 3,
+      "sourceTimestamp": "2025-03-12T08:34:08Z",
+      "renderRanges": [
+        {
+          "material": "context-road",
+          "sourceId": "osm:way:912362784",
+          "firstVertex": 885,
+          "vertexCount": 21,
+          "firstPolygon": 295,
+          "polygonCount": 7
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:way:1307952650",
+      "kind": "water",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 1,
+      "sourceTimestamp": "2024-08-15T12:43:05Z",
+      "renderRanges": [
+        {
+          "material": "context-water",
+          "sourceId": "osm:way:1307952650",
+          "firstVertex": 0,
+          "vertexCount": 30,
+          "firstPolygon": 0,
+          "polygonCount": 10
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    },
+    {
+      "sourceId": "osm:relation:14659234",
+      "kind": "green",
+      "height": {
+        "metres": 0.02,
+        "origin": "authored"
+      },
+      "architecturalReview": null,
+      "navigation": "unreviewed",
+      "sourceVersion": 1,
+      "sourceTimestamp": "2022-10-05T14:11:58Z",
+      "renderRanges": [
+        {
+          "material": "context-green",
+          "sourceId": "osm:relation:14659234",
+          "firstVertex": 0,
+          "vertexCount": 60,
+          "firstPolygon": 0,
+          "polygonCount": 20
+        }
+      ],
+      "windowPanels": 0,
+      "courtyardRings": 0
+    }
+  ],
+  "presentation": {
+    "surfaceHeightsMetres": {
+      "ground": -0.18,
+      "road": -0.09,
+      "water": -0.12,
+      "green": -0.035,
+      "path": 0
+    },
+    "materials": {
+      "context-wall-warm": [
+        "b8b0a1",
+        0.86,
+        0
+      ],
+      "context-wall-light": [
+        "cdc9bf",
+        0.83,
+        0
+      ],
+      "context-wall-muted": [
+        "aaa79f",
+        0.88,
+        0
+      ],
+      "context-roof": [
+        "777c79",
+        0.9,
+        0
+      ],
+      "context-trim": [
+        "d1cdc2",
+        0.78,
+        0
+      ],
+      "context-glass": [
+        "536872",
+        0.24,
+        0.08
+      ],
+      "context-road": [
+        "737a7c",
+        0.94,
+        0
+      ],
+      "context-path": [
+        "c3bcac",
+        0.89,
+        0
+      ],
+      "context-green": [
+        "91a08b",
+        0.97,
+        0
+      ],
+      "context-water": [
+        "7897a3",
+        0.3,
+        0.03
+      ],
+      "context-ground": [
+        "c5c1b6",
+        0.97,
+        0
+      ]
+    },
+    "windows": "Neutral authored panels and rims; no source-matched facade, entrance, occupancy or storey assignment",
+    "height": "Maximum-height massing only; roof/body partition and local grade are unreviewed",
+    "lighting": "PBR surfaces accept authored runtime lighting; no actual-condition claim",
+    "sourceMapping": "Stable sourceId metadata roots and per-material sourceIds JSON; renderRanges describe the editable pre-export mesh order",
+    "sourceIndexAttribute": {
+      "gltf": "_SOURCE_INDEX",
+      "three": "_source_index",
+      "lookup": "manifest.features[index].sourceId",
+      "unassigned": -1
+    }
+  }
+}
