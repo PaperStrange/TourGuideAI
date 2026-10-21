@@ -1,12 +1,22 @@
 # Agent checkpoint · Explore and Together homepage
 
 2026-10-21 UTC · Lead owns integration, commits and publication.
-**State: sandbox-engine research, production implementation, local browser/art
-acceptance and complete CI pass. Pages runtime `17b8f37` is published and verified:
-95/95 files and 16/16 hosted journey checks pass. Q03 remains open P1; backend tests
-stay local.**
+**State: connected-neighborhood implementation is authorized and in progress.
+The approved target is a continuous 1–2 km Shijō neighborhood with 5–8 sights,
+desktop-first delivery and richer solo routes. Published runtime `17b8f37` remains
+the verified baseline. Q03 is open P1; backend tests remain local.**
 
-## Active iteration · lively streets and geographic production
+## Active iteration · connected neighborhood
+
+The user approved the [connected-neighborhood plan](sprint-connected-neighborhood-20261021.md).
+N00 source acquisition and pedestrian review are active. Runtime, graph navigation,
+art production, solo journey and independent QA have separate agent ownership.
+Source identities and geographic interfaces are coordinated before dependent asset
+and runtime integration. The lead owns homepage changes, documentation, commits,
+builds and publication. No new route has passed source, art or browser acceptance.
+The previous published package and all evidence below remain the release baseline.
+
+## Completed iteration · lively streets and geographic production
 
 The [iteration plan](sprint-lively-sites-20261021.md) is committed as `1f9fc77`.
 The user requested sandbox-engine research before further production changes.
