@@ -218,6 +218,8 @@ export function createWorldMap(host, { onSelect, onStatus, onViewChange, locale 
       if (destroyed) return;
       ready = false; styleReady = false; failed = false; readyMs = null; viewStarted = performance.now(); map.stop();
       host.dataset.mapStatus = 'loading'; onStatus?.('loading');
+      // MapLibre 的 transformStyle 会等待旧样式加载；重试时先释放失败或未完成的样式。
+      map.setStyle(null);
       loadStyle();
     },
     snapshot() { return { ready, failed, center: map.getCenter().toArray(), zoom: map.getZoom(), pitch: map.getPitch(), bearing: map.getBearing(), style: TRAVEL_MAP_STYLE_ID,
