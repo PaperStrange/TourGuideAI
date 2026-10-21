@@ -9,12 +9,32 @@ the verified baseline. Q03 is open P1; backend tests remain local.**
 ## Active iteration · connected neighborhood
 
 The user approved the [connected-neighborhood plan](sprint-connected-neighborhood-20261021.md).
-N00 source acquisition and pedestrian review are active. Runtime, graph navigation,
-art production, solo journey and independent QA have separate agent ownership.
-Source identities and geographic interfaces are coordinated before dependent asset
-and runtime integration. The lead owns homepage changes, documentation, commits,
-builds and publication. No new route has passed source, art or browser acceptance.
+N00 source review passes: the selected route is **1,353.444 m**, with 73 nodes,
+73 edges and six sights. It retains actual OSM connections and 848 official Kyoto
+building footprints. Independent source checks pass **13/13**, and seven generated
+content files reproduce byte-for-byte. Navigation checks pass **10/10**, including
+the complete forward/return walk and every branch. Ground heights, simulation
+widths, canopy clearance and current access retain their explicit review limits.
+
+The source and navigation work is committed and pushed as `e0c726a`. Earlier
+reviewable units are the plan `3d8acd8`, wider solo suggestions `4a86db3` and mapped
+walking geometry `03f9a81`. Integrated application checks currently pass **155/155**.
+Runtime scenery streaming, persistent journey editing and homepage integration are
+under review; the art export and actual browser acceptance are still pending.
 The previous published package and all evidence below remain the release baseline.
+
+Current unchanged Q03 diagnostics are **953.5 / 1406.1 / 1096.0 ms**, all above
+500 ms. A separate trace records 731.9 ms wall time in 15 synchronous WebGL
+readbacks; input-handler time is 6 ms. This software-renderer evidence identifies
+a concrete investigation area and does not establish a physical-device result.
+The metric and visual-quality requirements remain unchanged.
+
+World content owns geographic intake, source attribution and the reusable workflow;
+art owns Blender production and visual assets; engineering owns the persistent
+scene and streaming lifecycle; navigation independently reviews topology and runtime;
+product owns recommendations and private journey state; QA owns independent source,
+browser and performance evidence. The lead owns homepage integration, builds,
+commits and publication. No new art or runtime package is accepted for publication.
 
 ## Completed iteration · lively streets and geographic production
 
