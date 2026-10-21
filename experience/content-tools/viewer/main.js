@@ -147,9 +147,21 @@ function frameModel() {
   sun.position.copy(center).add(new THREE.Vector3(radius * .5,radius,radius * .7));
   sun.target.position.copy(center);
   const shadow = sun.shadow.camera;
-  shadow.left = shadow.bottom = -radius; shadow.right = shadow.top = radius;
-  shadow.near = .1; shadow.far = radius * 4; shadow.updateProjectionMatrix();
-  sun.shadow.normalBias = radius * .0001;
+  shadow.position.copy(sun.position); shadow.lookAt(center); shadow.updateMatrixWorld(true);
+  const lightBounds = new THREE.Box3();
+  for (const x of [bounds.min.x,bounds.max.x]) for (const y of [bounds.min.y,bounds.max.y]) for (const z of [bounds.min.z,bounds.max.z]) {
+    lightBounds.expandByPoint(new THREE.Vector3(x,y,z).applyMatrix4(shadow.matrixWorldInverse));
+  }
+  // 按实际场景范围分配阴影精度，偏移量保持在一个阴影像素以内。
+  const margin = radius * .015;
+  shadow.left = lightBounds.min.x-margin; shadow.right = lightBounds.max.x+margin;
+  shadow.bottom = lightBounds.min.y-margin; shadow.top = lightBounds.max.y+margin;
+  shadow.near = Math.max(.1,-lightBounds.max.z-margin); shadow.far = Math.max(shadow.near+1,-lightBounds.min.z+margin);
+  shadow.updateProjectionMatrix();
+  const texelWorld = Math.max((shadow.right-shadow.left)/sun.shadow.mapSize.x,(shadow.top-shadow.bottom)/sun.shadow.mapSize.y);
+  sun.shadow.normalBias = texelWorld * .4;
+  sun.shadow.bias = -texelWorld * .35 / (shadow.far-shadow.near);
+  sun.shadow.needsUpdate = true;
   invalidate();
 }
 
@@ -328,6 +340,6 @@ async function initialize() {
 
 Object.defineProperty(window,'__SITE_WORKBENCH__',{ value:Object.freeze({snapshot:() => {
   const bounds = renderer?.domElement.getBoundingClientRect();
-  return clone({ ...state,locale,hidden:document.hidden,camera:camera ? { position:camera.position.toArray(),target:controls.target.toArray(),near:camera.near,far:camera.far,projectionMatrix:camera.projectionMatrix.toArray(),matrixWorld:camera.matrixWorld.toArray() } : null,viewport:bounds ? {x:bounds.x,y:bounds.y,width:bounds.width,height:bounds.height,bufferWidth:renderer.domElement.width,bufferHeight:renderer.domElement.height,pixelRatio:renderer.getPixelRatio()} : null,renderer:renderer ? { geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,calls:renderer.info.render.calls,triangles:renderer.info.render.triangles } : null,representation:manifest?.representation || null,navigation:manifest?.navigation || null });
+  return clone({ ...state,locale,hidden:document.hidden,camera:camera ? { position:camera.position.toArray(),target:controls.target.toArray(),near:camera.near,far:camera.far,projectionMatrix:camera.projectionMatrix.toArray(),matrixWorld:camera.matrixWorld.toArray() } : null,viewport:bounds ? {x:bounds.x,y:bounds.y,width:bounds.width,height:bounds.height,bufferWidth:renderer.domElement.width,bufferHeight:renderer.domElement.height,pixelRatio:renderer.getPixelRatio()} : null,shadow:sun ? {mapSize:sun.shadow.mapSize.toArray(),bias:sun.shadow.bias,normalBias:sun.shadow.normalBias,near:sun.shadow.camera.near,far:sun.shadow.camera.far,left:sun.shadow.camera.left,right:sun.shadow.camera.right,top:sun.shadow.camera.top,bottom:sun.shadow.camera.bottom} : null,renderer:renderer ? { geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,calls:renderer.info.render.calls,triangles:renderer.info.render.triangles } : null,representation:manifest?.representation || null,navigation:manifest?.navigation || null });
 }}),writable:false });
 initialize().catch(error => { fatalFailure = error; refreshStatus(); $('#retry').onclick = () => location.reload(); });

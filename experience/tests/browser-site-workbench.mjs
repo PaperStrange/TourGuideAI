@@ -87,7 +87,8 @@ async function inspectLandmark(session, site) {
     const y = points.reduce((sum, point) => sum + point[1], 0) / 3;
     const point = new Vector3(x, feature.height.metres, -y).applyMatrix4(inverse).applyMatrix4(projection);
     return { normalized: point.toArray(), x: rect.x + (point.x + 1) * rect.width / 2, y: rect.y + (1 - point.y) * rect.height / 2 };
-  }).filter(point => point.normalized.every(value => Math.abs(value) < .95))
+  }).filter(point => point.normalized.slice(0, 2).every(value => Math.abs(value) < .95)
+    && point.normalized[2] >= -1 && point.normalized[2] <= 1)
     .sort((a, b) => Math.hypot(...a.normalized.slice(0, 2)) - Math.hypot(...b.normalized.slice(0, 2)));
   const attempts = [];
   for (const point of candidates.slice(0, 8)) {

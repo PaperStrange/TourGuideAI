@@ -65,6 +65,17 @@ invalid rings, unsupported relations and intersecting buildings are reported or
 rejected; missing source nodes are never invented. Source longitude/latitude maps
 to local east/north metres, then glTF `[east, height, -north]`.
 
+For the supplied sites, display inputs are quantized once to **1 mm**; subsequent
+intersection/difference/union operations use full floating-point precision so
+adjacent surfaces share intersections. Boolean outputs receive topology-preserving
+cleanup at `1e-10` m; polygon components of at most `1e-10` m² are recorded and
+omitted. `review.json.booleanSurfaceNormalization` records affected features,
+removed areas and area change. Triangles of at most `1e-12` m² are also recorded
+in `omittedNumericalTriangleAreasSquareMetres`. Display rings are reconstructed
+from the union of retained triangles, with area/hole checks. This removes numerical
+degeneracies; it does not increase geographic accuracy or silently repair missing
+source geometry.
+
 ## Export with Blender
 
 Use each prepared directory as its export directory so the preview receives the
@@ -128,6 +139,26 @@ environments. It does not represent the site's current conditions, occupancy or
 opening hours. Source details are review data, not visitor instructions. A ready
 frame and successful hash check establish loading integrity, not architectural
 accuracy or permission to walk there.
+
+The server and viewer verify context bytes against `manifest.contextSha256` and
+require matching site/configuration/source identities across the metadata. The
+viewer also checks model bytes/hash and the GLB's own scene identities. Keep all
+sidecars with their matching export; a newly prepared context is not interchangeable
+with a previous model of the same named site.
+
+The real-file HTTP regression can run without a browser after export:
+
+```sh
+node experience/tests/workbench-http.mjs \
+  --output artifacts/workbench-http/result.json \
+  artifacts/site-workbench/delft artifacts/site-workbench/helsinki
+```
+
+It requires at least two distinct actual generated sites, starts its own loopback
+server on an available port, and checks served model bytes, route restrictions and
+mixed-site metadata rejection. Temporary negative cases copy/link those actual
+files into a repository-local directory that is removed afterward. It neither
+modifies the supplied exports nor substitutes for browser/visual review.
 
 ## Review before adding a site or publishing output
 
