@@ -54,19 +54,28 @@ test('three distinct suggestions preserve sourced places and export every select
   for (const route of routes) {
     assert.equal(route.kind, 'suggested-order');
     assert.equal(route.stops[0].id, center.id);
-    assert.ok(route.stops.length >= 2 && route.stops.length <= 5);
+    assert.ok(route.stops.length >= 2 && route.stops.length <= 8);
     assert.equal(new Set(route.stops.map(place => place.id)).size, route.stops.length);
     sets.add(route.stops.map(place => place.id).sort().join('|'));
     for (const place of route.stops) assert.deepEqual(place, known.get(place.id));
     const maps = buildMapsJourney(route.stops);
-    assert.equal(maps.parts.length, 1);
-    assert.equal(maps.parts[0].stops.length, route.stops.length);
+    const exported = maps.parts.flatMap((part, index) => index ? part.stops.slice(1) : part.stops);
+    assert.deepEqual(exported.map(place => place.id), route.stops.map(place => place.id));
+    assert.ok(maps.parts.every(part => part.stops.length <= 5));
     assert.equal(Object.hasOwn(route, 'duration'), false);
     assert.equal(Object.hasOwn(route, 'geometry'), false);
   }
   assert.equal(sets.size, 3);
+  assert.equal(routes.find(route => route.id === 'nearby').stops.length, 8);
   assert.deepEqual(nearby, original);
   assert.equal(suggestRoutes(center, nearby, { locale: 'zh' })[0].title, '艺术与历史');
+});
+
+test('shorter suggested walks retain source identities and the selected capacity', () => {
+  const routes = suggestRoutes(center, nearby, { maxStops: 5 });
+  assert.equal(routes.find(route => route.id === 'nearby').stops.length, 5);
+  assert.ok(routes.every(route => route.stops.length <= 5));
+  for (const maxStops of [1, 9, 3.5, '8']) assert.throws(() => suggestRoutes(center, nearby, { maxStops }), RangeError);
 });
 
 test('the captured Paris response excludes its reviewed Venice coordinate conflict and retains other nearby places', () => {

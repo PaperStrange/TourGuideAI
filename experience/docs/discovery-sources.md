@@ -25,7 +25,7 @@ The query requests primary Earth coordinates and validates the returned distance
 
 ## Suggested orders
 
-`suggestRoutes(center, places, { locale })` returns up to three distinct place sets: art/heritage, outdoor/street, and a mixture of available categories. Each contains the chosen center plus at most four nearby places. Nearest-next ordering uses great-circle proximity. The result explicitly uses `kind: 'suggested-order'`, with no path geometry, travel time or road-access assertion. Fewer categories or places produce fewer alternatives. Duplicate IDs and duplicate sets cannot manufacture extra alternatives. Google Maps handoff can use all returned coordinates through the existing travel Maps module.
+`suggestRoutes(center, places, { locale, maxStops = 8 })` returns up to three distinct place sets: art/heritage, outdoor/street, and a mixture of available categories. Each contains the chosen center plus at most seven nearby places. An explicit capacity from two to eight places supports shorter selections. Nearest-next ordering uses great-circle proximity. The result explicitly uses `kind: 'suggested-order'`, with no path geometry, travel time or road-access assertion. Fewer categories or places produce fewer alternatives. Duplicate IDs and duplicate sets cannot manufacture extra alternatives. Google Maps handoff preserves all returned coordinates through ordered, overlapping link groups when the selected places exceed one link's supported capacity.
 
 The categories and ordering are deterministic application logic. Place names, coordinates and source descriptions come from the providers. A line connecting these points must be labelled an ordering illustration; walking navigation requires a routing provider's actual result.
 

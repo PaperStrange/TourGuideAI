@@ -31,8 +31,9 @@ function orderedFrom(center, places) {
   return ordered;
 }
 
-export function suggestRoutes(center, places, { locale = 'en' } = {}) {
+export function suggestRoutes(center, places, { locale = 'en', maxStops = 8 } = {}) {
   validatePlace(center);
+  if (!Number.isInteger(maxStops) || maxStops < 2 || maxStops > 8) throw new RangeError('A suggested walk supports two to eight places.');
   if (!Array.isArray(places) || places.length > 1000) throw new TypeError('Expected at most 1000 nearby places.');
   const unique = new Map();
   for (const place of places) {
@@ -48,10 +49,11 @@ export function suggestRoutes(center, places, { locale = 'en' } = {}) {
     const place = nearby.find(candidate => candidate.kind === kind);
     if (place) mixed.push(place);
   }
+  const capacity = maxStops - 1;
   const candidates = [
-    { id: 'culture', places: cultural.slice(0, 4) },
-    { id: 'outdoors', places: outdoor.slice(0, 4) },
-    { id: 'nearby', places: [...mixed, ...nearby.filter(place => !mixed.includes(place))].slice(0, 4) },
+    { id: 'culture', places: cultural.slice(0, capacity) },
+    { id: 'outdoors', places: outdoor.slice(0, capacity) },
+    { id: 'nearby', places: [...mixed, ...nearby.filter(place => !mixed.includes(place))].slice(0, capacity) },
   ];
   const seen = new Set(), routes = [], copy = COPY[locale === 'zh' ? 'zh' : 'en'];
   for (const candidate of candidates) {
