@@ -1,8 +1,8 @@
 # Executed arcade and riverbank review · 2026-10-23
 
-Candidate 1 visibly improves arcade enclosure and player framing. Deliberate framing selects a visible source-indexed soffit. Its river horizon remains open. Whole-neighborhood visual acceptance and human realism have not been established.
+Candidate 6 preserves the decoded candidate-2 art assets through verified transport packaging. Bounded crossing/frontage, arcade enclosure/framing and river-continuation reviews are accepted. Current daylight/night review at Tenmangū and eight previously visited connector cells remains pending. Whole-neighborhood visual acceptance and human realism have not been established. The candidate-1 and candidate-2 records below retain their respective package identities and observations.
 
-## Exact captured build
+## Candidate 1 captured build
 
 - Tested local package: `df711b7d06a0a921545cc82de1ffe3b26dec28a8dc3a86684d837fcdd5e1127c`.
 - Neighborhood manifest: `add6e399dcebca96cec9daf9e413f1374b6561ca48272b982914a1d6075f961c`.

@@ -28,8 +28,9 @@ neighborhood job was superseded by **39891671767**, triggered by pushed source
 source **`9a3b9e8d7e9f8ae078d4671117fc87c295ef7af0`** passed all seven
 legacy/geographic jobs before its neighborhood job was superseded by
 **39896144084** on pushed cache source
-**`823f4f9a836f604a71e20f34ef9e6bc6c60e8347`**. Candidate-6 requires its own
-complete acceptance after the transport source push.
+**`823f4f9a836f604a71e20f34ef9e6bc6c60e8347`**. Transport source
+**`9b5d5f7998f952ca4dd8944b003a3c1bfaea1c20`** is pushed and verified at the
+remote branch. Its current acceptance run is **39897415716**.
 
 The current immutable build is **candidate-6**, package
 **`ca4b3c95bc2a6b94ad2cc978a083d1e3c3c109d65febce326a5e16e937dc271b`**,
@@ -46,10 +47,32 @@ sizes remain unchanged. Application checks pass **199/199** and the canonical
 build succeeds. Independent evidence is under
 `evidence/neighborhood-20261023/world/transport/`.
 
-Candidate-6 actual-HTTP browser checks are running on the frozen package, covering
-compressed startup, day/night bridge views, failed-request recovery, delayed
-ground cancellation and private-session preservation. The exact cold/warm/input/
-frame benchmark follows in an exclusive browser window. Full-route acceptance,
+Candidate-6 actual-HTTP browser checks pass **57/57** in **312.640 seconds** on
+the frozen package, covering compressed startup, day/night bridge views,
+failed-request recovery, delayed ground cancellation and private-session
+preservation through an actual 15-second hold. The report records 737 actual HTTP
+requests. The executed driver is
+`0edbfb1bd9aca054722757d4395aae15b00b5864c52d90c0cb2726da804dbdda`.
+The exact cold/warm/input/frame benchmark completes **15 passing / 4 failing**
+checks with zero exceptions. Cold entry **7,797.0 ms** passes the 8 s gate in
+this run. Warm entries are **2,927.1 / 2,926.7 / 3,056.1 ms**; the third misses
+3 s. All 56 versioned requests use cache in every warm entry. Queued-input p95
+is **994.4 ms** and walking frame p95 **1,048.1 ms**, missing 100 ms / 33.3 ms.
+Receipt-only response is 20.5 ms; nine draw-counter gaps remain. Both headless
+tabs stay visible without native visibility events. Xorg is installed but has no
+configured display with permitted XKB storage; engineering did not alter
+permissions or browser visibility. Evidence and exact conditions are under
+`evidence/neighborhood-20261023/performance/candidate-6/`.
+Direct actual-input route-choice checks pass **16/16** in **42.070 seconds**.
+Choose selects a different five-sight route of **1,351.3363858 m**; native edits
+produce four sights over **1,122.0171915 m**. Independent centerline calculations,
+visible/stored stop order, localized distances and Maps agree. A native Chinese
+reload preserves the exact night pose and private note. Suggestion generation
+alone preserves the active journey. Executed driver:
+`cd900671ac142e17d2352fcd11fdfeb142eb1cf0cfb3aa1de67c62597f363fa3`.
+QA is preparing current daylight/night captures at Tenmangū and eight previously
+visited connector cells; their position provenance and new camera framing remain
+explicit. Full-route acceptance, complete connector/sight day-night review,
 physical GPU performance, Q03 and actual background-tab visibility remain open.
 The candidate is not published.
 
