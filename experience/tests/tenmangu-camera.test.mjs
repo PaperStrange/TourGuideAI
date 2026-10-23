@@ -7,6 +7,7 @@ import * as THREE from 'three';
 import { loadNeighborhoodGeometry } from './helpers/neighborhood-geometry.mjs';
 import { createCameraObstruction } from '../src/runtime/camera-obstruction.js';
 import { createGuidedCamera } from '../src/runtime/camera.js';
+import { normalizeExplorationCamera } from '../src/runtime/exploration-state.js';
 import { getPack } from '../src/packs/registry.js';
 
 test('the recorded Tenmangu orbit keeps street scale, allows reversal, and preserves deliberate independent inspection', async () => {
@@ -30,16 +31,37 @@ test('the recorded Tenmangu orbit keeps street scale, allows reversal, and prese
         return source?.kind === 'building' || source?.sourceId?.startsWith('kyoto-city:bldg_');
       });
       roots.forEach(root => collision.addRoot(root));
-      const rig = createGuidedCamera(null, player, reducedMotion, () => {}, { solo: true, pack: getPack('shijo-east') });
+      let notifications = 0;
+      const rig = createGuidedCamera(null, player, reducedMotion, () => { notifications++; }, { solo: true, pack: getPack('shijo-east') });
       try {
         rig.resize(observed.camera.projectionMatrix[5] / observed.camera.projectionMatrix[0], 1);
         rig.restorePose(observed.home.currentView.camera, player); rig.setObstructionResolver(collision.resolve);
+        const savedCamera = () => {
+          const value = rig.snapshot();
+          return normalizeExplorationCamera({ azimuth: value.azimuth, polar: value.polar, distance: value.distance,
+            targetOffset: { x: value.target[0] - player.x, y: -value.target[2] - player.y, height: value.target[1] } }, value.limits);
+        };
+        for (let frame = 0; frame < 180; frame++) { rig.follow(player, 1000 / 60); rig.synchronizeCamera(1000 / 60); }
+        let nativeChanges = 0;
+        const countNativeChange = () => { nativeChanges++; };
+        rig.controls.addEventListener('change', countNativeChange);
+        const stationary = rig.snapshot(), stationarySave = savedCamera();
+        notifications = 0;
+        for (let frame = 0; frame < 240; frame++) { rig.follow(player, 1000 / 60); rig.synchronizeCamera(1000 / 60); }
+        rig.controls.removeEventListener('change', countNativeChange);
+        assert.ok(nativeChanges > 0, 'The actual minimum-radius pose exercises OrbitControls roundoff change events.');
+        assert.equal(notifications, 0, 'A stationary real camera must not request draws for minimum-radius roundoff.');
+        assert.deepEqual(savedCamera(), stationarySave, 'Filtering draw notifications preserves private camera intent.');
+        assert.ok(new THREE.Vector3().fromArray(rig.snapshot().position).distanceTo(new THREE.Vector3().fromArray(stationary.position)) < 1e-10);
         const before = rig.snapshot();
         assert.ok(new THREE.Vector3().fromArray(before.position).distanceTo(new THREE.Vector3().fromArray(observed.camera.position)) < .01,
           'The test starts at the actual recovered view captured before the failing native J input.');
         rig.setInspecting(true); rig.synchronizeCamera(1000 / 60);
         assert.deepEqual(rig.snapshot().desiredPosition, before.desiredPosition);
         assert.deepEqual(rig.snapshot().position, before.position);
+        notifications = 0;
+        for (let frame = 0; frame < 240; frame++) { rig.follow(player, 1000 / 60); rig.synchronizeCamera(1000 / 60); }
+        assert.equal(notifications, 0, 'The same stationary minimum-radius view stays quiet during inspection.');
         const untouched = rig.snapshot();
         rig.rotate(0); rig.tilt(0); rig.zoom(0); rig.pan(0, 0);
         assert.deepEqual(rig.snapshot(), untouched, 'Zero input keeps saved framing and inspection intent unchanged.');
@@ -65,6 +87,7 @@ test('the recorded Tenmangu orbit keeps street scale, allows reversal, and prese
         const visible = new THREE.Spherical().setFromVector3(new THREE.Vector3().fromArray(before.position)
           .sub(new THREE.Vector3().fromArray(before.viewTarget)));
         rig.rotate(-.08);
+        assert.ok(notifications > 0, 'Actual orbit input still invalidates the view.');
         assert.equal(rig.snapshot().inspectionPanned, false);
         assert.ok(Math.abs(rig.snapshot().azimuth - visible.theta + .08) < 1e-6);
         const blocked = settleStreet(new THREE.Vector3().fromArray(before.position));
@@ -94,6 +117,18 @@ test('the recorded Tenmangu orbit keeps street scale, allows reversal, and prese
         for (let frame = 0; frame < 180; frame++) { rig.follow(player, 1000 / 60); rig.synchronizeCamera(1000 / 60); }
         assertStreetFrame();
         assert.deepEqual(player, originalPlayer);
+        const beforeResize = notifications, projection = rig.snapshot().projectionMatrix;
+        rig.resize(1, 1);
+        assert.ok(notifications > beforeResize, 'Projection changes still invalidate the view.');
+        assert.notDeepEqual(rig.snapshot().projectionMatrix, projection);
+        const beforeSameAspectResize = notifications;
+        rig.resize(2, 2);
+        assert.ok(notifications > beforeSameAspectResize, 'A viewport size change still invalidates at the same aspect ratio.');
+        const beforeNativePan = notifications, savedBeforeNativePan = savedCamera();
+        rig.controls.target.x += .01; rig.controls.object.position.x += .01;
+        rig.controls.update();
+        assert.ok(notifications > beforeNativePan, 'A real public OrbitControls pose change still reaches the application.');
+        assert.notDeepEqual(savedCamera(), savedBeforeNativePan);
       } finally { collision.dispose(); }
     }
   } finally {

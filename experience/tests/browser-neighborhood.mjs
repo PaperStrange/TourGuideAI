@@ -19,7 +19,7 @@ const timeout = Number(process.env.EXPERIENCE_QA_TIMEOUT || 120000);
 const walkingTimeout = Number(process.env.EXPERIENCE_QA_WALK_TIMEOUT || 2400000);
 const only = process.env.EXPERIENCE_QA_ONLY?.split(',').filter(Boolean);
 const sections = ['startup', 'route-choice', 'journey', 'initial-recovery', 'latest-intent', 'unavailable-revision', 'external-session', 'residency-boundary', 'camera-safety'];
-if (only?.some(value => ![...sections, 'walking-controls', 'arcade-regression', 'arcade-inspection', 'recovered-keyboard', 'recovered-camera-input', 'bridge-review', 'visual-review', 'tenmangu-framing', 'western-approach', 'platform-review'].includes(value))) throw new Error('Unknown neighborhood test section.');
+if (only?.some(value => ![...sections, 'walking-controls', 'arcade-regression', 'arcade-inspection', 'recovered-keyboard', 'recovered-camera-input', 'bridge-review', 'visual-review', 'tenmangu-framing', 'western-approach', 'platform-review', 'canopy-review'].includes(value))) throw new Error('Unknown neighborhood test section.');
 const prefix = '/assets/neighborhoods/shijo-east/';
 const journeyKey = 'tourguideai.journey.session.v1';
 const keptKey = 'tourguideai.solo.places.v1';
@@ -1832,6 +1832,58 @@ try {
     }
   });
 
+  if (only?.includes('canopy-review')) await section('canopy-review', async () => {
+    const { source, sourceSha256 } = priorVisualReview();
+    const sourceAuditBytes = readFileSync(new URL('../evidence/neighborhood-20261023/world/shinkyogoku-context/source-audit.json', import.meta.url));
+    const referenceBytes = readFileSync(new URL('../evidence/neighborhood-20261023/world/shinkyogoku-context/reference-review.json', import.meta.url));
+    const sourceAudit = JSON.parse(sourceAuditBytes), reference = JSON.parse(referenceBytes);
+    const materialResources = manifest.sharedResources.filter(value => value.file.includes('/shinkyogoku-panel-'));
+    const cells = ['cell-e006-n000', 'cell-e006-n001'].map(id => {
+      const cell = manifest.cells.find(value => value.id === id), descriptor = cell.near;
+      const gltf = JSON.parse(assets.get(assetPath(descriptor)));
+      const materialIndex = gltf.materials.findIndex(value => value.name === 'shinkyogoku-panel');
+      return { id, file: descriptor.file, sha256: descriptor.sha256, materialIndex,
+        material: gltf.materials[materialIndex],
+        usedPrimitiveCount: gltf.meshes.flatMap(mesh => mesh.primitives).filter(primitive => primitive.material === materialIndex).length };
+    });
+    const binding = { sourceIndex: 116, source: manifest.featureTable[116], sourceAuditSha256: sha(sourceAuditBytes),
+      referenceReviewSha256: sha(referenceBytes), sourceRoof: { id: sourceAudit.roofWay.id, version: sourceAudit.roofWay.version },
+      materialResources, cells,
+      scope: 'Source-specific authored opaque canopy material. Prior player positions and desired cameras are restored. This check does not assert fresh torii recognition or measured roof construction.' };
+    check('canopy-material-binds-reviewed-source-and-actual-packaged-resources',
+      binding.source.sourceId === 'osm:way:551741577' && sourceAudit.status === 'pass'
+        && sourceAudit.roofWay.id === 551741577 && reference.mappedRoofId === binding.source.sourceId
+        && materialResources.length === 3 && cells.every(cell => cell.materialIndex >= 0 && cell.usedPrimitiveCount > 0), binding);
+    for (const [id, sourceScreenshot] of [
+      ['shinkyogoku-e006', 'connector-e006-n000-review-day-canvas.png'],
+      ['tenmangu-recorded', 'nishiki-tenmangu-review-day-canvas.png'],
+    ]) {
+      const remembered = source.screenshots.find(value => value.file === sourceScreenshot);
+      const view = remembered.observed.home.currentView, reconstructed = sessionAt(view);
+      const { context, page, record } = await scenario('canopy-' + id, {}, { storage: { [journeyKey]: JSON.stringify(reconstructed) } });
+      record.restoration = { sourceReportSha256: sourceSha256, sourcePackageSha256: source.artifact.manifestSha256,
+        sourceScreenshot, view, reconstructedSession: reconstructed,
+        description: 'Exact previously visited position and retained review-camera intent, restored through the public journey session.' };
+      record.materialBinding = binding;
+      await enter(page); await settled(page);
+      check(id + '-canopy-restores-exact-prior-position-and-camera', near((await home(page)).currentView, view), await observe(page));
+      const materialRequests = materialResources.map(resource => ({ ...resource,
+        requested: record.requests.some(value => value.path === assetPath(resource)),
+        finished: record.finishedRequests.includes(assetPath(resource)),
+        response: record.responses.find(value => value.path === assetPath(resource) && value.status === 200) ?? null }));
+      check(id + '-canopy-loads-real-reviewed-material-images', materialRequests.every(value => value.requested && value.finished && value.response), materialRequests);
+      for (const mode of ['day', 'night']) {
+        await setLighting(page, mode); await settled(page); await primaryFrameBudget(page, id + '-canopy-' + mode);
+        const observed = await cameraSettled(page, record, id + '-canopy-' + mode);
+        check(id + '-canopy-' + mode + '-keeps-exact-view-ground-and-actor', near(observed.home.currentView, view)
+          && streetFraming(observed).safe && observed.ground.inside && Boolean(observed.ground.hit), observed);
+        await capture(page, id + '-canopy-' + mode, true);
+      }
+      await unchangedLegacy(page, id + '-canopy-keeps-legacy-bytes');
+      await context.close(); contexts.delete(context);
+    }
+  });
+
   if (only?.includes('platform-review')) await section('platform-review', async () => {
     const { source, sourceSha256 } = priorVisualReview();
     const remembered = source.screenshots.find(value => value.file === 'connector-e001-n000-review-day-canvas.png');
@@ -1969,7 +2021,49 @@ try {
       const original = await cameraSettled(page, record, 'initial-tenmangu-view');
       check(reducedMotion + '-tenmangu-safety-restores-recorded-view', near(original.home.currentView, rememberedView)
         && streetFraming(original).safe && original.ground.inside && Boolean(original.ground.hit), original);
+      const idleBefore = await observe(page), quietStarted = performance.now();
+      await page.waitForTimeout(2000);
+      const idleAfter = await observe(page), quietElapsedMs = performance.now() - quietStarted;
+      const quiet = { elapsedMs: quietElapsedMs, before: idleBefore, after: idleAfter,
+        updateDelta: idleAfter.renderer.updateFrames - idleBefore.renderer.updateFrames,
+        drawDelta: idleAfter.renderer.renderedFrames - idleBefore.renderer.renderedFrames,
+        shadowDelta: idleAfter.renderer.lighting.shadowUpdates - idleBefore.renderer.lighting.shadowUpdates };
+      record.visibleIdle = quiet;
+      check(reducedMotion + '-settled-visible-recovered-camera-stays-render-idle-for-two-seconds',
+        quietElapsedMs >= 2000 && quiet.drawDelta === 0 && quiet.shadowDelta === 0
+          && near(idleBefore.camera.matrixWorld, idleAfter.camera.matrixWorld, .00001)
+          && near(idleBefore.home.currentView, idleAfter.home.currentView, .00001)
+          && near(idleBefore.route.position, idleAfter.route.position) && !idleAfter.route.destination && !idleAfter.state.moving
+          && equal(idleBefore.stream, idleAfter.stream)
+          && idleBefore.renderer.lighting.phase === 'ready' && idleAfter.renderer.lighting.phase === 'ready'
+          && !idleBefore.renderer.lighting.pendingRequests && !idleAfter.renderer.lighting.pendingRequests,
+      quiet);
       const saved = await keep(page, 'Tenmangū camera safety · 相机检查', 'Private original view · 原有私人视角');
+      await settled(page);
+      const restoreBefore = await cameraSettled(page, record, 'before-same-view-resource-check');
+      const requestStart = record.requests.length, httpStart = report.http.length;
+      const sectionRequestPaths = new Set(manifest.cells.flatMap(cell => [cell.base, cell.near].filter(Boolean))
+        .flatMap(descriptor => [descriptor, ...(descriptor.dependencies || [])]).map(requestAssetPath));
+      await reopen(page, saved);
+      await page.waitForFunction(() => window.__TOUR_GAME__.route().restoring === false);
+      await settled(page);
+      const restoreAfter = await cameraSettled(page, record, 'after-same-view-resource-check');
+      const restoreRequests = record.requests.slice(requestStart).filter(request => sectionRequestPaths.has(request.path));
+      const restoreHTTP = report.http.slice(httpStart).filter(request => sectionRequestPaths.has(request.path));
+      const resourceFields = ['resourceCount', 'textureCount', 'retainedBytes', 'estimatedTextureBytes',
+        'loadedBytes', 'decodedBytes', 'releasedModels', 'cancellations', 'residentCells', 'nearReservations'];
+      const restoredResources = { before: restoreBefore, after: restoreAfter, requests: restoreRequests, http: restoreHTTP,
+        differences: resourceFields.filter(key => restoreBefore.stream[key] !== restoreAfter.stream[key]) };
+      record.sameViewRestore = restoredResources;
+      check(reducedMotion + '-same-private-view-reopen-preserves-selection-heading-and-resident-sections',
+        near(restoreBefore.home.currentView, restoreAfter.home.currentView)
+          && near(restoreBefore.camera.matrixWorld, restoreAfter.camera.matrixWorld, .00001)
+          && near(restoreBefore.route.position, restoreAfter.route.position)
+          && near(restoreBefore.state.heading, restoreAfter.state.heading, .00001)
+          && equal(restoreBefore.home.neighborhood.selected, restoreAfter.home.neighborhood.selected)
+          && equal(restoreBefore.stream.cells, restoreAfter.stream.cells) && equal(restoreBefore.lifecycle, restoreAfter.lifecycle)
+          && !restoreRequests.length && !restoreHTTP.length && !restoredResources.differences.length,
+      restoredResources);
       record.inputCases = [];
       for (const operation of operations) {
         await reopen(page, saved);

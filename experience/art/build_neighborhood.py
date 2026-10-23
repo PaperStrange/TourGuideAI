@@ -87,6 +87,24 @@ def validate_inputs(geography, style):
             if recipe[key] not in style['materials']:
                 raise ValueError('Unknown facade material: ' + recipe[key])
     source_features = {feature['sourceId']: feature for feature in geography['features']}
+    for source_id, override in style.get('sourceMaterialOverrides', {}).items():
+        feature = source_features[source_id]
+        if (feature['kind'] != override['expectedKind'] or feature['kind'] != 'canopy' or
+                feature['sourceVersion'] != override['expectedSourceVersion'] or
+                feature['topHeightMetres'] != override['expectedTopHeightMetres']):
+            raise ValueError('Reviewed canopy material source changed: ' + source_id)
+        prior = style['materials'][override['priorRoofMaterial']]
+        replacement = style['materials'][override['roofMaterial']]
+        if prior['metresPerRepeat'] != replacement['metresPerRepeat']:
+            raise ValueError('A material-only canopy treatment must preserve UV scale')
+        for evidence in override['evidence']:
+            if sha256(ROOT / evidence['file']) != evidence['sha256']:
+                raise ValueError('Reviewed material evidence changed: ' + evidence['file'])
+        audit = json.loads((ROOT / override['evidence'][0]['file']).read_text())
+        reference = json.loads((ROOT / override['evidence'][1]['file']).read_text())
+        if (audit['status'] != 'pass' or source_id != 'osm:way:' + str(audit['roofWay']['id']) or
+                reference['mappedRoofId'] != source_id):
+            raise ValueError('Canopy material review has no matching mapped source')
     for source_id, treatment in style.get('sourceTreatmentOverrides', {}).items():
         feature = source_features[source_id]
         if feature['kind'] != 'building' or treatment['treatment'] != 'wall-less-structure':
@@ -247,6 +265,9 @@ def prepare_features(scene, geography, style, prepared):
         if original.get('renderPolicy', '').startswith('reference-only'):
             continue
         feature = dict(original)
+        if feature['sourceId'] in style.get('sourceMaterialOverrides', {}):
+            # 材质覆盖只更改指定屋顶的表面；坐标、UV 比例和碰撞体保持原样。
+            feature['roofMaterial'] = style['sourceMaterialOverrides'][feature['sourceId']]['roofMaterial']
         if feature['kind'] == 'building':
             bounds = bounds_of([feature])
             center = ((bounds['minX'] + bounds['maxX']) / 2, (bounds['minY'] + bounds['maxY']) / 2)
@@ -495,6 +516,9 @@ def main():
                       **({'treatmentOverride': feature['treatmentOverride']} if feature.get('treatmentOverride') else {})}
                      for index, feature in enumerate(features)]
     source_indices = {feature['sourceId']: index for index, feature in enumerate(features)}
+    for source_id, override in style.get('sourceMaterialOverrides', {}).items():
+        if source_indices[source_id] != override['expectedSourceIndex']:
+            raise ValueError('Reviewed material source index changed: ' + source_id)
     for source_id, treatment in style.get('sourceTreatmentOverrides', {}).items():
         if source_indices[source_id] != treatment['expectedSourceIndex']:
             raise ValueError('Reviewed source index changed: ' + source_id)
@@ -677,6 +701,12 @@ def main():
                   'authored': ['Facade bay counts and window dimensions', 'Material-family assignments on sourced building masses', 'Flat ground and display water/bridge heights', 'Canopy profile and source-adjacent soffit joins up to6m; exact construction widths unmeasured', 'Lower-storey market frontage assemblies without tenant correspondence', 'Bank vertical faces between existing authored ground/water heights', 'Torii/board/railing dimensions', 'Night fixtures, light intensity and emission'],
                   'sourceFramePreserved': True, 'originalPackAssetsChanged': False,
                   'visualAcceptance': 'requires actual browser route review'}
+    if style.get('sourceMaterialOverrides'):
+        provenance['sourceMaterialOverrides'] = [
+            {'sourceId': source_id, **override,
+             'evidenceRecords': [{**evidence, 'record': json.loads((ROOT / evidence['file']).read_text())}
+                                 for evidence in override['evidence']]}
+            for source_id, override in style['sourceMaterialOverrides'].items()]
     if style.get('sourceTreatmentOverrides'):
         provenance['sourceTreatmentOverrides'] = [
             {'sourceId': source_id, **treatment,

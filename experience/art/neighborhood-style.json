@@ -12,6 +12,7 @@
     "glass": {"color":"#78888d","roughness":0.17,"metalness":0.12,"coatWeight":0.65,"coatRoughness":0.08,"metresPerRepeat":3.2,"authored":"Opaque reflective glazing with original subtle blind variation; no interior claim."},
     "frame": {"color":"#4a4a43","roughness":0.33,"metalness":0.7,"metresPerRepeat":1,"authored":"Original anodised frame material."},
     "roof": {"color":"#626867","roughness":0.82,"metresPerRepeat":3,"authored":"Authored neutral roof surface on official LOD1 top planes."},
+    "shinkyogoku-panel": {"color":"#d2d8d5","roughness":0.56,"metalness":0,"coatWeight":0.12,"coatRoughness":0.30,"normalStrength":0.12,"metresPerRepeat":3,"authored":"Original opaque PBR interpretation of the association-described pale polycarbonate roof. Hue, roughness and subtle three-metre panel variation are authored; the reference photo's exact location is unspecified. No photograph pixels or measured profile are used."},
     "arcade-soffit": {"color":"#b8b9b3","roughness":0.71,"metalness":0.18,"metresPerRepeat":2,"authored":"Original pale gray soffit panels informed by the reviewed Nishiki arcade photograph; panel sizes authored."},
     "market-fascia": {"color":"#59554d","roughness":0.82,"metresPerRepeat":2,"authored":"Original unlettered dark frontage fascia; no tenant identity or operating-state claim."},
     "market-metal": {"color":"#a4a69f","roughness":0.38,"metalness":0.65,"metresPerRepeat":1,"authored":"Original pale metal storefront and soffit framing; dimensions authored."},
@@ -33,6 +34,21 @@
     "urban-tile": {"wallMaterial":"tile-wall","roofMaterial":"roof","glassMaterial":"glass","frameMaterial":"frame","storeyHeightMetres":3.2,"bayWidthMetres":2.65,"recessMetres":0.16,"openingWidthRatio":0.58,"referenceIds":["tenmangu-street-2007"],"authored":"Reference-informed small ceramic finish, with authored bays and opening dimensions."},
     "market-front": {"wallMaterial":"plaster","roofMaterial":"roof","glassMaterial":"glass","frameMaterial":"wood","trimMaterial":"wood","storeyHeightMetres":3.05,"bayWidthMetres":3.05,"recessMetres":0.32,"openingWidthRatio":0.73,"groundSillMetres":0.14,"groundOpeningMetres":2.75,"marketFasciaTopMetres":3.85,"referenceIds":["nishiki-arcade-2025","nishiki-entrance-2026"],"authored":"Original varied lower-storey arcade assemblies on actual adjacent source facade edges; unlettered fascia, timber/metal framing and opaque recessed glazing do not identify shops or interiors."},
     "lane-timber": {"wallMaterial":"plaster","roofMaterial":"roof","glassMaterial":"glass","frameMaterial":"wood","trimMaterial":"wood","storeyHeightMetres":2.9,"bayWidthMetres":1.8,"recessMetres":0.22,"openingWidthRatio":0.59,"canopyHeightMetres":2.7,"canopyProjectionMetres":0.45,"canopyMaterial":"wood","referenceIds":["pontocho-city-description","pontocho-approach-2026"],"authored":"Original two-storey eave/lattice family derived from the municipal description; individual building elevations remain unverified."}
+  },
+  "sourceMaterialOverrides": {
+    "osm:way:551741577": {
+      "expectedKind": "canopy",
+      "expectedSourceIndex": 116,
+      "expectedSourceVersion": 8,
+      "expectedTopHeightMetres": 5,
+      "roofMaterial": "shinkyogoku-panel",
+      "priorRoofMaterial": "roof",
+      "authored": "Pale polycarbonate appearance informed by the Shinkyogoku association's 2022 roof-replacement announcement. Exact local panel dimensions, profile and present condition remain unverified. Source geometry, UV scale, collision, framing material and lighting remain unchanged.",
+      "evidence": [
+        {"file":"experience/evidence/neighborhood-20261023/world/shinkyogoku-context/source-audit.json","sha256":"060dd3a2f2bf18c0d8a6dd397766840b0d368cb6fe532ce7a1591432ca0103f2"},
+        {"file":"experience/evidence/neighborhood-20261023/world/shinkyogoku-context/reference-review.json","sha256":"2e1d96db929aec26146185acf5145e44811027f57c92e80228c6650efedc6427"}
+      ]
+    }
   },
   "sourceTreatmentOverrides": {
     "kyoto-city:bldg_74454289-1d7a-4105-87ea-26e36c69bc44": {

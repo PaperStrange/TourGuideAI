@@ -65,7 +65,34 @@ def generate_textures(specifications, output_dir):
             encode_image(path, values, space)
             records[suffix] = path
         generated[name] = records
+    if 'shinkyogoku-panel' in specifications:
+        generated['shinkyogoku-panel'] = generate_panel_textures(specifications['shinkyogoku-panel'], output_dir)
     return generated
+
+
+def generate_panel_textures(specification, output_dir):
+    # 接缝和色差由作者生成；沿用原来的三米 UV 比例，不读取参考图片。
+    size = 128
+    yy, xx = np.mgrid[0:size, 0:size]
+    seam = np.exp(-(np.minimum(yy, size - yy) / 1.1) ** 2)
+    broad = np.cos(2 * np.pi * xx / size) * np.cos(2 * np.pi * yy / size)
+    modulation = 1 + broad * .015 - seam * .06
+    srgb = np.array([int(specification['color'][index:index + 2], 16) / 255 for index in (1, 3, 5)])
+    color = np.clip(modulation[:, :, None] * srgb, 0, 1)
+    relief = -.02 * seam
+    dx = (np.roll(relief, -1, axis=1) - np.roll(relief, 1, axis=1)) / 2
+    dy = (np.roll(relief, -1, axis=0) - np.roll(relief, 1, axis=0)) / 2
+    normal = np.stack((-dx, -dy, np.ones_like(relief)), axis=-1)
+    normal /= np.linalg.norm(normal, axis=-1, keepdims=True)
+    roughness = specification['roughness'] + broad * .035 + seam * .035
+    records = {}
+    for suffix, values, space in [('color', color, 'sRGB'),
+                                  ('normal', normal * .5 + .5, 'Non-Color'),
+                                  ('roughness', np.repeat(roughness[:, :, None], 3, axis=2), 'Non-Color')]:
+        path = output_dir / ('shinkyogoku-panel-' + suffix + '.png')
+        encode_image(path, values, space)
+        records[suffix] = path
+    return records
 
 
 math_pi = float(np.pi)

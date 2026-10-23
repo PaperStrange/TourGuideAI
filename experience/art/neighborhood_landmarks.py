@@ -45,8 +45,9 @@ def scanline_intersections(ring, x):
 def canopy_geometry(feature, lod, source_index, batches, structure_batches):
     top = feature.get('topHeightMetres', 5)
     if feature['sourceId'] != 'osm:way:772134672':
+        roof_material = feature.get('roofMaterial', 'roof')
         for polygon in feature['polygons']:
-            batches['roof'].top(polygon['triangles'], top, source_index)
+            batches[roof_material].top(polygon['triangles'], top, source_index)
             for a, b in zip(polygon['outer'], polygon['outer'][1:]):
                 plane = FacadePlane(a, b, source_index, batches)
                 plane.panel('frame', 0, plane.length, top - .15, top)

@@ -172,13 +172,13 @@
     "sha256": "dffa91bf8616b4ce6657f972913c642249ce5be999fb52be736933a5b2ebd6ad",
     "bytes": 7321
   },
-  "styleSha256": "e25f9c3c271dc9f640ab339da3d4ea389a45c255b951cec339e4dd2baeb8d3e0",
-  "generatorSha256": "b5f147840d709a183103483b90f6102dd26be331e5b1ed365067c8d11e47cefa",
+  "styleSha256": "3e634fb83dab474caf8442816083565d82b8f3bbcf43af72d228b04ffd26e73c",
+  "generatorSha256": "274380689d37b72738c40609104f3458dac3a7529dd103342f3892b96629a168",
   "geometryHelperSha256": "703dde774df3058b44cb8592f712525fa5754bbd83027b19ccddbdae6c218ded",
-  "landmarkHelperSha256": "de4892fb897c7ffb4ee5c4d2dac9ed9d66f402c2b687be8158e062ba5ed2d4ee",
-  "materialHelperSha256": "a88e8bc6c1c8da4da6838939c6381ce8120ff75d3f131559577a98fe059a86be",
+  "landmarkHelperSha256": "291bdab1df2b71bf6b56f3261a7ef086583498e077de6e80ec3e9517e0dacf31",
+  "materialHelperSha256": "c9fb695c3b8968d5a3d9b9b0044a5e5b9ea8249cbeb6ff56fd97459741cbc1dd",
   "blenderVersion": "4.3.2",
-  "elapsedSeconds": 14.482,
+  "elapsedSeconds": 14.179,
   "geometryMeaning": "Source footprints and prepared surface polygons; reviewed original facade assemblies with explicit authored dimensions",
   "rights": "source-ledger.json and references.json",
   "referenceIds": [
@@ -211,6 +211,242 @@
   "sourceFramePreserved": true,
   "originalPackAssetsChanged": false,
   "visualAcceptance": "requires actual browser route review",
+  "sourceMaterialOverrides": [
+    {
+      "sourceId": "osm:way:551741577",
+      "expectedKind": "canopy",
+      "expectedSourceIndex": 116,
+      "expectedSourceVersion": 8,
+      "expectedTopHeightMetres": 5,
+      "roofMaterial": "shinkyogoku-panel",
+      "priorRoofMaterial": "roof",
+      "authored": "Pale polycarbonate appearance informed by the Shinkyogoku association's 2022 roof-replacement announcement. Exact local panel dimensions, profile and present condition remain unverified. Source geometry, UV scale, collision, framing material and lighting remain unchanged.",
+      "evidence": [
+        {
+          "file": "experience/evidence/neighborhood-20261023/world/shinkyogoku-context/source-audit.json",
+          "sha256": "060dd3a2f2bf18c0d8a6dd397766840b0d368cb6fe532ce7a1591432ca0103f2"
+        },
+        {
+          "file": "experience/evidence/neighborhood-20261023/world/shinkyogoku-context/reference-review.json",
+          "sha256": "2e1d96db929aec26146185acf5145e44811027f57c92e80228c6650efedc6427"
+        }
+      ],
+      "evidenceRecords": [
+        {
+          "file": "experience/evidence/neighborhood-20261023/world/shinkyogoku-context/source-audit.json",
+          "sha256": "060dd3a2f2bf18c0d8a6dd397766840b0d368cb6fe532ce7a1591432ca0103f2",
+          "record": {
+            "reviewedAt": "2026-10-23",
+            "status": "pass",
+            "rawSource": {
+              "file": "artifacts/neighborhood-20261021/world/raw/osm-map.json",
+              "sha256": "45969d94df108b46f38cb4b13e9f41756c30a38ce602e504f1b92d6486afa787",
+              "license": "ODbL-1.0",
+              "attribution": "© OpenStreetMap contributors"
+            },
+            "scene": {
+              "file": "experience/src/neighborhoods/shijo-east/scene.json",
+              "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e"
+            },
+            "player": {
+              "x": 682.274,
+              "y": 69.952,
+              "longitude": 135.7671933419168,
+              "latitude": 35.00436953533579
+            },
+            "roofWay": {
+              "type": "way",
+              "id": 551741577,
+              "timestamp": "2025-11-14T08:18:19Z",
+              "version": 8,
+              "changeset": 174637220,
+              "user": "km2bp",
+              "uid": 3610826,
+              "nodes": [
+                5328204779,
+                5328204778,
+                5328204777,
+                5328204776,
+                5328204775,
+                5328204774,
+                5328204773,
+                5328204772,
+                5328204771,
+                5328204770,
+                5328204769,
+                5328204768,
+                5328204767,
+                5328204766,
+                5328204765,
+                5328204764,
+                5328204763,
+                5328204762,
+                5328204761,
+                5328204760,
+                5328204759,
+                5328204758,
+                5328204757,
+                10688473736,
+                10688473738,
+                5328204756,
+                5328204755,
+                10689815248,
+                5328204754,
+                10689815246,
+                5328204753,
+                5328204752,
+                5328204751,
+                5328204750,
+                5328204749,
+                5328204748,
+                5328204747,
+                5328204746,
+                5328204745,
+                5328204744,
+                5328204743,
+                5328204779
+              ],
+              "tags": {
+                "building": "roof",
+                "image": "https://photos.app.goo.gl/7Q9d38etEjearB5D7",
+                "layer": "1"
+              }
+            },
+            "streetWay": {
+              "type": "way",
+              "id": 1568699671,
+              "timestamp": "2026-10-16T06:45:45Z",
+              "version": 1,
+              "changeset": 190588664,
+              "user": "fūrai-bō",
+              "uid": 22072823,
+              "nodes": [
+                4771482147,
+                434344439,
+                5204146525,
+                434344435,
+                5204263052,
+                434344433,
+                434344428,
+                11791988811,
+                11791924470,
+                434344416,
+                11791924469,
+                11793855056,
+                11791924472,
+                434344398
+              ],
+              "tags": {
+                "abutters": "retail",
+                "bicycle": "dismount",
+                "carriage": "no",
+                "contact:facebook": "shinkyogoku",
+                "contact:tripadvisor": "1386092",
+                "contact:website": "https://www.shinkyogoku.or.jp/",
+                "covered": "yes",
+                "highway": "pedestrian",
+                "horse": "no",
+                "motor_vehicle": "no",
+                "name": "新京極通",
+                "name:en": "Shinkyogoku street",
+                "name:fr": "Rue Shinkyōgoku",
+                "name:ja-Hira": "しんきょうごくどおり",
+                "name:ja-Latn": "Shinkyōgoku-dōri",
+                "name:ru": "Синкёгоку улица",
+                "start_date": "1872",
+                "surface": "paving_stones",
+                "tourism": "attraction",
+                "wikidata": "Q11501300",
+                "wikimedia_commons": "Category:Shinkyogoku",
+                "wikipedia": "ja:新京極通"
+              }
+            },
+            "sourceRingNodeCount": 42,
+            "sourceProjectedBounds": [
+              678.3541695101397,
+              9.241356145000928,
+              709.0158436960771,
+              547.3035086447322
+            ],
+            "sourceProjectedAreaSquareMetres": 2416.900990864372,
+            "containsPlayer": true,
+            "pointDistanceToRoofBoundaryMetres": 1.6074474426442402,
+            "crossSectionAtPlayerNorthing": {
+              "endpoints": [
+                [
+                  679.6187796120121,
+                  69.952
+                ],
+                [
+                  683.8814754264629,
+                  69.952
+                ]
+              ],
+              "widthMetres": 4.262695814450808,
+              "meaning": "Derived width of mapped plan polygon; no measured construction clearance"
+            },
+            "sceneHeight": {
+              "metres": 5,
+              "origin": "authored-display"
+            },
+            "displayBounds": [
+              678.354,
+              9.241,
+              709.016,
+              547.304
+            ],
+            "missingSourceTags": [
+              "height",
+              "min_height",
+              "roof:shape",
+              "roof:material",
+              "roof:height"
+            ]
+          }
+        },
+        {
+          "file": "experience/evidence/neighborhood-20261023/world/shinkyogoku-context/reference-review.json",
+          "sha256": "2e1d96db929aec26146185acf5145e44811027f57c92e80228c6650efedc6427",
+          "record": {
+            "reviewedAt": "2026-10-23",
+            "scope": "Read-only source review for the Shinkyogoku covered-street view at local x682.274,y69.952; no production change",
+            "mappedRoofId": "osm:way:551741577",
+            "mappedStreetId": "osm:way:1568699671",
+            "primaryReference": {
+              "title": "新京極通開通150年を祝し、4月1日から記念事業スタート！",
+              "publisher": "新京極商店街振興組合",
+              "distributionService": "@Press",
+              "url": "https://www.atpress.ne.jp/news/305224",
+              "publishedAt": "2022-04-07 11:00",
+              "pageReview": "Complete page text read",
+              "facts": [
+                "The association describes Shinkyogoku between Sanjo and Shijo as an approximately500m north-south street.",
+                "Polycarbonate roof replacement began in November2021, with completion planned around November2022. This announcement alone does not verify completion."
+              ],
+              "image": {
+                "caption": "ポリカーボネート屋根の張替え(工事後の状態)2",
+                "url": "https://www.atpress.ne.jp/releases/305224/img_305224_15.jpg?format=webp&ts=1696471582&w=384",
+                "localPath": "artifacts/neighborhood-20261023/world/shinkyogoku-roof-2022.webp",
+                "sha256": "9b312f753c24e132d419f541ad7c96f14862ae07e8d3ef02e4ee320690814fed",
+                "bytes": 3196,
+                "visualReview": "Locally inspected downloaded image: pale translucent curved panels with repeated framing. Its precise position within Shinkyogoku is unspecified.",
+                "rights": "Publicly viewable association press photograph. No open redistribution/adaptation license established; retained privately as research reference only.",
+                "usage": "No runtime image pixels, textures or generated geometry"
+              }
+            },
+            "supportedProposal": "Review the existing generic opaque canopy material using this street-specific polycarbonate evidence. A modeled cross-section or facade attachment treatment requires a location-matched visual reference and a separate approved authored design.",
+            "limits": [
+              "The reviewed point lies in the mapped roof plan; the source tags supply no construction height, clearance, roof profile or support spacing.",
+              "The scene's5m height is authored; mapped layer1 expresses ordering only.",
+              "The bounded review did not establish the exact present-day roof section or facade joins at this point.",
+              "Nishiki's distinct roof recipe is not evidence for Shinkyogoku."
+            ],
+            "productionEdits": false
+          }
+        }
+      ]
+    }
+  ],
   "sourceTreatmentOverrides": [
     {
       "sourceId": "kyoto-city:bldg_74454289-1d7a-4105-87ea-26e36c69bc44",

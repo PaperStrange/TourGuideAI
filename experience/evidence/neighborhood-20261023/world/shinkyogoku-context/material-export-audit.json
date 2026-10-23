@@ -1,0 +1,544 @@
+{
+  "status": "pass",
+  "reviewedAt": "2026-10-23",
+  "sourceId": "osm:way:551741577",
+  "sourceIndex": 116,
+  "baseline": {
+    "directory": "artifacts/neighborhood-20261023/art/platform-open-transport",
+    "manifest": {
+      "bytes": 314192,
+      "sha256": "679241ee06a8115ad3f95ddd523c2f56555b900f3ecc4437d272573a968ec4e5"
+    }
+  },
+  "candidate": {
+    "directory": "artifacts/neighborhood-20261023/art/shinkyogoku-material-transport",
+    "manifest": {
+      "bytes": 321677,
+      "sha256": "4e490c35d171aceb160efb70d94ae8c9fc097a2ad4440fe1010c1b619ca7a601"
+    },
+    "provenance": {
+      "bytes": 1640438,
+      "sha256": "d406e44bbb2225bc57cf91fc3f9ad28c1d2958218ef87d1d247cfc583f1e572e"
+    }
+  },
+  "auditProducer": {
+    "bytes": 21178,
+    "sha256": "bd64d3cc66db2ba3e767272c541f92bf86c9c6cfdfce10281e0750f5ad6c9348"
+  },
+  "fullIgnoredReport": {
+    "file": "artifacts/neighborhood-20261023/world/shinkyogoku-material-audit/material-export-audit.json",
+    "bytes": 1546350,
+    "sha256": "8f9c8177ebe69e2ce15266495dc2979d5e84443ba901b81e5643f24fc06cd3ad"
+  },
+  "parserVersions": {
+    "gltfTransform": "4.5.1",
+    "meshoptimizer": "1.3.0",
+    "sharp": "0.35.5"
+  },
+  "source": {
+    "sceneSha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e",
+    "geographySha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
+    "evidence": [
+      {
+        "file": "experience/evidence/neighborhood-20261023/world/shinkyogoku-context/source-audit.json",
+        "sha256": "060dd3a2f2bf18c0d8a6dd397766840b0d368cb6fe532ce7a1591432ca0103f2"
+      },
+      {
+        "file": "experience/evidence/neighborhood-20261023/world/shinkyogoku-context/reference-review.json",
+        "sha256": "2e1d96db929aec26146185acf5145e44811027f57c92e80228c6650efedc6427"
+      }
+    ]
+  },
+  "comparison": {
+    "decodedSections": 74,
+    "sourceGroupComparisons": 9731,
+    "targetSections": [
+      {
+        "file": "cells/cell-e006-n000/base.gltf",
+        "targetRoofTriangles": 6,
+        "targetFrameTriangles": 16,
+        "targetGroup": {
+          "triangles": 22,
+          "sha256": "6fb7fd4264b037c76a01151a81b47a06bfdff486892014c6d215cd4fdaa67073"
+        },
+        "sectionTriangles": 6986,
+        "batchesBefore": 7,
+        "batchesAfter": 8
+      },
+      {
+        "file": "cells/cell-e006-n000/near.gltf",
+        "targetRoofTriangles": 6,
+        "targetFrameTriangles": 16,
+        "targetGroup": {
+          "triangles": 22,
+          "sha256": "cffd266ba971060e9572643062cea4155277f3ba57b3da41cdf7d0475911036d"
+        },
+        "sectionTriangles": 27456,
+        "batchesBefore": 9,
+        "batchesAfter": 10
+      },
+      {
+        "file": "cells/cell-e006-n001/base.gltf",
+        "targetRoofTriangles": 8,
+        "targetFrameTriangles": 20,
+        "targetGroup": {
+          "triangles": 28,
+          "sha256": "3631f55b61a78dd2f5799b8436e311a64ccd5fb27e550862979a793e26900daa"
+        },
+        "sectionTriangles": 8216,
+        "batchesBefore": 16,
+        "batchesAfter": 17
+      },
+      {
+        "file": "cells/cell-e006-n001/near.gltf",
+        "targetRoofTriangles": 8,
+        "targetFrameTriangles": 20,
+        "targetGroup": {
+          "triangles": 28,
+          "sha256": "6fb56ceb5db21ac1f9b68cb4d69db5f34fa923c00fe0318ee34751068e3e2079"
+        },
+        "sectionTriangles": 29130,
+        "batchesBefore": 18,
+        "batchesAfter": 19
+      },
+      {
+        "file": "cells/cell-e006-n002/base.gltf",
+        "targetRoofTriangles": 12,
+        "targetFrameTriangles": 28,
+        "targetGroup": {
+          "triangles": 40,
+          "sha256": "712c790e28c1b1e1a83907b328625cee24538da079c15860c5ff03bab690d909"
+        },
+        "sectionTriangles": 72,
+        "batchesBefore": 2,
+        "batchesAfter": 3
+      },
+      {
+        "file": "cells/cell-e006-n002/near.gltf",
+        "targetRoofTriangles": 12,
+        "targetFrameTriangles": 28,
+        "targetGroup": {
+          "triangles": 40,
+          "sha256": "712c790e28c1b1e1a83907b328625cee24538da079c15860c5ff03bab690d909"
+        },
+        "sectionTriangles": 72,
+        "batchesBefore": 2,
+        "batchesAfter": 3
+      },
+      {
+        "file": "cells/cell-e006-n003/base.gltf",
+        "targetRoofTriangles": 11,
+        "targetFrameTriangles": 26,
+        "targetGroup": {
+          "triangles": 37,
+          "sha256": "5f434eeefd31d197d5bbe866ec49d12fd3368ca257fff7ab5f75a355148d37b2"
+        },
+        "sectionTriangles": 53,
+        "batchesBefore": 2,
+        "batchesAfter": 3
+      },
+      {
+        "file": "cells/cell-e006-n003/near.gltf",
+        "targetRoofTriangles": 11,
+        "targetFrameTriangles": 26,
+        "targetGroup": {
+          "triangles": 37,
+          "sha256": "5f434eeefd31d197d5bbe866ec49d12fd3368ca257fff7ab5f75a355148d37b2"
+        },
+        "sectionTriangles": 53,
+        "batchesBefore": 2,
+        "batchesAfter": 3
+      },
+      {
+        "file": "cells/cell-e006-n004/base.gltf",
+        "targetRoofTriangles": 1,
+        "targetFrameTriangles": 6,
+        "targetGroup": {
+          "triangles": 7,
+          "sha256": "f71ba44b5a37ee85df3919bbc14b495612301f2f40981b351d78d98cf51d53b9"
+        },
+        "sectionTriangles": 29,
+        "batchesBefore": 2,
+        "batchesAfter": 3
+      },
+      {
+        "file": "cells/cell-e006-n004/near.gltf",
+        "targetRoofTriangles": 1,
+        "targetFrameTriangles": 6,
+        "targetGroup": {
+          "triangles": 7,
+          "sha256": "f71ba44b5a37ee85df3919bbc14b495612301f2f40981b351d78d98cf51d53b9"
+        },
+        "sectionTriangles": 29,
+        "batchesBefore": 2,
+        "batchesAfter": 3
+      },
+      {
+        "file": "cells/cell-e007-n003/base.gltf",
+        "targetRoofTriangles": 1,
+        "targetFrameTriangles": 6,
+        "targetGroup": {
+          "triangles": 7,
+          "sha256": "257194e3c390bc35f257dde74fa6b6b4056b0d1a2f745439bbe66ab33520cae2"
+        },
+        "sectionTriangles": 7,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      },
+      {
+        "file": "cells/cell-e007-n003/near.gltf",
+        "targetRoofTriangles": 1,
+        "targetFrameTriangles": 6,
+        "targetGroup": {
+          "triangles": 7,
+          "sha256": "257194e3c390bc35f257dde74fa6b6b4056b0d1a2f745439bbe66ab33520cae2"
+        },
+        "sectionTriangles": 7,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      },
+      {
+        "file": "cells/cell-e007-n004/base.gltf",
+        "targetRoofTriangles": 12,
+        "targetFrameTriangles": 28,
+        "targetGroup": {
+          "triangles": 40,
+          "sha256": "679cc9e643b2dac8010c9404398c988e7897ddc4c20c923d008b380905a9b8dd"
+        },
+        "sectionTriangles": 40,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      },
+      {
+        "file": "cells/cell-e007-n004/near.gltf",
+        "targetRoofTriangles": 12,
+        "targetFrameTriangles": 28,
+        "targetGroup": {
+          "triangles": 40,
+          "sha256": "679cc9e643b2dac8010c9404398c988e7897ddc4c20c923d008b380905a9b8dd"
+        },
+        "sectionTriangles": 40,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      },
+      {
+        "file": "cells/cell-e007-n005/base.gltf",
+        "targetRoofTriangles": 2,
+        "targetFrameTriangles": 8,
+        "targetGroup": {
+          "triangles": 10,
+          "sha256": "865a0ee68c028b6d506a8c107e3ba752397076c8cb482800bd2a03c434c5d1d6"
+        },
+        "sectionTriangles": 10,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      },
+      {
+        "file": "cells/cell-e007-n005/near.gltf",
+        "targetRoofTriangles": 2,
+        "targetFrameTriangles": 8,
+        "targetGroup": {
+          "triangles": 10,
+          "sha256": "865a0ee68c028b6d506a8c107e3ba752397076c8cb482800bd2a03c434c5d1d6"
+        },
+        "sectionTriangles": 10,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      }
+    ],
+    "tangentSummary": {
+      "exportedTargetTangents": 0,
+      "targetTriangleCornersWithoutTangents": 318,
+      "orthogonality": "not applicable; no exported target tangents"
+    },
+    "material": {
+      "name": "shinkyogoku-panel",
+      "extras": {
+        "surfaceMeaning": "Original opaque PBR interpretation of the association-described pale polycarbonate roof. Hue, roughness and subtle three-metre panel variation are authored; the reference photo's exact location is unspecified. No photograph pixels or measured profile are used."
+      },
+      "doubleSided": true,
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0,
+        "baseColorTexture": {
+          "resource": {
+            "sampler": {
+              "magFilter": 9729,
+              "minFilter": 9987,
+              "wrapS": 10497,
+              "wrapT": 10497
+            },
+            "extensions": {
+              "EXT_texture_webp": {
+                "source": {
+                  "name": "shinkyogoku-panel-color.png",
+                  "mimeType": "image/webp",
+                  "uri": "../../shared/materials/shinkyogoku-panel-color.webp"
+                }
+              }
+            },
+            "source": null
+          }
+        },
+        "metallicRoughnessTexture": {
+          "resource": {
+            "sampler": {
+              "magFilter": 9729,
+              "minFilter": 9987,
+              "wrapS": 10497,
+              "wrapT": 10497
+            },
+            "extensions": {
+              "EXT_texture_webp": {
+                "source": {
+                  "name": "shinkyogoku-panel-roughness.png",
+                  "mimeType": "image/webp",
+                  "uri": "../../shared/materials/shinkyogoku-panel-roughness.webp"
+                }
+              }
+            },
+            "source": null
+          }
+        }
+      },
+      "normalTexture": {
+        "resource": {
+          "sampler": {
+            "magFilter": 9729,
+            "minFilter": 9987,
+            "wrapS": 10497,
+            "wrapT": 10497
+          },
+          "extensions": {
+            "EXT_texture_webp": {
+              "source": {
+                "name": "shinkyogoku-panel-normal.png",
+                "mimeType": "image/webp",
+                "uri": "../../shared/materials/shinkyogoku-panel-normal.webp"
+              }
+            }
+          },
+          "source": null
+        },
+        "scale": 0.11999999731779099
+      },
+      "extensions": {
+        "KHR_materials_clearcoat": {
+          "clearcoatFactor": 0.11999999731779099,
+          "clearcoatRoughnessFactor": 0.30000001192092896
+        }
+      }
+    },
+    "unrelatedAttributesMaterialsTransformsExact": true,
+    "existingTargetAttributesTransformsExact": true,
+    "targetExistingAttributes": [
+      "NORMAL",
+      "POSITION",
+      "TEXCOORD_0",
+      "_SOURCE_INDEX"
+    ]
+  },
+  "resources": {
+    "count": 347,
+    "byteExactCount": 267,
+    "addedMaps": [
+      {
+        "file": "shared/materials/shinkyogoku-panel-color.webp",
+        "bytes": 884,
+        "sha256": "80f4cf3ed306ba17a5bb379b07e05390cffa2ddad8d08b9a747811f100e0b8c7",
+        "width": 128,
+        "height": 128,
+        "channels": 3,
+        "hasAlpha": false,
+        "channelStatistics": [
+          {
+            "min": 194,
+            "max": 213,
+            "mean": 209.80731201171875,
+            "stdev": 2.0724631978256456
+          },
+          {
+            "min": 200,
+            "max": 219,
+            "mean": 215.8026123046875,
+            "stdev": 2.12172527303759
+          },
+          {
+            "min": 197,
+            "max": 216,
+            "mean": 212.804931640625,
+            "stdev": 2.099586224956002
+          }
+        ]
+      },
+      {
+        "file": "shared/materials/shinkyogoku-panel-normal.webp",
+        "bytes": 58,
+        "sha256": "ab97d23af43ec0274737df45bb913434c1fb05f3d633ba20b1c2fa7535311b97",
+        "width": 128,
+        "height": 128,
+        "channels": 3,
+        "hasAlpha": false,
+        "channelStatistics": [
+          {
+            "min": 128,
+            "max": 128,
+            "mean": 128,
+            "stdev": 0
+          },
+          {
+            "min": 126,
+            "max": 129,
+            "mean": 127.96875,
+            "stdev": 0.2480467553140486
+          },
+          {
+            "min": 255,
+            "max": 255,
+            "mean": 255,
+            "stdev": 0
+          }
+        ]
+      },
+      {
+        "file": "shared/materials/shinkyogoku-panel-roughness.webp",
+        "bytes": 1444,
+        "sha256": "5c07396c1b19646750b213c4c2661c0c420404432f4bcaae409e7701bddfea11",
+        "width": 128,
+        "height": 128,
+        "channels": 3,
+        "hasAlpha": false,
+        "channelStatistics": [
+          {
+            "min": 134,
+            "max": 161,
+            "mean": 142.9405517578125,
+            "stdev": 4.568949935212121
+          },
+          {
+            "min": 134,
+            "max": 161,
+            "mean": 142.9405517578125,
+            "stdev": 4.568949935212121
+          },
+          {
+            "min": 134,
+            "max": 161,
+            "mean": 142.9405517578125,
+            "stdev": 4.568949935212121
+          }
+        ]
+      }
+    ],
+    "verifiedGzipResources": 148,
+    "changedCount": 77
+  },
+  "budgets": {
+    "startup": {
+      "day": {
+        "commonBytes": 2566738,
+        "travellerBytes": 35556,
+        "hdrBytes": 432312,
+        "totalBytes": 3034606,
+        "limitBytes": 4194304
+      },
+      "night": {
+        "commonBytes": 2566738,
+        "travellerBytes": 35556,
+        "hdrBytes": 425076,
+        "totalBytes": 3027370,
+        "limitBytes": 4194304
+      }
+    },
+    "newTextureRGBA8FullMipEquivalentBytes": 262140,
+    "maximumSectionTransferBytes": 1740511,
+    "allSectionsWithinGate": true
+  },
+  "validation": {
+    "errors": 0,
+    "containerCount": 74,
+    "targetWarnings": [
+      {
+        "file": "cells/cell-e006-n000/base.gltf",
+        "before": 4,
+        "after": 5
+      },
+      {
+        "file": "cells/cell-e006-n000/near.gltf",
+        "before": 5,
+        "after": 6
+      },
+      {
+        "file": "cells/cell-e006-n001/base.gltf",
+        "before": 6,
+        "after": 7
+      },
+      {
+        "file": "cells/cell-e006-n001/near.gltf",
+        "before": 6,
+        "after": 7
+      },
+      {
+        "file": "cells/cell-e006-n002/base.gltf",
+        "before": 0,
+        "after": 1
+      },
+      {
+        "file": "cells/cell-e006-n002/near.gltf",
+        "before": 0,
+        "after": 1
+      },
+      {
+        "file": "cells/cell-e006-n003/base.gltf",
+        "before": 0,
+        "after": 1
+      },
+      {
+        "file": "cells/cell-e006-n003/near.gltf",
+        "before": 0,
+        "after": 1
+      },
+      {
+        "file": "cells/cell-e006-n004/base.gltf",
+        "before": 0,
+        "after": 1
+      },
+      {
+        "file": "cells/cell-e006-n004/near.gltf",
+        "before": 0,
+        "after": 1
+      },
+      {
+        "file": "cells/cell-e007-n003/base.gltf",
+        "before": 0,
+        "after": 1
+      },
+      {
+        "file": "cells/cell-e007-n003/near.gltf",
+        "before": 0,
+        "after": 1
+      },
+      {
+        "file": "cells/cell-e007-n004/base.gltf",
+        "before": 0,
+        "after": 1
+      },
+      {
+        "file": "cells/cell-e007-n004/near.gltf",
+        "before": 0,
+        "after": 1
+      },
+      {
+        "file": "cells/cell-e007-n005/base.gltf",
+        "before": 0,
+        "after": 1
+      },
+      {
+        "file": "cells/cell-e007-n005/near.gltf",
+        "before": 0,
+        "after": 1
+      }
+    ],
+    "warningMeaning": "The target normal map uses runtime-generated tangent space. No target tangent attributes were exported, so tangent orthogonality is not applicable. All target normals/UVs remain exact."
+  },
+  "limitations": "The 2022 association image has unspecified street position and supplies no measured profile or current-condition evidence. Original opaque materials approximate appearance only. This audit does not establish visual quality, transparent transmission, measured geometry, navigational access, GPU memory or runtime frame cost. Startup totals exclude application HTML/JS/CSS/fonts and HTTP framing."
+}

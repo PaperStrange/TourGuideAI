@@ -61,7 +61,16 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
     return viewCamera.position.distanceToSquared(previousPosition) > 1e-12
       || 1 - Math.abs(viewCamera.quaternion.dot(previousRotation)) > 1e-12;
   }
-  const emitChange = () => { synchronizeCamera(); onChange(); };
+  let notifiedCamera = null;
+  const emitChange = (explicit = true) => {
+    synchronizeCamera(); camera.updateMatrixWorld(); viewCamera.updateMatrixWorld();
+    const values = [...camera.matrixWorld.elements, ...controls.target,
+      ...viewCamera.matrixWorld.elements, ...viewCamera.projectionMatrix.elements];
+    // OrbitControls 在距离边界可能因浮点舍入持续报告缩放；只过滤数值精度内的重复通知。
+    if (!explicit && notifiedCamera && values.every((value, index) => Math.abs(value - notifiedCamera[index])
+      <= 64 * Number.EPSILON * Math.max(1, Math.abs(value), Math.abs(notifiedCamera[index])))) return;
+    notifiedCamera = values; onChange();
+  };
   const changed = () => {
     if (adopting) return;
     if (solo && inspecting && !transition?.following) {
@@ -74,7 +83,7 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
         height: controls.target.y };
       camera.updateMatrixWorld();
     }
-    emitChange();
+    emitChange(false);
   };
   function beginCameraInput(operation) {
     if (inspecting) {

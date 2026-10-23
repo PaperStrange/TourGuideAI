@@ -150,7 +150,7 @@ export async function createGame(host, options = {}) {
         rig.restorePose(next.camera, player); dirty = true; publish(); return true;
       };
       return view.ensurePosition ? restoration.run({ signal,
-        prepare: abortSignal => view.ensurePosition(next.player, abortSignal), apply }) : apply();
+        prepare: abortSignal => view.ensurePosition({ ...next.player, heading: player.heading }, abortSignal), apply }) : apply();
     },
     focusMoment(moment) {
       const point = moment?.lookAt ?? moment?.focus;

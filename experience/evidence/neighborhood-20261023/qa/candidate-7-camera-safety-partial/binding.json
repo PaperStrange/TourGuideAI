@@ -1,0 +1,71 @@
+{
+  "packageManifestSha256": "990d7ef1cf8c35023e19f32c3ee66b688282a30434e8812c4335edf74449a133",
+  "verifiedPackagedFiles": 443,
+  "sourceCommit": "a7cd027f7e8085ef0cb7054487f1a3479a6724de",
+  "source": {
+    "id": "shijo-east",
+    "revision": 1,
+    "geographySha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
+    "manifestSha256": "679241ee06a8115ad3f95ddd523c2f56555b900f3ecc4437d272573a968ec4e5"
+  },
+  "driverSha256": "2653141e7b00848dc461e8038421a6e423ab91b28fc43c4ee867120182003a21",
+  "browser": "151.0.7922.34",
+  "conditions": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "reducedMotion": "no-preference",
+    "timeoutMs": 120000,
+    "walkingTimeoutMs": 2400000,
+    "sections": [
+      "camera-safety"
+    ],
+    "assetDelivery": "Actual loopback HTTP with immutable captured build bodies and no-store; only deliberate abort/delay scenarios install request routes."
+  },
+  "startedAt": "2026-10-23T04:53:40.895Z",
+  "interruptionFinishedAt": "2026-10-23T05:11:39.817Z",
+  "elapsedMs": 1078922,
+  "actualHTTPRequests": 118,
+  "status": "interrupted-and-superseded",
+  "partialChecks": {
+    "passed": 26,
+    "failed": 0,
+    "completedSuite": false
+  },
+  "rawFinalChecks": {
+    "passed": 26,
+    "failed": 1,
+    "failureId": "camera-safety-completed",
+    "classification": "Intentional browser closure during the following drag-entry setup; no input assertion was changed.",
+    "finishedAt": "2026-10-23T05:11:39.817Z"
+  },
+  "files": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 419442,
+      "sha256": "ad564e5d8b51dfa5eccff809a75178ce3d2e28231f771e5b33615b1934cc501d",
+      "decodedBytes": 4491868,
+      "decodedSha256": "cb6f9c196e14c5720678ba13c22cc65cb347231aa3aed5644892e803345c1e8a"
+    },
+    {
+      "file": "partial-before-interruption.json.gz",
+      "bytes": 418081,
+      "sha256": "61a76dfd5a035d3989824ad24729eb6304d4fa9aa00ddd07e8049906f4cb2f36",
+      "decodedBytes": 4462792,
+      "decodedSha256": "d5e1aa0cbe2bb87937e134d865f9f1a09af533a981eca07d34668cbdf6873139"
+    },
+    {
+      "file": "browser-neighborhood.executed.mjs.gz",
+      "bytes": 38733,
+      "sha256": "40f8b6a33c3b246f0dd23a9ae70d12ac6806d203eeacd1bd6d488269ed5b4138",
+      "decodedBytes": 159527,
+      "decodedSha256": "2653141e7b00848dc461e8038421a6e423ab91b28fc43c4ee867120182003a21"
+    },
+    {
+      "file": "run.log",
+      "bytes": 2189,
+      "sha256": "101fb0600cc582e070731656c8d6a07254cfe9cd2bb6494e5c224d62266538f7"
+    }
+  ]
+}

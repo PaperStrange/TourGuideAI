@@ -1,0 +1,36 @@
+{
+  "status": "interrupted-and-superseded",
+  "reason": "Root directed stopping at a completed gesture boundary after confirming an application redraw defect at the recovered minimum-distance pose. The corrected runtime requires the complete native-input matrix on a new immutable build.",
+  "completedBoundary": "no-preference-keyboard-zoom-escape-restores-safe-walking-frame",
+  "completedOperations": [
+    "click",
+    "touch-tap",
+    "middle-horizontal",
+    "three-finger",
+    "keyboard-orbit",
+    "keyboard-tilt",
+    "keyboard-zoom"
+  ],
+  "completedMotionSetting": "no-preference (partial)",
+  "unexecuted": [
+    "Remaining normal-motion gestures",
+    "Reduced-motion matrix",
+    "Western walking approach",
+    "Platform review"
+  ],
+  "preInterruption": {
+    "passed": 26,
+    "failed": 0,
+    "completedSuite": false
+  },
+  "rawFinal": {
+    "passed": 26,
+    "failed": 1,
+    "failureId": "camera-safety-completed",
+    "classification": "Intentional browser closure during the following drag-entry setup; no input assertion was changed.",
+    "finishedAt": "2026-10-23T05:11:39.817Z"
+  },
+  "resourceReleaseObservedAt": "2026-10-23T05:11:49Z",
+  "resourceRelease": "Owned Node/server, Chromium GPU and renderer processes exited. Chromium parent was a non-running zombie after termination.",
+  "captures": 0
+}
