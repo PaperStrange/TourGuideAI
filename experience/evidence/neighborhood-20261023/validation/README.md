@@ -1,5 +1,20 @@
 # Local validation
 
+Candidate-6 package is `ca4b3c95bc2a6b94ad2cc978a083d1e3c3c109d65febce326a5e16e937dc271b`.
+Its lossless transport package uses manifest
+`deb00b97ca3e29e314a13225678c7e6827de59a0f8ff68d5d3bdccc7d3563458`.
+Application checks pass **199/199**, repository gates pass **17/17**, and the
+canonical build succeeds. Encoded/decoded identity and reproducibility evidence
+is in `../world/transport/`. Browser acceptance and performance are separate.
+
+| Candidate-6 report | Original SHA256 |
+| --- | --- |
+| `app-tests-candidate-6.txt.gz` decoded text | `36af46f2c8ac394fe6e59501263fed8a9972f68a26052213001f524b1df8a598` |
+| `build-candidate-6.txt.gz` decoded text | `e47b82c902504e307a7e7507c634e97a43b309a8de70b111ea513668ac293a44` |
+| `repository-gates-candidate-6.txt` | `43a16b6a9e37d69799f7f711f656ea8ae0dc879d15558f6b93f7d192cf632332` |
+
+## Candidate-5
+
 Candidate-5 package is `223fcf32ae41551aab0096dae95d8160c679dacb38469c0f7dbdfb4163b37f23`.
 It adds verified hash-versioned caching and explicit retry recovery for cached
 integrity/HTTP failures. Application checks pass **199/199**, including the

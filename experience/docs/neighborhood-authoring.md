@@ -114,6 +114,31 @@ Transfer gates use the actual compressed transport bytes. Residency admission us
 
 Ordinary sections, base sections, ground and context retain a **2 MiB** geometry-transfer limit. The retained Mitsui NEAR section has an explicitly approved **3.5 MiB** allowance to preserve its reviewed architecture. Daiya and all other sections retain the ordinary limit. Critical startup remains **4 MiB** for required 3D resources, including the traveller, buffers, textures and lighting; page JavaScript, CSS and fonts are reported separately. The generator derives 512 px environment maps and records original and derivative hashes in `lighting.json`. These are separate gates: the section allowance does not relax the startup budget. Use the final manifest and ordinary downloaded bytes; retain the compression report and source hashes with the package.
 
+### Package verified containers for transport
+
+`experience/art/package_neighborhood_transport.mjs` operates on a completed, verified package with Node.js built-ins. It adds gzip level 9 transport to each `.gltf` or `.bin` when the encoded resource is smaller. Existing encoded resources retain their exact bytes. Every encoded resource must decompress byte-for-byte to its declared original; original geometry, images, lighting, source records, optimizer reports and provenance remain unchanged. This operation does not invoke Blender, glTF Transform or image processing.
+
+Use an independent, empty output directory. The recorded candidate-6 command is:
+
+```bash
+node experience/art/package_neighborhood_transport.mjs --input artifacts/neighborhood-20261023/candidate-5/assets/neighborhoods/shijo-east --output artifacts/neighborhood-20261023/art/transport-only-verified --report transport-report.json --startup-cell cell-e000-n000
+```
+
+The frozen input manifest is `90c0873c5e540147630c970d4a2ea692c1583b3c407c175a2659d4e1e93934c8`. Reproduction can use the corresponding verified optimizer output as input. The pass preserves that manifest as `transport-input-manifest.json`; the new manifest adds resource `transport`, updated `transferGeometryBytes`, and `transportPackaging` with the report path, policy and input-manifest identity. The report binds the final manifest hash, producer hash, Node/zlib versions, complete input-file inventory and individual encoded/decoded proofs. The report is outside critical downloads. Its path in the manifest has no report hash, allowing the report to bind the final manifest without a circular dependency.
+
+The measured output manifest is `deb00b97ca3e29e314a13225678c7e6827de59a0f8ff68d5d3bdccc7d3563458`. Node **24.19.0** with zlib **1.3.2.1-motley-3246f1b** processed all **74 containers**, adding **144 gzip resources** and preserving the **4 existing river gzip resources**. Required startup 3D transfer, including the unchanged traveller and selected HDR, is:
+
+| Appearance | Frozen input | Packaged transfer | 4 MiB headroom |
+|---|---:|---:|---:|
+| Daylight | 4,159,329 B | 3,030,351 B | 1,163,953 B |
+| Night | 4,152,093 B | 3,023,115 B | 1,171,189 B |
+
+Each mode saves **1,128,978 B**, including the larger manifest's transport records. Decoded containers, geometry, source indices, image pixels and residency accounting remain identical. The preserved `startup-audit.json` records its original manifest; the new package's current transfer totals are in `transport-report.json`. No new visual-detail or memory improvement follows from this transport change. Cold/warm latency still requires a built-package browser measurement.
+
+The independent local audit reproduced all **346 output files**, including `transport-report.json`, byte-for-byte. It confirmed all **199 original files other than the manifest** remain exact, all **148 encoded resources** round-trip through both Node zlib and the actual runtime decoder, and all **74 section budgets** pass. The audit at `artifacts/neighborhood-20261023/world/transport-audit.json` has SHA256 `12566451aec9cc954be7548b0b831987026f692874dc29f9a280b0adb3b1501b`; its scope covers file identities, metadata, decoder behavior and reproduction.
+
+Reproduce into a second independent directory and compare the entire output inventory, including the report. Independently verify input-file preservation, allowed manifest changes, every compressed and decoded hash, section ceilings and deduplicated startup totals before promotion. Browser checks must distinguish startup ground/context/opening-cell gzip requests from the deferred bridge resources, verify actual HTTP response bodies, and confirm that logical decoded `.gltf`/`.bin` URLs are not fetched for an encoded descriptor.
+
 ## 4. Verify the exact source and built package
 
 Reproduce preparation into a different ignored directory, preserving accepted outputs:

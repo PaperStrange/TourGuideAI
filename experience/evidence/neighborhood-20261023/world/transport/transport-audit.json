@@ -1,0 +1,1832 @@
+{
+  "schemaVersion": 1,
+  "status": "pass",
+  "scope": "Independent local transport-only byte, metadata, dependency, runtime-decoder and reproducibility audit; no browser, rendering, network or memory benchmark",
+  "input": "artifacts/neighborhood-20261023/candidate-5/assets/neighborhoods/shijo-east",
+  "output": "artifacts/neighborhood-20261023/art/transport-only-verified",
+  "independentRepeat": "artifacts/neighborhood-20261023/world/transport-repeat-final",
+  "inputManifestSha256": "90c0873c5e540147630c970d4a2ea692c1583b3c407c175a2659d4e1e93934c8",
+  "outputManifestSha256": "deb00b97ca3e29e314a13225678c7e6827de59a0f8ff68d5d3bdccc7d3563458",
+  "producerSha256": "28f183454199911ba85a77fd2c961600464b3c6d1a153e43c3f2da99e80539dd",
+  "auditorSha256": "907aacc162c7c2c56bd6f8bd07a91085c7b3ab6907c480fad2152ac6132e15ed",
+  "runtimeDecoderSha256": "a081bf54133adda049f15af78f3da3b9a3124a74de1537510a8becd930721da1",
+  "toolVersions": {
+    "node": "v24.19.0",
+    "zlib": "1.3.2.1-motley-3246f1b"
+  },
+  "originalFileCount": 200,
+  "originalFilesUnchangedExceptManifest": 199,
+  "outputFileCount": 346,
+  "repeatedInventoryByteIdentical": true,
+  "repeatedInventorySha256": "1a11b8deae236a88b01108414ecc0a181cf51c32ce9b529ffd431f46179f10b6",
+  "permittedManifestChangesOnly": true,
+  "descriptorCount": 74,
+  "addedGzipCount": 144,
+  "preservedGzipCount": 4,
+  "sourceAndProvenance": {
+    "provenance.json": {
+      "bytes": 1615954,
+      "sha256": "af05f073b07a718bf2baa68d084b2185d90d829182d6ca2a2679dac86378302a"
+    },
+    "feature-provenance.json": {
+      "bytes": 614946,
+      "sha256": "4a865cf42aae251faa698ac9a10d3988f9871b434099f2a826bdfd31b12a38c1"
+    },
+    "source-ledger.json": {
+      "bytes": 5999,
+      "sha256": "be0f8065699a53f09293140e2499bca2468f0aa7cea503dc6436f45c9b17a24c"
+    },
+    "source-review.json": {
+      "bytes": 756,
+      "sha256": "4e3fbb9d2fd3134153d2b378f5de995c2f7e3135ea3d778a5fe2f19b55f00258"
+    },
+    "references.json": {
+      "bytes": 7321,
+      "sha256": "dffa91bf8616b4ce6657f972913c642249ce5be999fb52be736933a5b2ebd6ad"
+    },
+    "compression-report.json": {
+      "bytes": 547254,
+      "sha256": "0651555917b4fdd0a126c91470bd15c126a5c6eab9213afa0c0779eab6e0218d"
+    },
+    "lighting.json": {
+      "bytes": 7270,
+      "sha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399"
+    },
+    "river-context.json.gz": {
+      "bytes": 2271259,
+      "sha256": "b28b3e34fe6b485d1f0cbb5f0a33c6c8d6d2392e48a5343c39d4c536d9cdc850"
+    }
+  },
+  "sharedTraveller": {
+    "file": "artifacts/neighborhood-20261023/candidate-5/models/traveller.glb",
+    "bytes": 35556,
+    "sha256": "ee5307da94f4d1994e5323a0d31d6f79a255c9f2f10459e0a0e6434fb051fdb1"
+  },
+  "startup": {
+    "startupFiles": [
+      "ground.gltf.gz",
+      "shared/materials/asphalt-normal.webp",
+      "shared/materials/asphalt-roughness.webp",
+      "shared/materials/paving-color.webp",
+      "shared/materials/water-normal.webp",
+      "shared/materials/paving-normal.webp",
+      "shared/materials/water-color.webp",
+      "shared/materials/paving-roughness.webp",
+      "shared/materials/asphalt-color.webp",
+      "shared/materials/water-roughness.webp",
+      "ground.bin.gz",
+      "context.gltf.gz",
+      "shared/materials/stone-normal.webp",
+      "shared/materials/stone-color.webp",
+      "shared/materials/stone-roughness.webp",
+      "shared/materials/plaster-normal.webp",
+      "shared/materials/plaster-color.webp",
+      "shared/materials/plaster-roughness.webp",
+      "shared/materials/tile-wall-normal.webp",
+      "shared/materials/tile-wall-color.webp",
+      "shared/materials/tile-wall-roughness.webp",
+      "context.bin.gz",
+      "lighting.json",
+      "cells/cell-e000-n000/base.gltf.gz",
+      "shared/materials/retained-bbf588b6e99459c4.webp",
+      "shared/materials/retained-finish-granite-fascia.webp",
+      "shared/materials/retained-932ea4bbc3c5f775.webp",
+      "shared/materials/retained-finish-glazing-blinds.webp",
+      "shared/materials/retained-finish-pale-stone.webp",
+      "shared/materials/retained-finish-glazing.webp",
+      "shared/materials/retained-f3b02e2cb1e0c404.webp",
+      "shared/materials/retained-a50d3dca12c48d43.webp",
+      "shared/materials/glass-normal.webp",
+      "shared/materials/glass-color.webp",
+      "shared/materials/glass-roughness.webp",
+      "cells/cell-e000-n000/base.bin.gz"
+    ],
+    "modes": {
+      "day": {
+        "commonBytes": 2562483,
+        "travellerBytes": 35556,
+        "hdrBytes": 432312,
+        "totalBytes": 3030351,
+        "limitBytes": 4194304
+      },
+      "night": {
+        "commonBytes": 2562483,
+        "travellerBytes": 35556,
+        "hdrBytes": 425076,
+        "totalBytes": 3023115,
+        "limitBytes": 4194304
+      }
+    }
+  },
+  "sectionBudgets": [
+    {
+      "file": "ground.gltf",
+      "decodedGeometryBytes": 406549,
+      "transferGeometryBytes": 360772,
+      "previousTransferGeometryBytes": 406549,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "context.gltf",
+      "decodedGeometryBytes": 411420,
+      "transferGeometryBytes": 187807,
+      "previousTransferGeometryBytes": 411420,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e000-s001/base.gltf",
+      "decodedGeometryBytes": 935192,
+      "transferGeometryBytes": 366425,
+      "previousTransferGeometryBytes": 935192,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e000-s001/near.gltf",
+      "decodedGeometryBytes": 1961179,
+      "transferGeometryBytes": 632776,
+      "previousTransferGeometryBytes": 1961179,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e000-n000/base.gltf",
+      "decodedGeometryBytes": 1328347,
+      "transferGeometryBytes": 442823,
+      "previousTransferGeometryBytes": 1328347,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e000-n000/near.gltf",
+      "decodedGeometryBytes": 3150517,
+      "transferGeometryBytes": 1024500,
+      "previousTransferGeometryBytes": 3150517,
+      "allowedLimit": 3670016
+    },
+    {
+      "file": "cells/cell-e001-s001/base.gltf",
+      "decodedGeometryBytes": 112923,
+      "transferGeometryBytes": 29320,
+      "previousTransferGeometryBytes": 112923,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e001-s001/near.gltf",
+      "decodedGeometryBytes": 513044,
+      "transferGeometryBytes": 118113,
+      "previousTransferGeometryBytes": 513044,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e001-n000/base.gltf",
+      "decodedGeometryBytes": 102214,
+      "transferGeometryBytes": 20810,
+      "previousTransferGeometryBytes": 102214,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e001-n000/near.gltf",
+      "decodedGeometryBytes": 514741,
+      "transferGeometryBytes": 90673,
+      "previousTransferGeometryBytes": 514741,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e002-s001/base.gltf",
+      "decodedGeometryBytes": 106711,
+      "transferGeometryBytes": 24206,
+      "previousTransferGeometryBytes": 106711,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e002-s001/near.gltf",
+      "decodedGeometryBytes": 510612,
+      "transferGeometryBytes": 105583,
+      "previousTransferGeometryBytes": 510612,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e002-n000/base.gltf",
+      "decodedGeometryBytes": 231195,
+      "transferGeometryBytes": 50346,
+      "previousTransferGeometryBytes": 231195,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e002-n000/near.gltf",
+      "decodedGeometryBytes": 1096154,
+      "transferGeometryBytes": 209026,
+      "previousTransferGeometryBytes": 1096154,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e002-n001/base.gltf",
+      "decodedGeometryBytes": 216406,
+      "transferGeometryBytes": 79879,
+      "previousTransferGeometryBytes": 216406,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e002-n001/near.gltf",
+      "decodedGeometryBytes": 746816,
+      "transferGeometryBytes": 262459,
+      "previousTransferGeometryBytes": 746816,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e003-s001/base.gltf",
+      "decodedGeometryBytes": 142128,
+      "transferGeometryBytes": 32028,
+      "previousTransferGeometryBytes": 142128,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e003-s001/near.gltf",
+      "decodedGeometryBytes": 713190,
+      "transferGeometryBytes": 137187,
+      "previousTransferGeometryBytes": 713190,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e003-n000/base.gltf",
+      "decodedGeometryBytes": 138658,
+      "transferGeometryBytes": 36210,
+      "previousTransferGeometryBytes": 138658,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e003-n000/near.gltf",
+      "decodedGeometryBytes": 616055,
+      "transferGeometryBytes": 139980,
+      "previousTransferGeometryBytes": 616055,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e003-n001/base.gltf",
+      "decodedGeometryBytes": 275926,
+      "transferGeometryBytes": 110921,
+      "previousTransferGeometryBytes": 275926,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e003-n001/near.gltf",
+      "decodedGeometryBytes": 792375,
+      "transferGeometryBytes": 308175,
+      "previousTransferGeometryBytes": 792375,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e004-s001/base.gltf",
+      "decodedGeometryBytes": 98757,
+      "transferGeometryBytes": 19508,
+      "previousTransferGeometryBytes": 98757,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e004-s001/near.gltf",
+      "decodedGeometryBytes": 476511,
+      "transferGeometryBytes": 83176,
+      "previousTransferGeometryBytes": 476511,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e004-n000/base.gltf",
+      "decodedGeometryBytes": 147332,
+      "transferGeometryBytes": 37335,
+      "previousTransferGeometryBytes": 147332,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e004-n000/near.gltf",
+      "decodedGeometryBytes": 715645,
+      "transferGeometryBytes": 155208,
+      "previousTransferGeometryBytes": 715645,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e004-n001/base.gltf",
+      "decodedGeometryBytes": 292505,
+      "transferGeometryBytes": 120529,
+      "previousTransferGeometryBytes": 292505,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e004-n001/near.gltf",
+      "decodedGeometryBytes": 860642,
+      "transferGeometryBytes": 345587,
+      "previousTransferGeometryBytes": 860642,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e005-s001/base.gltf",
+      "decodedGeometryBytes": 97922,
+      "transferGeometryBytes": 25360,
+      "previousTransferGeometryBytes": 97922,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e005-s001/near.gltf",
+      "decodedGeometryBytes": 480415,
+      "transferGeometryBytes": 102622,
+      "previousTransferGeometryBytes": 480415,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e005-n000/base.gltf",
+      "decodedGeometryBytes": 121822,
+      "transferGeometryBytes": 33153,
+      "previousTransferGeometryBytes": 121822,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e005-n000/near.gltf",
+      "decodedGeometryBytes": 568811,
+      "transferGeometryBytes": 146734,
+      "previousTransferGeometryBytes": 568811,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e005-n001/base.gltf",
+      "decodedGeometryBytes": 312897,
+      "transferGeometryBytes": 133085,
+      "previousTransferGeometryBytes": 312897,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e005-n001/near.gltf",
+      "decodedGeometryBytes": 907048,
+      "transferGeometryBytes": 373729,
+      "previousTransferGeometryBytes": 907048,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e006-s001/base.gltf",
+      "decodedGeometryBytes": 52720,
+      "transferGeometryBytes": 18414,
+      "previousTransferGeometryBytes": 52720,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e006-s001/near.gltf",
+      "decodedGeometryBytes": 185089,
+      "transferGeometryBytes": 50943,
+      "previousTransferGeometryBytes": 185089,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e006-n000/base.gltf",
+      "decodedGeometryBytes": 219771,
+      "transferGeometryBytes": 87347,
+      "previousTransferGeometryBytes": 219771,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e006-n000/near.gltf",
+      "decodedGeometryBytes": 774552,
+      "transferGeometryBytes": 275398,
+      "previousTransferGeometryBytes": 774552,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e006-n001/base.gltf",
+      "decodedGeometryBytes": 271233,
+      "transferGeometryBytes": 108145,
+      "previousTransferGeometryBytes": 271233,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e006-n001/near.gltf",
+      "decodedGeometryBytes": 832586,
+      "transferGeometryBytes": 313891,
+      "previousTransferGeometryBytes": 832586,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e006-n002/base.gltf",
+      "decodedGeometryBytes": 7907,
+      "transferGeometryBytes": 2984,
+      "previousTransferGeometryBytes": 7907,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e006-n002/near.gltf",
+      "decodedGeometryBytes": 7907,
+      "transferGeometryBytes": 2986,
+      "previousTransferGeometryBytes": 7907,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e006-n003/base.gltf",
+      "decodedGeometryBytes": 7300,
+      "transferGeometryBytes": 2671,
+      "previousTransferGeometryBytes": 7300,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e006-n003/near.gltf",
+      "decodedGeometryBytes": 7300,
+      "transferGeometryBytes": 2672,
+      "previousTransferGeometryBytes": 7300,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e006-n004/base.gltf",
+      "decodedGeometryBytes": 6473,
+      "transferGeometryBytes": 2115,
+      "previousTransferGeometryBytes": 6473,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e006-n004/near.gltf",
+      "decodedGeometryBytes": 6473,
+      "transferGeometryBytes": 2116,
+      "previousTransferGeometryBytes": 6473,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e006-n005/base.gltf",
+      "decodedGeometryBytes": 6537,
+      "transferGeometryBytes": 2132,
+      "previousTransferGeometryBytes": 6537,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e006-n005/near.gltf",
+      "decodedGeometryBytes": 6537,
+      "transferGeometryBytes": 2133,
+      "previousTransferGeometryBytes": 6537,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e007-s001/base.gltf",
+      "decodedGeometryBytes": 95451,
+      "transferGeometryBytes": 23875,
+      "previousTransferGeometryBytes": 95451,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e007-s001/near.gltf",
+      "decodedGeometryBytes": 444250,
+      "transferGeometryBytes": 94607,
+      "previousTransferGeometryBytes": 444250,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e007-n000/base.gltf",
+      "decodedGeometryBytes": 165773,
+      "transferGeometryBytes": 57958,
+      "previousTransferGeometryBytes": 165773,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e007-n000/near.gltf",
+      "decodedGeometryBytes": 693949,
+      "transferGeometryBytes": 214443,
+      "previousTransferGeometryBytes": 693949,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e007-n001/base.gltf",
+      "decodedGeometryBytes": 39601,
+      "transferGeometryBytes": 14299,
+      "previousTransferGeometryBytes": 39601,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e007-n001/near.gltf",
+      "decodedGeometryBytes": 123626,
+      "transferGeometryBytes": 40161,
+      "previousTransferGeometryBytes": 123626,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e007-n003/base.gltf",
+      "decodedGeometryBytes": 5749,
+      "transferGeometryBytes": 1551,
+      "previousTransferGeometryBytes": 5749,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e007-n003/near.gltf",
+      "decodedGeometryBytes": 5749,
+      "transferGeometryBytes": 1552,
+      "previousTransferGeometryBytes": 5749,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e007-n004/base.gltf",
+      "decodedGeometryBytes": 6818,
+      "transferGeometryBytes": 2323,
+      "previousTransferGeometryBytes": 6818,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e007-n004/near.gltf",
+      "decodedGeometryBytes": 6818,
+      "transferGeometryBytes": 2324,
+      "previousTransferGeometryBytes": 6818,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e007-n005/base.gltf",
+      "decodedGeometryBytes": 5867,
+      "transferGeometryBytes": 1639,
+      "previousTransferGeometryBytes": 5867,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e007-n005/near.gltf",
+      "decodedGeometryBytes": 5867,
+      "transferGeometryBytes": 1640,
+      "previousTransferGeometryBytes": 5867,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e008-n000/base.gltf",
+      "decodedGeometryBytes": 151378,
+      "transferGeometryBytes": 40896,
+      "previousTransferGeometryBytes": 151378,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e008-n000/near.gltf",
+      "decodedGeometryBytes": 682261,
+      "transferGeometryBytes": 160337,
+      "previousTransferGeometryBytes": 682261,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e009-s001/base.gltf",
+      "decodedGeometryBytes": 63210,
+      "transferGeometryBytes": 13958,
+      "previousTransferGeometryBytes": 63210,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e009-s001/near.gltf",
+      "decodedGeometryBytes": 239107,
+      "transferGeometryBytes": 43527,
+      "previousTransferGeometryBytes": 239107,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e009-n000/base.gltf",
+      "decodedGeometryBytes": 142468,
+      "transferGeometryBytes": 46395,
+      "previousTransferGeometryBytes": 142468,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e009-n000/near.gltf",
+      "decodedGeometryBytes": 539478,
+      "transferGeometryBytes": 167724,
+      "previousTransferGeometryBytes": 539478,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e010-s001/base.gltf",
+      "decodedGeometryBytes": 53969,
+      "transferGeometryBytes": 16710,
+      "previousTransferGeometryBytes": 53969,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e010-s001/near.gltf",
+      "decodedGeometryBytes": 192604,
+      "transferGeometryBytes": 59278,
+      "previousTransferGeometryBytes": 192604,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e010-n000/base.gltf",
+      "decodedGeometryBytes": 3841229,
+      "transferGeometryBytes": 1655373,
+      "previousTransferGeometryBytes": 1655373,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e010-n000/near.gltf",
+      "decodedGeometryBytes": 4060035,
+      "transferGeometryBytes": 1740511,
+      "previousTransferGeometryBytes": 1740511,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e011-s001/base.gltf",
+      "decodedGeometryBytes": 8063,
+      "transferGeometryBytes": 3094,
+      "previousTransferGeometryBytes": 8063,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e011-s001/near.gltf",
+      "decodedGeometryBytes": 8063,
+      "transferGeometryBytes": 3095,
+      "previousTransferGeometryBytes": 8063,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e011-n000/base.gltf",
+      "decodedGeometryBytes": 7757,
+      "transferGeometryBytes": 2905,
+      "previousTransferGeometryBytes": 7757,
+      "allowedLimit": 2097152
+    },
+    {
+      "file": "cells/cell-e011-n000/near.gltf",
+      "decodedGeometryBytes": 7757,
+      "transferGeometryBytes": 2908,
+      "previousTransferGeometryBytes": 7757,
+      "allowedLimit": 2097152
+    }
+  ],
+  "gzipResults": [
+    {
+      "file": "ground.gltf",
+      "transport": "ground.gltf.gz",
+      "bytes": 2506,
+      "decodedBytes": 15193,
+      "decodedSha256": "8d578a53df227a2dcb22afa328f25ef5522217be0d90d4d1856920aaf6016561",
+      "preexisting": false
+    },
+    {
+      "file": "ground.bin",
+      "transport": "ground.bin.gz",
+      "bytes": 358266,
+      "decodedBytes": 391356,
+      "decodedSha256": "01f1a7ce67e44875963c60397803c364c509ca417dda72e8e23e2b7f24fffdce",
+      "preexisting": false
+    },
+    {
+      "file": "context.gltf",
+      "transport": "context.gltf.gz",
+      "bytes": 3944,
+      "decodedBytes": 26596,
+      "decodedSha256": "ca51eb878f85dec0810113aadce2bcdfb079e3fac3e0a70d2e30de39b15619ea",
+      "preexisting": false
+    },
+    {
+      "file": "context.bin",
+      "transport": "context.bin.gz",
+      "bytes": 183863,
+      "decodedBytes": 384824,
+      "decodedSha256": "61bd3314f78a33005ba9b5317f2b4fc5b207bb2bc5b58e791827a20c34fdb858",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e000-s001/base.gltf",
+      "transport": "cells/cell-e000-s001/base.gltf.gz",
+      "bytes": 7911,
+      "decodedBytes": 61912,
+      "decodedSha256": "8262b350341b57c11e6052a2b45bdf44fe0178daf1b15b578eb99d09f72d335e",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e000-s001/base.bin",
+      "transport": "cells/cell-e000-s001/base.bin.gz",
+      "bytes": 358514,
+      "decodedBytes": 873280,
+      "decodedSha256": "77d817f74649e5d10921087d1e0834f1ffa5620d4de490f7bc5e50690e012683",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e000-s001/near.gltf",
+      "transport": "cells/cell-e000-s001/near.gltf.gz",
+      "bytes": 8461,
+      "decodedBytes": 64447,
+      "decodedSha256": "7769a4bf89ceaeb3f22bb0aa4869e41c5c44f825113e3c676ac5a3e1565bb99b",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e000-s001/near.bin",
+      "transport": "cells/cell-e000-s001/near.bin.gz",
+      "bytes": 624315,
+      "decodedBytes": 1896732,
+      "decodedSha256": "781306cb60ba125f4f030c929830a537ed8dcf50d0d48695c66b8def1aa4baab",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e000-n000/base.gltf",
+      "transport": "cells/cell-e000-n000/base.gltf.gz",
+      "bytes": 7999,
+      "decodedBytes": 60247,
+      "decodedSha256": "f4cb6d8598ded2d0407bbbda7ebf64921a2f972246685951db37fba7a169335e",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e000-n000/base.bin",
+      "transport": "cells/cell-e000-n000/base.bin.gz",
+      "bytes": 434824,
+      "decodedBytes": 1268100,
+      "decodedSha256": "b565f56308bd7b4ba17c3795f906db11fa6e753afecfff8df66ab9b3b2f55540",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e000-n000/near.gltf",
+      "transport": "cells/cell-e000-n000/near.gltf.gz",
+      "bytes": 8664,
+      "decodedBytes": 65585,
+      "decodedSha256": "0c5d1df76e5d85190e07eb57f88ff4d0f5904f577d04a95627671cc4c84804ab",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e000-n000/near.bin",
+      "transport": "cells/cell-e000-n000/near.bin.gz",
+      "bytes": 1015836,
+      "decodedBytes": 3084932,
+      "decodedSha256": "7384c91a451d41ff2fb0f8ce4ae06aef8c909ab86a620af3d1928ee747a8051a",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e001-s001/base.gltf",
+      "transport": "cells/cell-e001-s001/base.gltf.gz",
+      "bytes": 2430,
+      "decodedBytes": 14275,
+      "decodedSha256": "06f89b9b887a23704bb760e21894552df6cdb45426d2693e4961ae31c4533e46",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e001-s001/base.bin",
+      "transport": "cells/cell-e001-s001/base.bin.gz",
+      "bytes": 26890,
+      "decodedBytes": 98648,
+      "decodedSha256": "a35709889c9c5a9fe518c803b7fd309293cb0c8e1f19ab3fbd46b4b80dc97642",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e001-s001/near.gltf",
+      "transport": "cells/cell-e001-s001/near.gltf.gz",
+      "bytes": 3047,
+      "decodedBytes": 19396,
+      "decodedSha256": "338f7bfef8caf32466f5e60b31dd7ae1bd7df3236f6b22a1c2fe76ee571903e9",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e001-s001/near.bin",
+      "transport": "cells/cell-e001-s001/near.bin.gz",
+      "bytes": 115066,
+      "decodedBytes": 493648,
+      "decodedSha256": "b8b5c5263626f8dca026bd97e6c0d30979c5c476f66cce3cc4edbcdaef420832",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e001-n000/base.gltf",
+      "transport": "cells/cell-e001-n000/base.gltf.gz",
+      "bytes": 2439,
+      "decodedBytes": 14266,
+      "decodedSha256": "8afd61446719a280f37d59dd61a20f6fbe150aad5182e9bb213ce0a155f681ec",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e001-n000/base.bin",
+      "transport": "cells/cell-e001-n000/base.bin.gz",
+      "bytes": 18371,
+      "decodedBytes": 87948,
+      "decodedSha256": "ee4dc162809e693ce164e14bb4fe694d1e0f3f0b1c1737e9efd653cf988fd11c",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e001-n000/near.gltf",
+      "transport": "cells/cell-e001-n000/near.gltf.gz",
+      "bytes": 3070,
+      "decodedBytes": 19393,
+      "decodedSha256": "decae5b721d26728bcd4e9b4db7a2cacef111d3d0775e4fbcc0fb67ada5b808e",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e001-n000/near.bin",
+      "transport": "cells/cell-e001-n000/near.bin.gz",
+      "bytes": 87603,
+      "decodedBytes": 495348,
+      "decodedSha256": "72ffa47ea9234437f093e47b84a985ed14b43c9d2c35a9b9bc3572fcfd6d85b2",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e002-s001/base.gltf",
+      "transport": "cells/cell-e002-s001/base.gltf.gz",
+      "bytes": 2438,
+      "decodedBytes": 14263,
+      "decodedSha256": "ba00cff3214efad410c6bab9e3b640a74605198a6e54301a25722470f13c472e",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e002-s001/base.bin",
+      "transport": "cells/cell-e002-s001/base.bin.gz",
+      "bytes": 21768,
+      "decodedBytes": 92448,
+      "decodedSha256": "f81f2b728d2030f83115dc968dd5f5bd6d1da2f96cd0194b1ae2b519472283ca",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e002-s001/near.gltf",
+      "transport": "cells/cell-e002-s001/near.gltf.gz",
+      "bytes": 3059,
+      "decodedBytes": 19392,
+      "decodedSha256": "31a009d8080922224f16f9a75edba1292fc18a2b4a841a2482fa0c60300de05c",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e002-s001/near.bin",
+      "transport": "cells/cell-e002-s001/near.bin.gz",
+      "bytes": 102524,
+      "decodedBytes": 491220,
+      "decodedSha256": "2cd5c8baef4f90c84e4041ee328075b0d6b3a1c329777d8fa889f2cc99f04be2",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e002-n000/base.gltf",
+      "transport": "cells/cell-e002-n000/base.gltf.gz",
+      "bytes": 2467,
+      "decodedBytes": 14295,
+      "decodedSha256": "c5dc7248153746fcbad8e5643991d5da2fefe62c7d11f86ad5317917b7b3d9f9",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e002-n000/base.bin",
+      "transport": "cells/cell-e002-n000/base.bin.gz",
+      "bytes": 47879,
+      "decodedBytes": 216900,
+      "decodedSha256": "5e754df25a553fefaf220a743dd5cbb55c26647d325b6c80230454d9a6c82c33",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e002-n000/near.gltf",
+      "transport": "cells/cell-e002-n000/near.gltf.gz",
+      "bytes": 3116,
+      "decodedBytes": 19470,
+      "decodedSha256": "c3bbd1101af4bc3e7fb02df0be4249e311a65b210c2ed1102b271d00f2b74119",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e002-n000/near.bin",
+      "transport": "cells/cell-e002-n000/near.bin.gz",
+      "bytes": 205910,
+      "decodedBytes": 1076684,
+      "decodedSha256": "a722cc7ba9147acd47c69364cfb1230865d5512bb9c64a9c896591a0a8b1975f",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e002-n001/base.gltf",
+      "transport": "cells/cell-e002-n001/base.gltf.gz",
+      "bytes": 5263,
+      "decodedBytes": 41554,
+      "decodedSha256": "3a6ed725100d57b2e939a9822dac4fd6b5f682e1ba97247d52332aec30a8b42e",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e002-n001/base.bin",
+      "transport": "cells/cell-e002-n001/base.bin.gz",
+      "bytes": 74616,
+      "decodedBytes": 174852,
+      "decodedSha256": "1c3d701e6662aedb4b4695fe0dfca66d5b871033920f35e3886aad6729297c21",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e002-n001/near.gltf",
+      "transport": "cells/cell-e002-n001/near.gltf.gz",
+      "bytes": 5684,
+      "decodedBytes": 44072,
+      "decodedSha256": "741559069c1cec67123ec82b9c9464bf6762a5ef1e2c33bbcdb89f9ca94628fc",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e002-n001/near.bin",
+      "transport": "cells/cell-e002-n001/near.bin.gz",
+      "bytes": 256775,
+      "decodedBytes": 702744,
+      "decodedSha256": "0bbb0df4ad1465513726e83495c121a6ddca5dae8bf556f9ff022d3415f327b3",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e003-s001/base.gltf",
+      "transport": "cells/cell-e003-s001/base.gltf.gz",
+      "bytes": 2154,
+      "decodedBytes": 11508,
+      "decodedSha256": "c444affbb593df24d2b280504975f4858078f2fd0ca46aca3919907e0dbf6fb7",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e003-s001/base.bin",
+      "transport": "cells/cell-e003-s001/base.bin.gz",
+      "bytes": 29874,
+      "decodedBytes": 130620,
+      "decodedSha256": "54152ce4d8fb36e4bc019c9ca7a3c381d18e2a1d2fcf252b61c44c6f2f643d2c",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e003-s001/near.gltf",
+      "transport": "cells/cell-e003-s001/near.gltf.gz",
+      "bytes": 2461,
+      "decodedBytes": 13854,
+      "decodedSha256": "daab581fe3e45c739348dc0a8fd7e55d3e34ea930375f2ade7ee2a5b43767676",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e003-s001/near.bin",
+      "transport": "cells/cell-e003-s001/near.bin.gz",
+      "bytes": 134726,
+      "decodedBytes": 699336,
+      "decodedSha256": "9fa5aa817bf067dc528d1cd57b8ff4ab08ab49dab45cf14a55b005ae5febd775",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e003-n000/base.gltf",
+      "transport": "cells/cell-e003-n000/base.gltf.gz",
+      "bytes": 2457,
+      "decodedBytes": 14282,
+      "decodedSha256": "c302c74eaf0c18f71814a13709e89efe5cbbe5cf6da41de0acc32a7dcfdfe53f",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e003-n000/base.bin",
+      "transport": "cells/cell-e003-n000/base.bin.gz",
+      "bytes": 33753,
+      "decodedBytes": 124376,
+      "decodedSha256": "df02a0fc39b51b5eddea6c3085684b1c335fa32f052d8679c1b9b6871a171e54",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e003-n000/near.gltf",
+      "transport": "cells/cell-e003-n000/near.gltf.gz",
+      "bytes": 3014,
+      "decodedBytes": 19407,
+      "decodedSha256": "f8f4126ea779b90699f1a75f4baba9e7e7e9b353e1929b1201ef1a33f289a43c",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e003-n000/near.bin",
+      "transport": "cells/cell-e003-n000/near.bin.gz",
+      "bytes": 136966,
+      "decodedBytes": 596648,
+      "decodedSha256": "3b45993fd911648471f8fbe348d8661f67efbf05962f6af570252c524653b850",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e003-n001/base.gltf",
+      "transport": "cells/cell-e003-n001/base.gltf.gz",
+      "bytes": 5109,
+      "decodedBytes": 39646,
+      "decodedSha256": "f224e828f9c00898fdac6714af2289b62457f6b55230ecf9de2b923268c7254f",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e003-n001/base.bin",
+      "transport": "cells/cell-e003-n001/base.bin.gz",
+      "bytes": 105812,
+      "decodedBytes": 236280,
+      "decodedSha256": "b6d9f67fe79fa386d45e0b9837de0d8b5b8c332da922f41f5b40b18357bdeaff",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e003-n001/near.gltf",
+      "transport": "cells/cell-e003-n001/near.gltf.gz",
+      "bytes": 5569,
+      "decodedBytes": 41499,
+      "decodedSha256": "9b8f83e18705884f54bc3019930387fa68e4c120e21bccf7d2aba9561ca2fb0a",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e003-n001/near.bin",
+      "transport": "cells/cell-e003-n001/near.bin.gz",
+      "bytes": 302606,
+      "decodedBytes": 750876,
+      "decodedSha256": "e02365c5b315a3edd13c04018c6977ac8a6e230f6a6b4577ee55acd45a716a74",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e004-s001/base.gltf",
+      "transport": "cells/cell-e004-s001/base.gltf.gz",
+      "bytes": 2415,
+      "decodedBytes": 14233,
+      "decodedSha256": "4b692d64f5b8fda73a495a2f5a1d5232b7ea7cb3465d9743b3a73ade4cde962c",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e004-s001/base.bin",
+      "transport": "cells/cell-e004-s001/base.bin.gz",
+      "bytes": 17093,
+      "decodedBytes": 84524,
+      "decodedSha256": "8a8c32b2d7ec7840b2bf158d85e3884d96ef0bf0f1e8576630b3ee97b25e4f19",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e004-s001/near.gltf",
+      "transport": "cells/cell-e004-s001/near.gltf.gz",
+      "bytes": 3028,
+      "decodedBytes": 19331,
+      "decodedSha256": "1f092bebad525379ccaa28ef20e83451fda07f74eaef0180f790b6e4f2ad3767",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e004-s001/near.bin",
+      "transport": "cells/cell-e004-s001/near.bin.gz",
+      "bytes": 80148,
+      "decodedBytes": 457180,
+      "decodedSha256": "9ffb1c580152ff08b8b384e846294cf03afdf51d0bb64ba708b179f3dd5e9d3b",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e004-n000/base.gltf",
+      "transport": "cells/cell-e004-n000/base.gltf.gz",
+      "bytes": 2461,
+      "decodedBytes": 14296,
+      "decodedSha256": "3289a59fb8e32f80f66479891876701ec557b17166c955b004327a8fe35b53cf",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e004-n000/base.bin",
+      "transport": "cells/cell-e004-n000/base.bin.gz",
+      "bytes": 34874,
+      "decodedBytes": 133036,
+      "decodedSha256": "119ad561daf174f38c2f683b9523fdc05292c5afc8c2b2276a47a8863771a63a",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e004-n000/near.gltf",
+      "transport": "cells/cell-e004-n000/near.gltf.gz",
+      "bytes": 3053,
+      "decodedBytes": 19421,
+      "decodedSha256": "7e8d3c3d36dd4598ec0a739f37b307038469405a6a3e1e2739a35947eef3cbe5",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e004-n000/near.bin",
+      "transport": "cells/cell-e004-n000/near.bin.gz",
+      "bytes": 152155,
+      "decodedBytes": 696224,
+      "decodedSha256": "979fe8af57799491f9d902bf4ba1600708faebe6d3a7970038b59a5803ef74f3",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e004-n001/base.gltf",
+      "transport": "cells/cell-e004-n001/base.gltf.gz",
+      "bytes": 5089,
+      "decodedBytes": 39561,
+      "decodedSha256": "4e14416ef7c85d933cfb8306bd235081b9a2d17bdfb13772fad1951649742072",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e004-n001/base.bin",
+      "transport": "cells/cell-e004-n001/base.bin.gz",
+      "bytes": 115440,
+      "decodedBytes": 252944,
+      "decodedSha256": "93d8b72c9525a56e27a422dca948d155882ab86f6bd9376fb971e4dac2aa5e59",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e004-n001/near.gltf",
+      "transport": "cells/cell-e004-n001/near.gltf.gz",
+      "bytes": 5552,
+      "decodedBytes": 41502,
+      "decodedSha256": "e46e1e9d2811258b6f3b6a1ce488f97037e47741103004e3119dd1c0d6e76b6f",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e004-n001/near.bin",
+      "transport": "cells/cell-e004-n001/near.bin.gz",
+      "bytes": 340035,
+      "decodedBytes": 819140,
+      "decodedSha256": "78ea3ca2308b5a61c8e4992e4162d79da7b37deeb83c8aaf15ebf623d58447bc",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e005-s001/base.gltf",
+      "transport": "cells/cell-e005-s001/base.gltf.gz",
+      "bytes": 2134,
+      "decodedBytes": 11490,
+      "decodedSha256": "cc3e876042500a532380e07e2567d34b8c14354869c185891de463bb0c968955",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e005-s001/base.bin",
+      "transport": "cells/cell-e005-s001/base.bin.gz",
+      "bytes": 23226,
+      "decodedBytes": 86432,
+      "decodedSha256": "ecad42e6131a8b99ea6a2ff3d9a0eee577a3b47576eadadf85d305e30d15cbdf",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e005-s001/near.gltf",
+      "transport": "cells/cell-e005-s001/near.gltf.gz",
+      "bytes": 2468,
+      "decodedBytes": 13827,
+      "decodedSha256": "35d8f9c5fa25e6a94dad376dd9e5771ca8d369dd2d947099cb481d54878ecd93",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e005-s001/near.bin",
+      "transport": "cells/cell-e005-s001/near.bin.gz",
+      "bytes": 100154,
+      "decodedBytes": 466588,
+      "decodedSha256": "2d4c0fa5ff5929717570b26ee99f9578f962d1e9b8f4990b6768b9963f6f1c62",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e005-n000/base.gltf",
+      "transport": "cells/cell-e005-n000/base.gltf.gz",
+      "bytes": 2422,
+      "decodedBytes": 14274,
+      "decodedSha256": "ea343dff720354c1832b2b200dc75ef8b51956f9dd0257893873fa6ce74ac0d8",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e005-n000/base.bin",
+      "transport": "cells/cell-e005-n000/base.bin.gz",
+      "bytes": 30731,
+      "decodedBytes": 107548,
+      "decodedSha256": "611c640dd5a3a0cafb7e34881d2c93863117b692caef317599ff6ebce9934129",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e005-n000/near.gltf",
+      "transport": "cells/cell-e005-n000/near.gltf.gz",
+      "bytes": 3034,
+      "decodedBytes": 19403,
+      "decodedSha256": "ba693acfbbcacae16ab3d17fe05adc55ae494bb39414fa90479bbbb790aa9a9c",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e005-n000/near.bin",
+      "transport": "cells/cell-e005-n000/near.bin.gz",
+      "bytes": 143700,
+      "decodedBytes": 549408,
+      "decodedSha256": "0af503ee0cfeb0442ce1dffd0674d10be29a8f99f25e09e00ad1728dae90d2e6",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e005-n001/base.gltf",
+      "transport": "cells/cell-e005-n001/base.gltf.gz",
+      "bytes": 5082,
+      "decodedBytes": 39661,
+      "decodedSha256": "5a55948a6bfd4f862024b29ac1f7920dc1684e9334655ece18e200e77c510d91",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e005-n001/base.bin",
+      "transport": "cells/cell-e005-n001/base.bin.gz",
+      "bytes": 128003,
+      "decodedBytes": 273236,
+      "decodedSha256": "0aca83169d0666f15f1ba59c4977fdf99e66760a8313e22b7757b187ddb6db5a",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e005-n001/near.gltf",
+      "transport": "cells/cell-e005-n001/near.gltf.gz",
+      "bytes": 5531,
+      "decodedBytes": 41188,
+      "decodedSha256": "7e00f9604f9d6f1d65d08da95a8e80f212bd890be8392666ace756b632c4a694",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e005-n001/near.bin",
+      "transport": "cells/cell-e005-n001/near.bin.gz",
+      "bytes": 368198,
+      "decodedBytes": 865860,
+      "decodedSha256": "d163f3baa169409ac84ed8be16ccbd72c1a4a20ec455e95f996a6e36bab8d084",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-s001/base.gltf",
+      "transport": "cells/cell-e006-s001/base.gltf.gz",
+      "bytes": 2403,
+      "decodedBytes": 14200,
+      "decodedSha256": "4fbd55716a08483bc65028a346b152759d19d5911c5c85827feaddd3f25edc67",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-s001/base.bin",
+      "transport": "cells/cell-e006-s001/base.bin.gz",
+      "bytes": 16011,
+      "decodedBytes": 38520,
+      "decodedSha256": "c20a61761b7240aecf53aa258d6afe164f236d3932a200646fa025f41a82e226",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-s001/near.gltf",
+      "transport": "cells/cell-e006-s001/near.gltf.gz",
+      "bytes": 3006,
+      "decodedBytes": 19293,
+      "decodedSha256": "7be0db14bdbc801687291c2b7a1255197611c6824d9c74abc6d01d8ec618c55e",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-s001/near.bin",
+      "transport": "cells/cell-e006-s001/near.bin.gz",
+      "bytes": 47937,
+      "decodedBytes": 165796,
+      "decodedSha256": "c82863cf76e3508c7f6ea0045bdacaf3547b9db80fc2d9e2a5f5a77b57f2b90f",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-n000/base.gltf",
+      "transport": "cells/cell-e006-n000/base.gltf.gz",
+      "bytes": 2857,
+      "decodedBytes": 18419,
+      "decodedSha256": "e7b88fbdb6aa3ee21c0b321c6e60ee3c4d34cb3eb99e6cd890241b0d06212399",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-n000/base.bin",
+      "transport": "cells/cell-e006-n000/base.bin.gz",
+      "bytes": 84490,
+      "decodedBytes": 201352,
+      "decodedSha256": "d6f1298516d13a05174b3b0a96b4f6fcd32a96831bb981aa97c0aae6d6a36162",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-n000/near.gltf",
+      "transport": "cells/cell-e006-n000/near.gltf.gz",
+      "bytes": 3454,
+      "decodedBytes": 23180,
+      "decodedSha256": "ca379063e155eec11bd0735e599d36627dd8fcd8b5453b2f09a34e2cfc051f65",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-n000/near.bin",
+      "transport": "cells/cell-e006-n000/near.bin.gz",
+      "bytes": 271944,
+      "decodedBytes": 751372,
+      "decodedSha256": "d53ff35ca83c7cf6a24d97f9368b13f35ebcfdd9d20f1884c3eacfcba98d6322",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-n001/base.gltf",
+      "transport": "cells/cell-e006-n001/base.gltf.gz",
+      "bytes": 5073,
+      "decodedBytes": 39557,
+      "decodedSha256": "932b34e711c900539bff6de268b994f80f7428c5531223419b9b51c29de26672",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-n001/base.bin",
+      "transport": "cells/cell-e006-n001/base.bin.gz",
+      "bytes": 103072,
+      "decodedBytes": 231676,
+      "decodedSha256": "25591d606ca23a9880c16efbe2a9dad2ae7b536f7f016fa7bec8eb62565e81cf",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-n001/near.gltf",
+      "transport": "cells/cell-e006-n001/near.gltf.gz",
+      "bytes": 5650,
+      "decodedBytes": 42630,
+      "decodedSha256": "11d7def0549bc06e32574841966789e2cb3294fcbc50a1fd235f794b81c3de48",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-n001/near.bin",
+      "transport": "cells/cell-e006-n001/near.bin.gz",
+      "bytes": 308241,
+      "decodedBytes": 789956,
+      "decodedSha256": "b1164d03a4e523ce7b14352579a64cc210112447075a00e7fe3ff441c8253978",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-n002/base.gltf",
+      "transport": "cells/cell-e006-n002/base.gltf.gz",
+      "bytes": 1269,
+      "decodedBytes": 5175,
+      "decodedSha256": "bfb2ce74a0ed0d0dd67bb6e1e891b57e2b45468443715ce3de630a05060b0a97",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-n002/base.bin",
+      "transport": "cells/cell-e006-n002/base.bin.gz",
+      "bytes": 1715,
+      "decodedBytes": 2732,
+      "decodedSha256": "6873805ae31a0d5abed5516ce17e633b5b8cf5048d28eb8833b5db95cd135026",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-n002/near.gltf",
+      "transport": "cells/cell-e006-n002/near.gltf.gz",
+      "bytes": 1271,
+      "decodedBytes": 5175,
+      "decodedSha256": "0934520633d8e27e1cc37b27d42aaaef77f0fbc9db2da3289bdce0233fd2d74c",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-n002/near.bin",
+      "transport": "cells/cell-e006-n002/near.bin.gz",
+      "bytes": 1715,
+      "decodedBytes": 2732,
+      "decodedSha256": "6873805ae31a0d5abed5516ce17e633b5b8cf5048d28eb8833b5db95cd135026",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-n003/base.gltf",
+      "transport": "cells/cell-e006-n003/base.gltf.gz",
+      "bytes": 1258,
+      "decodedBytes": 5136,
+      "decodedSha256": "91b5b24d583134a6b6d6094328519656530fcad2c81345481856039983d141f0",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-n003/base.bin",
+      "transport": "cells/cell-e006-n003/base.bin.gz",
+      "bytes": 1413,
+      "decodedBytes": 2164,
+      "decodedSha256": "b45d025faaebf37508e3944e2fb67b9abf3b4e49e0983719efd7ba3bfa16b92d",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-n003/near.gltf",
+      "transport": "cells/cell-e006-n003/near.gltf.gz",
+      "bytes": 1259,
+      "decodedBytes": 5136,
+      "decodedSha256": "f3005ad64af64395adcdd2b75b5c847daaad5f2ee6dcf97a7091dee5e6153911",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-n003/near.bin",
+      "transport": "cells/cell-e006-n003/near.bin.gz",
+      "bytes": 1413,
+      "decodedBytes": 2164,
+      "decodedSha256": "b45d025faaebf37508e3944e2fb67b9abf3b4e49e0983719efd7ba3bfa16b92d",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-n004/base.gltf",
+      "transport": "cells/cell-e006-n004/base.gltf.gz",
+      "bytes": 1253,
+      "decodedBytes": 5129,
+      "decodedSha256": "f2e34c63c5f68131fcea25e7da725daa89cb1dc1cf1bf411cd5eeb74fa584359",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-n004/base.bin",
+      "transport": "cells/cell-e006-n004/base.bin.gz",
+      "bytes": 862,
+      "decodedBytes": 1344,
+      "decodedSha256": "2fabb6a21120b5eeca0d34fcf8e53ecc94404274d96adb29d26a123243cb5b81",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-n004/near.gltf",
+      "transport": "cells/cell-e006-n004/near.gltf.gz",
+      "bytes": 1254,
+      "decodedBytes": 5129,
+      "decodedSha256": "551588bb53f87bdaf788dc673e485e1425212d303f7f83bc4f532f4cd0db7407",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-n004/near.bin",
+      "transport": "cells/cell-e006-n004/near.bin.gz",
+      "bytes": 862,
+      "decodedBytes": 1344,
+      "decodedSha256": "2fabb6a21120b5eeca0d34fcf8e53ecc94404274d96adb29d26a123243cb5b81",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-n005/base.gltf",
+      "transport": "cells/cell-e006-n005/base.gltf.gz",
+      "bytes": 1256,
+      "decodedBytes": 5177,
+      "decodedSha256": "8d145cd3efa0c944390f654c4f3956d97f2c901df9dd2850c2f04a3f3d3a3711",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-n005/base.bin",
+      "transport": "cells/cell-e006-n005/base.bin.gz",
+      "bytes": 876,
+      "decodedBytes": 1360,
+      "decodedSha256": "f85d0866b4f960d117815489dcd8f192b793f0e80060b318eb86958cb153e4a4",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-n005/near.gltf",
+      "transport": "cells/cell-e006-n005/near.gltf.gz",
+      "bytes": 1257,
+      "decodedBytes": 5177,
+      "decodedSha256": "e143a06566c420c784ddec9d0441c24be955859f31551eef5da71980eccfb3e3",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e006-n005/near.bin",
+      "transport": "cells/cell-e006-n005/near.bin.gz",
+      "bytes": 876,
+      "decodedBytes": 1360,
+      "decodedSha256": "f85d0866b4f960d117815489dcd8f192b793f0e80060b318eb86958cb153e4a4",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e007-s001/base.gltf",
+      "transport": "cells/cell-e007-s001/base.gltf.gz",
+      "bytes": 2412,
+      "decodedBytes": 14211,
+      "decodedSha256": "1349e6e1c5b8336dc4a9d70b42b553dd13716987b989ff957ce8211f76452464",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e007-s001/base.bin",
+      "transport": "cells/cell-e007-s001/base.bin.gz",
+      "bytes": 21463,
+      "decodedBytes": 81240,
+      "decodedSha256": "13cb1269956b575b80e42003e9709aed1ee9bc59ae75ed69330c25d1fb7fee59",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e007-s001/near.gltf",
+      "transport": "cells/cell-e007-s001/near.gltf.gz",
+      "bytes": 3003,
+      "decodedBytes": 19338,
+      "decodedSha256": "ec6b783080dc8a16787df86c48e9eb1478d821b4803ba830b4b06e56c58ae0a3",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e007-s001/near.bin",
+      "transport": "cells/cell-e007-s001/near.bin.gz",
+      "bytes": 91604,
+      "decodedBytes": 424912,
+      "decodedSha256": "7a22f9d6611faddad19ddb0cb0ad47b032f1b3ffb303d10bb31e2be48e903e51",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e007-n000/base.gltf",
+      "transport": "cells/cell-e007-n000/base.gltf.gz",
+      "bytes": 2844,
+      "decodedBytes": 18413,
+      "decodedSha256": "bdfff7aa44cf9a1a6f9c448d301e5f7b6dcc98cf9228d5231fb5a1325d63c17a",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e007-n000/base.bin",
+      "transport": "cells/cell-e007-n000/base.bin.gz",
+      "bytes": 55114,
+      "decodedBytes": 147360,
+      "decodedSha256": "955024bdf6fb06c24b7351ce2bb44bd72c68eb79f31f7d747db8e2e0a23b982c",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e007-n000/near.gltf",
+      "transport": "cells/cell-e007-n000/near.gltf.gz",
+      "bytes": 3399,
+      "decodedBytes": 23153,
+      "decodedSha256": "5dc2ef34911f61e6a4d119796070d4c29404082e3eb10bdd48c6b5a88d2f536f",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e007-n000/near.bin",
+      "transport": "cells/cell-e007-n000/near.bin.gz",
+      "bytes": 211044,
+      "decodedBytes": 670796,
+      "decodedSha256": "0cf5fcd7002a1d817b033fe85562b7d84b00b22d0135328a387559ccc35a6392",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e007-n001/base.gltf",
+      "transport": "cells/cell-e007-n001/base.gltf.gz",
+      "bytes": 2397,
+      "decodedBytes": 14173,
+      "decodedSha256": "f605f0f32750b94f4928fcd816e305a9662bc79a8e1770816ff0b47f36337821",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e007-n001/base.bin",
+      "transport": "cells/cell-e007-n001/base.bin.gz",
+      "bytes": 11902,
+      "decodedBytes": 25428,
+      "decodedSha256": "b2fcbb0132016772004200e082f77f4c961e477b89e813461651fe62989c64e4",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e007-n001/near.gltf",
+      "transport": "cells/cell-e007-n001/near.gltf.gz",
+      "bytes": 2955,
+      "decodedBytes": 19254,
+      "decodedSha256": "79537015a5c407fac1ce42d1797c860316eff93b994a280c9a4011905e11bcf8",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e007-n001/near.bin",
+      "transport": "cells/cell-e007-n001/near.bin.gz",
+      "bytes": 37206,
+      "decodedBytes": 104372,
+      "decodedSha256": "33bbcda78298079a98215f122ee93addc588c984fd4e5d1a73f0a32f9dd817be",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e007-n003/base.gltf",
+      "transport": "cells/cell-e007-n003/base.gltf.gz",
+      "bytes": 1242,
+      "decodedBytes": 5125,
+      "decodedSha256": "966752c7ea0b38b09fdca64015c2c7c2cac6f05f88a71e86380e1306640a8bd7",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e007-n003/base.bin",
+      "transport": "cells/cell-e007-n003/base.bin.gz",
+      "bytes": 309,
+      "decodedBytes": 624,
+      "decodedSha256": "cc26a7f98a68b3fa768e92ba0cbff1a01ca622ea536e51edd67ab94578899134",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e007-n003/near.gltf",
+      "transport": "cells/cell-e007-n003/near.gltf.gz",
+      "bytes": 1243,
+      "decodedBytes": 5125,
+      "decodedSha256": "eee48b197e8fe7f8025a756cc71f58ee0911d5c191fb136af582cef9bfc6238b",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e007-n003/near.bin",
+      "transport": "cells/cell-e007-n003/near.bin.gz",
+      "bytes": 309,
+      "decodedBytes": 624,
+      "decodedSha256": "cc26a7f98a68b3fa768e92ba0cbff1a01ca622ea536e51edd67ab94578899134",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e007-n004/base.gltf",
+      "transport": "cells/cell-e007-n004/base.gltf.gz",
+      "bytes": 1251,
+      "decodedBytes": 5134,
+      "decodedSha256": "9d1f4236da40fefd2374cf8daab894d3ca01cec01f38a0e0a937da40c4233855",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e007-n004/base.bin",
+      "transport": "cells/cell-e007-n004/base.bin.gz",
+      "bytes": 1072,
+      "decodedBytes": 1684,
+      "decodedSha256": "ca665fb18e9e307069ea4f72d86be2f35c2b43b176775db625fb4215e9f52c7b",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e007-n004/near.gltf",
+      "transport": "cells/cell-e007-n004/near.gltf.gz",
+      "bytes": 1252,
+      "decodedBytes": 5134,
+      "decodedSha256": "d6c98fe81833ed988f3827b7442418e1c67e535a6cb9b1e708fd25a0786fa7dc",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e007-n004/near.bin",
+      "transport": "cells/cell-e007-n004/near.bin.gz",
+      "bytes": 1072,
+      "decodedBytes": 1684,
+      "decodedSha256": "ca665fb18e9e307069ea4f72d86be2f35c2b43b176775db625fb4215e9f52c7b",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e007-n005/base.gltf",
+      "transport": "cells/cell-e007-n005/base.gltf.gz",
+      "bytes": 1254,
+      "decodedBytes": 5155,
+      "decodedSha256": "4fd25c34effde6b9ca181262634d79386edfe49855be675987eab3618c1af3b3",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e007-n005/base.bin",
+      "transport": "cells/cell-e007-n005/base.bin.gz",
+      "bytes": 385,
+      "decodedBytes": 712,
+      "decodedSha256": "80952ae06c9db0d51a9c782b0340ac9908a900e00edfc5a8e03b406b94f6f4ac",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e007-n005/near.gltf",
+      "transport": "cells/cell-e007-n005/near.gltf.gz",
+      "bytes": 1255,
+      "decodedBytes": 5155,
+      "decodedSha256": "31ab0f45e5bfd5abb88b9372eed3f15c28680e36734c0ef396b92ed3ee0735b4",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e007-n005/near.bin",
+      "transport": "cells/cell-e007-n005/near.bin.gz",
+      "bytes": 385,
+      "decodedBytes": 712,
+      "decodedSha256": "80952ae06c9db0d51a9c782b0340ac9908a900e00edfc5a8e03b406b94f6f4ac",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e008-n000/base.gltf",
+      "transport": "cells/cell-e008-n000/base.gltf.gz",
+      "bytes": 2429,
+      "decodedBytes": 14294,
+      "decodedSha256": "2956b46eebd3744d8aa586b8d6c0774825dea57c5d79244665ebff6e6ab1799a",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e008-n000/base.bin",
+      "transport": "cells/cell-e008-n000/base.bin.gz",
+      "bytes": 38467,
+      "decodedBytes": 137084,
+      "decodedSha256": "f891a9f3836c97b5b6324d04306cafc5cd64c9ed1d6e943649c34f5ed0283c7a",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e008-n000/near.gltf",
+      "transport": "cells/cell-e008-n000/near.gltf.gz",
+      "bytes": 3037,
+      "decodedBytes": 19405,
+      "decodedSha256": "7883b5f1a500baf5e07777579b757368c6f3c44211143e76404f94943449d4d2",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e008-n000/near.bin",
+      "transport": "cells/cell-e008-n000/near.bin.gz",
+      "bytes": 157300,
+      "decodedBytes": 662856,
+      "decodedSha256": "55aa3f2000477b47fdc6a256bc710048192ee59c1bf537f1ee5e6788cc62a149",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e009-s001/base.gltf",
+      "transport": "cells/cell-e009-s001/base.gltf.gz",
+      "bytes": 3075,
+      "decodedBytes": 21050,
+      "decodedSha256": "96cb80486fd4cacebc8fba6ea4806ce6e74eb71393f87787aad9c634c54ec10a",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e009-s001/base.bin",
+      "transport": "cells/cell-e009-s001/base.bin.gz",
+      "bytes": 10883,
+      "decodedBytes": 42160,
+      "decodedSha256": "2f4dbb6d12c80e6710f23cd2114c63568911af5958651e2eca6f78fb1553f323",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e009-s001/near.gltf",
+      "transport": "cells/cell-e009-s001/near.gltf.gz",
+      "bytes": 3293,
+      "decodedBytes": 23003,
+      "decodedSha256": "6d9ab4e0149e1583bfd36a9c815b4be2e71eb9bf55cf4c5f1d880203adff1a3b",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e009-s001/near.bin",
+      "transport": "cells/cell-e009-s001/near.bin.gz",
+      "bytes": 40234,
+      "decodedBytes": 216104,
+      "decodedSha256": "3f0a0c0126c1d2a0d3d7e89ae1b861d97ce9f706b461d760c99d2fd51c0d1fcd",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e009-n000/base.gltf",
+      "transport": "cells/cell-e009-n000/base.gltf.gz",
+      "bytes": 2697,
+      "decodedBytes": 17012,
+      "decodedSha256": "e27f46641137c2f3e6fd220588bbaf4a40a5f1a54e4fbd8de0b48b62db6a7127",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e009-n000/base.bin",
+      "transport": "cells/cell-e009-n000/base.bin.gz",
+      "bytes": 43698,
+      "decodedBytes": 125456,
+      "decodedSha256": "082d3a2783f2c3ddec1d9e01a8de91fd6cea23ad7c5405e83442eec2ea375ca2",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e009-n000/near.gltf",
+      "transport": "cells/cell-e009-n000/near.gltf.gz",
+      "bytes": 3061,
+      "decodedBytes": 19354,
+      "decodedSha256": "bd43f8f983fbaeec6618a1018ae7ce04ac56ae7ba440457b134df895228d4a24",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e009-n000/near.bin",
+      "transport": "cells/cell-e009-n000/near.bin.gz",
+      "bytes": 164663,
+      "decodedBytes": 520124,
+      "decodedSha256": "fb7ea21d5b04fb6f68f4682ae0bb61c1da2484ca681d17801200a5742f0c0e81",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e010-s001/base.gltf",
+      "transport": "cells/cell-e010-s001/base.gltf.gz",
+      "bytes": 2375,
+      "decodedBytes": 14133,
+      "decodedSha256": "071410caa4c72e956662d2c332e871ae07f3c480f16e7399b0293d752798cfba",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e010-s001/base.bin",
+      "transport": "cells/cell-e010-s001/base.bin.gz",
+      "bytes": 14335,
+      "decodedBytes": 39836,
+      "decodedSha256": "cca8ff41df563e80278709faa79c52dd102cde50229ee10777f600335636643e",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e010-s001/near.gltf",
+      "transport": "cells/cell-e010-s001/near.gltf.gz",
+      "bytes": 2678,
+      "decodedBytes": 16460,
+      "decodedSha256": "4654215729e95aa1f1e2d3b21ce3dcd39e8130d777386fb6d4c4d0d645164286",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e010-s001/near.bin",
+      "transport": "cells/cell-e010-s001/near.bin.gz",
+      "bytes": 56600,
+      "decodedBytes": 176144,
+      "decodedSha256": "b6356b6f9d485ba60d287952da3977d90f239ab32d0495e127edf9c01d3c2c55",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e010-n000/base.gltf",
+      "transport": "cells/cell-e010-n000/base.gltf.gz",
+      "bytes": 149032,
+      "decodedBytes": 1128453,
+      "decodedSha256": "a9afbe2ae43b91fd676b76497d376ec6020fdacf018e7f0408a06ddd64816492",
+      "preexisting": true
+    },
+    {
+      "file": "cells/cell-e010-n000/base.bin",
+      "transport": "cells/cell-e010-n000/base.bin.gz",
+      "bytes": 1506341,
+      "decodedBytes": 2712776,
+      "decodedSha256": "776600df9564b43adb1d92f97112081227cecb309330c5013154c7dc6041e29d",
+      "preexisting": true
+    },
+    {
+      "file": "cells/cell-e010-n000/near.gltf",
+      "transport": "cells/cell-e010-n000/near.gltf.gz",
+      "bytes": 149140,
+      "decodedBytes": 1128659,
+      "decodedSha256": "5fc6d8a4f55e69a7749927674bb9f7fb820bd70a5b5dc01a5d77903a5896925b",
+      "preexisting": true
+    },
+    {
+      "file": "cells/cell-e010-n000/near.bin",
+      "transport": "cells/cell-e010-n000/near.bin.gz",
+      "bytes": 1591371,
+      "decodedBytes": 2931376,
+      "decodedSha256": "bd1b4782aa16db9abdbb00fc9d5c310c407090b1c39d28e9a618d38cb5689c34",
+      "preexisting": true
+    },
+    {
+      "file": "cells/cell-e011-s001/base.gltf",
+      "transport": "cells/cell-e011-s001/base.gltf.gz",
+      "bytes": 1276,
+      "decodedBytes": 5231,
+      "decodedSha256": "1d1f8d54716e222071284cf496b194f22a7ad6f540b1db1997674c76c7ab620d",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e011-s001/base.bin",
+      "transport": "cells/cell-e011-s001/base.bin.gz",
+      "bytes": 1818,
+      "decodedBytes": 2832,
+      "decodedSha256": "78efc10e184bd2e49e2552ad7ce31351a1d290b76f62c41837e72a94b7bdd647",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e011-s001/near.gltf",
+      "transport": "cells/cell-e011-s001/near.gltf.gz",
+      "bytes": 1277,
+      "decodedBytes": 5231,
+      "decodedSha256": "f1e13293b142904d69a6f948403d678a3818048a7bc4e08ba9e35740c56eacc5",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e011-s001/near.bin",
+      "transport": "cells/cell-e011-s001/near.bin.gz",
+      "bytes": 1818,
+      "decodedBytes": 2832,
+      "decodedSha256": "78efc10e184bd2e49e2552ad7ce31351a1d290b76f62c41837e72a94b7bdd647",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e011-n000/base.gltf",
+      "transport": "cells/cell-e011-n000/base.gltf.gz",
+      "bytes": 1287,
+      "decodedBytes": 5221,
+      "decodedSha256": "312b8ce697d15c5ef5730ef32d4fb4d8170eeeaaacf49acdb8c87f7357f48180",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e011-n000/base.bin",
+      "transport": "cells/cell-e011-n000/base.bin.gz",
+      "bytes": 1618,
+      "decodedBytes": 2536,
+      "decodedSha256": "a398712523622ef97f5a32559c8956ea8830fdc4c0640d8513a630bec8881c03",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e011-n000/near.gltf",
+      "transport": "cells/cell-e011-n000/near.gltf.gz",
+      "bytes": 1290,
+      "decodedBytes": 5221,
+      "decodedSha256": "c1e17973be1edcff753e0a90382a00f822c9af7ea8ad82ba52be674f22d12391",
+      "preexisting": false
+    },
+    {
+      "file": "cells/cell-e011-n000/near.bin",
+      "transport": "cells/cell-e011-n000/near.bin.gz",
+      "bytes": 1618,
+      "decodedBytes": 2536,
+      "decodedSha256": "a398712523622ef97f5a32559c8956ea8830fdc4c0640d8513a630bec8881c03",
+      "preexisting": false
+    }
+  ],
+  "limitations": [
+    "Startup totals describe required 3D resource transfer; JavaScript, CSS, fonts, deferred sections and HTTP framing are separate.",
+    "Decoded resource bytes and descriptors are preserved; GPU allocation and frame timing were not measured.",
+    "The copied startup-audit.json binds the original manifest; the transport-report.json and this audit bind the packaged manifest."
+  ]
+}

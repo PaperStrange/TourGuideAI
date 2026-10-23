@@ -39,8 +39,9 @@ const manifest = JSON.parse(manifestBytes);
 if (manifest.id !== geography.id || manifest.revision !== geography.revision) throw new Error('Neighborhood source and build identities differ.');
 const descriptors = [manifest.ground, manifest.lighting, manifest.context,
   ...manifest.cells.flatMap(cell => [cell.base, cell.near])].filter(Boolean);
-const encodedAssets = [...new Map(descriptors.flatMap(descriptor => [descriptor, ...(descriptor.dependencies || [])])
+const encodedResources = values => [...new Map(values.flatMap(descriptor => [descriptor, ...(descriptor.dependencies || [])])
   .filter(asset => asset.transport).map(asset => [asset.file, asset])).values()];
+const encodedAssets = encodedResources(descriptors);
 mkdirSync(output, { recursive: true });
 const files = [...assets].sort(([a], [b]) => a.localeCompare(b)).map(([path, bytes]) => ({ path, bytes: bytes.length, sha256: sha(bytes) }));
 const legacy = {
@@ -63,7 +64,7 @@ const report = {
     sharedImageEstimate: 'Active shared glTF image textures, RGBA plus mipmaps. Excludes HDR/PMREM, shadow/render targets and runtime-generated textures.',
     combinedTextureEstimate: 'Shared scene images plus actor/contact textures and allocated lighting targets, including cached PMREM/workspace/fallback/shadow targets. Depth24 is conservatively estimated at 4 bytes per pixel. Excludes driver padding/metadata, canvas/compositor, geometry and temporary conversion peaks.',
     primaryProof: 'A new real Look closer frame at the same stopped, settled pose; unchanged shadow invalidation counter and no pending light shadow updates before or after.' },
-  checks: [], scenarios: {}, screenshots: [], paths: [], savedViews: [],
+  checks: [], scenarios: {}, screenshots: [], paths: [], savedViews: [], http: [],
   limitations: ['Actual automated desktop input and software-rendered frames do not establish physical-device performance or human enjoyment.',
     'Failure cases abort or delay actual packaged requests. Successful loads use the preserved build bytes.',
     'Authored level ground and simulation widths do not establish current pedestrian access or surveyed grades.'],
@@ -91,9 +92,16 @@ const observe = page => page.evaluate(() => ({ home: window.__HOME__?.snapshot()
 const readSession = page => page.evaluate(key => JSON.parse(localStorage.getItem(key)), journeyKey);
 const kept = page => page.evaluate(key => JSON.parse(localStorage.getItem(key) || '{"version":1,"places":[]}'), keptKey);
 const assetPath = value => new URL(value.file, 'http://qa.invalid' + prefix + 'manifest.json').pathname;
+const requestAssetPath = value => assetPath(value.transport || value);
+const nearRequestPaths = new Set(manifest.cells.filter(cell => cell.near).map(cell => requestAssetPath(cell.near)));
 const contains = (cell, point) => point.x >= cell.bounds.minX - .001 && point.x <= cell.bounds.maxX + .001
   && point.y >= cell.bounds.minY - .001 && point.y <= cell.bounds.maxY + .001;
 const cellsAt = point => manifest.cells.filter(cell => contains(cell, point));
+const bridgeSight = geography.sights.find(sight => sight.id === 'shijo-bridge');
+if (!bridgeSight) throw new Error('Reviewed bridge sight is absent.');
+const riverCells = cellsAt(bridgeSight);
+const riverEncodedAssets = encodedResources(riverCells.flatMap(cell => [cell.base, cell.near]).filter(Boolean));
+const startupEncodedAssets = encodedResources([manifest.ground, manifest.context, ...cellsAt(geography.spawn).map(cell => cell.base)].filter(Boolean));
 function cellsAlong(points) {
   const ids = new Set();
   for (let index = 0; index < points.length; index++) {
@@ -145,15 +153,14 @@ async function scenario(name, fault = {}, options = {}) {
     ...options.context };
   const context = await browser.newContext(contextOptions);
   contexts.add(context);
-  const record = report.scenarios[name] = { context: contextOptions, requests: [], responses: [], finishedRequests: [],
+  const record = report.scenarios[name] = { startedAt: Date.now(), context: contextOptions, requests: [], responses: [], finishedRequests: [],
     failures: [], denied: [], delayed: [], pageErrors: [], unexpectedOrigins: [] };
-  await context.route(service.url + '/**', async route => {
+  if (fault.deny || fault.delay) await context.route(service.url + '/**', async route => {
     const url = new URL(route.request().url()), path = url.pathname === '/' ? '/index.html' : url.pathname;
     if (path.startsWith('/api/')) return route.continue();
     if (fault.deny?.(path)) { record.denied.push(path); return route.abort('blockedbyclient'); }
     if (fault.delay?.(path)) { record.delayed.push(path); await fault.wait; }
-    const bytes = assets.get(path);
-    return route.fulfill({ status: bytes ? 200 : 404, contentType: mime[extname(path)] || 'application/octet-stream', body: bytes || 'Packaged asset missing' });
+    return route.continue();
   });
   await context.addInitScript(({ origin, values }) => {
     if (location.origin === origin && !sessionStorage.getItem('neighborhood-qa-seeded')) {
@@ -173,6 +180,20 @@ async function scenario(name, fault = {}, options = {}) {
   await page.goto(service.url + '/?qa=1&mode=together&lang=en', { waitUntil: 'domcontentloaded' });
   await page.waitForFunction(() => Boolean(window.__HOME__));
   return { context, page, record, fault };
+}
+function compressedRequests(record, expected) {
+  const loaded = encodedAssets.filter(asset => record.requests.some(request => request.path === assetPath(asset.transport)));
+  const logicalRequests = record.requests.filter(request => encodedAssets.some(asset => request.path === assetPath(asset)));
+  const http = report.http.filter(request => request.at >= record.startedAt
+    && loaded.some(asset => request.path === assetPath(asset.transport)));
+  const matches = asset => record.responses.some(response => response.path === assetPath(asset.transport) && response.status === 200)
+    && record.finishedRequests.includes(assetPath(asset.transport)) && !record.failures.some(failure => failure.path === assetPath(asset.transport))
+    && http.some(request => request.path === assetPath(asset.transport) && request.status === 200 && request.finished
+      && request.bytes === asset.transport.bytes && request.sha256 === asset.transport.sha256);
+  return { pass: expected.length > 0 && expected.every(matches) && loaded.every(matches) && logicalRequests.length === 0,
+    expected: expected.map(asset => ({ logical: asset.file, decodedBytes: asset.bytes, decodedSha256: asset.sha256, transport: asset.transport })),
+    loaded: loaded.map(asset => asset.file), logicalRequests, http,
+    identityEvidence: 'Encoded and decoded identities were independently verified in manifest preflight; actual HTTP body hashes and successful runtime readiness bind the loaded resources.' };
 }
 async function ready(page, packId = geography.id, lighting) {
   await page.waitForFunction(({ packId, lighting }) => {
@@ -574,16 +595,32 @@ try {
   check('manifest-assets-match-actual-packaged-bytes', true, { cells: manifest.cells.length, sha256: sha(manifestBytes) });
   if (transportProof.length) check('gzip-transport-and-decoded-assets-match-exact-packaged-identities', true, transportProof);
   if (encodedAssets.length) {
-    const geometry = descriptors.filter(descriptor => descriptor.transport).map(descriptor => {
+    const geometry = descriptors.filter(descriptor => descriptor.transport || descriptor.dependencies?.some(asset => asset.file.endsWith('.bin') && asset.transport)).map(descriptor => {
       const resources = [descriptor, ...(descriptor.dependencies || []).filter(asset => asset.file.endsWith('.bin'))];
       return { file: descriptor.file, transferBytes: resources.reduce((sum, asset) => sum + (asset.transport?.bytes ?? asset.bytes), 0),
         decodedBytes: resources.reduce((sum, asset) => sum + asset.bytes, 0), declaredTransferBytes: descriptor.transferGeometryBytes,
-        declaredDecodedBytes: descriptor.geometryBytes, budget: descriptor.transferBudgetBytes };
+        declaredDecodedBytes: descriptor.geometryBytes, budget: descriptor.transferBudgetBytes,
+        reviewedMaximum: (descriptor.file === 'cells/cell-e000-n000/near.gltf' ? 3.5 : 2) * 1024 * 1024 };
     });
     check('gzip-section-wire-budget-keeps-decoded-memory-size-explicit', geometry.every(value => value.transferBytes === value.declaredTransferBytes
-      && value.decodedBytes === value.declaredDecodedBytes && value.budget === 2 * 1024 * 1024 && value.transferBytes <= value.budget), geometry);
+      && value.decodedBytes === value.declaredDecodedBytes && (value.budget === 2 * 1024 * 1024 || value.budget === value.reviewedMaximum)
+      && value.budget <= value.reviewedMaximum && value.transferBytes <= value.budget), geometry);
   }
   service = await startServer({ port: 0, host: '127.0.0.1', databasePath: join(output, 'rooms.sqlite'), config: { provider: { apiKey: '', model: '' } } });
+  const assetIdentities = new Map(files.map(file => [file.path, file]));
+  // 成功资源通过真实 HTTP 返回不可变构建；网络拦截仅用于明确的中断或延迟检查。
+  service.app.use((request, response) => {
+    const url = new URL(request.originalUrl, service.url), path = url.pathname === '/' ? '/index.html' : url.pathname;
+    const bytes = assets.get(path), identity = assetIdentities.get(path);
+    const record = { at: Date.now(), path, query: url.search, status: bytes ? 200 : 404,
+      bytes: bytes?.length ?? 0, sha256: identity?.sha256 ?? null, finished: false };
+    report.http.push(record); response.on('finish', () => { record.finished = true; });
+    response.removeHeader('Content-Security-Policy');
+    response.set('Cache-Control', 'no-store');
+    response.set('Content-Type', mime[extname(path)] || 'application/octet-stream');
+    response.status(record.status).end(bytes || 'Packaged asset missing');
+  });
+  report.conditions.assetDelivery = 'Actual loopback HTTP with immutable captured build bodies and no-store; only deliberate abort/delay scenarios install request routes.';
   const address = process.env.HTTPS_PROXY || process.env.HTTP_PROXY, proxy = address ? new URL(address) : null;
   browser = await chromium.launch({ executablePath: process.env.EXPERIENCE_QA_CHROMIUM || undefined, headless: true, args: ['--no-sandbox'],
     ...(proxy ? { proxy: { server: proxy.origin, bypass: 'localhost,127.0.0.1', ...(proxy.username ? { username: decodeURIComponent(proxy.username), password: decodeURIComponent(proxy.password) } : {}) } } : {}) });
@@ -617,10 +654,14 @@ try {
         .flatMap(asset => asset.transport ? [assetPath(asset), assetPath(asset.transport)] : [assetPath(asset)])));
     check('initial-neighborhood-load-does-not-fetch-distant-cells', distantFiles.size > 0
       && !record.requests.some(request => distantFiles.has(request.path)), { distantFiles: [...distantFiles], requested: record.requests.filter(request => request.path.startsWith(prefix)) });
-    if (encodedAssets.length) check('startup-does-not-fetch-deferred-gzip-river-resources',
-      !record.requests.some(request => encodedAssets.some(asset => [assetPath(asset), assetPath(asset.transport)].includes(request.path))),
-    { deferred: encodedAssets.map(asset => ({ logical: assetPath(asset), transport: assetPath(asset.transport) })), requests: record.requests });
+    if (riverEncodedAssets.length) check('startup-does-not-fetch-deferred-gzip-river-resources',
+      !record.requests.some(request => riverEncodedAssets.some(asset => [assetPath(asset), assetPath(asset.transport)].includes(request.path))),
+    { cellIds: riverCells.map(cell => cell.id), deferred: riverEncodedAssets.map(asset => ({ logical: assetPath(asset), transport: assetPath(asset.transport) })), requests: record.requests });
     await primaryFrameBudget(page, 'opening-day'); await capture(page, 'opening-day-en');
+    if (startupEncodedAssets.length) {
+      const proof = compressedRequests(record, startupEncodedAssets);
+      check('startup-loads-compressed-required-containers-through-real-http', proof.pass, proof);
+    }
     await setLighting(page, 'night'); await setLocale(page, 'zh'); await primaryFrameBudget(page, 'opening-night'); await capture(page, 'opening-night-zh');
     await setLighting(page, 'day'); await setLocale(page, 'en');
     const graphNodes = new Map(geography.navigation.nodes.map(node => [node.id, node]));
@@ -681,7 +722,7 @@ try {
   await section('journey', async () => {
     const target = geography.sights[1], delayedCells = cellsAt(target).filter(cell => !contains(cell, geography.spawn));
     if (!delayedCells.length) throw new Error('The actual manifest has no later cell for the boundary failure case.');
-    const deniedPaths = new Set(delayedCells.map(cell => assetPath(cell.base)));
+    const deniedPaths = new Set(delayedCells.map(cell => requestAssetPath(cell.base)));
     let deny = true;
     const { page, record, fault } = await scenario('journey', { deny: path => deny && deniedPaths.has(path) });
     await enter(page); const initialSession = await readSession(page);
@@ -804,7 +845,7 @@ try {
     { expected: [...expectedCells], outbound: [...outboundCells], returning: [...returnCells] });
     let releaseRestore;
     const restoreBarrier = new Promise(resolve => { releaseRestore = resolve; });
-    const riverFiles = new Set(cellsAt(remembered.view.player).map(cell => assetPath(cell.base)));
+    const riverFiles = new Set(cellsAt(remembered.view.player).map(cell => requestAssetPath(cell.base)));
     fault.delay = path => riverFiles.has(path); fault.wait = restoreBarrier;
     const beforeRestore = await observe(page);
     try {
@@ -842,7 +883,7 @@ try {
   });
 
   await section('initial-recovery', async () => {
-    const required = new Set(cellsAt(geography.spawn).map(cell => assetPath(cell.base)));
+    const required = new Set(cellsAt(geography.spawn).map(cell => requestAssetPath(cell.base)));
     let deny = true;
     const { page, record } = await scenario('initial-recovery', { deny: path => deny && required.has(path) });
     await page.locator('#mode-explore').click(); await page.locator('#journey-enter').click();
@@ -872,7 +913,7 @@ try {
   await section('latest-intent', async () => {
     let release;
     const barrier = new Promise(resolve => { release = resolve; });
-    const { page, record } = await scenario('latest-intent', { delay: path => path === assetPath(manifest.ground), wait: barrier });
+    const { page, record } = await scenario('latest-intent', { delay: path => path === requestAssetPath(manifest.ground), wait: barrier });
     try {
       await page.locator('#mode-explore').click(); await page.locator('#journey-enter').click();
       const deadline = Date.now() + timeout;
@@ -915,7 +956,7 @@ try {
     let release;
     const barrier = new Promise(resolve => { release = resolve; });
     const { context, page, record, fault } = await scenario('external-session', {
-      delay: path => path === assetPath(manifest.ground), wait: barrier,
+      delay: path => path === requestAssetPath(manifest.ground), wait: barrier,
     });
     let bytes, newer, heldSince;
     try {
@@ -987,7 +1028,7 @@ try {
       const nearBarrier = new Promise(resolve => { releaseNear = resolve; });
       const { page, context, record, fault } = await scenario('residency-' + tier, {
         delay: path => {
-          if (!heldNearPath && path.startsWith(prefix + 'cells/') && path.endsWith('/near.gltf')) {
+          if (!heldNearPath && nearRequestPaths.has(path)) {
             heldNearPath = path; return true;
           }
           return false;
@@ -1139,9 +1180,13 @@ try {
     if (!remembered) throw new Error('The actual completed bridge view is unavailable.');
     const initial = await scenario('river-startup-laziness');
     await enter(initial.page); await settled(initial.page);
-    check('river-gzip-resources-stay-unrequested-at-original-startup', encodedAssets.length > 0
-      && !initial.record.requests.some(request => encodedAssets.some(asset => [assetPath(asset), assetPath(asset.transport)].includes(request.path))),
-    { encoded: encodedAssets, observed: await observe(initial.page), requests: initial.record.requests });
+    check('river-gzip-resources-stay-unrequested-at-original-startup', riverEncodedAssets.length > 0
+      && !initial.record.requests.some(request => riverEncodedAssets.some(asset => [assetPath(asset), assetPath(asset.transport)].includes(request.path))),
+    { cellIds: riverCells.map(cell => cell.id), encoded: riverEncodedAssets, observed: await observe(initial.page), requests: initial.record.requests });
+    if (startupEncodedAssets.length) {
+      const proof = compressedRequests(initial.record, startupEncodedAssets);
+      check('bridge-review-startup-loads-verified-compressed-containers', proof.pass, proof);
+    }
     await initial.context.close(); contexts.delete(initial.context);
     const poses = [{ id: 'bridge', view: remembered.view, sourceSavedView: remembered },
       ...['takase-river', 'pontocho-entrance'].map(id => {
@@ -1164,14 +1209,12 @@ try {
         await primaryFrameBudget(page, pose.id + '-' + mode);
         await capture(page, pose.id + '-prior-actual-pose-' + mode, true);
       }
-      const loaded = encodedAssets.filter(asset => record.requests.some(request => request.path === assetPath(asset.transport)));
-      const logicalRequests = record.requests.filter(request => encodedAssets.some(asset => request.path === assetPath(asset)));
+      const loaded = riverEncodedAssets.filter(asset => record.requests.some(request => request.path === assetPath(asset.transport)));
+      const proof = compressedRequests(record, loaded);
       check(pose.id + '-loads-verified-gzip-geometry-without-logical-network-fetches',
         loaded.some(asset => asset.transport.file.endsWith('.gltf.gz')) && loaded.some(asset => asset.transport.file.endsWith('.bin.gz'))
-        && logicalRequests.length === 0 && loaded.every(asset => record.responses.some(response => response.path === assetPath(asset.transport)
-          && response.status === 200) && record.finishedRequests.includes(assetPath(asset.transport))
-          && !record.failures.some(failure => failure.path === assetPath(asset.transport))),
-      { loaded, logicalRequests, responses: record.responses.filter(response => loaded.some(asset => response.path === assetPath(asset.transport))),
+        && proof.pass,
+      { bridgeCellIds: riverCells.map(cell => cell.id), loaded, proof,
         resources: resources(await observe(page)) });
       await unchangedLegacy(page, pose.id + '-review-keeps-legacy-bytes');
       await context.close(); contexts.delete(context);

@@ -24,13 +24,36 @@ asset and scheduling checks pass. Font regeneration reports zero missing glyphs.
 CI **39886300478** was superseded by **39888148078** on
 **`ce2a59afd1a06b8cb17c60869f11ab1ec00a1ac0`**. Seven jobs passed before the remaining
 neighborhood job was superseded by **39891671767**, triggered by pushed source
-**`88af351d9662a191762442022c21a0831e1b2feb`**. The current acceptance run is
-**39893266215** on pushed candidate-3 source
-**`9a3b9e8d7e9f8ae078d4671117fc87c295ef7af0`**. All seven legacy/geographic jobs
-pass; complete-route traversal remains in progress. A new source push will
-supersede that run and require complete acceptance on the new package.
+**`88af351d9662a191762442022c21a0831e1b2feb`**. Run **39893266215** on candidate-3
+source **`9a3b9e8d7e9f8ae078d4671117fc87c295ef7af0`** passed all seven
+legacy/geographic jobs before its neighborhood job was superseded by
+**39896144084** on pushed cache source
+**`823f4f9a836f604a71e20f34ef9e6bc6c60e8347`**. Candidate-6 requires its own
+complete acceptance after the transport source push.
 
-The current immutable build is **candidate-5**, package
+The current immutable build is **candidate-6**, package
+**`ca4b3c95bc2a6b94ad2cc978a083d1e3c3c109d65febce326a5e16e937dc271b`**,
+with **445 files / 96,679,636 bytes**. Its scenery manifest is
+**`deb00b97ca3e29e314a13225678c7e6827de59a0f8ff68d5d3bdccc7d3563458`**.
+The transport-only pass adds 144 gzip resources and preserves the four existing
+river gzip resources. An independent audit reproduces all 346 scenery files
+exactly; all 199 original files other than the manifest remain byte-identical.
+All 148 encoded resources decode exactly through zlib and the production decoder.
+The 74 section budgets pass. Required 3D startup transfer is **3,030,351 bytes
+day / 3,023,115 bytes night**, saving 1,128,978 bytes per mode including manifest
+metadata. Geometry, textures, materials, source identities and decoded residency
+sizes remain unchanged. Application checks pass **199/199** and the canonical
+build succeeds. Independent evidence is under
+`evidence/neighborhood-20261023/world/transport/`.
+
+Candidate-6 actual-HTTP browser checks are running on the frozen package, covering
+compressed startup, day/night bridge views, failed-request recovery, delayed
+ground cancellation and private-session preservation. The exact cold/warm/input/
+frame benchmark follows in an exclusive browser window. Full-route acceptance,
+physical GPU performance, Q03 and actual background-tab visibility remain open.
+The candidate is not published.
+
+The preceding immutable cache build is **candidate-5**, package
 **`223fcf32ae41551aab0096dae95d8160c679dacb38469c0f7dbdfb4163b37f23`**,
 with 299 files and unchanged scenery `90c0873c…`. The cache increment uses verified
 SHA URLs, keeps manifests/unhashed assets fresh, and reloads a rejected version
@@ -52,13 +75,6 @@ exceptions. Warm first usable is **2,545.0 / 2,701.9 / 2,766.5 ms**, all within 
 The headless browser still provides no actual hidden-tab transition. Full report,
 driver and limitations are in `evidence/neighborhood-20261023/performance/candidate-5/`.
 Physical GPU performance, Q03 and full-route acceptance remain open.
-
-Art is preparing a deterministic transport-only gzip postpass over frozen optimized
-assets. A read-only check of six required startup containers measures a
-**1,154,914-byte** saving with exact decoded bytes. The postpass must preserve every
-model, texture, source identity and existing river gzip; its resulting package
-requires independent identity proof and an actual cold-load measurement. No new
-package is published.
 
 The preceding focused browser candidate is
 **`artifacts/neighborhood-20261023/candidate-3`**, copied from the canonical
@@ -214,7 +230,7 @@ Next actions, in order:
 
 1. Retain the completed candidate-3 53/53 browser report and exact executed driver.
    Preserve candidate-2 and its failed observations.
-2. Verify transport-only gzip packaging, build a new immutable candidate, and
+2. Complete candidate-6 actual-HTTP transport/recovery checks, and
    repeat the exact performance protocol in the exclusive GPU
    window. Thresholds remain 8 s cold, 3 s warm, 100 ms input p95 and 33.3 ms
    observed frame p95; Q03 retains its separate unchanged threshold. Retain the
