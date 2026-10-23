@@ -8,6 +8,61 @@ the verified baseline. Q03 is open P1; backend tests remain local.**
 
 ## Resumed iteration · 2026-10-23
 
+The current immutable build is **candidate-9**, with implementation source
+**`9cbfa7fd848a6401dde872a339c4156eb45419ba`**. Its package SHA256 is
+**`1720fc5907c0c6f2b292aa0e728bcaad8ddbd6c776de7aec2b5a35a513609c9b`**:
+**446 files / 96,779,376 bytes**. Scenery manifest:
+**`79b1a3ed91f0b672364c690e44de9278dce555fab0074ce0dc4aaa8add62f534`**.
+All **203/203** application checks and **17/17** repository gates pass; the
+canonical build succeeds and regenerated EN/ZH fonts have zero missing glyphs.
+The preceding camera correction is committed in **`ce447dfb92fef0ce8ac36b9383bffdbf115c6ae2`**.
+
+The native candidate-8 western walk passes **13/13** and supports deliberate
+day/night torii inspection. Ordinary arrival retains the traveler's framing and
+does not automatically present the torii. The accepted pause now uses existing
+node `354840400`; bilingual guidance says to look east. Normal source preparation
+produces geography **`0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f`**.
+The complete graph, six-sight edge order and **1,353.4440598583508 m** route remain
+exact. Revision-1 saved metric poses, camera intent and notes remain compatible;
+the retained eastern pose restores with zero position error. The portable audit
+and old geography are under `world/platform-context/`.
+
+Default recommendations now contain one reviewed six-sight walk with adjustable
+stops, respecting the unchanged 10% route-diversity rule. EN/ZH copy handles one
+result; interest preferences receive a personalized title only when they actually
+change the selected order under the same constraints. Candidate-9 route-choice
+browser checks pass **20/20** in 52.572 seconds: a real five-stop edit followed by
+explicit Choose, independent graph distance, Maps, private night view/note, edits
+and native Chinese reload. Report SHA256:
+`417edcbb2be2b05d458c786b1182e78eaa06beba6b5b6daf38c33f05d7bb4b64`.
+
+The candidate-8 canopy browser run passes **19/19**; art accepts the visible e006
+material response in both lighting modes. Its platform behavior run passes **9/9**,
+while visual inspection identifies an uncovered floor. Candidate 9 adds exactly
+two upward-facing paving triangles within source 223's 73.626288 m² footprint at
+authored height zero. The independent audit preserves all prior 108 target triangles
+per detail level and all unrelated attributes, materials and transforms across
+**74 sections / 9,731 source groups**. It verifies **148 gzip identities**, all
+section budgets and **3,035,372 B day / 3,028,136 B night** required 3D startup.
+Audit SHA256: `57f0e9c9b4ee0dff263d69106fa43ff70da9bdd43468c5d166b212329f448144`.
+Root preserved the prior public directory at
+`artifacts/neighborhood-20261023/candidate-8-public-before-floor` and promoted the
+exact independently audited transport output.
+
+QA exclusively owns the browser/CPU for corrected-floor day/night review, western
+approach, complete **14-gesture × two-motion** camera coverage, then one default
+performance run. Driver SHA256:
+`4a40b0eda0215f89366635589ce87aaece72b592370dbf8e3c5e887a2cbacb4e`;
+historical-source helper: `5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1`.
+Its five source preflight checks pass. The complete-document compatibility guard
+permits only the approved six anchor-field changes and verifies the retained raw
+sources; current package provenance must bind current geography separately.
+Current-package camera/appearance acceptance, full outward/return CI, performance
+targets, Q03 and native hidden-tab verification remain open. The workspace has no
+physical GPU, so hardware fluency remains unmeasured. No publication has occurred.
+
+The following records retain their earlier candidate and evidence scopes.
+
 The user explicitly resumed implementation toward the approved milestone.
 The preserved starting checkpoint is **`57a8bf8795bb10a5bb264451f93b2414f0d4939c`**
 on `origin/chore-sow-delivery-plan`. Its application, content, asset and test
@@ -37,13 +92,13 @@ platform source audit without changing application bytes. Candidate-7 implementa
 is **`a7cd027f7e8085ef0cb7054487f1a3479a6724de`**; its run **39902670448** follows
 **39899177206**, whose seven legacy/geographic jobs passed before the remaining
 neighborhood job was cancelled. Checkpoint **`095ee3a`** preserves that state.
-The current implementation is **`7f3146b11246c66c5e64b8e95738017f208db69b`**,
+Candidate-8 implementation is **`7f3146b11246c66c5e64b8e95738017f208db69b`**,
 pushed and independently verified against the remote branch. Its acceptance run
-**39905321708** has six passing jobs; original-walk and connected-neighborhood
-browser jobs remain running at 05:42 UTC. Application and asset bytes correspond
-to candidate 8.
+**39905321708** had six passing jobs at 05:42 UTC before the remaining jobs were
+superseded by **39907405172** on `ce447df`. Application and asset bytes in the
+following record correspond to candidate 8.
 
-The current immutable build is **candidate-8**, package
+The preceding immutable build is **candidate-8**, package
 **`8146c6a00fb60026dee84414e4efa3ca1713869f92bc8cab2fbd4e592411e8d3`**,
 with **446 files / 96,758,502 bytes** and scenery manifest
 **`4e490c35d171aceb160efb70d94ae8c9fc097a2ad4440fe1010c1b619ca7a601`**.
@@ -97,7 +152,7 @@ changes in ordinary/inspection modes with both motion settings. All 24 focused
 camera checks pass, and engineering independently reviewed event ordering.
 `tests/fixtures/tenmangu-idle-pose.json` binds the captured pose to interim report
 `c33f1ea97430bfa189503eeb650a1be2a7e25b450e903df434583b53870622d8`.
-This source correction awaits candidate-9 integration and native acceptance.
+This source correction is integrated in candidate 9 and awaits native acceptance.
 
 The proposed Tenmangū pause at existing node `354840400` awaits an actual western
 walking-view review. A read-only calculation preserves the 73-node/73-edge graph,

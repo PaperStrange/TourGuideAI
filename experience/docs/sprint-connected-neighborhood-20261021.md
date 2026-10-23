@@ -110,20 +110,23 @@ This allowance does not change the startup, frame, input or Q03 acceptance targe
 ## Acceptance status · 2026-10-23
 
 The pilot contains six sights along 1,353.444 m of connected reviewed route.
-Candidate 8 has package identity
-`8146c6a00fb60026dee84414e4efa3ca1713869f92bc8cab2fbd4e592411e8d3`.
-Source `7f3146b` is pushed. It includes inspection framing, stationary redraw and
-saved-view loading corrections, the source-supported open platform assembly and
-a reviewed canopy material. Application checks pass 201/201 and repository gates
-pass 17/17. Required daylight 3D transfer is 3,034,606 bytes.
-Its exclusive native gesture validation is running; the earlier performance and
-route-choice reports below retain their candidate-6 scope.
+Candidate 9 has package identity
+`1720fc5907c0c6f2b292aa0e728bcaad8ddbd6c776de7aec2b5a35a513609c9b`.
+Implementation source is `9cbfa7f`. It includes inspection framing, stationary
+redraw and saved-view loading corrections, the reviewed western Tenmangū pause,
+the open platform with its source-bounded display floor and the canopy material.
+Application checks pass 203/203 and repository gates pass 17/17. Required daylight
+3D transfer is 3,035,372 bytes. The route retains all six sights and the exact
+walking graph. Default suggestions contain one reviewed walk with editable stops.
+Native route-choice checks pass 20/20, including EN/ZH guidance, explicit Choose,
+independent distance/Maps and preserved private views. Further exclusive native
+validation is running; earlier performance reports retain their candidate-6 scope.
 
 | Sprint | Current evidence | Remaining acceptance |
 | --- | --- | --- |
 | N00 | Connected source graph, six identified exterior sights, source/provenance audits and reproducible asset packaging | Existing limits on surveyed grades and current access remain explicit |
 | N01 | Continuous movement implemented; focused streaming/retry, cancellation, native-storage and residency checks pass | Complete final-package outward/return CI |
-| N02 | Bilingual day/night, private views, editable alternatives and Maps implemented; candidate-6 Choose/edit/reload checks pass 16/16; candidate-8 runtime and platform/canopy corrections implemented and independently reviewed | Native camera gestures, idle/resource reuse, western Tenmangū arrival, matched platform/canopy day/night appearance, and remaining connector detail gaps |
+| N02 | Bilingual day/night, private views, editable recommendations and Maps implemented; candidate-9 Choose/edit/reload passes 20/20; candidate-8 western walk passes 13/13 and canopy behavior 19/19, with bounded art acceptance; candidate-9 source/geometry audits pass | Final camera gestures, idle/resource reuse, corrected-platform day/night appearance and remaining connector detail gaps |
 | N03 | Candidate-6 transport/recovery browser checks pass 57/57; exact performance report retained | Warm-entry consistency, input/frame targets, Q03, native hidden-tab verification, full regression evidence and publication |
 
 Candidate-6 measured cold entry is 7,797.0 ms. Warm entries are 2,927.1, 2,926.7 and
