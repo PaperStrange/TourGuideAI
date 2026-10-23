@@ -38,9 +38,9 @@ The new bank geometry resides in streamed river cells. Resident ground geometry 
 
 ## Candidate 2 source-backed river continuation
 
-The packaged continuation is frozen at manifest `90c0873c5e540147630c970d4a2ea692c1583b3c407c175a2659d4e1e93934c8`. Its executed browser appearance is pending. The following resource and source checks establish a reviewable asset package.
+The packaged continuation is frozen at manifest `90c0873c5e540147630c970d4a2ea692c1583b3c407c175a2659d4e1e93934c8`. Its executed browser review appears below. The following resource and source checks establish the exact asset package.
 
-[Production provenance](candidate-2/provenance.json) binds the independently audited input `57ae1683df42b8220591708cc9b01d71573da697fdf0290744aba44c41fc0006`. It preserves 4,019 complete official building footprints, retained mapped river boundaries, and 136 added bank segments. Surrounding land, flat display heights and neutral building materials are authored. The 500m display envelope follows the actual route positions inside the bridge cell's retention area. The source audit reports minimum conservative boundary view depth `275.463m` for the declared camera limits and aspect ratio at most `2.0`; fog ends at `270m`. The actual bridge and nearby approaches still require visual inspection.
+[Production provenance](candidate-2/provenance.json) binds the independently audited input `57ae1683df42b8220591708cc9b01d71573da697fdf0290744aba44c41fc0006`. It preserves 4,019 complete official building footprints, retained mapped river boundaries, and 136 added bank segments. Surrounding land, flat display heights and neutral building materials are authored. The 500m display envelope follows the actual route positions inside the bridge cell's retention area. The source audit reports minimum conservative boundary view depth `275.463m` for the declared camera limits and aspect ratio at most `2.0`; fog ends at `270m`.
 
 Building meshes use 100m spatial groups to retain frustum culling. A [source-based visibility estimate](candidate-2/pre-export-visibility.json) adds 38–42 visible material batches at the recorded Takase, Pontochō and bridge cameras. These estimates do not establish actual browser submissions. Primary-view limits remain 120 draw calls and 200,000 triangles.
 
@@ -56,3 +56,25 @@ The [package audit](candidate-2/river-package-audit.json) verifies 186 decoded r
 [Required 3D bytes](candidate-2/startup-audit.json) are `4,159,329B` in daylight and `4,152,093B` at night, within 4MiB. Daylight headroom is `34,975B`. River geometry is deferred; page JavaScript/CSS/fonts remain outside this resource metric. The [coverage check](candidate-2/cell-coverage.json) covers all 10,974 navigation samples. The existing global source-index table is unchanged; river meshes retain complete deferred source tables.
 
 The [initial byte measurement](candidate-2/initial-byte-breakdown.json) preserves the failed 4,356,484B bridge packaging result. [BASE](candidate-2/base-exact-dedup-experiment.json) and [NEAR](candidate-2/near-exact-dedup-experiment.json) experiments record exact vertex-reuse measurements. Original raw output remains in ignored `artifacts/neighborhood-20261023/art/river-raw-final/`; the verified package is `river-transport-candidate/`. The generator's optional `--river-context` reads the audited derived input. `optimize_neighborhood.mjs` performs the bridge-specific exact reuse, meshopt encoding and gzip validation. The input itself is retained as deterministic `river-context.json.gz` with its decoded SHA and byte count in provenance.
+
+## Candidate 2 executed views
+
+The tested local package is `f27fbe22db95a007010d2d46a661f27752a2361f5d9d84aaa4e4588c498e0dc5`. [Recorded captures](candidate-2/reviewed-captures.json) bind every unchanged image to its exact camera, player, lighting, resource identities and renderer counters. The arcade evidence includes actual approach/interior walking and deliberate camera inputs. River views restore exact previously walked viewpoints.
+
+The finalized [browser record](candidate-2/browser-result.json.gz), decompressed SHA256 `731fd628b48a76cf4411d47636e79a6c0f76975237a32f63a84f5951ae75a1d7`, contains 67 passing checks and two failed stationary-inspection movement checks, in normal and reduced motion. Art, river, source and resource checks pass. The two interaction failures remain runtime release blockers for this tested package and are tracked separately from this visual disposition.
+
+| Reviewed view | Daylight | Night |
+| --- | --- | --- |
+| Ordinary interior | [Canvas](candidate-2/arcade-inside-ordinary-day-canvas.png) | [Canvas](candidate-2/arcade-inside-ordinary-night-canvas.png) |
+| Below-roof interior | [Canvas](candidate-2/arcade-below-roof-day-canvas.png) | [Canvas](candidate-2/arcade-below-roof-night-canvas.png) |
+| Shijō Bridge | [Canvas](candidate-2/bridge-prior-actual-pose-day-canvas.png) | [Canvas](candidate-2/bridge-prior-actual-pose-night-canvas.png) |
+| Takase River | [Canvas](candidate-2/takase-river-prior-actual-pose-day-canvas.png) | [Canvas](candidate-2/takase-river-prior-actual-pose-night-canvas.png) |
+| Pontochō entrance | [Canvas](candidate-2/pontocho-entrance-prior-actual-pose-day-canvas.png) | [Canvas](candidate-2/pontocho-entrance-prior-actual-pose-night-canvas.png) |
+
+The ordinary arcade frames retain the full traveller and readable forward paving. Deliberate lower-eye framing exposes the connected gray soffits, coloured central ridge, recessed bays and mixed timber/metal frames along the street. The foreground window no longer dominates this reviewed composition. Night pools remain legible on the actor and paving. These cues support the bounded covered-street correction against the retained reference; tenant identities, entry access and measured construction dimensions remain unclaimed.
+
+At the matched bridge camera, water and shoreline now continue into haze. The Takase and Pontochō approach views also retain distant street/water continuity. No new termination seam is visible in these reviewed daylight/night frames. The bounded river-continuation and arcade-framing corrections pass this art review.
+
+Cached-shadow river frames record 74 calls / 46,897 triangles at the bridge, 78 / 61,996 at Takase and 82 / 53,183 at Pontochō in both modes, within 120 calls / 200,000 triangles. QA establishes these primary counts using a new same-pose frame with unchanged shadow-update counters. Daylight arcade screenshots record 77–83 calls / 80,881–85,725 triangles. Night arcade screenshots record 263–269 calls / 356,013–360,857 triangles. Those arcade values retain full renderer totals, which can include shadow refresh; their primary-only counts are not inferred by subtraction.
+
+Visible limits remain: repeated generic connector openings, dark glazing, uniform authored bank treatment, plain distant masses, small overview actors, dim Takase night foreground and strong coloured HDR reflections on water. Thin bright façade/ground seams are visible in existing connector geometry. These findings do not establish whole-neighborhood human realism or physical-device fluency acceptance.

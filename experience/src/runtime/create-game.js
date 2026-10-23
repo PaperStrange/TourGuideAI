@@ -357,7 +357,7 @@ export async function createGame(host, options = {}) {
       pointer = null; canvas.style.cursor = 'grab';
       if (gesture.cancelled || gesture.distance > 6 || player.paused || status !== 'ready') return;
       const point = pointerPoint(event), target = targetAt(point);
-      if (solo && inspecting && api.inspectAt(point.x, point.y)) return;
+      if (solo && inspecting) { api.inspectAt(point.x, point.y); return; }
       held.clear(); queuedInteraction = null;
       if (target) {
         player.selectedTargetId = target.id;

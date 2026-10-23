@@ -22,21 +22,40 @@ guards private journey writes against changed stored bytes, and reserves near-de
 capacity through loading/cancellation cleanup. Twenty targeted route, native-storage,
 asset and scheduling checks pass. Font regeneration reports zero missing glyphs.
 CI **39886300478** was superseded by **39888148078** on
-**`ce2a59afd1a06b8cb17c60869f11ab1ec00a1ac0`**. Geographic preparation, perspective,
-companion, homepage, solo, original-walk and reviewed-pack jobs pass. The complete
-neighborhood job remains running at this checkpoint. This CI covers candidate-1;
-the subsequent camera-input and river-context changes require their own validation.
+**`ce2a59afd1a06b8cb17c60869f11ab1ec00a1ac0`**. Seven jobs passed before the remaining
+neighborhood job was superseded by **39891671767**, triggered by pushed source
+**`88af351d9662a191762442022c21a0831e1b2feb`**. That run covers candidate-2; the
+inspection-click correction in candidate-3 requires its own complete CI run.
 
 The current immutable browser candidate is
-**`artifacts/neighborhood-20261023/candidate-2`**, copied from the canonical
+**`artifacts/neighborhood-20261023/candidate-3`**, copied from the canonical
 `experience/dist` build. Application checks pass **191/191**, with no skips.
 Its 299-file package identity is
-**`f27fbe22db95a007010d2d46a661f27752a2361f5d9d84aaa4e4588c498e0dc5`**.
+**`4fbeebdbde8ba750f619a0fc5c3e15637a49cdb92e90e22f376c41ce8d8c7922`**.
 Its scenery manifest is
 **`90c0873c5e540147630c970d4a2ea692c1583b3c407c175a2659d4e1e93934c8`**.
-QA has the exclusive browser window for native camera input, rendered-direction
-walking, deliberate market inspection, day/night river views and resource counts.
-Actual-view acceptance and the performance benchmark remain pending.
+QA has the exclusive browser window for stationary inspection clicks, native feature
+selection and restored click-to-walk after leaving Look closer. Touch help explains
+this behavior in EN/ZH; regenerated fonts contain zero missing source glyphs.
+The exact performance benchmark remains pending.
+
+Candidate-2 package `f27fbe22db95a007010d2d46a661f27752a2361f5d9d84aaa4e4588c498e0dc5`
+finishes **67 passing / 2 failing** actual browser checks. The two failures expose
+pavement clicks starting a walk during Look closer, in normal and reduced motion.
+Candidate-3 consumes these clicks as inspection attempts while preserving deliberate
+keyboard walking. All other native gesture, market-source, rendered-direction,
+settling, hidden-state and gzip checks pass on candidate-2. The original report SHA256
+is `731fd628b48a76cf4411d47636e79a6c0f76975237a32f63a84f5951ae75a1d7`; the executed
+driver is `106b11626a5b6909b1c5ace62bf1ab9f26653842914bab492a23215098d8501c`.
+The full report, driver and art captures are retained under the dated evidence.
+
+Art accepts the bounded arcade-framing and river-continuation corrections in the
+candidate-2 captures. Bridge/Takase/Pontochō cached primary frames use **74/78/82
+calls** and **46,897/61,996/53,183 triangles** in both daylight and night. Arcade
+screenshots also retain their separate shadow-refresh totals; these must not be
+described as primary-pass counts. Repetitive connector bays, uniform banks and strong
+authored night reflections remain visible limitations. This review does not establish
+whole-neighborhood human realism acceptance. Candidate-3 scenery bytes are identical.
 
 Preserved candidate-1 has 293 files and package identity
 **`df711b7d06a0a921545cc82de1ffe3b26dec28a8dc3a86684d837fcdd5e1127c`**.
@@ -59,7 +78,7 @@ the hidden desired pose. Candidate-2 rebases actual drag, wheel and keyboard
 adjustments on the visible recovered pose while preserving intent for a click or
 mode entry. Ignored middle-button and three-finger gestures also preserve intent.
 Walking input follows the rendered camera direction. Thirty-two focused
-camera/legacy checks pass; actual browser verification is pending.
+camera/legacy checks and their candidate-2 actual-browser counterparts pass.
 
 The camera retains desired saved OrbitControls intent and constrains the rendered
 view against actual building and canopy geometry. Scoped `three-mesh-bvh` indices
@@ -81,8 +100,8 @@ below 4 MiB; night resources total **4,152,093 bytes**. The Mitsui NEAR exceptio
 ordinary/base sections retain 2 MiB. Source audits and reproducible commands are in
 `evidence/neighborhood-20261023/world/` and `docs/neighborhood-authoring.md`.
 
-**Remaining visual gates:** deliberate arcade input/inspection and the extended
-river/city context in daylight and night. The frozen context input is
+The extended river/city context and deliberate arcade framing pass their bounded
+day/night visual review. The frozen context input is
 `57ae1683df42b8220591708cc9b01d71573da697fdf0290744aba44c41fc0006`, with 29 surfaces,
 4,019 complete official building masses and 136 bank segments. Independent audit
 and exact reproduction pass. Existing display overlap is zero; navigation remains
@@ -97,8 +116,9 @@ remain in residency accounting. Bitwise vertex reuse, triangle reordering and gz
 preserve oriented triangle attributes, transforms and source identity. Position and
 UV error remain zero. Runtime verifies encoded bytes before bounded decompression,
 then verifies decoded size and SHA256 while retaining logical dependency paths.
-Nine targeted resource/scheduling/real-HTTP transport checks pass. Browser parsing,
-actual resource counts and visual composition remain separate pending gates.
+Nine targeted resource/scheduling/real-HTTP transport checks pass. Actual gzip model
+requests, decoded parsing and river resource counts also pass on candidate-2. The
+river payload remains unrequested at the starting crossing.
 
 The bounded arcade report finishes **6 passing / 2 failing** checks, with no runtime
 exceptions, at `2026-10-21T09:11:37.696Z`. SHA256:
@@ -129,21 +149,17 @@ own package identities. Evidence is under `evidence/neighborhood-20261023/ci/`.
 
 Next actions, in order:
 
-1. Verify actual camera drag, wheel, keyboard and click behavior, market inspection,
-   rendered-direction walking, stopped settling and hidden state. Review day/night
-   bridge and nearby approaches with actual resource counts. Preserve candidate-1
-   and every original failed observation.
-2. Confirm actual gzip bridge requests and decoded model rendering, then obtain
-   independent art review of the immutable candidate-2 captures. Bind each report
-   and capture to exact package and executed-driver hashes.
+1. Finish candidate-3 actual inspection-click/feature-selection/return-to-walking
+   checks in normal and reduced motion. Preserve candidate-2 and its failed observations.
+2. Run `experience/tools/neighborhood-performance.mjs` on candidate-3 in the
+   exclusive GPU window after QA finishes. The driver/protocol are committed and
+   have not run on this candidate. Thresholds remain 8 s cold, 3 s warm, 100 ms input
+   p95 and 33.3 ms observed frame p95; Q03 retains its separate unchanged threshold.
+   Retain the full conditions and every missed target.
 3. Review completed CI evidence, then validate the changed candidate with the
    complete route, streaming delay/failure/retry, saved returns, private records,
    EN/ZH, Maps export and existing journeys. Keep failed observations explicit.
-4. Run `experience/tools/neighborhood-performance.mjs` in an exclusive GPU window
-   after browser/art acceptance. The driver/protocol are committed and **have not
-   run** on this candidate. Thresholds remain 8 s cold, 3 s warm, 100 ms input p95,
-   33.3 ms observed frame p95; Q03 retains its separate unchanged threshold.
-5. Update evidence/checkpoint and push each coherent correction. Publish only the
+4. Update evidence/checkpoint and push each coherent correction. Publish only the
    accepted frozen package through the existing Pages worktree, then verify HTTPS
    files and actual journeys.
 

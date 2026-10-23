@@ -1210,7 +1210,7 @@ try {
         const current = await observe(page), inspection = await page.evaluate(() => window.__TOUR_GAME__.inspection());
         record.inspectionAttempts.push({ pose: pose.name, pointer: { x, y, bounds }, inspection, current }); persist();
         if (inspection.focus?.id !== 'shijo-east:nishiki-market') continue;
-        await page.locator('#solo-detail').click();
+        await page.mouse.click(bounds.x + x * bounds.width, bounds.y + y * bounds.height);
         await page.waitForFunction(() => Boolean(window.__TOUR_GAME__.inspection().selected));
         selected = await page.evaluate(() => window.__TOUR_GAME__.inspection().selected);
         await capture(page, 'inspection-selected-' + pose.name, true);
@@ -1296,7 +1296,7 @@ try {
         }
       });
       const remembered = await keep(page, 'Rendered arcade framing', 'Actual pointer and wheel input');
-      for (const operation of ['click', 'middle-horizontal', 'three-finger', 'wheel', 'drag', 'keyboard']) {
+      for (const operation of ['click', 'touch-tap', 'middle-horizontal', 'three-finger', 'wheel', 'drag', 'keyboard']) {
         await reopen(page, remembered);
         const beforeEntry = await cameraSettled(page, record, operation + '-restoration');
         await page.locator('#solo-inspect').click();
@@ -1310,6 +1310,7 @@ try {
         await page.mouse.move(x, y);
         await page.evaluate(() => { window.__NEIGHBORHOOD_INPUT_EVENTS__.length = 0; });
         if (operation === 'click') await page.mouse.click(x, y);
+        if (operation === 'touch-tap') await page.touchscreen.tap(x, y);
         if (operation === 'middle-horizontal') {
           await page.mouse.down({ button: 'middle' });
           await page.mouse.move(x + 12, y, { steps: 3 });
@@ -1342,13 +1343,14 @@ try {
         const actualAzimuth = Math.atan2(offset.x, offset.z), actualPolar = Math.acos(offset.y / offset.length());
         const keyboardDelta = Math.atan2(Math.sin(after.camera.azimuth - actualAzimuth + .08),
           Math.cos(after.camera.azimuth - actualAzimuth + .08));
-        const preservesPose = ['click', 'middle-horizontal', 'three-finger'].includes(operation);
+        const preservesPose = ['click', 'touch-tap', 'middle-horizontal', 'three-finger'].includes(operation);
         const unchangedPose = near(before.camera.position, after.camera.position, .00001)
           && near(before.camera.viewTarget, after.camera.viewTarget, .00001)
           && near(before.home.currentView, after.home.currentView, .00001) && after.camera.inspectionAimed === false
           && !after.route.destination && !after.state.moving;
         const middleStart = inputEvents.find(event => event.type === 'pointerdown' && event.button === 1);
         const delivered = inputEvents.length > 0 && inputEvents.every(event => event.trusted)
+          && (operation !== 'touch-tap' || inputEvents.some(event => event.type === 'pointerup' && event.pointerType === 'touch'))
           && (operation !== 'middle-horizontal' || middleStart && inputEvents.some(event => event.type === 'pointermove' && event.buttons === 4
             && event.x > middleStart.x && event.y === middleStart.y))
           && (operation !== 'three-finger' || new Set(inputEvents.filter(event => event.type === 'pointerdown'
@@ -1365,7 +1367,47 @@ try {
           dragPixels: ['drag', 'middle-horizontal', 'three-finger'].includes(operation) ? 12 : null,
           key: operation === 'keyboard' ? 'j' : null, inputEvents,
           renderedDistance, actualAzimuth, actualPolar, keyboardDelta, before, after });
+        if (operation === 'touch-tap') {
+          for (const locale of ['en', 'zh']) {
+            await page.locator('#locale-' + locale).tap();
+            await page.waitForFunction(expected => document.documentElement.lang === expected, locale);
+            const help = await page.locator('#solo-hint').evaluate(element => ({ text: element.textContent,
+              bounds: element.getBoundingClientRect().toJSON(), clientWidth: element.clientWidth, scrollWidth: element.scrollWidth,
+              clientHeight: element.clientHeight, scrollHeight: element.scrollHeight }));
+            const localized = await observe(page);
+            check(reducedMotion + '-' + locale + '-touch-inspection-help-explains-stationary-mode',
+              help.text.includes(locale === 'en' ? 'Choose Keep walking to move' : '选择“继续漫步”后行走')
+              && help.bounds.width > 0 && help.bounds.height > 0 && help.scrollWidth <= help.clientWidth + 1
+              && help.scrollHeight <= help.clientHeight + 1 && localized.home.touchControls === true
+              && near(localized.route.position, before.route.position, .00001), { help, observed: localized });
+            await capture(page, 'native-inspection-help-' + reducedMotion + '-' + locale);
+          }
+          await page.locator('#locale-en').tap();
+          await page.waitForFunction(() => document.documentElement.lang === 'en');
+        }
         await page.locator('#live-stage').focus(); await page.keyboard.press('Escape');
+        if (operation === 'click' || operation === 'touch-tap') {
+          const walking = await cameraSettled(page, record, operation + '-leave-inspection');
+          const walkingBounds = await page.locator('#live-stage canvas').boundingBox();
+          check(reducedMotion + '-' + operation + '-escape-preserves-the-same-ground-ray',
+            near(walking.camera.matrixWorld, after.camera.matrixWorld, .00001)
+            && near(walking.camera.projectionMatrix, after.camera.projectionMatrix, .00001)
+            && near(walking.route.position, after.route.position, .00001)
+            && walkingBounds.width === bounds.width && walkingBounds.height === bounds.height
+            && !walking.camera.inspecting,
+          { before: after.camera, after: walking.camera, bounds, walkingBounds });
+          const walkX = walkingBounds.x + walkingBounds.width * .5, walkY = walkingBounds.y + walkingBounds.height * .5;
+          if (operation === 'touch-tap') await page.touchscreen.tap(walkX, walkY);
+          else await page.mouse.click(walkX, walkY);
+          const commanded = await observe(page);
+          const arrived = await boundedWalk(page, reducedMotion + '-' + operation + '-same-ground-after-escape', value => !value.route.destination
+            && !value.state.moving && Math.hypot(value.route.position.x - walking.route.position.x,
+              value.route.position.y - walking.route.position.y) >= .15);
+          check(reducedMotion + '-' + operation + '-same-ground-navigates-after-escape',
+            Boolean(commanded.route.goal || commanded.route.destination) && arrived.ground.inside && Boolean(arrived.ground.hit)
+            && Math.hypot(arrived.route.position.x - walking.route.position.x, arrived.route.position.y - walking.route.position.y) >= .15,
+          { pointer: { x: walkX, y: walkY }, before: walking, commanded, arrived });
+        }
       }
       await page.locator('#preview-reset').click(); await cameraSettled(page, record, 'explicit-reset');
       await setLighting(page, 'night'); await settled(page);
