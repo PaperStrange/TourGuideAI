@@ -1,12 +1,8 @@
+import { readAssetBytes } from './asset-bytes.js';
+
 export async function verifiedBytes(url, expected, signal) {
-  const response = await fetch(url, { signal, cache: 'no-cache' });
-  if (!response.ok) throw new Error('Pack asset unavailable: ' + response.status);
-  const bytes = await response.arrayBuffer();
-  const sha256 = [...new Uint8Array(await crypto.subtle.digest('SHA-256', bytes))]
-    .map(value => value.toString(16).padStart(2, '0')).join('');
-  signal?.throwIfAborted();
-  if (expected && (sha256 !== expected.sha256 || bytes.byteLength !== expected.bytes)) throw new Error('Pack asset version mismatch');
-  return { bytes, sha256 };
+  if (expected != null && !Number.isSafeInteger(expected.bytes)) throw new Error('Invalid expected asset size');
+  return readAssetBytes(url, expected, signal);
 }
 
 export async function loadPackManifest(pack, appURL, signal) {

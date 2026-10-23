@@ -1,0 +1,451 @@
+{
+  "version": 1,
+  "defaultMode": "day",
+  "axes": "Three(east,height,-north), metres",
+  "renderBounds": {
+    "minX": -32,
+    "maxX": 45,
+    "minY": -10,
+    "maxY": 68
+  },
+  "scope": {
+    "en": "Authored daylight and night lighting. Reflections use licensed external HDR environments. Local fixtures and illuminated glazing do not establish actual lighting, opening hours, occupancy or entry.",
+    "zh": "设计日光与夜间灯光。反射使用已授权的外部 HDR 环境。局部灯具和发光玻璃不代表实际灯光、营业时间、使用状态或入口。"
+  },
+  "limits": {
+    "maxShadowCastingLocalLights": 3,
+    "staticShadowCaching": true,
+    "pointLightShadows": false
+  },
+  "modes": {
+    "day": {
+      "label": {
+        "en": "Daylight",
+        "zh": "日光"
+      },
+      "environment": {
+        "file": "../../lighting/environments/day-1k.hdr",
+        "sha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+        "intensity": 0.72,
+        "rotationY": 0.8,
+        "use": "illumination-and-reflections-only"
+      },
+      "backgroundColor": "#cbd8e4",
+      "fog": {
+        "color": "#cbd8e4",
+        "near": 70,
+        "far": 170
+      },
+      "exposure": 1.0,
+      "hemisphere": {
+        "skyColor": "#d4e1ef",
+        "groundColor": "#777269",
+        "intensity": 0.28
+      },
+      "sun": {
+        "enabled": true,
+        "position": [
+          -24,
+          68,
+          45
+        ],
+        "target": [
+          0,
+          0,
+          -18
+        ],
+        "color": "#fff4e5",
+        "intensity": 2.55,
+        "shadow": {
+          "enabled": true,
+          "mapSize": 2048,
+          "bias": -0.00018,
+          "normalBias": 0.025,
+          "radius": 2.8,
+          "near": 0.5,
+          "far": 220,
+          "fit": "source-render-bounds"
+        }
+      },
+      "fixtures": [
+        {
+          "id": "wako-pavement-1",
+          "type": "spot",
+          "enabled": false,
+          "position": [
+            -13.53346,
+            4.05,
+            -15.334913
+          ],
+          "target": [
+            -13.727744,
+            0,
+            -12.434387
+          ],
+          "color": "#ffe2bc",
+          "intensity": 0,
+          "distance": 15,
+          "decay": 2,
+          "angle": 0.95,
+          "penumbra": 0.9,
+          "shadow": {
+            "enabled": true,
+            "mapSize": 1024,
+            "bias": -0.00018,
+            "normalBias": 0.025,
+            "radius": 4.5,
+            "near": 0.1,
+            "far": 22
+          }
+        },
+        {
+          "id": "wako-pavement-2",
+          "type": "spot",
+          "enabled": false,
+          "position": [
+            3.102132,
+            4.05,
+            -6.280838
+          ],
+          "target": [
+            0.0,
+            0,
+            -0.0
+          ],
+          "color": "#ffe2bc",
+          "intensity": 0,
+          "distance": 15,
+          "decay": 2,
+          "angle": 0.95,
+          "penumbra": 0.9,
+          "shadow": {
+            "enabled": true,
+            "mapSize": 1024,
+            "bias": -0.00018,
+            "normalBias": 0.025,
+            "radius": 4.5,
+            "near": 0.1,
+            "far": 22
+          }
+        },
+        {
+          "id": "wako-pavement-3",
+          "type": "spot",
+          "enabled": false,
+          "position": [
+            16.990782,
+            4.05,
+            -15.587465
+          ],
+          "target": [
+            19.633024,
+            0,
+            -14.827756
+          ],
+          "color": "#ffe2bc",
+          "intensity": 0,
+          "distance": 15,
+          "decay": 2,
+          "angle": 0.95,
+          "penumbra": 0.9,
+          "shadow": {
+            "enabled": true,
+            "mapSize": 1024,
+            "bias": -0.00018,
+            "normalBias": 0.025,
+            "radius": 4.5,
+            "near": 0.1,
+            "far": 22
+          }
+        },
+        {
+          "id": "wako-facade-wash-1",
+          "type": "spot",
+          "enabled": false,
+          "position": [
+            3.894561,
+            3.0,
+            -0.716986
+          ],
+          "target": [
+            2.865249,
+            13.5,
+            -7.944054
+          ],
+          "color": "#ffe3bf",
+          "intensity": 0,
+          "distance": 45,
+          "decay": 2,
+          "angle": 0.76,
+          "penumbra": 0.92,
+          "shadow": {
+            "enabled": false,
+            "mapSize": 512,
+            "bias": -0.00018,
+            "normalBias": 0.025,
+            "radius": 4.5,
+            "near": 0.1,
+            "far": 22
+          }
+        },
+        {
+          "id": "wako-facade-wash-2",
+          "type": "spot",
+          "enabled": false,
+          "position": [
+            4.317567,
+            9,
+            2.253043
+          ],
+          "target": [
+            2.449293,
+            34.5,
+            -10.864582
+          ],
+          "color": "#ffe3bf",
+          "intensity": 0,
+          "distance": 45,
+          "decay": 2,
+          "angle": 0.31,
+          "penumbra": 0.92,
+          "shadow": {
+            "enabled": false,
+            "mapSize": 512,
+            "bias": -0.00018,
+            "normalBias": 0.025,
+            "radius": 4.5,
+            "near": 0.1,
+            "far": 22
+          }
+        }
+      ],
+      "materials": []
+    },
+    "night": {
+      "label": {
+        "en": "Night",
+        "zh": "夜间"
+      },
+      "environment": {
+        "file": "../../lighting/environments/night-1k.hdr",
+        "sha256": "a690048dcecabf5ed1ad773f7abdec7cce7b1fea4d89b17f054a18f3e0fa2919",
+        "intensity": 0.1,
+        "rotationY": 0.8,
+        "use": "illumination-and-reflections-only"
+      },
+      "backgroundColor": "#1b2a38",
+      "fog": {
+        "color": "#1b2a38",
+        "near": 70,
+        "far": 170
+      },
+      "exposure": 1.12,
+      "hemisphere": {
+        "skyColor": "#aec1d4",
+        "groundColor": "#505257",
+        "intensity": 0.42
+      },
+      "sun": {
+        "enabled": true,
+        "position": [
+          -24,
+          68,
+          45
+        ],
+        "target": [
+          0,
+          0,
+          -18
+        ],
+        "color": "#a8c5e8",
+        "intensity": 0.48,
+        "shadow": {
+          "enabled": true,
+          "mapSize": 2048,
+          "bias": -0.00018,
+          "normalBias": 0.025,
+          "radius": 2.8,
+          "near": 0.5,
+          "far": 220,
+          "fit": "source-render-bounds"
+        }
+      },
+      "fixtures": [
+        {
+          "id": "wako-pavement-1",
+          "type": "spot",
+          "enabled": true,
+          "position": [
+            -13.53346,
+            4.05,
+            -15.334913
+          ],
+          "target": [
+            -13.727744,
+            0,
+            -12.434387
+          ],
+          "color": "#ffe2bc",
+          "intensity": 170,
+          "distance": 15,
+          "decay": 2,
+          "angle": 0.95,
+          "penumbra": 0.9,
+          "shadow": {
+            "enabled": true,
+            "mapSize": 1024,
+            "bias": -0.00018,
+            "normalBias": 0.025,
+            "radius": 4.5,
+            "near": 0.1,
+            "far": 22
+          }
+        },
+        {
+          "id": "wako-pavement-2",
+          "type": "spot",
+          "enabled": true,
+          "position": [
+            3.102132,
+            4.05,
+            -6.280838
+          ],
+          "target": [
+            0.0,
+            0,
+            -0.0
+          ],
+          "color": "#ffe2bc",
+          "intensity": 170,
+          "distance": 15,
+          "decay": 2,
+          "angle": 0.95,
+          "penumbra": 0.9,
+          "shadow": {
+            "enabled": true,
+            "mapSize": 1024,
+            "bias": -0.00018,
+            "normalBias": 0.025,
+            "radius": 4.5,
+            "near": 0.1,
+            "far": 22
+          }
+        },
+        {
+          "id": "wako-pavement-3",
+          "type": "spot",
+          "enabled": true,
+          "position": [
+            16.990782,
+            4.05,
+            -15.587465
+          ],
+          "target": [
+            19.633024,
+            0,
+            -14.827756
+          ],
+          "color": "#ffe2bc",
+          "intensity": 170,
+          "distance": 15,
+          "decay": 2,
+          "angle": 0.95,
+          "penumbra": 0.9,
+          "shadow": {
+            "enabled": true,
+            "mapSize": 1024,
+            "bias": -0.00018,
+            "normalBias": 0.025,
+            "radius": 4.5,
+            "near": 0.1,
+            "far": 22
+          }
+        },
+        {
+          "id": "wako-facade-wash-1",
+          "type": "spot",
+          "enabled": true,
+          "position": [
+            3.894561,
+            3.0,
+            -0.716986
+          ],
+          "target": [
+            2.865249,
+            13.5,
+            -7.944054
+          ],
+          "color": "#ffe3bf",
+          "intensity": 450,
+          "distance": 45,
+          "decay": 2,
+          "angle": 0.76,
+          "penumbra": 0.92,
+          "shadow": {
+            "enabled": false,
+            "mapSize": 512,
+            "bias": -0.00018,
+            "normalBias": 0.025,
+            "radius": 4.5,
+            "near": 0.1,
+            "far": 22
+          }
+        },
+        {
+          "id": "wako-facade-wash-2",
+          "type": "spot",
+          "enabled": true,
+          "position": [
+            4.317567,
+            9,
+            2.253043
+          ],
+          "target": [
+            2.449293,
+            34.5,
+            -10.864582
+          ],
+          "color": "#ffe3bf",
+          "intensity": 1150,
+          "distance": 45,
+          "decay": 2,
+          "angle": 0.31,
+          "penumbra": 0.92,
+          "shadow": {
+            "enabled": false,
+            "mapSize": 512,
+            "bias": -0.00018,
+            "normalBias": 0.025,
+            "radius": 4.5,
+            "near": 0.1,
+            "far": 22
+          }
+        }
+      ],
+      "materials": [
+        {
+          "match": [
+            "wako-lamp"
+          ],
+          "emissiveColor": "#ffe2bc",
+          "emissiveIntensity": 1.6
+        },
+        {
+          "match": [
+            "wako-clock-dial"
+          ],
+          "emissiveColor": "#dceae4",
+          "emissiveIntensity": 0.7
+        },
+        {
+          "match": [
+            "wako-ground-glass"
+          ],
+          "emissiveColor": "#d9b47f",
+          "emissiveIntensity": 0.035,
+          "emissiveFromBaseColor": true
+        }
+      ]
+    }
+  }
+}

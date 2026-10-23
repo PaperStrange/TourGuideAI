@@ -1,5 +1,20 @@
 # Local validation
 
+Candidate-5 package is `223fcf32ae41551aab0096dae95d8160c679dacb38469c0f7dbdfb4163b37f23`.
+It adds verified hash-versioned caching and explicit retry recovery for cached
+integrity/HTTP failures. Application checks pass **199/199**, including the
+**19/19** targeted asset/lighting/transport checks. Repository gates pass **17/17**;
+the canonical build succeeds. Scenery bytes remain unchanged.
+
+| Candidate-5 report | Original SHA256 |
+| --- | --- |
+| `app-tests-candidate-5.txt.gz` decoded text | `c3831be7d21de36f7992f27b1839ab3b62ddee325bba130d2d94e0c7742dc46d` |
+| `build-candidate-5.txt.gz` decoded text | `fc4598236751a975563b53694078c7512a8aa44c1515e79486334e635a80d47b` |
+| `cache-retry-tests.txt.gz` decoded text | `c4791e193383b835b27087076cfd02d8d98d5785abf98b1b52850accde64655d` |
+| `repository-gates-candidate-5.txt` | `43a16b6a9e37d69799f7f711f656ea8ae0dc879d15558f6b93f7d192cf632332` |
+
+## Candidate-3
+
 Candidate-3 source is `9a3b9e8d7e9f8ae078d4671117fc87c295ef7af0`; its 299-file
 canonical package is `4fbeebdbde8ba750f619a0fc5c3e15637a49cdb92e90e22f376c41ce8d8c7922`.
 The scenery bytes remain identical to candidate-2. After the inspection-click and

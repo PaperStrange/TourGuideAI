@@ -19,7 +19,7 @@ test('gzip transport preserves a real packaged model and accounts for decoded re
   const requests = [];
   const server = createServer((request, response) => {
     requests.push(request.url);
-    if (request.url !== '/traveller.glb.gz') { response.writeHead(404).end(); return; }
+    if (new URL(request.url, 'http://localhost').pathname !== '/traveller.glb.gz') { response.writeHead(404).end(); return; }
     response.writeHead(200, { 'Content-Type': 'application/gzip', 'Content-Length': encoded.length });
     response.end(encoded);
   });
@@ -27,7 +27,7 @@ test('gzip transport preserves a real packaged model and accounts for decoded re
   const assets = createSectionAssets(new URL(`http://127.0.0.1:${server.address().port}/manifest.json`));
   try {
     const [first, shared] = await Promise.all([assets.download(descriptor), assets.download(descriptor)]);
-    assert.deepEqual(requests, ['/traveller.glb.gz']);
+    assert.deepEqual(requests, ['/traveller.glb.gz?sha256=' + descriptor.transport.sha256]);
     assert.deepEqual(Buffer.from(first.entries[0].bytes), decoded);
     assert.equal(assets.snapshot().loadedBytes, encoded.length);
     assert.equal(assets.snapshot().decodedBytes, decoded.length);

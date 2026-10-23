@@ -26,11 +26,41 @@ CI **39886300478** was superseded by **39888148078** on
 neighborhood job was superseded by **39891671767**, triggered by pushed source
 **`88af351d9662a191762442022c21a0831e1b2feb`**. The current acceptance run is
 **39893266215** on pushed candidate-3 source
-**`9a3b9e8d7e9f8ae078d4671117fc87c295ef7af0`**. Geographic preparation, travel
-companion and reviewed place packs pass; remaining browser jobs, including
-complete-route traversal, remain in progress.
+**`9a3b9e8d7e9f8ae078d4671117fc87c295ef7af0`**. All seven legacy/geographic jobs
+pass; complete-route traversal remains in progress. A new source push will
+supersede that run and require complete acceptance on the new package.
 
-The current immutable browser candidate is
+The current immutable build is **candidate-5**, package
+**`223fcf32ae41551aab0096dae95d8160c679dacb38469c0f7dbdfb4163b37f23`**,
+with 299 files and unchanged scenery `90c0873c…`. The cache increment uses verified
+SHA URLs, keeps manifests/unhashed assets fresh, and reloads a rejected version
+on the next explicit retry. Integrity checks, logical dependency identities,
+queue limits and quality remain intact. **199/199** application checks and
+**17/17** repository gates pass. The targeted 19 asset checks are included in the
+application count. Independent source review is complete.
+
+Actual browser cache checks pass **11/11**: same-version reuse, changed-version
+freshness, cached wrong-byte rejection/recovery, cached HTTP404 recovery, and
+unhashed conditional revalidation. The production module SHA256 is
+`4cf39e70533a07df14c258291178ceefd5cb289df8b8bab79f0da810e2fbf005`.
+
+Candidate-5 performance completes **15 passing / 4 failing** checks, with zero
+exceptions. Warm first usable is **2,545.0 / 2,701.9 / 2,766.5 ms**, all within 3 s;
+56/56 versioned requests in each warm entry use browser cache. Cold entry is
+**9,059.1 ms**, above 8 s. Event-timestamp response p95 is **925.5 ms**, above
+100 ms; walking frame p95 is **945.6 ms**, above 33.3 ms, with nine counter gaps.
+The headless browser still provides no actual hidden-tab transition. Full report,
+driver and limitations are in `evidence/neighborhood-20261023/performance/candidate-5/`.
+Physical GPU performance, Q03 and full-route acceptance remain open.
+
+Art is preparing a deterministic transport-only gzip postpass over frozen optimized
+assets. A read-only check of six required startup containers measures a
+**1,154,914-byte** saving with exact decoded bytes. The postpass must preserve every
+model, texture, source identity and existing river gzip; its resulting package
+requires independent identity proof and an actual cold-load measurement. No new
+package is published.
+
+The preceding focused browser candidate is
 **`artifacts/neighborhood-20261023/candidate-3`**, copied from the canonical
 `experience/dist` build. Application checks pass **191/191**, with no skips.
 Its 299-file package identity is
@@ -69,11 +99,8 @@ report and executed driver are preserved in
 QA is adding an explicit headed benchmark option and recording unavailable
 visibility observations as failed gates without suppressing later checks.
 
-Warm assets incur approximately 84–86 ms revalidation per unchanged resource.
-Engineering is implementing bounded hash-versioned caching for verified assets,
-with fresh manifests, unchanged verification/queue limits and explicit retry
-recovery after a cached integrity failure. The immutable candidate-3 remains
-preserved; cache-only savings require a new candidate and actual measurement.
+The immutable candidate-3, its revalidation observations and all failed measurements
+remain preserved alongside the candidate-5 cache results above.
 
 Candidate-2 package `f27fbe22db95a007010d2d46a661f27752a2361f5d9d84aaa4e4588c498e0dc5`
 finishes **67 passing / 2 failing** actual browser checks. The two failures expose
@@ -187,8 +214,8 @@ Next actions, in order:
 
 1. Retain the completed candidate-3 53/53 browser report and exact executed driver.
    Preserve candidate-2 and its failed observations.
-2. Review and verify the hash-versioned caching increment, build a new immutable
-   candidate, and repeat the exact performance protocol in the exclusive GPU
+2. Verify transport-only gzip packaging, build a new immutable candidate, and
+   repeat the exact performance protocol in the exclusive GPU
    window. Thresholds remain 8 s cold, 3 s warm, 100 ms input p95 and 33.3 ms
    observed frame p95; Q03 retains its separate unchanged threshold. Retain the
    candidate-3 failures, full conditions and every missed target.

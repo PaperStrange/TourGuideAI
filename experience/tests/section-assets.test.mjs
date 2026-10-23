@@ -16,7 +16,7 @@ test('actual packaged model requests share leases, obey the download limit and r
   }));
   const counts = new Map();
   const server = createServer((request, response) => {
-    const file = request.url.slice(1);
+    const file = new URL(request.url, 'http://localhost').pathname.slice(1);
     if (!names.includes(file)) { response.writeHead(404).end(); return; }
     counts.set(file, (counts.get(file) ?? 0) + 1);
     createReadStream(fileURLToPath(new URL('../public/' + file, import.meta.url))).pipe(response);

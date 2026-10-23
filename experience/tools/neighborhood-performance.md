@@ -1,8 +1,8 @@
 # Neighborhood performance protocol
 
 Run only after the exact neighborhood build passes startup and visual review, in
-an exclusive browser/GPU window agreed with the lead and QA. The driver has not
-yet established benchmark results.
+an exclusive browser/GPU window agreed with the lead and QA. Every result binds
+its executing driver and captured package bytes.
 
 ```sh
 node experience/tools/neighborhood-performance.mjs experience/dist
@@ -14,6 +14,19 @@ directory beneath `artifacts`; its default is `artifacts/neighborhood-performanc
 The tool sets `TMPDIR` to the short `artifacts/tmp` directory. Keep the existing
 proxy and CA configuration; TLS verification remains enabled. `--help` describes
 the invocation without starting a browser.
+
+Use `--headed` with an available graphical display for the background-tab check:
+
+```sh
+node experience/tools/neighborhood-performance.mjs experience/dist --headed
+```
+
+A desktop display or explicitly provisioned Xvfb display is required for headed
+Chromium. Record that display condition with the result. The default remains
+headless. A browser that keeps both tabs visible produces a failed, unobserved
+hidden-work check; the other measurements and final resource checks remain in the
+report. The tool does not override visibility properties or change rendering
+quality. A missing display causes browser startup to fail.
 
 The tool reads the actual build into an immutable HTTP server on an ephemeral
 loopback port. It serves only those captured bytes, records their SHA-256 hashes,
@@ -52,34 +65,57 @@ request timing, encoded bytes, cache behavior and failures for further inspectio
 
 After the fourth entry, focus the actual scene and perform ten alternating
 ArrowRight/ArrowLeft holds. Enter Look closer through its visible control, then
-perform ten alternating L/J orbit holds. Each hold lasts at least 300 ms; a missing
-response fails after ten seconds. Escape exits inspection. These actions exercise
+perform ten alternating L/J orbit nudges. Playwright sends one keydown and one
+keyup per action; J/L applies a discrete camera adjustment without synthesized
+key repeat. Each hold lasts at least 300 ms; a missing response fails after ten
+seconds. Record actual event receipt/release durations, which can exceed the
+requested delay when rendering blocks browser work. Escape exits inspection. These actions exercise
 the starting segment and do not substitute for the complete-route walkthrough.
 
 For every action retain:
 
 - Browser `performance.now()` immediately before Playwright dispatch.
 - The trusted key event's `timeStamp` and receipt time in the browser.
+- Actual hold durations from event timestamps and from browser handler receipts.
 - The first observed changed position/azimuth with an increased draw counter.
 - Submitted-draw observation times, counter increments and observer execution cost.
 
-Input response is event receipt → changed state plus draw. Dispatch → response is
-also reported and includes automation scheduling. Neither measures physical screen
-presentation. p95 uses the nearest-rank definition, with sample counts and raw
-values retained. Input p95 exit: **≤100 ms**. Observed rendered-frame interval p95
+The report preserves three response measurements: event `timeStamp` → changed
+state plus submitted draw, browser handler receipt → that observation, and
+automation dispatch → that observation. Event timestamp response includes browser
+queue delay; receipt response excludes it. Dispatch response also includes
+automation scheduling. Each event timestamp and receipt p95 exit is **≤100 ms**;
+the timestamp check requires all twenty valid observations. Browser queue delay is
+reported separately. These measurements leave physical screen presentation
+unmeasured. p95 uses the nearest-rank definition, with sample counts and raw
+values retained. Observed rendered-frame interval p95
 exit: **≤33.3 ms**. Intentional gaps between actions are excluded. A skipped draw
 counter increment prevents declaring the frame gate passed because individual
-frame intervals could not be recovered from that observation. Report walking,
-orbit and combined distributions. Observer cost remains visible.
+frame intervals could not be recovered from that observation. The first draw
+counter comparison spans the pre-dispatch sample through the first post-event
+observation; a gap there cannot assign every draw to the action. Preserve that
+gap and keep the gate failed. Report walking, orbit and combined distributions,
+including each action's observed draw count. A one-draw orbit nudge provides no
+within-action interval; its frame cadence remains unmeasured. Combined frame
+statistics describe only the groups that supplied intervals. Observer cost
+remains visible.
 
 ## Hidden work and interpretation
 
 Stop the benchmark animation-frame observer. Open a blank tab and bring it to the
-front; require actual `document.hidden` on the neighborhood. After 1.5 seconds to
+front; record native `visibilitychange` events and require actual `document.hidden`
+on the neighborhood. Use 100 ms timer polling because a hidden page can suspend
+animation-frame callbacks. After 1.5 seconds to
 settle, measure two seconds of runtime draw/update counters, page CPU metrics and
 new neighborhood HTTP requests. The hidden exit requires zero new draws, updates
 and neighborhood requests. CPU values are observations; browser sampling calls
 and other page work are not attributed exclusively to the scene.
+
+If the actual hidden state is absent after ten seconds, record both tabs' observed
+visibility, event history and timeout. Mark the hidden check failed/unobserved,
+retain the startup/input results and execute final page-exception/resource checks.
+No hidden runtime-work claim is available from that attempt. After closing the
+blank tab, record the neighborhood's returned visibility.
 
 The report includes exact package/driver hashes, OS/CPU/memory, browser and WebGL
 renderer/vendor, viewport, input trace, failures and target results. SwiftShader or

@@ -1,4 +1,4 @@
-import { chromium } from 'playwright';
+import { chromium, errors } from 'playwright';
 import { createServer } from 'node:http';
 import { createHash } from 'node:crypto';
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
@@ -7,13 +7,19 @@ import { fileURLToPath } from 'node:url';
 import { cpus, totalmem, platform, release, arch } from 'node:os';
 
 const repository = fileURLToPath(new URL('../../', import.meta.url));
-const help = `Usage: node experience/tools/neighborhood-performance.mjs [built-dist-directory]
+const help = `Usage: node experience/tools/neighborhood-performance.mjs [built-dist-directory] [--headed]
 Defaults: experience/dist; NEIGHBORHOOD_PERF_OUTPUT=artifacts/neighborhood-performance
 EXPERIENCE_QA_CHROMIUM selects Chromium. See tools/neighborhood-performance.md.
 Runs one cold entry, three warm reloads, actual keyboard/orbit inputs and a hidden-tab observation.
+--headed uses the current graphical display for genuine background-tab visibility.
 Schedule an exclusive browser window after the built neighborhood passes its startup/visual review.`;
 if (process.argv.includes('--help')) { console.log(help); process.exit(0); }
-const dist = resolve(repository, process.argv[2] || 'experience/dist');
+const argumentsList = process.argv.slice(2);
+if (argumentsList.some(value => value.startsWith('--') && value !== '--headed')) throw new Error('Unsupported benchmark option. Use --help.');
+const directories = argumentsList.filter(value => value !== '--headed');
+if (directories.length > 1) throw new Error('Provide one built-dist directory.');
+const headless = !argumentsList.includes('--headed');
+const dist = resolve(repository, directories[0] || 'experience/dist');
 const output = resolve(repository, process.env.NEIGHBORHOOD_PERF_OUTPUT || 'artifacts/neighborhood-performance');
 if (!output.startsWith(join(repository, 'artifacts') + '/')) throw new Error('Performance output must be inside repository artifacts.');
 const timeout = 120000, packId = 'shijo-east', prefix = '/assets/neighborhoods/shijo-east/';
@@ -42,14 +48,14 @@ const report = {
   startedAt: new Date().toISOString(), driverSha256: sha(readFileSync(new URL(import.meta.url))),
   artifact: { directory: dist, manifestSha256: sha(JSON.stringify(packageFiles)), files: packageFiles,
     neighborhood: { id: manifest.id, revision: manifest.revision, manifestSha256: sha(files.get(prefix + 'manifest.json')) } },
-  conditions: { viewport: [1440, 1000], dpr: 1, locale: 'en', lighting: 'day', headless: true,
+  conditions: { viewport: [1440, 1000], dpr: 1, locale: 'en', lighting: 'day', headless,
     entries: 'One fresh-context cold navigation followed by three full-page reloads retaining HTTP cache and private state; no movement between these entries.',
     network: { transport: 'Actual loopback HTTP; immutable build bytes; no interception or content encoding',
       cdp: { latencyMs: 80, downloadBytesPerSecond: 1250000, uploadBytesPerSecond: 1250000 },
       externalProxyConfigured: Boolean(proxy), tlsVerification: true, api: 'No backend; /api requests return actual HTTP 404.' },
-    input: 'Ten 300 ms walking key holds and ten 300 ms orbit key holds; each records automation dispatch, trusted browser event and changed-state/draw observation.',
+    input: 'Ten walking key holds and ten discrete J/L orbit nudges, each held for at least 300 ms. Playwright sends one keydown per action; actual event receipt/release durations are recorded.',
     observation: 'Read-only runtime snapshots sampled on requestAnimationFrame; observer cost and skipped draw-counter increments are recorded.',
-    hidden: 'Actual background tab; benchmark animation-frame observer is stopped before a 2-second runtime counter/CPU/network sample.',
+    hidden: 'Actual background tab with visibilitychange records and timer-polled document.hidden. An unobserved transition fails the hidden check and retains other results. The benchmark animation-frame observer is stopped before a 2-second runtime counter/CPU/network sample.',
     host: { platform: platform(), release: release(), arch: arch(), logicalCPUs: cpus().length,
       cpuModels: [...new Set(cpus().map(cpu => cpu.model))], memoryBytes: totalmem() },
     limitations: [
@@ -57,6 +63,8 @@ const report = {
       'Loopback HTTP with CDP throttling does not reproduce CDN compression, TLS connection setup or a physical WAN.',
       'First usable observation is readiness plus rendered ground and enabled controls; actual input is independently exercised after the entry measurements.',
       'Response means first changed simulation/camera state with a newer submitted draw; physical display presentation is unmeasured.',
+      'Receipt-to-draw excludes browser input queue delay. Event-timeStamp-to-draw includes that queue; dispatch-to-draw also includes automation scheduling.',
+      'A single-draw orbit nudge provides a response observation and no within-action frame interval. First-observation counter gaps retain their unrecoverable intervals.',
       'Input and frame observations cover the starting neighborhood segment; the complete-route correctness walkthrough remains separate.',
       'Q03 uses its existing homepage driver and threshold; this report does not replace or close it.',
     ] },
@@ -160,9 +168,25 @@ function summarizeActions(trace) {
     const actions = trace.actions.filter(action => kind === 'all' || action.kind === kind);
     const response = actions.flatMap(action => action.response ? [action.response.eventToResponseMs] : []);
     const dispatch = actions.flatMap(action => action.response ? [action.response.dispatchToResponseMs] : []);
+    const eventTimestampResponse = actions.flatMap(action => action.response && Number.isFinite(action.browserInput?.eventTimeStamp)
+      ? [action.response.observedMs - action.browserInput.eventTimeStamp] : []);
+    const eventQueue = actions.flatMap(action => Number.isFinite(action.browserInput?.eventTimeStamp)
+      ? [action.browserInput.receivedMs - action.browserInput.eventTimeStamp] : []);
+    const receivedHolds = actions.flatMap(action => action.browserInput && action.browserRelease
+      ? [action.browserRelease.receivedMs - action.browserInput.receivedMs] : []);
+    const timestampHolds = actions.flatMap(action => action.browserInput && action.browserRelease
+      ? [action.browserRelease.eventTimeStamp - action.browserInput.eventTimeStamp] : []);
     const intervals = actions.flatMap(action => action.draws.slice(1).map((draw, index) => draw.observedMs - action.draws[index].observedMs));
     groups[kind] = { actions: actions.length, responses: response.length, drawIntervals: intervals.length,
-      inputP95Ms: percentile(response, .95), dispatchP95Ms: percentile(dispatch, .95), frameIntervalP95Ms: percentile(intervals, .95), intervalsMs: intervals };
+      inputP95Ms: percentile(response, .95), eventTimestampToResponseP95Ms: percentile(eventTimestampResponse, .95),
+      eventQueueP95Ms: percentile(eventQueue, .95), dispatchP95Ms: percentile(dispatch, .95),
+      eventTimestampToResponseMs: eventTimestampResponse, eventQueueMs: eventQueue,
+      receivedHoldDurationsMs: receivedHolds, eventTimestampHoldDurationsMs: timestampHolds,
+      drawsPerAction: actions.map(action => ({ id: action.id, draws: action.draws.length, intervals: Math.max(0, action.draws.length - 1) })),
+      singleDrawActions: actions.filter(action => action.draws.length === 1).length,
+      frameIntervalP95Ms: percentile(intervals, .95), intervalsMs: intervals,
+      frameIntervalScope: intervals.length ? 'Within-action intervals between observed submitted draws; counter gaps remain a failed gate.'
+        : 'No within-action draw intervals were observed; frame cadence is unmeasured for this group.' };
   }
   return { groups, observerWorkP95Ms: percentile(trace.observerWorkMs, .95), frameCounterGaps: trace.frameCounterGaps };
 }
@@ -172,7 +196,7 @@ try {
   await new Promise(accept => server.listen(0, '127.0.0.1', accept));
   const origin = `http://127.0.0.1:${server.address().port}`;
   report.conditions.pageURL = `${origin}/?qa=1&lang=en&mode=explore&pack=${packId}`;
-  browser = await chromium.launch({ executablePath: process.env.EXPERIENCE_QA_CHROMIUM || '/usr/bin/chromium', headless: true,
+  browser = await chromium.launch({ executablePath: process.env.EXPERIENCE_QA_CHROMIUM || '/usr/bin/chromium', headless,
     args: ['--no-sandbox'], ...(proxy ? { proxy: { server: proxy.origin, bypass: 'localhost,127.0.0.1,[::1]',
       ...(proxy.username ? { username: decodeURIComponent(proxy.username), password: decodeURIComponent(proxy.password) } : {}) } } : {}) });
   report.conditions.browser = browser.version();
@@ -266,30 +290,54 @@ try {
   check('all-inputs-trusted-and-responsive', trace.actions.length === 20 && trace.actions.every(action => action.browserInput?.trusted
     && action.browserRelease?.trusted && action.response), { actions: trace.actions.length, responses: report.interactions.summary.groups.all.responses });
   check('input-response-p95', report.interactions.summary.groups.all.inputP95Ms <= 100, report.interactions.summary.groups);
+  const eventResponses = report.interactions.summary.groups.all.eventTimestampToResponseMs;
+  check('input-event-timestamp-response-p95', eventResponses.length === 20 && eventResponses.every(value => Number.isFinite(value) && value >= 0)
+    && report.interactions.summary.groups.all.eventTimestampToResponseP95Ms <= 100, report.interactions.summary.groups);
   check('observed-frame-interval-p95', trace.frameCounterGaps.length === 0 && report.interactions.summary.groups.all.drawIntervals > 0
     && report.interactions.summary.groups.all.frameIntervalP95Ms <= 33.3, report.interactions.summary);
   save();
 
   await page.waitForTimeout(1500);
+  await page.evaluate(() => {
+    window.__NEIGHBORHOOD_PERF_VISIBILITY__ = { initial: { observedMs: performance.now(), hidden: document.hidden, state: document.visibilityState }, events: [] };
+    document.addEventListener('visibilitychange', event => window.__NEIGHBORHOOD_PERF_VISIBILITY__.events.push({
+      observedMs: performance.now(), hidden: document.hidden, state: document.visibilityState, trusted: event.isTrusted }));
+  });
   const blank = await context.newPage(); await blank.goto('about:blank');
   await blank.evaluate(() => window.__NEIGHBORHOOD_PERF__?.stop()); await blank.bringToFront();
-  await page.waitForFunction(() => document.hidden, null, { timeout: 10000 });
-  await page.waitForTimeout(1500);
-  const before = await page.evaluate(() => ({ now: performance.now(), hidden: document.hidden, state: window.__NEIGHBORHOOD_PERF__.sample(), stream: window.__TOUR_GAME__.streaming() }));
-  const beforeCPU = metrics(await cdp.send('Performance.getMetrics'));
-  const requestsBefore = report.interactionNetwork.length, httpBefore = report.http.length;
-  await page.waitForTimeout(2000);
-  const afterCPU = metrics(await cdp.send('Performance.getMetrics'));
-  const after = await page.evaluate(() => ({ now: performance.now(), hidden: document.hidden, state: window.__NEIGHBORHOOD_PERF__.sample(), stream: window.__TOUR_GAME__.streaming() }));
-  report.hidden = { before, after, observedMs: after.now - before.now,
-    renderDelta: after.state.renderedFrames - before.state.renderedFrames, updateDelta: after.state.updateFrames - before.state.updateFrames,
-    taskDurationMs: (afterCPU.TaskDuration - beforeCPU.TaskDuration) * 1000,
-    scriptDurationMs: (afterCPU.ScriptDuration - beforeCPU.ScriptDuration) * 1000,
-    neighborhoodRequests: report.interactionNetwork.slice(requestsBefore).filter(item => new URL(item.url).pathname.startsWith(prefix)),
-    servedNeighborhoodRequests: report.http.slice(httpBefore).filter(item => item.path.startsWith(prefix)) };
-  check('hidden-neighborhood-zero-work', before.hidden && after.hidden && report.hidden.renderDelta === 0 && report.hidden.updateDelta === 0
-    && report.hidden.neighborhoodRequests.length === 0, report.hidden);
+  let hiddenObserved = false;
+  try {
+    // 隐藏页面的 RAF 可能停止；使用定时轮询保留浏览器的真实 visibility 状态。
+    await page.waitForFunction(() => document.hidden, null, { timeout: 10000, polling: 100 });
+    hiddenObserved = true;
+  } catch (error) {
+    if (!(error instanceof errors.TimeoutError)) throw error;
+    report.hidden = { status: 'unobserved', observed: false, reason: 'Background-tab visibility transition was not observed.',
+      timeoutMs: 10000, error: { name: error.name, message: error.message },
+      page: await page.evaluate(() => ({ hidden: document.hidden, state: document.visibilityState, trace: window.__NEIGHBORHOOD_PERF_VISIBILITY__ })),
+      blank: await blank.evaluate(() => ({ hidden: document.hidden, state: document.visibilityState })) };
+  }
+  if (hiddenObserved) {
+    await page.waitForTimeout(1500);
+    const before = await page.evaluate(() => ({ now: performance.now(), hidden: document.hidden, state: window.__NEIGHBORHOOD_PERF__.sample(), stream: window.__TOUR_GAME__.streaming() }));
+    const beforeCPU = metrics(await cdp.send('Performance.getMetrics'));
+    const requestsBefore = report.interactionNetwork.length, httpBefore = report.http.length;
+    await page.waitForTimeout(2000);
+    const afterCPU = metrics(await cdp.send('Performance.getMetrics'));
+    const after = await page.evaluate(() => ({ now: performance.now(), hidden: document.hidden, state: window.__NEIGHBORHOOD_PERF__.sample(), stream: window.__TOUR_GAME__.streaming() }));
+    report.hidden = { status: 'observed', observed: true, before, after, observedMs: after.now - before.now,
+      renderDelta: after.state.renderedFrames - before.state.renderedFrames, updateDelta: after.state.updateFrames - before.state.updateFrames,
+      taskDurationMs: (afterCPU.TaskDuration - beforeCPU.TaskDuration) * 1000,
+      scriptDurationMs: (afterCPU.ScriptDuration - beforeCPU.ScriptDuration) * 1000,
+      neighborhoodRequests: report.interactionNetwork.slice(requestsBefore).filter(item => new URL(item.url).pathname.startsWith(prefix)),
+      servedNeighborhoodRequests: report.http.slice(httpBefore).filter(item => item.path.startsWith(prefix)),
+      visibility: await page.evaluate(() => window.__NEIGHBORHOOD_PERF_VISIBILITY__) };
+  }
+  check('hidden-neighborhood-zero-work', hiddenObserved && report.hidden.before.hidden && report.hidden.after.hidden
+    && report.hidden.renderDelta === 0 && report.hidden.updateDelta === 0 && report.hidden.neighborhoodRequests.length === 0, report.hidden);
   await blank.close(); await page.bringToFront();
+  await page.waitForFunction(() => !document.hidden, null, { timeout: 10000, polling: 100 });
+  report.hidden.returnedVisibility = await page.evaluate(() => ({ hidden: document.hidden, state: document.visibilityState, trace: window.__NEIGHBORHOOD_PERF_VISIBILITY__ }));
   check('no-page-exceptions', report.errors.length === 0, report.errors);
   check('no-missing-build-resources', report.http.every(item => item.status !== 404 || item.path.startsWith('/api/') || item.path === '/favicon.ico'),
     report.http.filter(item => item.status === 404));

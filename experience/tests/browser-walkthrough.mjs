@@ -463,7 +463,8 @@ try {
     check(id + '-model-retry-restores-real-scene-and-selection', (await home(page)).center.id === original.id
       && await page.locator('#live-stage canvas').count() === 1);
     const position = await state(page);
-    await context.route('**/lighting/environments/night-1k.hdr', route => route.abort('connectionfailed'));
+    const nightEnvironmentURL = url => url.pathname.endsWith('/lighting/environments/night-1k.hdr');
+    await context.route(nightEnvironmentURL, route => route.abort('connectionfailed'));
     await page.locator('#lighting-night').click();
     await page.waitForFunction(() => window.__TOUR_GAME__?.renderer().lighting.phase === 'fallback');
     const actual = await page.evaluate(() => window.__TOUR_GAME__.renderer().lighting), feedback = await page.locator('#scene-status').innerText();
@@ -487,7 +488,7 @@ try {
     });
     check(id + '-fallback-reset-is-usable-and-status-text-fits', fallbackLayout.completeText
       && (await state(page)).x === position.x && (await state(page)).y === position.y, fallbackLayout);
-    await context.unroute('**/lighting/environments/night-1k.hdr');
+    await context.unroute(nightEnvironmentURL);
     if (await page.locator('#scene-retry').isVisible()) {
       await page.locator('#scene-retry').click();
       await page.waitForFunction(() => { const light = window.__TOUR_GAME__?.renderer().lighting; return light?.phase === 'ready' && light.mode === 'night'; });

@@ -4,9 +4,7 @@ import { daylightEnvironment } from './lighting-fallback.js';
 import { lightingMode, validateLightingRig, localLightingURL } from './lighting-contract.js';
 import { applyLightingProfile } from './architectural-profile.js';
 import { estimateRenderTargetStorage } from './texture-memory.js';
-
-const digest = async bytes => [...new Uint8Array(await crypto.subtle.digest('SHA-256', bytes))]
-  .map(byte => byte.toString(16).padStart(2, '0')).join('');
+import { readAssetBytes } from './asset-bytes.js';
 
 export function createSceneLighting(renderer, scene, {
   roots, signal, rigURL = new URL(import.meta.env.BASE_URL + 'lighting/rig.json', document.baseURI),
@@ -164,10 +162,8 @@ export function createSceneLighting(renderer, scene, {
     }
   }
   async function loadRig(abortSignal) {
-    const response = await fetch(rigURL, { signal: abortSignal, cache: 'no-cache' });
-    if (!response.ok) throw new Error('rig-unavailable');
-    const bytes = await response.arrayBuffer(), hash = await digest(bytes);
-    if (expectedRigHash && hash !== expectedRigHash) throw new Error('rig-version-mismatch');
+    const { bytes, sha256: hash } = await readAssetBytes(rigURL, expectedRigHash ? { sha256: expectedRigHash } : undefined,
+      abortSignal, { unavailable: 'rig-unavailable', mismatch: 'rig-version-mismatch' });
     const parsed = validateLightingRig(JSON.parse(new TextDecoder().decode(bytes)));
     for (const config of Object.values(parsed.modes)) localLightingURL(config.environment.file, rigURL, appURL);
     return { parsed: applyLightingProfile(parsed, profile), hash };
@@ -176,10 +172,8 @@ export function createSceneLighting(renderer, scene, {
     const url = localLightingURL(config.file, rigURL, appURL);
     const key = `${url.href}:${config.sha256}`;
     if (cache.has(key)) return cache.get(key);
-    const response = await fetch(url, { signal: abortSignal, cache: 'no-cache' });
-    if (!response.ok) throw new Error('environment-unavailable');
-    const bytes = await response.arrayBuffer(), hash = await digest(bytes);
-    if (hash !== config.sha256) throw new Error('environment-version-mismatch');
+    const { bytes, sha256: hash } = await readAssetBytes(url, { sha256: config.sha256 }, abortSignal,
+      { unavailable: 'environment-unavailable', mismatch: 'environment-version-mismatch' });
     if (abortSignal.aborted || disposed || token !== sequence) throw new DOMException('Cancelled', 'AbortError');
     const texture = new HDRLoader().createDataTexture(bytes);
     texture.mapping = THREE.EquirectangularReflectionMapping;

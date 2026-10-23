@@ -1,0 +1,68 @@
+{
+  "generatedAt": "2026-10-23T03:37:15.568Z",
+  "packageManifestSha256": "223fcf32ae41551aab0096dae95d8160c679dacb38469c0f7dbdfb4163b37f23",
+  "verifiedPackagedFiles": 299,
+  "driverSha256": "6f7650460a704f7a28dc469c6ab97d132636ea268f411d089339186e73229e43",
+  "moduleSha256": "4cf39e70533a07df14c258291178ceefd5cb289df8b8bab79f0da810e2fbf005",
+  "compiledSourceMaps": [
+    {
+      "path": "/assets/lighting-DOiuVFAF.js.map",
+      "source": "../../src/runtime/asset-bytes.js",
+      "sourceSha256": "4cf39e70533a07df14c258291178ceefd5cb289df8b8bab79f0da810e2fbf005",
+      "mapSha256": "65421f0978373f65c5776b5b29afcf81434db99676d0a1c8a755da27ad73d191"
+    }
+  ],
+  "checks": {
+    "passed": 11,
+    "failed": 0
+  },
+  "startedAt": "2026-10-23T03:32:10.467Z",
+  "finishedAt": "2026-10-23T03:32:11.135Z",
+  "browser": "151.0.7922.34",
+  "files": [
+    {
+      "file": "result.json.gz",
+      "bytes": 5658,
+      "sha256": "21babc84418d5f063c9e22f450f0bba401ab2c35e820148c2cac1cebdde4917d",
+      "decodedBytes": 81887,
+      "decodedSha256": "b72005a0ddfc05d80deed06aa513f404fdeb97461b692da338bbf1ddd620e988"
+    },
+    {
+      "file": "executed-driver.mjs.gz",
+      "bytes": 4850,
+      "sha256": "02212666881463370ff06b74d2052ff2337bc789d33c97263730dd29b7eeebd6",
+      "decodedBytes": 15634,
+      "decodedSha256": "6f7650460a704f7a28dc469c6ab97d132636ea268f411d089339186e73229e43"
+    },
+    {
+      "file": "asset-bytes.js.gz",
+      "bytes": 950,
+      "sha256": "859c47470ec8d8442dae19871414255eaa8a36d45e4a3d7a723bf53593f7762b",
+      "decodedBytes": 1706,
+      "decodedSha256": "4cf39e70533a07df14c258291178ceefd5cb289df8b8bab79f0da810e2fbf005"
+    },
+    {
+      "file": "fixtures/rig.json",
+      "bytes": 20983,
+      "sha256": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+      "packagedPath": "/lighting/rig.json"
+    },
+    {
+      "file": "fixtures/alternateRig.json",
+      "bytes": 10548,
+      "sha256": "84f2e2968dc0d55e18d9614bbd0c6d82ce49534ad435fc6476d2ff0625b56699",
+      "packagedPath": "/packs/ginza-wako/lighting.json"
+    },
+    {
+      "file": "fixtures/model.glb",
+      "bytes": 35556,
+      "sha256": "ee5307da94f4d1994e5323a0d31d6f79a255c9f2f10459e0a0e6434fb051fdb1",
+      "packagedPath": "/models/traveller.glb"
+    },
+    {
+      "file": "package-identity.json",
+      "bytes": 56487,
+      "sha256": "34549d48df9865b5bcbca709dcad14d0215de4aa572c683a1b1e8b328f619984"
+    }
+  ]
+}
