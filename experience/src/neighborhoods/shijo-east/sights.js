@@ -11,7 +11,7 @@ const sourceById = {
     licenseUrl: 'https://creativecommons.org/licenses/by/2.0/', purpose: 'Retained reviewed exterior reference; original geometry and materials.'
   }],
   'nishiki-market': [official('Kyoto Nishiki Market · Association', 'https://www.kyoto-nishiki.or.jp/en/union/'), official('Kyoto Nishiki Market · Visitor FAQ', 'https://www.kyoto-nishiki.or.jp/en/contact/'), osm('way', 772134672, 'OpenStreetMap · 錦市場')],
-  'nishiki-tenmangu': [official('Nishiki Tenmangū', 'https://nishikitenmangu.or.jp/'), osm('way', 1304786192, 'OpenStreetMap · 錦天満宮')],
+  'nishiki-tenmangu': [official('Nishiki Tenmangū', 'https://nishikitenmangu.or.jp/'), osm('way', 1304786192, 'OpenStreetMap · 錦天満宮'), osm('node', 5204263033, 'OpenStreetMap · 錦天満宮 石鳥居')],
   'takase-river': [osm('way', 482270819, 'OpenStreetMap · 高瀬川'), osm('node', 5492358876, 'OpenStreetMap · Shijo north sidewalk')],
   'pontocho-entrance': [official('Kyoto City · Pontocho-dori Street', 'https://ja.kyoto.travel/komafuda/show.php?id=2203&lang=en'), osm('node', 4641550774, 'OpenStreetMap · 京名所 先斗町')],
   'shijo-bridge': [osm('way', 532008156, 'OpenStreetMap · 四条大橋'), osm('way', 1560746285, 'OpenStreetMap · north pedestrian deck')],
@@ -38,7 +38,7 @@ const content = [
     id: 'nishiki-tenmangu', title: l('Nishiki Tenmangu street approach', '锦天满宫街道前方'),
     originalJapaneseName: '錦天満宮', category: 'culture', interests: ['history', 'culture', 'architecture'],
     detail: l('Nishiki Tenmangu faces the market across Shinkyogoku. The shrine identifies Sugawara no Michizane as its principal deity.', '锦天满宫面向市场，坐落于新京极通。神社介绍其主祭神为菅原道真。'),
-    reason: l('At the market’s eastern end, turn toward the shrine frontage and compare the shrine threshold with the shopping arcade.', '走到市场东端，转向神社街面，对照神社门前与商业拱廊的空间。'),
+    reason: l('At the market’s eastern end, look east toward the stone torii and compare the shrine threshold with the shopping arcade.', '在市场东端向东望向石鸟居，对照神社门前与商业拱廊的空间。'),
     practical: l('This stop remains on the public street. The shrine currently publishes gate hours of 08:00–20:00; confirm before a real visit.', '此停留点位于公共街道。神社目前公布的开闭门时间为08:00至20:00，实地到访前请再次确认。'),
     featureId: 'shijo-east:nishiki-tenmangu',
   },

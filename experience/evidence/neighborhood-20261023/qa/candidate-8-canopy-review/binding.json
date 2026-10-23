@@ -1,0 +1,99 @@
+{
+  "packageManifestSha256": "8146c6a00fb60026dee84414e4efa3ca1713869f92bc8cab2fbd4e592411e8d3",
+  "verifiedPackagedFiles": 446,
+  "source": {
+    "id": "shijo-east",
+    "revision": 1,
+    "geographySha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
+    "manifestSha256": "4e490c35d171aceb160efb70d94ae8c9fc097a2ad4440fe1010c1b619ca7a601"
+  },
+  "driverSha256": "826df4c9b5c17d4bba71020e2285f903d7b64895f01eab10d2f94e5cfb5b9130",
+  "browser": "151.0.7922.34",
+  "conditions": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "reducedMotion": "no-preference",
+    "timeoutMs": 120000,
+    "walkingTimeoutMs": 2400000,
+    "sections": [
+      "canopy-review"
+    ],
+    "assetDelivery": "Actual loopback HTTP with immutable captured build bodies and no-store; only deliberate abort/delay scenarios install request routes."
+  },
+  "status": "completed",
+  "checks": {
+    "passed": 19,
+    "failed": 0
+  },
+  "failedCheckIds": [],
+  "partialBoundary": null,
+  "actualHTTPRequests": 182,
+  "startedAt": "2026-10-23T05:46:39.068Z",
+  "finishedAt": "2026-10-23T05:48:22.654Z",
+  "elapsedMs": 103586,
+  "files": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 147875,
+      "sha256": "8e9d17523877fb95542f37c452c718facf18e29b3aa7ca2398966149ef147249",
+      "decodedBytes": 1392661,
+      "decodedSha256": "7025ffb4f3d68521536984619cb9222589467e45cd2a85f3356d8ae36278a891"
+    },
+    {
+      "file": "browser-neighborhood.executed.mjs.gz",
+      "bytes": 40494,
+      "sha256": "b7ba354a4d9116caa77a9765e4c6b15f96d25ecce8fb66bbf971221b40351308",
+      "decodedBytes": 167565,
+      "decodedSha256": "826df4c9b5c17d4bba71020e2285f903d7b64895f01eab10d2f94e5cfb5b9130"
+    },
+    {
+      "file": "run.log",
+      "bytes": 1233,
+      "sha256": "476b795a8ce51a16dd918617b906596058b76cfd00782d1d72e1f8e2b48eb270"
+    },
+    {
+      "file": "shinkyogoku-e006-canopy-day.png",
+      "bytes": 947343,
+      "sha256": "1c5a77d39f47113a1a1179b2caccee0e6bd06cce590533a145b51a5e51108eea"
+    },
+    {
+      "file": "shinkyogoku-e006-canopy-night.png",
+      "bytes": 822980,
+      "sha256": "cb3f4711560fcfe694f3e88b6d0d33517c136e89312514f8c06d66a7b113ca96"
+    },
+    {
+      "file": "tenmangu-recorded-canopy-day.png",
+      "bytes": 864994,
+      "sha256": "74847fcbb26fb72cfd81d86ea674510bc452b885b399beb6047a40c61df51e8d"
+    },
+    {
+      "file": "tenmangu-recorded-canopy-night.png",
+      "bytes": 883373,
+      "sha256": "190c6ad7f61a39fe8395395e693aa7f9d6b7c6ff251ac1ebeb190298e71676c8"
+    }
+  ],
+  "externalCanvases": [
+    {
+      "file": "../../art/candidate-8/shinkyogoku-e006-canopy-day-canvas.png",
+      "bytes": 692212,
+      "sha256": "4fc46276c4351a3356353d8f605e156438d2008a1aaee9de498eec0302536729"
+    },
+    {
+      "file": "../../art/candidate-8/shinkyogoku-e006-canopy-night-canvas.png",
+      "bytes": 577790,
+      "sha256": "d3e933725d986e3729aa809eb88b39302198849bc311d78d82bdc94b205cf8de"
+    },
+    {
+      "file": "../../art/candidate-8/tenmangu-recorded-canopy-day-canvas.png",
+      "bytes": 618930,
+      "sha256": "9baa24e257ec06441c5ab21029e7e8a1c120cfb64d651e10e33b326d7561bc51"
+    },
+    {
+      "file": "../../art/candidate-8/tenmangu-recorded-canopy-night-canvas.png",
+      "bytes": 635708,
+      "sha256": "c15b6190199dcdc27381eb59b7a77b6d02f629a5b84bfb8901a562a9b169eea4"
+    }
+  ]
+}

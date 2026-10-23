@@ -9,6 +9,7 @@ import { startServer } from '../server/src/server.js';
 import { createJourneyPlanner } from '../src/journey/recommendations.js';
 import { createJourneySession } from '../src/journey/session.js';
 import { createRouteNavigation } from '../src/simulation/route-navigation.js';
+import { verifyHistoricalGeography } from './helpers/neighborhood-evidence-source.mjs';
 import geography from '../src/neighborhoods/shijo-east/geography.json' with { type: 'json' };
 import { SIGHTS } from '../src/neighborhoods/shijo-east/sights.js';
 
@@ -24,6 +25,7 @@ const prefix = '/assets/neighborhoods/shijo-east/';
 const journeyKey = 'tourguideai.journey.session.v1';
 const keptKey = 'tourguideai.solo.places.v1';
 const sha = value => createHash('sha256').update(value).digest('hex');
+const geographyBytes = readFileSync(new URL('../src/neighborhoods/shijo-east/geography.json', import.meta.url));
 const assets = new Map();
 function collect(directory) {
   for (const entry of readdirSync(directory, { withFileTypes: true })) {
@@ -53,7 +55,9 @@ const legacy = {
 const report = {
   startedAt: new Date().toISOString(), artifact: { directory: dist, files, manifestSha256: sha(JSON.stringify(files)) },
   driverSha256: sha(readFileSync(new URL(import.meta.url))),
-  source: { id: geography.id, revision: geography.revision, geographySha256: sha(readFileSync(new URL('../src/neighborhoods/shijo-east/geography.json', import.meta.url))),
+  driverDependencies: [{ file: 'tests/helpers/neighborhood-evidence-source.mjs',
+    sha256: sha(readFileSync(new URL('./helpers/neighborhood-evidence-source.mjs', import.meta.url))) }],
+  source: { id: geography.id, revision: geography.revision, geographySha256: sha(geographyBytes),
     manifestSha256: sha(manifestBytes) },
   conditions: { viewport: [1440, 1000], reducedMotion: 'no-preference', timeoutMs: timeout,
     walkingTimeoutMs: walkingTimeout, sections: only || sections },
@@ -482,12 +486,17 @@ async function aimAlongArcade(page, checkId) {
   }
   return inputs;
 }
+function retainHistoricalGeography(source) {
+  const proof = verifyHistoricalGeography(source.source.geographySha256, geographyBytes);
+  report.source.historicalGeographyCompatibility = proof;
+  return proof;
+}
 function priorFullWalk() {
   const sourceBytes = gunzipSync(readFileSync(new URL('../evidence/neighborhood-20261023/ci/neighborhood-result.json.gz', import.meta.url)));
   const sourceSha256 = sha(sourceBytes);
   if (sourceSha256 !== '5a5c9f94960fb3212ed01f9a5d606034f267de1e3c5ffa82e3748f75052a9cfd') throw new Error('Prior actual route evidence changed.');
   const source = JSON.parse(sourceBytes);
-  if (source.source.geographySha256 !== report.source.geographySha256) throw new Error('The recorded route geometry differs from this build.');
+  retainHistoricalGeography(source);
   return { source, sourceSha256 };
 }
 async function aimWestAtTenmangu(page, record) {
@@ -542,7 +551,7 @@ function priorVisualReview() {
   const sourceSha256 = sha(bytes);
   if (sourceSha256 !== '897b1ceaf5a4ec1f9305704423b141397e049ba4b1a032acd07d998ccaef230b') throw new Error('Prior visual evidence changed.');
   const source = JSON.parse(bytes);
-  if (source.source.geographySha256 !== report.source.geographySha256) throw new Error('Recorded visual evidence uses different route geometry.');
+  retainHistoricalGeography(source);
   return { source, sourceSha256 };
 }
 async function recordNativeInputs(page) {
@@ -716,6 +725,15 @@ async function section(name, run) {
 }
 
 try {
+  const provenanceDescriptor = manifest.provenance;
+  const provenanceBytes = provenanceDescriptor && assets.get(assetPath(provenanceDescriptor));
+  if (!provenanceBytes || provenanceBytes.length !== provenanceDescriptor.bytes || sha(provenanceBytes) !== provenanceDescriptor.sha256) {
+    throw new Error('Packaged neighborhood provenance differs from its manifest.');
+  }
+  const provenance = JSON.parse(provenanceBytes);
+  if (provenance.geographySha256 !== report.source.geographySha256) throw new Error('Packaged geography differs from the current test source.');
+  check('packaged-provenance-binds-current-geography', true, { file: provenanceDescriptor.file,
+    sha256: sha(provenanceBytes), geographySha256: provenance.geographySha256, sceneSha256: provenance.sceneSha256 });
   const transportProof = [];
   for (const descriptor of descriptors) {
     for (const asset of [descriptor, ...(descriptor.dependencies || [])]) {
@@ -863,6 +881,10 @@ try {
 
   await section('route-choice', async () => {
     const { page } = await scenario('route-choice'); await enter(page);
+    const initialOrder = (await readSession(page)).stopIds;
+    if (initialOrder.length !== 6 || !initialOrder.includes('shijo-bridge')) throw new Error('Expected the reviewed six-sight default journey.');
+    await page.locator('[data-journey-remove="shijo-bridge"]').click();
+    await verifyChosenPlan(page, 'native-remove-bridge-establishes-edited-five-sight-journey', initialOrder.filter(id => id !== 'shijo-bridge'));
     await page.locator('#solo-inspect').click(); await page.locator('#live-stage').focus();
     const initialAzimuth = (await observe(page)).camera.azimuth;
     await page.keyboard.press('l');
@@ -880,12 +902,13 @@ try {
     const initialDistance = independentJourneyDistance(before);
     await page.locator('.journey-preferences > summary').click();
     await page.locator('#journey-suggest').click();
-    const options = await page.locator('[data-journey-choice]').evaluateAll(buttons => buttons.map(button => {
+    const readVisibleChoices = () => page.locator('[data-journey-choice]').evaluateAll(buttons => buttons.map(button => {
       const container = button.parentElement, paragraphs = container.querySelectorAll('p');
       return { index: button.dataset.journeyChoice, buttonText: button.textContent.trim(),
         title: container.querySelector('strong').textContent.trim(), distanceText: paragraphs[0].textContent.trim(),
         sightTitles: paragraphs[1].textContent.trim().split(' → ') };
     }));
+    const options = await readVisibleChoices();
     const locale = await page.locator('html').getAttribute('lang');
     const candidates = options.map(option => ({ ...option, stopIds: option.sightTitles.map(title => {
       const matches = SIGHTS.filter(sight => sight.title[locale] === title);
@@ -895,6 +918,22 @@ try {
     const alternative = candidates.find(option => !equal(option.stopIds, before.stopIds)
       && Math.abs(independentJourneyDistance({ ...before, stopIds: option.stopIds }).distanceMeters - initialDistance.distanceMeters) > .1);
     if (!alternative) throw new Error('No genuinely different visible route alternative is available.');
+    const english = { heading: await page.locator('.journey-alternatives > summary').innerText(),
+      status: await page.locator('.journey-status').innerText(), options };
+    await setLocale(page, 'zh');
+    const chinese = { heading: await page.locator('.journey-alternatives > summary').innerText(),
+      status: await page.locator('.journey-status').innerText(), options: await readVisibleChoices(),
+      session: await readSession(page), view: (await home(page)).currentView };
+    check('reviewed-default-offers-one-explicit-neutral-choice-in-both-locales', candidates.length === 1
+      && equal(alternative.stopIds, initialOrder) && english.heading === 'Suggested walk'
+      && english.status === 'One reviewed walk is available. Choose it, then adjust its stops.'
+      && english.options[0].title === 'Neighborhood contrasts' && english.options[0].buttonText === 'Choose this walk'
+      && chinese.heading === '推荐路线' && chinese.status === '目前有一条已审核漫步可供选择。选择后，再调整停留景点。'
+      && chinese.options.length === 1 && chinese.options[0].title === '街区的不同侧面' && chinese.options[0].buttonText === '选择这段漫步'
+      && equal(chinese.options[0].sightTitles, initialOrder.map(id => SIGHTS.find(sight => sight.id === id).title.zh))
+      && equal(chinese.session.stopIds, before.stopIds) && near(chinese.view, pose),
+    { english, chinese, initialOrder, before });
+    await setLocale(page, 'en');
     check('suggestions-preserve-active-journey-until-native-choice', equal((await readSession(page)).stopIds, before.stopIds)
       && near((await home(page)).currentView, pose) && Math.abs((await home(page)).neighborhood.distanceMeters - initialDistance.distanceMeters) < 1e-6
       && await page.evaluate(key => localStorage.getItem(key), keptKey) === privateBefore,
@@ -1508,7 +1547,8 @@ try {
     if (sourceSha256 !== '897b1ceaf5a4ec1f9305704423b141397e049ba4b1a032acd07d998ccaef230b') throw new Error('The retained Tenmangu visual record differs.');
     const source = JSON.parse(sourceBytes), previous = source.scenarios['nishiki-tenmangu-visual-review'];
     const remembered = source.screenshots.find(value => value.file === 'nishiki-tenmangu-review-day-canvas.png');
-    if (!remembered?.observed?.home?.currentView || source.source.geographySha256 !== report.source.geographySha256) throw new Error('The recorded Tenmangu view is unavailable.');
+    if (!remembered?.observed?.home?.currentView) throw new Error('The recorded Tenmangu view is unavailable.');
+    retainHistoricalGeography(source);
     const view = remembered.observed.home.currentView, reconstructed = sessionAt(view);
     const { page, record } = await scenario('tenmangu-native-framing', {}, { storage: { [journeyKey]: JSON.stringify(reconstructed) } });
     record.restoration = { sourceReportSha256: sourceSha256, sourcePackageSha256: source.artifact.manifestSha256,

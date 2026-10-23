@@ -1,0 +1,89 @@
+{
+  "packageManifestSha256": "8146c6a00fb60026dee84414e4efa3ca1713869f92bc8cab2fbd4e592411e8d3",
+  "verifiedPackagedFiles": 446,
+  "source": {
+    "id": "shijo-east",
+    "revision": 1,
+    "geographySha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
+    "manifestSha256": "4e490c35d171aceb160efb70d94ae8c9fc097a2ad4440fe1010c1b619ca7a601"
+  },
+  "driverSha256": "826df4c9b5c17d4bba71020e2285f903d7b64895f01eab10d2f94e5cfb5b9130",
+  "browser": "151.0.7922.34",
+  "conditions": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "reducedMotion": "no-preference",
+    "timeoutMs": 120000,
+    "walkingTimeoutMs": 2400000,
+    "sections": [
+      "western-approach"
+    ],
+    "assetDelivery": "Actual loopback HTTP with immutable captured build bodies and no-store; only deliberate abort/delay scenarios install request routes."
+  },
+  "status": "completed",
+  "checks": {
+    "passed": 13,
+    "failed": 0
+  },
+  "failedCheckIds": [],
+  "partialBoundary": null,
+  "actualHTTPRequests": 114,
+  "startedAt": "2026-10-23T05:43:15.774Z",
+  "finishedAt": "2026-10-23T05:45:24.702Z",
+  "elapsedMs": 128928,
+  "files": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 460979,
+      "sha256": "99aaf06af8d0222a56b1dcb0b8bc8a6755c7cf4a1eb2a98ab1e7f524cb370a43",
+      "decodedBytes": 5825897,
+      "decodedSha256": "7b291e963d82f758ca1a1edc69868cd07ad466be7e2b6e1b9249dcc9fecd0191"
+    },
+    {
+      "file": "browser-neighborhood.executed.mjs.gz",
+      "bytes": 40494,
+      "sha256": "b7ba354a4d9116caa77a9765e4c6b15f96d25ecce8fb66bbf971221b40351308",
+      "decodedBytes": 167565,
+      "decodedSha256": "826df4c9b5c17d4bba71020e2285f903d7b64895f01eab10d2f94e5cfb5b9130"
+    },
+    {
+      "file": "run.log",
+      "bytes": 798,
+      "sha256": "ae6976b69868884d1d9985130eb4bc431fd726b306910a461a742f24b2ced214"
+    },
+    {
+      "file": "tenmangu-western-arrival-ordinary-day.png",
+      "bytes": 1026716,
+      "sha256": "ebe6b5cd627a35d20e210ca2f0e8d56f6ffe31cfdce0715793021336ccb18b6c"
+    },
+    {
+      "file": "tenmangu-western-approach-day.png",
+      "bytes": 1032787,
+      "sha256": "f1e328d5554b5e2cd272b4b0555f55bb2f6becd90c3642536cef01b29f057d93"
+    },
+    {
+      "file": "tenmangu-western-approach-night.png",
+      "bytes": 895884,
+      "sha256": "08fae994b6e3ed67d7272a3a0f11f79df97aee109288433d7550b6a287c051df"
+    }
+  ],
+  "externalCanvases": [
+    {
+      "file": "../../art/candidate-8/tenmangu-western-arrival-ordinary-day-canvas.png",
+      "bytes": 771962,
+      "sha256": "28af08eaa96c542d226b1eaf734d076e947562fff718f897000d41a77536682d"
+    },
+    {
+      "file": "../../art/candidate-8/tenmangu-western-approach-day-canvas.png",
+      "bytes": 776065,
+      "sha256": "d211f269cc2943cc56cc97a237c1ff83332c3eb4d264cf719d3ea49e48835346"
+    },
+    {
+      "file": "../../art/candidate-8/tenmangu-western-approach-night-canvas.png",
+      "bytes": 649094,
+      "sha256": "6845ad20948388b5bf9dea6a7ecf4db58adf4bb2ad7e325d9903a779cf2b7dce"
+    }
+  ]
+}

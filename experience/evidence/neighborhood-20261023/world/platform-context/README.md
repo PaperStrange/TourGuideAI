@@ -81,3 +81,32 @@ node experience/evidence/neighborhood-20261023/world/platform-context/audit-open
 ```
 
 The [Node audit](audit-open-export.mjs) uses glTF-Transform 4.5.1 and meshoptimizer 1.3.0 to decode actual artifacts. It invokes the [independent geometry check](audit-open-form.py), using Shapely 2.2.0. Extracted target triangles remain ignored; the portable report retains their hashes and measured results. Runtime artifacts are read-only throughout this command.
+
+## Candidate 9 floor and metadata acceptance
+
+[The floor support record](floor-support.json), SHA-256 `c3f236da23c9e83b9a44d5d4b2a06d0f03cbca14be8c79b780713a62ea1aea8a`, checks the exact 73.626288 m² source footprint against the current prepared display and navigation surfaces. Positive-area overlap is zero; nearest navigation distance is 1.631595472 m. The two original prepared footprint triangles cover the entire polygon. Paving material and height zero are authored; the municipal data supplies no measured pavement material or elevation. This surface remains nonwalkable.
+
+[The independent candidate 9 export audit](candidate9-export-audit.json), SHA-256 `57f0e9c9b4ee0dff263d69106fa43ff70da9bdd43468c5d166b212329f448144`, passes for manifest `79b1a3ed91f0b672364c690e44de9278dce555fab0074ce0dc4aaa8add62f534`, provenance `3d1e1ac45623495f52d6e0d876a1a3766679cf47679476651d90b11797b88d67`. Its baseline is candidate 8 manifest `4e490c35d171aceb160efb70d94ae8c9fc097a2ad4440fe1010c1b619ca7a601`.
+
+The audit decodes all 74 sections and compares 9,731 source groups. Source223 in `cell-e001-s001` BASE and NEAR retains every existing triangle's attributes, material and world transformation. Each gains exactly two upward paving triangles at virtual height zero, taking its count from 108 to 110. Their projected vertices exactly match the retained top-face triangle plan. All unrelated sources, including the Shinkyōgoku material treatment, remain exact. All shared images and lighting resources retain their original bytes. The independent resource check verifies 148 gzip round trips; 182 of the 347 packaged files remain byte-identical. Changed metadata records the approved anchor and floor through the ordinary production pipeline.
+
+Required 3D startup transfer is **3,035,372 bytes by day** and **3,028,136 bytes by night**, including the traveller and selected HDR. All section transfer budgets pass. Decoded resource size, browser memory and frame cost remain separate quantities. Application HTML, JavaScript, CSS, fonts and HTTP framing are outside these startup figures. Actual appearance is covered by the separate browser review.
+
+Reproduce using the pinned art toolkit from the repository root; the output directory must be a new ignored directory:
+
+```bash
+node experience/evidence/neighborhood-20261023/world/platform-context/audit-candidate9-export.mjs \
+  artifacts/neighborhood-20261023/art/shinkyogoku-material-transport \
+  artifacts/neighborhood-20261023/art/candidate-9-transport \
+  artifacts/neighborhood-20261023/world/candidate9-export-audit-repeat
+```
+
+The [audit producer](audit-candidate9-export.mjs) SHA-256 is `a8894cc945b96b7f8613addc2cfbcebfac27d05c820617b478e5e58a2ffbf602`. Its glTF-Transform 4.5.1 and meshoptimizer 1.3.0 readers inspect actual decoded attributes and preserve triangle orientation when comparing records.
+
+## Tenmangū viewing-anchor compatibility
+
+[The compatibility record](tenmangu-compatibility.json), SHA-256 `156cdc90f594a9a69a672ac8003e1ddbfa76259c0dc86c5b59035b0e55cc35dd`, permits precisely six geography fields on `nishiki-tenmangu`: `nodeId`, `approachNodeId`, `x`, `y`, `latitude`, and `longitude`. The pause uses retained node354840400, west of the mapped torii5204263033. The separately recorded EN/ZH observation wording and torii citation are the only content changes.
+
+[The historical geography](geography-before.json.gz) is retained for independent CI checks: gzip SHA-256 `1dfd6a18ed0c5787f1ffbeff285f65ea4deaade909a10529e32bddb74aaaf6f8`, decoded SHA-256 `cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55`. Current geography SHA-256 is `0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f`. Canonical scene SHA-256 remains `2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e`.
+
+All 73 graph nodes, 73 edges, frame, selected edge order and complete six-sight distance **1,353.4440598583508 m** remain identical. The retained eastern metric pose restores with zero XY error and the same camera/lighting. Revision1 remains compatible because positions use the unchanged metric graph; saved stop IDs and their editable order remain valid. Planned leg distances recompute from the reviewed viewing anchor. The available recommendations now contain one distinct reviewed route; edited five-stop orders remain supported.

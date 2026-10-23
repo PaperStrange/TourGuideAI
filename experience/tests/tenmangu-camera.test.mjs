@@ -15,6 +15,17 @@ test('the recorded Tenmangu orbit keeps street scale, allows reversal, and prese
   assert.equal(createHash('sha256').update(bytes).digest('hex'), '22b714288618cc34b9ac8369545a62a3d21ca18a6a8e2141dd9ae815d0ceef2f');
   const observed = JSON.parse(bytes).scenarios['tenmangu-native-framing'].inputs[0].before;
   const idleObserved = JSON.parse(await readFile(new URL('./fixtures/tenmangu-idle-pose.json', import.meta.url)));
+  const idleBytes = gunzipSync(await readFile(new URL('../../' + idleObserved.report, import.meta.url)));
+  assert.equal(createHash('sha256').update(idleBytes).digest('hex'), idleObserved.reportSha256);
+  const idleReport = JSON.parse(idleBytes);
+  const capturedIdle = idleReport.checks.find(check => check.id === idleObserved.checkId).evidence.before;
+  assert.equal(idleReport.artifact.manifestSha256, idleObserved.packageSha256);
+  assert.equal(idleReport.source.geographySha256, idleObserved.geographySha256);
+  assert.equal(idleReport.source.manifestSha256, idleObserved.manifestSha256);
+  assert.deepEqual(capturedIdle.home.currentView.player, idleObserved.player);
+  assert.deepEqual(capturedIdle.home.currentView.camera, idleObserved.camera);
+  for (const key of ['target', 'desiredPosition', 'position']) assert.deepEqual(capturedIdle.camera[key], idleObserved[key]);
+  assert.deepEqual(capturedIdle.stream.cells.filter(cell => cell.level).map(({ id, level }) => ({ id, level })), idleObserved.cells);
   const player = structuredClone(observed.route.position), originalPlayer = structuredClone(player);
   assert.deepEqual(player, idleObserved.player);
   assert.deepEqual(observed.home.currentView.camera, idleObserved.camera);

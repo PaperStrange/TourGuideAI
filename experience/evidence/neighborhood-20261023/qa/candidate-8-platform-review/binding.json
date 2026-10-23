@@ -1,0 +1,79 @@
+{
+  "packageManifestSha256": "8146c6a00fb60026dee84414e4efa3ca1713869f92bc8cab2fbd4e592411e8d3",
+  "verifiedPackagedFiles": 446,
+  "source": {
+    "id": "shijo-east",
+    "revision": 1,
+    "geographySha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
+    "manifestSha256": "4e490c35d171aceb160efb70d94ae8c9fc097a2ad4440fe1010c1b619ca7a601"
+  },
+  "driverSha256": "826df4c9b5c17d4bba71020e2285f903d7b64895f01eab10d2f94e5cfb5b9130",
+  "browser": "151.0.7922.34",
+  "conditions": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "reducedMotion": "no-preference",
+    "timeoutMs": 120000,
+    "walkingTimeoutMs": 2400000,
+    "sections": [
+      "platform-review"
+    ],
+    "assetDelivery": "Actual loopback HTTP with immutable captured build bodies and no-store; only deliberate abort/delay scenarios install request routes."
+  },
+  "status": "completed",
+  "checks": {
+    "passed": 9,
+    "failed": 0
+  },
+  "failedCheckIds": [],
+  "partialBoundary": null,
+  "actualHTTPRequests": 97,
+  "startedAt": "2026-10-23T05:45:44.708Z",
+  "finishedAt": "2026-10-23T05:46:22.096Z",
+  "elapsedMs": 37388,
+  "files": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 93196,
+      "sha256": "488b5eface88152d67d51104d303b603788d6980ba52f0586cfe5e1991b2dae5",
+      "decodedBytes": 778301,
+      "decodedSha256": "630d2f0ff4cee1922724aa41fbfeeb369a822676ed64f8f4f1ddacb477a4627e"
+    },
+    {
+      "file": "browser-neighborhood.executed.mjs.gz",
+      "bytes": 40494,
+      "sha256": "b7ba354a4d9116caa77a9765e4c6b15f96d25ecce8fb66bbf971221b40351308",
+      "decodedBytes": 167565,
+      "decodedSha256": "826df4c9b5c17d4bba71020e2285f903d7b64895f01eab10d2f94e5cfb5b9130"
+    },
+    {
+      "file": "run.log",
+      "bytes": 522,
+      "sha256": "b83129efafe927cad14a7d90ce2325a0b30e4055624fc5979253af8aab5a0cea"
+    },
+    {
+      "file": "platform-e001-prior-view-day.png",
+      "bytes": 949305,
+      "sha256": "8df5fdc502167bf1a4e8d22168835d0dce16087cf957760e4b1aea07f7ca5846"
+    },
+    {
+      "file": "platform-e001-prior-view-night.png",
+      "bytes": 787716,
+      "sha256": "f31ce440aeb25f6effff7f0b028f5b90b24d09fbcdb08d23c2ad8044e6157f50"
+    }
+  ],
+  "externalCanvases": [
+    {
+      "file": "../../art/candidate-8/platform-e001-prior-view-day-canvas.png",
+      "bytes": 701736,
+      "sha256": "614d192ac71b29d830adea6e0e1097d51a79890d9df8ef421699ebf16e2394ea"
+    },
+    {
+      "file": "../../art/candidate-8/platform-e001-prior-view-night-canvas.png",
+      "bytes": 550082,
+      "sha256": "9bd5ee53b8de14af822e1d8f8afc1ffceb09dea7ad8dbdcec65b9d0b7bc98963"
+    }
+  ]
+}

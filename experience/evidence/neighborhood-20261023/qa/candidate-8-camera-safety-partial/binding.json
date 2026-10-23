@@ -1,0 +1,95 @@
+{
+  "packageManifestSha256": "8146c6a00fb60026dee84414e4efa3ca1713869f92bc8cab2fbd4e592411e8d3",
+  "verifiedPackagedFiles": 446,
+  "source": {
+    "id": "shijo-east",
+    "revision": 1,
+    "geographySha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
+    "manifestSha256": "4e490c35d171aceb160efb70d94ae8c9fc097a2ad4440fe1010c1b619ca7a601"
+  },
+  "driverSha256": "826df4c9b5c17d4bba71020e2285f903d7b64895f01eab10d2f94e5cfb5b9130",
+  "browser": "151.0.7922.34",
+  "conditions": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "reducedMotion": "no-preference",
+    "timeoutMs": 120000,
+    "walkingTimeoutMs": 2400000,
+    "sections": [
+      "camera-safety"
+    ],
+    "assetDelivery": "Actual loopback HTTP with immutable captured build bodies and no-store; only deliberate abort/delay scenarios install request routes."
+  },
+  "status": "normal-motion-complete-full-matrix-interrupted-and-superseded",
+  "checks": {
+    "passed": 53,
+    "failed": 2
+  },
+  "failedCheckIds": [
+    "no-preference-settled-visible-recovered-camera-stays-render-idle-for-two-seconds",
+    "camera-safety-completed"
+  ],
+  "partialBoundary": {
+    "passed": 53,
+    "failed": 1,
+    "completedNativeGestures": 14,
+    "unexecuted": "Reduced-motion assertions; stopped on root instruction after complete normal-motion reload/legacy boundary."
+  },
+  "actualHTTPRequests": 194,
+  "startedAt": "2026-10-23T05:21:23.747Z",
+  "finishedAt": "2026-10-23T05:42:44.846Z",
+  "elapsedMs": 1281099,
+  "files": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 1066726,
+      "sha256": "4c0d2727074edbf7b44c661e087ac465f30acddad325c52a38da341880e0c6ba",
+      "decodedBytes": 13055298,
+      "decodedSha256": "319eb9509b2898f6ed420c6e8f9d10dd850b0d7303852e21a9039a64987ff06a"
+    },
+    {
+      "file": "browser-neighborhood.executed.mjs.gz",
+      "bytes": 40494,
+      "sha256": "b7ba354a4d9116caa77a9765e4c6b15f96d25ecce8fb66bbf971221b40351308",
+      "decodedBytes": 167565,
+      "decodedSha256": "826df4c9b5c17d4bba71020e2285f903d7b64895f01eab10d2f94e5cfb5b9130"
+    },
+    {
+      "file": "normal-motion-before-interruption.json.gz",
+      "bytes": 1064039,
+      "sha256": "6ba6daf7001e5adb44b23888a724a15190949746b979f7af6ad8029bed087dc1",
+      "decodedBytes": 13033761,
+      "decodedSha256": "877e527d3fbc7b34b8c323ed95ba9041603acff9c21113717f6bf221c5016933"
+    },
+    {
+      "file": "interim-after-drag.json.gz",
+      "bytes": 532600,
+      "sha256": "22aff45a774ad3cbcae5aeb9a20088e979737d262959a67795836976427a9cb8",
+      "decodedBytes": 5981029,
+      "decodedSha256": "c33f1ea97430bfa189503eeb650a1be2a7e25b450e903df434583b53870622d8"
+    },
+    {
+      "file": "run.log",
+      "bytes": 4103,
+      "sha256": "30ab3e62acef5ecee37a0e4df86eb1ea12f65cb16e60022c6afa08bf05af9d4f"
+    },
+    {
+      "file": "interruption-request.json",
+      "bytes": 359,
+      "sha256": "2388c7b233143ef78082d69f0db2b407a99f537166bc01f6aeb6880fe58b74e5"
+    },
+    {
+      "file": "tenmangu-purposeful-pan-no-preference.png",
+      "bytes": 812098,
+      "sha256": "0f9456f52b9e67b82f32b7217e67c1abe975c9e45a248c6f14dcbc003ef8b8dc"
+    },
+    {
+      "file": "tenmangu-purposeful-pan-no-preference-canvas.png",
+      "bytes": 542750,
+      "sha256": "99239b425b1f8f96cf7770b3269c150f658765b9a336d02eeebbf11a0b03019b"
+    }
+  ],
+  "externalCanvases": []
+}

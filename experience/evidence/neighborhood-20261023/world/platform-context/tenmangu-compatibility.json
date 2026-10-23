@@ -1,0 +1,350 @@
+{
+  "status": "pass",
+  "scope": "source metadata and stored-pose compatibility; rendered asset equivalence requires its separate all-section audit",
+  "reviewedAt": "2026-10-23",
+  "sourceId": "shijo-east",
+  "revision": 1,
+  "baseline": {
+    "directory": "artifacts/neighborhood-20261023/candidate-8-canonical-source",
+    "geography": {
+      "bytes": 175219,
+      "sha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55"
+    }
+  },
+  "candidate": {
+    "directory": "experience/src/neighborhoods/shijo-east",
+    "geography": {
+      "bytes": 175220,
+      "sha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f"
+    }
+  },
+  "auditProducer": {
+    "file": "artifacts/neighborhood-20261023/world/audit-tenmangu-compatibility.mjs",
+    "bytes": 16660,
+    "sha256": "23cfb860da6de77d005629579e33c3afe462ed3d3c5d92bfdc79319f1477ba12"
+  },
+  "producerIdentities": {
+    "experience/content-tools/prepare-shijo-east.py": {
+      "bytes": 29132,
+      "sha256": "7d8a8d0bfb2e48f6ca7c75bfd54886941b65b2fd60e3629e28e1cf0348f16a9e"
+    },
+    "experience/src/simulation/route-navigation.js": {
+      "bytes": 15501,
+      "sha256": "6b6d91adf3d058960a613c0ed32592aeed4a1601747c1e3b0bcfec717b907824"
+    },
+    "experience/src/journey/recommendations.js": {
+      "bytes": 14031,
+      "sha256": "03f7d3168a9f985fee5cb76076b4b4a5bf83187a045c75f30301a833084455e8"
+    },
+    "experience/src/journey/session.js": {
+      "bytes": 7411,
+      "sha256": "6d533ec4ad4e467ca2a0c36afb647f6828ce6f84b847830cd07257d15cb0f71d"
+    },
+    "experience/src/runtime/exploration-state.js": {
+      "bytes": 3952,
+      "sha256": "0857c29611bb98342fe95e0e6e95a0c68136fd0cebeff3fd0de7c2aa34ef8a23"
+    }
+  },
+  "exactChanges": [
+    {
+      "path": "sights[nishiki-tenmangu].nodeId",
+      "before": "osm:node:434344433",
+      "after": "osm:node:354840400"
+    },
+    {
+      "path": "sights[nishiki-tenmangu].approachNodeId",
+      "before": "osm:node:434344433",
+      "after": "osm:node:354840400"
+    },
+    {
+      "path": "sights[nishiki-tenmangu].x",
+      "before": 681.4668908271395,
+      "after": 651.9644999448319
+    },
+    {
+      "path": "sights[nishiki-tenmangu].y",
+      "before": 142.00403199935374,
+      "after": 143.13562662996517
+    },
+    {
+      "path": "sights[nishiki-tenmangu].latitude",
+      "before": 35.005019,
+      "after": 35.0050292
+    },
+    {
+      "path": "sights[nishiki-tenmangu].longitude",
+      "before": 135.7671845,
+      "after": 135.7668613
+    }
+  ],
+  "contentChanges": [
+    {
+      "before": "At the market’s eastern end, turn toward the shrine frontage and compare the shrine threshold with the shopping arcade.",
+      "after": "At the market’s eastern end, look east toward the stone torii and compare the shrine threshold with the shopping arcade."
+    },
+    {
+      "before": "走到市场东端，转向神社街面，对照神社门前与商业拱廊的空间。",
+      "after": "在市场东端向东望向石鸟居，对照神社门前与商业拱廊的空间。"
+    },
+    {
+      "before": "osm('way', 1304786192, 'OpenStreetMap · 錦天満宮')],",
+      "after": "osm('way', 1304786192, 'OpenStreetMap · 錦天満宮'), osm('node', 5204263033, 'OpenStreetMap · 錦天満宮 石鳥居')],"
+    }
+  ],
+  "contentIdentities": {
+    "before": {
+      "bytes": 8489,
+      "sha256": "60d0585b08f8e19b9ec5a4d37f8cd48d3a8e3afb8a7f5f4f218c8270a9897c6a"
+    },
+    "after": {
+      "bytes": 8555,
+      "sha256": "dfe45efcb2b78c2e017707bcad88f4fc7f6d7dc2fbf3688b120dce0a12c28e91"
+    }
+  },
+  "sourceNode": {
+    "type": "node",
+    "id": 354840400,
+    "lat": 35.0050292,
+    "lon": 135.7668613,
+    "timestamp": "2018-05-03T00:52:25Z",
+    "version": 6,
+    "changeset": 58632017,
+    "user": "Climbers High",
+    "uid": 4253564
+  },
+  "citedToriiNode": {
+    "type": "node",
+    "id": 5204263033,
+    "lat": 35.0050249,
+    "lon": 135.7669717,
+    "timestamp": "2025-09-02T02:33:58Z",
+    "version": 3,
+    "changeset": 171339807,
+    "user": "smallCat",
+    "uid": 22252985,
+    "tags": {
+      "ceremonial_gate": "torii",
+      "man_made": "ceremonial_gate",
+      "name": "錦天満宮",
+      "note": "鳥居",
+      "religion": "shinto"
+    }
+  },
+  "unchangedSources": {
+    "scene.json": {
+      "bytes": 8789674,
+      "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e"
+    },
+    "source-ledger.json": {
+      "bytes": 5999,
+      "sha256": "be0f8065699a53f09293140e2499bca2468f0aa7cea503dc6436f45c9b17a24c"
+    },
+    "source-review.json": {
+      "bytes": 756,
+      "sha256": "4e3fbb9d2fd3134153d2b378f5de995c2f7e3135ea3d778a5fe2f19b55f00258"
+    },
+    "sources/kyoto-lod1.geojson": {
+      "bytes": 6304053,
+      "sha256": "da1af049906d736b6329e062673a84728640957475d3b46107cebf46b48a2d93"
+    },
+    "sources/route-osm.json": {
+      "bytes": 47176,
+      "sha256": "5681dceac0c5d206a6e5315c77ca6a39a292ab3915f23b60cc17c77cecb4099e"
+    },
+    "sources/scene-osm.json": {
+      "bytes": 2390775,
+      "sha256": "1e3ba265bc8dd3c6744ccd897ad915016a2cc0110c306bf3e064ca63ced5dd0c"
+    }
+  },
+  "geometry": {
+    "sceneSha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e",
+    "navigationSemanticSha256": "ecc9efe1987feff7e8838c19f69f78c361f407239b32790eb66e1d35e15bb1bf",
+    "selectedRouteSemanticSha256": "ff745a82d1222c9999337a40e870bf79e52c4f069a370903f29f9281e1944719",
+    "nodes": 73,
+    "edges": 73,
+    "frameExact": true,
+    "completeSelectedEdgeOrderExact": true,
+    "sixSightDistanceMetres": 1353.4440598583508,
+    "previousLegDistances": [
+      379.84788705517553,
+      418.65425768209485,
+      458.53437205148043,
+      55.90752714194991,
+      40.50001592765022
+    ],
+    "currentLegDistances": [
+      379.84788705517553,
+      389.1295571906234,
+      488.05907254295187,
+      55.90752714194991,
+      40.50001592765022
+    ],
+    "allEdgeMidpointPosesExact": true
+  },
+  "compatibility": {
+    "retainedPackRevision": 1,
+    "rationale": "The change relocates one exterior viewing pause to another existing graph node. Frame, graph, collision dimensions, scene, source records and stable place/sight IDs remain exact. Stored metric player position, edgeId/edgeDistance, camera and lighting remain valid; saved stop orders remain editable. Planned legs are recomputed from the current sight anchors.",
+    "historicalReport": {
+      "file": "experience/evidence/neighborhood-20261023/ci/neighborhood-result.json.gz",
+      "decodedSha256": "5a5c9f94960fb3212ed01f9a5d606034f267de1e3c5ffa82e3748f75052a9cfd"
+    },
+    "historicalView": {
+      "version": 3,
+      "packId": "shijo-east",
+      "revision": 1,
+      "player": {
+        "edgeId": "osm:way:66703316:434344433:5204263033",
+        "edgeDistance": 0,
+        "height": 0,
+        "x": 681.467,
+        "y": 142.004
+      },
+      "camera": {
+        "azimuth": 0.22,
+        "polar": 1.1,
+        "distance": 22,
+        "targetOffset": {
+          "x": 1.199832,
+          "y": -2.199994,
+          "height": 1.6
+        }
+      }
+    },
+    "restoredPose": {
+      "x": 681.467,
+      "y": 142.004,
+      "height": 0,
+      "edgeId": "osm:way:66703316:434344433:5204263033",
+      "edgeDistance": 0
+    },
+    "metricXYErrorMetres": 0,
+    "normalizedViewExact": true,
+    "storageWritesPerformed": false
+  },
+  "recommendations": {
+    "previousDefaultCount": 2,
+    "currentDefaultCount": 1,
+    "currentStopIds": [
+      "mitsui-frontage",
+      "nishiki-market",
+      "nishiki-tenmangu",
+      "takase-river",
+      "pontocho-entrance",
+      "shijo-bridge"
+    ],
+    "interestResults": [
+      {
+        "interest": "architecture",
+        "recommendations": 1,
+        "stopIds": [
+          "mitsui-frontage",
+          "nishiki-market",
+          "nishiki-tenmangu",
+          "takase-river",
+          "pontocho-entrance",
+          "shijo-bridge"
+        ]
+      },
+      {
+        "interest": "culture",
+        "recommendations": 1,
+        "stopIds": [
+          "mitsui-frontage",
+          "nishiki-market",
+          "nishiki-tenmangu",
+          "takase-river",
+          "pontocho-entrance",
+          "shijo-bridge"
+        ]
+      },
+      {
+        "interest": "food",
+        "recommendations": 1,
+        "stopIds": [
+          "mitsui-frontage",
+          "nishiki-market",
+          "nishiki-tenmangu",
+          "takase-river",
+          "pontocho-entrance",
+          "shijo-bridge"
+        ]
+      },
+      {
+        "interest": "history",
+        "recommendations": 1,
+        "stopIds": [
+          "mitsui-frontage",
+          "nishiki-market",
+          "nishiki-tenmangu",
+          "takase-river",
+          "pontocho-entrance",
+          "shijo-bridge"
+        ]
+      },
+      {
+        "interest": "outdoors",
+        "recommendations": 1,
+        "stopIds": [
+          "mitsui-frontage",
+          "nishiki-market",
+          "nishiki-tenmangu",
+          "takase-river",
+          "pontocho-entrance",
+          "shijo-bridge"
+        ]
+      },
+      {
+        "interest": "shopping",
+        "recommendations": 1,
+        "stopIds": [
+          "mitsui-frontage",
+          "nishiki-market",
+          "nishiki-tenmangu",
+          "takase-river",
+          "pontocho-entrance",
+          "shijo-bridge"
+        ]
+      },
+      {
+        "interest": "street",
+        "recommendations": 1,
+        "stopIds": [
+          "mitsui-frontage",
+          "nishiki-market",
+          "nishiki-tenmangu",
+          "takase-river",
+          "pontocho-entrance",
+          "shijo-bridge"
+        ]
+      },
+      {
+        "interest": "water",
+        "recommendations": 1,
+        "stopIds": [
+          "mitsui-frontage",
+          "nishiki-market",
+          "nishiki-tenmangu",
+          "takase-river",
+          "pontocho-entrance",
+          "shijo-bridge"
+        ]
+      }
+    ],
+    "retainedArchitectureStopIds": [
+      "mitsui-frontage",
+      "nishiki-tenmangu",
+      "takase-river",
+      "pontocho-entrance",
+      "shijo-bridge"
+    ],
+    "retainedArchitecturePreviousMetres": 1351.3363858011537,
+    "retainedArchitectureRecalculatedMetres": 1353.4440598583508,
+    "fiveStopEditAndAddRestorePass": true,
+    "reverseEditPass": true,
+    "description": "One distinct reviewed default corridor remains. A five-stop edited order is valid and editable; identical edge coverage does not create a second recommendation."
+  },
+  "nextGate": {
+    "pipeline": "normal preparation → art selection → river context → Blender → optimizer → transport",
+    "required": "Regenerated source hashes must reach the normal provenance chain. Compare all74 decoded sections against candidate8: existing geometry, materials, UVs, source indices and world transforms exact. JSON scene-source hashes and derived provenance identities may update through normal generation. Recheck all resource hashes, gzip identities, limits and actual browser arrival."
+  }
+}

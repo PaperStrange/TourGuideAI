@@ -179,6 +179,44 @@ if (persistenceMode) {
     assert.throws(() => planner.recommend({ mustSeeIds: ['unmapped-sight'] }));
   });
 
+  test('unchanged reviewed stop orders retain the neighborhood title for every selected interest', () => {
+    const original = selected();
+    const constraints = { minStops: original.stopIds.length, maxStops: original.stopIds.length,
+      minDistanceMeters: Math.floor(original.distanceMeters), maxDistanceMeters: Math.ceil(original.distanceMeters),
+      mustSeeIds: [original.stopIds[0]] };
+    const baseline = planner.recommend(constraints)[0];
+    for (const interest of planner.interestIds) {
+      const plan = planner.recommend({ ...constraints, interests: [interest] })[0];
+      assert.deepEqual(plan.stopIds, baseline.stopIds);
+      assert.equal(plan.variantId, 'neighborhood');
+      assert.deepEqual(plan.title, { en: 'Neighborhood contrasts', zh: '街区的不同侧面' });
+      assert.deepEqual(plan.interests, [interest]);
+      const saved = createJourneySession(plan, { now: createdAt });
+      assert.deepEqual(planner.route(saved.stopIds, saved).title, plan.title);
+    }
+  });
+
+  test('personalization compares the actual constrained recommendation with the same no-interest request', () => {
+    const constraints = { minStops: 5, maxStops: 5, minDistanceMeters: 0, maxDistanceMeters: 2000,
+      mustSeeIds: ['mitsui-frontage'] };
+    const baseline = planner.recommend(constraints)[0];
+    const personalized = planner.recommend({ ...constraints, interests: ['water'] })[0];
+    assert.notDeepEqual(personalized.stopIds, baseline.stopIds);
+    assert.equal(personalized.variantId, 'your-interests');
+    assert.deepEqual(personalized.title, { en: 'A walk for your interests', zh: '围绕你的兴趣漫步' });
+
+    const requiredStops = { ...constraints, mustSeeIds: personalized.stopIds };
+    const requiredBaseline = planner.recommend(requiredStops)[0];
+    const unchanged = planner.recommend({ ...requiredStops, interests: ['water'] })[0];
+    assert.deepEqual(unchanged.stopIds, requiredBaseline.stopIds);
+    assert.deepEqual(unchanged.stopIds, personalized.stopIds);
+    assert.equal(unchanged.variantId, 'neighborhood');
+    assert.deepEqual(unchanged.title, requiredBaseline.title);
+
+    const themed = planner.route(personalized.stopIds, { interests: ['water'], variantId: 'interest-water' });
+    assert.deepEqual(themed.title, { en: 'Waterfronts along the way', zh: '一路发现水岸' });
+  });
+
   test('adding, removing, reversing and reordering recalculate reviewed connections without mutating the selected route', () => {
     const original = selected(), before = structuredClone(original), sightId = original.stopIds[1];
     const marked = planner.route(original.stopIds, { mustSeeIds: [sightId] });

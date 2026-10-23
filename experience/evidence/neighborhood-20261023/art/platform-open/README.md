@@ -2,7 +2,7 @@
 
 The candidate changes source index `223`, `kyoto-city:bldg_74454289-1d7a-4105-87ea-26e36c69bc44`, to an authored open assembly. The municipal record classifies it as `普通無壁舎`, an ordinary wall-less structure. The OSM Platform A point lies inside its footprint. This supports the open-form treatment; exact current shelter construction remains unverified.
 
-The frozen asset candidate is `artifacts/neighborhood-20261023/art/platform-open-transport/`, manifest SHA256 `679241ee06a8115ad3f95ddd523c2f56555b900f3ecc4437d272573a968ec4e5`. Production provenance SHA256 is `845448d6bb53c4de1592c42b5e726d4f5b8001d589e14299221c2fae53c8270b`. Independent source/export review has passed. Actual browser comparison remains pending for the canonical candidate7 build.
+The frozen asset candidate is `artifacts/neighborhood-20261023/art/platform-open-transport/`, manifest SHA256 `679241ee06a8115ad3f95ddd523c2f56555b900f3ecc4437d272573a968ec4e5`. Production provenance SHA256 is `845448d6bb53c4de1592c42b5e726d4f5b8001d589e14299221c2fae53c8270b`. Independent source/export review has passed. The same open geometry was subsequently reviewed in [candidate8](../candidate-8/README.md): its day/night images expose a missing floor beneath the roof, leaving the posts visibly ungrounded. Actual art acceptance remains blocked pending the approved nonwalkable pavement correction. The immutable108-triangle export evidence below preserves this pre-floor version.
 
 ## Source and authored construction
 

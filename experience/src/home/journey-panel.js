@@ -9,7 +9,9 @@ const TEXT = {
     sights: 'sights', distance: 'walking distance', private: 'Your walk is remembered privately on this browser.',
     interests: 'What draws you here?', mustSee: 'Keep these in my suggestions', suggest: 'Find my walk',
     choose: 'Choose this walk', why: 'Why stop here?', walkTo: 'Walk to', up: 'Move earlier', down: 'Move later',
-    suggestions: 'Suggested walks', suggestionsReady: 'Choose a suggestion when you are ready. Your selected walk stays unchanged until then.',
+    suggestion: 'Suggested walk', suggestions: 'Suggested walks',
+    suggestionReady: 'One reviewed walk is available. Choose it, then adjust its stops.',
+    suggestionsReady: 'Choose a suggestion when you are ready. Your selected walk stays unchanged until then.',
     replace: 'Replace the unavailable saved walk', replaceNote: 'This replaces the saved route and view in this browser. Your kept places and their notes remain.',
     replaceAction: 'Replace with the available walk',
     currentWalk: 'Current walk', walkingTo: 'Walking to {name}', walkingPoint: 'Walking to your chosen point',
@@ -35,7 +37,9 @@ const TEXT = {
     sights: '个景点', distance: '步行距离', private: '这段漫步仅保存在当前浏览器。',
     interests: '什么吸引你来到这里？', mustSee: '推荐中保留这些景点', suggest: '寻找适合的路线',
     choose: '选择这段漫步', why: '为什么在这里停留？', walkTo: '步行前往', up: '提前游览', down: '推后游览',
-    suggestions: '推荐路线', suggestionsReady: '准备好后再选择推荐路线。在此之前，所选漫步保持不变。',
+    suggestion: '推荐路线', suggestions: '推荐路线',
+    suggestionReady: '目前有一条已审核漫步可供选择。选择后，再调整停留景点。',
+    suggestionsReady: '准备好后再选择推荐路线。在此之前，所选漫步保持不变。',
     replace: '替换暂不可用的已存漫步', replaceNote: '此操作会替换当前浏览器中保存的路线与视角，收藏的地点及其笔记仍然保留。',
     replaceAction: '替换为当前可用的漫步',
     currentWalk: '当前步行', walkingTo: '正在步行前往{name}', walkingPoint: '正在步行前往你选定的位置',
@@ -210,7 +214,7 @@ export function createNeighborhoodJourney({ planner, frame, startPlace, interest
   }
   function alternativesMarkup() {
     const lang = language();
-    return alternatives.length ? `<details class="journey-alternatives" ${alternativesOpen ? 'open' : ''}><summary>${t('suggestions')}</summary>${alternatives.map((option, index) => `<div>
+    return alternatives.length ? `<details class="journey-alternatives" ${alternativesOpen ? 'open' : ''}><summary>${t(alternatives.length === 1 ? 'suggestion' : 'suggestions')}</summary>${alternatives.map((option, index) => `<div>
       <strong>${escape(option.title[lang])}</strong><p class="small">${new Intl.NumberFormat(lang, { maximumFractionDigits: 2 }).format(option.distanceMeters / 1000)} km · ${option.stopIds.length} ${t('sights')}</p>
       <p class="small">${option.stops.map(sight => escape(sight.title[lang])).join(' → ')}</p>
       <button class="secondary" data-journey-choice="${index}" ${mutationsBlocked() ? 'disabled' : ''}>${t('choose')}</button></div>`).join('')}</details>` : '';
@@ -294,7 +298,7 @@ export function createNeighborhoodJourney({ planner, frame, startPlace, interest
     else if (button.id === 'journey-suggest') {
       alternatives = planner.recommend({ interests: draftInterests, mustSeeIds: draftMustSee });
       alternativesOpen = true;
-      status = alternatives.length ? 'suggestionsReady' : 'noOptions'; render();
+      status = alternatives.length === 1 ? 'suggestionReady' : alternatives.length ? 'suggestionsReady' : 'noOptions'; render();
     } else if (button.dataset.journeyChoice !== undefined) select(alternatives[Number(button.dataset.journeyChoice)]);
     else if (button.dataset.journeyRemove) select(planner.edit(plan, { type: 'remove', sightId: button.dataset.journeyRemove }));
     else if (button.id === 'journey-add') select(planner.edit(plan, { type: 'add', sightId: host.querySelector('#journey-add-sight').value }));

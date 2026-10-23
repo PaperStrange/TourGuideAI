@@ -1,0 +1,11 @@
+# Candidate8 normal-motion camera evidence
+
+This run completed all14 normal-motion native gestures, exact saved-pan restoration, Chinese-language native reload, and legacy-data preservation. Its boundary report contains53 passed checks and one visible-idle failure. The lead then stopped this superseded runtime before reduced-motion assertions. The complete14×2 matrix remains required on the corrected candidate.
+
+Candidate package `8146c6a00fb60026dee84414e4efa3ca1713869f92bc8cab2fbd4e592411e8d3` contains446 verified files and scenery manifest `4e490c35d171aceb160efb70d94ae8c9fc097a2ad4440fe1010c1b619ca7a601`. Executed driver `826df4c9b5c17d4bba71020e2285f903d7b64895f01eab10d2f94e5cfb5b9130` ran in bundled Chromium151.0.7922.34 with its default software renderer. The same-view reopen produced no section request or resource replacement and preserved heading, selection, pose, and runtime identity.
+
+The idle failure observed one submitted draw over2,406.353ms, six updates, zero shadow invalidations, and identical loading state, saved view, and player position. The historical regression input is retained in `interim-after-drag.json.gz`, decoded SHA256 `c33f1ea97430bfa189503eeb650a1be2a7e25b450e903df434583b53870622d8`. It contains30 passed checks and that idle failure, with no completion timestamp. Its exact camera/pose data is an immutable input to the subsequent numerical regression.
+
+The complete normal-motion boundary snapshot is `normal-motion-before-interruption.json.gz`, decoded SHA256 `877e527d3fbc7b34b8c323ed95ba9041603acff9c21113717f6bf221c5016933`. The interruption was requested at2026-10-23T05:42:44.702Z. Browser closure appended `camera-safety-completed: false` during the next scenario setup; the final raw report therefore contains53 passes and two failures, including the intentional closure. Its decoded SHA256 is `319eb9509b2898f6ed420c6e8f9d10dd850b0d7303852e21a9039a64987ff06a`.
+
+The actual run lasted1,281,099ms and made194 loopback HTTP requests. The two purposeful-pan images are retained unchanged. No reduced-motion assertion passed or failed in this attempt. `binding.json` records exact package, report, driver, image, and browser identities; `interruption-request.json` records the lead-directed boundary.

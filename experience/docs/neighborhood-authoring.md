@@ -170,3 +170,11 @@ A new city qualifies for a detailed route only after connected public-space geom
 Preserve construction classifications and height-method fields when adapting a source. A closed LOD1 solid is not evidence of enclosing walls. The [Shijo Takakura source review](../evidence/neighborhood-20261023/world/platform-context/semantic-review.json) found the original FileGDB classification `普通無壁舎` (ordinary wall-less structure), which the earlier GeoJSON field selection had omitted. That classification supports an open structural interpretation; it does not supply measured posts, roof thickness or usable clearance. Bind each reviewed exception to its original source record, keep the source footprint and height meanings explicit, and label invented structural dimensions as authored. Neither low height nor a nearby bus-stop point alone establishes an open shelter.
 
 Review sight approaches independently from sight coordinates. A valid pedestrian node can still put a visitor beyond the feature or against a camera obstruction. Check ordinary arrival, native looking and day/night recognition from the proposed public-street pause before changing its itinerary anchor. If the graph remains unchanged, preserve existing metric positions, camera intent and personal notes; verify recomputed route legs and Maps coordinates separately.
+
+Review ground coverage when a source supports an open structure. Ground preparation
+may have removed its footprint from surrounding display surfaces. The authored
+platform floor must cover that exact footprint, meet its supports and retain an
+explicit nonwalkable classification. Verify overlap against existing surfaces,
+upward triangle orientation and unchanged navigation. Inspect the complete structure
+in daylight and night: an actor standing on valid nearby ground does not establish
+that the floor beneath an open roof is present.

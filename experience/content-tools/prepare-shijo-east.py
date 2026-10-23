@@ -55,7 +55,7 @@ def prepare(raw_path, output):
     anchors = {
         "mitsui-frontage": 4600871814,
         "nishiki-market": 5554417552,
-        "nishiki-tenmangu": 434344433,
+        "nishiki-tenmangu": 354840400,
         "takase-river": 5492358876,
         "pontocho-entrance": 5248383670,
     }

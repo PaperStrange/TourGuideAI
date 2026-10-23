@@ -162,18 +162,22 @@ export function createJourneyPlanner({ routeId, revision, graph, sights, startNo
       && minDistanceMeters >= 0 && maxDistanceMeters >= minDistanceMeters, 'Invalid recommendation walking range');
     const chosen = preferences(requested);
     if (chosen.mustSeeIds.some(id => !availableIds.has(id))) return [];
-    const eligible = candidates.filter(candidate => candidate.order.length >= minStops && candidate.order.length <= maxStops
+    const constrained = candidates.filter(candidate => candidate.order.length >= minStops && candidate.order.length <= maxStops
       && candidate.distance >= minDistanceMeters && candidate.distance <= maxDistanceMeters
-      && chosen.mustSeeIds.every(id => candidate.order.includes(id))
-      && (!chosen.interests.length || candidate.order.some(id => byId.get(id).interests.some(interest => chosen.interests.includes(interest)))));
+      && chosen.mustSeeIds.every(id => candidate.order.includes(id)));
     const diversity = candidate => new Set(candidate.order.map(id => byId.get(id).category)).size;
     const matched = (candidate, interests) => candidate.order.filter(id => byId.get(id).interests.some(interest => interests.includes(interest))).length;
-    const generalOrder = (a, b) => matched(b, chosen.interests) - matched(a, chosen.interests)
-      || diversity(b) - diversity(a) || b.order.length - a.order.length || a.distance - b.distance
+    const defaultOrder = (a, b) => diversity(b) - diversity(a) || b.order.length - a.order.length || a.distance - b.distance
       || compare(a.order.join('|'), b.order.join('|'));
+    const baseline = [...constrained].sort(defaultOrder)[0];
+    const eligible = constrained.filter(candidate => !chosen.interests.length
+      || candidate.order.some(id => byId.get(id).interests.some(interest => chosen.interests.includes(interest))));
+    const generalOrder = (a, b) => matched(b, chosen.interests) - matched(a, chosen.interests) || defaultOrder(a, b);
     eligible.sort(generalOrder);
     if (!eligible.length) return [];
-    const selected = [route(eligible[0].order, { ...chosen, variantId: chosen.interests.length ? 'your-interests' : 'neighborhood' })];
+    // 兴趣改变同一范围和必访条件下的景点顺序时，才使用个性化名称。
+    const personalized = chosen.interests.length > 0 && eligible[0].order.join('|') !== baseline.order.join('|');
+    const selected = [route(eligible[0].order, { ...chosen, variantId: personalized ? 'your-interests' : 'neighborhood' })];
     const themes = [...chosen.interests, ...interestIds.filter(id => !chosen.interests.includes(id))];
     for (const interest of themes) {
       if (selected.length === 3) break;

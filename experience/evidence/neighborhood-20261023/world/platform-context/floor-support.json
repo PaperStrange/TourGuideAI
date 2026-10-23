@@ -1,0 +1,157 @@
+{
+  "status": "pass",
+  "reviewedAt": "2026-10-23",
+  "sourceId": "kyoto-city:bldg_74454289-1d7a-4105-87ea-26e36c69bc44",
+  "producer": {
+    "file": "artifacts/neighborhood-20261023/world/audit-platform-floor-support.py",
+    "bytes": 4398,
+    "sha256": "d3a5bb20e83fc2de9211f051d804d64a0df1e981a10b9ad93ec020d1665f678e"
+  },
+  "inputs": [
+    {
+      "file": "experience/src/neighborhoods/shijo-east/scene.json",
+      "bytes": 8789674,
+      "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e"
+    },
+    {
+      "file": "artifacts/neighborhood-20261023/world/art-selection.json",
+      "bytes": 5321766,
+      "sha256": "1ec33111947716ef43d8592c96203f55d1194b0f5b9ab68168b0deaf373bdb65"
+    }
+  ],
+  "tools": {
+    "shapely": "2.2.0"
+  },
+  "footprint": {
+    "bounds": [
+      157.987,
+      -3.125,
+      187.749,
+      -0.627
+    ],
+    "areaSquareMetres": 73.62628800000002,
+    "polygons": [
+      {
+        "outer": [
+          [
+            157.987,
+            -3.101
+          ],
+          [
+            187.747,
+            -3.125
+          ],
+          [
+            187.749,
+            -0.651
+          ],
+          [
+            157.989,
+            -0.627
+          ],
+          [
+            157.987,
+            -3.101
+          ]
+        ],
+        "holes": [],
+        "triangles": [
+          [
+            [
+              157.989,
+              -0.627
+            ],
+            [
+              187.747,
+              -3.125
+            ],
+            [
+              157.987,
+              -3.101
+            ]
+          ],
+          [
+            [
+              187.747,
+              -3.125
+            ],
+            [
+              157.989,
+              -0.627
+            ],
+            [
+              187.749,
+              -0.651
+            ]
+          ]
+        ],
+        "areaSquareMetres": 73.62628800000002,
+        "omittedNumericalTriangleAreasSquareMetres": []
+      }
+    ],
+    "sourceHeight": {
+      "metres": 2.1240000000000023,
+      "origin": "derived-from-official-LOD1-z-range",
+      "sourceMinimumZ": 37.25,
+      "sourceMaximumZ": 39.374,
+      "measuredHeightAttribute": "2.9",
+      "meaning": "LOD1 solid vertical extent; measured-height attribute retained independently; facade/roof proportions unreviewed"
+    }
+  },
+  "display": {
+    "surfacesChecked": 216,
+    "positiveAreaIntersections": [],
+    "nearbySurfaces": [
+      {
+        "sourceId": "osm:way:465069431",
+        "kind": "road",
+        "material": "asphalt",
+        "walkable": false,
+        "topHeightMetres": -0.12,
+        "distanceMetres": 1.3371641423276377,
+        "intersectionSquareMetres": 0
+      },
+      {
+        "sourceId": "osm:way:465066447",
+        "kind": "path",
+        "material": "paving",
+        "walkable": false,
+        "topHeightMetres": -0.01,
+        "distanceMetres": 1.181555547741875,
+        "intersectionSquareMetres": 0
+      },
+      {
+        "sourceId": "shijo-east:ground",
+        "kind": "land",
+        "material": "paving",
+        "walkable": false,
+        "topHeightMetres": -0.04,
+        "distanceMetres": 0,
+        "intersectionSquareMetres": 0
+      },
+      {
+        "sourceId": "shijo-east:walkable",
+        "kind": "path",
+        "material": "paving",
+        "walkable": true,
+        "topHeightMetres": 0,
+        "distanceMetres": 1.6315954715750736,
+        "intersectionSquareMetres": 0
+      }
+    ],
+    "maximumAllowedNumericalOverlapSquareMetres": 1e-8,
+    "canonicalGroundOverlapSquareMetres": 0,
+    "navigationOverlapSquareMetres": 0,
+    "navigationDistanceMetres": 1.6315954715750736,
+    "sourceTriangleUnionDifferenceSquareMetres": 0
+  },
+  "approvedFloor": {
+    "triangles": 2,
+    "sourceIndex": 223,
+    "heightMetres": 0,
+    "material": "paving",
+    "walkable": false,
+    "meaning": "Authored display floor inside the exact retained footprint. Real pavement elevation, construction and material remain unmeasured."
+  },
+  "canonicalNavigationChanged": false
+}

@@ -101,7 +101,8 @@ the approved scope. No paid infrastructure is required for the pilot.
 
 The connected-neighborhood CI job has a bounded 240-minute software-renderer
 execution allowance and a 40-minute limit per walking leg. The actual test covers
-2,706.888 m out and back, with a longest leg of 458.534 m. The initial software
+2,706.888 m out and back, with a longest leg of 488.059 m after the reviewed
+western Tenmangū pause. The initial software
 probe measured 0.593 m/s overall and 0.276 m/s during its final minute; these
 observations justify the tooling allowance and fail the intended fluent experience.
 This allowance does not change the startup, frame, input or Q03 acceptance targets.

@@ -18,7 +18,7 @@ GEOD = Geod(ellps="WGS84")
 EXPECTED_ANCHORS = {
     "mitsui-frontage": "osm:node:4600871814",
     "nishiki-market": "osm:node:5554417552",
-    "nishiki-tenmangu": "osm:node:434344433",
+    "nishiki-tenmangu": "osm:node:354840400",
     "takase-river": "osm:node:5492358876",
     "pontocho-entrance": "osm:node:5248383670",
     "shijo-bridge": "authored:shijo-bridge-view",

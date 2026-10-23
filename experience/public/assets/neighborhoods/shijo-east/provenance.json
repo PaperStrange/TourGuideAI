@@ -1,12 +1,12 @@
 {
   "version": 1,
   "id": "shijo-east",
-  "geographySha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
+  "geographySha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
   "sceneSha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e",
-  "preparedArtSha256": "082d759b38360183c70bbd37dc4317c7a8e6d20cb4e5a1a0d4afc09bfdd73b28",
+  "preparedArtSha256": "1ec33111947716ef43d8592c96203f55d1194b0f5b9ab68168b0deaf373bdb65",
   "preparedArtSourceHashes": {
     "scene.json": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e",
-    "geography.json": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55"
+    "geography.json": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f"
   },
   "preparedArtProducerSha256": "7955255aa8908f2b647839477d090c204ab82da16baf144160717e74c46b38fa",
   "walkableMaterialAudit": [
@@ -172,13 +172,13 @@
     "sha256": "dffa91bf8616b4ce6657f972913c642249ce5be999fb52be736933a5b2ebd6ad",
     "bytes": 7321
   },
-  "styleSha256": "3e634fb83dab474caf8442816083565d82b8f3bbcf43af72d228b04ffd26e73c",
+  "styleSha256": "7dc4a83f3bf262b9e6b2fb7b96b6350f972468da8569409362b067d46737dfef",
   "generatorSha256": "274380689d37b72738c40609104f3458dac3a7529dd103342f3892b96629a168",
-  "geometryHelperSha256": "703dde774df3058b44cb8592f712525fa5754bbd83027b19ccddbdae6c218ded",
+  "geometryHelperSha256": "eeecd54661997956aa2c078479e2a2b95f32f2ececf3c9d9c742b47645d7a85a",
   "landmarkHelperSha256": "291bdab1df2b71bf6b56f3261a7ef086583498e077de6e80ec3e9517e0dacf31",
   "materialHelperSha256": "c9fb695c3b8968d5a3d9b9b0044a5e5b9ea8249cbeb6ff56fd97459741cbc1dd",
   "blenderVersion": "4.3.2",
-  "elapsedSeconds": 14.179,
+  "elapsedSeconds": 14.458,
   "geometryMeaning": "Source footprints and prepared surface polygons; reviewed original facade assemblies with explicit authored dimensions",
   "rights": "source-ledger.json and references.json",
   "referenceIds": [
@@ -468,9 +468,12 @@
         "beamDepthMetres": 0.1,
         "beamWidthMetres": 0.1,
         "roofMaterial": "roof",
-        "structureMaterial": "frame"
+        "structureMaterial": "frame",
+        "floorMaterial": "paving",
+        "floorHeightMetres": 0,
+        "floorWalkable": false
       },
-      "authored": "Original open assembly informed by the official wall-less classification, preserving the source roof ring and top. Slab thickness, seven centreline supports, beam dimensions and neutral finishes are authored. Beam underside1.944m is virtual construction, not measured real clearance. No exact Platform A shelter reconstruction is claimed.",
+      "authored": "Original open assembly informed by the official wall-less classification, preserving the source roof ring and top. Slab thickness, seven centreline supports, beam dimensions and neutral finishes are authored. The nonwalkable paving surface occupies the exact source footprint at authored base0; real floor material and elevation remain unmeasured. Beam underside1.944m is virtual construction, not measured real clearance. No exact Platform A shelter reconstruction is claimed.",
       "evidence": [
         {
           "file": "experience/evidence/neighborhood-20261023/world/platform-context/audit.json",
@@ -483,6 +486,10 @@
         {
           "file": "experience/evidence/neighborhood-20261023/world/platform-context/semantic-review.json",
           "sha256": "a56ad01d023a620bbee4bc776e93365c428ad027da570eb13661ed271b413c22"
+        },
+        {
+          "file": "experience/evidence/neighborhood-20261023/world/platform-context/floor-support.json",
+          "sha256": "c3f236da23c9e83b9a44d5d4b2a06d0f03cbca14be8c79b780713a62ea1aea8a"
         }
       ],
       "evidenceRecords": [
@@ -774,6 +781,167 @@
             },
             "productionChanges": false
           }
+        },
+        {
+          "file": "experience/evidence/neighborhood-20261023/world/platform-context/floor-support.json",
+          "sha256": "c3f236da23c9e83b9a44d5d4b2a06d0f03cbca14be8c79b780713a62ea1aea8a",
+          "record": {
+            "status": "pass",
+            "reviewedAt": "2026-10-23",
+            "sourceId": "kyoto-city:bldg_74454289-1d7a-4105-87ea-26e36c69bc44",
+            "producer": {
+              "file": "artifacts/neighborhood-20261023/world/audit-platform-floor-support.py",
+              "bytes": 4398,
+              "sha256": "d3a5bb20e83fc2de9211f051d804d64a0df1e981a10b9ad93ec020d1665f678e"
+            },
+            "inputs": [
+              {
+                "file": "experience/src/neighborhoods/shijo-east/scene.json",
+                "bytes": 8789674,
+                "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e"
+              },
+              {
+                "file": "artifacts/neighborhood-20261023/world/art-selection.json",
+                "bytes": 5321766,
+                "sha256": "1ec33111947716ef43d8592c96203f55d1194b0f5b9ab68168b0deaf373bdb65"
+              }
+            ],
+            "tools": {
+              "shapely": "2.2.0"
+            },
+            "footprint": {
+              "bounds": [
+                157.987,
+                -3.125,
+                187.749,
+                -0.627
+              ],
+              "areaSquareMetres": 73.62628800000002,
+              "polygons": [
+                {
+                  "outer": [
+                    [
+                      157.987,
+                      -3.101
+                    ],
+                    [
+                      187.747,
+                      -3.125
+                    ],
+                    [
+                      187.749,
+                      -0.651
+                    ],
+                    [
+                      157.989,
+                      -0.627
+                    ],
+                    [
+                      157.987,
+                      -3.101
+                    ]
+                  ],
+                  "holes": [],
+                  "triangles": [
+                    [
+                      [
+                        157.989,
+                        -0.627
+                      ],
+                      [
+                        187.747,
+                        -3.125
+                      ],
+                      [
+                        157.987,
+                        -3.101
+                      ]
+                    ],
+                    [
+                      [
+                        187.747,
+                        -3.125
+                      ],
+                      [
+                        157.989,
+                        -0.627
+                      ],
+                      [
+                        187.749,
+                        -0.651
+                      ]
+                    ]
+                  ],
+                  "areaSquareMetres": 73.62628800000002,
+                  "omittedNumericalTriangleAreasSquareMetres": []
+                }
+              ],
+              "sourceHeight": {
+                "metres": 2.1240000000000023,
+                "origin": "derived-from-official-LOD1-z-range",
+                "sourceMinimumZ": 37.25,
+                "sourceMaximumZ": 39.374,
+                "measuredHeightAttribute": "2.9",
+                "meaning": "LOD1 solid vertical extent; measured-height attribute retained independently; facade/roof proportions unreviewed"
+              }
+            },
+            "display": {
+              "surfacesChecked": 216,
+              "positiveAreaIntersections": [],
+              "nearbySurfaces": [
+                {
+                  "sourceId": "osm:way:465069431",
+                  "kind": "road",
+                  "material": "asphalt",
+                  "walkable": false,
+                  "topHeightMetres": -0.12,
+                  "distanceMetres": 1.3371641423276377,
+                  "intersectionSquareMetres": 0
+                },
+                {
+                  "sourceId": "osm:way:465066447",
+                  "kind": "path",
+                  "material": "paving",
+                  "walkable": false,
+                  "topHeightMetres": -0.01,
+                  "distanceMetres": 1.181555547741875,
+                  "intersectionSquareMetres": 0
+                },
+                {
+                  "sourceId": "shijo-east:ground",
+                  "kind": "land",
+                  "material": "paving",
+                  "walkable": false,
+                  "topHeightMetres": -0.04,
+                  "distanceMetres": 0,
+                  "intersectionSquareMetres": 0
+                },
+                {
+                  "sourceId": "shijo-east:walkable",
+                  "kind": "path",
+                  "material": "paving",
+                  "walkable": true,
+                  "topHeightMetres": 0,
+                  "distanceMetres": 1.6315954715750736,
+                  "intersectionSquareMetres": 0
+                }
+              ],
+              "maximumAllowedNumericalOverlapSquareMetres": 1e-08,
+              "canonicalGroundOverlapSquareMetres": 0,
+              "navigationOverlapSquareMetres": 0,
+              "navigationDistanceMetres": 1.6315954715750736,
+              "sourceTriangleUnionDifferenceSquareMetres": 0
+            },
+            "approvedFloor": {
+              "triangles": 2,
+              "sourceIndex": 223,
+              "heightMetres": 0,
+              "material": "paving",
+              "walkable": false,
+              "meaning": "Authored display floor inside the exact retained footprint. Real pavement elevation, construction and material remain unmeasured."
+            },
+            "canonicalNavigationChanged": false
+          }
         }
       ]
     }
@@ -781,18 +949,18 @@
   "riverContext": {
     "input": {
       "file": "river-context.json.gz",
-      "sha256": "b28b3e34fe6b485d1f0cbb5f0a33c6c8d6d2392e48a5343c39d4c536d9cdc850",
-      "bytes": 2271259,
+      "sha256": "93b27980df4f560e7ac427238747fec200de774e591102bada6a3e71b3a41405",
+      "bytes": 2271256,
       "encoding": "gzip",
-      "decodedSha256": "57ae1683df42b8220591708cc9b01d71573da697fdf0290744aba44c41fc0006",
+      "decodedSha256": "d77ea7a06b26954ea52a6991d45cd4c044b4c1659afd2df2bbe457cd23aef1c5",
       "decodedBytes": 25193606
     },
     "helperSha256": "a6d13169c0774a04b326deb7265bb3f37f4818cf4da21bd1d9534dc62cd836af",
     "producerSha256": "4208d4034678ed022a45f99a23a1a7d3bc03bd0a1036c0ef82f368af63ce4201",
     "sourceHashes": {
       "experience/src/neighborhoods/shijo-east/scene.json": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e",
-      "experience/src/neighborhoods/shijo-east/geography.json": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
-      "artifacts/neighborhood-20261023/world/art-selection.json": "082d759b38360183c70bbd37dc4317c7a8e6d20cb4e5a1a0d4afc09bfdd73b28",
+      "experience/src/neighborhoods/shijo-east/geography.json": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+      "artifacts/neighborhood-20261023/world/art-selection.json": "1ec33111947716ef43d8592c96203f55d1194b0f5b9ab68168b0deaf373bdb65",
       "experience/evidence/neighborhood-20261023/world/river-context-sources/kyoto-lod1.geojson.gz": "314ff3d835c487332c3d5b81d58b77d011ff969d347bb835602e7d8063d76462"
     },
     "scope": {

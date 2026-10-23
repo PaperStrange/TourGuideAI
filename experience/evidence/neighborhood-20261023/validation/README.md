@@ -1,5 +1,25 @@
 # Local validation
 
+Candidate-9 package is `1720fc5907c0c6f2b292aa0e728bcaad8ddbd6c776de7aec2b5a35a513609c9b`
+(446 files / 96,779,376 bytes). Scenery manifest:
+`79b1a3ed91f0b672364c690e44de9278dce555fab0074ce0dc4aaa8add62f534`.
+Application checks pass **203/203**, repository gates pass **17/17**, the canonical
+build succeeds, and font regeneration reports zero missing source glyphs.
+This includes the captured camera-convergence regression, saved-view provenance,
+honest recommendation naming, the reviewed western stop and the source-bounded
+platform floor. All 74 scenery sections pass the independent decoded audit.
+Native camera, actual route selection, corrected-floor appearance and performance
+remain separate browser acceptance checks on this immutable package.
+
+| Candidate-9 report | Original SHA256 |
+| --- | --- |
+| `app-tests-candidate-9.txt.gz` decoded text | `10a0e23b85099311c467f813344dbdee2623e7d76603eaf851a97c2d4b230404` |
+| `build-candidate-9.txt.gz` decoded text | `a28e5cdc9f9696a48674fdf7f5aa253e7251150c454cfadd61d92e5d0ce61464` |
+| `repository-gates-candidate-9.txt` | `43a16b6a9e37d69799f7f711f656ea8ae0dc879d15558f6b93f7d192cf632332` |
+| `font-candidate-9.txt` | `ed0f50885387107942305d791d1abd87f3aa147939b9e68389c32e1051612040` |
+
+## Candidate-8
+
 Candidate-8 package is `8146c6a00fb60026dee84414e4efa3ca1713869f92bc8cab2fbd4e592411e8d3`
 (446 files / 96,758,502 bytes). Source
 `7f3146b11246c66c5e64b8e95738017f208db69b` is pushed and verified. It includes the
