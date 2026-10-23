@@ -1,0 +1,35 @@
+{
+  "report": "artifacts/neighborhood-20261023/qa/candidate-8-camera-safety/interim-after-drag.json",
+  "reportSha256": "c33f1ea97430bfa189503eeb650a1be2a7e25b450e903df434583b53870622d8",
+  "checkId": "no-preference-settled-visible-recovered-camera-stays-render-idle-for-two-seconds",
+  "packageSha256": "8146c6a00fb60026dee84414e4efa3ca1713869f92bc8cab2fbd4e592411e8d3",
+  "geographySha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
+  "manifestSha256": "4e490c35d171aceb160efb70d94ae8c9fc097a2ad4440fe1010c1b619ca7a601",
+  "player": {
+    "x": 681.467,
+    "y": 142.004,
+    "height": 0,
+    "edgeId": "osm:way:66703316:434344433:5204263033",
+    "edgeDistance": 0
+  },
+  "camera": {
+    "azimuth": 1.5,
+    "polar": 1.46,
+    "distance": 5,
+    "targetOffset": { "x": 1.2, "y": -2.2, "height": 1.6 }
+  },
+  "target": [682.667, 1.5999999999999999, -139.804],
+  "desiredPosition": [687.6238935492374, 2.1528488991005816, -139.452482665731],
+  "position": [685.3506467327895, 1.6528488991005819, -145.10426549663993],
+  "cells": [
+    { "id": "cell-e005-n000", "level": "base" },
+    { "id": "cell-e005-n001", "level": "base" },
+    { "id": "cell-e006-n000", "level": "base" },
+    { "id": "cell-e006-n001", "level": "near" },
+    { "id": "cell-e006-n002", "level": "base" },
+    { "id": "cell-e007-s001", "level": "base" },
+    { "id": "cell-e007-n000", "level": "near" },
+    { "id": "cell-e007-n001", "level": "near" },
+    { "id": "cell-e008-n000", "level": "base" }
+  ]
+}

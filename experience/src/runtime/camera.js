@@ -27,6 +27,7 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
   let base = frontage === 'south' ? Math.PI : 0;
   let aimOffset = null, transition = null, inspecting = false;
   let inspectionAimed = false, inspectionPanned = false, interacting = false, gestureAdopted = false, adopting = false;
+  let nativeInputPending = false;
   const pointerSamples = new Map();
   let lastPointerId, gestureOperation = null, touchPanStart = null, touchPanLatest = null;
   let currentState = { x: initial.x, y: initial.y, height: initial.height };
@@ -61,17 +62,19 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
     return viewCamera.position.distanceToSquared(previousPosition) > 1e-12
       || 1 - Math.abs(viewCamera.quaternion.dot(previousRotation)) > 1e-12;
   }
-  let notifiedCamera = null;
+  let observedCamera = null;
   const emitChange = (explicit = true) => {
     synchronizeCamera(); camera.updateMatrixWorld(); viewCamera.updateMatrixWorld();
     const values = [...camera.matrixWorld.elements, ...controls.target,
       ...viewCamera.matrixWorld.elements, ...viewCamera.projectionMatrix.elements];
-    // OrbitControls 在距离边界可能因浮点舍入持续报告缩放；只过滤数值精度内的重复通知。
-    if (!explicit && notifiedCamera && values.every((value, index) => Math.abs(value - notifiedCamera[index])
-      <= 64 * Number.EPSILON * Math.max(1, Math.abs(value), Math.abs(notifiedCamera[index])))) return;
-    notifiedCamera = values; onChange();
+    // 每次观察都更新比较基准，避免边界舍入累积触发重绘；主动输入与显式更新始终通知。
+    const unchanged = observedCamera && values.every((value, index) => Math.abs(value - observedCamera[index])
+      <= 64 * Number.EPSILON * Math.max(1, Math.abs(value), Math.abs(observedCamera[index])));
+    observedCamera = values;
+    if (!explicit && unchanged) return;
+    onChange();
   };
-  const changed = () => {
+  const changed = (explicit = false) => {
     if (adopting) return;
     if (solo && inspecting && !transition?.following) {
       const before = controls.target.clone();
@@ -83,7 +86,9 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
         height: controls.target.y };
       camera.updateMatrixWorld();
     }
-    emitChange(false);
+    const deliberate = explicit === true || nativeInputPending;
+    nativeInputPending = false;
+    emitChange(deliberate);
   };
   function beginCameraInput(operation) {
     if (inspecting) {
@@ -114,6 +119,7 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
   };
   const interactionEnded = () => {
     interacting = false; gestureAdopted = false; gestureOperation = null; touchPanStart = null; touchPanLatest = null;
+    nativeInputPending = false;
   };
   const pointerStarted = event => {
     if (!controls.enabled || pointerSamples.has(event.pointerId)) return;
@@ -135,12 +141,14 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
     const other = [...pointerSamples].find(([id]) => id !== event.pointerId)?.[1];
     if (!interacting || !pointerMotionChangesCamera(controls, gestureOperation, previous, next, other)) return;
     if (gestureOperation === 'dolly-pan') touchPanLatest = [...pointerSamples.values()];
-    if (gestureAdopted) return;
-    gestureAdopted = true; beginCameraInput(gestureOperation);
+    if (!gestureAdopted) { gestureAdopted = true; beginCameraInput(gestureOperation); }
+    nativeInputPending = true;
   };
   const pointerEnded = event => { commitInspectionPan(); pointerSamples.delete(event.pointerId); };
   const wheelMoved = event => {
-    if (controls.enabled && controls.enableZoom && (!interacting || gestureOperation === null) && event.deltaY !== 0) beginCameraInput('zoom');
+    if (controls.enabled && controls.enableZoom && (!interacting || gestureOperation === null) && event.deltaY !== 0) {
+      beginCameraInput('zoom'); nativeInputPending = true;
+    }
   };
   controls.addEventListener('change', changed);
   controls.addEventListener('start', interactionStarted);
@@ -299,7 +307,7 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
       const delta = new THREE.Vector3().setFromMatrixColumn(camera.matrixWorld, 0).multiplyScalar(right)
         .add(new THREE.Vector3().setFromMatrixColumn(camera.matrixWorld, 1).multiplyScalar(up));
       controls.target.add(delta); camera.position.add(delta);
-      changed(); controls.update();
+      changed(true); controls.update();
     },
     zoom(delta) { if (delta === 0) return; beginCameraInput('zoom'); pose(controls.getAzimuthalAngle(), controls.getPolarAngle(), controls.getDistance() + delta); },
     resize(width, height) { camera.aspect = width / height; camera.updateProjectionMatrix(); emitChange(); },

@@ -39,7 +39,9 @@ is **`a7cd027f7e8085ef0cb7054487f1a3479a6724de`**; its run **39902670448** follo
 neighborhood job was cancelled. Checkpoint **`095ee3a`** preserves that state.
 The current implementation is **`7f3146b11246c66c5e64b8e95738017f208db69b`**,
 pushed and independently verified against the remote branch. Its acceptance run
-**39905321708** is queued. Application and asset bytes correspond to candidate 8.
+**39905321708** has six passing jobs; original-walk and connected-neighborhood
+browser jobs remain running at 05:42 UTC. Application and asset bytes correspond
+to candidate 8.
 
 The current immutable build is **candidate-8**, package
 **`8146c6a00fb60026dee84414e4efa3ca1713869f92bc8cab2fbd4e592411e8d3`**,
@@ -76,8 +78,36 @@ The first native candidate-8 observations confirm same-view reopen with zero
 section requests/resource churn and unchanged heading, order and camera. The
 normal-motion visible-idle check observes one extra draw over 2,406 ms, six updates
 and zero shadow updates; its stream/player/saved view remain equal. That failed
-check is retained while engineering diagnoses its cause. QA continues the full
-immutable matrix; no complete native acceptance is claimed.
+check is retained. All fourteen normal-motion gestures and exact saved-pan reopen
+pass, together with localized reload and legacy preservation. The root-directed
+normal-motion boundary stop completed at 05:42:44 UTC with 53 passing checks and
+one retained idle failure. Boundary report SHA256 is
+`877e527d3fbc7b34b8c323ed95ba9041603acff9c21113717f6bf221c5016933`;
+the final raw report additionally records intentional browser closure.
+Reduced-motion coverage remains pending on the next package.
+The western approach and platform/canopy appearance reviews retain separate
+candidate-8 outputs. No complete native acceptance is claimed.
+
+The reviewed follow-up compares successive observed camera states using the same
+64-EPSILON tolerance. Deliberate native input and explicit commands continue to
+notify. Raw camera convergence, damping, bounds, geometry and saved poses remain
+unchanged. The exact candidate-8 captured pose reproduces 2,400 native changes;
+the correction produces zero application redraw requests and zero visible-camera
+changes in ordinary/inspection modes with both motion settings. All 24 focused
+camera checks pass, and engineering independently reviewed event ordering.
+`tests/fixtures/tenmangu-idle-pose.json` binds the captured pose to interim report
+`c33f1ea97430bfa189503eeb650a1be2a7e25b450e903df434583b53870622d8`.
+This source correction awaits candidate-9 integration and native acceptance.
+
+The proposed Tenmangū pause at existing node `354840400` awaits an actual western
+walking-view review. A read-only calculation preserves the 73-node/73-edge graph,
+the complete six-sight edge sequence and 1,353.4440598583508 m distance. If accepted,
+the normal geographic preparation and Blender packaging workflow will regenerate
+source bindings, with an explicit revision-1 compatibility audit. Default route
+generation would yield one reviewed six-sight walk with adjustable stops. All
+five-sight subsets share at least 97% of its corridor, so the existing 10% diversity
+rule excludes them. The approved scope allows up to three alternatives where the
+reviewed content supports them; no diversity threshold change is proposed.
 
 The preceding immutable build is **candidate-7**, package
 **`990d7ef1cf8c35023e19f32c3ee66b688282a30434e8812c4335edf74449a133`**,
