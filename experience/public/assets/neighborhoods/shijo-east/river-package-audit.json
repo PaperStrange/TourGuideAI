@@ -1,0 +1,46 @@
+{
+  "manifestSha256": "90c0873c5e540147630c970d4a2ea692c1583b3c407c175a2659d4e1e93934c8",
+  "verifiedDecodedResources": 186,
+  "transports": [
+    {
+      "decoded": "cells/cell-e010-n000/base.gltf",
+      "decodedBytes": 1128453,
+      "transferBytes": 149032
+    },
+    {
+      "decoded": "cells/cell-e010-n000/base.bin",
+      "decodedBytes": 2712776,
+      "transferBytes": 1506341
+    },
+    {
+      "decoded": "cells/cell-e010-n000/near.gltf",
+      "decodedBytes": 1128659,
+      "transferBytes": 149140
+    },
+    {
+      "decoded": "cells/cell-e010-n000/near.bin",
+      "decodedBytes": 2931376,
+      "transferBytes": 1591371
+    }
+  ],
+  "existingSourceIndexTableUnchanged": true,
+  "sourceInputSha256": "57ae1683df42b8220591708cc9b01d71573da697fdf0290744aba44c41fc0006",
+  "sourceBuildings": 4019,
+  "geometryMeaning": "Complete source geometry retained; bitwise vertex sharing and order changes only",
+  "budget": [
+    {
+      "file": "cells/cell-e010-n000/base.gltf",
+      "decodedGeometryBytes": 3841229,
+      "transferGeometryBytes": 1655373,
+      "limit": 2097152,
+      "headroomBytes": 441779
+    },
+    {
+      "file": "cells/cell-e010-n000/near.gltf",
+      "decodedGeometryBytes": 4060035,
+      "transferGeometryBytes": 1740511,
+      "limit": 2097152,
+      "headroomBytes": 356641
+    }
+  ]
+}

@@ -25,4 +25,6 @@
 
 重现时，在仓库根目录将 `capture-driver.txt` 原样复制为 `artifacts/neighborhood-camera-audit.mjs`，安装 `experience/package-lock.json` 对应依赖，然后执行 `node artifacts/neighborhood-camera-audit.mjs`。需要本记录对应的公共资源和历史行走报告。脚本的相对路径以仓库 `artifacts/` 为运行位置。
 
-目标测试命令：`node --test experience/tests/camera-obstruction.test.mjs experience/tests/arcade-camera.test.mjs experience/tests/packs.test.mjs`。当前 19/19 通过，包含来源索引不变、批次内排除表面后的真实遮挡、资源替换、停止后恢复、零时间重复同步、reduced motion、模式入口和原有 Ginza 构图。
+目标测试命令：`node --test experience/tests/camera-obstruction.test.mjs experience/tests/arcade-camera.test.mjs experience/tests/packs.test.mjs experience/tests/simulation.test.mjs`。当前 30/30 通过，包含来源索引不变、批次内排除表面后的真实遮挡、资源替换、停止后恢复、零时间重复同步、reduced motion、模式入口和原有 Ginza 构图。
+
+行走输入还使用实际恢复相机的水平朝向。真实 arcade 几何测试产生超过 45° 的请求／实际朝向差异，分别检查前进与右移向量是否对应实际相机矩阵，确认保存的请求姿态不变；独立 Shijo 和 Ginza 继续使用其原有 OrbitControls 朝向。该输入测试没有改变上面记录的几何扫描算法或结果。

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "id": "shijo-east-river-context-sources",
+  "preparedAt": "2026-10-23",
+  "officialSource": {
+    "title": "京都市 3D都市モデル 建築物 LOD1_2025",
+    "url": "https://data.city.kyoto.lg.jp/resource/?id=21422",
+    "datasetUrl": "https://data.city.kyoto.lg.jp/dataset/00661/",
+    "license": "CC-BY-4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "attribution": "京都市 3D都市モデル（LOD1_2025）, 京都市, CC BY 4.0",
+    "archiveRetrievedAt": "2026-10-21T07:45:45.787825+00:00",
+    "archiveBytes": 116298045,
+    "archiveSha256": "15701dd9b876eeba5be4d9c45ac0cd39e72f43a30fb17164aea8d3b07618116d",
+    "datasetUpdatedAt": "2026-08-31",
+    "sourceCRS": "EPSG:6674",
+    "outputHorizontalCRS": "EPSG:4326",
+    "verticalMeaning": "Original solid Z coordinates and measured-height attributes remain separately retained. Virtual placement at zero is authored."
+  },
+  "boundedExtraction": {
+    "tool": "GDAL ogr2ogr 3.10.3 OpenFileGDB",
+    "layer": "建物LOD1_R7",
+    "boundsWGS84": [135.76266904790313, 34.99931856516312, 135.77700572946156, 35.00856887291362],
+    "queryFeatures": 5827,
+    "queryFile": "artifacts/neighborhood-20261023/world/kyoto-lod1-river-query.geojson",
+    "querySha256": "8eb3e429c32ae010ee05f452802a0cb7e8a688caf5cde1b3d068b8e5e903a8aa",
+    "selection": "Complete new buildings intersecting the reviewed camera extent, with existing source IDs and footprints overlapping the frozen display excluded.",
+    "selectedFeatures": 4019,
+    "sourceSelectionRepeated": true,
+    "compressedBytesEqual": true
+  },
+  "retainedFile": {
+    "file": "kyoto-lod1.geojson.gz",
+    "format": "GeoJSON FeatureCollection, UTF-8, deterministic gzip with mtime=0",
+    "bytes": 1214916,
+    "sha256": "314ff3d835c487332c3d5b81d58b77d011ff969d347bb835602e7d8063d76462",
+    "uncompressedBytes": 31441403,
+    "uncompressedSha256": "05284a701ff40ae865c84aa57cd58582737d272d479603ff3a037707892aa6e7",
+    "changes": "Bounded extraction and whole-feature selection; horizontal CRS conversion; original selected solids, IDs and attributes retained; gzip packaging."
+  },
+  "riverSource": {
+    "file": "experience/src/neighborhoods/shijo-east/sources/scene-osm.json",
+    "sha256": "1e3ba265bc8dd3c6744ccd897ad915016a2cc0110c306bf3e064ca63ced5dd0c",
+    "attribution": "© OpenStreetMap contributors",
+    "license": "ODbL-1.0",
+    "licenseUrl": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "retrievedAt": "2026-10-21T07:41:38.008383+00:00",
+    "kamoArea": {"sourceId": "osm:way:27793848", "version": 14, "timestamp": "2025-06-10T09:53:01Z"},
+    "changes": "Reuse complete retained geographic water geometry; project in the existing Shijo frame and clip only the added display extent. Existing source and navigation files are unchanged."
+  },
+  "unknowns": ["Surveyed terrain and bank profiles", "Current access", "Detailed context facades and entrances", "Roof/body proportions from LOD1 vertical extent"],
+  "runtime": "Source evidence is an authoring input; it supplies no additional navigable route."
+}

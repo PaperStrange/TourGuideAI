@@ -2,6 +2,8 @@
 
 The retained input contains **106 façade edges, 114 authored soffit sections (232 triangles), and 39 bank segments**. [connection-audit.json](connection-audit.json) records the independent geometry checks, eight unchanged canonical files, input/producer hashes, tool versions and byte-identical reproduction. [source-checks.txt](source-checks.txt) records **13/13** geographic source checks.
 
+The separate [river context preparation](river-context.md) records the later bounded shoreline/city continuation, complete selected official source data, camera extent and independent audit. Its input leaves this arcade/bank input unchanged.
+
 | Recorded artifact | SHA256 |
 |---|---|
 | Frozen and repeated `art-selection.json` | `082d759b38360183c70bbd37dc4317c7a8e6d20cb4e5a1a0d4afc09bfdd73b28` |

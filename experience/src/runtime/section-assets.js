@@ -3,11 +3,12 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 import { verifiedBytes } from './pack-assets.js';
 import { createTaskQueue } from './section-queue.js';
+import { sectionTransport, decodeSectionBytes } from './section-transport.js';
 
 export function createSectionAssets(baseURL, { signal, downloads = 2 } = {}) {
   const queue = createTaskQueue(downloads), resources = new Map(), textures = new Map();
   const bitmapKeys = new WeakMap();
-  let disposed = false, loadedBytes = 0, releasedModels = 0;
+  let disposed = false, loadedBytes = 0, decodedBytes = 0, releasedModels = 0;
   const rootURL = new URL('.', baseURL);
   const resolve = file => {
     const url = new URL(file, rootURL);
@@ -24,15 +25,17 @@ export function createSectionAssets(baseURL, { signal, downloads = 2 } = {}) {
   }
   function acquire(asset, ownerSignal) {
     const url = resolve(asset.file), key = url.href + ':' + asset.sha256;
+    const transport = sectionTransport(asset), transportURL = resolve(transport.file);
     let entry = resources.get(key);
     if (!entry) {
       const controller = new AbortController();
       entry = { key, url, controller, references: 0, bytes: null, bitmap: null, blobURL: null };
       resources.set(key, entry);
       entry.promise = queue.run(async () => {
-        const result = await verifiedBytes(url, asset, controller.signal);
+        const result = await verifiedBytes(transportURL, transport, controller.signal);
+        const bytes = await decodeSectionBytes(result.bytes, asset, controller.signal);
         if (disposed || controller.signal.aborted) throw new DOMException('Asset cancelled', 'AbortError');
-        entry.bytes = result.bytes; loadedBytes += result.bytes.byteLength; return entry;
+        entry.bytes = bytes; loadedBytes += result.bytes.byteLength; decodedBytes += bytes.byteLength; return entry;
       }, controller.signal);
     }
     entry.references++;
@@ -61,7 +64,9 @@ export function createSectionAssets(baseURL, { signal, downloads = 2 } = {}) {
   }
   async function download(asset, ownerSignal) {
     signal?.throwIfAborted(); ownerSignal?.throwIfAborted();
-    const leases = [asset, ...(asset.dependencies ?? [])].map(item => acquire(item, ownerSignal));
+    const descriptors = [asset, ...(asset.dependencies ?? [])];
+    for (const item of descriptors) { resolve(item.file); resolve(sectionTransport(item).file); }
+    const leases = descriptors.map(item => acquire(item, ownerSignal));
     try {
       const entries = await Promise.all(leases.map(lease => lease.entry.promise));
       ownerSignal?.throwIfAborted(); signal?.throwIfAborted();
@@ -141,7 +146,7 @@ export function createSectionAssets(baseURL, { signal, downloads = 2 } = {}) {
       for (const entry of resources.values()) bytes += entry.bytes?.byteLength ?? 0;
       for (const { texture } of textures.values()) textureBytes += (texture.image?.width ?? 0) * (texture.image?.height ?? 0) * 4 * 4 / 3;
       return { downloads: queue.snapshot(), resourceCount: resources.size, textureCount: textures.size,
-        retainedBytes: bytes, estimatedTextureBytes: Math.ceil(textureBytes), loadedBytes, releasedModels };
+        retainedBytes: bytes, estimatedTextureBytes: Math.ceil(textureBytes), loadedBytes, decodedBytes, releasedModels };
     },
     dispose() {
       if (disposed) return; disposed = true; queue.dispose();

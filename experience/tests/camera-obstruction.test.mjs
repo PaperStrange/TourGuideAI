@@ -184,3 +184,12 @@ test('Look closer retains the recovered composition until deliberate camera inpu
   }
   collision.dispose(); corridor.traverse(mesh => { mesh.geometry?.dispose(); mesh.material?.dispose(); });
 });
+
+test('standalone Shijo and Ginza retain their existing OrbitControls walking direction', () => {
+  for (const id of ['shijo-karasuma', 'ginza-wako']) {
+    const pack = getPack(id), player = pack.world.spawn;
+    const rig = createGuidedCamera(null, player, true, () => {}, { solo: true, pack });
+    rig.rotate(.35);
+    assert.equal(rig.getMovementAzimuth(), rig.controls.getAzimuthalAngle());
+  }
+});

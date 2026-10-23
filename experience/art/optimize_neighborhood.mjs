@@ -5,6 +5,7 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { createHash } from 'node:crypto';
 import { createRequire } from 'node:module';
+import { gzipSync, gunzipSync } from 'node:zlib';
 
 const options = Object.fromEntries(process.argv.slice(2).reduce((pairs, value, index, values) => {
   if (index % 2 === 0) pairs.push([value.replace(/^--/, ''), values[index + 1]]);
@@ -17,7 +18,7 @@ if (![0, 256].includes(retainedTextureSize)) throw new Error('Reviewed retained 
 const packageModule = name => import(pathToFileURL(path.resolve(options.tools, 'node_modules', name)).href);
 const { NodeIO } = await packageModule('@gltf-transform/core/dist/index.js');
 const { ALL_EXTENSIONS, EXTMeshoptCompression, KHRMeshQuantization, EXTTextureWebP } = await packageModule('@gltf-transform/extensions/dist/index.js');
-const { quantize } = await packageModule('@gltf-transform/functions/dist/index.js');
+const { quantize, weld, reorder } = await packageModule('@gltf-transform/functions/dist/index.js');
 const { MeshoptEncoder, MeshoptDecoder } = await packageModule('meshoptimizer/index.js');
 const { default: validator } = await packageModule('gltf-validator/index.js');
 const requireTool = createRequire(path.resolve(options.tools, 'package.json'));
@@ -110,6 +111,33 @@ function exactAttributes(before, after) {
     maximumNormalComponentError, sourceIndicesExact: true, nodeExtrasExact: true, worldTransformsIncludedInErrorMeasurement: true };
 }
 
+function orientedAttributeProof(document) {
+  // 顶点复用与排序后，逐三角形比较完整属性和绕序；节点变换与来源信息同时保留。
+  return {
+    meshes: document.getRoot().listMeshes().map(mesh => mesh.listPrimitives().map(primitive => {
+      const semantics = primitive.listSemantics().sort();
+      const vertices = Array.from({ length: primitive.getAttribute('POSITION').getCount() }, (_, index) =>
+        JSON.stringify(semantics.map(semantic => [semantic, primitive.getAttribute(semantic).getElement(index, [])])));
+      const indices = primitive.getIndices().getArray(), triangles = [];
+      for (let index = 0; index < indices.length; index += 3) {
+        const points = [vertices[indices[index]], vertices[indices[index + 1]], vertices[indices[index + 2]]];
+        triangles.push([0, 1, 2].map(start => [0, 1, 2].map(offset => points[(start + offset) % 3]).join('|')).sort()[0]);
+      }
+      return { triangles: indices.length / 3, sha256: sha(triangles.sort().join('\n')) };
+    })),
+    nodes: document.getRoot().listNodes().map(node => ({ extras: node.getExtras(), matrix: node.getWorldMatrix() })),
+  };
+}
+
+async function gzipTransport(record) {
+  const decoded = await fs.readFile(path.join(targetDir, record.file));
+  const encoded = gzipSync(decoded, { level: 9 });
+  if (!gunzipSync(encoded).equals(decoded)) throw new Error('Gzip transport changed decoded bytes');
+  const file = record.file + '.gz';
+  await fs.writeFile(path.join(targetDir, file), encoded);
+  record.transport = { ...(await fileRecord(file)), encoding: 'gzip' };
+}
+
 await fs.mkdir(targetDir, { recursive: true });
 await fs.cp(path.join(sourceDir, 'shared'), path.join(targetDir, 'shared'), { recursive: true });
 const manifest = await readJSON(path.join(sourceDir, 'manifest.json'));
@@ -117,7 +145,7 @@ const descriptors = [manifest.ground, manifest.context, ...manifest.cells.flatMa
 const report = { producerSha256: sha(await fs.readFile(new URL(import.meta.url))),
   inputManifestSha256: sha(await fs.readFile(path.join(sourceDir, 'manifest.json'))),
   toolVersions: { gltfTransform: '4.5.1', meshoptimizer: '1.3.0', validator: '2.0.0-dev.3.10', sharp: (await readJSON(path.resolve(options.tools, 'node_modules/sharp/package.json'))).version },
-  method: 'EXT_meshopt_compression; over-budget source sections use16-bit normal/tangent quantization; position/UV/source indices exact; world-space error measured; triangle cycles may rotate without winding changes', assets: [], textures: [] };
+  method: 'EXT_meshopt_compression; over-budget source sections use16-bit normal/tangent quantization; position/UV/source indices exact; deferred bridge uses bitwise vertex welding, size reorder and verified gzip transport; decoded geometry/memory accounting retained', assets: [], textures: [] };
 const textureCache = new Map();
 for (const descriptor of descriptors) {
   const input = path.join(sourceDir, descriptor.file), output = path.join(targetDir, descriptor.file);
@@ -145,35 +173,68 @@ for (const descriptor of descriptors) {
     await document.transform(quantize({ pattern: /^(NORMAL|TANGENT)$/, quantizeNormal: 16, cleanup: true }));
     document.createExtension(KHRMeshQuantization).setRequired(true);
   }
+  const deferredRiver = Boolean(manifest.cells.find(cell => cell.id === 'cell-e010-n000'
+    && [cell.base.file, cell.near.file].includes(descriptor.file))
+    && document.getRoot().listNodes().some(node => node.getExtras().riverContext));
+  let preparedProof = null, preparedComparison = null;
+  if (deferredRiver) {
+    preparedComparison = exactAttributes(before, document);
+    preparedProof = orientedAttributeProof(document);
+    await document.transform(weld(), reorder({ encoder: MeshoptEncoder, target: 'size' }));
+  }
   document.createExtension(EXTMeshoptCompression).setRequired(true)
     .setEncoderOptions({ method: EXTMeshoptCompression.EncoderMethod.QUANTIZE });
   await fs.mkdir(path.dirname(output), { recursive: true });
   await io.write(output, document);
   await fs.writeFile(output, JSON.stringify(await readJSON(output)) + '\n');
   const decoded = await io.read(output);
-  const comparison = exactAttributes(before, decoded);
+  let comparison;
+  if (deferredRiver) {
+    const decodedProof = orientedAttributeProof(decoded);
+    if (JSON.stringify(preparedProof) !== JSON.stringify(decodedProof)) throw new Error('Deferred river oriented attributes or metadata changed');
+    comparison = { ...preparedComparison, exactOrientedAttributeProof: true,
+      orientedAttributeProofSha256: sha(JSON.stringify(decodedProof)),
+      encodedVertices: decoded.getRoot().listMeshes().reduce((sum, mesh) => sum + mesh.listPrimitives()
+        .reduce((count, primitive) => count + primitive.getAttribute('POSITION').getCount(), 0), 0),
+      vertexReuse: 'Bitwise identical attributes only; source indices and oriented triangles retained' };
+  } else comparison = exactAttributes(before, decoded);
   const outputIssues = await validate(output);
   const jsonDocument = await io.readAsJSON(output);
   const resources = Object.keys(jsonDocument.resources).filter(uri => !uri.startsWith('@'));
   descriptor.dependencies = await Promise.all(resources.map(uri => fileRecord(path.relative(targetDir, path.resolve(path.dirname(output), uri)).split(path.sep).join('/'))));
   Object.assign(descriptor, await fileRecord(descriptor.file));
   descriptor.geometryBytes = descriptor.bytes + descriptor.dependencies.filter(item => item.file.endsWith('.bin')).reduce((sum, item) => sum + item.bytes, 0);
+  if (deferredRiver) {
+    await gzipTransport(descriptor);
+    for (const dependency of descriptor.dependencies.filter(item => item.file.endsWith('.bin'))) await gzipTransport(dependency);
+    descriptor.transferGeometryBytes = descriptor.transport.bytes + descriptor.dependencies.filter(item => item.file.endsWith('.bin'))
+      .reduce((sum, item) => sum + item.transport.bytes, 0);
+  }
   descriptor.uncompressedBudgetExceeded = false;
   descriptor.compression = 'EXT_meshopt_compression';
-  if (descriptor.geometryBytes > descriptor.transferBudgetBytes) {
-    if (descriptor.file !== 'cells/cell-e000-n000/near.gltf' || descriptor.geometryBytes > 3.5 * 1024 * 1024) {
+  const transferGeometryBytes = descriptor.transferGeometryBytes ?? descriptor.geometryBytes;
+  if (transferGeometryBytes > descriptor.transferBudgetBytes) {
+    if (descriptor.file !== 'cells/cell-e000-n000/near.gltf' || transferGeometryBytes > 3.5 * 1024 * 1024) {
       throw new Error(`Compressed section remains over budget: ${descriptor.file} ${descriptor.geometryBytes}`);
     }
     descriptor.budgetException = 'Retained previously reviewed landmark NEAR geometry, permitted up to3.5MiB; base and ordinary sections retain2MiB limit; startup transfer and visual review remain separate gates';
   }
-  report.assets.push({ file: descriptor.file, inputIssues, outputIssues, ...comparison, compressedGeometryBytes: descriptor.geometryBytes });
-  console.log(`${descriptor.file}: ${descriptor.geometryBytes}B, decoded geometry/source identity validated`);
+  report.assets.push({ file: descriptor.file, inputIssues, outputIssues, ...comparison, compressedGeometryBytes: descriptor.geometryBytes,
+    transferGeometryBytes, gzipTransportDecodedBytesExact: deferredRiver });
+  console.log(`${descriptor.file}: ${descriptor.geometryBytes}B decoded container, ${transferGeometryBytes}B transfer, geometry/source identity validated`);
 }
 for (const item of [manifest.lighting, manifest.provenance]) {
   await fs.copyFile(path.join(sourceDir, item.file), path.join(targetDir, item.file));
   Object.assign(item, await fileRecord(item.file));
 }
 for (const name of ['source-ledger.json', 'source-review.json', 'references.json']) await fs.copyFile(path.join(sourceDir, name), path.join(targetDir, name));
+const provenance = await readJSON(path.join(sourceDir, manifest.provenance.file));
+if (provenance.riverContext) {
+  const record = provenance.riverContext.input;
+  const bytes = await fs.readFile(path.join(sourceDir, record.file));
+  if (sha(bytes) !== record.sha256 || bytes.length !== record.bytes) throw new Error('River context provenance input changed');
+  await fs.writeFile(path.join(targetDir, record.file), bytes);
+}
 const sharedFiles = [...new Set(descriptors.flatMap(item => item.dependencies.map(resource => resource.file)).filter(file => file.includes('shared/')))];
 manifest.sharedResources = await Promise.all(sharedFiles.map(fileRecord));
 const featureMetadata = manifest.featureTable;

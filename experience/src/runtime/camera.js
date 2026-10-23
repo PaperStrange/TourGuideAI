@@ -3,6 +3,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { getPack, DEFAULT_PACK_ID } from '../packs/registry.js';
 import { CAMERA_DEFAULTS, CAMERA_LIMITS, normalizeCameraPose } from './view-state.js';
 import { normalizeExplorationCamera } from './exploration-state.js';
+import { pointerOperation, pointerMotionChangesCamera } from './camera-input.js';
 
 export { CAMERA_DEFAULTS };
 export const toScene = (x, north, height = 0) => new THREE.Vector3(x, height, -north);
@@ -25,7 +26,9 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
   let frontage = initialFrontage(initial);
   let base = frontage === 'south' ? Math.PI : 0;
   let aimOffset = null, transition = null, inspecting = false;
-  let inspectionAimed = false, interacting = false;
+  let inspectionAimed = false, interacting = false, gestureAdopted = false, adopting = false;
+  const pointerSamples = new Map();
+  let lastPointerId, gestureOperation = null;
   let currentState = { x: initial.x, y: initial.y, height: initial.height };
   const controls = new OrbitControls(camera, canvas);
   controls.enablePan = false;
@@ -55,7 +58,7 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
   }
   const emitChange = () => { synchronizeCamera(); onChange(); };
   const changed = () => {
-    if (inspecting && interacting) inspectionAimed = true;
+    if (adopting) return;
     if (solo && inspecting && !transition?.following) {
       const before = controls.target.clone();
       controls.target.set(THREE.MathUtils.clamp(before.x, currentState.x - limits.targetXY, currentState.x + limits.targetXY),
@@ -68,11 +71,59 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
     }
     emitChange();
   };
-  const interactionStarted = () => { interacting = true; };
-  const interactionEnded = () => { interacting = false; };
+  function beginCameraInput() {
+    if (inspecting) inspectionAimed = true;
+    if (viewCamera === camera || !obstruction || (!obstruction.active && !obstruction.settling)) return;
+    if (transition) {
+      const enabled = transition.enabled; transition = null; controls.enabled = enabled; setAzimuthBounds();
+    }
+    // 只有实际相机输入采用可见视点；模式入口与点击选择不会覆盖保存的构图意图。
+    const visibleTarget = obstruction.target.clone(), offset = viewCamera.position.clone().sub(visibleTarget);
+    const distance = offset.length(), damping = controls.enableDamping;
+    if (distance < .001) return;
+    adopting = true; controls.enableDamping = false; controls.update();
+    controls.target.copy(visibleTarget);
+    camera.position.copy(visibleTarget).addScaledVector(offset.divideScalar(distance), Math.max(limits.distance[0], distance));
+    aimOffset = { x: visibleTarget.x - currentState.x, y: -visibleTarget.z - currentState.y, height: visibleTarget.y };
+    controls.update(); controls.enableDamping = damping; adopting = false;
+    camera.updateMatrixWorld(); emitChange();
+  }
+  const interactionStarted = () => {
+    interacting = true; gestureAdopted = false;
+    gestureOperation = pointerOperation(controls, pointerSamples.get(lastPointerId) ?? pointerSamples.values().next().value, pointerSamples.size);
+  };
+  const interactionEnded = () => { interacting = false; gestureAdopted = false; gestureOperation = null; };
+  const pointerStarted = event => {
+    if (!controls.enabled || pointerSamples.has(event.pointerId)) return;
+    lastPointerId = event.pointerId;
+    pointerSamples.set(event.pointerId, { type: event.pointerType, button: event.button,
+      modified: event.ctrlKey || event.metaKey || event.shiftKey,
+      x: event.pointerType === 'touch' ? event.pageX : event.clientX,
+      y: event.pointerType === 'touch' ? event.pageY : event.clientY });
+    if (event.pointerType === 'touch' && pointerSamples.size > 2) gestureOperation = null;
+  };
+  const pointerMoved = event => {
+    const previous = pointerSamples.get(event.pointerId);
+    if (!previous) return;
+    const next = { ...previous, x: event.pointerType === 'touch' ? event.pageX : event.clientX,
+      y: event.pointerType === 'touch' ? event.pageY : event.clientY };
+    pointerSamples.set(event.pointerId, next);
+    const other = [...pointerSamples].find(([id]) => id !== event.pointerId)?.[1];
+    if (!interacting || gestureAdopted || !pointerMotionChangesCamera(controls, gestureOperation, previous, next, other)) return;
+    gestureAdopted = true; beginCameraInput();
+  };
+  const pointerEnded = event => { pointerSamples.delete(event.pointerId); };
+  const wheelMoved = event => {
+    if (controls.enabled && controls.enableZoom && (!interacting || gestureOperation === null) && event.deltaY !== 0) beginCameraInput();
+  };
   controls.addEventListener('change', changed);
   controls.addEventListener('start', interactionStarted);
   controls.addEventListener('end', interactionEnded);
+  canvas?.addEventListener('pointerdown', pointerStarted, true);
+  canvas?.addEventListener('pointermove', pointerMoved, true);
+  canvas?.addEventListener('pointerup', pointerEnded, true);
+  canvas?.addEventListener('pointercancel', pointerEnded, true);
+  canvas?.addEventListener('wheel', wheelMoved, { capture: true, passive: true });
   const targetFor = state => toScene(state.x + (aimOffset?.x ?? pack.camera.followOffset?.x ?? (frontage === 'north' ? 1.2 : -1.2)),
     state.y + (aimOffset?.y ?? pack.camera.followOffset?.y ?? (frontage === 'north' ? -2.2 : 2.2)),
     aimOffset?.height ?? pack.camera.followOffset?.height ?? 0.9);
@@ -149,6 +200,12 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
   reset(initial);
   return {
     camera: viewCamera, controls, synchronizeCamera,
+    getMovementAzimuth() {
+      if (viewCamera === camera) return controls.getAzimuthalAngle();
+      // 行走方向跟随实际画面；保存的 OrbitControls 方向继续保留用户构图意图。
+      const forward = viewCamera.getWorldDirection(new THREE.Vector3());
+      return Math.atan2(-forward.x, -forward.z);
+    },
     setObstructionResolver(value) { obstructionResolver = value; synchronizeCamera(); },
     reset, restorePose, finishTransition, resumeFollow,
     setInspecting(value) {
@@ -207,18 +264,18 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
       pose(current.azimuth, current.polar, current.distance);
       controls.enabled = value;
     },
-    rotate(delta) { if (inspecting) inspectionAimed = true; pose(unwrap(controls.getAzimuthalAngle()) + delta, controls.getPolarAngle(), controls.getDistance()); },
-    tilt(delta) { if (inspecting) inspectionAimed = true; pose(controls.getAzimuthalAngle(), controls.getPolarAngle() + delta, controls.getDistance()); },
+    rotate(delta) { beginCameraInput(); pose(unwrap(controls.getAzimuthalAngle()) + delta, controls.getPolarAngle(), controls.getDistance()); },
+    tilt(delta) { beginCameraInput(); pose(controls.getAzimuthalAngle(), controls.getPolarAngle() + delta, controls.getDistance()); },
     pan(right, up) {
       if (!solo || !inspecting) return;
-      inspectionAimed = true;
+      beginCameraInput();
       camera.updateMatrixWorld();
       const delta = new THREE.Vector3().setFromMatrixColumn(camera.matrixWorld, 0).multiplyScalar(right)
         .add(new THREE.Vector3().setFromMatrixColumn(camera.matrixWorld, 1).multiplyScalar(up));
       controls.target.add(delta); camera.position.add(delta);
       changed(); controls.update();
     },
-    zoom(delta) { if (inspecting) inspectionAimed = true; pose(controls.getAzimuthalAngle(), controls.getPolarAngle(), controls.getDistance() + delta); },
+    zoom(delta) { beginCameraInput(); pose(controls.getAzimuthalAngle(), controls.getPolarAngle(), controls.getDistance() + delta); },
     resize(width, height) { camera.aspect = width / height; camera.updateProjectionMatrix(); emitChange(); },
     project(x, north, height, width, viewportHeight) {
       const projected = toScene(x, north, height).project(viewCamera);
@@ -244,6 +301,11 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
         limits: structuredClone(limits) };
     },
     dispose() { controls.removeEventListener('change', changed); controls.removeEventListener('start', interactionStarted);
-      controls.removeEventListener('end', interactionEnded); controls.dispose(); },
+      controls.removeEventListener('end', interactionEnded);
+      canvas?.removeEventListener('pointerdown', pointerStarted, true);
+      canvas?.removeEventListener('pointermove', pointerMoved, true);
+      canvas?.removeEventListener('pointerup', pointerEnded, true);
+      canvas?.removeEventListener('pointercancel', pointerEnded, true);
+      canvas?.removeEventListener('wheel', wheelMoved, true); pointerSamples.clear(); controls.dispose(); },
   };
 }

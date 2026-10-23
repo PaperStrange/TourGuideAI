@@ -433,7 +433,7 @@ export async function createGame(host, options = {}) {
           previous = { x: player.x, y: player.y };
           let right = 0, forward = 0;
           for (const code of held) { right += keys[code][0]; forward += keys[code][1]; }
-          const input = cameraRelativeInput(right, forward, rig.controls.getAzimuthalAngle());
+          const input = cameraRelativeInput(right, forward, rig.getMovementAzimuth());
           stepSimulation(player, input, view.admit); accumulator -= TICK_MS;
           if (observing() && (input.x || input.y)) {
             commandTrace.push({ tick: player.tick, ...input }); if (commandTrace.length > 600) commandTrace.shift();

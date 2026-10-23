@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # 邻里素材按完整建筑分区；导航表面常驻，共享贴图独立于细节层级。
 import argparse
+import gzip
 import hashlib
 import json
 import math
@@ -17,6 +18,7 @@ from build_site_context import validate_polygon
 from neighborhood_mesh import MeshBatch, building_geometry
 from neighborhood_materials import generate_textures
 from neighborhood_landmarks import landmark_geometry, canopy_geometry, waterside_geometry
+from neighborhood_river import load_river_context, river_context_geometry, mesh_source_table
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -428,6 +430,7 @@ def main():
     parser.add_argument('--geography', type=Path, default=ROOT / 'experience/src/neighborhoods/shijo-east/geography.json')
     parser.add_argument('--scene', type=Path, default=ROOT / 'experience/src/neighborhoods/shijo-east/scene.json')
     parser.add_argument('--prepared-art', type=Path, required=True)
+    parser.add_argument('--river-context', type=Path)
     parser.add_argument('--style', type=Path, default=ROOT / 'experience/art/neighborhood-style.json')
     parser.add_argument('--asset-dir', type=Path, default=ROOT / 'experience/public/assets/neighborhoods/shijo-east')
     parser.add_argument('--output-dir', type=Path, default=ROOT / 'artifacts/neighborhood-20261021/art/build')
@@ -473,6 +476,7 @@ def main():
     source_indices['authored:retained-shijo-streetscape'] = len(feature_table)
     feature_table.append({'index': len(feature_table), 'sourceId': 'authored:retained-shijo-streetscape',
                           'kind': 'retained-street-decoration', 'featureIds': []})
+    river_context = load_river_context(arguments.river_context, navigation['frame'], feature_table, source_indices, style)
     ground_batches = {}
     if not prepared.get('walkableMaterialSurfaces') or not prepared.get('walkableMaterialAudit') or any(
             item['unionDifferenceSquareMetres'] > 1e-7 or item['overlapSquareMetres'] > 1e-7 or item['hausdorffDistanceMetres'] > 1e-8
@@ -535,6 +539,7 @@ def main():
     context = export_asset(asset_dir / 'context.gltf', context_objects, asset_dir, resource_paths, style['limits']['contextBytes'])
     remove_meshes(context_objects)
     cells = []
+    river_context_attached = False
     for (ix, iy), members in sorted(cell_features.items()):
         identifier = f'cell-{"e" if ix >= 0 else "w"}{abs(ix):03d}-{"n" if iy >= 0 else "s"}{abs(iy):03d}'
         bounds = {'minX': ix * size, 'maxX': (ix + 1) * size, 'minY': iy * size, 'maxY': (iy + 1) * size}
@@ -585,6 +590,19 @@ def main():
                                      style['materials'][name]['metresPerRepeat'], feature_table,
                                      {'cellId': identifier, 'detailLevel': lod, 'occlusionGroup': 'Canopy_' + identifier})
                            for name, data in canopy_batches.items() if data.faces)
+            if river_context and identifier == river_context['source']['attachmentCellId']:
+                river_groups = river_context_geometry(river_context, style)
+                for group, river_batches in sorted(river_groups.items()):
+                    for name, data in river_batches.items():
+                        if not data.faces:
+                            continue
+                        obj = make_mesh(identifier + '_' + lod + '_RiverContext_' + group + '_' + name,
+                                        data, materials[name], style['materials'][name]['metresPerRepeat'], feature_table,
+                                        {'cellId': identifier, 'detailLevel': lod, 'riverContext': True, 'walkable': False,
+                                         'spatialGroup': group, 'featureTable': mesh_source_table(river_context, data.source_indices)})
+                        obj['sourceIndexLookup'] = 'mesh.featureTable'
+                        objects.append(obj)
+                river_context_attached = True
             cell[lod] = export_asset(asset_dir / 'cells' / identifier / (lod + '.gltf'), objects,
                                      asset_dir, resource_paths, style['limits']['sectionBytes'])
             cell[lod]['detail'] = counts
@@ -593,6 +611,8 @@ def main():
             remove_meshes(objects)
         cells.append(cell)
         print('[neighborhood-art] ' + identifier + ' ' + str(cell['near']['geometryBytes']), flush=True)
+    if river_context and not river_context_attached:
+        raise ValueError('Reviewed bridge cell is absent from the exported neighborhood')
     lighting = lighting_asset(asset_dir, geography['bounds'], style)
     for name in ('source-ledger.json', 'source-review.json'):
         shutil.copyfile(arguments.scene.parent / name, asset_dir / name)
@@ -626,6 +646,23 @@ def main():
                   'authored': ['Facade bay counts and window dimensions', 'Material-family assignments on sourced building masses', 'Flat ground and display water/bridge heights', 'Canopy profile and source-adjacent soffit joins up to6m; exact construction widths unmeasured', 'Lower-storey market frontage assemblies without tenant correspondence', 'Bank vertical faces between existing authored ground/water heights', 'Torii/board/railing dimensions', 'Night fixtures, light intensity and emission'],
                   'sourceFramePreserved': True, 'originalPackAssetsChanged': False,
                   'visualAcceptance': 'requires actual browser route review'}
+    if river_context:
+        # 完整来源输入按确定性 gzip 保存，解码后仍对应审核过的原始字节。
+        input_bytes = arguments.river_context.read_bytes()
+        input_path = asset_dir / 'river-context.json.gz'
+        input_path.write_bytes(gzip.compress(input_bytes, compresslevel=9, mtime=0))
+        provenance['riverContext'] = {
+            'input': {**file_record(input_path, asset_dir), 'encoding': 'gzip',
+                      'decodedSha256': sha256(arguments.river_context), 'decodedBytes': len(input_bytes)},
+            'helperSha256': sha256(Path(__file__).with_name('neighborhood_river.py')),
+            'producerSha256': river_context['source']['producerSha256'],
+            'sourceHashes': river_context['source']['sourceHashes'],
+            'scope': river_context['source']['scope'], 'audit': river_context['source']['audit'],
+            'sourceLedger': river_context['source']['sourceLedger'],
+            'attachmentCellId': river_context['source']['attachmentCellId'],
+            'sourceTableStorage': 'Complete per-mesh deferred featureTable; existing global source indices unchanged',
+            'meaning': 'Retained mapped water and city masses; surrounding flat land, display levels and material treatment authored',
+        }
     write_json(asset_dir / 'provenance.json', provenance)
     manifest = {'version': 1, 'id': geography['id'], 'revision': geography.get('revision', 1),
                 'frame': geography['frame'], 'bounds': geography['bounds'],

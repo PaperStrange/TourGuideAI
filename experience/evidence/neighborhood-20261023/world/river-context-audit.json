@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "reviewedAt": "2026-10-23",
+  "input": {
+    "file": "artifacts/neighborhood-20261023/world/river-context.json",
+    "sha256": "57ae1683df42b8220591708cc9b01d71573da697fdf0290744aba44c41fc0006"
+  },
+  "repeat": {
+    "file": "artifacts/neighborhood-20261023/world/repeat/river-context.json",
+    "sha256": "57ae1683df42b8220591708cc9b01d71573da697fdf0290744aba44c41fc0006",
+    "byteIdentical": true
+  },
+  "auditScriptSha256": "a67b2db04d15d6528352991fb374a2fc462dd586fb9174282672d66ae844be95",
+  "producerSha256": "4208d4034678ed022a45f99a23a1a7d3bc03bd0a1036c0ef82f368af63ce4201",
+  "sourceHashes": {
+    "experience/src/neighborhoods/shijo-east/scene.json": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e",
+    "experience/src/neighborhoods/shijo-east/geography.json": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
+    "artifacts/neighborhood-20261023/world/art-selection.json": "082d759b38360183c70bbd37dc4317c7a8e6d20cb4e5a1a0d4afc09bfdd73b28",
+    "experience/evidence/neighborhood-20261023/world/river-context-sources/kyoto-lod1.geojson.gz": "314ff3d835c487332c3d5b81d58b77d011ff969d347bb835602e7d8063d76462"
+  },
+  "selectedOfficialSource": {
+    "file": "experience/evidence/neighborhood-20261023/world/river-context-sources/kyoto-lod1.geojson.gz",
+    "sha256": "314ff3d835c487332c3d5b81d58b77d011ff969d347bb835602e7d8063d76462",
+    "license": "CC-BY-4.0",
+    "features": 4019
+  },
+  "uncompressedSelectedSourceSha256": "05284a701ff40ae865c84aa57cd58582737d272d479603ff3a037707892aa6e7",
+  "geometry": {
+    "surfaces": 29,
+    "surfaceTriangles": 2847,
+    "buildings": 4019,
+    "roofTriangles": 22805,
+    "plainWallTriangleEstimate": 61630,
+    "bankSegments": 136,
+    "oldDisplayOverlapSquareMetres": 0.0,
+    "mutualSurfaceOverlapSquareMetres": 3.096647560596466e-08,
+    "coverageDifferenceSquareMetres": 4.3163995832970054e-05,
+    "maximumBuildingFootprintErrorMetres": 0.0007003853524897959,
+    "maximumBuildingOverlapSquareMetres": 0,
+    "omittedFloat32Triangles": 8,
+    "omittedFloat32TriangleAreaSquareMetres": 4.3164349201831726e-05,
+    "maximumCleanupBoundaryChangeMetres": 3.498923789136566e-05
+  },
+  "acceptanceLimits": {
+    "oldDisplayOverlapSquareMetres": 1e-05,
+    "mutualSurfaceOverlapSquareMetres": 1e-05,
+    "coverageDifferenceSquareMetres": 0.001
+  },
+  "camera": {
+    "maximumAuditedAspect": 2.0,
+    "minimumRouteBoundaryDistanceMetres": 500.2679804045,
+    "minimumConservativeBoundaryViewDepthMetres": 275.46263444549345,
+    "pauses": [
+      {
+        "id": "takase-river",
+        "outerBoundaryDistanceMetres": 500.7051102125159,
+        "minimumConservativeBoundaryViewDepthMetres": 275.7724186045812
+      },
+      {
+        "id": "pontocho-entrance",
+        "outerBoundaryDistanceMetres": 500.7353014779238,
+        "minimumConservativeBoundaryViewDepthMetres": 275.7938144819492
+      },
+      {
+        "id": "shijo-bridge",
+        "outerBoundaryDistanceMetres": 500.6996800351456,
+        "minimumConservativeBoundaryViewDepthMetres": 275.7685703588211
+      }
+    ]
+  },
+  "canonicalUnchanged": true,
+  "navigationExtended": false,
+  "measuredTerrainOrBankHeight": false,
+  "limits": "Geometry and source audit; encoded bytes, browser appearance and runtime budgets require separate export/QA."
+}

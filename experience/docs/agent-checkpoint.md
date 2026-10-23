@@ -21,19 +21,45 @@ Commit **`6ee2248766c3ac1c3cbf219533a9279a7ed6b220`** is pushed. Its recovery in
 guards private journey writes against changed stored bytes, and reserves near-detail
 capacity through loading/cancellation cleanup. Twenty targeted route, native-storage,
 asset and scheduling checks pass. Font regeneration reports zero missing glyphs.
-CI **39886300478** is running for that increment; it does not cover the current
-camera/art candidate. Completed CI evidence for its parent is recorded below.
+CI **39886300478** was superseded by **39888148078** on
+**`ce2a59afd1a06b8cb17c60869f11ab1ec00a1ac0`**. Geographic preparation, perspective,
+companion, homepage, solo, original-walk and reviewed-pack jobs pass. The complete
+neighborhood job remains running at this checkpoint. This CI covers candidate-1;
+the subsequent camera-input and river-context changes require their own validation.
 
 The current immutable browser candidate is
-**`artifacts/neighborhood-20261023/candidate-1`**, copied from the canonical
-`experience/dist` build. Application checks pass **185/185**, with no skips.
-Its 293-file package identity is
-**`df711b7d06a0a921545cc82de1ffe3b26dec28a8dc3a86684d837fcdd5e1127c`**.
+**`artifacts/neighborhood-20261023/candidate-2`**, copied from the canonical
+`experience/dist` build. Application checks pass **191/191**, with no skips.
+Its 299-file package identity is
+**`f27fbe22db95a007010d2d46a661f27752a2361f5d9d84aaa4e4588c498e0dc5`**.
 Its scenery manifest is
-**`add6e399dcebca96cec9daf9e413f1374b6561ca48272b982914a1d6075f961c`**.
-QA owns the exclusive browser window for recovery, native-storage preservation,
-desktop/compact detail transitions, actual arcade controls and bridge captures.
-These checks are running; the candidate is not accepted for publication.
+**`90c0873c5e540147630c970d4a2ea692c1583b3c407c175a2659d4e1e93934c8`**.
+QA has the exclusive browser window for native camera input, rendered-direction
+walking, deliberate market inspection, day/night river views and resource counts.
+Actual-view acceptance and the performance benchmark remain pending.
+
+Preserved candidate-1 has 293 files and package identity
+**`df711b7d06a0a921545cc82de1ffe3b26dec28a8dc3a86684d837fcdd5e1127c`**.
+Actual recovery, native-storage preservation and desktop/compact detail-transition
+checks pass **28/28**. A second tab writes during a real 15-second held opening;
+stale completion and camera saves preserve its bytes, and Reload adopts its route
+and night mode. Initial failure stays failed through a locale change until Retry.
+Across actual boundary crossings, desktop retains at most three near sections
+including reservations; compact retains one. The candidate is not accepted for
+publication.
+
+Candidate-1 arcade/bridge checks finish **10 passing / 2 failing**. Both failures
+are fixed screen-point inspection scans; the full actor remains visible beneath
+the arcade, entry into Look closer preserves the view, and ground checks pass.
+A separate deliberate-control inspection run passes **4/4**, selecting the actual
+market soffit without moving the player. The complete original reports and
+executed drivers remain under `evidence/neighborhood-20261023/qa/candidate-1/`.
+The inspection attempt exposed a usability issue: camera input was starting from
+the hidden desired pose. Candidate-2 rebases actual drag, wheel and keyboard
+adjustments on the visible recovered pose while preserving intent for a click or
+mode entry. Ignored middle-button and three-finger gestures also preserve intent.
+Walking input follows the rendered camera direction. Thirty-two focused
+camera/legacy checks pass; actual browser verification is pending.
 
 The camera retains desired saved OrbitControls intent and constrains the rendered
 view against actual building and canopy geometry. Scoped `three-mesh-bvh` indices
@@ -50,19 +76,29 @@ The art candidate adds 106 source-adjacent market façade edges, 114 authored so
 sections and 39 bank faces. Canonical source geometry and navigation remain unchanged.
 Derived input and roadway-mask reproduction are byte-identical; source checks pass
 13/13. All 74 glTF files validate, and all 10,974 sampled corridor positions retain
-coverage. Required daylight 3D resources total **4,156,102 bytes**, below 4 MiB;
-night resources total **4,148,866 bytes**. The Mitsui NEAR exception remains 3.5 MiB;
+coverage. Candidate-2 required daylight 3D resources total **4,159,329 bytes**,
+below 4 MiB; night resources total **4,152,093 bytes**. The Mitsui NEAR exception remains 3.5 MiB;
 ordinary/base sections retain 2 MiB. Source audits and reproducible commands are in
 `evidence/neighborhood-20261023/world/` and `docs/neighborhood-authoring.md`.
 
-**Remaining visual gates:** actual arcade day/night composition and inspection,
-riverbank transitions, and the distant river/city context. The recorded bridge view
-ends its display surfaces about 65 m north of the player, before the fog band.
-Retained map data includes the full Kamo shoreline; world/art are preparing a
-separate source-backed, nonwalkable continuation and bounded official city massing.
-Its extent must account for nearby route positions and permitted camera poses.
-That work is outside candidate-1 and must receive independent source, budget and
-actual-view validation before a new candidate is frozen.
+**Remaining visual gates:** deliberate arcade input/inspection and the extended
+river/city context in daylight and night. The frozen context input is
+`57ae1683df42b8220591708cc9b01d71573da697fdf0290744aba44c41fc0006`, with 29 surfaces,
+4,019 complete official building masses and 136 bank segments. Independent audit
+and exact reproduction pass. Existing display overlap is zero; navigation remains
+unchanged. The extent includes nearby retained route positions and remains beyond
+the 270 m fog endpoint for the audited camera limits and aspect ratios up to 2.0.
+Portable selected geometry, licenses and reproduction commands are in
+`evidence/neighborhood-20261023/world/river-context.md`. The bridge-cell scenery
+uses spatial groups and complete per-mesh source tables. Its BASE/NEAR geometry
+transfers are **1,655,373 / 1,740,511 bytes**, within the existing 2 MiB limit.
+Decoded glTF/binary containers are **3,841,229 / 4,060,035 bytes**; decoded bytes
+remain in residency accounting. Bitwise vertex reuse, triangle reordering and gzip
+preserve oriented triangle attributes, transforms and source identity. Position and
+UV error remain zero. Runtime verifies encoded bytes before bounded decompression,
+then verifies decoded size and SHA256 while retaining logical dependency paths.
+Nine targeted resource/scheduling/real-HTTP transport checks pass. Browser parsing,
+actual resource counts and visual composition remain separate pending gates.
 
 The bounded arcade report finishes **6 passing / 2 failing** checks, with no runtime
 exceptions, at `2026-10-21T09:11:37.696Z`. SHA256:
@@ -93,13 +129,13 @@ own package identities. Evidence is under `evidence/neighborhood-20261023/ci/`.
 
 Next actions, in order:
 
-1. Complete candidate-1 actual recovery, native-storage, near-capacity and arcade
-   checks. Preserve the actual failure records and identify any remaining runtime
-   issue before changing the frozen bytes. Review source-feature inspection through
-   deliberate camera controls and verify Look closer entry, stopping and hidden state.
-2. Finish and review the source-backed river/city continuation, freeze a new canonical
-   build, and validate its day/night bridge and nearby approaches. Preserve previous
-   candidates and bind every capture/report to exact package and driver hashes.
+1. Verify actual camera drag, wheel, keyboard and click behavior, market inspection,
+   rendered-direction walking, stopped settling and hidden state. Review day/night
+   bridge and nearby approaches with actual resource counts. Preserve candidate-1
+   and every original failed observation.
+2. Confirm actual gzip bridge requests and decoded model rendering, then obtain
+   independent art review of the immutable candidate-2 captures. Bind each report
+   and capture to exact package and executed-driver hashes.
 3. Review completed CI evidence, then validate the changed candidate with the
    complete route, streaming delay/failure/retry, saved returns, private records,
    EN/ZH, Maps export and existing journeys. Keep failed observations explicit.

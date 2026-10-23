@@ -8,6 +8,7 @@ import { Matrix4, Vector3 } from 'three';
 import { startServer } from '../server/src/server.js';
 import { createJourneyPlanner } from '../src/journey/recommendations.js';
 import { createJourneySession } from '../src/journey/session.js';
+import { createRouteNavigation } from '../src/simulation/route-navigation.js';
 import geography from '../src/neighborhoods/shijo-east/geography.json' with { type: 'json' };
 import { SIGHTS } from '../src/neighborhoods/shijo-east/sights.js';
 
@@ -18,7 +19,7 @@ const timeout = Number(process.env.EXPERIENCE_QA_TIMEOUT || 120000);
 const walkingTimeout = Number(process.env.EXPERIENCE_QA_WALK_TIMEOUT || 2400000);
 const only = process.env.EXPERIENCE_QA_ONLY?.split(',').filter(Boolean);
 const sections = ['startup', 'journey', 'initial-recovery', 'latest-intent', 'unavailable-revision', 'external-session', 'residency-boundary'];
-if (only?.some(value => ![...sections, 'walking-controls', 'arcade-regression', 'bridge-review'].includes(value))) throw new Error('Unknown neighborhood test section.');
+if (only?.some(value => ![...sections, 'walking-controls', 'arcade-regression', 'arcade-inspection', 'recovered-keyboard', 'recovered-camera-input', 'bridge-review'].includes(value))) throw new Error('Unknown neighborhood test section.');
 const prefix = '/assets/neighborhoods/shijo-east/';
 const journeyKey = 'tourguideai.journey.session.v1';
 const keptKey = 'tourguideai.solo.places.v1';
@@ -36,6 +37,10 @@ const manifestBytes = assets.get(prefix + 'manifest.json');
 if (!assets.has('/index.html') || !manifestBytes) throw new Error('The complete neighborhood build is required.');
 const manifest = JSON.parse(manifestBytes);
 if (manifest.id !== geography.id || manifest.revision !== geography.revision) throw new Error('Neighborhood source and build identities differ.');
+const descriptors = [manifest.ground, manifest.lighting, manifest.context,
+  ...manifest.cells.flatMap(cell => [cell.base, cell.near])].filter(Boolean);
+const encodedAssets = [...new Map(descriptors.flatMap(descriptor => [descriptor, ...(descriptor.dependencies || [])])
+  .filter(asset => asset.transport).map(asset => [asset.file, asset])).values()];
 mkdirSync(output, { recursive: true });
 const files = [...assets].sort(([a], [b]) => a.localeCompare(b)).map(([path, bytes]) => ({ path, bytes: bytes.length, sha256: sha(bytes) }));
 const legacy = {
@@ -74,7 +79,7 @@ function near(a, b, tolerance = .003) {
 const providers = new Set(['https://tiles.openfreemap.org', 'https://photon.komoot.io', 'https://en.wikipedia.org']);
 const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json',
   '.gltf': 'model/gltf+json', '.glb': 'model/gltf-binary', '.png': 'image/png', '.jpg': 'image/jpeg',
-  '.webp': 'image/webp', '.hdr': 'application/octet-stream', '.woff': 'font/woff' };
+  '.webp': 'image/webp', '.hdr': 'application/octet-stream', '.woff': 'font/woff', '.gz': 'application/gzip' };
 let browser, service;
 const contexts = new Set();
 const home = page => page.evaluate(() => window.__HOME__?.snapshot());
@@ -140,7 +145,8 @@ async function scenario(name, fault = {}, options = {}) {
     ...options.context };
   const context = await browser.newContext(contextOptions);
   contexts.add(context);
-  const record = report.scenarios[name] = { context: contextOptions, requests: [], failures: [], denied: [], delayed: [], pageErrors: [], unexpectedOrigins: [] };
+  const record = report.scenarios[name] = { context: contextOptions, requests: [], responses: [], finishedRequests: [],
+    failures: [], denied: [], delayed: [], pageErrors: [], unexpectedOrigins: [] };
   await context.route(service.url + '/**', async route => {
     const url = new URL(route.request().url()), path = url.pathname === '/' ? '/index.html' : url.pathname;
     if (path.startsWith('/api/')) return route.continue();
@@ -161,6 +167,8 @@ async function scenario(name, fault = {}, options = {}) {
     if (['http:', 'https:'].includes(url.protocol) && url.origin !== service.url && !providers.has(url.origin)) record.unexpectedOrigins.push(url.origin);
   });
   page.on('requestfailed', request => record.failures.push({ path: new URL(request.url()).pathname, error: request.failure()?.errorText }));
+  page.on('response', response => record.responses.push({ path: new URL(response.url()).pathname, status: response.status() }));
+  page.on('requestfinished', request => record.finishedRequests.push(new URL(request.url()).pathname));
   page.on('pageerror', error => { record.pageErrors.push(error.message); persist(); });
   await page.goto(service.url + '/?qa=1&mode=together&lang=en', { waitUntil: 'domcontentloaded' });
   await page.waitForFunction(() => Boolean(window.__HOME__));
@@ -386,27 +394,72 @@ async function verifyWalkingControls(page, sight) {
 }
 async function inspectVisibleSurface(page, id, expectedId) {
   const initial = await observe(page); await page.locator('#solo-inspect').click();
-  await page.locator('#live-stage canvas').scrollIntoViewIfNeeded();
-  const bounds = await page.locator('#live-stage canvas').boundingBox();
+  const attempts = [], inputs = [];
   let focus = null;
-  for (const [x, y] of [[.5, .35], [.25, .4], [.75, .4], [.35, .25], [.65, .25], [.15, .6], [.85, .6], [.5, .15]]) {
-    const previous = (await observe(page)).renderer.updateFrames;
-    await page.mouse.move(bounds.x + bounds.width * x, bounds.y + bounds.height * y);
-    await page.waitForFunction(previous => window.__TOUR_GAME__.renderer().updateFrames > previous, previous);
-    focus = await page.evaluate(() => window.__TOUR_GAME__.inspection().focus);
-    if (focus) break;
+  const scan = async points => {
+    await page.locator('#live-stage canvas').scrollIntoViewIfNeeded();
+    const bounds = await page.locator('#live-stage canvas').boundingBox();
+    for (const [x, y] of points) {
+      const previous = (await observe(page)).renderer.updateFrames;
+      await page.mouse.move(bounds.x + bounds.width * x, bounds.y + bounds.height * y);
+      await page.waitForFunction(previous => window.__TOUR_GAME__.renderer().updateFrames > previous, previous);
+      focus = await page.evaluate(() => window.__TOUR_GAME__.inspection().focus);
+      attempts.push({ pointer: { x, y, bounds }, focus, camera: (await observe(page)).camera });
+      if (focus && (!expectedId || focus.id === expectedId)) return true;
+    }
+    return false;
+  };
+  let found = await scan([[.5, .35], [.25, .4], [.75, .4], [.35, .25], [.65, .25], [.15, .6], [.85, .6], [.5, .15]]);
+  if (!found && expectedId === 'shijo-east:nishiki-market') {
+    inputs.push(...await aimAlongArcade(page, id));
+    found = await scan([[.25, .08], [.4, .08], [.12, .25], [.25, .3], [.4, .4], [.7, .3], [.6, .15], [.5, .5]]);
   }
-  if (focus) {
+  if (found) {
     await page.locator('#solo-detail').click();
     await page.waitForFunction(() => Boolean(window.__TOUR_GAME__.inspection().selected));
   }
   const selected = await page.evaluate(() => window.__TOUR_GAME__.inspection().selected);
   check(id, Boolean(focus && selected && selected.id === focus.id && (!expectedId || selected.id === expectedId))
     && near((await observe(page)).route.position, initial.route.position),
-    { focus, selected, before: initial.route.position, after: (await observe(page)).route.position });
+    { focus, selected, inputs, attempts, before: initial.route.position, after: (await observe(page)).route.position });
   if (selected) await page.locator('#solo-close-detail').click();
   await page.locator('#live-stage').focus(); await page.keyboard.press('Escape');
   await page.waitForFunction(() => !window.__TOUR_GAME__.inspection().enabled);
+  if (inputs.length) {
+    await page.locator('#preview-reset').click();
+    await page.waitForFunction(() => !window.__TOUR_GAME__.camera().transitioning && !window.__TOUR_GAME__.camera().obstruction?.settling);
+    check(id + '-explicit-reset-keeps-walking-position', near((await observe(page)).route.position, initial.route.position), await observe(page));
+  }
+}
+async function aimAlongArcade(page, checkId) {
+  const inputs = [];
+  await page.locator('#live-stage').focus();
+  for (const operation of ['orbit', 'tilt', 'zoom']) {
+    let reached = false;
+    for (let step = 0; step < 40; step++) {
+      const before = await observe(page), camera = before.camera;
+      const offset = new Vector3().fromArray(camera.position).sub(new Vector3().fromArray(camera.viewTarget));
+      const radius = offset.length(), azimuth = Math.atan2(offset.x, offset.z), polar = Math.acos(offset.y / radius);
+      const angle = Math.atan2(Math.sin(-Math.PI / 2 - azimuth), Math.cos(-Math.PI / 2 - azimuth));
+      if (operation === 'orbit' ? Math.abs(angle) <= .081 : operation === 'tilt' ? polar >= 1.44 : radius <= 8.01) { reached = true; break; }
+      const key = operation === 'orbit' ? angle < 0 ? 'j' : 'l' : operation === 'tilt' ? 'k' : '=';
+      await page.keyboard.press(key);
+      await page.waitForFunction(frame => window.__TOUR_GAME__.renderer().updateFrames > frame, before.renderer.updateFrames);
+      const after = await observe(page);
+      if (!inputs.length && checkId) {
+        const expectedAzimuth = azimuth + (key === 'j' ? -.08 : key === 'l' ? .08 : 0);
+        const difference = Math.atan2(Math.sin(after.camera.azimuth - expectedAzimuth), Math.cos(after.camera.azimuth - expectedAzimuth));
+        check(checkId + '-first-adjustment-starts-from-rendered-pose', Math.abs(difference) < .003
+          && near(after.camera.distance, key === '=' ? Math.max(camera.limits.distance[0], radius - 1) : radius)
+          && near(after.camera.polar, key === 'k' ? Math.min(camera.limits.polar[1], polar + .06) : polar)
+          && near(after.camera.target, camera.viewTarget) && near(after.route.position, before.route.position),
+        { key, before: camera, after: after.camera, expectedAzimuth, radius, polar });
+      }
+      inputs.push({ operation, key, before: camera, after: after.camera });
+    }
+    if (!reached) throw new Error('Actual camera input did not reach the visible arcade framing: ' + operation);
+  }
+  return inputs;
 }
 function priorFullWalk() {
   const sourceBytes = gunzipSync(readFileSync(new URL('../evidence/neighborhood-20261023/ci/neighborhood-result.json.gz', import.meta.url)));
@@ -421,6 +474,12 @@ function sessionAt(view, lighting = 'day', stopIds = geography.sights.map(sight 
     graph: geography.navigation, startNodeId: geography.startNodeId, sights: SIGHTS });
   return createJourneySession(planner.route(stopIds), { view, lighting });
 }
+function priorArcadeInterior() {
+  const sourceBytes = readFileSync(new URL('../evidence/neighborhood-20261021/qa/arcade-blocker/arcade-result.json', import.meta.url));
+  if (sha(sourceBytes) !== '4096de8b10722d34e3f52a6c5bf71b475b1a6630b5fba9583bbe34a5378fb408') throw new Error('The retained interior evidence changed.');
+  const source = JSON.parse(sourceBytes);
+  return { sourceSha256: sha(sourceBytes), visited: source.captures.find(value => value.file === 'inside-arcade-day-canvas.png').observed };
+}
 function actorProjection(value) {
   const points = [0, 1.75].map(height => new Vector3(value.route.position.x,
     value.route.position.height + height, -value.route.position.y)
@@ -428,6 +487,30 @@ function actorProjection(value) {
     .applyMatrix4(new Matrix4().fromArray(value.camera.projectionMatrix)).toArray());
   return { points, verticalOccupancy: Math.abs(points[1][1] - points[0][1]) / 2,
     actualDistance: new Vector3().fromArray(value.camera.position).distanceTo(new Vector3().fromArray(value.camera.viewTarget)) };
+}
+async function cameraSettled(page, record, operation) {
+  const samples = [], started = Date.now();
+  let previous = null, stableSince = null;
+  while (Date.now() - started < timeout) {
+    const value = await observe(page);
+    const sample = { elapsedMs: Date.now() - started, camera: value.camera, view: value.home.currentView,
+      updateFrames: value.renderer.updateFrames, renderedFrames: value.renderer.renderedFrames };
+    if (!previous || sample.updateFrames !== previous.updateFrames) {
+      samples.push(sample);
+      const stable = previous && !sample.camera.transitioning && !sample.camera.obstruction?.settling
+        && near(previous.camera.matrixWorld, sample.camera.matrixWorld, .00001)
+        && near(previous.view, sample.view, .00001);
+      stableSince = stable ? stableSince ?? sample.elapsedMs : null;
+      if (stableSince !== null && sample.elapsedMs - stableSince >= 300) {
+        (record.cameraSettling ??= []).push({ operation, elapsedMs: sample.elapsedMs, samples });
+        return value;
+      }
+      previous = sample;
+    }
+    await page.waitForTimeout(100);
+  }
+  (record.cameraSettling ??= []).push({ operation, elapsedMs: Date.now() - started, samples });
+  throw new Error('Actual camera did not settle within the browser-operation deadline: ' + operation);
 }
 async function boundedWalk(page, id, reached) {
   const started = Date.now(), path = { id, startedAt: new Date().toISOString(), samples: [] };
@@ -470,14 +553,36 @@ async function section(name, run) {
 }
 
 try {
-  for (const descriptor of [manifest.ground, manifest.lighting, manifest.context,
-    ...manifest.cells.flatMap(cell => [cell.base, cell.near])].filter(Boolean)) {
+  const transportProof = [];
+  for (const descriptor of descriptors) {
     for (const asset of [descriptor, ...(descriptor.dependencies || [])]) {
       const bytes = assets.get(assetPath(asset));
       if (!bytes || bytes.length !== asset.bytes || sha(bytes) !== asset.sha256) throw new Error('Manifest asset mismatch: ' + asset.file);
+      if (asset.transport) {
+        const transport = asset.transport, encoded = assets.get(assetPath(transport));
+        if (transport.encoding !== 'gzip' || !encoded || encoded.length !== transport.bytes || sha(encoded) !== transport.sha256) {
+          throw new Error('Manifest transport mismatch: ' + transport.file);
+        }
+        const decoded = gunzipSync(encoded, { maxOutputLength: asset.bytes });
+        if (decoded.length !== asset.bytes || sha(decoded) !== asset.sha256 || !decoded.equals(bytes)) {
+          throw new Error('Decoded transport differs from the logical asset: ' + asset.file);
+        }
+        transportProof.push({ file: asset.file, bytes: decoded.length, sha256: sha(decoded), transport });
+      }
     }
   }
   check('manifest-assets-match-actual-packaged-bytes', true, { cells: manifest.cells.length, sha256: sha(manifestBytes) });
+  if (transportProof.length) check('gzip-transport-and-decoded-assets-match-exact-packaged-identities', true, transportProof);
+  if (encodedAssets.length) {
+    const geometry = descriptors.filter(descriptor => descriptor.transport).map(descriptor => {
+      const resources = [descriptor, ...(descriptor.dependencies || []).filter(asset => asset.file.endsWith('.bin'))];
+      return { file: descriptor.file, transferBytes: resources.reduce((sum, asset) => sum + (asset.transport?.bytes ?? asset.bytes), 0),
+        decodedBytes: resources.reduce((sum, asset) => sum + asset.bytes, 0), declaredTransferBytes: descriptor.transferGeometryBytes,
+        declaredDecodedBytes: descriptor.geometryBytes, budget: descriptor.transferBudgetBytes };
+    });
+    check('gzip-section-wire-budget-keeps-decoded-memory-size-explicit', geometry.every(value => value.transferBytes === value.declaredTransferBytes
+      && value.decodedBytes === value.declaredDecodedBytes && value.budget === 2 * 1024 * 1024 && value.transferBytes <= value.budget), geometry);
+  }
   service = await startServer({ port: 0, host: '127.0.0.1', databasePath: join(output, 'rooms.sqlite'), config: { provider: { apiKey: '', model: '' } } });
   const address = process.env.HTTPS_PROXY || process.env.HTTP_PROXY, proxy = address ? new URL(address) : null;
   browser = await chromium.launch({ executablePath: process.env.EXPERIENCE_QA_CHROMIUM || undefined, headless: true, args: ['--no-sandbox'],
@@ -508,9 +613,13 @@ try {
     const distantFiles = new Set(manifest.cells.filter(cell => Math.hypot(
       Math.max(cell.bounds.minX - geography.spawn.x, geography.spawn.x - cell.bounds.maxX, 0),
       Math.max(cell.bounds.minY - geography.spawn.y, geography.spawn.y - cell.bounds.maxY, 0)) > 230)
-      .flatMap(cell => [cell.base, cell.near].filter(Boolean).map(assetPath)));
+      .flatMap(cell => [cell.base, cell.near].filter(Boolean)
+        .flatMap(asset => asset.transport ? [assetPath(asset), assetPath(asset.transport)] : [assetPath(asset)])));
     check('initial-neighborhood-load-does-not-fetch-distant-cells', distantFiles.size > 0
       && !record.requests.some(request => distantFiles.has(request.path)), { distantFiles: [...distantFiles], requested: record.requests.filter(request => request.path.startsWith(prefix)) });
+    if (encodedAssets.length) check('startup-does-not-fetch-deferred-gzip-river-resources',
+      !record.requests.some(request => encodedAssets.some(asset => [assetPath(asset), assetPath(asset.transport)].includes(request.path))),
+    { deferred: encodedAssets.map(asset => ({ logical: assetPath(asset), transport: assetPath(asset.transport) })), requests: record.requests });
     await primaryFrameBudget(page, 'opening-day'); await capture(page, 'opening-day-en');
     await setLighting(page, 'night'); await setLocale(page, 'zh'); await primaryFrameBudget(page, 'opening-night'); await capture(page, 'opening-night-zh');
     await setLighting(page, 'day'); await setLocale(page, 'en');
@@ -621,7 +730,7 @@ try {
     } finally { fault.delay = undefined; releaseRetry(); }
     await arrival(page, target, 'outbound-retry');
     await capture(page, 'outbound-nishiki-market-day');
-    await inspectVisibleSurface(page, 'actual-market-surface-inspection-keeps-player-location');
+    await inspectVisibleSurface(page, 'actual-market-surface-inspection-keeps-player-location', 'shijo-east:nishiki-market');
     for (const sight of geography.sights.slice(2)) {
       await focusSight(page, sight); await arrival(page, sight, 'outbound-' + sight.id); await capture(page, 'outbound-' + sight.id + '-day');
     }
@@ -1004,7 +1113,6 @@ try {
       && near(entered.home.currentView, beforeInspection.home.currentView) && entered.camera.inspectionAimed === false,
     { before: beforeInspection.camera, after: entered.camera });
     await page.locator('#live-stage').focus();
-    for (let step = 0; step < 22; step++) await page.keyboard.press('j');
     await page.keyboard.press('Escape');
     await page.waitForFunction(() => !window.__TOUR_GAME__.inspection().enabled && !window.__TOUR_GAME__.camera().obstruction?.settling);
     await inspectVisibleSurface(page, 'interior-actual-source-surface-selection', 'shijo-east:nishiki-market');
@@ -1012,8 +1120,7 @@ try {
     await setLighting(page, 'day'); await capture(page, 'arcade-interior-east-day', true);
     await page.locator('#solo-inspect').click(); await page.locator('#live-stage').focus();
     const beforeFraming = await observe(page);
-    for (let step = 0; step < 16; step++) await page.keyboard.press('=');
-    for (let step = 0; step < 8; step++) await page.keyboard.press('k');
+    record.belowRoofInputs = await aimAlongArcade(page, 'below-roof-framing');
     await page.waitForFunction(() => !window.__TOUR_GAME__.camera().transitioning && !window.__TOUR_GAME__.camera().obstruction?.settling);
     const belowRoof = await observe(page);
     check('actual-keys-frame-below-arcade-roof-with-position-preserved',
@@ -1030,17 +1137,257 @@ try {
     const { source, sourceSha256 } = priorFullWalk();
     const remembered = source.savedViews.find(value => value.view.player.edgeId === 'authored:shijo-bridge-view-approach');
     if (!remembered) throw new Error('The actual completed bridge view is unavailable.');
-    const reconstructed = sessionAt(remembered.view);
-    const { page, record } = await scenario('bridge-review', {}, { storage: { [journeyKey]: JSON.stringify(reconstructed) } });
-    record.restoration = { sourceReportSha256: sourceSha256, sourcePackageSha256: source.artifact.manifestSha256,
-      sourceSavedView: remembered, reconstructedSession: reconstructed,
-      description: 'Exact private view saved after the completed actual CI walk to Shijo Bridge, restored through the production journey entry.' };
+    const initial = await scenario('river-startup-laziness');
+    await enter(initial.page); await settled(initial.page);
+    check('river-gzip-resources-stay-unrequested-at-original-startup', encodedAssets.length > 0
+      && !initial.record.requests.some(request => encodedAssets.some(asset => [assetPath(asset), assetPath(asset.transport)].includes(request.path))),
+    { encoded: encodedAssets, observed: await observe(initial.page), requests: initial.record.requests });
+    await initial.context.close(); contexts.delete(initial.context);
+    const poses = [{ id: 'bridge', view: remembered.view, sourceSavedView: remembered },
+      ...['takase-river', 'pontocho-entrance'].map(id => {
+        const screenshot = source.screenshots.find(value => value.file === 'outbound-' + id + '-day.png');
+        if (!screenshot?.observed?.home?.currentView) throw new Error('The actual completed view is unavailable: ' + id);
+        return { id, view: screenshot.observed.home.currentView, sourceScreenshot: screenshot.file };
+      })];
+    for (const pose of poses) {
+      const reconstructed = sessionAt(pose.view);
+      const { context, page, record } = await scenario(pose.id + '-review', {}, { storage: { [journeyKey]: JSON.stringify(reconstructed) } });
+      record.restoration = { sourceReportSha256: sourceSha256, sourcePackageSha256: source.artifact.manifestSha256,
+        sourceSavedView: pose.sourceSavedView, sourceScreenshot: pose.sourceScreenshot, sourceView: pose.view,
+        reconstructedSession: reconstructed,
+        description: 'Exact previously observed actual-walk pose, restored through a public journey session and production entry.' };
+      await enter(page); await settled(page);
+      check(pose.id + '-review-restores-exact-previously-walked-view', near((await home(page)).currentView, pose.view)
+        && Boolean((await observe(page)).ground.hit), await observe(page));
+      for (const mode of ['day', 'night']) {
+        await setLighting(page, mode);
+        await primaryFrameBudget(page, pose.id + '-' + mode);
+        await capture(page, pose.id + '-prior-actual-pose-' + mode, true);
+      }
+      const loaded = encodedAssets.filter(asset => record.requests.some(request => request.path === assetPath(asset.transport)));
+      const logicalRequests = record.requests.filter(request => encodedAssets.some(asset => request.path === assetPath(asset)));
+      check(pose.id + '-loads-verified-gzip-geometry-without-logical-network-fetches',
+        loaded.some(asset => asset.transport.file.endsWith('.gltf.gz')) && loaded.some(asset => asset.transport.file.endsWith('.bin.gz'))
+        && logicalRequests.length === 0 && loaded.every(asset => record.responses.some(response => response.path === assetPath(asset.transport)
+          && response.status === 200) && record.finishedRequests.includes(assetPath(asset.transport))
+          && !record.failures.some(failure => failure.path === assetPath(asset.transport))),
+      { loaded, logicalRequests, responses: record.responses.filter(response => loaded.some(asset => response.path === assetPath(asset.transport))),
+        resources: resources(await observe(page)) });
+      await unchangedLegacy(page, pose.id + '-review-keeps-legacy-bytes');
+      await context.close(); contexts.delete(context);
+    }
+  });
+
+  if (only?.includes('arcade-inspection')) await section('arcade-inspection', async () => {
+    const { sourceSha256, visited } = priorArcadeInterior();
+    const reconstructed = sessionAt(visited.home.currentView);
+    const { page, record } = await scenario('arcade-inspection', {}, { storage: { [journeyKey]: JSON.stringify(reconstructed) } });
+    record.restoration = { sourceReportSha256: sourceSha256, sourceView: visited.home.currentView, reconstructedSession: reconstructed };
+    record.inspectionInputs = []; record.inspectionAttempts = [];
     await enter(page); await settled(page);
-    check('bridge-review-restores-exact-previously-walked-view', near((await home(page)).currentView, remembered.view)
-      && Boolean((await observe(page)).ground.hit), await observe(page));
-    await capture(page, 'bridge-prior-actual-pose-day', true);
-    await setLighting(page, 'night'); await capture(page, 'bridge-prior-actual-pose-night', true);
-    await unchangedLegacy(page, 'bridge-review-keeps-legacy-bytes');
+    await page.waitForFunction(() => !window.__TOUR_GAME__.camera().obstruction?.settling);
+    const initial = await observe(page);
+    await page.locator('#solo-inspect').click(); await page.locator('#live-stage').focus();
+    let selected = null;
+    for (const pose of [
+      { name: 'ordinary-composition', keys: [] },
+      { name: 'east-below-soffit', keys: [], aim: true },
+      { name: 'toward-visible-left-frontage', keys: [['Shift+j', 2], ['Shift+i', 2]] },
+    ]) {
+      if (pose.aim) record.inspectionInputs.push(...await aimAlongArcade(page, 'deliberate-arcade-framing'));
+      for (const [key, count] of pose.keys) {
+        for (let index = 0; index < count; index++) await page.keyboard.press(key);
+        record.inspectionInputs.push({ key, count, pose: pose.name });
+      }
+      await page.waitForFunction(() => !window.__TOUR_GAME__.camera().transitioning && !window.__TOUR_GAME__.camera().obstruction?.settling);
+      await capture(page, 'inspection-' + pose.name, true);
+      await page.locator('#live-stage canvas').scrollIntoViewIfNeeded();
+      const bounds = await page.locator('#live-stage canvas').boundingBox();
+      for (const [x, y] of [[.25, .08], [.4, .08], [.12, .25], [.25, .3], [.4, .4], [.7, .3], [.6, .15], [.5, .5]]) {
+        const before = await observe(page);
+        await page.mouse.move(bounds.x + x * bounds.width, bounds.y + y * bounds.height);
+        await page.waitForFunction(frame => window.__TOUR_GAME__.renderer().updateFrames > frame, before.renderer.updateFrames);
+        const current = await observe(page), inspection = await page.evaluate(() => window.__TOUR_GAME__.inspection());
+        record.inspectionAttempts.push({ pose: pose.name, pointer: { x, y, bounds }, inspection, current }); persist();
+        if (inspection.focus?.id !== 'shijo-east:nishiki-market') continue;
+        await page.locator('#solo-detail').click();
+        await page.waitForFunction(() => Boolean(window.__TOUR_GAME__.inspection().selected));
+        selected = await page.evaluate(() => window.__TOUR_GAME__.inspection().selected);
+        await capture(page, 'inspection-selected-' + pose.name, true);
+        break;
+      }
+      if (selected) break;
+    }
+    const actual = await observe(page);
+    check('deliberate-arcade-framing-selects-the-actual-market-source-surface', selected?.id === 'shijo-east:nishiki-market'
+      && near(initial.route.position, actual.route.position),
+    { selected, positionBefore: initial.route.position, positionAfter: actual.route.position,
+      inputs: record.inspectionInputs, attempts: record.inspectionAttempts.length,
+      visibleHelp: { inspection: await page.locator('#solo-hint').textContent(), preview: await page.locator('#view-guidance').textContent() } });
+    await unchangedLegacy(page, 'deliberate-inspection-keeps-legacy-bytes');
+  });
+
+  if (only?.includes('recovered-keyboard')) await section('recovered-keyboard', async () => {
+    const { sourceSha256, visited } = priorArcadeInterior();
+    const reconstructed = sessionAt(visited.home.currentView);
+    const { page, record } = await scenario('recovered-keyboard', {}, { storage: { [journeyKey]: JSON.stringify(reconstructed) } });
+    record.restoration = { sourceReportSha256: sourceSha256, sourceView: visited.home.currentView, reconstructedSession: reconstructed };
+    record.keyboardInputs = [];
+    await enter(page); await settled(page);
+    await page.waitForFunction(() => !window.__TOUR_GAME__.camera().obstruction?.settling);
+    const remembered = await keep(page, 'Actual arcade camera', 'Keyboard direction regression · 实际画面方向');
+    const navigation = createRouteNavigation(geography.navigation);
+    for (const key of ['ArrowUp', 'ArrowRight']) {
+      await reopen(page, remembered);
+      await page.waitForFunction(() => !window.__TOUR_GAME__.camera().obstruction?.settling);
+      await page.locator('#live-stage').focus();
+      const before = await observe(page), matrix = before.camera.matrixWorld;
+      const basis = key === 'ArrowUp' ? { x: -matrix[8], y: matrix[10] } : { x: matrix[0], y: -matrix[2] };
+      const length = Math.hypot(basis.x, basis.y); basis.x /= length; basis.y /= length;
+      const actualAzimuth = Math.atan2(matrix[8], matrix[10]);
+      const yawDifference = Math.abs(Math.atan2(Math.sin(actualAzimuth - before.camera.azimuth), Math.cos(actualAzimuth - before.camera.azimuth)));
+      const start = before.route.position;
+      const projected = navigation.project(start.x + basis.x * .9, start.y + basis.y * .9, start);
+      const expected = { x: projected.x - start.x, y: projected.y - start.y };
+      const samples = [], started = Date.now();
+      await page.keyboard.down(key);
+      try {
+        while (Date.now() - started < 10000) {
+          const current = await observe(page);
+          samples.push({ elapsedMs: Date.now() - started, route: current.route, ground: current.ground,
+            camera: current.camera, tick: current.state.tick });
+          if (Math.hypot(current.route.position.x - start.x, current.route.position.y - start.y) >= .2) break;
+          await page.waitForTimeout(50);
+        }
+      } finally { await page.keyboard.up(key); }
+      await page.waitForFunction(() => !window.__TOUR_GAME__.snapshot().moving);
+      const after = await observe(page), delta = { x: after.route.position.x - start.x, y: after.route.position.y - start.y };
+      const distance = Math.hypot(delta.x, delta.y), expectedLength = Math.hypot(expected.x, expected.y);
+      const directionCosine = (delta.x * expected.x + delta.y * expected.y) / (distance * expectedLength);
+      const evidence = { key, basis, projected, expected, yawDifference, delta, distance, directionCosine, before, after, samples };
+      record.keyboardInputs.push(evidence);
+      check('recovered-camera-' + key + '-uses-rendered-ground-direction',
+        before.camera.obstruction.active && yawDifference > Math.PI / 4 && distance >= .15 && directionCosine > .85
+        && samples.every(value => value.ground.inside && value.ground.hit)
+        && near(before.camera.azimuth, after.camera.azimuth, .00001)
+        && near(before.camera.polar, after.camera.polar, .00001) && near(before.camera.distance, after.camera.distance, .00001), evidence);
+    }
+    await unchangedLegacy(page, 'rendered-direction-input-keeps-legacy-bytes');
+  });
+
+  if (only?.includes('recovered-camera-input')) await section('recovered-camera-input', async () => {
+    const { sourceSha256, visited } = priorArcadeInterior();
+    const reconstructed = sessionAt(visited.home.currentView);
+    for (const reducedMotion of ['no-preference', 'reduce']) {
+      const { context, page, record } = await scenario('recovered-camera-input-' + reducedMotion, {},
+        { storage: { [journeyKey]: JSON.stringify(reconstructed) }, context: { reducedMotion, hasTouch: true } });
+      record.restoration = { sourceReportSha256: sourceSha256, sourceView: visited.home.currentView, reconstructedSession: reconstructed };
+      await enter(page); await settled(page);
+      await cameraSettled(page, record, 'initial-restoration');
+      await page.evaluate(() => {
+        window.__NEIGHBORHOOD_INPUT_EVENTS__ = [];
+        const stage = document.querySelector('#live-stage');
+        for (const type of ['pointerdown', 'pointermove', 'pointerup', 'pointercancel', 'touchmove', 'wheel', 'keydown']) {
+          stage.addEventListener(type, event => window.__NEIGHBORHOOD_INPUT_EVENTS__.push({ type: event.type,
+            trusted: event.isTrusted, pointerType: event.pointerType ?? null, pointerId: event.pointerId ?? null,
+            button: event.button ?? null, buttons: event.buttons ?? null, x: event.clientX ?? null,
+            y: event.clientY ?? null, touches: event.touches?.length ?? null, code: event.code ?? null,
+            deltaY: event.deltaY ?? null }), { capture: true, passive: true });
+        }
+      });
+      const remembered = await keep(page, 'Rendered arcade framing', 'Actual pointer and wheel input');
+      for (const operation of ['click', 'middle-horizontal', 'three-finger', 'wheel', 'drag', 'keyboard']) {
+        await reopen(page, remembered);
+        const beforeEntry = await cameraSettled(page, record, operation + '-restoration');
+        await page.locator('#solo-inspect').click();
+        await page.locator('#live-stage canvas').scrollIntoViewIfNeeded();
+        const bounds = await page.locator('#live-stage canvas').boundingBox(), before = await cameraSettled(page, record, operation + '-entry');
+        check(reducedMotion + '-' + operation + '-inspection-entry-preserves-rendered-and-saved-pose',
+          near(beforeEntry.camera.matrixWorld, before.camera.matrixWorld, .00001)
+          && near(beforeEntry.home.currentView, before.home.currentView, .00001) && before.camera.inspectionAimed === false,
+        { beforeEntry, before });
+        const x = bounds.x + bounds.width * .5, y = bounds.y + bounds.height * .5;
+        await page.mouse.move(x, y);
+        await page.evaluate(() => { window.__NEIGHBORHOOD_INPUT_EVENTS__.length = 0; });
+        if (operation === 'click') await page.mouse.click(x, y);
+        if (operation === 'middle-horizontal') {
+          await page.mouse.down({ button: 'middle' });
+          await page.mouse.move(x + 12, y, { steps: 3 });
+          await page.mouse.up({ button: 'middle' });
+        }
+        if (operation === 'three-finger') {
+          const cdp = await context.newCDPSession(page);
+          const points = shift => [-24, 0, 24].map((offset, index) => ({ x: x + offset + shift, y,
+            radiusX: 2, radiusY: 2, force: 1, id: index + 1 }));
+          try {
+            await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: points(0) });
+            for (const shift of [4, 8, 12]) {
+              await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: points(shift) });
+              await page.waitForTimeout(40);
+            }
+          } finally {
+            await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+            await cdp.detach();
+          }
+        }
+        if (operation === 'wheel') await page.mouse.wheel(0, -40);
+        if (operation === 'drag') {
+          await page.mouse.down(); await page.mouse.move(x + 12, y, { steps: 3 }); await page.mouse.up();
+        }
+        if (operation === 'keyboard') { await page.locator('#live-stage').focus(); await page.keyboard.press('j'); }
+        await page.waitForFunction(frame => window.__TOUR_GAME__.renderer().updateFrames > frame, before.renderer.updateFrames);
+        const after = await cameraSettled(page, record, operation + '-input'), renderedDistance = actorProjection(before).actualDistance;
+        const inputEvents = await page.evaluate(() => window.__NEIGHBORHOOD_INPUT_EVENTS__);
+        const offset = new Vector3().fromArray(before.camera.position).sub(new Vector3().fromArray(before.camera.viewTarget));
+        const actualAzimuth = Math.atan2(offset.x, offset.z), actualPolar = Math.acos(offset.y / offset.length());
+        const keyboardDelta = Math.atan2(Math.sin(after.camera.azimuth - actualAzimuth + .08),
+          Math.cos(after.camera.azimuth - actualAzimuth + .08));
+        const preservesPose = ['click', 'middle-horizontal', 'three-finger'].includes(operation);
+        const unchangedPose = near(before.camera.position, after.camera.position, .00001)
+          && near(before.camera.viewTarget, after.camera.viewTarget, .00001)
+          && near(before.home.currentView, after.home.currentView, .00001) && after.camera.inspectionAimed === false
+          && !after.route.destination && !after.state.moving;
+        const middleStart = inputEvents.find(event => event.type === 'pointerdown' && event.button === 1);
+        const delivered = inputEvents.length > 0 && inputEvents.every(event => event.trusted)
+          && (operation !== 'middle-horizontal' || middleStart && inputEvents.some(event => event.type === 'pointermove' && event.buttons === 4
+            && event.x > middleStart.x && event.y === middleStart.y))
+          && (operation !== 'three-finger' || new Set(inputEvents.filter(event => event.type === 'pointerdown'
+            && event.pointerType === 'touch').map(event => event.pointerId)).size === 3
+            && inputEvents.some(event => event.type === 'touchmove' && event.touches === 3));
+        const adjusted = after.camera.inspectionAimed === true && near(after.camera.target, before.camera.viewTarget)
+          && (operation === 'wheel' ? after.camera.distance < renderedDistance && after.camera.distance > renderedDistance * .75
+            : near(after.camera.distance, renderedDistance))
+          && (operation !== 'keyboard' || Math.abs(keyboardDelta) < .003 && near(after.camera.polar, actualPolar));
+        check(reducedMotion + '-recovered-camera-native-' + operation + '-keeps-continuous-visible-origin',
+          delivered && before.camera.obstruction.active && near(before.route.position, after.route.position)
+          && (preservesPose ? unchangedPose : adjusted),
+        { operation, reducedMotion, bounds, pointer: { x, y }, wheelDeltaY: operation === 'wheel' ? -40 : null,
+          dragPixels: ['drag', 'middle-horizontal', 'three-finger'].includes(operation) ? 12 : null,
+          key: operation === 'keyboard' ? 'j' : null, inputEvents,
+          renderedDistance, actualAzimuth, actualPolar, keyboardDelta, before, after });
+        await page.locator('#live-stage').focus(); await page.keyboard.press('Escape');
+      }
+      await page.locator('#preview-reset').click(); await cameraSettled(page, record, 'explicit-reset');
+      await setLighting(page, 'night'); await settled(page);
+      const beforeHide = await cameraSettled(page, record, 'before-hide');
+      await page.locator('#mode-together').click();
+      const hidden = await observe(page), requests = record.requests.filter(value => value.path.startsWith(prefix)).length;
+      await page.waitForTimeout(2000); const afterHidden = await observe(page);
+      check(reducedMotion + '-recovered-camera-hidden-has-zero-work-and-section-requests',
+        hidden.stream.suspended && afterHidden.stream.suspended
+        && hidden.renderer.updateFrames === afterHidden.renderer.updateFrames
+        && hidden.renderer.renderedFrames === afterHidden.renderer.renderedFrames
+        && requests === record.requests.filter(value => value.path.startsWith(prefix)).length,
+      { hidden, afterHidden, requests });
+      await page.locator('#mode-explore').click(); await ready(page, geography.id, 'night');
+      const resumed = await cameraSettled(page, record, 'visible-resume');
+      check(reducedMotion + '-recovered-camera-resumes-saved-pose-and-night-lighting',
+        near(beforeHide.home.currentView, resumed.home.currentView) && resumed.renderer.lighting.mode === 'night'
+        && actorProjection(resumed).actualDistance >= 5 && actorProjection(resumed).verticalOccupancy <= .5,
+      { beforeHide, resumed, projection: actorProjection(resumed) });
+      await unchangedLegacy(page, reducedMotion + '-native-camera-input-keeps-legacy-bytes');
+      await context.close(); contexts.delete(context);
+    }
   });
 
   check('no-page-exceptions-or-unexpected-network-origins', Object.values(report.scenarios).every(value => !value.pageErrors.length && !value.unexpectedOrigins.length),
