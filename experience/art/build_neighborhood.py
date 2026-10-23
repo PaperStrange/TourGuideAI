@@ -217,6 +217,9 @@ def point_segment_distance(point, start, end):
 
 def prepare_features(scene, geography, style, prepared):
     selections = {record['sourceId']: record for record in prepared['buildings']}
+    arcade_edges = {}
+    for edge in prepared['arcadeFacadeEdges']:
+        arcade_edges.setdefault(edge['sourceId'], []).append([edge['polygonIndex'], 0, edge['edgeIndex']])
     features = []
     for original in scene['features']:
         if original.get('renderPolicy', '').startswith('reference-only'):
@@ -230,12 +233,14 @@ def prepare_features(scene, geography, style, prepared):
             rule = style['assignmentRules']
             inside = lambda box: box['minX'] <= center[0] <= box['maxX'] and box['minY'] <= center[1] <= box['maxY']
             recipe = ('urban-stone', 'urban-plaster', 'urban-tile')[int(hashlib.sha256(feature['sourceId'].encode()).hexdigest()[:4], 16) % 3]
-            if inside(rule['marketBounds']) and feature['height']['metres'] < 18:
-                recipe = 'market-front'
             if inside(rule['laneBounds']) and feature['height']['metres'] < 11:
                 recipe = 'lane-timber'
             feature['recipeId'] = recipe
             feature['facadeEdges'] = [[edge['polygonIndex'], 0, edge['edgeIndex']] for edge in selection['routeFacingEdges']]
+            feature['arcadeFacadeEdges'] = arcade_edges.get(feature['sourceId'], [])
+            for edge in feature['arcadeFacadeEdges']:
+                if edge not in feature['facadeEdges']:
+                    feature['facadeEdges'].append(edge)
             matches = {match['sourceId'] for match in feature.get('osmMatches', [])}
             if 'osm:way:205732558' in matches:
                 feature['retainedGroup'] = 'North'
@@ -248,6 +253,9 @@ def prepare_features(scene, geography, style, prepared):
             feature['inspectionFeatureIds'] = ['shijo-east:shijo-bridge']
         if feature['kind'] == 'water' and feature.get('sourceTags', {}).get('name') == '高瀬川':
             feature['inspectionFeatureIds'] = ['shijo-east:takase-river']
+        if feature['kind'] == 'water':
+            feature['waterBankSegments'] = [segment for segment in prepared['waterBankSegments']
+                                            if segment['sourceId'] == feature['sourceId']]
         features.append(feature)
     for original in scene.get('landmarks', []):
         feature = dict(original)
@@ -501,7 +509,13 @@ def main():
         if feature['kind'] == 'canopy':
             for section in prepared['roofSections']:
                 if section['sourceId'] == feature['sourceId']:
-                    cell_features.setdefault((section['cellX'], section['cellY']), []).append(dict(feature, polygons=section['polygons']))
+                    joins = [item for item in prepared['arcadeSoffitSections']
+                             if item['sourceId'] == feature['sourceId'] and
+                             (item['cellX'], item['cellY']) == (section['cellX'], section['cellY'])]
+                    cell_features.setdefault((section['cellX'], section['cellY']), []).append(dict(
+                        feature, polygons=section['polygons'],
+                        soffitPolygons=[polygon for item in joins for polygon in item['polygons']],
+                        facadeSegments=[segment for item in joins for segment in item['facadeSegments']]))
             continue
         bounds = bounds_of([feature])
         ix = math.floor((bounds['minX'] + bounds['maxX']) / 2 / size)
@@ -552,12 +566,13 @@ def main():
                             extra_objects.append(obj)
                         retained_done.add(group)
                 elif feature['kind'] == 'building':
-                    recipe = dict(recipe_for(feature, style), facadeEdges=feature['facadeEdges'])
+                    recipe = dict(recipe_for(feature, style), facadeEdges=feature['facadeEdges'],
+                                  arcadeFacadeEdges=feature['arcadeFacadeEdges'], arcadeRecipe=style['recipes']['market-front'])
                     detail = building_geometry(feature, recipe, lod, index, batches)
                     for key, value in detail.items():
                         counts[key] += value
                 elif feature['kind'] == 'canopy':
-                    canopy_geometry(feature, lod, index, canopy_batches)
+                    canopy_geometry(feature, lod, index, canopy_batches, batches)
                 elif feature['kind'] in ('torii', 'information-board'):
                     landmark_geometry(feature, lod, index, batches)
                 elif feature['kind'] in ('bridge', 'water'):
@@ -592,6 +607,8 @@ def main():
                   'preparedArtSourceHashes': prepared['sourceHashes'],
                   'preparedArtProducerSha256': sha256(ROOT / 'experience/content-tools/prepare-neighborhood-art.py'),
                   'walkableMaterialAudit': prepared['walkableMaterialAudit'],
+                  'arcadeGeometryAudit': prepared['arcadeGeometryAudit'],
+                  'waterBoundaryAudit': prepared['waterBoundaryAudit'],
                   'reviewedRoadMask': {key: value for key, value in prepared['reviewedRoadMask'].items() if key not in ('polygons', 'input')},
                   'reviewedRoadMaskSources': {key: value for key, value in prepared['reviewedRoadMask']['input'].items() if key != 'meshes'},
                   'displayTriangulationAudit': [{'sourceId': surface['sourceId'], **surface['float32DisplayAudit']}
@@ -600,11 +617,13 @@ def main():
                   'references': file_record(asset_dir / 'references.json', asset_dir),
                   'styleSha256': sha256(arguments.style), 'generatorSha256': sha256(__file__),
                   'geometryHelperSha256': sha256(Path(__file__).with_name('neighborhood_mesh.py')),
+                  'landmarkHelperSha256': sha256(Path(__file__).with_name('neighborhood_landmarks.py')),
+                  'materialHelperSha256': sha256(Path(__file__).with_name('neighborhood_materials.py')),
                   'blenderVersion': bpy.app.version_string, 'elapsedSeconds': round(time.perf_counter() - started, 3),
                   'geometryMeaning': 'Source footprints and prepared surface polygons; reviewed original facade assemblies with explicit authored dimensions',
                   'rights': 'source-ledger.json and references.json', 'referenceIds': sorted({reference for recipe in style['recipes'].values() for reference in recipe['referenceIds']}),
                   'retainedLandmarks': retained_provenance,
-                  'authored': ['Facade bay counts and window dimensions', 'Material-family assignments on sourced building masses', 'Flat ground and display water/bridge heights', 'Canopy profile, torii/board/railing dimensions', 'Night fixtures, light intensity and emission'],
+                  'authored': ['Facade bay counts and window dimensions', 'Material-family assignments on sourced building masses', 'Flat ground and display water/bridge heights', 'Canopy profile and source-adjacent soffit joins up to6m; exact construction widths unmeasured', 'Lower-storey market frontage assemblies without tenant correspondence', 'Bank vertical faces between existing authored ground/water heights', 'Torii/board/railing dimensions', 'Night fixtures, light intensity and emission'],
                   'sourceFramePreserved': True, 'originalPackAssetsChanged': False,
                   'visualAcceptance': 'requires actual browser route review'}
     write_json(asset_dir / 'provenance.json', provenance)

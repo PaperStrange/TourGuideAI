@@ -1,5 +1,5 @@
 {
-  "manifestSha256": "4b543ce1609d5fa90ca92949b99050d06b2607d9e74c5477373dd79d691bd721",
+  "manifestSha256": "add6e399dcebca96cec9daf9e413f1374b6561ca48272b982914a1d6075f961c",
   "spawn": {
     "x": 20.693663406198052,
     "y": 2.3297536496359026,
@@ -10,18 +10,18 @@
   "meaning": "Required source assets for resident ground/context, spawn BASE, manifest, rig, selected HDR and shared traveller; deferred sections and application JS/HTML excluded",
   "critical": {
     "day": {
-      "commonBytes": 3684945,
+      "commonBytes": 3688234,
       "travellerBytes": 35556,
       "hdrBytes": 432312,
-      "totalBytes": 4152813,
+      "totalBytes": 4156102,
       "limitBytes": 4194304,
       "pass": true
     },
     "night": {
-      "commonBytes": 3684945,
+      "commonBytes": 3688234,
       "travellerBytes": 35556,
       "hdrBytes": 425076,
-      "totalBytes": 4145577,
+      "totalBytes": 4148866,
       "limitBytes": 4194304,
       "pass": true
     }
@@ -98,9 +98,9 @@
   "geometry": {
     "ground": 406549,
     "context": 411420,
-    "mitsuiBase": 1328346,
-    "mitsuiNear": 3150539,
-    "daiyaNear": 1961229
+    "mitsuiBase": 1328343,
+    "mitsuiNear": 3150508,
+    "daiyaNear": 1961243
   },
   "dependencies": [
     {
@@ -114,19 +114,24 @@
           "sha256": "e6352f2dff9dfd394510855997d5cd23231f359f9156b46f17e4b2d560a12cae"
         },
         {
+          "file": "shared/materials/paving-normal.webp",
+          "bytes": 96212,
+          "sha256": "9c61845a9a8081af5f1d6c1074372ee1e44f020167ba83583210e7e6cbd726ac"
+        },
+        {
           "file": "shared/materials/asphalt-color.webp",
           "bytes": 32740,
           "sha256": "c45d46245f10fe62e52c3830645725d755d9205a56224cb973bbc131cc20ec7e"
         },
         {
-          "file": "shared/materials/paving-color.webp",
-          "bytes": 43200,
-          "sha256": "49c7fade64aaa52ce095da5c3614bc63c45393cd6c91dc3dfeb3a9de40190041"
-        },
-        {
           "file": "shared/materials/asphalt-roughness.webp",
           "bytes": 38614,
           "sha256": "fa09f1ec2c86a8ea8758bd3b65dd4fe908ba67063809876ad60f962f6c073f6e"
+        },
+        {
+          "file": "shared/materials/paving-color.webp",
+          "bytes": 43200,
+          "sha256": "49c7fade64aaa52ce095da5c3614bc63c45393cd6c91dc3dfeb3a9de40190041"
         },
         {
           "file": "shared/materials/paving-roughness.webp",
@@ -149,11 +154,6 @@
           "sha256": "3be00eb61963e25dddbb52c2e7c6df3f2cdaf1cdceb624b780c85608ab483b6c"
         },
         {
-          "file": "shared/materials/paving-normal.webp",
-          "bytes": 96212,
-          "sha256": "9c61845a9a8081af5f1d6c1074372ee1e44f020167ba83583210e7e6cbd726ac"
-        },
-        {
           "file": "ground.bin",
           "bytes": 391356,
           "sha256": "01f1a7ce67e44875963c60397803c364c509ca417dda72e8e23e2b7f24fffdce"
@@ -172,19 +172,24 @@
       "sha256": "e6352f2dff9dfd394510855997d5cd23231f359f9156b46f17e4b2d560a12cae"
     },
     {
+      "file": "shared/materials/paving-normal.webp",
+      "bytes": 96212,
+      "sha256": "9c61845a9a8081af5f1d6c1074372ee1e44f020167ba83583210e7e6cbd726ac"
+    },
+    {
       "file": "shared/materials/asphalt-color.webp",
       "bytes": 32740,
       "sha256": "c45d46245f10fe62e52c3830645725d755d9205a56224cb973bbc131cc20ec7e"
     },
     {
-      "file": "shared/materials/paving-color.webp",
-      "bytes": 43200,
-      "sha256": "49c7fade64aaa52ce095da5c3614bc63c45393cd6c91dc3dfeb3a9de40190041"
-    },
-    {
       "file": "shared/materials/asphalt-roughness.webp",
       "bytes": 38614,
       "sha256": "fa09f1ec2c86a8ea8758bd3b65dd4fe908ba67063809876ad60f962f6c073f6e"
+    },
+    {
+      "file": "shared/materials/paving-color.webp",
+      "bytes": 43200,
+      "sha256": "49c7fade64aaa52ce095da5c3614bc63c45393cd6c91dc3dfeb3a9de40190041"
     },
     {
       "file": "shared/materials/paving-roughness.webp",
@@ -207,24 +212,19 @@
       "sha256": "3be00eb61963e25dddbb52c2e7c6df3f2cdaf1cdceb624b780c85608ab483b6c"
     },
     {
-      "file": "shared/materials/paving-normal.webp",
-      "bytes": 96212,
-      "sha256": "9c61845a9a8081af5f1d6c1074372ee1e44f020167ba83583210e7e6cbd726ac"
-    },
-    {
       "file": "ground.bin",
       "bytes": 391356,
       "sha256": "01f1a7ce67e44875963c60397803c364c509ca417dda72e8e23e2b7f24fffdce"
     },
     {
       "file": "context.gltf",
-      "sha256": "0bb8c241f4438fb30470d019493ff53762a6004bbdedb0d85ebb6bd210a03912",
+      "sha256": "b6d5e613a6a356785dd6b75549df8c500d605e2d072334252b72cd397263e339",
       "bytes": 26596,
       "dependencies": [
         {
-          "file": "shared/materials/stone-color.webp",
-          "bytes": 45952,
-          "sha256": "50d1cdc2cbae4933338b58d1cc00cfcfce0a76d20baa0430cbe0941ccf73be7b"
+          "file": "shared/materials/stone-normal.webp",
+          "bytes": 96174,
+          "sha256": "3c97ff1ee18e01a36db94ae6da136d48b30d8748e6f78501758f133df24c82c3"
         },
         {
           "file": "shared/materials/stone-roughness.webp",
@@ -232,14 +232,14 @@
           "sha256": "28481ec912fb5bbbe637bfea3b97decfe42a17a9543c4fa2bd2cc32ac1753154"
         },
         {
+          "file": "shared/materials/stone-color.webp",
+          "bytes": 45952,
+          "sha256": "50d1cdc2cbae4933338b58d1cc00cfcfce0a76d20baa0430cbe0941ccf73be7b"
+        },
+        {
           "file": "shared/materials/plaster-normal.webp",
           "bytes": 92450,
           "sha256": "11667a2007c1c94f48de89ae13d3ab468f80dadbf8a8f147e6b24872b9d5529f"
-        },
-        {
-          "file": "shared/materials/stone-normal.webp",
-          "bytes": 96174,
-          "sha256": "3c97ff1ee18e01a36db94ae6da136d48b30d8748e6f78501758f133df24c82c3"
         },
         {
           "file": "shared/materials/plaster-color.webp",
@@ -269,7 +269,7 @@
         {
           "file": "context.bin",
           "bytes": 384824,
-          "sha256": "fc500f4f0636a80b7523d5d7c8e2ff8299552e44bffafb42afa3caebf8498c54"
+          "sha256": "863b7a2507f250cc3c5d9a4116261be1f3b3e372281edcefbcb9cefe206c1bb7"
         }
       ],
       "geometryBytes": 411420,
@@ -280,9 +280,9 @@
       "compression": "EXT_meshopt_compression"
     },
     {
-      "file": "shared/materials/stone-color.webp",
-      "bytes": 45952,
-      "sha256": "50d1cdc2cbae4933338b58d1cc00cfcfce0a76d20baa0430cbe0941ccf73be7b"
+      "file": "shared/materials/stone-normal.webp",
+      "bytes": 96174,
+      "sha256": "3c97ff1ee18e01a36db94ae6da136d48b30d8748e6f78501758f133df24c82c3"
     },
     {
       "file": "shared/materials/stone-roughness.webp",
@@ -290,14 +290,14 @@
       "sha256": "28481ec912fb5bbbe637bfea3b97decfe42a17a9543c4fa2bd2cc32ac1753154"
     },
     {
+      "file": "shared/materials/stone-color.webp",
+      "bytes": 45952,
+      "sha256": "50d1cdc2cbae4933338b58d1cc00cfcfce0a76d20baa0430cbe0941ccf73be7b"
+    },
+    {
       "file": "shared/materials/plaster-normal.webp",
       "bytes": 92450,
       "sha256": "11667a2007c1c94f48de89ae13d3ab468f80dadbf8a8f147e6b24872b9d5529f"
-    },
-    {
-      "file": "shared/materials/stone-normal.webp",
-      "bytes": 96174,
-      "sha256": "3c97ff1ee18e01a36db94ae6da136d48b30d8748e6f78501758f133df24c82c3"
     },
     {
       "file": "shared/materials/plaster-color.webp",
@@ -327,7 +327,7 @@
     {
       "file": "context.bin",
       "bytes": 384824,
-      "sha256": "fc500f4f0636a80b7523d5d7c8e2ff8299552e44bffafb42afa3caebf8498c54"
+      "sha256": "863b7a2507f250cc3c5d9a4116261be1f3b3e372281edcefbcb9cefe206c1bb7"
     },
     {
       "file": "lighting.json",
@@ -337,28 +337,13 @@
     },
     {
       "file": "cells/cell-e000-n000/base.gltf",
-      "sha256": "1f3bfe081a25a337374f8bf308b7e7aa88b12768af67e55cbe5fe566c5123b04",
-      "bytes": 60254,
+      "sha256": "ee1c49234e86784bf22c160af165bc5579cf2def7142c2ce2b720b04952464ff",
+      "bytes": 60239,
       "dependencies": [
-        {
-          "file": "shared/materials/retained-bbf588b6e99459c4.webp",
-          "bytes": 20228,
-          "sha256": "b36fca9f80638dc14954e36d91206d347e578de1c07c648db44fafe0ecfd3f65"
-        },
-        {
-          "file": "shared/materials/retained-a50d3dca12c48d43.webp",
-          "bytes": 20330,
-          "sha256": "ad5f4a4c4aba8679514ba772b235a7768de8f9781ddd861204b7ac0bd26873a7"
-        },
         {
           "file": "shared/materials/retained-finish-glazing.webp",
           "bytes": 6178,
           "sha256": "ac9a9ed4d78ed3129dbaa317933d3a1520e19fe007673448e30045272932b5d7"
-        },
-        {
-          "file": "shared/materials/retained-finish-pale-stone.webp",
-          "bytes": 28362,
-          "sha256": "99d31a8d60a943c3600a6a0151c227bb6472291b6cf8f3cd7a48c22bbd44a172"
         },
         {
           "file": "shared/materials/retained-932ea4bbc3c5f775.webp",
@@ -366,9 +351,14 @@
           "sha256": "5bd1d9127c2f57520453cd3ac2c071ca266438557aa76245b81f9f28c2a0fcdf"
         },
         {
-          "file": "shared/materials/retained-finish-granite-fascia.webp",
-          "bytes": 32120,
-          "sha256": "5b3bc86e9cf2fb6d4dd0ed5d65d825d5ebe500b35ed4e43533bb4e998e743426"
+          "file": "shared/materials/retained-bbf588b6e99459c4.webp",
+          "bytes": 20228,
+          "sha256": "b36fca9f80638dc14954e36d91206d347e578de1c07c648db44fafe0ecfd3f65"
+        },
+        {
+          "file": "shared/materials/retained-finish-pale-stone.webp",
+          "bytes": 28362,
+          "sha256": "99d31a8d60a943c3600a6a0151c227bb6472291b6cf8f3cd7a48c22bbd44a172"
         },
         {
           "file": "shared/materials/retained-f3b02e2cb1e0c404.webp",
@@ -376,14 +366,19 @@
           "sha256": "3977251702a63dab5f93f8f34f6f5622001b20d776ffd32ccebb44a56239a935"
         },
         {
+          "file": "shared/materials/retained-a50d3dca12c48d43.webp",
+          "bytes": 20330,
+          "sha256": "ad5f4a4c4aba8679514ba772b235a7768de8f9781ddd861204b7ac0bd26873a7"
+        },
+        {
+          "file": "shared/materials/retained-finish-granite-fascia.webp",
+          "bytes": 32120,
+          "sha256": "5b3bc86e9cf2fb6d4dd0ed5d65d825d5ebe500b35ed4e43533bb4e998e743426"
+        },
+        {
           "file": "shared/materials/retained-finish-glazing-blinds.webp",
           "bytes": 7852,
           "sha256": "a93c0d627e0cfce72024dffee4e2a20e046057bd36aa233985401031de8b8353"
-        },
-        {
-          "file": "shared/materials/stone-color.webp",
-          "bytes": 45952,
-          "sha256": "50d1cdc2cbae4933338b58d1cc00cfcfce0a76d20baa0430cbe0941ccf73be7b"
         },
         {
           "file": "shared/materials/stone-normal.webp",
@@ -391,19 +386,14 @@
           "sha256": "3c97ff1ee18e01a36db94ae6da136d48b30d8748e6f78501758f133df24c82c3"
         },
         {
+          "file": "shared/materials/stone-color.webp",
+          "bytes": 45952,
+          "sha256": "50d1cdc2cbae4933338b58d1cc00cfcfce0a76d20baa0430cbe0941ccf73be7b"
+        },
+        {
           "file": "shared/materials/stone-roughness.webp",
           "bytes": 38912,
           "sha256": "28481ec912fb5bbbe637bfea3b97decfe42a17a9543c4fa2bd2cc32ac1753154"
-        },
-        {
-          "file": "shared/materials/plaster-color.webp",
-          "bytes": 44842,
-          "sha256": "97c5b054ec584b80b6ac9a58c4ecb2ffaf9ac0ef9c4bf0d4b38844c2d23d93f6"
-        },
-        {
-          "file": "shared/materials/plaster-roughness.webp",
-          "bytes": 38980,
-          "sha256": "1219d9d22e9bf73386ab32ede26e277093aa2eca05687f0ce405c065dac8ef80"
         },
         {
           "file": "shared/materials/plaster-normal.webp",
@@ -411,14 +401,19 @@
           "sha256": "11667a2007c1c94f48de89ae13d3ab468f80dadbf8a8f147e6b24872b9d5529f"
         },
         {
+          "file": "shared/materials/plaster-roughness.webp",
+          "bytes": 38980,
+          "sha256": "1219d9d22e9bf73386ab32ede26e277093aa2eca05687f0ce405c065dac8ef80"
+        },
+        {
+          "file": "shared/materials/plaster-color.webp",
+          "bytes": 44842,
+          "sha256": "97c5b054ec584b80b6ac9a58c4ecb2ffaf9ac0ef9c4bf0d4b38844c2d23d93f6"
+        },
+        {
           "file": "shared/materials/glass-normal.webp",
           "bytes": 16222,
           "sha256": "a979f36e9675afba17c20e353415ba9f235ccb843bda5c7cec1acd2b07afd5f1"
-        },
-        {
-          "file": "shared/materials/glass-roughness.webp",
-          "bytes": 38912,
-          "sha256": "17ae31ee440e65ea9fba8b64d52db178b2f435c0f4110e2f954de0c89c27a8cc"
         },
         {
           "file": "shared/materials/glass-color.webp",
@@ -426,12 +421,17 @@
           "sha256": "9e48fc018c2aaf9b143901f2181ba6c88a116d8ca6ce878648d0ce1b754bb041"
         },
         {
+          "file": "shared/materials/glass-roughness.webp",
+          "bytes": 38912,
+          "sha256": "17ae31ee440e65ea9fba8b64d52db178b2f435c0f4110e2f954de0c89c27a8cc"
+        },
+        {
           "file": "cells/cell-e000-n000/base.bin",
-          "bytes": 1268092,
-          "sha256": "292894ac9ef4e601656ac94ab7e228de0ccb75c13f44e91a632ab63f90a42a30"
+          "bytes": 1268104,
+          "sha256": "8e3f7343c2c52a2494bf4d7d51281e3fe85a1fa8ce05d88046753d4894231deb"
         }
       ],
-      "geometryBytes": 1328346,
+      "geometryBytes": 1328343,
       "uncompressedBudgetExceeded": false,
       "transferBudgetBytes": 2097152,
       "triangles": 32602,
@@ -444,24 +444,9 @@
       "compression": "EXT_meshopt_compression"
     },
     {
-      "file": "shared/materials/retained-bbf588b6e99459c4.webp",
-      "bytes": 20228,
-      "sha256": "b36fca9f80638dc14954e36d91206d347e578de1c07c648db44fafe0ecfd3f65"
-    },
-    {
-      "file": "shared/materials/retained-a50d3dca12c48d43.webp",
-      "bytes": 20330,
-      "sha256": "ad5f4a4c4aba8679514ba772b235a7768de8f9781ddd861204b7ac0bd26873a7"
-    },
-    {
       "file": "shared/materials/retained-finish-glazing.webp",
       "bytes": 6178,
       "sha256": "ac9a9ed4d78ed3129dbaa317933d3a1520e19fe007673448e30045272932b5d7"
-    },
-    {
-      "file": "shared/materials/retained-finish-pale-stone.webp",
-      "bytes": 28362,
-      "sha256": "99d31a8d60a943c3600a6a0151c227bb6472291b6cf8f3cd7a48c22bbd44a172"
     },
     {
       "file": "shared/materials/retained-932ea4bbc3c5f775.webp",
@@ -469,14 +454,29 @@
       "sha256": "5bd1d9127c2f57520453cd3ac2c071ca266438557aa76245b81f9f28c2a0fcdf"
     },
     {
-      "file": "shared/materials/retained-finish-granite-fascia.webp",
-      "bytes": 32120,
-      "sha256": "5b3bc86e9cf2fb6d4dd0ed5d65d825d5ebe500b35ed4e43533bb4e998e743426"
+      "file": "shared/materials/retained-bbf588b6e99459c4.webp",
+      "bytes": 20228,
+      "sha256": "b36fca9f80638dc14954e36d91206d347e578de1c07c648db44fafe0ecfd3f65"
+    },
+    {
+      "file": "shared/materials/retained-finish-pale-stone.webp",
+      "bytes": 28362,
+      "sha256": "99d31a8d60a943c3600a6a0151c227bb6472291b6cf8f3cd7a48c22bbd44a172"
     },
     {
       "file": "shared/materials/retained-f3b02e2cb1e0c404.webp",
       "bytes": 32458,
       "sha256": "3977251702a63dab5f93f8f34f6f5622001b20d776ffd32ccebb44a56239a935"
+    },
+    {
+      "file": "shared/materials/retained-a50d3dca12c48d43.webp",
+      "bytes": 20330,
+      "sha256": "ad5f4a4c4aba8679514ba772b235a7768de8f9781ddd861204b7ac0bd26873a7"
+    },
+    {
+      "file": "shared/materials/retained-finish-granite-fascia.webp",
+      "bytes": 32120,
+      "sha256": "5b3bc86e9cf2fb6d4dd0ed5d65d825d5ebe500b35ed4e43533bb4e998e743426"
     },
     {
       "file": "shared/materials/retained-finish-glazing-blinds.webp",
@@ -489,19 +489,19 @@
       "sha256": "a979f36e9675afba17c20e353415ba9f235ccb843bda5c7cec1acd2b07afd5f1"
     },
     {
-      "file": "shared/materials/glass-roughness.webp",
-      "bytes": 38912,
-      "sha256": "17ae31ee440e65ea9fba8b64d52db178b2f435c0f4110e2f954de0c89c27a8cc"
-    },
-    {
       "file": "shared/materials/glass-color.webp",
       "bytes": 41092,
       "sha256": "9e48fc018c2aaf9b143901f2181ba6c88a116d8ca6ce878648d0ce1b754bb041"
     },
     {
+      "file": "shared/materials/glass-roughness.webp",
+      "bytes": 38912,
+      "sha256": "17ae31ee440e65ea9fba8b64d52db178b2f435c0f4110e2f954de0c89c27a8cc"
+    },
+    {
       "file": "cells/cell-e000-n000/base.bin",
-      "bytes": 1268092,
-      "sha256": "292894ac9ef4e601656ac94ab7e228de0ccb75c13f44e91a632ab63f90a42a30"
+      "bytes": 1268104,
+      "sha256": "8e3f7343c2c52a2494bf4d7d51281e3fe85a1fa8ce05d88046753d4894231deb"
     }
   ]
 }

@@ -62,7 +62,7 @@ An edge must connect actual shared nodes or document a reviewed authored segment
 npm ci --prefix experience
 npm install --prefix artifacts/neighborhood-20261021/art/tools --save-exact @gltf-transform/core@4.5.1 @gltf-transform/extensions@4.5.1 @gltf-transform/functions@4.5.1 meshoptimizer@1.3.0 gltf-validator@2.0.0-dev.3.10 sharp@0.35.5
 node experience/content-tools/extract-shijo-road-mask.mjs --model experience/public/models/shijo-block.glb --tools artifacts/neighborhood-20261021/art/tools --output artifacts/neighborhood-20261021/world/reviewed-road-mask.json
-python3 experience/content-tools/prepare-neighborhood-art.py --scene experience/src/neighborhoods/shijo-east/scene.json --geography experience/src/neighborhoods/shijo-east/geography.json --reviewed-road artifacts/neighborhood-20261021/world/reviewed-road-mask.json --output artifacts/neighborhood-20261021/world/art-selection.json
+python3 experience/content-tools/prepare-neighborhood-art.py --scene experience/src/neighborhoods/shijo-east/scene.json --geography experience/src/neighborhoods/shijo-east/geography.json --reviewed-road artifacts/neighborhood-20261021/world/reviewed-road-mask.json --output artifacts/neighborhood-20261023/world/art-selection.json
 ```
 
 This command verifies matching identity/frame and unchanged source hashes. It sections canopy plans at 100 m boundaries, verifies union/triangle area conservation, and selects exterior building edges within 25 m whose outward normals face the route. Occlusion still needs visual review. Whole building footprints remain intact; long arcade roofs receive streamed sections. The current selection contains 28 roof sections and 1,321 candidate facade edges across 848 ground buildings.
@@ -73,12 +73,16 @@ The helper derives `walkableMaterialSurfaces` from that mask, frozen motor-road 
 
 Nonwalkable display triangulation rejects float32 collapse before Blender export. Exactly one numerically collapsed face currently needs omission: its original area is 1.302 × 10⁻⁶ m² and boundary displacement is 2.170 × 10⁻⁶ m. Raw vertices and measured changes are retained in `float32DisplayAudit`; hard rejection thresholds are 10⁻⁵ m² and 10⁻⁵ m. Display rings derive from retained GEOS triangles. This cleanup leaves the canonical source and walking surface unchanged.
 
+Nishiki's `arcadeFacadeEdges` and `arcadeSoffitSections` connect the retained roof `osm:way:772134672` toward facing LOD1 building edges under an explicit **6 m authored connection limit**. The current result contains 106 source edges and 114 sections; the maximum vertex distance from the source roof is **5.485 m**. Sections retain their building edge IDs and direction, subtract mapped roads and transverse paths, and preserve the roof and building footprints. The northern gap at local x = 550 m remains open. These joins interpret separately mapped surfaces; actual construction widths and clearances remain unmeasured. The current art profile uses authored soffit top **4.65 m**, underside **4.605 m** and attached fascia **3.85–4.60 m** above virtual level zero.
+
+`waterBankSegments` supplies 39 vertical display segments along retained water/land boundaries. Kamo and Misosogi use mapped water-area edges; Takase uses the sides of its existing **4 m authored water buffer**. Display-extent caps and the Kamo centerline inside its area are excluded. Matching uses a **2 mm display tolerance**. Bank faces run from authored ground **−0.04 m** to water **−2.5 m**; actual bank heights, profiles and access remain unmeasured. These faces add no horizontal walking surface. `arcadeGeometryAudit` and `waterBoundaryAudit`, plus source and preparation-script hashes, accompany exported provenance.
+
 Art owns `experience/art/neighborhood-style.json`, the generator and the reference ledger. Recipes record reference IDs, material scale and authored dimensions. Shared materials support consistent appearance, while reviewed landmark geometry supplies recognizable differences. Canopies remain elevated elements; their footprints must not become solid walls across a public arcade. Water and riverbanks need explicit display heights, with navigation elevations kept independently.
 
 The generator writes an uncompressed package into the ignored authoring directory. Editable Blender files use a separate directory:
 
 ```bash
-blender --background --python experience/art/build_neighborhood.py -- --geography experience/src/neighborhoods/shijo-east/geography.json --scene experience/src/neighborhoods/shijo-east/scene.json --prepared-art artifacts/neighborhood-20261021/world/art-selection.json --style experience/art/neighborhood-style.json --asset-dir artifacts/neighborhood-20261021/art/final-raw --output-dir artifacts/neighborhood-20261021/art/build
+blender --background --threads 4 --python experience/art/build_neighborhood.py -- --geography experience/src/neighborhoods/shijo-east/geography.json --scene experience/src/neighborhoods/shijo-east/scene.json --prepared-art artifacts/neighborhood-20261023/world/art-selection.json --style experience/art/neighborhood-style.json --asset-dir artifacts/neighborhood-20261023/art/arcade-raw --output-dir artifacts/neighborhood-20261023/art/arcade-build
 ```
 
 Run export in the team's assigned CPU window. The export supplies resident ground, spatial base/near glTF sections, shared textures, editable `.blend` files, source indices, `manifest.json` and provenance. The source ledger, source review and photographic reference ledger accompany the assets. `neighborhood-references.json` identifies the seven new image references and their limitations; existing Shijo landmark references remain retained.
@@ -86,7 +90,7 @@ Run export in the team's assigned CPU window. The export supplies resident groun
 The verified delivery stage uses Node.js 24+, glTF Transform 4.5.1, meshoptimizer 1.3.0, glTF Validator 2.0.0-dev.3.10 and Sharp 0.35.5:
 
 ```bash
-node experience/art/optimize_neighborhood.mjs --input artifacts/neighborhood-20261021/art/final-raw --output experience/public/assets/neighborhoods/shijo-east --tools artifacts/neighborhood-20261021/art/tools --retained-texture-size 256 --report experience/public/assets/neighborhoods/shijo-east/compression-report.json
+node experience/art/optimize_neighborhood.mjs --input artifacts/neighborhood-20261023/art/arcade-raw --output artifacts/neighborhood-20261023/art/arcade-candidate --tools artifacts/neighborhood-20261021/art/tools --retained-texture-size 256 --report artifacts/neighborhood-20261023/art/arcade-candidate/compression-report.json
 ```
 
 The dependency record is `experience/art/neighborhood-toolkit.json`. The optimizer validates glTF before and after `EXT_meshopt_compression`, decodes the output and compares oriented triangles, attributes, source indices and node metadata. Over-budget input sections use 16-bit normal/tangent quantization; its error is measured. World positions, UVs and source indices are checked against the original geometry, with actual preservation results recorded per asset. The approved `--retained-texture-size 256` setting creates route-only Lanczos3 derivatives of retained authored textures; original pack assets remain unchanged. Other textures retain their dimensions. Lossless WebP conversion compares every decoded RGBA8 pixel and image dimension against that selected input, with sampling recorded per image. Full feature records remain in `feature-provenance.json`; the manifest carries the compact runtime identifiers. Copying an unverified raw export into the public directory does not satisfy this stage. Evaluate changed encoder settings in a separate ignored output directory and review that candidate before replacing published assets.
@@ -105,12 +109,14 @@ python3 experience/tests/neighborhood-source-test.py
 
 The source gate checks retained hashes, complete way/ring dependencies, original coordinates and identifiers, projected versus geodesic length, connected sight approaches, bridge-area containment, official footprint/height preservation, holes and display triangles. The current source preparation reproduces seven files byte-for-byte, and its authored corridor has zero overlap with official ground-building footprints. Independent source QA passes **13/13**. Portable results are retained in [the source evidence directory](../evidence/neighborhood-20261021/source/): `independent-checks.txt` and `regeneration-audit.json`. These results cover source preparation.
 
+The [2026-10-23 derived-input evidence](../evidence/neighborhood-20261023/world/README.md) records byte-identical art preparation and a fresh 13/13 source check. Its independent audit checks actual attachment edges, cross-street exclusions, polygon/triangle coverage, float32 validity, bank boundary classification and unchanged canonical hashes. Reproduction commands and complete input/producer/output hashes are retained there. Browser appearance and navigation acceptance require the checks below.
+
 From `experience/`, run the integration checks on the completed exported package:
 
 ```bash
 npm test
 npm run build
-EXPERIENCE_QA_OUTPUT=../artifacts/neighborhood-20261021/qa/browser node tests/browser-neighborhood.mjs dist
+EXPERIENCE_QA_OUTPUT=../artifacts/neighborhood-20261023/qa/browser node tests/browser-neighborhood.mjs dist
 ```
 
 The browser driver requires the complete neighborhood manifest and built bytes. Coordinate the exclusive browser/GPU window. Check actual six-sight traversal and return, ground support, arcade visibility, crossings, day/night appearance, inspection, route editing, saved view and locale restoration, Maps handoff, streaming/resource disposal and real failure recovery. Preserve screenshots, network records, package hashes and driver hashes. Existing Kyoto/Ginza interactions and private saves must continue working. Publication uses the accepted immutable package, with source/license links verified in the deployed copy.

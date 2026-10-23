@@ -1,0 +1,123 @@
+{
+  "player": {
+    "x": 287.127,
+    "y": 140.015,
+    "height": 0,
+    "edgeId": "osm:way:66703315:354840397:5554417552",
+    "edgeDistance": 37.546087771041506
+  },
+  "chosen": [
+    {
+      "id": "cell-e002-n001",
+      "required": true,
+      "level": "near",
+      "distance": 0
+    },
+    {
+      "id": "cell-e003-n001",
+      "required": false,
+      "level": "near",
+      "distance": 12.87299999999999
+    },
+    {
+      "id": "cell-e003-n000",
+      "required": false,
+      "level": "near",
+      "distance": 42.03468037228306
+    },
+    {
+      "id": "cell-e002-n000",
+      "required": false,
+      "level": "base",
+      "distance": 40.014999999999986
+    },
+    {
+      "id": "cell-e004-n001",
+      "required": false,
+      "level": "base",
+      "distance": 112.87299999999999
+    },
+    {
+      "id": "cell-e001-n000",
+      "required": false,
+      "level": "base",
+      "distance": 95.87655789607803
+    },
+    {
+      "id": "cell-e004-n000",
+      "required": false,
+      "level": "base",
+      "distance": 119.75606186744785
+    },
+    {
+      "id": "cell-e003-s001",
+      "required": false,
+      "level": "base",
+      "distance": 140.60552746602818
+    },
+    {
+      "id": "cell-e002-s001",
+      "required": false,
+      "level": "base",
+      "distance": 140.015
+    }
+  ],
+  "result": {
+    "position": {
+      "x": 291.4375523466615,
+      "y": 3.384011886098408,
+      "z": -138.76716044622887
+    },
+    "target": {
+      "x": 287.127,
+      "y": 1.1,
+      "z": -140.015
+    },
+    "active": true,
+    "desiredDistance": 21.999999999999897,
+    "actualDistance": 5.035342627975142,
+    "targetAdjusted": true,
+    "framingRecovered": true,
+    "actorInFrame": true,
+    "actorVerticalOccupancy": 0.33615959816564334,
+    "recoveryFits": true,
+    "minimumSceneDistance": 5,
+    "clearance": 0.35,
+    "angleOffset": 1.069014166846527,
+    "settling": false
+  },
+  "projection": [
+    [
+      8.353884182449815e-15,
+      -0.3978558455683304,
+      0.9466268551009687
+    ],
+    [
+      9.752734379527863e-15,
+      0.2744633507629562,
+      0.9375459819236323
+    ]
+  ]
+}
+{"candidateOffset":0,"height":1,"distance":5.035342627975131,"points":[[-8.353884182449815e-15,-0.397855845568342,0.9466268551009687],[-9.752734379527863e-15,0.2744633507629427,0.9375459819236323]],"position":{"x":291.4375523466615,"y":3.384011886098394,"z":-138.76716044622887},"target":{"x":287.127,"y":1.1,"z":-140.015}}
+{"candidateOffset":0,"height":1.1,"distance":5.035342627975131,"points":[[-8.353884182449815e-15,-0.397855845568342,0.9466268551009687],[-9.752734379527863e-15,0.2744633507629427,0.9375459819236323]],"position":{"x":291.4375523466615,"y":3.384011886098394,"z":-138.76716044622887},"target":{"x":287.127,"y":1.1,"z":-140.015}}
+{"candidateOffset":0,"height":1.2,"distance":5.035342627975131,"points":[[-8.353884182449815e-15,-0.397855845568342,0.9466268551009687],[-9.752734379527863e-15,0.2744633507629427,0.9375459819236323]],"position":{"x":291.4375523466615,"y":3.384011886098394,"z":-138.76716044622887},"target":{"x":287.127,"y":1.1,"z":-140.015}}
+{"candidateOffset":0.6,"height":1.1,"distance":5.036083571914219,"points":[[0,-0.39780258689010384,0.9466341146474888],[0,0.274420458672496,0.9375558760089321]],"position":{"x":291.43824038657306,"y":3.3843479753953583,"z":-138.7671625106637},"target":{"x":287.127,"y":1.1,"z":-140.015}}
+{"candidateOffset":-0.6,"height":1.1,"distance":5.018796759241105,"points":[[2.094733662107212e-15,-0.39904888034190367,0.9464642357546913],[2.4467234368485313e-15,0.27542467034774887,0.9373242305966788]],"position":{"x":282.8981203574021,"y":3.3765067442150225,"z":-138.55814897037024},"target":{"x":287.127,"y":1.1,"z":-140.015}}
+{"label":"recorded","pointer":[0.5,0.35]}
+{"label":"recorded","pointer":[0.25,0.35]}
+{"label":"recorded","pointer":[0.75,0.35],"hit":{"mesh":"cell-e002-n001_near_frame","source":{"sourceId":"kyoto-city:bldg_6cd9d71e-582c-4dff-9c12-0a13ae0560e8"},"distance":1.2220338848280958,"point":{"x":288.22836009516544,"y":1.6266323124663333,"z":-137.96703487726353},"focus":null}}
+{"label":"recorded","pointer":[0.25,0.6]}
+{"label":"recorded","pointer":[0.75,0.6],"hit":{"mesh":"cell-e002-n001_near_frame","source":{"sourceId":"kyoto-city:bldg_6cd9d71e-582c-4dff-9c12-0a13ae0560e8"},"distance":1.2925046569016927,"point":{"x":288.17359618654086,"y":1.3582122924246316,"z":-137.94310945523645},"focus":null}}
+{"label":"recorded","pointer":[0.5,0.15]}
+{"inspectionCamera":{"position":{"x":286.6575914679031,"y":2.2793187814795557,"z":-138.13937061858442},"target":{"x":287.9916567311583,"y":1.5999999999999999,"z":-138.1804679216346},"active":true,"desiredDistance":21.999999999999968,"actualDistance":1.4976291669879567,"targetAdjusted":true,"framingRecovered":false,"actorInFrame":false,"actorVerticalOccupancy":0.9705122154063932,"recoveryFits":false,"minimumSceneDistance":5,"clearance":0.35,"angleOffset":0,"settling":false}}
+{"label":"corrected","pointer":[0.5,0.35],"hit":{"mesh":"cell-e002-n001_near_tile-wall","source":{"sourceId":"kyoto-city:bldg_a27cd148-a2d8-4d1f-908f-abd29d4a4cef"},"distance":2.078453361790958,"point":{"x":288.6175062538439,"y":1.5900749966955043,"z":-138.1997478835721},"focus":null}}
+{"label":"corrected","pointer":[0.25,0.35]}
+{"label":"corrected","pointer":[0.75,0.35],"hit":{"mesh":"cell-e002-n001_near_glass","source":{"sourceId":"kyoto-city:bldg_6cd9d71e-582c-4dff-9c12-0a13ae0560e8"},"distance":1.0663311818585843,"point":{"x":287.62902536142224,"y":1.9410595616017492,"z":-137.85837403480832},"focus":null}}
+{"label":"corrected","pointer":[0.25,0.6]}
+{"label":"corrected","pointer":[0.75,0.6],"hit":{"mesh":"cell-e002-n001_near_glass","source":{"sourceId":"kyoto-city:bldg_6cd9d71e-582c-4dff-9c12-0a13ae0560e8"},"distance":1.0541627295584464,"point":{"x":287.5209138267928,"y":1.744229414860857,"z":-137.85721297689665},"focus":null}}
+{"label":"corrected","pointer":[0.5,0.15],"hit":{"mesh":"cell-e002-n001_near_tile-wall","source":{"sourceId":"kyoto-city:bldg_a27cd148-a2d8-4d1f-908f-abd29d4a4cef"},"distance":1.9890739733314697,"point":{"x":288.6175062538439,"y":1.9453968009093212,"z":-138.1997478835721},"focus":null}}
+{"cpuSweep":{"calls":300,"totalMs":228.50457799999953,"medianMs":0.5930050000000051,"p95Ms":2.0109950000000367,"maxMs":5.83442100000002,"maxAngleOffset":1.0799224746714904,"largestJumps":[{"step":175,"playerX":290.427,"cameraDistance":0.21814766201798064,"angleDelta":0},{"step":176,"playerX":290.503,"cameraDistance":0.20516967711699685,"angleDelta":0},{"step":177,"playerX":290.579,"cameraDistance":0.19336562460104445,"angleDelta":0},{"step":178,"playerX":290.65500000000003,"cameraDistance":0.1826314948060113,"angleDelta":0},{"step":179,"playerX":290.731,"cameraDistance":0.17287231191207852,"angleDelta":0}],"minDistance":5.000213128274399,"maxOccupancy":0.3384548736142506,"invalidRecovery":[],"bvh":{"roots":10,"trees":93,"estimatedCpuBytes":1286994,"buildMilliseconds":32.83227900000003,"storageMeaning":"BVH node and indirect-index buffers; excludes shared source geometry and JavaScript object overhead"}}}
+{"stopped":{"settleFrames":1,"settled":true,"pose":{"position":{"x":305.59532808864145,"y":4.134318800553024,"z":-138.41980498062762},"target":{"x":299.851,"y":1.1,"z":-140.015},"active":true,"desiredDistance":21.999999999999996,"actualDistance":6.689472544466789,"targetAdjusted":true,"framingRecovered":true,"actorInFrame":true,"actorVerticalOccupancy":0.25488592081026384,"recoveryFits":true,"minimumSceneDistance":5,"clearance":0.35,"angleOffset":1.0799224746714904,"settling":false}}}
+{"exit":{"exitFrames":111,"settled":true,"desiredError":0,"pose":{"position":{"x":305.3297326180083,"y":11.579114671362701,"z":-118.68100623081042},"target":{"x":301.051,"y":1.6,"z":-137.815},"active":false,"desiredDistance":21.999999999999996,"actualDistance":21.999999999999996,"targetAdjusted":false,"framingRecovered":false,"actorInFrame":true,"actorVerticalOccupancy":0.07224333106512967,"recoveryFits":true,"minimumSceneDistance":5,"clearance":0.35,"angleOffset":0,"settling":false}}}
+{"released":{"roots":0,"trees":0,"estimatedCpuBytes":0,"buildMilliseconds":32.83227900000003,"storageMeaning":"BVH node and indirect-index buffers; excludes shared source geometry and JavaScript object overhead"}}

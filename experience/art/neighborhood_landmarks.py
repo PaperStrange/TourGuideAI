@@ -42,7 +42,7 @@ def scanline_intersections(ring, x):
     return sorted(intersections)
 
 
-def canopy_geometry(feature, lod, source_index, batches):
+def canopy_geometry(feature, lod, source_index, batches, structure_batches):
     top = feature.get('topHeightMetres', 5)
     if feature['sourceId'] != 'osm:way:772134672':
         for polygon in feature['polygons']:
@@ -51,6 +51,24 @@ def canopy_geometry(feature, lod, source_index, batches):
                 plane = FacadePlane(a, b, source_index, batches)
                 plane.panel('frame', 0, plane.length, top - .15, top)
         return
+    # 连接面由来源屋顶、相邻建筑和保留横街的布尔审阅结果提供。
+    for polygon in feature['soffitPolygons']:
+        batches['roof'].top(polygon['triangles'], top - .35, source_index)
+        for triangle in polygon['triangles']:
+            a, b, c = triangle
+            signed = (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0])
+            vertices = list(reversed(triangle)) if signed > 0 else triangle
+            batches['arcade-soffit'].face([(x, y, top - .395) for x, y in vertices], source_index)
+    for segment in feature['facadeSegments']:
+        plane = FacadePlane(segment['from'], segment['to'], source_index, structure_batches)
+        plane.panel('market-fascia', 0, plane.length, top - 1.15, top - .4, .035)
+        plane.box('market-metal', 0, plane.length, top - .48, top - .35, .065, .15)
+        if lod == 'near':
+            count = max(1, math.ceil(plane.length / 3.6))
+            for index in range(count):
+                position = plane.length * (index + .5) / count
+                plane.box('market-metal', position - .03, position + .03,
+                          top - .85, top - .42, .12, .25)
     # 原始屋顶多边形按区块裁切，横截面使用真实边界，脊部和配色属于作者尺寸。
     for polygon in feature['polygons']:
         ring = polygon['outer']
@@ -73,7 +91,8 @@ def canopy_geometry(feature, lod, source_index, batches):
                 ]:
                     points = [(x0, yy0, zz0), (x1, yy0, zz0), (x1, yy1, zz1), (x0, yy1, zz1)]
                     batches[material].face(points, source_index)
-                    batches[material].face(list(reversed([(x, y, z - .045) for x, y, z in points])), source_index)
+                    underside = 'arcade-soffit' if material == 'roof' else material
+                    batches[underside].face(list(reversed([(x, y, z - .045) for x, y, z in points])), source_index)
                 batches['frame'].box((x0, mid, top - .37), (.055, high - low, .09), source_index)
                 if lod == 'near' and index % 3 == 0:
                     for yy in (low + .3, high - .3):
@@ -81,20 +100,14 @@ def canopy_geometry(feature, lod, source_index, batches):
         if left < 263.5:
             center_y = sum(scanline_intersections(ring, left + .15)) / 2
             for side in (-1, 1):
-                batches['granite'].box((left, center_y + side * 2.1, 2.8), (.42, .42, 5.6), source_index)
-            batches['frame'].box((left, center_y, 5.35), (.55, 4.65, .9), source_index)
-            batches['arcade-red'].box((left - .29, center_y, 5.75), (.08, 4.8, .12), source_index)
+                structure_batches['market-metal'].box((left, center_y + side * 2.1, 2.8), (.3, .3, 5.6), source_index)
+            structure_batches['market-metal'].box((left, center_y, 5.35), (.55, 4.65, .9), source_index)
+            structure_batches['arcade-red'].box((left - .29, center_y, 5.75), (.08, 4.8, .12), source_index)
 
 
 def waterside_geometry(feature, lod, source_index, batches):
     if feature['kind'] == 'water':
-        if feature.get('sourceTags', {}).get('name') != '高瀬川':
-            return
-        for polygon in feature['polygons']:
-            for a, b in zip(polygon['outer'], polygon['outer'][1:]):
-                plane = FacadePlane(a, b, source_index, batches)
-                if plane.length > 1:
-                    plane.panel('granite', 0, plane.length, -2.45, -.06)
+        water_bank_geometry(feature['waterBankSegments'], source_index, batches)
         return
     if feature['sourceId'] != 'osm:way:532008156':
         return
@@ -116,3 +129,14 @@ def waterside_geometry(feature, lod, source_index, batches):
                     plane.box('frame', position - .018, position + .018, .28, .88, 0, .036)
                 if lod == 'near':
                     plane.box('frame', left, right, .57, .61, 0, .035)
+
+
+def water_bank_geometry(segments, source_index, batches):
+    # 水岸立面只连接已审阅的平面边界与现有作者高度，不改变行走面。
+    for segment in segments:
+        start, end = segment['from'], segment['to']
+        if segment['waterOnLeft']:
+            start, end = end, start
+        plane = FacadePlane(start, end, source_index, batches)
+        plane.panel('granite', 0, plane.length,
+                    segment['bottomHeightMetres'], segment['topHeightMetres'])

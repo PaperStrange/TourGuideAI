@@ -161,6 +161,62 @@ def facade_geometry(plane, height, base_height, recipe, lod):
     return {'openings': openings, 'recesses': openings if lod == 'near' else 0}
 
 
+def market_frontage_geometry(plane, height, base_height, recipe, lod):
+    # 街面构造仅表示参考照片中的材料与开口层次，不对应商户或营业状态。
+    upper_start = min(height, base_height + recipe['marketFasciaTopMetres'])
+    opening_top = min(upper_start - .45, base_height + recipe['groundOpeningMetres'])
+    opening_bottom = base_height + recipe['groundSillMetres']
+    if opening_top <= opening_bottom + .5 or plane.length < 1.2:
+        return facade_geometry(plane, height, base_height, recipe, lod)
+    count = max(1, round(plane.length / recipe['bayWidthMetres']))
+    slot = plane.length / count
+    openings = 0
+    recess = recipe['recessMetres'] if lod == 'near' else .06
+    for index in range(count):
+        left, right = slot * index, slot * (index + 1)
+        variant = (plane.source_index + index + round(plane.start[0])) % 3
+        frame = ('wood', 'frame', 'market-metal')[variant]
+        fascia = ('wood', 'market-fascia', 'tile-wall')[variant]
+        pier = min(.17 + variant * .035, slot * .16)
+        a, b = left + pier, right - pier
+        plane.panel(recipe['wallMaterial'], left, a, base_height, upper_start)
+        plane.panel(recipe['wallMaterial'], b, right, base_height, upper_start)
+        plane.panel('granite', a, b, base_height, opening_bottom)
+        plane.panel(fascia, a, b, opening_top, upper_start)
+        plane.reveal(frame, a, b, opening_bottom, opening_top, recess)
+        plane.panel('glass', a, b, opening_bottom, opening_top, -recess)
+        plinth_top = min(opening_top, opening_bottom + (.55 if variant == 0 else .32))
+        plane.panel(frame, a, b, opening_bottom, plinth_top, -recess + .025)
+        if lod == 'near':
+            for x0, x1, z0, z1 in [
+                (a, a + .055, opening_bottom, opening_top),
+                (b - .055, b, opening_bottom, opening_top),
+                (a, b, opening_top - .065, opening_top),
+            ]:
+                plane.box(frame, x0, x1, z0, z1, -recess + .045, .07)
+            transom = opening_top - .38
+            plane.panel(frame, a, b, transom - .025, transom + .025, -recess + .06)
+            divisions = max(2, round((b - a) / (.28 if variant == 0 else .9)))
+            for division in range(1, divisions):
+                position = a + (b - a) * division / divisions
+                plane.panel(frame, position - .018, position + .018, plinth_top,
+                            transom, -recess + .07)
+            plane.box(frame, a, b, opening_top, opening_top + .08, .04, .19)
+            plane.box('market-metal', left, right, upper_start - .08, upper_start, .025, .12)
+        openings += 1
+    totals = {'openings': openings, 'recesses': openings if lod == 'near' else 0}
+    if height - upper_start > .4:
+        upper_recipe = dict(recipe, openingWidthRatio=.47, sillRatio=.34, headRatio=.78,
+                            groundSillMetres=.75, groundOpeningMetres=2.15,
+                            trimMaterial=recipe['wallMaterial'], frameMaterial='frame')
+        upper = facade_geometry(plane, height, upper_start, upper_recipe, lod)
+        for key in totals:
+            totals[key] += upper[key]
+    elif height > upper_start:
+        plane.panel(recipe['wallMaterial'], 0, plane.length, upper_start, height)
+    return totals
+
+
 def building_geometry(feature, recipe, lod, source_index, batches):
     top = feature['height']['metres']
     bottom = feature.get('baseHeightMetres', 0)
@@ -176,7 +232,11 @@ def building_geometry(feature, recipe, lod, source_index, batches):
                 reviewed = recipe.get('facadeEdges')
                 detailed = lod != 'context' and (reviewed is None or [polygon_index, ring_index, edge_index] in reviewed)
                 if detailed:
-                    detail = facade_geometry(plane, top, bottom, recipe, lod)
+                    arcade_edges = recipe.get('arcadeFacadeEdges', [])
+                    is_arcade = [polygon_index, ring_index, edge_index] in arcade_edges
+                    selected_recipe = recipe['arcadeRecipe'] if is_arcade else recipe
+                    detail = (market_frontage_geometry if is_arcade else facade_geometry)(
+                        plane, top, bottom, selected_recipe, lod)
                     for key in ('openings', 'recesses'):
                         totals[key] += detail[key]
                 else:

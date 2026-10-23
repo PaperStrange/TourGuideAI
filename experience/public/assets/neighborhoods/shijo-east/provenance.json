@@ -3,12 +3,12 @@
   "id": "shijo-east",
   "geographySha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
   "sceneSha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e",
-  "preparedArtSha256": "7b73c6ec4b19ec0f30b41c52024f551cd12da58353cc87d882130ecca73713ce",
+  "preparedArtSha256": "082d759b38360183c70bbd37dc4317c7a8e6d20cb4e5a1a0d4afc09bfdd73b28",
   "preparedArtSourceHashes": {
     "scene.json": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e",
     "geography.json": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55"
   },
-  "preparedArtProducerSha256": "d90795e69837f3427ae11b079e750749ae743a470f518ad3d4af4dd051e3de7a",
+  "preparedArtProducerSha256": "7955255aa8908f2b647839477d090c204ab82da16baf144160717e74c46b38fa",
   "walkableMaterialAudit": [
     {
       "surfaceId": "shijo-east:walkable",
@@ -21,6 +21,79 @@
       "canonicalGeometryChanged": false
     }
   ],
+  "arcadeGeometryAudit": {
+    "roofSourceId": "osm:way:772134672",
+    "maximumAuthoredConnectionMetres": 6.0,
+    "constructionWidthsObserved": false,
+    "heightObserved": false,
+    "roofGeometryChanged": false,
+    "buildingGeometryChanged": false,
+    "crossStreetOverlapSquareMetres": 0.0,
+    "buildingOverlapSquareMetres": 7.38494551968949e-14,
+    "sourceRoofOverlapSquareMetres": 0.0,
+    "connectionAreaSquareMetres": 933.6061694911953,
+    "facadeEdgeCount": 106,
+    "sectionCount": 114,
+    "unjoinedLargeGaps": [],
+    "limits": "Connections are authored visual interpretation of separately mapped roof and LOD1 boundaries; source gaps outside this policy remain open."
+  },
+  "waterBoundaryAudit": {
+    "sourceAndNavigationChanged": false,
+    "displayExtentCapsExcluded": true,
+    "bankHeightsObserved": false,
+    "features": [
+      {
+        "sourceId": "osm:way:27793848",
+        "bankSegments": 7,
+        "bankLengthMetres": 204.0339428928879,
+        "landDistanceMetres": 0.0,
+        "sharedPlanBoundaryMetres": 204.0339428928879,
+        "diagnosis": "Plan areas touch; a vertical display transition is required between authored ground and water heights."
+      },
+      {
+        "sourceId": "osm:way:254080497",
+        "bankSegments": 0,
+        "reason": "Centerline-derived water does not supply an additional outer bank boundary."
+      },
+      {
+        "sourceId": "osm:way:482270819",
+        "bankSegments": 4,
+        "bankLengthMetres": 82.88285152656455,
+        "landDistanceMetres": 0.0,
+        "sharedPlanBoundaryMetres": 86.88288352643654,
+        "diagnosis": "Plan areas touch; a vertical display transition is required between authored ground and water heights."
+      },
+      {
+        "sourceId": "osm:way:482270827",
+        "bankSegments": 5,
+        "bankLengthMetres": 98.29957397299066,
+        "landDistanceMetres": 0.0,
+        "sharedPlanBoundaryMetres": 52.75949620082773,
+        "diagnosis": "Plan areas touch; a vertical display transition is required between authored ground and water heights."
+      },
+      {
+        "sourceId": "osm:way:532008130",
+        "bankSegments": 0,
+        "reason": "Centerline-derived water does not supply an additional outer bank boundary."
+      },
+      {
+        "sourceId": "osm:way:585323695",
+        "bankSegments": 7,
+        "bankLengthMetres": 90.22202114072743,
+        "landDistanceMetres": 0.0,
+        "sharedPlanBoundaryMetres": 88.16732638575232,
+        "diagnosis": "Plan areas touch; a vertical display transition is required between authored ground and water heights."
+      },
+      {
+        "sourceId": "osm:way:585323696",
+        "bankSegments": 16,
+        "bankLengthMetres": 118.0958767038152,
+        "landDistanceMetres": 0.0,
+        "sharedPlanBoundaryMetres": 98.85737901500968,
+        "diagnosis": "Plan areas touch; a vertical display transition is required between authored ground and water heights."
+      }
+    ]
+  },
   "reviewedRoadMask": {
     "inputFile": "artifacts/neighborhood-20261021/world/reviewed-road-mask.json",
     "inputSha256": "6a5de3121e364dd4e9fec7a7382e20986d575b24209ee82f7f7cdf905d07c18f",
@@ -99,11 +172,13 @@
     "sha256": "dffa91bf8616b4ce6657f972913c642249ce5be999fb52be736933a5b2ebd6ad",
     "bytes": 7321
   },
-  "styleSha256": "3dd0c20f3ccea49660fb2437d3af812f9dd6b8e05b4e4e52a5dcd77381f9dade",
-  "generatorSha256": "fc2b6685391886a3548c1da51f2da7d1b2af32854a84a948765b85c8c3bdfcfb",
-  "geometryHelperSha256": "fcdf5dc4d59e58e4b2819d47ae8e9f02f307ad68f70f03e0a0d264605d20d48f",
+  "styleSha256": "8dc8eb316933f3de57e5b67d0279bfe5e4caed13f6d10d0a3a5fa9873f269a39",
+  "generatorSha256": "6582af3c185458e69c544c8efddb10975785e24f47ca03869ae6543a0848e979",
+  "geometryHelperSha256": "0fb50580bf3dadbccfed89681d364736a29c18daa0f72894ba30678f846d583e",
+  "landmarkHelperSha256": "de4892fb897c7ffb4ee5c4d2dac9ed9d66f402c2b687be8158e062ba5ed2d4ee",
+  "materialHelperSha256": "a88e8bc6c1c8da4da6838939c6381ce8120ff75d3f131559577a98fe059a86be",
   "blenderVersion": "4.3.2",
-  "elapsedSeconds": 11.577,
+  "elapsedSeconds": 11.05,
   "geometryMeaning": "Source footprints and prepared surface polygons; reviewed original facade assemblies with explicit authored dimensions",
   "rights": "source-ledger.json and references.json",
   "referenceIds": [
@@ -127,7 +202,10 @@
     "Facade bay counts and window dimensions",
     "Material-family assignments on sourced building masses",
     "Flat ground and display water/bridge heights",
-    "Canopy profile, torii/board/railing dimensions",
+    "Canopy profile and source-adjacent soffit joins up to6m; exact construction widths unmeasured",
+    "Lower-storey market frontage assemblies without tenant correspondence",
+    "Bank vertical faces between existing authored ground/water heights",
+    "Torii/board/railing dimensions",
     "Night fixtures, light intensity and emission"
   ],
   "sourceFramePreserved": true,

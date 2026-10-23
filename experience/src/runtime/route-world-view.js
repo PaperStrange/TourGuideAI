@@ -29,7 +29,7 @@ export async function createRouteWorldView(renderer, { pack, signal, onProgress,
   const down = new THREE.Raycaster(new THREE.Vector3(), new THREE.Vector3(0, -1, 0));
   const pointerRay = new THREE.Raycaster(), occlusionRay = new THREE.Raycaster();
   const cameraObstruction = createCameraObstruction((mesh, hit) => {
-    if (mesh.userData.occlusionGroup?.startsWith('Canopy_') || mesh.userData.semanticGroup?.includes('Canopy')) return false;
+    if (mesh.userData.occlusionGroup?.startsWith('Canopy_') || mesh.userData.semanticGroup?.includes('Canopy')) return true;
     const index = mesh.geometry.getAttribute('_source_index')?.getX(hit.face.a);
     const source = (mesh.userData.featureTable ?? manifest.featureTable)?.[index];
     return source?.kind === 'building' || source?.sourceId?.startsWith('kyoto-city:bldg_') === true;
@@ -236,6 +236,7 @@ export async function createRouteWorldView(renderer, { pack, signal, onProgress,
         sharedSceneAssumption: 'Unique shared image textures estimated as RGBA8 with a full mip chain (4/3 multiplier)',
         exclusions: lightingMemory.exclusions };
       return { packId: pack.id, revision: pack.revision, manifestSha256: manifestBytes.sha256, disposed, textureMemory,
+        cameraCollision: cameraObstruction.snapshot(),
         streetMeshes: meshes, streetTriangles: triangles, meshes: meshes + residentMeshes, triangles: triangles + residentTriangles,
         residentMeshes, residentTriangles, markerCount: 0,
         walkableSurfaces: walkable.length, actorPosition: actor.position.toArray(), actorHeading: actor.rotation.y,

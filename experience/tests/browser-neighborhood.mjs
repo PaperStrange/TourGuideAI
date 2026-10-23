@@ -3,8 +3,11 @@ import { chromium } from 'playwright';
 import { readFileSync, readdirSync, mkdirSync, writeFileSync } from 'node:fs';
 import { resolve, join, relative, extname, sep } from 'node:path';
 import { createHash } from 'node:crypto';
+import { gunzipSync } from 'node:zlib';
 import { Matrix4, Vector3 } from 'three';
 import { startServer } from '../server/src/server.js';
+import { createJourneyPlanner } from '../src/journey/recommendations.js';
+import { createJourneySession } from '../src/journey/session.js';
 import geography from '../src/neighborhoods/shijo-east/geography.json' with { type: 'json' };
 import { SIGHTS } from '../src/neighborhoods/shijo-east/sights.js';
 
@@ -14,8 +17,8 @@ const output = resolve(process.env.EXPERIENCE_QA_OUTPUT || '../artifacts/neighbo
 const timeout = Number(process.env.EXPERIENCE_QA_TIMEOUT || 120000);
 const walkingTimeout = Number(process.env.EXPERIENCE_QA_WALK_TIMEOUT || 2400000);
 const only = process.env.EXPERIENCE_QA_ONLY?.split(',').filter(Boolean);
-const sections = ['startup', 'journey', 'initial-recovery', 'latest-intent', 'unavailable-revision'];
-if (only?.some(value => ![...sections, 'walking-controls'].includes(value))) throw new Error('Unknown neighborhood test section.');
+const sections = ['startup', 'journey', 'initial-recovery', 'latest-intent', 'unavailable-revision', 'external-session', 'residency-boundary'];
+if (only?.some(value => ![...sections, 'walking-controls', 'arcade-regression', 'bridge-review'].includes(value))) throw new Error('Unknown neighborhood test section.');
 const prefix = '/assets/neighborhoods/shijo-east/';
 const journeyKey = 'tourguideai.journey.session.v1';
 const keptKey = 'tourguideai.solo.places.v1';
@@ -101,9 +104,14 @@ function cellsAlong(points) {
 }
 function budget(stream) {
   return stream.downloads.peak <= 2 && stream.attachments.peak <= 1 && stream.residentCells <= 9
-    && stream.retainedBytes <= 64 * 1024 * 1024 && stream.cells.filter(cell => cell.level === 'near').length <= 3
+    && stream.retainedBytes <= 64 * 1024 * 1024 && nearCapacity(stream)
     && stream.cells.every(cell => !cell.error && cell.state !== 'failed')
     && Number.isFinite(stream.estimatedTextureBytes) && stream.estimatedTextureBytes <= 96 * 1024 * 1024;
+}
+function nearCapacity(stream) {
+  return stream.nearLimit === (stream.tier === 'compact' ? 1 : 3)
+    && Number.isSafeInteger(stream.nearReservations) && stream.nearReservations >= 0
+    && stream.cells.filter(cell => cell.level === 'near').length + stream.nearReservations <= stream.nearLimit;
 }
 function resources(value) {
   const scene = value.renderer.scene, lighting = value.renderer.lighting;
@@ -111,6 +119,7 @@ function resources(value) {
     geometry: { meshes: scene.meshes, triangles: scene.triangles, streamedMeshes: scene.streetMeshes,
       streamedTriangles: scene.streetTriangles, permanentResidentMeshes: scene.residentMeshes, permanentResidentTriangles: scene.residentTriangles },
     residency: { cells: value.stream.residentCells, nearCells: value.stream.cells.filter(cell => cell.level === 'near').length,
+      nearLimit: value.stream.nearLimit, nearReservations: value.stream.nearReservations, tier: value.stream.tier,
       retainedBytes: value.stream.retainedBytes, estimatedSharedImageTextureBytes: value.stream.estimatedTextureBytes,
       sharedImageTextureCount: value.stream.textureCount },
     memory: value.renderer.memory, allocatedTextureMemory: scene.textureMemory ?? null,
@@ -126,10 +135,12 @@ function textureBudget(value) {
     && memory.lightingBytes === lighting.estimatedBytes && memory.actorAndContact.complete === true
     && Math.abs(memory.estimatedBytes - memory.sharedSceneBytes - memory.actorAndContact.estimatedBytes - memory.lightingBytes) < 1;
 }
-async function scenario(name, fault = {}) {
-  const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, reducedMotion: 'no-preference', deviceScaleFactor: 1 });
+async function scenario(name, fault = {}, options = {}) {
+  const contextOptions = { viewport: { width: 1440, height: 1000 }, reducedMotion: 'no-preference', deviceScaleFactor: 1,
+    ...options.context };
+  const context = await browser.newContext(contextOptions);
   contexts.add(context);
-  const record = report.scenarios[name] = { requests: [], failures: [], denied: [], delayed: [], pageErrors: [], unexpectedOrigins: [] };
+  const record = report.scenarios[name] = { context: contextOptions, requests: [], failures: [], denied: [], delayed: [], pageErrors: [], unexpectedOrigins: [] };
   await context.route(service.url + '/**', async route => {
     const url = new URL(route.request().url()), path = url.pathname === '/' ? '/index.html' : url.pathname;
     if (path.startsWith('/api/')) return route.continue();
@@ -143,7 +154,7 @@ async function scenario(name, fault = {}) {
       for (const [key, value] of Object.entries(values)) localStorage.setItem(key, value);
       sessionStorage.setItem('neighborhood-qa-seeded', '1');
     }
-  }, { origin: service.url, values: legacy });
+  }, { origin: service.url, values: { ...legacy, ...options.storage } });
   const page = await context.newPage(); page.setDefaultTimeout(timeout);
   page.on('request', request => {
     const url = new URL(request.url()); record.requests.push({ at: Date.now(), origin: url.origin, path: url.pathname, method: request.method() });
@@ -218,7 +229,7 @@ async function setLocale(page, locale) {
   await page.locator('#locale-' + locale).click();
   await page.waitForFunction(value => document.documentElement.lang === value, locale);
 }
-async function groundClick(page, target) {
+async function groundClick(page, target, touch = false) {
   await page.locator('#live-stage canvas').scrollIntoViewIfNeeded();
   const camera = await page.evaluate(() => window.__TOUR_GAME__.camera());
   const bounds = await page.locator('#live-stage canvas').boundingBox();
@@ -226,9 +237,11 @@ async function groundClick(page, target) {
     .applyMatrix4(new Matrix4().fromArray(camera.matrixWorld).invert())
     .applyMatrix4(new Matrix4().fromArray(camera.projectionMatrix));
   if (Math.abs(point.x) > .98 || Math.abs(point.y) > .98) throw new Error('The selected actual ground point is outside the current camera.');
-  await page.mouse.click(bounds.x + (point.x + 1) * bounds.width / 2, bounds.y + (1 - point.y) * bounds.height / 2);
+  const x = bounds.x + (point.x + 1) * bounds.width / 2, y = bounds.y + (1 - point.y) * bounds.height / 2;
+  if (touch) await page.touchscreen.tap(x, y);
+  else await page.mouse.click(x, y);
 }
-async function capture(page, name) {
+async function capture(page, name, canvasOnly = false) {
   const layout = () => page.evaluate(() => ({ scrollX, scrollY, viewport: { width: innerWidth, height: innerHeight },
     documentHeight: document.documentElement.scrollHeight,
     visualColumn: document.querySelector('.visual-column')?.getBoundingClientRect().toJSON(),
@@ -239,6 +252,12 @@ async function capture(page, name) {
   const afterScroll = await layout();
   const file = name + '.png'; await page.screenshot({ path: join(output, file), fullPage: true });
   report.screenshots.push({ file, sha256: sha(readFileSync(join(output, file))), layout: { beforeScroll, afterScroll }, observed: await observe(page) }); persist();
+  if (canvasOnly) {
+    const canvasFile = name + '-canvas.png';
+    await page.locator('#live-stage canvas').screenshot({ path: join(output, canvasFile) });
+    report.screenshots.push({ file: canvasFile, kind: 'actual-canvas', sha256: sha(readFileSync(join(output, canvasFile))),
+      layout: await layout(), observed: await observe(page) }); persist();
+  }
 }
 async function unchangedLegacy(page, id) {
   const actual = await page.evaluate(keys => Object.fromEntries(keys.map(key => [key, localStorage.getItem(key)])), Object.keys(legacy));
@@ -365,7 +384,7 @@ async function verifyWalkingControls(page, sight) {
   await page.waitForFunction(() => !window.__TOUR_GAME__.route().goal);
   await setLocale(page, 'en');
 }
-async function inspectVisibleSurface(page, id) {
+async function inspectVisibleSurface(page, id, expectedId) {
   const initial = await observe(page); await page.locator('#solo-inspect').click();
   await page.locator('#live-stage canvas').scrollIntoViewIfNeeded();
   const bounds = await page.locator('#live-stage canvas').boundingBox();
@@ -382,11 +401,46 @@ async function inspectVisibleSurface(page, id) {
     await page.waitForFunction(() => Boolean(window.__TOUR_GAME__.inspection().selected));
   }
   const selected = await page.evaluate(() => window.__TOUR_GAME__.inspection().selected);
-  check(id, Boolean(focus && selected && selected.id === focus.id) && near((await observe(page)).route.position, initial.route.position),
+  check(id, Boolean(focus && selected && selected.id === focus.id && (!expectedId || selected.id === expectedId))
+    && near((await observe(page)).route.position, initial.route.position),
     { focus, selected, before: initial.route.position, after: (await observe(page)).route.position });
   if (selected) await page.locator('#solo-close-detail').click();
   await page.locator('#live-stage').focus(); await page.keyboard.press('Escape');
   await page.waitForFunction(() => !window.__TOUR_GAME__.inspection().enabled);
+}
+function priorFullWalk() {
+  const sourceBytes = gunzipSync(readFileSync(new URL('../evidence/neighborhood-20261023/ci/neighborhood-result.json.gz', import.meta.url)));
+  const sourceSha256 = sha(sourceBytes);
+  if (sourceSha256 !== '5a5c9f94960fb3212ed01f9a5d606034f267de1e3c5ffa82e3748f75052a9cfd') throw new Error('Prior actual route evidence changed.');
+  const source = JSON.parse(sourceBytes);
+  if (source.source.geographySha256 !== report.source.geographySha256) throw new Error('The recorded route geometry differs from this build.');
+  return { source, sourceSha256 };
+}
+function sessionAt(view, lighting = 'day', stopIds = geography.sights.map(sight => sight.id)) {
+  const planner = createJourneyPlanner({ routeId: geography.id, revision: geography.revision,
+    graph: geography.navigation, startNodeId: geography.startNodeId, sights: SIGHTS });
+  return createJourneySession(planner.route(stopIds), { view, lighting });
+}
+function actorProjection(value) {
+  const points = [0, 1.75].map(height => new Vector3(value.route.position.x,
+    value.route.position.height + height, -value.route.position.y)
+    .applyMatrix4(new Matrix4().fromArray(value.camera.matrixWorld).invert())
+    .applyMatrix4(new Matrix4().fromArray(value.camera.projectionMatrix)).toArray());
+  return { points, verticalOccupancy: Math.abs(points[1][1] - points[0][1]) / 2,
+    actualDistance: new Vector3().fromArray(value.camera.position).distanceTo(new Vector3().fromArray(value.camera.viewTarget)) };
+}
+async function boundedWalk(page, id, reached) {
+  const started = Date.now(), path = { id, startedAt: new Date().toISOString(), samples: [] };
+  report.paths.push(path);
+  while (Date.now() - started < 180000) {
+    const actual = await observe(page);
+    path.samples.push({ elapsedMs: Date.now() - started, route: actual.route, ground: actual.ground,
+      camera: actual.camera, resources: resources(actual), stream: actual.stream });
+    persist();
+    if (reached(actual)) { path.completedAt = new Date().toISOString(); return actual; }
+    await page.waitForTimeout(1000);
+  }
+  throw new Error('Bounded actual walk timed out: ' + id);
 }
 async function mapsOrder(page, session, id) {
   const links = await page.locator('#neighborhood-journey .map-links a').evaluateAll(nodes => nodes.map(node => node.href));
@@ -746,6 +800,247 @@ try {
     check('explicit-replacement-selects-current-reviewed-version', replacement.revision === geography.revision
       && (!replacement.progress.view || replacement.progress.view.revision === geography.revision), replacement);
     await unchangedLegacy(page, 'version-replacement-preserves-unrelated-records');
+  });
+
+  await section('external-session', async () => {
+    let release;
+    const barrier = new Promise(resolve => { release = resolve; });
+    const { context, page, record, fault } = await scenario('external-session', {
+      delay: path => path === assetPath(manifest.ground), wait: barrier,
+    });
+    let bytes, newer, heldSince;
+    try {
+      await page.locator('#mode-explore').click(); await page.locator('#journey-enter').click();
+      const deadline = Date.now() + timeout;
+      while (!record.delayed.length && Date.now() < deadline) await page.waitForTimeout(100);
+      if (!record.delayed.length) throw new Error('The actual ground asset did not reach the delayed request.');
+      heldSince = Date.now();
+      const initial = await readSession(page);
+      newer = { ...initial, stopIds: [...initial.stopIds].reverse(), variantId: 'personal',
+        progress: { ...initial.progress, lighting: 'night' }, updatedAt: new Date().toISOString() };
+      bytes = JSON.stringify(newer);
+      // 第二个同源页面使用原生 localStorage，触发真正的跨页面 storage 事件。
+      const writer = await context.newPage();
+      await writer.goto(service.url + '/credits.html?lang=en', { waitUntil: 'domcontentloaded' });
+      await writer.evaluate(({ key, bytes }) => localStorage.setItem(key, bytes), { key: journeyKey, bytes });
+      await page.bringToFront();
+      await page.waitForFunction(() => window.__HOME__.snapshot().neighborhood.storageChanged);
+      const controls = await page.locator('#journey-enter, [data-journey-up], [data-journey-down], [data-journey-remove], #journey-suggest')
+        .evaluateAll(nodes => nodes.map(node => ({ id: node.id, disabled: node.disabled })));
+      check('external-current-revision-blocks-stale-mutations-during-opening',
+        await page.locator('#journey-reload').isVisible() && controls.length > 0 && controls.every(node => node.disabled)
+        && await writer.evaluate(key => localStorage.getItem(key), journeyKey) === bytes,
+      { initial, newer, controls, current: await home(page) });
+      while (Date.now() - heldSince < 15000) await page.waitForTimeout(Math.min(500, 15000 - (Date.now() - heldSince)));
+      check('external-session-survives-fifteen-second-pending-opening',
+        Date.now() - heldSince >= 15000 && (await home(page)).neighborhood.storageChanged
+        && await writer.evaluate(key => localStorage.getItem(key), journeyKey) === bytes,
+      { heldMs: Date.now() - heldSince, delayed: record.delayed, current: await home(page) });
+    } finally { fault.delay = undefined; release(); }
+    await ready(page);
+    await page.waitForFunction(() => !window.__HOME__.snapshot().neighborhood.busy);
+    const beforeInput = await observe(page);
+    await page.locator('#solo-inspect').click(); await page.locator('#live-stage').focus(); await page.keyboard.press('j');
+    await page.waitForFunction(angle => Math.abs(window.__TOUR_GAME__.camera().azimuth - angle) > .001, beforeInput.camera.azimuth);
+    await page.keyboard.press('Escape'); await page.waitForTimeout(1100);
+    check('late-opening-and-real-camera-capture-preserve-external-session-bytes',
+      await page.evaluate(key => localStorage.getItem(key), journeyKey) === bytes
+      && (await home(page)).neighborhood.storageChanged && await page.locator('#journey-enter').isDisabled()
+      && await page.locator('#journey-reload').isEnabled(), { expected: newer, current: await observe(page) });
+    await setLocale(page, 'zh');
+    check('external-session-reload-control-is-localized-with-record-retained',
+      await page.locator('#journey-reload').textContent() === '重新加载已存漫步'
+      && await page.evaluate(key => localStorage.getItem(key), journeyKey) === bytes, await home(page));
+    await page.locator('#journey-reload').click(); await ready(page, geography.id, 'night');
+    await page.waitForFunction(() => !window.__HOME__.snapshot().neighborhood.busy);
+    const adopted = await readSession(page);
+    check('explicit-reload-adopts-newer-order-and-lighting-after-pagehide',
+      equal(adopted.stopIds, newer.stopIds) && adopted.progress.lighting === 'night'
+      && !(await home(page)).neighborhood.storageChanged && await page.locator('#journey-enter').isEnabled()
+      && await page.locator('html').getAttribute('lang') === 'zh', { adopted, current: await observe(page) });
+    await unchangedLegacy(page, 'external-session-guard-keeps-legacy-bytes');
+  });
+
+  await section('residency-boundary', async () => {
+    const { source, sourceSha256 } = priorFullWalk();
+    const priorPath = source.paths.find(path => path.id === 'outbound-boundary-denied');
+    const opening = source.savedViews.find(value => value.view.player.x < 30);
+    for (const { tier, startX, endX, viewport } of [
+      { tier: 'desktop', startX: 78, endX: 92, viewport: { width: 1440, height: 1000 } },
+      { tier: 'compact', startX: 94, endX: 106, viewport: { width: 390, height: 844 } },
+    ]) {
+      const start = priorPath.samples.find(value => value.route.position.x >= startX && value.route.position.x < startX + 2);
+      const finish = priorPath.samples.find(value => value.route.position.x >= endX && value.route.position.x < endX + 2);
+      if (!start?.ground.inside || !start.ground.hit || !finish?.ground.inside || !finish.ground.hit) throw new Error('The bounded path needs previously visited ground samples.');
+      const view = { ...opening.view, player: { ...start.route.position } };
+      const reconstructed = sessionAt(view);
+      let releaseNear, heldNearPath;
+      const nearBarrier = new Promise(resolve => { releaseNear = resolve; });
+      const { page, context, record, fault } = await scenario('residency-' + tier, {
+        delay: path => {
+          if (!heldNearPath && path.startsWith(prefix + 'cells/') && path.endsWith('/near.gltf')) {
+            heldNearPath = path; return true;
+          }
+          return false;
+        }, wait: nearBarrier,
+      }, {
+        context: { viewport, ...(tier === 'compact' ? { isMobile: true, hasTouch: true } : {}) },
+        storage: { [journeyKey]: JSON.stringify(reconstructed) },
+      });
+      record.restoration = { sourceReportSha256: sourceSha256, sourcePackageSha256: source.artifact.manifestSha256,
+        sourcePathId: priorPath.id, sourcePosition: start.route.position, finishPosition: finish.route.position,
+        sourceCamera: opening.view.camera, reconstructedSession: reconstructed,
+        description: 'The position was reached during the preserved full CI walk. The retained opening camera is reused explicitly; this is a reconstructed return record, not an exact prior frame.' };
+      // 每个实际浏览器帧读取公开观察器，保留下载、解析与附件期间的容量。
+      await page.evaluate(() => {
+        window.__NEIGHBORHOOD_RESIDENCY_SAMPLES__ = [];
+        window.__NEIGHBORHOOD_RESIDENCY_ACTIVE__ = true;
+        const sample = () => {
+          if (!window.__NEIGHBORHOOD_RESIDENCY_ACTIVE__) return;
+          const game = window.__TOUR_GAME__, stream = game?.streaming();
+          if (stream) window.__NEIGHBORHOOD_RESIDENCY_SAMPLES__.push({ at: performance.now(), route: game.route(), stream });
+          requestAnimationFrame(sample);
+        };
+        requestAnimationFrame(sample);
+      });
+      try {
+        await enter(page);
+        await page.waitForFunction(() => window.__TOUR_GAME__.streaming().nearReservations > 0);
+        await page.waitForFunction(() => window.__NEIGHBORHOOD_RESIDENCY_SAMPLES__.some(value => value.stream.nearReservations > 0));
+        const held = await observe(page);
+        check(tier + '-actual-near-request-reserves-capacity-before-response',
+          Boolean(heldNearPath && record.delayed.includes(heldNearPath)) && nearCapacity(held.stream),
+        { heldNearPath, current: held });
+      } finally { fault.delay = undefined; releaseNear(); }
+      await settled(page);
+      const initial = await observe(page);
+      const settledNearSets = [initial.stream.cells.filter(cell => cell.level === 'near').map(cell => cell.id).sort().join(',')];
+      check(tier + '-recorded-boundary-position-restores-with-correct-tier',
+        near(initial.route.position, start.route.position) && initial.stream.tier === tier
+        && initial.stream.nearLimit === (tier === 'compact' ? 1 : 3), { restoration: record.restoration, initial });
+      for (const [direction, target] of [['forward', finish.route.position], ['return', start.route.position]]) {
+        // 目标点全部来自旧报告；分段点击使手机也保持可见地面命中。
+        const from = (await observe(page)).route.position;
+        const points = priorPath.samples.map(value => value.route.position)
+          .filter(point => point.edgeId === from.edgeId && point.x >= Math.min(from.x, target.x) && point.x <= Math.max(from.x, target.x));
+        if (target.x < from.x) points.reverse();
+        let previous = from;
+        for (const point of [...points, target]) {
+          if (Math.hypot(point.x - previous.x, point.y - previous.y) < 5 && point !== target) continue;
+          await groundClick(page, point, tier === 'compact');
+          await page.waitForFunction(target => {
+            const route = window.__TOUR_GAME__.route();
+            return !route.destination && Math.hypot(route.position.x - target.x, route.position.y - target.y) < .15;
+          }, point, { timeout: Math.min(walkingTimeout, 120000) });
+          previous = point;
+        }
+        await settled(page);
+        settledNearSets.push((await observe(page)).stream.cells.filter(cell => cell.level === 'near').map(cell => cell.id).sort().join(','));
+        check(tier + '-boundary-' + direction + '-keeps-ground-and-full-quality',
+          (await observe(page)).ground.inside && Boolean((await observe(page)).ground.hit)
+          && budget((await observe(page)).stream), await observe(page));
+      }
+      const samples = await page.evaluate(() => {
+        window.__NEIGHBORHOOD_RESIDENCY_ACTIVE__ = false;
+        return window.__NEIGHBORHOOD_RESIDENCY_SAMPLES__;
+      });
+      const nearSets = new Set(samples.map(value => value.stream.cells.filter(cell => cell.level === 'near').map(cell => cell.id).sort().join(',')));
+      record.residencySamples = samples;
+      check(tier + '-near-cap-includes-inflight-reservations-through-real-boundary',
+        samples.length > 0 && samples.every(value => nearCapacity(value.stream))
+        && samples.some(value => value.stream.nearReservations > 0) && new Set(settledNearSets).size > 1,
+      { samples: samples.length, reservationSamples: samples.filter(value => value.stream.nearReservations > 0).length,
+        attachingSamples: samples.filter(value => value.stream.attachments.active > 0).length,
+        nearSets: [...nearSets], settledNearSets, maxUsedSlots: Math.max(...samples.map(value => value.stream.nearReservations
+          + value.stream.cells.filter(cell => cell.level === 'near').length)), limit: initial.stream.nearLimit });
+      await unchangedLegacy(page, tier + '-boundary-replay-keeps-legacy-bytes');
+      await context.close(); contexts.delete(context);
+    }
+  });
+
+  if (only?.includes('arcade-regression')) await section('arcade-regression', async () => {
+    const sourceBytes = readFileSync(new URL('../evidence/neighborhood-20261021/qa/arcade-blocker/source-walk-result.json', import.meta.url));
+    if (sha(sourceBytes) !== 'ab353164cf5c4fdd323880d9368e3f96f9ffc0abff3f80a0e655801ed7880ebb') throw new Error('The actual approach evidence changed.');
+    const source = JSON.parse(sourceBytes), visited = source.error.observed;
+    const session = sessionAt(visited.home.currentView, 'day', visited.home.neighborhood.selected);
+    const { page, record } = await scenario('arcade-regression', {}, { storage: { [journeyKey]: JSON.stringify(session) } });
+    record.restoration = { sourceReportSha256: sha(sourceBytes), sourcePackageSha256: source.artifact.manifestSha256,
+      sourceView: visited.home.currentView, reconstructedSession: session,
+      description: 'The complete pose and selected order come from the previously observed actual approach. The session wrapper is reconstructed through public helpers.' };
+    await enter(page); await settled(page);
+    const restored = await observe(page);
+    check('arcade-restores-prior-actual-approach-pose', near(restored.home.currentView, visited.home.currentView)
+      && restored.ground.inside && Boolean(restored.ground.hit), restored);
+    await capture(page, 'arcade-restored-approach-day', true);
+    const market = geography.sights.find(sight => sight.id === 'nishiki-market');
+    await focusSight(page, market);
+    const arrived = await boundedWalk(page, 'remaining-actual-walk-to-market', value => !value.route.destination
+      && Math.hypot(value.route.position.x - market.x, value.route.position.y - market.y) < .15);
+    check('arcade-market-arrival-is-grounded-without-completion-flags', arrived.ground.inside && Boolean(arrived.ground.hit)
+      && arrived.state.visitedIds.length === 0 && Object.keys(arrived.state.choiceIds).length === 0, arrived);
+    await capture(page, 'arcade-market-day', true); await setLighting(page, 'night'); await capture(page, 'arcade-market-night', true);
+    await setLighting(page, 'day'); await inspectVisibleSurface(page, 'market-actual-source-surface-selection', 'shijo-east:nishiki-market');
+    await focusSight(page, geography.sights.find(sight => sight.id === 'nishiki-tenmangu'));
+    await boundedWalk(page, 'actual-walk-inside-arcade', value => Math.hypot(value.route.position.x - arrived.route.position.x,
+      value.route.position.y - arrived.route.position.y) >= 20);
+    await page.locator('#journey-stop').click();
+    await page.waitForFunction(() => !window.__TOUR_GAME__.route().goal && !window.__TOUR_GAME__.camera().obstruction?.settling);
+    const stopped = await observe(page), projection = actorProjection(stopped);
+    check('ordinary-arcade-camera-keeps-actor-within-viewport-and-distance-budget',
+      projection.points.every(([x, y, z]) => Math.abs(x) <= 1 && Math.abs(y) <= 1 && Math.abs(z) <= 1)
+      && projection.verticalOccupancy <= .5 && projection.actualDistance >= 5
+      && stopped.camera.position[1] < 4.65 && stopped.ground.inside && Boolean(stopped.ground.hit),
+    { projection, observed: stopped });
+    await capture(page, 'arcade-inside-ordinary-day', true);
+    await setLighting(page, 'night'); await capture(page, 'arcade-inside-ordinary-night', true);
+    const beforeInspection = await observe(page);
+    await page.locator('#solo-inspect').click();
+    await page.waitForFunction(() => window.__TOUR_GAME__.inspection().enabled);
+    await page.waitForTimeout(500);
+    const entered = await observe(page);
+    check('arcade-inspection-entry-keeps-actual-rendered-composition',
+      near(entered.camera.position, beforeInspection.camera.position, .00001)
+      && near(entered.camera.viewTarget, beforeInspection.camera.viewTarget, .00001)
+      && near(entered.home.currentView, beforeInspection.home.currentView) && entered.camera.inspectionAimed === false,
+    { before: beforeInspection.camera, after: entered.camera });
+    await page.locator('#live-stage').focus();
+    for (let step = 0; step < 22; step++) await page.keyboard.press('j');
+    await page.keyboard.press('Escape');
+    await page.waitForFunction(() => !window.__TOUR_GAME__.inspection().enabled && !window.__TOUR_GAME__.camera().obstruction?.settling);
+    await inspectVisibleSurface(page, 'interior-actual-source-surface-selection', 'shijo-east:nishiki-market');
+    await capture(page, 'arcade-interior-east-night', true);
+    await setLighting(page, 'day'); await capture(page, 'arcade-interior-east-day', true);
+    await page.locator('#solo-inspect').click(); await page.locator('#live-stage').focus();
+    const beforeFraming = await observe(page);
+    for (let step = 0; step < 16; step++) await page.keyboard.press('=');
+    for (let step = 0; step < 8; step++) await page.keyboard.press('k');
+    await page.waitForFunction(() => !window.__TOUR_GAME__.camera().transitioning && !window.__TOUR_GAME__.camera().obstruction?.settling);
+    const belowRoof = await observe(page);
+    check('actual-keys-frame-below-arcade-roof-with-position-preserved',
+      near(beforeFraming.route.position, belowRoof.route.position) && belowRoof.camera.position[1] < 4.65
+      && belowRoof.camera.position[1] > belowRoof.route.position.height
+      && belowRoof.camera.distance <= 10.001 && belowRoof.camera.polar >= 1.44,
+    { before: beforeFraming.camera, after: belowRoof.camera, position: belowRoof.route.position });
+    await capture(page, 'arcade-below-roof-day', true); await setLighting(page, 'night'); await capture(page, 'arcade-below-roof-night', true);
+    await page.locator('#live-stage').focus(); await page.keyboard.press('Escape');
+    await unchangedLegacy(page, 'arcade-regression-keeps-legacy-bytes');
+  });
+
+  if (only?.includes('bridge-review')) await section('bridge-review', async () => {
+    const { source, sourceSha256 } = priorFullWalk();
+    const remembered = source.savedViews.find(value => value.view.player.edgeId === 'authored:shijo-bridge-view-approach');
+    if (!remembered) throw new Error('The actual completed bridge view is unavailable.');
+    const reconstructed = sessionAt(remembered.view);
+    const { page, record } = await scenario('bridge-review', {}, { storage: { [journeyKey]: JSON.stringify(reconstructed) } });
+    record.restoration = { sourceReportSha256: sourceSha256, sourcePackageSha256: source.artifact.manifestSha256,
+      sourceSavedView: remembered, reconstructedSession: reconstructed,
+      description: 'Exact private view saved after the completed actual CI walk to Shijo Bridge, restored through the production journey entry.' };
+    await enter(page); await settled(page);
+    check('bridge-review-restores-exact-previously-walked-view', near((await home(page)).currentView, remembered.view)
+      && Boolean((await observe(page)).ground.hit), await observe(page));
+    await capture(page, 'bridge-prior-actual-pose-day', true);
+    await setLighting(page, 'night'); await capture(page, 'bridge-prior-actual-pose-night', true);
+    await unchangedLegacy(page, 'bridge-review-keeps-legacy-bytes');
   });
 
   check('no-page-exceptions-or-unexpected-network-origins', Object.values(report.scenarios).every(value => !value.pageErrors.length && !value.unexpectedOrigins.length),

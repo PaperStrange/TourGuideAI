@@ -1,0 +1,102 @@
+import { readFile } from 'node:fs/promises';
+import * as THREE from '../experience/node_modules/three/build/three.module.js';
+import { loadNeighborhoodGeometry } from '../experience/tests/helpers/neighborhood-geometry.mjs';
+import { createCameraObstruction } from '../experience/src/runtime/camera-obstruction.js';
+import { inspectIntersection, visibleSurface } from '../experience/src/runtime/inspection.js';
+import { getPack } from '../experience/src/packs/registry.js';
+import { selectSections } from '../experience/src/runtime/section-residency.js';
+
+const base = new URL('../experience/public/assets/neighborhoods/shijo-east/', import.meta.url);
+const manifest = JSON.parse(await readFile(new URL('manifest.json', base)));
+const report = JSON.parse(await readFile(new URL('../experience/evidence/neighborhood-20261021/qa/arcade-blocker/arcade-result.json', import.meta.url)));
+const observed = report.captures.find(value => value.file === 'inside-arcade-day.png').observed;
+const player = observed.route.position;
+const chosen = selectSections(manifest.cells, { ...player, heading: observed.state.heading });
+const roots = [];
+for (const descriptor of [manifest.context, ...chosen.map(item => manifest.cells.find(cell => cell.id === item.id)[item.level])]) {
+  const root = await loadNeighborhoodGeometry(new URL(descriptor.file, base));
+  root.traverse(mesh => { if (mesh.isMesh) mesh.userData.featureTable = manifest.featureTable; });
+  roots.push(root);
+}
+const sourceFor = (mesh, hit) => manifest.featureTable[mesh.geometry.getAttribute('_source_index')?.getX(hit.face.a)];
+const blocker = (mesh, hit) => mesh.userData.occlusionGroup?.startsWith('Canopy_')
+  || mesh.userData.semanticGroup?.includes('Canopy') || sourceFor(mesh, hit)?.sourceId?.startsWith('kyoto-city:bldg_');
+const collision = createCameraObstruction(blocker);
+for (const root of roots) collision.addRoot(root);
+const camera = new THREE.PerspectiveCamera(48, 1, .15, 350);
+camera.projectionMatrix.fromArray(observed.camera.projectionMatrix); camera.projectionMatrixInverse.copy(camera.projectionMatrix).invert();
+camera.aspect = observed.camera.projectionMatrix[5] / observed.camera.projectionMatrix[0];
+camera.position.fromArray(observed.camera.desiredPosition);
+const target = new THREE.Vector3().fromArray(observed.camera.target);
+camera.lookAt(target); camera.updateMatrixWorld(true);
+const corrected = collision.resolve(camera, target, player);
+const rendered = camera.clone(); rendered.position.copy(corrected.position); rendered.lookAt(corrected.target); rendered.updateMatrixWorld(true);
+console.log(JSON.stringify({ player, chosen, result: corrected, projection: [0, 1.75].map(height =>
+  new THREE.Vector3(player.x, player.height + height, -player.y).project(rendered).toArray()) }, null, 2));
+for (const [offset, height] of [[0, 1], [0, 1.1], [0, 1.2], [.6, 1.1], [-.6, 1.1]]) {
+  const aim = new THREE.Vector3(player.x, player.height + height, -player.y);
+  const view = camera.clone();
+  view.position.copy(aim).add(new THREE.Vector3().setFromSphericalCoords(22, 1.1, .22 + offset));
+  view.lookAt(aim); view.updateMatrixWorld(true);
+  const result = collision.resolve(view, aim, player);
+  view.position.copy(result.position); view.lookAt(result.target); view.updateMatrixWorld(true);
+  const points = [0, 1.75].map(height => new THREE.Vector3(player.x, player.height + height, -player.y).project(view).toArray());
+  console.log(JSON.stringify({ candidateOffset: offset, height, distance: result.actualDistance, points, position: result.position, target: result.target }));
+}
+const meshes = roots.flatMap(root => { const result = []; root.traverse(mesh => { if (mesh.isMesh) result.push(mesh); }); return result; });
+const ray = new THREE.Raycaster();
+const inspected = report.captures.find(value => value.file === 'inside-arcade-inspection.png').observed;
+for (const [label, frame] of [['recorded', inspected.camera], ['corrected', inspected.camera]]) {
+  const view = rendered.clone();
+  if (frame) { view.matrixWorld.fromArray(frame.matrixWorld); view.matrixWorld.decompose(view.position, view.quaternion, view.scale); view.updateMatrixWorld(true); }
+  if (label === 'corrected') {
+    view.position.fromArray(frame.desiredPosition);
+    const aim = new THREE.Vector3().fromArray(frame.target); view.lookAt(aim); view.updateMatrixWorld(true);
+    const result = collision.resolve(view, aim, player, { preserveActorFrame: false });
+    view.position.copy(result.position); view.lookAt(result.target); view.updateMatrixWorld(true);
+    console.log(JSON.stringify({ inspectionCamera: result }));
+  }
+  for (const [x, y] of [[.5, .35], [.25, .35], [.75, .35], [.25, .6], [.75, .6], [.5, .15]]) {
+    ray.setFromCamera(new THREE.Vector2(x * 2 - 1, 1 - y * 2), view);
+    const hit = ray.intersectObjects(meshes.filter(visibleSurface), false)[0];
+    console.log(JSON.stringify({ label, pointer: [x, y], hit: hit && { mesh: hit.object.name, source: sourceFor(hit.object, hit),
+      group: hit.object.userData.occlusionGroup, distance: hit.distance, point: hit.point,
+      focus: inspectIntersection(hit, view, player, 960, 696, getPack('shijo-east').inspection.features) } }));
+  }
+}
+const elapsed = [], offsets = [], positions = [], jumps = [], samples = [];
+for (let step = 0; step < 300; step++) {
+  const point = { ...player, x: player.x - 10 + step * .076 };
+  const aim = new THREE.Vector3(point.x + 1.2, 1.6, -point.y + 2.2);
+  camera.position.copy(aim).add(new THREE.Vector3().setFromSphericalCoords(22, 1.1, .22));
+  camera.lookAt(aim); camera.updateMatrixWorld(true);
+  const start = performance.now(), result = collision.resolve(camera, aim, point, { deltaMs: 1000 / 60, reducedMotion: false });
+  elapsed.push(performance.now() - start); offsets.push(result.angleOffset);
+  positions.push(result.position);
+  samples.push({ step, x: point.x, distance: result.actualDistance, occupancy: result.actorVerticalOccupancy,
+    cameraHeight: result.position.y, recovered: result.framingRecovered, fits: result.recoveryFits, settling: result.settling });
+  if (step) jumps.push({ step, playerX: point.x, cameraDistance: positions[step].distanceTo(positions[step - 1]),
+    angleDelta: Math.abs(offsets[step] - offsets[step - 1]) });
+}
+const sorted = elapsed.slice().sort((a,b) => a-b);
+console.log(JSON.stringify({ cpuSweep: { calls: elapsed.length, totalMs: elapsed.reduce((a,b)=>a+b,0),
+  medianMs: sorted[150], p95Ms: sorted[284], maxMs: sorted.at(-1), maxAngleOffset: Math.max(...offsets.map(Math.abs)),
+  largestJumps: jumps.sort((a,b)=>b.cameraDistance-a.cameraDistance).slice(0, 5),
+  minDistance: Math.min(...samples.map(value => value.distance)), maxOccupancy: Math.max(...samples.map(value => value.occupancy)),
+  invalidRecovery: samples.filter(value => value.recovered && !value.fits), bvh: collision.snapshot() } }));
+const lastPoint = { ...player, x: player.x - 10 + 299 * .076 };
+const lastAim = new THREE.Vector3(lastPoint.x + 1.2, 1.6, -lastPoint.y + 2.2);
+let stopped, settleFrames = 0;
+do {
+  stopped = collision.resolve(camera, lastAim, lastPoint, { deltaMs: 1000 / 60, reducedMotion: false });
+  settleFrames++;
+} while (stopped.settling && settleFrames < 180);
+console.log(JSON.stringify({ stopped: { settleFrames, settled: !stopped.settling, pose: stopped } }));
+for (const root of roots) collision.removeRoot(root);
+let exiting, exitFrames = 0;
+do {
+  exiting = collision.resolve(camera, lastAim, lastPoint, { deltaMs: 1000 / 60, reducedMotion: false });
+  exitFrames++;
+} while (exiting.settling && exitFrames < 180);
+console.log(JSON.stringify({ exit: { exitFrames, settled: !exiting.settling, desiredError: exiting.position.distanceTo(camera.position), pose: exiting } }));
+console.log(JSON.stringify({ released: collision.snapshot() }));

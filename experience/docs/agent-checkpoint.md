@@ -17,26 +17,52 @@ drivers; `6f9ccc2` strengthens successful detail-load checks, actual 15-second
 loading recovery and inspection-event synchronization. The checkpoint/evidence
 commit is metadata only. No new package has been published.
 
-The resumed recovery increment preserves a failed preview until an explicit retry,
+Commit **`6ee2248766c3ac1c3cbf219533a9279a7ed6b220`** is pushed. Its recovery increment preserves a failed preview until an explicit retry,
 guards private journey writes against changed stored bytes, and reserves near-detail
 capacity through loading/cancellation cleanup. Twenty targeted route, native-storage,
 asset and scheduling checks pass. Font regeneration reports zero missing glyphs.
-Actual browser validation of this increment remains pending the next frozen build;
-camera and art corrections are still being prepared in the shared worktree.
+CI **39886300478** is running for that increment; it does not cover the current
+camera/art candidate. Completed CI evidence for its parent is recorded below.
 
-**Release blocker:** actual walking reaches Nishiki Market and continues 20.14 m
-under its arcade, but the stopped default camera crops the actor's head. At source
-position **(287.127, 140.015)**, edge
-`osm:way:66703315:354840397:5554417552`, edge distance **37.546087771 m**, obstruction
-handling reduces the camera distance to **0.2 m** and head NDC Y is **1.019**.
-Ordinary interior day/night composition fails visual acceptance. Market surface
-inspection succeeds; the interior sampled rays find no selectable feature and
-also fail their assertion. Diagnose that independently of camera framing.
-Below-roof views expose the colored roof strip and downlights, but the present
-scene still reads as a narrow suspended canopy between repeated glazed facades.
-It does not yet establish the enclosed, varied commercial arcade character in
-the retained Nishiki reference. Review that architectural limitation separately
-from the camera correction; opening acceptance does not cover the whole route.
+The current immutable browser candidate is
+**`artifacts/neighborhood-20261023/candidate-1`**, copied from the canonical
+`experience/dist` build. Application checks pass **185/185**, with no skips.
+Its 293-file package identity is
+**`df711b7d06a0a921545cc82de1ffe3b26dec28a8dc3a86684d837fcdd5e1127c`**.
+Its scenery manifest is
+**`add6e399dcebca96cec9daf9e413f1374b6561ca48272b982914a1d6075f961c`**.
+QA owns the exclusive browser window for recovery, native-storage preservation,
+desktop/compact detail transitions, actual arcade controls and bridge captures.
+These checks are running; the candidate is not accepted for publication.
+
+The camera retains desired saved OrbitControls intent and constrains the rendered
+view against actual building and canopy geometry. Scoped `three-mesh-bvh` indices
+preserve triangle/source correspondence and are released with their scene roots.
+Recovery retains at least 5 m viewing distance and at most half-frame actor height,
+with time-based collision-checked settling. Look closer keeps its entry composition
+until deliberate camera input. The actual arcade-geometry sweep covers 300 adjacent
+poses: minimum distance **5.0002 m**, maximum actor occupancy **33.85%**, maximum
+adjacent camera shift **0.218 m**, and zero invalid recoveries. Geometry-query p95
+is **2.011 ms** on this host; this does not establish rendered fluency. Portable
+driver, output and asset identities are in `evidence/neighborhood-20261023/runtime-camera/`.
+
+The art candidate adds 106 source-adjacent market façade edges, 114 authored soffit
+sections and 39 bank faces. Canonical source geometry and navigation remain unchanged.
+Derived input and roadway-mask reproduction are byte-identical; source checks pass
+13/13. All 74 glTF files validate, and all 10,974 sampled corridor positions retain
+coverage. Required daylight 3D resources total **4,156,102 bytes**, below 4 MiB;
+night resources total **4,148,866 bytes**. The Mitsui NEAR exception remains 3.5 MiB;
+ordinary/base sections retain 2 MiB. Source audits and reproducible commands are in
+`evidence/neighborhood-20261023/world/` and `docs/neighborhood-authoring.md`.
+
+**Remaining visual gates:** actual arcade day/night composition and inspection,
+riverbank transitions, and the distant river/city context. The recorded bridge view
+ends its display surfaces about 65 m north of the player, before the fog band.
+Retained map data includes the full Kamo shoreline; world/art are preparing a
+separate source-backed, nonwalkable continuation and bounded official city massing.
+Its extent must account for nearby route positions and permitted camera poses.
+That work is outside candidate-1 and must receive independent source, budget and
+actual-view validation before a new candidate is frozen.
 
 The bounded arcade report finishes **6 passing / 2 failing** checks, with no runtime
 exceptions, at `2026-10-21T09:11:37.696Z`. SHA256:
@@ -67,16 +93,13 @@ own package identities. Evidence is under `evidence/neighborhood-20261023/ci/`.
 
 Next actions, in order:
 
-1. Fix the diagnosed retry, stored-record preservation and near-detail transition
-   failures; validate actual error/recovery scenarios without weakening budgets.
-   Read the exact arcade report/captures and fix camera composition in
-   `src/runtime/camera-obstruction.js` / `route-world-view.js`. Preserve actor
-   grounding, actual building collision and desired saved camera intent. Verify
-   interior surface inspection using the actual rendered camera.
-2. Address the source/style findings in `evidence/neighborhood-20261021/art-review.md`,
-   build a new immutable candidate, and repeat bounded opening/arcade controls and
-   day/night visual checks. Current `candidate-build` is the blocked package;
-   preserve it for comparison.
+1. Complete candidate-1 actual recovery, native-storage, near-capacity and arcade
+   checks. Preserve the actual failure records and identify any remaining runtime
+   issue before changing the frozen bytes. Review source-feature inspection through
+   deliberate camera controls and verify Look closer entry, stopping and hidden state.
+2. Finish and review the source-backed river/city continuation, freeze a new canonical
+   build, and validate its day/night bridge and nearby approaches. Preserve previous
+   candidates and bind every capture/report to exact package and driver hashes.
 3. Review completed CI evidence, then validate the changed candidate with the
    complete route, streaming delay/failure/retry, saved returns, private records,
    EN/ZH, Maps export and existing journeys. Keep failed observations explicit.

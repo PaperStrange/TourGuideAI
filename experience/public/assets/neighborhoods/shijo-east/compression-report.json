@@ -1,6 +1,6 @@
 {
   "producerSha256": "498614efc7941a92faa6f8d4a669bbaef501e82849e1c3ad649b8a94a0a7356f",
-  "inputManifestSha256": "79731c337986d069387ebcb6e95a03e7707cd79bf79bd5f4f6cf1bd5167cdb28",
+  "inputManifestSha256": "5d24ee88dbd32995c5bc3c384298b5acd45a7c218282313473233d9009c64f75",
   "toolVersions": {
     "gltfTransform": "4.5.1",
     "meshoptimizer": "1.3.0",
@@ -312,16 +312,16 @@
         "numHints": 0,
         "messages": [
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/0/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
             "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
             "severity": 1,
-            "pointer": "/meshes/1/primitives/0/material"
+            "pointer": "/meshes/0/primitives/0/material"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/1/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
@@ -333,19 +333,7 @@
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
-            "pointer": "/meshes/3/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
             "pointer": "/meshes/4/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/5/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -360,28 +348,34 @@
             "pointer": "/meshes/7/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/8/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
             "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
             "severity": 1,
-            "pointer": "/meshes/11/primitives/0/material"
+            "pointer": "/meshes/9/primitives/0/material"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/12/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/10/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/11/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/12/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/13/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -390,10 +384,16 @@
             "pointer": "/meshes/14/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/15/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/15/primitives/0/material"
+          },
+          {
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/16/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -408,16 +408,22 @@
             "pointer": "/meshes/18/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/19/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/19/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
             "pointer": "/meshes/20/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/21/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -430,12 +436,6 @@
             "message": "This object may be unused.",
             "severity": 2,
             "pointer": "/meshes/23/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/24/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
@@ -477,16 +477,16 @@
             "pointer": "/extensionsUsed/0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/0/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
             "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
             "severity": 1,
-            "pointer": "/meshes/1/primitives/0/material"
+            "pointer": "/meshes/0/primitives/0/material"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/1/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
@@ -498,19 +498,7 @@
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
-            "pointer": "/meshes/3/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
             "pointer": "/meshes/4/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/5/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -525,28 +513,34 @@
             "pointer": "/meshes/7/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/8/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
             "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
             "severity": 1,
-            "pointer": "/meshes/11/primitives/0/material"
+            "pointer": "/meshes/9/primitives/0/material"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/12/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/10/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/11/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/12/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/13/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -555,10 +549,16 @@
             "pointer": "/meshes/14/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/15/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/15/primitives/0/material"
+          },
+          {
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/16/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -573,16 +573,22 @@
             "pointer": "/meshes/18/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/19/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/19/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
             "pointer": "/meshes/20/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/21/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -595,12 +601,6 @@
             "message": "This object may be unused.",
             "severity": 2,
             "pointer": "/meshes/23/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/24/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
@@ -638,7 +638,7 @@
       "vertices": 41355,
       "primitives": 29,
       "attributes": 145,
-      "cyclicallyRotatedTriangles": 246,
+      "cyclicallyRotatedTriangles": 254,
       "orientedTrianglesExact": true,
       "maximumPositionErrorMetres": 0,
       "maximumUVError": 0,
@@ -646,7 +646,7 @@
       "sourceIndicesExact": true,
       "nodeExtrasExact": true,
       "worldTransformsIncludedInErrorMeasurement": true,
-      "compressedGeometryBytes": 935192
+      "compressedGeometryBytes": 935155
     },
     {
       "file": "cells/cell-e000-s001/near.gltf",
@@ -657,16 +657,16 @@
         "numHints": 0,
         "messages": [
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/0/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
             "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
             "severity": 1,
-            "pointer": "/meshes/1/primitives/0/material"
+            "pointer": "/meshes/0/primitives/0/material"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/1/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
@@ -678,19 +678,7 @@
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
-            "pointer": "/meshes/3/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
             "pointer": "/meshes/4/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/5/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -705,28 +693,34 @@
             "pointer": "/meshes/7/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/8/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
             "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
             "severity": 1,
-            "pointer": "/meshes/11/primitives/0/material"
+            "pointer": "/meshes/9/primitives/0/material"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/12/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/10/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/11/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/12/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/13/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -735,10 +729,16 @@
             "pointer": "/meshes/14/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/15/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/15/primitives/0/material"
+          },
+          {
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/16/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -753,16 +753,22 @@
             "pointer": "/meshes/18/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/19/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/19/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
             "pointer": "/meshes/20/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/21/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -775,12 +781,6 @@
             "message": "This object may be unused.",
             "severity": 2,
             "pointer": "/meshes/23/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/24/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
@@ -828,16 +828,16 @@
             "pointer": "/extensionsUsed/0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/0/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
             "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
             "severity": 1,
-            "pointer": "/meshes/1/primitives/0/material"
+            "pointer": "/meshes/0/primitives/0/material"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/1/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
@@ -849,19 +849,7 @@
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
-            "pointer": "/meshes/3/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
             "pointer": "/meshes/4/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/5/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -876,28 +864,34 @@
             "pointer": "/meshes/7/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/8/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
             "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
             "severity": 1,
-            "pointer": "/meshes/11/primitives/0/material"
+            "pointer": "/meshes/9/primitives/0/material"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/12/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/10/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/11/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/12/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/13/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -906,10 +900,16 @@
             "pointer": "/meshes/14/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/15/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/15/primitives/0/material"
+          },
+          {
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/16/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -924,16 +924,22 @@
             "pointer": "/meshes/18/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/19/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/19/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
             "pointer": "/meshes/20/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/21/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -946,12 +952,6 @@
             "message": "This object may be unused.",
             "severity": 2,
             "pointer": "/meshes/23/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/24/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
@@ -995,7 +995,7 @@
       "vertices": 124187,
       "primitives": 30,
       "attributes": 150,
-      "cyclicallyRotatedTriangles": 215,
+      "cyclicallyRotatedTriangles": 212,
       "orientedTrianglesExact": true,
       "maximumPositionErrorMetres": 0,
       "maximumUVError": 0,
@@ -1003,7 +1003,7 @@
       "sourceIndicesExact": true,
       "nodeExtrasExact": true,
       "worldTransformsIncludedInErrorMeasurement": true,
-      "compressedGeometryBytes": 1961229
+      "compressedGeometryBytes": 1961243
     },
     {
       "file": "cells/cell-e000-n000/base.gltf",
@@ -1014,22 +1014,10 @@
         "numHints": 0,
         "messages": [
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/0/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/1/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
             "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
             "severity": 1,
-            "pointer": "/meshes/2/primitives/0/material"
+            "pointer": "/meshes/1/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -1041,19 +1029,25 @@
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
+            "pointer": "/meshes/4/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
             "pointer": "/meshes/5/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/6/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/6/primitives/0/material"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/7/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/7/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -1065,25 +1059,31 @@
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
+            "pointer": "/meshes/10/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
             "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
             "severity": 1,
-            "pointer": "/meshes/10/primitives/0/material"
+            "pointer": "/meshes/11/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
-            "pointer": "/meshes/11/primitives/0/attributes/TEXCOORD_0"
+            "pointer": "/meshes/12/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/13/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
             "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
             "severity": 1,
-            "pointer": "/meshes/13/primitives/0/material"
+            "pointer": "/meshes/14/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -1098,16 +1098,10 @@
             "pointer": "/meshes/16/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/17/primitives/0/material"
-          },
-          {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/18/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/18/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -1122,16 +1116,22 @@
             "pointer": "/meshes/20/primitives/0/attributes/TEXCOORD_0"
           },
           {
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/21/primitives/0/material"
+          },
+          {
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
             "pointer": "/meshes/22/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/23/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/23/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
@@ -1173,22 +1173,10 @@
             "pointer": "/extensionsUsed/0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/0/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/1/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
             "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
             "severity": 1,
-            "pointer": "/meshes/2/primitives/0/material"
+            "pointer": "/meshes/1/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -1200,19 +1188,25 @@
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
+            "pointer": "/meshes/4/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
             "pointer": "/meshes/5/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/6/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/6/primitives/0/material"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/7/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/7/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -1224,25 +1218,31 @@
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
+            "pointer": "/meshes/10/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
             "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
             "severity": 1,
-            "pointer": "/meshes/10/primitives/0/material"
+            "pointer": "/meshes/11/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
-            "pointer": "/meshes/11/primitives/0/attributes/TEXCOORD_0"
+            "pointer": "/meshes/12/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/13/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
             "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
             "severity": 1,
-            "pointer": "/meshes/13/primitives/0/material"
+            "pointer": "/meshes/14/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -1257,16 +1257,10 @@
             "pointer": "/meshes/16/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/17/primitives/0/material"
-          },
-          {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/18/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/18/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -1281,16 +1275,22 @@
             "pointer": "/meshes/20/primitives/0/attributes/TEXCOORD_0"
           },
           {
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/21/primitives/0/material"
+          },
+          {
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
             "pointer": "/meshes/22/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/23/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/23/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
@@ -1328,7 +1328,7 @@
       "vertices": 72551,
       "primitives": 28,
       "attributes": 140,
-      "cyclicallyRotatedTriangles": 382,
+      "cyclicallyRotatedTriangles": 386,
       "orientedTrianglesExact": true,
       "maximumPositionErrorMetres": 0,
       "maximumUVError": 0,
@@ -1336,7 +1336,7 @@
       "sourceIndicesExact": true,
       "nodeExtrasExact": true,
       "worldTransformsIncludedInErrorMeasurement": true,
-      "compressedGeometryBytes": 1328346
+      "compressedGeometryBytes": 1328343
     },
     {
       "file": "cells/cell-e000-n000/near.gltf",
@@ -1347,22 +1347,10 @@
         "numHints": 0,
         "messages": [
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/0/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/1/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
             "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
             "severity": 1,
-            "pointer": "/meshes/2/primitives/0/material"
+            "pointer": "/meshes/1/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -1374,19 +1362,25 @@
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
+            "pointer": "/meshes/4/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
             "pointer": "/meshes/5/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/6/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/6/primitives/0/material"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/7/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/7/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -1398,25 +1392,31 @@
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
+            "pointer": "/meshes/10/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
             "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
             "severity": 1,
-            "pointer": "/meshes/10/primitives/0/material"
+            "pointer": "/meshes/11/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
-            "pointer": "/meshes/11/primitives/0/attributes/TEXCOORD_0"
+            "pointer": "/meshes/12/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/13/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
             "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
             "severity": 1,
-            "pointer": "/meshes/13/primitives/0/material"
+            "pointer": "/meshes/14/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -1431,16 +1431,10 @@
             "pointer": "/meshes/16/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/17/primitives/0/material"
-          },
-          {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/18/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/18/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -1455,16 +1449,22 @@
             "pointer": "/meshes/20/primitives/0/attributes/TEXCOORD_0"
           },
           {
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/21/primitives/0/material"
+          },
+          {
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
             "pointer": "/meshes/22/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/23/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/23/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
@@ -1518,22 +1518,10 @@
             "pointer": "/extensionsUsed/0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/0/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/1/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
             "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
             "severity": 1,
-            "pointer": "/meshes/2/primitives/0/material"
+            "pointer": "/meshes/1/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -1545,19 +1533,25 @@
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
+            "pointer": "/meshes/4/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
             "pointer": "/meshes/5/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/6/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/6/primitives/0/material"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/7/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/7/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -1569,25 +1563,31 @@
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
+            "pointer": "/meshes/10/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
             "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
             "severity": 1,
-            "pointer": "/meshes/10/primitives/0/material"
+            "pointer": "/meshes/11/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
-            "pointer": "/meshes/11/primitives/0/attributes/TEXCOORD_0"
+            "pointer": "/meshes/12/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/13/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
             "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
             "severity": 1,
-            "pointer": "/meshes/13/primitives/0/material"
+            "pointer": "/meshes/14/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -1602,16 +1602,10 @@
             "pointer": "/meshes/16/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/17/primitives/0/material"
-          },
-          {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/18/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/18/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -1626,16 +1620,22 @@
             "pointer": "/meshes/20/primitives/0/attributes/TEXCOORD_0"
           },
           {
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/21/primitives/0/material"
+          },
+          {
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
             "pointer": "/meshes/22/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/23/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/23/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
@@ -1685,7 +1685,7 @@
       "vertices": 199544,
       "primitives": 30,
       "attributes": 150,
-      "cyclicallyRotatedTriangles": 302,
+      "cyclicallyRotatedTriangles": 308,
       "orientedTrianglesExact": true,
       "maximumPositionErrorMetres": 0,
       "maximumUVError": 0,
@@ -1693,7 +1693,7 @@
       "sourceIndicesExact": true,
       "nodeExtrasExact": true,
       "worldTransformsIncludedInErrorMeasurement": true,
-      "compressedGeometryBytes": 3150539
+      "compressedGeometryBytes": 3150508
     },
     {
       "file": "cells/cell-e001-s001/base.gltf",
@@ -2635,8 +2635,8 @@
       "file": "cells/cell-e002-n001/base.gltf",
       "inputIssues": {
         "numErrors": 0,
-        "numWarnings": 5,
-        "numInfos": 6,
+        "numWarnings": 6,
+        "numInfos": 11,
         "numHints": 0,
         "messages": [
           {
@@ -2664,16 +2664,16 @@
             "pointer": "/meshes/3/primitives/0/material"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/4/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
             "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
             "severity": 1,
-            "pointer": "/meshes/5/primitives/0/material"
+            "pointer": "/meshes/4/primitives/0/material"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/5/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -2694,24 +2694,60 @@
             "pointer": "/meshes/8/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/9/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
             "pointer": "/meshes/10/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/11/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/12/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/13/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/14/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/15/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/16/primitives/0/attributes/TEXCOORD_0"
           }
         ],
         "truncated": false
       },
       "outputIssues": {
         "numErrors": 0,
-        "numWarnings": 5,
-        "numInfos": 8,
+        "numWarnings": 6,
+        "numInfos": 13,
         "numHints": 0,
         "messages": [
           {
@@ -2745,16 +2781,16 @@
             "pointer": "/meshes/3/primitives/0/material"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/4/primitives/0/attributes/TEXCOORD_0"
-          },
-          {
             "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
             "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
             "severity": 1,
-            "pointer": "/meshes/5/primitives/0/material"
+            "pointer": "/meshes/4/primitives/0/material"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/5/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -2775,10 +2811,10 @@
             "pointer": "/meshes/8/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/9/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -2790,14 +2826,50 @@
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
+            "pointer": "/meshes/11/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/12/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/13/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/14/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/15/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/16/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
             "pointer": "/buffers/0"
           }
         ],
         "truncated": false
       },
-      "vertices": 11748,
-      "primitives": 11,
-      "attributes": 55,
+      "vertices": 12540,
+      "primitives": 17,
+      "attributes": 85,
       "cyclicallyRotatedTriangles": 0,
       "orientedTrianglesExact": true,
       "maximumPositionErrorMetres": 0,
@@ -2806,14 +2878,14 @@
       "sourceIndicesExact": true,
       "nodeExtrasExact": true,
       "worldTransformsIncludedInErrorMeasurement": true,
-      "compressedGeometryBytes": 189389
+      "compressedGeometryBytes": 216406
     },
     {
       "file": "cells/cell-e002-n001/near.gltf",
       "inputIssues": {
         "numErrors": 0,
-        "numWarnings": 7,
-        "numInfos": 8,
+        "numWarnings": 6,
+        "numInfos": 12,
         "numHints": 0,
         "messages": [
           {
@@ -2859,22 +2931,22 @@
             "pointer": "/meshes/6/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/7/primitives/0/material"
-          },
-          {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/8/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/7/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
+            "pointer": "/meshes/8/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/9/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -2905,14 +2977,32 @@
             "message": "This object may be unused.",
             "severity": 2,
             "pointer": "/meshes/14/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/15/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/16/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/17/primitives/0/attributes/TEXCOORD_0"
           }
         ],
         "truncated": false
       },
       "outputIssues": {
         "numErrors": 0,
-        "numWarnings": 7,
-        "numInfos": 10,
+        "numWarnings": 6,
+        "numInfos": 14,
         "numHints": 0,
         "messages": [
           {
@@ -2964,22 +3054,22 @@
             "pointer": "/meshes/6/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/7/primitives/0/material"
-          },
-          {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/8/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/7/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
+            "pointer": "/meshes/8/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/9/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -3015,14 +3105,32 @@
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
+            "pointer": "/meshes/15/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/16/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/17/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
             "pointer": "/buffers/0"
           }
         ],
         "truncated": false
       },
-      "vertices": 44656,
-      "primitives": 15,
-      "attributes": 75,
+      "vertices": 46956,
+      "primitives": 18,
+      "attributes": 90,
       "cyclicallyRotatedTriangles": 0,
       "orientedTrianglesExact": true,
       "maximumPositionErrorMetres": 0,
@@ -3031,7 +3139,7 @@
       "sourceIndicesExact": true,
       "nodeExtrasExact": true,
       "worldTransformsIncludedInErrorMeasurement": true,
-      "compressedGeometryBytes": 708902
+      "compressedGeometryBytes": 746816
     },
     {
       "file": "cells/cell-e003-s001/base.gltf",
@@ -3469,8 +3577,8 @@
       "file": "cells/cell-e003-n001/base.gltf",
       "inputIssues": {
         "numErrors": 0,
-        "numWarnings": 4,
-        "numInfos": 6,
+        "numWarnings": 6,
+        "numInfos": 10,
         "numHints": 0,
         "messages": [
           {
@@ -3498,10 +3606,10 @@
             "pointer": "/meshes/3/primitives/0/material"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/4/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/4/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -3528,18 +3636,54 @@
             "pointer": "/meshes/8/primitives/0/attributes/TEXCOORD_0"
           },
           {
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/9/primitives/0/material"
+          },
+          {
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
+            "pointer": "/meshes/10/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/11/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/12/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/13/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/14/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/15/primitives/0/attributes/TEXCOORD_0"
           }
         ],
         "truncated": false
       },
       "outputIssues": {
         "numErrors": 0,
-        "numWarnings": 4,
-        "numInfos": 8,
+        "numWarnings": 6,
+        "numInfos": 12,
         "numHints": 0,
         "messages": [
           {
@@ -3573,10 +3717,10 @@
             "pointer": "/meshes/3/primitives/0/material"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/4/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/4/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -3603,10 +3747,46 @@
             "pointer": "/meshes/8/primitives/0/attributes/TEXCOORD_0"
           },
           {
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/9/primitives/0/material"
+          },
+          {
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
+            "pointer": "/meshes/10/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/11/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/12/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/13/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/14/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/15/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -3617,9 +3797,9 @@
         ],
         "truncated": false
       },
-      "vertices": 15222,
-      "primitives": 10,
-      "attributes": 50,
+      "vertices": 16858,
+      "primitives": 16,
+      "attributes": 80,
       "cyclicallyRotatedTriangles": 0,
       "orientedTrianglesExact": true,
       "maximumPositionErrorMetres": 0,
@@ -3628,14 +3808,14 @@
       "sourceIndicesExact": true,
       "nodeExtrasExact": true,
       "worldTransformsIncludedInErrorMeasurement": true,
-      "compressedGeometryBytes": 233779
+      "compressedGeometryBytes": 275926
     },
     {
       "file": "cells/cell-e003-n001/near.gltf",
       "inputIssues": {
         "numErrors": 0,
         "numWarnings": 6,
-        "numInfos": 8,
+        "numInfos": 11,
         "numHints": 0,
         "messages": [
           {
@@ -3681,10 +3861,10 @@
             "pointer": "/meshes/6/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/7/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/7/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -3693,10 +3873,10 @@
             "pointer": "/meshes/8/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/9/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -3721,6 +3901,24 @@
             "message": "This object may be unused.",
             "severity": 2,
             "pointer": "/meshes/13/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/14/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/15/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/16/primitives/0/attributes/TEXCOORD_0"
           }
         ],
         "truncated": false
@@ -3728,7 +3926,7 @@
       "outputIssues": {
         "numErrors": 0,
         "numWarnings": 6,
-        "numInfos": 10,
+        "numInfos": 13,
         "numHints": 0,
         "messages": [
           {
@@ -3780,10 +3978,10 @@
             "pointer": "/meshes/6/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/7/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/7/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -3792,10 +3990,10 @@
             "pointer": "/meshes/8/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/9/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -3825,23 +4023,41 @@
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
+            "pointer": "/meshes/14/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/15/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/16/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
             "pointer": "/buffers/0"
           }
         ],
         "truncated": false
       },
-      "vertices": 50270,
-      "primitives": 14,
-      "attributes": 70,
+      "vertices": 55594,
+      "primitives": 17,
+      "attributes": 85,
       "cyclicallyRotatedTriangles": 0,
       "orientedTrianglesExact": true,
       "maximumPositionErrorMetres": 0,
       "maximumUVError": 0,
-      "maximumNormalComponentError": 0,
+      "maximumNormalComponentError": 0.000015223612371939588,
       "sourceIndicesExact": true,
       "nodeExtrasExact": true,
       "worldTransformsIncludedInErrorMeasurement": true,
-      "compressedGeometryBytes": 796913
+      "compressedGeometryBytes": 792375
     },
     {
       "file": "cells/cell-e004-s001/base.gltf",
@@ -4315,8 +4531,8 @@
       "file": "cells/cell-e004-n001/base.gltf",
       "inputIssues": {
         "numErrors": 0,
-        "numWarnings": 4,
-        "numInfos": 6,
+        "numWarnings": 6,
+        "numInfos": 10,
         "numHints": 0,
         "messages": [
           {
@@ -4344,10 +4560,10 @@
             "pointer": "/meshes/3/primitives/0/material"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/4/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/4/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -4374,18 +4590,54 @@
             "pointer": "/meshes/8/primitives/0/attributes/TEXCOORD_0"
           },
           {
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/9/primitives/0/material"
+          },
+          {
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
+            "pointer": "/meshes/10/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/11/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/12/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/13/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/14/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/15/primitives/0/attributes/TEXCOORD_0"
           }
         ],
         "truncated": false
       },
       "outputIssues": {
         "numErrors": 0,
-        "numWarnings": 4,
-        "numInfos": 8,
+        "numWarnings": 6,
+        "numInfos": 12,
         "numHints": 0,
         "messages": [
           {
@@ -4419,10 +4671,10 @@
             "pointer": "/meshes/3/primitives/0/material"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/4/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/4/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -4449,10 +4701,46 @@
             "pointer": "/meshes/8/primitives/0/attributes/TEXCOORD_0"
           },
           {
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/9/primitives/0/material"
+          },
+          {
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
+            "pointer": "/meshes/10/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/11/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/12/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/13/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/14/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/15/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -4463,9 +4751,9 @@
         ],
         "truncated": false
       },
-      "vertices": 15655,
-      "primitives": 10,
-      "attributes": 50,
+      "vertices": 18055,
+      "primitives": 16,
+      "attributes": 80,
       "cyclicallyRotatedTriangles": 0,
       "orientedTrianglesExact": true,
       "maximumPositionErrorMetres": 0,
@@ -4474,14 +4762,14 @@
       "sourceIndicesExact": true,
       "nodeExtrasExact": true,
       "worldTransformsIncludedInErrorMeasurement": true,
-      "compressedGeometryBytes": 240006
+      "compressedGeometryBytes": 292505
     },
     {
       "file": "cells/cell-e004-n001/near.gltf",
       "inputIssues": {
         "numErrors": 0,
         "numWarnings": 6,
-        "numInfos": 8,
+        "numInfos": 11,
         "numHints": 0,
         "messages": [
           {
@@ -4527,10 +4815,10 @@
             "pointer": "/meshes/6/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/7/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/7/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -4539,10 +4827,10 @@
             "pointer": "/meshes/8/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/9/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -4567,6 +4855,24 @@
             "message": "This object may be unused.",
             "severity": 2,
             "pointer": "/meshes/13/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/14/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/15/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/16/primitives/0/attributes/TEXCOORD_0"
           }
         ],
         "truncated": false
@@ -4574,7 +4880,7 @@
       "outputIssues": {
         "numErrors": 0,
         "numWarnings": 6,
-        "numInfos": 10,
+        "numInfos": 13,
         "numHints": 0,
         "messages": [
           {
@@ -4626,10 +4932,10 @@
             "pointer": "/meshes/6/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/7/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/7/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -4638,10 +4944,10 @@
             "pointer": "/meshes/8/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/9/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -4671,23 +4977,41 @@
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
+            "pointer": "/meshes/14/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/15/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/16/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
             "pointer": "/buffers/0"
           }
         ],
         "truncated": false
       },
-      "vertices": 52271,
-      "primitives": 14,
-      "attributes": 70,
+      "vertices": 60419,
+      "primitives": 17,
+      "attributes": 85,
       "cyclicallyRotatedTriangles": 0,
       "orientedTrianglesExact": true,
       "maximumPositionErrorMetres": 0,
       "maximumUVError": 0,
-      "maximumNormalComponentError": 0,
+      "maximumNormalComponentError": 0.00001522524749432777,
       "sourceIndicesExact": true,
       "nodeExtrasExact": true,
       "worldTransformsIncludedInErrorMeasurement": true,
-      "compressedGeometryBytes": 824374
+      "compressedGeometryBytes": 860642
     },
     {
       "file": "cells/cell-e005-s001/base.gltf",
@@ -5125,8 +5449,8 @@
       "file": "cells/cell-e005-n001/base.gltf",
       "inputIssues": {
         "numErrors": 0,
-        "numWarnings": 4,
-        "numInfos": 6,
+        "numWarnings": 6,
+        "numInfos": 10,
         "numHints": 0,
         "messages": [
           {
@@ -5154,10 +5478,10 @@
             "pointer": "/meshes/3/primitives/0/material"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/4/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/4/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -5184,18 +5508,54 @@
             "pointer": "/meshes/8/primitives/0/attributes/TEXCOORD_0"
           },
           {
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/9/primitives/0/material"
+          },
+          {
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
+            "pointer": "/meshes/10/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/11/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/12/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/13/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/14/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/15/primitives/0/attributes/TEXCOORD_0"
           }
         ],
         "truncated": false
       },
       "outputIssues": {
         "numErrors": 0,
-        "numWarnings": 4,
-        "numInfos": 8,
+        "numWarnings": 6,
+        "numInfos": 12,
         "numHints": 0,
         "messages": [
           {
@@ -5229,10 +5589,10 @@
             "pointer": "/meshes/3/primitives/0/material"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/4/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/4/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -5259,10 +5619,46 @@
             "pointer": "/meshes/8/primitives/0/attributes/TEXCOORD_0"
           },
           {
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/9/primitives/0/material"
+          },
+          {
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
+            "pointer": "/meshes/10/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/11/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/12/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/13/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/14/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/15/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -5273,9 +5669,9 @@
         ],
         "truncated": false
       },
-      "vertices": 16758,
-      "primitives": 10,
-      "attributes": 50,
+      "vertices": 19294,
+      "primitives": 16,
+      "attributes": 80,
       "cyclicallyRotatedTriangles": 0,
       "orientedTrianglesExact": true,
       "maximumPositionErrorMetres": 0,
@@ -5284,14 +5680,14 @@
       "sourceIndicesExact": true,
       "nodeExtrasExact": true,
       "worldTransformsIncludedInErrorMeasurement": true,
-      "compressedGeometryBytes": 257087
+      "compressedGeometryBytes": 312897
     },
     {
       "file": "cells/cell-e005-n001/near.gltf",
       "inputIssues": {
         "numErrors": 0,
         "numWarnings": 6,
-        "numInfos": 8,
+        "numInfos": 11,
         "numHints": 0,
         "messages": [
           {
@@ -5337,10 +5733,10 @@
             "pointer": "/meshes/6/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/7/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/7/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -5349,10 +5745,10 @@
             "pointer": "/meshes/8/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/9/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -5377,6 +5773,24 @@
             "message": "This object may be unused.",
             "severity": 2,
             "pointer": "/meshes/13/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/14/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/15/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/16/primitives/0/attributes/TEXCOORD_0"
           }
         ],
         "truncated": false
@@ -5384,7 +5798,7 @@
       "outputIssues": {
         "numErrors": 0,
         "numWarnings": 6,
-        "numInfos": 10,
+        "numInfos": 13,
         "numHints": 0,
         "messages": [
           {
@@ -5436,10 +5850,10 @@
             "pointer": "/meshes/6/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/7/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/7/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -5448,10 +5862,10 @@
             "pointer": "/meshes/8/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/9/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -5481,14 +5895,32 @@
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
+            "pointer": "/meshes/14/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/15/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/16/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
             "pointer": "/buffers/0"
           }
         ],
         "truncated": false
       },
-      "vertices": 55114,
-      "primitives": 14,
-      "attributes": 70,
+      "vertices": 63734,
+      "primitives": 17,
+      "attributes": 85,
       "cyclicallyRotatedTriangles": 0,
       "orientedTrianglesExact": true,
       "maximumPositionErrorMetres": 0,
@@ -5497,7 +5929,7 @@
       "sourceIndicesExact": true,
       "nodeExtrasExact": true,
       "worldTransformsIncludedInErrorMeasurement": true,
-      "compressedGeometryBytes": 791449
+      "compressedGeometryBytes": 907048
     },
     {
       "file": "cells/cell-e006-s001/base.gltf",
@@ -6020,7 +6452,7 @@
       "inputIssues": {
         "numErrors": 0,
         "numWarnings": 6,
-        "numInfos": 6,
+        "numInfos": 10,
         "numHints": 0,
         "messages": [
           {
@@ -6060,10 +6492,10 @@
             "pointer": "/meshes/5/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/6/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/6/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -6078,10 +6510,10 @@
             "pointer": "/meshes/8/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/9/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -6094,6 +6526,30 @@
             "message": "This object may be unused.",
             "severity": 2,
             "pointer": "/meshes/11/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/12/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/13/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/14/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/15/primitives/0/attributes/TEXCOORD_0"
           }
         ],
         "truncated": false
@@ -6101,7 +6557,7 @@
       "outputIssues": {
         "numErrors": 0,
         "numWarnings": 6,
-        "numInfos": 8,
+        "numInfos": 12,
         "numHints": 0,
         "messages": [
           {
@@ -6147,10 +6603,10 @@
             "pointer": "/meshes/5/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/6/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/6/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -6165,10 +6621,10 @@
             "pointer": "/meshes/8/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/9/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -6186,15 +6642,39 @@
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
+            "pointer": "/meshes/12/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/13/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/14/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/15/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
             "pointer": "/buffers/0"
           }
         ],
         "truncated": false
       },
-      "vertices": 15720,
-      "primitives": 12,
-      "attributes": 60,
-      "cyclicallyRotatedTriangles": 32,
+      "vertices": 16628,
+      "primitives": 16,
+      "attributes": 80,
+      "cyclicallyRotatedTriangles": 96,
       "orientedTrianglesExact": true,
       "maximumPositionErrorMetres": 0,
       "maximumUVError": 0,
@@ -6202,14 +6682,14 @@
       "sourceIndicesExact": true,
       "nodeExtrasExact": true,
       "worldTransformsIncludedInErrorMeasurement": true,
-      "compressedGeometryBytes": 246867
+      "compressedGeometryBytes": 271233
     },
     {
       "file": "cells/cell-e006-n001/near.gltf",
       "inputIssues": {
         "numErrors": 0,
         "numWarnings": 6,
-        "numInfos": 9,
+        "numInfos": 12,
         "numHints": 0,
         "messages": [
           {
@@ -6255,10 +6735,10 @@
             "pointer": "/meshes/6/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/7/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/7/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -6267,10 +6747,10 @@
             "pointer": "/meshes/8/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/9/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -6301,6 +6781,24 @@
             "message": "This object may be unused.",
             "severity": 2,
             "pointer": "/meshes/14/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/15/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/16/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/17/primitives/0/attributes/TEXCOORD_0"
           }
         ],
         "truncated": false
@@ -6308,7 +6806,7 @@
       "outputIssues": {
         "numErrors": 0,
         "numWarnings": 6,
-        "numInfos": 11,
+        "numInfos": 14,
         "numHints": 0,
         "messages": [
           {
@@ -6360,10 +6858,10 @@
             "pointer": "/meshes/6/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
-            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
-            "severity": 1,
-            "pointer": "/meshes/7/primitives/0/material"
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/7/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -6372,10 +6870,10 @@
             "pointer": "/meshes/8/primitives/0/attributes/TEXCOORD_0"
           },
           {
-            "code": "UNUSED_OBJECT",
-            "message": "This object may be unused.",
-            "severity": 2,
-            "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/9/primitives/0/material"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -6411,14 +6909,32 @@
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
+            "pointer": "/meshes/15/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/16/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/17/primitives/0/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
             "pointer": "/buffers/0"
           }
         ],
         "truncated": false
       },
-      "vertices": 55184,
-      "primitives": 15,
-      "attributes": 75,
+      "vertices": 58456,
+      "primitives": 18,
+      "attributes": 90,
       "cyclicallyRotatedTriangles": 96,
       "orientedTrianglesExact": true,
       "maximumPositionErrorMetres": 0,
@@ -6427,7 +6943,7 @@
       "sourceIndicesExact": true,
       "nodeExtrasExact": true,
       "worldTransformsIncludedInErrorMeasurement": true,
-      "compressedGeometryBytes": 781866
+      "compressedGeometryBytes": 832586
     },
     {
       "file": "cells/cell-e006-n002/base.gltf",
@@ -8507,7 +9023,7 @@
         ],
         "truncated": false
       },
-      "vertices": 2979,
+      "vertices": 2971,
       "primitives": 8,
       "attributes": 40,
       "cyclicallyRotatedTriangles": 0,
@@ -8518,7 +9034,7 @@
       "sourceIndicesExact": true,
       "nodeExtrasExact": true,
       "worldTransformsIncludedInErrorMeasurement": true,
-      "compressedGeometryBytes": 63433
+      "compressedGeometryBytes": 63210
     },
     {
       "file": "cells/cell-e009-s001/near.gltf",
@@ -8660,7 +9176,7 @@
         ],
         "truncated": false
       },
-      "vertices": 14355,
+      "vertices": 14347,
       "primitives": 9,
       "attributes": 45,
       "cyclicallyRotatedTriangles": 0,
@@ -8671,7 +9187,7 @@
       "sourceIndicesExact": true,
       "nodeExtrasExact": true,
       "worldTransformsIncludedInErrorMeasurement": true,
-      "compressedGeometryBytes": 239169
+      "compressedGeometryBytes": 239107
     },
     {
       "file": "cells/cell-e009-n000/base.gltf",
@@ -8777,7 +9293,7 @@
         ],
         "truncated": false
       },
-      "vertices": 8890,
+      "vertices": 8878,
       "primitives": 6,
       "attributes": 30,
       "cyclicallyRotatedTriangles": 0,
@@ -8788,7 +9304,7 @@
       "sourceIndicesExact": true,
       "nodeExtrasExact": true,
       "worldTransformsIncludedInErrorMeasurement": true,
-      "compressedGeometryBytes": 142663
+      "compressedGeometryBytes": 142468
     },
     {
       "file": "cells/cell-e009-n000/near.gltf",
@@ -8906,7 +9422,7 @@
         ],
         "truncated": false
       },
-      "vertices": 34130,
+      "vertices": 34118,
       "primitives": 7,
       "attributes": 35,
       "cyclicallyRotatedTriangles": 0,
@@ -8917,13 +9433,13 @@
       "sourceIndicesExact": true,
       "nodeExtrasExact": true,
       "worldTransformsIncludedInErrorMeasurement": true,
-      "compressedGeometryBytes": 539704
+      "compressedGeometryBytes": 539478
     },
     {
       "file": "cells/cell-e010-s001/base.gltf",
       "inputIssues": {
         "numErrors": 0,
-        "numWarnings": 3,
+        "numWarnings": 4,
         "numInfos": 1,
         "numHints": 0,
         "messages": [
@@ -8946,17 +9462,23 @@
             "pointer": "/meshes/2/primitives/0/material"
           },
           {
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/3/primitives/0/material"
+          },
+          {
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
-            "pointer": "/meshes/3/primitives/0/attributes/TEXCOORD_0"
+            "pointer": "/meshes/4/primitives/0/attributes/TEXCOORD_0"
           }
         ],
         "truncated": false
       },
       "outputIssues": {
         "numErrors": 0,
-        "numWarnings": 3,
+        "numWarnings": 4,
         "numInfos": 3,
         "numHints": 0,
         "messages": [
@@ -8985,10 +9507,16 @@
             "pointer": "/meshes/2/primitives/0/material"
           },
           {
+            "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+            "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+            "severity": 1,
+            "pointer": "/meshes/3/primitives/0/material"
+          },
+          {
             "code": "UNUSED_OBJECT",
             "message": "This object may be unused.",
             "severity": 2,
-            "pointer": "/meshes/3/primitives/0/attributes/TEXCOORD_0"
+            "pointer": "/meshes/4/primitives/0/attributes/TEXCOORD_0"
           },
           {
             "code": "UNUSED_OBJECT",
@@ -8999,9 +9527,9 @@
         ],
         "truncated": false
       },
-      "vertices": 2680,
-      "primitives": 4,
-      "attributes": 20,
+      "vertices": 2708,
+      "primitives": 5,
+      "attributes": 25,
       "cyclicallyRotatedTriangles": 0,
       "orientedTrianglesExact": true,
       "maximumPositionErrorMetres": 0,
@@ -9010,7 +9538,7 @@
       "sourceIndicesExact": true,
       "nodeExtrasExact": true,
       "worldTransformsIncludedInErrorMeasurement": true,
-      "compressedGeometryBytes": 50562
+      "compressedGeometryBytes": 53969
     },
     {
       "file": "cells/cell-e010-s001/near.gltf",
@@ -9116,7 +9644,7 @@
         ],
         "truncated": false
       },
-      "vertices": 11368,
+      "vertices": 11396,
       "primitives": 6,
       "attributes": 30,
       "cyclicallyRotatedTriangles": 0,
@@ -9127,7 +9655,7 @@
       "sourceIndicesExact": true,
       "nodeExtrasExact": true,
       "worldTransformsIncludedInErrorMeasurement": true,
-      "compressedGeometryBytes": 192091
+      "compressedGeometryBytes": 192604
     },
     {
       "file": "cells/cell-e010-n000/base.gltf",
@@ -9257,7 +9785,7 @@
         ],
         "truncated": false
       },
-      "vertices": 11412,
+      "vertices": 11504,
       "primitives": 8,
       "attributes": 40,
       "cyclicallyRotatedTriangles": 0,
@@ -9268,7 +9796,7 @@
       "sourceIndicesExact": true,
       "nodeExtrasExact": true,
       "worldTransformsIncludedInErrorMeasurement": true,
-      "compressedGeometryBytes": 202181
+      "compressedGeometryBytes": 203831
     },
     {
       "file": "cells/cell-e010-n000/near.gltf",
@@ -9398,7 +9926,7 @@
         ],
         "truncated": false
       },
-      "vertices": 27120,
+      "vertices": 27212,
       "primitives": 8,
       "attributes": 40,
       "cyclicallyRotatedTriangles": 0,
@@ -9409,7 +9937,7 @@
       "sourceIndicesExact": true,
       "nodeExtrasExact": true,
       "worldTransformsIncludedInErrorMeasurement": true,
-      "compressedGeometryBytes": 451920
+      "compressedGeometryBytes": 453540
     },
     {
       "file": "cells/cell-e011-s001/base.gltf",
@@ -9978,54 +10506,6 @@
       "sampling": "Original dimensions and pixels"
     },
     {
-      "sourceSha256": "932ea4bbc3c5f775ed812fed5179caad747d45544ac0ab5e9462cc9030801c1b",
-      "outputSha256": "5bd1d9127c2f57520453cd3ac2c071ca266438557aa76245b81f9f28c2a0fcdf",
-      "sourceBytes": 294524,
-      "outputBytes": 21492,
-      "format": "raw",
-      "width": 256,
-      "height": 256,
-      "channels": 4,
-      "depth": "uchar",
-      "premultiplied": false,
-      "hasAlpha": true,
-      "size": 262144,
-      "decodedRGBA8PixelsExactToSampledInput": true,
-      "sampling": "Lanczos3 maximum256px, route-only derivative of original authored texture"
-    },
-    {
-      "sourceSha256": "e6afb5b0f12deea6e3aa8c2274bba65f3d9edce8bb16b8fcdd82a68f51535cb2",
-      "outputSha256": "5b3bc86e9cf2fb6d4dd0ed5d65d825d5ebe500b35ed4e43533bb4e998e743426",
-      "sourceBytes": 67061,
-      "outputBytes": 32120,
-      "format": "raw",
-      "width": 256,
-      "height": 256,
-      "channels": 4,
-      "depth": "uchar",
-      "premultiplied": false,
-      "hasAlpha": true,
-      "size": 262144,
-      "decodedRGBA8PixelsExactToSampledInput": true,
-      "sampling": "Lanczos3 maximum256px, route-only derivative of original authored texture"
-    },
-    {
-      "sourceSha256": "f3b02e2cb1e0c4048616a43d34d933e2abe3630e075c95a225a682e730567f2e",
-      "outputSha256": "3977251702a63dab5f93f8f34f6f5622001b20d776ffd32ccebb44a56239a935",
-      "sourceBytes": 297176,
-      "outputBytes": 32458,
-      "format": "raw",
-      "width": 256,
-      "height": 256,
-      "channels": 4,
-      "depth": "uchar",
-      "premultiplied": false,
-      "hasAlpha": true,
-      "size": 262144,
-      "decodedRGBA8PixelsExactToSampledInput": true,
-      "sampling": "Lanczos3 maximum256px, route-only derivative of original authored texture"
-    },
-    {
       "sourceSha256": "bbf588b6e99459c45db1139d70d77ebf6ef554d2545867c12338461c6306c486",
       "outputSha256": "b36fca9f80638dc14954e36d91206d347e578de1c07c648db44fafe0ecfd3f65",
       "sourceBytes": 205162,
@@ -10094,6 +10574,54 @@
       "outputSha256": "a93c0d627e0cfce72024dffee4e2a20e046057bd36aa233985401031de8b8353",
       "sourceBytes": 67347,
       "outputBytes": 7852,
+      "format": "raw",
+      "width": 256,
+      "height": 256,
+      "channels": 4,
+      "depth": "uchar",
+      "premultiplied": false,
+      "hasAlpha": true,
+      "size": 262144,
+      "decodedRGBA8PixelsExactToSampledInput": true,
+      "sampling": "Lanczos3 maximum256px, route-only derivative of original authored texture"
+    },
+    {
+      "sourceSha256": "932ea4bbc3c5f775ed812fed5179caad747d45544ac0ab5e9462cc9030801c1b",
+      "outputSha256": "5bd1d9127c2f57520453cd3ac2c071ca266438557aa76245b81f9f28c2a0fcdf",
+      "sourceBytes": 294524,
+      "outputBytes": 21492,
+      "format": "raw",
+      "width": 256,
+      "height": 256,
+      "channels": 4,
+      "depth": "uchar",
+      "premultiplied": false,
+      "hasAlpha": true,
+      "size": 262144,
+      "decodedRGBA8PixelsExactToSampledInput": true,
+      "sampling": "Lanczos3 maximum256px, route-only derivative of original authored texture"
+    },
+    {
+      "sourceSha256": "e6afb5b0f12deea6e3aa8c2274bba65f3d9edce8bb16b8fcdd82a68f51535cb2",
+      "outputSha256": "5b3bc86e9cf2fb6d4dd0ed5d65d825d5ebe500b35ed4e43533bb4e998e743426",
+      "sourceBytes": 67061,
+      "outputBytes": 32120,
+      "format": "raw",
+      "width": 256,
+      "height": 256,
+      "channels": 4,
+      "depth": "uchar",
+      "premultiplied": false,
+      "hasAlpha": true,
+      "size": 262144,
+      "decodedRGBA8PixelsExactToSampledInput": true,
+      "sampling": "Lanczos3 maximum256px, route-only derivative of original authored texture"
+    },
+    {
+      "sourceSha256": "f3b02e2cb1e0c4048616a43d34d933e2abe3630e075c95a225a682e730567f2e",
+      "outputSha256": "3977251702a63dab5f93f8f34f6f5622001b20d776ffd32ccebb44a56239a935",
+      "sourceBytes": 297176,
+      "outputBytes": 32458,
       "format": "raw",
       "width": 256,
       "height": 256,
@@ -10250,5 +10778,5 @@
       "sampling": "Original dimensions and pixels"
     }
   ],
-  "outputManifestSha256": "4b543ce1609d5fa90ca92949b99050d06b2607d9e74c5477373dd79d691bd721"
+  "outputManifestSha256": "add6e399dcebca96cec9daf9e413f1374b6561ca48272b982914a1d6075f961c"
 }

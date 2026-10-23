@@ -454,7 +454,7 @@ export async function createGame(host, options = {}) {
       const alpha = reducedMotion || player.paused ? 1 : Math.max(0, Math.min(1, accumulator / TICK_MS));
       const rendered = { ...player, x: previous.x + (player.x - previous.x) * alpha,
         y: previous.y + (player.y - previous.y) * alpha };
-      rig.synchronizeCamera();
+      dirty = rig.synchronizeCamera(dt) || dirty;
       dirty = view.update(rendered, rig.camera, { dt, reducedMotion }) || dirty;
       updateInspection();
       if (dirty && !document.hidden) {
