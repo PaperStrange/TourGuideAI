@@ -18,8 +18,8 @@ const output = resolve(process.env.EXPERIENCE_QA_OUTPUT || '../artifacts/neighbo
 const timeout = Number(process.env.EXPERIENCE_QA_TIMEOUT || 120000);
 const walkingTimeout = Number(process.env.EXPERIENCE_QA_WALK_TIMEOUT || 2400000);
 const only = process.env.EXPERIENCE_QA_ONLY?.split(',').filter(Boolean);
-const sections = ['startup', 'journey', 'initial-recovery', 'latest-intent', 'unavailable-revision', 'external-session', 'residency-boundary'];
-if (only?.some(value => ![...sections, 'walking-controls', 'arcade-regression', 'arcade-inspection', 'recovered-keyboard', 'recovered-camera-input', 'bridge-review'].includes(value))) throw new Error('Unknown neighborhood test section.');
+const sections = ['startup', 'route-choice', 'journey', 'initial-recovery', 'latest-intent', 'unavailable-revision', 'external-session', 'residency-boundary'];
+if (only?.some(value => ![...sections, 'walking-controls', 'arcade-regression', 'arcade-inspection', 'recovered-keyboard', 'recovered-camera-input', 'bridge-review', 'visual-review'].includes(value))) throw new Error('Unknown neighborhood test section.');
 const prefix = '/assets/neighborhoods/shijo-east/';
 const journeyKey = 'tourguideai.journey.session.v1';
 const keptKey = 'tourguideai.solo.places.v1';
@@ -490,6 +490,29 @@ function priorFullWalk() {
   if (source.source.geographySha256 !== report.source.geographySha256) throw new Error('The recorded route geometry differs from this build.');
   return { source, sourceSha256 };
 }
+async function aimWestAtTenmangu(page, record) {
+  const inputs = [];
+  await page.locator('#solo-inspect').click(); await page.locator('#live-stage').focus();
+  for (const operation of ['orbit', 'tilt', 'zoom']) {
+    let reached = false;
+    for (let step = 0; step < 40; step++) {
+      const before = await observe(page), camera = before.camera;
+      const offset = new Vector3().fromArray(camera.position).sub(new Vector3().fromArray(camera.viewTarget));
+      const radius = offset.length(), azimuth = Math.atan2(offset.x, offset.z), polar = Math.acos(offset.y / radius);
+      const angle = Math.atan2(Math.sin(Math.PI / 2 - azimuth), Math.cos(Math.PI / 2 - azimuth));
+      if (operation === 'orbit' ? Math.abs(angle) <= .081 : operation === 'tilt' ? polar >= 1.44 : radius <= 10.01) { reached = true; break; }
+      const key = operation === 'orbit' ? angle < 0 ? 'j' : 'l' : operation === 'tilt' ? 'k' : '=';
+      await page.keyboard.press(key);
+      await page.waitForFunction(frame => window.__TOUR_GAME__.renderer().updateFrames > frame, before.renderer.updateFrames);
+      const after = await observe(page);
+      inputs.push({ operation, key, before: camera, after: after.camera, position: after.route.position });
+    }
+    if (!reached) throw new Error('Native controls did not reach the Tenmangu review framing: ' + operation);
+  }
+  record.reviewInputs = inputs;
+  await page.keyboard.press('Escape');
+  return cameraSettled(page, record, 'native-west-facing-tenmangu-review');
+}
 function sessionAt(view, lighting = 'day', stopIds = geography.sights.map(sight => sight.id)) {
   const planner = createJourneyPlanner({ routeId: geography.id, revision: geography.revision,
     graph: geography.navigation, startNodeId: geography.startNodeId, sights: SIGHTS });
@@ -559,6 +582,54 @@ async function mapsOrder(page, session, id) {
   const selected = session.stopIds.map(id => sights.get(id));
   const start = geography.sights[0]; if (selected[0].nodeId !== start.nodeId) selected.unshift(start);
   check(id, equal(actual, selected.map(sight => `${sight.latitude},${sight.longitude}`)), { links, actual, stopIds: session.stopIds });
+}
+function independentJourneyDistance(session) {
+  // 直接使用保留的中心线计算距离，不调用生产推荐器或路径查找函数。
+  const graph = new Map(geography.navigation.nodes.map(node => [node.id, []]));
+  for (const edge of geography.navigation.edges) {
+    if (!edge.accessible || !edge.reviewed) continue;
+    const length = edge.points.slice(1).reduce((sum, point, index) => {
+      const previous = edge.points[index];
+      return sum + Math.hypot(point.x - previous.x, point.y - previous.y, point.height - previous.height);
+    }, 0);
+    graph.get(edge.from).push({ to: edge.to, length });
+    if (edge.bidirectional !== false) graph.get(edge.to).push({ to: edge.from, length });
+  }
+  const legs = [];
+  let from = session.startNodeId;
+  for (const id of session.stopIds) {
+    const sight = geography.sights.find(value => value.id === id);
+    if (!sight) throw new Error('The selected option contains an unknown source sight.');
+    const distances = new Map([[from, 0]]), remaining = new Set(graph.keys());
+    while (remaining.size) {
+      let node, distance = Infinity;
+      for (const candidate of remaining) if ((distances.get(candidate) ?? Infinity) < distance) {
+        node = candidate; distance = distances.get(candidate);
+      }
+      if (!node || node === sight.nodeId) break;
+      remaining.delete(node);
+      for (const edge of graph.get(node)) {
+        const next = distance + edge.length;
+        if (next < (distances.get(edge.to) ?? Infinity)) distances.set(edge.to, next);
+      }
+    }
+    const distanceMeters = distances.get(sight.nodeId);
+    if (!Number.isFinite(distanceMeters)) throw new Error('The selected option has no independent source-graph connection.');
+    legs.push({ from, to: sight.nodeId, sightId: id, distanceMeters }); from = sight.nodeId;
+  }
+  return { distanceMeters: legs.reduce((sum, leg) => sum + leg.distanceMeters, 0), legs };
+}
+async function verifyChosenPlan(page, id, expectedOrder) {
+  const session = await readSession(page), observed = await home(page), independent = independentJourneyDistance(session);
+  const visible = await page.locator('.journey-stops [data-journey-focus]').evaluateAll(nodes => nodes.map(node => node.dataset.journeyFocus));
+  const locale = await page.locator('html').getAttribute('lang');
+  const distanceLabel = await page.locator('#neighborhood-journey .journey-distance strong').innerText();
+  check(id, equal(session.stopIds, expectedOrder) && equal(visible, expectedOrder) && equal(observed.neighborhood.selected, expectedOrder)
+    && Math.abs(observed.neighborhood.distanceMeters - independent.distanceMeters) < 1e-6
+    && distanceLabel === new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(independent.distanceMeters / 1000) + ' km',
+  { session, selected: observed.neighborhood, visible, independent, distanceLabel, locale });
+  await mapsOrder(page, session, id + '-maps-order');
+  return { session, observed, independent };
 }
 async function section(name, run) {
   if (only && !only.includes(name)) return;
@@ -717,6 +788,70 @@ try {
       && assets.has(prefix + 'source-ledger.json') && assets.has(prefix + 'references.json'), sourceLinks);
     await credits.close();
     await unchangedLegacy(page, 'startup-keeps-existing-private-records');
+  });
+
+  await section('route-choice', async () => {
+    const { page } = await scenario('route-choice'); await enter(page);
+    await page.locator('#solo-inspect').click(); await page.locator('#live-stage').focus();
+    const initialAzimuth = (await observe(page)).camera.azimuth;
+    await page.keyboard.press('l');
+    await page.waitForFunction(value => Math.abs(window.__TOUR_GAME__.camera().azimuth - value) > .001, initialAzimuth);
+    await page.keyboard.press('Escape'); await setLighting(page, 'night');
+    const saved = await keep(page, 'Chosen walk view · 自选路线', 'Private route-choice note · 私人路线笔记');
+    const pose = (await home(page)).currentView;
+    await page.waitForFunction(({ key, view }) => {
+      const progress = JSON.parse(localStorage.getItem(key))?.progress;
+      return progress?.lighting === 'night' && progress.view?.camera.azimuth === view.camera.azimuth
+        && progress.view.camera.polar === view.camera.polar && progress.view.camera.distance === view.camera.distance
+        && progress.view.player.x === view.player.x && progress.view.player.y === view.player.y;
+    }, { key: journeyKey, view: pose });
+    const before = await readSession(page), privateBefore = await page.evaluate(key => localStorage.getItem(key), keptKey);
+    const initialDistance = independentJourneyDistance(before);
+    await page.locator('.journey-preferences > summary').click();
+    await page.locator('#journey-suggest').click();
+    const options = await page.locator('[data-journey-choice]').evaluateAll(buttons => buttons.map(button => {
+      const container = button.parentElement, paragraphs = container.querySelectorAll('p');
+      return { index: button.dataset.journeyChoice, buttonText: button.textContent.trim(),
+        title: container.querySelector('strong').textContent.trim(), distanceText: paragraphs[0].textContent.trim(),
+        sightTitles: paragraphs[1].textContent.trim().split(' → ') };
+    }));
+    const locale = await page.locator('html').getAttribute('lang');
+    const candidates = options.map(option => ({ ...option, stopIds: option.sightTitles.map(title => {
+      const matches = SIGHTS.filter(sight => sight.title[locale] === title);
+      if (matches.length !== 1) throw new Error('The visible suggestion does not map to one reviewed sight: ' + title);
+      return matches[0].id;
+    }) }));
+    const alternative = candidates.find(option => !equal(option.stopIds, before.stopIds)
+      && Math.abs(independentJourneyDistance({ ...before, stopIds: option.stopIds }).distanceMeters - initialDistance.distanceMeters) > .1);
+    if (!alternative) throw new Error('No genuinely different visible route alternative is available.');
+    check('suggestions-preserve-active-journey-until-native-choice', equal((await readSession(page)).stopIds, before.stopIds)
+      && near((await home(page)).currentView, pose) && Math.abs((await home(page)).neighborhood.distanceMeters - initialDistance.distanceMeters) < 1e-6
+      && await page.evaluate(key => localStorage.getItem(key), keptKey) === privateBefore,
+    { before, current: await readSession(page), initialDistance, options: candidates, selectedAlternative: alternative });
+    await page.locator(`[data-journey-choice="${alternative.index}"]`).click();
+    const chosen = await verifyChosenPlan(page, 'native-choice-commits-different-source-graph-order-and-distance', alternative.stopIds);
+    check('choosing-alternative-preserves-private-view-lighting-and-note', near(chosen.observed.currentView, pose)
+      && near(chosen.session.progress.view, pose) && chosen.session.progress.lighting === 'night'
+      && !(await page.locator('.journey-alternatives').evaluate(node => node.open))
+      && await page.evaluate(key => localStorage.getItem(key), keptKey) === privateBefore,
+    { chosen: chosen.session, saved, currentView: chosen.observed.currentView });
+    const editedOrder = [...alternative.stopIds], last = editedOrder.length - 1;
+    await page.locator(`[data-journey-up="${editedOrder[last]}"]`).click();
+    [editedOrder[last - 1], editedOrder[last]] = [editedOrder[last], editedOrder[last - 1]];
+    await verifyChosenPlan(page, 'chosen-alternative-reorder-updates-graph-distance-and-maps', editedOrder);
+    const removedId = editedOrder.find(id => id !== geography.sights[0].id);
+    await page.locator(`[data-journey-remove="${removedId}"]`).click();
+    const finalOrder = editedOrder.filter(id => id !== removedId);
+    await verifyChosenPlan(page, 'chosen-alternative-removal-updates-graph-distance-and-maps', finalOrder);
+    await setLocale(page, 'zh'); await page.reload({ waitUntil: 'domcontentloaded' }); await ready(page, geography.id, 'night');
+    const resumed = await verifyChosenPlan(page, 'native-reload-keeps-edited-chosen-route-and-localized-distance', finalOrder);
+    check('chosen-route-reload-preserves-exact-pose-night-chinese-and-private-note', near(resumed.observed.currentView, pose)
+      && near(resumed.session.progress.view, pose) && resumed.session.progress.lighting === 'night'
+      && await page.locator('html').getAttribute('lang') === 'zh'
+      && await page.evaluate(key => localStorage.getItem(key), keptKey) === privateBefore,
+    { session: resumed.session, currentView: resumed.observed.currentView, saved });
+    await capture(page, 'chosen-route-edited-reloaded-zh');
+    await unchangedLegacy(page, 'actual-route-choice-preserves-legacy-records');
   });
 
   await section('journey', async () => {
@@ -1217,6 +1352,81 @@ try {
       { bridgeCellIds: riverCells.map(cell => cell.id), loaded, proof,
         resources: resources(await observe(page)) });
       await unchangedLegacy(page, pose.id + '-review-keeps-legacy-bytes');
+      await context.close(); contexts.delete(context);
+    }
+  });
+
+  if (only?.includes('visual-review')) await section('visual-review', async () => {
+    const { source, sourceSha256 } = priorFullWalk();
+    const remembered = source.screenshots.find(value => value.file === 'outbound-nishiki-tenmangu-day.png');
+    if (!remembered?.observed?.home?.currentView) throw new Error('The actual Tenmangu approach view is absent.');
+    const positions = [
+      { id: 'connector-e001-n000', pathIndex: 1, sampleIndex: 238, expected: [174.862, 1.987], purpose: 'Shijo road, curb and frontage continuity' },
+      { id: 'connector-e002-n000', pathIndex: 1, sampleIndex: 465, expected: [261.695, 69.736], purpose: 'Takakura narrow approach and camera clearance' },
+      { id: 'connector-e003-n001', pathIndex: 3, sampleIndex: 106, expected: [354.920, 140.262], purpose: 'Nishiki facade, soffit and enclosure continuity' },
+      { id: 'connector-e004-n001', pathIndex: 3, sampleIndex: 221, expected: [450.175, 141.556], purpose: 'Nishiki facade, soffit and enclosure continuity' },
+      { id: 'connector-e005-n001', pathIndex: 3, sampleIndex: 342, expected: [550.373, 143.356], purpose: 'Source-retained open cross-street gap' },
+      { id: 'connector-e006-n000', pathIndex: 4, sampleIndex: 149, expected: [682.274, 69.952], purpose: 'Shinkyogoku southbound connection' },
+      { id: 'connector-e007-n000', pathIndex: 4, sampleIndex: 407, expected: [749.921, 9.606], purpose: 'Shijo east connector depth and grounding' },
+      { id: 'connector-e008-n000', pathIndex: 4, sampleIndex: 631, expected: [870.317, 35.079], purpose: 'Mapped crossing detour and raised street edges' },
+    ];
+    const poses = [{ id: 'nishiki-tenmangu', view: remembered.observed.home.currentView,
+      sourceScreenshot: remembered.file, purpose: 'Recorded approach, roof clearance and west-side torii',
+      framing: 'Recorded camera intent; subsequent native west-facing adjustment is recorded separately.' },
+    ...positions.map(position => {
+      const path = source.paths[position.pathIndex], sample = path?.samples[position.sampleIndex];
+      const player = sample?.route?.position;
+      const next = path?.samples.slice(position.sampleIndex + 1).find(value => value.route?.position
+        && Math.hypot(value.route.position.x - player.x, value.route.position.y - player.y) > .1)?.route.position;
+      if (!player || !next || !near([player.x, player.y], position.expected)) throw new Error('The recorded connector position differs: ' + position.id);
+      const azimuth = Math.atan2(-(next.x - player.x), next.y - player.y);
+      return { ...position, sourcePosition: player, nextSourcePosition: next,
+        view: { version: 3, packId: geography.id, revision: geography.revision, player,
+          camera: { azimuth, polar: 1.45, distance: 10, targetOffset: { x: 0, y: 0, height: 1.5 } } },
+        framing: 'New authored review camera: follows the actual next recorded movement direction, distance10m, polar1.45, target height1.5m. The prior sample supplies position and edge identity only.' };
+    })];
+    for (const pose of poses) {
+      const reconstructed = sessionAt(pose.view);
+      const { context, page, record } = await scenario(pose.id + '-visual-review', {}, { storage: { [journeyKey]: JSON.stringify(reconstructed) } });
+      record.restoration = { sourceReportSha256: sourceSha256, sourcePackageSha256: source.artifact.manifestSha256,
+        sourceScreenshot: pose.sourceScreenshot, pathIndex: pose.pathIndex, sampleIndex: pose.sampleIndex,
+        sourcePosition: pose.sourcePosition || pose.view.player, nextSourcePosition: pose.nextSourcePosition,
+        view: pose.view, framing: pose.framing, purpose: pose.purpose, reconstructedSession: reconstructed,
+        description: 'Previously walked position restored through a public journey session and production entry. This visual review does not repeat the full traversal.' };
+      await enter(page); await settled(page);
+      const ordinary = await cameraSettled(page, record, 'restored-ordinary-review');
+      record.ordinaryRestored = ordinary;
+      check(pose.id + '-visual-review-restores-recorded-position-and-declared-framing',
+        near(ordinary.home.currentView, reconstructed.progress.view) && near(ordinary.route.position, pose.view.player)
+        && Boolean(ordinary.ground.hit) && ordinary.ground.inside, ordinary);
+      if (pose.id === 'nishiki-tenmangu') {
+        const aimed = await aimWestAtTenmangu(page, record);
+        const offset = new Vector3().fromArray(aimed.camera.position).sub(new Vector3().fromArray(aimed.camera.viewTarget));
+        const azimuth = Math.atan2(offset.x, offset.z);
+        const torii = new Vector3(662.042049, 2.5, -142.658582)
+          .applyMatrix4(new Matrix4().fromArray(aimed.camera.matrixWorld).invert())
+          .applyMatrix4(new Matrix4().fromArray(aimed.camera.projectionMatrix)).toArray();
+        check('tenmangu-native-westward-framing-keeps-player-and-brings-source-torii-into-frustum',
+          near(ordinary.route.position, aimed.route.position) && Math.abs(azimuth - Math.PI / 2) <= .081
+          && torii.every(Number.isFinite) && torii.every(value => Math.abs(value) < 1),
+        { sourcePoint: { id: 'osm:node:5204263033', x: 662.042049, y: 142.658582, reviewHeight: 2.5 },
+          projection: torii, ordinary: ordinary.camera, adjusted: aimed.camera, inputs: record.reviewInputs,
+          limitation: 'Frustum inclusion is geometric evidence; art review evaluates visible source geometry and occlusion.' });
+      }
+      const matchingView = (await observe(page)).home.currentView;
+      for (const mode of ['day', 'night']) {
+        await setLighting(page, mode); await settled(page);
+        await primaryFrameBudget(page, pose.id + '-visual-' + mode);
+        const actual = await cameraSettled(page, record, 'visual-review-' + mode), actor = actorProjection(actual);
+        check(pose.id + '-visual-' + mode + '-keeps-view-grounded-actor-and-camera-clearance',
+          near(actual.home.currentView, matchingView) && near(actual.route.position, pose.view.player)
+          && Boolean(actual.ground.hit) && actual.ground.inside && actor.actualDistance >= 5 - .003
+          && actor.verticalOccupancy <= .5 && actor.points.every(point => point.every(Number.isFinite)
+            && Math.abs(point[0]) < 1 && Math.abs(point[1]) < 1 && point[2] > -1 && point[2] < 1),
+        { actor, actual, reviewView: matchingView });
+        await capture(page, pose.id + '-review-' + mode, true);
+      }
+      await unchangedLegacy(page, pose.id + '-visual-review-keeps-legacy-bytes');
       await context.close(); contexts.delete(context);
     }
   });

@@ -106,6 +106,30 @@ probe measured 0.593 m/s overall and 0.276 m/s during its final minute; these
 observations justify the tooling allowance and fail the intended fluent experience.
 This allowance does not change the startup, frame, input or Q03 acceptance targets.
 
+## Acceptance status · 2026-10-23
+
+The pilot contains six sights along 1,353.444 m of connected reviewed route.
+Candidate 6 has package identity
+`ca4b3c95bc2a6b94ad2cc978a083d1e3c3c109d65febce326a5e16e937dc271b`.
+Source `9b5d5f7` is pushed. Its lossless transport workflow preserves decoded
+geometry and textures while reducing required daylight 3D transfer to 3,030,351
+bytes. Application checks pass 199/199 and repository gates pass 17/17.
+
+| Sprint | Current evidence | Remaining acceptance |
+| --- | --- | --- |
+| N00 | Connected source graph, six identified exterior sights, source/provenance audits and reproducible asset packaging | Existing limits on surveyed grades and current access remain explicit |
+| N01 | Continuous movement implemented; focused streaming/retry, cancellation, native-storage and residency checks pass | Complete final-package outward/return CI |
+| N02 | Bilingual day/night, private views, editable alternatives and Maps implemented; actual Choose/edit/reload checks pass 16/16 | Current Tenmangū and connecting-block day/night art review |
+| N03 | Candidate-6 transport/recovery browser checks pass 57/57; exact performance report retained | Warm-entry consistency, input/frame targets, Q03, native hidden-tab verification, full regression evidence and publication |
+
+The measured cold entry is 7,797.0 ms. Warm entries are 2,927.1, 2,926.7 and
+3,056.1 ms, so the third misses its gate. Queued-input p95 is 994.4 ms and walking
+frame p95 is 1,048.1 ms on this SwiftShader host. Both headless tabs remain visible;
+no native background-tab work sample is available. These observations retain the
+original targets and leave physical GPU/phone performance unmeasured. Publication
+remains pending acceptance. The [checkpoint](agent-checkpoint.md) records current
+source, CI, evidence and owner handoffs.
+
 ## Geographic expansion
 
 Reuse source adapters, architectural components, route definitions and the same

@@ -39,7 +39,7 @@ decoded residency. Cold completed transfer at readiness is 4,839,460 bytes plus
 report. These whole-page observations include resources outside the required 3D
 startup budget.
 
-Conditions match candidate 5: Chromium 151.0.7922.34, Linux x64, five logical AMD
+Conditions match candidate 5: Chromium 151.0.7922.173, Linux x64, five logical AMD
 EPYC CPUs, SwiftShader Vulkan software rendering, 1440×1000, DPR 1, daylight,
 English and normal motion. Delivery uses actual immutable loopback HTTP with
 10 Mbps / 80 ms CDP throttling and no HTTP content encoding. No other browser,

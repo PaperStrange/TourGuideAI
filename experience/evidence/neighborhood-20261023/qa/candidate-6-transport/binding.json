@@ -1,0 +1,93 @@
+{
+  "packageManifestSha256": "ca4b3c95bc2a6b94ad2cc978a083d1e3c3c109d65febce326a5e16e937dc271b",
+  "verifiedPackagedFiles": 445,
+  "source": {
+    "id": "shijo-east",
+    "revision": 1,
+    "geographySha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
+    "manifestSha256": "deb00b97ca3e29e314a13225678c7e6827de59a0f8ff68d5d3bdccc7d3563458"
+  },
+  "driverSha256": "0edbfb1bd9aca054722757d4395aae15b00b5864c52d90c0cb2726da804dbdda",
+  "browser": "151.0.7922.34",
+  "conditions": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "reducedMotion": "no-preference",
+    "timeoutMs": 120000,
+    "walkingTimeoutMs": 2400000,
+    "sections": [
+      "startup",
+      "initial-recovery",
+      "latest-intent",
+      "external-session",
+      "bridge-review"
+    ],
+    "assetDelivery": "Actual loopback HTTP with immutable captured build bodies and no-store; only deliberate abort/delay scenarios install request routes."
+  },
+  "checks": {
+    "passed": 57,
+    "failed": 0
+  },
+  "actualHTTPRequests": 737,
+  "startedAt": "2026-10-23T03:51:12.257Z",
+  "finishedAt": "2026-10-23T03:56:24.897Z",
+  "elapsedMs": 312640,
+  "files": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 346370,
+      "sha256": "e3ad5098dacc6ccdf0f39643c1c6ee4281f1cfe4df62ad784f749bc9bfa96f74",
+      "decodedBytes": 3861204,
+      "decodedSha256": "c652b8c5145367994443f6a0ee91d46c65101f458490c71a3662baeeade995bc"
+    },
+    {
+      "file": "executed-driver.mjs.gz",
+      "bytes": 28899,
+      "sha256": "aa7718819d207aa8b09501c73e4a67410d112c211fab1351b31b213e8adcb15a",
+      "decodedBytes": 113085,
+      "decodedSha256": "0edbfb1bd9aca054722757d4395aae15b00b5864c52d90c0cb2726da804dbdda"
+    },
+    {
+      "file": "opening-day-en.png",
+      "bytes": 911927,
+      "sha256": "958ea1d87bd6d90c3d6ae44652d393b41f5f285cd33cfd306e4b28c08b8f88e7"
+    },
+    {
+      "file": "opening-night-zh.png",
+      "bytes": 778507,
+      "sha256": "7c57eef87d2292095d65a8fc26574d44e77cd0b84ec868ac76a78c1afef8f08b"
+    },
+    {
+      "file": "bridge-prior-actual-pose-day-canvas.png",
+      "bytes": 573292,
+      "sha256": "da90faa59a5d548e7a56884c3087da25cfbaa3ac69010c01ad21d49932d740e3"
+    },
+    {
+      "file": "bridge-prior-actual-pose-night-canvas.png",
+      "bytes": 510189,
+      "sha256": "219e1dac3d11862a2781453a223060d378b5ca92ca904c064f7a005d25c07ff8"
+    },
+    {
+      "file": "takase-river-prior-actual-pose-day-canvas.png",
+      "bytes": 681536,
+      "sha256": "a89f284be060bccdd43ae001e6979eaf40b8ad2f4dc68836a55d61249293ff54"
+    },
+    {
+      "file": "takase-river-prior-actual-pose-night-canvas.png",
+      "bytes": 532847,
+      "sha256": "409305f9429e345b3c9f6fed06580e2933fb8bf5eef908081ba34cd43ae7318a"
+    },
+    {
+      "file": "pontocho-entrance-prior-actual-pose-day-canvas.png",
+      "bytes": 729621,
+      "sha256": "29d927fbf6d885521829037bd444d7f9f18d41d9e1fe4ba27162c9d50801c679"
+    },
+    {
+      "file": "pontocho-entrance-prior-actual-pose-night-canvas.png",
+      "bytes": 573086,
+      "sha256": "b543cb4d1eaf832caf07819c6d9086df071a2510473914a7b69cc0b26172f358"
+    }
+  ]
+}

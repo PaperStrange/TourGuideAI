@@ -1,0 +1,54 @@
+{
+  "packageManifestSha256": "ca4b3c95bc2a6b94ad2cc978a083d1e3c3c109d65febce326a5e16e937dc271b",
+  "verifiedPackagedFiles": 445,
+  "source": {
+    "id": "shijo-east",
+    "revision": 1,
+    "geographySha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
+    "manifestSha256": "deb00b97ca3e29e314a13225678c7e6827de59a0f8ff68d5d3bdccc7d3563458"
+  },
+  "driverSha256": "cd900671ac142e17d2352fcd11fdfeb142eb1cf0cfb3aa1de67c62597f363fa3",
+  "browser": "151.0.7922.34",
+  "conditions": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "reducedMotion": "no-preference",
+    "timeoutMs": 120000,
+    "walkingTimeoutMs": 2400000,
+    "sections": [
+      "route-choice"
+    ],
+    "assetDelivery": "Actual loopback HTTP with immutable captured build bodies and no-store; only deliberate abort/delay scenarios install request routes."
+  },
+  "checks": {
+    "passed": 16,
+    "failed": 0
+  },
+  "actualHTTPRequests": 163,
+  "startedAt": "2026-10-23T04:01:07.212Z",
+  "finishedAt": "2026-10-23T04:01:49.282Z",
+  "elapsedMs": 42070,
+  "files": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 60363,
+      "sha256": "3a1272674182abb73bf24f9edfcd9a58d903eb988598da38c9d4606bdc76a01a",
+      "decodedBytes": 429846,
+      "decodedSha256": "61e10eec8021c1855f91c3cbb6dfa96dd005b33adc75ed5beecc553c4ebc4554"
+    },
+    {
+      "file": "executed-driver.mjs.gz",
+      "bytes": 31027,
+      "sha256": "3e712f0ab38be224e9393d82ec861ab09b95c7355cfb32fcd9a92cbf064ab81c",
+      "decodedBytes": 121511,
+      "decodedSha256": "cd900671ac142e17d2352fcd11fdfeb142eb1cf0cfb3aa1de67c62597f363fa3"
+    },
+    {
+      "file": "chosen-route-edited-reloaded-zh.png",
+      "bytes": 769590,
+      "sha256": "c9c1b66c04d8bb66e5f7128fb5f5a98cb01273d0f8c5ecb9996df7bf5544d3ac"
+    }
+  ]
+}

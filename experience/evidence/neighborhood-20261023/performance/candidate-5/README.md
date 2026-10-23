@@ -36,7 +36,7 @@ bytes per warm entry, with 7,285,101 completed decoded body bytes. The
 same-version reuse, new-version freshness and explicit recovery from cached
 integrity/HTTP failures.
 
-The declared conditions match candidate 3: Chromium 151.0.7922.34, Linux x64,
+The declared conditions match candidate 3: Chromium 151.0.7922.173, Linux x64,
 five logical AMD EPYC CPUs, SwiftShader Vulkan software rendering, 1440×1000,
 DPR 1, daylight, English, normal motion, actual immutable loopback HTTP with
 10 Mbps / 80 ms CDP throttling and uncompressed server responses. No other browser,

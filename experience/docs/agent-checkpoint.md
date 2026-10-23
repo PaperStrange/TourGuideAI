@@ -70,9 +70,15 @@ visible/stored stop order, localized distances and Maps agree. A native Chinese
 reload preserves the exact night pose and private note. Suggestion generation
 alone preserves the active journey. Executed driver:
 `cd900671ac142e17d2352fcd11fdfeb142eb1cf0cfb3aa1de67c62597f363fa3`.
-QA is preparing current daylight/night captures at Tenmangū and eight previously
+QA is running current daylight/night captures at Tenmangū and eight previously
 visited connector cells; their position provenance and new camera framing remain
-explicit. Full-route acceptance, complete connector/sight day-night review,
+explicit. The visual driver is
+`e85bf0afea632984bc2a8dcdae3d30eaf89f098b7cd726e1c000f6b9e034a3fd`.
+Portable transport and route-choice reports, executed drivers, captured views and
+independently rehashed package bindings are under
+`evidence/neighborhood-20261023/qa/candidate-6-transport/` and
+`evidence/neighborhood-20261023/qa/candidate-6-route-choice/`.
+Full-route acceptance, complete connector/sight day-night review,
 physical GPU performance, Q03 and actual background-tab visibility remain open.
 The candidate is not published.
 

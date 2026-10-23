@@ -50,7 +50,7 @@ that scope is separate from background browser-tab behavior.
 
 ## Conditions and investigation
 
-Chromium 151.0.7922.34 runs headless on Linux 6.18.55, x64, with five logical CPUs
+Chromium 151.0.7922.173 runs headless on Linux 6.18.55, x64, with five logical CPUs
 reported as AMD EPYC 9V74 and 18,882,674,688 bytes RAM. The actual WebGL renderer is
 ANGLE Vulkan **SwiftShader Device (Subzero)**; the host exposes no `/dev/dri` device.
 Viewport is 1440×1000, DPR 1, English, daylight, normal motion. CDP applies 10 Mbps
