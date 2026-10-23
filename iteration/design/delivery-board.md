@@ -7,7 +7,7 @@ Updated 2026-10-23. Owner: lead. Planning baseline: `origin/iteration` at
 [sprint plan](../../experience/docs/sprint-connected-neighborhood-20261021.md)
 targets a continuous 1–2 km walking route with 5–8 sights and richer solo
 recommendations. The implemented pilot connects six sights over 1,353.444 m.
-Source `a7cd027` is pushed; candidate 7 passes 201 application checks and
+Source `7f3146b` is pushed; candidate 8 passes 201 application checks and
 17 repository gates. Independent camera/source reviews are complete; native
 gesture, landmark-arrival and matched open-platform appearance checks are running.
 Full outward/return CI and performance acceptance remain open. Existing software

@@ -33,14 +33,53 @@ legacy/geographic jobs before its neighborhood job was superseded by
 remote branch. Test/evidence source
 **`dce346173b2d00d1d6aa20b68858e50dfd5870c8`** is pushed and verified. Checkpoint
 **`0548c09ab1d55cdeae21314f95a172fb4f14ff54`** preserves the visual failures and
-platform source audit without changing application bytes. The current implementation
-is **`a7cd027f7e8085ef0cb7054487f1a3479a6724de`**, pushed and independently verified
-against the remote branch. Its acceptance run **39902670448** is in progress;
-it supersedes **39899177206**, whose seven legacy/geographic jobs passed before
-the remaining neighborhood job was cancelled. Application and asset bytes now
-correspond to candidate 7 below.
+platform source audit without changing application bytes. Candidate-7 implementation
+is **`a7cd027f7e8085ef0cb7054487f1a3479a6724de`**; its run **39902670448** follows
+**39899177206**, whose seven legacy/geographic jobs passed before the remaining
+neighborhood job was cancelled. Checkpoint **`095ee3a`** preserves that state.
+The current implementation is **`7f3146b11246c66c5e64b8e95738017f208db69b`**,
+pushed and independently verified against the remote branch. Its acceptance run
+**39905321708** is queued. Application and asset bytes correspond to candidate 8.
 
-The current immutable build is **candidate-7**, package
+The current immutable build is **candidate-8**, package
+**`8146c6a00fb60026dee84414e4efa3ca1713869f92bc8cab2fbd4e592411e8d3`**,
+with **446 files / 96,758,502 bytes** and scenery manifest
+**`4e490c35d171aceb160efb70d94ae8c9fc097a2ad4440fe1010c1b619ca7a601`**.
+All **201/201** application checks and **17/17** repository gates pass; canonical
+build succeeds. It adds two reviewed runtime corrections: insignificant repeated
+OrbitControls notifications at the zoom limit no longer invalidate rendering,
+and saved-view loading prepares sections with the heading the player actually
+retains. Raw camera values, bounds, saved formats and section ranking stay intact.
+The real Tenmangū geometry produces zero application notifications across 240
+stationary updates in ordinary and inspection modes, for both motion settings;
+real inputs, private camera changes and explicit resize still notify.
+
+Candidate 8 also includes the source-specific Shinkyōgoku canopy material. World's
+independent audit preserves all existing attributes, oriented triangles and world
+transforms across **74 sections / 9,731 source-group comparisons**. Only source
+`116` / way `551741577` receives the new roof material in 16 containers; ten gain
+one material batch. All unrelated materials and image bytes remain exact. Three
+original 128×128 RGB maps total **2,386 B**. Target tangents are absent; sixteen
+documented tangent-space warnings accompany zero validator errors. All 148 gzip
+identities and section budgets pass. Complete required 3D startup transfer is
+**3,034,606 B day / 3,027,370 B night**. Portable independent audit SHA256:
+`57903f64a25939cd9daeea14ac2a1dc90782c536a61a24353bb7654feb9248c5`.
+Root preserved the prior public directory at
+`artifacts/neighborhood-20261023/candidate-7-public-before-canopy` and promoted
+the exact audited output. QA exclusively owns the browser for the complete
+14-gesture × two-motion matrix, including new visible-idle and same-view resource
+reuse checks, followed by western approach, platform and canopy day/night review.
+The frozen driver is
+`826df4c9b5c17d4bba71020e2285f903d7b64895f01eab10d2f94e5cfb5b9130`.
+Native acceptance and current-package performance remain pending. No publication.
+The first native candidate-8 observations confirm same-view reopen with zero
+section requests/resource churn and unchanged heading, order and camera. The
+normal-motion visible-idle check observes one extra draw over 2,406 ms, six updates
+and zero shadow updates; its stream/player/saved view remain equal. That failed
+check is retained while engineering diagnoses its cause. QA continues the full
+immutable matrix; no complete native acceptance is claimed.
+
+The preceding immutable build is **candidate-7**, package
 **`990d7ef1cf8c35023e19f32c3ee66b688282a30434e8812c4335edf74449a133`**,
 with **443 files / 96,677,911 bytes** and scenery manifest
 **`679241ee06a8115ad3f95ddd523c2f56555b900f3ecc4437d272573a968ec4e5`**.
@@ -60,9 +99,16 @@ the traveller and selected HDR; external audit SHA256
 The two superseded runtime audit reports are omitted from the new package and
 remain in historical evidence. Root backed up the old generated directory at
 `artifacts/neighborhood-20261023/candidate-6-public-before-platform` before exact
-replacement. QA now owns the exclusive browser window for native camera safety,
-the proposed western temple approach and matched platform day/night views.
-Candidate 7 is not yet browser-accepted or published.
+replacement. Its native camera attempt completed seven normal-motion gestures and
+**26 passing checks** before root-directed interruption to address the discovered
+redundant redraw and restoration work. The untouched partial report has no failures
+and no completion timestamp; the final raw report preserves **26 passing / one
+intentional browser-closure failure**. Reduced-motion and the other gestures were
+unexecuted. This incomplete suite is under `qa/candidate-7-camera-safety-partial/`;
+partial SHA `d5e1aa0cbe2bb87937e134d865f9f1a09af533a981eca07d34668cbdf6873139`,
+final SHA `cb6f9c196e14c5720678ba13c22cc65cb347231aa3aed5644892e803345c1e8a`.
+The actual J/orbit now keeps 5 m / 38.69% actor occupancy; reversal and Escape pass.
+Candidate 7 was not browser-accepted or published.
 
 The preceding **candidate-6** transport build has package
 **`ca4b3c95bc2a6b94ad2cc978a083d1e3c3c109d65febce326a5e16e937dc271b`**,
@@ -135,10 +181,10 @@ Chromium **151.0.7922.34**; the performance runs use system Chromium
   tilt, zoom and symmetric pinch. Explicit target pan still permits independent
   detail inspection. The exact recorded Tenmangū geometry now retains 5 m and
   38.69% actor occupancy; reversal works. All **24** focused camera/input/legacy
-  checks pass. Native touch/input validation is running against candidate 7;
-  both motion preferences retain the complete actual-input matrix. Software
-  rendering and repeated public saved-view restoration make this correctness run
-  lengthy; its duration supplies no new performance acceptance result.
+  checks pass. The later numerical-notification correction and restoration-heading
+  correction are integrated into candidate 8. Native validation is running there;
+  both motion preferences retain the complete actual-input matrix. The interrupted
+  preceding correctness run supplies no new performance acceptance result.
   The fixed blocked viewpoint still does not frame the torii.
 - Art owns a source-specific treatment of municipal feature
   `kyoto-city:bldg_74454289-1d7a-4105-87ea-26e36c69bc44`. The source audit under
@@ -183,14 +229,12 @@ Chromium **151.0.7922.34**; the performance runs use system Chromium
   recomputed route legs/Maps coordinates.
 - World records the Shinkyōgoku canopy's mapped footprint and the merchant
   association's polycarbonate-roof documentation in `world/shinkyogoku-context/`.
-  Art is preparing a bounded material interpretation for source `551741577`.
-  Geometry, authored height and collision remain fixed. The candidate-7 package
-  contains no such material change. Export waits for QA's exclusive CPU/browser
-  window to finish; independent geometry proof and matched e006/Tenmangū
-  daylight/night review are required before promotion.
-- CI **39902670448** is running on pushed source `a7cd027`; predecessor
-  **39899177206** passed seven jobs before supersession. No complete-route success
-  for the current candidate is claimed.
+  The bounded material interpretation is independently audited and integrated in
+  candidate 8. Geometry, authored height and collision remain fixed. Matched
+  e006/Tenmangū daylight/night appearance review is pending.
+- CI **39905321708** is queued on pushed source `7f3146b`; the preceding
+  **39902670448** had six completed jobs at the last observation. No complete-route
+  success for the current candidate is claimed.
 
 Full-route acceptance, complete connector/sight day-night review,
 physical GPU performance, Q03 and actual background-tab visibility remain open.

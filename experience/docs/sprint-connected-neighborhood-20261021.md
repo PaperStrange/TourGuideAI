@@ -109,11 +109,12 @@ This allowance does not change the startup, frame, input or Q03 acceptance targe
 ## Acceptance status · 2026-10-23
 
 The pilot contains six sights along 1,353.444 m of connected reviewed route.
-Candidate 7 has package identity
-`990d7ef1cf8c35023e19f32c3ee66b688282a30434e8812c4335edf74449a133`.
-Source `a7cd027` is pushed. It includes the inspection camera correction and a
-source-supported open platform assembly. Application checks pass 201/201 and
-repository gates pass 17/17. Required daylight 3D transfer is 3,029,993 bytes.
+Candidate 8 has package identity
+`8146c6a00fb60026dee84414e4efa3ca1713869f92bc8cab2fbd4e592411e8d3`.
+Source `7f3146b` is pushed. It includes inspection framing, stationary redraw and
+saved-view loading corrections, the source-supported open platform assembly and
+a reviewed canopy material. Application checks pass 201/201 and repository gates
+pass 17/17. Required daylight 3D transfer is 3,034,606 bytes.
 Its exclusive native gesture validation is running; the earlier performance and
 route-choice reports below retain their candidate-6 scope.
 
@@ -121,7 +122,7 @@ route-choice reports below retain their candidate-6 scope.
 | --- | --- | --- |
 | N00 | Connected source graph, six identified exterior sights, source/provenance audits and reproducible asset packaging | Existing limits on surveyed grades and current access remain explicit |
 | N01 | Continuous movement implemented; focused streaming/retry, cancellation, native-storage and residency checks pass | Complete final-package outward/return CI |
-| N02 | Bilingual day/night, private views, editable alternatives and Maps implemented; candidate-6 Choose/edit/reload checks pass 16/16; candidate-7 camera and open-platform corrections implemented and independently reviewed | Native camera gestures, western Tenmangū arrival, matched platform day/night appearance, and remaining connector detail gaps |
+| N02 | Bilingual day/night, private views, editable alternatives and Maps implemented; candidate-6 Choose/edit/reload checks pass 16/16; candidate-8 runtime and platform/canopy corrections implemented and independently reviewed | Native camera gestures, idle/resource reuse, western Tenmangū arrival, matched platform/canopy day/night appearance, and remaining connector detail gaps |
 | N03 | Candidate-6 transport/recovery browser checks pass 57/57; exact performance report retained | Warm-entry consistency, input/frame targets, Q03, native hidden-tab verification, full regression evidence and publication |
 
 Candidate-6 measured cold entry is 7,797.0 ms. Warm entries are 2,927.1, 2,926.7 and
@@ -140,9 +141,9 @@ and awaits an actual walking review. The original municipal classification also
 identifies the roadside low mass as wall-less; its new open assembly retains
 source bounds and explicitly distinguishes authored supports from measured facts.
 The Shinkyōgoku merchant association documents polycarbonate canopy panels. A
-bounded source-specific material interpretation is in preparation; roof geometry,
-clearances and collision remain unchanged. It requires matched e006/Tenmangū
-day/night review and independent geometry preservation evidence before inclusion.
+bounded source-specific material interpretation is integrated in candidate 8.
+Its independent audit preserves geometry, clearances, collision and unrelated
+materials across all 74 sections. Matched e006/Tenmangū day/night review is pending.
 
 A separately labelled Mesa software run on unchanged candidate 6 records warm
 entries of 1,367.4 / 1,217.9 / 1,232.8 ms, but cold 9,537.0 ms, input p95 129.7 ms

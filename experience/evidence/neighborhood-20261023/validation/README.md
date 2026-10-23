@@ -1,5 +1,24 @@
 # Local validation
 
+Candidate-8 package is `8146c6a00fb60026dee84414e4efa3ca1713869f92bc8cab2fbd4e592411e8d3`
+(446 files / 96,758,502 bytes). Source
+`7f3146b11246c66c5e64b8e95738017f208db69b` is pushed and verified. It includes the
+stationary camera notification correction, restoration-heading preparation and
+independently audited canopy material. Scenery manifest:
+`4e490c35d171aceb160efb70d94ae8c9fc097a2ad4440fe1010c1b619ca7a601`.
+Application checks pass **201/201**, repository gates pass **17/17**, and the
+canonical build succeeds. The focused 24 camera and 13 restore/navigation checks
+are included in that application count. Native camera, resource-reuse, appearance
+and performance acceptance require their separate browser evidence.
+
+| Candidate-8 report | Original SHA256 |
+| --- | --- |
+| `app-tests-candidate-8.txt.gz` decoded text | `4a122c06cc0ae8c755ffaa6c9d1014f848df6f40ed1ef9e203e90c768ca99965` |
+| `build-candidate-8.txt.gz` decoded text | `68aff4a6d91c4f36a9b63b3a1854ce0350b80be510801dc110f17468127312a9` |
+| `repository-gates-candidate-8.txt` | `43a16b6a9e37d69799f7f711f656ea8ae0dc879d15558f6b93f7d192cf632332` |
+
+## Candidate-7
+
 Candidate-7 package is `990d7ef1cf8c35023e19f32c3ee66b688282a30434e8812c4335edf74449a133`
 (443 files / 96,677,911 bytes). It integrates the inspection camera correction and
 the independently audited open platform assembly. Scenery manifest:
