@@ -49,17 +49,34 @@ Root preserved the prior public directory at
 `artifacts/neighborhood-20261023/candidate-8-public-before-floor` and promoted the
 exact independently audited transport output.
 
-QA exclusively owns the browser/CPU for corrected-floor day/night review, western
-approach, complete **14-gesture × two-motion** camera coverage, then one default
-performance run. Driver SHA256:
+Candidate-9 corrected-floor day/night checks pass **10/10**, and the native western
+approach passes **14/14**. Art accepts the repaired paving and deliberate eastward
+gate inspection in both modes. The [five reviewed canvases](../evidence/neighborhood-20261023/art/candidate-9/README.md)
+retain exact report, package, camera and resource bindings. Primary rendering stays
+within budget: 58 calls / 96,397 triangles at the platform and 64 calls / 66,244
+triangles at the western pause. Source-backed connecting facades, factual landmark
+details, night material response and a narrow floor-edge seam remain open; this
+bounded review does not establish route-wide realism.
+
+QA exclusively owns the browser/CPU for complete **14-gesture × two-motion**
+camera coverage, then one default performance run. The current normal-motion
+observations pass visible idle, same-view resource reuse, orbit, drag, wheel,
+native pinch and private pan/note reopening. The full matrix remains in progress.
+Driver SHA256:
 `4a40b0eda0215f89366635589ce87aaece72b592370dbf8e3c5e887a2cbacb4e`;
 historical-source helper: `5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1`.
 Its five source preflight checks pass. The complete-document compatibility guard
 permits only the approved six anchor-field changes and verifies the retained raw
 sources; current package provenance must bind current geography separately.
-Current-package camera/appearance acceptance, full outward/return CI, performance
+Current CI **39909716421** uses source/checkpoint **`9b973f0`**. Geographic source,
+shared perspective, solo exploration and travel companion jobs pass; the homepage,
+original walk, reviewed packs and complete outward/return neighborhood jobs remain
+in progress at 06:22 UTC. Current-package complete camera coverage, performance
 targets, Q03 and native hidden-tab verification remain open. The workspace has no
-physical GPU, so hardware fluency remains unmeasured. No publication has occurred.
+physical GPU, so hardware fluency remains unmeasured. A [bounded native-display
+feasibility inspection](../evidence/neighborhood-20261023/performance/native-display-feasibility/README.md)
+does not establish a permitted workspace-only XKB output path or a native hidden
+state. No publication has occurred.
 
 The following records retain their earlier candidate and evidence scopes.
 

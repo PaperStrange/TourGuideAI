@@ -1,0 +1,75 @@
+{
+  "packageManifestSha256": "1720fc5907c0c6f2b292aa0e728bcaad8ddbd6c776de7aec2b5a35a513609c9b",
+  "verifiedPackagedFiles": 446,
+  "source": {
+    "id": "shijo-east",
+    "revision": 1,
+    "geographySha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+    "manifestSha256": "79b1a3ed91f0b672364c690e44de9278dce555fab0074ce0dc4aaa8add62f534"
+  },
+  "driverSha256": "4a40b0eda0215f89366635589ce87aaece72b592370dbf8e3c5e887a2cbacb4e",
+  "driverDependencies": [
+    {
+      "file": "tests/helpers/neighborhood-evidence-source.mjs",
+      "sha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    }
+  ],
+  "browser": "151.0.7922.34",
+  "conditions": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "reducedMotion": "no-preference",
+    "timeoutMs": 120000,
+    "walkingTimeoutMs": 2400000,
+    "sections": [
+      "route-choice"
+    ],
+    "assetDelivery": "Actual loopback HTTP with immutable captured build bodies and no-store; only deliberate abort/delay scenarios install request routes."
+  },
+  "status": "completed",
+  "checks": {
+    "passed": 20,
+    "failed": 0
+  },
+  "failedCheckIds": [],
+  "actualHTTPRequests": 161,
+  "startedAt": "2026-10-23T06:05:34.996Z",
+  "finishedAt": "2026-10-23T06:06:27.568Z",
+  "elapsedMs": 52572,
+  "files": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 61233,
+      "sha256": "2c32b5d0fa644a5f2879d6e06cb9d78ac00961c34db37d3704d97c76db55e67e",
+      "decodedBytes": 438963,
+      "decodedSha256": "417edcbb2be2b05d458c786b1182e78eaa06beba6b5b6daf38c33f05d7bb4b64"
+    },
+    {
+      "file": "browser-neighborhood.executed.mjs.gz",
+      "bytes": 41289,
+      "sha256": "fb02b2199c1d8dc7782e85a3fe822ded57f758edf738d5eb244a1600d485ed04",
+      "decodedBytes": 170597,
+      "decodedSha256": "4a40b0eda0215f89366635589ce87aaece72b592370dbf8e3c5e887a2cbacb4e"
+    },
+    {
+      "file": "neighborhood-evidence-source.executed.mjs.gz",
+      "bytes": 1619,
+      "sha256": "70115611f201081f16386f97f55d12421b3ee05a5e4c8f20bdfe99a5ec5fd294",
+      "decodedBytes": 3713,
+      "decodedSha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    },
+    {
+      "file": "run.log",
+      "bytes": 1329,
+      "sha256": "da502f061512260d811e9f73a54ec64713ab6d5e0109606796f881568b927fa3"
+    },
+    {
+      "file": "chosen-route-edited-reloaded-zh.png",
+      "bytes": 779239,
+      "sha256": "803fc4db0a8b31a10769220b68898e28ba8f51eff0530e20e99b1fb5baace46a"
+    }
+  ],
+  "externalCanvases": []
+}

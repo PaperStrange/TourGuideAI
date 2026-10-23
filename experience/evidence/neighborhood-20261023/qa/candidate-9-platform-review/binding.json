@@ -1,0 +1,134 @@
+{
+  "packageManifestSha256": "1720fc5907c0c6f2b292aa0e728bcaad8ddbd6c776de7aec2b5a35a513609c9b",
+  "verifiedPackagedFiles": 446,
+  "source": {
+    "id": "shijo-east",
+    "revision": 1,
+    "geographySha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+    "manifestSha256": "79b1a3ed91f0b672364c690e44de9278dce555fab0074ce0dc4aaa8add62f534",
+    "historicalGeographyCompatibility": {
+      "kind": "reviewed-tenmangu-anchor-metadata",
+      "recordedSha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
+      "currentSha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+      "auditSha256": "156cdc90f594a9a69a672ac8003e1ddbfa76259c0dc86c5b59035b0e55cc35dd",
+      "auditFile": "experience/evidence/neighborhood-20261023/world/platform-context/tenmangu-compatibility.json",
+      "changedFields": [
+        "nodeId",
+        "approachNodeId",
+        "x",
+        "y",
+        "latitude",
+        "longitude"
+      ],
+      "completeGeographyCompared": true,
+      "unchangedSources": {
+        "scene.json": {
+          "bytes": 8789674,
+          "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e"
+        },
+        "source-ledger.json": {
+          "bytes": 5999,
+          "sha256": "be0f8065699a53f09293140e2499bca2468f0aa7cea503dc6436f45c9b17a24c"
+        },
+        "source-review.json": {
+          "bytes": 756,
+          "sha256": "4e3fbb9d2fd3134153d2b378f5de995c2f7e3135ea3d778a5fe2f19b55f00258"
+        },
+        "sources/kyoto-lod1.geojson": {
+          "bytes": 6304053,
+          "sha256": "da1af049906d736b6329e062673a84728640957475d3b46107cebf46b48a2d93"
+        },
+        "sources/route-osm.json": {
+          "bytes": 47176,
+          "sha256": "5681dceac0c5d206a6e5315c77ca6a39a292ab3915f23b60cc17c77cecb4099e"
+        },
+        "sources/scene-osm.json": {
+          "bytes": 2390775,
+          "sha256": "1e3ba265bc8dd3c6744ccd897ad915016a2cc0110c306bf3e064ca63ced5dd0c"
+        }
+      },
+      "scope": "Stored metric view, frame and navigation geometry. Rendered assets retain their separate current-build identity."
+    }
+  },
+  "driverSha256": "4a40b0eda0215f89366635589ce87aaece72b592370dbf8e3c5e887a2cbacb4e",
+  "driverDependencies": [
+    {
+      "file": "tests/helpers/neighborhood-evidence-source.mjs",
+      "sha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    }
+  ],
+  "browser": "151.0.7922.34",
+  "conditions": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "reducedMotion": "no-preference",
+    "timeoutMs": 120000,
+    "walkingTimeoutMs": 2400000,
+    "sections": [
+      "platform-review"
+    ],
+    "assetDelivery": "Actual loopback HTTP with immutable captured build bodies and no-store; only deliberate abort/delay scenarios install request routes."
+  },
+  "status": "completed",
+  "checks": {
+    "passed": 10,
+    "failed": 0
+  },
+  "failedCheckIds": [],
+  "actualHTTPRequests": 95,
+  "startedAt": "2026-10-23T06:06:46.751Z",
+  "finishedAt": "2026-10-23T06:07:22.751Z",
+  "elapsedMs": 36000,
+  "files": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 93693,
+      "sha256": "24649ccb1c0b38d066873a617a81e14b982f04d44b36cc41610258ce1d44abd6",
+      "decodedBytes": 779348,
+      "decodedSha256": "49ba8a76143967051c1964d2a3179bd43df6bba619f2c7d2d96d2d70ed0080f4"
+    },
+    {
+      "file": "browser-neighborhood.executed.mjs.gz",
+      "bytes": 41289,
+      "sha256": "fb02b2199c1d8dc7782e85a3fe822ded57f758edf738d5eb244a1600d485ed04",
+      "decodedBytes": 170597,
+      "decodedSha256": "4a40b0eda0215f89366635589ce87aaece72b592370dbf8e3c5e887a2cbacb4e"
+    },
+    {
+      "file": "neighborhood-evidence-source.executed.mjs.gz",
+      "bytes": 1619,
+      "sha256": "70115611f201081f16386f97f55d12421b3ee05a5e4c8f20bdfe99a5ec5fd294",
+      "decodedBytes": 3713,
+      "decodedSha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    },
+    {
+      "file": "run.log",
+      "bytes": 571,
+      "sha256": "82e2a68a9bd22768eb721683c881f2f2c06d1a1e801ce4e8d97b83bf911e9fe7"
+    },
+    {
+      "file": "platform-e001-prior-view-day.png",
+      "bytes": 997387,
+      "sha256": "8dded76dd3ede83126606f473b746a6c18fc7a38901f77ff73e933ca913b7e77"
+    },
+    {
+      "file": "platform-e001-prior-view-night.png",
+      "bytes": 828301,
+      "sha256": "861c6c3e4a04e97d357def54c2f2f4309be812a4927994f2a72f47d361a7db0c"
+    }
+  ],
+  "externalCanvases": [
+    {
+      "file": "../../art/candidate-9/platform-e001-prior-view-day-canvas.png",
+      "bytes": 746572,
+      "sha256": "695008472783c1c77df620333b86989d10b448e9ecfd8ed13ebfa2755a3edcd6"
+    },
+    {
+      "file": "../../art/candidate-9/platform-e001-prior-view-night-canvas.png",
+      "bytes": 588082,
+      "sha256": "531d9f9a232d30dab5b02f3853402e2df6bc53621183458b2e67197aa10bc090"
+    }
+  ]
+}

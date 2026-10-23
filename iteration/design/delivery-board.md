@@ -10,8 +10,11 @@ recommendations. The implemented pilot connects six sights over 1,353.444 m.
 Implementation source `9cbfa7f` produces candidate 9, which passes 203 application
 checks and 17 repository gates. The western sight pause, editable single-route
 recommendation and source-bounded platform floor are integrated. Independent
-source/geometry audits pass; native route-choice checks pass 20/20. Final controls
-and corrected-floor appearance checks are running.
+source/geometry audits pass; native route-choice checks pass 20/20, corrected-floor
+checks 10/10 and western approach 14/14. Art accepts the repaired floor and deliberate
+gate view in daylight and night. The complete camera matrix is running. Connecting
+facade variation, landmark details, night material response and a floor-edge seam
+remain open.
 Full outward/return CI and performance acceptance remain open. Existing software
 renderer observations exceed the input/frame targets; physical GPU/phone fluency
 is unmeasured. Published runtime `17b8f37` remains the verified baseline.

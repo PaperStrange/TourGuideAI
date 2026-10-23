@@ -1,6 +1,6 @@
 # Candidate9 floor and source regeneration
 
-The isolated generated package is `artifacts/neighborhood-20261023/art/candidate-9-transport/`, manifest SHA256 `79b1a3ed91f0b672364c690e44de9278dce555fab0074ce0dc4aaa8add62f534`. It follows the [candidate8 visual review](../candidate-8/README.md): the western Tenmangū pause supports deliberate inspection, while the open platform structure exposes an uncovered floor. Independent decoded geometry review has passed. Actual corrected-floor browser review remains pending.
+The isolated generated package is `artifacts/neighborhood-20261023/art/candidate-9-transport/`, manifest SHA256 `79b1a3ed91f0b672364c690e44de9278dce555fab0074ce0dc4aaa8add62f534`. Independent decoded geometry review has passed. The [candidate9 browser art review](../candidate-9/README.md) accepts the corrected floor in matched day/night views and confirms the western Tenmangū pause for deliberate inspection. The [candidate8 images](../candidate-8/README.md) preserve the earlier uncovered-floor observation.
 
 ## Bound changes
 
@@ -19,7 +19,7 @@ The Shinkyōgoku panel treatment and all existing images/lighting remain unchang
 | BASE | 120,312B | 30,804B | 3,631 | 7 |
 | NEAR | 509,478B | 116,049B | 16,419 | 8 |
 
-The [independent export audit](../../world/platform-context/candidate9-export-audit.json), SHA256 `57f0e9c9b4ee0dff263d69106fa43ff70da9bdd43468c5d166b212329f448144`, passes all 74 sections. The previous 108 target triangles remain exact in both LODs; exactly two upward paving triangles at base 0 bring the target total to 110. Their projected triangles equal the source roof-plan triangulation. Every unrelated source group, material, attribute and world transform remains exact, including the source116 panel treatment. The new floor uses the existing ground-paving material after texture-URI normalization. One pavement batch is added per platform section. Actual frame budgets remain a browser check.
+The [independent export audit](../../world/platform-context/candidate9-export-audit.json), SHA256 `57f0e9c9b4ee0dff263d69106fa43ff70da9bdd43468c5d166b212329f448144`, passes all 74 sections. The previous 108 target triangles remain exact in both LODs; exactly two upward paving triangles at base 0 bring the target total to 110. Their projected triangles equal the source roof-plan triangulation. Every unrelated source group, material, attribute and world transform remains exact, including the source116 panel treatment. The new floor uses the existing ground-paving material after texture-URI normalization. One pavement batch is added per platform section. The [executed browser evidence](../candidate-9/reviewed-captures.json) records passing same-pose primary frame budgets in both lighting modes.
 
 Required 3D startup transfer is 3,035,372B by day and 3,028,136B by night. Daylight headroom below 4MiB is 1,158,932B. These counts include deduplicated resident/initial resources, traveller and the selected HDR; application HTML/JavaScript/CSS/fonts and deferred assets are separate. Gzip transfer is distinct from decoded geometry and actual GPU memory.
 

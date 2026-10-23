@@ -119,14 +119,17 @@ Application checks pass 203/203 and repository gates pass 17/17. Required daylig
 3D transfer is 3,035,372 bytes. The route retains all six sights and the exact
 walking graph. Default suggestions contain one reviewed walk with editable stops.
 Native route-choice checks pass 20/20, including EN/ZH guidance, explicit Choose,
-independent distance/Maps and preserved private views. Further exclusive native
-validation is running; earlier performance reports retain their candidate-6 scope.
+independent distance/Maps and preserved private views. Corrected-platform checks
+pass 10/10 and the western approach passes 14/14. Art accepts the repaired floor
+and deliberate eastward gate view in both modes. The complete camera matrix and
+final default performance run remain in progress; earlier performance reports
+retain their candidate-6 scope.
 
 | Sprint | Current evidence | Remaining acceptance |
 | --- | --- | --- |
 | N00 | Connected source graph, six identified exterior sights, source/provenance audits and reproducible asset packaging | Existing limits on surveyed grades and current access remain explicit |
 | N01 | Continuous movement implemented; focused streaming/retry, cancellation, native-storage and residency checks pass | Complete final-package outward/return CI |
-| N02 | Bilingual day/night, private views, editable recommendations and Maps implemented; candidate-9 Choose/edit/reload passes 20/20; candidate-8 western walk passes 13/13 and canopy behavior 19/19, with bounded art acceptance; candidate-9 source/geometry audits pass | Final camera gestures, idle/resource reuse, corrected-platform day/night appearance and remaining connector detail gaps |
+| N02 | Bilingual day/night, private views, editable recommendations and Maps implemented; candidate-9 Choose/edit/reload passes 20/20, corrected platform 10/10 and western approach 14/14, with bounded day/night art acceptance; source/geometry audits pass | Complete final camera matrix; source-backed connecting facades, factual landmark details, night material response and floor-edge seam |
 | N03 | Candidate-6 transport/recovery browser checks pass 57/57; exact performance report retained | Warm-entry consistency, input/frame targets, Q03, native hidden-tab verification, full regression evidence and publication |
 
 Candidate-6 measured cold entry is 7,797.0 ms. Warm entries are 2,927.1, 2,926.7 and
@@ -137,17 +140,16 @@ original targets and leave physical GPU/phone performance unmeasured. Publicatio
 remains pending acceptance. The [checkpoint](agent-checkpoint.md) records current
 source, CI, evidence and owner handoffs.
 
-The current correction pass separates camera safety from landmark composition.
-The recorded inspection orbit reduced the view below its 5 m bound; a reviewed
-correction retains street framing for orbit/zoom while keeping intentional pan
-available. The proposed earlier Tenmangū pause uses an existing pedestrian node
-and awaits an actual walking review. The original municipal classification also
-identifies the roadside low mass as wall-less; its new open assembly retains
-source bounds and explicitly distinguishes authored supports from measured facts.
-The Shinkyōgoku merchant association documents polycarbonate canopy panels. A
-bounded source-specific material interpretation is integrated in candidate 8.
-Its independent audit preserves geometry, clearances, collision and unrelated
-materials across all 74 sections. Matched e006/Tenmangū day/night review is pending.
+Camera controls retain street framing for orbit/zoom and support intentional pan.
+The western Tenmangū pause uses an existing pedestrian node; native walking and
+deliberate eastward inspection pass on candidate 9. Arrival preserves the traveler's
+camera. The original municipal classification identifies the roadside structure as
+wall-less; its open assembly retains source bounds and distinguishes authored
+supports and paving from measured facts. The Shinkyōgoku merchant association
+documents polycarbonate canopy panels. The source-specific material interpretation
+has bounded e006 day/night acceptance on candidate 8 and remains unchanged in
+candidate 9. Independent audits preserve unrelated geometry and materials across
+all 74 sections. These reviews do not establish route-wide real-place recognition.
 
 A separately labelled Mesa software run on unchanged candidate 6 records warm
 entries of 1,367.4 / 1,217.9 / 1,232.8 ms, but cold 9,537.0 ms, input p95 129.7 ms
