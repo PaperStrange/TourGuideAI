@@ -121,24 +121,29 @@ walking graph. Default suggestions contain one reviewed walk with editable stops
 Native route-choice checks pass 20/20, including EN/ZH guidance, explicit Choose,
 independent distance/Maps and preserved private views. Corrected-platform checks
 pass 10/10 and the western approach passes 14/14. Art accepts the repaired floor
-and deliberate eastward gate view in both modes. The complete camera matrix and
-final default performance run remain in progress; earlier performance reports
-retain their candidate-6 scope.
+and deliberate eastward gate view in both modes. The complete fourteen-gesture
+matrix under both motion settings passes 107/107, including visible idle, saved
+view resource reuse, Chinese reload and legacy preservation. The final default
+performance run has 14 passing and 5 failing checks. Seven of eight CI jobs pass;
+the complete neighborhood walkthrough remains in progress.
 
 | Sprint | Current evidence | Remaining acceptance |
 | --- | --- | --- |
 | N00 | Connected source graph, six identified exterior sights, source/provenance audits and reproducible asset packaging | Existing limits on surveyed grades and current access remain explicit |
 | N01 | Continuous movement implemented; focused streaming/retry, cancellation, native-storage and residency checks pass | Complete final-package outward/return CI |
-| N02 | Bilingual day/night, private views, editable recommendations and Maps implemented; candidate-9 Choose/edit/reload passes 20/20, corrected platform 10/10 and western approach 14/14, with bounded day/night art acceptance; source/geometry audits pass | Complete final camera matrix; source-backed connecting facades, factual landmark details, night material response and floor-edge seam |
-| N03 | Candidate-6 transport/recovery browser checks pass 57/57; exact performance report retained | Warm-entry consistency, input/frame targets, Q03, native hidden-tab verification, full regression evidence and publication |
+| N02 | Bilingual day/night, private views, editable recommendations and Maps implemented; candidate-9 Choose/edit/reload passes 20/20, corrected platform 10/10 and western approach 14/14, with bounded day/night art acceptance; source/geometry audits pass | Source-backed connecting facades, factual landmark details, night material response and floor-edge seam |
+| N03 | Complete candidate-9 camera suite passes 107/107; seven CI jobs pass; final default performance evidence records all 19 checks | Cold/warm entry, input/frame targets, Q03, native hidden-tab verification, complete neighborhood CI and publication |
 
-Candidate-6 measured cold entry is 7,797.0 ms. Warm entries are 2,927.1, 2,926.7 and
-3,056.1 ms, so the third misses its gate. Queued-input p95 is 994.4 ms and walking
-frame p95 is 1,048.1 ms on this SwiftShader host. Both headless tabs remain visible;
-no native background-tab work sample is available. These observations retain the
-original targets and leave physical GPU/phone performance unmeasured. Publication
-remains pending acceptance. The [checkpoint](agent-checkpoint.md) records current
-source, CI, evidence and owner handoffs.
+Candidate-9 measured cold entry is 8,352.8 ms. Warm entries are 3,013.9, 2,907.5 and
+2,956.8 ms; cold entry and the first warm entry miss their unchanged gates.
+Event-timestamp input p95 is 933.8 ms and observed frame p95 is 996.4 ms, with nine
+unrecovered draw-counter gaps. Receipt-only input p95 is 12.9 ms and excludes the
+browser input queue. All twenty trusted actions respond and zero page errors occur.
+Both headless tabs remain visible; no native background-tab work sample is
+available. These software-host observations leave physical GPU/phone performance
+unmeasured. Publication remains pending acceptance. The [checkpoint](agent-checkpoint.md)
+records current source, CI, evidence and owner handoffs. The [art work order](../evidence/neighborhood-20261023/art/candidate-9/follow-up.md)
+identifies the remaining source-backed appearance work and its comparison views.
 
 Camera controls retain street framing for orbit/zoom and support intentional pan.
 The western Tenmangū pause uses an existing pedestrian node; native walking and

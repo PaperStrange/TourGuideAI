@@ -57,26 +57,59 @@ within budget: 58 calls / 96,397 triangles at the platform and 64 calls / 66,244
 triangles at the western pause. Source-backed connecting facades, factual landmark
 details, night material response and a narrow floor-edge seam remain open; this
 bounded review does not establish route-wide realism.
+The [art follow-up work order](../evidence/neighborhood-20261023/art/candidate-9/follow-up.md)
+records affected source/section identities, reference gaps, authoring boundaries
+and matched day/night acceptance views for those four issues.
 
-QA exclusively owns the browser/CPU for complete **14-gesture × two-motion**
-camera coverage, then one default performance run. The current normal-motion
-observations pass visible idle, same-view resource reuse, orbit, drag, wheel,
-native pinch and private pan/note reopening. The full matrix remains in progress.
-Driver SHA256:
+The complete **14-gesture × two-motion** camera suite passes **107/107** checks in
+1,407.056 seconds with Chromium 151.0.7922.34. Both visible idle samples record
+zero draws and shadow updates; their 121 visible simulation updates are retained.
+Both same-view reopens produce zero section requests and zero resource differences.
+Private pan/note restoration, Escape recovery, Chinese reload and legacy bytes pass.
+[Portable report](../evidence/neighborhood-20261023/qa/candidate-9-camera-safety/README.md)
+decoded SHA256: `b01cdbf7db06137f8bd20318cb8b6b3bd5968b3cdaf0cbd02c683e367bddcab7`.
+Executed driver SHA256:
 `4a40b0eda0215f89366635589ce87aaece72b592370dbf8e3c5e887a2cbacb4e`;
 historical-source helper: `5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1`.
 Its five source preflight checks pass. The complete-document compatibility guard
 permits only the approved six anchor-field changes and verifies the retained raw
 sources; current package provenance must bind current geography separately.
-Current CI **39909716421** uses source/checkpoint **`9b973f0`**. Geographic source,
-shared perspective, solo exploration and travel companion jobs pass; the homepage,
-original walk, reviewed packs and complete outward/return neighborhood jobs remain
-in progress at 06:22 UTC. Current-package complete camera coverage, performance
-targets, Q03 and native hidden-tab verification remain open. The workspace has no
-physical GPU, so hardware fluency remains unmeasured. A [bounded native-display
+
+The single final default performance run completes on system Chromium
+151.0.7922.173 with **14 passing / 5 failing** checks. Cold usable entry is
+**8,352.8 ms** against 8,000 ms; warm entries are **3,013.9 / 2,907.5 / 2,956.8 ms**
+against 3,000 ms each. All twenty trusted inputs respond with zero page errors.
+Event-time-to-response p95 is **933.8 ms** against 100 ms. Receipt-only p95 is
+12.9 ms and excludes browser queue delay. Observed frame-interval p95 is
+**996.4 ms** against 33.3 ms, with nine unrecovered draw-counter gaps. Each orbit
+nudge supplies one draw and no within-action interval distribution. The actual
+hidden-tab transition remains unobserved. QA closed the browser/server and released
+the exclusive execution slot at 06:37 UTC. Quality and thresholds remain unchanged.
+The [final performance evidence](../evidence/neighborhood-20261023/performance/candidate-9/README.md)
+preserves report SHA256 `472ce83cea34d14bd00bf29510586e41b76575cc1ddd6fb96e0c50ed59e36104`
+and tool SHA256 `1ab216a6b3d7039c42156a782ea0158edcc27f0bb5e58cb26ccf6c8f76709757`.
+Each warm entry has 56 of 57 neighborhood responses from disk cache, with only
+manifest revalidation uncached. Complete requested-detail readiness is separate
+from first usable entry: 24,263.1 ms cold and 17,360.9 / 15,438.9 / 15,015.4 ms warm.
+
+Current CI **39909716421** uses source/checkpoint **`9b973f0`**. Seven of eight jobs
+pass, including the extended homepage walkthrough and reviewed place packs. The
+complete outward/return neighborhood job remains in progress in the 06:38:59 UTC
+snapshot. Seven browser reports contain **771 passing / zero failing** checks;
+source preparation separately passes 18 workbench and 13 neighborhood checks.
+Every browser report matches all 446 candidate files, including source maps, and
+its recorded driver matches the executed commit. The [portable CI
+record](../evidence/neighborhood-20261023/ci/candidate-9/README.md) preserves completed
+reports and exact package reconciliation; pending work has no aggregate pass claim.
+Milestone release remains blocked by performance acceptance, Q03, native hidden-tab
+verification and remaining art acceptance. The workspace has no physical GPU, so
+hardware fluency remains unmeasured. A [bounded native-display
 feasibility inspection](../evidence/neighborhood-20261023/performance/native-display-feasibility/README.md)
 does not establish a permitted workspace-only XKB output path or a native hidden
-state. No publication has occurred.
+state. Resume by retrieving the current neighborhood job without restarting it,
+then binding its complete report to candidate 9. Physical-device performance and
+native visibility require a suitable graphical test environment. Keep the current
+package frozen while reconciling these results. No publication has occurred.
 
 The following records retain their earlier candidate and evidence scopes.
 

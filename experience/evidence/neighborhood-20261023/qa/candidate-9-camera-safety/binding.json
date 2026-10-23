@@ -1,0 +1,193 @@
+{
+  "packageManifestSha256": "1720fc5907c0c6f2b292aa0e728bcaad8ddbd6c776de7aec2b5a35a513609c9b",
+  "verifiedPackagedFiles": 446,
+  "source": {
+    "id": "shijo-east",
+    "revision": 1,
+    "geographySha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+    "manifestSha256": "79b1a3ed91f0b672364c690e44de9278dce555fab0074ce0dc4aaa8add62f534",
+    "historicalGeographyCompatibility": {
+      "kind": "reviewed-tenmangu-anchor-metadata",
+      "recordedSha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
+      "currentSha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+      "auditSha256": "156cdc90f594a9a69a672ac8003e1ddbfa76259c0dc86c5b59035b0e55cc35dd",
+      "auditFile": "experience/evidence/neighborhood-20261023/world/platform-context/tenmangu-compatibility.json",
+      "changedFields": [
+        "nodeId",
+        "approachNodeId",
+        "x",
+        "y",
+        "latitude",
+        "longitude"
+      ],
+      "completeGeographyCompared": true,
+      "unchangedSources": {
+        "scene.json": {
+          "bytes": 8789674,
+          "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e"
+        },
+        "source-ledger.json": {
+          "bytes": 5999,
+          "sha256": "be0f8065699a53f09293140e2499bca2468f0aa7cea503dc6436f45c9b17a24c"
+        },
+        "source-review.json": {
+          "bytes": 756,
+          "sha256": "4e3fbb9d2fd3134153d2b378f5de995c2f7e3135ea3d778a5fe2f19b55f00258"
+        },
+        "sources/kyoto-lod1.geojson": {
+          "bytes": 6304053,
+          "sha256": "da1af049906d736b6329e062673a84728640957475d3b46107cebf46b48a2d93"
+        },
+        "sources/route-osm.json": {
+          "bytes": 47176,
+          "sha256": "5681dceac0c5d206a6e5315c77ca6a39a292ab3915f23b60cc17c77cecb4099e"
+        },
+        "sources/scene-osm.json": {
+          "bytes": 2390775,
+          "sha256": "1e3ba265bc8dd3c6744ccd897ad915016a2cc0110c306bf3e064ca63ced5dd0c"
+        }
+      },
+      "scope": "Stored metric view, frame and navigation geometry. Rendered assets retain their separate current-build identity."
+    }
+  },
+  "driverSha256": "4a40b0eda0215f89366635589ce87aaece72b592370dbf8e3c5e887a2cbacb4e",
+  "driverDependencies": [
+    {
+      "file": "tests/helpers/neighborhood-evidence-source.mjs",
+      "sha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    }
+  ],
+  "browser": "151.0.7922.34",
+  "conditions": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "reducedMotion": "no-preference",
+    "timeoutMs": 120000,
+    "walkingTimeoutMs": 2400000,
+    "sections": [
+      "camera-safety"
+    ],
+    "assetDelivery": "Actual loopback HTTP with immutable captured build bodies and no-store; only deliberate abort/delay scenarios install request routes."
+  },
+  "status": "completed",
+  "checks": {
+    "passed": 107,
+    "failed": 0
+  },
+  "failedCheckIds": [],
+  "actualHTTPRequests": 336,
+  "startedAt": "2026-10-23T06:10:14.209Z",
+  "finishedAt": "2026-10-23T06:33:41.265Z",
+  "elapsedMs": 1407056,
+  "files": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 1996137,
+      "sha256": "0731f56ad04199509ad074f815345d06bf65b908eb2c05254a5538d9ed41652a",
+      "decodedBytes": 23993803,
+      "decodedSha256": "b01cdbf7db06137f8bd20318cb8b6b3bd5968b3cdaf0cbd02c683e367bddcab7"
+    },
+    {
+      "file": "browser-neighborhood.executed.mjs.gz",
+      "bytes": 41289,
+      "sha256": "fb02b2199c1d8dc7782e85a3fe822ded57f758edf738d5eb244a1600d485ed04",
+      "decodedBytes": 170597,
+      "decodedSha256": "4a40b0eda0215f89366635589ce87aaece72b592370dbf8e3c5e887a2cbacb4e"
+    },
+    {
+      "file": "neighborhood-evidence-source.executed.mjs.gz",
+      "bytes": 1619,
+      "sha256": "70115611f201081f16386f97f55d12421b3ee05a5e4c8f20bdfe99a5ec5fd294",
+      "decodedBytes": 3713,
+      "decodedSha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    },
+    {
+      "file": "run.log",
+      "bytes": 6987,
+      "sha256": "b28d06ad3faca78b55c567ee47f9cd9a12bca7a920b11067530e4f0c4549d2ad"
+    },
+    {
+      "file": "tenmangu-purposeful-pan-no-preference.png",
+      "bytes": 811843,
+      "sha256": "bda96fcaeb8d2d91a503a1469c3d3fd4986036f98ffc7bd9446a2f1beb372cbf"
+    },
+    {
+      "file": "tenmangu-purposeful-pan-no-preference-canvas.png",
+      "bytes": 542750,
+      "sha256": "99239b425b1f8f96cf7770b3269c150f658765b9a336d02eeebbf11a0b03019b"
+    },
+    {
+      "file": "tenmangu-purposeful-pan-reduce.png",
+      "bytes": 811843,
+      "sha256": "bda96fcaeb8d2d91a503a1469c3d3fd4986036f98ffc7bd9446a2f1beb372cbf"
+    },
+    {
+      "file": "tenmangu-purposeful-pan-reduce-canvas.png",
+      "bytes": 542750,
+      "sha256": "99239b425b1f8f96cf7770b3269c150f658765b9a336d02eeebbf11a0b03019b"
+    }
+  ],
+  "externalCanvases": [],
+  "nativeScenarios": {
+    "tenmangu-camera-safety-no-preference": {
+      "operations": [
+        "click",
+        "touch-tap",
+        "middle-horizontal",
+        "three-finger",
+        "keyboard-orbit",
+        "keyboard-tilt",
+        "keyboard-zoom",
+        "drag",
+        "wheel",
+        "pinch",
+        "keyboard-pan",
+        "right-pan",
+        "touch-pan",
+        "touch-mixed"
+      ],
+      "idle": {
+        "elapsedMs": 2015.6100329999972,
+        "drawDelta": 0,
+        "updateDelta": 121,
+        "shadowDelta": 0
+      },
+      "sameViewRestore": {
+        "differences": [],
+        "sectionRequests": 0,
+        "sectionHTTPRequests": 0
+      }
+    },
+    "tenmangu-camera-safety-reduce": {
+      "operations": [
+        "click",
+        "touch-tap",
+        "middle-horizontal",
+        "three-finger",
+        "keyboard-orbit",
+        "keyboard-tilt",
+        "keyboard-zoom",
+        "drag",
+        "wheel",
+        "pinch",
+        "keyboard-pan",
+        "right-pan",
+        "touch-pan",
+        "touch-mixed"
+      ],
+      "idle": {
+        "elapsedMs": 2035.2372190000024,
+        "drawDelta": 0,
+        "updateDelta": 121,
+        "shadowDelta": 0
+      },
+      "sameViewRestore": {
+        "differences": [],
+        "sectionRequests": 0,
+        "sectionHTTPRequests": 0
+      }
+    }
+  }
+}

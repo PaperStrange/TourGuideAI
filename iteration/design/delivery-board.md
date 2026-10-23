@@ -12,12 +12,15 @@ checks and 17 repository gates. The western sight pause, editable single-route
 recommendation and source-bounded platform floor are integrated. Independent
 source/geometry audits pass; native route-choice checks pass 20/20, corrected-floor
 checks 10/10 and western approach 14/14. Art accepts the repaired floor and deliberate
-gate view in daylight and night. The complete camera matrix is running. Connecting
+gate view in daylight and night. The complete camera matrix passes 107/107. Connecting
 facade variation, landmark details, night material response and a floor-edge seam
 remain open.
-Full outward/return CI and performance acceptance remain open. Existing software
-renderer observations exceed the input/frame targets; physical GPU/phone fluency
-is unmeasured. Published runtime `17b8f37` remains the verified baseline.
+Seven CI jobs pass; complete outward/return neighborhood CI remains in progress.
+The final software-renderer run has 14 passing / 5 failing checks: cold entry
+8,352.8 ms, first warm entry 3,013.9 ms, input p95 933.8 ms and frame p95 996.4 ms
+miss their targets; native hidden-tab behavior remains unobserved. Performance
+acceptance and Q03 remain open, and physical GPU/phone fluency is unmeasured.
+Published runtime `17b8f37` remains the verified baseline.
 The [agent checkpoint](../../experience/docs/agent-checkpoint.md) records exact
 package identities, evidence, failures and current owners. The records below
 describe preceding iterations and retain their original release scope.
