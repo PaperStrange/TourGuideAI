@@ -684,12 +684,25 @@ try {
     const { page, record } = await scenario('initial-recovery', { deny: path => deny && required.has(path) });
     await page.locator('#mode-explore').click(); await page.locator('#journey-enter').click();
     await page.waitForFunction(() => window.__HOME__.snapshot().sceneState === 'error');
-    const retained = await readSession(page); await setLocale(page, 'zh');
+    const retained = await readSession(page);
+    const baseRequestsBeforeLocale = record.requests.filter(request => required.has(request.path)).length;
+    await setLocale(page, 'zh'); await page.waitForTimeout(1500);
+    const failedChinese = await home(page);
+    const retryVisible = await page.locator('#scene-retry').isVisible();
     check('initial-real-cell-error-preserves-selected-journey', record.denied.length > 0 && retained?.routeId === geography.id
-      && await page.locator('#scene-retry').isVisible(), { retained, current: await home(page), denied: record.denied });
+      && retryVisible && failedChinese.sceneState === 'error', { retained, current: failedChinese, denied: record.denied });
+    check('locale-change-keeps-initial-error-until-explicit-retry', failedChinese.sceneState === 'error' && retryVisible
+      && failedChinese.neighborhood.status === 'openError'
+      && record.requests.filter(request => required.has(request.path)).length === baseRequestsBeforeLocale,
+    { baseRequestsBeforeLocale, baseRequestsAfterLocale: record.requests.filter(request => required.has(request.path)).length,
+      current: failedChinese, retryVisible });
+    if (!retryVisible) throw new Error('Explicit scene Retry is unavailable after the real initial-cell failure.');
     deny = false; await page.locator('#scene-retry').click(); await ready(page);
+    await page.waitForFunction(() => !window.__HOME__.snapshot().neighborhood.busy);
     check('initial-retry-loads-real-cell-with-preserved-order', equal((await readSession(page)).stopIds, retained.stopIds)
-      && (await observe(page)).ground.hit && (await observe(page)).lifecycle.active === 1, await observe(page));
+      && (await observe(page)).ground.hit && (await observe(page)).lifecycle.active === 1
+      && (await home(page)).neighborhood.status !== 'openError'
+      && record.requests.filter(request => required.has(request.path)).length > baseRequestsBeforeLocale, await observe(page));
     await unchangedLegacy(page, 'initial-retry-keeps-legacy-bytes');
   });
 

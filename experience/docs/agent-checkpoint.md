@@ -1,21 +1,28 @@
 # Agent checkpoint · Explore and Together homepage
 
-2026-10-21 UTC · Lead owns integration, commits and publication.
+2026-10-23 UTC · Lead owns integration, commits and publication.
 **State: connected-neighborhood implementation is authorized and in progress.
 The approved target is a continuous 1–2 km Shijō neighborhood with 5–8 sights,
 desktop-first delivery and richer solo routes. Published runtime `17b8f37` remains
 the verified baseline. Q03 is open P1; backend tests remain local.**
 
-## Immediate resume checkpoint · 2026-10-21 09:12 UTC
+## Resumed iteration · 2026-10-23
 
-The user requested immediate checkpoint preservation and remote synchronization
-because of token limits. Pause further implementation after this checkpoint.
-All application, content, asset and test changes are pushed to
-`origin/chore-sow-delivery-plan`, through **`6f9ccc247d269b8548b6103326bcf67431fd846a`**.
+The user explicitly resumed implementation toward the approved milestone.
+The preserved starting checkpoint is **`57a8bf8795bb10a5bb264451f93b2414f0d4939c`**
+on `origin/chore-sow-delivery-plan`. Its application, content, asset and test
+implementation is **`6f9ccc247d269b8548b6103326bcf67431fd846a`**.
 `cd70174` contains final crossing assets, complete texture accounting and browser
 drivers; `6f9ccc2` strengthens successful detail-load checks, actual 15-second
 loading recovery and inspection-event synchronization. The checkpoint/evidence
 commit is metadata only. No new package has been published.
+
+The resumed recovery increment preserves a failed preview until an explicit retry,
+guards private journey writes against changed stored bytes, and reserves near-detail
+capacity through loading/cancellation cleanup. Twenty targeted route, native-storage,
+asset and scheduling checks pass. Font regeneration reports zero missing glyphs.
+Actual browser validation of this increment remains pending the next frozen build;
+camera and art corrections are still being prepared in the shared worktree.
 
 **Release blocker:** actual walking reaches Nishiki Market and continues 20.14 m
 under its arcade, but the stopped default camera crops the actor's head. At source
@@ -42,15 +49,27 @@ outward-and-return traversal. Portable evidence is under
 `experience/evidence/neighborhood-20261021/`; original working output is
 `artifacts/neighborhood-20261021/qa/candidate-arcade-final/`.
 
-CI **39574644628** tests `6f9ccc2` and remains running at this checkpoint. Geographic
-source preparation and travel companion have passed; the six remaining jobs,
-including the full 2,706.888 m neighborhood walk, remain pending completion.
-Inspect that run before starting a replacement. Earlier runs `39571776352` and
-`39574180828` were superseded and cannot establish acceptance of the final package.
+CI **39574644628** completed on `6f9ccc2`. Seven jobs pass: geographic source
+preparation, original walk (133 checks), perspective (80), companion (73), homepage
+(65 plus 264 extended checks), solo (75), and reviewed packs (81). The neighborhood
+report has **70 passing / 12 failing** checks. The complete 2,706.888 m outward and
+return traversal finishes and covers every selected route cell. Nine failed path
+assertions expose transient near-detail residency of four sections against the
+three-section limit; ground, texture, retained-byte and download/attachment limits
+pass those samples. The remaining failures concern initial-load retry during a
+locale change and stale in-memory writes overwriting a newer stored revision.
+
+All eight downloaded evidence ZIP digests match GitHub's artifact records. Their
+package is `809a90dbabae9becc384e67f006275ca6b27f107f74c81f28f916c595601fb9e`.
+All 293 file paths match the local candidate; executable, HTML, CSS, model, image
+and data bytes match exactly. Twenty-one source-map files differ and retain their
+own package identities. Evidence is under `evidence/neighborhood-20261023/ci/`.
 
 Next actions, in order:
 
-1. Read the exact arcade report/captures and fix camera composition in
+1. Fix the diagnosed retry, stored-record preservation and near-detail transition
+   failures; validate actual error/recovery scenarios without weakening budgets.
+   Read the exact arcade report/captures and fix camera composition in
    `src/runtime/camera-obstruction.js` / `route-world-view.js`. Preserve actor
    grounding, actual building collision and desired saved camera intent. Verify
    interior surface inspection using the actual rendered camera.
@@ -69,9 +88,11 @@ Next actions, in order:
    accepted frozen package through the existing Pages worktree, then verify HTTPS
    files and actual journeys.
 
-All local browser/server processes from arcade QA are closed. Product holds the
-performance benchmark. Engineering and navigation have no pending source edits;
-world/art assets remain frozen. Lead owns commits/builds/publication. Current
+Engineering owns the camera correction; navigation owns the streaming transition;
+product owns stored-record preservation; art/world own source-grounded arcade and
+waterfront corrections. The lead owns initial-preview recovery, integration,
+builds, commits and publication. QA owns independent evidence and actual browser
+verification. Browser/GPU and Blender export windows remain coordinated. Current
 working root is `/workspace/TourGuideAI`; use its ignored `artifacts/tmp` as TMPDIR.
 Browser NSS requires write access to `/home/agent/.pki`. Keep proxy/CA settings and
 TLS verification. Check local instructions before resuming edits.

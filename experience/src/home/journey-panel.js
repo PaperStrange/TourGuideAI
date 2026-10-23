@@ -1,6 +1,6 @@
 import { buildMapsJourney, mapsShareText } from '../travel/maps.js';
 import { createJourneySession, selectJourneyRoute, updateJourneyProgress,
-  readJourneySession, writeJourneySession, isJourneySessionAvailable } from '../journey/session.js';
+  readJourneyRecord, writeJourneySession, isJourneySessionAvailable, JOURNEY_STORAGE_KEY } from '../journey/session.js';
 
 const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const TEXT = {
@@ -23,6 +23,8 @@ const TEXT = {
     noOptions: 'No reviewed walk matches these selections. Adjust your preferences.',
     unavailable: 'This saved neighborhood version is unavailable. Its recorded view is preserved.',
     readError: 'Your recorded walk could not be read. Existing browser data is preserved.',
+    changed: 'Your saved walk changed in another page. Reload to use it. The saved data is preserved.',
+    reload: 'Reload saved walk',
     saveError: 'Your walk is open, but this change could not be remembered. Check browser storage.',
     openError: 'The walk could not fully open. Your selected route is preserved; retry the preview.',
     starting: 'Opening your walk…', saved: 'Your selected walk is remembered.',
@@ -47,6 +49,8 @@ const TEXT = {
     noOptions: '没有已审核路线满足全部选择，请调整你的偏好。',
     unavailable: '收藏的街区版本暂不可用，记录的视角仍然保留。',
     readError: '无法读取记录的漫步，浏览器中的已有数据仍然保留。',
+    changed: '已保存的漫步在其他页面发生变化，请重新加载后继续。保存的数据仍然保留。',
+    reload: '重新加载已存漫步',
     saveError: '漫步已经打开，但无法保存这次更改，请检查浏览器存储设置。',
     openError: '未能完整打开漫步，所选路线仍然保留，请重新加载预览。',
     starting: '正在打开你的漫步…', saved: '已记录所选漫步路线。',
@@ -79,12 +83,14 @@ export function createNeighborhoodJourney({ planner, frame, startPlace, interest
   let inNeighborhood = false, visible = true, saveTimer, pendingProgress = null;
   let draftInterests = [], draftMustSee = [], alternativesOpen = false;
   let walking = null, stoppedHere = false, stoppedPosition = null;
+  let storedRaw = null, storageChanged = false, sessionEpoch = 0;
   const language = () => locale() === 'zh' ? 'zh' : 'en';
   const t = key => TEXT[language()][key];
   const matchingSession = () => session && isJourneySessionAvailable(session, planner);
   const unavailableSession = () => Boolean(session && !matchingSession());
-  const mutationsBlocked = () => busy || storageError || unavailableSession();
-  try { session = readJourneySession(storage); }
+  const mutationsBlocked = () => busy || storageError || storageChanged || unavailableSession();
+  const currentStatus = () => storageError ? 'readError' : unavailableSession() ? 'unavailable' : storageChanged ? 'changed' : status;
+  try { const record = readJourneyRecord(storage); session = record.session; storedRaw = record.raw; }
   catch { storageError = true; status = 'readError'; }
   if (matchingSession()) {
     plan = planner.route(session.stopIds, session);
@@ -105,50 +111,85 @@ export function createNeighborhoodJourney({ planner, frame, startPlace, interest
       stops: [...start, ...plan.stops.map(sight => ({ ...sight, id: `${planner.routeId}:${sight.id}`, kind: 'poi', title: sight.title[lang] }))],
       ...(plan.points.length > 1 ? { geometry: { type: 'LineString', coordinates: plan.points.map(pointCoordinates) } } : {}) };
   }
-  function persist() {
-    if (!session || storageError) return;
-    try { session = writeJourneySession(storage, session); if (status === 'saveError') status = ''; }
-    catch { status = 'saveError'; }
+  function receiveStoredChange() {
+    clearTimeout(saveTimer); saveTimer = undefined; pendingProgress = null;
+    storageChanged = true; sessionEpoch++;
+    try {
+      const record = readJourneyRecord(storage); storedRaw = record.raw; session = record.session;
+      storageError = false;
+      if (matchingSession()) {
+        plan = planner.route(session.stopIds, session);
+        draftInterests = [...session.interests]; draftMustSee = [...session.mustSeeIds];
+      }
+      status = unavailableSession() ? 'unavailable' : 'changed';
+    } catch { storageError = true; status = 'readError'; }
+    render(); onChange?.();
+  }
+  function storageIsCurrent() {
+    if (storageError) return false;
+    try {
+      if (storage.getItem(JOURNEY_STORAGE_KEY) === storedRaw) return true;
+    } catch { storageError = true; status = 'readError'; render(); return false; }
+    receiveStoredChange(); return false;
+  }
+  function persist(next, { replace = false } = {}) {
+    if (!next || storageError || storageChanged && !replace) return false;
+    try {
+      session = writeJourneySession(storage, next, { expectedRaw: storedRaw });
+      storedRaw = JSON.stringify(session);
+      if (replace) storageChanged = false;
+      if (status === 'saveError') status = '';
+      return true;
+    } catch (error) {
+      if (error.code === 'journey-storage-conflict') receiveStoredChange();
+      else status = 'saveError';
+      return false;
+    }
   }
   function flush() {
     clearTimeout(saveTimer); saveTimer = undefined;
-    if (pendingProgress && matchingSession()) {
-      session = updateJourneyProgress(session, pendingProgress); pendingProgress = null; persist();
-    }
+    const progress = pendingProgress; pendingProgress = null;
+    if (progress && matchingSession() && !storageChanged) persist(updateJourneyProgress(session, progress));
   }
   function capture(view, lighting) {
-    if (!matchingSession() || !view || view.packId !== planner.routeId || view.revision !== planner.revision) return;
+    if (storageError || storageChanged || !matchingSession() || !view || view.packId !== planner.routeId || view.revision !== planner.revision) return;
     pendingProgress = { view, lighting };
     if (!saveTimer) saveTimer = setTimeout(() => { flush(); if (status === 'saveError') render(); }, 750);
   }
   function select(next) {
+    if (mutationsBlocked() || !storageIsCurrent()) return false;
+    flush();
     if (mutationsBlocked()) return false;
-    flush(); plan = next;
-    session = matchingSession() ? selectJourneyRoute(session, plan) : createJourneySession(plan);
+    const selected = matchingSession() ? selectJourneyRoute(session, next) : createJourneySession(next);
+    if (!persist(selected)) { render(); return false; }
+    plan = next;
     draftInterests = [...session.interests]; draftMustSee = [...session.mustSeeIds];
     alternativesOpen = false;
-    status = 'saved'; persist(); render(); onChange?.();
+    status = 'saved'; render(); onChange?.();
     return true;
   }
   function replaceUnavailable() {
-    if (!unavailableSession() || busy || storageError || !plan) return;
+    if (!unavailableSession() || busy || storageError || !plan || !storageIsCurrent()) return;
     const replacement = createJourneySession(plan);
     // 只有独立的替换操作可以覆盖不可用版本；写入失败时继续保留原记录。
-    try { writeJourneySession(storage, replacement); }
-    catch { status = 'saveError'; render(); return; }
-    session = replacement; pendingProgress = null;
+    if (!persist(replacement, { replace: true })) { render(); return; }
+    pendingProgress = null; sessionEpoch++;
     draftInterests = [...session.interests]; draftMustSee = [...session.mustSeeIds];
     status = 'saved'; render(); onChange?.();
   }
   async function enter(sightId = null) {
-    if (!plan || mutationsBlocked()) return;
+    if (!plan || mutationsBlocked() || !storageIsCurrent()) return;
     if (!matchingSession() && !select(plan)) return;
-    flush(); busy = true; status = 'starting'; render();
+    flush();
+    if (mutationsBlocked()) return;
+    const epoch = sessionEpoch;
+    busy = true; status = 'starting'; render();
     try {
       await onEnter({ plan, progress: structuredClone(session.progress), sightId });
+      if (epoch !== sessionEpoch || !storageIsCurrent() || storageChanged) return;
       status = status === 'saveError' ? status : '';
-      if (sightId) { session = updateJourneyProgress(session, { focusedSightId: sightId }); persist(); }
-    } catch (error) { status = error.name === 'AbortError' ? '' : 'openError'; }
+      if (sightId) persist(updateJourneyProgress(session, { focusedSightId: sightId }));
+    } catch (error) { if (!storageChanged && !storageError) status = error.name === 'AbortError' ? '' : 'openError'; }
     finally { busy = false; render(); }
   }
   function preferencesMarkup() {
@@ -163,6 +204,7 @@ export function createNeighborhoodJourney({ planner, frame, startPlace, interest
       <button id="journey-suggest" class="secondary" ${mutationsBlocked() ? 'disabled' : ''}>${t('suggest')}</button></details>`;
   }
   function replacementMarkup() {
+    if (storageChanged && !unavailableSession() && !storageError) return `<button id="journey-reload" class="secondary" ${busy ? 'disabled' : ''}>${t('reload')}</button>`;
     return unavailableSession() ? `<details class="journey-replacement"><summary>${t('replace')}</summary>
       <p class="small">${t('replaceNote')}</p><button id="journey-replace" class="secondary" ${busy || storageError || !plan ? 'disabled' : ''}>${t('replaceAction')}</button></details>` : '';
   }
@@ -203,7 +245,7 @@ export function createNeighborhoodJourney({ planner, frame, startPlace, interest
       host.innerHTML = `<span class="eyebrow">${lang === 'zh' ? '京都 · 连续街区漫步' : 'KYOTO · A CONNECTED WALK'}</span><h2>${t('heading')}</h2>
         ${plan ? `<p class="journey-distance"><strong>${new Intl.NumberFormat(lang, { maximumFractionDigits: 2 }).format(plan.distanceMeters / 1000)} km</strong> · ${plan.stopIds.length} ${t('sights')}</p>` : ''}
         <p class="small">${t('private')}</p><button id="journey-enter" class="primary" ${mutationsBlocked() || !plan ? 'disabled' : ''}>${t(matchingSession() ? 'resume' : 'start')}</button>${replacementMarkup()}
-        <p class="small journey-status" role="status">${status ? t(status) : ''}</p>`;
+        <p class="small journey-status" role="status">${currentStatus() ? t(currentStatus()) : ''}</p>`;
       return;
     }
     host.innerHTML = `<span class="eyebrow">${lang === 'zh' ? '京都 · 街区漫步' : 'KYOTO · NEIGHBORHOOD WALK'}</span>
@@ -220,7 +262,7 @@ export function createNeighborhoodJourney({ planner, frame, startPlace, interest
         </div></li>`).join('')}</ol>` : ''}
       ${remaining.length && plan && plan.stopIds.length < 8 ? `<div class="journey-add"><label for="journey-add-sight" class="sr-only">${t('select')}</label><select id="journey-add-sight" ${mutationsBlocked() ? 'disabled' : ''}>${remaining.map(sight => `<option value="${escape(sight.id)}">${escape(sight.title[lang])}</option>`).join('')}</select><button id="journey-add" class="secondary" ${mutationsBlocked() ? 'disabled' : ''}>${t('add')}</button></div>` : ''}
       ${route ? `<div class="map-links">${buildMapsJourney(route.stops).parts.map((part, index, parts) => `<a class="primary" href="${escape(part.url)}" target="_blank" rel="noopener noreferrer">${t('maps')}${parts.length > 1 ? ` · ${index + 1}/${parts.length}` : ''} ↗</a>`).join('')}</div><button id="journey-copy" class="secondary">${t('copy')}</button><textarea id="journey-maps-text" aria-label="${t('copy')}" readonly hidden></textarea><p class="small">${t('note')}</p>` : ''}
-      <p class="small journey-status" role="status">${status ? t(status) : ''}</p>`;
+      <p class="small journey-status" role="status">${currentStatus() ? t(currentStatus()) : ''}</p>`;
     renderWalking();
   }
   host.addEventListener('change', event => {
@@ -231,8 +273,13 @@ export function createNeighborhoodJourney({ planner, frame, startPlace, interest
   host.addEventListener('toggle', event => {
     if (event.target.matches('.journey-alternatives')) alternativesOpen = event.target.open;
   }, true);
+  const storedChange = event => {
+    if (event.storageArea === storage && (event.key === JOURNEY_STORAGE_KEY || event.key === null)) storageIsCurrent();
+  };
+  window.addEventListener('storage', storedChange);
   async function handleClick(button) {
     if (!host.contains(button)) return false;
+    if (button.id === 'journey-reload') { if (!button.disabled) location.reload(); return true; }
     if (button.id === 'journey-stop') {
       const position = walking?.position;
       if (!button.disabled && walking?.goal && onStop?.()) {
@@ -241,7 +288,7 @@ export function createNeighborhoodJourney({ planner, frame, startPlace, interest
       return true;
     }
     if (button.id === 'journey-replace') { replaceUnavailable(); return true; }
-    if (button.disabled || (button.id !== 'journey-copy' && mutationsBlocked())) return true;
+    if (button.disabled || (button.id !== 'journey-copy' && (mutationsBlocked() || !storageIsCurrent()))) return true;
     if (button.id === 'journey-enter') await enter();
     else if (button.dataset.journeyFocus) await enter(button.dataset.journeyFocus);
     else if (button.id === 'journey-suggest') {
@@ -274,7 +321,7 @@ export function createNeighborhoodJourney({ planner, frame, startPlace, interest
       renderWalking();
     },
     selectStops(ids) { return mutationsBlocked() ? false : select(planner.route(ids)); },
-    getSession: () => session ? structuredClone(session) : null,
+    getSession: () => session && !storageChanged && !storageError ? structuredClone(session) : null,
     setContext(value) {
       const changed = visible !== (value.mode === 'explore') || inNeighborhood !== value.inNeighborhood;
       visible = value.mode === 'explore'; inNeighborhood = value.inNeighborhood;
@@ -282,8 +329,9 @@ export function createNeighborhoodJourney({ planner, frame, startPlace, interest
       if (changed) render();
     },
     snapshot: () => ({ selected: plan?.stopIds ?? [], routeId: planner.routeId, revision: planner.revision,
-      distanceMeters: plan?.distanceMeters ?? null, active: Boolean(matchingSession()), inNeighborhood, busy, storageError, status,
+      distanceMeters: plan?.distanceMeters ?? null, active: Boolean(matchingSession()) && !storageChanged && !storageError,
+      inNeighborhood, busy, storageError, storageChanged, status: currentStatus(),
       walking: describeJourneyWalking(walking, planner, language()) }),
-    destroy() { flush(); },
+    destroy() { window.removeEventListener('storage', storedChange); flush(); },
   };
 }

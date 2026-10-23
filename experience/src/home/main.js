@@ -149,7 +149,7 @@ function releaseScene() {
 async function ensureScene() {
   const pack = getPackForPlace(center);
   if (!pack) return;
-  if (scenePackId === pack.id && (liveView || scenePromise)) return scenePromise;
+  if (scenePackId === pack.id && (liveView || scenePromise || sceneState === 'error')) return scenePromise;
   releaseScene();
   const generation = sceneGeneration, request = new AbortController();
   sceneController = request; scenePackId = pack.id; sceneState = 'loading';
@@ -531,6 +531,7 @@ async function handleClick(event) {
     if (usesStreet()) {
       if (sceneState === 'ready' && streamingState?.cells.some(cell => cell.error)) liveView.retryStreaming();
       else if (sceneState === 'ready' && liveView) await selectLighting(liveView.getLightingState().requestedMode || lighting);
+      else if (showingNeighborhood()) await neighborhood.enter();
       else { releaseScene(); await ensureScene(); }
     }
     else if (worldMap) worldMap.retry();
@@ -585,6 +586,7 @@ async function handleClick(event) {
 async function enterNeighborhood({ progress, sightId }) {
   const generation = ++restoreGeneration;
   restoreController?.abort(); nearbyRequest?.abort(); searchRequest?.abort();
+  if (scenePackId === neighborhoodId && sceneState === 'error') releaseScene();
   const continuing = scenePackId === neighborhoodId && Boolean(liveView);
   mode = 'explore'; localPreview = false; restoring = true; keptRoute = false;
   previewRepresentation = null; mapViewToRestore = null;

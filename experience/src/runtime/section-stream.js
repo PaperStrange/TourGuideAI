@@ -1,11 +1,34 @@
 import { createTaskQueue } from './section-queue.js';
 import { cellsAtPoint, selectSections, STREAM_LIMITS } from './section-residency.js';
 
+export function planSectionLoads(cells, selected, { nearLimit, reservedNear = 0, residentBytes = STREAM_LIMITS.residentBytes }) {
+  const assetBytes = asset => asset.bytes + (asset.dependencies ?? []).reduce((sum, entry) => sum + entry.bytes, 0);
+  let nearSlots = reservedNear, committedBytes = 0;
+  for (const cell of cells.values()) {
+    if (cell.residentLevel) committedBytes += assetBytes(cell.definition[cell.residentLevel]);
+    if (cell.residentLevel === 'near') nearSlots++;
+    if (cell.loading) committedBytes += assetBytes(cell.definition[cell.loading.level]);
+  }
+  const loads = [];
+  for (const item of selected) {
+    const cell = cells.get(item.id), level = cell.residentLevel ? item.level : 'base';
+    if (cell.loading || cell.residentLevel === level || cell.error?.level === level) continue;
+    if (level === 'near' && nearSlots >= nearLimit) continue;
+    const bytes = assetBytes(cell.definition[level]);
+    if (committedBytes + bytes > residentBytes) continue;
+    committedBytes += bytes;
+    if (level === 'near') nearSlots++;
+    loads.push({ id: item.id, level });
+  }
+  return loads;
+}
+
 export function createSectionStream(manifest, assets, { signal, tier = 'desktop', attach, detach, onChange,
   limits = STREAM_LIMITS } = {}) {
   const cells = new Map(manifest.cells.map(cell => [cell.id, { definition: cell, resident: null,
     residentLevel: null, loading: null, desired: null, error: null, state: 'unloaded' }]));
   const attachments = createTaskQueue(limits.attachments), waiters = new Set();
+  const nearReservations = new Set(), nearLimit = tier === 'compact' ? 1 : limits.nearCells;
   let disposed = false, suspended = false, player, pins = [], blocked = null, revision = 0, cancellations = 0;
   function publish() {
     if (blocked?.cellIds.length && blocked.cellIds.every(id => cells.get(id)?.resident)) blocked = null;
@@ -24,6 +47,8 @@ export function createSectionStream(manifest, assets, { signal, tier = 'desktop'
   }
   function launch(cell, level) {
     const controller = new AbortController(), work = { controller, level };
+    // 取消中的解析与附件在完成清理前继续占用 near 名额。
+    if (level === 'near') nearReservations.add(work);
     cell.loading = work; cell.state = 'downloading'; cell.error = null;
     const descriptor = cell.definition[level];
     let bundle;
@@ -40,6 +65,7 @@ export function createSectionStream(manifest, assets, { signal, tier = 'desktop'
           await attach(model.root, cell.definition, level, controller.signal);
           if (disposed || controller.signal.aborted) throw new DOMException('Section cancelled', 'AbortError');
           releaseCell(cell); cell.resident = model; cell.residentLevel = level;
+          nearReservations.delete(work);
         } catch (error) {
           if (model) { detach(model.root, cell.definition); model.release(); }
           throw error;
@@ -48,7 +74,7 @@ export function createSectionStream(manifest, assets, { signal, tier = 'desktop'
     }).then(() => {
       if (cell.loading !== work) return;
       cell.loading = null; cell.state = 'ready'; cell.error = null;
-      publish(); reconcile();
+      publish();
     }).catch(error => {
       bundle?.release();
       if (cell.loading !== work) return;
@@ -56,28 +82,25 @@ export function createSectionStream(manifest, assets, { signal, tier = 'desktop'
       if (error?.name === 'AbortError' || disposed) cell.state = cell.resident ? 'ready' : 'unloaded';
       else { cell.state = 'failed'; cell.error = { level, message: error.message }; }
       publish();
+    }).finally(() => {
+      nearReservations.delete(work);
+      reconcile();
     });
   }
   function reconcile() {
     if (disposed || suspended || !player) return;
+    let desiredNear = 0;
     const selected = selectSections(manifest.cells, player, { tier, pinnedIds: pins,
-      residentIds: [...cells.values()].filter(cell => cell.resident).map(cell => cell.definition.id), limits });
+      residentIds: [...cells.values()].filter(cell => cell.resident).map(cell => cell.definition.id), limits })
+      .map(item => item.level === 'near' && ++desiredNear > nearLimit ? { ...item, level: 'base' } : item);
     const desired = new Map(selected.map(item => [item.id, item]));
     for (const [id, cell] of cells) {
       cell.desired = desired.get(id)?.level ?? null;
       if (!cell.desired) { cancel(cell); releaseCell(cell); cell.state = 'unloaded'; cell.error = null; }
+      else if (cell.loading && cell.loading.level !== (cell.residentLevel ? cell.desired : 'base')) cancel(cell);
     }
-    const assetBytes = asset => asset.bytes + (asset.dependencies ?? []).reduce((sum, entry) => sum + entry.bytes, 0);
-    let committedBytes = [...cells.values()].reduce((sum, cell) => sum +
-      (cell.resident ? assetBytes(cell.definition[cell.residentLevel]) : 0) + (cell.loading ? assetBytes(cell.definition[cell.loading.level]) : 0), 0);
-    for (const item of selected) {
-      const cell = cells.get(item.id);
-      const next = !cell.resident ? 'base' : cell.desired;
-      if (cell.loading || cell.residentLevel === next || cell.error?.level === next) continue;
-      const bytes = assetBytes(cell.definition[next]);
-      if (committedBytes + bytes > limits.residentBytes) continue;
-      committedBytes += bytes; launch(cell, next);
-    }
+    for (const load of planSectionLoads(cells, selected, { nearLimit, reservedNear: nearReservations.size,
+      residentBytes: limits.residentBytes })) launch(cells.get(load.id), load.level);
   }
   const api = {
     update(value, pinnedIds = []) {
@@ -119,6 +142,7 @@ export function createSectionStream(manifest, assets, { signal, tier = 'desktop'
     snapshot() {
       return { revision, tier, suspended, disposed, blocked: blocked ? structuredClone(blocked) : null,
         attachments: attachments.snapshot(), ...assets.snapshot(), cancellations,
+        nearLimit, nearReservations: nearReservations.size,
         residentCells: [...cells.values()].filter(cell => cell.resident).length,
         cells: [...cells.values()].map(cell => ({ id: cell.definition.id, state: cell.state, level: cell.residentLevel,
           desired: cell.desired, sha256: cell.resident?.sha256 ?? null, error: cell.error ? { ...cell.error } : null })) };

@@ -109,15 +109,23 @@ export function isJourneySessionAvailable(session, definition) {
   return value.routeId === definition?.routeId && value.revision === definition?.revision;
 }
 
-export function readJourneySession(storage) {
+export function readJourneyRecord(storage) {
   const raw = storage.getItem(JOURNEY_STORAGE_KEY);
-  if (raw === null) return null;
+  if (raw === null) return { raw, session: null };
   required(typeof raw === 'string' && raw.length <= 65536, 'Invalid journey storage');
-  return normalizeJourneySession(JSON.parse(raw));
+  return { raw, session: normalizeJourneySession(JSON.parse(raw)) };
 }
 
-export function writeJourneySession(storage, session) {
+export function readJourneySession(storage) {
+  return readJourneyRecord(storage).session;
+}
+
+export function writeJourneySession(storage, session, options = {}) {
   const value = normalizeJourneySession(session);
+  // 比较上次读取的完整记录，保留其他页面写入的版本和未知字段。
+  if (Object.hasOwn(options, 'expectedRaw') && storage.getItem(JOURNEY_STORAGE_KEY) !== options.expectedRaw) {
+    throw Object.assign(new Error('The saved journey changed in another page.'), { code: 'journey-storage-conflict' });
+  }
   storage.setItem(JOURNEY_STORAGE_KEY, JSON.stringify(value));
   return value;
 }

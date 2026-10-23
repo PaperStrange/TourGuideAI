@@ -10,7 +10,7 @@ import { createJourneyPlanner, MIN_VARIANT_EDGE_CHANGE } from '../src/journey/re
 import { createRouteNavigation } from '../src/simulation/route-navigation.js';
 import { normalizeExplorationView } from '../src/runtime/exploration-state.js';
 import { createJourneySession, normalizeJourneySession, selectJourneyRoute, updateJourneyProgress,
-  isJourneySessionAvailable, readJourneySession, writeJourneySession, clearJourneySession,
+  isJourneySessionAvailable, readJourneyRecord, readJourneySession, writeJourneySession, clearJourneySession,
   JOURNEY_STORAGE_KEY } from '../src/journey/session.js';
 
 const definition = { routeId: 'shijo-east', revision: 1, graph: geography.navigation,
@@ -58,6 +58,45 @@ if (persistenceMode) {
     writeJourneySession(localStorage, session());
     clearJourneySession(localStorage);
     assert.equal(readJourneySession(localStorage), null);
+  } else if (persistenceMode === 'guard') {
+    const initial = readJourneyRecord(localStorage);
+    const progress = updateJourneyProgress(initial.session, { focusedSightId: initial.session.stopIds[1] }, { now: updatedAt });
+    writeJourneySession(localStorage, progress, { expectedRaw: initial.raw });
+    const current = readJourneyRecord(localStorage);
+    assert.deepEqual(current.session, progress);
+    const pending = updateJourneyProgress(current.session, { lighting: 'day' }, { now: updatedAt });
+    // 实际 localStorage 中的另一条记录必须保留；旧页面的进度写入需要拒绝。
+    const future = { ...current.session, revision: current.session.revision + 100, privateWords: '保留更新记录中的原始字段' };
+    const futureBytes = JSON.stringify(future, null, 2);
+    localStorage.setItem(JOURNEY_STORAGE_KEY, futureBytes);
+    assert.throws(() => writeJourneySession(localStorage, pending, { expectedRaw: current.raw }),
+      error => error.code === 'journey-storage-conflict');
+    assert.equal(localStorage.getItem(JOURNEY_STORAGE_KEY), futureBytes);
+    const unavailable = readJourneyRecord(localStorage);
+    assert.equal(unavailable.raw, futureBytes);
+    assert.equal(isJourneySessionAvailable(unavailable.session, planner), false);
+    const replacement = createJourneySession(selected(), { now: updatedAt });
+    writeJourneySession(localStorage, replacement, { expectedRaw: unavailable.raw });
+    assert.deepEqual(readJourneySession(localStorage), replacement);
+
+    const beforeChange = readJourneyRecord(localStorage);
+    const otherRoute = selectJourneyRoute(beforeChange.session, planner.edit(selected(), { type: 'reverse' }), { now: updatedAt });
+    writeJourneySession(localStorage, otherRoute, { expectedRaw: beforeChange.raw });
+    const changedBytes = localStorage.getItem(JOURNEY_STORAGE_KEY);
+    assert.throws(() => writeJourneySession(localStorage, pending, { expectedRaw: beforeChange.raw }),
+      error => error.code === 'journey-storage-conflict');
+    assert.equal(localStorage.getItem(JOURNEY_STORAGE_KEY), changedBytes);
+
+    localStorage.removeItem(JOURNEY_STORAGE_KEY);
+    assert.throws(() => writeJourneySession(localStorage, pending, { expectedRaw: changedBytes }),
+      error => error.code === 'journey-storage-conflict');
+    assert.equal(localStorage.getItem(JOURNEY_STORAGE_KEY), null);
+    const unsupported = '{"version":2,"privateWords":"保留不可读取的数据"}';
+    localStorage.setItem(JOURNEY_STORAGE_KEY, unsupported);
+    assert.throws(() => writeJourneySession(localStorage, pending, { expectedRaw: null }),
+      error => error.code === 'journey-storage-conflict');
+    assert.equal(localStorage.getItem(JOURNEY_STORAGE_KEY), unsupported);
+    writeJourneySession(localStorage, session(), { expectedRaw: unsupported });
   } else throw new Error('Unknown persistence test mode');
   assert.equal(localStorage.getItem(retainedKey), retainedValue);
   assert.equal(localStorage.getItem('tourguideai:journey:v2'), 'Earlier walk notes');
@@ -237,6 +276,19 @@ if (persistenceMode) {
     const directory = mkdtempSync(join(root, 'storage-'));
     try {
       for (const mode of ['write', 'read']) {
+        const result = spawnSync(process.execPath, ['--experimental-webstorage', '--localstorage-file=' + join(directory, 'journey.db'),
+          fileURLToPath(import.meta.url), '--journey-storage=' + mode], { encoding: 'utf8' });
+        assert.equal(result.status, 0, result.stdout + result.stderr);
+      }
+    } finally { rmSync(directory, { recursive: true, force: true }); }
+  });
+
+  test('native storage rejects stale progress after external revision, route, removal or unreadable changes and permits explicit replacement', () => {
+    const root = fileURLToPath(new URL('../../artifacts/journey-session-unit/', import.meta.url));
+    mkdirSync(root, { recursive: true });
+    const directory = mkdtempSync(join(root, 'conflict-'));
+    try {
+      for (const mode of ['write', 'guard', 'read']) {
         const result = spawnSync(process.execPath, ['--experimental-webstorage', '--localstorage-file=' + join(directory, 'journey.db'),
           fileURLToPath(import.meta.url), '--journey-storage=' + mode], { encoding: 'utf8' });
         assert.equal(result.status, 0, result.stdout + result.stderr);
