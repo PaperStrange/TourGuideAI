@@ -1,0 +1,76 @@
+{
+  "packageManifestSha256": "ca4b3c95bc2a6b94ad2cc978a083d1e3c3c109d65febce326a5e16e937dc271b",
+  "verifiedPackagedFiles": 445,
+  "source": {
+    "id": "shijo-east",
+    "revision": 1,
+    "geographySha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
+    "manifestSha256": "deb00b97ca3e29e314a13225678c7e6827de59a0f8ff68d5d3bdccc7d3563458"
+  },
+  "driverSha256": "991f105fed6fba76399524e48a1056ea4d62a13c832379d5da8369e0ddd8c4f3",
+  "browser": "151.0.7922.34",
+  "conditions": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "reducedMotion": "no-preference",
+    "timeoutMs": 120000,
+    "walkingTimeoutMs": 2400000,
+    "sections": [
+      "tenmangu-framing"
+    ],
+    "assetDelivery": "Actual loopback HTTP with immutable captured build bodies and no-store; only deliberate abort/delay scenarios install request routes."
+  },
+  "checks": {
+    "passed": 9,
+    "failed": 5
+  },
+  "failedCheckIds": [
+    "tenmangu-small-native-orbit-includes-source-point-with-complete-actor-and-clearance",
+    "tenmangu-inspection-day-preserves-native-pose-and-source-framing",
+    "tenmangu-inspection-night-preserves-native-pose-and-source-framing",
+    "tenmangu-walking-day-keeps-complete-actor-source-framing-and-ground",
+    "tenmangu-walking-night-keeps-complete-actor-source-framing-and-ground"
+  ],
+  "actualHTTPRequests": 87,
+  "startedAt": "2026-10-23T04:27:30.427Z",
+  "finishedAt": "2026-10-23T04:29:39.999Z",
+  "elapsedMs": 129572,
+  "files": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 164251,
+      "sha256": "968d6375e674c5d39763422cff29de34b655fc3d974d0197814f6a6ab4ce9deb",
+      "decodedBytes": 1607732,
+      "decodedSha256": "22b714288618cc34b9ac8369545a62a3d21ca18a6a8e2141dd9ae815d0ceef2f"
+    },
+    {
+      "file": "executed-driver.mjs.gz",
+      "bytes": 33902,
+      "sha256": "0f3d3861af72224bfeb6e73e8d6293b0ea4deee8fd40a2df09b4e78e44677a53",
+      "decodedBytes": 135651,
+      "decodedSha256": "991f105fed6fba76399524e48a1056ea4d62a13c832379d5da8369e0ddd8c4f3"
+    },
+    {
+      "file": "tenmangu-native-inspection-day-canvas.png",
+      "bytes": 637091,
+      "sha256": "f7405fc6feb21043db8b53d994e2974cb759525553421880326a49c89e781c5c"
+    },
+    {
+      "file": "tenmangu-native-inspection-night-canvas.png",
+      "bytes": 601123,
+      "sha256": "979d6ce58339cd96c97d5ea1075d0a1df551a4ce05f0a1999b064e3ceacb80dc"
+    },
+    {
+      "file": "tenmangu-native-walking-day-canvas.png",
+      "bytes": 618260,
+      "sha256": "f58f6eea41ada81c39732926a18da979ee5403470e7ed1c4907337b70c0653e2"
+    },
+    {
+      "file": "tenmangu-native-walking-night-canvas.png",
+      "bytes": 635598,
+      "sha256": "cb5e443696d78c82a8210f38530ba97d23d0926a963e1b7e4fb80694ea86d8ef"
+    }
+  ]
+}

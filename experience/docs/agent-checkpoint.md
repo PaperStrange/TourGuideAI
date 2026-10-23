@@ -30,7 +30,10 @@ legacy/geographic jobs before its neighborhood job was superseded by
 **39896144084** on pushed cache source
 **`823f4f9a836f604a71e20f34ef9e6bc6c60e8347`**. Transport source
 **`9b5d5f7998f952ca4dd8944b003a3c1bfaea1c20`** is pushed and verified at the
-remote branch. Its current acceptance run is **39897415716**.
+remote branch. Test/evidence source
+**`dce346173b2d00d1d6aa20b68858e50dfd5870c8`** is now pushed and verified.
+Its current acceptance run **39899177206** supersedes **39897415716**. Application
+and asset bytes remain those of candidate 6.
 
 The current immutable build is **candidate-6**, package
 **`ca4b3c95bc2a6b94ad2cc978a083d1e3c3c109d65febce326a5e16e937dc271b`**,
@@ -70,14 +73,59 @@ visible/stored stop order, localized distances and Maps agree. A native Chinese
 reload preserves the exact night pose and private note. Suggestion generation
 alone preserves the active journey. Executed driver:
 `cd900671ac142e17d2352fcd11fdfeb142eb1cf0cfb3aa1de67c62597f363fa3`.
-QA is running current daylight/night captures at Tenmangū and eight previously
-visited connector cells; their position provenance and new camera framing remain
-explicit. The visual driver is
+Current daylight/night captures at Tenmangū and eight previously visited connector
+cells finish **58 passing / 1 failing** checks in **745.896 seconds**, with 791
+actual HTTP requests and 18 canvas captures. All sampled primary-render, actor
+and ground checks pass. Tenmangū's torii remains cropped at the right edge after
+native adjustment; same-position landmark readability is not established. Saved
+position provenance and newly authored connector framing remain explicit. The visual driver is
 `e85bf0afea632984bc2a8dcdae3d30eaf89f098b7cd726e1c000f6b9e034a3fd`.
+Its report SHA256 is
+`897b1ceaf5a4ec1f9305704423b141397e049ba4b1a032acd07d998ccaef230b`.
+A bounded follow-up finishes **9 passing / 5 failing** checks in **129.572
+seconds**. One actual J input during inspection contracts the rendered distance
+to **3.5046 m** and raises actor occupancy to **54.99%**. The driver stops
+immediately at that violation. Escape recovers **5 m / 38.69%**, but crops the
+torii again. The unchanged package, four day/night canvases and every input/matrix
+are preserved; report SHA256
+`22b714288618cc34b9ac8369545a62a3d21ca18a6a8e2141dd9ae815d0ceef2f`,
+executed driver `991f105fed6fba76399524e48a1056ea4d62a13c832379d5da8369e0ddd8c4f3`.
+The latter driver is currently an uncommitted, explicit-only QA extension.
 Portable transport and route-choice reports, executed drivers, captured views and
 independently rehashed package bindings are under
 `evidence/neighborhood-20261023/qa/candidate-6-transport/` and
 `evidence/neighborhood-20261023/qa/candidate-6-route-choice/`.
+The two subsequent reports are under `qa/candidate-6-visual-review/` and
+`qa/candidate-6-tenmangu-framing/` in the same evidence tree. Focused QA uses bundled
+Chromium **151.0.7922.34**; the performance runs use system Chromium
+**151.0.7922.173**. These browser versions must remain distinct in comparisons.
+
+### Current correction and validation work
+
+- Navigation owns the Tenmangū inspection collision correction. Deliberate orbit
+  currently disables actor/distance recovery; preserve free inspection without
+  silently contracting the scene scale. Actual-geometry and native-input review
+  are required before acceptance.
+- Art owns a source-specific treatment of municipal feature
+  `kyoto-city:bldg_74454289-1d7a-4105-87ea-26e36c69bc44`. The source audit under
+  `world/platform-context/` establishes that Shijo Takakura platform A lies inside
+  its footprint. Its envelope and 2.124 m extent remain exact; unsupported retail
+  bays, recesses and glazing may be removed. Precise shelter construction remains
+  unknown. No invented openings or additional route sights are authorized by this
+  finding. The opaque envelope can still obscure the road.
+- Engineering's second graphics capability probe succeeds with actual Mesa
+  llvmpipe, the six requested application attributes and 4× antialiasing on system
+  Chromium 151.0.7922.173. Report SHA256
+  `fe156162b9b84e1fef7c74d00c182d5d5afa561fbdc3489117b66fae18df58c7`;
+  driver `2ab6610dc6e25e6a71d37fd71054fe226ccea61a93bbbb93b9d7b0d69daa6d8b`.
+  The original failed probe remains preserved. This establishes capability only.
+  One separately labelled candidate-6 performance diagnostic is now authorized
+  with identical quality, viewport, protocol and thresholds. Engineering holds
+  the exclusive browser/CPU window; no exports or other browser runs may overlap.
+- CI **39899177206** is still running. Shared perspective, solo, geographic source
+  preparation and travel companion jobs have passed. The other four jobs remain
+  in progress; no complete-route success is claimed.
+
 Full-route acceptance, complete connector/sight day-night review,
 physical GPU performance, Q03 and actual background-tab visibility remain open.
 The candidate is not published.

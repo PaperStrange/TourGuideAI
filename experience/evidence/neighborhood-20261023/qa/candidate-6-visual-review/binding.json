@@ -1,0 +1,52 @@
+{
+  "packageManifestSha256": "ca4b3c95bc2a6b94ad2cc978a083d1e3c3c109d65febce326a5e16e937dc271b",
+  "verifiedPackagedFiles": 445,
+  "source": {
+    "id": "shijo-east",
+    "revision": 1,
+    "geographySha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
+    "manifestSha256": "deb00b97ca3e29e314a13225678c7e6827de59a0f8ff68d5d3bdccc7d3563458"
+  },
+  "driverSha256": "e85bf0afea632984bc2a8dcdae3d30eaf89f098b7cd726e1c000f6b9e034a3fd",
+  "browser": "151.0.7922.34",
+  "conditions": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "reducedMotion": "no-preference",
+    "timeoutMs": 120000,
+    "walkingTimeoutMs": 2400000,
+    "sections": [
+      "visual-review"
+    ],
+    "assetDelivery": "Actual loopback HTTP with immutable captured build bodies and no-store; only deliberate abort/delay scenarios install request routes."
+  },
+  "checks": {
+    "passed": 58,
+    "failed": 1
+  },
+  "failedCheckIds": [
+    "tenmangu-native-westward-framing-keeps-player-and-brings-source-torii-into-frustum"
+  ],
+  "actualHTTPRequests": 791,
+  "startedAt": "2026-10-23T04:11:51.754Z",
+  "finishedAt": "2026-10-23T04:24:17.650Z",
+  "elapsedMs": 745896,
+  "files": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 564741,
+      "sha256": "573abc9b2f93579bfddeed9640bb7ebffd6da7474d2dec347cdf9b40d435c917",
+      "decodedBytes": 6526896,
+      "decodedSha256": "897b1ceaf5a4ec1f9305704423b141397e049ba4b1a032acd07d998ccaef230b"
+    },
+    {
+      "file": "executed-driver.mjs.gz",
+      "bytes": 32837,
+      "sha256": "ddd33ece07ceaef1757ad1fee445ee27ed8a1eab42fc075b7d523c818e5576bd",
+      "decodedBytes": 129666,
+      "decodedSha256": "e85bf0afea632984bc2a8dcdae3d30eaf89f098b7cd726e1c000f6b9e034a3fd"
+    }
+  ]
+}
