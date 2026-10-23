@@ -1,4 +1,18 @@
-# Candidate-2 local validation
+# Local validation
+
+Candidate-3 source is `9a3b9e8d7e9f8ae078d4671117fc87c295ef7af0`; its 299-file
+canonical package is `4fbeebdbde8ba750f619a0fc5c3e15637a49cdb92e90e22f376c41ce8d8c7922`.
+The scenery bytes remain identical to candidate-2. After the inspection-click and
+touch-help correction, application checks pass **191/191**, the canonical build
+succeeds and font regeneration reports zero missing source glyphs.
+
+| Candidate-3 report | Original SHA256 |
+| --- | --- |
+| `app-tests-candidate-3.txt.gz` decoded text | `3570b9b25ca568330adebe33b39b6d69af306d7d01d6ddea7c0e4ef6d2942b1b` |
+| `build-candidate-3.txt.gz` decoded text | `79b7ede6623f6e8349f6a0b3f71903707fc8066af111a8bd42a7a18e99bf0f7a` |
+| `font-candidate-3.txt` | `f519eb0af4ee0711f934cda2df4b23a98c8eebbb8398f99043d8f0b412b2fa48` |
+
+## Candidate-2
 
 Source: `88af351d9662a191762442022c21a0831e1b2feb`.
 Canonical build copied to `artifacts/neighborhood-20261023/candidate-2`.

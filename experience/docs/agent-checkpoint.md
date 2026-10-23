@@ -24,8 +24,11 @@ asset and scheduling checks pass. Font regeneration reports zero missing glyphs.
 CI **39886300478** was superseded by **39888148078** on
 **`ce2a59afd1a06b8cb17c60869f11ab1ec00a1ac0`**. Seven jobs passed before the remaining
 neighborhood job was superseded by **39891671767**, triggered by pushed source
-**`88af351d9662a191762442022c21a0831e1b2feb`**. That run covers candidate-2; the
-inspection-click correction in candidate-3 requires its own complete CI run.
+**`88af351d9662a191762442022c21a0831e1b2feb`**. The current acceptance run is
+**39893266215** on pushed candidate-3 source
+**`9a3b9e8d7e9f8ae078d4671117fc87c295ef7af0`**. Geographic preparation, travel
+companion and reviewed place packs pass; remaining browser jobs, including
+complete-route traversal, remain in progress.
 
 The current immutable browser candidate is
 **`artifacts/neighborhood-20261023/candidate-3`**, copied from the canonical
@@ -34,10 +37,43 @@ Its 299-file package identity is
 **`4fbeebdbde8ba750f619a0fc5c3e15637a49cdb92e90e22f376c41ce8d8c7922`**.
 Its scenery manifest is
 **`90c0873c5e540147630c970d4a2ea692c1583b3c407c175a2659d4e1e93934c8`**.
-QA has the exclusive browser window for stationary inspection clicks, native feature
-selection and restored click-to-walk after leaving Look closer. Touch help explains
-this behavior in EN/ZH; regenerated fonts contain zero missing source glyphs.
-The exact performance benchmark remains pending.
+Actual focused browser checks pass **53/53** in **386.849 seconds**. Mouse and touch
+misses stay stationary during inspection; the same ground point starts walking
+after Escape, in normal and reduced motion. Native clicks select real market
+geometry. Camera input, ignored gestures, settling, hidden zero work and night
+resume pass. EN/ZH touch help fits; regenerated fonts contain zero missing source
+glyphs. The report SHA256 is
+`4c61741481c8ecd6583689ac5babbbea698cb8068d2fa5bbd506562a8804ba13`, and executed
+driver SHA256 is `b229277589539aad59d331b750e1bc508514e6b1fed7bef12fe74d162269b2b0`.
+Evidence is under `evidence/neighborhood-20261023/qa/candidate-3/`.
+
+The exact candidate-3 performance run finishes with **10 passing / 5 failing
+checks** and an unresolved hidden-tab observation. First usable is **9,218.4 ms
+cold** and **4,549.7 / 4,641.5 / 4,542.1 ms warm**, missing the 8 s / 3 s gates.
+All four entries reach requested scenery detail without section errors. Twenty
+trusted actions respond; event-receipt-to-submitted-draw p95 is **19.8 ms**, while
+automation-dispatch-to-response p95 is **860.3 ms**. Native-event-timestamp-to-draw
+p95 is **856.1 ms**, so the receipt-only result does not establish 100 ms user
+response. Walking frame p95 is
+**1,047.8 ms**, with nine counter gaps; the 33.3 ms frame gate fails. Orbit key
+nudges provide one observed draw each and no frame-interval distribution.
+Observer work p95 is 0.4 ms. The host uses **SwiftShader** and has no `/dev/dri`;
+physical GPU/phone fluency remains unmeasured.
+
+The headless browser keeps both documents visible after actual tab activation and
+window minimization; the background-tab check times out before its sample. Actual
+Together-mode hidden-scene checks pass separately. The unmodified performance
+report and executed driver are preserved in
+`evidence/neighborhood-20261023/performance/candidate-3/`; decoded report SHA256 is
+`8d4f217241a05884a86e689097a8339802693f06071273ce93aa4721c33621b2`.
+QA is adding an explicit headed benchmark option and recording unavailable
+visibility observations as failed gates without suppressing later checks.
+
+Warm assets incur approximately 84–86 ms revalidation per unchanged resource.
+Engineering is implementing bounded hash-versioned caching for verified assets,
+with fresh manifests, unchanged verification/queue limits and explicit retry
+recovery after a cached integrity failure. The immutable candidate-3 remains
+preserved; cache-only savings require a new candidate and actual measurement.
 
 Candidate-2 package `f27fbe22db95a007010d2d46a661f27752a2361f5d9d84aaa4e4588c498e0dc5`
 finishes **67 passing / 2 failing** actual browser checks. The two failures expose
@@ -149,13 +185,13 @@ own package identities. Evidence is under `evidence/neighborhood-20261023/ci/`.
 
 Next actions, in order:
 
-1. Finish candidate-3 actual inspection-click/feature-selection/return-to-walking
-   checks in normal and reduced motion. Preserve candidate-2 and its failed observations.
-2. Run `experience/tools/neighborhood-performance.mjs` on candidate-3 in the
-   exclusive GPU window after QA finishes. The driver/protocol are committed and
-   have not run on this candidate. Thresholds remain 8 s cold, 3 s warm, 100 ms input
-   p95 and 33.3 ms observed frame p95; Q03 retains its separate unchanged threshold.
-   Retain the full conditions and every missed target.
+1. Retain the completed candidate-3 53/53 browser report and exact executed driver.
+   Preserve candidate-2 and its failed observations.
+2. Review and verify the hash-versioned caching increment, build a new immutable
+   candidate, and repeat the exact performance protocol in the exclusive GPU
+   window. Thresholds remain 8 s cold, 3 s warm, 100 ms input p95 and 33.3 ms
+   observed frame p95; Q03 retains its separate unchanged threshold. Retain the
+   candidate-3 failures, full conditions and every missed target.
 3. Review completed CI evidence, then validate the changed candidate with the
    complete route, streaming delay/failure/retry, saved returns, private records,
    EN/ZH, Maps export and existing journeys. Keep failed observations explicit.
