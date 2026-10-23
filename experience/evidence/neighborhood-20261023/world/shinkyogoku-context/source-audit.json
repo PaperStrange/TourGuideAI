@@ -1,0 +1,168 @@
+{
+  "reviewedAt": "2026-10-23",
+  "status": "pass",
+  "rawSource": {
+    "file": "artifacts/neighborhood-20261021/world/raw/osm-map.json",
+    "sha256": "45969d94df108b46f38cb4b13e9f41756c30a38ce602e504f1b92d6486afa787",
+    "license": "ODbL-1.0",
+    "attribution": "© OpenStreetMap contributors"
+  },
+  "scene": {
+    "file": "experience/src/neighborhoods/shijo-east/scene.json",
+    "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e"
+  },
+  "player": {
+    "x": 682.274,
+    "y": 69.952,
+    "longitude": 135.7671933419168,
+    "latitude": 35.00436953533579
+  },
+  "roofWay": {
+    "type": "way",
+    "id": 551741577,
+    "timestamp": "2025-11-14T08:18:19Z",
+    "version": 8,
+    "changeset": 174637220,
+    "user": "km2bp",
+    "uid": 3610826,
+    "nodes": [
+      5328204779,
+      5328204778,
+      5328204777,
+      5328204776,
+      5328204775,
+      5328204774,
+      5328204773,
+      5328204772,
+      5328204771,
+      5328204770,
+      5328204769,
+      5328204768,
+      5328204767,
+      5328204766,
+      5328204765,
+      5328204764,
+      5328204763,
+      5328204762,
+      5328204761,
+      5328204760,
+      5328204759,
+      5328204758,
+      5328204757,
+      10688473736,
+      10688473738,
+      5328204756,
+      5328204755,
+      10689815248,
+      5328204754,
+      10689815246,
+      5328204753,
+      5328204752,
+      5328204751,
+      5328204750,
+      5328204749,
+      5328204748,
+      5328204747,
+      5328204746,
+      5328204745,
+      5328204744,
+      5328204743,
+      5328204779
+    ],
+    "tags": {
+      "building": "roof",
+      "image": "https://photos.app.goo.gl/7Q9d38etEjearB5D7",
+      "layer": "1"
+    }
+  },
+  "streetWay": {
+    "type": "way",
+    "id": 1568699671,
+    "timestamp": "2026-10-16T06:45:45Z",
+    "version": 1,
+    "changeset": 190588664,
+    "user": "fūrai-bō",
+    "uid": 22072823,
+    "nodes": [
+      4771482147,
+      434344439,
+      5204146525,
+      434344435,
+      5204263052,
+      434344433,
+      434344428,
+      11791988811,
+      11791924470,
+      434344416,
+      11791924469,
+      11793855056,
+      11791924472,
+      434344398
+    ],
+    "tags": {
+      "abutters": "retail",
+      "bicycle": "dismount",
+      "carriage": "no",
+      "contact:facebook": "shinkyogoku",
+      "contact:tripadvisor": "1386092",
+      "contact:website": "https://www.shinkyogoku.or.jp/",
+      "covered": "yes",
+      "highway": "pedestrian",
+      "horse": "no",
+      "motor_vehicle": "no",
+      "name": "新京極通",
+      "name:en": "Shinkyogoku street",
+      "name:fr": "Rue Shinkyōgoku",
+      "name:ja-Hira": "しんきょうごくどおり",
+      "name:ja-Latn": "Shinkyōgoku-dōri",
+      "name:ru": "Синкёгоку улица",
+      "start_date": "1872",
+      "surface": "paving_stones",
+      "tourism": "attraction",
+      "wikidata": "Q11501300",
+      "wikimedia_commons": "Category:Shinkyogoku",
+      "wikipedia": "ja:新京極通"
+    }
+  },
+  "sourceRingNodeCount": 42,
+  "sourceProjectedBounds": [
+    678.3541695101397,
+    9.241356145000928,
+    709.0158436960771,
+    547.3035086447322
+  ],
+  "sourceProjectedAreaSquareMetres": 2416.900990864372,
+  "containsPlayer": true,
+  "pointDistanceToRoofBoundaryMetres": 1.6074474426442402,
+  "crossSectionAtPlayerNorthing": {
+    "endpoints": [
+      [
+        679.6187796120121,
+        69.952
+      ],
+      [
+        683.8814754264629,
+        69.952
+      ]
+    ],
+    "widthMetres": 4.262695814450808,
+    "meaning": "Derived width of mapped plan polygon; no measured construction clearance"
+  },
+  "sceneHeight": {
+    "metres": 5,
+    "origin": "authored-display"
+  },
+  "displayBounds": [
+    678.354,
+    9.241,
+    709.016,
+    547.304
+  ],
+  "missingSourceTags": [
+    "height",
+    "min_height",
+    "roof:shape",
+    "roof:material",
+    "roof:height"
+  ]
+}

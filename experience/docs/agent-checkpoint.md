@@ -31,18 +31,22 @@ legacy/geographic jobs before its neighborhood job was superseded by
 **`823f4f9a836f604a71e20f34ef9e6bc6c60e8347`**. Transport source
 **`9b5d5f7998f952ca4dd8944b003a3c1bfaea1c20`** is pushed and verified at the
 remote branch. Test/evidence source
-**`dce346173b2d00d1d6aa20b68858e50dfd5870c8`** is pushed and verified. The latest
-pushed checkpoint is **`0548c09ab1d55cdeae21314f95a172fb4f14ff54`**; it preserves
-the visual failures and platform source audit without changing application bytes.
-Its current acceptance run **39899177206** supersedes **39897415716**. Application
-and asset bytes remain those of candidate 6.
+**`dce346173b2d00d1d6aa20b68858e50dfd5870c8`** is pushed and verified. Checkpoint
+**`0548c09ab1d55cdeae21314f95a172fb4f14ff54`** preserves the visual failures and
+platform source audit without changing application bytes. The current implementation
+is **`a7cd027f7e8085ef0cb7054487f1a3479a6724de`**, pushed and independently verified
+against the remote branch. Its acceptance run **39902670448** is in progress;
+it supersedes **39899177206**, whose seven legacy/geographic jobs passed before
+the remaining neighborhood job was cancelled. Application and asset bytes now
+correspond to candidate 7 below.
 
 The current immutable build is **candidate-7**, package
 **`990d7ef1cf8c35023e19f32c3ee66b688282a30434e8812c4335edf74449a133`**,
 with **443 files / 96,677,911 bytes** and scenery manifest
 **`679241ee06a8115ad3f95ddd523c2f56555b900f3ecc4437d272573a968ec4e5`**.
 It integrates the camera correction and the source-supported open platform
-assembly. All **201/201** application checks pass and the canonical build succeeds.
+assembly. All **201/201** application checks and **17/17** repository gates pass;
+the canonical build succeeds.
 World's independent audit checks 74 sections: 67 containers are byte-identical;
 seven decoded comparisons preserve 357 unrelated source groups with complete
 attributes, materials and transforms. Index 223 has 108 triangles in each detail
@@ -115,7 +119,7 @@ torii again. The unchanged package, four day/night canvases and every input/matr
 are preserved; report SHA256
 `22b714288618cc34b9ac8369545a62a3d21ca18a6a8e2141dd9ae815d0ceef2f`,
 executed driver `991f105fed6fba76399524e48a1056ea4d62a13c832379d5da8369e0ddd8c4f3`.
-The latter driver is currently an uncommitted, explicit-only QA extension.
+The latter explicit-only QA extension is preserved in the pushed source history.
 Portable transport and route-choice reports, executed drivers, captured views and
 independently rehashed package bindings are under
 `evidence/neighborhood-20261023/qa/candidate-6-transport/` and
@@ -131,7 +135,10 @@ Chromium **151.0.7922.34**; the performance runs use system Chromium
   tilt, zoom and symmetric pinch. Explicit target pan still permits independent
   detail inspection. The exact recorded Tenmangū geometry now retains 5 m and
   38.69% actor occupancy; reversal works. All **24** focused camera/input/legacy
-  checks pass. Native touch/input validation on a new built package remains due.
+  checks pass. Native touch/input validation is running against candidate 7;
+  both motion preferences retain the complete actual-input matrix. Software
+  rendering and repeated public saved-view restoration make this correctness run
+  lengthy; its duration supplies no new performance acceptance result.
   The fixed blocked viewpoint still does not frame the torii.
 - Art owns a source-specific treatment of municipal feature
   `kyoto-city:bldg_74454289-1d7a-4105-87ea-26e36c69bc44`. The source audit under
@@ -147,8 +154,9 @@ Chromium **151.0.7922.34**; the performance runs use system Chromium
   Construction and present condition remain unverified; the available 2016 photo
   shows Platform B, not A. Only index 223's geometry and related metadata change;
   navigation, sources, unrelated architecture and material images remain fixed.
-  Art owns the isolated export; world independently audits its geometry before
-  root promotion and actual day/night browser review.
+  The isolated export and independent geometry audit are complete. Root promoted
+  the exact audited assets into candidate 7. Actual matched day/night browser
+  appearance review remains pending.
 - Engineering's second graphics capability probe succeeds with actual Mesa
   llvmpipe, the six requested application attributes and 4× antialiasing on system
   Chromium 151.0.7922.173. Report SHA256
@@ -173,8 +181,16 @@ Chromium **151.0.7922.34**; the performance runs use system Chromium
   is unchanged pending that review. A subsequent compatible pause-metadata change
   must preserve saved metric views/notes, retain the full graph and validate
   recomputed route legs/Maps coordinates.
-- CI **39899177206** has passed all seven legacy/geographic jobs. Its connected
-  neighborhood job remains in progress; no complete-route success is claimed.
+- World records the Shinkyōgoku canopy's mapped footprint and the merchant
+  association's polycarbonate-roof documentation in `world/shinkyogoku-context/`.
+  Art is preparing a bounded material interpretation for source `551741577`.
+  Geometry, authored height and collision remain fixed. The candidate-7 package
+  contains no such material change. Export waits for QA's exclusive CPU/browser
+  window to finish; independent geometry proof and matched e006/Tenmangū
+  daylight/night review are required before promotion.
+- CI **39902670448** is running on pushed source `a7cd027`; predecessor
+  **39899177206** passed seven jobs before supersession. No complete-route success
+  for the current candidate is claimed.
 
 Full-route acceptance, complete connector/sight day-night review,
 physical GPU performance, Q03 and actual background-tab visibility remain open.

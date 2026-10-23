@@ -1,0 +1,36 @@
+{
+  "reviewedAt": "2026-10-23",
+  "scope": "Read-only source review for the Shinkyogoku covered-street view at local x682.274,y69.952; no production change",
+  "mappedRoofId": "osm:way:551741577",
+  "mappedStreetId": "osm:way:1568699671",
+  "primaryReference": {
+    "title": "新京極通開通150年を祝し、4月1日から記念事業スタート！",
+    "publisher": "新京極商店街振興組合",
+    "distributionService": "@Press",
+    "url": "https://www.atpress.ne.jp/news/305224",
+    "publishedAt": "2022-04-07 11:00",
+    "pageReview": "Complete page text read",
+    "facts": [
+      "The association describes Shinkyogoku between Sanjo and Shijo as an approximately500m north-south street.",
+      "Polycarbonate roof replacement began in November2021, with completion planned around November2022. This announcement alone does not verify completion."
+    ],
+    "image": {
+      "caption": "ポリカーボネート屋根の張替え(工事後の状態)2",
+      "url": "https://www.atpress.ne.jp/releases/305224/img_305224_15.jpg?format=webp&ts=1696471582&w=384",
+      "localPath": "artifacts/neighborhood-20261023/world/shinkyogoku-roof-2022.webp",
+      "sha256": "9b312f753c24e132d419f541ad7c96f14862ae07e8d3ef02e4ee320690814fed",
+      "bytes": 3196,
+      "visualReview": "Locally inspected downloaded image: pale translucent curved panels with repeated framing. Its precise position within Shinkyogoku is unspecified.",
+      "rights": "Publicly viewable association press photograph. No open redistribution/adaptation license established; retained privately as research reference only.",
+      "usage": "No runtime image pixels, textures or generated geometry"
+    }
+  },
+  "supportedProposal": "Review the existing generic opaque canopy material using this street-specific polycarbonate evidence. A modeled cross-section or facade attachment treatment requires a location-matched visual reference and a separate approved authored design.",
+  "limits": [
+    "The reviewed point lies in the mapped roof plan; the source tags supply no construction height, clearance, roof profile or support spacing.",
+    "The scene's5m height is authored; mapped layer1 expresses ordering only.",
+    "The bounded review did not establish the exact present-day roof section or facade joins at this point.",
+    "Nishiki's distinct roof recipe is not evidence for Shinkyogoku."
+  ],
+  "productionEdits": false
+}

@@ -2,7 +2,7 @@
 
 The candidate changes source index `223`, `kyoto-city:bldg_74454289-1d7a-4105-87ea-26e36c69bc44`, to an authored open assembly. The municipal record classifies it as `普通無壁舎`, an ordinary wall-less structure. The OSM Platform A point lies inside its footprint. This supports the open-form treatment; exact current shelter construction remains unverified.
 
-The frozen asset candidate is `artifacts/neighborhood-20261023/art/platform-open-transport/`, manifest SHA256 `679241ee06a8115ad3f95ddd523c2f56555b900f3ecc4437d272573a968ec4e5`. Production provenance SHA256 is `845448d6bb53c4de1592c42b5e726d4f5b8001d589e14299221c2fae53c8270b`. Actual browser comparison and independent source audit remain separate acceptance steps. No public asset promotion is performed by this evidence record.
+The frozen asset candidate is `artifacts/neighborhood-20261023/art/platform-open-transport/`, manifest SHA256 `679241ee06a8115ad3f95ddd523c2f56555b900f3ecc4437d272573a968ec4e5`. Production provenance SHA256 is `845448d6bb53c4de1592c42b5e726d4f5b8001d589e14299221c2fae53c8270b`. Independent source/export review has passed. Actual browser comparison remains pending for the canonical candidate7 build.
 
 ## Source and authored construction
 
@@ -15,6 +15,8 @@ The retained 2016 photograph visibly labels Platform B. Its dated appearance doe
 ## Geometry and resource proof
 
 [Geometry preservation](geometry-preservation.json) compares the candidate with manifest `deb00b97ca3e29e314a13225678c7e6827de59a0f8ff68d5d3bdccc7d3563458`. Across all 74 containers, every unrelated source's complete decoded oriented triangles, attributes, material names and world transforms remain exact. Retained imported object ordering changes some context/Mitsui/Daiya container bytes; their per-source geometry remains unchanged. Shared material image bytes, lighting, source ledgers and runtime source-index table are unchanged. Target roof triangles and roof ring are exact, and source index `223` is retained.
+
+The [independent export audit](../../world/platform-context/open-export-audit.json), SHA256 `35a910929b4828c838d321a0be2a7b391b4d7aa9f87b6e302efba80ed2803224`, checks all 74 sections. Sixty-seven containers remain byte-identical; decoded comparison of the seven changed containers preserves 357 unrelated source groups, including full material definitions, attributes and transforms. Both target LODs contain 108 triangles within the approved slab, beam and seven post volumes, with no enclosing wall faces. The original two roof-top triangles remain exact. Canonical-to-export roof-bound deviation is `7.08µm`; the rendered structure retains `1.631825m` clearance from the frozen navigation corridor. All 148 gzip round trips pass.
 
 | Target resource | Prior target triangles | Open-assembly triangles | Current section transfer | Current decoded glTF + binary |
 | --- | ---: | ---: | ---: | ---: |

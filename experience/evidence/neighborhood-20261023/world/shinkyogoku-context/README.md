@@ -1,0 +1,9 @@
+# Shinkyogoku canopy reference review
+
+Reviewed 2026-10-23 for the actual local point `(682.274,69.952)`, WGS84 latitude `35.0043695353`, longitude `135.7671933419`. [The source audit](source-audit.json) places it inside retained roof way `551741577`, version8, dated 2025-11-14. Covered pedestrian way `1568699671` identifies 新京極通. The roof's plan spans local bounds `[678.354170,9.241356,709.015844,547.303509]`; its cross-section at the reviewed northing spans `x679.618780–683.881475`, approximately4.262696m. These dimensions derive from mapped plan geometry. Construction heights and clearances remain unknown. The existing scene's5m roof height is authored.
+
+The [merchant association's 2022 announcement](https://www.atpress.ne.jp/news/305224) identifies polycarbonate roofing and a replacement programme begun in November2021, with completion then planned for November2022. Its published after-work photograph shows pale translucent curved panels and repeated framing. The exact photograph location within the street is unspecified. [Reference metadata](reference-review.json) retains the image hash, caption, date and rights limit. The private reference image supplies no licensed runtime texture.
+
+This evidence supports a street-specific material review. An exact southern roof profile, support arrangement and facade connection still require a matching view and approved authored dimensions. No architecture, canonical geography, navigation or runtime files changed during this research.
+
+The compact source audit was produced by `artifacts/neighborhood-20261023/world/audit-shinkyogoku.py` using Shapely2.2.0 against the retained raw OSM response and frozen scene; both source hashes are embedded. It checks complete ring-node availability, polygon validity, point containment and the actual plan cross-section. OSM data is © OpenStreetMap contributors, ODbL1.0. Current access and construction condition were not surveyed.

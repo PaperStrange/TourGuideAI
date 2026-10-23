@@ -1,7 +1,21 @@
 # Delivery board · TourGuideAI 2.5D
 
-Updated 2026-10-18. Owner: lead. Planning baseline: `origin/iteration` at
+Updated 2026-10-23. Owner: lead. Planning baseline: `origin/iteration` at
 `eae982f4ba20a107bf21a35b70f635b4935a4c70`.
+
+**Active milestone · connected neighborhood:** the approved
+[sprint plan](../../experience/docs/sprint-connected-neighborhood-20261021.md)
+targets a continuous 1–2 km walking route with 5–8 sights and richer solo
+recommendations. The implemented pilot connects six sights over 1,353.444 m.
+Source `a7cd027` is pushed; candidate 7 passes 201 application checks and
+17 repository gates. Independent camera/source reviews are complete; native
+gesture, landmark-arrival and matched open-platform appearance checks are running.
+Full outward/return CI and performance acceptance remain open. Existing software
+renderer observations exceed the input/frame targets; physical GPU/phone fluency
+is unmeasured. Published runtime `17b8f37` remains the verified baseline.
+The [agent checkpoint](../../experience/docs/agent-checkpoint.md) records exact
+package identities, evidence, failures and current owners. The records below
+describe preceding iterations and retain their original release scope.
 
 **Delivered solo exploration · published:** the user authorizes the next iteration
 and research into broader solo travel, preserving art, quality and usable interaction.

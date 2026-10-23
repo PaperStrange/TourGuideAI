@@ -4,7 +4,9 @@ Candidate-7 package is `990d7ef1cf8c35023e19f32c3ee66b688282a30434e8812c4335edf7
 (443 files / 96,677,911 bytes). It integrates the inspection camera correction and
 the independently audited open platform assembly. Scenery manifest:
 `679241ee06a8115ad3f95ddd523c2f56555b900f3ecc4437d272573a968ec4e5`.
-Application checks pass **201/201**, with no skips, and the canonical build succeeds.
+Application checks pass **201/201** and repository gates pass **17/17**, with no
+skips; the canonical build succeeds. Source `a7cd027f7e8085ef0cb7054487f1a3479a6724de`
+is pushed and verified against the remote branch.
 The two additional checks cover actual Tenmangū geometry and touch midpoint intent;
 the 24 focused camera/input checks are included, not an extra test count. Native
 browser input, source-feature appearance and performance require separate evidence.
@@ -13,6 +15,7 @@ browser input, source-feature appearance and performance require separate eviden
 | --- | --- |
 | `app-tests-candidate-7.txt.gz` decoded text | `de20d94b486e0fe97719c42f6a9b3c4a3dd9ab944356ee37601d3d99ecf3f09f` |
 | `build-candidate-7.txt.gz` decoded text | `8e25273f4f2ac56f058345a092fd841a34865f0affb1324193dacd5c44f4e2bc` |
+| `repository-gates-candidate-7.txt` | `43a16b6a9e37d69799f7f711f656ea8ae0dc879d15558f6b93f7d192cf632332` |
 
 ## Candidate-6
 
