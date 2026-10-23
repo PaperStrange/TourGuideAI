@@ -1,0 +1,2192 @@
+{
+  "status": "pass",
+  "reviewedAt": "2026-10-23",
+  "sourceId": "kyoto-city:bldg_74454289-1d7a-4105-87ea-26e36c69bc44",
+  "sourceIndex": 223,
+  "baseline": {
+    "directory": "artifacts/neighborhood-20261023/candidate-6/assets/neighborhoods/shijo-east",
+    "manifest": {
+      "bytes": 314191,
+      "sha256": "deb00b97ca3e29e314a13225678c7e6827de59a0f8ff68d5d3bdccc7d3563458"
+    }
+  },
+  "candidate": {
+    "directory": "artifacts/neighborhood-20261023/art/platform-open-transport",
+    "manifest": {
+      "bytes": 314192,
+      "sha256": "679241ee06a8115ad3f95ddd523c2f56555b900f3ecc4437d272573a968ec4e5"
+    },
+    "provenance": {
+      "bytes": 1630579,
+      "sha256": "845448d6bb53c4de1592c42b5e726d4f5b8001d589e14299221c2fae53c8270b"
+    }
+  },
+  "source": {
+    "scene": {
+      "bytes": 8789674,
+      "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e"
+    },
+    "geography": {
+      "bytes": 175219,
+      "sha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55"
+    },
+    "treatment": {
+      "sourceId": "kyoto-city:bldg_74454289-1d7a-4105-87ea-26e36c69bc44",
+      "treatment": "wall-less-structure",
+      "recipeId": "urban-plaster",
+      "expectedSourceIndex": 223,
+      "expectedHeightMetres": 2.1240000000000023,
+      "expectedBaseHeightMetres": 0,
+      "association": {
+        "sourceId": "osm:node:8886543723",
+        "name": "Shijo Takakura · Platform A",
+        "meaning": "The mapped bus-platform point lies inside the municipal ordinary wall-less structure. Exact support layout, roof construction and current condition remain unverified."
+      },
+      "construction": {
+        "roofThicknessMetres": 0.08,
+        "postCount": 7,
+        "postWidthMetres": 0.12,
+        "endInsetMetres": 0.45,
+        "beamDepthMetres": 0.1,
+        "beamWidthMetres": 0.1,
+        "roofMaterial": "roof",
+        "structureMaterial": "frame"
+      },
+      "authored": "Original open assembly informed by the official wall-less classification, preserving the source roof ring and top. Slab thickness, seven centreline supports, beam dimensions and neutral finishes are authored. Beam underside1.944m is virtual construction, not measured real clearance. No exact Platform A shelter reconstruction is claimed.",
+      "evidence": [
+        {
+          "file": "experience/evidence/neighborhood-20261023/world/platform-context/audit.json",
+          "sha256": "a6c957b436a26baf945b45fd3c2e144701dc240ebd5e93e672bfceb2a115e5c6"
+        },
+        {
+          "file": "experience/evidence/neighborhood-20261023/world/platform-context/osm-records.json",
+          "sha256": "155c965cda7519827dceb363883537f3d952f2213500aa30bfa8c63af3c1a946"
+        },
+        {
+          "file": "experience/evidence/neighborhood-20261023/world/platform-context/semantic-review.json",
+          "sha256": "a56ad01d023a620bbee4bc776e93365c428ad027da570eb13661ed271b413c22"
+        }
+      ],
+      "evidenceRecords": [
+        {
+          "file": "experience/evidence/neighborhood-20261023/world/platform-context/audit.json",
+          "sha256": "a6c957b436a26baf945b45fd3c2e144701dc240ebd5e93e672bfceb2a115e5c6",
+          "record": {
+            "status": "pass",
+            "sourceId": "kyoto-city:bldg_74454289-1d7a-4105-87ea-26e36c69bc44",
+            "officialProperties": {
+              "gml_id": "bldg_74454289-1d7a-4105-87ea-26e36c69bc44",
+              "作成日": "2024-03-22",
+              "計測高さ": "2.9",
+              "計測高さ_単位": "m",
+              "地上階数": "0",
+              "地下階数": "0",
+              "建築年": "0001",
+              "用途": "不明",
+              "構造種別": "不明",
+              "調査年": "2025",
+              "建物ID": "26100-bldg-418155",
+              "LOD1幾何オブジェクト原典資料": "公共測量成果",
+              "主題属性": "都市計画基礎調査",
+              "名称": null
+            },
+            "platformNodeId": 8886543723,
+            "stopAreaRelationId": 21186538,
+            "projectedPoint": [
+              174.01116254515452,
+              -2.329753650424183
+            ],
+            "insideFootprint": true,
+            "boundaryDistanceMetres": 0.783915255136987,
+            "height": {
+              "metres": 2.1240000000000023,
+              "origin": "derived-from-official-LOD1-z-range",
+              "sourceMinimumZ": 37.25,
+              "sourceMaximumZ": 39.374,
+              "measuredHeightAttribute": "2.9",
+              "meaning": "LOD1 solid vertical extent; measured-height attribute retained independently; facade/roof proportions unreviewed"
+            },
+            "rawOsmIdentityChecked": true
+          }
+        },
+        {
+          "file": "experience/evidence/neighborhood-20261023/world/platform-context/osm-records.json",
+          "sha256": "155c965cda7519827dceb363883537f3d952f2213500aa30bfa8c63af3c1a946",
+          "record": {
+            "schemaVersion": 1,
+            "sourceFile": "artifacts/neighborhood-20261021/world/raw/osm-map.json",
+            "sourceSha256": "45969d94df108b46f38cb4b13e9f41756c30a38ce602e504f1b92d6486afa787",
+            "license": "ODbL-1.0",
+            "attribution": "© OpenStreetMap contributors",
+            "retrievedAt": "2026-10-21T07:41:38.008383+00:00",
+            "elements": [
+              {
+                "type": "node",
+                "id": 8886543723,
+                "lat": 35.003718,
+                "lon": 135.7616253,
+                "timestamp": "2026-05-08T06:59:10Z",
+                "version": 8,
+                "changeset": 182368476,
+                "user": "HayaKoh",
+                "uid": 21636850,
+                "tags": {
+                  "bench": "yes",
+                  "bin": "no",
+                  "bus": "yes",
+                  "departures_board": "realtime",
+                  "highway": "bus_stop",
+                  "lit": "yes",
+                  "local_ref": "A",
+                  "name": "四条高倉",
+                  "name:en": "Shijo Takakura",
+                  "name:ja": "四条高倉",
+                  "name:ja-Hira": "しじょうたかくら",
+                  "name:ko": "시조타카쿠라",
+                  "name:zh-Hans": "四条高仓",
+                  "name:zh-Hant": "四条高倉",
+                  "operator": "京都市交通局;京都バス",
+                  "public_transport": "platform",
+                  "shelter": "yes;no",
+                  "tactile_paving": "yes"
+                }
+              },
+              {
+                "type": "way",
+                "id": 465066447,
+                "timestamp": "2024-11-05T04:13:54Z",
+                "version": 8,
+                "changeset": 158763702,
+                "user": "MatStrange",
+                "uid": 187355,
+                "nodes": [
+                  4600871814,
+                  4600891666,
+                  4600871813,
+                  4600891664,
+                  4600891662,
+                  4600871812,
+                  4600891660,
+                  4600891658,
+                  4600871811,
+                  4600891656,
+                  4600891654,
+                  4600871810,
+                  4600891652,
+                  4600891650,
+                  4600871809,
+                  4600891648,
+                  4600891646,
+                  4600871808,
+                  4600891644,
+                  4600891642,
+                  4600871807,
+                  4600891602,
+                  4600871806,
+                  4600891604,
+                  11791924472,
+                  11793855057,
+                  4600871803,
+                  4600891623,
+                  4600871802,
+                  4600871801,
+                  4600891621,
+                  4600871800
+                ],
+                "tags": {
+                  "bicycle": "dismount",
+                  "covered": "yes",
+                  "footway": "sidewalk",
+                  "highway": "footway",
+                  "lit": "yes",
+                  "surface": "paving_stones"
+                }
+              },
+              {
+                "type": "way",
+                "id": 465069431,
+                "timestamp": "2025-12-11T04:10:59Z",
+                "version": 10,
+                "changeset": 175784580,
+                "user": "taketaketake",
+                "uid": 4757277,
+                "nodes": [
+                  305536679,
+                  2737069292,
+                  2737069295,
+                  305536680,
+                  2737069304,
+                  2737069311,
+                  337515636,
+                  2737069313,
+                  2737069316,
+                  305536681,
+                  2737069318,
+                  2737069321,
+                  335699954,
+                  2737069336,
+                  2737069339,
+                  332507385,
+                  2737069341,
+                  2737069348,
+                  324259960
+                ],
+                "tags": {
+                  "bicycle:conditional": "no @ (08:00-21:00)",
+                  "highway": "primary",
+                  "lanes": "2",
+                  "lit": "yes",
+                  "maxspeed": "40",
+                  "name": "四条通",
+                  "name:en": "Shijo Street",
+                  "name:fr": "Rue Shijō",
+                  "name:ja": "四条通",
+                  "name:ja-Hira": "しじょうどおり",
+                  "name:ja-Latn": "Shijō-dōri",
+                  "note": "京都市道ですが、主要地方道なので primary にしてあります",
+                  "official_name": "嵐山祇園線",
+                  "official_name:en": "Arashiyama Gion Line",
+                  "official_name:ja": "嵐山祇園線",
+                  "official_name:ja-Hira": "あらしやまぎおんせん",
+                  "official_name:ja-Latn": "Arashiyama Gion-sen",
+                  "oneway:bicycle": "yes",
+                  "ref": "186",
+                  "sidewalk:left": "no",
+                  "sidewalk:right": "separate",
+                  "source": "Bing",
+                  "surface": "asphalt",
+                  "wikidata": "Q7496525",
+                  "wikipedia": "ja:四条通"
+                }
+              },
+              {
+                "type": "relation",
+                "id": 21186538,
+                "timestamp": "2026-08-04T07:56:37Z",
+                "version": 1,
+                "changeset": 186908284,
+                "user": "HayaKoh",
+                "uid": 21636850,
+                "members": [
+                  {
+                    "type": "node",
+                    "ref": 8886543730,
+                    "role": "platform"
+                  },
+                  {
+                    "type": "node",
+                    "ref": 8886543723,
+                    "role": "platform"
+                  }
+                ],
+                "tags": {
+                  "name": "四条高倉",
+                  "name:en": "Shijo Takakura",
+                  "name:ja": "四条高倉",
+                  "name:ja-Hira": "しじょうたかくら",
+                  "name:ko": "시조타카쿠라",
+                  "name:zh-Hans": "四条高仓",
+                  "name:zh-Hant": "四条高倉",
+                  "public_transport": "stop_area",
+                  "type": "public_transport"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "file": "experience/evidence/neighborhood-20261023/world/platform-context/semantic-review.json",
+          "sha256": "a56ad01d023a620bbee4bc776e93365c428ad027da570eb13661ed271b413c22",
+          "record": {
+            "reviewedAt": "2026-10-23",
+            "scope": "Exact municipal feature semantic lookup and bounded primary-source research; no production geometry changes",
+            "sourceId": "kyoto-city:bldg_74454289-1d7a-4105-87ea-26e36c69bc44",
+            "source": {
+              "dataset": "京都市 3D都市モデル LOD1_2025",
+              "license": "CC-BY-4.0",
+              "attribution": "Kyoto City",
+              "archiveSha256": "15701dd9b876eeba5be4d9c45ac0cd39e72f43a30fb17164aea8d3b07618116d",
+              "gdbPath": "artifacts/neighborhood-20261021/world/raw/kyoto-21422/bldg_LOD1_R7_公開用.gdb",
+              "layer": "建物LOD1_R7",
+              "featureId": 401985,
+              "queryFile": "gdb-query.sql",
+              "querySha256": "066826cce2730ee975c555800bd26d45b5312af5036d9e0ea6e1867b72628b54",
+              "resultFile": "gdb-feature.txt",
+              "resultSha256": "75b9088348351fde133c253dcd6cf158b0fdbc622ccb43b041ef97dce46be477",
+              "reader": "GDAL ogrinfo 3.10.3; read-only attribute query, geometry omitted"
+            },
+            "additionalProperties": {
+              "分類": "普通無壁舎",
+              "立上高": "点群から取得_中央値",
+              "_lod": "1",
+              "ftype": "Building",
+              "fname": "bldg\\bldg_LOD1",
+              "meshname": "52354600",
+              "地図レベル": "地図情報レベル2500",
+              "公共測量成果説明": "数値地形図データ"
+            },
+            "schemaReview": {
+              "url": "https://www.mlit.go.jp/plateaudocument01-01/Contents/定義文書/bldg--Building.html",
+              "reviewedFields": [
+                "bldg:Building",
+                "bldg:class",
+                "bldg:measuredHeight",
+                "bldg:lod1Solid"
+              ],
+              "classMeaning": "Ordinary wall-less structure; the category also covers specified greenhouse/industrial structures below three storeys.",
+              "heightMethodMeaning": "Point-cloud median used for the LOD1 extrusion.",
+              "solidMeaning": "LOD1 extrudes the upper orthographic outline upward from ground at one height; median is the stated principle.",
+              "measuredHeightMeaning": "Lowest above-ground point to highest point, metres.",
+              "baseZInterpretation": "37.25 is the retained LOD1 model lower boundary. The schema describes a ground-up abstraction; this value does not establish a measured roof underside or platform clearance.",
+              "limits": [
+                "The 2.9 m measured-height attribute and 2.124 m solid extent retain distinct meanings; their numerical discrepancy is not resolved by this lookup.",
+                "Exact roof thickness, support positions, openings, clearance and present condition remain unverified.",
+                "The semantic class supports an open-structure classification. Any authored open archetype must retain source identity, footprint and top extent while declaring post layout, roof thickness and clearance as authored."
+              ]
+            },
+            "projectReview": {
+              "url": "https://www.city.kyoto.lg.jp/kensetu/page/0000241999.html",
+              "pageDate": "2018-09-03",
+              "facts": [
+                "Shijo sidewalk widening between Karasuma and Kawabata completed at the end of October 2015.",
+                "The project describes a 1120 m section, 22 m wide.",
+                "Sixteen bus stops were consolidated into four Shijo Takakura/Shijo Kawaramachi eastbound and westbound locations with roadway-projecting terrace stops."
+              ],
+              "limits": "Project-level evidence does not specify this feature's roof/support geometry; no permission to redistribute official imagery is inferred."
+            },
+            "productionChanges": false
+          }
+        }
+      ]
+    }
+  },
+  "auditProducer": {
+    "bytes": 16093,
+    "sha256": "7cbd7f29abaaff2fc6e1b28d77524115df99f6e156add156205ab84f10c17182"
+  },
+  "geometryAuditProducer": {
+    "bytes": 6090,
+    "sha256": "4cce2b043e9bd9bc3f59b39e435c1679a0f7da934b1b3bc57d392a18386ece52"
+  },
+  "parserVersions": {
+    "gltfTransform": "4.5.1",
+    "meshoptimizer": "1.3.0",
+    "shapely": "2.2.0"
+  },
+  "sourceGrouping": "Legacy floating source indices are grouped by nearest integer within0.001; every raw source-attribute value remains in the exact triangle comparison.",
+  "resourceCount": 344,
+  "byteExactResources": 310,
+  "changedResources": [
+    "cells/cell-e000-n000/base.bin",
+    "cells/cell-e000-n000/base.bin.gz",
+    "cells/cell-e000-n000/base.gltf",
+    "cells/cell-e000-n000/base.gltf.gz",
+    "cells/cell-e000-n000/near.bin",
+    "cells/cell-e000-n000/near.bin.gz",
+    "cells/cell-e000-n000/near.gltf",
+    "cells/cell-e000-n000/near.gltf.gz",
+    "cells/cell-e000-s001/base.bin",
+    "cells/cell-e000-s001/base.bin.gz",
+    "cells/cell-e000-s001/base.gltf",
+    "cells/cell-e000-s001/base.gltf.gz",
+    "cells/cell-e000-s001/near.bin",
+    "cells/cell-e000-s001/near.bin.gz",
+    "cells/cell-e000-s001/near.gltf",
+    "cells/cell-e000-s001/near.gltf.gz",
+    "cells/cell-e001-s001/base.bin",
+    "cells/cell-e001-s001/base.bin.gz",
+    "cells/cell-e001-s001/base.gltf",
+    "cells/cell-e001-s001/base.gltf.gz",
+    "cells/cell-e001-s001/near.bin",
+    "cells/cell-e001-s001/near.bin.gz",
+    "cells/cell-e001-s001/near.gltf",
+    "cells/cell-e001-s001/near.gltf.gz",
+    "compression-report.json",
+    "context.bin",
+    "context.bin.gz",
+    "context.gltf",
+    "context.gltf.gz",
+    "feature-provenance.json",
+    "manifest.json",
+    "provenance.json",
+    "transport-input-manifest.json",
+    "transport-report.json"
+  ],
+  "omittedLegacyAuditReports": [
+    {
+      "file": "river-package-audit.json",
+      "bytes": 1322,
+      "sha256": "025d1ef5657724a3bbca45e53905ea788c6aadd946ef2761c08970faa41ccb23"
+    },
+    {
+      "file": "startup-audit.json",
+      "bytes": 17064,
+      "sha256": "49089e3f917b588ecfdb49940164854eb869b580639967b865aab39981064539"
+    }
+  ],
+  "comparedSections": 74,
+  "byteExactSections": [
+    "ground.gltf",
+    "cells/cell-e001-n000/base.gltf",
+    "cells/cell-e001-n000/near.gltf",
+    "cells/cell-e002-s001/base.gltf",
+    "cells/cell-e002-s001/near.gltf",
+    "cells/cell-e002-n000/base.gltf",
+    "cells/cell-e002-n000/near.gltf",
+    "cells/cell-e002-n001/base.gltf",
+    "cells/cell-e002-n001/near.gltf",
+    "cells/cell-e003-s001/base.gltf",
+    "cells/cell-e003-s001/near.gltf",
+    "cells/cell-e003-n000/base.gltf",
+    "cells/cell-e003-n000/near.gltf",
+    "cells/cell-e003-n001/base.gltf",
+    "cells/cell-e003-n001/near.gltf",
+    "cells/cell-e004-s001/base.gltf",
+    "cells/cell-e004-s001/near.gltf",
+    "cells/cell-e004-n000/base.gltf",
+    "cells/cell-e004-n000/near.gltf",
+    "cells/cell-e004-n001/base.gltf",
+    "cells/cell-e004-n001/near.gltf",
+    "cells/cell-e005-s001/base.gltf",
+    "cells/cell-e005-s001/near.gltf",
+    "cells/cell-e005-n000/base.gltf",
+    "cells/cell-e005-n000/near.gltf",
+    "cells/cell-e005-n001/base.gltf",
+    "cells/cell-e005-n001/near.gltf",
+    "cells/cell-e006-s001/base.gltf",
+    "cells/cell-e006-s001/near.gltf",
+    "cells/cell-e006-n000/base.gltf",
+    "cells/cell-e006-n000/near.gltf",
+    "cells/cell-e006-n001/base.gltf",
+    "cells/cell-e006-n001/near.gltf",
+    "cells/cell-e006-n002/base.gltf",
+    "cells/cell-e006-n002/near.gltf",
+    "cells/cell-e006-n003/base.gltf",
+    "cells/cell-e006-n003/near.gltf",
+    "cells/cell-e006-n004/base.gltf",
+    "cells/cell-e006-n004/near.gltf",
+    "cells/cell-e006-n005/base.gltf",
+    "cells/cell-e006-n005/near.gltf",
+    "cells/cell-e007-s001/base.gltf",
+    "cells/cell-e007-s001/near.gltf",
+    "cells/cell-e007-n000/base.gltf",
+    "cells/cell-e007-n000/near.gltf",
+    "cells/cell-e007-n001/base.gltf",
+    "cells/cell-e007-n001/near.gltf",
+    "cells/cell-e007-n003/base.gltf",
+    "cells/cell-e007-n003/near.gltf",
+    "cells/cell-e007-n004/base.gltf",
+    "cells/cell-e007-n004/near.gltf",
+    "cells/cell-e007-n005/base.gltf",
+    "cells/cell-e007-n005/near.gltf",
+    "cells/cell-e008-n000/base.gltf",
+    "cells/cell-e008-n000/near.gltf",
+    "cells/cell-e009-s001/base.gltf",
+    "cells/cell-e009-s001/near.gltf",
+    "cells/cell-e009-n000/base.gltf",
+    "cells/cell-e009-n000/near.gltf",
+    "cells/cell-e010-s001/base.gltf",
+    "cells/cell-e010-s001/near.gltf",
+    "cells/cell-e010-n000/base.gltf",
+    "cells/cell-e010-n000/near.gltf",
+    "cells/cell-e011-s001/base.gltf",
+    "cells/cell-e011-s001/near.gltf",
+    "cells/cell-e011-n000/base.gltf",
+    "cells/cell-e011-n000/near.gltf"
+  ],
+  "inspectedSections": [
+    {
+      "file": "context.gltf",
+      "unrelatedSourceGroups": 319,
+      "unrelatedGroups": {
+        "202": {
+          "triangles": 76,
+          "sha256": "48c5d2ca8a418f8d4e53c333bd2d1189a6953ede6be33e66ffa5da78105026ee"
+        },
+        "204": {
+          "triangles": 64,
+          "sha256": "f582509e3689e486c70e33a15e1d178e52561cb40427d06d2e7e767e163f7ac9"
+        },
+        "205": {
+          "triangles": 10,
+          "sha256": "602b25160c068dc9ad2eb11f46e05fd85a30ffd4fc73a969cced74c434127030"
+        },
+        "209": {
+          "triangles": 10,
+          "sha256": "7e2baa5775a5443d923cbfb9b891ffbe82431274cf8d1a724104acabe9de4264"
+        },
+        "211": {
+          "triangles": 13,
+          "sha256": "488c058f23ac98a8ceaafef1aeff343efae586763ee73b9ab19c1c4c8b22e059"
+        },
+        "216": {
+          "triangles": 10,
+          "sha256": "05483aad4cafe6dbe50ba6e943fe43c46b85464f50d23f9dc3884f2974ac7f81"
+        },
+        "219": {
+          "triangles": 43,
+          "sha256": "34b344a7014428583808525672618eeb45a92c27bb13ace4da25c9efab91c704"
+        },
+        "220": {
+          "triangles": 31,
+          "sha256": "a9bb33436a20e628e8b918ac8e13897ed019db35cf30676264e00ff850a48e89"
+        },
+        "221": {
+          "triangles": 19,
+          "sha256": "d68e597da6bb62b7681a38c9b5f172ca6ba12418d11f64693f19e351542d488a"
+        },
+        "222": {
+          "triangles": 16,
+          "sha256": "2566b0665626b05217727aac4d3bb2be890113d2ef16559d48edc0fdef5a85c6"
+        },
+        "224": {
+          "triangles": 10,
+          "sha256": "d1557ffb5bc4193d4296a38fe0537dfcd632fd77db11294717d4b9ae03bb2e62"
+        },
+        "227": {
+          "triangles": 40,
+          "sha256": "dc7b98969fe675dcd48ecc688444e128f72ccd750c233baf4baefade6c38ab1f"
+        },
+        "232": {
+          "triangles": 10,
+          "sha256": "6e4f67a597d7f1cf8e1a07e8715dbdfc6394cf3f282a4c4239c639d21905ad2f"
+        },
+        "234": {
+          "triangles": 10,
+          "sha256": "f63c9a6425252f56c73fd9ced4c2fdb4caa2096a4563699b5424e525d801cc20"
+        },
+        "235": {
+          "triangles": 13,
+          "sha256": "bf501826c6669b81e2222fc83d213ca1cdf228a5447d7f8cdcacf714153dd16d"
+        },
+        "237": {
+          "triangles": 10,
+          "sha256": "ef0c344a8cfdd88c93bcce478b6ab358f7f4c83a5402f9dc377818f1a7024e4c"
+        },
+        "239": {
+          "triangles": 70,
+          "sha256": "00a7c56f10f66aa095e61774c7ad215d7c97ffd69c6a793a4e16597c67df1e00"
+        },
+        "240": {
+          "triangles": 22,
+          "sha256": "9767cac66cf2591319475c5582237dbc9f97d1f6a438ed24e0c99c49e14f368e"
+        },
+        "241": {
+          "triangles": 13,
+          "sha256": "0119bb8fef8e89450ae2430d22a688fc47ad5cafc28077eebfcee48e63d4dc84"
+        },
+        "246": {
+          "triangles": 22,
+          "sha256": "5b16fe718e7af6b7d0486b047c13a901ea3445653fab32d47477383420c9307a"
+        },
+        "248": {
+          "triangles": 13,
+          "sha256": "4cce362148e7d7201a2f961892aef3e7b643d4191fbe89f0fa66c5125e7326ba"
+        },
+        "250": {
+          "triangles": 25,
+          "sha256": "95a0da3e3f8f9cee2482c8b9795f9fde3b6c073330bd0b9c4baafb0208111daa"
+        },
+        "251": {
+          "triangles": 10,
+          "sha256": "5a379597d9fb8434ae63df53edcb0eabfa4d2e764631a03fa0d507fdef578d05"
+        },
+        "258": {
+          "triangles": 28,
+          "sha256": "f45f69b46cd0d5f49f81edd987c99cccab3ca12eaa039add922cae0417e9017b"
+        },
+        "261": {
+          "triangles": 16,
+          "sha256": "c6aed618718253df8d37af51710357cf23bb544b98f50e1c95f0123f67e5bd05"
+        },
+        "265": {
+          "triangles": 13,
+          "sha256": "ae31af66df9dc27141f9b86b9f31226b85128fc454187d845c84459b0fd1ddb5"
+        },
+        "268": {
+          "triangles": 16,
+          "sha256": "5e63ccfd79312d4c063e8fae339aebc293f9a42e3b7dbe85bf5c63484261a703"
+        },
+        "270": {
+          "triangles": 34,
+          "sha256": "3015f35c0b76b1632b1c428d239b3a4f8ea278d5d3e8d19e80e40b5df50e8a2a"
+        },
+        "271": {
+          "triangles": 40,
+          "sha256": "a09128d0af8fd35319c097924cc6d223aa4409df1b3dd127c3f2f4fc442434e1"
+        },
+        "272": {
+          "triangles": 13,
+          "sha256": "81a8ad5ce157a965b485a58bb44e580b5b000cac01d65f71a86a546a653135f7"
+        },
+        "278": {
+          "triangles": 28,
+          "sha256": "f2ea6da4648b751d9f87b7c8edcd5c0533b1a5277add523aa7f2639892dc005f"
+        },
+        "280": {
+          "triangles": 19,
+          "sha256": "f189a52e7f0894bf7cef417a88f43f11bcb341eb6694616755094b80ea26eb9e"
+        },
+        "281": {
+          "triangles": 13,
+          "sha256": "0e0cc2ab698a86738661527f64d77307c19abcb12a851779b0d6003acba088aa"
+        },
+        "282": {
+          "triangles": 10,
+          "sha256": "54d74fdfc67ba71141ffa1a7b9a69f4165d288ec22afff372773d850b39773c3"
+        },
+        "284": {
+          "triangles": 34,
+          "sha256": "37d1f43aac206eb6b0d84cf144f13358819b616c847461df787bc156618820d8"
+        },
+        "294": {
+          "triangles": 64,
+          "sha256": "86322bdbe6a541011b8eccf68ded95419c08aa4e627d924dd33d11a3d3fa0845"
+        },
+        "300": {
+          "triangles": 28,
+          "sha256": "13304944ffc86aefc3a89b41bc7c29446285d1c6427a789f41590bdaf860d3e6"
+        },
+        "301": {
+          "triangles": 19,
+          "sha256": "142a1d2679471059e1a7589166ce22b8e147e9720fae6386efe336f53d6025c9"
+        },
+        "303": {
+          "triangles": 10,
+          "sha256": "232e7f3f200efc7f53372d984d5ffadc74b47717c02b605e49aaf1e397742d10"
+        },
+        "306": {
+          "triangles": 13,
+          "sha256": "5bf66b60a4acd0148475062d145af8614dbd43d59f739cb1820f00f3eeaa971c"
+        },
+        "310": {
+          "triangles": 13,
+          "sha256": "ecdccd5162e3c41d2e77ea44002f8e2f4a88f91db0b9d228e10d0e6ef165e757"
+        },
+        "311": {
+          "triangles": 22,
+          "sha256": "151383ae3ede148017772fc7442caedaf582bc60623cb0a63ee400d354c5ad7c"
+        },
+        "317": {
+          "triangles": 10,
+          "sha256": "cd0c2ec5e74a9992cf8f3ac7ca8749a0be6de8791e579d772349637f1d690f18"
+        },
+        "318": {
+          "triangles": 13,
+          "sha256": "5e784ba0806f2eb1283d1689d548981a9e44fd69c0a4cb1c7bf1b14b5211b99c"
+        },
+        "321": {
+          "triangles": 28,
+          "sha256": "9f4d0ee2dcff38759ff9abf7b27ca25776c38c9b24c7f49fc95b0f43bd3795fd"
+        },
+        "322": {
+          "triangles": 16,
+          "sha256": "359b3ff5bde03c675e0ef53b7abfbc1c15dbc5ea33cbebd24119a10df7198a92"
+        },
+        "325": {
+          "triangles": 10,
+          "sha256": "44a5cd1d4e2973908241423c7075431b20ad3bee7237017efec2e79cde18b227"
+        },
+        "326": {
+          "triangles": 16,
+          "sha256": "8b5a922f6cd03ce132748fc3c907631b7f9ac0c69deefb21622448c5553d1b45"
+        },
+        "329": {
+          "triangles": 10,
+          "sha256": "31d4a5f4ddbf8341cf6c916066dc2b58e5dbd3a231e98a2c18b0e3a8f1d26344"
+        },
+        "330": {
+          "triangles": 22,
+          "sha256": "c5630c7b5349cadbf74ce54ef1f91d31403afc33c6fb88a04e7c42a837499c2d"
+        },
+        "332": {
+          "triangles": 16,
+          "sha256": "29d03cd0fb5dfb40832ff005a6b285de42142d2b173a1f22ceee08ec2b05e606"
+        },
+        "335": {
+          "triangles": 10,
+          "sha256": "5e56dc94ae656bf77b9a84c17753285ca54de9e29232801bfdce4c5ca0b36a72"
+        },
+        "337": {
+          "triangles": 19,
+          "sha256": "f4581ebc933aca7a2e11e2a9940b4005043764d4231c2fadc46781c85952002d"
+        },
+        "340": {
+          "triangles": 34,
+          "sha256": "328e4376ebb150303e05b7d08a39310e4fb31bd4994e9a1475689cc103d20ee0"
+        },
+        "341": {
+          "triangles": 70,
+          "sha256": "112978f732995fbd5afc0e2cda3234c0b38f18b3d2db20c71f391ac0f9fb655c"
+        },
+        "342": {
+          "triangles": 16,
+          "sha256": "4ddd55abf3ab106e6fe86d132f25b0094387070112bd6e5499e84353add307a5"
+        },
+        "345": {
+          "triangles": 13,
+          "sha256": "7fd4c0383db65173f68d372816dae3ff8dc6e8910fd9538bbbef3a779d4f47d9"
+        },
+        "348": {
+          "triangles": 25,
+          "sha256": "7efdb259329c04a6c6efeaff334cd9f6ea75fdb1507bd3911bd283383ac68c87"
+        },
+        "349": {
+          "triangles": 55,
+          "sha256": "435c8489f84bcb00da9484dfe1d163e644be49ada227cc1b65b6d01e92e67ff9"
+        },
+        "350": {
+          "triangles": 46,
+          "sha256": "620b802f118616c2042497a3df085bbf4cd25066b19c2ba551752522862b3dcb"
+        },
+        "351": {
+          "triangles": 25,
+          "sha256": "84b28fbafa0bad9ea5ebfb2c879f0fc4abc7cb9fafe59de9fc4cd923d737e5ab"
+        },
+        "353": {
+          "triangles": 13,
+          "sha256": "2650f63fd35ffee6811655a5a37cd3d7c51f963a1725f4ab8d83579cc1b0a589"
+        },
+        "355": {
+          "triangles": 10,
+          "sha256": "535d8c9b72bbaf1a3e73675ea89890c60b1e6d9d91a6bfb114dec125ae077132"
+        },
+        "367": {
+          "triangles": 10,
+          "sha256": "9fb547abdd091774560cae7b51c138f3bd566c15019adfe1692f84622f3312be"
+        },
+        "374": {
+          "triangles": 13,
+          "sha256": "034bfa5a00fb00e685bde0bbab0dd3362d64a51780754c72f44a2d2d4f7905c8"
+        },
+        "375": {
+          "triangles": 13,
+          "sha256": "2b5c8f5b62f66c7dcceb2344bcc11b2ec2a745502c17fe35741d495bf6cbcac8"
+        },
+        "379": {
+          "triangles": 10,
+          "sha256": "33e343a0ba524011fd005d07880a2c65fd17ed9524ecfeddbd680cdeee9cc592"
+        },
+        "389": {
+          "triangles": 10,
+          "sha256": "35069ad49e41f256d4b891a59e2cf697c2675efb42a7968c25e55472b04304ee"
+        },
+        "392": {
+          "triangles": 37,
+          "sha256": "341eb30ddfdd04d93ff9cd12c1f1c5a9f33c9e5823d0d74ab1714bb81913029f"
+        },
+        "401": {
+          "triangles": 16,
+          "sha256": "0997510925a987c5919044ecddc2c9d256c653d86977ea07f352cf6fc5303f34"
+        },
+        "403": {
+          "triangles": 16,
+          "sha256": "947692125001b86900e4a5d22c25a6260b8764e2161322f77ddc7abe82365d6f"
+        },
+        "404": {
+          "triangles": 13,
+          "sha256": "567ea044e3fb2075cfc3c71a6434dc6e628b59398664ada1a766f71a165c1d05"
+        },
+        "405": {
+          "triangles": 25,
+          "sha256": "4bd0989af2c4f80fe60debd061015a0c3d74f214eb9613474120c5347c1ec590"
+        },
+        "408": {
+          "triangles": 43,
+          "sha256": "3c94860473d6514e6c5a0f569d0e4c1769a8fb84fedf588a745ed965eb2a6792"
+        },
+        "411": {
+          "triangles": 22,
+          "sha256": "8682e505a1df656f09364e6c7d2f000434200a26f43a30b45b30f771fc9134fb"
+        },
+        "412": {
+          "triangles": 22,
+          "sha256": "e6f394b1f2c0368df50d269ebb26aca5e9d2983381911a8d34978a189bef080d"
+        },
+        "413": {
+          "triangles": 22,
+          "sha256": "d117fc1adcb8600a5928dda2764c26d9bdafffe2f56d6af54a4b0490f94d73bb"
+        },
+        "414": {
+          "triangles": 10,
+          "sha256": "703a5ef6cee7d47948a92f91e5865919f2c3a2a0e2a61974b56414a558d3c4df"
+        },
+        "419": {
+          "triangles": 16,
+          "sha256": "244099153bd056dd211ff63bab725a69a32d22b70745e128f42e1ce95872e02c"
+        },
+        "422": {
+          "triangles": 28,
+          "sha256": "370176fde7a67cf8f0e51500054dee9e8ce63e3711dedf66e6cba5f136fcb5bd"
+        },
+        "424": {
+          "triangles": 13,
+          "sha256": "44b0746d8ab198a1e87c7ad17ec95542e7526c7c65dc842fd83e6929b561cb57"
+        },
+        "427": {
+          "triangles": 16,
+          "sha256": "d7518d2f5dd42f4cde4a2d58f3dd78d6822ff26e261627fd8f5e32249a095465"
+        },
+        "428": {
+          "triangles": 34,
+          "sha256": "359df8270717bf4099d2e9e935a524a3b0c5264f578aa26895ae9fa000b1688d"
+        },
+        "431": {
+          "triangles": 13,
+          "sha256": "3803dcd4006d9fe7e180c3cc618bf5736fcb137548e894eb7bf900854d7443a1"
+        },
+        "432": {
+          "triangles": 10,
+          "sha256": "72286945c9ac356bb221ef64538d2dd846592e2ed74a2c8d05ab677f3198f74a"
+        },
+        "434": {
+          "triangles": 13,
+          "sha256": "1a18cc97115eb8907b3b14ed820d27fe08049e7ed47212a15ba2b318c99d06e3"
+        },
+        "436": {
+          "triangles": 13,
+          "sha256": "8332aa4d65686777420aa654ce896a48e826d1339afa36511955d76ab2bd9d45"
+        },
+        "437": {
+          "triangles": 10,
+          "sha256": "ed65ec5a1266d0483fae68ce4cbc2969062102d1f7e05a585c5cee47a7bc1d9d"
+        },
+        "438": {
+          "triangles": 19,
+          "sha256": "8ee06713e93e1b3c88db58b775808c94e60b8f6c0e49eaf1d2dc86a5eab11109"
+        },
+        "440": {
+          "triangles": 13,
+          "sha256": "9070f09b9ee3c7337f13c6c80ca165ef285d53c8f617cf6e696a780729b5ddc7"
+        },
+        "444": {
+          "triangles": 10,
+          "sha256": "858bbd50d97a0765e06c2c61e92e58fd43fa377574bd50b63068a1e51a9ed99c"
+        },
+        "445": {
+          "triangles": 28,
+          "sha256": "3bcafc300e8c0de4eb18c18c4d93e3b1cda9a076cf7b2f839c0b54a01ed16f28"
+        },
+        "449": {
+          "triangles": 13,
+          "sha256": "ab1237a2b0e0499bff893fc0f6da918ec8919909bde7bf750c238be8ca8b71b1"
+        },
+        "450": {
+          "triangles": 19,
+          "sha256": "0645662b88f4b3f3c074bb506edf5892b06220b34c3936e03c5c7aa2ecb83220"
+        },
+        "455": {
+          "triangles": 13,
+          "sha256": "9746bfd8d4a374f2bffa3a32dcba0b9fa2168aa227727f5fce43162ba14e74ac"
+        },
+        "458": {
+          "triangles": 13,
+          "sha256": "0c456954efb6656495710f6ccf9478919bdbbb0c5ee2c2849d52a8c42dd5b5e2"
+        },
+        "463": {
+          "triangles": 10,
+          "sha256": "8145eb6949823b5cd822e45e5f1f07d6e35f69bfd7b57f0f668dc5c09e5277f2"
+        },
+        "465": {
+          "triangles": 13,
+          "sha256": "b701eb7ee08348a634e0616efa3092d96cf0bdbfe10d007d2b7236452a27c3e6"
+        },
+        "467": {
+          "triangles": 19,
+          "sha256": "c9d2cc9f6262558914c5958815975e5eff76a4793e5c82c180cc1f49dca17558"
+        },
+        "471": {
+          "triangles": 25,
+          "sha256": "3711572873fb3f03ae40376233478a923605c6716726dbc0b44cad3b9c76a931"
+        },
+        "472": {
+          "triangles": 10,
+          "sha256": "a2cddef73510a3cc070d350f4f976a4297ea5fbcd5896485985504d149ceaa4a"
+        },
+        "473": {
+          "triangles": 13,
+          "sha256": "b513468011e5fde040b535450697d8de2ded0843442ff86414ca1d15518f8f58"
+        },
+        "475": {
+          "triangles": 19,
+          "sha256": "c0955037add68cc33bbbc636fe2820ae12078e78336ec33ab464a63a38880765"
+        },
+        "476": {
+          "triangles": 13,
+          "sha256": "599310cab7b40089f79859f3e72c9b2de9f5e928cfd6f8cd74355e5acb438519"
+        },
+        "480": {
+          "triangles": 13,
+          "sha256": "e89dcc7017fede2f9b2a773cf5ef1aec02235d6bcdfd02872939358deeff6c25"
+        },
+        "488": {
+          "triangles": 10,
+          "sha256": "f0eb741831de7f8d20625db7b9dbfe56d8637d262a6be1c8917476663ae84033"
+        },
+        "494": {
+          "triangles": 19,
+          "sha256": "3fb4bc0d15d6a53ee06a317f5751512258be373c0d3fc1c82cfec57a2fea5619"
+        },
+        "495": {
+          "triangles": 19,
+          "sha256": "ccb58cdd0b3a5959f1d6a84225cc65dd7f173eb7e1e9ff9394f8d8ddb6e20161"
+        },
+        "497": {
+          "triangles": 19,
+          "sha256": "7f21c17b9ba8dc0ca744c7e3528b4acf86828d1c69ff20c4f5e2e008ed87310e"
+        },
+        "499": {
+          "triangles": 43,
+          "sha256": "4deb28aa49540d71b09c1a7c53c479abb8a2d7c1fdecc7896749977691414417"
+        },
+        "500": {
+          "triangles": 19,
+          "sha256": "9ef72b8b9dbc783214f4c4a23c858956070e24ad9840b12c3402fe8782786065"
+        },
+        "503": {
+          "triangles": 13,
+          "sha256": "8adf874ff7aa8244272d3225d95adb1fd422c9e6e90c21f892b792cc199c159a"
+        },
+        "505": {
+          "triangles": 13,
+          "sha256": "26834d5ba3d7d09b1d7fda92f6705848b2c5d9991e78d7be8d8c37bdb52f2493"
+        },
+        "506": {
+          "triangles": 13,
+          "sha256": "ead33116d0a17a0d6996c31239f15c75a81034ac5fa5b7b6aae9235f3300cc17"
+        },
+        "516": {
+          "triangles": 46,
+          "sha256": "db24f7dc456717b036af5983dcf212375a142153921c91fbce8c569c446d72a7"
+        },
+        "519": {
+          "triangles": 31,
+          "sha256": "29f639158f0bf8464fa420fde3951b16c028a9c384031370b5d96fe5e9a6a77d"
+        },
+        "522": {
+          "triangles": 10,
+          "sha256": "1b62f17b87793ad393b9a36bf576ff73c027ea311206f095a324443b2f0ffde4"
+        },
+        "524": {
+          "triangles": 25,
+          "sha256": "3de642aec40ac80d7337e1c3a23ec80703f3a7e99e714153fa06c3ec015878ba"
+        },
+        "525": {
+          "triangles": 10,
+          "sha256": "84da2fe26df8f1163aec8a84a0988f0438cd8d0600ece7200510b6d06ca063d3"
+        },
+        "526": {
+          "triangles": 19,
+          "sha256": "c295e0a6be348736d201437d105c8bdce519bb07fdd138a9f9bb265efe6d7178"
+        },
+        "527": {
+          "triangles": 16,
+          "sha256": "9343a754af1352ba93a6069ae81b4856c6389b81b35000c99c9ffd05052eb317"
+        },
+        "528": {
+          "triangles": 10,
+          "sha256": "cd3bce44724b8d13f91c8f94b8c3deb1ce3bb06699062ba070f5edb0b47c51f8"
+        },
+        "529": {
+          "triangles": 10,
+          "sha256": "8923430c0888b859a36f035500bddf4cd99d4dd504822393dffc781e479d3928"
+        },
+        "531": {
+          "triangles": 13,
+          "sha256": "6c77773f7328a0f66b48fb909d6dc67fc845ff9c8a51d4da30dd559b19c47bb4"
+        },
+        "535": {
+          "triangles": 16,
+          "sha256": "819f0a9ebf79e2cd7e9af9cee8324d3a5704626559c38b9f7e992abff9705eac"
+        },
+        "536": {
+          "triangles": 13,
+          "sha256": "3d242a4e987eacd98a35f13902131ce186e40a249bc4ce37c87a15852c4ea809"
+        },
+        "539": {
+          "triangles": 19,
+          "sha256": "aeefade629b1a8fbd7d25fde44de694306ae54c38154c8583846a8dfa96f1c36"
+        },
+        "544": {
+          "triangles": 28,
+          "sha256": "889822ba6063db2f4365a392bc8cf1025e8ce75418356a6cee6355a826467001"
+        },
+        "545": {
+          "triangles": 31,
+          "sha256": "43e1fc2b92d5a2f81c127c43370c0f050d9be3e76d1782f5def53c31319f092d"
+        },
+        "548": {
+          "triangles": 31,
+          "sha256": "e033c665af4a3e1e78cbe9c56c96eb01262201961c16fc77c9ebf3458a3a7923"
+        },
+        "550": {
+          "triangles": 13,
+          "sha256": "f5ed4c7afe3b8ab886604e6946911b4e57a907ee225df8456795ac42feeba909"
+        },
+        "555": {
+          "triangles": 16,
+          "sha256": "a8da26e782e5736ef386c8154ad83675e2aa1b567d745a687206e188f84aca14"
+        },
+        "556": {
+          "triangles": 28,
+          "sha256": "ec28c30d048a709ce75341f49f367b357c0fa76cbf9952401c765ce551f69e14"
+        },
+        "557": {
+          "triangles": 13,
+          "sha256": "9670df0188dca48940d5e991bed8ac16091895018e0b28230a782324bb303292"
+        },
+        "558": {
+          "triangles": 13,
+          "sha256": "333940978853b8c59c1afaecd4996bece2e31f53ce2946175c6cf738ea9f9530"
+        },
+        "560": {
+          "triangles": 10,
+          "sha256": "df1e003c36a5c6fd0fded4cb8d318c5d80dff58003be21165f581f9823eb2500"
+        },
+        "561": {
+          "triangles": 10,
+          "sha256": "2919faff7d85c2af8a005844ee5c58a6ea83db33dfac5e508032adcb3c44e042"
+        },
+        "568": {
+          "triangles": 10,
+          "sha256": "22eca7237ebcbf669ee7664b2f2f5f509a32ae79393b15520815044b4d05bbc7"
+        },
+        "576": {
+          "triangles": 25,
+          "sha256": "49330bae69b59fa66d2ded5d8606d99c15a85e39efb74e133fd4c5462fed3f49"
+        },
+        "577": {
+          "triangles": 25,
+          "sha256": "31c356326f86914772a30627e84fce5efa74e154e9af87f634faadd7430dac99"
+        },
+        "580": {
+          "triangles": 13,
+          "sha256": "f7583d4366dfcf274cc995a4ec8b957ea8f13076a2d024e52d390286d24fa6a0"
+        },
+        "582": {
+          "triangles": 10,
+          "sha256": "47a4efc36df5742fbb4033c0d668ec2a5b0d69f030f490a1016dcce1893a4969"
+        },
+        "583": {
+          "triangles": 25,
+          "sha256": "7ddaf259a6b5d96e5bb6eff4089ca90c3be0714f75522e466518898f676ff2c9"
+        },
+        "590": {
+          "triangles": 10,
+          "sha256": "1eb7b413a0a502033be9b8fbbb7bcb3bb93aa2b58694ee0517ae4983db36eaac"
+        },
+        "591": {
+          "triangles": 19,
+          "sha256": "dbbccb96a588fb963498f0e8297d95dabe213224c51b05f6ac83ae1417827e6f"
+        },
+        "592": {
+          "triangles": 10,
+          "sha256": "b3757c4a40f475453499a1d5de004dae0e8703e8ea38d27fde157aad22e9c1a8"
+        },
+        "597": {
+          "triangles": 10,
+          "sha256": "8bac8d94041422b5d904782ef5092a8eaae87786862a967db376244196f739b2"
+        },
+        "601": {
+          "triangles": 28,
+          "sha256": "fdd767ab50314145edd9ca0cf7a7751bdf495d0e95ee2c0d22787810eb8ecb05"
+        },
+        "607": {
+          "triangles": 10,
+          "sha256": "939debe9b85d870b78d643031a793cb88f673e20a0ce784e00ea9a2e4df2a47f"
+        },
+        "608": {
+          "triangles": 10,
+          "sha256": "268a2c44b70274151d39bc7c9feb193944148a8cb7e34f1db87ce4dc5d285256"
+        },
+        "609": {
+          "triangles": 16,
+          "sha256": "bb201d30c011576038d625e20d64655e0bd421f6dd6f359d6ae970271d5eed9a"
+        },
+        "615": {
+          "triangles": 13,
+          "sha256": "275941fa567fb6805e7877c47ad1d6ee87ae5ca63fccbc0bf8e42595dc545e08"
+        },
+        "623": {
+          "triangles": 13,
+          "sha256": "ad0e67a9cd301513fce47bab89acb7803dd4cc47f609d2a6c51faa443abc3289"
+        },
+        "625": {
+          "triangles": 25,
+          "sha256": "f2d8114e91b016fcdfc50dd016052802a52af409bbc4302f5765587d3041e04d"
+        },
+        "627": {
+          "triangles": 28,
+          "sha256": "26cc9534e33994e158f03679942f1309ffd550b3650fe5deee7fefc3fd8138b3"
+        },
+        "629": {
+          "triangles": 58,
+          "sha256": "1c23c0c876cfe6526dd72074191c7bba8482b5fadacf5b09c7fd47d36e97b403"
+        },
+        "630": {
+          "triangles": 19,
+          "sha256": "e0a8d1f53a9899e1a1f45dfb6b1e6d72c1e9b54ea9bf155bcc4066447e7b88e1"
+        },
+        "631": {
+          "triangles": 13,
+          "sha256": "19161778d014e824deff7905bf055a14b0414dec0ce04cbee850a72f1fc3a27d"
+        },
+        "638": {
+          "triangles": 19,
+          "sha256": "74e2ea9bc0da98ef1ae7324cc9aa3d98e8a9bafb42b27fbeb74ef83106644116"
+        },
+        "646": {
+          "triangles": 13,
+          "sha256": "4fd28ea84b9f59f5b7db3af038a1d171a3b53c27fa81e85ab8458062f51fecac"
+        },
+        "647": {
+          "triangles": 13,
+          "sha256": "6e2611cb04be4f055c577453d00966229a1a26b15005c3b708012c9eb4b2dcd4"
+        },
+        "649": {
+          "triangles": 13,
+          "sha256": "406cce4d60da4ce14d0292b05774f1c44d8cf8496d285227a6c671be667fc108"
+        },
+        "650": {
+          "triangles": 10,
+          "sha256": "04cc88ea35ff802d8464240c52de5fbfe69c6e13bf9e786e2bee91287a184ad2"
+        },
+        "653": {
+          "triangles": 10,
+          "sha256": "3437b3765382f0c97b1cf3b7fcc2221a94306f652630b65589e0feb2e35a51e1"
+        },
+        "654": {
+          "triangles": 10,
+          "sha256": "cf60063d387f11ddfbc25fa9e22360dfd67225efc2b201cc1c553d4e7acae1a0"
+        },
+        "659": {
+          "triangles": 10,
+          "sha256": "8e434928286d95e0a53aaffecde2c4bd7627d6abe5153bb82d4d272273df7a20"
+        },
+        "660": {
+          "triangles": 16,
+          "sha256": "04e3b707f09e97a8fbd07212372280eb8ccaf21cab4ecd1779e41ba578744cc2"
+        },
+        "662": {
+          "triangles": 13,
+          "sha256": "b997720268d5d0103ff44a51752606da733138eb25b86820d8fc6b36d80785ec"
+        },
+        "664": {
+          "triangles": 13,
+          "sha256": "e465010cc36ec3ce029aad77f0b3107dbd2c2d08cf2545a5f8d2e2151b3179e6"
+        },
+        "669": {
+          "triangles": 25,
+          "sha256": "3033a81863c4d9cf754aecd57a35562f76f907a26747e14a2fec404c47abdcb5"
+        },
+        "671": {
+          "triangles": 16,
+          "sha256": "55e8dfa8502414573744025df350f97c38692519a6df6eb08adbd5934eda331b"
+        },
+        "674": {
+          "triangles": 31,
+          "sha256": "c8af7fb73eb44f2a434de89ec1474f88062cf724aadbece06676a03d07286e5c"
+        },
+        "685": {
+          "triangles": 19,
+          "sha256": "73da832f392fbaa01f64314ace3cac3d59021289604f5bcab719e746666d9a52"
+        },
+        "687": {
+          "triangles": 16,
+          "sha256": "0bd1e3aff863b00c7aea2abb49989e5248f3e619426862eff58e3773d9ae7b3a"
+        },
+        "696": {
+          "triangles": 13,
+          "sha256": "1664604e1d9223da80cc67b5d83686cf3f870e7aea2fa91de6695aa3dc9b551e"
+        },
+        "698": {
+          "triangles": 28,
+          "sha256": "7471d99ed2d0eb98ae24410aa6ba7e782a99ec98fff36082d5292423b5b99251"
+        },
+        "700": {
+          "triangles": 10,
+          "sha256": "cfc1803fe646f6ca223a193413c966c1696bf9c4d021eff14d37d673d1de36d3"
+        },
+        "701": {
+          "triangles": 10,
+          "sha256": "a9436bb9d3c3032b8e9dcd27f8dea6a3a0dceff94650880cbdd661b467dc0e4d"
+        },
+        "709": {
+          "triangles": 10,
+          "sha256": "b921807db6bbca063d11e821db6864dc368152c2d8ca839088e1c8eae4e96595"
+        },
+        "713": {
+          "triangles": 16,
+          "sha256": "ec3bb96e39cff38e4ea6bb5a0023f4620238bb84e45e4519bd15442a74683f14"
+        },
+        "714": {
+          "triangles": 10,
+          "sha256": "d90bea1799827c9d9940dfbdffa5119f193d28316b8ae26dcc3cd9ac8fb69723"
+        },
+        "717": {
+          "triangles": 10,
+          "sha256": "8b3ed92ff5d386692b3719644ffe2d945ea0c7b9e78c628202120d5759ab9e75"
+        },
+        "718": {
+          "triangles": 10,
+          "sha256": "deb4753eddd945cc3def50fca0b6b46c7066836daae909a528f2548e09761c5a"
+        },
+        "725": {
+          "triangles": 22,
+          "sha256": "8a4abca80099841a409e2d87c04667bdf0be28f684b17b1bf80db6a3fdff46e7"
+        },
+        "726": {
+          "triangles": 19,
+          "sha256": "19af407904af560b86837c7a6872f5f2db3221fb2802941cf382a5365307b74f"
+        },
+        "727": {
+          "triangles": 49,
+          "sha256": "c018e08f0a19c7ee72223610c44b35fa0b91b640363d896e7bf0d416a68dc508"
+        },
+        "728": {
+          "triangles": 10,
+          "sha256": "f49de3a747a213628c4289f2e8236a2b38ef099a18b2969ceaaa25d429d39ac2"
+        },
+        "729": {
+          "triangles": 16,
+          "sha256": "c01efc6b6391a6c085dda1c7b8e771e1098a5ca3585b34196d244a19b49118f1"
+        },
+        "734": {
+          "triangles": 31,
+          "sha256": "ca56980fc87e0d65ff9238d495e48c88c3c7e8b2be578c1ad6660702b8fc6fae"
+        },
+        "740": {
+          "triangles": 34,
+          "sha256": "fa94715f102bb9606250d9a24ff9690cc61dbeb69d59b0e8dcd193832084304a"
+        },
+        "741": {
+          "triangles": 10,
+          "sha256": "fc4f5a130d329c41e133e07e993f3dbdacaa532b749fac25ca61c39b4bb6f74e"
+        },
+        "743": {
+          "triangles": 13,
+          "sha256": "408d8ecbedd5dcaf077a182ffe1a2924719fb28e6cc8f5cd5b11d90d41bb13b1"
+        },
+        "744": {
+          "triangles": 37,
+          "sha256": "cf760f17739800f43e0de732145a481a12cb59d1d47271dd86ba2a6d698f1355"
+        },
+        "749": {
+          "triangles": 10,
+          "sha256": "e0d5564078214ff023c82ca0b00c68707c9df33194c0469368bda54854b8b17e"
+        },
+        "750": {
+          "triangles": 10,
+          "sha256": "7cedbea255d82be0559d19d9004f2c1bfc22ac51462b8444f1ba89c5f4153145"
+        },
+        "751": {
+          "triangles": 13,
+          "sha256": "cb7c1e96dd8ebe129dd462a8866a46b78c3cbfe3be4b5c7b64622e5c40c253a2"
+        },
+        "752": {
+          "triangles": 13,
+          "sha256": "d4bae333a4edc9b90007b95931d95fc8f4fcb14ac2559c2bd8f470285655d084"
+        },
+        "753": {
+          "triangles": 19,
+          "sha256": "7a89b3aadafefd5d4ac48aa181dd586b3efd559b12d4f01ce43e9e1416017a74"
+        },
+        "758": {
+          "triangles": 13,
+          "sha256": "7efbf0ad6bc5657e020b6bfbbfb6f3c5a0ddc784758c038bb21902fb6a7ce4b4"
+        },
+        "762": {
+          "triangles": 22,
+          "sha256": "749cafa6869cc87635303921f03272e3539aff750e9eb4536e6ec80fc2d1b306"
+        },
+        "764": {
+          "triangles": 13,
+          "sha256": "f9d2d587f8a5110cacba16f94b6f4727736fd4459aa2f27374c4b81b1c80d1db"
+        },
+        "768": {
+          "triangles": 19,
+          "sha256": "78b880cdab390da3406de0e49276ca17dd3e6cbcc805580ccf5db869983f29c8"
+        },
+        "769": {
+          "triangles": 13,
+          "sha256": "d28e04a5e2a826ff88809d84fabce444915c1947a040b6f50ec51a935de6ffb0"
+        },
+        "770": {
+          "triangles": 22,
+          "sha256": "9f7bfc3117a4c751e164f8510778a2f12b6bf556f06d990d8afc54d057c9cbe4"
+        },
+        "772": {
+          "triangles": 22,
+          "sha256": "2621b2ea11062fcbb3c7c5a3d865a5c246cf250131ce562fe5e5c4385ed32105"
+        },
+        "774": {
+          "triangles": 16,
+          "sha256": "119f22f4a68b6fd8ae2d84cd9da3913c6fec914407bd00f144a57354d06be822"
+        },
+        "775": {
+          "triangles": 13,
+          "sha256": "a751e1b213ca67e43a419c681475cd058e960a33c30b030b10989e406c7233a9"
+        },
+        "776": {
+          "triangles": 10,
+          "sha256": "57779e4d60ee12ba2a3101054680c134f1d71fcb8132d9eb92e13d62de61d8cc"
+        },
+        "777": {
+          "triangles": 10,
+          "sha256": "101c1b5b7e949636224935b2dc00bad8b89314a3794b31c4c950831acfa204b7"
+        },
+        "781": {
+          "triangles": 31,
+          "sha256": "8e1d3a6f0a4a25471cfd4bc04027d11eb068b13ac82dbbfd4c4d94cfe81a57f6"
+        },
+        "783": {
+          "triangles": 10,
+          "sha256": "a0b37963858b61706a91849cd8800fef1e418ece3a13b307d83b130905f829ba"
+        },
+        "785": {
+          "triangles": 22,
+          "sha256": "f20892f2c5fb1642d4f1b2bb6d704a6a8db2093c3acfd556d168c4848b8112b7"
+        },
+        "786": {
+          "triangles": 16,
+          "sha256": "e2a02476f06f03423739a24835e28d387e85252f423ffb63b8b48beced63226d"
+        },
+        "787": {
+          "triangles": 19,
+          "sha256": "7303f3bbaeb094f05262c00042ee885cefd3e75091a42da7872a079cf61b6048"
+        },
+        "788": {
+          "triangles": 28,
+          "sha256": "5b3a7a4599ced7c1e727ff64221695225f237772a85fd4601bf052be97b8aa64"
+        },
+        "791": {
+          "triangles": 13,
+          "sha256": "f564d98e562ba0f46e73b6609da23783149918fbbb7bc5d3e8919d8f3e6427f1"
+        },
+        "792": {
+          "triangles": 13,
+          "sha256": "5fe5577d3ce8af4e5f5d9e804108931a1adf1928e7df56cf2d040b7344177d24"
+        },
+        "793": {
+          "triangles": 13,
+          "sha256": "45cc7517d6f36900af53a0603752aa9aaf7533308d1481c5f5bd3e9713dc7c2c"
+        },
+        "794": {
+          "triangles": 16,
+          "sha256": "5bfab737bc69cb2c70af371e68224391aa9e9fc73d9e8d7756a28fd75f667cc1"
+        },
+        "797": {
+          "triangles": 16,
+          "sha256": "108738ab3b0c1654b56833c2f2c8e4d8852c1e860386c4da61e976bb2e14c7a6"
+        },
+        "798": {
+          "triangles": 13,
+          "sha256": "841b6e26ea4d7cb235c85797077b7e7b3d2f3705d9016287f1331b2e11cfd9c8"
+        },
+        "799": {
+          "triangles": 22,
+          "sha256": "a67844e533d434aea30b50175c54a381e9356aac8559ce21e74387ee75244c47"
+        },
+        "800": {
+          "triangles": 13,
+          "sha256": "440787e2c15b33e127f868eb0daeaa7cc3d7947f37b8c0bf01f18d275061aa11"
+        },
+        "802": {
+          "triangles": 22,
+          "sha256": "2eb9f87b3c56176976ba9684f575bfa52279f5a2c0bc160f64cc57bdcf67e65c"
+        },
+        "807": {
+          "triangles": 40,
+          "sha256": "ff05d879fc019a442f7319a303cd46a7dc3f1d2f906649416270458339fb92af"
+        },
+        "809": {
+          "triangles": 10,
+          "sha256": "1354a903ce4fdc64bfbb050adc06385c4fa450432da6f5474aa86bd668cf9c74"
+        },
+        "812": {
+          "triangles": 22,
+          "sha256": "3c6e7f7722ff4f8d59dcdf140595112ee9f006bc3d961ee22760f82a6eb433c0"
+        },
+        "813": {
+          "triangles": 37,
+          "sha256": "43cf1a9d4ce5076d2389c82d2704bc18de1a2dbc951ce3ea3475471d1392895d"
+        },
+        "815": {
+          "triangles": 13,
+          "sha256": "05f98a00feca0dbb667b8c2925e2b929e4f86eadc93d81cdd1dedd08f0e7261a"
+        },
+        "816": {
+          "triangles": 13,
+          "sha256": "6a3c2f66e19f06563db0c26f4538c6c105ef6fb2f1ab81a4a22574d6a7e0c80b"
+        },
+        "821": {
+          "triangles": 16,
+          "sha256": "90aac118281e97cc6b808a74c069f4ff525c1e1ea214a6482258ab84d81db0c2"
+        },
+        "825": {
+          "triangles": 10,
+          "sha256": "3d4295972a7fd0f8bd8a3c7d9e1c3565661a0f703561e1ab2fb13983d515fe4e"
+        },
+        "827": {
+          "triangles": 13,
+          "sha256": "71fbbb40c2d7961fdd372d5e52358334e64b6fceb02ae68d92857f60c27501e3"
+        },
+        "828": {
+          "triangles": 31,
+          "sha256": "6b79d1fd188ca8cbc1ca21a691fea8451a7be00b0dfa4f3b6592582aa4579abc"
+        },
+        "833": {
+          "triangles": 19,
+          "sha256": "12468d97a0c9a67b38ebe7c40402d1d74547e9ddc038713dfd6b7b85040dd4c1"
+        },
+        "836": {
+          "triangles": 10,
+          "sha256": "6b8b26cc74efbb71fce7662a6b5f05a60734a7a1ee691fc587494845276a4d9a"
+        },
+        "841": {
+          "triangles": 10,
+          "sha256": "6c4afabca0298117762310720cfce8c0629c71415e58bc70a521f1efa55d9ab3"
+        },
+        "843": {
+          "triangles": 10,
+          "sha256": "cc74889e64d835d43eb0b983808d0620f0bfcede47250cfe47f73dbe4283774b"
+        },
+        "860": {
+          "triangles": 31,
+          "sha256": "8be14b287a3f44b189967630c53af8434e833af4233b79502a15e65171d01786"
+        },
+        "861": {
+          "triangles": 22,
+          "sha256": "6d883308ab99795cb68cdb8053495435777b61aee49d4bd2504feeaa69b6067b"
+        },
+        "862": {
+          "triangles": 19,
+          "sha256": "f308bbaf4e9ddeb2081a8459c6c7a6212eec8211e9aa1096e56f8a0f94cb75d7"
+        },
+        "870": {
+          "triangles": 37,
+          "sha256": "66edf1c35f277669d324c85bca6fc6cedbc0f84f074685fcb85add2532a25cb0"
+        },
+        "871": {
+          "triangles": 22,
+          "sha256": "167139fd4b6155a498cca1dbbe68fd6e37a2079d8f76780594af47add1bd8930"
+        },
+        "872": {
+          "triangles": 25,
+          "sha256": "b21a832cf181192b35a3e612b3f54876c24368132361297bae76383e517144ec"
+        },
+        "873": {
+          "triangles": 19,
+          "sha256": "232958e05b268f3f5aca13ff92a765087037d25184788e80bfd6922707e81cbe"
+        },
+        "874": {
+          "triangles": 13,
+          "sha256": "bb563e82eec063a7a09a951a800ef1668d81a14433a5d14ae9090af5afcb83d3"
+        },
+        "875": {
+          "triangles": 22,
+          "sha256": "9253bc9fc6068280d90b395f3f6f0b730ea418e29cf327986169dca128dc4812"
+        },
+        "876": {
+          "triangles": 13,
+          "sha256": "08f8ddf027bef18edf5928e6a14f5246298fc3d2121367bb98a74fc46fbae359"
+        },
+        "881": {
+          "triangles": 19,
+          "sha256": "491fa48d771d1a499659f4dfe7aaa93eeebfffbacd36dada6ae7de53052dcca9"
+        },
+        "883": {
+          "triangles": 25,
+          "sha256": "12b45bea54588a2306b692de3f74e9a1e3c0a346f8802d044ff76e50d08f3d8b"
+        },
+        "885": {
+          "triangles": 10,
+          "sha256": "6f63fa3afc949f229c45053ea1f6c566bc19067e55ffaec48a0e69ac4115eaa5"
+        },
+        "886": {
+          "triangles": 13,
+          "sha256": "e222941a93e3a2237ebfa4a304d179e3b3f4c0d1b5fbfbd0d74382e647b9f22b"
+        },
+        "890": {
+          "triangles": 22,
+          "sha256": "00059e65d24786e033b9b38132c007b89e263374cfcd91996ac33b0d5c82b690"
+        },
+        "891": {
+          "triangles": 16,
+          "sha256": "b4d97ddba29e8598b4b0fe4dbcc89d3cb96a78e5c23b12f3d57026e64992492f"
+        },
+        "895": {
+          "triangles": 13,
+          "sha256": "ad0e4e01a6b6b12b71059c6051231e24eed0f8bd0efa9acfbf6bf00ad5058f0c"
+        },
+        "899": {
+          "triangles": 49,
+          "sha256": "bf458cb86a1f09930bf468571101725282f6a188bf2ff69d1153268533c68c89"
+        },
+        "901": {
+          "triangles": 43,
+          "sha256": "5af89efa2a13347b6ccea54b4e0ff1376c7eabac4a655bd5656f6ade9174b156"
+        },
+        "902": {
+          "triangles": 16,
+          "sha256": "124b8db867024a2e7bb855cf7ac1bd7f49d8b08872f5826610cb7f1edd5c20b7"
+        },
+        "904": {
+          "triangles": 28,
+          "sha256": "bd93015f178a7de663d1e6edddc6b4ba07f658ab3501dfea9440f96e48e6bf53"
+        },
+        "905": {
+          "triangles": 19,
+          "sha256": "63faba52ed1ab74ae87954b51fca5328cb9ae4c250ead200c10bbd937a2d37f5"
+        },
+        "908": {
+          "triangles": 19,
+          "sha256": "44e8396a22771da4d1df69ae4ced6151c4635ec97e5952d15ceb337e5e23a2bb"
+        },
+        "910": {
+          "triangles": 13,
+          "sha256": "fa7b798eb3331cf868395ea3bca434c6db3c6df02426a257d89cca70c01f1bd9"
+        },
+        "912": {
+          "triangles": 10,
+          "sha256": "d841029eac6e4d073709fc53981df9e1cdb0b935b19ad3243f359fda7f9500ae"
+        },
+        "913": {
+          "triangles": 34,
+          "sha256": "a282d9df48208117dfe6e56e672ad20639fdb1e72065a7957203e8a5de1d97c9"
+        },
+        "916": {
+          "triangles": 13,
+          "sha256": "4d93f4142f1e295100e4576bcb90804621a77b3de440dcd39e0040dc27739654"
+        },
+        "919": {
+          "triangles": 22,
+          "sha256": "1e7ebe15b6abd3cea55d0ce23271a63283f219e394a10b0cad7e6df8e7e20834"
+        },
+        "923": {
+          "triangles": 13,
+          "sha256": "f08696a353b0dd2c0f580d83456b5e4537586e85163a5075f4b3b79e609d7dd9"
+        },
+        "928": {
+          "triangles": 16,
+          "sha256": "53a08c6c05892f8c92a45b07384676ab517a8bb086744204a1577994530ec266"
+        },
+        "931": {
+          "triangles": 61,
+          "sha256": "3075051e940db90e90f258e256a5206bcdeb5674c2d9dd74b29f6eeaa4feb0fb"
+        },
+        "937": {
+          "triangles": 10,
+          "sha256": "817c0aa8914dc025fbe3b4875cd032e083d6b03d3d13ce17fcdf50559ed79edd"
+        },
+        "938": {
+          "triangles": 34,
+          "sha256": "2ea6b8db611540fd1397d93f58271958ac22d706f476de4e7c656b83c9727c09"
+        },
+        "940": {
+          "triangles": 13,
+          "sha256": "2ce12bcb5fbf8103425b5c61947814c629a3ecb0610861335f33532cded40ed7"
+        },
+        "941": {
+          "triangles": 13,
+          "sha256": "3439aa17ee3b12a06d23bb5ddd2fb4dc04633697dbf749aea219abc2a76f22bc"
+        },
+        "947": {
+          "triangles": 13,
+          "sha256": "4eaf35437ca81346850b72fe440a65217ff8f21c7d78326eee89eaac660a5c74"
+        },
+        "948": {
+          "triangles": 22,
+          "sha256": "bb4cacace55499db007b06868eec49a7ccf63393951c3065e4cd0efa9e039443"
+        },
+        "949": {
+          "triangles": 19,
+          "sha256": "b00f6aba29103adcb67602ba9a9034ac7471adf0842d8bffec17d97b3aa60392"
+        },
+        "950": {
+          "triangles": 10,
+          "sha256": "528e3a5cbef7d12c6dc0978188734cd053a27a4005326622ebb28fb7faf0633c"
+        },
+        "951": {
+          "triangles": 10,
+          "sha256": "95e5a94233fcdd8ed35613013c2a835ecb84c072fc9cc27a2740e0977e66b58d"
+        },
+        "952": {
+          "triangles": 19,
+          "sha256": "dc93ef3f53f69a92517e2d907fdd745c1edaeb56725f2a313f202b3a2971fd29"
+        },
+        "953": {
+          "triangles": 13,
+          "sha256": "9b3e2b0893ca7a7e4ced81cb39b2e5ebe392bf1b57cae267e3c0ace41611732b"
+        },
+        "955": {
+          "triangles": 31,
+          "sha256": "09b3d8760ff78bbc792c2954114d7649d42bdda8d00855dce1d7097223475472"
+        },
+        "958": {
+          "triangles": 13,
+          "sha256": "5229ddd64070eccc7c5728186d246c719912c492e507a17e24ccc7de390d0ba1"
+        },
+        "959": {
+          "triangles": 19,
+          "sha256": "3889d96961c0a23646fe5a0f01f132d4fa92f8042f1777b1884e7652e1e72044"
+        },
+        "961": {
+          "triangles": 13,
+          "sha256": "c8e849c5fdd4ba4565c78db3b9a8000ae449e3957d1366196d66b1b211cb16b4"
+        },
+        "966": {
+          "triangles": 16,
+          "sha256": "cd3f802a72e0753098013cf4dd70ff5de8c3b29498194595e2218602d4d2e5fc"
+        },
+        "967": {
+          "triangles": 19,
+          "sha256": "3c80a85643456600c7888a4b3c6758cb2de74742e073bd42bc0c140a34db5025"
+        },
+        "969": {
+          "triangles": 13,
+          "sha256": "9acd5d8c898accf4ff4d3f4e7281c00e7d0bb8276014a053c2d00a931011a384"
+        },
+        "973": {
+          "triangles": 10,
+          "sha256": "a66029aa761d12abd3cde70d53cb0d6bab11b4a468757741037978d6930cf344"
+        },
+        "974": {
+          "triangles": 28,
+          "sha256": "2a27167576c1c6d35b9a1a8616d087c9f7e2bdfeda82110f40e091521a57be69"
+        },
+        "981": {
+          "triangles": 10,
+          "sha256": "63aa244a55e8be5ae569e2b72d26ab0ca9371aad006095aeca14dba989127181"
+        },
+        "982": {
+          "triangles": 25,
+          "sha256": "8e7eee2bf964c8181329f1746ee790c74401fb1d89a2c541a8fce3c790a206d1"
+        },
+        "988": {
+          "triangles": 22,
+          "sha256": "f8a4aba4eb8fd15621d79cf5900a947e4fac2f81c3456886c4bb6540f991a93d"
+        },
+        "990": {
+          "triangles": 10,
+          "sha256": "eabf18a9fe9a602b4380a14619e56dd0b9eb0416680a6bdf0090f78e405eae5c"
+        },
+        "992": {
+          "triangles": 19,
+          "sha256": "26036710275b6faab062a7673790d36fccb5fff99d3c16b9a52bcbe9e622053b"
+        },
+        "994": {
+          "triangles": 10,
+          "sha256": "4070ea3cedf293f8eba3a4e13555c613da07072a0ac1018ea2a5605dad06d998"
+        },
+        "996": {
+          "triangles": 13,
+          "sha256": "9a9723e87e606141fb87b4f2f84f1672bc00a09f127b36fee6fb4a41b5c3cbaf"
+        },
+        "997": {
+          "triangles": 13,
+          "sha256": "4c65ed5bc36495fe3d91af3548c8f4e8591dc41b00e9f3bc7863922945678dc5"
+        },
+        "1002": {
+          "triangles": 16,
+          "sha256": "ea38f1dd139da85ef97636eaffcc9fb17a88b262a992d006bd23843a8b6f6a08"
+        },
+        "1006": {
+          "triangles": 10,
+          "sha256": "eaf9bf023b15624f54c0aced08ffa2142ac36ccd1c4e1bbf99462ea71ba96726"
+        },
+        "1007": {
+          "triangles": 40,
+          "sha256": "0c7b075313d69c2c3f12425be784be42b6d71572fd31fd2f3ad85543cdd1af73"
+        },
+        "1011": {
+          "triangles": 10,
+          "sha256": "1c5dab4cca1179a63dad8b65a4a940d308bae61fea6a176c44d89ad7931fda65"
+        },
+        "1014": {
+          "triangles": 13,
+          "sha256": "d3da33d15ed224f318dee37b00964a3aeb0c010c50ae34517068e2a7ef2a5c1b"
+        },
+        "1015": {
+          "triangles": 25,
+          "sha256": "60e09f71d2e7248937b8b53e26f1f9d48f9d95f48df2490b5fa97ee3dff3f101"
+        },
+        "1016": {
+          "triangles": 10,
+          "sha256": "2952c300ea61615a522f573a308a0014e66c8dd3dca415994d999337fc748548"
+        },
+        "1017": {
+          "triangles": 16,
+          "sha256": "bb227face92066028dc5fbea2589a46d1e594a51e3e0a4bc8ca2f471a6dc569a"
+        },
+        "1020": {
+          "triangles": 19,
+          "sha256": "a0ae0a1cd3edcef662974992e6ac39ceac66a122a10604b9a353ead2214dd5af"
+        },
+        "1026": {
+          "triangles": 13,
+          "sha256": "6eeaef600f501d7ce4bbf104d380e3881f810e0c5e0d9829c9d26a86b645fafa"
+        },
+        "1028": {
+          "triangles": 13,
+          "sha256": "8fc03986b31b7eacefa9efff934eee69eee5f86db02c3c02065957b6ce13a670"
+        },
+        "1031": {
+          "triangles": 16,
+          "sha256": "983534634d269015017b607ad3563ea5ccf17e12d6b3f575413a9be4eb660235"
+        },
+        "1032": {
+          "triangles": 16,
+          "sha256": "c1ad58caed08491a3fcfd6d13ff7dd6e171d045b390b3fd491d6499dc805292f"
+        },
+        "1033": {
+          "triangles": 37,
+          "sha256": "e210856013c8171166716e62caf204de41009f28d1cd94b0941dea540b091ccb"
+        },
+        "1035": {
+          "triangles": 19,
+          "sha256": "d6bd914125814bf2a42fd78789463c54c0f34141c4929520a58cac1887c7c6bc"
+        },
+        "1036": {
+          "triangles": 10,
+          "sha256": "c60cef297d27ee963c0ae18f0c16082994100ed9c97cd5efb522a6a7b8564267"
+        },
+        "1039": {
+          "triangles": 10,
+          "sha256": "bd1c08dfd56f36896f23cb37bcdf65023b83fbfaff1c19f54298abcbb37d7c29"
+        },
+        "1041": {
+          "triangles": 19,
+          "sha256": "24741211aff985250b1b6c1d582fb1d77693716749a204d858b674dd77b7078d"
+        },
+        "1042": {
+          "triangles": 13,
+          "sha256": "733f97c7a7dff68a7ff838527a4d28868b37350a88885b29c3ca64ba23deb5b0"
+        },
+        "1045": {
+          "triangles": 22,
+          "sha256": "290b8059452c4f6a30d681755772694f9c23df99f603a6291822f329550c5c25"
+        },
+        "1046": {
+          "triangles": 16,
+          "sha256": "67fec283f720f14266ba3f88216f170a0b9a0e0a3ef92dcb059ad8d486feab95"
+        },
+        "1052": {
+          "triangles": 4148,
+          "sha256": "5c47a9ebebb9482b9f8d71ab81ae214bc2c9186fcfa62a6bfee9436b4fb89f35"
+        }
+      },
+      "sourceRoof": {
+        "triangles": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "beforeTargetTriangles": 0,
+      "afterTargetTriangles": 0
+    },
+    {
+      "file": "cells/cell-e000-s001/base.gltf",
+      "unrelatedSourceGroups": 3,
+      "unrelatedGroups": {
+        "228": {
+          "triangles": 1672,
+          "sha256": "dbb80738d54e39a3c32b8ddaf35c0e7130a609b784fa6b27b4c3dbf2c2c803e5"
+        },
+        "242": {
+          "triangles": 16088,
+          "sha256": "feb7773e8eea368d98f95805fcc7ed6ce6634b4f9d6f7fa3c48b607da486eeb5"
+        },
+        "267": {
+          "triangles": 1340,
+          "sha256": "15c6269a5c0b89ee2c64eca5a14d11063dd01535703eb20cc0090e682f5d134e"
+        }
+      },
+      "sourceRoof": {
+        "triangles": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "beforeTargetTriangles": 0,
+      "afterTargetTriangles": 0
+    },
+    {
+      "file": "cells/cell-e000-s001/near.gltf",
+      "unrelatedSourceGroups": 3,
+      "unrelatedGroups": {
+        "228": {
+          "triangles": 8976,
+          "sha256": "3cccb763701484b2ccb3a8cabfb4be294126a3c4ea28d9ea10b7b8f9cd581173"
+        },
+        "242": {
+          "triangles": 38338,
+          "sha256": "f82697e96b25a3258c245182d5bad9fd814da6fd47cec14ff5361d4d75dc58a1"
+        },
+        "267": {
+          "triangles": 6976,
+          "sha256": "0ee137e3e5a12633ff6b64e815c10f9324effa3324997dece5f4a54910194f6a"
+        }
+      },
+      "sourceRoof": {
+        "triangles": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "beforeTargetTriangles": 0,
+      "afterTargetTriangles": 0
+    },
+    {
+      "file": "cells/cell-e000-n000/base.gltf",
+      "unrelatedSourceGroups": 4,
+      "unrelatedGroups": {
+        "203": {
+          "triangles": 716,
+          "sha256": "0b0679931fd288bfc46541b89c106d53538e4585085fcef00f32689d77e8df3b"
+        },
+        "212": {
+          "triangles": 285,
+          "sha256": "cf19f8c98a780da623f638c8acd50f791cfd8069d1674d423504513a42d7720a"
+        },
+        "233": {
+          "triangles": 30479,
+          "sha256": "62214c7bc5eff4f10e473a9d3175d1eed6318967d2cfd011af8d0ccfae162396"
+        },
+        "244": {
+          "triangles": 1122,
+          "sha256": "7833906e77c3a9d5d2762ee7393414f6f3f31f2352d8a91a103169219d1a482b"
+        }
+      },
+      "sourceRoof": {
+        "triangles": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "beforeTargetTriangles": 0,
+      "afterTargetTriangles": 0
+    },
+    {
+      "file": "cells/cell-e000-n000/near.gltf",
+      "unrelatedSourceGroups": 4,
+      "unrelatedGroups": {
+        "203": {
+          "triangles": 3780,
+          "sha256": "410fa2fa18b275a57e4c52b05ce5eb704603ff4bfe0746032cd98509e0a683ec"
+        },
+        "212": {
+          "triangles": 1509,
+          "sha256": "aa12ad5ca896fb5d45f8a5bdc41d28fa2c4632087c7d9b2eef15257372123150"
+        },
+        "233": {
+          "triangles": 72592,
+          "sha256": "a86ece00c1e7d4d47757b845cf5e7349b7f2e5dfdf3e3ae39e376e1ac4d1a5d6"
+        },
+        "244": {
+          "triangles": 5758,
+          "sha256": "3051f7cd13f7c9671f7480c9caf7302c55a6f46daa87319fbf13fd40e6db757e"
+        }
+      },
+      "sourceRoof": {
+        "triangles": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "beforeTargetTriangles": 0,
+      "afterTargetTriangles": 0
+    },
+    {
+      "file": "cells/cell-e001-s001/base.gltf",
+      "unrelatedSourceGroups": 12,
+      "unrelatedGroups": {
+        "207": {
+          "triangles": 118,
+          "sha256": "31233c4b13d8bb8d0a4dbad3231333be0e577ce65f0b3ec033d53fbc7704e6d0"
+        },
+        "210": {
+          "triangles": 10,
+          "sha256": "dfed0ca3479987e7f8bc8d860adf579725d47b813f20b22afe617b579ef27586"
+        },
+        "214": {
+          "triangles": 262,
+          "sha256": "013ec4a83775c47fb46c1798d662acc41ac1352818a9816163b8788142364b1a"
+        },
+        "226": {
+          "triangles": 422,
+          "sha256": "a86ebdf5c187810a654e5daceaf4453d5e8b4ce719fcf088c8f4b480008a329d"
+        },
+        "230": {
+          "triangles": 408,
+          "sha256": "e54dcb0ea51ee1e20d42969435f7483afb25afa63bb74a0d635c1d1ebb77be32"
+        },
+        "236": {
+          "triangles": 130,
+          "sha256": "095fb66115a344591ed914fa3c340d245247ce0343223b7e5329aff8df017a4c"
+        },
+        "243": {
+          "triangles": 348,
+          "sha256": "0f973d4212f0502ecb80a65eb78703379831fe2d901e49f0b9276998c1521137"
+        },
+        "249": {
+          "triangles": 10,
+          "sha256": "7ab80dc29c6af2e07128f7c974be3e4675f8e047e18eb6549b8c6890b1751092"
+        },
+        "256": {
+          "triangles": 544,
+          "sha256": "52e55cb148f117e5590a8c95d246ec002917d5403f22ca4ceec2f437daab51d1"
+        },
+        "257": {
+          "triangles": 710,
+          "sha256": "a84e6cda4e0350dd563e4c2c31ddd295412f55731578e718f6ed47f297cd59be"
+        },
+        "262": {
+          "triangles": 19,
+          "sha256": "af58a56b479e71adcf249b29dbba90de34970fd0a3836ba3c45f03c38a8e2573"
+        },
+        "269": {
+          "triangles": 540,
+          "sha256": "bd16380dd44d831ade59d79031f5151ec3342e34b71502a99b2d59b002734593"
+        }
+      },
+      "sourceRoof": {
+        "triangles": 2,
+        "sha256": "101041fc4392241fd1e96fcec7ae1e5d09b2c1a956f759472cd2342798bd4af6"
+      },
+      "beforeTargetTriangles": 66,
+      "afterTargetTriangles": 108,
+      "extractedTriangles": "artifacts/neighborhood-20261023/world/platform-open-audit/cell-e001-s001-base.gltf.triangles.json",
+      "extractedTrianglesIdentity": {
+        "bytes": 20716,
+        "sha256": "b82cb5fc40c5d973a966990735a9eaecd4e1c7abed768c9a7ed0c517d192a1ab"
+      }
+    },
+    {
+      "file": "cells/cell-e001-s001/near.gltf",
+      "unrelatedSourceGroups": 12,
+      "unrelatedGroups": {
+        "207": {
+          "triangles": 462,
+          "sha256": "f755dac6fe8d16f6832b2327c59249007fe59ba2ed489db479539d7e17db74a7"
+        },
+        "210": {
+          "triangles": 10,
+          "sha256": "dfed0ca3479987e7f8bc8d860adf579725d47b813f20b22afe617b579ef27586"
+        },
+        "214": {
+          "triangles": 1326,
+          "sha256": "8be7325c846c07f622ca7c98e938a74a7c7b5155086d14561e148e23cb752559"
+        },
+        "226": {
+          "triangles": 2046,
+          "sha256": "d6c82732ee839d104da6579c94ba730cc3a9a4a8ccbc3e43437f69120f155796"
+        },
+        "230": {
+          "triangles": 1872,
+          "sha256": "1473ecc4b80c9c8248f20624da43fd27189f20e23b13318fab2e698999cfa31f"
+        },
+        "236": {
+          "triangles": 594,
+          "sha256": "2ec31b808c51b86114867dceb0dddd4cb92f7d58b0c101c8400d3da4e6082699"
+        },
+        "243": {
+          "triangles": 1452,
+          "sha256": "c8c9642e31cd298ef96d2eb3b4f553b7826a16a7141b68dbe0663c1646ab68a3"
+        },
+        "249": {
+          "triangles": 10,
+          "sha256": "7ab80dc29c6af2e07128f7c974be3e4675f8e047e18eb6549b8c6890b1751092"
+        },
+        "256": {
+          "triangles": 2380,
+          "sha256": "739213e77fdab46a689d1115c1e5a504156b834577760397ec99d42b0dcd1119"
+        },
+        "257": {
+          "triangles": 3594,
+          "sha256": "a55ec85d649f617cea034e53e2ff92857711f19900d17a6e06f0162e841bd753"
+        },
+        "262": {
+          "triangles": 19,
+          "sha256": "af58a56b479e71adcf249b29dbba90de34970fd0a3836ba3c45f03c38a8e2573"
+        },
+        "269": {
+          "triangles": 2544,
+          "sha256": "4389707bba21d824a833e11974325587faad7f514e3fc9ba1bd0f74431da53dc"
+        }
+      },
+      "sourceRoof": {
+        "triangles": 2,
+        "sha256": "101041fc4392241fd1e96fcec7ae1e5d09b2c1a956f759472cd2342798bd4af6"
+      },
+      "beforeTargetTriangles": 330,
+      "afterTargetTriangles": 108,
+      "extractedTriangles": "artifacts/neighborhood-20261023/world/platform-open-audit/cell-e001-s001-near.gltf.triangles.json",
+      "extractedTrianglesIdentity": {
+        "bytes": 20716,
+        "sha256": "6b71c5951649e59207fa37faca319be1e0fcc683eb7da5178e4e14c4c9303359"
+      }
+    }
+  ],
+  "verifiedGzipResources": 148,
+  "geometry": {
+    "status": "pass",
+    "sourceId": "kyoto-city:bldg_74454289-1d7a-4105-87ea-26e36c69bc44",
+    "float32ToleranceMetres": 0.00003,
+    "sections": [
+      {
+        "file": "cells/cell-e001-s001/base.gltf",
+        "triangles": 108,
+        "trianglePayloadSha256": "b82cb5fc40c5d973a966990735a9eaecd4e1c7abed768c9a7ed0c517d192a1ab",
+        "baseMetres": 0,
+        "topMetres": 2.124000072479248,
+        "slabUndersideMetres": 2.0440000000000023,
+        "beamUndersideMetres": 1.9440000000000022,
+        "roofBoundaryErrorMetres": 0.000007080115116114857,
+        "roofAreaDifferenceSquareMetres": 0.000020249010522048038,
+        "displayToProjectedSourceBoundaryMetres": 0.00038606200129941436,
+        "navigationCorridorClearanceMetres": 1.6318248841495786,
+        "postSpacingMetres": 4.810001612902963,
+        "posts": [
+          {
+            "centre": [
+              187.29800033361667,
+              -1.887638350297082
+            ],
+            "areaSquareMetres": 0.014400339762687508,
+            "perimeterMetres": 0.4800056632418563,
+            "axisOffsetMetres": 0.44999981170444553
+          },
+          {
+            "centre": [
+              182.48800277502295,
+              -1.8837593396184813
+            ],
+            "areaSquareMetres": 0.014400325457245344,
+            "perimeterMetres": 0.4800054248233591,
+            "axisOffsetMetres": 5.259998934407214
+          },
+          {
+            "centre": [
+              177.677997591188,
+              -1.8798777858723514
+            ],
+            "areaSquareMetres": 0.014400339762687508,
+            "perimeterMetres": 0.48000566324185634,
+            "axisOffsetMetres": 10.070005684399604
+          },
+          {
+            "centre": [
+              172.8680000325942,
+              -1.8759987155903692
+            ],
+            "areaSquareMetres": 0.014400339762687508,
+            "perimeterMetres": 0.48000566324185634,
+            "axisOffsetMetres": 14.880004807150497
+          },
+          {
+            "centre": [
+              168.05799865722653,
+              -1.8721209764480589
+            ],
+            "areaSquareMetres": 0.014399409192265011,
+            "perimeterMetres": 0.47999015342759316,
+            "axisOffsetMetres": 19.690007745600543
+          },
+          {
+            "centre": [
+              163.24800108869908,
+              -1.868241935952811
+            ],
+            "areaSquareMetres": 0.014399416339074378,
+            "perimeterMetres": 0.4799902725407432,
+            "axisOffsetMetres": 24.500006878261086
+          },
+          {
+            "centre": [
+              158.43799972326514,
+              -1.8643641670237665
+            ],
+            "areaSquareMetres": 0.014400339762687508,
+            "perimeterMetres": 0.4800056632418563,
+            "axisOffsetMetres": 29.310009806801432
+          }
+        ],
+        "allFacesWithinApprovedComponents": true,
+        "unmeasuredConstruction": true
+      },
+      {
+        "file": "cells/cell-e001-s001/near.gltf",
+        "triangles": 108,
+        "trianglePayloadSha256": "6b71c5951649e59207fa37faca319be1e0fcc683eb7da5178e4e14c4c9303359",
+        "baseMetres": 0,
+        "topMetres": 2.124000072479248,
+        "slabUndersideMetres": 2.0440000000000023,
+        "beamUndersideMetres": 1.9440000000000022,
+        "roofBoundaryErrorMetres": 0.000007080115116114857,
+        "roofAreaDifferenceSquareMetres": 0.000020249010522048038,
+        "displayToProjectedSourceBoundaryMetres": 0.00038606200129941436,
+        "navigationCorridorClearanceMetres": 1.6318248841495786,
+        "postSpacingMetres": 4.810001612902963,
+        "posts": [
+          {
+            "centre": [
+              187.29800033361667,
+              -1.887638350297082
+            ],
+            "areaSquareMetres": 0.014400339762687508,
+            "perimeterMetres": 0.4800056632418563,
+            "axisOffsetMetres": 0.44999981170444553
+          },
+          {
+            "centre": [
+              182.48800277502295,
+              -1.8837593396184813
+            ],
+            "areaSquareMetres": 0.014400325457245344,
+            "perimeterMetres": 0.4800054248233591,
+            "axisOffsetMetres": 5.259998934407214
+          },
+          {
+            "centre": [
+              177.677997591188,
+              -1.8798777858723514
+            ],
+            "areaSquareMetres": 0.014400339762687508,
+            "perimeterMetres": 0.48000566324185634,
+            "axisOffsetMetres": 10.070005684399604
+          },
+          {
+            "centre": [
+              172.8680000325942,
+              -1.8759987155903692
+            ],
+            "areaSquareMetres": 0.014400339762687508,
+            "perimeterMetres": 0.48000566324185634,
+            "axisOffsetMetres": 14.880004807150497
+          },
+          {
+            "centre": [
+              168.05799865722653,
+              -1.8721209764480589
+            ],
+            "areaSquareMetres": 0.014399409192265011,
+            "perimeterMetres": 0.47999015342759316,
+            "axisOffsetMetres": 19.690007745600543
+          },
+          {
+            "centre": [
+              163.24800108869908,
+              -1.868241935952811
+            ],
+            "areaSquareMetres": 0.014399416339074378,
+            "perimeterMetres": 0.4799902725407432,
+            "axisOffsetMetres": 24.500006878261086
+          },
+          {
+            "centre": [
+              158.43799972326514,
+              -1.8643641670237665
+            ],
+            "areaSquareMetres": 0.014400339762687508,
+            "perimeterMetres": 0.4800056632418563,
+            "axisOffsetMetres": 29.310009806801432
+          }
+        ],
+        "allFacesWithinApprovedComponents": true,
+        "unmeasuredConstruction": true
+      }
+    ]
+  },
+  "limitations": "The source footprint is used as an authored roof outline. Assembly checked against approved parameters and retained display geometry; an independently surveyed roof plan, present-day construction, measured clearance and visual acceptance are separate."
+}

@@ -1,0 +1,72 @@
+{
+  "packageManifestSha256": "679241ee06a8115ad3f95ddd523c2f56555b900f3ecc4437d272573a968ec4e5",
+  "status": "asset-and-source-validation-complete-browser-review-pending",
+  "files": [
+    {
+      "file": "geometry-preservation.json",
+      "source": "artifacts/neighborhood-20261023/art/platform-open-preservation.json",
+      "bytes": 58319,
+      "sha256": "0756adca7e182983e1dcfca877472de67526076c9b84e5d63e1ca47353f02bde"
+    },
+    {
+      "file": "startup-audit.json",
+      "source": "artifacts/neighborhood-20261023/art/platform-open-startup-audit.json",
+      "bytes": 28467,
+      "sha256": "a17a20323654803018d4a71e94a53eed0b275cfb64f825aeadd1a8b21b274afc"
+    },
+    {
+      "file": "manifest.json.gz",
+      "source": "artifacts/neighborhood-20261023/art/platform-open-transport/manifest.json",
+      "bytes": 60166,
+      "sha256": "49c2d0f8613df7e79147f0bdabcd7e699334d125cae5e8d2d2acc2a64d5d036a",
+      "decodedBytes": 314192,
+      "decodedSha256": "679241ee06a8115ad3f95ddd523c2f56555b900f3ecc4437d272573a968ec4e5",
+      "encoding": "gzip"
+    },
+    {
+      "file": "provenance.json.gz",
+      "source": "artifacts/neighborhood-20261023/art/platform-open-transport/provenance.json",
+      "bytes": 118967,
+      "sha256": "8037b739c514dca8c2a712389e5ee3deb89b02edfd99c557d222e70a47e9d88d",
+      "decodedBytes": 1630579,
+      "decodedSha256": "845448d6bb53c4de1592c42b5e726d4f5b8001d589e14299221c2fae53c8270b",
+      "encoding": "gzip"
+    },
+    {
+      "file": "compression-report.json.gz",
+      "source": "artifacts/neighborhood-20261023/art/platform-open-transport/compression-report.json",
+      "bytes": 12633,
+      "sha256": "50f331af09b879d8ca41189c11bbda1f5c637d4e564536badf2bb774bd55b361",
+      "decodedBytes": 547694,
+      "decodedSha256": "1e99cb72e1f297fe67615fb7b220ae11f77ce39014dfc72f51653aaafa773936",
+      "encoding": "gzip"
+    },
+    {
+      "file": "transport-report.json.gz",
+      "source": "artifacts/neighborhood-20261023/art/platform-open-transport/transport-report.json",
+      "bytes": 24793,
+      "sha256": "9ef25349a03ebef51e707d180d886b48bdeaf473e8a9a9b568dafbb5affeb868",
+      "decodedBytes": 121451,
+      "decodedSha256": "1c94a54924574693136a34510b15721f06a12570a8da070881616d5ed3858a5d",
+      "encoding": "gzip"
+    },
+    {
+      "file": "executed-geometry-audit.mjs.gz",
+      "source": "artifacts/neighborhood-20261023/art/audit-platform-treatment.mjs",
+      "bytes": 3619,
+      "sha256": "7e2f6f5f6e2c683708da9d1595aa762285ab51e0a2608576aa6d37bf908b0686",
+      "decodedBytes": 10419,
+      "decodedSha256": "ccdc1f5b50ccd535bc9a3f149950ce0e04a8a8384c712c0a521a7865faee622f",
+      "encoding": "gzip"
+    },
+    {
+      "file": "executed-startup-audit.mjs.gz",
+      "source": "artifacts/neighborhood-20261023/art/audit-platform-startup.mjs",
+      "bytes": 1488,
+      "sha256": "6efd7382c9f0f7335094d204f0204f070d4be9e72c16f4649c691c030a9ee7e5",
+      "decodedBytes": 3997,
+      "decodedSha256": "ce9f38709508ab7d0e77e20f81e022a4fb96d4b3aa7a2f639d76cb7084facd4d",
+      "encoding": "gzip"
+    }
+  ]
+}

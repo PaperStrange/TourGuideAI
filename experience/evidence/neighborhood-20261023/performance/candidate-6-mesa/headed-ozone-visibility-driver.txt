@@ -1,0 +1,143 @@
+import { chromium } from '../../experience/node_modules/playwright/index.mjs';
+import { createHash } from 'node:crypto';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { createServer } from 'node:http';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const driver = fileURLToPath(import.meta.url);
+const repository = resolve(dirname(driver), '../..');
+const output = resolve(repository, 'artifacts/neighborhood-20261023/headed-ozone-visibility');
+if (existsSync(resolve(output, 'result.json'))) throw new Error('Capability evidence already exists');
+mkdirSync(output, { recursive: true });
+const environment = {
+  EGL_PLATFORM: 'surfaceless', LIBGL_ALWAYS_SOFTWARE: 'true', GALLIUM_DRIVER: 'llvmpipe',
+  MESA_SHADER_CACHE_DIR: resolve(output, 'mesa-cache'), TMPDIR: resolve(repository, 'artifacts/tmp'),
+};
+mkdirSync(environment.MESA_SHADER_CACHE_DIR, { recursive: true });
+mkdirSync(environment.TMPDIR, { recursive: true });
+const args = ['--no-sandbox', '--enable-gpu', '--use-gl=angle', '--use-angle=gl-egl',
+  '--ozone-platform=headless', '--ignore-gpu-blocklist'];
+const requested = { alpha: true, antialias: true, depth: true, premultipliedAlpha: true,
+  preserveDrawingBuffer: false, powerPreference: 'high-performance' };
+const report = {
+  kind: 'Native browser visibility capability on the Ozone virtual display; no application hidden-work claim',
+  startedAt: new Date().toISOString(), executable: '/usr/bin/chromium', expectedBrowser: '151.0.7922.173',
+  headless: false, args, environment, requested, viewport: [1440, 1000], dpr: 1,
+  driverSha256: createHash('sha256').update(readFileSync(driver)).digest('hex'),
+  phases: [], errors: [], success: false,
+};
+const proxyURL = process.env.HTTPS_PROXY || process.env.HTTP_PROXY;
+const proxy = proxyURL ? new URL(proxyURL) : null;
+let browser, context, listening = false;
+const server = createServer((request, response) => {
+  response.writeHead(200, { 'Content-Type': 'text/html', 'Cache-Control': 'no-store' });
+  response.end('<!doctype html><html><head><title>Native visibility probe</title></head><body><canvas id="probe" width="1440" height="1000"></canvas></body></html>');
+});
+
+function installObserver() {
+  const events = [], timers = [];
+  let frames = 0, ticks = 0;
+  const state = () => ({ at: performance.now(), hidden: document.hidden, visibilityState: document.visibilityState,
+    hasFocus: document.hasFocus(), frames, ticks });
+  document.addEventListener('visibilitychange', event => events.push({ ...state(), trusted: event.isTrusted }));
+  const frame = () => { frames++; requestAnimationFrame(frame); };
+  requestAnimationFrame(frame);
+  setInterval(() => { ticks++; timers.push(state()); if (timers.length > 160) timers.shift(); }, 100);
+  window.__VISIBILITY_PROBE__ = { read: () => ({ ...state(), events: [...events], timers: [...timers] }) };
+}
+
+try {
+  await new Promise(accept => server.listen(0, '127.0.0.1', accept));
+  listening = true;
+  browser = await chromium.launch({ executablePath: report.executable, headless: false, timeout: 30000,
+    args, env: { ...process.env, ...environment },
+    ...(proxy ? { proxy: { server: proxy.origin, bypass: 'localhost,127.0.0.1,[::1]',
+      ...(proxy.username ? { username: decodeURIComponent(proxy.username), password: decodeURIComponent(proxy.password) } : {}) } } : {}) });
+  report.browser = browser.version();
+  if (report.browser !== report.expectedBrowser) throw new Error('Unexpected system Chromium version');
+  context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 1 });
+  await context.addInitScript(installObserver);
+  const browserSession = await browser.newBrowserCDPSession();
+  const first = await context.newPage();
+  first.setDefaultTimeout(5000);
+  first.on('pageerror', error => report.errors.push({ kind: 'page-a', message: error.message }));
+  await first.goto(`http://127.0.0.1:${server.address().port}/a`, { waitUntil: 'load' });
+  report.webgl = await first.evaluate(requested => {
+    const canvas = document.querySelector('#probe'), failures = [];
+    canvas.addEventListener('webglcontextcreationerror', event => failures.push(event.statusMessage));
+    const gl = canvas.getContext('webgl2', requested);
+    if (!gl) return { available: false, failures };
+    const extension = gl.getExtension('WEBGL_debug_renderer_info');
+    gl.clearColor(.2, .3, .4, 1); gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+    return { available: true, failures, attributes: gl.getContextAttributes(),
+      unmaskedRenderer: extension ? gl.getParameter(extension.UNMASKED_RENDERER_WEBGL) : null,
+      samples: gl.getParameter(gl.SAMPLES), error: gl.getError() };
+  }, requested);
+  report.systemInfo = await browserSession.send('SystemInfo.getInfo');
+  report.contextMatches = report.webgl.available && /llvmpipe/i.test(report.webgl.unmaskedRenderer || '')
+    && !/swiftshader/i.test(report.webgl.unmaskedRenderer || '') && report.webgl.error === 0
+    && Object.entries(requested).every(([key, value]) => report.webgl.attributes?.[key] === value);
+  if (!report.contextMatches) throw new Error('The actual Mesa application-context capability is unavailable');
+  const second = await context.newPage();
+  second.setDefaultTimeout(5000);
+  second.on('pageerror', error => report.errors.push({ kind: 'page-b', message: error.message }));
+  await second.goto(`http://127.0.0.1:${server.address().port}/b`, { waitUntil: 'load' });
+  const sessionA = await context.newCDPSession(first);
+  const sessionB = await context.newCDPSession(second);
+  const targetA = (await sessionA.send('Target.getTargetInfo')).targetInfo.targetId;
+  const targetB = (await sessionB.send('Target.getTargetInfo')).targetInfo.targetId;
+  const windowA = await browserSession.send('Browser.getWindowForTarget', { targetId: targetA });
+  const windowB = await browserSession.send('Browser.getWindowForTarget', { targetId: targetB });
+  report.windows = { first: windowA, second: windowB, sameWindow: windowA.windowId === windowB.windowId };
+  const read = async () => ({ first: await first.evaluate(() => window.__VISIBILITY_PROBE__.read()),
+    second: await second.evaluate(() => window.__VISIBILITY_PROBE__.read()) });
+  async function observe(id, expectedHidden) {
+    const phase = { id, expectedHidden, startedAt: new Date().toISOString(), samples: [], matched: false };
+    const deadline = Date.now() + 2500;
+    do {
+      const snapshot = await read(); phase.samples.push(snapshot);
+      phase.matched = snapshot.first.hidden === expectedHidden[0] && snapshot.second.hidden === expectedHidden[1];
+      if (phase.matched) break;
+      await new Promise(accept => setTimeout(accept, 100));
+    } while (Date.now() < deadline);
+    // 延迟观察由 Node 定时器驱动，读取页面真实状态及原生 visibilitychange 事件。
+    await new Promise(accept => setTimeout(accept, 1100));
+    phase.settled = await read();
+    phase.matched = phase.matched && phase.settled.first.hidden === expectedHidden[0]
+      && phase.settled.second.hidden === expectedHidden[1];
+    phase.finishedAt = new Date().toISOString(); report.phases.push(phase);
+  }
+  await first.bringToFront();
+  await observe('first-tab-active', [false, true]);
+  await second.bringToFront();
+  await observe('second-tab-active', [true, false]);
+  await first.bringToFront();
+  await observe('first-tab-returned', [false, true]);
+  await browserSession.send('Browser.setWindowBounds', { windowId: windowA.windowId, bounds: { windowState: 'minimized' } });
+  await observe('window-minimized', [true, true]);
+  await browserSession.send('Browser.setWindowBounds', { windowId: windowA.windowId, bounds: { windowState: 'normal' } });
+  await first.bringToFront();
+  await observe('window-restored', [false, true]);
+  report.finalWindows = {
+    first: await browserSession.send('Browser.getWindowForTarget', { targetId: targetA }),
+    second: await browserSession.send('Browser.getWindowForTarget', { targetId: targetB }),
+  };
+  const final = await read();
+  report.final = final;
+  report.success = report.contextMatches && report.windows.sameWindow && report.phases.every(phase => phase.matched)
+    && final.first.events.some(event => event.trusted && event.hidden)
+    && final.first.events.some(event => event.trusted && !event.hidden)
+    && report.errors.length === 0;
+} catch (error) {
+  report.errors.push({ kind: 'probe', message: error.message });
+} finally {
+  await context?.close(); await browser?.close();
+  if (listening) { server.closeAllConnections(); await new Promise(accept => server.close(accept)); }
+  report.finishedAt = new Date().toISOString(); report.browserClosed = true;
+  writeFileSync(resolve(output, 'result.json'), JSON.stringify(report, null, 2) + '\n');
+}
+console.log(JSON.stringify({ success: report.success, browser: report.browser, contextMatches: report.contextMatches,
+  phases: report.phases.map(({ id, matched }) => ({ id, matched })), errors: report.errors,
+  report: resolve(output, 'result.json') }));
+if (!report.success) process.exitCode = 1;

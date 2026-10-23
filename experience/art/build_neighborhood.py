@@ -86,6 +86,26 @@ def validate_inputs(geography, style):
         for key in ('wallMaterial', 'roofMaterial', 'glassMaterial', 'frameMaterial'):
             if recipe[key] not in style['materials']:
                 raise ValueError('Unknown facade material: ' + recipe[key])
+    source_features = {feature['sourceId']: feature for feature in geography['features']}
+    for source_id, treatment in style.get('sourceTreatmentOverrides', {}).items():
+        feature = source_features[source_id]
+        if feature['kind'] != 'building' or treatment['treatment'] != 'wall-less-structure':
+            raise ValueError('Unsupported reviewed source treatment: ' + source_id)
+        if treatment['recipeId'] not in style['recipes']:
+            raise ValueError('Reviewed source treatment requires an existing material recipe')
+        if (feature['height']['metres'] != treatment['expectedHeightMetres'] or
+                feature.get('baseHeightMetres', 0) != treatment['expectedBaseHeightMetres']):
+            raise ValueError('Reviewed source envelope height changed: ' + source_id)
+        for evidence in treatment['evidence']:
+            if sha256(ROOT / evidence['file']) != evidence['sha256']:
+                raise ValueError('Reviewed source treatment evidence changed: ' + evidence['file'])
+        audit = json.loads((ROOT / treatment['evidence'][0]['file']).read_text())
+        if (audit['status'] != 'pass' or audit['sourceId'] != source_id or
+                not audit['insideFootprint'] or audit['height'] != feature['height']):
+            raise ValueError('Reviewed source treatment has no matching envelope audit')
+        semantics = json.loads((ROOT / treatment['evidence'][2]['file']).read_text())
+        if semantics['sourceId'] != source_id or semantics['additionalProperties']['分類'] != '普通無壁舎':
+            raise ValueError('Reviewed open construction requires the exact wall-less classification')
 
 
 def create_materials(style, asset_dir):
@@ -243,6 +263,13 @@ def prepare_features(scene, geography, style, prepared):
             for edge in feature['arcadeFacadeEdges']:
                 if edge not in feature['facadeEdges']:
                     feature['facadeEdges'].append(edge)
+            treatment = style.get('sourceTreatmentOverrides', {}).get(feature['sourceId'])
+            if treatment:
+                # 单项来源分类限定开放构造；支撑和顶棚厚度保留明确的作者说明。
+                feature['recipeId'] = treatment['recipeId']
+                feature['facadeEdges'] = []
+                feature['arcadeFacadeEdges'] = []
+                feature['treatmentOverride'] = treatment
             matches = {match['sourceId'] for match in feature.get('osmMatches', [])}
             if 'osm:way:205732558' in matches:
                 feature['retainedGroup'] = 'North'
@@ -464,9 +491,13 @@ def main():
                       'featureIds': feature.get('inspectionFeatureIds', [feature['sourceId']]),
                       'inspectionFeatureIds': feature.get('inspectionFeatureIds', []),
                       'sourceVersion': feature.get('sourceVersion'),
-                      'height': feature.get('height'), 'recipeId': feature.get('recipeId')}
+                      'height': feature.get('height'), 'recipeId': feature.get('recipeId'),
+                      **({'treatmentOverride': feature['treatmentOverride']} if feature.get('treatmentOverride') else {})}
                      for index, feature in enumerate(features)]
     source_indices = {feature['sourceId']: index for index, feature in enumerate(features)}
+    for source_id, treatment in style.get('sourceTreatmentOverrides', {}).items():
+        if source_indices[source_id] != treatment['expectedSourceIndex']:
+            raise ValueError('Reviewed source index changed: ' + source_id)
     for surface in geography['surfaces'] + prepared.get('displayMaterialSurfaces', []):
         if surface['sourceId'] not in source_indices:
             source_indices[surface['sourceId']] = len(feature_table)
@@ -646,6 +677,12 @@ def main():
                   'authored': ['Facade bay counts and window dimensions', 'Material-family assignments on sourced building masses', 'Flat ground and display water/bridge heights', 'Canopy profile and source-adjacent soffit joins up to6m; exact construction widths unmeasured', 'Lower-storey market frontage assemblies without tenant correspondence', 'Bank vertical faces between existing authored ground/water heights', 'Torii/board/railing dimensions', 'Night fixtures, light intensity and emission'],
                   'sourceFramePreserved': True, 'originalPackAssetsChanged': False,
                   'visualAcceptance': 'requires actual browser route review'}
+    if style.get('sourceTreatmentOverrides'):
+        provenance['sourceTreatmentOverrides'] = [
+            {'sourceId': source_id, **treatment,
+             'evidenceRecords': [{**evidence, 'record': json.loads((ROOT / evidence['file']).read_text())}
+                                 for evidence in treatment['evidence']]}
+            for source_id, treatment in style['sourceTreatmentOverrides'].items()]
     if river_context:
         # 完整来源输入按确定性 gzip 保存，解码后仍对应审核过的原始字节。
         input_bytes = arguments.river_context.read_bytes()

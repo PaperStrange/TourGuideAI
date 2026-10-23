@@ -1,0 +1,62 @@
+import { chromium } from '../../experience/node_modules/playwright/index.mjs';
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { createServer } from 'node:http';
+import { resolve } from 'node:path';
+
+const output = resolve('artifacts/neighborhood-20261023/mesa-egl-capability');
+const temporary = resolve('artifacts/tmp');
+mkdirSync(output, { recursive: true }); mkdirSync(temporary, { recursive: true });
+const environment = { EGL_PLATFORM: 'surfaceless', LIBGL_ALWAYS_SOFTWARE: 'true', GALLIUM_DRIVER: 'llvmpipe',
+  MESA_SHADER_CACHE_DIR: output + '/mesa-cache', TMPDIR: temporary };
+mkdirSync(environment.MESA_SHADER_CACHE_DIR, { recursive: true });
+const args = ['--no-sandbox', '--enable-gpu', '--use-gl=angle', '--use-angle=gl-egl', '--ozone-platform=headless'];
+const report = { startedAt: new Date().toISOString(), kind: 'Software EGL capability only; no application performance claim',
+  executable: '/usr/bin/chromium', args, environment, viewport: [1440, 1000], dpr: 1, errors: [], success: false };
+const save = () => writeFileSync(output + '/result.json', JSON.stringify(report, null, 2) + '\n');
+const proxyURL = process.env.HTTPS_PROXY || process.env.HTTP_PROXY;
+const proxy = proxyURL ? new URL(proxyURL) : null;
+let browser;
+const server = createServer((request, response) => {
+  response.writeHead(200, { 'Content-Type': 'text/html', 'Cache-Control': 'no-store' });
+  response.end('<!doctype html><html><body><canvas id="probe" width="1440" height="1000"></canvas></body></html>');
+});
+try {
+  await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+  browser = await chromium.launch({ executablePath: report.executable, headless: true, timeout: 45000,
+    args, env: { ...process.env, ...environment },
+    ...(proxy ? { proxy: { server: proxy.origin, bypass: 'localhost,127.0.0.1,[::1]',
+      ...(proxy.username ? { username: decodeURIComponent(proxy.username), password: decodeURIComponent(proxy.password) } : {}) } } : {}) });
+  report.browser = browser.version();
+  const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 1 });
+  const page = await context.newPage(); page.setDefaultTimeout(15000);
+  page.on('pageerror', error => report.errors.push({ kind: 'page', message: error.message }));
+  page.on('console', message => { if (message.type() === 'error' || message.type() === 'warning') report.errors.push({ kind: message.type(), message: message.text() }); });
+  await page.goto(`http://127.0.0.1:${server.address().port}/`, { waitUntil: 'load' });
+  report.webgl = await page.evaluate(() => {
+    const canvas = document.querySelector('#probe');
+    const failures = [];
+    canvas.addEventListener('webglcontextcreationerror', event => failures.push(event.statusMessage));
+    const requested = { antialias: true, alpha: false, powerPreference: 'high-performance' };
+    const gl = canvas.getContext('webgl2', requested);
+    if (!gl) return { available: false, requested, failures };
+    const debug = gl.getExtension('WEBGL_debug_renderer_info');
+    gl.clearColor(.2, .3, .4, 1); gl.clear(gl.COLOR_BUFFER_BIT);
+    return { available: true, requested, attributes: gl.getContextAttributes(), failures,
+      vendor: gl.getParameter(gl.VENDOR), renderer: gl.getParameter(gl.RENDERER), version: gl.getParameter(gl.VERSION),
+      unmaskedVendor: debug ? gl.getParameter(debug.UNMASKED_VENDOR_WEBGL) : null,
+      unmaskedRenderer: debug ? gl.getParameter(debug.UNMASKED_RENDERER_WEBGL) : null,
+      samples: gl.getParameter(gl.SAMPLES), error: gl.getError(), canvas: [canvas.width, canvas.height] };
+  });
+  const session = await browser.newBrowserCDPSession();
+  report.systemInfo = await session.send('SystemInfo.getInfo');
+  report.success = report.webgl.available && /llvmpipe/i.test(report.webgl.unmaskedRenderer || '')
+    && !/swiftshader/i.test(report.webgl.unmaskedRenderer || '') && report.webgl.attributes.antialias === true;
+} catch (error) { report.errors.push({ kind: 'probe', message: error.message }); }
+finally {
+  if (browser) await browser.close();
+  server.closeAllConnections(); await new Promise(resolve => server.close(resolve));
+  report.finishedAt = new Date().toISOString(); report.browserClosed = true; save();
+}
+console.log(JSON.stringify({ success: report.success, browser: report.browser, webgl: report.webgl,
+  errors: report.errors, report: output + '/result.json' }));
+if (!report.success) process.exitCode = 1;

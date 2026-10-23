@@ -3465,7 +3465,44 @@
       "measuredHeightAttribute": "2.9",
       "meaning": "LOD1 solid vertical extent; measured-height attribute retained independently; facade/roof proportions unreviewed"
     },
-    "recipeId": "urban-tile"
+    "recipeId": "urban-plaster",
+    "treatmentOverride": {
+      "treatment": "wall-less-structure",
+      "recipeId": "urban-plaster",
+      "expectedSourceIndex": 223,
+      "expectedHeightMetres": 2.1240000000000023,
+      "expectedBaseHeightMetres": 0,
+      "association": {
+        "sourceId": "osm:node:8886543723",
+        "name": "Shijo Takakura · Platform A",
+        "meaning": "The mapped bus-platform point lies inside the municipal ordinary wall-less structure. Exact support layout, roof construction and current condition remain unverified."
+      },
+      "construction": {
+        "roofThicknessMetres": 0.08,
+        "postCount": 7,
+        "postWidthMetres": 0.12,
+        "endInsetMetres": 0.45,
+        "beamDepthMetres": 0.1,
+        "beamWidthMetres": 0.1,
+        "roofMaterial": "roof",
+        "structureMaterial": "frame"
+      },
+      "authored": "Original open assembly informed by the official wall-less classification, preserving the source roof ring and top. Slab thickness, seven centreline supports, beam dimensions and neutral finishes are authored. Beam underside1.944m is virtual construction, not measured real clearance. No exact Platform A shelter reconstruction is claimed.",
+      "evidence": [
+        {
+          "file": "experience/evidence/neighborhood-20261023/world/platform-context/audit.json",
+          "sha256": "a6c957b436a26baf945b45fd3c2e144701dc240ebd5e93e672bfceb2a115e5c6"
+        },
+        {
+          "file": "experience/evidence/neighborhood-20261023/world/platform-context/osm-records.json",
+          "sha256": "155c965cda7519827dceb363883537f3d952f2213500aa30bfa8c63af3c1a946"
+        },
+        {
+          "file": "experience/evidence/neighborhood-20261023/world/platform-context/semantic-review.json",
+          "sha256": "a56ad01d023a620bbee4bc776e93365c428ad027da570eb13661ed271b413c22"
+        }
+      ]
+    }
   },
   "224": {
     "index": 224,

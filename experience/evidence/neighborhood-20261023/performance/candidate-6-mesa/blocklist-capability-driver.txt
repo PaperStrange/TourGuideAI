@@ -1,0 +1,100 @@
+import { chromium } from '../../experience/node_modules/playwright/index.mjs';
+import { createHash } from 'node:crypto';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { createServer } from 'node:http';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const driver = fileURLToPath(import.meta.url);
+const repository = resolve(dirname(driver), '../..');
+const output = resolve(repository, 'artifacts/neighborhood-20261023/mesa-egl-blocklist-capability');
+const temporary = resolve(repository, 'artifacts/tmp');
+if (existsSync(resolve(output, 'result.json'))) throw new Error('Capability evidence already exists');
+mkdirSync(output, { recursive: true });
+mkdirSync(temporary, { recursive: true });
+const environment = {
+  EGL_PLATFORM: 'surfaceless', LIBGL_ALWAYS_SOFTWARE: 'true', GALLIUM_DRIVER: 'llvmpipe',
+  MESA_SHADER_CACHE_DIR: resolve(output, 'mesa-cache'), TMPDIR: temporary,
+};
+mkdirSync(environment.MESA_SHADER_CACHE_DIR, { recursive: true });
+const args = ['--no-sandbox', '--enable-gpu', '--use-gl=angle', '--use-angle=gl-egl',
+  '--ozone-platform=headless', '--ignore-gpu-blocklist'];
+const requested = {
+  alpha: true, antialias: true, depth: true, premultipliedAlpha: true,
+  preserveDrawingBuffer: false, powerPreference: 'high-performance',
+};
+const report = {
+  startedAt: new Date().toISOString(),
+  kind: 'Mesa EGL capability with explicit Chromium blocklist override; no application performance claim',
+  executable: '/usr/bin/chromium', expectedBrowser: '151.0.7922.173', args, environment,
+  viewport: [1440, 1000], dpr: 1, requested, errors: [], success: false,
+  driverSha256: createHash('sha256').update(readFileSync(driver)).digest('hex'),
+  originalEvidence: 'artifacts/neighborhood-20261023/mesa-egl-capability/result.json',
+};
+const proxyURL = process.env.HTTPS_PROXY || process.env.HTTP_PROXY;
+const proxy = proxyURL ? new URL(proxyURL) : null;
+let browser;
+let listening = false;
+const server = createServer((request, response) => {
+  response.writeHead(200, { 'Content-Type': 'text/html', 'Cache-Control': 'no-store' });
+  response.end('<!doctype html><html><body><canvas id="probe" width="1440" height="1000"></canvas></body></html>');
+});
+
+try {
+  await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+  listening = true;
+  browser = await chromium.launch({
+    executablePath: report.executable, headless: true, timeout: 30000,
+    args, env: { ...process.env, ...environment },
+    ...(proxy ? { proxy: { server: proxy.origin, bypass: 'localhost,127.0.0.1,[::1]',
+      ...(proxy.username ? { username: decodeURIComponent(proxy.username), password: decodeURIComponent(proxy.password) } : {}) } } : {}),
+  });
+  report.browser = browser.version();
+  if (report.browser !== report.expectedBrowser) throw new Error('System Chromium version differs from the measured application');
+  const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 1 });
+  const page = await context.newPage();
+  page.setDefaultTimeout(15000);
+  page.on('pageerror', error => report.errors.push({ kind: 'page', message: error.message }));
+  page.on('console', message => {
+    if (message.type() === 'error' || message.type() === 'warning') report.errors.push({ kind: message.type(), message: message.text() });
+  });
+  await page.goto(`http://127.0.0.1:${server.address().port}/`, { waitUntil: 'load' });
+  report.webgl = await page.evaluate(requested => {
+    const canvas = document.querySelector('#probe');
+    const failures = [];
+    canvas.addEventListener('webglcontextcreationerror', event => failures.push(event.statusMessage));
+    const gl = canvas.getContext('webgl2', requested);
+    if (!gl) return { available: false, requested, failures };
+    const debug = gl.getExtension('WEBGL_debug_renderer_info');
+    gl.clearColor(.2, .3, .4, 1);
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+    return {
+      available: true, requested, attributes: gl.getContextAttributes(), failures,
+      vendor: gl.getParameter(gl.VENDOR), renderer: gl.getParameter(gl.RENDERER), version: gl.getParameter(gl.VERSION),
+      unmaskedVendor: debug ? gl.getParameter(debug.UNMASKED_VENDOR_WEBGL) : null,
+      unmaskedRenderer: debug ? gl.getParameter(debug.UNMASKED_RENDERER_WEBGL) : null,
+      samples: gl.getParameter(gl.SAMPLES), error: gl.getError(), canvas: [canvas.width, canvas.height],
+    };
+  }, requested);
+  const session = await browser.newBrowserCDPSession();
+  report.systemInfo = await session.send('SystemInfo.getInfo');
+  report.success = report.webgl.available
+    && /llvmpipe/i.test(report.webgl.unmaskedRenderer || '')
+    && !/swiftshader/i.test(report.webgl.unmaskedRenderer || '')
+    && Object.entries(requested).every(([key, value]) => report.webgl.attributes[key] === value)
+    && report.webgl.error === 0;
+} catch (error) {
+  report.errors.push({ kind: 'probe', message: error.message });
+} finally {
+  if (browser) await browser.close();
+  if (listening) {
+    server.closeAllConnections();
+    await new Promise(resolve => server.close(resolve));
+  }
+  report.finishedAt = new Date().toISOString();
+  report.browserClosed = true;
+  writeFileSync(resolve(output, 'result.json'), JSON.stringify(report, null, 2) + '\n');
+}
+console.log(JSON.stringify({ success: report.success, browser: report.browser,
+  webgl: report.webgl, errors: report.errors, report: resolve(output, 'result.json') }));
+if (!report.success) process.exitCode = 1;

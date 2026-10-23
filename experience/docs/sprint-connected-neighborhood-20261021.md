@@ -119,7 +119,7 @@ bytes. Application checks pass 199/199 and repository gates pass 17/17.
 | --- | --- | --- |
 | N00 | Connected source graph, six identified exterior sights, source/provenance audits and reproducible asset packaging | Existing limits on surveyed grades and current access remain explicit |
 | N01 | Continuous movement implemented; focused streaming/retry, cancellation, native-storage and residency checks pass | Complete final-package outward/return CI |
-| N02 | Bilingual day/night, private views, editable alternatives and Maps implemented; actual Choose/edit/reload checks pass 16/16 | Current Tenmangū and connecting-block day/night art review |
+| N02 | Bilingual day/night, private views, editable alternatives and Maps implemented; actual Choose/edit/reload checks pass 16/16; nine day/night pauses reviewed | Tenmangū camera/approach correction, source-supported wall-less platform treatment, and remaining connector detail gaps |
 | N03 | Candidate-6 transport/recovery browser checks pass 57/57; exact performance report retained | Warm-entry consistency, input/frame targets, Q03, native hidden-tab verification, full regression evidence and publication |
 
 The measured cold entry is 7,797.0 ms. Warm entries are 2,927.1, 2,926.7 and
@@ -129,6 +129,20 @@ no native background-tab work sample is available. These observations retain the
 original targets and leave physical GPU/phone performance unmeasured. Publication
 remains pending acceptance. The [checkpoint](agent-checkpoint.md) records current
 source, CI, evidence and owner handoffs.
+
+The current correction pass separates camera safety from landmark composition.
+The recorded inspection orbit reduced the view below its 5 m bound; a reviewed
+correction retains street framing for orbit/zoom while keeping intentional pan
+available. The proposed earlier Tenmangū pause uses an existing pedestrian node
+and awaits an actual walking review. The original municipal classification also
+identifies the roadside low mass as wall-less; its new open assembly retains
+source bounds and explicitly distinguishes authored supports from measured facts.
+
+A separately labelled Mesa software run on unchanged candidate 6 records warm
+entries of 1,367.4 / 1,217.9 / 1,232.8 ms, but cold 9,537.0 ms, input p95 129.7 ms
+and frame p95 197.8 ms still fail their targets. Native visibility remains
+unobserved even in the bounded headed/Ozone probe. These results do not replace
+the original software measurements or establish physical GPU performance.
 
 ## Geographic expansion
 

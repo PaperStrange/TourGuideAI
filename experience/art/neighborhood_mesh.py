@@ -217,7 +217,64 @@ def market_frontage_geometry(plane, height, base_height, recipe, lod):
     return totals
 
 
+def wall_less_geometry(feature, source_index, batches):
+    construction = feature['treatmentOverride']['construction']
+    if len(feature['polygons']) != 1:
+        raise ValueError('Reviewed wall-less assembly requires its single source polygon')
+    polygon = feature['polygons'][0]
+    ring = polygon['outer']
+    if len(ring) != 5 or ring[0] != ring[-1] or polygon.get('holes'):
+        raise ValueError('Reviewed wall-less assembly requires the retained quadrilateral')
+    top = feature['height']['metres']
+    bottom = feature.get('baseHeightMetres', 0)
+    underside = top - construction['roofThicknessMetres']
+    beam_bottom = underside - construction['beamDepthMetres']
+    if beam_bottom <= bottom or construction['postCount'] < 2:
+        raise ValueError('Invalid authored wall-less assembly dimensions')
+    roof = batches[construction['roofMaterial']]
+    structure = batches[construction['structureMaterial']]
+    roof.top(polygon['triangles'], top, source_index)
+    for triangle in polygon['triangles']:
+        a, b, c = triangle
+        signed = (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0])
+        points = list(reversed(triangle)) if signed > 0 else triangle
+        roof.face([(x, y, underside) for x, y in points], source_index)
+    for start, end in zip(ring, ring[1:]):
+        FacadePlane(start, end, source_index, batches).panel(
+            construction['structureMaterial'], 0, math.dist(start, end), underside, top)
+    longest = max(range(4), key=lambda index: math.dist(ring[index], ring[index + 1]))
+    corners = [ring[(longest + offset) % 4] for offset in range(4)]
+    start = [(corners[0][axis] + corners[3][axis]) / 2 for axis in (0, 1)]
+    end = [(corners[1][axis] + corners[2][axis]) / 2 for axis in (0, 1)]
+    length = math.dist(start, end)
+    tangent = [(end[axis] - start[axis]) / length for axis in (0, 1)]
+    inset = construction['endInsetMetres']
+    span = length - 2 * inset
+    if span <= construction['postWidthMetres']:
+        raise ValueError('Authored support spacing exceeds the source roof')
+    # 支撑沿来源四边形的中心线布置；生成后逐顶点检查仍位于来源平面范围。
+    first_vertex = len(structure.vertices)
+    structure.box(((start[0] + end[0]) / 2, (start[1] + end[1]) / 2,
+                   underside - construction['beamDepthMetres'] / 2),
+                  (span + construction['postWidthMetres'], construction['beamWidthMetres'], construction['beamDepthMetres']),
+                  source_index, tangent)
+    for index in range(construction['postCount']):
+        distance = inset + span * index / (construction['postCount'] - 1)
+        structure.box((start[0] + tangent[0] * distance, start[1] + tangent[1] * distance,
+                       (bottom + underside) / 2),
+                      (construction['postWidthMetres'], construction['postWidthMetres'], underside - bottom),
+                      source_index, tangent)
+    for x, y, _ in structure.vertices[first_vertex:]:
+        cross_products = [(b[0] - a[0]) * (y - a[1]) - (b[1] - a[1]) * (x - a[0])
+                          for a, b in zip(ring, ring[1:])]
+        if min(cross_products) < -1e-8 and max(cross_products) > 1e-8:
+            raise ValueError('Authored support extends outside the source footprint')
+    return {'openings': 0, 'recesses': 0, 'edges': 4}
+
+
 def building_geometry(feature, recipe, lod, source_index, batches):
+    if feature.get('treatmentOverride', {}).get('treatment') == 'wall-less-structure':
+        return wall_less_geometry(feature, source_index, batches)
     top = feature['height']['metres']
     bottom = feature.get('baseHeightMetres', 0)
     if top <= bottom:

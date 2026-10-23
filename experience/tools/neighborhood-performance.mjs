@@ -7,18 +7,22 @@ import { fileURLToPath } from 'node:url';
 import { cpus, totalmem, platform, release, arch } from 'node:os';
 
 const repository = fileURLToPath(new URL('../../', import.meta.url));
-const help = `Usage: node experience/tools/neighborhood-performance.mjs [built-dist-directory] [--headed]
+const help = `Usage: node experience/tools/neighborhood-performance.mjs [built-dist-directory] [--headed] [--graphics=mesa-software]
 Defaults: experience/dist; NEIGHBORHOOD_PERF_OUTPUT=artifacts/neighborhood-performance
 EXPERIENCE_QA_CHROMIUM selects Chromium. See tools/neighborhood-performance.md.
 Runs one cold entry, three warm reloads, actual keyboard/orbit inputs and a hidden-tab observation.
 --headed uses the current graphical display for genuine background-tab visibility.
+--graphics=mesa-software runs a separately labelled surfaceless Mesa llvmpipe diagnostic.
 Schedule an exclusive browser window after the built neighborhood passes its startup/visual review.`;
 if (process.argv.includes('--help')) { console.log(help); process.exit(0); }
 const argumentsList = process.argv.slice(2);
-if (argumentsList.some(value => value.startsWith('--') && value !== '--headed')) throw new Error('Unsupported benchmark option. Use --help.');
-const directories = argumentsList.filter(value => value !== '--headed');
+const supportedOptions = new Set(['--headed', '--graphics=mesa-software']);
+if (argumentsList.some(value => value.startsWith('--') && !supportedOptions.has(value))) throw new Error('Unsupported benchmark option. Use --help.');
+const directories = argumentsList.filter(value => !supportedOptions.has(value));
 if (directories.length > 1) throw new Error('Provide one built-dist directory.');
 const headless = !argumentsList.includes('--headed');
+const mesaSoftware = argumentsList.includes('--graphics=mesa-software');
+if (mesaSoftware && !headless) throw new Error('The Mesa diagnostic uses the verified headless surfaceless configuration.');
 const dist = resolve(repository, directories[0] || 'experience/dist');
 const output = resolve(repository, process.env.NEIGHBORHOOD_PERF_OUTPUT || 'artifacts/neighborhood-performance');
 if (!output.startsWith(join(repository, 'artifacts') + '/')) throw new Error('Performance output must be inside repository artifacts.');
@@ -42,6 +46,14 @@ const fileHashes = new Map(packageFiles.map(file => [file.path, file.sha256]));
 mkdirSync(output, { recursive: true });
 // Chromium 的本地 socket 使用短路径，并且所有临时内容保留在忽略的 artifacts 目录。
 process.env.TMPDIR = join(repository, 'artifacts/tmp'); mkdirSync(process.env.TMPDIR, { recursive: true });
+const browserExecutable = process.env.EXPERIENCE_QA_CHROMIUM || '/usr/bin/chromium';
+const browserArgs = ['--no-sandbox', ...(mesaSoftware ? ['--enable-gpu', '--use-gl=angle', '--use-angle=gl-egl',
+  '--ozone-platform=headless', '--ignore-gpu-blocklist'] : [])];
+const graphicsEnvironment = mesaSoftware ? {
+  EGL_PLATFORM: 'surfaceless', LIBGL_ALWAYS_SOFTWARE: 'true', GALLIUM_DRIVER: 'llvmpipe',
+  MESA_SHADER_CACHE_DIR: join(output, 'mesa-cache'), TMPDIR: process.env.TMPDIR,
+} : { TMPDIR: process.env.TMPDIR };
+if (mesaSoftware) mkdirSync(graphicsEnvironment.MESA_SHADER_CACHE_DIR, { recursive: true });
 const proxyURL = process.env.HTTPS_PROXY || process.env.HTTP_PROXY;
 const proxy = proxyURL ? new URL(proxyURL) : null;
 const report = {
@@ -49,6 +61,9 @@ const report = {
   artifact: { directory: dist, manifestSha256: sha(JSON.stringify(packageFiles)), files: packageFiles,
     neighborhood: { id: manifest.id, revision: manifest.revision, manifestSha256: sha(files.get(prefix + 'manifest.json')) } },
   conditions: { viewport: [1440, 1000], dpr: 1, locale: 'en', lighting: 'day', headless,
+    graphicsMode: mesaSoftware ? 'mesa-software-diagnostic' : 'default',
+    launch: { executable: browserExecutable, args: browserArgs, environmentOverrides: graphicsEnvironment,
+      inheritedEnvironment: 'Existing environment, including proxy and CA configuration, retained; values are not logged.' },
     entries: 'One fresh-context cold navigation followed by three full-page reloads retaining HTTP cache and private state; no movement between these entries.',
     network: { transport: 'Actual loopback HTTP; immutable build bytes; no interception or content encoding',
       cdp: { latencyMs: 80, downloadBytesPerSecond: 1250000, uploadBytesPerSecond: 1250000 },
@@ -192,14 +207,27 @@ function summarizeActions(trace) {
 }
 
 let browser, context, page, cdp, currentEntry;
+const readGraphics = () => page.evaluate(() => {
+  const gl = document.querySelector('#live-stage canvas')?.getContext('webgl2'), extension = gl?.getExtension('WEBGL_debug_renderer_info');
+  return gl ? { vendor: gl.getParameter(gl.VENDOR), renderer: gl.getParameter(gl.RENDERER), version: gl.getParameter(gl.VERSION),
+    unmaskedVendor: extension ? gl.getParameter(extension.UNMASKED_VENDOR_WEBGL) : null,
+    unmaskedRenderer: extension ? gl.getParameter(extension.UNMASKED_RENDERER_WEBGL) : null,
+    contextAttributes: gl.getContextAttributes(), viewport: window.__TOUR_GAME__.viewport() } : null;
+});
 try {
   await new Promise(accept => server.listen(0, '127.0.0.1', accept));
   const origin = `http://127.0.0.1:${server.address().port}`;
   report.conditions.pageURL = `${origin}/?qa=1&lang=en&mode=explore&pack=${packId}`;
-  browser = await chromium.launch({ executablePath: process.env.EXPERIENCE_QA_CHROMIUM || '/usr/bin/chromium', headless,
-    args: ['--no-sandbox'], ...(proxy ? { proxy: { server: proxy.origin, bypass: 'localhost,127.0.0.1,[::1]',
+  browser = await chromium.launch({ executablePath: browserExecutable, headless,
+    args: browserArgs, ...(mesaSoftware ? { env: { ...process.env, ...graphicsEnvironment } } : {}),
+    ...(proxy ? { proxy: { server: proxy.origin, bypass: 'localhost,127.0.0.1,[::1]',
       ...(proxy.username ? { username: decodeURIComponent(proxy.username), password: decodeURIComponent(proxy.password) } : {}) } } : {}) });
   report.conditions.browser = browser.version();
+  if (mesaSoftware) {
+    const browserSession = await browser.newBrowserCDPSession();
+    report.conditions.systemInfo = await browserSession.send('SystemInfo.getInfo');
+    await browserSession.detach();
+  }
   context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 1, reducedMotion: 'no-preference' });
   await context.addInitScript(installObserver, packId);
   page = await context.newPage(); page.setDefaultTimeout(timeout);
@@ -259,16 +287,21 @@ try {
       && desired.every(cell => cell.state === 'ready' && cell.level === cell.desired);
     check(currentEntry.id + '-desired-sections-ready', settledReady, settled);
     if (!settledReady) throw new Error('Neighborhood detail did not reach the requested resident quality.');
+    if (mesaSoftware) {
+      // 每次完整加载之后验证实际应用 context，拒绝静默切换到其他软件后端。
+      currentEntry.graphics = await readGraphics();
+      const expected = { alpha: true, antialias: true, depth: true, premultipliedAlpha: true,
+        preserveDrawingBuffer: false, powerPreference: 'high-performance' };
+      const actualRenderer = currentEntry.graphics?.unmaskedRenderer || '';
+      const exactGraphics = /llvmpipe/i.test(actualRenderer) && !/swiftshader/i.test(actualRenderer)
+        && Object.entries(expected).every(([key, value]) => currentEntry.graphics?.contextAttributes?.[key] === value);
+      check(currentEntry.id + '-mesa-application-context', exactGraphics, currentEntry.graphics);
+      if (!exactGraphics) throw new Error('Mesa diagnostic requires actual llvmpipe and unchanged application context attributes.');
+    }
     save();
   }
   currentEntry = null;
-  report.conditions.graphics = await page.evaluate(() => {
-    const gl = document.querySelector('#live-stage canvas')?.getContext('webgl2'), extension = gl?.getExtension('WEBGL_debug_renderer_info');
-    return gl ? { vendor: gl.getParameter(gl.VENDOR), renderer: gl.getParameter(gl.RENDERER), version: gl.getParameter(gl.VERSION),
-      unmaskedVendor: extension ? gl.getParameter(extension.UNMASKED_VENDOR_WEBGL) : null,
-      unmaskedRenderer: extension ? gl.getParameter(extension.UNMASKED_RENDERER_WEBGL) : null,
-      contextAttributes: gl.getContextAttributes(), viewport: window.__TOUR_GAME__.viewport() } : null;
-  });
+  report.conditions.graphics = await readGraphics();
   const graphicsText = JSON.stringify(report.conditions.graphics || {});
   report.conditions.softwareRendererDetected = /swiftshader|llvmpipe|software|softpipe/i.test(graphicsText);
   await page.locator('#live-stage').scrollIntoViewIfNeeded(); await page.locator('#live-stage').focus();
@@ -341,6 +374,14 @@ try {
   check('no-page-exceptions', report.errors.length === 0, report.errors);
   check('no-missing-build-resources', report.http.every(item => item.status !== 404 || item.path.startsWith('/api/') || item.path === '/favicon.ico'),
     report.http.filter(item => item.status === 404));
+  if (mesaSoftware) {
+    // 截图位于所有计时与隐藏观察之后，不参与响应时间测量。
+    report.visual = await page.evaluate(() => ({ observedMs: performance.now(), camera: window.__TOUR_GAME__.camera(),
+      state: window.__TOUR_GAME__.snapshot(), renderer: window.__TOUR_GAME__.renderer() }));
+    await page.locator('#live-stage canvas').screenshot({ path: join(output, 'mesa-final-canvas.png') });
+    report.visual.file = 'mesa-final-canvas.png';
+    report.visual.sha256 = sha(readFileSync(join(output, report.visual.file)));
+  }
 } catch (error) {
   report.errors.push({ stage: currentEntry?.id || 'setup', message: error.message, stack: error.stack });
   if (page && !page.isClosed()) {

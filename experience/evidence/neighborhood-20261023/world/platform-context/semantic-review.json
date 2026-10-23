@@ -1,0 +1,54 @@
+{
+  "reviewedAt": "2026-10-23",
+  "scope": "Exact municipal feature semantic lookup and bounded primary-source research; no production geometry changes",
+  "sourceId": "kyoto-city:bldg_74454289-1d7a-4105-87ea-26e36c69bc44",
+  "source": {
+    "dataset": "京都市 3D都市モデル LOD1_2025",
+    "license": "CC-BY-4.0",
+    "attribution": "Kyoto City",
+    "archiveSha256": "15701dd9b876eeba5be4d9c45ac0cd39e72f43a30fb17164aea8d3b07618116d",
+    "gdbPath": "artifacts/neighborhood-20261021/world/raw/kyoto-21422/bldg_LOD1_R7_公開用.gdb",
+    "layer": "建物LOD1_R7",
+    "featureId": 401985,
+    "queryFile": "gdb-query.sql",
+    "querySha256": "066826cce2730ee975c555800bd26d45b5312af5036d9e0ea6e1867b72628b54",
+    "resultFile": "gdb-feature.txt",
+    "resultSha256": "75b9088348351fde133c253dcd6cf158b0fdbc622ccb43b041ef97dce46be477",
+    "reader": "GDAL ogrinfo 3.10.3; read-only attribute query, geometry omitted"
+  },
+  "additionalProperties": {
+    "分類": "普通無壁舎",
+    "立上高": "点群から取得_中央値",
+    "_lod": "1",
+    "ftype": "Building",
+    "fname": "bldg\\bldg_LOD1",
+    "meshname": "52354600",
+    "地図レベル": "地図情報レベル2500",
+    "公共測量成果説明": "数値地形図データ"
+  },
+  "schemaReview": {
+    "url": "https://www.mlit.go.jp/plateaudocument01-01/Contents/定義文書/bldg--Building.html",
+    "reviewedFields": ["bldg:Building", "bldg:class", "bldg:measuredHeight", "bldg:lod1Solid"],
+    "classMeaning": "Ordinary wall-less structure; the category also covers specified greenhouse/industrial structures below three storeys.",
+    "heightMethodMeaning": "Point-cloud median used for the LOD1 extrusion.",
+    "solidMeaning": "LOD1 extrudes the upper orthographic outline upward from ground at one height; median is the stated principle.",
+    "measuredHeightMeaning": "Lowest above-ground point to highest point, metres.",
+    "baseZInterpretation": "37.25 is the retained LOD1 model lower boundary. The schema describes a ground-up abstraction; this value does not establish a measured roof underside or platform clearance.",
+    "limits": [
+      "The 2.9 m measured-height attribute and 2.124 m solid extent retain distinct meanings; their numerical discrepancy is not resolved by this lookup.",
+      "Exact roof thickness, support positions, openings, clearance and present condition remain unverified.",
+      "The semantic class supports an open-structure classification. Any authored open archetype must retain source identity, footprint and top extent while declaring post layout, roof thickness and clearance as authored."
+    ]
+  },
+  "projectReview": {
+    "url": "https://www.city.kyoto.lg.jp/kensetu/page/0000241999.html",
+    "pageDate": "2018-09-03",
+    "facts": [
+      "Shijo sidewalk widening between Karasuma and Kawabata completed at the end of October 2015.",
+      "The project describes a 1120 m section, 22 m wide.",
+      "Sixteen bus stops were consolidated into four Shijo Takakura/Shijo Kawaramachi eastbound and westbound locations with roadway-projecting terrace stops."
+    ],
+    "limits": "Project-level evidence does not specify this feature's roof/support geometry; no permission to redistribute official imagery is inferred."
+  },
+  "productionChanges": false
+}

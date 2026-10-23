@@ -31,11 +31,36 @@ legacy/geographic jobs before its neighborhood job was superseded by
 **`823f4f9a836f604a71e20f34ef9e6bc6c60e8347`**. Transport source
 **`9b5d5f7998f952ca4dd8944b003a3c1bfaea1c20`** is pushed and verified at the
 remote branch. Test/evidence source
-**`dce346173b2d00d1d6aa20b68858e50dfd5870c8`** is now pushed and verified.
+**`dce346173b2d00d1d6aa20b68858e50dfd5870c8`** is pushed and verified. The latest
+pushed checkpoint is **`0548c09ab1d55cdeae21314f95a172fb4f14ff54`**; it preserves
+the visual failures and platform source audit without changing application bytes.
 Its current acceptance run **39899177206** supersedes **39897415716**. Application
 and asset bytes remain those of candidate 6.
 
-The current immutable build is **candidate-6**, package
+The current immutable build is **candidate-7**, package
+**`990d7ef1cf8c35023e19f32c3ee66b688282a30434e8812c4335edf74449a133`**,
+with **443 files / 96,677,911 bytes** and scenery manifest
+**`679241ee06a8115ad3f95ddd523c2f56555b900f3ecc4437d272573a968ec4e5`**.
+It integrates the camera correction and the source-supported open platform
+assembly. All **201/201** application checks pass and the canonical build succeeds.
+World's independent audit checks 74 sections: 67 containers are byte-identical;
+seven decoded comparisons preserve 357 unrelated source groups with complete
+attributes, materials and transforms. Index 223 has 108 triangles in each detail
+level; its authored roof outline uses the source footprint and retains the prior
+top-face coordinates. The structure is 1.631825 m clear of the virtual walking
+corridor. All 148 gzip resources decode correctly. Independent audit SHA256:
+`35a910929b4828c838d321a0be2a7b391b4d7aa9f87b6e302efba80ed2803224`.
+Complete startup transfer is **3,029,993 B day / 3,022,757 B night**, including
+the traveller and selected HDR; external audit SHA256
+`a17a20323654803018d4a71e94a53eed0b275cfb64f825aeadd1a8b21b274afc`.
+The two superseded runtime audit reports are omitted from the new package and
+remain in historical evidence. Root backed up the old generated directory at
+`artifacts/neighborhood-20261023/candidate-6-public-before-platform` before exact
+replacement. QA now owns the exclusive browser window for native camera safety,
+the proposed western temple approach and matched platform day/night views.
+Candidate 7 is not yet browser-accepted or published.
+
+The preceding **candidate-6** transport build has package
 **`ca4b3c95bc2a6b94ad2cc978a083d1e3c3c109d65febce326a5e16e937dc271b`**,
 with **445 files / 96,679,636 bytes**. Its scenery manifest is
 **`deb00b97ca3e29e314a13225678c7e6827de59a0f8ff68d5d3bdccc7d3563458`**.
@@ -102,29 +127,54 @@ Chromium **151.0.7922.34**; the performance runs use system Chromium
 
 ### Current correction and validation work
 
-- Navigation owns the Tenmangū inspection collision correction. Deliberate orbit
-  currently disables actor/distance recovery; preserve free inspection without
-  silently contracting the scene scale. Actual-geometry and native-input review
-  are required before acceptance.
+- Navigation's reviewed correction keeps actor/street framing during orbit,
+  tilt, zoom and symmetric pinch. Explicit target pan still permits independent
+  detail inspection. The exact recorded Tenmangū geometry now retains 5 m and
+  38.69% actor occupancy; reversal works. All **24** focused camera/input/legacy
+  checks pass. Native touch/input validation on a new built package remains due.
+  The fixed blocked viewpoint still does not frame the torii.
 - Art owns a source-specific treatment of municipal feature
   `kyoto-city:bldg_74454289-1d7a-4105-87ea-26e36c69bc44`. The source audit under
   `world/platform-context/` establishes that Shijo Takakura platform A lies inside
-  its footprint. Its envelope and 2.124 m extent remain exact; unsupported retail
-  bays, recesses and glazing may be removed. Precise shelter construction remains
-  unknown. No invented openings or additional route sights are authorized by this
-  finding. The opaque envelope can still obscure the road.
+  its footprint. The original FileGDB additionally classifies this feature as
+  `普通無壁舎` (ordinary wall-less structure), a field omitted by the earlier
+  GeoJSON selection. Frozen semantic record:
+  `a56ad01d023a620bbee4bc776e93365c428ad027da570eb13661ed271b413c22`.
+  The neutral enclosed export is preserved as an intermediate and will not be
+  promoted. An open assembly is approved using the exact source roof ring and
+  2.124 m top, with explicitly authored 0.08 m slab, seven 0.12 m centreline posts
+  and 0.10 m beam. The 1.944 m virtual beam underside is not measured clearance.
+  Construction and present condition remain unverified; the available 2016 photo
+  shows Platform B, not A. Only index 223's geometry and related metadata change;
+  navigation, sources, unrelated architecture and material images remain fixed.
+  Art owns the isolated export; world independently audits its geometry before
+  root promotion and actual day/night browser review.
 - Engineering's second graphics capability probe succeeds with actual Mesa
   llvmpipe, the six requested application attributes and 4× antialiasing on system
   Chromium 151.0.7922.173. Report SHA256
   `fe156162b9b84e1fef7c74d00c182d5d5afa561fbdc3489117b66fae18df58c7`;
   driver `2ab6610dc6e25e6a71d37fd71054fe226ccea61a93bbbb93b9d7b0d69daa6d8b`.
-  The original failed probe remains preserved. This establishes capability only.
-  One separately labelled candidate-6 performance diagnostic is now authorized
-  with identical quality, viewport, protocol and thresholds. Engineering holds
-  the exclusive browser/CPU window; no exports or other browser runs may overlap.
-- CI **39899177206** is still running. Shared perspective, solo, geographic source
-  preparation and travel companion jobs have passed. The other four jobs remain
-  in progress; no complete-route success is claimed.
+  The original failed probe remains preserved. A separately labelled candidate-6
+  diagnostic finishes **18 passing / 5 failing** checks, with no page exceptions.
+  Cold is **9,537.0 ms**; warm is **1,367.4 / 1,217.9 / 1,232.8 ms**. Queued-input
+  p95 **129.7 ms**, receipt p95 **129.4 ms**, and frame p95 **197.8 ms** still miss
+  their targets. Eleven walking intervals have zero counter gaps; discrete orbit
+  nudges provide no cadence distribution. Report SHA256
+  `6ffdb00d44fa9c561f2f22b799f54946c252f4f787ec6101a4e2572be09811fb`;
+  driver `1ab216a6b3d7039c42156a782ea0158edcc27f0bb5e58cb26ccf6c8f76709757`.
+  Exact default and alternate software results remain separate. Native headed
+  Ozone activation/minimize/restore also leaves both tabs visible with zero
+  visibility events; report `f056da4a91ad2d302abab1dada2837f2624d503093dc2dc8a632f9ceca232261`.
+  No application hidden-work proof follows. All browsers are closed. Portable
+  results and executed drivers are in `performance/candidate-6-mesa/`.
+- Product/world propose existing pedestrian node `354840400` as the Tenmangū
+  pause: 10.09 m west of the outer torii, instead of the current junction 19.44 m
+  beyond it. QA will first walk to and review that actual node. Canonical content
+  is unchanged pending that review. A subsequent compatible pause-metadata change
+  must preserve saved metric views/notes, retain the full graph and validate
+  recomputed route legs/Maps coordinates.
+- CI **39899177206** has passed all seven legacy/geographic jobs. Its connected
+  neighborhood job remains in progress; no complete-route success is claimed.
 
 Full-route acceptance, complete connector/sight day-night review,
 physical GPU performance, Q03 and actual background-tab visibility remain open.

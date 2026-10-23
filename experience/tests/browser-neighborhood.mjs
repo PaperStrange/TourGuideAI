@@ -18,8 +18,8 @@ const output = resolve(process.env.EXPERIENCE_QA_OUTPUT || '../artifacts/neighbo
 const timeout = Number(process.env.EXPERIENCE_QA_TIMEOUT || 120000);
 const walkingTimeout = Number(process.env.EXPERIENCE_QA_WALK_TIMEOUT || 2400000);
 const only = process.env.EXPERIENCE_QA_ONLY?.split(',').filter(Boolean);
-const sections = ['startup', 'route-choice', 'journey', 'initial-recovery', 'latest-intent', 'unavailable-revision', 'external-session', 'residency-boundary'];
-if (only?.some(value => ![...sections, 'walking-controls', 'arcade-regression', 'arcade-inspection', 'recovered-keyboard', 'recovered-camera-input', 'bridge-review', 'visual-review'].includes(value))) throw new Error('Unknown neighborhood test section.');
+const sections = ['startup', 'route-choice', 'journey', 'initial-recovery', 'latest-intent', 'unavailable-revision', 'external-session', 'residency-boundary', 'camera-safety'];
+if (only?.some(value => ![...sections, 'walking-controls', 'arcade-regression', 'arcade-inspection', 'recovered-keyboard', 'recovered-camera-input', 'bridge-review', 'visual-review', 'tenmangu-framing', 'western-approach', 'platform-review'].includes(value))) throw new Error('Unknown neighborhood test section.');
 const prefix = '/assets/neighborhoods/shijo-east/';
 const journeyKey = 'tourguideai.journey.session.v1';
 const keptKey = 'tourguideai.solo.places.v1';
@@ -531,6 +531,77 @@ function actorProjection(value) {
     .applyMatrix4(new Matrix4().fromArray(value.camera.projectionMatrix)).toArray());
   return { points, verticalOccupancy: Math.abs(points[1][1] - points[0][1]) / 2,
     actualDistance: new Vector3().fromArray(value.camera.position).distanceTo(new Vector3().fromArray(value.camera.viewTarget)) };
+}
+function streetFraming(value) {
+  const actor = actorProjection(value);
+  return { actor, safe: actor.actualDistance >= 5 - .003 && actor.verticalOccupancy <= .5
+    && actor.points.every(point => point.every(Number.isFinite) && point.every(coordinate => Math.abs(coordinate) < 1)) };
+}
+function priorVisualReview() {
+  const bytes = gunzipSync(readFileSync(new URL('../evidence/neighborhood-20261023/qa/candidate-6-visual-review/neighborhood-result.json.gz', import.meta.url)));
+  const sourceSha256 = sha(bytes);
+  if (sourceSha256 !== '897b1ceaf5a4ec1f9305704423b141397e049ba4b1a032acd07d998ccaef230b') throw new Error('Prior visual evidence changed.');
+  const source = JSON.parse(bytes);
+  if (source.source.geographySha256 !== report.source.geographySha256) throw new Error('Recorded visual evidence uses different route geometry.');
+  return { source, sourceSha256 };
+}
+async function recordNativeInputs(page) {
+  await page.evaluate(() => {
+    window.__NEIGHBORHOOD_INPUT_EVENTS__ = [];
+    const stage = document.querySelector('#live-stage');
+    for (const type of ['pointerdown', 'pointermove', 'pointerup', 'touchmove', 'wheel', 'keydown']) {
+      stage.addEventListener(type, event => window.__NEIGHBORHOOD_INPUT_EVENTS__.push({ type, trusted: event.isTrusted,
+        pointerType: event.pointerType ?? null, pointerId: event.pointerId ?? null, button: event.button ?? null,
+        buttons: event.buttons ?? null, x: event.clientX ?? null, y: event.clientY ?? null,
+        code: event.code ?? null, deltaY: event.deltaY ?? null,
+        touches: event.touches ? [...event.touches].map(touch => ({ id: touch.identifier, x: touch.clientX, y: touch.clientY })) : null,
+      }), { capture: true, passive: true });
+    }
+  });
+}
+async function nativeCameraInput(page, context, operation) {
+  await page.locator('#live-stage canvas').scrollIntoViewIfNeeded();
+  const bounds = await page.locator('#live-stage canvas').boundingBox();
+  const x = bounds.x + bounds.width * .5, y = bounds.y + bounds.height * .5;
+  await page.mouse.move(x, y);
+  await page.evaluate(() => { window.__NEIGHBORHOOD_INPUT_EVENTS__.length = 0; });
+  const gestures = [];
+  if (operation === 'click') await page.mouse.click(x, y);
+  else if (operation === 'touch-tap') await page.touchscreen.tap(x, y);
+  else if (operation.startsWith('keyboard-')) {
+    const keys = { 'keyboard-orbit': ['j'], 'keyboard-tilt': ['i'], 'keyboard-zoom': ['-'], 'keyboard-pan': ['Shift+i', 'Shift+i'] }[operation];
+    await page.locator('#live-stage').focus();
+    for (const key of keys) { await page.keyboard.press(key); gestures.push({ key }); }
+  } else if (operation === 'wheel') { await page.mouse.wheel(0, 40); gestures.push({ deltaY: 40 }); }
+  else if (['drag', 'right-pan', 'middle-horizontal'].includes(operation)) {
+    const button = operation === 'right-pan' ? 'right' : operation === 'middle-horizontal' ? 'middle' : 'left';
+    const end = operation === 'right-pan' ? { x, y: y - 40 } : { x: x + 12, y };
+    await page.mouse.down({ button }); await page.mouse.move(end.x, end.y, { steps: 3 }); await page.mouse.up({ button });
+    gestures.push({ button, start: { x, y }, end });
+  } else {
+    const cdp = await context.newCDPSession(page);
+    const points = (halfSpan = 24, shiftY = 0) => [-halfSpan, halfSpan].map((offset, index) =>
+      ({ x: x + offset, y: y + shiftY, radiusX: 2, radiusY: 2, force: 1, id: index + 1 }));
+    let frames;
+    if (operation === 'three-finger') frames = [0, 4, 8, 12].map(shift => [-24, 0, 24].map((offset, index) =>
+      ({ x: x + offset + shift, y, radiusX: 2, radiusY: 2, force: 1, id: index + 1 })));
+    else if (operation === 'pinch') frames = [24, 22, 20, 18].map(span => points(span));
+    else if (operation === 'touch-pan') frames = [0, -6, -12, -18].map(shift => points(24, shift));
+    else if (operation === 'touch-mixed') frames = [...[24, 22, 20, 18].map(span => points(span)), ...[-6, -12, -18].map(shift => points(18, shift))];
+    else throw new Error('Unknown native camera input: ' + operation);
+    try {
+      await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: frames[0] });
+      for (const frame of frames.slice(1)) {
+        await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: frame });
+        gestures.push({ touchPoints: frame, observed: await observe(page) });
+        await page.waitForTimeout(60);
+      }
+    } finally {
+      await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+      await cdp.detach();
+    }
+  }
+  return { operation, bounds, start: { x, y }, gestures };
 }
 async function cameraSettled(page, record, operation) {
   const samples = [], started = Date.now();
@@ -1431,6 +1502,82 @@ try {
     }
   });
 
+  if (only?.includes('tenmangu-framing')) await section('tenmangu-framing', async () => {
+    const sourceBytes = gunzipSync(readFileSync(new URL('../evidence/neighborhood-20261023/qa/candidate-6-visual-review/neighborhood-result.json.gz', import.meta.url)));
+    const sourceSha256 = sha(sourceBytes);
+    if (sourceSha256 !== '897b1ceaf5a4ec1f9305704423b141397e049ba4b1a032acd07d998ccaef230b') throw new Error('The retained Tenmangu visual record differs.');
+    const source = JSON.parse(sourceBytes), previous = source.scenarios['nishiki-tenmangu-visual-review'];
+    const remembered = source.screenshots.find(value => value.file === 'nishiki-tenmangu-review-day-canvas.png');
+    if (!remembered?.observed?.home?.currentView || source.source.geographySha256 !== report.source.geographySha256) throw new Error('The recorded Tenmangu view is unavailable.');
+    const view = remembered.observed.home.currentView, reconstructed = sessionAt(view);
+    const { page, record } = await scenario('tenmangu-native-framing', {}, { storage: { [journeyKey]: JSON.stringify(reconstructed) } });
+    record.restoration = { sourceReportSha256: sourceSha256, sourcePackageSha256: source.artifact.manifestSha256,
+      sourceScreenshot: remembered.file, earlierRestoration: previous.restoration, view, reconstructedSession: reconstructed,
+      description: 'Same prior-walk player position and actual camera intent produced by the preceding native-input review; restored through a public session.' };
+    function framing(value) {
+      const actor = actorProjection(value);
+      const point = new Vector3(662.042049, 2.5, -142.658582)
+        .applyMatrix4(new Matrix4().fromArray(value.camera.matrixWorld).invert())
+        .applyMatrix4(new Matrix4().fromArray(value.camera.projectionMatrix)).toArray();
+      const safe = actor.actualDistance >= 5 - .003 && actor.verticalOccupancy <= .5
+        && actor.points.every(coordinate => coordinate.every(Number.isFinite)
+          && Math.abs(coordinate[0]) < 1 && Math.abs(coordinate[1]) < 1 && Math.abs(coordinate[2]) < 1);
+      return { actor, point, safe, toriiInFrame: point.every(Number.isFinite)
+        && Math.abs(point[0]) <= .75 && Math.abs(point[1]) <= .8 && Math.abs(point[2]) < 1,
+      sourcePoint: { id: 'osm:node:5204263033', x: 662.042049, y: 142.658582, reviewHeight: 2.5 },
+      limitation: 'Frustum and actor checks establish composition bounds; art review separately evaluates actual torii visibility and occlusion.' };
+    }
+    await enter(page); await settled(page);
+    const ordinary = await cameraSettled(page, record, 'restored-prior-native-view');
+    check('tenmangu-followup-restores-exact-native-view-and-prior-walk-position', near(ordinary.home.currentView, view)
+      && near(ordinary.route.position, view.player) && framing(ordinary).safe, ordinary);
+    record.ordinary = ordinary;
+    await page.locator('#solo-inspect').click(); await page.locator('#live-stage').focus();
+    const entered = await cameraSettled(page, record, 'inspection-entry');
+    check('tenmangu-inspection-entry-preserves-rendered-recovered-composition',
+      near(entered.camera.matrixWorld, ordinary.camera.matrixWorld, .00001) && near(entered.home.currentView, ordinary.home.currentView),
+    { before: ordinary.camera, after: entered.camera });
+    record.inputs = [];
+    let adjusted = entered;
+    for (let index = 0; index < 8; index++) {
+      const current = framing(adjusted);
+      if (current.safe && current.toriiInFrame) break;
+      if (!current.safe) { record.stoppedBecause = 'Actual camera or actor left the unchanged review limits.'; break; }
+      const before = adjusted;
+      await page.keyboard.press('j');
+      await page.waitForFunction(frame => window.__TOUR_GAME__.renderer().updateFrames > frame, before.renderer.updateFrames);
+      adjusted = await cameraSettled(page, record, 'native-j-' + (index + 1));
+      record.inputs.push({ key: 'j', before, after: adjusted, framing: framing(adjusted) }); persist();
+    }
+    const inspected = framing(adjusted);
+    check('tenmangu-small-native-orbit-includes-source-point-with-complete-actor-and-clearance',
+      inspected.safe && inspected.toriiInFrame && near(adjusted.route.position, ordinary.route.position),
+    { framing: inspected, observed: adjusted, inputs: record.inputs, stoppedBecause: record.stoppedBecause });
+    const inspectionView = adjusted.home.currentView;
+    for (const mode of ['day', 'night']) {
+      await setLighting(page, mode); await settled(page);
+      const actual = await cameraSettled(page, record, 'inspection-' + mode);
+      check('tenmangu-inspection-' + mode + '-preserves-native-pose-and-source-framing',
+        near(actual.home.currentView, inspectionView) && near(actual.route.position, ordinary.route.position)
+        && framing(actual).safe && framing(actual).toriiInFrame,
+      { observed: actual, framing: framing(actual), resources: resources(actual) });
+      await capture(page, 'tenmangu-native-inspection-' + mode, true);
+    }
+    await page.locator('#live-stage').focus(); await page.keyboard.press('Escape');
+    await page.waitForFunction(() => !window.__TOUR_GAME__.inspection().enabled);
+    for (const mode of ['day', 'night']) {
+      await setLighting(page, mode); await settled(page);
+      await primaryFrameBudget(page, 'tenmangu-native-walking-' + mode);
+      const actual = await cameraSettled(page, record, 'walking-' + mode);
+      check('tenmangu-walking-' + mode + '-keeps-complete-actor-source-framing-and-ground',
+        near(actual.route.position, ordinary.route.position) && framing(actual).safe && framing(actual).toriiInFrame
+        && Boolean(actual.ground.hit) && actual.ground.inside,
+      { observed: actual, framing: framing(actual), inspectionView, resources: resources(actual) });
+      await capture(page, 'tenmangu-native-walking-' + mode, true);
+    }
+    await unchangedLegacy(page, 'tenmangu-native-framing-keeps-legacy-bytes');
+  });
+
   if (only?.includes('arcade-inspection')) await section('arcade-inspection', async () => {
     const { sourceSha256, visited } = priorArcadeInterior();
     const reconstructed = sessionAt(visited.home.currentView);
@@ -1681,6 +1828,232 @@ try {
         && actorProjection(resumed).actualDistance >= 5 && actorProjection(resumed).verticalOccupancy <= .5,
       { beforeHide, resumed, projection: actorProjection(resumed) });
       await unchangedLegacy(page, reducedMotion + '-native-camera-input-keeps-legacy-bytes');
+      await context.close(); contexts.delete(context);
+    }
+  });
+
+  if (only?.includes('platform-review')) await section('platform-review', async () => {
+    const { source, sourceSha256 } = priorVisualReview();
+    const remembered = source.screenshots.find(value => value.file === 'connector-e001-n000-review-day-canvas.png');
+    const view = remembered.observed.home.currentView, reconstructed = sessionAt(view);
+    const { page, record } = await scenario('platform-material-review', {}, { storage: { [journeyKey]: JSON.stringify(reconstructed) } });
+    record.restoration = { sourceReportSha256: sourceSha256, sourcePackageSha256: source.artifact.manifestSha256,
+      sourceScreenshot: remembered.file, view, reconstructedSession: reconstructed,
+      description: 'Exact prior recorded connector position and authored review camera, restored for the source-specific structure/material change.' };
+    await enter(page); await settled(page);
+    check('platform-review-restores-exact-prior-position-and-review-camera', near((await home(page)).currentView, view), await observe(page));
+    for (const mode of ['day', 'night']) {
+      await setLighting(page, mode); await settled(page); await primaryFrameBudget(page, 'platform-' + mode);
+      const observed = await cameraSettled(page, record, 'platform-' + mode);
+      check('platform-' + mode + '-keeps-exact-view-ground-and-actor', near(observed.home.currentView, view)
+        && streetFraming(observed).safe && observed.ground.inside && Boolean(observed.ground.hit), observed);
+      await capture(page, 'platform-e001-prior-view-' + mode, true);
+    }
+  });
+
+  if (only?.includes('western-approach')) await section('western-approach', async () => {
+    const { source, sourceSha256 } = priorFullWalk();
+    const remembered = source.screenshots.find(value => value.file === 'outbound-nishiki-tenmangu-day.png');
+    const view = remembered.observed.home.currentView, reconstructed = sessionAt(view);
+    const node = geography.navigation.nodes.find(value => value.id === 'osm:node:354840400');
+    const torii = geography.navigation.nodes.find(value => value.id === 'osm:node:5204263033');
+    if (!node || !torii) throw new Error('The source-reviewed western approach nodes are absent.');
+    const navigation = createRouteNavigation(geography.navigation), path = navigation.path(view.player, node);
+    if (!path || !Number.isFinite(path.distanceMeters) || path.distanceMeters < 29 || path.distanceMeters > 30) throw new Error('The recorded eastern approach is not connected to the proposed western node.');
+    const { page, record } = await scenario('tenmangu-western-walk', {}, { storage: { [journeyKey]: JSON.stringify(reconstructed) } });
+    record.restoration = { sourceReportSha256: sourceSha256, sourcePackageSha256: source.artifact.manifestSha256,
+      sourceScreenshot: remembered.file, view, reconstructedSession: reconstructed,
+      description: 'Recorded eastern approach restored; the western viewing pause is reached by subsequent actual UI walking.' };
+    record.approach = { start: view.player, targetNode: node, toriiNode: torii, graphPath: path };
+    await enter(page); await settled(page);
+    check('western-review-starts-at-recorded-eastern-position', near((await home(page)).currentView, view), await observe(page));
+    await focusSight(page, geography.sights.find(sight => sight.id === 'nishiki-market'));
+    await boundedWalk(page, 'actual-westward-walk-through-source-torii-node', value => value.route.position.x <= node.x + 3);
+    await page.locator('#journey-stop').click();
+    await page.waitForFunction(() => !window.__TOUR_GAME__.route().goal && !window.__TOUR_GAME__.snapshot().moving);
+    const stopped = await cameraSettled(page, record, 'stopped-near-western-node');
+    record.approach.nearbyStop = stopped;
+    await groundClick(page, node);
+    const arrived = await boundedWalk(page, 'actual-ground-click-to-western-source-node', value => !value.route.destination
+      && !value.state.moving && Math.hypot(value.route.position.x - node.x, value.route.position.y - node.y) < .15);
+    await settled(page);
+    check('western-source-node-is-reached-by-actual-controls', Math.hypot(arrived.route.position.x - node.x, arrived.route.position.y - node.y) < .15
+      && Math.hypot(arrived.route.position.x - view.player.x, arrived.route.position.y - view.player.y) > 29
+      && Boolean(arrived.ground.hit) && arrived.ground.inside && streetFraming(arrived).safe,
+    { start: view.player, node, stopped, arrived, graphPath: path });
+    record.approach.arrived = arrived;
+    await capture(page, 'tenmangu-western-arrival-ordinary-day', true);
+    await page.locator('#solo-inspect').click(); await page.locator('#live-stage').focus();
+    record.approach.cameraInputs = [];
+    for (let step = 0; step < 40; step++) {
+      const before = await observe(page), offset = new Vector3().fromArray(before.camera.position).sub(new Vector3().fromArray(before.camera.viewTarget));
+      const actualAzimuth = Math.atan2(offset.x, offset.z);
+      const intended = Math.atan2(-(torii.x - before.route.position.x), torii.y - before.route.position.y);
+      const difference = Math.atan2(Math.sin(intended - actualAzimuth), Math.cos(intended - actualAzimuth));
+      if (Math.abs(difference) <= .1) break;
+      const key = difference < 0 ? 'j' : 'l';
+      await page.keyboard.press(key);
+      const after = await cameraSettled(page, record, 'western-orbit-' + step);
+      record.approach.cameraInputs.push({ key, before, after }); persist();
+      if (!streetFraming(after).safe) throw new Error('Native western-approach orbit exceeded the unchanged camera/actor bounds.');
+    }
+    for (let step = 0; step < 12; step++) {
+      const before = await observe(page), offset = new Vector3().fromArray(before.camera.position).sub(new Vector3().fromArray(before.camera.viewTarget));
+      if (Math.acos(offset.y / offset.length()) >= 1.43) break;
+      await page.keyboard.press('k');
+      const after = await cameraSettled(page, record, 'western-tilt-' + step);
+      record.approach.cameraInputs.push({ key: 'k', before, after }); persist();
+      if (!streetFraming(after).safe) throw new Error('Native western-approach tilt exceeded the unchanged camera/actor bounds.');
+    }
+    const aimed = await observe(page);
+    check('western-native-framing-keeps-actual-arrived-position-and-street-scale', near(aimed.route.position, arrived.route.position)
+      && streetFraming(aimed).safe, { arrived, aimed, framing: streetFraming(aimed) });
+    // 选点来自当前 Torii 几何的匾额、横梁和柱面；浏览器必须命中实际来源网格。
+    const surfaces = [{ name: 'plaque-west-face', x: torii.x - .32, y: torii.y, height: 3.74 },
+      { name: 'upper-beam-west-face', x: torii.x - .19, y: torii.y, height: 4.05 },
+      { name: 'north-post-west-face', x: torii.x - .23, y: torii.y + 2.15, height: 2.15 },
+      { name: 'south-post-west-face', x: torii.x - .23, y: torii.y - 2.15, height: 2.15 }];
+    record.approach.surfaceBasis = { generator: 'experience/art/neighborhood_landmarks.py',
+      sha256: sha(readFileSync(new URL('../art/neighborhood_landmarks.py', import.meta.url))),
+      sourceId: torii.sourceId, authoredDimensions: true, surfaces };
+    record.approach.inspectionAttempts = [];
+    let selected = null;
+    await page.locator('#live-stage canvas').scrollIntoViewIfNeeded();
+    for (const surface of surfaces) {
+      const current = await observe(page), bounds = await page.locator('#live-stage canvas').boundingBox();
+      const projected = new Vector3(surface.x, surface.height, -surface.y)
+        .applyMatrix4(new Matrix4().fromArray(current.camera.matrixWorld).invert())
+        .applyMatrix4(new Matrix4().fromArray(current.camera.projectionMatrix));
+      if (Math.abs(projected.x) >= .98 || Math.abs(projected.y) >= .98 || Math.abs(projected.z) >= 1) {
+        record.approach.inspectionAttempts.push({ surface, projected: projected.toArray(), reason: 'outside-actual-frustum' }); continue;
+      }
+      const x = bounds.x + (projected.x + 1) * bounds.width / 2, y = bounds.y + (1 - projected.y) * bounds.height / 2;
+      await page.mouse.move(x, y);
+      await page.waitForFunction(frame => window.__TOUR_GAME__.renderer().updateFrames > frame, current.renderer.updateFrames);
+      const inspection = await page.evaluate(() => window.__TOUR_GAME__.inspection());
+      record.approach.inspectionAttempts.push({ surface, projected: projected.toArray(), pointer: { x, y }, inspection }); persist();
+      if (inspection.focus?.id !== 'shijo-east:nishiki-tenmangu') continue;
+      await page.mouse.click(x, y);
+      await page.waitForFunction(() => window.__TOUR_GAME__.inspection().selected?.id === 'shijo-east:nishiki-tenmangu');
+      selected = await page.evaluate(() => window.__TOUR_GAME__.inspection().selected); break;
+    }
+    check('western-approach-selects-visible-actual-torii-source-geometry', selected?.id === 'shijo-east:nishiki-tenmangu'
+      && near((await observe(page)).route.position, arrived.route.position),
+    { selected, attempts: record.approach.inspectionAttempts, basis: record.approach.surfaceBasis });
+    if (selected) await page.locator('#solo-close-detail').click();
+    await page.locator('#live-stage').focus(); await page.keyboard.press('Escape');
+    const matchedView = (await cameraSettled(page, record, 'western-walking-frame')).home.currentView;
+    for (const mode of ['day', 'night']) {
+      await setLighting(page, mode); await settled(page); await primaryFrameBudget(page, 'western-approach-' + mode);
+      const actual = await cameraSettled(page, record, 'western-' + mode);
+      check('western-approach-' + mode + '-retains-arrived-view-and-grounded-actor', near(actual.home.currentView, matchedView)
+        && near(actual.route.position, arrived.route.position) && streetFraming(actual).safe && actual.ground.inside && Boolean(actual.ground.hit), actual);
+      await capture(page, 'tenmangu-western-approach-' + mode, true);
+    }
+    await unchangedLegacy(page, 'western-approach-review-keeps-legacy-bytes');
+  });
+
+  await section('camera-safety', async () => {
+    const { source, sourceSha256 } = priorVisualReview();
+    const rememberedView = source.screenshots.find(value => value.file === 'nishiki-tenmangu-review-day-canvas.png').observed.home.currentView;
+    const reconstructed = sessionAt(rememberedView);
+    const operations = ['click', 'touch-tap', 'middle-horizontal', 'three-finger', 'keyboard-orbit', 'keyboard-tilt',
+      'keyboard-zoom', 'drag', 'wheel', 'pinch', 'keyboard-pan', 'right-pan', 'touch-pan', 'touch-mixed'];
+    for (const reducedMotion of ['no-preference', 'reduce']) {
+      const { context, page, record } = await scenario('tenmangu-camera-safety-' + reducedMotion, {},
+        { storage: { [journeyKey]: JSON.stringify(reconstructed) }, context: { reducedMotion, hasTouch: true } });
+      record.restoration = { sourceReportSha256: sourceSha256, sourcePackageSha256: source.artifact.manifestSha256,
+        sourceScreenshot: 'nishiki-tenmangu-review-day-canvas.png', view: rememberedView, reconstructedSession: reconstructed,
+        description: 'Exact previously walked position and recorded native camera intent. Camera safety is evaluated separately from torii recognition.' };
+      await enter(page); await settled(page); await recordNativeInputs(page);
+      const original = await cameraSettled(page, record, 'initial-tenmangu-view');
+      check(reducedMotion + '-tenmangu-safety-restores-recorded-view', near(original.home.currentView, rememberedView)
+        && streetFraming(original).safe && original.ground.inside && Boolean(original.ground.hit), original);
+      const saved = await keep(page, 'Tenmangū camera safety · 相机检查', 'Private original view · 原有私人视角');
+      record.inputCases = [];
+      for (const operation of operations) {
+        await reopen(page, saved);
+        const walking = await cameraSettled(page, record, operation + '-restored');
+        await page.locator('#solo-inspect').click();
+        const before = await cameraSettled(page, record, operation + '-inspection-entry');
+        check(reducedMotion + '-' + operation + '-tenmangu-entry-preserves-safe-visible-view',
+          near(before.camera.matrixWorld, walking.camera.matrixWorld, .00001) && near(before.home.currentView, walking.home.currentView)
+          && before.camera.inspectionPanned === false && streetFraming(before).safe,
+        { walking, before, framing: streetFraming(before) });
+        const settlingStart = record.cameraSettling.length;
+        const action = await nativeCameraInput(page, context, operation);
+        await page.waitForFunction(frame => window.__TOUR_GAME__.renderer().updateFrames > frame, before.renderer.updateFrames);
+        const after = await cameraSettled(page, record, operation + '-native-result');
+        const events = await page.evaluate(() => window.__NEIGHBORHOOD_INPUT_EVENTS__);
+        const ignored = ['click', 'touch-tap', 'middle-horizontal', 'three-finger'].includes(operation);
+        const purposefulPan = ['keyboard-pan', 'right-pan', 'touch-pan', 'touch-mixed'].includes(operation);
+        const delivered = events.length > 0 && events.every(event => event.trusted)
+          && (!['pinch', 'touch-pan', 'touch-mixed', 'three-finger'].includes(operation)
+            || events.some(event => event.type === 'touchmove' && event.touches.length === (operation === 'three-finger' ? 3 : 2)))
+          && (operation !== 'middle-horizontal' || events.some(event => event.type === 'pointermove' && event.buttons === 4))
+          && (operation !== 'touch-tap' || events.some(event => event.type === 'pointerup' && event.pointerType === 'touch'));
+        const sampledFrames = record.cameraSettling.slice(settlingStart).flatMap(value => value.samples).map(sample => ({
+          updateFrames: sample.updateFrames, camera: sample.camera, framing: streetFraming({ route: before.route, camera: sample.camera }),
+        }));
+        const preserved = near(before.home.currentView, after.home.currentView, .00001)
+          && near(before.camera.matrixWorld, after.camera.matrixWorld, .00001)
+          && after.camera.inspectionAimed === false && after.camera.inspectionPanned === false;
+        const adjusted = after.camera.inspectionAimed === true && !near(before.home.currentView.camera, after.home.currentView.camera, .00001);
+        const panned = after.camera.inspectionPanned === true && !near(before.camera.viewTarget, after.camera.target, .00001);
+        const controlled = purposefulPan ? adjusted && panned : after.camera.inspectionPanned === false
+          && streetFraming(after).safe && sampledFrames.every(sample => sample.framing.safe) && (ignored ? preserved : adjusted);
+        const evidence = { operation, reducedMotion, action, events, before, after, sampledFrames,
+          ignored, purposefulPan, delivered, preserved, adjusted, panned, framing: streetFraming(after) };
+        record.inputCases.push(evidence);
+        check(reducedMotion + '-tenmangu-' + operation + '-honors-input-and-framing-scope',
+          delivered && controlled && near(before.route.position, after.route.position) && !after.route.destination && !after.state.moving,
+        evidence);
+        if (operation === 'keyboard-orbit') {
+          await page.locator('#live-stage').focus(); await page.keyboard.press('l');
+          const reversed = await cameraSettled(page, record, 'reverse-away-from-wall');
+          check(reducedMotion + '-tenmangu-orbit-can-reverse-away-from-wall', streetFraming(reversed).safe
+            && new Vector3().fromArray(reversed.camera.position).distanceTo(new Vector3().fromArray(after.camera.position)) > .2
+            && near(reversed.route.position, before.route.position), { after, reversed, framing: streetFraming(reversed) });
+        }
+        if (operation === 'pinch') {
+          const touches = events.filter(event => event.type === 'touchmove').map(event => event.touches);
+          const centers = touches.map(points => ({ x: (points[0].x + points[1].x) / 2, y: (points[0].y + points[1].y) / 2,
+            span: Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y) }));
+          check(reducedMotion + '-symmetric-native-pinch-retains-actor-framing-policy', centers.length >= 3
+            && centers.every(center => Math.abs(center.x - action.start.x) < .01 && Math.abs(center.y - action.start.y) < .01)
+            && centers.at(-1).span < centers[0].span && after.camera.inspectionPanned === false
+            && after.camera.distance > actorProjection(before).actualDistance && streetFraming(after).safe,
+          { centers, before, after, events });
+        }
+        if (operation === 'keyboard-pan') {
+          const aimed = await keep(page, 'Intentional façade view · 主动立面构图', 'Private pan note · 私人平移记录');
+          check(reducedMotion + '-intentional-pan-saves-exact-camera-and-note', near(aimed.view, after.home.currentView)
+            && aimed.note === 'Private pan note · 私人平移记录', { aimed, after });
+          await page.locator('#live-stage').focus(); await page.keyboard.press('l');
+          await cameraSettled(page, record, 'changed-before-panned-restore');
+          await reopen(page, aimed);
+          const restored = await cameraSettled(page, record, 'restored-deliberate-pan');
+          check(reducedMotion + '-panned-view-reopens-exact-saved-intent', near(restored.home.currentView, aimed.view)
+            && restored.camera.inspectionPanned === true && near(restored.camera.viewTarget, restored.camera.target),
+          { aimed, restored });
+          await capture(page, 'tenmangu-purposeful-pan-' + reducedMotion, true);
+        }
+        await page.locator('#live-stage').focus(); await page.keyboard.press('Escape');
+        const returned = await cameraSettled(page, record, operation + '-return-to-walking');
+        check(reducedMotion + '-' + operation + '-escape-restores-safe-walking-frame', streetFraming(returned).safe
+          && !returned.camera.inspecting && returned.camera.inspectionPanned === false
+          && near(returned.route.position, before.route.position) && Boolean(returned.ground.hit) && returned.ground.inside,
+        { before, returned, framing: streetFraming(returned) });
+      }
+      await reopen(page, saved); await setLocale(page, 'zh');
+      const beforeReload = await cameraSettled(page, record, 'before-native-reload');
+      await page.reload({ waitUntil: 'domcontentloaded' }); await ready(page); await settled(page);
+      const reloaded = await cameraSettled(page, record, 'after-native-reload');
+      check(reducedMotion + '-safe-camera-private-view-survives-localized-reload', near(beforeReload.home.currentView, reloaded.home.currentView)
+        && (await kept(page)).places.some(value => value.id === saved.id && value.note === saved.note)
+        && await page.locator('html').getAttribute('lang') === 'zh' && streetFraming(reloaded).safe,
+      { beforeReload, reloaded, saved });
+      await unchangedLegacy(page, reducedMotion + '-tenmangu-camera-safety-keeps-legacy-bytes');
       await context.close(); contexts.delete(context);
     }
   });

@@ -34,6 +34,23 @@
     "market-front": {"wallMaterial":"plaster","roofMaterial":"roof","glassMaterial":"glass","frameMaterial":"wood","trimMaterial":"wood","storeyHeightMetres":3.05,"bayWidthMetres":3.05,"recessMetres":0.32,"openingWidthRatio":0.73,"groundSillMetres":0.14,"groundOpeningMetres":2.75,"marketFasciaTopMetres":3.85,"referenceIds":["nishiki-arcade-2025","nishiki-entrance-2026"],"authored":"Original varied lower-storey arcade assemblies on actual adjacent source facade edges; unlettered fascia, timber/metal framing and opaque recessed glazing do not identify shops or interiors."},
     "lane-timber": {"wallMaterial":"plaster","roofMaterial":"roof","glassMaterial":"glass","frameMaterial":"wood","trimMaterial":"wood","storeyHeightMetres":2.9,"bayWidthMetres":1.8,"recessMetres":0.22,"openingWidthRatio":0.59,"canopyHeightMetres":2.7,"canopyProjectionMetres":0.45,"canopyMaterial":"wood","referenceIds":["pontocho-city-description","pontocho-approach-2026"],"authored":"Original two-storey eave/lattice family derived from the municipal description; individual building elevations remain unverified."}
   },
+  "sourceTreatmentOverrides": {
+    "kyoto-city:bldg_74454289-1d7a-4105-87ea-26e36c69bc44": {
+      "treatment": "wall-less-structure",
+      "recipeId": "urban-plaster",
+      "expectedSourceIndex": 223,
+      "expectedHeightMetres": 2.1240000000000023,
+      "expectedBaseHeightMetres": 0,
+      "association": {"sourceId":"osm:node:8886543723","name":"Shijo Takakura · Platform A","meaning":"The mapped bus-platform point lies inside the municipal ordinary wall-less structure. Exact support layout, roof construction and current condition remain unverified."},
+      "construction": {"roofThicknessMetres":0.08,"postCount":7,"postWidthMetres":0.12,"endInsetMetres":0.45,"beamDepthMetres":0.10,"beamWidthMetres":0.10,"roofMaterial":"roof","structureMaterial":"frame"},
+      "authored": "Original open assembly informed by the official wall-less classification, preserving the source roof ring and top. Slab thickness, seven centreline supports, beam dimensions and neutral finishes are authored. Beam underside1.944m is virtual construction, not measured real clearance. No exact Platform A shelter reconstruction is claimed.",
+      "evidence": [
+        {"file":"experience/evidence/neighborhood-20261023/world/platform-context/audit.json","sha256":"a6c957b436a26baf945b45fd3c2e144701dc240ebd5e93e672bfceb2a115e5c6"},
+        {"file":"experience/evidence/neighborhood-20261023/world/platform-context/osm-records.json","sha256":"155c965cda7519827dceb363883537f3d952f2213500aa30bfa8c63af3c1a946"},
+        {"file":"experience/evidence/neighborhood-20261023/world/platform-context/semantic-review.json","sha256":"a56ad01d023a620bbee4bc776e93365c428ad027da570eb13661ed271b413c22"}
+      ]
+    }
+  },
   "assignmentRules": {
     "kind":"source-massing-with-explicit-authored-facade-families",
     "marketBounds":{"minX":260,"maxX":655,"minY":125,"maxY":160},

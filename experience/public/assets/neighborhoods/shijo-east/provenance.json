@@ -172,13 +172,13 @@
     "sha256": "dffa91bf8616b4ce6657f972913c642249ce5be999fb52be736933a5b2ebd6ad",
     "bytes": 7321
   },
-  "styleSha256": "8dc8eb316933f3de57e5b67d0279bfe5e4caed13f6d10d0a3a5fa9873f269a39",
-  "generatorSha256": "05a898f79e8ff82744115eadeee2008c1a30c917f4b17af00225907a1a86b177",
-  "geometryHelperSha256": "0fb50580bf3dadbccfed89681d364736a29c18daa0f72894ba30678f846d583e",
+  "styleSha256": "e25f9c3c271dc9f640ab339da3d4ea389a45c255b951cec339e4dd2baeb8d3e0",
+  "generatorSha256": "b5f147840d709a183103483b90f6102dd26be331e5b1ed365067c8d11e47cefa",
+  "geometryHelperSha256": "703dde774df3058b44cb8592f712525fa5754bbd83027b19ccddbdae6c218ded",
   "landmarkHelperSha256": "de4892fb897c7ffb4ee5c4d2dac9ed9d66f402c2b687be8158e062ba5ed2d4ee",
   "materialHelperSha256": "a88e8bc6c1c8da4da6838939c6381ce8120ff75d3f131559577a98fe059a86be",
   "blenderVersion": "4.3.2",
-  "elapsedSeconds": 14.632,
+  "elapsedSeconds": 14.482,
   "geometryMeaning": "Source footprints and prepared surface polygons; reviewed original facade assemblies with explicit authored dimensions",
   "rights": "source-ledger.json and references.json",
   "referenceIds": [
@@ -211,6 +211,337 @@
   "sourceFramePreserved": true,
   "originalPackAssetsChanged": false,
   "visualAcceptance": "requires actual browser route review",
+  "sourceTreatmentOverrides": [
+    {
+      "sourceId": "kyoto-city:bldg_74454289-1d7a-4105-87ea-26e36c69bc44",
+      "treatment": "wall-less-structure",
+      "recipeId": "urban-plaster",
+      "expectedSourceIndex": 223,
+      "expectedHeightMetres": 2.1240000000000023,
+      "expectedBaseHeightMetres": 0,
+      "association": {
+        "sourceId": "osm:node:8886543723",
+        "name": "Shijo Takakura · Platform A",
+        "meaning": "The mapped bus-platform point lies inside the municipal ordinary wall-less structure. Exact support layout, roof construction and current condition remain unverified."
+      },
+      "construction": {
+        "roofThicknessMetres": 0.08,
+        "postCount": 7,
+        "postWidthMetres": 0.12,
+        "endInsetMetres": 0.45,
+        "beamDepthMetres": 0.1,
+        "beamWidthMetres": 0.1,
+        "roofMaterial": "roof",
+        "structureMaterial": "frame"
+      },
+      "authored": "Original open assembly informed by the official wall-less classification, preserving the source roof ring and top. Slab thickness, seven centreline supports, beam dimensions and neutral finishes are authored. Beam underside1.944m is virtual construction, not measured real clearance. No exact Platform A shelter reconstruction is claimed.",
+      "evidence": [
+        {
+          "file": "experience/evidence/neighborhood-20261023/world/platform-context/audit.json",
+          "sha256": "a6c957b436a26baf945b45fd3c2e144701dc240ebd5e93e672bfceb2a115e5c6"
+        },
+        {
+          "file": "experience/evidence/neighborhood-20261023/world/platform-context/osm-records.json",
+          "sha256": "155c965cda7519827dceb363883537f3d952f2213500aa30bfa8c63af3c1a946"
+        },
+        {
+          "file": "experience/evidence/neighborhood-20261023/world/platform-context/semantic-review.json",
+          "sha256": "a56ad01d023a620bbee4bc776e93365c428ad027da570eb13661ed271b413c22"
+        }
+      ],
+      "evidenceRecords": [
+        {
+          "file": "experience/evidence/neighborhood-20261023/world/platform-context/audit.json",
+          "sha256": "a6c957b436a26baf945b45fd3c2e144701dc240ebd5e93e672bfceb2a115e5c6",
+          "record": {
+            "status": "pass",
+            "sourceId": "kyoto-city:bldg_74454289-1d7a-4105-87ea-26e36c69bc44",
+            "officialProperties": {
+              "gml_id": "bldg_74454289-1d7a-4105-87ea-26e36c69bc44",
+              "作成日": "2024-03-22",
+              "計測高さ": "2.9",
+              "計測高さ_単位": "m",
+              "地上階数": "0",
+              "地下階数": "0",
+              "建築年": "0001",
+              "用途": "不明",
+              "構造種別": "不明",
+              "調査年": "2025",
+              "建物ID": "26100-bldg-418155",
+              "LOD1幾何オブジェクト原典資料": "公共測量成果",
+              "主題属性": "都市計画基礎調査",
+              "名称": null
+            },
+            "platformNodeId": 8886543723,
+            "stopAreaRelationId": 21186538,
+            "projectedPoint": [
+              174.01116254515452,
+              -2.329753650424183
+            ],
+            "insideFootprint": true,
+            "boundaryDistanceMetres": 0.783915255136987,
+            "height": {
+              "metres": 2.1240000000000023,
+              "origin": "derived-from-official-LOD1-z-range",
+              "sourceMinimumZ": 37.25,
+              "sourceMaximumZ": 39.374,
+              "measuredHeightAttribute": "2.9",
+              "meaning": "LOD1 solid vertical extent; measured-height attribute retained independently; facade/roof proportions unreviewed"
+            },
+            "rawOsmIdentityChecked": true
+          }
+        },
+        {
+          "file": "experience/evidence/neighborhood-20261023/world/platform-context/osm-records.json",
+          "sha256": "155c965cda7519827dceb363883537f3d952f2213500aa30bfa8c63af3c1a946",
+          "record": {
+            "schemaVersion": 1,
+            "sourceFile": "artifacts/neighborhood-20261021/world/raw/osm-map.json",
+            "sourceSha256": "45969d94df108b46f38cb4b13e9f41756c30a38ce602e504f1b92d6486afa787",
+            "license": "ODbL-1.0",
+            "attribution": "© OpenStreetMap contributors",
+            "retrievedAt": "2026-10-21T07:41:38.008383+00:00",
+            "elements": [
+              {
+                "type": "node",
+                "id": 8886543723,
+                "lat": 35.003718,
+                "lon": 135.7616253,
+                "timestamp": "2026-05-08T06:59:10Z",
+                "version": 8,
+                "changeset": 182368476,
+                "user": "HayaKoh",
+                "uid": 21636850,
+                "tags": {
+                  "bench": "yes",
+                  "bin": "no",
+                  "bus": "yes",
+                  "departures_board": "realtime",
+                  "highway": "bus_stop",
+                  "lit": "yes",
+                  "local_ref": "A",
+                  "name": "四条高倉",
+                  "name:en": "Shijo Takakura",
+                  "name:ja": "四条高倉",
+                  "name:ja-Hira": "しじょうたかくら",
+                  "name:ko": "시조타카쿠라",
+                  "name:zh-Hans": "四条高仓",
+                  "name:zh-Hant": "四条高倉",
+                  "operator": "京都市交通局;京都バス",
+                  "public_transport": "platform",
+                  "shelter": "yes;no",
+                  "tactile_paving": "yes"
+                }
+              },
+              {
+                "type": "way",
+                "id": 465066447,
+                "timestamp": "2024-11-05T04:13:54Z",
+                "version": 8,
+                "changeset": 158763702,
+                "user": "MatStrange",
+                "uid": 187355,
+                "nodes": [
+                  4600871814,
+                  4600891666,
+                  4600871813,
+                  4600891664,
+                  4600891662,
+                  4600871812,
+                  4600891660,
+                  4600891658,
+                  4600871811,
+                  4600891656,
+                  4600891654,
+                  4600871810,
+                  4600891652,
+                  4600891650,
+                  4600871809,
+                  4600891648,
+                  4600891646,
+                  4600871808,
+                  4600891644,
+                  4600891642,
+                  4600871807,
+                  4600891602,
+                  4600871806,
+                  4600891604,
+                  11791924472,
+                  11793855057,
+                  4600871803,
+                  4600891623,
+                  4600871802,
+                  4600871801,
+                  4600891621,
+                  4600871800
+                ],
+                "tags": {
+                  "bicycle": "dismount",
+                  "covered": "yes",
+                  "footway": "sidewalk",
+                  "highway": "footway",
+                  "lit": "yes",
+                  "surface": "paving_stones"
+                }
+              },
+              {
+                "type": "way",
+                "id": 465069431,
+                "timestamp": "2025-12-11T04:10:59Z",
+                "version": 10,
+                "changeset": 175784580,
+                "user": "taketaketake",
+                "uid": 4757277,
+                "nodes": [
+                  305536679,
+                  2737069292,
+                  2737069295,
+                  305536680,
+                  2737069304,
+                  2737069311,
+                  337515636,
+                  2737069313,
+                  2737069316,
+                  305536681,
+                  2737069318,
+                  2737069321,
+                  335699954,
+                  2737069336,
+                  2737069339,
+                  332507385,
+                  2737069341,
+                  2737069348,
+                  324259960
+                ],
+                "tags": {
+                  "bicycle:conditional": "no @ (08:00-21:00)",
+                  "highway": "primary",
+                  "lanes": "2",
+                  "lit": "yes",
+                  "maxspeed": "40",
+                  "name": "四条通",
+                  "name:en": "Shijo Street",
+                  "name:fr": "Rue Shijō",
+                  "name:ja": "四条通",
+                  "name:ja-Hira": "しじょうどおり",
+                  "name:ja-Latn": "Shijō-dōri",
+                  "note": "京都市道ですが、主要地方道なので primary にしてあります",
+                  "official_name": "嵐山祇園線",
+                  "official_name:en": "Arashiyama Gion Line",
+                  "official_name:ja": "嵐山祇園線",
+                  "official_name:ja-Hira": "あらしやまぎおんせん",
+                  "official_name:ja-Latn": "Arashiyama Gion-sen",
+                  "oneway:bicycle": "yes",
+                  "ref": "186",
+                  "sidewalk:left": "no",
+                  "sidewalk:right": "separate",
+                  "source": "Bing",
+                  "surface": "asphalt",
+                  "wikidata": "Q7496525",
+                  "wikipedia": "ja:四条通"
+                }
+              },
+              {
+                "type": "relation",
+                "id": 21186538,
+                "timestamp": "2026-08-04T07:56:37Z",
+                "version": 1,
+                "changeset": 186908284,
+                "user": "HayaKoh",
+                "uid": 21636850,
+                "members": [
+                  {
+                    "type": "node",
+                    "ref": 8886543730,
+                    "role": "platform"
+                  },
+                  {
+                    "type": "node",
+                    "ref": 8886543723,
+                    "role": "platform"
+                  }
+                ],
+                "tags": {
+                  "name": "四条高倉",
+                  "name:en": "Shijo Takakura",
+                  "name:ja": "四条高倉",
+                  "name:ja-Hira": "しじょうたかくら",
+                  "name:ko": "시조타카쿠라",
+                  "name:zh-Hans": "四条高仓",
+                  "name:zh-Hant": "四条高倉",
+                  "public_transport": "stop_area",
+                  "type": "public_transport"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "file": "experience/evidence/neighborhood-20261023/world/platform-context/semantic-review.json",
+          "sha256": "a56ad01d023a620bbee4bc776e93365c428ad027da570eb13661ed271b413c22",
+          "record": {
+            "reviewedAt": "2026-10-23",
+            "scope": "Exact municipal feature semantic lookup and bounded primary-source research; no production geometry changes",
+            "sourceId": "kyoto-city:bldg_74454289-1d7a-4105-87ea-26e36c69bc44",
+            "source": {
+              "dataset": "京都市 3D都市モデル LOD1_2025",
+              "license": "CC-BY-4.0",
+              "attribution": "Kyoto City",
+              "archiveSha256": "15701dd9b876eeba5be4d9c45ac0cd39e72f43a30fb17164aea8d3b07618116d",
+              "gdbPath": "artifacts/neighborhood-20261021/world/raw/kyoto-21422/bldg_LOD1_R7_公開用.gdb",
+              "layer": "建物LOD1_R7",
+              "featureId": 401985,
+              "queryFile": "gdb-query.sql",
+              "querySha256": "066826cce2730ee975c555800bd26d45b5312af5036d9e0ea6e1867b72628b54",
+              "resultFile": "gdb-feature.txt",
+              "resultSha256": "75b9088348351fde133c253dcd6cf158b0fdbc622ccb43b041ef97dce46be477",
+              "reader": "GDAL ogrinfo 3.10.3; read-only attribute query, geometry omitted"
+            },
+            "additionalProperties": {
+              "分類": "普通無壁舎",
+              "立上高": "点群から取得_中央値",
+              "_lod": "1",
+              "ftype": "Building",
+              "fname": "bldg\\bldg_LOD1",
+              "meshname": "52354600",
+              "地図レベル": "地図情報レベル2500",
+              "公共測量成果説明": "数値地形図データ"
+            },
+            "schemaReview": {
+              "url": "https://www.mlit.go.jp/plateaudocument01-01/Contents/定義文書/bldg--Building.html",
+              "reviewedFields": [
+                "bldg:Building",
+                "bldg:class",
+                "bldg:measuredHeight",
+                "bldg:lod1Solid"
+              ],
+              "classMeaning": "Ordinary wall-less structure; the category also covers specified greenhouse/industrial structures below three storeys.",
+              "heightMethodMeaning": "Point-cloud median used for the LOD1 extrusion.",
+              "solidMeaning": "LOD1 extrudes the upper orthographic outline upward from ground at one height; median is the stated principle.",
+              "measuredHeightMeaning": "Lowest above-ground point to highest point, metres.",
+              "baseZInterpretation": "37.25 is the retained LOD1 model lower boundary. The schema describes a ground-up abstraction; this value does not establish a measured roof underside or platform clearance.",
+              "limits": [
+                "The 2.9 m measured-height attribute and 2.124 m solid extent retain distinct meanings; their numerical discrepancy is not resolved by this lookup.",
+                "Exact roof thickness, support positions, openings, clearance and present condition remain unverified.",
+                "The semantic class supports an open-structure classification. Any authored open archetype must retain source identity, footprint and top extent while declaring post layout, roof thickness and clearance as authored."
+              ]
+            },
+            "projectReview": {
+              "url": "https://www.city.kyoto.lg.jp/kensetu/page/0000241999.html",
+              "pageDate": "2018-09-03",
+              "facts": [
+                "Shijo sidewalk widening between Karasuma and Kawabata completed at the end of October 2015.",
+                "The project describes a 1120 m section, 22 m wide.",
+                "Sixteen bus stops were consolidated into four Shijo Takakura/Shijo Kawaramachi eastbound and westbound locations with roadway-projecting terrace stops."
+              ],
+              "limits": "Project-level evidence does not specify this feature's roof/support geometry; no permission to redistribute official imagery is inferred."
+            },
+            "productionChanges": false
+          }
+        }
+      ]
+    }
+  ],
   "riverContext": {
     "input": {
       "file": "river-context.json.gz",

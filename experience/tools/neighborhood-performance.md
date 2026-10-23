@@ -28,6 +28,48 @@ hidden-work check; the other measurements and final resource checks remain in th
 report. The tool does not override visibility properties or change rendering
 quality. A missing display causes browser startup to fail.
 
+## Optional Mesa software diagnostic
+
+The default launch and all measurement boundaries and thresholds remain unchanged.
+An explicit option selects the separately labelled software-renderer diagnostic:
+
+```sh
+NEIGHBORHOOD_PERF_OUTPUT=artifacts/neighborhood-performance-mesa \
+  node experience/tools/neighborhood-performance.mjs experience/dist --graphics=mesa-software
+```
+
+This option uses headless Chromium with `--enable-gpu --use-gl=angle
+--use-angle=gl-egl --ozone-platform=headless --ignore-gpu-blocklist`, retaining the
+existing `--no-sandbox` environment launch argument. It sets
+`EGL_PLATFORM=surfaceless`, `LIBGL_ALWAYS_SOFTWARE=true`, and
+`GALLIUM_DRIVER=llvmpipe`. Mesa's shader cache is inside the selected output
+directory; Chromium temporary files remain under `artifacts/tmp`. All other
+environment values, including proxy and CA settings, are inherited. TLS checks
+remain enabled. The required Mesa EGL/llvmpipe libraries must already be installed.
+Combining this option with `--headed` is rejected.
+
+Chromium 151.0.7922.173's
+[software-renderer blocklist](https://github.com/chromium/chromium/blob/151.0.7922.173/gpu/config/software_rendering_list.json)
+entry 3 disables GPU features for Linux renderers matching `llvmpipe`. The explicit
+[documented switch](https://github.com/chromium/chromium/blob/151.0.7922.173/gpu/config/gpu_switches.cc)
+bypasses that compatibility decision for this diagnostic. It does not establish
+physical GPU performance or resolve native background-tab visibility.
+
+Each entry records the application's actual WebGL renderer and context attributes.
+The diagnostic rejects a renderer without `llvmpipe`, a SwiftShader fallback, or
+changes to `alpha:true`, `antialias:true`, `depth:true`,
+`premultipliedAlpha:true`, `preserveDrawingBuffer:false`, or
+`powerPreference:high-performance`. The application creates its own context;
+the driver does not replace it. The report also records launch arguments,
+explicit environment overrides, browser version and CDP `SystemInfo.getInfo`.
+After all timing and hidden-state observations, it captures the actual final
+canvas with its camera/state and image hash for visual review.
+
+Keep the original default-renderer reports and failed capability probes. Compare
+these results as distinct software configurations on the same immutable build,
+viewport, quality, network approximation and input protocol. Passing a software
+diagnostic does not close a physical-device acceptance gate.
+
 The tool reads the actual build into an immutable HTTP server on an ephemeral
 loopback port. It serves only those captured bytes, records their SHA-256 hashes,
 and returns 404 for unavailable API requests. It uses no response interception,

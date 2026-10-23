@@ -1,6 +1,6 @@
 # Executed arcade and riverbank review · 2026-10-23
 
-Candidate 6 preserves the decoded candidate-2 art assets through verified transport packaging. Bounded crossing/frontage, arcade enclosure/framing and river-continuation reviews are accepted. Current daylight/night review at Tenmangū and eight previously visited connector cells remains pending. Whole-neighborhood visual acceptance and human realism have not been established. The candidate-1 and candidate-2 records below retain their respective package identities and observations.
+Candidate 6 preserves the decoded candidate-2 art assets through verified transport packaging. Bounded crossing/frontage, arcade enclosure/framing and river-continuation reviews are accepted. The [current eighteen-view coverage review](candidate-6-coverage/README.md) examines Tenmangū and eight previously visited connector pauses in daylight and night. Tenmangū landmark composition remains blocked after a separate native-control follow-up; the low mass associated with Shijo Takakura Platform A has unsupported commercial-window treatment. Sampled connectors retain readable actors and paths, with documented appearance/source gaps. Whole-neighborhood visual acceptance and human realism have not been established. The candidate-1 and candidate-2 records below retain their respective package identities and observations.
 
 ## Candidate 1 captured build
 

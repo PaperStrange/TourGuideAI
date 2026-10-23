@@ -1,6 +1,6 @@
 # Shijo Takakura platform context
 
-Reviewed 2026-10-23. The [audit](audit.json) confirms that OSM platform node `8886543723` lies within municipal LOD1 feature `kyoto-city:bldg_74454289-1d7a-4105-87ea-26e36c69bc44`. This establishes a spatial association with the bus platform. The exact shelter enclosure, support layout, roof thickness and present condition remain unverified.
+Reviewed 2026-10-23. The [audit](audit.json) confirms that OSM platform node `8886543723` lies within municipal LOD1 feature `kyoto-city:bldg_74454289-1d7a-4105-87ea-26e36c69bc44`. This establishes a spatial association with the bus platform. The [additional FileGDB lookup](semantic-review.json) records the exact feature's `分類=普通無壁舎`, an ordinary wall-less structure category. Support layout, roof thickness, clearance and present condition remain unverified.
 
 The retained [OSM records](osm-records.json) include the complete platform node, stop-area relation `21186538`, covered sidewalk way `465066447` and adjacent Shijo roadway `465069431`. They are exact excerpts of the captured OSM response, under ODbL 1.0, © OpenStreetMap contributors. Platform A is named 四条高倉 / Shijo Takakura; it has `highway=bus_stop`, `public_transport=platform`, `bench=yes`, `tactile_paving=yes` and the unresolved literal `shelter=yes;no`. The stop-area relation explicitly includes it as a platform. These tags do not establish the municipal mass's construction details.
 
@@ -20,13 +20,21 @@ Projection uses origin longitude `135.759719`, latitude `35.003739`, with `x=(lo
 
 The [Kyoto City Transportation Bureau FAQ](https://www.city.kyoto.lg.jp/kotsu/page/0000204848.html), dated 2026-05-12 and read on 2026-10-23, names both directions of Shijo Takakura in Q6. It describes space for three buses and distinct boarding/alighting positions. The [official Shijo Takakura stop page](https://www2.city.kyoto.lg.jp/kotsu/busdia/hyperdia/menu072.htm) confirms the stop identity and destinations. Its map link explicitly warns that markers do not indicate precise stop positions. Neither page establishes this mass's architectural dimensions.
 
-Existing licensed facade references cover the original western landmarks and the other reviewed route sights. Art confirmed no retained photograph covers this precise `x158–188` stretch. This bounded lookup did not establish a currently retrievable photograph or construction drawing for the precise mass. Public availability of the official pages does not establish permission to redistribute their imagery. No image pixels, Street View material or architectural geometry were acquired for this audit.
+The [official widening project page](https://www.city.kyoto.lg.jp/kensetu/page/0000241999.html), dated 2018-09-03, describes completion in October 2015 and roadway-projecting terrace stops at Shijo Takakura and Shijo Kawaramachi. It supplies project context; this feature's construction dimensions remain unverified. Public availability of official pages does not establish permission to redistribute their imagery.
+
+The retained [2016 reference metadata](reference-2016.json) records Hide1228's CC BY-SA 4.0 photograph, unchanged original hash and the art lead's dated Platform B inspection. Research imagery remains in ignored artifacts. No photographic pixels or derived architecture from this reference are distributed in the product.
+
+## Exact source semantics
+
+The [attribute query output](gdb-feature.txt) identifies FileGDB feature `401985` as `普通無壁舎` and records `立上高=点群から取得_中央値`. The [MLIT Building definition](https://www.mlit.go.jp/plateaudocument01-01/Contents/定義文書/bldg--Building.html) includes wall-less structures and defines LOD1 as a uniform extrusion upward from ground, normally using median height. Its measured-height attribute describes the lowest above-ground point to the highest point. These meanings explain why an LOD1 volume cannot establish enclosing walls. The precise reason for this record's 2.9 m attribute versus 2.124 m geometric extent remains unverified. Its lower Z of 37.25 does not establish a roof underside or pedestrian clearance.
+
+The exact GDB properties are retained separately from `audit.json` and `osm-records.json`, whose bytes remain frozen for art provenance. `semantic-review.json` binds the query and result SHA-256 values. The source class must remain explicit when assessing visual limitations.
 
 ## Proposed art treatment
 
-Preserve the exact footprint, source ID, 2.124 m extent, authored base height and navigation. Give this feature an explicit low-structure treatment with a neutral authored finish; suppress the generic commercial window bays, shop-like recesses and associated glazing emission. Record the bus-platform association and unresolved construction separately. The generator currently assigns generic urban families in `build_neighborhood.py` lines 225–240; that assignment does not use the platform record.
+The source class supports an open authored archetype retaining the exact plan footprint, source ID, source top extent and navigation. Post locations, roof thickness, clearance and finishes require explicit authored status; the retained data supplies no measured construction assembly. Record the bus-platform association independently. The generator's generic urban family selection does not use the platform record.
 
-This proposal removes unsupported architectural cues. The preserved opaque envelope can still obscure the carriageway. New openings, columns, elevated roof clearance or a replacement shelter assembly require location-specific evidence and a separate reviewed decision. This audit changes no canonical scene, source geometry, navigation or art assets.
+Root approved preparation of that bounded authored treatment after reviewing the exact source class. Actual geometry and visual acceptance belong to the art lane. This source audit changes no canonical scene, source geometry, navigation or art assets.
 
 ## Reproduction
 
@@ -39,3 +47,37 @@ python3 experience/evidence/neighborhood-20261023/world/platform-context/check-p
 ```
 
 The recorded run used Python 3.12 and Shapely 2.2.0 and passed. It verifies both retained municipal file hashes, exact properties, projection, containment, the literal shelter tag, source height meanings, relation membership and byte-derived raw OSM identity. A clean checkout can omit `--raw-osm` to verify the portable records against the committed municipal geometry; that run explicitly reports `rawOsmIdentityChecked:false`.
+
+Reproduce the additional attribute lookup with GDAL 3.10.3 and the retained archive extraction:
+
+```bash
+ogrinfo -ro -q -geom=NO \
+  artifacts/neighborhood-20261021/world/raw/kyoto-21422/bldg_LOD1_R7_公開用.gdb \
+  -sql @experience/evidence/neighborhood-20261023/world/platform-context/gdb-query.sql
+```
+
+This read-only query prints the selected feature's attributes. It exports no geometry and changes no production files.
+
+## Independent open-assembly export audit
+
+[The actual export audit](open-export-audit.json), SHA-256 `35a910929b4828c838d321a0be2a7b391b4d7aa9f87b6e302efba80ed2803224`, passes on manifest `679241ee06a8115ad3f95ddd523c2f56555b900f3ecc4437d272573a968ec4e5` and provenance `845448d6bb53c4de1592c42b5e726d4f5b8001d589e14299221c2fae53c8270b`. Baseline is the preserved candidate 6 manifest `deb00b97ca3e29e314a13225678c7e6827de59a0f8ff68d5d3bdccc7d3563458`.
+
+Both BASE and NEAR contain 108 target triangles. Independent Shapely checks recover seven 0.12 m square support footprints, 0.45 m end insets and approximately 4.810002 m spacing. Every exported face lies inside the approved slab, beam or support prism. The authored slab underside is 2.044 m and beam underside 1.944 m. These are virtual dimensions. The municipal footprint supplies the authored roof outline; it is not an independently surveyed roof plan. The exported top remains 2.124 m within float32 precision, and the original two top-face records retain exact attributes, material and transformation.
+
+The roof boundary differs from the retained display polygon by at most 0.000007081 m. Its display polygon already differs from the projected municipal outline by at most 0.000386063 m. The full outline remains 1.631825 m clear of the canonical simulation corridor. Canonical scene and geography hashes remain unchanged.
+
+Of 74 sections, 67 retain identical container bytes. The remaining seven pass exact comparison of 357 unrelated source groups using oriented triangles, complete decoded attributes, full material definitions and world transformations. Existing floating source indices are rounded only for grouping within 0.001; their original values remain part of the exact comparison. All shared images, source ledgers, lighting and unrelated feature provenance remain identical. All 148 declared gzip resources decode to the manifest's exact original bytes.
+
+The new output contains 344 files, of which 310 are byte-identical to candidate 6. The earlier `startup-audit.json` and `river-package-audit.json` remain with their original candidates; their omission is recorded explicitly. The new art startup report resides outside runtime assets. This audit establishes bounded geometry and provenance preservation. Actual browser appearance remains a separate acceptance check.
+
+Reproduce from the repository root with the pinned art toolkit and Python dependencies:
+
+```bash
+PYTHONPATH=artifacts/site-tools-python \
+node experience/evidence/neighborhood-20261023/world/platform-context/audit-open-export.mjs \
+  artifacts/neighborhood-20261023/candidate-6/assets/neighborhoods/shijo-east \
+  artifacts/neighborhood-20261023/art/platform-open-transport \
+  artifacts/neighborhood-20261023/world/platform-open-audit
+```
+
+The [Node audit](audit-open-export.mjs) uses glTF-Transform 4.5.1 and meshoptimizer 1.3.0 to decode actual artifacts. It invokes the [independent geometry check](audit-open-form.py), using Shapely 2.2.0. Extracted target triangles remain ignored; the portable report retains their hashes and measured results. Runtime artifacts are read-only throughout this command.

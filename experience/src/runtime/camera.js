@@ -3,7 +3,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { getPack, DEFAULT_PACK_ID } from '../packs/registry.js';
 import { CAMERA_DEFAULTS, CAMERA_LIMITS, normalizeCameraPose } from './view-state.js';
 import { normalizeExplorationCamera } from './exploration-state.js';
-import { pointerOperation, pointerMotionChangesCamera } from './camera-input.js';
+import { pointerOperation, pointerMotionChangesCamera, touchPanChangesTarget } from './camera-input.js';
 
 export { CAMERA_DEFAULTS };
 export const toScene = (x, north, height = 0) => new THREE.Vector3(x, height, -north);
@@ -26,9 +26,9 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
   let frontage = initialFrontage(initial);
   let base = frontage === 'south' ? Math.PI : 0;
   let aimOffset = null, transition = null, inspecting = false;
-  let inspectionAimed = false, interacting = false, gestureAdopted = false, adopting = false;
+  let inspectionAimed = false, inspectionPanned = false, interacting = false, gestureAdopted = false, adopting = false;
   const pointerSamples = new Map();
-  let lastPointerId, gestureOperation = null;
+  let lastPointerId, gestureOperation = null, touchPanStart = null, touchPanLatest = null;
   let currentState = { x: initial.x, y: initial.y, height: initial.height };
   const controls = new OrbitControls(camera, canvas);
   controls.enablePan = false;
@@ -43,12 +43,17 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
   setAzimuthBounds();
   [controls.minPolarAngle, controls.maxPolarAngle] = limits.polar;
   [controls.minDistance, controls.maxDistance] = limits.distance;
+  function commitInspectionPan() {
+    if (inspecting && touchPanChangesTarget(controls, gestureOperation, touchPanStart, touchPanLatest)) inspectionPanned = true;
+  }
   function synchronizeCamera(deltaMs = 0) {
+    // 同一次触摸更新会依次发送两根手指；绘制前合并中点，区分缩放与主动平移。
+    if (deltaMs > 0) commitInspectionPan();
     if (viewCamera === camera) return false;
     const previousPosition = viewCamera.position.clone(), previousRotation = viewCamera.quaternion.clone();
     camera.updateMatrixWorld(); viewCamera.copy(camera);
     obstruction = obstructionResolver?.(camera, controls.target, currentState, {
-      preserveActorFrame: !inspecting || !inspectionAimed, minimumSceneDistance: limits.distance[0], deltaMs, reducedMotion }) ?? null;
+      preserveActorFrame: !inspecting || !inspectionPanned, minimumSceneDistance: limits.distance[0], deltaMs, reducedMotion }) ?? null;
     if (obstruction) {
       viewCamera.position.copy(obstruction.position); viewCamera.lookAt(obstruction.target);
       viewCamera.updateMatrixWorld();
@@ -71,8 +76,12 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
     }
     emitChange();
   };
-  function beginCameraInput() {
-    if (inspecting) inspectionAimed = true;
+  function beginCameraInput(operation) {
+    if (inspecting) {
+      inspectionAimed = true;
+      // 平移明确改变观察目标；绕转、俯仰和缩放继续保留人物与街道构图。
+      if (operation === 'pan') inspectionPanned = true;
+    }
     if (viewCamera === camera || !obstruction || (!obstruction.active && !obstruction.settling)) return;
     if (transition) {
       const enabled = transition.enabled; transition = null; controls.enabled = enabled; setAzimuthBounds();
@@ -91,8 +100,12 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
   const interactionStarted = () => {
     interacting = true; gestureAdopted = false;
     gestureOperation = pointerOperation(controls, pointerSamples.get(lastPointerId) ?? pointerSamples.values().next().value, pointerSamples.size);
+    touchPanStart = gestureOperation === 'dolly-pan' ? [...pointerSamples.values()] : null;
+    touchPanLatest = touchPanStart;
   };
-  const interactionEnded = () => { interacting = false; gestureAdopted = false; gestureOperation = null; };
+  const interactionEnded = () => {
+    interacting = false; gestureAdopted = false; gestureOperation = null; touchPanStart = null; touchPanLatest = null;
+  };
   const pointerStarted = event => {
     if (!controls.enabled || pointerSamples.has(event.pointerId)) return;
     lastPointerId = event.pointerId;
@@ -100,21 +113,25 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
       modified: event.ctrlKey || event.metaKey || event.shiftKey,
       x: event.pointerType === 'touch' ? event.pageX : event.clientX,
       y: event.pointerType === 'touch' ? event.pageY : event.clientY });
-    if (event.pointerType === 'touch' && pointerSamples.size > 2) gestureOperation = null;
+    if (event.pointerType === 'touch' && pointerSamples.size > 2) {
+      gestureOperation = null; touchPanStart = null; touchPanLatest = null;
+    }
   };
   const pointerMoved = event => {
     const previous = pointerSamples.get(event.pointerId);
-    if (!previous) return;
+    if (!previous || !controls.enabled) return;
     const next = { ...previous, x: event.pointerType === 'touch' ? event.pageX : event.clientX,
       y: event.pointerType === 'touch' ? event.pageY : event.clientY };
     pointerSamples.set(event.pointerId, next);
     const other = [...pointerSamples].find(([id]) => id !== event.pointerId)?.[1];
-    if (!interacting || gestureAdopted || !pointerMotionChangesCamera(controls, gestureOperation, previous, next, other)) return;
-    gestureAdopted = true; beginCameraInput();
+    if (!interacting || !pointerMotionChangesCamera(controls, gestureOperation, previous, next, other)) return;
+    if (gestureOperation === 'dolly-pan') touchPanLatest = [...pointerSamples.values()];
+    if (gestureAdopted) return;
+    gestureAdopted = true; beginCameraInput(gestureOperation);
   };
-  const pointerEnded = event => { pointerSamples.delete(event.pointerId); };
+  const pointerEnded = event => { commitInspectionPan(); pointerSamples.delete(event.pointerId); };
   const wheelMoved = event => {
-    if (controls.enabled && controls.enableZoom && (!interacting || gestureOperation === null) && event.deltaY !== 0) beginCameraInput();
+    if (controls.enabled && controls.enableZoom && (!interacting || gestureOperation === null) && event.deltaY !== 0) beginCameraInput('zoom');
   };
   controls.addEventListener('change', changed);
   controls.addEventListener('start', interactionStarted);
@@ -141,7 +158,7 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
     camera.updateMatrixWorld(); emitChange();
   }
   function reset(state = initial) {
-    inspectionAimed = false;
+    inspectionAimed = false; inspectionPanned = false;
     currentState = { x: state.x, y: state.y, height: state.height };
     finishTransition(); aimOffset = defaults.targetOffset ? { ...defaults.targetOffset } : null;
     frontage = initialFrontage(state);
@@ -152,7 +169,7 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
   function restorePose(value, state, animate = false, following = false) {
     const next = solo ? normalizeExplorationCamera(value, limits) : normalizeCameraPose(value);
     if (!next) return false;
-    inspectionAimed = inspecting && !following;
+    inspectionAimed = inspecting && !following; inspectionPanned = inspectionAimed;
     currentState = { x: state.x, y: state.y, height: state.height };
     const fromTarget = controls.target.clone(), fromPosition = camera.position.clone();
     const wasEnabled = transition?.enabled ?? controls.enabled;
@@ -211,7 +228,7 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
     setInspecting(value) {
       const leaving = inspecting && !value;
       const next = solo && Boolean(value);
-      if (next !== inspecting) inspectionAimed = false;
+      if (next !== inspecting) { inspectionAimed = false; inspectionPanned = false; }
       inspecting = next; controls.enablePan = inspecting;
       if (leaving && pack.camera.preserveFramingOnWalk) resumeFollow();
     },
@@ -264,18 +281,18 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
       pose(current.azimuth, current.polar, current.distance);
       controls.enabled = value;
     },
-    rotate(delta) { beginCameraInput(); pose(unwrap(controls.getAzimuthalAngle()) + delta, controls.getPolarAngle(), controls.getDistance()); },
-    tilt(delta) { beginCameraInput(); pose(controls.getAzimuthalAngle(), controls.getPolarAngle() + delta, controls.getDistance()); },
+    rotate(delta) { if (delta === 0) return; beginCameraInput('rotate'); pose(unwrap(controls.getAzimuthalAngle()) + delta, controls.getPolarAngle(), controls.getDistance()); },
+    tilt(delta) { if (delta === 0) return; beginCameraInput('tilt'); pose(controls.getAzimuthalAngle(), controls.getPolarAngle() + delta, controls.getDistance()); },
     pan(right, up) {
-      if (!solo || !inspecting) return;
-      beginCameraInput();
+      if (!solo || !inspecting || right === 0 && up === 0) return;
+      beginCameraInput('pan');
       camera.updateMatrixWorld();
       const delta = new THREE.Vector3().setFromMatrixColumn(camera.matrixWorld, 0).multiplyScalar(right)
         .add(new THREE.Vector3().setFromMatrixColumn(camera.matrixWorld, 1).multiplyScalar(up));
       controls.target.add(delta); camera.position.add(delta);
       changed(); controls.update();
     },
-    zoom(delta) { beginCameraInput(); pose(controls.getAzimuthalAngle(), controls.getPolarAngle(), controls.getDistance() + delta); },
+    zoom(delta) { if (delta === 0) return; beginCameraInput('zoom'); pose(controls.getAzimuthalAngle(), controls.getPolarAngle(), controls.getDistance() + delta); },
     resize(width, height) { camera.aspect = width / height; camera.updateProjectionMatrix(); emitChange(); },
     project(x, north, height, width, viewportHeight) {
       const projected = toScene(x, north, height).project(viewCamera);
@@ -296,7 +313,7 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
         azimuth: controls.getAzimuthalAngle(), polar: controls.getPolarAngle(), distance: controls.getDistance(),
         frontage, azimuthBase: base, relativeAzimuth: unwrap(controls.getAzimuthalAngle()) - base,
         enabled: controls.enabled, damping: controls.enableDamping, transitioning: Boolean(transition),
-        solo, inspecting, inspectionAimed, panning: controls.enablePan,
+        solo, inspecting, inspectionAimed, inspectionPanned, panning: controls.enablePan,
         projectionMatrix: viewCamera.projectionMatrix.toArray(), matrixWorld: viewCamera.matrixWorld.toArray(),
         limits: structuredClone(limits) };
     },

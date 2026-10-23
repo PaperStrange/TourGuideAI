@@ -1,0 +1,6392 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-23",
+  "packageManifestSha256": "ca4b3c95bc2a6b94ad2cc978a083d1e3c3c109d65febce326a5e16e937dc271b",
+  "neighborhood": {
+    "id": "shijo-east",
+    "revision": 1,
+    "geographySha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
+    "manifestSha256": "deb00b97ca3e29e314a13225678c7e6827de59a0f8ff68d5d3bdccc7d3563458"
+  },
+  "driverSha256": "e85bf0afea632984bc2a8dcdae3d30eaf89f098b7cd726e1c000f6b9e034a3fd",
+  "browserReport": {
+    "file": "../../qa/candidate-6-visual-review/neighborhood-result.json.gz",
+    "decodedSha256": "897b1ceaf5a4ec1f9305704423b141397e049ba4b1a032acd07d998ccaef230b",
+    "summary": {
+      "passed": 58,
+      "failed": 1
+    }
+  },
+  "conditions": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "reducedMotion": "no-preference",
+    "timeoutMs": 120000,
+    "walkingTimeoutMs": 2400000,
+    "sections": [
+      "visual-review"
+    ],
+    "assetDelivery": "Actual loopback HTTP with immutable captured build bodies and no-store; only deliberate abort/delay scenarios install request routes."
+  },
+  "captures": [
+    {
+      "file": "nishiki-tenmangu-review-day-canvas.png",
+      "bytes": 618746,
+      "sha256": "0a779aa1b5a361ea68a06afb259d901823ce9dc072a049dfbc6055fcf85a1bbf",
+      "mode": "day",
+      "scenarioId": "nishiki-tenmangu-visual-review",
+      "restoration": {
+        "sourceReportSha256": "5a5c9f94960fb3212ed01f9a5d606034f267de1e3c5ffa82e3748f75052a9cfd",
+        "sourcePackageSha256": "809a90dbabae9becc384e67f006275ca6b27f107f74c81f28f916c595601fb9e",
+        "sourceScreenshot": "outbound-nishiki-tenmangu-day.png",
+        "sourcePosition": {
+          "edgeId": "osm:way:66703316:434344433:5204263033",
+          "edgeDistance": 0,
+          "height": 0,
+          "x": 681.467,
+          "y": 142.004
+        },
+        "view": {
+          "version": 3,
+          "packId": "shijo-east",
+          "revision": 1,
+          "player": {
+            "edgeId": "osm:way:66703316:434344433:5204263033",
+            "edgeDistance": 0,
+            "height": 0,
+            "x": 681.467,
+            "y": 142.004
+          },
+          "camera": {
+            "azimuth": 0.22,
+            "polar": 1.1,
+            "distance": 22,
+            "targetOffset": {
+              "x": 1.199832,
+              "y": -2.199994,
+              "height": 1.6
+            }
+          }
+        },
+        "framing": "Recorded camera intent; subsequent native west-facing adjustment is recorded separately.",
+        "purpose": "Recorded approach, roof clearance and west-side torii",
+        "description": "Previously walked position restored through a public journey session and production entry. This visual review does not repeat the full traversal."
+      },
+      "layout": {
+        "scrollX": 0,
+        "scrollY": 292,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentHeight": 2608,
+        "visualColumn": {
+          "x": 48,
+          "y": 209.796875,
+          "width": 992,
+          "height": 976.28125,
+          "top": 209.796875,
+          "right": 1040,
+          "bottom": 1186.078125,
+          "left": 48
+        },
+        "canvas": {
+          "x": 49,
+          "y": 282.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 282.796875,
+          "right": 1039,
+          "bottom": 999.625,
+          "left": 49
+        },
+        "camera": {
+          "position": [
+            685.3506467327895,
+            1.6528488991006747,
+            -145.10426549663993
+          ],
+          "target": [
+            682.667,
+            1.5999999999999999,
+            -139.804
+          ],
+          "desiredPosition": [
+            687.6238935492374,
+            2.1528488991006745,
+            -139.452482665731
+          ],
+          "viewTarget": [
+            681.467,
+            1.1,
+            -142.004
+          ],
+          "obstruction": {
+            "active": true,
+            "desiredDistance": 4.999999999999983,
+            "actualDistance": 4.999999999999983,
+            "targetAdjusted": false,
+            "framingRecovered": true,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.38693118772049506,
+            "recoveryFits": true,
+            "minimumSceneDistance": 4.999999999999983,
+            "clearance": 0.35,
+            "angleOffset": 0.7444920090538312,
+            "settling": false
+          },
+          "azimuth": 1.4999999999999976,
+          "polar": 1.4599999999999342,
+          "distance": 4.999999999999983,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": 1.4999999999999976,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            -0.6238784955379226,
+            -6.938893903907228e-18,
+            -0.7815213514711792,
+            0,
+            -0.08641264375690291,
+            0.9938683634116375,
+            0.06898210788614541,
+            0,
+            0.7767293465579119,
+            0.11056977982013537,
+            -0.6200530993279898,
+            0,
+            685.3506467327895,
+            1.6528488991006747,
+            -145.10426549663993,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        }
+      },
+      "savedView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:66703316:434344433:5204263033",
+          "edgeDistance": 0,
+          "height": 0,
+          "x": 681.467,
+          "y": 142.004
+        },
+        "camera": {
+          "azimuth": 1.5,
+          "polar": 1.46,
+          "distance": 5,
+          "targetOffset": {
+            "x": 1.2,
+            "y": -2.2,
+            "height": 1.6
+          }
+        }
+      },
+      "player": {
+        "x": 681.467,
+        "y": 142.004,
+        "height": 0,
+        "edgeId": "osm:way:66703316:434344433:5204263033",
+        "edgeDistance": 0
+      },
+      "actualCamera": {
+        "position": [
+          685.3506467327895,
+          1.652848899100677,
+          -145.10426549663993
+        ],
+        "target": [
+          682.667,
+          1.5999999999999999,
+          -139.804
+        ],
+        "desiredPosition": [
+          687.6238935492374,
+          2.1528488991006767,
+          -139.452482665731
+        ],
+        "viewTarget": [
+          681.467,
+          1.1,
+          -142.004
+        ],
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 4.999999999999983,
+          "actualDistance": 4.999999999999983,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.3869311877205005,
+          "recoveryFits": true,
+          "minimumSceneDistance": 4.999999999999983,
+          "clearance": 0.35,
+          "angleOffset": 0.7444920090538312,
+          "settling": false
+        },
+        "azimuth": 1.4999999999999976,
+        "polar": 1.4599999999999338,
+        "distance": 4.999999999999983,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": 1.4999999999999976,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          -0.6238784955379229,
+          -6.938893903907228e-18,
+          -0.7815213514711792,
+          0,
+          -0.08641264375690325,
+          0.9938683634116374,
+          0.06898210788614569,
+          0,
+          0.7767293465579119,
+          0.11056977982013581,
+          -0.6200530993279898,
+          0,
+          685.3506467327895,
+          1.652848899100677,
+          -145.10426549663993,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "ground": {
+        "x": 681.467,
+        "y": 142.004,
+        "height": 0,
+        "hit": {
+          "height": 0,
+          "surfaceId": "shijo-east-ground",
+          "sourceIndex": 1049,
+          "sourceId": "shijo-east:walkable"
+        },
+        "inside": true
+      },
+      "lighting": {
+        "mode": "day",
+        "phase": "ready",
+        "rig": {
+          "status": "ready",
+          "sha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "expectedSha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "profile": null
+        },
+        "environment": {
+          "file": "/assets/neighborhoods/shijo-east/shared/environments/day-512.hdr",
+          "sha256": "efb72f542365dfdc25d2f9ed20983b34e74fd33f90d55b8763813f4d6dd35717"
+        },
+        "exposure": 1.05,
+        "environmentIntensity": 0.65
+      },
+      "screenshotRenderTotals": {
+        "frame": 189,
+        "calls": 76,
+        "triangles": 69626,
+        "points": 0,
+        "lines": 0
+      },
+      "primaryFrame": {
+        "checkId": "nishiki-tenmangu-visual-day-cached-shadow-primary-frame-budget",
+        "calls": 76,
+        "triangles": 69626,
+        "shadowUpdatesBefore": 32,
+        "shadowUpdatesAfter": 32,
+        "renderedFramesBefore": 104,
+        "renderedFramesAfter": 119
+      }
+    },
+    {
+      "file": "nishiki-tenmangu-review-night-canvas.png",
+      "bytes": 635447,
+      "sha256": "e091e7b9f620adcd84b3727e41a65eafaac327412bb8346f6e1667ff809f66de",
+      "mode": "night",
+      "scenarioId": "nishiki-tenmangu-visual-review",
+      "restoration": {
+        "sourceReportSha256": "5a5c9f94960fb3212ed01f9a5d606034f267de1e3c5ffa82e3748f75052a9cfd",
+        "sourcePackageSha256": "809a90dbabae9becc384e67f006275ca6b27f107f74c81f28f916c595601fb9e",
+        "sourceScreenshot": "outbound-nishiki-tenmangu-day.png",
+        "sourcePosition": {
+          "edgeId": "osm:way:66703316:434344433:5204263033",
+          "edgeDistance": 0,
+          "height": 0,
+          "x": 681.467,
+          "y": 142.004
+        },
+        "view": {
+          "version": 3,
+          "packId": "shijo-east",
+          "revision": 1,
+          "player": {
+            "edgeId": "osm:way:66703316:434344433:5204263033",
+            "edgeDistance": 0,
+            "height": 0,
+            "x": 681.467,
+            "y": 142.004
+          },
+          "camera": {
+            "azimuth": 0.22,
+            "polar": 1.1,
+            "distance": 22,
+            "targetOffset": {
+              "x": 1.199832,
+              "y": -2.199994,
+              "height": 1.6
+            }
+          }
+        },
+        "framing": "Recorded camera intent; subsequent native west-facing adjustment is recorded separately.",
+        "purpose": "Recorded approach, roof clearance and west-side torii",
+        "description": "Previously walked position restored through a public journey session and production entry. This visual review does not repeat the full traversal."
+      },
+      "layout": {
+        "scrollX": 0,
+        "scrollY": 292,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentHeight": 2608,
+        "visualColumn": {
+          "x": 48,
+          "y": 209.796875,
+          "width": 992,
+          "height": 976.28125,
+          "top": 209.796875,
+          "right": 1040,
+          "bottom": 1186.078125,
+          "left": 48
+        },
+        "canvas": {
+          "x": 49,
+          "y": 282.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 282.796875,
+          "right": 1039,
+          "bottom": 999.625,
+          "left": 49
+        },
+        "camera": {
+          "position": [
+            685.3506467327895,
+            1.6528488991007715,
+            -145.10426549663993
+          ],
+          "target": [
+            682.667,
+            1.5999999999999999,
+            -139.804
+          ],
+          "desiredPosition": [
+            687.6238935492374,
+            2.1528488991007713,
+            -139.452482665731
+          ],
+          "viewTarget": [
+            681.467,
+            1.1,
+            -142.004
+          ],
+          "obstruction": {
+            "active": true,
+            "desiredDistance": 4.999999999999994,
+            "actualDistance": 4.999999999999994,
+            "targetAdjusted": false,
+            "framingRecovered": true,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.38693118772049195,
+            "recoveryFits": true,
+            "minimumSceneDistance": 4.999999999999994,
+            "clearance": 0.35,
+            "angleOffset": 0.7444920090538312,
+            "settling": false
+          },
+          "azimuth": 1.4999999999999976,
+          "polar": 1.4599999999999147,
+          "distance": 4.999999999999994,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": 1.4999999999999976,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            -0.6238784955379224,
+            6.938893903907228e-18,
+            -0.7815213514711793,
+            0,
+            -0.0864126437569179,
+            0.9938683634116354,
+            0.06898210788615734,
+            0,
+            0.7767293465579105,
+            0.11056977982015452,
+            -0.6200530993279882,
+            0,
+            685.3506467327895,
+            1.6528488991007715,
+            -145.10426549663993,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        }
+      },
+      "savedView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:66703316:434344433:5204263033",
+          "edgeDistance": 0,
+          "height": 0,
+          "x": 681.467,
+          "y": 142.004
+        },
+        "camera": {
+          "azimuth": 1.5,
+          "polar": 1.46,
+          "distance": 5,
+          "targetOffset": {
+            "x": 1.2,
+            "y": -2.2,
+            "height": 1.6
+          }
+        }
+      },
+      "player": {
+        "x": 681.467,
+        "y": 142.004,
+        "height": 0,
+        "edgeId": "osm:way:66703316:434344433:5204263033",
+        "edgeDistance": 0
+      },
+      "actualCamera": {
+        "position": [
+          685.3506467327895,
+          1.6528488991007715,
+          -145.10426549663993
+        ],
+        "target": [
+          682.667,
+          1.5999999999999999,
+          -139.804
+        ],
+        "desiredPosition": [
+          687.6238935492374,
+          2.1528488991007713,
+          -139.452482665731
+        ],
+        "viewTarget": [
+          681.467,
+          1.1,
+          -142.004
+        ],
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 4.999999999999994,
+          "actualDistance": 4.999999999999994,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.38693118772049195,
+          "recoveryFits": true,
+          "minimumSceneDistance": 4.999999999999994,
+          "clearance": 0.35,
+          "angleOffset": 0.7444920090538312,
+          "settling": false
+        },
+        "azimuth": 1.4999999999999976,
+        "polar": 1.4599999999999147,
+        "distance": 4.999999999999994,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": 1.4999999999999976,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          -0.6238784955379224,
+          6.938893903907228e-18,
+          -0.7815213514711793,
+          0,
+          -0.0864126437569179,
+          0.9938683634116354,
+          0.06898210788615734,
+          0,
+          0.7767293465579105,
+          0.11056977982015452,
+          -0.6200530993279882,
+          0,
+          685.3506467327895,
+          1.6528488991007715,
+          -145.10426549663993,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "ground": {
+        "x": 681.467,
+        "y": 142.004,
+        "height": 0,
+        "hit": {
+          "height": 0,
+          "surfaceId": "shijo-east-ground",
+          "sourceIndex": 1049,
+          "sourceId": "shijo-east:walkable"
+        },
+        "inside": true
+      },
+      "lighting": {
+        "mode": "night",
+        "phase": "ready",
+        "rig": {
+          "status": "ready",
+          "sha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "expectedSha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "profile": null
+        },
+        "environment": {
+          "file": "/assets/neighborhoods/shijo-east/shared/environments/night-512.hdr",
+          "sha256": "b3a82ca4a2dcb3cf429b5f7b57f75877296fbc3d60b6a2ed2419be7f8971f41f"
+        },
+        "exposure": 1.18,
+        "environmentIntensity": 0.085
+      },
+      "screenshotRenderTotals": {
+        "frame": 286,
+        "calls": 76,
+        "triangles": 69626,
+        "points": 0,
+        "lines": 0
+      },
+      "primaryFrame": {
+        "checkId": "nishiki-tenmangu-visual-night-cached-shadow-primary-frame-budget",
+        "calls": 76,
+        "triangles": 69626,
+        "shadowUpdatesBefore": 33,
+        "shadowUpdatesAfter": 33,
+        "renderedFramesBefore": 185,
+        "renderedFramesAfter": 197
+      }
+    },
+    {
+      "file": "connector-e001-n000-review-day-canvas.png",
+      "bytes": 771972,
+      "sha256": "2637987693c9d09af37e2aa66cc640040df2f40e31f58e5892503cccbebef617",
+      "mode": "day",
+      "scenarioId": "connector-e001-n000-visual-review",
+      "restoration": {
+        "sourceReportSha256": "5a5c9f94960fb3212ed01f9a5d606034f267de1e3c5ffa82e3748f75052a9cfd",
+        "sourcePackageSha256": "809a90dbabae9becc384e67f006275ca6b27f107f74c81f28f916c595601fb9e",
+        "pathIndex": 1,
+        "sampleIndex": 238,
+        "sourcePosition": {
+          "x": 174.862,
+          "y": 1.987,
+          "height": 0,
+          "edgeId": "osm:way:465066447:4600891662:4600891664",
+          "edgeDistance": 79.47458226097625
+        },
+        "nextSourcePosition": {
+          "x": 175.774,
+          "y": 1.999,
+          "height": 0,
+          "edgeId": "osm:way:465066447:4600891662:4600891664",
+          "edgeDistance": 78.5625033893159
+        },
+        "view": {
+          "version": 3,
+          "packId": "shijo-east",
+          "revision": 1,
+          "player": {
+            "x": 174.862,
+            "y": 1.987,
+            "height": 0,
+            "edgeId": "osm:way:465066447:4600891662:4600891664",
+            "edgeDistance": 79.47458226097625
+          },
+          "camera": {
+            "azimuth": -1.557639191322141,
+            "polar": 1.45,
+            "distance": 10,
+            "targetOffset": {
+              "x": 0,
+              "y": 0,
+              "height": 1.5
+            }
+          }
+        },
+        "framing": "New authored review camera: follows the actual next recorded movement direction, distance10m, polar1.45, target height1.5m. The prior sample supplies position and edge identity only.",
+        "purpose": "Shijo road, curb and frontage continuity",
+        "description": "Previously walked position restored through a public journey session and production entry. This visual review does not repeat the full traversal."
+      },
+      "layout": {
+        "scrollX": 0,
+        "scrollY": 292,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentHeight": 2608,
+        "visualColumn": {
+          "x": 48,
+          "y": 209.796875,
+          "width": 992,
+          "height": 976.28125,
+          "top": 209.796875,
+          "right": 1040,
+          "bottom": 1186.078125,
+          "left": 48
+        },
+        "canvas": {
+          "x": 49,
+          "y": 282.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 282.796875,
+          "right": 1039,
+          "bottom": 999.625,
+          "left": 49
+        },
+        "camera": {
+          "position": [
+            164.93572934600823,
+            2.7050276936736655,
+            -1.8563892761612206
+          ],
+          "target": [
+            174.862,
+            1.5,
+            -1.9870000000000005
+          ],
+          "desiredPosition": [
+            164.93572934600823,
+            2.7050276936736655,
+            -1.8563892761612206
+          ],
+          "viewTarget": [
+            174.862,
+            1.5,
+            -1.9870000000000005
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 10.000000000000012,
+            "actualDistance": 10.000000000000012,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.1922113316796356,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": -1.557639,
+          "polar": 1.4500000000000002,
+          "distance": 10.000000000000012,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": -1.557639,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            0.01315694717586613,
+            2.7755575615628914e-17,
+            0.9999134436245026,
+            0,
+            0.12049233908441259,
+            0.9927129910375885,
+            -0.0015854485711120359,
+            0,
+            -0.9926270653991752,
+            0.12050276936736642,
+            0.013061072383877548,
+            0,
+            164.93572934600823,
+            2.7050276936736655,
+            -1.8563892761612206,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        }
+      },
+      "savedView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:465066447:4600891662:4600891664",
+          "edgeDistance": 79.474582,
+          "height": 0,
+          "x": 174.862,
+          "y": 1.987
+        },
+        "camera": {
+          "azimuth": -1.557639,
+          "polar": 1.45,
+          "distance": 10,
+          "targetOffset": {
+            "x": 0,
+            "y": 0,
+            "height": 1.5
+          }
+        }
+      },
+      "player": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "actualCamera": {
+        "position": [
+          164.93572934600823,
+          2.7050276936736655,
+          -1.8563892761612206
+        ],
+        "target": [
+          174.862,
+          1.5,
+          -1.9870000000000005
+        ],
+        "desiredPosition": [
+          164.93572934600823,
+          2.7050276936736655,
+          -1.8563892761612206
+        ],
+        "viewTarget": [
+          174.862,
+          1.5,
+          -1.9870000000000005
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 10.000000000000012,
+          "actualDistance": 10.000000000000012,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.1922113316796356,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": -1.557639,
+        "polar": 1.4500000000000002,
+        "distance": 10.000000000000012,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": -1.557639,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.01315694717586613,
+          2.7755575615628914e-17,
+          0.9999134436245026,
+          0,
+          0.12049233908441259,
+          0.9927129910375885,
+          -0.0015854485711120359,
+          0,
+          -0.9926270653991752,
+          0.12050276936736642,
+          0.013061072383877548,
+          0,
+          164.93572934600823,
+          2.7050276936736655,
+          -1.8563892761612206,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "ground": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "hit": {
+          "height": 0,
+          "surfaceId": "shijo-east-ground",
+          "sourceIndex": 1049,
+          "sourceId": "shijo-east:walkable"
+        },
+        "inside": true
+      },
+      "lighting": {
+        "mode": "day",
+        "phase": "ready",
+        "rig": {
+          "status": "ready",
+          "sha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "expectedSha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "profile": null
+        },
+        "environment": {
+          "file": "/assets/neighborhoods/shijo-east/shared/environments/day-512.hdr",
+          "sha256": "efb72f542365dfdc25d2f9ed20983b34e74fd33f90d55b8763813f4d6dd35717"
+        },
+        "exposure": 1.05,
+        "environmentIntensity": 0.65
+      },
+      "screenshotRenderTotals": {
+        "frame": 48,
+        "calls": 57,
+        "triangles": 96617,
+        "points": 0,
+        "lines": 0
+      },
+      "primaryFrame": {
+        "checkId": "connector-e001-n000-visual-day-cached-shadow-primary-frame-budget",
+        "calls": 57,
+        "triangles": 96617,
+        "shadowUpdatesBefore": 19,
+        "shadowUpdatesAfter": 19,
+        "renderedFramesBefore": 28,
+        "renderedFramesAfter": 29
+      }
+    },
+    {
+      "file": "connector-e001-n000-review-night-canvas.png",
+      "bytes": 633664,
+      "sha256": "cc4589af5ff383a49065ad91cd9f6d77bfec3c007ee8d750f18cfbde8dc67875",
+      "mode": "night",
+      "scenarioId": "connector-e001-n000-visual-review",
+      "restoration": {
+        "sourceReportSha256": "5a5c9f94960fb3212ed01f9a5d606034f267de1e3c5ffa82e3748f75052a9cfd",
+        "sourcePackageSha256": "809a90dbabae9becc384e67f006275ca6b27f107f74c81f28f916c595601fb9e",
+        "pathIndex": 1,
+        "sampleIndex": 238,
+        "sourcePosition": {
+          "x": 174.862,
+          "y": 1.987,
+          "height": 0,
+          "edgeId": "osm:way:465066447:4600891662:4600891664",
+          "edgeDistance": 79.47458226097625
+        },
+        "nextSourcePosition": {
+          "x": 175.774,
+          "y": 1.999,
+          "height": 0,
+          "edgeId": "osm:way:465066447:4600891662:4600891664",
+          "edgeDistance": 78.5625033893159
+        },
+        "view": {
+          "version": 3,
+          "packId": "shijo-east",
+          "revision": 1,
+          "player": {
+            "x": 174.862,
+            "y": 1.987,
+            "height": 0,
+            "edgeId": "osm:way:465066447:4600891662:4600891664",
+            "edgeDistance": 79.47458226097625
+          },
+          "camera": {
+            "azimuth": -1.557639191322141,
+            "polar": 1.45,
+            "distance": 10,
+            "targetOffset": {
+              "x": 0,
+              "y": 0,
+              "height": 1.5
+            }
+          }
+        },
+        "framing": "New authored review camera: follows the actual next recorded movement direction, distance10m, polar1.45, target height1.5m. The prior sample supplies position and edge identity only.",
+        "purpose": "Shijo road, curb and frontage continuity",
+        "description": "Previously walked position restored through a public journey session and production entry. This visual review does not repeat the full traversal."
+      },
+      "layout": {
+        "scrollX": 0,
+        "scrollY": 292,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentHeight": 2608,
+        "visualColumn": {
+          "x": 48,
+          "y": 209.796875,
+          "width": 992,
+          "height": 976.28125,
+          "top": 209.796875,
+          "right": 1040,
+          "bottom": 1186.078125,
+          "left": 48
+        },
+        "canvas": {
+          "x": 49,
+          "y": 282.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 282.796875,
+          "right": 1039,
+          "bottom": 999.625,
+          "left": 49
+        },
+        "camera": {
+          "position": [
+            164.93572934600823,
+            2.7050276936736655,
+            -1.8563892761612206
+          ],
+          "target": [
+            174.862,
+            1.5,
+            -1.9870000000000005
+          ],
+          "desiredPosition": [
+            164.93572934600823,
+            2.7050276936736655,
+            -1.8563892761612206
+          ],
+          "viewTarget": [
+            174.862,
+            1.5,
+            -1.9870000000000005
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 10.000000000000012,
+            "actualDistance": 10.000000000000012,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.1922113316796356,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": -1.557639,
+          "polar": 1.4500000000000002,
+          "distance": 10.000000000000012,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": -1.557639,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            0.01315694717586613,
+            2.7755575615628914e-17,
+            0.9999134436245026,
+            0,
+            0.12049233908441259,
+            0.9927129910375885,
+            -0.0015854485711120359,
+            0,
+            -0.9926270653991752,
+            0.12050276936736642,
+            0.013061072383877548,
+            0,
+            164.93572934600823,
+            2.7050276936736655,
+            -1.8563892761612206,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        }
+      },
+      "savedView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:465066447:4600891662:4600891664",
+          "edgeDistance": 79.474582,
+          "height": 0,
+          "x": 174.862,
+          "y": 1.987
+        },
+        "camera": {
+          "azimuth": -1.557639,
+          "polar": 1.45,
+          "distance": 10,
+          "targetOffset": {
+            "x": 0,
+            "y": 0,
+            "height": 1.5
+          }
+        }
+      },
+      "player": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "actualCamera": {
+        "position": [
+          164.93572934600823,
+          2.7050276936736655,
+          -1.8563892761612206
+        ],
+        "target": [
+          174.862,
+          1.5,
+          -1.9870000000000005
+        ],
+        "desiredPosition": [
+          164.93572934600823,
+          2.7050276936736655,
+          -1.8563892761612206
+        ],
+        "viewTarget": [
+          174.862,
+          1.5,
+          -1.9870000000000005
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 10.000000000000012,
+          "actualDistance": 10.000000000000012,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.1922113316796356,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": -1.557639,
+        "polar": 1.4500000000000002,
+        "distance": 10.000000000000012,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": -1.557639,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.01315694717586613,
+          2.7755575615628914e-17,
+          0.9999134436245026,
+          0,
+          0.12049233908441259,
+          0.9927129910375885,
+          -0.0015854485711120359,
+          0,
+          -0.9926270653991752,
+          0.12050276936736642,
+          0.013061072383877548,
+          0,
+          164.93572934600823,
+          2.7050276936736655,
+          -1.8563892761612206,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "ground": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "hit": {
+          "height": 0,
+          "surfaceId": "shijo-east-ground",
+          "sourceIndex": 1049,
+          "sourceId": "shijo-east:walkable"
+        },
+        "inside": true
+      },
+      "lighting": {
+        "mode": "night",
+        "phase": "ready",
+        "rig": {
+          "status": "ready",
+          "sha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "expectedSha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "profile": null
+        },
+        "environment": {
+          "file": "/assets/neighborhoods/shijo-east/shared/environments/night-512.hdr",
+          "sha256": "b3a82ca4a2dcb3cf429b5f7b57f75877296fbc3d60b6a2ed2419be7f8971f41f"
+        },
+        "exposure": 1.18,
+        "environmentIntensity": 0.085
+      },
+      "screenshotRenderTotals": {
+        "frame": 69,
+        "calls": 57,
+        "triangles": 96617,
+        "points": 0,
+        "lines": 0
+      },
+      "primaryFrame": {
+        "checkId": "connector-e001-n000-visual-night-cached-shadow-primary-frame-budget",
+        "calls": 57,
+        "triangles": 96617,
+        "shadowUpdatesBefore": 20,
+        "shadowUpdatesAfter": 20,
+        "renderedFramesBefore": 30,
+        "renderedFramesAfter": 31
+      }
+    },
+    {
+      "file": "connector-e002-n000-review-day-canvas.png",
+      "bytes": 703608,
+      "sha256": "414e25f07219045f7e8a60ae11a25568a8d505c5db12b93054f809ddec549406",
+      "mode": "day",
+      "scenarioId": "connector-e002-n000-visual-review",
+      "restoration": {
+        "sourceReportSha256": "5a5c9f94960fb3212ed01f9a5d606034f267de1e3c5ffa82e3748f75052a9cfd",
+        "sourcePackageSha256": "809a90dbabae9becc384e67f006275ca6b27f107f74c81f28f916c595601fb9e",
+        "pathIndex": 1,
+        "sampleIndex": 465,
+        "sourcePosition": {
+          "x": 261.695,
+          "y": 69.736,
+          "height": 0,
+          "edgeId": "osm:way:1148700851:2971080719:4600871812",
+          "edgeDistance": 65.01389394395048
+        },
+        "nextSourcePosition": {
+          "x": 261.689,
+          "y": 70.648,
+          "height": 0,
+          "edgeId": "osm:way:1148700851:2971080719:4600871812",
+          "edgeDistance": 64.10187452851602
+        },
+        "view": {
+          "version": 3,
+          "packId": "shijo-east",
+          "revision": 1,
+          "player": {
+            "x": 261.695,
+            "y": 69.736,
+            "height": 0,
+            "edgeId": "osm:way:1148700851:2971080719:4600871812",
+            "edgeDistance": 65.01389394395048
+          },
+          "camera": {
+            "azimuth": 0.006578852452985628,
+            "polar": 1.45,
+            "distance": 10,
+            "targetOffset": {
+              "x": 0,
+              "y": 0,
+              "height": 1.5
+            }
+          }
+        },
+        "framing": "New authored review camera: follows the actual next recorded movement direction, distance10m, polar1.45, target height1.5m. The prior sample supplies position and edge identity only.",
+        "purpose": "Takakura narrow approach and camera clearance",
+        "description": "Previously walked position restored through a public journey session and production entry. This visual review does not repeat the full traversal."
+      },
+      "layout": {
+        "scrollX": 0,
+        "scrollY": 292,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentHeight": 2608,
+        "visualColumn": {
+          "x": 48,
+          "y": 209.796875,
+          "width": 992,
+          "height": 976.28125,
+          "top": 209.796875,
+          "right": 1040,
+          "bottom": 1186.078125,
+          "left": 48
+        },
+        "canvas": {
+          "x": 49,
+          "y": 282.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 282.796875,
+          "right": 1039,
+          "bottom": 999.625,
+          "left": 49
+        },
+        "camera": {
+          "position": [
+            261.7603101165391,
+            2.7050276936736664,
+            -59.80908492802738
+          ],
+          "target": [
+            261.695,
+            1.5,
+            -69.736
+          ],
+          "desiredPosition": [
+            261.7603101165391,
+            2.7050276936736664,
+            -59.80908492802738
+          ],
+          "viewTarget": [
+            261.695,
+            1.5,
+            -69.736
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 10.000000000000004,
+            "actualDistance": 10.000000000000004,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.19221133167963592,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": 0.006579000000001608,
+          "polar": 1.45,
+          "distance": 10.000000000000004,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": 0.006579000000001609,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            0.9999783584575598,
+            5.421010862427522e-20,
+            -0.006578952540030561,
+            0,
+            -0.0007927820006101535,
+            0.9927129910375885,
+            -0.12050016150156917,
+            0,
+            0.0065310116539080785,
+            0.12050276936736659,
+            0.9926915071972621,
+            0,
+            261.7603101165391,
+            2.7050276936736664,
+            -59.80908492802738,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        }
+      },
+      "savedView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:1148700851:2971080719:4600871812",
+          "edgeDistance": 65.013894,
+          "height": 0,
+          "x": 261.695,
+          "y": 69.736
+        },
+        "camera": {
+          "azimuth": 0.006579,
+          "polar": 1.45,
+          "distance": 10,
+          "targetOffset": {
+            "x": 0,
+            "y": 0,
+            "height": 1.5
+          }
+        }
+      },
+      "player": {
+        "x": 261.695,
+        "y": 69.736,
+        "height": 0,
+        "edgeId": "osm:way:1148700851:2971080719:4600871812",
+        "edgeDistance": 65.013894
+      },
+      "actualCamera": {
+        "position": [
+          261.7603101165391,
+          2.7050276936736664,
+          -59.80908492802738
+        ],
+        "target": [
+          261.695,
+          1.5,
+          -69.736
+        ],
+        "desiredPosition": [
+          261.7603101165391,
+          2.7050276936736664,
+          -59.80908492802738
+        ],
+        "viewTarget": [
+          261.695,
+          1.5,
+          -69.736
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 10.000000000000004,
+          "actualDistance": 10.000000000000004,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.19221133167963592,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": 0.006579000000001608,
+        "polar": 1.45,
+        "distance": 10.000000000000004,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": 0.006579000000001609,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.9999783584575598,
+          5.421010862427522e-20,
+          -0.006578952540030561,
+          0,
+          -0.0007927820006101535,
+          0.9927129910375885,
+          -0.12050016150156917,
+          0,
+          0.0065310116539080785,
+          0.12050276936736659,
+          0.9926915071972621,
+          0,
+          261.7603101165391,
+          2.7050276936736664,
+          -59.80908492802738,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "ground": {
+        "x": 261.695,
+        "y": 69.736,
+        "height": 0,
+        "hit": {
+          "height": 0,
+          "surfaceId": "shijo-east-ground",
+          "sourceIndex": 1049,
+          "sourceId": "shijo-east:walkable"
+        },
+        "inside": true
+      },
+      "lighting": {
+        "mode": "day",
+        "phase": "ready",
+        "rig": {
+          "status": "ready",
+          "sha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "expectedSha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "profile": null
+        },
+        "environment": {
+          "file": "/assets/neighborhoods/shijo-east/shared/environments/day-512.hdr",
+          "sha256": "efb72f542365dfdc25d2f9ed20983b34e74fd33f90d55b8763813f4d6dd35717"
+        },
+        "exposure": 1.05,
+        "environmentIntensity": 0.65
+      },
+      "screenshotRenderTotals": {
+        "frame": 46,
+        "calls": 65,
+        "triangles": 89201,
+        "points": 0,
+        "lines": 0
+      },
+      "primaryFrame": {
+        "checkId": "connector-e002-n000-visual-day-cached-shadow-primary-frame-budget",
+        "calls": 65,
+        "triangles": 89201,
+        "shadowUpdatesBefore": 19,
+        "shadowUpdatesAfter": 19,
+        "renderedFramesBefore": 26,
+        "renderedFramesAfter": 27
+      }
+    },
+    {
+      "file": "connector-e002-n000-review-night-canvas.png",
+      "bytes": 587061,
+      "sha256": "50fdb911a6c85a25e41d2aeb4f47c6246be1320ef035ee49b05bf317677f8e33",
+      "mode": "night",
+      "scenarioId": "connector-e002-n000-visual-review",
+      "restoration": {
+        "sourceReportSha256": "5a5c9f94960fb3212ed01f9a5d606034f267de1e3c5ffa82e3748f75052a9cfd",
+        "sourcePackageSha256": "809a90dbabae9becc384e67f006275ca6b27f107f74c81f28f916c595601fb9e",
+        "pathIndex": 1,
+        "sampleIndex": 465,
+        "sourcePosition": {
+          "x": 261.695,
+          "y": 69.736,
+          "height": 0,
+          "edgeId": "osm:way:1148700851:2971080719:4600871812",
+          "edgeDistance": 65.01389394395048
+        },
+        "nextSourcePosition": {
+          "x": 261.689,
+          "y": 70.648,
+          "height": 0,
+          "edgeId": "osm:way:1148700851:2971080719:4600871812",
+          "edgeDistance": 64.10187452851602
+        },
+        "view": {
+          "version": 3,
+          "packId": "shijo-east",
+          "revision": 1,
+          "player": {
+            "x": 261.695,
+            "y": 69.736,
+            "height": 0,
+            "edgeId": "osm:way:1148700851:2971080719:4600871812",
+            "edgeDistance": 65.01389394395048
+          },
+          "camera": {
+            "azimuth": 0.006578852452985628,
+            "polar": 1.45,
+            "distance": 10,
+            "targetOffset": {
+              "x": 0,
+              "y": 0,
+              "height": 1.5
+            }
+          }
+        },
+        "framing": "New authored review camera: follows the actual next recorded movement direction, distance10m, polar1.45, target height1.5m. The prior sample supplies position and edge identity only.",
+        "purpose": "Takakura narrow approach and camera clearance",
+        "description": "Previously walked position restored through a public journey session and production entry. This visual review does not repeat the full traversal."
+      },
+      "layout": {
+        "scrollX": 0,
+        "scrollY": 292,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentHeight": 2608,
+        "visualColumn": {
+          "x": 48,
+          "y": 209.796875,
+          "width": 992,
+          "height": 976.28125,
+          "top": 209.796875,
+          "right": 1040,
+          "bottom": 1186.078125,
+          "left": 48
+        },
+        "canvas": {
+          "x": 49,
+          "y": 282.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 282.796875,
+          "right": 1039,
+          "bottom": 999.625,
+          "left": 49
+        },
+        "camera": {
+          "position": [
+            261.7603101165391,
+            2.7050276936736664,
+            -59.80908492802738
+          ],
+          "target": [
+            261.695,
+            1.5,
+            -69.736
+          ],
+          "desiredPosition": [
+            261.7603101165391,
+            2.7050276936736664,
+            -59.80908492802738
+          ],
+          "viewTarget": [
+            261.695,
+            1.5,
+            -69.736
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 10.000000000000004,
+            "actualDistance": 10.000000000000004,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.19221133167963592,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": 0.006579000000001608,
+          "polar": 1.45,
+          "distance": 10.000000000000004,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": 0.006579000000001609,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            0.9999783584575598,
+            5.421010862427522e-20,
+            -0.006578952540030561,
+            0,
+            -0.0007927820006101535,
+            0.9927129910375885,
+            -0.12050016150156917,
+            0,
+            0.0065310116539080785,
+            0.12050276936736659,
+            0.9926915071972621,
+            0,
+            261.7603101165391,
+            2.7050276936736664,
+            -59.80908492802738,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        }
+      },
+      "savedView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:1148700851:2971080719:4600871812",
+          "edgeDistance": 65.013894,
+          "height": 0,
+          "x": 261.695,
+          "y": 69.736
+        },
+        "camera": {
+          "azimuth": 0.006579,
+          "polar": 1.45,
+          "distance": 10,
+          "targetOffset": {
+            "x": 0,
+            "y": 0,
+            "height": 1.5
+          }
+        }
+      },
+      "player": {
+        "x": 261.695,
+        "y": 69.736,
+        "height": 0,
+        "edgeId": "osm:way:1148700851:2971080719:4600871812",
+        "edgeDistance": 65.013894
+      },
+      "actualCamera": {
+        "position": [
+          261.7603101165391,
+          2.7050276936736664,
+          -59.80908492802738
+        ],
+        "target": [
+          261.695,
+          1.5,
+          -69.736
+        ],
+        "desiredPosition": [
+          261.7603101165391,
+          2.7050276936736664,
+          -59.80908492802738
+        ],
+        "viewTarget": [
+          261.695,
+          1.5,
+          -69.736
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 10.000000000000004,
+          "actualDistance": 10.000000000000004,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.19221133167963592,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": 0.006579000000001608,
+        "polar": 1.45,
+        "distance": 10.000000000000004,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": 0.006579000000001609,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.9999783584575598,
+          5.421010862427522e-20,
+          -0.006578952540030561,
+          0,
+          -0.0007927820006101535,
+          0.9927129910375885,
+          -0.12050016150156917,
+          0,
+          0.0065310116539080785,
+          0.12050276936736659,
+          0.9926915071972621,
+          0,
+          261.7603101165391,
+          2.7050276936736664,
+          -59.80908492802738,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "ground": {
+        "x": 261.695,
+        "y": 69.736,
+        "height": 0,
+        "hit": {
+          "height": 0,
+          "surfaceId": "shijo-east-ground",
+          "sourceIndex": 1049,
+          "sourceId": "shijo-east:walkable"
+        },
+        "inside": true
+      },
+      "lighting": {
+        "mode": "night",
+        "phase": "ready",
+        "rig": {
+          "status": "ready",
+          "sha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "expectedSha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "profile": null
+        },
+        "environment": {
+          "file": "/assets/neighborhoods/shijo-east/shared/environments/night-512.hdr",
+          "sha256": "b3a82ca4a2dcb3cf429b5f7b57f75877296fbc3d60b6a2ed2419be7f8971f41f"
+        },
+        "exposure": 1.18,
+        "environmentIntensity": 0.085
+      },
+      "screenshotRenderTotals": {
+        "frame": 67,
+        "calls": 65,
+        "triangles": 89201,
+        "points": 0,
+        "lines": 0
+      },
+      "primaryFrame": {
+        "checkId": "connector-e002-n000-visual-night-cached-shadow-primary-frame-budget",
+        "calls": 65,
+        "triangles": 89201,
+        "shadowUpdatesBefore": 20,
+        "shadowUpdatesAfter": 20,
+        "renderedFramesBefore": 28,
+        "renderedFramesAfter": 29
+      }
+    },
+    {
+      "file": "connector-e003-n001-review-day-canvas.png",
+      "bytes": 504111,
+      "sha256": "29f3614939852437fe9a2c30d81b575661aa5ae025768da191ddb1e4ff82ab3d",
+      "mode": "day",
+      "scenarioId": "connector-e003-n001-visual-review",
+      "restoration": {
+        "sourceReportSha256": "5a5c9f94960fb3212ed01f9a5d606034f267de1e3c5ffa82e3748f75052a9cfd",
+        "sourcePackageSha256": "809a90dbabae9becc384e67f006275ca6b27f107f74c81f28f916c595601fb9e",
+        "pathIndex": 3,
+        "sampleIndex": 106,
+        "sourcePosition": {
+          "x": 354.92,
+          "y": 140.262,
+          "height": 0,
+          "edgeId": "osm:way:66703315:354840397:354840398",
+          "edgeDistance": 30.247570231538838
+        },
+        "nextSourcePosition": {
+          "x": 355.832,
+          "y": 140.262,
+          "height": 0,
+          "edgeId": "osm:way:66703315:354840397:354840398",
+          "edgeDistance": 31.159567878303868
+        },
+        "view": {
+          "version": 3,
+          "packId": "shijo-east",
+          "revision": 1,
+          "player": {
+            "x": 354.92,
+            "y": 140.262,
+            "height": 0,
+            "edgeId": "osm:way:66703315:354840397:354840398",
+            "edgeDistance": 30.247570231538838
+          },
+          "camera": {
+            "azimuth": -1.5707963267948966,
+            "polar": 1.45,
+            "distance": 10,
+            "targetOffset": {
+              "x": 0,
+              "y": 0,
+              "height": 1.5
+            }
+          }
+        },
+        "framing": "New authored review camera: follows the actual next recorded movement direction, distance10m, polar1.45, target height1.5m. The prior sample supplies position and edge identity only.",
+        "purpose": "Nishiki facade, soffit and enclosure continuity",
+        "description": "Previously walked position restored through a public journey session and production entry. This visual review does not repeat the full traversal."
+      },
+      "layout": {
+        "scrollX": 0,
+        "scrollY": 292,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentHeight": 2608,
+        "visualColumn": {
+          "x": 48,
+          "y": 209.796875,
+          "width": 992,
+          "height": 976.28125,
+          "top": 209.796875,
+          "right": 1040,
+          "bottom": 1186.078125,
+          "left": 48
+        },
+        "canvas": {
+          "x": 49,
+          "y": 282.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 282.796875,
+          "right": 1039,
+          "bottom": 999.625,
+          "left": 49
+        },
+        "camera": {
+          "position": [
+            344.99287008962466,
+            2.7050276936736664,
+            -140.2619967558646
+          ],
+          "target": [
+            354.92,
+            1.5000000000000002,
+            -140.262
+          ],
+          "desiredPosition": [
+            344.99287008962466,
+            2.7050276936736664,
+            -140.2619967558646
+          ],
+          "viewTarget": [
+            354.92,
+            1.5000000000000002,
+            -140.262
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 10.000000000000002,
+            "actualDistance": 10.000000000000002,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.1922113316796362,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": -1.5707959999999994,
+          "polar": 1.45,
+          "distance": 10.000000000000002,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": -1.5707959999999994,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            3.2679489736509026e-7,
+            -1.3877787807814457e-17,
+            0.9999999999999465,
+            0,
+            0.12050276936736015,
+            0.9927129910375885,
+            -3.937969012685061e-8,
+            0,
+            -0.9927129910375354,
+            0.12050276936736659,
+            3.244135400315429e-7,
+            0,
+            344.99287008962466,
+            2.7050276936736664,
+            -140.2619967558646,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        }
+      },
+      "savedView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:66703315:354840397:354840398",
+          "edgeDistance": 30.24757,
+          "height": 0,
+          "x": 354.92,
+          "y": 140.262
+        },
+        "camera": {
+          "azimuth": -1.570796,
+          "polar": 1.45,
+          "distance": 10,
+          "targetOffset": {
+            "x": 0,
+            "y": 0,
+            "height": 1.5
+          }
+        }
+      },
+      "player": {
+        "x": 354.92,
+        "y": 140.262,
+        "height": 0,
+        "edgeId": "osm:way:66703315:354840397:354840398",
+        "edgeDistance": 30.24757
+      },
+      "actualCamera": {
+        "position": [
+          344.99287008962466,
+          2.7050276936736664,
+          -140.2619967558646
+        ],
+        "target": [
+          354.92,
+          1.5000000000000002,
+          -140.262
+        ],
+        "desiredPosition": [
+          344.99287008962466,
+          2.7050276936736664,
+          -140.2619967558646
+        ],
+        "viewTarget": [
+          354.92,
+          1.5000000000000002,
+          -140.262
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 10.000000000000002,
+          "actualDistance": 10.000000000000002,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.1922113316796362,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": -1.5707959999999994,
+        "polar": 1.45,
+        "distance": 10.000000000000002,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": -1.5707959999999994,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          3.2679489736509026e-7,
+          -1.3877787807814457e-17,
+          0.9999999999999465,
+          0,
+          0.12050276936736015,
+          0.9927129910375885,
+          -3.937969012685061e-8,
+          0,
+          -0.9927129910375354,
+          0.12050276936736659,
+          3.244135400315429e-7,
+          0,
+          344.99287008962466,
+          2.7050276936736664,
+          -140.2619967558646,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "ground": {
+        "x": 354.92,
+        "y": 140.262,
+        "height": 0,
+        "hit": {
+          "height": 0,
+          "surfaceId": "shijo-east-ground",
+          "sourceIndex": 1049,
+          "sourceId": "shijo-east:walkable"
+        },
+        "inside": true
+      },
+      "lighting": {
+        "mode": "day",
+        "phase": "ready",
+        "rig": {
+          "status": "ready",
+          "sha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "expectedSha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "profile": null
+        },
+        "environment": {
+          "file": "/assets/neighborhoods/shijo-east/shared/environments/day-512.hdr",
+          "sha256": "efb72f542365dfdc25d2f9ed20983b34e74fd33f90d55b8763813f4d6dd35717"
+        },
+        "exposure": 1.05,
+        "environmentIntensity": 0.65
+      },
+      "screenshotRenderTotals": {
+        "frame": 41,
+        "calls": 84,
+        "triangles": 92342,
+        "points": 0,
+        "lines": 0
+      },
+      "primaryFrame": {
+        "checkId": "connector-e003-n001-visual-day-cached-shadow-primary-frame-budget",
+        "calls": 84,
+        "triangles": 92342,
+        "shadowUpdatesBefore": 18,
+        "shadowUpdatesAfter": 18,
+        "renderedFramesBefore": 21,
+        "renderedFramesAfter": 22
+      }
+    },
+    {
+      "file": "connector-e003-n001-review-night-canvas.png",
+      "bytes": 585039,
+      "sha256": "f1639909e0e8dd9dd3c80ccfa732ab29542f96f371a0e73b76f779bc141551ce",
+      "mode": "night",
+      "scenarioId": "connector-e003-n001-visual-review",
+      "restoration": {
+        "sourceReportSha256": "5a5c9f94960fb3212ed01f9a5d606034f267de1e3c5ffa82e3748f75052a9cfd",
+        "sourcePackageSha256": "809a90dbabae9becc384e67f006275ca6b27f107f74c81f28f916c595601fb9e",
+        "pathIndex": 3,
+        "sampleIndex": 106,
+        "sourcePosition": {
+          "x": 354.92,
+          "y": 140.262,
+          "height": 0,
+          "edgeId": "osm:way:66703315:354840397:354840398",
+          "edgeDistance": 30.247570231538838
+        },
+        "nextSourcePosition": {
+          "x": 355.832,
+          "y": 140.262,
+          "height": 0,
+          "edgeId": "osm:way:66703315:354840397:354840398",
+          "edgeDistance": 31.159567878303868
+        },
+        "view": {
+          "version": 3,
+          "packId": "shijo-east",
+          "revision": 1,
+          "player": {
+            "x": 354.92,
+            "y": 140.262,
+            "height": 0,
+            "edgeId": "osm:way:66703315:354840397:354840398",
+            "edgeDistance": 30.247570231538838
+          },
+          "camera": {
+            "azimuth": -1.5707963267948966,
+            "polar": 1.45,
+            "distance": 10,
+            "targetOffset": {
+              "x": 0,
+              "y": 0,
+              "height": 1.5
+            }
+          }
+        },
+        "framing": "New authored review camera: follows the actual next recorded movement direction, distance10m, polar1.45, target height1.5m. The prior sample supplies position and edge identity only.",
+        "purpose": "Nishiki facade, soffit and enclosure continuity",
+        "description": "Previously walked position restored through a public journey session and production entry. This visual review does not repeat the full traversal."
+      },
+      "layout": {
+        "scrollX": 0,
+        "scrollY": 292,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentHeight": 2608,
+        "visualColumn": {
+          "x": 48,
+          "y": 209.796875,
+          "width": 992,
+          "height": 976.28125,
+          "top": 209.796875,
+          "right": 1040,
+          "bottom": 1186.078125,
+          "left": 48
+        },
+        "canvas": {
+          "x": 49,
+          "y": 282.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 282.796875,
+          "right": 1039,
+          "bottom": 999.625,
+          "left": 49
+        },
+        "camera": {
+          "position": [
+            344.99287008962466,
+            2.7050276936736664,
+            -140.2619967558646
+          ],
+          "target": [
+            354.92,
+            1.5000000000000002,
+            -140.262
+          ],
+          "desiredPosition": [
+            344.99287008962466,
+            2.7050276936736664,
+            -140.2619967558646
+          ],
+          "viewTarget": [
+            354.92,
+            1.5000000000000002,
+            -140.262
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 10.000000000000002,
+            "actualDistance": 10.000000000000002,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.1922113316796362,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": -1.5707959999999994,
+          "polar": 1.45,
+          "distance": 10.000000000000002,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": -1.5707959999999994,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            3.2679489736509026e-7,
+            -1.3877787807814457e-17,
+            0.9999999999999465,
+            0,
+            0.12050276936736015,
+            0.9927129910375885,
+            -3.937969012685061e-8,
+            0,
+            -0.9927129910375354,
+            0.12050276936736659,
+            3.244135400315429e-7,
+            0,
+            344.99287008962466,
+            2.7050276936736664,
+            -140.2619967558646,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        }
+      },
+      "savedView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:66703315:354840397:354840398",
+          "edgeDistance": 30.24757,
+          "height": 0,
+          "x": 354.92,
+          "y": 140.262
+        },
+        "camera": {
+          "azimuth": -1.570796,
+          "polar": 1.45,
+          "distance": 10,
+          "targetOffset": {
+            "x": 0,
+            "y": 0,
+            "height": 1.5
+          }
+        }
+      },
+      "player": {
+        "x": 354.92,
+        "y": 140.262,
+        "height": 0,
+        "edgeId": "osm:way:66703315:354840397:354840398",
+        "edgeDistance": 30.24757
+      },
+      "actualCamera": {
+        "position": [
+          344.99287008962466,
+          2.7050276936736664,
+          -140.2619967558646
+        ],
+        "target": [
+          354.92,
+          1.5000000000000002,
+          -140.262
+        ],
+        "desiredPosition": [
+          344.99287008962466,
+          2.7050276936736664,
+          -140.2619967558646
+        ],
+        "viewTarget": [
+          354.92,
+          1.5000000000000002,
+          -140.262
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 10.000000000000002,
+          "actualDistance": 10.000000000000002,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.1922113316796362,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": -1.5707959999999994,
+        "polar": 1.45,
+        "distance": 10.000000000000002,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": -1.5707959999999994,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          3.2679489736509026e-7,
+          -1.3877787807814457e-17,
+          0.9999999999999465,
+          0,
+          0.12050276936736015,
+          0.9927129910375885,
+          -3.937969012685061e-8,
+          0,
+          -0.9927129910375354,
+          0.12050276936736659,
+          3.244135400315429e-7,
+          0,
+          344.99287008962466,
+          2.7050276936736664,
+          -140.2619967558646,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "ground": {
+        "x": 354.92,
+        "y": 140.262,
+        "height": 0,
+        "hit": {
+          "height": 0,
+          "surfaceId": "shijo-east-ground",
+          "sourceIndex": 1049,
+          "sourceId": "shijo-east:walkable"
+        },
+        "inside": true
+      },
+      "lighting": {
+        "mode": "night",
+        "phase": "ready",
+        "rig": {
+          "status": "ready",
+          "sha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "expectedSha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "profile": null
+        },
+        "environment": {
+          "file": "/assets/neighborhoods/shijo-east/shared/environments/night-512.hdr",
+          "sha256": "b3a82ca4a2dcb3cf429b5f7b57f75877296fbc3d60b6a2ed2419be7f8971f41f"
+        },
+        "exposure": 1.18,
+        "environmentIntensity": 0.085
+      },
+      "screenshotRenderTotals": {
+        "frame": 62,
+        "calls": 84,
+        "triangles": 92342,
+        "points": 0,
+        "lines": 0
+      },
+      "primaryFrame": {
+        "checkId": "connector-e003-n001-visual-night-cached-shadow-primary-frame-budget",
+        "calls": 84,
+        "triangles": 92342,
+        "shadowUpdatesBefore": 19,
+        "shadowUpdatesAfter": 19,
+        "renderedFramesBefore": 23,
+        "renderedFramesAfter": 24
+      }
+    },
+    {
+      "file": "connector-e004-n001-review-day-canvas.png",
+      "bytes": 570315,
+      "sha256": "c21718dfadd6b64d7877aa7b3de0f91ead577086eda69cf074da177815bd5532",
+      "mode": "day",
+      "scenarioId": "connector-e004-n001-visual-review",
+      "restoration": {
+        "sourceReportSha256": "5a5c9f94960fb3212ed01f9a5d606034f267de1e3c5ffa82e3748f75052a9cfd",
+        "sourcePackageSha256": "809a90dbabae9becc384e67f006275ca6b27f107f74c81f28f916c595601fb9e",
+        "pathIndex": 3,
+        "sampleIndex": 221,
+        "sourcePosition": {
+          "x": 450.175,
+          "y": 141.556,
+          "height": 0,
+          "edgeId": "osm:way:66703315:354840398:354840399",
+          "edgeDistance": 62.02656263885608
+        },
+        "nextSourcePosition": {
+          "x": 451.087,
+          "y": 141.574,
+          "height": 0,
+          "edgeId": "osm:way:66703315:354840398:354840399",
+          "edgeDistance": 62.93873991450905
+        },
+        "view": {
+          "version": 3,
+          "packId": "shijo-east",
+          "revision": 1,
+          "player": {
+            "x": 450.175,
+            "y": 141.556,
+            "height": 0,
+            "edgeId": "osm:way:66703315:354840398:354840399",
+            "edgeDistance": 62.02656263885608
+          },
+          "camera": {
+            "azimuth": -1.551062046873286,
+            "polar": 1.45,
+            "distance": 10,
+            "targetOffset": {
+              "x": 0,
+              "y": 0,
+              "height": 1.5
+            }
+          }
+        },
+        "framing": "New authored review camera: follows the actual next recorded movement direction, distance10m, polar1.45, target height1.5m. The prior sample supplies position and edge identity only.",
+        "purpose": "Nishiki facade, soffit and enclosure continuity",
+        "description": "Previously walked position restored through a public journey session and production entry. This visual review does not repeat the full traversal."
+      },
+      "layout": {
+        "scrollX": 0,
+        "scrollY": 292,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentHeight": 2608,
+        "visualColumn": {
+          "x": 48,
+          "y": 209.796875,
+          "width": 992,
+          "height": 976.28125,
+          "top": 209.796875,
+          "right": 1040,
+          "bottom": 1186.078125,
+          "left": 48
+        },
+        "canvas": {
+          "x": 49,
+          "y": 282.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 282.796875,
+          "right": 1039,
+          "bottom": 999.625,
+          "left": 49
+        },
+        "camera": {
+          "position": [
+            440.24980305576435,
+            2.7050276936736672,
+            -141.36010748964017
+          ],
+          "target": [
+            450.175,
+            1.5,
+            -141.556
+          ],
+          "desiredPosition": [
+            440.24980305576435,
+            2.7050276936736672,
+            -141.36010748964017
+          ],
+          "viewTarget": [
+            450.175,
+            1.5,
+            -141.556
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 10.000000000000028,
+            "actualDistance": 10.000000000000028,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.19221133167963514,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": -1.5510620000000015,
+          "polar": 1.4500000000000002,
+          "distance": 10.000000000000028,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": -1.5510620000000015,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            0.01973304591844738,
+            0,
+            0.9998052844923256,
+            0,
+            0.12047930560945287,
+            0.9927129910375885,
+            -0.002377886681226314,
+            0,
+            -0.9925196944235638,
+            0.1205027693673664,
+            0.019589251035983968,
+            0,
+            440.24980305576435,
+            2.7050276936736672,
+            -141.36010748964017,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        }
+      },
+      "savedView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:66703315:354840398:354840399",
+          "edgeDistance": 62.026563,
+          "height": 0,
+          "x": 450.175,
+          "y": 141.556
+        },
+        "camera": {
+          "azimuth": -1.551062,
+          "polar": 1.45,
+          "distance": 10,
+          "targetOffset": {
+            "x": 0,
+            "y": 0,
+            "height": 1.5
+          }
+        }
+      },
+      "player": {
+        "x": 450.175,
+        "y": 141.556,
+        "height": 0,
+        "edgeId": "osm:way:66703315:354840398:354840399",
+        "edgeDistance": 62.026563
+      },
+      "actualCamera": {
+        "position": [
+          440.24980305576435,
+          2.7050276936736672,
+          -141.36010748964017
+        ],
+        "target": [
+          450.175,
+          1.5,
+          -141.556
+        ],
+        "desiredPosition": [
+          440.24980305576435,
+          2.7050276936736672,
+          -141.36010748964017
+        ],
+        "viewTarget": [
+          450.175,
+          1.5,
+          -141.556
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 10.000000000000028,
+          "actualDistance": 10.000000000000028,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.19221133167963514,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": -1.5510620000000015,
+        "polar": 1.4500000000000002,
+        "distance": 10.000000000000028,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": -1.5510620000000015,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.01973304591844738,
+          0,
+          0.9998052844923256,
+          0,
+          0.12047930560945287,
+          0.9927129910375885,
+          -0.002377886681226314,
+          0,
+          -0.9925196944235638,
+          0.1205027693673664,
+          0.019589251035983968,
+          0,
+          440.24980305576435,
+          2.7050276936736672,
+          -141.36010748964017,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "ground": {
+        "x": 450.175,
+        "y": 141.556,
+        "height": 0,
+        "hit": {
+          "height": 0,
+          "surfaceId": "shijo-east-ground",
+          "sourceIndex": 1049,
+          "sourceId": "shijo-east:walkable"
+        },
+        "inside": true
+      },
+      "lighting": {
+        "mode": "day",
+        "phase": "ready",
+        "rig": {
+          "status": "ready",
+          "sha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "expectedSha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "profile": null
+        },
+        "environment": {
+          "file": "/assets/neighborhoods/shijo-east/shared/environments/day-512.hdr",
+          "sha256": "efb72f542365dfdc25d2f9ed20983b34e74fd33f90d55b8763813f4d6dd35717"
+        },
+        "exposure": 1.05,
+        "environmentIntensity": 0.65
+      },
+      "screenshotRenderTotals": {
+        "frame": 46,
+        "calls": 86,
+        "triangles": 97697,
+        "points": 0,
+        "lines": 0
+      },
+      "primaryFrame": {
+        "checkId": "connector-e004-n001-visual-day-cached-shadow-primary-frame-budget",
+        "calls": 86,
+        "triangles": 97697,
+        "shadowUpdatesBefore": 18,
+        "shadowUpdatesAfter": 18,
+        "renderedFramesBefore": 26,
+        "renderedFramesAfter": 27
+      }
+    },
+    {
+      "file": "connector-e004-n001-review-night-canvas.png",
+      "bytes": 628119,
+      "sha256": "506fe3cd22dd9a7f823cdafc6f40f1a81349bac9efc6bbcf3a6d513da9a5a050",
+      "mode": "night",
+      "scenarioId": "connector-e004-n001-visual-review",
+      "restoration": {
+        "sourceReportSha256": "5a5c9f94960fb3212ed01f9a5d606034f267de1e3c5ffa82e3748f75052a9cfd",
+        "sourcePackageSha256": "809a90dbabae9becc384e67f006275ca6b27f107f74c81f28f916c595601fb9e",
+        "pathIndex": 3,
+        "sampleIndex": 221,
+        "sourcePosition": {
+          "x": 450.175,
+          "y": 141.556,
+          "height": 0,
+          "edgeId": "osm:way:66703315:354840398:354840399",
+          "edgeDistance": 62.02656263885608
+        },
+        "nextSourcePosition": {
+          "x": 451.087,
+          "y": 141.574,
+          "height": 0,
+          "edgeId": "osm:way:66703315:354840398:354840399",
+          "edgeDistance": 62.93873991450905
+        },
+        "view": {
+          "version": 3,
+          "packId": "shijo-east",
+          "revision": 1,
+          "player": {
+            "x": 450.175,
+            "y": 141.556,
+            "height": 0,
+            "edgeId": "osm:way:66703315:354840398:354840399",
+            "edgeDistance": 62.02656263885608
+          },
+          "camera": {
+            "azimuth": -1.551062046873286,
+            "polar": 1.45,
+            "distance": 10,
+            "targetOffset": {
+              "x": 0,
+              "y": 0,
+              "height": 1.5
+            }
+          }
+        },
+        "framing": "New authored review camera: follows the actual next recorded movement direction, distance10m, polar1.45, target height1.5m. The prior sample supplies position and edge identity only.",
+        "purpose": "Nishiki facade, soffit and enclosure continuity",
+        "description": "Previously walked position restored through a public journey session and production entry. This visual review does not repeat the full traversal."
+      },
+      "layout": {
+        "scrollX": 0,
+        "scrollY": 292,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentHeight": 2608,
+        "visualColumn": {
+          "x": 48,
+          "y": 209.796875,
+          "width": 992,
+          "height": 976.28125,
+          "top": 209.796875,
+          "right": 1040,
+          "bottom": 1186.078125,
+          "left": 48
+        },
+        "canvas": {
+          "x": 49,
+          "y": 282.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 282.796875,
+          "right": 1039,
+          "bottom": 999.625,
+          "left": 49
+        },
+        "camera": {
+          "position": [
+            440.24980305576435,
+            2.7050276936736672,
+            -141.36010748964017
+          ],
+          "target": [
+            450.175,
+            1.5,
+            -141.556
+          ],
+          "desiredPosition": [
+            440.24980305576435,
+            2.7050276936736672,
+            -141.36010748964017
+          ],
+          "viewTarget": [
+            450.175,
+            1.5,
+            -141.556
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 10.000000000000028,
+            "actualDistance": 10.000000000000028,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.19221133167963514,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": -1.5510620000000015,
+          "polar": 1.4500000000000002,
+          "distance": 10.000000000000028,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": -1.5510620000000015,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            0.01973304591844738,
+            0,
+            0.9998052844923256,
+            0,
+            0.12047930560945287,
+            0.9927129910375885,
+            -0.002377886681226314,
+            0,
+            -0.9925196944235638,
+            0.1205027693673664,
+            0.019589251035983968,
+            0,
+            440.24980305576435,
+            2.7050276936736672,
+            -141.36010748964017,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        }
+      },
+      "savedView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:66703315:354840398:354840399",
+          "edgeDistance": 62.026563,
+          "height": 0,
+          "x": 450.175,
+          "y": 141.556
+        },
+        "camera": {
+          "azimuth": -1.551062,
+          "polar": 1.45,
+          "distance": 10,
+          "targetOffset": {
+            "x": 0,
+            "y": 0,
+            "height": 1.5
+          }
+        }
+      },
+      "player": {
+        "x": 450.175,
+        "y": 141.556,
+        "height": 0,
+        "edgeId": "osm:way:66703315:354840398:354840399",
+        "edgeDistance": 62.026563
+      },
+      "actualCamera": {
+        "position": [
+          440.24980305576435,
+          2.7050276936736672,
+          -141.36010748964017
+        ],
+        "target": [
+          450.175,
+          1.5,
+          -141.556
+        ],
+        "desiredPosition": [
+          440.24980305576435,
+          2.7050276936736672,
+          -141.36010748964017
+        ],
+        "viewTarget": [
+          450.175,
+          1.5,
+          -141.556
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 10.000000000000028,
+          "actualDistance": 10.000000000000028,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.19221133167963514,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": -1.5510620000000015,
+        "polar": 1.4500000000000002,
+        "distance": 10.000000000000028,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": -1.5510620000000015,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.01973304591844738,
+          0,
+          0.9998052844923256,
+          0,
+          0.12047930560945287,
+          0.9927129910375885,
+          -0.002377886681226314,
+          0,
+          -0.9925196944235638,
+          0.1205027693673664,
+          0.019589251035983968,
+          0,
+          440.24980305576435,
+          2.7050276936736672,
+          -141.36010748964017,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "ground": {
+        "x": 450.175,
+        "y": 141.556,
+        "height": 0,
+        "hit": {
+          "height": 0,
+          "surfaceId": "shijo-east-ground",
+          "sourceIndex": 1049,
+          "sourceId": "shijo-east:walkable"
+        },
+        "inside": true
+      },
+      "lighting": {
+        "mode": "night",
+        "phase": "ready",
+        "rig": {
+          "status": "ready",
+          "sha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "expectedSha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "profile": null
+        },
+        "environment": {
+          "file": "/assets/neighborhoods/shijo-east/shared/environments/night-512.hdr",
+          "sha256": "b3a82ca4a2dcb3cf429b5f7b57f75877296fbc3d60b6a2ed2419be7f8971f41f"
+        },
+        "exposure": 1.18,
+        "environmentIntensity": 0.085
+      },
+      "screenshotRenderTotals": {
+        "frame": 67,
+        "calls": 86,
+        "triangles": 97697,
+        "points": 0,
+        "lines": 0
+      },
+      "primaryFrame": {
+        "checkId": "connector-e004-n001-visual-night-cached-shadow-primary-frame-budget",
+        "calls": 86,
+        "triangles": 97697,
+        "shadowUpdatesBefore": 19,
+        "shadowUpdatesAfter": 19,
+        "renderedFramesBefore": 28,
+        "renderedFramesAfter": 29
+      }
+    },
+    {
+      "file": "connector-e005-n001-review-day-canvas.png",
+      "bytes": 466689,
+      "sha256": "93727e9ebd258c0c4eef2def2cd856a2a40d4c698c243cb3bdd93a9e1ea2878b",
+      "mode": "day",
+      "scenarioId": "connector-e005-n001-visual-review",
+      "restoration": {
+        "sourceReportSha256": "5a5c9f94960fb3212ed01f9a5d606034f267de1e3c5ffa82e3748f75052a9cfd",
+        "sourcePackageSha256": "809a90dbabae9becc384e67f006275ca6b27f107f74c81f28f916c595601fb9e",
+        "pathIndex": 3,
+        "sampleIndex": 342,
+        "sourcePosition": {
+          "x": 550.373,
+          "y": 143.356,
+          "height": 0,
+          "edgeId": "osm:way:66703315:372657384:372657394",
+          "edgeDistance": 55.226793987442626
+        },
+        "nextSourcePosition": {
+          "x": 551.285,
+          "y": 143.368,
+          "height": 0,
+          "edgeId": "osm:way:66703315:372657384:372657394",
+          "edgeDistance": 54.31471677718622
+        },
+        "view": {
+          "version": 3,
+          "packId": "shijo-east",
+          "revision": 1,
+          "player": {
+            "x": 550.373,
+            "y": 143.356,
+            "height": 0,
+            "edgeId": "osm:way:66703315:372657384:372657394",
+            "edgeDistance": 55.226793987442626
+          },
+          "camera": {
+            "azimuth": -1.5576391913221392,
+            "polar": 1.45,
+            "distance": 10,
+            "targetOffset": {
+              "x": 0,
+              "y": 0,
+              "height": 1.5
+            }
+          }
+        },
+        "framing": "New authored review camera: follows the actual next recorded movement direction, distance10m, polar1.45, target height1.5m. The prior sample supplies position and edge identity only.",
+        "purpose": "Source-retained open cross-street gap",
+        "description": "Previously walked position restored through a public journey session and production entry. This visual review does not repeat the full traversal."
+      },
+      "layout": {
+        "scrollX": 0,
+        "scrollY": 292,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentHeight": 2608,
+        "visualColumn": {
+          "x": 48,
+          "y": 209.796875,
+          "width": 992,
+          "height": 976.28125,
+          "top": 209.796875,
+          "right": 1040,
+          "bottom": 1186.078125,
+          "left": 48
+        },
+        "canvas": {
+          "x": 49,
+          "y": 282.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 282.796875,
+          "right": 1039,
+          "bottom": 999.625,
+          "left": 49
+        },
+        "camera": {
+          "position": [
+            540.4467293460083,
+            2.7050276936736655,
+            -143.22538927616122
+          ],
+          "target": [
+            550.373,
+            1.5,
+            -143.356
+          ],
+          "desiredPosition": [
+            540.4467293460083,
+            2.7050276936736655,
+            -143.22538927616122
+          ],
+          "viewTarget": [
+            550.373,
+            1.5,
+            -143.356
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 10.000000000000012,
+            "actualDistance": 10.000000000000012,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.19221133167963378,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": -1.5576390000000009,
+          "polar": 1.4500000000000002,
+          "distance": 10.000000000000012,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": -1.5576390000000009,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            0.013156947175865796,
+            -1.3877787807814457e-17,
+            0.9999134436245026,
+            0,
+            0.12049233908441255,
+            0.9927129910375885,
+            -0.0015854485711119595,
+            0,
+            -0.9926270653991752,
+            0.12050276936736637,
+            0.013061072383877326,
+            0,
+            540.4467293460083,
+            2.7050276936736655,
+            -143.22538927616122,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        }
+      },
+      "savedView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:66703315:372657384:372657394",
+          "edgeDistance": 55.226794,
+          "height": 0,
+          "x": 550.373,
+          "y": 143.356
+        },
+        "camera": {
+          "azimuth": -1.557639,
+          "polar": 1.45,
+          "distance": 10,
+          "targetOffset": {
+            "x": 0,
+            "y": 0,
+            "height": 1.5
+          }
+        }
+      },
+      "player": {
+        "x": 550.373,
+        "y": 143.356,
+        "height": 0,
+        "edgeId": "osm:way:66703315:372657384:372657394",
+        "edgeDistance": 55.226794
+      },
+      "actualCamera": {
+        "position": [
+          540.4467293460083,
+          2.7050276936736655,
+          -143.22538927616122
+        ],
+        "target": [
+          550.373,
+          1.5,
+          -143.356
+        ],
+        "desiredPosition": [
+          540.4467293460083,
+          2.7050276936736655,
+          -143.22538927616122
+        ],
+        "viewTarget": [
+          550.373,
+          1.5,
+          -143.356
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 10.000000000000012,
+          "actualDistance": 10.000000000000012,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.19221133167963378,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": -1.5576390000000009,
+        "polar": 1.4500000000000002,
+        "distance": 10.000000000000012,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": -1.5576390000000009,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.013156947175865796,
+          -1.3877787807814457e-17,
+          0.9999134436245026,
+          0,
+          0.12049233908441255,
+          0.9927129910375885,
+          -0.0015854485711119595,
+          0,
+          -0.9926270653991752,
+          0.12050276936736637,
+          0.013061072383877326,
+          0,
+          540.4467293460083,
+          2.7050276936736655,
+          -143.22538927616122,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "ground": {
+        "x": 550.373,
+        "y": 143.356,
+        "height": 0,
+        "hit": {
+          "height": 0,
+          "surfaceId": "shijo-east-ground",
+          "sourceIndex": 1049,
+          "sourceId": "shijo-east:walkable"
+        },
+        "inside": true
+      },
+      "lighting": {
+        "mode": "day",
+        "phase": "ready",
+        "rig": {
+          "status": "ready",
+          "sha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "expectedSha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "profile": null
+        },
+        "environment": {
+          "file": "/assets/neighborhoods/shijo-east/shared/environments/day-512.hdr",
+          "sha256": "efb72f542365dfdc25d2f9ed20983b34e74fd33f90d55b8763813f4d6dd35717"
+        },
+        "exposure": 1.05,
+        "environmentIntensity": 0.65
+      },
+      "screenshotRenderTotals": {
+        "frame": 40,
+        "calls": 74,
+        "triangles": 86098,
+        "points": 0,
+        "lines": 0
+      },
+      "primaryFrame": {
+        "checkId": "connector-e005-n001-visual-day-cached-shadow-primary-frame-budget",
+        "calls": 74,
+        "triangles": 86098,
+        "shadowUpdatesBefore": 18,
+        "shadowUpdatesAfter": 18,
+        "renderedFramesBefore": 20,
+        "renderedFramesAfter": 21
+      }
+    },
+    {
+      "file": "connector-e005-n001-review-night-canvas.png",
+      "bytes": 540111,
+      "sha256": "0e6a20ecd590048c6d3a476ad549bd577b6561076b1fa82b159b11cf8facb782",
+      "mode": "night",
+      "scenarioId": "connector-e005-n001-visual-review",
+      "restoration": {
+        "sourceReportSha256": "5a5c9f94960fb3212ed01f9a5d606034f267de1e3c5ffa82e3748f75052a9cfd",
+        "sourcePackageSha256": "809a90dbabae9becc384e67f006275ca6b27f107f74c81f28f916c595601fb9e",
+        "pathIndex": 3,
+        "sampleIndex": 342,
+        "sourcePosition": {
+          "x": 550.373,
+          "y": 143.356,
+          "height": 0,
+          "edgeId": "osm:way:66703315:372657384:372657394",
+          "edgeDistance": 55.226793987442626
+        },
+        "nextSourcePosition": {
+          "x": 551.285,
+          "y": 143.368,
+          "height": 0,
+          "edgeId": "osm:way:66703315:372657384:372657394",
+          "edgeDistance": 54.31471677718622
+        },
+        "view": {
+          "version": 3,
+          "packId": "shijo-east",
+          "revision": 1,
+          "player": {
+            "x": 550.373,
+            "y": 143.356,
+            "height": 0,
+            "edgeId": "osm:way:66703315:372657384:372657394",
+            "edgeDistance": 55.226793987442626
+          },
+          "camera": {
+            "azimuth": -1.5576391913221392,
+            "polar": 1.45,
+            "distance": 10,
+            "targetOffset": {
+              "x": 0,
+              "y": 0,
+              "height": 1.5
+            }
+          }
+        },
+        "framing": "New authored review camera: follows the actual next recorded movement direction, distance10m, polar1.45, target height1.5m. The prior sample supplies position and edge identity only.",
+        "purpose": "Source-retained open cross-street gap",
+        "description": "Previously walked position restored through a public journey session and production entry. This visual review does not repeat the full traversal."
+      },
+      "layout": {
+        "scrollX": 0,
+        "scrollY": 292,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentHeight": 2608,
+        "visualColumn": {
+          "x": 48,
+          "y": 209.796875,
+          "width": 992,
+          "height": 976.28125,
+          "top": 209.796875,
+          "right": 1040,
+          "bottom": 1186.078125,
+          "left": 48
+        },
+        "canvas": {
+          "x": 49,
+          "y": 282.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 282.796875,
+          "right": 1039,
+          "bottom": 999.625,
+          "left": 49
+        },
+        "camera": {
+          "position": [
+            540.4467293460083,
+            2.7050276936736655,
+            -143.22538927616122
+          ],
+          "target": [
+            550.373,
+            1.5,
+            -143.356
+          ],
+          "desiredPosition": [
+            540.4467293460083,
+            2.7050276936736655,
+            -143.22538927616122
+          ],
+          "viewTarget": [
+            550.373,
+            1.5,
+            -143.356
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 10.000000000000012,
+            "actualDistance": 10.000000000000012,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.19221133167963378,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": -1.5576390000000009,
+          "polar": 1.4500000000000002,
+          "distance": 10.000000000000012,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": -1.5576390000000009,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            0.013156947175865796,
+            -1.3877787807814457e-17,
+            0.9999134436245026,
+            0,
+            0.12049233908441255,
+            0.9927129910375885,
+            -0.0015854485711119595,
+            0,
+            -0.9926270653991752,
+            0.12050276936736637,
+            0.013061072383877326,
+            0,
+            540.4467293460083,
+            2.7050276936736655,
+            -143.22538927616122,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        }
+      },
+      "savedView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:66703315:372657384:372657394",
+          "edgeDistance": 55.226794,
+          "height": 0,
+          "x": 550.373,
+          "y": 143.356
+        },
+        "camera": {
+          "azimuth": -1.557639,
+          "polar": 1.45,
+          "distance": 10,
+          "targetOffset": {
+            "x": 0,
+            "y": 0,
+            "height": 1.5
+          }
+        }
+      },
+      "player": {
+        "x": 550.373,
+        "y": 143.356,
+        "height": 0,
+        "edgeId": "osm:way:66703315:372657384:372657394",
+        "edgeDistance": 55.226794
+      },
+      "actualCamera": {
+        "position": [
+          540.4467293460083,
+          2.7050276936736655,
+          -143.22538927616122
+        ],
+        "target": [
+          550.373,
+          1.5,
+          -143.356
+        ],
+        "desiredPosition": [
+          540.4467293460083,
+          2.7050276936736655,
+          -143.22538927616122
+        ],
+        "viewTarget": [
+          550.373,
+          1.5,
+          -143.356
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 10.000000000000012,
+          "actualDistance": 10.000000000000012,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.19221133167963378,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": -1.5576390000000009,
+        "polar": 1.4500000000000002,
+        "distance": 10.000000000000012,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": -1.5576390000000009,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.013156947175865796,
+          -1.3877787807814457e-17,
+          0.9999134436245026,
+          0,
+          0.12049233908441255,
+          0.9927129910375885,
+          -0.0015854485711119595,
+          0,
+          -0.9926270653991752,
+          0.12050276936736637,
+          0.013061072383877326,
+          0,
+          540.4467293460083,
+          2.7050276936736655,
+          -143.22538927616122,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "ground": {
+        "x": 550.373,
+        "y": 143.356,
+        "height": 0,
+        "hit": {
+          "height": 0,
+          "surfaceId": "shijo-east-ground",
+          "sourceIndex": 1049,
+          "sourceId": "shijo-east:walkable"
+        },
+        "inside": true
+      },
+      "lighting": {
+        "mode": "night",
+        "phase": "ready",
+        "rig": {
+          "status": "ready",
+          "sha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "expectedSha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "profile": null
+        },
+        "environment": {
+          "file": "/assets/neighborhoods/shijo-east/shared/environments/night-512.hdr",
+          "sha256": "b3a82ca4a2dcb3cf429b5f7b57f75877296fbc3d60b6a2ed2419be7f8971f41f"
+        },
+        "exposure": 1.18,
+        "environmentIntensity": 0.085
+      },
+      "screenshotRenderTotals": {
+        "frame": 61,
+        "calls": 74,
+        "triangles": 86098,
+        "points": 0,
+        "lines": 0
+      },
+      "primaryFrame": {
+        "checkId": "connector-e005-n001-visual-night-cached-shadow-primary-frame-budget",
+        "calls": 74,
+        "triangles": 86098,
+        "shadowUpdatesBefore": 19,
+        "shadowUpdatesAfter": 19,
+        "renderedFramesBefore": 22,
+        "renderedFramesAfter": 23
+      }
+    },
+    {
+      "file": "connector-e006-n000-review-day-canvas.png",
+      "bytes": 683487,
+      "sha256": "70f08676e1e2a7f3209f562f3c9556e6a5ec2ac4d585d7c4cab1167f0d342dfe",
+      "mode": "day",
+      "scenarioId": "connector-e006-n000-visual-review",
+      "restoration": {
+        "sourceReportSha256": "5a5c9f94960fb3212ed01f9a5d606034f267de1e3c5ffa82e3748f75052a9cfd",
+        "sourcePackageSha256": "809a90dbabae9becc384e67f006275ca6b27f107f74c81f28f916c595601fb9e",
+        "pathIndex": 4,
+        "sampleIndex": 149,
+        "sourcePosition": {
+          "x": 682.274,
+          "y": 69.952,
+          "height": 0,
+          "edgeId": "osm:way:1568699671:434344416:11791924470",
+          "edgeDistance": 2.233864820050121
+        },
+        "nextSourcePosition": {
+          "x": 682.277,
+          "y": 69.496,
+          "height": 0,
+          "edgeId": "osm:way:1568699671:434344416:11791924470",
+          "edgeDistance": 1.7778566434632395
+        },
+        "view": {
+          "version": 3,
+          "packId": "shijo-east",
+          "revision": 1,
+          "player": {
+            "x": 682.274,
+            "y": 69.952,
+            "height": 0,
+            "edgeId": "osm:way:1568699671:434344416:11791924470",
+            "edgeDistance": 2.233864820050121
+          },
+          "camera": {
+            "azimuth": -3.135013801136683,
+            "polar": 1.45,
+            "distance": 10,
+            "targetOffset": {
+              "x": 0,
+              "y": 0,
+              "height": 1.5
+            }
+          }
+        },
+        "framing": "New authored review camera: follows the actual next recorded movement direction, distance10m, polar1.45, target height1.5m. The prior sample supplies position and edge identity only.",
+        "purpose": "Shinkyogoku southbound connection",
+        "description": "Previously walked position restored through a public journey session and production entry. This visual review does not repeat the full traversal."
+      },
+      "layout": {
+        "scrollX": 0,
+        "scrollY": 292,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentHeight": 2608,
+        "visualColumn": {
+          "x": 48,
+          "y": 209.796875,
+          "width": 992,
+          "height": 976.28125,
+          "top": 209.796875,
+          "right": 1040,
+          "bottom": 1186.078125,
+          "left": 48
+        },
+        "canvas": {
+          "x": 49,
+          "y": 282.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 282.796875,
+          "right": 1039,
+          "bottom": 999.625,
+          "left": 49
+        },
+        "camera": {
+          "position": [
+            682.2086933222456,
+            2.7050276936736655,
+            -79.87891509459611
+          ],
+          "target": [
+            682.274,
+            1.5,
+            -69.952
+          ],
+          "desiredPosition": [
+            682.2086933222456,
+            2.7050276936736655,
+            -79.87891509459611
+          ],
+          "viewTarget": [
+            682.274,
+            1.5,
+            -69.952
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 9.999999999999996,
+            "actualDistance": 9.999999999999996,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.1922113316796359,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": -3.1350139999999964,
+          "polar": 1.45,
+          "distance": 9.999999999999996,
+          "frontage": "south",
+          "azimuthBase": 3.141592653589793,
+          "relativeAzimuth": 0.006578653589797145,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            -0.999978360736516,
+            5.421010862427522e-20,
+            0.006578606137322114,
+            0,
+            0.0007927402581244692,
+            0.9927129910375885,
+            0.12050016177618972,
+            0,
+            -0.006530667775439271,
+            0.12050276936736659,
+            -0.9926915094596114,
+            0,
+            682.2086933222456,
+            2.7050276936736655,
+            -79.87891509459611,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        }
+      },
+      "savedView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:1568699671:434344416:11791924470",
+          "edgeDistance": 2.233865,
+          "height": 0,
+          "x": 682.274,
+          "y": 69.952
+        },
+        "camera": {
+          "azimuth": -3.135014,
+          "polar": 1.45,
+          "distance": 10,
+          "targetOffset": {
+            "x": 0,
+            "y": 0,
+            "height": 1.5
+          }
+        }
+      },
+      "player": {
+        "x": 682.274,
+        "y": 69.952,
+        "height": 0,
+        "edgeId": "osm:way:1568699671:434344416:11791924470",
+        "edgeDistance": 2.233865
+      },
+      "actualCamera": {
+        "position": [
+          682.2086933222456,
+          2.7050276936736655,
+          -79.87891509459611
+        ],
+        "target": [
+          682.274,
+          1.5,
+          -69.952
+        ],
+        "desiredPosition": [
+          682.2086933222456,
+          2.7050276936736655,
+          -79.87891509459611
+        ],
+        "viewTarget": [
+          682.274,
+          1.5,
+          -69.952
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 9.999999999999996,
+          "actualDistance": 9.999999999999996,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.1922113316796359,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": -3.1350139999999964,
+        "polar": 1.45,
+        "distance": 9.999999999999996,
+        "frontage": "south",
+        "azimuthBase": 3.141592653589793,
+        "relativeAzimuth": 0.006578653589797145,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          -0.999978360736516,
+          5.421010862427522e-20,
+          0.006578606137322114,
+          0,
+          0.0007927402581244692,
+          0.9927129910375885,
+          0.12050016177618972,
+          0,
+          -0.006530667775439271,
+          0.12050276936736659,
+          -0.9926915094596114,
+          0,
+          682.2086933222456,
+          2.7050276936736655,
+          -79.87891509459611,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "ground": {
+        "x": 682.274,
+        "y": 69.952,
+        "height": 0,
+        "hit": {
+          "height": 0,
+          "surfaceId": "shijo-east-ground",
+          "sourceIndex": 1049,
+          "sourceId": "shijo-east:walkable"
+        },
+        "inside": true
+      },
+      "lighting": {
+        "mode": "day",
+        "phase": "ready",
+        "rig": {
+          "status": "ready",
+          "sha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "expectedSha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "profile": null
+        },
+        "environment": {
+          "file": "/assets/neighborhoods/shijo-east/shared/environments/day-512.hdr",
+          "sha256": "efb72f542365dfdc25d2f9ed20983b34e74fd33f90d55b8763813f4d6dd35717"
+        },
+        "exposure": 1.05,
+        "environmentIntensity": 0.65
+      },
+      "screenshotRenderTotals": {
+        "frame": 44,
+        "calls": 55,
+        "triangles": 76635,
+        "points": 0,
+        "lines": 0
+      },
+      "primaryFrame": {
+        "checkId": "connector-e006-n000-visual-day-cached-shadow-primary-frame-budget",
+        "calls": 55,
+        "triangles": 76635,
+        "shadowUpdatesBefore": 20,
+        "shadowUpdatesAfter": 20,
+        "renderedFramesBefore": 24,
+        "renderedFramesAfter": 25
+      }
+    },
+    {
+      "file": "connector-e006-n000-review-night-canvas.png",
+      "bytes": 570177,
+      "sha256": "0efd147bddbda5e07fa93b76582f92f338ec407dc84e416cc4e907e1ade8f832",
+      "mode": "night",
+      "scenarioId": "connector-e006-n000-visual-review",
+      "restoration": {
+        "sourceReportSha256": "5a5c9f94960fb3212ed01f9a5d606034f267de1e3c5ffa82e3748f75052a9cfd",
+        "sourcePackageSha256": "809a90dbabae9becc384e67f006275ca6b27f107f74c81f28f916c595601fb9e",
+        "pathIndex": 4,
+        "sampleIndex": 149,
+        "sourcePosition": {
+          "x": 682.274,
+          "y": 69.952,
+          "height": 0,
+          "edgeId": "osm:way:1568699671:434344416:11791924470",
+          "edgeDistance": 2.233864820050121
+        },
+        "nextSourcePosition": {
+          "x": 682.277,
+          "y": 69.496,
+          "height": 0,
+          "edgeId": "osm:way:1568699671:434344416:11791924470",
+          "edgeDistance": 1.7778566434632395
+        },
+        "view": {
+          "version": 3,
+          "packId": "shijo-east",
+          "revision": 1,
+          "player": {
+            "x": 682.274,
+            "y": 69.952,
+            "height": 0,
+            "edgeId": "osm:way:1568699671:434344416:11791924470",
+            "edgeDistance": 2.233864820050121
+          },
+          "camera": {
+            "azimuth": -3.135013801136683,
+            "polar": 1.45,
+            "distance": 10,
+            "targetOffset": {
+              "x": 0,
+              "y": 0,
+              "height": 1.5
+            }
+          }
+        },
+        "framing": "New authored review camera: follows the actual next recorded movement direction, distance10m, polar1.45, target height1.5m. The prior sample supplies position and edge identity only.",
+        "purpose": "Shinkyogoku southbound connection",
+        "description": "Previously walked position restored through a public journey session and production entry. This visual review does not repeat the full traversal."
+      },
+      "layout": {
+        "scrollX": 0,
+        "scrollY": 292,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentHeight": 2608,
+        "visualColumn": {
+          "x": 48,
+          "y": 209.796875,
+          "width": 992,
+          "height": 976.28125,
+          "top": 209.796875,
+          "right": 1040,
+          "bottom": 1186.078125,
+          "left": 48
+        },
+        "canvas": {
+          "x": 49,
+          "y": 282.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 282.796875,
+          "right": 1039,
+          "bottom": 999.625,
+          "left": 49
+        },
+        "camera": {
+          "position": [
+            682.2086933222456,
+            2.7050276936736655,
+            -79.87891509459611
+          ],
+          "target": [
+            682.274,
+            1.5,
+            -69.952
+          ],
+          "desiredPosition": [
+            682.2086933222456,
+            2.7050276936736655,
+            -79.87891509459611
+          ],
+          "viewTarget": [
+            682.274,
+            1.5,
+            -69.952
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 9.999999999999996,
+            "actualDistance": 9.999999999999996,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.1922113316796359,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": -3.1350139999999964,
+          "polar": 1.45,
+          "distance": 9.999999999999996,
+          "frontage": "south",
+          "azimuthBase": 3.141592653589793,
+          "relativeAzimuth": 0.006578653589797145,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            -0.999978360736516,
+            5.421010862427522e-20,
+            0.006578606137322114,
+            0,
+            0.0007927402581244692,
+            0.9927129910375885,
+            0.12050016177618972,
+            0,
+            -0.006530667775439271,
+            0.12050276936736659,
+            -0.9926915094596114,
+            0,
+            682.2086933222456,
+            2.7050276936736655,
+            -79.87891509459611,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        }
+      },
+      "savedView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:1568699671:434344416:11791924470",
+          "edgeDistance": 2.233865,
+          "height": 0,
+          "x": 682.274,
+          "y": 69.952
+        },
+        "camera": {
+          "azimuth": -3.135014,
+          "polar": 1.45,
+          "distance": 10,
+          "targetOffset": {
+            "x": 0,
+            "y": 0,
+            "height": 1.5
+          }
+        }
+      },
+      "player": {
+        "x": 682.274,
+        "y": 69.952,
+        "height": 0,
+        "edgeId": "osm:way:1568699671:434344416:11791924470",
+        "edgeDistance": 2.233865
+      },
+      "actualCamera": {
+        "position": [
+          682.2086933222456,
+          2.7050276936736655,
+          -79.87891509459611
+        ],
+        "target": [
+          682.274,
+          1.5,
+          -69.952
+        ],
+        "desiredPosition": [
+          682.2086933222456,
+          2.7050276936736655,
+          -79.87891509459611
+        ],
+        "viewTarget": [
+          682.274,
+          1.5,
+          -69.952
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 9.999999999999996,
+          "actualDistance": 9.999999999999996,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.1922113316796359,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": -3.1350139999999964,
+        "polar": 1.45,
+        "distance": 9.999999999999996,
+        "frontage": "south",
+        "azimuthBase": 3.141592653589793,
+        "relativeAzimuth": 0.006578653589797145,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          -0.999978360736516,
+          5.421010862427522e-20,
+          0.006578606137322114,
+          0,
+          0.0007927402581244692,
+          0.9927129910375885,
+          0.12050016177618972,
+          0,
+          -0.006530667775439271,
+          0.12050276936736659,
+          -0.9926915094596114,
+          0,
+          682.2086933222456,
+          2.7050276936736655,
+          -79.87891509459611,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "ground": {
+        "x": 682.274,
+        "y": 69.952,
+        "height": 0,
+        "hit": {
+          "height": 0,
+          "surfaceId": "shijo-east-ground",
+          "sourceIndex": 1049,
+          "sourceId": "shijo-east:walkable"
+        },
+        "inside": true
+      },
+      "lighting": {
+        "mode": "night",
+        "phase": "ready",
+        "rig": {
+          "status": "ready",
+          "sha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "expectedSha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "profile": null
+        },
+        "environment": {
+          "file": "/assets/neighborhoods/shijo-east/shared/environments/night-512.hdr",
+          "sha256": "b3a82ca4a2dcb3cf429b5f7b57f75877296fbc3d60b6a2ed2419be7f8971f41f"
+        },
+        "exposure": 1.18,
+        "environmentIntensity": 0.085
+      },
+      "screenshotRenderTotals": {
+        "frame": 65,
+        "calls": 55,
+        "triangles": 76635,
+        "points": 0,
+        "lines": 0
+      },
+      "primaryFrame": {
+        "checkId": "connector-e006-n000-visual-night-cached-shadow-primary-frame-budget",
+        "calls": 55,
+        "triangles": 76635,
+        "shadowUpdatesBefore": 21,
+        "shadowUpdatesAfter": 21,
+        "renderedFramesBefore": 26,
+        "renderedFramesAfter": 27
+      }
+    },
+    {
+      "file": "connector-e007-n000-review-day-canvas.png",
+      "bytes": 746111,
+      "sha256": "6906241db52c577c66c23b5e0626a804ffbb496668d5dccf24faa64658e9a322",
+      "mode": "day",
+      "scenarioId": "connector-e007-n000-visual-review",
+      "restoration": {
+        "sourceReportSha256": "5a5c9f94960fb3212ed01f9a5d606034f267de1e3c5ffa82e3748f75052a9cfd",
+        "sourcePackageSha256": "809a90dbabae9becc384e67f006275ca6b27f107f74c81f28f916c595601fb9e",
+        "pathIndex": 4,
+        "sampleIndex": 407,
+        "sourcePosition": {
+          "x": 749.921,
+          "y": 9.606,
+          "height": 0,
+          "edgeId": "osm:way:465066447:4600871803:11793855057",
+          "edgeDistance": 80.73545344483988
+        },
+        "nextSourcePosition": {
+          "x": 750.377,
+          "y": 9.624,
+          "height": 0,
+          "edgeId": "osm:way:465066447:4600871803:11793855057",
+          "edgeDistance": 80.27910020455923
+        },
+        "view": {
+          "version": 3,
+          "packId": "shijo-east",
+          "revision": 1,
+          "player": {
+            "x": 749.921,
+            "y": 9.606,
+            "height": 0,
+            "edgeId": "osm:way:465066447:4600871803:11793855057",
+            "edgeDistance": 80.73545344483988
+          },
+          "camera": {
+            "azimuth": -1.5313431256978474,
+            "polar": 1.45,
+            "distance": 10,
+            "targetOffset": {
+              "x": 0,
+              "y": 0,
+              "height": 1.5
+            }
+          }
+        },
+        "framing": "New authored review camera: follows the actual next recorded movement direction, distance10m, polar1.45, target height1.5m. The prior sample supplies position and edge identity only.",
+        "purpose": "Shijo east connector depth and grounding",
+        "description": "Previously walked position restored through a public journey session and production entry. This visual review does not repeat the full traversal."
+      },
+      "layout": {
+        "scrollX": 0,
+        "scrollY": 292,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentHeight": 2608,
+        "visualColumn": {
+          "x": 48,
+          "y": 209.796875,
+          "width": 992,
+          "height": 976.28125,
+          "top": 209.796875,
+          "right": 1040,
+          "bottom": 1186.078125,
+          "left": 48
+        },
+        "canvas": {
+          "x": 49,
+          "y": 282.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 282.796875,
+          "right": 1039,
+          "bottom": 999.625,
+          "left": 49
+        },
+        "camera": {
+          "position": [
+            740.0015951989539,
+            2.7050276936736655,
+            -9.214443298536386
+          ],
+          "target": [
+            749.921,
+            1.5,
+            -9.606
+          ],
+          "desiredPosition": [
+            740.0015951989539,
+            2.7050276936736655,
+            -9.214443298536386
+          ],
+          "viewTarget": [
+            749.921,
+            1.5,
+            -9.606
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 9.999999999999996,
+            "actualDistance": 9.999999999999996,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.19221133167963433,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": -1.531343,
+          "polar": 1.45,
+          "distance": 9.999999999999996,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": -1.531343,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            0.03944309231355536,
+            -6.938893903907228e-18,
+            0.9992218184511107,
+            0,
+            0.12040899633565486,
+            0.9927129910375885,
+            -0.004753001856196107,
+            0,
+            -0.9919404801046202,
+            0.1205027693673666,
+            0.03915567014636134,
+            0,
+            740.0015951989539,
+            2.7050276936736655,
+            -9.214443298536386,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        }
+      },
+      "savedView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:465066447:4600871803:11793855057",
+          "edgeDistance": 80.735453,
+          "height": 0,
+          "x": 749.921,
+          "y": 9.606
+        },
+        "camera": {
+          "azimuth": -1.531343,
+          "polar": 1.45,
+          "distance": 10,
+          "targetOffset": {
+            "x": 0,
+            "y": 0,
+            "height": 1.5
+          }
+        }
+      },
+      "player": {
+        "x": 749.921,
+        "y": 9.606,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600871803:11793855057",
+        "edgeDistance": 80.735453
+      },
+      "actualCamera": {
+        "position": [
+          740.0015951989539,
+          2.7050276936736655,
+          -9.214443298536386
+        ],
+        "target": [
+          749.921,
+          1.5,
+          -9.606
+        ],
+        "desiredPosition": [
+          740.0015951989539,
+          2.7050276936736655,
+          -9.214443298536386
+        ],
+        "viewTarget": [
+          749.921,
+          1.5,
+          -9.606
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 9.999999999999996,
+          "actualDistance": 9.999999999999996,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.19221133167963433,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": -1.531343,
+        "polar": 1.45,
+        "distance": 9.999999999999996,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": -1.531343,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.03944309231355536,
+          -6.938893903907228e-18,
+          0.9992218184511107,
+          0,
+          0.12040899633565486,
+          0.9927129910375885,
+          -0.004753001856196107,
+          0,
+          -0.9919404801046202,
+          0.1205027693673666,
+          0.03915567014636134,
+          0,
+          740.0015951989539,
+          2.7050276936736655,
+          -9.214443298536386,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "ground": {
+        "x": 749.921,
+        "y": 9.606,
+        "height": 0,
+        "hit": {
+          "height": 0,
+          "surfaceId": "shijo-east-ground",
+          "sourceIndex": 1049,
+          "sourceId": "shijo-east:walkable"
+        },
+        "inside": true
+      },
+      "lighting": {
+        "mode": "day",
+        "phase": "ready",
+        "rig": {
+          "status": "ready",
+          "sha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "expectedSha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "profile": null
+        },
+        "environment": {
+          "file": "/assets/neighborhoods/shijo-east/shared/environments/day-512.hdr",
+          "sha256": "efb72f542365dfdc25d2f9ed20983b34e74fd33f90d55b8763813f4d6dd35717"
+        },
+        "exposure": 1.05,
+        "environmentIntensity": 0.65
+      },
+      "screenshotRenderTotals": {
+        "frame": 47,
+        "calls": 58,
+        "triangles": 79793,
+        "points": 0,
+        "lines": 0
+      },
+      "primaryFrame": {
+        "checkId": "connector-e007-n000-visual-day-cached-shadow-primary-frame-budget",
+        "calls": 58,
+        "triangles": 79793,
+        "shadowUpdatesBefore": 20,
+        "shadowUpdatesAfter": 20,
+        "renderedFramesBefore": 27,
+        "renderedFramesAfter": 28
+      }
+    },
+    {
+      "file": "connector-e007-n000-review-night-canvas.png",
+      "bytes": 618329,
+      "sha256": "50ac0a73c9806befa6ddf16febf216573b6e9ae3675643d2269195d60ad7a039",
+      "mode": "night",
+      "scenarioId": "connector-e007-n000-visual-review",
+      "restoration": {
+        "sourceReportSha256": "5a5c9f94960fb3212ed01f9a5d606034f267de1e3c5ffa82e3748f75052a9cfd",
+        "sourcePackageSha256": "809a90dbabae9becc384e67f006275ca6b27f107f74c81f28f916c595601fb9e",
+        "pathIndex": 4,
+        "sampleIndex": 407,
+        "sourcePosition": {
+          "x": 749.921,
+          "y": 9.606,
+          "height": 0,
+          "edgeId": "osm:way:465066447:4600871803:11793855057",
+          "edgeDistance": 80.73545344483988
+        },
+        "nextSourcePosition": {
+          "x": 750.377,
+          "y": 9.624,
+          "height": 0,
+          "edgeId": "osm:way:465066447:4600871803:11793855057",
+          "edgeDistance": 80.27910020455923
+        },
+        "view": {
+          "version": 3,
+          "packId": "shijo-east",
+          "revision": 1,
+          "player": {
+            "x": 749.921,
+            "y": 9.606,
+            "height": 0,
+            "edgeId": "osm:way:465066447:4600871803:11793855057",
+            "edgeDistance": 80.73545344483988
+          },
+          "camera": {
+            "azimuth": -1.5313431256978474,
+            "polar": 1.45,
+            "distance": 10,
+            "targetOffset": {
+              "x": 0,
+              "y": 0,
+              "height": 1.5
+            }
+          }
+        },
+        "framing": "New authored review camera: follows the actual next recorded movement direction, distance10m, polar1.45, target height1.5m. The prior sample supplies position and edge identity only.",
+        "purpose": "Shijo east connector depth and grounding",
+        "description": "Previously walked position restored through a public journey session and production entry. This visual review does not repeat the full traversal."
+      },
+      "layout": {
+        "scrollX": 0,
+        "scrollY": 292,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentHeight": 2608,
+        "visualColumn": {
+          "x": 48,
+          "y": 209.796875,
+          "width": 992,
+          "height": 976.28125,
+          "top": 209.796875,
+          "right": 1040,
+          "bottom": 1186.078125,
+          "left": 48
+        },
+        "canvas": {
+          "x": 49,
+          "y": 282.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 282.796875,
+          "right": 1039,
+          "bottom": 999.625,
+          "left": 49
+        },
+        "camera": {
+          "position": [
+            740.0015951989539,
+            2.7050276936736655,
+            -9.214443298536386
+          ],
+          "target": [
+            749.921,
+            1.5,
+            -9.606
+          ],
+          "desiredPosition": [
+            740.0015951989539,
+            2.7050276936736655,
+            -9.214443298536386
+          ],
+          "viewTarget": [
+            749.921,
+            1.5,
+            -9.606
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 9.999999999999996,
+            "actualDistance": 9.999999999999996,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.19221133167963433,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": -1.531343,
+          "polar": 1.45,
+          "distance": 9.999999999999996,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": -1.531343,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            0.03944309231355536,
+            -6.938893903907228e-18,
+            0.9992218184511107,
+            0,
+            0.12040899633565486,
+            0.9927129910375885,
+            -0.004753001856196107,
+            0,
+            -0.9919404801046202,
+            0.1205027693673666,
+            0.03915567014636134,
+            0,
+            740.0015951989539,
+            2.7050276936736655,
+            -9.214443298536386,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        }
+      },
+      "savedView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:465066447:4600871803:11793855057",
+          "edgeDistance": 80.735453,
+          "height": 0,
+          "x": 749.921,
+          "y": 9.606
+        },
+        "camera": {
+          "azimuth": -1.531343,
+          "polar": 1.45,
+          "distance": 10,
+          "targetOffset": {
+            "x": 0,
+            "y": 0,
+            "height": 1.5
+          }
+        }
+      },
+      "player": {
+        "x": 749.921,
+        "y": 9.606,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600871803:11793855057",
+        "edgeDistance": 80.735453
+      },
+      "actualCamera": {
+        "position": [
+          740.0015951989539,
+          2.7050276936736655,
+          -9.214443298536386
+        ],
+        "target": [
+          749.921,
+          1.5,
+          -9.606
+        ],
+        "desiredPosition": [
+          740.0015951989539,
+          2.7050276936736655,
+          -9.214443298536386
+        ],
+        "viewTarget": [
+          749.921,
+          1.5,
+          -9.606
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 9.999999999999996,
+          "actualDistance": 9.999999999999996,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.19221133167963433,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": -1.531343,
+        "polar": 1.45,
+        "distance": 9.999999999999996,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": -1.531343,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.03944309231355536,
+          -6.938893903907228e-18,
+          0.9992218184511107,
+          0,
+          0.12040899633565486,
+          0.9927129910375885,
+          -0.004753001856196107,
+          0,
+          -0.9919404801046202,
+          0.1205027693673666,
+          0.03915567014636134,
+          0,
+          740.0015951989539,
+          2.7050276936736655,
+          -9.214443298536386,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "ground": {
+        "x": 749.921,
+        "y": 9.606,
+        "height": 0,
+        "hit": {
+          "height": 0,
+          "surfaceId": "shijo-east-ground",
+          "sourceIndex": 1049,
+          "sourceId": "shijo-east:walkable"
+        },
+        "inside": true
+      },
+      "lighting": {
+        "mode": "night",
+        "phase": "ready",
+        "rig": {
+          "status": "ready",
+          "sha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "expectedSha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "profile": null
+        },
+        "environment": {
+          "file": "/assets/neighborhoods/shijo-east/shared/environments/night-512.hdr",
+          "sha256": "b3a82ca4a2dcb3cf429b5f7b57f75877296fbc3d60b6a2ed2419be7f8971f41f"
+        },
+        "exposure": 1.18,
+        "environmentIntensity": 0.085
+      },
+      "screenshotRenderTotals": {
+        "frame": 68,
+        "calls": 58,
+        "triangles": 79793,
+        "points": 0,
+        "lines": 0
+      },
+      "primaryFrame": {
+        "checkId": "connector-e007-n000-visual-night-cached-shadow-primary-frame-budget",
+        "calls": 58,
+        "triangles": 79793,
+        "shadowUpdatesBefore": 21,
+        "shadowUpdatesAfter": 21,
+        "renderedFramesBefore": 29,
+        "renderedFramesAfter": 30
+      }
+    },
+    {
+      "file": "connector-e008-n000-review-day-canvas.png",
+      "bytes": 678771,
+      "sha256": "882902a543eb839be74ae8769ffd431ac3ba92b4a13845555e32e624b3a24388",
+      "mode": "day",
+      "scenarioId": "connector-e008-n000-visual-review",
+      "restoration": {
+        "sourceReportSha256": "5a5c9f94960fb3212ed01f9a5d606034f267de1e3c5ffa82e3748f75052a9cfd",
+        "sourcePackageSha256": "809a90dbabae9becc384e67f006275ca6b27f107f74c81f28f916c595601fb9e",
+        "pathIndex": 4,
+        "sampleIndex": 631,
+        "sourcePosition": {
+          "x": 870.317,
+          "y": 35.079,
+          "height": 0,
+          "edgeId": "osm:way:465069409:2737069399:4600891621",
+          "edgeDistance": 5.0331848462637145
+        },
+        "nextSourcePosition": {
+          "x": 871.229,
+          "y": 35.079,
+          "height": 0,
+          "edgeId": "osm:way:465069409:2737069399:4600891621",
+          "edgeDistance": 4.12118519790679
+        },
+        "view": {
+          "version": 3,
+          "packId": "shijo-east",
+          "revision": 1,
+          "player": {
+            "x": 870.317,
+            "y": 35.079,
+            "height": 0,
+            "edgeId": "osm:way:465069409:2737069399:4600891621",
+            "edgeDistance": 5.0331848462637145
+          },
+          "camera": {
+            "azimuth": -1.5707963267948966,
+            "polar": 1.45,
+            "distance": 10,
+            "targetOffset": {
+              "x": 0,
+              "y": 0,
+              "height": 1.5
+            }
+          }
+        },
+        "framing": "New authored review camera: follows the actual next recorded movement direction, distance10m, polar1.45, target height1.5m. The prior sample supplies position and edge identity only.",
+        "purpose": "Mapped crossing detour and raised street edges",
+        "description": "Previously walked position restored through a public journey session and production entry. This visual review does not repeat the full traversal."
+      },
+      "layout": {
+        "scrollX": 0,
+        "scrollY": 292,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentHeight": 2608,
+        "visualColumn": {
+          "x": 48,
+          "y": 209.796875,
+          "width": 992,
+          "height": 976.28125,
+          "top": 209.796875,
+          "right": 1040,
+          "bottom": 1186.078125,
+          "left": 48
+        },
+        "canvas": {
+          "x": 49,
+          "y": 282.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 282.796875,
+          "right": 1039,
+          "bottom": 999.625,
+          "left": 49
+        },
+        "camera": {
+          "position": [
+            861.1273571443521,
+            2.6155061166724938,
+            -35.078996996871616
+          ],
+          "target": [
+            870.3170000000001,
+            1.5,
+            -35.079
+          ],
+          "desiredPosition": [
+            860.3898700896248,
+            2.7050276936736664,
+            -35.07899675586461
+          ],
+          "viewTarget": [
+            870.3170000000001,
+            1.5,
+            -35.079
+          ],
+          "obstruction": {
+            "active": true,
+            "desiredDistance": 10.000000000000002,
+            "actualDistance": 9.257099422103277,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.2073915367507985,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": -1.570796,
+          "polar": 1.45,
+          "distance": 10.000000000000002,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": -1.570796,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            3.2679489680997875e-7,
+            -6.938893903907228e-18,
+            0.9999999999999465,
+            0,
+            0.1205027693673599,
+            0.9927129910375885,
+            -3.9379690050522775e-8,
+            0,
+            -0.9927129910375354,
+            0.12050276936736633,
+            3.2441353947643137e-7,
+            0,
+            861.1273571443521,
+            2.6155061166724938,
+            -35.078996996871616,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        }
+      },
+      "savedView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:465069409:2737069399:4600891621",
+          "edgeDistance": 5.033185,
+          "height": 0,
+          "x": 870.317,
+          "y": 35.079
+        },
+        "camera": {
+          "azimuth": -1.570796,
+          "polar": 1.45,
+          "distance": 10,
+          "targetOffset": {
+            "x": 0,
+            "y": 0,
+            "height": 1.5
+          }
+        }
+      },
+      "player": {
+        "x": 870.317,
+        "y": 35.079,
+        "height": 0,
+        "edgeId": "osm:way:465069409:2737069399:4600891621",
+        "edgeDistance": 5.033185
+      },
+      "actualCamera": {
+        "position": [
+          861.1273571443521,
+          2.6155061166724938,
+          -35.078996996871616
+        ],
+        "target": [
+          870.3170000000001,
+          1.5,
+          -35.079
+        ],
+        "desiredPosition": [
+          860.3898700896248,
+          2.7050276936736664,
+          -35.07899675586461
+        ],
+        "viewTarget": [
+          870.3170000000001,
+          1.5,
+          -35.079
+        ],
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 10.000000000000002,
+          "actualDistance": 9.257099422103277,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.2073915367507985,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": -1.570796,
+        "polar": 1.45,
+        "distance": 10.000000000000002,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": -1.570796,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          3.2679489680997875e-7,
+          -6.938893903907228e-18,
+          0.9999999999999465,
+          0,
+          0.1205027693673599,
+          0.9927129910375885,
+          -3.9379690050522775e-8,
+          0,
+          -0.9927129910375354,
+          0.12050276936736633,
+          3.2441353947643137e-7,
+          0,
+          861.1273571443521,
+          2.6155061166724938,
+          -35.078996996871616,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "ground": {
+        "x": 870.317,
+        "y": 35.079,
+        "height": 0,
+        "hit": {
+          "height": 0,
+          "surfaceId": "shijo-east-ground",
+          "sourceIndex": 1049,
+          "sourceId": "shijo-east:walkable"
+        },
+        "inside": true
+      },
+      "lighting": {
+        "mode": "day",
+        "phase": "ready",
+        "rig": {
+          "status": "ready",
+          "sha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "expectedSha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "profile": null
+        },
+        "environment": {
+          "file": "/assets/neighborhoods/shijo-east/shared/environments/day-512.hdr",
+          "sha256": "efb72f542365dfdc25d2f9ed20983b34e74fd33f90d55b8763813f4d6dd35717"
+        },
+        "exposure": 1.05,
+        "environmentIntensity": 0.65
+      },
+      "screenshotRenderTotals": {
+        "frame": 44,
+        "calls": 103,
+        "triangles": 86225,
+        "points": 0,
+        "lines": 0
+      },
+      "primaryFrame": {
+        "checkId": "connector-e008-n000-visual-day-cached-shadow-primary-frame-budget",
+        "calls": 103,
+        "triangles": 86225,
+        "shadowUpdatesBefore": 21,
+        "shadowUpdatesAfter": 21,
+        "renderedFramesBefore": 24,
+        "renderedFramesAfter": 25
+      }
+    },
+    {
+      "file": "connector-e008-n000-review-night-canvas.png",
+      "bytes": 488243,
+      "sha256": "619f3d50ffbb987e1036e4a0e3d3c295e345672232ff7c0609dff3ac77083409",
+      "mode": "night",
+      "scenarioId": "connector-e008-n000-visual-review",
+      "restoration": {
+        "sourceReportSha256": "5a5c9f94960fb3212ed01f9a5d606034f267de1e3c5ffa82e3748f75052a9cfd",
+        "sourcePackageSha256": "809a90dbabae9becc384e67f006275ca6b27f107f74c81f28f916c595601fb9e",
+        "pathIndex": 4,
+        "sampleIndex": 631,
+        "sourcePosition": {
+          "x": 870.317,
+          "y": 35.079,
+          "height": 0,
+          "edgeId": "osm:way:465069409:2737069399:4600891621",
+          "edgeDistance": 5.0331848462637145
+        },
+        "nextSourcePosition": {
+          "x": 871.229,
+          "y": 35.079,
+          "height": 0,
+          "edgeId": "osm:way:465069409:2737069399:4600891621",
+          "edgeDistance": 4.12118519790679
+        },
+        "view": {
+          "version": 3,
+          "packId": "shijo-east",
+          "revision": 1,
+          "player": {
+            "x": 870.317,
+            "y": 35.079,
+            "height": 0,
+            "edgeId": "osm:way:465069409:2737069399:4600891621",
+            "edgeDistance": 5.0331848462637145
+          },
+          "camera": {
+            "azimuth": -1.5707963267948966,
+            "polar": 1.45,
+            "distance": 10,
+            "targetOffset": {
+              "x": 0,
+              "y": 0,
+              "height": 1.5
+            }
+          }
+        },
+        "framing": "New authored review camera: follows the actual next recorded movement direction, distance10m, polar1.45, target height1.5m. The prior sample supplies position and edge identity only.",
+        "purpose": "Mapped crossing detour and raised street edges",
+        "description": "Previously walked position restored through a public journey session and production entry. This visual review does not repeat the full traversal."
+      },
+      "layout": {
+        "scrollX": 0,
+        "scrollY": 292,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentHeight": 2608,
+        "visualColumn": {
+          "x": 48,
+          "y": 209.796875,
+          "width": 992,
+          "height": 976.28125,
+          "top": 209.796875,
+          "right": 1040,
+          "bottom": 1186.078125,
+          "left": 48
+        },
+        "canvas": {
+          "x": 49,
+          "y": 282.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 282.796875,
+          "right": 1039,
+          "bottom": 999.625,
+          "left": 49
+        },
+        "camera": {
+          "position": [
+            861.1273571443521,
+            2.6155061166724938,
+            -35.078996996871616
+          ],
+          "target": [
+            870.3170000000001,
+            1.5,
+            -35.079
+          ],
+          "desiredPosition": [
+            860.3898700896248,
+            2.7050276936736664,
+            -35.07899675586461
+          ],
+          "viewTarget": [
+            870.3170000000001,
+            1.5,
+            -35.079
+          ],
+          "obstruction": {
+            "active": true,
+            "desiredDistance": 10.000000000000002,
+            "actualDistance": 9.257099422103277,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.2073915367507985,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": -1.570796,
+          "polar": 1.45,
+          "distance": 10.000000000000002,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": -1.570796,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            3.2679489680997875e-7,
+            -6.938893903907228e-18,
+            0.9999999999999465,
+            0,
+            0.1205027693673599,
+            0.9927129910375885,
+            -3.9379690050522775e-8,
+            0,
+            -0.9927129910375354,
+            0.12050276936736633,
+            3.2441353947643137e-7,
+            0,
+            861.1273571443521,
+            2.6155061166724938,
+            -35.078996996871616,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        }
+      },
+      "savedView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:465069409:2737069399:4600891621",
+          "edgeDistance": 5.033185,
+          "height": 0,
+          "x": 870.317,
+          "y": 35.079
+        },
+        "camera": {
+          "azimuth": -1.570796,
+          "polar": 1.45,
+          "distance": 10,
+          "targetOffset": {
+            "x": 0,
+            "y": 0,
+            "height": 1.5
+          }
+        }
+      },
+      "player": {
+        "x": 870.317,
+        "y": 35.079,
+        "height": 0,
+        "edgeId": "osm:way:465069409:2737069399:4600891621",
+        "edgeDistance": 5.033185
+      },
+      "actualCamera": {
+        "position": [
+          861.1273571443521,
+          2.6155061166724938,
+          -35.078996996871616
+        ],
+        "target": [
+          870.3170000000001,
+          1.5,
+          -35.079
+        ],
+        "desiredPosition": [
+          860.3898700896248,
+          2.7050276936736664,
+          -35.07899675586461
+        ],
+        "viewTarget": [
+          870.3170000000001,
+          1.5,
+          -35.079
+        ],
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 10.000000000000002,
+          "actualDistance": 9.257099422103277,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.2073915367507985,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": -1.570796,
+        "polar": 1.45,
+        "distance": 10.000000000000002,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": -1.570796,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          3.2679489680997875e-7,
+          -6.938893903907228e-18,
+          0.9999999999999465,
+          0,
+          0.1205027693673599,
+          0.9927129910375885,
+          -3.9379690050522775e-8,
+          0,
+          -0.9927129910375354,
+          0.12050276936736633,
+          3.2441353947643137e-7,
+          0,
+          861.1273571443521,
+          2.6155061166724938,
+          -35.078996996871616,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "ground": {
+        "x": 870.317,
+        "y": 35.079,
+        "height": 0,
+        "hit": {
+          "height": 0,
+          "surfaceId": "shijo-east-ground",
+          "sourceIndex": 1049,
+          "sourceId": "shijo-east:walkable"
+        },
+        "inside": true
+      },
+      "lighting": {
+        "mode": "night",
+        "phase": "ready",
+        "rig": {
+          "status": "ready",
+          "sha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "expectedSha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "profile": null
+        },
+        "environment": {
+          "file": "/assets/neighborhoods/shijo-east/shared/environments/night-512.hdr",
+          "sha256": "b3a82ca4a2dcb3cf429b5f7b57f75877296fbc3d60b6a2ed2419be7f8971f41f"
+        },
+        "exposure": 1.18,
+        "environmentIntensity": 0.085
+      },
+      "screenshotRenderTotals": {
+        "frame": 65,
+        "calls": 103,
+        "triangles": 86225,
+        "points": 0,
+        "lines": 0
+      },
+      "primaryFrame": {
+        "checkId": "connector-e008-n000-visual-night-cached-shadow-primary-frame-budget",
+        "calls": 103,
+        "triangles": 86225,
+        "shadowUpdatesBefore": 22,
+        "shadowUpdatesAfter": 22,
+        "renderedFramesBefore": 26,
+        "renderedFramesAfter": 27
+      }
+    }
+  ],
+  "scope": "Actual restored previously walked positions, with explicit new connector framing; this record does not repeat the entire route or establish unseen frontage coverage."
+}

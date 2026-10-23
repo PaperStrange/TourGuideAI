@@ -28,3 +28,11 @@ export function pointerMotionChangesCamera(controls, operation, previous, next, 
   return controls.enableZoom && Math.hypot(previous.x - other.x, previous.y - other.y)
     !== Math.hypot(next.x - other.x, next.y - other.y);
 }
+
+export function touchPanChangesTarget(controls, operation, previous, current) {
+  if (!controls.enabled || !controls.enablePan || operation !== 'dolly-pan'
+    || previous?.length !== 2 || current?.length !== 2) return false;
+  const midpoint = points => ({ x: (points[0].x + points[1].x) / 2, y: (points[0].y + points[1].y) / 2 });
+  const before = midpoint(previous), after = midpoint(current);
+  return before.x !== after.x || before.y !== after.y;
+}

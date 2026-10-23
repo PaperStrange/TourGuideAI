@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { PerspectiveCamera, MOUSE, TOUCH } from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { pointerOperation, pointerMotionChangesCamera } from '../src/runtime/camera-input.js';
+import { pointerOperation, pointerMotionChangesCamera, touchPanChangesTarget } from '../src/runtime/camera-input.js';
 
 test('native middle-button dolly adopts only vertical movement and respects public button mappings', () => {
   const controls = new OrbitControls(new PerspectiveCamera(), null);
@@ -33,4 +33,20 @@ test('three touch pointers have no camera operation while valid one- and two-poi
   assert.equal(pointerMotionChangesCamera(controls, 'dolly-rotate', pointer, { x: 3, y: 4 }, { x: 0, y: 0 }), true);
   controls.enabled = false;
   assert.equal(pointerMotionChangesCamera(controls, 'dolly-rotate', pointer, { x: 3, y: 4 }, { x: 0, y: 0 }), false);
+});
+
+test('a symmetric two-touch pinch retains its target while later translation in the same gesture changes it', () => {
+  const controls = new OrbitControls(new PerspectiveCamera(), null);
+  const start = [{ x: 100, y: 120 }, { x: 200, y: 120 }];
+  const pinched = [{ x: 80, y: 120 }, { x: 220, y: 120 }];
+  assert.equal(touchPanChangesTarget(controls, 'dolly-pan', start, pinched), false);
+  const translated = pinched.map(point => ({ x: point.x + 15, y: point.y - 8 }));
+  assert.equal(touchPanChangesTarget(controls, 'dolly-pan', start, translated), true);
+  assert.equal(touchPanChangesTarget(controls, 'dolly-rotate', start, translated), false);
+  assert.equal(touchPanChangesTarget(controls, 'dolly-pan', start, start), false);
+  assert.equal(touchPanChangesTarget(controls, 'dolly-pan', start, [translated[0]]), false);
+  controls.enablePan = false;
+  assert.equal(touchPanChangesTarget(controls, 'dolly-pan', start, translated), false);
+  controls.enablePan = true; controls.enabled = false;
+  assert.equal(touchPanChangesTarget(controls, 'dolly-pan', start, translated), false);
 });
