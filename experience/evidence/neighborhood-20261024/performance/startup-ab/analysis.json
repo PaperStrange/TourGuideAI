@@ -1,0 +1,1710 @@
+{
+  "analyzedAt": "2026-10-24T03:01:41.574Z",
+  "executedAt": {
+    "started": "2026-10-24T02:53:45.196Z",
+    "finished": "2026-10-24T02:54:55.238Z"
+  },
+  "sourceReportSha256": "bc9bd0f8a05c0a2734de2d548b5d36bac300aabaa876ff961117ff57e5d25410",
+  "executedDriverSha256": "ed6a6ad5116bd55ac3d3d85699686c35c915a507f578f412371c7f2109826567",
+  "originalResults": {
+    "passed": 19,
+    "failed": 2,
+    "failures": [
+      {
+        "id": "candidate-9:warm:opening-semantics",
+        "originalOutcome": "failed",
+        "differencesAgainstExecutedColdReference": [
+          {
+            "path": "player.edgeDistance",
+            "baseline": 0,
+            "candidate": 0.000334,
+            "delta": 0.000334
+          }
+        ]
+      },
+      {
+        "id": "candidate-10:warm:opening-semantics",
+        "originalOutcome": "failed",
+        "differencesAgainstExecutedColdReference": [
+          {
+            "path": "player.edgeDistance",
+            "baseline": 0,
+            "candidate": 0.000334,
+            "delta": 0.000334
+          }
+        ]
+      }
+    ]
+  },
+  "packageBindings": [
+    {
+      "id": "candidate-9",
+      "directory": "/workspace/TourGuideAI/artifacts/neighborhood-20261023/candidate-9",
+      "manifestSha256": "1720fc5907c0c6f2b292aa0e728bcaad8ddbd6c776de7aec2b5a35a513609c9b",
+      "neighborhood": {
+        "id": "shijo-east",
+        "revision": 1,
+        "sha256": "79b1a3ed91f0b672364c690e44de9278dce555fab0074ce0dc4aaa8add62f534"
+      },
+      "browser": "151.0.7922.173",
+      "graphics": {
+        "contextAttributes": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "high-performance",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": false,
+          "xrCompatible": false
+        },
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "viewport": {
+          "width": 990,
+          "height": 717,
+          "dpr": 1,
+          "rect": {
+            "x": 49,
+            "y": 574.796875,
+            "width": 990,
+            "height": 716.828125,
+            "top": 574.796875,
+            "right": 1039,
+            "bottom": 1291.625,
+            "left": 49
+          }
+        }
+      }
+    },
+    {
+      "id": "candidate-10",
+      "directory": "/workspace/TourGuideAI/artifacts/neighborhood-20261024/candidate-10",
+      "manifestSha256": "afc7934f1b0706ea59caae5e4b1a97a6a3f6366ac65b24cbe79bfc2c2d94e574",
+      "neighborhood": {
+        "id": "shijo-east",
+        "revision": 1,
+        "sha256": "e58257879fb4ead8af14022e71e329ee3309f9920eec6fe2cf4717276573d108"
+      },
+      "browser": "151.0.7922.173",
+      "graphics": {
+        "contextAttributes": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "high-performance",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": false,
+          "xrCompatible": false
+        },
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "viewport": {
+          "width": 990,
+          "height": 717,
+          "dpr": 1,
+          "rect": {
+            "x": 49,
+            "y": 574.796875,
+            "width": 990,
+            "height": 716.828125,
+            "top": 574.796875,
+            "right": 1039,
+            "bottom": 1291.625,
+            "left": 49
+          }
+        }
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "condition": "cold",
+      "originalFieldDifferences": [],
+      "actualCameraDifferences": [],
+      "groundDifferences": [],
+      "metrics": {
+        "firstUsableMs": {
+          "baseline": 8074.199999999953,
+          "candidate": 7799.199999999953,
+          "delta": -275
+        },
+        "requestedDetailMs": {
+          "baseline": 20572.699999999953,
+          "candidate": 16558,
+          "delta": -4014.6999999999534
+        },
+        "submittedDetailMs": {
+          "baseline": 21520.899999999907,
+          "candidate": 17390.899999999907,
+          "delta": -4130
+        },
+        "framesAtFirstUsable": {
+          "baseline": 1,
+          "candidate": 1,
+          "delta": 0
+        },
+        "framesAtDetail": {
+          "baseline": 18,
+          "candidate": 13,
+          "delta": -5
+        },
+        "shadowsAtDetail": {
+          "baseline": 14,
+          "candidate": 14,
+          "delta": 0
+        }
+      },
+      "mutations": {
+        "baseline": {
+          "records": 560,
+          "oldValueEqualsObservedFinal": 537,
+          "workMs": [
+            1.1999999999534339,
+            0.4000000001396984,
+            1,
+            0.09999999986030161,
+            0.2999999998137355,
+            0,
+            0.19999999995343387,
+            0.20000000018626451,
+            0.10000000009313226,
+            0.09999999986030161,
+            0.19999999995343387,
+            0.30000000004656613,
+            0.09999999986030161,
+            0.10000000009313226,
+            0,
+            0.10000000009313226,
+            0,
+            0,
+            0.19999999995343387,
+            0.10000000009313226,
+            0.10000000009313226,
+            0,
+            0.09999999986030161,
+            0,
+            0.10000000009313226,
+            0.10000000009313226,
+            0,
+            0,
+            0.19999999995343387,
+            0,
+            0.20000000018626451,
+            0.10000000009313226,
+            0,
+            0,
+            0,
+            0,
+            0.09999999986030161,
+            0,
+            0.09999999986030161,
+            0.10000000009313226,
+            0.09999999986030161,
+            0,
+            0,
+            0.10000000009313226,
+            0,
+            0.09999999986030161,
+            0,
+            0,
+            0.19999999995343387,
+            0,
+            0,
+            0
+          ],
+          "fields": {
+            "lighting-day:childList": {
+              "records": 2,
+              "oldValueEqualsObservedFinal": 1
+            },
+            "lighting-night:childList": {
+              "records": 2,
+              "oldValueEqualsObservedFinal": 1
+            },
+            "scene-retry:childList": {
+              "records": 38,
+              "oldValueEqualsObservedFinal": 37
+            },
+            "solo-inspect:childList": {
+              "records": 44,
+              "oldValueEqualsObservedFinal": 43
+            },
+            "solo-keep:childList": {
+              "records": 2,
+              "oldValueEqualsObservedFinal": 1
+            },
+            "solo-inspect:attributes:aria-pressed": {
+              "records": 42,
+              "oldValueEqualsObservedFinal": 42
+            },
+            "preview-kind:childList": {
+              "records": 36,
+              "oldValueEqualsObservedFinal": 35
+            },
+            "preview-title:childList": {
+              "records": 36,
+              "oldValueEqualsObservedFinal": 35
+            },
+            "preview-note:childList": {
+              "records": 36,
+              "oldValueEqualsObservedFinal": 35
+            },
+            "view-guidance:childList": {
+              "records": 36,
+              "oldValueEqualsObservedFinal": 35
+            },
+            "lighting-day:attributes:aria-pressed": {
+              "records": 36,
+              "oldValueEqualsObservedFinal": 35
+            },
+            "lighting-day:attributes:disabled": {
+              "records": 14,
+              "oldValueEqualsObservedFinal": 12
+            },
+            "lighting-night:attributes:aria-pressed": {
+              "records": 36,
+              "oldValueEqualsObservedFinal": 35
+            },
+            "lighting-night:attributes:disabled": {
+              "records": 14,
+              "oldValueEqualsObservedFinal": 12
+            },
+            "lighting-controls:attributes:aria-busy": {
+              "records": 36,
+              "oldValueEqualsObservedFinal": 35
+            },
+            "scene-status:childList": {
+              "records": 14,
+              "oldValueEqualsObservedFinal": 12
+            },
+            "scene-retry:attributes:hidden": {
+              "records": 36,
+              "oldValueEqualsObservedFinal": 36
+            },
+            "solo-inspect:attributes:disabled": {
+              "records": 18,
+              "oldValueEqualsObservedFinal": 16
+            },
+            "solo-keep:attributes:disabled": {
+              "records": 19,
+              "oldValueEqualsObservedFinal": 18
+            },
+            "solo-hint:childList": {
+              "records": 40,
+              "oldValueEqualsObservedFinal": 39
+            },
+            "scene-status:attributes:hidden": {
+              "records": 23,
+              "oldValueEqualsObservedFinal": 22
+            }
+          }
+        },
+        "candidate": {
+          "records": 185,
+          "oldValueEqualsObservedFinal": 162,
+          "workMs": [
+            0.5,
+            0.19999999995343387,
+            0.6999999999534339,
+            0.10000000009313226,
+            0.19999999995343387,
+            0,
+            0.09999999986030161,
+            0,
+            0,
+            0,
+            0,
+            0.20000000018626451,
+            0.10000000009313226,
+            0.19999999995343387,
+            0,
+            1,
+            0.09999999986030161,
+            0,
+            0,
+            0.10000000009313226,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0.19999999995343387,
+            0.10000000009313226,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0.10000000009313226,
+            0,
+            0,
+            0,
+            0,
+            0.09999999986030161,
+            0,
+            0,
+            0,
+            0
+          ],
+          "fields": {
+            "lighting-day:childList": {
+              "records": 2,
+              "oldValueEqualsObservedFinal": 1
+            },
+            "lighting-night:childList": {
+              "records": 2,
+              "oldValueEqualsObservedFinal": 1
+            },
+            "scene-retry:childList": {
+              "records": 11,
+              "oldValueEqualsObservedFinal": 10
+            },
+            "solo-inspect:childList": {
+              "records": 17,
+              "oldValueEqualsObservedFinal": 16
+            },
+            "solo-keep:childList": {
+              "records": 2,
+              "oldValueEqualsObservedFinal": 1
+            },
+            "solo-inspect:attributes:aria-pressed": {
+              "records": 15,
+              "oldValueEqualsObservedFinal": 15
+            },
+            "preview-kind:childList": {
+              "records": 9,
+              "oldValueEqualsObservedFinal": 8
+            },
+            "preview-title:childList": {
+              "records": 9,
+              "oldValueEqualsObservedFinal": 8
+            },
+            "preview-note:childList": {
+              "records": 9,
+              "oldValueEqualsObservedFinal": 8
+            },
+            "view-guidance:childList": {
+              "records": 9,
+              "oldValueEqualsObservedFinal": 8
+            },
+            "lighting-day:attributes:aria-pressed": {
+              "records": 9,
+              "oldValueEqualsObservedFinal": 8
+            },
+            "lighting-day:attributes:disabled": {
+              "records": 8,
+              "oldValueEqualsObservedFinal": 6
+            },
+            "lighting-night:attributes:aria-pressed": {
+              "records": 9,
+              "oldValueEqualsObservedFinal": 8
+            },
+            "lighting-night:attributes:disabled": {
+              "records": 8,
+              "oldValueEqualsObservedFinal": 6
+            },
+            "lighting-controls:attributes:aria-busy": {
+              "records": 9,
+              "oldValueEqualsObservedFinal": 8
+            },
+            "scene-status:childList": {
+              "records": 8,
+              "oldValueEqualsObservedFinal": 6
+            },
+            "scene-retry:attributes:hidden": {
+              "records": 9,
+              "oldValueEqualsObservedFinal": 9
+            },
+            "solo-inspect:attributes:disabled": {
+              "records": 12,
+              "oldValueEqualsObservedFinal": 10
+            },
+            "solo-keep:attributes:disabled": {
+              "records": 13,
+              "oldValueEqualsObservedFinal": 12
+            },
+            "solo-hint:childList": {
+              "records": 13,
+              "oldValueEqualsObservedFinal": 12
+            },
+            "scene-status:attributes:hidden": {
+              "records": 2,
+              "oldValueEqualsObservedFinal": 1
+            }
+          }
+        }
+      },
+      "observationCost": {
+        "baseline": {
+          "rafTotalMs": 30.499999999068677,
+          "rafMaxMs": 6.600000000093132,
+          "gaps": []
+        },
+        "candidate": {
+          "rafTotalMs": 53.29999999888241,
+          "rafMaxMs": 3.7999999998137355,
+          "gaps": []
+        }
+      },
+      "resources": {
+        "baseline": {
+          "residentGeometry": {
+            "meshes": 32,
+            "triangles": 21654
+          },
+          "streamedGeometry": {
+            "meshes": 84,
+            "triangles": 169539
+          },
+          "geometryTotals": {
+            "meshes": 116,
+            "triangles": 191193
+          },
+          "renderTotals": {
+            "frame": 37,
+            "calls": 153,
+            "triangles": 291559,
+            "points": 0,
+            "lines": 0
+          },
+          "textureMemory": {
+            "estimatedBytes": 47906815,
+            "sharedSceneBytes": 11184811,
+            "actorAndContact": {
+              "textures": [
+                {
+                  "uuid": "77abe34d-30a0-4a74-8277-5b628723a810",
+                  "width": 64,
+                  "height": 64,
+                  "faces": 1,
+                  "type": 1009,
+                  "format": 1023,
+                  "internalFormat": null,
+                  "generateMipmaps": true,
+                  "estimatedBytes": 21844,
+                  "mipLevels": 7,
+                  "bytesPerPixel": 4
+                }
+              ],
+              "estimatedBytes": 21844,
+              "complete": true
+            },
+            "lightingBytes": 36700160,
+            "complete": true,
+            "sharedSceneAssumption": "Unique shared image textures estimated as RGBA8 with a full mip chain (4/3 multiplier)",
+            "exclusions": [
+              "Driver alignment/metadata, shader programs, vertex/index buffers and main canvas/compositor buffers",
+              "Transient HDR decoding/upload and conversion peak; the raw HDR texture is disposed after PMREM conversion"
+            ]
+          },
+          "stream": {
+            "residentCells": 6,
+            "nearCells": 3,
+            "retainedBytes": 8322768,
+            "resourceCount": 48,
+            "textureCount": 32,
+            "estimatedTextureBytes": 11184811,
+            "loadedBytes": 4649305,
+            "decodedBytes": 10688540,
+            "releasedModels": 3,
+            "downloads": {
+              "active": 0,
+              "queued": 0,
+              "peak": 2,
+              "concurrency": 2
+            },
+            "attachments": {
+              "active": 0,
+              "queued": 0,
+              "peak": 1,
+              "concurrency": 1
+            }
+          },
+          "fadedGroups": [],
+          "actorPosition": [
+            20.694,
+            0,
+            -2.33
+          ],
+          "actualCamera": {
+            "position": [
+              26.17273261800828,
+              11.579114671362701,
+              19.00399376918958
+            ],
+            "target": [
+              21.894,
+              1.6,
+              -0.1299999999999999
+            ],
+            "desiredPosition": [
+              26.17273261800828,
+              11.579114671362701,
+              19.00399376918958
+            ],
+            "viewTarget": [
+              21.894,
+              1.6,
+              -0.1299999999999999
+            ],
+            "obstruction": {
+              "active": false,
+              "desiredDistance": 22,
+              "actualDistance": 22,
+              "targetAdjusted": false,
+              "framingRecovered": false,
+              "actorInFrame": true,
+              "actorVerticalOccupancy": 0.07224333106512947,
+              "recoveryFits": true,
+              "minimumSceneDistance": 5,
+              "clearance": 0.35,
+              "angleOffset": 0,
+              "settling": false
+            },
+            "azimuth": 0.22000000000000006,
+            "polar": 1.1,
+            "distance": 22,
+            "frontage": "north",
+            "azimuthBase": 0,
+            "relativeAzimuth": 0.22000000000000006,
+            "enabled": true,
+            "damping": true,
+            "transitioning": false,
+            "solo": true,
+            "inspecting": false,
+            "inspectionAimed": false,
+            "inspectionPanned": false,
+            "panning": false,
+            "projectionMatrix": [
+              1.626675118070023,
+              0,
+              0,
+              0,
+              0,
+              2.2460367739042155,
+              0,
+              0,
+              0,
+              0,
+              -1.0008575103615833,
+              -1,
+              0,
+              0,
+              -0.3001286265542375,
+              0
+            ],
+            "matrixWorld": [
+              0.9758974493306055,
+              0,
+              -0.21822962308086935,
+              0,
+              -0.098988110609648,
+              0.8912073600614353,
+              -0.4426632979254766,
+              0,
+              0.19448784627310367,
+              0.4535961214255774,
+              0.8697269895086173,
+              0,
+              26.17273261800828,
+              11.579114671362701,
+              19.00399376918958,
+              1
+            ],
+            "limits": {
+              "polar": [
+                0.55,
+                1.49
+              ],
+              "distance": [
+                5,
+                55
+              ],
+              "targetXY": 40,
+              "targetHeight": [
+                0.5,
+                40
+              ]
+            }
+          },
+          "ground": {
+            "x": 20.694,
+            "y": 2.33,
+            "height": 0,
+            "hit": {
+              "height": 0,
+              "surfaceId": "shijo-east-ground",
+              "sourceIndex": 1049,
+              "sourceId": "shijo-east:walkable"
+            },
+            "inside": true
+          }
+        },
+        "candidate": {
+          "residentGeometry": {
+            "meshes": 32,
+            "triangles": 21654
+          },
+          "streamedGeometry": {
+            "meshes": 84,
+            "triangles": 169547
+          },
+          "geometryTotals": {
+            "meshes": 116,
+            "triangles": 191201
+          },
+          "renderTotals": {
+            "frame": 32,
+            "calls": 153,
+            "triangles": 291559,
+            "points": 0,
+            "lines": 0
+          },
+          "textureMemory": {
+            "estimatedBytes": 47906815,
+            "sharedSceneBytes": 11184811,
+            "actorAndContact": {
+              "textures": [
+                {
+                  "uuid": "869f5a7a-5d2e-41a2-a873-63a42ac2ebd1",
+                  "width": 64,
+                  "height": 64,
+                  "faces": 1,
+                  "type": 1009,
+                  "format": 1023,
+                  "internalFormat": null,
+                  "generateMipmaps": true,
+                  "estimatedBytes": 21844,
+                  "mipLevels": 7,
+                  "bytesPerPixel": 4
+                }
+              ],
+              "estimatedBytes": 21844,
+              "complete": true
+            },
+            "lightingBytes": 36700160,
+            "complete": true,
+            "sharedSceneAssumption": "Unique shared image textures estimated as RGBA8 with a full mip chain (4/3 multiplier)",
+            "exclusions": [
+              "Driver alignment/metadata, shader programs, vertex/index buffers and main canvas/compositor buffers",
+              "Transient HDR decoding/upload and conversion peak; the raw HDR texture is disposed after PMREM conversion"
+            ]
+          },
+          "stream": {
+            "residentCells": 6,
+            "nearCells": 3,
+            "retainedBytes": 8323123,
+            "resourceCount": 48,
+            "textureCount": 32,
+            "estimatedTextureBytes": 11184811,
+            "loadedBytes": 4648895,
+            "decodedBytes": 10688790,
+            "releasedModels": 3,
+            "downloads": {
+              "active": 0,
+              "queued": 0,
+              "peak": 2,
+              "concurrency": 2
+            },
+            "attachments": {
+              "active": 0,
+              "queued": 0,
+              "peak": 1,
+              "concurrency": 1
+            }
+          },
+          "fadedGroups": [],
+          "actorPosition": [
+            20.694,
+            0,
+            -2.33
+          ],
+          "actualCamera": {
+            "position": [
+              26.17273261800828,
+              11.579114671362701,
+              19.00399376918958
+            ],
+            "target": [
+              21.894,
+              1.6,
+              -0.1299999999999999
+            ],
+            "desiredPosition": [
+              26.17273261800828,
+              11.579114671362701,
+              19.00399376918958
+            ],
+            "viewTarget": [
+              21.894,
+              1.6,
+              -0.1299999999999999
+            ],
+            "obstruction": {
+              "active": false,
+              "desiredDistance": 22,
+              "actualDistance": 22,
+              "targetAdjusted": false,
+              "framingRecovered": false,
+              "actorInFrame": true,
+              "actorVerticalOccupancy": 0.07224333106512947,
+              "recoveryFits": true,
+              "minimumSceneDistance": 5,
+              "clearance": 0.35,
+              "angleOffset": 0,
+              "settling": false
+            },
+            "azimuth": 0.22000000000000006,
+            "polar": 1.1,
+            "distance": 22,
+            "frontage": "north",
+            "azimuthBase": 0,
+            "relativeAzimuth": 0.22000000000000006,
+            "enabled": true,
+            "damping": true,
+            "transitioning": false,
+            "solo": true,
+            "inspecting": false,
+            "inspectionAimed": false,
+            "inspectionPanned": false,
+            "panning": false,
+            "projectionMatrix": [
+              1.626675118070023,
+              0,
+              0,
+              0,
+              0,
+              2.2460367739042155,
+              0,
+              0,
+              0,
+              0,
+              -1.0008575103615833,
+              -1,
+              0,
+              0,
+              -0.3001286265542375,
+              0
+            ],
+            "matrixWorld": [
+              0.9758974493306055,
+              0,
+              -0.21822962308086935,
+              0,
+              -0.098988110609648,
+              0.8912073600614353,
+              -0.4426632979254766,
+              0,
+              0.19448784627310367,
+              0.4535961214255774,
+              0.8697269895086173,
+              0,
+              26.17273261800828,
+              11.579114671362701,
+              19.00399376918958,
+              1
+            ],
+            "limits": {
+              "polar": [
+                0.55,
+                1.49
+              ],
+              "distance": [
+                5,
+                55
+              ],
+              "targetXY": 40,
+              "targetHeight": [
+                0.5,
+                40
+              ]
+            }
+          },
+          "ground": {
+            "x": 20.694,
+            "y": 2.33,
+            "height": 0,
+            "hit": {
+              "height": 0,
+              "surfaceId": "shijo-east-ground",
+              "sourceIndex": 1049,
+              "sourceId": "shijo-east:walkable"
+            },
+            "inside": true
+          }
+        }
+      },
+      "resourceDifferences": [
+        {
+          "path": "streamedGeometry.triangles",
+          "baseline": 169539,
+          "candidate": 169547,
+          "delta": 8
+        },
+        {
+          "path": "geometryTotals.triangles",
+          "baseline": 191193,
+          "candidate": 191201,
+          "delta": 8
+        },
+        {
+          "path": "renderTotals.frame",
+          "baseline": 37,
+          "candidate": 32,
+          "delta": -5
+        },
+        {
+          "path": "textureMemory.actorAndContact.textures.0.uuid",
+          "baseline": "77abe34d-30a0-4a74-8277-5b628723a810",
+          "candidate": "869f5a7a-5d2e-41a2-a873-63a42ac2ebd1"
+        },
+        {
+          "path": "stream.retainedBytes",
+          "baseline": 8322768,
+          "candidate": 8323123,
+          "delta": 355
+        },
+        {
+          "path": "stream.loadedBytes",
+          "baseline": 4649305,
+          "candidate": 4648895,
+          "delta": -410
+        },
+        {
+          "path": "stream.decodedBytes",
+          "baseline": 10688540,
+          "candidate": 10688790,
+          "delta": 250
+        }
+      ]
+    },
+    {
+      "condition": "warm",
+      "originalFieldDifferences": [],
+      "actualCameraDifferences": [],
+      "groundDifferences": [],
+      "metrics": {
+        "firstUsableMs": {
+          "baseline": 2993,
+          "candidate": 2750.899999999907,
+          "delta": -242.10000000009313
+        },
+        "requestedDetailMs": {
+          "baseline": 13596,
+          "candidate": 12970.799999999814,
+          "delta": -625.2000000001863
+        },
+        "submittedDetailMs": {
+          "baseline": 14338.199999999953,
+          "candidate": 13969.699999999953,
+          "delta": -368.5
+        },
+        "framesAtFirstUsable": {
+          "baseline": 1,
+          "candidate": 1,
+          "delta": 0
+        },
+        "framesAtDetail": {
+          "baseline": 17,
+          "candidate": 16,
+          "delta": -1
+        },
+        "shadowsAtDetail": {
+          "baseline": 14,
+          "candidate": 14,
+          "delta": 0
+        }
+      },
+      "mutations": {
+        "baseline": {
+          "records": 572,
+          "oldValueEqualsObservedFinal": 549,
+          "workMs": [
+            0.39999999990686774,
+            0.09999999986030161,
+            1.3999999999068677,
+            0.19999999995343387,
+            0,
+            0,
+            0.09999999986030161,
+            0.19999999995343387,
+            0.19999999995343387,
+            0.09999999986030161,
+            0,
+            0.19999999995343387,
+            0.19999999995343387,
+            0,
+            0.2999999998137355,
+            0.19999999995343387,
+            0.09999999986030161,
+            0,
+            0.19999999995343387,
+            0,
+            0,
+            0.19999999995343387,
+            0,
+            0.09999999986030161,
+            0.09999999986030161,
+            0.19999999995343387,
+            0,
+            0.10000000009313226,
+            0.10000000009313226,
+            0,
+            0,
+            0.09999999986030161,
+            0,
+            0.19999999995343387,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0.09999999986030161,
+            0,
+            0,
+            0,
+            0.10000000009313226,
+            0,
+            0,
+            0.19999999995343387,
+            0
+          ],
+          "fields": {
+            "lighting-day:childList": {
+              "records": 2,
+              "oldValueEqualsObservedFinal": 1
+            },
+            "lighting-night:childList": {
+              "records": 2,
+              "oldValueEqualsObservedFinal": 1
+            },
+            "scene-retry:childList": {
+              "records": 38,
+              "oldValueEqualsObservedFinal": 37
+            },
+            "solo-inspect:childList": {
+              "records": 44,
+              "oldValueEqualsObservedFinal": 43
+            },
+            "solo-keep:childList": {
+              "records": 2,
+              "oldValueEqualsObservedFinal": 1
+            },
+            "solo-inspect:attributes:aria-pressed": {
+              "records": 42,
+              "oldValueEqualsObservedFinal": 42
+            },
+            "preview-kind:childList": {
+              "records": 36,
+              "oldValueEqualsObservedFinal": 35
+            },
+            "preview-title:childList": {
+              "records": 36,
+              "oldValueEqualsObservedFinal": 35
+            },
+            "preview-note:childList": {
+              "records": 36,
+              "oldValueEqualsObservedFinal": 35
+            },
+            "view-guidance:childList": {
+              "records": 36,
+              "oldValueEqualsObservedFinal": 35
+            },
+            "lighting-day:attributes:aria-pressed": {
+              "records": 36,
+              "oldValueEqualsObservedFinal": 35
+            },
+            "lighting-day:attributes:disabled": {
+              "records": 17,
+              "oldValueEqualsObservedFinal": 15
+            },
+            "lighting-night:attributes:aria-pressed": {
+              "records": 36,
+              "oldValueEqualsObservedFinal": 35
+            },
+            "lighting-night:attributes:disabled": {
+              "records": 17,
+              "oldValueEqualsObservedFinal": 15
+            },
+            "lighting-controls:attributes:aria-busy": {
+              "records": 36,
+              "oldValueEqualsObservedFinal": 35
+            },
+            "scene-status:childList": {
+              "records": 17,
+              "oldValueEqualsObservedFinal": 15
+            },
+            "scene-retry:attributes:hidden": {
+              "records": 36,
+              "oldValueEqualsObservedFinal": 36
+            },
+            "solo-inspect:attributes:disabled": {
+              "records": 21,
+              "oldValueEqualsObservedFinal": 19
+            },
+            "solo-keep:attributes:disabled": {
+              "records": 22,
+              "oldValueEqualsObservedFinal": 21
+            },
+            "solo-hint:childList": {
+              "records": 40,
+              "oldValueEqualsObservedFinal": 39
+            },
+            "scene-status:attributes:hidden": {
+              "records": 20,
+              "oldValueEqualsObservedFinal": 19
+            }
+          }
+        },
+        "candidate": {
+          "records": 185,
+          "oldValueEqualsObservedFinal": 162,
+          "workMs": [
+            0.20000000018626451,
+            0,
+            0.7000000001862645,
+            0.10000000009313226,
+            0,
+            0,
+            0.10000000009313226,
+            0,
+            0,
+            0,
+            0,
+            0.09999999986030161,
+            0,
+            0,
+            0.09999999986030161,
+            0.09999999986030161,
+            0.19999999995343387,
+            0,
+            0.10000000009313226,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0.09999999986030161,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0.30000000004656613,
+            0,
+            0,
+            0,
+            0
+          ],
+          "fields": {
+            "lighting-day:childList": {
+              "records": 2,
+              "oldValueEqualsObservedFinal": 1
+            },
+            "lighting-night:childList": {
+              "records": 2,
+              "oldValueEqualsObservedFinal": 1
+            },
+            "scene-retry:childList": {
+              "records": 11,
+              "oldValueEqualsObservedFinal": 10
+            },
+            "solo-inspect:childList": {
+              "records": 17,
+              "oldValueEqualsObservedFinal": 16
+            },
+            "solo-keep:childList": {
+              "records": 2,
+              "oldValueEqualsObservedFinal": 1
+            },
+            "solo-inspect:attributes:aria-pressed": {
+              "records": 15,
+              "oldValueEqualsObservedFinal": 15
+            },
+            "preview-kind:childList": {
+              "records": 9,
+              "oldValueEqualsObservedFinal": 8
+            },
+            "preview-title:childList": {
+              "records": 9,
+              "oldValueEqualsObservedFinal": 8
+            },
+            "preview-note:childList": {
+              "records": 9,
+              "oldValueEqualsObservedFinal": 8
+            },
+            "view-guidance:childList": {
+              "records": 9,
+              "oldValueEqualsObservedFinal": 8
+            },
+            "lighting-day:attributes:aria-pressed": {
+              "records": 9,
+              "oldValueEqualsObservedFinal": 8
+            },
+            "lighting-day:attributes:disabled": {
+              "records": 8,
+              "oldValueEqualsObservedFinal": 6
+            },
+            "lighting-night:attributes:aria-pressed": {
+              "records": 9,
+              "oldValueEqualsObservedFinal": 8
+            },
+            "lighting-night:attributes:disabled": {
+              "records": 8,
+              "oldValueEqualsObservedFinal": 6
+            },
+            "lighting-controls:attributes:aria-busy": {
+              "records": 9,
+              "oldValueEqualsObservedFinal": 8
+            },
+            "scene-status:childList": {
+              "records": 8,
+              "oldValueEqualsObservedFinal": 6
+            },
+            "scene-retry:attributes:hidden": {
+              "records": 9,
+              "oldValueEqualsObservedFinal": 9
+            },
+            "solo-inspect:attributes:disabled": {
+              "records": 12,
+              "oldValueEqualsObservedFinal": 10
+            },
+            "solo-keep:attributes:disabled": {
+              "records": 13,
+              "oldValueEqualsObservedFinal": 12
+            },
+            "solo-hint:childList": {
+              "records": 13,
+              "oldValueEqualsObservedFinal": 12
+            },
+            "scene-status:attributes:hidden": {
+              "records": 2,
+              "oldValueEqualsObservedFinal": 1
+            }
+          }
+        }
+      },
+      "observationCost": {
+        "baseline": {
+          "rafTotalMs": 22.90000000083819,
+          "rafMaxMs": 5.800000000046566,
+          "gaps": []
+        },
+        "candidate": {
+          "rafTotalMs": 31.699999999953434,
+          "rafMaxMs": 14,
+          "gaps": []
+        }
+      },
+      "resources": {
+        "baseline": {
+          "residentGeometry": {
+            "meshes": 32,
+            "triangles": 21654
+          },
+          "streamedGeometry": {
+            "meshes": 84,
+            "triangles": 169539
+          },
+          "geometryTotals": {
+            "meshes": 116,
+            "triangles": 191193
+          },
+          "renderTotals": {
+            "frame": 36,
+            "calls": 153,
+            "triangles": 291559,
+            "points": 0,
+            "lines": 0
+          },
+          "textureMemory": {
+            "estimatedBytes": 47906815,
+            "sharedSceneBytes": 11184811,
+            "actorAndContact": {
+              "textures": [
+                {
+                  "uuid": "e57624ce-60b0-484b-a3e4-2becea4e4050",
+                  "width": 64,
+                  "height": 64,
+                  "faces": 1,
+                  "type": 1009,
+                  "format": 1023,
+                  "internalFormat": null,
+                  "generateMipmaps": true,
+                  "estimatedBytes": 21844,
+                  "mipLevels": 7,
+                  "bytesPerPixel": 4
+                }
+              ],
+              "estimatedBytes": 21844,
+              "complete": true
+            },
+            "lightingBytes": 36700160,
+            "complete": true,
+            "sharedSceneAssumption": "Unique shared image textures estimated as RGBA8 with a full mip chain (4/3 multiplier)",
+            "exclusions": [
+              "Driver alignment/metadata, shader programs, vertex/index buffers and main canvas/compositor buffers",
+              "Transient HDR decoding/upload and conversion peak; the raw HDR texture is disposed after PMREM conversion"
+            ]
+          },
+          "stream": {
+            "residentCells": 6,
+            "nearCells": 3,
+            "retainedBytes": 8322768,
+            "resourceCount": 48,
+            "textureCount": 32,
+            "estimatedTextureBytes": 11184811,
+            "loadedBytes": 4649305,
+            "decodedBytes": 10688540,
+            "releasedModels": 3,
+            "downloads": {
+              "active": 0,
+              "queued": 0,
+              "peak": 2,
+              "concurrency": 2
+            },
+            "attachments": {
+              "active": 0,
+              "queued": 0,
+              "peak": 1,
+              "concurrency": 1
+            }
+          },
+          "fadedGroups": [],
+          "actorPosition": [
+            20.694,
+            0,
+            -2.33
+          ],
+          "actualCamera": {
+            "position": [
+              26.17273261800828,
+              11.579114671362701,
+              19.00399376918958
+            ],
+            "target": [
+              21.894,
+              1.6,
+              -0.1299999999999999
+            ],
+            "desiredPosition": [
+              26.17273261800828,
+              11.579114671362701,
+              19.00399376918958
+            ],
+            "viewTarget": [
+              21.894,
+              1.6,
+              -0.1299999999999999
+            ],
+            "obstruction": {
+              "active": false,
+              "desiredDistance": 22,
+              "actualDistance": 22,
+              "targetAdjusted": false,
+              "framingRecovered": false,
+              "actorInFrame": true,
+              "actorVerticalOccupancy": 0.07224333106512947,
+              "recoveryFits": true,
+              "minimumSceneDistance": 5,
+              "clearance": 0.35,
+              "angleOffset": 0,
+              "settling": false
+            },
+            "azimuth": 0.22000000000000006,
+            "polar": 1.1,
+            "distance": 22,
+            "frontage": "north",
+            "azimuthBase": 0,
+            "relativeAzimuth": 0.22000000000000006,
+            "enabled": true,
+            "damping": true,
+            "transitioning": false,
+            "solo": true,
+            "inspecting": false,
+            "inspectionAimed": false,
+            "inspectionPanned": false,
+            "panning": false,
+            "projectionMatrix": [
+              1.626675118070023,
+              0,
+              0,
+              0,
+              0,
+              2.2460367739042155,
+              0,
+              0,
+              0,
+              0,
+              -1.0008575103615833,
+              -1,
+              0,
+              0,
+              -0.3001286265542375,
+              0
+            ],
+            "matrixWorld": [
+              0.9758974493306055,
+              0,
+              -0.21822962308086935,
+              0,
+              -0.098988110609648,
+              0.8912073600614353,
+              -0.4426632979254766,
+              0,
+              0.19448784627310367,
+              0.4535961214255774,
+              0.8697269895086173,
+              0,
+              26.17273261800828,
+              11.579114671362701,
+              19.00399376918958,
+              1
+            ],
+            "limits": {
+              "polar": [
+                0.55,
+                1.49
+              ],
+              "distance": [
+                5,
+                55
+              ],
+              "targetXY": 40,
+              "targetHeight": [
+                0.5,
+                40
+              ]
+            }
+          },
+          "ground": {
+            "x": 20.694,
+            "y": 2.33,
+            "height": 0,
+            "hit": {
+              "height": 0,
+              "surfaceId": "shijo-east-ground",
+              "sourceIndex": 1049,
+              "sourceId": "shijo-east:walkable"
+            },
+            "inside": true
+          }
+        },
+        "candidate": {
+          "residentGeometry": {
+            "meshes": 32,
+            "triangles": 21654
+          },
+          "streamedGeometry": {
+            "meshes": 84,
+            "triangles": 169547
+          },
+          "geometryTotals": {
+            "meshes": 116,
+            "triangles": 191201
+          },
+          "renderTotals": {
+            "frame": 35,
+            "calls": 153,
+            "triangles": 291559,
+            "points": 0,
+            "lines": 0
+          },
+          "textureMemory": {
+            "estimatedBytes": 47906815,
+            "sharedSceneBytes": 11184811,
+            "actorAndContact": {
+              "textures": [
+                {
+                  "uuid": "0291f450-3212-47a5-be35-afcdb0818f29",
+                  "width": 64,
+                  "height": 64,
+                  "faces": 1,
+                  "type": 1009,
+                  "format": 1023,
+                  "internalFormat": null,
+                  "generateMipmaps": true,
+                  "estimatedBytes": 21844,
+                  "mipLevels": 7,
+                  "bytesPerPixel": 4
+                }
+              ],
+              "estimatedBytes": 21844,
+              "complete": true
+            },
+            "lightingBytes": 36700160,
+            "complete": true,
+            "sharedSceneAssumption": "Unique shared image textures estimated as RGBA8 with a full mip chain (4/3 multiplier)",
+            "exclusions": [
+              "Driver alignment/metadata, shader programs, vertex/index buffers and main canvas/compositor buffers",
+              "Transient HDR decoding/upload and conversion peak; the raw HDR texture is disposed after PMREM conversion"
+            ]
+          },
+          "stream": {
+            "residentCells": 6,
+            "nearCells": 3,
+            "retainedBytes": 8323123,
+            "resourceCount": 48,
+            "textureCount": 32,
+            "estimatedTextureBytes": 11184811,
+            "loadedBytes": 4648895,
+            "decodedBytes": 10688790,
+            "releasedModels": 3,
+            "downloads": {
+              "active": 0,
+              "queued": 0,
+              "peak": 2,
+              "concurrency": 2
+            },
+            "attachments": {
+              "active": 0,
+              "queued": 0,
+              "peak": 1,
+              "concurrency": 1
+            }
+          },
+          "fadedGroups": [],
+          "actorPosition": [
+            20.694,
+            0,
+            -2.33
+          ],
+          "actualCamera": {
+            "position": [
+              26.17273261800828,
+              11.579114671362701,
+              19.00399376918958
+            ],
+            "target": [
+              21.894,
+              1.6,
+              -0.1299999999999999
+            ],
+            "desiredPosition": [
+              26.17273261800828,
+              11.579114671362701,
+              19.00399376918958
+            ],
+            "viewTarget": [
+              21.894,
+              1.6,
+              -0.1299999999999999
+            ],
+            "obstruction": {
+              "active": false,
+              "desiredDistance": 22,
+              "actualDistance": 22,
+              "targetAdjusted": false,
+              "framingRecovered": false,
+              "actorInFrame": true,
+              "actorVerticalOccupancy": 0.07224333106512947,
+              "recoveryFits": true,
+              "minimumSceneDistance": 5,
+              "clearance": 0.35,
+              "angleOffset": 0,
+              "settling": false
+            },
+            "azimuth": 0.22000000000000006,
+            "polar": 1.1,
+            "distance": 22,
+            "frontage": "north",
+            "azimuthBase": 0,
+            "relativeAzimuth": 0.22000000000000006,
+            "enabled": true,
+            "damping": true,
+            "transitioning": false,
+            "solo": true,
+            "inspecting": false,
+            "inspectionAimed": false,
+            "inspectionPanned": false,
+            "panning": false,
+            "projectionMatrix": [
+              1.626675118070023,
+              0,
+              0,
+              0,
+              0,
+              2.2460367739042155,
+              0,
+              0,
+              0,
+              0,
+              -1.0008575103615833,
+              -1,
+              0,
+              0,
+              -0.3001286265542375,
+              0
+            ],
+            "matrixWorld": [
+              0.9758974493306055,
+              0,
+              -0.21822962308086935,
+              0,
+              -0.098988110609648,
+              0.8912073600614353,
+              -0.4426632979254766,
+              0,
+              0.19448784627310367,
+              0.4535961214255774,
+              0.8697269895086173,
+              0,
+              26.17273261800828,
+              11.579114671362701,
+              19.00399376918958,
+              1
+            ],
+            "limits": {
+              "polar": [
+                0.55,
+                1.49
+              ],
+              "distance": [
+                5,
+                55
+              ],
+              "targetXY": 40,
+              "targetHeight": [
+                0.5,
+                40
+              ]
+            }
+          },
+          "ground": {
+            "x": 20.694,
+            "y": 2.33,
+            "height": 0,
+            "hit": {
+              "height": 0,
+              "surfaceId": "shijo-east-ground",
+              "sourceIndex": 1049,
+              "sourceId": "shijo-east:walkable"
+            },
+            "inside": true
+          }
+        }
+      },
+      "resourceDifferences": [
+        {
+          "path": "streamedGeometry.triangles",
+          "baseline": 169539,
+          "candidate": 169547,
+          "delta": 8
+        },
+        {
+          "path": "geometryTotals.triangles",
+          "baseline": 191193,
+          "candidate": 191201,
+          "delta": 8
+        },
+        {
+          "path": "renderTotals.frame",
+          "baseline": 36,
+          "candidate": 35,
+          "delta": -1
+        },
+        {
+          "path": "textureMemory.actorAndContact.textures.0.uuid",
+          "baseline": "e57624ce-60b0-484b-a3e4-2becea4e4050",
+          "candidate": "0291f450-3212-47a5-be35-afcdb0818f29"
+        },
+        {
+          "path": "stream.retainedBytes",
+          "baseline": 8322768,
+          "candidate": 8323123,
+          "delta": 355
+        },
+        {
+          "path": "stream.loadedBytes",
+          "baseline": 4649305,
+          "candidate": 4648895,
+          "delta": -410
+        },
+        {
+          "path": "stream.decodedBytes",
+          "baseline": 10688540,
+          "candidate": 10688790,
+          "delta": 250
+        }
+      ]
+    }
+  ],
+  "changedFiles": 67,
+  "artifacts": {
+    "report": {
+      "file": "result.json.gz",
+      "sha256": "25f981192446cb3c1ed245d722d6629df39a76d897cc48c70fd085cce5ac1901",
+      "decodedSha256": "bc9bd0f8a05c0a2734de2d548b5d36bac300aabaa876ff961117ff57e5d25410"
+    },
+    "driver": {
+      "file": "startup-ab.executed.mjs.gz",
+      "sha256": "c826f452572faf4efbf98e152150bfbd70ebf2a85f3f4bed6dc9a21e86c0d699",
+      "decodedSha256": "ed6a6ad5116bd55ac3d3d85699686c35c915a507f578f412371c7f2109826567"
+    },
+    "log": {
+      "file": "run.log",
+      "sha256": "ac93c7c714d547aa03d0367aef9737bbd23821b1963d717e45d4bc3699e4c4fb"
+    },
+    "protocol": {
+      "file": "protocol.md",
+      "sha256": "c56126eaeb8348de68a49452de296e6c9e8eec176587b071a92c94ddd689f8a5"
+    },
+    "runtimeUI": {
+      "file": "runtime-ui.diff",
+      "sha256": "0b96181aca66e89a1996cf0f7ebeff8c704af440c5251bf1f0b230d1e40f3b69",
+      "baselineSource": "9b973f0d98426a102af1c936286052d46986f895",
+      "candidateSource": "4b87555"
+    }
+  },
+  "limitations": [
+    "The original run retains19 passing and2 failing checks. Same-condition comparison is a separate read-only analysis and does not relabel those checks.",
+    "One observation per condition/package; chronological order, observer overhead and scheduling variation remain uncontrolled.",
+    "Candidate10 includes both runtime/UI and asset changes; reductions in observed work/timing do not isolate a cause or establish a reliable speedup.",
+    "renderTotals is shadow-inclusive. ShadowUpdates counts invalidations, not GPU shadow passes or elapsed shadow cost.",
+    "Mutation oldValueEqualsObservedFinal can include batched A→B→A updates. It is not a count of proven redundant assignments.",
+    "The diagnostic does not close standard performance, Q03, native visibility or physical-device performance gates."
+  ]
+}

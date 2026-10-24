@@ -1,6 +1,6 @@
 # Candidate10 paper response and pavement boundary
 
-The isolated package is `artifacts/neighborhood-20261024/art/candidate-10-transport/`, manifest `e58257879fb4ead8af14022e71e329ee3309f9920eec6fe2cf4717276573d108`. Its baseline is candidate9 manifest `79b1a3ed91f0b672364c690e44de9278dce555fab0074ce0dc4aaa8add62f534`. Producer checks and independent decoded audit pass; actual browser appearance review is pending. Public assets remain under the lead's promotion control.
+The isolated package is `artifacts/neighborhood-20261024/art/candidate-10-transport/`, manifest `e58257879fb4ead8af14022e71e329ee3309f9920eec6fe2cf4717276573d108`. Its baseline is candidate9 manifest `79b1a3ed91f0b672364c690e44de9278dce555fab0074ce0dc4aaa8add62f534`. Producer checks, independent decoded audit and the [matched browser review](../candidate-10/README.md) pass for the bounded paper and platform-edge corrections. Public assets remain under the lead's promotion control.
 
 ## Exact scope
 
@@ -39,4 +39,4 @@ node experience/art/package_neighborhood_transport.mjs --input artifacts/neighbo
 
 The normal sequence preserves frozen geography `0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f`, scene `2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e`, prepared art `1ec33111947716ef43d8592c96203f55d1194b0f5b9ab68168b0deaf373bdb65` and river context `d77ea7a06b26954ea52a6991d45cd4c044b4c1659afd2df2bbe457cd23aef1c5`.
 
-Actual acceptance requires the [candidate9 platform and western day/night poses](../../../neighborhood-20261023/art/candidate-9/README.md) with preserved camera/player bindings. The platform stripe must be reviewed in the rendered image; the geometry proof alone cannot establish its screen-space result. The paper must retain readable material/form under authored lighting, and an unchanged arcade lamp surface must retain its actual emission. Source-backed connector facade variation, factual plaque detail and broader night-glazing review remain open. No route-wide realism or physical-device fluency result is claimed by this export.
+Actual [matched views](../candidate-10/README.md) preserve the candidate9 platform cameras and closely reproduce the western native framing. The platform edge is visibly closed, and the paper remains readable with nonemissive response. Existing arcade lamp emission is verified in runtime/material observations; an identifiable lamp body is outside those western images. Source-backed connector facade variation, factual plaque detail and broader night-glazing review remain open. No route-wide realism or physical-device fluency result is claimed by this export.

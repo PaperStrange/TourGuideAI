@@ -1,0 +1,141 @@
+{
+  "status": "completed",
+  "packageManifestSha256": "afc7934f1b0706ea59caae5e4b1a97a6a3f6366ac65b24cbe79bfc2c2d94e574",
+  "verifiedPackagedFiles": 446,
+  "source": {
+    "id": "shijo-east",
+    "revision": 1,
+    "geographySha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+    "manifestSha256": "e58257879fb4ead8af14022e71e329ee3309f9920eec6fe2cf4717276573d108",
+    "historicalGeographyCompatibility": {
+      "kind": "reviewed-tenmangu-anchor-metadata",
+      "recordedSha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
+      "currentSha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+      "auditSha256": "156cdc90f594a9a69a672ac8003e1ddbfa76259c0dc86c5b59035b0e55cc35dd",
+      "auditFile": "experience/evidence/neighborhood-20261023/world/platform-context/tenmangu-compatibility.json",
+      "changedFields": [
+        "nodeId",
+        "approachNodeId",
+        "x",
+        "y",
+        "latitude",
+        "longitude"
+      ],
+      "completeGeographyCompared": true,
+      "unchangedSources": {
+        "scene.json": {
+          "bytes": 8789674,
+          "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e"
+        },
+        "source-ledger.json": {
+          "bytes": 5999,
+          "sha256": "be0f8065699a53f09293140e2499bca2468f0aa7cea503dc6436f45c9b17a24c"
+        },
+        "source-review.json": {
+          "bytes": 756,
+          "sha256": "4e3fbb9d2fd3134153d2b378f5de995c2f7e3135ea3d778a5fe2f19b55f00258"
+        },
+        "sources/kyoto-lod1.geojson": {
+          "bytes": 6304053,
+          "sha256": "da1af049906d736b6329e062673a84728640957475d3b46107cebf46b48a2d93"
+        },
+        "sources/route-osm.json": {
+          "bytes": 47176,
+          "sha256": "5681dceac0c5d206a6e5315c77ca6a39a292ab3915f23b60cc17c77cecb4099e"
+        },
+        "sources/scene-osm.json": {
+          "bytes": 2390775,
+          "sha256": "1e3ba265bc8dd3c6744ccd897ad915016a2cc0110c306bf3e064ca63ced5dd0c"
+        }
+      },
+      "scope": "Stored metric view, frame and navigation geometry. Rendered assets retain their separate current-build identity."
+    }
+  },
+  "driverSha256": "f28a0ea8591b83148d41345f703ab134b8289628b0f697d84fc89451cd1dfc0a",
+  "driverDependencies": [
+    {
+      "file": "tests/helpers/neighborhood-evidence-source.mjs",
+      "sha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    }
+  ],
+  "browser": "151.0.7922.34",
+  "conditions": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "reducedMotion": "no-preference",
+    "timeoutMs": 120000,
+    "walkingTimeoutMs": 2400000,
+    "sections": [
+      "platform-review"
+    ],
+    "assetDelivery": "Actual loopback HTTP with immutable captured build bodies and no-store; only deliberate abort/delay scenarios install request routes."
+  },
+  "startedAt": "2026-10-24T02:48:24.568Z",
+  "finishedAt": "2026-10-24T02:48:53.060Z",
+  "elapsedMs": 28492,
+  "checks": {
+    "passed": 10,
+    "failed": 0
+  },
+  "failedCheckIds": [],
+  "actualHTTPRequests": 95,
+  "files": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 93640,
+      "sha256": "ecc5fcaa92a65734ccee14bcbd2aaf87f7f4fac501fec7e7b7aa2f66e7908b9f",
+      "decodedBytes": 779258,
+      "decodedSha256": "231f79fa2c422bd2bc71106885f8720045741935cc72a2caaf0f393a9926a75e"
+    },
+    {
+      "file": "browser-neighborhood.executed.mjs.gz",
+      "bytes": 43215,
+      "sha256": "327ab6b95f8004aaea930f97a9e97465a0a77bf47905f20a1201936ad277c1b4",
+      "decodedBytes": 178275,
+      "decodedSha256": "f28a0ea8591b83148d41345f703ab134b8289628b0f697d84fc89451cd1dfc0a"
+    },
+    {
+      "file": "neighborhood-evidence-source.executed.mjs.gz",
+      "bytes": 1619,
+      "sha256": "70115611f201081f16386f97f55d12421b3ee05a5e4c8f20bdfe99a5ec5fd294",
+      "decodedBytes": 3713,
+      "decodedSha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    },
+    {
+      "file": "platform-e001-prior-view-day.png",
+      "bytes": 998720,
+      "sha256": "84b7292941f780f9464a2fa673e16877002145e3253482f8badbdc11e69e53ba"
+    },
+    {
+      "file": "platform-e001-prior-view-night.png",
+      "bytes": 829808,
+      "sha256": "201b0b990f493b81c71c0d37ff2ce19444c426c0afbaea8e7aad0171cac37882"
+    },
+    {
+      "file": "run.log.gz",
+      "bytes": 273,
+      "sha256": "5ca012a42f6a925a6cc11fa6a668f315212223db1271caf337782584ab0cec48",
+      "decodedBytes": 571,
+      "decodedSha256": "82e2a68a9bd22768eb721683c881f2f2c06d1a1e801ce4e8d97b83bf911e9fe7"
+    }
+  ],
+  "externalCanvases": [
+    {
+      "file": "../../art/candidate-10/platform-e001-prior-view-day-canvas.png",
+      "bytes": 747615,
+      "sha256": "9655ee6fb88226cf9656ec79b917c5ea451f09db8e8961b2f48771ba436cf46e"
+    },
+    {
+      "file": "../../art/candidate-10/platform-e001-prior-view-night-canvas.png",
+      "bytes": 590070,
+      "sha256": "7b1075b2dbe964f3014d0f2cae9826b07e2dd0785ec67cbe2d14b370e5741bdc"
+    }
+  ],
+  "limitations": [
+    "Actual automated desktop input and software-rendered frames do not establish physical-device performance or human enjoyment.",
+    "Failure cases abort or delay actual packaged requests. Successful loads use the preserved build bytes.",
+    "Authored level ground and simulation widths do not establish current pedestrian access or surveyed grades."
+  ]
+}

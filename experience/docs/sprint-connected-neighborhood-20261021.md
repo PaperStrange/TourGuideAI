@@ -122,6 +122,33 @@ checks and synchronizes each verified unit. Native hidden-tab testing additional
 requires the reviewed artifact-local display build; physical-GPU performance remains
 unmeasured. Thresholds and visual quality remain unchanged.
 
+Candidate 10 passes 203 application tests, 17 repository gates and 68 targeted
+browser checks, with accepted platform/paper day/night corrections. Its standard
+run meets cold and all three warm entry targets; input/frame targets remain failed
+on software rendering. The separate real-tab native visibility run passes 13/13
+with zero hidden draws/updates/requests and restored private view. The A/B probe's
+original failures and single-observation limits remain preserved. Candidate 11
+addresses only independently verified facade/road shared-boundary gaps; bridge
+overlaps and ambiguous rounding boundaries remain outside that correction.
+
+Candidate 11 implementation `84e80a8`, package `76c14e7a…`, passes 203 application
+tests, 17 repository gates and 36 targeted native checks. Seven matched canvases
+pass scoped visual review. Cold entry is 7,798.0 ms and warm entries are
+2,587.4 / 2,667.3 / 2,508.2 ms, passing all startup targets. Input p95 746.6 ms
+and frame p95 782.0 ms fail on this software host. The separate current-package
+native visibility run passes 13/13 with zero hidden work over 2,018.8 ms and
+preserved private view. Original standard benchmark failures remain intact.
+Current-package complete CI, input/frame fluency, Q03 and broader source-backed
+art acceptance remain open. The lead has asked whether a GPU test environment
+can be made available; independent work continues while that question is pending.
+
+| Sprint | Current evidence | Remaining acceptance |
+| --- | --- | --- |
+| N00 | Connected source graph, six exterior sights, source/provenance audits and reproducible packaging | Surveyed grades and current access remain explicit source limits |
+| N01 | Continuous movement, streaming/retry, cancellation, native storage and residency; candidate 9 complete outward/return CI passes | Candidate 11 complete outward/return CI |
+| N02 | Bilingual day/night, private views, editable recommendations and Maps; current scoped paper/paving/contact repairs pass | Location-matched connecting fronts, factual landmark details and broad night-material review |
+| N03 | Candidate 11 startup targets and native background-tab behavior pass; candidate 9 complete camera and eight CI jobs pass | Current-package complete CI, input/frame targets, Q03, hardware evidence and publication |
+
 ## Candidate 9 acceptance · 2026-10-23
 
 The pilot contains six sights along 1,353.444 m of connected reviewed route.

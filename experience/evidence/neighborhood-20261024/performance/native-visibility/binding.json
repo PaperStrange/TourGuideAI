@@ -1,0 +1,215 @@
+{
+  "packageSha256": "afc7934f1b0706ea59caae5e4b1a97a6a3f6366ac65b24cbe79bfc2c2d94e574",
+  "xvfbSha256": "9ffcf7961c43aea2a920a340b1d95064d7b359b9e41af6f4ddbd9aea711e6172",
+  "scope": "Separate genuine native-tab visibility evidence; physical GPU and ordinary-configuration performance remain unverified.",
+  "files": [
+    {
+      "file": "default-automation/result.json.gz",
+      "bytes": 46450,
+      "sha256": "a38f66c0e8714589b30b2c183ed727408dc8197dbb89daeebc0624704002e037",
+      "decodedBytes": 266298,
+      "decodedSha256": "2fa9d95e4c948f3e87644c74a15098d5f08209b6a766c5946caa17c263d2fbf5",
+      "source": "artifacts/neighborhood-20261024/performance/candidate-10-visibility/result.json"
+    },
+    {
+      "file": "default-automation/visibility.executed.mjs.gz",
+      "bytes": 4940,
+      "sha256": "ae7db2039ca9e9d54a82177344bbdc2f0e140e0f786d0fbd42cb4bfeea7c8e35",
+      "decodedBytes": 13806,
+      "decodedSha256": "d1aedc910f63bf256caea08a4e89a7a0bedb1e2e3286f4415a25e99dfac71155",
+      "source": "artifacts/native-display-build/visibility.mjs"
+    },
+    {
+      "file": "default-automation/xvfb-manifest.json",
+      "bytes": 1630,
+      "sha256": "e0839a9dec1b3ae14a7744f8721723e04e2862e3d740ed65f3b90b0342e1843b",
+      "decodedBytes": 1630,
+      "decodedSha256": "e0839a9dec1b3ae14a7744f8721723e04e2862e3d740ed65f3b90b0342e1843b",
+      "source": "artifacts/native-display-build/runtime/candidate-10-visibility/manifest.json"
+    },
+    {
+      "file": "default-automation/xvfb.log.gz",
+      "bytes": 20,
+      "sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec",
+      "decodedBytes": 0,
+      "decodedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "artifacts/native-display-build/runtime/candidate-10-visibility/xvfb.log"
+    },
+    {
+      "file": "native-context/result.json.gz",
+      "bytes": 61639,
+      "sha256": "8b86c2ee1f3ac3e34df9681809c4f0d1f0a5c49da78a6620446419e0bef74f35",
+      "decodedBytes": 416216,
+      "decodedSha256": "901bceb36a79465e74d1abca7b2556f9906a52c379afdfb7e10007e6e0807d6d",
+      "source": "artifacts/neighborhood-20261024/performance/candidate-10-native-context/result.json"
+    },
+    {
+      "file": "native-context/visibility.executed.mjs.gz",
+      "bytes": 6044,
+      "sha256": "bd86bbb6fda9faff3f32c222df89b20c7b3c09c26adeb0351e0dbaa4719aed96",
+      "decodedBytes": 17082,
+      "decodedSha256": "79648c1618ea0e03bcab479d398481673c7150442c5c22b1807d690cf210f71b",
+      "source": "artifacts/native-display-build/visibility-native.mjs"
+    },
+    {
+      "file": "native-context/xvfb-manifest.json",
+      "bytes": 1654,
+      "sha256": "e05ef0ef416f345498b79e64f72e49ca4734f6b3a3caa4d352e877a2c42846c7",
+      "decodedBytes": 1654,
+      "decodedSha256": "e05ef0ef416f345498b79e64f72e49ca4734f6b3a3caa4d352e877a2c42846c7",
+      "source": "artifacts/native-display-build/runtime/candidate-10-native-context/manifest.json"
+    },
+    {
+      "file": "native-context/xvfb.log.gz",
+      "bytes": 20,
+      "sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec",
+      "decodedBytes": 0,
+      "decodedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "artifacts/native-display-build/runtime/candidate-10-native-context/xvfb.log"
+    },
+    {
+      "file": "native-context/chromium.log.gz",
+      "bytes": 1356,
+      "sha256": "6cf0eae4dd7da47748cce0383c021a215273901cbeb40e4f41e179f3a3f17705",
+      "decodedBytes": 8967,
+      "decodedSha256": "09c7bb0e01dac9152865bf1116b2a66455a1ab3ffa48c30597ec6ec9a04a0f19",
+      "source": "artifacts/neighborhood-20261024/performance/candidate-10-native-context/chromium.log"
+    },
+    {
+      "file": "build/native-display.mjs",
+      "bytes": 4974,
+      "sha256": "6e84c4f3b9d990024ebdca22b97b5a939c43affcbb1c9935ad792ce94ef06691",
+      "decodedBytes": 4974,
+      "decodedSha256": "6e84c4f3b9d990024ebdca22b97b5a939c43affcbb1c9935ad792ce94ef06691",
+      "source": "artifacts/native-display-build/native-display.mjs"
+    },
+    {
+      "file": "build/build.sh",
+      "bytes": 1965,
+      "sha256": "0e5ce4d613026a7da47afe28cf940a6de8d84a5ed000de9d7d938c014baf5732",
+      "decodedBytes": 1965,
+      "decodedSha256": "0e5ce4d613026a7da47afe28cf940a6de8d84a5ed000de9d7d938c014baf5732",
+      "source": "artifacts/native-display-build/build.sh"
+    },
+    {
+      "file": "build/acquire.py",
+      "bytes": 6653,
+      "sha256": "87f85ba610546418c2823d80f588e13dc27aaa6a3395f4f684689ec36ed61ac7",
+      "decodedBytes": 6653,
+      "decodedSha256": "87f85ba610546418c2823d80f588e13dc27aaa6a3395f4f684689ec36ed61ac7",
+      "source": "artifacts/native-display-build/acquire.py"
+    },
+    {
+      "file": "build/dependencies.json",
+      "bytes": 25503,
+      "sha256": "99b437d73e37830dfe6704f0c199711700872baeef1468b4ebd1797d082d0c20",
+      "decodedBytes": 25503,
+      "decodedSha256": "99b437d73e37830dfe6704f0c199711700872baeef1468b4ebd1797d082d0c20",
+      "source": "artifacts/native-display-build/dependencies.json"
+    },
+    {
+      "file": "build/indexes.json",
+      "bytes": 1148,
+      "sha256": "d07d41f2094dce85f611d379e6af783bf4565d80074f8c71d70d0b7fed3a0f2b",
+      "decodedBytes": 1148,
+      "decodedSha256": "d07d41f2094dce85f611d379e6af783bf4565d80074f8c71d70d0b7fed3a0f2b",
+      "source": "artifacts/native-display-build/indexes.json"
+    },
+    {
+      "file": "build/build-options.json",
+      "bytes": 22365,
+      "sha256": "740bea8448eedd256d41201d6d3baae8c303722639fed04cad8471a9814172cb",
+      "decodedBytes": 22365,
+      "decodedSha256": "740bea8448eedd256d41201d6d3baae8c303722639fed04cad8471a9814172cb",
+      "source": "artifacts/native-display-build/build-options.json"
+    },
+    {
+      "file": "build/runtime-libraries.txt",
+      "bytes": 3164,
+      "sha256": "206e9e9bcd3ca29407c9d4c289534213a92eec88f5f2ece83c9a5a8e792c62b6",
+      "decodedBytes": 3164,
+      "decodedSha256": "206e9e9bcd3ca29407c9d4c289534213a92eec88f5f2ece83c9a5a8e792c62b6",
+      "source": "artifacts/native-display-build/runtime-libraries.txt"
+    },
+    {
+      "file": "build/README.md",
+      "bytes": 6930,
+      "sha256": "fcace0d4e4bd19b1ef29cc79cbadc2b0acd4d6682e8b9e2a42022b3add3bfcc7",
+      "decodedBytes": 6930,
+      "decodedSha256": "fcace0d4e4bd19b1ef29cc79cbadc2b0acd4d6682e8b9e2a42022b3add3bfcc7",
+      "source": "artifacts/native-display-build/README.md"
+    },
+    {
+      "file": "build/build-log.txt.gz",
+      "bytes": 6509,
+      "sha256": "8a2c4089aeb37238d4f83f4fb4cf7d114802ec6ae7f1a64bd6bc001143a4adbf",
+      "decodedBytes": 36799,
+      "decodedSha256": "22be789ad40dba5125c9e4b1f2be01f593e6362c8770404fcaf0d1b2ed0141ca",
+      "source": "artifacts/native-display-build/build-log.txt"
+    },
+    {
+      "file": "build/xkb-config.h.gz",
+      "bytes": 281,
+      "sha256": "0c45ba9fed228a247c741b7bccd591435f8b0fce525fb5226b4d5613ce9737a8",
+      "decodedBytes": 441,
+      "decodedSha256": "9e333b6d2001519bbba497a0c2c268e478b1512a97a726ff1ddd778fad809c57",
+      "source": "artifacts/native-display-build/build/include/xkb-config.h"
+    },
+    {
+      "file": "build/dix-config.h.gz",
+      "bytes": 1493,
+      "sha256": "e18b0d7f51855b044df09c6d31974615760022ce7d251c19bf8fc6c59272fe3f",
+      "decodedBytes": 4342,
+      "decodedSha256": "d4bc6c1e151dc90ed4ca1652582c256bb9c00fc9a938a17d7764e5be34798042",
+      "source": "artifacts/native-display-build/build/include/dix-config.h"
+    },
+    {
+      "file": "sources/emulation_handler.cc.gz",
+      "bytes": 9898,
+      "sha256": "582e371db13c4b9c7048b0128a3bf956bc3f8ef811211c3e280e5bfe35e5de08",
+      "decodedBytes": 51256,
+      "decodedSha256": "1447e3b18e2b87ea58a6c60fda002200693b627bee1aa1107f2951cf31c51e4b",
+      "source": "artifacts/native-display-source-study/emulation_handler.cc"
+    },
+    {
+      "file": "sources/web_contents.h.gz",
+      "bytes": 26298,
+      "sha256": "c0f3327761658409e0f5425ec6cb36846ae9b129b10d300fa746b511cf688105",
+      "decodedBytes": 89129,
+      "decodedSha256": "c82c60b71e84ec01aa77deebb1b317beeabd402d619f8a6c1b671c0c06cbe4ea",
+      "source": "artifacts/native-display-source-study/web_contents.h"
+    },
+    {
+      "file": "build/trixie-InRelease.gz",
+      "bytes": 46666,
+      "sha256": "1747bc6d5b47beb6d1cf6d5abd2603597c75fc91e2916a3fd58cf7ea0604c867",
+      "decodedBytes": 140421,
+      "decodedSha256": "0584fba32e13e0ab8285fb16c27adea1ec03a73669c18702821094fd6ca86675",
+      "source": "artifacts/native-display-build/downloads/trixie-InRelease"
+    },
+    {
+      "file": "build/trixie-updates-InRelease.gz",
+      "bytes": 6780,
+      "sha256": "74b6e9be911e89d28056eb4ca02a8bbd2e2d1863a804a61fcd2b3c0199d5121e",
+      "decodedBytes": 47340,
+      "decodedSha256": "3d43d3271b819568b2a9ef49666c6c2038c91839cdbb98fe62de16db7eeee7c7",
+      "source": "artifacts/native-display-build/downloads/trixie-updates-InRelease"
+    },
+    {
+      "file": "build/trixie-security-InRelease.gz",
+      "bytes": 8429,
+      "sha256": "a7d715c99350dfc00fc2231815326f91a19ba007145e28574c8c38fcd13cc986",
+      "decodedBytes": 43409,
+      "decodedSha256": "2dc86861c04386d3c511340d4f011a37acfd1cccdf3dbd3e054d6fe8e4118ebc",
+      "source": "artifacts/native-display-build/downloads/trixie-security-InRelease"
+    },
+    {
+      "file": "sources/playwright-installed.json",
+      "bytes": 3860,
+      "sha256": "6963d9f964165cadada5352c0957314297311633d16e2bd9d4ba373cc8956ef2",
+      "decodedBytes": 3860,
+      "decodedSha256": "6963d9f964165cadada5352c0957314297311633d16e2bd9d4ba373cc8956ef2",
+      "source": "Extracted from the exact installed files identified inside this JSON"
+    }
+  ]
+}

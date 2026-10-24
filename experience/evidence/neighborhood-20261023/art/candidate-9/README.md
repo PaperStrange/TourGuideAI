@@ -2,6 +2,8 @@
 
 Five unchanged browser canvases were independently viewed on tested local package `1720fc5907c0c6f2b292aa0e728bcaad8ddbd6c776de7aec2b5a35a513609c9b`, neighborhood manifest `79b1a3ed91f0b672364c690e44de9278dce555fab0074ce0dc4aaa8add62f534`. [Capture bindings](reviewed-captures.json) retain every image hash, actual and desired camera, player, lighting, resource observation and source-report identity. The platform report passes 10/10 and the western-approach report passes 14/14. This art disposition accepts the bounded floor correction and deliberate western gate inspection.
 
+The subsequent [completed-route image review](full-route-review.md) covers candidate9's19 CI captures with their original bindings. Candidate10's separate [matched review](../../../neighborhood-20261024/art/candidate-10/README.md) records the later paper-response and platform-edge changes.
+
 ## Platform floor
 
 | Mode | Candidate8 comparison | Current candidate9 |

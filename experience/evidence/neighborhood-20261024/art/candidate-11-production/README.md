@@ -1,6 +1,6 @@
 # Candidate11 reviewed display-boundary closures
 
-The isolated output is `artifacts/neighborhood-20261024/art/candidate-11-transport/`, manifest `4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544`. Its baseline is candidate10 manifest `e58257879fb4ead8af14022e71e329ee3309f9920eec6fe2cf4717276573d108`. Producer validation and independent decoded audit pass. Actual matched browser review remains pending. Public promotion belongs to the lead.
+The isolated output is `artifacts/neighborhood-20261024/art/candidate-11-transport/`, manifest `4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544`. Its baseline is candidate10 manifest `e58257879fb4ead8af14022e71e329ee3309f9920eec6fe2cf4717276573d108`. Producer validation, independent decoded audit and the [matched browser review](../candidate-11/README.md) pass for the scoped boundary repairs. Public promotion belongs to the lead.
 
 ## Exact scope
 
@@ -38,8 +38,8 @@ node experience/art/package_neighborhood_transport.mjs --input artifacts/neighbo
 
 [Bindings](binding.json) retain the exact production files and executed proof scripts. Original standalone Shijō/Ginza assets are outside this output directory.
 
-## Required visual review
+## Executed visual review
 
-Use the recorded candidate9 Tenmangū purposeful-pan camera at player `(681.467,142.004)` and Pontochō arrival at `(1036.755,17.617)`, with exact matrices in the boundary proposal. Preserve matched day/night poses, original evidence and current package hashes. Review the repaired lines independently from excluded road/bridge/corner relationships. Check ground contact, nearby paving, prior facade/roof appearance and actual primary budgets. The deliberately panned inspection state retains its user-chosen actor framing; ordinary walking checks remain separate.
+The [seven current canvases](../candidate-11/README.md) use the recorded candidate9 Tenmangū purposeful-pan and Pontochō arrival compositions, plus current western native framing. The four source731 edges and two north road edges pass the bounded contact review in both modes. Actual camera comparison differences and primary budgets are recorded separately. The deliberately panned inspection state retains its user-chosen actor framing; ordinary walking checks remain separate. Excluded road/bridge/corner relationships retain their visible limits.
 
-The [candidate10 review](../candidate-10/README.md) retains accepted paper/platform fixes. Source-backed frontage correspondence, factual plaque detail, broad night reflections and other unreviewed boundaries remain open. No candidate11 appearance, whole-route realism or physical-device performance acceptance follows from this production record.
+The [candidate10 review](../candidate-10/README.md) retains accepted paper/platform fixes. Source-backed frontage correspondence, factual plaque detail, broad night reflections and other unreviewed boundaries remain open. Candidate11 acceptance covers the pictured scoped repairs; whole-route realism and physical-device performance remain separate unestablished gates.

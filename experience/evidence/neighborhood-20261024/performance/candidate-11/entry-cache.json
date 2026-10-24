@@ -1,0 +1,2829 @@
+{
+  "scope": "Actual CDP requests through each completed entry. Full report retains original timing events and server HTTP logs.",
+  "entries": [
+    {
+      "id": "cold",
+      "firstUsableObservedMs": 7798,
+      "settledMs": 17566.899999999907,
+      "bytesAtUsable": {
+        "completedTransferBytes": 4878138,
+        "completedDecodedBodyBytes": 4859838,
+        "navigationTransferBytes": 1902,
+        "pendingRequests": [
+          "http://127.0.0.1:43449/api/health",
+          "http://127.0.0.1:43449/assets/neighborhoods/shijo-east/cells/cell-e002-n000/base.gltf.gz?sha256=2b729f4802f0fc31fd4eaa142386f2c5878e5243a764d1112d68e3be9f3267ae",
+          "blob:http://127.0.0.1:43449/1faf3e2c-0aba-4fd2-8cb8-57c3ddbd4b4a",
+          "http://127.0.0.1:43449/assets/neighborhoods/shijo-east/cells/cell-e002-n000/base.bin.gz?sha256=b2b8e260e12b923469ed46b80ddad48ac887c88e09a2853547ba25308dc65b3a"
+        ]
+      },
+      "actualCDPHTTPRequests": 76,
+      "diskCacheResponses": 0,
+      "neighborhoodRequests": 57,
+      "neighborhoodDiskCacheResponses": 0,
+      "neighborhoodEncodedBytes": 5427779,
+      "requests": [
+        {
+          "path": "/",
+          "query": "?qa=1&lang=en&mode=explore&pack=shijo-east",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 1866,
+          "finished": true
+        },
+        {
+          "path": "/assets/index-BYllVEXc.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 109898,
+          "finished": true
+        },
+        {
+          "path": "/assets/modulepreload-polyfill-P2Xu9kJm.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 962,
+          "finished": true
+        },
+        {
+          "path": "/assets/places-_F3XEqgH.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 2507,
+          "finished": true
+        },
+        {
+          "path": "/assets/maps-2TGVCB_Q.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 2652,
+          "finished": true
+        },
+        {
+          "path": "/assets/kyoto-B8LsYbyV.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 13280,
+          "finished": true
+        },
+        {
+          "path": "/assets/view-state-u4a6Z6NS.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 1974,
+          "finished": true
+        },
+        {
+          "path": "/assets/exploration-state-Dc3GCW4v.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 156121,
+          "finished": true
+        },
+        {
+          "path": "/assets/state-CR270Xy7.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 4158,
+          "finished": true
+        },
+        {
+          "path": "/assets/preload-helper-BaNbYf_w.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 1691,
+          "finished": true
+        },
+        {
+          "path": "/assets/index-CF2VaNU2.css",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 20125,
+          "finished": true
+        },
+        {
+          "path": "/assets/live-view-DJDkkWBx.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 3093,
+          "finished": true
+        },
+        {
+          "path": "/assets/create-game-B4T2HgFL.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 17900,
+          "finished": true
+        },
+        {
+          "path": "/assets/lighting-DOiuVFAF.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 637797,
+          "finished": true
+        },
+        {
+          "path": "/assets/cancellation-Ba2wSBFv.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 44948,
+          "finished": true
+        },
+        {
+          "path": "/api/health",
+          "query": "",
+          "status": 404,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": null,
+          "finished": false
+        },
+        {
+          "path": "/assets/kyoto-sans-CWcI5HXC.woff",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 291258,
+          "finished": true
+        },
+        {
+          "path": "/assets/route-world-view-Djh8iM7d.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 99826,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/manifest.json",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 322784,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/ground.gltf.gz",
+          "query": "?sha256=27a4c41f1ad5500d74aac933e58a12cc8c81ead1fd2f36b8fde49324b80f5cb6",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 2795,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/asphalt-normal.webp",
+          "query": "?sha256=e6352f2dff9dfd394510855997d5cd23231f359f9156b46f17e4b2d560a12cae",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 92316,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/asphalt-color.webp",
+          "query": "?sha256=c45d46245f10fe62e52c3830645725d755d9205a56224cb973bbc131cc20ec7e",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 33014,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/asphalt-roughness.webp",
+          "query": "?sha256=fa09f1ec2c86a8ea8758bd3b65dd4fe908ba67063809876ad60f962f6c073f6e",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 38888,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/paving-normal.webp",
+          "query": "?sha256=9c61845a9a8081af5f1d6c1074372ee1e44f020167ba83583210e7e6cbd726ac",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 96486,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/paving-color.webp",
+          "query": "?sha256=49c7fade64aaa52ce095da5c3614bc63c45393cd6c91dc3dfeb3a9de40190041",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 43474,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/paving-roughness.webp",
+          "query": "?sha256=3fa4e9df7a0047ab246f5734570b07f4f2a20e62029df19fa721445a44fde5b3",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 39236,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/water-normal.webp",
+          "query": "?sha256=615090bc613f207aed4f8f7ab4037532b8bfe87ad7f428a36dfde5271ab01487",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 23412,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/water-color.webp",
+          "query": "?sha256=94987ec34b7859694a70aedec2969c9d45e4cb77641f8103a4f61f9ec95d6a3e",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 38382,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/water-roughness.webp",
+          "query": "?sha256=3be00eb61963e25dddbb52c2e7c6df3f2cdaf1cdceb624b780c85608ab483b6c",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 39190,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/ground.bin.gz",
+          "query": "?sha256=60f7d53e55911cac8b7e2d799d2acaf89bee578f77d047af2faba42db308526c",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 358744,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/context.gltf.gz",
+          "query": "?sha256=0024bec8f672d5f32a47a883eb7af3f84a1f711c0644a8733d0bfb8fecd3def3",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 4241,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/stone-normal.webp",
+          "query": "?sha256=3c97ff1ee18e01a36db94ae6da136d48b30d8748e6f78501758f133df24c82c3",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 96448,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/stone-roughness.webp",
+          "query": "?sha256=28481ec912fb5bbbe637bfea3b97decfe42a17a9543c4fa2bd2cc32ac1753154",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 39186,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/plaster-color.webp",
+          "query": "?sha256=97c5b054ec584b80b6ac9a58c4ecb2ffaf9ac0ef9c4bf0d4b38844c2d23d93f6",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 45116,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/plaster-roughness.webp",
+          "query": "?sha256=1219d9d22e9bf73386ab32ede26e277093aa2eca05687f0ce405c065dac8ef80",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 39254,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/stone-color.webp",
+          "query": "?sha256=50d1cdc2cbae4933338b58d1cc00cfcfce0a76d20baa0430cbe0941ccf73be7b",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 46226,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/plaster-normal.webp",
+          "query": "?sha256=11667a2007c1c94f48de89ae13d3ab468f80dadbf8a8f147e6b24872b9d5529f",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 92724,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/tile-wall-normal.webp",
+          "query": "?sha256=7fee38194cbe4f5c801387af7c739a0f5a120ea6ebd5bebcb387156216b94f61",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 99902,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/tile-wall-roughness.webp",
+          "query": "?sha256=8e928731994138665f89fce54299af245c515f9d718659b57ca75865293ee694",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 39194,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/context.bin.gz",
+          "query": "?sha256=c874cc74b53d6dd67ed138d361a19d3de85088d85be5bfb6eb556cdef09a8f54",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 183910,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/tile-wall-color.webp",
+          "query": "?sha256=e35e94daa4e97152d05b52676a8d1e2bb5b1d13a74a529ad69fe987f8dc1f573",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 46858,
+          "finished": true
+        },
+        {
+          "path": "/models/traveller.glb",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 35837,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/lighting.json",
+          "query": "?sha256=6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 7549,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/environments/day-512.hdr",
+          "query": "?sha256=efb72f542365dfdc25d2f9ed20983b34e74fd33f90d55b8763813f4d6dd35717",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 432601,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-n000/base.gltf.gz",
+          "query": "?sha256=ae9af506227ac00e1e8482437425deaff89081a3efe91794a695f240ddd1c4ae",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 8275,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-finish-glazing.webp",
+          "query": "?sha256=ac9a9ed4d78ed3129dbaa317933d3a1520e19fe007673448e30045272932b5d7",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 6451,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-finish-pale-stone.webp",
+          "query": "?sha256=99d31a8d60a943c3600a6a0151c227bb6472291b6cf8f3cd7a48c22bbd44a172",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 28636,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-bbf588b6e99459c4.webp",
+          "query": "?sha256=b36fca9f80638dc14954e36d91206d347e578de1c07c648db44fafe0ecfd3f65",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 20502,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-a50d3dca12c48d43.webp",
+          "query": "?sha256=ad5f4a4c4aba8679514ba772b235a7768de8f9781ddd861204b7ac0bd26873a7",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 20604,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-932ea4bbc3c5f775.webp",
+          "query": "?sha256=5bd1d9127c2f57520453cd3ac2c071ca266438557aa76245b81f9f28c2a0fcdf",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 21766,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-finish-granite-fascia.webp",
+          "query": "?sha256=5b3bc86e9cf2fb6d4dd0ed5d65d825d5ebe500b35ed4e43533bb4e998e743426",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 32394,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-f3b02e2cb1e0c404.webp",
+          "query": "?sha256=3977251702a63dab5f93f8f34f6f5622001b20d776ffd32ccebb44a56239a935",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 32732,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-finish-glazing-blinds.webp",
+          "query": "?sha256=a93c0d627e0cfce72024dffee4e2a20e046057bd36aa233985401031de8b8353",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 8125,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/glass-normal.webp",
+          "query": "?sha256=a979f36e9675afba17c20e353415ba9f235ccb843bda5c7cec1acd2b07afd5f1",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 16496,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/glass-color.webp",
+          "query": "?sha256=9e48fc018c2aaf9b143901f2181ba6c88a116d8ca6ce878648d0ce1b754bb041",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 41366,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/glass-roughness.webp",
+          "query": "?sha256=17ae31ee440e65ea9fba8b64d52db178b2f435c0f4110e2f954de0c89c27a8cc",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 39186,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-n000/base.bin.gz",
+          "query": "?sha256=df9c0808112edddea1cee2df4177724ffb503a20ec81d47bdcf16e16ba9f4f27",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 433413,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-s001/base.gltf.gz",
+          "query": "?sha256=293917dfb932a54cbffb0f45952e6ea8a71b1bf83ba2f4ca4b1ee581bef82b59",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 8203,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-s001/base.bin.gz",
+          "query": "?sha256=bed8d5044d35afefc5036e33514ff1cf2d2b73a19e487900e0b86065b7662b95",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 359885,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e001-n000/base.gltf.gz",
+          "query": "?sha256=7934d236929184be911b0e56aae148eae69ecb73476378b025dced9bf1d9892a",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 2728,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e001-n000/base.bin.gz",
+          "query": "?sha256=a4141831cfd760050fcebc7d0e5e78d404e04180b2f74111c2ecc0be22336227",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 18659,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e001-s001/base.gltf.gz",
+          "query": "?sha256=ddef7b4ef180e07b3195c3ea9fc0a91dfa8aecca6f3624fb6a21126dd36b66f4",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 3225,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e001-s001/base.bin.gz",
+          "query": "?sha256=62ed243a3b54bf42f34470e4858eaa2af989edb55a325d40eaa9f9cbf9db6752",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 28435,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e002-n000/base.gltf.gz",
+          "query": "?sha256=2b729f4802f0fc31fd4eaa142386f2c5878e5243a764d1112d68e3be9f3267ae",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 2756,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e002-n000/base.bin.gz",
+          "query": "?sha256=b2b8e260e12b923469ed46b80ddad48ac887c88e09a2853547ba25308dc65b3a",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 48167,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e002-s001/base.gltf.gz",
+          "query": "?sha256=09463958c5a02893327af2bf904b04ba4db229a5cde85f4b9a8b418877aa5d65",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 2727,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e002-s001/base.bin.gz",
+          "query": "?sha256=2f001e7ef3b66917fbb43f0a67df488c796c8305dabb4ceaaade5692a744cc63",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 22056,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-n000/near.gltf.gz",
+          "query": "?sha256=c6f1630b1d40bac9591ad81def121a550090016fb72fc983ccbee249636ce709",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 8964,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/granite-normal.webp",
+          "query": "?sha256=4ada987f6be4600c103956d39c2248cef0e2998c9cb4c159a65d41a5969818a1",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 92556,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/granite-color.webp",
+          "query": "?sha256=d1f7f3de690675e41962e2c620da7c0705a8933b3252703e53fc3ba72e167b1b",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 39588,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/granite-roughness.webp",
+          "query": "?sha256=d60715be45ded728a4473a9d8ad8e010e1121f82a4df278de4644599f196e9b5",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 39186,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-n000/near.bin.gz",
+          "query": "?sha256=dff2868b71a0bb858ae95c2132c4e0070e9851e38db4038a7ebf561a6dafb6d5",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 1013550,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-s001/near.gltf.gz",
+          "query": "?sha256=a5446fc440c6caf224dda33a22825b35ea5ece4694ba84059be00fad03f4c991",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 8769,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-s001/near.bin.gz",
+          "query": "?sha256=0be15ceaf7688f56326691f005f920e453dae31dc98fc390c9c39e8d1ff94d84",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 625198,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e001-n000/near.gltf.gz",
+          "query": "?sha256=827a31256e92313636521f3c979b64b19a33ac4829b6a402b546f61daea44d94",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 3360,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e001-n000/near.bin.gz",
+          "query": "?sha256=287304858f255240bd73c3523c4266cad3f19ab0d4f2338ab4672035c75386f2",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 87891,
+          "finished": true
+        }
+      ]
+    },
+    {
+      "id": "warm-1",
+      "firstUsableObservedMs": 2587.399999999907,
+      "settledMs": 12661.799999999814,
+      "bytesAtUsable": {
+        "completedTransferBytes": 600,
+        "completedDecodedBodyBytes": 5113579,
+        "navigationTransferBytes": 300,
+        "pendingRequests": [
+          "http://127.0.0.1:43449/api/health",
+          "blob:http://127.0.0.1:43449/c4478d31-bd1c-4419-a2c4-78e5f1baf647"
+        ]
+      },
+      "actualCDPHTTPRequests": 76,
+      "diskCacheResponses": 56,
+      "neighborhoodRequests": 57,
+      "neighborhoodDiskCacheResponses": 56,
+      "neighborhoodEncodedBytes": 267,
+      "requests": [
+        {
+          "path": "/",
+          "query": "?qa=1&lang=en&mode=explore&pack=shijo-east",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 252,
+          "finished": true
+        },
+        {
+          "path": "/assets/index-BYllVEXc.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/modulepreload-polyfill-P2Xu9kJm.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/places-_F3XEqgH.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/maps-2TGVCB_Q.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/kyoto-B8LsYbyV.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/view-state-u4a6Z6NS.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/exploration-state-Dc3GCW4v.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/state-CR270Xy7.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/preload-helper-BaNbYf_w.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/index-CF2VaNU2.css",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/live-view-DJDkkWBx.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/create-game-B4T2HgFL.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/lighting-DOiuVFAF.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/cancellation-Ba2wSBFv.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/api/health",
+          "query": "",
+          "status": 404,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": null,
+          "finished": false
+        },
+        {
+          "path": "/assets/kyoto-sans-CWcI5HXC.woff",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/route-world-view-Djh8iM7d.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/manifest.json",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 267,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/ground.gltf.gz",
+          "query": "?sha256=27a4c41f1ad5500d74aac933e58a12cc8c81ead1fd2f36b8fde49324b80f5cb6",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/asphalt-normal.webp",
+          "query": "?sha256=e6352f2dff9dfd394510855997d5cd23231f359f9156b46f17e4b2d560a12cae",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/asphalt-color.webp",
+          "query": "?sha256=c45d46245f10fe62e52c3830645725d755d9205a56224cb973bbc131cc20ec7e",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/asphalt-roughness.webp",
+          "query": "?sha256=fa09f1ec2c86a8ea8758bd3b65dd4fe908ba67063809876ad60f962f6c073f6e",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/paving-normal.webp",
+          "query": "?sha256=9c61845a9a8081af5f1d6c1074372ee1e44f020167ba83583210e7e6cbd726ac",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/paving-color.webp",
+          "query": "?sha256=49c7fade64aaa52ce095da5c3614bc63c45393cd6c91dc3dfeb3a9de40190041",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/paving-roughness.webp",
+          "query": "?sha256=3fa4e9df7a0047ab246f5734570b07f4f2a20e62029df19fa721445a44fde5b3",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/water-normal.webp",
+          "query": "?sha256=615090bc613f207aed4f8f7ab4037532b8bfe87ad7f428a36dfde5271ab01487",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/water-color.webp",
+          "query": "?sha256=94987ec34b7859694a70aedec2969c9d45e4cb77641f8103a4f61f9ec95d6a3e",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/water-roughness.webp",
+          "query": "?sha256=3be00eb61963e25dddbb52c2e7c6df3f2cdaf1cdceb624b780c85608ab483b6c",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/ground.bin.gz",
+          "query": "?sha256=60f7d53e55911cac8b7e2d799d2acaf89bee578f77d047af2faba42db308526c",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/context.gltf.gz",
+          "query": "?sha256=0024bec8f672d5f32a47a883eb7af3f84a1f711c0644a8733d0bfb8fecd3def3",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/stone-normal.webp",
+          "query": "?sha256=3c97ff1ee18e01a36db94ae6da136d48b30d8748e6f78501758f133df24c82c3",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/stone-roughness.webp",
+          "query": "?sha256=28481ec912fb5bbbe637bfea3b97decfe42a17a9543c4fa2bd2cc32ac1753154",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/plaster-color.webp",
+          "query": "?sha256=97c5b054ec584b80b6ac9a58c4ecb2ffaf9ac0ef9c4bf0d4b38844c2d23d93f6",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/plaster-roughness.webp",
+          "query": "?sha256=1219d9d22e9bf73386ab32ede26e277093aa2eca05687f0ce405c065dac8ef80",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/stone-color.webp",
+          "query": "?sha256=50d1cdc2cbae4933338b58d1cc00cfcfce0a76d20baa0430cbe0941ccf73be7b",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/plaster-normal.webp",
+          "query": "?sha256=11667a2007c1c94f48de89ae13d3ab468f80dadbf8a8f147e6b24872b9d5529f",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/tile-wall-normal.webp",
+          "query": "?sha256=7fee38194cbe4f5c801387af7c739a0f5a120ea6ebd5bebcb387156216b94f61",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/tile-wall-roughness.webp",
+          "query": "?sha256=8e928731994138665f89fce54299af245c515f9d718659b57ca75865293ee694",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/context.bin.gz",
+          "query": "?sha256=c874cc74b53d6dd67ed138d361a19d3de85088d85be5bfb6eb556cdef09a8f54",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/tile-wall-color.webp",
+          "query": "?sha256=e35e94daa4e97152d05b52676a8d1e2bb5b1d13a74a529ad69fe987f8dc1f573",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/models/traveller.glb",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 268,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/lighting.json",
+          "query": "?sha256=6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/environments/day-512.hdr",
+          "query": "?sha256=efb72f542365dfdc25d2f9ed20983b34e74fd33f90d55b8763813f4d6dd35717",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-n000/base.gltf.gz",
+          "query": "?sha256=ae9af506227ac00e1e8482437425deaff89081a3efe91794a695f240ddd1c4ae",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-finish-glazing.webp",
+          "query": "?sha256=ac9a9ed4d78ed3129dbaa317933d3a1520e19fe007673448e30045272932b5d7",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-finish-pale-stone.webp",
+          "query": "?sha256=99d31a8d60a943c3600a6a0151c227bb6472291b6cf8f3cd7a48c22bbd44a172",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-bbf588b6e99459c4.webp",
+          "query": "?sha256=b36fca9f80638dc14954e36d91206d347e578de1c07c648db44fafe0ecfd3f65",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-a50d3dca12c48d43.webp",
+          "query": "?sha256=ad5f4a4c4aba8679514ba772b235a7768de8f9781ddd861204b7ac0bd26873a7",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-932ea4bbc3c5f775.webp",
+          "query": "?sha256=5bd1d9127c2f57520453cd3ac2c071ca266438557aa76245b81f9f28c2a0fcdf",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-finish-granite-fascia.webp",
+          "query": "?sha256=5b3bc86e9cf2fb6d4dd0ed5d65d825d5ebe500b35ed4e43533bb4e998e743426",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-f3b02e2cb1e0c404.webp",
+          "query": "?sha256=3977251702a63dab5f93f8f34f6f5622001b20d776ffd32ccebb44a56239a935",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-finish-glazing-blinds.webp",
+          "query": "?sha256=a93c0d627e0cfce72024dffee4e2a20e046057bd36aa233985401031de8b8353",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/glass-normal.webp",
+          "query": "?sha256=a979f36e9675afba17c20e353415ba9f235ccb843bda5c7cec1acd2b07afd5f1",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/glass-color.webp",
+          "query": "?sha256=9e48fc018c2aaf9b143901f2181ba6c88a116d8ca6ce878648d0ce1b754bb041",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/glass-roughness.webp",
+          "query": "?sha256=17ae31ee440e65ea9fba8b64d52db178b2f435c0f4110e2f954de0c89c27a8cc",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-n000/base.bin.gz",
+          "query": "?sha256=df9c0808112edddea1cee2df4177724ffb503a20ec81d47bdcf16e16ba9f4f27",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-s001/base.gltf.gz",
+          "query": "?sha256=293917dfb932a54cbffb0f45952e6ea8a71b1bf83ba2f4ca4b1ee581bef82b59",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-s001/base.bin.gz",
+          "query": "?sha256=bed8d5044d35afefc5036e33514ff1cf2d2b73a19e487900e0b86065b7662b95",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e001-n000/base.gltf.gz",
+          "query": "?sha256=7934d236929184be911b0e56aae148eae69ecb73476378b025dced9bf1d9892a",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e001-n000/base.bin.gz",
+          "query": "?sha256=a4141831cfd760050fcebc7d0e5e78d404e04180b2f74111c2ecc0be22336227",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e001-s001/base.gltf.gz",
+          "query": "?sha256=ddef7b4ef180e07b3195c3ea9fc0a91dfa8aecca6f3624fb6a21126dd36b66f4",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e001-s001/base.bin.gz",
+          "query": "?sha256=62ed243a3b54bf42f34470e4858eaa2af989edb55a325d40eaa9f9cbf9db6752",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e002-n000/base.gltf.gz",
+          "query": "?sha256=2b729f4802f0fc31fd4eaa142386f2c5878e5243a764d1112d68e3be9f3267ae",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e002-n000/base.bin.gz",
+          "query": "?sha256=b2b8e260e12b923469ed46b80ddad48ac887c88e09a2853547ba25308dc65b3a",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e002-s001/base.gltf.gz",
+          "query": "?sha256=09463958c5a02893327af2bf904b04ba4db229a5cde85f4b9a8b418877aa5d65",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e002-s001/base.bin.gz",
+          "query": "?sha256=2f001e7ef3b66917fbb43f0a67df488c796c8305dabb4ceaaade5692a744cc63",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-n000/near.gltf.gz",
+          "query": "?sha256=c6f1630b1d40bac9591ad81def121a550090016fb72fc983ccbee249636ce709",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/granite-normal.webp",
+          "query": "?sha256=4ada987f6be4600c103956d39c2248cef0e2998c9cb4c159a65d41a5969818a1",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/granite-color.webp",
+          "query": "?sha256=d1f7f3de690675e41962e2c620da7c0705a8933b3252703e53fc3ba72e167b1b",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/granite-roughness.webp",
+          "query": "?sha256=d60715be45ded728a4473a9d8ad8e010e1121f82a4df278de4644599f196e9b5",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-n000/near.bin.gz",
+          "query": "?sha256=dff2868b71a0bb858ae95c2132c4e0070e9851e38db4038a7ebf561a6dafb6d5",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-s001/near.gltf.gz",
+          "query": "?sha256=a5446fc440c6caf224dda33a22825b35ea5ece4694ba84059be00fad03f4c991",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-s001/near.bin.gz",
+          "query": "?sha256=0be15ceaf7688f56326691f005f920e453dae31dc98fc390c9c39e8d1ff94d84",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e001-n000/near.gltf.gz",
+          "query": "?sha256=827a31256e92313636521f3c979b64b19a33ac4829b6a402b546f61daea44d94",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e001-n000/near.bin.gz",
+          "query": "?sha256=287304858f255240bd73c3523c4266cad3f19ab0d4f2338ab4672035c75386f2",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        }
+      ]
+    },
+    {
+      "id": "warm-2",
+      "firstUsableObservedMs": 2667.3000000002794,
+      "settledMs": 10718.30000000028,
+      "bytesAtUsable": {
+        "completedTransferBytes": 600,
+        "completedDecodedBodyBytes": 5035353,
+        "navigationTransferBytes": 300,
+        "pendingRequests": [
+          "http://127.0.0.1:43449/api/health",
+          "http://127.0.0.1:43449/assets/neighborhoods/shijo-east/shared/materials/granite-color.webp?sha256=d1f7f3de690675e41962e2c620da7c0705a8933b3252703e53fc3ba72e167b1b",
+          "blob:http://127.0.0.1:43449/6bc2d048-ee4d-46e9-9d38-32ca7b2ba3da"
+        ]
+      },
+      "actualCDPHTTPRequests": 76,
+      "diskCacheResponses": 56,
+      "neighborhoodRequests": 57,
+      "neighborhoodDiskCacheResponses": 56,
+      "neighborhoodEncodedBytes": 267,
+      "requests": [
+        {
+          "path": "/",
+          "query": "?qa=1&lang=en&mode=explore&pack=shijo-east",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 252,
+          "finished": true
+        },
+        {
+          "path": "/assets/index-BYllVEXc.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/modulepreload-polyfill-P2Xu9kJm.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/places-_F3XEqgH.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/maps-2TGVCB_Q.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/kyoto-B8LsYbyV.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/view-state-u4a6Z6NS.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/exploration-state-Dc3GCW4v.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/state-CR270Xy7.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/preload-helper-BaNbYf_w.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/index-CF2VaNU2.css",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/live-view-DJDkkWBx.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/create-game-B4T2HgFL.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/lighting-DOiuVFAF.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/cancellation-Ba2wSBFv.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/api/health",
+          "query": "",
+          "status": 404,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": null,
+          "finished": false
+        },
+        {
+          "path": "/assets/kyoto-sans-CWcI5HXC.woff",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/route-world-view-Djh8iM7d.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/manifest.json",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 267,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/ground.gltf.gz",
+          "query": "?sha256=27a4c41f1ad5500d74aac933e58a12cc8c81ead1fd2f36b8fde49324b80f5cb6",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/asphalt-normal.webp",
+          "query": "?sha256=e6352f2dff9dfd394510855997d5cd23231f359f9156b46f17e4b2d560a12cae",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/asphalt-color.webp",
+          "query": "?sha256=c45d46245f10fe62e52c3830645725d755d9205a56224cb973bbc131cc20ec7e",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/asphalt-roughness.webp",
+          "query": "?sha256=fa09f1ec2c86a8ea8758bd3b65dd4fe908ba67063809876ad60f962f6c073f6e",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/paving-normal.webp",
+          "query": "?sha256=9c61845a9a8081af5f1d6c1074372ee1e44f020167ba83583210e7e6cbd726ac",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/paving-color.webp",
+          "query": "?sha256=49c7fade64aaa52ce095da5c3614bc63c45393cd6c91dc3dfeb3a9de40190041",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/paving-roughness.webp",
+          "query": "?sha256=3fa4e9df7a0047ab246f5734570b07f4f2a20e62029df19fa721445a44fde5b3",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/water-normal.webp",
+          "query": "?sha256=615090bc613f207aed4f8f7ab4037532b8bfe87ad7f428a36dfde5271ab01487",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/water-color.webp",
+          "query": "?sha256=94987ec34b7859694a70aedec2969c9d45e4cb77641f8103a4f61f9ec95d6a3e",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/water-roughness.webp",
+          "query": "?sha256=3be00eb61963e25dddbb52c2e7c6df3f2cdaf1cdceb624b780c85608ab483b6c",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/ground.bin.gz",
+          "query": "?sha256=60f7d53e55911cac8b7e2d799d2acaf89bee578f77d047af2faba42db308526c",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/context.gltf.gz",
+          "query": "?sha256=0024bec8f672d5f32a47a883eb7af3f84a1f711c0644a8733d0bfb8fecd3def3",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/stone-normal.webp",
+          "query": "?sha256=3c97ff1ee18e01a36db94ae6da136d48b30d8748e6f78501758f133df24c82c3",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/stone-roughness.webp",
+          "query": "?sha256=28481ec912fb5bbbe637bfea3b97decfe42a17a9543c4fa2bd2cc32ac1753154",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/plaster-color.webp",
+          "query": "?sha256=97c5b054ec584b80b6ac9a58c4ecb2ffaf9ac0ef9c4bf0d4b38844c2d23d93f6",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/plaster-roughness.webp",
+          "query": "?sha256=1219d9d22e9bf73386ab32ede26e277093aa2eca05687f0ce405c065dac8ef80",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/stone-color.webp",
+          "query": "?sha256=50d1cdc2cbae4933338b58d1cc00cfcfce0a76d20baa0430cbe0941ccf73be7b",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/plaster-normal.webp",
+          "query": "?sha256=11667a2007c1c94f48de89ae13d3ab468f80dadbf8a8f147e6b24872b9d5529f",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/tile-wall-normal.webp",
+          "query": "?sha256=7fee38194cbe4f5c801387af7c739a0f5a120ea6ebd5bebcb387156216b94f61",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/tile-wall-roughness.webp",
+          "query": "?sha256=8e928731994138665f89fce54299af245c515f9d718659b57ca75865293ee694",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/context.bin.gz",
+          "query": "?sha256=c874cc74b53d6dd67ed138d361a19d3de85088d85be5bfb6eb556cdef09a8f54",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/tile-wall-color.webp",
+          "query": "?sha256=e35e94daa4e97152d05b52676a8d1e2bb5b1d13a74a529ad69fe987f8dc1f573",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/models/traveller.glb",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 268,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/lighting.json",
+          "query": "?sha256=6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/environments/day-512.hdr",
+          "query": "?sha256=efb72f542365dfdc25d2f9ed20983b34e74fd33f90d55b8763813f4d6dd35717",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-n000/base.gltf.gz",
+          "query": "?sha256=ae9af506227ac00e1e8482437425deaff89081a3efe91794a695f240ddd1c4ae",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-finish-glazing.webp",
+          "query": "?sha256=ac9a9ed4d78ed3129dbaa317933d3a1520e19fe007673448e30045272932b5d7",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-finish-pale-stone.webp",
+          "query": "?sha256=99d31a8d60a943c3600a6a0151c227bb6472291b6cf8f3cd7a48c22bbd44a172",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-bbf588b6e99459c4.webp",
+          "query": "?sha256=b36fca9f80638dc14954e36d91206d347e578de1c07c648db44fafe0ecfd3f65",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-a50d3dca12c48d43.webp",
+          "query": "?sha256=ad5f4a4c4aba8679514ba772b235a7768de8f9781ddd861204b7ac0bd26873a7",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-932ea4bbc3c5f775.webp",
+          "query": "?sha256=5bd1d9127c2f57520453cd3ac2c071ca266438557aa76245b81f9f28c2a0fcdf",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-finish-granite-fascia.webp",
+          "query": "?sha256=5b3bc86e9cf2fb6d4dd0ed5d65d825d5ebe500b35ed4e43533bb4e998e743426",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-f3b02e2cb1e0c404.webp",
+          "query": "?sha256=3977251702a63dab5f93f8f34f6f5622001b20d776ffd32ccebb44a56239a935",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-finish-glazing-blinds.webp",
+          "query": "?sha256=a93c0d627e0cfce72024dffee4e2a20e046057bd36aa233985401031de8b8353",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/glass-normal.webp",
+          "query": "?sha256=a979f36e9675afba17c20e353415ba9f235ccb843bda5c7cec1acd2b07afd5f1",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/glass-color.webp",
+          "query": "?sha256=9e48fc018c2aaf9b143901f2181ba6c88a116d8ca6ce878648d0ce1b754bb041",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/glass-roughness.webp",
+          "query": "?sha256=17ae31ee440e65ea9fba8b64d52db178b2f435c0f4110e2f954de0c89c27a8cc",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-n000/base.bin.gz",
+          "query": "?sha256=df9c0808112edddea1cee2df4177724ffb503a20ec81d47bdcf16e16ba9f4f27",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-s001/base.gltf.gz",
+          "query": "?sha256=293917dfb932a54cbffb0f45952e6ea8a71b1bf83ba2f4ca4b1ee581bef82b59",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-s001/base.bin.gz",
+          "query": "?sha256=bed8d5044d35afefc5036e33514ff1cf2d2b73a19e487900e0b86065b7662b95",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e001-n000/base.gltf.gz",
+          "query": "?sha256=7934d236929184be911b0e56aae148eae69ecb73476378b025dced9bf1d9892a",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e001-n000/base.bin.gz",
+          "query": "?sha256=a4141831cfd760050fcebc7d0e5e78d404e04180b2f74111c2ecc0be22336227",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e001-s001/base.gltf.gz",
+          "query": "?sha256=ddef7b4ef180e07b3195c3ea9fc0a91dfa8aecca6f3624fb6a21126dd36b66f4",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e001-s001/base.bin.gz",
+          "query": "?sha256=62ed243a3b54bf42f34470e4858eaa2af989edb55a325d40eaa9f9cbf9db6752",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e002-n000/base.gltf.gz",
+          "query": "?sha256=2b729f4802f0fc31fd4eaa142386f2c5878e5243a764d1112d68e3be9f3267ae",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e002-n000/base.bin.gz",
+          "query": "?sha256=b2b8e260e12b923469ed46b80ddad48ac887c88e09a2853547ba25308dc65b3a",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e002-s001/base.gltf.gz",
+          "query": "?sha256=09463958c5a02893327af2bf904b04ba4db229a5cde85f4b9a8b418877aa5d65",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e002-s001/base.bin.gz",
+          "query": "?sha256=2f001e7ef3b66917fbb43f0a67df488c796c8305dabb4ceaaade5692a744cc63",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-n000/near.gltf.gz",
+          "query": "?sha256=c6f1630b1d40bac9591ad81def121a550090016fb72fc983ccbee249636ce709",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/granite-normal.webp",
+          "query": "?sha256=4ada987f6be4600c103956d39c2248cef0e2998c9cb4c159a65d41a5969818a1",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/granite-color.webp",
+          "query": "?sha256=d1f7f3de690675e41962e2c620da7c0705a8933b3252703e53fc3ba72e167b1b",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/granite-roughness.webp",
+          "query": "?sha256=d60715be45ded728a4473a9d8ad8e010e1121f82a4df278de4644599f196e9b5",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-n000/near.bin.gz",
+          "query": "?sha256=dff2868b71a0bb858ae95c2132c4e0070e9851e38db4038a7ebf561a6dafb6d5",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-s001/near.gltf.gz",
+          "query": "?sha256=a5446fc440c6caf224dda33a22825b35ea5ece4694ba84059be00fad03f4c991",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-s001/near.bin.gz",
+          "query": "?sha256=0be15ceaf7688f56326691f005f920e453dae31dc98fc390c9c39e8d1ff94d84",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e001-n000/near.gltf.gz",
+          "query": "?sha256=827a31256e92313636521f3c979b64b19a33ac4829b6a402b546f61daea44d94",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e001-n000/near.bin.gz",
+          "query": "?sha256=287304858f255240bd73c3523c4266cad3f19ab0d4f2338ab4672035c75386f2",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        }
+      ]
+    },
+    {
+      "id": "warm-3",
+      "firstUsableObservedMs": 2508.2000000001863,
+      "settledMs": 10756.30000000028,
+      "bytesAtUsable": {
+        "completedTransferBytes": 600,
+        "completedDecodedBodyBytes": 5035353,
+        "navigationTransferBytes": 300,
+        "pendingRequests": [
+          "http://127.0.0.1:43449/api/health",
+          "http://127.0.0.1:43449/assets/neighborhoods/shijo-east/shared/materials/granite-color.webp?sha256=d1f7f3de690675e41962e2c620da7c0705a8933b3252703e53fc3ba72e167b1b",
+          "blob:http://127.0.0.1:43449/4d5ab162-1774-4c4e-8b97-077540cdc076"
+        ]
+      },
+      "actualCDPHTTPRequests": 76,
+      "diskCacheResponses": 56,
+      "neighborhoodRequests": 57,
+      "neighborhoodDiskCacheResponses": 56,
+      "neighborhoodEncodedBytes": 267,
+      "requests": [
+        {
+          "path": "/",
+          "query": "?qa=1&lang=en&mode=explore&pack=shijo-east",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 252,
+          "finished": true
+        },
+        {
+          "path": "/assets/index-BYllVEXc.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/modulepreload-polyfill-P2Xu9kJm.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/places-_F3XEqgH.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/maps-2TGVCB_Q.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/kyoto-B8LsYbyV.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/view-state-u4a6Z6NS.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/exploration-state-Dc3GCW4v.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/state-CR270Xy7.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/preload-helper-BaNbYf_w.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/index-CF2VaNU2.css",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/live-view-DJDkkWBx.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/create-game-B4T2HgFL.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/lighting-DOiuVFAF.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/cancellation-Ba2wSBFv.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/api/health",
+          "query": "",
+          "status": 404,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": null,
+          "finished": false
+        },
+        {
+          "path": "/assets/kyoto-sans-CWcI5HXC.woff",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/route-world-view-Djh8iM7d.js",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/manifest.json",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 267,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/ground.gltf.gz",
+          "query": "?sha256=27a4c41f1ad5500d74aac933e58a12cc8c81ead1fd2f36b8fde49324b80f5cb6",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/asphalt-normal.webp",
+          "query": "?sha256=e6352f2dff9dfd394510855997d5cd23231f359f9156b46f17e4b2d560a12cae",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/asphalt-color.webp",
+          "query": "?sha256=c45d46245f10fe62e52c3830645725d755d9205a56224cb973bbc131cc20ec7e",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/asphalt-roughness.webp",
+          "query": "?sha256=fa09f1ec2c86a8ea8758bd3b65dd4fe908ba67063809876ad60f962f6c073f6e",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/paving-normal.webp",
+          "query": "?sha256=9c61845a9a8081af5f1d6c1074372ee1e44f020167ba83583210e7e6cbd726ac",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/paving-color.webp",
+          "query": "?sha256=49c7fade64aaa52ce095da5c3614bc63c45393cd6c91dc3dfeb3a9de40190041",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/paving-roughness.webp",
+          "query": "?sha256=3fa4e9df7a0047ab246f5734570b07f4f2a20e62029df19fa721445a44fde5b3",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/water-normal.webp",
+          "query": "?sha256=615090bc613f207aed4f8f7ab4037532b8bfe87ad7f428a36dfde5271ab01487",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/water-color.webp",
+          "query": "?sha256=94987ec34b7859694a70aedec2969c9d45e4cb77641f8103a4f61f9ec95d6a3e",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/water-roughness.webp",
+          "query": "?sha256=3be00eb61963e25dddbb52c2e7c6df3f2cdaf1cdceb624b780c85608ab483b6c",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/ground.bin.gz",
+          "query": "?sha256=60f7d53e55911cac8b7e2d799d2acaf89bee578f77d047af2faba42db308526c",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/context.gltf.gz",
+          "query": "?sha256=0024bec8f672d5f32a47a883eb7af3f84a1f711c0644a8733d0bfb8fecd3def3",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/stone-normal.webp",
+          "query": "?sha256=3c97ff1ee18e01a36db94ae6da136d48b30d8748e6f78501758f133df24c82c3",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/stone-roughness.webp",
+          "query": "?sha256=28481ec912fb5bbbe637bfea3b97decfe42a17a9543c4fa2bd2cc32ac1753154",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/plaster-color.webp",
+          "query": "?sha256=97c5b054ec584b80b6ac9a58c4ecb2ffaf9ac0ef9c4bf0d4b38844c2d23d93f6",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/plaster-roughness.webp",
+          "query": "?sha256=1219d9d22e9bf73386ab32ede26e277093aa2eca05687f0ce405c065dac8ef80",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/stone-color.webp",
+          "query": "?sha256=50d1cdc2cbae4933338b58d1cc00cfcfce0a76d20baa0430cbe0941ccf73be7b",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/plaster-normal.webp",
+          "query": "?sha256=11667a2007c1c94f48de89ae13d3ab468f80dadbf8a8f147e6b24872b9d5529f",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/tile-wall-normal.webp",
+          "query": "?sha256=7fee38194cbe4f5c801387af7c739a0f5a120ea6ebd5bebcb387156216b94f61",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/tile-wall-roughness.webp",
+          "query": "?sha256=8e928731994138665f89fce54299af245c515f9d718659b57ca75865293ee694",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/context.bin.gz",
+          "query": "?sha256=c874cc74b53d6dd67ed138d361a19d3de85088d85be5bfb6eb556cdef09a8f54",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/tile-wall-color.webp",
+          "query": "?sha256=e35e94daa4e97152d05b52676a8d1e2bb5b1d13a74a529ad69fe987f8dc1f573",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/models/traveller.glb",
+          "query": "",
+          "status": 200,
+          "fromDiskCache": false,
+          "fromServiceWorker": false,
+          "encodedDataLength": 268,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/lighting.json",
+          "query": "?sha256=6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/environments/day-512.hdr",
+          "query": "?sha256=efb72f542365dfdc25d2f9ed20983b34e74fd33f90d55b8763813f4d6dd35717",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-n000/base.gltf.gz",
+          "query": "?sha256=ae9af506227ac00e1e8482437425deaff89081a3efe91794a695f240ddd1c4ae",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-finish-glazing.webp",
+          "query": "?sha256=ac9a9ed4d78ed3129dbaa317933d3a1520e19fe007673448e30045272932b5d7",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-finish-pale-stone.webp",
+          "query": "?sha256=99d31a8d60a943c3600a6a0151c227bb6472291b6cf8f3cd7a48c22bbd44a172",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-bbf588b6e99459c4.webp",
+          "query": "?sha256=b36fca9f80638dc14954e36d91206d347e578de1c07c648db44fafe0ecfd3f65",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-a50d3dca12c48d43.webp",
+          "query": "?sha256=ad5f4a4c4aba8679514ba772b235a7768de8f9781ddd861204b7ac0bd26873a7",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-932ea4bbc3c5f775.webp",
+          "query": "?sha256=5bd1d9127c2f57520453cd3ac2c071ca266438557aa76245b81f9f28c2a0fcdf",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-finish-granite-fascia.webp",
+          "query": "?sha256=5b3bc86e9cf2fb6d4dd0ed5d65d825d5ebe500b35ed4e43533bb4e998e743426",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-f3b02e2cb1e0c404.webp",
+          "query": "?sha256=3977251702a63dab5f93f8f34f6f5622001b20d776ffd32ccebb44a56239a935",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/retained-finish-glazing-blinds.webp",
+          "query": "?sha256=a93c0d627e0cfce72024dffee4e2a20e046057bd36aa233985401031de8b8353",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/glass-normal.webp",
+          "query": "?sha256=a979f36e9675afba17c20e353415ba9f235ccb843bda5c7cec1acd2b07afd5f1",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/glass-color.webp",
+          "query": "?sha256=9e48fc018c2aaf9b143901f2181ba6c88a116d8ca6ce878648d0ce1b754bb041",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/glass-roughness.webp",
+          "query": "?sha256=17ae31ee440e65ea9fba8b64d52db178b2f435c0f4110e2f954de0c89c27a8cc",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-n000/base.bin.gz",
+          "query": "?sha256=df9c0808112edddea1cee2df4177724ffb503a20ec81d47bdcf16e16ba9f4f27",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-s001/base.gltf.gz",
+          "query": "?sha256=293917dfb932a54cbffb0f45952e6ea8a71b1bf83ba2f4ca4b1ee581bef82b59",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-s001/base.bin.gz",
+          "query": "?sha256=bed8d5044d35afefc5036e33514ff1cf2d2b73a19e487900e0b86065b7662b95",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e001-n000/base.gltf.gz",
+          "query": "?sha256=7934d236929184be911b0e56aae148eae69ecb73476378b025dced9bf1d9892a",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e001-n000/base.bin.gz",
+          "query": "?sha256=a4141831cfd760050fcebc7d0e5e78d404e04180b2f74111c2ecc0be22336227",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e001-s001/base.gltf.gz",
+          "query": "?sha256=ddef7b4ef180e07b3195c3ea9fc0a91dfa8aecca6f3624fb6a21126dd36b66f4",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e001-s001/base.bin.gz",
+          "query": "?sha256=62ed243a3b54bf42f34470e4858eaa2af989edb55a325d40eaa9f9cbf9db6752",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e002-n000/base.gltf.gz",
+          "query": "?sha256=2b729f4802f0fc31fd4eaa142386f2c5878e5243a764d1112d68e3be9f3267ae",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e002-n000/base.bin.gz",
+          "query": "?sha256=b2b8e260e12b923469ed46b80ddad48ac887c88e09a2853547ba25308dc65b3a",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e002-s001/base.gltf.gz",
+          "query": "?sha256=09463958c5a02893327af2bf904b04ba4db229a5cde85f4b9a8b418877aa5d65",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e002-s001/base.bin.gz",
+          "query": "?sha256=2f001e7ef3b66917fbb43f0a67df488c796c8305dabb4ceaaade5692a744cc63",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-n000/near.gltf.gz",
+          "query": "?sha256=c6f1630b1d40bac9591ad81def121a550090016fb72fc983ccbee249636ce709",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/granite-normal.webp",
+          "query": "?sha256=4ada987f6be4600c103956d39c2248cef0e2998c9cb4c159a65d41a5969818a1",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/granite-color.webp",
+          "query": "?sha256=d1f7f3de690675e41962e2c620da7c0705a8933b3252703e53fc3ba72e167b1b",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/shared/materials/granite-roughness.webp",
+          "query": "?sha256=d60715be45ded728a4473a9d8ad8e010e1121f82a4df278de4644599f196e9b5",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-n000/near.bin.gz",
+          "query": "?sha256=dff2868b71a0bb858ae95c2132c4e0070e9851e38db4038a7ebf561a6dafb6d5",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-s001/near.gltf.gz",
+          "query": "?sha256=a5446fc440c6caf224dda33a22825b35ea5ece4694ba84059be00fad03f4c991",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e000-s001/near.bin.gz",
+          "query": "?sha256=0be15ceaf7688f56326691f005f920e453dae31dc98fc390c9c39e8d1ff94d84",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e001-n000/near.gltf.gz",
+          "query": "?sha256=827a31256e92313636521f3c979b64b19a33ac4829b6a402b546f61daea44d94",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        },
+        {
+          "path": "/assets/neighborhoods/shijo-east/cells/cell-e001-n000/near.bin.gz",
+          "query": "?sha256=287304858f255240bd73c3523c4266cad3f19ab0d4f2338ab4672035c75386f2",
+          "status": 200,
+          "fromDiskCache": true,
+          "fromServiceWorker": false,
+          "encodedDataLength": 0,
+          "finished": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,9 @@
 # Executed arcade and riverbank review · 2026-10-23
 
+The latest [candidate11 matched review](../../neighborhood-20261024/art/candidate-11/README.md) accepts four source731 foundation edges and two audited Pontochō road boundaries in day/night. Excluded road/bridge/corner lines and unrelated facade contact defects remain explicit. This bounded acceptance preserves the source and package scope of all earlier records.
+
+The later [candidate10 matched review](../../neighborhood-20261024/art/candidate-10/README.md) accepts the nonemissive paper response and source223 platform-edge closure. The [candidate9 completed-route image review](candidate-9/full-route-review.md) preserves all19 CI captures' visual scope and remaining quality issues. Historical candidate records below retain their original observations and package identities.
+
 The [candidate9 visual review](candidate-9/README.md) accepts the repaired platform floor and western Tenmangū pause for deliberate inspection after turning east. Ordinary arrival retains the user's camera and does not itself show the torii. The [candidate8 review](candidate-8/README.md) retains the bounded Shinkyōgoku panel material acceptance at e006 and the platform's pre-correction images. The [eighteen-view candidate6 coverage](candidate-6-coverage/README.md) preserves earlier connector observations and eastern Tenmangū framing evidence. Source-backed facade variation, factual plaque/detail review, night glazing/hanging-form response and thin floor-edge seams remain open quality work. Whole-neighborhood visual acceptance and human realism have not been established. Historical package records below retain their exact identities and observations; the accepted bounded river continuation is recorded in the candidate2 section.
 
 ## Candidate 1 captured build

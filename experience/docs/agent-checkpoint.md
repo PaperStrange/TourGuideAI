@@ -9,6 +9,38 @@ the verified baseline. Q03 is open P1; backend tests remain local.**
 ## Resumed acceptance · 2026-10-24
 
 Starting checkpoint **`3c7fd4b`** is synchronized with the remote iteration branch.
+The latest implementation is **`84e80a8`**, with immutable **candidate 11**, package
+**`76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea`**,
+446 files / 96,813,522 bytes, at `artifacts/neighborhood-20261024/candidate-11`.
+Manifest: **`4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544`**.
+Its build, **203/203** application tests and **17/17** repository gates pass.
+Independent audit **`2dd0f205a63772c717b2cd1016e4066f5f4a6e9d9424ada77108d5627281ccc8`**
+verifies 74 sections, 9,731 source groups, 148 gzip resources and exact walkable
+arrays. Exactly 20 approved nonwalkable boundary triangles are added; all prior
+geometry/materials/source/navigation remain unchanged. Required 3D startup is
+3,036,911 bytes day / 3,029,675 bytes night. Current boundary and western views pass
+**36/36** checks with frozen driver
+`e7fc6bdaed7a21774b0b185adb21b6b8fd349b0eb496c3d75287059b5cfc6105`.
+Art accepts the scoped repairs in seven unchanged day/night canvases. Excluded
+road joins and unrelated facade seams remain documented visual polish debt;
+broader source-backed facade and night-material realism remains unaccepted.
+
+The [current standard performance run](../evidence/neighborhood-20261024/performance/candidate-11/README.md)
+records **16 passes / 3 failures**. Cold first usable entry is **7,798.0 ms**;
+the three warm entries are **2,587.4 / 2,667.3 / 2,508.2 ms**, all within their
+existing targets. Event-timestamp input p95 **746.6 ms** and observed frame p95
+**782.0 ms** fail. All twenty trusted actions respond with zero page errors.
+Report SHA256: `02dadca1ea4c25d07ba2393f7e0f275c13e001bc3ebb436463485d7e682b0cf6`.
+The default headless visibility check remains failed/unobserved in that report.
+A [separate current-package native run](../evidence/neighborhood-20261024/performance/candidate-11-native-visibility/README.md)
+passes **13/13**: real trusted tab transitions, zero draws/updates/neighborhood
+requests over **2,018.8 ms** hidden, and preserved private view on return.
+Its report SHA256 is `ccecdbe22d4b522a0210a31e08515e361a24befba44d80605846f488308227ea`.
+Both runs preserve their separate configuration, exact sources and package hashes.
+Hardware performance remains unverified; a GPU-environment availability question
+is pending while independent implementation and validation continue.
+
+The following candidate 10 observations retain their exact package scope.
 Candidate 10 implementation is **`4b87555`**, built at `artifacts/neighborhood-20261024/candidate-10`, with
 446 files / 96,790,615 bytes and package SHA256
 **`afc7934f1b0706ea59caae5e4b1a97a6a3f6366ac65b24cbe79bfc2c2d94e574`**.
@@ -18,7 +50,40 @@ Independent export audit **`97989383be234776aeafe54f22f1771c9151044d6a3cf6e28c34
 checks 74 sections and 148 gzip resources. It preserves prior platform geometry and
 adds eight vertical boundary triangles per LOD; six torii triangles retain their
 geometry and receive the separate nonemissive paper material. All unrelated images,
-materials, lighting and navigation remain exact. Native acceptance remains pending.
+materials, lighting and navigation remain exact. Targeted native acceptance passes
+**68/68**: startup/error/retry/locale/cancellation 41, platform 10, western approach 17.
+Art accepts the source-bounded platform edge and matte paper in matched day/night views.
+The final default performance run records **16 passing / 3 failing** checks: cold
+7,772.3 ms and all warm entries 2,577.9 / 2,542.3 / 2,652.0 ms meet startup targets.
+Event-timestamp input p95 808.3 ms and observed frame p95 843.9 ms miss their targets;
+the default automation visibility observation remains unobserved. Report SHA256:
+`f7b16a9da729c25b7bce9f396247f8dcfba85025a939c92ffcd2494cc1a9d791`.
+
+A separately identified native display run passes **13/13** with real same-window
+tabs and trusted visibility events. Over 2,019.4 ms hidden, draws, updates and
+neighborhood requests all remain zero; the private view survives returning. It uses
+the built Xvfb and documented Playwright `connectOverCDP` `noDefaults` mode on the
+default context. Playwright's normal focus emulation otherwise keeps WebContents
+visible through a capture count. The first failed probe and default benchmark remain
+preserved. The successful probe retains AA, 1440×1000/DPR 1 and software rendering;
+it establishes native visibility behavior, not physical-GPU performance.
+
+Candidate 10 CI **40055504933** has seven successful jobs and its complete
+neighborhood job remains running on checkpoint **`b57d74f`** as of 03:31 UTC.
+Current candidate 11 awaits its own complete CI. A single
+matched startup A/B observes fewer preview mutations/draws. Its original 19/2 result
+is retained: warm-vs-cold raw edge-distance comparisons differ by 0.000334 m, while
+independent cold-to-cold and warm-to-warm player/camera/ground fields match exactly.
+These single observations and changed assets do not establish an isolated speedup.
+
+Candidate 11 contact refinement is built and independently audited. The frozen world
+proposal `e1dfea3c79d40ac5a438fe8c1089c6453ba6650df56016af28b33e61173f8b71`
+supports source 731 polygon 0 edges 5–8 and two exact road 20/151-to-land segments.
+The added vertical boundary faces preserve all prior geometry, materials and
+walkable attributes. Overlapping bridge 83 and rounding ambiguities are excluded.
+Root promoted the exact audited output and preserved candidate 10's public
+directory. Matched native appearance and current-package checks pass as recorded
+above; a fresh full-route result is still required for this package.
 
 Candidate 9 remains the immutable comparison package. CI **39909716421** has now
 completed successfully in all eight jobs. Its complete neighborhood report records
@@ -28,24 +93,24 @@ total **1,000 passing / zero failing** checks. The [completed verification](../e
 preserves both-direction coverage of all 54 selected edges and 13 cells, plus all
 19 original captures. Earlier snapshots below retain their observation times.
 
-The current authorized correction work has three owners:
+Completed correction responsibilities:
 
-- Engineering separates loading-status notifications from scene redraw requests,
+- Engineering separated loading-status notifications from scene redraw requests,
   retaining visible geometry/light changes, progress UI and recovery behavior.
-  A matched browser measurement must establish any performance improvement.
-- Art and world content review nonemissive torii paper and the platform's four-centimetre
-  vertical pavement boundary against retained sources. Source footprints, floor top,
-  navigation and actual arcade lights remain invariant. Independent export and
-  matched day/night checks precede promotion.
+  The matched browser observations retain their stated comparison limits.
+- Art and world content completed the source-supported nonemissive torii paper,
+  platform pavement edge and candidate 11 shared-boundary repairs. Source footprints,
+  floor top, navigation and actual arcade lights remain invariant. Independent
+  exports and matched day/night checks pass.
 - Navigation built artifact-local Xvfb 21.1.16 with its supported XKB output-directory
-  setting, GLX and TCP enabled, and MIT-SHM/Unix transports disabled. Its authenticated
-  launch helper remains in preparation; native visibility has not yet been measured.
-  This does not supply a physical GPU. Browser work uses scheduled exclusive windows.
+  setting, GLX and TCP enabled, and MIT-SHM/Unix transports disabled. Authenticated
+  native visibility validation passes as described above. This does not supply a
+  physical GPU. Browser work uses scheduled exclusive windows.
 
-Root owns candidate integration, source/repository checks, native review, performance
-comparison and remote synchronization. Existing latency targets, art acceptance and
-Q03 remain open. The appearance follow-up also retains location-matched frontage
-reference gaps and unverified plaque lettering. Publication awaits acceptance.
+Root owns remote synchronization, final-package CI and the remaining acceptance
+record. Input/frame targets, broader art acceptance and Q03 remain open. The
+appearance follow-up retains location-matched frontage reference gaps and unverified
+plaque lettering. Publication awaits acceptance; no current candidate is published.
 
 ## Candidate 9 evidence · 2026-10-23
 

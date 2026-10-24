@@ -1,0 +1,151 @@
+{
+  "status": "completed",
+  "packageManifestSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
+  "verifiedPackagedFiles": 446,
+  "source": {
+    "id": "shijo-east",
+    "revision": 1,
+    "geographySha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+    "manifestSha256": "4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544",
+    "historicalGeographyCompatibility": {
+      "kind": "reviewed-tenmangu-anchor-metadata",
+      "recordedSha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
+      "currentSha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+      "auditSha256": "156cdc90f594a9a69a672ac8003e1ddbfa76259c0dc86c5b59035b0e55cc35dd",
+      "auditFile": "experience/evidence/neighborhood-20261023/world/platform-context/tenmangu-compatibility.json",
+      "changedFields": [
+        "nodeId",
+        "approachNodeId",
+        "x",
+        "y",
+        "latitude",
+        "longitude"
+      ],
+      "completeGeographyCompared": true,
+      "unchangedSources": {
+        "scene.json": {
+          "bytes": 8789674,
+          "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e"
+        },
+        "source-ledger.json": {
+          "bytes": 5999,
+          "sha256": "be0f8065699a53f09293140e2499bca2468f0aa7cea503dc6436f45c9b17a24c"
+        },
+        "source-review.json": {
+          "bytes": 756,
+          "sha256": "4e3fbb9d2fd3134153d2b378f5de995c2f7e3135ea3d778a5fe2f19b55f00258"
+        },
+        "sources/kyoto-lod1.geojson": {
+          "bytes": 6304053,
+          "sha256": "da1af049906d736b6329e062673a84728640957475d3b46107cebf46b48a2d93"
+        },
+        "sources/route-osm.json": {
+          "bytes": 47176,
+          "sha256": "5681dceac0c5d206a6e5315c77ca6a39a292ab3915f23b60cc17c77cecb4099e"
+        },
+        "sources/scene-osm.json": {
+          "bytes": 2390775,
+          "sha256": "1e3ba265bc8dd3c6744ccd897ad915016a2cc0110c306bf3e064ca63ced5dd0c"
+        }
+      },
+      "scope": "Stored metric view, frame and navigation geometry. Rendered assets retain their separate current-build identity."
+    }
+  },
+  "driverSha256": "e7fc6bdaed7a21774b0b185adb21b6b8fd349b0eb496c3d75287059b5cfc6105",
+  "driverDependencies": [
+    {
+      "file": "tests/helpers/neighborhood-evidence-source.mjs",
+      "sha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    }
+  ],
+  "browser": "151.0.7922.34",
+  "conditions": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "reducedMotion": "no-preference",
+    "timeoutMs": 120000,
+    "walkingTimeoutMs": 2400000,
+    "sections": [
+      "western-approach"
+    ],
+    "assetDelivery": "Actual loopback HTTP with immutable captured build bodies and no-store; only deliberate abort/delay scenarios install request routes."
+  },
+  "startedAt": "2026-10-24T03:24:01.311Z",
+  "finishedAt": "2026-10-24T03:25:53.538Z",
+  "elapsedMs": 112227,
+  "checks": {
+    "passed": 17,
+    "failed": 0
+  },
+  "failedCheckIds": [],
+  "actualHTTPRequests": 112,
+  "files": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 469416,
+      "sha256": "17dad82e0478718bde5479ad03fe64db1d3307b612c97ab913f6b0839746a3c6",
+      "decodedBytes": 5804500,
+      "decodedSha256": "ddbc6657883ec4b3f0eebe72420201b2b11fa397c58d8cd8ee15297cad20f557"
+    },
+    {
+      "file": "browser-neighborhood.executed.mjs.gz",
+      "bytes": 45261,
+      "sha256": "84ea200f62bda9abe5fa0da33fb10322c96a0d3e59018779a226b74e532e8390",
+      "decodedBytes": 186585,
+      "decodedSha256": "e7fc6bdaed7a21774b0b185adb21b6b8fd349b0eb496c3d75287059b5cfc6105"
+    },
+    {
+      "file": "neighborhood-evidence-source.executed.mjs.gz",
+      "bytes": 1619,
+      "sha256": "70115611f201081f16386f97f55d12421b3ee05a5e4c8f20bdfe99a5ec5fd294",
+      "decodedBytes": 3713,
+      "decodedSha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    },
+    {
+      "file": "tenmangu-western-arrival-ordinary-day.png",
+      "bytes": 1026524,
+      "sha256": "7f21f0fdcf3d8fd6b3c00f3929982e459011dbac2b2126785b396ee05766639a"
+    },
+    {
+      "file": "tenmangu-western-approach-day.png",
+      "bytes": 1032481,
+      "sha256": "85937b3ae469d009d5947d1b7af4e18cea6a10f1833af96bc808eb0dc6ee61c4"
+    },
+    {
+      "file": "tenmangu-western-approach-night.png",
+      "bytes": 895459,
+      "sha256": "fe14c9219ad22d2b70f7a22749ad5a6413068afa58b3f0f99a3af3048b3d207e"
+    },
+    {
+      "file": "run.log.gz",
+      "bytes": 418,
+      "sha256": "babb88d6f1011a1a9ef44e85fa5c139dac23437068dc0f408c5470dec7925f69",
+      "decodedBytes": 1050,
+      "decodedSha256": "d15ce30f45aff68e3515aca83304bba16d3f28f57df958ef2d36c350360b46df"
+    }
+  ],
+  "externalCanvases": [
+    {
+      "file": "../../art/candidate-11/tenmangu-western-arrival-ordinary-day-canvas.png",
+      "bytes": 772172,
+      "sha256": "8b80226f716100ae116ee4f0c31ed793b3d7e0d1c67ccc9af5313d4f2411c0f4"
+    },
+    {
+      "file": "../../art/candidate-11/tenmangu-western-approach-day-canvas.png",
+      "bytes": 776061,
+      "sha256": "94d27fcc31a295a3a3e0d51618eaa292ea607f744364ea658d7896597c59f646"
+    },
+    {
+      "file": "../../art/candidate-11/tenmangu-western-approach-night-canvas.png",
+      "bytes": 648924,
+      "sha256": "0bbbb4cfee5510f46e560892d6f2b0816fe44033e6d9446f986ec955dcf36046"
+    }
+  ],
+  "limitations": [
+    "Actual automated desktop input and software-rendered frames do not establish physical-device performance or human enjoyment.",
+    "Failure cases abort or delay actual packaged requests. Successful loads use the preserved build bytes.",
+    "Authored level ground and simulation widths do not establish current pedestrian access or surveyed grades."
+  ]
+}

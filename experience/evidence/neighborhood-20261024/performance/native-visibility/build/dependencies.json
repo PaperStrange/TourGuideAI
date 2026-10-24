@@ -1,0 +1,659 @@
+{
+  "roots": [
+    "meson",
+    "ninja-build",
+    "x11proto-dev",
+    "xtrans-dev",
+    "libxau-dev",
+    "libxdmcp-dev",
+    "libxfont-dev",
+    "libxkbfile-dev",
+    "libpixman-1-dev",
+    "mesa-common-dev",
+    "libgl-dev",
+    "libx11-dev",
+    "libxext-dev",
+    "libxshmfence-dev",
+    "libtirpc-dev"
+  ],
+  "hostDependencies": {
+    "python3": "3.13.5-1",
+    "libc6": "2.41-12+deb13u3",
+    "libgcc-s1": "14.2.0-19",
+    "libstdc++6": "14.2.0-19",
+    "libbz2-1.0": "1.0.8-6",
+    "libfontenc1": "1:1.1.8-1+b2",
+    "libfreetype6": "2.13.3+dfsg-1+deb13u1",
+    "zlib1g": "1:1.3.dfsg+really1.3.1-1+b1",
+    "libxcb1": "1.17.0-2+b1",
+    "libx11-data": "2:1.8.12-1",
+    "libxau6": "1:1.0.11-1",
+    "libxdmcp6": "1:1.1.5-1",
+    "libbrotli1": "1.1.0-2+b7",
+    "libpng16-16t64": "1.6.48-1+deb13u5",
+    "libc6-dev": "2.41-12+deb13u3",
+    "zlib1g-dev": "1:1.3.dfsg+really1.3.1-1+b1",
+    "libx11-6": "2:1.8.12-1",
+    "libglvnd0": "1.7.0-1+b2",
+    "libglx0": "1.7.0-1+b2",
+    "libglx-mesa0": "25.0.7-2+deb13u1",
+    "libdrm-common": "2.4.124-2",
+    "libdrm2": "2.4.124-2",
+    "libpciaccess0": "0.17-3+b3",
+    "libgssapi-krb5-2": "1.21.3-5+deb13u1",
+    "libtirpc-common": "1.3.6+ds-1"
+  },
+  "packages": [
+    {
+      "package": "meson",
+      "version": "1.7.0-1",
+      "architecture": "all",
+      "url": "https://deb.debian.org/debian/pool/main/m/meson/meson_1.7.0-1_all.deb",
+      "file": "meson_1.7.0-1_all.deb",
+      "bytes": 639072,
+      "sha256": "e92d04e60e784336883d537755d09b7dcb856809fa318a0931df3898e84ded95",
+      "suite": "trixie"
+    },
+    {
+      "package": "ninja-build",
+      "version": "1.12.1-1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/n/ninja-build/ninja-build_1.12.1-1_amd64.deb",
+      "file": "ninja-build_1.12.1-1_amd64.deb",
+      "bytes": 142132,
+      "sha256": "bc172ce9270bd6fcd6d5335a83ff9d3c7ba0d13ec624cfdfa1b5aa06901dc453",
+      "suite": "trixie"
+    },
+    {
+      "package": "python3-setuptools",
+      "version": "78.1.1-0.1",
+      "architecture": "all",
+      "url": "https://deb.debian.org/debian/pool/main/s/setuptools/python3-setuptools_78.1.1-0.1_all.deb",
+      "file": "python3-setuptools_78.1.1-0.1_all.deb",
+      "bytes": 738228,
+      "sha256": "90c4bc8e311873e5b571b407ce6b1fd38195dff77f9de056301a0f950e6df5a5",
+      "suite": "trixie"
+    },
+    {
+      "package": "python3-pkg-resources",
+      "version": "78.1.1-0.1",
+      "architecture": "all",
+      "url": "https://deb.debian.org/debian/pool/main/s/setuptools/python3-pkg-resources_78.1.1-0.1_all.deb",
+      "file": "python3-pkg-resources_78.1.1-0.1_all.deb",
+      "bytes": 224360,
+      "sha256": "cf8749251172abc945216cf878367f614cf91d3d9a1043ba3bacc5a74e8cc1a8",
+      "suite": "trixie"
+    },
+    {
+      "package": "python3-autocommand",
+      "version": "2.2.2-3",
+      "architecture": "all",
+      "url": "https://deb.debian.org/debian/pool/main/p/python-autocommand/python3-autocommand_2.2.2-3_all.deb",
+      "file": "python3-autocommand_2.2.2-3_all.deb",
+      "bytes": 13608,
+      "sha256": "1e62ac22ff83466228c051c6c2402a40f521646e15b5aa54cf2391206a848bad",
+      "suite": "trixie"
+    },
+    {
+      "package": "python3-inflect",
+      "version": "7.3.1-2",
+      "architecture": "all",
+      "url": "https://deb.debian.org/debian/pool/main/p/python-inflect/python3-inflect_7.3.1-2_all.deb",
+      "file": "python3-inflect_7.3.1-2_all.deb",
+      "bytes": 32396,
+      "sha256": "6c10dca4d4aa0eb0b4e16e8b62b74a073a8d22be8809c3f61c56b06fdd1451f8",
+      "suite": "trixie"
+    },
+    {
+      "package": "python3-more-itertools",
+      "version": "10.7.0-1",
+      "architecture": "all",
+      "url": "https://deb.debian.org/debian/pool/main/m/more-itertools/python3-more-itertools_10.7.0-1_all.deb",
+      "file": "python3-more-itertools_10.7.0-1_all.deb",
+      "bytes": 67416,
+      "sha256": "385d785fa84261838732ec97627b4e95ec7399fc449d8a2aaaef66fb5f961c25",
+      "suite": "trixie"
+    },
+    {
+      "package": "python3-typeguard",
+      "version": "4.4.2-1",
+      "architecture": "all",
+      "url": "https://deb.debian.org/debian/pool/main/p/python-typeguard/python3-typeguard_4.4.2-1_all.deb",
+      "file": "python3-typeguard_4.4.2-1_all.deb",
+      "bytes": 37300,
+      "sha256": "81e512101d7ab94e73646b9a8e4fb9b948836e3172dc5719ad3acbcde65bca01",
+      "suite": "trixie"
+    },
+    {
+      "package": "python3-importlib-metadata",
+      "version": "8.7.0-1",
+      "architecture": "all",
+      "url": "https://deb.debian.org/debian/pool/main/p/python-importlib-metadata/python3-importlib-metadata_8.7.0-1_all.deb",
+      "file": "python3-importlib-metadata_8.7.0-1_all.deb",
+      "bytes": 21780,
+      "sha256": "f895d1f4901176f5e75614bf95b98ccc2a6cd5017ba5ec727b29f281d29be1cd",
+      "suite": "trixie"
+    },
+    {
+      "package": "python3-zipp",
+      "version": "3.21.0-1",
+      "architecture": "all",
+      "url": "https://deb.debian.org/debian/pool/main/p/python-zipp/python3-zipp_3.21.0-1_all.deb",
+      "file": "python3-zipp_3.21.0-1_all.deb",
+      "bytes": 10584,
+      "sha256": "6cd0f768a5e5c574c7ae4b9d56603f8399b31de732167007e42fc17decc5cc6a",
+      "suite": "trixie"
+    },
+    {
+      "package": "python3-typing-extensions",
+      "version": "4.13.2-1",
+      "architecture": "all",
+      "url": "https://deb.debian.org/debian/pool/main/p/python-typing-extensions/python3-typing-extensions_4.13.2-1_all.deb",
+      "file": "python3-typing-extensions_4.13.2-1_all.deb",
+      "bytes": 90500,
+      "sha256": "b67662f211c35c17c74a0725bc7c8ffc3b126c650e2a2525593adee06f2bbf69",
+      "suite": "trixie"
+    },
+    {
+      "package": "python3-jaraco.context",
+      "version": "6.0.1-1+deb13u1",
+      "architecture": "all",
+      "url": "https://deb.debian.org/debian/pool/main/j/jaraco.context/python3-jaraco.context_6.0.1-1+deb13u1_all.deb",
+      "file": "python3-jaraco.context_6.0.1-1+deb13u1_all.deb",
+      "bytes": 8492,
+      "sha256": "f909ec7b00dd96a1905322acba7cdd2df09747ceddeef6e426a97b33ab227f80",
+      "suite": "trixie"
+    },
+    {
+      "package": "python3-jaraco.functools",
+      "version": "4.1.0-1",
+      "architecture": "all",
+      "url": "https://deb.debian.org/debian/pool/main/p/python-jaraco.functools/python3-jaraco.functools_4.1.0-1_all.deb",
+      "file": "python3-jaraco.functools_4.1.0-1_all.deb",
+      "bytes": 11984,
+      "sha256": "f5ac3e5f79b6394191d76ea7cde9255d8bae98f639886cb981444128f6545796",
+      "suite": "trixie"
+    },
+    {
+      "package": "python3-jaraco.text",
+      "version": "4.0.0-1",
+      "architecture": "all",
+      "url": "https://deb.debian.org/debian/pool/main/j/jaraco.text/python3-jaraco.text_4.0.0-1_all.deb",
+      "file": "python3-jaraco.text_4.0.0-1_all.deb",
+      "bytes": 11432,
+      "sha256": "d5e060c9ba9d5206b53670cf2473681b45030cc6a55d18a8c6d87419a924e502",
+      "suite": "trixie"
+    },
+    {
+      "package": "python3-importlib-resources",
+      "version": "6.5.2-1",
+      "architecture": "all",
+      "url": "https://deb.debian.org/debian/pool/main/i/importlib-resources/python3-importlib-resources_6.5.2-1_all.deb",
+      "file": "python3-importlib-resources_6.5.2-1_all.deb",
+      "bytes": 24204,
+      "sha256": "7f6c49804f85cfbe94dcb51d1c34e64795a475e69ab8f4c33bb6100e8c37fc6f",
+      "suite": "trixie"
+    },
+    {
+      "package": "x11proto-dev",
+      "version": "2024.1-1",
+      "architecture": "all",
+      "url": "https://deb.debian.org/debian/pool/main/x/xorgproto/x11proto-dev_2024.1-1_all.deb",
+      "file": "x11proto-dev_2024.1-1_all.deb",
+      "bytes": 602628,
+      "sha256": "6a6764500eb8171d3cd6d793c09902974f8ea87bd20c68d9eac5f1eeaf3fc407",
+      "suite": "trixie"
+    },
+    {
+      "package": "xorg-sgml-doctools",
+      "version": "1:1.11-1.1",
+      "architecture": "all",
+      "url": "https://deb.debian.org/debian/pool/main/x/xorg-sgml-doctools/xorg-sgml-doctools_1.11-1.1_all.deb",
+      "file": "xorg-sgml-doctools_1.11-1.1_all.deb",
+      "bytes": 22064,
+      "sha256": "168345058319094e475a87ace66f5fb6ae802109650ea8434d672117982b5d0a",
+      "suite": "trixie"
+    },
+    {
+      "package": "xtrans-dev",
+      "version": "1.4.0-1",
+      "architecture": "all",
+      "url": "https://deb.debian.org/debian/pool/main/x/xtrans/xtrans-dev_1.4.0-1_all.deb",
+      "file": "xtrans-dev_1.4.0-1_all.deb",
+      "bytes": 98740,
+      "sha256": "9ce1af9464faee0c679348dd11cdf63934c12e734a64e0903692b0cb5af38e06",
+      "suite": "trixie"
+    },
+    {
+      "package": "libxau-dev",
+      "version": "1:1.0.11-1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libx/libxau/libxau-dev_1.0.11-1_amd64.deb",
+      "file": "libxau-dev_1.0.11-1_amd64.deb",
+      "bytes": 23580,
+      "sha256": "1e29410af794a3d3790aab9fa0c1b0ec9324697502e982fce4dcdd4610ce3e8a",
+      "suite": "trixie"
+    },
+    {
+      "package": "libxau6",
+      "version": "1:1.0.11-1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libx/libxau/libxau6_1.0.11-1_amd64.deb",
+      "file": "libxau6_1.0.11-1_amd64.deb",
+      "bytes": 20392,
+      "sha256": "689a9f0e0ba3e2c65431f864871e303ee904de69dd28abfc462663fae030227f",
+      "suite": "trixie"
+    },
+    {
+      "package": "libxdmcp-dev",
+      "version": "1:1.1.5-1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libx/libxdmcp/libxdmcp-dev_1.1.5-1_amd64.deb",
+      "file": "libxdmcp-dev_1.1.5-1_amd64.deb",
+      "bytes": 44336,
+      "sha256": "bc845297d20cf63388c6b248d9ee169a3890347cb1c29bcd9f771684bf17b528",
+      "suite": "trixie"
+    },
+    {
+      "package": "libxdmcp6",
+      "version": "1:1.1.5-1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libx/libxdmcp/libxdmcp6_1.1.5-1_amd64.deb",
+      "file": "libxdmcp6_1.1.5-1_amd64.deb",
+      "bytes": 27756,
+      "sha256": "0740dc760916b2008b45417a42a8fd7dd5de370fb57d31373f15034cda8acf0b",
+      "suite": "trixie"
+    },
+    {
+      "package": "libxfont-dev",
+      "version": "1:2.0.6-1+deb13u1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libx/libxfont/libxfont-dev_2.0.6-1+deb13u1_amd64.deb",
+      "file": "libxfont-dev_2.0.6-1+deb13u1_amd64.deb",
+      "bytes": 161624,
+      "sha256": "cef239836034e5ed10ede825115fbb5a5a3353432ace4217e4672768ddc72e25",
+      "suite": "trixie"
+    },
+    {
+      "package": "libxfont2",
+      "version": "1:2.0.6-1+deb13u1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libx/libxfont/libxfont2_2.0.6-1+deb13u1_amd64.deb",
+      "file": "libxfont2_2.0.6-1+deb13u1_amd64.deb",
+      "bytes": 132904,
+      "sha256": "79a7f56e4a0c7b1defa706c7b1f3076f7d80aaeea9de253b2a87406253319681",
+      "suite": "trixie"
+    },
+    {
+      "package": "libx11-dev",
+      "version": "2:1.8.12-1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libx/libx11/libx11-dev_1.8.12-1_amd64.deb",
+      "file": "libx11-dev_1.8.12-1_amd64.deb",
+      "bytes": 894476,
+      "sha256": "530de60c9c6dadd997ae7d74eca2a41b25e849373a5ad5dcdb619aa05713d6e0",
+      "suite": "trixie"
+    },
+    {
+      "package": "libx11-6",
+      "version": "2:1.8.12-1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libx/libx11/libx11-6_1.8.12-1_amd64.deb",
+      "file": "libx11-6_1.8.12-1_amd64.deb",
+      "bytes": 815292,
+      "sha256": "b5a3fd3bf8c8fd0364bfb9bea00dcba7fc301229bd02dded084632d31f5b0fb3",
+      "suite": "trixie"
+    },
+    {
+      "package": "libxcb1-dev",
+      "version": "1.17.0-2+b1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libx/libxcb/libxcb1-dev_1.17.0-2+b1_amd64.deb",
+      "file": "libxcb1-dev_1.17.0-2+b1_amd64.deb",
+      "bytes": 181152,
+      "sha256": "669949f8d5dff76616630d839b9047b76af553c62c376458094bd759f8fdb903",
+      "suite": "trixie"
+    },
+    {
+      "package": "libxcb1",
+      "version": "1.17.0-2+b1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libx/libxcb/libxcb1_1.17.0-2+b1_amd64.deb",
+      "file": "libxcb1_1.17.0-2+b1_amd64.deb",
+      "bytes": 144340,
+      "sha256": "5c222a72d11b866447da31693254f738430726e3e065a384e82687b2fd2f978b",
+      "suite": "trixie"
+    },
+    {
+      "package": "libfreetype-dev",
+      "version": "2.13.3+dfsg-1+deb13u1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/f/freetype/libfreetype-dev_2.13.3+dfsg-1+deb13u1_amd64.deb",
+      "file": "libfreetype-dev_2.13.3+dfsg-1+deb13u1_amd64.deb",
+      "bytes": 622868,
+      "sha256": "f58107859d9fa44206e64cf35bdbd4febdec66a33e456ce2e5e3712f01b6c895",
+      "suite": "trixie"
+    },
+    {
+      "package": "libfreetype6",
+      "version": "2.13.3+dfsg-1+deb13u1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/f/freetype/libfreetype6_2.13.3+dfsg-1+deb13u1_amd64.deb",
+      "file": "libfreetype6_2.13.3+dfsg-1+deb13u1_amd64.deb",
+      "bytes": 452308,
+      "sha256": "e4947f3291528f03d574f2b01d5c5fc45c58c47480f32888a5cdf0f231ab584e",
+      "suite": "trixie"
+    },
+    {
+      "package": "libbrotli-dev",
+      "version": "1.1.0-2+deb13u1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian-security/pool/updates/main/b/brotli/libbrotli-dev_1.1.0-2+deb13u1_amd64.deb",
+      "file": "libbrotli-dev_1.1.0-2+deb13u1_amd64.deb",
+      "bytes": 395536,
+      "sha256": "e2caf8700d5b786049bec7eeadf57dd2d8dc8523084f957e74e2e6dbba166fee",
+      "suite": "trixie-security"
+    },
+    {
+      "package": "libbrotli1",
+      "version": "1.1.0-2+deb13u1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian-security/pool/updates/main/b/brotli/libbrotli1_1.1.0-2+deb13u1_amd64.deb",
+      "file": "libbrotli1_1.1.0-2+deb13u1_amd64.deb",
+      "bytes": 303640,
+      "sha256": "db46824c60fee46aff3cc0be3e5f736bc606cae669b1fb17516a41e8073251a9",
+      "suite": "trixie-security"
+    },
+    {
+      "package": "libbz2-dev",
+      "version": "1.0.8-6",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/b/bzip2/libbz2-dev_1.0.8-6_amd64.deb",
+      "file": "libbz2-dev_1.0.8-6_amd64.deb",
+      "bytes": 31368,
+      "sha256": "b395471bf69087a18a6baa04d68a9d50497b20f8a2602d9729c7069f820bbe6b",
+      "suite": "trixie"
+    },
+    {
+      "package": "libbz2-1.0",
+      "version": "1.0.8-6",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/b/bzip2/libbz2-1.0_1.0.8-6_amd64.deb",
+      "file": "libbz2-1.0_1.0.8-6_amd64.deb",
+      "bytes": 37912,
+      "sha256": "cba4cda04244b5e481bb15524bc3c983a7d1b6f330013b9b381706a2fcb65310",
+      "suite": "trixie"
+    },
+    {
+      "package": "libpng-dev",
+      "version": "1.6.48-1+deb13u6",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian-security/pool/updates/main/libp/libpng1.6/libpng-dev_1.6.48-1+deb13u6_amd64.deb",
+      "file": "libpng-dev_1.6.48-1+deb13u6_amd64.deb",
+      "bytes": 367276,
+      "sha256": "c340b3a68d3e494290db3952293cbb64f01a8ea1ac75ae0ac6980a3418782415",
+      "suite": "trixie-security"
+    },
+    {
+      "package": "libpng16-16t64",
+      "version": "1.6.48-1+deb13u6",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian-security/pool/updates/main/libp/libpng1.6/libpng16-16t64_1.6.48-1+deb13u6_amd64.deb",
+      "file": "libpng16-16t64_1.6.48-1+deb13u6_amd64.deb",
+      "bytes": 283368,
+      "sha256": "0f8034d1c2547760430c81e8d87e5d6acd533a3493c80cf76dbecd0343b6773c",
+      "suite": "trixie-security"
+    },
+    {
+      "package": "libfontenc-dev",
+      "version": "1:1.1.8-1+b2",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libf/libfontenc/libfontenc-dev_1.1.8-1+b2_amd64.deb",
+      "file": "libfontenc-dev_1.1.8-1+b2_amd64.deb",
+      "bytes": 25248,
+      "sha256": "41af694eafa686879f8c7f64601d69637f0598256298309fab4e2e3e521b6276",
+      "suite": "trixie"
+    },
+    {
+      "package": "libfontenc1",
+      "version": "1:1.1.8-1+b2",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libf/libfontenc/libfontenc1_1.1.8-1+b2_amd64.deb",
+      "file": "libfontenc1_1.1.8-1+b2_amd64.deb",
+      "bytes": 23328,
+      "sha256": "49f7330e1bbe3f48946fee5c07870df660374f9f77b378840d6edf1a3b3444cd",
+      "suite": "trixie"
+    },
+    {
+      "package": "libxkbfile-dev",
+      "version": "1:1.1.0-1+b4",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libx/libxkbfile/libxkbfile-dev_1.1.0-1+b4_amd64.deb",
+      "file": "libxkbfile-dev_1.1.0-1+b4_amd64.deb",
+      "bytes": 87992,
+      "sha256": "ac7c7ce69714195291e299bebab9d349f69579be540364a9280e97db6d9ac71d",
+      "suite": "trixie"
+    },
+    {
+      "package": "libxkbfile1",
+      "version": "1:1.1.0-1+b4",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libx/libxkbfile/libxkbfile1_1.1.0-1+b4_amd64.deb",
+      "file": "libxkbfile1_1.1.0-1+b4_amd64.deb",
+      "bytes": 76516,
+      "sha256": "989b61e0eb7f1f99d0e969a5957e9a857a95941d5c0e86d5e2b502008b4ac28e",
+      "suite": "trixie"
+    },
+    {
+      "package": "libpixman-1-dev",
+      "version": "0.44.0-3",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/p/pixman/libpixman-1-dev_0.44.0-3_amd64.deb",
+      "file": "libpixman-1-dev_0.44.0-3_amd64.deb",
+      "bytes": 11380,
+      "sha256": "091478a78864d25257788473a36b9545ae2e0bc3f621bad3c229090b54b67e1e",
+      "suite": "trixie"
+    },
+    {
+      "package": "libpixman-1-0",
+      "version": "0.44.0-3",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/p/pixman/libpixman-1-0_0.44.0-3_amd64.deb",
+      "file": "libpixman-1-0_0.44.0-3_amd64.deb",
+      "bytes": 247888,
+      "sha256": "3862c87596f6b4b60fc916395fd69aa10af28a875a8e5c081a8cf30ddd120bd6",
+      "suite": "trixie"
+    },
+    {
+      "package": "mesa-common-dev",
+      "version": "25.0.7-2+deb13u1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/m/mesa/mesa-common-dev_25.0.7-2+deb13u1_amd64.deb",
+      "file": "mesa-common-dev_25.0.7-2+deb13u1_amd64.deb",
+      "bytes": 2931940,
+      "sha256": "c4093979dd1538882de4e6a5d4a042f26e72bcc06b6a0b364a1af3aa195aca88",
+      "suite": "trixie"
+    },
+    {
+      "package": "libgl-dev",
+      "version": "1.7.0-1+b2",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libg/libglvnd/libgl-dev_1.7.0-1+b2_amd64.deb",
+      "file": "libgl-dev_1.7.0-1+b2_amd64.deb",
+      "bytes": 100680,
+      "sha256": "2c5044a44bc7cd7a196d554ca6ff78ae0358fbb98b7d2cce49176bdc6a816fe4",
+      "suite": "trixie"
+    },
+    {
+      "package": "libgl1",
+      "version": "1.7.0-1+b2",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libg/libglvnd/libgl1_1.7.0-1+b2_amd64.deb",
+      "file": "libgl1_1.7.0-1+b2_amd64.deb",
+      "bytes": 89504,
+      "sha256": "87fa2f6e5abaed4ed385fac879c8dd735af719ee2300222d901793c66e041678",
+      "suite": "trixie"
+    },
+    {
+      "package": "libglx-dev",
+      "version": "1.7.0-1+b2",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libg/libglvnd/libglx-dev_1.7.0-1+b2_amd64.deb",
+      "file": "libglx-dev_1.7.0-1+b2_amd64.deb",
+      "bytes": 15804,
+      "sha256": "93d456321c07009491b942783db8c57065b616db713ef5f6a0c629ca078c4ea0",
+      "suite": "trixie"
+    },
+    {
+      "package": "libglx0",
+      "version": "1.7.0-1+b2",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libg/libglvnd/libglx0_1.7.0-1+b2_amd64.deb",
+      "file": "libglx0_1.7.0-1+b2_amd64.deb",
+      "bytes": 34892,
+      "sha256": "2721fdca0fe3bd963cb39482eabc253af52b88f4a7f6dbb69e475549daf5af3b",
+      "suite": "trixie"
+    },
+    {
+      "package": "libdrm-dev",
+      "version": "2.4.124-2",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libd/libdrm/libdrm-dev_2.4.124-2_amd64.deb",
+      "file": "libdrm-dev_2.4.124-2_amd64.deb",
+      "bytes": 296368,
+      "sha256": "83b84b1207c4dda3d64ebad7725a7ad237c69c870668db3b01eabad1052f0dcb",
+      "suite": "trixie"
+    },
+    {
+      "package": "libdrm2",
+      "version": "2.4.124-2",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libd/libdrm/libdrm2_2.4.124-2_amd64.deb",
+      "file": "libdrm2_2.4.124-2_amd64.deb",
+      "bytes": 39032,
+      "sha256": "fe2276901c7cd7b8079de63072d37fe1cbeb4eb001a3bc1f1d662ad89aa0890e",
+      "suite": "trixie"
+    },
+    {
+      "package": "libdrm-intel1",
+      "version": "2.4.124-2",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libd/libdrm/libdrm-intel1_2.4.124-2_amd64.deb",
+      "file": "libdrm-intel1_2.4.124-2_amd64.deb",
+      "bytes": 64104,
+      "sha256": "188ab1fd74c838b3c8055d62107351e16a4bb7a25d39c30bbb9aac30ddd37238",
+      "suite": "trixie"
+    },
+    {
+      "package": "libdrm-radeon1",
+      "version": "2.4.124-2",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libd/libdrm/libdrm-radeon1_2.4.124-2_amd64.deb",
+      "file": "libdrm-radeon1_2.4.124-2_amd64.deb",
+      "bytes": 22564,
+      "sha256": "7a82b1c88b45235e314a15b71781b47ed472dafbbf697481ec8427079840fc32",
+      "suite": "trixie"
+    },
+    {
+      "package": "libdrm-nouveau2",
+      "version": "2.4.124-2",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libd/libdrm/libdrm-nouveau2_2.4.124-2_amd64.deb",
+      "file": "libdrm-nouveau2_2.4.124-2_amd64.deb",
+      "bytes": 19892,
+      "sha256": "634dcb46487fb2ca267850261291463845ada90b81d16a926ca40d333ce57180",
+      "suite": "trixie"
+    },
+    {
+      "package": "libdrm-amdgpu1",
+      "version": "2.4.124-2",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libd/libdrm/libdrm-amdgpu1_2.4.124-2_amd64.deb",
+      "file": "libdrm-amdgpu1_2.4.124-2_amd64.deb",
+      "bytes": 22632,
+      "sha256": "c1d97a5e32e2bc68e833b8abeae026b6306198e87ee4396a7ffecd4779caefbf",
+      "suite": "trixie"
+    },
+    {
+      "package": "libpciaccess-dev",
+      "version": "0.17-3+b3",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libp/libpciaccess/libpciaccess-dev_0.17-3+b3_amd64.deb",
+      "file": "libpciaccess-dev_0.17-3+b3_amd64.deb",
+      "bytes": 55448,
+      "sha256": "dfaa687d4ccb943f5b222261a11a1678992bc499abe472d539aa59c4787a0c33",
+      "suite": "trixie"
+    },
+    {
+      "package": "libpciaccess0",
+      "version": "0.17-3+b3",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libp/libpciaccess/libpciaccess0_0.17-3+b3_amd64.deb",
+      "file": "libpciaccess0_0.17-3+b3_amd64.deb",
+      "bytes": 51920,
+      "sha256": "d9a0091071635a84e837051e4813005ac445071731becea28fba4d9806df5252",
+      "suite": "trixie"
+    },
+    {
+      "package": "libxext-dev",
+      "version": "2:1.3.4-1+b3",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libx/libxext/libxext-dev_1.3.4-1+b3_amd64.deb",
+      "file": "libxext-dev_1.3.4-1+b3_amd64.deb",
+      "bytes": 104436,
+      "sha256": "e6bd898976d762a6955ec465870e7f12a3b149f4c5b231b0687e293ed5726532",
+      "suite": "trixie"
+    },
+    {
+      "package": "libxext6",
+      "version": "2:1.3.4-1+b3",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libx/libxext/libxext6_1.3.4-1+b3_amd64.deb",
+      "file": "libxext6_1.3.4-1+b3_amd64.deb",
+      "bytes": 50448,
+      "sha256": "fc618ec40465e5ce48622606299cb47833efc3fb235ba15543b81f850722f443",
+      "suite": "trixie"
+    },
+    {
+      "package": "libxshmfence-dev",
+      "version": "1.3.3-1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libx/libxshmfence/libxshmfence-dev_1.3.3-1_amd64.deb",
+      "file": "libxshmfence-dev_1.3.3-1_amd64.deb",
+      "bytes": 10448,
+      "sha256": "52a0a738552cd340c6cf237341e708ceecb1a2547307131d214c20de816be423",
+      "suite": "trixie"
+    },
+    {
+      "package": "libxshmfence1",
+      "version": "1.3.3-1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libx/libxshmfence/libxshmfence1_1.3.3-1_amd64.deb",
+      "file": "libxshmfence1_1.3.3-1_amd64.deb",
+      "bytes": 10884,
+      "sha256": "7b339e9e5b2349723d35af4df89bcc7aa456bbdf8ba1754358f9b44c3fe1f964",
+      "suite": "trixie"
+    },
+    {
+      "package": "libtirpc-dev",
+      "version": "1.3.6+ds-1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libt/libtirpc/libtirpc-dev_1.3.6+ds-1_amd64.deb",
+      "file": "libtirpc-dev_1.3.6+ds-1_amd64.deb",
+      "bytes": 190536,
+      "sha256": "c5bb43c56850691e3aeb69009044376f0108bffb93704041b3511cf90d3af5ad",
+      "suite": "trixie"
+    },
+    {
+      "package": "libtirpc3t64",
+      "version": "1.3.6+ds-1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libt/libtirpc/libtirpc3t64_1.3.6+ds-1_amd64.deb",
+      "file": "libtirpc3t64_1.3.6+ds-1_amd64.deb",
+      "bytes": 83300,
+      "sha256": "ef4536c09bf5063554310e22d586ae90990100ba66d2fe7c35660e9e658913b6",
+      "suite": "trixie"
+    }
+  ],
+  "downloadBytes": 12404232
+}

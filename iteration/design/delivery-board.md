@@ -7,22 +7,24 @@ Updated 2026-10-24. Owner: lead. Planning baseline: `origin/iteration` at
 [sprint plan](../../experience/docs/sprint-connected-neighborhood-20261021.md)
 targets a continuous 1–2 km walking route with 5–8 sights and richer solo
 recommendations. The implemented pilot connects six sights over 1,353.444 m.
-Implementation source `9cbfa7f` produces candidate 9, which passes 203 application
-checks and 17 repository gates. The western sight pause, editable single-route
-recommendation and source-bounded platform floor are integrated. Independent
-source/geometry audits pass; native route-choice checks pass 20/20, corrected-floor
-checks 10/10 and western approach 14/14. Art accepts the repaired floor and deliberate
-gate view in daylight and night. The complete camera matrix passes 107/107. Connecting
-facade variation, landmark details, night material response and a floor-edge seam
-remain open.
+Implementation source `84e80a8` produces candidate 11, which passes 203 application
+checks, 17 repository gates and 36 targeted native checks. Independent source and
+geometry audits verify unchanged navigation and prior geometry. Seven current
+canvases pass the scoped day/night review of facade/road contacts and western gate
+continuity. Editable recommendations, Maps, private views and the six-sight route
+remain integrated. Candidate 9's route-choice 20/20 and complete camera matrix
+107/107 retain their original package scope.
 All eight candidate-9 CI jobs pass: 1,000 browser checks include 229 complete
 neighborhood checks and verified outward/return coverage. The current increment
-addresses redundant loading redraws, nonemissive temple paper and the reviewed
-platform pavement edge; export and matched native acceptance are in progress.
-The final software-renderer run has 14 passing / 5 failing checks: cold entry
-8,352.8 ms, first warm entry 3,013.9 ms, input p95 933.8 ms and frame p95 996.4 ms
-miss their targets; native hidden-tab behavior remains unobserved. Performance
-acceptance and Q03 remain open, and physical GPU/phone fluency is unmeasured.
+delivers redundant-loading redraw removal, nonemissive temple paper and reviewed
+pavement/facade boundaries. Candidate 11's standard software-renderer run passes
+cold entry at 7,798.0 ms and all three warm entries at 2,587.4 / 2,667.3 / 2,508.2 ms.
+Input p95 746.6 ms and frame p95 782.0 ms still fail their unchanged targets.
+A separate current-package genuine native-tab run passes 13/13 with zero hidden
+scene work over 2,018.8 ms and preserved return state. Current-package complete CI,
+input/frame acceptance, Q03 and broader source-backed facade/landmark/night-art
+acceptance remain open. Physical GPU/phone fluency is unmeasured; GPU-environment
+availability has been requested. Excluded road joins remain documented local polish.
 Published runtime `17b8f37` remains the verified baseline.
 The [agent checkpoint](../../experience/docs/agent-checkpoint.md) records exact
 package identities, evidence, failures and current owners. The records below

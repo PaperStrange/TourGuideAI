@@ -1,0 +1,118 @@
+{
+  "status": "completed",
+  "packageManifestSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
+  "verifiedPackagedFiles": 446,
+  "source": {
+    "id": "shijo-east",
+    "revision": 1,
+    "geographySha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+    "manifestSha256": "4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544"
+  },
+  "driverSha256": "e7fc6bdaed7a21774b0b185adb21b6b8fd349b0eb496c3d75287059b5cfc6105",
+  "driverDependencies": [
+    {
+      "file": "tests/helpers/neighborhood-evidence-source.mjs",
+      "sha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    }
+  ],
+  "browser": "151.0.7922.34",
+  "conditions": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "reducedMotion": "no-preference",
+    "timeoutMs": 120000,
+    "walkingTimeoutMs": 2400000,
+    "sections": [
+      "boundary-review"
+    ],
+    "assetDelivery": "Actual loopback HTTP with immutable captured build bodies and no-store; only deliberate abort/delay scenarios install request routes."
+  },
+  "startedAt": "2026-10-24T03:21:45.513Z",
+  "finishedAt": "2026-10-24T03:23:51.223Z",
+  "elapsedMs": 125710,
+  "checks": {
+    "passed": 19,
+    "failed": 0
+  },
+  "failedCheckIds": [],
+  "actualHTTPRequests": 175,
+  "files": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 265296,
+      "sha256": "432193b9c4549bb518e8d12ca066891024498b54ab3b2d88fdcab3b73d53c727",
+      "decodedBytes": 2738147,
+      "decodedSha256": "25fe3ce80de89f442bb29bb91861d958caa7eeee12fd529a76e49bb87e1fd070"
+    },
+    {
+      "file": "browser-neighborhood.executed.mjs.gz",
+      "bytes": 45261,
+      "sha256": "84ea200f62bda9abe5fa0da33fb10322c96a0d3e59018779a226b74e532e8390",
+      "decodedBytes": 186585,
+      "decodedSha256": "e7fc6bdaed7a21774b0b185adb21b6b8fd349b0eb496c3d75287059b5cfc6105"
+    },
+    {
+      "file": "neighborhood-evidence-source.executed.mjs.gz",
+      "bytes": 1619,
+      "sha256": "70115611f201081f16386f97f55d12421b3ee05a5e4c8f20bdfe99a5ec5fd294",
+      "decodedBytes": 3713,
+      "decodedSha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    },
+    {
+      "file": "tenmangu-close-pan-boundary-day.png",
+      "bytes": 798770,
+      "sha256": "3407e08758126c13c158bef171161a027a58f8d9a2a8ea1606f2d023d10f8d32"
+    },
+    {
+      "file": "tenmangu-close-pan-boundary-night.png",
+      "bytes": 794391,
+      "sha256": "6b956b88fd7d0fa41c99206ae0236ca623b38cb57eb6865b0c8f88d276903abf"
+    },
+    {
+      "file": "pontocho-arrival-boundary-day.png",
+      "bytes": 978895,
+      "sha256": "700a2a783aa64f4d3f45ac318f6efb4e681717495a810afeaf222e9e51be364a"
+    },
+    {
+      "file": "pontocho-arrival-boundary-night.png",
+      "bytes": 815666,
+      "sha256": "21559ecfde1b99226bee5751877954f2c4eea8e68e0c85a752b8d9124b36ec44"
+    },
+    {
+      "file": "run.log.gz",
+      "bytes": 387,
+      "sha256": "8c357579f9ba7ba397b1c200363f025d908fbd1b543e06a40a2f069c7ef691ac",
+      "decodedBytes": 1207,
+      "decodedSha256": "2ca0dc22a93e32ff0fc29e9a9a0420f19b3b6f5da9d8c95ab2faed20c71ea38e"
+    }
+  ],
+  "externalCanvases": [
+    {
+      "file": "../../art/candidate-11/tenmangu-close-pan-boundary-day-canvas.png",
+      "bytes": 542355,
+      "sha256": "0894fa9f7442aa633dd14c65f4ebe9eb990fd179e285c52f7af3db6081d13704"
+    },
+    {
+      "file": "../../art/candidate-11/tenmangu-close-pan-boundary-night-canvas.png",
+      "bytes": 540232,
+      "sha256": "997602fee9e793e976aafd836fd2289bb3e7ffd7e93078845839025a9fab74a1"
+    },
+    {
+      "file": "../../art/candidate-11/pontocho-arrival-boundary-day-canvas.png",
+      "bytes": 732088,
+      "sha256": "45ca0e2d067c07adc2284b0e2adb6c9f2d77f5f446c1a5c05156298f473b3003"
+    },
+    {
+      "file": "../../art/candidate-11/pontocho-arrival-boundary-night-canvas.png",
+      "bytes": 573884,
+      "sha256": "d77e1b9ff04cf2e07a30ea9bd1a5b4b47d831d9cd41e0c82a4dd2e88856b894c"
+    }
+  ],
+  "limitations": [
+    "Actual automated desktop input and software-rendered frames do not establish physical-device performance or human enjoyment.",
+    "Failure cases abort or delay actual packaged requests. Successful loads use the preserved build bytes.",
+    "Authored level ground and simulation widths do not establish current pedestrian access or surveyed grades."
+  ]
+}

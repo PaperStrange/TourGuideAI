@@ -1,0 +1,95 @@
+{
+  "status": "completed",
+  "packageManifestSha256": "afc7934f1b0706ea59caae5e4b1a97a6a3f6366ac65b24cbe79bfc2c2d94e574",
+  "verifiedPackagedFiles": 446,
+  "source": {
+    "id": "shijo-east",
+    "revision": 1,
+    "geographySha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+    "manifestSha256": "e58257879fb4ead8af14022e71e329ee3309f9920eec6fe2cf4717276573d108"
+  },
+  "driverSha256": "f28a0ea8591b83148d41345f703ab134b8289628b0f697d84fc89451cd1dfc0a",
+  "driverDependencies": [
+    {
+      "file": "tests/helpers/neighborhood-evidence-source.mjs",
+      "sha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    }
+  ],
+  "browser": "151.0.7922.34",
+  "conditions": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "reducedMotion": "no-preference",
+    "timeoutMs": 120000,
+    "walkingTimeoutMs": 2400000,
+    "sections": [
+      "startup",
+      "initial-recovery",
+      "detail-recovery",
+      "latest-intent"
+    ],
+    "assetDelivery": "Actual loopback HTTP with immutable captured build bodies and no-store; only deliberate abort/delay scenarios install request routes."
+  },
+  "startedAt": "2026-10-24T02:45:46.913Z",
+  "finishedAt": "2026-10-24T02:48:14.823Z",
+  "elapsedMs": 147910,
+  "checks": {
+    "passed": 41,
+    "failed": 0
+  },
+  "failedCheckIds": [],
+  "actualHTTPRequests": 328,
+  "files": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 218589,
+      "sha256": "608b9acccdb6c5c4f48641fe5e516b2291baf23fad4cc96a2ead551bae13913b",
+      "decodedBytes": 2331107,
+      "decodedSha256": "cff2e68c1fbba660f972305705d18bc3460b5ea4b4911394962a2af5c1a53d42"
+    },
+    {
+      "file": "browser-neighborhood.executed.mjs.gz",
+      "bytes": 43215,
+      "sha256": "327ab6b95f8004aaea930f97a9e97465a0a77bf47905f20a1201936ad277c1b4",
+      "decodedBytes": 178275,
+      "decodedSha256": "f28a0ea8591b83148d41345f703ab134b8289628b0f697d84fc89451cd1dfc0a"
+    },
+    {
+      "file": "neighborhood-evidence-source.executed.mjs.gz",
+      "bytes": 1619,
+      "sha256": "70115611f201081f16386f97f55d12421b3ee05a5e4c8f20bdfe99a5ec5fd294",
+      "decodedBytes": 3713,
+      "decodedSha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    },
+    {
+      "file": "opening-day-en.png",
+      "bytes": 911693,
+      "sha256": "f25b6c4477452f4e526ba4583fd58d14b974979f36a36e4b7bf2c489a5defeee"
+    },
+    {
+      "file": "opening-night-zh.png",
+      "bytes": 778495,
+      "sha256": "4acf800de69615ce88d1b951fe180b4b0ab4dcc415b772d5e0227ceab87e2e1b"
+    },
+    {
+      "file": "interaction-night-zh.png",
+      "bytes": 817910,
+      "sha256": "b4145d757eca66b9537932086c7d2fa114d90115f97eea41783aaa63b793a77c"
+    },
+    {
+      "file": "run.log.gz",
+      "bytes": 896,
+      "sha256": "6ecd6e4385328ed329da2e2fc88a7d2101262f0981515c9d4b43a561b2f9fbc6",
+      "decodedBytes": 2273,
+      "decodedSha256": "a42d027ff6b36ff18ad0d78021a8cd3217a93f9710afa419ce0c46c2145c327d"
+    }
+  ],
+  "externalCanvases": [],
+  "limitations": [
+    "Actual automated desktop input and software-rendered frames do not establish physical-device performance or human enjoyment.",
+    "Failure cases abort or delay actual packaged requests. Successful loads use the preserved build bytes.",
+    "Authored level ground and simulation widths do not establish current pedestrian access or surveyed grades."
+  ]
+}
