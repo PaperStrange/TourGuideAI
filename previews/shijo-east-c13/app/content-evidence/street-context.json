@@ -1,0 +1,1517 @@
+{
+  "schema": "tourguide.street-context/v1",
+  "purpose": "Shared visual context for live PBR and matching Blender renders; no added gameplay, venues, walkability or entrance claims.",
+  "sourceVersion": "frozen-tracked-inputs-identified-by-sha256",
+  "generator": "experience/content-tools/build-street-context.mjs",
+  "licence": {
+    "name": "ODbL 1.0",
+    "url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "attribution": "© OpenStreetMap contributors",
+    "copyrightUrl": "https://www.openstreetmap.org/copyright",
+    "derivedDatabase": true
+  },
+  "projection": {
+    "originLonUdeg": 135759719,
+    "originLatUdeg": 35003739,
+    "metresPerDegreeLon": 91282.15,
+    "metresPerDegreeLat": 110940.65,
+    "coordinateOrder": "x east, y north; metres",
+    "gltfMapping": "x, height, -y",
+    "quantization": "Round source lon/lat to integer microdegrees before projection, matching the frozen contract."
+  },
+  "sources": {
+    "footprints": {
+      "path": "city-packs/kyoto-shijo/evidence/osm-block-q1-footprints.json",
+      "sha256": "36806863ec546af798c284a96d9f70aaa0a12e19fc4bc9a3a3bb68d6b468820e",
+      "osmBaseTimestamp": "2026-09-29T16:37:26Z",
+      "note": "Tracked upstream snapshot; path is an authoring citation, not a runtime dependency."
+    },
+    "block": {
+      "path": "city-packs/kyoto-shijo/evidence/osm-block-q2-everything.json",
+      "sha256": "11d059737d3fabe9592d2e3ac12df91a599698ff6108bf5ad3dd38369c39d0a5",
+      "osmBaseTimestamp": "2026-09-29T16:38:26Z",
+      "note": "Tracked upstream snapshot; path is an authoring citation, not a runtime dependency."
+    },
+    "corridor": {
+      "path": "city-packs/kyoto-shijo/evidence/osm-corridor-map.json",
+      "sha256": "56b456152b2f5cfc6854ea5edfbd2c92b236d4ba67e7978d591e359999c294a2",
+      "osmBaseTimestamp": null,
+      "note": "Tracked upstream snapshot; path is an authoring citation, not a runtime dependency."
+    },
+    "projection": {
+      "path": "docs/handOff/dsh-bundle-tourguide-2.5d/tools/world-grid.mjs",
+      "sha256": "2b92dcf5de2483ce0df88371505c65f78dd4450c1be8e23e5f4749e32c4cb429"
+    },
+    "primaryContent": {
+      "path": "experience/src/content/kyoto.js",
+      "sha256": "cfef7654e1bca051f84861d6ec446e588c1d6ef2d8e8e5cf12a9421224a22859"
+    }
+  },
+  "renderBounds": {
+    "minX": -95,
+    "maxX": 100,
+    "minY": -90,
+    "maxY": 75
+  },
+  "renderBoundsValueKind": "authored selection for display clipping",
+  "playableBounds": {
+    "minX": 0,
+    "maxX": 64,
+    "minY": -25,
+    "maxY": 15
+  },
+  "boundaryPolicy": "Render context is not included in navigation or pointer targets. Keep existing WORLD/DOORS/TARGETS and movement rules unless a separate gameplay change is implemented.",
+  "buildings": [
+    {
+      "sourceId": "footprints",
+      "osmType": "way",
+      "osmId": 205732558,
+      "url": "https://www.openstreetmap.org/way/205732558",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "mitsui",
+      "role": "primary",
+      "name": "京都三井ビルディング",
+      "levels": 8,
+      "heightMetres": null,
+      "footprint": [
+        {
+          "x": 8.945651,
+          "y": 69.005084,
+          "nodeId": 2157078421
+        },
+        {
+          "x": 8.215393,
+          "y": 11.648768,
+          "nodeId": 2157078412
+        },
+        {
+          "x": 16.522069,
+          "y": 4.659507,
+          "nodeId": 2157078408
+        },
+        {
+          "x": 58.329294,
+          "y": 4.770448,
+          "nodeId": 2157078409
+        },
+        {
+          "x": 58.968269,
+          "y": 18.416148,
+          "nodeId": 2157078413
+        },
+        {
+          "x": 58.329294,
+          "y": 18.416148,
+          "nodeId": 12749813647
+        },
+        {
+          "x": 50.387747,
+          "y": 18.416148,
+          "nodeId": 2157078414
+        },
+        {
+          "x": 50.205182,
+          "y": 49.812352,
+          "nodeId": 12749813649
+        },
+        {
+          "x": 50.022618,
+          "y": 69.005084,
+          "nodeId": 2157078422
+        },
+        {
+          "x": 9.584626,
+          "y": 70.114491,
+          "nodeId": 12749813650
+        },
+        {
+          "x": 9.584626,
+          "y": 69.005084,
+          "nodeId": 12749813651
+        },
+        {
+          "x": 8.945651,
+          "y": 69.005084,
+          "nodeId": 2157078421
+        }
+      ],
+      "winding": "counterclockwise",
+      "closed": true,
+      "note": "OSM traced footprint. Floor count is a tag, not measured height. Context identity does not add an encounter or entrance.",
+      "chamfer": {
+        "from": {
+          "x": 16.522069,
+          "y": 4.659507,
+          "nodeId": 2157078408
+        },
+        "to": {
+          "x": 8.215393,
+          "y": 11.648768,
+          "nodeId": 2157078412
+        },
+        "midpoint": {
+          "x": 12.368731,
+          "y": 8.154138
+        },
+        "lengthMetres": 10.855903,
+        "tangentDegrees": 139.922647,
+        "outwardNormal": {
+          "x": -0.643821,
+          "y": -0.765176
+        },
+        "note": "Mapped diagonal footprint edge. It does not measure the classical feature or its cornice/column offsets."
+      }
+    },
+    {
+      "sourceId": "footprints",
+      "osmType": "way",
+      "osmId": 205732536,
+      "url": "https://www.openstreetmap.org/way/205732536",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "daiya",
+      "role": "primary",
+      "name": "京都ダイヤビル",
+      "levels": 8,
+      "heightMetres": null,
+      "footprint": [
+        {
+          "x": 36.147731,
+          "y": -69.337906,
+          "nodeId": 5614461871
+        },
+        {
+          "x": 44.363125,
+          "y": -69.337906,
+          "nodeId": 5614461873
+        },
+        {
+          "x": 44.363125,
+          "y": -60.018892,
+          "nodeId": 5614461874
+        },
+        {
+          "x": 36.056449,
+          "y": -60.018892,
+          "nodeId": 5614461872
+        },
+        {
+          "x": 35.691321,
+          "y": -19.747436,
+          "nodeId": 2157078405
+        },
+        {
+          "x": 17.526173,
+          "y": -19.969317,
+          "nodeId": 2157078404
+        },
+        {
+          "x": 9.584626,
+          "y": -28.844569,
+          "nodeId": 2157078403
+        },
+        {
+          "x": 9.675908,
+          "y": -54.5828,
+          "nodeId": 11283562286
+        },
+        {
+          "x": 9.675908,
+          "y": -83.982072,
+          "nodeId": 2157078389
+        },
+        {
+          "x": 36.330296,
+          "y": -83.760191,
+          "nodeId": 2157078390
+        },
+        {
+          "x": 36.147731,
+          "y": -69.337906,
+          "nodeId": 5614461871
+        }
+      ],
+      "winding": "counterclockwise",
+      "closed": true,
+      "note": "OSM traced footprint. Floor count is a tag, not measured height. Context identity does not add an encounter or entrance.",
+      "chamfer": {
+        "from": {
+          "x": 9.584626,
+          "y": -28.844569,
+          "nodeId": 2157078403
+        },
+        "to": {
+          "x": 17.526173,
+          "y": -19.969317,
+          "nodeId": 2157078404
+        },
+        "midpoint": {
+          "x": 13.5554,
+          "y": -24.406943
+        },
+        "lengthMetres": 11.909587,
+        "tangentDegrees": 48.177923,
+        "outwardNormal": {
+          "x": -0.745219,
+          "y": 0.66682
+        },
+        "note": "Mapped diagonal footprint edge. It does not measure the classical feature or its cornice/column offsets."
+      }
+    },
+    {
+      "sourceId": "corridor",
+      "osmType": "way",
+      "osmId": 344477489,
+      "url": "https://www.openstreetmap.org/way/344477489",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "northwest-context",
+      "role": "context",
+      "name": "LAQUE四条烏丸",
+      "levels": 7,
+      "heightMetres": null,
+      "footprint": [
+        {
+          "x": -20.447202,
+          "y": 11.426887,
+          "nodeId": 4559374563
+        },
+        {
+          "x": -20.447202,
+          "y": 66.453449,
+          "nodeId": 3512156181
+        },
+        {
+          "x": -53.765186,
+          "y": 66.453449,
+          "nodeId": 3512156182
+        },
+        {
+          "x": -53.856468,
+          "y": 42.934032,
+          "nodeId": 4559374560
+        },
+        {
+          "x": -53.856468,
+          "y": 5.990795,
+          "nodeId": 3512156179
+        },
+        {
+          "x": -51.939543,
+          "y": 5.990795,
+          "nodeId": 8422865397
+        },
+        {
+          "x": -26.289259,
+          "y": 5.990795,
+          "nodeId": 4559374564
+        },
+        {
+          "x": -20.447202,
+          "y": 11.426887,
+          "nodeId": 4559374563
+        }
+      ],
+      "winding": "counterclockwise",
+      "closed": true,
+      "note": "OSM traced footprint. Floor count is a tag, not measured height. Context identity does not add an encounter or entrance."
+    },
+    {
+      "sourceId": "corridor",
+      "osmType": "way",
+      "osmId": 1317905647,
+      "url": "https://www.openstreetmap.org/way/1317905647",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "southwest-context",
+      "role": "context",
+      "name": "四条烏丸ビル",
+      "levels": 8,
+      "heightMetres": null,
+      "footprint": [
+        {
+          "x": -69.100588,
+          "y": -19.747436,
+          "nodeId": 12197121079
+        },
+        {
+          "x": -69.465716,
+          "y": -43.599675,
+          "nodeId": 12197121088
+        },
+        {
+          "x": -61.15904,
+          "y": -43.710616,
+          "nodeId": 12197121087
+        },
+        {
+          "x": -61.15904,
+          "y": -45.818488,
+          "nodeId": 12197121086
+        },
+        {
+          "x": -41.350814,
+          "y": -46.04037,
+          "nodeId": 12197121085
+        },
+        {
+          "x": -41.350814,
+          "y": -43.488735,
+          "nodeId": 12197121084
+        },
+        {
+          "x": -21.725152,
+          "y": -43.710616,
+          "nodeId": 12197121083
+        },
+        {
+          "x": -19.625662,
+          "y": -41.491803,
+          "nodeId": 12197121082
+        },
+        {
+          "x": -19.169251,
+          "y": -27.513281,
+          "nodeId": 12197121081
+        },
+        {
+          "x": -26.106695,
+          "y": -20.41308,
+          "nodeId": 12197121080
+        },
+        {
+          "x": -69.100588,
+          "y": -19.747436,
+          "nodeId": 12197121079
+        }
+      ],
+      "winding": "counterclockwise",
+      "closed": true,
+      "note": "OSM traced footprint. Floor count is a tag, not measured height. Context identity does not add an encounter or entrance."
+    },
+    {
+      "sourceId": "corridor",
+      "osmType": "way",
+      "osmId": 205732486,
+      "url": "https://www.openstreetmap.org/way/205732486",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "southwest-background",
+      "role": "context",
+      "name": "Cocon Karasuma",
+      "levels": null,
+      "heightMetres": null,
+      "footprint": [
+        {
+          "x": -89.365225,
+          "y": -51.032699,
+          "nodeId": 2157078401
+        },
+        {
+          "x": -89.273943,
+          "y": -82.317962,
+          "nodeId": 2157078394
+        },
+        {
+          "x": -21.725152,
+          "y": -82.096081,
+          "nodeId": 2157078396
+        },
+        {
+          "x": -21.907716,
+          "y": -50.699877,
+          "nodeId": 2157078402
+        },
+        {
+          "x": -89.365225,
+          "y": -51.032699,
+          "nodeId": 2157078401
+        }
+      ],
+      "winding": "counterclockwise",
+      "closed": true,
+      "note": "OSM traced footprint. Floor count is a tag, not measured height. Context identity does not add an encounter or entrance."
+    },
+    {
+      "sourceId": "footprints",
+      "osmType": "way",
+      "osmId": 205749104,
+      "url": "https://www.openstreetmap.org/way/205749104",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "northeast-context",
+      "role": "context",
+      "name": "三光ビル",
+      "levels": 9,
+      "heightMetres": null,
+      "footprint": [
+        {
+          "x": 54.76929,
+          "y": 57.800079,
+          "nodeId": 2157249030
+        },
+        {
+          "x": 54.586726,
+          "y": 51.365521,
+          "nodeId": 12749813656
+        },
+        {
+          "x": 61.15904,
+          "y": 51.14364,
+          "nodeId": 12749813657
+        },
+        {
+          "x": 59.789808,
+          "y": 4.548567,
+          "nodeId": 2157247585
+        },
+        {
+          "x": 66.635969,
+          "y": 4.326685,
+          "nodeId": 12749813654
+        },
+        {
+          "x": 66.635969,
+          "y": 4.770448,
+          "nodeId": 12749813655
+        },
+        {
+          "x": 78.046238,
+          "y": 4.437626,
+          "nodeId": 2157247572
+        },
+        {
+          "x": 79.41547,
+          "y": 53.029631,
+          "nodeId": 12749813659
+        },
+        {
+          "x": 78.320085,
+          "y": 53.029631,
+          "nodeId": 12749813658
+        },
+        {
+          "x": 78.411367,
+          "y": 56.579732,
+          "nodeId": 2157249019
+        },
+        {
+          "x": 65.175455,
+          "y": 56.912553,
+          "nodeId": 12749813652
+        },
+        {
+          "x": 65.175455,
+          "y": 57.578197,
+          "nodeId": 12749813653
+        },
+        {
+          "x": 54.76929,
+          "y": 57.800079,
+          "nodeId": 2157249030
+        }
+      ],
+      "winding": "counterclockwise",
+      "closed": true,
+      "note": "OSM traced footprint. Floor count is a tag, not measured height. Context identity does not add an encounter or entrance."
+    },
+    {
+      "sourceId": "footprints",
+      "osmType": "way",
+      "osmId": 205732545,
+      "url": "https://www.openstreetmap.org/way/205732545",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "southeast-context",
+      "role": "context",
+      "name": "四条烏丸ＦＴスクエア",
+      "levels": 11,
+      "heightMetres": null,
+      "footprint": [
+        {
+          "x": 76.311877,
+          "y": -20.41308,
+          "nodeId": 2157078407
+        },
+        {
+          "x": 67.640073,
+          "y": -20.41308,
+          "nodeId": 4229848161
+        },
+        {
+          "x": 40.711839,
+          "y": -20.41308,
+          "nodeId": 2157078406
+        },
+        {
+          "x": 40.711839,
+          "y": -56.135969,
+          "nodeId": 2157078400
+        },
+        {
+          "x": 49.383643,
+          "y": -56.135969,
+          "nodeId": 2157078399
+        },
+        {
+          "x": 49.383643,
+          "y": -84.425835,
+          "nodeId": 2157078391
+        },
+        {
+          "x": 76.40316,
+          "y": -84.425835,
+          "nodeId": 2157078392
+        },
+        {
+          "x": 76.311877,
+          "y": -20.41308,
+          "nodeId": 2157078407
+        }
+      ],
+      "winding": "counterclockwise",
+      "closed": true,
+      "note": "OSM traced footprint. Floor count is a tag, not measured height. Context identity does not add an encounter or entrance."
+    }
+  ],
+  "roads": [
+    {
+      "sourceId": "corridor",
+      "osmType": "way",
+      "osmId": 20927292,
+      "url": "https://www.openstreetmap.org/way/20927292",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "road-20927292-0",
+      "path": [
+        {
+          "x": -10.383292,
+          "y": -90,
+          "nodeId": null
+        },
+        {
+          "x": -10.680012,
+          "y": -31.507145,
+          "nodeId": 2737069232
+        },
+        {
+          "x": -10.314883,
+          "y": -8.986193,
+          "nodeId": 224811818
+        }
+      ],
+      "name": "烏丸通",
+      "highway": "trunk",
+      "surface": "asphalt",
+      "widthMetres": null,
+      "oneway": true,
+      "lanes": 2,
+      "clippedToRenderBounds": true,
+      "note": "Mapped centreline, not a kerb or surface boundary; display width and elevation remain authored. Not a walkable polygon."
+    },
+    {
+      "sourceId": "corridor",
+      "osmType": "way",
+      "osmId": 174762085,
+      "url": "https://www.openstreetmap.org/way/174762085",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "road-174762085-0",
+      "path": [
+        {
+          "x": 0.091282,
+          "y": -67.119093,
+          "nodeId": 1854284667
+        },
+        {
+          "x": 0.283782,
+          "y": -90,
+          "nodeId": null
+        }
+      ],
+      "name": "烏丸通",
+      "highway": "trunk",
+      "surface": "asphalt",
+      "widthMetres": null,
+      "oneway": true,
+      "lanes": 2,
+      "clippedToRenderBounds": true,
+      "note": "Mapped centreline, not a kerb or surface boundary; display width and elevation remain authored. Not a walkable polygon."
+    },
+    {
+      "sourceId": "corridor",
+      "osmType": "way",
+      "osmId": 465069436,
+      "url": "https://www.openstreetmap.org/way/465069436",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "road-465069436-0",
+      "path": [
+        {
+          "x": 100,
+          "y": -8.413352,
+          "nodeId": null
+        },
+        {
+          "x": 20.721048,
+          "y": -8.875252,
+          "nodeId": 2737069286
+        },
+        {
+          "x": 0,
+          "y": -8.986193,
+          "nodeId": 302168548
+        }
+      ],
+      "name": "四条通",
+      "highway": "primary",
+      "surface": "asphalt",
+      "widthMetres": null,
+      "oneway": false,
+      "lanes": 2,
+      "clippedToRenderBounds": true,
+      "note": "Mapped centreline, not a kerb or surface boundary; display width and elevation remain authored. Not a walkable polygon."
+    },
+    {
+      "sourceId": "corridor",
+      "osmType": "way",
+      "osmId": 678103923,
+      "url": "https://www.openstreetmap.org/way/678103923",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "road-678103923-0",
+      "path": [
+        {
+          "x": 0,
+          "y": -8.986193,
+          "nodeId": 302168548
+        },
+        {
+          "x": -10.314883,
+          "y": -8.986193,
+          "nodeId": 224811818
+        }
+      ],
+      "name": "四条通",
+      "highway": "primary",
+      "surface": "asphalt",
+      "widthMetres": null,
+      "oneway": false,
+      "lanes": 4,
+      "clippedToRenderBounds": false,
+      "note": "Mapped centreline, not a kerb or surface boundary; display width and elevation remain authored. Not a walkable polygon."
+    },
+    {
+      "sourceId": "corridor",
+      "osmType": "way",
+      "osmId": 964931603,
+      "url": "https://www.openstreetmap.org/way/964931603",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "road-964931603-0",
+      "path": [
+        {
+          "x": -10.314883,
+          "y": -8.986193,
+          "nodeId": 224811818
+        },
+        {
+          "x": -27.841056,
+          "y": -8.54243,
+          "nodeId": 8422865395
+        },
+        {
+          "x": -95,
+          "y": -6.86526,
+          "nodeId": null
+        }
+      ],
+      "name": "四条通",
+      "highway": "primary",
+      "surface": "asphalt",
+      "widthMetres": null,
+      "oneway": false,
+      "lanes": 4,
+      "clippedToRenderBounds": true,
+      "note": "Mapped centreline, not a kerb or surface boundary; display width and elevation remain authored. Not a walkable polygon."
+    },
+    {
+      "sourceId": "corridor",
+      "osmType": "way",
+      "osmId": 973565732,
+      "url": "https://www.openstreetmap.org/way/973565732",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "road-973565732-0",
+      "path": [
+        {
+          "x": -0.795371,
+          "y": 75,
+          "nodeId": null
+        },
+        {
+          "x": -0.365129,
+          "y": 17.306741,
+          "nodeId": 2737069378
+        },
+        {
+          "x": 0,
+          "y": -8.986193,
+          "nodeId": 302168548
+        }
+      ],
+      "name": "烏丸通",
+      "highway": "trunk",
+      "surface": "asphalt",
+      "widthMetres": null,
+      "oneway": true,
+      "lanes": 2,
+      "clippedToRenderBounds": true,
+      "note": "Mapped centreline, not a kerb or surface boundary; display width and elevation remain authored. Not a walkable polygon."
+    },
+    {
+      "sourceId": "corridor",
+      "osmType": "way",
+      "osmId": 978085966,
+      "url": "https://www.openstreetmap.org/way/978085966",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "road-978085966-0",
+      "path": [
+        {
+          "x": -10.771294,
+          "y": 72.000482,
+          "nodeId": 9081769338
+        },
+        {
+          "x": -10.795876,
+          "y": 75,
+          "nodeId": null
+        }
+      ],
+      "name": "烏丸通",
+      "highway": "trunk",
+      "surface": "asphalt",
+      "widthMetres": null,
+      "oneway": true,
+      "lanes": 2,
+      "clippedToRenderBounds": true,
+      "note": "Mapped centreline, not a kerb or surface boundary; display width and elevation remain authored. Not a walkable polygon."
+    },
+    {
+      "sourceId": "corridor",
+      "osmType": "way",
+      "osmId": 981951782,
+      "url": "https://www.openstreetmap.org/way/981951782",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "road-981951782-0",
+      "path": [
+        {
+          "x": -10.314883,
+          "y": -8.986193,
+          "nodeId": 224811818
+        },
+        {
+          "x": -10.771294,
+          "y": 17.417682,
+          "nodeId": 2737069375
+        },
+        {
+          "x": -10.771294,
+          "y": 72.000482,
+          "nodeId": 9081769338
+        }
+      ],
+      "name": "烏丸通",
+      "highway": "trunk",
+      "surface": "asphalt",
+      "widthMetres": null,
+      "oneway": true,
+      "lanes": 2,
+      "clippedToRenderBounds": false,
+      "note": "Mapped centreline, not a kerb or surface boundary; display width and elevation remain authored. Not a walkable polygon."
+    },
+    {
+      "sourceId": "corridor",
+      "osmType": "way",
+      "osmId": 1502800560,
+      "url": "https://www.openstreetmap.org/way/1502800560",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "road-1502800560-0",
+      "path": [
+        {
+          "x": 0,
+          "y": -8.986193,
+          "nodeId": 302168548
+        },
+        {
+          "x": -0.273846,
+          "y": -31.396204,
+          "nodeId": 2737069238
+        },
+        {
+          "x": 0.091282,
+          "y": -67.119093,
+          "nodeId": 1854284667
+        }
+      ],
+      "name": "烏丸通",
+      "highway": "trunk",
+      "surface": "asphalt",
+      "widthMetres": null,
+      "oneway": true,
+      "lanes": 2,
+      "clippedToRenderBounds": false,
+      "note": "Mapped centreline, not a kerb or surface boundary; display width and elevation remain authored. Not a walkable polygon."
+    }
+  ],
+  "sidewalks": [
+    {
+      "sourceId": "block",
+      "osmType": "way",
+      "osmId": 907059193,
+      "url": "https://www.openstreetmap.org/way/907059193",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "sidewalk-907059193-0",
+      "path": [
+        {
+          "x": 6.106882,
+          "y": 75,
+          "nodeId": null
+        },
+        {
+          "x": 6.298468,
+          "y": 17.195801,
+          "nodeId": 8422865407
+        },
+        {
+          "x": 6.298468,
+          "y": 11.87065,
+          "nodeId": 8422865400
+        },
+        {
+          "x": 8.397958,
+          "y": 7.876786,
+          "nodeId": 8422865401
+        },
+        {
+          "x": 13.418476,
+          "y": 3.550101,
+          "nodeId": 8422865402
+        },
+        {
+          "x": 20.721048,
+          "y": 2.329754,
+          "nodeId": 4600871814
+        }
+      ],
+      "name": null,
+      "highway": "footway",
+      "surface": "paving_stones",
+      "widthMetres": null,
+      "covered": null,
+      "clippedToRenderBounds": true,
+      "note": "Mapped centreline, not a kerb or surface boundary; display width and elevation remain authored. Not a walkable polygon."
+    },
+    {
+      "sourceId": "block",
+      "osmType": "way",
+      "osmId": 907059194,
+      "url": "https://www.openstreetmap.org/way/907059194",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "sidewalk-907059194-0",
+      "path": [
+        {
+          "x": 7.679088,
+          "y": -90,
+          "nodeId": null
+        },
+        {
+          "x": 7.485136,
+          "y": -54.5828,
+          "nodeId": 11283562287
+        },
+        {
+          "x": 7.393854,
+          "y": -31.396204,
+          "nodeId": 8422865403
+        },
+        {
+          "x": 7.576418,
+          "y": -24.628824,
+          "nodeId": 8422865404
+        },
+        {
+          "x": 10.223601,
+          "y": -20.967783,
+          "nodeId": 8422874530
+        },
+        {
+          "x": 14.605144,
+          "y": -18.083326,
+          "nodeId": 8422865405
+        },
+        {
+          "x": 20.81233,
+          "y": -17.528623,
+          "nodeId": 4600891667
+        }
+      ],
+      "name": null,
+      "highway": "footway",
+      "surface": "paving_stones",
+      "widthMetres": null,
+      "covered": null,
+      "clippedToRenderBounds": true,
+      "note": "Mapped centreline, not a kerb or surface boundary; display width and elevation remain authored. Not a walkable polygon."
+    },
+    {
+      "sourceId": "block",
+      "osmType": "way",
+      "osmId": 465066447,
+      "url": "https://www.openstreetmap.org/way/465066447",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "sidewalk-465066447-0",
+      "path": [
+        {
+          "x": 20.721048,
+          "y": 2.329754,
+          "nodeId": 4600871814
+        },
+        {
+          "x": 100,
+          "y": 1.589293,
+          "nodeId": null
+        }
+      ],
+      "name": null,
+      "highway": "footway",
+      "surface": "paving_stones",
+      "widthMetres": null,
+      "covered": true,
+      "clippedToRenderBounds": true,
+      "note": "Mapped centreline, not a kerb or surface boundary; display width and elevation remain authored. Not a walkable polygon."
+    },
+    {
+      "sourceId": "block",
+      "osmType": "way",
+      "osmId": 465069406,
+      "url": "https://www.openstreetmap.org/way/465069406",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "sidewalk-465069406-0",
+      "path": [
+        {
+          "x": 20.81233,
+          "y": -17.528623,
+          "nodeId": 4600891667
+        },
+        {
+          "x": 67.366227,
+          "y": -17.528623,
+          "nodeId": 13362971360
+        },
+        {
+          "x": 100,
+          "y": -17.603035,
+          "nodeId": null
+        }
+      ],
+      "name": null,
+      "highway": "footway",
+      "surface": "paving_stones",
+      "widthMetres": null,
+      "covered": true,
+      "clippedToRenderBounds": true,
+      "note": "Mapped centreline, not a kerb or surface boundary; display width and elevation remain authored. Not a walkable polygon."
+    },
+    {
+      "sourceId": "corridor",
+      "osmType": "way",
+      "osmId": 907059184,
+      "url": "https://www.openstreetmap.org/way/907059184",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "sidewalk-907059184-0",
+      "path": [
+        {
+          "x": -17.903206,
+          "y": 75,
+          "nodeId": null
+        },
+        {
+          "x": -17.891301,
+          "y": 69.226966,
+          "nodeId": 12324807476
+        },
+        {
+          "x": -17.800019,
+          "y": 17.528623,
+          "nodeId": 8422865406
+        },
+        {
+          "x": -17.800019,
+          "y": 10.983124,
+          "nodeId": 8422865398
+        },
+        {
+          "x": -20.81233,
+          "y": 6.76738,
+          "nodeId": 8422865369
+        },
+        {
+          "x": -25.193873,
+          "y": 4.104804,
+          "nodeId": 8422865368
+        },
+        {
+          "x": -27.749774,
+          "y": 4.104804,
+          "nodeId": 8422865394
+        },
+        {
+          "x": -51.848261,
+          "y": 4.215745,
+          "nodeId": 13362971359
+        },
+        {
+          "x": -95,
+          "y": 4.515773,
+          "nodeId": null
+        }
+      ],
+      "name": null,
+      "highway": "footway",
+      "surface": "paving_stones",
+      "widthMetres": null,
+      "covered": null,
+      "clippedToRenderBounds": true,
+      "note": "Mapped centreline, not a kerb or surface boundary; display width and elevation remain authored. Not a walkable polygon."
+    },
+    {
+      "sourceId": "corridor",
+      "osmType": "way",
+      "osmId": 907059186,
+      "url": "https://www.openstreetmap.org/way/907059186",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "sidewalk-907059186-0",
+      "path": [
+        {
+          "x": -95,
+          "y": -21.563869,
+          "nodeId": null
+        },
+        {
+          "x": -82.610346,
+          "y": -16.641097,
+          "nodeId": 8422865377
+        },
+        {
+          "x": -27.932338,
+          "y": -17.08486,
+          "nodeId": 8422865378
+        },
+        {
+          "x": -24.463616,
+          "y": -18.638029,
+          "nodeId": 8422874517
+        },
+        {
+          "x": -21.725152,
+          "y": -21.411545,
+          "nodeId": 8422865379
+        },
+        {
+          "x": -19.625662,
+          "y": -23.408477,
+          "nodeId": 8422865380
+        },
+        {
+          "x": -17.800019,
+          "y": -26.403875,
+          "nodeId": 8422874518
+        },
+        {
+          "x": -16.522069,
+          "y": -31.507145,
+          "nodeId": 8422865381
+        },
+        {
+          "x": -16.462798,
+          "y": -90,
+          "nodeId": null
+        }
+      ],
+      "name": null,
+      "highway": "footway",
+      "surface": "paving_stones",
+      "widthMetres": null,
+      "covered": null,
+      "clippedToRenderBounds": true,
+      "note": "Mapped centreline, not a kerb or surface boundary; display width and elevation remain authored. Not a walkable polygon."
+    },
+    {
+      "sourceId": "corridor",
+      "osmType": "way",
+      "osmId": 1217782953,
+      "url": "https://www.openstreetmap.org/way/1217782953",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "sidewalk-1217782953-0",
+      "path": [
+        {
+          "x": 9.675908,
+          "y": -54.5828,
+          "nodeId": 11283562286
+        },
+        {
+          "x": 7.485136,
+          "y": -54.5828,
+          "nodeId": 11283562287
+        }
+      ],
+      "name": null,
+      "highway": "footway",
+      "surface": null,
+      "widthMetres": null,
+      "covered": null,
+      "clippedToRenderBounds": false,
+      "note": "Mapped centreline, not a kerb or surface boundary; display width and elevation remain authored. Not a walkable polygon."
+    },
+    {
+      "sourceId": "corridor",
+      "osmType": "way",
+      "osmId": 1457060473,
+      "url": "https://www.openstreetmap.org/way/1457060473",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "sidewalk-1457060473-0",
+      "path": [
+        {
+          "x": -51.939543,
+          "y": 5.990795,
+          "nodeId": 8422865397
+        },
+        {
+          "x": -51.848261,
+          "y": 4.215745,
+          "nodeId": 13362971359
+        }
+      ],
+      "name": null,
+      "highway": "footway",
+      "surface": null,
+      "widthMetres": null,
+      "covered": null,
+      "clippedToRenderBounds": false,
+      "note": "Mapped centreline, not a kerb or surface boundary; display width and elevation remain authored. Not a walkable polygon."
+    },
+    {
+      "sourceId": "corridor",
+      "osmType": "way",
+      "osmId": 1457060474,
+      "url": "https://www.openstreetmap.org/way/1457060474",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "sidewalk-1457060474-0",
+      "path": [
+        {
+          "x": 67.366227,
+          "y": -17.528623,
+          "nodeId": 13362971360
+        },
+        {
+          "x": 67.640073,
+          "y": -20.41308,
+          "nodeId": 4229848161
+        }
+      ],
+      "name": null,
+      "highway": "footway",
+      "surface": null,
+      "widthMetres": null,
+      "covered": null,
+      "clippedToRenderBounds": false,
+      "note": "Mapped centreline, not a kerb or surface boundary; display width and elevation remain authored. Not a walkable polygon."
+    }
+  ],
+  "crossings": [
+    {
+      "sourceId": "block",
+      "osmType": "way",
+      "osmId": 465069430,
+      "url": "https://www.openstreetmap.org/way/465069430",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "crossing-465069430-0",
+      "path": [
+        {
+          "x": 20.81233,
+          "y": -17.528623,
+          "nodeId": 4600891667
+        },
+        {
+          "x": 20.721048,
+          "y": -8.875252,
+          "nodeId": 2737069286
+        },
+        {
+          "x": 20.721048,
+          "y": 2.329754,
+          "nodeId": 4600871814
+        }
+      ],
+      "name": null,
+      "highway": "footway",
+      "surface": "asphalt",
+      "widthMetres": null,
+      "crossing": "traffic_signals",
+      "markings": "zebra",
+      "clippedToRenderBounds": false,
+      "note": "Mapped centreline, not a kerb or surface boundary; display width and elevation remain authored. Not a walkable polygon."
+    },
+    {
+      "sourceId": "corridor",
+      "osmType": "way",
+      "osmId": 907059192,
+      "url": "https://www.openstreetmap.org/way/907059192",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "crossing-907059192-0",
+      "path": [
+        {
+          "x": -27.749774,
+          "y": 4.104804,
+          "nodeId": 8422865394
+        },
+        {
+          "x": -27.841056,
+          "y": -8.54243,
+          "nodeId": 8422865395
+        },
+        {
+          "x": -27.932338,
+          "y": -17.08486,
+          "nodeId": 8422865378
+        }
+      ],
+      "name": null,
+      "highway": "footway",
+      "surface": "asphalt",
+      "widthMetres": null,
+      "crossing": "traffic_signals",
+      "markings": null,
+      "clippedToRenderBounds": false,
+      "note": "Mapped centreline, not a kerb or surface boundary; display width and elevation remain authored. Not a walkable polygon."
+    },
+    {
+      "sourceId": "corridor",
+      "osmType": "way",
+      "osmId": 907059195,
+      "url": "https://www.openstreetmap.org/way/907059195",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "crossing-907059195-0",
+      "path": [
+        {
+          "x": -17.800019,
+          "y": 17.528623,
+          "nodeId": 8422865406
+        },
+        {
+          "x": -10.771294,
+          "y": 17.417682,
+          "nodeId": 2737069375
+        },
+        {
+          "x": -0.365129,
+          "y": 17.306741,
+          "nodeId": 2737069378
+        },
+        {
+          "x": 6.298468,
+          "y": 17.195801,
+          "nodeId": 8422865407
+        }
+      ],
+      "name": null,
+      "highway": "footway",
+      "surface": "asphalt",
+      "widthMetres": null,
+      "crossing": "traffic_signals",
+      "markings": "zebra",
+      "clippedToRenderBounds": false,
+      "note": "Mapped centreline, not a kerb or surface boundary; display width and elevation remain authored. Not a walkable polygon."
+    },
+    {
+      "sourceId": "corridor",
+      "osmType": "way",
+      "osmId": 907059196,
+      "url": "https://www.openstreetmap.org/way/907059196",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "crossing-907059196-0",
+      "path": [
+        {
+          "x": -16.522069,
+          "y": -31.507145,
+          "nodeId": 8422865381
+        },
+        {
+          "x": -10.680012,
+          "y": -31.507145,
+          "nodeId": 2737069232
+        },
+        {
+          "x": -0.273846,
+          "y": -31.396204,
+          "nodeId": 2737069238
+        },
+        {
+          "x": 7.393854,
+          "y": -31.396204,
+          "nodeId": 8422865403
+        }
+      ],
+      "name": null,
+      "highway": "footway",
+      "surface": "asphalt",
+      "widthMetres": null,
+      "crossing": "traffic_signals",
+      "markings": "zebra",
+      "clippedToRenderBounds": false,
+      "note": "Mapped centreline, not a kerb or surface boundary; display width and elevation remain authored. Not a walkable polygon."
+    }
+  ],
+  "hedges": [
+    {
+      "sourceId": "block",
+      "osmType": "way",
+      "osmId": 907059199,
+      "url": "https://www.openstreetmap.org/way/907059199",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "hedge-907059199-0",
+      "path": [
+        {
+          "x": 5.842058,
+          "y": -24.185062,
+          "nodeId": 8422874520
+        },
+        {
+          "x": 6.207186,
+          "y": -21.855308,
+          "nodeId": 8422874521
+        },
+        {
+          "x": 7.758983,
+          "y": -19.081792,
+          "nodeId": 8422874522
+        },
+        {
+          "x": 11.592833,
+          "y": -15.642632,
+          "nodeId": 8422874523
+        },
+        {
+          "x": 15.609248,
+          "y": -14.644166,
+          "nodeId": 8422874524
+        }
+      ],
+      "name": null,
+      "highway": null,
+      "surface": null,
+      "widthMetres": null,
+      "clippedToRenderBounds": false,
+      "note": "Mapped hedge line; thickness, height and plant appearance are authored."
+    },
+    {
+      "sourceId": "block",
+      "osmType": "way",
+      "osmId": 907059200,
+      "url": "https://www.openstreetmap.org/way/907059200",
+      "valueKind": "derived",
+      "gameplay": false,
+      "id": "hedge-907059200-0",
+      "path": [
+        {
+          "x": 4.837954,
+          "y": 10.539362,
+          "nodeId": 8422874525
+        },
+        {
+          "x": 6.115904,
+          "y": 7.543964,
+          "nodeId": 8422874526
+        },
+        {
+          "x": 7.667701,
+          "y": 5.547033,
+          "nodeId": 8422874527
+        },
+        {
+          "x": 10.314883,
+          "y": 2.884457,
+          "nodeId": 8422874528
+        },
+        {
+          "x": 13.966169,
+          "y": 1.220347,
+          "nodeId": 8422874529
+        }
+      ],
+      "name": null,
+      "highway": null,
+      "surface": null,
+      "widthMetres": null,
+      "clippedToRenderBounds": false,
+      "note": "Mapped hedge line; thickness, height and plant appearance are authored."
+    }
+  ],
+  "trees": [
+    {
+      "sourceId": "block",
+      "osmType": "node",
+      "osmId": 13037178804,
+      "url": "https://www.openstreetmap.org/node/13037178804",
+      "valueKind": "derived",
+      "gameplay": false,
+      "x": 5.476929,
+      "y": -17.528623,
+      "nodeId": 13037178804,
+      "species": null,
+      "heightMetres": null,
+      "note": "Mapped tree location; species, canopy dimensions and any planter are not established."
+    }
+  ],
+  "crossingControls": [
+    {
+      "sourceId": "block",
+      "osmType": "node",
+      "osmId": 2737069286,
+      "url": "https://www.openstreetmap.org/node/2737069286",
+      "valueKind": "derived",
+      "gameplay": false,
+      "x": 20.721048,
+      "y": -8.875252,
+      "nodeId": 2737069286,
+      "tactilePaving": true,
+      "audibleSignals": true,
+      "note": "Presence at this crossing, not exact tactile layout, kerb ramp or signal-pole positions."
+    }
+  ],
+  "limitations": [
+    "OSM traced geometry is not a survey or a guarantee of current conditions.",
+    "Road/footway paths are centrelines. Widths, kerbs, ramp geometry, surface heights and traffic simulation are not established.",
+    "Building heights, bay dimensions, roofing, classical feature detail and photographic materials require their own authored/reference provenance.",
+    "Mapped nearby building identities are visual context only; no new venue interaction, opening hours, tenant binding or walkable access is created."
+  ]
+}

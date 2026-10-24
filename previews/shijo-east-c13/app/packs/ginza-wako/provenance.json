@@ -1,0 +1,187 @@
+{
+  "version": 1,
+  "id": "ginza-wako",
+  "revision": 1,
+  "status": "exported-awaiting-browser-review",
+  "generator": "experience/art/build_ginza.py",
+  "generatorSha256": "5b2d6e577eed889b9ae33ff0d07d1ed0aa98312e1cc5cdfd4e00168677de9a3c",
+  "blenderVersion": "4.3.2",
+  "source": {
+    "path": "experience/content/ginza-wako/source.json",
+    "sha256": "6e583689dc460e4a9c496838c44f57925bb8dc4b546338e4ff58f6967eddf674"
+  },
+  "context": {
+    "path": "experience/content/ginza-wako/context.json",
+    "sha256": "8afacd1d73dc1326466388f6e093538e775b97dafb6b3256c21721daf9c163e3",
+    "source": {
+      "path": "experience/evidence/area-packs-20261019/ginza-wako/osm-map.osm",
+      "sha256": "651fa5737c1b2b530d9a817daa6884cce38b1f1bb099ee7ef31ea88f02b88b64",
+      "retrievedAt": "2026-10-19T15:12:04Z",
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=139.7647,35.6714,139.7653,35.67185",
+      "license": "ODbL-1.0",
+      "licenseUrl": "https://www.openstreetmap.org/copyright",
+      "attribution": "© OpenStreetMap contributors"
+    },
+    "authoredSettings": {
+      "bounds": {
+        "minX": -65,
+        "maxX": 80,
+        "minY": -30,
+        "maxY": 70
+      },
+      "roadFullWidthsMetres": {
+        "osm:way:884274229": 9.6,
+        "osm:way:1026056857": 7.2
+      },
+      "branchSidewalkFullWidthMetres": 3.2,
+      "widthBasis": "Authored display policy. Three/two mapped lane tags inform road hierarchy; no measured lane or sidewalk width is available.",
+      "roadEndCaps": "flat",
+      "roadCornerJoins": "mitre",
+      "sidewalkRoundCapQuadrantSegments": 8
+    },
+    "layerValidation": [
+      {
+        "id": "road",
+        "valid": true,
+        "triangleCount": 21,
+        "triangleCoverageDifferenceSquareMetres": 0.0,
+        "triangleOverlapSquareMetres": 4.547473508864641e-13,
+        "excludedOverlapSquareMetres": 0.0
+      },
+      {
+        "id": "sidewalk",
+        "valid": true,
+        "triangleCount": 22,
+        "triangleCoverageDifferenceSquareMetres": 0.0,
+        "triangleOverlapSquareMetres": 0.0,
+        "excludedOverlapSquareMetres": 3.648636358092496e-17
+      },
+      {
+        "id": "land",
+        "valid": true,
+        "triangleCount": 95,
+        "triangleCoverageDifferenceSquareMetres": 0.0,
+        "triangleOverlapSquareMetres": 1.8189894035458565e-12,
+        "excludedOverlapSquareMetres": 5.439560840364596e-17
+      }
+    ],
+    "buildings": [
+      {
+        "sourceFeatureId": "osm:way:103509466",
+        "observedLevels": 8,
+        "authoredHeightMetres": 25.6,
+        "facadeAppearance": "authored",
+        "semanticGroup": "ContextBuilding_103509466"
+      },
+      {
+        "sourceFeatureId": "osm:way:449618283",
+        "observedLevels": 8,
+        "authoredHeightMetres": 25.6,
+        "facadeAppearance": "authored",
+        "semanticGroup": "ContextBuilding_449618283"
+      }
+    ],
+    "gameplay": false
+  },
+  "axes": "Source/Blender east,north,height → glTF east,height,-north; metres",
+  "dimensions": {
+    "classification": "operator-reported",
+    "sourceId": "seiko-building-specifications",
+    "roofHeightMetres": 30.3,
+    "clockTowerHeightMetres": 9.09,
+    "groundToClockTowerTopMetres": 39.39,
+    "lightningRodHeightMetres": 8,
+    "clockDialDiameterMetres": 2.4,
+    "minuteHandLengthMetres": 1.17,
+    "hourHandLengthMetres": 0.75,
+    "interpretation": "Roof, clock-tower rise, overall tower top and lightning-rod length are distinct operator quantities. The rod is reported on top of the tower. Individual storey heights, tower footprint, bay spacing and cornice depths remain authored.",
+    "sourceConflict": {
+      "osmHeightTagMetres": 28,
+      "resolution": "Use operator specifications for vertical authoring. Retain the OSM tag as reported without assigning it to the roof or clock tower."
+    }
+  },
+  "references": [
+    {
+      "id": "wako-2024",
+      "title": "Ginza Wako 20241021.jpg",
+      "author": "Supanut Arunoprayote",
+      "photographedAt": "2024-10-21",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ginza_Wako_20241021.jpg",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "retainedFile": "experience/evidence/recognition-selection-20261007/wako-2024.jpg",
+      "sha256": "a601789291fb1fa6622f7b3d366cab8b517d305df55bd213805163bcbc62498a",
+      "bytes": 206480,
+      "changes": "Wikimedia 960px thumbnail, unchanged by this project.",
+      "visualReview": "Lead and art inspected the original on 2026-10-07; art re-reviewed the retained view on 2026-10-19. Rounded corner, clock crown, upper window hierarchy, cornices and recessed lower glazing support original authored geometry.",
+      "limits": "Perspective is not a measurement; ground details are partly occluded, and this is a 2024 view."
+    },
+    {
+      "id": "wako-2022",
+      "title": "SEIKO HOUSE GINZA 20221216.jpg",
+      "author": "先従隗始",
+      "photographedAt": "2022-12-16",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SEIKO_HOUSE_GINZA_20221216.jpg",
+      "revisionUrl": "https://commons.wikimedia.org/w/index.php?title=File:SEIKO_HOUSE_GINZA_20221216.jpg&oldid=1099170969",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/0/09/SEIKO_HOUSE_GINZA_20221216.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "originalSha256": "5fdafe7a88dff4046e8439b74115fafa0661732713118cba57876774ea31bb93",
+      "originalBytes": 3820388,
+      "originalResearchPath": "artifacts/ginza-art-20261019/references/wako-2022.jpg",
+      "metadataReviewedAt": "2026-10-19T15:12:03Z",
+      "metadataHtmlSha256": "0bab37620a911243f0d2cd0657277df8733acf03d36998e41fc0748d06802f59",
+      "visualReview": "Art inspected the downloaded original on 2026-10-19: six central arched upper openings, cornice brackets, paired tower pilasters, grille below the clock and lower stone/glass recesses. Foreground glazing marks across the photograph are excluded from the authored building.",
+      "limits": "Elevated similar corner angle; ground still partly occluded. Hidden sides and entrance access remain unverified. Art owns any retained derivative and its change record."
+    }
+  ],
+  "authored": [
+    "individual storey levels and window bay spacing",
+    "window and cornice depths",
+    "tower footprint and placement within the source corner",
+    "clock mounting and representative 10:10 hand pose",
+    "unseen tower faces, rear enclosure and roof treatment",
+    "simplified ornamental details",
+    "original procedural PBR maps",
+    "four-metre level corridor with rounded endpoint caps",
+    "non-traversable facade apron, neutral unmapped ground and distant asphalt continuation",
+    "source-path carriageway buffers, branch sidewalk widths and level presentation heights",
+    "0.12m road kerbs with authored crossing gaps and 2.8m zebra stripe width",
+    "nearby footprint masses with authored 3.2m storey height, glazing layout and materials",
+    "day/night fixtures, materials emission and calibration"
+  ],
+  "noInteriorOrDoorAssignment": true,
+  "noCurrentAccessClaim": true,
+  "referenceUse": "Two licensed photographs guide original architectural geometry. No photograph pixels are used in runtime textures.",
+  "sourceObjects": 2905,
+  "primitives": 55,
+  "triangles": 87154,
+  "textures": 14,
+  "model": {
+    "bytes": 8148792,
+    "sha256": "ca7098c975f745292a9fcb2743a6f6d08c5b3d3f3c948daaac5d409715f83e17"
+  },
+  "semanticGroups": [
+    "WakoWingHarumiGround",
+    "WakoWingHarumiUpper",
+    "WakoCornerGround",
+    "WakoCornerUpper",
+    "WakoWingChuoGround",
+    "WakoWingChuoUpper",
+    "WakoRear",
+    "WakoRoof",
+    "WakoTower",
+    "Ground",
+    "Context",
+    "ContextBuilding_103509466",
+    "ContextBuilding_449618283"
+  ],
+  "walkableTopMetres": 0,
+  "preservedLegacyAssets": [
+    "models/shijo-block.glb",
+    "models/traveller.glb",
+    "materials/architectural",
+    "lighting/rig.json"
+  ],
+  "seconds": 62.69
+}

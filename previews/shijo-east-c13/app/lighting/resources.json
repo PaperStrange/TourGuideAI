@@ -1,0 +1,199 @@
+{
+  "schema": "tourguide.lighting-resources/v1",
+  "reviewedAt": "2026-10-06T05:18:00Z",
+  "assetScope": "Two local photographic environment maps for authored day/night illumination and reflections. Captured in London and Berlin, not Kyoto. Existing Kyoto model geometry and facade-reference pixels are unchanged.",
+  "totalEnvironmentBytes": 3379878,
+  "licenseEvidence": {
+    "url": "https://polyhaven.com/license",
+    "checkedAt": "2026-10-06T05:18:00Z",
+    "pageSha256": "6f4f617c936d14d5a80db6a2ebec145c79277a760672501eef51bff7a0d4cbba",
+    "quotes": [
+      "Our assets are all licensed as CC0",
+      "You can redistribute them, share them around, include them when sharing your own work, or even in a product you sell."
+    ],
+    "scope": "Asset files, including HDRIs. Not a blanket license for all website content. Voluntary creator attribution is provided."
+  },
+  "resources": [
+    {
+      "id": "day",
+      "kind": "lighting-environment",
+      "title": "Urban Street 04",
+      "provider": "Poly Haven",
+      "authors": [
+        "Andreas Mischok"
+      ],
+      "sourceAssetId": "urban_street_04",
+      "sourceUrl": "https://polyhaven.com/a/urban_street_04",
+      "infoApiUrl": "https://api.polyhaven.com/info/urban_street_04",
+      "filesApiUrl": "https://api.polyhaven.com/files/urban_street_04",
+      "infoApiSha256": "2da8a207f7f8607240542090fe68cdde07dcba73a01e13566126cd1da8fec3e0",
+      "filesApiSha256": "c032eaf49d47079bb05358e048f3ebd633cd226ab5d508d4b127e9d7547944fb",
+      "downloadUrl": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/urban_street_04_1k.hdr",
+      "file": "environments/day-1k.hdr",
+      "bytes": 1724368,
+      "sha256": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2",
+      "upstreamMd5": "2c67f8c6ba0d5e05232b82151f0657e7",
+      "upstreamMd5Verified": true,
+      "format": "Radiance RGBE, 32-bit_rle_rgbe",
+      "projection": "equirectangular",
+      "width": 1024,
+      "height": 512,
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "providerLicenseUrl": "https://polyhaven.com/license",
+      "checkedAt": "2026-10-06T05:18:00Z",
+      "capturedAt": "2019-09-14",
+      "sourceLocation": "London, United Kingdom",
+      "sourceCoordinatesLatLon": [
+        51.511786,
+        -0.201884
+      ],
+      "sourceDescription": "Unclipped, free 20K HDRI of a sunlit London street (morning/afternoon): high-contrast natural light, partly cloudy sky, building facades.",
+      "sourceCategories": [
+        "outdoor",
+        "urban",
+        "morning-afternoon",
+        "high contrast",
+        "natural light",
+        "partly cloudy"
+      ],
+      "changes": "Exact official 1K HDR download, renamed locally. No resampling, recolouring, cropping or pixel edits. Runtime PMREM filtering and lighting calibration are separate derived rendering steps.",
+      "projectUse": "Image-based lighting and reflections only. Not a visible panorama background, mapped Kyoto surroundings, facade texture, or geometry source.",
+      "rotationCalibration": "Unregistered source orientation. Runtime yaw/intensity/exposure are authored in rig.json; no Kyoto cardinal alignment or measured illuminance is implied.",
+      "physicallyCalibratedDayNightPair": false
+    },
+    {
+      "id": "night",
+      "kind": "lighting-environment",
+      "title": "Modern Buildings Night",
+      "provider": "Poly Haven",
+      "authors": [
+        "Greg Zaal"
+      ],
+      "sourceAssetId": "modern_buildings_night",
+      "sourceUrl": "https://polyhaven.com/a/modern_buildings_night",
+      "infoApiUrl": "https://api.polyhaven.com/info/modern_buildings_night",
+      "filesApiUrl": "https://api.polyhaven.com/files/modern_buildings_night",
+      "infoApiSha256": "bc3115a8818ca0d440dfd02eb11fd2c2bb4d4d773c31ad602e7a7ed8e9ab15b6",
+      "filesApiSha256": "45fce42baad702af22f521af12309b37594d8d7b9ae96b0411a4741de394f1a5",
+      "downloadUrl": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/modern_buildings_night_1k.hdr",
+      "file": "environments/night-1k.hdr",
+      "bytes": 1655510,
+      "sha256": "a690048dcecabf5ed1ad773f7abdec7cce7b1fea4d89b17f054a18f3e0fa2919",
+      "upstreamMd5": "3067e8d9e8e961e6a11ff45c055a5fbd",
+      "upstreamMd5Verified": true,
+      "format": "Radiance RGBE, 32-bit_rle_rgbe",
+      "projection": "equirectangular",
+      "width": 1024,
+      "height": 512,
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "providerLicenseUrl": "https://polyhaven.com/license",
+      "checkedAt": "2026-10-06T05:18:00Z",
+      "capturedAt": "2016-11-06",
+      "sourceLocation": "Berlin riverside, Germany",
+      "sourceCoordinatesLatLon": [
+        52.520154,
+        13.376159
+      ],
+      "sourceDescription": "Free 16K unclipped HDRI of a Berlin riverside at night, high-contrast artificial lights, warm glass interiors and cool blue sky reflecting on water.",
+      "sourceCategories": [
+        "outdoor",
+        "urban",
+        "night",
+        "partly cloudy",
+        "high contrast",
+        "artificial light"
+      ],
+      "changes": "Exact official 1K HDR download, renamed locally. No resampling, recolouring, cropping or pixel edits. Runtime PMREM filtering and lighting calibration are separate derived rendering steps.",
+      "projectUse": "Image-based lighting and reflections only. Not a visible panorama background, mapped Kyoto surroundings, facade texture, or geometry source.",
+      "rotationCalibration": "Unregistered source orientation. Runtime yaw/intensity/exposure are authored in rig.json; no Kyoto cardinal alignment or measured illuminance is implied.",
+      "physicallyCalibratedDayNightPair": false
+    }
+  ],
+  "kyotoPhotoLightingReferences": [
+    {
+      "id": "mitsui-exterior-2021",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kyoto_Mitsui_Building_night_20210103183745.jpg",
+      "sourceRevisionUrl": "https://commons.wikimedia.org/w/index.php?title=File:Kyoto_Mitsui_Building_night_20210103183745.jpg&oldid=1261825325",
+      "author": "inunami",
+      "capturedAt": "2021-01-03",
+      "license": "CC-BY-2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "imageSha256": "3d5854c871fbadc2984cc783ad9da846f784c2c951c8eb23a2d5adbb31a0db03",
+      "use": "Visual reference only; no Kyoto photo pixels shipped as lighting textures. Brightness, fixture positions, schedules and colour temperatures remain authored."
+    },
+    {
+      "id": "mitsui-frontage-2026",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sumitomo_Mitsui_Banking_Corporation_Kyoto_Branch_%26_Shijo_Branch_%26_Fushimi_Branch.jpg",
+      "sourceRevisionUrl": "https://commons.wikimedia.org/w/index.php?title=File:Sumitomo_Mitsui_Banking_Corporation_Kyoto_Branch_%26_Shijo_Branch_%26_Fushimi_Branch.jpg&oldid=1260218652",
+      "author": "Suikotei",
+      "capturedAt": "2026-01-04",
+      "license": "CC-BY-4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "imageSha256": "190b4cba7fea31fc484c4eb7e705eb912e3c002bc3689ea69e81e52b8f37d218",
+      "use": "Visual reference only; no Kyoto photo pixels shipped as lighting textures. Brightness, fixture positions, schedules and colour temperatures remain authored."
+    },
+    {
+      "id": "daiya-exterior-2021",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kyoto_Dia_Building_at_Shijo-Karasuma_intersection_20210103183825.jpg",
+      "sourceRevisionUrl": "https://commons.wikimedia.org/w/index.php?title=File:Kyoto_Dia_Building_at_Shijo-Karasuma_intersection_20210103183825.jpg&oldid=1214410836",
+      "author": "inunami",
+      "capturedAt": "2021-01-03",
+      "license": "CC-BY-2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "imageSha256": "db5fb0d0378ed6430a9acf959bc8e08fa0a8058f0640394ec4f91b137596c04f",
+      "use": "Visual reference only; no Kyoto photo pixels shipped as lighting textures. Brightness, fixture positions, schedules and colour temperatures remain authored."
+    },
+    {
+      "id": "daiya-frontage-2026",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:MUFG_Bank_Kyoto_Branch_%26_Kyoto-Chuo_Branch.jpg",
+      "sourceRevisionUrl": "https://commons.wikimedia.org/w/index.php?title=File:MUFG_Bank_Kyoto_Branch_%26_Kyoto-Chuo_Branch.jpg&oldid=1229623996",
+      "author": "Suikotei",
+      "capturedAt": "2026-01-04",
+      "license": "CC-BY-4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "imageSha256": "5b809e5619c9ee820cf739e81edd135575ea7cadfe914f3be289453650f6a89e",
+      "use": "Visual reference only; no Kyoto photo pixels shipped as lighting textures. Brightness, fixture positions, schedules and colour temperatures remain authored."
+    }
+  ],
+  "notSelected": [
+    {
+      "provider": "Poly Haven",
+      "assetId": "potsdamer_platz",
+      "sourceUrl": "https://polyhaven.com/a/potsdamer_platz",
+      "reason": "Overcast low-contrast urban alternative; not downloaded. Selected partly cloudy map gives clearer daylight modelling."
+    },
+    {
+      "provider": "Poly Haven",
+      "assetId": "shanghai_bund",
+      "sourceUrl": "https://polyhaven.com/a/shanghai_bund",
+      "reason": "Night alternative; not downloaded. Prominent landmark skyline is less neutral for the bounded Kyoto interpretation."
+    },
+    {
+      "provider": "ambientCG",
+      "assetId": "PavingStones151",
+      "sourceUrl": "https://ambientcg.com/a/PavingStones151",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://docs.ambientcg.com/license/",
+      "reason": "PBR material catalog candidate, not downloaded or used. Existing building/material scope remains unchanged."
+    },
+    {
+      "provider": "ambientCG",
+      "assetId": "Asphalt031",
+      "sourceUrl": "https://ambientcg.com/a/Asphalt031",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://docs.ambientcg.com/license/",
+      "reason": "PBR material catalog candidate, not downloaded or used. A generic material is not proof of Kyoto surface composition."
+    }
+  ],
+  "iesReview": {
+    "provider": "ambientCG",
+    "licenseUrl": "https://docs.ambientcg.com/license/",
+    "apiDocsUrl": "https://docs.ambientcg.com/api/v2/full_json/",
+    "queryUrl": "https://ambientcg.com/api/v2/full_json?q=ies&limit=5",
+    "checkedAt": "2026-10-06T05:18:00Z",
+    "finding": "No IES resource selected. Official documented asset-type list contains no IES type and the ies keyword query returned zero results; this is not an assertion about every historical or future catalog entry.",
+    "implementationBoundary": "Any spotlight cones/falloff used by the game are authored. No measured photometric fixture profile, real Kyoto lamp specification, or claimed IES import."
+  }
+}

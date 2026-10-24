@@ -1,0 +1,410 @@
+{
+  "version": 1,
+  "chapterId": "kyoto-looking-closer",
+  "kind": "illustrated-live-browser-capture",
+  "createdAt": "2026-10-07T05:48:32.725Z",
+  "lightingMode": "day",
+  "imageSize": {
+    "width": 1440,
+    "height": 900
+  },
+  "credits": "../credits.html",
+  "producer": {
+    "renderer": "Three.js WebGLRenderer",
+    "threeVersion": "0.186.1",
+    "browserVersion": "151.0.7922.173",
+    "deviceScaleFactor": 1,
+    "reducedMotion": true,
+    "method": "Direct canvas screenshots from createPerspectiveView; no image post-processing",
+    "format": "JPEG",
+    "jpegQuality": 94,
+    "sourceStableDuringCapture": true,
+    "sourceHashes": {
+      "src/content/perspectives.js": "d7439b5ed6c3e06ae5c40a82b15678deec19204f4dadd10e73fd28b418fa5cac",
+      "src/content/kyoto.js": "cfef7654e1bca051f84861d6ec446e588c1d6ef2d8e8e5cf12a9421224a22859",
+      "src/perspective/live-view.js": "ff8fc462ce62029696bc472c4d49f49bec30143579dc6d5fb41ab2c37a0a16be",
+      "src/runtime/create-game.js": "846c89a6d9dc4bd3271af1cd93c82ed9700faf2840ac860024bc8c704d01b3b6",
+      "src/runtime/world-view.js": "9a1cc4d47ad5a2b6f8d624d2b594dba6a7a535bfb56c1bdd1af9ff0ba8fd79eb",
+      "src/runtime/camera.js": "22a04d926b9e0cb1035e57667ebd9ebe6d273fe65c7be4579b6fc9575c4a1a8a",
+      "src/runtime/view-state.js": "84c5525423264c13eeb4d0606055a0a93fc41314bc930014e358bbed1a3ed442",
+      "src/runtime/lighting.js": "c33decb35abca0491114dcdc0361eb77a20d9b6ab21484884a6f2938116df797",
+      "public/models/shijo-block.glb": "f4135e225f0575daca660c055a5fbdbc4ef3af31bd72736d1dbc806f07ff331c",
+      "public/models/traveller.glb": "ee5307da94f4d1994e5323a0d31d6f79a255c9f2f10459e0a0e6434fb051fdb1",
+      "public/lighting/rig.json": "29cc4209b243e3c069f3516cd0c236c68c0bcb0cb2526aa285f2fdd15caf1766",
+      "public/lighting/environments/day-1k.hdr": "d0b515b6741e44ceaa7dc2e42a64ec30f61871ae313762729c6a14f5343484f2"
+    },
+    "compatibilityNotes": [
+      {
+        "path": "src/perspective/live-view.js",
+        "capturedSha256": "ff8fc462ce62029696bc472c4d49f49bec30143579dc6d5fb41ab2c37a0a16be",
+        "reviewedSubsequentSha256": "c68a097879f3dafc46854ca2bbd932c960c34dbdebfa4bf318c9dbfe61014749",
+        "reason": "Runtime owner confirmed subsequent callback-state refresh and initial-failure cleanup do not change the successful settled camera, scene, materials or lighting. Actual producer hash is retained; images were not recaptured or relabelled."
+      }
+    ]
+  },
+  "limitations": [
+    "Illustrated views of the authored game scene, not photographs or surveyed reconstructions.",
+    "Static frames share the live moments’ canonical focus poses; they do not establish walking fluency or user art acceptance.",
+    "The established model, materials and daylight lighting remain unchanged."
+  ],
+  "images": [
+    {
+      "momentId": "arrive",
+      "file": "arrive.jpg",
+      "sha256": "5b88a84cd1cdb0297c552f8f5ee0f095d3e54fb4a0cc8b8b9f0afd1c54db3c07",
+      "bytes": 221746,
+      "alt": {
+        "en": "Illustrated Kyoto street scene looking across the crossing toward the opposite building.",
+        "zh": "京都街景的场景示意图：沿横道望向街对面的建筑。"
+      },
+      "authoredMoment": {
+        "position": {
+          "x": 20.721,
+          "y": 2.33
+        },
+        "lookAt": {
+          "x": 20.721,
+          "y": -8.99,
+          "height": 4
+        },
+        "camera": {
+          "azimuth": 3.361593,
+          "polar": 1.05,
+          "distance": 32
+        }
+      },
+      "viewState": {
+        "version": 1,
+        "player": {
+          "x": 20.721,
+          "y": 2.33
+        },
+        "camera": {
+          "azimuth": 3.361593,
+          "polar": 1.05,
+          "distance": 32,
+          "targetOffset": {
+            "x": 0,
+            "y": -11.32,
+            "height": 4
+          }
+        }
+      },
+      "cameraSnapshot": {
+        "position": [
+          14.663472421926883,
+          19.922273532535264,
+          -18.09851352872672
+        ],
+        "target": [
+          20.721,
+          4,
+          8.99
+        ],
+        "azimuth": -2.921592307179586,
+        "polar": 1.05,
+        "distance": 32,
+        "frontage": "south",
+        "azimuthBase": 3.141592653589793,
+        "relativeAzimuth": 0.22000034641020738,
+        "enabled": true,
+        "damping": false,
+        "transitioning": false,
+        "projectionMatrix": [
+          1.6281806654336262,
+          0,
+          0,
+          0,
+          0,
+          2.605089064693802,
+          0,
+          0,
+          0,
+          0,
+          -1.0015011258443833,
+          -1,
+          0,
+          0,
+          -0.3002251688766575,
+          0
+        ],
+        "matrixWorld": [
+          -0.9758973737335781,
+          -6.938893903907228e-18,
+          0.21822996114169368,
+          0,
+          0.1085849104466434,
+          0.8674232255940169,
+          0.4855782788834009,
+          0,
+          -0.1892977368147849,
+          0.4975710478917271,
+          -0.8465160477727101,
+          0,
+          14.663472421926883,
+          19.922273532535264,
+          -18.09851352872672,
+          1
+        ],
+        "limits": {
+          "azimuth": [
+            -0.65,
+            0.65
+          ],
+          "polar": [
+            0.66,
+            1.05
+          ],
+          "distance": [
+            22,
+            48
+          ]
+        }
+      },
+      "fadedGroups": [
+        "NorthCanopy",
+        "NorthGround",
+        "NorthShell",
+        "NorthUpper"
+      ],
+      "markerCount": 0
+    },
+    {
+      "momentId": "mitsui-rhythm",
+      "file": "mitsui-rhythm.jpg",
+      "sha256": "0904230ef4cd0eaf28ae5a092bda9ae03bc01b57d93b5b7db432632393d3e351",
+      "bytes": 341401,
+      "alt": {
+        "en": "Illustrated view across Shijō toward Mitsui’s pale walls, separate dark windows and curved corner.",
+        "zh": "隔着四条通看三井大厦的场景示意图：浅色墙面、独立深色窗格与弧形转角。"
+      },
+      "authoredMoment": {
+        "position": {
+          "x": 24.7,
+          "y": -18.5
+        },
+        "lookAt": {
+          "x": 20,
+          "y": 6.5,
+          "height": 11
+        },
+        "camera": {
+          "azimuth": -0.4,
+          "polar": 1.05,
+          "distance": 36
+        }
+      },
+      "viewState": {
+        "version": 1,
+        "player": {
+          "x": 24.7,
+          "y": -18.5
+        },
+        "camera": {
+          "azimuth": -0.4,
+          "polar": 1.05,
+          "distance": 36,
+          "targetOffset": {
+            "x": -4.7,
+            "y": 25,
+            "height": 11
+          }
+        }
+      },
+      "cameraSnapshot": {
+        "position": [
+          7.839541474729591,
+          28.91255772410217,
+          22.262189141925308
+        ],
+        "target": [
+          20,
+          11,
+          -6.5
+        ],
+        "azimuth": -0.4,
+        "polar": 1.05,
+        "distance": 36,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": -0.4,
+        "enabled": true,
+        "damping": false,
+        "transitioning": false,
+        "projectionMatrix": [
+          1.6281806654336262,
+          0,
+          0,
+          0,
+          0,
+          2.605089064693802,
+          0,
+          0,
+          0,
+          0,
+          -1.0015011258443833,
+          -1,
+          0,
+          0,
+          -0.3002251688766575,
+          0
+        ],
+        "matrixWorld": [
+          0.9210609940028851,
+          2.7755575615628914e-17,
+          0.3894183423086505,
+          0,
+          0.1937632926507745,
+          0.8674232255940169,
+          -0.4582932839582111,
+          0,
+          -0.3377905145908447,
+          0.4975710478917269,
+          0.798949698386814,
+          0,
+          7.839541474729591,
+          28.91255772410217,
+          22.262189141925308,
+          1
+        ],
+        "limits": {
+          "azimuth": [
+            -0.65,
+            0.65
+          ],
+          "polar": [
+            0.66,
+            1.05
+          ],
+          "distance": [
+            22,
+            48
+          ]
+        }
+      },
+      "fadedGroups": [
+        "SouthCanopy",
+        "SouthUpper"
+      ],
+      "markerCount": 0
+    },
+    {
+      "momentId": "daiya-rhythm",
+      "file": "daiya-rhythm.jpg",
+      "sha256": "231d68794a8eca8f85dfff124a0f233ab9a6d78859d13c49845320f005adfacb",
+      "bytes": 266874,
+      "alt": {
+        "en": "Illustrated view across Shijō toward Daiya’s vertical façade pattern and intersection corner.",
+        "zh": "隔着四条通看钻石大厦的场景示意图：竖向立面纹理与路口转角。"
+      },
+      "authoredMoment": {
+        "position": {
+          "x": 23.8,
+          "y": 2.1
+        },
+        "lookAt": {
+          "x": 17,
+          "y": -22,
+          "height": 10
+        },
+        "camera": {
+          "azimuth": 3.541593,
+          "polar": 1.05,
+          "distance": 36
+        }
+      },
+      "viewState": {
+        "version": 1,
+        "player": {
+          "x": 23.8,
+          "y": 2.1
+        },
+        "camera": {
+          "azimuth": 3.541593,
+          "polar": 1.05,
+          "distance": 36,
+          "targetOffset": {
+            "x": -6.8,
+            "y": -24.1,
+            "height": 10
+          }
+        }
+      },
+      "cameraSnapshot": {
+        "position": [
+          4.8395315112144335,
+          27.91255772410217,
+          -6.762184929416627
+        ],
+        "target": [
+          17,
+          10.000000000000002,
+          22.000000000000004
+        ],
+        "azimuth": -2.7415923071795865,
+        "polar": 1.05,
+        "distance": 36,
+        "frontage": "south",
+        "azimuthBase": 3.141592653589793,
+        "relativeAzimuth": 0.40000034641020665,
+        "enabled": true,
+        "damping": false,
+        "transitioning": false,
+        "projectionMatrix": [
+          1.6281806654336262,
+          0,
+          0,
+          0,
+          0,
+          2.605089064693802,
+          0,
+          0,
+          0,
+          0,
+          -1.0015011258443833,
+          -1,
+          0,
+          0,
+          -0.3002251688766575,
+          0
+        ],
+        "matrixWorld": [
+          -0.921060859104341,
+          -1.3877787807814457e-17,
+          0.3894186613735565,
+          0,
+          0.1937634514082341,
+          0.867423225594017,
+          0.4582932168366013,
+          0,
+          -0.33779079135515455,
+          0.4975710478917269,
+          -0.7989495813726839,
+          0,
+          4.8395315112144335,
+          27.91255772410217,
+          -6.762184929416627,
+          1
+        ],
+        "limits": {
+          "azimuth": [
+            -0.65,
+            0.65
+          ],
+          "polar": [
+            0.66,
+            1.05
+          ],
+          "distance": [
+            22,
+            48
+          ]
+        }
+      },
+      "fadedGroups": [
+        "NorthCanopy"
+      ],
+      "markerCount": 0
+    }
+  ]
+}

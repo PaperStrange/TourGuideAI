@@ -1,0 +1,116 @@
+{
+  "title": "Operator facts used by the first walk",
+  "verifiedAt": "2026-10-05",
+  "method": "Original bilingual factual summaries. No photographs, logos, marketing prose or full copyrighted source pages distributed. The URL and HTML hash identify the checked source version.",
+  "records": [
+    {
+      "id": "mufg-kyoto",
+      "url": "https://map.bk.mufg.jp/b/bk_mufg/info/BA590331/",
+      "title": "MUFG Bank Kyoto Branch",
+      "claims": {
+        "location": "Southeast corner of Shijo-Karasuma, Kyoto Daiya Building",
+        "atmHours": "06:00–24:00, weekdays/weekends/public holidays",
+        "exception": "Unavailable second Saturday 21:00 through next morning 07:00",
+        "overseasCardBrands": [
+          "Visa",
+          "Plus",
+          "Mastercard",
+          "Maestro",
+          "Cirrus",
+          "UnionPay",
+          "JCB",
+          "DISCOVER"
+        ]
+      },
+      "resolvedUrl": "https://map.bk.mufg.jp/b/bk_mufg/info/BA590331/",
+      "sourceBytesSha256": "40d83abbbca54a78a330c172d48ea7fef342f5eb41934461e13907f62d295dbd",
+      "sourceByteCount": 31399,
+      "evidenceReadAtUtc": "2026-10-05T04:28:35.785872+00:00",
+      "verifiedAt": "2026-10-05",
+      "tokenChecks": {
+        "京都ダイヤビル": true,
+        "6:00": true,
+        "24:00": true,
+        "第2土曜日": true,
+        "海外発行カード": true
+      },
+      "retrieval": "Direct official HTML read; source wording compared with browser-extracted operator page."
+    },
+    {
+      "id": "wcs-kyoto",
+      "url": "https://www.tokyo-card.co.jp/wcs/shopdtl.php?no=44",
+      "title": "World Currency Shop Kyoto",
+      "claims": {
+        "location": "Kyoto Daiya Building, first floor, MUFG Kyoto Branch",
+        "hours": "Weekdays 10:00–17:00",
+        "arrival": "At least 30 minutes before closing",
+        "closed": "Saturdays, Sundays and public holidays"
+      },
+      "resolvedUrl": "https://www.tokyo-card.co.jp/wcs/shopdtl.php?no=44",
+      "sourceBytesSha256": "82b37f0da841249fd921b59fd81041d03f804b93138dcf0e4381ff3f5e5fe680",
+      "sourceByteCount": 12775,
+      "evidenceReadAtUtc": "2026-10-05T04:28:36.929598+00:00",
+      "verifiedAt": "2026-10-05",
+      "tokenChecks": {
+        "京都ダイヤビル": true,
+        "10:00": true,
+        "17:00": true,
+        "30分": true,
+        "土日祝": true
+      },
+      "retrieval": "Direct official HTML read; source wording compared with browser-extracted operator page."
+    },
+    {
+      "id": "mufg-overseas-cards",
+      "url": "https://www.bk.mufg.jp/tsukau/atm_con/atm/kaigai_card.html",
+      "title": "MUFG overseas-issued card ATM services",
+      "claims": {
+        "services": "Yen withdrawal and yen balance inquiry; no deposits or transfers",
+        "eligibility": "A displayed card-brand logo does not guarantee a specific card will work; ask the issuer",
+        "fees": "MUFG fees depend on card group and additional issuer fees may apply",
+        "hours": "Branch hours apply; UnionPay/JCB/DISCOVER service excludes 23:50–24:00"
+      },
+      "resolvedUrl": "https://www.bk.mufg.jp/tsukau/atm_con/atm/kaigai_card.html",
+      "sourceBytesSha256": "97e830b7f0d65c2e0c4b9ac818e662519290220f9ca1041cc43d302db59b489c",
+      "sourceByteCount": 59042,
+      "evidenceReadAtUtc": "2026-10-05T04:28:37.323026+00:00",
+      "verifiedAt": "2026-10-05",
+      "tokenChecks": {
+        "円貨": true,
+        "カード発行会社": true,
+        "手数料": true,
+        "23:50": true
+      },
+      "retrieval": "Direct official HTML read; source wording compared with browser-extracted operator page."
+    },
+    {
+      "id": "kamakura-access",
+      "url": "https://www.shirt.co.jp/news/info/2403_kyoto/",
+      "title": "Kamakura Shirts Kyoto Mitsui opening announcement",
+      "publishedAt": "2024-03-01",
+      "claims": {
+        "building": "Kyoto Mitsui Building first floor",
+        "access": "Hankyu Karasuma and Kyoto subway Shijo; Exit 20",
+        "scope": "Historical official access clue only; current shop hours not asserted"
+      },
+      "resolvedUrl": "https://www.shirt.co.jp/news/info/2403_kyoto/",
+      "sourceBytesSha256": "1b9c751b11f7cbb738fdf0e04a2b18d9e522d12d9fddedc3fda2e0e1b3ddf952",
+      "sourceByteCount": 35478,
+      "evidenceReadAtUtc": "2026-10-05T04:28:38.851646+00:00",
+      "verifiedAt": "2026-10-05",
+      "tokenChecks": {
+        "京都三井ビルディング": true,
+        "烏丸駅": true,
+        "四条駅": true,
+        "20番出口": true
+      },
+      "retrieval": "Direct official HTML read; source wording compared with browser-extracted operator page."
+    }
+  ],
+  "limitations": [
+    "No exact entrance positions established.",
+    "No live open-now status.",
+    "Exchange rates and the player-specific total cost are not supplied.",
+    "The historical store announcement is not a current shop-hours source."
+  ]
+}
