@@ -10,8 +10,16 @@ recommendations. The implemented pilot connects six sights over 1,353.444 m.
 Latest implementation `06a2c49` produces candidate 12 (`e86aa1c7…`), passing
 216 application tests, 17 repository gates, font coverage and the canonical build.
 Its audited source201/274 upper-facade profiles, source139 light-responsive roof
-material and bilingual constrained-view hint are integrated. Native appearance,
-shader/feedback behavior, complete CI and performance remain pending.
+material and bilingual constrained-view hint are integrated. Actual roof
+compilation/day-night/lifecycle checks pass 20/20; its bounded underside art review
+accepts clearer daylight color and retained night coherence. Native hidden/return
+behavior passes 13/13 with zero scene work over 2,018.3 ms and preserved view.
+Actual feedback records 6 passes / 2 failures because repeated blocked turns do
+not display the hint; the subsequent locale/wrapping/clear checks remain unexecuted.
+Navigation and engineering own diagnosis. Facade appearance, complete CI and
+performance remain pending.
+Current CI40062728715 uses exact implementation06a2c49; candidate 11's complete
+neighborhood job was interrupted when this source run began.
 
 Retained implementation source `84e80a8` produces candidate 11, which passes 203 application
 checks, 17 repository gates and 36 targeted native checks. Independent source and

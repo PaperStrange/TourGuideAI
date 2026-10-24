@@ -155,16 +155,26 @@ Candidate 12 is built and pushed as `06a2c49`, package `e86aa1c7…`. It passes
 216 application tests, 17 repository gates, complete font coverage and the canonical
 build. The independent 74-section audit preserves protected geometry, navigation
 and resources. Its shader and bilingual constraint-feedback code have passed
-focused checks and independent review; native compilation, appearance, feedback,
-complete CI and performance acceptance remain pending. The previous candidate's
-startup/visibility results retain their original package scope.
+focused checks and independent review. Current roof compilation, day/night,
+resource bounds and two leave/return cycles pass 20/20 browser checks; the bounded
+source-confirmed underside art review accepts clearer daylight colors and retained
+night coherence. External-building shadow response remains unobserved in those
+exposed samples. Current native background/return behavior passes 13/13, with zero
+hidden work over 2,018.3 ms and preserved saved view. Facade appearance, complete
+CI and performance acceptance remain pending. Actual feedback checks record 6
+passes / 2 failures: repeated blocked turns do not display the hint; the
+locale/wrapping/clear tail remains unexecuted. Navigation and engineering are
+diagnosing that integration failure before another immutable build.
+Candidate 12 CI40062728715
+uses exact source06a2c49; candidate 11's complete-route job ended interrupted.
+The previous candidate's startup results retain their original package scope.
 
 | Sprint | Current evidence | Remaining acceptance |
 | --- | --- | --- |
 | N00 | Connected source graph, six exterior sights, source/provenance audits and reproducible packaging | Surveyed grades and current access remain explicit source limits |
-| N01 | Continuous movement, streaming/retry, cancellation, native storage and residency; candidate 9 complete outward/return CI passes | Candidate 11 complete outward/return CI |
+| N01 | Continuous movement, streaming/retry, cancellation, native storage and residency; candidate 9 complete outward/return CI passes | Candidate 12 complete outward/return CI |
 | N02 | Bilingual day/night, private views, editable recommendations and Maps; current scoped paper/paving/contact repairs pass | Location-matched connecting fronts, factual landmark details and broad night-material review |
-| N03 | Candidate 11 startup targets and native background-tab behavior pass; candidate 9 complete camera and eight CI jobs pass | Current-package complete CI, input/frame targets, Q03, hardware evidence and publication |
+| N03 | Candidate 12 native background-tab behavior and roof lifecycle pass; candidate 11 startup targets pass; candidate 9 complete camera and eight CI jobs pass | Current-package complete CI, input/frame targets, Q03, hardware evidence and publication |
 
 ## Candidate 9 acceptance · 2026-10-23
 

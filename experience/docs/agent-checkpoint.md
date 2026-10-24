@@ -31,9 +31,31 @@ bilingual nonmodal hint after three settled, stalled deliberate orbit attempts.
 The camera's geometry, collision policy and scheduling are unchanged. The hint
 uses an actual 40-input trace; nine focused feedback checks and four material checks
 pass within the complete suite. Independent review covered shader/lifetime and
-feedback timing. QA now owns the exclusive browser window for actual shader
-compilation, matched appearance, feedback behavior and source-scoped comparisons.
-Current-package native acceptance, complete CI and performance remain pending.
+feedback timing. Actual roof compilation, day/night, source roles and two
+leave/return cycles pass **20/20** browser checks, report
+`dde090dbbff0bf35aa41d3beb25884f153a3050443714f0d6ae61d9936660134`.
+Both primary views use 83 calls / 85,731 triangles. Repeated returns retain equal
+geometry/texture allocation counts. The source-confirmed underside has clearer
+daylight colors and coherent night appearance in the bounded art review. Both
+captured views contain 26 exposed samples and zero occluded samples; external
+building-shadow pixel response remains unobserved.
+
+The [current native visibility check](../evidence/neighborhood-20261024/performance/candidate-12-native-visibility/README.md)
+passes **13/13**. Genuine trusted tab transitions produce zero draws, updates and
+neighborhood requests over **2,018.3 ms** hidden; return preserves the saved view.
+Report SHA256: `0d4af8a27564837162d0d8e81a81d3b3e1cfd3954ac19f2ab9ca80a23f7c0d61`.
+Actual [camera guidance verification](../evidence/neighborhood-20261024/qa/candidate-12-camera-guidance/README.md)
+records **6 passes / 2 failures**: sixteen trusted settled orbit presses reproduce
+the known blocked turns, while the hint remains hidden. Report
+`e625fdcb2bd81daee2c47bbdf7d7b1b466feeeefe354816b2b0db918f1ba4cc8`
+preserves the failure; its EN/ZH, wrapping and clear-action tail was not executed.
+Navigation and engineering are diagnosing the synchronous camera-adoption path;
+the current package stays immutable. QA owns the exclusive browser window for
+matched facade appearance. Current-package complete CI and performance remain pending.
+CI **40062728715** uses exact implementation `06a2c49`; source preparation, solo
+exploration and travel companion jobs pass in the 04:40 UTC observation, with the
+other jobs still running. A demonstrated feedback correction will receive a new
+immutable package and affected checks before acceptance.
 The GPU-environment availability question remains unanswered; this workspace still
 provides software rendering. No candidate 12 publication or hardware-fluency claim.
 
@@ -98,13 +120,14 @@ visible through a capture count. The first failed probe and default benchmark re
 preserved. The successful probe retains AA, 1440×1000/DPR 1 and software rendering;
 it establishes native visibility behavior, not physical-GPU performance.
 
-Candidate 11 CI **40058828311** runs on checkpoint **`ef34dd3`**. Seven jobs and
-all seven available browser reports pass **771/771** checks on the exact 446-file
-package; source preparation passes 18 + 13 checks. The full neighborhood job remains
-running. Candidate 10 CI **40055504933** completed as cancelled at 03:34 UTC
+Candidate 11 CI **40058828311** on checkpoint **`ef34dd3`** ended cancelled when
+candidate 12's source run began. Seven jobs and all seven available browser reports
+pass **771/771** checks on the exact 446-file package; source preparation passes
+18 + 13 checks. Its full neighborhood job was interrupted. Candidate 10 CI
+**40055504933** completed as cancelled at 03:34 UTC
 when the new source run began; seven jobs passed and the neighborhood artifact
-**12546870664** retains its interrupted scope. Current candidate 11 awaits its own
-complete CI. A single
+**12546870664** retains its interrupted scope. Candidate 12 awaits its own complete
+CI. A single
 matched startup A/B observes fewer preview mutations/draws. Its original 19/2 result
 is retained: warm-vs-cold raw edge-distance comparisons differ by 0.000334 m, while
 independent cold-to-cold and warm-to-warm player/camera/ground fields match exactly.

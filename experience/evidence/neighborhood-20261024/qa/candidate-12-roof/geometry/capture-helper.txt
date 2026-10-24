@@ -1,0 +1,169 @@
+import { readFile, writeFile } from 'node:fs/promises';
+import { resolve, join } from 'node:path';
+import { pathToFileURL, fileURLToPath } from 'node:url';
+import { gunzipSync } from 'node:zlib';
+import { createHash } from 'node:crypto';
+import * as THREE from '../../../experience/node_modules/three/build/three.module.js';
+import { MeshBVH, acceleratedRaycast } from '../../../experience/node_modules/three-mesh-bvh/build/index.module.js';
+import { loadNeighborhoodGeometry } from '../../../experience/tests/helpers/neighborhood-geometry.mjs';
+import { installThinSheetMaterials } from '../../../experience/src/runtime/thin-sheet-material.js';
+
+const sha = bytes => createHash('sha256').update(bytes).digest('hex');
+const names = new Set(['nishiki-ridge-red', 'nishiki-ridge-gold', 'nishiki-ridge-green']);
+
+// 只监听真实浏览器错误；没有覆盖 WebGL、焦点、可见性或绘制方法。
+export function watchThinSheetErrors(page) {
+  const consoleErrors = [], pageErrors = [];
+  const onConsole = message => {
+    if (message.type() === 'error') consoleErrors.push({ text: message.text(), location: message.location() });
+  };
+  const onError = error => pageErrors.push(error.message);
+  page.on('console', onConsole); page.on('pageerror', onError);
+  return { consoleErrors, pageErrors,
+    stop() { page.off('console', onConsole); page.off('pageerror', onError); } };
+}
+
+async function checked(path, expected) {
+  const bytes = await readFile(path), hash = sha(bytes);
+  if (expected && hash !== expected) throw new Error('Packaged bytes do not match: ' + path);
+  return { bytes, sha256: hash };
+}
+
+export async function classifyThinSheetCapture({ dist, reportFile, captureName }) {
+  dist = resolve(dist);
+  const original = await readFile(reportFile), decoded = reportFile.endsWith('.gz') ? gunzipSync(original) : original;
+  const report = JSON.parse(decoded), capture = report.screenshots.find(item => item.file === captureName);
+  if (!capture?.observed) throw new Error('Actual screenshot observation is required');
+  const observed = capture.observed, assetRoot = join(dist, 'assets/neighborhoods/shijo-east');
+  const manifestBytes = await checked(join(assetRoot, 'manifest.json'), report.source.manifestSha256);
+  const manifest = JSON.parse(manifestBytes.bytes), rigBytes = await checked(join(assetRoot, manifest.lighting.file), manifest.lighting.sha256);
+  const rig = JSON.parse(rigBytes.bytes), lighting = observed.renderer.lighting, mode = rig.modes[lighting.mode];
+  const sun = lighting.lights.find(light => light.id === 'sun' && light.type === 'DirectionalLight');
+  if (!sun?.castShadow || !mode?.sun.shadow || lighting.phase !== 'ready' || lighting.pendingRequests ||
+    lighting.lights.some(light => light.castShadow && light.shadowNeedsUpdate)) throw new Error('Actual lighting must be ready with completed shadow maps');
+  if (observed.renderer.scene.manifestSha256 !== manifestBytes.sha256 || observed.stream.blocked ||
+    observed.stream.cells.some(cell => cell.error || (cell.desired && (cell.level !== cell.desired || cell.state !== 'ready')))) {
+    throw new Error('The observed scene does not match the complete packaged sections');
+  }
+  const result = { createdAt: new Date().toISOString(), scope: 'Offline geometry classification of an actual browser capture; no pixel or GPU-link proof',
+    report: { file: reportFile, sha256: sha(decoded), packageSha256: report.artifact.manifestSha256 },
+    capture: { file: captureName, sha256: capture.sha256 }, manifestSha256: manifestBytes.sha256, rigSha256: rigBytes.sha256,
+    lighting: { mode: lighting.mode, sun, normalBias: mode.sun.shadow.normalBias }, metadata: [], assets: [], samples: [],
+    limitations: ['Global HDR/hemisphere has no local sky-occlusion data.',
+      'CPU geometric rays do not reproduce rasterized PCF, texture color, tone mapping or final pixel brightness.',
+      'Only observed resident, visible scenery participates; distant unloaded geometry is not invented.',
+      'Capture must have a completed canopy fade: the current observer exposes faded group intent, not per-material opacity.',
+      'All console errors, actual new draws and images require independent browser/art review.'] };
+  // 所有实际分区的角色和几何身份都有单独记录，未加载分区不进入当前阴影判断。
+  for (const cell of manifest.cells) for (const level of ['base', 'near']) {
+    const descriptor = cell[level], bytes = await checked(join(assetRoot, descriptor.file), descriptor.sha256);
+    const json = JSON.parse(bytes.bytes);
+    for (const node of json.nodes ?? []) {
+      const materials = (json.meshes[node.mesh]?.primitives ?? []).map(primitive => json.materials[primitive.material]);
+      const materialNames = materials.map(material => material?.name);
+      if (!node.extras?.thinSheet && !materialNames.some(name => names.has(name))) continue;
+      if (!node.extras?.thinSheet || !materialNames.length || !materialNames.every(name => names.has(name))) throw new Error('Missing or mixed exported roof role');
+      const sheet = node.extras.thinSheet;
+      if (sheet.version !== 1 || sheet.sourceId !== 'osm:way:772134672' || sheet.sourceIndex !== 139 ||
+        sheet.role !== 'nishiki-colored-roof' || sheet.pairedVerticalOffsetMetres !== .045 ||
+        sheet.diffuseTransmission !== .55 || JSON.stringify(sheet.transmissionColor) !== '[1,1,1]') throw new Error('Exported roof parameters differ from the approved role');
+      for (const material of materials) {
+        if (material.alphaMode && material.alphaMode !== 'OPAQUE' || material.pbrMetallicRoughness?.metallicFactor !== 0 ||
+          (material.emissiveFactor ?? [0, 0, 0]).some(value => value !== 0) || material.emissiveTexture ||
+          (material.extensions?.KHR_materials_transmission?.transmissionFactor ?? 0) !== 0) throw new Error('Exported roof is not opaque/nonemissive with zero ordinary transmission');
+      }
+      result.metadata.push({ cellId: cell.id, level, file: descriptor.file, sha256: bytes.sha256,
+        node: node.name, materials, thinSheet: node.extras.thinSheet });
+    }
+  }
+  if (!result.metadata.length) throw new Error('This package has no exported diffuse-sheet role');
+  const roots = [], meshes = [], sheets = [], trees = new Set();
+  const selected = observed.stream.cells.filter(cell => cell.level).map(item => {
+    const cell = manifest.cells.find(cell => cell.id === item.id);
+    if (!cell || cell[item.level].sha256 !== item.sha256) throw new Error('Observed section identity does not match the package');
+    return { descriptor: cell[item.level], cell };
+  });
+  if (manifest.context) selected.push({ descriptor: manifest.context, cell: null });
+  const faded = new Set(observed.renderer.scene.fadedGroups);
+  try {
+    for (const { descriptor, cell } of selected) {
+      const bytes = await checked(join(assetRoot, descriptor.file), descriptor.sha256), json = JSON.parse(bytes.bytes);
+      for (const dependency of descriptor.dependencies ?? []) {
+        if (dependency.file.endsWith('.bin')) await checked(join(assetRoot, dependency.file), dependency.sha256);
+      }
+      const root = await loadNeighborhoodGeometry(pathToFileURL(join(assetRoot, descriptor.file))); roots.push(root);
+      root.traverse(mesh => {
+        if (!mesh.isMesh) return;
+        mesh.userData.featureTable ??= cell?.featureTable ?? manifest.featureTable;
+        const material = json.materials.find(value => value.name === mesh.material.name);
+        mesh.material.metalness = material?.pbrMetallicRoughness?.metallicFactor ?? 1;
+        mesh.castShadow = cell ? true : mesh.userData.retainedStreetDetail === true && mesh.userData.retainedStreetCastShadow === true;
+        if (cell && faded.has(cell.id + ':' + mesh.userData.occlusionGroup)) mesh.visible = false;
+        if (!mesh.geometry.boundsTree) {
+          mesh.geometry.boundsTree = new MeshBVH(mesh.geometry, { indirect: true }); trees.add(mesh.geometry);
+        }
+        mesh.raycast = acceleratedRaycast;
+        if (mesh.visible) meshes.push(mesh);
+        if (mesh.visible && mesh.userData.thinSheet) sheets.push(mesh);
+      });
+      if (cell) installThinSheetMaterials(root);
+      result.assets.push({ file: descriptor.file, sha256: bytes.sha256, cellId: cell?.id ?? null });
+    }
+    const camera = new THREE.PerspectiveCamera();
+    camera.projectionMatrix.fromArray(observed.camera.projectionMatrix);
+    camera.matrixWorld.fromArray(observed.camera.matrixWorld); camera.matrixWorldInverse.copy(camera.matrixWorld).invert();
+    const eye = new THREE.Vector3().setFromMatrixPosition(camera.matrixWorld);
+    const towardSun = new THREE.Vector3().fromArray(sun.position).sub(new THREE.Vector3().fromArray(sun.target)).normalize();
+    const ray = new THREE.Raycaster(), triangle = new THREE.Triangle(), center = new THREE.Vector3(), normal = new THREE.Vector3();
+    ray.firstHitOnly = true;
+    const shadowMeshes = meshes.filter(mesh => mesh.castShadow);
+    const canvas = capture.layout.canvas ?? capture.layout.afterScroll?.canvas;
+    for (const sheet of sheets) {
+      const positions = sheet.geometry.getAttribute('position'), indices = sheet.geometry.index;
+      const count = (indices?.count ?? positions.count) / 3, stride = Math.max(1, Math.ceil(count / 96));
+      for (let face = 0; face < count; face += stride) {
+        for (const [offset, vertex] of [[0, triangle.a], [1, triangle.b], [2, triangle.c]]) {
+          vertex.fromBufferAttribute(positions, indices ? indices.getX(face * 3 + offset) : face * 3 + offset).applyMatrix4(sheet.matrixWorld);
+        }
+        triangle.getMidpoint(center); triangle.getNormal(normal);
+        const projected = center.clone().project(camera);
+        if (![projected.x, projected.y, projected.z].every(value => Number.isFinite(value) && Math.abs(value) < 1)) continue;
+        const toSurface = center.clone().sub(eye), distance = toSurface.length();
+        ray.set(eye, toSurface.divideScalar(distance)); ray.near = 0; ray.far = distance + .002;
+        const visibleHit = ray.intersectObjects(meshes, false)[0];
+        if (!visibleHit || visibleHit.object !== sheet || Math.abs(visibleHit.distance - distance) > .002) continue;
+        const front = normal.dot(toSurface) < 0, visibleNormal = normal.clone().multiplyScalar(front ? 1 : -1);
+        const cosine = -visibleNormal.dot(towardSun);
+        if (cosine <= .05) continue;
+        const incident = center.clone();
+        if (front) incident.y -= Math.sign(normal.y) * .045;
+        incident.addScaledVector(normal, (front ? -1 : 1) * mode.sun.shadow.normalBias);
+        ray.set(incident, towardSun); ray.near = .001; ray.far = mode.sun.shadow.far;
+        const blocker = ray.intersectObjects(shadowMeshes, false)[0];
+        const sourceIndex = blocker?.object.geometry.getAttribute('_source_index')?.getX(blocker.face.a);
+        const source = blocker?.object.userData.featureTable?.[sourceIndex];
+        result.samples.push({ mesh: sheet.name, material: sheet.material.name, sourceIndex: 139, face,
+          point: center.toArray(), frontFacing: front, worldNormal: normal.toArray(), incidentPoint: incident.toArray(), cosine,
+          pixel: { x: (projected.x + 1) * canvas.width / 2, y: (1 - projected.y) * canvas.height / 2 },
+          classification: blocker ? 'geometrically-occluded' : 'geometrically-exposed',
+          blocker: blocker ? { mesh: blocker.object.name, sourceIndex, sourceId: source?.sourceId ?? null,
+            point: blocker.point.toArray(), distance: blocker.distance } : null });
+      }
+    }
+    result.counts = { visibleSheets: sheets.length, exposed: result.samples.filter(value => !value.blocker).length,
+      occluded: result.samples.filter(value => value.blocker).length };
+    result.bothClassesObserved = result.counts.exposed > 0 && result.counts.occluded > 0;
+    return result;
+  } finally {
+    for (const geometry of trees) { geometry.boundsTree = null; }
+    for (const root of roots) root.traverse(mesh => { mesh.geometry?.dispose(); mesh.material?.dispose(); });
+  }
+}
+
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  const [dist, reportFile, captureName, output] = process.argv.slice(2);
+  if (!dist || !reportFile || !captureName || !output) throw new Error('Usage: node thin-sheet-verification.mjs DIST REPORT CAPTURE_NAME OUTPUT_JSON');
+  const result = await classifyThinSheetCapture({ dist, reportFile, captureName });
+  await writeFile(output, JSON.stringify(result, null, 2) + '\n');
+  console.log(JSON.stringify({ output, counts: result.counts, bothClassesObserved: result.bothClassesObserved }));
+}

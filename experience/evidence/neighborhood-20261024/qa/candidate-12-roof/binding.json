@@ -1,0 +1,139 @@
+{
+  "packageSha256": "e86aa1c715fb76cd111feae41a0383ee34005aefd64fe5c48eba7615676e5733",
+  "packageFiles": 446,
+  "packageBytes": 96953857,
+  "scenerySha256": "86e4f424a36cb858c16f6e282ad8ceb8f146d6b285d482de3c0ce2fe2f726b61",
+  "source": {
+    "id": "shijo-east",
+    "revision": 1,
+    "geographySha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+    "manifestSha256": "86e4f424a36cb858c16f6e282ad8ceb8f146d6b285d482de3c0ce2fe2f726b61",
+    "historicalGeographyCompatibility": {
+      "kind": "reviewed-tenmangu-anchor-metadata",
+      "recordedSha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
+      "currentSha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+      "auditSha256": "156cdc90f594a9a69a672ac8003e1ddbfa76259c0dc86c5b59035b0e55cc35dd",
+      "auditFile": "experience/evidence/neighborhood-20261023/world/platform-context/tenmangu-compatibility.json",
+      "changedFields": [
+        "nodeId",
+        "approachNodeId",
+        "x",
+        "y",
+        "latitude",
+        "longitude"
+      ],
+      "completeGeographyCompared": true,
+      "unchangedSources": {
+        "scene.json": {
+          "bytes": 8789674,
+          "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e"
+        },
+        "source-ledger.json": {
+          "bytes": 5999,
+          "sha256": "be0f8065699a53f09293140e2499bca2468f0aa7cea503dc6436f45c9b17a24c"
+        },
+        "source-review.json": {
+          "bytes": 756,
+          "sha256": "4e3fbb9d2fd3134153d2b378f5de995c2f7e3135ea3d778a5fe2f19b55f00258"
+        },
+        "sources/kyoto-lod1.geojson": {
+          "bytes": 6304053,
+          "sha256": "da1af049906d736b6329e062673a84728640957475d3b46107cebf46b48a2d93"
+        },
+        "sources/route-osm.json": {
+          "bytes": 47176,
+          "sha256": "5681dceac0c5d206a6e5315c77ca6a39a292ab3915f23b60cc17c77cecb4099e"
+        },
+        "sources/scene-osm.json": {
+          "bytes": 2390775,
+          "sha256": "1e3ba265bc8dd3c6744ccd897ad915016a2cc0110c306bf3e064ca63ced5dd0c"
+        }
+      },
+      "scope": "Stored metric view, frame and navigation geometry. Rendered assets retain their separate current-build identity."
+    }
+  },
+  "driverSha256": "71032b2ea1e55444c8736ba043476cf4086d7ef75d1665e225b26811e969eeb3",
+  "driverDependencies": [
+    {
+      "file": "tests/helpers/neighborhood-evidence-source.mjs",
+      "sha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    },
+    {
+      "file": "artifacts/neighborhood-20261024/engineering/thin-sheet-verification.mjs",
+      "sha256": "0397f57fd5a37a397c665801860edc15935dd93bbac62c20a06b27ec28f8c35e"
+    }
+  ],
+  "reportSha256": "dde090dbbff0bf35aa41d3beb25884f153a3050443714f0d6ae61d9936660134",
+  "summary": {
+    "passed": 20,
+    "failed": 0
+  },
+  "browser": "151.0.7922.34",
+  "sections": [
+    "thin-sheet"
+  ],
+  "startedAt": "2026-10-24T04:36:29.463Z",
+  "finishedAt": "2026-10-24T04:39:23.887Z",
+  "elapsedMs": 174424,
+  "httpRequests": 176,
+  "evidence": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 348170,
+      "sha256": "a78ada6d6d84b714b23e8e09ff84d14202d9fd3f434c0e04287e4d57ebaa693e",
+      "decodedBytes": 3748868,
+      "decodedSha256": "dde090dbbff0bf35aa41d3beb25884f153a3050443714f0d6ae61d9936660134"
+    },
+    {
+      "file": "executed-driver.mjs.gz",
+      "bytes": 51582,
+      "sha256": "2e3515c6671932967fde6e4b392647b800ec045b7574da4d0b2d97652bf6242f",
+      "decodedBytes": 212849,
+      "decodedSha256": "71032b2ea1e55444c8736ba043476cf4086d7ef75d1665e225b26811e969eeb3"
+    },
+    {
+      "file": "run.log.gz",
+      "bytes": 432,
+      "sha256": "3f0f044c4f3cdbe445441f662b08d9bf2b66b60f383b693926720a9c31f761e5",
+      "decodedBytes": 1161,
+      "decodedSha256": "bdc5f61ed302f7c2df5bd812956b6324606b3837d17eb6488ded9b8733c2b486"
+    },
+    {
+      "file": "neighborhood-evidence-source.mjs.gz",
+      "bytes": 1619,
+      "sha256": "70115611f201081f16386f97f55d12421b3ee05a5e4c8f20bdfe99a5ec5fd294",
+      "decodedBytes": 3713,
+      "decodedSha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    },
+    {
+      "file": "thin-sheet-verification.mjs.gz",
+      "bytes": 4649,
+      "sha256": "981ff91c638ea7ac2a2d1665d25ece5c810cc95d2e2028b0c1f885cf17f80f64",
+      "decodedBytes": 12647,
+      "decodedSha256": "0397f57fd5a37a397c665801860edc15935dd93bbac62c20a06b27ec28f8c35e"
+    },
+    {
+      "file": "arcade-below-roof-day.png",
+      "bytes": 819080,
+      "sha256": "1ab6d058a6087319e11b73ceedbc147fe80bb173fe0d5746a175e6cff747b529"
+    },
+    {
+      "file": "../../art/candidate-12/roof/arcade-below-roof-day-canvas.png",
+      "owner": "art",
+      "bytes": 555692,
+      "sha256": "80f40dd3b7ce8990e6cbf6d32c1f3cf1b1aacb0f156a5d5156ea1d16e587bf64"
+    },
+    {
+      "file": "arcade-below-roof-night.png",
+      "bytes": 939003,
+      "sha256": "0b3ac1934953009dfa1f1a730e81de4f3bcf437570ba581a7a0368dcbc5fd5e3"
+    },
+    {
+      "file": "../../art/candidate-12/roof/arcade-below-roof-night-canvas.png",
+      "owner": "art",
+      "bytes": 667986,
+      "sha256": "a3ccc1bd14dd9597328c1067c27709898b48ad1f2deae44192997e732236b7f9"
+    }
+  ],
+  "failuresPreserved": []
+}

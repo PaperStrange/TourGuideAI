@@ -1,0 +1,606 @@
+{
+  "scope": "Candidate12 actual source139 roof day/night visual review",
+  "packageSha256": "e86aa1c715fb76cd111feae41a0383ee34005aefd64fe5c48eba7615676e5733",
+  "sceneManifestSha256": "86e4f424a36cb858c16f6e282ad8ceb8f146d6b285d482de3c0ce2fe2f726b61",
+  "report": {
+    "source": "artifacts/neighborhood-20261024/qa/candidate-12-roof/neighborhood-result.json",
+    "portable": "../../../qa/candidate-12-roof/neighborhood-result.json.gz",
+    "decodedSha256": "dde090dbbff0bf35aa41d3beb25884f153a3050443714f0d6ae61d9936660134",
+    "decodedBytes": 3748868,
+    "driverSha256": "71032b2ea1e55444c8736ba043476cf4086d7ef75d1665e225b26811e969eeb3",
+    "passed": 20,
+    "failed": 0
+  },
+  "captures": [
+    {
+      "file": "arcade-below-roof-day-canvas.png",
+      "sha256": "80f40dd3b7ce8990e6cbf6d32c1f3cf1b1aacb0f156a5d5156ea1d16e587bf64",
+      "bytes": 555692,
+      "sourceFile": "artifacts/neighborhood-20261024/qa/candidate-12-roof/arcade-below-roof-day-canvas.png",
+      "layout": {
+        "scrollX": 0,
+        "scrollY": 292,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentHeight": 2881,
+        "visualColumn": {
+          "x": 48,
+          "y": 209.796875,
+          "width": 992,
+          "height": 976.28125,
+          "top": 209.796875,
+          "right": 1040,
+          "bottom": 1186.078125,
+          "left": 48
+        },
+        "canvas": {
+          "x": 49,
+          "y": 282.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 282.796875,
+          "right": 1039,
+          "bottom": 999.625,
+          "left": 49
+        },
+        "camera": {
+          "position": [
+            282.16654388518407,
+            1.6528488991003483,
+            -139.7179592153446
+          ],
+          "target": [
+            287.127,
+            1.1,
+            -140.015
+          ],
+          "desiredPosition": [
+            282.16654388518407,
+            1.6528488991003483,
+            -139.7179592153446
+          ],
+          "viewTarget": [
+            287.127,
+            1.1,
+            -140.015
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 5.000000000000002,
+            "actualDistance": 5.000000000000002,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.38693118772049756,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": -1.5109859999999977,
+          "polar": 1.46,
+          "distance": 5.000000000000002,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": -1.5109859999999977,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": true,
+          "inspectionAimed": true,
+          "inspectionPanned": true,
+          "panning": true,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            0.05977467350620658,
+            6.938893903907228e-18,
+            0.9982118955448418,
+            0,
+            0.11037206950416747,
+            0.9938683634116449,
+            -0.006609272488397801,
+            0,
+            -0.9920912229631877,
+            0.1105697798200696,
+            0.059408156931078926,
+            0,
+            282.16654388518407,
+            1.6528488991003483,
+            -139.7179592153446,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          282.16654388518407,
+          1.6528488991003483,
+          -139.7179592153446
+        ],
+        "target": [
+          287.127,
+          1.1,
+          -140.015
+        ],
+        "desiredPosition": [
+          282.16654388518407,
+          1.6528488991003483,
+          -139.7179592153446
+        ],
+        "viewTarget": [
+          287.127,
+          1.1,
+          -140.015
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 5.000000000000002,
+          "actualDistance": 5.000000000000002,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.38693118772049756,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": -1.5109859999999977,
+        "polar": 1.46,
+        "distance": 5.000000000000002,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": -1.5109859999999977,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": true,
+        "inspectionAimed": true,
+        "inspectionPanned": true,
+        "panning": true,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.05977467350620658,
+          6.938893903907228e-18,
+          0.9982118955448418,
+          0,
+          0.11037206950416747,
+          0.9938683634116449,
+          -0.006609272488397801,
+          0,
+          -0.9920912229631877,
+          0.1105697798200696,
+          0.059408156931078926,
+          0,
+          282.16654388518407,
+          1.6528488991003483,
+          -139.7179592153446,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "routePosition": {
+        "x": 287.127,
+        "y": 140.015,
+        "height": 0,
+        "edgeId": "osm:way:66703315:354840397:5554417552",
+        "edgeDistance": 37.546088
+      },
+      "lighting": {
+        "mode": "day",
+        "phase": "ready",
+        "rig": {
+          "status": "ready",
+          "sha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "expectedSha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "profile": null
+        },
+        "environment": {
+          "status": "ready",
+          "file": "/assets/neighborhoods/shijo-east/shared/environments/day-512.hdr",
+          "sha256": "efb72f542365dfdc25d2f9ed20983b34e74fd33f90d55b8763813f4d6dd35717",
+          "expectedSha256": "efb72f542365dfdc25d2f9ed20983b34e74fd33f90d55b8763813f4d6dd35717",
+          "textureId": "33b16247-cf0d-4223-be47-ea83078bfe78"
+        },
+        "exposure": 1.05,
+        "shadowUpdates": 20
+      },
+      "primaryBudget": {
+        "checkId": "day-roof-restored-viewport-cached-shadow-primary-budget",
+        "pass": true,
+        "render": {
+          "frame": 43,
+          "calls": 83,
+          "triangles": 85731,
+          "points": 0,
+          "lines": 0
+        },
+        "shadowUpdatesBefore": 20,
+        "shadowUpdatesAfter": 20
+      },
+      "historicalComparison": {
+        "file": "experience/evidence/neighborhood-20261023/art/candidate-2/arcade-below-roof-day-canvas.png",
+        "sha256": "3db1ca1ab5edeeb8a4fdb18595776369bf013b9c22ccd9155997b6dbbadd8cf2",
+        "packageSha256": "f27fbe22db95a007010d2d46a661f27752a2361f5d9d84aaa4e4588c498e0dc5",
+        "cameraMaximumAbsoluteDifference": {
+          "position": 8.276346363800258e-07,
+          "projectionMatrix": 0.0,
+          "matrixWorld": 8.276346363800258e-07
+        },
+        "meaning": "Historical package comparison; combined material and runtime changes, without isolated shader attribution."
+      }
+    },
+    {
+      "file": "arcade-below-roof-night-canvas.png",
+      "sha256": "a3ccc1bd14dd9597328c1067c27709898b48ad1f2deae44192997e732236b7f9",
+      "bytes": 667986,
+      "sourceFile": "artifacts/neighborhood-20261024/qa/candidate-12-roof/arcade-below-roof-night-canvas.png",
+      "layout": {
+        "scrollX": 0,
+        "scrollY": 292,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentHeight": 2881,
+        "visualColumn": {
+          "x": 48,
+          "y": 209.796875,
+          "width": 992,
+          "height": 976.28125,
+          "top": 209.796875,
+          "right": 1040,
+          "bottom": 1186.078125,
+          "left": 48
+        },
+        "canvas": {
+          "x": 49,
+          "y": 282.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 282.796875,
+          "right": 1039,
+          "bottom": 999.625,
+          "left": 49
+        },
+        "camera": {
+          "position": [
+            282.16654388518407,
+            1.6528488991003483,
+            -139.7179592153446
+          ],
+          "target": [
+            287.127,
+            1.1,
+            -140.015
+          ],
+          "desiredPosition": [
+            282.16654388518407,
+            1.6528488991003483,
+            -139.7179592153446
+          ],
+          "viewTarget": [
+            287.127,
+            1.1,
+            -140.015
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 5.000000000000002,
+            "actualDistance": 5.000000000000002,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.38693118772049756,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": -1.5109859999999977,
+          "polar": 1.46,
+          "distance": 5.000000000000002,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": -1.5109859999999977,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": true,
+          "inspectionAimed": true,
+          "inspectionPanned": true,
+          "panning": true,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            0.05977467350620658,
+            6.938893903907228e-18,
+            0.9982118955448418,
+            0,
+            0.11037206950416747,
+            0.9938683634116449,
+            -0.006609272488397801,
+            0,
+            -0.9920912229631877,
+            0.1105697798200696,
+            0.059408156931078926,
+            0,
+            282.16654388518407,
+            1.6528488991003483,
+            -139.7179592153446,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          282.16654388518407,
+          1.6528488991003483,
+          -139.7179592153446
+        ],
+        "target": [
+          287.127,
+          1.1,
+          -140.015
+        ],
+        "desiredPosition": [
+          282.16654388518407,
+          1.6528488991003483,
+          -139.7179592153446
+        ],
+        "viewTarget": [
+          287.127,
+          1.1,
+          -140.015
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 5.000000000000002,
+          "actualDistance": 5.000000000000002,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.38693118772049756,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": -1.5109859999999977,
+        "polar": 1.46,
+        "distance": 5.000000000000002,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": -1.5109859999999977,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": true,
+        "inspectionAimed": true,
+        "inspectionPanned": true,
+        "panning": true,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.05977467350620658,
+          6.938893903907228e-18,
+          0.9982118955448418,
+          0,
+          0.11037206950416747,
+          0.9938683634116449,
+          -0.006609272488397801,
+          0,
+          -0.9920912229631877,
+          0.1105697798200696,
+          0.059408156931078926,
+          0,
+          282.16654388518407,
+          1.6528488991003483,
+          -139.7179592153446,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "routePosition": {
+        "x": 287.127,
+        "y": 140.015,
+        "height": 0,
+        "edgeId": "osm:way:66703315:354840397:5554417552",
+        "edgeDistance": 37.546088
+      },
+      "lighting": {
+        "mode": "night",
+        "phase": "ready",
+        "rig": {
+          "status": "ready",
+          "sha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "expectedSha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "profile": null
+        },
+        "environment": {
+          "status": "ready",
+          "file": "/assets/neighborhoods/shijo-east/shared/environments/night-512.hdr",
+          "sha256": "b3a82ca4a2dcb3cf429b5f7b57f75877296fbc3d60b6a2ed2419be7f8971f41f",
+          "expectedSha256": "b3a82ca4a2dcb3cf429b5f7b57f75877296fbc3d60b6a2ed2419be7f8971f41f",
+          "textureId": "74b466c8-8aed-4098-838b-06938dde2e33"
+        },
+        "exposure": 1.18,
+        "shadowUpdates": 21
+      },
+      "primaryBudget": {
+        "checkId": "night-roof-restored-viewport-cached-shadow-primary-budget",
+        "pass": true,
+        "render": {
+          "frame": 65,
+          "calls": 83,
+          "triangles": 85731,
+          "points": 0,
+          "lines": 0
+        },
+        "shadowUpdatesBefore": 21,
+        "shadowUpdatesAfter": 21
+      },
+      "historicalComparison": {
+        "file": "experience/evidence/neighborhood-20261023/art/candidate-2/arcade-below-roof-night-canvas.png",
+        "sha256": "fd9a3afecfab1aeb932ac2b782e6f7c791fc6b3f6579bc0b9bb2a3e7da76de22",
+        "packageSha256": "f27fbe22db95a007010d2d46a661f27752a2361f5d9d84aaa4e4588c498e0dc5",
+        "cameraMaximumAbsoluteDifference": {
+          "position": 8.276346363800258e-07,
+          "projectionMatrix": 0.0,
+          "matrixWorld": 8.276346363800258e-07
+        },
+        "meaning": "Historical package comparison; combined material and runtime changes, without isolated shader attribution."
+      }
+    }
+  ],
+  "sourceGeometryClassification": [
+    {
+      "file": "../../../qa/candidate-12-roof/geometry/day.json",
+      "sha256": "7daa2d9a0ed07aa93a6eb713c96e3fe0bcc0ab8119886bb6d69a33e8b8705ab2"
+    },
+    {
+      "file": "../../../qa/candidate-12-roof/geometry/night.json",
+      "sha256": "4cd2e0161f0f69a298a194551785da97400221781d29ae5c878cca38e478e26a"
+    }
+  ],
+  "disposition": "Bounded roof material improvement accepted in the two reviewed views; frontage and route-wide realism acceptance remain separate.",
+  "limits": [
+    "No measured optical transmission or local sky-visibility evidence.",
+    "The sampled underside is geometrically exposed; external-occluder pixel response is unobserved.",
+    "No human realism validation or physical-GPU latency conclusion."
+  ]
+}

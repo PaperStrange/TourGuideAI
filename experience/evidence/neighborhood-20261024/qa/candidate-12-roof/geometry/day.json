@@ -1,0 +1,2214 @@
+{
+  "createdAt": "2026-10-24T04:40:08.040Z",
+  "scope": "Offline geometry classification of an actual browser capture; no pixel or GPU-link proof",
+  "report": {
+    "file": "artifacts/neighborhood-20261024/qa/candidate-12-roof/neighborhood-result.json",
+    "sha256": "dde090dbbff0bf35aa41d3beb25884f153a3050443714f0d6ae61d9936660134",
+    "packageSha256": "e86aa1c715fb76cd111feae41a0383ee34005aefd64fe5c48eba7615676e5733"
+  },
+  "capture": {
+    "file": "arcade-below-roof-day-canvas.png",
+    "sha256": "80f40dd3b7ce8990e6cbf6d32c1f3cf1b1aacb0f156a5d5156ea1d16e587bf64"
+  },
+  "manifestSha256": "86e4f424a36cb858c16f6e282ad8ceb8f146d6b285d482de3c0ce2fe2f726b61",
+  "rigSha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+  "lighting": {
+    "mode": "day",
+    "sun": {
+      "id": "sun",
+      "type": "DirectionalLight",
+      "intensity": 2.8,
+      "color": "#fff2df",
+      "position": [
+        247,
+        105,
+        -121
+      ],
+      "target": [
+        275,
+        0,
+        -150
+      ],
+      "castShadow": true,
+      "mapSize": [
+        2048,
+        2048
+      ],
+      "shadowNeedsUpdate": false
+    },
+    "normalBias": 0.045
+  },
+  "metadata": [
+    {
+      "cellId": "cell-e002-n001",
+      "level": "base",
+      "file": "cells/cell-e002-n001/base.gltf",
+      "sha256": "1d7f0904ca0bd73af11329ebf27119053eb6f745e6e8718c84b15ef33526c37f",
+      "node": "cell-e002-n001_base_Canopy_nishiki-ridge-red",
+      "materials": [
+        {
+          "name": "nishiki-ridge-red",
+          "extras": {
+            "surfaceMeaning": "Original red roof-only thin-sheet response informed by the reviewed Nishiki ridge. Optical coefficients and color are authored; zero emission and no measured transmission claim."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.7605245113372803,
+              0.08650045841932297,
+              0.05612849071621895,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e002-n001",
+      "level": "base",
+      "file": "cells/cell-e002-n001/base.gltf",
+      "sha256": "1d7f0904ca0bd73af11329ebf27119053eb6f745e6e8718c84b15ef33526c37f",
+      "node": "cell-e002-n001_base_Canopy_nishiki-ridge-gold",
+      "materials": [
+        {
+          "name": "nishiki-ridge-gold",
+          "extras": {
+            "surfaceMeaning": "Original yellow roof-only thin-sheet response; actual scene illumination drives the authored diffuse approximation, with no emission."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.7991027235984802,
+              0.5520114302635193,
+              0.045186202973127365,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e002-n001",
+      "level": "base",
+      "file": "cells/cell-e002-n001/base.gltf",
+      "sha256": "1d7f0904ca0bd73af11329ebf27119053eb6f745e6e8718c84b15ef33526c37f",
+      "node": "cell-e002-n001_base_Canopy_nishiki-ridge-green",
+      "materials": [
+        {
+          "name": "nishiki-ridge-green",
+          "extras": {
+            "surfaceMeaning": "Original green roof-only thin-sheet response; actual scene illumination drives the authored diffuse approximation, with no emission."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.0382043719291687,
+              0.366252601146698,
+              0.13013647496700287,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e002-n001",
+      "level": "near",
+      "file": "cells/cell-e002-n001/near.gltf",
+      "sha256": "b5aab28aa63316b1ba6af216b30b8838467f3596e8d4157add311f82e6c64a80",
+      "node": "cell-e002-n001_near_Canopy_nishiki-ridge-red",
+      "materials": [
+        {
+          "name": "nishiki-ridge-red",
+          "extras": {
+            "surfaceMeaning": "Original red roof-only thin-sheet response informed by the reviewed Nishiki ridge. Optical coefficients and color are authored; zero emission and no measured transmission claim."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.7605245113372803,
+              0.08650045841932297,
+              0.05612849071621895,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e002-n001",
+      "level": "near",
+      "file": "cells/cell-e002-n001/near.gltf",
+      "sha256": "b5aab28aa63316b1ba6af216b30b8838467f3596e8d4157add311f82e6c64a80",
+      "node": "cell-e002-n001_near_Canopy_nishiki-ridge-gold",
+      "materials": [
+        {
+          "name": "nishiki-ridge-gold",
+          "extras": {
+            "surfaceMeaning": "Original yellow roof-only thin-sheet response; actual scene illumination drives the authored diffuse approximation, with no emission."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.7991027235984802,
+              0.5520114302635193,
+              0.045186202973127365,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e002-n001",
+      "level": "near",
+      "file": "cells/cell-e002-n001/near.gltf",
+      "sha256": "b5aab28aa63316b1ba6af216b30b8838467f3596e8d4157add311f82e6c64a80",
+      "node": "cell-e002-n001_near_Canopy_nishiki-ridge-green",
+      "materials": [
+        {
+          "name": "nishiki-ridge-green",
+          "extras": {
+            "surfaceMeaning": "Original green roof-only thin-sheet response; actual scene illumination drives the authored diffuse approximation, with no emission."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.0382043719291687,
+              0.366252601146698,
+              0.13013647496700287,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e003-n001",
+      "level": "base",
+      "file": "cells/cell-e003-n001/base.gltf",
+      "sha256": "7576de2066e8aa0913452b3a34a7a0153e5b8be793c89fd5323ed6508760c12f",
+      "node": "cell-e003-n001_base_Canopy_nishiki-ridge-red",
+      "materials": [
+        {
+          "name": "nishiki-ridge-red",
+          "extras": {
+            "surfaceMeaning": "Original red roof-only thin-sheet response informed by the reviewed Nishiki ridge. Optical coefficients and color are authored; zero emission and no measured transmission claim."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.7605245113372803,
+              0.08650045841932297,
+              0.05612849071621895,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e003-n001",
+      "level": "base",
+      "file": "cells/cell-e003-n001/base.gltf",
+      "sha256": "7576de2066e8aa0913452b3a34a7a0153e5b8be793c89fd5323ed6508760c12f",
+      "node": "cell-e003-n001_base_Canopy_nishiki-ridge-gold",
+      "materials": [
+        {
+          "name": "nishiki-ridge-gold",
+          "extras": {
+            "surfaceMeaning": "Original yellow roof-only thin-sheet response; actual scene illumination drives the authored diffuse approximation, with no emission."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.7991027235984802,
+              0.5520114302635193,
+              0.045186202973127365,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e003-n001",
+      "level": "base",
+      "file": "cells/cell-e003-n001/base.gltf",
+      "sha256": "7576de2066e8aa0913452b3a34a7a0153e5b8be793c89fd5323ed6508760c12f",
+      "node": "cell-e003-n001_base_Canopy_nishiki-ridge-green",
+      "materials": [
+        {
+          "name": "nishiki-ridge-green",
+          "extras": {
+            "surfaceMeaning": "Original green roof-only thin-sheet response; actual scene illumination drives the authored diffuse approximation, with no emission."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.0382043719291687,
+              0.366252601146698,
+              0.13013647496700287,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e003-n001",
+      "level": "near",
+      "file": "cells/cell-e003-n001/near.gltf",
+      "sha256": "6573a3951d2441d990b7ecd29101bad3021f41d19f3df1437251247f6697f3c7",
+      "node": "cell-e003-n001_near_Canopy_nishiki-ridge-red",
+      "materials": [
+        {
+          "name": "nishiki-ridge-red",
+          "extras": {
+            "surfaceMeaning": "Original red roof-only thin-sheet response informed by the reviewed Nishiki ridge. Optical coefficients and color are authored; zero emission and no measured transmission claim."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.7605245113372803,
+              0.08650045841932297,
+              0.05612849071621895,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e003-n001",
+      "level": "near",
+      "file": "cells/cell-e003-n001/near.gltf",
+      "sha256": "6573a3951d2441d990b7ecd29101bad3021f41d19f3df1437251247f6697f3c7",
+      "node": "cell-e003-n001_near_Canopy_nishiki-ridge-gold",
+      "materials": [
+        {
+          "name": "nishiki-ridge-gold",
+          "extras": {
+            "surfaceMeaning": "Original yellow roof-only thin-sheet response; actual scene illumination drives the authored diffuse approximation, with no emission."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.7991027235984802,
+              0.5520114302635193,
+              0.045186202973127365,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e003-n001",
+      "level": "near",
+      "file": "cells/cell-e003-n001/near.gltf",
+      "sha256": "6573a3951d2441d990b7ecd29101bad3021f41d19f3df1437251247f6697f3c7",
+      "node": "cell-e003-n001_near_Canopy_nishiki-ridge-green",
+      "materials": [
+        {
+          "name": "nishiki-ridge-green",
+          "extras": {
+            "surfaceMeaning": "Original green roof-only thin-sheet response; actual scene illumination drives the authored diffuse approximation, with no emission."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.0382043719291687,
+              0.366252601146698,
+              0.13013647496700287,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e004-n001",
+      "level": "base",
+      "file": "cells/cell-e004-n001/base.gltf",
+      "sha256": "a629988bd317ffe07653bb9fbd692c6b24db07a140fdc31ea42b84004a5cf1f1",
+      "node": "cell-e004-n001_base_Canopy_nishiki-ridge-red",
+      "materials": [
+        {
+          "name": "nishiki-ridge-red",
+          "extras": {
+            "surfaceMeaning": "Original red roof-only thin-sheet response informed by the reviewed Nishiki ridge. Optical coefficients and color are authored; zero emission and no measured transmission claim."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.7605245113372803,
+              0.08650045841932297,
+              0.05612849071621895,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e004-n001",
+      "level": "base",
+      "file": "cells/cell-e004-n001/base.gltf",
+      "sha256": "a629988bd317ffe07653bb9fbd692c6b24db07a140fdc31ea42b84004a5cf1f1",
+      "node": "cell-e004-n001_base_Canopy_nishiki-ridge-gold",
+      "materials": [
+        {
+          "name": "nishiki-ridge-gold",
+          "extras": {
+            "surfaceMeaning": "Original yellow roof-only thin-sheet response; actual scene illumination drives the authored diffuse approximation, with no emission."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.7991027235984802,
+              0.5520114302635193,
+              0.045186202973127365,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e004-n001",
+      "level": "base",
+      "file": "cells/cell-e004-n001/base.gltf",
+      "sha256": "a629988bd317ffe07653bb9fbd692c6b24db07a140fdc31ea42b84004a5cf1f1",
+      "node": "cell-e004-n001_base_Canopy_nishiki-ridge-green",
+      "materials": [
+        {
+          "name": "nishiki-ridge-green",
+          "extras": {
+            "surfaceMeaning": "Original green roof-only thin-sheet response; actual scene illumination drives the authored diffuse approximation, with no emission."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.0382043719291687,
+              0.366252601146698,
+              0.13013647496700287,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e004-n001",
+      "level": "near",
+      "file": "cells/cell-e004-n001/near.gltf",
+      "sha256": "b966cdc3fd5493fb4f4b47e545aaf7bebe4770d0a4ef448a75c44a6dae51e647",
+      "node": "cell-e004-n001_near_Canopy_nishiki-ridge-red",
+      "materials": [
+        {
+          "name": "nishiki-ridge-red",
+          "extras": {
+            "surfaceMeaning": "Original red roof-only thin-sheet response informed by the reviewed Nishiki ridge. Optical coefficients and color are authored; zero emission and no measured transmission claim."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.7605245113372803,
+              0.08650045841932297,
+              0.05612849071621895,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e004-n001",
+      "level": "near",
+      "file": "cells/cell-e004-n001/near.gltf",
+      "sha256": "b966cdc3fd5493fb4f4b47e545aaf7bebe4770d0a4ef448a75c44a6dae51e647",
+      "node": "cell-e004-n001_near_Canopy_nishiki-ridge-gold",
+      "materials": [
+        {
+          "name": "nishiki-ridge-gold",
+          "extras": {
+            "surfaceMeaning": "Original yellow roof-only thin-sheet response; actual scene illumination drives the authored diffuse approximation, with no emission."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.7991027235984802,
+              0.5520114302635193,
+              0.045186202973127365,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e004-n001",
+      "level": "near",
+      "file": "cells/cell-e004-n001/near.gltf",
+      "sha256": "b966cdc3fd5493fb4f4b47e545aaf7bebe4770d0a4ef448a75c44a6dae51e647",
+      "node": "cell-e004-n001_near_Canopy_nishiki-ridge-green",
+      "materials": [
+        {
+          "name": "nishiki-ridge-green",
+          "extras": {
+            "surfaceMeaning": "Original green roof-only thin-sheet response; actual scene illumination drives the authored diffuse approximation, with no emission."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.0382043719291687,
+              0.366252601146698,
+              0.13013647496700287,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e005-n001",
+      "level": "base",
+      "file": "cells/cell-e005-n001/base.gltf",
+      "sha256": "dc15849afeb5634c4c2a470362a9fd69076fb67d0fa5ac31911178785520e8b7",
+      "node": "cell-e005-n001_base_Canopy_nishiki-ridge-red",
+      "materials": [
+        {
+          "name": "nishiki-ridge-red",
+          "extras": {
+            "surfaceMeaning": "Original red roof-only thin-sheet response informed by the reviewed Nishiki ridge. Optical coefficients and color are authored; zero emission and no measured transmission claim."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.7605245113372803,
+              0.08650045841932297,
+              0.05612849071621895,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e005-n001",
+      "level": "base",
+      "file": "cells/cell-e005-n001/base.gltf",
+      "sha256": "dc15849afeb5634c4c2a470362a9fd69076fb67d0fa5ac31911178785520e8b7",
+      "node": "cell-e005-n001_base_Canopy_nishiki-ridge-gold",
+      "materials": [
+        {
+          "name": "nishiki-ridge-gold",
+          "extras": {
+            "surfaceMeaning": "Original yellow roof-only thin-sheet response; actual scene illumination drives the authored diffuse approximation, with no emission."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.7991027235984802,
+              0.5520114302635193,
+              0.045186202973127365,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e005-n001",
+      "level": "base",
+      "file": "cells/cell-e005-n001/base.gltf",
+      "sha256": "dc15849afeb5634c4c2a470362a9fd69076fb67d0fa5ac31911178785520e8b7",
+      "node": "cell-e005-n001_base_Canopy_nishiki-ridge-green",
+      "materials": [
+        {
+          "name": "nishiki-ridge-green",
+          "extras": {
+            "surfaceMeaning": "Original green roof-only thin-sheet response; actual scene illumination drives the authored diffuse approximation, with no emission."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.0382043719291687,
+              0.366252601146698,
+              0.13013647496700287,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e005-n001",
+      "level": "near",
+      "file": "cells/cell-e005-n001/near.gltf",
+      "sha256": "2919f3f3579e28a9d6ec8dce898137e070efb7689f3a4ad64f1642aac57c12cf",
+      "node": "cell-e005-n001_near_Canopy_nishiki-ridge-red",
+      "materials": [
+        {
+          "name": "nishiki-ridge-red",
+          "extras": {
+            "surfaceMeaning": "Original red roof-only thin-sheet response informed by the reviewed Nishiki ridge. Optical coefficients and color are authored; zero emission and no measured transmission claim."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.7605245113372803,
+              0.08650045841932297,
+              0.05612849071621895,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e005-n001",
+      "level": "near",
+      "file": "cells/cell-e005-n001/near.gltf",
+      "sha256": "2919f3f3579e28a9d6ec8dce898137e070efb7689f3a4ad64f1642aac57c12cf",
+      "node": "cell-e005-n001_near_Canopy_nishiki-ridge-gold",
+      "materials": [
+        {
+          "name": "nishiki-ridge-gold",
+          "extras": {
+            "surfaceMeaning": "Original yellow roof-only thin-sheet response; actual scene illumination drives the authored diffuse approximation, with no emission."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.7991027235984802,
+              0.5520114302635193,
+              0.045186202973127365,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e005-n001",
+      "level": "near",
+      "file": "cells/cell-e005-n001/near.gltf",
+      "sha256": "2919f3f3579e28a9d6ec8dce898137e070efb7689f3a4ad64f1642aac57c12cf",
+      "node": "cell-e005-n001_near_Canopy_nishiki-ridge-green",
+      "materials": [
+        {
+          "name": "nishiki-ridge-green",
+          "extras": {
+            "surfaceMeaning": "Original green roof-only thin-sheet response; actual scene illumination drives the authored diffuse approximation, with no emission."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.0382043719291687,
+              0.366252601146698,
+              0.13013647496700287,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e006-n001",
+      "level": "base",
+      "file": "cells/cell-e006-n001/base.gltf",
+      "sha256": "241078990296851c2a89a861f55e71d7a65e3394ddbb46dc06e6030d25de8ea4",
+      "node": "cell-e006-n001_base_Canopy_nishiki-ridge-red",
+      "materials": [
+        {
+          "name": "nishiki-ridge-red",
+          "extras": {
+            "surfaceMeaning": "Original red roof-only thin-sheet response informed by the reviewed Nishiki ridge. Optical coefficients and color are authored; zero emission and no measured transmission claim."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.7605245113372803,
+              0.08650045841932297,
+              0.05612849071621895,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e006-n001",
+      "level": "base",
+      "file": "cells/cell-e006-n001/base.gltf",
+      "sha256": "241078990296851c2a89a861f55e71d7a65e3394ddbb46dc06e6030d25de8ea4",
+      "node": "cell-e006-n001_base_Canopy_nishiki-ridge-gold",
+      "materials": [
+        {
+          "name": "nishiki-ridge-gold",
+          "extras": {
+            "surfaceMeaning": "Original yellow roof-only thin-sheet response; actual scene illumination drives the authored diffuse approximation, with no emission."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.7991027235984802,
+              0.5520114302635193,
+              0.045186202973127365,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e006-n001",
+      "level": "base",
+      "file": "cells/cell-e006-n001/base.gltf",
+      "sha256": "241078990296851c2a89a861f55e71d7a65e3394ddbb46dc06e6030d25de8ea4",
+      "node": "cell-e006-n001_base_Canopy_nishiki-ridge-green",
+      "materials": [
+        {
+          "name": "nishiki-ridge-green",
+          "extras": {
+            "surfaceMeaning": "Original green roof-only thin-sheet response; actual scene illumination drives the authored diffuse approximation, with no emission."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.0382043719291687,
+              0.366252601146698,
+              0.13013647496700287,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e006-n001",
+      "level": "near",
+      "file": "cells/cell-e006-n001/near.gltf",
+      "sha256": "ecbc73024f9bf31fbc12f76151a25eb2edb57f21aea45f72eb2d2da790096070",
+      "node": "cell-e006-n001_near_Canopy_nishiki-ridge-red",
+      "materials": [
+        {
+          "name": "nishiki-ridge-red",
+          "extras": {
+            "surfaceMeaning": "Original red roof-only thin-sheet response informed by the reviewed Nishiki ridge. Optical coefficients and color are authored; zero emission and no measured transmission claim."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.7605245113372803,
+              0.08650045841932297,
+              0.05612849071621895,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e006-n001",
+      "level": "near",
+      "file": "cells/cell-e006-n001/near.gltf",
+      "sha256": "ecbc73024f9bf31fbc12f76151a25eb2edb57f21aea45f72eb2d2da790096070",
+      "node": "cell-e006-n001_near_Canopy_nishiki-ridge-gold",
+      "materials": [
+        {
+          "name": "nishiki-ridge-gold",
+          "extras": {
+            "surfaceMeaning": "Original yellow roof-only thin-sheet response; actual scene illumination drives the authored diffuse approximation, with no emission."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.7991027235984802,
+              0.5520114302635193,
+              0.045186202973127365,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "cellId": "cell-e006-n001",
+      "level": "near",
+      "file": "cells/cell-e006-n001/near.gltf",
+      "sha256": "ecbc73024f9bf31fbc12f76151a25eb2edb57f21aea45f72eb2d2da790096070",
+      "node": "cell-e006-n001_near_Canopy_nishiki-ridge-green",
+      "materials": [
+        {
+          "name": "nishiki-ridge-green",
+          "extras": {
+            "surfaceMeaning": "Original green roof-only thin-sheet response; actual scene illumination drives the authored diffuse approximation, with no emission."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.0382043719291687,
+              0.366252601146698,
+              0.13013647496700287,
+              1
+            ],
+            "roughnessFactor": 0.47999998927116394,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0.07999999821186066,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        }
+      ],
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  ],
+  "assets": [
+    {
+      "file": "cells/cell-e001-n000/base.gltf",
+      "sha256": "c464118a5a626e8327d007478270df1667ec7a18d559403bf674430b03676dd4",
+      "cellId": "cell-e001-n000"
+    },
+    {
+      "file": "cells/cell-e002-s001/base.gltf",
+      "sha256": "e2400db6d4516681c458614a03acb314bd953f4dc7131daf8a143c24878c870e",
+      "cellId": "cell-e002-s001"
+    },
+    {
+      "file": "cells/cell-e002-n000/base.gltf",
+      "sha256": "641cfab3b1714fa640219bd09a229cfe6c58c5585037b1cc557080aeb3fcb2ce",
+      "cellId": "cell-e002-n000"
+    },
+    {
+      "file": "cells/cell-e002-n001/near.gltf",
+      "sha256": "b5aab28aa63316b1ba6af216b30b8838467f3596e8d4157add311f82e6c64a80",
+      "cellId": "cell-e002-n001"
+    },
+    {
+      "file": "cells/cell-e003-s001/base.gltf",
+      "sha256": "b172f996548de2cbb6c93514430e7b2165278f7e59c122df6a223368bbdee8a9",
+      "cellId": "cell-e003-s001"
+    },
+    {
+      "file": "cells/cell-e003-n000/near.gltf",
+      "sha256": "48b2c5339b520926471ceb4c05cf84edd50e9d5c08ebfa28c88ea431f75f0bf9",
+      "cellId": "cell-e003-n000"
+    },
+    {
+      "file": "cells/cell-e003-n001/near.gltf",
+      "sha256": "6573a3951d2441d990b7ecd29101bad3021f41d19f3df1437251247f6697f3c7",
+      "cellId": "cell-e003-n001"
+    },
+    {
+      "file": "cells/cell-e004-n000/base.gltf",
+      "sha256": "298d4308e0c1b9e99c159ef3bafe8443baf86641dde03710fd4fe596c77d06a8",
+      "cellId": "cell-e004-n000"
+    },
+    {
+      "file": "cells/cell-e004-n001/base.gltf",
+      "sha256": "a629988bd317ffe07653bb9fbd692c6b24db07a140fdc31ea42b84004a5cf1f1",
+      "cellId": "cell-e004-n001"
+    },
+    {
+      "file": "context.gltf",
+      "sha256": "7cc5493648cbdbfa3df726862052af79d32b3c63d8411722f6d034b859d84262",
+      "cellId": null
+    }
+  ],
+  "samples": [
+    {
+      "mesh": "cell-e002-n001_near_Canopy_nishiki-ridge-red",
+      "material": "nishiki-ridge-red",
+      "sourceIndex": 139,
+      "face": 46,
+      "point": [
+        294.0998331705729,
+        4.771666685740152,
+        -140.13600158691406
+      ],
+      "frontFacing": true,
+      "worldNormal": [
+        0,
+        -0.7185172810242242,
+        0.695509106244883
+      ],
+      "incidentPoint": [
+        294.0998331705729,
+        4.848999963386243,
+        -140.16729949669508
+      ],
+      "cosine": 0.4914506979599459,
+      "pixel": {
+        "x": 515.6922013093498,
+        "y": 49.54823942525289
+      },
+      "classification": "geometrically-exposed",
+      "blocker": null
+    },
+    {
+      "mesh": "cell-e002-n001_near_Canopy_nishiki-ridge-red",
+      "material": "nishiki-ridge-red",
+      "sourceIndex": 139,
+      "face": 47,
+      "point": [
+        293.5098164876302,
+        4.938333352406819,
+        -139.9638214111328
+      ],
+      "frontFacing": true,
+      "worldNormal": [
+        0,
+        -0.7185172810242242,
+        0.695509106244883
+      ],
+      "incidentPoint": [
+        293.5098164876302,
+        5.01566663005291,
+        -139.99511932091383
+      ],
+      "cosine": 0.4914506979599459,
+      "pixel": {
+        "x": 526.9439841478517,
+        "y": 24.820594955594256
+      },
+      "classification": "geometrically-exposed",
+      "blocker": null
+    },
+    {
+      "mesh": "cell-e002-n001_near_Canopy_nishiki-ridge-red",
+      "material": "nishiki-ridge-red",
+      "sourceIndex": 139,
+      "face": 50,
+      "point": [
+        299.40998331705725,
+        4.938333352406819,
+        -139.65162150065103
+      ],
+      "frontFacing": true,
+      "worldNormal": [
+        0,
+        -0.7230098797168084,
+        -0.6908376899329439
+      ],
+      "incidentPoint": [
+        299.40998331705725,
+        5.015868796994075,
+        -139.62053380460404
+      ],
+      "cosine": 0.8531024941879076,
+      "pixel": {
+        "x": 547.7639612407154,
+        "y": 109.88290583179337
+      },
+      "classification": "geometrically-exposed",
+      "blocker": null
+    },
+    {
+      "mesh": "cell-e002-n001_near_Canopy_nishiki-ridge-red",
+      "material": "nishiki-ridge-red",
+      "sourceIndex": 139,
+      "face": 54,
+      "point": [
+        299.40998331705725,
+        4.771666685740152,
+        -140.17489624023438
+      ],
+      "frontFacing": true,
+      "worldNormal": [
+        0,
+        -0.7229998176298825,
+        0.6908482204559528
+      ],
+      "incidentPoint": [
+        299.40998331705725,
+        4.849201677533497,
+        -140.20598441015488
+      ],
+      "cosine": 0.4968372017382112,
+      "pixel": {
+        "x": 522.5573945395354,
+        "y": 118.39232854209556
+      },
+      "classification": "geometrically-exposed",
+      "blocker": null
+    },
+    {
+      "mesh": "cell-e002-n001_near_Canopy_nishiki-ridge-red",
+      "material": "nishiki-ridge-red",
+      "sourceIndex": 139,
+      "face": 55,
+      "point": [
+        298.81996663411456,
+        4.938333352406819,
+        -140.00047302246094
+      ],
+      "frontFacing": true,
+      "worldNormal": [
+        0,
+        -0.7229998176298825,
+        0.6908482204559528
+      ],
+      "incidentPoint": [
+        298.81996663411456,
+        5.015868344200164,
+        -140.03156119238145
+      ],
+      "cosine": 0.4968372017382112,
+      "pixel": {
+        "x": 530.5153255723857,
+        "y": 104.33369364002733
+      },
+      "classification": "geometrically-exposed",
+      "blocker": null
+    },
+    {
+      "mesh": "cell-e002-n001_near_Canopy_nishiki-ridge-gold",
+      "material": "nishiki-ridge-gold",
+      "sourceIndex": 139,
+      "face": 46,
+      "point": [
+        295.869883219401,
+        4.771666685740152,
+        -140.14896647135416
+      ],
+      "frontFacing": true,
+      "worldNormal": [
+        0,
+        -0.7200317164881574,
+        0.6939411554671748
+      ],
+      "incidentPoint": [
+        295.869883219401,
+        4.84906811298212,
+        -140.18019382335018
+      ],
+      "cosine": 0.49326880289699393,
+      "pixel": {
+        "x": 518.586261973114,
+        "y": 78.56985084468634
+      },
+      "classification": "geometrically-exposed",
+      "blocker": null
+    },
+    {
+      "mesh": "cell-e002-n001_near_Canopy_nishiki-ridge-gold",
+      "material": "nishiki-ridge-gold",
+      "sourceIndex": 139,
+      "face": 47,
+      "point": [
+        295.2798665364583,
+        4.938333352406819,
+        -139.97603352864581
+      ],
+      "frontFacing": true,
+      "worldNormal": [
+        0,
+        -0.7200317164881574,
+        0.6939411554671748
+      ],
+      "incidentPoint": [
+        295.2798665364583,
+        5.015734779648787,
+        -140.00726088064184
+      ],
+      "cosine": 0.49326880289699393,
+      "pixel": {
+        "x": 528.4650984692581,
+        "y": 58.67979362564916
+      },
+      "classification": "geometrically-exposed",
+      "blocker": null
+    },
+    {
+      "mesh": "cell-e002-n001_near_Canopy_nishiki-ridge-green",
+      "material": "nishiki-ridge-green",
+      "sourceIndex": 139,
+      "face": 54,
+      "point": [
+        292.32978312174475,
+        4.771666685740152,
+        -140.12303161621094
+      ],
+      "frontFacing": true,
+      "worldNormal": [
+        0,
+        -0.7170028929384213,
+        0.6970701912418392
+      ],
+      "incidentPoint": [
+        292.32978312174475,
+        4.8489318159223815,
+        -140.15439977481682
+      ],
+      "cosine": 0.4896344075362744,
+      "pixel": {
+        "x": 511.7569072664881,
+        "y": 10.080937357461936
+      },
+      "classification": "geometrically-exposed",
+      "blocker": null
+    },
+    {
+      "mesh": "cell-e002-n001_near_Canopy_nishiki-ridge-green",
+      "material": "nishiki-ridge-green",
+      "sourceIndex": 139,
+      "face": 58,
+      "point": [
+        297.63993326822913,
+        4.938333352406819,
+        -139.64089965820312
+      ],
+      "frontFacing": true,
+      "worldNormal": [
+        0,
+        -0.721515673971623,
+        -0.6923981024044439
+      ],
+      "incidentPoint": [
+        297.63993326822913,
+        5.015801557735542,
+        -139.60974174359492
+      ],
+      "cosine": 0.852109896702324,
+      "pixel": {
+        "x": 548.8394153664008,
+        "y": 91.244354695105
+      },
+      "classification": "geometrically-exposed",
+      "blocker": null
+    },
+    {
+      "mesh": "cell-e002-n001_near_Canopy_nishiki-ridge-green",
+      "material": "nishiki-ridge-green",
+      "sourceIndex": 139,
+      "face": 62,
+      "point": [
+        297.63993326822913,
+        4.771666685740152,
+        -140.16193644205728
+      ],
+      "frontFacing": true,
+      "worldNormal": [
+        0,
+        -0.7215258039318502,
+        0.692387546292174
+      ],
+      "incidentPoint": [
+        297.63993326822913,
+        4.849135346917086,
+        -140.19309388164044
+      ],
+      "cosine": 0.4950642137978509,
+      "pixel": {
+        "x": 520.8036047033364,
+        "y": 100.80807731731412
+      },
+      "classification": "geometrically-exposed",
+      "blocker": null
+    },
+    {
+      "mesh": "cell-e002-n001_near_Canopy_nishiki-ridge-green",
+      "material": "nishiki-ridge-green",
+      "sourceIndex": 139,
+      "face": 63,
+      "point": [
+        297.04991658528644,
+        4.938333352406819,
+        -139.98825581868488
+      ],
+      "frontFacing": true,
+      "worldNormal": [
+        0,
+        -0.7215258039318502,
+        0.692387546292174
+      ],
+      "incidentPoint": [
+        297.04991658528644,
+        5.015802013583753,
+        -140.01941325826803
+      ],
+      "cosine": 0.4950642137978509,
+      "pixel": {
+        "x": 529.6149721161955,
+        "y": 84.28803440366819
+      },
+      "classification": "geometrically-exposed",
+      "blocker": null
+    },
+    {
+      "mesh": "cell-e003-n001_near_Canopy_nishiki-ridge-red",
+      "material": "nishiki-ridge-red",
+      "sourceIndex": 139,
+      "face": 2,
+      "point": [
+        304.76191202799475,
+        4.938333352406819,
+        -139.68402608235675
+      ],
+      "frontFacing": true,
+      "worldNormal": [
+        0,
+        -0.7274421654132938,
+        -0.6861689995757739
+      ],
+      "incidentPoint": [
+        304.76191202799475,
+        5.016068249850417,
+        -139.65314847737585
+      ],
+      "cosine": 0.8560365340896477,
+      "pixel": {
+        "x": 545.5550228105443,
+        "y": 148.1746023916163
+      },
+      "classification": "geometrically-exposed",
+      "blocker": null
+    },
+    {
+      "mesh": "cell-e003-n001_near_Canopy_nishiki-ridge-red",
+      "material": "nishiki-ridge-red",
+      "sourceIndex": 139,
+      "face": 26,
+      "point": [
+        320.83332316080725,
+        4.938333352406819,
+        -139.7813720703125
+      ],
+      "frontFacing": true,
+      "worldNormal": [
+        0,
+        -0.7402204035422166,
+        -0.6723643016845836
+      ],
+      "incidentPoint": [
+        320.83332316080725,
+        5.016643270566219,
+        -139.7511156767367
+      ],
+      "cosine": 0.8644064122231373,
+      "pixel": {
+        "x": 542.6322353066168,
+        "y": 198.82694734688693
+      },
+      "classification": "geometrically-exposed",
+      "blocker": null
+    },
+    {
+      "mesh": "cell-e003-n001_near_Canopy_nishiki-ridge-red",
+      "material": "nishiki-ridge-red",
+      "sourceIndex": 139,
+      "face": 38,
+      "point": [
+        326.19047037760413,
+        4.771666685740152,
+        -140.3710734049479
+      ],
+      "frontFacing": true,
+      "worldNormal": [
+        0,
+        -0.7443067031449382,
+        0.667837953139467
+      ],
+      "incidentPoint": [
+        326.19047037760413,
+        4.850160487381674,
+        -140.4011261128392
+      ],
+      "cosine": 0.5226615409613031,
+      "pixel": {
+        "x": 531.7527897337384,
+        "y": 210.60760728081794
+      },
+      "classification": "geometrically-exposed",
+      "blocker": null
+    },
+    {
+      "mesh": "cell-e003-n001_near_Canopy_nishiki-ridge-red",
+      "material": "nishiki-ridge-red",
+      "sourceIndex": 139,
+      "face": 58,
+      "point": [
+        342.26191202799475,
+        4.938333352406819,
+        -139.91116841634113
+      ],
+      "frontFacing": true,
+      "worldNormal": [
+        0,
+        -0.7560896136175687,
+        -0.6544681017281406
+      ],
+      "incidentPoint": [
+        342.26191202799475,
+        5.01735738501961,
+        -139.88171735176337
+      ],
+      "cosine": 0.8746069512673312,
+      "pixel": {
+        "x": 541.182275411778,
+        "y": 223.95462773484743
+      },
+      "classification": "geometrically-exposed",
+      "blocker": null
+    },
+    {
+      "mesh": "cell-e003-n001_near_Canopy_nishiki-ridge-gold",
+      "material": "nishiki-ridge-gold",
+      "sourceIndex": 139,
+      "face": 2,
+      "point": [
+        301.19047037760413,
+        4.938333352406819,
+        -139.66239420572916
+      ],
+      "frontFacing": true,
+      "worldNormal": [
+        0,
+        -0.7244840127745392,
+        -0.6892916039196336
+      ],
+      "incidentPoint": [
+        301.19047037760413,
+        5.0159351329816735,
+        -139.63137608355277
+      ],
+      "cosine": 0.8540800464924375,
+      "pixel": {
+        "x": 546.8886796573183,
+        "y": 125.06162533228871
+      },
+      "classification": "geometrically-exposed",
+      "blocker": null
+    },
+    {
+      "mesh": "cell-e003-n001_near_Canopy_nishiki-ridge-gold",
+      "material": "nishiki-ridge-gold",
+      "sourceIndex": 139,
+      "face": 6,
+      "point": [
+        301.19047037760413,
+        4.771666685740152,
+        -140.18792215983072
+      ],
+      "frontFacing": true,
+      "worldNormal": [
+        0,
+        -0.7244840127745392,
+        0.6892916039196336
+      ],
+      "incidentPoint": [
+        301.19047037760413,
+        4.8492684663150065,
+        -140.2189402820071
+      ],
+      "cosine": 0.4986241529684866,
+      "pixel": {
+        "x": 523.9869531491244,
+        "y": 132.7212128031695
+      },
+      "classification": "geometrically-exposed",
+      "blocker": null
+    },
+    {
+      "mesh": "cell-e003-n001_near_Canopy_nishiki-ridge-gold",
+      "material": "nishiki-ridge-gold",
+      "sourceIndex": 139,
+      "face": 10,
+      "point": [
+        306.547617594401,
+        4.938333352406819,
+        -139.69483947753906
+      ],
+      "frontFacing": true,
+      "worldNormal": [
+        0,
+        -0.7288964096990442,
+        -0.6846240018636822
+      ],
+      "incidentPoint": [
+        306.547617594401,
+        5.016133690843276,
+        -139.6640313974552
+      ],
+      "cosine": 0.8569957995643749,
+      "pixel": {
+        "x": 545.0370977176948,
+        "y": 157.15195515929472
+      },
+      "classification": "geometrically-exposed",
+      "blocker": null
+    },
+    {
+      "mesh": "cell-e003-n001_near_Canopy_nishiki-ridge-gold",
+      "material": "nishiki-ridge-gold",
+      "sourceIndex": 139,
+      "face": 34,
+      "point": [
+        322.6190490722656,
+        4.938333352406819,
+        -139.79218546549478
+      ],
+      "frontFacing": true,
+      "worldNormal": [
+        0,
+        -0.7415886437873749,
+        -0.670854889976664
+      ],
+      "incidentPoint": [
+        322.6190490722656,
+        5.016704841377251,
+        -139.76199699544583
+      ],
+      "cosine": 0.8652945629796958,
+      "pixel": {
+        "x": 542.4522424173327,
+        "y": 201.94727271790634
+      },
+      "classification": "geometrically-exposed",
+      "blocker": null
+    },
+    {
+      "mesh": "cell-e003-n001_near_Canopy_nishiki-ridge-gold",
+      "material": "nishiki-ridge-gold",
+      "sourceIndex": 139,
+      "face": 38,
+      "point": [
+        322.6190490722656,
+        4.771666685740152,
+        -140.34490458170572
+      ],
+      "frontFacing": true,
+      "worldNormal": [
+        0,
+        -0.7415886437873749,
+        0.670854889976664
+      ],
+      "incidentPoint": [
+        322.6190490722656,
+        4.850038174710584,
+        -140.37509305175467
+      ],
+      "cosine": 0.5193461675755215,
+      "pixel": {
+        "x": 531.2359500368492,
+        "y": 205.42313827090965
+      },
+      "classification": "geometrically-exposed",
+      "blocker": null
+    },
+    {
+      "mesh": "cell-e003-n001_near_Canopy_nishiki-ridge-gold",
+      "material": "nishiki-ridge-gold",
+      "sourceIndex": 139,
+      "face": 46,
+      "point": [
+        327.9761962890625,
+        4.771666685740152,
+        -140.3841552734375
+      ],
+      "frontFacing": true,
+      "worldNormal": [
+        0,
+        -0.7456565305497258,
+        0.6663305024149394
+      ],
+      "incidentPoint": [
+        327.9761962890625,
+        4.85022122961489,
+        -140.41414014604618
+      ],
+      "cosine": 0.5243103743399432,
+      "pixel": {
+        "x": 531.980820661663,
+        "y": 212.89453190475072
+      },
+      "classification": "geometrically-exposed",
+      "blocker": null
+    },
+    {
+      "mesh": "cell-e003-n001_near_Canopy_nishiki-ridge-green",
+      "material": "nishiki-ridge-green",
+      "sourceIndex": 139,
+      "face": 2,
+      "point": [
+        302.9761962890625,
+        4.938333352406819,
+        -139.67320251464844
+      ],
+      "frontFacing": true,
+      "worldNormal": [
+        0,
+        -0.7259681258440066,
+        -0.6877283477206247
+      ],
+      "incidentPoint": [
+        302.9761962890625,
+        5.0160019180698,
+        -139.642254739001
+      ],
+      "cosine": 0.8550624885897803,
+      "pixel": {
+        "x": 546.1638784305029,
+        "y": 137.62809185896035
+      },
+      "classification": "geometrically-exposed",
+      "blocker": null
+    },
+    {
+      "mesh": "cell-e003-n001_near_Canopy_nishiki-ridge-green",
+      "material": "nishiki-ridge-green",
+      "sourceIndex": 139,
+      "face": 10,
+      "point": [
+        308.33332316080725,
+        4.938333352406819,
+        -139.70565287272134
+      ],
+      "frontFacing": true,
+      "worldNormal": [
+        0,
+        -0.7303408541139114,
+        -0.6830828916113785
+      ],
+      "incidentPoint": [
+        308.33332316080725,
+        5.016198690841946,
+        -139.67491414259882
+      ],
+      "cosine": 0.8579469185819704,
+      "pixel": {
+        "x": 544.5908936879064,
+        "y": 164.8861449814848
+      },
+      "classification": "geometrically-exposed",
+      "blocker": null
+    },
+    {
+      "mesh": "cell-e003-n001_near_Canopy_nishiki-ridge-green",
+      "material": "nishiki-ridge-green",
+      "sourceIndex": 139,
+      "face": 34,
+      "point": [
+        324.4047648111979,
+        4.938333352406819,
+        -139.80300903320312
+      ],
+      "frontFacing": true,
+      "worldNormal": [
+        0,
+        -0.7429568433847183,
+        -0.6693393226666241
+      ],
+      "incidentPoint": [
+        324.4047648111979,
+        5.016766410359131,
+        -139.7728887636831
+      ],
+      "cosine": 0.8661810886195455,
+      "pixel": {
+        "x": 542.2874078236204,
+        "y": 204.80137307825834
+      },
+      "classification": "geometrically-exposed",
+      "blocker": null
+    },
+    {
+      "mesh": "cell-e003-n001_near_Canopy_nishiki-ridge-green",
+      "material": "nishiki-ridge-green",
+      "sourceIndex": 139,
+      "face": 38,
+      "point": [
+        324.4047648111979,
+        4.771666685740152,
+        -140.35799153645831
+      ],
+      "frontFacing": true,
+      "worldNormal": [
+        0,
+        -0.7429476917438068,
+        0.6693494807143345
+      ],
+      "incidentPoint": [
+        324.4047648111979,
+        4.850099331868623,
+        -140.38811226309045
+      ],
+      "cosine": 0.5210030825544775,
+      "pixel": {
+        "x": 531.5053327342737,
+        "y": 208.12582940351456
+      },
+      "classification": "geometrically-exposed",
+      "blocker": null
+    },
+    {
+      "mesh": "cell-e003-n001_near_Canopy_nishiki-ridge-green",
+      "material": "nishiki-ridge-green",
+      "sourceIndex": 139,
+      "face": 46,
+      "point": [
+        329.76191202799475,
+        4.771666685740152,
+        -140.3972422281901
+      ],
+      "frontFacing": true,
+      "worldNormal": [
+        0,
+        -0.7469882722877216,
+        0.6648372139588793
+      ],
+      "incidentPoint": [
+        329.76191202799475,
+        4.8502811579931,
+        -140.42715990281823
+      ],
+      "cosine": 0.5259386719736366,
+      "pixel": {
+        "x": 532.1915322262959,
+        "y": 215.00864997704818
+      },
+      "classification": "geometrically-exposed",
+      "blocker": null
+    }
+  ],
+  "limitations": [
+    "Global HDR/hemisphere has no local sky-occlusion data.",
+    "CPU geometric rays do not reproduce rasterized PCF, texture color, tone mapping or final pixel brightness.",
+    "Only observed resident, visible scenery participates; distant unloaded geometry is not invented.",
+    "Capture must have a completed canopy fade: the current observer exposes faded group intent, not per-material opacity.",
+    "All console errors, actual new draws and images require independent browser/art review."
+  ],
+  "counts": {
+    "visibleSheets": 9,
+    "exposed": 26,
+    "occluded": 0
+  },
+  "bothClassesObserved": false
+}
