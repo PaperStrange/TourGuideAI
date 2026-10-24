@@ -12,7 +12,8 @@ checks, 17 repository gates and 36 targeted native checks. Independent source an
 geometry audits verify unchanged navigation and prior geometry. Seven current
 canvases pass the scoped day/night review of facade/road contacts and western gate
 continuity. Editable recommendations, Maps, private views and the six-sight route
-remain integrated. Candidate 9's route-choice 20/20 and complete camera matrix
+remain integrated. A further 57/57 compact EN/ZH touch checks verify route edits,
+Maps handoff and exact private-view return/reload. Candidate 9's route-choice 20/20 and complete camera matrix
 107/107 retain their original package scope.
 All eight candidate-9 CI jobs pass: 1,000 browser checks include 229 complete
 neighborhood checks and verified outward/return coverage. The current increment
@@ -25,6 +26,9 @@ scene work over 2,018.8 ms and preserved return state. Current-package complete 
 input/frame acceptance, Q03 and broader source-backed facade/landmark/night-art
 acceptance remain open. Physical GPU/phone fluency is unmeasured; GPU-environment
 availability has been requested. Excluded road joins remain documented local polish.
+Candidate 12 production addresses the source-linked Daimaru south facade and
+Nishiki's daylight colored ridge; current-package evidence and source/geometry
+audits precede acceptance. Candidate 11 remains frozen during this work.
 Published runtime `17b8f37` remains the verified baseline.
 The [agent checkpoint](../../experience/docs/agent-checkpoint.md) records exact
 package identities, evidence, failures and current owners. The records below

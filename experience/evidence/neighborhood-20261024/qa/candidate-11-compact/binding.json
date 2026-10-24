@@ -1,0 +1,125 @@
+{
+  "sourceHead": "ef34dd3190c32642262210e5d4f773846e4e9046",
+  "implementation": "84e80a823d778b9b537fc45d311a62bc127723db",
+  "packageSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
+  "packageFiles": 446,
+  "scenerySha256": "4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544",
+  "reportSha256": "671629cc2be22ac05f4004c88605d650eac9a5c6239018d0c5f5fc80ae8a1c7c",
+  "driverSha256": "9b87f4b22bb525502861dc85a811fd395c0162c4f0904eca1af8697bcb1e7b1d",
+  "driverDependencies": [
+    {
+      "file": "tests/helpers/neighborhood-evidence-source.mjs",
+      "sha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    }
+  ],
+  "summary": {
+    "passed": 57,
+    "failed": 0
+  },
+  "browser": "151.0.7922.34",
+  "startedAt": "2026-10-24T03:43:14.608Z",
+  "finishedAt": "2026-10-24T03:45:16.922Z",
+  "elapsedMs": 122314,
+  "httpRequests": 432,
+  "screenshots": 10,
+  "evidence": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 188790,
+      "sha256": "0840f1c23b76a9f5b5226464e0c0920521659f574da9dc1d173049791656689e",
+      "decodedBytes": 1785525,
+      "decodedSha256": "671629cc2be22ac05f4004c88605d650eac9a5c6239018d0c5f5fc80ae8a1c7c"
+    },
+    {
+      "file": "browser-neighborhood.executed.mjs.gz",
+      "bytes": 47521,
+      "sha256": "0adfeb6635ff9102563930f81c70d6ad21c3a496acd8a125680f63777859b570",
+      "decodedBytes": 197266,
+      "decodedSha256": "9b87f4b22bb525502861dc85a811fd395c0162c4f0904eca1af8697bcb1e7b1d"
+    },
+    {
+      "file": "browser-neighborhood.original.mjs.gz",
+      "bytes": 45261,
+      "sha256": "84ea200f62bda9abe5fa0da33fb10322c96a0d3e59018779a226b74e532e8390",
+      "decodedBytes": 186585,
+      "decodedSha256": "e7fc6bdaed7a21774b0b185adb21b6b8fd349b0eb496c3d75287059b5cfc6105"
+    },
+    {
+      "file": "neighborhood-evidence-source.executed.mjs.gz",
+      "bytes": 1619,
+      "sha256": "70115611f201081f16386f97f55d12421b3ee05a5e4c8f20bdfe99a5ec5fd294",
+      "decodedBytes": 3713,
+      "decodedSha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    },
+    {
+      "file": "run.log.gz",
+      "bytes": 605,
+      "sha256": "a0ad77cafc79f4fa5ab91a0d9d2912500a2c335176cdd26413e0b59ba8e0eb1e",
+      "decodedBytes": 2900,
+      "decodedSha256": "c80308e879017d02644c9780877065d80eacaa7e6a1e008fcb63bc2d0ccfc1d5"
+    },
+    {
+      "file": "compact-driver.patch.gz",
+      "bytes": 6523,
+      "sha256": "eabcefd51258065a6a6f9d98f650f48f14b74f5c2b84064f18d910b7dfc591ed",
+      "decodedBytes": 20239,
+      "decodedSha256": "8fe745b37b7e66626665c57b4174413eeb6a0a722a5e7489932ba87ef0acedbf"
+    },
+    {
+      "file": "compact-en-choice.png",
+      "bytes": 47638,
+      "sha256": "38499a4d6003868e9cc342ed378d0953c2d7d0b201c33e32218470cdb14c2ac7"
+    },
+    {
+      "file": "compact-en-edited-route.png",
+      "bytes": 50047,
+      "sha256": "4c4c9aa2a0612682fa51714324975ccb535cf7139d39644a1ac14ec2f1d1c32c"
+    },
+    {
+      "file": "compact-en-keep-dialog.png",
+      "bytes": 87028,
+      "sha256": "1fb8dfb0106c9f075eabd8c50435c96b8ac8e6323603116b2b19be7e983fc2c2"
+    },
+    {
+      "file": "compact-en-returned.png",
+      "bytes": 48919,
+      "sha256": "5d43e52d2823cff7eb3e1f8549ac44f32c2da5cac3447cf3e37a418a0032abc3"
+    },
+    {
+      "file": "compact-en-reloaded.png",
+      "bytes": 124059,
+      "sha256": "92ad8163852c45a604880dece47ab92831c3a28163862aaf8846a8fe0e6f374b"
+    },
+    {
+      "file": "compact-zh-choice.png",
+      "bytes": 51954,
+      "sha256": "e9121a8d2be715427a93d26f6fe2de68bc61e1fabc082caf5c203b0bd6a48a47"
+    },
+    {
+      "file": "compact-zh-edited-route.png",
+      "bytes": 56306,
+      "sha256": "5eeb2e9424e20b186a151ef266cf5d62d703bd46691dc97b57736d46a1886b3b"
+    },
+    {
+      "file": "compact-zh-keep-dialog.png",
+      "bytes": 93541,
+      "sha256": "46eb0f1bfb5f644ec96dc1288cd95cc7bfb6e5e520f025739fc77510e75aa577"
+    },
+    {
+      "file": "compact-zh-returned.png",
+      "bytes": 56639,
+      "sha256": "8e8bd4b25cf50ec1bfdf77733984f99998c4057b572b4fff21fcaf4e10266dd9"
+    },
+    {
+      "file": "compact-zh-reloaded.png",
+      "bytes": 134646,
+      "sha256": "b21bd733aa866a749fa49ec139c7c21d9f5dfc09ee0553cdff4c0451b374f909"
+    }
+  ],
+  "scope": "Two fresh 390x844 DPR1 touch contexts, EN/ZH; original driver preflight plus bounded native route selection/edit/Maps/private-return checks.",
+  "limitations": [
+    "Maps proof concerns the outgoing URL only.",
+    "This is software-rendered browser emulation; physical-device performance and full-route traversal were not measured.",
+    "The passive pointer log was page-local and reset at native reload. Native tap and touch commands are retained in the executed driver; no complete event trace is claimed."
+  ]
+}

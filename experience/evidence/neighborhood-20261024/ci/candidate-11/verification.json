@@ -1,0 +1,153 @@
+{
+  "runId": 40058828311,
+  "headSha": "ef34dd3190c32642262210e5d4f773846e4e9046",
+  "implementationSha": "84e80a823d778b9b537fc45d311a62bc127723db",
+  "observedAt": "2026-10-24T03:44:42.495Z",
+  "packageSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
+  "packageFiles": 446,
+  "reports": [
+    {
+      "suite": "perspective",
+      "artifact": {
+        "id": 12546657374,
+        "name": "perspective-browser-evidence",
+        "zipSha256": "5987633dc6461a14aa58ad68c32fbb857817662926f3e92bf95a8130a690b70d",
+        "zipBytes": 7989958,
+        "createdAt": "2026-10-24T03:42:05Z",
+        "sourceHead": "ef34dd3190c32642262210e5d4f773846e4e9046"
+      },
+      "summary": {
+        "passed": 80,
+        "failed": 0
+      },
+      "packageSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
+      "packageFiles": 446,
+      "report": {
+        "file": "perspective-result.json.gz",
+        "bytes": 34011,
+        "sha256": "bf8bed330708a8b33ef2f301515dd7cc948ca537bdbcbad0cb9bf1e379531f09",
+        "decodedBytes": 224620,
+        "decodedSha256": "b36280e5bc0966d50f66fb91805b20c0a1e55464597bcca07a7cab4d0b2e0f22"
+      },
+      "driver": {
+        "file": "browser-perspective.mjs.gz",
+        "bytes": 9646,
+        "sha256": "050282f001b75e21c4812d3bfb236dab464f22d1c30557413a588e85338c3ab8",
+        "decodedBytes": 34988,
+        "decodedSha256": "32400beab9c937501d946a08f8da7bc4100c09af3fefb08fafa13dd121a8fa74"
+      },
+      "dependencies": [],
+      "captureFiles": []
+    },
+    {
+      "suite": "homepage",
+      "artifact": {
+        "id": 12546342241,
+        "name": "homepage-browser-evidence",
+        "zipSha256": "4e83dd534bacbb55e6f731877bf0205dab550e1c398bece6cf29e16dba306806",
+        "zipBytes": 6308818,
+        "createdAt": "2026-10-24T03:36:46Z",
+        "sourceHead": "ef34dd3190c32642262210e5d4f773846e4e9046"
+      },
+      "summary": {
+        "passed": 65,
+        "failed": 0,
+        "fatal": false
+      },
+      "packageSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
+      "packageFiles": 446,
+      "report": {
+        "file": "homepage-result.json.gz",
+        "bytes": 39908,
+        "sha256": "d1424414c0bc396381804f546d5be010d847a34154d5df8d225261667c77ca4d",
+        "decodedBytes": 332023,
+        "decodedSha256": "b447a9b02b69bf3a0fafcc141bf0ec5cd26600624d456733f0c93daf711f558c"
+      },
+      "driver": {
+        "file": "browser-homepage.mjs.gz",
+        "bytes": 13073,
+        "sha256": "1f76b373808547977454c316a77a03f4fc31b64e2ed74ba72bd745c8f4f9cfe4",
+        "decodedBytes": 48166,
+        "decodedSha256": "e74f5a52da0b99bd2e4a4326dc3f0ba11bd6ea672ca4a792bd462ea96798a7f5"
+      },
+      "dependencies": [],
+      "captureFiles": []
+    },
+    {
+      "suite": "solo",
+      "artifact": {
+        "id": 12546329367,
+        "name": "solo-browser-evidence",
+        "zipSha256": "570cc7519a39d1f07cd28d1ee1cd9aaf892bca528264d101c44c32ee9dd744bb",
+        "zipBytes": 4711002,
+        "createdAt": "2026-10-24T03:41:43Z",
+        "sourceHead": "ef34dd3190c32642262210e5d4f773846e4e9046"
+      },
+      "summary": {
+        "passed": 75,
+        "failed": 0
+      },
+      "packageSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
+      "packageFiles": 446,
+      "report": {
+        "file": "solo-result.json.gz",
+        "bytes": 40241,
+        "sha256": "890823392f193f3d20d97c62f3ab7e6586476d94cf4e0e8609cb188e002f5a0b",
+        "decodedBytes": 361677,
+        "decodedSha256": "ef14c992dab1023445fd4b119a76aa572150d822d4516fec193dafb37f8a7c93"
+      },
+      "driver": {
+        "file": "browser-solo.mjs.gz",
+        "bytes": 12595,
+        "sha256": "5d8e4287e72a8a5c77082c34541e93c920f82e2032b97af9217e0f415fb07d3f",
+        "decodedBytes": 46057,
+        "decodedSha256": "4ac9300f7c57d276c0d8595dde07de18a1a69a867686b64da1f92de84f6d505a"
+      },
+      "dependencies": [],
+      "captureFiles": []
+    },
+    {
+      "suite": "travel",
+      "artifact": {
+        "id": 12546189372,
+        "name": "travel-browser-evidence",
+        "zipSha256": "a0a94e09327773c7125c9ea5b1e55448d32c8418241e9e17aa6ea55509cb1b45",
+        "zipBytes": 1852895,
+        "createdAt": "2026-10-24T03:35:17Z",
+        "sourceHead": "ef34dd3190c32642262210e5d4f773846e4e9046"
+      },
+      "summary": {
+        "passed": 73,
+        "failed": 0
+      },
+      "packageSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
+      "packageFiles": 446,
+      "report": {
+        "file": "travel-result.json.gz",
+        "bytes": 27552,
+        "sha256": "dbcc1af21a123f40ca39d5d4d07e9f4c82a9c2be2279c1207455630bcda38dea",
+        "decodedBytes": 152373,
+        "decodedSha256": "6377ab889f5dc1bfe97f4fcbfcc174fd41430c7100ee97bb47ad46a751271c02"
+      },
+      "driver": {
+        "file": "browser-travel.mjs.gz",
+        "bytes": 10198,
+        "sha256": "2d03d35f5470658041c087068231da60bbf8d0decb05f69441109536f58502f5",
+        "decodedBytes": 36289,
+        "decodedSha256": "0873e4c1191c4df2d79d74b4950f4c998a47ff4b1cfd44401dda7be3c61593c3"
+      },
+      "dependencies": [],
+      "captureFiles": []
+    }
+  ],
+  "sourceLog": {
+    "file": "source-preparation.log.gz",
+    "bytes": 7076,
+    "sha256": "0795be74249dce1018be84a794b684ab58c34b02bbca9253bba45975d3ab0764",
+    "decodedBytes": 30369,
+    "decodedSha256": "23f6100e33b523d3293f30489ddc141260e92ec774a5fd55496b09df89427e15"
+  },
+  "conclusion": "pending",
+  "completedBrowserChecks": 293,
+  "completedBrowserFailures": 0
+}

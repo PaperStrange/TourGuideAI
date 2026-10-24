@@ -142,6 +142,14 @@ Current-package complete CI, input/frame fluency, Q03 and broader source-backed
 art acceptance remain open. The lead has asked whether a GPU test environment
 can be made available; independent work continues while that question is pending.
 
+The subsequent compact candidate 11 walkthrough passes 57/57 actual-touch checks
+across EN/ZH, including Choose/edit/Maps, private night view, standalone preview,
+kept return and reload. Candidate 12 work is authorized for source201's reviewed
+south facade and source139's colored ridge response, with independently audited
+source scope, unchanged navigation and matched native day/night checks. Source274
+requires its separate association before authoring. Art, engineering and world
+content retain their existing ownership; QA owns exact before/after evidence.
+
 | Sprint | Current evidence | Remaining acceptance |
 | --- | --- | --- |
 | N00 | Connected source graph, six exterior sights, source/provenance audits and reproducible packaging | Surveyed grades and current access remain explicit source limits |

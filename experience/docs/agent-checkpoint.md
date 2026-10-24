@@ -8,7 +8,7 @@ the verified baseline. Q03 is open P1; backend tests remain local.**
 
 ## Resumed acceptance · 2026-10-24
 
-Checkpoint **`ef34dd3190c32642262210e5d4f773846e4e9046`** is synchronized with the
+Checkpoint **`4c23b78d2afbbd6b7fe75d354d67945de6b05168`** is synchronized with the
 remote iteration branch; its working tree was clean after push verification.
 The latest implementation is **`84e80a8`**, with immutable **candidate 11**, package
 **`76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea`**,
@@ -115,13 +115,32 @@ record. Input/frame targets, broader art acceptance and Q03 remain open. The
 appearance follow-up retains location-matched frontage reference gaps and unverified
 plaque lettering. Publication awaits acceptance; no current candidate is published.
 
-Independent continuation now covers a compact EN/ZH touch walkthrough of route
-selection/editing, Maps handoff and private-view return, and source-supported art
-proposals for Daimaru's south frontage and the Nishiki colored roof ridge. Candidate
-11 remains frozen during these investigations. Existing references support the
-ridge's transmitted-color daylight cue; exact shop-by-shop reconstruction is outside
-the approved consistent-street and recognizable-feature criterion. Each proposed
-art change requires explicit source/face association and matched native review.
+The [compact EN/ZH touch walkthrough](../evidence/neighborhood-20261024/qa/candidate-11-compact/README.md)
+passes **57/57** on candidate 11. Two fresh 390×844 touch contexts exercise actual
+route selection/editing, independently checked distance and Maps order, outgoing
+Maps popup URLs, night/touch orbit, private view/note, standalone preview and exact
+kept return/reload. Ten unchanged viewport captures record reachability and overflow.
+This is interaction evidence; physical-phone fluency remains unmeasured.
+
+Candidate 12 art production is authorized in independent output directories while
+candidate 11 remains frozen. Art owns the source201 south-edge facade treatment:
+dated-photo-supported material bands and stepped-head openings, with authored
+dimensions and preserved ground-level geometry below 3.5 m, other faces, roof and
+navigation. World record `93bc46595c9ec5b3b42707c351670968592e13af2190da208d22760aab33945b`
+binds that exact edge and source. QA prepares actual matched before views; the old
+e001 foreground is source274 and cannot validate source201. Source274 requires
+its own reviewed association before any additional authoring.
+
+Engineering owns a source139-only opaque diffuse-sheet shader for Nishiki's colored
+ridge, coordinated with art's isolated material metadata. It uses actual shadowed
+directional light and the current global environment, preserves the 45 mm vertical
+paired-face separation and has no added framebuffer pass or lights. Geometric sky
+occlusion is outside this approximation. Installation follows lighting's material
+cloning; day/night, shadow, fade, lifetime and resource checks precede promotion.
+Existing references support the transmitted-color daylight cue. Exact shop-by-shop
+reconstruction is outside the approved consistent-street and recognizable-feature
+criterion. Root owns integration and publication; neither candidate 12 assets nor
+its appearance or performance are accepted yet.
 
 ## Candidate 9 evidence · 2026-10-23
 
