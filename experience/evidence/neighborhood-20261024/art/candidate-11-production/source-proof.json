@@ -1,0 +1,31 @@
+{
+  "status": "pass",
+  "sourceIds": [
+    "kyoto-city:bldg_1bab607d-4c47-48a5-b523-e64000d895f6",
+    "osm:way:174762073",
+    "osm:way:843727820"
+  ],
+  "building": {
+    "base": {
+      "priorTriangles": 496,
+      "addedTriangles": 8
+    },
+    "near": {
+      "priorTriangles": 1870,
+      "addedTriangles": 8
+    }
+  },
+  "residentAddedTriangles": 4,
+  "addedRoadSourceIndices": [
+    20,
+    151
+  ],
+  "existingBuildingFacesAttributesExact": true,
+  "existingGroundFacesAttributesExact": true,
+  "allWalkableBatchesExact": true,
+  "roadClosureBatchWalkable": false,
+  "exactAuditedEndpointsHeightsAndOutwardNormals": true,
+  "producerSha256": "3074c7f537002256bb59fb9a9697ee96d4aba04e2e4dd0b91a2ac5f82fd16d9f",
+  "evidenceSha256": "e1dfea3c79d40ac5a438fe8c1089c6453ba6650df56016af28b33e61173f8b71",
+  "scope": "Pure producer geometry proof; exported per-source attributes, materials, transforms and browser appearance require separate audits."
+}

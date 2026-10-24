@@ -284,6 +284,19 @@ def wall_less_geometry(feature, source_index, batches):
     return {'openings': 0, 'recesses': 0, 'edges': 4}
 
 
+def vertical_boundary_geometry(segments, batch, source_index):
+    # 审阅后的高侧边界位于左侧；新增侧面朝向较低表面，保留两侧原始顶面。
+    for segment in segments:
+        start, end = segment['from'], segment['to']
+        bottom, top = segment['bottomHeightMetres'], segment['topHeightMetres']
+        values = [*start, *end, bottom, top]
+        if (len(start) != 2 or len(end) != 2 or not all(math.isfinite(value) for value in values) or
+                math.dist(start, end) <= 1e-8 or bottom >= top):
+            raise ValueError('Reviewed vertical boundary requires a finite segment and ordered display heights')
+        batch.face([(start[0], start[1], bottom), (end[0], end[1], bottom),
+                    (end[0], end[1], top), (start[0], start[1], top)], source_index)
+
+
 def building_geometry(feature, recipe, lod, source_index, batches):
     if feature.get('treatmentOverride', {}).get('treatment') == 'wall-less-structure':
         return wall_less_geometry(feature, source_index, batches)
@@ -311,4 +324,6 @@ def building_geometry(feature, recipe, lod, source_index, batches):
                 else:
                     plane.panel(recipe['wallMaterial'], 0, plane.length, bottom, top)
                 totals['edges'] += 1
+    if feature.get('boundaryClosures'):
+        vertical_boundary_geometry(feature['boundaryClosures'], batches[recipe['wallMaterial']], source_index)
     return totals

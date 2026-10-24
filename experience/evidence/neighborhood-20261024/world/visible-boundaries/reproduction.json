@@ -1,0 +1,22 @@
+{
+  "status": "pass",
+  "reviewedAt": "2026-10-24",
+  "proposalSha256": "e1dfea3c79d40ac5a438fe8c1089c6453ba6650df56016af28b33e61173f8b71",
+  "raycastProducer": {
+    "file": "experience/evidence/neighborhood-20261024/world/visible-boundaries/identify-boundary-surfaces.mjs",
+    "sha256": "8165fb6a691d3a4b5269a2bd7173f9ef4f5d7d0d2e9d9fbc1b67f2d178b66233"
+  },
+  "adjacencyProducer": {
+    "file": "experience/evidence/neighborhood-20261024/world/visible-boundaries/audit-visible-boundaries.py",
+    "sha256": "708f1b464729320a97d13f256c2d6fb9509c5bc616d8bfb5876499598f2ce636"
+  },
+  "checks": {
+    "all15RayResultsAndCapturedCamerasExact": true,
+    "candidate9ManifestBindingExact": true,
+    "all4BuildingEdgesExact": true,
+    "bothRoadSourceAdjacencyResultsExact": true,
+    "canonicalSceneAndPreparedInputHashesExact": true
+  },
+  "intentionalReproductionDifference": "Only the script location/root-discovery and resulting producer/output hash chain differ from the original ignored execution. Geometric and source results are exact.",
+  "scope": "Offline diagnostic reproduction only; no browser, export, production geometry, source or navigation mutation."
+}

@@ -172,13 +172,13 @@
     "sha256": "dffa91bf8616b4ce6657f972913c642249ce5be999fb52be736933a5b2ebd6ad",
     "bytes": 7321
   },
-  "styleSha256": "56a55feb8d6d415890e50cfe9fd5f1f9079609d6e1825e430a9f77b4d899ae1c",
-  "generatorSha256": "d22dbeb0f57ec755c92dd27157e3a05881a77c7e5945264120fbe31c92789300",
-  "geometryHelperSha256": "eb84ae82942b0bebf635a3d5a494e5827964ae3f772230b817d378da32c28ac9",
+  "styleSha256": "24ddfb6d7ddcfb3cf23dac402bb356691aacd78d5a62ee7e002c540310b6784a",
+  "generatorSha256": "3074c7f537002256bb59fb9a9697ee96d4aba04e2e4dd0b91a2ac5f82fd16d9f",
+  "geometryHelperSha256": "a79976c7c98cf17315d315990beec2e3d624f34dca66ebf3ce027c74a250f4fa",
   "landmarkHelperSha256": "39d7e1fb7e8f5a7734a5eba4fc073db774569755da9b0cb1dc22a9749c365060",
   "materialHelperSha256": "c9fb695c3b8968d5a3d9b9b0044a5e5b9ea8249cbeb6ff56fd97459741cbc1dd",
   "blenderVersion": "4.3.2",
-  "elapsedSeconds": 14.017,
+  "elapsedSeconds": 14.577,
   "geometryMeaning": "Source footprints and prepared surface polygons; reviewed original facade assemblies with explicit authored dimensions",
   "rights": "source-ledger.json and references.json",
   "referenceIds": [
@@ -1123,6 +1123,530 @@
       ]
     }
   ],
+  "sourceBoundaryClosures": {
+    "overrides": {
+      "kyoto-city:bldg_1bab607d-4c47-48a5-b523-e64000d895f6": {
+        "expectedSourceIndex": 731,
+        "expectedKind": "building",
+        "material": "tile-wall",
+        "segmentIds": [
+          "building-731-edge-5",
+          "building-731-edge-6",
+          "building-731-edge-7",
+          "building-731-edge-8"
+        ],
+        "evidence": {
+          "file": "experience/evidence/neighborhood-20261024/world/visible-boundaries/closure-proposal.json",
+          "sha256": "e1dfea3c79d40ac5a438fe8c1089c6453ba6650df56016af28b33e61173f8b71"
+        },
+        "authored": "Vertical display closure along four reviewed source-ring edges between existing building base0 and adjacent ground-0.04. Existing facade material and all prior geometry remain unchanged. Physical foundation construction and dimensions are unmeasured."
+      },
+      "osm:way:174762073": {
+        "expectedSourceIndex": 20,
+        "expectedKind": "road",
+        "material": "paving",
+        "segmentIds": [
+          "road-20-north-ground"
+        ],
+        "evidence": {
+          "file": "experience/evidence/neighborhood-20261024/world/visible-boundaries/closure-proposal.json",
+          "sha256": "e1dfea3c79d40ac5a438fe8c1089c6453ba6650df56016af28b33e61173f8b71"
+        },
+        "authored": "Nonwalkable vertical display closure on the exact reviewed land/road boundary at-0.04/-0.12, using the existing adjacent paving finish. Crossing-covered and unmatched boundaries remain excluded. This does not establish surveyed curb construction."
+      },
+      "osm:way:843727820": {
+        "expectedSourceIndex": 151,
+        "expectedKind": "road",
+        "material": "paving",
+        "segmentIds": [
+          "road-151-north-ground"
+        ],
+        "evidence": {
+          "file": "experience/evidence/neighborhood-20261024/world/visible-boundaries/closure-proposal.json",
+          "sha256": "e1dfea3c79d40ac5a438fe8c1089c6453ba6650df56016af28b33e61173f8b71"
+        },
+        "authored": "Nonwalkable vertical display closure on the exact reviewed land/road boundary at-0.04/-0.12. Existing adjacent paving finish is retained; the eastern bridge overlap and half-millimetre angular mismatch are excluded. No road, bridge or navigation elevation is changed."
+      }
+    },
+    "addedTriangles": {
+      "kyoto-city:bldg_1bab607d-4c47-48a5-b523-e64000d895f6": {
+        "triangles": 8,
+        "scope": "each-building-lod"
+      },
+      "osm:way:174762073": {
+        "triangles": 2,
+        "scope": "resident-nonwalkable-ground"
+      },
+      "osm:way:843727820": {
+        "triangles": 2,
+        "scope": "resident-nonwalkable-ground"
+      }
+    },
+    "evidenceRecords": [
+      {
+        "file": "experience/evidence/neighborhood-20261024/world/visible-boundaries/closure-proposal.json",
+        "sha256": "e1dfea3c79d40ac5a438fe8c1089c6453ba6650df56016af28b33e61173f8b71",
+        "record": {
+          "schemaVersion": 1,
+          "status": "pass-for-listed-segments-only",
+          "reviewedAt": "2026-10-24",
+          "scope": "Proposal for vertical render closures at exact reviewed shared display boundaries. No production geometry or navigation changed by this audit.",
+          "candidate9ManifestSha256": "79b1a3ed91f0b672364c690e44de9278dce555fab0074ce0dc4aaa8add62f534",
+          "inputs": [
+            {
+              "file": "experience/src/neighborhoods/shijo-east/geography.json",
+              "sha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+              "bytes": 175220
+            },
+            {
+              "file": "experience/src/neighborhoods/shijo-east/scene.json",
+              "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e",
+              "bytes": 8789674
+            },
+            {
+              "file": "artifacts/neighborhood-20261023/world/art-selection.json",
+              "sha256": "1ec33111947716ef43d8592c96203f55d1194b0f5b9ab68168b0deaf373bdb65",
+              "bytes": 5321766
+            },
+            {
+              "file": "experience/evidence/neighborhood-20261024/world/visible-boundaries/visible-boundaries.json",
+              "sha256": "8eea9cf7187eef517712b599c84e98d12bb508635ff41277467b634e5f490060",
+              "bytes": 17641
+            },
+            {
+              "file": "experience/evidence/neighborhood-20261024/world/visible-boundaries/boundary-raycasts.json",
+              "sha256": "29b2a8bb5f1ea51a0790dcc0a6ffd4b06bf18d815fa66cab7c166b4d538d9d66",
+              "bytes": 17930
+            }
+          ],
+          "visiblePoseBindings": [
+            {
+              "image": "neighborhood-captures/tenmangu-purposeful-pan-no-preference-canvas.png",
+              "imageSha256": "387839c76b397e7334581db9c77f700ac198c10ec5c7fa898f09525be5fc7b46",
+              "player": {
+                "x": 681.467,
+                "y": 142.004,
+                "height": 0,
+                "edgeId": "osm:way:66703316:434344433:5204263033",
+                "edgeDistance": 0
+              },
+              "camera": {
+                "position": [
+                  685.1778217608588,
+                  3.6405858991003743,
+                  -144.9663014614781
+                ],
+                "target": [
+                  681.294175,
+                  3.087737,
+                  -141.86603599999998
+                ],
+                "desiredPosition": [
+                  685.1778217608588,
+                  3.6405858991003743,
+                  -144.9663014614781
+                ],
+                "viewTarget": [
+                  681.294175,
+                  3.087737,
+                  -141.86603599999998
+                ],
+                "obstruction": {
+                  "active": false,
+                  "desiredDistance": 4.999999999999994,
+                  "actualDistance": 4.999999999999994,
+                  "targetAdjusted": false,
+                  "framingRecovered": false,
+                  "actorInFrame": false,
+                  "actorVerticalOccupancy": 0.36971242114847785,
+                  "recoveryFits": false,
+                  "minimumSceneDistance": 4.999999999999994,
+                  "clearance": 0.35,
+                  "angleOffset": 0,
+                  "settling": false
+                },
+                "azimuth": 2.2444920000000144,
+                "polar": 1.4599999999999946,
+                "distance": 4.999999999999994,
+                "frontage": "south",
+                "azimuthBase": 3.141592653589793,
+                "relativeAzimuth": -0.8971006535897788,
+                "enabled": true,
+                "damping": true,
+                "transitioning": false,
+                "solo": true,
+                "inspecting": true,
+                "inspectionAimed": true,
+                "inspectionPanned": true,
+                "panning": true,
+                "projectionMatrix": [
+                  1.626675118070023,
+                  0,
+                  0,
+                  0,
+                  0,
+                  2.2460367739042155,
+                  0,
+                  0,
+                  0,
+                  0,
+                  -1.0008575103615833,
+                  -1,
+                  0,
+                  0,
+                  -0.3001286265542375,
+                  0
+                ],
+                "matrixWorld": [
+                  -0.6238784884621698,
+                  -6.938893903907228e-18,
+                  -0.7815213571196622,
+                  0,
+                  -0.08641264438140722,
+                  0.9938683634116442,
+                  0.06898210710374328,
+                  0,
+                  0.7767293521717658,
+                  0.11056977982007499,
+                  -0.6200530922956271,
+                  0,
+                  685.1778217608588,
+                  3.6405858991003743,
+                  -144.9663014614781,
+                  1
+                ],
+                "limits": {
+                  "polar": [
+                    0.55,
+                    1.49
+                  ],
+                  "distance": [
+                    5,
+                    55
+                  ],
+                  "targetXY": 40,
+                  "targetHeight": [
+                    0.5,
+                    40
+                  ]
+                }
+              }
+            },
+            {
+              "image": "neighborhood-captures/outbound-pontocho-entrance-day.png",
+              "imageSha256": "54665983ab2a4481607ecc294c7aa1af3d688c52581b06b0d6f5cf297f70cf15",
+              "player": {
+                "x": 1036.755,
+                "y": 17.617,
+                "height": 0,
+                "edgeId": "osm:way:542888424:2367201411:5248383670",
+                "edgeDistance": 3.8905339977538023
+              },
+              "camera": {
+                "position": [
+                  1042.2334480738273,
+                  11.579114671362637,
+                  3.7170029000313853
+                ],
+                "target": [
+                  1037.954715455819,
+                  1.6,
+                  -15.416990869159843
+                ],
+                "desiredPosition": [
+                  1042.2334480738273,
+                  11.579114671362637,
+                  3.7170029000313853
+                ],
+                "viewTarget": [
+                  1037.954715455819,
+                  1.6,
+                  -15.416990869159843
+                ],
+                "obstruction": {
+                  "active": false,
+                  "desiredDistance": 22.000000000001396,
+                  "actualDistance": 22.000000000001396,
+                  "targetAdjusted": false,
+                  "framingRecovered": false,
+                  "actorInFrame": true,
+                  "actorVerticalOccupancy": 0.07224343642222317,
+                  "recoveryFits": true,
+                  "minimumSceneDistance": 5,
+                  "clearance": 0.35,
+                  "angleOffset": 0,
+                  "settling": false
+                },
+                "azimuth": 0.2199999999999794,
+                "polar": 1.1000000000000356,
+                "distance": 22.000000000001396,
+                "frontage": "north",
+                "azimuthBase": 0,
+                "relativeAzimuth": 0.2199999999999794,
+                "enabled": true,
+                "damping": true,
+                "transitioning": false,
+                "solo": true,
+                "inspecting": false,
+                "inspectionAimed": false,
+                "inspectionPanned": false,
+                "panning": false,
+                "projectionMatrix": [
+                  1.626675118070023,
+                  0,
+                  0,
+                  0,
+                  0,
+                  2.2460367739042155,
+                  0,
+                  0,
+                  0,
+                  0,
+                  -1.0008575103615833,
+                  -1,
+                  0,
+                  0,
+                  -0.3001286265542375,
+                  0
+                ],
+                "matrixWorld": [
+                  0.97589744933061,
+                  -1.3877787807814457e-17,
+                  -0.2182296230808492,
+                  0,
+                  -0.09898811060963195,
+                  0.8912073600614515,
+                  -0.4426632979254476,
+                  0,
+                  0.19448784627308924,
+                  0.4535961214255457,
+                  0.869726989508637,
+                  0,
+                  1042.2334480738273,
+                  11.579114671362637,
+                  3.7170029000313853,
+                  1
+                ],
+                "limits": {
+                  "polar": [
+                    0.55,
+                    1.49
+                  ],
+                  "distance": [
+                    5,
+                    55
+                  ],
+                  "targetXY": 40,
+                  "targetHeight": [
+                    0.5,
+                    40
+                  ]
+                }
+              }
+            }
+          ],
+          "buildingSegments": [
+            {
+              "sourceId": "kyoto-city:bldg_1bab607d-4c47-48a5-b523-e64000d895f6",
+              "sourceIndex": 731,
+              "polygonIndex": 0,
+              "edgeIndex": 5,
+              "from": [
+                677.614,
+                127.301
+              ],
+              "to": [
+                677.476,
+                134.033
+              ],
+              "topHeightMetres": 0,
+              "bottomHeightMetres": -0.04,
+              "adjacentSourceId": "shijo-east:ground",
+              "adjacentTopHeightMetres": -0.04,
+              "sharedLengthMetres": 6.733414289942347,
+              "planOverlapSquareMetres": 0,
+              "orientation": "CCW source-building ring; exterior on right",
+              "heightOrigin": "authored display levels",
+              "walkable": false,
+              "id": "building-731-edge-5",
+              "higherSurfaceOnLeft": true
+            },
+            {
+              "sourceId": "kyoto-city:bldg_1bab607d-4c47-48a5-b523-e64000d895f6",
+              "sourceIndex": 731,
+              "polygonIndex": 0,
+              "edgeIndex": 6,
+              "from": [
+                677.476,
+                134.033
+              ],
+              "to": [
+                678.709,
+                134.059
+              ],
+              "topHeightMetres": 0,
+              "bottomHeightMetres": -0.04,
+              "adjacentSourceId": "shijo-east:ground",
+              "adjacentTopHeightMetres": -0.04,
+              "sharedLengthMetres": 1.2332740976765346,
+              "planOverlapSquareMetres": 0,
+              "orientation": "CCW source-building ring; exterior on right",
+              "heightOrigin": "authored display levels",
+              "walkable": false,
+              "id": "building-731-edge-6",
+              "higherSurfaceOnLeft": true
+            },
+            {
+              "sourceId": "kyoto-city:bldg_1bab607d-4c47-48a5-b523-e64000d895f6",
+              "sourceIndex": 731,
+              "polygonIndex": 0,
+              "edgeIndex": 7,
+              "from": [
+                678.709,
+                134.059
+              ],
+              "to": [
+                678.585,
+                140.011
+              ],
+              "topHeightMetres": 0,
+              "bottomHeightMetres": -0.04,
+              "adjacentSourceId": "shijo-east:ground",
+              "adjacentTopHeightMetres": -0.04,
+              "sharedLengthMetres": 5.953291526542267,
+              "planOverlapSquareMetres": 0,
+              "orientation": "CCW source-building ring; exterior on right",
+              "heightOrigin": "authored display levels",
+              "walkable": false,
+              "id": "building-731-edge-7",
+              "higherSurfaceOnLeft": true
+            },
+            {
+              "sourceId": "kyoto-city:bldg_1bab607d-4c47-48a5-b523-e64000d895f6",
+              "sourceIndex": 731,
+              "polygonIndex": 0,
+              "edgeIndex": 8,
+              "from": [
+                678.585,
+                140.011
+              ],
+              "to": [
+                668.198,
+                139.798
+              ],
+              "topHeightMetres": 0,
+              "bottomHeightMetres": -0.04,
+              "adjacentSourceId": "shijo-east:ground",
+              "adjacentTopHeightMetres": -0.04,
+              "sharedLengthMetres": 10.389183702293515,
+              "planOverlapSquareMetres": 0,
+              "orientation": "CCW source-building ring; exterior on right",
+              "heightOrigin": "authored display levels",
+              "walkable": false,
+              "id": "building-731-edge-8",
+              "higherSurfaceOnLeft": true
+            }
+          ],
+          "roadSegments": [
+            {
+              "sourceId": "osm:way:174762073",
+              "sourceIndex": 20,
+              "from": [
+                999.936,
+                10.876467240421988
+              ],
+              "to": [
+                1031.067,
+                11.686
+              ],
+              "topHeightMetres": -0.04,
+              "bottomHeightMetres": -0.12,
+              "adjacentSourceId": "shijo-east:ground",
+              "adjacentTopHeightMetres": -0.04,
+              "sharedLengthMetres": 31.14152379522923,
+              "orientation": "Higher land on left; lower road on right",
+              "heightOrigin": "authored display levels",
+              "widthOrigin": "authored-display-width",
+              "walkable": false,
+              "excludedHigherSurfaceCoverage": [
+                {
+                  "sourceId": "osm:way:465069412",
+                  "heightMetres": -0.01,
+                  "lengthMetres": 1.287435068724459,
+                  "geometry": {
+                    "type": "LineString",
+                    "coordinates": [
+                      [
+                        999.936,
+                        10.876467240421988
+                      ],
+                      [
+                        998.649,
+                        10.843
+                      ]
+                    ]
+                  }
+                }
+              ],
+              "higherSurfaceOnLeft": true,
+              "id": "road-20-north-ground"
+            },
+            {
+              "sourceId": "osm:way:843727820",
+              "sourceIndex": 151,
+              "from": [
+                1030.989,
+                14.885
+              ],
+              "to": [
+                1042.837,
+                15.184
+              ],
+              "topHeightMetres": -0.04,
+              "bottomHeightMetres": -0.12,
+              "adjacentSourceId": "shijo-east:ground",
+              "adjacentTopHeightMetres": -0.04,
+              "sharedLengthMetres": 11.851772230345931,
+              "orientation": "Higher land on left; lower road on right",
+              "heightOrigin": "authored display levels",
+              "widthOrigin": "authored-display-width",
+              "walkable": false,
+              "excludedHigherSurfaceCoverage": [],
+              "higherSurfaceOnLeft": true,
+              "id": "road-151-north-ground"
+            }
+          ],
+          "exclusions": [
+            "No blanket building, road, ground or bridge height change.",
+            "Road20 crossing path osm:way:465069412 covering 1.287435068724459m of the north shared edge is excluded.",
+            "The road151 eastern cap / bridge83 (osm:way:532008156) overlap is excluded: 3.165144150898156 square metres of plan overlap, no exact shared-boundary line.",
+            "The near-vertical angular step between road20 and road151 is excluded from this exact-boundary proposal; the retained land uses [1031.151,8.487] while road151 uses [1031.1505,8.487]. This is within the existing 1mm display precision but requires a separate bounded numerical-adjacency review.",
+            "No closure is proposed for other source731 ring edges or other buildings."
+          ],
+          "existingNumericConditions": {
+            "road20GroundOverlapSquareMetres": 0.02462102376240323,
+            "road151GroundOverlapSquareMetres": 0.0015169597743492009,
+            "meaning": "Pre-existing aggregate polygon overlap outside/along the road footprints is reported without repair. The selected horizontal line segments are exact retained shared boundaries."
+          },
+          "expectedChange": {
+            "buildingAddedTriangles": 8,
+            "roadAddedTriangles": 4,
+            "retainExistingGeometryMaterialsUVsSourceIDsTransforms": true,
+            "navigationChanged": false,
+            "horizontalSurfacesChanged": false,
+            "newImages": false
+          },
+          "limits": [
+            "Boundary levels and roadway widths are authored display conventions, not surveyed curbs or building foundations.",
+            "Municipal source731 geometry establishes footprint and LOD1 vertical extent; it does not establish its architectural identity, tenant or entrance.",
+            "Offline rays identify depicted source surfaces but do not prove final visual acceptance. Matched day/night views remain required.",
+            "Road source grouping and bridge height distinctions must remain explicit. A new material or geometry interpretation is not approved by this record."
+          ]
+        }
+      }
+    ],
+    "meaning": "Exact audited display-boundary faces; source footprints, prior surfaces, base metadata, materials and navigation preserved. No surveyed foundation or curb interpretation."
+  },
   "riverContext": {
     "input": {
       "file": "river-context.json.gz",

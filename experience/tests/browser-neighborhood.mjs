@@ -20,7 +20,7 @@ const timeout = Number(process.env.EXPERIENCE_QA_TIMEOUT || 120000);
 const walkingTimeout = Number(process.env.EXPERIENCE_QA_WALK_TIMEOUT || 2400000);
 const only = process.env.EXPERIENCE_QA_ONLY?.split(',').filter(Boolean);
 const sections = ['startup', 'route-choice', 'journey', 'initial-recovery', 'detail-recovery', 'latest-intent', 'unavailable-revision', 'external-session', 'residency-boundary', 'camera-safety'];
-if (only?.some(value => ![...sections, 'walking-controls', 'arcade-regression', 'arcade-inspection', 'recovered-keyboard', 'recovered-camera-input', 'bridge-review', 'visual-review', 'tenmangu-framing', 'western-approach', 'platform-review', 'canopy-review'].includes(value))) throw new Error('Unknown neighborhood test section.');
+if (only?.some(value => ![...sections, 'walking-controls', 'arcade-regression', 'arcade-inspection', 'recovered-keyboard', 'recovered-camera-input', 'bridge-review', 'visual-review', 'tenmangu-framing', 'western-approach', 'platform-review', 'canopy-review', 'boundary-review'].includes(value))) throw new Error('Unknown neighborhood test section.');
 const prefix = '/assets/neighborhoods/shijo-east/';
 const journeyKey = 'tourguideai.journey.session.v1';
 const keptKey = 'tourguideai.solo.places.v1';
@@ -261,6 +261,36 @@ async function primaryFrameBudget(page, id) {
 async function setLocale(page, locale) {
   await page.locator('#locale-' + locale).click();
   await page.waitForFunction(value => document.documentElement.lang === value, locale);
+}
+async function restoredViewportBudget(page, record, id) {
+  await settled(page);
+  await page.waitForFunction(() => {
+    const lighting = window.__TOUR_GAME__.renderer().lighting;
+    return lighting.phase === 'ready' && !lighting.pendingRequests
+      && lighting.lights.every(light => !light.castShadow || !light.shadowNeedsUpdate);
+  });
+  const viewport = page.viewportSize(), before = await observe(page);
+  if (before.route.destination || before.state.moving) throw new Error('Viewport resource proof requires a stopped player.');
+  // 使用真实浏览器视口变化触发绘制，随后恢复原尺寸和检查构图；不调用运行时绘制接口。
+  await page.setViewportSize({ ...viewport, width: viewport.width + 16 });
+  await page.waitForFunction(frames => window.__TOUR_GAME__.renderer().renderedFrames > frames, before.renderer.renderedFrames);
+  const resized = await observe(page);
+  await page.setViewportSize(viewport);
+  await page.waitForFunction(frames => window.__TOUR_GAME__.renderer().renderedFrames > frames, resized.renderer.renderedFrames);
+  const after = await cameraSettled(page, record, id + '-original-viewport');
+  const beforeResources = resources(before), afterResources = resources(after);
+  const proof = { operation: 'Actual viewport width +16 CSS pixels, followed by original viewport restoration',
+    viewport, before, resized, after, beforeResources, afterResources };
+  record.viewportResourceProofs ??= []; record.viewportResourceProofs.push(proof);
+  check(id + '-restored-viewport-cached-shadow-primary-budget', after.renderer.renderedFrames > resized.renderer.renderedFrames
+    && before.renderer.lighting.shadowUpdates === after.renderer.lighting.shadowUpdates
+    && beforeResources.lighting.pendingShadowLightIds.length === 0 && afterResources.lighting.pendingShadowLightIds.length === 0
+    && near(before.home.currentView, after.home.currentView, .00001)
+    && near(before.camera.matrixWorld, after.camera.matrixWorld, .00001)
+    && near(before.camera.projectionMatrix, after.camera.projectionMatrix, .00001)
+    && equal(beforeResources.geometry, afterResources.geometry) && equal(beforeResources.residency, afterResources.residency)
+    && after.renderer.render.calls <= 120 && after.renderer.render.triangles <= 200000
+    && budget(after.stream) && textureBudget(afterResources), proof);
 }
 async function groundClick(page, target, touch = false) {
   await page.locator('#live-stage canvas').scrollIntoViewIfNeeded();
@@ -1990,6 +2020,75 @@ try {
     }
   });
 
+  if (only?.includes('boundary-review')) await section('boundary-review', async () => {
+    const sourcePath = '../evidence/neighborhood-20261023/ci/candidate-9/neighborhood-result.json.gz';
+    const sourceBytes = gunzipSync(readFileSync(new URL(sourcePath, import.meta.url))), sourceHash = sha(sourceBytes);
+    if (sourceHash !== '726503477726aea91ad1d6a40365eaad5a191d808fdc8d9fb63a6d963ef991d2') throw new Error('Completed candidate9 route evidence changed.');
+    const source = JSON.parse(sourceBytes);
+    if (source.artifact.manifestSha256 !== '1720fc5907c0c6f2b292aa0e728bcaad8ddbd6c776de7aec2b5a35a513609c9b'
+      || source.source.geographySha256 !== report.source.geographySha256) throw new Error('Boundary review source identity differs.');
+    const proposalPath = '../evidence/neighborhood-20261024/world/visible-boundaries/closure-proposal.json';
+    const proposalBytes = readFileSync(new URL(proposalPath, import.meta.url));
+    if (sha(proposalBytes) !== 'e1dfea3c79d40ac5a438fe8c1089c6453ba6650df56016af28b33e61173f8b71') throw new Error('Reviewed boundary proposal changed.');
+    const proposal = JSON.parse(proposalBytes);
+    const auditPath = '../evidence/neighborhood-20261024/world/candidate11-export-audit.json';
+    const auditBytes = readFileSync(new URL(auditPath, import.meta.url));
+    if (sha(auditBytes) !== '2dd0f205a63772c717b2cd1016e4066f5f4a6e9d9424ada77108d5627281ccc8') throw new Error('Independent boundary export audit changed.');
+    const audit = JSON.parse(auditBytes);
+    check('boundary-review-binds-current-export-and-exact-candidate9-captures', audit.status === 'pass'
+      && audit.candidate.manifest.sha256 === sha(manifestBytes)
+      && proposal.candidate9ManifestSha256 === source.source.manifestSha256,
+    { sourcePath, sourceHash, sourcePackage: source.artifact.manifestSha256, proposalPath, proposalHash: sha(proposalBytes),
+      auditPath, auditHash: sha(auditBytes), candidate: audit.candidate });
+    for (const pose of proposal.visiblePoseBindings) {
+      const filename = pose.image.split('/').at(-1), remembered = source.screenshots.find(value => value.file === filename);
+      if (!remembered || remembered.sha256 !== pose.imageSha256 || !equal(remembered.observed.camera, pose.camera)
+        || !equal(remembered.observed.route.position, pose.player)) throw new Error('Exact source camera/capture binding differs: ' + filename);
+      const view = remembered.observed.home.currentView, inspecting = remembered.observed.camera.inspecting;
+      const saved = inspecting ? source.savedViews.find(value => equal(value.view, view) && value.lighting === 'day') : null;
+      if (inspecting && !saved) throw new Error('The actual saved inspection record is unavailable.');
+      const id = inspecting ? 'tenmangu-close-pan' : 'pontocho-arrival';
+      const reconstructed = sessionAt(view);
+      const storage = { [journeyKey]: JSON.stringify(reconstructed),
+        ...(saved ? { [keptKey]: JSON.stringify({ version: 1, places: [saved] }) } : {}) };
+      const { context, page, record } = await scenario('boundary-' + id, {}, { storage });
+      record.restoration = { sourcePath, sourceHash, sourcePackage: source.artifact.manifestSha256,
+        sourceScreenshot: filename, screenshotSha256: remembered.sha256, original: remembered.observed,
+        view, reconstructedSession: reconstructed, saved,
+        description: 'Previously visited and captured pose restored through public journey/session and kept-view controls. This is a boundary comparison, not a fresh route traversal.' };
+      await enter(page); await settled(page);
+      if (inspecting) { await page.locator('#solo-inspect').click(); await reopen(page, saved); }
+      const restored = await cameraSettled(page, record, id + '-restored');
+      check(id + '-restores-recorded-desired-and-rendered-view', near(restored.home.currentView, view)
+        && near(restored.camera.matrixWorld, pose.camera.matrixWorld, .00001)
+        && near(restored.camera.projectionMatrix, pose.camera.projectionMatrix, .00001)
+        && restored.camera.inspecting === inspecting && restored.camera.inspectionPanned === pose.camera.inspectionPanned,
+      { restored, original: remembered.observed });
+      for (const mode of ['day', 'night']) {
+        await setLighting(page, mode); await settled(page);
+        if (inspecting) await restoredViewportBudget(page, record, id + '-' + mode);
+        else await primaryFrameBudget(page, id + '-' + mode);
+        const actual = await cameraSettled(page, record, id + '-' + mode);
+        check(id + '-' + mode + '-keeps-recorded-framing-and-real-ground', near(actual.home.currentView, view)
+          && near(actual.camera.matrixWorld, pose.camera.matrixWorld, .00001)
+          && near(actual.camera.projectionMatrix, pose.camera.projectionMatrix, .00001)
+          && actual.ground.inside && Boolean(actual.ground.hit)
+          && (inspecting ? near(actorProjection(actual), actorProjection(remembered.observed), .00001) : streetFraming(actual).safe),
+        { actual, original: remembered.observed, actor: actorProjection(actual),
+          framingScope: inspecting ? 'Preserved deliberate inspection crop; walking safety is checked after Escape.' : 'Ordinary walking view with complete actor framing.' });
+        await capture(page, id + '-boundary-' + mode, true);
+      }
+      if (inspecting) {
+        await page.locator('#live-stage').focus(); await page.keyboard.press('Escape');
+        const walking = await cameraSettled(page, record, id + '-escape');
+        check(id + '-escape-restores-safe-grounded-walking-view', !walking.camera.inspecting && streetFraming(walking).safe
+          && near(walking.route.position, pose.player) && walking.ground.inside && Boolean(walking.ground.hit), walking);
+      }
+      await unchangedLegacy(page, id + '-boundary-keeps-legacy-bytes');
+      await context.close(); contexts.delete(context);
+    }
+  });
+
   if (only?.includes('platform-review')) await section('platform-review', async () => {
     const { source, sourceSha256 } = priorVisualReview();
     const remembered = source.screenshots.find(value => value.file === 'connector-e001-n000-review-day-canvas.png');
@@ -2029,7 +2128,7 @@ try {
     };
     const paper = materialNode('cell-e006-n001_near_torii-paper');
     const lamp = materialNode('cell-e006-n001_near_Canopy_lamp');
-    const auditPath = '../evidence/neighborhood-20261024/world/candidate10-export-audit.json';
+    const auditPath = '../evidence/neighborhood-20261024/world/candidate11-export-audit.json';
     const auditBytes = readFileSync(new URL(auditPath, import.meta.url)), audit = JSON.parse(auditBytes);
     record.materialBinding = { cellId: materialCell.id, descriptor: materialCell.near, paper, lamp,
       paperSource: manifest.featureTable[1047], lampSource: manifest.featureTable[139],

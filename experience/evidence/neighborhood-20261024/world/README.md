@@ -36,3 +36,25 @@ node experience/evidence/neighborhood-20261024/world/audit-candidate10-export.mj
 ```
 
 The [producer](audit-candidate10-export.mjs) SHA256 is `7c82b3da0f1945aebd78a2f2904b00120201b5fdb810cc897fafa3c8dfcd51f0`. It retains original oriented triangles and complete decoded attributes in exact per-source comparisons. Frozen input artifacts remain read-only.
+
+## Independent candidate11 export audit
+
+The [source boundary review](visible-boundaries/README.md) identifies four exact source731 building edges and two road20/151-to-land segments. The [executed export audit](candidate11-export-audit.json), SHA256 `2dd0f205a63772c717b2cd1016e4066f5f4a6e9d9424ada77108d5627281ccc8`, passes against candidate10. Candidate11 manifest is `4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544`; provenance is `f457de851f3c156ec0d35a06163b466f14fc35a7802641e0b1f31f01c7dc3eef`.
+
+All74 sections and9,731 source groups were independently decoded. Source731 retains all496 BASE and1,870 NEAR triangles with complete original attributes/materials/world transforms; each LOD gains eight `tile-wall` triangles on the four approved boundaries, from0 to−0.04m. Road20 retains16 original resident triangles and road151 retains7; each gains two `paving` triangles between−0.04 and−0.12m. Their exact float32 endpoints, heights, outward winding and full rectangle coverage match the reviewed segments. Both road additions belong to `Resident_paving` with `walkable:false`. The excluded crossing coverage, bridge overlap and rounded angular step receive no added faces.
+
+All prior source geometry, material definitions, node metadata and world transforms remain exact. The two resident walkable primitives additionally retain byte-identical decoded attribute and index arrays. Canonical geography, scene, prepared input, source records, feature table, images, lighting and river context are unchanged. The347-file package has310 byte-identical files; reordered retained containers still pass their complete decoded comparison. All148 gzip resources decode to their declared originals, all74 validation reports contain zero errors, and every section meets its transfer limit.
+
+Measured required3D transfer is **3,036,911 bytes by day** and **3,029,675 bytes by night**, below4MiB. Decoded resource accounting remains separate. These checks establish export/source preservation; matched visual review and runtime measurements retain their separate acceptance scope. Boundary dimensions describe authored display repairs and establish no surveyed foundation or curb construction.
+
+Reproduce with a fresh ignored output directory:
+
+```bash
+node experience/evidence/neighborhood-20261024/world/audit-candidate11-export.mjs \
+  artifacts/neighborhood-20261024/art/candidate-10-transport \
+  artifacts/neighborhood-20261024/art/candidate-11-transport \
+  4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544 \
+  artifacts/neighborhood-20261024/world/candidate11-export-audit-repeat
+```
+
+The [audit producer](audit-candidate11-export.mjs) SHA256 is `0c9cc5811c9ae443270c666dade7538b731443c1bdd07fcf9ef4766d13eca534`.

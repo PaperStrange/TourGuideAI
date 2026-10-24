@@ -1,0 +1,3222 @@
+{
+  "status": "pass",
+  "reviewedAt": "2026-10-24",
+  "baseline": {
+    "directory": "artifacts/neighborhood-20261024/art/candidate-10-transport",
+    "manifest": {
+      "bytes": 322503,
+      "sha256": "e58257879fb4ead8af14022e71e329ee3309f9920eec6fe2cf4717276573d108"
+    }
+  },
+  "candidate": {
+    "directory": "artifacts/neighborhood-20261024/art/candidate-11-transport",
+    "manifest": {
+      "bytes": 322503,
+      "sha256": "4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544"
+    },
+    "provenance": {
+      "bytes": 1675970,
+      "sha256": "f457de851f3c156ec0d35a06163b466f14fc35a7802641e0b1f31f01c7dc3eef"
+    }
+  },
+  "producer": {
+    "file": "experience/evidence/neighborhood-20261024/world/audit-candidate11-export.mjs",
+    "bytes": 22260,
+    "sha256": "0c9cc5811c9ae443270c666dade7538b731443c1bdd07fcf9ef4766d13eca534"
+  },
+  "parserVersions": {
+    "gltfTransform": "4.5.1",
+    "meshoptimizer": "1.3.0"
+  },
+  "comparison": {
+    "sections": [
+      {
+        "file": "ground.gltf",
+        "sourceGroupsCompared": 190,
+        "unchangedGroupsSha256": "bf788ee523228ddb85092f1d8374e39200789c4632ae41cc8473f73421ff1f3b",
+        "trianglesBefore": 10656,
+        "trianglesAfter": 10660,
+        "addedTriangles": 4,
+        "batchesBefore": 6,
+        "batchesAfter": 6
+      },
+      {
+        "file": "context.gltf",
+        "sourceGroupsCompared": 319,
+        "unchangedGroupsSha256": "abd7e88f7b38eee9fa1b66d1a14d9f8089883af7a713d6f9fe7d2d47bbfdf18b",
+        "trianglesBefore": 10202,
+        "trianglesAfter": 10202,
+        "addedTriangles": 0,
+        "batchesBefore": 11,
+        "batchesAfter": 11
+      },
+      {
+        "file": "cells/cell-e000-s001/base.gltf",
+        "sourceGroupsCompared": 3,
+        "unchangedGroupsSha256": "091a134b09e6561278477bbd562b23f01c3ab35bbe4c1678e0807cfbcdae3e0f",
+        "trianglesBefore": 19100,
+        "trianglesAfter": 19100,
+        "addedTriangles": 0,
+        "batchesBefore": 29,
+        "batchesAfter": 29
+      },
+      {
+        "file": "cells/cell-e000-s001/near.gltf",
+        "sourceGroupsCompared": 3,
+        "unchangedGroupsSha256": "3bd03cef0530fc11db38b983933f0cc549857f2af7d687efe3103c2631bcc2cb",
+        "trianglesBefore": 54290,
+        "trianglesAfter": 54290,
+        "addedTriangles": 0,
+        "batchesBefore": 30,
+        "batchesAfter": 30
+      },
+      {
+        "file": "cells/cell-e000-n000/base.gltf",
+        "sourceGroupsCompared": 4,
+        "unchangedGroupsSha256": "637ee1edece8a2b5c16eb11d2c6fba7ff15fb0a7a2d81686c79011769c13a6b4",
+        "trianglesBefore": 32602,
+        "trianglesAfter": 32602,
+        "addedTriangles": 0,
+        "batchesBefore": 28,
+        "batchesAfter": 28
+      },
+      {
+        "file": "cells/cell-e000-n000/near.gltf",
+        "sourceGroupsCompared": 4,
+        "unchangedGroupsSha256": "a234537750cee303d0309817537286aea373ddf82789c19d5cacbd231a671dfe",
+        "trianglesBefore": 83639,
+        "trianglesAfter": 83639,
+        "addedTriangles": 0,
+        "batchesBefore": 30,
+        "batchesAfter": 30
+      },
+      {
+        "file": "cells/cell-e001-s001/base.gltf",
+        "sourceGroupsCompared": 13,
+        "unchangedGroupsSha256": "053aec92c3f6dcc0274c060f642c479a01b51a90e0d98f69d9a2c7b9c64e3238",
+        "trianglesBefore": 3639,
+        "trianglesAfter": 3639,
+        "addedTriangles": 0,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e001-s001/near.gltf",
+        "sourceGroupsCompared": 13,
+        "unchangedGroupsSha256": "673a55fa90c8de723bbdb838904c71e15e608eb875d7a1521ad229a5787ffac4",
+        "trianglesBefore": 16427,
+        "trianglesAfter": 16427,
+        "addedTriangles": 0,
+        "batchesBefore": 8,
+        "batchesAfter": 8
+      },
+      {
+        "file": "cells/cell-e001-n000/base.gltf",
+        "sourceGroupsCompared": 6,
+        "unchangedGroupsSha256": "8f2792b50fea8ded1562c93aefd86f9d6b783a991d0081d40f525d9d694fbeab",
+        "trianglesBefore": 3209,
+        "trianglesAfter": 3209,
+        "addedTriangles": 0,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e001-n000/near.gltf",
+        "sourceGroupsCompared": 6,
+        "unchangedGroupsSha256": "819872669f8f7234126bdd48db856838bb77da7bc43b1e04c781fb1b14b28b19",
+        "trianglesBefore": 16429,
+        "trianglesAfter": 16429,
+        "addedTriangles": 0,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e002-s001/base.gltf",
+        "sourceGroupsCompared": 8,
+        "unchangedGroupsSha256": "ed50ddc0b2bfa520092dea6b7be9eff7b7628e723c90a10b7175d355b4bb1e1f",
+        "trianglesBefore": 3346,
+        "trianglesAfter": 3346,
+        "addedTriangles": 0,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e002-s001/near.gltf",
+        "sourceGroupsCompared": 8,
+        "unchangedGroupsSha256": "6b12c6614535e54404fbf6e9da8f0305b8e57db28e6c145c9d62aa3631618a80",
+        "trianglesBefore": 16388,
+        "trianglesAfter": 16388,
+        "addedTriangles": 0,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e002-n000/base.gltf",
+        "sourceGroupsCompared": 12,
+        "unchangedGroupsSha256": "ea63a95e7e878b5cb2b4e3e47b9d4444229fbcb17427659895dc903d621e2d9d",
+        "trianglesBefore": 8204,
+        "trianglesAfter": 8204,
+        "addedTriangles": 0,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e002-n000/near.gltf",
+        "sourceGroupsCompared": 12,
+        "unchangedGroupsSha256": "050ca4c3f452f5dea43e6fa4975f093315377750d44eb9e1ac3d9ee5b7b7d02e",
+        "trianglesBefore": 40256,
+        "trianglesAfter": 40256,
+        "addedTriangles": 0,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e002-n001/base.gltf",
+        "sourceGroupsCompared": 35,
+        "unchangedGroupsSha256": "d3b1e47fff621aa09ce89f13d5bc27aaf9920c8c8c4e8d20f699a44c30b673f4",
+        "trianglesBefore": 6152,
+        "trianglesAfter": 6152,
+        "addedTriangles": 0,
+        "batchesBefore": 17,
+        "batchesAfter": 17
+      },
+      {
+        "file": "cells/cell-e002-n001/near.gltf",
+        "sourceGroupsCompared": 35,
+        "unchangedGroupsSha256": "77f5c55b8736436f7eaa895835446996437c6111f9ad6d1904eea22979950fbb",
+        "trianglesBefore": 23360,
+        "trianglesAfter": 23360,
+        "addedTriangles": 0,
+        "batchesBefore": 18,
+        "batchesAfter": 18
+      },
+      {
+        "file": "cells/cell-e003-s001/base.gltf",
+        "sourceGroupsCompared": 7,
+        "unchangedGroupsSha256": "ab42f7443e828bdd4ebc0971b735dbc8644d0fc0a2f8042fca4e4e4beac28472",
+        "trianglesBefore": 4759,
+        "trianglesAfter": 4759,
+        "addedTriangles": 0,
+        "batchesBefore": 4,
+        "batchesAfter": 4
+      },
+      {
+        "file": "cells/cell-e003-s001/near.gltf",
+        "sourceGroupsCompared": 7,
+        "unchangedGroupsSha256": "8e4af6c60d34587132eac2266cacd22f8014992d15a8a71d6b1a2e3b4b3fcf19",
+        "trianglesBefore": 23139,
+        "trianglesAfter": 23139,
+        "addedTriangles": 0,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e003-n000/base.gltf",
+        "sourceGroupsCompared": 11,
+        "unchangedGroupsSha256": "482405370125e9ecbcd55cd76f3f1fbda8707c232a69284b5629fd3e12ac22b9",
+        "trianglesBefore": 4505,
+        "trianglesAfter": 4505,
+        "addedTriangles": 0,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e003-n000/near.gltf",
+        "sourceGroupsCompared": 11,
+        "unchangedGroupsSha256": "48b77da62a334a74a9da19be897887926e279b932d61691e183d60ad895451e2",
+        "trianglesBefore": 20235,
+        "trianglesAfter": 20235,
+        "addedTriangles": 0,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e003-n001/base.gltf",
+        "sourceGroupsCompared": 52,
+        "unchangedGroupsSha256": "553563dbb0682c0efab0b697895ba2d7c7f0fd562360f4dce51f711459a660e9",
+        "trianglesBefore": 8238,
+        "trianglesAfter": 8238,
+        "addedTriangles": 0,
+        "batchesBefore": 16,
+        "batchesAfter": 16
+      },
+      {
+        "file": "cells/cell-e003-n001/near.gltf",
+        "sourceGroupsCompared": 52,
+        "unchangedGroupsSha256": "3c80bd1fe68adc47241308d0c5cad32ea10fcd2af6b1df4d7eec7081922f9247",
+        "trianglesBefore": 27606,
+        "trianglesAfter": 27606,
+        "addedTriangles": 0,
+        "batchesBefore": 17,
+        "batchesAfter": 17
+      },
+      {
+        "file": "cells/cell-e004-s001/base.gltf",
+        "sourceGroupsCompared": 4,
+        "unchangedGroupsSha256": "5f50f053527549064de274a5984046348738bfffe517ce73e733d23efe8fb0b9",
+        "trianglesBefore": 3125,
+        "trianglesAfter": 3125,
+        "addedTriangles": 0,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e004-s001/near.gltf",
+        "sourceGroupsCompared": 4,
+        "unchangedGroupsSha256": "d84822bac25448f28070c4101e94e90045c54cac9adc005606dc90246c248e05",
+        "trianglesBefore": 15673,
+        "trianglesAfter": 15673,
+        "addedTriangles": 0,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e004-n000/base.gltf",
+        "sourceGroupsCompared": 13,
+        "unchangedGroupsSha256": "f4cb6bcf04352627de4aa76496bf20900cf698dd1c376b56cb9c82bd250842b2",
+        "trianglesBefore": 4789,
+        "trianglesAfter": 4789,
+        "addedTriangles": 0,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e004-n000/near.gltf",
+        "sourceGroupsCompared": 13,
+        "unchangedGroupsSha256": "7e36714a93603eb7457b0b72ceb3dcc4a967214ea3b31a0a19e96d1a6a62d211",
+        "trianglesBefore": 23421,
+        "trianglesAfter": 23421,
+        "addedTriangles": 0,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e004-n001/base.gltf",
+        "sourceGroupsCompared": 52,
+        "unchangedGroupsSha256": "0a8eae04b851da993ee27ca94ee28d8e08940d9b5e9212426d98cb4c9460269f",
+        "trianglesBefore": 8811,
+        "trianglesAfter": 8811,
+        "addedTriangles": 0,
+        "batchesBefore": 16,
+        "batchesAfter": 16
+      },
+      {
+        "file": "cells/cell-e004-n001/near.gltf",
+        "sourceGroupsCompared": 52,
+        "unchangedGroupsSha256": "7890df2c9a89252e7f8d10d6248fcb2a45596df48364f2353cf1e9b98a3a21d2",
+        "trianglesBefore": 29993,
+        "trianglesAfter": 29993,
+        "addedTriangles": 0,
+        "batchesBefore": 17,
+        "batchesAfter": 17
+      },
+      {
+        "file": "cells/cell-e005-s001/base.gltf",
+        "sourceGroupsCompared": 6,
+        "unchangedGroupsSha256": "ea6faee4b149ab89a7ecfd0e771b3321d6a695ec83845004f430bef2f120120e",
+        "trianglesBefore": 3114,
+        "trianglesAfter": 3114,
+        "addedTriangles": 0,
+        "batchesBefore": 4,
+        "batchesAfter": 4
+      },
+      {
+        "file": "cells/cell-e005-s001/near.gltf",
+        "sourceGroupsCompared": 6,
+        "unchangedGroupsSha256": "be7e80b76b240171c74d8d0c6265caa7994f23568d60fb7038e51120953897c4",
+        "trianglesBefore": 15446,
+        "trianglesAfter": 15446,
+        "addedTriangles": 0,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e005-n000/base.gltf",
+        "sourceGroupsCompared": 12,
+        "unchangedGroupsSha256": "52baa0ed5c53a9bf22a1a5a5c65d5ec0ec2cb64a32fd37ea2c983c1bd2d8b72a",
+        "trianglesBefore": 3804,
+        "trianglesAfter": 3804,
+        "addedTriangles": 0,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e005-n000/near.gltf",
+        "sourceGroupsCompared": 12,
+        "unchangedGroupsSha256": "55d6cd7428791cb6eea45168b3b318a185dafb056b96cba6d1a9958ae251ef97",
+        "trianglesBefore": 18528,
+        "trianglesAfter": 18528,
+        "addedTriangles": 0,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e005-n001/base.gltf",
+        "sourceGroupsCompared": 69,
+        "unchangedGroupsSha256": "da85b9fd751ea627bc2950b1ce005fd7f5270bdb470eea44a8a9ce1432daab51",
+        "trianglesBefore": 9398,
+        "trianglesAfter": 9398,
+        "addedTriangles": 0,
+        "batchesBefore": 16,
+        "batchesAfter": 16
+      },
+      {
+        "file": "cells/cell-e005-n001/near.gltf",
+        "sourceGroupsCompared": 69,
+        "unchangedGroupsSha256": "2fe155752bff472c22fc91e6b7c6bc2e92cc7a34efbe7ec8b1d93ec0848518cf",
+        "trianglesBefore": 31618,
+        "trianglesAfter": 31618,
+        "addedTriangles": 0,
+        "batchesBefore": 17,
+        "batchesAfter": 17
+      },
+      {
+        "file": "cells/cell-e006-s001/base.gltf",
+        "sourceGroupsCompared": 12,
+        "unchangedGroupsSha256": "68efac06f26d16fe4c15f2067204139fe3de9af475cf0f0840f4c4d3f2481798",
+        "trianglesBefore": 1340,
+        "trianglesAfter": 1340,
+        "addedTriangles": 0,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e006-s001/near.gltf",
+        "sourceGroupsCompared": 12,
+        "unchangedGroupsSha256": "93852f4068fa33d9768e7d064beadfc23cc6d57833843b160596acf1d36abcfe",
+        "trianglesBefore": 5476,
+        "trianglesAfter": 5476,
+        "addedTriangles": 0,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e006-n000/base.gltf",
+        "sourceGroupsCompared": 50,
+        "unchangedGroupsSha256": "a8a3a0cb684c57ea9c24deefc8b3153a623af1fa57c1b1c35cb6b620208d8d0d",
+        "trianglesBefore": 6986,
+        "trianglesAfter": 6986,
+        "addedTriangles": 0,
+        "batchesBefore": 8,
+        "batchesAfter": 8
+      },
+      {
+        "file": "cells/cell-e006-n000/near.gltf",
+        "sourceGroupsCompared": 50,
+        "unchangedGroupsSha256": "7942bf67548dd8669fc7d7432dab4588ae8070a556e6dd82b34f12f61152f505",
+        "trianglesBefore": 27456,
+        "trianglesAfter": 27456,
+        "addedTriangles": 0,
+        "batchesBefore": 10,
+        "batchesAfter": 10
+      },
+      {
+        "file": "cells/cell-e006-n001/base.gltf",
+        "sourceGroupsCompared": 56,
+        "unchangedGroupsSha256": "cc45e8f36b0fefd42590aff5ee866dcefd00b113de5801c9dd7d7fa466829c98",
+        "trianglesBefore": 8216,
+        "trianglesAfter": 8224,
+        "addedTriangles": 8,
+        "batchesBefore": 17,
+        "batchesAfter": 17
+      },
+      {
+        "file": "cells/cell-e006-n001/near.gltf",
+        "sourceGroupsCompared": 56,
+        "unchangedGroupsSha256": "b83b89bb6b57e2cd7fcf30265cc7cabf215bdad3d1eb02d5314139d969fafc27",
+        "trianglesBefore": 29130,
+        "trianglesAfter": 29138,
+        "addedTriangles": 8,
+        "batchesBefore": 19,
+        "batchesAfter": 19
+      },
+      {
+        "file": "cells/cell-e006-n002/base.gltf",
+        "sourceGroupsCompared": 3,
+        "unchangedGroupsSha256": "65d9590bba2a0f4887f8f223a45e6f62950e1d48a9eea291008c3f611fa5f479",
+        "trianglesBefore": 72,
+        "trianglesAfter": 72,
+        "addedTriangles": 0,
+        "batchesBefore": 3,
+        "batchesAfter": 3
+      },
+      {
+        "file": "cells/cell-e006-n002/near.gltf",
+        "sourceGroupsCompared": 3,
+        "unchangedGroupsSha256": "65d9590bba2a0f4887f8f223a45e6f62950e1d48a9eea291008c3f611fa5f479",
+        "trianglesBefore": 72,
+        "trianglesAfter": 72,
+        "addedTriangles": 0,
+        "batchesBefore": 3,
+        "batchesAfter": 3
+      },
+      {
+        "file": "cells/cell-e006-n003/base.gltf",
+        "sourceGroupsCompared": 2,
+        "unchangedGroupsSha256": "b3817526ac28f32daf7468233fc26234a2aa30cdbd7f452394192042651e32f0",
+        "trianglesBefore": 53,
+        "trianglesAfter": 53,
+        "addedTriangles": 0,
+        "batchesBefore": 3,
+        "batchesAfter": 3
+      },
+      {
+        "file": "cells/cell-e006-n003/near.gltf",
+        "sourceGroupsCompared": 2,
+        "unchangedGroupsSha256": "b3817526ac28f32daf7468233fc26234a2aa30cdbd7f452394192042651e32f0",
+        "trianglesBefore": 53,
+        "trianglesAfter": 53,
+        "addedTriangles": 0,
+        "batchesBefore": 3,
+        "batchesAfter": 3
+      },
+      {
+        "file": "cells/cell-e006-n004/base.gltf",
+        "sourceGroupsCompared": 2,
+        "unchangedGroupsSha256": "d2ea5582eed881142c138aceb5f0b44d842c52acfa9ca019f7d403dd418145a9",
+        "trianglesBefore": 29,
+        "trianglesAfter": 29,
+        "addedTriangles": 0,
+        "batchesBefore": 3,
+        "batchesAfter": 3
+      },
+      {
+        "file": "cells/cell-e006-n004/near.gltf",
+        "sourceGroupsCompared": 2,
+        "unchangedGroupsSha256": "d2ea5582eed881142c138aceb5f0b44d842c52acfa9ca019f7d403dd418145a9",
+        "trianglesBefore": 29,
+        "trianglesAfter": 29,
+        "addedTriangles": 0,
+        "batchesBefore": 3,
+        "batchesAfter": 3
+      },
+      {
+        "file": "cells/cell-e006-n005/base.gltf",
+        "sourceGroupsCompared": 1,
+        "unchangedGroupsSha256": "3c3648c4a87a87fcf559f8115b0b5197795af9b7683929d52ef20318e399aa1c",
+        "trianglesBefore": 28,
+        "trianglesAfter": 28,
+        "addedTriangles": 0,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      },
+      {
+        "file": "cells/cell-e006-n005/near.gltf",
+        "sourceGroupsCompared": 1,
+        "unchangedGroupsSha256": "3c3648c4a87a87fcf559f8115b0b5197795af9b7683929d52ef20318e399aa1c",
+        "trianglesBefore": 28,
+        "trianglesAfter": 28,
+        "addedTriangles": 0,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      },
+      {
+        "file": "cells/cell-e007-s001/base.gltf",
+        "sourceGroupsCompared": 6,
+        "unchangedGroupsSha256": "156f3f35c85ccf05a1e9c473e69ef66aff437eef350abfcaf4b7120857e5f24c",
+        "trianglesBefore": 2995,
+        "trianglesAfter": 2995,
+        "addedTriangles": 0,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e007-s001/near.gltf",
+        "sourceGroupsCompared": 6,
+        "unchangedGroupsSha256": "b6a3842c322112b07729ac8b747bd5c28d8fa8efd68db87a828ce30b622c819b",
+        "trianglesBefore": 14307,
+        "trianglesAfter": 14307,
+        "addedTriangles": 0,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e007-n000/base.gltf",
+        "sourceGroupsCompared": 39,
+        "unchangedGroupsSha256": "c86bcb10b29347a1908e421cfea1e6b13a0cfb5c5a6d81f0e23f61ca59b80cc4",
+        "trianglesBefore": 5082,
+        "trianglesAfter": 5082,
+        "addedTriangles": 0,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e007-n000/near.gltf",
+        "sourceGroupsCompared": 39,
+        "unchangedGroupsSha256": "ab9d0df194ece5996114b101e6f6c1ed287858c95a7a70909b318f8605811eb5",
+        "trianglesBefore": 22142,
+        "trianglesAfter": 22142,
+        "addedTriangles": 0,
+        "batchesBefore": 9,
+        "batchesAfter": 9
+      },
+      {
+        "file": "cells/cell-e007-n001/base.gltf",
+        "sourceGroupsCompared": 9,
+        "unchangedGroupsSha256": "e3a53e8cc1abfda31c964a8df47f10c77de58a1a1ad67bbb1766b08ba40bae66",
+        "trianglesBefore": 848,
+        "trianglesAfter": 848,
+        "addedTriangles": 0,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e007-n001/near.gltf",
+        "sourceGroupsCompared": 9,
+        "unchangedGroupsSha256": "b2bbfcfbff557e218c5b68f82266a939caa8ea80796b9805b60a76dea249d342",
+        "trianglesBefore": 3450,
+        "trianglesAfter": 3450,
+        "addedTriangles": 0,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e007-n003/base.gltf",
+        "sourceGroupsCompared": 1,
+        "unchangedGroupsSha256": "1f92a0faeed213f7a842de377126532e48fdad6f15642177f06dbd3fc9e01bc6",
+        "trianglesBefore": 7,
+        "trianglesAfter": 7,
+        "addedTriangles": 0,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      },
+      {
+        "file": "cells/cell-e007-n003/near.gltf",
+        "sourceGroupsCompared": 1,
+        "unchangedGroupsSha256": "1f92a0faeed213f7a842de377126532e48fdad6f15642177f06dbd3fc9e01bc6",
+        "trianglesBefore": 7,
+        "trianglesAfter": 7,
+        "addedTriangles": 0,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      },
+      {
+        "file": "cells/cell-e007-n004/base.gltf",
+        "sourceGroupsCompared": 1,
+        "unchangedGroupsSha256": "0f65c41971a273968880b5fbe807f57a92ea625bcf664bfc0d97698eb46f325b",
+        "trianglesBefore": 40,
+        "trianglesAfter": 40,
+        "addedTriangles": 0,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      },
+      {
+        "file": "cells/cell-e007-n004/near.gltf",
+        "sourceGroupsCompared": 1,
+        "unchangedGroupsSha256": "0f65c41971a273968880b5fbe807f57a92ea625bcf664bfc0d97698eb46f325b",
+        "trianglesBefore": 40,
+        "trianglesAfter": 40,
+        "addedTriangles": 0,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      },
+      {
+        "file": "cells/cell-e007-n005/base.gltf",
+        "sourceGroupsCompared": 1,
+        "unchangedGroupsSha256": "84d40f2ccd268ce75cd6a3dc6caa8dd9e1bd5c918e304b8fcb387ed505045fad",
+        "trianglesBefore": 10,
+        "trianglesAfter": 10,
+        "addedTriangles": 0,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      },
+      {
+        "file": "cells/cell-e007-n005/near.gltf",
+        "sourceGroupsCompared": 1,
+        "unchangedGroupsSha256": "84d40f2ccd268ce75cd6a3dc6caa8dd9e1bd5c918e304b8fcb387ed505045fad",
+        "trianglesBefore": 10,
+        "trianglesAfter": 10,
+        "addedTriangles": 0,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      },
+      {
+        "file": "cells/cell-e008-n000/base.gltf",
+        "sourceGroupsCompared": 11,
+        "unchangedGroupsSha256": "697b94cc2f85a27d99bd35d23d635850127a434524f08549fbd62419429ae017",
+        "trianglesBefore": 4990,
+        "trianglesAfter": 4990,
+        "addedTriangles": 0,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e008-n000/near.gltf",
+        "sourceGroupsCompared": 11,
+        "unchangedGroupsSha256": "1faf413aa18d19eee629aa8dc7fc90b0d27060072852a9952c5ab68c5770ad2e",
+        "trianglesBefore": 22302,
+        "trianglesAfter": 22302,
+        "addedTriangles": 0,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e009-s001/base.gltf",
+        "sourceGroupsCompared": 6,
+        "unchangedGroupsSha256": "18b0a2f8e91589c8050ca25090161b8a6e099e697eb68810dc577cac89a3ac26",
+        "trianglesBefore": 1469,
+        "trianglesAfter": 1469,
+        "addedTriangles": 0,
+        "batchesBefore": 8,
+        "batchesAfter": 8
+      },
+      {
+        "file": "cells/cell-e009-s001/near.gltf",
+        "sourceGroupsCompared": 6,
+        "unchangedGroupsSha256": "3f4b15bd27e73821f6e03cb696e4835877021abb795aa0f1e28edf18be5dac44",
+        "trianglesBefore": 7157,
+        "trianglesAfter": 7157,
+        "addedTriangles": 0,
+        "batchesBefore": 9,
+        "batchesAfter": 9
+      },
+      {
+        "file": "cells/cell-e009-n000/base.gltf",
+        "sourceGroupsCompared": 25,
+        "unchangedGroupsSha256": "09c7c0bd46baf675bfc343c9fd474d3b37558108b8fbd47dd26c49c0625a311d",
+        "trianglesBefore": 4382,
+        "trianglesAfter": 4382,
+        "addedTriangles": 0,
+        "batchesBefore": 6,
+        "batchesAfter": 6
+      },
+      {
+        "file": "cells/cell-e009-n000/near.gltf",
+        "sourceGroupsCompared": 25,
+        "unchangedGroupsSha256": "ab1219180a83bc480cad4f9dc24d77f1b443d0384108e21f4555d1009462a668",
+        "trianglesBefore": 17002,
+        "trianglesAfter": 17002,
+        "addedTriangles": 0,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e010-s001/base.gltf",
+        "sourceGroupsCompared": 8,
+        "unchangedGroupsSha256": "e484129329997a3d9b5852b85aa40089993da121def5805136102639f879d4e2",
+        "trianglesBefore": 1338,
+        "trianglesAfter": 1338,
+        "addedTriangles": 0,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e010-s001/near.gltf",
+        "sourceGroupsCompared": 8,
+        "unchangedGroupsSha256": "d7bf514217ae24dde6dc1d843cfca2f87a9c9b1262594b6648a96d16de525448",
+        "trianglesBefore": 5682,
+        "trianglesAfter": 5682,
+        "addedTriangles": 0,
+        "batchesBefore": 6,
+        "batchesAfter": 6
+      },
+      {
+        "file": "cells/cell-e010-n000/base.gltf",
+        "sourceGroupsCompared": 4067,
+        "unchangedGroupsSha256": "8ea8cfbdfd400a3961378e54d7436e3d3d20a59aaf06fb455f2c6bce09647666",
+        "trianglesBefore": 93266,
+        "trianglesAfter": 93266,
+        "addedTriangles": 0,
+        "batchesBefore": 256,
+        "batchesAfter": 256
+      },
+      {
+        "file": "cells/cell-e010-n000/near.gltf",
+        "sourceGroupsCompared": 4067,
+        "unchangedGroupsSha256": "45836fa6d6b06eb1088582083f21628e1033bdc772df8fedc763e4aa165df487",
+        "trianglesBefore": 101120,
+        "trianglesAfter": 101120,
+        "addedTriangles": 0,
+        "batchesBefore": 256,
+        "batchesAfter": 256
+      },
+      {
+        "file": "cells/cell-e011-s001/base.gltf",
+        "sourceGroupsCompared": 2,
+        "unchangedGroupsSha256": "fa25c04fc3e0f8ca5ade5c52bfa08978a7c2af3aacdc28374878161a8fdc2da9",
+        "trianglesBefore": 71,
+        "trianglesAfter": 71,
+        "addedTriangles": 0,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      },
+      {
+        "file": "cells/cell-e011-s001/near.gltf",
+        "sourceGroupsCompared": 2,
+        "unchangedGroupsSha256": "fa25c04fc3e0f8ca5ade5c52bfa08978a7c2af3aacdc28374878161a8fdc2da9",
+        "trianglesBefore": 71,
+        "trianglesAfter": 71,
+        "addedTriangles": 0,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      },
+      {
+        "file": "cells/cell-e011-n000/base.gltf",
+        "sourceGroupsCompared": 2,
+        "unchangedGroupsSha256": "a0deac9fbdd91e34e6a94c22519acbc7c73c33565f2b4f796b0e241df8d4ec7d",
+        "trianglesBefore": 62,
+        "trianglesAfter": 62,
+        "addedTriangles": 0,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      },
+      {
+        "file": "cells/cell-e011-n000/near.gltf",
+        "sourceGroupsCompared": 2,
+        "unchangedGroupsSha256": "a0deac9fbdd91e34e6a94c22519acbc7c73c33565f2b4f796b0e241df8d4ec7d",
+        "trianglesBefore": 62,
+        "trianglesAfter": 62,
+        "addedTriangles": 0,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      }
+    ],
+    "closures": [
+      {
+        "file": "ground.gltf",
+        "sourceIndex": 20,
+        "originalTriangles": 16,
+        "addedTriangles": 2,
+        "segments": [
+          {
+            "id": "road-20-north-ground",
+            "sourceIndex": 20,
+            "endpointsExactFloat32": true,
+            "top": -0.03999999910593033,
+            "bottom": -0.11999999731779099,
+            "areaSquareMetres": 2.491325243986534,
+            "faces": [
+              {
+                "material": "paving",
+                "node": "Resident_paving",
+                "extras": {
+                  "walkable": false,
+                  "surfaceId": "shijo-east-ground",
+                  "resident": true,
+                  "sourceIndexLookup": "manifest.featureTable",
+                  "sourceIndexAttribute": "_SOURCE_INDEX"
+                },
+                "points": [
+                  [
+                    999.9359741210938,
+                    -0.11999999731779099,
+                    -10.87646770477295
+                  ],
+                  [
+                    1031.0670166015625,
+                    -0.11999999731779099,
+                    -11.685999870300293
+                  ],
+                  [
+                    1031.0670166015625,
+                    -0.03999999910593033,
+                    -11.685999870300293
+                  ]
+                ],
+                "normals": [
+                  [
+                    0.02599901147186756,
+                    0,
+                    0.9996619820594788
+                  ],
+                  [
+                    0.02599901147186756,
+                    0,
+                    0.9996619820594788
+                  ],
+                  [
+                    0.02599901147186756,
+                    0,
+                    0.9996619820594788
+                  ]
+                ],
+                "semantics": [
+                  "NORMAL",
+                  "POSITION",
+                  "TEXCOORD_0",
+                  "_SOURCE_INDEX"
+                ],
+                "allAttributesFinite": true,
+                "area": 1.245662621993267
+              },
+              {
+                "material": "paving",
+                "node": "Resident_paving",
+                "extras": {
+                  "walkable": false,
+                  "surfaceId": "shijo-east-ground",
+                  "resident": true,
+                  "sourceIndexLookup": "manifest.featureTable",
+                  "sourceIndexAttribute": "_SOURCE_INDEX"
+                },
+                "points": [
+                  [
+                    999.9359741210938,
+                    -0.11999999731779099,
+                    -10.87646770477295
+                  ],
+                  [
+                    1031.0670166015625,
+                    -0.03999999910593033,
+                    -11.685999870300293
+                  ],
+                  [
+                    999.9359741210938,
+                    -0.03999999910593033,
+                    -10.87646770477295
+                  ]
+                ],
+                "normals": [
+                  [
+                    0.02599901147186756,
+                    0,
+                    0.9996619820594788
+                  ],
+                  [
+                    0.02599901147186756,
+                    0,
+                    0.9996619820594788
+                  ],
+                  [
+                    0.02599901147186756,
+                    0,
+                    0.9996619820594788
+                  ]
+                ],
+                "semantics": [
+                  "NORMAL",
+                  "POSITION",
+                  "TEXCOORD_0",
+                  "_SOURCE_INDEX"
+                ],
+                "allAttributesFinite": true,
+                "area": 1.245662621993267
+              }
+            ]
+          }
+        ],
+        "originalAttributesExact": true
+      },
+      {
+        "file": "ground.gltf",
+        "sourceIndex": 151,
+        "originalTriangles": 7,
+        "addedTriangles": 2,
+        "segments": [
+          {
+            "id": "road-151-north-ground",
+            "sourceIndex": 151,
+            "endpointsExactFloat32": true,
+            "top": -0.03999999910593033,
+            "bottom": -0.11999999731779099,
+            "areaSquareMetres": 0.9481435531069554,
+            "faces": [
+              {
+                "material": "paving",
+                "node": "Resident_paving",
+                "extras": {
+                  "walkable": false,
+                  "surfaceId": "shijo-east-ground",
+                  "resident": true,
+                  "sourceIndexLookup": "manifest.featureTable",
+                  "sourceIndexAttribute": "_SOURCE_INDEX"
+                },
+                "points": [
+                  [
+                    1030.989013671875,
+                    -0.11999999731779099,
+                    -14.885000228881836
+                  ],
+                  [
+                    1042.8370361328125,
+                    -0.11999999731779099,
+                    -15.184000015258789
+                  ],
+                  [
+                    1042.8370361328125,
+                    -0.03999999910593033,
+                    -15.184000015258789
+                  ]
+                ],
+                "normals": [
+                  [
+                    0.025199558585882187,
+                    0,
+                    0.9996824860572815
+                  ],
+                  [
+                    0.025199558585882187,
+                    0,
+                    0.9996824860572815
+                  ],
+                  [
+                    0.025199558585882187,
+                    0,
+                    0.9996824860572815
+                  ]
+                ],
+                "semantics": [
+                  "NORMAL",
+                  "POSITION",
+                  "TEXCOORD_0",
+                  "_SOURCE_INDEX"
+                ],
+                "allAttributesFinite": true,
+                "area": 0.4740717765534777
+              },
+              {
+                "material": "paving",
+                "node": "Resident_paving",
+                "extras": {
+                  "walkable": false,
+                  "surfaceId": "shijo-east-ground",
+                  "resident": true,
+                  "sourceIndexLookup": "manifest.featureTable",
+                  "sourceIndexAttribute": "_SOURCE_INDEX"
+                },
+                "points": [
+                  [
+                    1030.989013671875,
+                    -0.11999999731779099,
+                    -14.885000228881836
+                  ],
+                  [
+                    1042.8370361328125,
+                    -0.03999999910593033,
+                    -15.184000015258789
+                  ],
+                  [
+                    1030.989013671875,
+                    -0.03999999910593033,
+                    -14.885000228881836
+                  ]
+                ],
+                "normals": [
+                  [
+                    0.025199558585882187,
+                    0,
+                    0.9996824860572815
+                  ],
+                  [
+                    0.025199558585882187,
+                    0,
+                    0.9996824860572815
+                  ],
+                  [
+                    0.025199558585882187,
+                    0,
+                    0.9996824860572815
+                  ]
+                ],
+                "semantics": [
+                  "NORMAL",
+                  "POSITION",
+                  "TEXCOORD_0",
+                  "_SOURCE_INDEX"
+                ],
+                "allAttributesFinite": true,
+                "area": 0.4740717765534777
+              }
+            ]
+          }
+        ],
+        "originalAttributesExact": true
+      },
+      {
+        "file": "cells/cell-e006-n001/base.gltf",
+        "sourceIndex": 731,
+        "originalTriangles": 496,
+        "addedTriangles": 8,
+        "segments": [
+          {
+            "id": "building-731-edge-5",
+            "sourceIndex": 731,
+            "endpointsExactFloat32": true,
+            "top": 0,
+            "bottom": -0.03999999910593033,
+            "areaSquareMetres": 0.26933665629089854,
+            "faces": [
+              {
+                "material": "tile-wall",
+                "node": "cell-e006-n001_base_tile-wall",
+                "extras": {
+                  "cellId": "cell-e006-n001",
+                  "detailLevel": "base",
+                  "sourceIndexLookup": "manifest.featureTable",
+                  "sourceIndexAttribute": "_SOURCE_INDEX"
+                },
+                "points": [
+                  [
+                    677.614013671875,
+                    -0.03999999910593033,
+                    -127.3010025024414
+                  ],
+                  [
+                    677.4760131835938,
+                    -0.03999999910593033,
+                    -134.0330047607422
+                  ],
+                  [
+                    677.4760131835938,
+                    0,
+                    -134.0330047607422
+                  ]
+                ],
+                "normals": [
+                  [
+                    0.9997898936271667,
+                    0,
+                    -0.02049979194998741
+                  ],
+                  [
+                    0.9997898936271667,
+                    0,
+                    -0.02049979194998741
+                  ],
+                  [
+                    0.9997898936271667,
+                    0,
+                    -0.02049979194998741
+                  ]
+                ],
+                "semantics": [
+                  "NORMAL",
+                  "POSITION",
+                  "TEXCOORD_0",
+                  "_SOURCE_INDEX"
+                ],
+                "allAttributesFinite": true,
+                "area": 0.13466832814544927
+              },
+              {
+                "material": "tile-wall",
+                "node": "cell-e006-n001_base_tile-wall",
+                "extras": {
+                  "cellId": "cell-e006-n001",
+                  "detailLevel": "base",
+                  "sourceIndexLookup": "manifest.featureTable",
+                  "sourceIndexAttribute": "_SOURCE_INDEX"
+                },
+                "points": [
+                  [
+                    677.614013671875,
+                    -0.03999999910593033,
+                    -127.3010025024414
+                  ],
+                  [
+                    677.4760131835938,
+                    0,
+                    -134.0330047607422
+                  ],
+                  [
+                    677.614013671875,
+                    0,
+                    -127.3010025024414
+                  ]
+                ],
+                "normals": [
+                  [
+                    0.9997898936271667,
+                    0,
+                    -0.02049979194998741
+                  ],
+                  [
+                    0.9997898936271667,
+                    0,
+                    -0.02049979194998741
+                  ],
+                  [
+                    0.9997898936271667,
+                    0,
+                    -0.02049979194998741
+                  ]
+                ],
+                "semantics": [
+                  "NORMAL",
+                  "POSITION",
+                  "TEXCOORD_0",
+                  "_SOURCE_INDEX"
+                ],
+                "allAttributesFinite": true,
+                "area": 0.13466832814544927
+              }
+            ]
+          },
+          {
+            "id": "building-731-edge-6",
+            "sourceIndex": 731,
+            "endpointsExactFloat32": true,
+            "top": 0,
+            "bottom": -0.03999999910593033,
+            "areaSquareMetres": 0.04932981154037694,
+            "faces": [
+              {
+                "material": "tile-wall",
+                "node": "cell-e006-n001_base_tile-wall",
+                "extras": {
+                  "cellId": "cell-e006-n001",
+                  "detailLevel": "base",
+                  "sourceIndexLookup": "manifest.featureTable",
+                  "sourceIndexAttribute": "_SOURCE_INDEX"
+                },
+                "points": [
+                  [
+                    677.4760131835938,
+                    -0.03999999910593033,
+                    -134.0330047607422
+                  ],
+                  [
+                    678.708984375,
+                    -0.03999999910593033,
+                    -134.0590057373047
+                  ],
+                  [
+                    678.708984375,
+                    0,
+                    -134.0590057373047
+                  ]
+                ],
+                "normals": [
+                  [
+                    0.021099520847201347,
+                    0,
+                    0.9997773766517639
+                  ],
+                  [
+                    0.021099520847201347,
+                    0,
+                    0.9997773766517639
+                  ],
+                  [
+                    0.021099520847201347,
+                    0,
+                    0.9997773766517639
+                  ]
+                ],
+                "semantics": [
+                  "NORMAL",
+                  "POSITION",
+                  "TEXCOORD_0",
+                  "_SOURCE_INDEX"
+                ],
+                "allAttributesFinite": true,
+                "area": 0.024664905770188473
+              },
+              {
+                "material": "tile-wall",
+                "node": "cell-e006-n001_base_tile-wall",
+                "extras": {
+                  "cellId": "cell-e006-n001",
+                  "detailLevel": "base",
+                  "sourceIndexLookup": "manifest.featureTable",
+                  "sourceIndexAttribute": "_SOURCE_INDEX"
+                },
+                "points": [
+                  [
+                    677.4760131835938,
+                    -0.03999999910593033,
+                    -134.0330047607422
+                  ],
+                  [
+                    678.708984375,
+                    0,
+                    -134.0590057373047
+                  ],
+                  [
+                    677.4760131835938,
+                    0,
+                    -134.0330047607422
+                  ]
+                ],
+                "normals": [
+                  [
+                    0.021099520847201347,
+                    0,
+                    0.9997773766517639
+                  ],
+                  [
+                    0.021099520847201347,
+                    0,
+                    0.9997773766517639
+                  ],
+                  [
+                    0.021099520847201347,
+                    0,
+                    0.9997773766517639
+                  ]
+                ],
+                "semantics": [
+                  "NORMAL",
+                  "POSITION",
+                  "TEXCOORD_0",
+                  "_SOURCE_INDEX"
+                ],
+                "allAttributesFinite": true,
+                "area": 0.024664905770188473
+              }
+            ]
+          },
+          {
+            "id": "building-731-edge-7",
+            "sourceIndex": 731,
+            "endpointsExactFloat32": true,
+            "top": 0,
+            "bottom": -0.03999999910593033,
+            "areaSquareMetres": 0.2381314584395708,
+            "faces": [
+              {
+                "material": "tile-wall",
+                "node": "cell-e006-n001_base_tile-wall",
+                "extras": {
+                  "cellId": "cell-e006-n001",
+                  "detailLevel": "base",
+                  "sourceIndexLookup": "manifest.featureTable",
+                  "sourceIndexAttribute": "_SOURCE_INDEX"
+                },
+                "points": [
+                  [
+                    678.708984375,
+                    -0.03999999910593033,
+                    -134.0590057373047
+                  ],
+                  [
+                    678.5850219726562,
+                    -0.03999999910593033,
+                    -140.01100158691406
+                  ],
+                  [
+                    678.5850219726562,
+                    0,
+                    -140.01100158691406
+                  ]
+                ],
+                "normals": [
+                  [
+                    0.9997836947441101,
+                    0,
+                    -0.020799661055207253
+                  ],
+                  [
+                    0.9997836947441101,
+                    0,
+                    -0.020799661055207253
+                  ],
+                  [
+                    0.9997836947441101,
+                    0,
+                    -0.020799661055207253
+                  ]
+                ],
+                "semantics": [
+                  "NORMAL",
+                  "POSITION",
+                  "TEXCOORD_0",
+                  "_SOURCE_INDEX"
+                ],
+                "allAttributesFinite": true,
+                "area": 0.11906572921978538
+              },
+              {
+                "material": "tile-wall",
+                "node": "cell-e006-n001_base_tile-wall",
+                "extras": {
+                  "cellId": "cell-e006-n001",
+                  "detailLevel": "base",
+                  "sourceIndexLookup": "manifest.featureTable",
+                  "sourceIndexAttribute": "_SOURCE_INDEX"
+                },
+                "points": [
+                  [
+                    678.708984375,
+                    -0.03999999910593033,
+                    -134.0590057373047
+                  ],
+                  [
+                    678.5850219726562,
+                    0,
+                    -140.01100158691406
+                  ],
+                  [
+                    678.708984375,
+                    0,
+                    -134.0590057373047
+                  ]
+                ],
+                "normals": [
+                  [
+                    0.9997836947441101,
+                    0,
+                    -0.020799661055207253
+                  ],
+                  [
+                    0.9997836947441101,
+                    0,
+                    -0.020799661055207253
+                  ],
+                  [
+                    0.9997836947441101,
+                    0,
+                    -0.020799661055207253
+                  ]
+                ],
+                "semantics": [
+                  "NORMAL",
+                  "POSITION",
+                  "TEXCOORD_0",
+                  "_SOURCE_INDEX"
+                ],
+                "allAttributesFinite": true,
+                "area": 0.11906572921978538
+              }
+            ]
+          },
+          {
+            "id": "building-731-edge-8",
+            "sourceIndex": 731,
+            "endpointsExactFloat32": true,
+            "top": 0,
+            "bottom": -0.03999999910593033,
+            "areaSquareMetres": 0.41556829353090724,
+            "faces": [
+              {
+                "material": "tile-wall",
+                "node": "cell-e006-n001_base_tile-wall",
+                "extras": {
+                  "cellId": "cell-e006-n001",
+                  "detailLevel": "base",
+                  "sourceIndexLookup": "manifest.featureTable",
+                  "sourceIndexAttribute": "_SOURCE_INDEX"
+                },
+                "points": [
+                  [
+                    678.5850219726562,
+                    -0.03999999910593033,
+                    -140.01100158691406
+                  ],
+                  [
+                    668.197998046875,
+                    -0.03999999910593033,
+                    -139.79800415039062
+                  ],
+                  [
+                    668.197998046875,
+                    0,
+                    -139.79800415039062
+                  ]
+                ],
+                "normals": [
+                  [
+                    -0.02049979194998741,
+                    0,
+                    -0.9997898936271667
+                  ],
+                  [
+                    -0.02049979194998741,
+                    0,
+                    -0.9997898936271667
+                  ],
+                  [
+                    -0.02049979194998741,
+                    0,
+                    -0.9997898936271667
+                  ]
+                ],
+                "semantics": [
+                  "NORMAL",
+                  "POSITION",
+                  "TEXCOORD_0",
+                  "_SOURCE_INDEX"
+                ],
+                "allAttributesFinite": true,
+                "area": 0.20778414676545362
+              },
+              {
+                "material": "tile-wall",
+                "node": "cell-e006-n001_base_tile-wall",
+                "extras": {
+                  "cellId": "cell-e006-n001",
+                  "detailLevel": "base",
+                  "sourceIndexLookup": "manifest.featureTable",
+                  "sourceIndexAttribute": "_SOURCE_INDEX"
+                },
+                "points": [
+                  [
+                    678.5850219726562,
+                    -0.03999999910593033,
+                    -140.01100158691406
+                  ],
+                  [
+                    668.197998046875,
+                    0,
+                    -139.79800415039062
+                  ],
+                  [
+                    678.5850219726562,
+                    0,
+                    -140.01100158691406
+                  ]
+                ],
+                "normals": [
+                  [
+                    -0.02049979194998741,
+                    0,
+                    -0.9997898936271667
+                  ],
+                  [
+                    -0.02049979194998741,
+                    0,
+                    -0.9997898936271667
+                  ],
+                  [
+                    -0.02049979194998741,
+                    0,
+                    -0.9997898936271667
+                  ]
+                ],
+                "semantics": [
+                  "NORMAL",
+                  "POSITION",
+                  "TEXCOORD_0",
+                  "_SOURCE_INDEX"
+                ],
+                "allAttributesFinite": true,
+                "area": 0.20778414676545362
+              }
+            ]
+          }
+        ],
+        "originalAttributesExact": true
+      },
+      {
+        "file": "cells/cell-e006-n001/near.gltf",
+        "sourceIndex": 731,
+        "originalTriangles": 1870,
+        "addedTriangles": 8,
+        "segments": [
+          {
+            "id": "building-731-edge-5",
+            "sourceIndex": 731,
+            "endpointsExactFloat32": true,
+            "top": 0,
+            "bottom": -0.03999999910593033,
+            "areaSquareMetres": 0.26933665629089854,
+            "faces": [
+              {
+                "material": "tile-wall",
+                "node": "cell-e006-n001_near_tile-wall",
+                "extras": {
+                  "cellId": "cell-e006-n001",
+                  "detailLevel": "near",
+                  "sourceIndexLookup": "manifest.featureTable",
+                  "sourceIndexAttribute": "_SOURCE_INDEX"
+                },
+                "points": [
+                  [
+                    677.614013671875,
+                    -0.03999999910593033,
+                    -127.3010025024414
+                  ],
+                  [
+                    677.4760131835938,
+                    -0.03999999910593033,
+                    -134.0330047607422
+                  ],
+                  [
+                    677.4760131835938,
+                    0,
+                    -134.0330047607422
+                  ]
+                ],
+                "normals": [
+                  [
+                    0.999786370433668,
+                    0,
+                    -0.020508438367870113
+                  ],
+                  [
+                    0.999786370433668,
+                    0,
+                    -0.020508438367870113
+                  ],
+                  [
+                    0.999786370433668,
+                    0,
+                    -0.020508438367870113
+                  ]
+                ],
+                "semantics": [
+                  "NORMAL",
+                  "POSITION",
+                  "TEXCOORD_0",
+                  "_SOURCE_INDEX"
+                ],
+                "allAttributesFinite": true,
+                "area": 0.13466832814544927
+              },
+              {
+                "material": "tile-wall",
+                "node": "cell-e006-n001_near_tile-wall",
+                "extras": {
+                  "cellId": "cell-e006-n001",
+                  "detailLevel": "near",
+                  "sourceIndexLookup": "manifest.featureTable",
+                  "sourceIndexAttribute": "_SOURCE_INDEX"
+                },
+                "points": [
+                  [
+                    677.614013671875,
+                    -0.03999999910593033,
+                    -127.3010025024414
+                  ],
+                  [
+                    677.4760131835938,
+                    0,
+                    -134.0330047607422
+                  ],
+                  [
+                    677.614013671875,
+                    0,
+                    -127.3010025024414
+                  ]
+                ],
+                "normals": [
+                  [
+                    0.999786370433668,
+                    0,
+                    -0.020508438367870113
+                  ],
+                  [
+                    0.999786370433668,
+                    0,
+                    -0.020508438367870113
+                  ],
+                  [
+                    0.999786370433668,
+                    0,
+                    -0.020508438367870113
+                  ]
+                ],
+                "semantics": [
+                  "NORMAL",
+                  "POSITION",
+                  "TEXCOORD_0",
+                  "_SOURCE_INDEX"
+                ],
+                "allAttributesFinite": true,
+                "area": 0.13466832814544927
+              }
+            ]
+          },
+          {
+            "id": "building-731-edge-6",
+            "sourceIndex": 731,
+            "endpointsExactFloat32": true,
+            "top": 0,
+            "bottom": -0.03999999910593033,
+            "areaSquareMetres": 0.04932981154037694,
+            "faces": [
+              {
+                "material": "tile-wall",
+                "node": "cell-e006-n001_near_tile-wall",
+                "extras": {
+                  "cellId": "cell-e006-n001",
+                  "detailLevel": "near",
+                  "sourceIndexLookup": "manifest.featureTable",
+                  "sourceIndexAttribute": "_SOURCE_INDEX"
+                },
+                "points": [
+                  [
+                    677.4760131835938,
+                    -0.03999999910593033,
+                    -134.0330047607422
+                  ],
+                  [
+                    678.708984375,
+                    -0.03999999910593033,
+                    -134.0590057373047
+                  ],
+                  [
+                    678.708984375,
+                    0,
+                    -134.0590057373047
+                  ]
+                ],
+                "normals": [
+                  [
+                    0.02108829004791406,
+                    0,
+                    0.999786370433668
+                  ],
+                  [
+                    0.02108829004791406,
+                    0,
+                    0.999786370433668
+                  ],
+                  [
+                    0.02108829004791406,
+                    0,
+                    0.999786370433668
+                  ]
+                ],
+                "semantics": [
+                  "NORMAL",
+                  "POSITION",
+                  "TEXCOORD_0",
+                  "_SOURCE_INDEX"
+                ],
+                "allAttributesFinite": true,
+                "area": 0.024664905770188473
+              },
+              {
+                "material": "tile-wall",
+                "node": "cell-e006-n001_near_tile-wall",
+                "extras": {
+                  "cellId": "cell-e006-n001",
+                  "detailLevel": "near",
+                  "sourceIndexLookup": "manifest.featureTable",
+                  "sourceIndexAttribute": "_SOURCE_INDEX"
+                },
+                "points": [
+                  [
+                    677.4760131835938,
+                    -0.03999999910593033,
+                    -134.0330047607422
+                  ],
+                  [
+                    678.708984375,
+                    0,
+                    -134.0590057373047
+                  ],
+                  [
+                    677.4760131835938,
+                    0,
+                    -134.0330047607422
+                  ]
+                ],
+                "normals": [
+                  [
+                    0.02108829004791406,
+                    0,
+                    0.999786370433668
+                  ],
+                  [
+                    0.02108829004791406,
+                    0,
+                    0.999786370433668
+                  ],
+                  [
+                    0.02108829004791406,
+                    0,
+                    0.999786370433668
+                  ]
+                ],
+                "semantics": [
+                  "NORMAL",
+                  "POSITION",
+                  "TEXCOORD_0",
+                  "_SOURCE_INDEX"
+                ],
+                "allAttributesFinite": true,
+                "area": 0.024664905770188473
+              }
+            ]
+          },
+          {
+            "id": "building-731-edge-7",
+            "sourceIndex": 731,
+            "endpointsExactFloat32": true,
+            "top": 0,
+            "bottom": -0.03999999910593033,
+            "areaSquareMetres": 0.2381314584395708,
+            "faces": [
+              {
+                "material": "tile-wall",
+                "node": "cell-e006-n001_near_tile-wall",
+                "extras": {
+                  "cellId": "cell-e006-n001",
+                  "detailLevel": "near",
+                  "sourceIndexLookup": "manifest.featureTable",
+                  "sourceIndexAttribute": "_SOURCE_INDEX"
+                },
+                "points": [
+                  [
+                    678.708984375,
+                    -0.03999999910593033,
+                    -134.0590057373047
+                  ],
+                  [
+                    678.5850219726562,
+                    -0.03999999910593033,
+                    -140.01100158691406
+                  ],
+                  [
+                    678.5850219726562,
+                    0,
+                    -140.01100158691406
+                  ]
+                ],
+                "normals": [
+                  [
+                    0.999786370433668,
+                    0,
+                    -0.020813623462630087
+                  ],
+                  [
+                    0.999786370433668,
+                    0,
+                    -0.020813623462630087
+                  ],
+                  [
+                    0.999786370433668,
+                    0,
+                    -0.020813623462630087
+                  ]
+                ],
+                "semantics": [
+                  "NORMAL",
+                  "POSITION",
+                  "TEXCOORD_0",
+                  "_SOURCE_INDEX"
+                ],
+                "allAttributesFinite": true,
+                "area": 0.11906572921978538
+              },
+              {
+                "material": "tile-wall",
+                "node": "cell-e006-n001_near_tile-wall",
+                "extras": {
+                  "cellId": "cell-e006-n001",
+                  "detailLevel": "near",
+                  "sourceIndexLookup": "manifest.featureTable",
+                  "sourceIndexAttribute": "_SOURCE_INDEX"
+                },
+                "points": [
+                  [
+                    678.708984375,
+                    -0.03999999910593033,
+                    -134.0590057373047
+                  ],
+                  [
+                    678.5850219726562,
+                    0,
+                    -140.01100158691406
+                  ],
+                  [
+                    678.708984375,
+                    0,
+                    -134.0590057373047
+                  ]
+                ],
+                "normals": [
+                  [
+                    0.999786370433668,
+                    0,
+                    -0.020813623462630087
+                  ],
+                  [
+                    0.999786370433668,
+                    0,
+                    -0.020813623462630087
+                  ],
+                  [
+                    0.999786370433668,
+                    0,
+                    -0.020813623462630087
+                  ]
+                ],
+                "semantics": [
+                  "NORMAL",
+                  "POSITION",
+                  "TEXCOORD_0",
+                  "_SOURCE_INDEX"
+                ],
+                "allAttributesFinite": true,
+                "area": 0.11906572921978538
+              }
+            ]
+          },
+          {
+            "id": "building-731-edge-8",
+            "sourceIndex": 731,
+            "endpointsExactFloat32": true,
+            "top": 0,
+            "bottom": -0.03999999910593033,
+            "areaSquareMetres": 0.41556829353090724,
+            "faces": [
+              {
+                "material": "tile-wall",
+                "node": "cell-e006-n001_near_tile-wall",
+                "extras": {
+                  "cellId": "cell-e006-n001",
+                  "detailLevel": "near",
+                  "sourceIndexLookup": "manifest.featureTable",
+                  "sourceIndexAttribute": "_SOURCE_INDEX"
+                },
+                "points": [
+                  [
+                    678.5850219726562,
+                    -0.03999999910593033,
+                    -140.01100158691406
+                  ],
+                  [
+                    668.197998046875,
+                    -0.03999999910593033,
+                    -139.79800415039062
+                  ],
+                  [
+                    668.197998046875,
+                    0,
+                    -139.79800415039062
+                  ]
+                ],
+                "normals": [
+                  [
+                    -0.020508438367870113,
+                    0,
+                    -0.999786370433668
+                  ],
+                  [
+                    -0.020508438367870113,
+                    0,
+                    -0.999786370433668
+                  ],
+                  [
+                    -0.020508438367870113,
+                    0,
+                    -0.999786370433668
+                  ]
+                ],
+                "semantics": [
+                  "NORMAL",
+                  "POSITION",
+                  "TEXCOORD_0",
+                  "_SOURCE_INDEX"
+                ],
+                "allAttributesFinite": true,
+                "area": 0.20778414676545362
+              },
+              {
+                "material": "tile-wall",
+                "node": "cell-e006-n001_near_tile-wall",
+                "extras": {
+                  "cellId": "cell-e006-n001",
+                  "detailLevel": "near",
+                  "sourceIndexLookup": "manifest.featureTable",
+                  "sourceIndexAttribute": "_SOURCE_INDEX"
+                },
+                "points": [
+                  [
+                    678.5850219726562,
+                    -0.03999999910593033,
+                    -140.01100158691406
+                  ],
+                  [
+                    668.197998046875,
+                    0,
+                    -139.79800415039062
+                  ],
+                  [
+                    678.5850219726562,
+                    0,
+                    -140.01100158691406
+                  ]
+                ],
+                "normals": [
+                  [
+                    -0.020508438367870113,
+                    0,
+                    -0.999786370433668
+                  ],
+                  [
+                    -0.020508438367870113,
+                    0,
+                    -0.999786370433668
+                  ],
+                  [
+                    -0.020508438367870113,
+                    0,
+                    -0.999786370433668
+                  ]
+                ],
+                "semantics": [
+                  "NORMAL",
+                  "POSITION",
+                  "TEXCOORD_0",
+                  "_SOURCE_INDEX"
+                ],
+                "allAttributesFinite": true,
+                "area": 0.20778414676545362
+              }
+            ]
+          }
+        ],
+        "originalAttributesExact": true
+      }
+    ],
+    "walkableChecks": [
+      {
+        "file": "ground.gltf",
+        "primitives": {
+          "Resident_asphalt_walkable:0": {
+            "extras": {
+              "walkable": true,
+              "surfaceId": "shijo-east-ground",
+              "resident": true,
+              "sourceIndexLookup": "manifest.featureTable",
+              "sourceIndexAttribute": "_SOURCE_INDEX"
+            },
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            "material": {
+              "name": "asphalt",
+              "extras": {
+                "surfaceMeaning": "Original asphalt grain; authored road widths and grade."
+              },
+              "doubleSided": true,
+              "pbrMetallicRoughness": {
+                "metallicFactor": 0,
+                "baseColorTexture": {
+                  "resource": {
+                    "sampler": {
+                      "magFilter": 9729,
+                      "minFilter": 9987,
+                      "wrapS": 10497,
+                      "wrapT": 10497
+                    },
+                    "extensions": {
+                      "EXT_texture_webp": {
+                        "source": {
+                          "name": "asphalt-color.png",
+                          "mimeType": "image/webp",
+                          "uri": "shared/materials/asphalt-color.webp"
+                        }
+                      }
+                    },
+                    "source": null
+                  }
+                },
+                "metallicRoughnessTexture": {
+                  "resource": {
+                    "sampler": {
+                      "magFilter": 9729,
+                      "minFilter": 9987,
+                      "wrapS": 10497,
+                      "wrapT": 10497
+                    },
+                    "extensions": {
+                      "EXT_texture_webp": {
+                        "source": {
+                          "name": "asphalt-roughness.png",
+                          "mimeType": "image/webp",
+                          "uri": "shared/materials/asphalt-roughness.webp"
+                        }
+                      }
+                    },
+                    "source": null
+                  }
+                }
+              },
+              "normalTexture": {
+                "resource": {
+                  "sampler": {
+                    "magFilter": 9729,
+                    "minFilter": 9987,
+                    "wrapS": 10497,
+                    "wrapT": 10497
+                  },
+                  "extensions": {
+                    "EXT_texture_webp": {
+                      "source": {
+                        "name": "asphalt-normal.png",
+                        "mimeType": "image/webp",
+                        "uri": "shared/materials/asphalt-normal.webp"
+                      }
+                    }
+                  },
+                  "source": null
+                },
+                "scale": 0.4000000059604645
+              },
+              "extensions": {
+                "KHR_materials_clearcoat": {
+                  "clearcoatFactor": 0,
+                  "clearcoatRoughnessFactor": 0.10000000149011612
+                }
+              }
+            },
+            "indices": {
+              "type": "Uint16Array",
+              "length": 645,
+              "sha256": "7dc7fcc63885633bc2b53f3d3d0159b19ea765d22987bdbf5c920abc2ee3b68d"
+            },
+            "attributes": {
+              "NORMAL": {
+                "type": "Float32Array",
+                "length": 1935,
+                "sha256": "263f4bc5ee45ddd4fd83332fed2fe6198587570c14a89cfc663fbedaf811eafe"
+              },
+              "POSITION": {
+                "type": "Float32Array",
+                "length": 1935,
+                "sha256": "80da068d1dfe510d12b452b9b3b697e05d3cb81aeea79c7dafb0dcccf1d0a055"
+              },
+              "TEXCOORD_0": {
+                "type": "Float32Array",
+                "length": 1290,
+                "sha256": "3f180d5c0315114d090e58a5af12345ac778b855c49a135eb1a39df07b10ff6b"
+              },
+              "_SOURCE_INDEX": {
+                "type": "Float32Array",
+                "length": 645,
+                "sha256": "dc10fbd8e41aa82696a813f9e952bf40e4d504dbe46e332770e4e248502aa59d"
+              }
+            }
+          },
+          "Resident_paving_walkable:0": {
+            "extras": {
+              "walkable": true,
+              "surfaceId": "shijo-east-ground",
+              "resident": true,
+              "sourceIndexLookup": "manifest.featureTable",
+              "sourceIndexAttribute": "_SOURCE_INDEX"
+            },
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            "material": {
+              "name": "paving",
+              "extras": {
+                "surfaceMeaning": "Original stone-paver pattern on explicitly authored flat walking surface."
+              },
+              "doubleSided": true,
+              "pbrMetallicRoughness": {
+                "metallicFactor": 0,
+                "baseColorTexture": {
+                  "resource": {
+                    "sampler": {
+                      "magFilter": 9729,
+                      "minFilter": 9987,
+                      "wrapS": 10497,
+                      "wrapT": 10497
+                    },
+                    "extensions": {
+                      "EXT_texture_webp": {
+                        "source": {
+                          "name": "paving-color.png",
+                          "mimeType": "image/webp",
+                          "uri": "shared/materials/paving-color.webp"
+                        }
+                      }
+                    },
+                    "source": null
+                  }
+                },
+                "metallicRoughnessTexture": {
+                  "resource": {
+                    "sampler": {
+                      "magFilter": 9729,
+                      "minFilter": 9987,
+                      "wrapS": 10497,
+                      "wrapT": 10497
+                    },
+                    "extensions": {
+                      "EXT_texture_webp": {
+                        "source": {
+                          "name": "paving-roughness.png",
+                          "mimeType": "image/webp",
+                          "uri": "shared/materials/paving-roughness.webp"
+                        }
+                      }
+                    },
+                    "source": null
+                  }
+                }
+              },
+              "normalTexture": {
+                "resource": {
+                  "sampler": {
+                    "magFilter": 9729,
+                    "minFilter": 9987,
+                    "wrapS": 10497,
+                    "wrapT": 10497
+                  },
+                  "extensions": {
+                    "EXT_texture_webp": {
+                      "source": {
+                        "name": "paving-normal.png",
+                        "mimeType": "image/webp",
+                        "uri": "shared/materials/paving-normal.webp"
+                      }
+                    }
+                  },
+                  "source": null
+                },
+                "scale": 0.4000000059604645
+              },
+              "extensions": {
+                "KHR_materials_clearcoat": {
+                  "clearcoatFactor": 0,
+                  "clearcoatRoughnessFactor": 0.10000000149011612
+                }
+              }
+            },
+            "indices": {
+              "type": "Uint16Array",
+              "length": 1101,
+              "sha256": "d36601f375d440d15c307c6435593d2cf38d87fa36e5aa5b9ef6965a9e0e7a16"
+            },
+            "attributes": {
+              "NORMAL": {
+                "type": "Float32Array",
+                "length": 3303,
+                "sha256": "7b53af7dd2f5c8ef6153662098a62c2e9fecd502706ba507353152920bc7fe06"
+              },
+              "POSITION": {
+                "type": "Float32Array",
+                "length": 3303,
+                "sha256": "d32b5e3dfe5460668c771f16e776fcc021915df23f318768bdc1e9126bcd60f0"
+              },
+              "TEXCOORD_0": {
+                "type": "Float32Array",
+                "length": 2202,
+                "sha256": "2b3da64a27aa87b70dbbdb22534fa4f9832ec73e4add0fb70b0bffdd91c38565"
+              },
+              "_SOURCE_INDEX": {
+                "type": "Float32Array",
+                "length": 1101,
+                "sha256": "eb70bad4e66e57786b8b9f5033d271b39dfab2a6429f39d5d28017c5701568ac"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "sourceGroupsCompared": 9731,
+    "completeExistingAttributesMatricesExact": true,
+    "allMaterialsExact": true,
+    "walkableAttributeAndIndexBytesExact": true
+  },
+  "source": {
+    "geographySha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+    "sceneSha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e",
+    "preparedArtSha256": "1ec33111947716ef43d8592c96203f55d1194b0f5b9ab68168b0deaf373bdb65",
+    "boundaryEvidence": {
+      "file": "experience/evidence/neighborhood-20261024/world/visible-boundaries/closure-proposal.json",
+      "sha256": "e1dfea3c79d40ac5a438fe8c1089c6453ba6650df56016af28b33e61173f8b71",
+      "record": {
+        "schemaVersion": 1,
+        "status": "pass-for-listed-segments-only",
+        "reviewedAt": "2026-10-24",
+        "scope": "Proposal for vertical render closures at exact reviewed shared display boundaries. No production geometry or navigation changed by this audit.",
+        "candidate9ManifestSha256": "79b1a3ed91f0b672364c690e44de9278dce555fab0074ce0dc4aaa8add62f534",
+        "inputs": [
+          {
+            "file": "experience/src/neighborhoods/shijo-east/geography.json",
+            "sha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+            "bytes": 175220
+          },
+          {
+            "file": "experience/src/neighborhoods/shijo-east/scene.json",
+            "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e",
+            "bytes": 8789674
+          },
+          {
+            "file": "artifacts/neighborhood-20261023/world/art-selection.json",
+            "sha256": "1ec33111947716ef43d8592c96203f55d1194b0f5b9ab68168b0deaf373bdb65",
+            "bytes": 5321766
+          },
+          {
+            "file": "experience/evidence/neighborhood-20261024/world/visible-boundaries/visible-boundaries.json",
+            "sha256": "8eea9cf7187eef517712b599c84e98d12bb508635ff41277467b634e5f490060",
+            "bytes": 17641
+          },
+          {
+            "file": "experience/evidence/neighborhood-20261024/world/visible-boundaries/boundary-raycasts.json",
+            "sha256": "29b2a8bb5f1ea51a0790dcc0a6ffd4b06bf18d815fa66cab7c166b4d538d9d66",
+            "bytes": 17930
+          }
+        ],
+        "visiblePoseBindings": [
+          {
+            "image": "neighborhood-captures/tenmangu-purposeful-pan-no-preference-canvas.png",
+            "imageSha256": "387839c76b397e7334581db9c77f700ac198c10ec5c7fa898f09525be5fc7b46",
+            "player": {
+              "x": 681.467,
+              "y": 142.004,
+              "height": 0,
+              "edgeId": "osm:way:66703316:434344433:5204263033",
+              "edgeDistance": 0
+            },
+            "camera": {
+              "position": [
+                685.1778217608588,
+                3.6405858991003743,
+                -144.9663014614781
+              ],
+              "target": [
+                681.294175,
+                3.087737,
+                -141.86603599999998
+              ],
+              "desiredPosition": [
+                685.1778217608588,
+                3.6405858991003743,
+                -144.9663014614781
+              ],
+              "viewTarget": [
+                681.294175,
+                3.087737,
+                -141.86603599999998
+              ],
+              "obstruction": {
+                "active": false,
+                "desiredDistance": 4.999999999999994,
+                "actualDistance": 4.999999999999994,
+                "targetAdjusted": false,
+                "framingRecovered": false,
+                "actorInFrame": false,
+                "actorVerticalOccupancy": 0.36971242114847785,
+                "recoveryFits": false,
+                "minimumSceneDistance": 4.999999999999994,
+                "clearance": 0.35,
+                "angleOffset": 0,
+                "settling": false
+              },
+              "azimuth": 2.2444920000000144,
+              "polar": 1.4599999999999946,
+              "distance": 4.999999999999994,
+              "frontage": "south",
+              "azimuthBase": 3.141592653589793,
+              "relativeAzimuth": -0.8971006535897788,
+              "enabled": true,
+              "damping": true,
+              "transitioning": false,
+              "solo": true,
+              "inspecting": true,
+              "inspectionAimed": true,
+              "inspectionPanned": true,
+              "panning": true,
+              "projectionMatrix": [
+                1.626675118070023,
+                0,
+                0,
+                0,
+                0,
+                2.2460367739042155,
+                0,
+                0,
+                0,
+                0,
+                -1.0008575103615833,
+                -1,
+                0,
+                0,
+                -0.3001286265542375,
+                0
+              ],
+              "matrixWorld": [
+                -0.6238784884621698,
+                -6.938893903907228e-18,
+                -0.7815213571196622,
+                0,
+                -0.08641264438140722,
+                0.9938683634116442,
+                0.06898210710374328,
+                0,
+                0.7767293521717658,
+                0.11056977982007499,
+                -0.6200530922956271,
+                0,
+                685.1778217608588,
+                3.6405858991003743,
+                -144.9663014614781,
+                1
+              ],
+              "limits": {
+                "polar": [
+                  0.55,
+                  1.49
+                ],
+                "distance": [
+                  5,
+                  55
+                ],
+                "targetXY": 40,
+                "targetHeight": [
+                  0.5,
+                  40
+                ]
+              }
+            }
+          },
+          {
+            "image": "neighborhood-captures/outbound-pontocho-entrance-day.png",
+            "imageSha256": "54665983ab2a4481607ecc294c7aa1af3d688c52581b06b0d6f5cf297f70cf15",
+            "player": {
+              "x": 1036.755,
+              "y": 17.617,
+              "height": 0,
+              "edgeId": "osm:way:542888424:2367201411:5248383670",
+              "edgeDistance": 3.8905339977538023
+            },
+            "camera": {
+              "position": [
+                1042.2334480738273,
+                11.579114671362637,
+                3.7170029000313853
+              ],
+              "target": [
+                1037.954715455819,
+                1.6,
+                -15.416990869159843
+              ],
+              "desiredPosition": [
+                1042.2334480738273,
+                11.579114671362637,
+                3.7170029000313853
+              ],
+              "viewTarget": [
+                1037.954715455819,
+                1.6,
+                -15.416990869159843
+              ],
+              "obstruction": {
+                "active": false,
+                "desiredDistance": 22.000000000001396,
+                "actualDistance": 22.000000000001396,
+                "targetAdjusted": false,
+                "framingRecovered": false,
+                "actorInFrame": true,
+                "actorVerticalOccupancy": 0.07224343642222317,
+                "recoveryFits": true,
+                "minimumSceneDistance": 5,
+                "clearance": 0.35,
+                "angleOffset": 0,
+                "settling": false
+              },
+              "azimuth": 0.2199999999999794,
+              "polar": 1.1000000000000356,
+              "distance": 22.000000000001396,
+              "frontage": "north",
+              "azimuthBase": 0,
+              "relativeAzimuth": 0.2199999999999794,
+              "enabled": true,
+              "damping": true,
+              "transitioning": false,
+              "solo": true,
+              "inspecting": false,
+              "inspectionAimed": false,
+              "inspectionPanned": false,
+              "panning": false,
+              "projectionMatrix": [
+                1.626675118070023,
+                0,
+                0,
+                0,
+                0,
+                2.2460367739042155,
+                0,
+                0,
+                0,
+                0,
+                -1.0008575103615833,
+                -1,
+                0,
+                0,
+                -0.3001286265542375,
+                0
+              ],
+              "matrixWorld": [
+                0.97589744933061,
+                -1.3877787807814457e-17,
+                -0.2182296230808492,
+                0,
+                -0.09898811060963195,
+                0.8912073600614515,
+                -0.4426632979254476,
+                0,
+                0.19448784627308924,
+                0.4535961214255457,
+                0.869726989508637,
+                0,
+                1042.2334480738273,
+                11.579114671362637,
+                3.7170029000313853,
+                1
+              ],
+              "limits": {
+                "polar": [
+                  0.55,
+                  1.49
+                ],
+                "distance": [
+                  5,
+                  55
+                ],
+                "targetXY": 40,
+                "targetHeight": [
+                  0.5,
+                  40
+                ]
+              }
+            }
+          }
+        ],
+        "buildingSegments": [
+          {
+            "sourceId": "kyoto-city:bldg_1bab607d-4c47-48a5-b523-e64000d895f6",
+            "sourceIndex": 731,
+            "polygonIndex": 0,
+            "edgeIndex": 5,
+            "from": [
+              677.614,
+              127.301
+            ],
+            "to": [
+              677.476,
+              134.033
+            ],
+            "topHeightMetres": 0,
+            "bottomHeightMetres": -0.04,
+            "adjacentSourceId": "shijo-east:ground",
+            "adjacentTopHeightMetres": -0.04,
+            "sharedLengthMetres": 6.733414289942347,
+            "planOverlapSquareMetres": 0,
+            "orientation": "CCW source-building ring; exterior on right",
+            "heightOrigin": "authored display levels",
+            "walkable": false,
+            "id": "building-731-edge-5",
+            "higherSurfaceOnLeft": true
+          },
+          {
+            "sourceId": "kyoto-city:bldg_1bab607d-4c47-48a5-b523-e64000d895f6",
+            "sourceIndex": 731,
+            "polygonIndex": 0,
+            "edgeIndex": 6,
+            "from": [
+              677.476,
+              134.033
+            ],
+            "to": [
+              678.709,
+              134.059
+            ],
+            "topHeightMetres": 0,
+            "bottomHeightMetres": -0.04,
+            "adjacentSourceId": "shijo-east:ground",
+            "adjacentTopHeightMetres": -0.04,
+            "sharedLengthMetres": 1.2332740976765346,
+            "planOverlapSquareMetres": 0,
+            "orientation": "CCW source-building ring; exterior on right",
+            "heightOrigin": "authored display levels",
+            "walkable": false,
+            "id": "building-731-edge-6",
+            "higherSurfaceOnLeft": true
+          },
+          {
+            "sourceId": "kyoto-city:bldg_1bab607d-4c47-48a5-b523-e64000d895f6",
+            "sourceIndex": 731,
+            "polygonIndex": 0,
+            "edgeIndex": 7,
+            "from": [
+              678.709,
+              134.059
+            ],
+            "to": [
+              678.585,
+              140.011
+            ],
+            "topHeightMetres": 0,
+            "bottomHeightMetres": -0.04,
+            "adjacentSourceId": "shijo-east:ground",
+            "adjacentTopHeightMetres": -0.04,
+            "sharedLengthMetres": 5.953291526542267,
+            "planOverlapSquareMetres": 0,
+            "orientation": "CCW source-building ring; exterior on right",
+            "heightOrigin": "authored display levels",
+            "walkable": false,
+            "id": "building-731-edge-7",
+            "higherSurfaceOnLeft": true
+          },
+          {
+            "sourceId": "kyoto-city:bldg_1bab607d-4c47-48a5-b523-e64000d895f6",
+            "sourceIndex": 731,
+            "polygonIndex": 0,
+            "edgeIndex": 8,
+            "from": [
+              678.585,
+              140.011
+            ],
+            "to": [
+              668.198,
+              139.798
+            ],
+            "topHeightMetres": 0,
+            "bottomHeightMetres": -0.04,
+            "adjacentSourceId": "shijo-east:ground",
+            "adjacentTopHeightMetres": -0.04,
+            "sharedLengthMetres": 10.389183702293515,
+            "planOverlapSquareMetres": 0,
+            "orientation": "CCW source-building ring; exterior on right",
+            "heightOrigin": "authored display levels",
+            "walkable": false,
+            "id": "building-731-edge-8",
+            "higherSurfaceOnLeft": true
+          }
+        ],
+        "roadSegments": [
+          {
+            "sourceId": "osm:way:174762073",
+            "sourceIndex": 20,
+            "from": [
+              999.936,
+              10.876467240421988
+            ],
+            "to": [
+              1031.067,
+              11.686
+            ],
+            "topHeightMetres": -0.04,
+            "bottomHeightMetres": -0.12,
+            "adjacentSourceId": "shijo-east:ground",
+            "adjacentTopHeightMetres": -0.04,
+            "sharedLengthMetres": 31.14152379522923,
+            "orientation": "Higher land on left; lower road on right",
+            "heightOrigin": "authored display levels",
+            "widthOrigin": "authored-display-width",
+            "walkable": false,
+            "excludedHigherSurfaceCoverage": [
+              {
+                "sourceId": "osm:way:465069412",
+                "heightMetres": -0.01,
+                "lengthMetres": 1.287435068724459,
+                "geometry": {
+                  "type": "LineString",
+                  "coordinates": [
+                    [
+                      999.936,
+                      10.876467240421988
+                    ],
+                    [
+                      998.649,
+                      10.843
+                    ]
+                  ]
+                }
+              }
+            ],
+            "higherSurfaceOnLeft": true,
+            "id": "road-20-north-ground"
+          },
+          {
+            "sourceId": "osm:way:843727820",
+            "sourceIndex": 151,
+            "from": [
+              1030.989,
+              14.885
+            ],
+            "to": [
+              1042.837,
+              15.184
+            ],
+            "topHeightMetres": -0.04,
+            "bottomHeightMetres": -0.12,
+            "adjacentSourceId": "shijo-east:ground",
+            "adjacentTopHeightMetres": -0.04,
+            "sharedLengthMetres": 11.851772230345931,
+            "orientation": "Higher land on left; lower road on right",
+            "heightOrigin": "authored display levels",
+            "widthOrigin": "authored-display-width",
+            "walkable": false,
+            "excludedHigherSurfaceCoverage": [],
+            "higherSurfaceOnLeft": true,
+            "id": "road-151-north-ground"
+          }
+        ],
+        "exclusions": [
+          "No blanket building, road, ground or bridge height change.",
+          "Road20 crossing path osm:way:465069412 covering 1.287435068724459m of the north shared edge is excluded.",
+          "The road151 eastern cap / bridge83 (osm:way:532008156) overlap is excluded: 3.165144150898156 square metres of plan overlap, no exact shared-boundary line.",
+          "The near-vertical angular step between road20 and road151 is excluded from this exact-boundary proposal; the retained land uses [1031.151,8.487] while road151 uses [1031.1505,8.487]. This is within the existing 1mm display precision but requires a separate bounded numerical-adjacency review.",
+          "No closure is proposed for other source731 ring edges or other buildings."
+        ],
+        "existingNumericConditions": {
+          "road20GroundOverlapSquareMetres": 0.02462102376240323,
+          "road151GroundOverlapSquareMetres": 0.0015169597743492009,
+          "meaning": "Pre-existing aggregate polygon overlap outside/along the road footprints is reported without repair. The selected horizontal line segments are exact retained shared boundaries."
+        },
+        "expectedChange": {
+          "buildingAddedTriangles": 8,
+          "roadAddedTriangles": 4,
+          "retainExistingGeometryMaterialsUVsSourceIDsTransforms": true,
+          "navigationChanged": false,
+          "horizontalSurfacesChanged": false,
+          "newImages": false
+        },
+        "limits": [
+          "Boundary levels and roadway widths are authored display conventions, not surveyed curbs or building foundations.",
+          "Municipal source731 geometry establishes footprint and LOD1 vertical extent; it does not establish its architectural identity, tenant or entrance.",
+          "Offline rays identify depicted source surfaces but do not prove final visual acceptance. Matched day/night views remain required.",
+          "Road source grouping and bridge height distinctions must remain explicit. A new material or geometry interpretation is not approved by this record."
+        ]
+      }
+    },
+    "producerFiles": {
+      "styleSha256": "experience/art/neighborhood-style.json",
+      "generatorSha256": "experience/art/build_neighborhood.py",
+      "geometryHelperSha256": "experience/art/neighborhood_mesh.py",
+      "landmarkHelperSha256": "experience/art/neighborhood_landmarks.py",
+      "materialHelperSha256": "experience/art/neighborhood_materials.py",
+      "sceneSha256": "experience/src/neighborhoods/shijo-east/scene.json",
+      "geographySha256": "experience/src/neighborhoods/shijo-east/geography.json",
+      "preparedArtSha256": "artifacts/neighborhood-20261023/world/art-selection.json"
+    },
+    "featureTableExact": true,
+    "originalSourceAndNavigationExact": true
+  },
+  "resources": {
+    "files": 347,
+    "byteExactCount": 310,
+    "changedResources": [
+      "cells/cell-e000-n000/base.bin",
+      "cells/cell-e000-n000/base.bin.gz",
+      "cells/cell-e000-n000/base.gltf",
+      "cells/cell-e000-n000/base.gltf.gz",
+      "cells/cell-e000-n000/near.bin",
+      "cells/cell-e000-n000/near.bin.gz",
+      "cells/cell-e000-n000/near.gltf",
+      "cells/cell-e000-n000/near.gltf.gz",
+      "cells/cell-e000-s001/base.bin",
+      "cells/cell-e000-s001/base.bin.gz",
+      "cells/cell-e000-s001/base.gltf",
+      "cells/cell-e000-s001/base.gltf.gz",
+      "cells/cell-e000-s001/near.bin",
+      "cells/cell-e000-s001/near.bin.gz",
+      "cells/cell-e000-s001/near.gltf",
+      "cells/cell-e000-s001/near.gltf.gz",
+      "cells/cell-e006-n001/base.bin",
+      "cells/cell-e006-n001/base.bin.gz",
+      "cells/cell-e006-n001/base.gltf",
+      "cells/cell-e006-n001/base.gltf.gz",
+      "cells/cell-e006-n001/near.bin",
+      "cells/cell-e006-n001/near.bin.gz",
+      "cells/cell-e006-n001/near.gltf",
+      "cells/cell-e006-n001/near.gltf.gz",
+      "compression-report.json",
+      "context.bin",
+      "context.bin.gz",
+      "context.gltf",
+      "context.gltf.gz",
+      "ground.bin",
+      "ground.bin.gz",
+      "ground.gltf",
+      "ground.gltf.gz",
+      "manifest.json",
+      "provenance.json",
+      "transport-input-manifest.json",
+      "transport-report.json"
+    ],
+    "newImages": 0,
+    "gzipRoundTrips": 148
+  },
+  "validation": {
+    "containers": 74,
+    "reportedErrors": 0
+  },
+  "budgets": {
+    "sections": [
+      {
+        "file": "ground.gltf",
+        "transferBytes": 360963,
+        "decodedBytes": 406805,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "context.gltf",
+        "transferBytes": 187575,
+        "decodedBytes": 411420,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e000-s001/base.gltf",
+        "transferBytes": 367512,
+        "decodedBytes": 935210,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e000-s001/near.gltf",
+        "transferBytes": 633391,
+        "decodedBytes": 1961218,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e000-n000/base.gltf",
+        "transferBytes": 441112,
+        "decodedBytes": 1328324,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e000-n000/near.gltf",
+        "transferBytes": 1021937,
+        "decodedBytes": 3150487,
+        "limitBytes": 3670016
+      },
+      {
+        "file": "cells/cell-e001-s001/base.gltf",
+        "transferBytes": 31085,
+        "decodedBytes": 120697,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e001-s001/near.gltf",
+        "transferBytes": 116357,
+        "decodedBytes": 509863,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e001-n000/base.gltf",
+        "transferBytes": 20812,
+        "decodedBytes": 102214,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e001-n000/near.gltf",
+        "transferBytes": 90676,
+        "decodedBytes": 514741,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e002-s001/base.gltf",
+        "transferBytes": 24208,
+        "decodedBytes": 106711,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e002-s001/near.gltf",
+        "transferBytes": 105585,
+        "decodedBytes": 510612,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e002-n000/base.gltf",
+        "transferBytes": 50348,
+        "decodedBytes": 231195,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e002-n000/near.gltf",
+        "transferBytes": 209028,
+        "decodedBytes": 1096154,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e002-n001/base.gltf",
+        "transferBytes": 79882,
+        "decodedBytes": 216406,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e002-n001/near.gltf",
+        "transferBytes": 262462,
+        "decodedBytes": 746816,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e003-s001/base.gltf",
+        "transferBytes": 32030,
+        "decodedBytes": 142128,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e003-s001/near.gltf",
+        "transferBytes": 137189,
+        "decodedBytes": 713190,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e003-n000/base.gltf",
+        "transferBytes": 36213,
+        "decodedBytes": 138658,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e003-n000/near.gltf",
+        "transferBytes": 139983,
+        "decodedBytes": 616055,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e003-n001/base.gltf",
+        "transferBytes": 110924,
+        "decodedBytes": 275926,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e003-n001/near.gltf",
+        "transferBytes": 308178,
+        "decodedBytes": 792375,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e004-s001/base.gltf",
+        "transferBytes": 19510,
+        "decodedBytes": 98757,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e004-s001/near.gltf",
+        "transferBytes": 83179,
+        "decodedBytes": 476511,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e004-n000/base.gltf",
+        "transferBytes": 37336,
+        "decodedBytes": 147332,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e004-n000/near.gltf",
+        "transferBytes": 155211,
+        "decodedBytes": 715645,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e004-n001/base.gltf",
+        "transferBytes": 120533,
+        "decodedBytes": 292505,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e004-n001/near.gltf",
+        "transferBytes": 345590,
+        "decodedBytes": 860642,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e005-s001/base.gltf",
+        "transferBytes": 25361,
+        "decodedBytes": 97922,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e005-s001/near.gltf",
+        "transferBytes": 102623,
+        "decodedBytes": 480415,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e005-n000/base.gltf",
+        "transferBytes": 33155,
+        "decodedBytes": 121822,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e005-n000/near.gltf",
+        "transferBytes": 146735,
+        "decodedBytes": 568811,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e005-n001/base.gltf",
+        "transferBytes": 133088,
+        "decodedBytes": 312897,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e005-n001/near.gltf",
+        "transferBytes": 373733,
+        "decodedBytes": 907048,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-s001/base.gltf",
+        "transferBytes": 18416,
+        "decodedBytes": 52720,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-s001/near.gltf",
+        "transferBytes": 50945,
+        "decodedBytes": 185089,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-n000/base.gltf",
+        "transferBytes": 87801,
+        "decodedBytes": 223081,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-n000/near.gltf",
+        "transferBytes": 275842,
+        "decodedBytes": 777859,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-n001/base.gltf",
+        "transferBytes": 108820,
+        "decodedBytes": 274734,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-n001/near.gltf",
+        "transferBytes": 314720,
+        "decodedBytes": 836648,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-n002/base.gltf",
+        "transferBytes": 3594,
+        "decodedBytes": 11313,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-n002/near.gltf",
+        "transferBytes": 3594,
+        "decodedBytes": 11313,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-n003/base.gltf",
+        "transferBytes": 3262,
+        "decodedBytes": 10684,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-n003/near.gltf",
+        "transferBytes": 3262,
+        "decodedBytes": 10684,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-n004/base.gltf",
+        "transferBytes": 2720,
+        "decodedBytes": 9853,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-n004/near.gltf",
+        "transferBytes": 2720,
+        "decodedBytes": 9853,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-n005/base.gltf",
+        "transferBytes": 2133,
+        "decodedBytes": 6537,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-n005/near.gltf",
+        "transferBytes": 2135,
+        "decodedBytes": 6537,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e007-s001/base.gltf",
+        "transferBytes": 23878,
+        "decodedBytes": 95451,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e007-s001/near.gltf",
+        "transferBytes": 94610,
+        "decodedBytes": 444250,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e007-n000/base.gltf",
+        "transferBytes": 57960,
+        "decodedBytes": 165773,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e007-n000/near.gltf",
+        "transferBytes": 214446,
+        "decodedBytes": 693949,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e007-n001/base.gltf",
+        "transferBytes": 14300,
+        "decodedBytes": 39601,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e007-n001/near.gltf",
+        "transferBytes": 40164,
+        "decodedBytes": 123626,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e007-n003/base.gltf",
+        "transferBytes": 1850,
+        "decodedBytes": 6717,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e007-n003/near.gltf",
+        "transferBytes": 1851,
+        "decodedBytes": 6717,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e007-n004/base.gltf",
+        "transferBytes": 2618,
+        "decodedBytes": 7786,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e007-n004/near.gltf",
+        "transferBytes": 2620,
+        "decodedBytes": 7786,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e007-n005/base.gltf",
+        "transferBytes": 1938,
+        "decodedBytes": 6835,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e007-n005/near.gltf",
+        "transferBytes": 1938,
+        "decodedBytes": 6835,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e008-n000/base.gltf",
+        "transferBytes": 40898,
+        "decodedBytes": 151378,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e008-n000/near.gltf",
+        "transferBytes": 160339,
+        "decodedBytes": 682261,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e009-s001/base.gltf",
+        "transferBytes": 13960,
+        "decodedBytes": 63210,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e009-s001/near.gltf",
+        "transferBytes": 43528,
+        "decodedBytes": 239107,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e009-n000/base.gltf",
+        "transferBytes": 46397,
+        "decodedBytes": 142468,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e009-n000/near.gltf",
+        "transferBytes": 167727,
+        "decodedBytes": 539478,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e010-s001/base.gltf",
+        "transferBytes": 16711,
+        "decodedBytes": 53969,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e010-s001/near.gltf",
+        "transferBytes": 59280,
+        "decodedBytes": 192604,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e010-n000/base.gltf",
+        "transferBytes": 1655375,
+        "decodedBytes": 3841229,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e010-n000/near.gltf",
+        "transferBytes": 1740513,
+        "decodedBytes": 4060035,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e011-s001/base.gltf",
+        "transferBytes": 3095,
+        "decodedBytes": 8063,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e011-s001/near.gltf",
+        "transferBytes": 3096,
+        "decodedBytes": 8063,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e011-n000/base.gltf",
+        "transferBytes": 2906,
+        "decodedBytes": 7757,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e011-n000/near.gltf",
+        "transferBytes": 2908,
+        "decodedBytes": 7757,
+        "limitBytes": 2097152
+      }
+    ],
+    "startup": {
+      "day": {
+        "totalBytes": 3036911,
+        "commonBytes": 2569043,
+        "travellerBytes": 35556,
+        "hdrBytes": 432312,
+        "limitBytes": 4194304
+      },
+      "night": {
+        "totalBytes": 3029675,
+        "commonBytes": 2569043,
+        "travellerBytes": 35556,
+        "hdrBytes": 425076,
+        "limitBytes": 4194304
+      }
+    }
+  },
+  "limits": "Boundary heights remain authored display levels. This audit establishes decoded geometry/material/provenance preservation; matched visual quality, GPU memory and frame timing require separate checks. Startup excludes application HTML/JS/CSS/fonts and HTTP framing. Excluded bridge overlap and rounded angular boundary receive no added geometry."
+}

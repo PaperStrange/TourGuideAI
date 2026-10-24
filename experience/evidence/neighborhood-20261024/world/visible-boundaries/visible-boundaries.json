@@ -1,0 +1,643 @@
+{
+  "status": "diagnostic",
+  "reviewedAt": "2026-10-24",
+  "tools": {
+    "shapely": "2.2.0"
+  },
+  "inputs": [
+    {
+      "file": "experience/src/neighborhoods/shijo-east/scene.json",
+      "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e",
+      "bytes": 8789674
+    },
+    {
+      "file": "artifacts/neighborhood-20261023/world/art-selection.json",
+      "sha256": "1ec33111947716ef43d8592c96203f55d1194b0f5b9ab68168b0deaf373bdb65",
+      "bytes": 5321766
+    },
+    {
+      "file": "artifacts/neighborhood-20261024/world/boundary-raycasts.json",
+      "sha256": "97f800230425d53d7ae3dd82a8f55a877020fb6efc0a2b87e63ed6829b78e5f1",
+      "bytes": 17928
+    }
+  ],
+  "producer": {
+    "file": "artifacts/neighborhood-20261024/world/audit-visible-boundaries.py",
+    "sha256": "3d38dec18c94851ebf83ea9556e3db8dd61926a5a3fad6be2813cdda4b494b3d",
+    "bytes": 6431
+  },
+  "tenmangu": {
+    "sourceId": "kyoto-city:bldg_1bab607d-4c47-48a5-b523-e64000d895f6",
+    "sourceIndex": 731,
+    "kind": "building",
+    "height": {
+      "metres": 14.997,
+      "origin": "derived-from-official-LOD1-z-range",
+      "sourceMinimumZ": 38.511,
+      "sourceMaximumZ": 53.508,
+      "measuredHeightAttribute": "19.3",
+      "meaning": "LOD1 solid vertical extent; measured-height attribute retained independently; facade/roof proportions unreviewed"
+    },
+    "edges": [
+      {
+        "polygonIndex": 0,
+        "edgeIndex": 5,
+        "from": [
+          677.614,
+          127.301
+        ],
+        "to": [
+          677.476,
+          134.033
+        ],
+        "lengthMetres": 6.733414289942347,
+        "buildingBaseHeightMetres": 0,
+        "adjacentSurfaces": [
+          {
+            "sourceId": "shijo-east:ground",
+            "heightMetres": -0.04,
+            "sharedLengthMetres": 6.733414289942347,
+            "sharedBoundary": {
+              "type": "LineString",
+              "coordinates": [
+                [
+                  677.614,
+                  127.301
+                ],
+                [
+                  677.476,
+                  134.033
+                ]
+              ]
+            },
+            "areaOverlapSquareMetres": 0.0
+          }
+        ]
+      },
+      {
+        "polygonIndex": 0,
+        "edgeIndex": 6,
+        "from": [
+          677.476,
+          134.033
+        ],
+        "to": [
+          678.709,
+          134.059
+        ],
+        "lengthMetres": 1.2332740976765346,
+        "buildingBaseHeightMetres": 0,
+        "adjacentSurfaces": [
+          {
+            "sourceId": "shijo-east:ground",
+            "heightMetres": -0.04,
+            "sharedLengthMetres": 1.2332740976765346,
+            "sharedBoundary": {
+              "type": "LineString",
+              "coordinates": [
+                [
+                  677.476,
+                  134.033
+                ],
+                [
+                  678.709,
+                  134.059
+                ]
+              ]
+            },
+            "areaOverlapSquareMetres": 0.0
+          }
+        ]
+      },
+      {
+        "polygonIndex": 0,
+        "edgeIndex": 7,
+        "from": [
+          678.709,
+          134.059
+        ],
+        "to": [
+          678.585,
+          140.011
+        ],
+        "lengthMetres": 5.953291526542267,
+        "buildingBaseHeightMetres": 0,
+        "adjacentSurfaces": [
+          {
+            "sourceId": "shijo-east:ground",
+            "heightMetres": -0.04,
+            "sharedLengthMetres": 5.953291526542267,
+            "sharedBoundary": {
+              "type": "LineString",
+              "coordinates": [
+                [
+                  678.709,
+                  134.059
+                ],
+                [
+                  678.585,
+                  140.011
+                ]
+              ]
+            },
+            "areaOverlapSquareMetres": 0.0
+          }
+        ]
+      },
+      {
+        "polygonIndex": 0,
+        "edgeIndex": 8,
+        "from": [
+          678.585,
+          140.011
+        ],
+        "to": [
+          668.198,
+          139.798
+        ],
+        "lengthMetres": 10.389183702293515,
+        "buildingBaseHeightMetres": 0,
+        "adjacentSurfaces": [
+          {
+            "sourceId": "shijo-east:ground",
+            "heightMetres": -0.04,
+            "sharedLengthMetres": 10.389183702293515,
+            "sharedBoundary": {
+              "type": "LineString",
+              "coordinates": [
+                [
+                  678.585,
+                  140.011
+                ],
+                [
+                  668.198,
+                  139.798
+                ]
+              ]
+            },
+            "areaOverlapSquareMetres": 0.0
+          }
+        ]
+      }
+    ]
+  },
+  "pontocho": [
+    {
+      "sourceId": "osm:way:174762073",
+      "sourceVersion": 27,
+      "sourceTimestamp": "2026-08-20T04:53:37Z",
+      "sourceTags": {
+        "bicycle:conditional": "no @ (08:00-21:00)",
+        "cycleway:both": "no",
+        "highway": "primary",
+        "lanes": "2",
+        "maxspeed": "40",
+        "name": "四条通",
+        "name:en": "Shijo Street",
+        "name:fr": "Rue Shijō",
+        "name:ja": "四条通",
+        "name:ja-Hira": "しじょうどおり",
+        "name:ja-Latn": "Shijō-dōri",
+        "name:ko": "시죠도리",
+        "note": "京都市道ですが、主要地方道なので primary にしてあります",
+        "official_name": "嵐山祇園線",
+        "official_name:en": "Arashiyama Gion Line",
+        "official_name:ja": "嵐山祇園線",
+        "official_name:ja-Hira": "あらしやまぎおんせん",
+        "official_name:ja-Latn": "Arashiyama Gion-sen",
+        "ref": "186",
+        "sidewalk:both": "separate",
+        "smoothness": "good",
+        "source": "Bing",
+        "surface": "asphalt",
+        "wikidata": "Q7496525",
+        "wikipedia": "ja:四条通"
+      },
+      "width": {
+        "metres": 6.4,
+        "origin": "authored-display-width"
+      },
+      "roadHeightMetres": -0.12,
+      "landHeightMetres": -0.04,
+      "groundSharedBoundaryMetres": 32.42895886395369,
+      "planOverlapWithGroundSquareMetres": 0.02462102376240323,
+      "northSharedSegments": [
+        {
+          "from": [
+            1031.067,
+            11.686
+          ],
+          "to": [
+            998.649,
+            10.843
+          ],
+          "lengthMetres": 32.42895886395369,
+          "higherSurfaceCoverage": [
+            {
+              "sourceId": "osm:way:465069412",
+              "heightMetres": -0.01,
+              "lengthMetres": 1.287435068724459,
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  [
+                    999.936,
+                    10.876467240421988
+                  ],
+                  [
+                    998.649,
+                    10.843
+                  ]
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "otherNearbySurfaces": [
+        {
+          "sourceId": "osm:way:380083522",
+          "kind": "road",
+          "heightMetres": -0.12,
+          "sharedBoundaryMetres": 1.6010507309121709,
+          "sharedBoundary": {
+            "type": "MultiLineString",
+            "coordinates": [
+              [
+                [
+                  876.3999688047558,
+                  4.505202332364601
+                ],
+                [
+                  876.405208116866,
+                  4.303267881270374
+                ]
+              ],
+              [
+                [
+                  876.405208116866,
+                  4.303267881270374
+                ],
+                [
+                  876.4414950645524,
+                  2.9046902228503697
+                ]
+              ]
+            ]
+          },
+          "planOverlapSquareMetres": 0.0
+        },
+        {
+          "sourceId": "osm:way:1021559402",
+          "kind": "road",
+          "heightMetres": -0.12,
+          "sharedBoundaryMetres": 9.572005562699346,
+          "sharedBoundary": {
+            "type": "MultiLineString",
+            "coordinates": [
+              [
+                [
+                  882.6880103104792,
+                  7.867425590968546
+                ],
+                [
+                  876.317,
+                  7.703
+                ]
+              ],
+              [
+                [
+                  876.317,
+                  7.703
+                ],
+                [
+                  876.3999688047558,
+                  4.505202332364601
+                ]
+              ]
+            ]
+          },
+          "planOverlapSquareMetres": 0.0
+        },
+        {
+          "sourceId": "osm:way:1351980639",
+          "kind": "road",
+          "heightMetres": -0.12,
+          "sharedBoundaryMetres": 2.0759795431835233,
+          "sharedBoundary": {
+            "type": "GeometryCollection",
+            "geometries": [
+              {
+                "type": "LineString",
+                "coordinates": [
+                  [
+                    975.0793330484121,
+                    10.239805423318094
+                  ],
+                  [
+                    973.004,
+                    10.188
+                  ]
+                ]
+              },
+              {
+                "type": "Point",
+                "coordinates": [
+                  971.0795228648806,
+                  10.138645121509194
+                ]
+              }
+            ]
+          },
+          "planOverlapSquareMetres": 1.7069679003611782e-15
+        },
+        {
+          "sourceId": "osm:way:1560802831",
+          "kind": "road",
+          "heightMetres": -0.12,
+          "sharedBoundaryMetres": 2.1865638824739233,
+          "sharedBoundary": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                989.344,
+                10.577
+              ],
+              [
+                987.1577435548637,
+                10.540334372509603
+              ]
+            ]
+          },
+          "planOverlapSquareMetres": 0.0
+        },
+        {
+          "sourceId": "osm:way:465069408",
+          "kind": "path",
+          "heightMetres": -0.01,
+          "sharedBoundaryMetres": 0.0,
+          "sharedBoundary": {
+            "type": "MultiPoint",
+            "coordinates": [
+              [
+                910.857939430327,
+                2.191980064641297
+              ],
+              [
+                908.4574500346508,
+                2.1302343778775983
+              ],
+              [
+                908.1150320116443,
+                8.52365637165138
+              ],
+              [
+                910.5153640237264,
+                8.585424952791763
+              ]
+            ]
+          },
+          "planOverlapSquareMetres": 15.368629861703965
+        },
+        {
+          "sourceId": "osm:way:465069411",
+          "kind": "path",
+          "heightMetres": -0.01,
+          "sharedBoundaryMetres": 0.0,
+          "sharedBoundary": {
+            "type": "MultiPoint",
+            "coordinates": [
+              [
+                978.8184567982092,
+                10.33480236817113
+              ],
+              [
+                981.2187749661349,
+                10.400489338082014
+              ],
+              [
+                981.1964582197588,
+                3.997479515040828
+              ],
+              [
+                978.7962621375193,
+                3.932165640509649
+              ]
+            ]
+          },
+          "planOverlapSquareMetres": 15.367598033108457
+        },
+        {
+          "sourceId": "osm:way:465069412",
+          "kind": "path",
+          "heightMetres": -0.01,
+          "sharedBoundaryMetres": 0.0,
+          "sharedBoundary": {
+            "type": "MultiPoint",
+            "coordinates": [
+              [
+                997.536,
+                10.81118291241268
+              ],
+              [
+                999.936,
+                10.876467240421988
+              ],
+              [
+                999.9389460963802,
+                4.474000294947502
+              ],
+              [
+                997.5390059660302,
+                4.408246555214792
+              ]
+            ]
+          },
+          "planOverlapSquareMetres": 15.366480755898237
+        },
+        {
+          "sourceId": "osm:way:542888379",
+          "kind": "path",
+          "heightMetres": -0.01,
+          "sharedBoundaryMetres": 0.0,
+          "sharedBoundary": {
+            "type": "MultiPoint",
+            "coordinates": [
+              [
+                1031.1505,
+                8.487
+              ],
+              [
+                1029.0138129308846,
+                5.230251845132236
+              ]
+            ]
+          },
+          "planOverlapSquareMetres": 5.777108097600291
+        },
+        {
+          "sourceId": "osm:way:532008175",
+          "kind": "bridge",
+          "heightMetres": -0.025,
+          "sharedBoundaryMetres": 0.0,
+          "sharedBoundary": {
+            "type": "MultiPoint",
+            "coordinates": [
+              [
+                985.4321013515066,
+                10.511393689749921
+              ],
+              [
+                985.4302870666282,
+                4.110486253492951
+              ],
+              [
+                978.4227819082223,
+                3.922035016067078
+              ],
+              [
+                978.4202956133038,
+                10.323505234929804
+              ]
+            ]
+          },
+          "planOverlapSquareMetres": 44.849363584962305
+        }
+      ]
+    },
+    {
+      "sourceId": "osm:way:843727820",
+      "sourceVersion": 11,
+      "sourceTimestamp": "2026-08-20T04:53:59Z",
+      "sourceTags": {
+        "alt_name": "京都市道186号嵐山祇園線",
+        "bicycle:conditional": "no @ (08:00-21:00)",
+        "cycleway:both": "no",
+        "highway": "primary",
+        "lanes": "4",
+        "maxspeed": "40",
+        "name": "四条通",
+        "name:en": "Shijo Street",
+        "name:fr": "Rue Shijō",
+        "name:ja": "四条通",
+        "name:ja-Hira": "しじょうどおり",
+        "name:ja-Latn": "Shijō-dōri",
+        "name:ko": "시죠도리",
+        "note": "京都市道ですが、主要地方道なので primary にしてあります",
+        "official_name": "嵐山祇園線",
+        "official_name:en": "Arashiyama Gion Line",
+        "official_name:ja": "嵐山祇園線",
+        "official_name:ja-Hira": "あらしやまぎおんせん",
+        "official_name:ja-Latn": "Arashiyama Gion-sen",
+        "ref": "186",
+        "sidewalk:both": "separate",
+        "smoothness": "excellent",
+        "source": "Bing",
+        "surface": "asphalt",
+        "wikidata": "Q7496525",
+        "wikipedia": "ja:四条通"
+      },
+      "width": {
+        "metres": 12.8,
+        "origin": "authored-display-width"
+      },
+      "roadHeightMetres": -0.12,
+      "landHeightMetres": -0.04,
+      "groundSharedBoundaryMetres": 11.851772230345931,
+      "planOverlapWithGroundSquareMetres": 0.0015169597743492009,
+      "northSharedSegments": [
+        {
+          "from": [
+            1042.837,
+            15.184
+          ],
+          "to": [
+            1030.989,
+            14.885
+          ],
+          "lengthMetres": 11.851772230345931,
+          "higherSurfaceCoverage": []
+        }
+      ],
+      "otherNearbySurfaces": [
+        {
+          "sourceId": "osm:way:542888379",
+          "kind": "path",
+          "heightMetres": -0.01,
+          "sharedBoundaryMetres": 0.0,
+          "sharedBoundary": {
+            "type": "MultiPoint",
+            "coordinates": [
+              [
+                1031.2554935560513,
+                4.327564881625537
+              ],
+              [
+                1031.1505,
+                8.487
+              ]
+            ]
+          },
+          "planOverlapSquareMetres": 2.3862328728373656
+        },
+        {
+          "sourceId": "osm:way:1560746284",
+          "kind": "path",
+          "heightMetres": -0.01,
+          "sharedBoundaryMetres": 0.4995845042726312,
+          "sharedBoundary": {
+            "type": "MultiLineString",
+            "coordinates": [
+              [
+                [
+                  1042.067895543391,
+                  2.361324133936813
+                ],
+                [
+                  1042.2269890089462,
+                  2.3653521565266185
+                ]
+              ],
+              [
+                [
+                  1042.2269890089462,
+                  2.3653521565266185
+                ],
+                [
+                  1042.56732,
+                  2.373968858131487
+                ]
+              ]
+            ]
+          },
+          "planOverlapSquareMetres": 0.030768913171879443
+        },
+        {
+          "sourceId": "osm:way:532008156",
+          "kind": "bridge",
+          "heightMetres": -0.025,
+          "sharedBoundaryMetres": 0.0,
+          "sharedBoundary": {
+            "type": "MultiPoint",
+            "coordinates": [
+              [
+                1042.99900426518,
+                8.786029396219527
+              ],
+              [
+                1042.067895543391,
+                2.361324133936814
+              ]
+            ]
+          },
+          "planOverlapSquareMetres": 3.165144150898156
+        }
+      ]
+    }
+  ],
+  "canonicalGeometryChanged": false,
+  "navigationChanged": false,
+  "limits": "These are source-indexed authored display surfaces. Widths and elevations retain their original authored status. Exact shared boundaries are distinguished from plan overlaps and unmatched regions; geometry alone does not establish the final screen-space cause."
+}
+
+

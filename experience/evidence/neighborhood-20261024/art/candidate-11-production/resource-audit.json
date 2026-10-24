@@ -1,0 +1,1328 @@
+{
+  "status": "pass",
+  "manifestSha256": "4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544",
+  "baselineManifestSha256": "e58257879fb4ead8af14022e71e329ee3309f9920eec6fe2cf4717276573d108",
+  "producerSha256": "3b565ac8bfe9a94a1a308b3c5305b5968e3a2a9a07e09b7b79765447777353cd",
+  "validatedContainers": 74,
+  "sourceTableExact": true,
+  "sharedResourcesExact": [
+    {
+      "file": "shared/materials/asphalt-normal.webp",
+      "bytes": 92042,
+      "sha256": "e6352f2dff9dfd394510855997d5cd23231f359f9156b46f17e4b2d560a12cae"
+    },
+    {
+      "file": "shared/materials/asphalt-color.webp",
+      "bytes": 32740,
+      "sha256": "c45d46245f10fe62e52c3830645725d755d9205a56224cb973bbc131cc20ec7e"
+    },
+    {
+      "file": "shared/materials/paving-normal.webp",
+      "bytes": 96212,
+      "sha256": "9c61845a9a8081af5f1d6c1074372ee1e44f020167ba83583210e7e6cbd726ac"
+    },
+    {
+      "file": "shared/materials/paving-roughness.webp",
+      "bytes": 38962,
+      "sha256": "3fa4e9df7a0047ab246f5734570b07f4f2a20e62029df19fa721445a44fde5b3"
+    },
+    {
+      "file": "shared/materials/paving-color.webp",
+      "bytes": 43200,
+      "sha256": "49c7fade64aaa52ce095da5c3614bc63c45393cd6c91dc3dfeb3a9de40190041"
+    },
+    {
+      "file": "shared/materials/water-normal.webp",
+      "bytes": 23138,
+      "sha256": "615090bc613f207aed4f8f7ab4037532b8bfe87ad7f428a36dfde5271ab01487"
+    },
+    {
+      "file": "shared/materials/water-color.webp",
+      "bytes": 38108,
+      "sha256": "94987ec34b7859694a70aedec2969c9d45e4cb77641f8103a4f61f9ec95d6a3e"
+    },
+    {
+      "file": "shared/materials/water-roughness.webp",
+      "bytes": 38916,
+      "sha256": "3be00eb61963e25dddbb52c2e7c6df3f2cdaf1cdceb624b780c85608ab483b6c"
+    },
+    {
+      "file": "shared/materials/asphalt-roughness.webp",
+      "bytes": 38614,
+      "sha256": "fa09f1ec2c86a8ea8758bd3b65dd4fe908ba67063809876ad60f962f6c073f6e"
+    },
+    {
+      "file": "shared/materials/stone-normal.webp",
+      "bytes": 96174,
+      "sha256": "3c97ff1ee18e01a36db94ae6da136d48b30d8748e6f78501758f133df24c82c3"
+    },
+    {
+      "file": "shared/materials/stone-color.webp",
+      "bytes": 45952,
+      "sha256": "50d1cdc2cbae4933338b58d1cc00cfcfce0a76d20baa0430cbe0941ccf73be7b"
+    },
+    {
+      "file": "shared/materials/stone-roughness.webp",
+      "bytes": 38912,
+      "sha256": "28481ec912fb5bbbe637bfea3b97decfe42a17a9543c4fa2bd2cc32ac1753154"
+    },
+    {
+      "file": "shared/materials/plaster-color.webp",
+      "bytes": 44842,
+      "sha256": "97c5b054ec584b80b6ac9a58c4ecb2ffaf9ac0ef9c4bf0d4b38844c2d23d93f6"
+    },
+    {
+      "file": "shared/materials/plaster-normal.webp",
+      "bytes": 92450,
+      "sha256": "11667a2007c1c94f48de89ae13d3ab468f80dadbf8a8f147e6b24872b9d5529f"
+    },
+    {
+      "file": "shared/materials/plaster-roughness.webp",
+      "bytes": 38980,
+      "sha256": "1219d9d22e9bf73386ab32ede26e277093aa2eca05687f0ce405c065dac8ef80"
+    },
+    {
+      "file": "shared/materials/tile-wall-color.webp",
+      "bytes": 46584,
+      "sha256": "e35e94daa4e97152d05b52676a8d1e2bb5b1d13a74a529ad69fe987f8dc1f573"
+    },
+    {
+      "file": "shared/materials/tile-wall-roughness.webp",
+      "bytes": 38920,
+      "sha256": "8e928731994138665f89fce54299af245c515f9d718659b57ca75865293ee694"
+    },
+    {
+      "file": "shared/materials/tile-wall-normal.webp",
+      "bytes": 99628,
+      "sha256": "7fee38194cbe4f5c801387af7c739a0f5a120ea6ebd5bebcb387156216b94f61"
+    },
+    {
+      "file": "shared/materials/retained-finish-glazing-blinds.webp",
+      "bytes": 7852,
+      "sha256": "a93c0d627e0cfce72024dffee4e2a20e046057bd36aa233985401031de8b8353"
+    },
+    {
+      "file": "shared/materials/retained-finish-glazing.webp",
+      "bytes": 6178,
+      "sha256": "ac9a9ed4d78ed3129dbaa317933d3a1520e19fe007673448e30045272932b5d7"
+    },
+    {
+      "file": "shared/materials/retained-bbf588b6e99459c4.webp",
+      "bytes": 20228,
+      "sha256": "b36fca9f80638dc14954e36d91206d347e578de1c07c648db44fafe0ecfd3f65"
+    },
+    {
+      "file": "shared/materials/retained-finish-pale-stone.webp",
+      "bytes": 28362,
+      "sha256": "99d31a8d60a943c3600a6a0151c227bb6472291b6cf8f3cd7a48c22bbd44a172"
+    },
+    {
+      "file": "shared/materials/retained-a50d3dca12c48d43.webp",
+      "bytes": 20330,
+      "sha256": "ad5f4a4c4aba8679514ba772b235a7768de8f9781ddd861204b7ac0bd26873a7"
+    },
+    {
+      "file": "shared/materials/retained-932ea4bbc3c5f775.webp",
+      "bytes": 21492,
+      "sha256": "5bd1d9127c2f57520453cd3ac2c071ca266438557aa76245b81f9f28c2a0fcdf"
+    },
+    {
+      "file": "shared/materials/retained-finish-granite-fascia.webp",
+      "bytes": 32120,
+      "sha256": "5b3bc86e9cf2fb6d4dd0ed5d65d825d5ebe500b35ed4e43533bb4e998e743426"
+    },
+    {
+      "file": "shared/materials/retained-f3b02e2cb1e0c404.webp",
+      "bytes": 32458,
+      "sha256": "3977251702a63dab5f93f8f34f6f5622001b20d776ffd32ccebb44a56239a935"
+    },
+    {
+      "file": "shared/materials/glass-normal.webp",
+      "bytes": 16222,
+      "sha256": "a979f36e9675afba17c20e353415ba9f235ccb843bda5c7cec1acd2b07afd5f1"
+    },
+    {
+      "file": "shared/materials/glass-color.webp",
+      "bytes": 41092,
+      "sha256": "9e48fc018c2aaf9b143901f2181ba6c88a116d8ca6ce878648d0ce1b754bb041"
+    },
+    {
+      "file": "shared/materials/glass-roughness.webp",
+      "bytes": 38912,
+      "sha256": "17ae31ee440e65ea9fba8b64d52db178b2f435c0f4110e2f954de0c89c27a8cc"
+    },
+    {
+      "file": "shared/materials/granite-normal.webp",
+      "bytes": 92282,
+      "sha256": "4ada987f6be4600c103956d39c2248cef0e2998c9cb4c159a65d41a5969818a1"
+    },
+    {
+      "file": "shared/materials/granite-color.webp",
+      "bytes": 39314,
+      "sha256": "d1f7f3de690675e41962e2c620da7c0705a8933b3252703e53fc3ba72e167b1b"
+    },
+    {
+      "file": "shared/materials/granite-roughness.webp",
+      "bytes": 38912,
+      "sha256": "d60715be45ded728a4473a9d8ad8e010e1121f82a4df278de4644599f196e9b5"
+    },
+    {
+      "file": "shared/materials/wood-normal.webp",
+      "bytes": 92688,
+      "sha256": "79bf19a338fb92c0a4a86827127c2a26e6e4945211255b31477c96b73dfca4a3"
+    },
+    {
+      "file": "shared/materials/wood-color.webp",
+      "bytes": 40016,
+      "sha256": "c1c8f0a00f747a9a08f1be7cab9897728c034e9a83ef0324c85c661b8fb17783"
+    },
+    {
+      "file": "shared/materials/wood-roughness.webp",
+      "bytes": 38922,
+      "sha256": "bf7422f05cfbb551d5744369c5838e649735019c18e24407f30fc377ffc4ae16"
+    },
+    {
+      "file": "shared/materials/shinkyogoku-panel-normal.webp",
+      "bytes": 58,
+      "sha256": "ab97d23af43ec0274737df45bb913434c1fb05f3d633ba20b1c2fa7535311b97"
+    },
+    {
+      "file": "shared/materials/shinkyogoku-panel-color.webp",
+      "bytes": 884,
+      "sha256": "80f4cf3ed306ba17a5bb379b07e05390cffa2ddad8d08b9a747811f100e0b8c7"
+    },
+    {
+      "file": "shared/materials/shinkyogoku-panel-roughness.webp",
+      "bytes": 1444,
+      "sha256": "5c07396c1b19646750b213c4c2661c0c420404432f4bcaae409e7701bddfea11"
+    }
+  ],
+  "addedImageBytes": 0,
+  "lightingRigExact": true,
+  "sourceInputHashesExact": true,
+  "critical": {
+    "day": {
+      "commonBytes": 2569043,
+      "travellerBytes": 35556,
+      "hdrBytes": 432312,
+      "totalBytes": 3036911,
+      "headroomBytes": 1157393,
+      "limitBytes": 4194304,
+      "hdrSha256": "efb72f542365dfdc25d2f9ed20983b34e74fd33f90d55b8763813f4d6dd35717"
+    },
+    "night": {
+      "commonBytes": 2569043,
+      "travellerBytes": 35556,
+      "hdrBytes": 425076,
+      "totalBytes": 3029675,
+      "headroomBytes": 1164629,
+      "limitBytes": 4194304,
+      "hdrSha256": "b3a82ca4a2dcb3cf429b5f7b57f75877296fbc3d60b6a2ed2419be7f8971f41f"
+    }
+  },
+  "startupCellId": "cell-e000-n000",
+  "startupMeaning": "Manifest, resident ground/context, opening BASE and deduplicated resources plus traveller and selected HDR; application HTML/JS/CSS/fonts and deferred sections are separate.",
+  "sourceBoundaryClosures": {
+    "overrides": {
+      "kyoto-city:bldg_1bab607d-4c47-48a5-b523-e64000d895f6": {
+        "expectedSourceIndex": 731,
+        "expectedKind": "building",
+        "material": "tile-wall",
+        "segmentIds": [
+          "building-731-edge-5",
+          "building-731-edge-6",
+          "building-731-edge-7",
+          "building-731-edge-8"
+        ],
+        "evidence": {
+          "file": "experience/evidence/neighborhood-20261024/world/visible-boundaries/closure-proposal.json",
+          "sha256": "e1dfea3c79d40ac5a438fe8c1089c6453ba6650df56016af28b33e61173f8b71"
+        },
+        "authored": "Vertical display closure along four reviewed source-ring edges between existing building base0 and adjacent ground-0.04. Existing facade material and all prior geometry remain unchanged. Physical foundation construction and dimensions are unmeasured."
+      },
+      "osm:way:174762073": {
+        "expectedSourceIndex": 20,
+        "expectedKind": "road",
+        "material": "paving",
+        "segmentIds": [
+          "road-20-north-ground"
+        ],
+        "evidence": {
+          "file": "experience/evidence/neighborhood-20261024/world/visible-boundaries/closure-proposal.json",
+          "sha256": "e1dfea3c79d40ac5a438fe8c1089c6453ba6650df56016af28b33e61173f8b71"
+        },
+        "authored": "Nonwalkable vertical display closure on the exact reviewed land/road boundary at-0.04/-0.12, using the existing adjacent paving finish. Crossing-covered and unmatched boundaries remain excluded. This does not establish surveyed curb construction."
+      },
+      "osm:way:843727820": {
+        "expectedSourceIndex": 151,
+        "expectedKind": "road",
+        "material": "paving",
+        "segmentIds": [
+          "road-151-north-ground"
+        ],
+        "evidence": {
+          "file": "experience/evidence/neighborhood-20261024/world/visible-boundaries/closure-proposal.json",
+          "sha256": "e1dfea3c79d40ac5a438fe8c1089c6453ba6650df56016af28b33e61173f8b71"
+        },
+        "authored": "Nonwalkable vertical display closure on the exact reviewed land/road boundary at-0.04/-0.12. Existing adjacent paving finish is retained; the eastern bridge overlap and half-millimetre angular mismatch are excluded. No road, bridge or navigation elevation is changed."
+      }
+    },
+    "addedTriangles": {
+      "kyoto-city:bldg_1bab607d-4c47-48a5-b523-e64000d895f6": {
+        "triangles": 8,
+        "scope": "each-building-lod"
+      },
+      "osm:way:174762073": {
+        "triangles": 2,
+        "scope": "resident-nonwalkable-ground"
+      },
+      "osm:way:843727820": {
+        "triangles": 2,
+        "scope": "resident-nonwalkable-ground"
+      }
+    },
+    "evidenceRecords": [
+      {
+        "file": "experience/evidence/neighborhood-20261024/world/visible-boundaries/closure-proposal.json",
+        "sha256": "e1dfea3c79d40ac5a438fe8c1089c6453ba6650df56016af28b33e61173f8b71",
+        "record": {
+          "schemaVersion": 1,
+          "status": "pass-for-listed-segments-only",
+          "reviewedAt": "2026-10-24",
+          "scope": "Proposal for vertical render closures at exact reviewed shared display boundaries. No production geometry or navigation changed by this audit.",
+          "candidate9ManifestSha256": "79b1a3ed91f0b672364c690e44de9278dce555fab0074ce0dc4aaa8add62f534",
+          "inputs": [
+            {
+              "file": "experience/src/neighborhoods/shijo-east/geography.json",
+              "sha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+              "bytes": 175220
+            },
+            {
+              "file": "experience/src/neighborhoods/shijo-east/scene.json",
+              "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e",
+              "bytes": 8789674
+            },
+            {
+              "file": "artifacts/neighborhood-20261023/world/art-selection.json",
+              "sha256": "1ec33111947716ef43d8592c96203f55d1194b0f5b9ab68168b0deaf373bdb65",
+              "bytes": 5321766
+            },
+            {
+              "file": "experience/evidence/neighborhood-20261024/world/visible-boundaries/visible-boundaries.json",
+              "sha256": "8eea9cf7187eef517712b599c84e98d12bb508635ff41277467b634e5f490060",
+              "bytes": 17641
+            },
+            {
+              "file": "experience/evidence/neighborhood-20261024/world/visible-boundaries/boundary-raycasts.json",
+              "sha256": "29b2a8bb5f1ea51a0790dcc0a6ffd4b06bf18d815fa66cab7c166b4d538d9d66",
+              "bytes": 17930
+            }
+          ],
+          "visiblePoseBindings": [
+            {
+              "image": "neighborhood-captures/tenmangu-purposeful-pan-no-preference-canvas.png",
+              "imageSha256": "387839c76b397e7334581db9c77f700ac198c10ec5c7fa898f09525be5fc7b46",
+              "player": {
+                "x": 681.467,
+                "y": 142.004,
+                "height": 0,
+                "edgeId": "osm:way:66703316:434344433:5204263033",
+                "edgeDistance": 0
+              },
+              "camera": {
+                "position": [
+                  685.1778217608588,
+                  3.6405858991003743,
+                  -144.9663014614781
+                ],
+                "target": [
+                  681.294175,
+                  3.087737,
+                  -141.86603599999998
+                ],
+                "desiredPosition": [
+                  685.1778217608588,
+                  3.6405858991003743,
+                  -144.9663014614781
+                ],
+                "viewTarget": [
+                  681.294175,
+                  3.087737,
+                  -141.86603599999998
+                ],
+                "obstruction": {
+                  "active": false,
+                  "desiredDistance": 4.999999999999994,
+                  "actualDistance": 4.999999999999994,
+                  "targetAdjusted": false,
+                  "framingRecovered": false,
+                  "actorInFrame": false,
+                  "actorVerticalOccupancy": 0.36971242114847785,
+                  "recoveryFits": false,
+                  "minimumSceneDistance": 4.999999999999994,
+                  "clearance": 0.35,
+                  "angleOffset": 0,
+                  "settling": false
+                },
+                "azimuth": 2.2444920000000144,
+                "polar": 1.4599999999999946,
+                "distance": 4.999999999999994,
+                "frontage": "south",
+                "azimuthBase": 3.141592653589793,
+                "relativeAzimuth": -0.8971006535897788,
+                "enabled": true,
+                "damping": true,
+                "transitioning": false,
+                "solo": true,
+                "inspecting": true,
+                "inspectionAimed": true,
+                "inspectionPanned": true,
+                "panning": true,
+                "projectionMatrix": [
+                  1.626675118070023,
+                  0,
+                  0,
+                  0,
+                  0,
+                  2.2460367739042155,
+                  0,
+                  0,
+                  0,
+                  0,
+                  -1.0008575103615833,
+                  -1,
+                  0,
+                  0,
+                  -0.3001286265542375,
+                  0
+                ],
+                "matrixWorld": [
+                  -0.6238784884621698,
+                  -6.938893903907228e-18,
+                  -0.7815213571196622,
+                  0,
+                  -0.08641264438140722,
+                  0.9938683634116442,
+                  0.06898210710374328,
+                  0,
+                  0.7767293521717658,
+                  0.11056977982007499,
+                  -0.6200530922956271,
+                  0,
+                  685.1778217608588,
+                  3.6405858991003743,
+                  -144.9663014614781,
+                  1
+                ],
+                "limits": {
+                  "polar": [
+                    0.55,
+                    1.49
+                  ],
+                  "distance": [
+                    5,
+                    55
+                  ],
+                  "targetXY": 40,
+                  "targetHeight": [
+                    0.5,
+                    40
+                  ]
+                }
+              }
+            },
+            {
+              "image": "neighborhood-captures/outbound-pontocho-entrance-day.png",
+              "imageSha256": "54665983ab2a4481607ecc294c7aa1af3d688c52581b06b0d6f5cf297f70cf15",
+              "player": {
+                "x": 1036.755,
+                "y": 17.617,
+                "height": 0,
+                "edgeId": "osm:way:542888424:2367201411:5248383670",
+                "edgeDistance": 3.8905339977538023
+              },
+              "camera": {
+                "position": [
+                  1042.2334480738273,
+                  11.579114671362637,
+                  3.7170029000313853
+                ],
+                "target": [
+                  1037.954715455819,
+                  1.6,
+                  -15.416990869159843
+                ],
+                "desiredPosition": [
+                  1042.2334480738273,
+                  11.579114671362637,
+                  3.7170029000313853
+                ],
+                "viewTarget": [
+                  1037.954715455819,
+                  1.6,
+                  -15.416990869159843
+                ],
+                "obstruction": {
+                  "active": false,
+                  "desiredDistance": 22.000000000001396,
+                  "actualDistance": 22.000000000001396,
+                  "targetAdjusted": false,
+                  "framingRecovered": false,
+                  "actorInFrame": true,
+                  "actorVerticalOccupancy": 0.07224343642222317,
+                  "recoveryFits": true,
+                  "minimumSceneDistance": 5,
+                  "clearance": 0.35,
+                  "angleOffset": 0,
+                  "settling": false
+                },
+                "azimuth": 0.2199999999999794,
+                "polar": 1.1000000000000356,
+                "distance": 22.000000000001396,
+                "frontage": "north",
+                "azimuthBase": 0,
+                "relativeAzimuth": 0.2199999999999794,
+                "enabled": true,
+                "damping": true,
+                "transitioning": false,
+                "solo": true,
+                "inspecting": false,
+                "inspectionAimed": false,
+                "inspectionPanned": false,
+                "panning": false,
+                "projectionMatrix": [
+                  1.626675118070023,
+                  0,
+                  0,
+                  0,
+                  0,
+                  2.2460367739042155,
+                  0,
+                  0,
+                  0,
+                  0,
+                  -1.0008575103615833,
+                  -1,
+                  0,
+                  0,
+                  -0.3001286265542375,
+                  0
+                ],
+                "matrixWorld": [
+                  0.97589744933061,
+                  -1.3877787807814457e-17,
+                  -0.2182296230808492,
+                  0,
+                  -0.09898811060963195,
+                  0.8912073600614515,
+                  -0.4426632979254476,
+                  0,
+                  0.19448784627308924,
+                  0.4535961214255457,
+                  0.869726989508637,
+                  0,
+                  1042.2334480738273,
+                  11.579114671362637,
+                  3.7170029000313853,
+                  1
+                ],
+                "limits": {
+                  "polar": [
+                    0.55,
+                    1.49
+                  ],
+                  "distance": [
+                    5,
+                    55
+                  ],
+                  "targetXY": 40,
+                  "targetHeight": [
+                    0.5,
+                    40
+                  ]
+                }
+              }
+            }
+          ],
+          "buildingSegments": [
+            {
+              "sourceId": "kyoto-city:bldg_1bab607d-4c47-48a5-b523-e64000d895f6",
+              "sourceIndex": 731,
+              "polygonIndex": 0,
+              "edgeIndex": 5,
+              "from": [
+                677.614,
+                127.301
+              ],
+              "to": [
+                677.476,
+                134.033
+              ],
+              "topHeightMetres": 0,
+              "bottomHeightMetres": -0.04,
+              "adjacentSourceId": "shijo-east:ground",
+              "adjacentTopHeightMetres": -0.04,
+              "sharedLengthMetres": 6.733414289942347,
+              "planOverlapSquareMetres": 0,
+              "orientation": "CCW source-building ring; exterior on right",
+              "heightOrigin": "authored display levels",
+              "walkable": false,
+              "id": "building-731-edge-5",
+              "higherSurfaceOnLeft": true
+            },
+            {
+              "sourceId": "kyoto-city:bldg_1bab607d-4c47-48a5-b523-e64000d895f6",
+              "sourceIndex": 731,
+              "polygonIndex": 0,
+              "edgeIndex": 6,
+              "from": [
+                677.476,
+                134.033
+              ],
+              "to": [
+                678.709,
+                134.059
+              ],
+              "topHeightMetres": 0,
+              "bottomHeightMetres": -0.04,
+              "adjacentSourceId": "shijo-east:ground",
+              "adjacentTopHeightMetres": -0.04,
+              "sharedLengthMetres": 1.2332740976765346,
+              "planOverlapSquareMetres": 0,
+              "orientation": "CCW source-building ring; exterior on right",
+              "heightOrigin": "authored display levels",
+              "walkable": false,
+              "id": "building-731-edge-6",
+              "higherSurfaceOnLeft": true
+            },
+            {
+              "sourceId": "kyoto-city:bldg_1bab607d-4c47-48a5-b523-e64000d895f6",
+              "sourceIndex": 731,
+              "polygonIndex": 0,
+              "edgeIndex": 7,
+              "from": [
+                678.709,
+                134.059
+              ],
+              "to": [
+                678.585,
+                140.011
+              ],
+              "topHeightMetres": 0,
+              "bottomHeightMetres": -0.04,
+              "adjacentSourceId": "shijo-east:ground",
+              "adjacentTopHeightMetres": -0.04,
+              "sharedLengthMetres": 5.953291526542267,
+              "planOverlapSquareMetres": 0,
+              "orientation": "CCW source-building ring; exterior on right",
+              "heightOrigin": "authored display levels",
+              "walkable": false,
+              "id": "building-731-edge-7",
+              "higherSurfaceOnLeft": true
+            },
+            {
+              "sourceId": "kyoto-city:bldg_1bab607d-4c47-48a5-b523-e64000d895f6",
+              "sourceIndex": 731,
+              "polygonIndex": 0,
+              "edgeIndex": 8,
+              "from": [
+                678.585,
+                140.011
+              ],
+              "to": [
+                668.198,
+                139.798
+              ],
+              "topHeightMetres": 0,
+              "bottomHeightMetres": -0.04,
+              "adjacentSourceId": "shijo-east:ground",
+              "adjacentTopHeightMetres": -0.04,
+              "sharedLengthMetres": 10.389183702293515,
+              "planOverlapSquareMetres": 0,
+              "orientation": "CCW source-building ring; exterior on right",
+              "heightOrigin": "authored display levels",
+              "walkable": false,
+              "id": "building-731-edge-8",
+              "higherSurfaceOnLeft": true
+            }
+          ],
+          "roadSegments": [
+            {
+              "sourceId": "osm:way:174762073",
+              "sourceIndex": 20,
+              "from": [
+                999.936,
+                10.876467240421988
+              ],
+              "to": [
+                1031.067,
+                11.686
+              ],
+              "topHeightMetres": -0.04,
+              "bottomHeightMetres": -0.12,
+              "adjacentSourceId": "shijo-east:ground",
+              "adjacentTopHeightMetres": -0.04,
+              "sharedLengthMetres": 31.14152379522923,
+              "orientation": "Higher land on left; lower road on right",
+              "heightOrigin": "authored display levels",
+              "widthOrigin": "authored-display-width",
+              "walkable": false,
+              "excludedHigherSurfaceCoverage": [
+                {
+                  "sourceId": "osm:way:465069412",
+                  "heightMetres": -0.01,
+                  "lengthMetres": 1.287435068724459,
+                  "geometry": {
+                    "type": "LineString",
+                    "coordinates": [
+                      [
+                        999.936,
+                        10.876467240421988
+                      ],
+                      [
+                        998.649,
+                        10.843
+                      ]
+                    ]
+                  }
+                }
+              ],
+              "higherSurfaceOnLeft": true,
+              "id": "road-20-north-ground"
+            },
+            {
+              "sourceId": "osm:way:843727820",
+              "sourceIndex": 151,
+              "from": [
+                1030.989,
+                14.885
+              ],
+              "to": [
+                1042.837,
+                15.184
+              ],
+              "topHeightMetres": -0.04,
+              "bottomHeightMetres": -0.12,
+              "adjacentSourceId": "shijo-east:ground",
+              "adjacentTopHeightMetres": -0.04,
+              "sharedLengthMetres": 11.851772230345931,
+              "orientation": "Higher land on left; lower road on right",
+              "heightOrigin": "authored display levels",
+              "widthOrigin": "authored-display-width",
+              "walkable": false,
+              "excludedHigherSurfaceCoverage": [],
+              "higherSurfaceOnLeft": true,
+              "id": "road-151-north-ground"
+            }
+          ],
+          "exclusions": [
+            "No blanket building, road, ground or bridge height change.",
+            "Road20 crossing path osm:way:465069412 covering 1.287435068724459m of the north shared edge is excluded.",
+            "The road151 eastern cap / bridge83 (osm:way:532008156) overlap is excluded: 3.165144150898156 square metres of plan overlap, no exact shared-boundary line.",
+            "The near-vertical angular step between road20 and road151 is excluded from this exact-boundary proposal; the retained land uses [1031.151,8.487] while road151 uses [1031.1505,8.487]. This is within the existing 1mm display precision but requires a separate bounded numerical-adjacency review.",
+            "No closure is proposed for other source731 ring edges or other buildings."
+          ],
+          "existingNumericConditions": {
+            "road20GroundOverlapSquareMetres": 0.02462102376240323,
+            "road151GroundOverlapSquareMetres": 0.0015169597743492009,
+            "meaning": "Pre-existing aggregate polygon overlap outside/along the road footprints is reported without repair. The selected horizontal line segments are exact retained shared boundaries."
+          },
+          "expectedChange": {
+            "buildingAddedTriangles": 8,
+            "roadAddedTriangles": 4,
+            "retainExistingGeometryMaterialsUVsSourceIDsTransforms": true,
+            "navigationChanged": false,
+            "horizontalSurfacesChanged": false,
+            "newImages": false
+          },
+          "limits": [
+            "Boundary levels and roadway widths are authored display conventions, not surveyed curbs or building foundations.",
+            "Municipal source731 geometry establishes footprint and LOD1 vertical extent; it does not establish its architectural identity, tenant or entrance.",
+            "Offline rays identify depicted source surfaces but do not prove final visual acceptance. Matched day/night views remain required.",
+            "Road source grouping and bridge height distinctions must remain explicit. A new material or geometry interpretation is not approved by this record."
+          ]
+        }
+      }
+    ],
+    "meaning": "Exact audited display-boundary faces; source footprints, prior surfaces, base metadata, materials and navigation preserved. No surveyed foundation or curb interpretation."
+  },
+  "changedContainerIdentities": [
+    {
+      "file": "ground.gltf",
+      "sha256": "8d31bfd752905edec245150298bc539b9d624ff5fdd33405b7e6aab452aad621",
+      "decodedGeometryBytes": 406805,
+      "transferGeometryBytes": 360963,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "context.gltf",
+      "sha256": "53fe3a025aae1ef69c6cc523c84b70b1ecc47270b3bface2413a98f99d4e71d5",
+      "decodedGeometryBytes": 411420,
+      "transferGeometryBytes": 187575,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e000-s001/base.gltf",
+      "sha256": "275e782a5ae186e119a9c112df17a18fa7e19f6ab2a7c03444f3b7cd92d15fcb",
+      "decodedGeometryBytes": 935210,
+      "transferGeometryBytes": 367512,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e000-s001/near.gltf",
+      "sha256": "11270a959ef61db5bb40445f8be465e3c6cbba23dbd85adb46430eb0d2c6c254",
+      "decodedGeometryBytes": 1961218,
+      "transferGeometryBytes": 633391,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e000-n000/base.gltf",
+      "sha256": "623e64a75bb7be3197c68aa7cfd40dd3708d8429d55c345bdbce5f5a09751c2b",
+      "decodedGeometryBytes": 1328324,
+      "transferGeometryBytes": 441112,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e000-n000/near.gltf",
+      "sha256": "084a2bfa024fd30c2fae2afbaa6f503fe2c8b97248ec2983b9a751c2e8ec9220",
+      "decodedGeometryBytes": 3150487,
+      "transferGeometryBytes": 1021937,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e006-n001/base.gltf",
+      "sha256": "b1605f0041bd215a4d89cae74b77903ea2394f13a6bacd9543980227547b15c2",
+      "decodedGeometryBytes": 274734,
+      "transferGeometryBytes": 108820,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e006-n001/near.gltf",
+      "sha256": "d54b206b8b3993f05c92f1d425177b67e56008331eead3d24e0688e18217efd8",
+      "decodedGeometryBytes": 836648,
+      "transferGeometryBytes": 314720,
+      "transferBudgetBytes": 2097152
+    }
+  ],
+  "sectionBudgets": [
+    {
+      "file": "ground.gltf",
+      "decodedGeometryBytes": 406805,
+      "transferGeometryBytes": 360963,
+      "previousTransferGeometryBytes": 406805,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "context.gltf",
+      "decodedGeometryBytes": 411420,
+      "transferGeometryBytes": 187575,
+      "previousTransferGeometryBytes": 411420,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e000-s001/base.gltf",
+      "decodedGeometryBytes": 935210,
+      "transferGeometryBytes": 367512,
+      "previousTransferGeometryBytes": 935210,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e000-s001/near.gltf",
+      "decodedGeometryBytes": 1961218,
+      "transferGeometryBytes": 633391,
+      "previousTransferGeometryBytes": 1961218,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e000-n000/base.gltf",
+      "decodedGeometryBytes": 1328324,
+      "transferGeometryBytes": 441112,
+      "previousTransferGeometryBytes": 1328324,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e000-n000/near.gltf",
+      "decodedGeometryBytes": 3150487,
+      "transferGeometryBytes": 1021937,
+      "previousTransferGeometryBytes": 3150487,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e001-s001/base.gltf",
+      "decodedGeometryBytes": 120697,
+      "transferGeometryBytes": 31085,
+      "previousTransferGeometryBytes": 120697,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e001-s001/near.gltf",
+      "decodedGeometryBytes": 509863,
+      "transferGeometryBytes": 116357,
+      "previousTransferGeometryBytes": 509863,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e001-n000/base.gltf",
+      "decodedGeometryBytes": 102214,
+      "transferGeometryBytes": 20812,
+      "previousTransferGeometryBytes": 102214,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e001-n000/near.gltf",
+      "decodedGeometryBytes": 514741,
+      "transferGeometryBytes": 90676,
+      "previousTransferGeometryBytes": 514741,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e002-s001/base.gltf",
+      "decodedGeometryBytes": 106711,
+      "transferGeometryBytes": 24208,
+      "previousTransferGeometryBytes": 106711,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e002-s001/near.gltf",
+      "decodedGeometryBytes": 510612,
+      "transferGeometryBytes": 105585,
+      "previousTransferGeometryBytes": 510612,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e002-n000/base.gltf",
+      "decodedGeometryBytes": 231195,
+      "transferGeometryBytes": 50348,
+      "previousTransferGeometryBytes": 231195,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e002-n000/near.gltf",
+      "decodedGeometryBytes": 1096154,
+      "transferGeometryBytes": 209028,
+      "previousTransferGeometryBytes": 1096154,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e002-n001/base.gltf",
+      "decodedGeometryBytes": 216406,
+      "transferGeometryBytes": 79882,
+      "previousTransferGeometryBytes": 216406,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e002-n001/near.gltf",
+      "decodedGeometryBytes": 746816,
+      "transferGeometryBytes": 262462,
+      "previousTransferGeometryBytes": 746816,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e003-s001/base.gltf",
+      "decodedGeometryBytes": 142128,
+      "transferGeometryBytes": 32030,
+      "previousTransferGeometryBytes": 142128,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e003-s001/near.gltf",
+      "decodedGeometryBytes": 713190,
+      "transferGeometryBytes": 137189,
+      "previousTransferGeometryBytes": 713190,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e003-n000/base.gltf",
+      "decodedGeometryBytes": 138658,
+      "transferGeometryBytes": 36213,
+      "previousTransferGeometryBytes": 138658,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e003-n000/near.gltf",
+      "decodedGeometryBytes": 616055,
+      "transferGeometryBytes": 139983,
+      "previousTransferGeometryBytes": 616055,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e003-n001/base.gltf",
+      "decodedGeometryBytes": 275926,
+      "transferGeometryBytes": 110924,
+      "previousTransferGeometryBytes": 275926,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e003-n001/near.gltf",
+      "decodedGeometryBytes": 792375,
+      "transferGeometryBytes": 308178,
+      "previousTransferGeometryBytes": 792375,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e004-s001/base.gltf",
+      "decodedGeometryBytes": 98757,
+      "transferGeometryBytes": 19510,
+      "previousTransferGeometryBytes": 98757,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e004-s001/near.gltf",
+      "decodedGeometryBytes": 476511,
+      "transferGeometryBytes": 83179,
+      "previousTransferGeometryBytes": 476511,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e004-n000/base.gltf",
+      "decodedGeometryBytes": 147332,
+      "transferGeometryBytes": 37336,
+      "previousTransferGeometryBytes": 147332,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e004-n000/near.gltf",
+      "decodedGeometryBytes": 715645,
+      "transferGeometryBytes": 155211,
+      "previousTransferGeometryBytes": 715645,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e004-n001/base.gltf",
+      "decodedGeometryBytes": 292505,
+      "transferGeometryBytes": 120533,
+      "previousTransferGeometryBytes": 292505,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e004-n001/near.gltf",
+      "decodedGeometryBytes": 860642,
+      "transferGeometryBytes": 345590,
+      "previousTransferGeometryBytes": 860642,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e005-s001/base.gltf",
+      "decodedGeometryBytes": 97922,
+      "transferGeometryBytes": 25361,
+      "previousTransferGeometryBytes": 97922,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e005-s001/near.gltf",
+      "decodedGeometryBytes": 480415,
+      "transferGeometryBytes": 102623,
+      "previousTransferGeometryBytes": 480415,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e005-n000/base.gltf",
+      "decodedGeometryBytes": 121822,
+      "transferGeometryBytes": 33155,
+      "previousTransferGeometryBytes": 121822,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e005-n000/near.gltf",
+      "decodedGeometryBytes": 568811,
+      "transferGeometryBytes": 146735,
+      "previousTransferGeometryBytes": 568811,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e005-n001/base.gltf",
+      "decodedGeometryBytes": 312897,
+      "transferGeometryBytes": 133088,
+      "previousTransferGeometryBytes": 312897,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e005-n001/near.gltf",
+      "decodedGeometryBytes": 907048,
+      "transferGeometryBytes": 373733,
+      "previousTransferGeometryBytes": 907048,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e006-s001/base.gltf",
+      "decodedGeometryBytes": 52720,
+      "transferGeometryBytes": 18416,
+      "previousTransferGeometryBytes": 52720,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e006-s001/near.gltf",
+      "decodedGeometryBytes": 185089,
+      "transferGeometryBytes": 50945,
+      "previousTransferGeometryBytes": 185089,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e006-n000/base.gltf",
+      "decodedGeometryBytes": 223081,
+      "transferGeometryBytes": 87801,
+      "previousTransferGeometryBytes": 223081,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e006-n000/near.gltf",
+      "decodedGeometryBytes": 777859,
+      "transferGeometryBytes": 275842,
+      "previousTransferGeometryBytes": 777859,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e006-n001/base.gltf",
+      "decodedGeometryBytes": 274734,
+      "transferGeometryBytes": 108820,
+      "previousTransferGeometryBytes": 274734,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e006-n001/near.gltf",
+      "decodedGeometryBytes": 836648,
+      "transferGeometryBytes": 314720,
+      "previousTransferGeometryBytes": 836648,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e006-n002/base.gltf",
+      "decodedGeometryBytes": 11313,
+      "transferGeometryBytes": 3594,
+      "previousTransferGeometryBytes": 11313,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e006-n002/near.gltf",
+      "decodedGeometryBytes": 11313,
+      "transferGeometryBytes": 3594,
+      "previousTransferGeometryBytes": 11313,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e006-n003/base.gltf",
+      "decodedGeometryBytes": 10684,
+      "transferGeometryBytes": 3262,
+      "previousTransferGeometryBytes": 10684,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e006-n003/near.gltf",
+      "decodedGeometryBytes": 10684,
+      "transferGeometryBytes": 3262,
+      "previousTransferGeometryBytes": 10684,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e006-n004/base.gltf",
+      "decodedGeometryBytes": 9853,
+      "transferGeometryBytes": 2720,
+      "previousTransferGeometryBytes": 9853,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e006-n004/near.gltf",
+      "decodedGeometryBytes": 9853,
+      "transferGeometryBytes": 2720,
+      "previousTransferGeometryBytes": 9853,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e006-n005/base.gltf",
+      "decodedGeometryBytes": 6537,
+      "transferGeometryBytes": 2133,
+      "previousTransferGeometryBytes": 6537,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e006-n005/near.gltf",
+      "decodedGeometryBytes": 6537,
+      "transferGeometryBytes": 2135,
+      "previousTransferGeometryBytes": 6537,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e007-s001/base.gltf",
+      "decodedGeometryBytes": 95451,
+      "transferGeometryBytes": 23878,
+      "previousTransferGeometryBytes": 95451,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e007-s001/near.gltf",
+      "decodedGeometryBytes": 444250,
+      "transferGeometryBytes": 94610,
+      "previousTransferGeometryBytes": 444250,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e007-n000/base.gltf",
+      "decodedGeometryBytes": 165773,
+      "transferGeometryBytes": 57960,
+      "previousTransferGeometryBytes": 165773,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e007-n000/near.gltf",
+      "decodedGeometryBytes": 693949,
+      "transferGeometryBytes": 214446,
+      "previousTransferGeometryBytes": 693949,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e007-n001/base.gltf",
+      "decodedGeometryBytes": 39601,
+      "transferGeometryBytes": 14300,
+      "previousTransferGeometryBytes": 39601,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e007-n001/near.gltf",
+      "decodedGeometryBytes": 123626,
+      "transferGeometryBytes": 40164,
+      "previousTransferGeometryBytes": 123626,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e007-n003/base.gltf",
+      "decodedGeometryBytes": 6717,
+      "transferGeometryBytes": 1850,
+      "previousTransferGeometryBytes": 6717,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e007-n003/near.gltf",
+      "decodedGeometryBytes": 6717,
+      "transferGeometryBytes": 1851,
+      "previousTransferGeometryBytes": 6717,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e007-n004/base.gltf",
+      "decodedGeometryBytes": 7786,
+      "transferGeometryBytes": 2618,
+      "previousTransferGeometryBytes": 7786,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e007-n004/near.gltf",
+      "decodedGeometryBytes": 7786,
+      "transferGeometryBytes": 2620,
+      "previousTransferGeometryBytes": 7786,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e007-n005/base.gltf",
+      "decodedGeometryBytes": 6835,
+      "transferGeometryBytes": 1938,
+      "previousTransferGeometryBytes": 6835,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e007-n005/near.gltf",
+      "decodedGeometryBytes": 6835,
+      "transferGeometryBytes": 1938,
+      "previousTransferGeometryBytes": 6835,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e008-n000/base.gltf",
+      "decodedGeometryBytes": 151378,
+      "transferGeometryBytes": 40898,
+      "previousTransferGeometryBytes": 151378,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e008-n000/near.gltf",
+      "decodedGeometryBytes": 682261,
+      "transferGeometryBytes": 160339,
+      "previousTransferGeometryBytes": 682261,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e009-s001/base.gltf",
+      "decodedGeometryBytes": 63210,
+      "transferGeometryBytes": 13960,
+      "previousTransferGeometryBytes": 63210,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e009-s001/near.gltf",
+      "decodedGeometryBytes": 239107,
+      "transferGeometryBytes": 43528,
+      "previousTransferGeometryBytes": 239107,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e009-n000/base.gltf",
+      "decodedGeometryBytes": 142468,
+      "transferGeometryBytes": 46397,
+      "previousTransferGeometryBytes": 142468,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e009-n000/near.gltf",
+      "decodedGeometryBytes": 539478,
+      "transferGeometryBytes": 167727,
+      "previousTransferGeometryBytes": 539478,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e010-s001/base.gltf",
+      "decodedGeometryBytes": 53969,
+      "transferGeometryBytes": 16711,
+      "previousTransferGeometryBytes": 53969,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e010-s001/near.gltf",
+      "decodedGeometryBytes": 192604,
+      "transferGeometryBytes": 59280,
+      "previousTransferGeometryBytes": 192604,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e010-n000/base.gltf",
+      "decodedGeometryBytes": 3841229,
+      "transferGeometryBytes": 1655375,
+      "previousTransferGeometryBytes": 1655375,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e010-n000/near.gltf",
+      "decodedGeometryBytes": 4060035,
+      "transferGeometryBytes": 1740513,
+      "previousTransferGeometryBytes": 1740513,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e011-s001/base.gltf",
+      "decodedGeometryBytes": 8063,
+      "transferGeometryBytes": 3095,
+      "previousTransferGeometryBytes": 8063,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e011-s001/near.gltf",
+      "decodedGeometryBytes": 8063,
+      "transferGeometryBytes": 3096,
+      "previousTransferGeometryBytes": 8063,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e011-n000/base.gltf",
+      "decodedGeometryBytes": 7757,
+      "transferGeometryBytes": 2906,
+      "previousTransferGeometryBytes": 7757,
+      "transferBudgetBytes": 2097152
+    },
+    {
+      "file": "cells/cell-e011-n000/near.gltf",
+      "decodedGeometryBytes": 7757,
+      "transferGeometryBytes": 2908,
+      "previousTransferGeometryBytes": 7757,
+      "transferBudgetBytes": 2097152
+    }
+  ],
+  "limits": "Independent decoded per-source geometry/material/transform and walkable-mesh audit plus matched browser review remain required."
+}

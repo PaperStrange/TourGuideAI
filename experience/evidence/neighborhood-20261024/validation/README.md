@@ -1,4 +1,23 @@
-# Candidate 10 local validation
+# Candidate 11 local validation
+
+The current canonical build is frozen at `artifacts/neighborhood-20261024/candidate-11`:
+446 files / 96,813,522 bytes, package SHA256
+`76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea`.
+Scenery manifest: `4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544`.
+All 203 application tests and 17 repository gates pass; production build succeeds.
+The independent source audit preserves all previous geometry/materials and byte-exact
+walkable attributes while verifying exactly 20 approved boundary triangles.
+
+| Output | Decoded SHA256 |
+| --- | --- |
+| `app-tests-11.txt.gz` | `3cd7c66be67f028f6c2ec81dc751f16c23e8be4358d1f50eadc283f4c806641f` |
+| `build-11.txt.gz` | `9e33d24aee077bc81bf0bed6b51d839708bb5d625f1ea53b54b8299b9cac2731` |
+| `gates-11.txt.gz` | `43a16b6a9e37d69799f7f711f656ea8ae0dc879d15558f6b93f7d192cf632332` |
+
+Native current-package acceptance remains separate. Candidate 10 public assets are
+preserved at `artifacts/neighborhood-20261024/candidate-10-public-before-contact`.
+
+## Retained candidate 10 validation
 
 The canonical build is frozen at `artifacts/neighborhood-20261024/candidate-10`:
 446 files, 96,790,615 bytes, package SHA256

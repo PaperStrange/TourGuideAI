@@ -1,0 +1,74 @@
+{
+  "manifestSha256": "4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544",
+  "baselineManifestSha256": "e58257879fb4ead8af14022e71e329ee3309f9920eec6fe2cf4717276573d108",
+  "status": "producer-validation-and-independent-decoded-audit-passed-browser-review-pending",
+  "independentAudit": {"file":"../../world/candidate11-export-audit.json","sha256":"2dd0f205a63772c717b2cd1016e4066f5f4a6e9d9424ada77108d5627281ccc8"},
+  "files": [
+    {
+      "file": "manifest.json.gz",
+      "source": "artifacts/neighborhood-20261024/art/candidate-11-transport/manifest.json",
+      "bytes": 60770,
+      "sha256": "7c2373f732a587165ac75734df96d5f5cf30752deb81a03572c163ca0cec22ca",
+      "encoding": "gzip",
+      "decodedBytes": 322503,
+      "decodedSha256": "4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544"
+    },
+    {
+      "file": "provenance.json.gz",
+      "source": "artifacts/neighborhood-20261024/art/candidate-11-transport/provenance.json",
+      "bytes": 128391,
+      "sha256": "8ee159e48fa6d3c5d2534d76b0e81de6e98139d722e13e0f3405337971c4802d",
+      "encoding": "gzip",
+      "decodedBytes": 1675970,
+      "decodedSha256": "f457de851f3c156ec0d35a06163b466f14fc35a7802641e0b1f31f01c7dc3eef"
+    },
+    {
+      "file": "compression-report.json.gz",
+      "source": "artifacts/neighborhood-20261024/art/candidate-11-transport/compression-report.json",
+      "bytes": 13099,
+      "sha256": "944f96c59f02c4910760001cade85614a2fadba19faf11d5f3cee09afec10862",
+      "encoding": "gzip",
+      "decodedBytes": 559396,
+      "decodedSha256": "a390a0b4abc2d1a7dee33d899c4f794598102ee288f8b4df96310d2f5b85a990"
+    },
+    {
+      "file": "transport-report.json.gz",
+      "source": "artifacts/neighborhood-20261024/art/candidate-11-transport/transport-report.json",
+      "bytes": 24945,
+      "sha256": "cc699089ec8e8861fde94dd0a7d28609f0ed11411fd3dd0fc3a9d5b0c899ee51",
+      "encoding": "gzip",
+      "decodedBytes": 122001,
+      "decodedSha256": "2b50b1a1c41c0a89565616c09ec87eb9698d42e3658425156ff557fd2971ddbd"
+    },
+    {
+      "file": "resource-audit.json",
+      "source": "artifacts/neighborhood-20261024/art/candidate-11-resource-audit.json",
+      "bytes": 47046,
+      "sha256": "2f55d08b078c782abc6f58545a6d59f00e5f792cf2340662ed372487a78c9529"
+    },
+    {
+      "file": "source-proof.json",
+      "source": "artifacts/neighborhood-20261024/art/candidate-11-source-proof.json",
+      "bytes": 954,
+      "sha256": "1a32709bba4e21d660ab114194d6924c7b4aec9ba7c14d6e575b8aa05f599c09"
+    },
+    {
+      "file": "executed-resource-audit.mjs.gz",
+      "source": "artifacts/neighborhood-20261024/art/audit-candidate11-resources.mjs",
+      "bytes": 1909,
+      "sha256": "ef15ac0ccfe105487b918ede7e88b6ab0bf3f5394789996ddee298c8fda99007",
+      "encoding": "gzip",
+      "decodedBytes": 5828,
+      "decodedSha256": "3b565ac8bfe9a94a1a308b3c5305b5968e3a2a9a07e09b7b79765447777353cd"
+    },
+    {
+      "file": "executed-source-proof.py.gz",
+      "source": "artifacts/neighborhood-20261024/art/check-boundary-source.py",
+      "bytes": 2215,
+      "sha256": "21a9f8f559bd6149fb0b0a532bb6f81bda362c42e445910854e984052011ea7f",
+      "encoding": "gzip",
+      "decodedBytes": 6154,
+      "decodedSha256": "f239aff81471aa1a287128264c2a10c511f2d177789ecf89e722c2f2e009764f"
+    }
+  ]
+}

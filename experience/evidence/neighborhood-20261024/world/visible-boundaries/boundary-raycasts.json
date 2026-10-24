@@ -1,0 +1,632 @@
+{
+  "scope": "Offline raycasts using actual captured matrices and decoded candidate9 meshes; sample positions refer to normalized depicted canvas coordinates. No native UI selection is claimed.",
+  "manifestSha256": "79b1a3ed91f0b672364c690e44de9278dce555fab0074ce0dc4aaa8add62f534",
+  "coverage": {
+    "file": "experience/evidence/neighborhood-20261023/ci/candidate-9/neighborhood-coverage.json",
+    "sha256": "bf32eb4f0adee9a0b126c5d189dfc14c6267409c5aa8c8d0d0063a7f6e0c11b0"
+  },
+  "producerSha256": "c854c9c3d80133987c149eba1185705360edb71ca7f06d1b9ab6b25c4f5ff126",
+  "decodedFiles": [
+    "ground.gltf",
+    "cells/cell-e006-n001/near.gltf",
+    "cells/cell-e010-n000/near.gltf"
+  ],
+  "results": [
+    {
+      "image": "neighborhood-captures/tenmangu-purposeful-pan-no-preference-canvas.png",
+      "imageSha256": "387839c76b397e7334581db9c77f700ac198c10ec5c7fa898f09525be5fc7b46",
+      "camera": {
+        "position": [
+          685.1778217608588,
+          3.6405858991003743,
+          -144.9663014614781
+        ],
+        "target": [
+          681.294175,
+          3.087737,
+          -141.86603599999998
+        ],
+        "desiredPosition": [
+          685.1778217608588,
+          3.6405858991003743,
+          -144.9663014614781
+        ],
+        "viewTarget": [
+          681.294175,
+          3.087737,
+          -141.86603599999998
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 4.999999999999994,
+          "actualDistance": 4.999999999999994,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": false,
+          "actorVerticalOccupancy": 0.36971242114847785,
+          "recoveryFits": false,
+          "minimumSceneDistance": 4.999999999999994,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": 2.2444920000000144,
+        "polar": 1.4599999999999946,
+        "distance": 4.999999999999994,
+        "frontage": "south",
+        "azimuthBase": 3.141592653589793,
+        "relativeAzimuth": -0.8971006535897788,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": true,
+        "inspectionAimed": true,
+        "inspectionPanned": true,
+        "panning": true,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          -0.6238784884621698,
+          -6.938893903907228e-18,
+          -0.7815213571196622,
+          0,
+          -0.08641264438140722,
+          0.9938683634116442,
+          0.06898210710374328,
+          0,
+          0.7767293521717658,
+          0.11056977982007499,
+          -0.6200530922956271,
+          0,
+          685.1778217608588,
+          3.6405858991003743,
+          -144.9663014614781,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "player": {
+        "x": 681.467,
+        "y": 142.004,
+        "height": 0,
+        "edgeId": "osm:way:66703316:434344433:5204263033",
+        "edgeDistance": 0
+      },
+      "samples": [
+        {
+          "id": "central-corner-wall",
+          "x": 0.05,
+          "y": -0.3,
+          "hits": [
+            {
+              "distance": 8.524424945430818,
+              "point": {
+                "x": 678.5535018237526,
+                "y": 140.01035533522517,
+                "height": 1.5856396674876638
+              },
+              "file": "cells/cell-e006-n001/near.gltf",
+              "node": "cell-e006-n001_near_tile-wall",
+              "material": "tile-wall",
+              "sourceIndex": 731,
+              "source": {
+                "sourceId": "kyoto-city:bldg_1bab607d-4c47-48a5-b523-e64000d895f6"
+              },
+              "triangle": 4083
+            }
+          ]
+        },
+        {
+          "id": "left-base-above",
+          "x": -0.3,
+          "y": -0.5,
+          "hits": [
+            {
+              "distance": 10.592506411048053,
+              "point": {
+                "x": 678.6405190168031,
+                "y": 137.34633738081325,
+                "height": 0.26404738902343317
+              },
+              "file": "cells/cell-e006-n001/near.gltf",
+              "node": "cell-e006-n001_near_tile-wall",
+              "material": "tile-wall",
+              "sourceIndex": 731,
+              "source": {
+                "sourceId": "kyoto-city:bldg_1bab607d-4c47-48a5-b523-e64000d895f6"
+              },
+              "triangle": 3917
+            }
+          ]
+        },
+        {
+          "id": "left-base-below",
+          "x": -0.3,
+          "y": -0.57,
+          "hits": [
+            {
+              "distance": 10.63262419186816,
+              "point": {
+                "x": 678.6875826187278,
+                "y": 137.3911591836476,
+                "height": -0.03999999910593033
+              },
+              "file": "ground.gltf",
+              "node": "Resident_paving",
+              "material": "paving",
+              "sourceIndex": 1050,
+              "source": {
+                "sourceId": "shijo-east:ground",
+                "surfaceId": "shijo-east:ground"
+              },
+              "triangle": 5632
+            }
+          ]
+        },
+        {
+          "id": "right-base-above",
+          "x": 0.45,
+          "y": -0.3,
+          "hits": [
+            {
+              "distance": 13.717520997533736,
+              "point": {
+                "x": 672.88100415039,
+                "y": 139.7914758105952,
+                "height": 0.44999998807907104
+              },
+              "file": "cells/cell-e006-n001/near.gltf",
+              "node": "cell-e006-n001_near_tile-wall",
+              "material": "tile-wall",
+              "sourceIndex": 731,
+              "source": {
+                "sourceId": "kyoto-city:bldg_1bab607d-4c47-48a5-b523-e64000d895f6"
+              },
+              "triangle": 4101
+            },
+            {
+              "distance": 13.717520997533736,
+              "point": {
+                "x": 672.88100415039,
+                "y": 139.7914758105952,
+                "height": 0.4499999880790706
+              },
+              "file": "cells/cell-e006-n001/near.gltf",
+              "node": "cell-e006-n001_near_tile-wall",
+              "material": "tile-wall",
+              "sourceIndex": 731,
+              "source": {
+                "sourceId": "kyoto-city:bldg_1bab607d-4c47-48a5-b523-e64000d895f6"
+              },
+              "triangle": 4105
+            }
+          ]
+        },
+        {
+          "id": "right-base-below",
+          "x": 0.45,
+          "y": -0.4,
+          "hits": [
+            {
+              "distance": 13.473871654580776,
+              "point": {
+                "x": 673.2245141945665,
+                "y": 139.95462080169352,
+                "height": -0.03999999910592944
+              },
+              "file": "ground.gltf",
+              "node": "Resident_paving",
+              "material": "paving",
+              "sourceIndex": 1050,
+              "source": {
+                "sourceId": "shijo-east:ground",
+                "surfaceId": "shijo-east:ground"
+              },
+              "triangle": 5841
+            }
+          ]
+        },
+        {
+          "id": "recess-base-above",
+          "x": -0.7,
+          "y": -0.25,
+          "hits": [
+            {
+              "distance": 16.74162963712476,
+              "point": {
+                "x": 677.549402063743,
+                "y": 130.45291520416103,
+                "height": 0.25665398825636787
+              },
+              "file": "cells/cell-e006-n001/near.gltf",
+              "node": "cell-e006-n001_near_tile-wall",
+              "material": "tile-wall",
+              "sourceIndex": 731,
+              "source": {
+                "sourceId": "kyoto-city:bldg_1bab607d-4c47-48a5-b523-e64000d895f6"
+              },
+              "triangle": 3653
+            }
+          ]
+        },
+        {
+          "id": "recess-base-below",
+          "x": -0.7,
+          "y": -0.32,
+          "hits": [
+            {
+              "distance": 16.02523523478294,
+              "point": {
+                "x": 677.939133612651,
+                "y": 131.1509894610545,
+                "height": -0.03999999910593122
+              },
+              "file": "ground.gltf",
+              "node": "Resident_paving",
+              "material": "paving",
+              "sourceIndex": 1050,
+              "source": {
+                "sourceId": "shijo-east:ground",
+                "surfaceId": "shijo-east:ground"
+              },
+              "triangle": 5388
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "image": "neighborhood-captures/outbound-pontocho-entrance-day.png",
+      "imageSha256": "54665983ab2a4481607ecc294c7aa1af3d688c52581b06b0d6f5cf297f70cf15",
+      "camera": {
+        "position": [
+          1042.2334480738273,
+          11.579114671362637,
+          3.7170029000313853
+        ],
+        "target": [
+          1037.954715455819,
+          1.6,
+          -15.416990869159843
+        ],
+        "desiredPosition": [
+          1042.2334480738273,
+          11.579114671362637,
+          3.7170029000313853
+        ],
+        "viewTarget": [
+          1037.954715455819,
+          1.6,
+          -15.416990869159843
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 22.000000000001396,
+          "actualDistance": 22.000000000001396,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.07224343642222317,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": 0.2199999999999794,
+        "polar": 1.1000000000000356,
+        "distance": 22.000000000001396,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": 0.2199999999999794,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "inspectionPanned": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.97589744933061,
+          -1.3877787807814457e-17,
+          -0.2182296230808492,
+          0,
+          -0.09898811060963195,
+          0.8912073600614515,
+          -0.4426632979254476,
+          0,
+          0.19448784627308924,
+          0.4535961214255457,
+          0.869726989508637,
+          0,
+          1042.2334480738273,
+          11.579114671362637,
+          3.7170029000313853,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "player": {
+        "x": 1036.755,
+        "y": 17.617,
+        "height": 0,
+        "edgeId": "osm:way:542888424:2367201411:5248383670",
+        "edgeDistance": 3.8905339977538023
+      },
+      "samples": [
+        {
+          "id": "angular-road-interior",
+          "x": -0.2,
+          "y": -0.4,
+          "hits": [
+            {
+              "distance": 19.54873245403174,
+              "point": {
+                "x": 1036.5617832091316,
+                "y": 10.881485863911161,
+                "height": -0.11999999731779099
+              },
+              "file": "ground.gltf",
+              "node": "Resident_asphalt",
+              "material": "asphalt",
+              "sourceIndex": 151,
+              "source": {
+                "sourceId": "osm:way:843727820"
+              },
+              "triangle": 309
+            }
+          ]
+        },
+        {
+          "id": "paving-above-angular-corner",
+          "x": -0.48,
+          "y": -0.06,
+          "hits": [
+            {
+              "distance": 25.38394454357212,
+              "point": {
+                "x": 1030.555723218138,
+                "y": 15.595468641966082,
+                "height": -0.03999999910593033
+              },
+              "file": "ground.gltf",
+              "node": "Resident_paving",
+              "material": "paving",
+              "sourceIndex": 1050,
+              "source": {
+                "sourceId": "shijo-east:ground",
+                "surfaceId": "shijo-east:ground"
+              },
+              "triangle": 8352
+            }
+          ]
+        },
+        {
+          "id": "road-below-angular-corner",
+          "x": -0.48,
+          "y": -0.12,
+          "hits": [
+            {
+              "distance": 24.368626751905325,
+              "point": {
+                "x": 1031.095552758384,
+                "y": 14.528763011131911,
+                "height": -0.11999999731778921
+              },
+              "file": "ground.gltf",
+              "node": "Resident_asphalt",
+              "material": "asphalt",
+              "sourceIndex": 151,
+              "source": {
+                "sourceId": "osm:way:843727820"
+              },
+              "triangle": 308
+            }
+          ]
+        },
+        {
+          "id": "paving-near-board",
+          "x": -0.02,
+          "y": 0.03,
+          "hits": [
+            {
+              "distance": 26.3102319098911,
+              "point": {
+                "x": 1036.7668539033755,
+                "y": 19.24689976485414,
+                "height": -0.03999999910593033
+              },
+              "file": "ground.gltf",
+              "node": "Resident_paving",
+              "material": "paving",
+              "sourceIndex": 1050,
+              "source": {
+                "sourceId": "shijo-east:ground",
+                "surfaceId": "shijo-east:ground"
+              },
+              "triangle": 8643
+            }
+          ]
+        },
+        {
+          "id": "western-boundary-above",
+          "x": -0.85,
+          "y": -0.18,
+          "hits": [
+            {
+              "distance": 25.03302170555498,
+              "point": {
+                "x": 1026.8193308391108,
+                "y": 12.222047882863565,
+                "height": -0.03999999910592855
+              },
+              "file": "ground.gltf",
+              "node": "Resident_paving",
+              "material": "paving",
+              "sourceIndex": 1050,
+              "source": {
+                "sourceId": "shijo-east:ground",
+                "surfaceId": "shijo-east:ground"
+              },
+              "triangle": 8340
+            }
+          ]
+        },
+        {
+          "id": "western-boundary-below",
+          "x": -0.85,
+          "y": -0.27,
+          "hits": [
+            {
+              "distance": 23.67404987771644,
+              "point": {
+                "x": 1027.7843971666916,
+                "y": 10.939609309639541,
+                "height": -0.11999999731778921
+              },
+              "file": "ground.gltf",
+              "node": "Resident_asphalt",
+              "material": "asphalt",
+              "sourceIndex": 20,
+              "source": {
+                "sourceId": "osm:way:174762073"
+              },
+              "triangle": 54
+            }
+          ]
+        },
+        {
+          "id": "east-road-cap-outside",
+          "x": 0.5,
+          "y": -0.35,
+          "hits": [
+            {
+              "distance": 20.716311455116614,
+              "point": {
+                "x": 1044.6014689982806,
+                "y": 13.280130972829884,
+                "height": -0.025000000372530806
+              },
+              "file": "ground.gltf",
+              "node": "Resident_paving",
+              "material": "paving",
+              "sourceIndex": 83,
+              "source": {
+                "sourceId": "osm:way:532008156",
+                "featureIds": [
+                  "shijo-east:shijo-bridge"
+                ]
+              },
+              "triangle": 8869
+            },
+            {
+              "distance": 20.885910737838874,
+              "point": {
+                "x": 1044.6208553958604,
+                "y": 13.419282274904926,
+                "height": -0.11999999731779454
+              },
+              "file": "ground.gltf",
+              "node": "Resident_asphalt",
+              "material": "asphalt",
+              "sourceIndex": 2,
+              "source": {
+                "sourceId": "osm:way:28322073"
+              },
+              "triangle": 26
+            }
+          ]
+        },
+        {
+          "id": "east-road-cap-inside",
+          "x": 0.35,
+          "y": -0.35,
+          "hits": [
+            {
+              "distance": 20.43118702942553,
+              "point": {
+                "x": 1042.8438896646524,
+                "y": 13.02191822603356,
+                "height": -0.11999999731779099
+              },
+              "file": "ground.gltf",
+              "node": "Resident_asphalt",
+              "material": "asphalt",
+              "sourceIndex": 151,
+              "source": {
+                "sourceId": "osm:way:843727820"
+              },
+              "triangle": 309
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+

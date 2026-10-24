@@ -84,6 +84,32 @@
       ]
     }
   },
+  "sourceBoundaryClosures": {
+    "kyoto-city:bldg_1bab607d-4c47-48a5-b523-e64000d895f6": {
+      "expectedSourceIndex": 731,
+      "expectedKind": "building",
+      "material": "tile-wall",
+      "segmentIds": ["building-731-edge-5","building-731-edge-6","building-731-edge-7","building-731-edge-8"],
+      "evidence": {"file":"experience/evidence/neighborhood-20261024/world/visible-boundaries/closure-proposal.json","sha256":"e1dfea3c79d40ac5a438fe8c1089c6453ba6650df56016af28b33e61173f8b71"},
+      "authored": "Vertical display closure along four reviewed source-ring edges between existing building base0 and adjacent ground-0.04. Existing facade material and all prior geometry remain unchanged. Physical foundation construction and dimensions are unmeasured."
+    },
+    "osm:way:174762073": {
+      "expectedSourceIndex": 20,
+      "expectedKind": "road",
+      "material": "paving",
+      "segmentIds": ["road-20-north-ground"],
+      "evidence": {"file":"experience/evidence/neighborhood-20261024/world/visible-boundaries/closure-proposal.json","sha256":"e1dfea3c79d40ac5a438fe8c1089c6453ba6650df56016af28b33e61173f8b71"},
+      "authored": "Nonwalkable vertical display closure on the exact reviewed land/road boundary at-0.04/-0.12, using the existing adjacent paving finish. Crossing-covered and unmatched boundaries remain excluded. This does not establish surveyed curb construction."
+    },
+    "osm:way:843727820": {
+      "expectedSourceIndex": 151,
+      "expectedKind": "road",
+      "material": "paving",
+      "segmentIds": ["road-151-north-ground"],
+      "evidence": {"file":"experience/evidence/neighborhood-20261024/world/visible-boundaries/closure-proposal.json","sha256":"e1dfea3c79d40ac5a438fe8c1089c6453ba6650df56016af28b33e61173f8b71"},
+      "authored": "Nonwalkable vertical display closure on the exact reviewed land/road boundary at-0.04/-0.12. Existing adjacent paving finish is retained; the eastern bridge overlap and half-millimetre angular mismatch are excluded. No road, bridge or navigation elevation is changed."
+    }
+  },
   "assignmentRules": {
     "kind":"source-massing-with-explicit-authored-facade-families",
     "marketBounds":{"minX":260,"maxX":655,"minY":125,"maxY":160},

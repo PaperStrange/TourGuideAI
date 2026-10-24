@@ -15,7 +15,7 @@ import bpy
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from build_site_context import validate_polygon
-from neighborhood_mesh import MeshBatch, building_geometry
+from neighborhood_mesh import MeshBatch, building_geometry, vertical_boundary_geometry
 from neighborhood_materials import generate_textures
 from neighborhood_landmarks import landmark_geometry, canopy_geometry, waterside_geometry
 from neighborhood_river import load_river_context, river_context_geometry, mesh_source_table
@@ -157,6 +157,71 @@ def validate_inputs(geography, style):
                 raise ValueError('Reviewed floor boundary input changed: ' + source['file'])
 
 
+def load_boundary_closures(geography, prepared, style):
+    features = {feature['sourceId']: feature for feature in geography['features']}
+    surfaces = {surface['sourceId']: surface for surface in prepared['displayMaterialSurfaces']}
+    records, closures = {}, {}
+    for source_id, override in style.get('sourceBoundaryClosures', {}).items():
+        feature = features[source_id]
+        if feature['kind'] != override['expectedKind'] or feature['kind'] not in ('building', 'road'):
+            raise ValueError('Reviewed boundary source kind changed: ' + source_id)
+        if override['material'] not in style['materials']:
+            raise ValueError('Reviewed boundary must reuse an existing material')
+        evidence = override['evidence']
+        if evidence['file'] not in records:
+            if sha256(ROOT / evidence['file']) != evidence['sha256']:
+                raise ValueError('Reviewed boundary evidence changed: ' + evidence['file'])
+            record = json.loads((ROOT / evidence['file']).read_text())
+            if record['status'] != 'pass-for-listed-segments-only' or record['schemaVersion'] != 1:
+                raise ValueError('Reviewed boundary requires an accepted segment audit')
+            for source in record['inputs']:
+                if sha256(ROOT / source['file']) != source['sha256']:
+                    raise ValueError('Reviewed boundary input changed: ' + source['file'])
+            records[evidence['file']] = {'sha256': evidence['sha256'], 'record': record}
+        cached = records[evidence['file']]
+        if cached['sha256'] != evidence['sha256']:
+            raise ValueError('Reviewed boundary references disagree on evidence identity')
+        group = 'buildingSegments' if feature['kind'] == 'building' else 'roadSegments'
+        requested = override['segmentIds']
+        segments = [segment for segment in cached['record'][group] if segment['id'] in requested]
+        if len(set(requested)) != len(requested) or len(segments) != len(requested):
+            raise ValueError('Reviewed boundary segment selection is incomplete or duplicated')
+        for segment in segments:
+            if (segment['sourceId'] != source_id or segment['sourceIndex'] != override['expectedSourceIndex'] or
+                    segment['walkable'] is not False or segment['higherSurfaceOnLeft'] is not True or
+                    segment['heightOrigin'] != 'authored display levels' or
+                    abs(math.dist(segment['from'], segment['to']) - segment['sharedLengthMetres']) > 1e-8):
+                raise ValueError('Reviewed boundary source, orientation or extent changed')
+            adjacent = surfaces[segment['adjacentSourceId']]
+            if adjacent['topHeightMetres'] != segment['adjacentTopHeightMetres']:
+                raise ValueError('Reviewed adjacent display level changed')
+            if feature['kind'] == 'building':
+                ring = feature['polygons'][segment['polygonIndex']]['outer']
+                edge = segment['edgeIndex']
+                if (ring[edge] != segment['from'] or ring[edge + 1] != segment['to'] or
+                        feature.get('baseHeightMetres', 0) != segment['topHeightMetres'] or
+                        adjacent['topHeightMetres'] != segment['bottomHeightMetres'] or
+                        segment['planOverlapSquareMetres'] != 0):
+                    raise ValueError('Foundation closure must preserve the exact audited source edge')
+            else:
+                # 道路整体已有的微小交叠不作为零交叠声明；只使用审阅记录中的精确共边。
+                road = surfaces[source_id]
+                if (road['topHeightMetres'] != segment['bottomHeightMetres'] or
+                        adjacent['topHeightMetres'] != segment['topHeightMetres'] or
+                        adjacent['material'] != override['material']):
+                    raise ValueError('Road closure must retain adjacent display heights and finish')
+        closures[source_id] = {'material': override['material'], 'kind': feature['kind'], 'segments': segments}
+    return closures
+
+
+def append_ground_boundary_closures(ground_batches, closures, source_indices):
+    for source_id, closure in closures.items():
+        if closure['kind'] == 'road':
+            # 侧面明确进入非导航批次，即使相邻导航顶面使用同一种铺装材质。
+            data = ground_batches.setdefault((closure['material'], False), MeshBatch())
+            vertical_boundary_geometry(closure['segments'], data, source_indices[source_id])
+
+
 def create_materials(style, asset_dir):
     materials, resource_paths = {}, set()
     shared_dir = asset_dir / 'shared/materials'
@@ -286,7 +351,7 @@ def point_segment_distance(point, start, end):
     return math.dist(point, nearest), nearest
 
 
-def prepare_features(scene, geography, style, prepared):
+def prepare_features(scene, geography, style, prepared, boundary_closures):
     selections = {record['sourceId']: record for record in prepared['buildings']}
     arcade_edges = {}
     for edge in prepared['arcadeFacadeEdges']:
@@ -310,6 +375,11 @@ def prepare_features(scene, geography, style, prepared):
             if inside(rule['laneBounds']) and feature['height']['metres'] < 11:
                 recipe = 'lane-timber'
             feature['recipeId'] = recipe
+            if feature['sourceId'] in boundary_closures:
+                closure = boundary_closures[feature['sourceId']]
+                if closure['material'] != style['recipes'][recipe]['wallMaterial']:
+                    raise ValueError('Foundation closure must preserve the existing wall material')
+                feature['boundaryClosures'] = closure['segments']
             feature['facadeEdges'] = [[edge['polygonIndex'], 0, edge['edgeIndex']] for edge in selection['routeFacingEdges']]
             feature['arcadeFacadeEdges'] = arcade_edges.get(feature['sourceId'], [])
             for edge in feature['arcadeFacadeEdges']:
@@ -526,6 +596,7 @@ def main():
         surface['surfaceId'] = surface['id']
         surface['material'] = 'paving'
     validate_inputs(geography, style)
+    boundary_closures = load_boundary_closures(geography, prepared, style)
     asset_dir, output_dir = arguments.asset_dir.resolve(), arguments.output_dir.resolve()
     asset_dir.mkdir(parents=True, exist_ok=True)
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -540,7 +611,7 @@ def main():
     materials, resource_paths = create_materials(style, asset_dir)
     if prepared['sourceHashes']['scene.json'] != sha256(arguments.scene) or prepared['sourceHashes']['geography.json'] != sha256(arguments.geography):
         raise ValueError('Prepared art selection does not match frozen source inputs')
-    features = prepare_features(geography, navigation, style, prepared)
+    features = prepare_features(geography, navigation, style, prepared, boundary_closures)
     feature_table = [{'index': index, 'sourceId': feature['sourceId'], 'kind': feature['kind'],
                       'featureIds': feature.get('inspectionFeatureIds', [feature['sourceId']]),
                       'inspectionFeatureIds': feature.get('inspectionFeatureIds', []),
@@ -558,6 +629,9 @@ def main():
     for source_id, override in style.get('landmarkMaterialOverrides', {}).items():
         if source_indices[source_id] != override['expectedSourceIndex']:
             raise ValueError('Reviewed landmark material source index changed: ' + source_id)
+    for source_id, override in style.get('sourceBoundaryClosures', {}).items():
+        if source_indices[source_id] != override['expectedSourceIndex']:
+            raise ValueError('Reviewed boundary source index changed: ' + source_id)
     for surface in geography['surfaces'] + prepared.get('displayMaterialSurfaces', []):
         if surface['sourceId'] not in source_indices:
             source_indices[surface['sourceId']] = len(feature_table)
@@ -583,6 +657,7 @@ def main():
         data = ground_batches.setdefault(key, MeshBatch())
         for polygon in surface['polygons']:
             data.top(polygon['triangles'], surface['topHeightMetres'], source_indices[surface['sourceId']])
+    append_ground_boundary_closures(ground_batches, boundary_closures, source_indices)
     ground_objects = [make_mesh('Resident_' + name + ('_walkable' if walkable else ''), data,
                                materials[name], style['materials'][name]['metresPerRepeat'], feature_table,
                                {'walkable': walkable, 'surfaceId': 'shijo-east-ground', 'resident': True})
@@ -755,6 +830,18 @@ def main():
              'evidenceRecords': [{**evidence, 'record': json.loads((ROOT / evidence['file']).read_text())}
                                  for evidence in override['evidence']]}
             for source_id, override in style['landmarkMaterialOverrides'].items()]
+    if style.get('sourceBoundaryClosures'):
+        evidence_files = {override['evidence']['file']: override['evidence']
+                          for override in style['sourceBoundaryClosures'].values()}
+        provenance['sourceBoundaryClosures'] = {
+            'overrides': style['sourceBoundaryClosures'],
+            'addedTriangles': {source_id: {'triangles': len(closure['segments']) * 2,
+                                          'scope': 'each-building-lod' if closure['kind'] == 'building' else 'resident-nonwalkable-ground'}
+                               for source_id, closure in boundary_closures.items()},
+            'evidenceRecords': [{**evidence, 'record': json.loads((ROOT / file).read_text())}
+                                for file, evidence in evidence_files.items()],
+            'meaning': 'Exact audited display-boundary faces; source footprints, prior surfaces, base metadata, materials and navigation preserved. No surveyed foundation or curb interpretation.',
+        }
     if river_context:
         # 完整来源输入按确定性 gzip 保存，解码后仍对应审核过的原始字节。
         input_bytes = arguments.river_context.read_bytes()
