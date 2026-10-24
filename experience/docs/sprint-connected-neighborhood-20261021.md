@@ -174,20 +174,30 @@ safe-pose adoption. Its actual-geometry regression preserves all sixteen native
 camera traces; independent review approves the bounded change. Package `e8eed914…`
 contains 446 files / 96,954,304 bytes and passes 217 application tests, 17 gates and
 the canonical build. Scenery, copy and fonts retain candidate 12's exact bytes.
-The native hint now activates at input index 9. Its initial 7-pass/1-failure
-report retains a desktop-driver touch-input error; the same remaining assertions
-are running with actual desktop clicks. The implementation is pushed; one standard
-benchmark and Q03's original three-warm sequence follow. Candidate 12's matched frontage 20/20 and
+Native guidance passes 17/17, including index-9 activation, EN/ZH, narrow wrapping,
+saved reopen and Tilt/Reset clearing. The original driver failure is retained.
+Native visibility passes 13/13 with zero hidden work over 2,019.6 ms. One standard
+benchmark passes cold 7,885.6 ms and warm 2,767.7 / 2,766.7 / 2,647.7 ms; event
+input p95 892.0 ms and frame p95 972.3 ms fail on software rendering. Original Q03
+warm actions 1,090.0 / 1,102.5 / 1,100.2 ms also fail their unchanged target.
+The implementation is pushed and current CI40064451730 remains running. The
+canonical default-output archive `65167ee4…` matches CI's 446-file package exactly;
+the tested `e8eed914…` archive differs only in 21 debug-map source prefixes, with
+all 425 runtime/data/asset files identical and both original identities preserved.
+Candidate 12's matched frontage 20/20 and
 retained upper201 11/11 results support bounded art acceptance of the pictured
-source features. Complete source274 upper recognition and current whole-route
-review remain unestablished.
+source features. Complete upper elevations remain documented modeling/view limits.
+The [composite current-route art disposition](../evidence/neighborhood-20261024/art/current-route-review.md)
+accepts the bounded pilot's six sight contexts and thirteen route cells, using
+source-verified unchanged surfaces and the reviewed corrections. It retains the
+historical image/package scopes and establishes no fresh candidate-13 full walk.
 
 | Sprint | Current evidence | Remaining acceptance |
 | --- | --- | --- |
 | N00 | Connected source graph, six exterior sights, source/provenance audits and reproducible packaging | Surveyed grades and current access remain explicit source limits |
 | N01 | Continuous movement, streaming/retry, cancellation, native storage and residency; candidate 9 complete outward/return CI passes | Candidate 13 complete outward/return CI |
-| N02 | Bilingual day/night, private views, editable recommendations and Maps; scoped paper/paving/contact, roof and pictured source201 frontage reviews pass | Current whole-route review, remaining source274 upper extent and broader night-material recognition |
-| N03 | Candidate 12 native background-tab behavior and roof lifecycle pass; candidate 11 startup targets pass; candidate 9 complete camera and eight CI jobs pass | Current-package complete CI, input/frame targets, Q03, hardware evidence and publication |
+| N02 | Bilingual day/night, private views, editable recommendations and Maps; composite six-sight/thirteen-cell art disposition accepted with verified targeted corrections | Bounded pilot art accepted; documented reconstruction/polish limits and unmeasured human realism remain explicit |
+| N03 | Candidate 13 startup, guidance and native background behavior pass; candidate 12 roof lifecycle/art reviews pass; candidate 9 complete camera and eight CI jobs pass | Current-package complete CI, input/frame targets, Q03, hardware evidence and publication |
 
 ## Candidate 9 acceptance · 2026-10-23
 

@@ -1,0 +1,154 @@
+{
+  "runId": 40064451730,
+  "headSha": "28439744b6349b795ac0a50c20c5d45d735bb2ed",
+  "implementationSha": "28439744b6349b795ac0a50c20c5d45d735bb2ed",
+  "observedAt": "2026-10-24T05:18:38.689Z",
+  "conclusion": "in_progress",
+  "jobs": [
+    {
+      "id": 120784703265,
+      "name": "Validate geographic source preparation",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 120784703376,
+      "name": "Validate travel companion",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 120784703408,
+      "name": "Validate journey homepage",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 120784703441,
+      "name": "Validate solo exploration",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 120784703448,
+      "name": "Validate shared perspective",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 120784703453,
+      "name": "Validate original walk",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 120784703468,
+      "name": "Validate connected neighborhood",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 120784703477,
+      "name": "Validate reviewed place packs",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 12549515897,
+      "name": "packs-browser-evidence",
+      "size_in_bytes": 10902155,
+      "url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12549515897",
+      "archive_download_url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12549515897/zip",
+      "expired": false,
+      "created_at": "2026-10-24T05:16:34Z",
+      "expires_at": "2027-01-22T04:58:49Z",
+      "updated_at": "2026-10-24T05:16:34Z",
+      "digest": "sha256:edeb7140e98cf53bd1f4c78abb5fc767a5675a154118b123696790af2fa4669e",
+      "workflow_run": {
+        "id": 40064451730,
+        "repository_id": 764675410,
+        "head_repository_id": 764675410,
+        "head_branch": "chore-sow-delivery-plan",
+        "head_sha": "28439744b6349b795ac0a50c20c5d45d735bb2ed"
+      }
+    },
+    {
+      "id": 12549340098,
+      "name": "travel-browser-evidence",
+      "size_in_bytes": 1853035,
+      "url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12549340098",
+      "archive_download_url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12549340098/zip",
+      "expired": false,
+      "created_at": "2026-10-24T05:00:12Z",
+      "expires_at": "2027-01-22T04:58:49Z",
+      "updated_at": "2026-10-24T05:00:12Z",
+      "digest": "sha256:011963be2676c3b2657b6ad15e32d721d2828dab533a4075b4ecf85fa69a6d42",
+      "workflow_run": {
+        "id": 40064451730,
+        "repository_id": 764675410,
+        "head_repository_id": 764675410,
+        "head_branch": "chore-sow-delivery-plan",
+        "head_sha": "28439744b6349b795ac0a50c20c5d45d735bb2ed"
+      }
+    },
+    {
+      "id": 12549051329,
+      "name": "homepage-browser-evidence",
+      "size_in_bytes": 6326585,
+      "url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12549051329",
+      "archive_download_url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12549051329/zip",
+      "expired": false,
+      "created_at": "2026-10-24T05:02:06Z",
+      "expires_at": "2027-01-22T04:58:49Z",
+      "updated_at": "2026-10-24T05:02:06Z",
+      "digest": "sha256:975d36ce4de6c458890e257f2432f2f2d9a85484e85b37bbd0f89455810e69ee",
+      "workflow_run": {
+        "id": 40064451730,
+        "repository_id": 764675410,
+        "head_repository_id": 764675410,
+        "head_branch": "chore-sow-delivery-plan",
+        "head_sha": "28439744b6349b795ac0a50c20c5d45d735bb2ed"
+      }
+    },
+    {
+      "id": 12548578793,
+      "name": "perspective-browser-evidence",
+      "size_in_bytes": 7990057,
+      "url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12548578793",
+      "archive_download_url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12548578793/zip",
+      "expired": false,
+      "created_at": "2026-10-24T05:05:04Z",
+      "expires_at": "2027-01-22T04:58:49Z",
+      "updated_at": "2026-10-24T05:05:04Z",
+      "digest": "sha256:3bc4c9b10a13befc8cea35ad1cc42516a796ccb8a54be825aeade9114c505985",
+      "workflow_run": {
+        "id": 40064451730,
+        "repository_id": 764675410,
+        "head_repository_id": 764675410,
+        "head_branch": "chore-sow-delivery-plan",
+        "head_sha": "28439744b6349b795ac0a50c20c5d45d735bb2ed"
+      }
+    },
+    {
+      "id": 12548358466,
+      "name": "solo-browser-evidence",
+      "size_in_bytes": 4710947,
+      "url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12548358466",
+      "archive_download_url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12548358466/zip",
+      "expired": false,
+      "created_at": "2026-10-24T05:06:03Z",
+      "expires_at": "2027-01-22T04:58:49Z",
+      "updated_at": "2026-10-24T05:06:03Z",
+      "digest": "sha256:c398dafd9534a99b44fc83ff9290cbece3fec687b7b1bfc37a8dcdb3a6be9216",
+      "workflow_run": {
+        "id": 40064451730,
+        "repository_id": 764675410,
+        "head_repository_id": 764675410,
+        "head_branch": "chore-sow-delivery-plan",
+        "head_sha": "28439744b6349b795ac0a50c20c5d45d735bb2ed"
+      }
+    }
+  ]
+}

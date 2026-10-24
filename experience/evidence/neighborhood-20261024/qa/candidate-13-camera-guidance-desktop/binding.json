@@ -1,0 +1,126 @@
+{
+  "packageSha256": "e8eed9146ea83accaf54769ff2aaaf5a902cfd344295e3348e11684e50838b0c",
+  "packageFiles": 446,
+  "packageBytes": 96954304,
+  "scenerySha256": "86e4f424a36cb858c16f6e282ad8ceb8f146d6b285d482de3c0ce2fe2f726b61",
+  "source": {
+    "id": "shijo-east",
+    "revision": 1,
+    "geographySha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+    "manifestSha256": "86e4f424a36cb858c16f6e282ad8ceb8f146d6b285d482de3c0ce2fe2f726b61",
+    "historicalGeographyCompatibility": {
+      "kind": "reviewed-tenmangu-anchor-metadata",
+      "recordedSha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
+      "currentSha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+      "auditSha256": "156cdc90f594a9a69a672ac8003e1ddbfa76259c0dc86c5b59035b0e55cc35dd",
+      "auditFile": "experience/evidence/neighborhood-20261023/world/platform-context/tenmangu-compatibility.json",
+      "changedFields": [
+        "nodeId",
+        "approachNodeId",
+        "x",
+        "y",
+        "latitude",
+        "longitude"
+      ],
+      "completeGeographyCompared": true,
+      "unchangedSources": {
+        "scene.json": {
+          "bytes": 8789674,
+          "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e"
+        },
+        "source-ledger.json": {
+          "bytes": 5999,
+          "sha256": "be0f8065699a53f09293140e2499bca2468f0aa7cea503dc6436f45c9b17a24c"
+        },
+        "source-review.json": {
+          "bytes": 756,
+          "sha256": "4e3fbb9d2fd3134153d2b378f5de995c2f7e3135ea3d778a5fe2f19b55f00258"
+        },
+        "sources/kyoto-lod1.geojson": {
+          "bytes": 6304053,
+          "sha256": "da1af049906d736b6329e062673a84728640957475d3b46107cebf46b48a2d93"
+        },
+        "sources/route-osm.json": {
+          "bytes": 47176,
+          "sha256": "5681dceac0c5d206a6e5315c77ca6a39a292ab3915f23b60cc17c77cecb4099e"
+        },
+        "sources/scene-osm.json": {
+          "bytes": 2390775,
+          "sha256": "1e3ba265bc8dd3c6744ccd897ad915016a2cc0110c306bf3e064ca63ced5dd0c"
+        }
+      },
+      "scope": "Stored metric view, frame and navigation geometry. Rendered assets retain their separate current-build identity."
+    }
+  },
+  "driverSha256": "850f8d9221355886c781d965c0cd62dc684bdd6f75eecc72aefcc12bd5103eff",
+  "driverDependencies": [
+    {
+      "file": "tests/helpers/neighborhood-evidence-source.mjs",
+      "sha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    }
+  ],
+  "reportSha256": "5fc194814fd03b80b05b1478e04bbdd54d3c97a1c8cb915ac500e52868446e83",
+  "summary": {
+    "passed": 17,
+    "failed": 0
+  },
+  "browser": "151.0.7922.34",
+  "sections": [
+    "camera-guidance"
+  ],
+  "startedAt": "2026-10-24T04:58:29.239Z",
+  "finishedAt": "2026-10-24T05:01:48.590Z",
+  "elapsedMs": 199351,
+  "httpRequests": 94,
+  "evidence": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 570920,
+      "sha256": "cad96aed160a2c0ff11211e55f4221008031220a84c69658bd4af22d0d1b67f7",
+      "decodedBytes": 6500385,
+      "decodedSha256": "5fc194814fd03b80b05b1478e04bbdd54d3c97a1c8cb915ac500e52868446e83"
+    },
+    {
+      "file": "executed-driver.mjs.gz",
+      "bytes": 51342,
+      "sha256": "9943f01c32b78fb81a849d4f61c1d9969382fdb6ffc41505fa449890f99c0e86",
+      "decodedBytes": 215721,
+      "decodedSha256": "850f8d9221355886c781d965c0cd62dc684bdd6f75eecc72aefcc12bd5103eff"
+    },
+    {
+      "file": "run.log.gz",
+      "bytes": 386,
+      "sha256": "12b3a6b6ccc1ed32b21331565903570d7d4a94e788d9c19a5ceb5beaab889a3f",
+      "decodedBytes": 895,
+      "decodedSha256": "d576e24e8bf0abc10091eae65f0a1bdb223db9cd9b07ea69f3e832f811677b45"
+    },
+    {
+      "file": "neighborhood-evidence-source.mjs.gz",
+      "bytes": 1619,
+      "sha256": "70115611f201081f16386f97f55d12421b3ee05a5e4c8f20bdfe99a5ec5fd294",
+      "decodedBytes": 3713,
+      "decodedSha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    },
+    {
+      "file": "camera-guidance-en.png",
+      "bytes": 1093765,
+      "sha256": "d532674c34fbc0df210f3ca396928903b943394b3e257b91d00653a95c50334a"
+    },
+    {
+      "file": "camera-guidance-zh.png",
+      "bytes": 1111893,
+      "sha256": "25e99b4ee54b89c46b664fc13a467a5799ab33744839f2020fa06ad0c6d902f7"
+    },
+    {
+      "file": "camera-guidance-en-390-viewport.png",
+      "bytes": 183309,
+      "sha256": "abaebbf7cf69a70e0ca993e56d3ec4a302802fddc23ddafb952d0bb364b3f0bb"
+    },
+    {
+      "file": "camera-guidance-zh-390-viewport.png",
+      "bytes": 199457,
+      "sha256": "bda09971dfa5fecc38b5f93d3404d6e194d9f3eedcf159a5947cfa09f9015c9c"
+    }
+  ],
+  "failuresPreserved": []
+}

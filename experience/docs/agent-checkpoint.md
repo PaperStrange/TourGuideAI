@@ -10,9 +10,15 @@ the verified baseline. Q03 is open P1; backend tests remain local.**
 
 Implementation **`28439744b6349b795ac0a50c20c5d45d735bb2ed`** is synchronized with
 the remote iteration branch.
-Its immutable build is `artifacts/neighborhood-20261024/candidate-13`, **446 files /
-96,954,304 bytes**, package
-**`e8eed9146ea83accaf54769ff2aaaf5a902cfd344295e3348e11684e50838b0c`**.
+Its canonical immutable build is `artifacts/neighborhood-20261024/candidate-13-canonical`,
+**446 files / 96,952,094 bytes**, package
+**`65167ee402d6d59978b5f979de8c6987721ec891ffec1ce6127831d7c0dd354e`**,
+matching CI. The executed local-browser package remains unchanged at
+`artifacts/neighborhood-20261024/candidate-13`, package
+`e8eed9146ea83accaf54769ff2aaaf5a902cfd344295e3348e11684e50838b0c`.
+All 425 executable/data/asset files match; 21 debug maps differ only in relative
+`sources[]` prefixes, with an exact per-map hash proof. Source contents and
+mappings are unchanged. Local results retain the original package identity.
 All **217/217** application tests, **17/17** repository gates and the canonical
 build pass. All 347 scenery files, UI copy and fonts retain candidate 12's bytes.
 The [validation record](../evidence/neighborhood-20261024/validation/README.md)
@@ -22,25 +28,61 @@ The camera-feedback correction suppresses feedback observation only during
 internal safe-pose adoption. The actual-geometry regression preserves all sixteen
 native camera traces within `1e-9`, observes the original inactive/active sequence,
 then verifies one hint activation after the third settled blocked turn and clearing
-on tilt. Camera geometry, collision, callbacks and scheduling remain unchanged.
+on tilt. Camera geometry, collision, scene-change callbacks and scheduling remain unchanged.
 The [faithful candidate-12 reproduction](../evidence/neighborhood-20261024/engineering/camera-guidance-adoption/README.md)
 retains its original failure and exact source bindings. Independent review approves
-the correction. The original native driver confirms hint activation at input
-index 9 on candidate 13, then records a desktop-driver failure because its locale
-helper uses touch input in a context without touch support. Original report
-`193074b6daa2b4829bd33558bb3c9b400a6cd7397fd8af45b7b97e1e6b1c3f1b`
-retains **7 passes / 1 failure** and the unexecuted tail. QA is completing the
-same assertions with the desktop click helper on the unchanged package.
+the correction. [Actual native guidance verification](../evidence/neighborhood-20261024/qa/candidate-13-camera-guidance-desktop/README.md)
+passes **17/17**: two deliberate sequences activate at input index 9, accurate
+EN/ZH text, 390 px wrapping, tilt clearing, saved reopen, Reset recovery and
+private-byte preservation. The report is
+`5fc194814fd03b80b05b1478e04bbdd54d3c97a1c8cb915ac500e52868446e83`.
+The original 7-pass/1-failure desktop-driver report remains preserved separately;
+the successful driver uses desktop clicks with unchanged assertions and thresholds.
+
+The [current standard performance run](../evidence/neighborhood-20261024/performance/candidate-13/README.md)
+records **16 passes / 3 failures**. Cold entry **7,885.6 ms** and warm entries
+**2,767.7 / 2,766.7 / 2,647.7 ms** meet their targets. Event-timestamp input p95
+**892.0 ms** and observed frame p95 **972.3 ms** fail; receipt-only p95 is 18.1 ms.
+All twenty trusted actions respond with zero page errors. The separate
+[native visibility check](../evidence/neighborhood-20261024/performance/candidate-13-native-visibility/README.md)
+passes **13/13**, with zero draws, updates and neighborhood requests over
+**2,019.6 ms** hidden and preserved private view. Its native result retains the
+standard headless visibility failure's distinct scope.
+
+The original [Q03 sequence](../evidence/neighborhood-20261024/performance/candidate-13-q03/README.md)
+completed all twelve observations once. Three warm Together locale actions are
+**1,090.0 / 1,102.5 / 1,100.2 ms**, each failing the unchanged <500 ms target.
+Standard and Q03 reports are respectively
+`f76a6480651653daa4461a78807e7ba8ced6f484f280cc63932ce1025b5ef2c6` and
+`af55b6d67aa3bc70da975cacafd51387bd764cfb43a1b953d5da8454b34119e9`.
+Both preserve software-renderer conditions and exact package identities; neither
+was rerun to select a passing timing.
 
 Candidate 12's source-confirmed roof, matched frontages and upper201 transition
 have bounded day/night art acceptance. Its browser roof checks pass 20/20,
 matched frontages 20/20, retained upper view 11/11 and native background behavior
-13/13. Those results keep their package scope. Full source274 upper recognition,
-whole-route current art, performance, complete current CI and publication remain
-open. The physical-GPU availability question is still unanswered. Root owns
-source synchronization and final-package evidence; QA owns the exclusive browser
-window. One current-package standard benchmark and the original Q03 sequence are
-scheduled after the focused native hint result.
+13/13. Those results keep their package scope. Complete upper elevations are
+documented modeling/view limits; the approved art gate concerns the traveled
+streets and recognizable sight features. The [composite route art disposition](../evidence/neighborhood-20261024/art/current-route-review.md)
+is accepted for the bounded pilot: six sight contexts and all thirteen traversed
+cells have applicable day/night evidence, with unchanged surfaces and reviewed
+corrections distinguished. Art and world content concur; original image/package
+identities remain explicit. This supplies no new candidate-13 complete walk or
+six-click interaction claim. Input/frame and Q03 performance, complete current
+CI, compatibility and publication remain open.
+The physical-GPU availability question is still unanswered. All local browser
+processes are closed. Root owns source synchronization and final-package evidence;
+QA is binding available CI artifacts. Current CI **40064451730** uses exact
+implementation `2843974`. The 05:18:38 UTC snapshot preserves five successful jobs
+and five available complete browser reports with **374 passes / zero failures**;
+the other jobs, including complete neighborhood traversal, remain in progress.
+The homepage's 65-check report is complete while its containing job continues
+the extended walkthrough. Source preparation separately passes 18 + 13 checks.
+Candidate 12 CI40062728715 was interrupted when this corrected source run began.
+No candidate 13 publication or hardware-fluency claim; published runtime `17b8f37`
+remains unchanged. Complete current-route execution remains pending in CI;
+performance acceptance needs a GPU-enabled test environment or a demonstrated
+application correction. Existing targets and visual quality remain unchanged.
 
 ## Retained candidate 12 · 2026-10-24
 

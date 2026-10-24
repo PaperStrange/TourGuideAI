@@ -7,13 +7,18 @@ Updated 2026-10-24. Owner: lead. Planning baseline: `origin/iteration` at
 [sprint plan](../../experience/docs/sprint-connected-neighborhood-20261021.md)
 targets a continuous 1–2 km walking route with 5–8 sights and richer solo
 recommendations. The implemented pilot connects six sights over 1,353.444 m.
-Latest implementation `2843974` produces candidate 13 (`e8eed914…`), passing
+Latest implementation `2843974` produces canonical candidate 13 (`65167ee4…`), passing
 217 application tests, 17 repository gates and the canonical build. Its reviewed
 feedback correction preserves all sixteen native camera traces and suppresses
-observation only during internal safe-pose adoption. Native hint activation passes;
-locale/layout/recovery verification is running with desktop input before the
-standard benchmark and Q03 sequence. The implementation is pushed. All scenery, UI copy
+observation only during internal safe-pose adoption. Native guidance passes 17/17
+and real background/return behavior passes 13/13. Cold 7,885.6 ms and all three
+warm entries 2,767.7 / 2,766.7 / 2,647.7 ms pass. Input p95 892.0 ms, frame p95
+972.3 ms and Q03 actions 1,090.0 / 1,102.5 / 1,100.2 ms miss their unchanged
+targets on software rendering. The implementation is pushed. All scenery, UI copy
 and fonts retain candidate 12's exact bytes.
+The canonical package matches all 446 CI files. Executed local-browser evidence
+retains package `e8eed914…`; only 21 debug-map source paths differ, while all 425
+executable/data/asset files match exactly.
 
 Candidate 12's audited source201/274 upper-facade profiles, source139 light-responsive
 roof material and bilingual constrained-view hint are integrated. Actual roof
@@ -24,10 +29,14 @@ Actual feedback records 6 passes / 2 failures because repeated blocked turns do
 not display the hint; the subsequent locale/wrapping/clear checks remain unexecuted.
 The actual-geometry reproduction and independent review support candidate 13's
 correction. Matched frontage 20/20 and retained upper201 11/11 checks now support
-bounded day/night art acceptance. Full source274 upper recognition, current
-whole-route review, complete CI and performance remain open.
-Current CI40062728715 uses exact implementation06a2c49; candidate 11's complete
-neighborhood job was interrupted when this source run began.
+bounded day/night art acceptance. The [composite route review](../../experience/evidence/neighborhood-20261024/art/current-route-review.md)
+accepts the six sight contexts and thirteen route cells with source-verified reuse
+and targeted corrections. Complete upper elevations remain modeling/view limits.
+Current CI40064451730 uses exact implementation2843974. Candidate 12 CI40062728715
+was interrupted when the corrected source run began; its completed and interrupted
+reports retain separate scopes. Five current reports pass 374 checks in the
+05:18:38 UTC snapshot. Current full-route CI, compatibility and physical-GPU
+fluency remain open. No new candidate is published.
 
 Retained implementation source `84e80a8` produces candidate 11, which passes 203 application
 checks, 17 repository gates and 36 targeted native checks. Independent source and

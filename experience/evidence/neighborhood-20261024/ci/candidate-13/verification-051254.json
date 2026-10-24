@@ -1,0 +1,1369 @@
+{
+  "runId": 40064451730,
+  "headSha": "28439744b6349b795ac0a50c20c5d45d735bb2ed",
+  "implementationSha": "28439744b6349b795ac0a50c20c5d45d735bb2ed",
+  "observedAt": "2026-10-24T05:12:54.468Z",
+  "packageSha256": "65167ee402d6d59978b5f979de8c6987721ec891ffec1ce6127831d7c0dd354e",
+  "localPackageSha256": "e8eed9146ea83accaf54769ff2aaaf5a902cfd344295e3348e11684e50838b0c",
+  "packageFiles": 446,
+  "reports": [
+    {
+      "suite": "travel",
+      "artifact": {
+        "id": 12549340098,
+        "name": "travel-browser-evidence",
+        "zipSha256": "011963be2676c3b2657b6ad15e32d721d2828dab533a4075b4ecf85fa69a6d42",
+        "zipBytes": 1853035,
+        "createdAt": "2026-10-24T05:00:12Z",
+        "sourceHead": "28439744b6349b795ac0a50c20c5d45d735bb2ed"
+      },
+      "summary": {
+        "passed": 73,
+        "failed": 0
+      },
+      "observedChecks": {
+        "passed": 73,
+        "failed": 0
+      },
+      "completion": "completed",
+      "packageSha256": "65167ee402d6d59978b5f979de8c6987721ec891ffec1ce6127831d7c0dd354e",
+      "localPackageSha256": "e8eed9146ea83accaf54769ff2aaaf5a902cfd344295e3348e11684e50838b0c",
+      "packageFiles": 446,
+      "exactFiles": 425,
+      "sourcePathOnlyMapDifferences": 21,
+      "report": {
+        "file": "travel-result.json.gz",
+        "bytes": 27547,
+        "sha256": "dce5da1f21b3dad5baf79e7a11ff4cd81de4bc86067cc3e6283043cb3e7a0e3e",
+        "decodedBytes": 152375,
+        "decodedSha256": "f332edf220fd356de4532828e4f74a81e07fdfb9d9efa7ca9d182850e8926127"
+      },
+      "driver": {
+        "file": "browser-travel.mjs.gz",
+        "bytes": 10198,
+        "sha256": "2d03d35f5470658041c087068231da60bbf8d0decb05f69441109536f58502f5",
+        "decodedBytes": 36289,
+        "decodedSha256": "0873e4c1191c4df2d79d74b4950f4c998a47ff4b1cfd44401dda7be3c61593c3"
+      },
+      "dependencies": [],
+      "captureFiles": []
+    },
+    {
+      "suite": "homepage",
+      "artifact": {
+        "id": 12549051329,
+        "name": "homepage-browser-evidence",
+        "zipSha256": "975d36ce4de6c458890e257f2432f2f2d9a85484e85b37bbd0f89455810e69ee",
+        "zipBytes": 6326585,
+        "createdAt": "2026-10-24T05:02:06Z",
+        "sourceHead": "28439744b6349b795ac0a50c20c5d45d735bb2ed"
+      },
+      "summary": {
+        "passed": 65,
+        "failed": 0,
+        "fatal": false
+      },
+      "observedChecks": {
+        "passed": 65,
+        "failed": 0
+      },
+      "completion": "completed",
+      "packageSha256": "65167ee402d6d59978b5f979de8c6987721ec891ffec1ce6127831d7c0dd354e",
+      "localPackageSha256": "e8eed9146ea83accaf54769ff2aaaf5a902cfd344295e3348e11684e50838b0c",
+      "packageFiles": 446,
+      "exactFiles": 425,
+      "sourcePathOnlyMapDifferences": 21,
+      "report": {
+        "file": "homepage-result.json.gz",
+        "bytes": 39190,
+        "sha256": "a30cfea21bdc4608bc2ab929b43a936e5aef0ff7a7f246f40cc667fcfece361b",
+        "decodedBytes": 317188,
+        "decodedSha256": "e1c9b796bc3677bc05e8d78a18dfd6fa10b7e7cc12658992d23951c200be4f89"
+      },
+      "driver": {
+        "file": "browser-homepage.mjs.gz",
+        "bytes": 13073,
+        "sha256": "1f76b373808547977454c316a77a03f4fc31b64e2ed74ba72bd745c8f4f9cfe4",
+        "decodedBytes": 48166,
+        "decodedSha256": "e74f5a52da0b99bd2e4a4326dc3f0ba11bd6ea672ca4a792bd462ea96798a7f5"
+      },
+      "dependencies": [],
+      "captureFiles": []
+    },
+    {
+      "suite": "perspective",
+      "artifact": {
+        "id": 12548578793,
+        "name": "perspective-browser-evidence",
+        "zipSha256": "3bc4c9b10a13befc8cea35ad1cc42516a796ccb8a54be825aeade9114c505985",
+        "zipBytes": 7990057,
+        "createdAt": "2026-10-24T05:05:04Z",
+        "sourceHead": "28439744b6349b795ac0a50c20c5d45d735bb2ed"
+      },
+      "summary": {
+        "passed": 80,
+        "failed": 0
+      },
+      "observedChecks": {
+        "passed": 80,
+        "failed": 0
+      },
+      "completion": "completed",
+      "packageSha256": "65167ee402d6d59978b5f979de8c6987721ec891ffec1ce6127831d7c0dd354e",
+      "localPackageSha256": "e8eed9146ea83accaf54769ff2aaaf5a902cfd344295e3348e11684e50838b0c",
+      "packageFiles": 446,
+      "exactFiles": 425,
+      "sourcePathOnlyMapDifferences": 21,
+      "report": {
+        "file": "perspective-result.json.gz",
+        "bytes": 34010,
+        "sha256": "e952b285d61e3426e57e57f4dba127022eca9d856aaeef80fe38c12f63caf30f",
+        "decodedBytes": 223895,
+        "decodedSha256": "86daf74f69180a0caad51a13abea6b0a67c114902baff06f5bba00ae040ad49d"
+      },
+      "driver": {
+        "file": "browser-perspective.mjs.gz",
+        "bytes": 9646,
+        "sha256": "050282f001b75e21c4812d3bfb236dab464f22d1c30557413a588e85338c3ab8",
+        "decodedBytes": 34988,
+        "decodedSha256": "32400beab9c937501d946a08f8da7bc4100c09af3fefb08fafa13dd121a8fa74"
+      },
+      "dependencies": [],
+      "captureFiles": []
+    },
+    {
+      "suite": "solo",
+      "artifact": {
+        "id": 12548358466,
+        "name": "solo-browser-evidence",
+        "zipSha256": "c398dafd9534a99b44fc83ff9290cbece3fec687b7b1bfc37a8dcdb3a6be9216",
+        "zipBytes": 4710947,
+        "createdAt": "2026-10-24T05:06:03Z",
+        "sourceHead": "28439744b6349b795ac0a50c20c5d45d735bb2ed"
+      },
+      "summary": {
+        "passed": 75,
+        "failed": 0
+      },
+      "observedChecks": {
+        "passed": 75,
+        "failed": 0
+      },
+      "completion": "completed",
+      "packageSha256": "65167ee402d6d59978b5f979de8c6987721ec891ffec1ce6127831d7c0dd354e",
+      "localPackageSha256": "e8eed9146ea83accaf54769ff2aaaf5a902cfd344295e3348e11684e50838b0c",
+      "packageFiles": 446,
+      "exactFiles": 425,
+      "sourcePathOnlyMapDifferences": 21,
+      "report": {
+        "file": "solo-result.json.gz",
+        "bytes": 40193,
+        "sha256": "46897772a90f576d1cc3c02056bc48d39bc2afc682a9f4a3823f5cfbc4bc61cc",
+        "decodedBytes": 361927,
+        "decodedSha256": "0cb212fd9c7044ccd3133e1c275e8ed6bcf9fc6972a0fa63cca56f1443632287"
+      },
+      "driver": {
+        "file": "browser-solo.mjs.gz",
+        "bytes": 12595,
+        "sha256": "5d8e4287e72a8a5c77082c34541e93c920f82e2032b97af9217e0f415fb07d3f",
+        "decodedBytes": 46057,
+        "decodedSha256": "4ac9300f7c57d276c0d8595dde07de18a1a69a867686b64da1f92de84f6d505a"
+      },
+      "dependencies": [],
+      "captureFiles": []
+    }
+  ],
+  "sourceLog": {
+    "file": "source-preparation.log.gz",
+    "bytes": 7080,
+    "sha256": "7c6a2265f92080f61726ffbb3ebdc8348dc6bb65a88edcfc2840cda81d1e1453",
+    "decodedBytes": 30119,
+    "decodedSha256": "e365e7853795154ac3f77df5827ffe7305749c399834e438fb0ab8607441f6c3"
+  },
+  "sourceMapProofs": [
+    {
+      "path": "/assets/cancellation-DjWC_JHZ.js.map",
+      "local": {
+        "path": "/assets/cancellation-DjWC_JHZ.js.map",
+        "bytes": 161004,
+        "sha256": "9e12cc44b5fdea2de64869cccdf53bb5e46312ff33e63f4a801b5a19810c685e"
+      },
+      "ci": {
+        "path": "/assets/cancellation-DjWC_JHZ.js.map",
+        "bytes": 160851,
+        "sha256": "a0ea0206de4cf159949aa34354b91e1fb1ccf744fc7744ff69290104764822d8"
+      },
+      "changedSources": [
+        {
+          "index": 0,
+          "local": "../../../../experience/node_modules/three/examples/jsm/controls/OrbitControls.js",
+          "ci": "../../node_modules/three/examples/jsm/controls/OrbitControls.js"
+        },
+        {
+          "index": 1,
+          "local": "../../../../experience/src/runtime/camera-input.js",
+          "ci": "../../src/runtime/camera-input.js"
+        },
+        {
+          "index": 2,
+          "local": "../../../../experience/src/runtime/camera-constraint-feedback.js",
+          "ci": "../../src/runtime/camera-constraint-feedback.js"
+        },
+        {
+          "index": 3,
+          "local": "../../../../experience/src/runtime/camera.js",
+          "ci": "../../src/runtime/camera.js"
+        },
+        {
+          "index": 4,
+          "local": "../../../../experience/src/runtime/architectural-materials.js",
+          "ci": "../../src/runtime/architectural-materials.js"
+        },
+        {
+          "index": 5,
+          "local": "../../../../experience/src/runtime/inspection.js",
+          "ci": "../../src/runtime/inspection.js"
+        },
+        {
+          "index": 6,
+          "local": "../../../../experience/src/runtime/pack-assets.js",
+          "ci": "../../src/runtime/pack-assets.js"
+        },
+        {
+          "index": 7,
+          "local": "../../../../experience/src/runtime/world-view.js",
+          "ci": "../../src/runtime/world-view.js"
+        },
+        {
+          "index": 8,
+          "local": "../../../../experience/src/runtime/cancellation.js",
+          "ci": "../../src/runtime/cancellation.js"
+        }
+      ],
+      "sourcePathOnlyHashProof": true,
+      "normalizedSha256": "a0ea0206de4cf159949aa34354b91e1fb1ccf744fc7744ff69290104764822d8",
+      "retainedLocalMap": {
+        "file": "cancellation-DjWC_JHZ.js.map.local.gz",
+        "bytes": 42154,
+        "sha256": "4e50c6ba47f2a5d0d131dcdcaac1cf8f4252b0d00b1ee7e458baa682bd1d805c",
+        "decodedBytes": 161004,
+        "decodedSha256": "9e12cc44b5fdea2de64869cccdf53bb5e46312ff33e63f4a801b5a19810c685e"
+      }
+    },
+    {
+      "path": "/assets/comparison-CsxzPs1r.js.map",
+      "local": {
+        "path": "/assets/comparison-CsxzPs1r.js.map",
+        "bytes": 47723,
+        "sha256": "6d76ad15257fe99654acc64d541836f817a4365d22aac26cada58c10a8361a10"
+      },
+      "ci": {
+        "path": "/assets/comparison-CsxzPs1r.js.map",
+        "bytes": 47672,
+        "sha256": "00e15338427d82c30b91f2091010f2770d749618a1c63b8d95aae4504867d75e"
+      },
+      "changedSources": [
+        {
+          "index": 0,
+          "local": "../../../../experience/src/comparison/manifest.js",
+          "ci": "../../src/comparison/manifest.js"
+        },
+        {
+          "index": 1,
+          "local": "../../../../experience/src/comparison/study-renderer.js",
+          "ci": "../../src/comparison/study-renderer.js"
+        },
+        {
+          "index": 2,
+          "local": "../../../../experience/src/comparison/main.js",
+          "ci": "../../src/comparison/main.js"
+        }
+      ],
+      "sourcePathOnlyHashProof": true,
+      "normalizedSha256": "00e15338427d82c30b91f2091010f2770d749618a1c63b8d95aae4504867d75e",
+      "retainedLocalMap": {
+        "file": "comparison-CsxzPs1r.js.map.local.gz",
+        "bytes": 14462,
+        "sha256": "c9dd766e308fff0a95cb005c35bbff2ff5f044a465a099a18a6e3af26274b04b",
+        "decodedBytes": 47723,
+        "decodedSha256": "6d76ad15257fe99654acc64d541836f817a4365d22aac26cada58c10a8361a10"
+      }
+    },
+    {
+      "path": "/assets/create-game-BN17zekY.js.map",
+      "local": {
+        "path": "/assets/create-game-BN17zekY.js.map",
+        "bytes": 60086,
+        "sha256": "7b827a693704aa9d87bfe97182a0bb404ca6c399d06da891dfd238ea2366dd78"
+      },
+      "ci": {
+        "path": "/assets/create-game-BN17zekY.js.map",
+        "bytes": 60018,
+        "sha256": "bdfef340abe348121d664966429b1872284a8576edb0578395c9955dff3517d0"
+      },
+      "changedSources": [
+        {
+          "index": 0,
+          "local": "../../../../experience/src/simulation/create-simulation.js",
+          "ci": "../../src/simulation/create-simulation.js"
+        },
+        {
+          "index": 1,
+          "local": "../../../../experience/src/runtime/restore-intent.js",
+          "ci": "../../src/runtime/restore-intent.js"
+        },
+        {
+          "index": 2,
+          "local": "../../../../experience/src/runtime/route-progress.js",
+          "ci": "../../src/runtime/route-progress.js"
+        },
+        {
+          "index": 3,
+          "local": "../../../../experience/src/runtime/create-game.js",
+          "ci": "../../src/runtime/create-game.js"
+        }
+      ],
+      "sourcePathOnlyHashProof": true,
+      "normalizedSha256": "bdfef340abe348121d664966429b1872284a8576edb0578395c9955dff3517d0",
+      "retainedLocalMap": {
+        "file": "create-game-BN17zekY.js.map.local.gz",
+        "bytes": 18176,
+        "sha256": "6a1e09e3c529c00ce4f3fe780e60060c10cacf62666d856734855aa028a75f02",
+        "decodedBytes": 60086,
+        "decodedSha256": "7b827a693704aa9d87bfe97182a0bb404ca6c399d06da891dfd238ea2366dd78"
+      }
+    },
+    {
+      "path": "/assets/exploration-state-Dc3GCW4v.js.map",
+      "local": {
+        "path": "/assets/exploration-state-Dc3GCW4v.js.map",
+        "bytes": 284856,
+        "sha256": "3cd56a1ada3a8db8ad800cc0cd46141b7306f4acf5c91b54429115f1836d0527"
+      },
+      "ci": {
+        "path": "/assets/exploration-state-Dc3GCW4v.js.map",
+        "bytes": 284669,
+        "sha256": "42edb7798888999504ea06f9ec415b401e776ee4dcf5cef2a09b689a24b2343d"
+      },
+      "changedSources": [
+        {
+          "index": 0,
+          "local": "../../../../experience/src/runtime/inspection-features.js",
+          "ci": "../../src/runtime/inspection-features.js"
+        },
+        {
+          "index": 1,
+          "local": "../../../../experience/src/packs/shijo-karasuma.js",
+          "ci": "../../src/packs/shijo-karasuma.js"
+        },
+        {
+          "index": 2,
+          "local": "../../../../experience/content/ginza-wako/source.json",
+          "ci": "../../content/ginza-wako/source.json"
+        },
+        {
+          "index": 3,
+          "local": "../../../../experience/src/packs/ginza-wako.js",
+          "ci": "../../src/packs/ginza-wako.js"
+        },
+        {
+          "index": 4,
+          "local": "../../../../experience/src/neighborhoods/shijo-east/geography.json",
+          "ci": "../../src/neighborhoods/shijo-east/geography.json"
+        },
+        {
+          "index": 5,
+          "local": "../../../../experience/src/neighborhoods/shijo-east/sights.js",
+          "ci": "../../src/neighborhoods/shijo-east/sights.js"
+        },
+        {
+          "index": 6,
+          "local": "../../../../experience/src/packs/shijo-east.js",
+          "ci": "../../src/packs/shijo-east.js"
+        },
+        {
+          "index": 7,
+          "local": "../../../../experience/src/packs/registry.js",
+          "ci": "../../src/packs/registry.js"
+        },
+        {
+          "index": 8,
+          "local": "../../../../experience/src/simulation/route-navigation.js",
+          "ci": "../../src/simulation/route-navigation.js"
+        },
+        {
+          "index": 9,
+          "local": "../../../../experience/src/simulation/navigation.js",
+          "ci": "../../src/simulation/navigation.js"
+        },
+        {
+          "index": 10,
+          "local": "../../../../experience/src/runtime/exploration-state.js",
+          "ci": "../../src/runtime/exploration-state.js"
+        }
+      ],
+      "sourcePathOnlyHashProof": true,
+      "normalizedSha256": "42edb7798888999504ea06f9ec415b401e776ee4dcf5cef2a09b689a24b2343d",
+      "retainedLocalMap": {
+        "file": "exploration-state-Dc3GCW4v.js.map.local.gz",
+        "bytes": 44632,
+        "sha256": "b12541169f05a18c68492acb89d695abbdda672f93df27a7f591a73ddc6a523e",
+        "decodedBytes": 284856,
+        "decodedSha256": "3cd56a1ada3a8db8ad800cc0cd46141b7306f4acf5c91b54429115f1836d0527"
+      }
+    },
+    {
+      "path": "/assets/i18n-DkfUIDNq.js.map",
+      "local": {
+        "path": "/assets/i18n-DkfUIDNq.js.map",
+        "bytes": 30881,
+        "sha256": "a41a697774d9577194a39af66df9e6f5610670862dbcf0ae5a962c5a093ce3ce"
+      },
+      "ci": {
+        "path": "/assets/i18n-DkfUIDNq.js.map",
+        "bytes": 30864,
+        "sha256": "09e16c0a1a0622864c428a0c49cb6dad88e1e31feb90244e096b446abc720ed2"
+      },
+      "changedSources": [
+        {
+          "index": 0,
+          "local": "../../../../experience/src/ui/i18n.js",
+          "ci": "../../src/ui/i18n.js"
+        }
+      ],
+      "sourcePathOnlyHashProof": true,
+      "normalizedSha256": "09e16c0a1a0622864c428a0c49cb6dad88e1e31feb90244e096b446abc720ed2",
+      "retainedLocalMap": {
+        "file": "i18n-DkfUIDNq.js.map.local.gz",
+        "bytes": 10271,
+        "sha256": "774529d3c47d146c0def1363c092cc792ad0bd8f2aee2420603ab7ced5145bc1",
+        "decodedBytes": 30881,
+        "decodedSha256": "a41a697774d9577194a39af66df9e6f5610670862dbcf0ae5a962c5a093ce3ce"
+      }
+    },
+    {
+      "path": "/assets/index-Ba5iPWah.js.map",
+      "local": {
+        "path": "/assets/index-Ba5iPWah.js.map",
+        "bytes": 292638,
+        "sha256": "db9559d2fa6716cd04502f6f84fc260dbd58fc86308778b22b210cb7da535e41"
+      },
+      "ci": {
+        "path": "/assets/index-Ba5iPWah.js.map",
+        "bytes": 292400,
+        "sha256": "76f3ccfc6dc8100114eb5a839d49d1109ac23d42953b3b709705482456c9e037"
+      },
+      "changedSources": [
+        {
+          "index": 0,
+          "local": "../../../../experience/src/home/copy.js",
+          "ci": "../../src/home/copy.js"
+        },
+        {
+          "index": 1,
+          "local": "../../../../experience/node_modules/eventsource-parser/dist/errors.js",
+          "ci": "../../node_modules/eventsource-parser/dist/errors.js"
+        },
+        {
+          "index": 2,
+          "local": "../../../../experience/node_modules/eventsource-parser/dist/parse.js",
+          "ci": "../../node_modules/eventsource-parser/dist/parse.js"
+        },
+        {
+          "index": 3,
+          "local": "../../../../experience/src/home/room-client.js",
+          "ci": "../../src/home/room-client.js"
+        },
+        {
+          "index": 4,
+          "local": "../../../../experience/src/home/service-config.js",
+          "ci": "../../src/home/service-config.js"
+        },
+        {
+          "index": 5,
+          "local": "../../../../experience/src/discovery/transport.js",
+          "ci": "../../src/discovery/transport.js"
+        },
+        {
+          "index": 6,
+          "local": "../../../../experience/src/discovery/coordinate-reviews.js",
+          "ci": "../../src/discovery/coordinate-reviews.js"
+        },
+        {
+          "index": 7,
+          "local": "../../../../experience/src/discovery/provider.js",
+          "ci": "../../src/discovery/provider.js"
+        },
+        {
+          "index": 8,
+          "local": "../../../../experience/src/discovery/routes.js",
+          "ci": "../../src/discovery/routes.js"
+        },
+        {
+          "index": 9,
+          "local": "../../../../experience/src/solo/controller.js",
+          "ci": "../../src/solo/controller.js"
+        },
+        {
+          "index": 10,
+          "local": "../../../../experience/src/journey/session.js",
+          "ci": "../../src/journey/session.js"
+        },
+        {
+          "index": 11,
+          "local": "../../../../experience/src/journey/recommendations.js",
+          "ci": "../../src/journey/recommendations.js"
+        },
+        {
+          "index": 12,
+          "local": "../../../../experience/src/home/journey-panel.js",
+          "ci": "../../src/home/journey-panel.js"
+        },
+        {
+          "index": 13,
+          "local": "../../../../experience/src/home/main.js",
+          "ci": "../../src/home/main.js"
+        }
+      ],
+      "sourcePathOnlyHashProof": true,
+      "normalizedSha256": "76f3ccfc6dc8100114eb5a839d49d1109ac23d42953b3b709705482456c9e037",
+      "retainedLocalMap": {
+        "file": "index-Ba5iPWah.js.map.local.gz",
+        "bytes": 84492,
+        "sha256": "e2b0cd3770936db9ca97f6b128052d031978bfa12815a04e1d9c810f18cd4428",
+        "decodedBytes": 292638,
+        "decodedSha256": "db9559d2fa6716cd04502f6f84fc260dbd58fc86308778b22b210cb7da535e41"
+      }
+    },
+    {
+      "path": "/assets/journey-CwbB9iY6.js.map",
+      "local": {
+        "path": "/assets/journey-CwbB9iY6.js.map",
+        "bytes": 4448,
+        "sha256": "8c5772bb3b1b2bf523eb918e8b5e2297c87e63680db3192de78e02ffa1ea4b70"
+      },
+      "ci": {
+        "path": "/assets/journey-CwbB9iY6.js.map",
+        "bytes": 4431,
+        "sha256": "fb596b94b57b637fdda9974b710ee2664276825b3455fd0524d75e55f2982b4b"
+      },
+      "changedSources": [
+        {
+          "index": 0,
+          "local": "../../../../experience/src/app/journey-reader.js",
+          "ci": "../../src/app/journey-reader.js"
+        }
+      ],
+      "sourcePathOnlyHashProof": true,
+      "normalizedSha256": "fb596b94b57b637fdda9974b710ee2664276825b3455fd0524d75e55f2982b4b",
+      "retainedLocalMap": {
+        "file": "journey-CwbB9iY6.js.map.local.gz",
+        "bytes": 1840,
+        "sha256": "bb768506380df20129864994f76d5d980ef0143af1d4e3ee18fa29cd334ab149",
+        "decodedBytes": 4448,
+        "decodedSha256": "8c5772bb3b1b2bf523eb918e8b5e2297c87e63680db3192de78e02ffa1ea4b70"
+      }
+    },
+    {
+      "path": "/assets/kyoto-B8LsYbyV.js.map",
+      "local": {
+        "path": "/assets/kyoto-B8LsYbyV.js.map",
+        "bytes": 20413,
+        "sha256": "a057a9ea46761355016ee4cbe4e4b787b5486b41341ecbc9219a029f9844f53f"
+      },
+      "ci": {
+        "path": "/assets/kyoto-B8LsYbyV.js.map",
+        "bytes": 20396,
+        "sha256": "4a6a7301df009cc0fe0c58c6c4e73533622d08f367315815f08dbc00eef83f59"
+      },
+      "changedSources": [
+        {
+          "index": 0,
+          "local": "../../../../experience/src/content/kyoto.js",
+          "ci": "../../src/content/kyoto.js"
+        }
+      ],
+      "sourcePathOnlyHashProof": true,
+      "normalizedSha256": "4a6a7301df009cc0fe0c58c6c4e73533622d08f367315815f08dbc00eef83f59",
+      "retainedLocalMap": {
+        "file": "kyoto-B8LsYbyV.js.map.local.gz",
+        "bytes": 8278,
+        "sha256": "b5c3e2fc164028db62f11e4e68ebf2cd3afa397813e4dc0fa57523468ab64e6e",
+        "decodedBytes": 20413,
+        "decodedSha256": "a057a9ea46761355016ee4cbe4e4b787b5486b41341ecbc9219a029f9844f53f"
+      }
+    },
+    {
+      "path": "/assets/lighting-C36X-tcq.js.map",
+      "local": {
+        "path": "/assets/lighting-C36X-tcq.js.map",
+        "bytes": 3199008,
+        "sha256": "904ca99e5014512135faa0780bad4e4a86b11c771a42c72a559baeec0e1b8d52"
+      },
+      "ci": {
+        "path": "/assets/lighting-C36X-tcq.js.map",
+        "bytes": 3198804,
+        "sha256": "65b6d80ff5c421235bc24346d5aa3b82c8c860f3204ae9c92eb6a699234f98fe"
+      },
+      "changedSources": [
+        {
+          "index": 0,
+          "local": "../../../../experience/node_modules/three/build/three.core.js",
+          "ci": "../../node_modules/three/build/three.core.js"
+        },
+        {
+          "index": 1,
+          "local": "../../../../experience/node_modules/three/build/three.module.js",
+          "ci": "../../node_modules/three/build/three.module.js"
+        },
+        {
+          "index": 2,
+          "local": "../../../../experience/node_modules/three/examples/jsm/utils/BufferGeometryUtils.js",
+          "ci": "../../node_modules/three/examples/jsm/utils/BufferGeometryUtils.js"
+        },
+        {
+          "index": 3,
+          "local": "../../../../experience/node_modules/three/examples/jsm/utils/SkeletonUtils.js",
+          "ci": "../../node_modules/three/examples/jsm/utils/SkeletonUtils.js"
+        },
+        {
+          "index": 4,
+          "local": "../../../../experience/node_modules/three/examples/jsm/loaders/GLTFLoader.js",
+          "ci": "../../node_modules/three/examples/jsm/loaders/GLTFLoader.js"
+        },
+        {
+          "index": 5,
+          "local": "../../../../experience/node_modules/three/examples/jsm/loaders/HDRLoader.js",
+          "ci": "../../node_modules/three/examples/jsm/loaders/HDRLoader.js"
+        },
+        {
+          "index": 6,
+          "local": "../../../../experience/src/runtime/lighting-fallback.js",
+          "ci": "../../src/runtime/lighting-fallback.js"
+        },
+        {
+          "index": 7,
+          "local": "../../../../experience/src/runtime/lighting-contract.js",
+          "ci": "../../src/runtime/lighting-contract.js"
+        },
+        {
+          "index": 8,
+          "local": "../../../../experience/src/runtime/architectural-profile.js",
+          "ci": "../../src/runtime/architectural-profile.js"
+        },
+        {
+          "index": 9,
+          "local": "../../../../experience/src/runtime/texture-memory.js",
+          "ci": "../../src/runtime/texture-memory.js"
+        },
+        {
+          "index": 10,
+          "local": "../../../../experience/src/runtime/asset-bytes.js",
+          "ci": "../../src/runtime/asset-bytes.js"
+        },
+        {
+          "index": 11,
+          "local": "../../../../experience/src/runtime/lighting.js",
+          "ci": "../../src/runtime/lighting.js"
+        }
+      ],
+      "sourcePathOnlyHashProof": true,
+      "normalizedSha256": "65b6d80ff5c421235bc24346d5aa3b82c8c860f3204ae9c92eb6a699234f98fe",
+      "retainedLocalMap": {
+        "file": "lighting-C36X-tcq.js.map.local.gz",
+        "bytes": 647999,
+        "sha256": "c7e718f5d6a6bbf49259a7022924b047fc51f623d502a61e5d61a73b7c19c85c",
+        "decodedBytes": 3199008,
+        "decodedSha256": "904ca99e5014512135faa0780bad4e4a86b11c771a42c72a559baeec0e1b8d52"
+      }
+    },
+    {
+      "path": "/assets/live-view-Dxh8X0c_.js.map",
+      "local": {
+        "path": "/assets/live-view-Dxh8X0c_.js.map",
+        "bytes": 8153,
+        "sha256": "96eea7e9b4141f33de9d78565a4525cfedb9a36354fe62085d04715f07d75849"
+      },
+      "ci": {
+        "path": "/assets/live-view-Dxh8X0c_.js.map",
+        "bytes": 8136,
+        "sha256": "cee0eeffcbea5a77b5c81d9f45a769fa53037bb20519fadcc018e80070beea66"
+      },
+      "changedSources": [
+        {
+          "index": 0,
+          "local": "../../../../experience/src/perspective/live-view.js",
+          "ci": "../../src/perspective/live-view.js"
+        }
+      ],
+      "sourcePathOnlyHashProof": true,
+      "normalizedSha256": "cee0eeffcbea5a77b5c81d9f45a769fa53037bb20519fadcc018e80070beea66",
+      "retainedLocalMap": {
+        "file": "live-view-Dxh8X0c_.js.map.local.gz",
+        "bytes": 2862,
+        "sha256": "3dcb0f9cb4c0120fd1e3dc5dbd2692d7bdb95d78e2426e73796598ff2d931c7f",
+        "decodedBytes": 8153,
+        "decodedSha256": "96eea7e9b4141f33de9d78565a4525cfedb9a36354fe62085d04715f07d75849"
+      }
+    },
+    {
+      "path": "/assets/maps-2TGVCB_Q.js.map",
+      "local": {
+        "path": "/assets/maps-2TGVCB_Q.js.map",
+        "bytes": 7343,
+        "sha256": "f2a2ce8a7e21a6a7de5d4891c83503faf602f1a00f25a6099ae8595c07bd3638"
+      },
+      "ci": {
+        "path": "/assets/maps-2TGVCB_Q.js.map",
+        "bytes": 7326,
+        "sha256": "4b4d5e9f4d576aa329fbd8f8ee1f8febcff89fe988bd543fca60864627938e59"
+      },
+      "changedSources": [
+        {
+          "index": 0,
+          "local": "../../../../experience/src/travel/maps.js",
+          "ci": "../../src/travel/maps.js"
+        }
+      ],
+      "sourcePathOnlyHashProof": true,
+      "normalizedSha256": "4b4d5e9f4d576aa329fbd8f8ee1f8febcff89fe988bd543fca60864627938e59",
+      "retainedLocalMap": {
+        "file": "maps-2TGVCB_Q.js.map.local.gz",
+        "bytes": 2931,
+        "sha256": "dc142824b05b3262576b7247ccef53a267f12b9db974ae49cbe2c01072982e6c",
+        "decodedBytes": 7343,
+        "decodedSha256": "f2a2ce8a7e21a6a7de5d4891c83503faf602f1a00f25a6099ae8595c07bd3638"
+      }
+    },
+    {
+      "path": "/assets/perspective-D8KYkM5X.js.map",
+      "local": {
+        "path": "/assets/perspective-D8KYkM5X.js.map",
+        "bytes": 85633,
+        "sha256": "998bbd6ce215ab9a80ce9300f14af3e1acc6f97ecd2cd32d113f6f3c7d4e9296"
+      },
+      "ci": {
+        "path": "/assets/perspective-D8KYkM5X.js.map",
+        "bytes": 85548,
+        "sha256": "70d2077187a1646e54e406ed540a8f64e1dd5a24d84667988f56e2408246cec1"
+      },
+      "changedSources": [
+        {
+          "index": 0,
+          "local": "../../../../experience/src/content/perspectives.js",
+          "ci": "../../src/content/perspectives.js"
+        },
+        {
+          "index": 1,
+          "local": "../../../../experience/src/perspective/copy.js",
+          "ci": "../../src/perspective/copy.js"
+        },
+        {
+          "index": 2,
+          "local": "../../../../experience/src/perspective/state.js",
+          "ci": "../../src/perspective/state.js"
+        },
+        {
+          "index": 3,
+          "local": "../../../../experience/src/perspective/share.js",
+          "ci": "../../src/perspective/share.js"
+        },
+        {
+          "index": 4,
+          "local": "../../../../experience/src/perspective/main.js",
+          "ci": "../../src/perspective/main.js"
+        }
+      ],
+      "sourcePathOnlyHashProof": true,
+      "normalizedSha256": "70d2077187a1646e54e406ed540a8f64e1dd5a24d84667988f56e2408246cec1",
+      "retainedLocalMap": {
+        "file": "perspective-D8KYkM5X.js.map.local.gz",
+        "bytes": 26515,
+        "sha256": "d37ae8230c0d809a8a654cfee0e713a99fbc75b60db38ef21219f7f17bbe222d",
+        "decodedBytes": 85633,
+        "decodedSha256": "998bbd6ce215ab9a80ce9300f14af3e1acc6f97ecd2cd32d113f6f3c7d4e9296"
+      }
+    },
+    {
+      "path": "/assets/places-_F3XEqgH.js.map",
+      "local": {
+        "path": "/assets/places-_F3XEqgH.js.map",
+        "bytes": 4049,
+        "sha256": "7769785246a9a573c292c46a5f43aef00ab570a2c8170a581d9b2221aea371cc"
+      },
+      "ci": {
+        "path": "/assets/places-_F3XEqgH.js.map",
+        "bytes": 4032,
+        "sha256": "6b7d0cd9227772488dba1d15f873e6df60af36d5646708af7fb36907161913bf"
+      },
+      "changedSources": [
+        {
+          "index": 0,
+          "local": "../../../../experience/src/travel/places.js",
+          "ci": "../../src/travel/places.js"
+        }
+      ],
+      "sourcePathOnlyHashProof": true,
+      "normalizedSha256": "6b7d0cd9227772488dba1d15f873e6df60af36d5646708af7fb36907161913bf",
+      "retainedLocalMap": {
+        "file": "places-_F3XEqgH.js.map.local.gz",
+        "bytes": 1974,
+        "sha256": "fa0d9a1afdd4c8705bce5dcd8fd24df5b5b81f7b9eb5573d54aaffcca055f316",
+        "decodedBytes": 4049,
+        "decodedSha256": "7769785246a9a573c292c46a5f43aef00ab570a2c8170a581d9b2221aea371cc"
+      }
+    },
+    {
+      "path": "/assets/route-world-view-BBWniNmS.js.map",
+      "local": {
+        "path": "/assets/route-world-view-BBWniNmS.js.map",
+        "bytes": 447114,
+        "sha256": "1fbf52c3c7e53beb757eff280c7fcabfddfa63360a3ef33a9b98966887e46227"
+      },
+      "ci": {
+        "path": "/assets/route-world-view-BBWniNmS.js.map",
+        "bytes": 446264,
+        "sha256": "239cbbd654a436aef088e5923c72353ec5eaf1b12da5525c3c94617c6ef354a1"
+      },
+      "changedSources": [
+        {
+          "index": 0,
+          "local": "../../../../experience/node_modules/three/examples/jsm/libs/meshopt_decoder.module.js",
+          "ci": "../../node_modules/three/examples/jsm/libs/meshopt_decoder.module.js"
+        },
+        {
+          "index": 1,
+          "local": "../../../../experience/src/runtime/section-queue.js",
+          "ci": "../../src/runtime/section-queue.js"
+        },
+        {
+          "index": 2,
+          "local": "../../../../experience/src/runtime/section-transport.js",
+          "ci": "../../src/runtime/section-transport.js"
+        },
+        {
+          "index": 3,
+          "local": "../../../../experience/src/runtime/section-assets.js",
+          "ci": "../../src/runtime/section-assets.js"
+        },
+        {
+          "index": 4,
+          "local": "../../../../experience/src/runtime/section-residency.js",
+          "ci": "../../src/runtime/section-residency.js"
+        },
+        {
+          "index": 5,
+          "local": "../../../../experience/src/runtime/section-stream.js",
+          "ci": "../../src/runtime/section-stream.js"
+        },
+        {
+          "index": 6,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/Constants.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/Constants.js"
+        },
+        {
+          "index": 7,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/utils/ArrayBoxUtilities.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/utils/ArrayBoxUtilities.js"
+        },
+        {
+          "index": 8,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/utils/nodeBufferUtils.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/utils/nodeBufferUtils.js"
+        },
+        {
+          "index": 9,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/build/computeBoundsUtils.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/build/computeBoundsUtils.js"
+        },
+        {
+          "index": 10,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/build/splitUtils.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/build/splitUtils.js"
+        },
+        {
+          "index": 11,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/BVHNode.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/BVHNode.js"
+        },
+        {
+          "index": 12,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/build/sortUtils.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/build/sortUtils.js"
+        },
+        {
+          "index": 13,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/build/buildUtils.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/build/buildUtils.js"
+        },
+        {
+          "index": 14,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/build/buildTree.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/build/buildTree.js"
+        },
+        {
+          "index": 15,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/utils/PrimitivePool.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/utils/PrimitivePool.js"
+        },
+        {
+          "index": 16,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/utils/BufferStack.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/utils/BufferStack.js"
+        },
+        {
+          "index": 17,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/cast/shapecast.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/cast/shapecast.js"
+        },
+        {
+          "index": 18,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/cast/bvhcast.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/cast/bvhcast.js"
+        },
+        {
+          "index": 19,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/BVHTraversalHelper.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/BVHTraversalHelper.js"
+        },
+        {
+          "index": 20,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/BVH.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/BVH.js"
+        },
+        {
+          "index": 21,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/utils/BufferUtils.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/utils/BufferUtils.js"
+        },
+        {
+          "index": 22,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/build/geometryUtils.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/build/geometryUtils.js"
+        },
+        {
+          "index": 23,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/GeometryBVH.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/GeometryBVH.js"
+        },
+        {
+          "index": 24,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/math/SeparatingAxisBounds.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/math/SeparatingAxisBounds.js"
+        },
+        {
+          "index": 25,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/math/MathUtilities.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/math/MathUtilities.js"
+        },
+        {
+          "index": 26,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/math/ExtendedTriangle.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/math/ExtendedTriangle.js"
+        },
+        {
+          "index": 27,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/math/OrientedBox.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/math/OrientedBox.js"
+        },
+        {
+          "index": 28,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/utils/ExtendedTrianglePool.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/utils/ExtendedTrianglePool.js"
+        },
+        {
+          "index": 29,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/cast/closestPointToPoint.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/cast/closestPointToPoint.js"
+        },
+        {
+          "index": 30,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/utils/ThreeRayIntersectUtilities.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/utils/ThreeRayIntersectUtilities.js"
+        },
+        {
+          "index": 31,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/utils/TriangleUtilities.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/utils/TriangleUtilities.js"
+        },
+        {
+          "index": 32,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/utils/iterationUtils.generated.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/utils/iterationUtils.generated.js"
+        },
+        {
+          "index": 33,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/cast/refit.generated.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/cast/refit.generated.js"
+        },
+        {
+          "index": 34,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/utils/intersectUtils.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/utils/intersectUtils.js"
+        },
+        {
+          "index": 35,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/utils/iterationUtils_indirect.generated.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/utils/iterationUtils_indirect.generated.js"
+        },
+        {
+          "index": 36,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/cast/raycast.generated.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/cast/raycast.generated.js"
+        },
+        {
+          "index": 37,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/cast/raycastFirst.generated.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/cast/raycastFirst.generated.js"
+        },
+        {
+          "index": 38,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/cast/intersectsGeometry.generated.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/cast/intersectsGeometry.generated.js"
+        },
+        {
+          "index": 39,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/cast/closestPointToGeometry.generated.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/cast/closestPointToGeometry.generated.js"
+        },
+        {
+          "index": 40,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/cast/refit_indirect.generated.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/cast/refit_indirect.generated.js"
+        },
+        {
+          "index": 41,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/cast/raycast_indirect.generated.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/cast/raycast_indirect.generated.js"
+        },
+        {
+          "index": 42,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/cast/raycastFirst_indirect.generated.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/cast/raycastFirst_indirect.generated.js"
+        },
+        {
+          "index": 43,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/cast/intersectsGeometry_indirect.generated.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/cast/intersectsGeometry_indirect.generated.js"
+        },
+        {
+          "index": 44,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/cast/closestPointToGeometry_indirect.generated.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/cast/closestPointToGeometry_indirect.generated.js"
+        },
+        {
+          "index": 45,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/utils/GeometryRayIntersectUtilities.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/utils/GeometryRayIntersectUtilities.js"
+        },
+        {
+          "index": 46,
+          "local": "../../../../experience/node_modules/three-mesh-bvh/src/core/MeshBVH.js",
+          "ci": "../../node_modules/three-mesh-bvh/src/core/MeshBVH.js"
+        },
+        {
+          "index": 47,
+          "local": "../../../../experience/src/runtime/camera-obstruction.js",
+          "ci": "../../src/runtime/camera-obstruction.js"
+        },
+        {
+          "index": 48,
+          "local": "../../../../experience/src/runtime/thin-sheet-material.js",
+          "ci": "../../src/runtime/thin-sheet-material.js"
+        },
+        {
+          "index": 49,
+          "local": "../../../../experience/src/runtime/route-world-view.js",
+          "ci": "../../src/runtime/route-world-view.js"
+        }
+      ],
+      "sourcePathOnlyHashProof": true,
+      "normalizedSha256": "239cbbd654a436aef088e5923c72353ec5eaf1b12da5525c3c94617c6ef354a1",
+      "retainedLocalMap": {
+        "file": "route-world-view-BBWniNmS.js.map.local.gz",
+        "bytes": 108990,
+        "sha256": "eaa50a6940f2728d75f11bcf2b7b277c6c5a3ca8be28d48baecc8723c729be83",
+        "decodedBytes": 447114,
+        "decodedSha256": "1fbf52c3c7e53beb757eff280c7fcabfddfa63360a3ef33a9b98966887e46227"
+      }
+    },
+    {
+      "path": "/assets/share-CHsHvbZh.js.map",
+      "local": {
+        "path": "/assets/share-CHsHvbZh.js.map",
+        "bytes": 15805,
+        "sha256": "7a8c9c653b652934c402020e8f9401edad21fb5174d876889f453e885354f25c"
+      },
+      "ci": {
+        "path": "/assets/share-CHsHvbZh.js.map",
+        "bytes": 15788,
+        "sha256": "467cbfb76aaa706bfeb5de4fcc4fbf628c502e59d5ce6214556317edb6b88bbb"
+      },
+      "changedSources": [
+        {
+          "index": 0,
+          "local": "../../../../experience/src/app/share.js",
+          "ci": "../../src/app/share.js"
+        }
+      ],
+      "sourcePathOnlyHashProof": true,
+      "normalizedSha256": "467cbfb76aaa706bfeb5de4fcc4fbf628c502e59d5ce6214556317edb6b88bbb",
+      "retainedLocalMap": {
+        "file": "share-CHsHvbZh.js.map.local.gz",
+        "bytes": 5667,
+        "sha256": "b4dbb65adca972f0be55804779b2b9f6cf5cdd54c0dabb6fbbcf89c6b0f0e700",
+        "decodedBytes": 15805,
+        "decodedSha256": "7a8c9c653b652934c402020e8f9401edad21fb5174d876889f453e885354f25c"
+      }
+    },
+    {
+      "path": "/assets/state-CR270Xy7.js.map",
+      "local": {
+        "path": "/assets/state-CR270Xy7.js.map",
+        "bytes": 12711,
+        "sha256": "aad4ac000657ea0375377a27770254d8dc343aa849db65686b100255ef4a4e11"
+      },
+      "ci": {
+        "path": "/assets/state-CR270Xy7.js.map",
+        "bytes": 12694,
+        "sha256": "49b9ebda59e23f1462a23085f1d933f7de4695473431c36d1a08effaf4c087e5"
+      },
+      "changedSources": [
+        {
+          "index": 0,
+          "local": "../../../../experience/src/solo/state.js",
+          "ci": "../../src/solo/state.js"
+        }
+      ],
+      "sourcePathOnlyHashProof": true,
+      "normalizedSha256": "49b9ebda59e23f1462a23085f1d933f7de4695473431c36d1a08effaf4c087e5",
+      "retainedLocalMap": {
+        "file": "state-CR270Xy7.js.map.local.gz",
+        "bytes": 4194,
+        "sha256": "2b3858ea5c6700e5e071b67d6f560c691deeb452f1db1b021c390f9fa59d0f63",
+        "decodedBytes": 12711,
+        "decodedSha256": "aad4ac000657ea0375377a27770254d8dc343aa849db65686b100255ef4a4e11"
+      }
+    },
+    {
+      "path": "/assets/state-DwlyKbZV.js.map",
+      "local": {
+        "path": "/assets/state-DwlyKbZV.js.map",
+        "bytes": 3679,
+        "sha256": "86f751a2b01052a3a228090c2b4365a5d147f0b50d114d2835b76e2b262cce3a"
+      },
+      "ci": {
+        "path": "/assets/state-DwlyKbZV.js.map",
+        "bytes": 3662,
+        "sha256": "d3958d9c7f6d6e50fa4200bd73f491c6a6d04639fa845e4065f3e438b531b942"
+      },
+      "changedSources": [
+        {
+          "index": 0,
+          "local": "../../../../experience/src/travel/state.js",
+          "ci": "../../src/travel/state.js"
+        }
+      ],
+      "sourcePathOnlyHashProof": true,
+      "normalizedSha256": "d3958d9c7f6d6e50fa4200bd73f491c6a6d04639fa845e4065f3e438b531b942",
+      "retainedLocalMap": {
+        "file": "state-DwlyKbZV.js.map.local.gz",
+        "bytes": 1500,
+        "sha256": "d296092fc21703f6dc5074fd80837241c3df7ac5f9a0ee082ced94df941987f7",
+        "decodedBytes": 3679,
+        "decodedSha256": "86f751a2b01052a3a228090c2b4365a5d147f0b50d114d2835b76e2b262cce3a"
+      }
+    },
+    {
+      "path": "/assets/travel-N1tolctY.js.map",
+      "local": {
+        "path": "/assets/travel-N1tolctY.js.map",
+        "bytes": 52316,
+        "sha256": "d1e1e851866a67041775b091d05318bc721e1e3284ada686e652ac0f6f1da944"
+      },
+      "ci": {
+        "path": "/assets/travel-N1tolctY.js.map",
+        "bytes": 52265,
+        "sha256": "781f301d527dd696de9c2823a624e6650c3b09e56ef414c45f9a3d6eed153f1e"
+      },
+      "changedSources": [
+        {
+          "index": 0,
+          "local": "../../../../experience/src/travel/location.js",
+          "ci": "../../src/travel/location.js"
+        },
+        {
+          "index": 1,
+          "local": "../../../../experience/src/travel/copy.js",
+          "ci": "../../src/travel/copy.js"
+        },
+        {
+          "index": 2,
+          "local": "../../../../experience/src/travel/main.js",
+          "ci": "../../src/travel/main.js"
+        }
+      ],
+      "sourcePathOnlyHashProof": true,
+      "normalizedSha256": "781f301d527dd696de9c2823a624e6650c3b09e56ef414c45f9a3d6eed153f1e",
+      "retainedLocalMap": {
+        "file": "travel-N1tolctY.js.map.local.gz",
+        "bytes": 17721,
+        "sha256": "3405e1d4c32d8c0edf4cbeac38f0391c04b916eec1c9a169eb0341903a6717fe",
+        "decodedBytes": 52316,
+        "decodedSha256": "d1e1e851866a67041775b091d05318bc721e1e3284ada686e652ac0f6f1da944"
+      }
+    },
+    {
+      "path": "/assets/view-state-u4a6Z6NS.js.map",
+      "local": {
+        "path": "/assets/view-state-u4a6Z6NS.js.map",
+        "bytes": 6526,
+        "sha256": "facfe5ddb9d94ca6e67cebc1ad076137bfcb33c89e691678723a6fb0d279fad7"
+      },
+      "ci": {
+        "path": "/assets/view-state-u4a6Z6NS.js.map",
+        "bytes": 6492,
+        "sha256": "3b59a13d5d05a82ad45513fad276e9f9c4fbefbebe4a2400bab63c84df5dfd23"
+      },
+      "changedSources": [
+        {
+          "index": 0,
+          "local": "../../../../experience/src/simulation/world.js",
+          "ci": "../../src/simulation/world.js"
+        },
+        {
+          "index": 1,
+          "local": "../../../../experience/src/runtime/view-state.js",
+          "ci": "../../src/runtime/view-state.js"
+        }
+      ],
+      "sourcePathOnlyHashProof": true,
+      "normalizedSha256": "3b59a13d5d05a82ad45513fad276e9f9c4fbefbebe4a2400bab63c84df5dfd23",
+      "retainedLocalMap": {
+        "file": "view-state-u4a6Z6NS.js.map.local.gz",
+        "bytes": 2337,
+        "sha256": "e595e8eb06c29f48a6a98a947ad647b108acd20d8cbc5a61138f744be82e51fb",
+        "decodedBytes": 6526,
+        "decodedSha256": "facfe5ddb9d94ca6e67cebc1ad076137bfcb33c89e691678723a6fb0d279fad7"
+      }
+    },
+    {
+      "path": "/assets/walk-BDwxvqIq.js.map",
+      "local": {
+        "path": "/assets/walk-BDwxvqIq.js.map",
+        "bytes": 56657,
+        "sha256": "6ab8ce3d8d1192808d4340649181b0dce883db6f0e3b6c53c07355e0d90917f9"
+      },
+      "ci": {
+        "path": "/assets/walk-BDwxvqIq.js.map",
+        "bytes": 56589,
+        "sha256": "99cd1274d51028f55fcc22ba88198dc713fa6983e755ecd81bc7c2d6999fd917"
+      },
+      "changedSources": [
+        {
+          "index": 0,
+          "local": "../../../../experience/src/app/journey-store.js",
+          "ci": "../../src/app/journey-store.js"
+        },
+        {
+          "index": 1,
+          "local": "../../../../experience/src/app/share-dialog.js",
+          "ci": "../../src/app/share-dialog.js"
+        },
+        {
+          "index": 2,
+          "local": "../../../../experience/src/app/appearance.js",
+          "ci": "../../src/app/appearance.js"
+        },
+        {
+          "index": 3,
+          "local": "../../../../experience/src/app/main.js",
+          "ci": "../../src/app/main.js"
+        }
+      ],
+      "sourcePathOnlyHashProof": true,
+      "normalizedSha256": "99cd1274d51028f55fcc22ba88198dc713fa6983e755ecd81bc7c2d6999fd917",
+      "retainedLocalMap": {
+        "file": "walk-BDwxvqIq.js.map.local.gz",
+        "bytes": 17167,
+        "sha256": "ff78d1d2dd1b4562004a8b28d7e76012329cb0ef4920104e3174f044b5ce44bd",
+        "decodedBytes": 56657,
+        "decodedSha256": "6ab8ce3d8d1192808d4340649181b0dce883db6f0e3b6c53c07355e0d90917f9"
+      }
+    },
+    {
+      "path": "/assets/world-map-Dm0reet3.js.map",
+      "local": {
+        "path": "/assets/world-map-Dm0reet3.js.map",
+        "bytes": 2237332,
+        "sha256": "31bae6548290a3af9940f618b16c621c1959c49513f9df545c571965612682f0"
+      },
+      "ci": {
+        "path": "/assets/world-map-Dm0reet3.js.map",
+        "bytes": 2237264,
+        "sha256": "1d9d09ff174b998088d56f13d65979051cdd472087e6e49283371c317833cf71"
+      },
+      "changedSources": [
+        {
+          "index": 0,
+          "local": "../../../../experience/node_modules/maplibre-gl/dist/maplibre-gl.mjs",
+          "ci": "../../node_modules/maplibre-gl/dist/maplibre-gl.mjs"
+        },
+        {
+          "index": 1,
+          "local": "../../../../experience/src/home/map-style.js",
+          "ci": "../../src/home/map-style.js"
+        },
+        {
+          "index": 2,
+          "local": "../../../../experience/src/home/map-route-data.js",
+          "ci": "../../src/home/map-route-data.js"
+        },
+        {
+          "index": 3,
+          "local": "../../../../experience/src/home/world-map.js",
+          "ci": "../../src/home/world-map.js"
+        }
+      ],
+      "sourcePathOnlyHashProof": true,
+      "normalizedSha256": "1d9d09ff174b998088d56f13d65979051cdd472087e6e49283371c317833cf71",
+      "retainedLocalMap": {
+        "file": "world-map-Dm0reet3.js.map.local.gz",
+        "bytes": 431433,
+        "sha256": "f93fd304f40b4d6e87b3a8a675e5698a6974696ab3a920f43277a42a6eaed43b",
+        "decodedBytes": 2237332,
+        "decodedSha256": "31bae6548290a3af9940f618b16c621c1959c49513f9df545c571965612682f0"
+      }
+    }
+  ],
+  "canonicalBuild": {
+    "directory": "artifacts/neighborhood-20261024/candidate-13-canonical",
+    "packageSha256": "65167ee402d6d59978b5f979de8c6987721ec891ffec1ce6127831d7c0dd354e",
+    "independentlyVerifiedFiles": 446,
+    "exactCIFileIdentities": true,
+    "inventory": {
+      "file": "../../validation/candidate-13-canonical-package.json",
+      "bytes": 86114,
+      "sha256": "b392d0a53810ebc9f1b003ce18f9eab2cdfd4c8cf46e581d79a04b2be90a871c"
+    },
+    "originalLocalTestPackageSha256": "e8eed9146ea83accaf54769ff2aaaf5a902cfd344295e3348e11684e50838b0c",
+    "scope": "Canonical default-output build matches all CI files. Original browser and timing reports retain their original local package identity; no remeasurement."
+  },
+  "localPackageManifest": {
+    "file": "local-package-manifest.json.gz",
+    "bytes": 20756,
+    "sha256": "3ac535cc669594fc14bcfb6365e4f4597b83f33f02950561c4c8ae4f009fcdff",
+    "decodedBytes": 81364,
+    "decodedSha256": "4e9d5a81280af1966b71ecef44341d8da776d92f1f7b1b3b8930a72858f71646"
+  },
+  "verificationSource": {
+    "file": "archive-candidate.mjs.gz",
+    "bytes": 3640,
+    "sha256": "2e57aaf24881893fb94cbfd226d3b4acf6cb741940743699246efa13bed3f0e0",
+    "decodedBytes": 10711,
+    "decodedSha256": "046578ad86b512f708fcb92fa4800ce18edf6e040eabcce9e603f78b748b51cb"
+  },
+  "conclusion": "in_progress",
+  "completedBrowserChecks": 293,
+  "completedBrowserFailures": 0
+}

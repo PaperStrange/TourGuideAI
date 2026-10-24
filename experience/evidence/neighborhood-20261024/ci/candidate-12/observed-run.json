@@ -1,0 +1,210 @@
+{
+  "runId": 40062728715,
+  "headSha": "06a2c496da689b5c18797b2f77ef1f03cb2857ab",
+  "observedAt": "2026-10-24T04:59:55.989Z",
+  "conclusion": "cancelled",
+  "jobs": [
+    {
+      "id": 120779550924,
+      "name": "Validate original walk",
+      "status": "completed",
+      "conclusion": "cancelled"
+    },
+    {
+      "id": 120779551059,
+      "name": "Validate shared perspective",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 120779551064,
+      "name": "Validate journey homepage",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 120779551083,
+      "name": "Validate reviewed place packs",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 120779551125,
+      "name": "Validate connected neighborhood",
+      "status": "completed",
+      "conclusion": "cancelled"
+    },
+    {
+      "id": 120779551190,
+      "name": "Validate solo exploration",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 120779551195,
+      "name": "Validate travel companion",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 120779551210,
+      "name": "Validate geographic source preparation",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 12549105081,
+      "name": "packs-browser-evidence",
+      "size_in_bytes": 10901632,
+      "url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12549105081",
+      "archive_download_url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12549105081/zip",
+      "expired": false,
+      "created_at": "2026-10-24T04:52:03Z",
+      "expires_at": "2027-01-22T04:32:14Z",
+      "updated_at": "2026-10-24T04:52:03Z",
+      "digest": "sha256:2980d4afeb41f1de1dd700c1f349a5834ebbd9e7e650b6409f0bd600834d698b",
+      "workflow_run": {
+        "id": 40062728715,
+        "repository_id": 764675410,
+        "head_repository_id": 764675410,
+        "head_branch": "chore-sow-delivery-plan",
+        "head_sha": "06a2c496da689b5c18797b2f77ef1f03cb2857ab"
+      }
+    },
+    {
+      "id": 12548811092,
+      "name": "experience-browser-evidence",
+      "size_in_bytes": 12125049,
+      "url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12548811092",
+      "archive_download_url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12548811092/zip",
+      "expired": false,
+      "created_at": "2026-10-24T04:59:04Z",
+      "expires_at": "2027-01-22T04:32:14Z",
+      "updated_at": "2026-10-24T04:59:04Z",
+      "digest": "sha256:27b5657d1d84448b60389a93134556765ab1fafe9905f4a5c034286197eea56e",
+      "workflow_run": {
+        "id": 40062728715,
+        "repository_id": 764675410,
+        "head_repository_id": 764675410,
+        "head_branch": "chore-sow-delivery-plan",
+        "head_sha": "06a2c496da689b5c18797b2f77ef1f03cb2857ab"
+      }
+    },
+    {
+      "id": 12548596817,
+      "name": "neighborhood-browser-evidence",
+      "size_in_bytes": 4751246,
+      "url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12548596817",
+      "archive_download_url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12548596817/zip",
+      "expired": false,
+      "created_at": "2026-10-24T04:59:03Z",
+      "expires_at": "2027-01-22T04:32:14Z",
+      "updated_at": "2026-10-24T04:59:03Z",
+      "digest": "sha256:14a98919cacba02d620df43fd1baefe81ae262c2967f07a762118758d81245c6",
+      "workflow_run": {
+        "id": 40062728715,
+        "repository_id": 764675410,
+        "head_repository_id": 764675410,
+        "head_branch": "chore-sow-delivery-plan",
+        "head_sha": "06a2c496da689b5c18797b2f77ef1f03cb2857ab"
+      }
+    },
+    {
+      "id": 12548376585,
+      "name": "homepage-browser-evidence",
+      "size_in_bytes": 6279258,
+      "url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12548376585",
+      "archive_download_url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12548376585/zip",
+      "expired": false,
+      "created_at": "2026-10-24T04:34:59Z",
+      "expires_at": "2027-01-22T04:32:14Z",
+      "updated_at": "2026-10-24T04:34:59Z",
+      "digest": "sha256:1070778e26c92b3c3b6313ae4e35aabcf872d3e6aa5f05e5d541f66f58a2e884",
+      "workflow_run": {
+        "id": 40062728715,
+        "repository_id": 764675410,
+        "head_repository_id": 764675410,
+        "head_branch": "chore-sow-delivery-plan",
+        "head_sha": "06a2c496da689b5c18797b2f77ef1f03cb2857ab"
+      }
+    },
+    {
+      "id": 12548113522,
+      "name": "perspective-browser-evidence",
+      "size_in_bytes": 7991249,
+      "url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12548113522",
+      "archive_download_url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12548113522/zip",
+      "expired": false,
+      "created_at": "2026-10-24T04:42:19Z",
+      "expires_at": "2027-01-22T04:32:14Z",
+      "updated_at": "2026-10-24T04:42:19Z",
+      "digest": "sha256:2b44ced88653f82573c210a477d8b3f05099dd348e3ea9aaabe083da8afa2892",
+      "workflow_run": {
+        "id": 40062728715,
+        "repository_id": 764675410,
+        "head_repository_id": 764675410,
+        "head_branch": "chore-sow-delivery-plan",
+        "head_sha": "06a2c496da689b5c18797b2f77ef1f03cb2857ab"
+      }
+    },
+    {
+      "id": 12548061985,
+      "name": "solo-browser-evidence",
+      "size_in_bytes": 4711016,
+      "url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12548061985",
+      "archive_download_url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12548061985/zip",
+      "expired": false,
+      "created_at": "2026-10-24T04:39:36Z",
+      "expires_at": "2027-01-22T04:32:14Z",
+      "updated_at": "2026-10-24T04:39:36Z",
+      "digest": "sha256:018f502db65e53ca141009d4d283a4e01f3a0275c9dbc41dbfaeaa369425c124",
+      "workflow_run": {
+        "id": 40062728715,
+        "repository_id": 764675410,
+        "head_repository_id": 764675410,
+        "head_branch": "chore-sow-delivery-plan",
+        "head_sha": "06a2c496da689b5c18797b2f77ef1f03cb2857ab"
+      }
+    },
+    {
+      "id": 12547753690,
+      "name": "homepage-walkthrough-evidence",
+      "size_in_bytes": 15198524,
+      "url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12547753690",
+      "archive_download_url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12547753690/zip",
+      "expired": false,
+      "created_at": "2026-10-24T04:48:51Z",
+      "expires_at": "2027-01-22T04:32:14Z",
+      "updated_at": "2026-10-24T04:48:51Z",
+      "digest": "sha256:b6a1b2339173bc960301dec12563da395f42dce69d2075c0f64d029f304b0a27",
+      "workflow_run": {
+        "id": 40062728715,
+        "repository_id": 764675410,
+        "head_repository_id": 764675410,
+        "head_branch": "chore-sow-delivery-plan",
+        "head_sha": "06a2c496da689b5c18797b2f77ef1f03cb2857ab"
+      }
+    },
+    {
+      "id": 12547299345,
+      "name": "travel-browser-evidence",
+      "size_in_bytes": 1853320,
+      "url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12547299345",
+      "archive_download_url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12547299345/zip",
+      "expired": false,
+      "created_at": "2026-10-24T04:33:38Z",
+      "expires_at": "2027-01-22T04:32:14Z",
+      "updated_at": "2026-10-24T04:33:38Z",
+      "digest": "sha256:77857d06597d21196501ad3e8fbf17e6d8a196def1f0fec6e0da9e829e3c4167",
+      "workflow_run": {
+        "id": 40062728715,
+        "repository_id": 764675410,
+        "head_repository_id": 764675410,
+        "head_branch": "chore-sow-delivery-plan",
+        "head_sha": "06a2c496da689b5c18797b2f77ef1f03cb2857ab"
+      }
+    }
+  ]
+}

@@ -1,0 +1,349 @@
+{
+  "packageManifestSha256": "e8eed9146ea83accaf54769ff2aaaf5a902cfd344295e3348e11684e50838b0c",
+  "verifiedPackagedFiles": 446,
+  "sceneryManifestSha256": "86e4f424a36cb858c16f6e282ad8ceb8f146d6b285d482de3c0ce2fe2f726b61",
+  "driverSha256": "1ab216a6b3d7039c42156a782ea0158edcc27f0bb5e58cb26ccf6c8f76709757",
+  "browser": "151.0.7922.173",
+  "graphicsMode": "default",
+  "conditions": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "dpr": 1,
+    "locale": "en",
+    "lighting": "day",
+    "headless": true,
+    "graphicsMode": "default",
+    "launch": {
+      "executable": "/usr/bin/chromium",
+      "args": [
+        "--no-sandbox"
+      ],
+      "environmentOverrides": {
+        "TMPDIR": "/workspace/TourGuideAI/artifacts/tmp"
+      },
+      "inheritedEnvironment": "Existing environment, including proxy and CA configuration, retained; values are not logged."
+    },
+    "entries": "One fresh-context cold navigation followed by three full-page reloads retaining HTTP cache and private state; no movement between these entries.",
+    "network": {
+      "transport": "Actual loopback HTTP; immutable build bytes; no interception or content encoding",
+      "cdp": {
+        "latencyMs": 80,
+        "downloadBytesPerSecond": 1250000,
+        "uploadBytesPerSecond": 1250000
+      },
+      "externalProxyConfigured": true,
+      "tlsVerification": true,
+      "api": "No backend; /api requests return actual HTTP 404."
+    },
+    "input": "Ten walking key holds and ten discrete J/L orbit nudges, each held for at least 300 ms. Playwright sends one keydown per action; actual event receipt/release durations are recorded.",
+    "observation": "Read-only runtime snapshots sampled on requestAnimationFrame; observer cost and skipped draw-counter increments are recorded.",
+    "hidden": "Actual background tab with visibilitychange records and timer-polled document.hidden. An unobserved transition fails the hidden check and retains other results. The benchmark animation-frame observer is stopped before a 2-second runtime counter/CPU/network sample.",
+    "host": {
+      "platform": "linux",
+      "release": "6.18.55",
+      "arch": "x64",
+      "logicalCPUs": 5,
+      "cpuModels": [
+        "AMD EPYC 9V74 80-Core Processor"
+      ],
+      "memoryBytes": 18882674688
+    },
+    "limitations": [
+      "Software or cloud graphics cannot establish physical GPU or phone performance.",
+      "Loopback HTTP with CDP throttling does not reproduce CDN compression, TLS connection setup or a physical WAN.",
+      "First usable observation is readiness plus rendered ground and enabled controls; actual input is independently exercised after the entry measurements.",
+      "Response means first changed simulation/camera state with a newer submitted draw; physical display presentation is unmeasured.",
+      "Receipt-to-draw excludes browser input queue delay. Event-timeStamp-to-draw includes that queue; dispatch-to-draw also includes automation scheduling.",
+      "A single-draw orbit nudge provides a response observation and no within-action frame interval. First-observation counter gaps retain their unrecoverable intervals.",
+      "Input and frame observations cover the starting neighborhood segment; the complete-route correctness walkthrough remains separate.",
+      "Q03 uses its existing homepage driver and threshold; this report does not replace or close it."
+    ],
+    "pageURL": "http://127.0.0.1:37885/?qa=1&lang=en&mode=explore&pack=shijo-east",
+    "browser": "151.0.7922.173",
+    "graphics": {
+      "vendor": "WebKit",
+      "renderer": "WebKit WebGL",
+      "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "unmaskedVendor": "Google Inc. (Google)",
+      "unmaskedRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "contextAttributes": {
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "viewport": {
+        "width": 990,
+        "height": 717,
+        "dpr": 1,
+        "rect": {
+          "x": 49,
+          "y": 574.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 574.796875,
+          "right": 1039,
+          "bottom": 1291.625,
+          "left": 49
+        }
+      }
+    },
+    "softwareRendererDetected": true
+  },
+  "startedAt": "2026-10-24T05:02:52.554Z",
+  "finishedAt": "2026-10-24T05:04:59.495Z",
+  "elapsedMs": 126941,
+  "checks": {
+    "passed": 16,
+    "failed": 3
+  },
+  "failedCheckIds": [
+    "input-event-timestamp-response-p95",
+    "observed-frame-interval-p95",
+    "hidden-neighborhood-zero-work"
+  ],
+  "entries": [
+    {
+      "id": "cold",
+      "firstUsableObservedMs": 7885.60000000149,
+      "settledMs": 19001.200000001118,
+      "bytesAtUsable": {
+        "completedTransferBytes": 4894517,
+        "completedDecodedBodyBytes": 4876217,
+        "navigationTransferBytes": 1902,
+        "pendingRequests": [
+          "http://127.0.0.1:37885/api/health",
+          "blob:http://127.0.0.1:37885/4413e776-8960-4ba5-8b95-12e001a59b5e"
+        ]
+      },
+      "actualCDPHTTPRequests": 76,
+      "diskCacheResponses": 0,
+      "neighborhoodRequests": 57,
+      "neighborhoodDiskCacheResponses": 0,
+      "neighborhoodEncodedBytes": 5456137
+    },
+    {
+      "id": "warm-1",
+      "firstUsableObservedMs": 2767.7000000011176,
+      "settledMs": 12459.200000001118,
+      "bytesAtUsable": {
+        "completedTransferBytes": 600,
+        "completedDecodedBodyBytes": 6167741,
+        "navigationTransferBytes": 300,
+        "pendingRequests": [
+          "http://127.0.0.1:37885/api/health",
+          "blob:http://127.0.0.1:37885/b0294ab6-d7df-43d6-8c3b-d30e9b39d989",
+          "http://127.0.0.1:37885/assets/neighborhoods/shijo-east/cells/cell-e000-s001/near.gltf.gz?sha256=e2f5d695f5e05ef64f6902115888d7fd38d2de72037e74f323a80cf441b3a285"
+        ]
+      },
+      "actualCDPHTTPRequests": 76,
+      "diskCacheResponses": 56,
+      "neighborhoodRequests": 57,
+      "neighborhoodDiskCacheResponses": 56,
+      "neighborhoodEncodedBytes": 267
+    },
+    {
+      "id": "warm-2",
+      "firstUsableObservedMs": 2766.699999999255,
+      "settledMs": 12857.699999999255,
+      "bytesAtUsable": {
+        "completedTransferBytes": 600,
+        "completedDecodedBodyBytes": 6167741,
+        "navigationTransferBytes": 300,
+        "pendingRequests": [
+          "http://127.0.0.1:37885/api/health",
+          "blob:http://127.0.0.1:37885/1e4f732a-6d5d-4598-a727-cd7b86dc3e10",
+          "http://127.0.0.1:37885/assets/neighborhoods/shijo-east/cells/cell-e000-s001/near.gltf.gz?sha256=e2f5d695f5e05ef64f6902115888d7fd38d2de72037e74f323a80cf441b3a285"
+        ]
+      },
+      "actualCDPHTTPRequests": 76,
+      "diskCacheResponses": 56,
+      "neighborhoodRequests": 57,
+      "neighborhoodDiskCacheResponses": 56,
+      "neighborhoodEncodedBytes": 267
+    },
+    {
+      "id": "warm-3",
+      "firstUsableObservedMs": 2647.699999999255,
+      "settledMs": 11760.800000000745,
+      "bytesAtUsable": {
+        "completedTransferBytes": 600,
+        "completedDecodedBodyBytes": 6167741,
+        "navigationTransferBytes": 300,
+        "pendingRequests": [
+          "http://127.0.0.1:37885/api/health",
+          "blob:http://127.0.0.1:37885/2a207368-fe79-49c0-8e1c-4dea0c616320",
+          "http://127.0.0.1:37885/assets/neighborhoods/shijo-east/cells/cell-e000-s001/near.gltf.gz?sha256=e2f5d695f5e05ef64f6902115888d7fd38d2de72037e74f323a80cf441b3a285",
+          "http://127.0.0.1:37885/assets/neighborhoods/shijo-east/cells/cell-e000-s001/near.bin.gz?sha256=d7c17d62992ebf3dab8b754a22d38e3456fa14c1cd90a9830399b5084474de1e"
+        ]
+      },
+      "actualCDPHTTPRequests": 76,
+      "diskCacheResponses": 56,
+      "neighborhoodRequests": 57,
+      "neighborhoodDiskCacheResponses": 56,
+      "neighborhoodEncodedBytes": 267
+    }
+  ],
+  "inputAndFrameMetrics": {
+    "walk": {
+      "actions": 10,
+      "responses": 10,
+      "drawIntervals": 29,
+      "inputP95Ms": 10,
+      "eventTimestampToResponseP95Ms": 1019,
+      "eventQueueP95Ms": 1015.1999999992549,
+      "dispatchP95Ms": 1020.7000000011176,
+      "singleDrawActions": 0,
+      "frameIntervalP95Ms": 972.2999999988824,
+      "frameIntervalScope": "Within-action intervals between observed submitted draws; counter gaps remain a failed gate."
+    },
+    "orbit": {
+      "actions": 10,
+      "responses": 10,
+      "drawIntervals": 0,
+      "inputP95Ms": 20.100000001490116,
+      "eventTimestampToResponseP95Ms": 24.59999999962747,
+      "eventQueueP95Ms": 19.699999999254942,
+      "dispatchP95Ms": 25,
+      "singleDrawActions": 10,
+      "frameIntervalP95Ms": null,
+      "frameIntervalScope": "No within-action draw intervals were observed; frame cadence is unmeasured for this group."
+    },
+    "all": {
+      "actions": 20,
+      "responses": 20,
+      "drawIntervals": 29,
+      "inputP95Ms": 18.09999999962747,
+      "eventTimestampToResponseP95Ms": 892,
+      "eventQueueP95Ms": 887.7999999988824,
+      "dispatchP95Ms": 893.3000000007451,
+      "singleDrawActions": 10,
+      "frameIntervalP95Ms": 972.2999999988824,
+      "frameIntervalScope": "Within-action intervals between observed submitted draws; counter gaps remain a failed gate."
+    }
+  },
+  "frameCounterGaps": [
+    {
+      "action": "walk-2",
+      "observedMs": 16609.599999999627,
+      "delta": 2
+    },
+    {
+      "action": "walk-4",
+      "observedMs": 25186.400000000373,
+      "delta": 2
+    },
+    {
+      "action": "walk-5",
+      "observedMs": 29974.400000000373,
+      "delta": 2
+    },
+    {
+      "action": "walk-6",
+      "observedMs": 34897,
+      "delta": 2
+    },
+    {
+      "action": "walk-7",
+      "observedMs": 39166.40000000037,
+      "delta": 2
+    },
+    {
+      "action": "walk-8",
+      "observedMs": 42890.90000000037,
+      "delta": 2
+    },
+    {
+      "action": "walk-9",
+      "observedMs": 47057.59999999963,
+      "delta": 2
+    },
+    {
+      "action": "walk-10",
+      "observedMs": 52206.300000000745,
+      "delta": 2
+    }
+  ],
+  "observerWorkP95Ms": 0.40000000037252903,
+  "hidden": {
+    "status": "unobserved",
+    "observed": false,
+    "reason": "Background-tab visibility transition was not observed.",
+    "timeoutMs": 10000,
+    "error": {
+      "name": "TimeoutError",
+      "message": "page.waitForFunction: Timeout 10000ms exceeded."
+    },
+    "page": {
+      "hidden": false,
+      "state": "visible",
+      "trace": {
+        "initial": {
+          "observedMs": 72127.59999999963,
+          "hidden": false,
+          "state": "visible"
+        },
+        "events": []
+      }
+    },
+    "blank": {
+      "hidden": false,
+      "state": "visible"
+    },
+    "returnedVisibility": {
+      "hidden": false,
+      "state": "visible",
+      "trace": {
+        "initial": {
+          "observedMs": 72127.59999999963,
+          "hidden": false,
+          "state": "visible"
+        },
+        "events": []
+      }
+    }
+  },
+  "actualHTTPRequests": 88,
+  "pageErrors": [],
+  "files": [
+    {
+      "file": "result.json.gz",
+      "bytes": 107367,
+      "sha256": "d16003cc50d1ec066a2b06b1a002448d6cb2f595b6ccb8cd084ad2e70793c869",
+      "decodedBytes": 1216525,
+      "decodedSha256": "f76a6480651653daa4461a78807e7ba8ced6f484f280cc63932ce1025b5ef2c6"
+    },
+    {
+      "file": "neighborhood-performance.executed.mjs.gz",
+      "bytes": 10277,
+      "sha256": "b18d34825e3bd51d50a6805ba3c2e5c09d9d85cafdf78716865dacc2236d1eae",
+      "decodedBytes": 31778,
+      "decodedSha256": "1ab216a6b3d7039c42156a782ea0158edcc27f0bb5e58cb26ccf6c8f76709757"
+    },
+    {
+      "file": "run.log.gz",
+      "bytes": 71,
+      "sha256": "eec6755589fb9e41ff2204f9a7eb42f9b5fe9fa3279bbb0fd1c90e3e1eca7e69",
+      "decodedBytes": 98,
+      "decodedSha256": "020f907e158887662b5654c62ebf0a070ea75b30ee3e8ad9c0a6d0838c871d98"
+    },
+    {
+      "file": "protocol.md",
+      "bytes": 9888,
+      "sha256": "d97f7e3545ee9dd2e5fb8a1b7fae21ff059ba8a670fbd08bc9a205379b0037cf"
+    },
+    {
+      "file": "entry-cache.json",
+      "bytes": 105404,
+      "sha256": "42341d1fef41334e0ac94a0cb38d49f1c38f0a9582644c09470f571e880a1ecc"
+    }
+  ]
+}

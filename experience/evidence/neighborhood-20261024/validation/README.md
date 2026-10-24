@@ -1,5 +1,26 @@
 # Candidate 13 local validation
 
+The canonical default-output build is frozen at
+`artifacts/neighborhood-20261024/candidate-13-canonical`: **446 files /
+96,952,094 bytes**, package
+`65167ee402d6d59978b5f979de8c6987721ec891ffec1ce6127831d7c0dd354e`.
+This matches the complete CI package identity. Its exact inventory is preserved
+in `candidate-13-canonical-package.json`, with build output in
+`build-13-canonical.txt.gz` (decoded SHA256
+`4239cb05962dc59093917ea6f5fdc6f299af70f7aaf3a0dfa31d332b92b84cf8`).
+The prior generated `experience/dist` was preserved
+at `artifacts/neighborhood-20261024/dist-before-canonical13` before the build.
+
+The original output-layout package below remains immutable and retains every
+executed browser result. Exactly 425 executable/HTML/CSS/data/asset/font files
+match the canonical build. The remaining 21 source maps differ only in relative
+`sources[]` prefixes; their source contents and mappings are unchanged. The
+[CI verification](../ci/candidate-13/verification.json) cryptographically
+reproduces every map's CI size and hash using that sole JSON-field substitution.
+There is no runtime, source, art or quality change and no browser timing rerun.
+
+## Original candidate 13 output layout and executed local checks
+
 Implementation `28439744b6349b795ac0a50c20c5d45d735bb2ed` produces the immutable
 build at `artifacts/neighborhood-20261024/candidate-13`: **446 files / 96,954,304
 bytes**, package SHA256
@@ -18,7 +39,11 @@ adoption. Camera, collision and scheduling calls remain unchanged. The new
 actual-geometry regression preserves all sixteen recorded poses within `1e-9`,
 observes the inactive/active adoption sequence, and verifies hint activation and
 tilt clearing. The original candidate-12 failure and faithful reproduction remain
-preserved separately. Native UI acceptance is pending.
+preserved separately. Native guidance verification passes 17/17 on the immutable
+build; the real background-tab check passes 13/13. Their reports retain original
+driver failures separately. Standard startup targets pass, while input/frame and
+Q03 timing targets remain failed on software rendering. Complete current CI and
+physical-GPU fluency remain unverified.
 
 All 347 scenery files are byte-identical to candidate 12, retaining manifest
 `86e4f424a36cb858c16f6e282ad8ceb8f146d6b285d482de3c0ce2fe2f726b61`.

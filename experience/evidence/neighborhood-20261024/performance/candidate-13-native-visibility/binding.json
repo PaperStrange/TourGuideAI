@@ -1,0 +1,60 @@
+{
+  "sourceCommit": "28439744b6349b795ac0a50c20c5d45d735bb2ed",
+  "packageSha256": "e8eed9146ea83accaf54769ff2aaaf5a902cfd344295e3348e11684e50838b0c",
+  "neighborhoodManifestSha256": "86e4f424a36cb858c16f6e282ad8ceb8f146d6b285d482de3c0ce2fe2f726b61",
+  "sharedBuildAndSourceEvidence": {
+    "file": "../native-visibility/binding.json",
+    "sha256": "273f8d56d796c516d1c002c9435a928f21c47f816c9302c590cbbef939936f80"
+  },
+  "scope": "Genuine native-tab hidden/return verification only; physical GPU and ordinary-configuration performance remain separate.",
+  "files": [
+    {
+      "file": "result.json.gz",
+      "bytes": 61764,
+      "sha256": "2880758703072243e4803409390160d9e8931c78a68a540d47dee55299acf411",
+      "decodedBytes": 416596,
+      "decodedSha256": "ff7658a6473e85df5f08cf18cb5cb3a7ca04dd0ebde7836132348270f12da02b",
+      "source": "artifacts/neighborhood-20261024/performance/candidate-13-native-context/result.json"
+    },
+    {
+      "file": "visibility.executed.mjs.gz",
+      "bytes": 6044,
+      "sha256": "ad04b501b57f96656c7af3f8656099c0d88c3d3ab46c763904acc1ae7bcf10f3",
+      "decodedBytes": 17082,
+      "decodedSha256": "30258fcabb47976ca10efab28750fef128dd4f236969c2b58ba880ebfe57f31b",
+      "source": "artifacts/native-display-build/visibility-native-candidate13.mjs"
+    },
+    {
+      "file": "native-display.executed.mjs.gz",
+      "bytes": 2270,
+      "sha256": "a1aadf7becf8dfee2c6fa71c06656c3ac815996f26994ace0083e04e4870942a",
+      "decodedBytes": 4974,
+      "decodedSha256": "6e84c4f3b9d990024ebdca22b97b5a939c43affcbb1c9935ad792ce94ef06691",
+      "source": "artifacts/native-display-build/native-display.mjs"
+    },
+    {
+      "file": "xvfb-manifest.json",
+      "bytes": 1655,
+      "sha256": "162bdc945fd7c4135abc0a8805a5d3782aef25d3cc4c8df38087cc27ba1bc8b7",
+      "decodedBytes": 1655,
+      "decodedSha256": "162bdc945fd7c4135abc0a8805a5d3782aef25d3cc4c8df38087cc27ba1bc8b7",
+      "source": "artifacts/native-display-build/runtime/candidate-13-native-context/manifest.json"
+    },
+    {
+      "file": "xvfb.log.gz",
+      "bytes": 20,
+      "sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec",
+      "decodedBytes": 0,
+      "decodedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "artifacts/native-display-build/runtime/candidate-13-native-context/xvfb.log"
+    },
+    {
+      "file": "chromium.log.gz",
+      "bytes": 1363,
+      "sha256": "dbc2af3657fa3f819f9331b5b35edd7a7bf42f075028252224e97a13a91819b1",
+      "decodedBytes": 9249,
+      "decodedSha256": "eec76724ee8010bb62ef89fc958639256f60b52a9e172d9849d1e71bddc28fa9",
+      "source": "artifacts/neighborhood-20261024/performance/candidate-13-native-context/chromium.log"
+    }
+  ]
+}

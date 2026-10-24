@@ -1,0 +1,37 @@
+{
+  "startedAt": "2026-10-24T05:08:10.620Z",
+  "pid": 27887,
+  "executable": "/workspace/TourGuideAI/artifacts/native-display-build/build/hw/vfb/Xvfb",
+  "executableSha256": "9ffcf7961c43aea2a920a340b1d95064d7b359b9e41af6f4ddbd9aea711e6172",
+  "args": [
+    ":92",
+    "-screen",
+    "0",
+    "1440x1000x24",
+    "-nolisten",
+    "unix",
+    "-nolisten",
+    "local",
+    "-listen",
+    "tcp",
+    "-auth",
+    "/workspace/TourGuideAI/artifacts/native-display-build/runtime/candidate-13-native-context/Xauthority",
+    "-displayfd",
+    "3",
+    "-noreset"
+  ],
+  "display": "127.0.0.1:92",
+  "screen": "1440x1000x24",
+  "directory": "/workspace/TourGuideAI/artifacts/native-display-build/runtime/candidate-13-native-context",
+  "paths": {
+    "authority": "/workspace/TourGuideAI/artifacts/native-display-build/runtime/candidate-13-native-context/Xauthority",
+    "xkbOutput": "/workspace/TourGuideAI/artifacts/native-display-build/runtime/xkb",
+    "temp": "/workspace/TourGuideAI/artifacts/x92",
+    "cache": "/workspace/TourGuideAI/artifacts/native-display-build/runtime/candidate-13-native-context/cache",
+    "config": "/workspace/TourGuideAI/artifacts/native-display-build/runtime/candidate-13-native-context/config",
+    "runtime": "/workspace/TourGuideAI/artifacts/native-display-build/runtime/candidate-13-native-context/run",
+    "serverLibraries": "/workspace/TourGuideAI/artifacts/native-display-build/deps/usr/lib/x86_64-linux-gnu",
+    "serverDriDrivers": "/usr/lib/x86_64-linux-gnu/dri"
+  },
+  "scope": "Native X11 visibility verification; MIT-SHM disabled, GLX retained. Physical GPU and ordinary-configuration performance unverified."
+}
