@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-24",
+  "status": "qualified-source-association-proposal-awaiting-approval",
+  "sourceId": "kyoto-city:bldg_943c9e01-9535-4980-a843-c3a80fed160b",
+  "sourceIndex": 274,
+  "scene": {"file": "experience/src/neighborhoods/shijo-east/scene.json", "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e"},
+  "retainedOsm": {
+    "file": "experience/src/neighborhoods/shijo-east/sources/scene-osm.json",
+    "sha256": "1e3ba265bc8dd3c6744ccd897ad915016a2cc0110c306bf3e064ca63ced5dd0c",
+    "sourceId": "osm:way:205748825",
+    "version": 2,
+    "timestamp": "2018-05-05T15:05:36Z",
+    "tags": {"building": "yes", "source": "Bing"},
+    "municipalFootprintOverlapFraction": 0.9741921164086402,
+    "name": null
+  },
+  "face": {
+    "polygonIndex": 0,
+    "ringIndex": 0,
+    "edgeIndex": 2,
+    "from": [162.603, 3.597],
+    "to": [185.695, 3.835],
+    "direction": "South-facing Shijo elevation; CCW outer-ring edge",
+    "baseHeightMetres": 0,
+    "topHeightMetres": 30.380000000000003,
+    "heightMeaning": "Retained municipal LOD1 vertical extent67.703 minus37.323m, on authored base0. Measured-height attribute40.6m is separate."
+  },
+  "adjacencyProof": {
+    "easternNeighborSourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+    "easternNeighborIndex": 201,
+    "neighborFace": {"polygonIndex": 0, "edgeIndex": 3, "from": [185.979, 4.407], "to": [258.326, 5.035]},
+    "eastWestFrontEndpointSeparationMetres": 0.284,
+    "northSouthFrontEndpointOffsetMetres": 0.572,
+    "meaning": "The source274 frontage immediately precedes the named Daimaru frontage in west-to-east street order. These endpoint offsets describe retained display geometry, not a measured construction joint."
+  },
+  "photoAssociation": {
+    "reference": "Daimaru Kyoto20210314.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Daimaru_Kyoto20210314.jpg",
+    "revisionUrl": "https://commons.wikimedia.org/w/index.php?title=File:Daimaru_Kyoto20210314.jpg&oldid=883267396",
+    "author": "Nryate",
+    "captureDate": "2021-03-14",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sha256": "663c0cad636d1fc03bc2ec3785ab5c6429227c31e65b2e2bc587695bcce9cb2b",
+    "orientation": "The photograph faces generally west/northwest along the named Daimaru south elevation. Its immediate photographed western neighbor has white horizontal bands and dark ribbon glazing; the facade junction is visible.",
+    "independentVisualReview": "World content and art both inspected the retained original and agree on those upper-frontage cues and the immediate western adjacency.",
+    "associationStrength": "Qualified adjacency-based identity, supported by the named neighboring landmark and retained parcel order. No tenant name, exact image calibration or surveyed elevation is established.",
+    "cameraLimit": "The approximate photo geotag lies inside source201's municipal footprint; it is not used for metric camera/edge calibration.",
+    "appearanceLimit": "Dated2021 upper elevation only. The lower covered frontage is occluded; current condition, ground openings and night response remain unverified."
+  },
+  "actualViewProof": {
+    "file": "experience/evidence/neighborhood-20261024/world/connector-fronts/face-projection.json",
+    "sha256": "3ae98c89ccdf2f32d99448f94f053286e7ff88223ea3db2e079a7f0b3d619a84",
+    "candidate10ManifestSha256": "e58257879fb4ead8af14022e71e329ee3309f9920eec6fe2cf4717276573d108",
+    "image": "platform-e001-prior-view-day-canvas.png",
+    "imageSha256": "9655ee6fb88226cf9656ec79b917c5ea451f09db8e8961b2f48771ba436cf46e",
+    "finding": "All six retained-camera rays at NDCx−.9/−.6/−.3,y±.2 first hit source274. The visible hit positions lie along its south frontage/reveals. These rays establish model/source correspondence; they do not validate new upper detail visually.",
+    "player": {"x": 174.862, "y": 1.987, "height": 0},
+    "reviewRequirement": "Restore the existing actual e001 view through normal saved-view controls. Record a native upward/look-back view of the upper facade while retaining a readable actor and ground; preserve matched day/night before/after cameras."
+  },
+  "proposedAuthoringScope": {
+    "face": [0, 0, 2],
+    "supportedCues": ["White horizontal bands", "Dark ribbon glazing"],
+    "dimensions": "Band count/elevations, glazing divisions, frame/reveal sizes and PBR response are explicitly authored, without measured claims.",
+    "lowerBoundaryPolicy": "Retain every original triangle intersecting below3.5m and select an existing higher facade seam before implementation; the threshold is an authored scope boundary, not a measured storey height.",
+    "preserve": ["All lower frontage", "Roof and complete source envelope/base/top", "All other facade edges", "Navigation/ground/canopies", "Existing source identity", "All unrelated source groups"],
+    "excluded": ["Building or tenant naming", "Ground-floor shop/door reconstruction", "Signs/interiors", "Photograph pixels", "Measured or current-condition claims"],
+    "approvalRequired": "Root review before inclusion in an export. This source is outside the approved source201-only treatment."
+  }
+}

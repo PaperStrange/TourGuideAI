@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-24",
+  "status": "proposal-and-explicit-evidence-gaps",
+  "source274": {
+    "sourceId": "kyoto-city:bldg_943c9e01-9535-4980-a843-c3a80fed160b",
+    "sourceIndex": 274,
+    "osmSourceId": "osm:way:205748825",
+    "osmName": null,
+    "municipalFootprintOverlapFraction": 0.9741921164086402,
+    "face": {"polygonIndex": 0, "ringIndex": 0, "edgeIndex": 2, "from": [162.603, 3.597], "to": [185.695, 3.835]},
+    "sourceTopHeightMetres": 30.380000000000003,
+    "heightMeaning": "Retained municipal LOD1 vertical extent; measured-height attribute40.6m remains separate.",
+    "photoAssociation": "The2021 Daimaru photograph depicts an immediately adjoining western elevation with white horizontal bands and dark ribbon glazing. Retained source274 is the mapped immediate western neighbor of source201. Art independently confirms the photographed adjacency and visible upper-frontage cues.",
+    "visibleCueScope": ["White horizontal bands", "Dark ribbon glazing on the upper elevation"],
+    "limits": ["Association is based on building adjacency and visible facade junction, not a named tenant or surveyed image calibration.", "Lower covered openings are substantially occluded and remain unsupported.", "No exact opening count, height, current condition or night response is established."],
+    "currentDisposition": "Separate bounded authoring proposal; excluded from the approved source201 export.",
+    "nativeView": "Existing retained platform-e001-prior-view-day/night views identify274 in the left foreground. Candidate10 offline rays at NDCx−.9/−.6/−.3,y±.2 all first hit274."
+  },
+  "nishiki": {
+    "referenceIds": ["nishiki-entrance-2026", "nishiki-arcade-2025"],
+    "retainedImageSha256": "88b3befbe6bf974f3e44a71700c67d90388b46c6d0003a2db52debcb17a670d9",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:HanayorikiyoeNishikiMarketStreet.png",
+    "reviewedRevision": 1213264150,
+    "author": "花よりキヨエ",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "dateConflict": "File date4February2025; description saysMay2025. Exact capture date remains unresolved.",
+    "locationLimit": "The image geotag35.004600/135.762100 lies near the western market area. The named shop is placed by the association in the Miyukimachi–Teramachi block. The geotag is not accepted as a target-face coordinate.",
+    "observations": ["Gray side soffits and colored central roof panels", "Dark narrow vertical wall texture beside a recessed open storefront", "Rectangular framing, warm interior-facing reveals and varied neighboring openings"],
+    "primarySources": [
+      {"url": "https://www.kyoto-nishiki.or.jp/stores/hanayorikiyoe/", "publisher": "Kyoto Nishiki Market Shopping Street Association", "htmlSha256": "d9a4a98426eff1370cfe6b72ceed3a18fa6c79ccda7f91a31d3435aded368716", "supports": "Listed shop address: Funayacho399, Sashiano Building1F, Miyukimachi south of Takoyakushi."},
+      {"url": "https://www.kyoto-nishiki.or.jp/map/", "publisher": "Kyoto Nishiki Market Shopping Street Association", "htmlSha256": "3dfe133ce7498676560066949f5a73e7924585751af4e18dc4c2c5ee5ee35ff3", "supports": "Named shop ordering in the Miyukimachi–Teramachi market block; no surveyed facade coordinates."}
+    ],
+    "boundedProposal": "Keep the supported arcade/opening construction vocabulary within its declared authored-family scope. A specific shop/municipal-edge reconstruction requires independent location correspondence and an actual visible-source selection.",
+    "missingEvidence": ["Municipal source/edge corresponding to the photographed storefront", "A location-matched view of each proposed changed edge in e003/e004/e005", "Unoccluded lower elevation sufficient for proposed recess/opening rhythm"],
+    "notEstablished": ["Shop-by-shop source mapping", "Current tenant lettering", "Interior layout", "Exact bay dimensions", "Observed nighttime response"],
+    "currentDisposition": "No new Nishiki source-to-face assignment or asset change approved by this review."
+  },
+  "unchanged": ["Canonical source geometry", "Navigation", "Runtime assets", "Public credits"],
+  "rights": "Commons reference attribution/license/date limits must follow any future asset use. Operator pages establish factual context and do not grant reuse of their images."
+}

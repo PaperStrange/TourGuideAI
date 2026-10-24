@@ -2,10 +2,109 @@
   "runId": 40058828311,
   "headSha": "ef34dd3190c32642262210e5d4f773846e4e9046",
   "implementationSha": "84e80a823d778b9b537fc45d311a62bc127723db",
-  "observedAt": "2026-10-24T03:44:42.495Z",
+  "observedAt": "2026-10-24T03:53:42.258Z",
   "packageSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
   "packageFiles": 446,
   "reports": [
+    {
+      "suite": "packs",
+      "artifact": {
+        "id": 12547295595,
+        "name": "packs-browser-evidence",
+        "zipSha256": "9fea38adcec3fe57f3c08939dd5d42c1fbf34cbf8be85b2cd83058a56c3fe9a6",
+        "zipBytes": 10902315,
+        "createdAt": "2026-10-24T03:50:33Z",
+        "sourceHead": "ef34dd3190c32642262210e5d4f773846e4e9046"
+      },
+      "summary": {
+        "passed": 81,
+        "failed": 0
+      },
+      "packageSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
+      "packageFiles": 446,
+      "report": {
+        "file": "packs-result.json.gz",
+        "bytes": 89310,
+        "sha256": "bbed1caf78aafb9383e7660997d9324415e9166e189cc363114b70b98305cd17",
+        "decodedBytes": 1234862,
+        "decodedSha256": "ed72abe157556fd8ff6d8036f0cc304d56b8b8994d07f39a25a2278527d3950e"
+      },
+      "driver": {
+        "file": "browser-packs.mjs.gz",
+        "bytes": 16898,
+        "sha256": "44d431ac3417f00e11e2a17f43e1dd55272ac2a781235126add377f8c318eee2",
+        "decodedBytes": 62387,
+        "decodedSha256": "ca70dc1d5ce47de3e99afd5b0c3dbdf57a40254c3561ed16cacae2f433d45110"
+      },
+      "dependencies": [],
+      "captureFiles": []
+    },
+    {
+      "suite": "walkthrough",
+      "artifact": {
+        "id": 12547101901,
+        "name": "homepage-walkthrough-evidence",
+        "zipSha256": "c49a2a8cadbe2398ef9e14b77e5284a3f1fb9b921bdc9053bc6e11bf9cfee51d",
+        "zipBytes": 15090844,
+        "createdAt": "2026-10-24T03:50:33Z",
+        "sourceHead": "ef34dd3190c32642262210e5d4f773846e4e9046"
+      },
+      "summary": {
+        "passed": 264,
+        "failed": 0
+      },
+      "packageSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
+      "packageFiles": 446,
+      "report": {
+        "file": "walkthrough-result.json.gz",
+        "bytes": 64367,
+        "sha256": "6f358e991bbc974a02c88772006651e31430ec5c39b17b8ebee7aa8695ad94db",
+        "decodedBytes": 790350,
+        "decodedSha256": "8ef7ac824a52502bc89877f5c136bcec14f1ae8dc2a0404b338154db6201ff11"
+      },
+      "driver": {
+        "file": "browser-walkthrough.mjs.gz",
+        "bytes": 11867,
+        "sha256": "3023269967adcc4130be731af8356f390edbb76d51c748b2eaf73bfa7ea320ef",
+        "decodedBytes": 43838,
+        "decodedSha256": "7a0460c80d2caf6e489ba413b0318fb12e7904807bb63a60345d7c2d1a5188da"
+      },
+      "dependencies": [],
+      "captureFiles": []
+    },
+    {
+      "suite": "original",
+      "artifact": {
+        "id": 12546668346,
+        "name": "experience-browser-evidence",
+        "zipSha256": "d93aea64126b1c250b762cc46a547e60a92ef6804e060eaac8a9e2111a48cc8f",
+        "zipBytes": 19806291,
+        "createdAt": "2026-10-24T03:49:20Z",
+        "sourceHead": "ef34dd3190c32642262210e5d4f773846e4e9046"
+      },
+      "summary": {
+        "passed": 133,
+        "failed": 0
+      },
+      "packageSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
+      "packageFiles": 446,
+      "report": {
+        "file": "browser-result.json.gz",
+        "bytes": 85034,
+        "sha256": "0c40b02a7e76e8328a79c86a77092906ea7eb05abadca4a211948deede111d7b",
+        "decodedBytes": 786225,
+        "decodedSha256": "ce7c01cb6c1091aa07aa03a69bf567a377280625c51fb66e2c8b054f4f0d63af"
+      },
+      "driver": {
+        "file": "browser-check.mjs.gz",
+        "bytes": 13105,
+        "sha256": "b36257f59ff979eec8b7da32a0215a66587776f7c7b2abe9f0d153acd6564fb7",
+        "decodedBytes": 47561,
+        "decodedSha256": "0dc66d8348341a07d820092eeeaa4ecc7699c0e1afc8f65829a379c3c1bad394"
+      },
+      "dependencies": [],
+      "captureFiles": []
+    },
     {
       "suite": "perspective",
       "artifact": {
@@ -148,6 +247,6 @@
     "decodedSha256": "23f6100e33b523d3293f30489ddc141260e92ec774a5fd55496b09df89427e15"
   },
   "conclusion": "pending",
-  "completedBrowserChecks": 293,
+  "completedBrowserChecks": 771,
   "completedBrowserFailures": 0
 }

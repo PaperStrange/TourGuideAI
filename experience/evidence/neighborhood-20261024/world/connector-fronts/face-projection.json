@@ -1,0 +1,894 @@
+{
+  "scope": "Offline projection/rays on retained candidate10 camera; no native UI selection or photogrammetric camera calibration.",
+  "manifestSha256": "e58257879fb4ead8af14022e71e329ee3309f9920eec6fe2cf4717276573d108",
+  "captureFile": "experience/evidence/neighborhood-20261024/art/candidate-10/reviewed-captures.json",
+  "captureFileSha256": "f414a19dbef9429062d7950572fc3f0e34b8bf73372e3eac87eeda3fce5a180b",
+  "image": "platform-e001-prior-view-day-canvas.png",
+  "imageSha256": "9655ee6fb88226cf9656ec79b917c5ea451f09db8e8961b2f48771ba436cf46e",
+  "camera": {
+    "position": [
+      164.93572934600823,
+      2.7050276936736655,
+      -1.8563892761612206
+    ],
+    "target": [
+      174.862,
+      1.5,
+      -1.9870000000000005
+    ],
+    "desiredPosition": [
+      164.93572934600823,
+      2.7050276936736655,
+      -1.8563892761612206
+    ],
+    "viewTarget": [
+      174.862,
+      1.5,
+      -1.9870000000000005
+    ],
+    "obstruction": {
+      "active": false,
+      "desiredDistance": 10.000000000000012,
+      "actualDistance": 10.000000000000012,
+      "targetAdjusted": false,
+      "framingRecovered": false,
+      "actorInFrame": true,
+      "actorVerticalOccupancy": 0.1922113316796356,
+      "recoveryFits": true,
+      "minimumSceneDistance": 5,
+      "clearance": 0.35,
+      "angleOffset": 0,
+      "settling": false
+    },
+    "azimuth": -1.557639,
+    "polar": 1.4500000000000002,
+    "distance": 10.000000000000012,
+    "frontage": "north",
+    "azimuthBase": 0,
+    "relativeAzimuth": -1.557639,
+    "enabled": true,
+    "damping": true,
+    "transitioning": false,
+    "solo": true,
+    "inspecting": false,
+    "inspectionAimed": false,
+    "inspectionPanned": false,
+    "panning": false,
+    "projectionMatrix": [
+      1.626675118070023,
+      0,
+      0,
+      0,
+      0,
+      2.2460367739042155,
+      0,
+      0,
+      0,
+      0,
+      -1.0008575103615833,
+      -1,
+      0,
+      0,
+      -0.3001286265542375,
+      0
+    ],
+    "matrixWorld": [
+      0.01315694717586613,
+      2.7755575615628914e-17,
+      0.9999134436245026,
+      0,
+      0.12049233908441259,
+      0.9927129910375885,
+      -0.0015854485711120359,
+      0,
+      -0.9926270653991752,
+      0.12050276936736642,
+      0.013061072383877548,
+      0,
+      164.93572934600823,
+      2.7050276936736655,
+      -1.8563892761612206,
+      1
+    ],
+    "limits": {
+      "polar": [
+        0.55,
+        1.49
+      ],
+      "distance": [
+        5,
+        55
+      ],
+      "targetXY": 40,
+      "targetHeight": [
+        0.5,
+        40
+      ]
+    }
+  },
+  "files": [
+    "ground.gltf",
+    "context.gltf",
+    "cells/cell-e001-n000/near.gltf",
+    "cells/cell-e001-s001/near.gltf",
+    "cells/cell-e002-n000/near.gltf",
+    "cells/cell-e002-s001/near.gltf"
+  ],
+  "sourcePoints": [
+    {
+      "ratio": 0.05,
+      "point": {
+        "x": 189.59635,
+        "y": 4.4384,
+        "height": 2
+      },
+      "ndc": [
+        -0.1492811598633233,
+        0.20779057580398225,
+        0.9886559103287379
+      ],
+      "inViewport": true,
+      "hits": [
+        {
+          "sourceIndex": 274,
+          "sourceId": "kyoto-city:bldg_943c9e01-9535-4980-a843-c3a80fed160b",
+          "node": "cell-e001-n000_near_glass",
+          "point": {
+            "x": 185.11325174269155,
+            "y": 3.9690116606387678,
+            "height": 2.128168243176447
+          },
+          "distance": 20.296018088129514
+        },
+        {
+          "sourceIndex": 274,
+          "sourceId": "kyoto-city:bldg_943c9e01-9535-4980-a843-c3a80fed160b",
+          "node": "cell-e001-n000_near_plaster",
+          "point": {
+            "x": 185.69297664403422,
+            "y": 4.029709886086749,
+            "height": 2.1115943654994203
+          },
+          "distance": 20.879147515641584
+        }
+      ]
+    },
+    {
+      "ratio": 0.05,
+      "point": {
+        "x": 189.59635,
+        "y": 4.4384,
+        "height": 7
+      },
+      "ndc": [
+        -0.15302961114608638,
+        0.6776201857178152,
+        0.9883495280408675
+      ],
+      "inViewport": true,
+      "hits": [
+        {
+          "sourceIndex": 274,
+          "sourceId": "kyoto-city:bldg_943c9e01-9535-4980-a843-c3a80fed160b",
+          "node": "cell-e001-n000_near_plaster",
+          "point": {
+            "x": 183.63004510693747,
+            "y": 3.8137172950622444,
+            "height": 5.960889320413131
+          },
+          "distance": 19.076404526937907
+        },
+        {
+          "sourceIndex": 274,
+          "sourceId": "kyoto-city:bldg_943c9e01-9535-4980-a843-c3a80fed160b",
+          "node": "cell-e001-n000_near_plaster",
+          "point": {
+            "x": 185.69297680164044,
+            "y": 4.029709902588436,
+            "height": 6.32017608058467
+          },
+          "distance": 21.181500002100634
+        }
+      ]
+    },
+    {
+      "ratio": 0.05,
+      "point": {
+        "x": 189.59635,
+        "y": 4.4384,
+        "height": 15
+      },
+      "ndc": [
+        -0.15943507712632124,
+        1.4804791148571539,
+        0.9878259727979528
+      ],
+      "inViewport": false,
+      "hits": [
+        {
+          "sourceIndex": 274,
+          "sourceId": "kyoto-city:bldg_943c9e01-9535-4980-a843-c3a80fed160b",
+          "node": "cell-e001-n000_near_plaster",
+          "point": {
+            "x": 183.63004510693708,
+            "y": 3.81371729506224,
+            "height": 12.025397111429527
+          },
+          "distance": 20.980416126147887
+        },
+        {
+          "sourceIndex": 274,
+          "sourceId": "kyoto-city:bldg_943c9e01-9535-4980-a843-c3a80fed160b",
+          "node": "cell-e001-n000_near_plaster",
+          "point": {
+            "x": 185.69297664403422,
+            "y": 4.029709886086826,
+            "height": 13.05390675335337
+          },
+          "distance": 23.29562052525778
+        }
+      ]
+    },
+    {
+      "ratio": 0.25,
+      "point": {
+        "x": 204.06575,
+        "y": 4.564,
+        "height": 2
+      },
+      "ndc": [
+        -0.09153977374186521,
+        0.23169924920680876,
+        0.9931543672560907
+      ],
+      "inViewport": true,
+      "hits": [
+        {
+          "sourceIndex": 201,
+          "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+          "node": "cell-e002-n000_near_plaster",
+          "point": {
+            "x": 205.47453148257992,
+            "y": 4.661480956718805,
+            "height": 1.9746171879556136
+          },
+          "distance": 40.6422996090441
+        },
+        {
+          "sourceIndex": 201,
+          "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+          "node": "cell-e002-n000_near_glass",
+          "point": {
+            "x": 258.19955933817283,
+            "y": 8.30980131153919,
+            "height": 1.0246405672784142
+          },
+          "distance": 93.5019369457141
+        }
+      ]
+    },
+    {
+      "ratio": 0.25,
+      "point": {
+        "x": 204.06575,
+        "y": 4.564,
+        "height": 7
+      },
+      "ndc": [
+        -0.09297759831376783,
+        0.5259680139901938,
+        0.9930333732008815
+      ],
+      "inViewport": true,
+      "hits": [
+        {
+          "sourceIndex": 201,
+          "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+          "node": "cell-e002-n000_near_plaster",
+          "point": {
+            "x": 202.9804700267517,
+            "y": 4.488903804168177,
+            "height": 6.880877971649169
+          },
+          "distance": 38.36365665247844
+        },
+        {
+          "sourceIndex": 201,
+          "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+          "node": "cell-e002-n000_near_plaster",
+          "point": {
+            "x": 205.47453148257992,
+            "y": 4.661480956718811,
+            "height": 7.154630060301985
+          },
+          "distance": 40.87862496740255
+        }
+      ]
+    },
+    {
+      "ratio": 0.25,
+      "point": {
+        "x": 204.06575,
+        "y": 4.564,
+        "height": 15
+      },
+      "ndc": [
+        -0.09537448925779335,
+        1.016521695713378,
+        0.9928316729650677
+      ],
+      "inViewport": false,
+      "hits": [
+        {
+          "sourceIndex": 201,
+          "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+          "node": "cell-e002-n000_near_plaster",
+          "point": {
+            "x": 204.0657501558433,
+            "y": 4.56400001078358,
+            "height": 15.000000048967115
+          },
+          "distance": 41.10542579375376
+        },
+        {
+          "sourceIndex": 201,
+          "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+          "node": "cell-e002-n000_near_glass",
+          "point": {
+            "x": 258.19955933817283,
+            "y": 8.309801311539179,
+            "height": 32.009285339614976
+          },
+          "distance": 97.97207779712265
+        }
+      ]
+    },
+    {
+      "ratio": 0.5,
+      "point": {
+        "x": 222.15250000000003,
+        "y": 4.721,
+        "height": 2
+      },
+      "ndc": [
+        -0.06034774251089069,
+        0.24461477024926198,
+        0.9955844441626971
+      ],
+      "inViewport": true,
+      "hits": [
+        {
+          "sourceIndex": 201,
+          "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+          "node": "cell-e002-n000_near_plaster",
+          "point": {
+            "x": 222.93805577324798,
+            "y": 4.760329578836686,
+            "height": 1.990320345438333
+          },
+          "distance": 58.07937281726792
+        },
+        {
+          "sourceIndex": 201,
+          "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+          "node": "cell-e002-n000_near_plaster",
+          "point": {
+            "x": 223.8607727478818,
+            "y": 4.806526260515708,
+            "height": 1.978950584210918
+          },
+          "distance": 59.003315467082246
+        }
+      ]
+    },
+    {
+      "ratio": 0.5,
+      "point": {
+        "x": 222.15250000000003,
+        "y": 4.721,
+        "height": 7
+      },
+      "ndc": [
+        -0.06099340523703855,
+        0.445196827276013,
+        0.9955280274326674
+      ],
+      "inViewport": true,
+      "hits": [
+        {
+          "sourceIndex": 201,
+          "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+          "node": "cell-e002-n000_near_plaster",
+          "point": {
+            "x": 222.93805577324798,
+            "y": 4.760329578836707,
+            "height": 7.058967681199205
+          },
+          "distance": 58.23795612543895
+        },
+        {
+          "sourceIndex": 201,
+          "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+          "node": "cell-e002-n000_near_plaster",
+          "point": {
+            "x": 223.8607727478818,
+            "y": 4.80652626051573,
+            "height": 7.128231356994459
+          },
+          "distance": 59.164421562171604
+        }
+      ]
+    },
+    {
+      "ratio": 0.5,
+      "point": {
+        "x": 222.15250000000003,
+        "y": 4.721,
+        "height": 15
+      },
+      "ndc": [
+        -0.062055703255014576,
+        0.775211110262951,
+        0.995435205936143
+      ],
+      "inViewport": true,
+      "hits": [
+        {
+          "sourceIndex": 201,
+          "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+          "node": "cell-e002-n000_near_plaster",
+          "point": {
+            "x": 222.15249970809737,
+            "y": 4.720999985385678,
+            "height": 14.999999937275062
+          },
+          "distance": 58.592927454210496
+        },
+        {
+          "sourceIndex": 201,
+          "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+          "node": "cell-e002-n000_near_glass",
+          "point": {
+            "x": 258.1921755118118,
+            "y": 6.525359801763967,
+            "height": 22.744352001729517
+          },
+          "distance": 95.4994165216092
+        }
+      ]
+    },
+    {
+      "ratio": 0.75,
+      "point": {
+        "x": 240.23925000000003,
+        "y": 4.878,
+        "height": 2
+      },
+      "ndc": [
+        -0.04411621439225961,
+        0.2513356741049615,
+        0.9968489934749215
+      ],
+      "inViewport": true,
+      "hits": [
+        {
+          "sourceIndex": 201,
+          "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+          "node": "cell-e002-n000_near_plaster",
+          "point": {
+            "x": 240.4013685137013,
+            "y": 4.884505127984461,
+            "height": 1.9984821686844971
+          },
+          "distance": 75.52967223005403
+        },
+        {
+          "sourceIndex": 201,
+          "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+          "node": "cell-e002-n000_near_plaster",
+          "point": {
+            "x": 241.32415390187907,
+            "y": 4.92153258965563,
+            "height": 1.989842609095084
+          },
+          "distance": 76.45324060735055
+        }
+      ]
+    },
+    {
+      "ratio": 0.75,
+      "point": {
+        "x": 240.23925000000003,
+        "y": 4.878,
+        "height": 7
+      },
+      "ndc": [
+        -0.04447410520334692,
+        0.4034798621423934,
+        0.9968164745614203
+      ],
+      "inViewport": true,
+      "hits": [
+        {
+          "sourceIndex": 201,
+          "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+          "node": "cell-e002-n000_near_plaster",
+          "point": {
+            "x": 240.4013685137013,
+            "y": 4.884505127984475,
+            "height": 7.009246506944778
+          },
+          "distance": 75.64891592212693
+        },
+        {
+          "sourceIndex": 201,
+          "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+          "node": "cell-e002-n000_near_plaster",
+          "point": {
+            "x": 241.32415390187907,
+            "y": 4.921532589655645,
+            "height": 7.061878012782562
+          },
+          "distance": 76.57394239794208
+        }
+      ]
+    },
+    {
+      "ratio": 0.75,
+      "point": {
+        "x": 240.23925000000003,
+        "y": 4.878,
+        "height": 15
+      },
+      "ndc": [
+        -0.04505896736706273,
+        0.6521126189936145,
+        0.996763332425543
+      ],
+      "inViewport": true,
+      "hits": [
+        {
+          "sourceIndex": 201,
+          "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+          "node": "cell-e002-n000_near_plaster",
+          "point": {
+            "x": 240.23924893173904,
+            "y": 4.877999957135293,
+            "height": 14.999999825582906
+          },
+          "distance": 76.36043827028722
+        },
+        {
+          "sourceIndex": 201,
+          "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+          "node": "cell-e002-n000_near_plaster",
+          "point": {
+            "x": 258.32834664603365,
+            "y": 5.603838685037906,
+            "height": 17.95344680272498
+          },
+          "distance": 94.70342458721532
+        }
+      ]
+    },
+    {
+      "ratio": 0.95,
+      "point": {
+        "x": 254.70865000000003,
+        "y": 5.0036000000000005,
+        "height": 2
+      },
+      "ndc": [
+        -0.03583396752856836,
+        0.25476506069587307,
+        0.9974942383032956
+      ],
+      "inViewport": true,
+      "hits": [
+        {
+          "sourceIndex": 201,
+          "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+          "node": "cell-e002-n000_near_plaster",
+          "point": {
+            "x": 255.3695989728019,
+            "y": 5.026771193272483,
+            "height": 1.9948092662405084
+          },
+          "distance": 90.49221241295255
+        },
+        {
+          "sourceIndex": 201,
+          "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+          "node": "cell-e002-n000_near_plaster",
+          "point": {
+            "x": 256.2924305120456,
+            "y": 5.0591233245771825,
+            "height": 1.987561849235219
+          },
+          "distance": 91.41563931058772
+        }
+      ]
+    },
+    {
+      "ratio": 0.95,
+      "point": {
+        "x": 254.70865000000003,
+        "y": 5.0036000000000005,
+        "height": 7
+      },
+      "ndc": [
+        -0.036077557123731355,
+        0.3822756644605498,
+        0.9974713756917679
+      ],
+      "inViewport": true,
+      "hits": [
+        {
+          "sourceIndex": 201,
+          "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+          "node": "cell-e002-n000_near_plaster",
+          "point": {
+            "x": 252.21877774086536,
+            "y": 4.916311398739667,
+            "height": 6.88087797164917
+          },
+          "distance": 87.43644197952753
+        },
+        {
+          "sourceIndex": 201,
+          "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+          "node": "cell-e002-n000_near_plaster",
+          "point": {
+            "x": 255.3695989728019,
+            "y": 5.026771193272468,
+            "height": 7.031621534794572
+          },
+          "distance": 90.59280054972517
+        }
+      ]
+    },
+    {
+      "ratio": 0.95,
+      "point": {
+        "x": 254.70865000000003,
+        "y": 5.0036000000000005,
+        "height": 15
+      },
+      "ndc": [
+        -0.03647426458119583,
+        0.589938095137833,
+        0.9974341418826471
+      ],
+      "inViewport": true,
+      "hits": [
+        {
+          "sourceIndex": 201,
+          "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+          "node": "cell-e002-n000_near_plaster",
+          "point": {
+            "x": 254.7086480740536,
+            "y": 5.003599932481217,
+            "height": 14.999999736229466
+          },
+          "distance": 90.66558448162523
+        },
+        {
+          "sourceIndex": 201,
+          "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+          "node": "cell-e002-n000_near_plaster",
+          "point": {
+            "x": 258.3263843282682,
+            "y": 5.13042858250552,
+            "height": 15.495471719686469
+          },
+          "distance": 94.31929404834185
+        }
+      ]
+    }
+  ],
+  "foreground": [
+    {
+      "x": -0.9,
+      "y": -0.2,
+      "hits": [
+        {
+          "sourceIndex": 274,
+          "sourceId": "kyoto-city:bldg_943c9e01-9535-4980-a843-c3a80fed160b",
+          "node": "cell-e001-n000_near_plaster",
+          "point": {
+            "x": 168.02843676796036,
+            "y": 3.6529177579605845,
+            "height": 2.042136976580365
+          },
+          "distance": 3.6375510836993854
+        },
+        {
+          "sourceIndex": 274,
+          "sourceId": "kyoto-city:bldg_943c9e01-9535-4980-a843-c3a80fed160b",
+          "node": "cell-e001-n000_near_plaster",
+          "point": {
+            "x": 168.20816673773732,
+            "y": 3.757321429463862,
+            "height": 2.0036136660004717
+          },
+          "distance": 3.848944163334044
+        }
+      ]
+    },
+    {
+      "x": -0.9,
+      "y": 0.2,
+      "hits": [
+        {
+          "sourceIndex": 274,
+          "sourceId": "kyoto-city:bldg_943c9e01-9535-4980-a843-c3a80fed160b",
+          "node": "cell-e001-n000_near_plaster",
+          "point": {
+            "x": 168.09618269928703,
+            "y": 3.653615987032416,
+            "height": 2.6031588304723314
+          },
+          "distance": 3.637150878615021
+        },
+        {
+          "sourceIndex": 274,
+          "sourceId": "kyoto-city:bldg_943c9e01-9535-4980-a843-c3a80fed160b",
+          "node": "cell-e001-n000_near_plaster",
+          "point": {
+            "x": 168.2085787545416,
+            "y": 3.717531245421058,
+            "height": 2.599536040607321
+          },
+          "distance": 3.7664998565703303
+        }
+      ]
+    },
+    {
+      "x": -0.6,
+      "y": -0.2,
+      "hits": [
+        {
+          "sourceIndex": 274,
+          "sourceId": "kyoto-city:bldg_943c9e01-9535-4980-a843-c3a80fed160b",
+          "node": "cell-e001-n000_near_plaster",
+          "point": {
+            "x": 169.82468361978374,
+            "y": 3.7665392985838255,
+            "height": 1.6597319743594154
+          },
+          "distance": 5.351933308632088
+        }
+      ]
+    },
+    {
+      "x": -0.6,
+      "y": 0.2,
+      "hits": [
+        {
+          "sourceIndex": 274,
+          "sourceId": "kyoto-city:bldg_943c9e01-9535-4980-a843-c3a80fed160b",
+          "node": "cell-e001-n000_near_plaster",
+          "point": {
+            "x": 169.82509275196057,
+            "y": 3.7270276277738787,
+            "height": 2.547814958066617
+          },
+          "distance": 5.237354122286082
+        },
+        {
+          "sourceIndex": 274,
+          "sourceId": "kyoto-city:bldg_943c9e01-9535-4980-a843-c3a80fed160b",
+          "node": "cell-e001-n000_near_glass",
+          "point": {
+            "x": 185.49360335221866,
+            "y": 9.721696955443402,
+            "height": 2.044009204672261
+          },
+          "distance": 22.021039802602402
+        }
+      ]
+    },
+    {
+      "x": -0.3,
+      "y": -0.2,
+      "hits": [
+        {
+          "sourceIndex": 274,
+          "sourceId": "kyoto-city:bldg_943c9e01-9535-4980-a843-c3a80fed160b",
+          "node": "cell-e001-n000_near_glass",
+          "point": {
+            "x": 174.89951052726747,
+            "y": 3.863742707625556,
+            "height": 0.5799728044702057
+          },
+          "distance": 10.383749877041284
+        }
+      ]
+    },
+    {
+      "x": -0.3,
+      "y": 0.2,
+      "hits": [
+        {
+          "sourceIndex": 274,
+          "sourceId": "kyoto-city:bldg_943c9e01-9535-4980-a843-c3a80fed160b",
+          "node": "cell-e001-n000_near_plaster",
+          "point": {
+            "x": 174.95608366346002,
+            "y": 3.8346874431299485,
+            "height": 2.383613995249774
+          },
+          "distance": 10.218829240683156
+        },
+        {
+          "sourceIndex": 274,
+          "sourceId": "kyoto-city:bldg_943c9e01-9535-4980-a843-c3a80fed160b",
+          "node": "cell-e001-n000_near_plaster",
+          "point": {
+            "x": 185.67294631804214,
+            "y": 5.950495834085816,
+            "height": 2.0398590388695426
+          },
+          "distance": 21.147962681832645
+        }
+      ]
+    },
+    {
+      "x": -0.1,
+      "y": -0.2,
+      "hits": [
+        {
+          "sourceIndex": 47,
+          "sourceId": "osm:way:465066447",
+          "node": "Resident_paving",
+          "point": {
+            "x": 177.68675036723147,
+            "y": 2.823217218296798,
+            "height": -0.009999999776482582
+          },
+          "distance": 13.072668768448631
+        },
+        {
+          "sourceIndex": 1050,
+          "sourceId": "shijo-east:ground",
+          "node": "Resident_paving",
+          "point": {
+            "x": 177.8276441868449,
+            "y": 2.8339002907699573,
+            "height": -0.03999999910593344
+          },
+          "distance": 13.217116670484272
+        }
+      ]
+    },
+    {
+      "x": -0.1,
+      "y": 0.2,
+      "hits": [
+        {
+          "sourceIndex": 201,
+          "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+          "node": "cell-e002-n000_near_plaster",
+          "point": {
+            "x": 200.9217350660825,
+            "y": 4.536708684820734,
+            "height": 1.5526001446087967
+          },
+          "distance": 36.104082997266374
+        },
+        {
+          "sourceIndex": 201,
+          "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+          "node": "cell-e002-n000_near_plaster",
+          "point": {
+            "x": 201.40859518921582,
+            "y": 4.572971132158939,
+            "height": 1.5370087777089982
+          },
+          "distance": 36.592540605771084
+        }
+      ]
+    }
+  ],
+  "producerSha256": "1f6ca3c6b853bc6f1b6d7d462d358b917fa5d1d750821c610d550f2510bd608f"
+}

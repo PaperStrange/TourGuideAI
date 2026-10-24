@@ -69,8 +69,10 @@ visible through a capture count. The first failed probe and default benchmark re
 preserved. The successful probe retains AA, 1440×1000/DPR 1 and software rendering;
 it establishes native visibility behavior, not physical-GPU performance.
 
-Candidate 11 CI **40058828311** runs on checkpoint **`ef34dd3`** with all eight
-jobs started. Candidate 10 CI **40055504933** completed as cancelled at 03:34 UTC
+Candidate 11 CI **40058828311** runs on checkpoint **`ef34dd3`**. Seven jobs and
+all seven available browser reports pass **771/771** checks on the exact 446-file
+package; source preparation passes 18 + 13 checks. The full neighborhood job remains
+running. Candidate 10 CI **40055504933** completed as cancelled at 03:34 UTC
 when the new source run began; seven jobs passed and the neighborhood artifact
 **12546870664** retains its interrupted scope. Current candidate 11 awaits its own
 complete CI. A single
@@ -128,8 +130,12 @@ dated-photo-supported material bands and stepped-head openings, with authored
 dimensions and preserved ground-level geometry below 3.5 m, other faces, roof and
 navigation. World record `93bc46595c9ec5b3b42707c351670968592e13af2190da208d22760aab33945b`
 binds that exact edge and source. QA prepares actual matched before views; the old
-e001 foreground is source274 and cannot validate source201. Source274 requires
-its own reviewed association before any additional authoring.
+e001 foreground is source274 and cannot validate source201. Root separately
+approved source274's anonymous upper south-edge treatment: white horizontal bands
+and dark ribbon glazing, with its qualified dated-photo association and all original
+triangles intersecting below 3.5 m preserved. Approval record
+`feba0e468af8df64fb333fc8a62c311b3226807743fe8a4fc060a85bab69deac`
+binds the unchanged proposal. No tenant name or ground-frontage claim is added.
 
 Engineering owns a source139-only opaque diffuse-sheet shader for Nishiki's colored
 ridge, coordinated with art's isolated material metadata. It uses actual shadowed

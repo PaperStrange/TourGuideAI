@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-24",
+  "status": "source-reviewed-bounded-authoring",
+  "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+  "sourceIndex": 201,
+  "scene": {
+    "file": "experience/src/neighborhoods/shijo-east/scene.json",
+    "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e"
+  },
+  "geography": {
+    "file": "experience/src/neighborhoods/shijo-east/geography.json",
+    "sha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f"
+  },
+  "face": {
+    "polygonIndex": 0,
+    "ringIndex": 0,
+    "edgeIndex": 3,
+    "from": [185.979, 4.407],
+    "to": [258.326, 5.035],
+    "lengthMetres": 72.3497255903573,
+    "direction": "South-facing Shijo elevation; CCW outer-ring edge",
+    "sourceBaseHeightMetres": 0,
+    "sourceTopHeightMetres": 33.49100000000001,
+    "heightMeaning": "Official LOD1 solid vertical extent70.843 minus37.352m, displayed on authored base0. It is not a measured facade/body elevation.",
+    "otherHeightQuantities": {
+      "municipalMeasuredHeightAttributeMetres": 42.7,
+      "osmHeightTagMetres": 31
+    }
+  },
+  "identityAssociation": {
+    "osmSourceId": "osm:way:205748651",
+    "version": 10,
+    "timestamp": "2025-11-14T08:18:19Z",
+    "name": "Daimaru",
+    "japaneseName": "大丸京都店",
+    "municipalFootprintOverlapFraction": 0.9818124747955947,
+    "basis": "Named retained OSM footprint overlaps the municipal solid. The licensed photograph visibly identifies Daimaru and its Shijo-facing elevation. Operator text independently identifies the Shijo exterior passage.",
+    "limit": "No door/tenant matching or complete measured elevation is established. Municipal construction-year and height attributes remain independent of the historical architectural account."
+  },
+  "photographicReference": {
+    "id": "daimaru-shijo-2021",
+    "title": "Daimaru Kyoto20210314.jpg",
+    "author": "Nryate",
+    "captureDate": "2021-03-14",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Daimaru_Kyoto20210314.jpg",
+    "revisionUrl": "https://commons.wikimedia.org/w/index.php?title=File:Daimaru_Kyoto20210314.jpg&oldid=883267396",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "originalFile": "artifacts/neighborhood-20261024/world/connectors/daimaru-2021.jpg",
+    "originalSha256": "663c0cad636d1fc03bc2ec3785ab5c6429227c31e65b2e2bc587695bcce9cb2b",
+    "originalBytes": 3406436,
+    "originalDimensions": [4032, 3024],
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/8/84/Daimaru_Kyoto20210314.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "observed": [
+      "Pale lower stone-faced band with narrow dark-framed openings and stepped heads.",
+      "Brown small-tile upper field with aligned rectangular window openings.",
+      "A pale upper band and a tall dark central grille are visible.",
+      "A continuous covered frontage substantially obscures ground-level openings."
+    ],
+    "cameraMetadata": {
+      "latitude": 35.003819,
+      "longitude": 135.762528,
+      "headingDegrees": 293.84649681529,
+      "projectedLocalPoint": [256.41155935122174, 8.875251999664004],
+      "insideMunicipalFootprint": true,
+      "distanceToReviewedFaceMetres": 3.8567247887988354,
+      "use": "Approximate source metadata only; excluded from metric camera calibration and facade measurement."
+    },
+    "limits": [
+      "Appearance is dated2021; present-day condition is unverified.",
+      "Bay dimensions, storey heights, reveal depths and material parameters remain authored.",
+      "Ground-level tenant fronts and entrances are occluded and are outside this treatment.",
+      "No photograph pixels, lettering, logos or peacock ornament are introduced by this review."
+    ],
+    "rights": "Retain author, source, license and change notices. Reused or adapted photographic material must follow applicable Attribution/ShareAlike conditions; this record supplies no blanket license for unrelated code or assets. The current proposal uses original simplified geometry/materials."
+  },
+  "operatorReference": {
+    "url": "https://www.daimaru.co.jp/kyoto/art_at_daimaru/find.html",
+    "publisher": "Daimaru Matsuzakaya Department Stores Co. Ltd.",
+    "htmlSha256": "a7357acd6cd1d709963e0fb531424a6761e87039c6659601cbbbec77fd0a6795",
+    "checkedAt": "2026-10-24",
+    "publicationDate": "Undated page; surrounding event/program text refers to2021.",
+    "supportedFact": "Mountain-shaped arches inspired by Vories motifs were installed in the Shijo-side exterior passage during the2014 renovation.",
+    "quote": "2014年の改装時に四条側の外通路につくられました。",
+    "referenceImageUrl": "https://www.daimaru.co.jp/kyoto/art_at_daimaru/assets/img/find/vories_04.jpg",
+    "referenceImageSha256": "519a246a0c07e6a288563cd114aad3a8f4853c5b5d7ee3899985ef3673e42f71",
+    "observed": "The operator close-up shows repeating stepped arch portals along a narrow stone-lined exterior passage. These portals are distinct from the stepped-head windows above the covered frontage.",
+    "rights": "Operator copyright/all rights reserved; factual and private visual review only. No open image-reuse license found, no runtime pixels or image redistribution proposed.",
+    "scopeLimit": "The passage assembly supplies context. Its position, clearance and profile are not authorized for construction in this source201 increment."
+  },
+  "coveredSidewalkConstraint": {
+    "sourceId": "osm:way:465066447",
+    "version": 8,
+    "timestamp": "2024-11-05T04:13:54Z",
+    "tags": {"highway": "footway", "footway": "sidewalk", "covered": "yes", "surface": "paving_stones", "lit": "yes", "bicycle": "dismount"},
+    "displayDistanceToFaceMetres": 0.8002858600038198,
+    "separateCanopyPolygonsWithin12Metres": 0,
+    "limit": "Covered status supports a covered path. It does not establish roof plan, width, height, arch positions or present access. Existing ground/path and all canopy geometry remain unchanged."
+  },
+  "approvedAuthoringScope": {
+    "minimumChangedHeightMetres": 3.5,
+    "allowedFace": [0, 0, 3],
+    "supportedCues": ["Pale lower band", "Narrow stepped-head openings", "Brown small-tile upper field", "Aligned rectangular upper openings"],
+    "authoredDimensions": ["Band elevations", "Opening count and spacing", "Opening width/height", "Stepped-head dimensions", "Reveal depth", "PBR colors/roughness"],
+    "preserve": ["Every existing face below3.5m", "Complete source footprint/base/top", "Roof", "Other facade edges", "Navigation and ground", "Source identity/index", "Existing canopy geometry", "All unrelated assets"],
+    "excludedFromThisExport": ["Source274", "Exterior-passage arch construction", "Tenants/interiors/entrance assignments", "Signs and decorative emblem reproduction"]
+  },
+  "acceptance": {
+    "status": "Proposed native before/after review; not an executed capture",
+    "existingE001Finding": "Actual retained e001 camera primarily sees source274 in its left foreground. Source201 is a narrow farther strip near centre-left; a201 treatment does not establish the identity or quality of the entire e001 wall.",
+    "proposedView": {
+      "version": 3,
+      "packId": "shijo-east",
+      "revision": 1,
+      "player": {"x": 222.1525, "y": 2.573724643337332, "height": 0, "edgeId": "osm:way:465066447:4600891662:4600891664", "edgeDistance": 32.18044565142699},
+      "camera": {"azimuth": 0, "polar": 1.35, "distance": 18, "targetOffset": {"x": 0, "y": 0, "height": 4}}
+    },
+    "graphProjectionErrorMetres": 0,
+    "requirements": ["Actual public saved-view restoration and resolved camera recorded", "Matched day/night before/after", "Source201 face visibly confirmed", "Actor and ground remain readable", "Unchanged source/navigation and decoded unrelated geometry", "Existing section/startup budgets"]
+  }
+}

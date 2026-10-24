@@ -146,8 +146,9 @@ The subsequent compact candidate 11 walkthrough passes 57/57 actual-touch checks
 across EN/ZH, including Choose/edit/Maps, private night view, standalone preview,
 kept return and reload. Candidate 12 work is authorized for source201's reviewed
 south facade and source139's colored ridge response, with independently audited
-source scope, unchanged navigation and matched native day/night checks. Source274
-requires its separate association before authoring. Art, engineering and world
+source scope, unchanged navigation and matched native day/night checks. Source274's
+anonymous upper frontage now has a separately reviewed and approved association.
+Its lower frontage, roof and other faces remain protected. Art, engineering and world
 content retain their existing ownership; QA owns exact before/after evidence.
 
 | Sprint | Current evidence | Remaining acceptance |

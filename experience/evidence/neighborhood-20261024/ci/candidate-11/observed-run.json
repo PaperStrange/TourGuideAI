@@ -1,5 +1,5 @@
 {
-  "observedAt": "2026-10-24T03:44:42.495Z",
+  "observedAt": "2026-10-24T03:53:42.258Z",
   "runId": 40058828311,
   "headSha": "ef34dd3190c32642262210e5d4f773846e4e9046",
   "implementationSha": "84e80a823d778b9b537fc45d311a62bc127723db",
@@ -320,8 +320,8 @@
     {
       "id": 120767732535,
       "name": "Validate journey homepage",
-      "status": "in_progress",
-      "conclusion": null,
+      "status": "completed",
+      "conclusion": "success",
       "run_id": 40058828311,
       "logs_url": null,
       "steps": [
@@ -393,27 +393,33 @@
         },
         {
           "name": "Walk through both homepage journeys",
-          "status": "in_progress",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "success",
           "number": 12
         },
         {
           "name": "Preserve walkthrough evidence",
-          "status": "pending",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "success",
           "number": 13
         },
         {
           "name": "Post Run actions/setup-node@v4",
-          "status": "pending",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "success",
           "number": 25
         },
         {
           "name": "Post Run actions/checkout@v4",
-          "status": "pending",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "success",
           "number": 26
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27
         }
       ]
     },
@@ -490,8 +496,8 @@
     {
       "id": 120767732615,
       "name": "Validate original walk",
-      "status": "in_progress",
-      "conclusion": null,
+      "status": "completed",
+      "conclusion": "success",
       "run_id": 40058828311,
       "logs_url": null,
       "steps": [
@@ -551,39 +557,45 @@
         },
         {
           "name": "Exercise the packaged experience in Chromium",
-          "status": "in_progress",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "success",
           "number": 10
         },
         {
           "name": "Preserve browser evidence",
-          "status": "pending",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "success",
           "number": 11
         },
         {
           "name": "Walk through both homepage journeys",
-          "status": "pending",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "skipped",
           "number": 12
         },
         {
           "name": "Preserve walkthrough evidence",
-          "status": "pending",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "skipped",
           "number": 13
         },
         {
           "name": "Post Run actions/setup-node@v4",
-          "status": "pending",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "success",
           "number": 25
         },
         {
           "name": "Post Run actions/checkout@v4",
-          "status": "pending",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "success",
           "number": 26
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27
         }
       ]
     },
@@ -696,8 +708,8 @@
     {
       "id": 120767732642,
       "name": "Validate reviewed place packs",
-      "status": "in_progress",
-      "conclusion": null,
+      "status": "completed",
+      "conclusion": "success",
       "run_id": 40058828311,
       "logs_url": null,
       "steps": [
@@ -757,44 +769,107 @@
         },
         {
           "name": "Exercise the packaged experience in Chromium",
-          "status": "in_progress",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "success",
           "number": 10
         },
         {
           "name": "Preserve browser evidence",
-          "status": "pending",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "success",
           "number": 11
         },
         {
           "name": "Walk through both homepage journeys",
-          "status": "pending",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "skipped",
           "number": 12
         },
         {
           "name": "Preserve walkthrough evidence",
-          "status": "pending",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "skipped",
           "number": 13
         },
         {
           "name": "Post Run actions/setup-node@v4",
-          "status": "pending",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "success",
           "number": 25
         },
         {
           "name": "Post Run actions/checkout@v4",
-          "status": "pending",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "success",
           "number": 26
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27
         }
       ]
     }
   ],
   "artifacts": [
+    {
+      "id": 12547295595,
+      "name": "packs-browser-evidence",
+      "size_in_bytes": 10902315,
+      "url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12547295595",
+      "archive_download_url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12547295595/zip",
+      "expired": false,
+      "created_at": "2026-10-24T03:50:33Z",
+      "expires_at": "2027-01-22T03:34:00Z",
+      "updated_at": "2026-10-24T03:50:33Z",
+      "digest": "sha256:9fea38adcec3fe57f3c08939dd5d42c1fbf34cbf8be85b2cd83058a56c3fe9a6",
+      "workflow_run": {
+        "id": 40058828311,
+        "repository_id": 764675410,
+        "head_repository_id": 764675410,
+        "head_branch": "chore-sow-delivery-plan",
+        "head_sha": "ef34dd3190c32642262210e5d4f773846e4e9046"
+      }
+    },
+    {
+      "id": 12547101901,
+      "name": "homepage-walkthrough-evidence",
+      "size_in_bytes": 15090844,
+      "url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12547101901",
+      "archive_download_url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12547101901/zip",
+      "expired": false,
+      "created_at": "2026-10-24T03:50:33Z",
+      "expires_at": "2027-01-22T03:34:00Z",
+      "updated_at": "2026-10-24T03:50:33Z",
+      "digest": "sha256:c49a2a8cadbe2398ef9e14b77e5284a3f1fb9b921bdc9053bc6e11bf9cfee51d",
+      "workflow_run": {
+        "id": 40058828311,
+        "repository_id": 764675410,
+        "head_repository_id": 764675410,
+        "head_branch": "chore-sow-delivery-plan",
+        "head_sha": "ef34dd3190c32642262210e5d4f773846e4e9046"
+      }
+    },
+    {
+      "id": 12546668346,
+      "name": "experience-browser-evidence",
+      "size_in_bytes": 19806291,
+      "url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12546668346",
+      "archive_download_url": "https://api.github.com/repos/PaperStrange/TourGuideAI/actions/artifacts/12546668346/zip",
+      "expired": false,
+      "created_at": "2026-10-24T03:49:20Z",
+      "expires_at": "2027-01-22T03:34:00Z",
+      "updated_at": "2026-10-24T03:49:20Z",
+      "digest": "sha256:d93aea64126b1c250b762cc46a547e60a92ef6804e060eaac8a9e2111a48cc8f",
+      "workflow_run": {
+        "id": 40058828311,
+        "repository_id": 764675410,
+        "head_repository_id": 764675410,
+        "head_branch": "chore-sow-delivery-plan",
+        "head_sha": "ef34dd3190c32642262210e5d4f773846e4e9046"
+      }
+    },
     {
       "id": 12546657374,
       "name": "perspective-browser-evidence",

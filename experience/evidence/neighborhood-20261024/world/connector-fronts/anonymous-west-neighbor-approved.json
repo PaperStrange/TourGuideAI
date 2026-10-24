@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-24",
+  "status": "source-reviewed-bounded-authoring",
+  "sourceId": "kyoto-city:bldg_943c9e01-9535-4980-a843-c3a80fed160b",
+  "sourceIndex": 274,
+  "approval": {
+    "authority": "Root integration lead, following the approved connected-neighborhood milestone",
+    "date": "2026-10-24",
+    "disposition": "Approved for candidate12 within the exact anonymous upper-face scope. The qualified adjacency inference and dated appearance limits remain explicit.",
+    "proposal": {
+      "file": "experience/evidence/neighborhood-20261024/world/connector-fronts/anonymous-west-neighbor-proposal.json",
+      "sha256": "60af0bba83a67545cc0fa80894030febd7d2249d2b0336902e56d3b5daadf85c"
+    }
+  },
+  "scene": {
+    "file": "experience/src/neighborhoods/shijo-east/scene.json",
+    "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e"
+  },
+  "geography": {
+    "file": "experience/src/neighborhoods/shijo-east/geography.json",
+    "sha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f"
+  },
+  "face": {
+    "polygonIndex": 0,
+    "ringIndex": 0,
+    "edgeIndex": 2,
+    "from": [162.603, 3.597],
+    "to": [185.695, 3.835],
+    "direction": "South-facing Shijo elevation; CCW outer-ring edge",
+    "sourceBaseHeightMetres": 0,
+    "sourceTopHeightMetres": 30.380000000000003,
+    "heightMeaning": "Retained municipal LOD1 vertical extent67.703 minus37.323m. The measured-height attribute40.6m remains separate; source placement atbase0 is authored."
+  },
+  "identityAssociation": {
+    "osmSourceId": "osm:way:205748825",
+    "version": 2,
+    "timestamp": "2018-05-05T15:05:36Z",
+    "name": null,
+    "municipalFootprintOverlapFraction": 0.9741921164086402,
+    "basis": "Retained source274 immediately adjoins the named source201 Daimaru frontage on its western side. The licensed2021 photograph shows the corresponding immediate western upper elevation. World content and art independently inspected that junction and agree on white horizontal bands and dark ribbon glazing.",
+    "strength": "Qualified adjacency-based source association; no tenant identity or metric image calibration.",
+    "limits": "The lower covered frontage is occluded. Current condition, ground openings, measured facade dimensions and observed night response remain unverified."
+  },
+  "photographicReference": {
+    "id": "daimaru-shijo-2021",
+    "title": "Daimaru Kyoto20210314.jpg",
+    "author": "Nryate",
+    "captureDate": "2021-03-14",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Daimaru_Kyoto20210314.jpg",
+    "revisionUrl": "https://commons.wikimedia.org/w/index.php?title=File:Daimaru_Kyoto20210314.jpg&oldid=883267396",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "originalFile": "artifacts/neighborhood-20261024/world/connectors/daimaru-2021.jpg",
+    "originalSha256": "663c0cad636d1fc03bc2ec3785ab5c6429227c31e65b2e2bc587695bcce9cb2b",
+    "originalBytes": 3406436,
+    "observed": ["White horizontal bands on the upper elevation immediately west of Daimaru", "Dark ribbon glazing between those bands"],
+    "limits": ["Dated2021 appearance", "Approximate geotag excluded from metric calibration", "Lower covered openings remain unsupported", "No tenant names, signs, interiors or photograph pixels introduced"],
+    "rights": "Retain author/source/license/change notices and applicable Attribution/ShareAlike obligations for any reused or adapted photographic material. The treatment uses original simplified geometry/materials."
+  },
+  "approvedAuthoringScope": {
+    "allowedFace": [0, 0, 2],
+    "minimumChangedHeightMetres": 3.5,
+    "supportedCues": ["White horizontal bands", "Dark ribbon glazing"],
+    "authoredDimensions": ["Band count/elevations", "Glazing divisions", "Frame and reveal sizes", "PBR response"],
+    "preserve": ["Every original triangle intersecting below3.5m", "Existing higher seam of any protected crossing wall panel", "Roof and complete source envelope/base/top", "Every other facade edge", "Ground/navigation/canopies", "Source identity and unrelated groups"],
+    "excluded": ["Building or tenant naming", "Ground-floor shop/door reconstruction", "Signs/interiors", "Measured or current-condition claims"],
+    "acceptance": "Matched native day/night views, verified source-face visibility, complete decoded regional-preservation audit, unchanged navigation and existing resource budgets."
+  },
+  "actualViewProof": {
+    "file": "experience/evidence/neighborhood-20261024/world/connector-fronts/face-projection.json",
+    "sha256": "3ae98c89ccdf2f32d99448f94f053286e7ff88223ea3db2e079a7f0b3d619a84",
+    "meaning": "Actual retained e001 camera rays identify274 in the left foreground. Native upper-face framing and final appearance acceptance remain separate."
+  }
+}
