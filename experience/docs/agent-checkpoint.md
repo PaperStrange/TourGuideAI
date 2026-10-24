@@ -8,7 +8,8 @@ the verified baseline. Q03 is open P1; backend tests remain local.**
 
 ## Resumed acceptance · 2026-10-24
 
-Starting checkpoint **`3c7fd4b`** is synchronized with the remote iteration branch.
+Checkpoint **`ef34dd3190c32642262210e5d4f773846e4e9046`** is synchronized with the
+remote iteration branch; its working tree was clean after push verification.
 The latest implementation is **`84e80a8`**, with immutable **candidate 11**, package
 **`76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea`**,
 446 files / 96,813,522 bytes, at `artifacts/neighborhood-20261024/candidate-11`.
@@ -68,9 +69,11 @@ visible through a capture count. The first failed probe and default benchmark re
 preserved. The successful probe retains AA, 1440×1000/DPR 1 and software rendering;
 it establishes native visibility behavior, not physical-GPU performance.
 
-Candidate 10 CI **40055504933** has seven successful jobs and its complete
-neighborhood job remains running on checkpoint **`b57d74f`** as of 03:31 UTC.
-Current candidate 11 awaits its own complete CI. A single
+Candidate 11 CI **40058828311** runs on checkpoint **`ef34dd3`** with all eight
+jobs started. Candidate 10 CI **40055504933** completed as cancelled at 03:34 UTC
+when the new source run began; seven jobs passed and the neighborhood artifact
+**12546870664** retains its interrupted scope. Current candidate 11 awaits its own
+complete CI. A single
 matched startup A/B observes fewer preview mutations/draws. Its original 19/2 result
 is retained: warm-vs-cold raw edge-distance comparisons differ by 0.000334 m, while
 independent cold-to-cold and warm-to-warm player/camera/ground fields match exactly.
@@ -111,6 +114,14 @@ Root owns remote synchronization, final-package CI and the remaining acceptance
 record. Input/frame targets, broader art acceptance and Q03 remain open. The
 appearance follow-up retains location-matched frontage reference gaps and unverified
 plaque lettering. Publication awaits acceptance; no current candidate is published.
+
+Independent continuation now covers a compact EN/ZH touch walkthrough of route
+selection/editing, Maps handoff and private-view return, and source-supported art
+proposals for Daimaru's south frontage and the Nishiki colored roof ridge. Candidate
+11 remains frozen during these investigations. Existing references support the
+ridge's transmitted-color daylight cue; exact shop-by-shop reconstruction is outside
+the approved consistent-street and recognizable-feature criterion. Each proposed
+art change requires explicit source/face association and matched native review.
 
 ## Candidate 9 evidence · 2026-10-23
 
