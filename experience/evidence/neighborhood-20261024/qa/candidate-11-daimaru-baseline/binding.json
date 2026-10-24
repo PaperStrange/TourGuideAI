@@ -1,0 +1,147 @@
+{
+  "packageSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
+  "packageFiles": 446,
+  "packageBytes": 96813522,
+  "scenerySha256": "4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544",
+  "source": {
+    "id": "shijo-east",
+    "revision": 1,
+    "geographySha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+    "manifestSha256": "4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544",
+    "historicalGeographyCompatibility": {
+      "kind": "reviewed-tenmangu-anchor-metadata",
+      "recordedSha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
+      "currentSha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+      "auditSha256": "156cdc90f594a9a69a672ac8003e1ddbfa76259c0dc86c5b59035b0e55cc35dd",
+      "auditFile": "experience/evidence/neighborhood-20261023/world/platform-context/tenmangu-compatibility.json",
+      "changedFields": [
+        "nodeId",
+        "approachNodeId",
+        "x",
+        "y",
+        "latitude",
+        "longitude"
+      ],
+      "completeGeographyCompared": true,
+      "unchangedSources": {
+        "scene.json": {
+          "bytes": 8789674,
+          "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e"
+        },
+        "source-ledger.json": {
+          "bytes": 5999,
+          "sha256": "be0f8065699a53f09293140e2499bca2468f0aa7cea503dc6436f45c9b17a24c"
+        },
+        "source-review.json": {
+          "bytes": 756,
+          "sha256": "4e3fbb9d2fd3134153d2b378f5de995c2f7e3135ea3d778a5fe2f19b55f00258"
+        },
+        "sources/kyoto-lod1.geojson": {
+          "bytes": 6304053,
+          "sha256": "da1af049906d736b6329e062673a84728640957475d3b46107cebf46b48a2d93"
+        },
+        "sources/route-osm.json": {
+          "bytes": 47176,
+          "sha256": "5681dceac0c5d206a6e5315c77ca6a39a292ab3915f23b60cc17c77cecb4099e"
+        },
+        "sources/scene-osm.json": {
+          "bytes": 2390775,
+          "sha256": "1e3ba265bc8dd3c6744ccd897ad915016a2cc0110c306bf3e064ca63ced5dd0c"
+        }
+      },
+      "scope": "Stored metric view, frame and navigation geometry. Rendered assets retain their separate current-build identity."
+    }
+  },
+  "driverSha256": "cbe8da9f1e3a538160a57617f8adadef9a16db985a74b2f85eae1fe8febadc78",
+  "driverDependencies": [
+    {
+      "file": "tests/helpers/neighborhood-evidence-source.mjs",
+      "sha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    }
+  ],
+  "reportSha256": "30050dc2240f06c72f8517925f11873237a79269d60e69f6f9bde08830694c41",
+  "summary": {
+    "passed": 11,
+    "failed": 3
+  },
+  "browser": "151.0.7922.34",
+  "sections": [
+    "daimaru-baseline"
+  ],
+  "startedAt": "2026-10-24T03:52:35.187Z",
+  "finishedAt": "2026-10-24T03:56:19.300Z",
+  "elapsedMs": 224113,
+  "httpRequests": 104,
+  "evidence": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 194141,
+      "sha256": "0ff23b98fab3ef55fe26a44d68a6d9df2b04828909df73e936b3e2f78c590813",
+      "decodedBytes": 3791599,
+      "decodedSha256": "30050dc2240f06c72f8517925f11873237a79269d60e69f6f9bde08830694c41"
+    },
+    {
+      "file": "executed-driver.mjs.gz",
+      "bytes": 49366,
+      "sha256": "70d7bad78b088e1e20b44a350cbe0dc57d395017d0b2eb8c315fddd60d801586",
+      "decodedBytes": 205097,
+      "decodedSha256": "cbe8da9f1e3a538160a57617f8adadef9a16db985a74b2f85eae1fe8febadc78"
+    },
+    {
+      "file": "run.log.gz",
+      "bytes": 374,
+      "sha256": "ccf56ec764fc181b272d00bf65d555eba5d0d2b6a5ce536ca6962b5596c7f3bc",
+      "decodedBytes": 803,
+      "decodedSha256": "d393cb41e570ebca74a2e022b5e975661f0346586ef55d6fbd440b539d48d86e"
+    },
+    {
+      "file": "neighborhood-evidence-source.mjs.gz",
+      "bytes": 1619,
+      "sha256": "70115611f201081f16386f97f55d12421b3ee05a5e4c8f20bdfe99a5ec5fd294",
+      "decodedBytes": 3713,
+      "decodedSha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    },
+    {
+      "file": "source201-arrival-ordinary-day.png",
+      "bytes": 980879,
+      "sha256": "ccbc48b82a55cc53ec7eb9e73af7eedde3aff6292adfb87a12154b2b8e2cb463"
+    },
+    {
+      "file": "source201-arrival-ordinary-day-canvas.png",
+      "bytes": 730219,
+      "sha256": "cbb6326126d5031840a2bb09ebf143ec0a807a571891c9eb9b323dcce9fa88ca"
+    },
+    {
+      "file": "source201-front-day.png",
+      "bytes": 1031520,
+      "sha256": "5eafebfe2332ae79bdcf169198c09b7db46bfeeec253d49b1c6403f27f0ccb04"
+    },
+    {
+      "file": "../../art/candidate-12/baseline/source201-front-day-canvas.png",
+      "owner": "art",
+      "bytes": 755634,
+      "sha256": "06c4e5b2f7475aa6a9b762d6dc569dfad7c3230d1c0c802fb20b496df5173bbc"
+    },
+    {
+      "file": "source201-front-night.png",
+      "bytes": 810322,
+      "sha256": "1582596c55b381e62707b17babfddbb08d21455ce5a21a88591af675b918e343"
+    },
+    {
+      "file": "../../art/candidate-12/baseline/source201-front-night-canvas.png",
+      "owner": "art",
+      "bytes": 541914,
+      "sha256": "1b7d498ae192f342c58783b892057f3bf6951cfa2144aba0707c1234c8e0f522"
+    },
+    {
+      "file": "daimaru-baseline-failure-1.png",
+      "bytes": 835972,
+      "sha256": "10587d1b802bc946e6ae580cff88201d9d65ebc95e20952a3a3789dad282cd41"
+    }
+  ],
+  "failuresPreserved": [
+    "source201-front-day-ground-framing-and-source-projection",
+    "source201-front-night-ground-framing-and-source-projection",
+    "daimaru-baseline-completed"
+  ]
+}

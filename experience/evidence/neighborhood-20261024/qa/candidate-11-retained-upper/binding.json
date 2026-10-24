@@ -1,0 +1,117 @@
+{
+  "packageSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
+  "packageFiles": 446,
+  "packageBytes": 96813522,
+  "scenerySha256": "4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544",
+  "source": {
+    "id": "shijo-east",
+    "revision": 1,
+    "geographySha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+    "manifestSha256": "4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544"
+  },
+  "driverSha256": "83c0f52c7a3255f75bccbac7e71fbbe14b1dd9ed87a3be7a1648b42e9b5e38d9",
+  "driverDependencies": [
+    {
+      "file": "tests/helpers/neighborhood-evidence-source.mjs",
+      "sha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    },
+    {
+      "file": "artifacts/neighborhood-20261024/engineering/thin-sheet-verification.mjs",
+      "sha256": "0397f57fd5a37a397c665801860edc15935dd93bbac62c20a06b27ec28f8c35e"
+    },
+    {
+      "file": "src/runtime/exploration-state.js",
+      "sha256": "0857c29611bb98342fe95e0e6e95a0c68136fd0cebeff3fd0de7c2aa34ef8a23"
+    }
+  ],
+  "reportSha256": "ad2754e74364d1fdccd0da20938b7425e17a5327560797e0c53d144eec2e777e",
+  "summary": {
+    "passed": 11,
+    "failed": 0
+  },
+  "browser": "151.0.7922.34",
+  "sections": [
+    "retained-upper"
+  ],
+  "startedAt": "2026-10-24T04:51:26.480Z",
+  "finishedAt": "2026-10-24T04:52:14.098Z",
+  "elapsedMs": 47618,
+  "httpRequests": 96,
+  "evidence": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 186864,
+      "sha256": "af311058538fe1df435ca939fb5d6578abab4623dc93a91632642faba2bcd323",
+      "decodedBytes": 1855345,
+      "decodedSha256": "ad2754e74364d1fdccd0da20938b7425e17a5327560797e0c53d144eec2e777e"
+    },
+    {
+      "file": "executed-driver.mjs.gz",
+      "bytes": 52304,
+      "sha256": "81b79d94374332be2912dc97c9d10ead01e04118f926bfded74625c1915ef09e",
+      "decodedBytes": 216537,
+      "decodedSha256": "83c0f52c7a3255f75bccbac7e71fbbe14b1dd9ed87a3be7a1648b42e9b5e38d9"
+    },
+    {
+      "file": "run.log.gz",
+      "bytes": 317,
+      "sha256": "0b2759f8928996309c99ec6ad3721636add6f1798c1c6245ea99817243698042",
+      "decodedBytes": 689,
+      "decodedSha256": "995d5ec85d811aa1bdf55d55571400faddb489661ef59e186fdfc701a19e5560"
+    },
+    {
+      "file": "neighborhood-evidence-source.mjs.gz",
+      "bytes": 1619,
+      "sha256": "70115611f201081f16386f97f55d12421b3ee05a5e4c8f20bdfe99a5ec5fd294",
+      "decodedBytes": 3713,
+      "decodedSha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    },
+    {
+      "file": "thin-sheet-verification.mjs.gz",
+      "bytes": 4649,
+      "sha256": "981ff91c638ea7ac2a2d1665d25ece5c810cc95d2e2028b0c1f885cf17f80f64",
+      "decodedBytes": 12647,
+      "decodedSha256": "0397f57fd5a37a397c665801860edc15935dd93bbac62c20a06b27ec28f8c35e"
+    },
+    {
+      "file": "exploration-state.js.gz",
+      "bytes": 1453,
+      "sha256": "2e823b195c0cba84f537d3690d71bd215a0f17874138ef5c9ae8c1f8136a5283",
+      "decodedBytes": 3952,
+      "decodedSha256": "0857c29611bb98342fe95e0e6e95a0c68136fd0cebeff3fd0de7c2aa34ef8a23"
+    },
+    {
+      "file": "source201-retained-upper-day.png",
+      "bytes": 1220844,
+      "sha256": "725e6b1c3c2a04cad9e935c742cff25345940e525bfac155beef0e5083ee0f17"
+    },
+    {
+      "file": "../../art/candidate-12/baseline/source201-retained-upper-day-canvas.png",
+      "owner": "art",
+      "bytes": 938011,
+      "sha256": "22c35dc3fac429f3150df7e011ceb60793688b34c35f4d3baaa8307690e2a16a"
+    },
+    {
+      "file": "source201-retained-upper-night.png",
+      "bytes": 934196,
+      "sha256": "6a5c1c43b3d6f4c24bac92d7381de901da3a310b5961653e7b515ad2d5bed821"
+    },
+    {
+      "file": "../../art/candidate-12/baseline/source201-retained-upper-night-canvas.png",
+      "owner": "art",
+      "bytes": 665674,
+      "sha256": "1072cb8f1143833d677287af8ca89456ab10bfdcb93bebaa668ac98a51804024"
+    },
+    {
+      "file": "source201-retained-upper-escape-night.png",
+      "bytes": 786983,
+      "sha256": "34a8d67e3970c9625c9cdc9fec85cc20bf40aa4ad6a1532e87e2cf76138be32c"
+    },
+    {
+      "file": "source201-retained-upper-escape-night-canvas.png",
+      "bytes": 511214,
+      "sha256": "afceb632353aac31a16df50bf20fea2f005e5a389026c8128cca6b09c644ba4c"
+    }
+  ],
+  "failuresPreserved": []
+}

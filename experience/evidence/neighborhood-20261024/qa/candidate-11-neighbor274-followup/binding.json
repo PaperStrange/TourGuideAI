@@ -1,0 +1,113 @@
+{
+  "packageSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
+  "packageFiles": 446,
+  "packageBytes": 96813522,
+  "scenerySha256": "4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544",
+  "source": {
+    "id": "shijo-east",
+    "revision": 1,
+    "geographySha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+    "manifestSha256": "4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544",
+    "historicalGeographyCompatibility": {
+      "kind": "reviewed-tenmangu-anchor-metadata",
+      "recordedSha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
+      "currentSha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+      "auditSha256": "156cdc90f594a9a69a672ac8003e1ddbfa76259c0dc86c5b59035b0e55cc35dd",
+      "auditFile": "experience/evidence/neighborhood-20261023/world/platform-context/tenmangu-compatibility.json",
+      "changedFields": [
+        "nodeId",
+        "approachNodeId",
+        "x",
+        "y",
+        "latitude",
+        "longitude"
+      ],
+      "completeGeographyCompared": true,
+      "unchangedSources": {
+        "scene.json": {
+          "bytes": 8789674,
+          "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e"
+        },
+        "source-ledger.json": {
+          "bytes": 5999,
+          "sha256": "be0f8065699a53f09293140e2499bca2468f0aa7cea503dc6436f45c9b17a24c"
+        },
+        "source-review.json": {
+          "bytes": 756,
+          "sha256": "4e3fbb9d2fd3134153d2b378f5de995c2f7e3135ea3d778a5fe2f19b55f00258"
+        },
+        "sources/kyoto-lod1.geojson": {
+          "bytes": 6304053,
+          "sha256": "da1af049906d736b6329e062673a84728640957475d3b46107cebf46b48a2d93"
+        },
+        "sources/route-osm.json": {
+          "bytes": 47176,
+          "sha256": "5681dceac0c5d206a6e5315c77ca6a39a292ab3915f23b60cc17c77cecb4099e"
+        },
+        "sources/scene-osm.json": {
+          "bytes": 2390775,
+          "sha256": "1e3ba265bc8dd3c6744ccd897ad915016a2cc0110c306bf3e064ca63ced5dd0c"
+        }
+      },
+      "scope": "Stored metric view, frame and navigation geometry. Rendered assets retain their separate current-build identity."
+    }
+  },
+  "driverSha256": "72e5ea92bdc51a6d717b6d327e9f2704e87e92685f44ab5485db735f3cb9c267",
+  "driverDependencies": [
+    {
+      "file": "tests/helpers/neighborhood-evidence-source.mjs",
+      "sha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    }
+  ],
+  "reportSha256": "4ec765631ab6651ddc4aeba4d7276cec8c889bab2196ff170412c8405d63a4d5",
+  "summary": {
+    "passed": 7,
+    "failed": 1
+  },
+  "browser": "151.0.7922.34",
+  "sections": [
+    "neighbor274-followup"
+  ],
+  "startedAt": "2026-10-24T04:09:51.547Z",
+  "finishedAt": "2026-10-24T04:13:05.695Z",
+  "elapsedMs": 194148,
+  "httpRequests": 94,
+  "evidence": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 154732,
+      "sha256": "d90d3e2d145c86fc0487eb28b7033b7f6e56b3e8e3bf672d61525c15ecd7da0d",
+      "decodedBytes": 2871348,
+      "decodedSha256": "4ec765631ab6651ddc4aeba4d7276cec8c889bab2196ff170412c8405d63a4d5"
+    },
+    {
+      "file": "executed-driver.mjs.gz",
+      "bytes": 50158,
+      "sha256": "438d8a7d6964179f99ae4ad1fc6c5bb017b7285eaacb41dcdfebc5366294502d",
+      "decodedBytes": 210557,
+      "decodedSha256": "72e5ea92bdc51a6d717b6d327e9f2704e87e92685f44ab5485db735f3cb9c267"
+    },
+    {
+      "file": "run.log.gz",
+      "bytes": 263,
+      "sha256": "2a10c09ea2bec489c8fabf763a90161d8032da02cfd09233a48e74d6b12867bb",
+      "decodedBytes": 429,
+      "decodedSha256": "3f5cb877a3bf0175b5c6293da480b3cabc5834582ecf1e3cd85f2bd6fcd39bfc"
+    },
+    {
+      "file": "neighborhood-evidence-source.mjs.gz",
+      "bytes": 1619,
+      "sha256": "70115611f201081f16386f97f55d12421b3ee05a5e4c8f20bdfe99a5ec5fd294",
+      "decodedBytes": 3713,
+      "decodedSha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    },
+    {
+      "file": "neighbor274-followup-failure-1.png",
+      "bytes": 1055995,
+      "sha256": "d09df00c2940e57d562adb8468de5414fa2e3a8602ac928b3aca7a5404acbd99"
+    }
+  ],
+  "failuresPreserved": [
+    "neighbor274-followup-completed"
+  ]
+}

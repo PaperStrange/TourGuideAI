@@ -1,0 +1,70 @@
+{
+  "packageSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
+  "packageFiles": 446,
+  "packageBytes": 96813522,
+  "scenerySha256": "4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544",
+  "source": {
+    "id": "shijo-east",
+    "revision": 1,
+    "geographySha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+    "manifestSha256": "4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544"
+  },
+  "driverSha256": "1a917386c05de1a9e895549f81b16c7b711cd2f3e8be11772241db1c494ea219",
+  "driverDependencies": [
+    {
+      "file": "tests/helpers/neighborhood-evidence-source.mjs",
+      "sha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    }
+  ],
+  "reportSha256": "ba00164e45971f89873996f7b70e015d2d4dd15b077c6c4f4b775891ad7e160e",
+  "summary": {
+    "passed": 7,
+    "failed": 1
+  },
+  "browser": "151.0.7922.34",
+  "sections": [
+    "neighbor274-inspection"
+  ],
+  "startedAt": "2026-10-24T04:24:26.197Z",
+  "finishedAt": "2026-10-24T04:25:08.925Z",
+  "elapsedMs": 42728,
+  "httpRequests": 94,
+  "evidence": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 90208,
+      "sha256": "cb77c0e558ad740d947de263a696562a459af0c90182723a00ca92076a1444b1",
+      "decodedBytes": 859501,
+      "decodedSha256": "ba00164e45971f89873996f7b70e015d2d4dd15b077c6c4f4b775891ad7e160e"
+    },
+    {
+      "file": "executed-driver.mjs.gz",
+      "bytes": 50694,
+      "sha256": "23931fb93302c7880b4bb07c1006195e6ec953b3bee56f8bcecd27355839e85b",
+      "decodedBytes": 211574,
+      "decodedSha256": "1a917386c05de1a9e895549f81b16c7b711cd2f3e8be11772241db1c494ea219"
+    },
+    {
+      "file": "run.log.gz",
+      "bytes": 262,
+      "sha256": "4621db28271af25d8e44cb1ee2829396978a07de0d3c9d8f1ccc38ea4294133f",
+      "decodedBytes": 434,
+      "decodedSha256": "56f6bf3a8ad8ff789ef7daff2da436896f57716bc4e70fbf9c6af6d8cda94838"
+    },
+    {
+      "file": "neighborhood-evidence-source.mjs.gz",
+      "bytes": 1619,
+      "sha256": "70115611f201081f16386f97f55d12421b3ee05a5e4c8f20bdfe99a5ec5fd294",
+      "decodedBytes": 3713,
+      "decodedSha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    },
+    {
+      "file": "neighbor274-inspection-failure-1.png",
+      "bytes": 1093025,
+      "sha256": "624546715116550f938e687ebf35dc32a6ca6180ef88db7fa5918de0c9446e89"
+    }
+  ],
+  "failuresPreserved": [
+    "neighbor274-inspection-completed"
+  ]
+}

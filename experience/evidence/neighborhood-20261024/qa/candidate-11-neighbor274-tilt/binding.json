@@ -1,0 +1,70 @@
+{
+  "packageSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
+  "packageFiles": 446,
+  "packageBytes": 96813522,
+  "scenerySha256": "4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544",
+  "source": {
+    "id": "shijo-east",
+    "revision": 1,
+    "geographySha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+    "manifestSha256": "4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544"
+  },
+  "driverSha256": "2b76763dc5bf59974c98656318d7cba0fdb9a414d0eff32044b76bffb25d347a",
+  "driverDependencies": [
+    {
+      "file": "tests/helpers/neighborhood-evidence-source.mjs",
+      "sha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    }
+  ],
+  "reportSha256": "6d395e03bc1522f1198270666581370f5a38ed01f15d6a6ffd475eefa1542d13",
+  "summary": {
+    "passed": 6,
+    "failed": 1
+  },
+  "browser": "151.0.7922.34",
+  "sections": [
+    "neighbor274-tilt"
+  ],
+  "startedAt": "2026-10-24T04:20:23.888Z",
+  "finishedAt": "2026-10-24T04:20:53.517Z",
+  "elapsedMs": 29629,
+  "httpRequests": 95,
+  "evidence": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 77391,
+      "sha256": "4ea10cfaf1fcc7857bcd6ce3be1578d348fc77a5a244e5bba57d280761840ce9",
+      "decodedBytes": 758050,
+      "decodedSha256": "6d395e03bc1522f1198270666581370f5a38ed01f15d6a6ffd475eefa1542d13"
+    },
+    {
+      "file": "executed-driver.mjs.gz",
+      "bytes": 50474,
+      "sha256": "4725ce7fcf2f22c22f67784cc577463061bbbd65def8151a675189b618ee0174",
+      "decodedBytes": 210596,
+      "decodedSha256": "2b76763dc5bf59974c98656318d7cba0fdb9a414d0eff32044b76bffb25d347a"
+    },
+    {
+      "file": "run.log.gz",
+      "bytes": 241,
+      "sha256": "ce659b19837e9f0602ce9025c432ba2e8d8da7814bbc2bbb0f8c2d59b6362b55",
+      "decodedBytes": 366,
+      "decodedSha256": "d79b0a96507d43ca063a84fefa84a7b4968ae0155f70dc626d9b584f08c8d59a"
+    },
+    {
+      "file": "neighborhood-evidence-source.mjs.gz",
+      "bytes": 1619,
+      "sha256": "70115611f201081f16386f97f55d12421b3ee05a5e4c8f20bdfe99a5ec5fd294",
+      "decodedBytes": 3713,
+      "decodedSha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    },
+    {
+      "file": "neighbor274-tilt-failure-1.png",
+      "bytes": 1079225,
+      "sha256": "c3b6eb40c22c31332f614d8b74a2af43031c13398ebdf9ca78d893a7cfc11f96"
+    }
+  ],
+  "failuresPreserved": [
+    "neighbor274-tilt-completed"
+  ]
+}

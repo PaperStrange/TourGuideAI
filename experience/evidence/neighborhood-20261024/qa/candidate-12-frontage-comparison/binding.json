@@ -1,0 +1,140 @@
+{
+  "packageSha256": "e86aa1c715fb76cd111feae41a0383ee34005aefd64fe5c48eba7615676e5733",
+  "packageFiles": 446,
+  "packageBytes": 96953857,
+  "scenerySha256": "86e4f424a36cb858c16f6e282ad8ceb8f146d6b285d482de3c0ce2fe2f726b61",
+  "source": {
+    "id": "shijo-east",
+    "revision": 1,
+    "geographySha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+    "manifestSha256": "86e4f424a36cb858c16f6e282ad8ceb8f146d6b285d482de3c0ce2fe2f726b61"
+  },
+  "driverSha256": "3c9a08412e1930317c2b30af8e085e1b889db476d215385e3445ea71657700c7",
+  "driverDependencies": [
+    {
+      "file": "tests/helpers/neighborhood-evidence-source.mjs",
+      "sha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    },
+    {
+      "file": "artifacts/neighborhood-20261024/engineering/thin-sheet-verification.mjs",
+      "sha256": "0397f57fd5a37a397c665801860edc15935dd93bbac62c20a06b27ec28f8c35e"
+    }
+  ],
+  "reportSha256": "b16a6e6a3da8653c93bcb66c96c1fc7ae73a751fd0b662fe35808060a7577d0d",
+  "summary": {
+    "passed": 20,
+    "failed": 0
+  },
+  "browser": "151.0.7922.34",
+  "sections": [
+    "frontage-comparison"
+  ],
+  "startedAt": "2026-10-24T04:48:00.396Z",
+  "finishedAt": "2026-10-24T04:49:11.169Z",
+  "elapsedMs": 70773,
+  "httpRequests": 286,
+  "evidence": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 328117,
+      "sha256": "a8148931b898943a696fa30776fc681125d9e04302fe51dd9f79b5b1c22f9ab1",
+      "decodedBytes": 3565362,
+      "decodedSha256": "b16a6e6a3da8653c93bcb66c96c1fc7ae73a751fd0b662fe35808060a7577d0d"
+    },
+    {
+      "file": "executed-driver.mjs.gz",
+      "bytes": 51145,
+      "sha256": "1556d7857095faa4d1c3c1a4f76a06502901442e366d6feac0c7be3b89d5dd1a",
+      "decodedBytes": 211044,
+      "decodedSha256": "3c9a08412e1930317c2b30af8e085e1b889db476d215385e3445ea71657700c7"
+    },
+    {
+      "file": "run.log.gz",
+      "bytes": 339,
+      "sha256": "fa44602cbcf786fa42fa038dcb3ecf8d5244f18007b2732501e86cb46f852c1b",
+      "decodedBytes": 1262,
+      "decodedSha256": "e25bcdec57e846caf82c1e186744d2a53f04d08d3404b70fc30663fd281ff36e"
+    },
+    {
+      "file": "neighborhood-evidence-source.mjs.gz",
+      "bytes": 1619,
+      "sha256": "70115611f201081f16386f97f55d12421b3ee05a5e4c8f20bdfe99a5ec5fd294",
+      "decodedBytes": 3713,
+      "decodedSha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    },
+    {
+      "file": "thin-sheet-verification.mjs.gz",
+      "bytes": 4649,
+      "sha256": "981ff91c638ea7ac2a2d1665d25ece5c810cc95d2e2028b0c1f885cf17f80f64",
+      "decodedBytes": 12647,
+      "decodedSha256": "0397f57fd5a37a397c665801860edc15935dd93bbac62c20a06b27ec28f8c35e"
+    },
+    {
+      "file": "source201-front-current-day.png",
+      "bytes": 1005714,
+      "sha256": "b596cecfb89214c597d529800aaed22735299dea1dd9bf7e246fef91795b56e1"
+    },
+    {
+      "file": "../../art/candidate-12/frontages/source201-front-current-day-canvas.png",
+      "owner": "art",
+      "bytes": 742592,
+      "sha256": "e99ea8e1f2896297a93d8d0939aa6bc0338b0e1fb8dd29d74188d4d171730724"
+    },
+    {
+      "file": "source201-front-current-night.png",
+      "bytes": 781877,
+      "sha256": "50856aaf7129ac3b7c8d03f132ccc231938f8f3665feb83339fa3374660a9956"
+    },
+    {
+      "file": "../../art/candidate-12/frontages/source201-front-current-night-canvas.png",
+      "owner": "art",
+      "bytes": 529978,
+      "sha256": "80eea2f29c4bef0007988572d65e3e7510176f4aa68d0321a5c44d4c172a1ea1"
+    },
+    {
+      "file": "source201-oblique-walking-current-day.png",
+      "bytes": 1044731,
+      "sha256": "2477ab500df6850e16df63a4fd82837778a1374c62d063e1d0f9068b00236f14"
+    },
+    {
+      "file": "../../art/candidate-12/frontages/source201-oblique-walking-current-day-canvas.png",
+      "owner": "art",
+      "bytes": 780748,
+      "sha256": "86a0d2a997b4a50b08a588b59a0e950d6b15fa810199d17cdc9c5f8202fce127"
+    },
+    {
+      "file": "source201-oblique-walking-current-night.png",
+      "bytes": 811234,
+      "sha256": "2a2597160cf795af6680575bcafeae8ff4093d435c135119f44863369361eda5"
+    },
+    {
+      "file": "../../art/candidate-12/frontages/source201-oblique-walking-current-night-canvas.png",
+      "owner": "art",
+      "bytes": 565392,
+      "sha256": "7f2952dade6acafe07ef33e2c34ab0a09f7baf764dec163e70907f06b5df6cae"
+    },
+    {
+      "file": "source274-prior-current-day.png",
+      "bytes": 991716,
+      "sha256": "3f6cfe55e5303b999a77eaca483eed8acd49696d26a35b73bc49deaae32a2e49"
+    },
+    {
+      "file": "../../art/candidate-12/frontages/source274-prior-current-day-canvas.png",
+      "owner": "art",
+      "bytes": 739901,
+      "sha256": "58a48507436611c9f39b61e6781c36beff56fb52b957aaa9af3ad32a13ede198"
+    },
+    {
+      "file": "source274-prior-current-night.png",
+      "bytes": 820017,
+      "sha256": "bf6045c49b496244c4af61eb2899efacfa5a11d76f01703909077cc75bc9b286"
+    },
+    {
+      "file": "../../art/candidate-12/frontages/source274-prior-current-night-canvas.png",
+      "owner": "art",
+      "bytes": 579521,
+      "sha256": "e26cea0a6d375af492eb89f84ecb70a886be48b56d0a300ba9e3457c481c6014"
+    }
+  ],
+  "failuresPreserved": []
+}

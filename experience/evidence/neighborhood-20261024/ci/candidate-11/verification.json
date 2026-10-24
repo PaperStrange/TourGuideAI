@@ -2,10 +2,104 @@
   "runId": 40058828311,
   "headSha": "ef34dd3190c32642262210e5d4f773846e4e9046",
   "implementationSha": "84e80a823d778b9b537fc45d311a62bc127723db",
-  "observedAt": "2026-10-24T03:53:42.258Z",
+  "observedAt": "2026-10-24T04:43:09.823Z",
   "packageSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
   "packageFiles": 446,
   "reports": [
+    {
+      "suite": "neighborhood",
+      "artifact": {
+        "id": 12547649037,
+        "name": "neighborhood-browser-evidence",
+        "zipSha256": "8d17a56f911a3a0a16f2fa174d55c5cd7c67616f952b22c93bb54218ff025f72",
+        "zipBytes": 9566735,
+        "createdAt": "2026-10-24T04:32:29Z",
+        "sourceHead": "ef34dd3190c32642262210e5d4f773846e4e9046"
+      },
+      "summary": null,
+      "observedChecks": {
+        "passed": 70,
+        "failed": 0
+      },
+      "completion": "interrupted-without-final-summary",
+      "packageSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
+      "packageFiles": 446,
+      "report": {
+        "file": "neighborhood-result.json.gz",
+        "bytes": 822345,
+        "sha256": "a69656e5f9d1cb75c9cf245632486160dd9b470dad0093046b0e0d3f424512d5",
+        "decodedBytes": 40725295,
+        "decodedSha256": "b3e618c993cad436f2a85b8ec37751761d65e53bb1b23f17255a5efc6fa8458c"
+      },
+      "driver": {
+        "file": "browser-neighborhood.mjs.gz",
+        "bytes": 45261,
+        "sha256": "84ea200f62bda9abe5fa0da33fb10322c96a0d3e59018779a226b74e532e8390",
+        "decodedBytes": 186585,
+        "decodedSha256": "e7fc6bdaed7a21774b0b185adb21b6b8fd349b0eb496c3d75287059b5cfc6105"
+      },
+      "dependencies": [
+        {
+          "file": "neighborhood-tests-helpers-neighborhood-evidence-source.mjs.gz",
+          "bytes": 1619,
+          "sha256": "70115611f201081f16386f97f55d12421b3ee05a5e4c8f20bdfe99a5ec5fd294",
+          "decodedBytes": 3713,
+          "decodedSha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+        }
+      ],
+      "captureFiles": [
+        {
+          "file": "captures/opening-day-en.png",
+          "sha256": "a9b23327f089e3fdec02373d8b1498fadcc11ff504e0184d9cc05bed3f4a3788",
+          "bytes": 886352
+        },
+        {
+          "file": "captures/opening-night-zh.png",
+          "sha256": "400dacc7056b1bda2d8283ae623cc92376236ad42cdebaad9ba50fc34768d1e8",
+          "bytes": 782132
+        },
+        {
+          "file": "captures/interaction-night-zh.png",
+          "sha256": "5b50ba308e31592982d1b10acfa0788f625af222377da591de647c0aee5b8e4f",
+          "bytes": 816108
+        },
+        {
+          "file": "captures/chosen-route-edited-reloaded-zh.png",
+          "sha256": "9f9ec4eeafefdd7385fdadd45b1f4f3d04ff6a2071a596ba41a94bbcd273ebd2",
+          "bytes": 782037
+        },
+        {
+          "file": "captures/outbound-nishiki-market-day.png",
+          "sha256": "290c9282fa02b40278228e8aaadf2ff9fe56b1457846fb6c77d41d6eb215bf6b",
+          "bytes": 1063192
+        },
+        {
+          "file": "captures/outbound-nishiki-tenmangu-day.png",
+          "sha256": "b273992e7fc1e8551c4c5a4be68ebab4c12134934d21df6c6db69078a17d218c",
+          "bytes": 1006261
+        },
+        {
+          "file": "captures/outbound-takase-river-day.png",
+          "sha256": "cb1bce9900634261f4c9b4b61a137b2d721b6a3b509371d6cf8816500ad26627",
+          "bytes": 905857
+        },
+        {
+          "file": "captures/outbound-pontocho-entrance-day.png",
+          "sha256": "4c5d13f6e65fef8ad9b69c0443118129546907c56615aebb1996240a5ee6b1ec",
+          "bytes": 958223
+        },
+        {
+          "file": "captures/outbound-shijo-bridge-day.png",
+          "sha256": "715ebe30718ad98f94737ec2436d3d53a30defed6701bbbb9883aebeacd2c611",
+          "bytes": 794486
+        },
+        {
+          "file": "captures/river-night-reloaded-zh.png",
+          "sha256": "b715175168bf4f47cd297320506f604ffd7d5877ef3942c65de4d6c91f71b090",
+          "bytes": 772045
+        }
+      ]
+    },
     {
       "suite": "packs",
       "artifact": {
@@ -20,6 +114,11 @@
         "passed": 81,
         "failed": 0
       },
+      "observedChecks": {
+        "passed": 81,
+        "failed": 0
+      },
+      "completion": "completed",
       "packageSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
       "packageFiles": 446,
       "report": {
@@ -53,6 +152,11 @@
         "passed": 264,
         "failed": 0
       },
+      "observedChecks": {
+        "passed": 264,
+        "failed": 0
+      },
+      "completion": "completed",
       "packageSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
       "packageFiles": 446,
       "report": {
@@ -86,6 +190,11 @@
         "passed": 133,
         "failed": 0
       },
+      "observedChecks": {
+        "passed": 133,
+        "failed": 0
+      },
+      "completion": "completed",
       "packageSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
       "packageFiles": 446,
       "report": {
@@ -119,6 +228,11 @@
         "passed": 80,
         "failed": 0
       },
+      "observedChecks": {
+        "passed": 80,
+        "failed": 0
+      },
+      "completion": "completed",
       "packageSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
       "packageFiles": 446,
       "report": {
@@ -153,6 +267,11 @@
         "failed": 0,
         "fatal": false
       },
+      "observedChecks": {
+        "passed": 65,
+        "failed": 0
+      },
+      "completion": "completed",
       "packageSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
       "packageFiles": 446,
       "report": {
@@ -186,6 +305,11 @@
         "passed": 75,
         "failed": 0
       },
+      "observedChecks": {
+        "passed": 75,
+        "failed": 0
+      },
+      "completion": "completed",
       "packageSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
       "packageFiles": 446,
       "report": {
@@ -219,6 +343,11 @@
         "passed": 73,
         "failed": 0
       },
+      "observedChecks": {
+        "passed": 73,
+        "failed": 0
+      },
+      "completion": "completed",
       "packageSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
       "packageFiles": 446,
       "report": {
@@ -246,7 +375,7 @@
     "decodedBytes": 30369,
     "decodedSha256": "23f6100e33b523d3293f30489ddc141260e92ec774a5fd55496b09df89427e15"
   },
-  "conclusion": "pending",
+  "conclusion": "cancelled",
   "completedBrowserChecks": 771,
   "completedBrowserFailures": 0
 }

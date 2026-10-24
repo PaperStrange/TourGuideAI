@@ -169,11 +169,24 @@ Candidate 12 CI40062728715
 uses exact source06a2c49; candidate 11's complete-route job ended interrupted.
 The previous candidate's startup results retain their original package scope.
 
+Candidate 13 implementation `2843974` corrects feedback observation during internal
+safe-pose adoption. Its actual-geometry regression preserves all sixteen native
+camera traces; independent review approves the bounded change. Package `e8eed914…`
+contains 446 files / 96,954,304 bytes and passes 217 application tests, 17 gates and
+the canonical build. Scenery, copy and fonts retain candidate 12's exact bytes.
+The native hint now activates at input index 9. Its initial 7-pass/1-failure
+report retains a desktop-driver touch-input error; the same remaining assertions
+are running with actual desktop clicks. The implementation is pushed; one standard
+benchmark and Q03's original three-warm sequence follow. Candidate 12's matched frontage 20/20 and
+retained upper201 11/11 results support bounded art acceptance of the pictured
+source features. Complete source274 upper recognition and current whole-route
+review remain unestablished.
+
 | Sprint | Current evidence | Remaining acceptance |
 | --- | --- | --- |
 | N00 | Connected source graph, six exterior sights, source/provenance audits and reproducible packaging | Surveyed grades and current access remain explicit source limits |
-| N01 | Continuous movement, streaming/retry, cancellation, native storage and residency; candidate 9 complete outward/return CI passes | Candidate 12 complete outward/return CI |
-| N02 | Bilingual day/night, private views, editable recommendations and Maps; current scoped paper/paving/contact repairs pass | Location-matched connecting fronts, factual landmark details and broad night-material review |
+| N01 | Continuous movement, streaming/retry, cancellation, native storage and residency; candidate 9 complete outward/return CI passes | Candidate 13 complete outward/return CI |
+| N02 | Bilingual day/night, private views, editable recommendations and Maps; scoped paper/paving/contact, roof and pictured source201 frontage reviews pass | Current whole-route review, remaining source274 upper extent and broader night-material recognition |
 | N03 | Candidate 12 native background-tab behavior and roof lifecycle pass; candidate 11 startup targets pass; candidate 9 complete camera and eight CI jobs pass | Current-package complete CI, input/frame targets, Q03, hardware evidence and publication |
 
 ## Candidate 9 acceptance · 2026-10-23

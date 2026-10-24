@@ -1,4 +1,31 @@
-# Candidate 12 local validation
+# Candidate 13 local validation
+
+Implementation `28439744b6349b795ac0a50c20c5d45d735bb2ed` produces the immutable
+build at `artifacts/neighborhood-20261024/candidate-13`: **446 files / 96,954,304
+bytes**, package SHA256
+`e8eed9146ea83accaf54769ff2aaaf5a902cfd344295e3348e11684e50838b0c`.
+All **217 application tests**, **17 repository gates** and the canonical build pass.
+The complete inventory is preserved in `candidate-13-package.json`.
+
+| Output | Decoded SHA256 |
+| --- | --- |
+| `app-tests-13.txt.gz` | `1944f2f4b135955d624da3c91f01a3cb18fde5f9e19942ab20ad6c92207d5773` |
+| `gates-13.txt.gz` | `43a16b6a9e37d69799f7f711f656ea8ae0dc879d15558f6b93f7d192cf632332` |
+| `build-13.txt.gz` | `eb93849fc5684fdccc67c6a570c792dbaf0452025aa4f25c250a5a52c5f32f12` |
+
+The change suppresses constraint-feedback observation during internal safe-pose
+adoption. Camera, collision and scheduling calls remain unchanged. The new
+actual-geometry regression preserves all sixteen recorded poses within `1e-9`,
+observes the inactive/active adoption sequence, and verifies hint activation and
+tilt clearing. The original candidate-12 failure and faithful reproduction remain
+preserved separately. Native UI acceptance is pending.
+
+All 347 scenery files are byte-identical to candidate 12, retaining manifest
+`86e4f424a36cb858c16f6e282ad8ceb8f146d6b285d482de3c0ce2fe2f726b61`.
+UI copy and font are unchanged. Candidate-12 art, shader and source audits retain
+their stated package scope; current-package performance and complete CI are separate.
+
+## Retained candidate 12 validation
 
 The canonical build is frozen at `artifacts/neighborhood-20261024/candidate-12`:
 446 files / 96,953,857 bytes, package SHA256
@@ -21,7 +48,11 @@ promoted its exact output and preserved the prior public directory at
 `artifacts/neighborhood-20261024/candidate-11-public-before-frontages`.
 The initial pre-font build and log remain separately preserved under
 `candidate-12-before-fonts` and `build-12-before-fonts.txt`; they are not this package.
-Native shader, appearance, guidance and performance acceptance remain pending.
+The subsequent roof/browser checks pass 20/20, matched frontage checks pass 20/20,
+and native hidden/return checks pass 13/13. Bounded day/night art review accepts
+the source-confirmed roof underside and pictured frontage features. Guidance
+records 6 passes / 2 failures and an unexecuted tail. Performance was deferred to
+the corrected immutable package. Each original report preserves its own scope.
 
 ## Retained candidate 11 validation
 

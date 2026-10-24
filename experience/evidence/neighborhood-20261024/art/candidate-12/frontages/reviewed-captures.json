@@ -1,0 +1,3153 @@
+{
+  "scope": "Candidate12 source201 visible lower/middle frontage and cropped source274 band compared with exact candidate11 views",
+  "packageSha256": "e86aa1c715fb76cd111feae41a0383ee34005aefd64fe5c48eba7615676e5733",
+  "sceneManifestSha256": "86e4f424a36cb858c16f6e282ad8ceb8f146d6b285d482de3c0ce2fe2f726b61",
+  "report": {
+    "sourceFile": "artifacts/neighborhood-20261024/qa/candidate-12-frontage-comparison/neighborhood-result.json",
+    "portable": "../../../qa/candidate-12-frontage-comparison/neighborhood-result.json.gz",
+    "decodedSha256": "b16a6e6a3da8653c93bcb66c96c1fc7ae73a751fd0b662fe35808060a7577d0d",
+    "decodedBytes": 3565362,
+    "driverSha256": "3c9a08412e1930317c2b30af8e085e1b889db476d215385e3445ea71657700c7",
+    "passed": 20,
+    "failed": 0
+  },
+  "captures": [
+    {
+      "file": "source201-front-current-day-canvas.png",
+      "sha256": "e99ea8e1f2896297a93d8d0939aa6bc0338b0e1fb8dd29d74188d4d171730724",
+      "bytes": 742592,
+      "sourceIndex": 201,
+      "layout": {
+        "scrollX": 0,
+        "scrollY": 292,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentHeight": 2608,
+        "visualColumn": {
+          "x": 48,
+          "y": 209.796875,
+          "width": 992,
+          "height": 976.28125,
+          "top": 209.796875,
+          "right": 1040,
+          "bottom": 1186.078125,
+          "left": 48
+        },
+        "canvas": {
+          "x": 49,
+          "y": 282.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 282.796875,
+          "right": 1039,
+          "bottom": 999.625,
+          "left": 49
+        },
+        "camera": {
+          "position": [
+            223.00736756712712,
+            7.715647851872729,
+            16.90534236435126
+          ],
+          "target": [
+            223.36215,
+            3.546969,
+            -0.831414
+          ],
+          "desiredPosition": [
+            223.00736756712712,
+            7.715647851872729,
+            16.90534236435126
+          ],
+          "viewTarget": [
+            223.36215,
+            3.546969,
+            -0.831414
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 18.223509,
+            "actualDistance": 18.223509,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.09094074536831177,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": -0.019999999999999442,
+          "polar": 1.34,
+          "distance": 18.223509,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": -0.019999999999999442,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "inspectionPanned": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            0.9998000066665778,
+            4.336808689942018e-19,
+            0.01999866669333252,
+            0,
+            0.004574751158525332,
+            0.9734845416953194,
+            -0.228707058771896,
+            0,
+            -0.019468392880476255,
+            0.2287528078084593,
+            0.9732898512767908,
+            0,
+            223.00736756712712,
+            7.715647851872729,
+            16.90534236435126,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          223.00736756712712,
+          7.715647851872729,
+          16.90534236435126
+        ],
+        "target": [
+          223.36215,
+          3.546969,
+          -0.831414
+        ],
+        "desiredPosition": [
+          223.00736756712712,
+          7.715647851872729,
+          16.90534236435126
+        ],
+        "viewTarget": [
+          223.36215,
+          3.546969,
+          -0.831414
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 18.223509,
+          "actualDistance": 18.223509,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.09094074536831177,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": -0.019999999999999442,
+        "polar": 1.34,
+        "distance": 18.223509,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": -0.019999999999999442,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "inspectionPanned": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.9998000066665778,
+          4.336808689942018e-19,
+          0.01999866669333252,
+          0,
+          0.004574751158525332,
+          0.9734845416953194,
+          -0.228707058771896,
+          0,
+          -0.019468392880476255,
+          0.2287528078084593,
+          0.9732898512767908,
+          0,
+          223.00736756712712,
+          7.715647851872729,
+          16.90534236435126,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "routePosition": {
+        "x": 222.153,
+        "y": 2.574,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 32.179942
+      },
+      "lighting": {
+        "mode": "day",
+        "phase": "ready",
+        "rig": {
+          "status": "ready",
+          "sha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "expectedSha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "profile": null
+        },
+        "environment": {
+          "status": "ready",
+          "file": "/assets/neighborhoods/shijo-east/shared/environments/day-512.hdr",
+          "sha256": "efb72f542365dfdc25d2f9ed20983b34e74fd33f90d55b8763813f4d6dd35717",
+          "expectedSha256": "efb72f542365dfdc25d2f9ed20983b34e74fd33f90d55b8763813f4d6dd35717",
+          "textureId": "646ab7e6-fc4d-4aac-ab64-3dda719f622c"
+        },
+        "exposure": 1.05
+      },
+      "baseline": {
+        "file": "../baseline/source201-front-day-canvas.png",
+        "sha256": "06c4e5b2f7475aa6a9b762d6dc569dfad7c3230d1c0c802fb20b496df5173bbc",
+        "bytes": 755634,
+        "sourceFile": "artifacts/neighborhood-20261024/qa/candidate-11-daimaru-baseline/source201-front-day-canvas.png",
+        "camera": {
+          "position": [
+            223.00736756712712,
+            7.715647851872729,
+            16.90534236435126
+          ],
+          "target": [
+            223.36215,
+            3.546969,
+            -0.831414
+          ],
+          "desiredPosition": [
+            223.00736756712712,
+            7.715647851872729,
+            16.90534236435126
+          ],
+          "viewTarget": [
+            223.36215,
+            3.546969,
+            -0.831414
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 18.223509,
+            "actualDistance": 18.223509,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.09094074536831177,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": -0.019999999999999442,
+          "polar": 1.34,
+          "distance": 18.223509,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": -0.019999999999999442,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "inspectionPanned": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            0.9998000066665778,
+            4.336808689942018e-19,
+            0.01999866669333252,
+            0,
+            0.004574751158525332,
+            0.9734845416953194,
+            -0.228707058771896,
+            0,
+            -0.019468392880476255,
+            0.2287528078084593,
+            0.9732898512767908,
+            0,
+            223.00736756712712,
+            7.715647851872729,
+            16.90534236435126,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        },
+        "layout": {
+          "scrollX": 0,
+          "scrollY": 292,
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "documentHeight": 2756,
+          "visualColumn": {
+            "x": 48,
+            "y": 209.796875,
+            "width": 992,
+            "height": 976.28125,
+            "top": 209.796875,
+            "right": 1040,
+            "bottom": 1186.078125,
+            "left": 48
+          },
+          "canvas": {
+            "x": 49,
+            "y": 282.796875,
+            "width": 990,
+            "height": 716.828125,
+            "top": 282.796875,
+            "right": 1039,
+            "bottom": 999.625,
+            "left": 49
+          },
+          "camera": {
+            "position": [
+              223.00736756712712,
+              7.715647851872729,
+              16.90534236435126
+            ],
+            "target": [
+              223.36215,
+              3.546969,
+              -0.831414
+            ],
+            "desiredPosition": [
+              223.00736756712712,
+              7.715647851872729,
+              16.90534236435126
+            ],
+            "viewTarget": [
+              223.36215,
+              3.546969,
+              -0.831414
+            ],
+            "obstruction": {
+              "active": false,
+              "desiredDistance": 18.223509,
+              "actualDistance": 18.223509,
+              "targetAdjusted": false,
+              "framingRecovered": false,
+              "actorInFrame": true,
+              "actorVerticalOccupancy": 0.09094074536831177,
+              "recoveryFits": true,
+              "minimumSceneDistance": 5,
+              "clearance": 0.35,
+              "angleOffset": 0,
+              "settling": false
+            },
+            "azimuth": -0.019999999999999442,
+            "polar": 1.34,
+            "distance": 18.223509,
+            "frontage": "north",
+            "azimuthBase": 0,
+            "relativeAzimuth": -0.019999999999999442,
+            "enabled": true,
+            "damping": true,
+            "transitioning": false,
+            "solo": true,
+            "inspecting": false,
+            "inspectionAimed": false,
+            "inspectionPanned": false,
+            "panning": false,
+            "projectionMatrix": [
+              1.626675118070023,
+              0,
+              0,
+              0,
+              0,
+              2.2460367739042155,
+              0,
+              0,
+              0,
+              0,
+              -1.0008575103615833,
+              -1,
+              0,
+              0,
+              -0.3001286265542375,
+              0
+            ],
+            "matrixWorld": [
+              0.9998000066665778,
+              4.336808689942018e-19,
+              0.01999866669333252,
+              0,
+              0.004574751158525332,
+              0.9734845416953194,
+              -0.228707058771896,
+              0,
+              -0.019468392880476255,
+              0.2287528078084593,
+              0.9732898512767908,
+              0,
+              223.00736756712712,
+              7.715647851872729,
+              16.90534236435126,
+              1
+            ],
+            "limits": {
+              "polar": [
+                0.55,
+                1.49
+              ],
+              "distance": [
+                5,
+                55
+              ],
+              "targetXY": 40,
+              "targetHeight": [
+                0.5,
+                40
+              ]
+            }
+          }
+        }
+      },
+      "comparison": {
+        "checkId": "source201-front-day-matches-actual-baseline-view-and-ground",
+        "pass": true,
+        "desiredViewExact": true,
+        "actualCameraExact": true,
+        "projectionExact": true,
+        "sourceAuditSha256": "ccba681ffcab6f0daa807c10d7e377e5553b6b608f0790b6df8df3ba24467b17"
+      },
+      "primaryBudget": {
+        "checkId": "source201-front-day-cached-shadow-primary-frame-budget",
+        "pass": true,
+        "renderTotals": {
+          "frame": 42,
+          "calls": 76,
+          "triangles": 96918,
+          "points": 0,
+          "lines": 0
+        },
+        "proof": [
+          true
+        ]
+      }
+    },
+    {
+      "file": "source201-front-current-night-canvas.png",
+      "sha256": "80eea2f29c4bef0007988572d65e3e7510176f4aa68d0321a5c44d4c172a1ea1",
+      "bytes": 529978,
+      "sourceIndex": 201,
+      "layout": {
+        "scrollX": 0,
+        "scrollY": 292,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentHeight": 2608,
+        "visualColumn": {
+          "x": 48,
+          "y": 209.796875,
+          "width": 992,
+          "height": 976.28125,
+          "top": 209.796875,
+          "right": 1040,
+          "bottom": 1186.078125,
+          "left": 48
+        },
+        "canvas": {
+          "x": 49,
+          "y": 282.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 282.796875,
+          "right": 1039,
+          "bottom": 999.625,
+          "left": 49
+        },
+        "camera": {
+          "position": [
+            223.00736756712712,
+            7.715647851872729,
+            16.90534236435126
+          ],
+          "target": [
+            223.36215,
+            3.546969,
+            -0.831414
+          ],
+          "desiredPosition": [
+            223.00736756712712,
+            7.715647851872729,
+            16.90534236435126
+          ],
+          "viewTarget": [
+            223.36215,
+            3.546969,
+            -0.831414
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 18.223509,
+            "actualDistance": 18.223509,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.09094074536831177,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": -0.019999999999999442,
+          "polar": 1.34,
+          "distance": 18.223509,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": -0.019999999999999442,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "inspectionPanned": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            0.9998000066665778,
+            4.336808689942018e-19,
+            0.01999866669333252,
+            0,
+            0.004574751158525332,
+            0.9734845416953194,
+            -0.228707058771896,
+            0,
+            -0.019468392880476255,
+            0.2287528078084593,
+            0.9732898512767908,
+            0,
+            223.00736756712712,
+            7.715647851872729,
+            16.90534236435126,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          223.00736756712712,
+          7.715647851872729,
+          16.90534236435126
+        ],
+        "target": [
+          223.36215,
+          3.546969,
+          -0.831414
+        ],
+        "desiredPosition": [
+          223.00736756712712,
+          7.715647851872729,
+          16.90534236435126
+        ],
+        "viewTarget": [
+          223.36215,
+          3.546969,
+          -0.831414
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 18.223509,
+          "actualDistance": 18.223509,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.09094074536831177,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": -0.019999999999999442,
+        "polar": 1.34,
+        "distance": 18.223509,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": -0.019999999999999442,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "inspectionPanned": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.9998000066665778,
+          4.336808689942018e-19,
+          0.01999866669333252,
+          0,
+          0.004574751158525332,
+          0.9734845416953194,
+          -0.228707058771896,
+          0,
+          -0.019468392880476255,
+          0.2287528078084593,
+          0.9732898512767908,
+          0,
+          223.00736756712712,
+          7.715647851872729,
+          16.90534236435126,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "routePosition": {
+        "x": 222.153,
+        "y": 2.574,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 32.179942
+      },
+      "lighting": {
+        "mode": "night",
+        "phase": "ready",
+        "rig": {
+          "status": "ready",
+          "sha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "expectedSha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "profile": null
+        },
+        "environment": {
+          "status": "ready",
+          "file": "/assets/neighborhoods/shijo-east/shared/environments/night-512.hdr",
+          "sha256": "b3a82ca4a2dcb3cf429b5f7b57f75877296fbc3d60b6a2ed2419be7f8971f41f",
+          "expectedSha256": "b3a82ca4a2dcb3cf429b5f7b57f75877296fbc3d60b6a2ed2419be7f8971f41f",
+          "textureId": "d0f03ebc-9dd3-48b0-ae23-af4da556f969"
+        },
+        "exposure": 1.18
+      },
+      "baseline": {
+        "file": "../baseline/source201-front-night-canvas.png",
+        "sha256": "1b7d498ae192f342c58783b892057f3bf6951cfa2144aba0707c1234c8e0f522",
+        "bytes": 541914,
+        "sourceFile": "artifacts/neighborhood-20261024/qa/candidate-11-daimaru-baseline/source201-front-night-canvas.png",
+        "camera": {
+          "position": [
+            223.00736756712712,
+            7.715647851872729,
+            16.90534236435126
+          ],
+          "target": [
+            223.36215,
+            3.546969,
+            -0.831414
+          ],
+          "desiredPosition": [
+            223.00736756712712,
+            7.715647851872729,
+            16.90534236435126
+          ],
+          "viewTarget": [
+            223.36215,
+            3.546969,
+            -0.831414
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 18.223509,
+            "actualDistance": 18.223509,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.09094074536831177,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": -0.019999999999999442,
+          "polar": 1.34,
+          "distance": 18.223509,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": -0.019999999999999442,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "inspectionPanned": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            0.9998000066665778,
+            4.336808689942018e-19,
+            0.01999866669333252,
+            0,
+            0.004574751158525332,
+            0.9734845416953194,
+            -0.228707058771896,
+            0,
+            -0.019468392880476255,
+            0.2287528078084593,
+            0.9732898512767908,
+            0,
+            223.00736756712712,
+            7.715647851872729,
+            16.90534236435126,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        },
+        "layout": {
+          "scrollX": 0,
+          "scrollY": 292,
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "documentHeight": 2756,
+          "visualColumn": {
+            "x": 48,
+            "y": 209.796875,
+            "width": 992,
+            "height": 976.28125,
+            "top": 209.796875,
+            "right": 1040,
+            "bottom": 1186.078125,
+            "left": 48
+          },
+          "canvas": {
+            "x": 49,
+            "y": 282.796875,
+            "width": 990,
+            "height": 716.828125,
+            "top": 282.796875,
+            "right": 1039,
+            "bottom": 999.625,
+            "left": 49
+          },
+          "camera": {
+            "position": [
+              223.00736756712712,
+              7.715647851872729,
+              16.90534236435126
+            ],
+            "target": [
+              223.36215,
+              3.546969,
+              -0.831414
+            ],
+            "desiredPosition": [
+              223.00736756712712,
+              7.715647851872729,
+              16.90534236435126
+            ],
+            "viewTarget": [
+              223.36215,
+              3.546969,
+              -0.831414
+            ],
+            "obstruction": {
+              "active": false,
+              "desiredDistance": 18.223509,
+              "actualDistance": 18.223509,
+              "targetAdjusted": false,
+              "framingRecovered": false,
+              "actorInFrame": true,
+              "actorVerticalOccupancy": 0.09094074536831177,
+              "recoveryFits": true,
+              "minimumSceneDistance": 5,
+              "clearance": 0.35,
+              "angleOffset": 0,
+              "settling": false
+            },
+            "azimuth": -0.019999999999999442,
+            "polar": 1.34,
+            "distance": 18.223509,
+            "frontage": "north",
+            "azimuthBase": 0,
+            "relativeAzimuth": -0.019999999999999442,
+            "enabled": true,
+            "damping": true,
+            "transitioning": false,
+            "solo": true,
+            "inspecting": false,
+            "inspectionAimed": false,
+            "inspectionPanned": false,
+            "panning": false,
+            "projectionMatrix": [
+              1.626675118070023,
+              0,
+              0,
+              0,
+              0,
+              2.2460367739042155,
+              0,
+              0,
+              0,
+              0,
+              -1.0008575103615833,
+              -1,
+              0,
+              0,
+              -0.3001286265542375,
+              0
+            ],
+            "matrixWorld": [
+              0.9998000066665778,
+              4.336808689942018e-19,
+              0.01999866669333252,
+              0,
+              0.004574751158525332,
+              0.9734845416953194,
+              -0.228707058771896,
+              0,
+              -0.019468392880476255,
+              0.2287528078084593,
+              0.9732898512767908,
+              0,
+              223.00736756712712,
+              7.715647851872729,
+              16.90534236435126,
+              1
+            ],
+            "limits": {
+              "polar": [
+                0.55,
+                1.49
+              ],
+              "distance": [
+                5,
+                55
+              ],
+              "targetXY": 40,
+              "targetHeight": [
+                0.5,
+                40
+              ]
+            }
+          }
+        }
+      },
+      "comparison": {
+        "checkId": "source201-front-night-matches-actual-baseline-view-and-ground",
+        "pass": true,
+        "desiredViewExact": true,
+        "actualCameraExact": true,
+        "projectionExact": true,
+        "sourceAuditSha256": "ccba681ffcab6f0daa807c10d7e377e5553b6b608f0790b6df8df3ba24467b17"
+      },
+      "primaryBudget": {
+        "checkId": "source201-front-night-cached-shadow-primary-frame-budget",
+        "pass": true,
+        "renderTotals": {
+          "frame": 63,
+          "calls": 76,
+          "triangles": 96918,
+          "points": 0,
+          "lines": 0
+        },
+        "proof": [
+          true
+        ]
+      }
+    },
+    {
+      "file": "source201-oblique-walking-current-day-canvas.png",
+      "sha256": "86a0d2a997b4a50b08a588b59a0e950d6b15fa810199d17cdc9c5f8202fce127",
+      "bytes": 780748,
+      "sourceIndex": 201,
+      "layout": {
+        "scrollX": 0,
+        "scrollY": 292,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentHeight": 2608,
+        "visualColumn": {
+          "x": 48,
+          "y": 209.796875,
+          "width": 992,
+          "height": 976.28125,
+          "top": 209.796875,
+          "right": 1040,
+          "bottom": 1186.078125,
+          "left": 48
+        },
+        "canvas": {
+          "x": 49,
+          "y": 282.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 282.796875,
+          "right": 1039,
+          "bottom": 999.625,
+          "left": 49
+        },
+        "camera": {
+          "position": [
+            231.60447139502355,
+            7.715647851872729,
+            16.116528032617207
+          ],
+          "target": [
+            226.36185299999997,
+            3.5469690000000003,
+            -0.8314319999999998
+          ],
+          "desiredPosition": [
+            231.60447139502355,
+            7.715647851872729,
+            16.116528032617207
+          ],
+          "viewTarget": [
+            226.36185299999997,
+            3.5469690000000003,
+            -0.8314319999999998
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 18.223508999999996,
+            "actualDistance": 18.223508999999996,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.08975245677270566,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": 0.29999999999999943,
+          "polar": 1.34,
+          "distance": 18.223508999999996,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": 0.29999999999999943,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "inspectionPanned": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            0.9553364891256062,
+            0,
+            -0.29552020666133905,
+            0,
+            -0.06760107703791748,
+            0.9734845416953194,
+            -0.21853590428935812,
+            0,
+            0.28768435294341976,
+            0.22875280780845939,
+            0.9300053042812562,
+            0,
+            231.60447139502355,
+            7.715647851872729,
+            16.116528032617207,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          231.60447139502355,
+          7.715647851872729,
+          16.116528032617207
+        ],
+        "target": [
+          226.36185299999997,
+          3.5469690000000003,
+          -0.8314319999999998
+        ],
+        "desiredPosition": [
+          231.60447139502355,
+          7.715647851872729,
+          16.116528032617207
+        ],
+        "viewTarget": [
+          226.36185299999997,
+          3.5469690000000003,
+          -0.8314319999999998
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 18.223508999999996,
+          "actualDistance": 18.223508999999996,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.08975245677270566,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": 0.29999999999999943,
+        "polar": 1.34,
+        "distance": 18.223508999999996,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": 0.29999999999999943,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "inspectionPanned": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.9553364891256062,
+          0,
+          -0.29552020666133905,
+          0,
+          -0.06760107703791748,
+          0.9734845416953194,
+          -0.21853590428935812,
+          0,
+          0.28768435294341976,
+          0.22875280780845939,
+          0.9300053042812562,
+          0,
+          231.60447139502355,
+          7.715647851872729,
+          16.116528032617207,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "routePosition": {
+        "x": 225.153,
+        "y": 2.574,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 29.180186
+      },
+      "lighting": {
+        "mode": "day",
+        "phase": "ready",
+        "rig": {
+          "status": "ready",
+          "sha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "expectedSha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "profile": null
+        },
+        "environment": {
+          "status": "ready",
+          "file": "/assets/neighborhoods/shijo-east/shared/environments/day-512.hdr",
+          "sha256": "efb72f542365dfdc25d2f9ed20983b34e74fd33f90d55b8763813f4d6dd35717",
+          "expectedSha256": "efb72f542365dfdc25d2f9ed20983b34e74fd33f90d55b8763813f4d6dd35717",
+          "textureId": "a3a4fe8c-9b02-41c9-8fbe-c98983d51b8f"
+        },
+        "exposure": 1.05
+      },
+      "baseline": {
+        "file": "../baseline/source201-oblique-walking-day-canvas.png",
+        "sha256": "dfc6846039185081a13289119edfb905dfce03071eaf4c0ac8e2569be131794d",
+        "bytes": 796441,
+        "sourceFile": "artifacts/neighborhood-20261024/qa/candidate-11-daimaru-followup/source201-oblique-walking-day-canvas.png",
+        "camera": {
+          "position": [
+            231.60447161549527,
+            7.715647851872726,
+            16.116528105333217
+          ],
+          "target": [
+            226.3618532204717,
+            3.546969,
+            -0.8314319272839754
+          ],
+          "desiredPosition": [
+            231.60447161549527,
+            7.715647851872726,
+            16.116528105333217
+          ],
+          "viewTarget": [
+            226.3618532204717,
+            3.546969,
+            -0.8314319272839754
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 18.223508999999982,
+            "actualDistance": 18.223508999999982,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.08975245625318036,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": 0.29999999999999966,
+          "polar": 1.34,
+          "distance": 18.223508999999982,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": 0.2999999999999997,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "inspectionPanned": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            0.9553364891256061,
+            1.3877787807814457e-17,
+            -0.29552020666133927,
+            0,
+            -0.06760107703791755,
+            0.9734845416953194,
+            -0.21853590428935818,
+            0,
+            0.28768435294342,
+            0.22875280780845944,
+            0.9300053042812562,
+            0,
+            231.60447161549527,
+            7.715647851872726,
+            16.116528105333217,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        },
+        "layout": {
+          "scrollX": 0,
+          "scrollY": 292,
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "documentHeight": 2756,
+          "visualColumn": {
+            "x": 48,
+            "y": 209.796875,
+            "width": 992,
+            "height": 976.28125,
+            "top": 209.796875,
+            "right": 1040,
+            "bottom": 1186.078125,
+            "left": 48
+          },
+          "canvas": {
+            "x": 49,
+            "y": 282.796875,
+            "width": 990,
+            "height": 716.828125,
+            "top": 282.796875,
+            "right": 1039,
+            "bottom": 999.625,
+            "left": 49
+          },
+          "camera": {
+            "position": [
+              231.60447161549527,
+              7.715647851872726,
+              16.116528105333217
+            ],
+            "target": [
+              226.3618532204717,
+              3.546969,
+              -0.8314319272839754
+            ],
+            "desiredPosition": [
+              231.60447161549527,
+              7.715647851872726,
+              16.116528105333217
+            ],
+            "viewTarget": [
+              226.3618532204717,
+              3.546969,
+              -0.8314319272839754
+            ],
+            "obstruction": {
+              "active": false,
+              "desiredDistance": 18.223508999999982,
+              "actualDistance": 18.223508999999982,
+              "targetAdjusted": false,
+              "framingRecovered": false,
+              "actorInFrame": true,
+              "actorVerticalOccupancy": 0.08975245625318036,
+              "recoveryFits": true,
+              "minimumSceneDistance": 5,
+              "clearance": 0.35,
+              "angleOffset": 0,
+              "settling": false
+            },
+            "azimuth": 0.29999999999999966,
+            "polar": 1.34,
+            "distance": 18.223508999999982,
+            "frontage": "north",
+            "azimuthBase": 0,
+            "relativeAzimuth": 0.2999999999999997,
+            "enabled": true,
+            "damping": true,
+            "transitioning": false,
+            "solo": true,
+            "inspecting": false,
+            "inspectionAimed": false,
+            "inspectionPanned": false,
+            "panning": false,
+            "projectionMatrix": [
+              1.626675118070023,
+              0,
+              0,
+              0,
+              0,
+              2.2460367739042155,
+              0,
+              0,
+              0,
+              0,
+              -1.0008575103615833,
+              -1,
+              0,
+              0,
+              -0.3001286265542375,
+              0
+            ],
+            "matrixWorld": [
+              0.9553364891256061,
+              1.3877787807814457e-17,
+              -0.29552020666133927,
+              0,
+              -0.06760107703791755,
+              0.9734845416953194,
+              -0.21853590428935818,
+              0,
+              0.28768435294342,
+              0.22875280780845944,
+              0.9300053042812562,
+              0,
+              231.60447161549527,
+              7.715647851872726,
+              16.116528105333217,
+              1
+            ],
+            "limits": {
+              "polar": [
+                0.55,
+                1.49
+              ],
+              "distance": [
+                5,
+                55
+              ],
+              "targetXY": 40,
+              "targetHeight": [
+                0.5,
+                40
+              ]
+            }
+          }
+        }
+      },
+      "comparison": {
+        "checkId": "source201-oblique-walking-day-matches-actual-baseline-view-and-ground",
+        "pass": true,
+        "desiredViewExact": true,
+        "actualCameraExact": true,
+        "projectionExact": true,
+        "sourceAuditSha256": "ccba681ffcab6f0daa807c10d7e377e5553b6b608f0790b6df8df3ba24467b17"
+      },
+      "primaryBudget": {
+        "checkId": "source201-oblique-walking-day-cached-shadow-primary-frame-budget",
+        "pass": true,
+        "renderTotals": {
+          "frame": 39,
+          "calls": 61,
+          "triangles": 89308,
+          "points": 0,
+          "lines": 0
+        },
+        "proof": [
+          true
+        ]
+      }
+    },
+    {
+      "file": "source201-oblique-walking-current-night-canvas.png",
+      "sha256": "7f2952dade6acafe07ef33e2c34ab0a09f7baf764dec163e70907f06b5df6cae",
+      "bytes": 565392,
+      "sourceIndex": 201,
+      "layout": {
+        "scrollX": 0,
+        "scrollY": 292,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentHeight": 2608,
+        "visualColumn": {
+          "x": 48,
+          "y": 209.796875,
+          "width": 992,
+          "height": 976.28125,
+          "top": 209.796875,
+          "right": 1040,
+          "bottom": 1186.078125,
+          "left": 48
+        },
+        "canvas": {
+          "x": 49,
+          "y": 282.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 282.796875,
+          "right": 1039,
+          "bottom": 999.625,
+          "left": 49
+        },
+        "camera": {
+          "position": [
+            231.60447139502355,
+            7.715647851872729,
+            16.116528032617207
+          ],
+          "target": [
+            226.36185299999997,
+            3.5469690000000003,
+            -0.8314319999999998
+          ],
+          "desiredPosition": [
+            231.60447139502355,
+            7.715647851872729,
+            16.116528032617207
+          ],
+          "viewTarget": [
+            226.36185299999997,
+            3.5469690000000003,
+            -0.8314319999999998
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 18.223508999999996,
+            "actualDistance": 18.223508999999996,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.08975245677270566,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": 0.29999999999999943,
+          "polar": 1.34,
+          "distance": 18.223508999999996,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": 0.29999999999999943,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "inspectionPanned": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            0.9553364891256062,
+            0,
+            -0.29552020666133905,
+            0,
+            -0.06760107703791748,
+            0.9734845416953194,
+            -0.21853590428935812,
+            0,
+            0.28768435294341976,
+            0.22875280780845939,
+            0.9300053042812562,
+            0,
+            231.60447139502355,
+            7.715647851872729,
+            16.116528032617207,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          231.60447139502355,
+          7.715647851872729,
+          16.116528032617207
+        ],
+        "target": [
+          226.36185299999997,
+          3.5469690000000003,
+          -0.8314319999999998
+        ],
+        "desiredPosition": [
+          231.60447139502355,
+          7.715647851872729,
+          16.116528032617207
+        ],
+        "viewTarget": [
+          226.36185299999997,
+          3.5469690000000003,
+          -0.8314319999999998
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 18.223508999999996,
+          "actualDistance": 18.223508999999996,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.08975245677270566,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": 0.29999999999999943,
+        "polar": 1.34,
+        "distance": 18.223508999999996,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": 0.29999999999999943,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "inspectionPanned": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.9553364891256062,
+          0,
+          -0.29552020666133905,
+          0,
+          -0.06760107703791748,
+          0.9734845416953194,
+          -0.21853590428935812,
+          0,
+          0.28768435294341976,
+          0.22875280780845939,
+          0.9300053042812562,
+          0,
+          231.60447139502355,
+          7.715647851872729,
+          16.116528032617207,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "routePosition": {
+        "x": 225.153,
+        "y": 2.574,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 29.180186
+      },
+      "lighting": {
+        "mode": "night",
+        "phase": "ready",
+        "rig": {
+          "status": "ready",
+          "sha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "expectedSha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "profile": null
+        },
+        "environment": {
+          "status": "ready",
+          "file": "/assets/neighborhoods/shijo-east/shared/environments/night-512.hdr",
+          "sha256": "b3a82ca4a2dcb3cf429b5f7b57f75877296fbc3d60b6a2ed2419be7f8971f41f",
+          "expectedSha256": "b3a82ca4a2dcb3cf429b5f7b57f75877296fbc3d60b6a2ed2419be7f8971f41f",
+          "textureId": "a764df70-7537-4ab6-9e89-5449733380ce"
+        },
+        "exposure": 1.18
+      },
+      "baseline": {
+        "file": "../baseline/source201-oblique-walking-night-canvas.png",
+        "sha256": "5be5f8b8a4c1e98a3c1266a15a8e102091987f60dcc2d1719cd6feff3a683334",
+        "bytes": 573726,
+        "sourceFile": "artifacts/neighborhood-20261024/qa/candidate-11-daimaru-followup/source201-oblique-walking-night-canvas.png",
+        "camera": {
+          "position": [
+            231.60447161549527,
+            7.715647851872726,
+            16.116528105333217
+          ],
+          "target": [
+            226.3618532204717,
+            3.546969,
+            -0.8314319272839754
+          ],
+          "desiredPosition": [
+            231.60447161549527,
+            7.715647851872726,
+            16.116528105333217
+          ],
+          "viewTarget": [
+            226.3618532204717,
+            3.546969,
+            -0.8314319272839754
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 18.223508999999982,
+            "actualDistance": 18.223508999999982,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.08975245625318036,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": 0.29999999999999966,
+          "polar": 1.34,
+          "distance": 18.223508999999982,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": 0.2999999999999997,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "inspectionPanned": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            0.9553364891256061,
+            1.3877787807814457e-17,
+            -0.29552020666133927,
+            0,
+            -0.06760107703791755,
+            0.9734845416953194,
+            -0.21853590428935818,
+            0,
+            0.28768435294342,
+            0.22875280780845944,
+            0.9300053042812562,
+            0,
+            231.60447161549527,
+            7.715647851872726,
+            16.116528105333217,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        },
+        "layout": {
+          "scrollX": 0,
+          "scrollY": 292,
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "documentHeight": 2756,
+          "visualColumn": {
+            "x": 48,
+            "y": 209.796875,
+            "width": 992,
+            "height": 976.28125,
+            "top": 209.796875,
+            "right": 1040,
+            "bottom": 1186.078125,
+            "left": 48
+          },
+          "canvas": {
+            "x": 49,
+            "y": 282.796875,
+            "width": 990,
+            "height": 716.828125,
+            "top": 282.796875,
+            "right": 1039,
+            "bottom": 999.625,
+            "left": 49
+          },
+          "camera": {
+            "position": [
+              231.60447161549527,
+              7.715647851872726,
+              16.116528105333217
+            ],
+            "target": [
+              226.3618532204717,
+              3.546969,
+              -0.8314319272839754
+            ],
+            "desiredPosition": [
+              231.60447161549527,
+              7.715647851872726,
+              16.116528105333217
+            ],
+            "viewTarget": [
+              226.3618532204717,
+              3.546969,
+              -0.8314319272839754
+            ],
+            "obstruction": {
+              "active": false,
+              "desiredDistance": 18.223508999999982,
+              "actualDistance": 18.223508999999982,
+              "targetAdjusted": false,
+              "framingRecovered": false,
+              "actorInFrame": true,
+              "actorVerticalOccupancy": 0.08975245625318036,
+              "recoveryFits": true,
+              "minimumSceneDistance": 5,
+              "clearance": 0.35,
+              "angleOffset": 0,
+              "settling": false
+            },
+            "azimuth": 0.29999999999999966,
+            "polar": 1.34,
+            "distance": 18.223508999999982,
+            "frontage": "north",
+            "azimuthBase": 0,
+            "relativeAzimuth": 0.2999999999999997,
+            "enabled": true,
+            "damping": true,
+            "transitioning": false,
+            "solo": true,
+            "inspecting": false,
+            "inspectionAimed": false,
+            "inspectionPanned": false,
+            "panning": false,
+            "projectionMatrix": [
+              1.626675118070023,
+              0,
+              0,
+              0,
+              0,
+              2.2460367739042155,
+              0,
+              0,
+              0,
+              0,
+              -1.0008575103615833,
+              -1,
+              0,
+              0,
+              -0.3001286265542375,
+              0
+            ],
+            "matrixWorld": [
+              0.9553364891256061,
+              1.3877787807814457e-17,
+              -0.29552020666133927,
+              0,
+              -0.06760107703791755,
+              0.9734845416953194,
+              -0.21853590428935818,
+              0,
+              0.28768435294342,
+              0.22875280780845944,
+              0.9300053042812562,
+              0,
+              231.60447161549527,
+              7.715647851872726,
+              16.116528105333217,
+              1
+            ],
+            "limits": {
+              "polar": [
+                0.55,
+                1.49
+              ],
+              "distance": [
+                5,
+                55
+              ],
+              "targetXY": 40,
+              "targetHeight": [
+                0.5,
+                40
+              ]
+            }
+          }
+        }
+      },
+      "comparison": {
+        "checkId": "source201-oblique-walking-night-matches-actual-baseline-view-and-ground",
+        "pass": true,
+        "desiredViewExact": true,
+        "actualCameraExact": true,
+        "projectionExact": true,
+        "sourceAuditSha256": "ccba681ffcab6f0daa807c10d7e377e5553b6b608f0790b6df8df3ba24467b17"
+      },
+      "primaryBudget": {
+        "checkId": "source201-oblique-walking-night-cached-shadow-primary-frame-budget",
+        "pass": true,
+        "renderTotals": {
+          "frame": 60,
+          "calls": 61,
+          "triangles": 89308,
+          "points": 0,
+          "lines": 0
+        },
+        "proof": [
+          true
+        ]
+      }
+    },
+    {
+      "file": "source274-prior-current-day-canvas.png",
+      "sha256": "58a48507436611c9f39b61e6781c36beff56fb52b957aaa9af3ad32a13ede198",
+      "bytes": 739901,
+      "sourceIndex": 274,
+      "layout": {
+        "scrollX": 0,
+        "scrollY": 292,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentHeight": 2608,
+        "visualColumn": {
+          "x": 48,
+          "y": 209.796875,
+          "width": 992,
+          "height": 976.28125,
+          "top": 209.796875,
+          "right": 1040,
+          "bottom": 1186.078125,
+          "left": 48
+        },
+        "canvas": {
+          "x": 49,
+          "y": 282.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 282.796875,
+          "right": 1039,
+          "bottom": 999.625,
+          "left": 49
+        },
+        "camera": {
+          "position": [
+            164.93572934600823,
+            2.7050276936736655,
+            -1.8563892761612206
+          ],
+          "target": [
+            174.862,
+            1.5,
+            -1.9870000000000005
+          ],
+          "desiredPosition": [
+            164.93572934600823,
+            2.7050276936736655,
+            -1.8563892761612206
+          ],
+          "viewTarget": [
+            174.862,
+            1.5,
+            -1.9870000000000005
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 10.000000000000012,
+            "actualDistance": 10.000000000000012,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.1922113316796356,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": -1.557639,
+          "polar": 1.4500000000000002,
+          "distance": 10.000000000000012,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": -1.557639,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "inspectionPanned": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            0.01315694717586613,
+            2.7755575615628914e-17,
+            0.9999134436245026,
+            0,
+            0.12049233908441259,
+            0.9927129910375885,
+            -0.0015854485711120359,
+            0,
+            -0.9926270653991752,
+            0.12050276936736642,
+            0.013061072383877548,
+            0,
+            164.93572934600823,
+            2.7050276936736655,
+            -1.8563892761612206,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          164.93572934600823,
+          2.7050276936736655,
+          -1.8563892761612206
+        ],
+        "target": [
+          174.862,
+          1.5,
+          -1.9870000000000005
+        ],
+        "desiredPosition": [
+          164.93572934600823,
+          2.7050276936736655,
+          -1.8563892761612206
+        ],
+        "viewTarget": [
+          174.862,
+          1.5,
+          -1.9870000000000005
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 10.000000000000012,
+          "actualDistance": 10.000000000000012,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.1922113316796356,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": -1.557639,
+        "polar": 1.4500000000000002,
+        "distance": 10.000000000000012,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": -1.557639,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "inspectionPanned": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.01315694717586613,
+          2.7755575615628914e-17,
+          0.9999134436245026,
+          0,
+          0.12049233908441259,
+          0.9927129910375885,
+          -0.0015854485711120359,
+          0,
+          -0.9926270653991752,
+          0.12050276936736642,
+          0.013061072383877548,
+          0,
+          164.93572934600823,
+          2.7050276936736655,
+          -1.8563892761612206,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "routePosition": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "lighting": {
+        "mode": "day",
+        "phase": "ready",
+        "rig": {
+          "status": "ready",
+          "sha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "expectedSha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "profile": null
+        },
+        "environment": {
+          "status": "ready",
+          "file": "/assets/neighborhoods/shijo-east/shared/environments/day-512.hdr",
+          "sha256": "efb72f542365dfdc25d2f9ed20983b34e74fd33f90d55b8763813f4d6dd35717",
+          "expectedSha256": "efb72f542365dfdc25d2f9ed20983b34e74fd33f90d55b8763813f4d6dd35717",
+          "textureId": "01b2902f-072d-43ed-882b-9abe092d054e"
+        },
+        "exposure": 1.05
+      },
+      "baseline": {
+        "file": "../baseline/source274-prior-day-canvas.png",
+        "sha256": "9655ee6fb88226cf9656ec79b917c5ea451f09db8e8961b2f48771ba436cf46e",
+        "bytes": 747615,
+        "sourceFile": "artifacts/neighborhood-20261024/qa/candidate-11-neighbor274-baseline/source274-prior-day-canvas.png",
+        "camera": {
+          "position": [
+            164.93572934600823,
+            2.7050276936736655,
+            -1.8563892761612206
+          ],
+          "target": [
+            174.862,
+            1.5,
+            -1.9870000000000005
+          ],
+          "desiredPosition": [
+            164.93572934600823,
+            2.7050276936736655,
+            -1.8563892761612206
+          ],
+          "viewTarget": [
+            174.862,
+            1.5,
+            -1.9870000000000005
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 10.000000000000012,
+            "actualDistance": 10.000000000000012,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.1922113316796356,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": -1.557639,
+          "polar": 1.4500000000000002,
+          "distance": 10.000000000000012,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": -1.557639,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "inspectionPanned": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            0.01315694717586613,
+            2.7755575615628914e-17,
+            0.9999134436245026,
+            0,
+            0.12049233908441259,
+            0.9927129910375885,
+            -0.0015854485711120359,
+            0,
+            -0.9926270653991752,
+            0.12050276936736642,
+            0.013061072383877548,
+            0,
+            164.93572934600823,
+            2.7050276936736655,
+            -1.8563892761612206,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        },
+        "layout": {
+          "scrollX": 0,
+          "scrollY": 292,
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "documentHeight": 2608,
+          "visualColumn": {
+            "x": 48,
+            "y": 209.796875,
+            "width": 992,
+            "height": 976.28125,
+            "top": 209.796875,
+            "right": 1040,
+            "bottom": 1186.078125,
+            "left": 48
+          },
+          "canvas": {
+            "x": 49,
+            "y": 282.796875,
+            "width": 990,
+            "height": 716.828125,
+            "top": 282.796875,
+            "right": 1039,
+            "bottom": 999.625,
+            "left": 49
+          },
+          "camera": {
+            "position": [
+              164.93572934600823,
+              2.7050276936736655,
+              -1.8563892761612206
+            ],
+            "target": [
+              174.862,
+              1.5,
+              -1.9870000000000005
+            ],
+            "desiredPosition": [
+              164.93572934600823,
+              2.7050276936736655,
+              -1.8563892761612206
+            ],
+            "viewTarget": [
+              174.862,
+              1.5,
+              -1.9870000000000005
+            ],
+            "obstruction": {
+              "active": false,
+              "desiredDistance": 10.000000000000012,
+              "actualDistance": 10.000000000000012,
+              "targetAdjusted": false,
+              "framingRecovered": false,
+              "actorInFrame": true,
+              "actorVerticalOccupancy": 0.1922113316796356,
+              "recoveryFits": true,
+              "minimumSceneDistance": 5,
+              "clearance": 0.35,
+              "angleOffset": 0,
+              "settling": false
+            },
+            "azimuth": -1.557639,
+            "polar": 1.4500000000000002,
+            "distance": 10.000000000000012,
+            "frontage": "north",
+            "azimuthBase": 0,
+            "relativeAzimuth": -1.557639,
+            "enabled": true,
+            "damping": true,
+            "transitioning": false,
+            "solo": true,
+            "inspecting": false,
+            "inspectionAimed": false,
+            "inspectionPanned": false,
+            "panning": false,
+            "projectionMatrix": [
+              1.626675118070023,
+              0,
+              0,
+              0,
+              0,
+              2.2460367739042155,
+              0,
+              0,
+              0,
+              0,
+              -1.0008575103615833,
+              -1,
+              0,
+              0,
+              -0.3001286265542375,
+              0
+            ],
+            "matrixWorld": [
+              0.01315694717586613,
+              2.7755575615628914e-17,
+              0.9999134436245026,
+              0,
+              0.12049233908441259,
+              0.9927129910375885,
+              -0.0015854485711120359,
+              0,
+              -0.9926270653991752,
+              0.12050276936736642,
+              0.013061072383877548,
+              0,
+              164.93572934600823,
+              2.7050276936736655,
+              -1.8563892761612206,
+              1
+            ],
+            "limits": {
+              "polar": [
+                0.55,
+                1.49
+              ],
+              "distance": [
+                5,
+                55
+              ],
+              "targetXY": 40,
+              "targetHeight": [
+                0.5,
+                40
+              ]
+            }
+          }
+        }
+      },
+      "comparison": {
+        "checkId": "source274-prior-day-matches-actual-baseline-view-and-ground",
+        "pass": true,
+        "desiredViewExact": true,
+        "actualCameraExact": true,
+        "projectionExact": true,
+        "sourceAuditSha256": "ccba681ffcab6f0daa807c10d7e377e5553b6b608f0790b6df8df3ba24467b17"
+      },
+      "primaryBudget": {
+        "checkId": "source274-prior-day-cached-shadow-primary-frame-budget",
+        "pass": true,
+        "renderTotals": {
+          "frame": 39,
+          "calls": 60,
+          "triangles": 93629,
+          "points": 0,
+          "lines": 0
+        },
+        "proof": [
+          true
+        ]
+      }
+    },
+    {
+      "file": "source274-prior-current-night-canvas.png",
+      "sha256": "e26cea0a6d375af492eb89f84ecb70a886be48b56d0a300ba9e3457c481c6014",
+      "bytes": 579521,
+      "sourceIndex": 274,
+      "layout": {
+        "scrollX": 0,
+        "scrollY": 292,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentHeight": 2608,
+        "visualColumn": {
+          "x": 48,
+          "y": 209.796875,
+          "width": 992,
+          "height": 976.28125,
+          "top": 209.796875,
+          "right": 1040,
+          "bottom": 1186.078125,
+          "left": 48
+        },
+        "canvas": {
+          "x": 49,
+          "y": 282.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 282.796875,
+          "right": 1039,
+          "bottom": 999.625,
+          "left": 49
+        },
+        "camera": {
+          "position": [
+            164.93572934600823,
+            2.7050276936736655,
+            -1.8563892761612206
+          ],
+          "target": [
+            174.862,
+            1.5,
+            -1.9870000000000005
+          ],
+          "desiredPosition": [
+            164.93572934600823,
+            2.7050276936736655,
+            -1.8563892761612206
+          ],
+          "viewTarget": [
+            174.862,
+            1.5,
+            -1.9870000000000005
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 10.000000000000012,
+            "actualDistance": 10.000000000000012,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.1922113316796356,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": -1.557639,
+          "polar": 1.4500000000000002,
+          "distance": 10.000000000000012,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": -1.557639,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "inspectionPanned": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            0.01315694717586613,
+            2.7755575615628914e-17,
+            0.9999134436245026,
+            0,
+            0.12049233908441259,
+            0.9927129910375885,
+            -0.0015854485711120359,
+            0,
+            -0.9926270653991752,
+            0.12050276936736642,
+            0.013061072383877548,
+            0,
+            164.93572934600823,
+            2.7050276936736655,
+            -1.8563892761612206,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          164.93572934600823,
+          2.7050276936736655,
+          -1.8563892761612206
+        ],
+        "target": [
+          174.862,
+          1.5,
+          -1.9870000000000005
+        ],
+        "desiredPosition": [
+          164.93572934600823,
+          2.7050276936736655,
+          -1.8563892761612206
+        ],
+        "viewTarget": [
+          174.862,
+          1.5,
+          -1.9870000000000005
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 10.000000000000012,
+          "actualDistance": 10.000000000000012,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.1922113316796356,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": -1.557639,
+        "polar": 1.4500000000000002,
+        "distance": 10.000000000000012,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": -1.557639,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "inspectionPanned": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.01315694717586613,
+          2.7755575615628914e-17,
+          0.9999134436245026,
+          0,
+          0.12049233908441259,
+          0.9927129910375885,
+          -0.0015854485711120359,
+          0,
+          -0.9926270653991752,
+          0.12050276936736642,
+          0.013061072383877548,
+          0,
+          164.93572934600823,
+          2.7050276936736655,
+          -1.8563892761612206,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "routePosition": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "lighting": {
+        "mode": "night",
+        "phase": "ready",
+        "rig": {
+          "status": "ready",
+          "sha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "expectedSha256": "6f385116cf4a63fa8baf787f8128bb2cccc1b3887e57588d7a754860e8095399",
+          "profile": null
+        },
+        "environment": {
+          "status": "ready",
+          "file": "/assets/neighborhoods/shijo-east/shared/environments/night-512.hdr",
+          "sha256": "b3a82ca4a2dcb3cf429b5f7b57f75877296fbc3d60b6a2ed2419be7f8971f41f",
+          "expectedSha256": "b3a82ca4a2dcb3cf429b5f7b57f75877296fbc3d60b6a2ed2419be7f8971f41f",
+          "textureId": "2e8476cf-7c67-48f6-9e1d-0d3f6954830c"
+        },
+        "exposure": 1.18
+      },
+      "baseline": {
+        "file": "../baseline/source274-prior-night-canvas.png",
+        "sha256": "7b1075b2dbe964f3014d0f2cae9826b07e2dd0785ec67cbe2d14b370e5741bdc",
+        "bytes": 590070,
+        "sourceFile": "artifacts/neighborhood-20261024/qa/candidate-11-neighbor274-baseline/source274-prior-night-canvas.png",
+        "camera": {
+          "position": [
+            164.93572934600823,
+            2.7050276936736655,
+            -1.8563892761612206
+          ],
+          "target": [
+            174.862,
+            1.5,
+            -1.9870000000000005
+          ],
+          "desiredPosition": [
+            164.93572934600823,
+            2.7050276936736655,
+            -1.8563892761612206
+          ],
+          "viewTarget": [
+            174.862,
+            1.5,
+            -1.9870000000000005
+          ],
+          "obstruction": {
+            "active": false,
+            "desiredDistance": 10.000000000000012,
+            "actualDistance": 10.000000000000012,
+            "targetAdjusted": false,
+            "framingRecovered": false,
+            "actorInFrame": true,
+            "actorVerticalOccupancy": 0.1922113316796356,
+            "recoveryFits": true,
+            "minimumSceneDistance": 5,
+            "clearance": 0.35,
+            "angleOffset": 0,
+            "settling": false
+          },
+          "azimuth": -1.557639,
+          "polar": 1.4500000000000002,
+          "distance": 10.000000000000012,
+          "frontage": "north",
+          "azimuthBase": 0,
+          "relativeAzimuth": -1.557639,
+          "enabled": true,
+          "damping": true,
+          "transitioning": false,
+          "solo": true,
+          "inspecting": false,
+          "inspectionAimed": false,
+          "inspectionPanned": false,
+          "panning": false,
+          "projectionMatrix": [
+            1.626675118070023,
+            0,
+            0,
+            0,
+            0,
+            2.2460367739042155,
+            0,
+            0,
+            0,
+            0,
+            -1.0008575103615833,
+            -1,
+            0,
+            0,
+            -0.3001286265542375,
+            0
+          ],
+          "matrixWorld": [
+            0.01315694717586613,
+            2.7755575615628914e-17,
+            0.9999134436245026,
+            0,
+            0.12049233908441259,
+            0.9927129910375885,
+            -0.0015854485711120359,
+            0,
+            -0.9926270653991752,
+            0.12050276936736642,
+            0.013061072383877548,
+            0,
+            164.93572934600823,
+            2.7050276936736655,
+            -1.8563892761612206,
+            1
+          ],
+          "limits": {
+            "polar": [
+              0.55,
+              1.49
+            ],
+            "distance": [
+              5,
+              55
+            ],
+            "targetXY": 40,
+            "targetHeight": [
+              0.5,
+              40
+            ]
+          }
+        },
+        "layout": {
+          "scrollX": 0,
+          "scrollY": 292,
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "documentHeight": 2608,
+          "visualColumn": {
+            "x": 48,
+            "y": 209.796875,
+            "width": 992,
+            "height": 976.28125,
+            "top": 209.796875,
+            "right": 1040,
+            "bottom": 1186.078125,
+            "left": 48
+          },
+          "canvas": {
+            "x": 49,
+            "y": 282.796875,
+            "width": 990,
+            "height": 716.828125,
+            "top": 282.796875,
+            "right": 1039,
+            "bottom": 999.625,
+            "left": 49
+          },
+          "camera": {
+            "position": [
+              164.93572934600823,
+              2.7050276936736655,
+              -1.8563892761612206
+            ],
+            "target": [
+              174.862,
+              1.5,
+              -1.9870000000000005
+            ],
+            "desiredPosition": [
+              164.93572934600823,
+              2.7050276936736655,
+              -1.8563892761612206
+            ],
+            "viewTarget": [
+              174.862,
+              1.5,
+              -1.9870000000000005
+            ],
+            "obstruction": {
+              "active": false,
+              "desiredDistance": 10.000000000000012,
+              "actualDistance": 10.000000000000012,
+              "targetAdjusted": false,
+              "framingRecovered": false,
+              "actorInFrame": true,
+              "actorVerticalOccupancy": 0.1922113316796356,
+              "recoveryFits": true,
+              "minimumSceneDistance": 5,
+              "clearance": 0.35,
+              "angleOffset": 0,
+              "settling": false
+            },
+            "azimuth": -1.557639,
+            "polar": 1.4500000000000002,
+            "distance": 10.000000000000012,
+            "frontage": "north",
+            "azimuthBase": 0,
+            "relativeAzimuth": -1.557639,
+            "enabled": true,
+            "damping": true,
+            "transitioning": false,
+            "solo": true,
+            "inspecting": false,
+            "inspectionAimed": false,
+            "inspectionPanned": false,
+            "panning": false,
+            "projectionMatrix": [
+              1.626675118070023,
+              0,
+              0,
+              0,
+              0,
+              2.2460367739042155,
+              0,
+              0,
+              0,
+              0,
+              -1.0008575103615833,
+              -1,
+              0,
+              0,
+              -0.3001286265542375,
+              0
+            ],
+            "matrixWorld": [
+              0.01315694717586613,
+              2.7755575615628914e-17,
+              0.9999134436245026,
+              0,
+              0.12049233908441259,
+              0.9927129910375885,
+              -0.0015854485711120359,
+              0,
+              -0.9926270653991752,
+              0.12050276936736642,
+              0.013061072383877548,
+              0,
+              164.93572934600823,
+              2.7050276936736655,
+              -1.8563892761612206,
+              1
+            ],
+            "limits": {
+              "polar": [
+                0.55,
+                1.49
+              ],
+              "distance": [
+                5,
+                55
+              ],
+              "targetXY": 40,
+              "targetHeight": [
+                0.5,
+                40
+              ]
+            }
+          }
+        }
+      },
+      "comparison": {
+        "checkId": "source274-prior-night-matches-actual-baseline-view-and-ground",
+        "pass": true,
+        "desiredViewExact": true,
+        "actualCameraExact": true,
+        "projectionExact": true,
+        "sourceAuditSha256": "ccba681ffcab6f0daa807c10d7e377e5553b6b608f0790b6df8df3ba24467b17"
+      },
+      "primaryBudget": {
+        "checkId": "source274-prior-night-cached-shadow-primary-frame-budget",
+        "pass": true,
+        "renderTotals": {
+          "frame": 60,
+          "calls": 60,
+          "triangles": 93629,
+          "points": 0,
+          "lines": 0
+        },
+        "proof": [
+          true
+        ]
+      }
+    }
+  ],
+  "disposition": {
+    "source201": "Accepted source-associated differentiation in the pictured lower/middle front and oblique views, day/night.",
+    "source274": "Cropped first upper band/ribbon is coherent; complete upper-frontage recognition remains unobserved."
+  },
+  "limits": [
+    "Source201 upper pale band and whole elevation are outside these captures.",
+    "Source274 association remains anonymous, dated and qualified.",
+    "Original candidate11 framing failures remain preserved by QA.",
+    "Authored bay divisions, depths, proportions and finishes do not establish exact reconstruction or current conditions.",
+    "Whole-route visual acceptance remains separate."
+  ]
+}

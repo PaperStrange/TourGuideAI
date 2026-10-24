@@ -1,6 +1,6 @@
 # Candidate12 source-bound frontage and roof materials
 
-Producer validation and independent decoded preservation pass for manifest `86e4f424a36cb858c16f6e282ad8ceb8f146d6b285d482de3c0ce2fe2f726b61`. The [actual roof day/night review](../candidate-12/roof/README.md) accepts the bounded source139 material improvement in package `e86aa1c7…`. Source201/274 facade appearance review remains pending. Root owns public promotion and application integration.
+Producer validation and independent decoded preservation pass for manifest `86e4f424a36cb858c16f6e282ad8ceb8f146d6b285d482de3c0ce2fe2f726b61`. The [actual roof day/night review](../candidate-12/roof/README.md) accepts the bounded source139 material improvement in package `e86aa1c7…`. The [matched frontage review](../candidate-12/frontages/README.md) accepts source201's pictured lower/middle differentiation, and the [retained upper replay](../candidate-12/upper201/README.md) accepts its visible25–27m material transition. Source274 has only a cropped upper fragment reviewed. Full elevations and whole-route appearance remain outside those findings. Root owns public promotion and application integration.
 
 ## Authored scope
 
@@ -22,7 +22,7 @@ The [independent audit](../../world/candidate12-export-audit.json), SHA256 `ccba
 | e001n000 / source274 | +506 | −722 | +1 |
 | e002n000 / source201 | +2,142 | −2,058 | +1 |
 
-Roof-role reassignment changes no triangle or batch count. Thirty exported roof meshes carry the source-specific metadata. Combined facade changes remain below the approved4,000 added-triangle and3 added-batch targets. Actual roof views pass the primary-frame limits at83 calls/85,731 triangles in both modes; facade-specific browser proof remains pending.
+Roof-role reassignment changes no triangle or batch count. Thirty exported roof meshes carry the source-specific metadata. Combined facade changes remain below the approved4,000 added-triangle and3 added-batch targets. Actual roof views pass the primary-frame limits at83 calls/85,731 triangles in both modes. Matched frontage primary frames also pass: source201 front76/96,918, source201 oblique61/89,308 and source274 prior60/93,629 calls/triangles in both modes.
 
 Required3D startup transfer is3,037,665B by day and3,030,429B at night, including the manifest, resident ground/context, opening BASE, deduplicated dependencies,35,556B traveller and the selected HDR. The4MiB headroom is1,156,639B/1,163,875B. Application HTML/JS/CSS/fonts and deferred sections are separate. Gzip transfer does not reduce decoded geometry-memory accounting.
 

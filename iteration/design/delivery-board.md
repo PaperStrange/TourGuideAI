@@ -7,17 +7,25 @@ Updated 2026-10-24. Owner: lead. Planning baseline: `origin/iteration` at
 [sprint plan](../../experience/docs/sprint-connected-neighborhood-20261021.md)
 targets a continuous 1–2 km walking route with 5–8 sights and richer solo
 recommendations. The implemented pilot connects six sights over 1,353.444 m.
-Latest implementation `06a2c49` produces candidate 12 (`e86aa1c7…`), passing
-216 application tests, 17 repository gates, font coverage and the canonical build.
-Its audited source201/274 upper-facade profiles, source139 light-responsive roof
-material and bilingual constrained-view hint are integrated. Actual roof
+Latest implementation `2843974` produces candidate 13 (`e8eed914…`), passing
+217 application tests, 17 repository gates and the canonical build. Its reviewed
+feedback correction preserves all sixteen native camera traces and suppresses
+observation only during internal safe-pose adoption. Native hint activation passes;
+locale/layout/recovery verification is running with desktop input before the
+standard benchmark and Q03 sequence. The implementation is pushed. All scenery, UI copy
+and fonts retain candidate 12's exact bytes.
+
+Candidate 12's audited source201/274 upper-facade profiles, source139 light-responsive
+roof material and bilingual constrained-view hint are integrated. Actual roof
 compilation/day-night/lifecycle checks pass 20/20; its bounded underside art review
 accepts clearer daylight color and retained night coherence. Native hidden/return
 behavior passes 13/13 with zero scene work over 2,018.3 ms and preserved view.
 Actual feedback records 6 passes / 2 failures because repeated blocked turns do
 not display the hint; the subsequent locale/wrapping/clear checks remain unexecuted.
-Navigation and engineering own diagnosis. Facade appearance, complete CI and
-performance remain pending.
+The actual-geometry reproduction and independent review support candidate 13's
+correction. Matched frontage 20/20 and retained upper201 11/11 checks now support
+bounded day/night art acceptance. Full source274 upper recognition, current
+whole-route review, complete CI and performance remain open.
 Current CI40062728715 uses exact implementation06a2c49; candidate 11's complete
 neighborhood job was interrupted when this source run began.
 

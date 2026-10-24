@@ -1,0 +1,135 @@
+{
+  "packageSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
+  "packageFiles": 446,
+  "packageBytes": 96813522,
+  "scenerySha256": "4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544",
+  "source": {
+    "id": "shijo-east",
+    "revision": 1,
+    "geographySha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+    "manifestSha256": "4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544",
+    "historicalGeographyCompatibility": {
+      "kind": "reviewed-tenmangu-anchor-metadata",
+      "recordedSha256": "cb6d616d3858becf459a885ed940a6766cdd942e14a4d0b2b8a39776e3c16e55",
+      "currentSha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+      "auditSha256": "156cdc90f594a9a69a672ac8003e1ddbfa76259c0dc86c5b59035b0e55cc35dd",
+      "auditFile": "experience/evidence/neighborhood-20261023/world/platform-context/tenmangu-compatibility.json",
+      "changedFields": [
+        "nodeId",
+        "approachNodeId",
+        "x",
+        "y",
+        "latitude",
+        "longitude"
+      ],
+      "completeGeographyCompared": true,
+      "unchangedSources": {
+        "scene.json": {
+          "bytes": 8789674,
+          "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e"
+        },
+        "source-ledger.json": {
+          "bytes": 5999,
+          "sha256": "be0f8065699a53f09293140e2499bca2468f0aa7cea503dc6436f45c9b17a24c"
+        },
+        "source-review.json": {
+          "bytes": 756,
+          "sha256": "4e3fbb9d2fd3134153d2b378f5de995c2f7e3135ea3d778a5fe2f19b55f00258"
+        },
+        "sources/kyoto-lod1.geojson": {
+          "bytes": 6304053,
+          "sha256": "da1af049906d736b6329e062673a84728640957475d3b46107cebf46b48a2d93"
+        },
+        "sources/route-osm.json": {
+          "bytes": 47176,
+          "sha256": "5681dceac0c5d206a6e5315c77ca6a39a292ab3915f23b60cc17c77cecb4099e"
+        },
+        "sources/scene-osm.json": {
+          "bytes": 2390775,
+          "sha256": "1e3ba265bc8dd3c6744ccd897ad915016a2cc0110c306bf3e064ca63ced5dd0c"
+        }
+      },
+      "scope": "Stored metric view, frame and navigation geometry. Rendered assets retain their separate current-build identity."
+    }
+  },
+  "driverSha256": "aa4c5b0096836627f15b0aaa6135b954c3e195c0c3e31dc5d230e454bc9eefa1",
+  "driverDependencies": [
+    {
+      "file": "tests/helpers/neighborhood-evidence-source.mjs",
+      "sha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    }
+  ],
+  "reportSha256": "325abe1a5ec772f0eb0284aebf7a047feac4111b9ce3450bb7ff0ae25258f500",
+  "summary": {
+    "passed": 10,
+    "failed": 1
+  },
+  "browser": "151.0.7922.34",
+  "sections": [
+    "neighbor274-baseline"
+  ],
+  "startedAt": "2026-10-24T03:57:44.798Z",
+  "finishedAt": "2026-10-24T04:02:48.873Z",
+  "elapsedMs": 304075,
+  "httpRequests": 96,
+  "evidence": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 158009,
+      "sha256": "7c00a9ab5fbec1081a5b8ed2e5108733115bf56087c769940e17432527d3beb2",
+      "decodedBytes": 2594440,
+      "decodedSha256": "325abe1a5ec772f0eb0284aebf7a047feac4111b9ce3450bb7ff0ae25258f500"
+    },
+    {
+      "file": "executed-driver.mjs.gz",
+      "bytes": 50044,
+      "sha256": "4f287e524e5f1e00cbf0d0f098a55cb6e91982a097318498832470088927b027",
+      "decodedBytes": 210043,
+      "decodedSha256": "aa4c5b0096836627f15b0aaa6135b954c3e195c0c3e31dc5d230e454bc9eefa1"
+    },
+    {
+      "file": "run.log.gz",
+      "bytes": 298,
+      "sha256": "8c4203f34fd06c93b7ff3faef273a3e69a635b02cf56c2ab4f52692f95432a38",
+      "decodedBytes": 608,
+      "decodedSha256": "5369733dadc13f6a11482591f2863aa6ec8a7596b14faab79188015893d96340"
+    },
+    {
+      "file": "neighborhood-evidence-source.mjs.gz",
+      "bytes": 1619,
+      "sha256": "70115611f201081f16386f97f55d12421b3ee05a5e4c8f20bdfe99a5ec5fd294",
+      "decodedBytes": 3713,
+      "decodedSha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    },
+    {
+      "file": "source274-prior-day.png",
+      "bytes": 998720,
+      "sha256": "84b7292941f780f9464a2fa673e16877002145e3253482f8badbdc11e69e53ba"
+    },
+    {
+      "file": "../../art/candidate-12/baseline/source274-prior-day-canvas.png",
+      "owner": "art",
+      "bytes": 747615,
+      "sha256": "9655ee6fb88226cf9656ec79b917c5ea451f09db8e8961b2f48771ba436cf46e"
+    },
+    {
+      "file": "source274-prior-night.png",
+      "bytes": 829808,
+      "sha256": "201b0b990f493b81c71c0d37ff2ce19444c426c0afbaea8e7aad0171cac37882"
+    },
+    {
+      "file": "../../art/candidate-12/baseline/source274-prior-night-canvas.png",
+      "owner": "art",
+      "bytes": 590070,
+      "sha256": "7b1075b2dbe964f3014d0f2cae9826b07e2dd0785ec67cbe2d14b370e5741bdc"
+    },
+    {
+      "file": "neighbor274-baseline-failure-1.png",
+      "bytes": 896934,
+      "sha256": "7e611de03948035daad7fdbed92fc9f640e4943cd8f1d081f66a5b4bdd816386"
+    }
+  ],
+  "failuresPreserved": [
+    "neighbor274-baseline-completed"
+  ]
+}

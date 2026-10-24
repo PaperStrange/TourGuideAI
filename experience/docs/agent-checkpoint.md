@@ -6,10 +6,46 @@ The approved target is a continuous 1–2 km Shijō neighborhood with 5–8 sigh
 desktop-first delivery and richer solo routes. Published runtime `17b8f37` remains
 the verified baseline. Q03 is open P1; backend tests remain local.**
 
-## Resumed acceptance · 2026-10-24
+## Current candidate 13 · 2026-10-24
+
+Implementation **`28439744b6349b795ac0a50c20c5d45d735bb2ed`** is synchronized with
+the remote iteration branch.
+Its immutable build is `artifacts/neighborhood-20261024/candidate-13`, **446 files /
+96,954,304 bytes**, package
+**`e8eed9146ea83accaf54769ff2aaaf5a902cfd344295e3348e11684e50838b0c`**.
+All **217/217** application tests, **17/17** repository gates and the canonical
+build pass. All 347 scenery files, UI copy and fonts retain candidate 12's bytes.
+The [validation record](../evidence/neighborhood-20261024/validation/README.md)
+preserves exact build/test output and complete inventory.
+
+The camera-feedback correction suppresses feedback observation only during
+internal safe-pose adoption. The actual-geometry regression preserves all sixteen
+native camera traces within `1e-9`, observes the original inactive/active sequence,
+then verifies one hint activation after the third settled blocked turn and clearing
+on tilt. Camera geometry, collision, callbacks and scheduling remain unchanged.
+The [faithful candidate-12 reproduction](../evidence/neighborhood-20261024/engineering/camera-guidance-adoption/README.md)
+retains its original failure and exact source bindings. Independent review approves
+the correction. The original native driver confirms hint activation at input
+index 9 on candidate 13, then records a desktop-driver failure because its locale
+helper uses touch input in a context without touch support. Original report
+`193074b6daa2b4829bd33558bb3c9b400a6cd7397fd8af45b7b97e1e6b1c3f1b`
+retains **7 passes / 1 failure** and the unexecuted tail. QA is completing the
+same assertions with the desktop click helper on the unchanged package.
+
+Candidate 12's source-confirmed roof, matched frontages and upper201 transition
+have bounded day/night art acceptance. Its browser roof checks pass 20/20,
+matched frontages 20/20, retained upper view 11/11 and native background behavior
+13/13. Those results keep their package scope. Full source274 upper recognition,
+whole-route current art, performance, complete current CI and publication remain
+open. The physical-GPU availability question is still unanswered. Root owns
+source synchronization and final-package evidence; QA owns the exclusive browser
+window. One current-package standard benchmark and the original Q03 sequence are
+scheduled after the focused native hint result.
+
+## Retained candidate 12 · 2026-10-24
 
 Implementation **`06a2c496da689b5c18797b2f77ef1f03cb2857ab`** is synchronized with
-the remote iteration branch. The latest immutable build is **candidate 12** at
+the remote iteration branch. Its immutable build is **candidate 12** at
 `artifacts/neighborhood-20261024/candidate-12`: **446 files / 96,953,857 bytes**,
 package **`e86aa1c715fb76cd111feae41a0383ee34005aefd64fe5c48eba7615676e5733`**.
 Scenery is **`86e4f424a36cb858c16f6e282ad8ceb8f146d6b285d482de3c0ce2fe2f726b61`**.

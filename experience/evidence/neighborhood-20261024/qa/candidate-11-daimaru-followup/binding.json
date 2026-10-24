@@ -1,0 +1,94 @@
+{
+  "packageSha256": "76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea",
+  "packageFiles": 446,
+  "packageBytes": 96813522,
+  "scenerySha256": "4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544",
+  "source": {
+    "id": "shijo-east",
+    "revision": 1,
+    "geographySha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+    "manifestSha256": "4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544"
+  },
+  "driverSha256": "558a24a2da2ae43c80d19fb3b6428f9642d8901193d4a8a3a376c27c03bafc06",
+  "driverDependencies": [
+    {
+      "file": "tests/helpers/neighborhood-evidence-source.mjs",
+      "sha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    }
+  ],
+  "reportSha256": "63f69a9f3cd470f9e52fbb70a0b3428c4533afcdf73ade9cf3a6810770a2781c",
+  "summary": {
+    "passed": 10,
+    "failed": 3
+  },
+  "browser": "151.0.7922.34",
+  "sections": [
+    "daimaru-followup"
+  ],
+  "startedAt": "2026-10-24T04:42:07.641Z",
+  "finishedAt": "2026-10-24T04:43:53.556Z",
+  "elapsedMs": 105915,
+  "httpRequests": 95,
+  "evidence": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 150902,
+      "sha256": "9281401bf3cce51c7538f4cae514d42dc142d8640876cf40dc456262073cc104",
+      "decodedBytes": 1980816,
+      "decodedSha256": "63f69a9f3cd470f9e52fbb70a0b3428c4533afcdf73ade9cf3a6810770a2781c"
+    },
+    {
+      "file": "executed-driver.mjs.gz",
+      "bytes": 49685,
+      "sha256": "6f92ad94348117862110b030a84f0115278b38507056f256b26e5491e9e97289",
+      "decodedBytes": 205966,
+      "decodedSha256": "558a24a2da2ae43c80d19fb3b6428f9642d8901193d4a8a3a376c27c03bafc06"
+    },
+    {
+      "file": "run.log.gz",
+      "bytes": 357,
+      "sha256": "6791d1695bc74693e27348a66ddbeb6cdd156421d38ea2f1dd4c939e92fce73d",
+      "decodedBytes": 803,
+      "decodedSha256": "4483d3a66979a8c4c6013be918f0e2ceeab0718c30eb74a9406e2e92b98e591b"
+    },
+    {
+      "file": "neighborhood-evidence-source.mjs.gz",
+      "bytes": 1619,
+      "sha256": "70115611f201081f16386f97f55d12421b3ee05a5e4c8f20bdfe99a5ec5fd294",
+      "decodedBytes": 3713,
+      "decodedSha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    },
+    {
+      "file": "source201-oblique-walking-day.png",
+      "bytes": 1072758,
+      "sha256": "3c89b623a33f788a4e9757480f95ed39e336345fb43f7bdfc5834a96fddbafb8"
+    },
+    {
+      "file": "../../art/candidate-12/baseline/source201-oblique-walking-day-canvas.png",
+      "owner": "art",
+      "bytes": 796441,
+      "sha256": "dfc6846039185081a13289119edfb905dfce03071eaf4c0ac8e2569be131794d"
+    },
+    {
+      "file": "source201-oblique-walking-night.png",
+      "bytes": 836939,
+      "sha256": "61c077590eb11669b850c89c9c4ad7ba9a6af2b627cc86399f7d275a7cb81523"
+    },
+    {
+      "file": "../../art/candidate-12/baseline/source201-oblique-walking-night-canvas.png",
+      "owner": "art",
+      "bytes": 573726,
+      "sha256": "5be5f8b8a4c1e98a3c1266a15a8e102091987f60dcc2d1719cd6feff3a683334"
+    },
+    {
+      "file": "daimaru-followup-failure-1.png",
+      "bytes": 934463,
+      "sha256": "a648f7833c8c21e3a07f4f8a1b363d9a98221246d46268b2dac94b3cd43b9786"
+    }
+  ],
+  "failuresPreserved": [
+    "source201-oblique-walking-day-ground-framing-and-source-projection",
+    "source201-oblique-walking-night-ground-framing-and-source-projection",
+    "daimaru-followup-completed"
+  ]
+}
