@@ -7,7 +7,13 @@ Updated 2026-10-24. Owner: lead. Planning baseline: `origin/iteration` at
 [sprint plan](../../experience/docs/sprint-connected-neighborhood-20261021.md)
 targets a continuous 1–2 km walking route with 5–8 sights and richer solo
 recommendations. The implemented pilot connects six sights over 1,353.444 m.
-Implementation source `84e80a8` produces candidate 11, which passes 203 application
+Latest implementation `06a2c49` produces candidate 12 (`e86aa1c7…`), passing
+216 application tests, 17 repository gates, font coverage and the canonical build.
+Its audited source201/274 upper-facade profiles, source139 light-responsive roof
+material and bilingual constrained-view hint are integrated. Native appearance,
+shader/feedback behavior, complete CI and performance remain pending.
+
+Retained implementation source `84e80a8` produces candidate 11, which passes 203 application
 checks, 17 repository gates and 36 targeted native checks. Independent source and
 geometry audits verify unchanged navigation and prior geometry. Seven current
 canvases pass the scoped day/night review of facade/road contacts and western gate
@@ -26,9 +32,9 @@ scene work over 2,018.8 ms and preserved return state. Current-package complete 
 input/frame acceptance, Q03 and broader source-backed facade/landmark/night-art
 acceptance remain open. Physical GPU/phone fluency is unmeasured; GPU-environment
 availability has been requested. Excluded road joins remain documented local polish.
-Candidate 12 production addresses the source-linked Daimaru south facade and
-Nishiki's daylight colored ridge; current-package evidence and source/geometry
-audits precede acceptance. Candidate 11 remains frozen during this work.
+Candidate 12's source/geometry audit passes all 74 sections and 148 gzip identities;
+no new images or navigation changes are introduced. Native visual acceptance is
+still required. Candidate 11 remains frozen during this work.
 Published runtime `17b8f37` remains the verified baseline.
 The [agent checkpoint](../../experience/docs/agent-checkpoint.md) records exact
 package identities, evidence, failures and current owners. The records below

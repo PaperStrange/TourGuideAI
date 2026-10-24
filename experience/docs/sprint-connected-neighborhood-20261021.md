@@ -151,6 +151,14 @@ anonymous upper frontage now has a separately reviewed and approved association.
 Its lower frontage, roof and other faces remain protected. Art, engineering and world
 content retain their existing ownership; QA owns exact before/after evidence.
 
+Candidate 12 is built and pushed as `06a2c49`, package `e86aa1c7…`. It passes
+216 application tests, 17 repository gates, complete font coverage and the canonical
+build. The independent 74-section audit preserves protected geometry, navigation
+and resources. Its shader and bilingual constraint-feedback code have passed
+focused checks and independent review; native compilation, appearance, feedback,
+complete CI and performance acceptance remain pending. The previous candidate's
+startup/visibility results retain their original package scope.
+
 | Sprint | Current evidence | Remaining acceptance |
 | --- | --- | --- |
 | N00 | Connected source graph, six exterior sights, source/provenance audits and reproducible packaging | Surveyed grades and current access remain explicit source limits |

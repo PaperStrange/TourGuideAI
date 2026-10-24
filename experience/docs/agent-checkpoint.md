@@ -8,9 +8,38 @@ the verified baseline. Q03 is open P1; backend tests remain local.**
 
 ## Resumed acceptance · 2026-10-24
 
-Checkpoint **`4c23b78d2afbbd6b7fe75d354d67945de6b05168`** is synchronized with the
-remote iteration branch; its working tree was clean after push verification.
-The latest implementation is **`84e80a8`**, with immutable **candidate 11**, package
+Implementation **`06a2c496da689b5c18797b2f77ef1f03cb2857ab`** is synchronized with
+the remote iteration branch. The latest immutable build is **candidate 12** at
+`artifacts/neighborhood-20261024/candidate-12`: **446 files / 96,953,857 bytes**,
+package **`e86aa1c715fb76cd111feae41a0383ee34005aefd64fe5c48eba7615676e5733`**.
+Scenery is **`86e4f424a36cb858c16f6e282ad8ceb8f146d6b285d482de3c0ce2fe2f726b61`**.
+All **216/216** application tests and **17/17** repository gates pass, the canonical
+build succeeds, and the regenerated 291,936-byte EN/ZH font has no missing source
+glyphs. Exact logs and inventory are in [local validation](../evidence/neighborhood-20261024/validation/README.md).
+
+Independent audit **`ccba681ffcab6f0daa807c10d7e377e5553b6b608f0790b6df8df3ba24467b17`**
+passes all 74 sections, 9,731 source groups and 148 gzip identities. Source201/274
+upper-facade profiles preserve the original lower faces, roofs and other edges;
+source139 roof roles preserve all geometry and the 45 mm vertical pairing. Source,
+navigation, walkable bytes and shared image/HDR/rig resources remain exact. There
+are no new images. Required 3D transfer is **3,037,665 B day / 3,030,429 B night**.
+Root promoted the audited directory and preserved candidate 11's prior public assets
+at `artifacts/neighborhood-20261024/candidate-11-public-before-frontages`.
+
+The runtime adds the source-specific opaque diffuse-sheet approximation and a
+bilingual nonmodal hint after three settled, stalled deliberate orbit attempts.
+The camera's geometry, collision policy and scheduling are unchanged. The hint
+uses an actual 40-input trace; nine focused feedback checks and four material checks
+pass within the complete suite. Independent review covered shader/lifetime and
+feedback timing. QA now owns the exclusive browser window for actual shader
+compilation, matched appearance, feedback behavior and source-scoped comparisons.
+Current-package native acceptance, complete CI and performance remain pending.
+The GPU-environment availability question remains unanswered; this workspace still
+provides software rendering. No candidate 12 publication or hardware-fluency claim.
+
+### Retained candidate 11 observations
+
+Implementation **`84e80a8`** produced immutable **candidate 11**, package
 **`76c14e7ad8ea57fb81bed982376c5360765a36b0f6a158a45c021c1dc028b2ea`**,
 446 files / 96,813,522 bytes, at `artifacts/neighborhood-20261024/candidate-11`.
 Manifest: **`4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544`**.
@@ -124,8 +153,8 @@ Maps popup URLs, night/touch orbit, private view/note, standalone preview and ex
 kept return/reload. Ten unchanged viewport captures record reachability and overflow.
 This is interaction evidence; physical-phone fluency remains unmeasured.
 
-Candidate 12 art production is authorized in independent output directories while
-candidate 11 remains frozen. Art owns the source201 south-edge facade treatment:
+Candidate 12 production and independent export audit are complete; native review
+remains pending. Candidate 11 stays frozen. Art owns the source201 south-edge facade treatment:
 dated-photo-supported material bands and stepped-head openings, with authored
 dimensions and preserved ground-level geometry below 3.5 m, other faces, roof and
 navigation. World record `93bc46595c9ec5b3b42707c351670968592e13af2190da208d22760aab33945b`
@@ -145,8 +174,8 @@ occlusion is outside this approximation. Installation follows lighting's materia
 cloning; day/night, shadow, fade, lifetime and resource checks precede promotion.
 Existing references support the transmitted-color daylight cue. Exact shop-by-shop
 reconstruction is outside the approved consistent-street and recognizable-feature
-criterion. Root owns integration and publication; neither candidate 12 assets nor
-its appearance or performance are accepted yet.
+criterion. Root owns integration and publication; candidate 12 assets have passed
+their independent export audit, while appearance and performance remain unaccepted.
 
 ## Candidate 9 evidence · 2026-10-23
 
