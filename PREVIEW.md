@@ -19,6 +19,12 @@ All **448/448** served files, including the bilingual introduction and metadata,
 match their local bytes over actual HTTPS. Performance acceptance and the complete
 current-source route CI remain pending. The main homepage below continues to offer
 the previously published Kyoto and Ginza walks. Both paths share browser storage.
+Actual hosted EN/ZH checks confirm public entry, six stops, walking, Stop,
+inspection/Escape and night controls. The [hosted report](experience/evidence/neighborhood-20261024/hosted-preview/README.md)
+retains 21 passing checks and four failed diagnostic checks: response-body reads
+lost across navigation and the unavailable hosted service's health requests.
+The independent 448-file HTTPS verification passes; shared-room hosting remains
+unconfigured, and no complete browser-suite or fluency acceptance is claimed.
 
 ## Reviewed places · Kyoto and Ginza
 

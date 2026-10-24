@@ -1,0 +1,108 @@
+{
+  "packageSha256": "65167ee402d6d59978b5f979de8c6987721ec891ffec1ce6127831d7c0dd354e",
+  "packageFiles": 446,
+  "source": {
+    "implementation": "28439744b6349b795ac0a50c20c5d45d735bb2ed",
+    "geographySha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f"
+  },
+  "driverSha256": "af2f1fc5906066e2cc8dc48bb1c782a602ba2170e03cb1588bcb36cf92d4e464",
+  "reportSha256": "a2d69a84c23ed07909dbd263a38ab860625f82d5b8198035ce547675fae534f3",
+  "startedAt": "2026-10-24T05:59:23.528Z",
+  "finishedAt": "2026-10-24T06:01:53.819Z",
+  "elapsedMs": 150291,
+  "browser": "151.0.7922.34",
+  "conditions": {
+    "base": "https://paperstrange.github.io/TourGuideAI/previews/shijo-east-c13/app/",
+    "landing": "https://paperstrange.github.io/TourGuideAI/previews/shijo-east-c13/",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "deviceScaleFactor": 1,
+    "reducedMotion": "no-preference",
+    "headless": true,
+    "timeoutMs": 120000,
+    "requestInterception": false,
+    "tlsVerification": true,
+    "scope": "Bounded hosted entry and native controls; no full traversal, performance, physical-device or milestone-acceptance claim."
+  },
+  "summary": {
+    "passed": 7,
+    "failed": 4
+  },
+  "failuresPreserved": [
+    "en-hosted-sequence-completed",
+    "en-no-page-or-shader-errors",
+    "zh-hosted-sequence-completed",
+    "zh-no-page-or-shader-errors"
+  ],
+  "scenarios": {
+    "en": {
+      "responses": 75,
+      "canonicalBodyChecks": 75,
+      "matchedCanonicalBodies": 75,
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedRequests": [],
+      "nativeEvents": 0,
+      "allRecordedEventsTrusted": null
+    },
+    "zh": {
+      "responses": 75,
+      "canonicalBodyChecks": 75,
+      "matchedCanonicalBodies": 75,
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedRequests": [],
+      "nativeEvents": 0,
+      "allRecordedEventsTrusted": null
+    }
+  },
+  "files": [
+    {
+      "file": "result.json.gz",
+      "bytes": 49503,
+      "sha256": "031e8c3babac124fa63ac5ce176f8b8da7ae34a4c1316e7c5805ded2fe8e27d8",
+      "decodedBytes": 363396,
+      "decodedSha256": "a2d69a84c23ed07909dbd263a38ab860625f82d5b8198035ce547675fae534f3"
+    },
+    {
+      "file": "executed-driver.mjs.gz",
+      "bytes": 5309,
+      "sha256": "5de30f84a911f6f58c421d9e5af15efc42cae8a90e99e9ceb6b025621aa112c1",
+      "decodedBytes": 16179,
+      "decodedSha256": "af2f1fc5906066e2cc8dc48bb1c782a602ba2170e03cb1588bcb36cf92d4e464"
+    },
+    {
+      "file": "run.log.gz",
+      "bytes": 244,
+      "sha256": "19d532a5a2e645bd246d9fe7c32f13696abfcf2761dbe97be366113fc147500e",
+      "decodedBytes": 553,
+      "decodedSha256": "0f9d0a592e9ba654c67838c5d22095b122a75ed8b5f699da84f6a897415dc5b5"
+    },
+    {
+      "file": "landing-en-390.png",
+      "bytes": 94795,
+      "sha256": "a386a5c7788034772aa4892766fa132ac821ca743907ca65e7f69e2a9e1799f2"
+    },
+    {
+      "file": "landing-zh-390.png",
+      "bytes": 88264,
+      "sha256": "fd63662b807d44e85930b0ae1ad61459f543aa8e59ac3d3ff6b8a48ba83008a3"
+    },
+    {
+      "file": "en-hosted-failure.png",
+      "bytes": 911702,
+      "sha256": "179a27412d6034501edea96ad8fab8a3bb8bc9cdff2329831a82a1fc1ebe7f85"
+    },
+    {
+      "file": "interruption.json",
+      "bytes": 713,
+      "sha256": "83c43bc0fbe23e3babe559756204f1471c353258f15d7a1cf2c85068b37a4620"
+    }
+  ]
+}

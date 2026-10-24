@@ -1,0 +1,61 @@
+{
+  "packageSha256": "65167ee402d6d59978b5f979de8c6987721ec891ffec1ce6127831d7c0dd354e",
+  "packageFiles": 446,
+  "source": {
+    "implementation": "28439744b6349b795ac0a50c20c5d45d735bb2ed",
+    "geographySha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f"
+  },
+  "driverSha256": "1e0bdf82886a71df2757bfe355f60ab72d24636dfca4fdc4e7dde9b02ab6cec1",
+  "reportSha256": "918156854b0d9a3de39adc5dbe4c7cf7c2b4a63517aa0030d88ae8473be58f49",
+  "startedAt": "2026-10-24T05:57:11.146Z",
+  "finishedAt": "2026-10-24T05:59:11.870Z",
+  "elapsedMs": 120724,
+  "browser": "151.0.7922.34",
+  "conditions": {
+    "base": "https://paperstrange.github.io/TourGuideAI/previews/shijo-east-c13/app/",
+    "landing": "https://paperstrange.github.io/TourGuideAI/previews/shijo-east-c13/",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "deviceScaleFactor": 1,
+    "reducedMotion": "no-preference",
+    "headless": true,
+    "timeoutMs": 120000,
+    "requestInterception": false,
+    "tlsVerification": true,
+    "scope": "Bounded hosted entry and native controls; no full traversal, performance, physical-device or milestone-acceptance claim."
+  },
+  "summary": {
+    "passed": 1,
+    "failed": 2
+  },
+  "failuresPreserved": [
+    "landing-english-and-chinese-links-are-visible",
+    "hosted-smoke-setup-completed"
+  ],
+  "scenarios": {},
+  "files": [
+    {
+      "file": "result.json.gz",
+      "bytes": 22339,
+      "sha256": "65e23d7f648b75abef530ff3633a0e8b58ddf6caf15f1e46e3d4412fa91fdb3f",
+      "decodedBytes": 96701,
+      "decodedSha256": "918156854b0d9a3de39adc5dbe4c7cf7c2b4a63517aa0030d88ae8473be58f49"
+    },
+    {
+      "file": "executed-driver.mjs.gz",
+      "bytes": 5194,
+      "sha256": "77e2e02c9ff95446866bb857b724aee5a5ed60e8ae6f38d5c0f5b893724aca95",
+      "decodedBytes": 15619,
+      "decodedSha256": "1e0bdf82886a71df2757bfe355f60ab72d24636dfca4fdc4e7dde9b02ab6cec1"
+    },
+    {
+      "file": "run.log.gz",
+      "bytes": 138,
+      "sha256": "ceceadb00a20cafdf7aaa530786e870a3d28758c51e809d27cc21b7566df4912",
+      "decodedBytes": 162,
+      "decodedSha256": "54346e9a7a1b877990d3f5cd95b07f58f17d666f88dcf8b7177b9580c609aa5f"
+    }
+  ]
+}

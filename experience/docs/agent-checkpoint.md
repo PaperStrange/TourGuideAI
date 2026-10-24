@@ -24,6 +24,17 @@ files, report SHA-256
 `f0604aca48627b45d693a1edd3470de96dc776223a3ce7d6ae6d0f466959f054`.
 This is public preview availability; milestone acceptance remains open.
 
+The [actual hosted browser verification](../evidence/neighborhood-20261024/hosted-preview/README.md)
+records **21 passes / 4 failures**. Both ordinary public URLs render the six-stop,
+1.35 km route; separately enabled diagnostic observations verify grounded native
+walking, Stop, inspection/Escape and night controls. Language navigation and
+390 px introduction layout pass. The four failures retain two per-locale
+response-body observation gaps across navigation and two unavailable-service
+console diagnostics (`/api/health` returns 404). Page exceptions are zero in both
+locales. These results preserve their original scope; independent HTTPS byte
+verification does not replace missing browser-body observations. Two earlier
+driver setup attempts are retained separately. All browser processes are closed.
+
 ## Current candidate 13 · 2026-10-24
 
 Implementation **`28439744b6349b795ac0a50c20c5d45d735bb2ed`** is synchronized with

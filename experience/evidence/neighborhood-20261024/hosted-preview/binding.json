@@ -1,0 +1,172 @@
+{
+  "packageSha256": "65167ee402d6d59978b5f979de8c6987721ec891ffec1ce6127831d7c0dd354e",
+  "packageFiles": 446,
+  "source": {
+    "implementation": "28439744b6349b795ac0a50c20c5d45d735bb2ed",
+    "geographySha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f"
+  },
+  "driverSha256": "2423512ec9d8d2b988792b353cdef8dee180c00fdd853b1b570b302bceefc9c1",
+  "reportSha256": "87887b93d08e63ac29ea2928ccae3e353dd4ce10214c006bd0d4cd5960de4552",
+  "startedAt": "2026-10-24T06:03:44.901Z",
+  "finishedAt": "2026-10-24T06:05:21.863Z",
+  "elapsedMs": 96962,
+  "browser": "151.0.7922.34",
+  "conditions": {
+    "base": "https://paperstrange.github.io/TourGuideAI/previews/shijo-east-c13/app/",
+    "landing": "https://paperstrange.github.io/TourGuideAI/previews/shijo-east-c13/",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "deviceScaleFactor": 1,
+    "reducedMotion": "no-preference",
+    "headless": true,
+    "timeoutMs": 120000,
+    "requestInterception": false,
+    "tlsVerification": true,
+    "scope": "Bounded hosted entry and native controls; no full traversal, performance, physical-device or milestone-acceptance claim."
+  },
+  "summary": {
+    "passed": 21,
+    "failed": 4
+  },
+  "failuresPreserved": [
+    "en-completed-hosted-bytes-match-canonical-package",
+    "en-no-page-or-shader-errors",
+    "zh-completed-hosted-bytes-match-canonical-package",
+    "zh-no-page-or-shader-errors"
+  ],
+  "scenarios": {
+    "en": {
+      "responses": 145,
+      "canonicalBodyChecks": 145,
+      "matchedCanonicalBodies": 142,
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()",
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedRequests": [],
+      "nativeEvents": 6,
+      "allRecordedEventsTrusted": true
+    },
+    "zh": {
+      "responses": 144,
+      "canonicalBodyChecks": 144,
+      "matchedCanonicalBodies": 143,
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()",
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "failedRequests": [],
+      "nativeEvents": 6,
+      "allRecordedEventsTrusted": true
+    }
+  },
+  "files": [
+    {
+      "file": "result.json.gz",
+      "bytes": 177473,
+      "sha256": "12324f29915d7b87fd48141189be7ee385aaff912b520b8bfcc61b70051e815f",
+      "decodedBytes": 1632766,
+      "decodedSha256": "87887b93d08e63ac29ea2928ccae3e353dd4ce10214c006bd0d4cd5960de4552"
+    },
+    {
+      "file": "executed-driver.mjs.gz",
+      "bytes": 5885,
+      "sha256": "df735bf42f0828fc2fedfd067298fe2042821f5d24b055fcf41fac7e0fc5541e",
+      "decodedBytes": 18596,
+      "decodedSha256": "2423512ec9d8d2b988792b353cdef8dee180c00fdd853b1b570b302bceefc9c1"
+    },
+    {
+      "file": "run.log.gz",
+      "bytes": 441,
+      "sha256": "55361790aae777143414a34fb46231bfb696a733daeb2089f8f6e4090d6f404b",
+      "decodedBytes": 1302,
+      "decodedSha256": "f73f67efe58e91cad9162611e9e624fd87293efbcc331687db2deb0ff9d75ee7"
+    },
+    {
+      "file": "landing-en-390.png",
+      "bytes": 94795,
+      "sha256": "a386a5c7788034772aa4892766fa132ac821ca743907ca65e7f69e2a9e1799f2"
+    },
+    {
+      "file": "landing-zh-390.png",
+      "bytes": 88264,
+      "sha256": "fd63662b807d44e85930b0ae1ad61459f543aa8e59ac3d3ff6b8a48ba83008a3"
+    },
+    {
+      "file": "en-public-entry.png",
+      "bytes": 911897,
+      "sha256": "2a034dc3bd4a3075727f38d13bf8cfa944619fc4a960008855ae281264740b08"
+    },
+    {
+      "file": "en-hosted-opening.png",
+      "bytes": 911702,
+      "sha256": "179a27412d6034501edea96ad8fab8a3bb8bc9cdff2329831a82a1fc1ebe7f85"
+    },
+    {
+      "file": "en-hosted-night-controls.png",
+      "bytes": 791748,
+      "sha256": "322a9bb6bff4fce5d8f3c3fc83ae12897599cf5c6c316ee285cb55d7354aee2c"
+    },
+    {
+      "file": "zh-public-entry.png",
+      "bytes": 924422,
+      "sha256": "ed1253ce3a3a413c41048a172f9183ddf8b1c2df55bb538dae2ce01eff5259f8"
+    },
+    {
+      "file": "zh-hosted-opening.png",
+      "bytes": 924542,
+      "sha256": "cac9118e573da3de3a2f27c2b034f8cf53ae949d8440ab94be6ac0d33956ac15"
+    },
+    {
+      "file": "zh-hosted-night-controls.png",
+      "bytes": 805087,
+      "sha256": "9fc791633da7feb7d1d71be7d6b6e26510edaa6ebe9ea6ef500fd1ff9acd8c88"
+    }
+  ],
+  "pagesCommit": "10e95b1d52aee46bbcd9c296746127e29b1b4131",
+  "publishedByteProof": [
+    {
+      "file": "https-files.json.gz",
+      "bytes": 25933,
+      "sha256": "64deb1046a4f54a478f22f20e15129a5c30a44d7190f8a9a6986642a1a081895",
+      "decodedBytes": 159064,
+      "decodedSha256": "f0604aca48627b45d693a1edd3470de96dc776223a3ce7d6ae6d0f466959f054"
+    },
+    {
+      "file": "verify-published.mjs.gz",
+      "bytes": 1243,
+      "sha256": "50f1b08275485cceaeeadb3747b00ee76723a6e6fc383fcd254c4cb94036ff09",
+      "decodedBytes": 2727,
+      "decodedSha256": "e5f8e5d991f890db98faba647b1a30393ea1d36c1e3b06423364c4b4e8c8e6ab"
+    },
+    {
+      "file": "pages-build.json",
+      "bytes": 168,
+      "sha256": "d2b4c4f761894f28d3504f461a1a421106923c824a2487cbbdd065c1367dcb18",
+      "decodedBytes": 168,
+      "decodedSha256": "d2b4c4f761894f28d3504f461a1a421106923c824a2487cbbdd065c1367dcb18"
+    }
+  ],
+  "initialDiagnostic": {
+    "binding": "landing-diagnostic/binding.json",
+    "reportSha256": "918156854b0d9a3de39adc5dbe4c7cf7c2b4a63517aa0030d88ae8473be58f49",
+    "summary": {
+      "passed": 1,
+      "failed": 2
+    },
+    "scope": "Initial simultaneous-language visibility assumption failed before app entry; original timeout, assertions and driver retained."
+  },
+  "observerDiagnostic": {
+    "binding": "observer-diagnostic/binding.json",
+    "reportSha256": "a2d69a84c23ed07909dbd263a38ab860625f82d5b8198035ce547675fae534f3",
+    "summary": {
+      "passed": 7,
+      "failed": 4
+    },
+    "scope": "Public URLs omitted the required qa=1 diagnostic flag. Original timed-out/closed sequence is preserved separately from public DOM and diagnostic checks."
+  }
+}

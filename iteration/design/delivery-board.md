@@ -41,6 +41,10 @@ opens canonical candidate 13 directly through its English/Chinese entry buttons.
 Pages commit `10e95b1` adds this preview; all 448 application/introduction/metadata
 files match over HTTPS, and prior main-site files remain unchanged. Performance
 acceptance remains pending and is identified on the preview entry page.
+Actual hosted public EN/ZH entry, six-stop route and native walking/Stop/inspection/
+night controls pass. The original browser report retains 21 passes and four
+diagnostic failures concerning body observation and the unavailable hosted service;
+its exact scope is in the [preview evidence](../../experience/evidence/neighborhood-20261024/hosted-preview/README.md).
 
 Retained implementation source `84e80a8` produces candidate 11, which passes 203 application
 checks, 17 repository gates and 36 targeted native checks. Independent source and

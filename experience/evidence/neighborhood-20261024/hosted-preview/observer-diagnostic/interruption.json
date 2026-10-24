@@ -1,0 +1,9 @@
+{
+  "finishedAt": "2026-10-24T06:01:53.819Z",
+  "reason": "Root-directed closure after the diagnostic readiness predicate used __HOME__ on a public URL without qa=1.",
+  "sourceEvidence": "experience/src/home/main.js exposes __HOME__ only in DEV or when params.get('qa') === '1'.",
+  "action": "Sent SIGTERM to the owned Chromium PID32071; the driver handled target closure and completed its finally cleanup.",
+  "scope": "Landing locale and390px checks passed. English diagnostic wait timed out. Remaining app sequence was interrupted. These results do not establish failure of public rendering.",
+  "driverSha256": "af2f1fc5906066e2cc8dc48bb1c782a602ba2170e03cb1588bcb36cf92d4e464",
+  "runtimeChanges": false
+}
