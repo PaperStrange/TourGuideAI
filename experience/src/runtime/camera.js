@@ -31,6 +31,7 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
   let nativeInputPending = false;
   const constraintFeedback = createCameraConstraintFeedback(onConstraintChange);
   let gestureOrbit = null, gestureTilted = false;
+  let adoptingConstraintPose = false;
   const pointerSamples = new Map();
   let lastPointerId, gestureOperation = null, touchPanStart = null, touchPanLatest = null;
   let currentState = { x: initial.x, y: initial.y, height: initial.height };
@@ -53,6 +54,7 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
   };
   function clearConstraint() { gestureOrbit = null; constraintFeedback.clear(); }
   function observeConstraint(deltaMs = 0) {
+    if (adoptingConstraintPose) return;
     if (gestureOrbit) {
       // 读取公开视角并等待原有阻尼结束，不额外调度帧或改动控制器。
       const measured = gestureOrbit.measurement.observe(controls.getAzimuthalAngle(), deltaMs);
@@ -130,7 +132,10 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
     camera.position.copy(visibleTarget).addScaledVector(offset.divideScalar(distance), Math.max(limits.distance[0], distance));
     aimOffset = { x: visibleTarget.x - currentState.x, y: -visibleTarget.z - currentState.y, height: visibleTarget.y };
     controls.update(); controls.enableDamping = damping; adopting = false;
-    camera.updateMatrixWorld(); emitChange();
+    camera.updateMatrixWorld();
+    // 内部采用安全视点会暂时解除遮挡；此次同步不代表用户绕转已经取得进展。
+    adoptingConstraintPose = true;
+    try { emitChange(); } finally { adoptingConstraintPose = false; }
   }
   const interactionStarted = () => {
     if (gestureOrbit) clearConstraint();
