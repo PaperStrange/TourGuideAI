@@ -4,6 +4,7 @@ import { getPack, DEFAULT_PACK_ID } from '../packs/registry.js';
 import { CAMERA_DEFAULTS, CAMERA_LIMITS, normalizeCameraPose } from './view-state.js';
 import { normalizeExplorationCamera } from './exploration-state.js';
 import { pointerOperation, pointerMotionChangesCamera, touchPanChangesTarget } from './camera-input.js';
+import { createCameraConstraintFeedback, createOrbitGestureMeasurement } from './camera-constraint-feedback.js';
 
 export { CAMERA_DEFAULTS };
 export const toScene = (x, north, height = 0) => new THREE.Vector3(x, height, -north);
@@ -16,7 +17,7 @@ export function isPlayerInFrame(camera, state) {
   });
 }
 
-export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { solo = false, pack = getPack(DEFAULT_PACK_ID) } = {}) {
+export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { solo = false, pack = getPack(DEFAULT_PACK_ID), onConstraintChange } = {}) {
   const limits = solo ? pack.camera.limits : CAMERA_LIMITS;
   const defaults = pack.camera.initial, legacyFrontage = pack.camera.legacyFrontage;
   const initialFrontage = state => legacyFrontage && state.y < pack.world.roadCenterY ? 'south' : 'north';
@@ -28,6 +29,8 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
   let aimOffset = null, transition = null, inspecting = false;
   let inspectionAimed = false, inspectionPanned = false, interacting = false, gestureAdopted = false, adopting = false;
   let nativeInputPending = false;
+  const constraintFeedback = createCameraConstraintFeedback(onConstraintChange);
+  let gestureOrbit = null, gestureTilted = false;
   const pointerSamples = new Map();
   let lastPointerId, gestureOperation = null, touchPanStart = null, touchPanLatest = null;
   let currentState = { x: initial.x, y: initial.y, height: initial.height };
@@ -44,6 +47,22 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
   setAzimuthBounds();
   [controls.minPolarAngle, controls.maxPolarAngle] = limits.polar;
   [controls.minDistance, controls.maxDistance] = limits.distance;
+  const actualAzimuth = () => {
+    const target = obstruction?.target ?? controls.target;
+    return Math.atan2(viewCamera.position.x - target.x, viewCamera.position.z - target.z);
+  };
+  function clearConstraint() { gestureOrbit = null; constraintFeedback.clear(); }
+  function observeConstraint(deltaMs = 0) {
+    if (gestureOrbit) {
+      // 读取公开视角并等待原有阻尼结束，不额外调度帧或改动控制器。
+      const measured = gestureOrbit.measurement.observe(controls.getAzimuthalAngle(), deltaMs);
+      if (gestureOrbit.ended && measured.settled) {
+        constraintFeedback.recordOrbit(measured); gestureOrbit = null;
+      }
+    }
+    constraintFeedback.observe({ azimuth: actualAzimuth(), active: obstruction?.active === true,
+      settling: obstruction?.settling === true });
+  }
   function commitInspectionPan() {
     if (inspecting && touchPanChangesTarget(controls, gestureOperation, touchPanStart, touchPanLatest)) inspectionPanned = true;
   }
@@ -59,6 +78,7 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
       viewCamera.position.copy(obstruction.position); viewCamera.lookAt(obstruction.target);
       viewCamera.updateMatrixWorld();
     }
+    observeConstraint(deltaMs);
     return viewCamera.position.distanceToSquared(previousPosition) > 1e-12
       || 1 - Math.abs(viewCamera.quaternion.dot(previousRotation)) > 1e-12;
   }
@@ -91,6 +111,7 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
     emitChange(deliberate);
   };
   function beginCameraInput(operation) {
+    if (operation !== 'rotate') clearConstraint();
     if (inspecting) {
       inspectionAimed = true;
       // 平移明确改变观察目标；绕转、俯仰和缩放继续保留人物与街道构图。
@@ -112,12 +133,15 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
     camera.updateMatrixWorld(); emitChange();
   }
   const interactionStarted = () => {
+    if (gestureOrbit) clearConstraint();
+    gestureTilted = false;
     interacting = true; gestureAdopted = false;
     gestureOperation = pointerOperation(controls, pointerSamples.get(lastPointerId) ?? pointerSamples.values().next().value, pointerSamples.size);
     touchPanStart = gestureOperation === 'dolly-pan' ? [...pointerSamples.values()] : null;
     touchPanLatest = touchPanStart;
   };
   const interactionEnded = () => {
+    if (gestureOrbit) gestureOrbit.ended = true;
     interacting = false; gestureAdopted = false; gestureOperation = null; touchPanStart = null; touchPanLatest = null;
     nativeInputPending = false;
   };
@@ -141,7 +165,16 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
     const other = [...pointerSamples].find(([id]) => id !== event.pointerId)?.[1];
     if (!interacting || !pointerMotionChangesCamera(controls, gestureOperation, previous, next, other)) return;
     if (gestureOperation === 'dolly-pan') touchPanLatest = [...pointerSamples.values()];
-    if (!gestureAdopted) { gestureAdopted = true; beginCameraInput(gestureOperation); }
+    if (gestureOperation === 'rotate' && previous.y !== next.y) {
+      gestureTilted = true; clearConstraint();
+    }
+    if (!gestureAdopted) {
+      gestureAdopted = true;
+      constraintFeedback.cancelPendingOrbit();
+      beginCameraInput(gestureOperation);
+      if (gestureOperation === 'rotate' && !gestureTilted) gestureOrbit = { ended: false,
+        measurement: createOrbitGestureMeasurement({ startAzimuth: actualAzimuth(), requestedAzimuth: controls.getAzimuthalAngle() }) };
+    }
     nativeInputPending = true;
   };
   const pointerEnded = event => { commitInspectionPan(); pointerSamples.delete(event.pointerId); };
@@ -175,6 +208,7 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
     camera.updateMatrixWorld(); emitChange();
   }
   function reset(state = initial) {
+    clearConstraint();
     inspectionAimed = false; inspectionPanned = false;
     currentState = { x: state.x, y: state.y, height: state.height };
     finishTransition(); aimOffset = defaults.targetOffset ? { ...defaults.targetOffset } : null;
@@ -186,6 +220,7 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
   function restorePose(value, state, animate = false, following = false) {
     const next = solo ? normalizeExplorationCamera(value, limits) : normalizeCameraPose(value);
     if (!next) return false;
+    clearConstraint();
     inspectionAimed = inspecting && !following; inspectionPanned = inspectionAimed;
     currentState = { x: state.x, y: state.y, height: state.height };
     const fromTarget = controls.target.clone(), fromPosition = camera.position.clone();
@@ -215,6 +250,7 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
     controls.enabled = next.enabled; setAzimuthBounds(); controls.update(); emitChange();
   }
   function resumeFollow() {
+    clearConstraint();
     if (pack.camera.preserveFramingOnWalk) {
       if (transition?.following || isPlayerInFrame(viewCamera, currentState)) return;
       // 开始行走时只恢复画面外的人物，保留用户的环视方向、俯仰与缩放。
@@ -240,11 +276,12 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
       const forward = viewCamera.getWorldDirection(new THREE.Vector3());
       return Math.atan2(-forward.x, -forward.z);
     },
-    setObstructionResolver(value) { obstructionResolver = value; synchronizeCamera(); },
+    setObstructionResolver(value) { clearConstraint(); obstructionResolver = value; synchronizeCamera(); },
     reset, restorePose, finishTransition, resumeFollow,
     setInspecting(value) {
       const leaving = inspecting && !value;
       const next = solo && Boolean(value);
+      if (next !== inspecting) clearConstraint();
       if (next !== inspecting) { inspectionAimed = false; inspectionPanned = false; }
       inspecting = next; controls.enablePan = inspecting;
       if (leaving && pack.camera.preserveFramingOnWalk) resumeFollow();
@@ -260,6 +297,7 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
       return true;
     },
     follow(state, dt, immediate = false) {
+      if (state.x !== currentState.x || state.y !== currentState.y || state.height !== currentState.height) clearConstraint();
       currentState = { x: state.x, y: state.y, height: state.height };
       if (transition) {
         if (transition.following) {
@@ -293,12 +331,20 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
       controls.enableDamping = !value;
     },
     setEnabled(value) {
+      if (!value) clearConstraint();
       finishTransition();
       const current = this.snapshot();
       pose(current.azimuth, current.polar, current.distance);
       controls.enabled = value;
     },
-    rotate(delta) { if (delta === 0) return; beginCameraInput('rotate'); pose(unwrap(controls.getAzimuthalAngle()) + delta, controls.getPolarAngle(), controls.getDistance()); },
+    rotate(delta) {
+      if (delta === 0) return;
+      gestureOrbit = null; constraintFeedback.cancelPendingOrbit();
+      beginCameraInput('rotate');
+      const startAzimuth = actualAzimuth();
+      pose(unwrap(controls.getAzimuthalAngle()) + delta, controls.getPolarAngle(), controls.getDistance());
+      constraintFeedback.recordOrbit({ startAzimuth, requestedDelta: delta }); observeConstraint();
+    },
     tilt(delta) { if (delta === 0) return; beginCameraInput('tilt'); pose(controls.getAzimuthalAngle(), controls.getPolarAngle() + delta, controls.getDistance()); },
     pan(right, up) {
       if (!solo || !inspecting || right === 0 && up === 0) return;
@@ -334,7 +380,7 @@ export function createGuidedCamera(canvas, initial, reducedMotion, onChange, { s
         projectionMatrix: viewCamera.projectionMatrix.toArray(), matrixWorld: viewCamera.matrixWorld.toArray(),
         limits: structuredClone(limits) };
     },
-    dispose() { controls.removeEventListener('change', changed); controls.removeEventListener('start', interactionStarted);
+    dispose() { clearConstraint(); controls.removeEventListener('change', changed); controls.removeEventListener('start', interactionStarted);
       controls.removeEventListener('end', interactionEnded);
       canvas?.removeEventListener('pointerdown', pointerStarted, true);
       canvas?.removeEventListener('pointermove', pointerMoved, true);

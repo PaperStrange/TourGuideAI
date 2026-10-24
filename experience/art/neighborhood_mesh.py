@@ -61,6 +61,7 @@ class FacadePlane:
         if self.length <= 1e-8:
             raise ValueError('A facade edge must have positive length')
         self.start = start
+        self.end = end
         self.tangent = (dx / self.length, dy / self.length)
         self.outward = (self.tangent[1], -self.tangent[0])
         self.source_index = source_index
@@ -159,6 +160,95 @@ def facade_geometry(plane, height, base_height, recipe, lod):
             plane.box(recipe.get('canopyMaterial', 'metal-dark'), 0, plane.length,
                       canopy_height, canopy_height + .12, projection / 2, projection)
     return {'openings': openings, 'recesses': openings if lod == 'near' else 0}
+
+
+def profiled_opening(plane, slot_left, slot_right, bottom, top, tiers, material, profile, lod):
+    # 分层矩形保留阶梯窗头的轮廓；侧壁和背板均使用真实几何。
+    center = (slot_left + slot_right) / 2
+    recess = profile['nearRecessMetres'] if lod == 'near' else profile['baseRecessMetres']
+    plane.panel(material, slot_left, slot_right, bottom, tiers[0][1])
+    plane.panel(material, slot_left, slot_right, tiers[-1][2], top)
+    for width, low, high in tiers:
+        left, right = center - width / 2, center + width / 2
+        plane.panel(material, slot_left, left, low, high)
+        plane.panel(material, right, slot_right, low, high)
+        plane.panel(profile['glassMaterial'], left, right, low, high, -recess)
+    outline = [(center - tiers[0][0] / 2, tiers[0][1]),
+               (center + tiers[0][0] / 2, tiers[0][1])]
+    for index, (width, low, high) in enumerate(tiers):
+        outline.append((center + width / 2, high))
+        if index + 1 < len(tiers):
+            outline.append((center + tiers[index + 1][0] / 2, high))
+    outline.append((center - tiers[-1][0] / 2, tiers[-1][2]))
+    for index in range(len(tiers) - 1, -1, -1):
+        width, low, high = tiers[index]
+        outline.append((center - width / 2, low))
+        if index:
+            outline.append((center - tiers[index - 1][0] / 2, low))
+    for start, end in zip(outline, outline[1:] + outline[:1]):
+        length = math.dist(start, end)
+        if length <= 1e-9:
+            continue
+        plane.batches[material].face([plane.point(*start), plane.point(*end),
+                                     plane.point(*end, -recess), plane.point(*start, -recess)], plane.source_index)
+        if lod != 'near':
+            continue
+        width = profile['frameWidthMetres']
+        inside = (-(end[1] - start[1]) / length * width, (end[0] - start[0]) / length * width)
+        plane.batches[profile['frameMaterial']].face([
+            plane.point(*start, -recess + .015), plane.point(*end, -recess + .015),
+            plane.point(end[0] + inside[0], end[1] + inside[1], -recess + .015),
+            plane.point(start[0] + inside[0], start[1] + inside[1], -recess + .015)], plane.source_index)
+
+
+def reviewed_facade_geometry(plane, height, base_height, recipe, lod, override):
+    preserved = {name: MeshBatch() for name in plane.batches}
+    original_plane = FacadePlane(plane.start, plane.end, plane.source_index, preserved)
+    facade_geometry(original_plane, height, base_height, recipe, lod)
+    minimum = override['minimumChangedHeightMetres']
+    # 跨越保护高度的原始墙面完整保留，新立面从该墙面原有的顶边开始。
+    cutoff = max(point[2] for data in preserved.values() for face in data.faces
+                 if min(data.vertices[index][2] for index in face) < minimum
+                 for point in (data.vertices[index] for index in face))
+    for name, data in preserved.items():
+        for face in data.faces:
+            vertices = [data.vertices[index] for index in face]
+            if min(point[2] for point in vertices) < minimum or min(point[2] for point in vertices) >= height - .16 - 1e-9:
+                plane.batches[name].face(vertices, plane.source_index)
+    protected_openings = sum(1 for face in preserved[recipe.get('glassMaterial', 'glass')].faces
+                             if max(preserved[recipe.get('glassMaterial', 'glass')].vertices[index][2]
+                                    for index in face) < minimum)
+    profile = override['profile']
+    count = max(1, round(plane.length / profile['bayWidthMetres']))
+    slot = plane.length / count
+    openings = 0
+    for band in profile['bands']:
+        low = max(cutoff, base_height + (height - base_height) * band['bottomRatio'])
+        high = base_height + (height - base_height) * band['topRatio']
+        if high <= low:
+            continue
+        row_height = (high - low) / band['rows']
+        for row in range(band['rows']):
+            row_bottom, row_top = low + row * row_height, low + (row + 1) * row_height
+            sill = row_bottom + band['sillMetres']
+            head = min(row_top - band['headMarginMetres'], sill + band['openingHeightMetres'])
+            step_count = band.get('headSteps', 0)
+            step_height = band.get('stepHeightMetres', 0)
+            width = band['openingWidthMetres']
+            if (head - sill <= step_count * step_height or width >= slot - .25 or
+                    width - step_count * 2 * band.get('stepInsetMetres', 0) <= .1):
+                raise ValueError('Reviewed facade opening does not fit its authored band')
+            tiers = [(width, sill, head - step_count * step_height)]
+            for step in range(step_count):
+                tiers.append((width - (step + 1) * 2 * band['stepInsetMetres'],
+                              head - (step_count - step) * step_height,
+                              head - (step_count - step - 1) * step_height))
+            for bay in range(count):
+                profiled_opening(plane, bay * slot, (bay + 1) * slot, row_bottom, row_top,
+                                 tiers, band['material'], profile, lod)
+                openings += 1
+    return {'openings': openings + protected_openings,
+            'recesses': openings + (protected_openings if lod == 'near' else 0)}
 
 
 def market_frontage_geometry(plane, height, base_height, recipe, lod):
@@ -317,8 +407,13 @@ def building_geometry(feature, recipe, lod, source_index, batches):
                     arcade_edges = recipe.get('arcadeFacadeEdges', [])
                     is_arcade = [polygon_index, ring_index, edge_index] in arcade_edges
                     selected_recipe = recipe['arcadeRecipe'] if is_arcade else recipe
-                    detail = (market_frontage_geometry if is_arcade else facade_geometry)(
-                        plane, top, bottom, selected_recipe, lod)
+                    override = next((item for item in feature.get('facadeOverrides', [])
+                                     if item['face'] == [polygon_index, ring_index, edge_index]), None)
+                    if override:
+                        detail = reviewed_facade_geometry(plane, top, bottom, selected_recipe, lod, override)
+                    else:
+                        detail = (market_frontage_geometry if is_arcade else facade_geometry)(
+                            plane, top, bottom, selected_recipe, lod)
                     for key in ('openings', 'recesses'):
                         totals[key] += detail[key]
                 else:

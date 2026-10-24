@@ -1,0 +1,2008 @@
+{
+  "sourceReport": "artifacts/neighborhood-20261024/qa/candidate-11-neighbor274-baseline/neighborhood-result.json",
+  "sourceSha256": "325abe1a5ec772f0eb0284aebf7a047feac4111b9ce3450bb7ff0ae25258f500",
+  "driverSha256": "aa4c5b0096836627f15b0aaa6135b954c3e195c0c3e31dc5d230e454bc9eefa1",
+  "scenario": "source274-prior-e001",
+  "inputs": [
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          164.93572934600823,
+          2.7050276936736655,
+          -1.8563892761612206
+        ],
+        "viewTarget": [
+          174.862,
+          1.5,
+          -1.9870000000000005
+        ],
+        "azimuth": -1.557639
+      },
+      "after": {
+        "position": [
+          164.97791419090404,
+          2.7050276936736646,
+          -1.0635521260471514
+        ],
+        "viewTarget": [
+          174.862,
+          1.5,
+          -1.9870000000000005
+        ],
+        "azimuth": -1.477639,
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 10.000000000000021,
+          "actualDistance": 10.000000000000021,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.1922113316796361,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          164.97791419090404,
+          2.7050276936736646,
+          -1.0635521260471514
+        ],
+        "viewTarget": [
+          174.862,
+          1.5,
+          -1.9870000000000005
+        ],
+        "azimuth": -1.477639
+      },
+      "after": {
+        "position": [
+          165.08332345449506,
+          2.7050276936736637,
+          -0.27662189096332845
+        ],
+        "viewTarget": [
+          174.862,
+          1.5,
+          -1.9870000000000005
+        ],
+        "azimuth": -1.397639,
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 10.000000000000034,
+          "actualDistance": 10.000000000000034,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.19221133167963506,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          165.08332345449506,
+          2.7050276936736637,
+          -0.27662189096332845
+        ],
+        "viewTarget": [
+          174.862,
+          1.5,
+          -1.9870000000000005
+        ],
+        "azimuth": -1.397639
+      },
+      "after": {
+        "position": [
+          165.25128287721452,
+          2.7050276936736646,
+          0.4993677610679552
+        ],
+        "viewTarget": [
+          174.862,
+          1.5,
+          -1.9870000000000005
+        ],
+        "azimuth": -1.3176389999999998,
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 10.000000000000021,
+          "actualDistance": 10.000000000000021,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.1922113316796356,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          165.25128287721452,
+          2.7050276936736646,
+          0.4993677610679552
+        ],
+        "viewTarget": [
+          174.862,
+          1.5,
+          -1.9870000000000005
+        ],
+        "azimuth": -1.3176389999999998
+      },
+      "after": {
+        "position": [
+          167.6548536627794,
+          2.4257595085426837,
+          0.5070794998019896
+        ],
+        "viewTarget": [
+          174.862,
+          1.5,
+          -1.9870000000000005
+        ],
+        "azimuth": -1.2376390000000002,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 10.000000000000036,
+          "actualDistance": 7.6824749622177055,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.24908871963052454,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          167.6548536627794,
+          2.4257595085426837,
+          0.5070794998019896
+        ],
+        "viewTarget": [
+          174.862,
+          1.5,
+          -1.9870000000000005
+        ],
+        "azimuth": -1.2376390000000002
+      },
+      "after": {
+        "position": [
+          168.45429880077415,
+          2.3492734879391914,
+          0.8220729919760879
+        ],
+        "viewTarget": [
+          174.862,
+          1.5,
+          -1.9870000000000005
+        ],
+        "azimuth": -1.1576389999999999,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 7.682474962217701,
+          "actualDistance": 7.047750789445244,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.27105692941664894,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          168.45429880077415,
+          2.3492734879391914,
+          0.8220729919760879
+        ],
+        "viewTarget": [
+          174.862,
+          1.5,
+          -1.9870000000000005
+        ],
+        "azimuth": -1.1576389999999999
+      },
+      "after": {
+        "position": [
+          168.69927871962517,
+          1.9492734879391915,
+          1.3251582319124018
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -1.0776390000000007,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 7.047750789445255,
+          "actualDistance": 7.047750789445255,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.2747637607353546,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          168.69927871962517,
+          1.9492734879391915,
+          1.3251582319124018
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -1.0776390000000007
+      },
+      "after": {
+        "position": [
+          170.52964934397266,
+          1.7055137818856747,
+          0.4855820847574428
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9976390000000018,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 7.047750789445267,
+          "actualDistance": 5.0248951543984965,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.38427022606271566,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.05454153912482279,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.52964934397266,
+          1.7055137818856747,
+          0.4855820847574428
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9976390000000018
+      },
+      "after": {
+        "position": [
+          170.53925063266402,
+          1.7044876962311317,
+          0.4853474684955428
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9721805391248234,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.024895154398485,
+          "actualDistance": 5.016380116446,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.38491605808945534,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.07908523173099305,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.53925063266402,
+          1.7044876962311317,
+          0.4853474684955428
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9721805391248234
+      },
+      "after": {
+        "position": [
+          170.54882065132304,
+          1.7034654174886823,
+          0.4851129540202068
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9712657708558142,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.016380116445983,
+          "actualDistance": 5.00789667039892,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.38556165731607656,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.07908523173099305,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.54882065132304,
+          1.7034654174886823,
+          0.4851129540202068
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9712657708558142
+      },
+      "after": {
+        "position": [
+          170.54434750522975,
+          1.7034654174886827,
+          0.4772920861156269
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9703510025868076,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.007896670398925,
+          "actualDistance": 5.007896670398925,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.38556165731607867,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.08181230868723419,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.54434750522975,
+          1.7034654174886827,
+          0.4772920861156269
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9703510025868076
+      },
+      "after": {
+        "position": [
+          170.54660356762912,
+          1.7034654174886827,
+          0.4812407060026458
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9721633112740403,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.007896670398915,
+          "actualDistance": 5.007896670398915,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.3855616573160787,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.07908523173099305,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.54660356762912,
+          1.7034654174886827,
+          0.4812407060026458
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9721633112740403
+      },
+      "after": {
+        "position": [
+          170.54900058475718,
+          1.703446201285223,
+          0.48510853838269385
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9712485430050343,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.007896670398922,
+          "actualDistance": 5.007737203495702,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.38557381366258714,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.07908523173099305,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.54900058475718,
+          1.703446201285223,
+          0.48510853838269385
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9712485430050343
+      },
+      "after": {
+        "position": [
+          170.5445274463709,
+          1.7034462012852236,
+          0.4772879965801127
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9703337747360287,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.007737203495716,
+          "actualDistance": 5.007737203495716,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.3855738136625859,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.08181230868723419,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.5445274463709,
+          1.7034462012852236,
+          0.4772879965801127
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9703337747360287
+      },
+      "after": {
+        "position": [
+          170.54678350495396,
+          1.7034462012852236,
+          0.48123645186441744
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9721460834232631,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.007737203495717,
+          "actualDistance": 5.007737203495717,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.38557381366258714,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.07908523173099305,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.54678350495396,
+          1.7034462012852236,
+          0.48123645186441744
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9721460834232631
+      },
+      "after": {
+        "position": [
+          170.54918050715992,
+          1.7034269864248097,
+          0.4851041227813524
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9712313151542575,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.007737203495728,
+          "actualDistance": 5.007577747737873,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.3855859699262883,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.07908523173099305,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.54918050715992,
+          1.7034269864248097,
+          0.4851041227813524
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9712313151542575
+      },
+      "after": {
+        "position": [
+          170.5447073764806,
+          1.7034269864248097,
+          0.4772839070607775
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9703165468852505,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.007577747737874,
+          "actualDistance": 5.007577747737874,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.3855859699262904,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.08181230868723419,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.5447073764806,
+          1.7034269864248097,
+          0.4772839070607775
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9703165468852505
+      },
+      "after": {
+        "position": [
+          170.54696343124743,
+          1.70342698642481,
+          0.4812321977524614
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9721288555724837,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.007577747737866,
+          "actualDistance": 5.007577747737866,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.38558596992629035,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.07908523173099305,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.54696343124743,
+          1.70342698642481,
+          0.4812321977524614
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9721288555724837
+      },
+      "after": {
+        "position": [
+          170.5493604185323,
+          1.7034077729073278,
+          0.48509970721625084
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9712140873034789,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.007577747737883,
+          "actualDistance": 5.007418303124428,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.3855981261071739,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.07908523173099305,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.5493604185323,
+          1.7034077729073278,
+          0.48509970721625084
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9712140873034789
+      },
+      "after": {
+        "position": [
+          170.54488729555987,
+          1.7034077729073274,
+          0.4772798175576898
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9702993190344716,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.007418303124424,
+          "actualDistance": 5.007418303124424,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.3855981261071739,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.08181230868723419,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.54488729555987,
+          1.7034077729073274,
+          0.4772798175576898
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9702993190344716
+      },
+      "after": {
+        "position": [
+          170.5471433465105,
+          1.7034077729073278,
+          0.48122794366684385
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9721116277217041,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.0074183031244095,
+          "actualDistance": 5.0074183031244095,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.3855981261071717,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.07908523173099305,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.5471433465105,
+          1.7034077729073278,
+          0.48122794366684385
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9721116277217041
+      },
+      "after": {
+        "position": [
+          170.5495403188754,
+          1.7033885607326447,
+          0.4850952916873932
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9711968594526971,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.00741830312441,
+          "actualDistance": 5.00725886965426,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.3856102822052296,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.07908523173099305,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.5495403188754,
+          1.7033885607326447,
+          0.4850952916873932
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9711968594526971
+      },
+      "after": {
+        "position": [
+          170.54506720360982,
+          1.7033885607326447,
+          0.47727572807086016
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9702820911836898,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.007258869654257,
+          "actualDistance": 5.007258869654257,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.38561028220522753,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.08181230868723419,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.54506720360982,
+          1.7033885607326447,
+          0.47727572807086016
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9702820911836898
+      },
+      "after": {
+        "position": [
+          170.54732325074423,
+          1.7033885607326442,
+          0.48122368960757145
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9720943998709248,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.0072588696542635,
+          "actualDistance": 5.0072588696542635,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.38561028220522964,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.07908523173099305,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.54732325074423,
+          1.7033885607326442,
+          0.48122368960757145
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9720943998709248
+      },
+      "after": {
+        "position": [
+          170.54972020819028,
+          1.7033693499006237,
+          0.48509087619476166
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9711796316019193,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.007258869654271,
+          "actualDistance": 5.0070994473262935,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.3856224382204561,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.07908523173099305,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.54972020819028,
+          1.7033693499006237,
+          0.48509087619476166
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9711796316019193
+      },
+      "after": {
+        "position": [
+          170.5452471006315,
+          1.703369349900623,
+          0.4772716386002709
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9702648633329125,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.007099447326296,
+          "actualDistance": 5.007099447326296,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.38562243822045383,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.08181230868723419,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.5452471006315,
+          1.703369349900623,
+          0.4772716386002709
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9702648633329125
+      },
+      "after": {
+        "position": [
+          170.54750314394974,
+          1.7033693499006226,
+          0.48121943557463087
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9720771720201473,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.007099447326303,
+          "actualDistance": 5.007099447326303,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.38562243822045394,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.07908523173099305,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.54750314394974,
+          1.7033693499006226,
+          0.48121943557463087
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9720771720201473
+      },
+      "after": {
+        "position": [
+          170.5499000864781,
+          1.7033501404111346,
+          0.48508646073837136
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9711624037511396,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.007099447326297,
+          "actualDistance": 5.006940036139406,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.38563459415285173,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.07908523173099305,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.5499000864781,
+          1.7033501404111346,
+          0.48508646073837136
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9711624037511396
+      },
+      "after": {
+        "position": [
+          170.5454269866261,
+          1.7033501404111342,
+          0.47726754914593617
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9702476354821333,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.006940036139412,
+          "actualDistance": 5.006940036139412,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.38563459415284956,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.08181230868723419,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.5454269866261,
+          1.7033501404111342,
+          0.47726754914593617
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9702476354821333
+      },
+      "after": {
+        "position": [
+          170.54768302612817,
+          1.7033501404111346,
+          0.4812151815680292
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9720599441693658,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.006940036139398,
+          "actualDistance": 5.006940036139398,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.3856345941528518,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.07908523173099305,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.54768302612817,
+          1.7033501404111346,
+          0.4812151815680292
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9720599441693658
+      },
+      "after": {
+        "position": [
+          170.55007995373992,
+          1.7033309322640424,
+          0.4850820453182054
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9711451759003594,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.006940036139402,
+          "actualDistance": 5.0067806360924765,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.3856467500024087,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.07908523173099305,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.55007995373992,
+          1.7033309322640424,
+          0.4850820453182054
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9711451759003594
+      },
+      "after": {
+        "position": [
+          170.54560686159465,
+          1.7033309322640429,
+          0.47726345970784356
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9702304076313534,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.006780636092482,
+          "actualDistance": 5.006780636092482,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.3856467500024109,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.08181230868723419,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.54560686159465,
+          1.7033309322640429,
+          0.47726345970784356
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9702304076313534
+      },
+      "after": {
+        "position": [
+          170.54786289728057,
+          1.703330932264043,
+          0.4812109275877563
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9720427163185869,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.006780636092475,
+          "actualDistance": 5.006780636092475,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.38564675000240867,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.07908523173099305,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.54786289728057,
+          1.703330932264043,
+          0.4812109275877563
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9720427163185869
+      },
+      "after": {
+        "position": [
+          170.55025980997692,
+          1.7033117254592138,
+          0.48507762993426073
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9711279480495786,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.006780636092468,
+          "actualDistance": 5.006621247184391,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.385658905769132,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.07908523173099305,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.55025980997692,
+          1.7033117254592138,
+          0.48507762993426073
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9711279480495786
+      },
+      "after": {
+        "position": [
+          170.5457867255383,
+          1.7033117254592138,
+          0.4772593702859931
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9702131797805715,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.006621247184391,
+          "actualDistance": 5.006621247184391,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.38565890576912976,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.08181230868723419,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.5457867255383,
+          1.7033117254592138,
+          0.4772593702859931
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9702131797805715
+      },
+      "after": {
+        "position": [
+          170.5480427574081,
+          1.703311725459213,
+          0.48120667363381076
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9720254884678063,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.006621247184395,
+          "actualDistance": 5.006621247184395,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.38565890576912976,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.07908523173099305,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.5480427574081,
+          1.703311725459213,
+          0.48120667363381076
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9720254884678063
+      },
+      "after": {
+        "position": [
+          170.55043965519008,
+          1.703292519996523,
+          0.4850732145865764
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.971110720198797,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.006621247184374,
+          "actualDistance": 5.006461869414131,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.3856710614530027,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.07908523173099305,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.55043965519008,
+          1.703292519996523,
+          0.4850732145865764
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.971110720198797
+      },
+      "after": {
+        "position": [
+          170.5459665784581,
+          1.7032925199965239,
+          0.4772552808804238
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9701959519297889,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.006461869414121,
+          "actualDistance": 5.006461869414121,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.3856710614530048,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.08181230868723419,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.5459665784581,
+          1.7032925199965239,
+          0.4772552808804238
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9701959519297889
+      },
+      "after": {
+        "position": [
+          170.54822260651179,
+          1.7032925199965243,
+          0.4812024197062321
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9720082606170224,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.006461869414115,
+          "actualDistance": 5.006461869414115,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.3856710614530048,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.07908523173099305,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.54822260651179,
+          1.7032925199965243,
+          0.4812024197062321
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9720082606170224
+      },
+      "after": {
+        "position": [
+          170.5506194893806,
+          1.7032733158758249,
+          0.4850687992750835
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9710934923480148,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.0064618694141085,
+          "actualDistance": 5.006302502780454,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.3856832170540345,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.07908523173099305,
+          "settling": false
+        }
+      }
+    },
+    {
+      "key": "l",
+      "position": {
+        "x": 174.862,
+        "y": 1.987,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600891662:4600891664",
+        "edgeDistance": 79.474582
+      },
+      "before": {
+        "position": [
+          170.5506194893806,
+          1.7032733158758249,
+          0.4850687992750835
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9710934923480148
+      },
+      "after": {
+        "position": [
+          170.5461464203552,
+          1.7032733158758244,
+          0.47725119149107
+        ],
+        "viewTarget": [
+          174.862,
+          1.1,
+          -1.987
+        ],
+        "azimuth": -0.9701787240790066,
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 5.0063025027804455,
+          "actualDistance": 5.0063025027804455,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.38568321705403236,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": -0.08181230868723419,
+          "settling": false
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "status": "producer-and-independent-export-audit-pass-browser-review-pending",
+  "candidate": "candidate12",
+  "assetDirectory": "artifacts/neighborhood-20261024/art/candidate-12-transport",
+  "manifestSha256": "86e4f424a36cb858c16f6e282ad8ceb8f146d6b285d482de3c0ce2fe2f726b61",
+  "baselineManifestSha256": "4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544",
+  "assetReports": {
+    "provenance.json": "4be84e2d9c2bbb50979ed6df2f591f61df0ad651c0e864ce6b1679b9d8fadb3c",
+    "compression-report.json": "1ce6611578011a92b1e2d397c4022ef897982911c1fa08352c990a89f69c1193",
+    "transport-report.json": "360fe8f1dc694d731d04186d49f690a2da09bf8ccf4f2cf67864f553f56cae67"
+  },
+  "preservedFiles": [
+    {"file":"candidate-12-source-proof.json","originalFile":"artifacts/neighborhood-20261024/art/candidate-12-source-proof.json","bytes":2101,"sha256":"bfc3b1f87f2bb3b1ac0d38a25e7563c6b2053c263f4ccbc6195289dd52e57350"},
+    {"file":"candidate-12-resource-audit.json","originalFile":"artifacts/neighborhood-20261024/art/candidate-12-resource-audit.json","bytes":35451,"sha256":"ced46aed7321bf7ee49d7ad87857cd452d44eb1fa72ca69135a01bd27bb9c95b"},
+    {"file":"check-candidate12-source.py","originalFile":"artifacts/neighborhood-20261024/art/check-candidate12-source.py","bytes":5126,"sha256":"d4fa83f5f949f9a53dbb5971e353cecef7ed40a501abc9de88da299464549c81"},
+    {"file":"audit-candidate12-resources.mjs","originalFile":"artifacts/neighborhood-20261024/art/audit-candidate12-resources.mjs","bytes":7781,"sha256":"18ab12c0e780f91e2433effc090ab25c586fda58328b864364222cd0ec75bc05"}
+  ],
+  "preservedBytes": 50459,
+  "encoding": "Unmodified original bytes; no compression or image transformation",
+  "executedAuditCommands": [
+    "python3 artifacts/neighborhood-20261024/art/check-candidate12-source.py > artifacts/neighborhood-20261024/art/candidate-12-source-proof.json",
+    "node artifacts/neighborhood-20261024/art/audit-candidate12-resources.mjs"
+  ],
+  "replay": "Restore the archived audit scripts to their recorded original paths and use the frozen producer/output paths. The scripts retain their executed path resolution and are not rewritten for the archive directory.",
+  "independentAudit": {
+    "file": "../../world/candidate12-export-audit.json",
+    "sha256": "ccba681ffcab6f0daa807c10d7e377e5553b6b608f0790b6df8df3ba24467b17",
+    "decodedContainers": 74,
+    "sectionSourceComparisons": 9731,
+    "gzipIdentities": 148
+  },
+  "critical3DTransfer": {
+    "dayBytes": 3037665,
+    "nightBytes": 3030429,
+    "limitBytes": 4194304,
+    "meaning": "Manifest, resident ground/context, opening BASE, deduplicated dependencies, traveller and selected HDR; page code/fonts and deferred sections are separate. Encoded transfer is distinct from decoded residency/GPU allocation."
+  },
+  "limits": [
+    "The pure source proof establishes generated face preservation; the independent audit covers actual decoded exported attributes/materials/transforms and walkable bytes.",
+    "Runtime diffuse-sheet shader behavior, frame cost and matched facade/roof appearance require the current candidate's actual browser review.",
+    "Source201 dimensions and finishes are authored from dated2021 evidence; source274 correspondence remains qualified and anonymous.",
+    "No whole-route realism, current facade-condition, measured optical-transmission or physical-device performance acceptance is established by these producer artifacts."
+  ]
+}

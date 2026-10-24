@@ -87,6 +87,57 @@ def validate_inputs(geography, style):
             if recipe[key] not in style['materials']:
                 raise ValueError('Unknown facade material: ' + recipe[key])
     source_features = {feature['sourceId']: feature for feature in geography['features']}
+    for source_id, override in style.get('sourceFacadeOverrides', {}).items():
+        feature = source_features[source_id]
+        evidence = override['evidence']
+        if sha256(ROOT / evidence['file']) != evidence['sha256']:
+            raise ValueError('Reviewed facade evidence changed: ' + evidence['file'])
+        review = json.loads((ROOT / evidence['file']).read_text())
+        for input_name in ('scene', 'geography'):
+            source = review[input_name]
+            if sha256(ROOT / source['file']) != source['sha256']:
+                raise ValueError('Reviewed facade source changed: ' + source['file'])
+        polygon_index, ring_index, edge_index = override['face']
+        polygon = feature['polygons'][polygon_index]
+        ring = ([polygon['outer']] + polygon.get('holes', []))[ring_index]
+        if (review['status'] != 'source-reviewed-bounded-authoring' or review['sourceId'] != source_id or
+                review['sourceIndex'] != override['expectedSourceIndex'] or feature['kind'] != override['expectedKind'] or
+                feature['height']['metres'] != override['expectedTopHeightMetres'] or
+                feature.get('baseHeightMetres', 0) != override['expectedBaseHeightMetres'] or
+                ring[edge_index] != override['expectedFrom'] or ring[edge_index + 1] != override['expectedTo'] or
+                review['approvedAuthoringScope']['allowedFace'] != override['face'] or
+                override['minimumChangedHeightMetres'] < review['approvedAuthoringScope']['minimumChangedHeightMetres']):
+            raise ValueError('Reviewed facade must retain its exact source face and protected ground extent')
+        reference = review['photographicReference']
+        if (reference['id'] not in override['referenceIds'] or
+                sha256(ROOT / reference['originalFile']) != reference['originalSha256']):
+            raise ValueError('Reviewed facade photograph identity changed')
+        profile = override['profile']
+        if not 0 < profile['baseRecessMetres'] <= profile['nearRecessMetres'] <= .4:
+            raise ValueError('Reviewed facade recess must remain inside its source envelope')
+        previous = 0
+        for band in profile['bands']:
+            if (band['bottomRatio'] != previous or not previous < band['topRatio'] <= 1 or
+                    not isinstance(band['rows'], int) or band['rows'] < 1 or band['material'] not in style['materials']):
+                raise ValueError('Reviewed facade bands must completely partition the source height')
+            previous = band['topRatio']
+        if previous != 1 or not override.get('authored'):
+            raise ValueError('Reviewed facade requires complete bands and explicit authored dimensions')
+    for source_id, override in style.get('sourceThinSheets', {}).items():
+        feature = source_features[source_id]
+        reference = override['reference']
+        if (feature['kind'] != 'canopy' or feature['sourceVersion'] != override['expectedSourceVersion'] or
+                feature['topHeightMetres'] != override['expectedTopHeightMetres'] or
+                sha256(ROOT / reference['file']) != reference['sha256']):
+            raise ValueError('Reviewed colored-roof source or photograph changed')
+        sheet = override['thinSheet']
+        if (sheet['sourceId'] != source_id or sheet['sourceIndex'] != override['expectedSourceIndex'] or
+                sheet['pairedVerticalOffsetMetres'] != .045 or not 0 <= sheet['diffuseTransmission'] <= 1 or
+                len(sheet['transmissionColor']) != 3 or any(not 0 <= value <= 1 for value in sheet['transmissionColor'])):
+            raise ValueError('Reviewed thin sheet must retain the existing paired geometry and bounded response')
+        for original, replacement in override['materials'].items():
+            if style['materials'][original]['metresPerRepeat'] != style['materials'][replacement]['metresPerRepeat']:
+                raise ValueError('Thin sheet material roles must retain the original UV scale')
     for source_id, override in style.get('sourceMaterialOverrides', {}).items():
         feature = source_features[source_id]
         if (feature['kind'] != override['expectedKind'] or feature['kind'] != 'canopy' or
@@ -249,6 +300,8 @@ def create_materials(style, asset_dir):
                 shutil.copyfile(source, destination)
             elif name in generated:
                 destination = generated[name][generated_key]
+            elif specification.get('textureSource'):
+                destination = generated[specification['textureSource']][generated_key]
             else:
                 continue
             image = bpy.data.images.load(str(destination), check_existing=True)
@@ -260,6 +313,21 @@ def create_materials(style, asset_dir):
                 normal.inputs['Strength'].default_value = specification.get('normalStrength', .4)
                 material.node_tree.links.new(texture.outputs['Color'], normal.inputs['Color'])
                 material.node_tree.links.new(normal.outputs['Normal'], bsdf.inputs[socket_name])
+            elif key == 'baseColor' and specification.get('textureSource'):
+                # 新材质复用已有原创贴图；线性色因子只改变指定材质，不修改共享图像。
+                original = linear_rgb(style['materials'][specification['textureSource']]['color'])
+                factor = [value / basis for value, basis in zip(color, original)]
+                if any(not 0 <= value <= 1 for value in factor):
+                    raise ValueError('Shared material tint must fit the glTF base-color factor range')
+                multiply = material.node_tree.nodes.new('ShaderNodeMix')
+                multiply.data_type = 'RGBA'
+                multiply.blend_type = 'MULTIPLY'
+                multiply.inputs[0].default_value = 1
+                color_a = next(socket for socket in multiply.inputs if socket.identifier == 'A_Color')
+                color_b = next(socket for socket in multiply.inputs if socket.identifier == 'B_Color')
+                color_b.default_value = (*factor, 1)
+                material.node_tree.links.new(texture.outputs['Color'], color_a)
+                material.node_tree.links.new(next(socket for socket in multiply.outputs if socket.type == 'RGBA'), bsdf.inputs[socket_name])
             else:
                 material.node_tree.links.new(texture.outputs['Color'], bsdf.inputs[socket_name])
             resource_paths.add(destination)
@@ -294,6 +362,16 @@ def make_mesh(name, data, material, metres_per_repeat, feature_table, extras):
     obj['sourceIndexLookup'] = 'manifest.featureTable'
     obj['sourceIndexAttribute'] = '_SOURCE_INDEX'
     return obj
+
+
+def canopy_extras(identifier, lod, material_name, data, style):
+    extras = {'cellId': identifier, 'detailLevel': lod, 'occlusionGroup': 'Canopy_' + identifier}
+    for override in style.get('sourceThinSheets', {}).values():
+        if material_name in override['materials'].values():
+            if set(data.source_indices) != {float(override['expectedSourceIndex'])}:
+                raise ValueError('A diffuse-sheet batch must contain only its reviewed roof source')
+            extras['thinSheet'] = override['thinSheet']
+    return extras
 
 
 def export_asset(path, objects, asset_dir, resource_paths, max_bytes):
@@ -364,6 +442,8 @@ def prepare_features(scene, geography, style, prepared, boundary_closures):
         if feature['sourceId'] in style.get('sourceMaterialOverrides', {}):
             # 材质覆盖只更改指定屋顶的表面；坐标、UV 比例和碰撞体保持原样。
             feature['roofMaterial'] = style['sourceMaterialOverrides'][feature['sourceId']]['roofMaterial']
+        if feature['sourceId'] in style.get('sourceThinSheets', {}):
+            feature['roofRoleMaterials'] = style['sourceThinSheets'][feature['sourceId']]['materials']
         if feature['kind'] == 'building':
             bounds = bounds_of([feature])
             center = ((bounds['minX'] + bounds['maxX']) / 2, (bounds['minY'] + bounds['maxY']) / 2)
@@ -385,6 +465,11 @@ def prepare_features(scene, geography, style, prepared, boundary_closures):
             for edge in feature['arcadeFacadeEdges']:
                 if edge not in feature['facadeEdges']:
                     feature['facadeEdges'].append(edge)
+            if feature['sourceId'] in style.get('sourceFacadeOverrides', {}):
+                override = style['sourceFacadeOverrides'][feature['sourceId']]
+                if override['face'] not in feature['facadeEdges'] or override['face'] in feature['arcadeFacadeEdges']:
+                    raise ValueError('Reviewed facade override must select an existing ordinary street face')
+                feature['facadeOverrides'] = [override]
             treatment = style.get('sourceTreatmentOverrides', {}).get(feature['sourceId'])
             if treatment:
                 # 单项来源分类限定开放构造；支撑和顶棚厚度保留明确的作者说明。
@@ -632,6 +717,10 @@ def main():
     for source_id, override in style.get('sourceBoundaryClosures', {}).items():
         if source_indices[source_id] != override['expectedSourceIndex']:
             raise ValueError('Reviewed boundary source index changed: ' + source_id)
+    for group in ('sourceFacadeOverrides', 'sourceThinSheets'):
+        for source_id, override in style.get(group, {}).items():
+            if source_indices[source_id] != override['expectedSourceIndex']:
+                raise ValueError('Reviewed facade/roof source index changed: ' + source_id)
     for surface in geography['surfaces'] + prepared.get('displayMaterialSurfaces', []):
         if surface['sourceId'] not in source_indices:
             source_indices[surface['sourceId']] = len(feature_table)
@@ -754,7 +843,7 @@ def main():
                        for name, data in batches.items() if data.faces] + extra_objects
             objects.extend(make_mesh(identifier + '_' + lod + '_Canopy_' + name, data, materials[name],
                                      style['materials'][name]['metresPerRepeat'], feature_table,
-                                     {'cellId': identifier, 'detailLevel': lod, 'occlusionGroup': 'Canopy_' + identifier})
+                                     canopy_extras(identifier, lod, name, data, style))
                            for name, data in canopy_batches.items() if data.faces)
             if river_context and identifier == river_context['source']['attachmentCellId']:
                 river_groups = river_context_geometry(river_context, style)
@@ -807,11 +896,18 @@ def main():
                   'materialHelperSha256': sha256(Path(__file__).with_name('neighborhood_materials.py')),
                   'blenderVersion': bpy.app.version_string, 'elapsedSeconds': round(time.perf_counter() - started, 3),
                   'geometryMeaning': 'Source footprints and prepared surface polygons; reviewed original facade assemblies with explicit authored dimensions',
-                  'rights': 'source-ledger.json and references.json', 'referenceIds': sorted({reference for recipe in style['recipes'].values() for reference in recipe['referenceIds']}),
+                  'rights': 'source-ledger.json and references.json', 'referenceIds': sorted({reference for group in ('recipes', 'sourceFacadeOverrides', 'sourceThinSheets') for recipe in style.get(group, {}).values() for reference in recipe['referenceIds']}),
                   'retainedLandmarks': retained_provenance,
                   'authored': ['Facade bay counts and window dimensions', 'Material-family assignments on sourced building masses', 'Flat ground and display water/bridge heights', 'Canopy profile and source-adjacent soffit joins up to6m; exact construction widths unmeasured', 'Lower-storey market frontage assemblies without tenant correspondence', 'Bank vertical faces between existing authored ground/water heights', 'Torii/board/railing dimensions', 'Night fixtures, light intensity and emission'],
                   'sourceFramePreserved': True, 'originalPackAssetsChanged': False,
                   'visualAcceptance': 'requires actual browser route review'}
+    if style.get('sourceFacadeOverrides'):
+        provenance['sourceFacadeOverrides'] = [
+            {'sourceId': source_id, **override,
+             'evidenceRecord': json.loads((ROOT / override['evidence']['file']).read_text())}
+            for source_id, override in style['sourceFacadeOverrides'].items()]
+    if style.get('sourceThinSheets'):
+        provenance['sourceThinSheets'] = style['sourceThinSheets']
     if style.get('sourceMaterialOverrides'):
         provenance['sourceMaterialOverrides'] = [
             {'sourceId': source_id, **override,

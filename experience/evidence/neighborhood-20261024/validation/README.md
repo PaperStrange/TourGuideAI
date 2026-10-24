@@ -1,4 +1,29 @@
-# Candidate 11 local validation
+# Candidate 12 local validation
+
+The canonical build is frozen at `artifacts/neighborhood-20261024/candidate-12`:
+446 files / 96,953,857 bytes, package SHA256
+`e86aa1c715fb76cd111feae41a0383ee34005aefd64fe5c48eba7615676e5733`.
+Scenery: `86e4f424a36cb858c16f6e282ad8ceb8f146d6b285d482de3c0ce2fe2f726b61`.
+All **216 application tests**, **17 repository gates** and the canonical build pass.
+The regenerated 291,936-byte font has zero missing source glyphs. The complete
+inventory is preserved in `candidate-12-package.json`.
+
+| Output | Decoded SHA256 |
+| --- | --- |
+| `app-tests-12.txt.gz` | `08447ebdb47a94694a5a6a63fa2d7a86e9f15067931e8b89598d1c78ca20368f` |
+| `gates-12.txt.gz` | `43a16b6a9e37d69799f7f711f656ea8ae0dc879d15558f6b93f7d192cf632332` |
+| `build-12.txt.gz` | `6a8cd9c73449b15f88a3bae56e82568a09adf865eda67f8bce26b2ad0f0ed4ac` |
+| `fonts-12.txt.gz` | `56154c0c8ae1c16199f4eec93a7b5f188ed4def6c5a4a8aa970242dd48fbed06` |
+
+The independent asset audit `ccba681f…` passes all 74 sections, 9,731 source groups
+and 148 gzip identities, with exact protected geometry and walkable bytes. Root
+promoted its exact output and preserved the prior public directory at
+`artifacts/neighborhood-20261024/candidate-11-public-before-frontages`.
+The initial pre-font build and log remain separately preserved under
+`candidate-12-before-fonts` and `build-12-before-fonts.txt`; they are not this package.
+Native shader, appearance, guidance and performance acceptance remain pending.
+
+## Retained candidate 11 validation
 
 The current canonical build is frozen at `artifacts/neighborhood-20261024/candidate-11`:
 446 files / 96,813,522 bytes, package SHA256

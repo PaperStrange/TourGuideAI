@@ -36,7 +36,7 @@ let invitationNeedsConfirmation = false;
 let solo, soloPaused = false, restoring = false, keptRoute = false, mapViewToRestore = null, restoreGeneration = 0;
 let previewRepresentation = null, restoreController;
 let touchControls = matchMedia('(pointer: coarse)').matches, inputHelpDirty = false;
-let neighborhood, streamingState = null;
+let neighborhood, streamingState = null, cameraConstrained = false;
 const neighborhoodId = geography.id;
 const showingNeighborhood = () => mode === 'explore' && getPackForPlace(center)?.id === neighborhoodId;
 const currentRoute = () => showingNeighborhood() ? neighborhood?.getRoute() : routes[selectedRoute];
@@ -65,6 +65,7 @@ function markup() {
   <section id="walkable-places" class="walkable-places" aria-labelledby="walkable-heading"><span id="walkable-heading" class="small" data-copy="walkablePlaces"></span><div id="pack-options"></div></section>
   <div class="journey-layout"><section class="visual-column"><div class="preview-heading"><div><span id="preview-kind" class="eyebrow"></span><h2 id="preview-title"></h2></div><div class="preview-actions"><div id="lighting-controls" class="segmented"><button id="lighting-day" data-lighting="day" data-copy="day"></button><button id="lighting-night" data-lighting="night" data-copy="night"></button></div><button id="back-world" class="secondary" data-copy="backWorld" hidden></button></div></div>
   <div class="preview-frame"><div id="live-stage" tabindex="0" role="region"></div><div id="world-map" hidden></div><span id="inspection-cue" class="inspection-cue" aria-hidden="true" hidden></span><div class="preview-tools"><button id="preview-reset" data-copy="reset"></button></div><div id="scene-status" class="scene-status" role="status"></div><button id="scene-retry" class="primary scene-retry" data-copy="retry" hidden></button><div id="view-guidance" class="view-guidance"></div></div>
+  <p id="camera-guidance" class="small camera-guidance" role="status" aria-live="polite" hidden></p>
   <div class="preview-caption"><span id="preview-note"></span><a id="center-source" target="_blank" rel="noopener noreferrer" data-copy="source"></a></div>
   ${soloControlsMarkup()}
   <div id="center-actions" class="center-actions"><button id="street-map-toggle" class="secondary" hidden></button><button id="add-dream" class="primary" data-copy="addDream" hidden></button><a class="text-link" id="walk-link" href="./walk.html" data-copy="legacy"></a><a class="text-link" id="companion-link" href="./travel.html" data-copy="companion"></a></div>
@@ -144,6 +145,7 @@ function releaseScene() {
   neighborhood?.updateWalking(null);
   sceneGeneration++; sceneController?.abort(); sceneController = null; scenePromise = null;
   liveView?.destroy(); liveView = null; scenePackId = null; streamingState = null;
+  cameraConstrained = false; updateCameraGuidance();
   solo?.onInspection({ enabled: false, focus: null, selected: null });
 }
 async function ensureScene() {
@@ -164,6 +166,10 @@ async function ensureScene() {
       onStatus(value) { if (current()) { sceneState = value.status; updatePreviewCopy(); } },
       onState() { if (current()) updateNeighborhoodWalking(); },
       onInspectionChange(value) { if (current()) solo?.onInspection(value); },
+      onCameraConstraintChange(value) {
+        if (!current() || cameraConstrained === value) return;
+        cameraConstrained = value; updateCameraGuidance();
+      },
       onStreamingChange(value) {
         if (!current()) return;
         const previous = streamNotice(streamingState);
@@ -236,6 +242,15 @@ function streamNotice(state) {
     : state?.blocked ? 'streetSectionLoading' : failed ? 'streetDetailFailed' : '';
   return { failed, message };
 }
+function updateCameraGuidance() {
+  const element = $('#camera-guidance');
+  if (!element) return;
+  const visible = cameraConstrained && usesStreet() && sceneState === 'ready';
+  const message = visible ? t('viewConstrained') : '';
+  if (element.hidden !== !visible) element.hidden = !visible;
+  // 仅在状态或语言改变时更新提示，保留原有操作说明和焦点。
+  if (element.textContent !== message) element.textContent = message;
+}
 function updatePreviewCopy() {
   if (!$('#preview-kind')) return;
   inputHelpDirty = false;
@@ -247,6 +262,7 @@ function updatePreviewCopy() {
   $('#preview-note').textContent = street ? pack.description[locale] : t(world ? 'worldNote' : center.kind === 'country' ? 'countryNote' : 'areaNote');
   const touch = touchControls;
   $('#view-guidance').textContent = t(street ? touch ? 'walkTouchHelp' : 'walkHelp' : touch ? 'mapTouchHelp' : 'mapHelp');
+  updateCameraGuidance();
   $('#lighting-controls').hidden = !street; $('#preview-reset').hidden = !street;
   $('#back-world').hidden = mode !== 'together' || !localPreview;
   const kyoto = street && pack.id === 'shijo-karasuma';

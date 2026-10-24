@@ -8,8 +8,10 @@
     "stone": {"color":"#c1b9a9","roughness":0.8,"metresPerRepeat":2,"authored":"Original pale mineral finish; reference-informed material family."},
     "plaster": {"color":"#d6d1c4","roughness":0.88,"metresPerRepeat":2,"authored":"Original neutral plaster finish on source-derived geometry."},
     "tile-wall": {"color":"#b9b2a5","roughness":0.73,"metresPerRepeat":1.2,"authored":"Original small ceramic cladding pattern; individual building finish unverified."},
+    "daimaru-brown-tile": {"color":"#876752","roughness":0.73,"metresPerRepeat":1.2,"textureSource":"tile-wall","authored":"Original brown tint of the existing original ceramic maps, informed by the dated2021 source201 south-frontage photograph. Tile size and PBR parameters are authored; no photograph pixels."},
     "granite": {"color":"#9e9c94","roughness":0.65,"metresPerRepeat":1.4,"authored":"Original granular stone family; no photograph pixels."},
     "glass": {"color":"#78888d","roughness":0.17,"metalness":0.12,"coatWeight":0.65,"coatRoughness":0.08,"metresPerRepeat":3.2,"authored":"Opaque reflective glazing with original subtle blind variation; no interior claim."},
+    "frontage-dark-glass": {"color":"#46585f","roughness":0.17,"metalness":0.12,"coatWeight":0.25,"coatRoughness":0.12,"metresPerRepeat":3.2,"textureSource":"glass","authored":"Original dark tint of the existing glazing maps for the qualified anonymous western neighbor's upper ribbon windows. Reflectance is authored; no interior or measured night response is claimed."},
     "frame": {"color":"#4a4a43","roughness":0.33,"metalness":0.7,"metresPerRepeat":1,"authored":"Original anodised frame material."},
     "roof": {"color":"#626867","roughness":0.82,"metresPerRepeat":3,"authored":"Authored neutral roof surface on official LOD1 top planes."},
     "shinkyogoku-panel": {"color":"#d2d8d5","roughness":0.56,"metalness":0,"coatWeight":0.12,"coatRoughness":0.30,"normalStrength":0.12,"metresPerRepeat":3,"authored":"Original opaque PBR interpretation of the association-described pale polycarbonate roof. Hue, roughness and subtle three-metre panel variation are authored; the reference photo's exact location is unspecified. No photograph pixels or measured profile are used."},
@@ -25,6 +27,9 @@
     "arcade-red": {"color":"#a9574c","roughness":0.47,"metresPerRepeat":2,"authored":"Reference-informed red roof-panel family; no copied sign artwork."},
     "arcade-gold": {"color":"#cab85c","roughness":0.47,"metresPerRepeat":2,"authored":"Reference-informed yellow roof-panel family."},
     "arcade-green": {"color":"#718f75","roughness":0.47,"metresPerRepeat":2,"authored":"Reference-informed green roof-panel family."},
+    "nishiki-ridge-red": {"color":"#e25343","roughness":0.48,"metalness":0,"coatWeight":0.08,"metresPerRepeat":2,"authored":"Original red roof-only thin-sheet response informed by the reviewed Nishiki ridge. Optical coefficients and color are authored; zero emission and no measured transmission claim."},
+    "nishiki-ridge-gold": {"color":"#e7c43c","roughness":0.48,"metalness":0,"coatWeight":0.08,"metresPerRepeat":2,"authored":"Original yellow roof-only thin-sheet response; actual scene illumination drives the authored diffuse approximation, with no emission."},
+    "nishiki-ridge-green": {"color":"#37a365","roughness":0.48,"metalness":0,"coatWeight":0.08,"metresPerRepeat":2,"authored":"Original green roof-only thin-sheet response; actual scene illumination drives the authored diffuse approximation, with no emission."},
     "lamp": {"color":"#e6d5b6","roughness":0.6,"metresPerRepeat":1,"authored":"Authored lamp diffuser; emission does not imply operating hours."},
     "torii-paper": {"color":"#dedbd2","roughness":0.9,"metalness":0,"coatWeight":0,"metresPerRepeat":1,"authored":"Original opaque, matte, nonemissive paper response informed by the retained 2007 torii photograph. Color and roughness are authored; existing simplified hanging geometry and present-day decoration remain unmeasured. No photograph pixels."},
     "ink": {"color":"#393a34","roughness":0.82,"metresPerRepeat":1,"authored":"Original simple factual place lettering."}
@@ -35,6 +40,44 @@
     "urban-tile": {"wallMaterial":"tile-wall","roofMaterial":"roof","glassMaterial":"glass","frameMaterial":"frame","storeyHeightMetres":3.2,"bayWidthMetres":2.65,"recessMetres":0.16,"openingWidthRatio":0.58,"referenceIds":["tenmangu-street-2007"],"authored":"Reference-informed small ceramic finish, with authored bays and opening dimensions."},
     "market-front": {"wallMaterial":"plaster","roofMaterial":"roof","glassMaterial":"glass","frameMaterial":"wood","trimMaterial":"wood","storeyHeightMetres":3.05,"bayWidthMetres":3.05,"recessMetres":0.32,"openingWidthRatio":0.73,"groundSillMetres":0.14,"groundOpeningMetres":2.75,"marketFasciaTopMetres":3.85,"referenceIds":["nishiki-arcade-2025","nishiki-entrance-2026"],"authored":"Original varied lower-storey arcade assemblies on actual adjacent source facade edges; unlettered fascia, timber/metal framing and opaque recessed glazing do not identify shops or interiors."},
     "lane-timber": {"wallMaterial":"plaster","roofMaterial":"roof","glassMaterial":"glass","frameMaterial":"wood","trimMaterial":"wood","storeyHeightMetres":2.9,"bayWidthMetres":1.8,"recessMetres":0.22,"openingWidthRatio":0.59,"canopyHeightMetres":2.7,"canopyProjectionMetres":0.45,"canopyMaterial":"wood","referenceIds":["pontocho-city-description","pontocho-approach-2026"],"authored":"Original two-storey eave/lattice family derived from the municipal description; individual building elevations remain unverified."}
+  },
+  "sourceFacadeOverrides": {
+    "kyoto-city:bldg_943c9e01-9535-4980-a843-c3a80fed160b": {
+      "expectedSourceIndex":274,"expectedKind":"building","expectedTopHeightMetres":30.380000000000003,"expectedBaseHeightMetres":0,
+      "face":[0,0,2],"expectedFrom":[162.603,3.597],"expectedTo":[185.695,3.835],"minimumChangedHeightMetres":3.5,
+      "referenceIds":["daimaru-shijo-2021"],
+      "evidence":{"file":"experience/evidence/neighborhood-20261024/world/connector-fronts/anonymous-west-neighbor-approved.json","sha256":"feba0e468af8df64fb333fc8a62c311b3226807743fe8a4fc060a85bab69deac"},
+      "profile": {
+        "bayWidthMetres":3.2,"nearRecessMetres":0.12,"baseRecessMetres":0.06,"frameWidthMetres":0.035,"frameMaterial":"frame","glassMaterial":"frontage-dark-glass",
+        "bands":[{"bottomRatio":0,"topRatio":1,"material":"plaster","rows":7,"sillMetres":0.7,"headMarginMetres":0.7,"openingHeightMetres":2.35,"openingWidthMetres":3.0}]
+      },
+      "authored":"Qualified adjacency-based interpretation of the dated2021 anonymous western neighbor: upper pale horizontal bands and dark ribbon glazing only. Band count, opening divisions and finish are authored. All original faces intersecting below3.5m and the crossing wall panel remain complete; roof/cornice, other edges, source envelope, navigation and canopies remain unchanged. No building/tenant identity or current-condition claim."
+    },
+    "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600": {
+      "expectedSourceIndex":201,"expectedKind":"building","expectedTopHeightMetres":33.49100000000001,"expectedBaseHeightMetres":0,
+      "face":[0,0,3],"expectedFrom":[185.979,4.407],"expectedTo":[258.326,5.035],"minimumChangedHeightMetres":3.5,
+      "referenceIds":["daimaru-shijo-2021"],
+      "evidence":{"file":"experience/evidence/neighborhood-20261024/world/connector-fronts/daimaru-source-review.json","sha256":"93bc46595c9ec5b3b42707c351670968592e13af2190da208d22760aab33945b"},
+      "profile": {
+        "bayWidthMetres":3.6,"nearRecessMetres":0.20,"baseRecessMetres":0.06,"frameWidthMetres":0.045,"frameMaterial":"frame","glassMaterial":"glass",
+        "bands":[
+          {"bottomRatio":0,"topRatio":0.24,"material":"stone","rows":1,"sillMetres":0.65,"headMarginMetres":0.45,"openingHeightMetres":2.9,"openingWidthMetres":0.95,"headSteps":3,"stepHeightMetres":0.12,"stepInsetMetres":0.1},
+          {"bottomRatio":0.24,"topRatio":0.78,"material":"daimaru-brown-tile","rows":4,"sillMetres":1.1,"headMarginMetres":0.6,"openingHeightMetres":1.85,"openingWidthMetres":1.40},
+          {"bottomRatio":0.78,"topRatio":1,"material":"plaster","rows":2,"sillMetres":0.65,"headMarginMetres":0.55,"openingHeightMetres":2.25,"openingWidthMetres":1.55}
+        ]
+      },
+      "authored":"Only the reviewed source201 south edge receives source-associated stone/tile bands and stepped-head openings. Band ratios, bay rhythm, recess depth and finish are authored. Original faces below3.5m and any crossing wall panel are preserved completely, with new treatment starting at that panel's existing top. Original roof/cornice, other edges, source identity and navigation remain unchanged. Ground passage arches, central grille placement, lettering and tenant details are outside this treatment."
+    }
+  },
+  "sourceThinSheets": {
+    "osm:way:772134672": {
+      "expectedSourceIndex":139,"expectedSourceVersion":9,"expectedTopHeightMetres":5,
+      "materials":{"arcade-red":"nishiki-ridge-red","arcade-gold":"nishiki-ridge-gold","arcade-green":"nishiki-ridge-green"},
+      "thinSheet":{"version":1,"role":"nishiki-colored-roof","sourceId":"osm:way:772134672","sourceIndex":139,"pairedVerticalOffsetMetres":0.045,"diffuseTransmission":0.55,"transmissionColor":[1,1,1]},
+      "referenceIds":["nishiki-arcade-2025"],
+      "reference":{"file":"artifacts/neighborhood-20261021/art/references/nishiki-arcade-2025.png","sha256":"88b3befbe6bf974f3e44a71700c67d90388b46c6d0003a2db52debcb17a670d9"},
+      "authored":"Roof-role material reassignment only on the existing paired colored faces. Same-pass diffuse-sheet response uses actual directional shadowing and global environment/hemisphere illumination in both modes, with no emission or local sky-visibility bake. Thickness is the existing authored45mm vertical pairing, not a measured roof thickness. All positions/normals/UVs/indices and source identities remain unchanged; red entrance trim, soffits and lamps retain their original materials."
+    }
   },
   "sourceMaterialOverrides": {
     "osm:way:551741577": {

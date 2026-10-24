@@ -58,3 +58,27 @@ node experience/evidence/neighborhood-20261024/world/audit-candidate11-export.mj
 ```
 
 The [audit producer](audit-candidate11-export.mjs) SHA256 is `0c9cc5811c9ae443270c666dade7538b731443c1bdd07fcf9ef4766d13eca534`.
+
+## Independent candidate12 export audit
+
+The [source-associated frontage records](connector-fronts/README.md) bound the approved source201 south edge3 and source274 south edge2 treatments. The [executed audit](candidate12-export-audit.json), SHA256 `ccba681ffcab6f0daa807c10d7e377e5553b6b608f0790b6df8df3ba24467b17`, passes against candidate11. Candidate12 manifest is `86e4f424a36cb858c16f6e282ad8ceb8f146d6b285d482de3c0ce2fe2f726b61`; provenance is `4be84e2d9c2bbb50979ed6df2f591f61df0ad651c0e864ce6b1679b9d8fadb3c`.
+
+All74 sections and9,731 source groups were independently decoded. Both facade LODs preserve every original triangle intersecting below3.5m, complete inherited crossing panels, roof/cornice, other edges and their complete source envelopes. The decoded inherited seams are3.836241722m for201 and3.827879906m for274. Changed triangles remain on the approved upper faces, within authored inward recess limits of0.06m BASE and0.20m/0.12m NEAR respectively. Regional membership allows20 micrometres for source-to-float32 rounding; protected triangle attributes/materials/transforms remain exact. Combined BASE triangle count increases by2,648; combined NEAR decreases by2,780.
+
+Nishiki source139 retains exact oriented triangles, positions, normals, UVs, source values, world transforms and entrance-trim material. Only its existing colored roof faces receive the three dedicated material roles. Ten sections contain the verified paired opposite-normal roof vertices; maximum deviation from the existing authored45mm separation is0.0000000763m. Role metadata is source-specific, with diffuse fraction0.55, zero ordinary transmission/emission and metalness0. These optical values and roof separation are authored; they establish no measured roof construction or current lighting.
+
+Every unrelated source retains exact decoded attributes/materials/transforms/metadata, including the prior platform, paper and boundary corrections. Both resident walkable primitives retain byte-identical decoded attribute and index arrays. Canonical geography, scene, prepared geometry, navigation, feature table, river input, images/HDR and lighting remain unchanged. The347-file package has285 byte-identical files, with no new images. The additional dated photograph record and bilingual public credit identify Nryate,2021-03-14,CC BY-SA4.0; no photograph pixels enter the scene.
+
+All148 gzip resources decode to their declared originals; all74 validator reports contain zero errors. Every section meets its existing transfer limit. Required3D transfer is **3,037,665 bytes by day** and **3,030,429 bytes by night**, below4MiB. Decoded resource/memory totals remain separate. Application HTML/JavaScript/CSS/fonts and HTTP framing are excluded. Native day/night appearance and runtime timing require their separate acceptance checks.
+
+Reproduce using the pinned toolkit and a fresh ignored output directory:
+
+```bash
+node experience/evidence/neighborhood-20261024/world/audit-candidate12-export.mjs \
+  artifacts/neighborhood-20261024/art/candidate-11-transport \
+  artifacts/neighborhood-20261024/art/candidate-12-transport \
+  86e4f424a36cb858c16f6e282ad8ceb8f146d6b285d482de3c0ce2fe2f726b61 \
+  artifacts/neighborhood-20261024/world/candidate12-export-audit-repeat
+```
+
+The [audit producer](audit-candidate12-export.mjs) SHA256 is `f303e82bdeb27034b69d9d9a40e2969b193af1fe970920427ad6171f2ebba66f`. Its [regional checks](candidate12-regions.mjs) SHA256 is `4062b59def19dbeba81d8464044617595cc3eb75ee5bb6445778c999d6de23e6`. Container ordering and shared-resource list ordering are normalized for comparison while resource identities and decoded source attributes remain exact.

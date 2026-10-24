@@ -3,7 +3,7 @@ import { DEFAULT_PACK_ID } from '../packs/registry.js';
 
 // This adapter owns only a live presentation. Saving, attribution and sharing are
 // the application's responsibility; it never opens or mutates a Kyoto journey.
-export async function createPerspectiveView(host, { locale = 'en', onState, onStatus, onViewChange, onStreamingChange,
+export async function createPerspectiveView(host, { locale = 'en', onState, onStatus, onViewChange, onStreamingChange, onCameraConstraintChange,
   onInspectionChange, initialView, solo = false, packId = DEFAULT_PACK_ID, signal, initialLighting = 'day', qualityTier } = {}) {
   let game, latest = null, status = 'loading', currentView = null, destroyed = false;
   const snapshot = () => ({
@@ -23,6 +23,7 @@ export async function createPerspectiveView(host, { locale = 'en', onState, onSt
     },
     onInspectionChange(value) { if (!destroyed) onInspectionChange?.(value); },
     onStreamingChange(value) { if (!destroyed) onStreamingChange?.(value); },
+    onCameraConstraintChange(value) { if (!destroyed) onCameraConstraintChange?.(value); },
     onStatus(value) { status = value.status; onStatus?.(value); publish(); },
   });
   if (status !== 'ready') {

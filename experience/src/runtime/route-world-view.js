@@ -12,6 +12,7 @@ import { waitForTask } from './cancellation.js';
 import { PLAYER_RADIUS } from '../simulation/world.js';
 import { createCameraObstruction } from './camera-obstruction.js';
 import { estimateMaterialTextures } from './texture-memory.js';
+import { installThinSheetMaterials } from './thin-sheet-material.js';
 
 export async function createRouteWorldView(renderer, { pack, signal, onProgress, lightingMode = 'day',
   onLightingStatus, onInvalidate, onStreamingChange, initialPosition = pack.world.spawn, camera, qualityTier } = {}) {
@@ -133,6 +134,7 @@ export async function createRouteWorldView(renderer, { pack, signal, onProgress,
           for (const mesh of group.meshes) group.box.union(new THREE.Box3().setFromObject(mesh));
         }
         roots.set(root, { cell, level }); occluders.set(root, [...groups.values()]); lighting.addRoot(root);
+        root.userData.thinSheets = installThinSheetMaterials(root);
         await waitForTask(renderer.compileAsync(root, currentCamera, scene), ownerSignal); ownerSignal.throwIfAborted();
         scenery.add(root); inspection.addRoot(root); scene.updateMatrixWorld(true); cameraObstruction.addRoot(root); onInvalidate?.();
       },
@@ -241,7 +243,8 @@ export async function createRouteWorldView(renderer, { pack, signal, onProgress,
         streetMeshes: meshes, streetTriangles: triangles, meshes: meshes + residentMeshes, triangles: triangles + residentTriangles,
         residentMeshes, residentTriangles, markerCount: 0,
         walkableSurfaces: walkable.length, actorPosition: actor.position.toArray(), actorHeading: actor.rotation.y,
-        fadedGroups: [...fadedGroups], streaming: stream.snapshot(), architecturalMaterials: { policy: 'shared-pbr' } };
+        fadedGroups: [...fadedGroups], streaming: stream.snapshot(), architecturalMaterials: { policy: 'shared-pbr',
+          thinSheets: [...roots.keys()].flatMap(root => root.userData.thinSheets ?? []) } };
     },
     dispose,
   };

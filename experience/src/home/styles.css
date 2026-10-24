@@ -57,5 +57,6 @@
 .solo-dialog::backdrop{background:#18342b66}.solo-dialog h2{font-size:1.7rem}.solo-dialog label{display:block;font-size:.85rem;margin:18px 0 8px}
 .solo-dialog input,.solo-dialog textarea{width:100%;min-width:0;padding:12px;border:1px solid #c5cfc1;border-radius:5px;color:inherit;background:#f8f9f2;font:inherit}
 .solo-dialog-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px;margin-top:20px}
+.camera-guidance{margin:10px 0;padding:9px 12px;border-left:2px solid #78926a;background:#edf0e4;color:#4e6248;line-height:1.5;overflow-wrap:anywhere}
 @media(max-width:1100px){.search-panel{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:760px){.home-header{align-items:flex-start;gap:8px}.home-header .brand{white-space:nowrap}.home-header nav{flex-wrap:wrap;justify-content:flex-end}.home-header nav>a{display:block;order:1;flex-basis:100%;margin:0;min-height:32px;line-height:32px;text-align:right}}

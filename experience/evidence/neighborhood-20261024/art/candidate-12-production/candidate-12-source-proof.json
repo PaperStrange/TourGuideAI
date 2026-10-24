@@ -1,0 +1,67 @@
+{
+  "status": "pass-pure-source-proof",
+  "facades": [
+    {
+      "sourceId": "kyoto-city:bldg_943c9e01-9535-4980-a843-c3a80fed160b",
+      "lod": "base",
+      "priorTriangles": 1261,
+      "candidateTriangles": 1767,
+      "deltaTriangles": 506,
+      "protectedFacesExact": 78,
+      "removedFaces": 188,
+      "addedFaces": 441,
+      "allChangesOnSelectedUpperFace": true
+    },
+    {
+      "sourceId": "kyoto-city:bldg_943c9e01-9535-4980-a843-c3a80fed160b",
+      "lod": "near",
+      "priorTriangles": 6885,
+      "candidateTriangles": 6163,
+      "deltaTriangles": -722,
+      "protectedFacesExact": 358,
+      "removedFaces": 998,
+      "addedFaces": 637,
+      "allChangesOnSelectedUpperFace": true
+    },
+    {
+      "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+      "lod": "base",
+      "priorTriangles": 4261,
+      "candidateTriangles": 6403,
+      "deltaTriangles": 2142,
+      "protectedFacesExact": 247,
+      "removedFaces": 609,
+      "addedFaces": 1680,
+      "allChangesOnSelectedUpperFace": true
+    },
+    {
+      "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+      "lod": "near",
+      "priorTriangles": 21137,
+      "candidateTriangles": 19079,
+      "deltaTriangles": -2058,
+      "protectedFacesExact": 1007,
+      "removedFaces": 3509,
+      "addedFaces": 2480,
+      "allChangesOnSelectedUpperFace": true
+    }
+  ],
+  "roof": {
+    "base": {
+      "geometryExact": true,
+      "entranceTrimExact": true,
+      "triangles": 6020
+    },
+    "near": {
+      "geometryExact": true,
+      "entranceTrimExact": true,
+      "triangles": 7748
+    }
+  },
+  "producerFiles": {
+    "experience/art/neighborhood_mesh.py": "71ff6a129f53aa8c6af82b8293b46fc7bc4cffad2d5d7d11dd40dea336b19b41",
+    "experience/art/neighborhood_landmarks.py": "eb2ed6b4ded5a5102149945884b476304cccea562b0b804b92fae496846af64d",
+    "experience/art/neighborhood-style.json": "678c07eaa2e8d1938808f12cece529aa24e0fa0eb39b13de14cc3a6b2422475b",
+    "experience/art/build_neighborhood.py": "adaffca3bca72f79d655747a8dedd5e31a9d1532c685f3104a4a4ea7758a4c52"
+  }
+}

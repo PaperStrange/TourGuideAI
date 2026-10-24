@@ -85,6 +85,7 @@ def canopy_geometry(feature, lod, source_index, batches, structure_batches):
                 mid = (low + high) / 2
                 ridge_width = min(.7, (high - low) * .2)
                 color = ('arcade-red', 'arcade-gold', 'arcade-green')[int(x0 / 1.8) % 3]
+                color = feature.get('roofRoleMaterials', {}).get(color, color)
                 for yy0, zz0, yy1, zz1, material in [
                     (low, top - .35, mid - ridge_width, top - .35, 'roof'),
                     (mid - ridge_width, top - .35, mid, top + .15, color),

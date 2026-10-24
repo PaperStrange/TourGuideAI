@@ -270,7 +270,10 @@ export async function createGame(host, options = {}) {
     canvas = renderer.domElement;
     Object.assign(canvas.style, { display: 'block', width: '100%', height: '100%', touchAction: 'none', cursor: 'grab' });
     host.prepend(canvas); localize();
-    rig = createGuidedCamera(canvas, player, reducedMotion, invalidate, { solo, pack });
+    rig = createGuidedCamera(canvas, player, reducedMotion, invalidate, { solo, pack,
+      onConstraintChange(value) {
+        if (!destroyed && !abort.signal.aborted) options.onCameraConstraintChange?.(value);
+      } });
     if (initialView) rig.restorePose(initialView.camera, player);
     rig.setEnabled(false);
     const resize = () => {

@@ -1,0 +1,1358 @@
+{
+  "status": "pass",
+  "manifestSha256": "86e4f424a36cb858c16f6e282ad8ceb8f146d6b285d482de3c0ce2fe2f726b61",
+  "baselineManifestSha256": "4fb428b9d5b73274f0e64726cdf045f034e7be1823b8919f7ea6ef7d3bc09544",
+  "producerSha256": "18ab12c0e780f91e2433effc090ab25c586fda58328b864364222cd0ec75bc05",
+  "validatedContainers": 74,
+  "exactGzipRoundTrips": 148,
+  "sourceTableExact": true,
+  "sharedResourcesExact": true,
+  "addedImageBytes": 0,
+  "lightingRigExact": true,
+  "critical": {
+    "day": {
+      "commonBytes": 2569797,
+      "travellerBytes": 35556,
+      "hdrBytes": 432312,
+      "totalBytes": 3037665,
+      "headroomBytes": 1156639,
+      "limitBytes": 4194304
+    },
+    "night": {
+      "commonBytes": 2569797,
+      "travellerBytes": 35556,
+      "hdrBytes": 425076,
+      "totalBytes": 3030429,
+      "headroomBytes": 1163875,
+      "limitBytes": 4194304
+    }
+  },
+  "startupMeaning": "Manifest, resident ground/context, opening BASE and deduplicated dependencies plus traveller and selected HDR; page HTML/JS/CSS/fonts and deferred cells remain separate.",
+  "geometryChanges": [
+    {
+      "file": "ground.gltf",
+      "trianglesBefore": 10660,
+      "trianglesAfter": 10660,
+      "triangleDelta": 0,
+      "batchesBefore": 6,
+      "batchesAfter": 6,
+      "batchDelta": 0,
+      "transferBytes": 360963
+    },
+    {
+      "file": "context.gltf",
+      "trianglesBefore": 10202,
+      "trianglesAfter": 10202,
+      "triangleDelta": 0,
+      "batchesBefore": 11,
+      "batchesAfter": 11,
+      "batchDelta": 0,
+      "transferBytes": 187675
+    },
+    {
+      "file": "cells/cell-e000-s001/base.gltf",
+      "trianglesBefore": 19100,
+      "trianglesAfter": 19100,
+      "triangleDelta": 0,
+      "batchesBefore": 29,
+      "batchesAfter": 29,
+      "batchDelta": 0,
+      "transferBytes": 367139
+    },
+    {
+      "file": "cells/cell-e000-s001/near.gltf",
+      "trianglesBefore": 54290,
+      "trianglesAfter": 54290,
+      "triangleDelta": 0,
+      "batchesBefore": 30,
+      "batchesAfter": 30,
+      "batchDelta": 0,
+      "transferBytes": 633046
+    },
+    {
+      "file": "cells/cell-e000-n000/base.gltf",
+      "trianglesBefore": 32602,
+      "trianglesAfter": 32602,
+      "triangleDelta": 0,
+      "batchesBefore": 28,
+      "batchesAfter": 28,
+      "batchDelta": 0,
+      "transferBytes": 441761
+    },
+    {
+      "file": "cells/cell-e000-n000/near.gltf",
+      "trianglesBefore": 83639,
+      "trianglesAfter": 83639,
+      "triangleDelta": 0,
+      "batchesBefore": 30,
+      "batchesAfter": 30,
+      "batchDelta": 0,
+      "transferBytes": 1025443
+    },
+    {
+      "file": "cells/cell-e001-s001/base.gltf",
+      "trianglesBefore": 3639,
+      "trianglesAfter": 3639,
+      "triangleDelta": 0,
+      "batchesBefore": 7,
+      "batchesAfter": 7,
+      "batchDelta": 0,
+      "transferBytes": 31085
+    },
+    {
+      "file": "cells/cell-e001-s001/near.gltf",
+      "trianglesBefore": 16427,
+      "trianglesAfter": 16427,
+      "triangleDelta": 0,
+      "batchesBefore": 8,
+      "batchesAfter": 8,
+      "batchDelta": 0,
+      "transferBytes": 116357
+    },
+    {
+      "file": "cells/cell-e001-n000/base.gltf",
+      "trianglesBefore": 3209,
+      "trianglesAfter": 3715,
+      "triangleDelta": 506,
+      "batchesBefore": 5,
+      "batchesAfter": 6,
+      "batchDelta": 1,
+      "transferBytes": 25343
+    },
+    {
+      "file": "cells/cell-e001-n000/near.gltf",
+      "trianglesBefore": 16429,
+      "trianglesAfter": 15707,
+      "triangleDelta": -722,
+      "batchesBefore": 7,
+      "batchesAfter": 8,
+      "batchDelta": 1,
+      "transferBytes": 89944
+    },
+    {
+      "file": "cells/cell-e002-s001/base.gltf",
+      "trianglesBefore": 3346,
+      "trianglesAfter": 3346,
+      "triangleDelta": 0,
+      "batchesBefore": 5,
+      "batchesAfter": 5,
+      "batchDelta": 0,
+      "transferBytes": 24208
+    },
+    {
+      "file": "cells/cell-e002-s001/near.gltf",
+      "trianglesBefore": 16388,
+      "trianglesAfter": 16388,
+      "triangleDelta": 0,
+      "batchesBefore": 7,
+      "batchesAfter": 7,
+      "batchDelta": 0,
+      "transferBytes": 105585
+    },
+    {
+      "file": "cells/cell-e002-n000/base.gltf",
+      "trianglesBefore": 8204,
+      "trianglesAfter": 10346,
+      "triangleDelta": 2142,
+      "batchesBefore": 5,
+      "batchesAfter": 6,
+      "batchDelta": 1,
+      "transferBytes": 71365
+    },
+    {
+      "file": "cells/cell-e002-n000/near.gltf",
+      "trianglesBefore": 40256,
+      "trianglesAfter": 38198,
+      "triangleDelta": -2058,
+      "batchesBefore": 7,
+      "batchesAfter": 8,
+      "batchDelta": 1,
+      "transferBytes": 216834
+    },
+    {
+      "file": "cells/cell-e002-n001/base.gltf",
+      "trianglesBefore": 6152,
+      "trianglesAfter": 6152,
+      "triangleDelta": 0,
+      "batchesBefore": 17,
+      "batchesAfter": 17,
+      "batchDelta": 0,
+      "transferBytes": 80198
+    },
+    {
+      "file": "cells/cell-e002-n001/near.gltf",
+      "trianglesBefore": 23360,
+      "trianglesAfter": 23360,
+      "triangleDelta": 0,
+      "batchesBefore": 18,
+      "batchesAfter": 18,
+      "batchDelta": 0,
+      "transferBytes": 262768
+    },
+    {
+      "file": "cells/cell-e003-s001/base.gltf",
+      "trianglesBefore": 4759,
+      "trianglesAfter": 4759,
+      "triangleDelta": 0,
+      "batchesBefore": 4,
+      "batchesAfter": 4,
+      "batchDelta": 0,
+      "transferBytes": 32030
+    },
+    {
+      "file": "cells/cell-e003-s001/near.gltf",
+      "trianglesBefore": 23139,
+      "trianglesAfter": 23139,
+      "triangleDelta": 0,
+      "batchesBefore": 5,
+      "batchesAfter": 5,
+      "batchDelta": 0,
+      "transferBytes": 137189
+    },
+    {
+      "file": "cells/cell-e003-n000/base.gltf",
+      "trianglesBefore": 4505,
+      "trianglesAfter": 4505,
+      "triangleDelta": 0,
+      "batchesBefore": 5,
+      "batchesAfter": 5,
+      "batchDelta": 0,
+      "transferBytes": 36213
+    },
+    {
+      "file": "cells/cell-e003-n000/near.gltf",
+      "trianglesBefore": 20235,
+      "trianglesAfter": 20235,
+      "triangleDelta": 0,
+      "batchesBefore": 7,
+      "batchesAfter": 7,
+      "batchDelta": 0,
+      "transferBytes": 139983
+    },
+    {
+      "file": "cells/cell-e003-n001/base.gltf",
+      "trianglesBefore": 8238,
+      "trianglesAfter": 8238,
+      "triangleDelta": 0,
+      "batchesBefore": 16,
+      "batchesAfter": 16,
+      "batchDelta": 0,
+      "transferBytes": 111158
+    },
+    {
+      "file": "cells/cell-e003-n001/near.gltf",
+      "trianglesBefore": 27606,
+      "trianglesAfter": 27606,
+      "triangleDelta": 0,
+      "batchesBefore": 17,
+      "batchesAfter": 17,
+      "batchDelta": 0,
+      "transferBytes": 308403
+    },
+    {
+      "file": "cells/cell-e004-s001/base.gltf",
+      "trianglesBefore": 3125,
+      "trianglesAfter": 3125,
+      "triangleDelta": 0,
+      "batchesBefore": 5,
+      "batchesAfter": 5,
+      "batchDelta": 0,
+      "transferBytes": 19510
+    },
+    {
+      "file": "cells/cell-e004-s001/near.gltf",
+      "trianglesBefore": 15673,
+      "trianglesAfter": 15673,
+      "triangleDelta": 0,
+      "batchesBefore": 7,
+      "batchesAfter": 7,
+      "batchDelta": 0,
+      "transferBytes": 83179
+    },
+    {
+      "file": "cells/cell-e004-n000/base.gltf",
+      "trianglesBefore": 4789,
+      "trianglesAfter": 4789,
+      "triangleDelta": 0,
+      "batchesBefore": 5,
+      "batchesAfter": 5,
+      "batchDelta": 0,
+      "transferBytes": 37336
+    },
+    {
+      "file": "cells/cell-e004-n000/near.gltf",
+      "trianglesBefore": 23421,
+      "trianglesAfter": 23421,
+      "triangleDelta": 0,
+      "batchesBefore": 7,
+      "batchesAfter": 7,
+      "batchDelta": 0,
+      "transferBytes": 155211
+    },
+    {
+      "file": "cells/cell-e004-n001/base.gltf",
+      "trianglesBefore": 8811,
+      "trianglesAfter": 8811,
+      "triangleDelta": 0,
+      "batchesBefore": 16,
+      "batchesAfter": 16,
+      "batchDelta": 0,
+      "transferBytes": 120762
+    },
+    {
+      "file": "cells/cell-e004-n001/near.gltf",
+      "trianglesBefore": 29993,
+      "trianglesAfter": 29993,
+      "triangleDelta": 0,
+      "batchesBefore": 17,
+      "batchesAfter": 17,
+      "batchDelta": 0,
+      "transferBytes": 345815
+    },
+    {
+      "file": "cells/cell-e005-s001/base.gltf",
+      "trianglesBefore": 3114,
+      "trianglesAfter": 3114,
+      "triangleDelta": 0,
+      "batchesBefore": 4,
+      "batchesAfter": 4,
+      "batchDelta": 0,
+      "transferBytes": 25361
+    },
+    {
+      "file": "cells/cell-e005-s001/near.gltf",
+      "trianglesBefore": 15446,
+      "trianglesAfter": 15446,
+      "triangleDelta": 0,
+      "batchesBefore": 5,
+      "batchesAfter": 5,
+      "batchDelta": 0,
+      "transferBytes": 102623
+    },
+    {
+      "file": "cells/cell-e005-n000/base.gltf",
+      "trianglesBefore": 3804,
+      "trianglesAfter": 3804,
+      "triangleDelta": 0,
+      "batchesBefore": 5,
+      "batchesAfter": 5,
+      "batchDelta": 0,
+      "transferBytes": 33155
+    },
+    {
+      "file": "cells/cell-e005-n000/near.gltf",
+      "trianglesBefore": 18528,
+      "trianglesAfter": 18528,
+      "triangleDelta": 0,
+      "batchesBefore": 7,
+      "batchesAfter": 7,
+      "batchDelta": 0,
+      "transferBytes": 146735
+    },
+    {
+      "file": "cells/cell-e005-n001/base.gltf",
+      "trianglesBefore": 9398,
+      "trianglesAfter": 9398,
+      "triangleDelta": 0,
+      "batchesBefore": 16,
+      "batchesAfter": 16,
+      "batchDelta": 0,
+      "transferBytes": 133326
+    },
+    {
+      "file": "cells/cell-e005-n001/near.gltf",
+      "trianglesBefore": 31618,
+      "trianglesAfter": 31618,
+      "triangleDelta": 0,
+      "batchesBefore": 17,
+      "batchesAfter": 17,
+      "batchDelta": 0,
+      "transferBytes": 373959
+    },
+    {
+      "file": "cells/cell-e006-s001/base.gltf",
+      "trianglesBefore": 1340,
+      "trianglesAfter": 1340,
+      "triangleDelta": 0,
+      "batchesBefore": 5,
+      "batchesAfter": 5,
+      "batchDelta": 0,
+      "transferBytes": 18416
+    },
+    {
+      "file": "cells/cell-e006-s001/near.gltf",
+      "trianglesBefore": 5476,
+      "trianglesAfter": 5476,
+      "triangleDelta": 0,
+      "batchesBefore": 7,
+      "batchesAfter": 7,
+      "batchDelta": 0,
+      "transferBytes": 50945
+    },
+    {
+      "file": "cells/cell-e006-n000/base.gltf",
+      "trianglesBefore": 6986,
+      "trianglesAfter": 6986,
+      "triangleDelta": 0,
+      "batchesBefore": 8,
+      "batchesAfter": 8,
+      "batchDelta": 0,
+      "transferBytes": 87801
+    },
+    {
+      "file": "cells/cell-e006-n000/near.gltf",
+      "trianglesBefore": 27456,
+      "trianglesAfter": 27456,
+      "triangleDelta": 0,
+      "batchesBefore": 10,
+      "batchesAfter": 10,
+      "batchDelta": 0,
+      "transferBytes": 275842
+    },
+    {
+      "file": "cells/cell-e006-n001/base.gltf",
+      "trianglesBefore": 8224,
+      "trianglesAfter": 8224,
+      "triangleDelta": 0,
+      "batchesBefore": 17,
+      "batchesAfter": 17,
+      "batchDelta": 0,
+      "transferBytes": 109042
+    },
+    {
+      "file": "cells/cell-e006-n001/near.gltf",
+      "trianglesBefore": 29138,
+      "trianglesAfter": 29138,
+      "triangleDelta": 0,
+      "batchesBefore": 19,
+      "batchesAfter": 19,
+      "batchDelta": 0,
+      "transferBytes": 314932
+    },
+    {
+      "file": "cells/cell-e006-n002/base.gltf",
+      "trianglesBefore": 72,
+      "trianglesAfter": 72,
+      "triangleDelta": 0,
+      "batchesBefore": 3,
+      "batchesAfter": 3,
+      "batchDelta": 0,
+      "transferBytes": 3594
+    },
+    {
+      "file": "cells/cell-e006-n002/near.gltf",
+      "trianglesBefore": 72,
+      "trianglesAfter": 72,
+      "triangleDelta": 0,
+      "batchesBefore": 3,
+      "batchesAfter": 3,
+      "batchDelta": 0,
+      "transferBytes": 3594
+    },
+    {
+      "file": "cells/cell-e006-n003/base.gltf",
+      "trianglesBefore": 53,
+      "trianglesAfter": 53,
+      "triangleDelta": 0,
+      "batchesBefore": 3,
+      "batchesAfter": 3,
+      "batchDelta": 0,
+      "transferBytes": 3262
+    },
+    {
+      "file": "cells/cell-e006-n003/near.gltf",
+      "trianglesBefore": 53,
+      "trianglesAfter": 53,
+      "triangleDelta": 0,
+      "batchesBefore": 3,
+      "batchesAfter": 3,
+      "batchDelta": 0,
+      "transferBytes": 3262
+    },
+    {
+      "file": "cells/cell-e006-n004/base.gltf",
+      "trianglesBefore": 29,
+      "trianglesAfter": 29,
+      "triangleDelta": 0,
+      "batchesBefore": 3,
+      "batchesAfter": 3,
+      "batchDelta": 0,
+      "transferBytes": 2720
+    },
+    {
+      "file": "cells/cell-e006-n004/near.gltf",
+      "trianglesBefore": 29,
+      "trianglesAfter": 29,
+      "triangleDelta": 0,
+      "batchesBefore": 3,
+      "batchesAfter": 3,
+      "batchDelta": 0,
+      "transferBytes": 2720
+    },
+    {
+      "file": "cells/cell-e006-n005/base.gltf",
+      "trianglesBefore": 28,
+      "trianglesAfter": 28,
+      "triangleDelta": 0,
+      "batchesBefore": 2,
+      "batchesAfter": 2,
+      "batchDelta": 0,
+      "transferBytes": 2133
+    },
+    {
+      "file": "cells/cell-e006-n005/near.gltf",
+      "trianglesBefore": 28,
+      "trianglesAfter": 28,
+      "triangleDelta": 0,
+      "batchesBefore": 2,
+      "batchesAfter": 2,
+      "batchDelta": 0,
+      "transferBytes": 2135
+    },
+    {
+      "file": "cells/cell-e007-s001/base.gltf",
+      "trianglesBefore": 2995,
+      "trianglesAfter": 2995,
+      "triangleDelta": 0,
+      "batchesBefore": 5,
+      "batchesAfter": 5,
+      "batchDelta": 0,
+      "transferBytes": 23878
+    },
+    {
+      "file": "cells/cell-e007-s001/near.gltf",
+      "trianglesBefore": 14307,
+      "trianglesAfter": 14307,
+      "triangleDelta": 0,
+      "batchesBefore": 7,
+      "batchesAfter": 7,
+      "batchDelta": 0,
+      "transferBytes": 94610
+    },
+    {
+      "file": "cells/cell-e007-n000/base.gltf",
+      "trianglesBefore": 5082,
+      "trianglesAfter": 5082,
+      "triangleDelta": 0,
+      "batchesBefore": 7,
+      "batchesAfter": 7,
+      "batchDelta": 0,
+      "transferBytes": 57960
+    },
+    {
+      "file": "cells/cell-e007-n000/near.gltf",
+      "trianglesBefore": 22142,
+      "trianglesAfter": 22142,
+      "triangleDelta": 0,
+      "batchesBefore": 9,
+      "batchesAfter": 9,
+      "batchDelta": 0,
+      "transferBytes": 214446
+    },
+    {
+      "file": "cells/cell-e007-n001/base.gltf",
+      "trianglesBefore": 848,
+      "trianglesAfter": 848,
+      "triangleDelta": 0,
+      "batchesBefore": 5,
+      "batchesAfter": 5,
+      "batchDelta": 0,
+      "transferBytes": 14300
+    },
+    {
+      "file": "cells/cell-e007-n001/near.gltf",
+      "trianglesBefore": 3450,
+      "trianglesAfter": 3450,
+      "triangleDelta": 0,
+      "batchesBefore": 7,
+      "batchesAfter": 7,
+      "batchDelta": 0,
+      "transferBytes": 40164
+    },
+    {
+      "file": "cells/cell-e007-n003/base.gltf",
+      "trianglesBefore": 7,
+      "trianglesAfter": 7,
+      "triangleDelta": 0,
+      "batchesBefore": 2,
+      "batchesAfter": 2,
+      "batchDelta": 0,
+      "transferBytes": 1850
+    },
+    {
+      "file": "cells/cell-e007-n003/near.gltf",
+      "trianglesBefore": 7,
+      "trianglesAfter": 7,
+      "triangleDelta": 0,
+      "batchesBefore": 2,
+      "batchesAfter": 2,
+      "batchDelta": 0,
+      "transferBytes": 1851
+    },
+    {
+      "file": "cells/cell-e007-n004/base.gltf",
+      "trianglesBefore": 40,
+      "trianglesAfter": 40,
+      "triangleDelta": 0,
+      "batchesBefore": 2,
+      "batchesAfter": 2,
+      "batchDelta": 0,
+      "transferBytes": 2618
+    },
+    {
+      "file": "cells/cell-e007-n004/near.gltf",
+      "trianglesBefore": 40,
+      "trianglesAfter": 40,
+      "triangleDelta": 0,
+      "batchesBefore": 2,
+      "batchesAfter": 2,
+      "batchDelta": 0,
+      "transferBytes": 2620
+    },
+    {
+      "file": "cells/cell-e007-n005/base.gltf",
+      "trianglesBefore": 10,
+      "trianglesAfter": 10,
+      "triangleDelta": 0,
+      "batchesBefore": 2,
+      "batchesAfter": 2,
+      "batchDelta": 0,
+      "transferBytes": 1938
+    },
+    {
+      "file": "cells/cell-e007-n005/near.gltf",
+      "trianglesBefore": 10,
+      "trianglesAfter": 10,
+      "triangleDelta": 0,
+      "batchesBefore": 2,
+      "batchesAfter": 2,
+      "batchDelta": 0,
+      "transferBytes": 1938
+    },
+    {
+      "file": "cells/cell-e008-n000/base.gltf",
+      "trianglesBefore": 4990,
+      "trianglesAfter": 4990,
+      "triangleDelta": 0,
+      "batchesBefore": 5,
+      "batchesAfter": 5,
+      "batchDelta": 0,
+      "transferBytes": 40898
+    },
+    {
+      "file": "cells/cell-e008-n000/near.gltf",
+      "trianglesBefore": 22302,
+      "trianglesAfter": 22302,
+      "triangleDelta": 0,
+      "batchesBefore": 7,
+      "batchesAfter": 7,
+      "batchDelta": 0,
+      "transferBytes": 160339
+    },
+    {
+      "file": "cells/cell-e009-s001/base.gltf",
+      "trianglesBefore": 1469,
+      "trianglesAfter": 1469,
+      "triangleDelta": 0,
+      "batchesBefore": 8,
+      "batchesAfter": 8,
+      "batchDelta": 0,
+      "transferBytes": 13960
+    },
+    {
+      "file": "cells/cell-e009-s001/near.gltf",
+      "trianglesBefore": 7157,
+      "trianglesAfter": 7157,
+      "triangleDelta": 0,
+      "batchesBefore": 9,
+      "batchesAfter": 9,
+      "batchDelta": 0,
+      "transferBytes": 43528
+    },
+    {
+      "file": "cells/cell-e009-n000/base.gltf",
+      "trianglesBefore": 4382,
+      "trianglesAfter": 4382,
+      "triangleDelta": 0,
+      "batchesBefore": 6,
+      "batchesAfter": 6,
+      "batchDelta": 0,
+      "transferBytes": 46397
+    },
+    {
+      "file": "cells/cell-e009-n000/near.gltf",
+      "trianglesBefore": 17002,
+      "trianglesAfter": 17002,
+      "triangleDelta": 0,
+      "batchesBefore": 7,
+      "batchesAfter": 7,
+      "batchDelta": 0,
+      "transferBytes": 167727
+    },
+    {
+      "file": "cells/cell-e010-s001/base.gltf",
+      "trianglesBefore": 1338,
+      "trianglesAfter": 1338,
+      "triangleDelta": 0,
+      "batchesBefore": 5,
+      "batchesAfter": 5,
+      "batchDelta": 0,
+      "transferBytes": 16711
+    },
+    {
+      "file": "cells/cell-e010-s001/near.gltf",
+      "trianglesBefore": 5682,
+      "trianglesAfter": 5682,
+      "triangleDelta": 0,
+      "batchesBefore": 6,
+      "batchesAfter": 6,
+      "batchDelta": 0,
+      "transferBytes": 59280
+    },
+    {
+      "file": "cells/cell-e010-n000/base.gltf",
+      "trianglesBefore": 93266,
+      "trianglesAfter": 93266,
+      "triangleDelta": 0,
+      "batchesBefore": 256,
+      "batchesAfter": 256,
+      "batchDelta": 0,
+      "transferBytes": 1655375
+    },
+    {
+      "file": "cells/cell-e010-n000/near.gltf",
+      "trianglesBefore": 101120,
+      "trianglesAfter": 101120,
+      "triangleDelta": 0,
+      "batchesBefore": 256,
+      "batchesAfter": 256,
+      "batchDelta": 0,
+      "transferBytes": 1740513
+    },
+    {
+      "file": "cells/cell-e011-s001/base.gltf",
+      "trianglesBefore": 71,
+      "trianglesAfter": 71,
+      "triangleDelta": 0,
+      "batchesBefore": 2,
+      "batchesAfter": 2,
+      "batchDelta": 0,
+      "transferBytes": 3095
+    },
+    {
+      "file": "cells/cell-e011-s001/near.gltf",
+      "trianglesBefore": 71,
+      "trianglesAfter": 71,
+      "triangleDelta": 0,
+      "batchesBefore": 2,
+      "batchesAfter": 2,
+      "batchDelta": 0,
+      "transferBytes": 3096
+    },
+    {
+      "file": "cells/cell-e011-n000/base.gltf",
+      "trianglesBefore": 62,
+      "trianglesAfter": 62,
+      "triangleDelta": 0,
+      "batchesBefore": 2,
+      "batchesAfter": 2,
+      "batchDelta": 0,
+      "transferBytes": 2906
+    },
+    {
+      "file": "cells/cell-e011-n000/near.gltf",
+      "trianglesBefore": 62,
+      "trianglesAfter": 62,
+      "triangleDelta": 0,
+      "batchesBefore": 2,
+      "batchesAfter": 2,
+      "batchDelta": 0,
+      "transferBytes": 2908
+    }
+  ],
+  "roofMetadata": [
+    {
+      "file": "cells/cell-e002-n001/base.gltf",
+      "node": "cell-e002-n001_base_Canopy_nishiki-ridge-red",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e002-n001/base.gltf",
+      "node": "cell-e002-n001_base_Canopy_nishiki-ridge-gold",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e002-n001/base.gltf",
+      "node": "cell-e002-n001_base_Canopy_nishiki-ridge-green",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e002-n001/near.gltf",
+      "node": "cell-e002-n001_near_Canopy_nishiki-ridge-red",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e002-n001/near.gltf",
+      "node": "cell-e002-n001_near_Canopy_nishiki-ridge-gold",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e002-n001/near.gltf",
+      "node": "cell-e002-n001_near_Canopy_nishiki-ridge-green",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e003-n001/base.gltf",
+      "node": "cell-e003-n001_base_Canopy_nishiki-ridge-red",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e003-n001/base.gltf",
+      "node": "cell-e003-n001_base_Canopy_nishiki-ridge-gold",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e003-n001/base.gltf",
+      "node": "cell-e003-n001_base_Canopy_nishiki-ridge-green",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e003-n001/near.gltf",
+      "node": "cell-e003-n001_near_Canopy_nishiki-ridge-red",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e003-n001/near.gltf",
+      "node": "cell-e003-n001_near_Canopy_nishiki-ridge-gold",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e003-n001/near.gltf",
+      "node": "cell-e003-n001_near_Canopy_nishiki-ridge-green",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e004-n001/base.gltf",
+      "node": "cell-e004-n001_base_Canopy_nishiki-ridge-red",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e004-n001/base.gltf",
+      "node": "cell-e004-n001_base_Canopy_nishiki-ridge-gold",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e004-n001/base.gltf",
+      "node": "cell-e004-n001_base_Canopy_nishiki-ridge-green",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e004-n001/near.gltf",
+      "node": "cell-e004-n001_near_Canopy_nishiki-ridge-red",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e004-n001/near.gltf",
+      "node": "cell-e004-n001_near_Canopy_nishiki-ridge-gold",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e004-n001/near.gltf",
+      "node": "cell-e004-n001_near_Canopy_nishiki-ridge-green",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e005-n001/base.gltf",
+      "node": "cell-e005-n001_base_Canopy_nishiki-ridge-red",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e005-n001/base.gltf",
+      "node": "cell-e005-n001_base_Canopy_nishiki-ridge-gold",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e005-n001/base.gltf",
+      "node": "cell-e005-n001_base_Canopy_nishiki-ridge-green",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e005-n001/near.gltf",
+      "node": "cell-e005-n001_near_Canopy_nishiki-ridge-red",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e005-n001/near.gltf",
+      "node": "cell-e005-n001_near_Canopy_nishiki-ridge-gold",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e005-n001/near.gltf",
+      "node": "cell-e005-n001_near_Canopy_nishiki-ridge-green",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e006-n001/base.gltf",
+      "node": "cell-e006-n001_base_Canopy_nishiki-ridge-red",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e006-n001/base.gltf",
+      "node": "cell-e006-n001_base_Canopy_nishiki-ridge-gold",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e006-n001/base.gltf",
+      "node": "cell-e006-n001_base_Canopy_nishiki-ridge-green",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e006-n001/near.gltf",
+      "node": "cell-e006-n001_near_Canopy_nishiki-ridge-red",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e006-n001/near.gltf",
+      "node": "cell-e006-n001_near_Canopy_nishiki-ridge-gold",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "file": "cells/cell-e006-n001/near.gltf",
+      "node": "cell-e006-n001_near_Canopy_nishiki-ridge-green",
+      "thinSheet": {
+        "version": 1,
+        "role": "nishiki-colored-roof",
+        "sourceId": "osm:way:772134672",
+        "sourceIndex": 139,
+        "pairedVerticalOffsetMetres": 0.045,
+        "diffuseTransmission": 0.55,
+        "transmissionColor": [
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  ],
+  "newMaterialDefinitions": {
+    "frontage-dark-glass": {
+      "material": {
+        "name": "frontage-dark-glass",
+        "extras": {
+          "surfaceMeaning": "Original dark tint of the existing glazing maps for the qualified anonymous western neighbor's upper ribbon windows. Reflectance is authored; no interior or measured night response is claimed."
+        },
+        "doubleSided": true,
+        "pbrMetallicRoughness": {
+          "baseColorFactor": [
+            0.32608774304389954,
+            0.39637213945388794,
+            0.42963382601737976,
+            1
+          ],
+          "metallicFactor": 0.11999999731779099,
+          "baseColorTexture": {
+            "index": 12
+          },
+          "metallicRoughnessTexture": {
+            "index": 14
+          }
+        },
+        "normalTexture": {
+          "index": 13,
+          "scale": 0.4000000059604645
+        },
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 0.25,
+            "clearcoatRoughnessFactor": 0.11999999731779099
+          }
+        }
+      },
+      "imageUri": "../../shared/materials/glass-color.webp"
+    },
+    "daimaru-brown-tile": {
+      "material": {
+        "name": "daimaru-brown-tile",
+        "extras": {
+          "surfaceMeaning": "Original brown tint of the existing original ceramic maps, informed by the dated2021 source201 south-frontage photograph. Tile size and PBR parameters are authored; no photograph pixels."
+        },
+        "doubleSided": true,
+        "pbrMetallicRoughness": {
+          "baseColorFactor": [
+            0.49939432740211487,
+            0.3046562671661377,
+            0.2242484837770462,
+            1
+          ],
+          "metallicFactor": 0,
+          "baseColorTexture": {
+            "index": 6
+          },
+          "metallicRoughnessTexture": {
+            "index": 8
+          }
+        },
+        "normalTexture": {
+          "index": 7,
+          "scale": 0.4000000059604645
+        },
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 0,
+            "clearcoatRoughnessFactor": 0.10000000149011612
+          }
+        }
+      },
+      "imageUri": "../../shared/materials/tile-wall-color.webp"
+    }
+  },
+  "limits": "Independent decoded protected-ground/other-face/source preservation and actual browser art/shader acceptance remain required."
+}
