@@ -107,7 +107,22 @@ probe measured 0.593 m/s overall and 0.276 m/s during its final minute; these
 observations justify the tooling allowance and fail the intended fluent experience.
 This allowance does not change the startup, frame, input or Q03 acceptance targets.
 
-## Acceptance status · 2026-10-23
+## Current correction work · 2026-10-24
+
+All eight candidate-9 CI jobs have completed successfully. The full neighborhood
+walk passes 229/229; the prior seven browser reports pass 771 checks. QA preserves
+and binds the complete evidence before updating the release record.
+
+The current increment addresses avoidable redraws on loading-status changes,
+source-supported nonemissive temple paper and the platform pavement's uncovered
+vertical boundary. Engineering owns runtime notifications; art owns generated
+geometry/materials; world content independently verifies the source and export.
+QA measures exact built bytes and matched day/night appearances. Root integrates,
+checks and synchronizes each verified unit. Native hidden-tab testing additionally
+requires the reviewed artifact-local display build; physical-GPU performance remains
+unmeasured. Thresholds and visual quality remain unchanged.
+
+## Candidate 9 acceptance · 2026-10-23
 
 The pilot contains six sights along 1,353.444 m of connected reviewed route.
 Candidate 9 has package identity

@@ -1,12 +1,53 @@
 # Agent checkpoint · Explore and Together homepage
 
-2026-10-23 UTC · Lead owns integration, commits and publication.
+2026-10-24 UTC · Lead owns integration, commits and publication.
 **State: connected-neighborhood implementation is authorized and in progress.
 The approved target is a continuous 1–2 km Shijō neighborhood with 5–8 sights,
 desktop-first delivery and richer solo routes. Published runtime `17b8f37` remains
 the verified baseline. Q03 is open P1; backend tests remain local.**
 
-## Resumed iteration · 2026-10-23
+## Resumed acceptance · 2026-10-24
+
+Starting checkpoint **`3c7fd4b`** is synchronized with the remote iteration branch.
+Candidate 10 implementation is **`4b87555`**, built at `artifacts/neighborhood-20261024/candidate-10`, with
+446 files / 96,790,615 bytes and package SHA256
+**`afc7934f1b0706ea59caae5e4b1a97a6a3f6366ac65b24cbe79bfc2c2d94e574`**.
+Its scenery manifest is **`e58257879fb4ead8af14022e71e329ee3309f9920eec6fe2cf4717276573d108`**.
+All **203/203** application checks and **17/17** repository gates pass; build succeeds.
+Independent export audit **`97989383be234776aeafe54f22f1771c9151044d6a3cf6e28c34aa219e816160`**
+checks 74 sections and 148 gzip resources. It preserves prior platform geometry and
+adds eight vertical boundary triangles per LOD; six torii triangles retain their
+geometry and receive the separate nonemissive paper material. All unrelated images,
+materials, lighting and navigation remain exact. Native acceptance remains pending.
+
+Candidate 9 remains the immutable comparison package. CI **39909716421** has now
+completed successfully in all eight jobs. Its complete neighborhood report records
+**229/229** passing checks, including outward and return traversal. QA verified all
+446 files, driver and helper against the executed source. All eight browser reports
+total **1,000 passing / zero failing** checks. The [completed verification](../evidence/neighborhood-20261023/ci/candidate-9/completed-verification.json)
+preserves both-direction coverage of all 54 selected edges and 13 cells, plus all
+19 original captures. Earlier snapshots below retain their observation times.
+
+The current authorized correction work has three owners:
+
+- Engineering separates loading-status notifications from scene redraw requests,
+  retaining visible geometry/light changes, progress UI and recovery behavior.
+  A matched browser measurement must establish any performance improvement.
+- Art and world content review nonemissive torii paper and the platform's four-centimetre
+  vertical pavement boundary against retained sources. Source footprints, floor top,
+  navigation and actual arcade lights remain invariant. Independent export and
+  matched day/night checks precede promotion.
+- Navigation built artifact-local Xvfb 21.1.16 with its supported XKB output-directory
+  setting, GLX and TCP enabled, and MIT-SHM/Unix transports disabled. Its authenticated
+  launch helper remains in preparation; native visibility has not yet been measured.
+  This does not supply a physical GPU. Browser work uses scheduled exclusive windows.
+
+Root owns candidate integration, source/repository checks, native review, performance
+comparison and remote synchronization. Existing latency targets, art acceptance and
+Q03 remain open. The appearance follow-up also retains location-matched frontage
+reference gaps and unverified plaque lettering. Publication awaits acceptance.
+
+## Candidate 9 evidence · 2026-10-23
 
 The current immutable build is **candidate-9**, with implementation source
 **`9cbfa7fd848a6401dde872a339c4156eb45419ba`**. Its package SHA256 is

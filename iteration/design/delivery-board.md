@@ -1,6 +1,6 @@
 # Delivery board · TourGuideAI 2.5D
 
-Updated 2026-10-23. Owner: lead. Planning baseline: `origin/iteration` at
+Updated 2026-10-24. Owner: lead. Planning baseline: `origin/iteration` at
 `eae982f4ba20a107bf21a35b70f635b4935a4c70`.
 
 **Active milestone · connected neighborhood:** the approved
@@ -15,7 +15,10 @@ checks 10/10 and western approach 14/14. Art accepts the repaired floor and deli
 gate view in daylight and night. The complete camera matrix passes 107/107. Connecting
 facade variation, landmark details, night material response and a floor-edge seam
 remain open.
-Seven CI jobs pass; complete outward/return neighborhood CI remains in progress.
+All eight candidate-9 CI jobs pass: 1,000 browser checks include 229 complete
+neighborhood checks and verified outward/return coverage. The current increment
+addresses redundant loading redraws, nonemissive temple paper and the reviewed
+platform pavement edge; export and matched native acceptance are in progress.
 The final software-renderer run has 14 passing / 5 failing checks: cold entry
 8,352.8 ms, first warm entry 3,013.9 ms, input p95 933.8 ms and frame p95 996.4 ms
 miss their targets; native hidden-tab behavior remains unobserved. Performance

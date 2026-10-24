@@ -1,0 +1,4165 @@
+{
+  "source": "9b973f0d98426a102af1c936286052d46986f895",
+  "geographySha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+  "selectedRouteMetres": 1353.444059858351,
+  "sourceGraphEdges": 73,
+  "traversals": [
+    {
+      "direction": "outward",
+      "selectedEdgeCount": 54,
+      "observedSelectedEdgeCount": 54,
+      "missingEdges": [],
+      "samples": 1938,
+      "paths": [
+        {
+          "id": "outbound-boundary-denied",
+          "sightId": "nishiki-market",
+          "startedAt": "2026-10-23T06:21:50.465Z",
+          "completedAt": null,
+          "intentionallyStopsAtDeniedBoundary": true,
+          "finalPosition": {
+            "x": 261.496,
+            "y": 99.984,
+            "height": 0,
+            "edgeId": "osm:way:1148700851:2971080719:4600871812",
+            "edgeDistance": 34.765249998707475
+          },
+          "samples": 398,
+          "timeout": false
+        },
+        {
+          "id": "outbound-retry",
+          "sightId": "nishiki-market",
+          "startedAt": "2026-10-23T06:31:47.330Z",
+          "completedAt": "2026-10-23T06:33:36.523Z",
+          "intentionallyStopsAtDeniedBoundary": false,
+          "finalPosition": {
+            "x": 262.883,
+            "y": 139.73,
+            "height": 0,
+            "edgeId": "osm:way:66703315:354840396:5554417552",
+            "edgeDistance": 1.6431161541697807
+          },
+          "samples": 72,
+          "timeout": false
+        },
+        {
+          "id": "outbound-nishiki-tenmangu",
+          "sightId": "nishiki-tenmangu",
+          "startedAt": "2026-10-23T06:34:38.621Z",
+          "completedAt": "2026-10-23T06:47:55.225Z",
+          "intentionallyStopsAtDeniedBoundary": false,
+          "finalPosition": {
+            "x": 651.964,
+            "y": 143.136,
+            "height": 0,
+            "edgeId": "osm:way:66703315:354840400:5554418336",
+            "edgeDistance": 0
+          },
+          "samples": 489,
+          "timeout": false
+        },
+        {
+          "id": "outbound-takase-river",
+          "sightId": "takase-river",
+          "startedAt": "2026-10-23T06:48:03.239Z",
+          "completedAt": "2026-10-23T07:08:48.383Z",
+          "intentionallyStopsAtDeniedBoundary": false,
+          "finalPosition": {
+            "x": 981.52,
+            "y": 15.876,
+            "height": 0,
+            "edgeId": "osm:way:532008170:4600891626:5492358876",
+            "edgeDistance": 1.4788124448944597
+          },
+          "samples": 797,
+          "timeout": false
+        },
+        {
+          "id": "outbound-pontocho-entrance",
+          "sightId": "pontocho-entrance",
+          "startedAt": "2026-10-23T07:09:01.290Z",
+          "completedAt": "2026-10-23T07:11:42.586Z",
+          "intentionallyStopsAtDeniedBoundary": false,
+          "finalPosition": {
+            "x": 1036.755,
+            "y": 17.617,
+            "height": 0,
+            "edgeId": "osm:way:542888424:2367201411:5248383670",
+            "edgeDistance": 3.8905339977538023
+          },
+          "samples": 110,
+          "timeout": false
+        },
+        {
+          "id": "outbound-shijo-bridge",
+          "sightId": "shijo-bridge",
+          "startedAt": "2026-10-23T07:11:58.231Z",
+          "completedAt": "2026-10-23T07:13:43.500Z",
+          "intentionallyStopsAtDeniedBoundary": false,
+          "finalPosition": {
+            "x": 1077.221,
+            "y": 18.971,
+            "height": 0,
+            "edgeId": "authored:shijo-bridge-view-approach",
+            "edgeDistance": 32.85198050401372
+          },
+          "samples": 72,
+          "timeout": false
+        }
+      ]
+    },
+    {
+      "direction": "return",
+      "selectedEdgeCount": 54,
+      "observedSelectedEdgeCount": 54,
+      "missingEdges": [],
+      "samples": 2400,
+      "paths": [
+        {
+          "id": "return-pontocho-entrance",
+          "sightId": "pontocho-entrance",
+          "startedAt": "2026-10-23T07:14:48.999Z",
+          "completedAt": "2026-10-23T07:17:12.426Z",
+          "intentionallyStopsAtDeniedBoundary": false,
+          "finalPosition": {
+            "x": 1036.755,
+            "y": 17.617,
+            "height": 0,
+            "edgeId": "osm:way:228073861:5163420172:5248383670",
+            "edgeDistance": 5.3776993571596705
+          },
+          "samples": 83,
+          "timeout": false
+        },
+        {
+          "id": "return-takase-river",
+          "sightId": "takase-river",
+          "startedAt": "2026-10-23T07:17:37.493Z",
+          "completedAt": "2026-10-23T07:21:18.902Z",
+          "intentionallyStopsAtDeniedBoundary": false,
+          "finalPosition": {
+            "x": 981.52,
+            "y": 15.876,
+            "height": 0,
+            "edgeId": "osm:way:532008170:5163420205:5492358876",
+            "edgeDistance": 1.480161647378143
+          },
+          "samples": 116,
+          "timeout": false
+        },
+        {
+          "id": "return-nishiki-tenmangu",
+          "sightId": "nishiki-tenmangu",
+          "startedAt": "2026-10-23T07:21:37.863Z",
+          "completedAt": "2026-10-23T07:51:04.995Z",
+          "intentionallyStopsAtDeniedBoundary": false,
+          "finalPosition": {
+            "x": 651.964,
+            "y": 143.136,
+            "height": 0,
+            "edgeId": "osm:way:66703316:354840400:5204263033",
+            "edgeDistance": 0
+          },
+          "samples": 949,
+          "timeout": false
+        },
+        {
+          "id": "return-nishiki-market",
+          "sightId": "nishiki-market",
+          "startedAt": "2026-10-23T07:51:18.200Z",
+          "completedAt": "2026-10-23T08:09:39.320Z",
+          "intentionallyStopsAtDeniedBoundary": false,
+          "finalPosition": {
+            "x": 262.883,
+            "y": 139.73,
+            "height": 0,
+            "edgeId": "osm:way:66703315:354840397:5554417552",
+            "edgeDistance": 61.79118197989567
+          },
+          "samples": 687,
+          "timeout": false
+        },
+        {
+          "id": "return-mitsui-frontage",
+          "sightId": "mitsui-frontage",
+          "startedAt": "2026-10-23T08:09:52.096Z",
+          "completedAt": "2026-10-23T08:27:15.141Z",
+          "intentionallyStopsAtDeniedBoundary": false,
+          "finalPosition": {
+            "x": 20.694,
+            "y": 2.33,
+            "height": 0,
+            "edgeId": "osm:way:465066447:4600871814:4600891666",
+            "edgeDistance": 0
+          },
+          "samples": 565,
+          "timeout": false
+        }
+      ]
+    }
+  ],
+  "cellCoverage": {
+    "expected": [
+      "cell-e000-n000",
+      "cell-e001-n000",
+      "cell-e002-n000",
+      "cell-e002-n001",
+      "cell-e003-n001",
+      "cell-e004-n001",
+      "cell-e005-n001",
+      "cell-e006-n001",
+      "cell-e006-n000",
+      "cell-e007-n000",
+      "cell-e008-n000",
+      "cell-e009-n000",
+      "cell-e010-n000"
+    ],
+    "outbound": [
+      "cell-e000-n000",
+      "cell-e001-n000",
+      "cell-e002-n000",
+      "cell-e002-n001",
+      "cell-e003-n001",
+      "cell-e004-n001",
+      "cell-e005-n001",
+      "cell-e006-n001",
+      "cell-e006-n000",
+      "cell-e007-n000",
+      "cell-e008-n000",
+      "cell-e009-n000",
+      "cell-e010-n000"
+    ],
+    "returning": [
+      "cell-e010-n000",
+      "cell-e009-n000",
+      "cell-e008-n000",
+      "cell-e007-n000",
+      "cell-e006-n000",
+      "cell-e006-n001",
+      "cell-e005-n001",
+      "cell-e004-n001",
+      "cell-e003-n001",
+      "cell-e002-n001",
+      "cell-e002-n000",
+      "cell-e001-n000",
+      "cell-e000-n000"
+    ]
+  },
+  "delayedBase": {
+    "pass": true,
+    "paths": [
+      "/assets/neighborhoods/shijo-east/cells/cell-e002-n001/base.gltf.gz"
+    ],
+    "samples": 16,
+    "firstObservedMs": 10,
+    "lastObservedMs": 15179
+  },
+  "primaryFrames": [
+    {
+      "id": "opening-day-cached-shadow-primary-frame-budget",
+      "pass": true,
+      "render": {
+        "frame": 38,
+        "calls": 79,
+        "triangles": 136250,
+        "points": 0,
+        "lines": 0
+      },
+      "allocatedTextureBytes": 47906815,
+      "completeTextureEstimate": true
+    },
+    {
+      "id": "opening-night-cached-shadow-primary-frame-budget",
+      "pass": true,
+      "render": {
+        "frame": 59,
+        "calls": 79,
+        "triangles": 136250,
+        "points": 0,
+        "lines": 0
+      },
+      "allocatedTextureBytes": 66256895,
+      "completeTextureEstimate": true
+    },
+    {
+      "id": "actual-ground-click-cached-shadow-primary-frame-budget",
+      "pass": true,
+      "render": {
+        "frame": 79,
+        "calls": 80,
+        "triangles": 140130,
+        "points": 0,
+        "lines": 0
+      },
+      "allocatedTextureBytes": 49479679,
+      "completeTextureEstimate": true
+    },
+    {
+      "id": "outbound-retry-cached-shadow-primary-frame-budget",
+      "pass": true,
+      "render": {
+        "frame": 899,
+        "calls": 44,
+        "triangles": 47485,
+        "points": 0,
+        "lines": 0
+      },
+      "allocatedTextureBytes": 46159188,
+      "completeTextureEstimate": true
+    },
+    {
+      "id": "outbound-nishiki-tenmangu-cached-shadow-primary-frame-budget",
+      "pass": true,
+      "render": {
+        "frame": 1813,
+        "calls": 41,
+        "triangles": 50935,
+        "points": 0,
+        "lines": 0
+      },
+      "allocatedTextureBytes": 46421332,
+      "completeTextureEstimate": true
+    },
+    {
+      "id": "outbound-takase-river-cached-shadow-primary-frame-budget",
+      "pass": true,
+      "render": {
+        "frame": 2897,
+        "calls": 78,
+        "triangles": 61996,
+        "points": 0,
+        "lines": 0
+      },
+      "allocatedTextureBytes": 46159188,
+      "completeTextureEstimate": true
+    },
+    {
+      "id": "outbound-pontocho-entrance-cached-shadow-primary-frame-budget",
+      "pass": true,
+      "render": {
+        "frame": 3032,
+        "calls": 82,
+        "triangles": 53183,
+        "points": 0,
+        "lines": 0
+      },
+      "allocatedTextureBytes": 46159188,
+      "completeTextureEstimate": true
+    },
+    {
+      "id": "outbound-shijo-bridge-cached-shadow-primary-frame-budget",
+      "pass": true,
+      "render": {
+        "frame": 3133,
+        "calls": 74,
+        "triangles": 46897,
+        "points": 0,
+        "lines": 0
+      },
+      "allocatedTextureBytes": 46159188,
+      "completeTextureEstimate": true
+    },
+    {
+      "id": "return-pontocho-entrance-cached-shadow-primary-frame-budget",
+      "pass": true,
+      "render": {
+        "frame": 140,
+        "calls": 82,
+        "triangles": 53183,
+        "points": 0,
+        "lines": 0
+      },
+      "allocatedTextureBytes": 52450644,
+      "completeTextureEstimate": true
+    },
+    {
+      "id": "return-takase-river-cached-shadow-primary-frame-budget",
+      "pass": true,
+      "render": {
+        "frame": 276,
+        "calls": 79,
+        "triangles": 62176,
+        "points": 0,
+        "lines": 0
+      },
+      "allocatedTextureBytes": 52450644,
+      "completeTextureEstimate": true
+    },
+    {
+      "id": "return-nishiki-tenmangu-cached-shadow-primary-frame-budget",
+      "pass": true,
+      "render": {
+        "frame": 1359,
+        "calls": 41,
+        "triangles": 50935,
+        "points": 0,
+        "lines": 0
+      },
+      "allocatedTextureBytes": 52712788,
+      "completeTextureEstimate": true
+    },
+    {
+      "id": "return-nishiki-market-cached-shadow-primary-frame-budget",
+      "pass": true,
+      "render": {
+        "frame": 2224,
+        "calls": 43,
+        "triangles": 55995,
+        "points": 0,
+        "lines": 0
+      },
+      "allocatedTextureBytes": 52450644,
+      "completeTextureEstimate": true
+    },
+    {
+      "id": "return-mitsui-frontage-cached-shadow-primary-frame-budget",
+      "pass": true,
+      "render": {
+        "frame": 3074,
+        "calls": 79,
+        "triangles": 136250,
+        "points": 0,
+        "lines": 0
+      },
+      "allocatedTextureBytes": 65732607,
+      "completeTextureEstimate": true
+    },
+    {
+      "id": "restore-river-0-cached-shadow-primary-frame-budget",
+      "pass": true,
+      "render": {
+        "frame": 3102,
+        "calls": 74,
+        "triangles": 46897,
+        "points": 0,
+        "lines": 0
+      },
+      "allocatedTextureBytes": 52450644,
+      "completeTextureEstimate": true
+    },
+    {
+      "id": "restore-beginning-0-cached-shadow-primary-frame-budget",
+      "pass": true,
+      "render": {
+        "frame": 3147,
+        "calls": 79,
+        "triangles": 136250,
+        "points": 0,
+        "lines": 0
+      },
+      "allocatedTextureBytes": 49479679,
+      "completeTextureEstimate": true
+    },
+    {
+      "id": "restore-river-1-cached-shadow-primary-frame-budget",
+      "pass": true,
+      "render": {
+        "frame": 3168,
+        "calls": 74,
+        "triangles": 46897,
+        "points": 0,
+        "lines": 0
+      },
+      "allocatedTextureBytes": 54023508,
+      "completeTextureEstimate": true
+    },
+    {
+      "id": "restore-beginning-1-cached-shadow-primary-frame-budget",
+      "pass": true,
+      "render": {
+        "frame": 3194,
+        "calls": 79,
+        "triangles": 136250,
+        "points": 0,
+        "lines": 0
+      },
+      "allocatedTextureBytes": 49479679,
+      "completeTextureEstimate": true
+    },
+    {
+      "id": "restore-river-2-cached-shadow-primary-frame-budget",
+      "pass": true,
+      "render": {
+        "frame": 3220,
+        "calls": 74,
+        "triangles": 46897,
+        "points": 0,
+        "lines": 0
+      },
+      "allocatedTextureBytes": 54023508,
+      "completeTextureEstimate": true
+    },
+    {
+      "id": "restore-beginning-2-cached-shadow-primary-frame-budget",
+      "pass": true,
+      "render": {
+        "frame": 3244,
+        "calls": 79,
+        "triangles": 136250,
+        "points": 0,
+        "lines": 0
+      },
+      "allocatedTextureBytes": 49479679,
+      "completeTextureEstimate": true
+    }
+  ],
+  "cameraScenarios": {
+    "tenmangu-camera-safety-no-preference": {
+      "operations": [
+        "click",
+        "touch-tap",
+        "middle-horizontal",
+        "three-finger",
+        "keyboard-orbit",
+        "keyboard-tilt",
+        "keyboard-zoom",
+        "drag",
+        "wheel",
+        "pinch",
+        "keyboard-pan",
+        "right-pan",
+        "touch-pan",
+        "touch-mixed"
+      ],
+      "idle": {
+        "elapsedMs": 2011.1942750001326,
+        "draws": 0,
+        "updates": 121,
+        "shadows": 0
+      },
+      "sameViewRestore": {
+        "requests": 0,
+        "http": 0,
+        "differences": []
+      }
+    },
+    "tenmangu-camera-safety-reduce": {
+      "operations": [
+        "click",
+        "touch-tap",
+        "middle-horizontal",
+        "three-finger",
+        "keyboard-orbit",
+        "keyboard-tilt",
+        "keyboard-zoom",
+        "drag",
+        "wheel",
+        "pinch",
+        "keyboard-pan",
+        "right-pan",
+        "touch-pan",
+        "touch-mixed"
+      ],
+      "idle": {
+        "elapsedMs": 2011.711841000244,
+        "draws": 0,
+        "updates": 122,
+        "shadows": 0
+      },
+      "sameViewRestore": {
+        "requests": 0,
+        "http": 0,
+        "differences": []
+      }
+    }
+  },
+  "requestedSections": [
+    "startup",
+    "route-choice",
+    "journey",
+    "initial-recovery",
+    "latest-intent",
+    "unavailable-revision",
+    "external-session",
+    "residency-boundary",
+    "camera-safety"
+  ],
+  "checkResults": [
+    {
+      "id": "packaged-provenance-binds-current-geography",
+      "pass": true
+    },
+    {
+      "id": "manifest-assets-match-actual-packaged-bytes",
+      "pass": true
+    },
+    {
+      "id": "gzip-transport-and-decoded-assets-match-exact-packaged-identities",
+      "pass": true
+    },
+    {
+      "id": "gzip-section-wire-budget-keeps-decoded-memory-size-explicit",
+      "pass": true
+    },
+    {
+      "id": "together-does-not-load-private-neighborhood-cells",
+      "pass": true
+    },
+    {
+      "id": "neighborhood-starts-at-reviewed-global-spawn",
+      "pass": true
+    },
+    {
+      "id": "initial-neighborhood-load-does-not-fetch-distant-cells",
+      "pass": true
+    },
+    {
+      "id": "startup-does-not-fetch-deferred-gzip-river-resources",
+      "pass": true
+    },
+    {
+      "id": "opening-day-cached-shadow-primary-frame-budget",
+      "pass": true
+    },
+    {
+      "id": "startup-loads-compressed-required-containers-through-real-http",
+      "pass": true
+    },
+    {
+      "id": "opening-night-cached-shadow-primary-frame-budget",
+      "pass": true
+    },
+    {
+      "id": "actual-ground-click-actual-arrival-ground-and-budgets",
+      "pass": true
+    },
+    {
+      "id": "actual-ground-click-cached-shadow-primary-frame-budget",
+      "pass": true
+    },
+    {
+      "id": "real-keyboard-input-walks-with-grounded-player",
+      "pass": true
+    },
+    {
+      "id": "key-release-does-not-continue-walking",
+      "pass": true
+    },
+    {
+      "id": "walk-to-shows-actual-target-and-remaining-metres-en",
+      "pass": true
+    },
+    {
+      "id": "active-walk-modal-pauses-with-honest-guidance",
+      "pass": true
+    },
+    {
+      "id": "stop-keeps-grounded-position-camera-order-and-private-notes",
+      "pass": true
+    },
+    {
+      "id": "stopped-walk-does-not-resume-on-language-change",
+      "pass": true
+    },
+    {
+      "id": "explicit-walk-to-resumes-progress-with-chinese-guidance",
+      "pass": true
+    },
+    {
+      "id": "real-inspection-framing-keeps-player-location",
+      "pass": true
+    },
+    {
+      "id": "note-editing-pauses-avatar-and-keeps-route",
+      "pass": true
+    },
+    {
+      "id": "hidden-neighborhood-has-zero-work-and-new-cell-requests",
+      "pass": true
+    },
+    {
+      "id": "return-keeps-pose-and-lighting",
+      "pass": true
+    },
+    {
+      "id": "actual-room-does-not-receive-private-route-or-old-note",
+      "pass": true
+    },
+    {
+      "id": "packaged-neighborhood-credits-retain-source-and-license-links",
+      "pass": true
+    },
+    {
+      "id": "startup-keeps-existing-private-records",
+      "pass": true
+    },
+    {
+      "id": "native-remove-bridge-establishes-edited-five-sight-journey",
+      "pass": true
+    },
+    {
+      "id": "native-remove-bridge-establishes-edited-five-sight-journey-maps-order",
+      "pass": true
+    },
+    {
+      "id": "reviewed-default-offers-one-explicit-neutral-choice-in-both-locales",
+      "pass": true
+    },
+    {
+      "id": "suggestions-preserve-active-journey-until-native-choice",
+      "pass": true
+    },
+    {
+      "id": "native-choice-commits-different-source-graph-order-and-distance",
+      "pass": true
+    },
+    {
+      "id": "native-choice-commits-different-source-graph-order-and-distance-maps-order",
+      "pass": true
+    },
+    {
+      "id": "choosing-alternative-preserves-private-view-lighting-and-note",
+      "pass": true
+    },
+    {
+      "id": "chosen-alternative-reorder-updates-graph-distance-and-maps",
+      "pass": true
+    },
+    {
+      "id": "chosen-alternative-reorder-updates-graph-distance-and-maps-maps-order",
+      "pass": true
+    },
+    {
+      "id": "chosen-alternative-removal-updates-graph-distance-and-maps",
+      "pass": true
+    },
+    {
+      "id": "chosen-alternative-removal-updates-graph-distance-and-maps-maps-order",
+      "pass": true
+    },
+    {
+      "id": "native-reload-keeps-edited-chosen-route-and-localized-distance",
+      "pass": true
+    },
+    {
+      "id": "native-reload-keeps-edited-chosen-route-and-localized-distance-maps-order",
+      "pass": true
+    },
+    {
+      "id": "chosen-route-reload-preserves-exact-pose-night-chinese-and-private-note",
+      "pass": true
+    },
+    {
+      "id": "actual-route-choice-preserves-legacy-records",
+      "pass": true
+    },
+    {
+      "id": "failed-section-stops-at-boundary-with-destination",
+      "pass": true
+    },
+    {
+      "id": "failed-boundary-retains-position-and-planned-path",
+      "pass": true
+    },
+    {
+      "id": "failed-section-guidance-keeps-actual-goal-and-localized-retry",
+      "pass": true
+    },
+    {
+      "id": "pending-base-section-holds-grounded-pose-and-goal-for-fifteen-seconds",
+      "pass": true
+    },
+    {
+      "id": "outbound-retry-actual-arrival-ground-and-budgets",
+      "pass": true
+    },
+    {
+      "id": "outbound-retry-cached-shadow-primary-frame-budget",
+      "pass": true
+    },
+    {
+      "id": "actual-market-surface-inspection-keeps-player-location-first-adjustment-starts-from-rendered-pose",
+      "pass": true
+    },
+    {
+      "id": "actual-market-surface-inspection-keeps-player-location",
+      "pass": true
+    },
+    {
+      "id": "actual-market-surface-inspection-keeps-player-location-explicit-reset-keeps-walking-position",
+      "pass": true
+    },
+    {
+      "id": "outbound-nishiki-tenmangu-actual-arrival-ground-and-budgets",
+      "pass": true
+    },
+    {
+      "id": "outbound-nishiki-tenmangu-cached-shadow-primary-frame-budget",
+      "pass": true
+    },
+    {
+      "id": "outbound-takase-river-actual-arrival-ground-and-budgets",
+      "pass": true
+    },
+    {
+      "id": "outbound-takase-river-cached-shadow-primary-frame-budget",
+      "pass": true
+    },
+    {
+      "id": "outbound-pontocho-entrance-actual-arrival-ground-and-budgets",
+      "pass": true
+    },
+    {
+      "id": "outbound-pontocho-entrance-cached-shadow-primary-frame-budget",
+      "pass": true
+    },
+    {
+      "id": "outbound-shijo-bridge-actual-arrival-ground-and-budgets",
+      "pass": true
+    },
+    {
+      "id": "outbound-shijo-bridge-cached-shadow-primary-frame-budget",
+      "pass": true
+    },
+    {
+      "id": "free-walking-preserves-selected-order-and-no-visits",
+      "pass": true
+    },
+    {
+      "id": "reordering-keeps-current-pose-light-and-private-note",
+      "pass": true
+    },
+    {
+      "id": "edited-maps-order-contains-every-selected-stop",
+      "pass": true
+    },
+    {
+      "id": "remove-sight-changes-itinerary-without-moving-player",
+      "pass": true
+    },
+    {
+      "id": "add-sight-restores-selected-source-without-changing-pose",
+      "pass": true
+    },
+    {
+      "id": "recommendation-preview-preserves-explicit-selected-order",
+      "pass": true
+    },
+    {
+      "id": "reload-preserves-exact-route-view-edge-and-language",
+      "pass": true
+    },
+    {
+      "id": "surrounding-map-fits-selected-route-sight-markers",
+      "pass": true
+    },
+    {
+      "id": "actual-map-drag-preserves-private-walking-position",
+      "pass": true
+    },
+    {
+      "id": "map-language-keeps-manual-camera-and-selected-order",
+      "pass": true
+    },
+    {
+      "id": "kept-river-view-restores-after-map",
+      "pass": true
+    },
+    {
+      "id": "return-pontocho-entrance-actual-arrival-ground-and-budgets",
+      "pass": true
+    },
+    {
+      "id": "return-pontocho-entrance-cached-shadow-primary-frame-budget",
+      "pass": true
+    },
+    {
+      "id": "return-takase-river-actual-arrival-ground-and-budgets",
+      "pass": true
+    },
+    {
+      "id": "return-takase-river-cached-shadow-primary-frame-budget",
+      "pass": true
+    },
+    {
+      "id": "return-nishiki-tenmangu-actual-arrival-ground-and-budgets",
+      "pass": true
+    },
+    {
+      "id": "return-nishiki-tenmangu-cached-shadow-primary-frame-budget",
+      "pass": true
+    },
+    {
+      "id": "return-nishiki-market-actual-arrival-ground-and-budgets",
+      "pass": true
+    },
+    {
+      "id": "return-nishiki-market-cached-shadow-primary-frame-budget",
+      "pass": true
+    },
+    {
+      "id": "return-mitsui-frontage-actual-arrival-ground-and-budgets",
+      "pass": true
+    },
+    {
+      "id": "return-mitsui-frontage-cached-shadow-primary-frame-budget",
+      "pass": true
+    },
+    {
+      "id": "complete-walk-keeps-existing-private-records",
+      "pass": true
+    },
+    {
+      "id": "outbound-and-return-cross-every-selected-route-cell",
+      "pass": true
+    },
+    {
+      "id": "distant-saved-restore-waits-for-real-required-cell",
+      "pass": true
+    },
+    {
+      "id": "map-switch-cancels-old-distant-restore-without-teleport",
+      "pass": true
+    },
+    {
+      "id": "restore-river-0-cached-shadow-primary-frame-budget",
+      "pass": true
+    },
+    {
+      "id": "restore-river-0-retains-real-pose-order-note",
+      "pass": true
+    },
+    {
+      "id": "restore-beginning-0-cached-shadow-primary-frame-budget",
+      "pass": true
+    },
+    {
+      "id": "restore-beginning-0-retains-real-pose-order-note",
+      "pass": true
+    },
+    {
+      "id": "restore-river-1-cached-shadow-primary-frame-budget",
+      "pass": true
+    },
+    {
+      "id": "restore-river-1-retains-real-pose-order-note",
+      "pass": true
+    },
+    {
+      "id": "restore-beginning-1-cached-shadow-primary-frame-budget",
+      "pass": true
+    },
+    {
+      "id": "restore-beginning-1-retains-real-pose-order-note",
+      "pass": true
+    },
+    {
+      "id": "restore-river-2-cached-shadow-primary-frame-budget",
+      "pass": true
+    },
+    {
+      "id": "restore-river-2-retains-real-pose-order-note",
+      "pass": true
+    },
+    {
+      "id": "restore-beginning-2-cached-shadow-primary-frame-budget",
+      "pass": true
+    },
+    {
+      "id": "restore-beginning-2-retains-real-pose-order-note",
+      "pass": true
+    },
+    {
+      "id": "warm-saved-view-cycles-bound-resources",
+      "pass": true
+    },
+    {
+      "id": "initial-real-cell-error-preserves-selected-journey",
+      "pass": true
+    },
+    {
+      "id": "locale-change-keeps-initial-error-until-explicit-retry",
+      "pass": true
+    },
+    {
+      "id": "initial-retry-loads-real-cell-with-preserved-order",
+      "pass": true
+    },
+    {
+      "id": "initial-retry-keeps-legacy-bytes",
+      "pass": true
+    },
+    {
+      "id": "opening-controls-prevent-competing-itinerary-mutations",
+      "pass": true
+    },
+    {
+      "id": "canceled-neighborhood-cannot-replace-latest-pack",
+      "pass": true
+    },
+    {
+      "id": "cancellation-keeps-legacy-bytes",
+      "pass": true
+    },
+    {
+      "id": "unknown-revision-deeplink-preserves-record-and-blocks-entry",
+      "pass": true
+    },
+    {
+      "id": "unavailable-language-change-keeps-record-bytes",
+      "pass": true
+    },
+    {
+      "id": "explicit-replacement-selects-current-reviewed-version",
+      "pass": true
+    },
+    {
+      "id": "version-replacement-preserves-unrelated-records",
+      "pass": true
+    },
+    {
+      "id": "external-current-revision-blocks-stale-mutations-during-opening",
+      "pass": true
+    },
+    {
+      "id": "external-session-survives-fifteen-second-pending-opening",
+      "pass": true
+    },
+    {
+      "id": "late-opening-and-real-camera-capture-preserve-external-session-bytes",
+      "pass": true
+    },
+    {
+      "id": "external-session-reload-control-is-localized-with-record-retained",
+      "pass": true
+    },
+    {
+      "id": "explicit-reload-adopts-newer-order-and-lighting-after-pagehide",
+      "pass": true
+    },
+    {
+      "id": "external-session-guard-keeps-legacy-bytes",
+      "pass": true
+    },
+    {
+      "id": "desktop-actual-near-request-reserves-capacity-before-response",
+      "pass": true
+    },
+    {
+      "id": "desktop-recorded-boundary-position-restores-with-correct-tier",
+      "pass": true
+    },
+    {
+      "id": "desktop-boundary-forward-keeps-ground-and-full-quality",
+      "pass": true
+    },
+    {
+      "id": "desktop-boundary-return-keeps-ground-and-full-quality",
+      "pass": true
+    },
+    {
+      "id": "desktop-near-cap-includes-inflight-reservations-through-real-boundary",
+      "pass": true
+    },
+    {
+      "id": "desktop-boundary-replay-keeps-legacy-bytes",
+      "pass": true
+    },
+    {
+      "id": "compact-actual-near-request-reserves-capacity-before-response",
+      "pass": true
+    },
+    {
+      "id": "compact-recorded-boundary-position-restores-with-correct-tier",
+      "pass": true
+    },
+    {
+      "id": "compact-boundary-forward-keeps-ground-and-full-quality",
+      "pass": true
+    },
+    {
+      "id": "compact-boundary-return-keeps-ground-and-full-quality",
+      "pass": true
+    },
+    {
+      "id": "compact-near-cap-includes-inflight-reservations-through-real-boundary",
+      "pass": true
+    },
+    {
+      "id": "compact-boundary-replay-keeps-legacy-bytes",
+      "pass": true
+    },
+    {
+      "id": "no-preference-tenmangu-safety-restores-recorded-view",
+      "pass": true
+    },
+    {
+      "id": "no-preference-settled-visible-recovered-camera-stays-render-idle-for-two-seconds",
+      "pass": true
+    },
+    {
+      "id": "no-preference-same-private-view-reopen-preserves-selection-heading-and-resident-sections",
+      "pass": true
+    },
+    {
+      "id": "no-preference-click-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "no-preference-tenmangu-click-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "no-preference-click-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "no-preference-touch-tap-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "no-preference-tenmangu-touch-tap-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "no-preference-touch-tap-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "no-preference-middle-horizontal-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "no-preference-tenmangu-middle-horizontal-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "no-preference-middle-horizontal-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "no-preference-three-finger-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "no-preference-tenmangu-three-finger-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "no-preference-three-finger-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "no-preference-keyboard-orbit-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "no-preference-tenmangu-keyboard-orbit-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "no-preference-tenmangu-orbit-can-reverse-away-from-wall",
+      "pass": true
+    },
+    {
+      "id": "no-preference-keyboard-orbit-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "no-preference-keyboard-tilt-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "no-preference-tenmangu-keyboard-tilt-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "no-preference-keyboard-tilt-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "no-preference-keyboard-zoom-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "no-preference-tenmangu-keyboard-zoom-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "no-preference-keyboard-zoom-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "no-preference-drag-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "no-preference-tenmangu-drag-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "no-preference-drag-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "no-preference-wheel-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "no-preference-tenmangu-wheel-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "no-preference-wheel-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "no-preference-pinch-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "no-preference-tenmangu-pinch-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "no-preference-symmetric-native-pinch-retains-actor-framing-policy",
+      "pass": true
+    },
+    {
+      "id": "no-preference-pinch-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "no-preference-keyboard-pan-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "no-preference-tenmangu-keyboard-pan-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "no-preference-intentional-pan-saves-exact-camera-and-note",
+      "pass": true
+    },
+    {
+      "id": "no-preference-panned-view-reopens-exact-saved-intent",
+      "pass": true
+    },
+    {
+      "id": "no-preference-keyboard-pan-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "no-preference-right-pan-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "no-preference-tenmangu-right-pan-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "no-preference-right-pan-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "no-preference-touch-pan-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "no-preference-tenmangu-touch-pan-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "no-preference-touch-pan-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "no-preference-touch-mixed-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "no-preference-tenmangu-touch-mixed-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "no-preference-touch-mixed-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "no-preference-safe-camera-private-view-survives-localized-reload",
+      "pass": true
+    },
+    {
+      "id": "no-preference-tenmangu-camera-safety-keeps-legacy-bytes",
+      "pass": true
+    },
+    {
+      "id": "reduce-tenmangu-safety-restores-recorded-view",
+      "pass": true
+    },
+    {
+      "id": "reduce-settled-visible-recovered-camera-stays-render-idle-for-two-seconds",
+      "pass": true
+    },
+    {
+      "id": "reduce-same-private-view-reopen-preserves-selection-heading-and-resident-sections",
+      "pass": true
+    },
+    {
+      "id": "reduce-click-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "reduce-tenmangu-click-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "reduce-click-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "reduce-touch-tap-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "reduce-tenmangu-touch-tap-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "reduce-touch-tap-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "reduce-middle-horizontal-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "reduce-tenmangu-middle-horizontal-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "reduce-middle-horizontal-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "reduce-three-finger-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "reduce-tenmangu-three-finger-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "reduce-three-finger-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "reduce-keyboard-orbit-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "reduce-tenmangu-keyboard-orbit-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "reduce-tenmangu-orbit-can-reverse-away-from-wall",
+      "pass": true
+    },
+    {
+      "id": "reduce-keyboard-orbit-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "reduce-keyboard-tilt-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "reduce-tenmangu-keyboard-tilt-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "reduce-keyboard-tilt-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "reduce-keyboard-zoom-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "reduce-tenmangu-keyboard-zoom-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "reduce-keyboard-zoom-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "reduce-drag-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "reduce-tenmangu-drag-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "reduce-drag-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "reduce-wheel-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "reduce-tenmangu-wheel-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "reduce-wheel-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "reduce-pinch-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "reduce-tenmangu-pinch-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "reduce-symmetric-native-pinch-retains-actor-framing-policy",
+      "pass": true
+    },
+    {
+      "id": "reduce-pinch-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "reduce-keyboard-pan-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "reduce-tenmangu-keyboard-pan-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "reduce-intentional-pan-saves-exact-camera-and-note",
+      "pass": true
+    },
+    {
+      "id": "reduce-panned-view-reopens-exact-saved-intent",
+      "pass": true
+    },
+    {
+      "id": "reduce-keyboard-pan-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "reduce-right-pan-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "reduce-tenmangu-right-pan-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "reduce-right-pan-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "reduce-touch-pan-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "reduce-tenmangu-touch-pan-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "reduce-touch-pan-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "reduce-touch-mixed-tenmangu-entry-preserves-safe-visible-view",
+      "pass": true
+    },
+    {
+      "id": "reduce-tenmangu-touch-mixed-honors-input-and-framing-scope",
+      "pass": true
+    },
+    {
+      "id": "reduce-touch-mixed-escape-restores-safe-walking-frame",
+      "pass": true
+    },
+    {
+      "id": "reduce-safe-camera-private-view-survives-localized-reload",
+      "pass": true
+    },
+    {
+      "id": "reduce-tenmangu-camera-safety-keeps-legacy-bytes",
+      "pass": true
+    },
+    {
+      "id": "no-page-exceptions-or-unexpected-network-origins",
+      "pass": true
+    }
+  ],
+  "captures": [
+    {
+      "file": "neighborhood-captures/opening-day-en.png",
+      "bytes": 886360,
+      "sha256": "aa8759757cb327e204fa9e7e2591b3e94fc9b4c4cc2d9e0261d8d2fd60343881",
+      "kind": "full-page",
+      "player": {
+        "x": 20.694,
+        "y": 2.33,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600871814:4600891666",
+        "edgeDistance": 0
+      },
+      "currentView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:465066447:4600871814:4600891666",
+          "edgeDistance": 0.000334,
+          "height": 0,
+          "x": 20.694,
+          "y": 2.33
+        },
+        "camera": {
+          "azimuth": 0.22,
+          "polar": 1.1,
+          "distance": 22,
+          "targetOffset": {
+            "x": 1.2,
+            "y": -2.2,
+            "height": 1.6
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          26.17273261800828,
+          11.579114671362701,
+          19.00399376918958
+        ],
+        "target": [
+          21.894,
+          1.6,
+          -0.1299999999999999
+        ],
+        "desiredPosition": [
+          26.17273261800828,
+          11.579114671362701,
+          19.00399376918958
+        ],
+        "viewTarget": [
+          21.894,
+          1.6,
+          -0.1299999999999999
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 22,
+          "actualDistance": 22,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.07224333106512947,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": 0.22000000000000006,
+        "polar": 1.1,
+        "distance": 22,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": 0.22000000000000006,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "inspectionPanned": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.9758974493306055,
+          0,
+          -0.21822962308086935,
+          0,
+          -0.098988110609648,
+          0.8912073600614353,
+          -0.4426632979254766,
+          0,
+          0.19448784627310367,
+          0.4535961214255774,
+          0.8697269895086173,
+          0,
+          26.17273261800828,
+          11.579114671362701,
+          19.00399376918958,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "lighting": {
+        "mode": "day",
+        "phase": "ready"
+      }
+    },
+    {
+      "file": "neighborhood-captures/opening-night-zh.png",
+      "bytes": 782131,
+      "sha256": "706d6df88727b4ece750a28ae2eff22ddb2c806f12b6d049f51fbc001f39e43a",
+      "kind": "full-page",
+      "player": {
+        "x": 20.694,
+        "y": 2.33,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600871814:4600891666",
+        "edgeDistance": 0
+      },
+      "currentView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:465066447:4600871814:4600891666",
+          "edgeDistance": 0.000334,
+          "height": 0,
+          "x": 20.694,
+          "y": 2.33
+        },
+        "camera": {
+          "azimuth": 0.22,
+          "polar": 1.1,
+          "distance": 22,
+          "targetOffset": {
+            "x": 1.2,
+            "y": -2.2,
+            "height": 1.6
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          26.17273261800828,
+          11.579114671362701,
+          19.00399376918958
+        ],
+        "target": [
+          21.894,
+          1.6,
+          -0.1299999999999999
+        ],
+        "desiredPosition": [
+          26.17273261800828,
+          11.579114671362701,
+          19.00399376918958
+        ],
+        "viewTarget": [
+          21.894,
+          1.6,
+          -0.1299999999999999
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 22,
+          "actualDistance": 22,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.07224333106512947,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": 0.22000000000000006,
+        "polar": 1.1,
+        "distance": 22,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": 0.22000000000000006,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "inspectionPanned": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.9758974493306055,
+          0,
+          -0.21822962308086935,
+          0,
+          -0.098988110609648,
+          0.8912073600614353,
+          -0.4426632979254766,
+          0,
+          0.19448784627310367,
+          0.4535961214255774,
+          0.8697269895086173,
+          0,
+          26.17273261800828,
+          11.579114671362701,
+          19.00399376918958,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "lighting": {
+        "mode": "night",
+        "phase": "ready"
+      }
+    },
+    {
+      "file": "neighborhood-captures/interaction-night-zh.png",
+      "bytes": 818274,
+      "sha256": "2407f7e775e56ed8c08249ba946531d484f7ac8f885136a0137e51ba3a94a2b4",
+      "kind": "full-page",
+      "player": {
+        "x": 43.474,
+        "y": 2.091,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600871814:4600891666",
+        "edgeDistance": 22.781575684340204
+      },
+      "currentView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:465066447:4600871814:4600891666",
+          "edgeDistance": 22.781576,
+          "height": 0,
+          "x": 43.474,
+          "y": 2.091
+        },
+        "camera": {
+          "azimuth": 0.3,
+          "polar": 1.1,
+          "distance": 22,
+          "targetOffset": {
+            "x": 1.065759,
+            "y": -1.766661,
+            "height": 2.491207
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          50.33389455394193,
+          12.470322031424137,
+          18.406524553092403
+        ],
+        "target": [
+          44.53975932302576,
+          2.4912073600614355,
+          -0.32433947667542334
+        ],
+        "desiredPosition": [
+          50.33389455394193,
+          12.470322031424137,
+          18.406524553092403
+        ],
+        "viewTarget": [
+          44.53975932302576,
+          2.4912073600614355,
+          -0.32433947667542334
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 22.00000000000001,
+          "actualDistance": 22.00000000000001,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.07066609601491967,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": 0.29999999999999977,
+        "polar": 1.1000000000000003,
+        "distance": 22.00000000000001,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": 0.29999999999999977,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "inspectionPanned": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.9553364891256061,
+          0,
+          -0.2955202066613394,
+          0,
+          -0.13404681954446854,
+          0.8912073600614354,
+          -0.43333692612370295,
+          0,
+          0.26336978322346205,
+          0.4535961214255771,
+          0.8514029104439916,
+          0,
+          50.33389455394193,
+          12.470322031424137,
+          18.406524553092403,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "lighting": {
+        "mode": "night",
+        "phase": "ready"
+      }
+    },
+    {
+      "file": "neighborhood-captures/chosen-route-edited-reloaded-zh.png",
+      "bytes": 788924,
+      "sha256": "2fcb26929534fa8c56bf7d3a950c837ee11932eb416ef1de531f7880bf4ff794",
+      "kind": "full-page",
+      "player": {
+        "x": 20.694,
+        "y": 2.33,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600871814:4600891666",
+        "edgeDistance": 0.000334
+      },
+      "currentView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:465066447:4600871814:4600891666",
+          "edgeDistance": 0.000334,
+          "height": 0,
+          "x": 20.694,
+          "y": 2.33
+        },
+        "camera": {
+          "azimuth": 0.3,
+          "polar": 1.1,
+          "distance": 22,
+          "targetOffset": {
+            "x": 1.2,
+            "y": -2.2,
+            "height": 1.6
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          27.688135230916167,
+          11.579114671362701,
+          18.600864029767813
+        ],
+        "target": [
+          21.894,
+          1.6,
+          -0.1299999999999999
+        ],
+        "desiredPosition": [
+          27.688135230916167,
+          11.579114671362701,
+          18.600864029767813
+        ],
+        "viewTarget": [
+          21.894,
+          1.6,
+          -0.1299999999999999
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 22,
+          "actualDistance": 22,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.0721493166634541,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": 0.3,
+        "polar": 1.1,
+        "distance": 22,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": 0.3,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "inspectionPanned": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.955336489125606,
+          0,
+          -0.2955202066613396,
+          0,
+          -0.1340468195444687,
+          0.8912073600614354,
+          -0.4333369261237031,
+          0,
+          0.2633697832234623,
+          0.45359612142557737,
+          0.8514029104439915,
+          0,
+          27.688135230916167,
+          11.579114671362701,
+          18.600864029767813,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "lighting": {
+        "mode": "night",
+        "phase": "ready"
+      }
+    },
+    {
+      "file": "neighborhood-captures/outbound-nishiki-market-day.png",
+      "bytes": 1063218,
+      "sha256": "f9ecc9c81d6e71d12613620e1b78d83e4f343d7bac77c6909c25cfd69bf048ab",
+      "kind": "full-page",
+      "player": {
+        "x": 262.883,
+        "y": 139.73,
+        "height": 0,
+        "edgeId": "osm:way:66703315:354840396:5554417552",
+        "edgeDistance": 1.6431161541697807
+      },
+      "currentView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:66703315:354840396:5554417552",
+          "edgeDistance": 1.642654,
+          "height": 0,
+          "x": 262.883,
+          "y": 139.73
+        },
+        "camera": {
+          "azimuth": 0.22,
+          "polar": 1.1,
+          "distance": 22,
+          "targetOffset": {
+            "x": 1.19984,
+            "y": -2.200009,
+            "height": 1.6
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          264.5120120419228,
+          4.899278762818606,
+          -132.44524793839662
+        ],
+        "target": [
+          264.08283985982814,
+          1.6,
+          -137.5299912822639
+        ],
+        "desiredPosition": [
+          268.36157247783643,
+          11.579114671362701,
+          -118.39599751307419
+        ],
+        "viewTarget": [
+          262.883,
+          1.1,
+          -139.73
+        ],
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 22.000000000000107,
+          "actualDistance": 8.3759066344706,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.20455262526730805,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": 0.21999999999999925,
+        "polar": 1.1000000000000025,
+        "distance": 22.000000000000107,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": 0.21999999999999928,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "inspectionPanned": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.975897449330605,
+          0,
+          -0.21822962308087174,
+          0,
+          -0.09898811060964861,
+          0.8912073600614364,
+          -0.4426632979254742,
+          0,
+          0.194487846273106,
+          0.45359612142557526,
+          0.8697269895086178,
+          0,
+          264.5120120419228,
+          4.899278762818606,
+          -132.44524793839662,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "lighting": {
+        "mode": "day",
+        "phase": "ready"
+      }
+    },
+    {
+      "file": "neighborhood-captures/outbound-nishiki-tenmangu-day.png",
+      "bytes": 1006264,
+      "sha256": "48fafeff5f4d2ac84e66c191df38dd5609e0569b266b0dcdf6296a99af4c2f89",
+      "kind": "full-page",
+      "player": {
+        "x": 651.964,
+        "y": 143.136,
+        "height": 0,
+        "edgeId": "osm:way:66703315:354840400:5554418336",
+        "edgeDistance": 0
+      },
+      "currentView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:66703315:354840400:5554418336",
+          "edgeDistance": 0.000509,
+          "height": 0,
+          "x": 651.964,
+          "y": 143.136
+        },
+        "camera": {
+          "azimuth": 0.22,
+          "polar": 1.1,
+          "distance": 22,
+          "targetOffset": {
+            "x": 1.199832,
+            "y": -2.199997,
+            "height": 1.6
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          654.5535749064034,
+          4.841241357501055,
+          -134.72123444655043
+        ],
+        "target": [
+          653.163831870483,
+          1.6000000000000005,
+          -140.93600338961554
+        ],
+        "desiredPosition": [
+          657.4425644884911,
+          11.57911467136266,
+          -121.80200962042436
+        ],
+        "viewTarget": [
+          653.163831870483,
+          1.6000000000000005,
+          -140.93600338961554
+        ],
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 22.00000000000134,
+          "actualDistance": 7.145654921639502,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.1866595239108891,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": 0.2199999999999743,
+        "polar": 1.1000000000000332,
+        "distance": 22.00000000000134,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": 0.2199999999999743,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "inspectionPanned": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.9758974493306112,
+          -2.0816681711721685e-17,
+          -0.21822962308084376,
+          0,
+          -0.09898811060962981,
+          0.8912073600614507,
+          -0.4426632979254496,
+          0,
+          0.1944878462730842,
+          0.4535961214255471,
+          0.8697269895086374,
+          0,
+          654.5535749064034,
+          4.841241357501055,
+          -134.72123444655043,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "lighting": {
+        "mode": "day",
+        "phase": "ready"
+      }
+    },
+    {
+      "file": "neighborhood-captures/outbound-takase-river-day.png",
+      "bytes": 905824,
+      "sha256": "f137ddbf656647d475b51b4e1449132616a20cbb951e6c9c122d41c3f31c1424",
+      "kind": "full-page",
+      "player": {
+        "x": 981.52,
+        "y": 15.876,
+        "height": 0,
+        "edgeId": "osm:way:532008170:4600891626:5492358876",
+        "edgeDistance": 1.4788124448944597
+      },
+      "currentView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:532008170:4600891626:5492358876",
+          "edgeDistance": 1.478369,
+          "height": 0,
+          "x": 981.52,
+          "y": 15.876
+        },
+        "camera": {
+          "azimuth": 0.22,
+          "polar": 1.1,
+          "distance": 22,
+          "targetOffset": {
+            "x": 1.199836,
+            "y": -2.200001,
+            "height": 1.6
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          986.9985682327834,
+          11.579114671362637,
+          5.4579949899943525
+        ],
+        "target": [
+          982.7198356147752,
+          1.5999999999999999,
+          -13.675998779196876
+        ],
+        "desiredPosition": [
+          986.9985682327834,
+          11.579114671362637,
+          5.4579949899943525
+        ],
+        "viewTarget": [
+          982.7198356147752,
+          1.5999999999999999,
+          -13.675998779196876
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 22.000000000001396,
+          "actualDistance": 22.000000000001396,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.07224339976900133,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": 0.2199999999999794,
+        "polar": 1.1000000000000356,
+        "distance": 22.000000000001396,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": 0.2199999999999794,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "inspectionPanned": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.97589744933061,
+          -1.3877787807814457e-17,
+          -0.2182296230808492,
+          0,
+          -0.09898811060963195,
+          0.8912073600614515,
+          -0.4426632979254476,
+          0,
+          0.19448784627308924,
+          0.4535961214255457,
+          0.869726989508637,
+          0,
+          986.9985682327834,
+          11.579114671362637,
+          5.4579949899943525,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "lighting": {
+        "mode": "day",
+        "phase": "ready"
+      }
+    },
+    {
+      "file": "neighborhood-captures/outbound-pontocho-entrance-day.png",
+      "bytes": 956524,
+      "sha256": "54665983ab2a4481607ecc294c7aa1af3d688c52581b06b0d6f5cf297f70cf15",
+      "kind": "full-page",
+      "player": {
+        "x": 1036.755,
+        "y": 17.617,
+        "height": 0,
+        "edgeId": "osm:way:542888424:2367201411:5248383670",
+        "edgeDistance": 3.8905339977538023
+      },
+      "currentView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:542888424:2367201411:5248383670",
+          "edgeDistance": 3.890247,
+          "height": 0,
+          "x": 1036.755,
+          "y": 17.617
+        },
+        "camera": {
+          "azimuth": 0.22,
+          "polar": 1.1,
+          "distance": 22,
+          "targetOffset": {
+            "x": 1.199715,
+            "y": -2.200009,
+            "height": 1.6
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          1042.2334480738273,
+          11.579114671362637,
+          3.7170029000313853
+        ],
+        "target": [
+          1037.954715455819,
+          1.6,
+          -15.416990869159843
+        ],
+        "desiredPosition": [
+          1042.2334480738273,
+          11.579114671362637,
+          3.7170029000313853
+        ],
+        "viewTarget": [
+          1037.954715455819,
+          1.6,
+          -15.416990869159843
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 22.000000000001396,
+          "actualDistance": 22.000000000001396,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.07224343642222317,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": 0.2199999999999794,
+        "polar": 1.1000000000000356,
+        "distance": 22.000000000001396,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": 0.2199999999999794,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "inspectionPanned": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.97589744933061,
+          -1.3877787807814457e-17,
+          -0.2182296230808492,
+          0,
+          -0.09898811060963195,
+          0.8912073600614515,
+          -0.4426632979254476,
+          0,
+          0.19448784627308924,
+          0.4535961214255457,
+          0.869726989508637,
+          0,
+          1042.2334480738273,
+          11.579114671362637,
+          3.7170029000313853,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "lighting": {
+        "mode": "day",
+        "phase": "ready"
+      }
+    },
+    {
+      "file": "neighborhood-captures/outbound-shijo-bridge-day.png",
+      "bytes": 794490,
+      "sha256": "aae38bb8aefbd417a625c6982cd65ecad5f5c3cc41419e3293582becc5fedecb",
+      "kind": "full-page",
+      "player": {
+        "x": 1077.221,
+        "y": 18.971,
+        "height": 0,
+        "edgeId": "authored:shijo-bridge-view-approach",
+        "edgeDistance": 32.85198050401372
+      },
+      "currentView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "authored:shijo-bridge-view-approach",
+          "edgeDistance": 32.851981,
+          "height": 0,
+          "x": 1077.221,
+          "y": 18.971
+        },
+        "camera": {
+          "azimuth": 0.22,
+          "polar": 1.1,
+          "distance": 22,
+          "targetOffset": {
+            "x": 1.19984,
+            "y": -2.200003,
+            "height": 1.6
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          1082.6995724102833,
+          11.579114671362637,
+          2.3629968742561864
+        ],
+        "target": [
+          1078.420839792275,
+          1.6,
+          -16.770996894935042
+        ],
+        "desiredPosition": [
+          1082.6995724102833,
+          11.579114671362637,
+          2.3629968742561864
+        ],
+        "viewTarget": [
+          1078.420839792275,
+          1.6,
+          -16.770996894935042
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 22.000000000001396,
+          "actualDistance": 22.000000000001396,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.07224339432040268,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": 0.2199999999999794,
+        "polar": 1.1000000000000356,
+        "distance": 22.000000000001396,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": 0.2199999999999794,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "inspectionPanned": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.97589744933061,
+          -1.3877787807814457e-17,
+          -0.2182296230808492,
+          0,
+          -0.09898811060963195,
+          0.8912073600614515,
+          -0.4426632979254476,
+          0,
+          0.19448784627308924,
+          0.4535961214255457,
+          0.869726989508637,
+          0,
+          1082.6995724102833,
+          11.579114671362637,
+          2.3629968742561864,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "lighting": {
+        "mode": "day",
+        "phase": "ready"
+      }
+    },
+    {
+      "file": "neighborhood-captures/river-night-reloaded-zh.png",
+      "bytes": 772222,
+      "sha256": "358eb64ccef71e95cd69d00838df568c1efc311b16bab004532a47b63a5c251c",
+      "kind": "full-page",
+      "player": {
+        "x": 1077.221,
+        "y": 18.971,
+        "height": 0,
+        "edgeId": "authored:shijo-bridge-view-approach",
+        "edgeDistance": 32.851981
+      },
+      "currentView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "authored:shijo-bridge-view-approach",
+          "edgeDistance": 32.851981,
+          "height": 0,
+          "x": 1077.221,
+          "y": 18.971
+        },
+        "camera": {
+          "azimuth": 0.22,
+          "polar": 1.1,
+          "distance": 22,
+          "targetOffset": {
+            "x": 1.19984,
+            "y": -2.200003,
+            "height": 1.6
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          1082.6995726180082,
+          11.5791146713627,
+          2.3629967691895786
+        ],
+        "target": [
+          1078.42084,
+          1.6,
+          -16.770997
+        ],
+        "desiredPosition": [
+          1082.6995726180082,
+          11.5791146713627,
+          2.3629967691895786
+        ],
+        "viewTarget": [
+          1078.42084,
+          1.6,
+          -16.770997
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 21.99999999999999,
+          "actualDistance": 21.99999999999999,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.07224339443371772,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": 0.21999999999999775,
+        "polar": 1.0999999999999999,
+        "distance": 21.99999999999999,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": 0.21999999999999775,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "inspectionPanned": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.975897449330606,
+          6.938893903907228e-18,
+          -0.21822962308086713,
+          0,
+          -0.09898811060964702,
+          0.8912073600614353,
+          -0.4426632979254769,
+          0,
+          0.19448784627310167,
+          0.4535961214255775,
+          0.8697269895086177,
+          0,
+          1082.6995726180082,
+          11.5791146713627,
+          2.3629967691895786,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "lighting": {
+        "mode": "night",
+        "phase": "ready"
+      }
+    },
+    {
+      "file": "neighborhood-captures/return-pontocho-entrance-night.png",
+      "bytes": 804709,
+      "sha256": "d841e22e6fdb0f764349a0803b8d34c9b2e7dcce199f922ce07ac496a9abccc8",
+      "kind": "full-page",
+      "player": {
+        "x": 1036.755,
+        "y": 17.617,
+        "height": 0,
+        "edgeId": "osm:way:228073861:5163420172:5248383670",
+        "edgeDistance": 5.3776993571596705
+      },
+      "currentView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:228073861:5163420172:5248383670",
+          "edgeDistance": 5.377699,
+          "height": 0,
+          "x": 1036.755,
+          "y": 17.617
+        },
+        "camera": {
+          "azimuth": 0.22,
+          "polar": 1.1,
+          "distance": 22,
+          "targetOffset": {
+            "x": 1.199991,
+            "y": -2.199994,
+            "height": 1.6
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          1042.233723210829,
+          11.5791146713627,
+          3.7169876909634674
+        ],
+        "target": [
+          1037.9549905928209,
+          1.6,
+          -15.417006078226112
+        ],
+        "desiredPosition": [
+          1042.233723210829,
+          11.5791146713627,
+          3.7169876909634674
+        ],
+        "viewTarget": [
+          1037.9549905928209,
+          1.6,
+          -15.417006078226112
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 21.99999999999999,
+          "actualDistance": 21.99999999999999,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.0722433468822849,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": 0.21999999999999775,
+        "polar": 1.0999999999999999,
+        "distance": 21.99999999999999,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": 0.21999999999999775,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "inspectionPanned": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.975897449330606,
+          6.938893903907228e-18,
+          -0.21822962308086713,
+          0,
+          -0.09898811060964702,
+          0.8912073600614353,
+          -0.4426632979254769,
+          0,
+          0.19448784627310167,
+          0.4535961214255775,
+          0.8697269895086177,
+          0,
+          1042.233723210829,
+          11.5791146713627,
+          3.7169876909634674,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "lighting": {
+        "mode": "night",
+        "phase": "ready"
+      }
+    },
+    {
+      "file": "neighborhood-captures/return-takase-river-night.png",
+      "bytes": 762847,
+      "sha256": "300973f57d66e011b6f6cb8dfa99f2fd080d5e22533393cf3c14cdca40f4831a",
+      "kind": "full-page",
+      "player": {
+        "x": 981.52,
+        "y": 15.876,
+        "height": 0,
+        "edgeId": "osm:way:532008170:5163420205:5492358876",
+        "edgeDistance": 1.480161647378143
+      },
+      "currentView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:532008170:5163420205:5492358876",
+          "edgeDistance": 1.480162,
+          "height": 0,
+          "x": 981.52,
+          "y": 15.876
+        },
+        "camera": {
+          "azimuth": 0.22,
+          "polar": 1.1,
+          "distance": 22,
+          "targetOffset": {
+            "x": 1.199983,
+            "y": -2.199968,
+            "height": 1.6
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          986.9987154365303,
+          11.579114671362701,
+          5.457961670976415
+        ],
+        "target": [
+          982.7199828185219,
+          1.6,
+          -13.676032098213168
+        ],
+        "desiredPosition": [
+          986.9987154365303,
+          11.579114671362701,
+          5.457961670976415
+        ],
+        "viewTarget": [
+          982.7199828185219,
+          1.6,
+          -13.676032098213168
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 22.00000000000004,
+          "actualDistance": 22.00000000000004,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.07224340054499084,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": 0.22000000000000902,
+        "polar": 1.100000000000001,
+        "distance": 22.00000000000004,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": 0.22000000000000902,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "inspectionPanned": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.9758974493306035,
+          -6.938893903907228e-18,
+          -0.21822962308087812,
+          0,
+          -0.09898811060965179,
+          0.8912073600614357,
+          -0.4426632979254748,
+          0,
+          0.19448784627311155,
+          0.45359612142557654,
+          0.8697269895086159,
+          0,
+          986.9987154365303,
+          11.579114671362701,
+          5.457961670976415,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "lighting": {
+        "mode": "night",
+        "phase": "ready"
+      }
+    },
+    {
+      "file": "neighborhood-captures/return-nishiki-tenmangu-night.png",
+      "bytes": 918124,
+      "sha256": "22309451e7c2125a402d806064103175f890290e68ec63fbf3a90ce71a8ee0f4",
+      "kind": "full-page",
+      "player": {
+        "x": 651.964,
+        "y": 143.136,
+        "height": 0,
+        "edgeId": "osm:way:66703316:354840400:5204263033",
+        "edgeDistance": 0
+      },
+      "currentView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:66703316:354840400:5204263033",
+          "edgeDistance": 0,
+          "height": 0,
+          "x": 651.964,
+          "y": 143.136
+        },
+        "camera": {
+          "azimuth": 0.22,
+          "polar": 1.1,
+          "distance": 22,
+          "targetOffset": {
+            "x": 1.200027,
+            "y": -2.200012,
+            "height": 1.6
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          654.5537696842878,
+          4.841241357501042,
+          -134.72121936956663
+        ],
+        "target": [
+          653.1640266483673,
+          1.6,
+          -140.93598831263122
+        ],
+        "desiredPosition": [
+          657.4427592663758,
+          11.57911467136268,
+          -121.80199454344148
+        ],
+        "viewTarget": [
+          653.1640266483673,
+          1.6,
+          -140.93598831263122
+        ],
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 22.000000000000167,
+          "actualDistance": 7.145654921639078,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.18665875874783722,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": 0.22000000000000725,
+        "polar": 1.100000000000005,
+        "distance": 22.000000000000167,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": 0.22000000000000725,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "inspectionPanned": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.9758974493306036,
+          6.938893903907228e-18,
+          -0.2182296230808779,
+          0,
+          -0.09898811060965085,
+          0.8912073600614377,
+          -0.44266329792547104,
+          0,
+          0.19448784627311178,
+          0.45359612142557265,
+          0.8697269895086179,
+          0,
+          654.5537696842878,
+          4.841241357501042,
+          -134.72121936956663,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "lighting": {
+        "mode": "night",
+        "phase": "ready"
+      }
+    },
+    {
+      "file": "neighborhood-captures/return-nishiki-market-night.png",
+      "bytes": 909914,
+      "sha256": "de8c46430c608aae78ca4bd56c9617b421ac2a01340f2e1eb7d856d9e7f3174f",
+      "kind": "full-page",
+      "player": {
+        "x": 262.883,
+        "y": 139.73,
+        "height": 0,
+        "edgeId": "osm:way:66703315:354840397:5554417552",
+        "edgeDistance": 61.79118197989567
+      },
+      "currentView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:66703315:354840397:5554417552",
+          "edgeDistance": 61.791182,
+          "height": 0,
+          "x": 262.883,
+          "y": 139.73
+        },
+        "camera": {
+          "azimuth": 0.22,
+          "polar": 1.1,
+          "distance": 22,
+          "targetOffset": {
+            "x": 1.199998,
+            "y": -2.200002,
+            "height": 1.6
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          267.3557249771759,
+          3.4457315907447383,
+          -138.61835364316414
+        ],
+        "target": [
+          264.0829975636606,
+          1.6,
+          -137.52999803502163
+        ],
+        "desiredPosition": [
+          268.36173018166903,
+          11.579114671362712,
+          -118.39600426583299
+        ],
+        "viewTarget": [
+          262.883,
+          1.1,
+          -139.73
+        ],
+        "obstruction": {
+          "active": true,
+          "desiredDistance": 21.99999999999922,
+          "actualDistance": 5.171410159708612,
+          "targetAdjusted": false,
+          "framingRecovered": true,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.32755699587526527,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 1.107193244233902,
+          "settling": false
+        },
+        "azimuth": 0.2200000000000166,
+        "polar": 1.0999999999999814,
+        "distance": 21.99999999999922,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": 0.22000000000001663,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "inspectionPanned": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.2412008868222829,
+          -8.326672684688674e-17,
+          -0.9704752094701565,
+          0,
+          -0.4402037909553531,
+          0.8912073600614273,
+          -0.10940778674700105,
+          0,
+          0.8648946494369589,
+          0.45359612142559325,
+          0.2149600055893619,
+          0,
+          267.3557249771759,
+          3.4457315907447383,
+          -138.61835364316414,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "lighting": {
+        "mode": "night",
+        "phase": "ready"
+      }
+    },
+    {
+      "file": "neighborhood-captures/return-mitsui-frontage-night.png",
+      "bytes": 758916,
+      "sha256": "076708b4a4613f6168610a19a5631018b6c15e4fcde3af5cac6e99745249872c",
+      "kind": "full-page",
+      "player": {
+        "x": 20.694,
+        "y": 2.33,
+        "height": 0,
+        "edgeId": "osm:way:465066447:4600871814:4600891666",
+        "edgeDistance": 0
+      },
+      "currentView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:465066447:4600871814:4600891666",
+          "edgeDistance": 0.000334,
+          "height": 0,
+          "x": 20.694,
+          "y": 2.33
+        },
+        "camera": {
+          "azimuth": 0.22,
+          "polar": 1.1,
+          "distance": 22,
+          "targetOffset": {
+            "x": 1.20011,
+            "y": -2.200005,
+            "height": 1.6
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          26.172842250018668,
+          11.579114671362769,
+          19.003998597664026
+        ],
+        "target": [
+          21.894109632010334,
+          1.6,
+          -0.12999517152450066
+        ],
+        "desiredPosition": [
+          26.172842250018668,
+          11.579114671362769,
+          19.003998597664026
+        ],
+        "viewTarget": [
+          21.894109632010334,
+          1.6,
+          -0.12999517152450066
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 21.999999999999126,
+          "actualDistance": 21.999999999999126,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": true,
+          "actorVerticalOccupancy": 0.07224327433675584,
+          "recoveryFits": true,
+          "minimumSceneDistance": 5,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": 0.2200000000000144,
+        "polar": 1.0999999999999763,
+        "distance": 21.999999999999126,
+        "frontage": "north",
+        "azimuthBase": 0,
+        "relativeAzimuth": 0.2200000000000144,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": false,
+        "inspectionAimed": false,
+        "inspectionPanned": false,
+        "panning": false,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          0.9758974493306023,
+          -6.938893903907228e-18,
+          -0.2182296230808834,
+          0,
+          -0.09898811060965895,
+          0.8912073600614246,
+          -0.4426632979254957,
+          0,
+          0.19448784627311383,
+          0.4535961214255984,
+          0.869726989508604,
+          0,
+          26.172842250018668,
+          11.579114671362769,
+          19.003998597664026,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "lighting": {
+        "mode": "night",
+        "phase": "ready"
+      }
+    },
+    {
+      "file": "neighborhood-captures/tenmangu-purposeful-pan-no-preference.png",
+      "bytes": 784053,
+      "sha256": "8a96605fb01093396fe86351b42de7bc8c959d92e832fc76a1ae4a4b03c60514",
+      "kind": "full-page",
+      "player": {
+        "x": 681.467,
+        "y": 142.004,
+        "height": 0,
+        "edgeId": "osm:way:66703316:434344433:5204263033",
+        "edgeDistance": 0
+      },
+      "currentView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:66703316:434344433:5204263033",
+          "edgeDistance": 0,
+          "height": 0,
+          "x": 681.467,
+          "y": 142.004
+        },
+        "camera": {
+          "azimuth": 2.244492,
+          "polar": 1.46,
+          "distance": 5,
+          "targetOffset": {
+            "x": -0.172825,
+            "y": -0.137964,
+            "height": 3.087737
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          685.1778217608588,
+          3.6405858991003743,
+          -144.9663014614781
+        ],
+        "target": [
+          681.294175,
+          3.087737,
+          -141.86603599999998
+        ],
+        "desiredPosition": [
+          685.1778217608588,
+          3.6405858991003743,
+          -144.9663014614781
+        ],
+        "viewTarget": [
+          681.294175,
+          3.087737,
+          -141.86603599999998
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 4.999999999999994,
+          "actualDistance": 4.999999999999994,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": false,
+          "actorVerticalOccupancy": 0.36971242114847785,
+          "recoveryFits": false,
+          "minimumSceneDistance": 4.999999999999994,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": 2.2444920000000144,
+        "polar": 1.4599999999999946,
+        "distance": 4.999999999999994,
+        "frontage": "south",
+        "azimuthBase": 3.141592653589793,
+        "relativeAzimuth": -0.8971006535897788,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": true,
+        "inspectionAimed": true,
+        "inspectionPanned": true,
+        "panning": true,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          -0.6238784884621698,
+          -6.938893903907228e-18,
+          -0.7815213571196622,
+          0,
+          -0.08641264438140722,
+          0.9938683634116442,
+          0.06898210710374328,
+          0,
+          0.7767293521717658,
+          0.11056977982007499,
+          -0.6200530922956271,
+          0,
+          685.1778217608588,
+          3.6405858991003743,
+          -144.9663014614781,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "lighting": {
+        "mode": "day",
+        "phase": "ready"
+      }
+    },
+    {
+      "file": "neighborhood-captures/tenmangu-purposeful-pan-no-preference-canvas.png",
+      "bytes": 541573,
+      "sha256": "387839c76b397e7334581db9c77f700ac198c10ec5c7fa898f09525be5fc7b46",
+      "kind": "actual-canvas",
+      "player": {
+        "x": 681.467,
+        "y": 142.004,
+        "height": 0,
+        "edgeId": "osm:way:66703316:434344433:5204263033",
+        "edgeDistance": 0
+      },
+      "currentView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:66703316:434344433:5204263033",
+          "edgeDistance": 0,
+          "height": 0,
+          "x": 681.467,
+          "y": 142.004
+        },
+        "camera": {
+          "azimuth": 2.244492,
+          "polar": 1.46,
+          "distance": 5,
+          "targetOffset": {
+            "x": -0.172825,
+            "y": -0.137964,
+            "height": 3.087737
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          685.1778217608588,
+          3.6405858991003743,
+          -144.9663014614781
+        ],
+        "target": [
+          681.294175,
+          3.087737,
+          -141.86603599999998
+        ],
+        "desiredPosition": [
+          685.1778217608588,
+          3.6405858991003743,
+          -144.9663014614781
+        ],
+        "viewTarget": [
+          681.294175,
+          3.087737,
+          -141.86603599999998
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 4.999999999999994,
+          "actualDistance": 4.999999999999994,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": false,
+          "actorVerticalOccupancy": 0.36971242114847785,
+          "recoveryFits": false,
+          "minimumSceneDistance": 4.999999999999994,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": 2.2444920000000144,
+        "polar": 1.4599999999999946,
+        "distance": 4.999999999999994,
+        "frontage": "south",
+        "azimuthBase": 3.141592653589793,
+        "relativeAzimuth": -0.8971006535897788,
+        "enabled": true,
+        "damping": true,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": true,
+        "inspectionAimed": true,
+        "inspectionPanned": true,
+        "panning": true,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          -0.6238784884621698,
+          -6.938893903907228e-18,
+          -0.7815213571196622,
+          0,
+          -0.08641264438140722,
+          0.9938683634116442,
+          0.06898210710374328,
+          0,
+          0.7767293521717658,
+          0.11056977982007499,
+          -0.6200530922956271,
+          0,
+          685.1778217608588,
+          3.6405858991003743,
+          -144.9663014614781,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "lighting": {
+        "mode": "day",
+        "phase": "ready"
+      }
+    },
+    {
+      "file": "neighborhood-captures/tenmangu-purposeful-pan-reduce.png",
+      "bytes": 784053,
+      "sha256": "8a96605fb01093396fe86351b42de7bc8c959d92e832fc76a1ae4a4b03c60514",
+      "kind": "full-page",
+      "player": {
+        "x": 681.467,
+        "y": 142.004,
+        "height": 0,
+        "edgeId": "osm:way:66703316:434344433:5204263033",
+        "edgeDistance": 0
+      },
+      "currentView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:66703316:434344433:5204263033",
+          "edgeDistance": 0,
+          "height": 0,
+          "x": 681.467,
+          "y": 142.004
+        },
+        "camera": {
+          "azimuth": 2.244492,
+          "polar": 1.46,
+          "distance": 5,
+          "targetOffset": {
+            "x": -0.172825,
+            "y": -0.137964,
+            "height": 3.087737
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          685.1778217608588,
+          3.6405858991003743,
+          -144.9663014614781
+        ],
+        "target": [
+          681.294175,
+          3.087737,
+          -141.86603599999998
+        ],
+        "desiredPosition": [
+          685.1778217608588,
+          3.6405858991003743,
+          -144.9663014614781
+        ],
+        "viewTarget": [
+          681.294175,
+          3.087737,
+          -141.86603599999998
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 4.999999999999994,
+          "actualDistance": 4.999999999999994,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": false,
+          "actorVerticalOccupancy": 0.36971242114847785,
+          "recoveryFits": false,
+          "minimumSceneDistance": 4.999999999999994,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": 2.2444920000000144,
+        "polar": 1.4599999999999946,
+        "distance": 4.999999999999994,
+        "frontage": "south",
+        "azimuthBase": 3.141592653589793,
+        "relativeAzimuth": -0.8971006535897788,
+        "enabled": true,
+        "damping": false,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": true,
+        "inspectionAimed": true,
+        "inspectionPanned": true,
+        "panning": true,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          -0.6238784884621698,
+          -6.938893903907228e-18,
+          -0.7815213571196622,
+          0,
+          -0.08641264438140722,
+          0.9938683634116442,
+          0.06898210710374328,
+          0,
+          0.7767293521717658,
+          0.11056977982007499,
+          -0.6200530922956271,
+          0,
+          685.1778217608588,
+          3.6405858991003743,
+          -144.9663014614781,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "lighting": {
+        "mode": "day",
+        "phase": "ready"
+      }
+    },
+    {
+      "file": "neighborhood-captures/tenmangu-purposeful-pan-reduce-canvas.png",
+      "bytes": 541573,
+      "sha256": "387839c76b397e7334581db9c77f700ac198c10ec5c7fa898f09525be5fc7b46",
+      "kind": "actual-canvas",
+      "player": {
+        "x": 681.467,
+        "y": 142.004,
+        "height": 0,
+        "edgeId": "osm:way:66703316:434344433:5204263033",
+        "edgeDistance": 0
+      },
+      "currentView": {
+        "version": 3,
+        "packId": "shijo-east",
+        "revision": 1,
+        "player": {
+          "edgeId": "osm:way:66703316:434344433:5204263033",
+          "edgeDistance": 0,
+          "height": 0,
+          "x": 681.467,
+          "y": 142.004
+        },
+        "camera": {
+          "azimuth": 2.244492,
+          "polar": 1.46,
+          "distance": 5,
+          "targetOffset": {
+            "x": -0.172825,
+            "y": -0.137964,
+            "height": 3.087737
+          }
+        }
+      },
+      "camera": {
+        "position": [
+          685.1778217608588,
+          3.6405858991003743,
+          -144.9663014614781
+        ],
+        "target": [
+          681.294175,
+          3.087737,
+          -141.86603599999998
+        ],
+        "desiredPosition": [
+          685.1778217608588,
+          3.6405858991003743,
+          -144.9663014614781
+        ],
+        "viewTarget": [
+          681.294175,
+          3.087737,
+          -141.86603599999998
+        ],
+        "obstruction": {
+          "active": false,
+          "desiredDistance": 4.999999999999994,
+          "actualDistance": 4.999999999999994,
+          "targetAdjusted": false,
+          "framingRecovered": false,
+          "actorInFrame": false,
+          "actorVerticalOccupancy": 0.36971242114847785,
+          "recoveryFits": false,
+          "minimumSceneDistance": 4.999999999999994,
+          "clearance": 0.35,
+          "angleOffset": 0,
+          "settling": false
+        },
+        "azimuth": 2.2444920000000144,
+        "polar": 1.4599999999999946,
+        "distance": 4.999999999999994,
+        "frontage": "south",
+        "azimuthBase": 3.141592653589793,
+        "relativeAzimuth": -0.8971006535897788,
+        "enabled": true,
+        "damping": false,
+        "transitioning": false,
+        "solo": true,
+        "inspecting": true,
+        "inspectionAimed": true,
+        "inspectionPanned": true,
+        "panning": true,
+        "projectionMatrix": [
+          1.626675118070023,
+          0,
+          0,
+          0,
+          0,
+          2.2460367739042155,
+          0,
+          0,
+          0,
+          0,
+          -1.0008575103615833,
+          -1,
+          0,
+          0,
+          -0.3001286265542375,
+          0
+        ],
+        "matrixWorld": [
+          -0.6238784884621698,
+          -6.938893903907228e-18,
+          -0.7815213571196622,
+          0,
+          -0.08641264438140722,
+          0.9938683634116442,
+          0.06898210710374328,
+          0,
+          0.7767293521717658,
+          0.11056977982007499,
+          -0.6200530922956271,
+          0,
+          685.1778217608588,
+          3.6405858991003743,
+          -144.9663014614781,
+          1
+        ],
+        "limits": {
+          "polar": [
+            0.55,
+            1.49
+          ],
+          "distance": [
+            5,
+            55
+          ],
+          "targetXY": 40,
+          "targetHeight": [
+            0.5,
+            40
+          ]
+        }
+      },
+      "lighting": {
+        "mode": "day",
+        "phase": "ready"
+      }
+    }
+  ],
+  "scope": [
+    "54 selected edges were present in sampled traces in both directions; other graph edges are outside the selected six-sight itinerary.",
+    "In-app hidden-scene checks switch to Together. Native browser-tab hidden state remains a separate unobserved acceptance gate.",
+    "Compact residency is exercised; the complete traversal and camera matrix use the recorded desktop/touch-capable contexts.",
+    "Cached-shadow primary frames are separated from ordinary render totals that may include shadow passes.",
+    "No claim of physical-device performance, human enjoyment, surveyed grades/current access, or route-wide art acceptance follows from this automated report."
+  ]
+}

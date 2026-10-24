@@ -1,0 +1,266 @@
+{
+  "capturedAt": "2026-10-24T02:35:25.637Z",
+  "runId": 39909716421,
+  "status": "completed",
+  "conclusion": "success",
+  "source": "9b973f0d98426a102af1c936286052d46986f895",
+  "runCompletedAt": "2026-10-23T09:04:41Z",
+  "jobs": [
+    {
+      "id": 120269960581,
+      "name": "Validate geographic source preparation",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 120269960831,
+      "name": "Validate shared perspective",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 120269960845,
+      "name": "Validate journey homepage",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 120269960901,
+      "name": "Validate solo exploration",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 120269960954,
+      "name": "Validate original walk",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 120269960984,
+      "name": "Validate reviewed place packs",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 120269961024,
+      "name": "Validate connected neighborhood",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 120269961032,
+      "name": "Validate travel companion",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "candidateManifestSha256": "1720fc5907c0c6f2b292aa0e728bcaad8ddbd6c776de7aec2b5a35a513609c9b",
+  "verifiedCandidateFiles": 446,
+  "previousPendingSnapshot": "verification.json",
+  "previousReportsReverified": 7,
+  "browserChecks": {
+    "passed": 1000,
+    "failed": 0
+  },
+  "sourceChecks": {
+    "workbench": 18,
+    "neighborhood": 13,
+    "evidence": "source-job.log.gz"
+  },
+  "neighborhood": {
+    "artifactId": 12491026459,
+    "artifactName": "neighborhood-browser-evidence",
+    "artifactZipBytes": 19573502,
+    "artifactZipSha256": "7a4aaa5d42ea8cdde2852a19fd5afd52bde03ae0c7cba241708918da55580527",
+    "verifiedArtifactDigest": "sha256:7a4aaa5d42ea8cdde2852a19fd5afd52bde03ae0c7cba241708918da55580527",
+    "report": {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 3833492,
+      "sha256": "cba0169a968b40d37c703b8d9b60c19ab7913931570c832078cb13ce58309c93",
+      "decodedBytes": 132380682,
+      "decodedSha256": "726503477726aea91ad1d6a40365eaad5a191d808fdc8d9fb63a6d963ef991d2"
+    },
+    "driver": {
+      "path": "experience/tests/browser-neighborhood.mjs",
+      "sha256": "4a40b0eda0215f89366635589ce87aaece72b592370dbf8e3c5e887a2cbacb4e",
+      "matchesSourceCommit": true
+    },
+    "helper": {
+      "path": "experience/tests/helpers/neighborhood-evidence-source.mjs",
+      "sha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1",
+      "matchesSourceCommit": true
+    },
+    "passed": 229,
+    "failed": 0,
+    "browser": "151.0.7922.34",
+    "startedAt": "2026-10-23T06:17:52.203Z",
+    "finishedAt": "2026-10-23T09:04:33.546Z",
+    "elapsedMs": 10001343,
+    "captures": 19,
+    "sections": [
+      "startup",
+      "route-choice",
+      "journey",
+      "initial-recovery",
+      "latest-intent",
+      "unavailable-revision",
+      "external-session",
+      "residency-boundary",
+      "camera-safety"
+    ],
+    "filesMatchCandidate": true
+  },
+  "preservedFiles": [
+    {
+      "file": "neighborhood-result.json.gz",
+      "bytes": 3833492,
+      "sha256": "cba0169a968b40d37c703b8d9b60c19ab7913931570c832078cb13ce58309c93",
+      "decodedBytes": 132380682,
+      "decodedSha256": "726503477726aea91ad1d6a40365eaad5a191d808fdc8d9fb63a6d963ef991d2"
+    },
+    {
+      "file": "browser-neighborhood.executed.mjs.gz",
+      "bytes": 41289,
+      "sha256": "fb02b2199c1d8dc7782e85a3fe822ded57f758edf738d5eb244a1600d485ed04",
+      "decodedBytes": 170597,
+      "decodedSha256": "4a40b0eda0215f89366635589ce87aaece72b592370dbf8e3c5e887a2cbacb4e"
+    },
+    {
+      "file": "neighborhood-evidence-source.executed.mjs.gz",
+      "bytes": 1619,
+      "sha256": "70115611f201081f16386f97f55d12421b3ee05a5e4c8f20bdfe99a5ec5fd294",
+      "decodedBytes": 3713,
+      "decodedSha256": "5978159dc50a1c5f06d7185e31983b9c87c8547fd5f2a85d1cf3e51c122a83f1"
+    },
+    {
+      "file": "neighborhood-job.log.gz",
+      "bytes": 27203,
+      "sha256": "ebeadfd522d8aabfb4662266bc137fc112bc26ddd4c5aa32c34595dc13fa3661",
+      "decodedBytes": 102879,
+      "decodedSha256": "a5c2a56585919efcd248c7d8135f0a478b1f278377cbb6f86110092040401d97"
+    },
+    {
+      "file": "completed-run.json",
+      "bytes": 12727,
+      "sha256": "e8b39202f98893be1a12b5da57b11a93476694a112de1eb11356e3a15708c46e"
+    },
+    {
+      "file": "completed-jobs.json",
+      "bytes": 21219,
+      "sha256": "a3737c4a6a860d1c14241a7c34e5d20c7a80ea1ae74697b66dec83ee5335a1ed"
+    },
+    {
+      "file": "completed-artifacts.json",
+      "bytes": 6672,
+      "sha256": "1e3e1a3a433c1e02cf3de14011248fd87b8db50f0b4df32d828f4d6e06e569e0"
+    },
+    {
+      "file": "neighborhood-captures/opening-day-en.png",
+      "bytes": 886360,
+      "sha256": "aa8759757cb327e204fa9e7e2591b3e94fc9b4c4cc2d9e0261d8d2fd60343881"
+    },
+    {
+      "file": "neighborhood-captures/opening-night-zh.png",
+      "bytes": 782131,
+      "sha256": "706d6df88727b4ece750a28ae2eff22ddb2c806f12b6d049f51fbc001f39e43a"
+    },
+    {
+      "file": "neighborhood-captures/interaction-night-zh.png",
+      "bytes": 818274,
+      "sha256": "2407f7e775e56ed8c08249ba946531d484f7ac8f885136a0137e51ba3a94a2b4"
+    },
+    {
+      "file": "neighborhood-captures/chosen-route-edited-reloaded-zh.png",
+      "bytes": 788924,
+      "sha256": "2fcb26929534fa8c56bf7d3a950c837ee11932eb416ef1de531f7880bf4ff794"
+    },
+    {
+      "file": "neighborhood-captures/outbound-nishiki-market-day.png",
+      "bytes": 1063218,
+      "sha256": "f9ecc9c81d6e71d12613620e1b78d83e4f343d7bac77c6909c25cfd69bf048ab"
+    },
+    {
+      "file": "neighborhood-captures/outbound-nishiki-tenmangu-day.png",
+      "bytes": 1006264,
+      "sha256": "48fafeff5f4d2ac84e66c191df38dd5609e0569b266b0dcdf6296a99af4c2f89"
+    },
+    {
+      "file": "neighborhood-captures/outbound-takase-river-day.png",
+      "bytes": 905824,
+      "sha256": "f137ddbf656647d475b51b4e1449132616a20cbb951e6c9c122d41c3f31c1424"
+    },
+    {
+      "file": "neighborhood-captures/outbound-pontocho-entrance-day.png",
+      "bytes": 956524,
+      "sha256": "54665983ab2a4481607ecc294c7aa1af3d688c52581b06b0d6f5cf297f70cf15"
+    },
+    {
+      "file": "neighborhood-captures/outbound-shijo-bridge-day.png",
+      "bytes": 794490,
+      "sha256": "aae38bb8aefbd417a625c6982cd65ecad5f5c3cc41419e3293582becc5fedecb"
+    },
+    {
+      "file": "neighborhood-captures/river-night-reloaded-zh.png",
+      "bytes": 772222,
+      "sha256": "358eb64ccef71e95cd69d00838df568c1efc311b16bab004532a47b63a5c251c"
+    },
+    {
+      "file": "neighborhood-captures/return-pontocho-entrance-night.png",
+      "bytes": 804709,
+      "sha256": "d841e22e6fdb0f764349a0803b8d34c9b2e7dcce199f922ce07ac496a9abccc8"
+    },
+    {
+      "file": "neighborhood-captures/return-takase-river-night.png",
+      "bytes": 762847,
+      "sha256": "300973f57d66e011b6f6cb8dfa99f2fd080d5e22533393cf3c14cdca40f4831a"
+    },
+    {
+      "file": "neighborhood-captures/return-nishiki-tenmangu-night.png",
+      "bytes": 918124,
+      "sha256": "22309451e7c2125a402d806064103175f890290e68ec63fbf3a90ce71a8ee0f4"
+    },
+    {
+      "file": "neighborhood-captures/return-nishiki-market-night.png",
+      "bytes": 909914,
+      "sha256": "de8c46430c608aae78ca4bd56c9617b421ac2a01340f2e1eb7d856d9e7f3174f"
+    },
+    {
+      "file": "neighborhood-captures/return-mitsui-frontage-night.png",
+      "bytes": 758916,
+      "sha256": "076708b4a4613f6168610a19a5631018b6c15e4fcde3af5cac6e99745249872c"
+    },
+    {
+      "file": "neighborhood-captures/tenmangu-purposeful-pan-no-preference.png",
+      "bytes": 784053,
+      "sha256": "8a96605fb01093396fe86351b42de7bc8c959d92e832fc76a1ae4a4b03c60514"
+    },
+    {
+      "file": "neighborhood-captures/tenmangu-purposeful-pan-no-preference-canvas.png",
+      "bytes": 541573,
+      "sha256": "387839c76b397e7334581db9c77f700ac198c10ec5c7fa898f09525be5fc7b46"
+    },
+    {
+      "file": "neighborhood-captures/tenmangu-purposeful-pan-reduce.png",
+      "bytes": 784053,
+      "sha256": "8a96605fb01093396fe86351b42de7bc8c959d92e832fc76a1ae4a4b03c60514"
+    },
+    {
+      "file": "neighborhood-captures/tenmangu-purposeful-pan-reduce-canvas.png",
+      "bytes": 541573,
+      "sha256": "387839c76b397e7334581db9c77f700ac198c10ec5c7fa898f09525be5fc7b46"
+    },
+    {
+      "file": "neighborhood-coverage.json",
+      "bytes": 105538,
+      "sha256": "bf32eb4f0adee9a0b126c5d189dfc14c6267409c5aa8c8d0d0063a7f6e0c11b0"
+    }
+  ],
+  "limitations": [
+    "54 selected edges were present in sampled traces in both directions; other graph edges are outside the selected six-sight itinerary.",
+    "In-app hidden-scene checks switch to Together. Native browser-tab hidden state remains a separate unobserved acceptance gate.",
+    "Compact residency is exercised; the complete traversal and camera matrix use the recorded desktop/touch-capable contexts.",
+    "Cached-shadow primary frames are separated from ordinary render totals that may include shadow passes.",
+    "No claim of physical-device performance, human enjoyment, surveyed grades/current access, or route-wide art acceptance follows from this automated report."
+  ]
+}
