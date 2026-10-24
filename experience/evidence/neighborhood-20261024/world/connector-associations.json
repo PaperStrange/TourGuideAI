@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-24",
+  "status": "reference-review-only",
+  "scene": {
+    "file": "experience/src/neighborhoods/shijo-east/scene.json",
+    "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e"
+  },
+  "daimaru": {
+    "sourceId": "kyoto-city:bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+    "sourceIndex": 201,
+    "mappedIdentity": {
+      "sourceId": "osm:way:205748651",
+      "version": 10,
+      "timestamp": "2025-11-14T08:18:19Z",
+      "name": "Daimaru",
+      "name:ja": "大丸京都店",
+      "municipalFootprintOverlapFraction": 0.9818124747955947
+    },
+    "candidateStreetFace": {
+      "polygonIndex": 0,
+      "edgeIndex": 3,
+      "from": [185.979, 4.407],
+      "to": [258.326, 5.035],
+      "orientation": "south-facing Shijo frontage",
+      "coverage": "The photograph depicts a visible portion of this frontage; it does not establish every bay along the full edge. Actual rendered face selection remains required before an art change."
+    },
+    "heightMeaning": {
+      "retainedLOD1ExtentMetres": 33.49100000000001,
+      "measuredHeightAttributeMetres": 42.7,
+      "osmHeightTagMetres": 31,
+      "limits": "These differing source quantities remain separate. No facade storey height or measured ornament geometry is inferred."
+    },
+    "reference": {
+      "title": "Shijo takakura 01.JPG",
+      "author": "Hide1228",
+      "captureDate": "2016-03-13",
+      "file": "artifacts/neighborhood-20261023/world/shijo-takakura-2016.jpg",
+      "sha256": "7afa017de3759981ac2dac2bfa96c8cffbfa5c96494af4dc3c7149bea037db8e",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shijo_takakura_01.JPG",
+      "reviewedPageRevision": 1239984599,
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "cameraLatitude": 35.003731,
+      "cameraLongitude": 135.762344,
+      "cameraHeadingDegrees": 294.84795321637,
+      "observations": [
+        "The opposite frontage includes a visible DAIMARU sign.",
+        "A pale stone lower band has narrow vertical openings beneath red/brown upper masonry.",
+        "A continuous covered sidewalk partly obscures the ground-floor elevation."
+      ],
+      "limits": [
+        "The appearance is dated2016; present-day facade condition is unverified.",
+        "The photograph supplies no complete elevation, bay measurements or exact entrance correspondence.",
+        "The foreground stop is Platform B; its shelter assembly does not identify Platform A construction.",
+        "Reference pixels remain outside runtime assets. Any reused or adapted licensed material requires attribution, license/change notices and applicable ShareAlike terms."
+      ]
+    },
+    "decision": "Retain as an identity-supported candidate for a later source201 south-face review. No facade geometry, sign or material change is approved by this record."
+  },
+  "nishiki": {
+    "referenceIds": ["nishiki-entrance-2026", "nishiki-arcade-2025"],
+    "existingSupport": "The entrance reference identifies the Takakura west portal. The arcade reference supports colored central roof panels, broad gray soffits, narrow vertical surface rhythm and recessed lower openings as visible material/construction cues.",
+    "associationLimits": "The existing arcade image does not provide an independently established municipal footprint or complete shop-by-shop facade mapping. Its metadata date remains inconsistent. Its listed geotag cannot establish a target facade.",
+    "primarySourcesRead": [
+      {
+        "url": "https://www.kyoto-nishiki.or.jp/stores/hanayorikiyoe/",
+        "publisher": "Kyoto Nishiki Market Shopping Street Association",
+        "checkedAt": "2026-10-24",
+        "supportedFact": "The named shop's listed address is Funayacho399, on Miyukimachi south of Takoyakushi, Sashiano Building1F."
+      },
+      {
+        "url": "https://www.kyoto-nishiki.or.jp/map/",
+        "publisher": "Kyoto Nishiki Market Shopping Street Association",
+        "checkedAt": "2026-10-24",
+        "supportedFact": "The association map places Hanayori Kiyoe in the block between Teramachi and Miyukimachi. It supplies block/shop ordering, without surveyed facade coordinates."
+      }
+    ],
+    "decision": "Use the existing photograph only within its declared reference scope until a selected facade edge has independent location correspondence. No business lettering or copied shop identity is introduced."
+  },
+  "unchanged": ["Canonical geography", "Navigation", "Source geometry", "Runtime assets", "Public credits"],
+  "remainingRequirement": "Select the actual source-indexed visible frontage, record its edge and camera, and match the depicted location before accepting a specific facade reconstruction."
+}

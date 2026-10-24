@@ -164,7 +164,15 @@ async function ensureScene() {
       onStatus(value) { if (current()) { sceneState = value.status; updatePreviewCopy(); } },
       onState() { if (current()) updateNeighborhoodWalking(); },
       onInspectionChange(value) { if (current()) solo?.onInspection(value); },
-      onStreamingChange(value) { if (current()) { streamingState = value; updatePreviewCopy(); updateNeighborhoodWalking(); } },
+      onStreamingChange(value) {
+        if (!current()) return;
+        const previous = streamNotice(streamingState);
+        streamingState = value;
+        const next = streamNotice(value);
+        // 保留实时行走状态；仅在可见提示或重试条件变化时刷新界面。
+        if (previous.message !== next.message || previous.failed !== next.failed) updatePreviewCopy();
+        updateNeighborhoodWalking();
+      },
       onViewChange(value) {
         if (!current()) return;
         solo?.update(); neighborhood?.capture(value, liveView?.getLightingState()?.mode || lighting);
@@ -222,6 +230,12 @@ function showPreview() {
   if (street) ensureScene(); else { ensureMap().then(() => { worldMap?.resize(); updateMap(); }); }
   updatePreviewCopy();
 }
+function streamNotice(state) {
+  const failed = Boolean(state?.cells.some(cell => cell.error));
+  const message = state?.blocked?.reason === 'section-failed' ? 'streetSectionFailed'
+    : state?.blocked ? 'streetSectionLoading' : failed ? 'streetDetailFailed' : '';
+  return { failed, message };
+}
 function updatePreviewCopy() {
   if (!$('#preview-kind')) return;
   inputHelpDirty = false;
@@ -253,9 +267,7 @@ function updatePreviewCopy() {
   const mapState = $('#world-map').dataset.mapStatus;
   const lightingMessage = light?.phase === 'loading' ? 'lightingLoading' : lightingFailed
     ? light.fallbackReason === 'rig-unavailable' || light.phase === 'unavailable' ? 'lightingUnavailable' : 'lightingFallback' : '';
-  const streamFailed = streamingState?.cells.some(cell => cell.error);
-  const streamMessage = streamingState?.blocked?.reason === 'section-failed' ? 'streetSectionFailed'
-    : streamingState?.blocked ? 'streetSectionLoading' : streamFailed ? 'streetDetailFailed' : '';
+  const { failed: streamFailed, message: streamMessage } = streamNotice(streamingState);
   $('#scene-status').textContent = street ? sceneState === 'ready' ? streamMessage || lightingMessage ? t(streamMessage || lightingMessage) : '' : t(sceneState === 'loading' ? 'sceneLoading' : 'sceneError')
     : mapState === 'ready' ? '' : t(mapState === 'error' ? 'mapError' : 'mapLoading');
   $('#scene-status').hidden = !$('#scene-status').textContent;

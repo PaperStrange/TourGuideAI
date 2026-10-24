@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "status": "reviewed-source-support",
+  "reviewedAt": "2026-10-24",
+  "sourceId": "osm:node:5204263033",
+  "sourceIndex": 1047,
+  "sourceVersion": 3,
+  "sourceTimestamp": "2025-09-02T02:33:58Z",
+  "sourcePosition": {
+    "latitude": 35.0050249,
+    "longitude": 135.7669717,
+    "x": 662.0420493058513,
+    "y": 142.65858183490835
+  },
+  "scene": {
+    "file": "experience/src/neighborhoods/shijo-east/scene.json",
+    "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e"
+  },
+  "reference": {
+    "id": "tenmangu-street-2007",
+    "title": "Torii of Nishiki tenmangu by Hidehiro Komatsu at the east end of Nishiki Ichiba",
+    "file": "artifacts/neighborhood-20261021/art/references/tenmangu-street-2007.jpg",
+    "sha256": "3f5c7af45585a1ad4f6a8adef9e45057592d933f60dedf38624db8a2cc8a0512",
+    "metadataFile": "artifacts/neighborhood-20261021/art/references/tenmangu-street-2007.json",
+    "metadataSha256": "068af0391926409a1540b26d3ff5dea4ee9c0a33d6c7b5dc31c0501bbcc4f4c6",
+    "width": 1200,
+    "height": 1600,
+    "captureDate": "2007-03-01",
+    "author": "Hidehiro Komatsu",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Torii_of_Nishiki_tenmangu_by_Hidehiro_Komatsu_at_the_east_end_of_Nishiki_Ichiba.jpg",
+    "associationBasis": "The retained description identifies the torii between Teramachi and Shinkyogoku at Nishiki Market's eastern end; this matches the named mapped gate. The original image was inspected at its full resolution on this review date."
+  },
+  "observed": [
+    "White folded zigzag streamers hang from a tan braided rope below the central plaque.",
+    "The streamers show shaded folds and an unlit diffuse appearance in this daylight reference.",
+    "The central plaque has a dark field, gold-colored border and vertically arranged lettering."
+  ],
+  "supportedAuthoredTreatment": {
+    "scope": "The existing source1047 NEAR paper-like hanging faces only",
+    "materialResponse": "Matte, opaque, nonmetallic and nonemissive original material",
+    "geometry": "Preserve the existing faces, UV coordinates, source index, world transform and gate placement",
+    "otherLighting": "Arcade lamps retain their existing emission",
+    "parameters": "Exact color, roughness, response under authored night illumination and existing simplified streamer geometry remain authored"
+  },
+  "limits": [
+    "The 2007 image does not establish current decoration, night photometry or measured paper construction.",
+    "No exact plaque inscription transcription is approved by this record. Existing plaque geometry and text remain unchanged in this material increment.",
+    "Photograph pixels are not included in runtime assets. Attribution remains in the existing reference ledger and credits.",
+    "Source1047 association applies to the gate; the photograph does not establish identities of surrounding current tenants or municipal facade records."
+  ]
+}

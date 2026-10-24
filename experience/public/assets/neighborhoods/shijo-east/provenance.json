@@ -172,13 +172,13 @@
     "sha256": "dffa91bf8616b4ce6657f972913c642249ce5be999fb52be736933a5b2ebd6ad",
     "bytes": 7321
   },
-  "styleSha256": "7dc4a83f3bf262b9e6b2fb7b96b6350f972468da8569409362b067d46737dfef",
-  "generatorSha256": "274380689d37b72738c40609104f3458dac3a7529dd103342f3892b96629a168",
-  "geometryHelperSha256": "eeecd54661997956aa2c078479e2a2b95f32f2ececf3c9d9c742b47645d7a85a",
-  "landmarkHelperSha256": "291bdab1df2b71bf6b56f3261a7ef086583498e077de6e80ec3e9517e0dacf31",
+  "styleSha256": "56a55feb8d6d415890e50cfe9fd5f1f9079609d6e1825e430a9f77b4d899ae1c",
+  "generatorSha256": "d22dbeb0f57ec755c92dd27157e3a05881a77c7e5945264120fbe31c92789300",
+  "geometryHelperSha256": "eb84ae82942b0bebf635a3d5a494e5827964ae3f772230b817d378da32c28ac9",
+  "landmarkHelperSha256": "39d7e1fb7e8f5a7734a5eba4fc073db774569755da9b0cb1dc22a9749c365060",
   "materialHelperSha256": "c9fb695c3b8968d5a3d9b9b0044a5e5b9ea8249cbeb6ff56fd97459741cbc1dd",
   "blenderVersion": "4.3.2",
-  "elapsedSeconds": 14.458,
+  "elapsedSeconds": 14.017,
   "geometryMeaning": "Source footprints and prepared surface polygons; reviewed original facade assemblies with explicit authored dimensions",
   "rights": "source-ledger.json and references.json",
   "referenceIds": [
@@ -471,9 +471,10 @@
         "structureMaterial": "frame",
         "floorMaterial": "paving",
         "floorHeightMetres": 0,
-        "floorWalkable": false
+        "floorWalkable": false,
+        "floorEdgeBottomMetres": -0.04
       },
-      "authored": "Original open assembly informed by the official wall-less classification, preserving the source roof ring and top. Slab thickness, seven centreline supports, beam dimensions and neutral finishes are authored. The nonwalkable paving surface occupies the exact source footprint at authored base0; real floor material and elevation remain unmeasured. Beam underside1.944m is virtual construction, not measured real clearance. No exact Platform A shelter reconstruction is claimed.",
+      "authored": "Original open assembly informed by the official wall-less classification, preserving the source roof ring and top. Slab thickness, seven centreline supports, beam dimensions and neutral finishes are authored. The nonwalkable paving surface occupies the exact source footprint at authored base0, with vertical perimeter faces joining adjacent authored ground at-0.04m. Real floor material, elevation and curb construction remain unmeasured. Beam underside1.944m is virtual construction, not measured real clearance. No exact Platform A shelter reconstruction is claimed.",
       "evidence": [
         {
           "file": "experience/evidence/neighborhood-20261023/world/platform-context/audit.json",
@@ -490,6 +491,10 @@
         {
           "file": "experience/evidence/neighborhood-20261023/world/platform-context/floor-support.json",
           "sha256": "c3f236da23c9e83b9a44d5d4b2a06d0f03cbca14be8c79b780713a62ea1aea8a"
+        },
+        {
+          "file": "experience/evidence/neighborhood-20261024/world/floor-boundary.json",
+          "sha256": "1ca8cd8131f2d2d1dcdee8328292c3fd0c8172e60122d02e0ddc76b833be1d70"
         }
       ],
       "evidenceRecords": [
@@ -941,6 +946,178 @@
               "meaning": "Authored display floor inside the exact retained footprint. Real pavement elevation, construction and material remain unmeasured."
             },
             "canonicalNavigationChanged": false
+          }
+        },
+        {
+          "file": "experience/evidence/neighborhood-20261024/world/floor-boundary.json",
+          "sha256": "1ca8cd8131f2d2d1dcdee8328292c3fd0c8172e60122d02e0ddc76b833be1d70",
+          "record": {
+            "status": "pass",
+            "reviewedAt": "2026-10-24",
+            "sourceId": "kyoto-city:bldg_74454289-1d7a-4105-87ea-26e36c69bc44",
+            "sourceIndex": 223,
+            "inputs": [
+              {
+                "file": "experience/src/neighborhoods/shijo-east/scene.json",
+                "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e",
+                "bytes": 8789674
+              },
+              {
+                "file": "artifacts/neighborhood-20261023/world/art-selection.json",
+                "sha256": "1ec33111947716ef43d8592c96203f55d1194b0f5b9ab68168b0deaf373bdb65",
+                "bytes": 5321766
+              }
+            ],
+            "producer": {
+              "file": "artifacts/neighborhood-20261024/world/audit-floor-boundary.py",
+              "sha256": "ea7239b8d9b9b0087776f0a3c15e3d39fec7df72f8225783e34ccc44d44e79b7",
+              "bytes": 3625
+            },
+            "tools": {
+              "shapely": "2.2.0"
+            },
+            "floorAreaSquareMetres": 73.62628800000002,
+            "floorPerimeterMetres": 64.46802097165019,
+            "adjacentSurfaces": [
+              {
+                "sourceId": "shijo-east:ground",
+                "kind": "land",
+                "material": "paving",
+                "topHeightMetres": -0.04,
+                "floorHeightMetres": 0,
+                "heightDifferenceMetres": 0.04,
+                "sharedBoundaryMetres": 64.46802097165019,
+                "boundary": {
+                  "type": "MultiLineString",
+                  "coordinates": [
+                    [
+                      [
+                        157.989,
+                        -0.627
+                      ],
+                      [
+                        157.987,
+                        -3.101
+                      ]
+                    ],
+                    [
+                      [
+                        157.987,
+                        -3.101
+                      ],
+                      [
+                        187.747,
+                        -3.125
+                      ]
+                    ],
+                    [
+                      [
+                        187.747,
+                        -3.125
+                      ],
+                      [
+                        187.749,
+                        -0.651
+                      ]
+                    ],
+                    [
+                      [
+                        187.749,
+                        -0.651
+                      ],
+                      [
+                        157.989,
+                        -0.627
+                      ]
+                    ]
+                  ]
+                },
+                "positiveAreaOverlapSquareMetres": 0.0
+              }
+            ],
+            "unmatchedBoundaryMetres": 0.0,
+            "finding": "The complete footprint touches authored land at -0.04m while its floor is at0. The current generator emits no vertical perimeter faces at this boundary.",
+            "proposal": "A source-index223 nonwalkable vertical perimeter closure between existing display levels0 and-0.04 may close the rendering opening. Keep the footprint, floor top, roof, posts, navigation and neighboring horizontal surfaces unchanged.",
+            "limits": "This establishes an authored display-height discontinuity. It does not establish a measured curb, real paving construction or the final screen-space contribution of the seam."
+          }
+        }
+      ]
+    }
+  ],
+  "landmarkMaterialOverrides": [
+    {
+      "sourceId": "osm:node:5204263033",
+      "expectedKind": "torii",
+      "expectedSourceIndex": 1047,
+      "expectedSourceVersion": 3,
+      "hangingMaterial": "torii-paper",
+      "priorHangingMaterial": "lamp",
+      "referenceIds": [
+        "tenmangu-street-2007"
+      ],
+      "authored": "Only the existing NEAR hanging faces receive the matte nonemissive paper material. Geometry, UV scale, mapped position and source identity remain unchanged. Arcade downlights retain their existing material and emission. Plaque lettering is unchanged.",
+      "evidence": [
+        {
+          "file": "experience/evidence/neighborhood-20261024/world/torii-paper-review.json",
+          "sha256": "1c0d04780039823cdce0831bd32867373082b329b57c4ae53a167b16238b03d4"
+        }
+      ],
+      "evidenceRecords": [
+        {
+          "file": "experience/evidence/neighborhood-20261024/world/torii-paper-review.json",
+          "sha256": "1c0d04780039823cdce0831bd32867373082b329b57c4ae53a167b16238b03d4",
+          "record": {
+            "schemaVersion": 1,
+            "status": "reviewed-source-support",
+            "reviewedAt": "2026-10-24",
+            "sourceId": "osm:node:5204263033",
+            "sourceIndex": 1047,
+            "sourceVersion": 3,
+            "sourceTimestamp": "2025-09-02T02:33:58Z",
+            "sourcePosition": {
+              "latitude": 35.0050249,
+              "longitude": 135.7669717,
+              "x": 662.0420493058513,
+              "y": 142.65858183490835
+            },
+            "scene": {
+              "file": "experience/src/neighborhoods/shijo-east/scene.json",
+              "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e"
+            },
+            "reference": {
+              "id": "tenmangu-street-2007",
+              "title": "Torii of Nishiki tenmangu by Hidehiro Komatsu at the east end of Nishiki Ichiba",
+              "file": "artifacts/neighborhood-20261021/art/references/tenmangu-street-2007.jpg",
+              "sha256": "3f5c7af45585a1ad4f6a8adef9e45057592d933f60dedf38624db8a2cc8a0512",
+              "metadataFile": "artifacts/neighborhood-20261021/art/references/tenmangu-street-2007.json",
+              "metadataSha256": "068af0391926409a1540b26d3ff5dea4ee9c0a33d6c7b5dc31c0501bbcc4f4c6",
+              "width": 1200,
+              "height": 1600,
+              "captureDate": "2007-03-01",
+              "author": "Hidehiro Komatsu",
+              "license": "CC BY 2.0",
+              "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Torii_of_Nishiki_tenmangu_by_Hidehiro_Komatsu_at_the_east_end_of_Nishiki_Ichiba.jpg",
+              "associationBasis": "The retained description identifies the torii between Teramachi and Shinkyogoku at Nishiki Market's eastern end; this matches the named mapped gate. The original image was inspected at its full resolution on this review date."
+            },
+            "observed": [
+              "White folded zigzag streamers hang from a tan braided rope below the central plaque.",
+              "The streamers show shaded folds and an unlit diffuse appearance in this daylight reference.",
+              "The central plaque has a dark field, gold-colored border and vertically arranged lettering."
+            ],
+            "supportedAuthoredTreatment": {
+              "scope": "The existing source1047 NEAR paper-like hanging faces only",
+              "materialResponse": "Matte, opaque, nonmetallic and nonemissive original material",
+              "geometry": "Preserve the existing faces, UV coordinates, source index, world transform and gate placement",
+              "otherLighting": "Arcade lamps retain their existing emission",
+              "parameters": "Exact color, roughness, response under authored night illumination and existing simplified streamer geometry remain authored"
+            },
+            "limits": [
+              "The 2007 image does not establish current decoration, night photometry or measured paper construction.",
+              "No exact plaque inscription transcription is approved by this record. Existing plaque geometry and text remain unchanged in this material increment.",
+              "Photograph pixels are not included in runtime assets. Attribution remains in the existing reference ledger and credits.",
+              "Source1047 association applies to the gate; the photograph does not establish identities of surrounding current tenants or municipal facade records."
+            ]
           }
         }
       ]

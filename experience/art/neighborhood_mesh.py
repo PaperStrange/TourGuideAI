@@ -237,6 +237,14 @@ def wall_less_geometry(feature, source_index, batches):
         raise ValueError('Reviewed display floor must remain nonwalkable at the assembly base')
     # 来源建筑底面被地面预处理排除；显示铺装只覆盖同一平面范围，导航仍由常驻表面负责。
     batches[construction['floorMaterial']].top(polygon['triangles'], bottom, source_index)
+    edge_bottom = construction['floorEdgeBottomMetres']
+    if not math.isfinite(edge_bottom) or edge_bottom >= bottom:
+        raise ValueError('Reviewed floor edge must connect to the lower adjacent display surface')
+    # 侧面仅连接已审阅的显示高度，保留原始铺装顶面和完整边界。
+    for start, end in zip(ring, ring[1:]):
+        batches[construction['floorMaterial']].face(
+            [(start[0], start[1], edge_bottom), (end[0], end[1], edge_bottom),
+             (end[0], end[1], bottom), (start[0], start[1], bottom)], source_index)
     roof.top(polygon['triangles'], top, source_index)
     for triangle in polygon['triangles']:
         a, b, c = triangle

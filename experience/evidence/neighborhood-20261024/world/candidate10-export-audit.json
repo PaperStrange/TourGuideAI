@@ -1,0 +1,1991 @@
+{
+  "status": "pass",
+  "reviewedAt": "2026-10-24",
+  "baseline": {
+    "directory": "artifacts/neighborhood-20261023/art/candidate-9-transport",
+    "manifest": {
+      "bytes": 322503,
+      "sha256": "79b1a3ed91f0b672364c690e44de9278dce555fab0074ce0dc4aaa8add62f534"
+    }
+  },
+  "candidate": {
+    "directory": "artifacts/neighborhood-20261024/art/candidate-10-transport",
+    "manifest": {
+      "bytes": 322503,
+      "sha256": "e58257879fb4ead8af14022e71e329ee3309f9920eec6fe2cf4717276573d108"
+    },
+    "provenance": {
+      "bytes": 1655378,
+      "sha256": "93eddcc5951f77ce4b451eea72743672f622583a71d733ba711ad7fb76b41696"
+    }
+  },
+  "producer": {
+    "file": "experience/evidence/neighborhood-20261024/world/audit-candidate10-export.mjs",
+    "bytes": 21290,
+    "sha256": "7c82b3da0f1945aebd78a2f2904b00120201b5fdb810cc897fafa3c8dfcd51f0"
+  },
+  "parserVersions": {
+    "gltfTransform": "4.5.1",
+    "meshoptimizer": "1.3.0"
+  },
+  "comparison": {
+    "sections": [
+      {
+        "file": "ground.gltf",
+        "sourceGroupsCompared": 190,
+        "unchangedGroupsSha256": "9cdff33217a5961ae652c45d1847ac8fb096d6899a57a493f0ced42091e47def",
+        "trianglesBefore": 10656,
+        "trianglesAfter": 10656,
+        "batchesBefore": 6,
+        "batchesAfter": 6
+      },
+      {
+        "file": "context.gltf",
+        "sourceGroupsCompared": 319,
+        "unchangedGroupsSha256": "abd7e88f7b38eee9fa1b66d1a14d9f8089883af7a713d6f9fe7d2d47bbfdf18b",
+        "trianglesBefore": 10202,
+        "trianglesAfter": 10202,
+        "batchesBefore": 11,
+        "batchesAfter": 11
+      },
+      {
+        "file": "cells/cell-e000-s001/base.gltf",
+        "sourceGroupsCompared": 3,
+        "unchangedGroupsSha256": "091a134b09e6561278477bbd562b23f01c3ab35bbe4c1678e0807cfbcdae3e0f",
+        "trianglesBefore": 19100,
+        "trianglesAfter": 19100,
+        "batchesBefore": 29,
+        "batchesAfter": 29
+      },
+      {
+        "file": "cells/cell-e000-s001/near.gltf",
+        "sourceGroupsCompared": 3,
+        "unchangedGroupsSha256": "3bd03cef0530fc11db38b983933f0cc549857f2af7d687efe3103c2631bcc2cb",
+        "trianglesBefore": 54290,
+        "trianglesAfter": 54290,
+        "batchesBefore": 30,
+        "batchesAfter": 30
+      },
+      {
+        "file": "cells/cell-e000-n000/base.gltf",
+        "sourceGroupsCompared": 4,
+        "unchangedGroupsSha256": "637ee1edece8a2b5c16eb11d2c6fba7ff15fb0a7a2d81686c79011769c13a6b4",
+        "trianglesBefore": 32602,
+        "trianglesAfter": 32602,
+        "batchesBefore": 28,
+        "batchesAfter": 28
+      },
+      {
+        "file": "cells/cell-e000-n000/near.gltf",
+        "sourceGroupsCompared": 4,
+        "unchangedGroupsSha256": "a234537750cee303d0309817537286aea373ddf82789c19d5cacbd231a671dfe",
+        "trianglesBefore": 83639,
+        "trianglesAfter": 83639,
+        "batchesBefore": 30,
+        "batchesAfter": 30
+      },
+      {
+        "file": "cells/cell-e001-s001/base.gltf",
+        "sourceGroupsCompared": 13,
+        "unchangedGroupsSha256": "331c876709dcf9bd28f1f590194b9d1c6312e364d68394578f5d8303ef714f7d",
+        "trianglesBefore": 3631,
+        "trianglesAfter": 3639,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e001-s001/near.gltf",
+        "sourceGroupsCompared": 13,
+        "unchangedGroupsSha256": "de505aebd493e0f21e26c1cb9589c32654a1ded6e0b9c9c43bf888c54e8b02fd",
+        "trianglesBefore": 16419,
+        "trianglesAfter": 16427,
+        "batchesBefore": 8,
+        "batchesAfter": 8
+      },
+      {
+        "file": "cells/cell-e001-n000/base.gltf",
+        "sourceGroupsCompared": 6,
+        "unchangedGroupsSha256": "8f2792b50fea8ded1562c93aefd86f9d6b783a991d0081d40f525d9d694fbeab",
+        "trianglesBefore": 3209,
+        "trianglesAfter": 3209,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e001-n000/near.gltf",
+        "sourceGroupsCompared": 6,
+        "unchangedGroupsSha256": "819872669f8f7234126bdd48db856838bb77da7bc43b1e04c781fb1b14b28b19",
+        "trianglesBefore": 16429,
+        "trianglesAfter": 16429,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e002-s001/base.gltf",
+        "sourceGroupsCompared": 8,
+        "unchangedGroupsSha256": "ed50ddc0b2bfa520092dea6b7be9eff7b7628e723c90a10b7175d355b4bb1e1f",
+        "trianglesBefore": 3346,
+        "trianglesAfter": 3346,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e002-s001/near.gltf",
+        "sourceGroupsCompared": 8,
+        "unchangedGroupsSha256": "6b12c6614535e54404fbf6e9da8f0305b8e57db28e6c145c9d62aa3631618a80",
+        "trianglesBefore": 16388,
+        "trianglesAfter": 16388,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e002-n000/base.gltf",
+        "sourceGroupsCompared": 12,
+        "unchangedGroupsSha256": "ea63a95e7e878b5cb2b4e3e47b9d4444229fbcb17427659895dc903d621e2d9d",
+        "trianglesBefore": 8204,
+        "trianglesAfter": 8204,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e002-n000/near.gltf",
+        "sourceGroupsCompared": 12,
+        "unchangedGroupsSha256": "050ca4c3f452f5dea43e6fa4975f093315377750d44eb9e1ac3d9ee5b7b7d02e",
+        "trianglesBefore": 40256,
+        "trianglesAfter": 40256,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e002-n001/base.gltf",
+        "sourceGroupsCompared": 35,
+        "unchangedGroupsSha256": "d3b1e47fff621aa09ce89f13d5bc27aaf9920c8c8c4e8d20f699a44c30b673f4",
+        "trianglesBefore": 6152,
+        "trianglesAfter": 6152,
+        "batchesBefore": 17,
+        "batchesAfter": 17
+      },
+      {
+        "file": "cells/cell-e002-n001/near.gltf",
+        "sourceGroupsCompared": 35,
+        "unchangedGroupsSha256": "77f5c55b8736436f7eaa895835446996437c6111f9ad6d1904eea22979950fbb",
+        "trianglesBefore": 23360,
+        "trianglesAfter": 23360,
+        "batchesBefore": 18,
+        "batchesAfter": 18
+      },
+      {
+        "file": "cells/cell-e003-s001/base.gltf",
+        "sourceGroupsCompared": 7,
+        "unchangedGroupsSha256": "ab42f7443e828bdd4ebc0971b735dbc8644d0fc0a2f8042fca4e4e4beac28472",
+        "trianglesBefore": 4759,
+        "trianglesAfter": 4759,
+        "batchesBefore": 4,
+        "batchesAfter": 4
+      },
+      {
+        "file": "cells/cell-e003-s001/near.gltf",
+        "sourceGroupsCompared": 7,
+        "unchangedGroupsSha256": "8e4af6c60d34587132eac2266cacd22f8014992d15a8a71d6b1a2e3b4b3fcf19",
+        "trianglesBefore": 23139,
+        "trianglesAfter": 23139,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e003-n000/base.gltf",
+        "sourceGroupsCompared": 11,
+        "unchangedGroupsSha256": "482405370125e9ecbcd55cd76f3f1fbda8707c232a69284b5629fd3e12ac22b9",
+        "trianglesBefore": 4505,
+        "trianglesAfter": 4505,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e003-n000/near.gltf",
+        "sourceGroupsCompared": 11,
+        "unchangedGroupsSha256": "48b77da62a334a74a9da19be897887926e279b932d61691e183d60ad895451e2",
+        "trianglesBefore": 20235,
+        "trianglesAfter": 20235,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e003-n001/base.gltf",
+        "sourceGroupsCompared": 52,
+        "unchangedGroupsSha256": "553563dbb0682c0efab0b697895ba2d7c7f0fd562360f4dce51f711459a660e9",
+        "trianglesBefore": 8238,
+        "trianglesAfter": 8238,
+        "batchesBefore": 16,
+        "batchesAfter": 16
+      },
+      {
+        "file": "cells/cell-e003-n001/near.gltf",
+        "sourceGroupsCompared": 52,
+        "unchangedGroupsSha256": "3c80bd1fe68adc47241308d0c5cad32ea10fcd2af6b1df4d7eec7081922f9247",
+        "trianglesBefore": 27606,
+        "trianglesAfter": 27606,
+        "batchesBefore": 17,
+        "batchesAfter": 17
+      },
+      {
+        "file": "cells/cell-e004-s001/base.gltf",
+        "sourceGroupsCompared": 4,
+        "unchangedGroupsSha256": "5f50f053527549064de274a5984046348738bfffe517ce73e733d23efe8fb0b9",
+        "trianglesBefore": 3125,
+        "trianglesAfter": 3125,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e004-s001/near.gltf",
+        "sourceGroupsCompared": 4,
+        "unchangedGroupsSha256": "d84822bac25448f28070c4101e94e90045c54cac9adc005606dc90246c248e05",
+        "trianglesBefore": 15673,
+        "trianglesAfter": 15673,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e004-n000/base.gltf",
+        "sourceGroupsCompared": 13,
+        "unchangedGroupsSha256": "f4cb6bcf04352627de4aa76496bf20900cf698dd1c376b56cb9c82bd250842b2",
+        "trianglesBefore": 4789,
+        "trianglesAfter": 4789,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e004-n000/near.gltf",
+        "sourceGroupsCompared": 13,
+        "unchangedGroupsSha256": "7e36714a93603eb7457b0b72ceb3dcc4a967214ea3b31a0a19e96d1a6a62d211",
+        "trianglesBefore": 23421,
+        "trianglesAfter": 23421,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e004-n001/base.gltf",
+        "sourceGroupsCompared": 52,
+        "unchangedGroupsSha256": "0a8eae04b851da993ee27ca94ee28d8e08940d9b5e9212426d98cb4c9460269f",
+        "trianglesBefore": 8811,
+        "trianglesAfter": 8811,
+        "batchesBefore": 16,
+        "batchesAfter": 16
+      },
+      {
+        "file": "cells/cell-e004-n001/near.gltf",
+        "sourceGroupsCompared": 52,
+        "unchangedGroupsSha256": "7890df2c9a89252e7f8d10d6248fcb2a45596df48364f2353cf1e9b98a3a21d2",
+        "trianglesBefore": 29993,
+        "trianglesAfter": 29993,
+        "batchesBefore": 17,
+        "batchesAfter": 17
+      },
+      {
+        "file": "cells/cell-e005-s001/base.gltf",
+        "sourceGroupsCompared": 6,
+        "unchangedGroupsSha256": "ea6faee4b149ab89a7ecfd0e771b3321d6a695ec83845004f430bef2f120120e",
+        "trianglesBefore": 3114,
+        "trianglesAfter": 3114,
+        "batchesBefore": 4,
+        "batchesAfter": 4
+      },
+      {
+        "file": "cells/cell-e005-s001/near.gltf",
+        "sourceGroupsCompared": 6,
+        "unchangedGroupsSha256": "be7e80b76b240171c74d8d0c6265caa7994f23568d60fb7038e51120953897c4",
+        "trianglesBefore": 15446,
+        "trianglesAfter": 15446,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e005-n000/base.gltf",
+        "sourceGroupsCompared": 12,
+        "unchangedGroupsSha256": "52baa0ed5c53a9bf22a1a5a5c65d5ec0ec2cb64a32fd37ea2c983c1bd2d8b72a",
+        "trianglesBefore": 3804,
+        "trianglesAfter": 3804,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e005-n000/near.gltf",
+        "sourceGroupsCompared": 12,
+        "unchangedGroupsSha256": "55d6cd7428791cb6eea45168b3b318a185dafb056b96cba6d1a9958ae251ef97",
+        "trianglesBefore": 18528,
+        "trianglesAfter": 18528,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e005-n001/base.gltf",
+        "sourceGroupsCompared": 69,
+        "unchangedGroupsSha256": "da85b9fd751ea627bc2950b1ce005fd7f5270bdb470eea44a8a9ce1432daab51",
+        "trianglesBefore": 9398,
+        "trianglesAfter": 9398,
+        "batchesBefore": 16,
+        "batchesAfter": 16
+      },
+      {
+        "file": "cells/cell-e005-n001/near.gltf",
+        "sourceGroupsCompared": 69,
+        "unchangedGroupsSha256": "2fe155752bff472c22fc91e6b7c6bc2e92cc7a34efbe7ec8b1d93ec0848518cf",
+        "trianglesBefore": 31618,
+        "trianglesAfter": 31618,
+        "batchesBefore": 17,
+        "batchesAfter": 17
+      },
+      {
+        "file": "cells/cell-e006-s001/base.gltf",
+        "sourceGroupsCompared": 12,
+        "unchangedGroupsSha256": "68efac06f26d16fe4c15f2067204139fe3de9af475cf0f0840f4c4d3f2481798",
+        "trianglesBefore": 1340,
+        "trianglesAfter": 1340,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e006-s001/near.gltf",
+        "sourceGroupsCompared": 12,
+        "unchangedGroupsSha256": "93852f4068fa33d9768e7d064beadfc23cc6d57833843b160596acf1d36abcfe",
+        "trianglesBefore": 5476,
+        "trianglesAfter": 5476,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e006-n000/base.gltf",
+        "sourceGroupsCompared": 50,
+        "unchangedGroupsSha256": "a8a3a0cb684c57ea9c24deefc8b3153a623af1fa57c1b1c35cb6b620208d8d0d",
+        "trianglesBefore": 6986,
+        "trianglesAfter": 6986,
+        "batchesBefore": 8,
+        "batchesAfter": 8
+      },
+      {
+        "file": "cells/cell-e006-n000/near.gltf",
+        "sourceGroupsCompared": 50,
+        "unchangedGroupsSha256": "7942bf67548dd8669fc7d7432dab4588ae8070a556e6dd82b34f12f61152f505",
+        "trianglesBefore": 27456,
+        "trianglesAfter": 27456,
+        "batchesBefore": 10,
+        "batchesAfter": 10
+      },
+      {
+        "file": "cells/cell-e006-n001/base.gltf",
+        "sourceGroupsCompared": 56,
+        "unchangedGroupsSha256": "5acb126be8f22ceeffdf0d59ef2685dcba66de39600fc6b8eb170d5565e86ac0",
+        "trianglesBefore": 8216,
+        "trianglesAfter": 8216,
+        "batchesBefore": 17,
+        "batchesAfter": 17
+      },
+      {
+        "file": "cells/cell-e006-n001/near.gltf",
+        "sourceGroupsCompared": 56,
+        "unchangedGroupsSha256": "fe05ed8012e72ac415e9783a6bb19f73434ca8628209d24d1413d87cd952d9f5",
+        "trianglesBefore": 29130,
+        "trianglesAfter": 29130,
+        "batchesBefore": 19,
+        "batchesAfter": 19
+      },
+      {
+        "file": "cells/cell-e006-n002/base.gltf",
+        "sourceGroupsCompared": 3,
+        "unchangedGroupsSha256": "65d9590bba2a0f4887f8f223a45e6f62950e1d48a9eea291008c3f611fa5f479",
+        "trianglesBefore": 72,
+        "trianglesAfter": 72,
+        "batchesBefore": 3,
+        "batchesAfter": 3
+      },
+      {
+        "file": "cells/cell-e006-n002/near.gltf",
+        "sourceGroupsCompared": 3,
+        "unchangedGroupsSha256": "65d9590bba2a0f4887f8f223a45e6f62950e1d48a9eea291008c3f611fa5f479",
+        "trianglesBefore": 72,
+        "trianglesAfter": 72,
+        "batchesBefore": 3,
+        "batchesAfter": 3
+      },
+      {
+        "file": "cells/cell-e006-n003/base.gltf",
+        "sourceGroupsCompared": 2,
+        "unchangedGroupsSha256": "b3817526ac28f32daf7468233fc26234a2aa30cdbd7f452394192042651e32f0",
+        "trianglesBefore": 53,
+        "trianglesAfter": 53,
+        "batchesBefore": 3,
+        "batchesAfter": 3
+      },
+      {
+        "file": "cells/cell-e006-n003/near.gltf",
+        "sourceGroupsCompared": 2,
+        "unchangedGroupsSha256": "b3817526ac28f32daf7468233fc26234a2aa30cdbd7f452394192042651e32f0",
+        "trianglesBefore": 53,
+        "trianglesAfter": 53,
+        "batchesBefore": 3,
+        "batchesAfter": 3
+      },
+      {
+        "file": "cells/cell-e006-n004/base.gltf",
+        "sourceGroupsCompared": 2,
+        "unchangedGroupsSha256": "d2ea5582eed881142c138aceb5f0b44d842c52acfa9ca019f7d403dd418145a9",
+        "trianglesBefore": 29,
+        "trianglesAfter": 29,
+        "batchesBefore": 3,
+        "batchesAfter": 3
+      },
+      {
+        "file": "cells/cell-e006-n004/near.gltf",
+        "sourceGroupsCompared": 2,
+        "unchangedGroupsSha256": "d2ea5582eed881142c138aceb5f0b44d842c52acfa9ca019f7d403dd418145a9",
+        "trianglesBefore": 29,
+        "trianglesAfter": 29,
+        "batchesBefore": 3,
+        "batchesAfter": 3
+      },
+      {
+        "file": "cells/cell-e006-n005/base.gltf",
+        "sourceGroupsCompared": 1,
+        "unchangedGroupsSha256": "3c3648c4a87a87fcf559f8115b0b5197795af9b7683929d52ef20318e399aa1c",
+        "trianglesBefore": 28,
+        "trianglesAfter": 28,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      },
+      {
+        "file": "cells/cell-e006-n005/near.gltf",
+        "sourceGroupsCompared": 1,
+        "unchangedGroupsSha256": "3c3648c4a87a87fcf559f8115b0b5197795af9b7683929d52ef20318e399aa1c",
+        "trianglesBefore": 28,
+        "trianglesAfter": 28,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      },
+      {
+        "file": "cells/cell-e007-s001/base.gltf",
+        "sourceGroupsCompared": 6,
+        "unchangedGroupsSha256": "156f3f35c85ccf05a1e9c473e69ef66aff437eef350abfcaf4b7120857e5f24c",
+        "trianglesBefore": 2995,
+        "trianglesAfter": 2995,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e007-s001/near.gltf",
+        "sourceGroupsCompared": 6,
+        "unchangedGroupsSha256": "b6a3842c322112b07729ac8b747bd5c28d8fa8efd68db87a828ce30b622c819b",
+        "trianglesBefore": 14307,
+        "trianglesAfter": 14307,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e007-n000/base.gltf",
+        "sourceGroupsCompared": 39,
+        "unchangedGroupsSha256": "c86bcb10b29347a1908e421cfea1e6b13a0cfb5c5a6d81f0e23f61ca59b80cc4",
+        "trianglesBefore": 5082,
+        "trianglesAfter": 5082,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e007-n000/near.gltf",
+        "sourceGroupsCompared": 39,
+        "unchangedGroupsSha256": "ab9d0df194ece5996114b101e6f6c1ed287858c95a7a70909b318f8605811eb5",
+        "trianglesBefore": 22142,
+        "trianglesAfter": 22142,
+        "batchesBefore": 9,
+        "batchesAfter": 9
+      },
+      {
+        "file": "cells/cell-e007-n001/base.gltf",
+        "sourceGroupsCompared": 9,
+        "unchangedGroupsSha256": "e3a53e8cc1abfda31c964a8df47f10c77de58a1a1ad67bbb1766b08ba40bae66",
+        "trianglesBefore": 848,
+        "trianglesAfter": 848,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e007-n001/near.gltf",
+        "sourceGroupsCompared": 9,
+        "unchangedGroupsSha256": "b2bbfcfbff557e218c5b68f82266a939caa8ea80796b9805b60a76dea249d342",
+        "trianglesBefore": 3450,
+        "trianglesAfter": 3450,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e007-n003/base.gltf",
+        "sourceGroupsCompared": 1,
+        "unchangedGroupsSha256": "1f92a0faeed213f7a842de377126532e48fdad6f15642177f06dbd3fc9e01bc6",
+        "trianglesBefore": 7,
+        "trianglesAfter": 7,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      },
+      {
+        "file": "cells/cell-e007-n003/near.gltf",
+        "sourceGroupsCompared": 1,
+        "unchangedGroupsSha256": "1f92a0faeed213f7a842de377126532e48fdad6f15642177f06dbd3fc9e01bc6",
+        "trianglesBefore": 7,
+        "trianglesAfter": 7,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      },
+      {
+        "file": "cells/cell-e007-n004/base.gltf",
+        "sourceGroupsCompared": 1,
+        "unchangedGroupsSha256": "0f65c41971a273968880b5fbe807f57a92ea625bcf664bfc0d97698eb46f325b",
+        "trianglesBefore": 40,
+        "trianglesAfter": 40,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      },
+      {
+        "file": "cells/cell-e007-n004/near.gltf",
+        "sourceGroupsCompared": 1,
+        "unchangedGroupsSha256": "0f65c41971a273968880b5fbe807f57a92ea625bcf664bfc0d97698eb46f325b",
+        "trianglesBefore": 40,
+        "trianglesAfter": 40,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      },
+      {
+        "file": "cells/cell-e007-n005/base.gltf",
+        "sourceGroupsCompared": 1,
+        "unchangedGroupsSha256": "84d40f2ccd268ce75cd6a3dc6caa8dd9e1bd5c918e304b8fcb387ed505045fad",
+        "trianglesBefore": 10,
+        "trianglesAfter": 10,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      },
+      {
+        "file": "cells/cell-e007-n005/near.gltf",
+        "sourceGroupsCompared": 1,
+        "unchangedGroupsSha256": "84d40f2ccd268ce75cd6a3dc6caa8dd9e1bd5c918e304b8fcb387ed505045fad",
+        "trianglesBefore": 10,
+        "trianglesAfter": 10,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      },
+      {
+        "file": "cells/cell-e008-n000/base.gltf",
+        "sourceGroupsCompared": 11,
+        "unchangedGroupsSha256": "697b94cc2f85a27d99bd35d23d635850127a434524f08549fbd62419429ae017",
+        "trianglesBefore": 4990,
+        "trianglesAfter": 4990,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e008-n000/near.gltf",
+        "sourceGroupsCompared": 11,
+        "unchangedGroupsSha256": "1faf413aa18d19eee629aa8dc7fc90b0d27060072852a9952c5ab68c5770ad2e",
+        "trianglesBefore": 22302,
+        "trianglesAfter": 22302,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e009-s001/base.gltf",
+        "sourceGroupsCompared": 6,
+        "unchangedGroupsSha256": "18b0a2f8e91589c8050ca25090161b8a6e099e697eb68810dc577cac89a3ac26",
+        "trianglesBefore": 1469,
+        "trianglesAfter": 1469,
+        "batchesBefore": 8,
+        "batchesAfter": 8
+      },
+      {
+        "file": "cells/cell-e009-s001/near.gltf",
+        "sourceGroupsCompared": 6,
+        "unchangedGroupsSha256": "3f4b15bd27e73821f6e03cb696e4835877021abb795aa0f1e28edf18be5dac44",
+        "trianglesBefore": 7157,
+        "trianglesAfter": 7157,
+        "batchesBefore": 9,
+        "batchesAfter": 9
+      },
+      {
+        "file": "cells/cell-e009-n000/base.gltf",
+        "sourceGroupsCompared": 25,
+        "unchangedGroupsSha256": "09c7c0bd46baf675bfc343c9fd474d3b37558108b8fbd47dd26c49c0625a311d",
+        "trianglesBefore": 4382,
+        "trianglesAfter": 4382,
+        "batchesBefore": 6,
+        "batchesAfter": 6
+      },
+      {
+        "file": "cells/cell-e009-n000/near.gltf",
+        "sourceGroupsCompared": 25,
+        "unchangedGroupsSha256": "ab1219180a83bc480cad4f9dc24d77f1b443d0384108e21f4555d1009462a668",
+        "trianglesBefore": 17002,
+        "trianglesAfter": 17002,
+        "batchesBefore": 7,
+        "batchesAfter": 7
+      },
+      {
+        "file": "cells/cell-e010-s001/base.gltf",
+        "sourceGroupsCompared": 8,
+        "unchangedGroupsSha256": "e484129329997a3d9b5852b85aa40089993da121def5805136102639f879d4e2",
+        "trianglesBefore": 1338,
+        "trianglesAfter": 1338,
+        "batchesBefore": 5,
+        "batchesAfter": 5
+      },
+      {
+        "file": "cells/cell-e010-s001/near.gltf",
+        "sourceGroupsCompared": 8,
+        "unchangedGroupsSha256": "d7bf514217ae24dde6dc1d843cfca2f87a9c9b1262594b6648a96d16de525448",
+        "trianglesBefore": 5682,
+        "trianglesAfter": 5682,
+        "batchesBefore": 6,
+        "batchesAfter": 6
+      },
+      {
+        "file": "cells/cell-e010-n000/base.gltf",
+        "sourceGroupsCompared": 4067,
+        "unchangedGroupsSha256": "8ea8cfbdfd400a3961378e54d7436e3d3d20a59aaf06fb455f2c6bce09647666",
+        "trianglesBefore": 93266,
+        "trianglesAfter": 93266,
+        "batchesBefore": 256,
+        "batchesAfter": 256
+      },
+      {
+        "file": "cells/cell-e010-n000/near.gltf",
+        "sourceGroupsCompared": 4067,
+        "unchangedGroupsSha256": "45836fa6d6b06eb1088582083f21628e1033bdc772df8fedc763e4aa165df487",
+        "trianglesBefore": 101120,
+        "trianglesAfter": 101120,
+        "batchesBefore": 256,
+        "batchesAfter": 256
+      },
+      {
+        "file": "cells/cell-e011-s001/base.gltf",
+        "sourceGroupsCompared": 2,
+        "unchangedGroupsSha256": "fa25c04fc3e0f8ca5ade5c52bfa08978a7c2af3aacdc28374878161a8fdc2da9",
+        "trianglesBefore": 71,
+        "trianglesAfter": 71,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      },
+      {
+        "file": "cells/cell-e011-s001/near.gltf",
+        "sourceGroupsCompared": 2,
+        "unchangedGroupsSha256": "fa25c04fc3e0f8ca5ade5c52bfa08978a7c2af3aacdc28374878161a8fdc2da9",
+        "trianglesBefore": 71,
+        "trianglesAfter": 71,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      },
+      {
+        "file": "cells/cell-e011-n000/base.gltf",
+        "sourceGroupsCompared": 2,
+        "unchangedGroupsSha256": "a0deac9fbdd91e34e6a94c22519acbc7c73c33565f2b4f796b0e241df8d4ec7d",
+        "trianglesBefore": 62,
+        "trianglesAfter": 62,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      },
+      {
+        "file": "cells/cell-e011-n000/near.gltf",
+        "sourceGroupsCompared": 2,
+        "unchangedGroupsSha256": "a0deac9fbdd91e34e6a94c22519acbc7c73c33565f2b4f796b0e241df8d4ec7d",
+        "trianglesBefore": 62,
+        "trianglesAfter": 62,
+        "batchesBefore": 2,
+        "batchesAfter": 2
+      }
+    ],
+    "floorEdges": [
+      {
+        "file": "cells/cell-e001-s001/base.gltf",
+        "existingTriangles": 110,
+        "newTriangles": 118,
+        "addedPerBoundary": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "addedTriangles": [
+          {
+            "material": "paving",
+            "points": [
+              [
+                157.98699951171875,
+                -0.03999999910593033,
+                3.1010000705718994
+              ],
+              [
+                187.7469940185547,
+                -0.03999999910593033,
+                3.125
+              ],
+              [
+                187.7469940185547,
+                0,
+                3.125
+              ]
+            ],
+            "normals": [
+              [
+                -0.0007999998051673174,
+                0,
+                0.9999997615814209
+              ],
+              [
+                -0.0007999998051673174,
+                0,
+                0.9999997615814209
+              ],
+              [
+                -0.0007999998051673174,
+                0,
+                0.9999997615814209
+              ]
+            ],
+            "semantics": [
+              "NORMAL",
+              "POSITION",
+              "TEXCOORD_0",
+              "_SOURCE_INDEX"
+            ]
+          },
+          {
+            "material": "paving",
+            "points": [
+              [
+                157.98699951171875,
+                -0.03999999910593033,
+                3.1010000705718994
+              ],
+              [
+                187.7469940185547,
+                0,
+                3.125
+              ],
+              [
+                157.98699951171875,
+                0,
+                3.1010000705718994
+              ]
+            ],
+            "normals": [
+              [
+                -0.0007999998051673174,
+                0,
+                0.9999997615814209
+              ],
+              [
+                -0.0007999998051673174,
+                0,
+                0.9999997615814209
+              ],
+              [
+                -0.0007999998051673174,
+                0,
+                0.9999997615814209
+              ]
+            ],
+            "semantics": [
+              "NORMAL",
+              "POSITION",
+              "TEXCOORD_0",
+              "_SOURCE_INDEX"
+            ]
+          },
+          {
+            "material": "paving",
+            "points": [
+              [
+                187.7469940185547,
+                -0.03999999910593033,
+                3.125
+              ],
+              [
+                187.74899291992188,
+                -0.03999999910593033,
+                0.6510000228881836
+              ],
+              [
+                187.74899291992188,
+                0,
+                0.6510000228881836
+              ]
+            ],
+            "normals": [
+              [
+                0.9999997615814209,
+                0,
+                0.0007999998051673174
+              ],
+              [
+                0.9999997615814209,
+                0,
+                0.0007999998051673174
+              ],
+              [
+                0.9999997615814209,
+                0,
+                0.0007999998051673174
+              ]
+            ],
+            "semantics": [
+              "NORMAL",
+              "POSITION",
+              "TEXCOORD_0",
+              "_SOURCE_INDEX"
+            ]
+          },
+          {
+            "material": "paving",
+            "points": [
+              [
+                187.7469940185547,
+                -0.03999999910593033,
+                3.125
+              ],
+              [
+                187.74899291992188,
+                0,
+                0.6510000228881836
+              ],
+              [
+                187.7469940185547,
+                0,
+                3.125
+              ]
+            ],
+            "normals": [
+              [
+                0.9999997615814209,
+                0,
+                0.0007999998051673174
+              ],
+              [
+                0.9999997615814209,
+                0,
+                0.0007999998051673174
+              ],
+              [
+                0.9999997615814209,
+                0,
+                0.0007999998051673174
+              ]
+            ],
+            "semantics": [
+              "NORMAL",
+              "POSITION",
+              "TEXCOORD_0",
+              "_SOURCE_INDEX"
+            ]
+          },
+          {
+            "material": "paving",
+            "points": [
+              [
+                187.74899291992188,
+                -0.03999999910593033,
+                0.6510000228881836
+              ],
+              [
+                157.98899841308594,
+                -0.03999999910593033,
+                0.6269999742507935
+              ],
+              [
+                157.98899841308594,
+                0,
+                0.6269999742507935
+              ]
+            ],
+            "normals": [
+              [
+                0.0007999998051673174,
+                0,
+                -0.9999997615814209
+              ],
+              [
+                0.0007999998051673174,
+                0,
+                -0.9999997615814209
+              ],
+              [
+                0.0007999998051673174,
+                0,
+                -0.9999997615814209
+              ]
+            ],
+            "semantics": [
+              "NORMAL",
+              "POSITION",
+              "TEXCOORD_0",
+              "_SOURCE_INDEX"
+            ]
+          },
+          {
+            "material": "paving",
+            "points": [
+              [
+                187.74899291992188,
+                -0.03999999910593033,
+                0.6510000228881836
+              ],
+              [
+                157.98899841308594,
+                0,
+                0.6269999742507935
+              ],
+              [
+                187.74899291992188,
+                0,
+                0.6510000228881836
+              ]
+            ],
+            "normals": [
+              [
+                0.0007999998051673174,
+                0,
+                -0.9999997615814209
+              ],
+              [
+                0.0007999998051673174,
+                0,
+                -0.9999997615814209
+              ],
+              [
+                0.0007999998051673174,
+                0,
+                -0.9999997615814209
+              ]
+            ],
+            "semantics": [
+              "NORMAL",
+              "POSITION",
+              "TEXCOORD_0",
+              "_SOURCE_INDEX"
+            ]
+          },
+          {
+            "material": "paving",
+            "points": [
+              [
+                157.98899841308594,
+                -0.03999999910593033,
+                0.6269999742507935
+              ],
+              [
+                157.98699951171875,
+                -0.03999999910593033,
+                3.1010000705718994
+              ],
+              [
+                157.98699951171875,
+                0,
+                3.1010000705718994
+              ]
+            ],
+            "normals": [
+              [
+                -0.9999997615814209,
+                0,
+                -0.0007999998051673174
+              ],
+              [
+                -0.9999997615814209,
+                0,
+                -0.0007999998051673174
+              ],
+              [
+                -0.9999997615814209,
+                0,
+                -0.0007999998051673174
+              ]
+            ],
+            "semantics": [
+              "NORMAL",
+              "POSITION",
+              "TEXCOORD_0",
+              "_SOURCE_INDEX"
+            ]
+          },
+          {
+            "material": "paving",
+            "points": [
+              [
+                157.98899841308594,
+                -0.03999999910593033,
+                0.6269999742507935
+              ],
+              [
+                157.98699951171875,
+                0,
+                3.1010000705718994
+              ],
+              [
+                157.98899841308594,
+                0,
+                0.6269999742507935
+              ]
+            ],
+            "normals": [
+              [
+                -0.9999997615814209,
+                0,
+                -0.0007999998051673174
+              ],
+              [
+                -0.9999997615814209,
+                0,
+                -0.0007999998051673174
+              ],
+              [
+                -0.9999997615814209,
+                0,
+                -0.0007999998051673174
+              ]
+            ],
+            "semantics": [
+              "NORMAL",
+              "POSITION",
+              "TEXCOORD_0",
+              "_SOURCE_INDEX"
+            ]
+          }
+        ],
+        "existingAttributesExact": true
+      },
+      {
+        "file": "cells/cell-e001-s001/near.gltf",
+        "existingTriangles": 110,
+        "newTriangles": 118,
+        "addedPerBoundary": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "addedTriangles": [
+          {
+            "material": "paving",
+            "points": [
+              [
+                157.98699951171875,
+                -0.03999999910593033,
+                3.1010000705718994
+              ],
+              [
+                187.7469940185547,
+                -0.03999999910593033,
+                3.125
+              ],
+              [
+                187.7469940185547,
+                0,
+                3.125
+              ]
+            ],
+            "normals": [
+              [
+                -0.0007999998051673174,
+                0,
+                0.9999997615814209
+              ],
+              [
+                -0.0007999998051673174,
+                0,
+                0.9999997615814209
+              ],
+              [
+                -0.0007999998051673174,
+                0,
+                0.9999997615814209
+              ]
+            ],
+            "semantics": [
+              "NORMAL",
+              "POSITION",
+              "TEXCOORD_0",
+              "_SOURCE_INDEX"
+            ]
+          },
+          {
+            "material": "paving",
+            "points": [
+              [
+                157.98699951171875,
+                -0.03999999910593033,
+                3.1010000705718994
+              ],
+              [
+                187.7469940185547,
+                0,
+                3.125
+              ],
+              [
+                157.98699951171875,
+                0,
+                3.1010000705718994
+              ]
+            ],
+            "normals": [
+              [
+                -0.0007999998051673174,
+                0,
+                0.9999997615814209
+              ],
+              [
+                -0.0007999998051673174,
+                0,
+                0.9999997615814209
+              ],
+              [
+                -0.0007999998051673174,
+                0,
+                0.9999997615814209
+              ]
+            ],
+            "semantics": [
+              "NORMAL",
+              "POSITION",
+              "TEXCOORD_0",
+              "_SOURCE_INDEX"
+            ]
+          },
+          {
+            "material": "paving",
+            "points": [
+              [
+                187.7469940185547,
+                -0.03999999910593033,
+                3.125
+              ],
+              [
+                187.74899291992188,
+                -0.03999999910593033,
+                0.6510000228881836
+              ],
+              [
+                187.74899291992188,
+                0,
+                0.6510000228881836
+              ]
+            ],
+            "normals": [
+              [
+                0.9999997615814209,
+                0,
+                0.0007999998051673174
+              ],
+              [
+                0.9999997615814209,
+                0,
+                0.0007999998051673174
+              ],
+              [
+                0.9999997615814209,
+                0,
+                0.0007999998051673174
+              ]
+            ],
+            "semantics": [
+              "NORMAL",
+              "POSITION",
+              "TEXCOORD_0",
+              "_SOURCE_INDEX"
+            ]
+          },
+          {
+            "material": "paving",
+            "points": [
+              [
+                187.7469940185547,
+                -0.03999999910593033,
+                3.125
+              ],
+              [
+                187.74899291992188,
+                0,
+                0.6510000228881836
+              ],
+              [
+                187.7469940185547,
+                0,
+                3.125
+              ]
+            ],
+            "normals": [
+              [
+                0.9999997615814209,
+                0,
+                0.0007999998051673174
+              ],
+              [
+                0.9999997615814209,
+                0,
+                0.0007999998051673174
+              ],
+              [
+                0.9999997615814209,
+                0,
+                0.0007999998051673174
+              ]
+            ],
+            "semantics": [
+              "NORMAL",
+              "POSITION",
+              "TEXCOORD_0",
+              "_SOURCE_INDEX"
+            ]
+          },
+          {
+            "material": "paving",
+            "points": [
+              [
+                187.74899291992188,
+                -0.03999999910593033,
+                0.6510000228881836
+              ],
+              [
+                157.98899841308594,
+                -0.03999999910593033,
+                0.6269999742507935
+              ],
+              [
+                157.98899841308594,
+                0,
+                0.6269999742507935
+              ]
+            ],
+            "normals": [
+              [
+                0.0007999998051673174,
+                0,
+                -0.9999997615814209
+              ],
+              [
+                0.0007999998051673174,
+                0,
+                -0.9999997615814209
+              ],
+              [
+                0.0007999998051673174,
+                0,
+                -0.9999997615814209
+              ]
+            ],
+            "semantics": [
+              "NORMAL",
+              "POSITION",
+              "TEXCOORD_0",
+              "_SOURCE_INDEX"
+            ]
+          },
+          {
+            "material": "paving",
+            "points": [
+              [
+                187.74899291992188,
+                -0.03999999910593033,
+                0.6510000228881836
+              ],
+              [
+                157.98899841308594,
+                0,
+                0.6269999742507935
+              ],
+              [
+                187.74899291992188,
+                0,
+                0.6510000228881836
+              ]
+            ],
+            "normals": [
+              [
+                0.0007999998051673174,
+                0,
+                -0.9999997615814209
+              ],
+              [
+                0.0007999998051673174,
+                0,
+                -0.9999997615814209
+              ],
+              [
+                0.0007999998051673174,
+                0,
+                -0.9999997615814209
+              ]
+            ],
+            "semantics": [
+              "NORMAL",
+              "POSITION",
+              "TEXCOORD_0",
+              "_SOURCE_INDEX"
+            ]
+          },
+          {
+            "material": "paving",
+            "points": [
+              [
+                157.98899841308594,
+                -0.03999999910593033,
+                0.6269999742507935
+              ],
+              [
+                157.98699951171875,
+                -0.03999999910593033,
+                3.1010000705718994
+              ],
+              [
+                157.98699951171875,
+                0,
+                3.1010000705718994
+              ]
+            ],
+            "normals": [
+              [
+                -0.9999997615814209,
+                0,
+                -0.0007999998051673174
+              ],
+              [
+                -0.9999997615814209,
+                0,
+                -0.0007999998051673174
+              ],
+              [
+                -0.9999997615814209,
+                0,
+                -0.0007999998051673174
+              ]
+            ],
+            "semantics": [
+              "NORMAL",
+              "POSITION",
+              "TEXCOORD_0",
+              "_SOURCE_INDEX"
+            ]
+          },
+          {
+            "material": "paving",
+            "points": [
+              [
+                157.98899841308594,
+                -0.03999999910593033,
+                0.6269999742507935
+              ],
+              [
+                157.98699951171875,
+                0,
+                3.1010000705718994
+              ],
+              [
+                157.98899841308594,
+                0,
+                0.6269999742507935
+              ]
+            ],
+            "normals": [
+              [
+                -0.9999997615814209,
+                0,
+                -0.0007999998051673174
+              ],
+              [
+                -0.9999997615814209,
+                0,
+                -0.0007999998051673174
+              ],
+              [
+                -0.9999997615814209,
+                0,
+                -0.0007999998051673174
+              ]
+            ],
+            "semantics": [
+              "NORMAL",
+              "POSITION",
+              "TEXCOORD_0",
+              "_SOURCE_INDEX"
+            ]
+          }
+        ],
+        "existingAttributesExact": true
+      }
+    ],
+    "paperSections": [
+      {
+        "file": "cells/cell-e006-n001/near.gltf",
+        "triangles": 6,
+        "material": {
+          "name": "torii-paper",
+          "extras": {
+            "surfaceMeaning": "Original opaque, matte, nonemissive paper response informed by the retained 2007 torii photograph. Color and roughness are authored; existing simplified hanging geometry and present-day decoration remain unmeasured. No photograph pixels."
+          },
+          "doubleSided": true,
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.7304607629776001,
+              0.7083757519721985,
+              0.6444796919822693,
+              1
+            ],
+            "roughnessFactor": 0.8999999761581421,
+            "metallicFactor": 0
+          },
+          "extensions": {
+            "KHR_materials_clearcoat": {
+              "clearcoatFactor": 0,
+              "clearcoatRoughnessFactor": 0.10000000149011612
+            }
+          }
+        },
+        "unchangedGeometryAndAttributes": true,
+        "sourceIndex": 1047
+      }
+    ],
+    "sourceGroupsCompared": 9731,
+    "completeExistingAttributesMatricesExact": true,
+    "allUnrelatedMaterialsExact": true
+  },
+  "source": {
+    "geographySha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+    "sceneSha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e",
+    "preparedArtSha256": "1ec33111947716ef43d8592c96203f55d1194b0f5b9ab68168b0deaf373bdb65",
+    "floorEvidence": {
+      "file": "experience/evidence/neighborhood-20261024/world/floor-boundary.json",
+      "sha256": "1ca8cd8131f2d2d1dcdee8328292c3fd0c8172e60122d02e0ddc76b833be1d70"
+    },
+    "paperEvidence": {
+      "file": "experience/evidence/neighborhood-20261024/world/torii-paper-review.json",
+      "sha256": "1c0d04780039823cdce0831bd32867373082b329b57c4ae53a167b16238b03d4"
+    },
+    "producerFiles": {
+      "styleSha256": "experience/art/neighborhood-style.json",
+      "generatorSha256": "experience/art/build_neighborhood.py",
+      "geometryHelperSha256": "experience/art/neighborhood_mesh.py",
+      "landmarkHelperSha256": "experience/art/neighborhood_landmarks.py",
+      "materialHelperSha256": "experience/art/neighborhood_materials.py",
+      "sceneSha256": "experience/src/neighborhoods/shijo-east/scene.json",
+      "geographySha256": "experience/src/neighborhoods/shijo-east/geography.json",
+      "preparedArtSha256": "artifacts/neighborhood-20261023/world/art-selection.json"
+    },
+    "featureTableExact": true,
+    "originalSourceAndNavigationExact": true
+  },
+  "resources": {
+    "files": 347,
+    "byteExactCount": 311,
+    "changedResources": [
+      "cells/cell-e000-n000/base.bin",
+      "cells/cell-e000-n000/base.bin.gz",
+      "cells/cell-e000-n000/base.gltf",
+      "cells/cell-e000-n000/base.gltf.gz",
+      "cells/cell-e000-n000/near.bin",
+      "cells/cell-e000-n000/near.bin.gz",
+      "cells/cell-e000-n000/near.gltf",
+      "cells/cell-e000-n000/near.gltf.gz",
+      "cells/cell-e000-s001/base.bin",
+      "cells/cell-e000-s001/base.bin.gz",
+      "cells/cell-e000-s001/base.gltf",
+      "cells/cell-e000-s001/base.gltf.gz",
+      "cells/cell-e000-s001/near.bin",
+      "cells/cell-e000-s001/near.bin.gz",
+      "cells/cell-e000-s001/near.gltf",
+      "cells/cell-e000-s001/near.gltf.gz",
+      "cells/cell-e001-s001/base.bin",
+      "cells/cell-e001-s001/base.bin.gz",
+      "cells/cell-e001-s001/base.gltf",
+      "cells/cell-e001-s001/base.gltf.gz",
+      "cells/cell-e001-s001/near.bin",
+      "cells/cell-e001-s001/near.bin.gz",
+      "cells/cell-e001-s001/near.gltf",
+      "cells/cell-e001-s001/near.gltf.gz",
+      "cells/cell-e006-n001/near.gltf",
+      "cells/cell-e006-n001/near.gltf.gz",
+      "compression-report.json",
+      "context.bin",
+      "context.bin.gz",
+      "context.gltf",
+      "context.gltf.gz",
+      "feature-provenance.json",
+      "manifest.json",
+      "provenance.json",
+      "transport-input-manifest.json",
+      "transport-report.json"
+    ],
+    "newImages": 0,
+    "gzipRoundTrips": 148
+  },
+  "validation": {
+    "containers": 74,
+    "reportedErrors": 0
+  },
+  "budgets": {
+    "sections": [
+      {
+        "file": "ground.gltf",
+        "transferBytes": 360772,
+        "decodedBytes": 406549,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "context.gltf",
+        "transferBytes": 187543,
+        "decodedBytes": 411420,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e000-s001/base.gltf",
+        "transferBytes": 366698,
+        "decodedBytes": 935115,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e000-s001/near.gltf",
+        "transferBytes": 632452,
+        "decodedBytes": 1961167,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e000-n000/base.gltf",
+        "transferBytes": 441654,
+        "decodedBytes": 1328338,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e000-n000/near.gltf",
+        "transferBytes": 1022519,
+        "decodedBytes": 3150515,
+        "limitBytes": 3670016
+      },
+      {
+        "file": "cells/cell-e001-s001/base.gltf",
+        "transferBytes": 31085,
+        "decodedBytes": 120697,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e001-s001/near.gltf",
+        "transferBytes": 116357,
+        "decodedBytes": 509863,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e001-n000/base.gltf",
+        "transferBytes": 20812,
+        "decodedBytes": 102214,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e001-n000/near.gltf",
+        "transferBytes": 90676,
+        "decodedBytes": 514741,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e002-s001/base.gltf",
+        "transferBytes": 24208,
+        "decodedBytes": 106711,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e002-s001/near.gltf",
+        "transferBytes": 105585,
+        "decodedBytes": 510612,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e002-n000/base.gltf",
+        "transferBytes": 50348,
+        "decodedBytes": 231195,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e002-n000/near.gltf",
+        "transferBytes": 209028,
+        "decodedBytes": 1096154,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e002-n001/base.gltf",
+        "transferBytes": 79882,
+        "decodedBytes": 216406,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e002-n001/near.gltf",
+        "transferBytes": 262462,
+        "decodedBytes": 746816,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e003-s001/base.gltf",
+        "transferBytes": 32030,
+        "decodedBytes": 142128,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e003-s001/near.gltf",
+        "transferBytes": 137189,
+        "decodedBytes": 713190,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e003-n000/base.gltf",
+        "transferBytes": 36213,
+        "decodedBytes": 138658,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e003-n000/near.gltf",
+        "transferBytes": 139983,
+        "decodedBytes": 616055,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e003-n001/base.gltf",
+        "transferBytes": 110924,
+        "decodedBytes": 275926,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e003-n001/near.gltf",
+        "transferBytes": 308178,
+        "decodedBytes": 792375,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e004-s001/base.gltf",
+        "transferBytes": 19510,
+        "decodedBytes": 98757,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e004-s001/near.gltf",
+        "transferBytes": 83179,
+        "decodedBytes": 476511,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e004-n000/base.gltf",
+        "transferBytes": 37336,
+        "decodedBytes": 147332,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e004-n000/near.gltf",
+        "transferBytes": 155211,
+        "decodedBytes": 715645,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e004-n001/base.gltf",
+        "transferBytes": 120533,
+        "decodedBytes": 292505,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e004-n001/near.gltf",
+        "transferBytes": 345590,
+        "decodedBytes": 860642,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e005-s001/base.gltf",
+        "transferBytes": 25361,
+        "decodedBytes": 97922,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e005-s001/near.gltf",
+        "transferBytes": 102623,
+        "decodedBytes": 480415,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e005-n000/base.gltf",
+        "transferBytes": 33155,
+        "decodedBytes": 121822,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e005-n000/near.gltf",
+        "transferBytes": 146735,
+        "decodedBytes": 568811,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e005-n001/base.gltf",
+        "transferBytes": 133088,
+        "decodedBytes": 312897,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e005-n001/near.gltf",
+        "transferBytes": 373733,
+        "decodedBytes": 907048,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-s001/base.gltf",
+        "transferBytes": 18416,
+        "decodedBytes": 52720,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-s001/near.gltf",
+        "transferBytes": 50945,
+        "decodedBytes": 185089,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-n000/base.gltf",
+        "transferBytes": 87801,
+        "decodedBytes": 223081,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-n000/near.gltf",
+        "transferBytes": 275842,
+        "decodedBytes": 777859,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-n001/base.gltf",
+        "transferBytes": 108552,
+        "decodedBytes": 274431,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-n001/near.gltf",
+        "transferBytes": 314459,
+        "decodedBytes": 836381,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-n002/base.gltf",
+        "transferBytes": 3594,
+        "decodedBytes": 11313,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-n002/near.gltf",
+        "transferBytes": 3594,
+        "decodedBytes": 11313,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-n003/base.gltf",
+        "transferBytes": 3262,
+        "decodedBytes": 10684,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-n003/near.gltf",
+        "transferBytes": 3262,
+        "decodedBytes": 10684,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-n004/base.gltf",
+        "transferBytes": 2720,
+        "decodedBytes": 9853,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-n004/near.gltf",
+        "transferBytes": 2720,
+        "decodedBytes": 9853,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-n005/base.gltf",
+        "transferBytes": 2133,
+        "decodedBytes": 6537,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e006-n005/near.gltf",
+        "transferBytes": 2135,
+        "decodedBytes": 6537,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e007-s001/base.gltf",
+        "transferBytes": 23878,
+        "decodedBytes": 95451,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e007-s001/near.gltf",
+        "transferBytes": 94610,
+        "decodedBytes": 444250,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e007-n000/base.gltf",
+        "transferBytes": 57960,
+        "decodedBytes": 165773,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e007-n000/near.gltf",
+        "transferBytes": 214446,
+        "decodedBytes": 693949,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e007-n001/base.gltf",
+        "transferBytes": 14300,
+        "decodedBytes": 39601,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e007-n001/near.gltf",
+        "transferBytes": 40164,
+        "decodedBytes": 123626,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e007-n003/base.gltf",
+        "transferBytes": 1850,
+        "decodedBytes": 6717,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e007-n003/near.gltf",
+        "transferBytes": 1851,
+        "decodedBytes": 6717,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e007-n004/base.gltf",
+        "transferBytes": 2618,
+        "decodedBytes": 7786,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e007-n004/near.gltf",
+        "transferBytes": 2620,
+        "decodedBytes": 7786,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e007-n005/base.gltf",
+        "transferBytes": 1938,
+        "decodedBytes": 6835,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e007-n005/near.gltf",
+        "transferBytes": 1938,
+        "decodedBytes": 6835,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e008-n000/base.gltf",
+        "transferBytes": 40898,
+        "decodedBytes": 151378,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e008-n000/near.gltf",
+        "transferBytes": 160339,
+        "decodedBytes": 682261,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e009-s001/base.gltf",
+        "transferBytes": 13960,
+        "decodedBytes": 63210,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e009-s001/near.gltf",
+        "transferBytes": 43528,
+        "decodedBytes": 239107,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e009-n000/base.gltf",
+        "transferBytes": 46397,
+        "decodedBytes": 142468,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e009-n000/near.gltf",
+        "transferBytes": 167727,
+        "decodedBytes": 539478,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e010-s001/base.gltf",
+        "transferBytes": 16711,
+        "decodedBytes": 53969,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e010-s001/near.gltf",
+        "transferBytes": 59280,
+        "decodedBytes": 192604,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e010-n000/base.gltf",
+        "transferBytes": 1655375,
+        "decodedBytes": 3841229,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e010-n000/near.gltf",
+        "transferBytes": 1740513,
+        "decodedBytes": 4060035,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e011-s001/base.gltf",
+        "transferBytes": 3095,
+        "decodedBytes": 8063,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e011-s001/near.gltf",
+        "transferBytes": 3096,
+        "decodedBytes": 8063,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e011-n000/base.gltf",
+        "transferBytes": 2906,
+        "decodedBytes": 7757,
+        "limitBytes": 2097152
+      },
+      {
+        "file": "cells/cell-e011-n000/near.gltf",
+        "transferBytes": 2908,
+        "decodedBytes": 7757,
+        "limitBytes": 2097152
+      }
+    ],
+    "startup": {
+      "day": {
+        "totalBytes": 3037230,
+        "commonBytes": 2569362,
+        "travellerBytes": 35556,
+        "hdrBytes": 432312,
+        "limitBytes": 4194304
+      },
+      "night": {
+        "totalBytes": 3029994,
+        "commonBytes": 2569362,
+        "travellerBytes": 35556,
+        "hdrBytes": 425076,
+        "limitBytes": 4194304
+      }
+    }
+  },
+  "limits": "Floor boundary height and paper PBR response remain authored. The retained reference is dated2007. This audit establishes decoded geometry/material/provenance preservation; actual visual quality, GPU memory and frame timing require separate checks. Startup excludes application HTML/JS/CSS/fonts and HTTP framing."
+}

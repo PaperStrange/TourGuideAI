@@ -105,6 +105,24 @@ def validate_inputs(geography, style):
         if (audit['status'] != 'pass' or source_id != 'osm:way:' + str(audit['roofWay']['id']) or
                 reference['mappedRoofId'] != source_id):
             raise ValueError('Canopy material review has no matching mapped source')
+    landmarks = {feature['sourceId']: feature for feature in geography.get('landmarks', [])}
+    for source_id, override in style.get('landmarkMaterialOverrides', {}).items():
+        feature = landmarks[source_id]
+        if (feature['kind'] != override['expectedKind'] or feature['kind'] != 'torii' or
+                feature['sourceVersion'] != override['expectedSourceVersion']):
+            raise ValueError('Reviewed landmark material source changed: ' + source_id)
+        prior = style['materials'][override['priorHangingMaterial']]
+        replacement = style['materials'][override['hangingMaterial']]
+        if prior['metresPerRepeat'] != replacement['metresPerRepeat']:
+            raise ValueError('Landmark material treatment must preserve UV scale')
+        for evidence in override['evidence']:
+            if sha256(ROOT / evidence['file']) != evidence['sha256']:
+                raise ValueError('Reviewed landmark material evidence changed: ' + evidence['file'])
+        review = json.loads((ROOT / override['evidence'][0]['file']).read_text())
+        if (review['status'] != 'reviewed-source-support' or review['sourceId'] != source_id or
+                review['sourceIndex'] != override['expectedSourceIndex'] or
+                review['reference']['id'] not in override['referenceIds']):
+            raise ValueError('Landmark material review has no matching source')
     for source_id, treatment in style.get('sourceTreatmentOverrides', {}).items():
         feature = source_features[source_id]
         if feature['kind'] != 'building' or treatment['treatment'] != 'wall-less-structure':
@@ -124,6 +142,19 @@ def validate_inputs(geography, style):
         semantics = json.loads((ROOT / treatment['evidence'][2]['file']).read_text())
         if semantics['sourceId'] != source_id or semantics['additionalProperties']['分類'] != '普通無壁舎':
             raise ValueError('Reviewed open construction requires the exact wall-less classification')
+        boundary = json.loads((ROOT / treatment['evidence'][4]['file']).read_text())
+        adjacent = boundary['adjacentSurfaces']
+        if (boundary['status'] != 'pass' or boundary['sourceId'] != source_id or
+                boundary['sourceIndex'] != treatment['expectedSourceIndex'] or
+                boundary['unmatchedBoundaryMetres'] != 0 or len(adjacent) != 1 or
+                adjacent[0]['sourceId'] != 'shijo-east:ground' or adjacent[0]['positiveAreaOverlapSquareMetres'] != 0 or
+                adjacent[0]['floorHeightMetres'] != treatment['construction']['floorHeightMetres'] or
+                adjacent[0]['topHeightMetres'] != treatment['construction']['floorEdgeBottomMetres'] or
+                abs(adjacent[0]['sharedBoundaryMetres'] - boundary['floorPerimeterMetres']) > 1e-8):
+            raise ValueError('Reviewed floor closure requires complete adjacent-boundary evidence')
+        for source in boundary['inputs']:
+            if sha256(ROOT / source['file']) != source['sha256']:
+                raise ValueError('Reviewed floor boundary input changed: ' + source['file'])
 
 
 def create_materials(style, asset_dir):
@@ -311,6 +342,8 @@ def prepare_features(scene, geography, style, prepared):
         feature = dict(original)
         feature['polygons'] = []
         feature['inspectionFeatureIds'] = ['shijo-east:nishiki-tenmangu' if feature['kind'] == 'torii' else 'shijo-east:pontocho-entrance']
+        if feature['sourceId'] in style.get('landmarkMaterialOverrides', {}):
+            feature['hangingMaterial'] = style['landmarkMaterialOverrides'][feature['sourceId']]['hangingMaterial']
         features.append(feature)
     return features
 
@@ -522,6 +555,9 @@ def main():
     for source_id, treatment in style.get('sourceTreatmentOverrides', {}).items():
         if source_indices[source_id] != treatment['expectedSourceIndex']:
             raise ValueError('Reviewed source index changed: ' + source_id)
+    for source_id, override in style.get('landmarkMaterialOverrides', {}).items():
+        if source_indices[source_id] != override['expectedSourceIndex']:
+            raise ValueError('Reviewed landmark material source index changed: ' + source_id)
     for surface in geography['surfaces'] + prepared.get('displayMaterialSurfaces', []):
         if surface['sourceId'] not in source_indices:
             source_indices[surface['sourceId']] = len(feature_table)
@@ -713,6 +749,12 @@ def main():
              'evidenceRecords': [{**evidence, 'record': json.loads((ROOT / evidence['file']).read_text())}
                                  for evidence in treatment['evidence']]}
             for source_id, treatment in style['sourceTreatmentOverrides'].items()]
+    if style.get('landmarkMaterialOverrides'):
+        provenance['landmarkMaterialOverrides'] = [
+            {'sourceId': source_id, **override,
+             'evidenceRecords': [{**evidence, 'record': json.loads((ROOT / evidence['file']).read_text())}
+                                 for evidence in override['evidence']]}
+            for source_id, override in style['landmarkMaterialOverrides'].items()]
     if river_context:
         # 完整来源输入按确定性 gzip 保存，解码后仍对应审核过的原始字节。
         input_bytes = arguments.river_context.read_bytes()

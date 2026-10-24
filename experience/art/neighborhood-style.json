@@ -26,6 +26,7 @@
     "arcade-gold": {"color":"#cab85c","roughness":0.47,"metresPerRepeat":2,"authored":"Reference-informed yellow roof-panel family."},
     "arcade-green": {"color":"#718f75","roughness":0.47,"metresPerRepeat":2,"authored":"Reference-informed green roof-panel family."},
     "lamp": {"color":"#e6d5b6","roughness":0.6,"metresPerRepeat":1,"authored":"Authored lamp diffuser; emission does not imply operating hours."},
+    "torii-paper": {"color":"#dedbd2","roughness":0.9,"metalness":0,"coatWeight":0,"metresPerRepeat":1,"authored":"Original opaque, matte, nonemissive paper response informed by the retained 2007 torii photograph. Color and roughness are authored; existing simplified hanging geometry and present-day decoration remain unmeasured. No photograph pixels."},
     "ink": {"color":"#393a34","roughness":0.82,"metresPerRepeat":1,"authored":"Original simple factual place lettering."}
   },
   "recipes": {
@@ -50,6 +51,20 @@
       ]
     }
   },
+  "landmarkMaterialOverrides": {
+    "osm:node:5204263033": {
+      "expectedKind": "torii",
+      "expectedSourceIndex": 1047,
+      "expectedSourceVersion": 3,
+      "hangingMaterial": "torii-paper",
+      "priorHangingMaterial": "lamp",
+      "referenceIds": ["tenmangu-street-2007"],
+      "authored": "Only the existing NEAR hanging faces receive the matte nonemissive paper material. Geometry, UV scale, mapped position and source identity remain unchanged. Arcade downlights retain their existing material and emission. Plaque lettering is unchanged.",
+      "evidence": [
+        {"file":"experience/evidence/neighborhood-20261024/world/torii-paper-review.json","sha256":"1c0d04780039823cdce0831bd32867373082b329b57c4ae53a167b16238b03d4"}
+      ]
+    }
+  },
   "sourceTreatmentOverrides": {
     "kyoto-city:bldg_74454289-1d7a-4105-87ea-26e36c69bc44": {
       "treatment": "wall-less-structure",
@@ -58,13 +73,14 @@
       "expectedHeightMetres": 2.1240000000000023,
       "expectedBaseHeightMetres": 0,
       "association": {"sourceId":"osm:node:8886543723","name":"Shijo Takakura · Platform A","meaning":"The mapped bus-platform point lies inside the municipal ordinary wall-less structure. Exact support layout, roof construction and current condition remain unverified."},
-      "construction": {"roofThicknessMetres":0.08,"postCount":7,"postWidthMetres":0.12,"endInsetMetres":0.45,"beamDepthMetres":0.10,"beamWidthMetres":0.10,"roofMaterial":"roof","structureMaterial":"frame","floorMaterial":"paving","floorHeightMetres":0,"floorWalkable":false},
-      "authored": "Original open assembly informed by the official wall-less classification, preserving the source roof ring and top. Slab thickness, seven centreline supports, beam dimensions and neutral finishes are authored. The nonwalkable paving surface occupies the exact source footprint at authored base0; real floor material and elevation remain unmeasured. Beam underside1.944m is virtual construction, not measured real clearance. No exact Platform A shelter reconstruction is claimed.",
+      "construction": {"roofThicknessMetres":0.08,"postCount":7,"postWidthMetres":0.12,"endInsetMetres":0.45,"beamDepthMetres":0.10,"beamWidthMetres":0.10,"roofMaterial":"roof","structureMaterial":"frame","floorMaterial":"paving","floorHeightMetres":0,"floorWalkable":false,"floorEdgeBottomMetres":-0.04},
+      "authored": "Original open assembly informed by the official wall-less classification, preserving the source roof ring and top. Slab thickness, seven centreline supports, beam dimensions and neutral finishes are authored. The nonwalkable paving surface occupies the exact source footprint at authored base0, with vertical perimeter faces joining adjacent authored ground at-0.04m. Real floor material, elevation and curb construction remain unmeasured. Beam underside1.944m is virtual construction, not measured real clearance. No exact Platform A shelter reconstruction is claimed.",
       "evidence": [
         {"file":"experience/evidence/neighborhood-20261023/world/platform-context/audit.json","sha256":"a6c957b436a26baf945b45fd3c2e144701dc240ebd5e93e672bfceb2a115e5c6"},
         {"file":"experience/evidence/neighborhood-20261023/world/platform-context/osm-records.json","sha256":"155c965cda7519827dceb363883537f3d952f2213500aa30bfa8c63af3c1a946"},
         {"file":"experience/evidence/neighborhood-20261023/world/platform-context/semantic-review.json","sha256":"a56ad01d023a620bbee4bc776e93365c428ad027da570eb13661ed271b413c22"},
-        {"file":"experience/evidence/neighborhood-20261023/world/platform-context/floor-support.json","sha256":"c3f236da23c9e83b9a44d5d4b2a06d0f03cbca14be8c79b780713a62ea1aea8a"}
+        {"file":"experience/evidence/neighborhood-20261023/world/platform-context/floor-support.json","sha256":"c3f236da23c9e83b9a44d5d4b2a06d0f03cbca14be8c79b780713a62ea1aea8a"},
+        {"file":"experience/evidence/neighborhood-20261024/world/floor-boundary.json","sha256":"1ca8cd8131f2d2d1dcdee8328292c3fd0c8172e60122d02e0ddc76b833be1d70"}
       ]
     }
   },

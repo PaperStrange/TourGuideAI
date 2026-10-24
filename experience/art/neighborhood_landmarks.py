@@ -20,8 +20,9 @@ def landmark_geometry(feature, lod, source_index, batches):
                 yy = y - 1.75 + index * .58
                 batches['wood'].box((x - .24, yy, 3.12), (.065, .6, .065), source_index)
                 if index % 2:
-                    batches['lamp'].face([(x - .29, yy, 3.08), (x - .29, yy + .18, 2.88),
-                                          (x - .29, yy, 2.68), (x - .29, yy - .18, 2.88)], source_index)
+                    # 纸垂使用独立的非自发光材质；廊下灯具继续保留 lamp。
+                    batches[feature['hangingMaterial']].face([(x - .29, yy, 3.08), (x - .29, yy + .18, 2.88),
+                                                              (x - .29, yy, 2.68), (x - .29, yy - .18, 2.88)], source_index)
     elif feature['kind'] == 'information-board':
         # 公告板保留单独来源位置，周边商业建筑继续使用各自的来源体积。
         batches['wood'].box((x, y, 1.35), (1.65, .16, 1.35), source_index)

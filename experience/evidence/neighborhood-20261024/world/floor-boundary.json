@@ -1,0 +1,89 @@
+{
+  "status": "pass",
+  "reviewedAt": "2026-10-24",
+  "sourceId": "kyoto-city:bldg_74454289-1d7a-4105-87ea-26e36c69bc44",
+  "sourceIndex": 223,
+  "inputs": [
+    {
+      "file": "experience/src/neighborhoods/shijo-east/scene.json",
+      "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e",
+      "bytes": 8789674
+    },
+    {
+      "file": "artifacts/neighborhood-20261023/world/art-selection.json",
+      "sha256": "1ec33111947716ef43d8592c96203f55d1194b0f5b9ab68168b0deaf373bdb65",
+      "bytes": 5321766
+    }
+  ],
+  "producer": {
+    "file": "artifacts/neighborhood-20261024/world/audit-floor-boundary.py",
+    "sha256": "ea7239b8d9b9b0087776f0a3c15e3d39fec7df72f8225783e34ccc44d44e79b7",
+    "bytes": 3625
+  },
+  "tools": {
+    "shapely": "2.2.0"
+  },
+  "floorAreaSquareMetres": 73.62628800000002,
+  "floorPerimeterMetres": 64.46802097165019,
+  "adjacentSurfaces": [
+    {
+      "sourceId": "shijo-east:ground",
+      "kind": "land",
+      "material": "paving",
+      "topHeightMetres": -0.04,
+      "floorHeightMetres": 0,
+      "heightDifferenceMetres": 0.04,
+      "sharedBoundaryMetres": 64.46802097165019,
+      "boundary": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              157.989,
+              -0.627
+            ],
+            [
+              157.987,
+              -3.101
+            ]
+          ],
+          [
+            [
+              157.987,
+              -3.101
+            ],
+            [
+              187.747,
+              -3.125
+            ]
+          ],
+          [
+            [
+              187.747,
+              -3.125
+            ],
+            [
+              187.749,
+              -0.651
+            ]
+          ],
+          [
+            [
+              187.749,
+              -0.651
+            ],
+            [
+              157.989,
+              -0.627
+            ]
+          ]
+        ]
+      },
+      "positiveAreaOverlapSquareMetres": 0.0
+    }
+  ],
+  "unmatchedBoundaryMetres": 0.0,
+  "finding": "The complete footprint touches authored land at -0.04m while its floor is at0. The current generator emits no vertical perimeter faces at this boundary.",
+  "proposal": "A source-index223 nonwalkable vertical perimeter closure between existing display levels0 and-0.04 may close the rendering opening. Keep the footprint, floor top, roof, posts, navigation and neighboring horizontal surfaces unchanged.",
+  "limits": "This establishes an authored display-height discontinuity. It does not establish a measured curb, real paving construction or the final screen-space contribution of the seam."
+}

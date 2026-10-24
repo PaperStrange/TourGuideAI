@@ -19,7 +19,7 @@ const output = resolve(process.env.EXPERIENCE_QA_OUTPUT || '../artifacts/neighbo
 const timeout = Number(process.env.EXPERIENCE_QA_TIMEOUT || 120000);
 const walkingTimeout = Number(process.env.EXPERIENCE_QA_WALK_TIMEOUT || 2400000);
 const only = process.env.EXPERIENCE_QA_ONLY?.split(',').filter(Boolean);
-const sections = ['startup', 'route-choice', 'journey', 'initial-recovery', 'latest-intent', 'unavailable-revision', 'external-session', 'residency-boundary', 'camera-safety'];
+const sections = ['startup', 'route-choice', 'journey', 'initial-recovery', 'detail-recovery', 'latest-intent', 'unavailable-revision', 'external-session', 'residency-boundary', 'camera-safety'];
 if (only?.some(value => ![...sections, 'walking-controls', 'arcade-regression', 'arcade-inspection', 'recovered-keyboard', 'recovered-camera-input', 'bridge-review', 'visual-review', 'tenmangu-framing', 'western-approach', 'platform-review', 'canopy-review'].includes(value))) throw new Error('Unknown neighborhood test section.');
 const prefix = '/assets/neighborhoods/shijo-east/';
 const journeyKey = 'tourguideai.journey.session.v1';
@@ -1155,6 +1155,72 @@ try {
     await unchangedLegacy(page, 'initial-retry-keeps-legacy-bytes');
   });
 
+  await section('detail-recovery', async () => {
+    const target = cellsAt(geography.spawn).find(cell => cell.near);
+    if (!target) throw new Error('The opening has no reviewed detail section.');
+    const requestPath = requestAssetPath(target.near);
+    let deny = true, release;
+    const barrier = new Promise(resolve => { release = resolve; });
+    const { page, record } = await scenario('detail-recovery', {
+      deny: path => deny && path === requestPath,
+      delay: path => !deny && path === requestPath, wait: barrier,
+    });
+    record.detailResource = { cellId: target.id, descriptor: target.near, requestPath };
+    try {
+      await enter(page);
+      await page.waitForFunction(id => {
+        const stream = window.__TOUR_GAME__.streaming();
+        return stream.cells.find(cell => cell.id === id)?.error?.level === 'near'
+          && !stream.downloads.active && !stream.downloads.queued && !stream.attachments.active && !stream.attachments.queued;
+      }, target.id);
+      const failed = await observe(page), retained = await readSession(page);
+      const cell = failed.stream.cells.find(value => value.id === target.id);
+      check('failed-detail-keeps-real-base-scene-and-visible-retry', failed.home.sceneState === 'ready'
+        && cell.level === 'base' && cell.sha256 === target.base.sha256 && cell.desired === 'near'
+        && failed.ground.inside && Boolean(failed.ground.hit) && !failed.stream.blocked
+        && record.denied.includes(requestPath) && await page.locator('#scene-retry').isVisible()
+        && await page.locator('#scene-status').innerText() === 'Some street details could not load. Retry to complete the view.', failed);
+      const beforeLocaleRequests = record.requests.filter(value => value.path === requestPath).length;
+      await setLocale(page, 'zh'); await page.waitForTimeout(1500);
+      const localized = await observe(page);
+      check('failed-detail-locale-keeps-error-pose-and-explicit-retry', localized.home.sceneState === 'ready'
+        && localized.stream.cells.find(value => value.id === target.id)?.error?.level === 'near'
+        && near(localized.home.currentView, failed.home.currentView)
+        && equal((await readSession(page)).stopIds, retained.stopIds)
+        && record.requests.filter(value => value.path === requestPath).length === beforeLocaleRequests
+        && await page.locator('#scene-status').innerText() === '部分街道细节加载失败，请重试以完成景观。'
+        && await page.locator('#scene-retry').innerText() === '重新加载街道细节'
+        && await page.locator('#scene-retry').isVisible(), { beforeLocaleRequests, failed, localized });
+      deny = false; await page.locator('#scene-retry').click();
+      const deadline = Date.now() + timeout;
+      while (!record.delayed.includes(requestPath) && Date.now() < deadline) await page.waitForTimeout(50);
+      if (!record.delayed.includes(requestPath)) throw new Error('Explicit detail Retry did not request the real section.');
+      await page.waitForFunction(id => {
+        const cell = window.__TOUR_GAME__.streaming().cells.find(value => value.id === id);
+        return cell.state === 'downloading' && cell.level === 'base' && !cell.error;
+      }, target.id);
+      const pending = await observe(page);
+      check('detail-retry-clears-stale-error-while-real-request-is-pending', pending.home.sceneState === 'ready'
+        && near(pending.home.currentView, failed.home.currentView)
+        && await page.locator('#scene-status').isHidden() && await page.locator('#scene-retry').isHidden(),
+      { pending, delayed: record.delayed, requestPath });
+      release(); await settled(page); await ready(page);
+      await page.waitForFunction(frames => window.__TOUR_GAME__.renderer().renderedFrames > frames, pending.renderer.renderedFrames);
+      const recovered = await observe(page), complete = recovered.stream.cells.find(value => value.id === target.id);
+      const actualHTTP = report.http.filter(value => value.path === requestPath && value.at >= record.startedAt);
+      check('detail-retry-attaches-and-draws-verified-near-section-without-reframing', complete.state === 'ready'
+        && complete.level === 'near' && complete.sha256 === target.near.sha256 && !complete.error
+        && near(recovered.home.currentView, failed.home.currentView)
+        && equal((await readSession(page)).stopIds, retained.stopIds)
+        && actualHTTP.some(value => value.status === 200 && value.finished
+          && value.sha256 === (target.near.transport || target.near).sha256)
+        && budget(recovered.stream) && textureBudget(resources(recovered)),
+      { pending, recovered, actualHTTP });
+      await primaryFrameBudget(page, 'detail-recovered');
+      await unchangedLegacy(page, 'detail-retry-keeps-legacy-bytes');
+    } finally { release(); }
+  });
+
   await section('latest-intent', async () => {
     let release;
     const barrier = new Promise(resolve => { release = resolve; });
@@ -1953,6 +2019,30 @@ try {
     const navigation = createRouteNavigation(geography.navigation), path = navigation.path(view.player, node);
     if (!path || !Number.isFinite(path.distanceMeters) || path.distanceMeters < 29 || path.distanceMeters > 30) throw new Error('The recorded eastern approach is not connected to the proposed western node.');
     const { page, record } = await scenario('tenmangu-western-walk', {}, { storage: { [journeyKey]: JSON.stringify(reconstructed) } });
+    const materialCell = manifest.cells.find(cell => cell.id === 'cell-e006-n001');
+    const materialGLTF = JSON.parse(assets.get(assetPath(materialCell.near)));
+    const materialNode = name => {
+      const node = materialGLTF.nodes.find(value => value.name === name);
+      if (!node || node.mesh === undefined) throw new Error('Reviewed material node is absent: ' + name);
+      const mesh = materialGLTF.meshes[node.mesh];
+      return { node, mesh, materials: mesh.primitives.map(value => materialGLTF.materials[value.material]) };
+    };
+    const paper = materialNode('cell-e006-n001_near_torii-paper');
+    const lamp = materialNode('cell-e006-n001_near_Canopy_lamp');
+    const auditPath = '../evidence/neighborhood-20261024/world/candidate10-export-audit.json';
+    const auditBytes = readFileSync(new URL(auditPath, import.meta.url)), audit = JSON.parse(auditBytes);
+    record.materialBinding = { cellId: materialCell.id, descriptor: materialCell.near, paper, lamp,
+      paperSource: manifest.featureTable[1047], lampSource: manifest.featureTable[139],
+      audit: { file: auditPath, sha256: sha(auditBytes), status: audit.status, candidate: audit.candidate },
+      visibilityScope: 'Runtime emission and faded-group state are recorded at each canvas. Visible lamp surface recognition is reviewed from the actual image.' };
+    check('western-materials-bind-isolated-paper-and-existing-source-lamps', audit.status === 'pass'
+      && audit.candidate.manifest.sha256 === sha(manifestBytes)
+      && record.materialBinding.paperSource.sourceId === 'osm:node:5204263033'
+      && record.materialBinding.lampSource.sourceId === 'osm:way:772134672'
+      && paper.materials.every(value => value.name === 'torii-paper' && (value.alphaMode ?? 'OPAQUE') === 'OPAQUE'
+        && (value.emissiveFactor ?? [0, 0, 0]).every(channel => channel === 0)
+        && !value.emissiveTexture && value.pbrMetallicRoughness.roughnessFactor >= .85)
+      && lamp.materials.every(value => value.name === 'lamp'), record.materialBinding);
     record.restoration = { sourceReportSha256: sourceSha256, sourcePackageSha256: source.artifact.manifestSha256,
       sourceScreenshot: remembered.file, view, reconstructedSession: reconstructed,
       description: 'Recorded eastern approach restored; the western viewing pause is reached by subsequent actual UI walking.' };
@@ -2038,6 +2128,14 @@ try {
     for (const mode of ['day', 'night']) {
       await setLighting(page, mode); await settled(page); await primaryFrameBudget(page, 'western-approach-' + mode);
       const actual = await cameraSettled(page, record, 'western-' + mode);
+      const emissions = actual.renderer.lighting.emissiveMeshes;
+      const actualLamp = emissions.find(value => value.name === lamp.node.name);
+      check('western-' + mode + '-keeps-paper-nonemissive-and-actual-lamp-response',
+        actual.stream.cells.some(cell => cell.id === materialCell.id && cell.level === 'near' && cell.sha256 === materialCell.near.sha256)
+        && !emissions.some(value => value.name === paper.node.name || value.material === 'torii-paper')
+        && actualLamp?.material === 'lamp' && Math.abs(actualLamp.intensity - (mode === 'day' ? .03 : 1.4)) < 1e-6,
+      { actualLamp, paperName: paper.node.name, emissiveMeshes: emissions, fadedGroups: actual.renderer.scene.fadedGroups,
+        materialBinding: record.materialBinding, camera: actual.camera });
       check('western-approach-' + mode + '-retains-arrived-view-and-grounded-actor', near(actual.home.currentView, matchedView)
         && near(actual.route.position, arrived.route.position) && streetFraming(actual).safe && actual.ground.inside && Boolean(actual.ground.hit), actual);
       await capture(page, 'tenmangu-western-approach-' + mode, true);

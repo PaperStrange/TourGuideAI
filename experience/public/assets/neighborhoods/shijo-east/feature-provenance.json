@@ -3488,9 +3488,10 @@
         "structureMaterial": "frame",
         "floorMaterial": "paving",
         "floorHeightMetres": 0,
-        "floorWalkable": false
+        "floorWalkable": false,
+        "floorEdgeBottomMetres": -0.04
       },
-      "authored": "Original open assembly informed by the official wall-less classification, preserving the source roof ring and top. Slab thickness, seven centreline supports, beam dimensions and neutral finishes are authored. The nonwalkable paving surface occupies the exact source footprint at authored base0; real floor material and elevation remain unmeasured. Beam underside1.944m is virtual construction, not measured real clearance. No exact Platform A shelter reconstruction is claimed.",
+      "authored": "Original open assembly informed by the official wall-less classification, preserving the source roof ring and top. Slab thickness, seven centreline supports, beam dimensions and neutral finishes are authored. The nonwalkable paving surface occupies the exact source footprint at authored base0, with vertical perimeter faces joining adjacent authored ground at-0.04m. Real floor material, elevation and curb construction remain unmeasured. Beam underside1.944m is virtual construction, not measured real clearance. No exact Platform A shelter reconstruction is claimed.",
       "evidence": [
         {
           "file": "experience/evidence/neighborhood-20261023/world/platform-context/audit.json",
@@ -3507,6 +3508,10 @@
         {
           "file": "experience/evidence/neighborhood-20261023/world/platform-context/floor-support.json",
           "sha256": "c3f236da23c9e83b9a44d5d4b2a06d0f03cbca14be8c79b780713a62ea1aea8a"
+        },
+        {
+          "file": "experience/evidence/neighborhood-20261024/world/floor-boundary.json",
+          "sha256": "1ca8cd8131f2d2d1dcdee8328292c3fd0c8172e60122d02e0ddc76b833be1d70"
         }
       ]
     }

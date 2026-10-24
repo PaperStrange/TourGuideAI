@@ -110,7 +110,8 @@ export async function createRouteWorldView(renderer, { pack, signal, onProgress,
     lighting.updateRegion({ ...initialPosition, height: floorHeight(initialPosition.x, initialPosition.y), fixtures: [] });
     await lighting.setMode(lightingMode); signal?.throwIfAborted();
     stream = createSectionStream(manifest, assets, { signal, tier: qualityTier ?? (matchMedia('(max-width: 720px)').matches ? 'compact' : 'desktop'),
-      onChange() { onInvalidate?.(); if (stream && !disposed) onStreamingChange?.(stream.snapshot()); },
+      // 下载与排队状态只更新界面；实际场景变化由 attach、detach 和灯光触发绘制。
+      onChange() { if (stream && !disposed) onStreamingChange?.(stream.snapshot()); },
       async attach(root, cell, level, ownerSignal) {
         const groups = new Map();
         root.userData.cellId = cell.id;
