@@ -1,5 +1,25 @@
 # Review TourGuideAI
 
+## Connected Kyoto neighborhood · current test preview
+
+[Open the six-sight preview](https://paperstrange.github.io/TourGuideAI/previews/shijo-east-c13/) ·
+[中文预览入口](https://paperstrange.github.io/TourGuideAI/previews/shijo-east-c13/?lang=zh)
+
+The preview opens a **1.35 km continuous 3D walk with six sights**: Kyoto Mitsui
+frontage, Nishiki Market, Nishiki Tenmangū approach, Takase River, Pontochō's
+southern entrance and Shijō Bridge. Choose **Enter the six-sight walk** to open
+the neighborhood directly. The route panel provides walking targets; day/night,
+camera controls, editable sightseeing order and private saved views remain available.
+An existing neighborhood visit resumes. Desktop is recommended.
+
+This separate preview is published at Pages commit
+`10e95b1d52aee46bbcd9c296746127e29b1b4131`, using implementation `2843974` and
+the unchanged 446-file canonical package `65167ee4…`.
+All **448/448** served files, including the bilingual introduction and metadata,
+match their local bytes over actual HTTPS. Performance acceptance and the complete
+current-source route CI remain pending. The main homepage below continues to offer
+the previously published Kyoto and Ginza walks. Both paths share browser storage.
+
 ## Reviewed places · Kyoto and Ginza
 
 [Explore TourGuideAI](https://paperstrange.github.io/TourGuideAI/) ·

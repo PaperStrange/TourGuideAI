@@ -2,7 +2,7 @@
   "runId": 40064451730,
   "headSha": "28439744b6349b795ac0a50c20c5d45d735bb2ed",
   "implementationSha": "28439744b6349b795ac0a50c20c5d45d735bb2ed",
-  "observedAt": "2026-10-24T05:18:38.689Z",
+  "observedAt": "2026-10-24T05:52:38.080Z",
   "packageSha256": "65167ee402d6d59978b5f979de8c6987721ec891ffec1ce6127831d7c0dd354e",
   "localPackageSha256": "e8eed9146ea83accaf54769ff2aaaf5a902cfd344295e3348e11684e50838b0c",
   "packageFiles": 446,
@@ -44,6 +44,47 @@
         "sha256": "44d431ac3417f00e11e2a17f43e1dd55272ac2a781235126add377f8c318eee2",
         "decodedBytes": 62387,
         "decodedSha256": "ca70dc1d5ce47de3e99afd5b0c3dbdf57a40254c3561ed16cacae2f433d45110"
+      },
+      "dependencies": [],
+      "captureFiles": []
+    },
+    {
+      "suite": "original",
+      "artifact": {
+        "id": 12549441816,
+        "name": "experience-browser-evidence",
+        "zipSha256": "ea06f11dbfa6c52829468a592c78413db52af5ed07a837fe081701b62edf7b92",
+        "zipBytes": 19874529,
+        "createdAt": "2026-10-24T05:29:41Z",
+        "sourceHead": "28439744b6349b795ac0a50c20c5d45d735bb2ed"
+      },
+      "summary": {
+        "passed": 133,
+        "failed": 0
+      },
+      "observedChecks": {
+        "passed": 133,
+        "failed": 0
+      },
+      "completion": "completed",
+      "packageSha256": "65167ee402d6d59978b5f979de8c6987721ec891ffec1ce6127831d7c0dd354e",
+      "localPackageSha256": "e8eed9146ea83accaf54769ff2aaaf5a902cfd344295e3348e11684e50838b0c",
+      "packageFiles": 446,
+      "exactFiles": 425,
+      "sourcePathOnlyMapDifferences": 21,
+      "report": {
+        "file": "browser-result.json.gz",
+        "bytes": 85337,
+        "sha256": "081f9dc2c297c3d3c8104fac0b132301d000bb5b8a59558daa32b8b80ead06ac",
+        "decodedBytes": 787005,
+        "decodedSha256": "642a1596f2ece14ebb8b6f6e473088cf2ddb28ba736bd3784a07a508e47dcdc7"
+      },
+      "driver": {
+        "file": "browser-check.mjs.gz",
+        "bytes": 13105,
+        "sha256": "b36257f59ff979eec8b7da32a0215a66587776f7c7b2abe9f0d153acd6564fb7",
+        "decodedBytes": 47561,
+        "decodedSha256": "0dc66d8348341a07d820092eeeaa4ecc7699c0e1afc8f65829a379c3c1bad394"
       },
       "dependencies": [],
       "captureFiles": []
@@ -127,6 +168,47 @@
         "sha256": "1f76b373808547977454c316a77a03f4fc31b64e2ed74ba72bd745c8f4f9cfe4",
         "decodedBytes": 48166,
         "decodedSha256": "e74f5a52da0b99bd2e4a4326dc3f0ba11bd6ea672ca4a792bd462ea96798a7f5"
+      },
+      "dependencies": [],
+      "captureFiles": []
+    },
+    {
+      "suite": "walkthrough",
+      "artifact": {
+        "id": 12548693176,
+        "name": "homepage-walkthrough-evidence",
+        "zipSha256": "d3e13d644fff30b7d82799bdfacd987bff0997684571b28c3f331c365b99e899",
+        "zipBytes": 15200082,
+        "createdAt": "2026-10-24T05:19:21Z",
+        "sourceHead": "28439744b6349b795ac0a50c20c5d45d735bb2ed"
+      },
+      "summary": {
+        "passed": 264,
+        "failed": 0
+      },
+      "observedChecks": {
+        "passed": 264,
+        "failed": 0
+      },
+      "completion": "completed",
+      "packageSha256": "65167ee402d6d59978b5f979de8c6987721ec891ffec1ce6127831d7c0dd354e",
+      "localPackageSha256": "e8eed9146ea83accaf54769ff2aaaf5a902cfd344295e3348e11684e50838b0c",
+      "packageFiles": 446,
+      "exactFiles": 425,
+      "sourcePathOnlyMapDifferences": 21,
+      "report": {
+        "file": "walkthrough-result.json.gz",
+        "bytes": 63985,
+        "sha256": "c6330143bfd18b313a13d5fffd5fb303c9c6830dafed730e4b3fa8e0bbdb25fd",
+        "decodedBytes": 784600,
+        "decodedSha256": "09c673ea294e9a852f31a1d8bc521c49f18143559f838a1319b08385b1703d96"
+      },
+      "driver": {
+        "file": "browser-walkthrough.mjs.gz",
+        "bytes": 11867,
+        "sha256": "3023269967adcc4130be731af8356f390edbb76d51c748b2eaf73bfa7ea320ef",
+        "decodedBytes": 43838,
+        "decodedSha256": "7a0460c80d2caf6e489ba413b0318fb12e7904807bb63a60345d7c2d1a5188da"
       },
       "dependencies": [],
       "captureFiles": []
@@ -1405,6 +1487,6 @@
     "decodedSha256": "046578ad86b512f708fcb92fa4800ce18edf6e040eabcce9e603f78b748b51cb"
   },
   "conclusion": "in_progress",
-  "completedBrowserChecks": 374,
+  "completedBrowserChecks": 771,
   "completedBrowserFailures": 0
 }

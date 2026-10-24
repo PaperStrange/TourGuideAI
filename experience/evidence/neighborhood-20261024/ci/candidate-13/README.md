@@ -2,16 +2,15 @@
 
 Run `40064451730` tests implementation
 `28439744b6349b795ac0a50c20c5d45d735bb2ed`. At
-`2026-10-24T05:18:38.689Z`, five jobs had succeeded: source preparation,
-travel, solo, perspective and reviewed packs. Homepage's extended walkthrough,
-original walk and connected neighborhood remained in progress. The complete
+`2026-10-24T05:52:38.080Z`, seven jobs had succeeded: source preparation,
+travel, solo, perspective, reviewed packs, original walk and homepage with its
+extended walkthrough. Connected neighborhood remained in progress. The complete
 current-source traversal remains pending.
 
-Five available completed browser reports contain **374 passes and zero
-failures**: packs 81, travel 73, homepage 65, perspective 80 and solo 75. Homepage's
-65-check artifact completes its first suite; the containing job still runs the
-extended walkthrough. The source-preparation log separately records 18
-workbench and 13 neighborhood source tests passing.
+Seven available completed browser reports contain **771 passes and zero
+failures**: packs 81, original walk 133, travel 73, homepage 65, extended
+walkthrough 264, perspective 80 and solo 75. The source-preparation log
+separately records 18 workbench and 13 neighborhood source tests passing.
 
 All available ZIP sizes and SHA-256 digests match GitHub artifact metadata. Each
 report binds the same 446-file CI package:
@@ -52,6 +51,20 @@ The earlier `05:12:54.468Z` observation remains unchanged in
 Its original decoded report SHA-256 is
 `052eb9ec618d022bb415e785d3fc77b3426a1c347518bc0e261728e92241e253`;
 its 446 package entries match the canonical inventory exactly.
+
+The `05:18:38.689Z` five-report observation remains unchanged in
+[observed-run-051838.json](observed-run-051838.json) and
+[verification-051838.json](verification-051838.json), with its 374-pass scope.
+The original-walk artifact `12549441816` has ZIP SHA-256
+`ea06f11dbfa6c52829468a592c78413db52af5ed07a837fe081701b62edf7b92`
+and decoded report SHA-256
+`642a1596f2ece14ebb8b6f6e473088cf2ddb28ba736bd3784a07a508e47dcdc7`.
+The extended-walkthrough artifact `12548693176` has ZIP SHA-256
+`d3e13d644fff30b7d82799bdfacd987bff0997684571b28c3f331c365b99e899`
+and decoded report SHA-256
+`09c673ea294e9a852f31a1d8bc521c49f18143559f838a1319b08385b1703d96`.
+Both complete reports, their source-matched drivers and all 446 canonical file
+identities were verified without rerunning tests.
 
 Local [camera guidance](../../qa/candidate-13-camera-guidance-desktop/README.md),
 [standard performance](../../performance/candidate-13/README.md),

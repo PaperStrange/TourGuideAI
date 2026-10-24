@@ -4,7 +4,25 @@
 **State: connected-neighborhood implementation is authorized and in progress.
 The approved target is a continuous 1–2 km Shijō neighborhood with 5–8 sights,
 desktop-first delivery and richer solo routes. Published runtime `17b8f37` remains
-the verified baseline. Q03 is open P1; backend tests remain local.**
+the main-site baseline. Candidate 13 is available through a separate public test
+preview. Q03 is open P1; backend tests remain local.**
+
+## Public neighborhood preview · 2026-10-24
+
+[English preview](https://paperstrange.github.io/TourGuideAI/previews/shijo-east-c13/) ·
+[中文预览](https://paperstrange.github.io/TourGuideAI/previews/shijo-east-c13/?lang=zh).
+The entry button opens `app/?mode=explore&pack=shijo-east&lang=en` or its Chinese
+equivalent directly into the 1,353.444 m, six-sight neighborhood. Its bilingual
+introduction identifies pending performance acceptance. Existing neighborhood
+visits resume, and browser storage is shared with the main site.
+
+Pages commit `10e95b1d52aee46bbcd9c296746127e29b1b4131` adds only
+`previews/shijo-east-c13/`. All prior root files remain unchanged. The application's
+446 files retain canonical package `65167ee4…`; the introduction and metadata sit
+outside that immutable application. Actual HTTPS verification passes **448/448**
+files, report SHA-256
+`f0604aca48627b45d693a1edd3470de96dc776223a3ce7d6ae6d0f466959f054`.
+This is public preview availability; milestone acceptance remains open.
 
 ## Current candidate 13 · 2026-10-24
 
@@ -72,15 +90,16 @@ six-click interaction claim. Input/frame and Q03 performance, complete current
 CI, compatibility and publication remain open.
 The physical-GPU availability question is still unanswered. All local browser
 processes are closed. Root owns source synchronization and final-package evidence;
-QA is binding available CI artifacts. Current CI **40064451730** uses exact
-implementation `2843974`. The 05:18:38 UTC snapshot preserves five successful jobs
-and five available complete browser reports with **374 passes / zero failures**;
-the other jobs, including complete neighborhood traversal, remain in progress.
-The homepage's 65-check report is complete while its containing job continues
-the extended walkthrough. Source preparation separately passes 18 + 13 checks.
+QA has bound available CI artifacts. Current CI **40064451730** uses exact
+implementation `2843974`. The 05:52:38 UTC snapshot preserves seven successful jobs
+and seven complete browser reports with **771 passes / zero failures**;
+complete neighborhood traversal remains in progress. The original walk and
+extended homepage walkthrough have succeeded. Source preparation separately passes
+18 + 13 checks.
 Candidate 12 CI40062728715 was interrupted when this corrected source run began.
-No candidate 13 publication or hardware-fluency claim; published runtime `17b8f37`
-remains unchanged. Complete current-route execution remains pending in CI;
+Candidate 13 is published as the separate test preview described above; the main
+site's runtime `17b8f37` remains unchanged. Hardware fluency is unverified.
+Complete current-route execution remains pending in CI;
 performance acceptance needs a GPU-enabled test environment or a demonstrated
 application correction. Existing targets and visual quality remain unchanged.
 

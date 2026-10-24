@@ -34,9 +34,13 @@ accepts the six sight contexts and thirteen route cells with source-verified reu
 and targeted corrections. Complete upper elevations remain modeling/view limits.
 Current CI40064451730 uses exact implementation2843974. Candidate 12 CI40062728715
 was interrupted when the corrected source run began; its completed and interrupted
-reports retain separate scopes. Five current reports pass 374 checks in the
-05:18:38 UTC snapshot. Current full-route CI, compatibility and physical-GPU
-fluency remain open. No new candidate is published.
+reports retain separate scopes. Seven current reports pass 771 checks in the
+05:52:38 UTC snapshot. Current full-route CI, compatibility and physical-GPU
+fluency remain open. The [six-sight public test preview](https://paperstrange.github.io/TourGuideAI/previews/shijo-east-c13/)
+opens canonical candidate 13 directly through its English/Chinese entry buttons.
+Pages commit `10e95b1` adds this preview; all 448 application/introduction/metadata
+files match over HTTPS, and prior main-site files remain unchanged. Performance
+acceptance remains pending and is identified on the preview entry page.
 
 Retained implementation source `84e80a8` produces candidate 11, which passes 203 application
 checks, 17 repository gates and 36 targeted native checks. Independent source and

@@ -192,12 +192,19 @@ accepts the bounded pilot's six sight contexts and thirteen route cells, using
 source-verified unchanged surfaces and the reviewed corrections. It retains the
 historical image/package scopes and establishes no fresh candidate-13 full walk.
 
+Candidate 13 is available as a [public six-sight test preview](https://paperstrange.github.io/TourGuideAI/previews/shijo-east-c13/),
+with English/Chinese direct neighborhood entry and an explicit pending-performance
+notice. Pages commit `10e95b1` preserves the main-site files and serves the exact
+canonical application; all 448 application/introduction/metadata files match over
+HTTPS. Seven completed current CI reports pass 771 checks; the complete route job
+remains in progress. Public preview access does not close performance acceptance.
+
 | Sprint | Current evidence | Remaining acceptance |
 | --- | --- | --- |
 | N00 | Connected source graph, six exterior sights, source/provenance audits and reproducible packaging | Surveyed grades and current access remain explicit source limits |
 | N01 | Continuous movement, streaming/retry, cancellation, native storage and residency; candidate 9 complete outward/return CI passes | Candidate 13 complete outward/return CI |
 | N02 | Bilingual day/night, private views, editable recommendations and Maps; composite six-sight/thirteen-cell art disposition accepted with verified targeted corrections | Bounded pilot art accepted; documented reconstruction/polish limits and unmeasured human realism remain explicit |
-| N03 | Candidate 13 startup, guidance and native background behavior pass; candidate 12 roof lifecycle/art reviews pass; candidate 9 complete camera and eight CI jobs pass | Current-package complete CI, input/frame targets, Q03, hardware evidence and publication |
+| N03 | Candidate 13 startup, guidance and native background behavior pass; canonical test preview published with 448/448 HTTPS file identities; seven current CI reports pass 771 checks | Current-package complete route CI, input/frame targets, Q03, hardware evidence and accepted main-site release |
 
 ## Candidate 9 acceptance · 2026-10-23
 
