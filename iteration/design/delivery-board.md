@@ -1,7 +1,18 @@
 # Delivery board · TourGuideAI 2.5D
 
-Updated 2026-10-24. Owner: lead. Planning baseline: `origin/iteration` at
+Updated 2026-10-27. Owner: lead. Planning baseline: `origin/iteration` at
 `eae982f4ba20a107bf21a35b70f635b4935a4c70`.
+
+**Current activity · research and direction decision:** the user requests a pause
+in construction after reporting unrealistic surroundings, indistinct sights and
+confusing links. Realism and immersion have priority. The
+[decision proposal](../../experience/docs/realism-immersion-decision-20261027.md)
+evaluates an original textured Pontochō LOD3 specimen, capture-based alternatives,
+eye-height views and one coherent website journey. Coverage, raw texture quality
+and GPU performance are not yet demonstrated for that specimen. No application,
+asset or deployment changes are included in this research. Human realism,
+recognition and immersion acceptance are reopened. CI40064451730 now has all eight
+jobs successful; the final route artifact still needs archival reconciliation.
 
 **Active milestone · connected neighborhood:** the approved
 [sprint plan](../../experience/docs/sprint-connected-neighborhood-20261021.md)
@@ -35,8 +46,8 @@ and targeted corrections. Complete upper elevations remain modeling/view limits.
 Current CI40064451730 uses exact implementation2843974. Candidate 12 CI40062728715
 was interrupted when the corrected source run began; its completed and interrupted
 reports retain separate scopes. Seven current reports pass 771 checks in the
-05:52:38 UTC snapshot. Current full-route CI, compatibility and physical-GPU
-fluency remain open. The [six-sight public test preview](https://paperstrange.github.io/TourGuideAI/previews/shijo-east-c13/)
+05:52:38 UTC snapshot. All eight CI jobs now succeed; final route-artifact
+reconciliation, compatibility and physical-GPU fluency remain open. The [six-sight public test preview](https://paperstrange.github.io/TourGuideAI/previews/shijo-east-c13/)
 opens canonical candidate 13 directly through its English/Chinese entry buttons.
 Pages commit `10e95b1` adds this preview; all 448 application/introduction/metadata
 files match over HTTPS, and prior main-site files remain unchanged. Performance

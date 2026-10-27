@@ -16,8 +16,11 @@ This separate preview is published at Pages commit
 `10e95b1d52aee46bbcd9c296746127e29b1b4131`, using implementation `2843974` and
 the unchanged 446-file canonical package `65167ee4…`.
 All **448/448** served files, including the bilingual introduction and metadata,
-match their local bytes over actual HTTPS. Performance acceptance and the complete
-current-source route CI remain pending. The main homepage below continues to offer
+match their local bytes over actual HTTPS. All eight CI jobs now succeed;
+performance and human experience acceptance remain open. On 27 October the user
+requested [research before further construction](experience/docs/realism-immersion-decision-20261027.md),
+prioritizing realistic surroundings, recognizable sights and immersion.
+The main homepage below continues to offer
 the previously published Kyoto and Ginza walks. Both paths share browser storage.
 Actual hosted EN/ZH checks confirm public entry, six stops, walking, Stop,
 inspection/Escape and night controls. The [hosted report](experience/evidence/neighborhood-20261024/hosted-preview/README.md)

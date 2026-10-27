@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-10-27",
+  "scope": "Public documentation and metadata only; no models, textures, provider account activation or runtime changes",
+  "portableInputs": [
+    {
+      "file": "pontocho-file-list.json",
+      "url": "https://api.plateauview.mlit.go.jp/datacatalog/citygml/r:135.7708,35.0039,135.7715,35.0057?types=bldg,tran,frn,dem",
+      "status": 200,
+      "bytes": 3097,
+      "sha256": "f108613f3aa4149d5cd4a903cb5615c740ba94b4643294f19ee9aa680fa7b10a",
+      "interpretation": "Intersecting whole-file inventory; counts are not a rectangle-clipped feature inventory. Mesh52354601 has4444 buildings,138 withLOD3;977 furniture objects,964 withLOD3;680 roads,18 withLOD3."
+    },
+    {
+      "file": "kyoto-2025-metadata.zip",
+      "url": "https://assets.cms.plateau.reearth.io/assets/69/1474c1-2ef3-4365-8041-af993b7add76/26100_kyoto-shi_city_2025_citygml_1_op_metadata.zip",
+      "status": 200,
+      "bytes": 28723,
+      "sha256": "779a9d6697c91dbccea15f69b65030de584180abff10bbc01df3ac81059a231b",
+      "reviewedMembers": ["metadata/udx_26100_2025_op.xml", "metadata/udx_26100_2025_resource_op.csv"],
+      "licenseStatement": "Licensed under CC BY 4.0",
+      "metadataDate": "2026-03-31",
+      "lod3InputYear": "FY2023",
+      "lod3InputDescription": "車載写真レーザ測量（2023年度）",
+      "dateLimitation": "Dataset/metadata year is distinct from acquisition date and present conditions."
+    }
+  ],
+  "ignoredMetadataReads": [
+    {
+      "file": "artifacts/neighborhood-20261027/world/plateau-catalog.raw",
+      "url": "https://api.plateauview.mlit.go.jp/datacatalog/plateau-datasets?area=26100&type=bldg",
+      "status": 200,
+      "bytes": 9478103,
+      "sha256": "0eef73b8409635341689267d0e1847da4b593ea7a4f463d90850f18761c3aea8",
+      "note": "Endpoint returned the complete metadata catalog; query fields did not narrow the response. No content meshes were fetched."
+    },
+    {
+      "id": "26104_bldg_lod3",
+      "file": "artifacts/neighborhood-20261027/world/26104_bldg_lod3-tileset.json",
+      "url": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/tileset.json",
+      "status": 200,
+      "bytes": 1763345,
+      "sha256": "d72d436f7f946689b601b30ac726d4b467a976f88a66ccd51ce99b0bf9dda8b1",
+      "actualLodPropertyRange": [1, 3],
+      "advertisedArchiveBytes": 269679040,
+      "texture": true,
+      "continuousLod3CoverageVerified": false
+    },
+    {
+      "id": "26100_frn_lod3",
+      "file": "artifacts/neighborhood-20261027/world/26100_frn_lod3-tileset.json",
+      "url": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/tileset.json",
+      "status": 200,
+      "bytes": 122813,
+      "sha256": "be0571bcd7f379c614fd7bf968459485338d1a5bd91067608bdc986a8ac33eb2",
+      "rootRegionDegrees": [135.7709592074309, 35.003918996488665, 135.77515498459567, 35.00674636813578],
+      "note": "Bounding region is not a polygon of continuous model coverage."
+    },
+    {
+      "id": "26100_tran_lod3",
+      "file": "artifacts/neighborhood-20261027/world/26100_tran_lod3-tileset.json",
+      "url": "https://assets.cms.plateau.reearth.io/assets/4a/f6e465-35e4-400a-94e4-6ab417fc314d/26100_kyoto-shi_city_2025_citygml_1_op_tran_3dtiles_lod3/tileset.json",
+      "status": 200,
+      "bytes": 3497,
+      "sha256": "8eb74aeb170afe7bb8785cbf374eecfbcea3059d3f4f8f148fe8023906d35bc3",
+      "rootRegionDegrees": [135.77100779841294, 35.003923140562875, 135.77515498459567, 35.006746349583224],
+      "note": "Neither road topology nor pedestrian access was inferred from the tileset bounding region."
+    }
+  ],
+  "reproduction": {
+    "metadata": "curl --fail --location --max-time 30 --max-filesize 2000000 --output artifacts/neighborhood-20261027/world/kyoto-2025-metadata.zip https://assets.cms.plateau.reearth.io/assets/69/1474c1-2ef3-4365-8041-af993b7add76/26100_kyoto-shi_city_2025_citygml_1_op_metadata.zip",
+    "fileList": "curl --fail --location --max-time 30 --output artifacts/neighborhood-20261027/world/pontocho-file-list.json 'https://api.plateauview.mlit.go.jp/datacatalog/citygml/r:135.7708,35.0039,135.7715,35.0057?types=bldg,tran,frn,dem'",
+    "network": "Inherited proxy and CA; TLS verification enabled. Public metadata only. Responses may change upstream."
+  }
+}

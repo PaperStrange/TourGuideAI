@@ -1,11 +1,45 @@
 # Agent checkpoint · Explore and Together homepage
 
-2026-10-24 UTC · Lead owns integration, commits and publication.
-**State: connected-neighborhood implementation is authorized and in progress.
-The approved target is a continuous 1–2 km Shijō neighborhood with 5–8 sights,
+2026-10-27 UTC · Lead owns integration, commits and publication.
+**State: research and planning; production is paused at the user's explicit request.
+The neighborhood objective remains a continuous 1–2 km route with 5–8 sights,
 desktop-first delivery and richer solo routes. Published runtime `17b8f37` remains
 the main-site baseline. Candidate 13 is available through a separate public test
 preview. Q03 is open P1; backend tests remain local.**
+
+## Current direction review · 2026-10-27
+
+The user's colleagues find the surroundings rigid and unrealistic, cannot
+recognize the six places without indications, and find the many website links
+confusing. The user asks for research and a proposed direction before further
+construction, giving realism and immersion greater weight. Human art quality,
+recognition and the coherent journey are open acceptance requirements.
+
+The [consolidated decision proposal](realism-immersion-decision-20261027.md)
+prioritizes original textured street models and a focused 150–250 m Pontochō
+quality specimen, conditional on actual continuous source coverage. Official
+metadata identifies CC BY 4.0 and FY2023 photographic laser surveying. It shows
+138 LOD3 buildings among 4,444 buildings in the containing mesh; it does not prove
+an entirely detailed corridor. The proposed alley extends north of the existing
+entrance stop. It supplies no new claim about all six current sights.
+
+The product proposal uses one entry, a scene-led walk and contextual Route/Place/
+Saved panels. Evaluate eye-height and third-person views on the same scene.
+Proposed weights are realism/recognition 45%, immersion 35%, usefulness 10% and
+cost/scaling 10%; rights, connected movement and existing performance targets
+remain independent gates. Capture-based mesh/3DGS comparison requires matching
+licensed input. Provider pricing, Google regional restrictions and actual source
+receipts are in the linked research. No source models, textures, application code
+or deployed pages were changed; no prototype, render, benchmark or paid service
+was executed by this research turn.
+
+Read-only verification on 27 October confirms all eight jobs in CI40064451730
+succeeded, including connected neighborhood. The archived 771-check snapshot
+retains its original scope; the final route artifact has not been downloaded or
+recounted in this turn. Functional CI does not close the user's new experience
+feedback or the existing performance failures. Physical GPU evidence remains
+unavailable. The next production action requires a direction decision after this
+research, as requested by the user.
 
 ## Public neighborhood preview · 2026-10-24
 
@@ -97,20 +131,22 @@ is accepted for the bounded pilot: six sight contexts and all thirteen traversed
 cells have applicable day/night evidence, with unchanged surfaces and reviewed
 corrections distinguished. Art and world content concur; original image/package
 identities remain explicit. This supplies no new candidate-13 complete walk or
-six-click interaction claim. Input/frame and Q03 performance, complete current
-CI, compatibility and publication remain open.
+six-click interaction claim. Input/frame and Q03 performance, final route-evidence
+reconciliation, compatibility and accepted main-site publication remain open.
+The user's 27 October review reopens perceived realism, recognition and immersion.
 The physical-GPU availability question is still unanswered. All local browser
 processes are closed. Root owns source synchronization and final-package evidence;
 QA has bound available CI artifacts. Current CI **40064451730** uses exact
 implementation `2843974`. The 05:52:38 UTC snapshot preserves seven successful jobs
 and seven complete browser reports with **771 passes / zero failures**;
-complete neighborhood traversal remains in progress. The original walk and
+complete neighborhood traversal was still running at that snapshot. All eight
+jobs are successful in the 27 October read-only check. The original walk and
 extended homepage walkthrough have succeeded. Source preparation separately passes
 18 + 13 checks.
 Candidate 12 CI40062728715 was interrupted when this corrected source run began.
 Candidate 13 is published as the separate test preview described above; the main
 site's runtime `17b8f37` remains unchanged. Hardware fluency is unverified.
-Complete current-route execution remains pending in CI;
+The successful current-route job still needs final artifact reconciliation;
 performance acceptance needs a GPU-enabled test environment or a demonstrated
 application correction. Existing targets and visual quality remain unchanged.
 

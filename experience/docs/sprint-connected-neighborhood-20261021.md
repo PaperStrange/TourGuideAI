@@ -1,5 +1,12 @@
 # Connected neighborhood walks · 2026-10-21
 
+**27 October direction review:** construction is paused while the user reviews
+the [realism and immersion proposal](realism-immersion-decision-20261027.md).
+User testing has reopened perceived streetscape quality, unaided recognition and
+journey clarity. All eight current CI jobs now succeed; existing performance
+failures and the new human acceptance requirements remain open. The plan below
+records the current pilot's scope and history, with no new implementation implied.
+
 The user approves implementation of a continuous 1–2 km neighborhood walk with
 5–8 sights, consistent street detail and richer solo recommendations. Desktop
 performance has priority; phones retain the interaction with reduced visual detail.
@@ -196,15 +203,16 @@ Candidate 13 is available as a [public six-sight test preview](https://paperstra
 with English/Chinese direct neighborhood entry and an explicit pending-performance
 notice. Pages commit `10e95b1` preserves the main-site files and serves the exact
 canonical application; all 448 application/introduction/metadata files match over
-HTTPS. Seven completed current CI reports pass 771 checks; the complete route job
-remains in progress. Public preview access does not close performance acceptance.
+HTTPS. Seven archived current CI reports pass 771 checks; all eight jobs now
+succeed, with the final route artifact still awaiting reconciliation. Public
+preview access does not close performance or human experience acceptance.
 
 | Sprint | Current evidence | Remaining acceptance |
 | --- | --- | --- |
 | N00 | Connected source graph, six exterior sights, source/provenance audits and reproducible packaging | Surveyed grades and current access remain explicit source limits |
-| N01 | Continuous movement, streaming/retry, cancellation, native storage and residency; candidate 9 complete outward/return CI passes | Candidate 13 complete outward/return CI |
-| N02 | Bilingual day/night, private views, editable recommendations and Maps; composite six-sight/thirteen-cell art disposition accepted with verified targeted corrections | Bounded pilot art accepted; documented reconstruction/polish limits and unmeasured human realism remain explicit |
-| N03 | Candidate 13 startup, guidance and native background behavior pass; canonical test preview published with 448/448 HTTPS file identities; seven current CI reports pass 771 checks | Current-package complete route CI, input/frame targets, Q03, hardware evidence and accepted main-site release |
+| N01 | Continuous movement, streaming/retry, cancellation, native storage and residency; all candidate 13 CI jobs successful | Final current-route artifact reconciliation |
+| N02 | Bilingual day/night, private views, editable recommendations and Maps; bounded source/art corrections retain their technical scope | User feedback reopens perceived streetscape realism, unaided recognition and immersion; research direction decision pending |
+| N03 | Candidate 13 startup, guidance and native background behavior pass; canonical preview published with 448/448 HTTPS file identities; seven archived reports pass 771 checks | Input/frame targets, Q03, hardware evidence, coherent journey acceptance and accepted main-site release |
 
 ## Candidate 9 acceptance · 2026-10-23
 
