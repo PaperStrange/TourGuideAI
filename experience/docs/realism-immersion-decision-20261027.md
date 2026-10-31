@@ -1,5 +1,8 @@
 # Realism and immersion · proposed direction
 
+Current approved scope and execution order: [Realism 01 sprint](../sprints/realism-01/README.md).
+This dated research proposal remains supporting context for that sprint.
+
 27 October 2026. Research and planning only, following the user's instruction to
 pause construction. The public candidate-13 preview remains unchanged. This
 document proposes the next direction; it does not authorize a new implementation,

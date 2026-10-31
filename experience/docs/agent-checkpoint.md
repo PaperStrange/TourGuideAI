@@ -1,45 +1,41 @@
 # Agent checkpoint · Explore and Together homepage
 
-2026-10-27 UTC · Lead owns integration, commits and publication.
-**State: research and planning; production is paused at the user's explicit request.
-The neighborhood objective remains a continuous 1–2 km route with 5–8 sights,
-desktop-first delivery and richer solo routes. Published runtime `17b8f37` remains
-the main-site baseline. Candidate 13 is available through a separate public test
-preview. Q03 is open P1; backend tests remain local.**
+31 October 2026 · Lead owns integration, commits and publication.
+**State: approved sprint organization implemented; source qualification is next.
+The milestone is the complete 1,353.444 m, 54-edge, six-sight Shijō East route,
+with English/Chinese journeys and daylight/night. Published runtime `17b8f37`
+remains the main-site baseline; candidate 13 remains the separate public preview.
+Q03 is open P1; backend tests remain local.**
 
-## Current direction review · 2026-10-27
+## Current sprint · Realism 01
 
-The user's colleagues find the surroundings rigid and unrealistic, cannot
-recognize the six places without indications, and find the many website links
-confusing. The user asks for research and a proposed direction before further
-construction, giving realism and immersion greater weight. Human art quality,
-recognition and the coherent journey are open acceptance requirements.
+Start at the [sprint workspace](../sprints/realism-01/README.md). It contains the
+owned backlog, acceptance matrix, decision record, source coverage and capture
+requirements, with reproducible mesh/splat trial definitions. The
+[competitor board and receipts](../sprints/realism-01/research/competitors.md)
+retain actual browser observations and timestamped publisher footage separately.
+The [evidence store](../evidence/realism-01/README.md) preserves reviewed images,
+hashes, provenance and validation. Raw downloads and browser state belong under
+ignored `artifacts/realism-01/`.
 
-The [consolidated decision proposal](realism-immersion-decision-20261027.md)
-prioritizes original textured street models and a focused 150–250 m Pontochō
-quality specimen, conditional on actual continuous source coverage. Official
-metadata identifies CC BY 4.0 and FY2023 photographic laser surveying. It shows
-138 LOD3 buildings among 4,444 buildings in the containing mesh; it does not prove
-an entirely detailed corridor. The proposed alley extends north of the existing
-entrance stop. It supplies no new claim about all six current sights.
+Realism/recognition carries 45%, immersion 35%, usefulness 10% and cost/scaling
+10%. Rights, continuous movement and performance remain mandatory gates. The
+production representation decision requires matched Kyoto evidence; trial areas
+do not reduce the full-route milestone. All six sights and connecting streets
+need object-level appearance review. Existing source metadata does not establish
+full-route detailed coverage. Capture costs remain unquoted and spending requires
+a concrete proposal and approval.
 
-The product proposal uses one entry, a scene-led walk and contextual Route/Place/
-Saved panels. Evaluate eye-height and third-person views on the same scene.
-Proposed weights are realism/recognition 45%, immersion 35%, usefulness 10% and
-cost/scaling 10%; rights, connected movement and existing performance targets
-remain independent gates. Capture-based mesh/3DGS comparison requires matching
-licensed input. Provider pricing, Google regional restrictions and actual source
-receipts are in the linked research. No source models, textures, application code
-or deployed pages were changed; no prototype, render, benchmark or paid service
-was executed by this research turn.
+Next task is R04: inspect original source models/textures for the documented route
+and trial areas, record object IDs and remaining appearance gaps, then obtain the
+inputs needed for matched trials. Physical GPU access and independent participant
+acceptance remain open dependencies. Follow the backlog rather than interpreting
+prior functional CI or publisher footage as realism acceptance.
 
-Read-only verification on 27 October confirms all eight jobs in CI40064451730
-succeeded, including connected neighborhood. The archived 771-check snapshot
-retains its original scope; the final route artifact has not been downloaded or
-recounted in this turn. Functional CI does not close the user's new experience
-feedback or the existing performance failures. Physical GPU evidence remains
-unavailable. The next production action requires a direction decision after this
-research, as requested by the user.
+This organizational delivery changes no application code, runtime APIs or deployed
+pages. Commit and push the validated sprint checkpoint to `chore-sow-delivery-plan`;
+each subsequent source review, trial and implementation delivery requires its own
+evidence and synchronized checkpoint.
 
 ## Public neighborhood preview · 2026-10-24
 

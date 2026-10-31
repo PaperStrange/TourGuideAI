@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "preparedDate": "2026-10-31",
+  "status": "defined-awaiting-qualified-sources-and-physical-gpu",
+  "routeSource": {
+    "path": "../../../src/neighborhoods/shijo-east/geography.json",
+    "sha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+    "packId": "shijo-east",
+    "revision": 1,
+    "routeId": "shijo-east-six-sights",
+    "lengthMetres": 1353.444059858351,
+    "nodeCount": 55,
+    "edgeCount": 54,
+    "coordinateStatus": "existing-route-selection-anchors; heights-and-widths-authored; current-access-unverified"
+  },
+  "commonSettings": {
+    "viewport": { "width": 1440, "height": 1000, "devicePixelRatio": 1 },
+    "verticalFieldOfViewDegrees": 60,
+    "eyeHeightAboveReviewedGroundMetres": 1.7,
+    "walkingSpeedMetresPerSecond": 1.4,
+    "trajectorySampleSpacingMetres": 0.1,
+    "directions": ["forward", "reverse"],
+    "lightingConditions": ["daylight", "night"],
+    "movingPitchDegrees": 0,
+    "pausedYawOffsetsDegrees": [0, 90, 180, 270],
+    "pausedPitchDegrees": [0, 30],
+    "pausePerPoseSeconds": 2,
+    "yawSweepDegreesPerSecond": 30,
+    "closeFrontageDistanceMetres": { "minimum": 2, "maximum": 5 },
+    "network": { "megabitsPerSecond": 10, "roundTripMilliseconds": 80 },
+    "loadRuns": { "cold": 1, "warm": 3 }
+  },
+  "trajectoryRecipe": [
+    "Verify routeSource.sha256 before reading selectedRoute.nodeIds, selectedRoute.edgeIds and navigation.edges.",
+    "Select the inclusive zero-based node index range. Include edges from start index through end index minus one.",
+    "Orient each edge.points polyline from the current selectedRoute node to the next; reverse points when edge.from and edge.to oppose route order. Reject missing edges or disconnected endpoints.",
+    "Concatenate oriented points without duplicate joins. Preserve intermediate points. Resample by cumulative horizontal polyline length every 0.1 metres and retain the final endpoint.",
+    "Transform into the registered shared capture frame using a reviewed CRS and vertical datum. Record the transform and source hashes; stop if these are unavailable.",
+    "Query the common reviewed ground and collision surface at every sample. Reject samples outside the reviewed pedestrian volume or intersecting obstacles; record the blocked location without inventing a connecting path.",
+    "Set the eye 1.7 metres above reviewed ground. Use the forward segment tangent for yaw and zero pitch while moving. Time samples by cumulative distance divided by 1.4 metres per second.",
+    "At each included sight node, insert stationary view poses and the full yaw sweep defined in commonSettings. For reverse traversal reverse the sample order and tangent direction.",
+    "Register reachable close-frontage poses and target feature IDs in the shared camera manifest before rendering. Require 2–5 metre measured distance; mark unavailable poses as source/coverage gaps.",
+    "Export and hash one trajectory plus close-view manifest for use by both representations and both lighting conditions. Changes require a new run identity and rerunning the matched pair."
+  ],
+  "trials": [
+    {
+      "id": "T01",
+      "name": "Street frontage and approach connection",
+      "nodeIndexRangeInclusive": [0, 8],
+      "startNodeId": "osm:node:4600871814",
+      "endNodeId": "osm:node:5554417552",
+      "sightIds": ["mitsui-frontage", "nishiki-market"],
+      "features": ["windows", "recesses", "entrances", "corners", "ground-contacts", "connecting-streets"]
+    },
+    {
+      "id": "T02",
+      "name": "Covered market and shrine approach",
+      "nodeIndexRangeInclusive": [8, 24],
+      "startNodeId": "osm:node:5554417552",
+      "endNodeId": "osm:node:11791924472",
+      "sightIds": ["nishiki-market", "nishiki-tenmangu"],
+      "features": ["individual-storefronts", "arcade-roof", "undersides", "shrine-approach", "lighting-transitions"]
+    },
+    {
+      "id": "T03",
+      "name": "River, southern alley entrance and bridge",
+      "nodeIndexRangeInclusive": [41, 54],
+      "startNodeId": "osm:node:5492358876",
+      "endNodeId": "authored:shijo-bridge-view",
+      "sightIds": ["takase-river", "pontocho-entrance", "shijo-bridge"],
+      "features": ["river-edge", "railings", "southern-alley-entrance", "bridge-approach"],
+      "limitation": "Northern Pontocho alley is outside the approved route; bridge endpoint is authored."
+    },
+    {
+      "id": "T04",
+      "name": "Complete six-sight route",
+      "nodeIndexRangeInclusive": [0, 54],
+      "startNodeId": "osm:node:4600871814",
+      "endNodeId": "authored:shijo-bridge-view",
+      "sightIds": ["mitsui-frontage", "nishiki-market", "nishiki-tenmangu", "takase-river", "pontocho-entrance", "shijo-bridge"],
+      "features": ["every-connecting-street", "six-sight-discovery", "streaming-continuity", "return-walking"]
+    }
+  ],
+  "requiredRunManifestFields": [
+    "runId", "trialId", "representation", "lightingCondition", "startedAt", "buildCommit",
+    "sourceUrls", "publisher", "captureDates", "rights", "location", "method", "limitations",
+    "sourceSha256", "assetSha256", "cameraSha256", "groundCollisionSha256", "coordinateTransform",
+    "toolVersions", "processingSettings", "runtimeQualitySettings", "device", "gpu", "driver",
+    "operatingSystem", "browserVersion", "viewport", "powerMode", "thermalState", "networkSettings",
+    "firstUsableMilliseconds", "fullQualityReadyMilliseconds", "inputLatencyDefinition",
+    "inputLatencyP95Milliseconds", "frameIntervalP95Milliseconds", "resourceMeasurements",
+    "recordingOverhead", "snapshotHashes", "defects"
+  ]
+}

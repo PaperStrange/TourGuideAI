@@ -1,5 +1,10 @@
 # TourGuideAI · Explore and plan together
 
+Current development: [Realism 01 sprint workspace](sprints/realism-01/README.md)
+for the complete 1.35 km, six-sight Kyoto route. Review the
+[competitor snapshots](sprints/realism-01/research/competitors.md) and
+[agent checkpoint](docs/agent-checkpoint.md) for evidence and the next task.
+
 The homepage opens a live Kyoto street preview and a worldwide place search.
 Explore offers nearby sightseeing suggestions and Google Maps handoff. Together
 uses a 2D world map, invited rooms, shared dream destinations and local 3D previews.
