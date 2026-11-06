@@ -2,8 +2,10 @@
 
 Updated 6 November 2026 from the [full-route source audit](source-coverage.md) and
 [73-tile / 18-view qualification](../../../evidence/realism-01/qualification/README.md).
-Status: requirements ready; supplier, dates, price and funding **unquoted/unapproved**.
-No outreach, booking or purchase has occurred.
+Status: **free sources only for the current period**. Apply these coverage and
+handover criteria to freely available licensed inputs. The prepared supplier
+quotation material is parked. No outreach, booking or purchase is planned or has
+occurred; complete-route supplier price remains unknown.
 
 The [6 November reference and acquisition review](reference-qualification.md)
 records official exAgent and Advalay public line items, reserved photographs and

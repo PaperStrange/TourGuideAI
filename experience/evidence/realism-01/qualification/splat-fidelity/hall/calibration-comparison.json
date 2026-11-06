@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "method": "Identical publisher reference; one fixed union foreground mask across reference, default and focal2, max RGB greater than12; raw Pillow-decoded RGB MAE",
+  "inputs": [
+    {
+      "path": "artifacts/realism-01/splat-fidelity/hall-run-02/publisher-initial.jpg",
+      "bytes": 124075,
+      "sha256": "69d28347923a2313cbf8fbf330713af2c33fe4c5f0f3d151cc7a5ba8f27227a1"
+    },
+    {
+      "path": "artifacts/realism-01/splat-fidelity/hall-run-02/spark-initial.jpg",
+      "bytes": 88880,
+      "sha256": "45e2ea8aa0cf08a5a3637b9c4203833a213de5663751a4dbfc89974a385bfd54"
+    },
+    {
+      "path": "artifacts/realism-01/splat-fidelity/hall-run-03-focal2/spark-initial.jpg",
+      "bytes": 105924,
+      "sha256": "7abb7472b88aec98a56d606af9bdcf0250051158cc3570abb83a385a7590ce88"
+    }
+  ],
+  "commonForegroundPixels": 201167,
+  "defaultMeanAbsoluteError255": 22.515352915736678,
+  "focal2MeanAbsoluteError255": 20.58685569700796,
+  "relativeErrorReductionPercent": 8.56525423317186,
+  "producer": {
+    "path": "experience/tools/splat-fidelity/compare-calibration.py",
+    "bytes": 2506,
+    "sha256": "447a0b213234f2ae9937f89ca1e4596e4720a5789a23579680f4e0fa356670b6"
+  },
+  "limitations": "JPEG/rasterization and residual radiance differences remain; descriptive controlled calibration, no source or release acceptance threshold"
+}

@@ -4,7 +4,9 @@
 **State: Original mesh/terrain/datum inspection and detailed texture/pedestrian
 audits are complete. The two representation families continue in parallel;
 the inspected municipal source alone is insufficient for close walking.
-The full-route quotation inquiry is prepared and unsent. Matched Kyoto capture,
+The user requires free sources only for this period; supplier outreach and paid
+capture are parked. Exact route acquisition/handover requirements remain prepared.
+Matched Kyoto capture,
 physical-device/human qualification and the complete-route milestone remain open.
 The milestone is the complete 1,353.444 m, 54-edge, six-sight Shijō East route,
 with English/Chinese journeys and daylight/night. Published runtime `17b8f37`
@@ -73,23 +75,30 @@ unverified. No route revision was applied.
 
 The [parallel status table](../sprints/realism-01/experiments/candidate-status.md)
 distinguishes the two active representation families and their prerequisites.
-Spark 2.4.0 with existing Three 0.186.1 draws a licensed non-Kyoto sample and passes
-six engineering checks; correct source rendering/fidelity remains unverified.
+The [architectural splat comparison](../evidence/realism-01/qualification/splat-fidelity/README.md)
+uses the same original CC BY 4.0 Hall capture in publisher PlayCanvas and Spark,
+with measured matching cameras. Recognizable features and native orbit/dolly are
+observed; five portable-preview checks pass. Common-mask RGB difference decreases
+from 22.52 to 20.59/255 with documented focal calibration; residual fidelity remains
+open. Its full 28.40 MiB asset exceeds the 4 MiB initial budget and needs at least
+23.83 seconds at 10 Mbps before decoding. Hidden/resume and complete resource
+reclamation remain unqualified. Use the existing free source for bounded streaming
+experiments; it establishes no Kyoto coverage.
 The complete DEM now has 2,042,977 decoded triangles, 6,019 retained route-near
 triangles and 1,434 covered profile samples. Explicit GSIGEO2011/JPGEO2024 tests
 pass 12 independent grid checks and 2,868 local-frame checks. Source epoch/model,
 independent control and pedestrian-floor/deck acceptance remain open. No candidate
 is admitted to the benchmark manifest or selected for production.
 
-Next work: complete referenced splat fidelity/streaming/resource-lifecycle checks
-and obtain capability, rights and price answers for the
-[prepared acquisition package](../sprints/realism-01/research/acquisition-package/README.md).
-The exact 54-edge route map, 60-feature GeoJSON, twelve handover checks, supplier
-response matrix and unsent Japanese inquiry are ready. They include the connecting
+Next work: qualify additional free Kyoto sources and implement bounded streaming /
+resource-lifecycle tests using the existing licensed Hall source. The
+[prepared acquisition package](../sprints/realism-01/research/acquisition-package/README.md)
+contains the exact 54-edge route map, 60-feature GeoJSON, twelve handover checks,
+supplier response matrix and unsent Japanese inquiry. They include the connecting
 streets, both lighting conditions, common raw inputs, independent holdouts,
 measured floors/control, additional route lengths and 20% refresh costs.
-External inquiry requires the user's authorization plus sender name/reply email;
-no spending or booking is implied. Nishiki's published filming application lead
+Supplier inquiries and purchases are outside the current free-source period; sender
+identity is no longer requested. Nishiki's published filming application lead
 time is one month; the applicable commercial reconstruction permission needs
 confirmation. Continue independent local work while awaiting external inputs.
 Physical Iris Xe/Chrome and M1/Safari devices, fresh participant cohorts and

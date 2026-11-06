@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "method": "Matched measured camera and original components; Pillow decoded JPEG RGB comparison; union foreground exceeds black background by 12 in any channel",
+  "inputs": [
+    {
+      "path": "publisher-initial.jpg",
+      "bytes": 124075,
+      "sha256": "69d28347923a2313cbf8fbf330713af2c33fe4c5f0f3d151cc7a5ba8f27227a1"
+    },
+    {
+      "path": "spark-initial.jpg",
+      "bytes": 105924,
+      "sha256": "7abb7472b88aec98a56d606af9bdcf0250051158cc3570abb83a385a7590ce88"
+    }
+  ],
+  "producer": {
+    "path": "experience/tools/splat-fidelity/compare-hall.py",
+    "bytes": 2543,
+    "sha256": "501bf532f59b7a715fdec3323ed2f875a8c238d652a73d202563d27d0406dde7"
+  },
+  "cameraAgreement": {
+    "worldMaxAbs": 2.5516451507279214e-08,
+    "projectionMaxAbs": 0
+  },
+  "canvasPixels": 921600,
+  "foregroundPixels": 200424,
+  "meanAbsoluteError255": 4.598886357060185,
+  "rootMeanSquaredError255": 13.437319268272107,
+  "foregroundMeanAbsoluteError255": 20.654607232666745,
+  "foregroundP95ChannelError255": 61.0,
+  "limitations": [
+    "Independent renderer agreement supports input/transform/rendering fidelity; no independent photograph or pedestrian-quality acceptance",
+    "JPEG, float precision, spherical harmonics and rasterization/filtering differences remain",
+    "No retrospective score threshold or release pass inferred"
+  ]
+}

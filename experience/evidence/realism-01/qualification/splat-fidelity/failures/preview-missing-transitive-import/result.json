@@ -1,0 +1,56 @@
+{
+  "startedAt": "2026-11-06T07:49:20.881Z",
+  "completed": false,
+  "source": {
+    "path": "artifacts/realism-01/splat-fidelity/local-preview/package-manifest.json",
+    "bytes": 3653,
+    "sha256": "93254289556c444205a52e5039567a2f6d606a5585274575c46aade4b1539e3a"
+  },
+  "producer": {
+    "path": "experience/tools/splat-fidelity/check-preview.mjs",
+    "bytes": 4590,
+    "sha256": "75181a193ec0f9e501a86700ceb3a1f6d26f291e77449dd59dbcd1bfe890156d"
+  },
+  "requests": [
+    {
+      "path": "artifacts/realism-01/splat-fidelity/local-preview/index.html",
+      "bytes": 1193,
+      "sha256": "06adbb08cee8a7ab763079c14904d688ae2b0df0f939c0375d58114ab16764db"
+    },
+    {
+      "path": "artifacts/realism-01/splat-fidelity/local-preview/viewer.html",
+      "bytes": 740,
+      "sha256": "3e8767da9a8b028ba64022958f02be83a29b46a80eff143d3eb36bc9d1a85cef"
+    },
+    {
+      "path": "artifacts/realism-01/splat-fidelity/local-preview/hall.js",
+      "bytes": 4321,
+      "sha256": "4295dd202015539d3ccbd5246fdb685e6bd6e4ea30099c79e26609ff12d98e72"
+    },
+    {
+      "path": "artifacts/realism-01/splat-fidelity/local-preview/three/build/three.module.js",
+      "bytes": 662772,
+      "sha256": "9052042d676cb0fdc1ddfefe193053f34b7ac0513a616fdac4535d49987812ea"
+    },
+    {
+      "path": "artifacts/realism-01/splat-fidelity/local-preview/three/examples/jsm/controls/OrbitControls.js",
+      "bytes": 40755,
+      "sha256": "3d79d07ecb686b4e5d93232eedab255331c1beef711e13164eaa1f68655a5f2b"
+    },
+    {
+      "path": "artifacts/realism-01/splat-fidelity/local-preview/spark.module.js",
+      "bytes": 2997944,
+      "sha256": "5ae86ab35d4ceb655db486dcc336299775bb314c280d7e5b39f64e4539f8e0e9"
+    },
+    {
+      "path": "artifacts/realism-01/splat-fidelity/local-preview/three/build/three.core.js",
+      "bytes": 1458113,
+      "sha256": "9edde002b066a9a05676a6127f67735b62baf399bdea529f2f7e31657da769e6"
+    }
+  ],
+  "externalRequests": [],
+  "errors": [
+    "ENOENT: no such file or directory, lstat '/workspace/TourGuideAI/artifacts/realism-01/splat-fidelity/local-preview/three/examples/jsm/postprocessing'"
+  ],
+  "finishedAt": "2026-11-06T07:52:21.950Z"
+}

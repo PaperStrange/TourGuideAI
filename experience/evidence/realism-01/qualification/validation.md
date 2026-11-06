@@ -116,3 +116,32 @@ without original download caches. Browser state, packages and raw sources remain
 ignored. Local reports are in `artifacts/realism-01/validation/appearance-surface/`.
 These checks establish research integrity; the original failed source capture and
 all physical/human acceptance dependencies retain their existing status.
+
+## Architectural splat fidelity and portable preview
+
+The [actual comparison board](splat-fidelity/README.md) preserves publisher,
+default Spark and calibrated Spark frames, with identical original components and
+matching measured camera matrices. Five pixel comparisons reproduce. The shared
+calibration domain contains 201,167 pixels; RGB mean absolute difference decreases
+from 22.5154 to 20.5869/255 with the documented focal adjustment. Residual rendering
+differences remain; these diagnostic values supply no retrospective pass threshold.
+
+The portable preview passes five actual browser checks: full source count, native
+camera movement, no external requests, no page errors and visible attribution.
+Its eleven requested local dependencies match the package manifest. The independent
+[retained verifier](../../../tools/splat-fidelity/verify.py) checks 59 evidence files,
+eight original components, historical producer snapshots, images, camera matrices,
+preview identities and the preserved failed hidden/resume observation. Full mode
+also rechecks 41 cached originals; retained-only mode needs no raw source cache.
+
+The original full-load source remains 28.40 MiB, above the 4 MiB startup budget.
+All observations used SwiftShader. Streaming, complete allocation/worker accounting,
+physical-device acceptance and Kyoto capture remain separate open requirements.
+
+The final staged-tree archive passes **40 Markdown documents, 461 relative targets,
+91 JSON documents, 143 qualification hashes and 63 producer hashes**. Independent
+splat verification also passes from that archive with all 59 evidence files and
+18 current producers, without raw downloads. The single public publisher camera
+configuration has an explicit Git ignore exception; browser profiles and caches
+remain excluded. Reports are retained locally under
+`artifacts/realism-01/validation/appearance-surface/fidelity-*.json`.

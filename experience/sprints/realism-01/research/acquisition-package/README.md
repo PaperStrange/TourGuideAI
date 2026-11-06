@@ -1,8 +1,10 @@
 # Kyoto capture quotation package
 
-Prepared 6 November 2026. **Ready for review; inquiries unsent; complete-route price unquoted.**
+Prepared 6 November 2026. **Reference package only: the user requires free sources
+for this period. No supplier outreach, quotation request or purchase is planned.**
 Owner: capture / technical art. R05 source acquisition supports both matched reconstruction
-trials and the approved six-sight route. No supplier has confirmed availability, exports or rights.
+trials and the approved six-sight route. The exact scope and handover checks also
+apply to free licensed sources. No supplier has confirmed availability, exports or rights.
 
 ![Exact quotation extent, with all six sight approaches](route-map.png)
 
@@ -81,15 +83,16 @@ page hashes and observed form fields. The existing
 and [Advalay receipt](../../../../evidence/realism-01/qualification/references/advalay-pricing-receipt.json)
 retain the pricing provenance. Raw pages remain in ignored research storage.
 
-## Release dependencies and next decision
+## Current free-source work and release dependencies
 
-1. Authorize sending the prepared quotation inquiry and approve the sender name / reply
-   email. This is the remaining user decision before external contact; it commits no
-   spending or capture date.
-2. Obtain completed capability, permission and price answers. Present the actual quote,
-   source coverage and rights to the user for purchasing approval.
-3. Receive and verify the capture against the checklist; register the shared capture
-   frame and reviewed floor/collision surface.
+1. Inspect additional freely available Kyoto material against the exact route,
+   source rights and handover criteria. Retain measured gaps when a source cannot
+   supply the required street-level detail, night references or pedestrian floors.
+2. Continue renderer fidelity and bounded streaming experiments using existing
+   openly licensed captures. Keep their location and test scope explicit.
+3. Verify qualifying free capture and measured floor/control inputs against the
+   checklist before admitting a Kyoto candidate. The unsent supplier inquiry is
+   parked; sender identity and outreach approval are no longer requested.
 4. Run the existing [matched trials](../../experiments/trial-definitions.json) with
    source-isolated holdouts, and complete physical-device and participant gates before
    choosing production representation. Capture receipt alone grants no release pass.

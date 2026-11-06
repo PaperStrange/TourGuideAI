@@ -6,6 +6,8 @@
 
 [Native texture density board](texture/README.md) · [Actual pedestrian coverage boards](pedestrian/README.md) · [Prepared full-route acquisition](../../../sprints/realism-01/research/acquisition-package/README.md)
 
+[Architectural splat comparison and local preview](splat-fidelity/README.md)
+
 The 73 acquired original tiles contain 2,269 object occurrences. Selecting source
 replacement levels leaves **1,965 occurrences / 119,514 triangles**; all 304
 excluded occurrences remain in the evidence. Actual geometry is indexed against
@@ -35,11 +37,11 @@ unverified. Source credit: **Kyoto City / MLIT Project PLATEAU, CC BY 4.0**.
 | Ground | 110 nearby LOD1 road polygons have zero source heights; one LOD3 sidewalk section near edges 50–54 | Horizontal coverage is complete; elevation, collision and access remain unverified |
 | Terrain follow-up | Complete covering DEM acquired/streamed; 6,019 route-near triangles and 1,434 covered samples | [Source profile](terrain/README.md); pedestrian floors and bridge deck remain unqualified |
 | Height registration | Explicit GSIGEO2011 and JPGEO2024 experiments; 12 grid and 2,868 local-frame checks pass | [Datum evidence](datum/README.md); source-model/epoch choice and independent controls remain open |
-| Splat engineering | Spark 2.4.0 / Three 0.186.1 local non-Kyoto sample; six engineering checks pass | [Actual views](splat-compatibility/README.md); source fidelity, Kyoto capture, streaming and quality acceptance remain unverified |
+| Splat engineering | Same-source Hall comparison through publisher PlayCanvas and Spark; native orbit/dolly and five portable-preview checks pass | [Three-image board](splat-fidelity/README.md); residual rendering differences, 28.40 MiB startup asset, hidden/resume and Kyoto qualification remain open |
 | Reference/capture qualification | Three reserved licensed photographs; two providers' published price items | Partial views and published prices; no full-route capture package or supplier quote |
 | Native texture sampling | 369 selected buildings; median 12.56 texels/m in the lower source-relative band; exact Mitsui 10.43 texels/m | [Measured board](texture/README.md); geometric sampling only, with photographic sharpness and visible frontage unverified |
 | Detailed pedestrian coverage | 1,986 selected triangles / 18 objects; zero overlap with all 54 current route edges, six anchors or the complete actor envelope | [Coverage and navigation boards](pedestrian/README.md); an explicit 5.250 m Pontochō approach revision candidate requires separate review |
-| Acquisition preparation | Exact 54-edge / six-sight scope, handover requirements, supplier response matrix and unsent Japanese inquiry | [Reviewable package](../../../sprints/realism-01/research/acquisition-package/README.md); outreach authorization, quote, rights and actual capture remain pending |
+| Acquisition preparation | Exact 54-edge / six-sight scope and handover checks; supplier inquiry parked | [Reviewable package](../../../sprints/realism-01/research/acquisition-package/README.md); user requires free sources for this period; qualifying free Kyoto inputs remain needed |
 
 The acquired PLATEAU surfaces need street-level repair/capture and ground
 registration before they can support the approved realism comparison. R04 source

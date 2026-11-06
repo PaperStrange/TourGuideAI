@@ -15,6 +15,7 @@
 | [Original texture-density board](qualification/texture/README.md) | 369 selected buildings; measured limits of close-walking source imagery |
 | [Pedestrian coverage and navigation boards](qualification/pedestrian/README.md) | Actual detailed-surface intersections with the complete route and player corridor; measured capture requirements |
 | [Prepared acquisition package](../../sprints/realism-01/research/acquisition-package/README.md) | Exact route map, scope, handover checks and unsent quotation inquiry |
+| [Architectural splat comparison](qualification/splat-fidelity/README.md) | Original publisher and Spark frames at matching cameras; measured differences, native inputs and portable-preview verification; full-load budget exceeded |
 
 The [Benchmark V1 protocol](../../sprints/realism-01/benchmark.md) and
 [lesson register](../../sprints/realism-01/lessons.md) define the remaining acceptance.

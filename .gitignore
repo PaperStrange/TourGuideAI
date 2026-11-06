@@ -593,3 +593,5 @@ iteration/viewer/index.html
 # .dsh/artifacts/raw/ is intentionally left excluded: it holds crawl caches, not cited sources.
 !experience/server/src/config.js
 !experience/src/home/service-config.js
+# 公开场景的相机与显示设置属于已审阅证据，保留其原始哈希。
+!experience/evidence/realism-01/qualification/splat-fidelity/knock-published-viewer-config.json

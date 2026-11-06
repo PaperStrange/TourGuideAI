@@ -1,0 +1,1294 @@
+{
+  "schemaVersion": 1,
+  "kind": "original-publisher-architecture-fidelity",
+  "startedAt": "2026-11-06T07:40:53.100Z",
+  "completed": true,
+  "toolSources": [
+    {
+      "path": "experience/tools/splat-fidelity/capture-hall.mjs",
+      "bytes": 10679,
+      "sha256": "5fd1ef905ccff3e3834400cd31769a0832a5da9b2e15b94526b5646f999b230c"
+    },
+    {
+      "path": "experience/tools/splat-fidelity/hall.html",
+      "bytes": 740,
+      "sha256": "3e8767da9a8b028ba64022958f02be83a29b46a80eff143d3eb36bc9d1a85cef"
+    },
+    {
+      "path": "experience/tools/splat-fidelity/hall.js",
+      "bytes": 4058,
+      "sha256": "a159af534e890abd84a5e14f2f6d2f5196a059a58448d5493befceb3f62a8972"
+    }
+  ],
+  "sourceInputs": [
+    {
+      "path": "experience/tools/splat-fidelity/hall.html",
+      "bytes": 740,
+      "sha256": "3e8767da9a8b028ba64022958f02be83a29b46a80eff143d3eb36bc9d1a85cef"
+    },
+    {
+      "path": "experience/tools/splat-fidelity/hall.js",
+      "bytes": 4058,
+      "sha256": "a159af534e890abd84a5e14f2f6d2f5196a059a58448d5493befceb3f62a8972"
+    },
+    {
+      "path": "artifacts/realism-01/splat-qualification/downloads/spark.module.js",
+      "bytes": 2997944,
+      "sha256": "5ae86ab35d4ceb655db486dcc336299775bb314c280d7e5b39f64e4539f8e0e9"
+    },
+    {
+      "path": "artifacts/realism-01/splat-fidelity/research/knock-original.sog",
+      "bytes": 29781498,
+      "sha256": "81d061bad6ba255689939847482836f7d70bf2e222abce04e6d81c2c976c6a71"
+    },
+    {
+      "path": "artifacts/realism-01/splat-fidelity/research/knock-published-viewer-config.json",
+      "bytes": 1533,
+      "sha256": "5c651fb871884d1298d0a205e210559e8b56765119178d258f4dfd9e6fe36dcc"
+    },
+    {
+      "path": "artifacts/realism-01/splat-fidelity/research/knock-viewer.html",
+      "bytes": 2800,
+      "sha256": "45963cb8284511e955021c7a0e6fbfbf3635ee202b283718f325509ad0002dfc"
+    },
+    {
+      "path": "artifacts/realism-01/splat-fidelity/research/supersplat-deployed-bundle.js",
+      "bytes": 2344815,
+      "sha256": "449a1f3b5eb3c9a2e6e9c7e78d73197123c25f797bc109be7da6022cbda0395c"
+    },
+    {
+      "path": "artifacts/realism-01/splat-fidelity/research/supersplat-deployed-style.css",
+      "bytes": 28374,
+      "sha256": "70a6946d89c6e0ae3c45e5b01ed388079dc4e20b47139c082847b2353fa6034b"
+    }
+  ],
+  "servedResources": [
+    {
+      "requestPath": "/publisher",
+      "path": "artifacts/realism-01/splat-fidelity/research/knock-viewer.html",
+      "bytes": 2800,
+      "sha256": "45963cb8284511e955021c7a0e6fbfbf3635ee202b283718f325509ad0002dfc"
+    },
+    {
+      "requestPath": "https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/splat/0ff2e6dc/v1/xl.webp",
+      "path": "artifacts/realism-01/splat-fidelity/research/knock-publisher-reference.webp",
+      "bytes": 82120,
+      "sha256": "3243cdbc844c775fa6fe6e8fcd83a13ed3304a0f1fc2e9ad4ab58285ee18f179"
+    },
+    {
+      "requestPath": "/assets/main-XaDM7_Ax.css",
+      "path": "artifacts/realism-01/splat-fidelity/research/supersplat-deployed-style.css",
+      "bytes": 28374,
+      "sha256": "70a6946d89c6e0ae3c45e5b01ed388079dc4e20b47139c082847b2353fa6034b"
+    },
+    {
+      "requestPath": "/assets/main-BNR-fDHi.js",
+      "path": "artifacts/realism-01/splat-fidelity/research/supersplat-deployed-bundle.js",
+      "bytes": 2344815,
+      "sha256": "449a1f3b5eb3c9a2e6e9c7e78d73197123c25f797bc109be7da6022cbda0395c"
+    },
+    {
+      "requestPath": "https://d28zzqy0iyovbz.cloudfront.net/0ff2e6dc/v1/meta.json",
+      "path": "artifacts/realism-01/splat-fidelity/research/knock-original/meta.json",
+      "bytes": 15566,
+      "sha256": "100c43e0589e402cb0ee7e248dca9bb8307a8fac02aa8b7ac5177e834fc278fb"
+    },
+    {
+      "requestPath": "https://d28zzqy0iyovbz.cloudfront.net/0ff2e6dc/v1/means_l.webp",
+      "path": "artifacts/realism-01/splat-fidelity/research/knock-original/means_l.webp",
+      "bytes": 5453828,
+      "sha256": "66c9cc46a8ba5379f1858d46f631b0c35813d212f38e1582323fd3e261e986fd"
+    },
+    {
+      "requestPath": "https://d28zzqy0iyovbz.cloudfront.net/0ff2e6dc/v1/means_u.webp",
+      "path": "artifacts/realism-01/splat-fidelity/research/knock-original/means_u.webp",
+      "bytes": 847152,
+      "sha256": "d6b4a9f402aa74671fe1ed221e8ad1607edadd6a51b069fdf8e0b189ac45d258"
+    },
+    {
+      "requestPath": "https://d28zzqy0iyovbz.cloudfront.net/0ff2e6dc/v1/quats.webp",
+      "path": "artifacts/realism-01/splat-fidelity/research/knock-original/quats.webp",
+      "bytes": 6259130,
+      "sha256": "01b293eda83e344886f37c40cd626fe7d29fabbe572e34ef01d2aed43bbfde73"
+    },
+    {
+      "requestPath": "https://d28zzqy0iyovbz.cloudfront.net/0ff2e6dc/v1/scales.webp",
+      "path": "artifacts/realism-01/splat-fidelity/research/knock-original/scales.webp",
+      "bytes": 5488972,
+      "sha256": "7bd79534897783659fb53e1cc1dc4e8ae5311f8cc16ea196376d041ab7602d53"
+    },
+    {
+      "requestPath": "https://d28zzqy0iyovbz.cloudfront.net/0ff2e6dc/v1/sh0.webp",
+      "path": "artifacts/realism-01/splat-fidelity/research/knock-original/sh0.webp",
+      "bytes": 6359182,
+      "sha256": "34e5f89bac57df6e1148b929213676ea24da5bfd69ed88e23e8e6d881a77beb2"
+    },
+    {
+      "requestPath": "https://d28zzqy0iyovbz.cloudfront.net/0ff2e6dc/v1/shN_centroids.webp",
+      "path": "artifacts/realism-01/splat-fidelity/research/knock-original/shN_centroids.webp",
+      "bytes": 2432490,
+      "sha256": "ed34c1c8773cd01d58a92d1d09249bded8d70be234f6089f8a1fdf87617dba8d"
+    },
+    {
+      "requestPath": "https://d28zzqy0iyovbz.cloudfront.net/0ff2e6dc/v1/shN_labels.webp",
+      "path": "artifacts/realism-01/splat-fidelity/research/knock-original/shN_labels.webp",
+      "bytes": 2924358,
+      "sha256": "79b783ad753489858a143d89043e61c6040cc530c93604f9eea4f9e78254e864"
+    },
+    {
+      "requestPath": "/",
+      "path": "experience/tools/splat-fidelity/hall.html",
+      "bytes": 740,
+      "sha256": "3e8767da9a8b028ba64022958f02be83a29b46a80eff143d3eb36bc9d1a85cef"
+    },
+    {
+      "requestPath": "/hall.js",
+      "path": "experience/tools/splat-fidelity/hall.js",
+      "bytes": 4058,
+      "sha256": "a159af534e890abd84a5e14f2f6d2f5196a059a58448d5493befceb3f62a8972"
+    },
+    {
+      "requestPath": "/three/build/three.module.js",
+      "path": "experience/node_modules/three/build/three.module.js",
+      "bytes": 662772,
+      "sha256": "9052042d676cb0fdc1ddfefe193053f34b7ac0513a616fdac4535d49987812ea"
+    },
+    {
+      "requestPath": "/three/examples/jsm/controls/OrbitControls.js",
+      "path": "experience/node_modules/three/examples/jsm/controls/OrbitControls.js",
+      "bytes": 40755,
+      "sha256": "3d79d07ecb686b4e5d93232eedab255331c1beef711e13164eaa1f68655a5f2b"
+    },
+    {
+      "requestPath": "/spark.module.js",
+      "path": "artifacts/realism-01/splat-qualification/downloads/spark.module.js",
+      "bytes": 2997944,
+      "sha256": "5ae86ab35d4ceb655db486dcc336299775bb314c280d7e5b39f64e4539f8e0e9"
+    },
+    {
+      "requestPath": "/three/build/three.core.js",
+      "path": "experience/node_modules/three/build/three.core.js",
+      "bytes": 1458113,
+      "sha256": "9edde002b066a9a05676a6127f67735b62baf399bdea529f2f7e31657da769e6"
+    },
+    {
+      "requestPath": "/three/examples/jsm/postprocessing/Pass.js",
+      "path": "experience/node_modules/three/examples/jsm/postprocessing/Pass.js",
+      "bytes": 4218,
+      "sha256": "444b409c235ead986893c472e720da1b779a56985c7d10b279c7944b52bd61c5"
+    },
+    {
+      "requestPath": "/hall-config.json",
+      "path": "artifacts/realism-01/splat-fidelity/research/knock-published-viewer-config.json",
+      "bytes": 1533,
+      "sha256": "5c651fb871884d1298d0a205e210559e8b56765119178d258f4dfd9e6fe36dcc"
+    },
+    {
+      "requestPath": "/hall.sog",
+      "path": "artifacts/realism-01/splat-fidelity/research/knock-original.sog",
+      "bytes": 29781498,
+      "sha256": "81d061bad6ba255689939847482836f7d70bf2e222abce04e6d81c2c976c6a71"
+    }
+  ],
+  "errors": [
+    {
+      "type": "console",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    }
+  ],
+  "blockedExternalRequests": [
+    "https://browser.sentry-cdn.com/10.29.0/bundle.min.js",
+    "Local publisher telemetry suppressed: /metrics"
+  ],
+  "captures": [
+    {
+      "path": "publisher-initial.jpg",
+      "bytes": 124075,
+      "sha256": "69d28347923a2313cbf8fbf330713af2c33fe4c5f0f3d151cc7a5ba8f27227a1",
+      "date": "2026-11-06T07:40:59.492Z",
+      "observation": {
+        "camera": {
+          "matrixWorld": [
+            0.7360970973968506,
+            0,
+            0.6768759489059448,
+            0,
+            0.08835004270076752,
+            0.9914448857307434,
+            -0.09607996046543121,
+            0,
+            -0.6710851788520813,
+            0.13052619993686676,
+            0.7297996878623962,
+            0,
+            -25.0948486328125,
+            6.711593151092529,
+            22.9617862701416,
+            1
+          ],
+          "projectionMatrix": [
+            1.3032253980636597,
+            0,
+            0,
+            0,
+            0,
+            1.3032253980636597,
+            0,
+            0,
+            0,
+            0,
+            -1.051974892616272,
+            -1,
+            0,
+            0,
+            -2.0519750118255615,
+            0
+          ],
+          "position": [
+            -25.0948486328125,
+            6.711593151092529,
+            22.9617862701416
+          ],
+          "fov": 75,
+          "horizontalFov": false
+        },
+        "viewport": [
+          960,
+          960
+        ],
+        "assetTransforms": [
+          [
+            -1,
+            1.2246468525851679e-16,
+            0,
+            0,
+            -1.2246468525851679e-16,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "graphics": {
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+        }
+      }
+    },
+    {
+      "path": "spark-initial.jpg",
+      "bytes": 88880,
+      "sha256": "45e2ea8aa0cf08a5a3637b9c4203833a213de5663751a4dbfc89974a385bfd54",
+      "date": "2026-11-06T07:41:38.281Z",
+      "observation": {
+        "ready": true,
+        "disposed": false,
+        "draws": 2,
+        "sourceCount": 1935275,
+        "viewport": [
+          960,
+          960
+        ],
+        "camera": {
+          "matrixWorld": [
+            0.7360971145553274,
+            0,
+            0.6768759398466762,
+            0,
+            0.08835004499508431,
+            0.9914448602142919,
+            -0.0960799599501886,
+            0,
+            -0.6710851715637052,
+            0.13052620102746906,
+            0.7297997008444501,
+            0,
+            -25.094848632812496,
+            6.711593151092529,
+            22.961786270141598,
+            1
+          ],
+          "projectionMatrix": [
+            1.3032253980636597,
+            0,
+            0,
+            0,
+            0,
+            1.3032253980636597,
+            0,
+            0,
+            0,
+            0,
+            -1.051974892616272,
+            -1,
+            0,
+            0,
+            -2.0519750118255615,
+            0
+          ],
+          "position": [
+            -25.094848632812496,
+            6.711593151092529,
+            22.961786270141598
+          ],
+          "target": [
+            -11.19845319602572,
+            4.008741439866708,
+            7.849568533379337
+          ]
+        },
+        "assetTransform": [
+          -1,
+          1.2246467991473532e-16,
+          0,
+          0,
+          -1.2246467991473532e-16,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "nativeInputs": [],
+        "visibility": [],
+        "visibilityState": "visible",
+        "graphics": {
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+        },
+        "memory": {
+          "geometries": 2,
+          "textures": 8
+        },
+        "render": {
+          "frame": 3,
+          "calls": 1,
+          "triangles": 3870550,
+          "points": 0,
+          "lines": 0
+        },
+        "observations": []
+      }
+    },
+    {
+      "path": "spark-orbit.jpg",
+      "bytes": 91423,
+      "sha256": "06aa80028ce5d737ef5b7dc1ca6324ed7087d30e4efff80731917dbe4601e024",
+      "date": "2026-11-06T07:43:20.307Z",
+      "observation": {
+        "ready": true,
+        "disposed": false,
+        "draws": 8,
+        "sourceCount": 1935275,
+        "viewport": [
+          960,
+          960
+        ],
+        "camera": {
+          "matrixWorld": [
+            0.4909037889277664,
+            0,
+            0.8712137912225465,
+            0,
+            0.16996538666514352,
+            0.980785278670162,
+            -0.09577058253796446,
+            0,
+            -0.8544736610054936,
+            0.1950903307288519,
+            0.48147120942375776,
+            0,
+            -28.892338244898447,
+            8.048545173548646,
+            17.819561316844347,
+            1
+          ],
+          "projectionMatrix": [
+            1.3032253980636597,
+            0,
+            0,
+            0,
+            0,
+            1.3032253980636597,
+            0,
+            0,
+            0,
+            0,
+            -1.051974892616272,
+            -1,
+            0,
+            0,
+            -2.0519750118255615,
+            0
+          ],
+          "position": [
+            -28.892338244898447,
+            8.048545173548646,
+            17.819561316844347
+          ],
+          "target": [
+            -11.19845319602572,
+            4.008741439866708,
+            7.849568533379336
+          ]
+        },
+        "assetTransform": [
+          -1,
+          1.2246467991473532e-16,
+          0,
+          0,
+          -1.2246467991473532e-16,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "nativeInputs": [
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "draws": 2
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "draws": 2
+          }
+        ],
+        "visibility": [],
+        "visibilityState": "visible",
+        "graphics": {
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+        },
+        "memory": {
+          "geometries": 2,
+          "textures": 10
+        },
+        "render": {
+          "frame": 12,
+          "calls": 1,
+          "triangles": 3870550,
+          "points": 0,
+          "lines": 0
+        },
+        "observations": []
+      }
+    },
+    {
+      "path": "spark-dolly.jpg",
+      "bytes": 111472,
+      "sha256": "dbfd81911967bf0774b9773c94d1fc14afc0f88bd128571f03673bd8426ee752",
+      "date": "2026-11-06T07:43:53.727Z",
+      "observation": {
+        "ready": true,
+        "disposed": false,
+        "draws": 10,
+        "sourceCount": 1935275,
+        "viewport": [
+          960,
+          960
+        ],
+        "camera": {
+          "matrixWorld": [
+            0.4909037889277664,
+            2.7755575615628914e-17,
+            0.8712137912225465,
+            0,
+            0.1699653866651436,
+            0.9807852786701619,
+            -0.09577058253796453,
+            0,
+            -0.8544736610054936,
+            0.19509033072885199,
+            0.48147120942375776,
+            0,
+            -27.33184537534492,
+            7.692259094861367,
+            16.94026869088211,
+            1
+          ],
+          "projectionMatrix": [
+            1.3032253980636597,
+            0,
+            0,
+            0,
+            0,
+            1.3032253980636597,
+            0,
+            0,
+            0,
+            0,
+            -1.051974892616272,
+            -1,
+            0,
+            0,
+            -2.0519750118255615,
+            0
+          ],
+          "position": [
+            -27.33184537534492,
+            7.692259094861367,
+            16.94026869088211
+          ],
+          "target": [
+            -11.19845319602572,
+            4.008741439866708,
+            7.849568533379336
+          ]
+        },
+        "assetTransform": [
+          -1,
+          1.2246467991473532e-16,
+          0,
+          0,
+          -1.2246467991473532e-16,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "nativeInputs": [
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "draws": 2
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "draws": 2
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "draws": 8
+          }
+        ],
+        "visibility": [],
+        "visibilityState": "visible",
+        "graphics": {
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+        },
+        "memory": {
+          "geometries": 2,
+          "textures": 10
+        },
+        "render": {
+          "frame": 15,
+          "calls": 1,
+          "triangles": 3870550,
+          "points": 0,
+          "lines": 0
+        },
+        "observations": []
+      }
+    }
+  ],
+  "limits": [
+    "Non-Kyoto engineering sample; original drone capture provides no complete pedestrian route coverage",
+    "Cached unchanged deployed publisher viewer and original components; publisher poster is a separate view without camera metadata",
+    "SwiftShader; no physical-device, night, continuous-route, resource-budget or user realism acceptance"
+  ],
+  "browser": "151.0.7922.173",
+  "publisher": {
+    "camera": {
+      "matrixWorld": [
+        0.7360970973968506,
+        0,
+        0.6768759489059448,
+        0,
+        0.08835004270076752,
+        0.9914448857307434,
+        -0.09607996046543121,
+        0,
+        -0.6710851788520813,
+        0.13052619993686676,
+        0.7297996878623962,
+        0,
+        -25.0948486328125,
+        6.711593151092529,
+        22.9617862701416,
+        1
+      ],
+      "projectionMatrix": [
+        1.3032253980636597,
+        0,
+        0,
+        0,
+        0,
+        1.3032253980636597,
+        0,
+        0,
+        0,
+        0,
+        -1.051974892616272,
+        -1,
+        0,
+        0,
+        -2.0519750118255615,
+        0
+      ],
+      "position": [
+        -25.0948486328125,
+        6.711593151092529,
+        22.9617862701416
+      ],
+      "fov": 75,
+      "horizontalFov": false
+    },
+    "viewport": [
+      960,
+      960
+    ],
+    "assetTransforms": [
+      [
+        -1,
+        1.2246468525851679e-16,
+        0,
+        0,
+        -1.2246468525851679e-16,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "graphics": {
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    }
+  },
+  "publisherCameraAfterCapture": [
+    0.7360970973968506,
+    0,
+    0.6768759489059448,
+    0,
+    0.08835004270076752,
+    0.9914448857307434,
+    -0.09607996046543121,
+    0,
+    -0.6710851788520813,
+    0.13052619993686676,
+    0.7297996878623962,
+    0,
+    -25.0948486328125,
+    6.711593151092529,
+    22.9617862701416,
+    1
+  ],
+  "before": {
+    "ready": true,
+    "disposed": false,
+    "draws": 2,
+    "sourceCount": 1935275,
+    "viewport": [
+      960,
+      960
+    ],
+    "camera": {
+      "matrixWorld": [
+        0.7360971145553274,
+        0,
+        0.6768759398466762,
+        0,
+        0.08835004499508431,
+        0.9914448602142919,
+        -0.0960799599501886,
+        0,
+        -0.6710851715637052,
+        0.13052620102746906,
+        0.7297997008444501,
+        0,
+        -25.094848632812496,
+        6.711593151092529,
+        22.961786270141598,
+        1
+      ],
+      "projectionMatrix": [
+        1.3032253980636597,
+        0,
+        0,
+        0,
+        0,
+        1.3032253980636597,
+        0,
+        0,
+        0,
+        0,
+        -1.051974892616272,
+        -1,
+        0,
+        0,
+        -2.0519750118255615,
+        0
+      ],
+      "position": [
+        -25.094848632812496,
+        6.711593151092529,
+        22.961786270141598
+      ],
+      "target": [
+        -11.19845319602572,
+        4.008741439866708,
+        7.849568533379337
+      ]
+    },
+    "assetTransform": [
+      -1,
+      1.2246467991473532e-16,
+      0,
+      0,
+      -1.2246467991473532e-16,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "nativeInputs": [],
+    "visibility": [],
+    "visibilityState": "visible",
+    "graphics": {
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    "memory": {
+      "geometries": 2,
+      "textures": 8
+    },
+    "render": {
+      "frame": 3,
+      "calls": 1,
+      "triangles": 3870550,
+      "points": 0,
+      "lines": 0
+    },
+    "observations": []
+  },
+  "afterOrbit": {
+    "ready": true,
+    "disposed": false,
+    "draws": 8,
+    "sourceCount": 1935275,
+    "viewport": [
+      960,
+      960
+    ],
+    "camera": {
+      "matrixWorld": [
+        0.4909037889277664,
+        0,
+        0.8712137912225465,
+        0,
+        0.16996538666514352,
+        0.980785278670162,
+        -0.09577058253796446,
+        0,
+        -0.8544736610054936,
+        0.1950903307288519,
+        0.48147120942375776,
+        0,
+        -28.892338244898447,
+        8.048545173548646,
+        17.819561316844347,
+        1
+      ],
+      "projectionMatrix": [
+        1.3032253980636597,
+        0,
+        0,
+        0,
+        0,
+        1.3032253980636597,
+        0,
+        0,
+        0,
+        0,
+        -1.051974892616272,
+        -1,
+        0,
+        0,
+        -2.0519750118255615,
+        0
+      ],
+      "position": [
+        -28.892338244898447,
+        8.048545173548646,
+        17.819561316844347
+      ],
+      "target": [
+        -11.19845319602572,
+        4.008741439866708,
+        7.849568533379336
+      ]
+    },
+    "assetTransform": [
+      -1,
+      1.2246467991473532e-16,
+      0,
+      0,
+      -1.2246467991473532e-16,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "nativeInputs": [
+      {
+        "type": "pointerdown",
+        "trusted": true,
+        "draws": 2
+      },
+      {
+        "type": "pointerup",
+        "trusted": true,
+        "draws": 2
+      }
+    ],
+    "visibility": [],
+    "visibilityState": "visible",
+    "graphics": {
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    "memory": {
+      "geometries": 2,
+      "textures": 10
+    },
+    "render": {
+      "frame": 12,
+      "calls": 1,
+      "triangles": 3870550,
+      "points": 0,
+      "lines": 0
+    },
+    "observations": []
+  },
+  "afterDolly": {
+    "ready": true,
+    "disposed": false,
+    "draws": 10,
+    "sourceCount": 1935275,
+    "viewport": [
+      960,
+      960
+    ],
+    "camera": {
+      "matrixWorld": [
+        0.4909037889277664,
+        2.7755575615628914e-17,
+        0.8712137912225465,
+        0,
+        0.1699653866651436,
+        0.9807852786701619,
+        -0.09577058253796453,
+        0,
+        -0.8544736610054936,
+        0.19509033072885199,
+        0.48147120942375776,
+        0,
+        -27.33184537534492,
+        7.692259094861367,
+        16.94026869088211,
+        1
+      ],
+      "projectionMatrix": [
+        1.3032253980636597,
+        0,
+        0,
+        0,
+        0,
+        1.3032253980636597,
+        0,
+        0,
+        0,
+        0,
+        -1.051974892616272,
+        -1,
+        0,
+        0,
+        -2.0519750118255615,
+        0
+      ],
+      "position": [
+        -27.33184537534492,
+        7.692259094861367,
+        16.94026869088211
+      ],
+      "target": [
+        -11.19845319602572,
+        4.008741439866708,
+        7.849568533379336
+      ]
+    },
+    "assetTransform": [
+      -1,
+      1.2246467991473532e-16,
+      0,
+      0,
+      -1.2246467991473532e-16,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "nativeInputs": [
+      {
+        "type": "pointerdown",
+        "trusted": true,
+        "draws": 2
+      },
+      {
+        "type": "pointerup",
+        "trusted": true,
+        "draws": 2
+      },
+      {
+        "type": "wheel",
+        "trusted": true,
+        "draws": 8
+      }
+    ],
+    "visibility": [],
+    "visibilityState": "visible",
+    "graphics": {
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    "memory": {
+      "geometries": 2,
+      "textures": 10
+    },
+    "render": {
+      "frame": 15,
+      "calls": 1,
+      "triangles": 3870550,
+      "points": 0,
+      "lines": 0
+    },
+    "observations": []
+  },
+  "background": {
+    "ready": true,
+    "disposed": false,
+    "draws": 10,
+    "sourceCount": 1935275,
+    "viewport": [
+      960,
+      960
+    ],
+    "camera": {
+      "matrixWorld": [
+        0.4909037889277664,
+        2.7755575615628914e-17,
+        0.8712137912225465,
+        0,
+        0.1699653866651436,
+        0.9807852786701619,
+        -0.09577058253796453,
+        0,
+        -0.8544736610054936,
+        0.19509033072885199,
+        0.48147120942375776,
+        0,
+        -27.33184537534492,
+        7.692259094861367,
+        16.94026869088211,
+        1
+      ],
+      "projectionMatrix": [
+        1.3032253980636597,
+        0,
+        0,
+        0,
+        0,
+        1.3032253980636597,
+        0,
+        0,
+        0,
+        0,
+        -1.051974892616272,
+        -1,
+        0,
+        0,
+        -2.0519750118255615,
+        0
+      ],
+      "position": [
+        -27.33184537534492,
+        7.692259094861367,
+        16.94026869088211
+      ],
+      "target": [
+        -11.19845319602572,
+        4.008741439866708,
+        7.849568533379336
+      ]
+    },
+    "assetTransform": [
+      -1,
+      1.2246467991473532e-16,
+      0,
+      0,
+      -1.2246467991473532e-16,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "nativeInputs": [
+      {
+        "type": "pointerdown",
+        "trusted": true,
+        "draws": 2
+      },
+      {
+        "type": "pointerup",
+        "trusted": true,
+        "draws": 2
+      },
+      {
+        "type": "wheel",
+        "trusted": true,
+        "draws": 8
+      }
+    ],
+    "visibility": [],
+    "visibilityState": "visible",
+    "graphics": {
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    "memory": {
+      "geometries": 2,
+      "textures": 10
+    },
+    "render": {
+      "frame": 15,
+      "calls": 1,
+      "triangles": 3870550,
+      "points": 0,
+      "lines": 0
+    },
+    "observations": []
+  },
+  "resumed": {
+    "ready": true,
+    "disposed": false,
+    "draws": 10,
+    "sourceCount": 1935275,
+    "viewport": [
+      960,
+      960
+    ],
+    "camera": {
+      "matrixWorld": [
+        0.4909037889277664,
+        2.7755575615628914e-17,
+        0.8712137912225465,
+        0,
+        0.1699653866651436,
+        0.9807852786701619,
+        -0.09577058253796453,
+        0,
+        -0.8544736610054936,
+        0.19509033072885199,
+        0.48147120942375776,
+        0,
+        -27.33184537534492,
+        7.692259094861367,
+        16.94026869088211,
+        1
+      ],
+      "projectionMatrix": [
+        1.3032253980636597,
+        0,
+        0,
+        0,
+        0,
+        1.3032253980636597,
+        0,
+        0,
+        0,
+        0,
+        -1.051974892616272,
+        -1,
+        0,
+        0,
+        -2.0519750118255615,
+        0
+      ],
+      "position": [
+        -27.33184537534492,
+        7.692259094861367,
+        16.94026869088211
+      ],
+      "target": [
+        -11.19845319602572,
+        4.008741439866708,
+        7.849568533379336
+      ]
+    },
+    "assetTransform": [
+      -1,
+      1.2246467991473532e-16,
+      0,
+      0,
+      -1.2246467991473532e-16,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "nativeInputs": [
+      {
+        "type": "pointerdown",
+        "trusted": true,
+        "draws": 2
+      },
+      {
+        "type": "pointerup",
+        "trusted": true,
+        "draws": 2
+      },
+      {
+        "type": "wheel",
+        "trusted": true,
+        "draws": 8
+      }
+    ],
+    "visibility": [],
+    "visibilityState": "visible",
+    "graphics": {
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    "memory": {
+      "geometries": 2,
+      "textures": 10
+    },
+    "render": {
+      "frame": 15,
+      "calls": 1,
+      "triangles": 3870550,
+      "points": 0,
+      "lines": 0
+    },
+    "observations": []
+  },
+  "disposed": {
+    "disposed": true,
+    "observations": [
+      {
+        "state": "before-dispose",
+        "memory": {
+          "geometries": 2,
+          "textures": 10
+        }
+      },
+      {
+        "state": "after-dispose",
+        "memory": {
+          "geometries": 1,
+          "textures": 1
+        }
+      }
+    ],
+    "completeMemoryAccounting": false
+  },
+  "cameraAgreement": {
+    "worldMaxAbs": 2.5516451507279214e-8,
+    "projectionMaxAbs": 0
+  },
+  "checks": [
+    {
+      "id": "publisher-camera-stable-during-capture",
+      "pass": true
+    },
+    {
+      "id": "original-splat-count",
+      "pass": true
+    },
+    {
+      "id": "publisher-camera-match",
+      "pass": true
+    },
+    {
+      "id": "native-orbit",
+      "pass": true
+    },
+    {
+      "id": "native-dolly",
+      "pass": true
+    },
+    {
+      "id": "dispose",
+      "pass": true
+    },
+    {
+      "id": "native-hidden-resume-observed",
+      "pass": false
+    }
+  ],
+  "finishedAt": "2026-11-06T07:43:54.518Z"
+}

@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "method": "Pillow JPEG decode, NumPy raw RGB differences; union foreground differs more than 12 from declared clear color in any channel",
+  "limitations": [
+    "JPEG compression and renderer rasterization differences are present",
+    "Agreement diagnoses renderer-specific failure only; original capture quality and photo fidelity remain unproven",
+    "No release acceptance threshold"
+  ],
+  "producer": {
+    "path": "experience/tools/splat-fidelity/compare.py",
+    "bytes": 2363,
+    "sha256": "dd061a9af967428e7f979905d2802f0bc67512103f894a5cefbf0887a51cc183"
+  },
+  "comparisons": [
+    {
+      "pose": "initial",
+      "inputs": [
+        {
+          "path": "spark-initial.jpg",
+          "bytes": 38896,
+          "sha256": "f52ecf04c207e1f1e6767c58d9d340ca78b68188c21f88dca8d0b0050f0452df"
+        },
+        {
+          "path": "independent-initial.jpg",
+          "bytes": 40265,
+          "sha256": "e4466ccf3f6aa1933e97befbcb6c6d868876457ed1b85defc98f41e75000ba4c"
+        }
+      ],
+      "canvasPixels": 1347840,
+      "foregroundPixels": 152776,
+      "meanAbsoluteError255": 0.2382261000316556,
+      "rootMeanSquaredError255": 1.2576972962205748,
+      "foregroundMeanAbsoluteError255": 1.9437542545949626,
+      "foregroundP95ChannelError255": 6.0
+    },
+    {
+      "pose": "orbit",
+      "inputs": [
+        {
+          "path": "spark-orbit.jpg",
+          "bytes": 33236,
+          "sha256": "551ae56d9c6f0cae581c6bb0a0e640e98dc176d64c763b9755364b381b060ba1"
+        },
+        {
+          "path": "independent-orbit.jpg",
+          "bytes": 34428,
+          "sha256": "3bb2c0dbbfd4b8e6bb607d67dadb83c7e711707843e4ad70526020f67d722a0c"
+        }
+      ],
+      "canvasPixels": 1347840,
+      "foregroundPixels": 117665,
+      "meanAbsoluteError255": 0.19549674540993986,
+      "rootMeanSquaredError255": 1.1256348012042707,
+      "foregroundMeanAbsoluteError255": 2.0915395402201162,
+      "foregroundP95ChannelError255": 7.0
+    }
+  ]
+}

@@ -1,8 +1,9 @@
 # Realism 01 · Kyoto route
 
 6 November 2026 · Sprint owner: delivery lead · Status: Benchmark V1, original
-source inspection and detailed texture/pedestrian audits delivered; matched Kyoto
-capture and full-route acceptance remain open.
+source inspection, detailed texture/pedestrian audits and a matched architectural
+splat diagnostic delivered. Free sources only for the current period; matched
+Kyoto capture and full-route acceptance remain open.
 
 Deliver the complete **1,353.444 m, six-sight Shijō East walk**, with recognizable
 architecture, continuous navigation and a coherent English/Chinese journey in
@@ -24,7 +25,8 @@ Production renderer selection and milestone acceptance remain open.
 | [Original-source visual board](../../evidence/realism-01/qualification/README.md) | 73 decoded tiles, 18 actual browser captures, six-sight identity and ground review |
 | [Licensing receipts](research/licensing-receipts.json) | Source dates, rights, hashes and limitations |
 | [Capture requirements](research/capture-requirements.md) | Itemized acquisition proposal and public price references; complete-route quote remains unavailable |
-| [Prepared acquisition package](research/acquisition-package/README.md) | Exact route map, supplier response matrix, handover checks and unsent Japanese quotation inquiry |
+| [Prepared acquisition package](research/acquisition-package/README.md) | Exact route map and source handover checks; supplier inquiry parked during the free-source period |
+| [Architectural splat comparison](../../evidence/realism-01/qualification/splat-fidelity/README.md) | Same-source publisher/Spark frames, native interactions, tested portable preview and startup-budget limit |
 | [Controlled trials](experiments/README.md) | Matched inputs, routes, viewpoints and comparison protocol |
 | [Parallel candidate status](experiments/candidate-status.md) | Mesh, splat and shared-ground evidence; explicit qualification dependencies |
 | [Evidence store](../../evidence/realism-01/README.md) | Reviewed artifacts and validation records |

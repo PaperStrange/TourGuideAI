@@ -1,0 +1,103 @@
+{
+  "record_id": "R06-knock-original-source-fidelity",
+  "retrieved_at": "2026-11-06T07:32:54Z",
+  "purpose": "Bounded engineering source-fidelity test inside the approved splat family; no Kyoto or full-route qualification",
+  "source": {
+    "title": "Knock Community Hall",
+    "author": "scbenoit",
+    "publisher_page": "https://superspl.at/scene/0ff2e6dc",
+    "publisher_viewer": "https://superspl.at/s?id=0ff2e6dc",
+    "capture_method": "Publisher describes a Phantom 4 drone capture, 185 images, Metashape 2.3.0 COLMAP data, Brush 14000 iterations and SuperSplat cleanup.",
+    "location": "Publisher identifies Knock Community Hall and links the Innisfil municipal Knock Community Centre page. Exact coordinates were not independently verified.",
+    "location_source": "https://www.innisfil.ca/community-recreation/facilities/banquet-halls-meeting-rooms#knock-community-centre-–-banquet-hall",
+    "capture_date": null,
+    "publication_date": "Publisher page displays relative age 5mo ago; exact publication and capture dates remain unverified.",
+    "rights": "Publisher page displays CC BY 4.0; independent official PlayCanvas asset sidecar explicitly identifies scbenoit, same source scene, CC-BY-4.0 and attribution requirement.",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "sidecar_url": "https://raw.githubusercontent.com/playcanvas/engine/217cc5bc3a28e66798d9ce3645355f2ea058be74/examples/assets/splats/knock-community-hall.txt",
+    "attribution": "Knock Community Hall by scbenoit, https://superspl.at/scene/0ff2e6dc, licensed CC BY 4.0. Original SOG components repackaged unchanged in a ZIP container for local engineering comparison."
+  },
+  "recommended_asset": {
+    "path": "knock-original.sog",
+    "bytes": 29781498,
+    "sha256": "81d061bad6ba255689939847482836f7d70bf2e222abce04e6d81c2c976c6a71",
+    "original_metadata_url": "https://d28zzqy0iyovbz.cloudfront.net/0ff2e6dc/v1/meta.json",
+    "splat_count": 1935275,
+    "source_generator": "splat-transform v2.2.1",
+    "packaging_method": "Python standard-library zipfile ZIP_STORED, each original source byte retained unchanged; source and ZIP-entry SHA256 equality verified for all eight entries.",
+    "receipt_manifest": "knock-original-acquisition.json",
+    "receipt_manifest_sha256": "8803b560856a180bc1b7cd107af395630e2b6d03a7476d6fc7a2877cf71e7ff6"
+  },
+  "published_default_camera": {
+    "extraction_method": "BeautifulSoup extracts native viewer application/json script; Python json decodes original publisher settings.",
+    "config_path": "knock-published-viewer-config.json",
+    "config_sha256": "5c651fb871884d1298d0a205e210559e8b56765119178d258f4dfd9e6fe36dcc",
+    "position": [-25.0948486328125, 6.711593151092529, 22.9617862701416],
+    "target": [-11.19845319602572, 4.008741439866709, 7.849568533379339],
+    "fov_degrees": 75,
+    "fov_axis": "Horizontal when viewport width exceeds height; vertical otherwise. Square reference comparison uses vertical 75 degrees.",
+    "entity_rotation_degrees_xyz": [0, 0, 180],
+    "entity_translation": [0, 0, 0],
+    "entity_scale": [1, 1, 1],
+    "background_rgb": [0, 0, 0],
+    "tonemapping": "none",
+    "post_effects": "Disabled in published config",
+    "deployed_bundle_url": "https://superspl.at/assets/main-BNR-fDHi.js",
+    "deployed_bundle_path": "supersplat-deployed-bundle.js",
+    "deployed_bundle_sha256": "449a1f3b5eb3c9a2e6e9c7e78d73197123c25f797bc109be7da6022cbda0395c",
+    "deployed_rotation_evidence_byte_offset": 2333531,
+    "deployed_fov_evidence_byte_offset": 2321716,
+    "readable_upstream_revision": "a66496e647c58f34bdded4e104adbe4ac52fc423",
+    "readable_rotation_evidence": "supersplat-index-source.txt line 93",
+    "readable_fov_evidence": "supersplat-viewer-source.txt lines 376-378"
+  },
+  "publisher_reference": {
+    "path": "knock-publisher-reference.webp",
+    "url": "https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/splat/0ff2e6dc/v1/xl.webp",
+    "bytes": 82120,
+    "sha256": "3243cdbc844c775fa6fe6e8fcd83a13ed3304a0f1fc2e9ad4ab58285ee18f179",
+    "resolution": [960, 960],
+    "method": "Original publisher image downloaded unchanged and visually inspected.",
+    "status": "Published rendering of the captured architectural subject; this is not an independent ground-truth photograph.",
+    "rights": "Model licensing is explicit. A separate license grant for this publisher-generated poster was not located; retain as ignored research evidence and link to the source, without assuming permission for product asset reuse.",
+    "camera_status": "Poster camera is not embedded in image metadata or publisher viewer config. The default native viewer pose may differ. Do not compute or claim matched-camera pixel parity against this poster without a native viewer capture at the same pose.",
+    "visible_features": "Red-brick hall, gabled tiled roof, white bell tower, front door and steps, ramp railings, road edge, grass and trees; isolated capture boundaries and black background remain visible."
+  },
+  "retained_incompatible_reference_pair": {
+    "path": "knock-community-hall.sog",
+    "url": "https://raw.githubusercontent.com/playcanvas/engine/217cc5bc3a28e66798d9ce3645355f2ea058be74/examples/assets/splats/knock-community-hall.sog",
+    "bytes": 27830709,
+    "sha256": "2c9ef67e619878cdb85d8f972cc6b1b8a8c76cbd7b4ed1137ac97bbd78785202",
+    "splat_count": 1935100,
+    "source_generator": "splat-transform v2.7.1",
+    "reason": "Official repo sample has different count, bounds and codebooks from publisher source; original publisher camera cannot be assumed to apply. Only repo example is deliberately cropped/refracted glass-refraction, unsuitable as a neutral source-fidelity image reference."
+  },
+  "native_runtime_replay": {
+    "style_url": "https://superspl.at/assets/main-XaDM7_Ax.css",
+    "style_path": "supersplat-deployed-style.css",
+    "style_bytes": 28374,
+    "style_sha256": "70a6946d89c6e0ae3c45e5b01ed388079dc4e20b47139c082847b2353fa6034b",
+    "upstream_viewer_license_path": "supersplat-viewer-license.txt",
+    "upstream_viewer_license_url": "https://raw.githubusercontent.com/playcanvas/supersplat-viewer/a66496e647c58f34bdded4e104adbe4ac52fc423/LICENSE",
+    "upstream_viewer_license_sha256": "44716a2a1040df078772702d677d46f7d97f40c2375bf8221d4b3b741143f823",
+    "upstream_license": "MIT, Copyright (c) 2011-2026 PlayCanvas Ltd.; retain copyright and permission notices with copies.",
+    "engine_version_from_deployed_bundle": "2.23.3, revision b7655d8",
+    "engine_license_path": "playcanvas-license.txt",
+    "engine_license_sha256": "42fa51ddd556be151a29f381fb97ee975825dcc454e805ea3ea9c079cca04d34",
+    "rights_limit": "MIT licenses establish upstream viewer and engine rights. Exact deployed bundle includes a host bootstrap wrapper and no bundled notice; a separate redistribution license for that wrapper has not been established. Keep deployed artifacts ignored and use for local research replay rather than product distribution.",
+    "dependency_inspection": "Acorn AST and es-module-lexer inspected the complete deployed script. No static module imports. Two dynamic runtime-variable shader compiler imports exist. CSS contains no external url() references.",
+    "optional_asset_references": [
+      "/assets/gsaf-decoder-BcEBYZsU.wasm (animated GSAF only)",
+      "draco.wasm.js and draco.wasm.wasm (mesh decoding only)",
+      "https://cdn.jsdelivr.net/npm/@webxr-input-profiles/assets/dist/profiles (WebXR only)"
+    ],
+    "telemetry": "Host wrapper sends first-frame and first-interaction beacons to relative /metrics; publisher HTML loads Sentry. Local independent replay should intercept these and deny nonlocal requests, recording the transport substitutions."
+  },
+  "limitations": [
+    "No native browser rendering, interaction, lifecycle or latency measurements were performed by this research subtask.",
+    "No Kyoto streets or six-sight route content is supplied.",
+    "No same-camera independent renderer comparison has yet been performed.",
+    "CC BY 4.0 source attribution is required in any redistributed derivative; commercial use does not remove attribution obligations.",
+    "Approximate acquired network input is 62.3 MB; local disk usage is larger because original components are duplicated inside the reproducible ZIP archive."
+  ]
+}

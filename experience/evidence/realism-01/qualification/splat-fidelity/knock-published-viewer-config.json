@@ -1,0 +1,73 @@
+{
+  "settings": {
+    "version": 2,
+    "tonemapping": "none",
+    "highPrecisionRendering": false,
+    "background": {
+      "color": [
+        0,
+        0,
+        0
+      ]
+    },
+    "postEffectSettings": {
+      "sharpness": {
+        "enabled": false,
+        "amount": 0
+      },
+      "bloom": {
+        "enabled": false,
+        "intensity": 1,
+        "blurLevel": 2
+      },
+      "grading": {
+        "enabled": false,
+        "brightness": 1,
+        "contrast": 1,
+        "saturation": 1,
+        "tint": [
+          1,
+          1,
+          1
+        ]
+      },
+      "vignette": {
+        "enabled": false,
+        "intensity": 0.5,
+        "inner": 0.3,
+        "outer": 0.75,
+        "curvature": 1
+      },
+      "fringing": {
+        "enabled": false,
+        "intensity": 0.5
+      }
+    },
+    "animTracks": [],
+    "cameras": [
+      {
+        "initial": {
+          "position": [
+            -25.0948486328125,
+            6.711593151092529,
+            22.9617862701416
+          ],
+          "target": [
+            -11.19845319602572,
+            4.008741439866709,
+            7.849568533379339
+          ],
+          "fov": 75
+        }
+      }
+    ],
+    "annotations": [],
+    "startMode": "default"
+  },
+  "contentUrl": "https://d28zzqy0iyovbz.cloudfront.net/0ff2e6dc/v1/meta.json",
+  "telemetry": {
+    "splatHash": "0ff2e6dc",
+    "viewerSessionId": "dc3da3bb-2c65-4cc8-9099-c2190d53108b"
+  },
+  "posterUrl": "https://s3-eu-west-1.amazonaws.com/images.playcanvas.com/splat/0ff2e6dc/v1/xl.webp"
+}
