@@ -29,6 +29,10 @@ def main():
             shutil.copytree(snapshots, target / "tool-snapshot", dirs_exist_ok=True)
     shutil.copy2(RAW / "run-02.log", DESTINATION / "failures/local-socket-denied.txt")
     shutil.copy2(RAW / "calibration-comparison.json", DESTINATION / "hall/calibration-comparison.json")
+    (DESTINATION / "portability").mkdir(exist_ok=True)
+    shutil.copy2(RAW / "portability-acquisition.json", DESTINATION / "portability/acquisition.json")
+    shutil.copy2(RAW / "portability-preview/package-manifest.json", DESTINATION / "portability/package-manifest.json")
+    shutil.copy2(RAW / "portability-check.json", DESTINATION / "portability/check.json")
     for name in ("knock-source-receipt.json", "knock-original-acquisition.json", "knock-published-viewer-config.json", "knock-credit.txt", "supersplat-viewer-license.txt", "playcanvas-license.txt"):
         shutil.copy2(RAW / "research" / name, DESTINATION / name)
     for name in ("download-receipts.json", "independent-package.json", "independent-license.txt"):

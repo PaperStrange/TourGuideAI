@@ -305,6 +305,62 @@ def verify(root, retained_only=False):
     gate(preview, "native-interaction", native_movement(preview["before"], preview["after"], "pointerdown"))
     require(checks(preview)["attribution-visible"] is True and preview["before"]["rendererSettings"]["focalAdjustment"] == 2, "Preview attribution/calibration observation differs")
 
+    portability = folder / "portability"
+    portable_acquisition = read(portability / "acquisition.json")
+    portable_package = read(portability / "package-manifest.json")
+    portable_check = read(portability / "check.json")
+    producer(portable_check["producer"])
+    require(portable_acquisition["mode"] == "model-preview" and portable_acquisition["offline"] is False and
+            portable_acquisition["publisherReplayAcquired"] is False, "Portable model acquisition scope differs")
+    acquired_components = {record["path"]: record for record in portable_acquisition["receipts"]}
+    expected_components = {entry["source_path"] for entry in layout["entries"]}
+    require(set(acquired_components) == expected_components and len(portable_acquisition["receipts"]) ==
+            portable_acquisition["verifiedFiles"] == 8, "Portable source component inventory differs")
+    for name, record in acquired_components.items():
+        same_identity(record, source_files[name], "Portable original component")
+        require(record["url"] == source_files[name]["url"] and record["method"] == "unchanged-https-response", "Portable source URL or fresh-acquisition method differs")
+    component_bytes = sum(record["bytes"] for record in acquired_components.values())
+    require(component_bytes == portable_acquisition["sourceBytes"] == portable_acquisition["downloadedBytes"] <=
+            portable_acquisition["networkLimitBytes"] == 40000000, "Portable network byte accounting differs")
+    require(portable_acquisition["archiveBytes"] == layout["bytes"] <= portable_acquisition["archiveLimitBytes"] == 30000000 and
+            portable_acquisition["archiveSha256"] == layout["sha256"], "Portable archive identity/budget differs")
+    require(portable_acquisition["configSha256"] == receipt["published_default_camera"]["config_sha256"], "Portable configuration binding differs")
+    retained_inputs = {record["path"]: record for record in portable_acquisition["retainedInputs"]}
+    expected_metadata = {"knock-published-viewer-config.json", "knock-credit.txt", "knock-source-receipt.json"}
+    require(set(retained_inputs) == expected_metadata and len(portable_acquisition["retainedInputs"]) == 3, "Portable retained metadata inventory differs")
+    for name, record in retained_inputs.items():
+        require(record["source"] == str((folder / name).relative_to(root)) and
+                record["method"] == "unchanged-hash-verified-retained-public-evidence", "Portable metadata source differs")
+        identity(folder / name, record)
+    portable_files = {record["path"]: record for record in portable_package["files"]}
+    require(set(portable_files) == set(package_files) and len(portable_package["files"]) == len(package_files) == 16, "Portable browser-tested file inventory differs")
+    portable_cache = Path(portable_files["hall.sog"]["source"]).parent
+    portable_model_paths = {"hall.sog": layout["archive"], "hall-config.json": "knock-published-viewer-config.json",
+                            "licenses/source.txt": "knock-credit.txt", "source-receipt.json": "knock-source-receipt.json"}
+    for name, record in portable_files.items():
+        same_identity(record, package_files[name], "Portable file versus tested package")
+        if name in portable_model_paths:
+            require(record["source"] == str(portable_cache / portable_model_paths[name]), "Portable model cache identity differs")
+        else:
+            require(record["source"] == package_files[name]["source"], "Portable runtime dependency source differs")
+        optional_original({**record, "path": str(Path("artifacts/realism-01/splat-fidelity/portability-preview") / name)})
+    require(sum(record["bytes"] for record in portable_files.values()) == portable_package["bytes"] == package["bytes"], "Portable package byte total differs")
+    for name, record in acquired_components.items():
+        optional_original({**record, "path": str(portable_cache / name)})
+    for name, record in retained_inputs.items():
+        optional_original({**record, "path": str(portable_cache / name)})
+    portable_archive = contained(root, str(portable_cache / layout["archive"]))
+    optional_original({**layout, "path": str(portable_cache / layout["archive"])})
+    if not retained_only and portable_archive.exists():
+        with zipfile.ZipFile(portable_archive) as archive:
+            require(archive.namelist() == [entry["filename"] for entry in layout["entries"]], "Portable ZIP component order differs")
+            for entry in layout["entries"]:
+                identity_bytes(archive.read(entry["filename"]), acquired_components[entry["source_path"]], entry["filename"])
+    require(portable_check["pass"] is True and portable_check["publisherHtmlRequired"] is False and portable_check["newBrowserRun"] is False, "Portable verification scope differs")
+    require(portable_check["downloadedBytes"] == component_bytes and portable_check["componentCount"] == 8 and
+            portable_check["archiveSha256"] == layout["sha256"] and portable_check["identicalBrowserTestedPackageFiles"] == len(portable_files) and
+            portable_check["packageBytes"] == portable_package["bytes"], "Portable verification totals differ")
+
     for name in ["shoe-index-assumption", "hall-animated-reference"]:
         directory = folder / "failures" / name
         report = read(directory / "result.json")
@@ -324,6 +380,7 @@ def verify(root, retained_only=False):
         "libraries": libraries,
         "sourceComponents": len(entry_sources), "optionalOriginalFilesChecked": len(raw_checked), "retainedOnly": retained_only,
         "imageComparisonsRecomputed": 5, "commonForegroundPixels": int(mask.sum()), "previewDependenciesObserved": len(requested),
+        "freshPortableComponents": len(acquired_components), "portablePackageFiles": len(portable_files),
         "retainedFailedGate": "native-hidden-resume-observed", "limitations": "Evidence integrity and recomputed observations only; renderer differences, full memory accounting, device performance and Kyoto route acceptance remain unqualified"}, indent=2))
 
 

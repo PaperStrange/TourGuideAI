@@ -84,6 +84,10 @@ open. Its full 28.40 MiB asset exceeds the 4 MiB initial budget and needs at lea
 23.83 seconds at 10 Mbps before decoding. Hidden/resume and complete resource
 reclamation remain unqualified. Use the existing free source for bounded streaming
 experiments; it establishes no Kyoto coverage.
+The tool's `acquire-hall.py --mode model-preview` can recover the eight exact free
+source components from an empty cache without historical publisher HTML. Its
+reconstructed ZIP and all sixteen preview files match the tested package; the
+independent retained verifier checks the portability receipt and producer hashes.
 The complete DEM now has 2,042,977 decoded triangles, 6,019 retained route-near
 triangles and 1,434 covered profile samples. Explicit GSIGEO2011/JPGEO2024 tests
 pass 12 independent grid checks and 2,868 local-frame checks. Source epoch/model,

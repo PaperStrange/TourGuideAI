@@ -4,8 +4,8 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 7150,
-      "sha256": "a10b998cd72405648778103ccf28dd48549997df526328c755a83d8499f8b9af",
+      "bytes": 7712,
+      "sha256": "e389c005c0610750c0374bd96df5d7b5b00b902499265e94aafbb8c6f5c1b163",
       "source": "Knock Community Hall by scbenoit, https://superspl.at/scene/0ff2e6dc; original publisher inputs and local Chromium diagnostics",
       "date": "2026-11-06",
       "rights": "Architectural model scbenoit CC BY 4.0; Spark/Three/PlayCanvas/SuperSplatViewer MIT. Source receipt distinguishes publisher wrapper/poster rights; those raw assets remain ignored.",
@@ -487,6 +487,39 @@
       "limitations": "Non-Kyoto engineering evidence; no physical-device performance, complete GPU resource accounting, pedestrian coverage, night or full-route qualification. Failed/invalid earlier comparisons remain named under failures."
     },
     {
+      "path": "portability/acquisition.json",
+      "bytes": 3776,
+      "sha256": "047a90b0450bd536a1e82e39a49f6abde5242579bb66fae02691cddf3a2f986d",
+      "source": "Knock Community Hall by scbenoit, https://superspl.at/scene/0ff2e6dc; original publisher inputs and local Chromium diagnostics",
+      "date": "2026-11-06",
+      "rights": "Architectural model scbenoit CC BY 4.0; Spark/Three/PlayCanvas/SuperSplatViewer MIT. Source receipt distinguishes publisher wrapper/poster rights; those raw assets remain ignored.",
+      "location": "Publisher-identified Knock Community Hall, Innisfil Ontario; exact coordinate and capture date unverified",
+      "method": "Unchanged actual browser capture/report/source receipt, or explicit diagnostic document; copied bytes SHA256 retained; historical producer snapshots retained alongside reports",
+      "limitations": "Non-Kyoto engineering evidence; no physical-device performance, complete GPU resource accounting, pedestrian coverage, night or full-route qualification. Failed/invalid earlier comparisons remain named under failures."
+    },
+    {
+      "path": "portability/check.json",
+      "bytes": 713,
+      "sha256": "bfc4c4f78c4c036a8e198064977721874e647653efaa9afbed4fe4b3bab2719d",
+      "source": "Knock Community Hall by scbenoit, https://superspl.at/scene/0ff2e6dc; original publisher inputs and local Chromium diagnostics",
+      "date": "2026-11-06",
+      "rights": "Architectural model scbenoit CC BY 4.0; Spark/Three/PlayCanvas/SuperSplatViewer MIT. Source receipt distinguishes publisher wrapper/poster rights; those raw assets remain ignored.",
+      "location": "Publisher-identified Knock Community Hall, Innisfil Ontario; exact coordinate and capture date unverified",
+      "method": "Unchanged actual browser capture/report/source receipt, or explicit diagnostic document; copied bytes SHA256 retained; historical producer snapshots retained alongside reports",
+      "limitations": "Non-Kyoto engineering evidence; no physical-device performance, complete GPU resource accounting, pedestrian coverage, night or full-route qualification. Failed/invalid earlier comparisons remain named under failures."
+    },
+    {
+      "path": "portability/package-manifest.json",
+      "bytes": 3974,
+      "sha256": "2516cb3eda10a84005bf5621b7efd2c19d1e03731d502335036aaf9bc5d237d6",
+      "source": "Knock Community Hall by scbenoit, https://superspl.at/scene/0ff2e6dc; original publisher inputs and local Chromium diagnostics",
+      "date": "2026-11-06",
+      "rights": "Architectural model scbenoit CC BY 4.0; Spark/Three/PlayCanvas/SuperSplatViewer MIT. Source receipt distinguishes publisher wrapper/poster rights; those raw assets remain ignored.",
+      "location": "Publisher-identified Knock Community Hall, Innisfil Ontario; exact coordinate and capture date unverified",
+      "method": "Unchanged actual browser capture/report/source receipt, or explicit diagnostic document; copied bytes SHA256 retained; historical producer snapshots retained alongside reports",
+      "limitations": "Non-Kyoto engineering evidence; no physical-device performance, complete GPU resource accounting, pedestrian coverage, night or full-route qualification. Failed/invalid earlier comparisons remain named under failures."
+    },
+    {
       "path": "preview/package-manifest.json",
       "bytes": 3914,
       "sha256": "c04a43e8ebc5cc7f152f63939c108e26a04455e46b3a01cec19351ebc2b9724d",
@@ -655,13 +688,13 @@
   "producers": [
     {
       "path": "experience/tools/splat-fidelity/README.md",
-      "bytes": 4410,
-      "sha256": "286d50564936e87bced433cb0404f8c77985e933fa39c95690eaa3f770774984"
+      "bytes": 6018,
+      "sha256": "8f25e08f4d869775d3414efbc34360711fe10f4c442c1648cf7c7873684d6d6b"
     },
     {
       "path": "experience/tools/splat-fidelity/acquire-hall.py",
-      "bytes": 5691,
-      "sha256": "60253b6c734be93568f5ec2ee71eb40de0a0ce9a15959da40ad37c87b5d83501"
+      "bytes": 8378,
+      "sha256": "b38412e8d3f896c72057687c6c778ec8e0bb691b497e91b8a95549fb3f48fcd1"
     },
     {
       "path": "experience/tools/splat-fidelity/acquire.py",
@@ -677,6 +710,11 @@
       "path": "experience/tools/splat-fidelity/capture.mjs",
       "bytes": 7281,
       "sha256": "41f4b9ed24045a74456357f24f78b3c25a55bb2b0aebbb7690d35e4fe3207486"
+    },
+    {
+      "path": "experience/tools/splat-fidelity/check-portability.py",
+      "bytes": 3376,
+      "sha256": "3133f6514eff8420bb57e0c5b7d6b27bde6e637cc2fc6db7aa8c8b8bb10d8607"
     },
     {
       "path": "experience/tools/splat-fidelity/check-preview.mjs",
@@ -710,8 +748,8 @@
     },
     {
       "path": "experience/tools/splat-fidelity/package-preview.py",
-      "bytes": 4088,
-      "sha256": "5e409fb1607c14d9968e42905e921d67e5a3af721d8314ea0183bb643ab70250"
+      "bytes": 5053,
+      "sha256": "84f0eb3ba33deca8ad405656cf60fabd9f524844ed82b50a23809cca9bd3f595"
     },
     {
       "path": "experience/tools/splat-fidelity/preview.html",
@@ -725,13 +763,13 @@
     },
     {
       "path": "experience/tools/splat-fidelity/retain.py",
-      "bytes": 4803,
-      "sha256": "4ad2b7a74039363be61bb974381c2286bb0be2b163fec4fc1a86ec8aa0a266e2"
+      "bytes": 5167,
+      "sha256": "c7b2674fc8d4e1faa79604b3061266a8992ec3d0ec2fe669efeae6258d905619"
     },
     {
       "path": "experience/tools/splat-fidelity/verify.py",
-      "bytes": 22105,
-      "sha256": "1702d794ef3f14c33ccf7368825e4dd1cbd30f1d81930ba52da4fd73823cd077"
+      "bytes": 27429,
+      "sha256": "148e600f22051c9ee111cf25011dbf69e5bb663eed99714bf5a62296f124c23b"
     },
     {
       "path": "experience/tools/splat-fidelity/viewer.html",

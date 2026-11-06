@@ -29,7 +29,7 @@ The recorded `net::ERR_FAILED` console entry in publisher runs is its intentiona
 
 | Benchmark V1 requirement | Measured input / implication | Status |
 |---|---|---|
-| Initial ≤4 MiB | Original components **29,765,112 bytes**; original-byte ZIP **29,781,498 bytes = 28.40 MiB** | Full asset is **7.10×** the initial asset budget |
+| Initial ≤4 MiB | Eight original components **29,780,678 bytes**; original-byte ZIP **29,781,498 bytes = 28.40 MiB** | Full asset is **7.10×** the initial asset budget |
 | Ready ≤8 seconds at 10 Mbps | ZIP alone requires **23.83 seconds** at an ideal 10,000,000 bits/s, before latency/decode/GPU work | This full-load pipeline cannot meet the gate |
 | Real device performance | Actual Chromium renderer reports SwiftShader | No physical GPU/mobile performance claim |
 | Source consistency | Eight component hashes match the deterministic ZIP entries; same-source renderer frames retained | Engineering comparison available; photographic truth and residual radiance remain unresolved |
@@ -41,5 +41,7 @@ The exact hall source is suitable for the next bounded streaming/resource experi
 **Knock Community Hall by scbenoit**, [original scene](https://superspl.at/scene/0ff2e6dc), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Publisher identifies Innisfil, Ontario and describes 185 Phantom 4 photos processed with Metashape, Brush and SuperSplat. Exact coordinates and capture date remain unverified. Original components were repackaged unchanged. The published poster has no verified camera and is excluded from the pixel comparison and redistributable preview.
 
 The local package is generated under `artifacts/realism-01/splat-fidelity/local-preview/`; it contains the licensed model, Spark/Three, attribution, hashes and launch instructions. Its approximately 35 MB full load is an engineering preview. No production runtime/API or public site was changed. The cached publisher wrapper is used only for research replay and is excluded from the preview package because complete wrapper redistribution rights were not established.
+
+Fresh-checkout model acquisition now has an explicit `--mode model-preview` path that requires no publisher HTML. A separate empty-cache test fetched the eight original pinned components (29,780,678 bytes), recreated the exact original ZIP, and produced all 16 preview files byte-identical to the browser-tested package. The tracked public configuration, CC BY attribution and source receipt are copied with identity checks. [Portability evidence](portability/check.json) records this test; strict historical research replay remains available separately.
 
 [Tool instructions](../../../../tools/splat-fidelity/README.md) · [Source acquisition identities](source-files.json) · [Archive layout](archive-layout.json) · [Source component receipts](knock-original-acquisition.json) · [Retained manifest](manifest.json). Historical source snapshots accompany earlier reports so changing diagnostic tools does not erase their producer bytes.

@@ -145,3 +145,12 @@ splat verification also passes from that archive with all 59 evidence files and
 configuration has an explicit Git ignore exception; browser profiles and caches
 remain excluded. Reports are retained locally under
 `artifacts/realism-01/validation/appearance-surface/fidelity-*.json`.
+
+The [portable source recovery](splat-fidelity/portability/check.json) subsequently
+reacquired eight pinned components into an empty cache: 29,780,678 original bytes,
+including metadata. It reconstructed the same 29,781,498-byte ZIP and produced
+sixteen files identical to the browser-tested preview. The model-preview mode
+uses three verified tracked metadata files and needs no historical publisher
+HTML response. Full and retained-only verification pass **62 evidence files and
+19 producers**; full mode additionally checks 69 cached originals. This recovery
+changes acquisition tooling, with the tested renderer/source bytes preserved.

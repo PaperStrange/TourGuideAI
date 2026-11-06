@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "kind": "local-source-fidelity-preview",
+  "files": [
+    {
+      "path": "index.html",
+      "source": "experience/tools/splat-fidelity/preview.html",
+      "bytes": 1193,
+      "sha256": "06adbb08cee8a7ab763079c14904d688ae2b0df0f939c0375d58114ab16764db"
+    },
+    {
+      "path": "viewer.html",
+      "source": "experience/tools/splat-fidelity/hall.html",
+      "bytes": 740,
+      "sha256": "3e8767da9a8b028ba64022958f02be83a29b46a80eff143d3eb36bc9d1a85cef"
+    },
+    {
+      "path": "hall.js",
+      "source": "experience/tools/splat-fidelity/hall.js",
+      "bytes": 4321,
+      "sha256": "4295dd202015539d3ccbd5246fdb685e6bd6e4ea30099c79e26609ff12d98e72"
+    },
+    {
+      "path": "hall.sog",
+      "source": "artifacts/realism-01/splat-fidelity/portability-model-input/knock-original.sog",
+      "bytes": 29781498,
+      "sha256": "81d061bad6ba255689939847482836f7d70bf2e222abce04e6d81c2c976c6a71"
+    },
+    {
+      "path": "hall-config.json",
+      "source": "artifacts/realism-01/splat-fidelity/portability-model-input/knock-published-viewer-config.json",
+      "bytes": 1533,
+      "sha256": "5c651fb871884d1298d0a205e210559e8b56765119178d258f4dfd9e6fe36dcc"
+    },
+    {
+      "path": "spark.module.js",
+      "source": "artifacts/realism-01/splat-qualification/downloads/spark.module.js",
+      "bytes": 2997944,
+      "sha256": "5ae86ab35d4ceb655db486dcc336299775bb314c280d7e5b39f64e4539f8e0e9"
+    },
+    {
+      "path": "licenses/spark.txt",
+      "source": "artifacts/realism-01/splat-qualification/downloads/spark-license.txt",
+      "bytes": 1088,
+      "sha256": "51829693e5dccd9ca1daa093991faac3aaa93238eb8fd5f5cb4130af85791d64"
+    },
+    {
+      "path": "licenses/three.txt",
+      "source": "experience/node_modules/three/LICENSE",
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+    },
+    {
+      "path": "licenses/source.txt",
+      "source": "artifacts/realism-01/splat-fidelity/portability-model-input/knock-credit.txt",
+      "bytes": 308,
+      "sha256": "3145ed03e782475751edec0eb0fb258c28a2b715c2249ee9133ae2d0ff8ec8e5"
+    },
+    {
+      "path": "source-receipt.json",
+      "source": "artifacts/realism-01/splat-fidelity/portability-model-input/knock-source-receipt.json",
+      "bytes": 8344,
+      "sha256": "23eefd48cbae5f08fdd947232018ac61f2be06523fa6e374be749d1ab933108e"
+    },
+    {
+      "path": "three/build/three.module.js",
+      "source": "experience/node_modules/three/build/three.module.js",
+      "bytes": 662772,
+      "sha256": "9052042d676cb0fdc1ddfefe193053f34b7ac0513a616fdac4535d49987812ea"
+    },
+    {
+      "path": "three/build/three.core.js",
+      "source": "experience/node_modules/three/build/three.core.js",
+      "bytes": 1458113,
+      "sha256": "9edde002b066a9a05676a6127f67735b62baf399bdea529f2f7e31657da769e6"
+    },
+    {
+      "path": "three/examples/jsm/controls/OrbitControls.js",
+      "source": "experience/node_modules/three/examples/jsm/controls/OrbitControls.js",
+      "bytes": 40755,
+      "sha256": "3d79d07ecb686b4e5d93232eedab255331c1beef711e13164eaa1f68655a5f2b"
+    },
+    {
+      "path": "three/examples/jsm/postprocessing/Pass.js",
+      "source": "experience/node_modules/three/examples/jsm/postprocessing/Pass.js",
+      "bytes": 4218,
+      "sha256": "444b409c235ead986893c472e720da1b779a56985c7d10b279c7944b52bd61c5"
+    },
+    {
+      "path": "publisher-camera.json",
+      "source": "Generated local preview instructions/projection selection",
+      "bytes": 3,
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "path": "README.txt",
+      "source": "Generated local preview instructions/projection selection",
+      "bytes": 820,
+      "sha256": "f73702ee8c03b8d0efc8b8b7ba26bd0f57108ed3370fd18c56ea40d389dd3e2f"
+    }
+  ],
+  "bytes": 34964731,
+  "limits": "Full source has 1,935,275 splats; no mobile or route-level performance acceptance"
+}
