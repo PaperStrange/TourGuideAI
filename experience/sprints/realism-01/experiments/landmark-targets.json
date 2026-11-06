@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "method": "Retained route approaches and named source features define acquisition targets. Only an exact retained gml_id establishes source-object continuity; geometric proximity is a candidate relationship.",
+  "targets": [
+    {
+      "sightId": "mitsui-frontage",
+      "sceneSourceId": "kyoto-city:bldg_d4824084-63c9-4d60-8320-30b3f2e440b9",
+      "expectedOsmId": "osm:way:205732558",
+      "categories": ["building"],
+      "searchDistanceMetres": 25,
+      "requiredFeatures": ["columned corner", "Shijo frontage", "recessed windows", "canopy underside", "entrance correspondence"]
+    },
+    {
+      "sightId": "nishiki-market",
+      "sceneSourceId": "osm:way:772134672",
+      "categories": ["building", "furniture"],
+      "searchDistanceMetres": 25,
+      "requiredFeatures": ["west portal", "covered passage", "individual shop fronts", "roof underside", "floor clearance"]
+    },
+    {
+      "sightId": "nishiki-tenmangu",
+      "sceneSourceId": "osm:node:5204263033",
+      "categories": ["building", "furniture"],
+      "searchDistanceMetres": 10,
+      "requiredFeatures": ["outer torii", "plaque and columns", "adjoining commercial fronts", "public approach"]
+    },
+    {
+      "sightId": "takase-river",
+      "sceneSourceId": "osm:way:482270827",
+      "categories": ["road", "furniture"],
+      "searchDistanceMetres": 15,
+      "requiredFeatures": ["selected river mouth", "barriers", "road soffit", "riverbank and water elevations"]
+    },
+    {
+      "sightId": "pontocho-entrance",
+      "sceneSourceId": "osm:node:4641550774",
+      "categories": ["building", "furniture"],
+      "searchDistanceMetres": 10,
+      "requiredFeatures": ["south entrance", "history board", "adjoining eaves", "ground connection", "evening fixtures"]
+    },
+    {
+      "sightId": "shijo-bridge",
+      "sceneSourceId": "osm:way:532008156",
+      "categories": ["bridge", "road", "furniture"],
+      "searchDistanceMetres": 25,
+      "requiredFeatures": ["deck grade", "parapet", "rail spacing", "approach joint", "river context"]
+    }
+  ]
+}

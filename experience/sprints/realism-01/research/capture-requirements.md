@@ -1,7 +1,7 @@
 # Capture acquisition proposal
 
-Updated 5 November 2026 from the [full-route source audit](source-coverage.md) and
-[five inspected tile samples](../../../evidence/realism-01/sources/README.md).
+Updated 6 November 2026 from the [full-route source audit](source-coverage.md) and
+[73-tile / 18-view qualification](../../../evidence/realism-01/qualification/README.md).
 Status: requirements ready; supplier, dates, price and funding **unquoted/unapproved**.
 No outreach, booking or purchase has occurred.
 
@@ -15,11 +15,11 @@ both reconstruction methods.
 
 | Location | Existing source result | Quote item that remains necessary |
 | --- | --- | --- |
-| Mitsui / Shijō–Karasuma | Nearby non-leaf tile data840 inspected; Mitsui identity unconfirmed | Identify exact building, resolve entrance/side/corner views and measured façade proportions; source gap remains open |
-| Nishiki west and covered passage | data802/data804 contain 36 LOD2 objects and two atlases | Shop-by-shop façades, entrances, ceiling, pillars and floor coverage through the passage; acquire matching day/night exposures where source quality is insufficient |
-| Tenmangū and Shinkyōgoku connection | Candidate bounds indexed; assembled surfaces uninspected | Current shrine approach and adjoining arcade interfaces, public-street clearances and reverse views |
-| Shijō east / Takase | Building candidates indexed; retained detailed road/furniture collections have no nearby candidates on edges 1–49 | Opposite street sides, actual river mouth, surveyed ground, pavement and night fixtures; source qualification must resolve whether other licensed collections supply these |
-| Pontochō / bridge transition | data765 includes three LOD3 and two LOD2 objects; sampled road has no texture | Entrance correspondence, occlusions, bridge deck/parapet/grade, banks and lighting; inspect the 2 road and 12 furniture candidates before reducing fieldwork |
+| Mitsui / Shijō–Karasuma | Exact retained GML ID matched in Shimogyo LOD2; 44 source triangles, 39 textured; three assembled views retained | Current entrance/side/corner views, canopy underside and measured façade proportions; exact ID supplies no street-level appearance acceptance |
+| Nishiki west and covered passage | Assembled source views show blurred close surfaces and absent floor; semantic roof/portal remains unverified | Shop-by-shop façades, entrances, ceiling, pillars and floor coverage through the passage; matching day/night exposures |
+| Tenmangū and Shinkyōgoku connection | Three original-source views retained; named gate identity remains unverified | Current shrine approach and adjoining arcade interfaces, public-street clearances, reverse views and held-out feature-facing photographs |
+| Shijō east / Takase | Actual decoded geometry indexed along route; LOD1 road polygons have zero heights; no exact river-object correspondence in acquired categories | Opposite street sides, actual river mouth, surveyed floor/curbs, pavement and night fixtures |
+| Pontochō / bridge transition | Both road tiles and all 12 furniture tiles decoded; one detailed sidewalk near edges 50–54; bridge-forward capture fails visibility check | Entrance correspondence, occlusions, bridge deck/parapet/grade, banks, distant view context and lighting; complete ground/datum control |
 
 Each quote must identify edge ranges and visible surfaces supplied. Candidate
 bounding regions and texture atlas sizes do not justify removing capture items.

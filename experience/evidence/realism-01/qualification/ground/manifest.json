@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    {
+      "path": "26106-bldg-lod3-tileset.json",
+      "bytes": 45728,
+      "sha256": "71f06d89bf440ba62dfacdb8697ab36bcb342708a850ca2cf8d02a97c6924138",
+      "source": "https://assets.cms.plateau.reearth.io/assets/d3/4c620c-1c8b-44fa-9168-b50ed86f27f1/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26106_shimogyo-ku_lod3/tileset.json",
+      "date": "2026-11-06T05:54:55.676185+00:00",
+      "rights": "Kyoto City / MLIT Project PLATEAU · CC BY 4.0; derived road audit attributed to TourGuideAI",
+      "location": "Kyoto Shijo East 1,353.444m route and adjacent Shimogyo/Higashiyama wards",
+      "method": "Original HTTPS JSON response; inherited proxy/CA and TLS verification retained",
+      "limitations": "Catalogue/index bounds identify acquisition candidates; no geometry or appearance acceptance."
+    },
+    {
+      "path": "26105-bldg-lod3-tileset.json",
+      "bytes": 138500,
+      "sha256": "17ee41e888123c3646c229d9ebe8f3f9662041429095aa623aa83e2921d1e1c8",
+      "source": "https://assets.cms.plateau.reearth.io/assets/dd/3e0851-94fb-4fed-8e44-289d0e3fb41f/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26105_higashiyama-ku_lod3/tileset.json",
+      "date": "2026-11-06T05:54:56.153602+00:00",
+      "rights": "Kyoto City / MLIT Project PLATEAU · CC BY 4.0; derived road audit attributed to TourGuideAI",
+      "location": "Kyoto Shijo East 1,353.444m route and adjacent Shimogyo/Higashiyama wards",
+      "method": "Original HTTPS JSON response; inherited proxy/CA and TLS verification retained",
+      "limitations": "Catalogue/index bounds identify acquisition candidates; no geometry or appearance acceptance."
+    },
+    {
+      "path": "route-citygml-inventory.json",
+      "bytes": 3661,
+      "sha256": "4e59202e687d1b448cbe8adb448b9b46a0d25c05a0dbeb6bd8a2cfa21121953c",
+      "source": "https://api.plateauview.mlit.go.jp/datacatalog/citygml/r:135.7590,35.0031,135.7725,35.0057?types=bldg,tran,frn,dem",
+      "date": "2026-11-06T05:54:54.755773+00:00",
+      "rights": "Kyoto City / MLIT Project PLATEAU · CC BY 4.0; derived road audit attributed to TourGuideAI",
+      "location": "Kyoto Shijo East 1,353.444m route and adjacent Shimogyo/Higashiyama wards",
+      "method": "Original HTTPS JSON response; inherited proxy/CA and TLS verification retained",
+      "limitations": "Catalogue/index bounds identify acquisition candidates; no geometry or appearance acceptance."
+    },
+    {
+      "path": "download-receipts.json",
+      "bytes": 4716,
+      "sha256": "155ed9408f3137f019ecf95d11a8fbd0abed0ea2600ab4766cb1632f0f464052",
+      "source": "Original HTTPS receipts for two ward indexes, CityGML inventory, code lists and two road files",
+      "date": "2026-11-06T06:01:16.187774+00:00",
+      "rights": "Kyoto City / MLIT Project PLATEAU · CC BY 4.0; derived road audit attributed to TourGuideAI",
+      "location": "Kyoto Shijo East 1,353.444m route and adjacent Shimogyo/Higashiyama wards",
+      "method": "Preserved original acquisition receipt JSON",
+      "limitations": "Raw road GML and full code-list ZIP remain in ignored downloads; reacquisition must match retained hashes."
+    },
+    {
+      "path": "road-ground-audit.json",
+      "bytes": 361990,
+      "sha256": "16410741fb529bbcfb3fa511410903a065e99ab56b945a07eee9e568990e1f04",
+      "source": "Original road CityGML, source function dictionaries, ward tileset indexes and retained route; identities in road-ground-audit.json and download-receipts.json",
+      "date": "2026-11-06T06:01:16.187774+00:00",
+      "rights": "Kyoto City / MLIT Project PLATEAU · CC BY 4.0; derived road audit attributed to TourGuideAI",
+      "location": "Kyoto Shijo East 1,353.444m route and adjacent Shimogyo/Higashiyama wards",
+      "method": "GDAL 3.10.3 GML parser, explicit CRS/axis handling and horizontal geometry operations; rendered data board",
+      "limitations": "Planar footprint and candidate geometry observations only; all route ground elevation, current access, pedestrian collision and appearance acceptance remain unverified."
+    },
+    {
+      "path": "near-route-roads.geojson",
+      "bytes": 751892,
+      "sha256": "e63953a0f881d78f9640516a4a7ed2f847b991bc7d3e7874eb42215523474548",
+      "source": "Original road CityGML, source function dictionaries, ward tileset indexes and retained route; identities in road-ground-audit.json and download-receipts.json",
+      "date": "2026-11-06T06:01:16.187774+00:00",
+      "rights": "Kyoto City / MLIT Project PLATEAU · CC BY 4.0; derived road audit attributed to TourGuideAI",
+      "location": "Kyoto Shijo East 1,353.444m route and adjacent Shimogyo/Higashiyama wards",
+      "method": "GDAL 3.10.3 GML parser, explicit CRS/axis handling and horizontal geometry operations; rendered data board",
+      "limitations": "Planar footprint and candidate geometry observations only; all route ground elevation, current access, pedestrian collision and appearance acceptance remain unverified."
+    },
+    {
+      "path": "road-coverage-board.svg",
+      "bytes": 200705,
+      "sha256": "473fac08ea3402926cd12c58a3d5e34eee8679dd2004b83729b3e14f737e8dd7",
+      "source": "Original road CityGML, source function dictionaries, ward tileset indexes and retained route; identities in road-ground-audit.json and download-receipts.json",
+      "date": "2026-11-06T06:01:16.187774+00:00",
+      "rights": "Kyoto City / MLIT Project PLATEAU · CC BY 4.0; derived road audit attributed to TourGuideAI",
+      "location": "Kyoto Shijo East 1,353.444m route and adjacent Shimogyo/Higashiyama wards",
+      "method": "GDAL 3.10.3 GML parser, explicit CRS/axis handling and horizontal geometry operations; rendered data board",
+      "limitations": "Planar footprint and candidate geometry observations only; all route ground elevation, current access, pedestrian collision and appearance acceptance remain unverified."
+    }
+  ],
+  "processing": [
+    {
+      "path": "acquire.py",
+      "sha256": "5f2d99f3f1948f4b61d6d889d96ffa09f1db1ef2d4c4b4b06db27ad23af0ebba"
+    },
+    {
+      "path": "qualify.py",
+      "sha256": "127c67b2a5b6a1e22ef540a311406b0dc9a08721aad1621da5c1035d758feac4"
+    },
+    {
+      "path": "retain.py",
+      "sha256": "62a8e431a6524f6ea5a707804e41d77058f3ecc0637872f9481a79afb48c61d9"
+    }
+  ],
+  "limitations": "No vertical datum conversion, field measurement, pedestrian collision acceptance, appearance acceptance or runtime release."
+}

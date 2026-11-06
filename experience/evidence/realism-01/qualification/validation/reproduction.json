@@ -1,0 +1,590 @@
+{
+  "date": "2026-11-06T06:37:17.556470+00:00",
+  "status": "passed",
+  "sourceReceiptChecks": 73,
+  "identicalOutputs": 83,
+  "records": [
+    {
+      "original": "experience/evidence/realism-01/qualification/geometry/geometry-audit.json",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/geometry-audit.json",
+      "decodedOriginal": false,
+      "bytes": 1154552,
+      "sha256": "3686d1af320af8b1350fed7f174feaf86d320cfa5e67aa35d66fd5f58713ff65"
+    },
+    {
+      "original": "experience/evidence/realism-01/qualification/geometry/content-selection.json",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/content-selection.json",
+      "decodedOriginal": false,
+      "bytes": 584637,
+      "sha256": "3a693ad812e2de6604224e396c6da11354e639a0a59fe2e7c6a64be7306dcd4a"
+    },
+    {
+      "original": "experience/evidence/realism-01/qualification/geometry/review-manifest.json",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/review-manifest.json",
+      "decodedOriginal": false,
+      "bytes": 152409,
+      "sha256": "4999c05d1503407e191de206f212256a6990e0949ab9922c3dba4930d5fe8831"
+    },
+    {
+      "original": "experience/evidence/realism-01/qualification/geometry/objects.geojson.gz",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/objects.geojson",
+      "decodedOriginal": true,
+      "bytes": 9802622,
+      "sha256": "3dd94c819a1cab73c4e3c5f146542a2429d2172aaeda08487b4507fbcfd2a56b"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/road-triangles.json",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/road-triangles.json",
+      "decodedOriginal": false,
+      "bytes": 773060,
+      "sha256": "fb5a9e16f3b5ac88482d6956a761b7c6bb7e46ea6b52dcdc485a5ecaf4ddec25"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data753-f8e68a07.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data753-f8e68a07.glb",
+      "decodedOriginal": false,
+      "bytes": 198776,
+      "sha256": "960c1f2eedcec462dc079ce09171c7282ee36f254b1b8b05cdf860f81084e273"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data755-24a0a529.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data755-24a0a529.glb",
+      "decodedOriginal": false,
+      "bytes": 240208,
+      "sha256": "f9bb4032e250abae6fcfaa5c600592c2e832db646cc030e0d4600b148f3ecba6"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data756-7af66683.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data756-7af66683.glb",
+      "decodedOriginal": false,
+      "bytes": 132664,
+      "sha256": "29475f469401994e2df3461de7138d4fb5fd7f8be473a54cbabac889c7f0cf92"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data757-a0dbef8a.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data757-a0dbef8a.glb",
+      "decodedOriginal": false,
+      "bytes": 153872,
+      "sha256": "7eb3b93d34081362aa9f7d92861bf03f4d647326cef7b388f68bc2fd19cc4bdf"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data758-4f6f1973.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data758-4f6f1973.glb",
+      "decodedOriginal": false,
+      "bytes": 207232,
+      "sha256": "391c3be09810885b283bc60bc74b8e9972ad6efef2e4b0ab4e5c85e75abccd25"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data759-7f8565bf.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data759-7f8565bf.glb",
+      "decodedOriginal": false,
+      "bytes": 202824,
+      "sha256": "542e672b20eca81ed8ed588a810122e9fdb23e13eb48d2df1edbc9e82675e115"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data760-24cad667.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data760-24cad667.glb",
+      "decodedOriginal": false,
+      "bytes": 163520,
+      "sha256": "efed3bd58ff7614d1f878d77772b14620bfe9bf6e7f80ecce92717fd8e87cf2e"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data761-574555d4.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data761-574555d4.glb",
+      "decodedOriginal": false,
+      "bytes": 120312,
+      "sha256": "a6c1df609b234c52dfb498aadb39a49e44e1cf3ecfc59cd27f30538e16c23d24"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data762-201a61b6.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data762-201a61b6.glb",
+      "decodedOriginal": false,
+      "bytes": 74688,
+      "sha256": "b2443590a3cf10e918390a770f67331fe9dee024834d1274e5388068fc78aca5"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data763-5910adfd.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data763-5910adfd.glb",
+      "decodedOriginal": false,
+      "bytes": 3197120,
+      "sha256": "d36e35661aacd871926ba2c291aad4c667c03171b925f14ea1a1479d697ea23d"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data764-e9b67e64.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data764-e9b67e64.glb",
+      "decodedOriginal": false,
+      "bytes": 109760,
+      "sha256": "518815a04a4e0c98d56a2712dc5bf24f9d28f5ad76539b1ab9897bd7c0faf656"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data765-c0f50632.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data765-c0f50632.glb",
+      "decodedOriginal": false,
+      "bytes": 1678984,
+      "sha256": "6561193cf111164853dc81916a0a1b01330474636eaa211a1cf7e941407ffe73"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data766-a53ee000.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data766-a53ee000.glb",
+      "decodedOriginal": false,
+      "bytes": 14336,
+      "sha256": "9622fabe13ae3e2cb4cd0e9f78f37c9fa51b2192acb6de4e66c5b5828c85d86b"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data767-479ce375.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data767-479ce375.glb",
+      "decodedOriginal": false,
+      "bytes": 1104728,
+      "sha256": "1a26351ec01f5474fd278f719348e642172dc529a98f62cfa024046fe797e2c0"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data768-098126a8.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data768-098126a8.glb",
+      "decodedOriginal": false,
+      "bytes": 135664,
+      "sha256": "dcc1373e8bdeb6d67699578516d7042bc3741b28e5c52e978b61952d073e3c2d"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data769-4a7a0c53.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data769-4a7a0c53.glb",
+      "decodedOriginal": false,
+      "bytes": 132816,
+      "sha256": "bbf96242ab4219823f15ab504f7ee339ef774d561afd9144bf19bec81c967ca3"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data770-55308060.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data770-55308060.glb",
+      "decodedOriginal": false,
+      "bytes": 82792,
+      "sha256": "313b82ea10d822a5fa950ca41c83e10256a15cf0ae514175b7de83a1db27c502"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data771-e9d53bfe.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data771-e9d53bfe.glb",
+      "decodedOriginal": false,
+      "bytes": 118312,
+      "sha256": "f5423f8a5ffc36955f4697301f788b5aa936679074cd86f6e7210e5e9d4b189a"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data772-021eb330.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data772-021eb330.glb",
+      "decodedOriginal": false,
+      "bytes": 159816,
+      "sha256": "de9f10e13e6fce6f72c4cb584a3ef4a392e1740485917b2e62fa7d0a195c27ef"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data773-148afade.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data773-148afade.glb",
+      "decodedOriginal": false,
+      "bytes": 60424,
+      "sha256": "1dd7bb38bac4a8790dbf787c532f3dc0ab230c0439f7a927baf5f031c9cfddc0"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data775-02e492d3.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data775-02e492d3.glb",
+      "decodedOriginal": false,
+      "bytes": 133096,
+      "sha256": "3cc6d8dc2ba77ec846db2811e91ec922ab9e680b879a15453afd4fa7053a985e"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data777-4cfe1361.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data777-4cfe1361.glb",
+      "decodedOriginal": false,
+      "bytes": 94560,
+      "sha256": "e8e061b4c089ffedb69a8add6b7f30f8bb1e39e103ad81ee0f60506e77b3a924"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data778-8124b70e.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data778-8124b70e.glb",
+      "decodedOriginal": false,
+      "bytes": 99816,
+      "sha256": "dcb0ae2cd0a3c4000da1134e25d6a471ee350355dda94bdd63904024d1c17162"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data784-8a44a41b.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data784-8a44a41b.glb",
+      "decodedOriginal": false,
+      "bytes": 50248,
+      "sha256": "4bf542db547eb390557e1598820cbfa0e9490d57d1193fed54ea40fd53e51ae1"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data785-ed322862.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data785-ed322862.glb",
+      "decodedOriginal": false,
+      "bytes": 51736,
+      "sha256": "fadfeafa06385ad850d42dd012b16f86de4928f2dce0634919cdb61df29715cc"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data796-2c6d057f.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data796-2c6d057f.glb",
+      "decodedOriginal": false,
+      "bytes": 182432,
+      "sha256": "b4196464cbe0adb647b35d4165ac0955b7bea38b1661c766ff77630cabddb17c"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data797-00fd90c1.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data797-00fd90c1.glb",
+      "decodedOriginal": false,
+      "bytes": 207712,
+      "sha256": "081583bc2ab03f91ba19621a65cd961372992f8a2676c02ad4393785191b2186"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data798-6a16100c.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data798-6a16100c.glb",
+      "decodedOriginal": false,
+      "bytes": 187376,
+      "sha256": "4596c28727fec78dda71e6ebb8e4c34c5959027709aefb1ea2c472f1f5b8382a"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data799-aee9d5cf.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data799-aee9d5cf.glb",
+      "decodedOriginal": false,
+      "bytes": 179616,
+      "sha256": "698f5e4358bbb6da445fc2597d6f8bc519b073eecf0ee28ed88f1b1fa9f98cff"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data800-18059f79.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data800-18059f79.glb",
+      "decodedOriginal": false,
+      "bytes": 135816,
+      "sha256": "8c2c4ea502c4b2d00d3de606d8f5a7141675765a9333aef7dacebdd56fe1bd46"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data801-291f1147.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data801-291f1147.glb",
+      "decodedOriginal": false,
+      "bytes": 207288,
+      "sha256": "19013bc8e408fb77781add155c25d66c4fcfa6cfccbb4cf6be5a440f1f6b354b"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data802-cc0b2bc5.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data802-cc0b2bc5.glb",
+      "decodedOriginal": false,
+      "bytes": 187656,
+      "sha256": "4f268f246b73f9488a001a77cc361b06e80967f93b4ddb775ec00efb31ef936b"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data803-591295b2.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data803-591295b2.glb",
+      "decodedOriginal": false,
+      "bytes": 166400,
+      "sha256": "129c5d56be2fb6e276e02fa0ae6d2805e3d11e05e9f9ad6b49780d12d15c00ee"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data804-e30a799b.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data804-e30a799b.glb",
+      "decodedOriginal": false,
+      "bytes": 190880,
+      "sha256": "83e01566c46c288e3d8bb1b2710d945685fea05bc7483b2125c3bec2fee8d9e0"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data805-9fe960d3.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data805-9fe960d3.glb",
+      "decodedOriginal": false,
+      "bytes": 114208,
+      "sha256": "be49ed2ff3b5470730474cc087927c2f429de1f7ded530a10d8dec20b857cd46"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data806-f124e105.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data806-f124e105.glb",
+      "decodedOriginal": false,
+      "bytes": 66672,
+      "sha256": "468fe6d5c91f5a53706f8e34cbe5d52757c2fc0fe4a5916c1ad1c95c67a7d2c1"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data817-3c40119b.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data817-3c40119b.glb",
+      "decodedOriginal": false,
+      "bytes": 99152,
+      "sha256": "fbebbf0bb6374fa195edbc78e05656f9b42c99141d119861fe072d8d10160105"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data819-6c4f17b4.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data819-6c4f17b4.glb",
+      "decodedOriginal": false,
+      "bytes": 91128,
+      "sha256": "c2331946834087c736547bed912ca97480883800b6a8b5da396a2bd7156d0c14"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data821-1b90f23b.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data821-1b90f23b.glb",
+      "decodedOriginal": false,
+      "bytes": 99728,
+      "sha256": "4d877eb57e3ccb2d2f2cfb65fd86cb0c11d696d809d44f3172be4ed3da50a0e4"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data830-66d06579.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data830-66d06579.glb",
+      "decodedOriginal": false,
+      "bytes": 91048,
+      "sha256": "fb303d7978093553cb301b5199cb80d822988b507ffcc56d05ad91122076abf2"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data832-822a6f93.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data832-822a6f93.glb",
+      "decodedOriginal": false,
+      "bytes": 91240,
+      "sha256": "52c76e94e631d0534ccb5be122142f09155043c57f5ecc8317e70a0ecb6f38f6"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data833-e76e1062.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data833-e76e1062.glb",
+      "decodedOriginal": false,
+      "bytes": 93840,
+      "sha256": "a3eecfadfb24e297463753f64369e671bf0001f71e3dec86352e35791f86aa28"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data834-29420808.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data834-29420808.glb",
+      "decodedOriginal": false,
+      "bytes": 49872,
+      "sha256": "50b4408d2b7d8dfd3f99d3829be8e6107f2958a1e2d66347692ff06bed4c15de"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data835-41a84410.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data835-41a84410.glb",
+      "decodedOriginal": false,
+      "bytes": 414720,
+      "sha256": "1cb2bd874c0e19b0b4cee2455e8b6036d1898417e1458e14382a4219640b359a"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data838-38bff765.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data838-38bff765.glb",
+      "decodedOriginal": false,
+      "bytes": 22176,
+      "sha256": "e0cab1b21ecc9d0b98cd9d0e4a61dff16ace8ba7cb7ff9fef939bcd6ab936bc8"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data839-6b1f4435.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data839-6b1f4435.glb",
+      "decodedOriginal": false,
+      "bytes": 78688,
+      "sha256": "bc4a8a9e964c04228c9e6b8c6fd59b1554037f5feec71e5b8232189c91090f73"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data840-4aff9341.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data840-4aff9341.glb",
+      "decodedOriginal": false,
+      "bytes": 115648,
+      "sha256": "d26cc167cdd581289f2905fce96c5c12b799e831d81fe8f4fbd5b79c16dd1c3c"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data841-4381c2b9.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data841-4381c2b9.glb",
+      "decodedOriginal": false,
+      "bytes": 63576,
+      "sha256": "6d0a12ec900ce09210abb6d81b71c3cd10d95fae71c288db7c8a60c4dbf207b5"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data842-628accce.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data842-628accce.glb",
+      "decodedOriginal": false,
+      "bytes": 45184,
+      "sha256": "1bf9ccf000560dc91b70f0249385b211c228f84a6aa53a33c576f2aa5a8be3bd"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data139-6fabd100.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data139-6fabd100.glb",
+      "decodedOriginal": false,
+      "bytes": 26296,
+      "sha256": "45c09673aa6824fe7bc772dffea46225b4b91c72275e5856917b6a85dcebe4b8"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26104-data851-d3b934f0.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26104-data851-d3b934f0.glb",
+      "decodedOriginal": false,
+      "bytes": 24976,
+      "sha256": "6982ad4ee541a1d7458170ab3fb7748ad12b484972abe69c225ed866ff5eaecb"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/road-26100-data1-dc134437.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/road-26100-data1-dc134437.glb",
+      "decodedOriginal": false,
+      "bytes": 127632,
+      "sha256": "e97de0e0c675ec3cb12cfb45a42e2373e26e94002b38283972949d754f8d07e2"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/road-26100-data3-c9fbaac5.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/road-26100-data3-c9fbaac5.glb",
+      "decodedOriginal": false,
+      "bytes": 146272,
+      "sha256": "196e731722ddc78834cfad982d87a0985265607c454038ed2834442e4c5fa1e5"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/furniture-26100-data193-27febc5b.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/furniture-26100-data193-27febc5b.glb",
+      "decodedOriginal": false,
+      "bytes": 635016,
+      "sha256": "816226b3a6a13d89a0a7a7b70da8ccb06923c9848560a304f008580d5d134675"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/furniture-26100-data197-10d4bab2.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/furniture-26100-data197-10d4bab2.glb",
+      "decodedOriginal": false,
+      "bytes": 487392,
+      "sha256": "a9bf7b4226c2d2b39591c9274d681e275ea23f3e812ea970c84172f311222d1d"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/furniture-26100-data198-5bdf58cb.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/furniture-26100-data198-5bdf58cb.glb",
+      "decodedOriginal": false,
+      "bytes": 201608,
+      "sha256": "ea3aa8183ed554171269939e83a1ffd9691f848f777eed7164d1a8fc9b363770"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/furniture-26100-data199-b0b3da84.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/furniture-26100-data199-b0b3da84.glb",
+      "decodedOriginal": false,
+      "bytes": 55768,
+      "sha256": "71c10eff411c22f8c05e307bfc48b5d196934d6a627a249e4ffd7b63f5cbc3c5"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/furniture-26100-data200-bb49e06f.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/furniture-26100-data200-bb49e06f.glb",
+      "decodedOriginal": false,
+      "bytes": 356616,
+      "sha256": "63dcbcb2a52eeb064f72f11541f7e88e46aa7d883274449781134c827c323a01"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/furniture-26100-data201-f647376d.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/furniture-26100-data201-f647376d.glb",
+      "decodedOriginal": false,
+      "bytes": 129872,
+      "sha256": "4fb6a32c6c442be59746d3171a2251f22aa25393c6bbc0f853919c82c57bf11e"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/furniture-26100-data202-0598f7a3.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/furniture-26100-data202-0598f7a3.glb",
+      "decodedOriginal": false,
+      "bytes": 679528,
+      "sha256": "dcdb0a325d415316c0c997503c29070fe8c3e402385ffde54cd77d4bac03bdb7"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/furniture-26100-data203-b99b7ef3.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/furniture-26100-data203-b99b7ef3.glb",
+      "decodedOriginal": false,
+      "bytes": 1412648,
+      "sha256": "3c6a59d9a7f034a89705d8ecb65a4c9eb12e59210265183fb758a4f714336d8e"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/furniture-26100-data204-4ac31073.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/furniture-26100-data204-4ac31073.glb",
+      "decodedOriginal": false,
+      "bytes": 736760,
+      "sha256": "4f3df0bd4af891410155c609935480039ae7acafe3149fcdf1e19df646248e4f"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/furniture-26100-data205-f255fa30.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/furniture-26100-data205-f255fa30.glb",
+      "decodedOriginal": false,
+      "bytes": 644400,
+      "sha256": "8e02fa22235051f9ba100cd5f44ef8dea2f80f13837ab0da4f25826e06ec0328"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/furniture-26100-data206-82592382.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/furniture-26100-data206-82592382.glb",
+      "decodedOriginal": false,
+      "bytes": 360680,
+      "sha256": "b48d26a4ad2f68ea7be456ac3093e583c4685cb3a80ba63f64593d17814cee2d"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/furniture-26100-data207-7f40e586.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/furniture-26100-data207-7f40e586.glb",
+      "decodedOriginal": false,
+      "bytes": 218272,
+      "sha256": "7a9d79f551da6ec8565db3d0b7ed7c9826958663c1fb4b234d94b94deeeba20c"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26106-data0-894a4c06.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26106-data0-894a4c06.glb",
+      "decodedOriginal": false,
+      "bytes": 4690288,
+      "sha256": "8951ac988469a1acceed6682273491342f44190b93252fd0cc52bae589bfe824"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26106-data1-e1f997b6.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26106-data1-e1f997b6.glb",
+      "decodedOriginal": false,
+      "bytes": 4738568,
+      "sha256": "985853888b69c5701c2e844c56a32c44d15fa2001a6393f7233a28ba1c87ccd1"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26106-data20-8ba92d97.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26106-data20-8ba92d97.glb",
+      "decodedOriginal": false,
+      "bytes": 264776,
+      "sha256": "93365e7d3003d1d54959dfe87b20a4679df81fb89b4718b5a085b5b19a35f3f1"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26106-data4-9f4b03ae.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26106-data4-9f4b03ae.glb",
+      "decodedOriginal": false,
+      "bytes": 970016,
+      "sha256": "1a16eb077fbbb3a7d4daf306e0126a28ec4366ae98f5d1bfdd632edb13c33677"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26106-data5-7f45eb8a.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26106-data5-7f45eb8a.glb",
+      "decodedOriginal": false,
+      "bytes": 4631008,
+      "sha256": "cf1022390b97befc8e4672eba88bb2e9ef177efb84db28f7944f9e921b45d679"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26106-data75-cd833519.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26106-data75-cd833519.glb",
+      "decodedOriginal": false,
+      "bytes": 137512,
+      "sha256": "6cbfe43504608033b5c8b7f5cafa41dd0369f32c95028adf8435cce879223622"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26106-data9-c6778200.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26106-data9-c6778200.glb",
+      "decodedOriginal": false,
+      "bytes": 655104,
+      "sha256": "691c11f29ea528c174947e1ea89557dfff7194a9a7379c61b5fe428f40465b35"
+    },
+    {
+      "original": "artifacts/realism-01/runs/route-qualification/models/building-26105-data125-8bf45640.glb",
+      "reproduced": "artifacts/realism-01/runs/route-qualification-reproduction/models/building-26105-data125-8bf45640.glb",
+      "decodedOriginal": false,
+      "bytes": 74552,
+      "sha256": "920483d911d1a57e3fc3f337fa16ea45a1d4131ca0327d14c486f230ec1fca61"
+    },
+    {
+      "original": "experience/evidence/realism-01/qualification/ground/road-ground-audit.json",
+      "reproduced": "artifacts/realism-01/runs/ground-qualification-review/road-ground-audit.json",
+      "decodedOriginal": false,
+      "bytes": 361990,
+      "sha256": "16410741fb529bbcfb3fa511410903a065e99ab56b945a07eee9e568990e1f04"
+    },
+    {
+      "original": "experience/evidence/realism-01/qualification/ground/near-route-roads.geojson",
+      "reproduced": "artifacts/realism-01/runs/ground-qualification-review/near-route-roads.geojson",
+      "decodedOriginal": false,
+      "bytes": 751892,
+      "sha256": "e63953a0f881d78f9640516a4a7ed2f847b991bc7d3e7874eb42215523474548"
+    },
+    {
+      "original": "experience/evidence/realism-01/qualification/ground/road-coverage-board.svg",
+      "reproduced": "artifacts/realism-01/runs/ground-qualification-review/road-coverage-board.svg",
+      "decodedOriginal": false,
+      "bytes": 200705,
+      "sha256": "473fac08ea3402926cd12c58a3d5e34eee8679dd2004b83729b3e14f737e8dd7"
+    },
+    {
+      "original": "experience/evidence/realism-01/qualification/landmarks/landmark-correspondence.json",
+      "reproduced": "artifacts/realism-01/runs/landmark-qualification-reproduction/landmark-correspondence.json",
+      "decodedOriginal": false,
+      "bytes": 39557,
+      "sha256": "c75c6a3499a31978750653a6eba527d64a8ca9157047088b87b2d0904fe3e3cf"
+    },
+    {
+      "original": "experience/evidence/realism-01/qualification/landmarks/landmark-correspondence.md",
+      "reproduced": "artifacts/realism-01/runs/landmark-qualification-reproduction/landmark-correspondence.md",
+      "decodedOriginal": false,
+      "bytes": 771,
+      "sha256": "eb09d30994726852c38868a567345eaf67f4f372f3f9045ecdd20fcd300e4229"
+    }
+  ],
+  "limitations": "Reproducibility from identical acquired inputs; no appearance, physical-device, collision or participant acceptance."
+}

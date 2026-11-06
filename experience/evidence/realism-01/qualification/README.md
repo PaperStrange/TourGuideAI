@@ -1,0 +1,46 @@
+# Kyoto source qualification · 6 November 2026
+
+[All 18 browser captures](views/board.md) · [Six-sight correspondence](landmarks/landmark-correspondence.md) · [Ground board](ground/README.md) · [Reserved photographs and prices](references/README.md)
+
+The 73 acquired original tiles contain 2,269 object occurrences. Selecting source
+replacement levels leaves **1,965 occurrences / 119,514 triangles**; all 304
+excluded occurrences remain in the evidence. Actual geometry is indexed against
+all **54 edges** of the approved **1,353.444 m, six-sight route**.
+
+| Source view | Actual route-forward capture | Review observation / required evidence |
+| --- | --- | --- |
+| Mitsui frontage | ![Mitsui route-forward source view](views/mitsui-frontage-approach.jpg) | Source ID matches the retained building; doorway, canopy and current material detail still need qualification |
+| Nishiki west | ![Nishiki route-forward source view](views/nishiki-market-approach.jpg) | Blurred frontage imagery and missing floor are visible; roof, entrance and passage continuity remain unqualified |
+| Tenmangū approach | ![Tenmangū route-forward source view](views/nishiki-tenmangu-approach.jpg) | Close surfaces obscure architectural detail; torii identity and covered interfaces remain unqualified |
+| Takase at Shijō | ![Takase route-forward source view](views/takase-river-approach.jpg) | Unresolved ground and river context; no exact river-object match in the acquired categories |
+| Pontochō entrance | ![Pontochō route-forward source view](views/pontocho-entrance-approach.jpg) | A wall and railing fragment are visible; entrance identity and ground continuity remain unqualified |
+| Shijō Bridge | ![Bridge route-forward source view](views/shijo-bridge-approach.jpg) | Almost entirely background; this capture fails the visible-content diagnostic |
+
+These cameras follow the route tangent. They are **source inspection poses** with
+provisional height anchors; they are not an unaided-discovery trial. The complete
+board includes reverse and elevated context views. Original GLTF materials use
+neutral diagnostic illumination; current daytime and night appearance remain
+unverified. Source credit: **Kyoto City / MLIT Project PLATEAU, CC BY 4.0**.
+
+| Completed check | Result | Evidence boundary |
+| --- | --- | --- |
+| Source acquisition and decoding | 73 tiles / 41,151,256 original bytes; original material/texture and object identities retained | [Geometry receipts, method and reproduction](geometry/README.md) |
+| Source replacement selection | 304 overlapping ancestor occurrences excluded; zero unresolved alternatives | Declared source hierarchy plus measured overlap; every occurrence retained in compressed GeoJSON |
+| Browser diagnostic | 5 checks pass; 1 fails; zero page errors | [Original report](views/result.json): all models loaded, triangle inventory agrees, native orbit changes submitted camera, 18 captures retained |
+| Landmark correspondence | One exact retained ID (Mitsui), five unverified identities | Spatial candidates do not establish a named entrance or recognizable sight |
+| Ground | 110 nearby LOD1 road polygons have zero source heights; one LOD3 sidewalk section near edges 50–54 | Horizontal coverage is complete; elevation, collision and access remain unverified |
+| Terrain follow-up | Four original DEM envelopes inspected; covering source declares 793,602,405 bytes | [Bounded metadata evidence](dem/README.md); full terrain acquisition and height evaluation remain pending |
+| Reference/capture qualification | Three reserved licensed photographs; two providers' published price items | Partial views and published prices; no full-route capture package or supplier quote |
+
+The acquired PLATEAU surfaces need street-level repair/capture and ground
+registration before they can support the approved realism comparison. R04 source
+inspection is delivered; R04 appearance/ground qualification and R05 acquisition
+remain open. This evidence establishes no production renderer winner or release.
+
+Next deliverables follow the [itemized capture proposal](../../../sprints/realism-01/research/capture-requirements.md):
+matched licensed source imagery/poses for T01–T03; explicit height control for
+roads, covered passages and bridge; independent held-out views; and a complete
+route quote with reuse rights. Physical-device and fresh-participant acceptance
+remain required by [Benchmark V1](../../../sprints/realism-01/benchmark.md).
+
+[Validation and recovery instructions](validation.md)

@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "files": [
+    {
+      "source": "Kyoto City / MLIT Project PLATEAU; original identities in the retained source receipts",
+      "date": "2026-11-06",
+      "rights": "CC BY 4.0; derived diagnostic attributed to TourGuideAI",
+      "location": "Kyoto Shijo East, approved 1,353.444 m / 54-edge / six-sight route",
+      "method": "Unchanged completed-run evidence copied with SHA-256 verification",
+      "limitations": "Source qualification only; current appearance, pedestrian ground, night lighting and production acceptance remain unverified.",
+      "path": "inventory.json",
+      "bytes": 57990,
+      "sha256": "921add797e7fc75ec67ea5159fdacf20ce3b09620cbefad9d362a9db87986367"
+    },
+    {
+      "source": "Kyoto City / MLIT Project PLATEAU; original identities in the retained source receipts",
+      "date": "2026-11-06",
+      "rights": "CC BY 4.0; derived diagnostic attributed to TourGuideAI",
+      "location": "Kyoto Shijo East, approved 1,353.444 m / 54-edge / six-sight route",
+      "method": "Unchanged completed-run evidence copied with SHA-256 verification",
+      "limitations": "Source qualification only; current appearance, pedestrian ground, night lighting and production acceptance remain unverified.",
+      "path": "download-receipts.json",
+      "bytes": 104516,
+      "sha256": "265c76a0b613c6ec15527fa67c718e2e54c62fbf545fc84c5f15207c94a3175f"
+    },
+    {
+      "source": "Kyoto City / MLIT Project PLATEAU; original identities in the retained source receipts",
+      "date": "2026-11-06",
+      "rights": "CC BY 4.0; derived diagnostic attributed to TourGuideAI",
+      "location": "Kyoto Shijo East, approved 1,353.444 m / 54-edge / six-sight route",
+      "method": "Unchanged completed-run evidence copied with SHA-256 verification",
+      "limitations": "Source qualification only; current appearance, pedestrian ground, night lighting and production acceptance remain unverified.",
+      "path": "geometry-audit.json",
+      "bytes": 1154552,
+      "sha256": "3686d1af320af8b1350fed7f174feaf86d320cfa5e67aa35d66fd5f58713ff65"
+    },
+    {
+      "source": "Kyoto City / MLIT Project PLATEAU; original identities in the retained source receipts",
+      "date": "2026-11-06",
+      "rights": "CC BY 4.0; derived diagnostic attributed to TourGuideAI",
+      "location": "Kyoto Shijo East, approved 1,353.444 m / 54-edge / six-sight route",
+      "method": "Unchanged completed-run evidence copied with SHA-256 verification",
+      "limitations": "Source qualification only; current appearance, pedestrian ground, night lighting and production acceptance remain unverified.",
+      "path": "content-selection.json",
+      "bytes": 584637,
+      "sha256": "3a693ad812e2de6604224e396c6da11354e639a0a59fe2e7c6a64be7306dcd4a"
+    },
+    {
+      "source": "Kyoto City / MLIT Project PLATEAU; original identities in the retained source receipts",
+      "date": "2026-11-06",
+      "rights": "CC BY 4.0; derived diagnostic attributed to TourGuideAI",
+      "location": "Kyoto Shijo East, approved 1,353.444 m / 54-edge / six-sight route",
+      "method": "Unchanged completed-run evidence copied with SHA-256 verification",
+      "limitations": "Source qualification only; current appearance, pedestrian ground, night lighting and production acceptance remain unverified.",
+      "path": "review-manifest.json",
+      "bytes": 152409,
+      "sha256": "4999c05d1503407e191de206f212256a6990e0949ab9922c3dba4930d5fe8831"
+    },
+    {
+      "source": "Kyoto City / MLIT Project PLATEAU; original identities in the retained source receipts",
+      "date": "2026-11-06",
+      "rights": "CC BY 4.0; derived diagnostic attributed to TourGuideAI",
+      "location": "Kyoto Shijo East, approved 1,353.444 m / 54-edge / six-sight route",
+      "method": "Lossless gzip, mtime=0; complete original decoded bytes retained",
+      "limitations": "Source qualification only; current appearance, pedestrian ground, night lighting and production acceptance remain unverified.",
+      "path": "objects.geojson.gz",
+      "bytes": 1492499,
+      "sha256": "2fe02a9e5db47f2f4d75dc4a55257a5dcf516ed6512416401cc62e241185d2f0",
+      "decodedBytes": 9802622,
+      "decodedSha256": "3dd94c819a1cab73c4e3c5f146542a2429d2172aaeda08487b4507fbcfd2a56b"
+    }
+  ],
+  "producers": [
+    {
+      "path": "experience/tools/source-qualification/retain.py",
+      "bytes": 6175,
+      "sha256": "309db3ce5705f17957a5ccfc179205898123922f59a999d491f4eee89668c5ec"
+    },
+    {
+      "path": "experience/tools/source-qualification/geometry.py",
+      "bytes": 27891,
+      "sha256": "ca279ffc16decb2a30b85a9caee47eda9630accc8e33fd54a9541c08711b7e4d"
+    },
+    {
+      "path": "experience/tools/source-qualification/requirements.txt",
+      "bytes": 108,
+      "sha256": "0d1be4f40c28055a802e5b551e4cf3947442e9c28a61ad4eb27f10ce5f145024"
+    }
+  ],
+  "limitations": "Source qualification only; current appearance, pedestrian ground, night lighting and production acceptance remain unverified.",
+  "libraries": {
+    "py3dtiles": "12.1.1",
+    "pygltflib": "1.16.5",
+    "DracoPy": "2.2.0",
+    "numpy": "2.5.4",
+    "pyproj": "3.8.0",
+    "shapely": "2.1.2",
+    "Pillow": "12.3.0"
+  }
+}

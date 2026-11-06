@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "files": [
+    {
+      "source": "Kyoto City / MLIT Project PLATEAU; original identities in the retained source receipts",
+      "date": "2026-11-06",
+      "rights": "CC BY 4.0; derived diagnostic attributed to TourGuideAI",
+      "location": "Kyoto Shijo East, approved 1,353.444 m / 54-edge / six-sight route",
+      "method": "Original bounded DEM envelope inspection report",
+      "limitations": "Envelope metadata only; full terrain was not acquired or evaluated.",
+      "path": "dem-envelope-audit.json",
+      "bytes": 5808,
+      "sha256": "22adb1397e55ddc54bb17582714062230842e465d6c59981908407d9f307c66a"
+    },
+    {
+      "source": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/dem/523546_dem_6697_05_op.gml",
+      "date": "2026-11-06T06:22:36.793722+00:00",
+      "rights": "Kyoto City / MLIT Project PLATEAU · CC BY 4.0",
+      "location": "Kyoto terrain source mesh 523546",
+      "method": "HTTPS Range request for bytes 0–32767; urllib3 decodes HTTP content encoding; decoded prefix capped at 32768 bytes; ElementTree XMLPullParser reads the completed GML envelope",
+      "limitations": "Partial original response; envelope bounds do not establish triangle coverage, terrain quality or pedestrian-floor height.",
+      "path": "523546_dem_6697_05_op.gml.prefix",
+      "bytes": 32768,
+      "sha256": "3c322316efda101820fbbf2b6bd429644111c22267adfdd1444583aa12489cdc"
+    },
+    {
+      "source": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/dem/523546_dem_6697_00_op.gml",
+      "date": "2026-11-06T06:22:37.289137+00:00",
+      "rights": "Kyoto City / MLIT Project PLATEAU · CC BY 4.0",
+      "location": "Kyoto terrain source mesh 523546",
+      "method": "HTTPS Range request for bytes 0–32767; urllib3 decodes HTTP content encoding; decoded prefix capped at 32768 bytes; ElementTree XMLPullParser reads the completed GML envelope",
+      "limitations": "Partial original response; envelope bounds do not establish triangle coverage, terrain quality or pedestrian-floor height.",
+      "path": "523546_dem_6697_00_op.gml.prefix",
+      "bytes": 32768,
+      "sha256": "9f97319f7f67af2f7edbca11a8d93cb42e8f946507f0701441e2912405bbcfc4"
+    },
+    {
+      "source": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/dem/523546_dem_6697_55_op.gml",
+      "date": "2026-11-06T06:22:37.752581+00:00",
+      "rights": "Kyoto City / MLIT Project PLATEAU · CC BY 4.0",
+      "location": "Kyoto terrain source mesh 523546",
+      "method": "HTTPS Range request for bytes 0–32767; urllib3 decodes HTTP content encoding; decoded prefix capped at 32768 bytes; ElementTree XMLPullParser reads the completed GML envelope",
+      "limitations": "Partial original response; envelope bounds do not establish triangle coverage, terrain quality or pedestrian-floor height.",
+      "path": "523546_dem_6697_55_op.gml.prefix",
+      "bytes": 32768,
+      "sha256": "35ef7bd51d1d6d97da0165ef64be5ae1f359ea61a05fc4189336b275bbcde858"
+    },
+    {
+      "source": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/dem/523546_dem_6697_50_op.gml",
+      "date": "2026-11-06T06:22:38.293273+00:00",
+      "rights": "Kyoto City / MLIT Project PLATEAU · CC BY 4.0",
+      "location": "Kyoto terrain source mesh 523546",
+      "method": "HTTPS Range request for bytes 0–32767; urllib3 decodes HTTP content encoding; decoded prefix capped at 32768 bytes; ElementTree XMLPullParser reads the completed GML envelope",
+      "limitations": "Partial original response; envelope bounds do not establish triangle coverage, terrain quality or pedestrian-floor height.",
+      "path": "523546_dem_6697_50_op.gml.prefix",
+      "bytes": 32768,
+      "sha256": "cbdae4c9a83ea14952d6a8245570e4ec65a8c043ad3665ba257fe5696b01f03c"
+    }
+  ],
+  "producers": [
+    {
+      "path": "experience/tools/source-qualification/retain.py",
+      "bytes": 6175,
+      "sha256": "309db3ce5705f17957a5ccfc179205898123922f59a999d491f4eee89668c5ec"
+    },
+    {
+      "path": "experience/evidence/realism-01/qualification/ground/inspect_dem.py",
+      "bytes": 4722,
+      "sha256": "4fbfccad32a71ea95dee7f1d7c49d7fd69164f1a51f8aea0983636897993ef90"
+    }
+  ],
+  "limitations": "Source qualification only; current appearance, pedestrian ground, night lighting and production acceptance remain unverified."
+}

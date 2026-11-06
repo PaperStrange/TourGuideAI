@@ -1,0 +1,564 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<core:CityModel xmlns:core="http://www.opengis.net/citygml/2.0" xmlns:gml="http://www.opengis.net/gml" xmlns:bldg="http://www.opengis.net/citygml/building/2.0" xmlns:gen="http://www.opengis.net/citygml/generics/2.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:app="http://www.opengis.net/citygml/appearance/2.0" xmlns:brid="http://www.opengis.net/citygml/bridge/2.0" xmlns:dem="http://www.opengis.net/citygml/relief/2.0" xmlns:luse="http://www.opengis.net/citygml/landuse/2.0" xmlns:tex="http://www.opengis.net/citygml/textures/2.0" xmlns:tran="http://www.opengis.net/citygml/transportation/2.0" xmlns:tun="http://www.opengis.net/citygml/tunnel/2.0" xmlns:veg="http://www.opengis.net/citygml/vegetation/2.0" xmlns:wtr="http://www.opengis.net/citygml/waterbody/2.0" xmlns:xAL="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uro="https://www.geospatial.jp/iur/uro/3.2" xmlns:urf="https://www.geospatial.jp/iur/urf/3.2" xmlns:frn="http://www.opengis.net/citygml/cityfurniture/2.0" xmlns:grp="http://www.opengis.net/citygml/cityobjectgroup/2.0" xsi:schemaLocation="http://www.opengis.net/citygml/2.0 http://schemas.opengis.net/citygml/2.0/cityGMLBase.xsd http://www.opengis.net/citygml/profiles/base/2.0 http://schemas.opengis.net/citygml/profiles/base/2.0/CityGML.xsd https://www.geospatial.jp/iur/uro/3.2 ../../schemas/iur/uro/3.2/urbanObject.xsd https://www.geospatial.jp/iur/urf/3.2 ../../schemas/iur/urf/3.2/urbanFunction.xsd">
+  <gml:boundedBy>
+    <gml:Envelope srsName="http://www.opengis.net/def/crs/EPSG/0/6697" srsDimension="3">
+      <gml:lowerCorner>35.06666667 135.8125 129.22</gml:lowerCorner>
+      <gml:upperCorner>35.08333333 135.825 683.237</gml:upperCorner>
+    </gml:Envelope>
+  </gml:boundedBy>
+  <core:cityObjectMember>
+    <dem:ReliefFeature gml:id="dem_d988c054-19d2-436d-bf59-c17f5cf0e8f1">
+      <gml:name>52354685</gml:name>
+      <core:creationDate>2023-03-24</core:creationDate>
+      <dem:lod>1</dem:lod>
+      <dem:reliefComponent>
+        <dem:TINRelief gml:id="dem_3ea1134c-fe85-43a9-a4c5-57fa41932be6">
+          <gml:name>52354685</gml:name>
+          <core:creationDate>2023-03-24</core:creationDate>
+          <dem:lod>1</dem:lod>
+          <dem:tin>
+            <gml:TriangulatedSurface>
+              <gml:trianglePatches>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06678657 135.81251471 221.773 35.0667415 135.81251481 225.966 35.06678666 135.81256953 222.224 35.06678657 135.81251471 221.773</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06678657 135.81251471 221.773 35.06678666 135.81256953 222.224 35.06683165 135.81251461 217.979 35.06678657 135.81251471 221.773</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06678666 135.81256953 222.224 35.0667415 135.81251481 225.966 35.06674159 135.81256963 226.599 35.06678666 135.81256953 222.224</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06678666 135.81256953 222.224 35.06674159 135.81256963 226.599 35.06678674 135.81262435 222.562 35.06678666 135.81256953 222.224</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06678666 135.81256953 222.224 35.06678674 135.81262435 222.562 35.06683173 135.81256943 218.824 35.06678666 135.81256953 222.224</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06678666 135.81256953 222.224 35.06683173 135.81256943 218.824 35.06683165 135.81251461 217.979 35.06678666 135.81256953 222.224</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06678674 135.81262435 222.562 35.06674159 135.81256963 226.599 35.06674167 135.81262445 226.812 35.06678674 135.81262435 222.562</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06678674 135.81262435 222.562 35.06674167 135.81262445 226.812 35.06678683 135.81267917 222.581 35.06678674 135.81262435 222.562</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06678674 135.81262435 222.562 35.06678683 135.81267917 222.581 35.06683182 135.81262425 220.056 35.06678674 135.81262435 222.562</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06678674 135.81262435 222.562 35.06683182 135.81262425 220.056 35.06683173 135.81256943 218.824 35.06678674 135.81262435 222.562</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06678683 135.81267917 222.581 35.06674167 135.81262445 226.812 35.06674175 135.81267928 226.505 35.06678683 135.81267917 222.581</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06678683 135.81267917 222.581 35.06674175 135.81267928 226.505 35.06678691 135.81273399 222.865 35.06678683 135.81267917 222.581</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06678683 135.81267917 222.581 35.06678691 135.81273399 222.865 35.0668319 135.81267907 221.866 35.06678683 135.81267917 222.581</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06678683 135.81267917 222.581 35.0668319 135.81267907 221.866 35.06683182 135.81262425 220.056 35.06678683 135.81267917 222.581</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06678691 135.81273399 222.865 35.06683199 135.81273389 224.256 35.0668319 135.81267907 221.866 35.06678691 135.81273399 222.865</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06678691 135.81273399 222.865 35.06674175 135.81267928 226.505 35.06674184 135.8127341 225.206 35.06678691 135.81273399 222.865</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06678691 135.81273399 222.865 35.06674184 135.8127341 225.206 35.066787 135.81278882 224.459 35.06678691 135.81273399 222.865</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06678691 135.81273399 222.865 35.066787 135.81278882 224.459 35.06683199 135.81273389 224.256 35.06678691 135.81273399 222.865</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.0667415 135.81251481 225.966 35.06669643 135.81251492 230.43 35.06674159 135.81256963 226.599 35.0667415 135.81251481 225.966</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06674159 135.81256963 226.599 35.06669643 135.81251492 230.43 35.06669651 135.81256974 230.621 35.06674159 135.81256963 226.599</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06674159 135.81256963 226.599 35.06669651 135.81256974 230.621 35.06674167 135.81262445 226.812 35.06674159 135.81256963 226.599</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06674167 135.81262445 226.812 35.06669651 135.81256974 230.621 35.0666966 135.81262456 230.438 35.06674167 135.81262445 226.812</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06674167 135.81262445 226.812 35.0666966 135.81262456 230.438 35.06674175 135.81267928 226.505 35.06674167 135.81262445 226.812</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06674175 135.81267928 226.505 35.0666966 135.81262456 230.438 35.06669668 135.81267938 230.161 35.06674175 135.81267928 226.505</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06674175 135.81267928 226.505 35.06669668 135.81267938 230.161 35.06674184 135.8127341 225.206 35.06674175 135.81267928 226.505</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06674184 135.8127341 225.206 35.06669677 135.8127342 229.868 35.06674192 135.81278892 224.956 35.06674184 135.8127341 225.206</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06674184 135.8127341 225.206 35.06674192 135.81278892 224.956 35.066787 135.81278882 224.459 35.06674184 135.8127341 225.206</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06674184 135.8127341 225.206 35.06669668 135.81267938 230.161 35.06669677 135.8127342 229.868 35.06674184 135.8127341 225.206</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06669677 135.8127342 229.868 35.06669685 135.81278902 229.256 35.06674192 135.81278892 224.956 35.06669677 135.8127342 229.868</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06768803 135.81251265 217.941 35.06764296 135.81251275 218.837 35.06768812 135.81256747 219.318 35.06768803 135.81251265 217.941</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06768812 135.81256747 219.318 35.06764296 135.81251275 218.837 35.06764304 135.81256757 220.05 35.06768812 135.81256747 219.318</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06768812 135.81256747 219.318 35.06764304 135.81256757 220.05 35.0676882 135.81262229 220.941 35.06768812 135.81256747 219.318</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.0676882 135.81262229 220.941 35.06764304 135.81256757 220.05 35.06764313 135.81262239 221.569 35.0676882 135.81262229 220.941</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.0676882 135.81262229 220.941 35.06764313 135.81262239 221.569 35.06768829 135.81267711 222.452 35.0676882 135.81262229 220.941</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06768829 135.81267711 222.452 35.06764313 135.81262239 221.569 35.06764321 135.81267722 223.201 35.06768829 135.81267711 222.452</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06768829 135.81267711 222.452 35.06764321 135.81267722 223.201 35.06768837 135.81273194 224.193 35.06768829 135.81267711 222.452</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06768837 135.81273194 224.193 35.06764321 135.81267722 223.201 35.0676433 135.81273204 224.992 35.06768837 135.81273194 224.193</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06768837 135.81273194 224.193 35.0676433 135.81273204 224.992 35.06768846 135.81278676 226.352 35.06768837 135.81273194 224.193</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06764296 135.81251275 218.837 35.06759789 135.81251285 219.851 35.06764304 135.81256757 220.05 35.06764296 135.81251275 218.837</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06764304 135.81256757 220.05 35.06759789 135.81251285 219.851 35.06759797 135.81256768 221.152 35.06764304 135.81256757 220.05</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06764304 135.81256757 220.05 35.06759797 135.81256768 221.152 35.06764313 135.81262239 221.569 35.06764304 135.81256757 220.05</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06764313 135.81262239 221.569 35.06759797 135.81256768 221.152 35.06759806 135.8126225 222.536 35.06764313 135.81262239 221.569</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06764313 135.81262239 221.569 35.06759806 135.8126225 222.536 35.06764321 135.81267722 223.201 35.06764313 135.81262239 221.569</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06764321 135.81267722 223.201 35.06759806 135.8126225 222.536 35.06759814 135.81267732 224.203 35.06764321 135.81267722 223.201</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06764321 135.81267722 223.201 35.06759814 135.81267732 224.203 35.0676433 135.81273204 224.992 35.06764321 135.81267722 223.201</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.0676433 135.81273204 224.992 35.06759823 135.81273214 226.278 35.06764338 135.81278686 226.954 35.0676433 135.81273204 224.992</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.0676433 135.81273204 224.992 35.06764338 135.81278686 226.954 35.06768846 135.81278676 226.352 35.0676433 135.81273204 224.992</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.0676433 135.81273204 224.992 35.06759814 135.81267732 224.203 35.06759823 135.81273214 226.278 35.0676433 135.81273204 224.992</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06759789 135.81251285 219.851 35.06755281 135.81251296 220.897 35.06759797 135.81256768 221.152 35.06759789 135.81251285 219.851</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06759797 135.81256768 221.152 35.06755281 135.81251296 220.897 35.0675529 135.81256778 222.265 35.06759797 135.81256768 221.152</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06759797 135.81256768 221.152 35.0675529 135.81256778 222.265 35.06759806 135.8126225 222.536 35.06759797 135.81256768 221.152</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06759806 135.8126225 222.536 35.0675529 135.81256778 222.265 35.06755298 135.8126226 223.625 35.06759806 135.8126225 222.536</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06759806 135.8126225 222.536 35.06755298 135.8126226 223.625 35.06759814 135.81267732 224.203 35.06759806 135.8126225 222.536</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06759814 135.81267732 224.203 35.06755298 135.8126226 223.625 35.06755307 135.81267742 225.692 35.06759814 135.81267732 224.203</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06759814 135.81267732 224.203 35.06755307 135.81267742 225.692 35.06759823 135.81273214 226.278 35.06759814 135.81267732 224.203</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06759823 135.81273214 226.278 35.06759831 135.81278696 227.881 35.06764338 135.81278686 226.954 35.06759823 135.81273214 226.278</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06759823 135.81273214 226.278 35.06755307 135.81267742 225.692 35.06755315 135.81273224 227.631 35.06759823 135.81273214 226.278</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06759823 135.81273214 226.278 35.06755315 135.81273224 227.631 35.06759831 135.81278696 227.881 35.06759823 135.81273214 226.278</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06755281 135.81251296 220.897 35.06750774 135.81251306 221.797 35.0675529 135.81256778 222.265 35.06755281 135.81251296 220.897</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.0675529 135.81256778 222.265 35.06750774 135.81251306 221.797 35.06750783 135.81256788 223.271 35.0675529 135.81256778 222.265</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.0675529 135.81256778 222.265 35.06750783 135.81256788 223.271 35.06755298 135.8126226 223.625 35.0675529 135.81256778 222.265</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06755298 135.8126226 223.625 35.06750783 135.81256788 223.271 35.06750791 135.8126227 224.737 35.06755298 135.8126226 223.625</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06755298 135.8126226 223.625 35.06750791 135.8126227 224.737 35.06755307 135.81267742 225.692 35.06755298 135.8126226 223.625</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06755307 135.81267742 225.692 35.06750791 135.8126227 224.737 35.06750799 135.81267753 227.032 35.06755307 135.81267742 225.692</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06755307 135.81267742 225.692 35.06750799 135.81267753 227.032 35.06755315 135.81273224 227.631 35.06755307 135.81267742 225.692</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06755315 135.81273224 227.631 35.06755324 135.81278707 228.551 35.06759831 135.81278696 227.881 35.06755315 135.81273224 227.631</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06755315 135.81273224 227.631 35.06750799 135.81267753 227.032 35.06750808 135.81273235 228.498 35.06755315 135.81273224 227.631</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06755315 135.81273224 227.631 35.06750808 135.81273235 228.498 35.06755324 135.81278707 228.551 35.06755315 135.81273224 227.631</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06750774 135.81251306 221.797 35.06746267 135.81251316 222.547 35.06750783 135.81256788 223.271 35.06750774 135.81251306 221.797</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06750783 135.81256788 223.271 35.06746267 135.81251316 222.547 35.06746275 135.81256798 224.15 35.06750783 135.81256788 223.271</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06750783 135.81256788 223.271 35.06746275 135.81256798 224.15 35.06750791 135.8126227 224.737 35.06750783 135.81256788 223.271</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06750791 135.8126227 224.737 35.06746275 135.81256798 224.15 35.06746284 135.81262281 225.762 35.06750791 135.8126227 224.737</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06750791 135.8126227 224.737 35.06746284 135.81262281 225.762 35.06750799 135.81267753 227.032 35.06750791 135.8126227 224.737</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06750799 135.81267753 227.032 35.06746284 135.81262281 225.762 35.06746292 135.81267763 227.786 35.06750799 135.81267753 227.032</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06750799 135.81267753 227.032 35.06746292 135.81267763 227.786 35.06750808 135.81273235 228.498 35.06750799 135.81267753 227.032</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06750808 135.81273235 228.498 35.06750816 135.81278717 229.124 35.06755324 135.81278707 228.551 35.06750808 135.81273235 228.498</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06750808 135.81273235 228.498 35.06746292 135.81267763 227.786 35.06746301 135.81273245 228.753 35.06750808 135.81273235 228.498</gml:posList>
+                    </gml:LinearRing>
+                  </gml:exterior>
+                </gml:Triangle>
+                <gml:Triangle>
+                  <gml:exterior>
+                    <gml:LinearRing>
+                      <gml:posList>35.06750808 135.81273235 228.498 35.06746301 135.81273245 228.753 35.06750

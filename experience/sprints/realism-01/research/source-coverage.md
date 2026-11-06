@@ -1,6 +1,6 @@
 # Full-route source coverage
 
-Reviewed 5 November 2026. Method: retained route/licensing review, original byte and content inspection of four building tiles and one road tile, and a reproducible candidate-bounds index for all 54 edges. Walking-height appearance acceptance and a photographic survey remain outstanding.
+Reviewed 6 November 2026. Method: retained route/licensing review, decoding of 73 original building/road/furniture tiles, actual projected object mapping for all 54 edges, 18 assembled browser captures and original CityGML road inspection. Walking-height appearance acceptance and a photographic survey remain outstanding.
 
 The [current route](../../../src/neighborhoods/shijo-east/geography.json) contains **1,353.444 m, 54 ordered edges and six sights**. Coordinates below are longitude, latitude. The [licensing receipts](licensing-receipts.json) bind the inspected files by SHA-256. All appearance qualification remains **open**.
 
@@ -14,6 +14,23 @@ occur only beside edges 50–54 in the retained collections. Bounds provide an
 acquisition index; all appearance, ground and lighting acceptance remains open.
 The [every-edge index](../../../evidence/realism-01/sources/route-source-audit.json)
 includes non-leaf content, candidate URLs and nearby inspected object IDs.
+
+The [completed source inspection](../../../evidence/realism-01/qualification/README.md)
+extends acquisition into Shimogyo and Higashiyama. It retains 2,269 original object
+occurrences, 1,965 selected occurrences and 119,514 selected triangles. All 304
+excluded source ancestors retain their measured overlap and replacement hierarchy.
+The [18-view board](../../../evidence/realism-01/qualification/views/board.md)
+shows original surfaces at provisional source-height cameras. Five browser checks
+pass; bridge approach visibility fails. These source views establish no production
+realism, pedestrian-ground or independent-discovery acceptance.
+
+[Source correspondence](../../../evidence/realism-01/qualification/landmarks/landmark-correspondence.md)
+confirms Mitsui's retained GML ID in the acquired Shimogyo LOD2 model. Five other
+sight identities remain unverified. The [ground audit](../../../evidence/realism-01/qualification/ground/README.md)
+finds 110 nearby LOD1 roads with zero heights and one detailed sidewalk section
+near edges 50–54. The [DEM envelope review](../../../evidence/realism-01/qualification/dem/README.md)
+identifies a covering terrain source; actual terrain and pedestrian floor heights
+remain unqualified.
 
 ## Sight coverage
 
@@ -43,18 +60,18 @@ Edge ranges are inclusive, one-based positions in `selectedRoute.edgeIds`; toget
 | Source | What the retained evidence establishes | Required qualification |
 | --- | --- | --- |
 | Kyoto LOD1 2025 | Selected solids and source Z values retained; current presentation derives footprints and height ranges | Original appearance is absent from this preparation; replace authored level-zero placement only after reconciling horizontal/vertical datums |
-| Kyoto textured PLATEAU | Four original building samples contain 52 LOD2 and three LOD3 objects; original IDs, triangles and four texture atlases verified. Metadata declares CC BY 4.0; LOD3 acquisition FY2023, metadata publication 2026-03-31 | Match actual visible surfaces to route edges, including adjacent wards. Inspect walking-height textures, occlusions and current conditions; bounding candidates remain unqualified |
+| Kyoto textured PLATEAU | 73 original tiles decoded; 2,086 LOD2, 21 LOD3 and six LOD1 building occurrences before source replacement selection. IDs, surfaces, texture hashes and 18 assembled source views retained. Metadata declares CC BY 4.0; LOD3 acquisition FY2023, metadata publication 2026-03-31 | Original views expose blurred close surfaces and missing ground/context. Match named features and current condition, register pedestrian ground, and qualify covered entrances and night lighting |
 | Pontochō metadata inventory | Containing mesh has 4,444 LOD2 buildings, including 138 with LOD3; mixed LOD1–3 tileset identified | Record per-object LOD, surfaces, texture resolution and occlusions. The small research rectangle covers only the eastern area |
 | Licensed still photographs | Particular dated features, authors and licenses recorded in the two photo registries | Match each façade/viewpoint before use; retain attribution and applicable ShareAlike obligations; current conditions and reconstruction suitability remain unverified |
 | Operator descriptions | Paraphrased location/access facts | Descriptions confer no license to redistribute operator photos or reconstruct their imagery |
 
 The [source ledger](../../../src/neighborhoods/shijo-east/source-ledger.json) explicitly records authored navigation height 0, water height −2.5 m and canopy dimensions. None is a measured terrain claim. The [provider review](../../../evidence/neighborhood-20261027/world/provider-research.md) supplies historical provider terms and fees; procurement must recheck them before use.
 
-**Next evidence:** extend the five sampled content inspections across the 51 building
-candidates and the road/furniture candidates, identify every sight by source object,
-and assess assembled surfaces from walking height. Mitsui correspondence is
-unconfirmed in non-leaf `data840`; Nishiki samples are LOD2; the sampled Pontochō
-road has no image texture. Ground datum, opposite street sides, passages and night
-fixtures require independent qualification. Assign unresolved requirements to the
+**Next evidence:** qualify current visible features at all six approaches, obtain
+matched imagery for street-level surfaces and covered passages, and register
+building/terrain/pedestrian-floor datums using reviewed controls. Source ID continuity
+for Mitsui leaves its current façade and entrance acceptance open. All five other
+named sight correspondences remain unverified. Ground, opposite street sides,
+passages and night fixtures require independent qualification. Assign requirements to the
 [capture proposal](capture-requirements.md). Renderer selection remains open until
 the matched full-route builds and benchmark acceptance have actual evidence.

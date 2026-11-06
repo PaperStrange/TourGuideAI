@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "files": [
+    {
+      "source": "Actual repeated source extraction, ground audit and semantic matching on retained originals",
+      "date": "2026-11-06",
+      "rights": "CC BY 4.0; derived diagnostic attributed to TourGuideAI",
+      "location": "Kyoto Shijo East, approved 1,353.444 m / 54-edge / six-sight route",
+      "method": "Byte equality for 83 generated outputs and SHA-256/size checks for 73 original B3DM files",
+      "limitations": "Source qualification only; current appearance, pedestrian ground, night lighting and production acceptance remain unverified.",
+      "path": "reproduction.json",
+      "bytes": 31934,
+      "sha256": "5259456eb97b240e7a5924cddcaddba6fd30698cf5e0a0ccfd31fc97d6557116"
+    }
+  ],
+  "producers": [
+    {
+      "path": "experience/tools/source-qualification/retain.py",
+      "bytes": 6175,
+      "sha256": "309db3ce5705f17957a5ccfc179205898123922f59a999d491f4eee89668c5ec"
+    },
+    {
+      "path": "experience/tools/source-qualification/verify-reproduction.py",
+      "bytes": 3241,
+      "sha256": "bf40610b5d1e82052a0d818471a5c1715318499692cbc956dec5b5ee4f3cbcb8"
+    }
+  ],
+  "limitations": "Source qualification only; current appearance, pedestrian ground, night lighting and production acceptance remain unverified."
+}

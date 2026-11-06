@@ -1,0 +1,749 @@
+{
+  "schemaVersion": 1,
+  "coordinateSystem": "+proj=aeqd +lat_0=35.003739 +lon_0=135.759719 +datum=WGS84 +units=m",
+  "sourceOccurrences": 2269,
+  "selectedOccurrences": 1965,
+  "method": "Join retained semantic feature IDs to decoded PLATEAU object IDs; index actual triangle-union footprints near each public approach using Shapely.",
+  "inputs": [
+    {
+      "path": "experience/src/neighborhoods/shijo-east/geography.json",
+      "bytes": 175220,
+      "sha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f"
+    },
+    {
+      "path": "experience/src/neighborhoods/shijo-east/scene.json",
+      "bytes": 8789674,
+      "sha256": "2979a2e426271fe19c91114928eb27b625cbfe3f8548eef4bdaec73e45cb7e8e"
+    },
+    {
+      "path": "experience/sprints/realism-01/experiments/landmark-targets.json",
+      "bytes": 2074,
+      "sha256": "b71494c9c52fe310f0d49ea4c6344dba85b9c56b9eeae9accfbdc01aa1202056"
+    },
+    {
+      "path": "experience/evidence/realism-01/qualification/geometry/objects.geojson.gz",
+      "bytes": 1492499,
+      "sha256": "2fe02a9e5db47f2f4d75dc4a55257a5dcf516ed6512416401cc62e241185d2f0"
+    }
+  ],
+  "limitations": [
+    "A repeated gml_id establishes source-object continuity; it does not verify current architecture, source photography, door positions or appearance quality.",
+    "Spatial candidates may be adjacent buildings or street objects. Their proximity or footprint overlap does not establish semantic identity.",
+    "Reference source geometries and approach coordinates retain their existing accuracy limits. No new surveyed height or pedestrian access is inferred."
+  ],
+  "sights": [
+    {
+      "sightId": "mitsui-frontage",
+      "approach": {
+        "longitude": 135.7599457,
+        "latitude": 35.00376
+      },
+      "retainedSceneSourceId": "kyoto-city:bldg_d4824084-63c9-4d60-8320-30b3f2e440b9",
+      "retainedGmlId": "bldg_d4824084-63c9-4d60-8320-30b3f2e440b9",
+      "sourceObjectContinuity": "verified-id",
+      "requiredFeatures": [
+        "columned corner",
+        "Shijo frontage",
+        "recessed windows",
+        "canopy underside",
+        "entrance correspondence"
+      ],
+      "searchDistanceMetres": 25,
+      "candidates": [
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/d3/4c620c-1c8b-44fa-9168-b50ed86f27f1/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26106_shimogyo-ku_lod3/data/data5.b3dm#354",
+          "gmlId": "bldg_d4824084-63c9-4d60-8320-30b3f2e440b9",
+          "source": "https://assets.cms.plateau.reearth.io/assets/d3/4c620c-1c8b-44fa-9168-b50ed86f27f1/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26106_shimogyo-ku_lod3/data/data5.b3dm",
+          "category": "building",
+          "lod": 2,
+          "relationship": "same-source-object",
+          "approachDistanceMetres": 2.576,
+          "referenceDistanceMetres": 0.0,
+          "referenceAreaOverlapFraction": 0.999999,
+          "triangles": 44,
+          "texturedTriangles": 39
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/d3/4c620c-1c8b-44fa-9168-b50ed86f27f1/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26106_shimogyo-ku_lod3/data/data5.b3dm#260",
+          "gmlId": "bldg_9eb8fdcc-d58d-4e3d-be7e-fce36b6d5dfc",
+          "source": "https://assets.cms.plateau.reearth.io/assets/d3/4c620c-1c8b-44fa-9168-b50ed86f27f1/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26106_shimogyo-ku_lod3/data/data5.b3dm",
+          "category": "building",
+          "lod": 2,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 21.556,
+          "referenceDistanceMetres": 23.981,
+          "referenceAreaOverlapFraction": 0.0,
+          "triangles": 32,
+          "texturedTriangles": 29
+        }
+      ],
+      "appearanceStatus": "unverified",
+      "entranceStatus": "unverified",
+      "groundStatus": "unverified",
+      "nightLightingStatus": "unverified"
+    },
+    {
+      "sightId": "nishiki-market",
+      "approach": {
+        "longitude": 135.7625989,
+        "latitude": 35.0049985
+      },
+      "retainedSceneSourceId": "osm:way:772134672",
+      "retainedGmlId": null,
+      "sourceObjectContinuity": "unverified",
+      "requiredFeatures": [
+        "west portal",
+        "covered passage",
+        "individual shop fronts",
+        "roof underside",
+        "floor clearance"
+      ],
+      "searchDistanceMetres": 25,
+      "candidates": [
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data804.b3dm#2",
+          "gmlId": "bldg_1631a5e8-b711-44a3-8cc9-7e15cefbbb56",
+          "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data804.b3dm",
+          "category": "building",
+          "lod": 2,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 2.501,
+          "referenceDistanceMetres": 0.168,
+          "referenceAreaOverlapFraction": 0.0,
+          "triangles": 72,
+          "texturedTriangles": 64
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data802.b3dm#8",
+          "gmlId": "bldg_7f4eed31-7a99-4b60-8e22-0cdbfbf37041",
+          "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data802.b3dm",
+          "category": "building",
+          "lod": 2,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 4.256,
+          "referenceDistanceMetres": 2.088,
+          "referenceAreaOverlapFraction": 0.0,
+          "triangles": 34,
+          "texturedTriangles": 28
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data804.b3dm#0",
+          "gmlId": "bldg_d44c390f-ff98-4228-8069-37d741d7fb16",
+          "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data804.b3dm",
+          "category": "building",
+          "lod": 2,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 6.336,
+          "referenceDistanceMetres": 6.059,
+          "referenceAreaOverlapFraction": 0.0,
+          "triangles": 16,
+          "texturedTriangles": 14
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data817.b3dm#7",
+          "gmlId": "bldg_d8e98fc7-7bc5-41cc-bb42-434095df4ed0",
+          "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data817.b3dm",
+          "category": "building",
+          "lod": 2,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 6.473,
+          "referenceDistanceMetres": 5.832,
+          "referenceAreaOverlapFraction": 0.0,
+          "triangles": 64,
+          "texturedTriangles": 60
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data802.b3dm#11",
+          "gmlId": "bldg_ad45acd5-3f29-49dc-884a-3599e01b6f50",
+          "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data802.b3dm",
+          "category": "building",
+          "lod": 2,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 10.306,
+          "referenceDistanceMetres": 3.969,
+          "referenceAreaOverlapFraction": 0.0,
+          "triangles": 118,
+          "texturedTriangles": 102
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data819.b3dm#2",
+          "gmlId": "bldg_60ffa17e-4434-499a-8d7d-44e687739f5f",
+          "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data819.b3dm",
+          "category": "building",
+          "lod": 2,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 12.981,
+          "referenceDistanceMetres": 12.783,
+          "referenceAreaOverlapFraction": 0.0,
+          "triangles": 28,
+          "texturedTriangles": 26
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data804.b3dm#7",
+          "gmlId": "bldg_6cd9d71e-582c-4dff-9c12-0a13ae0560e8",
+          "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data804.b3dm",
+          "category": "building",
+          "lod": 2,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 15.116,
+          "referenceDistanceMetres": 0.296,
+          "referenceAreaOverlapFraction": 0.0,
+          "triangles": 48,
+          "texturedTriangles": 42
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data802.b3dm#6",
+          "gmlId": "bldg_59b9d09c-cfeb-457a-b52c-35f83ee37d52",
+          "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data802.b3dm",
+          "category": "building",
+          "lod": 2,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 15.796,
+          "referenceDistanceMetres": 2.701,
+          "referenceAreaOverlapFraction": 0.0,
+          "triangles": 72,
+          "texturedTriangles": 70
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data817.b3dm#5",
+          "gmlId": "bldg_81d339f5-52d5-431c-b1d4-056b1918c258",
+          "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data817.b3dm",
+          "category": "building",
+          "lod": 2,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 15.934,
+          "referenceDistanceMetres": 15.598,
+          "referenceAreaOverlapFraction": 0.0,
+          "triangles": 64,
+          "texturedTriangles": 60
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data802.b3dm#12",
+          "gmlId": "bldg_def47fa1-79de-4960-a0d9-269ba84a625e",
+          "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data802.b3dm",
+          "category": "building",
+          "lod": 2,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 16.206,
+          "referenceDistanceMetres": 14.706,
+          "referenceAreaOverlapFraction": 0.0,
+          "triangles": 24,
+          "texturedTriangles": 22
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data804.b3dm#14",
+          "gmlId": "bldg_a2826c38-07f2-4e9a-b0dc-17f2fc633d31",
+          "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data804.b3dm",
+          "category": "building",
+          "lod": 2,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 16.761,
+          "referenceDistanceMetres": 15.264,
+          "referenceAreaOverlapFraction": 0.0,
+          "triangles": 20,
+          "texturedTriangles": 18
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data819.b3dm#7",
+          "gmlId": "bldg_d84628b3-0bd9-433b-b941-54a0f5afd378",
+          "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data819.b3dm",
+          "category": "building",
+          "lod": 2,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 17.662,
+          "referenceDistanceMetres": 17.516,
+          "referenceAreaOverlapFraction": 0.0,
+          "triangles": 20,
+          "texturedTriangles": 18
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data819.b3dm#5",
+          "gmlId": "bldg_b47d67a9-d84d-455f-98fc-d9a9ed84af63",
+          "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data819.b3dm",
+          "category": "building",
+          "lod": 2,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 18.6,
+          "referenceDistanceMetres": 17.308,
+          "referenceAreaOverlapFraction": 0.0,
+          "triangles": 40,
+          "texturedTriangles": 26
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data804.b3dm#12",
+          "gmlId": "bldg_a26273d5-fbfe-44cb-9fe3-9c00e273a7b3",
+          "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data804.b3dm",
+          "category": "building",
+          "lod": 2,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 20.873,
+          "referenceDistanceMetres": 19.459,
+          "referenceAreaOverlapFraction": 0.0,
+          "triangles": 44,
+          "texturedTriangles": 42
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data804.b3dm#3",
+          "gmlId": "bldg_22370a9f-abb8-4763-8934-1906fa407070",
+          "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data804.b3dm",
+          "category": "building",
+          "lod": 2,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 21.33,
+          "referenceDistanceMetres": 18.242,
+          "referenceAreaOverlapFraction": 0.0,
+          "triangles": 28,
+          "texturedTriangles": 24
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data802.b3dm#2",
+          "gmlId": "bldg_2d58544e-52b5-4030-a4d4-394a6a4fa750",
+          "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data802.b3dm",
+          "category": "building",
+          "lod": 2,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 24.397,
+          "referenceDistanceMetres": 5.457,
+          "referenceAreaOverlapFraction": 0.0,
+          "triangles": 36,
+          "texturedTriangles": 34
+        }
+      ],
+      "appearanceStatus": "unverified",
+      "entranceStatus": "unverified",
+      "groundStatus": "unverified",
+      "nightLightingStatus": "unverified"
+    },
+    {
+      "sightId": "nishiki-tenmangu",
+      "approach": {
+        "longitude": 135.7668613,
+        "latitude": 35.0050292
+      },
+      "retainedSceneSourceId": "osm:node:5204263033",
+      "retainedGmlId": null,
+      "sourceObjectContinuity": "unverified",
+      "requiredFeatures": [
+        "outer torii",
+        "plaque and columns",
+        "adjoining commercial fronts",
+        "public approach"
+      ],
+      "searchDistanceMetres": 10,
+      "candidates": [
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data753.b3dm#0",
+          "gmlId": "bldg_023eaf9e-5638-44f5-ac17-5c59d6de4e21",
+          "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data753.b3dm",
+          "category": "building",
+          "lod": 2,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 5.753,
+          "referenceDistanceMetres": 2.911,
+          "referenceAreaOverlapFraction": null,
+          "triangles": 12,
+          "texturedTriangles": 10
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data757.b3dm#2",
+          "gmlId": "bldg_2bb0282d-23d8-45ef-b7ab-161b65c62353",
+          "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data757.b3dm",
+          "category": "building",
+          "lod": 2,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 5.823,
+          "referenceDistanceMetres": 15.593,
+          "referenceAreaOverlapFraction": null,
+          "triangles": 28,
+          "texturedTriangles": 24
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data757.b3dm#8",
+          "gmlId": "bldg_63c47b05-512f-408b-b9cd-a67cf216ad3d",
+          "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data757.b3dm",
+          "category": "building",
+          "lod": 2,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 5.83,
+          "referenceDistanceMetres": 14.856,
+          "referenceAreaOverlapFraction": null,
+          "triangles": 36,
+          "texturedTriangles": 32
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data753.b3dm#4",
+          "gmlId": "bldg_317358a6-ee93-4650-8702-e06d4916ace9",
+          "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data753.b3dm",
+          "category": "building",
+          "lod": 2,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 6.295,
+          "referenceDistanceMetres": 2.555,
+          "referenceAreaOverlapFraction": null,
+          "triangles": 32,
+          "texturedTriangles": 26
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data753.b3dm#15",
+          "gmlId": "bldg_c07da846-2ac0-4aa0-9d15-bd2ddbc96b72",
+          "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data753.b3dm",
+          "category": "building",
+          "lod": 2,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 8.534,
+          "referenceDistanceMetres": 7.998,
+          "referenceAreaOverlapFraction": null,
+          "triangles": 12,
+          "texturedTriangles": 10
+        }
+      ],
+      "appearanceStatus": "unverified",
+      "entranceStatus": "unverified",
+      "groundStatus": "unverified",
+      "nightLightingStatus": "unverified"
+    },
+    {
+      "sightId": "takase-river",
+      "approach": {
+        "longitude": 135.7704716,
+        "latitude": 35.0038821
+      },
+      "retainedSceneSourceId": "osm:way:482270827",
+      "retainedGmlId": null,
+      "sourceObjectContinuity": "unverified",
+      "requiredFeatures": [
+        "selected river mouth",
+        "barriers",
+        "road soffit",
+        "riverbank and water elevations"
+      ],
+      "searchDistanceMetres": 15,
+      "candidates": [],
+      "appearanceStatus": "unverified",
+      "entranceStatus": "unverified",
+      "groundStatus": "unverified",
+      "nightLightingStatus": "unverified"
+    },
+    {
+      "sightId": "pontocho-entrance",
+      "approach": {
+        "longitude": 135.7710767,
+        "latitude": 35.0038978
+      },
+      "retainedSceneSourceId": "osm:node:4641550774",
+      "retainedGmlId": null,
+      "sourceObjectContinuity": "unverified",
+      "requiredFeatures": [
+        "south entrance",
+        "history board",
+        "adjoining eaves",
+        "ground connection",
+        "evening fixtures"
+      ],
+      "searchDistanceMetres": 10,
+      "candidates": [
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data203.b3dm#1",
+          "gmlId": "frn_2d18f747-2ed9-455b-afd7-da3493b74210",
+          "source": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data203.b3dm",
+          "category": "furniture",
+          "lod": null,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 2.377,
+          "referenceDistanceMetres": 0.92,
+          "referenceAreaOverlapFraction": null,
+          "triangles": 16,
+          "texturedTriangles": 16
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/d3/4c620c-1c8b-44fa-9168-b50ed86f27f1/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26106_shimogyo-ku_lod3/data/data0.b3dm#47",
+          "gmlId": "bldg_1c9312e8-1b27-4075-b517-ff3df12e8ea7",
+          "source": "https://assets.cms.plateau.reearth.io/assets/d3/4c620c-1c8b-44fa-9168-b50ed86f27f1/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26106_shimogyo-ku_lod3/data/data0.b3dm",
+          "category": "building",
+          "lod": 2,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 2.616,
+          "referenceDistanceMetres": 0.155,
+          "referenceAreaOverlapFraction": null,
+          "triangles": 12,
+          "texturedTriangles": 10
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data203.b3dm#4",
+          "gmlId": "frn_4b5de7d8-13f5-49ce-b3c6-0d7ab291fbf9",
+          "source": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data203.b3dm",
+          "category": "furniture",
+          "lod": null,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 3.812,
+          "referenceDistanceMetres": 0.146,
+          "referenceAreaOverlapFraction": null,
+          "triangles": 88,
+          "texturedTriangles": 88
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data203.b3dm#8",
+          "gmlId": "frn_0c27410f-e19d-4ddd-b7cd-f2432e50dad0",
+          "source": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data203.b3dm",
+          "category": "furniture",
+          "lod": null,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 4.106,
+          "referenceDistanceMetres": 0.608,
+          "referenceAreaOverlapFraction": null,
+          "triangles": 77,
+          "texturedTriangles": 0
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data203.b3dm#6",
+          "gmlId": "frn_ee27fe24-3152-4f28-9806-66a51d8c0b94",
+          "source": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data203.b3dm",
+          "category": "furniture",
+          "lod": null,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 4.758,
+          "referenceDistanceMetres": 1.095,
+          "referenceAreaOverlapFraction": null,
+          "triangles": 40,
+          "texturedTriangles": 40
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data203.b3dm#2",
+          "gmlId": "frn_f35bc0d3-8a04-4cf6-afc4-147d600319c1",
+          "source": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data203.b3dm",
+          "category": "furniture",
+          "lod": null,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 5.042,
+          "referenceDistanceMetres": 1.371,
+          "referenceAreaOverlapFraction": null,
+          "triangles": 112,
+          "texturedTriangles": 112
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data203.b3dm#9",
+          "gmlId": "frn_7f818a8a-0c3a-4e8c-8f2e-1a8351f977f4",
+          "source": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data203.b3dm",
+          "category": "furniture",
+          "lod": null,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 5.228,
+          "referenceDistanceMetres": 1.555,
+          "referenceAreaOverlapFraction": null,
+          "triangles": 30,
+          "texturedTriangles": 0
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data203.b3dm#5",
+          "gmlId": "frn_712c3df5-22f8-4c21-8f34-17a5aaf7b065",
+          "source": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data203.b3dm",
+          "category": "furniture",
+          "lod": null,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 5.307,
+          "referenceDistanceMetres": 1.689,
+          "referenceAreaOverlapFraction": null,
+          "triangles": 16,
+          "texturedTriangles": 16
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data202.b3dm#0",
+          "gmlId": "frn_f5d300bd-99fc-470f-9e9e-5b5860940311",
+          "source": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data202.b3dm",
+          "category": "furniture",
+          "lod": null,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 5.745,
+          "referenceDistanceMetres": 6.689,
+          "referenceAreaOverlapFraction": null,
+          "triangles": 310,
+          "texturedTriangles": 0
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data203.b3dm#16",
+          "gmlId": "frn_732db32f-ade0-41a9-bdc7-fa9d0241b544",
+          "source": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data203.b3dm",
+          "category": "furniture",
+          "lod": null,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 6.153,
+          "referenceDistanceMetres": 2.76,
+          "referenceAreaOverlapFraction": null,
+          "triangles": 18,
+          "texturedTriangles": 0
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data202.b3dm#1",
+          "gmlId": "frn_c8537c6d-b47f-40f4-a3fa-3ff120cab29f",
+          "source": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data202.b3dm",
+          "category": "furniture",
+          "lod": null,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 6.718,
+          "referenceDistanceMetres": 8.336,
+          "referenceAreaOverlapFraction": null,
+          "triangles": 876,
+          "texturedTriangles": 0
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/d3/4c620c-1c8b-44fa-9168-b50ed86f27f1/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26106_shimogyo-ku_lod3/data/data0.b3dm#360",
+          "gmlId": "bldg_fd5514a8-3541-420f-8047-99bd0ce1fc9e",
+          "source": "https://assets.cms.plateau.reearth.io/assets/d3/4c620c-1c8b-44fa-9168-b50ed86f27f1/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26106_shimogyo-ku_lod3/data/data0.b3dm",
+          "category": "building",
+          "lod": 3,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 6.797,
+          "referenceDistanceMetres": 4.152,
+          "referenceAreaOverlapFraction": null,
+          "triangles": 386,
+          "texturedTriangles": 370
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data203.b3dm#14",
+          "gmlId": "frn_48dad7d7-ab17-4396-b06f-ef4bdeee5d3b",
+          "source": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data203.b3dm",
+          "category": "furniture",
+          "lod": null,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 6.966,
+          "referenceDistanceMetres": 3.828,
+          "referenceAreaOverlapFraction": null,
+          "triangles": 45,
+          "texturedTriangles": 0
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data203.b3dm#3",
+          "gmlId": "frn_5fc638e4-675a-49a7-afbb-4231c21bcd9c",
+          "source": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data203.b3dm",
+          "category": "furniture",
+          "lod": null,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 7.022,
+          "referenceDistanceMetres": 3.672,
+          "referenceAreaOverlapFraction": null,
+          "triangles": 16,
+          "texturedTriangles": 16
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data203.b3dm#12",
+          "gmlId": "frn_3383444c-7820-4069-a2b9-b66398491c05",
+          "source": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data203.b3dm",
+          "category": "furniture",
+          "lod": null,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 7.676,
+          "referenceDistanceMetres": 4.021,
+          "referenceAreaOverlapFraction": null,
+          "triangles": 14,
+          "texturedTriangles": 0
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data203.b3dm#10",
+          "gmlId": "frn_05be07e2-3530-46c5-ac2f-89f6c927f720",
+          "source": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data203.b3dm",
+          "category": "furniture",
+          "lod": null,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 9.389,
+          "referenceDistanceMetres": 5.798,
+          "referenceAreaOverlapFraction": null,
+          "triangles": 21,
+          "texturedTriangles": 0
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data202.b3dm#5",
+          "gmlId": "frn_de24b215-947c-4395-8ce3-d372296afe93",
+          "source": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data202.b3dm",
+          "category": "furniture",
+          "lod": null,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 9.669,
+          "referenceDistanceMetres": 10.906,
+          "referenceAreaOverlapFraction": null,
+          "triangles": 1568,
+          "texturedTriangles": 0
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data765.b3dm#4",
+          "gmlId": "bldg_e2a4cb37-0d1f-482a-89b1-de51b90f09b2",
+          "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data765.b3dm",
+          "category": "building",
+          "lod": 3,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 9.876,
+          "referenceDistanceMetres": 7.416,
+          "referenceAreaOverlapFraction": null,
+          "triangles": 6840,
+          "texturedTriangles": 6818
+        }
+      ],
+      "appearanceStatus": "unverified",
+      "entranceStatus": "unverified",
+      "groundStatus": "unverified",
+      "nightLightingStatus": "unverified"
+    },
+    {
+      "sightId": "shijo-bridge",
+      "approach": {
+        "longitude": 135.77152,
+        "latitude": 35.00391
+      },
+      "retainedSceneSourceId": "osm:way:532008156",
+      "retainedGmlId": null,
+      "sourceObjectContinuity": "unverified",
+      "requiredFeatures": [
+        "deck grade",
+        "parapet",
+        "rail spacing",
+        "approach joint",
+        "river context"
+      ],
+      "searchDistanceMetres": 25,
+      "candidates": [
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data202.b3dm#0",
+          "gmlId": "frn_f5d300bd-99fc-470f-9e9e-5b5860940311",
+          "source": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data202.b3dm",
+          "category": "furniture",
+          "lod": null,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 22.747,
+          "referenceDistanceMetres": 1.493,
+          "referenceAreaOverlapFraction": 0.0,
+          "triangles": 310,
+          "texturedTriangles": 0
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data202.b3dm#5",
+          "gmlId": "frn_de24b215-947c-4395-8ce3-d372296afe93",
+          "source": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data202.b3dm",
+          "category": "furniture",
+          "lod": null,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 24.708,
+          "referenceDistanceMetres": 1.539,
+          "referenceAreaOverlapFraction": 0.0,
+          "triangles": 1568,
+          "texturedTriangles": 0
+        },
+        {
+          "objectId": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data199.b3dm#4",
+          "gmlId": "frn_44ece9f4-6da2-4d6f-8404-374ecd51b528",
+          "source": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/data/data199.b3dm",
+          "category": "furniture",
+          "lod": null,
+          "relationship": "spatial-candidate",
+          "approachDistanceMetres": 24.895,
+          "referenceDistanceMetres": 3.422,
+          "referenceAreaOverlapFraction": 0.0,
+          "triangles": 236,
+          "texturedTriangles": 0
+        }
+      ],
+      "appearanceStatus": "unverified",
+      "entranceStatus": "unverified",
+      "groundStatus": "unverified",
+      "nightLightingStatus": "unverified"
+    }
+  ]
+}

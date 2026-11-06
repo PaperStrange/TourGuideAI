@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "records": [
+    {
+      "path": "route-citygml-inventory.json",
+      "source": "https://api.plateauview.mlit.go.jp/datacatalog/citygml/r:135.7590,35.0031,135.7725,35.0057?types=bldg,tran,frn,dem",
+      "date": "2026-11-06T05:54:54.755773+00:00",
+      "status": 200,
+      "bytes": 3661,
+      "sha256": "4e59202e687d1b448cbe8adb448b9b46a0d25c05a0dbeb6bd8a2cfa21121953c",
+      "rights": "Kyoto City / MLIT Project PLATEAU, CC BY 4.0; retained dataset metadata applies",
+      "location": "Kyoto Shijo East route and adjacent wards",
+      "method": "Original HTTPS JSON response; inherited proxy/CA and TLS verification retained",
+      "limitations": "Catalogue/index bounds identify acquisition candidates; no geometry or appearance acceptance."
+    },
+    {
+      "path": "26106-bldg-lod3-tileset.json",
+      "source": "https://assets.cms.plateau.reearth.io/assets/d3/4c620c-1c8b-44fa-9168-b50ed86f27f1/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26106_shimogyo-ku_lod3/tileset.json",
+      "date": "2026-11-06T05:54:55.676185+00:00",
+      "status": 200,
+      "bytes": 45728,
+      "sha256": "71f06d89bf440ba62dfacdb8697ab36bcb342708a850ca2cf8d02a97c6924138",
+      "rights": "Kyoto City / MLIT Project PLATEAU, CC BY 4.0; retained dataset metadata applies",
+      "location": "Kyoto Shijo East route and adjacent wards",
+      "method": "Original HTTPS JSON response; inherited proxy/CA and TLS verification retained",
+      "limitations": "Catalogue/index bounds identify acquisition candidates; no geometry or appearance acceptance."
+    },
+    {
+      "path": "26105-bldg-lod3-tileset.json",
+      "source": "https://assets.cms.plateau.reearth.io/assets/dd/3e0851-94fb-4fed-8e44-289d0e3fb41f/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26105_higashiyama-ku_lod3/tileset.json",
+      "date": "2026-11-06T05:54:56.153602+00:00",
+      "status": 200,
+      "bytes": 138500,
+      "sha256": "17ee41e888123c3646c229d9ebe8f3f9662041429095aa623aa83e2921d1e1c8",
+      "rights": "Kyoto City / MLIT Project PLATEAU, CC BY 4.0; retained dataset metadata applies",
+      "location": "Kyoto Shijo East route and adjacent wards",
+      "method": "Original HTTPS JSON response; inherited proxy/CA and TLS verification retained",
+      "limitations": "Catalogue/index bounds identify acquisition candidates; no geometry or appearance acceptance."
+    },
+    {
+      "path": "kyoto-codelists.zip",
+      "source": "https://assets.cms.plateau.reearth.io/assets/bb/15fa90-93c2-42be-848b-85d694d6efdb/26100_kyoto-shi_city_2025_citygml_1_op_codelists.zip",
+      "date": "2026-11-06T05:54:57.135322+00:00",
+      "status": 200,
+      "bytes": 765460,
+      "sha256": "bba87c5389d6ea454f2c63a309a6476dc021f92860d5ff148c4436f5ceb10309",
+      "rights": "Kyoto City / MLIT Project PLATEAU, CC BY 4.0; retained dataset metadata applies",
+      "location": "Kyoto Shijo East route and adjacent wards",
+      "method": "Original HTTPS JSON response; inherited proxy/CA and TLS verification retained",
+      "limitations": "Catalogue/index bounds identify acquisition candidates; no geometry or appearance acceptance."
+    },
+    {
+      "path": "52354600_tran_6697_op.gml",
+      "source": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/tran/52354600_tran_6697_op.gml",
+      "date": "2026-11-06T05:54:57.321433+00:00",
+      "status": 200,
+      "bytes": 1007792,
+      "sha256": "2dec529dc1cec899dc34b29b83e86f81b2451e71e6fa2f3ee68e18ad804eeb43",
+      "rights": "Kyoto City / MLIT Project PLATEAU, CC BY 4.0; retained dataset metadata applies",
+      "location": "Kyoto source mesh 52354600",
+      "method": "Original HTTPS CityGML response; inherited proxy/CA and TLS verification retained",
+      "limitations": "Whole mesh source; exact route coverage and vertical registration require geometric inspection."
+    },
+    {
+      "path": "52354601_tran_6697_op.gml",
+      "source": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/tran/52354601_tran_6697_op.gml",
+      "date": "2026-11-06T05:54:57.594088+00:00",
+      "status": 200,
+      "bytes": 3638216,
+      "sha256": "9ae109117c01250b4e40a4c183163af0759109b688542ecb3055a9b435f51955",
+      "rights": "Kyoto City / MLIT Project PLATEAU, CC BY 4.0; retained dataset metadata applies",
+      "location": "Kyoto source mesh 52354601",
+      "method": "Original HTTPS CityGML response; inherited proxy/CA and TLS verification retained",
+      "limitations": "Whole mesh source; exact route coverage and vertical registration require geometric inspection."
+    }
+  ]
+}

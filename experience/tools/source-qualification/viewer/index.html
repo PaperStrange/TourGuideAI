@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kyoto source inspection</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/style.css">
+<script type="importmap">{"imports":{"three":"/vendor/three/build/three.module.js","three/addons/":"/vendor/three/examples/jsm/"}}</script>
+<header>
+  <div><p class="eyebrow">REALISM 01 · SOURCE QUALIFICATION</p><h1>Kyoto source inspection</h1></div>
+  <p class="scope">Original source geometry and textures<br>Ground, current appearance and night lighting remain unqualified</p>
+</header>
+<main>
+  <aside>
+    <label for="sight">Route sight</label><select id="sight" disabled></select>
+    <label for="pose">Review pose</label>
+    <select id="pose" disabled><option value="approach">Approach / forward</option><option value="reverse">Reverse</option><option value="north">Look north</option><option value="east">Look east</option><option value="south">Look south</option><option value="west">Look west</option><option value="overview">Elevated context</option></select>
+    <button id="reset" disabled>Restore review pose</button>
+    <h2>Source conditions</h2>
+    <p id="status" role="status">Loading source manifest…</p>
+    <dl><dt>Vertical placement</dt><dd id="height">Awaiting source record</dd><dt>Rendering</dt><dd>Original materials; neutral diagnostic illumination. No authored ground or night fixtures.</dd><dt>Controls</dt><dd>Drag to orbit. Scroll to inspect closely. Right-drag to pan.</dd></dl>
+    <p class="credit">Kyoto City / MLIT Project PLATEAU · CC BY 4.0</p>
+  </aside>
+  <section aria-label="Source geometry preview">
+    <div class="view-label"><h2 id="title">Assembling source geometry</h2><span id="pose-label">Diagnostic view</span></div>
+    <div id="stage" tabindex="0"></div>
+    <p class="caption" id="caption">This inspection records available source surfaces. Route navigation and appearance acceptance require separate evidence.</p>
+  </section>
+</main>
+<script type="module" src="/main.js"></script>
+</html>

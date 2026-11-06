@@ -1,8 +1,9 @@
 # Agent checkpoint · Explore and Together homepage
 
 6 November 2026 · Lead owns integration, commits and publication.
-**State: Benchmark V1 protocol, measurement boundaries and source acquisition
-index implemented and validated; route source qualification is next.
+**State: Benchmark V1 and the R04 original-source inspection are delivered.
+73 tiles decoded; 18 source views, exact object mapping and ground audit retained.
+Current appearance, ground registration and matched capture qualification remain open.
 The milestone is the complete 1,353.444 m, 54-edge, six-sight Shijō East route,
 with English/Chinese journeys and daylight/night. Published runtime `17b8f37`
 remains the main-site baseline; candidate 13 remains the separate public preview.
@@ -41,9 +42,27 @@ LOD3 objects; detailed road/furniture candidates in these collections occur only
 near edges 50–54. Every edge's appearance, ground and lighting qualification remains
 open. Candidate bounds and texture sizes cannot establish pedestrian-view quality.
 
-Next work: R04 object/facade correspondence, both street sides, covered passages,
-ground datum and day/night references; itemize actual capture quotes for remaining
-gaps. Physical Iris Xe/Chrome and M1/Safari devices, fresh participant cohorts and
+The [completed original-source review](../evidence/realism-01/qualification/README.md)
+adds seven Shimogyo and one Higashiyama building tiles to the original candidate
+index: 73 tiles / 41,151,256 bytes, 2,269 original occurrences, 1,965 selected
+occurrences and 119,514 selected triangles. All 304 excluded REPLACE ancestors
+remain in the evidence with overlap measurements; unresolved alternatives are zero.
+The browser loaded every model and native orbit changed the submitted camera.
+All 18 captures are retained: five checks pass and bridge approach visibility fails.
+This is source diagnostic evidence on SwiftShader; no gameplay or physical-device
+performance acceptance follows.
+
+Mitsui's exact retained GML ID matches the Shimogyo LOD2 object; five other sight
+identities remain unverified. Original road CityGML supplies 110 nearby zero-height
+LOD1 footprints and one detailed sidewalk section near edges 50–54. Four bounded
+DEM envelopes identify a covering source (793,602,405 declared decoded bytes;
+33,281,694 HTTP gzip bytes); complete terrain and pedestrian height remain unqualified.
+
+Next work: budget a streamed terrain/ground registration experiment, review
+feature-facing current references, and obtain a licensed matched capture package
+with a complete-route quote for remaining R05 gaps. Supplier outreach and spending
+need user authorization; local source experiments can continue independently.
+Physical Iris Xe/Chrome and M1/Safari devices, fresh participant cohorts and
 qualified matched capture remain unavailable. Full-route trial execution, human
 scoring and final representation selection remain pending. Current-year GitHub
 issue creation/update queries returned zero matches on 5 November 2026.
@@ -53,7 +72,8 @@ photographs and official capture-service price items in the
 [reference table](../sprints/realism-01/research/reference-qualification.md).
 Their sight/lighting limits are explicit; exact source filenames and hashes do not
 overlap the existing authoring registry. No route-wide supplier quote or capture
-rights have been obtained. All-edge original geometry and ground review continues.
+rights have been obtained. [Qualification validation and recovery](../evidence/realism-01/qualification/validation.md)
+bind source geometry, unchanged captures, producers and the clean-checkout review.
 
 This delivery changes QA observability and benchmark tools, with no public service
 API or deployed-page change. Keep the existing preview identified as candidate 13.

@@ -1,6 +1,6 @@
 # Decision record
 
-5 November 2026 · Approved user direction and explicit evidence dependencies.
+6 November 2026 · Approved user direction and explicit evidence dependencies.
 
 | ID | Decision | Basis / consequence |
 | --- | --- | --- |
@@ -17,6 +17,7 @@
 | D11 | Arrange devices, participant cohorts and acquisition inputs during phases 1–2 | Missing prerequisites stay visible and block only dependent acceptance |
 | D12 | Current-year issue review covers 2026 | Creation/update queries returned zero matches on 5 November; [exact criteria](lessons.md) retained; earlier-codebase issues remain outside this iteration |
 | D13 | Preserve the user's personal travel journey and saved records | Optional words, saved view/lighting/route, useful share choices, GPS control and explicit service/coverage states are traced in [lessons](lessons.md) |
+| D14 | Qualify acquired source surfaces before creating comparable route candidates | The [18-view original-source review](../../evidence/realism-01/qualification/README.md) exposes street-level detail, ground and view-context gaps. Source-ID continuity and complete footprint coverage leave realism/immersion acceptance open; retain the failed bridge visibility result |
 
 Bind every decision result to source, asset, build, camera and evidence hashes.
 Keep rights, continuous movement, resource budgets and performance as mandatory

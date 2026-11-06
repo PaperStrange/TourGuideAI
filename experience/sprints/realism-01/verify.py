@@ -6,6 +6,7 @@ from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
 from markdown_it import MarkdownIt
+from qualification import verify_qualification
 
 
 def require(condition, message):
@@ -150,12 +151,15 @@ def verify(root):
                     f"Sight outside trial: {trial['id']} / {sight_id}")
     require(definition["trials"][-1]["nodeIndexRangeInclusive"] == [0, 54], "Full-route trial missing")
 
+    qualification = verify_qualification(root, require, verify_file, route)
+
     return {"status": "passed", "markdownDocuments": len(documents), "relativeLinkTargets": links,
             "jsonDocuments": len(json_paths), "competitorFileHashes": len(manifest["files"]),
             "sourceFileHashes": len(source_records), "trialRouteHashes": 1,
             "sourceEvidenceFileHashes": len(source_manifest["files"]),
             "measurementCompressedAndDecodedHashes": len(measurement_binding["files"]),
             "calibrationOriginalReportHashes": len(calibration["evidence"]),
+            "qualification": qualification,
             "routeEdges": len(edges), "trialRanges": len(definition["trials"]),
             "limitations": "Local target existence, provenance and file integrity only; no remote URL, renderer, performance or human acceptance test."}
 

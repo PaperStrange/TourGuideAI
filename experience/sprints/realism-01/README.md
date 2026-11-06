@@ -1,7 +1,7 @@
 # Realism 01 · Kyoto route
 
-5 November 2026 · Sprint owner: delivery lead · Status: Benchmark V1 implementation
-and source qualification.
+6 November 2026 · Sprint owner: delivery lead · Status: Benchmark V1 and original
+source inspection delivered; appearance, ground and capture qualification open.
 
 Deliver the complete **1,353.444 m, six-sight Shijō East walk**, with recognizable
 architecture, continuous navigation and a coherent English/Chinese journey in
@@ -20,8 +20,9 @@ Production renderer selection and milestone acceptance remain open.
 | [Historical calibration scorecard](../../evidence/realism-01/benchmark/scorecard.md) | Recomputed retained observations and explicit current acceptance gaps |
 | [Competitor board](research/competitors.md) | Actual screenshots, publisher frames and bounded observations |
 | [Source coverage](research/source-coverage.md) | All sights and connecting streets, with missing appearance data |
+| [Original-source visual board](../../evidence/realism-01/qualification/README.md) | 73 decoded tiles, 18 actual browser captures, six-sight identity and ground review |
 | [Licensing receipts](research/licensing-receipts.json) | Source dates, rights, hashes and limitations |
-| [Capture requirements](research/capture-requirements.md) | Itemized acquisition proposal; supplier prices remain unquoted |
+| [Capture requirements](research/capture-requirements.md) | Itemized acquisition proposal and public price references; complete-route quote remains unavailable |
 | [Controlled trials](experiments/README.md) | Matched inputs, routes, viewpoints and comparison protocol |
 | [Evidence store](../../evidence/realism-01/README.md) | Reviewed artifacts and validation records |
 

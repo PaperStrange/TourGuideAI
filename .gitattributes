@@ -76,6 +76,8 @@
 # -text disables all line-ending conversion for these paths, for every contributor,
 # regardless of their local core.autocrlf.
 *.json                                        -text
+# 保留原始 CityGML 前缀的 CRLF、末尾空白和截断位置，确保 SHA-256 一致。
+experience/evidence/realism-01/qualification/dem/*.gml.prefix -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
 docs/handOff/archive/corpora/geo-japan/*.txt  -text
 city-packs/**/evidence/**                     -text
 iteration/recon/_fetch-*/**                   -text
