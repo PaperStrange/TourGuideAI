@@ -48,6 +48,13 @@ qualified matched capture remain unavailable. Full-route trial execution, human
 scoring and final representation selection remain pending. Current-year GitHub
 issue creation/update queries returned zero matches on 5 November 2026.
 
+R04/R05 reference qualification on 6 November retains three reserved licensed
+photographs and official capture-service price items in the
+[reference table](../sprints/realism-01/research/reference-qualification.md).
+Their sight/lighting limits are explicit; exact source filenames and hashes do not
+overlap the existing authoring registry. No route-wide supplier quote or capture
+rights have been obtained. All-edge original geometry and ground review continues.
+
 This delivery changes QA observability and benchmark tools, with no public service
 API or deployed-page change. Keep the existing preview identified as candidate 13.
 The remote-turn interruption preserved the worktree and completed reports; validate

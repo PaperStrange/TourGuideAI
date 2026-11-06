@@ -5,6 +5,12 @@ Updated 5 November 2026 from the [full-route source audit](source-coverage.md) a
 Status: requirements ready; supplier, dates, price and funding **unquoted/unapproved**.
 No outreach, booking or purchase has occurred.
 
+The [6 November reference and acquisition review](reference-qualification.md)
+records official exAgent and Advalay public line items, reserved photographs and
+the questions required for an actual route quote. Those listed service prices do
+not establish complete-route cost or permission to use the same raw capture for
+both reconstruction methods.
+
 ## Coverage items for supplier estimates
 
 | Location | Existing source result | Quote item that remains necessary |
