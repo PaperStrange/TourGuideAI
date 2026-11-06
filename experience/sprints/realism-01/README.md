@@ -24,6 +24,7 @@ Production renderer selection and milestone acceptance remain open.
 | [Licensing receipts](research/licensing-receipts.json) | Source dates, rights, hashes and limitations |
 | [Capture requirements](research/capture-requirements.md) | Itemized acquisition proposal and public price references; complete-route quote remains unavailable |
 | [Controlled trials](experiments/README.md) | Matched inputs, routes, viewpoints and comparison protocol |
+| [Parallel candidate status](experiments/candidate-status.md) | Mesh, splat and shared-ground evidence; explicit qualification dependencies |
 | [Evidence store](../../evidence/realism-01/README.md) | Reviewed artifacts and validation records |
 
 ## Storage and handoff

@@ -66,6 +66,8 @@ The [ground acquisition decision](../../../../sprints/realism-01/research/ground
 records the next inputs and their limits. No imagery, ground geometry or rendering
 representation is accepted for production by this inspection.
 
-The follow-up [DEM envelope review](../dem/README.md) preserves the bounded source
-prefixes and identifies the one covering envelope. The full terrain file and
-pedestrian ground remain unqualified.
+The [DEM envelope review](../dem/README.md) preserves the bounded source prefixes.
+The subsequent [full-source terrain experiment](../terrain/README.md) retains
+6,019 actual triangles and a complete sampled route profile. Explicit
+[datum diagnostics](../datum/README.md) preserve both tested models. Pedestrian
+floors, bridge deck, independent control and source epoch/model remain unqualified.

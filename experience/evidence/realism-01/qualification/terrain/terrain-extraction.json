@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06T06:57:21.133286+00:00",
+  "receipt": {
+    "date": "2026-11-06T06:53:25.210696+00:00",
+    "source": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/dem/523546_dem_6697_00_op.gml",
+    "rights": "Kyoto City / MLIT Project PLATEAU, CC BY 4.0",
+    "location": "Kyoto mesh 523546",
+    "method": "Complete original HTTPS gzip response; encoded bytes preserved, TLS/proxy unchanged",
+    "limitations": "Source acquisition only; terrain is distinct from pedestrian floor, bridge deck and current access",
+    "encoded": {
+      "bytes": 33281694,
+      "sha256": "a1f29d4996612efea169a29d5b827d7811430fa090372e904996fa5f9f36445d"
+    },
+    "contentEncoding": "gzip",
+    "status": 200,
+    "declaredDecodedBytes": 793602405,
+    "encodedLimitBytes": 67108864,
+    "decodedLimitBytes": 943718400,
+    "selection": {
+      "path": "experience/evidence/realism-01/qualification/dem/dem-envelope-audit.json",
+      "bytes": 5808,
+      "sha256": "22adb1397e55ddc54bb17582714062230842e465d6c59981908407d9f307c66a"
+    }
+  },
+  "decoded": {
+    "bytes": 793602405,
+    "sha256": "2fa86e0f35d46a2f33fd2d16f97dbade086521c972b56be1c77a1bb2d5996774"
+  },
+  "route": {
+    "path": "experience/src/neighborhoods/shijo-east/geography.json",
+    "bytes": 175220,
+    "sha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f"
+  },
+  "sourceTriangles": 2042977,
+  "retainedTriangles": 6019,
+  "corridorMetres": 25,
+  "crs": {
+    "srsName": "http://www.opengis.net/def/crs/EPSG/0/6697",
+    "srsDimension": "3"
+  },
+  "sourceHeightRangeMetres": [
+    33.1,
+    39.901
+  ],
+  "libraries": {
+    "gdal": "3.10.3",
+    "xmlParser": "CPython ElementTree / Expat",
+    "requests": "2.32.3"
+  },
+  "elapsedSeconds": 83.58518251300029,
+  "processPeakRssBytes": 98193408,
+  "method": "Streaming ElementTree XML parser, GDAL GML triangle parser with explicit 3D CRS/axis handling, horizontal EPSG:6674 route corridor selection",
+  "limitations": "Original terrain triangles only; no pedestrian-floor, bridge-deck, datum-transform or runtime acceptance",
+  "outputs": [
+    {
+      "path": "terrain-triangles.geojson",
+      "bytes": 5510068,
+      "sha256": "9f9545e993da351d64e3052d290b0f7a14cf3ea327cb5677e8c700c138ec71de"
+    }
+  ]
+}

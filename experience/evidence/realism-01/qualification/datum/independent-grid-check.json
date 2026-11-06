@@ -1,0 +1,189 @@
+{
+  "date": "2026-11-06T07:00:36.932277+00:00",
+  "status": "passed",
+  "gdalVersion": "3.10.3",
+  "report": {
+    "path": "datum-diagnostic.json",
+    "bytes": 3390982,
+    "sha256": "dcbaa1d21f8ee7b3c00818b085430eb8d3cf255dc367df685be6b1abf807252a"
+  },
+  "models": [
+    {
+      "grid": "jp_gsi_gsigeo2011.tif",
+      "identity": {
+        "path": "jp_gsi_gsigeo2011.tif",
+        "bytes": 428043,
+        "sha256": "1b17b754224e1a7ffc8e281591bb33840832b2a04876c51ce50959181b4102e5"
+      },
+      "originalMetadata": {
+        "TIFFTAG_IMAGEDESCRIPTION": "JDG2011 (EPSG:6667) to JGD2011 (vertical) height (EPSG:6695). Converted from gsigeo2011_ver2_1.asc",
+        "TIFFTAG_DATETIME": "2020:10:28 00:00:00",
+        "TIFFTAG_COPYRIGHT": "Derived from work by the Geospatial Information Authority of Japan. CC-BY 4.0",
+        "area_of_use": "Japan - onshore mainland",
+        "target_crs_epsg_code": "6695",
+        "TYPE": "VERTICAL_OFFSET_GEOGRAPHIC_TO_VERTICAL",
+        "AREA_OR_POINT": "Point"
+      },
+      "sourceGeotransform": [
+        119.9875,
+        0.025,
+        0.0,
+        50.0083331667267,
+        0.0,
+        -0.0166666666667
+      ],
+      "checks": [
+        {
+          "sightId": "mitsui-frontage",
+          "pixelCoordinates": [
+            630.8978280000001,
+            900.2743900018017
+          ],
+          "gdalGeoidUndulationMetres": 37.30260126450318,
+          "projGeoidUndulationMetres": 37.30260126450318,
+          "differenceMetres": 0.0
+        },
+        {
+          "sightId": "nishiki-market",
+          "pixelCoordinates": [
+            631.0039560000005,
+            900.2000800018018
+          ],
+          "gdalGeoidUndulationMetres": 37.30124924067408,
+          "projGeoidUndulationMetres": 37.301249240674075,
+          "differenceMetres": 7.105427357601002e-15
+        },
+        {
+          "sightId": "nishiki-tenmangu",
+          "pixelCoordinates": [
+            631.1744519999993,
+            900.1982380018017
+          ],
+          "gdalGeoidUndulationMetres": 37.30033536308461,
+          "projGeoidUndulationMetres": 37.30033536308461,
+          "differenceMetres": 0.0
+        },
+        {
+          "sightId": "takase-river",
+          "pixelCoordinates": [
+            631.3188640000008,
+            900.2670640018018
+          ],
+          "gdalGeoidUndulationMetres": 37.300561993871646,
+          "projGeoidUndulationMetres": 37.300561993871646,
+          "differenceMetres": 0.0
+        },
+        {
+          "sightId": "pontocho-entrance",
+          "pixelCoordinates": [
+            631.3430680000001,
+            900.2661220018017
+          ],
+          "gdalGeoidUndulationMetres": 37.30043564697583,
+          "projGeoidUndulationMetres": 37.30043564697583,
+          "differenceMetres": 0.0
+        },
+        {
+          "sightId": "shijo-bridge",
+          "pixelCoordinates": [
+            631.3608000000004,
+            900.2653900018017
+          ],
+          "gdalGeoidUndulationMetres": 37.300342228778916,
+          "projGeoidUndulationMetres": 37.30034222877891,
+          "differenceMetres": 7.105427357601002e-15
+        }
+      ]
+    },
+    {
+      "grid": "jp_gsi_jpgeo2024.tif",
+      "identity": {
+        "path": "jp_gsi_jpgeo2024.tif",
+        "bytes": 7379285,
+        "sha256": "0b09d82aa466293107da2ec99b9308e154a7114f9abf0ae10d813504b951352a"
+      },
+      "originalMetadata": {
+        "TIFFTAG_IMAGEDESCRIPTION": "JDG2011 (EPSG:6667) to JGD2011 (vertical) height (EPSG:6695). Converted from JPGEO2024.isg",
+        "TIFFTAG_DATETIME": "2025:04:09 00:00:00",
+        "TIFFTAG_COPYRIGHT": "Derived from work by the Geospatial Information Authority of Japan. CC-BY 4.0",
+        "area_of_use": "Japan.",
+        "target_crs_epsg_code": "6695",
+        "TYPE": "VERTICAL_OFFSET_GEOGRAPHIC_TO_VERTICAL",
+        "AREA_OR_POINT": "Point"
+      },
+      "sourceGeotransform": [
+        119.98750000000001,
+        0.025,
+        0.0,
+        50.00833333333333,
+        0.0,
+        -0.016666666666666666
+      ],
+      "checks": [
+        {
+          "sightId": "mitsui-frontage",
+          "pixelCoordinates": [
+            630.8978280000001,
+            900.2744000000002
+          ],
+          "gdalGeoidUndulationMetres": 37.44948741678289,
+          "projGeoidUndulationMetres": 37.44948741678289,
+          "differenceMetres": 0.0
+        },
+        {
+          "sightId": "nishiki-market",
+          "pixelCoordinates": [
+            631.0039560000005,
+            900.2000900000003
+          ],
+          "gdalGeoidUndulationMetres": 37.44807719202962,
+          "projGeoidUndulationMetres": 37.44807719202962,
+          "differenceMetres": 0.0
+        },
+        {
+          "sightId": "nishiki-tenmangu",
+          "pixelCoordinates": [
+            631.1744519999993,
+            900.1982479999997
+          ],
+          "gdalGeoidUndulationMetres": 37.447274279419915,
+          "projGeoidUndulationMetres": 37.447274279419915,
+          "differenceMetres": 0.0
+        },
+        {
+          "sightId": "takase-river",
+          "pixelCoordinates": [
+            631.3188640000008,
+            900.2670740000003
+          ],
+          "gdalGeoidUndulationMetres": 37.44772048596151,
+          "projGeoidUndulationMetres": 37.44772048596151,
+          "differenceMetres": 0.0
+        },
+        {
+          "sightId": "pontocho-entrance",
+          "pixelCoordinates": [
+            631.3430680000001,
+            900.2661320000002
+          ],
+          "gdalGeoidUndulationMetres": 37.44760884390398,
+          "projGeoidUndulationMetres": 37.44760884390398,
+          "differenceMetres": 0.0
+        },
+        {
+          "sightId": "shijo-bridge",
+          "pixelCoordinates": [
+            631.3608000000004,
+            900.2654000000002
+          ],
+          "gdalGeoidUndulationMetres": 37.4475261205188,
+          "projGeoidUndulationMetres": 37.447526120518795,
+          "differenceMetres": 7.105427357601002e-15
+        }
+      ]
+    }
+  ],
+  "anchorChecks": 12,
+  "method": "GDAL 3.10.3 GeoTIFF loading, inverse geotransform and native bilinear interpolation compared with explicitly selected PROJ pipelines",
+  "limitations": "Independent software agreement on the same geoid inputs; no source epoch, survey accuracy, ground/collision or runtime acceptance."
+}

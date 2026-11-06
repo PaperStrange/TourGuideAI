@@ -4,6 +4,11 @@ Updated 5 November 2026. **Status: defined; execution requires qualified source 
 
 [Trial definitions](trial-definitions.json) pin the existing [route geography](../../../src/neighborhoods/shijo-east/geography.json) by SHA-256. The coordinates describe the existing application's route. Its zero heights, corridor widths and bridge endpoint include authored values; they cannot establish surveyed terrain, a building entrance or current public access.
 
+[Current parallel candidate status](candidate-status.md) separates source review,
+renderer compatibility and shared ground experiments from matched Kyoto admission.
+Both representation families remain unqualified. Measured benchmark runs rotate
+in the declared order on each device; concurrent rendering would affect timing.
+
 | Trial | Route anchors | Inspect in both directions |
 | --- | --- | --- |
 | T01 · Street frontage | Mitsui frontage → Nishiki Market approach | Windows, recesses, entrances, corners, ground contacts and continuous connecting streets |

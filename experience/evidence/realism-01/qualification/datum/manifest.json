@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    {
+      "source": "Original GSI / PROJ-data grids and retained Kyoto PLATEAU source geometry; exact sources/hashes in download-receipts.json and datum-diagnostic.json",
+      "date": "2026-11-06T07:00:36.548406+00:00",
+      "rights": "CC BY 4.0; Geospatial Information Authority of Japan / PROJ-data; Kyoto City / MLIT Project PLATEAU; derived diagnostic attributed to TourGuideAI",
+      "location": "Kyoto Shijo East six sight anchors and acquired source building objects",
+      "method": "Explicit PyProj geoid transformations with pinned grid identity, source-height extrema diagnostics and inverse round-trip checks",
+      "limitations": "Source epoch/model choice and surveyed pedestrian ground remain unverified; no runtime transformation or physical acceptance.",
+      "path": "datum-diagnostic.json",
+      "bytes": 3390982,
+      "sha256": "dcbaa1d21f8ee7b3c00818b085430eb8d3cf255dc367df685be6b1abf807252a"
+    },
+    {
+      "source": "Original GSI / PROJ-data grids and retained Kyoto PLATEAU source geometry; exact sources/hashes in download-receipts.json and datum-diagnostic.json",
+      "date": "2026-11-06T07:00:36.548406+00:00",
+      "rights": "CC BY 4.0; Geospatial Information Authority of Japan / PROJ-data; Kyoto City / MLIT Project PLATEAU; derived diagnostic attributed to TourGuideAI",
+      "location": "Kyoto Shijo East six sight anchors and acquired source building objects",
+      "method": "Explicit PyProj geoid transformations with pinned grid identity, source-height extrema diagnostics and inverse round-trip checks",
+      "limitations": "Source epoch/model choice and surveyed pedestrian ground remain unverified; no runtime transformation or physical acceptance.",
+      "path": "jp_gsi_README.txt",
+      "bytes": 3139,
+      "sha256": "1143272775277b99e7deba562af67c0ae7eceb88a31b2b7fff30c6d772e82c01"
+    },
+    {
+      "source": "Original GSI / PROJ-data grids and retained Kyoto PLATEAU source geometry; exact sources/hashes in download-receipts.json and datum-diagnostic.json",
+      "date": "2026-11-06T07:00:36.548406+00:00",
+      "rights": "CC BY 4.0; Geospatial Information Authority of Japan / PROJ-data; Kyoto City / MLIT Project PLATEAU; derived diagnostic attributed to TourGuideAI",
+      "location": "Kyoto Shijo East six sight anchors and acquired source building objects",
+      "method": "Explicit PyProj geoid transformations with pinned grid identity, source-height extrema diagnostics and inverse round-trip checks",
+      "limitations": "Source epoch/model choice and surveyed pedestrian ground remain unverified; no runtime transformation or physical acceptance.",
+      "path": "download-receipts.json",
+      "bytes": 2862,
+      "sha256": "3a4b760ef4f8024320a965debc94541f56d3bb08cdb8aa82160baa142b3435f4"
+    },
+    {
+      "path": "independent-grid-check.json",
+      "bytes": 6289,
+      "sha256": "56732444f1d2536e0e5c850dea302ca7250757f04b51c8a8da9ee5c68fbf7b90",
+      "source": "Original GSI / PROJ-data grids and retained Kyoto PLATEAU source geometry; exact sources/hashes in download-receipts.json and datum-diagnostic.json",
+      "rights": "CC BY 4.0; Geospatial Information Authority of Japan / PROJ-data; Kyoto City / MLIT Project PLATEAU; derived diagnostic attributed to TourGuideAI",
+      "location": "Kyoto Shijo East six sight anchors and acquired source building objects",
+      "date": "2026-11-06T07:00:36.932277+00:00",
+      "method": "GDAL 3.10.3 GeoTIFF loading, inverse geotransform and native bilinear interpolation compared with explicitly selected PROJ pipelines",
+      "limitations": "Independent software agreement on the same geoid inputs; no source epoch, survey accuracy, ground/collision or runtime acceptance."
+    },
+    {
+      "path": "terrain-frame-diagnostic.json",
+      "bytes": 2454976,
+      "sha256": "eebc80019ca01c278fa20f64ce4b3622a7f3f972ad5844fe8b9f1a5b82ba377f",
+      "source": "Original GSI / PROJ-data grids and retained Kyoto PLATEAU source geometry; exact sources/hashes in download-receipts.json and datum-diagnostic.json",
+      "rights": "CC BY 4.0; Geospatial Information Authority of Japan / PROJ-data; Kyoto City / MLIT Project PLATEAU; derived diagnostic attributed to TourGuideAI",
+      "location": "Kyoto Shijo East six sight anchors and acquired source building objects",
+      "date": "2026-11-06T07:00:37.336133+00:00",
+      "method": "Explicit source geoid conversion, WGS84 ECEF and local east/up/south projection; every sample checked against PROJ topocentric conversion",
+      "limitations": "Source model choice, survey accuracy and pedestrian ground remain unverified; no runtime change."
+    }
+  ],
+  "producers": [
+    {
+      "path": "experience/tools/ground-datum/diagnose.py",
+      "bytes": 10623,
+      "sha256": "efccb48363e455fff5d2053e8a9979d85b72a3456276bd6fb13e6166a1a1b69e"
+    },
+    {
+      "path": "experience/tools/ground-datum/requirements.txt",
+      "bytes": 27,
+      "sha256": "b37d67cba23e352e650b8dcb5434ac66e22010c7eaa1cb7320e686b075573da3"
+    },
+    {
+      "path": "experience/tools/ground-datum/verify-grid.py",
+      "bytes": 4274,
+      "sha256": "df6ebd08e25aa9ea151b04802733672a83c15b22fcdfba376a1bf0b0f2d9ce26"
+    },
+    {
+      "path": "experience/tools/ground-datum/requirements-gdal.txt",
+      "bytes": 13,
+      "sha256": "43420333081d2f0f672bda9d14884568d93ed0336a0a74bda75b60febdb14659"
+    },
+    {
+      "path": "experience/tools/ground-datum/profile.py",
+      "bytes": 7437,
+      "sha256": "31b0a69c38879200a3f2690193269d94850c53cb6485c34fbbfff1396d3a0b30"
+    }
+  ]
+}

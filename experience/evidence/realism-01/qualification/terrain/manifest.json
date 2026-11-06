@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06T07:00:18.180106+00:00",
+  "files": [
+    {
+      "source": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/dem/523546_dem_6697_00_op.gml",
+      "date": "2026-11-06T06:57:21.133286+00:00",
+      "rights": "Kyoto City / MLIT Project PLATEAU, CC BY 4.0; derived source analysis attributed to TourGuideAI",
+      "location": "Kyoto Shijo East, 54-edge / six-sight route and 25 m corridor",
+      "method": "Original completed terrain-source experiment output retained unchanged",
+      "limitations": "Source terrain qualification only; pedestrian floors, bridge deck, public access, final datum choice and runtime acceptance remain unverified",
+      "path": "terrain-extraction.json",
+      "bytes": 2354,
+      "sha256": "eefb49798f28a081c577d9a1cb5c3b7238c2c521d969ae6c031e721112b2e3af"
+    },
+    {
+      "source": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/dem/523546_dem_6697_00_op.gml",
+      "date": "2026-11-06T06:57:21.133286+00:00",
+      "rights": "Kyoto City / MLIT Project PLATEAU, CC BY 4.0; derived source analysis attributed to TourGuideAI",
+      "location": "Kyoto Shijo East, 54-edge / six-sight route and 25 m corridor",
+      "method": "Complete original triangle GeoJSON, lossless gzip mtime=0",
+      "limitations": "Source terrain qualification only; pedestrian floors, bridge deck, public access, final datum choice and runtime acceptance remain unverified",
+      "path": "terrain-triangles.geojson.gz",
+      "bytes": 135920,
+      "sha256": "d00aa530aa0886f72179d8059373bb11629fdc60d6d2016cbc8b7777cbf78efb",
+      "decodedBytes": 5510068,
+      "decodedSha256": "9f9545e993da351d64e3052d290b0f7a14cf3ea327cb5677e8c700c138ec71de"
+    },
+    {
+      "source": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/dem/523546_dem_6697_00_op.gml",
+      "date": "2026-11-06T06:57:21.133286+00:00",
+      "rights": "Kyoto City / MLIT Project PLATEAU, CC BY 4.0; derived source analysis attributed to TourGuideAI",
+      "location": "Kyoto Shijo East, 54-edge / six-sight route and 25 m corridor",
+      "method": "Actual 1 m source-terrain interpolation and Matplotlib profile; unchanged generated output",
+      "limitations": "Source terrain qualification only; pedestrian floors, bridge deck, public access, final datum choice and runtime acceptance remain unverified",
+      "path": "terrain-profile.json",
+      "bytes": 634801,
+      "sha256": "d3ca87df0f09ad5f7188d0278de54e83429693be6882fc9bbc5fb7209a6a5986"
+    },
+    {
+      "source": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/dem/523546_dem_6697_00_op.gml",
+      "date": "2026-11-06T06:57:21.133286+00:00",
+      "rights": "Kyoto City / MLIT Project PLATEAU, CC BY 4.0; derived source analysis attributed to TourGuideAI",
+      "location": "Kyoto Shijo East, 54-edge / six-sight route and 25 m corridor",
+      "method": "Actual 1 m source-terrain interpolation and Matplotlib profile; unchanged generated output",
+      "limitations": "Source terrain qualification only; pedestrian floors, bridge deck, public access, final datum choice and runtime acceptance remain unverified",
+      "path": "terrain-profile.svg",
+      "bytes": 95344,
+      "sha256": "afa247cd222f5ac0e09f9f2a8036646c23643fd4a6592a2cea8b9750ce18f437"
+    }
+  ],
+  "producers": [
+    {
+      "path": "experience/tools/source-qualification/terrain-source.py",
+      "bytes": 10794,
+      "sha256": "855e2d125f3f5262f93ec79c644a9476c3b13fa5ea8b81bc968fe331ec592bdd"
+    },
+    {
+      "path": "experience/tools/source-qualification/terrain-profile.py",
+      "bytes": 7750,
+      "sha256": "fef3213d76fb02535d026569181518bb4e10d7f924d4cd7f53fee2697c1e6e62"
+    },
+    {
+      "path": "experience/tools/source-qualification/terrain-retain.py",
+      "bytes": 3211,
+      "sha256": "871af3d6fb40e052916485b16eb1b88c5c6688771791aa8c8890d3db82b4bbe2"
+    },
+    {
+      "path": "experience/tools/source-qualification/terrain-source-requirements.txt",
+      "bytes": 30,
+      "sha256": "0f7329dcbd2573f47dff68e50263449cfed18b971638966624ac3a3383151a94"
+    },
+    {
+      "path": "experience/tools/source-qualification/terrain-profile-requirements.txt",
+      "bytes": 61,
+      "sha256": "a17f336580d46af97ee9c00be1ddd49a8075f1059c2a1fc1321fd52cccc0022a"
+    }
+  ],
+  "limitations": "Source terrain qualification only; pedestrian floors, bridge deck, public access, final datum choice and runtime acceptance remain unverified"
+}

@@ -1,9 +1,9 @@
 # Agent checkpoint · Explore and Together homepage
 
 6 November 2026 · Lead owns integration, commits and publication.
-**State: Benchmark V1 and the R04 original-source inspection are delivered.
-73 tiles decoded; 18 source views, exact object mapping and ground audit retained.
-Current appearance, ground registration and matched capture qualification remain open.
+**State: Mesh source inspection, splat compatibility and shared terrain/datum
+experiments are delivered; the representation tracks proceed in parallel.
+Kyoto appearance, pedestrian floors, matched capture and final qualification remain open.
 The milestone is the complete 1,353.444 m, 54-edge, six-sight Shijō East route,
 with English/Chinese journeys and daylight/night. Published runtime `17b8f37`
 remains the main-site baseline; candidate 13 remains the separate public preview.
@@ -58,9 +58,20 @@ LOD1 footprints and one detailed sidewalk section near edges 50–54. Four bound
 DEM envelopes identify a covering source (793,602,405 declared decoded bytes;
 33,281,694 HTTP gzip bytes); complete terrain and pedestrian height remain unqualified.
 
-Next work: budget a streamed terrain/ground registration experiment, review
-feature-facing current references, and obtain a licensed matched capture package
-with a complete-route quote for remaining R05 gaps. Supplier outreach and spending
+The [parallel status table](../sprints/realism-01/experiments/candidate-status.md)
+distinguishes the two active representation families and their prerequisites.
+Spark 2.4.0 with existing Three 0.186.1 draws a licensed non-Kyoto sample and passes
+six engineering checks; correct source rendering/fidelity remains unverified.
+The complete DEM now has 2,042,977 decoded triangles, 6,019 retained route-near
+triangles and 1,434 covered profile samples. Explicit GSIGEO2011/JPGEO2024 tests
+pass 12 independent grid checks and 2,868 local-frame checks. Source epoch/model,
+independent control and pedestrian-floor/deck acceptance remain open. No candidate
+is admitted to the benchmark manifest or selected for production.
+
+Next work: qualify floor/deck/control and feature-facing current references,
+investigate splat fidelity/streaming/resource lifecycle using a referenced street
+sample, and obtain a licensed matched Kyoto capture package with a complete-route
+quote for remaining R05 gaps. Supplier outreach and spending
 need user authorization; local source experiments can continue independently.
 Physical Iris Xe/Chrome and M1/Safari devices, fresh participant cohorts and
 qualified matched capture remain unavailable. Full-route trial execution, human

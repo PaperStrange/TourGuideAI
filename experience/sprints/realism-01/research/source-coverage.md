@@ -28,9 +28,10 @@ realism, pedestrian-ground or independent-discovery acceptance.
 confirms Mitsui's retained GML ID in the acquired Shimogyo LOD2 model. Five other
 sight identities remain unverified. The [ground audit](../../../evidence/realism-01/qualification/ground/README.md)
 finds 110 nearby LOD1 roads with zero heights and one detailed sidewalk section
-near edges 50–54. The [DEM envelope review](../../../evidence/realism-01/qualification/dem/README.md)
-identifies a covering terrain source; actual terrain and pedestrian floor heights
-remain unqualified.
+near edges 50–54. The [complete terrain experiment](../../../evidence/realism-01/qualification/terrain/README.md)
+retains 6,019 route-near triangles and 1,434 covered samples. Both explicit
+vertical-model calculations pass independent implementation checks; source epoch,
+independent control, bridge deck and pedestrian floors remain unqualified.
 
 ## Sight coverage
 

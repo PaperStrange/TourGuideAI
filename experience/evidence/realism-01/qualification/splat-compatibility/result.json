@@ -1,0 +1,1091 @@
+{
+  "schemaVersion": 1,
+  "kind": "non-kyoto-splat-engineering-compatibility",
+  "startedAt": "2026-11-06T06:56:16.257Z",
+  "sourceReceipts": {
+    "path": "artifacts/realism-01/splat-qualification/downloads/download-receipts.json",
+    "bytes": 9405,
+    "sha256": "2273bf3faf84115ca4c783df96a37413885848896c00b52b0fd7f232d6801bda"
+  },
+  "toolSources": [
+    {
+      "path": "experience/tools/splat-qualification/acquire.py",
+      "bytes": 5324,
+      "sha256": "10830d1425df553875174859d73569a1f9381fffc61c28917b73c814f09cc317"
+    },
+    {
+      "path": "experience/tools/splat-qualification/capture.mjs",
+      "bytes": 7300,
+      "sha256": "5764b69ec734b48b7121cf282dd70c28cf58c3bedda9f8706ba86e549f477c48"
+    },
+    {
+      "path": "experience/tools/splat-qualification/viewer.html",
+      "bytes": 806,
+      "sha256": "5f979da38a252c70584a919e389dadc74e3dd8d473960abf143ef1d6e419f122"
+    },
+    {
+      "path": "experience/tools/splat-qualification/viewer.js",
+      "bytes": 5042,
+      "sha256": "817ab806f8c1f3fa47e93ba4abd5d7917f7e6af2c6ac534df7542d55a28a963c"
+    }
+  ],
+  "versions": {
+    "three": "0.186.1",
+    "spark": "2.4.0",
+    "browser": "151.0.7922.173"
+  },
+  "requests": [
+    {
+      "path": "/",
+      "status": 200,
+      "bytes": 806
+    },
+    {
+      "path": "/viewer.js",
+      "status": 200,
+      "bytes": 5042
+    },
+    {
+      "path": "/three/build/three.module.js",
+      "status": 200,
+      "bytes": 662772
+    },
+    {
+      "path": "/three/examples/jsm/controls/OrbitControls.js",
+      "status": 200,
+      "bytes": 40755
+    },
+    {
+      "path": "/spark.module.js",
+      "status": 200,
+      "bytes": 2997944
+    },
+    {
+      "path": "/three/build/three.core.js",
+      "status": 200,
+      "bytes": 1458113
+    },
+    {
+      "path": "/three/examples/jsm/postprocessing/Pass.js",
+      "status": 200,
+      "bytes": 4218
+    },
+    {
+      "path": "/favicon.ico",
+      "status": 204
+    },
+    {
+      "path": "/shoe.splat",
+      "status": 200,
+      "bytes": 3364608
+    }
+  ],
+  "errors": [],
+  "captures": [
+    {
+      "path": "source-initial.jpg",
+      "bytes": 38896,
+      "sha256": "f52ecf04c207e1f1e6767c58d9d340ca78b68188c21f88dca8d0b0050f0452df",
+      "date": "2026-11-06T06:56:21.070Z",
+      "observation": {
+        "ready": true,
+        "disposed": false,
+        "draws": 3,
+        "threeRevision": "186",
+        "stages": [
+          {
+            "stage": "source-initialized",
+            "milliseconds": 311.79999999981374
+          },
+          {
+            "stage": "sort-awaited-and-subsequent-submitted-frame",
+            "milliseconds": 685.7999999998137,
+            "draws": 3
+          }
+        ],
+        "sample": {
+          "initialized": true,
+          "count": 105144,
+          "bounds": {
+            "min": [
+              -5.23871742993943,
+              -4.154576895481011,
+              -3.981375806775686
+            ],
+            "max": [
+              4.471966225586262,
+              4.472130355507763,
+              3.378555700940156
+            ]
+          },
+          "transform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "sceneContainsSample": true
+        },
+        "camera": {
+          "position": [
+            7.827777128846807,
+            5.010821525618107,
+            13.135021688756876
+          ],
+          "target": [
+            -0.3833756021765842,
+            0.158776730013376,
+            -0.30141005291776507
+          ],
+          "matrixWorld": [
+            0.853281833651959,
+            1.3877787807814457e-17,
+            -0.521450009453975,
+            0,
+            -0.1535501031116715,
+            0.9556614809048086,
+            -0.25126380509182605,
+            0,
+            0.4983296882526122,
+            0.2944675430583617,
+            0.8154485807770018,
+            0,
+            7.827777128846807,
+            5.010821525618107,
+            13.135021688756876,
+            1
+          ],
+          "projectionMatrix": [
+            1.1258330249197703,
+            0,
+            0,
+            0,
+            0,
+            1.7320508075688774,
+            0,
+            0,
+            0,
+            0,
+            -1.000002000002,
+            -1,
+            0,
+            0,
+            -0.001492938353124424,
+            0
+          ],
+          "fov": 60
+        },
+        "spark": {
+          "activeSplats": 105144,
+          "maxSplats": 114688,
+          "sorting": false,
+          "sortDirty": false,
+          "lastSortTime": 861,
+          "enableLod": false
+        },
+        "renderer": {
+          "memory": {
+            "geometries": 2,
+            "textures": 7
+          },
+          "render": {
+            "frame": 4,
+            "calls": 1,
+            "triangles": 210288,
+            "points": 0,
+            "lines": 0
+          },
+          "programs": 2
+        },
+        "resources": {
+          "exposedCpuBufferBytes": 2588672,
+          "measuredFields": [
+            "packedArray",
+            "readback32",
+            "orderingTexture.image.data"
+          ],
+          "completeAccounting": false,
+          "limitation": "Selected exposed CPU buffers only; worker heaps, transient allocations, GPU textures and peaks remain unmeasured"
+        },
+        "viewport": [
+          1440,
+          936
+        ],
+        "graphics": {
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "vendor": "Google Inc. (Google)",
+          "contextAttributes": {
+            "alpha": true,
+            "antialias": false,
+            "depth": true,
+            "desynchronized": false,
+            "failIfMajorPerformanceCaveat": false,
+            "powerPreference": "default",
+            "premultipliedAlpha": true,
+            "preserveDrawingBuffer": true,
+            "stencil": false,
+            "xrCompatible": false
+          }
+        },
+        "progress": [
+          {
+            "at": 607.8000000007451,
+            "loaded": 724799,
+            "total": 3364608
+          },
+          {
+            "at": 626.6000000005588,
+            "loaded": 2097152,
+            "total": 3364608
+          },
+          {
+            "at": 652,
+            "loaded": 3364608,
+            "total": 3364608
+          }
+        ],
+        "nativeInputs": []
+      }
+    },
+    {
+      "path": "source-after-native-orbit.jpg",
+      "bytes": 33236,
+      "sha256": "551ae56d9c6f0cae581c6bb0a0e640e98dc176d64c763b9755364b381b060ba1",
+      "date": "2026-11-06T06:56:35.827Z",
+      "observation": {
+        "ready": true,
+        "disposed": false,
+        "draws": 15,
+        "threeRevision": "186",
+        "stages": [
+          {
+            "stage": "source-initialized",
+            "milliseconds": 311.79999999981374
+          },
+          {
+            "stage": "sort-awaited-and-subsequent-submitted-frame",
+            "milliseconds": 685.7999999998137,
+            "draws": 3
+          }
+        ],
+        "sample": {
+          "initialized": true,
+          "count": 105144,
+          "bounds": {
+            "min": [
+              -5.23871742993943,
+              -4.154576895481011,
+              -3.981375806775686
+            ],
+            "max": [
+              4.471966225586262,
+              4.472130355507763,
+              3.378555700940156
+            ]
+          },
+          "transform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "sceneContainsSample": true
+        },
+        "camera": {
+          "position": [
+            -12.157829592058903,
+            6.946152200183638,
+            9.015071755496027
+          ],
+          "target": [
+            -0.3833756021765842,
+            0.158776730013376,
+            -0.3014100529177652
+          ],
+          "matrixWorld": [
+            0.6204998113340572,
+            0,
+            0.7842065953142702,
+            0,
+            0.32303159070879073,
+            0.911219316344625,
+            -0.2555972396654206,
+            0,
+            -0.7145841976552153,
+            0.41192154291859284,
+            0.5654114138757884,
+            0,
+            -12.157829592058903,
+            6.946152200183638,
+            9.015071755496027,
+            1
+          ],
+          "projectionMatrix": [
+            1.1258330249197703,
+            0,
+            0,
+            0,
+            0,
+            1.7320508075688774,
+            0,
+            0,
+            0,
+            0,
+            -1.000002000002,
+            -1,
+            0,
+            0,
+            -0.001492938353124424,
+            0
+          ],
+          "fov": 60
+        },
+        "spark": {
+          "activeSplats": 105144,
+          "maxSplats": 114688,
+          "sorting": false,
+          "sortDirty": false,
+          "lastSortTime": 14017.200000000186,
+          "enableLod": false
+        },
+        "renderer": {
+          "memory": {
+            "geometries": 2,
+            "textures": 9
+          },
+          "render": {
+            "frame": 22,
+            "calls": 1,
+            "triangles": 210288,
+            "points": 0,
+            "lines": 0
+          },
+          "programs": 2
+        },
+        "resources": {
+          "exposedCpuBufferBytes": 2588672,
+          "measuredFields": [
+            "packedArray",
+            "readback32",
+            "orderingTexture.image.data"
+          ],
+          "completeAccounting": false,
+          "limitation": "Selected exposed CPU buffers only; worker heaps, transient allocations, GPU textures and peaks remain unmeasured"
+        },
+        "viewport": [
+          1440,
+          936
+        ],
+        "graphics": {
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "vendor": "Google Inc. (Google)",
+          "contextAttributes": {
+            "alpha": true,
+            "antialias": false,
+            "depth": true,
+            "desynchronized": false,
+            "failIfMajorPerformanceCaveat": false,
+            "powerPreference": "default",
+            "premultipliedAlpha": true,
+            "preserveDrawingBuffer": true,
+            "stencil": false,
+            "xrCompatible": false
+          }
+        },
+        "progress": [
+          {
+            "at": 607.8000000007451,
+            "loaded": 724799,
+            "total": 3364608
+          },
+          {
+            "at": 626.6000000005588,
+            "loaded": 2097152,
+            "total": 3364608
+          },
+          {
+            "at": 652,
+            "loaded": 3364608,
+            "total": 3364608
+          }
+        ],
+        "nativeInputs": [
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "timeStamp": 4222.300000000745,
+            "draws": 3
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "timeStamp": 11545.900000000373,
+            "draws": 9
+          }
+        ]
+      }
+    }
+  ],
+  "checks": [
+    {
+      "id": "original-source-decoded-and-drawn",
+      "pass": true
+    },
+    {
+      "id": "current-three-revision",
+      "pass": true
+    },
+    {
+      "id": "native-orbit-changes-submitted-camera",
+      "pass": true
+    },
+    {
+      "id": "captured-frame-changes",
+      "pass": true
+    },
+    {
+      "id": "sample-disposal-completes",
+      "pass": true
+    },
+    {
+      "id": "no-page-errors",
+      "pass": true
+    }
+  ],
+  "conditions": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "dpr": 1,
+    "antialias": false,
+    "lod": false,
+    "sortAwaited": true,
+    "performanceProtocol": "No network throttle or Benchmark V1 timing acceptance; software-rendered engineering diagnostic"
+  },
+  "limitations": [
+    "Single non-Kyoto shoe sample, publisher rcmt, dataset card MIT; original capture ownership/date/location unverified.",
+    "No street capture, common mesh pair, collision, night lighting, streaming or physical-device acceptance.",
+    "Readiness timestamps are diagnostic observations, not full-quality Benchmark V1 measurements."
+  ],
+  "completed": true,
+  "before": {
+    "ready": true,
+    "disposed": false,
+    "draws": 3,
+    "threeRevision": "186",
+    "stages": [
+      {
+        "stage": "source-initialized",
+        "milliseconds": 311.79999999981374
+      },
+      {
+        "stage": "sort-awaited-and-subsequent-submitted-frame",
+        "milliseconds": 685.7999999998137,
+        "draws": 3
+      }
+    ],
+    "sample": {
+      "initialized": true,
+      "count": 105144,
+      "bounds": {
+        "min": [
+          -5.23871742993943,
+          -4.154576895481011,
+          -3.981375806775686
+        ],
+        "max": [
+          4.471966225586262,
+          4.472130355507763,
+          3.378555700940156
+        ]
+      },
+      "transform": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "sceneContainsSample": true
+    },
+    "camera": {
+      "position": [
+        7.827777128846807,
+        5.010821525618107,
+        13.135021688756876
+      ],
+      "target": [
+        -0.3833756021765842,
+        0.158776730013376,
+        -0.30141005291776507
+      ],
+      "matrixWorld": [
+        0.853281833651959,
+        1.3877787807814457e-17,
+        -0.521450009453975,
+        0,
+        -0.1535501031116715,
+        0.9556614809048086,
+        -0.25126380509182605,
+        0,
+        0.4983296882526122,
+        0.2944675430583617,
+        0.8154485807770018,
+        0,
+        7.827777128846807,
+        5.010821525618107,
+        13.135021688756876,
+        1
+      ],
+      "projectionMatrix": [
+        1.1258330249197703,
+        0,
+        0,
+        0,
+        0,
+        1.7320508075688774,
+        0,
+        0,
+        0,
+        0,
+        -1.000002000002,
+        -1,
+        0,
+        0,
+        -0.001492938353124424,
+        0
+      ],
+      "fov": 60
+    },
+    "spark": {
+      "activeSplats": 105144,
+      "maxSplats": 114688,
+      "sorting": false,
+      "sortDirty": false,
+      "lastSortTime": 861,
+      "enableLod": false
+    },
+    "renderer": {
+      "memory": {
+        "geometries": 2,
+        "textures": 7
+      },
+      "render": {
+        "frame": 4,
+        "calls": 1,
+        "triangles": 210288,
+        "points": 0,
+        "lines": 0
+      },
+      "programs": 2
+    },
+    "resources": {
+      "exposedCpuBufferBytes": 2588672,
+      "measuredFields": [
+        "packedArray",
+        "readback32",
+        "orderingTexture.image.data"
+      ],
+      "completeAccounting": false,
+      "limitation": "Selected exposed CPU buffers only; worker heaps, transient allocations, GPU textures and peaks remain unmeasured"
+    },
+    "viewport": [
+      1440,
+      936
+    ],
+    "graphics": {
+      "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "vendor": "Google Inc. (Google)",
+      "contextAttributes": {
+        "alpha": true,
+        "antialias": false,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "default",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": true,
+        "stencil": false,
+        "xrCompatible": false
+      }
+    },
+    "progress": [
+      {
+        "at": 607.8000000007451,
+        "loaded": 724799,
+        "total": 3364608
+      },
+      {
+        "at": 626.6000000005588,
+        "loaded": 2097152,
+        "total": 3364608
+      },
+      {
+        "at": 652,
+        "loaded": 3364608,
+        "total": 3364608
+      }
+    ],
+    "nativeInputs": []
+  },
+  "after": {
+    "ready": true,
+    "disposed": false,
+    "draws": 15,
+    "threeRevision": "186",
+    "stages": [
+      {
+        "stage": "source-initialized",
+        "milliseconds": 311.79999999981374
+      },
+      {
+        "stage": "sort-awaited-and-subsequent-submitted-frame",
+        "milliseconds": 685.7999999998137,
+        "draws": 3
+      }
+    ],
+    "sample": {
+      "initialized": true,
+      "count": 105144,
+      "bounds": {
+        "min": [
+          -5.23871742993943,
+          -4.154576895481011,
+          -3.981375806775686
+        ],
+        "max": [
+          4.471966225586262,
+          4.472130355507763,
+          3.378555700940156
+        ]
+      },
+      "transform": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "sceneContainsSample": true
+    },
+    "camera": {
+      "position": [
+        -12.157829592058903,
+        6.946152200183638,
+        9.015071755496027
+      ],
+      "target": [
+        -0.3833756021765842,
+        0.158776730013376,
+        -0.3014100529177652
+      ],
+      "matrixWorld": [
+        0.6204998113340572,
+        0,
+        0.7842065953142702,
+        0,
+        0.32303159070879073,
+        0.911219316344625,
+        -0.2555972396654206,
+        0,
+        -0.7145841976552153,
+        0.41192154291859284,
+        0.5654114138757884,
+        0,
+        -12.157829592058903,
+        6.946152200183638,
+        9.015071755496027,
+        1
+      ],
+      "projectionMatrix": [
+        1.1258330249197703,
+        0,
+        0,
+        0,
+        0,
+        1.7320508075688774,
+        0,
+        0,
+        0,
+        0,
+        -1.000002000002,
+        -1,
+        0,
+        0,
+        -0.001492938353124424,
+        0
+      ],
+      "fov": 60
+    },
+    "spark": {
+      "activeSplats": 105144,
+      "maxSplats": 114688,
+      "sorting": false,
+      "sortDirty": false,
+      "lastSortTime": 14017.200000000186,
+      "enableLod": false
+    },
+    "renderer": {
+      "memory": {
+        "geometries": 2,
+        "textures": 9
+      },
+      "render": {
+        "frame": 22,
+        "calls": 1,
+        "triangles": 210288,
+        "points": 0,
+        "lines": 0
+      },
+      "programs": 2
+    },
+    "resources": {
+      "exposedCpuBufferBytes": 2588672,
+      "measuredFields": [
+        "packedArray",
+        "readback32",
+        "orderingTexture.image.data"
+      ],
+      "completeAccounting": false,
+      "limitation": "Selected exposed CPU buffers only; worker heaps, transient allocations, GPU textures and peaks remain unmeasured"
+    },
+    "viewport": [
+      1440,
+      936
+    ],
+    "graphics": {
+      "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "vendor": "Google Inc. (Google)",
+      "contextAttributes": {
+        "alpha": true,
+        "antialias": false,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "default",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": true,
+        "stencil": false,
+        "xrCompatible": false
+      }
+    },
+    "progress": [
+      {
+        "at": 607.8000000007451,
+        "loaded": 724799,
+        "total": 3364608
+      },
+      {
+        "at": 626.6000000005588,
+        "loaded": 2097152,
+        "total": 3364608
+      },
+      {
+        "at": 652,
+        "loaded": 3364608,
+        "total": 3364608
+      }
+    ],
+    "nativeInputs": [
+      {
+        "type": "pointerdown",
+        "trusted": true,
+        "timeStamp": 4222.300000000745,
+        "draws": 3
+      },
+      {
+        "type": "pointerup",
+        "trusted": true,
+        "timeStamp": 11545.900000000373,
+        "draws": 9
+      }
+    ]
+  },
+  "disposed": {
+    "ready": false,
+    "disposed": true,
+    "draws": 16,
+    "threeRevision": "186",
+    "stages": [
+      {
+        "stage": "source-initialized",
+        "milliseconds": 311.79999999981374
+      },
+      {
+        "stage": "sort-awaited-and-subsequent-submitted-frame",
+        "milliseconds": 685.7999999998137,
+        "draws": 3
+      }
+    ],
+    "sample": {
+      "initialized": true,
+      "count": null,
+      "bounds": {
+        "min": [
+          -5.23871742993943,
+          -4.154576895481011,
+          -3.981375806775686
+        ],
+        "max": [
+          4.471966225586262,
+          4.472130355507763,
+          3.378555700940156
+        ]
+      },
+      "transform": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "sceneContainsSample": false
+    },
+    "camera": {
+      "position": [
+        -12.157829592058903,
+        6.946152200183638,
+        9.015071755496027
+      ],
+      "target": [
+        -0.3833756021765842,
+        0.158776730013376,
+        -0.3014100529177652
+      ],
+      "matrixWorld": [
+        0.6204998113340572,
+        0,
+        0.7842065953142702,
+        0,
+        0.32303159070879073,
+        0.911219316344625,
+        -0.2555972396654206,
+        0,
+        -0.7145841976552153,
+        0.41192154291859284,
+        0.5654114138757884,
+        0,
+        -12.157829592058903,
+        6.946152200183638,
+        9.015071755496027,
+        1
+      ],
+      "projectionMatrix": [
+        1.1258330249197703,
+        0,
+        0,
+        0,
+        0,
+        1.7320508075688774,
+        0,
+        0,
+        0,
+        0,
+        -1.000002000002,
+        -1,
+        0,
+        0,
+        -0.001492938353124424,
+        0
+      ],
+      "fov": 60
+    },
+    "spark": {
+      "activeSplats": 105144,
+      "maxSplats": 114688,
+      "sorting": false,
+      "sortDirty": false,
+      "lastSortTime": 14017.200000000186,
+      "enableLod": false
+    },
+    "renderer": {
+      "memory": {
+        "geometries": 1,
+        "textures": 3
+      },
+      "render": {
+        "frame": 23,
+        "calls": 0,
+        "triangles": 0,
+        "points": 0,
+        "lines": 0
+      },
+      "programs": 1
+    },
+    "resources": {
+      "exposedCpuBufferBytes": 425984,
+      "measuredFields": [
+        "packedArray",
+        "readback32",
+        "orderingTexture.image.data"
+      ],
+      "completeAccounting": false,
+      "limitation": "Selected exposed CPU buffers only; worker heaps, transient allocations, GPU textures and peaks remain unmeasured"
+    },
+    "viewport": [
+      1440,
+      936
+    ],
+    "graphics": {
+      "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "vendor": "Google Inc. (Google)",
+      "contextAttributes": {
+        "alpha": true,
+        "antialias": false,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "default",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": true,
+        "stencil": false,
+        "xrCompatible": false
+      }
+    },
+    "progress": [
+      {
+        "at": 607.8000000007451,
+        "loaded": 724799,
+        "total": 3364608
+      },
+      {
+        "at": 626.6000000005588,
+        "loaded": 2097152,
+        "total": 3364608
+      },
+      {
+        "at": 652,
+        "loaded": 3364608,
+        "total": 3364608
+      }
+    ],
+    "nativeInputs": [
+      {
+        "type": "pointerdown",
+        "trusted": true,
+        "timeStamp": 4222.300000000745,
+        "draws": 3
+      },
+      {
+        "type": "pointerup",
+        "trusted": true,
+        "timeStamp": 11545.900000000373,
+        "draws": 9
+      }
+    ]
+  },
+  "servedResources": [
+    {
+      "requestPath": "/",
+      "path": "experience/tools/splat-qualification/viewer.html",
+      "bytes": 806,
+      "sha256": "5f979da38a252c70584a919e389dadc74e3dd8d473960abf143ef1d6e419f122"
+    },
+    {
+      "requestPath": "/viewer.js",
+      "path": "experience/tools/splat-qualification/viewer.js",
+      "bytes": 5042,
+      "sha256": "817ab806f8c1f3fa47e93ba4abd5d7917f7e6af2c6ac534df7542d55a28a963c"
+    },
+    {
+      "requestPath": "/three/build/three.module.js",
+      "path": "experience/node_modules/three/build/three.module.js",
+      "bytes": 662772,
+      "sha256": "9052042d676cb0fdc1ddfefe193053f34b7ac0513a616fdac4535d49987812ea"
+    },
+    {
+      "requestPath": "/three/examples/jsm/controls/OrbitControls.js",
+      "path": "experience/node_modules/three/examples/jsm/controls/OrbitControls.js",
+      "bytes": 40755,
+      "sha256": "3d79d07ecb686b4e5d93232eedab255331c1beef711e13164eaa1f68655a5f2b"
+    },
+    {
+      "requestPath": "/spark.module.js",
+      "path": "artifacts/realism-01/splat-qualification/downloads/spark.module.js",
+      "bytes": 2997944,
+      "sha256": "5ae86ab35d4ceb655db486dcc336299775bb314c280d7e5b39f64e4539f8e0e9"
+    },
+    {
+      "requestPath": "/three/build/three.core.js",
+      "path": "experience/node_modules/three/build/three.core.js",
+      "bytes": 1458113,
+      "sha256": "9edde002b066a9a05676a6127f67735b62baf399bdea529f2f7e31657da769e6"
+    },
+    {
+      "requestPath": "/three/examples/jsm/postprocessing/Pass.js",
+      "path": "experience/node_modules/three/examples/jsm/postprocessing/Pass.js",
+      "bytes": 4218,
+      "sha256": "444b409c235ead986893c472e720da1b779a56985c7d10b279c7944b52bd61c5"
+    },
+    {
+      "requestPath": "/shoe.splat",
+      "path": "artifacts/realism-01/splat-qualification/downloads/shoe.splat",
+      "bytes": 3364608,
+      "sha256": "49c02b30daeb6e2e1621eba6e24d0c53a2db26fe54c4f83858af9a2c520552cc"
+    }
+  ],
+  "finishedAt": "2026-11-06T06:56:35.944Z"
+}

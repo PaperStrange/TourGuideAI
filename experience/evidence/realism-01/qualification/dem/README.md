@@ -29,3 +29,8 @@ PYTHONPATH=artifacts/realism-01/site-test-tools python experience/evidence/reali
 A subsequent terrain experiment should explicitly budget compressed transfer,
 decoded source size and parsing memory, and stream only a reviewed route extent.
 It must preserve the source datum and separately qualify pedestrian floors.
+
+The completed [full-source follow-up](../terrain/README.md) used explicit transfer
+and decoded-size budgets. It parsed the complete covering file and retained 6,019
+route-near triangles. The envelope records above preserve their original bounded
+inspection scope. Pedestrian floors and source epoch/model qualification remain open.

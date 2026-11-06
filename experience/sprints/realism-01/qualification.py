@@ -141,7 +141,45 @@ def verify_qualification(root, require, verify_file, route):
         for tag, field in [("lowerCorner", "sourceLowerLatLonHeight"), ("upperCorner", "sourceUpperLatLonHeight")]:
             actual = [float(value) for value in envelopes[0].find("{http://www.opengis.net/gml}" + tag).text.split()]
             require(actual == record[field], "DEM source envelope differs")
+
+    terrain = read("terrain/terrain-extraction.json")
+    triangles = json.loads(gzip.decompress((base / "terrain/terrain-triangles.geojson.gz").read_bytes()))
+    triangle_ids = {feature["id"] for feature in triangles["features"]}
+    require(len(triangle_ids) == terrain["retainedTriangles"] == len(triangles["features"]), "Terrain triangle inventory differs")
+    require(terrain["decoded"]["bytes"] == terrain["receipt"]["declaredDecodedBytes"], "Complete terrain source size differs")
+    verify_file(root, terrain["route"])
+    verify_file(root, terrain["receipt"]["selection"])
+    profile = read("terrain/terrain-profile.json")
+    for record in profile["inputs"]:
+        verify_file(root, record)
+    require(profile["sourceTriangleCount"] == len(triangle_ids), "Profile source inventory differs")
+    require([edge["id"] for edge in profile["edges"]] == route["edgeIds"], "Terrain profile route order differs")
+    samples = profile["samples"]
+    require(profile["sampleCount"] == len(samples), "Terrain sample count differs")
+    require(profile["coveredSamples"] == sum(sample["terrainHeightMetres"] is not None for sample in samples),
+            "Terrain coverage differs from sample observations")
+    for sample in samples:
+        require(set(sample["triangleIds"]).issubset(triangle_ids), "Profile references unknown triangle")
+        require(sample["pedestrianFloorQualified"] is False, "Terrain interpolation cannot qualify a pedestrian floor")
+    for edge in profile["edges"]:
+        observed = [sample for sample in samples if sample["edgeId"] == edge["id"]]
+        require(len(observed) == edge["samples"] and sum(sample["terrainHeightMetres"] is not None for sample in observed) == edge["covered"],
+                "Per-edge terrain coverage differs")
+    datum = read("datum/terrain-frame-diagnostic.json")
+    for record in datum["inputs"]:
+        verify_file(root, record)
+    require(datum["sourceSampleCount"] == len(samples), "Datum source sample inventory differs")
+    for model in datum["models"]:
+        require(model["convertedSampleCount"] == len(model["samples"]) == len(samples), "Datum conversion count differs")
+        for original, converted in zip(samples, model["samples"]):
+            require(converted["edgeId"] == original["edgeId"] and converted["triangleIds"] == original["triangleIds"]
+                    and converted["originalGravityHeightMetres"] == original["terrainHeightMetres"], "Datum source observation differs")
+            require(converted["pedestrianFloorQualified"] is False, "Datum conversion cannot qualify pedestrian floors")
+        maximum = max(item["independentFrameMaximumDifferenceMetres"] for item in model["samples"])
+        require(maximum == model["maximumFrameDifferenceMetres"] and maximum < 1e-6, "Local-frame cross-check differs")
     return {"fileHashes": file_count, "producerHashes": producer_count, "sourceOccurrences": len(features),
             "selectedOccurrences": len(selected), "routeEdges": len(audit["edges"]), "browserCaptures": len(browser["captures"]),
+            "terrainTriangles": len(triangle_ids), "terrainSamples": len(samples),
+            "datumFrameChecks": sum(model["convertedSampleCount"] for model in datum["models"]),
             "retainedFailingBrowserChecks": [check["id"] for check in browser["checks"] if not check["pass"]],
             "limitations": "Integrity and cross-evidence consistency only; failing source diagnostics remain failures."}

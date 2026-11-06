@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "kind": "non-kyoto-splat-engineering-compatibility",
+  "startedAt": "2026-11-06T06:55:38.185Z",
+  "sourceReceipts": {
+    "path": "artifacts/realism-01/splat-qualification/downloads/download-receipts.json",
+    "bytes": 9405,
+    "sha256": "2273bf3faf84115ca4c783df96a37413885848896c00b52b0fd7f232d6801bda"
+  },
+  "toolSources": [
+    {
+      "path": "experience/tools/splat-qualification/acquire.py",
+      "bytes": 5324,
+      "sha256": "10830d1425df553875174859d73569a1f9381fffc61c28917b73c814f09cc317"
+    },
+    {
+      "path": "experience/tools/splat-qualification/capture.mjs",
+      "bytes": 7241,
+      "sha256": "fce4c2a3f73164f7b6278288e7c77901318eb40c7270e104597705f5c4a8557b"
+    },
+    {
+      "path": "experience/tools/splat-qualification/viewer.html",
+      "bytes": 806,
+      "sha256": "5f979da38a252c70584a919e389dadc74e3dd8d473960abf143ef1d6e419f122"
+    },
+    {
+      "path": "experience/tools/splat-qualification/viewer.js",
+      "bytes": 5042,
+      "sha256": "817ab806f8c1f3fa47e93ba4abd5d7917f7e6af2c6ac534df7542d55a28a963c"
+    }
+  ],
+  "versions": {
+    "three": "0.186.1",
+    "spark": "2.4.0",
+    "browser": null
+  },
+  "requests": [],
+  "errors": [],
+  "captures": [],
+  "checks": [],
+  "conditions": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "dpr": 1,
+    "antialias": false,
+    "lod": false,
+    "sortAwaited": true,
+    "performanceProtocol": "No network throttle or Benchmark V1 timing acceptance; software-rendered engineering diagnostic"
+  },
+  "limitations": [
+    "Single non-Kyoto shoe sample, publisher rcmt, dataset card MIT; original capture ownership/date/location unverified.",
+    "No street capture, common mesh pair, collision, night lighting, streaming or physical-device acceptance.",
+    "Readiness timestamps are diagnostic observations, not full-quality Benchmark V1 measurements."
+  ],
+  "completed": false,
+  "servedResources": [],
+  "finishedAt": "2026-11-06T06:55:38.463Z"
+}
