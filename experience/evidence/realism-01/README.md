@@ -16,6 +16,9 @@
 | [Pedestrian coverage and navigation boards](qualification/pedestrian/README.md) | Actual detailed-surface intersections with the complete route and player corridor; measured capture requirements |
 | [Prepared acquisition package](../../sprints/realism-01/research/acquisition-package/README.md) | Exact route map, scope, handover checks and unsent quotation inquiry |
 | [Architectural splat comparison](qualification/splat-fidelity/README.md) | Original publisher and Spark frames at matching cameras; measured differences, native inputs and portable-preview verification; full-load budget exceeded |
+| [Paged source comparison](qualification/splat-streaming/README.md) | Actual first-visible and bounded views, byte failures, eviction/unload/cancellation and partial allocation observations |
+| [Free Kyoto photographic intake](qualification/free-sources/README.md) | Actual licensed images, visible features, business locations and capture-family restrictions |
+| [Encoding trade-off](qualification/splat-encoding/README.md) | 3.72 MiB partial first view, explicitly reduced directional colour detail and remaining section-budget failures |
 
 The [Benchmark V1 protocol](../../sprints/realism-01/benchmark.md) and
 [lesson register](../../sprints/realism-01/lessons.md) define the remaining acceptance.

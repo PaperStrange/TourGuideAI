@@ -1,0 +1,1478 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "constraint": "Free sources only; no outreach, purchase, paid service or token request",
+  "approvedRoute": {
+    "identity": {
+      "cachePath": "experience/src/neighborhoods/shijo-east/geography.json",
+      "bytes": 175220,
+      "sha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f"
+    },
+    "boundsDegrees": [
+      135.7599457,
+      35.0037511,
+      135.77152,
+      35.0050389
+    ],
+    "lengthMetres": 1353.444059858351
+  },
+  "officialRouteQuery": {
+    "receipt": {
+      "source": "https://api.plateauview.mlit.go.jp/datacatalog/citygml/r:135.7590,35.0031,135.7725,35.0057",
+      "responseUrl": "https://api.plateauview.mlit.go.jp/datacatalog/citygml/r:135.7590,35.0031,135.7725,35.0057",
+      "date": "2026-11-06T07:58:34.087154+00:00",
+      "status": 200,
+      "bytes": 6180,
+      "sha256": "1b047a2388321e1957f0891ca165cfbe04e45c3b9ae8366014ca45d9bcc63096",
+      "contentType": "application/json",
+      "lastModified": null,
+      "cachePath": "artifacts/realism-01/free-sources/route-all-types.raw",
+      "method": "Public GET through inherited proxy with TLS verification; metadata limited to 12 MiB per response"
+    },
+    "response": {
+      "cities": [
+        {
+          "cityCode": "26100",
+          "cityName": "京都市",
+          "year": 2025,
+          "registrationYear": 2025,
+          "spec": "5.0",
+          "url": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op.zip",
+          "files": {
+            "bldg": [
+              {
+                "code": "52354600",
+                "maxLod": 2,
+                "url": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/bldg/52354600_bldg_6697_op.gml",
+                "fileSize": 107466771,
+                "features": 4528,
+                "lod0": 4528,
+                "lod1": 4528,
+                "lod2": 4528,
+                "lod3": 0,
+                "lod4": 0
+              },
+              {
+                "code": "52354601",
+                "maxLod": 3,
+                "url": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/bldg/52354601_bldg_6697_op.gml",
+                "fileSize": 325851198,
+                "features": 4444,
+                "lod0": 4444,
+                "lod1": 4444,
+                "lod2": 4444,
+                "lod3": 138,
+                "lod4": 0
+              }
+            ],
+            "brid": [
+              {
+                "code": "52354601",
+                "maxLod": 3,
+                "url": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/brid/52354601_brid_6697_op.gml",
+                "fileSize": 2570989,
+                "features": 4,
+                "lod0": 0,
+                "lod1": 0,
+                "lod2": 0,
+                "lod3": 4,
+                "lod4": 0
+              }
+            ],
+            "dem": [
+              {
+                "code": "523546",
+                "maxLod": 1,
+                "url": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/dem/523546_dem_6697_05_op.gml",
+                "fileSize": 67293861,
+                "features": 2,
+                "lod0": 0,
+                "lod1": 2,
+                "lod2": 0,
+                "lod3": 0,
+                "lod4": 0
+              },
+              {
+                "code": "523546",
+                "maxLod": 1,
+                "url": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/dem/523546_dem_6697_00_op.gml",
+                "fileSize": 793602405,
+                "features": 24,
+                "lod0": 0,
+                "lod1": 24,
+                "lod2": 0,
+                "lod3": 0,
+                "lod4": 0
+              },
+              {
+                "code": "523546",
+                "maxLod": 1,
+                "url": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/dem/523546_dem_6697_55_op.gml",
+                "fileSize": 66687596,
+                "features": 2,
+                "lod0": 0,
+                "lod1": 2,
+                "lod2": 0,
+                "lod3": 0,
+                "lod4": 0
+              },
+              {
+                "code": "523546",
+                "maxLod": 1,
+                "url": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/dem/523546_dem_6697_50_op.gml",
+                "fileSize": 794105917,
+                "features": 24,
+                "lod0": 0,
+                "lod1": 24,
+                "lod2": 0,
+                "lod3": 0,
+                "lod4": 0
+              }
+            ],
+            "fld": [
+              {
+                "code": "52354600",
+                "maxLod": 1,
+                "url": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/fld/52354600_fld_6697_l2_op.gml",
+                "fileSize": 19872872,
+                "features": 205,
+                "lod0": 0,
+                "lod1": 205,
+                "lod2": 0,
+                "lod3": 0,
+                "lod4": 0
+              },
+              {
+                "code": "52354601",
+                "maxLod": 1,
+                "url": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/fld/52354601_fld_6697_l2_op.gml",
+                "fileSize": 28240012,
+                "features": 213,
+                "lod0": 0,
+                "lod1": 213,
+                "lod2": 0,
+                "lod3": 0,
+                "lod4": 0
+              },
+              {
+                "code": "52354601",
+                "maxLod": 1,
+                "url": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/fld/52354601_fld_6697_l2_op.gml",
+                "fileSize": 6974947,
+                "features": 85,
+                "lod0": 0,
+                "lod1": 85,
+                "lod2": 0,
+                "lod3": 0,
+                "lod4": 0
+              }
+            ],
+            "frn": [
+              {
+                "code": "52354601",
+                "maxLod": 3,
+                "url": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/frn/52354601_frn_6697_op.gml",
+                "fileSize": 254905827,
+                "features": 977,
+                "lod0": 0,
+                "lod1": 13,
+                "lod2": 0,
+                "lod3": 964,
+                "lod4": 0
+              }
+            ],
+            "lsld": [
+              {
+                "code": "523546",
+                "maxLod": 1,
+                "url": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/lsld/523546_lsld_6697_op.gml",
+                "fileSize": 2508452,
+                "features": 872,
+                "lod0": 0,
+                "lod1": 872,
+                "lod2": 0,
+                "lod3": 0,
+                "lod4": 0
+              }
+            ],
+            "luse": [
+              {
+                "code": "523546",
+                "maxLod": 1,
+                "url": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/luse/523546_luse_6697_op.gml",
+                "fileSize": 62042112,
+                "features": 20752,
+                "lod0": 0,
+                "lod1": 20752,
+                "lod2": 0,
+                "lod3": 0,
+                "lod4": 0
+              }
+            ],
+            "tran": [
+              {
+                "code": "52354600",
+                "maxLod": 1,
+                "url": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/tran/52354600_tran_6697_op.gml",
+                "fileSize": 1007792,
+                "features": 415,
+                "lod0": 0,
+                "lod1": 415,
+                "lod2": 0,
+                "lod3": 0,
+                "lod4": 0
+              },
+              {
+                "code": "52354601",
+                "maxLod": 3,
+                "url": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/tran/52354601_tran_6697_op.gml",
+                "fileSize": 3638216,
+                "features": 680,
+                "lod0": 0,
+                "lod1": 680,
+                "lod2": 0,
+                "lod3": 18,
+                "lod4": 0
+              }
+            ],
+            "urf": [
+              {
+                "code": "523546",
+                "maxLod": 1,
+                "url": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/urf/523546_urf_6697_08_op.gml",
+                "fileSize": 2855345,
+                "features": 542,
+                "lod0": 0,
+                "lod1": 542,
+                "lod2": 0,
+                "lod3": 0,
+                "lod4": 0
+              }
+            ],
+            "veg": [
+              {
+                "code": "52354601",
+                "maxLod": 3,
+                "url": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op/udx/veg/52354601_veg_6697_op.gml",
+                "fileSize": 8652308,
+                "features": 109,
+                "lod0": 0,
+                "lod1": 0,
+                "lod2": 0,
+                "lod3": 109,
+                "lod4": 0
+              }
+            ]
+          },
+          "metadataZipUrls": [
+            "https://assets.cms.plateau.reearth.io/assets/bb/15fa90-93c2-42be-848b-85d694d6efdb/26100_kyoto-shi_city_2025_citygml_1_op_codelists.zip",
+            "https://assets.cms.plateau.reearth.io/assets/7c/2808f2-37ac-4e48-8d03-222d3a75e0c0/26100_kyoto-shi_city_2025_citygml_1_op_schemas.zip",
+            "https://assets.cms.plateau.reearth.io/assets/69/1474c1-2ef3-4365-8041-af993b7add76/26100_kyoto-shi_city_2025_citygml_1_op_metadata.zip",
+            "https://assets.cms.plateau.reearth.io/assets/cc/c8d2b9-117e-49e0-a4f7-451e0fdf0840/26100_kyoto-shi_city_2025_citygml_1_op_specification.zip",
+            "https://assets.cms.plateau.reearth.io/assets/8e/6a1f6c-8dae-4cad-b305-16cac9c0ad91/26100_kyoto-shi_city_2025_citygml_1_op_misc.zip"
+          ]
+        }
+      ],
+      "featureTypes": {
+        "bldg": {
+          "name": "建築物モデル"
+        },
+        "brid": {
+          "name": "橋梁モデル"
+        },
+        "dem": {
+          "name": "地形モデル"
+        },
+        "fld": {
+          "name": "洪水浸水想定区域モデル"
+        },
+        "frn": {
+          "name": "都市設備モデル"
+        },
+        "lsld": {
+          "name": "土砂災害警戒区域モデル"
+        },
+        "luse": {
+          "name": "土地利用モデル"
+        },
+        "tran": {
+          "name": "交通（道路）モデル"
+        },
+        "urf": {
+          "name": "都市計画決定情報モデル"
+        },
+        "veg": {
+          "name": "植生モデル"
+        }
+      }
+    },
+    "rights": "Official PLATEAU metadata; existing municipal source rights recorded in the source qualification receipts",
+    "limitations": "Mesh-file availability establishes no detailed geometry at a particular route point"
+  },
+  "supplementaryOfficialCollection": {
+    "catalogIdentity": {
+      "cachePath": "artifacts/neighborhood-20261027/world/plateau-catalog.raw",
+      "bytes": 9478103,
+      "sha256": "0eef73b8409635341689267d0e1847da4b593ea7a4f463d90850f18761c3aea8"
+    },
+    "catalogKyotoEntry": {
+      "id": "26100",
+      "pref": "京都府",
+      "pref_code": "26",
+      "city": "京都市",
+      "city_code": "26100",
+      "url": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op.zip",
+      "file_size": 2700713500,
+      "composite_url": "https://api.plateauview.mlit.go.jp/datacatalog/citygml/26100-2025/citygml.zip",
+      "feature_types": [
+        "bldg",
+        "tran",
+        "luse",
+        "fld",
+        "lsld",
+        "urf",
+        "brid",
+        "frn",
+        "veg",
+        "dem"
+      ],
+      "year": 2025,
+      "registration_year": 2025,
+      "spec": "5.0",
+      "gspatialjp_dataset_url": "https://www.geospatial.jp/ckan/dataset/plateau-26100-kyoto-shi-2025",
+      "gspatialjp_files": [
+        {
+          "kind": "citygml",
+          "name": "CityGML（v5）",
+          "url": "https://assets.cms.plateau.reearth.io/assets/c8/4c6540-2bcf-4773-b21d-74ad2d9f1ba1/26100_kyoto-shi_city_2025_citygml_1_op.zip",
+          "file_size": 2700713500
+        },
+        {
+          "kind": "3dtiles_mvt",
+          "name": "3D Tiles, MVT（v5）",
+          "url": "https://assets.cms.plateau.reearth.io/assets/68/ffd721-509d-4a18-9e20-9c5ecab908d6/26100_kyoto-shi_city_2025_3dtiles_mvt_1_op.zip",
+          "file_size": 2430284500
+        },
+        {
+          "kind": "related",
+          "name": "関連データセット（v5）",
+          "url": "https://assets.cms.plateau.reearth.io/assets/80/246326-a985-4ff3-8c6b-6f46f80d4d5b/26100_kyoto-shi_2024_related.zip",
+          "file_size": 361291
+        },
+        {
+          "kind": "other",
+          "name": "モデル地区における高精細３Ｄ都市データ作成",
+          "url": "https://assets.cms.plateau.reearth.io/assets/5f/a6cd26-fb0a-45d0-b1ed-0df1fb38707b/uc25-44_26100_kyoto-shi_city_2025_3dtiles.zip"
+        }
+      ]
+    },
+    "rangeReceipts": [
+      {
+        "source": "https://assets.cms.plateau.reearth.io/assets/5f/a6cd26-fb0a-45d0-b1ed-0df1fb38707b/uc25-44_26100_kyoto-shi_city_2025_3dtiles.zip",
+        "requestedRange": "bytes=-65536",
+        "contentRange": "bytes 117853194-117918729/117918730",
+        "status": 206,
+        "date": "2026-11-06T08:03:09.160083+00:00",
+        "bytes": 65536,
+        "sha256": "409e705e681d9885675cc398839bce645d1ca103fbb35c57458ee27955adcaae",
+        "cachePath": "artifacts/realism-01/free-sources/highdetail-range-00.bin",
+        "etag": "\"be1ae450a669e1764a91e51dbbeb0044\"",
+        "lastModified": "Thu, 07 May 2026 23:58:20 GMT"
+      },
+      {
+        "source": "https://assets.cms.plateau.reearth.io/assets/5f/a6cd26-fb0a-45d0-b1ed-0df1fb38707b/uc25-44_26100_kyoto-shi_city_2025_3dtiles.zip",
+        "requestedRange": "bytes=15270888-67324099",
+        "contentRange": "bytes 15270888-67324099/117918730",
+        "status": 206,
+        "date": "2026-11-06T08:03:28.193789+00:00",
+        "bytes": 52053212,
+        "sha256": "a8641f3100ecf1f888a263f2c81e3f21d0f5dc0705d623c023d67cb204bd6595",
+        "cachePath": "artifacts/realism-01/free-sources/highdetail-range-01.bin",
+        "etag": "\"be1ae450a669e1764a91e51dbbeb0044\"",
+        "lastModified": "Thu, 07 May 2026 23:58:20 GMT"
+      },
+      {
+        "source": "https://assets.cms.plateau.reearth.io/assets/5f/a6cd26-fb0a-45d0-b1ed-0df1fb38707b/uc25-44_26100_kyoto-shi_city_2025_3dtiles.zip",
+        "requestedRange": "bytes=101681007-101912348",
+        "contentRange": "bytes 101681007-101912348/117918730",
+        "status": 206,
+        "date": "2026-11-06T08:03:30.268506+00:00",
+        "bytes": 231342,
+        "sha256": "364bec5eccb6f3fda8bd7ca9c7f5eb4eda721342ff877b345f191ec8ac9a3380",
+        "cachePath": "artifacts/realism-01/free-sources/highdetail-range-02.bin",
+        "etag": "\"be1ae450a669e1764a91e51dbbeb0044\"",
+        "lastModified": "Thu, 07 May 2026 23:58:20 GMT"
+      },
+      {
+        "source": "https://assets.cms.plateau.reearth.io/assets/5f/a6cd26-fb0a-45d0-b1ed-0df1fb38707b/uc25-44_26100_kyoto-shi_city_2025_3dtiles.zip",
+        "requestedRange": "bytes=101912349-102053932",
+        "contentRange": "bytes 101912349-102053932/117918730",
+        "status": 206,
+        "date": "2026-11-06T08:03:30.596400+00:00",
+        "bytes": 141584,
+        "sha256": "29d51555680740ef39b30174c044e5cecf5c9853a08c5eb5770541d69288ffa2",
+        "cachePath": "artifacts/realism-01/free-sources/highdetail-range-03.bin",
+        "etag": "\"be1ae450a669e1764a91e51dbbeb0044\"",
+        "lastModified": "Thu, 07 May 2026 23:58:20 GMT"
+      }
+    ],
+    "archiveEntries": [
+      {
+        "path": "uc25-44_26100_kyoto-shi_city_2025_vegSV_3dtiles.zip",
+        "bytes": 15276838,
+        "compressedBytes": 15270759,
+        "zipTimestamp": [
+          2026,
+          4,
+          22,
+          9,
+          29,
+          44
+        ]
+      },
+      {
+        "path": "uc25-44_26100_kyoto-shi_city_2025_bldg_3dtiles.zip",
+        "bytes": 52829449,
+        "compressedBytes": 52053084,
+        "zipTimestamp": [
+          2026,
+          4,
+          28,
+          22,
+          10,
+          56
+        ],
+        "sha256": "0ab2fa64b155dfbc97c77a00653d2eff1e6cd739fa6008dc9e02b65756287f36"
+      },
+      {
+        "path": "uc25-44_26100_kyoto-shi_city_2025_frn_3dtiles.zip",
+        "bytes": 35111001,
+        "compressedBytes": 34356780,
+        "zipTimestamp": [
+          2026,
+          4,
+          28,
+          22,
+          11,
+          16
+        ]
+      },
+      {
+        "path": "uc25-44_26100_kyoto-shi_city_2025_squr_3dtiles.zip",
+        "bytes": 237348,
+        "compressedBytes": 231214,
+        "zipTimestamp": [
+          2026,
+          4,
+          27,
+          19,
+          48,
+          10
+        ],
+        "sha256": "dba3248b883c67e4b5d26a1320ae20a50b9174c7ea20b3c600fc30adc50735ae"
+      },
+      {
+        "path": "uc25-44_26100_kyoto-shi_city_2025_tran_3dtiles.zip",
+        "bytes": 144912,
+        "compressedBytes": 141456,
+        "zipTimestamp": [
+          2026,
+          4,
+          27,
+          19,
+          48,
+          14
+        ],
+        "sha256": "bdc3e6104eb758d3384c026b409a30616c775cff4506b9bf2389cd9057fddca1"
+      },
+      {
+        "path": "uc25-44_26100_kyoto-shi_city_2025_vegPC_3dtiles.zip",
+        "bytes": 15875962,
+        "compressedBytes": 15863925,
+        "zipTimestamp": [
+          2026,
+          4,
+          22,
+          9,
+          29,
+          50
+        ]
+      }
+    ],
+    "inspectedTilesets": [
+      {
+        "cachePath": "artifacts/realism-01/free-sources/uc25-44_26100_kyoto-shi_city_2025_bldg_3dtiles-tileset.json",
+        "bytes": 34327,
+        "sha256": "c0d6a417be0c9a07e4a2f6ea4ab870b18c0ff2e2a4b8989d13249d1769e2c722",
+        "rootBoundingRegionDegrees": [
+          135.7532970444442,
+          34.98553874019152,
+          135.76257470215134,
+          34.98917243980058
+        ],
+        "intersectsApprovedRouteBounds": false,
+        "method": "Standard JSON tileset region radians converted to degrees; rectangle intersection against every approved intermediate route point",
+        "limitations": "Declared extent screening; no decoded geometry or quality acceptance; ZIP timestamps establish no capture date"
+      },
+      {
+        "cachePath": "artifacts/realism-01/free-sources/uc25-44_26100_kyoto-shi_city_2025_squr_3dtiles-tileset.json",
+        "bytes": 2576,
+        "sha256": "cb8fc23258cf88d03672c72cc305d08f435fec92b4670b3b7699746ec23fdbd3",
+        "rootBoundingRegionDegrees": [
+          135.75575599872568,
+          34.985502965993255,
+          135.76126657514263,
+          34.98737419500192
+        ],
+        "intersectsApprovedRouteBounds": false,
+        "method": "Standard JSON tileset region radians converted to degrees; rectangle intersection against every approved intermediate route point",
+        "limitations": "Declared extent screening; no decoded geometry or quality acceptance; ZIP timestamps establish no capture date"
+      },
+      {
+        "cachePath": "artifacts/realism-01/free-sources/uc25-44_26100_kyoto-shi_city_2025_tran_3dtiles-tileset.json",
+        "bytes": 2087,
+        "sha256": "feae0bf2439db480a402d9ddf068e599a3fe71dc9ea2db7e1dced901acd8501f",
+        "rootBoundingRegionDegrees": [
+          135.75607410858578,
+          34.98723000814907,
+          135.7612627474086,
+          34.98944918529893
+        ],
+        "intersectsApprovedRouteBounds": false,
+        "method": "Standard JSON tileset region radians converted to degrees; rectangle intersection against every approved intermediate route point",
+        "limitations": "Declared extent screening; no decoded geometry or quality acceptance; ZIP timestamps establish no capture date"
+      }
+    ],
+    "rights": "Resource-specific redistribution terms not established during this inspection; source bytes remain in ignored research cache",
+    "limitations": "The three inspected category extents are outside the approved route; furniture/vegetation nested entries were not acquired"
+  },
+  "photographCandidates": {
+    "reviewDate": "2026-11-06",
+    "sourceKind": "Public Wikimedia Commons original photographs; no captured 3D qualified",
+    "records": [
+      {
+        "title": "File:JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm June 2026 N13P 28.jpg",
+        "pageId": 197273859,
+        "source": "https://commons.wikimedia.org/wiki/File:JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_28.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a0/JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_28.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "width": 4080,
+        "height": 3060,
+        "declaredCaptureDate": "2026-06-21 18:52:43",
+        "declaredLicense": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artistMarkup": "<a href=\"//commons.wikimedia.org/wiki/User:HAGAT_hOMSZE\" title=\"User:HAGAT hOMSZE\">HAGAT hOMSZE</a>",
+        "declaredLatitude": "35.003547",
+        "declaredLongitude": "135.759725",
+        "declaredCameraToAuthoredRouteDistanceMetres": 31.052439003643666,
+        "metadataReceipt": "artifacts/realism-01/free-sources/lookup/commons-shijo-series.body",
+        "metadataSha256": "39c6984dff84e1630ff974ee22b513355cedae9c517561f60c87cbb0226aa85f",
+        "descriptionMarkup": "JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm in June 2026",
+        "limitations": "Public metadata-only image identification; no optical/pose/overlap/metric-geometry validation. EXIF/user location is unqualified. Reuse follows each license; prior inspected references cannot be blind holdouts."
+      },
+      {
+        "title": "File:JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm June 2026 N13P 30.jpg",
+        "pageId": 197273863,
+        "source": "https://commons.wikimedia.org/wiki/File:JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_30.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/d/db/JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_30.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "width": 3060,
+        "height": 4080,
+        "declaredCaptureDate": "2026-06-21 18:53:29",
+        "declaredLicense": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artistMarkup": "<a href=\"//commons.wikimedia.org/wiki/User:HAGAT_hOMSZE\" title=\"User:HAGAT hOMSZE\">HAGAT hOMSZE</a>",
+        "declaredLatitude": "35.003523",
+        "declaredLongitude": "135.759726",
+        "declaredCameraToAuthoredRouteDistanceMetres": 33.06824618835574,
+        "metadataReceipt": "artifacts/realism-01/free-sources/lookup/commons-shijo-series.body",
+        "metadataSha256": "39c6984dff84e1630ff974ee22b513355cedae9c517561f60c87cbb0226aa85f",
+        "descriptionMarkup": "JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm in June 2026",
+        "limitations": "Public metadata-only image identification; no optical/pose/overlap/metric-geometry validation. EXIF/user location is unqualified. Reuse follows each license; prior inspected references cannot be blind holdouts."
+      },
+      {
+        "title": "File:JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm June 2026 N13P 31.jpg",
+        "pageId": 197273862,
+        "source": "https://commons.wikimedia.org/wiki/File:JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_31.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d6/JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_31.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "width": 3060,
+        "height": 4080,
+        "declaredCaptureDate": "2026-06-21 18:53:34",
+        "declaredLicense": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artistMarkup": "<a href=\"//commons.wikimedia.org/wiki/User:HAGAT_hOMSZE\" title=\"User:HAGAT hOMSZE\">HAGAT hOMSZE</a>",
+        "declaredLatitude": "35.003523",
+        "declaredLongitude": "135.759726",
+        "declaredCameraToAuthoredRouteDistanceMetres": 33.06824618835574,
+        "metadataReceipt": "artifacts/realism-01/free-sources/lookup/commons-shijo-series.body",
+        "metadataSha256": "39c6984dff84e1630ff974ee22b513355cedae9c517561f60c87cbb0226aa85f",
+        "descriptionMarkup": "JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm in June 2026",
+        "limitations": "Public metadata-only image identification; no optical/pose/overlap/metric-geometry validation. EXIF/user location is unqualified. Reuse follows each license; prior inspected references cannot be blind holdouts."
+      },
+      {
+        "title": "File:JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm June 2026 N13P 32.jpg",
+        "pageId": 197273865,
+        "source": "https://commons.wikimedia.org/wiki/File:JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_32.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/38/JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_32.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "width": 4080,
+        "height": 3060,
+        "declaredCaptureDate": "2026-06-21 18:54:15",
+        "declaredLicense": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artistMarkup": "<a href=\"//commons.wikimedia.org/wiki/User:HAGAT_hOMSZE\" title=\"User:HAGAT hOMSZE\">HAGAT hOMSZE</a>",
+        "declaredLatitude": "35.003503",
+        "declaredLongitude": "135.759837",
+        "declaredCameraToAuthoredRouteDistanceMetres": 30.18895725904834,
+        "metadataReceipt": "artifacts/realism-01/free-sources/lookup/commons-shijo-series.body",
+        "metadataSha256": "39c6984dff84e1630ff974ee22b513355cedae9c517561f60c87cbb0226aa85f",
+        "descriptionMarkup": "JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm in June 2026",
+        "limitations": "Public metadata-only image identification; no optical/pose/overlap/metric-geometry validation. EXIF/user location is unqualified. Reuse follows each license; prior inspected references cannot be blind holdouts."
+      },
+      {
+        "title": "File:JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm June 2026 N13P 33.jpg",
+        "pageId": 197273869,
+        "source": "https://commons.wikimedia.org/wiki/File:JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_33.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5e/JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_33.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "width": 4080,
+        "height": 3060,
+        "declaredCaptureDate": "2026-06-21 18:54:35",
+        "declaredLicense": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artistMarkup": "<a href=\"//commons.wikimedia.org/wiki/User:HAGAT_hOMSZE\" title=\"User:HAGAT hOMSZE\">HAGAT hOMSZE</a>",
+        "declaredLatitude": "35.003503",
+        "declaredLongitude": "135.759837",
+        "declaredCameraToAuthoredRouteDistanceMetres": 30.18895725904834,
+        "metadataReceipt": "artifacts/realism-01/free-sources/lookup/commons-shijo-series.body",
+        "metadataSha256": "39c6984dff84e1630ff974ee22b513355cedae9c517561f60c87cbb0226aa85f",
+        "descriptionMarkup": "JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm in June 2026",
+        "limitations": "Public metadata-only image identification; no optical/pose/overlap/metric-geometry validation. EXIF/user location is unqualified. Reuse follows each license; prior inspected references cannot be blind holdouts."
+      },
+      {
+        "title": "File:JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm June 2026 N13P 34.jpg",
+        "pageId": 197273871,
+        "source": "https://commons.wikimedia.org/wiki/File:JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_34.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/20/JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_34.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "width": 4080,
+        "height": 3060,
+        "declaredCaptureDate": "2026-06-21 18:54:42",
+        "declaredLicense": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artistMarkup": "<a href=\"//commons.wikimedia.org/wiki/User:HAGAT_hOMSZE\" title=\"User:HAGAT hOMSZE\">HAGAT hOMSZE</a>",
+        "declaredLatitude": "35.003503",
+        "declaredLongitude": "135.759837",
+        "declaredCameraToAuthoredRouteDistanceMetres": 30.18895725904834,
+        "metadataReceipt": "artifacts/realism-01/free-sources/lookup/commons-shijo-series.body",
+        "metadataSha256": "39c6984dff84e1630ff974ee22b513355cedae9c517561f60c87cbb0226aa85f",
+        "descriptionMarkup": "JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm in June 2026",
+        "limitations": "Public metadata-only image identification; no optical/pose/overlap/metric-geometry validation. EXIF/user location is unqualified. Reuse follows each license; prior inspected references cannot be blind holdouts."
+      },
+      {
+        "title": "File:JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm June 2026 N13P 35.jpg",
+        "pageId": 197273870,
+        "source": "https://commons.wikimedia.org/wiki/File:JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_35.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ec/JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_35.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "width": 4080,
+        "height": 3060,
+        "declaredCaptureDate": "2026-06-21 18:54:54",
+        "declaredLicense": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artistMarkup": "<a href=\"//commons.wikimedia.org/wiki/User:HAGAT_hOMSZE\" title=\"User:HAGAT hOMSZE\">HAGAT hOMSZE</a>",
+        "declaredLatitude": "35.003503",
+        "declaredLongitude": "135.759837",
+        "declaredCameraToAuthoredRouteDistanceMetres": 30.18895725904834,
+        "metadataReceipt": "artifacts/realism-01/free-sources/lookup/commons-shijo-series.body",
+        "metadataSha256": "39c6984dff84e1630ff974ee22b513355cedae9c517561f60c87cbb0226aa85f",
+        "descriptionMarkup": "JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm in June 2026",
+        "limitations": "Public metadata-only image identification; no optical/pose/overlap/metric-geometry validation. EXIF/user location is unqualified. Reuse follows each license; prior inspected references cannot be blind holdouts."
+      },
+      {
+        "title": "File:JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm June 2026 N13P 36.jpg",
+        "pageId": 197273875,
+        "source": "https://commons.wikimedia.org/wiki/File:JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_36.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c5/JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_36.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "width": 4080,
+        "height": 3060,
+        "declaredCaptureDate": "2026-06-21 18:55:02",
+        "declaredLicense": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artistMarkup": "<a href=\"//commons.wikimedia.org/wiki/User:HAGAT_hOMSZE\" title=\"User:HAGAT hOMSZE\">HAGAT hOMSZE</a>",
+        "declaredLatitude": "35.003596",
+        "declaredLongitude": "135.760432",
+        "declaredCameraToAuthoredRouteDistanceMetres": 17.773846448447113,
+        "metadataReceipt": "artifacts/realism-01/free-sources/lookup/commons-shijo-series.body",
+        "metadataSha256": "39c6984dff84e1630ff974ee22b513355cedae9c517561f60c87cbb0226aa85f",
+        "descriptionMarkup": "JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm in June 2026",
+        "limitations": "Public metadata-only image identification; no optical/pose/overlap/metric-geometry validation. EXIF/user location is unqualified. Reuse follows each license; prior inspected references cannot be blind holdouts."
+      },
+      {
+        "title": "File:JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm June 2026 N13P 37.jpg",
+        "pageId": 197273876,
+        "source": "https://commons.wikimedia.org/wiki/File:JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_37.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ab/JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_37.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "width": 4080,
+        "height": 3060,
+        "declaredCaptureDate": "2026-06-21 18:55:22",
+        "declaredLicense": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artistMarkup": "<a href=\"//commons.wikimedia.org/wiki/User:HAGAT_hOMSZE\" title=\"User:HAGAT hOMSZE\">HAGAT hOMSZE</a>",
+        "declaredLatitude": "35.003688",
+        "declaredLongitude": "135.760798",
+        "declaredCameraToAuthoredRouteDistanceMetres": 7.251957043170557,
+        "metadataReceipt": "artifacts/realism-01/free-sources/lookup/commons-shijo-series.body",
+        "metadataSha256": "39c6984dff84e1630ff974ee22b513355cedae9c517561f60c87cbb0226aa85f",
+        "descriptionMarkup": "JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm in June 2026",
+        "limitations": "Public metadata-only image identification; no optical/pose/overlap/metric-geometry validation. EXIF/user location is unqualified. Reuse follows each license; prior inspected references cannot be blind holdouts."
+      },
+      {
+        "title": "File:JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm June 2026 N13P 38.jpg",
+        "pageId": 197273878,
+        "source": "https://commons.wikimedia.org/wiki/File:JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_38.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0d/JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_38.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "width": 4080,
+        "height": 3060,
+        "declaredCaptureDate": "2026-06-21 18:55:33",
+        "declaredLicense": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artistMarkup": "<a href=\"//commons.wikimedia.org/wiki/User:HAGAT_hOMSZE\" title=\"User:HAGAT hOMSZE\">HAGAT hOMSZE</a>",
+        "declaredLatitude": "35.003688",
+        "declaredLongitude": "135.760798",
+        "declaredCameraToAuthoredRouteDistanceMetres": 7.251957043170557,
+        "metadataReceipt": "artifacts/realism-01/free-sources/lookup/commons-shijo-series.body",
+        "metadataSha256": "39c6984dff84e1630ff974ee22b513355cedae9c517561f60c87cbb0226aa85f",
+        "descriptionMarkup": "JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm in June 2026",
+        "limitations": "Public metadata-only image identification; no optical/pose/overlap/metric-geometry validation. EXIF/user location is unqualified. Reuse follows each license; prior inspected references cannot be blind holdouts."
+      },
+      {
+        "title": "File:JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm June 2026 N13P 39.jpg",
+        "pageId": 197273880,
+        "source": "https://commons.wikimedia.org/wiki/File:JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_39.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c4/JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_39.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "width": 4080,
+        "height": 3060,
+        "declaredCaptureDate": "2026-06-21 18:56:23",
+        "declaredLicense": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artistMarkup": "<a href=\"//commons.wikimedia.org/wiki/User:HAGAT_hOMSZE\" title=\"User:HAGAT hOMSZE\">HAGAT hOMSZE</a>",
+        "declaredLatitude": "35.003678",
+        "declaredLongitude": "135.761120",
+        "declaredCameraToAuthoredRouteDistanceMetres": 8.139208408643883,
+        "metadataReceipt": "artifacts/realism-01/free-sources/lookup/commons-shijo-series.body",
+        "metadataSha256": "39c6984dff84e1630ff974ee22b513355cedae9c517561f60c87cbb0226aa85f",
+        "descriptionMarkup": "JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm in June 2026",
+        "limitations": "Public metadata-only image identification; no optical/pose/overlap/metric-geometry validation. EXIF/user location is unqualified. Reuse follows each license; prior inspected references cannot be blind holdouts."
+      },
+      {
+        "title": "File:JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm June 2026 N13P 40.jpg",
+        "pageId": 197273883,
+        "source": "https://commons.wikimedia.org/wiki/File:JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_40.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d0/JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_40.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "width": 4080,
+        "height": 3060,
+        "declaredCaptureDate": "2026-06-21 18:58:40",
+        "declaredLicense": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artistMarkup": "<a href=\"//commons.wikimedia.org/wiki/User:HAGAT_hOMSZE\" title=\"User:HAGAT hOMSZE\">HAGAT hOMSZE</a>",
+        "declaredLatitude": "35.003678",
+        "declaredLongitude": "135.761169",
+        "declaredCameraToAuthoredRouteDistanceMetres": 8.194816303125984,
+        "metadataReceipt": "artifacts/realism-01/free-sources/lookup/commons-shijo-series.body",
+        "metadataSha256": "39c6984dff84e1630ff974ee22b513355cedae9c517561f60c87cbb0226aa85f",
+        "descriptionMarkup": "JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm in June 2026",
+        "limitations": "Public metadata-only image identification; no optical/pose/overlap/metric-geometry validation. EXIF/user location is unqualified. Reuse follows each license; prior inspected references cannot be blind holdouts."
+      },
+      {
+        "title": "File:JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm June 2026 N13P 41.jpg",
+        "pageId": 197273884,
+        "source": "https://commons.wikimedia.org/wiki/File:JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_41.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/d/df/JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_41.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "width": 4080,
+        "height": 3060,
+        "declaredCaptureDate": "2026-06-21 18:59:16",
+        "declaredLicense": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artistMarkup": "<a href=\"//commons.wikimedia.org/wiki/User:HAGAT_hOMSZE\" title=\"User:HAGAT hOMSZE\">HAGAT hOMSZE</a>",
+        "declaredLatitude": "35.003641",
+        "declaredLongitude": "135.762629",
+        "declaredCameraToAuthoredRouteDistanceMetres": 14.361340241538583,
+        "metadataReceipt": "artifacts/realism-01/free-sources/lookup/commons-shijo-series.body",
+        "metadataSha256": "39c6984dff84e1630ff974ee22b513355cedae9c517561f60c87cbb0226aa85f",
+        "descriptionMarkup": "JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm in June 2026",
+        "limitations": "Public metadata-only image identification; no optical/pose/overlap/metric-geometry validation. EXIF/user location is unqualified. Reuse follows each license; prior inspected references cannot be blind holdouts."
+      },
+      {
+        "title": "File:JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm June 2026 N13P 42.jpg",
+        "pageId": 197273885,
+        "source": "https://commons.wikimedia.org/wiki/File:JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_42.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/37/JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_42.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "width": 3060,
+        "height": 4080,
+        "declaredCaptureDate": "2026-06-21 18:59:19",
+        "declaredLicense": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artistMarkup": "<a href=\"//commons.wikimedia.org/wiki/User:HAGAT_hOMSZE\" title=\"User:HAGAT hOMSZE\">HAGAT hOMSZE</a>",
+        "declaredLatitude": "35.003641",
+        "declaredLongitude": "135.762629",
+        "declaredCameraToAuthoredRouteDistanceMetres": 14.361340241538583,
+        "metadataReceipt": "artifacts/realism-01/free-sources/lookup/commons-shijo-series.body",
+        "metadataSha256": "39c6984dff84e1630ff974ee22b513355cedae9c517561f60c87cbb0226aa85f",
+        "descriptionMarkup": "JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm in June 2026",
+        "limitations": "Public metadata-only image identification; no optical/pose/overlap/metric-geometry validation. EXIF/user location is unqualified. Reuse follows each license; prior inspected references cannot be blind holdouts."
+      },
+      {
+        "title": "File:JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm June 2026 N13P 43.jpg",
+        "pageId": 197273886,
+        "source": "https://commons.wikimedia.org/wiki/File:JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_43.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/a/af/JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_43.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "width": 3060,
+        "height": 4080,
+        "declaredCaptureDate": "2026-06-21 18:59:23",
+        "declaredLicense": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artistMarkup": "<a href=\"//commons.wikimedia.org/wiki/User:HAGAT_hOMSZE\" title=\"User:HAGAT hOMSZE\">HAGAT hOMSZE</a>",
+        "declaredLatitude": "35.003641",
+        "declaredLongitude": "135.762629",
+        "declaredCameraToAuthoredRouteDistanceMetres": 14.361340241538583,
+        "metadataReceipt": "artifacts/realism-01/free-sources/lookup/commons-shijo-series.body",
+        "metadataSha256": "39c6984dff84e1630ff974ee22b513355cedae9c517561f60c87cbb0226aa85f",
+        "descriptionMarkup": "JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm in June 2026",
+        "limitations": "Public metadata-only image identification; no optical/pose/overlap/metric-geometry validation. EXIF/user location is unqualified. Reuse follows each license; prior inspected references cannot be blind holdouts."
+      },
+      {
+        "title": "File:Kyoto Mitsui Building night 20210103183745.jpg",
+        "pageId": 114692060,
+        "source": "https://commons.wikimedia.org/wiki/File:Kyoto_Mitsui_Building_night_20210103183745.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/7/75/Kyoto_Mitsui_Building_night_20210103183745.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "width": null,
+        "height": null,
+        "declaredCaptureDate": "2021-01-03 18:37:45",
+        "declaredLicense": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "artistMarkup": "inunami",
+        "declaredLatitude": "35.003543",
+        "declaredLongitude": "135.759498",
+        "declaredCameraToAuthoredRouteDistanceMetres": 47.430754894526714,
+        "metadataReceipt": "artifacts/realism-01/free-sources/lookup/commons-mitsui.body",
+        "metadataSha256": "06ee15abb237a44f4958c07d26c1f0a5ff37314a3c6e61e3f02008c955af520a",
+        "descriptionMarkup": "Mitsui Building at the Shijo-Karasuma intersection at night",
+        "limitations": "Public metadata-only image identification; no optical/pose/overlap/metric-geometry validation. EXIF/user location is unqualified. Reuse follows each license; prior inspected references cannot be blind holdouts."
+      },
+      {
+        "title": "File:Nishiki Market, Kyoto - Flickr - Sergiy Galyonkin.jpg",
+        "pageId": 151401270,
+        "source": "https://commons.wikimedia.org/wiki/File:Nishiki_Market,_Kyoto_-_Flickr_-_Sergiy_Galyonkin.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Nishiki_Market%2C_Kyoto_-_Flickr_-_Sergiy_Galyonkin.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "width": null,
+        "height": null,
+        "declaredCaptureDate": "9 July 2024, 00:01",
+        "declaredLicense": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "artistMarkup": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/22974618@N00\">Sergiy Galyonkin</a> from Raleigh, USA",
+        "declaredLatitude": "35.005031",
+        "declaredLongitude": "135.765578",
+        "declaredCameraToAuthoredRouteDistanceMetres": 0.20682657171031274,
+        "metadataReceipt": "artifacts/realism-01/free-sources/lookup/commons-nishiki.body",
+        "metadataSha256": "19e8b914478ae2a726202d79fac6d527cac5912841e4f34407e12e03b1358f4d",
+        "descriptionMarkup": "Nishiki Market, Kyoto",
+        "limitations": "Public metadata-only image identification; no optical/pose/overlap/metric-geometry validation. EXIF/user location is unqualified. Reuse follows each license; prior inspected references cannot be blind holdouts."
+      },
+      {
+        "title": "File:Path along the Kamo River, seen from Shijō Ōhashi, Kyoto, 2016.jpg",
+        "pageId": 153618107,
+        "source": "https://commons.wikimedia.org/wiki/File:Path_along_the_Kamo_River,_seen_from_Shij%C5%8D_%C5%8Chashi,_Kyoto,_2016.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/31/Path_along_the_Kamo_River%2C_seen_from_Shij%C5%8D_%C5%8Chashi%2C_Kyoto%2C_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "width": null,
+        "height": null,
+        "declaredCaptureDate": "2016-04-02 14:49:23",
+        "declaredLicense": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artistMarkup": "<a href=\"//commons.wikimedia.org/wiki/User:DimiTalen\" title=\"User:DimiTalen\">DimiTalen</a>",
+        "declaredLatitude": "35.003916",
+        "declaredLongitude": "135.771265",
+        "declaredCameraToAuthoredRouteDistanceMetres": 1.1999885487204167,
+        "metadataReceipt": "artifacts/realism-01/free-sources/lookup/commons-bridge.body",
+        "metadataSha256": "78c7285f7ebf7e1e982120be3bc0cfbc0e925b06e5604992306fb90b946ca25d",
+        "descriptionMarkup": "Path along the Kamo River, seen from Shijō Ōhashi, Kyoto, 2016",
+        "limitations": "Public metadata-only image identification; no optical/pose/overlap/metric-geometry validation. EXIF/user location is unqualified. Reuse follows each license; prior inspected references cannot be blind holdouts."
+      },
+      {
+        "title": "File:Nishiki Tenmangū extérieur.jpg",
+        "pageId": 120890571,
+        "source": "https://commons.wikimedia.org/wiki/File:Nishiki_Tenmang%C5%AB_ext%C3%A9rieur.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Nishiki_Tenmang%C5%AB_ext%C3%A9rieur.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "width": null,
+        "height": null,
+        "declaredCaptureDate": "2019-06-02 02:00:15",
+        "declaredLicense": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "artistMarkup": "<a href=\"//commons.wikimedia.org/wiki/User:Hyppolyte_de_Saint-Rambert\" title=\"User:Hyppolyte de Saint-Rambert\">Hyppolyte de Saint-Rambert</a>",
+        "declaredLatitude": null,
+        "declaredLongitude": null,
+        "declaredCameraToAuthoredRouteDistanceMetres": null,
+        "metadataReceipt": "artifacts/realism-01/free-sources/lookup/commons-tenmangu.body",
+        "metadataSha256": "0911ecbfd2d1f473997fd6d8cec1d1eab0b6220c3f890872e3491e9e940e8b4e",
+        "descriptionMarkup": "Photographie prise à l'extérieur du sanctuaire hors zone commerciale du marché.",
+        "limitations": "Public metadata-only image identification; no optical/pose/overlap/metric-geometry validation. EXIF/user location is unqualified. Reuse follows each license; prior inspected references cannot be blind holdouts."
+      },
+      {
+        "title": "File:JP 日本 Japan 京都 Kyoto morning walk 1013am 高瀨川 Kawara River June 2026 N13P 212.jpg",
+        "pageId": 197561101,
+        "source": "https://commons.wikimedia.org/wiki/File:JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_morning_walk_1013am_%E9%AB%98%E7%80%A8%E5%B7%9D_Kawara_River_June_2026_N13P_212.jpg",
+        "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1c/JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_morning_walk_1013am_%E9%AB%98%E7%80%A8%E5%B7%9D_Kawara_River_June_2026_N13P_212.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "width": 3060,
+        "height": 4080,
+        "declaredCaptureDate": "24 June 2026 10:26:02",
+        "declaredLicense": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "artistMarkup": "<a href=\"//commons.wikimedia.org/wiki/User:HAGAT_hOMSZE\" title=\"User:HAGAT hOMSZE\">HAGAT hOMSZE</a>",
+        "declaredLatitude": "35.003884",
+        "declaredLongitude": "135.770560",
+        "declaredCameraToAuthoredRouteDistanceMetres": 1.6572689136947254,
+        "metadataReceipt": "artifacts/realism-01/free-sources/lookup/commons-takase.body",
+        "metadataSha256": "fd9e6c6e95530361226e3e325a02f022d923161fdbcccf740a72654a61d44a13",
+        "descriptionMarkup": "JP 日本 Japan 京都 Kyoto morning walk 1013am 高瀨川 Kawara River in June 2026",
+        "limitations": "Public metadata-only image identification; no optical/pose/overlap/metric-geometry validation. EXIF/user location is unqualified. Reuse follows each license; prior inspected references cannot be blind holdouts."
+      }
+    ],
+    "nearRouteShijoSeriesImages": 15,
+    "seriesScope": "47 returned photographs in the June21 Shijo evening series; original author HAGAT hOMSZE; no continuation in response. Only metadata camera positions within35m of authored route retained.",
+    "sketchfabScope": "Public downloadable-model searches Nishiki, Pontocho, Shijo, Nishiki Tenmangu and first24 Kyoto results did not establish an exact-route captured site. Search scope cannot establish universal absence."
+  },
+  "acquiredPhotographs": {
+    "schemaVersion": 1,
+    "acquisitionDate": "2026-11-06T08:03:35.652161+00:00",
+    "maximumBytes": 20971520,
+    "downloadedBytes": 16418293,
+    "records": [
+      {
+        "file": "shijo-20260621-31.jpg",
+        "source": "https://upload.wikimedia.org/wikipedia/commons/d/d6/JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_31.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_31.jpg",
+        "title": "File:JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm June 2026 N13P 31.jpg",
+        "retrievedAt": "2026-11-06T08:03:27.793039+00:00",
+        "httpStatus": 200,
+        "bytes": 5860323,
+        "sha256": "cef089530145a6ecae85c37a5d116d307e10bd54095d98ee2807cfe430f89d5c",
+        "dimensions": [
+          3060,
+          4080
+        ],
+        "format": "JPEG",
+        "rights": "CC0 1.0 Universal, as declared by original contributor HAGAT hOMSZE in Wikimedia Commons file metadata",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "declaredCaptureDate": "2026-06-21 18:53:34",
+        "location": {
+          "declaredLatitude": "35.003523",
+          "declaredLongitude": "135.759726",
+          "declaredCameraToAuthoredRouteDistanceMetres": 33.06824618835574
+        },
+        "metadataSource": "artifacts/realism-01/free-sources/lookup/commons-shijo-series.body",
+        "metadataSha256": "39c6984dff84e1630ff974ee22b513355cedae9c517561f60c87cbb0226aa85f",
+        "exif": {
+          "ImageWidth": "3060",
+          "39424": "Redmi Note 13 Pro",
+          "ImageLength": "4080",
+          "34970": "b'\\x00'",
+          "ResolutionUnit": "2",
+          "ExifOffset": "398",
+          "Make": "Xiaomi",
+          "Model": "2312CRAD3C",
+          "Orientation": "1",
+          "DateTime": "2026:06:21 18:53:34",
+          "YCbCrPositioning": "1",
+          "39321": "{\"mirror\":false,\"sensorType\":\"rear\",\"Hdr\":\"auto\",\"OpMode\":36869,\"smallPicture\":false,\"AIScene\":0,\"filterId\":66048,\"zoomMultiple\":1}",
+          "XResolution": "72.0",
+          "YResolution": "72.0"
+        },
+        "gpsExif": {
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(35.0, 0.0, 12.6828)",
+          "GPSLongitudeRef": "E",
+          "GPSLongitude": "(135.0, 45.0, 35.0136)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "0.0",
+          "GPSTimeStamp": "(9.0, 53.0, 35.0)",
+          "GPSSpeedRef": "K",
+          "GPSSpeed": "0.0",
+          "GPSProcessingMethod": "network",
+          "GPSDateStamp": "2026:06:21"
+        },
+        "method": "Unauthenticated original HTTPS GET; exact API bytes and dimensions checked; Pillow verifies JPEG and reads EXIF; original pixels unchanged",
+        "limitations": "Author-declared location and capture date are unqualified. Original photographs supply no surveyed floor, calibrated camera trajectory, complete route/lighting coverage or 3D reconstruction acceptance.",
+        "cachePath": "artifacts/realism-01/free-sources/lookup/originals/shijo-20260621-31.jpg"
+      },
+      {
+        "file": "shijo-20260621-37.jpg",
+        "source": "https://upload.wikimedia.org/wikipedia/commons/a/ab/JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_37.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E5%9B%9B%E6%9D%A1%E9%80%9A_Shijo_Dori_walk_evening_1835pm_June_2026_N13P_37.jpg",
+        "title": "File:JP 日本 Japan 京都 Kyoto 四条通 Shijo Dori walk evening 1835pm June 2026 N13P 37.jpg",
+        "retrievedAt": "2026-11-06T08:03:30.544396+00:00",
+        "httpStatus": 200,
+        "bytes": 5749053,
+        "sha256": "edea8835dacb94453fa6412da36be0ca377592b804503841a24af2f034d11ec3",
+        "dimensions": [
+          4080,
+          3060
+        ],
+        "format": "JPEG",
+        "rights": "CC0 1.0 Universal, as declared by original contributor HAGAT hOMSZE in Wikimedia Commons file metadata",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "declaredCaptureDate": "2026-06-21 18:55:22",
+        "location": {
+          "declaredLatitude": "35.003688",
+          "declaredLongitude": "135.760798",
+          "declaredCameraToAuthoredRouteDistanceMetres": 7.251957043170557
+        },
+        "metadataSource": "artifacts/realism-01/free-sources/lookup/commons-shijo-series.body",
+        "metadataSha256": "39c6984dff84e1630ff974ee22b513355cedae9c517561f60c87cbb0226aa85f",
+        "exif": {
+          "ImageWidth": "4080",
+          "39424": "Redmi Note 13 Pro",
+          "ImageLength": "3060",
+          "34970": "b'\\x00'",
+          "ResolutionUnit": "2",
+          "ExifOffset": "398",
+          "Make": "Xiaomi",
+          "Model": "2312CRAD3C",
+          "Orientation": "1",
+          "DateTime": "2026:06:21 18:55:22",
+          "YCbCrPositioning": "1",
+          "39321": "{\"mirror\":false,\"sensorType\":\"rear\",\"Hdr\":\"auto\",\"OpMode\":36869,\"smallPicture\":false,\"AIScene\":0,\"filterId\":66048,\"zoomMultiple\":1}",
+          "XResolution": "72.0",
+          "YResolution": "72.0"
+        },
+        "gpsExif": {
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(35.0, 0.0, 13.2768)",
+          "GPSLongitudeRef": "E",
+          "GPSLongitude": "(135.0, 45.0, 38.8728)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "0.0",
+          "GPSTimeStamp": "(9.0, 55.0, 23.0)",
+          "GPSSpeedRef": "K",
+          "GPSSpeed": "0.0",
+          "GPSProcessingMethod": "network",
+          "GPSDateStamp": "2026:06:21"
+        },
+        "method": "Unauthenticated original HTTPS GET; exact API bytes and dimensions checked; Pillow verifies JPEG and reads EXIF; original pixels unchanged",
+        "limitations": "Author-declared location and capture date are unqualified. Original photographs supply no surveyed floor, calibrated camera trajectory, complete route/lighting coverage or 3D reconstruction acceptance.",
+        "cachePath": "artifacts/realism-01/free-sources/lookup/originals/shijo-20260621-37.jpg"
+      },
+      {
+        "file": "takase-20260624-212.jpg",
+        "source": "https://upload.wikimedia.org/wikipedia/commons/1/1c/JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_morning_walk_1013am_%E9%AB%98%E7%80%A8%E5%B7%9D_Kawara_River_June_2026_N13P_212.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_morning_walk_1013am_%E9%AB%98%E7%80%A8%E5%B7%9D_Kawara_River_June_2026_N13P_212.jpg",
+        "title": "File:JP 日本 Japan 京都 Kyoto morning walk 1013am 高瀨川 Kawara River June 2026 N13P 212.jpg",
+        "retrievedAt": "2026-11-06T08:03:35.648996+00:00",
+        "httpStatus": 200,
+        "bytes": 4808917,
+        "sha256": "ff6a2f8fcde231ac7cfab885f5f977228a9224387fb6ee968b342c55769d0248",
+        "dimensions": [
+          3060,
+          4080
+        ],
+        "format": "JPEG",
+        "rights": "CC0 1.0 Universal, as declared by original contributor HAGAT hOMSZE in Wikimedia Commons file metadata",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "declaredCaptureDate": "24 June 2026 10:26:02",
+        "location": {
+          "declaredLatitude": "35.003884",
+          "declaredLongitude": "135.770560",
+          "declaredCameraToAuthoredRouteDistanceMetres": 1.6572689136947254
+        },
+        "metadataSource": "artifacts/realism-01/free-sources/lookup/commons-takase.body",
+        "metadataSha256": "fd9e6c6e95530361226e3e325a02f022d923161fdbcccf740a72654a61d44a13",
+        "exif": {
+          "ImageWidth": "3060",
+          "39424": "Redmi Note 13 Pro",
+          "ImageLength": "4080",
+          "34979": "{}",
+          "34970": "b'\\x00'",
+          "ResolutionUnit": "2",
+          "ExifOffset": "417",
+          "Make": "Xiaomi",
+          "Model": "Redmi Note 13 Pro",
+          "Orientation": "0",
+          "DateTime": "2026:06:24 10:26:02",
+          "YCbCrPositioning": "1",
+          "39321": "{\"mirror\":false,\"sensorType\":\"rear\",\"Hdr\":\"auto\",\"OpMode\":36869,\"smallPicture\":false,\"AIScene\":0,\"filterId\":66048,\"zoomMultiple\":1}",
+          "XResolution": "72.0",
+          "YResolution": "72.0"
+        },
+        "gpsExif": {
+          "GPSLatitudeRef": "N",
+          "GPSLatitude": "(35.0, 0.0, 13.9824)",
+          "GPSLongitudeRef": "E",
+          "GPSLongitude": "(135.0, 46.0, 14.016)",
+          "GPSAltitudeRef": "b'\\x00'",
+          "GPSAltitude": "0.0",
+          "GPSTimeStamp": "(1.0, 26.0, 2.0)",
+          "GPSSpeedRef": "K",
+          "GPSSpeed": "0.0",
+          "GPSProcessingMethod": "network",
+          "GPSDateStamp": "2026:06:24"
+        },
+        "method": "Unauthenticated original HTTPS GET; exact API bytes and dimensions checked; Pillow verifies JPEG and reads EXIF; original pixels unchanged",
+        "limitations": "Author-declared location and capture date are unqualified. Original photographs supply no surveyed floor, calibrated camera trajectory, complete route/lighting coverage or 3D reconstruction acceptance.",
+        "cachePath": "artifacts/realism-01/free-sources/lookup/originals/takase-20260624-212.jpg"
+      }
+    ]
+  },
+  "metadataReceipts": [
+    {
+      "source": "https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=Shijo%20Bridge&gsrnamespace=6&gsrlimit=10&prop=imageinfo&iiprop=url%7Cextmetadata&format=json",
+      "retrievedAt": "2026-11-06T07:57:46.255410+00:00",
+      "status": 200,
+      "finalUrl": "https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=Shijo%20Bridge&gsrnamespace=6&gsrlimit=10&prop=imageinfo&iiprop=url%7Cextmetadata&format=json",
+      "bytes": 24010,
+      "sha256": "78c7285f7ebf7e1e982120be3bc0cfbc0e925b06e5604992306fb90b946ca25d",
+      "contentType": "application/json; charset=utf-8",
+      "file": "commons-bridge.body"
+    },
+    {
+      "source": "https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=Kyoto%20Mitsui%20Building&gsrnamespace=6&gsrlimit=10&prop=imageinfo&iiprop=url%7Cextmetadata&format=json",
+      "retrievedAt": "2026-11-06T07:58:02.522542+00:00",
+      "status": 200,
+      "finalUrl": "https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=Kyoto%20Mitsui%20Building&gsrnamespace=6&gsrlimit=10&prop=imageinfo&iiprop=url%7Cextmetadata&format=json",
+      "bytes": 26068,
+      "sha256": "06ee15abb237a44f4958c07d26c1f0a5ff37314a3c6e61e3f02008c955af520a",
+      "contentType": "application/json; charset=utf-8",
+      "file": "commons-mitsui.body"
+    },
+    {
+      "source": "https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=Nishiki%20Market&gsrnamespace=6&gsrlimit=10&prop=imageinfo&iiprop=url%7Cextmetadata&format=json",
+      "retrievedAt": "2026-11-06T07:57:28.841516+00:00",
+      "status": 200,
+      "finalUrl": "https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=Nishiki%20Market&gsrnamespace=6&gsrlimit=10&prop=imageinfo&iiprop=url%7Cextmetadata&format=json",
+      "bytes": 36826,
+      "sha256": "19e8b914478ae2a726202d79fac6d527cac5912841e4f34407e12e03b1358f4d",
+      "contentType": "application/json; charset=utf-8",
+      "file": "commons-nishiki.body"
+    },
+    {
+      "source": "https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=Pontocho%20Shijo&gsrnamespace=6&gsrlimit=10&prop=imageinfo&iiprop=url%7Cextmetadata%7Csize&format=json",
+      "retrievedAt": "2026-11-06T07:58:31.845044+00:00",
+      "status": 200,
+      "finalUrl": "https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=Pontocho%20Shijo&gsrnamespace=6&gsrlimit=10&prop=imageinfo&iiprop=url%7Cextmetadata%7Csize&format=json",
+      "bytes": 21275,
+      "sha256": "165c8fa5e14ee2fb98f6859e82d8f86d57fcdefb77080263875b9f56ca24c8bf",
+      "contentType": "application/json; charset=utf-8",
+      "file": "commons-pontocho-south.body"
+    },
+    {
+      "source": "https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=Pontocho%20entrance&gsrnamespace=6&gsrlimit=10&prop=imageinfo&iiprop=url%7Cextmetadata&format=json",
+      "retrievedAt": "2026-11-06T07:58:02.851539+00:00",
+      "status": 200,
+      "finalUrl": "https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=Pontocho%20entrance&gsrnamespace=6&gsrlimit=10&prop=imageinfo&iiprop=url%7Cextmetadata&format=json",
+      "bytes": 2266,
+      "sha256": "f4ed82b567d7992ac3e77a2006e15fa28a31c462cf0b6afd9eebfe499d5e5513",
+      "contentType": "application/json; charset=utf-8",
+      "file": "commons-pontocho.body"
+    },
+    {
+      "source": "https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=%22Shijo%20Dori%20walk%20evening%22&gsrnamespace=6&gsrlimit=50&prop=imageinfo&iiprop=url%7Cextmetadata%7Csize&format=json",
+      "retrievedAt": "2026-11-06T07:58:32.841673+00:00",
+      "status": 200,
+      "finalUrl": "https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=%22Shijo%20Dori%20walk%20evening%22&gsrnamespace=6&gsrlimit=50&prop=imageinfo&iiprop=url%7Cextmetadata%7Csize&format=json",
+      "bytes": 136759,
+      "sha256": "39c6984dff84e1630ff974ee22b513355cedae9c517561f60c87cbb0226aa85f",
+      "contentType": "application/json; charset=utf-8",
+      "file": "commons-shijo-series.body"
+    },
+    {
+      "source": "https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=Takase%20Shijo&gsrnamespace=6&gsrlimit=10&prop=imageinfo&iiprop=url%7Cextmetadata%7Csize&format=json",
+      "retrievedAt": "2026-11-06T07:58:32.558975+00:00",
+      "status": 200,
+      "finalUrl": "https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=Takase%20Shijo&gsrnamespace=6&gsrlimit=10&prop=imageinfo&iiprop=url%7Cextmetadata%7Csize&format=json",
+      "bytes": 29972,
+      "sha256": "fd9e6c6e95530361226e3e325a02f022d923161fdbcccf740a72654a61d44a13",
+      "contentType": "application/json; charset=utf-8",
+      "file": "commons-takase.body"
+    },
+    {
+      "source": "https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=Nishiki%20Tenmangu&gsrnamespace=6&gsrlimit=10&prop=imageinfo&iiprop=url%7Cextmetadata&format=json",
+      "retrievedAt": "2026-11-06T07:58:03.071103+00:00",
+      "status": 200,
+      "finalUrl": "https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=Nishiki%20Tenmangu&gsrnamespace=6&gsrlimit=10&prop=imageinfo&iiprop=url%7Cextmetadata&format=json",
+      "bytes": 20806,
+      "sha256": "0911ecbfd2d1f473997fd6d8cec1d1eab0b6220c3f890872e3491e9e940e8b4e",
+      "contentType": "application/json; charset=utf-8",
+      "file": "commons-tenmangu.body"
+    },
+    {
+      "source": "https://1000bero.net/restaurant-1194/",
+      "retrievedAt": "2026-11-06T08:20:20.821167+00:00",
+      "status": 200,
+      "finalUrl": "https://1000bero.net/restaurant-1194/",
+      "bytes": 132973,
+      "sha256": "e811cc566c51d474e4c3e4c827408b9b31547532d77cda95ab358336431ed009",
+      "contentType": "text/html; charset=UTF-8",
+      "file": "identity-momiji-1000bero.body"
+    },
+    {
+      "source": "https://html.duckduckgo.com/html/?q=%22%E7%AB%8B%E3%81%A1%E9%A3%B2%E3%81%BF%22+%22%E3%82%82%E3%81%BF%E3%81%98%22+%22225%22",
+      "retrievedAt": "2026-11-06T08:20:02.354433+00:00",
+      "status": 200,
+      "finalUrl": "https://html.duckduckgo.com/html/?q=%22%E7%AB%8B%E3%81%A1%E9%A3%B2%E3%81%BF%22+%22%E3%82%82%E3%81%BF%E3%81%98%22+%22225%22",
+      "bytes": 22347,
+      "sha256": "9c6676fb36913b29fba8b412bc73792c6294366bb6e23a0ddf9638815383d247",
+      "contentType": "text/html; charset=UTF-8",
+      "file": "identity-momiji-address-search.body"
+    },
+    {
+      "source": "https://www.bing.com/search?q=%E4%BA%AC%E9%83%BD+%E3%82%82%E3%81%BF%E3%81%98+%E7%AB%8B%E3%81%A1%E5%91%91%E3%81%BF+%E5%9B%9B%E6%9D%A1+%E4%BD%8F%E6%89%80&format=rss",
+      "retrievedAt": "2026-11-06T08:18:39.292664+00:00",
+      "status": 200,
+      "finalUrl": "https://www.bing.com/search?q=%E4%BA%AC%E9%83%BD+%E3%82%82%E3%81%BF%E3%81%98+%E7%AB%8B%E3%81%A1%E5%91%91%E3%81%BF+%E5%9B%9B%E6%9D%A1+%E4%BD%8F%E6%89%80&format=rss",
+      "bytes": 6685,
+      "sha256": "82bbd77fed251c54756cc1b22cc3fccf1e7a7f3930ff0c2dcf542acced274ffb",
+      "contentType": "text/xml; charset=utf-8",
+      "file": "identity-momiji-bing.body"
+    },
+    {
+      "source": "https://html.duckduckgo.com/html/?q=%22%E3%82%82%E3%81%BF%E3%81%98%22+%22%E7%AB%8B%E3%81%A1%E5%91%91%E3%81%BF%22+%E4%BA%AC%E9%83%BD",
+      "retrievedAt": "2026-11-06T08:18:55.706585+00:00",
+      "status": 200,
+      "finalUrl": "https://html.duckduckgo.com/html/?q=%22%E3%82%82%E3%81%BF%E3%81%98%22+%22%E7%AB%8B%E3%81%A1%E5%91%91%E3%81%BF%22+%E4%BA%AC%E9%83%BD",
+      "bytes": 24261,
+      "sha256": "3076c41494e86953f988c1d2da620ba1c8ae6afcd69b89a930d29a2ae7fb823e",
+      "contentType": "text/html; charset=UTF-8",
+      "file": "identity-momiji-duck.body"
+    },
+    {
+      "source": "https://note.shinsjourney.com/archives/36976",
+      "retrievedAt": "2026-11-06T08:20:04.877571+00:00",
+      "status": 200,
+      "finalUrl": "https://note.shinsjourney.com/archives/36976",
+      "bytes": 83683,
+      "sha256": "1f347afa5fea407a95878bfe9178f53c3b99a5c103edccdc2e26989f6aae11cb",
+      "contentType": "text/html; charset=UTF-8",
+      "file": "identity-momiji-independent.body"
+    },
+    {
+      "source": "https://otokonokakurega.com/alcohol/6628/",
+      "retrievedAt": "2026-11-06T08:19:13.261312+00:00",
+      "status": 200,
+      "finalUrl": "https://otokonokakurega.com/articles/6628/",
+      "bytes": 98503,
+      "sha256": "d975d5a79e5757d124e4c8fc6cfda7e7494e92c85c4a728efaa944b18ed5a3f5",
+      "contentType": "text/html; charset=UTF-8",
+      "file": "identity-momiji-magazine.body"
+    },
+    {
+      "source": "https://www.instagram.com/momiji.kiyamachi/",
+      "retrievedAt": "2026-11-06T08:20:03.238749+00:00",
+      "status": 200,
+      "finalUrl": "https://www.instagram.com/momiji.kiyamachi/",
+      "bytes": 697607,
+      "sha256": "c26d1fdc6f41c112d842c219b445892c63b423dffbe82799d84693ec02627b7f",
+      "contentType": "text/html; charset=\"utf-8\"",
+      "file": "identity-momiji-profile.body"
+    },
+    {
+      "source": "https://retty.me/area/PRE26/ARE108/SUB10803/100001225740/",
+      "retrievedAt": "2026-11-06T08:19:12.028991+00:00",
+      "status": 200,
+      "finalUrl": "https://retty.me/area/PRE26/ARE108/SUB10803/100001225740/",
+      "bytes": 642225,
+      "sha256": "4f03da236a657744303fd994cff224a2cebab981e60692305ddf32c1713fdb95",
+      "contentType": "text/html;charset=utf-8",
+      "file": "identity-momiji-retty.body"
+    },
+    {
+      "source": "https://www.google.com/search?q=%E4%BA%AC%E9%83%BD+%E3%82%82%E3%81%BF%E3%81%98+%E7%AB%8B%E3%81%A1%E5%91%91%E3%81%BF+%E5%9B%9B%E6%9D%A1+%E4%BD%8F%E6%89%80",
+      "retrievedAt": "2026-11-06T08:18:20.725467+00:00",
+      "status": 200,
+      "finalUrl": "https://www.google.com/search?q=%E4%BA%AC%E9%83%BD+%E3%82%82%E3%81%BF%E3%81%98+%E7%AB%8B%E3%81%A1%E5%91%91%E3%81%BF+%E5%9B%9B%E6%9D%A1+%E4%BD%8F%E6%89%80",
+      "bytes": 93389,
+      "sha256": "ad49f045a0b72f0978618cd67ac6443b412819846fce1d64ac5be25d5062fbc9",
+      "contentType": "text/html; charset=ISO-8859-1",
+      "file": "identity-momiji-search.body"
+    },
+    {
+      "source": "https://www.bing.com/search?q=%E6%9D%B1%E6%A8%AAINN+%E4%BA%AC%E9%83%BD%E5%9B%9B%E6%9D%A1%E7%83%8F%E4%B8%B8+%E5%85%AC%E5%BC%8F+%E4%BD%8F%E6%89%80&format=rss",
+      "retrievedAt": "2026-11-06T08:18:40.501343+00:00",
+      "status": 200,
+      "finalUrl": "https://www.bing.com/search?q=%E6%9D%B1%E6%A8%AAINN+%E4%BA%AC%E9%83%BD%E5%9B%9B%E6%9D%A1%E7%83%8F%E4%B8%B8+%E5%85%AC%E5%BC%8F+%E4%BD%8F%E6%89%80&format=rss",
+      "bytes": 5222,
+      "sha256": "7a865d1747ed9c0e1b6ac1183b8ef69f098573a0a7f169e6e9185876555d003a",
+      "contentType": "text/xml; charset=utf-8",
+      "file": "identity-toyoko-bing.body"
+    },
+    {
+      "source": "https://html.duckduckgo.com/html/?q=Toyoko+Inn+Kyoto+Shijo+Karasuma+official+address",
+      "retrievedAt": "2026-11-06T08:18:56.145574+00:00",
+      "status": 200,
+      "finalUrl": "https://html.duckduckgo.com/html/?q=Toyoko+Inn+Kyoto+Shijo+Karasuma+official+address",
+      "bytes": 35202,
+      "sha256": "8c82ee4697491402e42b85af452c501d6532917f6cfb7cf146c4752b91edc6f8",
+      "contentType": "text/html; charset=UTF-8",
+      "file": "identity-toyoko-duck.body"
+    },
+    {
+      "source": "https://www.toyoko-inn.com/eng/search/detail/00053/access/",
+      "retrievedAt": "2026-11-06T08:19:14.277009+00:00",
+      "status": 200,
+      "finalUrl": "https://www.toyoko-inn.com/eng/search/detail/00053/access/",
+      "bytes": 698281,
+      "sha256": "e1978b1ed94e6d4d1794eab03165c87bf47d8b37e28cf73fbb646ab5fc025337",
+      "contentType": "text/html; charset=utf-8",
+      "file": "identity-toyoko-official.body"
+    },
+    {
+      "source": "https://www.google.com/search?q=%E6%9D%B1%E6%A8%AAINN+%E4%BA%AC%E9%83%BD%E5%9B%9B%E6%9D%A1%E7%83%8F%E4%B8%B8+%E5%85%AC%E5%BC%8F+%E4%BD%8F%E6%89%80",
+      "retrievedAt": "2026-11-06T08:18:20.944343+00:00",
+      "status": 200,
+      "finalUrl": "https://www.google.com/search?q=%E6%9D%B1%E6%A8%AAINN+%E4%BA%AC%E9%83%BD%E5%9B%9B%E6%9D%A1%E7%83%8F%E4%B8%B8+%E5%85%AC%E5%BC%8F+%E4%BD%8F%E6%89%80",
+      "bytes": 93262,
+      "sha256": "a5164008d59b621441ffb4dbdbec40ee6a8c4944ed04490cbb6c310acf2dd3b9",
+      "contentType": "text/html; charset=ISO-8859-1",
+      "file": "identity-toyoko-search.body"
+    },
+    {
+      "source": "https://creativecommons.org/licenses/by/2.0/deed.en",
+      "retrievedAt": "2026-11-06T08:00:57.065828+00:00",
+      "status": 200,
+      "finalUrl": "https://creativecommons.org/licenses/by/2.0/deed.en",
+      "bytes": 31822,
+      "sha256": "bbb0dcc37f02552e7270e6d2e06be02672ce29ada816107d6fa91e1e6809714b",
+      "contentType": "text/html",
+      "file": "license-by2.body"
+    },
+    {
+      "source": "https://creativecommons.org/licenses/by-sa/2.0/deed.en",
+      "retrievedAt": "2026-11-06T08:00:56.714147+00:00",
+      "status": 200,
+      "finalUrl": "https://creativecommons.org/licenses/by-sa/2.0/deed.en",
+      "bytes": 35429,
+      "sha256": "6d15fd2f2ccc7258f39befc9f13f5154f9851e49a9e90ec43c7e22d660ae0e84",
+      "contentType": "text/html",
+      "file": "license-bysa2.body"
+    },
+    {
+      "source": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "retrievedAt": "2026-11-06T08:00:56.669440+00:00",
+      "status": 200,
+      "finalUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "bytes": 30248,
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12",
+      "contentType": "text/html",
+      "file": "license-cc0.body"
+    },
+    {
+      "source": "https://api.sketchfab.com/v3/search?type=models&q=kyoto&downloadable=true&count=48",
+      "retrievedAt": "2026-11-06T07:57:46.373639+00:00",
+      "status": 200,
+      "finalUrl": "https://api.sketchfab.com/v3/search?type=models&q=kyoto&downloadable=true&count=48",
+      "bytes": 107705,
+      "sha256": "d19fa03e7054603ad0f116d39e8a86699db208d5e025fc66929d63d72f9b10d2",
+      "contentType": "application/json",
+      "file": "sketchfab-kyoto.body"
+    },
+    {
+      "source": "https://api.sketchfab.com/v3/search?type=models&q=nishiki&downloadable=true&count=24",
+      "retrievedAt": "2026-11-06T07:57:28.125627+00:00",
+      "status": 200,
+      "finalUrl": "https://api.sketchfab.com/v3/search?type=models&q=nishiki&downloadable=true&count=24",
+      "bytes": 40386,
+      "sha256": "f0101aefe6e6f7455282a1a02828f472d14ab955adb3f1c4e3785b7a7996480a",
+      "contentType": "application/json",
+      "file": "sketchfab-nishiki.body"
+    },
+    {
+      "source": "https://api.sketchfab.com/v3/search?type=models&q=pontocho&downloadable=true&count=24",
+      "retrievedAt": "2026-11-06T07:57:45.619954+00:00",
+      "status": 200,
+      "finalUrl": "https://api.sketchfab.com/v3/search?type=models&q=pontocho&downloadable=true&count=24",
+      "bytes": 82,
+      "sha256": "9bc956b4753bbd9cbfd51837ba1d5db4e3c337c71817b58a4627466220c62af3",
+      "contentType": "application/json",
+      "file": "sketchfab-pontocho.body"
+    },
+    {
+      "source": "https://api.sketchfab.com/v3/search?type=models&q=shijo&downloadable=true&count=24",
+      "retrievedAt": "2026-11-06T07:57:46.309257+00:00",
+      "status": 200,
+      "finalUrl": "https://api.sketchfab.com/v3/search?type=models&q=shijo&downloadable=true&count=24",
+      "bytes": 22628,
+      "sha256": "bac9ab56c0cdfcc7b7e918a8af5cc0aeced38f96f6922dae68e1532bcaaaa7d5",
+      "contentType": "application/json",
+      "file": "sketchfab-shijo.body"
+    },
+    {
+      "source": "https://api.sketchfab.com/v3/search?type=models&q=nishiki%20tenmangu&downloadable=true&count=24",
+      "retrievedAt": "2026-11-06T07:58:02.693394+00:00",
+      "status": 200,
+      "finalUrl": "https://api.sketchfab.com/v3/search?type=models&q=nishiki%20tenmangu&downloadable=true&count=24",
+      "bytes": 82,
+      "sha256": "9bc956b4753bbd9cbfd51837ba1d5db4e3c337c71817b58a4627466220c62af3",
+      "contentType": "application/json",
+      "file": "sketchfab-tenmangu.body"
+    }
+  ],
+  "mapillaryTerms": {
+    "receipt": {
+      "source": "https://www.mapillary.com/legal",
+      "responseUrl": "https://www.mapillary.com/terms",
+      "date": "2026-11-06T07:58:33.402097+00:00",
+      "status": 200,
+      "bytes": 116362,
+      "sha256": "0c13eb19c3f66668995b70949ec302c6f83033f3815ba69482ef3b7869b3dd63",
+      "contentType": "text/html; charset=\"utf-8\"",
+      "lastModified": null,
+      "cachePath": "artifacts/realism-01/free-sources/mapillary-legal.raw",
+      "method": "Public GET through inherited proxy with TLS verification; metadata limited to 12 MiB per response"
+    },
+    "effectiveDate": "2024-02-15",
+    "facts": [
+      "Section 3(b) applies CC BY-SA to user content unless another license is indicated",
+      "Section 11 requires developer application registration and a client_id",
+      "Section 5 prohibits use with real-time sensor-synchronized navigation or route guidance",
+      "Section 5 restricts unapproved scraping/extraction"
+    ],
+    "qualification": "No exact-route image IDs, permitted application access or calibrated source package acquired; no token requested"
+  },
+  "kartaView": {
+    "receipts": [
+      {
+        "source": "https://doc.kartaview.org/",
+        "responseUrl": "https://kartaview.org/doc",
+        "date": "2026-11-06T08:13:55.870583+00:00",
+        "status": 200,
+        "bytes": 2155,
+        "sha256": "920dd65ca6f546f7ce5614c783f28b5afbd51e19dde6d59d816b3126f65b171f",
+        "contentType": "text/html",
+        "lastModified": "Mon, 02 Nov 2026 10:20:30 GMT",
+        "cachePath": "artifacts/realism-01/free-sources/kartaview-docs.raw",
+        "method": "Public GET through inherited proxy with TLS verification; metadata limited to 12 MiB per response"
+      },
+      {
+        "source": "https://kartaview.org/terms",
+        "responseUrl": "https://kartaview.org/terms",
+        "date": "2026-11-06T08:13:54.348192+00:00",
+        "status": 200,
+        "bytes": 2155,
+        "sha256": "920dd65ca6f546f7ce5614c783f28b5afbd51e19dde6d59d816b3126f65b171f",
+        "contentType": "text/html",
+        "lastModified": "Mon, 02 Nov 2026 10:20:30 GMT",
+        "cachePath": "artifacts/realism-01/free-sources/kartaview-terms.raw",
+        "method": "Public GET through inherited proxy with TLS verification; metadata limited to 12 MiB per response"
+      },
+      {
+        "source": "https://kartaview.org/main.713c8a0a1a99dfff0f74.js",
+        "responseUrl": "https://kartaview.org/main.713c8a0a1a99dfff0f74.js",
+        "date": "2026-11-06T08:15:58.691490+00:00",
+        "status": 200,
+        "bytes": 4499535,
+        "sha256": "7ccabae8c8781d01d75afde0d83fbacd5e14aab752a2dc5679dac030f41fbd75",
+        "contentType": "application/javascript",
+        "lastModified": "Mon, 02 Nov 2026 10:20:30 GMT",
+        "cachePath": "artifacts/realism-01/free-sources/kartaview-app.raw",
+        "method": "Public GET through inherited proxy with TLS verification; metadata limited to 12 MiB per response"
+      }
+    ],
+    "queryEvidence": "query-coverage.json retains all four completed no-key queries and their full JSON responses",
+    "documentedAccess": "Public site FAQ provides a no-key /2.0/photo/ location/radius lookup and documented geographic bounds. Radius range is 1–500; published documentation does not specify units.",
+    "rights": "Public site terms license street imagery and 3D spatial data under CC BY-SA 4.0, credit © Grab and KartaView Contributors",
+    "method": "Public documentation/terms in site JavaScript; west, central, east radius queries and a geographic rectangle verified against all 54 complete route polylines",
+    "limitations": "The route rectangle returns zero camera records; the east radius query returns seven off-route cameras. Two nearest thumbnails are inspected separately. Camera-coordinate lookup does not establish visible-feature coverage or total source absence."
+  },
+  "limitations": "Public metadata and declared GPS are not surveyed camera positions or current-access proof. No complete captured 3D route was qualified. Existing full-route realism, floor, discovery and performance gates remain unchanged."
+}

@@ -154,3 +154,36 @@ uses three verified tracked metadata files and needs no historical publisher
 HTML response. Full and retained-only verification pass **62 evidence files and
 19 producers**; full mode additionally checks 69 cached originals. This recovery
 changes acquisition tooling, with the tested renderer/source bytes preserved.
+
+## Free-source coverage and bounded streaming
+
+Free-source verification passes thirteen retained files, eight producers, five
+original-photo identities and two unchanged KartaView thumbnails. The receipts
+bind actual source coverage, business associations and capture-family restrictions.
+The exact route remains the 54-edge source; related Shijō photographs remain
+inspection-only. The three supplementary official extents and returned public
+imagery records supply no qualified continuous dimensional route capture.
+
+Streaming verification passes thirty evidence files and five producers. It
+recomputes all three CDP transfer boundaries, including partial responses and
+their headers, plus exact camera matrices, two image comparisons and non-vacuous
+timestamp-bound cancellation. Eight-page limits, actual eviction and three unload
+cycles retain their observed scope. The focused SH3 run remains over 4 MiB, with
+38/39 compact chunks above 2 MiB.
+
+The single SH2 encoding verifier checks ten evidence files, three reference inputs
+and six producer bindings. Raw transfer is 3,898,536 bytes: 3,714,440 completed
+response bytes plus 184,096 bytes from an unfinished response. It fits the partial
+first-view byte boundary. The original source and official converter identities
+match earlier receipts; 37/39 sections remain oversized. Camera/image and
+cancellation observations reproduce. Degree-3 directional terms are explicitly
+removed; full-quality, directional fidelity and physical-device gates remain open.
+
+The staged-tree archive passes **44 Markdown documents, 531 relative targets,
+119 JSON documents, 199 qualification file hashes and 83 producer hashes**. The
+integrated validator recomputes both streaming and encoding observations. Free
+source and fidelity validators also pass from the archive without raw downloads.
+The reviewed converter stdout has a narrow ignore exception; raw models, toolchain,
+browser profiles and caches remain ignored. Reports are under
+`artifacts/realism-01/validation/free-source-streaming/`. All independent reviews
+preserve the measured failures and the unqualified full-route milestone.

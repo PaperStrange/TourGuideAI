@@ -1,0 +1,387 @@
+{
+  "date": "2026-11-06T08:21:22.298Z",
+  "source": {
+    "path": "artifacts/realism-01/splat-fidelity/research/knock-original.sog",
+    "bytes": 29781498,
+    "sha256": "81d061bad6ba255689939847482836f7d70bf2e222abce04e6d81c2c976c6a71"
+  },
+  "sourceSplatCount": 1935275,
+  "reference": {
+    "path": "artifacts/realism-01/splat-fidelity/hall-run-03-focal2/spark-initial.jpg",
+    "bytes": 105924,
+    "sha256": "7abb7472b88aec98a56d606af9bdcf0250051158cc3570abb83a385a7590ce88"
+  },
+  "variants": [
+    {
+      "variant": "original-precision",
+      "headerBytes": 5384,
+      "rootChunkBytes": 3117688,
+      "minimumSourceEntryBytes": 3123072,
+      "allRadBytes": 116110408,
+      "chunks": 39,
+      "chunksOverSectionBudget": 39,
+      "sectionBudgetBytes": 2097152
+    },
+    {
+      "variant": "compact-input",
+      "headerBytes": 5344,
+      "rootChunkBytes": 3110304,
+      "minimumSourceEntryBytes": 3115648,
+      "allRadBytes": 114482032,
+      "chunks": 39,
+      "chunksOverSectionBudget": 38,
+      "sectionBudgetBytes": 2097152
+    }
+  ],
+  "firstVisibleTransfer": {
+    "epochMs": 1793953218459.2998,
+    "totalEncodedBytes": 4737856,
+    "sourceEncodedBytes": 3312658,
+    "method": "CDP completed response encodedDataLength or response headers plus dataReceived encoded bytes up to submitted first-visible frame",
+    "benchmarkFullQualityReady": false
+  },
+  "comparisons": [
+    {
+      "view": "first-visible",
+      "input": {
+        "path": "artifacts/realism-01/splat-streaming/compact-focused-02/first-visible.jpg",
+        "bytes": 66917,
+        "sha256": "47fb0fc208cf972d4acddb4d3df35ccd7da31219f14a470392da4e70c221eda5"
+      },
+      "cameraMatrixMaxAbsError": 2.8512999461494104e-09,
+      "projectionMaxAbsError": 0.0,
+      "selectedSplats": 57888,
+      "residentPages": 1,
+      "foregroundPixels": 202073,
+      "meanAbsoluteError255": 3.5592144097222222,
+      "foregroundMeanAbsoluteError255": 15.894559556859814,
+      "foregroundP95ChannelError255": 49.0
+    },
+    {
+      "view": "bounded-initial",
+      "input": {
+        "path": "artifacts/realism-01/splat-streaming/compact-focused-02/bounded-initial.jpg",
+        "bytes": 88358,
+        "sha256": "1e3a43b3ab4571d9784ce2de0113cb1f90d975b00bdb1f1b6f35a2d69e5dd65d"
+      },
+      "cameraMatrixMaxAbsError": 2.8512999461494104e-09,
+      "projectionMaxAbsError": 0.0,
+      "selectedSplats": 262140,
+      "residentPages": 8,
+      "foregroundPixels": 200661,
+      "meanAbsoluteError255": 2.1757667824074076,
+      "foregroundMeanAbsoluteError255": 9.653480247781083,
+      "foregroundP95ChannelError255": 32.0
+    }
+  ],
+  "checks": [
+    {
+      "id": "original-source-identity",
+      "pass": true
+    },
+    {
+      "id": "first-visible-total-transfer-within-4mib",
+      "pass": false
+    },
+    {
+      "id": "resident-pool-within-eight-pages",
+      "pass": true
+    },
+    {
+      "id": "source-fetchers-within-one",
+      "pass": true
+    },
+    {
+      "id": "same-camera-as-original-reference",
+      "pass": true
+    },
+    {
+      "id": "inflight-source-fetch-canceled-by-recorded-action",
+      "pass": true
+    }
+  ],
+  "mechanicsChecks": [
+    {
+      "id": "original-source-identity",
+      "pass": true
+    },
+    {
+      "id": "first-visible-total-transfer-within-4mib",
+      "pass": false
+    },
+    {
+      "id": "resident-pool-within-eight-pages",
+      "pass": true
+    },
+    {
+      "id": "source-fetchers-within-one",
+      "pass": true
+    },
+    {
+      "id": "same-camera-as-original-reference",
+      "pass": true
+    },
+    {
+      "id": "native-input-observed",
+      "pass": true
+    },
+    {
+      "id": "page-eviction-observed",
+      "pass": true
+    },
+    {
+      "id": "three-unload-cycles-release-pages",
+      "pass": true
+    },
+    {
+      "id": "inflight-source-fetch-canceled",
+      "pass": true
+    }
+  ],
+  "evictions": {
+    "observedReplacementEvents": 5,
+    "examples": [
+      {
+        "at": 79704.30000000075,
+        "generation": 1,
+        "frames": 210,
+        "pages": [
+          {
+            "page": 0,
+            "chunk": 0
+          },
+          {
+            "page": 1,
+            "chunk": 5
+          },
+          {
+            "page": 2,
+            "chunk": 6
+          },
+          {
+            "page": 3,
+            "chunk": 2
+          },
+          {
+            "page": 4,
+            "chunk": 1
+          },
+          {
+            "page": 5,
+            "chunk": 4
+          },
+          {
+            "page": 6,
+            "chunk": 3
+          },
+          {
+            "page": 7,
+            "chunk": 7
+          }
+        ]
+      },
+      {
+        "at": 111742.59999999963,
+        "generation": 1,
+        "frames": 222,
+        "pages": [
+          {
+            "page": 0,
+            "chunk": 0
+          },
+          {
+            "page": 1,
+            "chunk": 5
+          },
+          {
+            "page": 2,
+            "chunk": 6
+          },
+          {
+            "page": 3,
+            "chunk": 2
+          },
+          {
+            "page": 4,
+            "chunk": 1
+          },
+          {
+            "page": 5,
+            "chunk": 4
+          },
+          {
+            "page": 6,
+            "chunk": 3
+          },
+          {
+            "page": 7,
+            "chunk": 10
+          }
+        ]
+      },
+      {
+        "at": 129711.09999999963,
+        "generation": 1,
+        "frames": 228,
+        "pages": [
+          {
+            "page": 0,
+            "chunk": 0
+          },
+          {
+            "page": 1,
+            "chunk": 5
+          },
+          {
+            "page": 2,
+            "chunk": 6
+          },
+          {
+            "page": 3,
+            "chunk": 2
+          },
+          {
+            "page": 4,
+            "chunk": 1
+          },
+          {
+            "page": 5,
+            "chunk": 4
+          },
+          {
+            "page": 6,
+            "chunk": 3
+          },
+          {
+            "page": 7,
+            "chunk": 11
+          }
+        ]
+      },
+      {
+        "at": 138802.90000000037,
+        "generation": 1,
+        "frames": 231,
+        "pages": [
+          {
+            "page": 0,
+            "chunk": 0
+          },
+          {
+            "page": 1,
+            "chunk": 5
+          },
+          {
+            "page": 2,
+            "chunk": 6
+          },
+          {
+            "page": 3,
+            "chunk": 2
+          },
+          {
+            "page": 4,
+            "chunk": 1
+          },
+          {
+            "page": 5,
+            "chunk": 4
+          },
+          {
+            "page": 6,
+            "chunk": 3
+          },
+          {
+            "page": 7,
+            "chunk": 23
+          }
+        ]
+      },
+      {
+        "at": 170153.09999999963,
+        "generation": 1,
+        "frames": 242,
+        "pages": [
+          {
+            "page": 0,
+            "chunk": 0
+          },
+          {
+            "page": 1,
+            "chunk": 5
+          },
+          {
+            "page": 2,
+            "chunk": 6
+          },
+          {
+            "page": 3,
+            "chunk": 2
+          },
+          {
+            "page": 4,
+            "chunk": 1
+          },
+          {
+            "page": 5,
+            "chunk": 4
+          },
+          {
+            "page": 6,
+            "chunk": 3
+          },
+          {
+            "page": 7,
+            "chunk": 21
+          }
+        ]
+      }
+    ]
+  },
+  "comparisonRun": "compact-focused-02",
+  "mechanicsRun": "compact-run-01",
+  "observedPeakArrayBufferBytes": 36274176,
+  "observedPeakLogicalGpuTextureBytes": 42008576,
+  "workersAfterDispose": {
+    "created": 3,
+    "terminated": 2,
+    "active": 1,
+    "events": [
+      {
+        "type": "create",
+        "id": 1,
+        "at": 1994.4000000003725
+      },
+      {
+        "type": "create",
+        "id": 2,
+        "at": 2077.9000000003725
+      },
+      {
+        "type": "create",
+        "id": 3,
+        "at": 4833
+      },
+      {
+        "type": "terminate",
+        "id": 2,
+        "at": 70161.60000000149
+      },
+      {
+        "type": "terminate",
+        "id": 1,
+        "at": 70161.70000000112
+      }
+    ]
+  },
+  "completeMemoryAccounting": false,
+  "benchmarkFullQualityReady": "unverified",
+  "limitations": [
+    "First-visible and resident-budget views have different detail from the full-source reference.",
+    "MAE measures image differences; no realism, immersion or discovery acceptance threshold is inferred.",
+    "CPU array/texture observations exclude worker/WASM heaps, driver allocations and transient buffers.",
+    "Software rendering and shared-host CPU activity prevent physical-device timing qualification.",
+    "Earlier compact-run-01 camera-change frames can have pending streaming; its images are transient observations.",
+    "Earlier CPU-array observations can omit pager arrays through depth-limited traversal; the focused run explicitly visits pager textures."
+  ]
+}

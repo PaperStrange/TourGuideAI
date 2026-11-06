@@ -8,6 +8,10 @@
 
 [Architectural splat comparison and local preview](splat-fidelity/README.md)
 
+[Paged streaming board](splat-streaming/README.md) · [Free Kyoto photographic intake](free-sources/README.md)
+
+[Single encoding trade-off and same-camera views](splat-encoding/README.md)
+
 The 73 acquired original tiles contain 2,269 object occurrences. Selecting source
 replacement levels leaves **1,965 occurrences / 119,514 triangles**; all 304
 excluded occurrences remain in the evidence. Actual geometry is indexed against

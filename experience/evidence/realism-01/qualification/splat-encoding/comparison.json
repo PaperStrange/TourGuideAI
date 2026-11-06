@@ -1,0 +1,87 @@
+{
+  "date": "2026-11-06T08:35:49.843Z",
+  "source": {
+    "path": "artifacts/realism-01/splat-fidelity/research/knock-original.sog",
+    "bytes": 29781498,
+    "sha256": "81d061bad6ba255689939847482836f7d70bf2e222abce04e6d81c2c976c6a71"
+  },
+  "originalShDegree": 3,
+  "derivedShDegree": 2,
+  "sourceSplatCount": 1935275,
+  "derivedLodNodeCount": 2541177,
+  "headerBytes": 5416,
+  "rootChunkBytes": 2283352,
+  "minimumSourceEntryBytes": 2288768,
+  "totalConvertedBytes": 84115304,
+  "chunkCount": 39,
+  "chunksAbove2MiB": 37,
+  "additionalFilesBytes": 113924677,
+  "firstVisibleTransfer": {
+    "epochMs": 1793954094101.2002,
+    "totalEncodedBytes": 3898536,
+    "sourceEncodedBytes": 2473338,
+    "method": "CDP completed response encodedDataLength or response headers plus dataReceived encoded bytes up to submitted first-visible frame",
+    "benchmarkFullQualityReady": false
+  },
+  "comparisons": [
+    {
+      "view": "first-visible",
+      "path": "focused/first-visible.jpg",
+      "worldMatrixMaxAbsError": 2.8512999461494104e-09,
+      "projectionMaxAbsError": 0.0,
+      "selectedSplats": 57443,
+      "residentPages": 1,
+      "foregroundPixels": 203020,
+      "meanAbsoluteError255": 4.004435763888889,
+      "foregroundMeanAbsoluteError255": 17.779190884313532,
+      "foregroundP95ChannelError255": 52.0
+    },
+    {
+      "view": "bounded-initial",
+      "path": "focused/bounded-initial.jpg",
+      "worldMatrixMaxAbsError": 2.8512999461494104e-09,
+      "projectionMaxAbsError": 0.0,
+      "selectedSplats": 262137,
+      "residentPages": 8,
+      "foregroundPixels": 201470,
+      "meanAbsoluteError255": 2.6211534288194445,
+      "foregroundMeanAbsoluteError255": 11.589708972386294,
+      "foregroundP95ChannelError255": 36.0
+    }
+  ],
+  "checks": [
+    {
+      "id": "original-source-identity",
+      "pass": true
+    },
+    {
+      "id": "first-visible-total-transfer-within-4mib",
+      "pass": true
+    },
+    {
+      "id": "resident-pool-within-eight-pages",
+      "pass": true
+    },
+    {
+      "id": "source-fetchers-within-one",
+      "pass": true
+    },
+    {
+      "id": "same-camera-as-original-reference",
+      "pass": true
+    },
+    {
+      "id": "inflight-source-fetch-canceled-by-recorded-action",
+      "pass": true
+    }
+  ],
+  "directionalRadianceRisk": "SH3 to SH2 removes all 7 degree-3 basis terms per color (21 directional coefficients per Gaussian); view-dependent highlights and fine angular color changes may degrade.",
+  "limitations": [
+    "Only the initial source camera is compared; additional viewing directions and independent photographs remain unqualified.",
+    "MAE includes LoD and encoding effects; a budget pass alone establishes no realism or full-quality acceptance.",
+    "The historical compact-input SH3 comparison also differs in intermediate quantization; it is context, not an isolated SH-degree experiment.",
+    "Same SwiftShader/shared-host and partial-allocation limitations apply as in the streaming experiment."
+  ],
+  "benchmarkFullQualityReady": "unverified",
+  "completeMemoryAccounting": false
+}

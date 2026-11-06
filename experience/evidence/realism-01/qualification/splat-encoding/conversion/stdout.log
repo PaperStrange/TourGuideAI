@@ -1,0 +1,174 @@
+Using --quality: Quality LoD method (bhatt-lod base 1.75)
+Using --rad-chunked: Chunk RAD file output
+Using --max-sh=2
+*** Processing: /workspace/TourGuideAI/artifacts/realism-01/splat-encoding/converted/knock-original.sog
+Detected file type: SOGS
+Read: num_splats: 1935275 with sh_degree: 3
+bhatt_lod::compute_lod_tree: initial_len=1935275
+Sorted and prepared splats
+level_min: -10, feature_size[0]: 0.0005518881
+Level: -10, step: 0.0009765625, frontier: 6 / 1935275, # active: 6, # splats: 1935275
+Level: -9, step: 0.001953125, frontier: 334 / 1935275, # active: 334, # splats: 1935275
+Level: -8, step: 0.00390625, frontier: 7251 / 1935275, # active: 7240, # splats: 1935286
+Level: -7, step: 0.0078125, frontier: 73103 / 1935275, # active: 72035, # splats: 1936343
+Level: -6, step: 0.015625, frontier: 285191 / 1935275, # active: 253918, # splats: 1966551
+Level: -5, step: 0.03125, frontier: 677631 / 1935275, # active: 488381, # splats: 2124533
+Level: -4, step: 0.0625, frontier: 1194880 / 1935275, # active: 640849, # splats: 2489312
+Level: -3, step: 0.125, frontier: 1629064 / 1935275, # active: 544072, # splats: 3020272
+Level: -2, step: 0.25, frontier: 1845908 / 1935275, # active: 286796, # splats: 3494389
+Level: -1, step: 0.5, frontier: 1920858 / 1935275, # active: 102340, # splats: 3753793
+Level: 0, step: 1, frontier: 1932415 / 1935275, # active: 20354, # splats: 3847336
+Level: 1, step: 2, frontier: 1934683 / 1935275, # active: 4168, # splats: 3865790
+Level: 2, step: 4, frontier: 1935161 / 1935275, # active: 987, # splats: 3869449
+Level: 3, step: 8, frontier: 1935257 / 1935275, # active: 199, # splats: 3870333
+Level: 4, step: 16, frontier: 1935275 / 1935275, # active: 39, # splats: 3870511
+Level: 5, step: 32, frontier: 1935275 / 1935275, # active: 4, # splats: 3870546
+Root index: 3870548
+Root splat: Gsplat(center: Vec3A(10.7330065, -1.3224373, 8.895366), opacity: 8.453125, rgb: Vec3A(0.40527344, 0.43359375, 0.30029297), scales: Vec3A(4.5168395, 3.7629201, 2.2524347), quaternion: Quat(0.7324219, 0.053863525, -0.017303467, -0.67871094))
+Output set: 2541177 / 3870549
+LoD growth factor: 1.3130832
+Pruning from limit_size=23.560886, # frontier=1
+Pruning from limit_size=5.8902216, # frontier=6
+Pruning from limit_size=1.4725554, # frontier=320
+Pruning from limit_size=0.36813885, # frontier=6124
+Pruning from limit_size=0.09203471, # frontier=91853
+Pruning from limit_size=0.023008678, # frontier=355213
+Pruning from limit_size=0.0057521695, # frontier=281797
+Pruning from limit_size=0.0014380424, # frontier=29962
+Pruning from limit_size=0.0003595106, # frontier=67
+Truncated to output_count=2541177
+Average children per interior splat: 4.1940379797392975
+Root #children: 6
+output batch chunk, chunk_rel = 0.9998932
+octant lengths: [2508, 5, 6972, 8300, 4834, 1334, 9666, 9480]
+output batch chunk, chunk_rel = 1.9999847
+octant lengths: [262, 87, 174, 353, 1003, 1081, 3718, 1301]
+output batch chunk, chunk_rel = 2.9999695
+octant lengths: [234, 0, 6788, 5257, 7911, 77, 11554, 12683]
+output batch chunk, chunk_rel = 3.999878
+octant lengths: [96, 1679, 1867, 6790, 0, 4176, 7086, 12415]
+output batch chunk, chunk_rel = 4.9999695
+octant lengths: [14, 6641, 8153, 4212, 875, 4311, 9298, 7086]
+output batch chunk, chunk_rel = 5.999954
+octant lengths: [8725, 2734, 2748, 11167, 612, 0, 6419, 8475]
+output batch chunk, chunk_rel = 6.9999084
+octant lengths: [2182, 3499, 2531, 4594, 97, 1046, 2939, 3225]
+output batch chunk, chunk_rel = 7.999939
+octant lengths: [32, 0, 784, 703, 0, 3, 5191, 6215]
+output batch chunk, chunk_rel = 9
+split axis=X, extent=Vec3A(4.932826, 1.600453, 4.339488), split=12.5004635, a.len=12237, b.len=13762
+output batch chunk, chunk_rel = 9.999878
+split axis=X, extent=Vec3A(5.4200315, 1.5372608, 4.387016), split=17.237509, a.len=20578, b.len=5489
+output batch chunk, chunk_rel = 10.999985
+octant lengths: [819, 1543, 763, 1215, 469, 972, 0, 101]
+output batch chunk, chunk_rel = 12.9999695
+split axis=X, extent=Vec3A(5.1470094, 0.32508397, 4.220162), split=3.3428242, a.len=855, b.len=18279
+output batch chunk, chunk_rel = 13.999847
+octant lengths: [0, 0, 8167, 9549, 0, 3410, 6166, 6717]
+output batch chunk, chunk_rel = 15.999985
+split axis=X, extent=Vec3A(5.1426563, 0.58484226, 4.340225), split=3.3556294, a.len=3844, b.len=13948
+output batch chunk, chunk_rel = 17
+octant lengths: [0, 1500, 1916, 4777, 0, 0, 3435, 7800]
+output batch chunk, chunk_rel = 17.99997
+octant lengths: [1139, 708, 2524, 1633, 0, 0, 7484, 6330]
+output batch chunk, chunk_rel = 20.999985
+octant lengths: [2228, 0, 6228, 4606, 185, 165, 3549, 4672]
+output batch chunk, chunk_rel = 21.999924
+octant lengths: [16, 0, 2343, 3904, 0, 393, 5502, 6176]
+output batch chunk, chunk_rel = 22.999924
+split axis=X, extent=Vec3A(5.1959686, 0.65534323, 4.4223166), split=17.317362, a.len=11851, b.len=5302
+output batch chunk, chunk_rel = 24.999908
+octant lengths: [827, 610, 1299, 1060, 342, 684, 1395, 481]
+output batch chunk, chunk_rel = 26
+split axis=X, extent=Vec3A(2.5290794, 0.4295007, 2.2652144), split=11.1616955, a.len=2297, b.len=5096
+output batch chunk, chunk_rel = 26.99997
+split axis=X, extent=Vec3A(2.5669632, 0.7299684, 2.3660524), split=13.567044, a.len=7998, b.len=5982
+output batch chunk, chunk_rel = 31.999985
+split axis=X, extent=Vec3A(2.487399, 0.2338681, 2.205161), split=9.335176, a.len=12732, b.len=7388
+output batch chunk, chunk_rel = 32.999985
+split axis=X, extent=Vec3A(2.5267773, 0.22571574, 2.0019035), split=6.93604, a.len=4659, b.len=5399
+output batch chunk, chunk_rel = 33.99997
+split axis=Z, extent=Vec3A(2.6261377, 0.3119119, 4.209373), split=10.007114, a.len=12511, b.len=3390
+output batch chunk, chunk_rel = 38
+split axis=Z, extent=Vec3A(1.2744155, 0.097099066, 1.9909892), split=7.2659216, a.len=4012, b.len=815
+Encoding RAD file with center=F32LeBytes, alpha=F16, rgb=R8Delta, scales=Ln0R8, orientation=Oct88R8, sh=S8
+Splat Encoding: SplatEncoding { rgb_min: -0.024887085, rgb_max: 1.3144531, ln_scale_min: -12.0, ln_scale_max: 9.0, sh1_max: 1.0, sh2_max: 1.0, sh3_max: 1.0, lod_opacity: false }
+Comment: {
+  "chunk_duration": 1.5002285739999999,
+  "clamp_sh_degree": 2,
+  "final_splat_count": 2541177,
+  "input_encoding": {
+    "alpha": "Auto",
+    "center": "Auto",
+    "encoding": null,
+    "orientation": "Auto",
+    "rgb": "Auto",
+    "scales": "Auto",
+    "sh": "Auto",
+    "sh_label": "Auto"
+  },
+  "input_sh_degree": 3,
+  "input_splat_count": 1935275,
+  "lod_duration": 47.707832055,
+  "max_sh_degree": 2,
+  "method": "BhattLod { lod_base: 1.75 }",
+  "resolved_encoding": {
+    "alpha": "F16",
+    "center": "F32LeBytes",
+    "encoding": {
+      "lnScaleMax": 9.0,
+      "lnScaleMin": -12.0,
+      "lodOpacity": false,
+      "rgbMax": 1.314453125,
+      "rgbMin": -0.0248870849609375,
+      "sh1Max": 1.0,
+      "sh2Max": 1.0,
+      "sh3Max": 1.0
+    },
+    "orientation": "Oct88R8",
+    "rgb": "R8Delta",
+    "scales": "Ln0R8",
+    "sh": "S8",
+    "sh_label": "Auto"
+  }
+}
+Wrote knock-original-lod-0.radc (2283352 bytes)
+Wrote knock-original-lod-1.radc (2178744 bytes)
+Wrote knock-original-lod-2.radc (2231280 bytes)
+Wrote knock-original-lod-3.radc (2226368 bytes)
+Wrote knock-original-lod-4.radc (2251904 bytes)
+Wrote knock-original-lod-5.radc (2219776 bytes)
+Wrote knock-original-lod-6.radc (2227776 bytes)
+Wrote knock-original-lod-7.radc (2137272 bytes)
+Wrote knock-original-lod-8.radc (2170096 bytes)
+Wrote knock-original-lod-9.radc (2157768 bytes)
+Wrote knock-original-lod-10.radc (2166728 bytes)
+Wrote knock-original-lod-11.radc (2181080 bytes)
+Wrote knock-original-lod-12.radc (2153912 bytes)
+Wrote knock-original-lod-13.radc (2188504 bytes)
+Wrote knock-original-lod-14.radc (2173256 bytes)
+Wrote knock-original-lod-15.radc (2210032 bytes)
+Wrote knock-original-lod-16.radc (2212320 bytes)
+Wrote knock-original-lod-17.radc (2236208 bytes)
+Wrote knock-original-lod-18.radc (2148504 bytes)
+Wrote knock-original-lod-19.radc (2169496 bytes)
+Wrote knock-original-lod-20.radc (2131608 bytes)
+Wrote knock-original-lod-21.radc (2230152 bytes)
+Wrote knock-original-lod-22.radc (2166928 bytes)
+Wrote knock-original-lod-23.radc (2139784 bytes)
+Wrote knock-original-lod-24.radc (2157016 bytes)
+Wrote knock-original-lod-25.radc (2152312 bytes)
+Wrote knock-original-lod-26.radc (2099240 bytes)
+Wrote knock-original-lod-27.radc (2117848 bytes)
+Wrote knock-original-lod-28.radc (2134824 bytes)
+Wrote knock-original-lod-29.radc (2122096 bytes)
+Wrote knock-original-lod-30.radc (2113216 bytes)
+Wrote knock-original-lod-31.radc (2146936 bytes)
+Wrote knock-original-lod-32.radc (2140232 bytes)
+Wrote knock-original-lod-33.radc (2175704 bytes)
+Wrote knock-original-lod-34.radc (2160984 bytes)
+Wrote knock-original-lod-35.radc (2120160 bytes)
+Wrote knock-original-lod-36.radc (2156064 bytes)
+Wrote knock-original-lod-37.radc (2083144 bytes)
+Wrote knock-original-lod-38.radc (1637264 bytes)
+Wrote /workspace/TourGuideAI/artifacts/realism-01/splat-encoding/converted/knock-original-lod.rad

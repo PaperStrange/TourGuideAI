@@ -88,14 +88,35 @@ The tool's `acquire-hall.py --mode model-preview` can recover the eight exact fr
 source components from an empty cache without historical publisher HTML. Its
 reconstructed ZIP and all sixteen preview files match the tested package; the
 independent retained verifier checks the portability receipt and producer hashes.
+The [paged streaming experiment](../evidence/realism-01/qualification/splat-streaming/README.md)
+uses the official free CPU converter and exact source. Eight-page / one-fetcher
+mechanics, native movement, five replacements, three unload cycles and actual
+cancellation are observed. The focused SH3 run transfers 4,737,856 response bytes
+at partial first visibility; 38/39 compact chunks exceed 2 MiB. All three runs and
+their failures are retained. Independent checks recompute CDP boundaries, including
+unfinished responses, camera matrices, two image comparisons and cancellation.
+The [single SH2 encoding follow-up](../evidence/realism-01/qualification/splat-encoding/README.md)
+reuses the same source and browser harness. Partial first-visible responses total
+3,898,536 bytes / 3.72 MiB, including the unfinished next response. It removes 21
+directional coefficients per Gaussian; 37/39 chunks still exceed 2 MiB. Actual frozen images,
+conversion settings and the full-quality/directional uncertainty are retained.
 The complete DEM now has 2,042,977 decoded triangles, 6,019 retained route-near
 triangles and 1,434 covered profile samples. Explicit GSIGEO2011/JPGEO2024 tests
 pass 12 independent grid checks and 2,868 local-frame checks. Source epoch/model,
 independent control and pedestrian-floor/deck acceptance remain open. No candidate
 is admitted to the benchmark manifest or selected for production.
 
-Next work: qualify additional free Kyoto sources and implement bounded streaming /
-resource-lifecycle tests using the existing licensed Hall source. The
+The [free-source audit](../sprints/realism-01/research/free-source-feasibility.md)
+retains five CC0 photographs, business associations and public imagery coverage.
+Four Shijō frames share the reserved Mitsui capture family and remain inspection-only.
+Momiji's independently located frontage is 24.63 m north of the route; its image
+supports nearby material observation. The inspected supplementary official geometry
+has no declared route overlap. No additional exact-route dimensional capture qualified.
+
+Next work: address ordinary-section transfer and directional appearance from the
+measured encoding evidence. Matched Kyoto qualification needs usable free
+calibrated views, verified scale/registration, continuous floors and independent
+day/night inputs. The
 [prepared acquisition package](../sprints/realism-01/research/acquisition-package/README.md)
 contains the exact 54-edge route map, 60-feature GeoJSON, twelve handover checks,
 supplier response matrix and unsent Japanese inquiry. They include the connecting
@@ -104,7 +125,7 @@ measured floors/control, additional route lengths and 20% refresh costs.
 Supplier inquiries and purchases are outside the current free-source period; sender
 identity is no longer requested. Nishiki's published filming application lead
 time is one month; the applicable commercial reconstruction permission needs
-confirmation. Continue independent local work while awaiting external inputs.
+confirmation. No external inquiry is pending.
 Physical Iris Xe/Chrome and M1/Safari devices, fresh participant cohorts and
 qualified matched capture remain unavailable. Full-route trial execution, human
 scoring and final representation selection remain pending. Current-year GitHub

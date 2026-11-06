@@ -27,6 +27,9 @@ Production renderer selection and milestone acceptance remain open.
 | [Capture requirements](research/capture-requirements.md) | Itemized acquisition proposal and public price references; complete-route quote remains unavailable |
 | [Prepared acquisition package](research/acquisition-package/README.md) | Exact route map and source handover checks; supplier inquiry parked during the free-source period |
 | [Architectural splat comparison](../../evidence/realism-01/qualification/splat-fidelity/README.md) | Same-source publisher/Spark frames, native interactions, tested portable preview and startup-budget limit |
+| [Paged streaming comparison](../../evidence/realism-01/qualification/splat-streaming/README.md) | Actual first-visible and bounded views, transfer failures, eviction, unloading and cancellation |
+| [Explicit encoding trade-off](../../evidence/realism-01/qualification/splat-encoding/README.md) | Smaller partial first view with reduced directional colour detail; section and full-quality gates remain open |
+| [Free Kyoto source feasibility](research/free-source-feasibility.md) | Inspected photographs, source-family separation, actual geographic coverage and remaining registration gaps |
 | [Controlled trials](experiments/README.md) | Matched inputs, routes, viewpoints and comparison protocol |
 | [Parallel candidate status](experiments/candidate-status.md) | Mesh, splat and shared-ground evidence; explicit qualification dependencies |
 | [Evidence store](../../evidence/realism-01/README.md) | Reviewed artifacts and validation records |
@@ -72,10 +75,11 @@ the eventual A/B winner. With one qualified candidate, report absolute acceptanc
 
 ## Validation
 
-Install the pinned review dependency into the ignored workspace:
+Install the pinned review and pixel-verification dependencies into the ignored workspace:
 
 ```sh
-python -m pip install --target artifacts/realism-01/tooling -r experience/sprints/realism-01/requirements.txt
+mkdir -p artifacts/realism-01/tooling-tmp
+TMPDIR=artifacts/realism-01/tooling-tmp python -m pip install --target artifacts/realism-01/tooling -r experience/sprints/realism-01/requirements.txt
 PYTHONPATH=artifacts/realism-01/tooling python experience/sprints/realism-01/verify.py --root .
 ```
 

@@ -1,0 +1,76 @@
+{
+  "reviewedAt": "2026-11-06T08:13:13.869383+00:00",
+  "method": "Compare all five acquired originals by decoded source filename/page URL/image URL and SHA-256 against the three named registries; explicitly record known shared capture families",
+  "protectedInputsUnchanged": {
+    "artifacts/realism-01/free-sources/lookup/originals/download-receipts.json": "7f0dc3a9cf4c08b166ae4a50189f4faf31882449cf695222fa0e0b5abedad434",
+    "experience/evidence/realism-01/qualification/references/sources.json": "5bcb2ef7fad115830553ba87947d7ce644ed6563c118e8801cc60541a6960c6e",
+    "experience/public/content-evidence/facade-references.json": "2633e98dd95ba7160bb4c54acde94a8ed4de5f1f7b335904abf79da41ab0d8e2",
+    "experience/public/assets/neighborhoods/shijo-east/references.json": "d81c19fc4eb8bbee4235012bba462014e1842763a09b8340f2a9823daa38ce8b",
+    "experience/evidence/realism-01/qualification/references/images/mitsui-evening-2026-heldout.jpg": "9fe3256349ba9972a2d23238677e562cf07aba8fde4756e33a2950aa9e1636fc",
+    "experience/evidence/realism-01/qualification/references/images/nishiki-market-2024-heldout.jpg": "b167850a74cc68cecf31fe3eabdfc1fd783d30a5cd1243d0c7cb485a3719a5c8",
+    "experience/evidence/realism-01/qualification/references/images/shijo-bridge-2025-heldout.jpg": "f23f9626bbd0eecccab36ce6a1fb78c25782ded978685c7a720df3ea7a88fa09"
+  },
+  "files": [
+    {
+      "file": "shijo-20260621-31.jpg",
+      "sha256": "cef089530145a6ecae85c37a5d116d307e10bd54095d98ee2807cfe430f89d5c",
+      "exactRegistryMatches": [],
+      "captureFamily": "June21ShijoEvening",
+      "knownRelatedRegistryRecords": [
+        "mitsui-evening-2026-heldout (frame28)"
+      ],
+      "authoringUse": false,
+      "independentEvaluationUse": false,
+      "warning": "Exact-file separation does not establish independent capture: same photographer/session/adjacent frames remain related"
+    },
+    {
+      "file": "shijo-20260621-37.jpg",
+      "sha256": "edea8835dacb94453fa6412da36be0ca377592b804503841a24af2f034d11ec3",
+      "exactRegistryMatches": [],
+      "captureFamily": "June21ShijoEvening",
+      "knownRelatedRegistryRecords": [
+        "mitsui-evening-2026-heldout (frame28)"
+      ],
+      "authoringUse": false,
+      "independentEvaluationUse": false,
+      "warning": "Exact-file separation does not establish independent capture: same photographer/session/adjacent frames remain related"
+    },
+    {
+      "file": "takase-20260624-212.jpg",
+      "sha256": "ff6a2f8fcde231ac7cfab885f5f977228a9224387fb6ee968b342c55769d0248",
+      "exactRegistryMatches": [],
+      "captureFamily": "June24TakaseMorning",
+      "knownRelatedRegistryRecords": [
+        "takase-shijo-2026 (frame220)"
+      ],
+      "authoringUse": false,
+      "independentEvaluationUse": false,
+      "warning": "Exact-file separation does not establish independent capture: same photographer/session/adjacent frames remain related"
+    },
+    {
+      "file": "shijo-20260621-30.jpg",
+      "sha256": "b5ac4d060b71cc76b23179edc4180a3ab2e909c2a3689f5151cfe413b8a98485",
+      "exactRegistryMatches": [],
+      "captureFamily": "June21ShijoEvening",
+      "knownRelatedRegistryRecords": [
+        "mitsui-evening-2026-heldout (frame28)"
+      ],
+      "authoringUse": false,
+      "independentEvaluationUse": false,
+      "warning": "Exact-file separation does not establish independent capture: same photographer/session/adjacent frames remain related"
+    },
+    {
+      "file": "shijo-20260621-32.jpg",
+      "sha256": "3ef9c71cd8b8480a0b017258fabd5c992d5033f160ebc70cc2028e06c2a36375",
+      "exactRegistryMatches": [],
+      "captureFamily": "June21ShijoEvening",
+      "knownRelatedRegistryRecords": [
+        "mitsui-evening-2026-heldout (frame28)"
+      ],
+      "authoringUse": false,
+      "independentEvaluationUse": false,
+      "warning": "Exact-file separation does not establish independent capture: same photographer/session/adjacent frames remain related"
+    }
+  ],
+  "limitations": "Inspected registries only; no universal source independence proof. Reserved source pixels and original three receipts remain unchanged. All five originals are inspection-only in this report."
+}

@@ -1,5 +1,6 @@
 import gzip
 import hashlib
+import importlib.util
 import json
 import xml.etree.ElementTree as ET
 
@@ -177,9 +178,21 @@ def verify_qualification(root, require, verify_file, route):
             require(converted["pedestrianFloorQualified"] is False, "Datum conversion cannot qualify pedestrian floors")
         maximum = max(item["independentFrameMaximumDifferenceMetres"] for item in model["samples"])
         require(maximum == model["maximumFrameDifferenceMetres"] and maximum < 1e-6, "Local-frame cross-check differs")
+    specification = importlib.util.spec_from_file_location(
+        "splat_streaming_verification", root / "experience/tools/splat-streaming/verify.py")
+    streaming_module = importlib.util.module_from_spec(specification)
+    specification.loader.exec_module(streaming_module)
+    streaming = streaming_module.verify_splat_streaming(root, require, verify_file)
+    encoding_specification = importlib.util.spec_from_file_location(
+        "splat_encoding_verification", root / "experience/tools/splat-encoding/verify.py")
+    encoding_module = importlib.util.module_from_spec(encoding_specification)
+    encoding_specification.loader.exec_module(encoding_module)
+    encoding = encoding_module.verify_splat_encoding(root, require, verify_file)
     return {"fileHashes": file_count, "producerHashes": producer_count, "sourceOccurrences": len(features),
             "selectedOccurrences": len(selected), "routeEdges": len(audit["edges"]), "browserCaptures": len(browser["captures"]),
             "terrainTriangles": len(triangle_ids), "terrainSamples": len(samples),
             "datumFrameChecks": sum(model["convertedSampleCount"] for model in datum["models"]),
+            "splatStreaming": streaming,
+            "splatEncoding": encoding,
             "retainedFailingBrowserChecks": [check["id"] for check in browser["checks"] if not check["pass"]],
             "limitations": "Integrity and cross-evidence consistency only; failing source diagnostics remain failures."}

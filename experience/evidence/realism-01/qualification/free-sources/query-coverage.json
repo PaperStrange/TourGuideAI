@@ -1,0 +1,1050 @@
+{
+  "date": "2026-11-06",
+  "inputs": [
+    {
+      "path": "experience/src/neighborhoods/shijo-east/geography.json",
+      "bytes": 175220,
+      "sha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f"
+    },
+    {
+      "path": "artifacts/realism-01/free-sources/kartaview-route-west.raw",
+      "bytes": 198,
+      "sha256": "0af1ec62b28602d456ebff543f290c7979e4332136f84dc4fbe61f8506b8d0cb"
+    },
+    {
+      "path": "artifacts/realism-01/free-sources/kartaview-route-query.raw",
+      "bytes": 198,
+      "sha256": "a9617d95be5cdeaa1c3744fa583545e7a7394aa3321157807b8686ca31d975ea"
+    },
+    {
+      "path": "artifacts/realism-01/free-sources/kartaview-route-east.raw",
+      "bytes": 15815,
+      "sha256": "f684ca288ad76f38d422891f4528b0fe71fb2551481d103394fabce40a22cb50"
+    },
+    {
+      "path": "artifacts/realism-01/free-sources/kartaview-route-bounds.raw",
+      "bytes": 197,
+      "sha256": "45e3c91cedd07568aa996c3f0f40ea1d05c4363bf871f14a39ed9f9f486b01a0"
+    }
+  ],
+  "projection": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"World Geodetic System 1984\",ELLIPSOID[\"WGS 84\",6378137,298.257223563,LENGTHUNIT[\"metre\",1]],ID[\"EPSG\",6326]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Azimuthal Equidistant\",ID[\"EPSG\",1125]],PARAMETER[\"Latitude of natural origin\",35.0044,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8801]],PARAMETER[\"Longitude of natural origin\",135.7655,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8802]],PARAMETER[\"False easting\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8806]],PARAMETER[\"False northing\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8807]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+  "method": "PyProj WGS84 geodesic 500m rings sampled every0.5degree and local AEQD transform; Shapely union and each complete source polyline containment",
+  "queries": [
+    {
+      "name": "kartaview-route-west",
+      "longitude": 135.7599457,
+      "latitude": 35.00376,
+      "requestedRadius": 500,
+      "returnedPhotoCount": 0,
+      "hasMoreData": false,
+      "receipt": {
+        "source": "https://api.kartaview.org/2.0/photo/?lat=35.00376&lng=135.7599457&radius=500",
+        "responseUrl": "https://api.kartaview.org/2.0/photo/?lat=35.00376&lng=135.7599457&radius=500",
+        "date": "2026-11-06T08:21:47.564647+00:00",
+        "status": 200,
+        "bytes": 198,
+        "sha256": "0af1ec62b28602d456ebff543f290c7979e4332136f84dc4fbe61f8506b8d0cb",
+        "contentType": "application/json",
+        "lastModified": null,
+        "cachePath": "artifacts/realism-01/free-sources/kartaview-route-west.raw",
+        "method": "Public GET through inherited proxy with TLS verification; metadata limited to 12 MiB per response"
+      },
+      "response": {
+        "status": {
+          "apiCode": 600,
+          "apiMessage": "The request has been processed without incidents",
+          "httpCode": 200,
+          "httpMessage": "Success",
+          "executionTime": 0.003491275
+        },
+        "result": {
+          "data": [],
+          "hasMoreData": false
+        }
+      }
+    },
+    {
+      "name": "kartaview-route-query",
+      "longitude": 135.7655,
+      "latitude": 35.0044,
+      "requestedRadius": 500,
+      "returnedPhotoCount": 0,
+      "hasMoreData": false,
+      "receipt": {
+        "source": "https://api.kartaview.org/2.0/photo/?lat=35.0044&lng=135.7655&radius=500",
+        "responseUrl": "https://api.kartaview.org/2.0/photo/?lat=35.0044&lng=135.7655&radius=500",
+        "date": "2026-11-06T08:19:22.748892+00:00",
+        "status": 200,
+        "bytes": 198,
+        "sha256": "a9617d95be5cdeaa1c3744fa583545e7a7394aa3321157807b8686ca31d975ea",
+        "contentType": "application/json",
+        "lastModified": null,
+        "cachePath": "artifacts/realism-01/free-sources/kartaview-route-query.raw",
+        "method": "Public GET through inherited proxy with TLS verification; metadata limited to 12 MiB per response"
+      },
+      "response": {
+        "status": {
+          "apiCode": 600,
+          "apiMessage": "The request has been processed without incidents",
+          "httpCode": 200,
+          "httpMessage": "Success",
+          "executionTime": 0.007840087
+        },
+        "result": {
+          "data": [],
+          "hasMoreData": false
+        }
+      }
+    },
+    {
+      "name": "kartaview-route-east",
+      "longitude": 135.77152,
+      "latitude": 35.00391,
+      "requestedRadius": 500,
+      "returnedPhotoCount": 7,
+      "hasMoreData": false,
+      "receipt": {
+        "source": "https://api.kartaview.org/2.0/photo/?lat=35.00391&lng=135.77152&radius=500",
+        "responseUrl": "https://api.kartaview.org/2.0/photo/?lat=35.00391&lng=135.77152&radius=500",
+        "date": "2026-11-06T08:21:47.206914+00:00",
+        "status": 200,
+        "bytes": 15815,
+        "sha256": "f684ca288ad76f38d422891f4528b0fe71fb2551481d103394fabce40a22cb50",
+        "contentType": "application/json",
+        "lastModified": null,
+        "cachePath": "artifacts/realism-01/free-sources/kartaview-route-east.raw",
+        "method": "Public GET through inherited proxy with TLS verification; metadata limited to 12 MiB per response"
+      },
+      "response": {
+        "status": {
+          "apiCode": 600,
+          "apiMessage": "The request has been processed without incidents",
+          "httpCode": 200,
+          "httpMessage": "Success",
+          "executionTime": 0.069086894
+        },
+        "result": {
+          "data": [
+            {
+              "id": "2625879235",
+              "autoImgProcessingResult": "BLURRED",
+              "autoImgProcessingStatus": "FINISHED",
+              "cameraParameters": null,
+              "dateAdded": "2025-09-20 02:10:53",
+              "dateProcessed": "2025-09-23 03:20:52",
+              "distance": "0.00",
+              "fieldOfView": "0",
+              "filepath": "2025/9/20/{{sizeprefix}}/11606832_15600_68ce0d36e48ae.jpg",
+              "filepathLTh": "2025/9/20/lth/11606832_15600_68ce0d36e48ae.jpg",
+              "filepathProc": "2025/9/20/proc/11606832_15600_68ce0d36e48ae.jpg",
+              "filepathTh": "2025/9/20/th/11606832_15600_68ce0d36e48ae.jpg",
+              "fileurl": "https://storage13.openstreetcam.org/files/photo/2025/9/20/{{sizeprefix}}/11606832_15600_68ce0d36e48ae.jpg",
+              "fileurlLTh": "https://storage13.openstreetcam.org/files/photo/2025/9/20/lth/11606832_15600_68ce0d36e48ae.jpg",
+              "fileurlProc": "https://storage13.openstreetcam.org/files/photo/2025/9/20/proc/11606832_15600_68ce0d36e48ae.jpg",
+              "fileurlTh": "https://storage13.openstreetcam.org/files/photo/2025/9/20/th/11606832_15600_68ce0d36e48ae.jpg",
+              "from": "0",
+              "gpsAccuracy": "0.0000",
+              "hasObd": "0",
+              "headers": "0.00",
+              "heading": "0",
+              "height": "1512",
+              "imageLthUrl": "https://cdn.kartaview.org/pr:sharp/aHR0cHM6Ly9zdG9yYWdlMTMub3BlbnN0cmVldGNhbS5vcmcvZmlsZXMvcGhvdG8vMjAyNS85LzIwL2x0aC8xMTYwNjgzMl8xNTYwMF82OGNlMGQzNmU0OGFlLmpwZw",
+              "imagePartProjection": "NONE",
+              "imageProcUrl": "https://cdn.kartaview.org/pr:sharp/aHR0cHM6Ly9zdG9yYWdlMTMub3BlbnN0cmVldGNhbS5vcmcvZmlsZXMvcGhvdG8vMjAyNS85LzIwL3Byb2MvMTE2MDY4MzJfMTU2MDBfNjhjZTBkMzZlNDhhZS5qcGc",
+              "imageThUrl": "https://cdn.kartaview.org/pr:sharp/aHR0cHM6Ly9zdG9yYWdlMTMub3BlbnN0cmVldGNhbS5vcmcvZmlsZXMvcGhvdG8vMjAyNS85LzIwL3RoLzExNjA2ODMyXzE1NjAwXzY4Y2UwZDM2ZTQ4YWUuanBn",
+              "isUnwrapped": "0",
+              "isWrapped": "0",
+              "lat": "35.007061",
+              "lng": "135.774912",
+              "matchLat": "0",
+              "matchLng": "0",
+              "matchSegmentId": "0",
+              "name": "11606832_15600_68ce0d36e48ae.jpg",
+              "orgCode": "CMNT",
+              "projection": "PLANE",
+              "projectionYaw": "0",
+              "qualityLevel": "0",
+              "qualityStatus": "NEW",
+              "rawDataId": "0",
+              "sequenceId": "11606832",
+              "sequenceIndex": "2",
+              "shotDate": "2025-09-19 23:53:32.000",
+              "status": "active",
+              "storage": "storage13",
+              "to": "0",
+              "unwrapVersion": "0",
+              "user": null,
+              "videoId": "0",
+              "videoIndex": "0",
+              "visibility": "public",
+              "wayId": "0",
+              "width": "2688",
+              "wrapVersion": "0",
+              "sequence": null,
+              "rawData": null,
+              "video": null,
+              "qualityDetails": [],
+              "additionalInformation": null
+            },
+            {
+              "id": "2634394310",
+              "autoImgProcessingResult": "BLURRED",
+              "autoImgProcessingStatus": "FINISHED",
+              "cameraParameters": null,
+              "dateAdded": "2026-10-11 01:15:35",
+              "dateProcessed": "2026-10-11 01:17:08",
+              "distance": "0.00",
+              "fieldOfView": "0",
+              "filepath": "2026/10/11/{{sizeprefix}}/11716327_cdc67_6acae39365417.jpg",
+              "filepathLTh": "2026/10/11/lth/11716327_cdc67_6acae39365417.jpg",
+              "filepathProc": "2026/10/11/proc/11716327_cdc67_6acae39365417.jpg",
+              "filepathTh": "2026/10/11/th/11716327_cdc67_6acae39365417.jpg",
+              "fileurl": "https://storage13.openstreetcam.org/files/photo/2026/10/11/{{sizeprefix}}/11716327_cdc67_6acae39365417.jpg",
+              "fileurlLTh": "https://storage13.openstreetcam.org/files/photo/2026/10/11/lth/11716327_cdc67_6acae39365417.jpg",
+              "fileurlProc": "https://storage13.openstreetcam.org/files/photo/2026/10/11/proc/11716327_cdc67_6acae39365417.jpg",
+              "fileurlTh": "https://storage13.openstreetcam.org/files/photo/2026/10/11/th/11716327_cdc67_6acae39365417.jpg",
+              "from": "0",
+              "gpsAccuracy": "0.0000",
+              "hasObd": "0",
+              "headers": "0.00",
+              "heading": "0",
+              "height": "1620",
+              "imageLthUrl": "https://cdn.kartaview.org/pr:sharp/aHR0cHM6Ly9zdG9yYWdlMTMub3BlbnN0cmVldGNhbS5vcmcvZmlsZXMvcGhvdG8vMjAyNi8xMC8xMS9sdGgvMTE3MTYzMjdfY2RjNjdfNmFjYWUzOTM2NTQxNy5qcGc",
+              "imagePartProjection": "NONE",
+              "imageProcUrl": "https://cdn.kartaview.org/pr:sharp/aHR0cHM6Ly9zdG9yYWdlMTMub3BlbnN0cmVldGNhbS5vcmcvZmlsZXMvcGhvdG8vMjAyNi8xMC8xMS9wcm9jLzExNzE2MzI3X2NkYzY3XzZhY2FlMzkzNjU0MTcuanBn",
+              "imageThUrl": "https://cdn.kartaview.org/pr:sharp/aHR0cHM6Ly9zdG9yYWdlMTMub3BlbnN0cmVldGNhbS5vcmcvZmlsZXMvcGhvdG8vMjAyNi8xMC8xMS90aC8xMTcxNjMyN19jZGM2N182YWNhZTM5MzY1NDE3LmpwZw",
+              "isUnwrapped": "0",
+              "isWrapped": "0",
+              "lat": "35.004195",
+              "lng": "135.775227",
+              "matchLat": "0",
+              "matchLng": "0",
+              "matchSegmentId": "0",
+              "name": "11716327_cdc67_6acae39365417.jpg",
+              "orgCode": "CMNT",
+              "projection": "PLANE",
+              "projectionYaw": "0",
+              "qualityLevel": "0",
+              "qualityStatus": "NEW",
+              "rawDataId": "0",
+              "sequenceId": "11716327",
+              "sequenceIndex": "0",
+              "shotDate": "2026-10-11 01:15:03.000",
+              "status": "active",
+              "storage": "storage13",
+              "to": "0",
+              "unwrapVersion": "0",
+              "user": null,
+              "videoId": "0",
+              "videoIndex": "0",
+              "visibility": "public",
+              "wayId": "0",
+              "width": "2880",
+              "wrapVersion": "0",
+              "sequence": null,
+              "rawData": null,
+              "video": null,
+              "qualityDetails": [],
+              "additionalInformation": null
+            },
+            {
+              "id": "2634394311",
+              "autoImgProcessingResult": "BLURRED",
+              "autoImgProcessingStatus": "FINISHED",
+              "cameraParameters": null,
+              "dateAdded": "2026-10-11 01:17:10",
+              "dateProcessed": "2026-10-11 01:18:10",
+              "distance": "0.00",
+              "fieldOfView": "0",
+              "filepath": "2026/10/11/{{sizeprefix}}/11716328_cdc67_6acae3cb0b71f.jpg",
+              "filepathLTh": "2026/10/11/lth/11716328_cdc67_6acae3cb0b71f.jpg",
+              "filepathProc": "2026/10/11/proc/11716328_cdc67_6acae3cb0b71f.jpg",
+              "filepathTh": "2026/10/11/th/11716328_cdc67_6acae3cb0b71f.jpg",
+              "fileurl": "https://storage13.openstreetcam.org/files/photo/2026/10/11/{{sizeprefix}}/11716328_cdc67_6acae3cb0b71f.jpg",
+              "fileurlLTh": "https://storage13.openstreetcam.org/files/photo/2026/10/11/lth/11716328_cdc67_6acae3cb0b71f.jpg",
+              "fileurlProc": "https://storage13.openstreetcam.org/files/photo/2026/10/11/proc/11716328_cdc67_6acae3cb0b71f.jpg",
+              "fileurlTh": "https://storage13.openstreetcam.org/files/photo/2026/10/11/th/11716328_cdc67_6acae3cb0b71f.jpg",
+              "from": "0",
+              "gpsAccuracy": "0.0000",
+              "hasObd": "0",
+              "headers": "0.00",
+              "heading": "0",
+              "height": "1620",
+              "imageLthUrl": "https://cdn.kartaview.org/pr:sharp/aHR0cHM6Ly9zdG9yYWdlMTMub3BlbnN0cmVldGNhbS5vcmcvZmlsZXMvcGhvdG8vMjAyNi8xMC8xMS9sdGgvMTE3MTYzMjhfY2RjNjdfNmFjYWUzY2IwYjcxZi5qcGc",
+              "imagePartProjection": "NONE",
+              "imageProcUrl": "https://cdn.kartaview.org/pr:sharp/aHR0cHM6Ly9zdG9yYWdlMTMub3BlbnN0cmVldGNhbS5vcmcvZmlsZXMvcGhvdG8vMjAyNi8xMC8xMS9wcm9jLzExNzE2MzI4X2NkYzY3XzZhY2FlM2NiMGI3MWYuanBn",
+              "imageThUrl": "https://cdn.kartaview.org/pr:sharp/aHR0cHM6Ly9zdG9yYWdlMTMub3BlbnN0cmVldGNhbS5vcmcvZmlsZXMvcGhvdG8vMjAyNi8xMC8xMS90aC8xMTcxNjMyOF9jZGM2N182YWNhZTNjYjBiNzFmLmpwZw",
+              "isUnwrapped": "0",
+              "isWrapped": "0",
+              "lat": "35.004412",
+              "lng": "135.775104",
+              "matchLat": "0",
+              "matchLng": "0",
+              "matchSegmentId": "0",
+              "name": "11716328_cdc67_6acae3cb0b71f.jpg",
+              "orgCode": "CMNT",
+              "projection": "PLANE",
+              "projectionYaw": "0",
+              "qualityLevel": "0",
+              "qualityStatus": "NEW",
+              "rawDataId": "0",
+              "sequenceId": "11716328",
+              "sequenceIndex": "0",
+              "shotDate": "2026-10-11 01:16:00.000",
+              "status": "active",
+              "storage": "storage13",
+              "to": "0",
+              "unwrapVersion": "0",
+              "user": null,
+              "videoId": "0",
+              "videoIndex": "0",
+              "visibility": "public",
+              "wayId": "0",
+              "width": "2880",
+              "wrapVersion": "0",
+              "sequence": null,
+              "rawData": null,
+              "video": null,
+              "qualityDetails": [],
+              "additionalInformation": null
+            },
+            {
+              "id": "2634394312",
+              "autoImgProcessingResult": "BLURRED",
+              "autoImgProcessingStatus": "FINISHED",
+              "cameraParameters": null,
+              "dateAdded": "2026-10-11 01:18:05",
+              "dateProcessed": "2026-10-11 01:18:13",
+              "distance": "0.00",
+              "fieldOfView": "0",
+              "filepath": "2026/10/11/{{sizeprefix}}/11716329_cdc67_6acae3d456abb.jpg",
+              "filepathLTh": "2026/10/11/lth/11716329_cdc67_6acae3d456abb.jpg",
+              "filepathProc": "2026/10/11/proc/11716329_cdc67_6acae3d456abb.jpg",
+              "filepathTh": "2026/10/11/th/11716329_cdc67_6acae3d456abb.jpg",
+              "fileurl": "https://storage13.openstreetcam.org/files/photo/2026/10/11/{{sizeprefix}}/11716329_cdc67_6acae3d456abb.jpg",
+              "fileurlLTh": "https://storage13.openstreetcam.org/files/photo/2026/10/11/lth/11716329_cdc67_6acae3d456abb.jpg",
+              "fileurlProc": "https://storage13.openstreetcam.org/files/photo/2026/10/11/proc/11716329_cdc67_6acae3d456abb.jpg",
+              "fileurlTh": "https://storage13.openstreetcam.org/files/photo/2026/10/11/th/11716329_cdc67_6acae3d456abb.jpg",
+              "from": "0",
+              "gpsAccuracy": "0.0000",
+              "hasObd": "0",
+              "headers": "0.00",
+              "heading": "0",
+              "height": "1620",
+              "imageLthUrl": "https://cdn.kartaview.org/pr:sharp/aHR0cHM6Ly9zdG9yYWdlMTMub3BlbnN0cmVldGNhbS5vcmcvZmlsZXMvcGhvdG8vMjAyNi8xMC8xMS9sdGgvMTE3MTYzMjlfY2RjNjdfNmFjYWUzZDQ1NmFiYi5qcGc",
+              "imagePartProjection": "NONE",
+              "imageProcUrl": "https://cdn.kartaview.org/pr:sharp/aHR0cHM6Ly9zdG9yYWdlMTMub3BlbnN0cmVldGNhbS5vcmcvZmlsZXMvcGhvdG8vMjAyNi8xMC8xMS9wcm9jLzExNzE2MzI5X2NkYzY3XzZhY2FlM2Q0NTZhYmIuanBn",
+              "imageThUrl": "https://cdn.kartaview.org/pr:sharp/aHR0cHM6Ly9zdG9yYWdlMTMub3BlbnN0cmVldGNhbS5vcmcvZmlsZXMvcGhvdG8vMjAyNi8xMC8xMS90aC8xMTcxNjMyOV9jZGM2N182YWNhZTNkNDU2YWJiLmpwZw",
+              "isUnwrapped": "0",
+              "isWrapped": "0",
+              "lat": "35.005113",
+              "lng": "135.775137",
+              "matchLat": "0",
+              "matchLng": "0",
+              "matchSegmentId": "0",
+              "name": "11716329_cdc67_6acae3d456abb.jpg",
+              "orgCode": "CMNT",
+              "projection": "PLANE",
+              "projectionYaw": "0",
+              "qualityLevel": "0",
+              "qualityStatus": "NEW",
+              "rawDataId": "0",
+              "sequenceId": "11716329",
+              "sequenceIndex": "0",
+              "shotDate": "2026-10-11 01:17:34.000",
+              "status": "active",
+              "storage": "storage13",
+              "to": "0",
+              "unwrapVersion": "0",
+              "user": null,
+              "videoId": "0",
+              "videoIndex": "0",
+              "visibility": "public",
+              "wayId": "0",
+              "width": "2880",
+              "wrapVersion": "0",
+              "sequence": null,
+              "rawData": null,
+              "video": null,
+              "qualityDetails": [],
+              "additionalInformation": null
+            },
+            {
+              "id": "2634394313",
+              "autoImgProcessingResult": "BLURRED",
+              "autoImgProcessingStatus": "FINISHED",
+              "cameraParameters": null,
+              "dateAdded": "2026-10-11 01:19:46",
+              "dateProcessed": "2026-10-11 01:20:02",
+              "distance": "0.00",
+              "fieldOfView": "0",
+              "filepath": "2026/10/11/{{sizeprefix}}/11716330_cdc67_6acae43c03557.jpg",
+              "filepathLTh": "2026/10/11/lth/11716330_cdc67_6acae43c03557.jpg",
+              "filepathProc": "2026/10/11/proc/11716330_cdc67_6acae43c03557.jpg",
+              "filepathTh": "2026/10/11/th/11716330_cdc67_6acae43c03557.jpg",
+              "fileurl": "https://storage13.openstreetcam.org/files/photo/2026/10/11/{{sizeprefix}}/11716330_cdc67_6acae43c03557.jpg",
+              "fileurlLTh": "https://storage13.openstreetcam.org/files/photo/2026/10/11/lth/11716330_cdc67_6acae43c03557.jpg",
+              "fileurlProc": "https://storage13.openstreetcam.org/files/photo/2026/10/11/proc/11716330_cdc67_6acae43c03557.jpg",
+              "fileurlTh": "https://storage13.openstreetcam.org/files/photo/2026/10/11/th/11716330_cdc67_6acae43c03557.jpg",
+              "from": "0",
+              "gpsAccuracy": "0.0000",
+              "hasObd": "0",
+              "headers": "0.00",
+              "heading": "0",
+              "height": "1620",
+              "imageLthUrl": "https://cdn.kartaview.org/pr:sharp/aHR0cHM6Ly9zdG9yYWdlMTMub3BlbnN0cmVldGNhbS5vcmcvZmlsZXMvcGhvdG8vMjAyNi8xMC8xMS9sdGgvMTE3MTYzMzBfY2RjNjdfNmFjYWU0M2MwMzU1Ny5qcGc",
+              "imagePartProjection": "NONE",
+              "imageProcUrl": "https://cdn.kartaview.org/pr:sharp/aHR0cHM6Ly9zdG9yYWdlMTMub3BlbnN0cmVldGNhbS5vcmcvZmlsZXMvcGhvdG8vMjAyNi8xMC8xMS9wcm9jLzExNzE2MzMwX2NkYzY3XzZhY2FlNDNjMDM1NTcuanBn",
+              "imageThUrl": "https://cdn.kartaview.org/pr:sharp/aHR0cHM6Ly9zdG9yYWdlMTMub3BlbnN0cmVldGNhbS5vcmcvZmlsZXMvcGhvdG8vMjAyNi8xMC8xMS90aC8xMTcxNjMzMF9jZGM2N182YWNhZTQzYzAzNTU3LmpwZw",
+              "isUnwrapped": "0",
+              "isWrapped": "0",
+              "lat": "35.006076",
+              "lng": "135.775365",
+              "matchLat": "0",
+              "matchLng": "0",
+              "matchSegmentId": "0",
+              "name": "11716330_cdc67_6acae43c03557.jpg",
+              "orgCode": "CMNT",
+              "projection": "PLANE",
+              "projectionYaw": "0",
+              "qualityLevel": "0",
+              "qualityStatus": "NEW",
+              "rawDataId": "0",
+              "sequenceId": "11716330",
+              "sequenceIndex": "0",
+              "shotDate": "2026-10-11 01:19:37.000",
+              "status": "active",
+              "storage": "storage13",
+              "to": "0",
+              "unwrapVersion": "0",
+              "user": null,
+              "videoId": "0",
+              "videoIndex": "0",
+              "visibility": "public",
+              "wayId": "0",
+              "width": "2880",
+              "wrapVersion": "0",
+              "sequence": null,
+              "rawData": null,
+              "video": null,
+              "qualityDetails": [],
+              "additionalInformation": null
+            },
+            {
+              "id": "2634399226",
+              "autoImgProcessingResult": "BLURRED",
+              "autoImgProcessingStatus": "FINISHED",
+              "cameraParameters": null,
+              "dateAdded": "2026-10-11 08:07:52",
+              "dateProcessed": "2026-10-11 08:07:59",
+              "distance": "0.00",
+              "fieldOfView": "0",
+              "filepath": "2026/10/11/{{sizeprefix}}/11716350_cdc67_6acb43de6dbed.jpg",
+              "filepathLTh": "2026/10/11/lth/11716350_cdc67_6acb43de6dbed.jpg",
+              "filepathProc": "2026/10/11/proc/11716350_cdc67_6acb43de6dbed.jpg",
+              "filepathTh": "2026/10/11/th/11716350_cdc67_6acb43de6dbed.jpg",
+              "fileurl": "https://storage13.openstreetcam.org/files/photo/2026/10/11/{{sizeprefix}}/11716350_cdc67_6acb43de6dbed.jpg",
+              "fileurlLTh": "https://storage13.openstreetcam.org/files/photo/2026/10/11/lth/11716350_cdc67_6acb43de6dbed.jpg",
+              "fileurlProc": "https://storage13.openstreetcam.org/files/photo/2026/10/11/proc/11716350_cdc67_6acb43de6dbed.jpg",
+              "fileurlTh": "https://storage13.openstreetcam.org/files/photo/2026/10/11/th/11716350_cdc67_6acb43de6dbed.jpg",
+              "from": "0",
+              "gpsAccuracy": "0.0000",
+              "hasObd": "0",
+              "headers": "0.00",
+              "heading": "0",
+              "height": "1620",
+              "imageLthUrl": "https://cdn.kartaview.org/pr:sharp/aHR0cHM6Ly9zdG9yYWdlMTMub3BlbnN0cmVldGNhbS5vcmcvZmlsZXMvcGhvdG8vMjAyNi8xMC8xMS9sdGgvMTE3MTYzNTBfY2RjNjdfNmFjYjQzZGU2ZGJlZC5qcGc",
+              "imagePartProjection": "NONE",
+              "imageProcUrl": "https://cdn.kartaview.org/pr:sharp/aHR0cHM6Ly9zdG9yYWdlMTMub3BlbnN0cmVldGNhbS5vcmcvZmlsZXMvcGhvdG8vMjAyNi8xMC8xMS9wcm9jLzExNzE2MzUwX2NkYzY3XzZhY2I0M2RlNmRiZWQuanBn",
+              "imageThUrl": "https://cdn.kartaview.org/pr:sharp/aHR0cHM6Ly9zdG9yYWdlMTMub3BlbnN0cmVldGNhbS5vcmcvZmlsZXMvcGhvdG8vMjAyNi8xMC8xMS90aC8xMTcxNjM1MF9jZGM2N182YWNiNDNkZTZkYmVkLmpwZw",
+              "isUnwrapped": "0",
+              "isWrapped": "0",
+              "lat": "35.006605",
+              "lng": "135.775385",
+              "matchLat": "0",
+              "matchLng": "0",
+              "matchSegmentId": "0",
+              "name": "11716350_cdc67_6acb43de6dbed.jpg",
+              "orgCode": "CMNT",
+              "projection": "PLANE",
+              "projectionYaw": "0",
+              "qualityLevel": "0",
+              "qualityStatus": "NEW",
+              "rawDataId": "0",
+              "sequenceId": "11716350",
+              "sequenceIndex": "0",
+              "shotDate": "2026-10-11 08:07:43.000",
+              "status": "active",
+              "storage": "storage13",
+              "to": "0",
+              "unwrapVersion": "0",
+              "user": null,
+              "videoId": "0",
+              "videoIndex": "0",
+              "visibility": "public",
+              "wayId": "0",
+              "width": "2880",
+              "wrapVersion": "0",
+              "sequence": null,
+              "rawData": null,
+              "video": null,
+              "qualityDetails": [],
+              "additionalInformation": null
+            },
+            {
+              "id": "2634400926",
+              "autoImgProcessingResult": "BLURRED",
+              "autoImgProcessingStatus": "FINISHED",
+              "cameraParameters": null,
+              "dateAdded": "2026-10-11 08:31:13",
+              "dateProcessed": "2026-10-11 08:31:21",
+              "distance": "0.00",
+              "fieldOfView": "0",
+              "filepath": "2026/10/11/{{sizeprefix}}/11716354_cdc67_6acb49585c05c.jpg",
+              "filepathLTh": "2026/10/11/lth/11716354_cdc67_6acb49585c05c.jpg",
+              "filepathProc": "2026/10/11/proc/11716354_cdc67_6acb49585c05c.jpg",
+              "filepathTh": "2026/10/11/th/11716354_cdc67_6acb49585c05c.jpg",
+              "fileurl": "https://storage13.openstreetcam.org/files/photo/2026/10/11/{{sizeprefix}}/11716354_cdc67_6acb49585c05c.jpg",
+              "fileurlLTh": "https://storage13.openstreetcam.org/files/photo/2026/10/11/lth/11716354_cdc67_6acb49585c05c.jpg",
+              "fileurlProc": "https://storage13.openstreetcam.org/files/photo/2026/10/11/proc/11716354_cdc67_6acb49585c05c.jpg",
+              "fileurlTh": "https://storage13.openstreetcam.org/files/photo/2026/10/11/th/11716354_cdc67_6acb49585c05c.jpg",
+              "from": "0",
+              "gpsAccuracy": "0.0000",
+              "hasObd": "0",
+              "headers": "0.00",
+              "heading": "0",
+              "height": "1620",
+              "imageLthUrl": "https://cdn.kartaview.org/pr:sharp/aHR0cHM6Ly9zdG9yYWdlMTMub3BlbnN0cmVldGNhbS5vcmcvZmlsZXMvcGhvdG8vMjAyNi8xMC8xMS9sdGgvMTE3MTYzNTRfY2RjNjdfNmFjYjQ5NTg1YzA1Yy5qcGc",
+              "imagePartProjection": "NONE",
+              "imageProcUrl": "https://cdn.kartaview.org/pr:sharp/aHR0cHM6Ly9zdG9yYWdlMTMub3BlbnN0cmVldGNhbS5vcmcvZmlsZXMvcGhvdG8vMjAyNi8xMC8xMS9wcm9jLzExNzE2MzU0X2NkYzY3XzZhY2I0OTU4NWMwNWMuanBn",
+              "imageThUrl": "https://cdn.kartaview.org/pr:sharp/aHR0cHM6Ly9zdG9yYWdlMTMub3BlbnN0cmVldGNhbS5vcmcvZmlsZXMvcGhvdG8vMjAyNi8xMC8xMS90aC8xMTcxNjM1NF9jZGM2N182YWNiNDk1ODVjMDVjLmpwZw",
+              "isUnwrapped": "0",
+              "isWrapped": "0",
+              "lat": "35.005061",
+              "lng": "135.77315",
+              "matchLat": "0",
+              "matchLng": "0",
+              "matchSegmentId": "0",
+              "name": "11716354_cdc67_6acb49585c05c.jpg",
+              "orgCode": "CMNT",
+              "projection": "PLANE",
+              "projectionYaw": "0",
+              "qualityLevel": "0",
+              "qualityStatus": "NEW",
+              "rawDataId": "0",
+              "sequenceId": "11716354",
+              "sequenceIndex": "0",
+              "shotDate": "2026-10-11 08:31:05.000",
+              "status": "active",
+              "storage": "storage13",
+              "to": "0",
+              "unwrapVersion": "0",
+              "user": null,
+              "videoId": "0",
+              "videoIndex": "0",
+              "visibility": "public",
+              "wayId": "0",
+              "width": "2880",
+              "wrapVersion": "0",
+              "sequence": null,
+              "rawData": null,
+              "video": null,
+              "qualityDetails": [],
+              "additionalInformation": null
+            }
+          ],
+          "hasMoreData": false
+        }
+      }
+    }
+  ],
+  "boundingBoxQuery": {
+    "boundsDegrees": [
+      135.759,
+      35.0031,
+      135.7725,
+      35.0057
+    ],
+    "receipt": {
+      "source": "https://api.kartaview.org/2.0/photo/?nwLat=35.0057&nwLng=135.7590&seLat=35.0031&seLng=135.7725",
+      "responseUrl": "https://api.kartaview.org/2.0/photo/?nwLat=35.0057&nwLng=135.7590&seLat=35.0031&seLng=135.7725",
+      "date": "2026-11-06T08:22:41.793500+00:00",
+      "status": 200,
+      "bytes": 197,
+      "sha256": "45e3c91cedd07568aa996c3f0f40ea1d05c4363bf871f14a39ed9f9f486b01a0",
+      "contentType": "application/json",
+      "lastModified": null,
+      "cachePath": "artifacts/realism-01/free-sources/kartaview-route-bounds.raw",
+      "method": "Public GET through inherited proxy with TLS verification; metadata limited to 12 MiB per response"
+    },
+    "response": {
+      "status": {
+        "apiCode": 600,
+        "apiMessage": "The request has been processed without incidents",
+        "httpCode": 200,
+        "httpMessage": "Success",
+        "executionTime": 0.05462231
+      },
+      "result": {
+        "data": [],
+        "hasMoreData": false
+      }
+    }
+  },
+  "edgeCoverage": [
+    {
+      "ordinal": 1,
+      "id": "osm:way:465066447:4600871814:4600891666",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 95.06740276697604
+    },
+    {
+      "ordinal": 2,
+      "id": "osm:way:465066447:4600871813:4600891666",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 9.713023417363933
+    },
+    {
+      "ordinal": 3,
+      "id": "osm:way:465066447:4600871813:4600891664",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 7.138960751623845
+    },
+    {
+      "ordinal": 4,
+      "id": "osm:way:465066447:4600891662:4600891664",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 121.73711543528749
+    },
+    {
+      "ordinal": 5,
+      "id": "osm:way:465066447:4600871812:4600891662",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 7.9149514363770646
+    },
+    {
+      "ordinal": 6,
+      "id": "osm:way:1148700851:2971080719:4600871812",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 131.6679914346371
+    },
+    {
+      "ordinal": 7,
+      "id": "osm:way:1148700851:354840396:2971080719",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 4.97021726399168
+    },
+    {
+      "ordinal": 8,
+      "id": "osm:way:66703315:354840396:5554417552",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 1.643124579295373
+    },
+    {
+      "ordinal": 9,
+      "id": "osm:way:66703315:354840397:5554417552",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 61.79149691873314
+    },
+    {
+      "ordinal": 10,
+      "id": "osm:way:66703315:354840397:354840398",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 63.487220385351186
+    },
+    {
+      "ordinal": 11,
+      "id": "osm:way:66703315:354840398:354840399",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 85.8300598257273
+    },
+    {
+      "ordinal": 12,
+      "id": "osm:way:66703315:354840399:372657394",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 65.54252122556373
+    },
+    {
+      "ordinal": 13,
+      "id": "osm:way:66703315:372657384:372657394",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 66.09612850254437
+    },
+    {
+      "ordinal": 14,
+      "id": "osm:way:66703315:372657384:5554418336",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 42.613019727133995
+    },
+    {
+      "ordinal": 15,
+      "id": "osm:way:66703315:354840400:5554418336",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 3.771015254348119
+    },
+    {
+      "ordinal": 16,
+      "id": "osm:way:66703316:354840400:5204263033",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 10.088882177351005
+    },
+    {
+      "ordinal": 17,
+      "id": "osm:way:66703316:434344433:5204263033",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 19.435960409479932
+    },
+    {
+      "ordinal": 18,
+      "id": "osm:way:1568699671:434344428:434344433",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 21.813410106721015
+    },
+    {
+      "ordinal": 19,
+      "id": "osm:way:1568699671:434344428:11791988811",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 22.99904246037133
+    },
+    {
+      "ordinal": 20,
+      "id": "osm:way:1568699671:11791924470:11791988811",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 11.815687849576
+    },
+    {
+      "ordinal": 21,
+      "id": "osm:way:1568699671:434344416:11791924470",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 17.662516656050258
+    },
+    {
+      "ordinal": 22,
+      "id": "osm:way:1568699671:434344416:11791924469",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 20.868903018876466
+    },
+    {
+      "ordinal": 23,
+      "id": "osm:way:1568699671:11791924469:11793855056",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 14.133841700347123
+    },
+    {
+      "ordinal": 24,
+      "id": "osm:way:1568699671:11791924472:11793855056",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 25.616209862325896
+    },
+    {
+      "ordinal": 25,
+      "id": "osm:way:465066447:11791924472:11793855057",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 56.35957097617281
+    },
+    {
+      "ordinal": 26,
+      "id": "osm:way:465066447:4600871803:11793855057",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 92.22192318396183
+    },
+    {
+      "ordinal": 27,
+      "id": "osm:way:465066447:4600871803:4600891623",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 10.041909391685687
+    },
+    {
+      "ordinal": 28,
+      "id": "osm:way:465066447:4600871802:4600891623",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 5.775282471413083
+    },
+    {
+      "ordinal": 29,
+      "id": "osm:way:465066447:4600871801:4600871802",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 23.017583325107854
+    },
+    {
+      "ordinal": 30,
+      "id": "osm:way:465066447:4600871801:4600891621",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 5.51450580261434
+    },
+    {
+      "ordinal": 31,
+      "id": "osm:way:465069409:2737069399:4600891621",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 12.6336642117379
+    },
+    {
+      "ordinal": 32,
+      "id": "osm:way:465069409:2737069399:4600891622",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 12.195497750260769
+    },
+    {
+      "ordinal": 33,
+      "id": "osm:way:465066445:4600891622:13360574166",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 1.34390180373506
+    },
+    {
+      "ordinal": 34,
+      "id": "osm:way:465066445:4600871688:13360574166",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 4.153194862076896
+    },
+    {
+      "ordinal": 35,
+      "id": "osm:way:465066445:4600871687:4600871688",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 21.183978394079762
+    },
+    {
+      "ordinal": 36,
+      "id": "osm:way:571488126:4600871687:4600891620",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 6.648465681751137
+    },
+    {
+      "ordinal": 37,
+      "id": "osm:way:571488126:4600871686:4600891620",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 64.08667480383589
+    },
+    {
+      "ordinal": 38,
+      "id": "osm:way:571488126:4600871686:13360574163",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 3.3142725893842515
+    },
+    {
+      "ordinal": 39,
+      "id": "osm:way:571488126:5163420206:13360574163",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 2.045239905952465
+    },
+    {
+      "ordinal": 40,
+      "id": "osm:way:571488127:4600891626:5163420206",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 1.6157242881212168
+    },
+    {
+      "ordinal": 41,
+      "id": "osm:way:532008170:4600891626:5492358876",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 1.4788401153899358
+    },
+    {
+      "ordinal": 42,
+      "id": "osm:way:532008170:5163420205:5492358876",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 1.4801879120701444
+    },
+    {
+      "ordinal": 43,
+      "id": "osm:way:532008170:5163420202:5163420205",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 1.4799467835740894
+    },
+    {
+      "ordinal": 44,
+      "id": "osm:way:532008170:5163420202:5163420204",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 1.4740260048069547
+    },
+    {
+      "ordinal": 45,
+      "id": "osm:way:532008165:5163420204:11795574950",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 3.925220764822512
+    },
+    {
+      "ordinal": 46,
+      "id": "osm:way:532008165:5492582070:11795574950",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 2.839707655086243
+    },
+    {
+      "ordinal": 47,
+      "id": "osm:way:571523296:5163420203:5492582070",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 1.6248901983960158
+    },
+    {
+      "ordinal": 48,
+      "id": "osm:way:532008159:5163420201:5163420203",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 1.3368131384459088
+    },
+    {
+      "ordinal": 49,
+      "id": "osm:way:532008167:4600891628:5163420201",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 3.724380884947558
+    },
+    {
+      "ordinal": 50,
+      "id": "osm:way:532008167:2367201411:4600891628",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 34.13276173782815
+    },
+    {
+      "ordinal": 51,
+      "id": "osm:way:542888424:2367201411:5248383670",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 3.8906060039735975
+    },
+    {
+      "ordinal": 52,
+      "id": "osm:way:228073861:5163420172:5248383670",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 5.377798471162567
+    },
+    {
+      "ordinal": 53,
+      "id": "osm:way:228073861:2367201412:5163420172",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 2.2703774191405888
+    },
+    {
+      "ordinal": 54,
+      "id": "authored:shijo-bridge-view-approach",
+      "coveredBy500MetreCircleUnion": true,
+      "coveredByDocumentedBoundingBox": true,
+      "lengthMetres": 32.852585077524715
+    }
+  ],
+  "circleUnionUncoveredRouteMetres": 0.0,
+  "boundingBoxUncoveredRouteMetres": 0.0,
+  "minimumRouteClearanceInsideCircleUnionMetres": 326.8039894587086,
+  "nearbyPhotoRecords": [
+    {
+      "photoId": "2625879235",
+      "sequenceId": "11606832",
+      "sourceCoordinates": [
+        135.774912,
+        35.007061
+      ],
+      "declaredShotDate": "2025-09-19 23:53:32.000",
+      "projectedRouteDistanceMetres": 466.9818256395299
+    },
+    {
+      "photoId": "2634394310",
+      "sequenceId": "11716327",
+      "sourceCoordinates": [
+        135.775227,
+        35.004195
+      ],
+      "declaredShotDate": "2026-10-11 01:15:03.000",
+      "projectedRouteDistanceMetres": 339.86250268348135
+    },
+    {
+      "photoId": "2634394311",
+      "sequenceId": "11716328",
+      "sourceCoordinates": [
+        135.775104,
+        35.004412
+      ],
+      "declaredShotDate": "2026-10-11 01:16:00.000",
+      "projectedRouteDistanceMetres": 331.86660325771356
+    },
+    {
+      "photoId": "2634394312",
+      "sequenceId": "11716329",
+      "sourceCoordinates": [
+        135.775137,
+        35.005113
+      ],
+      "declaredShotDate": "2026-10-11 01:17:34.000",
+      "projectedRouteDistanceMetres": 356.1249968200744
+    },
+    {
+      "photoId": "2634394313",
+      "sequenceId": "11716330",
+      "sourceCoordinates": [
+        135.775365,
+        35.006076
+      ],
+      "declaredShotDate": "2026-10-11 01:19:37.000",
+      "projectedRouteDistanceMetres": 425.35987886640004
+    },
+    {
+      "photoId": "2634399226",
+      "sequenceId": "11716350",
+      "sourceCoordinates": [
+        135.775385,
+        35.006605
+      ],
+      "declaredShotDate": "2026-10-11 08:07:43.000",
+      "projectedRouteDistanceMetres": 462.4546617559657
+    },
+    {
+      "photoId": "2634400926",
+      "sequenceId": "11716354",
+      "sourceCoordinates": [
+        135.77315,
+        35.005061
+      ],
+      "declaredShotDate": "2026-10-11 08:31:05.000",
+      "projectedRouteDistanceMetres": 196.07234291917737
+    }
+  ],
+  "limitations": "Photo API docs identify lat/lng and radius range 1–500 without explicit units. Circle calculation reports the 500m interpretation; the documented bounding-box query controls geographic coverage conclusions. Camera coordinates, returned dates and service completeness remain unverified. No camera records in the route rectangle does not exclude off-route cameras viewing route features. Two nearby published thumbnails are separately inspected in karta-preview-receipts.json."
+}

@@ -1,0 +1,222 @@
+{
+  "startedAt": "2026-11-06T08:07:00.294917+00:00",
+  "source": {
+    "path": "artifacts/realism-01/splat-fidelity/research/knock-original.sog",
+    "bytes": 29781498,
+    "sha256": "81d061bad6ba255689939847482836f7d70bf2e222abce04e6d81c2c976c6a71"
+  },
+  "command": [
+    "/workspace/TourGuideAI/artifacts/realism-01/splat-streaming/tooling/target/release/build-lod",
+    "--csplat",
+    "--quality",
+    "--rad-chunked",
+    "/workspace/TourGuideAI/artifacts/realism-01/splat-streaming/converted/compact/knock-original.sog"
+  ],
+  "binarySha256": "c0ce8ff5e591f4f88ab68add592742eb502cb1b169c7144b973f302caff18ac1",
+  "sourceShDegree": 3,
+  "description": "Official Csplat input encoding and quality LoD; SH degree retained; compare visual fidelity separately.",
+  "exitCode": 0,
+  "finishedAt": "2026-11-06T08:08:04.354466+00:00",
+  "outputs": [
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-0.radc",
+      "bytes": 3110304,
+      "sha256": "3104ddef00e3713c36aa3ef55f0da4e2341bb5b556d6a729a85a81075485827e"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-1.radc",
+      "bytes": 2949944,
+      "sha256": "83003b9744574d7cdb8d33ffa18f3e9d26270e80208f62e5197162e7a41d5fd9"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-10.radc",
+      "bytes": 2982560,
+      "sha256": "25238adfd6ddb00f317d2ee85e988b6becef40a786eca85543da74a44b34c741"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-11.radc",
+      "bytes": 2955472,
+      "sha256": "971a2ab17b10dac0d27be234b7f6a1c739d66e7e997a8583c7bbaa7da14989ae"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-12.radc",
+      "bytes": 2927872,
+      "sha256": "56db253520f87c3d80fcf176439b7eb55aed189c5bf4bbd04d48b4f77e69c95b"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-13.radc",
+      "bytes": 2979744,
+      "sha256": "c1d6ec74497676945ddb57cc28bb735a1dedcc34a5dd72cab54ea93191ea3358"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-14.radc",
+      "bytes": 2969008,
+      "sha256": "a2d4654e48fa3733294a2bce11f7f2aab9a1f3510632ac3cea516ab841082727"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-15.radc",
+      "bytes": 3017192,
+      "sha256": "00261dfd9764652243db48869a081c63a07efa895fba8aa9661c46dd08530be6"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-16.radc",
+      "bytes": 3037536,
+      "sha256": "e4acf6805b616a2c20ee1bd96c8587b766c371ced2b23824da54dc7bc342ad9b"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-17.radc",
+      "bytes": 3071952,
+      "sha256": "0bae8961e92fb0bb0de3f2bd35e62efe7ac125f2bc67a6428ef74a02491a4a55"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-18.radc",
+      "bytes": 2948160,
+      "sha256": "902b69d9dda6b05c4335fe33d3bf834b2c3c1e044e0c40214247c5868785e1c6"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-19.radc",
+      "bytes": 2918776,
+      "sha256": "948dd20fd8716784e564a4965b4fcf90fd113d42ded67d361dc91c392416214f"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-2.radc",
+      "bytes": 3029136,
+      "sha256": "aaf4db8c8507b96e401d85e7bc961873329588a171298b51e85d2b2ca6968ab0"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-20.radc",
+      "bytes": 3074112,
+      "sha256": "2d0a828bd9d27ddba5bf7dbeaa9999607d701d7c1016ea1796a374d3b59b722f"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-21.radc",
+      "bytes": 2972168,
+      "sha256": "f80a2795569231ccff25b4209e422fd521cdb5b65a6167129b6747d6be1cd590"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-22.radc",
+      "bytes": 2908736,
+      "sha256": "a930cfe715d63799882898f18c888101cb5f13292b21cb80c64ce4346f4b3ab4"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-23.radc",
+      "bytes": 2953224,
+      "sha256": "e55be328a001ed2907b6404d02d4377dc9903325e96532395cfb7f01655ea690"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-24.radc",
+      "bytes": 2935440,
+      "sha256": "2b51078cb90478354cf996feae0befed1a95df460412b2e28c37c1996839810a"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-25.radc",
+      "bytes": 2829472,
+      "sha256": "24c339dba6a0a05f3360a1d47e553da389d3b0936f2ad3c104c408c4ed803ede"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-26.radc",
+      "bytes": 2900016,
+      "sha256": "7ad46732284ae0fd4a4de6c9a508ae2bd7832363edbb7d859ce75f90d17c9f56"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-27.radc",
+      "bytes": 2941848,
+      "sha256": "daf731165539da7a558482864b9bfb7564ac0acfe778eb3afcf9b0d91b699cba"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-28.radc",
+      "bytes": 2892984,
+      "sha256": "6377391b8aca69bc635a2d8da77967fcddfaf4e8106e650dc80a80ab2d4b8d95"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-29.radc",
+      "bytes": 2866224,
+      "sha256": "357f52492b62cdf0ad696bdfd10118e546df7ac9db10cde7d58b523f03815e77"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-3.radc",
+      "bytes": 3033624,
+      "sha256": "9daa45df4a6894e5baeb4d25a5f761efbc93af8c4ab6b051361c68489e2fc2bc"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-30.radc",
+      "bytes": 2906984,
+      "sha256": "7b49ed7fe2eed7167990c32794311c9ea26bb7e93e66b7906b384d459ccb45bf"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-31.radc",
+      "bytes": 2946184,
+      "sha256": "026baf3d213a0696da76cac02cb39c51a9710130f5565484d51e04cc118f18d7"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-32.radc",
+      "bytes": 2953976,
+      "sha256": "cac84517d000f4c95cb704204ba3540c194dfb77b3a4036931291042f8cbe40d"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-33.radc",
+      "bytes": 2980008,
+      "sha256": "2c4eecfbbee1fb5e8d0ecbee67509805fd2b6fe213c896dcf9a30a549729e269"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-34.radc",
+      "bytes": 2890936,
+      "sha256": "26b5a74eeb4a27fbef2e5a1c70d0ff45619391ce108dc87db54381a1933f271e"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-35.radc",
+      "bytes": 2989864,
+      "sha256": "9f96e18ab50c1daf1a81e631333645fd4173b5fcf71d19b68f5d12717372af9b"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-36.radc",
+      "bytes": 2909624,
+      "sha256": "1a7640ba224e93994c0930a8ae48991f22243eb8f666b570c71a1dad67559a46"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-37.radc",
+      "bytes": 2918272,
+      "sha256": "ede53bbe7d90b0fde6787c24edf8990465003921003cdd237f587f2dc51785c3"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-38.radc",
+      "bytes": 1806512,
+      "sha256": "5743de00e5aefa142e39c1b97624156ea38f281f6698b15c59ff5a6852cb390b"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-4.radc",
+      "bytes": 3076656,
+      "sha256": "a53bb8d3d81818e0a808dbf403bcba9bc2d42213f659dbba41e3c3b42470ef40"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-5.radc",
+      "bytes": 3040680,
+      "sha256": "18d56968be0e1e2b1e2453883c60e0d9e14f3ef9eedb91b503d0caf3742c4493"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-6.radc",
+      "bytes": 3055888,
+      "sha256": "8ccd7489e9c15051ce2315dac0eb5e6d5e04e86ef3a279310714055774174a1f"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-7.radc",
+      "bytes": 2899424,
+      "sha256": "e46ca6d1f810d545d6bdd7cc33e694a24ef735dceeb822c580f2795c4e651337"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-8.radc",
+      "bytes": 2963640,
+      "sha256": "51881d798cd72b9c4c133c921c85847a1fc83d83704f207681cf987f4fc83996"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod-9.radc",
+      "bytes": 2932536,
+      "sha256": "14650fce28b0fc6577bf70ba839a1176ae4da39674924f97d721759fbc8af5e2"
+    },
+    {
+      "path": "artifacts/realism-01/splat-streaming/converted/compact/knock-original-lod.rad",
+      "bytes": 5344,
+      "sha256": "b1f12300dca72c45e5f0e03a131519fb4e1af29e91dbc6ac67c865bb2f1e40ec"
+    }
+  ]
+}

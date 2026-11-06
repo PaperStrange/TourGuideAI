@@ -1,0 +1,77 @@
+{
+  "reviewedAt": "2026-11-06",
+  "records": [
+    {
+      "photo": "takase-20260624-212.jpg",
+      "businessName": "立ち飲み・酒屋 もみじ",
+      "independentAddress": {
+        "@type": "PostalAddress",
+        "streetAddress": "鍋屋町２２５ 萩原ビル１F",
+        "addressLocality": "京都市中京区",
+        "addressRegion": "京都府",
+        "postalCode": "6048015",
+        "addressCountry": {
+          "@type": "Country",
+          "name": "JP"
+        }
+      },
+      "declaredBusinessLongitudeLatitude": [
+        135.7707304395086,
+        35.00411618397603
+      ],
+      "distanceFromAuthoredRouteMetres": 24.62775387946576,
+      "nearestRouteEdgeOrdinal": 50,
+      "nearestRouteEdgeId": "osm:way:532008167:2367201411:4600891628",
+      "offsetFromNearestRouteEastNorthMetres": [
+        -0.24814974414402968,
+        24.6265036668225
+      ],
+      "distanceFromPhotoDeclaredCameraMetres": 30.0925505718709,
+      "source": "https://retty.me/area/PRE26/ARE108/SUB10803/100001225740/",
+      "retrievedAt": "2026-11-06T08:19:12.028991+00:00",
+      "sourceSha256": "4f03da236a657744303fd994cff224a2cebab981e60692305ddf32c1713fdb95",
+      "method": "Independent listing/official Hotel JSON-LD parsed through BeautifulSoup and JSON; business coordinate compared with authored route using its declared frame",
+      "qualification": "Named nearby business association only; supplied business pin is not a surveyed doorway or façade polygon",
+      "limits": "Listing/official pin and phone camera GPS need not coincide. No camera-to-feature transform, measured entrance/floor, current access or exact source-model frontage is established. Original website assets have no reusable art license established."
+    },
+    {
+      "photo": "shijo-20260621-37.jpg",
+      "businessName": "Toyoko Inn Kyoto Shijo-karasuma",
+      "independentAddress": {
+        "@type": "PostalAddress",
+        "streetAddress": "28 Naginataboko-cho, Shijokarasuma-dori, Higashi-hairu, Shimogyo-ku",
+        "addressLocality": "Kyoto city",
+        "addressRegion": "京都府",
+        "addressCountry": "JP"
+      },
+      "declaredBusinessLongitudeLatitude": [
+        135.760763,
+        35.003961
+      ],
+      "distanceFromAuthoredRouteMetres": 23.003287289427764,
+      "nearestRouteEdgeOrdinal": 1,
+      "nearestRouteEdgeId": "osm:way:465066447:4600871814:4600891666",
+      "offsetFromNearestRouteEastNorthMetres": [
+        0.2174416780930244,
+        23.00225956806368
+      ],
+      "distanceFromPhotoDeclaredCameraMetres": 30.454840791545163,
+      "source": "https://www.toyoko-inn.com/eng/search/detail/00053/access/",
+      "retrievedAt": "2026-11-06T08:19:14.277009+00:00",
+      "sourceSha256": "e1978b1ed94e6d4d1794eab03165c87bf47d8b37e28cf73fbb646ab5fc025337",
+      "method": "Independent listing/official Hotel JSON-LD parsed through BeautifulSoup and JSON; business coordinate compared with authored route using its declared frame",
+      "qualification": "Named nearby business association only; supplied business pin is not a surveyed doorway or façade polygon",
+      "limits": "Listing/official pin and phone camera GPS need not coincide. No camera-to-feature transform, measured entrance/floor, current access or exact source-model frontage is established. Original website assets have no reusable art license established."
+    }
+  ],
+  "routeInput": {
+    "path": "experience/src/neighborhoods/shijo-east/geography.json",
+    "sha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f"
+  },
+  "supplementalSources": [
+    "identity-momiji-profile.receipt.json",
+    "identity-momiji-magazine.receipt.json",
+    "identity-momiji-1000bero.receipt.json"
+  ],
+  "addressDiscrepancy": "A 2019 travel blog gives Nabeyacho 220-1. Retty (updated 2026-04-06) and the 2018 1000bero feature independently give Nabeyacho 225 Hagiwara Building 1F; these are listing-level corroboration. Exact geometric assignment requires storefront registration."
+}
