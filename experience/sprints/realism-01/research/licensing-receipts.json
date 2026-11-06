@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "reviewedOn": "2026-10-31",
-  "method": "Inspection and SHA-256 verification of retained repository records; no new source geometry or imagery acquired",
+  "reviewedOn": "2026-11-05",
+  "method": "Retained route/source receipts plus original byte/content inspection of five PLATEAU tiles, four unchanged texture atlases and an every-edge candidate-bounds index",
   "pathBase": "repository-root",
   "route": {
     "id": "shijo-east-six-sights",
@@ -72,7 +72,7 @@
       "location": "Kyoto City; exact route object coverage unverified",
       "rights": "Metadata states CC BY 4.0; Kyoto City attribution and modification notice required, applicable third-party exceptions retained",
       "method": "Archived metadata receipt and hash checked",
-      "limitations": "License metadata and dates do not prove per-object quality or continuous coverage; original textured objects remain uninspected"
+      "limitations": "License metadata and dates do not prove per-object quality or continuous coverage; sampled original object inspection is recorded separately in source-inspection-evidence"
     },
     {
       "id": "pontocho-file-inventory",
@@ -98,7 +98,21 @@
       "location": "Kyoto catalog and Pontochō research rectangle",
       "rights": "Each receipt records its dataset declaration; metadata is not a grant for unrelated third-party content",
       "method": "Receipt inspection and SHA-256 check",
-      "limitations": "Ignored catalog/tileset downloads referenced by this historical ledger are not portable assets in this sprint"
+      "limitations": "The complete catalog cache remains ignored; three original tileset indexes are retained in source-inspection-evidence"
+    },
+    {
+      "id": "source-inspection-evidence",
+      "source": "Five original PLATEAU B3DM tile URLs, three tileset URLs and per-file receipts preserved in the source evidence manifest",
+      "file": "experience/evidence/realism-01/sources/manifest.json",
+      "bytes": 10456,
+      "sha256": "bb5dde36cf8bcf58f692f7594994a631b70a747bf93f0bbe82fee92bc8adfe93",
+      "recordDate": "2026-11-05",
+      "captureDate": "LOD3 inputs FY2023; individual LOD2 photographic capture dates unverified",
+      "publicationDate": "Dataset label 2025; metadata publication 2026-03-31; tile retrieval 2026-11-04",
+      "location": "Nishiki west, Shijo-Karasuma and Pontocho samples; candidate-bounds index covers all 54 route edges",
+      "rights": "Kyoto City / MLIT PLATEAU CC BY 4.0; original atlas bytes and tileset JSON unchanged; derived inspection/index/diagram credited to TourGuideAI",
+      "method": "Five original B3DM hashes, feature IDs, actual LOD, triangles and extracted WebP bytes checked with py3dtiles/pygltflib/Pillow; route candidates calculated with pyproj and Shapely",
+      "limitations": "Original tile samples and bounding candidates do not qualify continuous visible surfaces, ground, lighting, Mitsui identity, independent recognition or physical-device performance"
     },
     {
       "id": "neighborhood-photo-registry",

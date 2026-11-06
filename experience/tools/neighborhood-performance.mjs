@@ -5,6 +5,7 @@ import { mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { resolve, join, relative, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { cpus, totalmem, platform, release, arch } from 'node:os';
+import { createFrameMeasurement } from '../src/runtime/submitted-frame.js';
 
 const repository = fileURLToPath(new URL('../../', import.meta.url));
 const help = `Usage: node experience/tools/neighborhood-performance.mjs [built-dist-directory] [--headed] [--graphics=mesa-software]
@@ -44,6 +45,10 @@ if (manifest.id !== packId) throw new Error('Unexpected neighborhood manifest.')
 const packageFiles = [...files].sort(([a], [b]) => a.localeCompare(b)).map(([path, bytes]) => ({ path, bytes: bytes.length, sha256: sha(bytes) }));
 const fileHashes = new Map(packageFiles.map(file => [file.path, file.sha256]));
 mkdirSync(output, { recursive: true });
+const driverBytes = readFileSync(new URL(import.meta.url));
+const measurementBytes = readFileSync(new URL('../src/runtime/submitted-frame.js', import.meta.url));
+writeFileSync(join(output, 'neighborhood-performance.executed.mjs'), driverBytes);
+writeFileSync(join(output, 'submitted-frame.executed.js'), measurementBytes);
 // Chromium 的本地 socket 使用短路径，并且所有临时内容保留在忽略的 artifacts 目录。
 process.env.TMPDIR = join(repository, 'artifacts/tmp'); mkdirSync(process.env.TMPDIR, { recursive: true });
 const browserExecutable = process.env.EXPERIENCE_QA_CHROMIUM || '/usr/bin/chromium';
@@ -57,7 +62,8 @@ if (mesaSoftware) mkdirSync(graphicsEnvironment.MESA_SHADER_CACHE_DIR, { recursi
 const proxyURL = process.env.HTTPS_PROXY || process.env.HTTP_PROXY;
 const proxy = proxyURL ? new URL(proxyURL) : null;
 const report = {
-  startedAt: new Date().toISOString(), driverSha256: sha(readFileSync(new URL(import.meta.url))),
+  protocol: 'neighborhood-starting-segment-v2',
+  startedAt: new Date().toISOString(), driverSha256: sha(driverBytes), measurementSha256: sha(measurementBytes),
   artifact: { directory: dist, manifestSha256: sha(JSON.stringify(packageFiles)), files: packageFiles,
     neighborhood: { id: manifest.id, revision: manifest.revision, manifestSha256: sha(files.get(prefix + 'manifest.json')) } },
   conditions: { viewport: [1440, 1000], dpr: 1, locale: 'en', lighting: 'day', headless,
@@ -77,7 +83,8 @@ const report = {
       'Software or cloud graphics cannot establish physical GPU or phone performance.',
       'Loopback HTTP with CDP throttling does not reproduce CDN compression, TLS connection setup or a physical WAN.',
       'First usable observation is readiness plus rendered ground and enabled controls; actual input is independently exercised after the entry measurements.',
-      'Response means first changed simulation/camera state with a newer submitted draw; physical display presentation is unmeasured.',
+      'Response uses actual camera matrices or interpolated player position captured with their submitted draw; physical display presentation is unmeasured.',
+      'Full-quality readiness requires desired cells and decoded materials plus ready lighting before a later submitted draw. This establishes resident quality, not visual realism.',
       'Receipt-to-draw excludes browser input queue delay. Event-timeStamp-to-draw includes that queue; dispatch-to-draw also includes automation scheduling.',
       'A single-draw orbit nudge provides a response observation and no within-action frame interval. First-observation counter gaps retain their unrecoverable intervals.',
       'Input and frame observations cover the starting neighborhood segment; the complete-route correctness walkthrough remains separate.',
@@ -110,7 +117,7 @@ const server = createServer((request, response) => {
 });
 
 function installObserver(expectedPack) {
-  const trace = { firstUsable: null, actions: [], observerWorkMs: [], frameCounterGaps: [] };
+  const trace = { firstUsable: null, fullQuality: null, actions: [], observerWorkMs: [], frameCounterGaps: [] };
   let frame, observing = true, active = null;
   const sample = () => {
     const game = window.__TOUR_GAME__;
@@ -119,7 +126,7 @@ function installObserver(expectedPack) {
     return { position: { x: state.x, y: state.y, height: state.height, edgeId: state.edgeId, edgeDistance: state.edgeDistance },
       paused: state.paused, tick: state.tick,
       camera: { azimuth: camera.azimuth, polar: camera.polar, distance: camera.distance, enabled: camera.enabled },
-      renderedFrames: renderer.renderedFrames, updateFrames: renderer.updateFrames,
+      renderedFrames: renderer.renderedFrames, submittedFrame: renderer.submittedFrame, updateFrames: renderer.updateFrames,
       status: renderer.status, visible: renderer.visible, lightingPhase: renderer.lighting.phase,
       restoring: route?.restoring, blocked: route?.blocked, startup: renderer.startup };
   };
@@ -132,10 +139,12 @@ function installObserver(expectedPack) {
       const ground = window.__TOUR_GAME__.grounding();
       if (ground.inside && ground.hit) trace.firstUsable = { observedMs: now, state: value, ground };
     }
+    if (value && trace.firstUsable && !trace.fullQuality && window.__FRAME_MEASUREMENT__.fullQuality(value.submittedFrame)) {
+      trace.fullQuality = { observedMs: now, frame: value.submittedFrame };
+    }
     if (value && active?.browserInput && !active.finished) {
-      const moved = Math.hypot(value.position.x - active.before.position.x, value.position.y - active.before.position.y) > .001;
-      const turned = Math.abs(value.camera.azimuth - active.before.camera.azimuth) > .00001;
-      if (!active.response && (active.kind === 'walk' ? moved : turned) && value.renderedFrames > active.before.renderedFrames) {
+      if (!active.response && value.submittedFrame?.drawStartedMs >= active.browserInput.receivedMs
+        && window.__FRAME_MEASUREMENT__.changed(active.before.submittedFrame, value.submittedFrame, active.kind)) {
         active.response = { observedMs: now, eventToResponseMs: now - active.browserInput.receivedMs,
           dispatchToResponseMs: now - active.dispatchStartMs, state: value };
       }
@@ -147,7 +156,7 @@ function installObserver(expectedPack) {
       }
     }
     trace.observerWorkMs.push(performance.now() - start);
-    if (!trace.firstUsable || active) frame = requestAnimationFrame(observe);
+    if (!trace.firstUsable || !trace.fullQuality || active) frame = requestAnimationFrame(observe);
     else { observing = false; frame = undefined; }
   }
   window.addEventListener('keydown', event => {
@@ -160,7 +169,7 @@ function installObserver(expectedPack) {
   window.__NEIGHBORHOOD_PERF__ = {
     read: () => structuredClone(trace),
     begin(id, kind, code) {
-      const before = sample(); if (!before || !trace.firstUsable || active) throw new Error('The observed neighborhood is not ready for an input action.');
+      const before = sample(); if (!before?.submittedFrame || !trace.fullQuality || active) throw new Error('The observed neighborhood is not ready for an input action.');
       active = { id, kind, code, before, dispatchStartMs: performance.now(), browserInput: null, response: null,
         draws: [], previousCounter: before.renderedFrames, finished: false };
       trace.actions.push(active);
@@ -229,6 +238,7 @@ try {
     await browserSession.detach();
   }
   context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 1, reducedMotion: 'no-preference' });
+  await context.addInitScript(createFrameMeasurement, { install: true });
   await context.addInitScript(installObserver, packId);
   page = await context.newPage(); page.setDefaultTimeout(timeout);
   page.on('pageerror', error => { report.errors.push({ stage: currentEntry?.id || 'interaction', message: error.message }); save(); });
@@ -272,21 +282,17 @@ try {
     check(currentEntry.id + '-exact-index', currentEntry.htmlSha256 === fileHashes.get('/index.html'), currentEntry.htmlSha256);
     check(currentEntry.id + '-first-usable-budget', usable <= (index ? 3000 : 8000), { observedMs: usable, targetMs: index ? 3000 : 8000 });
     console.log(`${currentEntry.id}: usable ${usable.toFixed(1)} ms`);
-    await page.waitForFunction(() => {
-      const stream = window.__TOUR_GAME__?.streaming();
-      if (!stream) return false;
-      if (stream.cells.some(cell => cell.error)) return true;
-      const desired = stream.cells.filter(cell => cell.desired);
-      return !stream.downloads.active && !stream.downloads.queued && !stream.attachments.active && !stream.attachments.queued
-        && desired.length > 0 && desired.every(cell => cell.state === 'ready' && cell.level === cell.desired);
-    }, null, { timeout });
-    const settled = await page.evaluate(() => ({ observedMs: performance.now(), stream: window.__TOUR_GAME__.streaming() }));
-    currentEntry.settledMs = settled.observedMs; currentEntry.settledStream = settled.stream;
-    const desired = settled.stream.cells.filter(cell => cell.desired);
-    const settledReady = !settled.stream.cells.some(cell => cell.error) && desired.length > 0
-      && desired.every(cell => cell.state === 'ready' && cell.level === cell.desired);
-    check(currentEntry.id + '-desired-sections-ready', settledReady, settled);
-    if (!settledReady) throw new Error('Neighborhood detail did not reach the requested resident quality.');
+    await page.waitForFunction(() => Boolean(window.__NEIGHBORHOOD_PERF__?.read().fullQuality)
+      || window.__TOUR_GAME__?.streaming().cells.some(cell => cell.error), null, { timeout });
+    currentEntry.fullQuality = await page.evaluate(() => window.__NEIGHBORHOOD_PERF__.read().fullQuality);
+    currentEntry.fullQualityObservedMs = currentEntry.fullQuality?.observedMs ?? null;
+    currentEntry.residentStream = await page.evaluate(() => window.__TOUR_GAME__.streaming());
+    check(currentEntry.id + '-full-quality-submitted-draw', Boolean(currentEntry.fullQuality),
+      { fullQuality: currentEntry.fullQuality, stream: currentEntry.residentStream });
+    check(currentEntry.id + '-full-quality-budget', Number.isFinite(currentEntry.fullQualityObservedMs)
+      && currentEntry.fullQualityObservedMs <= (index ? 3000 : 8000),
+      { observedMs: currentEntry.fullQualityObservedMs, targetMs: index ? 3000 : 8000 });
+    if (!currentEntry.fullQuality) throw new Error('Neighborhood detail did not reach a full-quality submitted draw.');
     if (mesaSoftware) {
       // 每次完整加载之后验证实际应用 context，拒绝静默切换到其他软件后端。
       currentEntry.graphics = await readGraphics();
@@ -322,12 +328,16 @@ try {
   report.interactions = { trace, summary: summarizeActions(trace) };
   check('all-inputs-trusted-and-responsive', trace.actions.length === 20 && trace.actions.every(action => action.browserInput?.trusted
     && action.browserRelease?.trusted && action.response), { actions: trace.actions.length, responses: report.interactions.summary.groups.all.responses });
-  check('input-response-p95', report.interactions.summary.groups.all.inputP95Ms <= 100, report.interactions.summary.groups);
+  check('input-response-p95', report.interactions.summary.groups.all.responses === 20
+    && Number.isFinite(report.interactions.summary.groups.all.inputP95Ms)
+    && report.interactions.summary.groups.all.inputP95Ms <= 100, report.interactions.summary.groups);
   const eventResponses = report.interactions.summary.groups.all.eventTimestampToResponseMs;
   check('input-event-timestamp-response-p95', eventResponses.length === 20 && eventResponses.every(value => Number.isFinite(value) && value >= 0)
     && report.interactions.summary.groups.all.eventTimestampToResponseP95Ms <= 100, report.interactions.summary.groups);
-  check('observed-frame-interval-p95', trace.frameCounterGaps.length === 0 && report.interactions.summary.groups.all.drawIntervals > 0
-    && report.interactions.summary.groups.all.frameIntervalP95Ms <= 33.3, report.interactions.summary);
+  check('observed-frame-interval-p95', trace.frameCounterGaps.length === 0
+    && ['walk', 'orbit'].every(kind => report.interactions.summary.groups[kind].drawIntervals > 0
+      && Number.isFinite(report.interactions.summary.groups[kind].frameIntervalP95Ms)
+      && report.interactions.summary.groups[kind].frameIntervalP95Ms <= 33.3), report.interactions.summary);
   save();
 
   await page.waitForTimeout(1500);

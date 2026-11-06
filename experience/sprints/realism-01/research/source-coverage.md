@@ -1,8 +1,19 @@
 # Full-route source coverage
 
-Reviewed 31 October 2026. Method: inspection of retained route data, licensing records and previous source reviews. No new photographic survey, original textured PLATEAU geometry inspection or appearance acceptance was performed.
+Reviewed 5 November 2026. Method: retained route/licensing review, original byte and content inspection of four building tiles and one road tile, and a reproducible candidate-bounds index for all 54 edges. Walking-height appearance acceptance and a photographic survey remain outstanding.
 
 The [current route](../../../src/neighborhoods/shijo-east/geography.json) contains **1,353.444 m, 54 ordered edges and six sights**. Coordinates below are longitude, latitude. The [licensing receipts](licensing-receipts.json) bind the inspected files by SHA-256. All appearance qualification remains **open**.
+
+![Source candidate bounds for every route edge](../../../evidence/realism-01/sources/route-source-board.svg)
+
+The [portable inspection and source board](../../../evidence/realism-01/sources/README.md)
+retains four original texture atlases, five original tile receipts and three
+original tileset indexes. A 25 m search around each route edge finds 51 building
+content candidates across all 54 edges. Detailed road and furniture candidates
+occur only beside edges 50–54 in the retained collections. Bounds provide an
+acquisition index; all appearance, ground and lighting acceptance remains open.
+The [every-edge index](../../../evidence/realism-01/sources/route-source-audit.json)
+includes non-leaf content, candidate URLs and nearby inspected object IDs.
 
 ## Sight coverage
 
@@ -32,11 +43,18 @@ Edge ranges are inclusive, one-based positions in `selectedRoute.edgeIds`; toget
 | Source | What the retained evidence establishes | Required qualification |
 | --- | --- | --- |
 | Kyoto LOD1 2025 | Selected solids and source Z values retained; current presentation derives footprints and height ranges | Original appearance is absent from this preparation; replace authored level-zero placement only after reconciling horizontal/vertical datums |
-| Kyoto textured PLATEAU | Metadata declares CC BY 4.0; LOD3 inputs are FY2023 vehicle-mounted photographic laser surveying; metadata date is 2026-03-31 | Inspect original objects/textures and clip them against all route edges. Mesh-wide counts and district bounds cannot establish route-wide coverage |
+| Kyoto textured PLATEAU | Four original building samples contain 52 LOD2 and three LOD3 objects; original IDs, triangles and four texture atlases verified. Metadata declares CC BY 4.0; LOD3 acquisition FY2023, metadata publication 2026-03-31 | Match actual visible surfaces to route edges, including adjacent wards. Inspect walking-height textures, occlusions and current conditions; bounding candidates remain unqualified |
 | Pontochō metadata inventory | Containing mesh has 4,444 LOD2 buildings, including 138 with LOD3; mixed LOD1–3 tileset identified | Record per-object LOD, surfaces, texture resolution and occlusions. The small research rectangle covers only the eastern area |
 | Licensed still photographs | Particular dated features, authors and licenses recorded in the two photo registries | Match each façade/viewpoint before use; retain attribution and applicable ShareAlike obligations; current conditions and reconstruction suitability remain unverified |
 | Operator descriptions | Paraphrased location/access facts | Descriptions confer no license to redistribute operator photos or reconstruct their imagery |
 
 The [source ledger](../../../src/neighborhoods/shijo-east/source-ledger.json) explicitly records authored navigation height 0, water height −2.5 m and canopy dimensions. None is a measured terrain claim. The [provider review](../../../evidence/neighborhood-20261027/world/provider-research.md) supplies historical provider terms and fees; procurement must recheck them before use.
 
-**Next evidence:** inspect licensed source objects for all 54 edges and assign each façade, road, entrance and lighting requirement an inspected asset or a capture item. Use [capture requirements](capture-requirements.md) for unresolved coverage. Renderer selection stays open until matched Kyoto trials and physical-device measurements exist.
+**Next evidence:** extend the five sampled content inspections across the 51 building
+candidates and the road/furniture candidates, identify every sight by source object,
+and assess assembled surfaces from walking height. Mitsui correspondence is
+unconfirmed in non-leaf `data840`; Nishiki samples are LOD2; the sampled Pontochō
+road has no image texture. Ground datum, opposite street sides, passages and night
+fixtures require independent qualification. Assign unresolved requirements to the
+[capture proposal](capture-requirements.md). Renderer selection remains open until
+the matched full-route builds and benchmark acceptance have actual evidence.

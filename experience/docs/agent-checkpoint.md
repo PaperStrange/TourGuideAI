@@ -1,7 +1,8 @@
 # Agent checkpoint · Explore and Together homepage
 
-31 October 2026 · Lead owns integration, commits and publication.
-**State: approved sprint organization implemented; source qualification is next.
+6 November 2026 · Lead owns integration, commits and publication.
+**State: Benchmark V1 protocol, measurement boundaries and source acquisition
+index implemented and validated; route source qualification is next.
 The milestone is the complete 1,353.444 m, 54-edge, six-sight Shijō East route,
 with English/Chinese journeys and daylight/night. Published runtime `17b8f37`
 remains the main-site baseline; candidate 13 remains the separate public preview.
@@ -18,24 +19,42 @@ The [evidence store](../evidence/realism-01/README.md) preserves reviewed images
 hashes, provenance and validation. Raw downloads and browser state belong under
 ignored `artifacts/realism-01/`.
 
-Realism/recognition carries 45%, immersion 35%, usefulness 10% and cost/scaling
-10%. Rights, continuous movement and performance remain mandatory gates. The
-production representation decision requires matched Kyoto evidence; trial areas
-do not reduce the full-route milestone. All six sights and connecting streets
-need object-level appearance review. Existing source metadata does not establish
-full-route detailed coverage. Capture costs remain unquoted and spending requires
-a concrete proposal and approval.
+The [Benchmark V1 protocol](../sprints/realism-01/benchmark.md) fixes technical
+conditions, 32 fresh participants per compared product, cohort gates and the
+25/20/35/10/5/5 selection weights. The [lesson register](../sprints/realism-01/lessons.md)
+maps prior user feedback to required tests. Technical eligibility precedes comparable
+full-route builds; final selection follows physical and human acceptance.
 
-Next task is R04: inspect original source models/textures for the documented route
-and trial areas, record object IDs and remaining appearance gaps, then obtain the
-inputs needed for matched trials. Physical GPU access and independent participant
-acceptance remain open dependencies. Follow the backlog rather than interpreting
-prior functional CI or publisher footage as realism acceptance.
+The read-only QA instrumentation now records actual submitted camera matrices,
+interpolated position and resident detail followed by a later draw. The
+[completed local diagnostic](../evidence/realism-01/measurement/README.md) preserves
+12 passing and 11 failing checks on SwiftShader; its starting-segment timing does
+not establish physical-device acceptance. The [calibration scorecard](../evidence/realism-01/benchmark/scorecard.md)
+recomputes retained candidate-13 observations with all original failures intact.
+Versioned manifest/result schemas and the technical evaluator leave missing
+reports, incomplete traversal, frame gaps and unknown resources unverified.
 
-This organizational delivery changes no application code, runtime APIs or deployed
-pages. Commit and push the validated sprint checkpoint to `chore-sow-delivery-plan`;
-each subsequent source review, trial and implementation delivery requires its own
-evidence and synchronized checkpoint.
+The [source acquisition board](../evidence/realism-01/sources/README.md) covers
+all 54 edges with candidate bounds. Five inspected tile samples and four unchanged
+texture atlases have verified receipts. Building samples contain 52 LOD2 and three
+LOD3 objects; detailed road/furniture candidates in these collections occur only
+near edges 50–54. Every edge's appearance, ground and lighting qualification remains
+open. Candidate bounds and texture sizes cannot establish pedestrian-view quality.
+
+Next work: R04 object/facade correspondence, both street sides, covered passages,
+ground datum and day/night references; itemize actual capture quotes for remaining
+gaps. Physical Iris Xe/Chrome and M1/Safari devices, fresh participant cohorts and
+qualified matched capture remain unavailable. Full-route trial execution, human
+scoring and final representation selection remain pending. Current-year GitHub
+issue creation/update queries returned zero matches on 5 November 2026.
+
+This delivery changes QA observability and benchmark tools, with no public service
+API or deployed-page change. Keep the existing preview identified as candidate 13.
+The remote-turn interruption preserved the worktree and completed reports; validate
+the checkpoint identity against `chore-sow-delivery-plan` before continuing. Recovery
+validation passed 230 application tests, 16 final benchmark tests, 17 repository
+gates, 18 geographic-preparation tests and 13 neighborhood-source tests. The final
+16 include three new evaluator tests added after the complete application run.
 
 ## Public neighborhood preview · 2026-10-24
 

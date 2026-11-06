@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "kind": "BenchmarkManifest",
+  "id": "realism-01-protocol-v1",
+  "status": "draft",
+  "protocol": "realism-v1",
+  "route": {
+    "path": "experience/src/neighborhoods/shijo-east/geography.json",
+    "sha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f",
+    "lengthMetres": 1353.444059858351,
+    "edgeCount": 54,
+    "sightCount": 6
+  },
+  "candidates": [],
+  "interactionPlan": [],
+  "runOrder": [],
+  "requiredTurnRegions": [
+    { "sightId": "mitsui-frontage", "edgeIndex": 0 },
+    { "sightId": "nishiki-market", "edgeIndex": 8 },
+    { "sightId": "nishiki-tenmangu", "edgeIndex": 15 },
+    { "sightId": "takase-river", "edgeIndex": 41 },
+    { "sightId": "pontocho-entrance", "edgeIndex": 51 },
+    { "sightId": "shijo-bridge", "edgeIndex": 53 }
+  ],
+  "devices": [
+    {
+      "id": "windows-iris-xe",
+      "profile": "Windows 11; Intel Iris Xe; 16 GB; Chrome",
+      "hardware": null,
+      "operatingSystem": null,
+      "browser": null,
+      "graphicsDriver": null,
+      "powerMode": null
+    },
+    {
+      "id": "macbook-air-m1",
+      "profile": "MacBook Air M1; 8 GB; Safari",
+      "hardware": null,
+      "operatingSystem": null,
+      "browser": null,
+      "graphicsDriver": null,
+      "powerMode": null
+    }
+  ],
+  "prerequisites": [
+    "Qualify source geometry, appearance, lighting, rights and pedestrian ground for all 54 edges and six sights.",
+    "Register independently sourced held-out references excluded from reconstruction and texture authoring.",
+    "Freeze comparable full-route build, assets, sources, ground, camera trajectory, interface, quality settings and executable driver hashes.",
+    "Arrange both physical devices and record exact hardware, OS, browser, graphics driver, power and thermal conditions.",
+    "Recruit 32 fresh unfamiliar non-author participants per compared product with eight in each locale/lighting cohort.",
+    "Freeze the final comparison pair and complete first-year labor/cash estimates before quality testing; obtain concrete capture quotes where required."
+  ],
+  "finalComparison": {
+    "kind": "renderer",
+    "candidateIds": [],
+    "costReferenceHours": null,
+    "costReferenceCash": null,
+    "currency": null,
+    "costEvidence": []
+  }
+}

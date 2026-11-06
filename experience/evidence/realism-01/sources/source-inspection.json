@@ -1,0 +1,459 @@
+{
+  "inspectedAt": "2026-11-04T15:25:49.000839+00:00",
+  "sourceCommit": "b4f67fb805f05fac9ae6d4ba52e0785a33785d11",
+  "method": "Downloaded four original building B3DM tiles and one road B3DM tile; parsed with py3dtiles12.1.1/pygltflib1.16.5; extracted original embedded WebP bytes and decoded dimensions with Pillow. Rendered building LOD counts come from binary _lod properties.",
+  "rights": "Kyoto City / MLIT PLATEAU dataset CC BY4.0 per retained metadata; preserve credits and modification notices.",
+  "limitations": [
+    "Bounded tile samples, not complete route coverage.",
+    "No walking-height mesh render or physical GPU benchmark.",
+    "Texture atlas dimensions do not establish per-facade texel density.",
+    "data840 is non-leaf content and is not confirmed to contain Mitsui.",
+    "Ground, night lighting and independent recognition untested."
+  ],
+  "records": [
+    {
+      "tile": "data804",
+      "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data804.b3dm",
+      "bytes": 254232,
+      "sha256": "66d3b6e6f6f01eb2961c7fed90ce54749a02292b6978622e39e0c848fe121e46",
+      "features": 20,
+      "declaredLodTypes": {
+        "LOD2.0": 20
+      },
+      "textureSize": [
+        2048,
+        2048
+      ],
+      "textureBytes": 119808,
+      "textureSha256": "1aab3695f308790b4e1c99938fb64549c9054c4638bbc4827c1d545cebb31b7b",
+      "triangles": 732,
+      "imageCount": 1,
+      "renderedLodCounts": {
+        "2": 20
+      },
+      "objects": [
+        {
+          "id": "bldg_d44c390f-ff98-4228-8069-37d741d7fb16",
+          "lod": 2,
+          "longitude": 135.76249835201952,
+          "latitude": 35.00492693560055
+        },
+        {
+          "id": "bldg_00839828-a15e-421e-b3a6-50112b0b4a59",
+          "lod": 2,
+          "longitude": 135.76315920039363,
+          "latitude": 35.00481385458339
+        },
+        {
+          "id": "bldg_1631a5e8-b711-44a3-8cc9-7e15cefbbb56",
+          "lod": 2,
+          "longitude": 135.76269254475864,
+          "latitude": 35.00490757733306
+        },
+        {
+          "id": "bldg_22370a9f-abb8-4763-8934-1906fa407070",
+          "lod": 2,
+          "longitude": 135.76272784127357,
+          "latitude": 35.00477194111907
+        },
+        {
+          "id": "bldg_44af7e33-2246-4d64-9002-d24220820943",
+          "lod": 2,
+          "longitude": 135.76315914687967,
+          "latitude": 35.00489172349039
+        },
+        {
+          "id": "bldg_4f13649c-151b-4ae5-9074-cea3494d396d",
+          "lod": 2,
+          "longitude": 135.76298314409433,
+          "latitude": 35.004733907414824
+        },
+        {
+          "id": "bldg_58614702-30e8-49f5-b520-e01c4302fe58",
+          "lod": 2,
+          "longitude": 135.76297997805193,
+          "latitude": 35.004691252834256
+        },
+        {
+          "id": "bldg_6cd9d71e-582c-4dff-9c12-0a13ae0560e8",
+          "lod": 2,
+          "longitude": 135.76282113839855,
+          "latitude": 35.004900981076986
+        },
+        {
+          "id": "bldg_9122050c-281a-4c35-91ad-0b970961c651",
+          "lod": 2,
+          "longitude": 135.763148374732,
+          "latitude": 35.004680234838276
+        },
+        {
+          "id": "bldg_93acb4b6-c637-4f91-9255-6dc1396d3c88",
+          "lod": 2,
+          "longitude": 135.76278065308185,
+          "latitude": 35.0046043386355
+        },
+        {
+          "id": "bldg_98a8dd52-5638-479f-8962-d6b4037b6e0b",
+          "lod": 2,
+          "longitude": 135.76304167301254,
+          "latitude": 35.00489262790392
+        },
+        {
+          "id": "bldg_a155ccb5-3f1d-49e6-bf27-6ecf76255d05",
+          "lod": 2,
+          "longitude": 135.76278539226578,
+          "latitude": 35.004682385996716
+        },
+        {
+          "id": "bldg_a26273d5-fbfe-44cb-9fe3-9c00e273a7b3",
+          "lod": 2,
+          "longitude": 135.76265324062808,
+          "latitude": 35.00476276489135
+        },
+        {
+          "id": "bldg_a27cd148-a2d8-4d1f-908f-abd29d4a4cef",
+          "lod": 2,
+          "longitude": 135.76294615269495,
+          "latitude": 35.00491378315666
+        },
+        {
+          "id": "bldg_a2826c38-07f2-4e9a-b0dc-17f2fc633d31",
+          "lod": 2,
+          "longitude": 135.76265571643847,
+          "latitude": 35.0048304576862
+        },
+        {
+          "id": "bldg_d2edb97e-ad40-42c2-a0bb-1c62843823fa",
+          "lod": 2,
+          "longitude": 135.76321734175696,
+          "latitude": 35.00479187337788
+        },
+        {
+          "id": "bldg_d489c882-ac26-458c-a2d8-32ed09b1b159",
+          "lod": 2,
+          "longitude": 135.76313023958167,
+          "latitude": 35.00473554908203
+        },
+        {
+          "id": "bldg_d9e08884-030c-4ff2-9724-e84187915d95",
+          "lod": 2,
+          "longitude": 135.76282023713898,
+          "latitude": 35.00476813511671
+        },
+        {
+          "id": "bldg_e04115ca-f3c8-4098-8d75-8f3ce3c43256",
+          "lod": 2,
+          "longitude": 135.76291560540704,
+          "latitude": 35.004779551117714
+        },
+        {
+          "id": "bldg_f1113f60-6160-4a45-96f5-552c4cb8392d",
+          "lod": 2,
+          "longitude": 135.7629786628729,
+          "latitude": 35.00485294170328
+        }
+      ]
+    },
+    {
+      "tile": "data802",
+      "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data802.b3dm",
+      "bytes": 238936,
+      "sha256": "ace5a786cff9bb5b8ac4d1a745884331f40ec9cb5fbed156aa236fc5ef9cb85b",
+      "features": 16,
+      "declaredLodTypes": {
+        "LOD2.0": 16
+      },
+      "textureSize": [
+        2048,
+        2048
+      ],
+      "textureBytes": 124938,
+      "textureSha256": "3251d7f109624c861e0d02bc66d5ba4ef3f8fdc329a8fb13d75a2bcd71031d1c",
+      "triangles": 640,
+      "imageCount": 1,
+      "renderedLodCounts": {
+        "2": 16
+      },
+      "objects": [
+        {
+          "id": "bldg_111a4665-b141-49ee-a13c-aea696d255d5",
+          "lod": 2,
+          "longitude": 135.76283489746143,
+          "latitude": 35.005367637362696
+        },
+        {
+          "id": "bldg_1379f323-ff1e-4773-ad17-4590aadee5eb",
+          "lod": 2,
+          "longitude": 135.76271806018877,
+          "latitude": 35.00536137089128
+        },
+        {
+          "id": "bldg_2d58544e-52b5-4030-a4d4-394a6a4fa750",
+          "lod": 2,
+          "longitude": 135.76289171657095,
+          "latitude": 35.00516800742173
+        },
+        {
+          "id": "bldg_3367833f-58bf-4e13-8d50-78bf41cc7845",
+          "lod": 2,
+          "longitude": 135.7630378602862,
+          "latitude": 35.005165665475815
+        },
+        {
+          "id": "bldg_39ad4981-ee99-42ac-a9f5-86ecc00c309d",
+          "lod": 2,
+          "longitude": 135.76299748946508,
+          "latitude": 35.00531830995371
+        },
+        {
+          "id": "bldg_3e765f43-f78e-415d-9c11-3f08f0dcdb4e",
+          "lod": 2,
+          "longitude": 135.76317552704273,
+          "latitude": 35.005159319228696
+        },
+        {
+          "id": "bldg_59b9d09c-cfeb-457a-b52c-35f83ee37d52",
+          "lod": 2,
+          "longitude": 135.76280851312612,
+          "latitude": 35.005164803365204
+        },
+        {
+          "id": "bldg_6fc8037b-3ff1-4cb3-b91f-cc627708bed8",
+          "lod": 2,
+          "longitude": 135.76296017103127,
+          "latitude": 35.00516338928053
+        },
+        {
+          "id": "bldg_7f4eed31-7a99-4b60-8e22-0cdbfbf37041",
+          "lod": 2,
+          "longitude": 135.76266249339534,
+          "latitude": 35.00508034913064
+        },
+        {
+          "id": "bldg_89a1be1d-3019-4dd8-8175-fd94a8dca3af",
+          "lod": 2,
+          "longitude": 135.76310530329573,
+          "latitude": 35.00514008051694
+        },
+        {
+          "id": "bldg_a971bf70-3e25-47f2-9073-ba95837407de",
+          "lod": 2,
+          "longitude": 135.7626589088374,
+          "latitude": 35.00526170049271
+        },
+        {
+          "id": "bldg_ad45acd5-3f29-49dc-884a-3599e01b6f50",
+          "lod": 2,
+          "longitude": 135.76270146310233,
+          "latitude": 35.00516119131619
+        },
+        {
+          "id": "bldg_def47fa1-79de-4960-a0d9-269ba84a625e",
+          "lod": 2,
+          "longitude": 135.76266375257745,
+          "latitude": 35.00516436312652
+        },
+        {
+          "id": "bldg_e6137988-3c69-4454-8c1a-01d5d5916f37",
+          "lod": 2,
+          "longitude": 135.76301160901886,
+          "latitude": 35.005363389780044
+        },
+        {
+          "id": "bldg_ebda622c-367e-4e9b-a403-63ddacb4bbbf",
+          "lod": 2,
+          "longitude": 135.76290132932735,
+          "latitude": 35.00532015063739
+        },
+        {
+          "id": "bldg_ed368bd7-2282-44ba-b3b7-7b65f8130415",
+          "lod": 2,
+          "longitude": 135.76316321192246,
+          "latitude": 35.00534681312735
+        }
+      ]
+    },
+    {
+      "tile": "data765",
+      "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data765.b3dm",
+      "bytes": 1698548,
+      "sha256": "0c7e1a40285f051ca062583ab7decf4f9001e99c185db62c186accfa7aa87bea",
+      "features": 5,
+      "declaredLodTypes": {
+        "LOD2.0": 2,
+        "LOD2.0,LOD3.3": 3
+      },
+      "textureSize": [
+        4096,
+        4096
+      ],
+      "textureBytes": 543508,
+      "textureSha256": "889305130f3cecc14ad82babc8a80a3bcfc99f7b98ad2face6ae31f0c38edf43",
+      "triangles": 11794,
+      "imageCount": 1,
+      "renderedLodCounts": {
+        "2": 2,
+        "3": 3
+      },
+      "objects": [
+        {
+          "id": "bldg_16d27fa3-4fec-4820-8aaa-3df0040adfca",
+          "lod": 2,
+          "longitude": 135.77069777133994,
+          "latitude": 35.0039934077781
+        },
+        {
+          "id": "bldg_1c9ec557-26f1-4083-8883-c0569776b4a4",
+          "lod": 2,
+          "longitude": 135.77071854037402,
+          "latitude": 35.00410936655285
+        },
+        {
+          "id": "bldg_7379ed13-8069-4517-85ee-6b1355efbcca",
+          "lod": 3,
+          "longitude": 135.77096641071196,
+          "latitude": 35.00410758774211
+        },
+        {
+          "id": "bldg_d448fa96-3736-415d-9edf-cdf1e67a276e",
+          "lod": 3,
+          "longitude": 135.77090978433344,
+          "latitude": 35.00405515858376
+        },
+        {
+          "id": "bldg_e2a4cb37-0d1f-482a-89b1-de51b90f09b2",
+          "lod": 3,
+          "longitude": 135.77110583427788,
+          "latitude": 35.004073318467775
+        }
+      ]
+    },
+    {
+      "tile": "data840",
+      "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data840.b3dm",
+      "bytes": 161544,
+      "sha256": "aea5bb596036d68c36330023e09725486f2d1afa8db8883dadfdc228541339c6",
+      "features": 14,
+      "declaredLodTypes": {
+        "LOD2.0": 14
+      },
+      "textureSize": [
+        1024,
+        512
+      ],
+      "textureBytes": 60598,
+      "textureSha256": "1f9012ed0ed1dbbc7de0abca01833af1b02281f8e99a11f0049bc324ad2ccef1",
+      "triangles": 551,
+      "imageCount": 1,
+      "renderedLodCounts": {
+        "2": 14
+      },
+      "objects": [
+        {
+          "id": "bldg_3313947c-c2d9-4b7c-9692-b8a4568ec600",
+          "lod": 2,
+          "longitude": 135.7621588118496,
+          "latitude": 35.00432638277931
+        },
+        {
+          "id": "bldg_6312d7f2-f53a-48e0-8392-f92ca0e981cf",
+          "lod": 2,
+          "longitude": 135.76150048223138,
+          "latitude": 35.00440821901432
+        },
+        {
+          "id": "bldg_943c9e01-9535-4980-a843-c3a80fed160b",
+          "lod": 2,
+          "longitude": 135.7616240567975,
+          "latitude": 35.00398987955569
+        },
+        {
+          "id": "bldg_d60c22ef-d947-48b6-853d-c7d4a797585d",
+          "lod": 2,
+          "longitude": 135.7613152587765,
+          "latitude": 35.004210094365035
+        },
+        {
+          "id": "bldg_fa5ed3bf-cba3-439b-8d42-1d80c821ae52",
+          "lod": 2,
+          "longitude": 135.76131185250304,
+          "latitude": 35.0039570190997
+        },
+        {
+          "id": "bldg_189948ea-0db5-4211-ba94-15cc2c44b943",
+          "lod": 2,
+          "longitude": 135.76080185302692,
+          "latitude": 35.004449771687135
+        },
+        {
+          "id": "bldg_19d6a2af-f0f1-4efe-bb98-e862582bf584",
+          "lod": 2,
+          "longitude": 135.760883460625,
+          "latitude": 35.00418806822256
+        },
+        {
+          "id": "bldg_3010df24-f3f4-4681-8d5b-adca18757831",
+          "lod": 2,
+          "longitude": 135.76096705932645,
+          "latitude": 35.00431232247302
+        },
+        {
+          "id": "bldg_7ff5278b-d537-4688-a53a-714483370a06",
+          "lod": 2,
+          "longitude": 135.76053775609347,
+          "latitude": 35.00444890500488
+        },
+        {
+          "id": "bldg_808dfc12-883f-4976-a073-c073b1a99c5e",
+          "lod": 2,
+          "longitude": 135.76097025623807,
+          "latitude": 35.0044394737284
+        },
+        {
+          "id": "bldg_d338a780-e52a-4a56-80ae-faea27df492d",
+          "lod": 2,
+          "longitude": 135.7607440407131,
+          "latitude": 35.004288745728545
+        },
+        {
+          "id": "bldg_d697c4dc-0cc2-4cf7-82d2-06031661d378",
+          "lod": 2,
+          "longitude": 135.76061916242924,
+          "latitude": 35.00430485790116
+        },
+        {
+          "id": "bldg_4384212b-ef19-47b0-ad05-44adad0223a5",
+          "lod": 2,
+          "longitude": 135.7600691015768,
+          "latitude": 35.00451821570654
+        },
+        {
+          "id": "bldg_609d0bde-593a-4658-9e60-824b416255cd",
+          "lod": 2,
+          "longitude": 135.76095357403307,
+          "latitude": 35.004099077261465
+        }
+      ]
+    },
+    {
+      "tile": "pontocho-road-data1",
+      "source": "https://assets.cms.plateau.reearth.io/assets/4a/f6e465-35e4-400a-94e4-6ab417fc314d/26100_kyoto-shi_city_2025_citygml_1_op_tran_3dtiles_lod3/data/data1.b3dm",
+      "bytes": 149704,
+      "sha256": "544b631a65b4f12a99439db0108ac74e1f17a589782ea5c58b56586bff105f7b",
+      "features": 7,
+      "imageCount": 0,
+      "materials": 1,
+      "triangles": 1163,
+      "objectIds": [
+        "tfa_9ba89a20-64fa-435c-b824-2cdd0e489360",
+        "tfa_27ccab44-2944-4f9d-aa74-416e048a1a10",
+        "atr_da10bda7-0a0e-4e23-9945-3ee1df83fb92",
+        "atr_ae078318-48d4-46ba-8fcd-402f6070a724",
+        "tfa_620a6a21-743f-4ba9-b0e2-cbc2f63e88b3",
+        "tfa_d0110181-d844-45aa-afba-cd59b4557965",
+        "tfa_c5b3e05f-b933-4d42-b355-3d33d4211255"
+      ],
+      "limitation": "Tile sampled near Pontochō; geometry, surface colors and mapped road metadata do not establish close-range pavement material or continuous route coverage."
+    }
+  ]
+}

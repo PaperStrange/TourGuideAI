@@ -4,6 +4,18 @@
 
 [Organizational validation and reproduction](validation.md)
 
+[Benchmark implementation validation](implementation-validation.md)
+
+| Current implementation evidence | What it establishes |
+| --- | --- |
+| [Calibration scorecard](benchmark/scorecard.md) | Original candidate-13 loading, queue, frame gaps and separate native visibility observations |
+| [Submitted-frame diagnostic](measurement/README.md) | Actual camera/draw and final resident-detail boundaries; all 11 failing checks retained |
+| [Source acquisition board](sources/README.md) | Candidate bounds across 54 edges and five inspected original samples; appearance qualification remains open |
+
+The [Benchmark V1 protocol](../../sprints/realism-01/benchmark.md) and
+[lesson register](../../sprints/realism-01/lessons.md) define the remaining acceptance.
+Current evidence does not select a production renderer or close the full-route milestone.
+
 ## Competitor snapshots · 28 October 2026
 
 ![Six comparator observations and publisher references](competitors/snapshot-board.png)

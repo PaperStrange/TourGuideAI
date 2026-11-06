@@ -1,0 +1,851 @@
+{
+  "version": 1,
+  "protocol": "neighborhood-starting-segment-v2",
+  "startedAt": "2026-11-05T16:14:48.374Z",
+  "finishedAt": "2026-11-05T16:17:21.417Z",
+  "driverSha256": "c2dcd5d954753d1489f02cfee6279ced2a8eaada3955d8bbea4dc7f70deea2b8",
+  "measurementSha256": "1b318cb08d8d87782bad82657224334602fb6c43f4083a43d8e819b74d31c874",
+  "packageManifestSha256": "b7febf6f721107b28fdfe822dc2ebe73633829f3a01791a691eb7cdf72ac67c2",
+  "conditions": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "dpr": 1,
+    "locale": "en",
+    "lighting": "day",
+    "headless": true,
+    "graphicsMode": "default",
+    "launch": {
+      "executable": "/usr/bin/chromium",
+      "args": [
+        "--no-sandbox"
+      ],
+      "environmentOverrides": {
+        "TMPDIR": "/workspace/TourGuideAI/artifacts/tmp"
+      },
+      "inheritedEnvironment": "Existing environment, including proxy and CA configuration, retained; values are not logged."
+    },
+    "entries": "One fresh-context cold navigation followed by three full-page reloads retaining HTTP cache and private state; no movement between these entries.",
+    "network": {
+      "transport": "Actual loopback HTTP; immutable build bytes; no interception or content encoding",
+      "cdp": {
+        "latencyMs": 80,
+        "downloadBytesPerSecond": 1250000,
+        "uploadBytesPerSecond": 1250000
+      },
+      "externalProxyConfigured": true,
+      "tlsVerification": true,
+      "api": "No backend; /api requests return actual HTTP 404."
+    },
+    "input": "Ten walking key holds and ten discrete J/L orbit nudges, each held for at least 300 ms. Playwright sends one keydown per action; actual event receipt/release durations are recorded.",
+    "observation": "Read-only runtime snapshots sampled on requestAnimationFrame; observer cost and skipped draw-counter increments are recorded.",
+    "hidden": "Actual background tab with visibilitychange records and timer-polled document.hidden. An unobserved transition fails the hidden check and retains other results. The benchmark animation-frame observer is stopped before a 2-second runtime counter/CPU/network sample.",
+    "host": {
+      "platform": "linux",
+      "release": "6.18.57",
+      "arch": "x64",
+      "logicalCPUs": 5,
+      "cpuModels": [
+        "AMD EPYC 9V74 80-Core Processor"
+      ],
+      "memoryBytes": 18882662400
+    },
+    "limitations": [
+      "Software or cloud graphics cannot establish physical GPU or phone performance.",
+      "Loopback HTTP with CDP throttling does not reproduce CDN compression, TLS connection setup or a physical WAN.",
+      "First usable observation is readiness plus rendered ground and enabled controls; actual input is independently exercised after the entry measurements.",
+      "Response uses actual camera matrices or interpolated player position captured with their submitted draw; physical display presentation is unmeasured.",
+      "Full-quality readiness requires desired cells and decoded materials plus ready lighting before a later submitted draw. This establishes resident quality, not visual realism.",
+      "Receipt-to-draw excludes browser input queue delay. Event-timeStamp-to-draw includes that queue; dispatch-to-draw also includes automation scheduling.",
+      "A single-draw orbit nudge provides a response observation and no within-action frame interval. First-observation counter gaps retain their unrecoverable intervals.",
+      "Input and frame observations cover the starting neighborhood segment; the complete-route correctness walkthrough remains separate.",
+      "Q03 uses its existing homepage driver and threshold; this report does not replace or close it."
+    ],
+    "pageURL": "http://127.0.0.1:35059/?qa=1&lang=en&mode=explore&pack=shijo-east",
+    "browser": "151.0.7922.173",
+    "graphics": {
+      "vendor": "WebKit",
+      "renderer": "WebKit WebGL",
+      "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "unmaskedVendor": "Google Inc. (Google)",
+      "unmaskedRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "contextAttributes": {
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "viewport": {
+        "width": 990,
+        "height": 717,
+        "dpr": 1,
+        "rect": {
+          "x": 49,
+          "y": 574.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 574.796875,
+          "right": 1039,
+          "bottom": 1291.625,
+          "left": 49
+        }
+      }
+    },
+    "softwareRendererDetected": true
+  },
+  "entries": [
+    {
+      "id": "cold",
+      "firstUsableObservedMs": 8475.5,
+      "fullQualityObservedMs": 21724.5,
+      "frame": 15,
+      "residentObservedMs": 20796.700000000186,
+      "drawStartedMs": 20797.100000000093,
+      "submittedMs": 20799.200000000186
+    },
+    {
+      "id": "warm-1",
+      "firstUsableObservedMs": 3487,
+      "fullQualityObservedMs": 16535,
+      "frame": 16,
+      "residentObservedMs": 15497.5,
+      "drawStartedMs": 15497.59999999986,
+      "submittedMs": 15500.09999999986
+    },
+    {
+      "id": "warm-2",
+      "firstUsableObservedMs": 3171.5,
+      "fullQualityObservedMs": 15162.899999999907,
+      "frame": 15,
+      "residentObservedMs": 14265.399999999907,
+      "drawStartedMs": 14265.59999999986,
+      "submittedMs": 14272.59999999986
+    },
+    {
+      "id": "warm-3",
+      "firstUsableObservedMs": 3523.5,
+      "fullQualityObservedMs": 17307.700000000186,
+      "frame": 16,
+      "residentObservedMs": 16261.700000000186,
+      "drawStartedMs": 16261.899999999907,
+      "submittedMs": 16264.30000000028
+    }
+  ],
+  "checks": [
+    {
+      "id": "cold-exact-index",
+      "pass": true
+    },
+    {
+      "id": "cold-first-usable-budget",
+      "pass": false
+    },
+    {
+      "id": "cold-full-quality-submitted-draw",
+      "pass": true
+    },
+    {
+      "id": "cold-full-quality-budget",
+      "pass": false
+    },
+    {
+      "id": "warm-1-exact-index",
+      "pass": true
+    },
+    {
+      "id": "warm-1-first-usable-budget",
+      "pass": false
+    },
+    {
+      "id": "warm-1-full-quality-submitted-draw",
+      "pass": true
+    },
+    {
+      "id": "warm-1-full-quality-budget",
+      "pass": false
+    },
+    {
+      "id": "warm-2-exact-index",
+      "pass": true
+    },
+    {
+      "id": "warm-2-first-usable-budget",
+      "pass": false
+    },
+    {
+      "id": "warm-2-full-quality-submitted-draw",
+      "pass": true
+    },
+    {
+      "id": "warm-2-full-quality-budget",
+      "pass": false
+    },
+    {
+      "id": "warm-3-exact-index",
+      "pass": true
+    },
+    {
+      "id": "warm-3-first-usable-budget",
+      "pass": false
+    },
+    {
+      "id": "warm-3-full-quality-submitted-draw",
+      "pass": true
+    },
+    {
+      "id": "warm-3-full-quality-budget",
+      "pass": false
+    },
+    {
+      "id": "all-inputs-trusted-and-responsive",
+      "pass": true
+    },
+    {
+      "id": "input-response-p95",
+      "pass": true
+    },
+    {
+      "id": "input-event-timestamp-response-p95",
+      "pass": false
+    },
+    {
+      "id": "observed-frame-interval-p95",
+      "pass": false
+    },
+    {
+      "id": "hidden-neighborhood-zero-work",
+      "pass": false
+    },
+    {
+      "id": "no-page-exceptions",
+      "pass": true
+    },
+    {
+      "id": "no-missing-build-resources",
+      "pass": true
+    }
+  ],
+  "inputAndFrameMetrics": {
+    "walk": {
+      "actions": 10,
+      "responses": 10,
+      "drawIntervals": 30,
+      "inputP95Ms": 19.800000000279397,
+      "eventTimestampToResponseP95Ms": 918.1000000000931,
+      "eventQueueP95Ms": 910.8000000002794,
+      "dispatchP95Ms": 919.8999999999069,
+      "eventTimestampToResponseMs": [
+        22.5,
+        889.6000000000931,
+        893.7000000001863,
+        910.3000000002794,
+        850.6999999997206,
+        863.7999999998137,
+        837.3000000002794,
+        904.1999999997206,
+        918.1000000000931,
+        848.3999999999069
+      ],
+      "eventQueueMs": [
+        2.6999999997206032,
+        884.9000000003725,
+        875.7000000001863,
+        905.8000000002794,
+        844,
+        859.5,
+        830.1000000000931,
+        899.1999999997206,
+        910.8000000002794,
+        843.2000000001863
+      ],
+      "receivedHoldDurationsMs": [
+        2731.7000000001863,
+        2770.399999999907,
+        2932.5,
+        2703.5999999996275,
+        2823.100000000093,
+        2674.5999999996275,
+        2744.2000000001863,
+        2706.4000000003725,
+        2671.6999999997206,
+        2807.6999999997206
+      ],
+      "eventTimestampHoldDurationsMs": [
+        1825.1000000000931,
+        2658.7000000001863,
+        2835.8000000002794,
+        2670,
+        2755.5,
+        2572.899999999907,
+        2724.7000000001863,
+        2685.2999999998137,
+        2723.600000000093,
+        2592.5
+      ],
+      "drawsPerAction": [
+        {
+          "id": "walk-1",
+          "draws": 4,
+          "intervals": 3
+        },
+        {
+          "id": "walk-2",
+          "draws": 4,
+          "intervals": 3
+        },
+        {
+          "id": "walk-3",
+          "draws": 4,
+          "intervals": 3
+        },
+        {
+          "id": "walk-4",
+          "draws": 4,
+          "intervals": 3
+        },
+        {
+          "id": "walk-5",
+          "draws": 4,
+          "intervals": 3
+        },
+        {
+          "id": "walk-6",
+          "draws": 4,
+          "intervals": 3
+        },
+        {
+          "id": "walk-7",
+          "draws": 4,
+          "intervals": 3
+        },
+        {
+          "id": "walk-8",
+          "draws": 4,
+          "intervals": 3
+        },
+        {
+          "id": "walk-9",
+          "draws": 4,
+          "intervals": 3
+        },
+        {
+          "id": "walk-10",
+          "draws": 4,
+          "intervals": 3
+        }
+      ],
+      "singleDrawActions": 0,
+      "frameIntervalP95Ms": 1038.0999999996275,
+      "intervalsMs": [
+        897.1999999997206,
+        909.1000000000931,
+        911.3000000002794,
+        913.8000000002794,
+        862.2999999998137,
+        994.2999999998137,
+        967.6999999997206,
+        976.6000000000931,
+        974,
+        907,
+        858.1999999997206,
+        938,
+        973.4000000003725,
+        929.7999999998137,
+        918.1000000000931,
+        873.8999999999069,
+        839.6000000000931,
+        960.7999999998137,
+        1038.0999999996275,
+        854.3000000002794,
+        848.8999999999069,
+        874.3000000002794,
+        913.6000000000931,
+        918,
+        916.7000000001863,
+        877.8999999999069,
+        874,
+        907,
+        846.4000000003725,
+        1054.8999999999069
+      ],
+      "frameIntervalScope": "Within-action intervals between observed submitted draws; counter gaps remain a failed gate."
+    },
+    "orbit": {
+      "actions": 10,
+      "responses": 10,
+      "drawIntervals": 0,
+      "inputP95Ms": 18.600000000093132,
+      "eventTimestampToResponseP95Ms": 18.700000000186265,
+      "eventQueueP95Ms": 0.3000000002793968,
+      "dispatchP95Ms": 19.200000000186265,
+      "eventTimestampToResponseMs": [
+        7.5,
+        13.600000000093132,
+        11.300000000279397,
+        6.5,
+        14.400000000372529,
+        12.5,
+        14,
+        17.200000000186265,
+        9.799999999813735,
+        18.700000000186265
+      ],
+      "eventQueueMs": [
+        0.3000000002793968,
+        0.20000000018626451,
+        0.3000000002793968,
+        0.19999999972060323,
+        0.3000000002793968,
+        0,
+        0.20000000018626451,
+        0.10000000009313226,
+        0.19999999972060323,
+        0.10000000009313226
+      ],
+      "receivedHoldDurationsMs": [
+        858.5,
+        864.6999999997206,
+        975.8999999999069,
+        1014.2000000001863,
+        865.2999999998137,
+        909.5,
+        977,
+        887.3000000002794,
+        888.3999999999069,
+        1035.1000000000931
+      ],
+      "eventTimestampHoldDurationsMs": [
+        858.5,
+        864.6000000000931,
+        976,
+        1014.1999999997206,
+        865,
+        908.6000000000931,
+        976.3000000002794,
+        887.2000000001863,
+        888.3999999999069,
+        1034.3999999999069
+      ],
+      "drawsPerAction": [
+        {
+          "id": "orbit-1",
+          "draws": 1,
+          "intervals": 0
+        },
+        {
+          "id": "orbit-2",
+          "draws": 1,
+          "intervals": 0
+        },
+        {
+          "id": "orbit-3",
+          "draws": 1,
+          "intervals": 0
+        },
+        {
+          "id": "orbit-4",
+          "draws": 1,
+          "intervals": 0
+        },
+        {
+          "id": "orbit-5",
+          "draws": 1,
+          "intervals": 0
+        },
+        {
+          "id": "orbit-6",
+          "draws": 1,
+          "intervals": 0
+        },
+        {
+          "id": "orbit-7",
+          "draws": 1,
+          "intervals": 0
+        },
+        {
+          "id": "orbit-8",
+          "draws": 1,
+          "intervals": 0
+        },
+        {
+          "id": "orbit-9",
+          "draws": 1,
+          "intervals": 0
+        },
+        {
+          "id": "orbit-10",
+          "draws": 1,
+          "intervals": 0
+        }
+      ],
+      "singleDrawActions": 10,
+      "frameIntervalP95Ms": null,
+      "intervalsMs": [],
+      "frameIntervalScope": "No within-action draw intervals were observed; frame cadence is unmeasured for this group."
+    },
+    "all": {
+      "actions": 20,
+      "responses": 20,
+      "drawIntervals": 30,
+      "inputP95Ms": 18.600000000093132,
+      "eventTimestampToResponseP95Ms": 910.3000000002794,
+      "eventQueueP95Ms": 905.8000000002794,
+      "dispatchP95Ms": 911.8000000002794,
+      "eventTimestampToResponseMs": [
+        22.5,
+        889.6000000000931,
+        893.7000000001863,
+        910.3000000002794,
+        850.6999999997206,
+        863.7999999998137,
+        837.3000000002794,
+        904.1999999997206,
+        918.1000000000931,
+        848.3999999999069,
+        7.5,
+        13.600000000093132,
+        11.300000000279397,
+        6.5,
+        14.400000000372529,
+        12.5,
+        14,
+        17.200000000186265,
+        9.799999999813735,
+        18.700000000186265
+      ],
+      "eventQueueMs": [
+        2.6999999997206032,
+        884.9000000003725,
+        875.7000000001863,
+        905.8000000002794,
+        844,
+        859.5,
+        830.1000000000931,
+        899.1999999997206,
+        910.8000000002794,
+        843.2000000001863,
+        0.3000000002793968,
+        0.20000000018626451,
+        0.3000000002793968,
+        0.19999999972060323,
+        0.3000000002793968,
+        0,
+        0.20000000018626451,
+        0.10000000009313226,
+        0.19999999972060323,
+        0.10000000009313226
+      ],
+      "receivedHoldDurationsMs": [
+        2731.7000000001863,
+        2770.399999999907,
+        2932.5,
+        2703.5999999996275,
+        2823.100000000093,
+        2674.5999999996275,
+        2744.2000000001863,
+        2706.4000000003725,
+        2671.6999999997206,
+        2807.6999999997206,
+        858.5,
+        864.6999999997206,
+        975.8999999999069,
+        1014.2000000001863,
+        865.2999999998137,
+        909.5,
+        977,
+        887.3000000002794,
+        888.3999999999069,
+        1035.1000000000931
+      ],
+      "eventTimestampHoldDurationsMs": [
+        1825.1000000000931,
+        2658.7000000001863,
+        2835.8000000002794,
+        2670,
+        2755.5,
+        2572.899999999907,
+        2724.7000000001863,
+        2685.2999999998137,
+        2723.600000000093,
+        2592.5,
+        858.5,
+        864.6000000000931,
+        976,
+        1014.1999999997206,
+        865,
+        908.6000000000931,
+        976.3000000002794,
+        887.2000000001863,
+        888.3999999999069,
+        1034.3999999999069
+      ],
+      "drawsPerAction": [
+        {
+          "id": "walk-1",
+          "draws": 4,
+          "intervals": 3
+        },
+        {
+          "id": "walk-2",
+          "draws": 4,
+          "intervals": 3
+        },
+        {
+          "id": "walk-3",
+          "draws": 4,
+          "intervals": 3
+        },
+        {
+          "id": "walk-4",
+          "draws": 4,
+          "intervals": 3
+        },
+        {
+          "id": "walk-5",
+          "draws": 4,
+          "intervals": 3
+        },
+        {
+          "id": "walk-6",
+          "draws": 4,
+          "intervals": 3
+        },
+        {
+          "id": "walk-7",
+          "draws": 4,
+          "intervals": 3
+        },
+        {
+          "id": "walk-8",
+          "draws": 4,
+          "intervals": 3
+        },
+        {
+          "id": "walk-9",
+          "draws": 4,
+          "intervals": 3
+        },
+        {
+          "id": "walk-10",
+          "draws": 4,
+          "intervals": 3
+        },
+        {
+          "id": "orbit-1",
+          "draws": 1,
+          "intervals": 0
+        },
+        {
+          "id": "orbit-2",
+          "draws": 1,
+          "intervals": 0
+        },
+        {
+          "id": "orbit-3",
+          "draws": 1,
+          "intervals": 0
+        },
+        {
+          "id": "orbit-4",
+          "draws": 1,
+          "intervals": 0
+        },
+        {
+          "id": "orbit-5",
+          "draws": 1,
+          "intervals": 0
+        },
+        {
+          "id": "orbit-6",
+          "draws": 1,
+          "intervals": 0
+        },
+        {
+          "id": "orbit-7",
+          "draws": 1,
+          "intervals": 0
+        },
+        {
+          "id": "orbit-8",
+          "draws": 1,
+          "intervals": 0
+        },
+        {
+          "id": "orbit-9",
+          "draws": 1,
+          "intervals": 0
+        },
+        {
+          "id": "orbit-10",
+          "draws": 1,
+          "intervals": 0
+        }
+      ],
+      "singleDrawActions": 10,
+      "frameIntervalP95Ms": 1038.0999999996275,
+      "intervalsMs": [
+        897.1999999997206,
+        909.1000000000931,
+        911.3000000002794,
+        913.8000000002794,
+        862.2999999998137,
+        994.2999999998137,
+        967.6999999997206,
+        976.6000000000931,
+        974,
+        907,
+        858.1999999997206,
+        938,
+        973.4000000003725,
+        929.7999999998137,
+        918.1000000000931,
+        873.8999999999069,
+        839.6000000000931,
+        960.7999999998137,
+        1038.0999999996275,
+        854.3000000002794,
+        848.8999999999069,
+        874.3000000002794,
+        913.6000000000931,
+        918,
+        916.7000000001863,
+        877.8999999999069,
+        874,
+        907,
+        846.4000000003725,
+        1054.8999999999069
+      ],
+      "frameIntervalScope": "Within-action intervals between observed submitted draws; counter gaps remain a failed gate."
+    }
+  },
+  "frameCounterGaps": [
+    {
+      "action": "walk-2",
+      "observedMs": 22954,
+      "delta": 2
+    },
+    {
+      "action": "walk-3",
+      "observedMs": 28300.200000000186,
+      "delta": 2
+    },
+    {
+      "action": "walk-4",
+      "observedMs": 33857.30000000028,
+      "delta": 2
+    },
+    {
+      "action": "walk-5",
+      "observedMs": 39157.39999999991,
+      "delta": 2
+    },
+    {
+      "action": "walk-6",
+      "observedMs": 44742.10000000009,
+      "delta": 2
+    },
+    {
+      "action": "walk-7",
+      "observedMs": 50034.30000000028,
+      "delta": 2
+    },
+    {
+      "action": "walk-8",
+      "observedMs": 55441.89999999991,
+      "delta": 2
+    },
+    {
+      "action": "walk-9",
+      "observedMs": 60839.60000000009,
+      "delta": 2
+    },
+    {
+      "action": "walk-10",
+      "observedMs": 66153.3999999999,
+      "delta": 2
+    }
+  ],
+  "hidden": {
+    "status": "unobserved",
+    "observed": false
+  },
+  "errors": [],
+  "files": [
+    {
+      "path": "result.json.gz",
+      "bytes": 116378,
+      "sha256": "0783e9a9f43f27f24dc97dc224a8812c96dd66c014e83908fcc6fcbb6c378eab",
+      "decodedBytes": 1435511,
+      "decodedSha256": "3a48c818141235a0f358c283fd20a78399c26e5280e5c25d3cbae2d8df19fc94",
+      "source": "Actual local browser diagnostic against the immutable captured application package",
+      "date": "2026-11-05T16:17:21.417Z",
+      "rights": "Project-generated diagnostic and MIT-licensed repository source; third-party asset identities remain in their source receipts.",
+      "location": "Shijo East starting segment; local managed Linux host",
+      "method": "Original output and executed source compressed with gzip; decoded bytes preserved",
+      "limitations": [
+        "English/day, one cold plus three warm entries, starting-segment inputs only.",
+        "Software graphics and loopback network approximation; no physical-device or human acceptance.",
+        "Full-quality checks selected resident assets and a later draw; visual realism and complete-route coverage are unverified."
+      ]
+    },
+    {
+      "path": "neighborhood-performance.executed.mjs.gz",
+      "bytes": 10445,
+      "sha256": "b104cec1347f67bca2ee9f357b93bacf2c3fe8f21488a78bf23d82cd79b32394",
+      "decodedBytes": 32822,
+      "decodedSha256": "c2dcd5d954753d1489f02cfee6279ced2a8eaada3955d8bbea4dc7f70deea2b8",
+      "source": "Actual local browser diagnostic against the immutable captured application package",
+      "date": "2026-11-05T16:17:21.417Z",
+      "rights": "Project-generated diagnostic and MIT-licensed repository source; third-party asset identities remain in their source receipts.",
+      "location": "Shijo East starting segment; local managed Linux host",
+      "method": "Original output and executed source compressed with gzip; decoded bytes preserved",
+      "limitations": [
+        "English/day, one cold plus three warm entries, starting-segment inputs only.",
+        "Software graphics and loopback network approximation; no physical-device or human acceptance.",
+        "Full-quality checks selected resident assets and a later draw; visual realism and complete-route coverage are unverified."
+      ]
+    },
+    {
+      "path": "submitted-frame.executed.js.gz",
+      "bytes": 1169,
+      "sha256": "409022a5da3d20fd34d36de0d21309641e29eb8eb3d016caa9facc172fffb512",
+      "decodedBytes": 3151,
+      "decodedSha256": "1b318cb08d8d87782bad82657224334602fb6c43f4083a43d8e819b74d31c874",
+      "source": "Actual local browser diagnostic against the immutable captured application package",
+      "date": "2026-11-05T16:17:21.417Z",
+      "rights": "Project-generated diagnostic and MIT-licensed repository source; third-party asset identities remain in their source receipts.",
+      "location": "Shijo East starting segment; local managed Linux host",
+      "method": "Original output and executed source compressed with gzip; decoded bytes preserved",
+      "limitations": [
+        "English/day, one cold plus three warm entries, starting-segment inputs only.",
+        "Software graphics and loopback network approximation; no physical-device or human acceptance.",
+        "Full-quality checks selected resident assets and a later draw; visual realism and complete-route coverage are unverified."
+      ]
+    },
+    {
+      "path": "development-attempt.json.gz",
+      "bytes": 116151,
+      "sha256": "494596fe68ad7844ac1b439937422d9eb9f0ad2dcca2e77d3c8ced53fbb8eb9d",
+      "decodedBytes": 1432405,
+      "decodedSha256": "daa457e72197746200dcc14a35adf941fb269a0731beb632705e7d2ce861dfc7",
+      "source": "Actual local browser diagnostic against the immutable captured application package",
+      "date": "2026-11-05T16:14:07.386Z",
+      "rights": "Project-generated diagnostic and MIT-licensed repository source; third-party asset identities remain in their source receipts.",
+      "location": "Shijo East starting segment; local managed Linux host",
+      "method": "Original output and executed source compressed with gzip; decoded bytes preserved",
+      "limitations": [
+        "English/day, one cold plus three warm entries, starting-segment inputs only.",
+        "Software graphics and loopback network approximation; no physical-device or human acceptance.",
+        "Full-quality checks selected resident assets and a later draw; visual realism and complete-route coverage are unverified.",
+        "Earlier implementation diagnostic; executing source hashes are retained in its report, while exact executing source copies were not saved."
+      ]
+    }
+  ]
+}

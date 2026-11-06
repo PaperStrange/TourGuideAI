@@ -1,0 +1,99 @@
+{
+	"asset" : {
+		"version" : "1.0"
+	},
+	"properties" : {
+		"meshcode" : {},
+		"feature_type" : {},
+		"city_code" : {},
+		"city_name" : {},
+		"gml_id" : {},
+		"attributes" : {},
+		"core:creationDate" : {},
+		"tran:class" : {},
+		"tran:Road_tran:function" : {},
+		"tran:function" : {},
+		"uro:numberOfLanes" : {},
+		"tran:surfaceMaterial" : {},
+		"tran:usage" : {},
+		"uro:RoadStructureAttribute_uro:widthType" : {},
+		"uro:RoadStructureAttribute_uro:width" : {},
+		"uro:RoadStructureAttribute_uro:numberOfLanes" : {},
+		"uro:RoadStructureAttribute_uro:sectionType" : {},
+		"uro:TrafficVolumeAttribute_uro:sectionID" : {},
+		"uro:TrafficVolumeAttribute_uro:routeName" : {},
+		"uro:TrafficVolumeAttribute_uro:weekday12hourTrafficVolume" : {},
+		"uro:TrafficVolumeAttribute_uro:weekday24hourTrafficVolume" : {},
+		"uro:TrafficVolumeAttribute_uro:largeVehicleRate" : {},
+		"uro:TrafficVolumeAttribute_uro:congestionRate" : {},
+		"uro:TrafficVolumeAttribute_uro:averageTravelSpeedInCongestion" : {},
+		"uro:TrafficVolumeAttribute_uro:averageInboundTravelSpeedInCongestion" : {},
+		"uro:TrafficVolumeAttribute_uro:averageOutboundTravelSpeedInCongestion" : {},
+		"uro:TrafficVolumeAttribute_uro:averageInboundTravelSpeedNotCongestion" : {},
+		"uro:TrafficVolumeAttribute_uro:averageOutboundTravelSpeedNotCongestion" : {},
+		"uro:TrafficVolumeAttribute_uro:observationPointName" : {},
+		"uro:TrafficVolumeAttribute_uro:reference" : {},
+		"uro:TrafficVolumeAttribute_uro:surveyYear" : {},
+		"uro:geometrySrcDescLod1" : {},
+		"uro:lodType" : {},
+		"gml:name" : {}
+	},
+	"geometricError" : 313.2086798843976,
+	"root" : {
+		"boundingVolume" : {
+			"region" : [ 2.369651114833203, 0.610933709917856, 2.369723496886785, 0.6109829842107332, 74.87952485776059, 76.66879134074742 ]
+		},
+		"geometricError" : 313.2086798843976,
+		"refine" : "REPLACE",
+		"content" : {
+			"boundingVolume" : {
+				"region" : [ 2.369651114833203, 0.610933709917856, 2.369723496189852, 0.6109829842107332, 74.87952485776059, 76.66879134074742 ]
+			},
+			"uri" : "data/data3.b3dm"
+		},
+		"children" : [
+			{
+				"boundingVolume" : {
+					"region" : [ 2.369684266250632, 0.6109558862989984, 2.369723496886785, 0.6109829842107332, 75.49121856729585, 76.66879134074742 ]
+				},
+				"geometricError" : 0,
+				"refine" : "REPLACE",
+				"content" : {
+					"boundingVolume" : {
+						"region" : [ 2.369684266250632, 0.6109558862989984, 2.369723496886785, 0.6109681520449028, 75.49121856729585, 76.66879134074742 ]
+					},
+					"uri" : "data/data0.b3dm"
+				},
+				"children" : []
+			},
+			{
+				"boundingVolume" : {
+					"region" : [ 2.369651114833203, 0.610933709917856, 2.3696873058599945, 0.6109829842107332, 74.87952485776059, 76.43066764263764 ]
+				},
+				"geometricError" : 0,
+				"refine" : "REPLACE",
+				"content" : {
+					"boundingVolume" : {
+						"region" : [ 2.369651114833203, 0.610933709917856, 2.369687235566033, 0.6109829842107332, 74.87952485776059, 76.43066764263764 ]
+					},
+					"uri" : "data/data1.b3dm"
+				},
+				"children" : []
+			},
+			{
+				"boundingVolume" : {
+					"region" : [ 2.369651114833203, 0.610933709917856, 2.3696873058599945, 0.6109583470642945, 74.92106800408007, 75.14673641972374 ]
+				},
+				"geometricError" : 0,
+				"refine" : "REPLACE",
+				"content" : {
+					"boundingVolume" : {
+						"region" : [ 2.369652174187147, 0.6109475091440789, 2.3696546202038293, 0.6109575318957804, 74.92106800408007, 75.14673641972374 ]
+					},
+					"uri" : "data/data2.b3dm"
+				},
+				"children" : []
+			}
+		]
+	}
+}

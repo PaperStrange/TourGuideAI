@@ -1,6 +1,6 @@
 # Matched Kyoto representation trials
 
-Prepared 31 October 2026. **Status: defined; execution blocked on qualified source material and a physical-GPU test device.** No representation has won this comparison. The delivery target remains all six sights and 1,353.444 m of connected walking.
+Updated 5 November 2026. **Status: defined; execution requires qualified source material and declared physical-GPU devices.** No representation has won this comparison. The delivery target remains all six sights, 54 edges, 55 nodes, 13 cells and 1,353.444 m of connected walking. [Benchmark V1](../benchmark.md) defines measurements, repetitions, participant acceptance and final selection.
 
 [Trial definitions](trial-definitions.json) pin the existing [route geography](../../../src/neighborhoods/shijo-east/geography.json) by SHA-256. The coordinates describe the existing application's route. Its zero heights, corridor widths and bridge endpoint include authored values; they cannot establish surveyed terrain, a building entrance or current public access.
 
@@ -33,11 +33,11 @@ Run daylight and night as separate matched conditions. Record captured lighting 
 | Paired contact sheet | Same trial, timestamp, pose, condition and viewport; source photograph beside each pair; unaltered originals retained |
 | Motion capture | Forward/reverse traversal, corners, roof transitions, full-quality loading and visible LOD changes; label recording overhead |
 | Run manifest | Source/asset/camera hashes, device/browser, settings, build commit, timestamps, rights, method and limitations |
-| Measurements | Cold + three warm loads, first-usable and full-quality-ready clocks, event-timestamp-to-submitted-draw latency, frame intervals, transfer/decode and resource residency |
+| Measurements | Three sessions per candidate/device/locale/lighting condition, each cold + three warm entries; separate first-usable and full-quality-after-draw clocks, queued native-input-to-submitted-draw latency, frame intervals, transfer/decode and resource residency |
 | Defect sheet | Exact location/pose, severity, coverage holes, floating/smeared geometry, frozen people, reflection errors and navigation interruption |
 
 Store generated runs under ignored `artifacts/realism-01/runs/<trial>/<condition>/<representation>/<run-id>/`; promote reviewed evidence into [the sprint evidence directory](../../../evidence/realism-01/). Use a named physical GPU for acceptance. Software-rendered observations retain their environment label.
 
-Retain the existing gates: first usable ≤8 s cold and each warm ≤3 s at 10 Mbps/80 ms; input event timestamp to changed state/submitted draw p95 ≤100 ms; frame interval p95 ≤33.3 ms; every Q03 warm action <500 ms. Report full-quality readiness separately. The [candidate-13 measurement record](../../../evidence/neighborhood-20261024/performance/candidate-13/README.md) supplies the bounded baseline and open failures. No new acceptance measurements exist yet.
+First usable and full-quality starting view each require ≤8 s cold and ≤3 s for every warm entry at 10 Mbps/80 ms. Full quality requires required geometry/materials/lighting/detail resident followed by a later submitted frame containing them. Event timestamp through actual visible camera/state change to its corresponding draw includes browser queue and requires p95 ≤100 ms. Walking/turning frame intervals, including streaming, require p95 ≤33.3 ms per region/group; gaps remain unverified. Every Q03 warm action remains <500 ms using its original boundary. The [candidate-13 record](../../../evidence/neighborhood-20261024/performance/candidate-13/README.md) retains its original definitions and starting-segment software-host scope.
 
-Score qualified candidates using realism/recognition 45%, immersion 35%, usefulness 10%, cost/scaling 10%; rights, continuous walking and performance are independent gates. Trial results feed the sprint decision record. Complete-route, independent participant acceptance remains required after any renderer decision.
+T01–T03 establish technical eligibility and the declared final comparison pair. Build comparable T04 candidates with the common journey before final physical-device and fresh-participant acceptance. Final selection uses realism 25%, joint discovery/recognition 20%, immersion 35%, usefulness 10%, labor 5% and cash 5%, with mandatory gates, complete frozen cost references and the uncertainty rules in Benchmark V1. One qualifying candidate supports absolute acceptance. Missing or inconclusive evidence leaves the selection open.

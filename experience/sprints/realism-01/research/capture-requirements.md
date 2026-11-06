@@ -1,6 +1,22 @@
 # Capture acquisition proposal
 
-Prepared 31 October 2026 from the [full-route source audit](source-coverage.md). Status: requirements ready; supplier, dates, price and funding **unquoted/unapproved**. No outreach, booking or purchase has occurred.
+Updated 5 November 2026 from the [full-route source audit](source-coverage.md) and
+[five inspected tile samples](../../../evidence/realism-01/sources/README.md).
+Status: requirements ready; supplier, dates, price and funding **unquoted/unapproved**.
+No outreach, booking or purchase has occurred.
+
+## Coverage items for supplier estimates
+
+| Location | Existing source result | Quote item that remains necessary |
+| --- | --- | --- |
+| Mitsui / Shijō–Karasuma | Nearby non-leaf tile data840 inspected; Mitsui identity unconfirmed | Identify exact building, resolve entrance/side/corner views and measured façade proportions; source gap remains open |
+| Nishiki west and covered passage | data802/data804 contain 36 LOD2 objects and two atlases | Shop-by-shop façades, entrances, ceiling, pillars and floor coverage through the passage; acquire matching day/night exposures where source quality is insufficient |
+| Tenmangū and Shinkyōgoku connection | Candidate bounds indexed; assembled surfaces uninspected | Current shrine approach and adjoining arcade interfaces, public-street clearances and reverse views |
+| Shijō east / Takase | Building candidates indexed; retained detailed road/furniture collections have no nearby candidates on edges 1–49 | Opposite street sides, actual river mouth, surveyed ground, pavement and night fixtures; source qualification must resolve whether other licensed collections supply these |
+| Pontochō / bridge transition | data765 includes three LOD3 and two LOD2 objects; sampled road has no texture | Entrance correspondence, occlusions, bridge deck/parapet/grade, banks and lighting; inspect the 2 road and 12 furniture candidates before reducing fieldwork |
+
+Each quote must identify edge ranges and visible surfaces supplied. Candidate
+bounding regions and texture atlas sizes do not justify removing capture items.
 
 ## Work packages for quotation
 

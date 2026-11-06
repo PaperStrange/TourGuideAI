@@ -1,0 +1,271 @@
+{
+  "schemaVersion": 1,
+  "kind": "historical-benchmark-calibration",
+  "method": "Recomputed from three immutable original reports; no new browser run",
+  "evidence": [
+    {
+      "path": "experience/evidence/neighborhood-20261024/performance/candidate-13/binding.json",
+      "sha256": "8b555e02fcbf47ce02fd699e7a916faecf7ceb2ccc165937f53c2825189c5dda",
+      "reportPath": "experience/evidence/neighborhood-20261024/performance/candidate-13/result.json.gz",
+      "reportSha256": "f76a6480651653daa4461a78807e7ba8ced6f484f280cc63932ce1025b5ef2c6",
+      "date": "2026-10-24T05:02:52.554Z",
+      "source": "Retained original browser run",
+      "rights": "Repository-authored diagnostic observations",
+      "location": "Shijō East application on the recorded local software host",
+      "method": "Verify compressed and decoded SHA-256, parse original JSON and recompute bounded observations",
+      "limitations": "Historical software-host observations; no physical-device or human acceptance",
+      "verifiedFiles": 5
+    },
+    {
+      "path": "experience/evidence/neighborhood-20261024/performance/candidate-13-q03/binding.json",
+      "sha256": "397da388ae4cfc37bd57546a47a63251456ef93c8d61750680557345d294c026",
+      "reportPath": "experience/evidence/neighborhood-20261024/performance/candidate-13-q03/result.json.gz",
+      "reportSha256": "af55b6d67aa3bc70da975cacafd51387bd764cfb43a1b953d5da8454b34119e9",
+      "date": "2026-10-24T05:05:20.853Z",
+      "source": "Retained original browser run",
+      "rights": "Repository-authored diagnostic observations",
+      "location": "Shijō East application on the recorded local software host",
+      "method": "Verify compressed and decoded SHA-256, parse original JSON and recompute bounded observations",
+      "limitations": "Historical software-host observations; no physical-device or human acceptance",
+      "verifiedFiles": 6
+    },
+    {
+      "path": "experience/evidence/neighborhood-20261024/performance/candidate-13-native-visibility/binding.json",
+      "sha256": "e5583225f754c50e28b6dc07e698b1932634a86af1d388029651ce46bb2885c6",
+      "reportPath": "experience/evidence/neighborhood-20261024/performance/candidate-13-native-visibility/result.json.gz",
+      "reportSha256": "ff7658a6473e85df5f08cf18cb5cb3a7ca04dd0ebde7836132348270f12da02b",
+      "date": "2026-10-24T05:08:10.560Z",
+      "source": "Retained original browser run",
+      "rights": "Repository-authored diagnostic observations",
+      "location": "Shijō East application on the recorded local software host",
+      "method": "Verify compressed and decoded SHA-256, parse original JSON and recompute bounded observations",
+      "limitations": "Historical software-host observations; no physical-device or human acceptance",
+      "verifiedFiles": 6
+    }
+  ],
+  "originalPackageSha256": "e8eed9146ea83accaf54769ff2aaaf5a902cfd344295e3348e11684e50838b0c",
+  "conditions": {
+    "browser": "151.0.7922.173",
+    "locale": "en",
+    "lighting": "day",
+    "graphics": {
+      "vendor": "WebKit",
+      "renderer": "WebKit WebGL",
+      "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "unmaskedVendor": "Google Inc. (Google)",
+      "unmaskedRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "contextAttributes": {
+        "alpha": true,
+        "antialias": true,
+        "depth": true,
+        "desynchronized": false,
+        "failIfMajorPerformanceCaveat": false,
+        "powerPreference": "high-performance",
+        "premultipliedAlpha": true,
+        "preserveDrawingBuffer": false,
+        "stencil": false,
+        "xrCompatible": false
+      },
+      "viewport": {
+        "width": 990,
+        "height": 717,
+        "dpr": 1,
+        "rect": {
+          "x": 49,
+          "y": 574.796875,
+          "width": 990,
+          "height": 716.828125,
+          "top": 574.796875,
+          "right": 1039,
+          "bottom": 1291.625,
+          "left": 49
+        }
+      }
+    },
+    "limitation": "Starting segment; original third-person camera; one session; software renderer. Benchmark V1 conditions differ."
+  },
+  "performance": {
+    "entries": [
+      {
+        "id": "cold",
+        "firstUsableMs": 7885.60000000149,
+        "residentObservedMs": 19001.200000001118,
+        "thresholdMs": 8000,
+        "firstUsableStatus": "pass",
+        "fullQualityStatus": "unverified",
+        "fullQualityReason": "Original trace has no submitted draw bound to final resident detail."
+      },
+      {
+        "id": "warm-1",
+        "firstUsableMs": 2767.7000000011176,
+        "residentObservedMs": 12459.200000001118,
+        "thresholdMs": 3000,
+        "firstUsableStatus": "pass",
+        "fullQualityStatus": "unverified",
+        "fullQualityReason": "Original trace has no submitted draw bound to final resident detail."
+      },
+      {
+        "id": "warm-2",
+        "firstUsableMs": 2766.699999999255,
+        "residentObservedMs": 12857.699999999255,
+        "thresholdMs": 3000,
+        "firstUsableStatus": "pass",
+        "fullQualityStatus": "unverified",
+        "fullQualityReason": "Original trace has no submitted draw bound to final resident detail."
+      },
+      {
+        "id": "warm-3",
+        "firstUsableMs": 2647.699999999255,
+        "residentObservedMs": 11760.800000000745,
+        "thresholdMs": 3000,
+        "firstUsableStatus": "pass",
+        "fullQualityStatus": "unverified",
+        "fullQualityReason": "Original trace has no submitted draw bound to final resident detail."
+      }
+    ],
+    "input": {
+      "samples": 20,
+      "p95Ms": 892,
+      "handlerP95Ms": 18.09999999962747,
+      "queueP95Ms": 887.7999999988824,
+      "status": "fail",
+      "limitation": "Original response used desired camera state; a compliant rendered-camera observation is absent."
+    },
+    "frames": {
+      "samples": 29,
+      "p95Ms": 972.2999999988824,
+      "gaps": 8,
+      "groups": [
+        {
+          "kind": "walk",
+          "actions": 10,
+          "intervals": 29,
+          "p95Ms": 972.2999999988824,
+          "complete": false
+        },
+        {
+          "kind": "orbit",
+          "actions": 10,
+          "intervals": 0,
+          "p95Ms": null,
+          "complete": false
+        }
+      ],
+      "observedStatus": "fail",
+      "completenessStatus": "unverified"
+    },
+    "originalChecks": [
+      {
+        "id": "cold-exact-index",
+        "pass": true
+      },
+      {
+        "id": "cold-first-usable-budget",
+        "pass": true
+      },
+      {
+        "id": "cold-desired-sections-ready",
+        "pass": true
+      },
+      {
+        "id": "warm-1-exact-index",
+        "pass": true
+      },
+      {
+        "id": "warm-1-first-usable-budget",
+        "pass": true
+      },
+      {
+        "id": "warm-1-desired-sections-ready",
+        "pass": true
+      },
+      {
+        "id": "warm-2-exact-index",
+        "pass": true
+      },
+      {
+        "id": "warm-2-first-usable-budget",
+        "pass": true
+      },
+      {
+        "id": "warm-2-desired-sections-ready",
+        "pass": true
+      },
+      {
+        "id": "warm-3-exact-index",
+        "pass": true
+      },
+      {
+        "id": "warm-3-first-usable-budget",
+        "pass": true
+      },
+      {
+        "id": "warm-3-desired-sections-ready",
+        "pass": true
+      },
+      {
+        "id": "all-inputs-trusted-and-responsive",
+        "pass": true
+      },
+      {
+        "id": "input-response-p95",
+        "pass": true
+      },
+      {
+        "id": "input-event-timestamp-response-p95",
+        "pass": false
+      },
+      {
+        "id": "observed-frame-interval-p95",
+        "pass": false
+      },
+      {
+        "id": "hidden-neighborhood-zero-work",
+        "pass": false
+      },
+      {
+        "id": "no-page-exceptions",
+        "pass": true
+      },
+      {
+        "id": "no-missing-build-resources",
+        "pass": true
+      }
+    ],
+    "hidden": {
+      "originalStatus": "fail",
+      "observationStatus": "unverified"
+    },
+    "physicalDeviceStatus": "unverified",
+    "fullRouteStatus": "unverified"
+  },
+  "q03": {
+    "durationsMs": [
+      1090,
+      1102.5,
+      1100.199999999255
+    ],
+    "thresholdMsExclusive": 500,
+    "status": "fail",
+    "boundary": "Original driver: before locale click through observed changed document language"
+  },
+  "nativeVisibility": {
+    "passed": 13,
+    "total": 13,
+    "status": "pass",
+    "elapsedMs": 2019.5999999996275,
+    "renderDelta": 0,
+    "updateDelta": 0,
+    "limitation": "Separate native-window software-host observation; original headless unobserved transition remains in its report."
+  },
+  "acceptance": {
+    "status": "unverified",
+    "reasons": [
+      "Physical reference devices unavailable",
+      "Complete route under frozen protocol unmeasured",
+      "Fresh participant cohorts untested",
+      "Matched captured sources and held-out references unqualified",
+      "Complete lifecycle cost estimates absent"
+    ]
+  }
+}

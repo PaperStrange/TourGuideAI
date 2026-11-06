@@ -1,0 +1,175 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "realism-run-v1",
+  "type": "object", "additionalProperties": false,
+  "required": ["schemaVersion", "kind", "runId", "startedAt", "finishedAt", "contextSessionId", "manifestSha256", "candidateId", "binding", "device", "condition", "entries", "dispatchedActions", "interactions", "cadence", "traversal", "q03", "hidden", "resources", "evidence", "limitations"],
+  "properties": {
+    "schemaVersion": { "const": 1 }, "kind": { "const": "RunResult" },
+    "runId": { "type": "string", "minLength": 1 },
+    "startedAt": { "type": "string", "minLength": 1 }, "finishedAt": { "type": "string", "minLength": 1 },
+    "contextSessionId": { "type": "string", "minLength": 1 },
+    "manifestSha256": { "$ref": "realism-manifest-v1#/definitions/sha256" },
+    "candidateId": { "type": "string", "minLength": 1 },
+    "binding": { "$ref": "realism-manifest-v1#/definitions/binding" },
+    "device": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "physicalGPU", "hardware", "operatingSystem", "browser", "graphicsDriver", "powerMode", "thermalState", "canvasWidth", "canvasHeight"],
+      "properties": {
+        "id": { "enum": ["windows-iris-xe", "macbook-air-m1"] },
+        "physicalGPU": { "type": "boolean" },
+        "hardware": { "type": "string", "minLength": 1 },
+        "operatingSystem": { "type": "string", "minLength": 1 },
+        "browser": { "type": "string", "minLength": 1 },
+        "graphicsDriver": { "type": "string", "minLength": 1 },
+        "powerMode": { "type": "string", "minLength": 1 },
+        "thermalState": { "type": "string", "minLength": 1 },
+        "canvasWidth": { "type": "integer", "minimum": 1 },
+        "canvasHeight": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "condition": {
+      "type": "object", "additionalProperties": false,
+      "required": ["locale", "lighting", "session", "viewport", "dpr", "networkMbps", "networkLatencyMs", "eyeHeightMetres", "fieldOfViewDegrees", "walkingSpeedMetresPerSecond"],
+      "properties": {
+        "locale": { "enum": ["en", "zh"] }, "lighting": { "enum": ["day", "night"] },
+        "session": { "type": "integer", "minimum": 1, "maximum": 3 },
+        "viewport": { "const": [1440, 1000] }, "dpr": { "const": 1 },
+        "networkMbps": { "const": 10 }, "networkLatencyMs": { "const": 80 },
+        "eyeHeightMetres": { "const": 1.7 }, "fieldOfViewDegrees": { "const": 60 },
+        "walkingSpeedMetresPerSecond": { "const": 1.4 }
+      }
+    },
+    "entries": {
+      "type": "array", "maxItems": 4,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "firstUsableMs", "fullQuality"],
+        "properties": {
+          "id": { "enum": ["cold", "warm-1", "warm-2", "warm-3"] },
+          "firstUsableMs": { "$ref": "#/definitions/measurement" },
+          "fullQuality": {
+            "anyOf": [ { "type": "null" }, {
+              "type": "object", "additionalProperties": false,
+              "required": ["residentAtMs", "drawSubmittedAtMs", "residentFrame", "drawFrame", "requiredDetailSha256", "drawnDetailSha256", "geometryReady", "materialsReady", "lightingReady"],
+              "properties": {
+                "residentAtMs": { "$ref": "#/definitions/time" },
+                "drawSubmittedAtMs": { "$ref": "#/definitions/time" },
+                "residentFrame": { "$ref": "#/definitions/frame" }, "drawFrame": { "$ref": "#/definitions/frame" },
+                "requiredDetailSha256": { "$ref": "realism-manifest-v1#/definitions/sha256" },
+                "drawnDetailSha256": { "$ref": "realism-manifest-v1#/definitions/sha256" },
+                "geometryReady": { "type": "boolean" }, "materialsReady": { "type": "boolean" }, "lightingReady": { "type": "boolean" }
+              }
+            } ]
+          }
+        }
+      }
+    },
+    "dispatchedActions": {
+      "type": "array", "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["actionId", "eventTimeStampMs", "receivedMs", "trusted"],
+        "properties": {
+          "actionId": { "type": "string", "minLength": 1 },
+          "eventTimeStampMs": { "$ref": "#/definitions/time" },
+          "receivedMs": { "$ref": "#/definitions/time" },
+          "trusted": { "type": "boolean" }
+        }
+      }
+    },
+    "interactions": {
+      "type": "array", "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["actionId", "edgeIndex", "direction", "kind", "trusted", "eventTimeStampMs", "visibleStateChangedAtMs", "drawSubmittedAtMs", "beforeFrame", "drawFrame", "actualStateBefore", "actualStateAfter"],
+        "properties": {
+          "actionId": { "type": "string", "minLength": 1 },
+          "edgeIndex": { "$ref": "#/definitions/edgeIndex" }, "direction": { "$ref": "#/definitions/direction" }, "kind": { "$ref": "#/definitions/movementKind" },
+          "trusted": { "const": true },
+          "eventTimeStampMs": { "$ref": "#/definitions/time" }, "visibleStateChangedAtMs": { "$ref": "#/definitions/time" }, "drawSubmittedAtMs": { "$ref": "#/definitions/time" },
+          "beforeFrame": { "$ref": "#/definitions/frame" }, "drawFrame": { "$ref": "#/definitions/frame" },
+          "actualStateBefore": { "$ref": "#/definitions/matrix" }, "actualStateAfter": { "$ref": "#/definitions/matrix" }
+        }
+      }
+    },
+    "cadence": {
+      "type": "array", "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["edgeIndex", "direction", "kind", "intervalsMs", "missingCounterIntervals"],
+        "properties": {
+          "edgeIndex": { "$ref": "#/definitions/edgeIndex" }, "direction": { "$ref": "#/definitions/direction" }, "kind": { "$ref": "#/definitions/movementKind" },
+          "intervalsMs": { "type": "array", "items": { "type": "number", "exclusiveMinimum": 0 } },
+          "missingCounterIntervals": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "traversal": {
+      "type": "object", "additionalProperties": false,
+      "required": ["forwardEdgeIndices", "reverseEdgeIndices", "nativeInput", "recordings"],
+      "properties": {
+        "forwardEdgeIndices": { "type": "array", "items": { "$ref": "#/definitions/edgeIndex" } },
+        "reverseEdgeIndices": { "type": "array", "items": { "$ref": "#/definitions/edgeIndex" } },
+        "nativeInput": { "type": "boolean" },
+        "recordings": {
+          "type": "array", "maxItems": 2,
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["direction", "evidence"],
+            "properties": {
+              "direction": { "$ref": "#/definitions/direction" },
+              "evidence": { "$ref": "realism-manifest-v1#/definitions/evidence" }
+            }
+          }
+        }
+      }
+    },
+    "q03": {
+      "anyOf": [ { "type": "null" }, {
+        "type": "object", "additionalProperties": false,
+        "required": ["boundary", "warmTogetherLocaleMs"],
+        "properties": {
+          "boundary": { "const": "before-click-to-document-language" },
+          "warmTogetherLocaleMs": { "type": "array", "maxItems": 3, "items": { "$ref": "#/definitions/time" } }
+        }
+      } ]
+    },
+    "hidden": {
+      "anyOf": [ { "type": "null" }, {
+        "type": "object", "additionalProperties": false,
+        "required": ["observedDocumentHidden", "observedDocumentVisible", "durationMs", "draws", "updates", "requests", "restoredStateMatches", "resumedDraws", "resumedInputObserved"],
+        "properties": {
+          "observedDocumentHidden": { "type": "boolean" }, "durationMs": { "$ref": "#/definitions/time" },
+          "observedDocumentVisible": { "type": "boolean" },
+          "draws": { "$ref": "#/definitions/frame" }, "updates": { "$ref": "#/definitions/frame" }, "requests": { "$ref": "#/definitions/frame" },
+          "restoredStateMatches": { "type": "boolean" },
+          "resumedDraws": { "$ref": "#/definitions/frame" }, "resumedInputObserved": { "type": "boolean" }
+        }
+      } ]
+    },
+    "resources": {
+      "anyOf": [ { "type": "null" }, {
+        "type": "object", "additionalProperties": false,
+        "required": ["startupPackBytes", "ordinarySectionPeakBytes", "reviewedMitsuiNearBytes", "concurrentDownloads", "concurrentDecodeAttach", "retainedSectionsPeakBytes", "primaryMeshTriangles", "primaryMeshDraws", "combinedTexturesPeakBytes", "splatBuffersPeakBytes", "sortingPeakBytes", "decodedAssetsPeakBytes", "temporaryAllocationsPeakBytes", "lodOverlapIncluded", "lightingAndRenderTargetsIncluded", "accountingComplete"],
+        "properties": {
+          "startupPackBytes": { "$ref": "#/definitions/measurement" }, "ordinarySectionPeakBytes": { "$ref": "#/definitions/measurement" },
+          "reviewedMitsuiNearBytes": { "$ref": "#/definitions/measurement" }, "concurrentDownloads": { "$ref": "#/definitions/measurement" },
+          "concurrentDecodeAttach": { "$ref": "#/definitions/measurement" }, "retainedSectionsPeakBytes": { "$ref": "#/definitions/measurement" },
+          "primaryMeshTriangles": { "$ref": "#/definitions/measurement" }, "primaryMeshDraws": { "$ref": "#/definitions/measurement" },
+          "combinedTexturesPeakBytes": { "$ref": "#/definitions/measurement" }, "splatBuffersPeakBytes": { "$ref": "#/definitions/measurement" },
+          "sortingPeakBytes": { "$ref": "#/definitions/measurement" }, "decodedAssetsPeakBytes": { "$ref": "#/definitions/measurement" },
+          "temporaryAllocationsPeakBytes": { "$ref": "#/definitions/measurement" }, "lodOverlapIncluded": { "type": "boolean" },
+          "lightingAndRenderTargetsIncluded": { "type": "boolean" }, "accountingComplete": { "type": "boolean" }
+        }
+      } ]
+    },
+    "evidence": { "type": "array", "items": { "$ref": "realism-manifest-v1#/definitions/evidence" } },
+    "limitations": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+  },
+  "definitions": {
+    "measurement": { "type": ["number", "null"], "minimum": 0 },
+    "time": { "type": "number", "minimum": 0 },
+    "frame": { "type": "integer", "minimum": 0 },
+    "edgeIndex": { "type": "integer", "minimum": 0, "maximum": 53 },
+    "direction": { "enum": ["forward", "reverse"] },
+    "movementKind": { "enum": ["walk", "turn"] },
+    "matrix": { "type": "array", "minItems": 16, "maxItems": 16, "items": { "type": "number" } }
+  }
+}

@@ -1,11 +1,12 @@
 # Realism 01 · Kyoto route
 
-31 October 2026 · Sprint owner: delivery lead · Status: organization and evidence intake.
+5 November 2026 · Sprint owner: delivery lead · Status: Benchmark V1 implementation
+and source qualification.
 
 Deliver the complete **1,353.444 m, six-sight Shijō East walk**, with recognizable
 architecture, continuous navigation and a coherent English/Chinese journey in
-daylight and night. The organizational sprint prepares the source review and
-controlled trials. Production renderer selection and milestone acceptance remain open.
+daylight and night. The route includes 54 edges, 55 nodes and 13 streaming cells.
+Production renderer selection and milestone acceptance remain open.
 
 ## Work and evidence
 
@@ -14,6 +15,9 @@ controlled trials. Production renderer selection and milestone acceptance remain
 | [Backlog](backlog.md) | Owners, dependencies, deliverables and completion evidence |
 | [Acceptance matrix](acceptance.md) | Independent discovery, visual fidelity, journey and performance gates |
 | [Decisions](decisions.md) | Approved scope and pending representation decision |
+| [Benchmark V1](benchmark.md) | Frozen conditions, measurements, human protocol and selection rules |
+| [User lessons](lessons.md) | Requirement → test → evidence → decision traceability |
+| [Historical calibration scorecard](../../evidence/realism-01/benchmark/scorecard.md) | Recomputed retained observations and explicit current acceptance gaps |
 | [Competitor board](research/competitors.md) | Actual screenshots, publisher frames and bounded observations |
 | [Source coverage](research/source-coverage.md) | All sights and connecting streets, with missing appearance data |
 | [Licensing receipts](research/licensing-receipts.json) | Source dates, rights, hashes and limitations |
@@ -43,7 +47,22 @@ required review evidence must resolve within the tracked repository.
 The [agent checkpoint](../../docs/agent-checkpoint.md) is the integration entry.
 Update the backlog and checkpoint with each validated delivery, then commit and
 push to `chore-sow-delivery-plan`. Publish a runtime preview only with its own
-validation record. This sprint introduces no runtime API changes.
+validation record. Benchmark instrumentation remains read-only; public service
+APIs are unchanged.
+
+## Delivery sequence
+
+| Phase | Required output | Decision boundary |
+| --- | --- | --- |
+| 1 · Benchmark | Lesson register, measurement boundaries, result validation and historical calibration; arrange device/participant access | Diagnostic results retain their original scope; acceptance remains evidence-required |
+| 2 · Sources | All 54 edges mapped to reviewed objects, appearance, rights, dates and ground; itemized acquisition proposal for gaps | Actual source qualification and approved capture where needed |
+| 3 · Controlled trials | Matched frontage, market/shrine and river/bridge trials | Technical eligibility and one frozen final A/B pair |
+| 4 · Full-route candidates | Comparable complete builds with the same journey, saves, EN/ZH and daylight/night | Every route edge and both candidate identities ready for acceptance |
+| 5 · Selection/release | Physical-device and fresh-participant results, visual scorecard, cost uncertainty and public-byte verification | Apply Benchmark V1 selection rules and release gates |
+
+Identify physical devices, participant recruitment and capture needs during phases
+1–2. Their absence blocks dependent gates. A technical shortlist does not establish
+the eventual A/B winner. With one qualified candidate, report absolute acceptance.
 
 ## Validation
 

@@ -10,6 +10,7 @@ import { normalizeExplorationView } from './exploration-state.js';
 import { waitForTask } from './cancellation.js';
 import { createRestoreIntent } from './restore-intent.js';
 import { clearMovementState, getRouteProgress } from './route-progress.js';
+import { createFrameMeasurement } from './submitted-frame.js';
 
 const keys = { KeyW: [0, 1], ArrowUp: [0, 1], KeyS: [0, -1], ArrowDown: [0, -1],
   KeyA: [-1, 0], ArrowLeft: [-1, 0], KeyD: [1, 0], ArrowRight: [1, 0] };
@@ -37,6 +38,8 @@ export async function createGame(host, options = {}) {
   let renderer, canvas, view, rig, observer, frameHandle, firstFrameHandle, animateFrame;
   let status = 'loading', destroyed = false, dirty = true, readyNotified = false;
   let accumulator = 0, lastTime = null, notifications = 0, renderedFrames = 0;
+  const frameMeasurement = createFrameMeasurement();
+  let submittedFrame = null;
   let visible = true, updateFrames = 0;
   let inspecting = false, previousInspection = '', previousView = '';
   let width = 1, height = 1, queuedInteraction = null, pointer = null;
@@ -78,6 +81,16 @@ export async function createGame(host, options = {}) {
     previousView = signature; options.onViewChange(captured);
   }
   const invalidate = () => { dirty = true; scheduleFrame(); publishView(); };
+  function submitFrame(position) {
+    // QA 只记录本次绘制实际使用的相机、插值位置和绘制前已就绪的资源。
+    const measured = observing();
+    const quality = measured ? frameMeasurement.requiredQuality(view.getStreamState?.(),
+      view.getLightingState(), performance.now(), renderedFrames) : null;
+    const drawStartedMs = measured ? performance.now() : 0;
+    renderer.render(view.scene, rig.camera); renderedFrames++; dirty = false;
+    if (measured) submittedFrame = frameMeasurement.capture({ camera: rig.camera, position, frame: renderedFrames,
+      drawStartedMs, submittedMs: performance.now(), quality });
+  }
   const publishInspection = () => {
     if (!solo || destroyed || !view) return;
     const value = view.getInspectionState(), signature = JSON.stringify(value);
@@ -398,7 +411,7 @@ export async function createGame(host, options = {}) {
         try {
           rig.setEnabled(visible && !player.paused);
           const renderStarted = performance.now();
-          renderer.render(view.scene, rig.camera); renderedFrames++; dirty = false;
+          submitFrame(player);
           firstRenderMs = performance.now() - renderStarted;
           resolve();
         } catch (error) { reject(error); }
@@ -421,7 +434,8 @@ export async function createGame(host, options = {}) {
         commands: () => commandTrace.map(command => ({ ...command })),
         inspection: api.getInspectionState,
         streaming: api.getStreamState, route: api.getRouteState,
-        renderer: () => ({ status, loadMs, startup: { ...startup }, renderedFrames, updateFrames, visible, render: { ...renderer.info.render },
+        renderer: () => ({ status, loadMs, startup: { ...startup }, renderedFrames, submittedFrame: structuredClone(submittedFrame),
+          updateFrames, visible, render: { ...renderer.info.render },
           memory: { ...renderer.info.memory }, scene: view.stats(), reducedMotion, restoring: restoration.isPending(), lighting: view.getLightingState() }),
       });
     }
@@ -461,7 +475,7 @@ export async function createGame(host, options = {}) {
       dirty = view.update(rendered, rig.camera, { dt, reducedMotion }) || dirty;
       updateInspection();
       if (dirty && !document.hidden) {
-        renderer.render(view.scene, rig.camera); renderedFrames++; dirty = false;
+        submitFrame(rendered);
       }
       scheduleFrame();
     };

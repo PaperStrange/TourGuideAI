@@ -2,7 +2,10 @@
 
 Run only after the exact neighborhood build passes startup and visual review, in
 an exclusive browser/GPU window agreed with the lead and QA. Every result binds
-its executing driver and captured package bytes.
+its executing driver, measurement helper and captured package bytes. This driver
+records `neighborhood-starting-segment-v2`; historical reports retain their original
+protocol and observation boundaries. The complete Benchmark V1 route/device/cohort
+protocol is in [the sprint](../sprints/realism-01/README.md).
 
 ```sh
 node experience/tools/neighborhood-performance.mjs experience/dist
@@ -98,10 +101,24 @@ opening action. The report preserves the runtime's own loading/first-render valu
 separately. Actual keyboard response is checked after the entry measurements;
 readiness alone is not labeled physical input validation.
 
-Cold exit: **≤8,000 ms**. Each warm exit: **≤3,000 ms**. Preserve every observation
+First-usable cold exit: **≤8,000 ms**. Each warm exit: **≤3,000 ms**. Preserve every observation
 and missed target. ResourceTiming reports completed transferred/decoded bytes at
 readiness; navigation bytes and outstanding requests are separate. CDP records
 request timing, encoded bytes, cache behavior and failures for further inspection.
+
+Full-quality has a separate **≤8,000 ms cold / ≤3,000 ms each warm** gate. Before
+a draw, QA observability records the requested resident cell IDs, levels and
+hashes after their geometry and materials have loaded, drained download/attachment
+queues, and the ready lighting rig/environment hashes. It then records the
+subsequent draw with its actual camera matrices and interpolated player position.
+The observer accepts that frame only when its draw counter exceeds the residency
+observation's counter and the draw starts after that observation. It retains both
+the pre-draw readiness time and submitted-draw time. An idle scene needs no extra
+benchmark-induced draw. `fullQualityObservedMs` is the first animation-frame
+observation after that draw and first-usable readiness. Full-quality residency
+establishes the declared asset level; visual quality requires the separate review.
+QA-only capture adds observation work to measured execution. Ordinary product
+pages do not capture these records.
 
 ## Input and rendering observations
 
@@ -119,11 +136,17 @@ For every action retain:
 - Browser `performance.now()` immediately before Playwright dispatch.
 - The trusted key event's `timeStamp` and receipt time in the browser.
 - Actual hold durations from event timestamps and from browser handler receipts.
-- The first observed changed position/azimuth with an increased draw counter.
+- The first changed interpolated player position or actual camera matrices bound
+  to a submitted draw that began after the trusted event reached its handler.
 - Submitted-draw observation times, counter increments and observer execution cost.
 
+Orbit response uses the actual rendered camera's world/projection matrices.
+Walking response uses its submitted interpolated player position or actual camera
+change. Requested orbit angles remain contextual observations. A captured frame
+cannot qualify again until a newer draw contains the change.
+
 The report preserves three response measurements: event `timeStamp` → changed
-state plus submitted draw, browser handler receipt → that observation, and
+submitted frame, browser handler receipt → that observation, and
 automation dispatch → that observation. Event timestamp response includes browser
 queue delay; receipt response excludes it. Dispatch response also includes
 automation scheduling. Each event timestamp and receipt p95 exit is **≤100 ms**;
@@ -138,8 +161,10 @@ counter comparison spans the pre-dispatch sample through the first post-event
 observation; a gap there cannot assign every draw to the action. Preserve that
 gap and keep the gate failed. Report walking, orbit and combined distributions,
 including each action's observed draw count. A one-draw orbit nudge provides no
-within-action interval; its frame cadence remains unmeasured. Combined frame
-statistics describe only the groups that supplied intervals. Observer cost
+within-action interval; its frame cadence remains unmeasured and prevents the
+combined cadence gate passing. Both walking and orbit groups must supply
+intervals and meet the threshold. Combined frame statistics describe only the
+groups that supplied intervals. Observer cost
 remains visible.
 
 ## Hidden work and interpretation

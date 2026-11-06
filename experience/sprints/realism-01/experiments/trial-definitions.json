@@ -1,6 +1,7 @@
 {
-  "schemaVersion": 1,
-  "preparedDate": "2026-10-31",
+  "schemaVersion": 2,
+  "preparedDate": "2026-11-05",
+  "benchmarkProtocol": "realism-v1",
   "status": "defined-awaiting-qualified-sources-and-physical-gpu",
   "routeSource": {
     "path": "../../../src/neighborhoods/shijo-east/geography.json",
@@ -11,6 +12,8 @@
     "lengthMetres": 1353.444059858351,
     "nodeCount": 55,
     "edgeCount": 54,
+    "sightCount": 6,
+    "streamingCellCount": 13,
     "coordinateStatus": "existing-route-selection-anchors; heights-and-widths-authored; current-access-unverified"
   },
   "commonSettings": {
@@ -28,7 +31,26 @@
     "yawSweepDegreesPerSecond": 30,
     "closeFrontageDistanceMetres": { "minimum": 2, "maximum": 5 },
     "network": { "megabitsPerSecond": 10, "roundTripMilliseconds": 80 },
-    "loadRuns": { "cold": 1, "warm": 3 }
+    "locales": ["en", "zh"],
+    "loadRuns": {
+      "sessionsPerCandidateDeviceLocaleLighting": 3,
+      "entriesPerSession": { "cold": 1, "warm": 3 },
+      "totalEntriesPerCondition": 12,
+      "order": "predeclared-rotation-across-sessions",
+      "retainAllAttempts": true
+    },
+    "physicalDeviceProfiles": [
+      { "id": "windows-iris-xe", "operatingSystem": "Windows 11", "gpu": "Intel Iris Xe", "memoryGiB": 16, "browser": "Chrome", "availability": "unarranged" },
+      { "id": "macbook-air-m1", "device": "MacBook Air M1", "memoryGiB": 8, "browser": "Safari", "availability": "unarranged" }
+    ],
+    "gates": {
+      "firstUsableMilliseconds": { "coldMaximum": 8000, "everyWarmMaximum": 3000 },
+      "fullQualityStartingViewMilliseconds": { "coldMaximum": 8000, "everyWarmMaximum": 3000, "boundary": "required-geometry-materials-lighting-detail-resident-followed-by-later-submitted-frame-containing-them" },
+      "inputEventTimestampToVisibleStateDrawP95Milliseconds": 100,
+      "walkingTurningFrameIntervalP95Milliseconds": 33.3,
+      "everyQ03WarmLocaleMillisecondsExclusiveMaximum": 500,
+      "missingEvidenceStatus": "unverified"
+    }
   },
   "trajectoryRecipe": [
     "Verify routeSource.sha256 before reading selectedRoute.nodeIds, selectedRoute.edgeIds and navigation.edges.",
@@ -87,8 +109,11 @@
     "sourceSha256", "assetSha256", "cameraSha256", "groundCollisionSha256", "coordinateTransform",
     "toolVersions", "processingSettings", "runtimeQualitySettings", "device", "gpu", "driver",
     "operatingSystem", "browserVersion", "viewport", "powerMode", "thermalState", "networkSettings",
-    "firstUsableMilliseconds", "fullQualityReadyMilliseconds", "inputLatencyDefinition",
+    "protocolVersion", "candidateId", "sessionId", "locale", "entryKind", "entryIndex",
+    "firstUsableMilliseconds", "requiredAssetsResidentMilliseconds", "residencyDrawCounter",
+    "fullQualitySubmittedDrawCounter", "fullQualityReadyMilliseconds", "inputLatencyDefinition",
     "inputLatencyP95Milliseconds", "frameIntervalP95Milliseconds", "resourceMeasurements",
+    "routeEdgeIdsByDirection", "frameCounterGaps", "submittedCameraState", "gateStatus",
     "recordingOverhead", "snapshotHashes", "defects"
   ]
 }

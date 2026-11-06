@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-11-05",
+  "pathBase": "manifest-directory",
+  "credit": "Source: Kyoto City / MLIT Project PLATEAU, CC BY 4.0. Original atlas bytes and tileset JSON unchanged; inspection, spatial index and visualization authored by TourGuideAI.",
+  "files": [
+    {
+      "path": "data804-texture.webp",
+      "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data804.b3dm",
+      "date": "2026-11-04T15:25:49.000839+00:00",
+      "captureDate": "LOD3 acquisition FY2023 per metadata; exact LOD2/photo date unverified.",
+      "rights": "Kyoto City / MLIT PLATEAU CC BY 4.0; retain attribution and modification notices. Derived audit records belong to this repository.",
+      "location": "Nishiki west approach, south side",
+      "method": "Original embedded WebP bytes extracted with py3dtiles/pygltflib; no image edits.",
+      "limitations": "Texture atlas reference; no walking-height render or per-facade texel-density acceptance.",
+      "bytes": 119808,
+      "sha256": "1aab3695f308790b4e1c99938fb64549c9054c4638bbc4827c1d545cebb31b7b"
+    },
+    {
+      "path": "data802-texture.webp",
+      "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data802.b3dm",
+      "date": "2026-11-04T15:25:49.000839+00:00",
+      "captureDate": "LOD3 acquisition FY2023 per metadata; exact LOD2/photo date unverified.",
+      "rights": "Kyoto City / MLIT PLATEAU CC BY 4.0; retain attribution and modification notices. Derived audit records belong to this repository.",
+      "location": "Nishiki west approach, north side",
+      "method": "Original embedded WebP bytes extracted with py3dtiles/pygltflib; no image edits.",
+      "limitations": "Texture atlas reference; no walking-height render or per-facade texel-density acceptance.",
+      "bytes": 124938,
+      "sha256": "3251d7f109624c861e0d02bc66d5ba4ef3f8fdc329a8fb13d75a2bcd71031d1c"
+    },
+    {
+      "path": "data765-texture.webp",
+      "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data765.b3dm",
+      "date": "2026-11-04T15:25:49.000839+00:00",
+      "captureDate": "LOD3 acquisition FY2023 per metadata; exact LOD2/photo date unverified.",
+      "rights": "Kyoto City / MLIT PLATEAU CC BY 4.0; retain attribution and modification notices. Derived audit records belong to this repository.",
+      "location": "Pontochō south approach",
+      "method": "Original embedded WebP bytes extracted with py3dtiles/pygltflib; no image edits.",
+      "limitations": "Texture atlas reference; no walking-height render or per-facade texel-density acceptance.",
+      "bytes": 543508,
+      "sha256": "889305130f3cecc14ad82babc8a80a3bcfc99f7b98ad2face6ae31f0c38edf43"
+    },
+    {
+      "path": "data840-texture.webp",
+      "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/data/1/data840.b3dm",
+      "date": "2026-11-04T15:25:49.000839+00:00",
+      "captureDate": "LOD3 acquisition FY2023 per metadata; exact LOD2/photo date unverified.",
+      "rights": "Kyoto City / MLIT PLATEAU CC BY 4.0; retain attribution and modification notices. Derived audit records belong to this repository.",
+      "location": "Shijō–Karasuma search area; Mitsui identity unconfirmed",
+      "method": "Original embedded WebP bytes extracted with py3dtiles/pygltflib; no image edits.",
+      "limitations": "Texture atlas reference; no walking-height render or per-facade texel-density acceptance.",
+      "bytes": 60598,
+      "sha256": "1f9012ed0ed1dbbc7de0abca01833af1b02281f8e99a11f0049bc324ad2ccef1"
+    },
+    {
+      "path": "metadata/26104_bldg_lod3-tileset.json",
+      "source": "https://assets.cms.plateau.reearth.io/assets/3b/cc2d98-1c15-46ee-b026-f7dc851d884a/26100_kyoto-shi_city_2025_citygml_1_op_bldg_3dtiles_26104_nakagyo-ku_lod3/tileset.json",
+      "date": "2026-10-27",
+      "captureDate": "LOD3 inputs FY2023; metadata publication 2026-03-31; individual object dates unverified.",
+      "rights": "Kyoto City / MLIT PLATEAU CC BY 4.0; retain attribution and modification notices. Derived audit records belong to this repository.",
+      "location": "Kyoto Nakagyo buildings or eastern Pontochō road/furniture collection",
+      "method": "Retained original tileset JSON; SHA-256 matched original retrieval receipt.",
+      "limitations": "Content bounding regions and LOD metadata do not establish continuous surface coverage.",
+      "bytes": 1763345,
+      "sha256": "d72d436f7f946689b601b30ac726d4b467a976f88a66ccd51ce99b0bf9dda8b1"
+    },
+    {
+      "path": "metadata/26100_frn_lod3-tileset.json",
+      "source": "https://assets.cms.plateau.reearth.io/assets/50/13f8b7-ee9c-4e1a-bd67-23a17e608049/26100_kyoto-shi_city_2025_citygml_1_op_frn_3dtiles_lod3/tileset.json",
+      "date": "2026-10-27",
+      "captureDate": "LOD3 inputs FY2023; metadata publication 2026-03-31; individual object dates unverified.",
+      "rights": "Kyoto City / MLIT PLATEAU CC BY 4.0; retain attribution and modification notices. Derived audit records belong to this repository.",
+      "location": "Kyoto Nakagyo buildings or eastern Pontochō road/furniture collection",
+      "method": "Retained original tileset JSON; SHA-256 matched original retrieval receipt.",
+      "limitations": "Content bounding regions and LOD metadata do not establish continuous surface coverage.",
+      "bytes": 122813,
+      "sha256": "be0571bcd7f379c614fd7bf968459485338d1a5bd91067608bdc986a8ac33eb2"
+    },
+    {
+      "path": "metadata/26100_tran_lod3-tileset.json",
+      "source": "https://assets.cms.plateau.reearth.io/assets/4a/f6e465-35e4-400a-94e4-6ab417fc314d/26100_kyoto-shi_city_2025_citygml_1_op_tran_3dtiles_lod3/tileset.json",
+      "date": "2026-10-27",
+      "captureDate": "LOD3 inputs FY2023; metadata publication 2026-03-31; individual object dates unverified.",
+      "rights": "Kyoto City / MLIT PLATEAU CC BY 4.0; retain attribution and modification notices. Derived audit records belong to this repository.",
+      "location": "Kyoto Nakagyo buildings or eastern Pontochō road/furniture collection",
+      "method": "Retained original tileset JSON; SHA-256 matched original retrieval receipt.",
+      "limitations": "Content bounding regions and LOD metadata do not establish continuous surface coverage.",
+      "bytes": 3497,
+      "sha256": "8eb74aeb170afe7bb8785cbf374eecfbcea3059d3f4f8f148fe8023906d35bc3"
+    },
+    {
+      "path": "source-inspection.json",
+      "source": "Five original B3DM URLs and hashes recorded inside this file",
+      "date": "2026-11-04T15:25:49.000839+00:00",
+      "captureDate": "LOD3 inputs FY2023; individual LOD2 capture dates unverified.",
+      "rights": "Kyoto City / MLIT PLATEAU CC BY 4.0; retain attribution and modification notices. Derived audit records belong to this repository.",
+      "location": "Four Kyoto building samples and one Pontochō road sample",
+      "method": "Downloaded four original building B3DM tiles and one road B3DM tile; parsed with py3dtiles12.1.1/pygltflib1.16.5; extracted original embedded WebP bytes and decoded dimensions with Pillow. Rendered building LOD counts come from binary _lod properties.",
+      "limitations": "Bounded tile samples, not complete route coverage.; No walking-height mesh render or physical GPU benchmark.; Texture atlas dimensions do not establish per-facade texel density.; data840 is non-leaf content and is not confirmed to contain Mitsui.; Ground, night lighting and independent recognition untested.",
+      "bytes": 15013,
+      "sha256": "0b075b4a151e037aa38398222d5db12eb4331fb9f858ef70372222c4f7d40fd2"
+    },
+    {
+      "path": "route-source-audit.json",
+      "source": "Three retained tilesets plus the selected route and original tile inspection",
+      "date": "2026-11-05",
+      "captureDate": "Derived spatial index generated 2026-11-05; original capture dates in source receipts.",
+      "rights": "Kyoto City / MLIT PLATEAU CC BY 4.0; retain attribution and modification notices. Derived audit records belong to this repository.",
+      "location": "All 54 ordered Shijō East route edges",
+      "method": "audit_sources.py using pyproj and Shapely, 25 m candidate search",
+      "limitations": "Bounds and object attribute points provide acquisition candidates; all appearance, ground and lighting gates remain unverified.",
+      "bytes": 380571,
+      "sha256": "73545234c6ee77e89c76cf6b37acfa738886e81febfca71729464c31ea6699e9"
+    },
+    {
+      "path": "route-source-board.svg",
+      "source": "route-source-audit.json",
+      "date": "2026-11-05",
+      "captureDate": "Derived diagram generated 2026-11-05.",
+      "rights": "Kyoto City / MLIT PLATEAU CC BY 4.0; retain attribution and modification notices. Derived audit records belong to this repository.",
+      "location": "All 54 ordered Shijō East route edges",
+      "method": "audit_sources.py renders the candidate index using ElementTree; equal-width edge columns.",
+      "limitations": "Color denotes presence of candidate bounds, with no qualified appearance or ground claim.",
+      "bytes": 13307,
+      "sha256": "dc1883825c3d2301050b936728ac37b275f19b22906b1863c8a1a2635911c3fa"
+    },
+    {
+      "path": "original-byte-validation.json",
+      "source": "Five downloaded B3DM files bound by source-inspection.json hashes",
+      "date": "2026-11-05",
+      "captureDate": "Verification performed 2026-11-05; input capture dates retained separately.",
+      "rights": "Kyoto City / MLIT PLATEAU CC BY 4.0; retain attribution and modification notices. Derived audit records belong to this repository.",
+      "location": "Nishiki, Shijō–Karasuma and Pontochō samples",
+      "method": "verify_originals.py checks original bytes, feature IDs, actual LOD, indexed triangles and unchanged texture bytes/dimensions.",
+      "limitations": "Raw B3DM files remain ignored; reproducing this check requires downloads whose hashes match the preserved receipt.",
+      "bytes": 854,
+      "sha256": "b8afec3853d0d107b2b5d316331f559ba1b81492bc7f2f37723177d568ce69d5"
+    }
+  ]
+}
