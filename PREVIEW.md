@@ -1,5 +1,26 @@
 # Review TourGuideAI
 
+## Controllable architectural review · current delivery
+
+[Open the live review](https://paperstrange.github.io/TourGuideAI/previews/realism-01/)
+
+Explore **Knock Community Hall, Canada**, using the visible rotate, tilt, zoom,
+reset and fullscreen buttons. Drag to rotate; pinch or scroll to zoom. **EN / 中文**
+switches guidance. Select **Original · ~30 MB** or **Streamed** to compare the same
+captured building from your current camera position. The original downloads when
+selected. A labelled link opens the existing Kyoto walking baseline.
+
+The actual public page and packaged page each pass **39 browser checks**; all
+**51 public files match their validated bytes**. Tests include native touch in a
+phone viewport, rendered camera movement, both source cancellation paths and retry.
+Physical phone and full-route performance acceptance remain open.
+
+This entry is architectural inspection of a free licensed capture. It preserves
+recorded lighting and has incomplete surfaces at close range. The full Kyoto
+realism milestone remains open. See the [screenshots and release evidence](experience/evidence/realism-01/review-page/README.md).
+Application commit: `fe6f07ab02149d2754a15c90937b114b0ec13471`.
+Pages commit: `1a938ebd48e2606b52e54cc1d57cc8a4e2f28a96`.
+
 ## Connected Kyoto neighborhood · current test preview
 
 [Open the six-sight preview](https://paperstrange.github.io/TourGuideAI/previews/shijo-east-c13/) ·

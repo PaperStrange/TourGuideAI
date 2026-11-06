@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-06",
+  "method": "Private bwrap mount namespace with task-local NSS database",
+  "sourceCertificate": "/usr/local/share/ca-certificates/environment-proxy-ca.crt",
+  "certificateSha256Fingerprint": "C71B4D1E9D7775C538C688AB10CEA9CE417D7312E89838F9D15FF73256CD7FC3",
+  "certificateSubject": "C=US, ST=California, L=San Francisco, O=OpenAI, LLC, CN=openai.com",
+  "taskLocalNssDatabase": "artifacts/review-qa-tmp/nssdb",
+  "namespaceMountTarget": "/home/agent/.pki/nssdb",
+  "sharedTrustStoreChanged": false,
+  "homeEnvironmentChanged": false,
+  "tlsVerificationDisabled": false,
+  "inheritedProxyPreserved": true,
+  "writableHostLocations": [
+    "artifacts/realism-01/review-page/qa",
+    "artifacts/review-qa-tmp"
+  ],
+  "setup": [
+    "Created task-local NSS database with certutil -N --empty-password",
+    "Imported only the existing managed environment proxy CA with certutil -A and C,, SSL trust",
+    "Bound task-local database over the browser's NSS path inside a private mount namespace"
+  ],
+  "limitations": [
+    "A previous browser attempt rejected the managed proxy certificate before application execution.",
+    "Automatic approval review rejected a shared NSS trust-store modification because it would persist beyond this task; that modification was not performed.",
+    "Private namespace setup required explicit execution escalation after sandbox uid-map writes were unavailable."
+  ]
+}

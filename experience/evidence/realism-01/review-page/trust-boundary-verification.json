@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-06",
+  "method": "certutil -L -d sql:/home/agent/.pki/nssdb outside the private browser namespace",
+  "observedWhileHostedBrowserRunning": true,
+  "sharedEntriesBeforeAndDuring": [
+    { "nickname": "OpenAI-chaussette", "trust": "C,," },
+    { "nickname": "OpenAI-mitmproxy-ca-cert", "trust": "C,," },
+    { "nickname": "OpenAI-nebula-dns", "trust": "C,," },
+    { "nickname": "OpenAI-nebula-mitmproxy", "trust": "C,," }
+  ],
+  "managedEnvironmentCaImportedToSharedStore": false,
+  "taskLocalDatabaseEntry": { "nickname": "Managed environment proxy CA", "trust": "C,," },
+  "sharedTrustStoreChanged": false
+}

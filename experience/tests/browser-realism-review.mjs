@@ -42,6 +42,12 @@ const report = {
     'First visible rendering does not establish that every detail has finished streaming.',
   ],
 };
+if (process.env.REVIEW_QA_TRUST_RECEIPT) {
+  const receiptPath = resolve(process.env.REVIEW_QA_TRUST_RECEIPT);
+  assert(receiptPath.startsWith(outputRoot + sep));
+  const bytes = readFileSync(receiptPath);
+  report.environment.trustReceipt = { path: relative(root, receiptPath), sha256: sha(bytes), content: JSON.parse(bytes) };
+}
 const persist = () => writeFileSync(resolve(output, 'result.json'), JSON.stringify(report, null, 2) + '\n');
 function check(id, pass, evidence) {
   report.checks.push({ id, pass: Boolean(pass), evidence }); persist();
@@ -199,6 +205,7 @@ async function desktop() {
     await screenshot(page, 'desktop-original');
     await page.locator('#variant-streamed').click(); const streamed = await visibleScene(page, 'streamed');
     check('switch-streamed-preserves-camera', sameCamera(original, streamed), { before: original, after: streamed });
+    await screenshot(page, 'desktop-streamed-comparison');
     const credit = await page.locator('body').innerText();
     check('visible-source-credit', credit.includes('scbenoit') && /CC BY\s*4\.0/.test(credit) && credit.includes('Knock'));
     report.scenarios.desktop.links = await page.locator('a').evaluateAll(links => links.map(link => ({ text: link.innerText, href: link.href })));

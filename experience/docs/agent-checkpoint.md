@@ -1,17 +1,21 @@
 # Agent checkpoint · Explore and Together homepage
 
 6 November 2026 · Lead owns integration, commits and publication.
-**Active delivery: public architectural review page.** The current work packages
-the free Knock Community Hall original and streamed capture with EN/ZH camera
-controls, preserved viewpoints and loading recovery. Runtime, interface and
-independent browser QA owners are assigned. The final packaged walkthrough
-passes 39 checks, including submitted frames, native touch/pinch, both source
-cancellation paths and actual HTTP 503/retry. Public HTTPS validation is next.
+**Completed delivery: public architectural review page.**
+[Open the live review](https://paperstrange.github.io/TourGuideAI/previews/realism-01/).
+The free Knock Community Hall original and streamed capture has EN/ZH camera
+controls, preserved viewpoints and loading recovery. The final packaged and
+actual public HTTPS walkthroughs each pass 39 checks, including submitted frames,
+native touch/pinch, both source cancellation paths and retry. Independent HTTPS
+verification matches all 51 files. The [release evidence](../evidence/realism-01/review-page/README.md)
+retains four browser attempts, exact drivers, screenshots and environment limits.
+Application source: `fe6f07ab02149d2754a15c90937b114b0ec13471`;
+Pages release: `1a938ebd48e2606b52e54cc1d57cc8a4e2f28a96`.
 Production source is in `experience/src/review/`; packaging and verification
 instructions are in [the review tools](../tools/review-page/README.md).
-Publish the validated package to `previews/realism-01/` using the existing free
-Pages branch, then verify the actual HTTPS entry before delivery. This review
-milestone does not qualify the full Kyoto route described below.
+The free Pages entry is `previews/realism-01/`. Interface, runtime, independent
+browser QA and release audit are complete. Physical-device performance and the
+full Kyoto route described below remain open.
 
 **State: Original mesh/terrain/datum inspection and detailed texture/pedestrian
 audits are complete. The two representation families continue in parallel;

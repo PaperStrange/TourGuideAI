@@ -16,7 +16,7 @@ const provenance = {
   recordDate: createdAt,
   rights: 'Project-generated QA records. Captured architecture and derived screenshots: CC BY 4.0, scbenoit; adapted camera/UI and streamed detail.',
   location: 'Innisfil, Ontario, Canada; software-rendered Chromium in the managed workspace',
-  method: 'Packaged application, native browser controls, actual source bytes and independent public HTTPS byte verification.',
+  method: 'Recorded Chromium attempts with native controls; each report identifies completed actions and failures. Separate public HTTPS verification checks actual package bytes.',
   limitations: 'Architectural inspection; no Kyoto route coverage, pedestrian traversal, relighting, physical-device performance or participant acceptance.',
 };
 
@@ -42,6 +42,10 @@ async function retainRuns(directory) {
 }
 
 await retainRuns(qa);
+const qaFiles = await readdir(qa);
+for (const name of ['trust-setup.json', 'trust-boundary-verification.json']) {
+  if (qaFiles.includes(name)) await retain(path.join(qa, name), name);
+}
 await retain(path.join(packageDirectory, 'package-manifest.json'), 'package-manifest.json');
 await retain(hostedReport, 'published-bytes.json');
 const producerPaths = [

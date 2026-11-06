@@ -1,0 +1,109 @@
+{
+  "startedAt": "2026-11-06T09:26:44.440Z",
+  "completed": false,
+  "target": "https://paperstrange.github.io/TourGuideAI/previews/realism-01/",
+  "output": "artifacts/realism-01/review-page/qa/hosted/2026-11-06T09-26-44-435Z",
+  "driver": {
+    "path": "experience/tests/browser-realism-review.mjs",
+    "sha256": "5487b7a5dbe107196ef9d9cd8c17d9f776180876dbb7eb3105ee7d52f4b1b56a"
+  },
+  "environment": {
+    "node": "v24.19.0",
+    "browser": "151.0.7922.173",
+    "renderer": null,
+    "sections": [
+      "desktop",
+      "cancellation",
+      "paged-cancellation",
+      "recovery",
+      "phone"
+    ],
+    "timeoutMs": 240000,
+    "desktop": {
+      "width": 1440,
+      "height": 1000
+    },
+    "phone": {
+      "width": 390,
+      "height": 844
+    },
+    "deviceScaleFactor": 1,
+    "proxyConfigured": true
+  },
+  "packageFiles": [],
+  "checks": [],
+  "scenarios": {},
+  "screenshots": [],
+  "requests": [
+    {
+      "scenario": "desktop",
+      "at": 1793957205791,
+      "url": "https://paperstrange.github.io/TourGuideAI/previews/realism-01/index.html",
+      "method": "GET",
+      "type": "document",
+      "external": false
+    }
+  ],
+  "responses": [],
+  "failures": [
+    {
+      "scenario": "desktop",
+      "at": 1793957205802,
+      "url": "https://paperstrange.github.io/TourGuideAI/previews/realism-01/index.html",
+      "error": "net::ERR_CERT_AUTHORITY_INVALID"
+    }
+  ],
+  "console": [],
+  "pageErrors": [],
+  "serverEvents": [],
+  "limitations": [
+    "Chromium uses a cloud software renderer. These results do not establish physical-device frame rate, memory, or enjoyment.",
+    "Phone input uses trusted Chromium touch events in an emulated viewport; a physical phone is not available.",
+    "Intentional transport faults affect actual asset requests. Successful loads use packaged or hosted source bytes.",
+    "First visible rendering does not establish that every detail has finished streaming."
+  ],
+  "entry": "https://paperstrange.github.io/TourGuideAI/previews/realism-01/index.html",
+  "manifest": {
+    "url": "https://paperstrange.github.io/TourGuideAI/previews/realism-01/review-assets.json",
+    "bytes": 847,
+    "sha256": "364b0710cd804ad4e250ee2b907445b81284378ac5468a48c9679a47261423f4",
+    "content": {
+      "schemaVersion": 1,
+      "original": "./data/knock-original.sog",
+      "streamed": "./data/streamed/knock-original-lod.rad",
+      "camera": {
+        "position": [
+          -25.0948486328125,
+          6.711593151092529,
+          22.9617862701416
+        ],
+        "target": [
+          -11.19845319602572,
+          4.008741439866709,
+          7.849568533379339
+        ],
+        "fov": 75
+      },
+      "source": {
+        "title": "Knock Community Hall",
+        "author": "scbenoit",
+        "url": "https://superspl.at/scene/0ff2e6dc",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "originalSha256": "81d061bad6ba255689939847482836f7d70bf2e222abce04e6d81c2c976c6a71",
+        "originalBytes": 29781498,
+        "streamedBytes": 84115304,
+        "changes": "Original SOG components repackaged unchanged. Streamed version converted with Spark 2.4.0 quality LoD and SH2; detail and directional color differ."
+      }
+    }
+  },
+  "assetEntries": {
+    "originalUrl": "https://paperstrange.github.io/TourGuideAI/previews/realism-01/data/knock-original.sog",
+    "streamedUrl": "https://paperstrange.github.io/TourGuideAI/previews/realism-01/data/streamed/knock-original-lod.rad"
+  },
+  "termination": {
+    "message": "page.goto: net::ERR_CERT_AUTHORITY_INVALID at https://paperstrange.github.io/TourGuideAI/previews/realism-01/index.html\nCall log:\n\u001b[2m  - navigating to \"https://paperstrange.github.io/TourGuideAI/previews/realism-01/index.html\", waiting until \"load\"\u001b[22m\n",
+    "stack": "page.goto: net::ERR_CERT_AUTHORITY_INVALID at https://paperstrange.github.io/TourGuideAI/previews/realism-01/index.html\nCall log:\n\u001b[2m  - navigating to \"https://paperstrange.github.io/TourGuideAI/previews/realism-01/index.html\", waiting until \"load\"\u001b[22m\n\n    at Object.desktop (/workspace/TourGuideAI/experience/tests/browser-realism-review.mjs:162:16)\n    at async file:///workspace/TourGuideAI/experience/tests/browser-realism-review.mjs:312:35"
+  },
+  "finishedAt": "2026-11-06T09:26:46.625Z"
+}
