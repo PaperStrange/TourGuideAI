@@ -1,9 +1,11 @@
 # Agent checkpoint · Explore and Together homepage
 
 6 November 2026 · Lead owns integration, commits and publication.
-**State: Mesh source inspection, splat compatibility and shared terrain/datum
-experiments are delivered; the representation tracks proceed in parallel.
-Kyoto appearance, pedestrian floors, matched capture and final qualification remain open.
+**State: Original mesh/terrain/datum inspection and detailed texture/pedestrian
+audits are complete. The two representation families continue in parallel;
+the inspected municipal source alone is insufficient for close walking.
+The full-route quotation inquiry is prepared and unsent. Matched Kyoto capture,
+physical-device/human qualification and the complete-route milestone remain open.
 The milestone is the complete 1,353.444 m, 54-edge, six-sight Shijō East route,
 with English/Chinese journeys and daylight/night. Published runtime `17b8f37`
 remains the main-site baseline; candidate 13 remains the separate public preview.
@@ -53,10 +55,21 @@ This is source diagnostic evidence on SwiftShader; no gameplay or physical-devic
 performance acceptance follows.
 
 Mitsui's exact retained GML ID matches the Shimogyo LOD2 object; five other sight
-identities remain unverified. Original road CityGML supplies 110 nearby zero-height
-LOD1 footprints and one detailed sidewalk section near edges 50–54. Four bounded
-DEM envelopes identify a covering source (793,602,405 declared decoded bytes;
-33,281,694 HTTP gzip bytes); complete terrain and pedestrian height remain unqualified.
+identities remain unverified. The [native texture audit](../evidence/realism-01/qualification/texture/README.md)
+measures 369 selected buildings / 15,240 vertical triangles. Median sampling in the
+lower source-relative band is 12.56 texels/m; exact Mitsui is 10.43 texels/m. At the
+documented front-parallel 10 m view one Mitsui texel spans about 8.3 screen pixels.
+This establishes source sampling limits; optical sharpness and visible frontage
+remain unqualified.
+
+The [detailed pedestrian audit](../evidence/realism-01/qualification/pedestrian/README.md)
+checks 1,986 selected road triangles across 18 source objects. All 54 route edges,
+six anchors and the actual complete actor envelope have zero detailed-surface
+overlap. Runtime navigation has no hidden sidewalk offset. Explicit GSIGEO2011
+registration matches original CityGML sidewalk and decoded vertices within
+0.000007111 m. A source-contained Pontochō review point is 5.250 m northwest of
+the current anchor; current access, obstacles and a measured connector remain
+unverified. No route revision was applied.
 
 The [parallel status table](../sprints/realism-01/experiments/candidate-status.md)
 distinguishes the two active representation families and their prerequisites.
@@ -68,11 +81,17 @@ pass 12 independent grid checks and 2,868 local-frame checks. Source epoch/model
 independent control and pedestrian-floor/deck acceptance remain open. No candidate
 is admitted to the benchmark manifest or selected for production.
 
-Next work: qualify floor/deck/control and feature-facing current references,
-investigate splat fidelity/streaming/resource lifecycle using a referenced street
-sample, and obtain a licensed matched Kyoto capture package with a complete-route
-quote for remaining R05 gaps. Supplier outreach and spending
-need user authorization; local source experiments can continue independently.
+Next work: complete referenced splat fidelity/streaming/resource-lifecycle checks
+and obtain capability, rights and price answers for the
+[prepared acquisition package](../sprints/realism-01/research/acquisition-package/README.md).
+The exact 54-edge route map, 60-feature GeoJSON, twelve handover checks, supplier
+response matrix and unsent Japanese inquiry are ready. They include the connecting
+streets, both lighting conditions, common raw inputs, independent holdouts,
+measured floors/control, additional route lengths and 20% refresh costs.
+External inquiry requires the user's authorization plus sender name/reply email;
+no spending or booking is implied. Nishiki's published filming application lead
+time is one month; the applicable commercial reconstruction permission needs
+confirmation. Continue independent local work while awaiting external inputs.
 Physical Iris Xe/Chrome and M1/Safari devices, fresh participant cohorts and
 qualified matched capture remain unavailable. Full-route trial execution, human
 scoring and final representation selection remain pending. Current-year GitHub

@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "files": [
+    {
+      "path": "texture-density.json",
+      "bytes": 789097,
+      "sha256": "649e53203bca16c5c54b4b316ab2477e0e1f3450e8c443a898c4581179f3f03a",
+      "source": "Kyoto City / MLIT Project PLATEAU; original B3DM identities and UVs bound in texture-density.json",
+      "date": "2026-11-06",
+      "rights": "CC BY 4.0; derived measurements and chart attributed to TourGuideAI",
+      "location": "Kyoto Shijo East, approved 1,353.444 m / 54-edge / six-sight route",
+      "method": "Original Draco UV-pixel/physical-surface Jacobian and singular values; unchanged completed-run data and Matplotlib chart",
+      "limitations": "Projected nearby objects include back/occluded surfaces; facade normals and lower source-relative band establish neither street visibility nor pedestrian-ground location. Atlas UV sampling density is an upper bound on available stored samples; aerial blur, resampling, JPEG/WebP loss and baked lighting can reduce actual recoverable detail. Geometry counts and texture density establish no current facade identity, entrance correctness, independent discovery, realism or lighting acceptance. The camera reference is hypothetical front-parallel geometry, separate from the current provisional source-review views."
+    },
+    {
+      "path": "triangle-measurements.json.gz",
+      "bytes": 1123500,
+      "sha256": "9df7b710c66068b60d07776468ffb421fc9cc8ea02a1ff2d8f1c5c254a31bc33",
+      "source": "Kyoto City / MLIT Project PLATEAU; original B3DM identities and UVs bound in texture-density.json",
+      "date": "2026-11-06",
+      "rights": "CC BY 4.0; derived measurements and chart attributed to TourGuideAI",
+      "location": "Kyoto Shijo East, approved 1,353.444 m / 54-edge / six-sight route",
+      "method": "Original Draco UV-pixel/physical-surface Jacobian and singular values; unchanged completed-run data and Matplotlib chart",
+      "limitations": "Projected nearby objects include back/occluded surfaces; facade normals and lower source-relative band establish neither street visibility nor pedestrian-ground location. Atlas UV sampling density is an upper bound on available stored samples; aerial blur, resampling, JPEG/WebP loss and baked lighting can reduce actual recoverable detail. Geometry counts and texture density establish no current facade identity, entrance correctness, independent discovery, realism or lighting acceptance. The camera reference is hypothetical front-parallel geometry, separate from the current provisional source-review views.",
+      "decodedBytes": 9214552,
+      "decodedSha256": "b05981096eb007adf66b5c69bbbcfa52c8e715a95e9e21be014ff11b0a51a589"
+    },
+    {
+      "path": "texture-density-board.png",
+      "bytes": 149349,
+      "sha256": "643d01764256e1cabd94de3860300d638c447e791fe418273cb6f603e8882873",
+      "source": "Kyoto City / MLIT Project PLATEAU; original B3DM identities and UVs bound in texture-density.json",
+      "date": "2026-11-06",
+      "rights": "CC BY 4.0; derived measurements and chart attributed to TourGuideAI",
+      "location": "Kyoto Shijo East, approved 1,353.444 m / 54-edge / six-sight route",
+      "method": "Original Draco UV-pixel/physical-surface Jacobian and singular values; unchanged completed-run data and Matplotlib chart",
+      "limitations": "Projected nearby objects include back/occluded surfaces; facade normals and lower source-relative band establish neither street visibility nor pedestrian-ground location. Atlas UV sampling density is an upper bound on available stored samples; aerial blur, resampling, JPEG/WebP loss and baked lighting can reduce actual recoverable detail. Geometry counts and texture density establish no current facade identity, entrance correctness, independent discovery, realism or lighting acceptance. The camera reference is hypothetical front-parallel geometry, separate from the current provisional source-review views."
+    }
+  ],
+  "producers": [
+    {
+      "path": "experience/tools/texture-qualification/measure.py",
+      "bytes": 13808,
+      "sha256": "89d43512318ecf81039b8b7425324773847f41c2815e3fee8ede9ef4b46055fe"
+    },
+    {
+      "path": "experience/tools/texture-qualification/plot.py",
+      "bytes": 3843,
+      "sha256": "f0e0ee0eb7571be44ab0b19114a6860209d52542df0da857fe1f58dd4e0f6f95"
+    },
+    {
+      "path": "experience/tools/texture-qualification/retain.py",
+      "bytes": 2507,
+      "sha256": "b10589a64624c6f188b0debf702eb3adbb6a02a3ff6c4cb00a963f0218f5c42b"
+    },
+    {
+      "path": "experience/tools/texture-qualification/verify.py",
+      "bytes": 8349,
+      "sha256": "b81da2d6ac6c7eedf2c1743bdc01d6fb8333a5a8e62c61c3333ad20b0fbb5f93"
+    },
+    {
+      "path": "experience/tools/texture-qualification/requirements.txt",
+      "bytes": 113,
+      "sha256": "66ab6f733fe0b3922de04c4a63e95a221d2a95010f7a6989dcc0a44944807894"
+    }
+  ],
+  "libraries": {
+    "py3dtiles": "12.1.1",
+    "pygltflib": "1.16.5",
+    "DracoPy": "2.2.0",
+    "numpy": "2.5.4",
+    "Pillow": "12.3.0",
+    "shapely": "2.1.2"
+  },
+  "limitations": "Projected nearby objects include back/occluded surfaces; facade normals and lower source-relative band establish neither street visibility nor pedestrian-ground location. Atlas UV sampling density is an upper bound on available stored samples; aerial blur, resampling, JPEG/WebP loss and baked lighting can reduce actual recoverable detail. Geometry counts and texture density establish no current facade identity, entrance correctness, independent discovery, realism or lighting acceptance. The camera reference is hypothetical front-parallel geometry, separate from the current provisional source-review views."
+}

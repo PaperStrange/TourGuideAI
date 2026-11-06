@@ -33,6 +33,22 @@ retains 6,019 route-near triangles and 1,434 covered samples. Both explicit
 vertical-model calculations pass independent implementation checks; source epoch,
 independent control, bridge deck and pedestrian floors remain unqualified.
 
+The [native texture audit](../../../evidence/realism-01/qualification/texture/README.md)
+measures 369 route-near buildings across 33 original tiles. The lower source-relative
+8 m band has a median 12.56 texels/m; exact Mitsui has 10.43 texels/m. At the
+documented front-parallel 10 m camera reference, one Mitsui texel spans about 8.3
+screen pixels. This is a source-sampling measurement, with visible frontage and
+photographic sharpness still unqualified.
+
+The [detailed pedestrian audit](../../../evidence/realism-01/qualification/pedestrian/README.md)
+intersects all 1,986 selected road triangles with the 54 edges, six anchors and
+the actual player's complete corridor. All overlap measures are zero. The
+nearest detailed surface is 2.904 m from the geographic route. Source CityGML
+and decoded sidewalk agree within 0.000007111 m under explicit GSIGEO2011; the
+actual controller has no implicit sidewalk offset. Terrain coverage cannot
+supply the missing bridge deck or covered-passage floor. These findings support
+the [prepared acquisition scope](acquisition-package/README.md).
+
 ## Sight coverage
 
 | Sight / approach coordinate | Evidence already retained | Appearance and lighting gaps to resolve |
@@ -61,7 +77,7 @@ Edge ranges are inclusive, one-based positions in `selectedRoute.edgeIds`; toget
 | Source | What the retained evidence establishes | Required qualification |
 | --- | --- | --- |
 | Kyoto LOD1 2025 | Selected solids and source Z values retained; current presentation derives footprints and height ranges | Original appearance is absent from this preparation; replace authored level-zero placement only after reconciling horizontal/vertical datums |
-| Kyoto textured PLATEAU | 73 original tiles decoded; 2,086 LOD2, 21 LOD3 and six LOD1 building occurrences before source replacement selection. IDs, surfaces, texture hashes and 18 assembled source views retained. Metadata declares CC BY 4.0; LOD3 acquisition FY2023, metadata publication 2026-03-31 | Original views expose blurred close surfaces and missing ground/context. Match named features and current condition, register pedestrian ground, and qualify covered entrances and night lighting |
+| Kyoto textured PLATEAU | 73 original tiles decoded; 2,086 LOD2, 21 LOD3 and six LOD1 building occurrences before source replacement selection. IDs, surfaces, texture hashes and 18 assembled source views retained. Native sampling measured on 369 selected buildings. Metadata declares CC BY 4.0; LOD3 acquisition FY2023, metadata publication 2026-03-31 | Original views and texture measurements expose limited close detail. Detailed road geometry intersects zero current route edges/actor envelopes. Additional current street-level appearance, measured pedestrian floors, covered entrances and night lighting are required |
 | Pontochō metadata inventory | Containing mesh has 4,444 LOD2 buildings, including 138 with LOD3; mixed LOD1–3 tileset identified | Record per-object LOD, surfaces, texture resolution and occlusions. The small research rectangle covers only the eastern area |
 | Licensed still photographs | Particular dated features, authors and licenses recorded in the two photo registries | Match each façade/viewpoint before use; retain attribution and applicable ShareAlike obligations; current conditions and reconstruction suitability remain unverified |
 | Operator descriptions | Paraphrased location/access facts | Descriptions confer no license to redistribute operator photos or reconstruct their imagery |

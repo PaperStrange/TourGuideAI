@@ -12,6 +12,9 @@
 | [Submitted-frame diagnostic](measurement/README.md) | Actual camera/draw and final resident-detail boundaries; all 11 failing checks retained |
 | [Source acquisition board](sources/README.md) | Candidate bounds across 54 edges and five inspected original samples; appearance qualification remains open |
 | [73-tile source qualification and 18-view board](qualification/README.md) | Actual geometry, source hierarchy selection, one exact sight ID and road/terrain review; original failed visibility check retained |
+| [Original texture-density board](qualification/texture/README.md) | 369 selected buildings; measured limits of close-walking source imagery |
+| [Pedestrian coverage and navigation boards](qualification/pedestrian/README.md) | Actual detailed-surface intersections with the complete route and player corridor; measured capture requirements |
+| [Prepared acquisition package](../../sprints/realism-01/research/acquisition-package/README.md) | Exact route map, scope, handover checks and unsent quotation inquiry |
 
 The [Benchmark V1 protocol](../../sprints/realism-01/benchmark.md) and
 [lesson register](../../sprints/realism-01/lessons.md) define the remaining acceptance.

@@ -1,0 +1,45 @@
+{
+  "reviewedAt": "2026-11-06",
+  "scope": "Public official geometry and survey availability for the approved Kyoto route's Shijo Bridge pedestrian deck and Nishiki/Shinkyogoku covered-passage floor",
+  "geometryAcquired": false,
+  "qualification": "No additional source inspected in this bounded investigation establishes reusable measured deck or covered-floor geometry. These remain measured-surface acquisition gaps, subject to the parent's direct CityGML and decoded-road intersection results.",
+  "limitations": [
+    "A bounded public-source lookup cannot establish that no survey exists.",
+    "Source publication or HTTP modification dates are separate from geometry capture dates.",
+    "The city road-information service advertises plan dimensions and control-point positions; the page itself supplies no measured pedestrian floor elevations.",
+    "The union's published street width and total length do not establish local floor grade, level changes, entrances, or a vertical datum.",
+    "No Shinkyogoku floor survey, reusable measured bridge deck, or open license for such geometry was established.",
+    "No operator, city official, vendor, or other person was contacted."
+  ],
+  "findings": [
+    {
+      "id": "city-survey-access",
+      "sources": ["kyoto-road-information", "kyoto-city-rights"],
+      "sourceDate": "Road-information page 2026-10-15; city copyright policy 2026-07-02",
+      "location": "Kyoto City managed roads; site-specific plan and control-point content must be identified separately",
+      "method": "Full public HTML page inspection",
+      "rights": "City policy requires permission for reproduction or reuse beyond legally permitted private use or quotation. No 3D geometry reuse license established.",
+      "facts": [
+        "The city advertises road-ledger plans containing traffic-width and gutter dimensions and grade 1-4 survey-control-point numbers and positions.",
+        "The city says online information may lag current records; current information is available through its Road Boundary Clarification Section.",
+        "Certified road-ledger plan copies cost JPY 350 each; no copies were purchased."
+      ],
+      "nextAcquisitionRequirement": "If supplied as a source option, request existing Shijo deck/sidewalk cross-sections and covered-floor survey coordinates with capture date, vertical datum, accuracy and explicit commercial derivative/redistribution rights. No request is authorized or sent by this investigation."
+    },
+    {
+      "id": "nishiki-floor-capture-access",
+      "sources": ["nishiki-union", "nishiki-capture", "nishiki-filming-rules", "nishiki-rights"],
+      "sourceDate": "Union membership count dated 2026-05; capture-policy pages undated; filming DOCX HTTP Last-Modified 2024-11-29, document policy date unspecified",
+      "location": "Nishikikoji Street between Takakura and Teramachi, Kyoto; operator describes approximately 390 m of street",
+      "method": "Full HTML page inspection and OOXML text extraction with Python ZipFile and lxml",
+      "rights": "Operator website requires permission for reproduction and alteration outside legally allowed use. Filming conditions do not grant blanket commercial 3D reconstruction or model distribution rights.",
+      "facts": [
+        "The operator describes a roughly 390 m street, generally 3.3 m wide with some sections over 5 m.",
+        "The contact page requests filming and reporting applications at least one month in advance; individual shop arrangements follow the application.",
+        "The filming guidance prohibits installed lighting and large equipment, discourages selfie sticks and tripods, and asks visitors to preserve circulation and avoid prolonged fixed-position recording during crowds.",
+        "The guidance asks photographers to avoid recording other customers/staff and to obtain consent before publishing identifiable visitors."
+      ],
+      "nextAcquisitionRequirement": "A permitted small handheld floor/entrance survey must explicitly include metric scale control, shared vertical reference, participant privacy and rights to publish the resulting commercial 3D model. The operator's one-month application lead time must be included in the acquisition proposal."
+    }
+  ]
+}

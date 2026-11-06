@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06T07:28:32.329580+00:00",
+  "routeId": "shijo-east-six-sights",
+  "routeLengthMetres": 1353.444059858351,
+  "edgeCount": 54,
+  "nodeCount": 55,
+  "sightCount": 6,
+  "packages": [
+    {
+      "id": "T01",
+      "name": "Mitsui / Shijo-Takakura / Nishiki west",
+      "firstEdgeOrdinal": 1,
+      "lastEdgeOrdinal": 8,
+      "edgeIds": [
+        "osm:way:465066447:4600871814:4600891666",
+        "osm:way:465066447:4600871813:4600891666",
+        "osm:way:465066447:4600871813:4600891664",
+        "osm:way:465066447:4600891662:4600891664",
+        "osm:way:465066447:4600871812:4600891662",
+        "osm:way:1148700851:2971080719:4600871812",
+        "osm:way:1148700851:354840396:2971080719",
+        "osm:way:66703315:354840396:5554417552"
+      ],
+      "lengthMetres": 379.8478870551756
+    },
+    {
+      "id": "T02",
+      "name": "Nishiki arcade / Tenmangu / Shinkyogoku",
+      "firstEdgeOrdinal": 9,
+      "lastEdgeOrdinal": 24,
+      "edgeIds": [
+        "osm:way:66703315:354840397:5554417552",
+        "osm:way:66703315:354840397:354840398",
+        "osm:way:66703315:354840398:354840399",
+        "osm:way:66703315:354840399:372657394",
+        "osm:way:66703315:372657384:372657394",
+        "osm:way:66703315:372657384:5554418336",
+        "osm:way:66703315:354840400:5554418336",
+        "osm:way:66703316:354840400:5204263033",
+        "osm:way:66703316:434344433:5204263033",
+        "osm:way:1568699671:434344428:434344433",
+        "osm:way:1568699671:434344428:11791988811",
+        "osm:way:1568699671:11791924470:11791988811",
+        "osm:way:1568699671:434344416:11791924470",
+        "osm:way:1568699671:434344416:11791924469",
+        "osm:way:1568699671:11791924469:11793855056",
+        "osm:way:1568699671:11791924472:11793855056"
+      ],
+      "lengthMetres": 553.563862801428
+    },
+    {
+      "id": "C01",
+      "name": "Shijo connecting street to Takase",
+      "firstEdgeOrdinal": 25,
+      "lastEdgeOrdinal": 41,
+      "edgeIds": [
+        "osm:way:465066447:11791924472:11793855057",
+        "osm:way:465066447:4600871803:11793855057",
+        "osm:way:465066447:4600871803:4600891623",
+        "osm:way:465066447:4600871802:4600891623",
+        "osm:way:465066447:4600871801:4600871802",
+        "osm:way:465066447:4600871801:4600891621",
+        "osm:way:465069409:2737069399:4600891621",
+        "osm:way:465069409:2737069399:4600891622",
+        "osm:way:465066445:4600891622:13360574166",
+        "osm:way:465066445:4600871688:13360574166",
+        "osm:way:465066445:4600871687:4600871688",
+        "osm:way:571488126:4600871687:4600891620",
+        "osm:way:571488126:4600871686:4600891620",
+        "osm:way:571488126:4600871686:13360574163",
+        "osm:way:571488126:5163420206:13360574163",
+        "osm:way:571488127:4600891626:5163420206",
+        "osm:way:532008170:4600891626:5492358876"
+      ],
+      "lengthMetres": 323.62476693214745
+    },
+    {
+      "id": "T03",
+      "name": "Takase / Pontocho south / Shijo Bridge",
+      "firstEdgeOrdinal": 42,
+      "lastEdgeOrdinal": 54,
+      "edgeIds": [
+        "osm:way:532008170:5163420205:5492358876",
+        "osm:way:532008170:5163420202:5163420205",
+        "osm:way:532008170:5163420202:5163420204",
+        "osm:way:532008165:5163420204:11795574950",
+        "osm:way:532008165:5492582070:11795574950",
+        "osm:way:571523296:5163420203:5492582070",
+        "osm:way:532008159:5163420201:5163420203",
+        "osm:way:532008167:4600891628:5163420201",
+        "osm:way:532008167:2367201411:4600891628",
+        "osm:way:542888424:2367201411:5248383670",
+        "osm:way:228073861:5163420172:5248383670",
+        "osm:way:228073861:2367201412:5163420172",
+        "authored:shijo-bridge-view-approach"
+      ],
+      "lengthMetres": 96.40754306960014
+    }
+  ],
+  "sights": [
+    {
+      "type": "Feature",
+      "id": "mitsui-frontage",
+      "properties": {
+        "kind": "sight-approach",
+        "ordinal": 1,
+        "label": "Mitsui frontage",
+        "nodeId": "osm:node:4600871814",
+        "routeNodeIndex": 0,
+        "positionOrigin": "mapped-public-approach-node; not-an-entrance",
+        "currentAccess": "unverified"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7599457,
+          35.00376
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "nishiki-market",
+      "properties": {
+        "kind": "sight-approach",
+        "ordinal": 2,
+        "label": "Nishiki west",
+        "nodeId": "osm:node:5554417552",
+        "routeNodeIndex": 8,
+        "positionOrigin": "mapped-public-approach-node; not-an-entrance",
+        "currentAccess": "unverified"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7625989,
+          35.0049985
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "nishiki-tenmangu",
+      "properties": {
+        "kind": "sight-approach",
+        "ordinal": 3,
+        "label": "Tenmangu approach",
+        "nodeId": "osm:node:354840400",
+        "routeNodeIndex": 15,
+        "positionOrigin": "mapped-public-approach-node; not-an-entrance",
+        "currentAccess": "unverified"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7668613,
+          35.0050292
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "takase-river",
+      "properties": {
+        "kind": "sight-approach",
+        "ordinal": 4,
+        "label": "Takase at Shijo",
+        "nodeId": "osm:node:5492358876",
+        "routeNodeIndex": 41,
+        "positionOrigin": "mapped-public-approach-node; not-an-entrance",
+        "currentAccess": "unverified"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7704716,
+          35.0038821
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pontocho-entrance",
+      "properties": {
+        "kind": "sight-approach",
+        "ordinal": 5,
+        "label": "Pontocho entrance",
+        "nodeId": "osm:node:5248383670",
+        "routeNodeIndex": 51,
+        "positionOrigin": "mapped-public-approach-node; not-an-entrance",
+        "currentAccess": "unverified"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7710767,
+          35.0038978
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "shijo-bridge",
+      "properties": {
+        "kind": "sight-approach",
+        "ordinal": 6,
+        "label": "Shijo Bridge",
+        "nodeId": "authored:shijo-bridge-view",
+        "routeNodeIndex": 54,
+        "positionOrigin": "authored-representative-point-inside-mapped-pedestrian-area",
+        "currentAccess": "unverified"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.77152,
+          35.00391
+        ]
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "path": "experience/src/neighborhoods/shijo-east/geography.json",
+      "bytes": 175220,
+      "sha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f"
+    },
+    {
+      "path": "experience/sprints/realism-01/experiments/trial-definitions.json",
+      "bytes": 7088,
+      "sha256": "783c0bb2436e81c15a262dead931a8ab53ea74845ee99425ef92e0c0863187c3"
+    }
+  ],
+  "method": "Preserve selected route order and every intermediate point; orient by selected nodes; convert existing local equirectangular coordinates to longitude/latitude using the declared frame",
+  "rights": "OpenStreetMap contributors, ODbL; existing authored route additions and scope annotations by TourGuideAI",
+  "limitations": [
+    "Quotation extent only; current access, exact frontage boundaries, ground heights, widths and source accuracy require supplier/site review.",
+    "The final bridge viewing point is authored. Coordinates establish no entrance, access permission or measured ground.",
+    "C01 covers edges25–41 between T02 and T03; all four packages together are required for the full-route delivery."
+  ]
+}

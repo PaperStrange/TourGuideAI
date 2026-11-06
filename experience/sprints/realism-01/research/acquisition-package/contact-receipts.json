@@ -1,0 +1,155 @@
+{
+  "records": [
+    {
+      "id": "exagent",
+      "source": "https://ex-agent.com/contact/",
+      "finalUrl": "https://ex-agent.com/contact/",
+      "date": "2026-11-06T07:25:11.355632+00:00",
+      "httpStatus": 200,
+      "bytes": 59097,
+      "sha256": "4be1b55f8d69e8a9cba803ac7a67271c2972d103f69790518715298929812536",
+      "cachePath": "artifacts/realism-01/acquisition/exagent-contact.html",
+      "rights": "Provider-owned website; attributed contact facts retained; original page remains in ignored research cache",
+      "method": "Read-only HTTPS GET and lxml HTML form inspection; no fields filled or submission sent",
+      "location": "Supplier public contact page",
+      "limitations": "Form requirements and supplier capability can change; no reply or quote received",
+      "fields": [
+        {
+          "name": "your-name",
+          "type": "text",
+          "required": null,
+          "class": "wpcf7-form-control wpcf7-text wpcf7-validates-as-required",
+          "placeholder": null
+        },
+        {
+          "name": "your-email",
+          "type": "email",
+          "required": null,
+          "class": "wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email",
+          "placeholder": null
+        },
+        {
+          "name": "tel-793",
+          "type": "tel",
+          "required": null,
+          "class": "wpcf7-form-control wpcf7-tel wpcf7-text wpcf7-validates-as-tel",
+          "placeholder": null
+        },
+        {
+          "name": "your-subject",
+          "type": "text",
+          "required": null,
+          "class": "wpcf7-form-control wpcf7-text",
+          "placeholder": null
+        },
+        {
+          "name": "your-message",
+          "type": null,
+          "required": null,
+          "class": "wpcf7-form-control wpcf7-textarea",
+          "placeholder": null
+        },
+        {
+          "name": "_wpcf7_ak_hp_textarea",
+          "type": null,
+          "required": null,
+          "class": null,
+          "placeholder": null
+        },
+        {
+          "name": "s",
+          "type": "text",
+          "required": null,
+          "class": null,
+          "placeholder": null
+        }
+      ]
+    },
+    {
+      "id": "advalay",
+      "source": "https://advalay.jp/contact/",
+      "finalUrl": "https://advalay.jp/contact/",
+      "date": "2026-11-06T07:25:13.709664+00:00",
+      "httpStatus": 200,
+      "bytes": 259906,
+      "sha256": "6822d639da040dd757d96ec0825184b69e4b89ba0a8c40a580c4ca3644898208",
+      "cachePath": "artifacts/realism-01/acquisition/advalay-contact.html",
+      "rights": "Provider-owned website; attributed contact facts retained; original page remains in ignored research cache",
+      "method": "Read-only HTTPS GET and lxml HTML form inspection; no fields filled or submission sent",
+      "location": "Supplier public contact page",
+      "limitations": "Form requirements and supplier capability can change; no reply or quote received",
+      "fields": [
+        {
+          "name": "inquiry-type",
+          "type": null,
+          "required": null,
+          "class": "wpcf7-form-control wpcf7-select wpcf7-validates-as-required",
+          "placeholder": null
+        },
+        {
+          "name": "company",
+          "type": "text",
+          "required": null,
+          "class": "wpcf7-form-control wpcf7-text",
+          "placeholder": "例：株式会社Advalay"
+        },
+        {
+          "name": "your-name",
+          "type": "text",
+          "required": null,
+          "class": "wpcf7-form-control wpcf7-text wpcf7-validates-as-required",
+          "placeholder": "例：山田太郎"
+        },
+        {
+          "name": "your-email",
+          "type": "email",
+          "required": null,
+          "class": "wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email",
+          "placeholder": "例：info@advalay.jp"
+        },
+        {
+          "name": "tel-optional",
+          "type": "tel",
+          "required": null,
+          "class": "wpcf7-form-control wpcf7-tel wpcf7-text wpcf7-validates-as-tel",
+          "placeholder": "例：050-3173-8015"
+        },
+        {
+          "name": "your-message",
+          "type": null,
+          "required": null,
+          "class": "wpcf7-form-control wpcf7-textarea",
+          "placeholder": "例：工場2,000㎡の採用向け見学コンテンツを検討中。概算と納期を知りたい"
+        },
+        {
+          "name": "area-size",
+          "type": null,
+          "required": null,
+          "class": "wpcf7-form-control wpcf7-select",
+          "placeholder": null
+        },
+        {
+          "name": "timing",
+          "type": null,
+          "required": null,
+          "class": "wpcf7-form-control wpcf7-select",
+          "placeholder": null
+        },
+        {
+          "name": "_wpcf7_ak_hp_textarea",
+          "type": null,
+          "required": null,
+          "class": null,
+          "placeholder": null
+        },
+        {
+          "name": "s",
+          "type": "text",
+          "required": null,
+          "class": "c-searchForm__s s",
+          "placeholder": "検索"
+        }
+      ]
+    }
+  ]
+}

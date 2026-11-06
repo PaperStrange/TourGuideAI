@@ -87,3 +87,32 @@ only original gzip bytes and the selected route subset were retained. Software
 rendering and source-profile results establish no physical-device, independent
 discovery or realism/immersion acceptance. Correct splat source rendering remains
 unverified because the sample has no independent reference view or orientation.
+
+## Native texture, pedestrian surface and acquisition delivery
+
+The [texture audit](texture/README.md) reproduces measurement JSON and compressed
+triangle records byte for byte. Its retained validator passes three file hashes,
+five producers, 369 selected objects and 15,240 vertical triangles; the worktree
+also rechecks all 33 original B3DM files. Independent review confirmed the physical
+plane, clipping, sampling units and weighted distributions. Source-relative bands
+and nominal atlas density retain their documented visual limits.
+
+The [pedestrian audit](pedestrian/README.md) passes seven file hashes, six producers,
+1,986 selected triangles, all 54 edges and six sights. Repeated data and generated
+SVGs reproduce. Independent recomputation confirms the literal runtime distance
+of 2.961621 m and zero overlap with the complete actor envelope. This result does
+not change the frozen route or supply a floor.
+
+The [acquisition validator](../../../sprints/realism-01/acquisition.py) enforces
+four provenance hashes, two input hashes and its own bound producer identity. It
+checks the disjoint ordered T01/T02/C01/T03 partition, all 108 original polyline
+coordinates, endpoint continuity, six sight features and 1,353.444059858351 m total.
+The scope remains an authored quotation extent, with measured access unqualified.
+
+A staged-tree archive passes **39 Markdown documents, 427 relative targets,
+68 JSON documents, 84 qualification hashes and 45 producer hashes**, plus the
+acquisition checks above. Both new retained-data validators pass from that archive
+without original download caches. Browser state, packages and raw sources remain
+ignored. Local reports are in `artifacts/realism-01/validation/appearance-surface/`.
+These checks establish research integrity; the original failed source capture and
+all physical/human acceptance dependencies retain their existing status.

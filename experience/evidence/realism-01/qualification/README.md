@@ -4,6 +4,8 @@
 
 [Parallel candidate status](../../../sprints/realism-01/experiments/candidate-status.md) · [Terrain profile](terrain/README.md) · [Height registration](datum/README.md) · [Splat compatibility views](splat-compatibility/README.md)
 
+[Native texture density board](texture/README.md) · [Actual pedestrian coverage boards](pedestrian/README.md) · [Prepared full-route acquisition](../../../sprints/realism-01/research/acquisition-package/README.md)
+
 The 73 acquired original tiles contain 2,269 object occurrences. Selecting source
 replacement levels leaves **1,965 occurrences / 119,514 triangles**; all 304
 excluded occurrences remain in the evidence. Actual geometry is indexed against
@@ -35,11 +37,16 @@ unverified. Source credit: **Kyoto City / MLIT Project PLATEAU, CC BY 4.0**.
 | Height registration | Explicit GSIGEO2011 and JPGEO2024 experiments; 12 grid and 2,868 local-frame checks pass | [Datum evidence](datum/README.md); source-model/epoch choice and independent controls remain open |
 | Splat engineering | Spark 2.4.0 / Three 0.186.1 local non-Kyoto sample; six engineering checks pass | [Actual views](splat-compatibility/README.md); source fidelity, Kyoto capture, streaming and quality acceptance remain unverified |
 | Reference/capture qualification | Three reserved licensed photographs; two providers' published price items | Partial views and published prices; no full-route capture package or supplier quote |
+| Native texture sampling | 369 selected buildings; median 12.56 texels/m in the lower source-relative band; exact Mitsui 10.43 texels/m | [Measured board](texture/README.md); geometric sampling only, with photographic sharpness and visible frontage unverified |
+| Detailed pedestrian coverage | 1,986 selected triangles / 18 objects; zero overlap with all 54 current route edges, six anchors or the complete actor envelope | [Coverage and navigation boards](pedestrian/README.md); an explicit 5.250 m Pontochō approach revision candidate requires separate review |
+| Acquisition preparation | Exact 54-edge / six-sight scope, handover requirements, supplier response matrix and unsent Japanese inquiry | [Reviewable package](../../../sprints/realism-01/research/acquisition-package/README.md); outreach authorization, quote, rights and actual capture remain pending |
 
 The acquired PLATEAU surfaces need street-level repair/capture and ground
 registration before they can support the approved realism comparison. R04 source
-inspection is delivered; R04 appearance/ground qualification and R05 acquisition
-remain open. This evidence establishes no production renderer winner or release.
+inspection is complete, including actual texture sampling and pedestrian-surface
+intersections. The inspected municipal source alone is insufficient for close
+walking. R05 acquisition and eventual candidate appearance/ground acceptance remain
+open. Production representation selection follows the matched full-route gates.
 
 Next deliverables follow the [itemized capture proposal](../../../sprints/realism-01/research/capture-requirements.md):
 matched licensed source imagery/poses for T01–T03; explicit height control for

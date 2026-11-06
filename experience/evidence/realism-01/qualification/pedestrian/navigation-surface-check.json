@@ -1,0 +1,3960 @@
+{
+  "schemaVersion": 1,
+  "method": "Execute the actual createRouteNavigation module; locate midpoint and project one-metre lateral requests in both directions on every selected edge",
+  "rendererMapping": "route-world-view uses toScene(state.x,state.y,height); toScene maps x,height,-y without lateral offset",
+  "edges": [
+    {
+      "ordinal": 1,
+      "id": "osm:way:465066447:4600871814:4600891666",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "covered": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "lit": "yes",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 20.693663406198052,
+          "y": 2.3297536496359026,
+          "height": 0
+        },
+        {
+          "x": 115.7548944153947,
+          "y": 1.4311343843821998,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42900000000000027,
+          "projected": {
+            "x": 68.22022373038983,
+            "y": 1.4514631835072844,
+            "height": 0,
+            "edgeId": "osm:way:465066447:4600871814:4600891666",
+            "edgeDistance": 47.532739132012296
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42900000000000027,
+          "projected": {
+            "x": 68.22833409120291,
+            "y": 2.309424850510818,
+            "height": 0,
+            "edgeId": "osm:way:465066447:4600871814:4600891666",
+            "edgeDistance": 47.5327391320123
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 914.9462293021987,
+      "literalRuntimeRouteDistanceMetres": 914.948593632639,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.0024614564988976123,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          115.7548944153947,
+          -1.4311343843821998
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 2,
+      "id": "osm:way:465066447:4600871813:4600891666",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "covered": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "lit": "yes",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 125.46731517474163,
+          "y": 1.3423818649215906,
+          "height": 0
+        },
+        {
+          "x": 115.7548944153947,
+          "y": 1.4311343843821998,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42900000000000016,
+          "projected": {
+            "x": 120.61502485188969,
+            "y": 1.8157402142016994,
+            "height": 0,
+            "edgeId": "osm:way:465066447:4600871813:4600891666",
+            "edgeDistance": 4.8564131315278205
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42900000000000005,
+          "projected": {
+            "x": 120.60718473824666,
+            "y": 0.9577760351020911,
+            "height": 0,
+            "edgeId": "osm:way:465066447:4600871813:4600891666",
+            "edgeDistance": 4.856413131527825
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 905.2377371075466,
+      "literalRuntimeRouteDistanceMetres": 905.2403027218584,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.0026898493653818123,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          125.46731517474163,
+          -1.3423818649215906
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 3,
+      "id": "osm:way:465066447:4600871813:4600891664",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "covered": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "lit": "yes",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 125.46731517474163,
+          "y": 1.3423818649215906,
+          "height": 0
+        },
+        {
+          "x": 132.60557930643665,
+          "y": 1.4311343843821998,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4289999999999999,
+          "projected": {
+            "x": 129.0417807344931,
+            "y": 0.9577912799624991,
+            "height": 0,
+            "edgeId": "osm:way:465066447:4600871813:4600891664",
+            "edgeDistance": 3.569407927918665
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4290000000000002,
+          "projected": {
+            "x": 129.0311137466852,
+            "y": 1.8157249693412916,
+            "height": 0,
+            "edgeId": "osm:way:465066447:4600871813:4600891664",
+            "edgeDistance": 3.5694079279186837
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 898.0990768519459,
+      "literalRuntimeRouteDistanceMetres": 898.1017883282965,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.0028587501723784676,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          132.60557930643665,
+          -1.4311343843821998
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 4,
+      "id": "osm:way:465066447:4600891662:4600891664",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "covered": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "lit": "yes",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 254.3303263302498,
+          "y": 2.9843034844022283,
+          "height": 0
+        },
+        {
+          "x": 132.60557930643665,
+          "y": 1.4311343843821998,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42899999999999994,
+          "projected": {
+            "x": 193.46247936018406,
+            "y": 2.6366840160198213,
+            "height": 0,
+            "edgeId": "osm:way:465066447:4600891662:4600891664",
+            "edgeDistance": 60.867327796332084
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42899999999999994,
+          "projected": {
+            "x": 193.4734262765024,
+            "y": 1.778753852764607,
+            "height": 0,
+            "edgeId": "osm:way:465066447:4600891662:4600891664",
+            "edgeDistance": 60.86732779633208
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 776.3675116632178,
+      "literalRuntimeRouteDistanceMetres": 776.3727102908383,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.006227221441321359,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          254.3303263302498,
+          -2.9843034844022283
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 5,
+      "id": "osm:way:465066447:4600871812:4600891662",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "covered": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "lit": "yes",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 262.24448873498585,
+          "y": 3.0841500697807644,
+          "height": 0
+        },
+        {
+          "x": 254.3303263302498,
+          "y": 2.9843034844022283,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42899999999999994,
+          "projected": {
+            "x": 258.28199561731685,
+            "y": 3.4631926395709893,
+            "height": 0,
+            "edgeId": "osm:way:465066447:4600871812:4600891662",
+            "edgeDistance": 3.957396110738386
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4290000000000004,
+          "projected": {
+            "x": 258.29281944791876,
+            "y": 2.605260914612003,
+            "height": 0,
+            "edgeId": "osm:way:465066447:4600871812:4600891662",
+            "edgeDistance": 3.9573961107384266
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 768.4529932434832,
+      "literalRuntimeRouteDistanceMetres": 768.458353777489,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.006484162932758112,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          262.24448873498585,
+          -3.0841500697807644
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 6,
+      "id": "osm:way:1148700851:2971080719:4600871812",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle:conditional": "dismount @ (12:00-18:00)",
+        "carriage:conditional": "no @ (12:00-18:00)",
+        "cycleway": "lane",
+        "foot": "yes",
+        "highway": "pedestrian",
+        "motor_vehicle:conditional": "no @ (12:00-18:00)",
+        "name": "高倉通",
+        "name:en": "Takakura Street",
+        "name:fr": "Rue Takakura",
+        "name:ja": "高倉通",
+        "name:ja-Hira": "たかくらどおり",
+        "name:ja-Latn": "Takakura-dōri",
+        "name:ru": "Такакура улица",
+        "oneway": "yes",
+        "oneway:bicycle": "no",
+        "surface": "asphalt",
+        "wikidata": "Q11668808"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 261.26776973089517,
+          "y": 134.74851348969935,
+          "height": 0
+        },
+        {
+          "x": 262.24448873498585,
+          "y": 3.0841500697807644,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4290000000000031,
+          "projected": {
+            "x": 261.32714103647737,
+            "y": 68.91314943857246,
+            "height": 0,
+            "edgeId": "osm:way:1148700851:2971080719:4600871812",
+            "edgeDistance": 65.83399307118123
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4290000000000031,
+          "projected": {
+            "x": 262.18511742940365,
+            "y": 68.91951412090766,
+            "height": 0,
+            "edgeId": "osm:way:1148700851:2971080719:4600871812",
+            "edgeDistance": 65.83399307118121
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 768.3581587677143,
+      "literalRuntimeRouteDistanceMetres": 768.3631131480929,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.006484162932758112,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          262.15474331747066,
+          -15.182075079435322
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 7,
+      "id": "osm:way:1148700851:354840396:2971080719",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle:conditional": "dismount @ (12:00-18:00)",
+        "carriage:conditional": "no @ (12:00-18:00)",
+        "cycleway": "lane",
+        "foot": "yes",
+        "highway": "pedestrian",
+        "motor_vehicle:conditional": "no @ (12:00-18:00)",
+        "name": "高倉通",
+        "name:en": "Takakura Street",
+        "name:fr": "Rue Takakura",
+        "name:ja": "高倉通",
+        "name:ja-Hira": "たかくらどおり",
+        "name:ja-Latn": "Takakura-dōri",
+        "name:ru": "Такакура улица",
+        "oneway": "yes",
+        "oneway:bicycle": "no",
+        "surface": "asphalt",
+        "wikidata": "Q11668808"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 261.2403850849266,
+          "y": 139.71865460944812,
+          "height": 0
+        },
+        {
+          "x": 261.26776973089517,
+          "y": 134.74851348969935,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42899999999998195,
+          "projected": {
+            "x": 260.8250839196086,
+            "y": 137.23122036723214,
+            "height": 0,
+            "edgeId": "osm:way:1148700851:354840396:2971080719",
+            "edgeDistance": 2.4851082807924363
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42899999999998195,
+          "projected": {
+            "x": 261.68307089621317,
+            "y": 137.2359477319153,
+            "height": 0,
+            "edgeId": "osm:way:1148700851:354840396:2971080719",
+            "edgeDistance": 2.4851082807924523
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 775.8336646387075,
+      "literalRuntimeRouteDistanceMetres": 775.8351262248001,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.004030705799706241,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          261.26776973089517,
+          -134.74851348969935
+        ],
+        "sidewalkEastSouth": [
+          1037.091434826495,
+          -130.53143370837864
+        ]
+      }
+    },
+    {
+      "ordinal": 8,
+      "id": "osm:way:66703315:354840396:5554417552",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "abutters": "retail",
+        "covered": "yes",
+        "highway": "pedestrian",
+        "lit": "yes",
+        "name": "錦小路通",
+        "name:en": "Nishikikōji Street",
+        "name:fr": "Rue Nishikikōji",
+        "name:ja-Hira": "にしきこうじどおり",
+        "name:ja-Latn": "Nishikikōji-dōri",
+        "opening_hours": "09:00-18:00",
+        "smoothness": "excellent",
+        "surface": "paving_stones",
+        "wikidata": "Q11650428"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 261.2403850849266,
+          "y": 139.71865460944812,
+          "height": 0
+        },
+        {
+          "x": 262.88346378596697,
+          "y": 139.72974867457776,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 1.0742903720314134,
+          "projected": {
+            "x": 261.67488269547795,
+            "y": 138.72205469921397,
+            "height": 0,
+            "edgeId": "osm:way:1148700851:354840396:2971080719",
+            "edgeDistance": 0.9989787558569915
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42900000000001326,
+          "projected": {
+            "x": 262.05902789406196,
+            "y": 140.15319186340267,
+            "height": 0,
+            "edgeId": "osm:way:66703315:354840396:5554417552",
+            "edgeDistance": 0.8215580770848736
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 774.2613090737693,
+      "literalRuntimeRouteDistanceMetres": 774.2626114057869,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.004027621442376742,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          262.88346378596697,
+          -139.72974867457776
+        ],
+        "sidewalkEastSouth": [
+          1037.091434826495,
+          -130.53143370837864
+        ]
+      }
+    },
+    {
+      "ordinal": 9,
+      "id": "osm:way:66703315:354840397:5554417552",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "abutters": "retail",
+        "covered": "yes",
+        "highway": "pedestrian",
+        "lit": "yes",
+        "name": "錦小路通",
+        "name:en": "Nishikikōji Street",
+        "name:fr": "Rue Nishikikōji",
+        "name:ja-Hira": "にしきこうじどおり",
+        "name:ja-Latn": "Nishikikōji-dōri",
+        "opening_hours": "09:00-18:00",
+        "smoothness": "excellent",
+        "surface": "paving_stones",
+        "wikidata": "Q11650428"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 324.6723511211476,
+          "y": 140.26226379449454,
+          "height": 0
+        },
+        {
+          "x": 262.88346378596697,
+          "y": 139.72974867457776,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42900000000003446,
+          "projected": {
+            "x": 293.77421034048837,
+            "y": 140.42499030341864,
+            "height": 0,
+            "edgeId": "osm:way:66703315:354840397:5554417552",
+            "edgeDistance": 30.89559098994782
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4289999999999776,
+          "projected": {
+            "x": 293.78160456662624,
+            "y": 139.5670221656537,
+            "height": 0,
+            "edgeId": "osm:way:66703315:354840397:5554417552",
+            "edgeDistance": 30.89559098994779
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 712.4839706001267,
+      "literalRuntimeRouteDistanceMetres": 712.4855366123103,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.006015853521216951,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          324.6723511211476,
+          -140.26226379449454
+        ],
+        "sidewalkEastSouth": [
+          1037.091434826495,
+          -130.53143370837864
+        ]
+      }
+    },
+    {
+      "ordinal": 10,
+      "id": "osm:way:66703315:354840397:354840398",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "abutters": "retail",
+        "covered": "yes",
+        "highway": "pedestrian",
+        "lit": "yes",
+        "name": "錦小路通",
+        "name:en": "Nishikikōji Street",
+        "name:fr": "Rue Nishikikōji",
+        "name:ja-Hira": "にしきこうじどおり",
+        "name:ja-Latn": "Nishikikōji-dōri",
+        "opening_hours": "09:00-18:00",
+        "smoothness": "excellent",
+        "surface": "paving_stones",
+        "wikidata": "Q11650428"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 324.6723511211476,
+          "y": 140.26226379449454,
+          "height": 0
+        },
+        {
+          "x": 388.15908644671146,
+          "y": 140.4064866396034,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4290000000000087,
+          "projected": {
+            "x": 356.4166933409072,
+            "y": 139.9053763239983,
+            "height": 0,
+            "edgeId": "osm:way:66703315:354840397:354840398",
+            "edgeDistance": 31.743449570451684
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4290000000000087,
+          "projected": {
+            "x": 356.41474422695177,
+            "y": 140.76337411009965,
+            "height": 0,
+            "edgeId": "osm:way:66703315:354840397:354840398",
+            "edgeDistance": 31.743449570451737
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 649.0056456777293,
+      "literalRuntimeRouteDistanceMetres": 649.0074802682134,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.00849761692806285,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          388.15908644671146,
+          -140.4064866396034
+        ],
+        "sidewalkEastSouth": [
+          1037.091434826495,
+          -130.53143370837864
+        ]
+      }
+    },
+    {
+      "ordinal": 11,
+      "id": "osm:way:66703315:354840398:354840399",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "abutters": "retail",
+        "covered": "yes",
+        "highway": "pedestrian",
+        "lit": "yes",
+        "name": "錦小路通",
+        "name:en": "Nishikikōji Street",
+        "name:fr": "Rue Nishikikōji",
+        "name:ja-Hira": "にしきこうじどおり",
+        "name:ja-Latn": "Nishikikōji-dōri",
+        "opening_hours": "09:00-18:00",
+        "smoothness": "excellent",
+        "surface": "paving_stones",
+        "wikidata": "Q11650428"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 388.15908644671146,
+          "y": 140.4064866396034,
+          "height": 0
+        },
+        {
+          "x": 473.97343565986694,
+          "y": 142.02622012961302,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42900000000003585,
+          "projected": {
+            "x": 431.07435692455266,
+            "y": 140.78742978200688,
+            "height": 0,
+            "edgeId": "osm:way:66703315:354840398:354840399",
+            "edgeDistance": 42.91481698509281
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4289999999999791,
+          "projected": {
+            "x": 431.0581651820257,
+            "y": 141.6452769872095,
+            "height": 0,
+            "edgeId": "osm:way:66703315:354840398:354840399",
+            "edgeDistance": 42.914816985092834
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 563.2170642128985,
+      "literalRuntimeRouteDistanceMetres": 563.2192904045052,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.012540331551781511,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          473.97343565986694,
+          -142.02622012961302
+        ],
+        "sidewalkEastSouth": [
+          1037.1798067614689,
+          -138.2114286125126
+        ]
+      }
+    },
+    {
+      "ordinal": 12,
+      "id": "osm:way:66703315:354840399:372657394",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "abutters": "retail",
+        "covered": "yes",
+        "highway": "pedestrian",
+        "lit": "yes",
+        "name": "錦小路通",
+        "name:en": "Nishikikōji Street",
+        "name:fr": "Rue Nishikikōji",
+        "name:ja-Hira": "にしきこうじどおり",
+        "name:ja-Latn": "Nishikikōji-dōri",
+        "opening_hours": "09:00-18:00",
+        "smoothness": "excellent",
+        "surface": "paving_stones",
+        "wikidata": "Q11650428"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 473.97343565986694,
+          "y": 142.02622012961302,
+          "height": 0
+        },
+        {
+          "x": 539.5048911459761,
+          "y": 143.21328508429613,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4290000000000365,
+          "projected": {
+            "x": 506.7469332186755,
+            "y": 142.19082297407388,
+            "height": 0,
+            "edgeId": "osm:way:66703315:354840399:372657394",
+            "edgeDistance": 32.77110305335534
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4290000000000081,
+          "projected": {
+            "x": 506.73139358716753,
+            "y": 143.04868223983527,
+            "height": 0,
+            "edgeId": "osm:way:66703315:354840399:372657394",
+            "edgeDistance": 32.771103053355354
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 497.6949280130839,
+      "literalRuntimeRouteDistanceMetres": 497.6973784068434,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.016171816507282336,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          539.5048911459761,
+          -143.21328508429613
+        ],
+        "sidewalkEastSouth": [
+          1037.190852550677,
+          -139.84218827117283
+        ]
+      }
+    },
+    {
+      "ordinal": 13,
+      "id": "osm:way:66703315:372657384:372657394",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "abutters": "retail",
+        "covered": "yes",
+        "highway": "pedestrian",
+        "lit": "yes",
+        "name": "錦小路通",
+        "name:en": "Nishikikōji Street",
+        "name:fr": "Rue Nishikikōji",
+        "name:ja-Hira": "にしきこうじどおり",
+        "name:ja-Latn": "Nishikikōji-dōri",
+        "opening_hours": "09:00-18:00",
+        "smoothness": "excellent",
+        "surface": "paving_stones",
+        "wikidata": "Q11650428"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 605.5931677451605,
+          "y": 144.21175093492838,
+          "height": 0
+        },
+        {
+          "x": 539.5048911459761,
+          "y": 143.21328508429613,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4289999999999941,
+          "projected": {
+            "x": 572.542548826084,
+            "y": 144.14146905760154,
+            "height": 0,
+            "edgeId": "osm:way:66703315:372657384:372657394",
+            "edgeDistance": 33.04790930567763
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42900000000002253,
+          "projected": {
+            "x": 572.5555100650525,
+            "y": 143.28356696162297,
+            "height": 0,
+            "edgeId": "osm:way:66703315:372657384:372657394",
+            "edgeDistance": 33.04790930567766
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 431.6147117443409,
+      "literalRuntimeRouteDistanceMetres": 431.6173808447233,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.020313075942320933,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          605.5931677451605,
+          -144.21175093492838
+        ],
+        "sidewalkEastSouth": [
+          1037.2006474395548,
+          -141.28823949970266
+        ]
+      }
+    },
+    {
+      "ordinal": 14,
+      "id": "osm:way:66703315:372657384:5554418336",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "abutters": "retail",
+        "covered": "yes",
+        "highway": "pedestrian",
+        "lit": "yes",
+        "name": "錦小路通",
+        "name:en": "Nishikikōji Street",
+        "name:fr": "Rue Nishikikōji",
+        "name:ja-Hira": "にしきこうじどおり",
+        "name:ja-Latn": "Nishikikōji-dōri",
+        "opening_hours": "09:00-18:00",
+        "smoothness": "excellent",
+        "surface": "paving_stones",
+        "wikidata": "Q11650428"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 605.5931677451605,
+          "y": 144.21175093492838,
+          "height": 0
+        },
+        {
+          "x": 648.1945471505292,
+          "y": 143.22437914942577,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.429000000000002,
+          "projected": {
+            "x": 626.8839171881822,
+            "y": 143.28918021936582,
+            "height": 0,
+            "edgeId": "osm:way:66703315:372657384:5554418336",
+            "edgeDistance": 21.3064100113262
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.429000000000002,
+          "projected": {
+            "x": 626.9037977075074,
+            "y": 144.14694986498833,
+            "height": 0,
+            "edgeId": "osm:way:66703315:372657384:5554418336",
+            "edgeDistance": 21.30641001132622
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 389.00737425596645,
+      "literalRuntimeRouteDistanceMetres": 389.0102908490184,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.023251361920646873,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          648.1945471505292,
+          -143.22437914942577
+        ],
+        "sidewalkEastSouth": [
+          1037.1959142408202,
+          -140.58946201172427
+        ]
+      }
+    },
+    {
+      "ordinal": 15,
+      "id": "osm:way:66703315:354840400:5554418336",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "abutters": "retail",
+        "covered": "yes",
+        "highway": "pedestrian",
+        "lit": "yes",
+        "name": "錦小路通",
+        "name:en": "Nishikikōji Street",
+        "name:fr": "Rue Nishikikōji",
+        "name:ja-Hira": "にしきこうじどおり",
+        "name:ja-Latn": "Nishikikōji-dōri",
+        "opening_hours": "09:00-18:00",
+        "smoothness": "excellent",
+        "surface": "paving_stones",
+        "wikidata": "Q11650428"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 651.9644999448319,
+          "y": 143.13562662996517,
+          "height": 0
+        },
+        {
+          "x": 648.1945471505292,
+          "y": 143.22437914942577,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42900000000004046,
+          "projected": {
+            "x": 650.0896203011981,
+            "y": 143.60888405688334,
+            "height": 0,
+            "edgeId": "osm:way:66703315:354840400:5554418336",
+            "edgeDistance": 1.885498679460064
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42900000000001215,
+          "projected": {
+            "x": 650.069426794163,
+            "y": 142.7511217225076,
+            "height": 0,
+            "edgeId": "osm:way:66703315:354840400:5554418336",
+            "edgeDistance": 1.885498679459952
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 385.2368844089257,
+      "literalRuntimeRouteDistanceMetres": 385.23982338096505,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.02352099155961027,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          651.9644999448319,
+          -143.13562662996517
+        ],
+        "sidewalkEastSouth": [
+          1037.195486060262,
+          -140.52624832653729
+        ]
+      }
+    },
+    {
+      "ordinal": 16,
+      "id": "osm:way:66703316:354840400:5204263033",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "highway": "pedestrian",
+        "name": "錦小路通",
+        "name:en": "Nishikikōji Street",
+        "name:fr": "Rue Nishikikōji",
+        "name:ja": "錦小路通",
+        "name:ja-Hira": "にしきこうじどおり",
+        "name:ja-Latn": "Nishikikōji-dōri",
+        "surface": "paving_stones",
+        "wikidata": "Q11650428"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 651.9644999448319,
+          "y": 143.13562662996517,
+          "height": 0
+        },
+        {
+          "x": 662.0420493058513,
+          "y": 142.65858183490835,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4289999999999901,
+          "projected": {
+            "x": 656.9829896037335,
+            "y": 142.46858408367086,
+            "height": 0,
+            "edgeId": "osm:way:66703316:354840400:5204263033",
+            "edgeDistance": 5.044417034214023
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4289999999999901,
+          "projected": {
+            "x": 657.0235596469498,
+            "y": 143.32562438120266,
+            "height": 0,
+            "edgeId": "osm:way:66703316:354840400:5204263033",
+            "edgeDistance": 5.044417034214035
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 375.15625747917767,
+      "literalRuntimeRouteDistanceMetres": 375.15927398649075,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.024251647112090925,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          662.0420493058513,
+          -142.65858183490835
+        ],
+        "sidewalkEastSouth": [
+          1037.1927172710512,
+          -140.11748299087208
+        ]
+      }
+    },
+    {
+      "ordinal": 17,
+      "id": "osm:way:66703316:434344433:5204263033",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "highway": "pedestrian",
+        "name": "錦小路通",
+        "name:en": "Nishikikōji Street",
+        "name:fr": "Rue Nishikikōji",
+        "name:ja": "錦小路通",
+        "name:ja-Hira": "にしきこうじどおり",
+        "name:ja-Latn": "Nishikikōji-dōri",
+        "surface": "paving_stones",
+        "wikidata": "Q11650428"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 681.4668908271395,
+          "y": 142.00403199935374,
+          "height": 0
+        },
+        {
+          "x": 662.0420493058513,
+          "y": 142.65858183490835,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.429000000000021,
+          "projected": {
+            "x": 671.7689176796525,
+            "y": 142.76006356894425,
+            "height": 0,
+            "edgeId": "osm:way:66703316:434344433:5204263033",
+            "edgeDistance": 9.717933211521764
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4289999999999926,
+          "projected": {
+            "x": 671.7400224533383,
+            "y": 141.90255026531784,
+            "height": 0,
+            "edgeId": "osm:way:66703316:434344433:5204263033",
+            "edgeDistance": 9.717933211521732
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 355.7272956294146,
+      "literalRuntimeRouteDistanceMetres": 355.73044454504554,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.025689049748998424,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          681.4668908271395,
+          -142.00403199935374
+        ],
+        "sidewalkEastSouth": [
+          1037.189175041382,
+          -139.59453213062739
+        ]
+      }
+    },
+    {
+      "ordinal": 18,
+      "id": "osm:way:1568699671:434344428:434344433",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "abutters": "retail",
+        "bicycle": "dismount",
+        "carriage": "no",
+        "contact:facebook": "shinkyogoku",
+        "contact:tripadvisor": "1386092",
+        "contact:website": "https://www.shinkyogoku.or.jp/",
+        "covered": "yes",
+        "highway": "pedestrian",
+        "horse": "no",
+        "motor_vehicle": "no",
+        "name": "新京極通",
+        "name:en": "Shinkyogoku street",
+        "name:fr": "Rue Shinkyōgoku",
+        "name:ja-Hira": "しんきょうごくどおり",
+        "name:ja-Latn": "Shinkyōgoku-dōri",
+        "name:ru": "Синкёгоку улица",
+        "start_date": "1872",
+        "surface": "paving_stones",
+        "tourism": "attraction",
+        "wikidata": "Q11501300",
+        "wikimedia_commons": "Category:Shinkyogoku",
+        "wikipedia": "ja:新京極通"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 681.795506565791,
+          "y": 120.19310020987201,
+          "height": 0
+        },
+        {
+          "x": 681.4668908271395,
+          "y": 142.00403199935374,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.429000000000039,
+          "projected": {
+            "x": 682.0601500129819,
+            "y": 131.1050289258753,
+            "height": 0,
+            "edgeId": "osm:way:1568699671:434344428:434344433",
+            "edgeDistance": 10.906703601789046
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.429000000000039,
+          "projected": {
+            "x": 681.2022473799486,
+            "y": 131.09210328335044,
+            "height": 0,
+            "edgeId": "osm:way:1568699671:434344428:434344433",
+            "edgeDistance": 10.906703601789065
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 355.366487137685,
+      "literalRuntimeRouteDistanceMetres": 355.3716602572783,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.025972055953580996,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          681.795506565791,
+          -120.19310020987201
+        ],
+        "sidewalkEastSouth": [
+          1037.1540402122037,
+          -123.24751974322768
+        ]
+      }
+    },
+    {
+      "ordinal": 19,
+      "id": "osm:way:1568699671:434344428:11791988811",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "abutters": "retail",
+        "bicycle": "dismount",
+        "carriage": "no",
+        "contact:facebook": "shinkyogoku",
+        "contact:tripadvisor": "1386092",
+        "contact:website": "https://www.shinkyogoku.or.jp/",
+        "covered": "yes",
+        "highway": "pedestrian",
+        "horse": "no",
+        "motor_vehicle": "no",
+        "name": "新京極通",
+        "name:en": "Shinkyogoku street",
+        "name:fr": "Rue Shinkyōgoku",
+        "name:ja-Hira": "しんきょうごくどおり",
+        "name:ja-Latn": "Shinkyōgoku-dōri",
+        "name:ru": "Синкёгоку улица",
+        "start_date": "1872",
+        "surface": "paving_stones",
+        "tourism": "attraction",
+        "wikidata": "Q11501300",
+        "wikimedia_commons": "Category:Shinkyogoku",
+        "wikipedia": "ja:新京極通"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 681.795506565791,
+          "y": 120.19310020987201,
+          "height": 0
+        },
+        {
+          "x": 682.0145837257568,
+          "y": 97.19510346491892,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42900000000003885,
+          "projected": {
+            "x": 681.47606460887,
+            "y": 108.69001540157466,
+            "height": 0,
+            "edgeId": "osm:way:1568699671:434344428:11791988811",
+            "edgeDistance": 11.499520088713398
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42900000000003885,
+          "projected": {
+            "x": 682.3340256826777,
+            "y": 108.69818827321627,
+            "height": 0,
+            "edgeId": "osm:way:1568699671:434344428:11791988811",
+            "edgeDistance": 11.499520088713401
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 354.7028395289445,
+      "literalRuntimeRouteDistanceMetres": 354.7060304961502,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.02636850575985696,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          682.0145837257568,
+          -97.19510346491892
+        ],
+        "sidewalkEastSouth": [
+          1033.5094912966063,
+          -49.574750441281694
+        ]
+      }
+    },
+    {
+      "ordinal": 20,
+      "id": "osm:way:1568699671:11791924470:11791988811",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "abutters": "retail",
+        "bicycle": "dismount",
+        "carriage": "no",
+        "contact:facebook": "shinkyogoku",
+        "contact:tripadvisor": "1386092",
+        "contact:website": "https://www.shinkyogoku.or.jp/",
+        "covered": "yes",
+        "highway": "pedestrian",
+        "horse": "no",
+        "motor_vehicle": "no",
+        "name": "新京極通",
+        "name:en": "Shinkyogoku street",
+        "name:fr": "Rue Shinkyōgoku",
+        "name:ja-Hira": "しんきょうごくどおり",
+        "name:ja-Latn": "Shinkyōgoku-dōri",
+        "name:ru": "Синкёгоку улица",
+        "start_date": "1872",
+        "surface": "paving_stones",
+        "tourism": "attraction",
+        "wikidata": "Q11501300",
+        "wikimedia_commons": "Category:Shinkyogoku",
+        "wikipedia": "ja:新京極通"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 682.1241223070368,
+          "y": 85.3799242397947,
+          "height": 0
+        },
+        {
+          "x": 682.0145837257568,
+          "y": 97.19510346491892,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42900000000000765,
+          "projected": {
+            "x": 682.4983345809827,
+            "y": 91.29149094242753,
+            "height": 0,
+            "edgeId": "osm:way:1568699671:11791924470:11791988811",
+            "edgeDistance": 5.907843490280432
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42900000000000765,
+          "projected": {
+            "x": 681.6403714518109,
+            "y": 91.28353676228609,
+            "height": 0,
+            "edgeId": "osm:way:1568699671:11791924470:11791988811",
+            "edgeDistance": 5.9078434902804355
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 353.14041588414807,
+      "literalRuntimeRouteDistanceMetres": 353.1449668124774,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.026613432792249182,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          682.1241223070368,
+          -85.3799242397947
+        ],
+        "sidewalkEastSouth": [
+          1032.8877893886931,
+          -44.43828968015933
+        ]
+      }
+    },
+    {
+      "ordinal": 21,
+      "id": "osm:way:1568699671:434344416:11791924470",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "abutters": "retail",
+        "bicycle": "dismount",
+        "carriage": "no",
+        "contact:facebook": "shinkyogoku",
+        "contact:tripadvisor": "1386092",
+        "contact:website": "https://www.shinkyogoku.or.jp/",
+        "covered": "yes",
+        "highway": "pedestrian",
+        "horse": "no",
+        "motor_vehicle": "no",
+        "name": "新京極通",
+        "name:en": "Shinkyogoku street",
+        "name:fr": "Rue Shinkyōgoku",
+        "name:ja-Hira": "しんきょうごくどおり",
+        "name:ja-Latn": "Shinkyōgoku-dōri",
+        "name:ru": "Синкёгоку улица",
+        "start_date": "1872",
+        "surface": "paving_stones",
+        "tourism": "attraction",
+        "wikidata": "Q11501300",
+        "wikimedia_commons": "Category:Shinkyogoku",
+        "wikipedia": "ja:新京極通"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 682.2884301750654,
+          "y": 67.71817275992731,
+          "height": 0
+        },
+        {
+          "x": 682.1241223070368,
+          "y": 85.3799242397947,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42899999999994975,
+          "projected": {
+            "x": 682.6352576780457,
+            "y": 76.55303932859715,
+            "height": 0,
+            "edgeId": "osm:way:1568699671:434344416:11791924470",
+            "edgeDistance": 8.831257872071426
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42899999999994975,
+          "projected": {
+            "x": 681.7772948040565,
+            "y": 76.54505767112488,
+            "height": 0,
+            "edgeId": "osm:way:1568699671:434344416:11791924470",
+            "edgeDistance": 8.831257872071438
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 351.1580253445358,
+      "literalRuntimeRouteDistanceMetres": 351.1644946491851,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.027030090046696993,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          682.2884301750654,
+          -67.71817275992731
+        ],
+        "sidewalkEastSouth": [
+          1031.9288253103068,
+          -35.03642874450222
+        ]
+      }
+    },
+    {
+      "ordinal": 22,
+      "id": "osm:way:1568699671:434344416:11791924469",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "abutters": "retail",
+        "bicycle": "dismount",
+        "carriage": "no",
+        "contact:facebook": "shinkyogoku",
+        "contact:tripadvisor": "1386092",
+        "contact:website": "https://www.shinkyogoku.or.jp/",
+        "covered": "yes",
+        "highway": "pedestrian",
+        "horse": "no",
+        "motor_vehicle": "no",
+        "name": "新京極通",
+        "name:en": "Shinkyogoku street",
+        "name:fr": "Rue Shinkyōgoku",
+        "name:ja-Hira": "しんきょうごくどおり",
+        "name:ja-Latn": "Shinkyōgoku-dōri",
+        "name:ru": "Синкёгоку улица",
+        "start_date": "1872",
+        "surface": "paving_stones",
+        "tourism": "attraction",
+        "wikidata": "Q11501300",
+        "wikimedia_commons": "Category:Shinkyogoku",
+        "wikipedia": "ja:新京極通"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 682.2884301750654,
+          "y": 67.71817275992731,
+          "height": 0
+        },
+        {
+          "x": 682.0876094466101,
+          "y": 46.850236494641315,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42899999999995453,
+          "projected": {
+            "x": 681.7590396743118,
+            "y": 57.28833287947057,
+            "height": 0,
+            "edgeId": "osm:way:1568699671:434344416:11791924469",
+            "edgeDistance": 10.434451266561844
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42899999999995453,
+          "projected": {
+            "x": 682.6169999473638,
+            "y": 57.28007637509805,
+            "height": 0,
+            "edgeId": "osm:way:1568699671:434344416:11791924469",
+            "edgeDistance": 10.434451266561844
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 349.36701672358987,
+      "literalRuntimeRouteDistanceMetres": 349.3755337602564,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.027567409170791642,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          682.0876094466101,
+          -46.850236494641315
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 23,
+      "id": "osm:way:1568699671:11791924469:11793855056",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "abutters": "retail",
+        "bicycle": "dismount",
+        "carriage": "no",
+        "contact:facebook": "shinkyogoku",
+        "contact:tripadvisor": "1386092",
+        "contact:website": "https://www.shinkyogoku.or.jp/",
+        "covered": "yes",
+        "highway": "pedestrian",
+        "horse": "no",
+        "motor_vehicle": "no",
+        "name": "新京極通",
+        "name:en": "Shinkyogoku street",
+        "name:fr": "Rue Shinkyōgoku",
+        "name:ja-Hira": "しんきょうごくどおり",
+        "name:ja-Latn": "Shinkyōgoku-dōri",
+        "name:ru": "Синкёгоку улица",
+        "start_date": "1872",
+        "surface": "paving_stones",
+        "tourism": "attraction",
+        "wikidata": "Q11501300",
+        "wikimedia_commons": "Category:Shinkyogoku",
+        "wikipedia": "ja:新京極通"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 682.0876094466101,
+          "y": 46.850236494641315,
+          "height": 0
+        },
+        {
+          "x": 682.0967376610682,
+          "y": 32.716397685010854,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42900000000002836,
+          "projected": {
+            "x": 681.6631736433094,
+            "y": 39.783040024038186,
+            "height": 0,
+            "edgeId": "osm:way:1568699671:11791924469:11793855056",
+            "edgeDistance": 7.066920878659164
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42900000000002836,
+          "projected": {
+            "x": 682.521173464369,
+            "y": 39.78359415561398,
+            "height": 0,
+            "edgeId": "osm:way:1568699671:11791924469:11793855056",
+            "edgeDistance": 7.066920878659169
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 348.59029344642676,
+      "literalRuntimeRouteDistanceMetres": 348.6009204500809,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.027985857970310755,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          682.0967376610682,
+          -32.716397685010854
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 24,
+      "id": "osm:way:1568699671:11791924472:11793855056",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "abutters": "retail",
+        "bicycle": "dismount",
+        "carriage": "no",
+        "contact:facebook": "shinkyogoku",
+        "contact:tripadvisor": "1386092",
+        "contact:website": "https://www.shinkyogoku.or.jp/",
+        "covered": "yes",
+        "highway": "pedestrian",
+        "horse": "no",
+        "motor_vehicle": "no",
+        "name": "新京極通",
+        "name:en": "Shinkyogoku street",
+        "name:fr": "Rue Shinkyōgoku",
+        "name:ja-Hira": "しんきょうごくどおり",
+        "name:ja-Latn": "Shinkyōgoku-dōri",
+        "name:ru": "Синкёгоку улица",
+        "start_date": "1872",
+        "surface": "paving_stones",
+        "tourism": "attraction",
+        "wikidata": "Q11501300",
+        "wikimedia_commons": "Category:Shinkyogoku",
+        "wikipedia": "ja:新京極通"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 682.1241223070368,
+          "y": 7.10020159941589,
+          "height": 0
+        },
+        {
+          "x": 682.0967376610682,
+          "y": 32.716397685010854,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4289999999999682,
+          "projected": {
+            "x": 682.5394297389138,
+            "y": 19.908758258565626,
+            "height": 0,
+            "edgeId": "osm:way:1568699671:11791924472:11793855056",
+            "edgeDistance": 12.808105361591204
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4289999999999683,
+          "projected": {
+            "x": 681.6814302291913,
+            "y": 19.907841025861114,
+            "height": 0,
+            "edgeId": "osm:way:1568699671:11791924472:11793855056",
+            "edgeDistance": 12.808105361591204
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 348.3746829560919,
+      "literalRuntimeRouteDistanceMetres": 348.38712734458585,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.028829283906183792,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          682.1097873979971,
+          -20.50938867643952
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 25,
+      "id": "osm:way:465066447:11791924472:11793855057",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "covered": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "lit": "yes",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 682.1241223070368,
+          "y": 7.10020159941589,
+          "height": 0
+        },
+        {
+          "x": 738.445208854937,
+          "y": 9.152603624752038,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4289999999999996,
+          "projected": {
+            "x": 710.3002884406638,
+            "y": 7.697687174695112,
+            "height": 0,
+            "edgeId": "osm:way:465066447:11791924472:11793855057",
+            "edgeDistance": 28.179235014499916
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4289999999999978,
+          "projected": {
+            "x": 710.26904272131,
+            "y": 8.555118049472815,
+            "height": 0,
+            "edgeId": "osm:way:465066447:11791924472:11793855057",
+            "edgeDistance": 28.179235014499902
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 292.2713975028095,
+      "literalRuntimeRouteDistanceMetres": 292.2869434513405,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.03317280537474206,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          738.445208854937,
+          -9.152603624752038
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 26,
+      "id": "osm:way:465066447:4600871803:11793855057",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "covered": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "lit": "yes",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 830.603667495236,
+          "y": 12.525199384750485,
+          "height": 0
+        },
+        {
+          "x": 738.445208854937,
+          "y": 9.152603624752038,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4290000000000002,
+          "projected": {
+            "x": 784.5087491570675,
+            "y": 11.267614526146227,
+            "height": 0,
+            "edgeId": "osm:way:465066447:4600871803:11793855057",
+            "edgeDistance": 46.110074552954366
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42899999999999844,
+          "projected": {
+            "x": 784.5401271931055,
+            "y": 10.410188483356297,
+            "height": 0,
+            "edgeId": "osm:way:465066447:4600871803:11793855057",
+            "edgeDistance": 46.110074552954416
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 200.05024238779353,
+      "literalRuntimeRouteDistanceMetres": 200.06764839036262,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.0410171525573507,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          830.603667495236,
+          -12.525199384750485
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 27,
+      "id": "osm:way:465066447:4600871803:4600891623",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "covered": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "lit": "yes",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 830.603667495236,
+          "y": 12.525199384750485,
+          "height": 0
+        },
+        {
+          "x": 840.6355757813707,
+          "y": 12.968961984418371,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4290000000000012,
+          "projected": {
+            "x": 835.6385799626688,
+            "y": 12.318499791476425,
+            "height": 0,
+            "edgeId": "osm:way:465066447:4600871803:4600891623",
+            "edgeDistance": 5.020859216963776
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42899999999999944,
+          "projected": {
+            "x": 835.6006633139378,
+            "y": 13.17566157769243,
+            "height": 0,
+            "edgeId": "osm:way:465066447:4600871803:4600891623",
+            "edgeDistance": 5.020859216963854
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 190.00837166320807,
+      "literalRuntimeRouteDistanceMetres": 190.02596104579837,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.04192384934440464,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          840.6355757813707,
+          -12.968961984418371
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 28,
+      "id": "osm:way:465066447:4600871802:4600891623",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "covered": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "lit": "yes",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 846.4046076613339,
+          "y": 13.235219544376761,
+          "height": 0
+        },
+        {
+          "x": 840.6355757813707,
+          "y": 12.968961984418371,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.429,
+          "projected": {
+            "x": 843.5003131804533,
+            "y": 13.530634588667509,
+            "height": 0,
+            "edgeId": "osm:way:465066447:4600871802:4600891623",
+            "edgeDistance": 2.887586445470807
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.429,
+          "projected": {
+            "x": 843.5398702622513,
+            "y": 12.673546940127624,
+            "height": 0,
+            "edgeId": "osm:way:465066447:4600871802:4600891623",
+            "edgeDistance": 2.887586445470813
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 184.23315669442806,
+      "literalRuntimeRouteDistanceMetres": 184.2508475842281,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.04244981980217753,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          846.4046076613339,
+          -13.235219544376761
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 29,
+      "id": "osm:way:465066447:4600871801:4600871802",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "covered": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "lit": "yes",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 862.6254457158527,
+          "y": 29.56568322445221,
+          "height": 0
+        },
+        {
+          "x": 846.4046076613339,
+          "y": 13.235219544376761,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42899999999992755,
+          "projected": {
+            "x": 854.2106579934489,
+            "y": 21.702776866992533,
+            "height": 0,
+            "edgeId": "osm:way:465066447:4600871801:4600871802",
+            "edgeDistance": 11.508688361377201
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42900000000004324,
+          "projected": {
+            "x": 854.8193953837377,
+            "y": 21.098125901836394,
+            "height": 0,
+            "edgeId": "osm:way:465066447:4600871801:4600871802",
+            "edgeDistance": 11.508688361377132
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 168.08301639749155,
+      "literalRuntimeRouteDistanceMetres": 168.09572461674986,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.043421832949413174,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          862.6254457158527,
+          -29.56568322445221
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 30,
+      "id": "osm:way:465066447:4600871801:4600891621",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "covered": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "lit": "yes",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 862.6254457158527,
+          "y": 29.56568322445221,
+          "height": 0
+        },
+        {
+          "x": 862.7167278656223,
+          "y": 35.07943353003569,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42899999999998856,
+          "projected": {
+            "x": 863.1000280126348,
+            "y": 32.31545709867863,
+            "height": 0,
+            "edgeId": "osm:way:465066447:4600871801:4600891621",
+            "edgeDistance": 2.7572529292390096
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42899999999998856,
+          "projected": {
+            "x": 862.2421455688402,
+            "y": 32.32965965580927,
+            "height": 0,
+            "edgeId": "osm:way:465066447:4600871801:4600891621",
+            "edgeDistance": 2.7572529292390153
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 168.08301639749155,
+      "literalRuntimeRouteDistanceMetres": 168.09572461674986,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.043421832949413174,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          862.6254457158527,
+          -29.56568322445221
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 31,
+      "id": "osm:way:465069409:2737069399:4600891621",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway",
+        "smoothness": "excellent",
+        "surface": "asphalt"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 875.3501774253775,
+          "y": 35.06833946490605,
+          "height": 0
+        },
+        {
+          "x": 862.7167278656223,
+          "y": 35.07943353003569,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.428999999999997,
+          "projected": {
+            "x": 869.0338293717522,
+            "y": 35.5028863320598,
+            "height": 0,
+            "edgeId": "osm:way:465069409:2737069399:4600891621",
+            "edgeDistance": 6.316727215440799
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.428999999999997,
+          "projected": {
+            "x": 869.0330759192476,
+            "y": 34.644886662881945,
+            "height": 0,
+            "edgeId": "osm:way:465069409:2737069399:4600891621",
+            "edgeDistance": 6.316727215440788
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 155.78315235382877,
+      "literalRuntimeRouteDistanceMetres": 155.79379148393733,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.04446131351097815,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          875.3501774253775,
+          -35.06833946490605
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 32,
+      "id": "osm:way:465069409:2737069399:4600891622",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "crossing": "marked",
+        "footway": "crossing",
+        "highway": "footway",
+        "smoothness": "excellent",
+        "surface": "asphalt"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 875.3501774253775,
+          "y": 35.06833946490605,
+          "height": 0
+        },
+        {
+          "x": 887.5454726652013,
+          "y": 35.06833946490605,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42900000000000205,
+          "projected": {
+            "x": 881.4478250452894,
+            "y": 34.63933946490605,
+            "height": 0,
+            "edgeId": "osm:way:465069409:2737069399:4600891622",
+            "edgeDistance": 6.097647619911868
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42900000000000205,
+          "projected": {
+            "x": 881.4478250452894,
+            "y": 35.497339464906055,
+            "height": 0,
+            "edgeId": "osm:way:465069409:2737069399:4600891622",
+            "edgeDistance": 6.097647619911868
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 143.64306545300676,
+      "literalRuntimeRouteDistanceMetres": 143.65345457846223,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.04564212162813132,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          887.5454726652013,
+          -35.06833946490605
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 33,
+      "id": "osm:way:465066445:4600891622:13360574166",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "covered": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "lit": "yes",
+        "smoothness": "excellent",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 887.5454726652013,
+          "y": 35.06833946490605,
+          "height": 0
+        },
+        {
+          "x": 887.6093701715965,
+          "y": 33.72595759998446,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 1.0278111697573122,
+          "projected": {
+            "x": 886.5785523814818,
+            "y": 34.63933946490605,
+            "height": 0,
+            "edgeId": "osm:way:465069409:2737069399:4600891622",
+            "edgeDistance": 11.22837495610429
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4289999999999453,
+          "projected": {
+            "x": 888.0059362352363,
+            "y": 34.41754587910558,
+            "height": 0,
+            "edgeId": "osm:way:465066445:4600891622:13360574166",
+            "edgeDistance": 0.6719508841042453
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 143.45253171226037,
+      "literalRuntimeRouteDistanceMetres": 143.46346292417667,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.04569072558589057,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          887.6093701715965,
+          -33.72595759998446
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 34,
+      "id": "osm:way:465066445:4600871688:13360574166",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "covered": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "lit": "yes",
+        "smoothness": "excellent",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 887.7919344711356,
+          "y": 29.57677728958186,
+          "height": 0
+        },
+        {
+          "x": 887.6093701715965,
+          "y": 33.72595759998446,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4289999999999762,
+          "projected": {
+            "x": 888.1292376497101,
+            "y": 31.670225237023644,
+            "height": 0,
+            "edgeId": "osm:way:465066445:4600871688:13360574166",
+            "edgeDistance": 2.076597395482502
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4289999999999762,
+          "projected": {
+            "x": 887.272066993022,
+            "y": 31.63250965254268,
+            "height": 0,
+            "edgeId": "osm:way:465066445:4600871688:13360574166",
+            "edgeDistance": 2.0765973954825045
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 142.9568166946706,
+      "literalRuntimeRouteDistanceMetres": 142.9694258824625,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.045841627207203896,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          887.7919344711356,
+          -29.57677728958186
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 35,
+      "id": "osm:way:465066445:4600871687:4600871688",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "covered": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "lit": "yes",
+        "smoothness": "excellent",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 902.3514373956979,
+          "y": 14.189309134490415,
+          "height": 0
+        },
+        {
+          "x": 887.7919344711356,
+          "y": 29.57677728958186,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4290000000000202,
+          "projected": {
+            "x": 895.3833025665452,
+            "y": 22.17789245140723,
+            "height": 0,
+            "edgeId": "osm:way:465066445:4600871687:4600871688",
+            "edgeDistance": 10.591899046373717
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42900000000004956,
+          "projected": {
+            "x": 894.7600693002884,
+            "y": 21.588193972664996,
+            "height": 0,
+            "edgeId": "osm:way:465066445:4600871687:4600871688",
+            "edgeDistance": 10.59189904637364
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 128.30057671384316,
+      "literalRuntimeRouteDistanceMetres": 128.31992105099113,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.04779555420096066,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          902.3514373956979,
+          -14.189309134490415
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 36,
+      "id": "osm:way:571488126:4600871687:4600891620",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "covered": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "smoothness": "excellent",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 902.3514373956979,
+          "y": 14.189309134490415,
+          "height": 0
+        },
+        {
+          "x": 908.9967779155241,
+          "y": 14.389002304459206,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4289999999999992,
+          "projected": {
+            "x": 905.686993333357,
+            "y": 13.860349283761648,
+            "height": 0,
+            "edgeId": "osm:way:571488126:4600871687:4600891620",
+            "edgeDistance": 3.324170121495636
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.429000000000001,
+          "projected": {
+            "x": 905.661221977865,
+            "y": 14.717962155187973,
+            "height": 0,
+            "edgeId": "osm:way:571488126:4600871687:4600891620",
+            "edgeDistance": 3.32417012149563
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 121.65376163988681,
+      "literalRuntimeRouteDistanceMetres": 121.67329882131695,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.048450093390135125,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          908.9967779155241,
+          -14.389002304459206
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 37,
+      "id": "osm:way:571488126:4600871686:4600891620",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "covered": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "smoothness": "excellent",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 973.0677190001319,
+          "y": 15.753572299640089,
+          "height": 0
+        },
+        {
+          "x": 908.9967779155241,
+          "y": 14.389002304459206,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4289999999999996,
+          "projected": {
+            "x": 941.0231137737507,
+            "y": 15.500190038747382,
+            "height": 0,
+            "edgeId": "osm:way:571488126:4600871686:4600891620",
+            "edgeDistance": 32.04273530279139
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4290000000000014,
+          "projected": {
+            "x": 941.0413831419054,
+            "y": 14.642384565351911,
+            "height": 0,
+            "edgeId": "osm:way:571488126:4600871686:4600891620",
+            "edgeDistance": 32.04273530279147
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 57.63477293743679,
+      "literalRuntimeRouteDistanceMetres": 57.6575116903949,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.05502743350600715,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          973.0677190001319,
+          -15.753572299640089
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 38,
+      "id": "osm:way:571488126:4600871686:13360574163",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "covered": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "smoothness": "excellent",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 973.0677190001319,
+          "y": 15.753572299640089,
+          "height": 0
+        },
+        {
+          "x": 976.3812610455869,
+          "y": 15.820136689629686,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4290000000000005,
+          "projected": {
+            "x": 974.7331062899007,
+            "y": 15.357941030236445,
+            "height": 0,
+            "edgeId": "osm:way:571488126:4600871686:13360574163",
+            "edgeDistance": 1.6571052852046437
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4289999999999987,
+          "projected": {
+            "x": 974.7158737558182,
+            "y": 16.21576795903333,
+            "height": 0,
+            "edgeId": "osm:way:571488126:4600871686:13360574163",
+            "edgeDistance": 1.6571052852047157
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 54.32862662250963,
+      "literalRuntimeRouteDistanceMetres": 54.35166177378386,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.0553799051745414,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          976.3812610455869,
+          -15.820136689629686
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 39,
+      "id": "osm:way:571488126:5163420206:13360574163",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "covered": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "smoothness": "excellent",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 978.4259812061323,
+          "y": 15.864512949359991,
+          "height": 0
+        },
+        {
+          "x": 976.3812610455869,
+          "y": 15.820136689629686,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4290000000000025,
+          "projected": {
+            "x": 977.3943127941221,
+            "y": 16.271223822711523,
+            "height": 0,
+            "edgeId": "osm:way:571488126:5163420206:13360574163",
+            "edgeDistance": 1.022600824780571
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42899999999999894,
+          "projected": {
+            "x": 977.4129294575972,
+            "y": 15.413425816278156,
+            "height": 0,
+            "edgeId": "osm:way:571488126:5163420206:13360574163",
+            "edgeDistance": 1.0226008247806162
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 52.28867037761425,
+      "literalRuntimeRouteDistanceMetres": 52.311899482503385,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.05559788847130368,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          978.4259812061323,
+          -15.864512949359991
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 40,
+      "id": "osm:way:571488127:4600891626:5163420206",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "covered": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "smoothness": "excellent",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 980.0416752612041,
+          "y": 15.864512949359991,
+          "height": 0
+        },
+        {
+          "x": 978.4259812061323,
+          "y": 15.864512949359991,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4289999999999985,
+          "projected": {
+            "x": 979.2338282336682,
+            "y": 16.29351294935999,
+            "height": 0,
+            "edgeId": "osm:way:571488127:4600891626:5163420206",
+            "edgeDistance": 0.8078470275358995
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42900000000000027,
+          "projected": {
+            "x": 979.2338282336682,
+            "y": 15.43551294935999,
+            "height": 0,
+            "edgeId": "osm:way:571488127:4600891626:5163420206",
+            "edgeDistance": 0.8078470275358995
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 50.68046110514298,
+      "literalRuntimeRouteDistanceMetres": 50.70389080259959,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.05577169779045676,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          980.0416752612041,
+          -15.864512949359991
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 41,
+      "id": "osm:way:532008170:4600891626:5492358876",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "covered": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "smoothness": "excellent",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 980.0416752612041,
+          "y": 15.864512949359991,
+          "height": 0
+        },
+        {
+          "x": 981.5204460916216,
+          "y": 15.875607014489637,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4290000000000026,
+          "projected": {
+            "x": 980.784279038523,
+            "y": 15.441072054186364,
+            "height": 0,
+            "edgeId": "osm:way:532008170:4600891626:5492358876",
+            "edgeDistance": 0.7394062224471994
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42899999999999905,
+          "projected": {
+            "x": 980.7778423143027,
+            "y": 16.299047909663262,
+            "height": 0,
+            "edgeId": "osm:way:532008170:4600891626:5492358876",
+            "edgeDistance": 0.7394062224472603
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 49.20785545173061,
+      "literalRuntimeRouteDistanceMetres": 49.2314657505827,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.05593063455595152,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          981.5204460916216,
+          -15.875607014489637
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 42,
+      "id": "osm:way:532008170:5163420205:5492358876",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "covered": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "smoothness": "excellent",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 982.9627040616124,
+          "y": 16.208428964437623,
+          "height": 0
+        },
+        {
+          "x": 981.5204460916216,
+          "y": 15.875607014489637,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42900000000001326,
+          "projected": {
+            "x": 982.14511222286,
+            "y": 16.460032245016084,
+            "height": 0,
+            "edgeId": "osm:way:532008170:5163420205:5492358876",
+            "edgeDistance": 0.7400808236890422
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.429000000000015,
+          "projected": {
+            "x": 982.338037930374,
+            "y": 15.624003733911175,
+            "height": 0,
+            "edgeId": "osm:way:532008170:5163420205:5492358876",
+            "edgeDistance": 0.7400808236891009
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 47.739776532627374,
+      "literalRuntimeRouteDistanceMetres": 47.76319617024052,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.05607449274598534,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          982.9627040616124,
+          -16.208428964437623
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 43,
+      "id": "osm:way:532008170:5163420202:5163420205",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "covered": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "smoothness": "excellent",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 984.295423450323,
+          "y": 16.851884734862583,
+          "height": 0
+        },
+        {
+          "x": 982.9627040616124,
+          "y": 16.208428964437623,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42900000000002203,
+          "projected": {
+            "x": 983.4425390110293,
+            "y": 16.91648510324499,
+            "height": 0,
+            "edgeId": "osm:way:532008170:5163420202:5163420205",
+            "edgeDistance": 0.7399622114570954
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42899999999998684,
+          "projected": {
+            "x": 983.8155885009062,
+            "y": 16.143828596055258,
+            "height": 0,
+            "edgeId": "osm:way:532008170:5163420202:5163420205",
+            "edgeDistance": 0.7399622114571781
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 46.35389163245015,
+      "literalRuntimeRouteDistanceMetres": 46.37671654039751,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.056195805762551496,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          984.295423450323,
+          -16.851884734862583
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 44,
+      "id": "osm:way:532008170:5163420202:5163420204",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "covered": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "smoothness": "excellent",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 984.295423450323,
+          "y": 16.851884734862583,
+          "height": 0
+        },
+        {
+          "x": 985.4638349710052,
+          "y": 17.750503999328007,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4289999999999843,
+          "projected": {
+            "x": 985.1411660845708,
+            "y": 16.961136337360536,
+            "height": 0,
+            "edgeId": "osm:way:532008170:5163420202:5163420204",
+            "edgeDistance": 0.7370044206331721
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4289999999999843,
+          "projected": {
+            "x": 984.6180923367574,
+            "y": 17.641252396830055,
+            "height": 0,
+            "edgeId": "osm:way:532008170:5163420202:5163420204",
+            "edgeDistance": 0.7370044206331325
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 45.11976549273396,
+      "literalRuntimeRouteDistanceMetres": 45.141616358529674,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.05629064655141472,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          985.4638349710052,
+          -17.750503999328007
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 45,
+      "id": "osm:way:532008165:5163420204:11795574950",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "covered": "yes",
+        "crossing": "traffic_signals",
+        "crossing:markings": "yes",
+        "footway": "crossing",
+        "highway": "footway",
+        "lit": "no",
+        "smoothness": "excellent",
+        "surface": "asphalt"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 985.4638349710052,
+          "y": 17.750503999328007,
+          "height": 0
+        },
+        {
+          "x": 989.3889674214728,
+          "y": 17.73940993498664,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4290000000000002,
+          "projected": {
+            "x": 987.4251886678334,
+            "y": 17.31595868070985,
+            "height": 0,
+            "edgeId": "osm:way:532008165:5163420204:11795574950",
+            "edgeDistance": 1.9625740643335003
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42900000000000377,
+          "projected": {
+            "x": 987.4276137246446,
+            "y": 18.173955253604795,
+            "height": 0,
+            "edgeId": "osm:way:532008165:5163420204:11795574950",
+            "edgeDistance": 1.9625740643333878
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 41.20537227593204,
+      "literalRuntimeRouteDistanceMetres": 41.22768185054289,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.056716766370834046,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          989.3889674214728,
+          -17.73940993498664
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 46,
+      "id": "osm:way:532008165:5492582070:11795574950",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "covered": "yes",
+        "crossing": "traffic_signals",
+        "crossing:markings": "yes",
+        "footway": "crossing",
+        "highway": "footway",
+        "lit": "no",
+        "smoothness": "excellent",
+        "surface": "asphalt"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 992.2278422865696,
+          "y": 17.805974324976237,
+          "height": 0
+        },
+        {
+          "x": 989.3889674214728,
+          "y": 17.73940993498664,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4290000000000026,
+          "projected": {
+            "x": 990.7983486599092,
+            "y": 18.201574250103018,
+            "height": 0,
+            "edgeId": "osm:way:532008165:5492582070:11795574950",
+            "edgeDistance": 1.4198275703138086
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42899999999999905,
+          "projected": {
+            "x": 990.8184610481333,
+            "y": 17.343810009859858,
+            "height": 0,
+            "edgeId": "osm:way:532008165:5492582070:11795574950",
+            "edgeDistance": 1.419827570313886
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 38.369704715478896,
+      "literalRuntimeRouteDistanceMetres": 38.39228489457541,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.05702339378986559,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          992.2278422865696,
+          -17.805974324976237
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 47,
+      "id": "osm:way:571523296:5163420203:5492582070",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "covered": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "smoothness": "excellent",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 993.8526645560995,
+          "y": 17.8170683893176,
+          "height": 0
+        },
+        {
+          "x": 992.2278422865696,
+          "y": 17.805974324976237,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42899999999999866,
+          "projected": {
+            "x": 993.0373243362551,
+            "y": 18.240511357567204,
+            "height": 0,
+            "edgeId": "osm:way:571523296:5163420203:5492582070",
+            "edgeDistance": 0.8124300717328798
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42899999999999866,
+          "projected": {
+            "x": 993.043182506414,
+            "y": 17.382531356726634,
+            "height": 0,
+            "edgeId": "osm:way:571523296:5163420203:5492582070",
+            "edgeDistance": 0.8124300717329698
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 36.7491983300793,
+      "literalRuntimeRouteDistanceMetres": 36.771989708185345,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.05720023239818876,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          993.8526645560995,
+          -17.8170683893176
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 48,
+      "id": "osm:way:532008159:5163420201:5163420203",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "covered": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "smoothness": "excellent",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 995.0119478597293,
+          "y": 17.15142448942163,
+          "height": 0
+        },
+        {
+          "x": 993.8526645560995,
+          "y": 17.8170683893176,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42899999999998834,
+          "projected": {
+            "x": 994.6459226085764,
+            "y": 17.85628008484837,
+            "height": 0,
+            "edgeId": "osm:way:532008159:5163420201:5163420203",
+            "edgeDistance": 0.6683972582872378
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4289999999999853,
+          "projected": {
+            "x": 994.2186898072524,
+            "y": 17.112212793890862,
+            "height": 0,
+            "edgeId": "osm:way:532008159:5163420201:5163420203",
+            "edgeDistance": 0.6683972582871878
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 35.656302333878045,
+      "literalRuntimeRouteDistanceMetres": 35.68031178593747,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.05735024365932804,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          995.0119478597293,
+          -17.15142448942163
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 49,
+      "id": "osm:way:532008167:4600891628:5163420201",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "covered": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "lit": "yes",
+        "smoothness": "excellent",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 998.7362595817416,
+          "y": 17.15142448942163,
+          "height": 0
+        },
+        {
+          "x": 995.0119478597293,
+          "y": 17.15142448942163,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4289999999999985,
+          "projected": {
+            "x": 996.8741037207354,
+            "y": 17.580424489421627,
+            "height": 0,
+            "edgeId": "osm:way:532008167:4600891628:5163420201",
+            "edgeDistance": 1.8621558610061584
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4289999999999985,
+          "projected": {
+            "x": 996.8741037207354,
+            "y": 16.72242448942163,
+            "height": 0,
+            "edgeId": "osm:way:532008167:4600891628:5163420201",
+            "edgeDistance": 1.8621558610061584
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 31.9540284328238,
+      "literalRuntimeRouteDistanceMetres": 31.978781614455645,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.057758044499375716,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          998.7362595817416,
+          -17.15142448942163
+        ],
+        "sidewalkEastSouth": [
+          1030.496715667587,
+          -20.88182698300426
+        ]
+      }
+    },
+    {
+      "ordinal": 50,
+      "id": "osm:way:532008167:2367201411:4600891628",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "covered": "yes",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "lit": "yes",
+        "smoothness": "excellent",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 1032.8666554667045,
+          "y": 17.495340504499264,
+          "height": 0
+        },
+        {
+          "x": 998.7362595817416,
+          "y": 17.15142448942163,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42899999999999555,
+          "projected": {
+            "x": 1015.797134911582,
+            "y": 17.752360719041654,
+            "height": 0,
+            "edgeId": "osm:way:532008167:2367201411:4600891628",
+            "edgeDistance": 17.066064290645166
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42900000000000266,
+          "projected": {
+            "x": 1015.805780136864,
+            "y": 16.894404274879236,
+            "height": 0,
+            "edgeId": "osm:way:532008167:2367201411:4600891628",
+            "edgeDistance": 17.066064290645055
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 3.0113371237169138,
+      "literalRuntimeRouteDistanceMetres": 3.071740071995389,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.06155365274684501,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          1032.8666554667045,
+          -17.495340504499264
+        ],
+        "sidewalkEastSouth": [
+          1033.2418527432571,
+          -20.544080256194995
+        ]
+      }
+    },
+    {
+      "ordinal": 51,
+      "id": "osm:way:542888424:2367201411:5248383670",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "smoothness": "excellent",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 1032.8666554667045,
+          "y": 17.495340504499264,
+          "height": 0
+        },
+        {
+          "x": 1036.7552750567454,
+          "y": 17.617375219348812,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4290000000000019,
+          "projected": {
+            "x": 1034.8244217416582,
+            "y": 17.127568959143417,
+            "height": 0,
+            "edgeId": "osm:way:542888424:2367201411:5248383670",
+            "edgeDistance": 1.9452669988768263
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.4290000000000019,
+          "projected": {
+            "x": 1034.7975087817917,
+            "y": 17.98514676470466,
+            "height": 0,
+            "edgeId": "osm:way:542888424:2367201411:5248383670",
+            "edgeDistance": 1.9452669988769762
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 2.903633569909205,
+      "literalRuntimeRouteDistanceMetres": 2.961621157151108,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.061991253224620985,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          1033.886856054321,
+          -17.527356978447497
+        ],
+        "sidewalkEastSouth": [
+          1033.7939586285142,
+          -20.48752081627194
+        ]
+      }
+    },
+    {
+      "ordinal": 52,
+      "id": "osm:way:228073861:5163420172:5248383670",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "smoothness": "excellent",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 1042.1226654772038,
+          "y": 17.950197169296796,
+          "height": 0
+        },
+        {
+          "x": 1036.7552750567454,
+          "y": 17.617375219348812,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42899999999999927,
+          "projected": {
+            "x": 1039.4124197651624,
+            "y": 18.211963810334574,
+            "height": 0,
+            "edgeId": "osm:way:228073861:5163420172:5248383670",
+            "edgeDistance": 2.6888496785798397
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42899999999999927,
+          "projected": {
+            "x": 1039.4655207687867,
+            "y": 17.355608578311035,
+            "height": 0,
+            "edgeId": "osm:way:228073861:5163420172:5248383670",
+            "edgeDistance": 2.688849678579831
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 4.0971073946145165,
+      "literalRuntimeRouteDistanceMetres": 4.123970263671763,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.06259219214054022,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          1036.7552750567454,
+          -17.617375219348812
+        ],
+        "sidewalkEastSouth": [
+          1033.7939586285142,
+          -20.48752081627194
+        ]
+      }
+    },
+    {
+      "ordinal": 53,
+      "id": "osm:way:228073861:2367201412:5163420172",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "bicycle": "dismount",
+        "footway": "sidewalk",
+        "highway": "footway",
+        "smoothness": "excellent",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 1044.3773345806624,
+          "y": 18.216454730043466,
+          "height": 0
+        },
+        {
+          "x": 1042.1226654772038,
+          "y": 17.950197169296796,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42899999999998295,
+          "projected": {
+            "x": 1043.1996883172676,
+            "y": 18.509365538991684,
+            "height": 0,
+            "edgeId": "osm:way:228073861:2367201412:5163420172",
+            "edgeDistance": 1.1351680332384986
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.42899999999998656,
+          "projected": {
+            "x": 1043.3003117405985,
+            "y": 17.65728636034858,
+            "height": 0,
+            "edgeId": "osm:way:228073861:2367201412:5163420172",
+            "edgeDistance": 1.1351680332383325
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 8.70791557478512,
+      "literalRuntimeRouteDistanceMetres": 8.706627881155093,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.06284112227487015,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          1042.1226654772038,
+          -17.950197169296796
+        ],
+        "sidewalkEastSouth": [
+          1033.7939586285142,
+          -20.48752081627194
+        ]
+      }
+    },
+    {
+      "ordinal": 54,
+      "id": "authored:shijo-bridge-view-approach",
+      "centerlineLocateDisplacementMetres": 0,
+      "sourceTags": {
+        "area": "yes",
+        "highway": "pedestrian",
+        "layer": "1",
+        "surface": "paving_stones"
+      },
+      "widthMetres": 1.5,
+      "centerRadiusMetres": 0.43,
+      "points": [
+        {
+          "x": 1044.3773345806624,
+          "y": 18.216454730043466,
+          "height": 0
+        },
+        {
+          "x": 1077.2206521517994,
+          "y": 18.970851149400048,
+          "height": 0
+        }
+      ],
+      "lateral": [
+        {
+          "sign": -1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.429000000000001,
+          "projected": {
+            "x": 1060.8088447072746,
+            "y": 18.164766065266917,
+            "height": 0,
+            "edgeId": "authored:shijo-bridge-view-approach",
+            "edgeDistance": 16.425990252006823
+          }
+        },
+        {
+          "sign": 1,
+          "requestedDisplacementMetres": 1,
+          "acceptedDisplacementMetres": 0.429000000000001,
+          "projected": {
+            "x": 1060.7891420251872,
+            "y": 19.022539814176596,
+            "height": 0,
+            "edgeId": "authored:shijo-bridge-view-approach",
+            "edgeDistance": 16.4259902520069
+          }
+        }
+      ],
+      "registeredSourceRouteDistanceMetres": 10.830773254476584,
+      "literalRuntimeRouteDistanceMetres": 10.82430541478409,
+      "literalRuntimeVsRegisteredMaximumVertexDisplacementMetres": 0.0666401301484617,
+      "runtimePlayerCenterEnvelopeOverlapSquareMetres": 0.0,
+      "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+      "nearestSourcePoints": {
+        "routeEastSouth": [
+          1044.3773345806624,
+          -18.216454730043466
+        ],
+        "sidewalkEastSouth": [
+          1033.7939586285142,
+          -20.48752081627194
+        ]
+      }
+    }
+  ],
+  "sourceGeometrySha256": "c6ea556c3cd8ab957c4c8d93b6d81901f3580d3518cb188eeadb4abff0db64a3",
+  "maximumCenterlineLocateDisplacementMetres": 0,
+  "minimumLiteralRuntimeSurfaceDistanceMetres": 2.961621157151108,
+  "runtimeFullActorEnvelopeOverlapSquareMetres": 0.0,
+  "maximumLiteralRuntimeVsRegisteredVertexDisplacementMetres": 0.0666401301484617,
+  "classifiedSidewalkBoundsEastSouth": [
+    1030.496715667587,
+    -333.700264276271,
+    1040.3761193431121,
+    -20.48752081627194
+  ],
+  "candidateLocalCorrection": {
+    "sightId": "pontocho-entrance",
+    "status": "source-contained-review-candidate-only",
+    "sourceIds": [
+      "tfa_620a6a21-743f-4ba9-b0e2-cbc2f63e88b3"
+    ],
+    "unchangedRuntimeAnchorEastSouth": [
+      1036.7552750567454,
+      -17.617375219348812
+    ],
+    "candidateEastSouth": [
+      1032.7007927849586,
+      -20.953231560955963
+    ],
+    "sourceDerivedGeographicCoordinates": [
+      135.7710319435986,
+      35.00392733945007,
+      75.62722093425691
+    ],
+    "sourceDerivedGeographicHeightKind": "ellipsoid, same diagnostic GSIGEO2011 registration as decoded source",
+    "horizontalDisplacementFromRuntimeAnchorMetres": 5.250406081825879,
+    "actorRadiusMetres": 0.32,
+    "extraBoundaryClearanceMetres": 0.02,
+    "actorFootprintCoveredBySource": true,
+    "sourceHeights": [
+      {
+        "triangleId": "road-26100-data1-dc134437:0:1016",
+        "localUpMetres": 75.54367588153983
+      }
+    ],
+    "unresolved": [
+      "Source epoch and current public access",
+      "Usable entrance and six-sight intent",
+      "Independent coordinate control and obstacle clearance",
+      "Measured join from existing route to revised point",
+      "Shared benchmark route and camera revision before any comparison"
+    ],
+    "limitation": "One alternate point inside source geometry; no connecting floor, approved path correction, current obstacle clearance or full-route solution is established"
+  },
+  "inputs": [
+    {
+      "path": "experience/src/neighborhoods/shijo-east/geography.json",
+      "bytes": 175220,
+      "sha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f"
+    },
+    {
+      "path": "experience/src/simulation/route-navigation.js",
+      "bytes": 15501,
+      "sha256": "6b6d91adf3d058960a613c0ed32592aeed4a1601747c1e3b0bcfec717b907824"
+    },
+    {
+      "path": "experience/src/simulation/world.js",
+      "bytes": 1395,
+      "sha256": "a363e6193006493346ef10aac44c447db3673ca202fed5be347ae77f6119d40f"
+    },
+    {
+      "path": "experience/src/runtime/route-world-view.js",
+      "bytes": 16504,
+      "sha256": "80d1a3a0e6038631dcba1340b11baf6dc116b876fe17fa58f613dedd9192cf5a"
+    },
+    {
+      "path": "experience/src/runtime/camera.js",
+      "bytes": 22555,
+      "sha256": "3934528a4d9395573dea43528150202c677a7e8a357c6d43dfaf96a783919b54"
+    }
+  ],
+  "conclusion": "Actual controller and rendered player positions have no hidden sidewalk offset. Existing full actor envelope has no selected detailed surface coverage. A local Pontochō approach revision can be evaluated on the nearby source sidewalk; it cannot close connecting street, market or bridge gaps.",
+  "limitations": [
+    "Code execution probes navigation; no browser/GPU test is claimed.",
+    "Literal runtime coordinates and source-geographic ECEF registration are deliberately reported separately.",
+    "The current ground remains authored-flat-display, distinct from measured source elevations. No runtime or frozen benchmark revision occurred."
+  ]
+}

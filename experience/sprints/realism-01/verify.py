@@ -6,6 +6,7 @@ from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
 from markdown_it import MarkdownIt
+from acquisition import verify_acquisition
 from qualification import verify_qualification
 
 
@@ -152,6 +153,7 @@ def verify(root):
     require(definition["trials"][-1]["nodeIndexRangeInclusive"] == [0, 54], "Full-route trial missing")
 
     qualification = verify_qualification(root, require, verify_file, route)
+    acquisition = verify_acquisition(root, require, verify_file)
 
     return {"status": "passed", "markdownDocuments": len(documents), "relativeLinkTargets": links,
             "jsonDocuments": len(json_paths), "competitorFileHashes": len(manifest["files"]),
@@ -160,6 +162,7 @@ def verify(root):
             "measurementCompressedAndDecodedHashes": len(measurement_binding["files"]),
             "calibrationOriginalReportHashes": len(calibration["evidence"]),
             "qualification": qualification,
+            "acquisition": acquisition,
             "routeEdges": len(edges), "trialRanges": len(definition["trials"]),
             "limitations": "Local target existence, provenance and file integrity only; no remote URL, renderer, performance or human acceptance test."}
 
