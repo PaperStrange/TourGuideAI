@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "original": "./data/knock-original.sog",
+  "streamed": "./data/streamed/knock-original-lod.rad",
+  "camera": {
+    "position": [-25.0948486328125, 6.711593151092529, 22.9617862701416],
+    "target": [-11.19845319602572, 4.008741439866709, 7.849568533379339],
+    "fov": 75
+  },
+  "source": {
+    "title": "Knock Community Hall",
+    "author": "scbenoit",
+    "url": "https://superspl.at/scene/0ff2e6dc",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "originalSha256": "81d061bad6ba255689939847482836f7d70bf2e222abce04e6d81c2c976c6a71",
+    "originalBytes": 29781498,
+    "streamedBytes": 84115304,
+    "changes": "Original SOG components repackaged unchanged. Streamed version converted with Spark 2.4.0 quality LoD and SH2; detail and directional color differ."
+  }
+}

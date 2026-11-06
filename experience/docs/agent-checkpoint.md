@@ -1,6 +1,18 @@
 # Agent checkpoint · Explore and Together homepage
 
 6 November 2026 · Lead owns integration, commits and publication.
+**Active delivery: public architectural review page.** The current work packages
+the free Knock Community Hall original and streamed capture with EN/ZH camera
+controls, preserved viewpoints and loading recovery. Runtime, interface and
+independent browser QA owners are assigned. The final packaged walkthrough
+passes 39 checks, including submitted frames, native touch/pinch, both source
+cancellation paths and actual HTTP 503/retry. Public HTTPS validation is next.
+Production source is in `experience/src/review/`; packaging and verification
+instructions are in [the review tools](../tools/review-page/README.md).
+Publish the validated package to `previews/realism-01/` using the existing free
+Pages branch, then verify the actual HTTPS entry before delivery. This review
+milestone does not qualify the full Kyoto route described below.
+
 **State: Original mesh/terrain/datum inspection and detailed texture/pedestrian
 audits are complete. The two representation families continue in parallel;
 the inspected municipal source alone is insufficient for close walking.
@@ -113,8 +125,9 @@ Momiji's independently located frontage is 24.63 m north of the route; its image
 supports nearby material observation. The inspected supplementary official geometry
 has no declared route overlap. No additional exact-route dimensional capture qualified.
 
-Next work: address ordinary-section transfer and directional appearance from the
-measured encoding evidence. Matched Kyoto qualification needs usable free
+Following the public review delivery, source-processing work addresses
+ordinary-section transfer and directional appearance from the measured encoding
+evidence. Matched Kyoto qualification needs usable free
 calibrated views, verified scale/registration, continuous floors and independent
 day/night inputs. The
 [prepared acquisition package](../sprints/realism-01/research/acquisition-package/README.md)
@@ -139,8 +152,9 @@ overlap the existing authoring registry. No route-wide supplier quote or capture
 rights have been obtained. [Qualification validation and recovery](../evidence/realism-01/qualification/validation.md)
 bind source geometry, unchanged captures, producers and the clean-checkout review.
 
-This delivery changes QA observability and benchmark tools, with no public service
-API or deployed-page change. Keep the existing preview identified as candidate 13.
+The original qualification delivery changed QA observability and benchmark tools.
+Keep the existing Kyoto walking preview identified as candidate 13; the new
+architectural review has its own public entry and evidence.
 The remote-turn interruption preserved the worktree and completed reports; validate
 the checkpoint identity against `chore-sow-delivery-plan` before continuing. Recovery
 validation passed 230 application tests, 16 final benchmark tests, 17 repository
