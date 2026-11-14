@@ -175,11 +175,12 @@ async function capture(name) {
 }
 
 async function compareImages(left, leftPath, right, rightPath, id) {
-  const images = [leftPath, rightPath].map(filename => `data:image/png;base64,${readFileSync(filename).toString('base64')}`);
-  const metrics = await page.evaluate(async urls => {
+  const images = [leftPath, rightPath].map(filename => readFileSync(filename).toString('base64'));
+  const metrics = await page.evaluate(async encodedImages => {
     const images = [];
-    for (const url of urls) {
-      const bitmap = await createImageBitmap(await (await fetch(url)).blob());
+    for (const encoded of encodedImages) {
+      const bytes = Uint8Array.from(atob(encoded), value => value.charCodeAt(0));
+      const bitmap = await createImageBitmap(new Blob([bytes], { type: 'image/png' }));
       const canvas = new OffscreenCanvas(bitmap.width, bitmap.height);
       const context = canvas.getContext('2d', { willReadFrequently: true });
       context.drawImage(bitmap, 0, 0);

@@ -9,9 +9,11 @@ asynchronous update path. The tour explicitly wakes an idle renderer. Settling
 records three actual frames with unchanged camera/content before drawing and at
 a later idle observation; immediate queue flags remain available separately.
 
-The local candidate is `artifacts/realism-01/review-loading/package-02/`, manifest
-SHA-256 `ef4dd7c30bdc8fd05ffa3e5755dd5c4e6df0be9ad290936829ff30a10849942c`.
-Its matched 1000 × 800 run passes 15 checks, including exact baseline/candidate
+The final candidate is `artifacts/realism-01/review-loading/package-03/`, manifest
+SHA-256 `6673bc5de654b71ba9e0fc5a799d72cb24af3654264aa1b3841c1236ae8223b5`.
+Runtime is committed and pushed at `b4b140d2c48b7e185e296272f9fb141588caca95`.
+The preceding package-02 has identical JavaScript, CSS and capture files; its
+matched 1000 × 800 run passes 15 checks, including exact baseline/candidate
 pixels and exact repeated pixels at 261,359 drawn splats. First visibility is
 3.801 s / 3,385,672 encoded response bytes versus 3.777 s / 3,541,883 bytes for
 the prior package. Four trusted-click-to-submitted-camera observations remain
@@ -19,8 +21,14 @@ within about 6–14 ms; these leave physical presentation and fluency unverified
 The differing settling boundaries and extra repeat-capture Reset prevent a
 direct comparison of whole-run CPU totals or settling speed.
 
-Remaining release work: matched public baseline/current measurements, ordinary
-EN/ZH controls and recovery, native visibility and idle wake, full guided path,
+All seven ordinary package-02 regression sections pass 48 checks. Package-03 adds
+a declared favicon and its HTML link; a parsed-HTML comparison binds that exact
+scope. The public baseline is retained with a missing-favicon diagnostic and
+4,239,665 first-view bytes. Native package-03 checks confirm idle rendering stops,
+tour wake, pause/resume/reverse, source interruption and native tab visibility.
+
+Remaining release work: finish native checks, final package-03 local/current-public
+measurements, full guided path,
 retained evidence verification, public byte identity and synchronized checkpoint.
 The published review remains `794ab33f14415b27d3687f651902bc4aecd098e9` until
 those local release checks pass. Reproduction and exact browser attempts are
