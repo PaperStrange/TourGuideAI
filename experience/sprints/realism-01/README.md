@@ -13,6 +13,9 @@ Production renderer selection and milestone acceptance remain open.
 
 ## Work and evidence
 
+The active [connected Kyoto preparation increment](next-increment.md) assigns
+the next loading, matched-view QA and free-source qualification work.
+
 | Read | Purpose |
 | --- | --- |
 | [Backlog](backlog.md) | Owners, dependencies, deliverables and completion evidence |

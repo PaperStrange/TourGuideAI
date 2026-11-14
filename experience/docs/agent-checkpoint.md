@@ -1,5 +1,15 @@
 # Agent checkpoint · Explore and Together homepage
 
+14 November 2026 · Next increment active after user approval to continue.
+
+Follow the [connected Kyoto preparation increment](../sprints/realism-01/next-increment.md).
+Rendering owns an official lossless RAD compression trial; QA owns matched-view
+and native-input observations; source/scene owns a Panoramax route-coverage audit.
+The new source lead has in-area imagery; connector reconstruction qualification
+remains open. Keep free sources only, approved appearance, all full-route gates
+and physical-device evidence requirements. The public R20 release below remains
+the current verified preview until a new candidate passes its own checks.
+
 14 November 2026 · Architectural loading and demand rendering published.
 
 The user approved the appearance and reported loading pauses. R20 preserves all
