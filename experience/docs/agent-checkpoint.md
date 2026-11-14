@@ -21,7 +21,7 @@ unchanged. Native response profiling and Panoramax geometry qualification contin
 R19's [Panoramax intake and snapshot board](../evidence/realism-01/free-connector-next/README.md)
 retain 35 verified files: 14 records in the route rectangle, 167 in the surrounding
 bounded query, and three licensed native Insta360 panoramas. The three camera
-positions lie 25–41 m west of edge 1, moving north–south. They support the crossing
+positions lie west of edge 1, 25–41 m from its start, moving north–south. They support the crossing
 appearance/geometry trial. Eastward connector coverage, metric scale, continuous
 walking floor and night sources remain unqualified. No production route asset
 has been substituted. The bounded reconstruction uses these actual photographs.
@@ -34,6 +34,17 @@ difference. Preserve the failure. Seven actual event-to-submission observations
 span 3.6–15.7 ms, while the subsequent frame observation takes 2.27–3.56 seconds.
 These separate boundaries and software-renderer stalls establish no physical
 fluency or speedup. All three attempts, 29 files and 15 producers verify offline.
+
+The [two actual Kyoto geometry trials](../evidence/realism-01/connector-reconstruction/README.md)
+are complete. Four independent perspective groups yield five geometrically matched
+pairs; native spherical matching yields three CALIBRATED pairs with 83, 224 and
+308 inliers. Neither run produces a registered three-camera model. Retain both
+outcomes and the library's actual initialization attempts. The upper-half feature
+mask excludes the ground. Source GPS is unused in fitting; metric scale, floor
+and eastward connector coverage remain open. Offline verification passes for 22
+perspective and 13 spherical evidence files. Next reconstruction work is the
+official shared-rig panorama workflow and denser free inputs along the actual
+eastbound route. The public architectural runtime remains unchanged.
 
 14 November 2026 · Architectural loading and demand rendering published.
 

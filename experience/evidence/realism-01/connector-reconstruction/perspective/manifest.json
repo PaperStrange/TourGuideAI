@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-14T15:53:20.178112+00:00",
+  "source": "Three Irvin Chen panoramas identified by selected.json and their exact source-file hashes in result.json",
+  "date": "2026-11-14T15:48:22.811211+00:00",
+  "rights": "CC BY-SA 4.0 for source-derived geometry and visualization; code follows repository licensing",
+  "location": "Karasuma Avenue west of the first Shijo East route edge, Kyoto, Japan",
+  "method": "CPU SIFT matching and fixed virtual-pinhole sparse reconstruction of three licensed panoramas",
+  "limitations": [
+    "Three selected source cameras lie west of the first approved route edge; this test establishes no complete route coverage.",
+    "Spherical stitching, scene motion and image redaction can violate a single-center camera model.",
+    "Virtual projection intrinsics do not establish physical lens calibration or absolute camera orientation.",
+    "Sparse coordinates have arbitrary similarity scale; declared GPS accuracy is not surveyed control.",
+    "Sparse correspondences establish no continuous pedestrian floor, collision surface, lighting qualification or independent recognition.",
+    "The three reconstruction sources cannot also serve as held-out appearance references.",
+    "The shared upper-half feature mask excludes the ground. Traffic and sky remaining above the horizon require geometric rejection and later surface review."
+  ],
+  "files": [
+    {
+      "path": "execution.txt",
+      "bytes": 24434,
+      "sha256": "50b01a5cfe7f512144498ab48b729d251536e6e15561088b10a97c43258e113e",
+      "source": "Retained generated run and exact executed producers",
+      "date": "2026-11-14T15:53:20.178112+00:00",
+      "rights": "CC BY-SA 4.0 source-derived evidence; repository code licensing",
+      "location": "Kyoto, Japan; source camera coordinates in result.json",
+      "method": "Byte-identical retention or labelled Matplotlib numerical plot",
+      "limitations": "Bounded three-camera geometry diagnostic; no absolute scale or continuous floor qualification"
+    },
+    {
+      "path": "geometry-board.png",
+      "bytes": 135173,
+      "sha256": "b4b9bd93ade1898171e9d48e560f995acc9de3ad66125b7a83ed67459724887e",
+      "source": "Retained generated run and exact executed producers",
+      "date": "2026-11-14T15:53:20.178112+00:00",
+      "rights": "CC BY-SA 4.0 source-derived evidence; repository code licensing",
+      "location": "Kyoto, Japan; source camera coordinates in result.json",
+      "method": "Byte-identical retention or labelled Matplotlib numerical plot",
+      "limitations": "Bounded three-camera geometry diagnostic; no absolute scale or continuous floor qualification"
+    },
+    {
+      "path": "heading--90/facade-mask.png",
+      "bytes": 2130,
+      "sha256": "991a66a27857c8f4fb572b976fd1f56cebcedfe7b8b1b04e07092dc718a979ec",
+      "source": "Retained generated run and exact executed producers",
+      "date": "2026-11-14T15:53:20.178112+00:00",
+      "rights": "CC BY-SA 4.0 source-derived evidence; repository code licensing",
+      "location": "Kyoto, Japan; source camera coordinates in result.json",
+      "method": "Byte-identical retention or labelled Matplotlib numerical plot",
+      "limitations": "Bounded three-camera geometry diagnostic; no absolute scale or continuous floor qualification"
+    },
+    {
+      "path": "heading--90/pair-observations.json",
+      "bytes": 24933,
+      "sha256": "5552bcdf192ff461d3e85bfdf3601d007fed6109615888cc91e570b40d54a622",
+      "source": "Retained generated run and exact executed producers",
+      "date": "2026-11-14T15:53:20.178112+00:00",
+      "rights": "CC BY-SA 4.0 source-derived evidence; repository code licensing",
+      "location": "Kyoto, Japan; source camera coordinates in result.json",
+      "method": "Byte-identical retention or labelled Matplotlib numerical plot",
+      "limitations": "Bounded three-camera geometry diagnostic; no absolute scale or continuous floor qualification"
+    },
+    {
+      "path": "heading--90/settings.json",
+      "bytes": 5680,
+      "sha256": "1819d5188b3af2c043019309346391029e75bd4353dfdc3425b5e2d91ad49394",
+      "source": "Retained generated run and exact executed producers",
+      "date": "2026-11-14T15:53:20.178112+00:00",
+      "rights": "CC BY-SA 4.0 source-derived evidence; repository code licensing",
+      "location": "Kyoto, Japan; source camera coordinates in result.json",
+      "method": "Byte-identical retention or labelled Matplotlib numerical plot",
+      "limitations": "Bounded three-camera geometry diagnostic; no absolute scale or continuous floor qualification"
+    },
+    {
+      "path": "heading-0/facade-mask.png",
+      "bytes": 2130,
+      "sha256": "991a66a27857c8f4fb572b976fd1f56cebcedfe7b8b1b04e07092dc718a979ec",
+      "source": "Retained generated run and exact executed producers",
+      "date": "2026-11-14T15:53:20.178112+00:00",
+      "rights": "CC BY-SA 4.0 source-derived evidence; repository code licensing",
+      "location": "Kyoto, Japan; source camera coordinates in result.json",
+      "method": "Byte-identical retention or labelled Matplotlib numerical plot",
+      "limitations": "Bounded three-camera geometry diagnostic; no absolute scale or continuous floor qualification"
+    },
+    {
+      "path": "heading-0/pair-observations.json",
+      "bytes": 80154,
+      "sha256": "a96403ca2d9427b2040b1bd2cee8e8da70064126fbd2a1d74859449583e4dc7c",
+      "source": "Retained generated run and exact executed producers",
+      "date": "2026-11-14T15:53:20.178112+00:00",
+      "rights": "CC BY-SA 4.0 source-derived evidence; repository code licensing",
+      "location": "Kyoto, Japan; source camera coordinates in result.json",
+      "method": "Byte-identical retention or labelled Matplotlib numerical plot",
+      "limitations": "Bounded three-camera geometry diagnostic; no absolute scale or continuous floor qualification"
+    },
+    {
+      "path": "heading-0/settings.json",
+      "bytes": 5678,
+      "sha256": "60884720437df439b79c2e2917cd30d204ec99ede9977f6d9016a6c8ecd88bff",
+      "source": "Retained generated run and exact executed producers",
+      "date": "2026-11-14T15:53:20.178112+00:00",
+      "rights": "CC BY-SA 4.0 source-derived evidence; repository code licensing",
+      "location": "Kyoto, Japan; source camera coordinates in result.json",
+      "method": "Byte-identical retention or labelled Matplotlib numerical plot",
+      "limitations": "Bounded three-camera geometry diagnostic; no absolute scale or continuous floor qualification"
+    },
+    {
+      "path": "heading-180/facade-mask.png",
+      "bytes": 2130,
+      "sha256": "991a66a27857c8f4fb572b976fd1f56cebcedfe7b8b1b04e07092dc718a979ec",
+      "source": "Retained generated run and exact executed producers",
+      "date": "2026-11-14T15:53:20.178112+00:00",
+      "rights": "CC BY-SA 4.0 source-derived evidence; repository code licensing",
+      "location": "Kyoto, Japan; source camera coordinates in result.json",
+      "method": "Byte-identical retention or labelled Matplotlib numerical plot",
+      "limitations": "Bounded three-camera geometry diagnostic; no absolute scale or continuous floor qualification"
+    },
+    {
+      "path": "heading-180/pair-observations.json",
+      "bytes": 38037,
+      "sha256": "1e787fdf2f3b17e3af74d6b49d5428aa09bfa8cfcec5b23a08061cd5959b6fda",
+      "source": "Retained generated run and exact executed producers",
+      "date": "2026-11-14T15:53:20.178112+00:00",
+      "rights": "CC BY-SA 4.0 source-derived evidence; repository code licensing",
+      "location": "Kyoto, Japan; source camera coordinates in result.json",
+      "method": "Byte-identical retention or labelled Matplotlib numerical plot",
+      "limitations": "Bounded three-camera geometry diagnostic; no absolute scale or continuous floor qualification"
+    },
+    {
+      "path": "heading-180/settings.json",
+      "bytes": 5680,
+      "sha256": "daa0136a33023720e1c9925649f4d341cc8f30d86ff9749b93055e6773215472",
+      "source": "Retained generated run and exact executed producers",
+      "date": "2026-11-14T15:53:20.178112+00:00",
+      "rights": "CC BY-SA 4.0 source-derived evidence; repository code licensing",
+      "location": "Kyoto, Japan; source camera coordinates in result.json",
+      "method": "Byte-identical retention or labelled Matplotlib numerical plot",
+      "limitations": "Bounded three-camera geometry diagnostic; no absolute scale or continuous floor qualification"
+    },
+    {
+      "path": "heading-90/facade-mask.png",
+      "bytes": 2130,
+      "sha256": "991a66a27857c8f4fb572b976fd1f56cebcedfe7b8b1b04e07092dc718a979ec",
+      "source": "Retained generated run and exact executed producers",
+      "date": "2026-11-14T15:53:20.178112+00:00",
+      "rights": "CC BY-SA 4.0 source-derived evidence; repository code licensing",
+      "location": "Kyoto, Japan; source camera coordinates in result.json",
+      "method": "Byte-identical retention or labelled Matplotlib numerical plot",
+      "limitations": "Bounded three-camera geometry diagnostic; no absolute scale or continuous floor qualification"
+    },
+    {
+      "path": "heading-90/pair-observations.json",
+      "bytes": 9971,
+      "sha256": "b34059d2ef78948686b7364fe39c915957ccc48f6f26ae932f84e722b2fa6e06",
+      "source": "Retained generated run and exact executed producers",
+      "date": "2026-11-14T15:53:20.178112+00:00",
+      "rights": "CC BY-SA 4.0 source-derived evidence; repository code licensing",
+      "location": "Kyoto, Japan; source camera coordinates in result.json",
+      "method": "Byte-identical retention or labelled Matplotlib numerical plot",
+      "limitations": "Bounded three-camera geometry diagnostic; no absolute scale or continuous floor qualification"
+    },
+    {
+      "path": "heading-90/settings.json",
+      "bytes": 5679,
+      "sha256": "181d10459f47a7f21b9d1ef095c346e9c7f22c156ab3599fe311698f23db9c9d",
+      "source": "Retained generated run and exact executed producers",
+      "date": "2026-11-14T15:53:20.178112+00:00",
+      "rights": "CC BY-SA 4.0 source-derived evidence; repository code licensing",
+      "location": "Kyoto, Japan; source camera coordinates in result.json",
+      "method": "Byte-identical retention or labelled Matplotlib numerical plot",
+      "limitations": "Bounded three-camera geometry diagnostic; no absolute scale or continuous floor qualification"
+    },
+    {
+      "path": "producers/colmap-license.txt",
+      "bytes": 1909,
+      "sha256": "ab30dabb4f0a6731f980108f57aa160cc8f5cebae6984e01a5d109df99669233",
+      "source": "Retained generated run and exact executed producers",
+      "date": "2026-11-14T15:53:20.178112+00:00",
+      "rights": "BSD-3-Clause; see producers/colmap-license.txt",
+      "location": "Kyoto, Japan; source camera coordinates in result.json",
+      "method": "Byte-identical retention or labelled Matplotlib numerical plot",
+      "limitations": "Bounded three-camera geometry diagnostic; no absolute scale or continuous floor qualification"
+    },
+    {
+      "path": "producers/overlap.py",
+      "bytes": 11539,
+      "sha256": "b16cc891ca9679ccb86930c3529fc2e5d4125eeae7bc1f83d7d3a69e0aa93f9a",
+      "source": "Retained generated run and exact executed producers",
+      "date": "2026-11-14T15:53:20.178112+00:00",
+      "rights": "CC BY-SA 4.0 source-derived evidence; repository code licensing",
+      "location": "Kyoto, Japan; source camera coordinates in result.json",
+      "method": "Byte-identical retention or labelled Matplotlib numerical plot",
+      "limitations": "Bounded three-camera geometry diagnostic; no absolute scale or continuous floor qualification"
+    },
+    {
+      "path": "producers/requirements.txt",
+      "bytes": 97,
+      "sha256": "a62927e125cdd0cf66be210ff1a7e1e7ab3c55ddb66fd6581947c4cce7394c4a",
+      "source": "Retained generated run and exact executed producers",
+      "date": "2026-11-14T15:53:20.178112+00:00",
+      "rights": "CC BY-SA 4.0 source-derived evidence; repository code licensing",
+      "location": "Kyoto, Japan; source camera coordinates in result.json",
+      "method": "Byte-identical retention or labelled Matplotlib numerical plot",
+      "limitations": "Bounded three-camera geometry diagnostic; no absolute scale or continuous floor qualification"
+    },
+    {
+      "path": "producers/retain.py",
+      "bytes": 8736,
+      "sha256": "fc7bbd3a303f8fdf1d7cc36b5603e5a71167587a299ac735e6c15a1857f07558",
+      "source": "Retained generated run and exact executed producers",
+      "date": "2026-11-14T15:53:20.178112+00:00",
+      "rights": "CC BY-SA 4.0 source-derived evidence; repository code licensing",
+      "location": "Kyoto, Japan; source camera coordinates in result.json",
+      "method": "Byte-identical retention or labelled Matplotlib numerical plot",
+      "limitations": "Bounded three-camera geometry diagnostic; no absolute scale or continuous floor qualification"
+    },
+    {
+      "path": "producers/upstream-panorama.py",
+      "bytes": 29292,
+      "sha256": "3536dc027f805e99223ee1098437768f705adb50a733e3fc8146f34a20c82fdf",
+      "source": "Retained generated run and exact executed producers",
+      "date": "2026-11-14T15:53:20.178112+00:00",
+      "rights": "BSD-3-Clause; see producers/colmap-license.txt",
+      "location": "Kyoto, Japan; source camera coordinates in result.json",
+      "method": "Byte-identical retention or labelled Matplotlib numerical plot",
+      "limitations": "Bounded three-camera geometry diagnostic; no absolute scale or continuous floor qualification"
+    },
+    {
+      "path": "producers/verify.py",
+      "bytes": 4899,
+      "sha256": "384eab552b329db3febdcdb023f48201fc5fb7982d71899c85945321d6c4db5d",
+      "source": "Retained generated run and exact executed producers",
+      "date": "2026-11-14T15:53:20.178112+00:00",
+      "rights": "CC BY-SA 4.0 source-derived evidence; repository code licensing",
+      "location": "Kyoto, Japan; source camera coordinates in result.json",
+      "method": "Byte-identical retention or labelled Matplotlib numerical plot",
+      "limitations": "Bounded three-camera geometry diagnostic; no absolute scale or continuous floor qualification"
+    },
+    {
+      "path": "result.json",
+      "bytes": 33663,
+      "sha256": "fd9a06ab83150be9daf081f5f202625a7e5319dc949975f13defcb79621a56bf",
+      "source": "Retained generated run and exact executed producers",
+      "date": "2026-11-14T15:53:20.178112+00:00",
+      "rights": "CC BY-SA 4.0 source-derived evidence; repository code licensing",
+      "location": "Kyoto, Japan; source camera coordinates in result.json",
+      "method": "Byte-identical retention or labelled Matplotlib numerical plot",
+      "limitations": "Bounded three-camera geometry diagnostic; no absolute scale or continuous floor qualification"
+    },
+    {
+      "path": "selected.json",
+      "bytes": 6809,
+      "sha256": "42f99b1b56b77c80ec17c1881fe5d4ff634ad44bdca7dfee729a8a0b750d08c2",
+      "source": "Retained generated run and exact executed producers",
+      "date": "2026-11-14T15:53:20.178112+00:00",
+      "rights": "CC BY-SA 4.0 source-derived evidence; repository code licensing",
+      "location": "Kyoto, Japan; source camera coordinates in result.json",
+      "method": "Byte-identical retention or labelled Matplotlib numerical plot",
+      "limitations": "Bounded three-camera geometry diagnostic; no absolute scale or continuous floor qualification"
+    }
+  ]
+}

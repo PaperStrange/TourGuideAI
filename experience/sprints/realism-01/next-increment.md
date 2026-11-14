@@ -5,6 +5,16 @@ lighting quality approved by the user. The full milestone remains the existing
 1,353.444 m, 54-edge, six-sight route. Source qualification precedes construction
 of its first realistic connector.
 
+This increment has completed the [encoding trial](../../evidence/realism-01/review-chunks/README.md),
+[native input profile](../../evidence/realism-01/review-chunks-profiling/README.md),
+[licensed source intake](research/free-connector-next.md) and
+[two actual reconstruction diagnostics](../../evidence/realism-01/connector-reconstruction/README.md).
+Their strict size, repeatability and reconstruction outcomes remain recorded.
+The approved public architectural runtime is unchanged. The next construction
+dependency is camera recovery and qualified continuous source coverage, followed
+by measured ground and scale. Apply the official shared-rig panorama workflow
+and continue free-source qualification along the actual eastbound connector.
+
 | Work / owner | Executable output | Validation and completion |
 | --- | --- | --- |
 | R17 · Rendering | Test the official RAD encoder's lossless directional-coefficient compression against the current SH2 assets | Decode through the official implementation; compare every source value, hierarchy and index; measure all ordinary pages against 2 MiB; preserve SH degree and source geometry |

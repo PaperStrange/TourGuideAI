@@ -40,6 +40,7 @@ the next loading, matched-view QA and free-source qualification work.
 | [Free Kyoto source feasibility](research/free-source-feasibility.md) | Inspected photographs, source-family separation, actual geographic coverage and remaining registration gaps |
 | [Free route sequence follow-up](research/free-route-20261114.md) | Complete sequence metadata and the remaining calibration/route qualification requirements |
 | [Kyoto crossing capture intake](research/free-connector-next.md) | Licensed Panoramax snapshots, all-edge camera distances and bounded reconstruction inputs |
+| [Kyoto panorama geometry trials](../../evidence/realism-01/connector-reconstruction/README.md) | Actual perspective/spherical feature matches, initialization results and next reconstruction requirements |
 | [Controlled trials](experiments/README.md) | Matched inputs, routes, viewpoints and comparison protocol |
 | [Parallel candidate status](experiments/candidate-status.md) | Mesh, splat and shared-ground evidence; explicit qualification dependencies |
 | [Evidence store](../../evidence/realism-01/README.md) | Reviewed artifacts and validation records |
