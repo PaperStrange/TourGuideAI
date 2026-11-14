@@ -1,6 +1,6 @@
 # Decision record
 
-6 November 2026 · Approved user direction and explicit evidence dependencies.
+14 November 2026 · Approved user direction and explicit evidence dependencies.
 
 | ID | Decision | Basis / consequence |
 | --- | --- | --- |
@@ -15,7 +15,7 @@
 | D09 | Full-quality starting view must meet ≤8 s cold and ≤3 s every warm entry | This new gate requires required assets/lighting resident plus a later submitted frame; first-usable history keeps its own measurement identity |
 | D10 | Final selection follows comparable full-route builds and complete physical/human results | Technical trials establish eligibility and freeze the final pair; one eligible candidate supports absolute acceptance only |
 | D11 | Arrange devices, participant cohorts and acquisition inputs during phases 1–2 | Missing prerequisites stay visible and block only dependent acceptance |
-| D12 | Current-year issue review covers 2026 | Creation/update queries returned zero matches on 5 November; [exact criteria](lessons.md) retained; earlier-codebase issues remain outside this iteration |
+| D12 | Current-year issue review covers 2026 | Creation/update queries returned zero matches on 5 and 14 November; [exact criteria](lessons.md) retained; earlier-codebase issues remain outside this iteration |
 | D13 | Preserve the user's personal travel journey and saved records | Optional words, saved view/lighting/route, useful share choices, GPS control and explicit service/coverage states are traced in [lessons](lessons.md) |
 | D14 | Qualify acquired source surfaces before creating comparable route candidates | The [18-view original-source review](../../evidence/realism-01/qualification/README.md) exposes street-level detail, ground and view-context gaps. Source-ID continuity and complete footprint coverage leave realism/immersion acceptance open; retain the failed bridge visibility result |
 | D15 | Retain the mesh and captured-splat families; require better common Kyoto inputs | [Native texture sampling](../../evidence/realism-01/qualification/texture/README.md) and [actual pedestrian intersections](../../evidence/realism-01/qualification/pedestrian/README.md) establish that the inspected municipal source alone cannot supply the approved detailed walking route. Use it as context and a measured source baseline; acquire the missing street-level appearance and surfaces for both candidates |
@@ -24,6 +24,8 @@
 | D18 | Use free sources only during the current period | Explicit user instruction on 6 November. No supplier outreach or paid acquisition. Continue free Kyoto source qualification and actual renderer/streaming experiments; unchanged full-route quality gates remain open where usable free inputs are missing |
 | D19 | Track capture-family independence and actual feature coverage | The [free-source audit](research/free-source-feasibility.md) finds four photographs related to reserved Mitsui imagery. They remain inspection-only. Nearby business identity and camera coordinates cannot establish exact route frontage, measured dimensions or independent evaluation |
 | D20 | Retain byte and quality failures when evaluating streaming | [Actual paging](../../evidence/realism-01/qualification/splat-streaming/README.md) proves bounded mechanics, with startup and ordinary-section sizes exceeding limits. First visibility is partial detail. Encoding changes require explicit source settings and the same-camera visual comparison before any quality conclusion |
+| D21 | Preserve the approved texture and captured lighting | On 14 November the user said the demo looks perfect and praised texture/lighting. Reference public release `1a938eb`; retain both original SH3 and streamed SH2 assets/settings because the viewed variant and camera were unspecified. This qualitative feedback applies to the current review |
+| D22 | Evaluate lossless transport and continuous camera movement next | R17 measures compression through the supported loader with decoded-byte identity and settled-frame checks. R18 exercises the existing capture; walking and Kyoto expansion retain measured-floor, scale and continuous-source requirements under R19 |
 
 Bind every decision result to source, asset, build, camera and evidence hashes.
 Keep rights, continuous movement, resource budgets and performance as mandatory
