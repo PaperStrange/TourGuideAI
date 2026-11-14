@@ -1,14 +1,24 @@
 # Agent checkpoint · Explore and Together homepage
 
-14 November 2026 · Next increment active after user approval to continue.
+14 November 2026 · Connected Kyoto preparation and public research review delivered.
 
-Follow the [connected Kyoto preparation increment](../sprints/realism-01/next-increment.md).
-Rendering owns an official lossless RAD compression trial; QA owns matched-view
-and native-input observations; source/scene owns a Panoramax route-coverage audit.
-The new source lead has in-area imagery; connector reconstruction qualification
-remains open. Keep free sources only, approved appearance, all full-route gates
-and physical-device evidence requirements. The public R20 release below remains
-the current verified preview until a new candidate passes its own checks.
+The [preparation increment](../sprints/realism-01/next-increment.md) completes the
+official RAD encoding trial, native-input profile, Panoramax source audit and two
+actual geometry trials. Free sources only, approved appearance and all full-route
+gates remain in force. Connector reconstruction qualification remains open; the
+public R20 architectural runtime below is unchanged.
+
+The [public Kyoto research board](https://paperstrange.github.io/TourGuideAI/previews/kyoto-source-review/)
+shows source photographs, route coverage and both actual geometry results. Pages
+commit `39603ce46bb50a6a0048b50ba46a17eb45014cdf` is built. All 45 public files
+match the package; local and hosted desktop/mobile walkthroughs each pass 25
+checks. Package manifest SHA-256:
+`5f74df030b671aa81412d63d3614ba48c2a44c014ddcf63c30f3cc78ece3af6d`.
+The source identity is `9b940bf`; the package base remains `a2c7f89`. Research
+publication preserves every other existing Pages path.
+The [retained publication evidence](../evidence/realism-01/free-connector-board/README.md)
+includes the exact package, both browser walkthroughs, source-commit binding and
+independent HTTPS verification.
 
 R17's [official S8Delta trial](../evidence/realism-01/review-chunks/README.md) is
 complete. All 2,541,177 nodes retain position, color, opacity, scale, SH2 and
@@ -16,7 +26,7 @@ hierarchy; 68,224 decoded quaternion components change. Total RAD size grows by
 633,624 bytes and 37/39 pages remain above 2 MiB. The derivative fails the strict
 identity gate and is ineligible for publication. The 16-file evidence bundle and
 pinned reproduction tools verify offline. The current public runtime/assets are
-unchanged. Native response profiling and Panoramax geometry qualification continue.
+unchanged. The completed native response profile and geometry trials follow.
 
 R19's [Panoramax intake and snapshot board](../evidence/realism-01/free-connector-next/README.md)
 retain 35 verified files: 14 records in the route rectangle, 167 in the surrounding

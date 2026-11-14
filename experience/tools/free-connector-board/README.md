@@ -28,3 +28,27 @@ After publication, the same driver accepts the actual HTTPS folder entry and a
 new ignored output directory as its arguments. Normal TLS verification remains
 enabled. The source-board checks establish static layout and evidence delivery;
 they supply no complete-route or physical-device fluency acceptance.
+
+Bind the package to its exact committed sources, retaining the earlier package
+base as a separate identity:
+
+```sh
+node experience/tools/free-connector-board/verify-source.mjs artifacts/realism-01/free-connector-next/public-package SOURCE_COMMIT artifacts/realism-01/free-connector-next/source-commit.json
+node experience/tools/free-connector-board/verify-publication.mjs PAGES_COMMIT artifacts/realism-01/free-connector-next/published-commit.json
+```
+
+After the local and public browser checks finish, retain their exact reports and
+publication receipts. Repeat `--receipt` for the prepared publication script,
+isolated TLS wrapper, source-commit receipt, tree audit, Pages build response and
+independent public-byte verification. Include the published commit/tree/parent
+receipt to bind the Pages build to the audited Git tree. The release evidence contains the complete
+static package, executed browser drivers and immutable producer snapshots.
+
+```sh
+node experience/tools/free-connector-board/retain.mjs --package artifacts/realism-01/free-connector-next/public-package --qa LOCAL_RESULT --qa PUBLIC_RESULT --receipt artifacts/realism-01/free-connector-next/source-commit.json
+node experience/tools/free-connector-board/verify.mjs
+```
+
+The offline verifier accepts an optional clean-checkout root. It checks the full
+package, all retained hashes, both browser reports, source record identities and
+the exact source-commit receipt.

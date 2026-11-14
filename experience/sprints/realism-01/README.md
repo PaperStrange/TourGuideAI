@@ -13,8 +13,13 @@ Production renderer selection and milestone acceptance remain open.
 
 ## Work and evidence
 
-The active [connected Kyoto preparation increment](next-increment.md) assigns
-the next loading, matched-view QA and free-source qualification work.
+The [connected Kyoto preparation increment](next-increment.md) records completed
+loading, matched-view QA and free-source trials with their construction dependencies.
+
+Its [public research board](https://paperstrange.github.io/TourGuideAI/previews/kyoto-source-review/)
+now presents the licensed Kyoto source photographs, coverage map and actual
+perspective/spherical reconstruction results. The existing architectural preview
+retains its approved assets and runtime.
 
 | Read | Purpose |
 | --- | --- |
@@ -41,6 +46,7 @@ the next loading, matched-view QA and free-source qualification work.
 | [Free route sequence follow-up](research/free-route-20261114.md) | Complete sequence metadata and the remaining calibration/route qualification requirements |
 | [Kyoto crossing capture intake](research/free-connector-next.md) | Licensed Panoramax snapshots, all-edge camera distances and bounded reconstruction inputs |
 | [Kyoto panorama geometry trials](../../evidence/realism-01/connector-reconstruction/README.md) | Actual perspective/spherical feature matches, initialization results and next reconstruction requirements |
+| [Published research review](../../evidence/realism-01/free-connector-board/README.md) | Live desktop/mobile checks, exact source and Pages identities, and all public-file hashes |
 | [Controlled trials](experiments/README.md) | Matched inputs, routes, viewpoints and comparison protocol |
 | [Parallel candidate status](experiments/candidate-status.md) | Mesh, splat and shared-ground evidence; explicit qualification dependencies |
 | [Evidence store](../../evidence/realism-01/README.md) | Reviewed artifacts and validation records |

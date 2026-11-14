@@ -1,0 +1,480 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-11-14T15:50:52.366216+00:00",
+  "completed": true,
+  "method": "CPU SIFT matching and native spherical sparse reconstruction of three licensed panoramas",
+  "producer": {
+    "path": "/workspace/TourGuideAI/experience/tools/connector-reconstruction/overlap.py",
+    "bytes": 12644,
+    "sha256": "817625120293bf7a436dfb3a9deaa7daa3dce6201758d65405a6391d7e623b24"
+  },
+  "selection": {
+    "path": "/workspace/TourGuideAI/artifacts/realism-01/free-connector-next/intake/selected.json",
+    "bytes": 6809,
+    "sha256": "42f99b1b56b77c80ec17c1881fe5d4ff634ad44bdca7dfee729a8a0b750d08c2"
+  },
+  "versions": {
+    "pycolmap": "4.2.1",
+    "py360convert": "1.0.4",
+    "Pillow": "12.3.0",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1"
+  },
+  "python": "3.12.14",
+  "device": "pycolmap.Device.cpu",
+  "conditions": {
+    "projection": "spherical",
+    "cropSize": null,
+    "horizontalFovDegrees": 360,
+    "verticalFovDegrees": 180,
+    "pitchDegrees": 0,
+    "headingsRelativeToPanoramaDegrees": [
+      null
+    ],
+    "interpolation": "Unchanged decoded panorama pixels",
+    "numThreads": 2,
+    "maxNumFeatures": 8192,
+    "randomSeed": 0,
+    "cameraModel": "EQUIRECTANGULAR",
+    "focalPixels": null,
+    "principalPointPixels": null,
+    "intrinsicsExplanation": "Native COLMAP EQUIRECTANGULAR model uses panorama width/height. Physical stitching calibration remains unverified.",
+    "sourceGeolocationUsedForFitting": false,
+    "featureMask": "Only the original panorama upper hemisphere is admitted; lower hemisphere including reflected car roof and ground is excluded.",
+    "maximumFeatureImageSize": 3040
+  },
+  "sources": [
+    {
+      "id": "c76c8058-9bb1-48dc-9ac9-8b5a17deaa4e",
+      "collection": "8f84abce-001a-4cb7-97f1-2b99b0aa27f1",
+      "coordinates": [
+        135.75967,
+        35.0037319
+      ],
+      "date": "2026-02-19T00:26:52+00:00",
+      "providers": [
+        {
+          "id": "e45f6ceb-dfee-4cab-a95d-164224bc6a4c",
+          "name": "Irvin Chen",
+          "roles": [
+            "producer"
+          ]
+        }
+      ],
+      "license": "CC-BY-SA-4.0",
+      "source": "https://api.panoramax.xyz/api/collections/8f84abce-001a-4cb7-97f1-2b99b0aa27f1/items/c76c8058-9bb1-48dc-9ac9-8b5a17deaa4e",
+      "originalInstance": "https://panoramax.osm.tw",
+      "nearestEdgeOrdinal": 1,
+      "routeDistanceMetres": 25.359344210983107,
+      "nearestEdgeChainageMetres": 0.0,
+      "camera": {
+        "camera_model": "insta360 oners",
+        "focal_length": 1.32,
+        "field_of_view": 360,
+        "camera_manufacturer": "Arashi Vision",
+        "sensor_array_dimensions": [
+          6080,
+          3040
+        ]
+      },
+      "heading": 180,
+      "horizontalAccuracyMetres": 4.0,
+      "projection": "equirectangular",
+      "sourceSoftware": "v2.0.11_build3",
+      "sourceComment": "",
+      "rank": 58,
+      "assets": {
+        "hd": {
+          "href": "https://panoramax.osm.tw/api/pictures/c76c8058-9bb1-48dc-9ac9-8b5a17deaa4e/hd.jpg",
+          "type": "image/jpeg",
+          "roles": [
+            "data"
+          ],
+          "title": "HD picture",
+          "description": "Highest resolution available of this picture"
+        },
+        "sd": {
+          "href": "https://panoramax.osm.tw/api/pictures/c76c8058-9bb1-48dc-9ac9-8b5a17deaa4e/sd.jpg",
+          "type": "image/jpeg",
+          "roles": [
+            "visual"
+          ],
+          "title": "SD picture",
+          "description": "Picture in standard definition (fixed width of 2048px)"
+        },
+        "thumb": {
+          "href": "https://panoramax.osm.tw/api/pictures/c76c8058-9bb1-48dc-9ac9-8b5a17deaa4e/thumb.jpg",
+          "type": "image/jpeg",
+          "roles": [
+            "thumbnail"
+          ],
+          "title": "Thumbnail",
+          "description": "Picture in low definition (fixed width of 500px)"
+        }
+      },
+      "poseQualification": "unverified: EXIF/declared position and heading are acquisition metadata; full extrinsics, distortion, metric scale and pedestrian floor are absent",
+      "file": {
+        "path": "/workspace/TourGuideAI/artifacts/realism-01/free-connector-next/intake/c76c8058-9bb1-48dc-9ac9-8b5a17deaa4e-hd.jpg",
+        "bytes": 9392069,
+        "sha256": "b7c15ba4521ab7e78639e0956f71211923fa4bb647742f10654f1df508606b86"
+      },
+      "receipt": {
+        "path": "/workspace/TourGuideAI/artifacts/realism-01/free-connector-next/intake/c76c8058-9bb1-48dc-9ac9-8b5a17deaa4e-hd.jpg.receipt.json",
+        "bytes": 2136,
+        "sha256": "9e397ebe1ccf68ea3117dbe34228a94a5414bc67380fc6e4b00c90aa2761e9bd"
+      }
+    },
+    {
+      "id": "25484fa5-4922-402c-94ad-2ec182efe55e",
+      "collection": "8f84abce-001a-4cb7-97f1-2b99b0aa27f1",
+      "coordinates": [
+        135.75967,
+        35.0039084
+      ],
+      "date": "2026-02-19T00:26:47+00:00",
+      "providers": [
+        {
+          "id": "e45f6ceb-dfee-4cab-a95d-164224bc6a4c",
+          "name": "Irvin Chen",
+          "roles": [
+            "producer"
+          ]
+        }
+      ],
+      "license": "CC-BY-SA-4.0",
+      "source": "https://api.panoramax.xyz/api/collections/8f84abce-001a-4cb7-97f1-2b99b0aa27f1/items/25484fa5-4922-402c-94ad-2ec182efe55e",
+      "originalInstance": "https://panoramax.osm.tw",
+      "nearestEdgeOrdinal": 1,
+      "routeDistanceMetres": 30.07368363859958,
+      "nearestEdgeChainageMetres": 0.0,
+      "camera": {
+        "camera_model": "insta360 oners",
+        "focal_length": 1.32,
+        "field_of_view": 360,
+        "camera_manufacturer": "Arashi Vision",
+        "sensor_array_dimensions": [
+          6080,
+          3040
+        ]
+      },
+      "heading": 180,
+      "horizontalAccuracyMetres": 4.0,
+      "projection": "equirectangular",
+      "sourceSoftware": "v2.0.11_build3",
+      "sourceComment": "",
+      "rank": 57,
+      "assets": {
+        "hd": {
+          "href": "https://panoramax.osm.tw/api/pictures/25484fa5-4922-402c-94ad-2ec182efe55e/hd.jpg",
+          "type": "image/jpeg",
+          "roles": [
+            "data"
+          ],
+          "title": "HD picture",
+          "description": "Highest resolution available of this picture"
+        },
+        "sd": {
+          "href": "https://panoramax.osm.tw/api/pictures/25484fa5-4922-402c-94ad-2ec182efe55e/sd.jpg",
+          "type": "image/jpeg",
+          "roles": [
+            "visual"
+          ],
+          "title": "SD picture",
+          "description": "Picture in standard definition (fixed width of 2048px)"
+        },
+        "thumb": {
+          "href": "https://panoramax.osm.tw/api/pictures/25484fa5-4922-402c-94ad-2ec182efe55e/thumb.jpg",
+          "type": "image/jpeg",
+          "roles": [
+            "thumbnail"
+          ],
+          "title": "Thumbnail",
+          "description": "Picture in low definition (fixed width of 500px)"
+        }
+      },
+      "poseQualification": "unverified: EXIF/declared position and heading are acquisition metadata; full extrinsics, distortion, metric scale and pedestrian floor are absent",
+      "file": {
+        "path": "/workspace/TourGuideAI/artifacts/realism-01/free-connector-next/intake/25484fa5-4922-402c-94ad-2ec182efe55e-hd.jpg",
+        "bytes": 9688078,
+        "sha256": "38f21087ebf20314fa88092e8c98f01237cc9c08350423f438dee6518fcf7e3e"
+      },
+      "receipt": {
+        "path": "/workspace/TourGuideAI/artifacts/realism-01/free-connector-next/intake/25484fa5-4922-402c-94ad-2ec182efe55e-hd.jpg.receipt.json",
+        "bytes": 2126,
+        "sha256": "64cf1fdda5a873918b781623f5fced462bdfb276fc758a3ebe3b5bdf876bd3e1"
+      }
+    },
+    {
+      "id": "a0d6710e-11e7-4d0e-8a7c-05dec8bf3c25",
+      "collection": "8f84abce-001a-4cb7-97f1-2b99b0aa27f1",
+      "coordinates": [
+        135.75967,
+        35.003464
+      ],
+      "date": "2026-02-19T00:26:57+00:00",
+      "providers": [
+        {
+          "id": "e45f6ceb-dfee-4cab-a95d-164224bc6a4c",
+          "name": "Irvin Chen",
+          "roles": [
+            "producer"
+          ]
+        }
+      ],
+      "license": "CC-BY-SA-4.0",
+      "source": "https://api.panoramax.xyz/api/collections/8f84abce-001a-4cb7-97f1-2b99b0aa27f1/items/a0d6710e-11e7-4d0e-8a7c-05dec8bf3c25",
+      "originalInstance": "https://panoramax.osm.tw",
+      "nearestEdgeOrdinal": 1,
+      "routeDistanceMetres": 41.3732097275852,
+      "nearestEdgeChainageMetres": 0.0,
+      "camera": {
+        "camera_model": "insta360 oners",
+        "focal_length": 1.32,
+        "field_of_view": 360,
+        "camera_manufacturer": "Arashi Vision",
+        "sensor_array_dimensions": [
+          6080,
+          3040
+        ]
+      },
+      "heading": 180,
+      "horizontalAccuracyMetres": 4.0,
+      "projection": "equirectangular",
+      "sourceSoftware": "v2.0.11_build3",
+      "sourceComment": "",
+      "rank": 59,
+      "assets": {
+        "hd": {
+          "href": "https://panoramax.osm.tw/api/pictures/a0d6710e-11e7-4d0e-8a7c-05dec8bf3c25/hd.jpg",
+          "type": "image/jpeg",
+          "roles": [
+            "data"
+          ],
+          "title": "HD picture",
+          "description": "Highest resolution available of this picture"
+        },
+        "sd": {
+          "href": "https://panoramax.osm.tw/api/pictures/a0d6710e-11e7-4d0e-8a7c-05dec8bf3c25/sd.jpg",
+          "type": "image/jpeg",
+          "roles": [
+            "visual"
+          ],
+          "title": "SD picture",
+          "description": "Picture in standard definition (fixed width of 2048px)"
+        },
+        "thumb": {
+          "href": "https://panoramax.osm.tw/api/pictures/a0d6710e-11e7-4d0e-8a7c-05dec8bf3c25/thumb.jpg",
+          "type": "image/jpeg",
+          "roles": [
+            "thumbnail"
+          ],
+          "title": "Thumbnail",
+          "description": "Picture in low definition (fixed width of 500px)"
+        }
+      },
+      "poseQualification": "unverified: EXIF/declared position and heading are acquisition metadata; full extrinsics, distortion, metric scale and pedestrian floor are absent",
+      "file": {
+        "path": "/workspace/TourGuideAI/artifacts/realism-01/free-connector-next/intake/a0d6710e-11e7-4d0e-8a7c-05dec8bf3c25-hd.jpg",
+        "bytes": 9710875,
+        "sha256": "53ad66e971858ad9a8f469dd572394427b6036e1941e9a61058be44c8c96f366"
+      },
+      "receipt": {
+        "path": "/workspace/TourGuideAI/artifacts/realism-01/free-connector-next/intake/a0d6710e-11e7-4d0e-8a7c-05dec8bf3c25-hd.jpg.receipt.json",
+        "bytes": 2136,
+        "sha256": "e83ef8fe7003df7fbb782d3e416d7292f66b3814e83a50ee3bd91cbd17b11dbd"
+      }
+    }
+  ],
+  "directions": [
+    {
+      "headingDegrees": null,
+      "images": [
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-reconstruction/run-02/heading-None/images/c76c8058-9bb1-48dc-9ac9-8b5a17deaa4e.png",
+          "bytes": 18686714,
+          "sha256": "adc76ffe68700ef69050a353f9518ef506576cfeb78888a36608ba4a1701d5e3"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-reconstruction/run-02/heading-None/images/25484fa5-4922-402c-94ad-2ec182efe55e.png",
+          "bytes": 19389557,
+          "sha256": "af673afe87722663228b21753877b3b01bdef4855ce66fab6ea2aa188d7074ea"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-reconstruction/run-02/heading-None/images/a0d6710e-11e7-4d0e-8a7c-05dec8bf3c25.png",
+          "bytes": 19423704,
+          "sha256": "c30636096898182183999739dcd1055c13eb05ac1aaaceddb8fd35d6c91b7ba3"
+        }
+      ],
+      "featureMask": {
+        "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-reconstruction/run-02/heading-None/facade-mask.png",
+        "bytes": 21592,
+        "sha256": "18e396f1689e0bd5498b6534f626fc7081933f302f10751694d4eef0115fb886"
+      },
+      "settings": {
+        "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-reconstruction/run-02/heading-None/settings.json",
+        "bytes": 5666,
+        "sha256": "da894c01e4bb396c98be4221920c29f172bbfafdc652341d04b2c091d94782d9"
+      },
+      "stage": "complete",
+      "pairs": [
+        {
+          "images": [
+            "25484fa5-4922-402c-94ad-2ec182efe55e.png",
+            "a0d6710e-11e7-4d0e-8a7c-05dec8bf3c25.png"
+          ],
+          "tentativeMatches": 143,
+          "verifiedInliers": 83,
+          "configuration": "TwoViewGeometryConfiguration.CALIBRATED",
+          "triangulationAngleDegrees": null,
+          "cam2FromCam1": [
+            [
+              0.999929584489372,
+              0.0090378097393193,
+              0.007690517409631953,
+              0.670007968659606
+            ],
+            [
+              -0.009030487119413047,
+              0.9999587378509819,
+              -0.0009863558472962537,
+              0.42231431521266594
+            ],
+            [
+              -0.007699114578839699,
+              0.0009168372741363022,
+              0.9999699410702877,
+              -0.6105243165501975
+            ]
+          ]
+        },
+        {
+          "images": [
+            "25484fa5-4922-402c-94ad-2ec182efe55e.png",
+            "c76c8058-9bb1-48dc-9ac9-8b5a17deaa4e.png"
+          ],
+          "tentativeMatches": 421,
+          "verifiedInliers": 224,
+          "configuration": "TwoViewGeometryConfiguration.CALIBRATED",
+          "triangulationAngleDegrees": null,
+          "cam2FromCam1": [
+            [
+              0.9998801240291506,
+              -0.005256377913522653,
+              0.014563930193484464,
+              0.5334345865178962
+            ],
+            [
+              0.005380805242417493,
+              0.9999492478103928,
+              -0.008517554717919769,
+              0.3394245167213711
+            ],
+            [
+              -0.014518419555641364,
+              0.008594899339714,
+              0.9998576614693446,
+              -0.7747506304321055
+            ]
+          ]
+        },
+        {
+          "images": [
+            "a0d6710e-11e7-4d0e-8a7c-05dec8bf3c25.png",
+            "c76c8058-9bb1-48dc-9ac9-8b5a17deaa4e.png"
+          ],
+          "tentativeMatches": 402,
+          "verifiedInliers": 308,
+          "configuration": "TwoViewGeometryConfiguration.CALIBRATED",
+          "triangulationAngleDegrees": null,
+          "cam2FromCam1": [
+            [
+              0.9998112946350055,
+              0.007098459150083433,
+              0.01808278180946557,
+              0.886004630820436
+            ],
+            [
+              -0.007183516658711239,
+              0.9999634183140048,
+              0.004643180180082076,
+              -0.22764701845365118
+            ],
+            [
+              -0.018049160885984704,
+              -0.0047722019514355955,
+              0.9998257117517265,
+              -0.4039463196439671
+            ]
+          ]
+        }
+      ],
+      "models": [],
+      "features": [
+        {
+          "image": "25484fa5-4922-402c-94ad-2ec182efe55e.png",
+          "count": 7550
+        },
+        {
+          "image": "a0d6710e-11e7-4d0e-8a7c-05dec8bf3c25.png",
+          "count": 7216
+        },
+        {
+          "image": "c76c8058-9bb1-48dc-9ac9-8b5a17deaa4e.png",
+          "count": 6788
+        }
+      ],
+      "database": {
+        "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-reconstruction/run-02/heading-None/database.db",
+        "bytes": 3391488,
+        "sha256": "8099bf2ce9ed0600b84ec8aea75a3a82f48d484b551a6216d32b485e99233566"
+      }
+    }
+  ],
+  "limitations": [
+    "Three selected source cameras lie west of the first approved route edge; this test establishes no complete route coverage.",
+    "Spherical stitching, scene motion and image redaction can violate a single-center camera model.",
+    "Virtual projection intrinsics do not establish physical lens calibration or absolute camera orientation.",
+    "Sparse coordinates have arbitrary similarity scale; declared GPS accuracy is not surveyed control.",
+    "Sparse correspondences establish no continuous pedestrian floor, collision surface, lighting qualification or independent recognition.",
+    "The three reconstruction sources cannot also serve as held-out appearance references.",
+    "The shared upper-half feature mask excludes the ground. Traffic and sky remaining above the horizon require geometric rejection and later surface review."
+  ],
+  "finishedAt": "2026-11-14T15:51:22.768261+00:00",
+  "files": [
+    {
+      "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-reconstruction/run-02/executed-overlap.py",
+      "bytes": 12644,
+      "sha256": "817625120293bf7a436dfb3a9deaa7daa3dce6201758d65405a6391d7e623b24"
+    },
+    {
+      "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-reconstruction/run-02/heading-None/database.db",
+      "bytes": 3391488,
+      "sha256": "8099bf2ce9ed0600b84ec8aea75a3a82f48d484b551a6216d32b485e99233566"
+    },
+    {
+      "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-reconstruction/run-02/heading-None/facade-mask.png",
+      "bytes": 21592,
+      "sha256": "18e396f1689e0bd5498b6534f626fc7081933f302f10751694d4eef0115fb886"
+    },
+    {
+      "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-reconstruction/run-02/heading-None/images/25484fa5-4922-402c-94ad-2ec182efe55e.png",
+      "bytes": 19389557,
+      "sha256": "af673afe87722663228b21753877b3b01bdef4855ce66fab6ea2aa188d7074ea"
+    },
+    {
+      "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-reconstruction/run-02/heading-None/images/a0d6710e-11e7-4d0e-8a7c-05dec8bf3c25.png",
+      "bytes": 19423704,
+      "sha256": "c30636096898182183999739dcd1055c13eb05ac1aaaceddb8fd35d6c91b7ba3"
+    },
+    {
+      "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-reconstruction/run-02/heading-None/images/c76c8058-9bb1-48dc-9ac9-8b5a17deaa4e.png",
+      "bytes": 18686714,
+      "sha256": "adc76ffe68700ef69050a353f9518ef506576cfeb78888a36608ba4a1701d5e3"
+    },
+    {
+      "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-reconstruction/run-02/heading-None/settings.json",
+      "bytes": 5666,
+      "sha256": "da894c01e4bb396c98be4221920c29f172bbfafdc652341d04b2c091d94782d9"
+    }
+  ]
+}
