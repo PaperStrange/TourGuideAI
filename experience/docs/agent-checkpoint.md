@@ -19,12 +19,21 @@ pinned reproduction tools verify offline. The current public runtime/assets are
 unchanged. Native response profiling and Panoramax geometry qualification continue.
 
 R19's [Panoramax intake and snapshot board](../evidence/realism-01/free-connector-next/README.md)
-retain 34 verified files: 14 records in the route rectangle, 167 in the surrounding
+retain 35 verified files: 14 records in the route rectangle, 167 in the surrounding
 bounded query, and three licensed native Insta360 panoramas. The three camera
 positions lie 25–41 m west of edge 1, moving north–south. They support the crossing
 appearance/geometry trial. Eastward connector coverage, metric scale, continuous
 walking floor and night sources remain unqualified. No production route asset
 has been substituted. The bounded reconstruction uses these actual photographs.
+
+R21's [four-view native profile](../evidence/realism-01/review-chunks-profiling/README.md)
+is complete on the unchanged package. Of 17 checks, 15 pass; both exact-repeat
+checks fail because 15 RGB channels differ by 1/255 after native turns and Reset.
+Camera, 261,359 splats and alpha agree; independent Pillow decoding confirms the
+difference. Preserve the failure. Seven actual event-to-submission observations
+span 3.6–15.7 ms, while the subsequent frame observation takes 2.27–3.56 seconds.
+These separate boundaries and software-renderer stalls establish no physical
+fluency or speedup. All three attempts, 29 files and 15 producers verify offline.
 
 14 November 2026 · Architectural loading and demand rendering published.
 

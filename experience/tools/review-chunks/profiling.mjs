@@ -33,11 +33,13 @@ if (mode === '--retain') {
   }
   const packageDirectory = resolve(root, 'artifacts/realism-01/review-loading/package-03');
   const packageManifest = json(resolve(packageDirectory, 'package-manifest.json'));
+  assert.equal(sha(readFileSync(resolve(packageDirectory, 'package-manifest.json'))), '6673bc5de654b71ba9e0fc5a799d72cb24af3654264aa1b3841c1236ae8223b5');
   for (const file of packageManifest.files) {
     const bytes = readFileSync(resolve(packageDirectory, file.path));
     assert.equal(bytes.length, file.bytes); assert.equal(sha(bytes), file.sha256);
   }
   for (const filename of ['package-manifest.json', 'review-assets.json', 'index.html']) retain(resolve(packageDirectory, filename), `package/${filename}`);
+  retain(resolve(root, 'experience/evidence/realism-01/review-loading/receipts/source-commit.json'), 'package/source-commit.json');
   for (const file of packageManifest.producers) {
     const bytes = readFileSync(resolve(root, file.path)); assert.equal(sha(bytes), file.sha256);
     retain(resolve(root, file.path), `producers/${file.path}`);
@@ -74,6 +76,11 @@ for (const file of manifest.files) {
 }
 const packaged = json(resolve(output, 'package/package-manifest.json'));
 assert.equal(sha(readFileSync(resolve(output, 'package/package-manifest.json'))), manifest.packageManifestSha256);
+assert.equal(manifest.packageManifestSha256, '6673bc5de654b71ba9e0fc5a799d72cb24af3654264aa1b3841c1236ae8223b5');
+const sourceCommit = json(resolve(output, 'package/source-commit.json'));
+assert.equal(sourceCommit.commit, manifest.runtimeCommit);
+assert.equal(sourceCommit.packageManifestSha256, manifest.packageManifestSha256);
+assert.deepEqual(sourceCommit.files, packaged.producers);
 for (const producer of packaged.producers) assert.equal(sha(readFileSync(resolve(output, 'producers', producer.path))), producer.sha256);
 const completed = [];
 function transferAt(report, milliseconds) {
@@ -94,9 +101,11 @@ function settled(view) {
   assert.equal(new Set(record.qualifiedFrames.map(frame => frame.frames)).size, 3);
   assert.equal(record.drawnSplats, view.drawnSplats); assert.equal(view.drawnView.drawnSplats, view.drawnSplats);
   assert(!view.requests.some(request => request.status === 'pending'));
-  for (const frame of record.qualifiedFrames) {
+  for (const [index, frame] of record.qualifiedFrames.entries()) {
     assert(frame.pagingBeforeRender.idle && frame.observation.paging.idle);
     assert(sameCamera(frame.beforeRender, frame) && sameCamera(frame, frame.observation));
+    assert(sameCamera(frame, record)); assert.deepEqual(frame.content, record.content);
+    if (index > 0) assert(frame.frames > record.qualifiedFrames[index - 1].frames);
     assert.deepEqual(frame.beforeRender.content, frame.content); assert.deepEqual(frame.content, frame.observation.content);
     assert(frame.observedAt >= frame.submittedAt);
   }
@@ -108,7 +117,6 @@ for (const attempt of manifest.attempts) {
   assert.equal(sha(readFileSync(resolve(output, dirname(attempt.path), 'executed-driver.mjs'))), attempt.driverSha256);
   assert.deepEqual(report.packageManifest, packaged); assert(report.finishedAt);
   if (!report.completed) { assert(report.termination); continue; }
-  assert(report.checks.every(check => check.pass || ['budget', 'diagnostic'].includes(check.category)));
   assert.equal(report.packageIdentity.manifestSha256, manifest.packageManifestSha256);
   assert(report.packageIdentity.verified);
   assert.deepEqual(report.packageIdentity.verifiedFiles, packaged.files.map(({ path, bytes, sha256 }) => ({ path, bytes, sha256 })));
@@ -142,20 +150,25 @@ for (const attempt of manifest.attempts) {
   const repeat = report.captures.find(capture => capture.name === 'source-repeat');
   const independent = JSON.parse(execFileSync('python', [resolve(output, 'producers/experience/tools/review-loading/compare-images.py'),
     resolve(output, dirname(attempt.path), source.path), resolve(output, dirname(attempt.path), repeat.path)], { encoding: 'utf8' }));
-  assert(independent.exactPixels && sameCamera(source.before, repeat.before));
+  assert(sameCamera(source.before, repeat.before));
   assert.equal(source.before.drawnSplats, repeat.before.drawnSplats);
   const browserComparison = report.imageComparisons.find(comparison => comparison.id === 'same-build-repeatability');
+  assert.deepEqual(browserComparison.criteria, { maxChannelError: 0, p95ChannelError: 0, alphaMismatches: 0, source: 'Exact repeatability' });
   for (const key of ['width', 'height', 'maxChannelError', 'p95ChannelError', 'meanAbsoluteError255', 'differingRgbChannels', 'alphaMismatches']) {
     assert.equal(browserComparison[key], independent[key]);
   }
+  assert.equal(report.checks.find(check => check.id === 'same-build-repeatability').pass,
+    sameCamera(source.before, repeat.before) && source.before.drawnSplats === repeat.before.drawnSplats && independent.exactPixels);
+  assert.equal(report.checks.find(check => check.id === 'same-build-repeatability-exact').pass, independent.exactPixels);
   completed.push({ path: attempt.path, checks: report.checks.length, firstVisibleBytes: report.firstVisibleTransfer.totalEncodedBytes,
     firstVisibleAtMs: report.firstView.firstVisibleAt, poses: report.captures.map(capture => ({ name: capture.name,
       drawnSplats: capture.before.drawnSplats, atMs: capture.before.settledView.observedAt, bytes: capture.transfer.totalEncodedBytes })),
     probes: report.probes.map(probe => ({ action: probe.action, phase: probe.phase, eventToSubmittedMs: probe.eventToSubmittedMs,
       handlerToSubmittedMs: probe.handlerToSubmittedMs, eventQueueMs: probe.eventQueueMs, observationLagMs: probe.observationLagMs,
-      gaps: probe.observationGaps.length })), frames: frames.length, gaps: gaps.length, independentPixels: independent });
+      gaps: probe.observationGaps.length })), frames: frames.length, gaps: gaps.length, independentPixels: independent,
+    failedChecks: report.checks.filter(check => !check.pass).map(check => ({ id: check.id, category: check.category })),
+    observedAcceptancePassed: report.checks.every(check => check.pass || ['budget', 'diagnostic'].includes(check.category)) });
 }
 assert.equal(completed.length, 1, 'This evidence retains one completed unchanged-runtime profile');
-const result = { pass: true, files: manifest.files.length, attempts: manifest.attempts.length, completed };
-if (mode === '--retain') writeFileSync(resolve(output, 'verification.json'), JSON.stringify(result, null, 2) + '\n');
+const result = { integrityPass: true, files: manifest.files.length, attempts: manifest.attempts.length, completed };
 console.log(JSON.stringify(result, null, 2));

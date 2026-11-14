@@ -36,6 +36,7 @@ the next loading, matched-view QA and free-source qualification work.
 | [Continuous architectural exploration](../../evidence/realism-01/review-transport/README.md) | Guided camera controls, separate initial interface loading, lossless transport measurement and retained visual/interaction evidence |
 | [Loading and demand rendering](../../evidence/realism-01/review-loading/README.md) | Preserved appearance, first-view scheduling, actual idle/wake behavior and matched local/public results |
 | [Exact-value encoding trial](../../evidence/realism-01/review-chunks/README.md) | Official codec comparison, all-page sizes and strict decoded-identity qualification |
+| [Native camera profile](../../evidence/realism-01/review-chunks-profiling/README.md) | Source/left/right/reset snapshots, event-to-submission observations, later stalls and exact-repeatability results |
 | [Free Kyoto source feasibility](research/free-source-feasibility.md) | Inspected photographs, source-family separation, actual geographic coverage and remaining registration gaps |
 | [Free route sequence follow-up](research/free-route-20261114.md) | Complete sequence metadata and the remaining calibration/route qualification requirements |
 | [Kyoto crossing capture intake](research/free-connector-next.md) | Licensed Panoramax snapshots, all-edge camera distances and bounded reconstruction inputs |
