@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
   "kind": "interactive-architecture-review",
-  "createdAt": "2026-11-14T02:30:50.221Z",
-  "implementationBase": "43ced30b9f756f949a837c9bcec80377086bc188",
+  "createdAt": "2026-11-14T09:15:27.741Z",
+  "implementationBase": "a5c39d4778d7b02f0cc03366f5c802bffd915a90",
   "baselinePackageManifestSha256": "ad7ee268bd7108a3f281ee7276818d343eb978e829a887e88877ae6716cebb13",
   "sourceUrl": "https://superspl.at/scene/0ff2e6dc",
   "sourceLicense": "CC BY 4.0",
@@ -15,31 +15,37 @@
   "transportEncoding": "identity",
   "streamedSourceBytes": 84115304,
   "limits": "Architectural inspection of a Canadian capture. Original SH3 and streamed SH2 differ in detail and directional color. Kyoto route realism, walking, relighting and physical-device performance acceptance remain separate.",
-  "bytes": 123462092,
+  "bytes": 123474998,
   "files": [
     {
-      "path": "assets/camera-tour-zk_0oBVe.js",
-      "source": "artifacts/realism-01/review-page/build/assets/camera-tour-zk_0oBVe.js",
-      "bytes": 3646,
-      "sha256": "9e54de77c198e9fb3758dd0ec8ad3fd7a78b3cc5b90e1ce5e65dc9c269722334"
+      "path": "assets/camera-tour-DhTiPsH7.js",
+      "source": "artifacts/realism-01/review-page/build/assets/camera-tour-DhTiPsH7.js",
+      "bytes": 3699,
+      "sha256": "ad1c783cf333ae887a9d6efdce1ffbc707eb8015d7676374c05c08cb79787500"
     },
     {
-      "path": "assets/camera-tour-zk_0oBVe.js.map",
-      "source": "artifacts/realism-01/review-page/build/assets/camera-tour-zk_0oBVe.js.map",
-      "bytes": 12921,
-      "sha256": "e0593b76b350a6683d6137fe9571c53bea7f96a2e06ed59251fe078af4a19682"
+      "path": "assets/camera-tour-DhTiPsH7.js.map",
+      "source": "artifacts/realism-01/review-page/build/assets/camera-tour-DhTiPsH7.js.map",
+      "bytes": 13040,
+      "sha256": "7dfb0ac8ab0962ab36da78249337104daa6a431d19bc4c63ff43a3ea892e4fde"
     },
     {
-      "path": "assets/realism-review-BTppNRt0.js",
-      "source": "artifacts/realism-01/review-page/build/assets/realism-review-BTppNRt0.js",
+      "path": "assets/favicon-CZpmbZ8A.svg",
+      "source": "artifacts/realism-01/review-page/build/assets/favicon-CZpmbZ8A.svg",
+      "bytes": 281,
+      "sha256": "c403eb9246daf842437c6af174200f8af49ae843b32bb80b4f8f44737d36c211"
+    },
+    {
+      "path": "assets/realism-review-Chk4g49A.js",
+      "source": "artifacts/realism-01/review-page/build/assets/realism-review-Chk4g49A.js",
       "bytes": 21639,
-      "sha256": "c4a601ba34e4fadaa1f8c2dd805d00669abcb65b92642fa13740be8ba38c8d53"
+      "sha256": "a656a5e16cd6cb36ec8efb9343446857ace0956f469f28b7a1d20d6671a50c13"
     },
     {
-      "path": "assets/realism-review-BTppNRt0.js.map",
-      "source": "artifacts/realism-01/review-page/build/assets/realism-review-BTppNRt0.js.map",
+      "path": "assets/realism-review-Chk4g49A.js.map",
+      "source": "artifacts/realism-01/review-page/build/assets/realism-review-Chk4g49A.js.map",
       "bytes": 35636,
-      "sha256": "046834430672c3d43933cc37108dbea337adfd9304f23cc96faa1b7fa6ede2dd"
+      "sha256": "8517c3beb928911a406c7163283244394279e3cbfbfb64f7b30eccabd9641eac"
     },
     {
       "path": "assets/realism-review-pEGnTixi.css",
@@ -48,16 +54,16 @@
       "sha256": "d4794d08efe063b7b760984a9fb7e6142451847898c2d5d550972524a0e4f62c"
     },
     {
-      "path": "assets/scene-DCeVekeV.js",
-      "source": "artifacts/realism-01/review-page/build/assets/scene-DCeVekeV.js",
-      "bytes": 3078311,
-      "sha256": "34426f1c816c351c6ff4503d53f16b07f6c0e02f938799643e26aa6dd6068067"
+      "path": "assets/scene-DN3qJJzq.js",
+      "source": "artifacts/realism-01/review-page/build/assets/scene-DN3qJJzq.js",
+      "bytes": 3081349,
+      "sha256": "cc98d7aa1ec722f8688616535cfc0590f3e2e134e3d52b22fb9c23a232698889"
     },
     {
-      "path": "assets/scene-DCeVekeV.js.map",
-      "source": "artifacts/realism-01/review-page/build/assets/scene-DCeVekeV.js.map",
-      "bytes": 4366062,
-      "sha256": "096eb4e10188d491900cea4eb0c3efb133be1c6cee5ff8a852017f0f4669f3c2"
+      "path": "assets/scene-DN3qJJzq.js.map",
+      "source": "artifacts/realism-01/review-page/build/assets/scene-DN3qJJzq.js.map",
+      "bytes": 4375395,
+      "sha256": "de2a57e06771b039f886e73a52fef9fefdb57215e004d6eee49529531d2f8bc2"
     },
     {
       "path": "assets/three.core-Ad3dbQLx.js",
@@ -320,8 +326,8 @@
     {
       "path": "index.html",
       "source": "artifacts/realism-01/review-page/build/realism-review.html",
-      "bytes": 808,
-      "sha256": "dab4000cddc153554344398bb74ba5dcebeb2525595093e32e529ebc4330699d"
+      "bytes": 890,
+      "sha256": "5aed30f5d57162f94a0478f6cbc1f0c3bb97014c65d7585bff57a8c433315d67"
     },
     {
       "path": "licenses/source.txt",
@@ -367,18 +373,23 @@
     },
     {
       "path": "experience/realism-review.html",
-      "bytes": 696,
-      "sha256": "bb71f58202e381e90923624d228f8e48b385cb908a2ee217622f6332e764da05"
+      "bytes": 772,
+      "sha256": "c6cad2bdddbed9a75832430dd4295a7dfee3cc322d0f2b87984fdc917a00f01c"
     },
     {
       "path": "experience/src/review/camera-tour.js",
-      "bytes": 7409,
-      "sha256": "5f54d89814d7e92645cc730601bb83ac52342ce1d9a8b5bdb764bf2052fecc91"
+      "bytes": 7486,
+      "sha256": "0d55f309afc06498e37324e0392787ec8a17b73e2e8c55e5b8a7443187109485"
     },
     {
       "path": "experience/src/review/copy.js",
       "bytes": 7466,
       "sha256": "87915a813da4155fe623ff52396ba5864b03c1d20182d027940fac06c1e68b39"
+    },
+    {
+      "path": "experience/src/review/favicon.svg",
+      "bytes": 281,
+      "sha256": "c403eb9246daf842437c6af174200f8af49ae843b32bb80b4f8f44737d36c211"
     },
     {
       "path": "experience/src/review/main.js",
@@ -392,8 +403,8 @@
     },
     {
       "path": "experience/src/review/scene.js",
-      "bytes": 18304,
-      "sha256": "f40ae41a617439d24db364c850da25f68c00bd841b5b90023bee190e8a30067c"
+      "bytes": 24022,
+      "sha256": "4590ba6af4079b195cb88a931fcbb7b853a0685fa07d2ed914c728529aab8009"
     },
     {
       "path": "experience/src/review/styles.css",
