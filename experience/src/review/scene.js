@@ -210,13 +210,14 @@ export function createReviewScene({ canvas, assets, onState = () => {} }) {
         renderer.render(scene, camera);
         frames += 1;
         drawnView = { matrixWorld: camera.matrixWorld.toArray(),
-          projectionMatrix: camera.projectionMatrix.toArray(), frames, variant: session.variant };
+          projectionMatrix: camera.projectionMatrix.toArray(), frames, variant: session.variant,
+          submittedAt: performance.now(), drawnSplats: session.spark.activeSplats };
         const displayed = session.spark.display?.numSplats ?? 0;
         const selected = session.variant === 'streamed' ? session.paged.numSplats : session.mesh.numSplats;
         if (displayed > 0 && selected > 0 && session.spark.activeSplats > 0) {
           controls.enabled = true;
           if (session.firstVisibleAt === null) {
-            session.firstVisibleAt = performance.now();
+            session.firstVisibleAt = drawnView.submittedAt;
             session.firstVisibleFrame = frames;
           }
           const paging = pagingState(session);
@@ -224,8 +225,10 @@ export function createReviewScene({ canvas, assets, onState = () => {} }) {
             .map(value => Math.round(value * 1e9) / 1e9).join(',');
           session.settledFrames = paging.idle ? (session.settledSignature === signature ? session.settledFrames + 1 : 1) : 0;
           session.settledSignature = signature;
+          // 保留已提交画面的状态；随后启动的排序不应改写上一帧的稳定证据。
+          drawnView.paging = { ...paging, settled: paging.idle && paging.drawnMatchesCamera && session.settledFrames >= 3 };
           if (session.firstSettledAt === null && session.settledFrames >= 3) {
-            session.firstSettledAt = performance.now();
+            session.firstSettledAt = drawnView.submittedAt;
             session.firstSettledFrame = frames;
           }
           const streaming = session.variant === 'streamed' && (!paging.cameraCoveredByLod
@@ -353,7 +356,7 @@ export function createReviewScene({ canvas, assets, onState = () => {} }) {
       quaternion: camera.quaternion.toArray(), fov: camera.fov, matrixWorld: camera.matrixWorld.toArray(),
       projectionMatrix: camera.projectionMatrix.toArray(), ...state, frames, disposed,
       drawnView: drawnView ? { ...drawnView, matrixWorld: [...drawnView.matrixWorld],
-        projectionMatrix: [...drawnView.projectionMatrix] } : null,
+        projectionMatrix: [...drawnView.projectionMatrix], paging: drawnView.paging ? { ...drawnView.paging } : null } : null,
       drawnSplats: active?.spark?.activeSplats ?? 0, loadedVariant: active?.variant ?? null,
       firstVisibleAt: requested?.firstVisibleAt ?? null, firstVisibleFrame: requested?.firstVisibleFrame ?? null,
       firstSettledAt: requested?.firstSettledAt ?? null, firstSettledFrame: requested?.firstSettledFrame ?? null,
