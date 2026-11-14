@@ -1,0 +1,71 @@
+{
+  "recordedAt": "2026-11-14T09:48:59.566Z",
+  "commit": "b4b140d2c48b7e185e296272f9fb141588caca95",
+  "packageImplementationBase": "a5c39d4778d7b02f0cc03366f5c802bffd915a90",
+  "packageManifestSha256": "6673bc5de654b71ba9e0fc5a799d72cb24af3654264aa1b3841c1236ae8223b5",
+  "producerSha256": "e826cfdd4c639067d2d0e2b48abd7f1d5bcdcff1dbacb4a77beb476442c2de68",
+  "method": "Read immutable Git blobs at the declared publication source commit and compare each package producer size and SHA-256.",
+  "limitations": "Source-commit identity; actual build output, browser behavior and public delivery have separate evidence.",
+  "files": [
+    {
+      "path": "experience/package-lock.json",
+      "bytes": 39800,
+      "sha256": "d11b2dbc8f857a1e557729d8a1b1ec1e72cc9622ab9d94473b5b2229bc0c57ab"
+    },
+    {
+      "path": "experience/package.json",
+      "bytes": 1121,
+      "sha256": "160c6018ed448948054a346666f689bd7f521e757a22f2c68b4e1e5ea7818013"
+    },
+    {
+      "path": "experience/realism-review.html",
+      "bytes": 772,
+      "sha256": "c6cad2bdddbed9a75832430dd4295a7dfee3cc322d0f2b87984fdc917a00f01c"
+    },
+    {
+      "path": "experience/src/review/camera-tour.js",
+      "bytes": 7486,
+      "sha256": "0d55f309afc06498e37324e0392787ec8a17b73e2e8c55e5b8a7443187109485"
+    },
+    {
+      "path": "experience/src/review/copy.js",
+      "bytes": 7466,
+      "sha256": "87915a813da4155fe623ff52396ba5864b03c1d20182d027940fac06c1e68b39"
+    },
+    {
+      "path": "experience/src/review/favicon.svg",
+      "bytes": 281,
+      "sha256": "c403eb9246daf842437c6af174200f8af49ae843b32bb80b4f8f44737d36c211"
+    },
+    {
+      "path": "experience/src/review/main.js",
+      "bytes": 17232,
+      "sha256": "2464fb1b9aa84c9361ad92512f1ecca62a706ea1908578c7d1ebd772b5f90ddf"
+    },
+    {
+      "path": "experience/src/review/review-assets.json",
+      "bytes": 847,
+      "sha256": "364b0710cd804ad4e250ee2b907445b81284378ac5468a48c9679a47261423f4"
+    },
+    {
+      "path": "experience/src/review/scene.js",
+      "bytes": 24022,
+      "sha256": "4590ba6af4079b195cb88a931fcbb7b853a0685fa07d2ed914c728529aab8009"
+    },
+    {
+      "path": "experience/src/review/styles.css",
+      "bytes": 10467,
+      "sha256": "2075bab060b4b8a6e776e44c693f656ea0f2af5dc7a9f2a3dc6ec11b7312a205"
+    },
+    {
+      "path": "experience/tools/review-transport/package.mjs",
+      "bytes": 12409,
+      "sha256": "1fbba95917082eb131961d40349eedc08c1a9cd24a03fa78213e21fb289f9723"
+    },
+    {
+      "path": "experience/vite.review.config.mjs",
+      "bytes": 394,
+      "sha256": "7650bf9461c887e613bc9b04208655c20b6083fe2f85ee3a62e75c3ac7a89d7d"
+    }
+  ]
+}

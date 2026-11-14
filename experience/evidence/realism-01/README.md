@@ -21,6 +21,7 @@
 | [Free route sequence follow-up](../../sprints/realism-01/research/free-route-20261114.md) | Seven complete sequence responses and nine metadata records; calibrated route coverage remains unqualified |
 | [Encoding trade-off](qualification/splat-encoding/README.md) | 3.72 MiB partial first view, explicitly reduced directional colour detail and remaining section-budget failures |
 | [Continuous architectural exploration](review-transport/README.md) | Guided look-around, preserved source appearance, measured gzip result, actual controls and public-file verification |
+| [Architectural loading and demand rendering](review-loading/README.md) | Exact retained appearance, first-view transfer below 4 MiB, actual idle/wake behavior, complete guided path and hosted verification |
 
 The [Benchmark V1 protocol](../../sprints/realism-01/benchmark.md) and
 [lesson register](../../sprints/realism-01/lessons.md) define the remaining acceptance.

@@ -1,6 +1,6 @@
 # Agent checkpoint · Explore and Together homepage
 
-14 November 2026 · Loading responsiveness iteration in validation.
+14 November 2026 · Architectural loading and demand rendering published.
 
 The user approved the appearance and reported loading pauses. R20 preserves all
 41 capture files and the existing display settings, prioritizes the first visible
@@ -9,31 +9,41 @@ asynchronous update path. The tour explicitly wakes an idle renderer. Settling
 records three actual frames with unchanged camera/content before drawing and at
 a later idle observation; immediate queue flags remain available separately.
 
-The final candidate is `artifacts/realism-01/review-loading/package-03/`, manifest
+The published package is `artifacts/realism-01/review-loading/package-03/`, manifest
 SHA-256 `6673bc5de654b71ba9e0fc5a799d72cb24af3654264aa1b3841c1236ae8223b5`.
 Runtime is committed and pushed at `b4b140d2c48b7e185e296272f9fb141588caca95`.
-The preceding package-02 has identical JavaScript, CSS and capture files; its
-matched 1000 × 800 run passes 15 checks, including exact baseline/candidate
-pixels and exact repeated pixels at 261,359 drawn splats. First visibility is
-3.801 s / 3,385,672 encoded response bytes versus 3.777 s / 3,541,883 bytes for
-the prior package. Four trusted-click-to-submitted-camera observations remain
-within about 6–14 ms; these leave physical presentation and fluency unverified.
-The differing settling boundaries and extra repeat-capture Reset prevent a
-direct comparison of whole-run CPU totals or settling speed.
+Pages commit `3f1d3e6f578877f8d7fdd908e3f19a9b3eb658f3` built successfully.
+All 58 actual HTTPS files match, including the canonical folder entry. Final
+local and public loading comparisons each pass 15 checks with exact baseline and
+repeat pixels at 261,359 splats. Public first-view transfer is 3,405,633 bytes,
+19.7% below the matched 4,239,665-byte baseline and within 4 MiB. Timing remains
+essentially unchanged: 3.9783 seconds versus 3.9634 seconds.
 
-All seven ordinary package-02 regression sections pass 48 checks. Package-03 adds
-a declared favicon and its HTML link; a parsed-HTML comparison binds that exact
-scope. The public baseline is retained with a missing-favicon diagnostic and
-4,239,665 first-view bytes. Native package-03 checks confirm idle rendering stops,
-tour wake, pause/resume/reverse, source interruption and native tab visibility.
+Seven ordinary package-02 sections pass 48 checks. Its JavaScript, CSS and capture
+files match package-03; parsed HTML differs only by the added favicon link.
+Final package-03 native controls pass 17 checks, including a three-second idle
+frame plateau, tour wake and trusted same-window tab visibility. The complete
+800 × 600 guided-path run passes 12 checks, including actual endpoint, reverse,
+resume, wheel interruption and reset. Its 900-second software-renderer deadline
+does not alter movement or prove physical-device fluency.
 
-Remaining release work: finish native checks, final package-03 local/current-public
-measurements, full guided path,
-retained evidence verification, public byte identity and synchronized checkpoint.
-The published review remains `794ab33f14415b27d3687f651902bc4aecd098e9` until
-those local release checks pass. Reproduction and exact browser attempts are
-under `experience/tools/review-loading/` and ignored
-`artifacts/realism-01/review-loading/qa/`.
+The [release evidence](../evidence/realism-01/review-loading/README.md) and
+[reproduction tools](../tools/review-loading/README.md) retain exact reports,
+drivers and failures. Raw probes are observed click-to-draw delays, potentially
+later than the first response frame. The final public observations include
+601.2 ms; a final local 3,739.5 ms observation has an earlier retained matching
+draw at 1.3 ms. Preserve both and the actual CPU pauses. The different settling
+boundary and extra repeat-capture Reset prevent a direct CPU-total or settling-
+speed comparison. Full-detail startup and physical presentation remain unverified.
+Offline retention verifies 90 files, 18 producer snapshots, 12 browser attempts,
+nine PNG comparisons and all 58 public file identities. The exact package base
+commit and the final runtime commit have separate, verified source identities.
+
+| Priority / owner | Remaining work | Required evidence |
+| --- | --- | --- |
+| R17 · Rendering / QA | Ordinary chunk and full-detail budgets | 37/39 chunks still exceed 2 MiB; preserve approved appearance and distinguish first view from settled detail |
+| R19 · Source / scene | Free calibrated Kyoto connector | Licensed overlapping views, verified scale/floor and sight identity |
+| R14 · QA / product | Physical-device and participant acceptance | Real device measurements and the existing fresh-participant protocol |
 
 R19's [seven-sequence follow-up](../sprints/realism-01/research/free-route-20261114.md)
 retains nine actual metadata records and complete pagination. Calibrated Kyoto

@@ -1,0 +1,15 @@
+{
+  "recordedAt": "2026-11-14T09:06:21Z",
+  "runnerExited": true,
+  "exitCode": 1,
+  "originalReportChanged": false,
+  "attemptReport": "artifacts/realism-01/review-loading/qa/baseline/2026-11-14T08-58-17-905Z/result.json",
+  "reportSha256": "2b128351132c34fb0bde71502d39ab2041dcddb85b122f0d64ba98e8b007822f",
+  "resultPath": "result.json",
+  "resultSha256": "2b128351132c34fb0bde71502d39ab2041dcddb85b122f0d64ba98e8b007822f",
+  "driverPath": "executed-driver.mjs",
+  "driverSha256": "abf0d52f34af49a07afad8d52b6e49573144e0f6302e5c9cd20d89f005a366dd",
+  "failure": "Node HTTP server emitted an unhandled error before Chromium launch: listen EPERM: operation not permitted 127.0.0.1",
+  "method": "The exec_command result returned exit_code 1 and the Node unhandled-error trace. Local loopback required network sandbox permission; the attempt contained no browser checks. A subsequent attempt used that permission. The original incomplete report and executed driver are preserved byte-for-byte.",
+  "limitations": "This receipt establishes runner termination from the retained command result. It supplies no application behavior, visual or performance acceptance and does not invent a finish timestamp for the original attempt."
+}

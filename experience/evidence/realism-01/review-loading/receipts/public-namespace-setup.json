@@ -1,0 +1,20 @@
+{
+  "recordedAt": "2026-11-14T09:12:35Z",
+  "wrapper": "artifacts/realism-01/review-loading/run-isolated-public.sh",
+  "wrapperSha256": "fd1d2ce6374a589df0d55a19b0cf261d0d5aa96a04f0e4e807a0e893136ac45f",
+  "firstAttempt": {
+    "sandbox": "workspace filesystem with network permission",
+    "exitCode": 1,
+    "diagnostic": "bwrap: setting up uid map: Read-only file system",
+    "nodeStarted": false,
+    "browserStarted": false
+  },
+  "secondAttempt": {
+    "sandbox": "Automatically reviewed sandbox escalation",
+    "sameWrapper": true,
+    "nodeStarted": true,
+    "browserStarted": true,
+    "scope": "Private namespace with root mounted read-only, explicit task-local writable directories, task-local NSS trust, and TLS verification enabled"
+  },
+  "limitations": "Command results establish setup outcomes. Browser acceptance belongs to the separately retained timestamped report. This receipt does not change shared certificate trust or claim application behavior from the failed setup."
+}

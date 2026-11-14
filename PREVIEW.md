@@ -11,19 +11,23 @@ pauses the guided motion. **EN / 中文** switches guidance, including while the
 renderer loads. Select **Original · ~30 MB** or **Streamed** to compare the captured
 building from your current camera position. The original downloads when selected.
 
-All **57 public files match their validated bytes**. The complete local guided
-path passes 12 checks; native pause/resume, reversal and tab visibility pass 16.
-Seven ordinary local sections cover loading recovery, camera controls, source
-switches and English/Chinese phone touch. The same seven public sections record
-44 passing checks; public native controls and tab visibility pass 15 checks.
-The public startup transfer exceeds 4 MiB. Physical-device and full-route
-performance acceptance remain open.
+The initial capture draws before further detail downloads. A stationary view
+stops redrawing; camera input and the guided tour wake it. The approved texture
+and lighting remain unchanged.
+
+All **58 public files match their validated bytes**. Ordinary local controls,
+recovery and English/Chinese phone input pass 48 checks; native controls and tab
+visibility pass 17; the complete guided path passes 12. Final local and hosted
+loading comparisons each pass 15 checks with exact matching capture pixels.
+Hosted first-view transfer is **3.41 MB**, down **19.7%** from the matched baseline,
+within the 4 MiB target. First-view timing remains about four seconds. Full-detail
+loading, physical-device fluency and full-route acceptance remain open.
 
 This entry is architectural inspection of a free licensed capture. It preserves
 recorded lighting and has incomplete surfaces at close range. The full Kyoto
-realism milestone remains open. See the [screenshots and release evidence](experience/evidence/realism-01/review-transport/README.md).
-Application commit: `9084531851b9bc5332f8a772971ef48ad7424579`.
-Pages commit: `794ab33f14415b27d3687f651902bc4aecd098e9`.
+realism milestone remains open. See the [screenshots and release evidence](experience/evidence/realism-01/review-loading/README.md).
+Application commit: `b4b140d2c48b7e185e296272f9fb141588caca95`.
+Pages commit: `3f1d3e6f578877f8d7fdd908e3f19a9b3eb658f3`.
 
 ## Connected Kyoto neighborhood · earlier walking baseline
 

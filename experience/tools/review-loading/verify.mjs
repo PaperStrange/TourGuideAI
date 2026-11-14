@@ -121,6 +121,30 @@ for (const expected of candidate.files) {
 }
 assert.equal(published.files.find(file => file.path === '/package-manifest.json')?.observed.sha256,
   retained.get('candidate/package-manifest.json').sha256);
+const publication = await json(path.join(directory, 'receipts/audit.json'));
+assert.equal(publication.packageManifestSha256, manifest.packageIdentities.candidate.sha256);
+assert.equal(publication.verifiedFiles, candidate.files.length + 1);
+assert.equal(publication.otherPublishedPathsUnchanged, true);
+assert.equal(publication.producerSha256, retained.get('receipts/prepare-publication.mjs')?.sha256);
+for (const key of ['tree', 'parent', 'implementation']) assert(/^[a-f0-9]{40}$/.test(publication[key]));
+const sourceCommit = await json(path.join(directory, 'receipts/source-commit.json'));
+assert.equal(sourceCommit.commit, publication.implementation);
+assert.equal(sourceCommit.packageImplementationBase, candidate.implementationBase);
+assert.equal(sourceCommit.packageManifestSha256, manifest.packageIdentities.candidate.sha256);
+assert.equal(sourceCommit.producerSha256, retained.get('receipts/verify-source-commit.mjs')?.sha256);
+assert.deepEqual(sourceCommit.files, candidate.producers);
+const deployment = await json(path.join(directory, 'receipts/pages-build.json'));
+assert.equal(deployment.status, 'built');
+assert(/^[a-f0-9]{40}$/.test(deployment.commit));
+assert(Number.isFinite(Date.parse(deployment.updated_at)));
+assert.equal(retained.get('receipts/canonical-index.html')?.sha256,
+  candidate.files.find(file => file.path === 'index.html').sha256);
+for (const record of manifest.files.filter(file => /^receipts\/display-.*\.json$/.test(file.path))) {
+  const display = await json(path.join(directory, record.path));
+  const launcher = await readFile(path.join(root, 'experience/evidence/realism-01/review-transport/run-headful.mjs'));
+  assert.equal(display.launcherSha256, sha(launcher));
+  assert(display.startedAt && display.finishedAt);
+}
 
 const sameCamera = (left, right) => ['matrixWorld', 'projectionMatrix'].every(key =>
   left?.[key]?.length === 16 && right?.[key]?.length === 16
@@ -307,9 +331,20 @@ for (const attempt of manifest.attempts) {
     assert(!sameCamera(probe.before.drawnView, probe.after.drawnView));
     assert(sameCamera(probe.after, probe.after.drawnView));
     if (probe.input) assert(probe.input.trusted && probe.input.action === probe.action);
+    const retainedMatches = probe.input ? report.samples.filter(sample => Number.isFinite(sample.submittedAt)
+      && sample.submittedAt >= probe.input.at && sample.frames > probe.before.frames
+      && sample.camera?.length === 16 && sample.camera.every((value, index) =>
+        Math.abs(value - probe.requested.matrixWorld[index]) < 1e-7
+        && Math.abs(value - probe.after.drawnView.matrixWorld[index]) < 1e-7))
+      .sort((left, right) => left.submittedAt - right.submittedAt || left.at - right.at) : [];
+    const earliest = retainedMatches[0];
     probes.push({ attempt: attempt.path, phase: probe.phase, action: probe.action,
       inputToSubmittedMs: probe.inputToSubmittedMs,
-      timingOrigin: probe.input ? 'trusted-click' : 'automation-before-click' });
+      timingOrigin: probe.input ? 'trusted-click-handler' : 'automation-before-click',
+      earliestRetainedMatchingDraw: earliest ? { frame: earliest.frames, observedAt: earliest.at,
+        submittedAt: earliest.submittedAt, inputToSubmittedMs: earliest.submittedAt - probe.input.at,
+        source: 'report.samples only; the qualifying probe snapshot can precede these periodic samples',
+        matchedRequestedAndObservedWorldMatrix: true } : null });
   }
   for (const comparison of report.imageComparisons ?? []) {
     const repeatability = comparison.criteria.source === 'Exact same-build repeatability';
@@ -399,9 +434,17 @@ for (const { report } of publicRuns) assert.deepEqual(report.packageManifest, ca
 for (const { report } of publicBaselineRuns) assert.deepEqual(report.packageManifest, baseline);
 console.log(JSON.stringify({ verified: true, files: manifest.files.length, producers: manifest.producers.length,
   attempts: manifest.attempts.length, sourceFiles: sources.length, publicFiles: published.files.length,
+  publication: { commit: deployment.commit, tree: publication.tree, implementation: publication.implementation,
+    packageImplementationBase: candidate.implementationBase, sourceProducersVerified: sourceCommit.files.length },
   coverage: { baseline: baselineRuns.map(run => run.attempt), publicBaseline: publicBaselineRuns.map(run => run.attempt),
     local: localRuns.map(run => run.attempt), public: publicRuns.map(run => run.attempt) },
   publicBaselineScope: 'Comparison evidence requires all source, capture and control checks. The sole site-root favicon 404 is retained as a failed HTTP check and gives no fully-passing baseline claim.',
+  probeTimingScope: 'Original delays end at the driver-observed qualifying draw. Earliest retained matches use the sampled submitted world matrix after the trusted click handler; sampling is incomplete and does not establish the earliest application response, event-queue wait or GPU presentation.',
   transfers, probes, detailScheduling, encodedPrefixes, trialDifferences, images, regressions,
+  retainedAttemptTerminations: reports.filter(({ report }) => !report.completed).map(({ attempt, report }) => ({
+    attempt, finishedAt: report.finishedAt ?? null,
+    interruptionReceipt: manifest.attempts.find(item => item.path === attempt).interruptionReceipt ?? null,
+    reason: report.termination?.message.split('\n')[0] ?? 'Incomplete original report; separate termination receipt retained',
+  })),
   retainedFailures: reports.flatMap(({ attempt, report }) => report.checks.filter(check => !check.pass).map(check => ({ attempt, id: check.id, category: check.category }))),
   physicalDevicePerformance: 'unverified' }));

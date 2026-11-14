@@ -24,6 +24,10 @@ node experience/tests/browser-review-loading.mjs artifacts/realism-01/review-tra
 node experience/tests/browser-review-loading.mjs artifacts/realism-01/review-loading/package artifacts/realism-01/review-loading/qa/candidate BASELINE_RESULT_JSON
 ```
 
+The [source restoration instructions](../review-transport/README.md) describe the
+original captured inputs. The guided baseline package comes from Pages commit
+`794ab33f14415b27d3687f651902bc4aecd098e9`, directory `previews/realism-01/`.
+
 Use the exact completed baseline report for `BASELINE_RESULT_JSON`. Its condition,
 camera and PNG identities are retained. Run browsers sequentially on the shared
 renderer. Published checks use the canonical HTTPS entry and ordinary TLS
@@ -51,6 +55,30 @@ node experience/tools/review-loading/retain.mjs --package artifacts/realism-01/r
 PYTHONPATH=artifacts/realism-01/tooling node experience/tools/review-loading/verify.mjs
 ```
 
+For this retained release, the final package is `package-03`. The retention
+invocation also supplies `--trial-package` for `package-01` and `package-02`,
+`--regression-qa artifacts/realism-01/review-transport/qa/loading-regression`, and
+these eleven `--receipt` inputs:
+
+- `artifacts/realism-01/review-loading/qa/baseline/2026-11-14T08-58-17-905Z/setup-exit-receipt.json`
+- `artifacts/realism-01/review-loading/public-namespace-setup.json`
+- `artifacts/realism-01/review-loading/run-isolated-public.sh`
+- `artifacts/realism-01/review-transport/qa/display-1794648509091.json`
+- `artifacts/realism-01/review-loading/prepare-publication.mjs`
+- `artifacts/realism-01/review-loading/publication-03/audit.json`
+- `artifacts/realism-01/review-loading/publication-03/pages-build.json`
+- `artifacts/realism-01/review-loading/publication-03/canonical-index.html`
+- `artifacts/realism-01/review-loading/verify-source-commit.mjs`
+- `artifacts/realism-01/review-loading/source-commit.json`
+- `artifacts/realism-01/review-loading/retain-final.sh`
+
+The public runs use the retained `run-isolated-public.sh` wrapper with the
+task-local NSS database and inherited proxy. The namespace and display receipts
+describe that environment. TLS verification stays enabled.
+The source-commit receipt independently matches all package producer bytes to
+commit `b4b140d2c48b7e185e296272f9fb141588caca95`; the package's base commit remains
+recorded separately.
+
 The verifier works against an optional clean-checkout root argument. Pillow
 independently decodes the retained PNGs. The HTML entry comparison uses lxml
 6.1.1, retaining the exact added icon and requiring the remaining parsed document
@@ -73,7 +101,11 @@ acceptance unverified.
 Input timing starts in the trusted click handler and ends at the qualifying
 submitted frame observed by the browser driver. This is an observed response
 delay; it does not establish the earliest response frame or time spent waiting
-before the input handler runs. Completed HTTP responses are independently
+before the input handler runs. The verifier also derives the earliest retained
+sample whose actual submitted world matrix matches the requested and observed
+camera after each trusted input. These partial samples preserve earlier matching
+draws; they leave earliest application response and GPU presentation unmeasured.
+Completed HTTP responses are independently
 reconciled against their encoded-prefix and data events. Any discrepancy is
 retained; complete responses use the authoritative `loadingFinished` total.
 

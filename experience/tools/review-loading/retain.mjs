@@ -140,7 +140,21 @@ if (values['regression-qa']) {
 assert(attempts.length > 0, 'No ended browser attempts found.');
 for (const filename of values.receipt) {
   const input = artifact(filename);
-  await retain(input, `receipts/${path.basename(input)}`);
+  const name = path.basename(input);
+  let metadata = {};
+  if (name === 'pages-build.json') {
+    const receipt = await json(input);
+    metadata = { source: 'https://api.github.com/repos/PaperStrange/TourGuideAI/pages/builds/latest',
+      recordDate: receipt.updated_at, rights: 'Public GitHub Pages build metadata.',
+      location: 'GitHub Pages repository PaperStrange/TourGuideAI',
+      method: 'Retained commit, status and update time from the provider build-status observation.',
+      limitations: 'Provider status metadata; actual served-file identities are independently verified.' };
+  }
+  if (name === 'canonical-index.html') metadata = { source: values['public-url'],
+    rights: 'TourGuideAI generated public HTML.', location: 'Canonical public GitHub Pages review entry.',
+    method: 'Actual canonical HTTPS response bytes, compared with the packaged index SHA-256.',
+    limitations: 'Entry bytes only; source assets and browser behavior have separate evidence.' };
+  await retain(input, `receipts/${name}`, metadata);
 }
 await retain(artifact(values.published), 'published-bytes.json');
 
