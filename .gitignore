@@ -597,3 +597,10 @@ iteration/viewer/index.html
 !experience/evidence/realism-01/qualification/splat-fidelity/knock-published-viewer-config.json
 # 保留官方转换器的已审阅输出，原始缓存日志继续忽略。
 !experience/evidence/realism-01/qualification/splat-encoding/conversion/stdout.log
+# 保留已审阅的发布凭据，其他 release 输出继续忽略。
+!experience/evidence/realism-01/review-transport/release/
+experience/evidence/realism-01/review-transport/release/*
+!experience/evidence/realism-01/review-transport/release/audit-publication.mjs
+!experience/evidence/realism-01/review-transport/release/package-manifest.json
+!experience/evidence/realism-01/review-transport/release/publication-audit.json
+!experience/evidence/realism-01/review-transport/release/review-assets.json

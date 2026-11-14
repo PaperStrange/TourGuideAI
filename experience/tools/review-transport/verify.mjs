@@ -30,6 +30,14 @@ for (const producer of manifest.producers) {
   assert.equal(record.bytes, producer.bytes);
   assert.equal(record.sha256, producer.sha256);
 }
+const displaySource = await json(path.join(directory, 'display/source/acquisition.json'));
+for (const expected of displaySource.files) {
+  const record = retained.get(`display/source/${expected.path}`);
+  assert.equal(record?.bytes, expected.bytes);
+  assert.equal(record?.sha256, expected.sha256);
+  assert.equal(record?.source, expected.sourceUrl);
+  assert.equal(record?.rights, expected.rights);
+}
 assert.equal(manifest.limits.startupBytes, 4 * 1024 * 1024);
 assert.equal(manifest.limits.ordinarySectionBytes, 2 * 1024 * 1024);
 assert.equal(manifest.appearanceProtocol.decision, 'D25');
@@ -153,6 +161,8 @@ const reports = [];
 const recomputedTransfers = [];
 const recomputedImages = [];
 const recomputedTourMotion = [];
+const interruptedAttempts = [];
+const encodedPrefixChecks = [];
 const sameCamera = (left, right) => ['matrixWorld', 'projectionMatrix'].every(key =>
   left?.[key]?.length === 16 && right?.[key]?.length === 16
   && left[key].every((value, index) => Math.abs(value - right[key][index]) < 1e-7));
@@ -233,7 +243,23 @@ for (const [reportName, producerName] of [['result.json', 'probe.mjs'], ['result
 for (const record of manifest.files.filter(item => item.path.startsWith('runs/') && item.path.endsWith('/result.json'))) {
   const report = await json(path.join(directory, record.path));
   const folder = path.dirname(record.path);
-  assert(report.finishedAt, `Unfinished retained attempt: ${record.path}`);
+  if (!report.finishedAt) {
+    assert.equal(report.completed, false);
+    const receiptRecord = retained.get(record.interruptionReceipt);
+    assert(receiptRecord, `Unfinished attempt requires an interruption receipt: ${record.path}`);
+    const receipt = await json(path.join(directory, receiptRecord.path));
+    assert.equal(receipt.runnerExited, true);
+    assert.equal(receipt.originalReportChanged, false);
+    assert.equal(receipt.attemptReport, record.input);
+    assert.equal(receipt.reportSha256, record.sha256);
+    assert.equal(receipt.driverSha256, report.driver.sha256);
+    assert(receipt.recordedAt && receipt.method && receipt.limitations);
+    assert.deepEqual(receipt.completedSections, Object.entries(report.sections)
+      .filter(([, progress]) => progress.completed).map(([section]) => section));
+    assert.equal(receipt.passingChecks, report.checks.filter(check => check.pass).length);
+    interruptedAttempts.push({ attempt: folder, receipt: receiptRecord.path,
+      observedRecoveryAt: receipt.recordedAt, originalFinishedAt: null, originalCompleted: false });
+  }
   assert.equal(retained.get(path.join(folder, 'executed-driver.mjs'))?.sha256, report.driver.sha256);
   if (report.environment.trustReceipt) {
     const receipt = report.environment.trustReceipt;
@@ -313,6 +339,14 @@ for (const record of manifest.files.filter(item => item.path.startsWith('runs/')
   }
   for (const [label, entry] of Object.entries(report.transfer ?? {})) {
     const scenario = `transport-${label}`;
+    if (report.target.startsWith('https:')) {
+      const completed = report.network.filter(item => item.scenario === scenario && Number.isFinite(item.finishedAt));
+      for (const response of completed) {
+        const reconstructed = response.headerBytes + response.data.reduce((sum, event) => sum + event.encodedDataLength, 0);
+        assert.equal(reconstructed, response.totalEncodedBytes, `${record.path}: encoded response prefix ${response.url}`);
+      }
+      encodedPrefixChecks.push({ attempt: folder, scenario, completedResponses: completed.length, discrepancies: 0 });
+    }
     assert.deepEqual(entry.conditions, { downloadBitsPerSecond: 10000000, latencyMs: 80, cacheDisabled: true });
     const boundaries = [
       ['firstVisibleObservedTransfer', entry.navStart + entry.firstVisibleObservedAtMs / 1000],
@@ -473,7 +507,7 @@ assert(appearanceQualification.length > 0,
   'Final package requires a measured approved-baseline comparison and same-build repeatability within D25');
 console.log(JSON.stringify({ verified: true, files: manifest.files.length, producers: manifest.producers.length,
   attempts: reports.length, functionalAttempts: reports.filter(({ report }) => functional(report)).length,
-  coverage, partialAttemptCoverage,
+  coverage, partialAttemptCoverage, interruptedAttempts,
   publicEndpointCoverage: 'Full sweep verified on the byte-identical local package; no independent public endpoint sweep claimed.',
   publicFiles: published.files.length, compression: compressionTotals, compressionAttempts,
   retainedBudgetFailures: reports.flatMap(({ report, folder }) => report.checks
@@ -481,5 +515,5 @@ console.log(JSON.stringify({ verified: true, files: manifest.files.length, produ
   retainedExactPixelFailures: reports.flatMap(({ report, folder }) => report.checks
     .filter(check => check.id.endsWith('-identical-settled-pixels') && !check.pass).map(check => ({ attempt: folder, id: check.id }))),
   appearanceQualification: appearanceQualification.map(({ folder }) => folder),
-  recomputedTransfers, recomputedImages, recomputedTourMotion, nativeVisibility,
+  recomputedTransfers, recomputedImages, recomputedTourMotion, nativeVisibility, encodedPrefixChecks,
   physicalDevicePerformance: 'unverified' }));

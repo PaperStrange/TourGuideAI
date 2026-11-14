@@ -1,0 +1,31 @@
+{
+  "acquiredAt": "2026-11-14T02:25:12Z",
+  "purpose": "Native headful browser visibility testing",
+  "package": "xvfb",
+  "version": "2:21.1.16-1.3+deb13u3",
+  "architecture": "amd64",
+  "sourceUrl": "https://snapshot.debian.org/archive/debian/20260828T000000Z/pool/main/x/xorg-server/xvfb_21.1.16-1.3+deb13u3_amd64.deb",
+  "configuredRepositoryFile": "/etc/apt/sources.list.d/caas-snapshot.list",
+  "download": {
+    "path": "xvfb_21.1.16-1.3+deb13u3_amd64.deb",
+    "bytes": 3198040,
+    "sha256": "365da2b6c93339f34337c434a9489bb6411a240fa47b9f49693d3091745f28c2"
+  },
+  "binary": {
+    "path": "root/usr/bin/Xvfb",
+    "bytes": 2131520,
+    "sha256": "14e8ec7d8209bbaf105f9ade27a80b65f01709346690d18fbadb6116ada34912"
+  },
+  "rightsFile": "root/usr/share/doc/xvfb/copyright",
+  "method": "TLS-verified curl download and dpkg-deb extraction inside ignored repository artifacts",
+  "validation": {
+    "allDynamicLibrariesResolved": true,
+    "helpCommandExitCode": 0,
+    "requiresLibraryPathOverride": false,
+    "systemPackageChanges": false
+  },
+  "limitations": [
+    "Provisioning alone establishes no browser visibility or performance result.",
+    "QA must retain actual visibility observations and use task-local storage for display sockets and locks."
+  ]
+}

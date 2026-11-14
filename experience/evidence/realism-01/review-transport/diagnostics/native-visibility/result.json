@@ -1,0 +1,154 @@
+{
+  "startedAt": "2026-11-14T02:43:09.878Z",
+  "scriptSha256": "79dd77fadc079ee05b4b374c983d3813952a445c1ee4eb2d39acc23b360853d1",
+  "display": "127.0.0.1:93",
+  "displayArguments": [
+    ":93",
+    "-nolock",
+    "-nolisten",
+    "unix",
+    "-listen",
+    "tcp",
+    "-auth",
+    "/workspace/TourGuideAI/artifacts/native-visibility-tmp/Xauthority",
+    "-screen",
+    "0",
+    "1440x1000x24",
+    "-noreset"
+  ],
+  "noDefaults": true,
+  "samples": [
+    {
+      "phase": "initial",
+      "hidden": false,
+      "state": "visible",
+      "visibilityEvents": []
+    },
+    {
+      "phase": "background-tab",
+      "hidden": true,
+      "state": "hidden",
+      "visibilityEvents": [
+        {
+          "hidden": true,
+          "state": "hidden",
+          "trusted": true,
+          "at": 223.10000000009313
+        }
+      ]
+    },
+    {
+      "phase": "returned-tab",
+      "hidden": false,
+      "state": "visible",
+      "visibilityEvents": [
+        {
+          "hidden": true,
+          "state": "hidden",
+          "trusted": true,
+          "at": 223.10000000009313
+        },
+        {
+          "hidden": false,
+          "state": "visible",
+          "trusted": true,
+          "at": 903.7999999998137
+        }
+      ]
+    },
+    {
+      "phase": "minimized",
+      "hidden": false,
+      "state": "visible",
+      "visibilityEvents": [
+        {
+          "hidden": true,
+          "state": "hidden",
+          "trusted": true,
+          "at": 223.10000000009313
+        },
+        {
+          "hidden": false,
+          "state": "visible",
+          "trusted": true,
+          "at": 903.7999999998137
+        }
+      ]
+    },
+    {
+      "phase": "restored",
+      "hidden": false,
+      "state": "visible",
+      "visibilityEvents": [
+        {
+          "hidden": true,
+          "state": "hidden",
+          "trusted": true,
+          "at": 223.10000000009313
+        },
+        {
+          "hidden": false,
+          "state": "visible",
+          "trusted": true,
+          "at": 903.7999999998137
+        }
+      ]
+    }
+  ],
+  "completed": true,
+  "method": "Native Chromium tabs in the default browser context; actual visibilitychange observations",
+  "limitations": [
+    "Blank tabs only; no 3D assets or performance qualification"
+  ],
+  "windowManager": {
+    "executable": "/workspace/TourGuideAI/artifacts/realism-01/review-transport/window-manager/root/usr/bin/twm",
+    "arguments": [
+      "-display",
+      "127.0.0.1:93",
+      "-f",
+      "/workspace/TourGuideAI/artifacts/realism-01/review-transport/window-manager/twmrc"
+    ]
+  },
+  "chromiumArguments": [
+    "--no-sandbox",
+    "--no-first-run",
+    "--no-default-browser-check",
+    "--disable-dev-shm-usage",
+    "--disable-background-networking",
+    "--disable-gpu",
+    "--remote-debugging-address=127.0.0.1",
+    "--remote-debugging-port=0",
+    "--user-data-dir=/workspace/TourGuideAI/artifacts/native-visibility-tmp/chromium-profile",
+    "about:blank"
+  ],
+  "browser": "151.0.7922.173",
+  "originalWindow": {
+    "windowId": 554111150,
+    "bounds": {
+      "left": 48,
+      "top": 48,
+      "width": 1050,
+      "height": 980,
+      "windowState": "normal"
+    }
+  },
+  "backgroundWindow": {
+    "windowId": 554111150,
+    "bounds": {
+      "left": 48,
+      "top": 48,
+      "width": 1050,
+      "height": 980,
+      "windowState": "normal"
+    }
+  },
+  "sameWindow": true,
+  "nativeTabVisibilityPass": true,
+  "nativeMinimizePass": false,
+  "finishedAt": "2026-11-14T02:43:13.888Z",
+  "logs": {
+    "server": "Warning: the -nolock option can only be used by root\n",
+    "manager": "",
+    "chromium": "[7007:7035:1114/024310.452395:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory\n[7007:7035:1114/024310.991460:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[7007:7035:1114/024310.991522:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory\n[7007:7035:1114/024310.991618:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory\n[7007:7035:1114/024310.991625:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[7007:7035:1114/024310.998024:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[7007:7045:1114/024311.000816:ERROR:content/browser/zygote_host/zygote_host_impl_linux.cc:279] Failed to adjust OOM score of renderer with pid 7046: Read-only file system (30)\n[7007:7035:1114/024311.047511:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[7007:7045:1114/024311.048468:ERROR:content/browser/zygote_host/zygote_host_impl_linux.cc:279] Failed to adjust OOM score of renderer with pid 7057: Read-only file system (30)\n\nDevTools listening on ws://127.0.0.1:38911/devtools/browser/f3cbb621-262f-4cc9-a525-85be96f4c9f2\n[7007:7007:1114/024311.072979:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[7007:7007:1114/024311.073048:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[7007:7035:1114/024311.073085:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[7007:7035:1114/024311.073126:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[7007:7007:1114/024311.076356:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[7007:7007:1114/024311.077154:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[7007:7035:1114/024311.112807:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[7007:7035:1114/024311.112823:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[7007:7045:1114/024311.127588:ERROR:content/browser/zygote_host/zygote_host_impl_linux.cc:279] Failed to adjust OOM score of renderer with pid 7086: Read-only file system (30)\n[7007:7045:1114/024311.175042:ERROR:content/browser/zygote_host/zygote_host_impl_linux.cc:279] Failed to adjust OOM score of renderer with pid 7095: Read-only file system (30)\n[7007:7045:1114/024311.178139:ERROR:content/browser/zygote_host/zygote_host_impl_linux.cc:279] Failed to adjust OOM score of renderer with pid 7097: Read-only file system (30)\n[7007:7007:1114/024311.201443:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[7007:7035:1114/024311.201476:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory\n[7007:7035:1114/024311.201501:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory\n[7007:7007:1114/024311.201604:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[7007:7035:1114/024311.201778:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[7007:7007:1114/024311.221521:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.Properties.GetAll: object_path= /org/freedesktop/UPower/devices/DisplayDevice: unknown error type: \n[7007:7007:1114/024311.221774:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[7007:7035:1114/024311.221857:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[7007:7007:1114/024311.254262:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[7007:7035:1114/024311.254643:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[7007:7033:1114/024311.260134:ERROR:crypto/nss_util.cc:256] Error initializing NSS with a persistent database (sql:/home/agent/.pki/nssdb): NSS error code: -8126\n[7007:7007:1114/024311.260358:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[7051:7078:1114/024311.285518:ERROR:net/socket/ssl_client_socket_impl.cc:964] handshake failed; returned -1, SSL error code 1, net_error -202\n[7051:7078:1114/024311.285709:ERROR:net/socket/ssl_client_socket_impl.cc:964] handshake failed; returned -1, SSL error code 1, net_error -202\n[7051:7078:1114/024311.285775:ERROR:net/socket/ssl_client_socket_impl.cc:964] handshake failed; returned -1, SSL error code 1, net_error -202\n[7007:7045:1114/024311.358771:ERROR:content/browser/zygote_host/zygote_host_impl_linux.cc:279] Failed to adjust OOM score of renderer with pid 7120: Read-only file system (30)\n[7051:7078:1114/024312.281763:ERROR:net/socket/ssl_client_socket_impl.cc:964] handshake failed; returned -1, SSL error code 1, net_error -202\n[7051:7078:1114/024313.267580:ERROR:net/socket/ssl_client_socket_impl.cc:964] handshake failed; returned -1, SSL error code 1, net_error -202\n"
+  }
+}

@@ -19,6 +19,7 @@
 | [Paged source comparison](qualification/splat-streaming/README.md) | Actual first-visible and bounded views, byte failures, eviction/unload/cancellation and partial allocation observations |
 | [Free Kyoto photographic intake](qualification/free-sources/README.md) | Actual licensed images, visible features, business locations and capture-family restrictions |
 | [Encoding trade-off](qualification/splat-encoding/README.md) | 3.72 MiB partial first view, explicitly reduced directional colour detail and remaining section-budget failures |
+| [Continuous architectural exploration](review-transport/README.md) | Guided look-around, preserved source appearance, measured gzip result, actual controls and public-file verification |
 
 The [Benchmark V1 protocol](../../sprints/realism-01/benchmark.md) and
 [lesson register](../../sprints/realism-01/lessons.md) define the remaining acceptance.

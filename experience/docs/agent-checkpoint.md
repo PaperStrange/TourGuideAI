@@ -1,6 +1,6 @@
 # Agent checkpoint · Explore and Together homepage
 
-14 November 2026 · Continuous exploration published; actual HTTPS controls under validation.
+14 November 2026 · Continuous architectural exploration delivered and verified.
 
 The user approved the current demo's texture and lighting and requested continuation.
 The visual reference is the existing public review release `1a938eb`, with both
@@ -11,7 +11,7 @@ existing acceptance gates.
 | Priority / owner | Next executable work | Required evidence |
 | --- | --- | --- |
 | R17 · Rendering / QA | Lossless trial measured; preserve native source delivery | All 40 decoded RAD/RADC identities match. Gzip saves 9,176 bytes (0.0109%); 37/39 sections still exceed 2 MiB. The 4 MiB startup and 2 MiB ordinary-section gates remain open |
-| R18 · Interaction / art / QA | Bounded look-around published; local checks pass, public controls under validation | Local full path: 12 checks; native controls/tab visibility: 16 checks; seven ordinary sections complete. All 57 public files match. Initial controls load separately from the 3D modules |
+| R18 · Interaction / art / QA | Delivered: bounded look-around and separate initial controls | Local full path: 12 checks; local/public native controls: 16/15; seven ordinary sections complete on each. All 57 public files match. [Release evidence](../evidence/realism-01/review-transport/README.md) |
 | R19 · Source / scene | Qualify free ground-level coverage for a real connecting route segment | Licensed calibrated views, verified scale, continuous floor and sight identity; route construction depends on actual source qualification |
 
 Execution is available. The source branch includes the previous remote checkpoint.
@@ -22,10 +22,10 @@ The initial interface entry is approximately 8.15 KB gzip (Vite output);
 the 3D modules still load when the viewer starts, and total source payload is
 unchanged. Browser timing must distinguish controls readiness from visible 3D.
 
-Run the [transport tools](../tools/review-transport/README.md), retain actual local
-and public checks, then update this checkpoint and synchronize commits. The prior
-release's producer files are archived with their original hashes so historical
-evidence remains independently verifiable after application changes.
+The [transport tools](../tools/review-transport/README.md) reproduce packaging and
+verification. Immutable producer snapshots preserve historical evidence after
+application changes. The new evidence bundle verifies 135 files, 15 producer
+snapshots and 13 browser attempts, including failures and interruptions.
 
 Runtime source is committed and pushed at `9084531851b9bc5332f8a772971ef48ad7424579`.
 The final package is `artifacts/realism-01/review-transport/package-identity2/`,
@@ -38,24 +38,22 @@ and rendering settings remain unchanged. Settling retains its 240-second deadlin
 The native tour passes 16 checks, including trusted tab visibility and explicit
 resume on return.
 
-The 10 Mbps / 80 ms run records controls at 197 ms, first visible 3D at 3.74 s /
-3,449,611 encoded response bytes, and a bounded settled view at 45.40 s /
-18,836,402 bytes. Matched cameras and drawn counts agree; 15 RGB channels differ
+The public 10 Mbps / 80 ms run records controls at 280 ms, first visible 3D at
+4.18 s / 5,630,795 encoded response bytes, and a bounded settled view at 49.28 s /
+18,921,574 bytes. The public first-view transfer fails the 4 MiB target; physical
+performance remains unverified. Matched cameras and drawn counts agree; 15 RGB channels differ
 by one intensity step. Preserve the strict equality diagnostic and D25's explicit
 numerical regression tolerance. Same-build repeated captures are exactly equal for
 both current and approved builds; cross-build differences remain the same 15
 channels. The source of the tiny numerical difference is unassigned.
 
 Pages release `794ab33f14415b27d3687f651902bc4aecd098e9` is built and all 57 actual
-HTTPS files match. The public ordinary sections record 44 passing checks. The
-worker was interrupted during the following transfer measurement; preserve that
-report and its interruption receipt. Public native controls and a separate fresh
-transfer measurement remain. Resume from the reports under ignored
-`artifacts/realism-01/review-transport/qa/`. The
-public full endpoint sweep uses byte-identical local coverage and is not repeated.
-Retain every ended attempt, run the evidence and clean-checkout validators, update
-this record and push. The [live review](https://paperstrange.github.io/TourGuideAI/previews/realism-01/)
-now contains the new guided controls.
+HTTPS files match. The public ordinary sections record 44 passing checks, and
+the public native tour passes 15 checks. The public full endpoint sweep uses
+byte-identical local coverage and was not independently repeated. The
+[live review](https://paperstrange.github.io/TourGuideAI/previews/realism-01/)
+contains the new guided controls. R19 is the next source qualification task;
+the free-source constraint and full Kyoto acceptance gates remain unchanged.
 
 Current-year issue creation and update searches returned zero matches on
 14 November 2026. The previous delivery and technical evidence follow.

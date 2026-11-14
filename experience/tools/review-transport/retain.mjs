@@ -38,6 +38,22 @@ const sha = data => createHash('sha256').update(data).digest('hex');
 const json = async filename => JSON.parse(await readFile(filename, 'utf8'));
 const createdAt = new Date().toISOString();
 const files = [];
+const qaEntries = await readdir(qa, { withFileTypes: true });
+const interruptions = new Map();
+for (const entry of qaEntries) {
+  if (!entry.isFile() || !/(?:interruption|stop)[^/]*\.json$/.test(entry.name)) continue;
+  const receipt = await json(path.join(qa, entry.name));
+  if (!receipt.attemptReport) continue;
+  const filename = artifact(receipt.attemptReport);
+  assert(filename.startsWith(qa + path.sep), 'Interrupted attempt must belong to this QA directory.');
+  assert.equal(receipt.runnerExited, true);
+  assert.equal(receipt.originalReportChanged, false);
+  assert(receipt.recordedAt && receipt.method && receipt.limitations);
+  assert.equal(sha(await readFile(filename)), receipt.reportSha256);
+  assert.equal((await json(filename)).driver.sha256, receipt.driverSha256);
+  assert(!interruptions.has(filename), `Duplicate interruption receipt: ${filename}`);
+  interruptions.set(filename, { path: entry.name, receipt });
+}
 const provenance = {
   source: 'TourGuideAI measured transport and architectural exploration; Knock Community Hall by scbenoit, https://superspl.at/scene/0ff2e6dc',
   recordDate: createdAt,
@@ -63,14 +79,17 @@ async function retainRuns(directory) {
   if (directory === path.join(qa, 'native-visibility')) return;
   const entries = await readdir(directory, { withFileTypes: true });
   if (entries.some(entry => entry.name === 'result.json')) {
-    const report = await json(path.join(directory, 'result.json'));
-    assert(report.finishedAt, `Browser attempt is still active: ${directory}`);
+    const reportPath = path.join(directory, 'result.json');
+    const report = await json(reportPath);
+    const interruption = interruptions.get(reportPath);
+    assert(report.finishedAt || interruption, `Browser attempt is still active: ${directory}`);
     for (const entry of entries) {
       assert(!entry.isSymbolicLink(), `Unexpected symlink in browser evidence: ${entry.name}`);
       if (entry.isFile()) {
         assert(/\.(json|mjs|js|png|jpg|txt|csv)$/.test(entry.name), `Review unexpected browser artifact: ${entry.name}`);
         await retain(path.join(directory, entry.name), path.join('runs', path.relative(qa, directory), entry.name),
-          { recordDate: report.finishedAt });
+          { recordDate: report.finishedAt ?? interruption.receipt.recordedAt,
+            ...(!report.finishedAt && entry.name === 'result.json' ? { interruptionReceipt: interruption.path } : {}) });
       }
     }
   } else {
@@ -89,10 +108,11 @@ for (const [reportName, producerName] of [['result.json', 'probe.mjs'], ['result
   await retain(path.join(nativeVisibility, reportName), `diagnostics/native-visibility/${reportName}`, observed);
   await retain(producer, `diagnostics/native-visibility/${producerName}`, observed);
 }
-for (const entry of await readdir(qa, { withFileTypes: true })) {
+for (const entry of qaEntries) {
   if (entry.isFile() && (/^trust.*\.json$/.test(entry.name) || /^visibility-(headful-)?probe[^/]*\.(mjs|json)$/.test(entry.name)
-    || ['run-headful.mjs', 'run-headful-display-only.mjs', 'run-isolated-public.sh', 'observe-native.mjs'].includes(entry.name)
-    || /^namespace-check\.(mjs|json)$/.test(entry.name)
+    || ['run-headful.mjs', 'run-headful-display-only.mjs', 'observe-native.mjs'].includes(entry.name)
+    || /^run-isolated-public(?:-[a-z-]+)?\.sh$/.test(entry.name)
+    || /^namespace-check(?:-[a-z-]+)?\.(mjs|json)$/.test(entry.name)
     || /^display-.*\.json$/.test(entry.name) || /(?:interruption|stop)[^/]*\.json$/.test(entry.name))) {
     await retain(path.join(qa, entry.name), entry.name);
   }
@@ -109,6 +129,21 @@ async function retainDisplayDependency(source, destination, additionalFiles = []
 }
 await retainDisplayDependency(display, 'display');
 await retainDisplayDependency(windowManager, 'window-manager', ['twmrc']);
+const displaySourceDirectory = path.join(display, 'source');
+const displaySource = await json(path.join(displaySourceDirectory, 'acquisition.json'));
+const displaySourceProvenance = { recordDate: displaySource.acquiredAt,
+  location: 'Debian Xorg source; task-local native display configuration in the managed workspace.',
+  method: displaySource.method, limitations: displaySource.limitations.join(' '),
+  source: displaySource.files.map(file => file.sourceUrl).join(' '),
+  rights: 'Source-specific copyright retained in source headers and display/copyright.txt.' };
+await retain(path.join(displaySourceDirectory, 'acquisition.json'), 'display/source/acquisition.json', displaySourceProvenance);
+for (const expected of displaySource.files) {
+  const bytes = await readFile(path.join(displaySourceDirectory, expected.path));
+  assert.equal(bytes.length, expected.bytes);
+  assert.equal(sha(bytes), expected.sha256);
+  await retain(path.join(displaySourceDirectory, expected.path), `display/source/${expected.path}`,
+    { ...displaySourceProvenance, source: expected.sourceUrl, rights: expected.rights });
+}
 async function retainCompression(filename, destination) {
   const report = await json(filename);
   assert(report.finishedAt, `Compression attempt is still active: ${filename}`);
@@ -176,6 +211,11 @@ const manifest = {
     local: 'All functional sections, including complete bounded-tour endpoints with actual submitted frames.',
     public: 'Independent responsive UI, recovery, mouse/touch and tour controls including native hidden-tab pause; every hosted package byte independently verified over HTTPS.',
     publicEndpoints: 'Full endpoint sweep is covered by the byte-identical local package; no independent public endpoint sweep is claimed.',
+  },
+  transferProtocol: {
+    encodedPrefix: 'The retained headerBytes field is CDP responseReceived.response.encodedDataLength: the initial encoded-response prefix, which can already include buffered body bytes.',
+    boundary: 'Completed responses use loadingFinished.encodedDataLength. Unfinished responses use the observed initial prefix plus subsequent dataReceived encoded deltas up to the boundary.',
+    limitations: 'Request headers, TLS/TCP overhead and unobserved resources are excluded. First visible rendering and settled rendering are separate observations.',
   },
   decision: 'Native source transport is published. Gzip remains a measured rejected experiment; decoded source identities are preserved.',
   verificationScope: 'Offline verification checks retained bytes, recorded decoded identities, actual request boundaries and PNG pixels. It does not repeat compression of absent raw sources or execute the browser.',

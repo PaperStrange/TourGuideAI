@@ -1,0 +1,36 @@
+{
+  "startedAt": "2026-11-14T02:42:57.922Z",
+  "scriptSha256": "79dd77fadc079ee05b4b374c983d3813952a445c1ee4eb2d39acc23b360853d1",
+  "display": "127.0.0.1:93",
+  "displayArguments": [
+    ":93",
+    "-nolock",
+    "-nolisten",
+    "unix",
+    "-listen",
+    "tcp",
+    "-auth",
+    "/workspace/TourGuideAI/artifacts/native-visibility-tmp/Xauthority",
+    "-screen",
+    "0",
+    "1440x1000x24",
+    "-noreset"
+  ],
+  "noDefaults": true,
+  "samples": [],
+  "completed": false,
+  "method": "Native Chromium tabs in the default browser context; actual visibilitychange observations",
+  "limitations": [
+    "Blank tabs only; no 3D assets or performance qualification"
+  ],
+  "error": {
+    "message": "Xvfb exited 1: Warning: the -nolock option can only be used by root\n_XSERVTransSocketOpenCOTSServer: Unable to open socket for inet6\n_XSERVTransOpen: transport open failed for inet6/490049b426a7:93\n_XSERVTransMakeAllCOTSServerListeners: failed to open listener for inet6\n_XSERVTransSocketOpenCOTSServer: Unable to open socket for inet\n_XSERVTransOpen: transport open failed for inet/490049b426a7:93\n_XSERVTransMakeAllCOTSServerListeners: failed to open listener for inet\n_XSERVTransSocketCreateListener: failed to bind listener\n_XSERVTransSocketUNIXCreateListener: ...SocketCreateListener() failed\n_XSERVTransMakeAllCOTSServerListeners: failed to create listener for local\n(EE) \nFatal server error:\n(EE) Cannot establish any listening sockets - Make sure an X server isn't already running(EE) \n",
+    "stack": "Error: Xvfb exited 1: Warning: the -nolock option can only be used by root\n_XSERVTransSocketOpenCOTSServer: Unable to open socket for inet6\n_XSERVTransOpen: transport open failed for inet6/490049b426a7:93\n_XSERVTransMakeAllCOTSServerListeners: failed to open listener for inet6\n_XSERVTransSocketOpenCOTSServer: Unable to open socket for inet\n_XSERVTransOpen: transport open failed for inet/490049b426a7:93\n_XSERVTransMakeAllCOTSServerListeners: failed to open listener for inet\n_XSERVTransSocketCreateListener: failed to bind listener\n_XSERVTransSocketUNIXCreateListener: ...SocketCreateListener() failed\n_XSERVTransMakeAllCOTSServerListeners: failed to create listener for local\n(EE) \nFatal server error:\n(EE) Cannot establish any listening sockets - Make sure an X server isn't already running(EE) \n\n    at file:///workspace/TourGuideAI/artifacts/realism-01/review-transport/qa/native-visibility/probe.mjs:34:41"
+  },
+  "finishedAt": "2026-11-14T02:42:57.981Z",
+  "logs": {
+    "server": "Warning: the -nolock option can only be used by root\n_XSERVTransSocketOpenCOTSServer: Unable to open socket for inet6\n_XSERVTransOpen: transport open failed for inet6/490049b426a7:93\n_XSERVTransMakeAllCOTSServerListeners: failed to open listener for inet6\n_XSERVTransSocketOpenCOTSServer: Unable to open socket for inet\n_XSERVTransOpen: transport open failed for inet/490049b426a7:93\n_XSERVTransMakeAllCOTSServerListeners: failed to open listener for inet\n_XSERVTransSocketCreateListener: failed to bind listener\n_XSERVTransSocketUNIXCreateListener: ...SocketCreateListener() failed\n_XSERVTransMakeAllCOTSServerListeners: failed to create listener for local\n(EE) \nFatal server error:\n(EE) Cannot establish any listening sockets - Make sure an X server isn't already running(EE) \n",
+    "manager": "",
+    "chromium": ""
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "startedAt": "2026-11-14T03:37:10.382Z",
+  "launcherSha256": "c2ab645160d83224b1cf460fe3491425a9f5a322afb339778c0a5859e23b1984",
+  "executable": "/workspace/TourGuideAI/artifacts/realism-01/review-transport/xvfb/root/usr/bin/Xvfb",
+  "arguments": [
+    ":91",
+    "-nolock",
+    "-nolisten",
+    "unix",
+    "-listen",
+    "tcp",
+    "-auth",
+    "/workspace/TourGuideAI/artifacts/review-transport-tmp/Xauthority",
+    "-screen",
+    "0",
+    "1440x1000x24",
+    "-noreset"
+  ],
+  "display": "127.0.0.1:91",
+  "authentication": "Task-local MIT-MAGIC-COOKIE-1",
+  "unixSocketDisabled": true,
+  "lockFileDisabled": true,
+  "finishedAt": "2026-11-14T03:37:10.512Z",
+  "diagnostic": "The XKEYBOARD keymap compiler (xkbcomp) reports:\n> Error:            Cannot open \"/tmp/server-91.xkm\" to write keyboard description\n>                   Exiting\nThe XKEYBOARD keymap compiler (xkbcomp) reports:\n> Error:            Cannot open \"/tmp/server-91.xkm\" to write keyboard description\n>                   Exiting\nXKB: Failed to compile keymap\nKeyboard initialization failed. This could be a missing or incorrect setup of xkeyboard-config.\n(EE) \nFatal server error:\n(EE) Failed to activate virtual core keyboard: 2(EE) \n"
+}

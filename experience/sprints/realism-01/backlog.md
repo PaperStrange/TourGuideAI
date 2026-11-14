@@ -23,14 +23,14 @@ status establishes the route's production acceptance.
 | R15 | 5 · Product / art / QA | Visual scorecard and final representation decision | R10, complete R07 cost evidence | Weighted score, participant-level uncertainty and cost sensitivity satisfy selection rules; otherwise record inconclusive or single-candidate absolute acceptance |
 | R11 | 5 · Delivery | Public preview and release checkpoint | R15, all mandatory gates | Verify published bytes and ordinary-entry walkthrough, link release evidence and synchronize source commit |
 | R16 | Delivered · Interface / rendering / QA / delivery | Public controllable architectural review | Existing licensed Hall capture and paged derivative | Published EN/ZH controls, same-camera original/streamed view and recovery. Packaged and actual HTTPS walkthroughs each pass 39 checks; all 51 published files match. [Release evidence](../../evidence/realism-01/review-page/README.md), [reproduction](../../tools/review-page/README.md). Kyoto acceptance remains under R08–R11 |
-| R17 | Measured · Rendering / QA | Lossless transport trial preserving the approved appearance | R16 | All 40 decoded identities match. Gzip saves 9,176 bytes (0.0109%); 37/39 sections exceed 2 MiB. Native source transport retained. [Reproduction and measurement](../../tools/review-transport/README.md); actual browser transfer and settled-frame comparisons in progress |
-| R18 | Implemented · Interaction / art / QA | Continuous camera exploration inside qualified capture bounds | R16; R17 measurements | Local/public browser validation in progress. Visible start/pause/resume/reverse, manual interruption and separate initial interface loading. Hall remains architectural exploration until floor/scale qualification |
+| R17 | Measured · Rendering / QA | Lossless transport trial preserving the approved appearance | R16 | All 40 decoded identities match. Gzip saves 9,176 bytes (0.0109%); native source delivery retained. Public first visibility consumes 5,630,795 bytes, above 4 MiB; 37/39 sections exceed 2 MiB. [Actual measurements and comparison](../../evidence/realism-01/review-transport/README.md) retain those limits |
+| R18 | Delivered · Interaction / art / QA | Continuous camera exploration inside qualified capture bounds | R16; R17 measurements | Published start/pause/resume/reverse, manual and native-tab interruption, separate initial controls and EN/ZH. Local endpoint: 12 checks; local/public native controls: 16/15; seven ordinary sections complete on each. All 57 public files match. [Release evidence](../../evidence/realism-01/review-transport/README.md). Hall remains architectural exploration until floor/scale qualification |
 | R19 | Next · Source / scene | Qualify a free ground-level connector for the walking route | R04/R05 coverage gaps | Open. Require licensed calibrated views, continuous measured floor, scale and sight identity before constructing a connected walking segment |
 
 The user's 14 November approval of the texture and lighting remains the visual
-reference. R17 is measured, and R18 is implemented with browser validation in
-progress. R19 retains its source requirements. Production delivery requires
-actual public-file verification and the public control walkthrough.
+reference. R17 is measured, and R18 is published with actual public-file and
+control verification. R19 retains its source requirements. The full Kyoto route,
+physical-device performance and human acceptance remain open.
 
 R06 has reproducible fidelity, paging, lifecycle and encoding evidence. Further
 source-processing work must address ordinary-section sizes and preserve qualified

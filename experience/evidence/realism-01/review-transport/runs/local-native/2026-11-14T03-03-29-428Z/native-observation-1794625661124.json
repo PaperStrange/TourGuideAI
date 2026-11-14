@@ -1,0 +1,322 @@
+{
+  "at": "2026-11-14T03:07:41.123Z",
+  "observerSha256": "29009d1b4d9e343dd591789562e4269a5af2f920e1b4b233dde8932e34c73b7e",
+  "method": "Read-only Runtime.evaluate attached to the existing native browser target",
+  "url": "http://127.0.0.1:36769/review-package/index.html",
+  "hidden": false,
+  "visibilityState": "visible",
+  "view": {
+    "position": [
+      -28.096198328460623,
+      6.71159315109253,
+      19.509548829165983
+    ],
+    "target": [
+      -11.19845319602572,
+      4.008741439866708,
+      7.849568533379336
+    ],
+    "quaternion": [
+      -0.057909350064429196,
+      -0.46379352846436656,
+      -0.03039863595573766,
+      0.883525887035416
+    ],
+    "fov": 36.66881313294433,
+    "matrixWorld": [
+      0.5679429717732067,
+      6.938893903907228e-18,
+      0.8230679077776137,
+      0,
+      0.10743192718983924,
+      0.9914448602142919,
+      -0.0741314385058078,
+      0,
+      -0.8160264467734459,
+      0.13052620102746912,
+      0.5630841402593764,
+      0,
+      -28.096198328460623,
+      6.71159315109253,
+      19.509548829165983,
+      1
+    ],
+    "projectionMatrix": [
+      1.3032253728412058,
+      0,
+      0,
+      0,
+      0,
+      3.0176408202167915,
+      0,
+      0,
+      0,
+      0,
+      -1.00000020000002,
+      -1,
+      0,
+      0,
+      -0.00200000020000002,
+      0
+    ],
+    "variant": "streamed",
+    "status": "interactive",
+    "phase": "view",
+    "firstView": true,
+    "loadedBytes": 17791544,
+    "totalBytes": null,
+    "error": null,
+    "requiresReload": false,
+    "frames": 139,
+    "disposed": false,
+    "drawnView": {
+      "matrixWorld": [
+        0.5655091400157988,
+        6.938893903907228e-18,
+        0.8247420278842298,
+        0,
+        0.1076504437274195,
+        0.9914448602142919,
+        -0.07381375969257331,
+        0,
+        -0.8176862445485319,
+        0.1305262010274691,
+        0.560671130272868,
+        0,
+        -28.13056834169448,
+        6.711593151092529,
+        19.459581787147602,
+        1
+      ],
+      "projectionMatrix": [
+        1.3032253728412058,
+        0,
+        0,
+        0,
+        0,
+        3.0176408202167915,
+        0,
+        0,
+        0,
+        0,
+        -1.00000020000002,
+        -1,
+        0,
+        0,
+        -0.00200000020000002,
+        0
+      ],
+      "frames": 139,
+      "variant": "streamed",
+      "submittedAt": 248436.2000000002,
+      "drawnSplats": 261368,
+      "paging": {
+        "cameraMatchesLod": true,
+        "cameraCoveredByLod": true,
+        "drawnMatchesCamera": true,
+        "pending": false,
+        "residentPages": 8,
+        "pageCapacity": 8,
+        "fetchLimit": 1,
+        "lodTrees": 1,
+        "fetchers": 0,
+        "priorityEntries": 25,
+        "fetched": 0,
+        "newUploads": 0,
+        "treeUpdates": 0,
+        "readyUploads": 0,
+        "lodDirty": false,
+        "workerBusy": false,
+        "sorting": false,
+        "sortDirty": false,
+        "mappingMatches": true,
+        "idle": true,
+        "settled": false
+      }
+    },
+    "drawnSplats": 261368,
+    "loadedVariant": "streamed",
+    "firstVisibleAt": 1247.5,
+    "firstVisibleFrame": 17,
+    "firstSettledAt": 22931.599999999627,
+    "firstSettledFrame": 31,
+    "paging": {
+      "cameraMatchesLod": true,
+      "cameraCoveredByLod": true,
+      "drawnMatchesCamera": false,
+      "pending": false,
+      "residentPages": 8,
+      "pageCapacity": 8,
+      "fetchLimit": 1,
+      "lodTrees": 1,
+      "fetchers": 0,
+      "priorityEntries": 25,
+      "fetched": 0,
+      "newUploads": 0,
+      "treeUpdates": 0,
+      "readyUploads": 0,
+      "lodDirty": false,
+      "workerBusy": false,
+      "sorting": true,
+      "sortDirty": false,
+      "mappingMatches": false,
+      "idle": false,
+      "settled": false
+    },
+    "transportMetrics": {
+      "encoding": "identity",
+      "responseBodyBytes": 17791544
+    },
+    "sceneObjects": 2,
+    "rendererMemory": {
+      "geometries": 2,
+      "textures": 11
+    },
+    "requests": [
+      {
+        "id": 1,
+        "url": "http://127.0.0.1:36769/review-package/data/streamed/knock-original-lod.rad",
+        "status": "complete",
+        "loadedBytes": 5416,
+        "responseBodyBytes": 5416,
+        "httpEncodedBytes": null,
+        "httpContentEncoding": null,
+        "startedAt": 359.79999999981374,
+        "endedAt": 429.59999999962747,
+        "httpStatus": 200
+      },
+      {
+        "id": 2,
+        "url": "http://127.0.0.1:36769/review-package/data/streamed/knock-original-lod-0.radc",
+        "status": "complete",
+        "loadedBytes": 2283352,
+        "responseBodyBytes": 2283352,
+        "httpEncodedBytes": null,
+        "httpContentEncoding": null,
+        "startedAt": 699.2000000001863,
+        "endedAt": 750.7999999998137,
+        "httpStatus": 200
+      },
+      {
+        "id": 3,
+        "url": "http://127.0.0.1:36769/review-package/data/streamed/knock-original-lod-5.radc",
+        "status": "complete",
+        "loadedBytes": 2219776,
+        "responseBodyBytes": 2219776,
+        "httpEncodedBytes": null,
+        "httpContentEncoding": null,
+        "startedAt": 1015.5999999996275,
+        "endedAt": 1213.2999999998137,
+        "httpStatus": 200
+      },
+      {
+        "id": 4,
+        "url": "http://127.0.0.1:36769/review-package/data/streamed/knock-original-lod-2.radc",
+        "status": "complete",
+        "loadedBytes": 2231280,
+        "responseBodyBytes": 2231280,
+        "httpEncodedBytes": null,
+        "httpContentEncoding": null,
+        "startedAt": 2015.0999999996275,
+        "endedAt": 2750.9000000003725,
+        "httpStatus": 200
+      },
+      {
+        "id": 5,
+        "url": "http://127.0.0.1:36769/review-package/data/streamed/knock-original-lod-6.radc",
+        "status": "complete",
+        "loadedBytes": 2227776,
+        "responseBodyBytes": 2227776,
+        "httpEncodedBytes": null,
+        "httpContentEncoding": null,
+        "startedAt": 3473.9000000003725,
+        "endedAt": 3489,
+        "httpStatus": 200
+      },
+      {
+        "id": 6,
+        "url": "http://127.0.0.1:36769/review-package/data/streamed/knock-original-lod-4.radc",
+        "status": "complete",
+        "loadedBytes": 2251904,
+        "responseBodyBytes": 2251904,
+        "httpEncodedBytes": 2251904,
+        "httpContentEncoding": null,
+        "startedAt": 4257.5999999996275,
+        "endedAt": 4299.5,
+        "httpStatus": 200
+      },
+      {
+        "id": 7,
+        "url": "http://127.0.0.1:36769/review-package/data/streamed/knock-original-lod-3.radc",
+        "status": "complete",
+        "loadedBytes": 2226368,
+        "responseBodyBytes": 2226368,
+        "httpEncodedBytes": null,
+        "httpContentEncoding": null,
+        "startedAt": 5453.700000000186,
+        "endedAt": 6534.0999999996275,
+        "httpStatus": 200
+      },
+      {
+        "id": 8,
+        "url": "http://127.0.0.1:36769/review-package/data/streamed/knock-original-lod-1.radc",
+        "status": "complete",
+        "loadedBytes": 2178744,
+        "responseBodyBytes": 2178744,
+        "httpEncodedBytes": null,
+        "httpContentEncoding": null,
+        "startedAt": 6595.200000000186,
+        "endedAt": 6606.5,
+        "httpStatus": 200
+      },
+      {
+        "id": 9,
+        "url": "http://127.0.0.1:36769/review-package/data/streamed/knock-original-lod-22.radc",
+        "status": "complete",
+        "loadedBytes": 2166928,
+        "responseBodyBytes": 2166928,
+        "httpEncodedBytes": null,
+        "httpContentEncoding": null,
+        "startedAt": 8192.799999999814,
+        "endedAt": 8233.799999999814,
+        "httpStatus": 200
+      }
+    ],
+    "tour": {
+      "status": "running",
+      "phase": "arc",
+      "progress": 0.27142857142857096,
+      "direction": 1,
+      "pauseReason": null,
+      "poseUpdates": 102,
+      "lastPoseRequestedAfterFrame": 139,
+      "approachProgress": 1,
+      "arcRadians": 0.7,
+      "durationSeconds": 28,
+      "reference": {
+        "position": [
+          -25.0948486328125,
+          6.711593151092529,
+          22.9617862701416
+        ],
+        "target": [
+          -11.19845319602572,
+          4.008741439866709,
+          7.849568533379339
+        ]
+      },
+      "endpointPositions": [
+        [
+          -29.434294204005216,
+          6.711593151092531,
+          17.280529979093856
+        ],
+        [
+          -19.07040154855489,
+          6.711593151092531,
+          26.810617032710105
+        ]
+      ]
+    }
+  }
+}

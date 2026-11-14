@@ -1,27 +1,31 @@
 # Review TourGuideAI
 
-## Controllable architectural review · current delivery
+## Guided architectural review · current delivery
 
 [Open the live review](https://paperstrange.github.io/TourGuideAI/previews/realism-01/)
 
-Explore **Knock Community Hall, Canada**, using the visible rotate, tilt, zoom,
-reset and fullscreen buttons. Drag to rotate; pinch or scroll to zoom. **EN / 中文**
-switches guidance. Select **Original · ~30 MB** or **Streamed** to compare the same
-captured building from your current camera position. The original downloads when
-selected. A labelled link opens the existing Kyoto walking baseline.
+Explore **Knock Community Hall, Canada** with **Start look-around**, **Pause /
+Resume** and **Reverse direction**. Rotate, tilt, zoom, reset and fullscreen
+controls remain visible. Drag to rotate; pinch or scroll to zoom. Manual input
+pauses the guided motion. **EN / 中文** switches guidance, including while the
+renderer loads. Select **Original · ~30 MB** or **Streamed** to compare the captured
+building from your current camera position. The original downloads when selected.
 
-The actual public page and packaged page each pass **39 browser checks**; all
-**51 public files match their validated bytes**. Tests include native touch in a
-phone viewport, rendered camera movement, both source cancellation paths and retry.
-Physical phone and full-route performance acceptance remain open.
+All **57 public files match their validated bytes**. The complete local guided
+path passes 12 checks; native pause/resume, reversal and tab visibility pass 16.
+Seven ordinary local sections cover loading recovery, camera controls, source
+switches and English/Chinese phone touch. The same seven public sections record
+44 passing checks; public native controls and tab visibility pass 15 checks.
+The public startup transfer exceeds 4 MiB. Physical-device and full-route
+performance acceptance remain open.
 
 This entry is architectural inspection of a free licensed capture. It preserves
 recorded lighting and has incomplete surfaces at close range. The full Kyoto
-realism milestone remains open. See the [screenshots and release evidence](experience/evidence/realism-01/review-page/README.md).
-Application commit: `fe6f07ab02149d2754a15c90937b114b0ec13471`.
-Pages commit: `1a938ebd48e2606b52e54cc1d57cc8a4e2f28a96`.
+realism milestone remains open. See the [screenshots and release evidence](experience/evidence/realism-01/review-transport/README.md).
+Application commit: `9084531851b9bc5332f8a772971ef48ad7424579`.
+Pages commit: `794ab33f14415b27d3687f651902bc4aecd098e9`.
 
-## Connected Kyoto neighborhood · current test preview
+## Connected Kyoto neighborhood · earlier walking baseline
 
 [Open the six-sight preview](https://paperstrange.github.io/TourGuideAI/previews/shijo-east-c13/) ·
 [中文预览入口](https://paperstrange.github.io/TourGuideAI/previews/shijo-east-c13/?lang=zh)

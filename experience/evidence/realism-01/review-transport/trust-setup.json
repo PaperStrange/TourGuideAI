@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-14",
+  "method": "Task-local NSS database for an isolated browser mount namespace",
+  "sourceCertificate": "/usr/local/share/ca-certificates/environment-proxy-ca.crt",
+  "certificateSha256Fingerprint": "C71B4D1E9D7775C538C688AB10CEA9CE417D7312E89838F9D15FF73256CD7FC3",
+  "taskLocalNssDatabase": "artifacts/review-transport-tmp/nssdb",
+  "namespaceMountTarget": "/home/agent/.pki/nssdb",
+  "sharedTrustStoreChanged": false,
+  "homeEnvironmentChanged": false,
+  "tlsVerificationDisabled": false,
+  "inheritedProxyPreserved": true,
+  "sharedTrustEntriesObserved": ["OpenAI-chaussette", "OpenAI-mitmproxy-ca-cert", "OpenAI-nebula-dns", "OpenAI-nebula-mitmproxy"],
+  "setup": ["certutil -N --empty-password in task-local database", "certutil -A imports the existing managed proxy CA with C,, SSL trust"],
+  "limitations": ["Actual isolated-browser execution and public HTTPS results are recorded per attempt."]
+}

@@ -1,0 +1,19 @@
+{
+  "attempt": "public-functional/2026-11-14T03-20-44-133Z",
+  "attemptReport": "artifacts/realism-01/review-transport/qa/public-functional/2026-11-14T03-20-44-133Z/result.json",
+  "reportSha256": "adb40cdba5e6a5201fc3a6718a15be07b5626f1179443159990d9eae170943c2",
+  "driverSha256": "d0eeb1db7b24f659fc940a2667a2a922d8cb17023a2811085475ec60755c2fdf",
+  "recordedAt": "2026-11-14T03:33:06Z",
+  "runnerExited": true,
+  "method": "Read-only process inspection on resumption; pgrep output contained only the inspection command and its sandbox ancestors, with no browser-review-transport or run-headful runner.",
+  "limitations": ["The original process did not persist a shutdown timestamp or exit status."],
+  "observedRecoveryAt": "2026-11-14T03:33:06Z",
+  "lastPersistedObservationAt": "2026-11-14T03:24:58.091Z",
+  "originalReportChanged": false,
+  "observedProcessState": "No browser-review-transport or run-headful process remained when execution resumed. The original tool wait returned aborted by user, and the agent was subsequently resumed by its parent.",
+  "completedSections": ["shell", "module-recovery", "desktop", "cancellation", "paged-cancellation", "recovery", "phone"],
+  "passingChecks": 44,
+  "incompleteSection": "transport",
+  "classification": "Interrupted browser attempt with incomplete transfer evidence; the interruption time and process exit reason were not captured by the original driver.",
+  "recovery": "Run native public controls and a separate transfer-only attempt against the already verified published package. Preserve completed section ranges and all original records."
+}

@@ -1,0 +1,10 @@
+{
+  "attempt": "local-endpoints/2026-11-14T02-48-29-987Z",
+  "reason": "The 800x600 run continued moving at software-renderer speed. The parent approved a separate 900-second tour-progress deadline; this already-running process retained its original 240-second deadline.",
+  "method": "Send SIGTERM only to Chromium PID 7660, a direct child of this attempt's Node PID 7646. The driver records its actual closed-browser error before the fresh endpoint run.",
+  "observed": { "submittedAtMs": 228736.7, "submittedFrames": 138, "poseUpdates": 118, "tourStatus": "running", "arcProgress": 0.31428571428571367 },
+  "classification": "Intentional diagnostic termination, not an application failure or completed endpoint test",
+  "sourceOrAnimationSpeedChanged": false,
+  "nextTourProgressDeadlineMs": 900000,
+  "settlingDeadlineMs": 240000
+}

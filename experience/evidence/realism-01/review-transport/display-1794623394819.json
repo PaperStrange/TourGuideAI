@@ -1,0 +1,28 @@
+{
+  "startedAt": "2026-11-14T02:29:52.401Z",
+  "executable": "/workspace/TourGuideAI/artifacts/realism-01/review-transport/xvfb/root/usr/bin/Xvfb",
+  "arguments": [
+    ":91",
+    "-nolock",
+    "-nolisten",
+    "unix",
+    "-listen",
+    "tcp",
+    "-auth",
+    "/workspace/TourGuideAI/artifacts/review-transport-tmp/Xauthority",
+    "-screen",
+    "0",
+    "1440x1000x24",
+    "-noreset"
+  ],
+  "display": "127.0.0.1:91",
+  "authentication": "Task-local MIT-MAGIC-COOKIE-1",
+  "unixSocketDisabled": true,
+  "lockFileDisabled": true,
+  "command": [
+    "artifacts/realism-01/review-transport/qa/visibility-headful-probe.mjs"
+  ],
+  "exitCode": 1,
+  "finishedAt": "2026-11-14T02:29:54.819Z",
+  "diagnostic": "Warning: the -nolock option can only be used by root\n"
+}

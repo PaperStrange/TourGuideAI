@@ -1,0 +1,8 @@
+{
+  "attempt": "local-endpoints/2026-11-14T02-46-27-117Z",
+  "reason": "Read-only observations confirmed that the tour advances under slow software rendering. The parent approved an 800x600 viewport for the endpoint functional test.",
+  "method": "Send SIGTERM only to Chromium PID 7301, a direct child of this attempt's Node PID 7287. The driver records its resulting closed-browser error and retains the last observed state.",
+  "observed": { "submittedAtMs": 45976.3, "submittedFrames": 41, "poseUpdates": 17, "tourStatus": "running", "approachProgress": 0.56776 },
+  "classification": "Intentional diagnostic termination, not an application failure or completed endpoint test",
+  "sourceOrAnimationSpeedChanged": false
+}

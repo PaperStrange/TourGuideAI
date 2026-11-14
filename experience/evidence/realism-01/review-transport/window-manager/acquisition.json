@@ -1,0 +1,31 @@
+{
+  "acquiredAt": "2026-11-14T02:32:00Z",
+  "purpose": "Native headful browser minimization with an X11 window manager",
+  "package": "twm",
+  "version": "1:1.0.10-1+b1",
+  "architecture": "amd64",
+  "sourceUrl": "https://snapshot.debian.org/archive/debian/20260828T000000Z/pool/main/t/twm/twm_1.0.10-1+b1_amd64.deb",
+  "configuredRepositoryFile": "/etc/apt/sources.list.d/caas-snapshot.list",
+  "download": {
+    "path": "twm_1.0.10-1+b1_amd64.deb",
+    "bytes": 123376,
+    "sha256": "0fee84bfee0c434e9e76c49abb69d2d5d9b0caa079f409cefcdefe04c0343eee"
+  },
+  "binary": {
+    "path": "root/usr/bin/twm",
+    "bytes": 186904,
+    "sha256": "ac80ae6828465e31faef03a4b4aecf0b8160175c8ddc598212bfc3a545c3d5e1"
+  },
+  "rightsFile": "root/usr/share/doc/twm/copyright",
+  "method": "TLS-verified curl download and dpkg-deb extraction inside ignored repository artifacts",
+  "configuration": "twmrc uses native random placement, built-in fixed fonts and ordinary window-manager controls",
+  "validation": {
+    "allDynamicLibrariesResolved": true,
+    "requiresLibraryPathOverride": false,
+    "systemPackageChanges": false
+  },
+  "limitations": [
+    "Provisioning alone establishes no browser visibility or performance result.",
+    "The desktop menu integration package is unused because the QA runner supplies an explicit twmrc."
+  ]
+}

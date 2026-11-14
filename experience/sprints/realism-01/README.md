@@ -1,9 +1,9 @@
 # Realism 01 · Kyoto route
 
-6 November 2026 · Sprint owner: delivery lead · Status: Benchmark V1, original
-source inspection, detailed texture/pedestrian audits and a matched architectural
-splat diagnostic delivered. Free sources only for the current period; matched
-Kyoto capture and full-route acceptance remain open.
+14 November 2026 · Sprint owner: delivery lead · Status: Benchmark V1, source
+audits, architectural comparisons and guided capture exploration implemented.
+The new public review preserves the approved texture and captured lighting.
+Free sources only; matched Kyoto capture and full-route acceptance remain open.
 
 Deliver the complete **1,353.444 m, six-sight Shijō East walk**, with recognizable
 architecture, continuous navigation and a coherent English/Chinese journey in
@@ -29,6 +29,7 @@ Production renderer selection and milestone acceptance remain open.
 | [Architectural splat comparison](../../evidence/realism-01/qualification/splat-fidelity/README.md) | Same-source publisher/Spark frames, native interactions, tested portable preview and startup-budget limit |
 | [Paged streaming comparison](../../evidence/realism-01/qualification/splat-streaming/README.md) | Actual first-visible and bounded views, transfer failures, eviction, unloading and cancellation |
 | [Explicit encoding trade-off](../../evidence/realism-01/qualification/splat-encoding/README.md) | Smaller partial first view with reduced directional colour detail; section and full-quality gates remain open |
+| [Continuous architectural exploration](../../evidence/realism-01/review-transport/README.md) | Guided camera controls, separate initial interface loading, lossless transport measurement and retained visual/interaction evidence |
 | [Free Kyoto source feasibility](research/free-source-feasibility.md) | Inspected photographs, source-family separation, actual geographic coverage and remaining registration gaps |
 | [Controlled trials](experiments/README.md) | Matched inputs, routes, viewpoints and comparison protocol |
 | [Parallel candidate status](experiments/candidate-status.md) | Mesh, splat and shared-ground evidence; explicit qualification dependencies |

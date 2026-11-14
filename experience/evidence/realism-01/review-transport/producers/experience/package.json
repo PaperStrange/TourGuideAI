@@ -1,0 +1,36 @@
+{
+  "name": "kyoto-guided-experience",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 4185",
+    "build": "vite build",
+    "build:review": "vite build --config vite.review.config.mjs",
+    "preview": "vite preview --host 0.0.0.0 --port 4186",
+    "test": "node --test tests/*.test.mjs",
+    "test:browser": "node tests/browser-check.mjs",
+    "test:perspective": "node tests/browser-perspective.mjs",
+    "test:travel": "node tests/browser-travel.mjs",
+    "test:homepage": "node tests/browser-homepage.mjs",
+    "test:solo": "node tests/browser-solo.mjs",
+    "test:packs": "node tests/browser-packs.mjs",
+    "test:neighborhood": "node tests/browser-neighborhood.mjs",
+    "test:walkthrough": "node tests/browser-walkthrough.mjs"
+  },
+  "dependencies": {
+    "@sparkjsdev/spark": "2.4.0",
+    "eventsource-parser": "4.1.2",
+    "maplibre-gl": "6.14.0",
+    "three": "0.186.1",
+    "three-mesh-bvh": "0.9.16"
+  },
+  "devDependencies": {
+    "ajv": "8.17.1",
+    "playwright": "1.62.1",
+    "vite": "8.3.2"
+  }
+}

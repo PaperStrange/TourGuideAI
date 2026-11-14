@@ -1,0 +1,40 @@
+{
+  "startedAt": "2026-11-14T03:09:50.421Z",
+  "launcherSha256": "c2ab645160d83224b1cf460fe3491425a9f5a322afb339778c0a5859e23b1984",
+  "executable": "/workspace/TourGuideAI/artifacts/realism-01/review-transport/xvfb/root/usr/bin/Xvfb",
+  "arguments": [
+    ":91",
+    "-nolock",
+    "-nolisten",
+    "unix",
+    "-listen",
+    "tcp",
+    "-auth",
+    "/workspace/TourGuideAI/artifacts/review-transport-tmp/Xauthority",
+    "-screen",
+    "0",
+    "1440x1000x24",
+    "-noreset"
+  ],
+  "display": "127.0.0.1:91",
+  "authentication": "Task-local MIT-MAGIC-COOKIE-1",
+  "unixSocketDisabled": true,
+  "lockFileDisabled": true,
+  "windowManager": {
+    "executable": "/workspace/TourGuideAI/artifacts/realism-01/review-transport/window-manager/root/usr/bin/twm",
+    "arguments": [
+      "-display",
+      "127.0.0.1:91",
+      "-f",
+      "/workspace/TourGuideAI/artifacts/realism-01/review-transport/window-manager/twmrc"
+    ]
+  },
+  "command": [
+    "experience/tests/browser-review-transport.mjs",
+    "artifacts/realism-01/review-transport/package-identity2",
+    "artifacts/realism-01/review-transport/qa/local-native"
+  ],
+  "exitCode": 0,
+  "finishedAt": "2026-11-14T03:13:26.285Z",
+  "diagnostic": "Warning: the -nolock option can only be used by root\n"
+}
