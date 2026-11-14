@@ -1,6 +1,6 @@
 # Agent checkpoint · Explore and Together homepage
 
-14 November 2026 · Continuous exploration: implementation complete, browser validation in progress.
+14 November 2026 · Continuous exploration published; actual HTTPS controls under validation.
 
 The user approved the current demo's texture and lighting and requested continuation.
 The visual reference is the existing public review release `1a938eb`, with both
@@ -11,7 +11,7 @@ existing acceptance gates.
 | Priority / owner | Next executable work | Required evidence |
 | --- | --- | --- |
 | R17 · Rendering / QA | Lossless trial measured; preserve native source delivery | All 40 decoded RAD/RADC identities match. Gzip saves 9,176 bytes (0.0109%); 37/39 sections still exceed 2 MiB. The 4 MiB startup and 2 MiB ordinary-section gates remain open |
-| R18 · Interaction / art / QA | Bounded look-around implemented; local and public browser checks pending | Start/pause/resume/reverse, manual interruption, hidden-page pause and EN/ZH touch controls require actual submitted-frame evidence. Initial controls load separately from the 3D modules |
+| R18 · Interaction / art / QA | Bounded look-around published; local checks pass, public controls under validation | Local full path: 12 checks; native controls/tab visibility: 16 checks; seven ordinary sections complete. All 57 public files match. Initial controls load separately from the 3D modules |
 | R19 · Source / scene | Qualify free ground-level coverage for a real connecting route segment | Licensed calibrated views, verified scale, continuous floor and sight identity; route construction depends on actual source qualification |
 
 Execution is available. The source branch includes the previous remote checkpoint.
@@ -27,16 +27,41 @@ and public checks, then update this checkpoint and synchronize commits. The prio
 release's producer files are archived with their original hashes so historical
 evidence remains independently verifiable after application changes.
 
-The initial local browser walkthrough passes 45/45 checks across interface loading,
-desktop controls, both source-cancellation paths, recovery and phone touch. The
-continuous-motion and matched-camera measurements are running separately. The
-public page still serves the previously approved release until those checks finish.
+Runtime source is committed and pushed at `9084531851b9bc5332f8a772971ef48ad7424579`.
+The final package is `artifacts/realism-01/review-transport/package-identity2/`,
+manifest SHA-256 `e07ff5292f10154ad0e66d18b78c4703882c8b0646edf3d72e2aff4bd4eec4e6`.
+All seven ordinary local browser sections pass, including real module-failure
+reload, desktop controls, cancellation, recovery and phone touch. The full guided
+endpoint scenario passes 12 checks with a 900-second functional deadline because
+the software renderer submits approximately one frame per second. Motion, source
+and rendering settings remain unchanged. Settling retains its 240-second deadline.
+The native tour passes 16 checks, including trusted tab visibility and explicit
+resume on return.
+
+The 10 Mbps / 80 ms run records controls at 197 ms, first visible 3D at 3.74 s /
+3,449,611 encoded response bytes, and a bounded settled view at 45.40 s /
+18,836,402 bytes. Matched cameras and drawn counts agree; 15 RGB channels differ
+by one intensity step. Preserve the strict equality diagnostic and D25's explicit
+numerical regression tolerance. Same-build repeated captures are exactly equal for
+both current and approved builds; cross-build differences remain the same 15
+channels. The source of the tiny numerical difference is unassigned.
+
+Pages release `794ab33f14415b27d3687f651902bc4aecd098e9` is built and all 57 actual
+HTTPS files match. The public ordinary sections record 44 passing checks. The
+worker was interrupted during the following transfer measurement; preserve that
+report and its interruption receipt. Public native controls and a separate fresh
+transfer measurement remain. Resume from the reports under ignored
+`artifacts/realism-01/review-transport/qa/`. The
+public full endpoint sweep uses byte-identical local coverage and is not repeated.
+Retain every ended attempt, run the evidence and clean-checkout validators, update
+this record and push. The [live review](https://paperstrange.github.io/TourGuideAI/previews/realism-01/)
+now contains the new guided controls.
 
 Current-year issue creation and update searches returned zero matches on
 14 November 2026. The previous delivery and technical evidence follow.
 
 6 November 2026 · Lead owns integration, commits and publication.
-**Completed delivery: public architectural review page.**
+**Previous delivery: public architectural review page.**
 [Open the live review](https://paperstrange.github.io/TourGuideAI/previews/realism-01/).
 The free Knock Community Hall original and streamed capture has EN/ZH camera
 controls, preserved viewpoints and loading recovery. The final packaged and
