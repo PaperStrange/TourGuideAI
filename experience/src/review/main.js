@@ -1,14 +1,22 @@
 import './styles.css';
 import { copy } from './copy.js';
-import { createReviewScene } from './scene.js';
+
+class ViewerModuleError extends Error {
+  constructor(cause) {
+    super('The 3D viewer module could not load', { cause });
+    this.name = 'ViewerModuleError';
+  }
+}
 
 const params = new URLSearchParams(window.location.search);
 let language = params.get('lang') === 'zh' ? 'zh' : 'en';
 let variant = params.get('variant') === 'original' ? 'original' : 'streamed';
 let scene;
-let sceneState = { status: 'loading', phase: 'downloading', firstView: false };
+let tour;
+let sceneState = { status: 'loading', phase: 'viewer', firstView: false };
 let startupPending = false;
 let disposed = false;
+let firstViewMarked = false;
 
 const icon = (paths) => `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${paths}</svg>`;
 const icons = {
@@ -61,6 +69,13 @@ document.querySelector('#review-root').innerHTML = `
           <button id="retry-scene" class="primary" type="button"></button>
         </div>
         <p id="gesture-help" class="gesture-help" data-copy="gestureHelp"></p>
+      </div>
+      <div class="tour-toolbar" role="group" data-label="tourControls">
+        <div class="tour-buttons">
+          <button id="tour-toggle" type="button" disabled></button>
+          <button id="tour-reverse" type="button" data-copy="tourReverse" disabled></button>
+        </div>
+        <p id="tour-notice" role="status" aria-live="polite"></p>
       </div>
       <div class="camera-toolbar" role="group" data-label="cameraControls">
         <div class="camera-group">
@@ -115,9 +130,14 @@ const statusElement = document.querySelector('#scene-status');
 const cameraButtons = [...document.querySelectorAll('[data-action]')];
 const fullscreenButton = document.querySelector('[data-action="fullscreen"]');
 const controlNotice = document.querySelector('#control-notice');
+const tourButton = document.querySelector('#tour-toggle');
+const reverseButton = document.querySelector('#tour-reverse');
 
 Object.defineProperty(window, '__REALISM_REVIEW__', {
-  value: Object.freeze({ snapshot: () => scene?.getView() ?? null }),
+  value: Object.freeze({ snapshot: () => {
+    const view = scene?.getView();
+    return view ? { ...view, tour: tour?.getState() ?? null } : null;
+  } }),
   configurable: false,
   writable: false,
 });
@@ -149,12 +169,19 @@ function renderState() {
   const key = status === 'error' ? 'error'
     : status === 'streaming' ? 'streaming'
       : status === 'interactive' ? 'ready'
-        : phase === 'decoding' ? 'decoding'
+        : phase === 'viewer' ? 'viewerLoading'
+          : phase === 'decoding' ? 'decoding'
           : phase === 'rendering' ? 'rendering' : 'loading';
-  document.querySelector('#status-text').textContent = text[key];
+  const knownDownload = status === 'loading' && phase === 'downloading' && variant === 'original'
+    && Number.isFinite(sceneState.totalBytes) && sceneState.totalBytes > 0
+    && Number.isFinite(sceneState.loadedBytes) && sceneState.loadedBytes >= 0 && sceneState.loadedBytes <= sceneState.totalBytes;
+  document.querySelector('#status-text').textContent = knownDownload
+    ? text.originalProgress.replace('{percent}', String(Math.floor(sceneState.loadedBytes / sceneState.totalBytes * 100)))
+    : text[key];
   document.querySelector('#error-panel').hidden = status !== 'error';
   document.querySelector('#gesture-help').hidden = !firstView || status === 'error';
-  document.querySelector('#error-help').textContent = text[sceneState.requiresReload ? 'contextLost' : 'errorHelp'];
+  const errorHelpKey = sceneState.errorStage === 'viewer' ? 'viewerLoadError' : sceneState.requiresReload ? 'contextLost' : 'errorHelp';
+  document.querySelector('#error-help').textContent = text[errorHelpKey];
   document.querySelector('#retry-scene').textContent = text[sceneState.requiresReload ? 'reload' : 'retry'];
   cameraButtons.forEach((button) => {
     if (button.dataset.action !== 'fullscreen') button.disabled = !firstView || status === 'error';
@@ -163,6 +190,27 @@ function renderState() {
     button.setAttribute('aria-pressed', String(button.dataset.variant === variant));
   });
   document.querySelector('#variant-description').textContent = text[`${variant}Description`];
+  if (!firstView || status === 'error') tour?.pause(status === 'error' ? 'error' : 'loading');
+  renderTour();
+}
+
+function renderTour() {
+  const state = tour?.getState() ?? { status: 'idle', direction: 1 };
+  const text = copy[language];
+  const enabled = Boolean(tour && sceneState.firstView && sceneState.status !== 'error');
+  tourButton.disabled = !enabled;
+  reverseButton.disabled = !enabled;
+  tourButton.dataset.status = state.status;
+  const buttonKey = { idle: 'tourStart', running: 'tourPause', paused: 'tourResume', complete: 'tourAgain' }[state.status];
+  tourButton.textContent = text[buttonKey];
+  tourButton.setAttribute('aria-pressed', String(state.status === 'running'));
+  reverseButton.setAttribute('aria-pressed', String(state.direction === -1));
+  let notice = 'tourHint';
+  if (state.status === 'running') notice = state.phase === 'approach' ? 'tourApproach' : 'tourRunning';
+  if (state.status === 'paused') notice = 'tourPaused';
+  if (state.status === 'complete') notice = 'tourComplete';
+  const element = document.querySelector('#tour-notice');
+  if (element.textContent !== text[notice]) element.textContent = text[notice];
 }
 
 function renderLanguage() {
@@ -189,11 +237,16 @@ function renderLanguage() {
 async function startScene() {
   if (startupPending || disposed) return;
   startupPending = true;
-  sceneState = { status: 'loading', phase: 'downloading', firstView: false };
+  sceneState = { status: 'loading', phase: 'viewer', firstView: false };
   renderState();
   try {
     const manifestUrl = new URL('./review-assets.json', window.location.href);
-    const response = await fetch(manifestUrl);
+    // 页面控制先显示，Three 与 Spark 模块和来源清单并行加载。
+    const modules = Promise.all([import('./scene.js'), import('./camera-tour.js')]).then(result => {
+      performance.mark('review-scene-module-ready');
+      return result;
+    }, error => { throw new ViewerModuleError(error); });
+    const [response, [{ createReviewScene }, { createCameraTour }]] = await Promise.all([fetch(manifestUrl), modules]);
     if (!response.ok) throw new Error(`Review manifest returned ${response.status}`);
     const manifest = await response.json();
     if (typeof manifest.original !== 'string' || typeof manifest.streamed !== 'string') {
@@ -210,13 +263,20 @@ async function startScene() {
       assets,
       onState(state) {
         if (disposed) return;
+        if (state.firstView && !firstViewMarked) {
+          firstViewMarked = true;
+          performance.mark('review-first-visible');
+        }
         sceneState = state;
         renderState();
       },
     });
+    tour = createCameraTour({ scene, reference: assets.camera ?? scene.getView(), onChange: renderTour });
+    renderTour();
     await scene.setVariant(variant);
   } catch (error) {
-    sceneState = { status: 'error', firstView: false, error };
+    sceneState = { status: 'error', firstView: false, error,
+      errorStage: error instanceof ViewerModuleError ? 'viewer' : 'source', requiresReload: error instanceof ViewerModuleError };
     renderState();
   } finally {
     startupPending = false;
@@ -235,6 +295,8 @@ async function toggleFullscreen() {
 
 function moveCamera(action) {
   if (!scene || !sceneState.firstView || sceneState.status === 'error') return;
+  if (action === 'reset') tour?.reset();
+  else tour?.pause('manual');
   const commands = {
     'rotate-left': () => scene.rotate(-0.15),
     'rotate-right': () => scene.rotate(0.15),
@@ -252,10 +314,18 @@ function moveCamera(action) {
 
 cameraButtons.forEach((button) => {
   button.addEventListener('click', () => {
-    if (button.dataset.action === 'fullscreen') void toggleFullscreen();
+    if (button.dataset.action === 'fullscreen') { tour?.pause('manual'); void toggleFullscreen(); }
     else moveCamera(button.dataset.action);
   });
 });
+
+tourButton.addEventListener('click', () => {
+  if (tour?.getState().status === 'running') tour.pause('button');
+  else tour?.start();
+});
+reverseButton.addEventListener('click', () => tour?.reverse());
+canvas.addEventListener('pointerdown', () => tour?.pause('manual'), { capture: true, passive: true });
+canvas.addEventListener('wheel', () => tour?.pause('manual'), { capture: true, passive: true });
 
 canvas.addEventListener('keydown', (event) => {
   if (event.altKey || event.ctrlKey || event.metaKey) return;
@@ -275,6 +345,7 @@ document.querySelectorAll('[data-variant]').forEach((button) => {
   button.addEventListener('click', () => {
     const selected = button.dataset.variant;
     if (selected === variant) return;
+    tour?.pause('variant');
     variant = selected;
     controlNotice.textContent = '';
     updateLocation();
@@ -304,11 +375,17 @@ document.addEventListener('fullscreenchange', () => {
   scene?.resize();
 });
 window.addEventListener('pagehide', (event) => {
+  tour?.pause('hidden');
   if (event.persisted) return;
   disposed = true;
   resizeObserver.disconnect();
+  tour?.dispose();
   scene?.dispose();
+});
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) tour?.pause('hidden');
 });
 
 renderLanguage();
+performance.mark('review-controls-ready');
 void startScene();

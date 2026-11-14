@@ -65,3 +65,7 @@ A clean staged checkout passed the review verifier (31 evidence files and 14
 producer hashes) and the sprint integrity check (45 Markdown documents, 543
 relative link targets and 128 JSON documents). Browser profiles, source downloads
 and generated packages remain excluded from the implementation branch.
+
+The 14 producer files are retained byte-for-byte under `producers/`, with their
+original paths in each manifest record's `sourcePath`. Their hashes identify the
+reviewed release independently of subsequent application changes.

@@ -1,6 +1,6 @@
 # Agent checkpoint · Explore and Together homepage
 
-14 November 2026 · Next iteration: preserve approved appearance during continuous exploration.
+14 November 2026 · Continuous exploration: implementation complete, browser validation in progress.
 
 The user approved the current demo's texture and lighting and requested continuation.
 The visual reference is the existing public review release `1a938eb`, with both
@@ -10,25 +10,27 @@ existing acceptance gates.
 
 | Priority / owner | Next executable work | Required evidence |
 | --- | --- | --- |
-| R17 · Rendering / QA | Trial lossless compression of existing streamed chunks through the supported loader | All 40 decoded RAD/RADC files retain their hashes; actual HTTPS transfer, decode cost and settled same-camera appearance are measured; 4 MiB startup and 2 MiB ordinary-section gates remain |
-| R18 · Interaction / art / QA | Build a continuous, reviewed camera path within the current Hall capture, with visible start/pause and manual control | Forward/reverse movement, interruptions, detail transitions and EN/ZH touch controls work in submitted frames; disclose architectural exploration until floor and scale are qualified |
+| R17 · Rendering / QA | Lossless trial measured; preserve native source delivery | All 40 decoded RAD/RADC identities match. Gzip saves 9,176 bytes (0.0109%); 37/39 sections still exceed 2 MiB. The 4 MiB startup and 2 MiB ordinary-section gates remain open |
+| R18 · Interaction / art / QA | Bounded look-around implemented; local and public browser checks pending | Start/pause/resume/reverse, manual interruption, hidden-page pause and EN/ZH touch controls require actual submitted-frame evidence. Initial controls load separately from the 3D modules |
 | R19 · Source / scene | Qualify free ground-level coverage for a real connecting route segment | Licensed calibrated views, verified scale, continuous floor and sight identity; route construction depends on actual source qualification |
 
-R17 is the next implementation task. Compression savings remain unmeasured.
-R18 uses the approved captured appearance; R19 advances the Kyoto walking
-prerequisites. Preserve the current public entry throughout experimentation.
-After successful local checks, verify the public HTTPS build, retain failures and
-measurements, update this checkpoint and synchronize commits.
+Execution is available. The source branch includes the previous remote checkpoint.
+The new package preserves every original SOG/RAD/RADC byte, original SH3 and
+streamed SH2 settings, camera reference and captured lighting. The source-relative
+look-around spans 0.7 radians, with smooth approach and submitted-frame pacing.
+The initial interface entry is approximately 8.15 KB gzip (Vite output);
+the 3D modules still load when the viewer starts, and total source payload is
+unchanged. Browser timing must distinguish controls readiness from visible 3D.
 
-**Execution blocker, 14 November:** the session reports
-`failed to query executor configuration capabilities`; two shell probes return
-`No usable execution environment is available`. The environment-status service
-reports running, but this does not restore shell/browser access. Diagnostic
-metadata contains no retained failure record and no repair tool is exposed.
-GitHub reads/writes remain available. This checkpoint and the backlog/decision
-updates are documentation only; no new runtime build or benchmark was executed.
-Resume in this same conversation when execution access is restored, inspect the
-local worktree before synchronizing the remote documentation commits, then run R17.
+Run the [transport tools](../tools/review-transport/README.md), retain actual local
+and public checks, then update this checkpoint and synchronize commits. The prior
+release's producer files are archived with their original hashes so historical
+evidence remains independently verifiable after application changes.
+
+The initial local browser walkthrough passes 45/45 checks across interface loading,
+desktop controls, both source-cancellation paths, recovery and phone touch. The
+continuous-motion and matched-camera measurements are running separately. The
+public page still serves the previously approved release until those checks finish.
 
 Current-year issue creation and update searches returned zero matches on
 14 November 2026. The previous delivery and technical evidence follow.
