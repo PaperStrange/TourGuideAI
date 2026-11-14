@@ -1,5 +1,38 @@
 # Agent checkpoint · Explore and Together homepage
 
+14 November 2026 · Next iteration: preserve approved appearance during continuous exploration.
+
+The user approved the current demo's texture and lighting and requested continuation.
+The visual reference is the existing public review release `1a938eb`, with both
+original SH3 and streamed SH2 assets/settings preserved. The feedback does not
+identify a selected variant, device or camera. The full Kyoto route retains its
+existing acceptance gates.
+
+| Priority / owner | Next executable work | Required evidence |
+| --- | --- | --- |
+| R17 · Rendering / QA | Trial lossless compression of existing streamed chunks through the supported loader | All 40 decoded RAD/RADC files retain their hashes; actual HTTPS transfer, decode cost and settled same-camera appearance are measured; 4 MiB startup and 2 MiB ordinary-section gates remain |
+| R18 · Interaction / art / QA | Build a continuous, reviewed camera path within the current Hall capture, with visible start/pause and manual control | Forward/reverse movement, interruptions, detail transitions and EN/ZH touch controls work in submitted frames; disclose architectural exploration until floor and scale are qualified |
+| R19 · Source / scene | Qualify free ground-level coverage for a real connecting route segment | Licensed calibrated views, verified scale, continuous floor and sight identity; route construction depends on actual source qualification |
+
+R17 is the next implementation task. Compression savings remain unmeasured.
+R18 uses the approved captured appearance; R19 advances the Kyoto walking
+prerequisites. Preserve the current public entry throughout experimentation.
+After successful local checks, verify the public HTTPS build, retain failures and
+measurements, update this checkpoint and synchronize commits.
+
+**Execution blocker, 14 November:** the session reports
+`failed to query executor configuration capabilities`; two shell probes return
+`No usable execution environment is available`. The environment-status service
+reports running, but this does not restore shell/browser access. Diagnostic
+metadata contains no retained failure record and no repair tool is exposed.
+GitHub reads/writes remain available. This checkpoint and the backlog/decision
+updates are documentation only; no new runtime build or benchmark was executed.
+Resume in this same conversation when execution access is restored, inspect the
+local worktree before synchronizing the remote documentation commits, then run R17.
+
+Current-year issue creation and update searches returned zero matches on
+14 November 2026. The previous delivery and technical evidence follow.
+
 6 November 2026 · Lead owns integration, commits and publication.
 **Completed delivery: public architectural review page.**
 [Open the live review](https://paperstrange.github.io/TourGuideAI/previews/realism-01/).
