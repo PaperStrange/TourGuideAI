@@ -10,6 +10,14 @@ remains open. Keep free sources only, approved appearance, all full-route gates
 and physical-device evidence requirements. The public R20 release below remains
 the current verified preview until a new candidate passes its own checks.
 
+R17's [official S8Delta trial](../evidence/realism-01/review-chunks/README.md) is
+complete. All 2,541,177 nodes retain position, color, opacity, scale, SH2 and
+hierarchy; 68,224 decoded quaternion components change. Total RAD size grows by
+633,624 bytes and 37/39 pages remain above 2 MiB. The derivative fails the strict
+identity gate and is ineligible for publication. The 16-file evidence bundle and
+pinned reproduction tools verify offline. The current public runtime/assets are
+unchanged. Native response profiling and Panoramax geometry qualification continue.
+
 14 November 2026 · Architectural loading and demand rendering published.
 
 The user approved the appearance and reported loading pauses. R20 preserves all

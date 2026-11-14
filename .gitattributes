@@ -99,3 +99,7 @@ experience/evidence/solo-20261018/ci/original-walk-job.txt -text
 experience/evidence/realism-01/free-route-20261114/**/*.headers -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
 experience/evidence/realism-01/free-route-20261114/*.headers -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
 experience/evidence/realism-01/free-route-20261114/*.html -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+# 保留官方编码器源码、许可和执行输出的原始证据字节。
+experience/evidence/realism-01/review-chunks/**/*.rs -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+experience/evidence/realism-01/review-chunks/*.txt -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+experience/evidence/realism-01/review-chunks/upstream/LICENSE -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol

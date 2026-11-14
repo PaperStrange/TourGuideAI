@@ -35,6 +35,7 @@ the next loading, matched-view QA and free-source qualification work.
 | [Explicit encoding trade-off](../../evidence/realism-01/qualification/splat-encoding/README.md) | Smaller partial first view with reduced directional colour detail; section and full-quality gates remain open |
 | [Continuous architectural exploration](../../evidence/realism-01/review-transport/README.md) | Guided camera controls, separate initial interface loading, lossless transport measurement and retained visual/interaction evidence |
 | [Loading and demand rendering](../../evidence/realism-01/review-loading/README.md) | Preserved appearance, first-view scheduling, actual idle/wake behavior and matched local/public results |
+| [Exact-value encoding trial](../../evidence/realism-01/review-chunks/README.md) | Official codec comparison, all-page sizes and strict decoded-identity qualification |
 | [Free Kyoto source feasibility](research/free-source-feasibility.md) | Inspected photographs, source-family separation, actual geographic coverage and remaining registration gaps |
 | [Free route sequence follow-up](research/free-route-20261114.md) | Complete sequence metadata and the remaining calibration/route qualification requirements |
 | [Controlled trials](experiments/README.md) | Matched inputs, routes, viewpoints and comparison protocol |

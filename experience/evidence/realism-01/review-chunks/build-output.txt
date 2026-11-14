@@ -1,0 +1,118 @@
+    Updating crates.io index
+     Locking 45 packages to latest compatible versions
+      Adding anyhow v1.0.100 (available: v1.0.104)
+      Adding serde_json v1.0.145 (available: v1.0.154)
+ Downloading crates ...
+  Downloaded cfg-if v1.0.5
+  Downloaded const-random v0.1.18
+  Downloaded const-random-macro v0.1.16
+  Downloaded either v1.19.0
+  Downloaded autocfg v1.5.1
+  Downloaded doc-comment v0.3.4
+  Downloaded flate2 v1.1.11
+  Downloaded ahash v0.7.8
+  Downloaded anyhow v1.0.100
+  Downloaded ahash v0.8.12
+  Downloaded crunchy v0.2.4
+  Downloaded getrandom v0.2.17
+  Downloaded half v2.7.1
+  Downloaded libm v0.2.16
+  Downloaded hnsw v0.11.0
+  Downloaded ordered-float v5.5.1
+  Downloaded quote v1.0.47
+  Downloaded hashbrown v0.11.2
+  Downloaded memchr v2.8.3
+  Downloaded itertools v0.14.0
+  Downloaded num-traits v0.2.19
+  Downloaded ryu v1.0.23
+  Downloaded rand_pcg v0.3.1
+  Downloaded rand_core v0.6.4
+  Downloaded proc-macro2 v1.0.107
+  Downloaded once_cell v1.21.4
+  Downloaded libc v0.2.191
+  Downloaded itoa v1.0.19
+  Downloaded space v0.17.0
+  Downloaded version_check v0.9.5
+  Downloaded unicode-ident v1.0.27
+  Downloaded tiny-keccak v2.0.2
+  Downloaded smallvec v1.16.5
+  Downloaded serde_json v1.0.145
+  Downloaded serde_derive v1.0.229
+  Downloaded syn v2.0.119
+  Downloaded serde_core v1.0.229
+  Downloaded serde v1.0.229
+  Downloaded glam v0.30.10
+  Downloaded syn v3.0.10
+  Downloaded zerocopy-derive v0.8.63
+  Downloaded zlib-rs v0.6.8
+  Downloaded zerocopy v0.8.63
+   Compiling libc v0.2.191
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.27
+   Compiling quote v1.0.47
+   Compiling version_check v0.9.5
+   Compiling autocfg v1.5.1
+   Compiling cfg-if v1.0.5
+   Compiling crunchy v0.2.4
+   Compiling tiny-keccak v2.0.2
+   Compiling num-traits v0.2.19
+   Compiling ahash v0.7.8
+   Compiling zerocopy v0.8.63
+   Compiling syn v2.0.119
+   Compiling doc-comment v0.3.4
+   Compiling serde_core v1.0.229
+   Compiling once_cell v1.21.4
+   Compiling getrandom v0.2.17
+   Compiling libm v0.2.16
+   Compiling const-random-macro v0.1.16
+   Compiling syn v3.0.10
+   Compiling ahash v0.8.12
+   Compiling anyhow v1.0.100
+   Compiling serde v1.0.229
+   Compiling rand_core v0.6.4
+   Compiling serde_json v1.0.145
+   Compiling space v0.17.0
+   Compiling const-random v0.1.18
+   Compiling hashbrown v0.11.2
+   Compiling zerocopy-derive v0.8.63
+   Compiling serde_derive v1.0.229
+   Compiling smallvec v1.16.5
+   Compiling memchr v2.8.3
+   Compiling itoa v1.0.19
+   Compiling zlib-rs v0.6.8
+   Compiling either v1.19.0
+   Compiling ryu v1.0.23
+   Compiling itertools v0.14.0
+   Compiling hnsw v0.11.0
+   Compiling flate2 v1.1.11
+   Compiling rand_pcg v0.3.1
+   Compiling ordered-float v5.5.1
+   Compiling glam v0.30.10
+   Compiling half v2.7.1
+   Compiling spark-lib v0.1.0 (/workspace/TourGuideAI/artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-lib)
+warning: unused import: `ErrorKind`
+ --> /workspace/TourGuideAI/artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-lib/src/decoder.rs:2:15
+  |
+2 | use std::io::{ErrorKind, Read};
+  |               ^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `Read`
+ --> /workspace/TourGuideAI/artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-lib/src/decoder.rs:2:26
+  |
+2 | use std::io::{ErrorKind, Read};
+  |                          ^^^^
+
+warning: value assigned to `detection_complete` is never read
+   --> /workspace/TourGuideAI/artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-lib/src/decoder.rs:463:21
+    |
+463 |             let mut detection_complete = false;
+    |                     ^^^^^^^^^^^^^^^^^^
+    |
+    = help: maybe it is overwritten before being read?
+    = note: `#[warn(unused_assignments)]` (part of `#[warn(unused)]`) on by default
+
+warning: `spark-lib` (lib) generated 3 warnings (run `cargo fix --lib -p spark-lib` to apply 1 suggestion)
+   Compiling review-rad-encoding v0.1.0 (/workspace/TourGuideAI/experience/tools/review-chunks/rust)
+    Finished `release` profile [optimized] target(s) in 17.54s

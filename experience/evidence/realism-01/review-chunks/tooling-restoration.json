@@ -1,0 +1,361 @@
+{
+  "sourceReceipt": "experience/evidence/realism-01/qualification/splat-streaming/conversion/acquisition.json",
+  "sourceReceiptSha256": "0c713dad9737f61513a83cdcbad2722ed85d449911f16d828b9079eadfaa4de8",
+  "sparkCommit": "ffe210dc0a45d0515a06c9235878108112827d61",
+  "files": [
+    {
+      "sourceUrl": "https://static.rust-lang.org/dist/channel-rust-1.91.0.toml",
+      "path": "artifacts/realism-01/review-chunks/tooling/downloads/channel-rust-1.91.0.toml",
+      "bytes": 1033721,
+      "sha256": "d9e59cdf15532aa839c0a4871b0b755e833f914042eb2dcc59f2a0ef8667f9f6",
+      "verifiedAt": "2026-11-14T15:39:10.379578+00:00"
+    },
+    {
+      "sourceUrl": "https://static.rust-lang.org/dist/2025-10-30/rustc-1.91.0-x86_64-unknown-linux-gnu.tar.xz",
+      "path": "artifacts/realism-01/review-chunks/tooling/downloads/rustc-1.91.0-x86_64-unknown-linux-gnu.tar.xz",
+      "bytes": 78168572,
+      "sha256": "a7169e8cb6174af2f45717703370363d8de82ce55f6ccba185893045b9370874",
+      "verifiedAt": "2026-11-14T15:39:12.799711+00:00"
+    },
+    {
+      "sourceUrl": "https://static.rust-lang.org/dist/2025-10-30/cargo-1.91.0-x86_64-unknown-linux-gnu.tar.xz",
+      "path": "artifacts/realism-01/review-chunks/tooling/downloads/cargo-1.91.0-x86_64-unknown-linux-gnu.tar.xz",
+      "bytes": 10714496,
+      "sha256": "7103c03fb8abe85b23307005a9dfe4f01c826a89945d84b96fa2d03fd4d2d138",
+      "verifiedAt": "2026-11-14T15:39:10.657360+00:00"
+    },
+    {
+      "sourceUrl": "https://static.rust-lang.org/dist/2025-10-30/rust-std-1.91.0-x86_64-unknown-linux-gnu.tar.xz",
+      "path": "artifacts/realism-01/review-chunks/tooling/downloads/rust-std-1.91.0-x86_64-unknown-linux-gnu.tar.xz",
+      "bytes": 29239040,
+      "sha256": "89e6520b16c12b43526440298d2da0dcb70747c5cc2d0b8e47d39b5da9aeef49",
+      "verifiedAt": "2026-11-14T15:39:11.353538+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/.cargo/config.toml",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/.cargo/config.toml",
+      "bytes": 91,
+      "sha256": "76ffc9d846732c56f0de7afb566b9dd7c6273db733918787ad57d402b16e83a4",
+      "verifiedAt": "2026-11-14T15:39:10.689699+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/.gitignore",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/.gitignore",
+      "bytes": 22,
+      "sha256": "972f9a44fc3b430ac592947c8437976d5c73b94414431efc0c7c219607b2026f",
+      "verifiedAt": "2026-11-14T15:39:10.938185+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/Cargo.lock",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/Cargo.lock",
+      "bytes": 40300,
+      "sha256": "005cc80bd5691d1b1c1713f8cc24293229fc96682db7aa936586f6f1e6e8b98d",
+      "verifiedAt": "2026-11-14T15:39:11.022060+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/Cargo.toml",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/Cargo.toml",
+      "bytes": 1693,
+      "sha256": "f2dea589804e5eb209ccead8e82418ba1cc28c4c4001f03362742783d96ffc7c",
+      "verifiedAt": "2026-11-14T15:39:11.270616+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/build-lod/Cargo.toml",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/build-lod/Cargo.toml",
+      "bytes": 592,
+      "sha256": "a3172b0898875269d4e28923894c426d8e6c0eec26c2ea2be4c332d034e0cd0d",
+      "verifiedAt": "2026-11-14T15:39:11.293374+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/build-lod/src/gpu_sh_clustering.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/build-lod/src/gpu_sh_clustering.rs",
+      "bytes": 14005,
+      "sha256": "a01aedb8590fbe64bcf2ce098ca120713b3b96e48573336580131ac9edc43350",
+      "verifiedAt": "2026-11-14T15:39:11.507495+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/build-lod/src/main.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/build-lod/src/main.rs",
+      "bytes": 27171,
+      "sha256": "8857ab528ff7072a9cdfcef98e83bf5a9117e63125ba6b2520efa5e6b1cfd65d",
+      "verifiedAt": "2026-11-14T15:39:11.455958+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/build_rust_wasm.ps1",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/build_rust_wasm.ps1",
+      "bytes": 860,
+      "sha256": "3b13f2547a16acc7cff4e6a1851bfad51a406479bf7f0530b9e3ba0b2871bc0c",
+      "verifiedAt": "2026-11-14T15:39:11.624465+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/build_rust_wasm.sh",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/build_rust_wasm.sh",
+      "bytes": 1121,
+      "sha256": "976c0ac79ef8dfab29a9f44a45bcf08aab6be465074f6407316f338551853aff",
+      "verifiedAt": "2026-11-14T15:39:11.729574+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/build_wasm.js",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/build_wasm.js",
+      "bytes": 492,
+      "sha256": "1570f817a6adfda3cb9a470c4045c2088f2774b3c29c9bf65c75de9ba0271017",
+      "verifiedAt": "2026-11-14T15:39:11.779911+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-lib/Cargo.toml",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-lib/Cargo.toml",
+      "bytes": 1022,
+      "sha256": "660edaec25620a0b9f9fe175e53ff649823ea2ff6c17f1ca6ec4dd9275ac38dd",
+      "verifiedAt": "2026-11-14T15:39:11.849681+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-lib/src/antisplat.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-lib/src/antisplat.rs",
+      "bytes": 7343,
+      "sha256": "7a6458e8b9f063a03f695903eebb5cb3bcf2bfe97c1f845da03fe8a73b11985e",
+      "verifiedAt": "2026-11-14T15:39:11.968475+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-lib/src/bhatt_lod.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-lib/src/bhatt_lod.rs",
+      "bytes": 9501,
+      "sha256": "38c1d9a77f97ace56588b804d50dc712aaf49ab219a7202d0c855c1699326420",
+      "verifiedAt": "2026-11-14T15:39:12.035255+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-lib/src/chunk_tree.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-lib/src/chunk_tree.rs",
+      "bytes": 23225,
+      "sha256": "44c3f250a4cf65e12d7a5531946a8987789b3504d2761d5c2a9160be3c9b9921",
+      "verifiedAt": "2026-11-14T15:39:11.975986+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-lib/src/csplat.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-lib/src/csplat.rs",
+      "bytes": 27653,
+      "sha256": "ba58a3e1413d6f3f6edcfed01e43a89a8ada849fc2d4b033b9739150208a1614",
+      "verifiedAt": "2026-11-14T15:39:12.245570+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-lib/src/decoder.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-lib/src/decoder.rs",
+      "bytes": 22891,
+      "sha256": "1814d828f7246809f1ea403139349666855adba26263009c6ae96621053b93d8",
+      "verifiedAt": "2026-11-14T15:39:12.198170+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-lib/src/gsplat.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-lib/src/gsplat.rs",
+      "bytes": 33989,
+      "sha256": "115c5da7f1db9922c74cce3acd366eeb871c829ba562977137196e7baea57165",
+      "verifiedAt": "2026-11-14T15:39:12.271964+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-lib/src/ksplat.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-lib/src/ksplat.rs",
+      "bytes": 26062,
+      "sha256": "56e5daba0fa35cff3f6a09c958ef199da75c3114d234789bdbff138fca2f16ae",
+      "verifiedAt": "2026-11-14T15:39:12.442961+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-lib/src/lib.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-lib/src/lib.rs",
+      "bytes": 14776,
+      "sha256": "b11c9af7045af25d7251ddfbba1e25db69bf6ccf2f419fb3a461c17f9ea6e678",
+      "verifiedAt": "2026-11-14T15:39:12.439063+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-lib/src/ordering.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-lib/src/ordering.rs",
+      "bytes": 11360,
+      "sha256": "43fe146645ced12aec1c933cd0daaa2ae1e0c25ef877cd77785595c197142ab4",
+      "verifiedAt": "2026-11-14T15:39:12.504946+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-lib/src/ply.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-lib/src/ply.rs",
+      "bytes": 53965,
+      "sha256": "9c5a73e7109e0c90367a0ea1c952723db99f6544d074bff304d3054db9bb0bd7",
+      "verifiedAt": "2026-11-14T15:39:12.647656+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-lib/src/quick_lod.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-lib/src/quick_lod.rs",
+      "bytes": 10424,
+      "sha256": "e66ad8cda89df142ee0aeae6b5a9ff2ac0c0f2e4fb7a5789f9d050be895e091b",
+      "verifiedAt": "2026-11-14T15:39:12.676714+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-lib/src/rad.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-lib/src/rad.rs",
+      "bytes": 67602,
+      "sha256": "76257ab753abbbf3de8b44d002e97eb996c05a42cfb604ca5988f62942cbef6e",
+      "verifiedAt": "2026-11-14T15:39:12.556966+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-lib/src/sh_clustering.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-lib/src/sh_clustering.rs",
+      "bytes": 7977,
+      "sha256": "13dd1dc1540b6f4af97891f0bd82acaf9384c4553ddf3c45afd52a1736ece759",
+      "verifiedAt": "2026-11-14T15:39:12.723785+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-lib/src/sogs.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-lib/src/sogs.rs",
+      "bytes": 20890,
+      "sha256": "0d82ea3d7b90c23bad8a3c15d2cafa0eefa067e46cf50ab95fe40c3c1d812774",
+      "verifiedAt": "2026-11-14T15:39:12.791961+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-lib/src/splat_encode.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-lib/src/splat_encode.rs",
+      "bytes": 20062,
+      "sha256": "b6ad44a5c3654965da2b6c6223c117593ed12f098e30f4918fb9dc20761cbe97",
+      "verifiedAt": "2026-11-14T15:39:12.839893+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-lib/src/spz.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-lib/src/spz.rs",
+      "bytes": 44407,
+      "sha256": "534e94c7f9bf1eba1a5dfb0199bf1bd0252c9484080fd4b80467c7f0db5fcbec",
+      "verifiedAt": "2026-11-14T15:39:12.892633+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-lib/src/symmat3.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-lib/src/symmat3.rs",
+      "bytes": 9369,
+      "sha256": "d09b06b648909426613748e40eb5cf64b1d503e5c35ddad47d97e06d18ca8611",
+      "verifiedAt": "2026-11-14T15:39:12.969136+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-lib/src/tiny_lod.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-lib/src/tiny_lod.rs",
+      "bytes": 8919,
+      "sha256": "a84612f58986e04aba63fe6ce7429b516ac3c60b2324bf0933d097e4f899e1b7",
+      "verifiedAt": "2026-11-14T15:39:12.963247+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-lib/src/tsplat.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-lib/src/tsplat.rs",
+      "bytes": 6512,
+      "sha256": "b94edf0a5ceccbdeb8ded57f0f201ba252fa5359f6f91fc3e5c0b3316dc10bef",
+      "verifiedAt": "2026-11-14T15:39:13.011450+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-rs/Cargo.toml",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-rs/Cargo.toml",
+      "bytes": 1253,
+      "sha256": "e2c8e4deace1a9ac77f36eaf2c8fcde13e3765048c4f5798b554cf27b0c96fcf",
+      "verifiedAt": "2026-11-14T15:39:13.061556+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-rs/README.md",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-rs/README.md",
+      "bytes": 907,
+      "sha256": "585dd663290799a88a71756050d2c45e1b78f8888227aca3f7388bd00eb22ac0",
+      "verifiedAt": "2026-11-14T15:39:13.143347+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-rs/src/decoder.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-rs/src/decoder.rs",
+      "bytes": 1802,
+      "sha256": "6d653d17463fd4da22c010e7d1abba46cbe83c10fdb3e446db313762bb701850",
+      "verifiedAt": "2026-11-14T15:39:13.130791+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-rs/src/ext_splats.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-rs/src/ext_splats.rs",
+      "bytes": 42941,
+      "sha256": "c7740df9ec994f7fbb44edd18e349a651ad4ba6b4f2b14a3afd9ab4559109642",
+      "verifiedAt": "2026-11-14T15:39:13.198607+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-rs/src/lib.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-rs/src/lib.rs",
+      "bytes": 25533,
+      "sha256": "cdd7f0711031078612e8c102653c23a15f24e5d8e9768814ccc9edd87bdb5696",
+      "verifiedAt": "2026-11-14T15:39:13.247154+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-rs/src/lod_tree.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-rs/src/lod_tree.rs",
+      "bytes": 32299,
+      "sha256": "b2dfd4d5902dc42ec868e2d26dfdc5ec25706c2ba670aa4befce47a4697c83a5",
+      "verifiedAt": "2026-11-14T15:39:13.300057+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-rs/src/packed_splats.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-rs/src/packed_splats.rs",
+      "bytes": 37741,
+      "sha256": "55b8428b50a794e2b9231fc6da1fbf48597bd5ad621f049e798a8b941ba5a35e",
+      "verifiedAt": "2026-11-14T15:39:13.356142+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-rs/src/raycast.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-rs/src/raycast.rs",
+      "bytes": 6340,
+      "sha256": "1c3faf8cf48831b768364059c9d5722eea6e6bc8ff43656cb289724b7dd94a92",
+      "verifiedAt": "2026-11-14T15:39:13.366245+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-rs/src/sort.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-rs/src/sort.rs",
+      "bytes": 7831,
+      "sha256": "6cdaa718d33e5e764aa742230795f006e909ef181d79a704756e2815fe259442",
+      "verifiedAt": "2026-11-14T15:39:13.409282+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/rust/spark-rs/src/transform.rs",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-rs/src/transform.rs",
+      "bytes": 2490,
+      "sha256": "f29becd23eab9f125ecba10ff4ecc5fdd00c74f9762896e54cd545062ead24da",
+      "verifiedAt": "2026-11-14T15:39:13.486445+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/LICENSE",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/LICENSE",
+      "bytes": 1088,
+      "sha256": "51829693e5dccd9ca1daa093991faac3aaa93238eb8fd5f5cb4130af85791d64",
+      "verifiedAt": "2026-11-14T15:39:13.508586+00:00"
+    },
+    {
+      "sourceUrl": "https://raw.githubusercontent.com/sparkjsdev/spark/ffe210dc0a45d0515a06c9235878108112827d61/package.json",
+      "path": "artifacts/realism-01/review-chunks/tooling/spark-source/package.json",
+      "bytes": 3426,
+      "sha256": "35d66bbe837cd8961e2b1a016a65e3934804bbe82ba5ef8a6dd5f59a7a34907b",
+      "verifiedAt": "2026-11-14T15:39:13.522142+00:00"
+    }
+  ],
+  "commands": [
+    {
+      "command": [
+        "bash",
+        "/workspace/TourGuideAI/artifacts/realism-01/review-chunks/tooling/unpacked/cargo-1.91.0-x86_64-unknown-linux-gnu/install.sh",
+        "--prefix=/workspace/TourGuideAI/artifacts/realism-01/review-chunks/tooling/native",
+        "--disable-ldconfig"
+      ],
+      "exitCode": 0,
+      "log": "artifacts/realism-01/review-chunks/tooling/cargo-install.txt"
+    },
+    {
+      "command": [
+        "bash",
+        "/workspace/TourGuideAI/artifacts/realism-01/review-chunks/tooling/unpacked/rust-std-1.91.0-x86_64-unknown-linux-gnu/install.sh",
+        "--prefix=/workspace/TourGuideAI/artifacts/realism-01/review-chunks/tooling/native",
+        "--disable-ldconfig"
+      ],
+      "exitCode": 0,
+      "log": "artifacts/realism-01/review-chunks/tooling/rust-std-install.txt"
+    },
+    {
+      "command": [
+        "bash",
+        "/workspace/TourGuideAI/artifacts/realism-01/review-chunks/tooling/unpacked/rustc-1.91.0-x86_64-unknown-linux-gnu/install.sh",
+        "--prefix=/workspace/TourGuideAI/artifacts/realism-01/review-chunks/tooling/native",
+        "--disable-ldconfig"
+      ],
+      "exitCode": 0,
+      "log": "artifacts/realism-01/review-chunks/tooling/rustc-install.txt"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+[package]
+name = "review-rad-encoding"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+spark-lib = { path = "../../../../artifacts/realism-01/review-chunks/tooling/spark-source/rust/spark-lib", default-features = false, features = ["rad", "gsplat"] }
+anyhow = "=1.0.100"
+serde_json = "=1.0.145"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+
+[workspace]
