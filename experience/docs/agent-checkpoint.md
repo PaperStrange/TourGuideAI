@@ -18,6 +18,14 @@ identity gate and is ineligible for publication. The 16-file evidence bundle and
 pinned reproduction tools verify offline. The current public runtime/assets are
 unchanged. Native response profiling and Panoramax geometry qualification continue.
 
+R19's [Panoramax intake and snapshot board](../evidence/realism-01/free-connector-next/README.md)
+retain 34 verified files: 14 records in the route rectangle, 167 in the surrounding
+bounded query, and three licensed native Insta360 panoramas. The three camera
+positions lie 25–41 m west of edge 1, moving north–south. They support the crossing
+appearance/geometry trial. Eastward connector coverage, metric scale, continuous
+walking floor and night sources remain unqualified. No production route asset
+has been substituted. The bounded reconstruction uses these actual photographs.
+
 14 November 2026 · Architectural loading and demand rendering published.
 
 The user approved the appearance and reported loading pauses. R20 preserves all

@@ -38,6 +38,7 @@ the next loading, matched-view QA and free-source qualification work.
 | [Exact-value encoding trial](../../evidence/realism-01/review-chunks/README.md) | Official codec comparison, all-page sizes and strict decoded-identity qualification |
 | [Free Kyoto source feasibility](research/free-source-feasibility.md) | Inspected photographs, source-family separation, actual geographic coverage and remaining registration gaps |
 | [Free route sequence follow-up](research/free-route-20261114.md) | Complete sequence metadata and the remaining calibration/route qualification requirements |
+| [Kyoto crossing capture intake](research/free-connector-next.md) | Licensed Panoramax snapshots, all-edge camera distances and bounded reconstruction inputs |
 | [Controlled trials](experiments/README.md) | Matched inputs, routes, viewpoints and comparison protocol |
 | [Parallel candidate status](experiments/candidate-status.md) | Mesh, splat and shared-ground evidence; explicit qualification dependencies |
 | [Evidence store](../../evidence/realism-01/README.md) | Reviewed artifacts and validation records |
