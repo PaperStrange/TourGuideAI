@@ -1,6 +1,6 @@
 # User lessons and acceptance traceability
 
-5 November 2026 · Product and QA maintain this register. Its requirements come
+14 November 2026 · Product and QA maintain this register. Its requirements come
 from the user's retained feedback and approvals. Each row identifies the test,
 evidence and decision needed to close the concern. Absence of evidence leaves
 the requirement open. The [benchmark protocol](benchmark.md) fixes the comparison
@@ -20,6 +20,7 @@ conditions and selection rules.
 | L10 | Real-world location sharing can support travel, with user control | Foreground consent, Stop/Resume, denied or stale fixes, manual exploration and return; separate real-phone field accuracy observations | Preserve the usable manual journey; simulated location tests cannot close field accuracy |
 | L11 | City/country scope needs reliable coverage and truthful availability | Distinguish searchable places, reviewed walkable packs, local backend and public service availability; test missing coverage and connection errors | A search result never promises detailed 3D coverage; synchronized multiplayer walking remains a separate milestone |
 | L12 | Repeated stops and inflated claims made progress difficult to verify | Provenance and hashes, portable evidence, source/saved-record compatibility, validated checkpoint and synchronized commits; ordinary public entry and published-byte check | Report actual gate state and preview identity; [backlog](backlog.md) distinguishes delivery from external dependencies |
+| L13 | Approved textures and lighting must remain intact while loading pauses are addressed | Same source files, submitted camera, settled count and D25 pixel comparison; matched cold loading, real input-to-draw delays during streaming, settled interaction and cancellation | Separate network loading, scene preparation and render responsiveness. Preserve the prior measurements and actual failures; cloud software rendering leaves physical-device performance open |
 
 ## Current evidence boundaries
 

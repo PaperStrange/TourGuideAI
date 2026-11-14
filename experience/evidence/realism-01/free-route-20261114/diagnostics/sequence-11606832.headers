@@ -1,0 +1,17 @@
+HTTP/1.1 200 OK
+date: Sat, 14 Nov 2026 08:56:56 GMT
+server: envoy
+
+HTTP/2 200 
+date: Sat, 14 Nov 2026 08:56:57 GMT
+content-type: application/json
+content-length: 190
+access-control-allow-credentials: true
+access-control-allow-headers: Content-Type,X-Requested-With,Access-Control-Allow-Credentials,User-Agent,Content-Length,Authorization,X-Karta-Passport,X-Client-Source,access_token,Access-Token
+access-control-allow-methods: GET,POST,OPTIONS,PUT,PATCH,DELETE
+access-control-allow-origin: *
+x-envoy-upstream-service-time: 847
+server: envoy
+vary: Origin
+x-request-id: 9591520a-6e8f-421b-9e86-998e5003042f
+

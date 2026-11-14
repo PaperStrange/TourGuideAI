@@ -47,6 +47,7 @@ export function createReviewScene({ canvas, assets, onState = () => {} }) {
   let queue = Promise.resolve();
   let drawing = Promise.resolve();
   let animationFrame = 0;
+  let renderRequested = false;
   let disposed = false;
   let frames = 0;
   let drawnView = null;
@@ -130,6 +131,34 @@ export function createReviewScene({ canvas, assets, onState = () => {} }) {
     }
   }
 
+  function waitForInitialView(session, signal) {
+    const combinedSignal = signal
+      ? AbortSignal.any([signal, session.controller.signal]) : session.controller.signal;
+    combinedSignal.throwIfAborted();
+    if (session.detailReleasedAt !== null) return Promise.resolve();
+    return new Promise((resolve, reject) => {
+      function cleanup() {
+        session.detailWaiters.delete(release);
+        combinedSignal.removeEventListener('abort', aborted);
+      }
+      function release() { cleanup(); resolve(); }
+      function aborted() { cleanup(); reject(combinedSignal.reason); }
+      session.detailWaiters.add(release);
+      combinedSignal.addEventListener('abort', aborted, { once: true });
+    });
+  }
+
+  function releaseInitialView(session) {
+    if (session.detailReleaseFrame || session.detailReleasedAt !== null) return;
+    // 首次实际绘制后留出浏览器呈现机会，再继续下载其余细节。
+    session.detailReleaseFrame = requestAnimationFrame(() => {
+      session.detailReleaseFrame = 0;
+      if (disposed || active !== session || session.controller.signal.aborted || session.failed) return;
+      session.detailReleasedAt = performance.now();
+      for (const release of [...session.detailWaiters]) release();
+    });
+  }
+
   async function initialize(session) {
     if (session.variant === 'original') {
       const bytes = await fetchBytes(session, assets.original);
@@ -141,12 +170,18 @@ export function createReviewScene({ canvas, assets, onState = () => {} }) {
       const rootUrl = assets.streamed;
       const fetchSource = {
         fetchRange: (signal, offset, bytes) => fetchBytes(session, rootUrl, signal, { offset, bytes }),
-        fetchChunkFile: (signal, filename) => fetchBytes(session, new URL(filename, rootUrl).href, signal),
+        fetchChunkFile: async (signal, filename) => {
+          const url = new URL(filename, rootUrl).href;
+          if (url !== session.rootChunkUrl) await waitForInitialView(session, signal);
+          return fetchBytes(session, url, signal);
+        },
         fetchChunkById: () => { throw new Error('This review requires a chunked RAD manifest'); },
       };
       session.paged = new ReviewPagedSplats({ fileType: SplatFileType.RAD, fetchSource });
       session.paged.onFailure = error => fail(session, error);
-      await session.paged.getRadMeta();
+      const { meta } = await session.paged.getRadMeta();
+      if (!meta.chunks[0]?.filename) throw new Error('This review requires a separate root chunk');
+      session.rootChunkUrl = new URL(meta.chunks[0].filename, rootUrl).href;
       session.controller.signal.throwIfAborted();
       session.mesh = new SplatMesh({ paged: session.paged });
       await session.mesh.initialized;
@@ -154,7 +189,7 @@ export function createReviewScene({ canvas, assets, onState = () => {} }) {
     session.controller.signal.throwIfAborted();
     // 两种表示使用同一来源的坐标转换、相机和 focalAdjustment。
     session.mesh.rotation.z = Math.PI;
-    session.spark = new SparkRenderer({ renderer, autoUpdate: false, sortRadial: false,
+    session.spark = new SparkRenderer({ renderer, autoUpdate: true, onDirty: scheduleFrame, sortRadial: false,
       focalAdjustment: 2, enableLod: session.variant === 'streamed', maxPagedSplats: 524288,
       lodSplatCount: 262144, numLodFetchers: 1, lodCleanupTimeoutMs: 3000, lodRaycast: 0 });
     scene.add(session.mesh, session.spark);
@@ -164,7 +199,64 @@ export function createReviewScene({ canvas, assets, onState = () => {} }) {
   }
 
   function scheduleFrame() {
-    if (!disposed && !animationFrame) animationFrame = requestAnimationFrame(draw);
+    renderRequested = true;
+    scheduleObservation();
+  }
+
+  function scheduleObservation() {
+    if (!disposed && !document.hidden && active?.ready && !active.failed
+      && !active.controller.signal.aborted && !animationFrame) animationFrame = requestAnimationFrame(draw);
+  }
+
+  function contentIdentity(session) {
+    const spark = session.spark;
+    return { drawnSplats: spark.activeSplats, displayedSplats: spark.display.numSplats,
+      selectedSplats: session.variant === 'streamed' ? session.paged.numSplats : session.mesh.numSplats,
+      currentVersion: spark.current.version, displayVersion: spark.display.version,
+      currentMappingVersion: spark.current.mappingVersion, displayMappingVersion: spark.display.mappingVersion,
+      meshVersion: session.mesh.version, lastSortTime: spark.lastSortTime };
+  }
+
+  function sameContent(first, second) {
+    return Object.keys(first).every(key => first[key] === second[key]);
+  }
+
+  function sameCamera(first, second) {
+    return ['matrixWorld', 'projectionMatrix'].every(key => first[key]
+      .every((value, index) => Math.abs(value - second[key][index]) < 1e-7));
+  }
+
+  function observeSubmittedView(session, observation) {
+    const previous = drawnView;
+    if (!previous || previous.variant !== session.variant || previous.frames <= session.observedFrame) return;
+    session.observedFrame = previous.frames;
+    const stable = previous.drawnSplats > 0 && previous.pagingBeforeRender.idle && observation.paging.idle
+      && sameCamera(previous.beforeRender, previous) && sameCamera(previous, observation)
+      && sameContent(previous.beforeRender.content, previous.content) && sameContent(previous.content, observation.content);
+    if (!stable) {
+      session.stableDraws = [];
+      session.settledFrames = 0;
+      session.settledView = null;
+      return;
+    }
+    const last = session.stableDraws.at(-1);
+    if (last && (!sameCamera(last, previous) || !sameContent(last.content, previous.content))) session.stableDraws = [];
+    session.stableDraws.push({ frames: previous.frames, submittedAt: previous.submittedAt,
+      matrixWorld: [...previous.matrixWorld], projectionMatrix: [...previous.projectionMatrix],
+      content: { ...previous.content }, beforeRender: previous.beforeRender,
+      pagingBeforeRender: previous.pagingBeforeRender, paging: previous.paging,
+      observedAt: observation.observedAt, observation });
+    if (session.stableDraws.length > 3) session.stableDraws.shift();
+    session.settledFrames = session.stableDraws.length;
+    if (session.settledFrames === 3) {
+      // 稳定记录归属上一幅实际画面；保留绘制后瞬时队列状态及后续观察证据。
+      session.settledView = { ...previous, observedAt: observation.observedAt,
+        observation, qualifiedFrames: [...session.stableDraws] };
+      if (session.firstSettledAt === null) {
+        session.firstSettledAt = observation.observedAt;
+        session.firstSettledFrame = previous.frames;
+      }
+    }
   }
 
   function pagingState(session) {
@@ -205,13 +297,28 @@ export function createReviewScene({ canvas, assets, onState = () => {} }) {
     drawing = (async () => {
       try {
         controls.update();
-        await session.spark.update({ scene, camera });
         if (disposed || active !== session || session.controller.signal.aborted) return;
+        const pagingBeforeRender = pagingState(session);
+        const beforeRender = { matrixWorld: camera.matrixWorld.toArray(), projectionMatrix: camera.projectionMatrix.toArray(),
+          content: contentIdentity(session), paging: pagingBeforeRender, observedAt: performance.now() };
+        observeSubmittedView(session, beforeRender);
+        const mustRender = renderRequested;
+        renderRequested = false;
+        if (!mustRender && (!pagingBeforeRender.idle || session.settledFrames >= 3)) {
+          if (state.firstView && pagingBeforeRender.idle && state.status !== 'interactive') {
+            emit(session, { status: 'interactive', phase: 'view', firstView: true });
+          }
+          return;
+        }
+        const renderStartedAt = performance.now();
+        // Spark 在其标准渲染回调中更新；当前画面无需等待后台排序完成。
         renderer.render(scene, camera);
         frames += 1;
         drawnView = { matrixWorld: camera.matrixWorld.toArray(),
           projectionMatrix: camera.projectionMatrix.toArray(), frames, variant: session.variant,
-          submittedAt: performance.now(), drawnSplats: session.spark.activeSplats };
+          submittedAt: performance.now(), drawnSplats: session.spark.activeSplats,
+          renderDurationMs: performance.now() - renderStartedAt, pagingBeforeRender,
+          beforeRender, content: contentIdentity(session) };
         const displayed = session.spark.display?.numSplats ?? 0;
         const selected = session.variant === 'streamed' ? session.paged.numSplats : session.mesh.numSplats;
         if (displayed > 0 && selected > 0 && session.spark.activeSplats > 0) {
@@ -219,18 +326,10 @@ export function createReviewScene({ canvas, assets, onState = () => {} }) {
           if (session.firstVisibleAt === null) {
             session.firstVisibleAt = drawnView.submittedAt;
             session.firstVisibleFrame = frames;
+            if (session.variant === 'streamed') releaseInitialView(session);
           }
           const paging = pagingState(session);
-          const signature = [...drawnView.matrixWorld, ...drawnView.projectionMatrix, session.spark.activeSplats]
-            .map(value => Math.round(value * 1e9) / 1e9).join(',');
-          session.settledFrames = paging.idle ? (session.settledSignature === signature ? session.settledFrames + 1 : 1) : 0;
-          session.settledSignature = signature;
-          // 保留已提交画面的状态；随后启动的排序不应改写上一帧的稳定证据。
-          drawnView.paging = { ...paging, settled: paging.idle && paging.drawnMatchesCamera && session.settledFrames >= 3 };
-          if (session.firstSettledAt === null && session.settledFrames >= 3) {
-            session.firstSettledAt = drawnView.submittedAt;
-            session.firstSettledFrame = frames;
-          }
+          drawnView.paging = { ...paging, settled: false };
           const streaming = session.variant === 'streamed' && (!paging.cameraCoveredByLod
             || paging.pending || paging.readyUploads > 0 || paging.lodDirty || paging.workerBusy);
           const status = streaming ? 'streaming' : 'interactive';
@@ -238,18 +337,21 @@ export function createReviewScene({ canvas, assets, onState = () => {} }) {
             emit(session, { status, phase: 'view', firstView: true });
           }
         }
+        // 观察实际已提交的画面；仍有工作时依靠 Spark 的 onDirty 唤醒。
+        scheduleObservation();
       } catch (error) {
         fail(session, error);
       }
     })();
-    drawing.then(() => {
-      if (active === session && !session.failed && !session.controller.signal.aborted) scheduleFrame();
-    });
   }
 
   function abort(session) {
     session?.controller.abort();
     session?.paged?.abortController.abort();
+    if (session?.detailReleaseFrame) {
+      cancelAnimationFrame(session.detailReleaseFrame);
+      session.detailReleaseFrame = 0;
+    }
   }
 
   async function release(session) {
@@ -281,7 +383,8 @@ export function createReviewScene({ canvas, assets, onState = () => {} }) {
     const session = { variant, controller: new AbortController(), loadedBytes: 0,
       totalBytes: null, ready: false, failed: false, mesh: null, spark: null, paged: null,
       firstVisibleAt: null, firstVisibleFrame: null, firstSettledAt: null, firstSettledFrame: null,
-      settledFrames: 0, settledSignature: null };
+      settledFrames: 0, settledView: null, stableDraws: [], observedFrame: 0, rootChunkUrl: null,
+      detailWaiters: new Set(), detailReleaseFrame: 0, detailReleasedAt: null };
     abort(requested);
     abort(active);
     requested = session;
@@ -313,6 +416,7 @@ export function createReviewScene({ canvas, assets, onState = () => {} }) {
       : sourceCamera.fov;
     camera.updateProjectionMatrix();
     renderer.setSize(width, height, false);
+    scheduleFrame();
   }
 
   function reset() {
@@ -321,6 +425,7 @@ export function createReviewScene({ canvas, assets, onState = () => {} }) {
     controls.target.fromArray(sourceCamera.target);
     camera.lookAt(controls.target);
     controls.update();
+    scheduleFrame();
   }
 
   function moveCamera({ azimuth = 0, polar = 0, scale = 1 }) {
@@ -331,6 +436,7 @@ export function createReviewScene({ canvas, assets, onState = () => {} }) {
     spherical.radius = THREE.MathUtils.clamp(spherical.radius * scale, controls.minDistance, controls.maxDistance);
     camera.position.copy(controls.target).add(new THREE.Vector3().setFromSpherical(spherical));
     controls.update();
+    scheduleFrame();
   }
 
   function setCameraPose({ position, target }) {
@@ -347,6 +453,7 @@ export function createReviewScene({ canvas, assets, onState = () => {} }) {
     camera.position.fromArray(position);
     controls.target.fromArray(target);
     controls.update();
+    scheduleFrame();
     return true;
   }
 
@@ -355,13 +462,15 @@ export function createReviewScene({ canvas, assets, onState = () => {} }) {
     return { position: camera.position.toArray(), target: controls.target.toArray(),
       quaternion: camera.quaternion.toArray(), fov: camera.fov, matrixWorld: camera.matrixWorld.toArray(),
       projectionMatrix: camera.projectionMatrix.toArray(), ...state, frames, disposed,
-      drawnView: drawnView ? { ...drawnView, matrixWorld: [...drawnView.matrixWorld],
-        projectionMatrix: [...drawnView.projectionMatrix], paging: drawnView.paging ? { ...drawnView.paging } : null } : null,
+      drawnView: drawnView ? structuredClone(drawnView) : null,
+      settledView: requested?.settledView ? structuredClone(requested.settledView) : null,
       drawnSplats: active?.spark?.activeSplats ?? 0, loadedVariant: active?.variant ?? null,
       firstVisibleAt: requested?.firstVisibleAt ?? null, firstVisibleFrame: requested?.firstVisibleFrame ?? null,
       firstSettledAt: requested?.firstSettledAt ?? null, firstSettledFrame: requested?.firstSettledFrame ?? null,
       paging: pagingState(active),
       transportMetrics: { encoding: 'identity', responseBodyBytes: requested?.loadedBytes ?? 0 },
+      loadingSchedule: { rootChunkUrl: requested?.rootChunkUrl ?? null,
+        detailReleasedAt: requested?.detailReleasedAt ?? null, waitingChunks: requested?.detailWaiters.size ?? 0 },
       sceneObjects: scene.children.length, rendererMemory: { ...renderer.info.memory },
       requests: requests.map(request => ({ ...request })) };
   }
@@ -372,6 +481,9 @@ export function createReviewScene({ canvas, assets, onState = () => {} }) {
       { requiresReload: true });
   }
   canvas.addEventListener('webglcontextlost', contextLost);
+  controls.addEventListener('change', scheduleFrame);
+  function visibilityChanged() { if (!document.hidden) scheduleFrame(); }
+  document.addEventListener('visibilitychange', visibilityChanged);
   reset();
   resize();
 
@@ -382,8 +494,10 @@ export function createReviewScene({ canvas, assets, onState = () => {} }) {
     abort(active);
     cancelAnimationFrame(animationFrame);
     animationFrame = 0;
+    controls.removeEventListener('change', scheduleFrame);
     controls.dispose();
     canvas.removeEventListener('webglcontextlost', contextLost);
+    document.removeEventListener('visibilitychange', visibilityChanged);
     await queue;
     await release(active);
     renderer.dispose();
@@ -392,7 +506,7 @@ export function createReviewScene({ canvas, assets, onState = () => {} }) {
     onState({ ...state });
   }
 
-  return Object.freeze({ setVariant, reset, resize, dispose, getView, setCameraPose,
+  return Object.freeze({ setVariant, reset, resize, dispose, getView, setCameraPose, requestFrame: scheduleFrame,
     rotate: radians => moveCamera({ azimuth: radians }),
     tilt: radians => moveCamera({ polar: radians }),
     zoom: scale => moveCamera({ scale }) });

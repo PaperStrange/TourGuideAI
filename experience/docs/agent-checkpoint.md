@@ -1,5 +1,39 @@
 # Agent checkpoint · Explore and Together homepage
 
+14 November 2026 · Loading responsiveness iteration in validation.
+
+The user approved the appearance and reported loading pauses. R20 preserves all
+41 capture files and the existing display settings, prioritizes the first visible
+root capture, and renders on camera/detail changes through Spark's supported
+asynchronous update path. The tour explicitly wakes an idle renderer. Settling
+records three actual frames with unchanged camera/content before drawing and at
+a later idle observation; immediate queue flags remain available separately.
+
+The local candidate is `artifacts/realism-01/review-loading/package-02/`, manifest
+SHA-256 `ef4dd7c30bdc8fd05ffa3e5755dd5c4e6df0be9ad290936829ff30a10849942c`.
+Its matched 1000 × 800 run passes 15 checks, including exact baseline/candidate
+pixels and exact repeated pixels at 261,359 drawn splats. First visibility is
+3.801 s / 3,385,672 encoded response bytes versus 3.777 s / 3,541,883 bytes for
+the prior package. Four trusted-click-to-submitted-camera observations remain
+within about 6–14 ms; these leave physical presentation and fluency unverified.
+The differing settling boundaries and extra repeat-capture Reset prevent a
+direct comparison of whole-run CPU totals or settling speed.
+
+Remaining release work: matched public baseline/current measurements, ordinary
+EN/ZH controls and recovery, native visibility and idle wake, full guided path,
+retained evidence verification, public byte identity and synchronized checkpoint.
+The published review remains `794ab33f14415b27d3687f651902bc4aecd098e9` until
+those local release checks pass. Reproduction and exact browser attempts are
+under `experience/tools/review-loading/` and ignored
+`artifacts/realism-01/review-loading/qa/`.
+
+R19's [seven-sequence follow-up](../sprints/realism-01/research/free-route-20261114.md)
+retains nine actual metadata records and complete pagination. Calibrated Kyoto
+connector coverage remains unqualified. Free sources only, full-route realism,
+physical-device and participant gates remain in effect.
+
+## Previous verified increment
+
 14 November 2026 · Continuous architectural exploration delivered and verified.
 
 The user approved the current demo's texture and lighting and requested continuation.

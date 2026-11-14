@@ -1,0 +1,204 @@
+{
+  "date": "2026-11-14",
+  "location": "Kyoto; the seven sequences identified by the retained Shijo East proximity query",
+  "method": "Seven documented no-key sequence queries; complete retained polylines define the geographic bounding rectangle. Numeric membership checks use source-declared camera coordinates.",
+  "inputs": [
+    {
+      "path": "experience/src/neighborhoods/shijo-east/geography.json",
+      "bytes": 175220,
+      "sha256": "0fe837655a45b8c2685e1bae24d739ef9fdf2c55dc60401588474cfa31bd9c7f"
+    },
+    {
+      "path": "experience/evidence/realism-01/qualification/free-sources/query-coverage.json",
+      "bytes": 43658,
+      "sha256": "a5feac27c67c1a5035bc74e5885603587582e071e3a84b0284d2344acad7fc65"
+    }
+  ],
+  "routeBoundsDegrees": [
+    135.7599457,
+    35.0037511,
+    135.77152,
+    35.0050389
+  ],
+  "routeEdges": 54,
+  "lengthMetres": 1353.444059858351,
+  "sequences": [
+    {
+      "id": "11606832",
+      "response": "responses/sequence-11606832-150.json",
+      "source": "https://api.kartaview.org/2.0/photo/?sequenceId=11606832&page=1&itemsPerPage=150",
+      "hasMoreData": false,
+      "photos": [
+        {
+          "id": "2625879233",
+          "sequenceIndex": "0",
+          "longitude": 135.774933,
+          "latitude": 35.007063,
+          "shotDate": "2025-09-19 23:52:51.000",
+          "cameraParameters": null,
+          "fieldOfView": "0",
+          "heading": "0",
+          "previouslyRetained": false,
+          "cameraInsideRouteBounds": false
+        },
+        {
+          "id": "2625879234",
+          "sequenceIndex": "1",
+          "longitude": 135.774933,
+          "latitude": 35.007063,
+          "shotDate": "2025-09-19 23:52:57.000",
+          "cameraParameters": null,
+          "fieldOfView": "0",
+          "heading": "0",
+          "previouslyRetained": false,
+          "cameraInsideRouteBounds": false
+        },
+        {
+          "id": "2625879235",
+          "sequenceIndex": "2",
+          "longitude": 135.774912,
+          "latitude": 35.007061,
+          "shotDate": "2025-09-19 23:53:32.000",
+          "cameraParameters": null,
+          "fieldOfView": "0",
+          "heading": "0",
+          "previouslyRetained": true,
+          "cameraInsideRouteBounds": false
+        }
+      ]
+    },
+    {
+      "id": "11716327",
+      "response": "responses/sequence-11716327.json",
+      "source": "https://api.kartaview.org/2.0/photo/?sequenceId=11716327&page=1&itemsPerPage=150",
+      "hasMoreData": false,
+      "photos": [
+        {
+          "id": "2634394310",
+          "sequenceIndex": "0",
+          "longitude": 135.775227,
+          "latitude": 35.004195,
+          "shotDate": "2026-10-11 01:15:03.000",
+          "cameraParameters": null,
+          "fieldOfView": "0",
+          "heading": "0",
+          "previouslyRetained": true,
+          "cameraInsideRouteBounds": false
+        }
+      ]
+    },
+    {
+      "id": "11716328",
+      "response": "responses/sequence-11716328.json",
+      "source": "https://api.kartaview.org/2.0/photo/?sequenceId=11716328&page=1&itemsPerPage=150",
+      "hasMoreData": false,
+      "photos": [
+        {
+          "id": "2634394311",
+          "sequenceIndex": "0",
+          "longitude": 135.775104,
+          "latitude": 35.004412,
+          "shotDate": "2026-10-11 01:16:00.000",
+          "cameraParameters": null,
+          "fieldOfView": "0",
+          "heading": "0",
+          "previouslyRetained": true,
+          "cameraInsideRouteBounds": false
+        }
+      ]
+    },
+    {
+      "id": "11716329",
+      "response": "responses/sequence-11716329.json",
+      "source": "https://api.kartaview.org/2.0/photo/?sequenceId=11716329&page=1&itemsPerPage=150",
+      "hasMoreData": false,
+      "photos": [
+        {
+          "id": "2634394312",
+          "sequenceIndex": "0",
+          "longitude": 135.775137,
+          "latitude": 35.005113,
+          "shotDate": "2026-10-11 01:17:34.000",
+          "cameraParameters": null,
+          "fieldOfView": "0",
+          "heading": "0",
+          "previouslyRetained": true,
+          "cameraInsideRouteBounds": false
+        }
+      ]
+    },
+    {
+      "id": "11716330",
+      "response": "responses/sequence-11716330.json",
+      "source": "https://api.kartaview.org/2.0/photo/?sequenceId=11716330&page=1&itemsPerPage=150",
+      "hasMoreData": false,
+      "photos": [
+        {
+          "id": "2634394313",
+          "sequenceIndex": "0",
+          "longitude": 135.775365,
+          "latitude": 35.006076,
+          "shotDate": "2026-10-11 01:19:37.000",
+          "cameraParameters": null,
+          "fieldOfView": "0",
+          "heading": "0",
+          "previouslyRetained": true,
+          "cameraInsideRouteBounds": false
+        }
+      ]
+    },
+    {
+      "id": "11716350",
+      "response": "responses/sequence-11716350.json",
+      "source": "https://api.kartaview.org/2.0/photo/?sequenceId=11716350&page=1&itemsPerPage=150",
+      "hasMoreData": false,
+      "photos": [
+        {
+          "id": "2634399226",
+          "sequenceIndex": "0",
+          "longitude": 135.775385,
+          "latitude": 35.006605,
+          "shotDate": "2026-10-11 08:07:43.000",
+          "cameraParameters": null,
+          "fieldOfView": "0",
+          "heading": "0",
+          "previouslyRetained": true,
+          "cameraInsideRouteBounds": false
+        }
+      ]
+    },
+    {
+      "id": "11716354",
+      "response": "responses/sequence-11716354.json",
+      "source": "https://api.kartaview.org/2.0/photo/?sequenceId=11716354&page=1&itemsPerPage=150",
+      "hasMoreData": false,
+      "photos": [
+        {
+          "id": "2634400926",
+          "sequenceIndex": "0",
+          "longitude": 135.77315,
+          "latitude": 35.005061,
+          "shotDate": "2026-10-11 08:31:05.000",
+          "cameraParameters": null,
+          "fieldOfView": "0",
+          "heading": "0",
+          "previouslyRetained": true,
+          "cameraInsideRouteBounds": false
+        }
+      ]
+    }
+  ],
+  "totals": {
+    "sequences": 7,
+    "photos": 9,
+    "additionalPhotoIds": [
+      "2625879233",
+      "2625879234"
+    ],
+    "camerasInsideRouteBounds": 0,
+    "absentCameraParameters": 9,
+    "zeroFieldOfView": 9,
+    "zeroHeading": 9
+  },
+  "limitations": "Declared public metadata only. Coordinates do not establish visible features, surveyed position, calibration, reconstructable geometry, pedestrian floor or complete provider coverage."
+}

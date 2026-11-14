@@ -1,0 +1,213 @@
+<h2>Photos</h2>
+
+<h3>Nearby (Click anywhere on Map)</h3>
+<p>Click on map triggers a Nearby API call using the clicked coordinates. This API returns metadata about nearby street view imagery sequences—such as capture timestamps, direction, and sequence IDs. The application then highlights these sequences on the map or displays additional information, enabling users to explore the collected imagery in context.</p>
+
+<p>This interaction model provides an intuitive way for users to discover and inspect street view data coverage across geographic regions.</p>
+
+<img src="assets/images/doc/kartaview-map-click.png" alt="KartaView map click interaction" style="width: 100%; max-width: 800px; margin: 1.5rem 0; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
+
+<p>An imagery sequence represents a series of geotagged street view images captured in a continuous motion, often by a vehicle, bicycle, or person carrying a camera. Each sequence includes metadata such as GPS coordinates, timestamps, camera heading, and possibly elevation data for every image frame.</p>
+
+<p>Retrieve list of Sequence's photo:</p>
+<div class="api-endpoint"><span class="method get">GET</span><span class="url">https://api.openstreetcam.org/2.0/photo/?lat=&#123;latitude&#125;&amp;lng=&#123;longitude&#125;&amp;zoomLevel=&#123;zoomLevel&#125;&amp;join=&#123;joinType&#125;&amp;orderBy=&#123;orderField&#125;&amp;orderDirection=&#123;orderDirection&#125;</span></div>
+<p><b>Example:</b> <code>https://api.openstreetcam.org/2.0/photo/?lat=-6.193932715082624&amp;lng=106.84937065233879&amp;zoomLevel=15&amp;join=sequence&amp;orderBy=id&amp;orderDirection=desc</code></p>
+<h4>Request Table</h4>
+<table><thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td><code>lat</code></td><td>Float</td><td>Yes</td><td>Latitude of the location for photo search.</td></tr>
+  <tr><td><code>lng</code></td><td>Float</td><td>Yes</td><td>Longitude of the location for photo search.</td></tr>
+  <tr><td><code>zoomLevel</code></td><td>Integer</td><td>Yes</td><td>Zoom level for the map view. Default: 18.</td></tr>
+  <tr><td><code>join</code></td><td>String</td><td>Optional</td><td>Specifies related data to include (e.g., sequence).</td></tr>
+  <tr><td><code>orderBy</code></td><td>String</td><td>Optional</td><td>Field to order the results by (e.g., id).</td></tr>
+  <tr><td><code>orderDirection</code></td><td>String</td><td>Optional</td><td>Direction to order the results (asc or desc).</td></tr>
+  <tr><td><code>sequenceId</code></td><td>Integer</td><td>Optional</td><td>ID of the sequence to filter photos.</td></tr>
+  <tr><td><code>sequenceIndex</code></td><td>Integer</td><td>Optional</td><td>Index within the sequence to filter photos.</td></tr>
+  <tr><td><code>searchSequenceType</code></td><td>String</td><td>Optional</td><td>Type of sequence to search.</td></tr>
+  <tr><td><code>searchPlatform</code></td><td>String</td><td>Optional</td><td>Platform used to capture the photos.</td></tr>
+  <tr><td><code>searchFieldOfView</code></td><td>Float</td><td>Optional</td><td>Field of view for the photo search (range: 0 to 360).</td></tr>
+  <tr><td><code>userId</code></td><td>Integer</td><td>Optional</td><td>User ID to filter photos.</td></tr>
+  <tr><td><code>videoIndex</code></td><td>Integer</td><td>Optional</td><td>Index of the video in the sequence.</td></tr>
+  <tr><td><code>projection</code></td><td>String</td><td>Optional</td><td>Type of projection (e.g., SPHERE, PLANE).</td></tr>
+  <tr><td><code>projectionYaw</code></td><td>Float</td><td>Optional</td><td>Yaw angle for the projection (range: -180 to 180).</td></tr>
+  <tr><td><code>fieldOfView</code></td><td>Float</td><td>Optional</td><td>Field of view of the photo (range: 0 to 360).</td></tr>
+  <tr><td><code>radius</code></td><td>Integer</td><td>Optional</td><td>Radius for the search area (range: 1 to 500).</td></tr>
+  <tr><td><code>nwLat</code></td><td>Float</td><td>Optional</td><td>Latitude of the northwest corner of the bounding box.</td></tr>
+  <tr><td><code>nwLng</code></td><td>Float</td><td>Optional</td><td>Longitude of the northwest corner of the bounding box.</td></tr>
+  <tr><td><code>seLat</code></td><td>Float</td><td>Optional</td><td>Latitude of the southeast corner of the bounding box.</td></tr>
+  <tr><td><code>seLng</code></td><td>Float</td><td>Optional</td><td>Longitude of the southeast corner of the bounding box.</td></tr>
+  <tr><td><code>startDate</code></td><td>String</td><td>Optional</td><td>Start date for filtering photos (format: YYYY-MM-DD).</td></tr>
+  <tr><td><code>endDate</code></td><td>String</td><td>Optional</td><td>End date for filtering photos (format: YYYY-MM-DD).</td></tr>
+  <tr><td><code>imageProcessingStatus</code></td><td>String</td><td>Optional</td><td>Status of image processing (e.g., FINISHED).</td></tr>
+  <tr><td><code>deviceId</code></td><td>String</td><td>Optional</td><td>Device ID used to capture the photos.</td></tr>
+</tbody></table>
+<h4>Response Table</h4>
+<table><thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead><tbody>
+  <tr><td><code>status.apiCode</code></td><td>Integer</td><td>API status code (check: API codes).</td></tr>
+  <tr><td><code>status.apiMessage</code></td><td>String</td><td>Message describing the API status.</td></tr>
+  <tr><td><code>status.httpCode</code></td><td>Integer</td><td>HTTP status code (check: Http codes).</td></tr>
+  <tr><td><code>status.httpMessage</code></td><td>String</td><td>Message describing the HTTP status.</td></tr>
+  <tr><td><code>result.data</code></td><td>Array</td><td>Array of photo objects.</td></tr>
+  <tr><td><code>data.autoImgProcessingResult</code></td><td>String</td><td>Result of automatic image processing (e.g., BLURRED).</td></tr>
+  <tr><td><code>data.autoImgProcessingStatus</code></td><td>String</td><td>Status of automatic image processing (e.g., FINISHED).</td></tr>
+  <tr><td><code>data.dateAdded</code></td><td>String</td><td>Date the photo was added.</td></tr>
+  <tr><td><code>data.dateProcessed</code></td><td>String</td><td>Date the photo was processed.</td></tr>
+  <tr><td><code>data.fieldOfView</code></td><td>Float</td><td>Field of view of the photo (e.g., 360).</td></tr>
+  <tr><td><code>data.filepath</code></td><td>String</td><td>Filepath of the photo relative to storage.</td></tr>
+  <tr><td><code>data.fileurl</code></td><td>String</td><td>URL of the photo file.</td></tr>
+  <tr><td><code>data.heading</code></td><td>Float</td><td>Heading angle of the photo.</td></tr>
+  <tr><td><code>data.lat</code></td><td>Float</td><td>Latitude of the photo's location.</td></tr>
+  <tr><td><code>data.lng</code></td><td>Float</td><td>Longitude of the photo's location.</td></tr>
+  <tr><td><code>data.projection</code></td><td>String</td><td>Projection type of the photo (e.g., SPHERE).</td></tr>
+  <tr><td><code>data.sequence</code></td><td>Object</td><td>Information about the sequence associated with the photo.</td></tr>
+  <tr><td><code>sequence.id</code></td><td>String</td><td>ID of the sequence.</td></tr>
+  <tr><td><code>sequence.userId</code></td><td>Integer</td><td>ID of the user who captured the sequence.</td></tr>
+  <tr><td><code>sequence.dateAdded</code></td><td>String</td><td>Date the sequence was added.</td></tr>
+  <tr><td><code>sequence.distance</code></td><td>Float</td><td>Total distance covered by the sequence.</td></tr>
+  <tr><td><code>sequence.deviceName</code></td><td>String</td><td>Name of the device used to capture the sequence.</td></tr>
+  <tr><td><code>sequence.fieldOfView</code></td><td>Float</td><td>Field of view of the sequence.</td></tr>
+  <tr><td><code>sequence.nwLat</code></td><td>Float</td><td>Latitude of the northwest corner of the bounding box for the sequence.</td></tr>
+  <tr><td><code>sequence.nwLng</code></td><td>Float</td><td>Longitude of the northwest corner of the bounding box for the sequence.</td></tr>
+  <tr><td><code>sequence.seLat</code></td><td>Float</td><td>Latitude of the southeast corner of the bounding box for the sequence.</td></tr>
+  <tr><td><code>sequence.seLng</code></td><td>Float</td><td>Longitude of the southeast corner of the bounding box for the sequence.</td></tr>
+</tbody></table>
+
+<h3>Click Photo (Click photo list below portal)</h3>
+<p>Requesting all related photos by [sequenceID] showing a complete collection trace (sequence).</p>
+
+<p>A photo image frame is a single geotagged image captured as part of a street view sequence. Each frame represents a specific point along the sequence route, typically taken at regular intervals (e.g., every few meters) as the camera moves through space.</p>
+
+<p>Each image frame includes associated metadata such as:</p>
+<ul>
+  <li><strong>Latitude and longitude</strong> – the GPS position where the image was taken</li>
+  <li><strong>Heading</strong> – the direction the camera was facing</li>
+  <li><strong>Timestamp</strong> – the exact time of capture</li>
+  <li><strong>Sequence ID</strong> – a reference to the sequence it belongs to</li>
+  <li><strong>Sequence index</strong> – its position/order within the sequence</li>
+</ul>
+
+<p>In a map interface, individual photo frames can be visualized as markers or points along a polyline representing the full sequence. Users can click on a frame to view the corresponding street-level image or metadata.</p>
+
+<img src="assets/images/doc/kartaview-map-view.png" alt="KartaView map view with photo frames" style="width: 100%; max-width: 800px; margin: 1.5rem 0; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
+
+<p>These frames are the core building blocks of the street view experience, enabling step-by-step visual navigation along a path.</p>
+
+<h4>API Endpoint</h4>
+<div class="api-endpoint"><span class="method get">GET</span><span class="url">https://api.openstreetcam.org/2.0/photo/?sequenceId=[sequenceId]&amp;page=[page]&amp;itemsPerPage=[itemsPerPage]</span></div>
+
+<p><strong>Example:</strong> <code>https://api.openstreetcam.org/2.0/photo/?sequenceId=6187609&page=5&itemsPerPage=150</code></p>
+
+<h4>Request Parameters</h4>
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td><code>sequenceId</code></td><td>Integer</td><td>Yes</td><td>The unique identifier of the sequence to retrieve photos from.</td></tr>
+  <tr><td><code>page</code></td><td>Integer</td><td>No</td><td>Page number for pagination (default: 1).</td></tr>
+  <tr><td><code>itemsPerPage</code></td><td>Integer</td><td>No</td><td>Number of items per page (default: 50, max: 150).</td></tr>
+</tbody></table>
+
+<h3>Get Photo (Get Photo details from PhotoID)</h3>
+<p>Requesting photo's detail by [photoID]. This endpoint retrieves comprehensive metadata and details for a specific photo using its unique identifier.</p>
+
+<h4>API Endpoint</h4>
+<div class="api-endpoint"><span class="method get">GET</span><span class="url">https://api.openstreetcam.org/2.0/photo/[photoId]</span></div>
+
+<p><strong>Example:</strong> <code>https://api.openstreetcam.org/2.0/photo/1623585577</code></p>
+
+<h4>Request Parameters</h4>
+<table><thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>
+  <tr><td><code>photoId</code></td><td>String</td><td>Yes</td><td>The ID of the photo to retrieve details for.</td></tr>
+</tbody></table>
+
+<h4>Response Format</h4>
+<table><thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead><tbody>
+  <tr><td><code>status.apiCode</code></td><td>Integer</td><td>API status code (check: API codes).</td></tr>
+  <tr><td><code>status.apiMessage</code></td><td>String</td><td>Message describing the API status.</td></tr>
+  <tr><td><code>status.httpCode</code></td><td>Integer</td><td>HTTP status code (check: Http codes).</td></tr>
+  <tr><td><code>status.httpMessage</code></td><td>String</td><td>Message describing the HTTP status.</td></tr>
+  <tr><td><code>result.data</code></td><td>Object</td><td>Object containing the photo details.</td></tr>
+  <tr><td><code>data.autoImgProcessingResult</code></td><td>String</td><td>Result of automatic image processing (e.g., BLURRED).</td></tr>
+  <tr><td><code>data.autoImgProcessingStatus</code></td><td>String</td><td>Status of automatic image processing (e.g., FINISHED).</td></tr>
+  <tr><td><code>data.dateAdded</code></td><td>String</td><td>Date the photo was added.</td></tr>
+  <tr><td><code>data.dateProcessed</code></td><td>String</td><td>Date the photo was processed.</td></tr>
+  <tr><td><code>data.fieldOfView</code></td><td>Float</td><td>Field of view of the photo (e.g., 360).</td></tr>
+  <tr><td><code>data.filepath</code></td><td>String</td><td>Filepath of the photo relative to storage.</td></tr>
+  <tr><td><code>data.fileurl</code></td><td>String</td><td>URL of the photo file.</td></tr>
+  <tr><td><code>data.fileurlLTh</code></td><td>String</td><td>URL of the low-thumbnail version of the photo.</td></tr>
+  <tr><td><code>data.fileurlProc</code></td><td>String</td><td>URL of the processed version of the photo.</td></tr>
+  <tr><td><code>data.fileurlTh</code></td><td>String</td><td>URL of the thumbnail version of the photo.</td></tr>
+  <tr><td><code>data.heading</code></td><td>Float</td><td>Heading angle of the photo.</td></tr>
+  <tr><td><code>data.lat</code></td><td>Float</td><td>Latitude of the photo's location.</td></tr>
+  <tr><td><code>data.lng</code></td><td>Float</td><td>Longitude of the photo's location.</td></tr>
+  <tr><td><code>data.matchLat</code></td><td>Float</td><td>Latitude of the matched location for the photo.</td></tr>
+  <tr><td><code>data.matchLng</code></td><td>Float</td><td>Longitude of the matched location for the photo.</td></tr>
+  <tr><td><code>data.projection</code></td><td>String</td><td>Projection type of the photo (e.g., SPHERE).</td></tr>
+  <tr><td><code>data.projectionYaw</code></td><td>Float</td><td>Yaw angle for the projection.</td></tr>
+  <tr><td><code>data.qualityDetails</code></td><td>Array</td><td>Array of objects describing the quality details of the photo.</td></tr>
+  <tr><td><code>qualityDetails.label</code></td><td>Integer</td><td>Label for the quality metric.</td></tr>
+  <tr><td><code>qualityDetails.confidence</code></td><td>Float</td><td>Confidence level for the quality metric.</td></tr>
+  <tr><td><code>qualityDetails.presence_level</code></td><td>Integer</td><td>Presence level for the quality metric.</td></tr>
+  <tr><td><code>data.qualityLevel</code></td><td>Integer</td><td>Quality level of the photo.</td></tr>
+  <tr><td><code>data.qualityStatus</code></td><td>String</td><td>Status of quality processing (e.g., FINISHED).</td></tr>
+  <tr><td><code>data.sequenceId</code></td><td>String</td><td>ID of the sequence associated with the photo.</td></tr>
+  <tr><td><code>data.sequenceIndex</code></td><td>Integer</td><td>Index of the photo within the sequence.</td></tr>
+  <tr><td><code>data.shotDate</code></td><td>String</td><td>Date the photo was taken.</td></tr>
+  <tr><td><code>data.status</code></td><td>String</td><td>Status of the photo (e.g., active).</td></tr>
+  <tr><td><code>data.storage</code></td><td>String</td><td>Storage location for the photo.</td></tr>
+  <tr><td><code>data.unwrapVersion</code></td><td>Integer</td><td>Version of the unwrap processing applied to the photo.</td></tr>
+  <tr><td><code>data.visibility</code></td><td>String</td><td>Visibility of the photo (e.g., public).</td></tr>
+  <tr><td><code>data.wayId</code></td><td>String</td><td>ID of the way associated with the photo.</td></tr>
+  <tr><td><code>data.width</code></td><td>Integer</td><td>Width of the photo in pixels.</td></tr>
+  <tr><td><code>data.wrapVersion</code></td><td>Integer</td><td>Version of the wrap processing applied to the photo.</td></tr>
+</tbody></table>
+
+<h4>Example Response</h4>
+<pre><code>{
+"status": {
+    "apiCode": 600,
+    "apiMessage": "The request has been processed without incidents",
+    "httpCode": 200,
+    "httpMessage": "Success"
+},
+"result": {
+    "data": {
+        "autoImgProcessingResult": "BLURRED",
+        "autoImgProcessingStatus": "FINISHED",
+        "dateAdded": "2022-10-06 22:57:03",
+        "dateProcessed": "2022-10-07 01:28:46",
+        "fieldOfView": "360",
+        "filepath": "2022/10/6/[[sizeprefix]]/6187609_626b8_633f5d392b4be.jpg",
+        "fileurl": "https://storage13.openstreetcam.org/files/photo/2022/10/6/[[sizeprefix]]/6187609_626b8_633f5d392b4be.jpg",
+        "fileurlLTh": "https://storage13.openstreetcam.org/files/photo/2022/10/6/lth/6187609_626b8_633f5d392b4be.jpg",
+        "fileurlProc": "https://storage13.openstreetcam.org/files/photo/2022/10/6/wrapped_proc/6187609_626b8_633f5d392b4be.jpg",
+        "fileurlTh": "https://storage13.openstreetcam.org/files/photo/2022/10/6/th/6187609_626b8_633f5d392b4be.jpg",
+        "heading": "150.16",
+        "lat": "-6.193911",
+        "lng": "106.849350",
+        "matchLat": "-6.193922042846680",
+        "matchLng": "106.849327087402340",
+        "projection": "SPHERE",
+        "qualityDetails": [
+            {
+                "label": 2,
+                "confidence": 0.00009920777,
+                "presence_level": 1
+            },
+            {
+                "label": 4,
+                "confidence": 0.17348261,
+                "presence_level": 1
+            }
+        ],
+        "qualityLevel": "1",
+        "qualityStatus": "FINISHED",
+        "sequenceId": "6187609",
+        "sequenceIndex": "695",
+        "shotDate": "2022-03-21 06:42:59.000",
+        "status": "active",
+        "storage": "storage13",
+        "unwrapVersion": "2",
+        "visibility": "public",
+        "wayId": "689177647",
+        "width": "2560",
+        "wrapVersion": "0"
+    }
+}
+}</code></pre> 

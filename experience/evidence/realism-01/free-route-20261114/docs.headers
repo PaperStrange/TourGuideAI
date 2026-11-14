@@ -1,0 +1,32 @@
+HTTP/1.1 200 OK
+date: Sat, 14 Nov 2026 08:56:30 GMT
+server: envoy
+
+HTTP/2 301 
+date: Sat, 14 Nov 2026 08:56:31 GMT
+content-type: text/html
+content-length: 162
+location: https://kartaview.org/doc
+x-envoy-upstream-service-time: 852
+server: envoy
+
+HTTP/1.1 200 OK
+date: Sat, 14 Nov 2026 08:56:31 GMT
+server: envoy
+
+HTTP/2 200 
+date: Sat, 14 Nov 2026 08:56:33 GMT
+content-type: text/html
+content-length: 2155
+last-modified: Mon, 02 Nov 2026 10:20:30 GMT
+etag: "6ae863ee-86b"
+accept-ranges: bytes
+x-envoy-upstream-service-time: 882
+strict-transport-security: max-age=31536000; includeSubDomains
+access-control-allow-origin: *
+access-control-allow-credentials: true
+access-control-allow-methods: GET, PUT, POST, DELETE, PATCH, OPTIONS
+access-control-allow-headers: DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization
+access-control-max-age: 1728000
+server: envoy
+

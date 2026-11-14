@@ -398,17 +398,29 @@ function transferredAt(scenario, boundary) {
   return { boundary, completedBytes, inflightBytes, totalEncodedBytes: completedBytes + inflightBytes, requests };
 }
 
+function observedSettled(view) {
+  if (!Object.hasOwn(view, 'settledView')) return Boolean(view.drawnView?.paging?.settled);
+  const settled = view.settledView;
+  return Boolean(settled && settled.qualifiedFrames.length === 3 && view.paging.idle
+    && sameCamera(settled, view) && sameCamera(settled, view.drawnView)
+    && settled.drawnSplats === view.drawnSplats
+    && Object.keys(settled.content).every(key => settled.content[key] === view.drawnView.content[key]));
+}
+
 async function settledView(page, legacyReference = false) {
   const deadline = Date.now() + timeout;
   let last = null, stable = 0, lastObservation = 0;
   while (Date.now() < deadline) {
-    const current = await renderedView(page, last?.frames ?? -1);
+    const current = await renderedView(page);
     if (Date.now() - lastObservation >= 10000) {
       report.scenarios.settlingObservation = { entry: page.url(), view: current, observedAt: new Date().toISOString() };
       persist(); lastObservation = Date.now();
     }
-    if (current.status === 'interactive' && (legacyReference || current.drawnView?.paging?.settled) && current.drawnSplats > 0
+    if (current.status === 'interactive' && (legacyReference || observedSettled(current)) && current.drawnSplats > 0
       && !current.requests.some(request => request.status === 'pending')) {
+      // 按需渲染的记录已验证三个不同的实际画面；旧版本仍逐帧观察。
+      if (current.settledView) return current;
+      if (last?.frames === current.frames) { await page.waitForTimeout(150); continue; }
       stable = last && sameCamera(current, last) && current.drawnSplats === last.drawnSplats ? stable + 1 : 1;
       if (stable >= 3) return current;
     } else stable = 0;
@@ -425,8 +437,9 @@ async function captureCanvas(page, name, legacyReference = false) {
   const bytes = await page.locator('#review-canvas').screenshot({ path: resolve(output, name + '.png'), type: 'png', timeout: 120000 });
   const after = await snapshot(page);
   const capture = { path: name + '.png', bytes: bytes.length, sha256: sha(bytes), before, after,
-    stableDuringCapture: sameCamera(before, after) && (legacyReference || after.drawnView?.paging?.settled) && before.drawnSplats === after.drawnSplats,
-    readinessMethod: legacyReference ? 'Approved viewer interactive state with three stable submitted frames' : 'Submitted-frame idle paging and three stable submitted frames; current desired and drawn camera match' };
+    stableDuringCapture: sameCamera(before, after) && (legacyReference || observedSettled(after)) && before.drawnSplats === after.drawnSplats,
+    readinessMethod: legacyReference ? 'Approved viewer interactive state with three stable submitted frames'
+      : 'Three actual submitted frames with matching camera/content and recorded idle observations; the current requested and displayed view agree' };
   report.screenshots.push(capture); persist();
   assert(capture.stableDuringCapture, 'Camera or paging changed during the settled capture');
   return capture;
@@ -630,6 +643,12 @@ async function tour() {
     await page.goto(entry); const initial = await settledView(page);
     const toggle = page.locator('#tour-toggle');
     check('tour-visible-control', await toggle.isVisible());
+    if (Object.hasOwn(initial, 'settledView')) {
+      await page.waitForTimeout(3000);
+      const idle = await renderedView(page);
+      check('settled-view-stops-redundant-draws', idle.frames === initial.frames && sameCamera(initial, idle)
+        && observedSettled(idle), { before: initial, after: idle, observationMilliseconds: 3000 });
+    }
     await toggle.click();
     await page.waitForFunction(() => window.__REALISM_REVIEW__.snapshot().tour?.status === 'running');
     const started = await submittedTourFrame(page, initial.frames);
@@ -641,8 +660,8 @@ async function tour() {
     }, started, { timeout });
     const moved = await submittedTourFrame(page, started.frames);
     check('tour-renders-continuous-movement', !sameCamera(drawnCamera(started), drawnCamera(moved)) && moved.tour.status === 'running', { before: started, after: moved });
-    await toggle.click(); const paused = await renderedView(page, moved.frames);
-    await page.waitForTimeout(300); const held = await renderedView(page, paused.frames);
+    await toggle.click(); const paused = await renderedView(page);
+    await page.waitForTimeout(300); const held = await renderedView(page);
     check('tour-pause-holds-camera', held.tour.status === 'paused' && sameCamera(paused, held), { before: paused, after: held });
     await toggle.click();
     await page.waitForFunction(previous => window.__REALISM_REVIEW__.snapshot().frames > previous.frames
@@ -692,14 +711,14 @@ async function tour() {
       && visibilityEvents.some(event => event.hidden && event.trusted) && returned.tour.status === 'paused'
       && returned.tour.pauseReason === 'hidden' && sameCamera(hidden, returned),
       { ...nativeVisibility, hidden, returned });
-    await page.waitForTimeout(300); const afterReturn = await renderedView(page, returned.frames);
+    await page.waitForTimeout(300); const afterReturn = await renderedView(page);
     check('tour-return-needs-explicit-resume', hiddenObserved && afterReturn.tour.status === 'paused' && sameCamera(returned, afterReturn),
       { before: returned, after: afterReturn });
     await toggle.click(); const resumedAfterHidden = await submittedTourFrame(page, afterReturn.frames);
     check('tour-resumes-after-native-tab-return', resumedAfterHidden.tour.status === 'running'
       && Math.hypot(...drawnCamera(resumedAfterHidden).position.map((value, index) => value - afterReturn.position[index])) < 1,
       { before: afterReturn, after: resumedAfterHidden });
-    await toggle.click(); await renderedView(page, resumedAfterHidden.frames);
+    await toggle.click(); await renderedView(page);
     await screenshot(page, 'tour-paused');
     report.scenarios.tour = { ...report.scenarios.tour, nativeVisibility, initial, started, moved, paused, held, resumed, reversed, manual, beforeSwitch, switched, hidden, returned, afterReturn, resumedAfterHidden };
   } finally { await context.close(); }
@@ -721,8 +740,8 @@ async function tourEndpoints() {
       const view = window.__REALISM_REVIEW__.snapshot();
       return view.tour.status === 'running' && view.tour.phase === 'approach' && view.tour.poseUpdates > 0;
     }, null, { timeout });
-    await toggle.click(); const pausedApproach = await renderedView(page, initial.frames);
-    await page.waitForTimeout(300); const heldApproach = await renderedView(page, pausedApproach.frames);
+    await toggle.click(); const pausedApproach = await renderedView(page);
+    await page.waitForTimeout(300); const heldApproach = await renderedView(page);
     check('tour-approach-pause-holds-camera', heldApproach.tour.phase === 'approach' && heldApproach.tour.status === 'paused'
       && sameCamera(pausedApproach, heldApproach), { pausedApproach, heldApproach });
     await toggle.click(); const resumedApproach = await submittedTourFrame(page, heldApproach.frames);

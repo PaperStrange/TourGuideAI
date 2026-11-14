@@ -95,3 +95,7 @@ experience/evidence/solo-20261018/research/*-headers.txt -text
 experience/evidence/area-packs-20261019/ginza-wako/osm-map.headers -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
 # CI 原始日志保留下载时的字节与换行。
 experience/evidence/solo-20261018/ci/original-walk-job.txt -text
+# 保留 KartaView 响应头与官方文档摘录的原始字节。
+experience/evidence/realism-01/free-route-20261114/**/*.headers -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+experience/evidence/realism-01/free-route-20261114/*.headers -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+experience/evidence/realism-01/free-route-20261114/*.html -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol

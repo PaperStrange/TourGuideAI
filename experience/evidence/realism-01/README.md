@@ -18,6 +18,7 @@
 | [Architectural splat comparison](qualification/splat-fidelity/README.md) | Original publisher and Spark frames at matching cameras; measured differences, native inputs and portable-preview verification; full-load budget exceeded |
 | [Paged source comparison](qualification/splat-streaming/README.md) | Actual first-visible and bounded views, byte failures, eviction/unload/cancellation and partial allocation observations |
 | [Free Kyoto photographic intake](qualification/free-sources/README.md) | Actual licensed images, visible features, business locations and capture-family restrictions |
+| [Free route sequence follow-up](../../sprints/realism-01/research/free-route-20261114.md) | Seven complete sequence responses and nine metadata records; calibrated route coverage remains unqualified |
 | [Encoding trade-off](qualification/splat-encoding/README.md) | 3.72 MiB partial first view, explicitly reduced directional colour detail and remaining section-budget failures |
 | [Continuous architectural exploration](review-transport/README.md) | Guided look-around, preserved source appearance, measured gzip result, actual controls and public-file verification |
 

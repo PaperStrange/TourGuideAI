@@ -12,7 +12,8 @@ const ease = value => value * value * (3 - 2 * value);
 const ready = view => view?.firstView && !view.disposed && !['error', 'loading'].includes(view.status);
 
 export function createCameraTour({ scene, reference, onChange = () => {} }) {
-  if (typeof scene?.getView !== 'function' || typeof scene?.setCameraPose !== 'function') {
+  if (typeof scene?.getView !== 'function' || typeof scene?.setCameraPose !== 'function'
+      || typeof scene?.requestFrame !== 'function') {
     throw new TypeError('Camera tour requires scene pose controls');
   }
   for (const key of ['position', 'target']) {
@@ -137,6 +138,7 @@ export function createCameraTour({ scene, reference, onChange = () => {} }) {
     pauseReason = null;
     previousTime = performance.now();
     previousDraw = scene.getView().frames;
+    scene.requestFrame();
     emit();
     schedule();
     return true;
