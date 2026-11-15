@@ -1,5 +1,14 @@
 # Agent checkpoint · Explore and Together homepage
 
+15 November 2026 · Shared-camera reconstruction increment active.
+
+Resume at [the owned increment](../sprints/realism-01/shared-rig-increment.md).
+Reconstruction is executing the official fixed virtual-camera rig against the
+three licensed panorama inputs; independent review checks actual pair geometry;
+source/scene is inspecting complete nearby collections for denser eastbound
+coverage. Count original panorama frames independently from virtual views. Keep
+the previous trial reports, all full-route gates and the free-source constraint.
+
 14 November 2026 · Connected Kyoto preparation and public research review delivered.
 
 The [preparation increment](../sprints/realism-01/next-increment.md) completes the

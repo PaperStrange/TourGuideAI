@@ -13,6 +13,9 @@ Production renderer selection and milestone acceptance remain open.
 
 ## Work and evidence
 
+The [15 November shared-camera increment](shared-rig-increment.md) owns the active
+reconstruction, independent geometry review and denser free-source qualification.
+
 The [connected Kyoto preparation increment](next-increment.md) records completed
 loading, matched-view QA and free-source trials with their construction dependencies.
 
