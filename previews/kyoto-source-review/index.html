@@ -4,35 +4,89 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="icon" href="data:,">
-  <title>Kyoto crossing · source and geometry review</title>
-  <style>
-    body{margin:0;background:#f5f4ed;color:#203c36;font:17px/1.5 system-ui,sans-serif}main{max-width:1200px;margin:auto;padding:32px 20px}h1{font:500 40px/1.15 Georgia,serif}h2{font-size:22px}figure{margin:24px 0;border:1px solid #c9d2ca;background:#fff}img{width:100%;height:auto;display:block}figcaption{padding:14px 18px}table{border-collapse:collapse;width:100%;margin:24px 0;table-layout:fixed}th,td{text-align:left;padding:10px;border-bottom:1px solid #c9d2ca;vertical-align:top;overflow-wrap:anywhere}a{color:#245746}.note{padding:18px;background:#e7ede6}.results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.results figure{margin:0}@media(max-width:700px){.results{grid-template-columns:1fr}main{padding:24px 12px}th,td{padding:8px;font-size:14px}}
-  </style>
+  <link rel="stylesheet" href="styles.css">
+  <title>Kyoto crossing · connected-camera research</title>
+  <script type="module" src="board.js"></script>
 </head>
-<body><main>
-  <h1>Shijō–Karasuma crossing</h1>
-  <p>Free source photographs and actual reconstruction tests · 14 November 2026</p>
-  <p class="note">Three native panoramas show the real crossing. Both tested reconstruction methods produced zero registered 3D models. Continuous eastward walking, measured floors, metric scale and night coverage remain unqualified.</p>
-  <figure><img src="records/coverage.svg" alt="All 54 approved route edges, six sight anchors, 167 declared camera positions and three selected source cameras"><figcaption>The camera track runs north–south, 25–41 m from the approved route start. Geolocation describes proximity; visible surface coverage and a calibrated walking corridor require separate evidence.</figcaption></figure>
-  <h2>What the two geometry tests established</h2>
-  <table data-geometry-results>
-    <thead><tr><th>Method</th><th>Actual pair support</th><th>Registered 3D model</th></tr></thead>
-    <tbody>
-      <tr><td>Four independent 90° perspective groups</td><td>5 of 12 pairs: 34–201 inliers. One pair classified CALIBRATED.</td><td>0</td></tr>
-      <tr><td>Native spherical camera</td><td>All 3 pairs classified CALIBRATED: 83, 224 and 308 inliers.</td><td>0</td></tr>
-    </tbody>
-  </table>
-  <p>Both CPU tests use the same three source photographs and an upper-half mask to exclude the capture vehicle roof and ground. CALIBRATED is the library's classification under the declared camera projection. Camera recovery, scale and the walking surface remain open.</p>
-  <div class="results">
-    <figure><img src="geometry/perspective-board.png" alt="Measured pair matches and inliers for four independent perspective groups"><figcaption>Independent perspective groups · <a href="geometry/perspective-result.json">Exact test result</a></figcaption></figure>
-    <figure><img src="geometry/spherical-board.png" alt="Measured pair matches and inliers for the native spherical camera"><figcaption>Native spherical camera · <a href="geometry/spherical-result.json">Exact test result</a></figcaption></figure>
-  </div>
-  <h2>The three actual source views</h2>
-  <p>These unchanged service previews show recurring façades, arcades, road markings and daylight shadows. Vehicles obscure lower surfaces, and the capture roof reflects buildings. The source camera positions are declared with 4 m horizontal accuracy.</p>
-  <figure data-source-photo><img src="records/25484fa5-4922-402c-94ad-2ec182efe55e-sd.jpg" alt="Native panorama captured north of Shijō–Karasuma crossing"><figcaption><strong>Rank 57 · 09:26:47 JST</strong> · Irvin Chen / Panoramax Taiwan · 19 February 2026 · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · <a href="https://api.panoramax.xyz/api/collections/8f84abce-001a-4cb7-97f1-2b99b0aa27f1/items/25484fa5-4922-402c-94ad-2ec182efe55e">Source</a><br>30.07 m from route edge 1 start. Unchanged 2,048 × 1,024 service preview; full HD acquisition is 6,080 × 3,040.</figcaption></figure>
-  <figure data-source-photo><img src="records/c76c8058-9bb1-48dc-9ac9-8b5a17deaa4e-sd.jpg" alt="Native panorama captured at Shijō–Karasuma intersection"><figcaption><strong>Rank 58 · 09:26:52 JST</strong> · Irvin Chen / Panoramax Taiwan · 19 February 2026 · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · <a href="https://api.panoramax.xyz/api/collections/8f84abce-001a-4cb7-97f1-2b99b0aa27f1/items/c76c8058-9bb1-48dc-9ac9-8b5a17deaa4e">Source</a><br>25.36 m from route edge 1 start. The lower hemisphere contains the capture vehicle and reflected buildings.</figcaption></figure>
-  <figure data-source-photo><img src="records/a0d6710e-11e7-4d0e-8a7c-05dec8bf3c25-sd.jpg" alt="Native panorama captured south of Shijō–Karasuma crossing"><figcaption><strong>Rank 59 · 09:26:57 JST</strong> · Irvin Chen / Panoramax Taiwan · 19 February 2026 · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · <a href="https://api.panoramax.xyz/api/collections/8f84abce-001a-4cb7-97f1-2b99b0aa27f1/items/a0d6710e-11e7-4d0e-8a7c-05dec8bf3c25">Source</a><br>41.37 m from route edge 1 start. Traffic, stitching and occlusion require independent geometric review.</figcaption></figure>
-  <p>Source photographs: Irvin Chen / Panoramax Taiwan, CC BY-SA 4.0, unchanged service previews. Geometry charts: TourGuideAI measurements derived from the attributed source, CC BY-SA 4.0. Source files are provided without warranties under the retained license.</p>
-  <p><a href="board.html">Source intake and qualification details</a> · <a href="package-manifest.json">Exact published file identities</a></p>
-</main></body>
+<body>
+<main>
+  <header class="opening">
+    <p class="eyebrow">Kyoto · Shijō–Karasuma</p>
+    <h1>From street photographs<br>to a connected place</h1>
+    <p class="introduction">Actual free-source imagery, reconstruction measurements and route coverage.</p>
+    <p id="review-date" class="date">Loading reviewed results…</p>
+  </header>
+  <section class="finding" aria-labelledby="finding-title">
+    <div>
+      <p class="eyebrow">Current result</p>
+      <h2 id="finding-title">Loading verified evidence…</h2>
+      <p id="finding-description"></p>
+    </div>
+    <dl class="measures" id="measures"></dl>
+  </section>
+  <section aria-labelledby="comparison-title">
+    <div class="section-heading">
+      <h2 id="comparison-title">How the camera methods compare</h2>
+      <p>The first three trials share the same source photographs. The fourth uses a separate, denser sequence.</p>
+    </div>
+    <div class="table-wrap">
+      <table data-methods>
+        <thead><tr><th scope="col">Method</th><th scope="col">Source positions</th><th scope="col">View constraints</th><th scope="col">Recovered scene</th></tr></thead>
+        <tbody id="methods"></tbody>
+      </table>
+    </div>
+    <p class="caption">Matching features establish correspondence. A connected model also needs consistent camera poses across distinct source positions. Scale and walking surfaces require separate evidence.</p>
+    <figure class="primary-figure">
+      <img id="rig-figure" alt="Actual shared-camera reconstruction measurements">
+      <figcaption id="rig-caption"></figcaption>
+    </figure>
+  </section>
+  <section aria-labelledby="coverage-title">
+    <div class="section-heading">
+      <h2 id="coverage-title">Where the source imagery reaches</h2>
+      <p id="coverage-description"></p>
+    </div>
+    <figure class="primary-figure">
+      <img id="coverage-figure" alt="Approved Kyoto route and actual source-camera coverage">
+      <figcaption id="coverage-caption"></figcaption>
+    </figure>
+    <dl class="coverage-measures" id="coverage-measures"></dl>
+  </section>
+  <section aria-labelledby="dense-sources-title">
+    <div class="section-heading">
+      <h2 id="dense-sources-title">The denser source sequence</h2>
+      <p>Four consecutive positions from another capture date test whether closer spacing improves camera recovery.</p>
+    </div>
+    <figure class="primary-figure">
+      <img id="dense-sources-figure" alt="Four actual source photographs from the 17 February Kyoto sequence">
+      <figcaption id="dense-sources-caption"></figcaption>
+    </figure>
+    <details class="source-details">
+      <summary>Original photographs and source records</summary>
+      <ul id="dense-source-links"></ul>
+    </details>
+  </section>
+  <section aria-labelledby="photographs-title">
+    <div class="section-heading">
+      <h2 id="photographs-title">The three original panorama positions</h2>
+      <p>The capture positions run north–south near the crossing. Traffic, the capture vehicle and reflections obscure some surfaces.</p>
+    </div>
+    <div class="photographs" id="photographs"></div>
+  </section>
+  <section class="next" aria-labelledby="next-title">
+    <p class="eyebrow">Before continuous walking</p>
+    <h2 id="next-title">The remaining evidence</h2>
+    <ul id="next-steps"></ul>
+    <p class="qualification" data-qualification>Continuous eastward walking, metric scale, measured floors and night coverage remain unqualified.</p>
+  </section>
+  <footer>
+    <p>Source photographs: Irvin Chen / Panoramax Taiwan · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · unchanged service previews. Geometry figures retain their source attribution.</p>
+    <details>
+      <summary>Source records and exact measurements</summary>
+      <ul id="evidence-links"></ul>
+      <p><a href="board.html">Original source intake</a> · <a href="package-manifest.json">Published file identities</a></p>
+    </details>
+  </footer>
+</main>
+</body>
 </html>
