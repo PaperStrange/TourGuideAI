@@ -1,0 +1,12 @@
+{
+  "kind": "local-browser-environment-attempt",
+  "command": "node experience/tools/connector-rig-review/check.mjs artifacts/realism-01/connector-rig-review/package-01 artifacts/realism-01/connector-rig-review/qa-local-01",
+  "exitCode": 1,
+  "stage": "Loopback HTTP server startup, before Chromium launch",
+  "error": "listen EPERM: operation not permitted 127.0.0.1",
+  "executedDriver": "executed-driver.mjs",
+  "partialReport": "result.json",
+  "followingRun": "../qa-local-02/result.json",
+  "followingRunPermission": "Additional network permission enabled for the local browser check",
+  "limitation": "This attempt did not exercise the page. The separate completed report contains the browser observations."
+}

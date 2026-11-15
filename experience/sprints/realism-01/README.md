@@ -1,7 +1,8 @@
 # Realism 01 · Kyoto route
 
-14 November 2026 · Sprint owner: delivery lead · Status: Benchmark V1, source
+15 November 2026 · Sprint owner: delivery lead · Status: Benchmark V1, source
 audits, architectural comparisons, guided exploration and demand rendering implemented.
+The denser Kyoto sequence recovers four physical cameras and 1,377 sparse points.
 The public review preserves the approved texture and captured lighting; its
 matched hosted first-view transfer is within 4 MiB.
 Free sources only; matched Kyoto capture and full-route acceptance remain open.
@@ -13,7 +14,7 @@ Production renderer selection and milestone acceptance remain open.
 
 ## Work and evidence
 
-The [15 November shared-camera increment](shared-rig-increment.md) owns the active
+The [15 November shared-camera increment](shared-rig-increment.md) records actual
 reconstruction, independent geometry review and denser free-source qualification.
 
 The [connected Kyoto preparation increment](next-increment.md) records completed
@@ -49,6 +50,9 @@ retains its approved assets and runtime.
 | [Free route sequence follow-up](research/free-route-20261114.md) | Complete sequence metadata and the remaining calibration/route qualification requirements |
 | [Kyoto crossing capture intake](research/free-connector-next.md) | Licensed Panoramax snapshots, all-edge camera distances and bounded reconstruction inputs |
 | [Kyoto panorama geometry trials](../../evidence/realism-01/connector-reconstruction/README.md) | Actual perspective/spherical feature matches, initialization results and next reconstruction requirements |
+| [Complete local collection audit](../../evidence/realism-01/connector-source-intake/README.md) | Nine collections, 3,076 records, four newly acquired panoramas and exact geographic scope |
+| [Shared-camera reconstruction](../../evidence/realism-01/connector-rig/README.md) | Original and denser trials; actual four-position recovery and retained failure |
+| [Independent native-model review](../../evidence/realism-01/connector-rig-geometry/README.md) | Every point and observation recomputed from binary models; relative versus metric qualification |
 | [Published research review](../../evidence/realism-01/free-connector-board/README.md) | Live desktop/mobile checks, exact source and Pages identities, and all public-file hashes |
 | [Controlled trials](experiments/README.md) | Matched inputs, routes, viewpoints and comparison protocol |
 | [Parallel candidate status](experiments/candidate-status.md) | Mesh, splat and shared-ground evidence; explicit qualification dependencies |

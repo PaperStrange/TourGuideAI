@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "originalRunDatabase": {
+    "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-rig/run-01/database.db",
+    "bytes": 12464128,
+    "sha256": "da40dbfad58945367d8218a3edec029a4b93e9f09d027cb85d226a93e1813dc6"
+  },
+  "observedSourceSha256": "2e007e817b23783d1fc35d89198c95e4305d6af10e8eb10ef9be5134822114b1",
+  "observedSourceBytes": 12464128,
+  "observedAt": "2026-11-15T06:48:11.768797+00:00",
+  "originalRunBytesAvailable": false,
+  "isolatedReadCopySha256": "e21ad2978300f97c5e173962d111439d301bff06fd1f5d5a50468216d3c7a796",
+  "isolatedReadByteChanges": [
+    27,
+    95
+  ],
+  "sourceUnchangedDuringExport": true,
+  "resultFeaturePairFrameRigCountsMatch": true,
+  "sqliteIntegrityCheck": "ok",
+  "method": "Byte-copy the observed database; export via official pycolmap from the isolated copy only. Compare all feature, stored pair, frame and rig counts against the immutable run result.",
+  "limitations": "Prior diagnostic pycolmap Database.open calls modified the first trial database before retention; its exact original bytes are unavailable. Isolated reproduction changes SQLite header counters at offsets 24\u201327 and 92\u201395. No original header is reconstructed and no report hash is rewritten."
+}

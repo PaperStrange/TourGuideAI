@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "run": "run-02",
+  "completed": true,
+  "sourcePanoramas": 4,
+  "sourceDates": [
+    "2026-02-17"
+  ],
+  "virtualImages": 48,
+  "databasePhysicalFrames": 4,
+  "models": 1,
+  "registeredPhysicalFramesMaximum": 4,
+  "sparsePointsMaximum": 1377,
+  "storedGeometries": 103,
+  "usableGeometries": 73,
+  "relativeCameraDiagnosticPasses": 1,
+  "status": "relative-geometry-diagnostic",
+  "qualifiedContinuousRoute": false,
+  "qualifiedMetricScale": false,
+  "qualifiedFloorOrCollision": false,
+  "sourceGpsUsedForFitting": false,
+  "sourceCollection": "cf65c61d-2a42-452d-8095-a1daee44e6a9",
+  "startedAt": "2026-11-15T06:40:49.332992+00:00",
+  "finishedAt": "2026-11-15T06:42:13.436748+00:00",
+  "elapsedSeconds": 84.103756,
+  "limitations": [
+    "Selected source cameras lie west of the first route edge; eastbound connector coverage remains unqualified.",
+    "Known projection rotations do not establish physical stitching calibration or surveyed camera poses.",
+    "Upper-hemisphere masking excludes ground and capture-vehicle reflection; traffic and stitching can remain above the horizon.",
+    "Relative sparse structure has arbitrary scale and establishes no continuous floor, collision, lighting or independent-recognition acceptance.",
+    "Virtual cameras from one panorama share a center and count as one physical frame."
+  ]
+}

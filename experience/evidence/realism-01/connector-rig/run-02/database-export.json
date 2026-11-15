@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "originalRunDatabase": {
+    "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-rig/run-02/database.db",
+    "bytes": 15560704,
+    "sha256": "3af26ea20537de323391237e0a1a141d6ed1bd382fa630cb5c43200e04ab30e7"
+  },
+  "observedSourceSha256": "3af26ea20537de323391237e0a1a141d6ed1bd382fa630cb5c43200e04ab30e7",
+  "observedSourceBytes": 15560704,
+  "observedAt": "2026-11-15T06:48:18.746009+00:00",
+  "originalRunBytesAvailable": true,
+  "isolatedReadCopySha256": "cd905afdc6d6c362ec40a882dafe4cf50b04d22b408dd15559047cc2e5ea413a",
+  "isolatedReadByteChanges": [
+    27,
+    95
+  ],
+  "sourceUnchangedDuringExport": true,
+  "resultFeaturePairFrameRigCountsMatch": true,
+  "sqliteIntegrityCheck": "ok",
+  "method": "Byte-copy the observed database; export via official pycolmap from the isolated copy only. Compare all feature, stored pair, frame and rig counts against the immutable run result.",
+  "limitations": "Original database bytes match the immutable result; the isolated read copy has separate provenance."
+}

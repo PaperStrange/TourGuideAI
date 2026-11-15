@@ -1,6 +1,6 @@
 # Decision record
 
-14 November 2026 · Approved user direction and explicit evidence dependencies.
+15 November 2026 · Approved user direction and explicit evidence dependencies.
 
 | ID | Decision | Basis / consequence |
 | --- | --- | --- |
@@ -31,6 +31,7 @@
 | D25 | Record exact pixel equality separately from the bounded appearance regression decision | The first matched settled comparison preserves source/settings, camera/projection and 261,359 drawn splats. Fifteen of 2,366,994 RGB channels differ by one 8-bit intensity step; exact equality fails and remains recorded. For this architectural regression check, require unchanged source/settings, matched submitted camera/count, maximum RGB difference ≤1/255, p95 difference zero and identical alpha, with same-build repeated captures retained. This numerical tolerance leaves human realism and full-route gates unchanged |
 | D26 | Address loading pauses through scheduling while preserving capture fidelity | Prioritize the root capture's actual first draw, then fetch additional detail. Use Spark's supported asynchronous updates and draw on camera/detail changes. Validate real input, source cancellation, EN/ZH, the guided tour and D25 before publication. Network transfer, main-thread work, submitted frames and physical presentation retain separate measurements |
 | D27 | Bind demand-rendered settling to an actual draw and later idle observation | Preserve immediate queue flags. Require three actual draws whose camera and content identity agree before submission, at submission and at the following idle observation. Record the observed frame and observation time separately from the latest draw. First visibility and full-quality route acceptance remain distinct |
+| D28 | Count original panorama positions and verify sparse geometry independently | The official fixed rig recovers all four positions from the denser licensed sequence. Independent native-model recomputation checks physical tracks, positive depth, reprojection and parallax. Virtual views at one center count as one physical position. Declared GPS accuracy, source stitching and missing ground leave scale, shape calibration and walking qualification open; geometry recovery qualifies further surface experiments |
 
 Bind every decision result to source, asset, build, camera and evidence hashes.
 Keep rights, continuous movement, resource budgets and performance as mandatory

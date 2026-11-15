@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 3790,
+      "sha256": "f3fe433affe088f9011a50bad3eb2de6e794cee99874287a298a72cf100530e3",
+      "source": "Retained pair report and complete source audit in this directory",
+      "date": "2026-11-15",
+      "rights": "Project documentation; source-derived measurements CC BY-SA 4.0, Irvin Chen / Panoramax Taiwan",
+      "location": "Shijō–Karasuma crossing; selected cameras west of approved route edge 1",
+      "method": "Human-readable evidence index with reproduced measurements",
+      "limitations": "Pair geometry only; no model, metric scale, ground or route qualification."
+    },
+    {
+      "path": "upstream/tag.json",
+      "bytes": 368,
+      "sha256": "19537a762a68dc9b29124104611a9db7f6c8d9fb7424ad2a92b60986679fe76b",
+      "source": "https://api.github.com/repos/colmap/colmap/git/ref/tags/4.2.1",
+      "date": "2026-11-15",
+      "rights": "GitHub public repository metadata",
+      "location": "COLMAP upstream repository",
+      "method": "Read-only HTTPS retrieval; identifies the source commit of version 4.2.1",
+      "limitations": "Tag resolution receipt; implementation source contents are separately retained and hashed."
+    },
+    {
+      "path": "executed-pair-geometry.py",
+      "bytes": 15894,
+      "sha256": "511cea255ef1d1718f03153b00e8f422e5d29ef726005bcaa7b5a4633cc05703",
+      "source": "Retained spherical trial and official pycolmap 4.2.1 APIs; Irvin Chen / Panoramax Taiwan",
+      "date": "2026-11-15T06:40:23.415537+00:00",
+      "rights": "Project-generated diagnostic; source-derived measurements CC BY-SA 4.0, Irvin Chen / Panoramax Taiwan",
+      "location": "Shij\u014d\u2013Karasuma crossing; selected cameras west of approved route edge 1",
+      "method": "Official pycolmap pose recovery from unchanged retained E/H matrices, inliers and image coordinates; independent bearing-ray midpoint triangulation",
+      "limitations": "Source-relative pair geometry; no metric scale, ground, route model or physical-device acceptance."
+    },
+    {
+      "path": "inputs/original-execution.txt",
+      "bytes": 6359,
+      "sha256": "dda8154cb33b20b38eb020a64e376009e13f2bc5f73d7b2022787b7760d9363b",
+      "source": "Retained spherical trial and official pycolmap 4.2.1 APIs; Irvin Chen / Panoramax Taiwan",
+      "date": "2026-11-15T06:40:23.415537+00:00",
+      "rights": "Project-generated diagnostic; source-derived measurements CC BY-SA 4.0, Irvin Chen / Panoramax Taiwan",
+      "location": "Shij\u014d\u2013Karasuma crossing; selected cameras west of approved route edge 1",
+      "method": "Official pycolmap pose recovery from unchanged retained E/H matrices, inliers and image coordinates; independent bearing-ray midpoint triangulation",
+      "limitations": "Source-relative pair geometry; no metric scale, ground, route model or physical-device acceptance."
+    },
+    {
+      "path": "inputs/original-result.json",
+      "bytes": 18151,
+      "sha256": "90ff84e08a229959c3e4a89e44f6fb1a26f6c8b11da1caf452d70b375666523c",
+      "source": "Retained spherical trial and official pycolmap 4.2.1 APIs; Irvin Chen / Panoramax Taiwan",
+      "date": "2026-11-15T06:40:23.415537+00:00",
+      "rights": "Project-generated diagnostic; source-derived measurements CC BY-SA 4.0, Irvin Chen / Panoramax Taiwan",
+      "location": "Shij\u014d\u2013Karasuma crossing; selected cameras west of approved route edge 1",
+      "method": "Official pycolmap pose recovery from unchanged retained E/H matrices, inliers and image coordinates; independent bearing-ray midpoint triangulation",
+      "limitations": "Source-relative pair geometry; no metric scale, ground, route model or physical-device acceptance."
+    },
+    {
+      "path": "inputs/pairs.json",
+      "bytes": 222633,
+      "sha256": "858c310819386070a81c9cf7ad69a1678aa4eb93f58049b76395edd741bc6a25",
+      "source": "Retained spherical trial and official pycolmap 4.2.1 APIs; Irvin Chen / Panoramax Taiwan",
+      "date": "2026-11-15T06:40:23.415537+00:00",
+      "rights": "Project-generated diagnostic; source-derived measurements CC BY-SA 4.0, Irvin Chen / Panoramax Taiwan",
+      "location": "Shij\u014d\u2013Karasuma crossing; selected cameras west of approved route edge 1",
+      "method": "Official pycolmap pose recovery from unchanged retained E/H matrices, inliers and image coordinates; independent bearing-ray midpoint triangulation",
+      "limitations": "Source-relative pair geometry; no metric scale, ground, route model or physical-device acceptance."
+    },
+    {
+      "path": "inputs/selected.json",
+      "bytes": 6809,
+      "sha256": "42f99b1b56b77c80ec17c1881fe5d4ff634ad44bdca7dfee729a8a0b750d08c2",
+      "source": "Retained spherical trial and official pycolmap 4.2.1 APIs; Irvin Chen / Panoramax Taiwan",
+      "date": "2026-11-15T06:40:23.415537+00:00",
+      "rights": "Project-generated diagnostic; source-derived measurements CC BY-SA 4.0, Irvin Chen / Panoramax Taiwan",
+      "location": "Shij\u014d\u2013Karasuma crossing; selected cameras west of approved route edge 1",
+      "method": "Official pycolmap pose recovery from unchanged retained E/H matrices, inliers and image coordinates; independent bearing-ray midpoint triangulation",
+      "limitations": "Source-relative pair geometry; no metric scale, ground, route model or physical-device acceptance."
+    },
+    {
+      "path": "inputs/settings.json",
+      "bytes": 5666,
+      "sha256": "da894c01e4bb396c98be4221920c29f172bbfafdc652341d04b2c091d94782d9",
+      "source": "Retained spherical trial and official pycolmap 4.2.1 APIs; Irvin Chen / Panoramax Taiwan",
+      "date": "2026-11-15T06:40:23.415537+00:00",
+      "rights": "Project-generated diagnostic; source-derived measurements CC BY-SA 4.0, Irvin Chen / Panoramax Taiwan",
+      "location": "Shij\u014d\u2013Karasuma crossing; selected cameras west of approved route edge 1",
+      "method": "Official pycolmap pose recovery from unchanged retained E/H matrices, inliers and image coordinates; independent bearing-ray midpoint triangulation",
+      "limitations": "Source-relative pair geometry; no metric scale, ground, route model or physical-device acceptance."
+    },
+    {
+      "path": "inputs/source-manifest.json",
+      "bytes": 9681,
+      "sha256": "ead86f6a40846714dece4dd15b1451e9d8835d3f126b411c6e2b39189034c346",
+      "source": "Retained spherical trial and official pycolmap 4.2.1 APIs; Irvin Chen / Panoramax Taiwan",
+      "date": "2026-11-15T06:40:23.415537+00:00",
+      "rights": "Project-generated diagnostic; source-derived measurements CC BY-SA 4.0, Irvin Chen / Panoramax Taiwan",
+      "location": "Shij\u014d\u2013Karasuma crossing; selected cameras west of approved route edge 1",
+      "method": "Official pycolmap pose recovery from unchanged retained E/H matrices, inliers and image coordinates; independent bearing-ray midpoint triangulation",
+      "limitations": "Source-relative pair geometry; no metric scale, ground, route model or physical-device acceptance."
+    },
+    {
+      "path": "parallax.png",
+      "bytes": 46520,
+      "sha256": "44d5867e83174ab2bca328efe71a1ef4a9e6440136e82186b028f0793bd8579c",
+      "source": "Retained spherical trial and official pycolmap 4.2.1 APIs; Irvin Chen / Panoramax Taiwan",
+      "date": "2026-11-15T06:40:23.415537+00:00",
+      "rights": "Project-generated diagnostic; source-derived measurements CC BY-SA 4.0, Irvin Chen / Panoramax Taiwan",
+      "location": "Shij\u014d\u2013Karasuma crossing; selected cameras west of approved route edge 1",
+      "method": "Official pycolmap pose recovery from unchanged retained E/H matrices, inliers and image coordinates; independent bearing-ray midpoint triangulation",
+      "limitations": "Source-relative pair geometry; no metric scale, ground, route model or physical-device acceptance."
+    },
+    {
+      "path": "report.json",
+      "bytes": 405526,
+      "sha256": "d722c0d9d069e0c10047bd6f37f15bd415c4ac9d4efd88d499d0a48f5e523537",
+      "source": "Retained spherical trial and official pycolmap 4.2.1 APIs; Irvin Chen / Panoramax Taiwan",
+      "date": "2026-11-15T06:40:23.415537+00:00",
+      "rights": "Project-generated diagnostic; source-derived measurements CC BY-SA 4.0, Irvin Chen / Panoramax Taiwan",
+      "location": "Shij\u014d\u2013Karasuma crossing; selected cameras west of approved route edge 1",
+      "method": "Official pycolmap pose recovery from unchanged retained E/H matrices, inliers and image coordinates; independent bearing-ray midpoint triangulation",
+      "limitations": "Source-relative pair geometry; no metric scale, ground, route model or physical-device acceptance."
+    },
+    {
+      "path": "upstream/incremental_mapper.cc",
+      "bytes": 59459,
+      "sha256": "ed54fd69e838bd189926110607bcb4ac5dc302b9840612447cc76612118f6969",
+      "source": "https://raw.githubusercontent.com/colmap/colmap/bd1fcf654d2dd8fefa1466999c190a246f83f4b9/src/colmap/sfm/incremental_mapper.cc",
+      "date": "2026-11-15T06:40:23.415537+00:00",
+      "rights": "COLMAP BSD 3-clause; original copyright and license retained in source",
+      "location": "Shij\u014d\u2013Karasuma crossing; selected cameras west of approved route edge 1",
+      "method": "Official pycolmap pose recovery from unchanged retained E/H matrices, inliers and image coordinates; independent bearing-ray midpoint triangulation",
+      "limitations": "Source-relative pair geometry; no metric scale, ground, route model or physical-device acceptance."
+    },
+    {
+      "path": "upstream/incremental_pipeline.cc",
+      "bytes": 36853,
+      "sha256": "7ac7783c6accaaf941d470c02fb8eefb9054d6b7ecd3701d828259fda0e00351",
+      "source": "https://raw.githubusercontent.com/colmap/colmap/bd1fcf654d2dd8fefa1466999c190a246f83f4b9/src/colmap/controllers/incremental_pipeline.cc",
+      "date": "2026-11-15T06:40:23.415537+00:00",
+      "rights": "COLMAP BSD 3-clause; original copyright and license retained in source",
+      "location": "Shij\u014d\u2013Karasuma crossing; selected cameras west of approved route edge 1",
+      "method": "Official pycolmap pose recovery from unchanged retained E/H matrices, inliers and image coordinates; independent bearing-ray midpoint triangulation",
+      "limitations": "Source-relative pair geometry; no metric scale, ground, route model or physical-device acceptance."
+    },
+    {
+      "path": "upstream/incremental_triangulator.cc",
+      "bytes": 27123,
+      "sha256": "7699ada72dde810fcfb436feb828de43b3b6ec692196cde98d79327f2082a6e8",
+      "source": "https://raw.githubusercontent.com/colmap/colmap/bd1fcf654d2dd8fefa1466999c190a246f83f4b9/src/colmap/sfm/incremental_triangulator.cc",
+      "date": "2026-11-15T06:40:23.415537+00:00",
+      "rights": "COLMAP BSD 3-clause; original copyright and license retained in source",
+      "location": "Shij\u014d\u2013Karasuma crossing; selected cameras west of approved route edge 1",
+      "method": "Official pycolmap pose recovery from unchanged retained E/H matrices, inliers and image coordinates; independent bearing-ray midpoint triangulation",
+      "limitations": "Source-relative pair geometry; no metric scale, ground, route model or physical-device acceptance."
+    }
+  ]
+}

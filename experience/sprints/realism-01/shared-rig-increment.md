@@ -5,6 +5,19 @@ free-source constraint and complete 1,353.444 m / six-sight objective remain the
 basis for this increment. The preceding perspective and spherical trials retain
 their original reports and zero-model outcomes.
 
+| Measured result | Evidence | Qualification |
+| --- | --- | --- |
+| Complete nine local collections: 3,076 records; four newly acquired native panoramas | [Source map, photographs and receipts](../../evidence/realism-01/connector-source-intake/README.md) | Zero additional camera positions within 50 m of the route; selected positions remain west of edge 1 |
+| Original three-position fixed rig: zero models; denser four-position fixed rig: all four positions and 1,377 sparse points | [Independent native-model review](../../evidence/realism-01/connector-rig-geometry/README.md) | Relative geometry passes; real-world scale, surface appearance and continuous floor remain unqualified |
+| All 4,386 model observations have positive depth; maximum reprojection error 3.493 px | [Recomputed observations](../../evidence/realism-01/connector-rig-geometry/report.json) | Supports further surface reconstruction experiments; the sparse point cloud supplies no photoreal scene |
+| Original spherical pair median angles 0.85–1.66° | [Pair-geometry audit](../../evidence/realism-01/connector-parallax/README.md) | Describes the earlier native-camera trial; each shared-rig seed has separate initialization evidence |
+
+The next construction work uses the recovered relative cameras to evaluate
+source-derived surfaces and image reprojection, with independent source views
+reserved before fitting. Ground observations, physical calibration and eastbound
+source coverage remain prerequisites for a walking candidate. Preserve the
+approved architectural experience while these Kyoto inputs are qualified.
+
 | Owner | Work | Required evidence |
 | --- | --- | --- |
 | Reconstruction | Execute the supported COLMAP virtual-camera rig on the same three licensed panoramas | Pinned upstream implementation, exact source images, actual settings/logs, fixed rig calibration and original panorama-frame counts |
