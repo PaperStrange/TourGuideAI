@@ -1,16 +1,44 @@
 # Agent checkpoint · Explore and Together homepage
 
-15 November 2026 · Shared-camera reconstruction increment active.
+15 November 2026 · Shared-camera reconstruction and public comparison delivered.
 
 Resume at [the owned increment](../sprints/realism-01/shared-rig-increment.md).
+The [shared-rig trials](../evidence/realism-01/connector-rig/README.md) retain both
+actual outcomes: the original three panoramas produce zero models; the denser
+four-panorama sequence recovers all four physical camera positions and 1,377
+sparse points. [Independent native-model verification](../evidence/realism-01/connector-rig-geometry/README.md)
+recomputes all 4,386 observations: positive depth throughout, maximum reprojection
+error 3.493 px and minimum physical parallax 1.514°. Known rig calibration stays
+fixed. This qualifies relative camera recovery; metric scale and surface fidelity
+remain open.
+
+The [updated public board](https://paperstrange.github.io/TourGuideAI/previews/kyoto-source-review/)
+shows four actual trials, the recovered geometry, both source sequences and the
+coverage map. Local and hosted desktop/mobile walkthroughs each pass 26 checks.
+All 157 HTTPS files match the tested package, manifest SHA-256
+`58d435c65b916fffadf7ff8326c83bb6a546e316df01130bb4ff94e38fbf0206`.
+Exact package source commit: `9536f29239989315bec28ca352ba3336e0ec8cd7`;
+packaging base: `c2ea9ea5b49b9a9e646cc54f5bbf55705c160fad`.
+Pages commit `946f901758228e889b27f6c73812b3d8893626d4` is built. Every other
+published path and the 43 historical research attachments remain unchanged.
+The [release evidence](../evidence/realism-01/connector-rig-review/README.md)
+binds the actual source, package, Pages tree, browser reports and served bytes.
+
 The [complete local collection audit](../evidence/realism-01/connector-source-intake/README.md)
-verifies 3,076 records in nine collections and newly acquires four licensed native
-panoramas. No additional camera positions within 50 m of the route are discovered.
-The [independent native-pair audit](../evidence/realism-01/connector-parallax/README.md)
-recomputes all three retained poses and their 0.85–1.66° median angles. Original
-and denser shared-rig trials are undergoing independent model verification and
-publication. Count original panorama frames independently from virtual views.
-Keep all full-route gates and the free-source constraint.
+verifies 3,076 records in nine collections. The four new HD inputs came from
+already-catalogued records; no additional camera positions within 50 m of the
+route were discovered. Both tested sequences remain west of route edge 1.
+The [native-pair audit](../evidence/realism-01/connector-parallax/README.md) and
+[three-seed replay](../evidence/realism-01/connector-seed-geometry/README.md)
+retain actual earlier initialization limits, including the first rig database's
+post-inspection provenance. Original end-of-run database bytes are unavailable;
+the immutable result hash and observed derivative remain separate.
+
+Next: evaluate source-derived surfaces and image reprojection using the recovered
+cameras, reserving independent source views before fitting. Ground observations,
+physical calibration and eastbound overlap are required for a walking candidate.
+Keep the approved Hall runtime, free-source constraint, physical-device and human
+gates, and the complete 1,353.444 m / six-sight objective.
 
 14 November 2026 · Connected Kyoto preparation and public research review delivered.
 

@@ -65,5 +65,51 @@ for (const qa of manifest.qa) {
   assert.equal(report.checks.find(check => check.id === 'canonical-entry').details.indexSha256,
     packageManifest.files.find(file => file.path === 'index.html').sha256);
 }
+const publicReports = manifest.qa.filter(qa => qa.target.startsWith('https://'));
+if (publicReports.length) {
+  assert.equal(publicReports.length, 1);
+  const receipt = suffix => {
+    const entries = manifest.files.filter(file => file.file.startsWith('receipts/') && file.file.endsWith('-' + suffix));
+    assert.equal(entries.length, 1, suffix);
+    return JSON.parse(readFileSync(resolve(evidence, entries[0].file)));
+  };
+  const source = receipt('source-commit.json');
+  assert.equal(source.completed, true);
+  assert.equal(source.packageManifestSha256, manifest.packageManifestSha256);
+  assert.equal(source.packageImplementationBase, packageManifest.implementationBase);
+  assert.deepEqual(source.producer, packageManifest.producer);
+  assert.deepEqual(source.sourceBindings, packageManifest.sourceBindings);
+  assert.deepEqual(source.files, packageManifest.files.map(({ path, source, bytes, sha256 }) => ({ path, source, bytes, sha256 })));
+  assert.equal(source.verifier.sha256, sha(readFileSync(resolve(evidence, 'producers/verify-source.mjs'))));
+  const publication = receipt('audit.json');
+  const commit = receipt('rig-published-commit.json');
+  const build = receipt('pages-build.json');
+  assert.equal(publication.implementation, source.sourceCommit);
+  assert.equal(publication.packageManifestSha256, manifest.packageManifestSha256);
+  assert.equal(publication.tree, commit.tree);
+  assert.equal(publication.parent, commit.parent);
+  assert.equal(publication.otherPublishedPathsUnchanged, true);
+  assert.equal(publication.preservedHistoricalFiles, historical.files.length - 1);
+  assert.equal(publication.verifiedFiles, packageManifest.files.length + 1);
+  assert.equal(build.commit, commit.commit);
+  assert.equal(build.status, 'built');
+  assert.equal(build.error.message, null);
+  const published = receipt('published-bytes.json');
+  assert.equal(published.baseURL, publicReports[0].target);
+  assert.equal(published.failed, 0);
+  assert.equal(published.passed, packageManifest.files.length + 1);
+  const expectedFiles = [...packageManifest.files.map(({ path, bytes, sha256 }) => ({ path: '/' + path, bytes, sha256 })),
+    { path: '/package-manifest.json', bytes: packageManifestBytes.length, sha256: manifest.packageManifestSha256 }];
+  expectedFiles.sort((a, b) => a.path.localeCompare(b.path));
+  assert.equal(published.manifestSha256, sha(JSON.stringify(expectedFiles)));
+  assert.deepEqual(published.files.map(({ path, bytes, sha256 }) => ({ path, bytes, sha256 })), expectedFiles);
+  assert(published.files.every(file => file.pass && file.observed.bytes === file.bytes && file.observed.sha256 === file.sha256));
+  for (const [suffix, expectedHash] of [['prepare-publication.mjs', publication.producerSha256],
+    ['verify-publication.mjs', commit.producer.sha256]]) {
+    const entry = manifest.files.find(file => file.file.startsWith('receipts/') && file.file.endsWith('-' + suffix));
+    assert(entry, suffix);
+    assert.equal(entry.sha256, expectedHash);
+  }
+}
 console.log(JSON.stringify({ verifiedFiles: manifest.files.length, packageFiles: packageManifest.files.length,
   browserReports: manifest.qa.length, browserChecks: manifest.qa.reduce((sum, qa) => sum + qa.checks, 0), routeQualified: false }));

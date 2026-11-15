@@ -1,0 +1,223 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-15T06:51:08.125748+00:00",
+  "sourceKind": "post-inspection-derivative",
+  "recordedEndOfRunDatabase": {
+    "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-rig/run-01/database.db",
+    "bytes": 12464128,
+    "sha256": "da40dbfad58945367d8218a3edec029a4b93e9f09d027cb85d226a93e1813dc6"
+  },
+  "decodedDatabase": {
+    "file": "database-snapshot.sqlite.gz",
+    "bytes": 12464128,
+    "sha256": "2e007e817b23783d1fc35d89198c95e4305d6af10e8eb10ef9be5134822114b1"
+  },
+  "sourceDatabaseUnchangedDuringReplayAndRetention": true,
+  "originalRunEndDatabaseBytesAvailable": false,
+  "producer": {
+    "path": "/workspace/TourGuideAI/experience/tools/connector-reconstruction/seed-geometry.py",
+    "bytes": 26884,
+    "sha256": "826aad483b962c344d220b449d4ed4b4f6b2b3e9f75fc306d2263b4b1e117f55"
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 3615,
+      "sha256": "ca9f3474e7adf7d8b55c17e37eea8e2dac71b793eff8b4660ac5bf6401ced90b",
+      "source": "TourGuideAI seed replay; source-run/result.json; Irvin Chen / Panoramax Taiwan; source-run/selected.json",
+      "date": "2026-11-15T06:47:15.139011+00:00",
+      "rights": "MIT, repository LICENSE",
+      "location": "Shijo-Karasuma, Kyoto; three source cameras west of approved route edge 1; coordinates in source-run/selected.json",
+      "method": "Authored producer or instructions retained verbatim",
+      "limitations": "Original run-end database bytes unavailable; derivative identity explicit. Three-panorama initial geometry only; no metric scale, floor, collision, lighting or full-route qualification."
+    },
+    {
+      "path": "database-snapshot.sqlite.gz",
+      "bytes": 9813670,
+      "sha256": "b1bd95b45339a385d33d35828d7b97fb442f2109e0fe9718d65850591275b57a",
+      "source": "TourGuideAI seed replay; source-run/result.json; Irvin Chen / Panoramax Taiwan; source-run/selected.json",
+      "date": "2026-11-15T06:47:15.139011+00:00",
+      "rights": "Derived CC BY-SA 4.0 source observations; Irvin Chen / Panoramax Taiwan attribution in source-run/selected.json; project analysis metadata",
+      "location": "Shijo-Karasuma, Kyoto; three source cameras west of approved route edge 1; coordinates in source-run/selected.json",
+      "method": "Exact executed analysis record, source receipt, or losslessly compressed post-inspection SQLite derivative",
+      "limitations": "Original run-end database bytes unavailable; derivative identity explicit. Three-panorama initial geometry only; no metric scale, floor, collision, lighting or full-route qualification."
+    },
+    {
+      "path": "producers/executed-seed-geometry.py",
+      "bytes": 14690,
+      "sha256": "48878b67f7c1d8b6f0fdcbea67fee183d630e3d5ade13f936cefecb8fa83d612",
+      "source": "TourGuideAI seed replay; source-run/result.json; Irvin Chen / Panoramax Taiwan; source-run/selected.json",
+      "date": "2026-11-15T06:47:15.139011+00:00",
+      "rights": "MIT, repository LICENSE",
+      "location": "Shijo-Karasuma, Kyoto; three source cameras west of approved route edge 1; coordinates in source-run/selected.json",
+      "method": "Authored producer or instructions retained verbatim",
+      "limitations": "Original run-end database bytes unavailable; derivative identity explicit. Three-panorama initial geometry only; no metric scale, floor, collision, lighting or full-route qualification."
+    },
+    {
+      "path": "producers/replay-verifier.py",
+      "bytes": 26884,
+      "sha256": "826aad483b962c344d220b449d4ed4b4f6b2b3e9f75fc306d2263b4b1e117f55",
+      "source": "TourGuideAI seed replay; source-run/result.json; Irvin Chen / Panoramax Taiwan; source-run/selected.json",
+      "date": "2026-11-15T06:47:15.139011+00:00",
+      "rights": "MIT, repository LICENSE",
+      "location": "Shijo-Karasuma, Kyoto; three source cameras west of approved route edge 1; coordinates in source-run/selected.json",
+      "method": "Authored producer or instructions retained verbatim",
+      "limitations": "Original run-end database bytes unavailable; derivative identity explicit. Three-panorama initial geometry only; no metric scale, floor, collision, lighting or full-route qualification."
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 29,
+      "sha256": "4cac8b92fada094871f39978dd1681a97e12a7db60da6949abc5d8b1bf31135d",
+      "source": "TourGuideAI seed replay; source-run/result.json; Irvin Chen / Panoramax Taiwan; source-run/selected.json",
+      "date": "2026-11-15T06:47:15.139011+00:00",
+      "rights": "MIT, repository LICENSE",
+      "location": "Shijo-Karasuma, Kyoto; three source cameras west of approved route edge 1; coordinates in source-run/selected.json",
+      "method": "Authored producer or instructions retained verbatim",
+      "limitations": "Original run-end database bytes unavailable; derivative identity explicit. Three-panorama initial geometry only; no metric scale, floor, collision, lighting or full-route qualification."
+    },
+    {
+      "path": "result.json",
+      "bytes": 368372,
+      "sha256": "d034904113e40fff3c07e12556030da40335675ec934bdb2631c012844b63f62",
+      "source": "TourGuideAI seed replay; source-run/result.json; Irvin Chen / Panoramax Taiwan; source-run/selected.json",
+      "date": "2026-11-15T06:47:15.139011+00:00",
+      "rights": "Derived CC BY-SA 4.0 source observations; Irvin Chen / Panoramax Taiwan attribution in source-run/selected.json; project analysis metadata",
+      "location": "Shijo-Karasuma, Kyoto; three source cameras west of approved route edge 1; coordinates in source-run/selected.json",
+      "method": "Exact executed analysis record, source receipt, or losslessly compressed post-inspection SQLite derivative",
+      "limitations": "Original run-end database bytes unavailable; derivative identity explicit. Three-panorama initial geometry only; no metric scale, floor, collision, lighting or full-route qualification."
+    },
+    {
+      "path": "source-run/executed-run.py",
+      "bytes": 16136,
+      "sha256": "86291e59a3673b0c24ac307bc61f53a4d9056c54a325e41b63f883d8e43e2471",
+      "source": "TourGuideAI seed replay; source-run/result.json; Irvin Chen / Panoramax Taiwan; source-run/selected.json",
+      "date": "2026-11-15T06:47:15.139011+00:00",
+      "rights": "MIT, repository LICENSE",
+      "location": "Shijo-Karasuma, Kyoto; three source cameras west of approved route edge 1; coordinates in source-run/selected.json",
+      "method": "Authored producer or instructions retained verbatim",
+      "limitations": "Original run-end database bytes unavailable; derivative identity explicit. Three-panorama initial geometry only; no metric scale, floor, collision, lighting or full-route qualification."
+    },
+    {
+      "path": "source-run/log.txt",
+      "bytes": 33796,
+      "sha256": "edce67c9ee61668a626b9c1e7d0ecab9639620753151566ab52ef3eae12a40a0",
+      "source": "TourGuideAI seed replay; source-run/result.json; Irvin Chen / Panoramax Taiwan; source-run/selected.json",
+      "date": "2026-11-15T06:47:15.139011+00:00",
+      "rights": "Derived CC BY-SA 4.0 source observations; Irvin Chen / Panoramax Taiwan attribution in source-run/selected.json; project analysis metadata",
+      "location": "Shijo-Karasuma, Kyoto; three source cameras west of approved route edge 1; coordinates in source-run/selected.json",
+      "method": "Exact executed analysis record, source receipt, or losslessly compressed post-inspection SQLite derivative",
+      "limitations": "Original run-end database bytes unavailable; derivative identity explicit. Three-panorama initial geometry only; no metric scale, floor, collision, lighting or full-route qualification."
+    },
+    {
+      "path": "source-run/receipts/25484fa5-4922-402c-94ad-2ec182efe55e.json",
+      "bytes": 2126,
+      "sha256": "64cf1fdda5a873918b781623f5fced462bdfb276fc758a3ebe3b5bdf876bd3e1",
+      "source": "TourGuideAI seed replay; source-run/result.json; Irvin Chen / Panoramax Taiwan; source-run/selected.json",
+      "date": "2026-11-15T06:47:15.139011+00:00",
+      "rights": "Derived CC BY-SA 4.0 source observations; Irvin Chen / Panoramax Taiwan attribution in source-run/selected.json; project analysis metadata",
+      "location": "Shijo-Karasuma, Kyoto; three source cameras west of approved route edge 1; coordinates in source-run/selected.json",
+      "method": "Exact executed analysis record, source receipt, or losslessly compressed post-inspection SQLite derivative",
+      "limitations": "Original run-end database bytes unavailable; derivative identity explicit. Three-panorama initial geometry only; no metric scale, floor, collision, lighting or full-route qualification."
+    },
+    {
+      "path": "source-run/receipts/a0d6710e-11e7-4d0e-8a7c-05dec8bf3c25.json",
+      "bytes": 2136,
+      "sha256": "e83ef8fe7003df7fbb782d3e416d7292f66b3814e83a50ee3bd91cbd17b11dbd",
+      "source": "TourGuideAI seed replay; source-run/result.json; Irvin Chen / Panoramax Taiwan; source-run/selected.json",
+      "date": "2026-11-15T06:47:15.139011+00:00",
+      "rights": "Derived CC BY-SA 4.0 source observations; Irvin Chen / Panoramax Taiwan attribution in source-run/selected.json; project analysis metadata",
+      "location": "Shijo-Karasuma, Kyoto; three source cameras west of approved route edge 1; coordinates in source-run/selected.json",
+      "method": "Exact executed analysis record, source receipt, or losslessly compressed post-inspection SQLite derivative",
+      "limitations": "Original run-end database bytes unavailable; derivative identity explicit. Three-panorama initial geometry only; no metric scale, floor, collision, lighting or full-route qualification."
+    },
+    {
+      "path": "source-run/receipts/c76c8058-9bb1-48dc-9ac9-8b5a17deaa4e.json",
+      "bytes": 2136,
+      "sha256": "9e397ebe1ccf68ea3117dbe34228a94a5414bc67380fc6e4b00c90aa2761e9bd",
+      "source": "TourGuideAI seed replay; source-run/result.json; Irvin Chen / Panoramax Taiwan; source-run/selected.json",
+      "date": "2026-11-15T06:47:15.139011+00:00",
+      "rights": "Derived CC BY-SA 4.0 source observations; Irvin Chen / Panoramax Taiwan attribution in source-run/selected.json; project analysis metadata",
+      "location": "Shijo-Karasuma, Kyoto; three source cameras west of approved route edge 1; coordinates in source-run/selected.json",
+      "method": "Exact executed analysis record, source receipt, or losslessly compressed post-inspection SQLite derivative",
+      "limitations": "Original run-end database bytes unavailable; derivative identity explicit. Three-panorama initial geometry only; no metric scale, floor, collision, lighting or full-route qualification."
+    },
+    {
+      "path": "source-run/result.json",
+      "bytes": 79022,
+      "sha256": "c49922520cd09f62f82a45aeb941493b317ab24c3b3a39b65bf486852dbe9db6",
+      "source": "TourGuideAI seed replay; source-run/result.json; Irvin Chen / Panoramax Taiwan; source-run/selected.json",
+      "date": "2026-11-15T06:47:15.139011+00:00",
+      "rights": "Derived CC BY-SA 4.0 source observations; Irvin Chen / Panoramax Taiwan attribution in source-run/selected.json; project analysis metadata",
+      "location": "Shijo-Karasuma, Kyoto; three source cameras west of approved route edge 1; coordinates in source-run/selected.json",
+      "method": "Exact executed analysis record, source receipt, or losslessly compressed post-inspection SQLite derivative",
+      "limitations": "Original run-end database bytes unavailable; derivative identity explicit. Three-panorama initial geometry only; no metric scale, floor, collision, lighting or full-route qualification."
+    },
+    {
+      "path": "source-run/selected.json",
+      "bytes": 6809,
+      "sha256": "42f99b1b56b77c80ec17c1881fe5d4ff634ad44bdca7dfee729a8a0b750d08c2",
+      "source": "TourGuideAI seed replay; source-run/result.json; Irvin Chen / Panoramax Taiwan; source-run/selected.json",
+      "date": "2026-11-15T06:47:15.139011+00:00",
+      "rights": "Derived CC BY-SA 4.0 source observations; Irvin Chen / Panoramax Taiwan attribution in source-run/selected.json; project analysis metadata",
+      "location": "Shijo-Karasuma, Kyoto; three source cameras west of approved route edge 1; coordinates in source-run/selected.json",
+      "method": "Exact executed analysis record, source receipt, or losslessly compressed post-inspection SQLite derivative",
+      "limitations": "Original run-end database bytes unavailable; derivative identity explicit. Three-panorama initial geometry only; no metric scale, floor, collision, lighting or full-route qualification."
+    },
+    {
+      "path": "source-run/settings.json",
+      "bytes": 5661,
+      "sha256": "51b8e296d211bf1016bdb7ffe5cd6563d96220e122f35d2975c1c9e580b608d0",
+      "source": "TourGuideAI seed replay; source-run/result.json; Irvin Chen / Panoramax Taiwan; source-run/selected.json",
+      "date": "2026-11-15T06:47:15.139011+00:00",
+      "rights": "Derived CC BY-SA 4.0 source observations; Irvin Chen / Panoramax Taiwan attribution in source-run/selected.json; project analysis metadata",
+      "location": "Shijo-Karasuma, Kyoto; three source cameras west of approved route edge 1; coordinates in source-run/selected.json",
+      "method": "Exact executed analysis record, source receipt, or losslessly compressed post-inspection SQLite derivative",
+      "limitations": "Original run-end database bytes unavailable; derivative identity explicit. Three-panorama initial geometry only; no metric scale, floor, collision, lighting or full-route qualification."
+    },
+    {
+      "path": "upstream/incremental_mapper.cc",
+      "bytes": 59459,
+      "sha256": "ed54fd69e838bd189926110607bcb4ac5dc302b9840612447cc76612118f6969",
+      "source": "COLMAP 4.2.1 commit bd1fcf654d2dd8fefa1466999c190a246f83f4b9; upstream/tag.json",
+      "date": "2026-11-15T06:47:15.139011+00:00",
+      "rights": "BSD-3-Clause, retained upstream copyright headers; tag.json is GitHub commit metadata",
+      "location": "Shijo-Karasuma, Kyoto; three source cameras west of approved route edge 1; coordinates in source-run/selected.json",
+      "method": "Pinned official source retained verbatim",
+      "limitations": "Original run-end database bytes unavailable; derivative identity explicit. Three-panorama initial geometry only; no metric scale, floor, collision, lighting or full-route qualification."
+    },
+    {
+      "path": "upstream/incremental_pipeline.cc",
+      "bytes": 36853,
+      "sha256": "7ac7783c6accaaf941d470c02fb8eefb9054d6b7ecd3701d828259fda0e00351",
+      "source": "COLMAP 4.2.1 commit bd1fcf654d2dd8fefa1466999c190a246f83f4b9; upstream/tag.json",
+      "date": "2026-11-15T06:47:15.139011+00:00",
+      "rights": "BSD-3-Clause, retained upstream copyright headers; tag.json is GitHub commit metadata",
+      "location": "Shijo-Karasuma, Kyoto; three source cameras west of approved route edge 1; coordinates in source-run/selected.json",
+      "method": "Pinned official source retained verbatim",
+      "limitations": "Original run-end database bytes unavailable; derivative identity explicit. Three-panorama initial geometry only; no metric scale, floor, collision, lighting or full-route qualification."
+    },
+    {
+      "path": "upstream/incremental_triangulator.cc",
+      "bytes": 27123,
+      "sha256": "7699ada72dde810fcfb436feb828de43b3b6ec692196cde98d79327f2082a6e8",
+      "source": "COLMAP 4.2.1 commit bd1fcf654d2dd8fefa1466999c190a246f83f4b9; upstream/tag.json",
+      "date": "2026-11-15T06:47:15.139011+00:00",
+      "rights": "BSD-3-Clause, retained upstream copyright headers; tag.json is GitHub commit metadata",
+      "location": "Shijo-Karasuma, Kyoto; three source cameras west of approved route edge 1; coordinates in source-run/selected.json",
+      "method": "Pinned official source retained verbatim",
+      "limitations": "Original run-end database bytes unavailable; derivative identity explicit. Three-panorama initial geometry only; no metric scale, floor, collision, lighting or full-route qualification."
+    },
+    {
+      "path": "upstream/tag.json",
+      "bytes": 368,
+      "sha256": "19537a762a68dc9b29124104611a9db7f6c8d9fb7424ad2a92b60986679fe76b",
+      "source": "COLMAP 4.2.1 commit bd1fcf654d2dd8fefa1466999c190a246f83f4b9; upstream/tag.json",
+      "date": "2026-11-15T06:47:15.139011+00:00",
+      "rights": "BSD-3-Clause, retained upstream copyright headers; tag.json is GitHub commit metadata",
+      "location": "Shijo-Karasuma, Kyoto; three source cameras west of approved route edge 1; coordinates in source-run/selected.json",
+      "method": "Pinned official source retained verbatim",
+      "limitations": "Original run-end database bytes unavailable; derivative identity explicit. Three-panorama initial geometry only; no metric scale, floor, collision, lighting or full-route qualification."
+    }
+  ],
+  "provenanceUpdatedAt": "2026-11-15T06:53:29.976673+00:00"
+}

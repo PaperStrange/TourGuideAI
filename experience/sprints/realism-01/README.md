@@ -21,8 +21,8 @@ The [connected Kyoto preparation increment](next-increment.md) records completed
 loading, matched-view QA and free-source trials with their construction dependencies.
 
 Its [public research board](https://paperstrange.github.io/TourGuideAI/previews/kyoto-source-review/)
-now presents the licensed Kyoto source photographs, coverage map and actual
-perspective/spherical reconstruction results. The existing architectural preview
+now presents the licensed Kyoto source photographs, coverage map and four actual
+reconstruction trials, including the recovered four-camera geometry. The existing architectural preview
 retains its approved assets and runtime.
 
 | Read | Purpose |
@@ -53,6 +53,8 @@ retains its approved assets and runtime.
 | [Complete local collection audit](../../evidence/realism-01/connector-source-intake/README.md) | Nine collections, 3,076 records, four newly acquired panoramas and exact geographic scope |
 | [Shared-camera reconstruction](../../evidence/realism-01/connector-rig/README.md) | Original and denser trials; actual four-position recovery and retained failure |
 | [Independent native-model review](../../evidence/realism-01/connector-rig-geometry/README.md) | Every point and observation recomputed from binary models; relative versus metric qualification |
+| [Initial-geometry replay](../../evidence/realism-01/connector-seed-geometry/README.md) | Reproduced original three-source initialization, actual triangulation limits and explicit database provenance |
+| [Published camera comparison](../../evidence/realism-01/connector-rig-review/README.md) | Four trial outcomes; 52 local/hosted browser checks and 157 published-file identities |
 | [Published research review](../../evidence/realism-01/free-connector-board/README.md) | Live desktop/mobile checks, exact source and Pages identities, and all public-file hashes |
 | [Controlled trials](experiments/README.md) | Matched inputs, routes, viewpoints and comparison protocol |
 | [Parallel candidate status](experiments/candidate-status.md) | Mesh, splat and shared-ground evidence; explicit qualification dependencies |
