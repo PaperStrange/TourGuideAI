@@ -1,0 +1,1339 @@
+{
+  "pages": [
+    {
+      "file": "responses/catalog-001.json",
+      "url": "https://api.panoramax.xyz/api/collections?bbox=135.75885026646532%2C35.002849754656296%2C135.77261519576473%2C35.005940179848&limit=1000",
+      "count": 14,
+      "next": null,
+      "numberMatched": null,
+      "numberReturned": null
+    }
+  ],
+  "collections": [
+    {
+      "id": "6e702976-580b-419c-8fb3-cf7bd364e6f8",
+      "type": "Collection",
+      "title": "2024-09-26",
+      "extent": {
+        "spatial": {
+          "bbox": [
+            [
+              -149.9528408465305,
+              -43.30096388888889,
+              175.14864269999998,
+              67.79146666666666
+            ]
+          ]
+        },
+        "temporal": {
+          "interval": [
+            [
+              "2016-07-09T08:18:41+00:00",
+              "2026-09-24T10:34:29+00:00"
+            ]
+          ]
+        }
+      },
+      "created": "2024-09-26T14:17:13.454519+00:00",
+      "license": "CC-BY-SA-4.0",
+      "updated": "2026-09-24T15:06:34.534903+00:00",
+      "keywords": [
+        "pictures",
+        "2024-09-26"
+      ],
+      "providers": [
+        {
+          "id": "f887e536-ca60-4c70-8f0c-fd480787296c",
+          "name": "mapcomplete",
+          "roles": [
+            "producer"
+          ]
+        }
+      ],
+      "semantics": [],
+      "summaries": {
+        "panoramax:horizontal_pixel_density": [
+          null
+        ]
+      },
+      "description": "A sequence of geolocated pictures",
+      "stats:items": {
+        "count": 16867
+      },
+      "stac_version": "1.0.0",
+      "stac_extensions": [
+        "https://stac-extensions.github.io/stats/v0.2.0/schema.json",
+        "https://stac.linz.govt.nz/v0.0.15/quality/schema.json"
+      ],
+      "geovisio:length_km": 62.725,
+      "geovisio:upload-software": "unknown",
+      "quality:horizontal_accuracy": 5.0,
+      "quality:horizontal_accuracy_type": "95% confidence interval",
+      "links": [
+        {
+          "href": "https://api.panoramax.xyz/api",
+          "rel": "root",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections",
+          "rel": "parent",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/queryables",
+          "rel": "http://www.opengis.net/def/rel/ogc/1.0/queryables",
+          "type": "application/schema+json",
+          "title": "Queryables"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/6e702976-580b-419c-8fb3-cf7bd364e6f8",
+          "rel": "self",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/6e702976-580b-419c-8fb3-cf7bd364e6f8/items",
+          "rel": "items",
+          "type": "application/json"
+        },
+        {
+          "href": "https://panoramax.mapcomplete.org/",
+          "rel": "via",
+          "type": "application/json",
+          "title": "Link to the original instance",
+          "instance_name": "mapcomplete"
+        }
+      ]
+    },
+    {
+      "id": "e9bcb8c0-8ade-4ac9-bc9f-cfa464221fd6",
+      "type": "Collection",
+      "title": "CC0 (Batch 3)",
+      "extent": {
+        "spatial": {
+          "bbox": [
+            [
+              -180.0,
+              -90.0,
+              180.0,
+              90.0
+            ]
+          ]
+        },
+        "temporal": {
+          "interval": [
+            [
+              "2020-11-22T23:54:44+00:00",
+              "2024-09-22T21:46:16+00:00"
+            ]
+          ]
+        }
+      },
+      "created": "2024-11-10T13:18:03.712749+00:00",
+      "license": "CC-BY-SA-4.0",
+      "updated": "2026-10-22T08:12:50.416745+00:00",
+      "keywords": [
+        "pictures",
+        "CC0 (Batch 3)"
+      ],
+      "providers": [
+        {
+          "id": "f887e536-ca60-4c70-8f0c-fd480787296c",
+          "name": "mapcomplete",
+          "roles": [
+            "producer"
+          ]
+        }
+      ],
+      "semantics": [],
+      "summaries": {
+        "panoramax:horizontal_pixel_density": [
+          null
+        ]
+      },
+      "description": "A sequence of geolocated pictures",
+      "stats:items": {
+        "count": 3584
+      },
+      "stac_version": "1.0.0",
+      "stac_extensions": [
+        "https://stac-extensions.github.io/stats/v0.2.0/schema.json",
+        "https://stac.linz.govt.nz/v0.0.15/quality/schema.json"
+      ],
+      "geovisio:length_km": 22.484,
+      "geovisio:upload-software": "other",
+      "quality:horizontal_accuracy_type": "95% confidence interval",
+      "links": [
+        {
+          "href": "https://api.panoramax.xyz/api",
+          "rel": "root",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections",
+          "rel": "parent",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/queryables",
+          "rel": "http://www.opengis.net/def/rel/ogc/1.0/queryables",
+          "type": "application/schema+json",
+          "title": "Queryables"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/e9bcb8c0-8ade-4ac9-bc9f-cfa464221fd6",
+          "rel": "self",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/e9bcb8c0-8ade-4ac9-bc9f-cfa464221fd6/items",
+          "rel": "items",
+          "type": "application/json"
+        },
+        {
+          "href": "https://panoramax.mapcomplete.org/",
+          "rel": "via",
+          "type": "application/json",
+          "title": "Link to the original instance",
+          "instance_name": "mapcomplete"
+        }
+      ]
+    },
+    {
+      "id": "14ea2dff-2d5f-4134-9a9c-0b7ff34d87aa",
+      "type": "Collection",
+      "title": "2025-03-25",
+      "extent": {
+        "spatial": {
+          "bbox": [
+            [
+              -152.24392089999998,
+              -42.7173426,
+              176.91875969999998,
+              69.64738333333334
+            ]
+          ]
+        },
+        "temporal": {
+          "interval": [
+            [
+              "2013-07-04T14:13:20+00:00",
+              "2026-11-04T15:30:25.930000+00:00"
+            ]
+          ]
+        }
+      },
+      "created": "2025-03-25T18:32:48.605829+00:00",
+      "license": "CC-BY-SA-4.0",
+      "updated": "2026-11-05T15:06:23.368034+00:00",
+      "keywords": [
+        "pictures",
+        "2025-03-25"
+      ],
+      "providers": [
+        {
+          "id": "f887e536-ca60-4c70-8f0c-fd480787296c",
+          "name": "mapcomplete",
+          "roles": [
+            "producer"
+          ]
+        }
+      ],
+      "semantics": [],
+      "summaries": {
+        "panoramax:horizontal_pixel_density": [
+          null
+        ]
+      },
+      "description": "A sequence of geolocated pictures",
+      "stats:items": {
+        "count": 25482
+      },
+      "stac_version": "1.0.0",
+      "stac_extensions": [
+        "https://stac-extensions.github.io/stats/v0.2.0/schema.json",
+        "https://stac.linz.govt.nz/v0.0.15/quality/schema.json"
+      ],
+      "geovisio:length_km": 159.657,
+      "geovisio:upload-software": "other",
+      "quality:horizontal_accuracy": 5.0,
+      "quality:horizontal_accuracy_type": "95% confidence interval",
+      "links": [
+        {
+          "href": "https://api.panoramax.xyz/api",
+          "rel": "root",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections",
+          "rel": "parent",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/queryables",
+          "rel": "http://www.opengis.net/def/rel/ogc/1.0/queryables",
+          "type": "application/schema+json",
+          "title": "Queryables"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/14ea2dff-2d5f-4134-9a9c-0b7ff34d87aa",
+          "rel": "self",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/14ea2dff-2d5f-4134-9a9c-0b7ff34d87aa/items",
+          "rel": "items",
+          "type": "application/json"
+        },
+        {
+          "href": "https://panoramax.mapcomplete.org/",
+          "rel": "via",
+          "type": "application/json",
+          "title": "Link to the original instance",
+          "instance_name": "mapcomplete"
+        }
+      ]
+    },
+    {
+      "id": "42ef5bd3-ac04-4013-997e-26afe99f1066",
+      "type": "Collection",
+      "title": "2025-08-27",
+      "extent": {
+        "spatial": {
+          "bbox": [
+            [
+              -122.66593695,
+              -41.02839065,
+              174.9272293,
+              66.53079169972222
+            ]
+          ]
+        },
+        "temporal": {
+          "interval": [
+            [
+              "2018-06-03T14:52:28+00:00",
+              "2074-02-19T05:40:00+00:00"
+            ]
+          ]
+        }
+      },
+      "created": "2025-08-27T13:15:20.279470+00:00",
+      "license": "CC-BY-SA-4.0",
+      "updated": "2026-11-15T06:30:25.662841+00:00",
+      "keywords": [
+        "pictures",
+        "2025-08-27"
+      ],
+      "providers": [
+        {
+          "id": "f887e536-ca60-4c70-8f0c-fd480787296c",
+          "name": "mapcomplete",
+          "roles": [
+            "producer"
+          ]
+        }
+      ],
+      "semantics": [],
+      "summaries": {
+        "panoramax:horizontal_pixel_density": [
+          null
+        ]
+      },
+      "description": "A sequence of geolocated pictures",
+      "stats:items": {
+        "count": 8062
+      },
+      "stac_version": "1.0.0",
+      "stac_extensions": [
+        "https://stac-extensions.github.io/stats/v0.2.0/schema.json",
+        "https://stac.linz.govt.nz/v0.0.15/quality/schema.json"
+      ],
+      "geovisio:length_km": 44.648,
+      "geovisio:upload-software": "other",
+      "quality:horizontal_accuracy": 5.0,
+      "quality:horizontal_accuracy_type": "95% confidence interval",
+      "links": [
+        {
+          "href": "https://api.panoramax.xyz/api",
+          "rel": "root",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections",
+          "rel": "parent",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/queryables",
+          "rel": "http://www.opengis.net/def/rel/ogc/1.0/queryables",
+          "type": "application/schema+json",
+          "title": "Queryables"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/42ef5bd3-ac04-4013-997e-26afe99f1066",
+          "rel": "self",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/42ef5bd3-ac04-4013-997e-26afe99f1066/items",
+          "rel": "items",
+          "type": "application/json"
+        },
+        {
+          "href": "https://panoramax.mapcomplete.org/",
+          "rel": "via",
+          "type": "application/json",
+          "title": "Link to the original instance",
+          "instance_name": "mapcomplete"
+        }
+      ]
+    },
+    {
+      "id": "a7cf963f-8d1c-4bac-9717-e3149f5f9fff",
+      "type": "Collection",
+      "title": "2025-11-13",
+      "extent": {
+        "spatial": {
+          "bbox": [
+            [
+              -157.9773164450389,
+              -50.5391824,
+              178.03137320000002,
+              65.82667538888889
+            ]
+          ]
+        },
+        "temporal": {
+          "interval": [
+            [
+              "2006-11-01T05:10:26+00:00",
+              "2026-11-14T21:54:48+00:00"
+            ]
+          ]
+        }
+      },
+      "created": "2025-11-13T07:01:08.520926+00:00",
+      "license": "CC-BY-SA-4.0",
+      "updated": "2026-11-14T21:54:56.484891+00:00",
+      "keywords": [
+        "pictures",
+        "2025-11-13"
+      ],
+      "providers": [
+        {
+          "id": "f887e536-ca60-4c70-8f0c-fd480787296c",
+          "name": "mapcomplete",
+          "roles": [
+            "producer"
+          ]
+        }
+      ],
+      "semantics": [],
+      "summaries": {
+        "panoramax:horizontal_pixel_density": [
+          null
+        ]
+      },
+      "description": "A sequence of geolocated pictures",
+      "stats:items": {
+        "count": 17532
+      },
+      "stac_version": "1.0.0",
+      "stac_extensions": [
+        "https://stac-extensions.github.io/stats/v0.2.0/schema.json",
+        "https://stac.linz.govt.nz/v0.0.15/quality/schema.json"
+      ],
+      "geovisio:length_km": 105.832,
+      "geovisio:upload-software": "other",
+      "quality:horizontal_accuracy": 5.0,
+      "quality:horizontal_accuracy_type": "95% confidence interval",
+      "links": [
+        {
+          "href": "https://api.panoramax.xyz/api",
+          "rel": "root",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections",
+          "rel": "parent",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/queryables",
+          "rel": "http://www.opengis.net/def/rel/ogc/1.0/queryables",
+          "type": "application/schema+json",
+          "title": "Queryables"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/a7cf963f-8d1c-4bac-9717-e3149f5f9fff",
+          "rel": "self",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/a7cf963f-8d1c-4bac-9717-e3149f5f9fff/items",
+          "rel": "items",
+          "type": "application/json"
+        },
+        {
+          "href": "https://panoramax.mapcomplete.org/",
+          "rel": "via",
+          "type": "application/json",
+          "title": "Link to the original instance",
+          "instance_name": "mapcomplete"
+        }
+      ]
+    },
+    {
+      "id": "1e3ca110-4291-437c-b130-994194d33235",
+      "type": "Collection",
+      "title": "20260220/geocoded-1",
+      "extent": {
+        "spatial": {
+          "bbox": [
+            [
+              135.75499,
+              35.005715,
+              135.77988857001134,
+              35.019888
+            ]
+          ]
+        },
+        "temporal": {
+          "interval": [
+            [
+              "2026-02-20T00:14:54+00:00",
+              "2026-02-20T00:36:54+00:00"
+            ]
+          ]
+        }
+      },
+      "created": "2026-05-01T20:55:42.971277+00:00",
+      "license": "CC-BY-SA-4.0",
+      "updated": "2026-05-01T23:47:45.169489+00:00",
+      "keywords": [
+        "pictures",
+        "20260220/geocoded-1"
+      ],
+      "providers": [
+        {
+          "id": "e45f6ceb-dfee-4cab-a95d-164224bc6a4c",
+          "name": "Irvin Chen",
+          "roles": [
+            "producer"
+          ]
+        }
+      ],
+      "semantics": [],
+      "summaries": {
+        "panoramax:horizontal_pixel_density": [
+          17
+        ]
+      },
+      "description": "A sequence of geolocated pictures",
+      "stats:items": {
+        "count": 179
+      },
+      "stac_version": "1.0.0",
+      "stac_extensions": [
+        "https://stac-extensions.github.io/stats/v0.2.0/schema.json",
+        "https://stac.linz.govt.nz/v0.0.15/quality/schema.json"
+      ],
+      "geovisio:length_km": 4.664,
+      "geovisio:upload-software": "cli",
+      "quality:horizontal_accuracy": 4.0,
+      "quality:horizontal_accuracy_type": "95% confidence interval",
+      "links": [
+        {
+          "href": "https://api.panoramax.xyz/api",
+          "rel": "root",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections",
+          "rel": "parent",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/queryables",
+          "rel": "http://www.opengis.net/def/rel/ogc/1.0/queryables",
+          "type": "application/schema+json",
+          "title": "Queryables"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/1e3ca110-4291-437c-b130-994194d33235",
+          "rel": "self",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/1e3ca110-4291-437c-b130-994194d33235/items",
+          "rel": "items",
+          "type": "application/json"
+        },
+        {
+          "href": "https://panoramax.osm.tw/",
+          "rel": "via",
+          "type": "application/json",
+          "title": "Link to the original instance",
+          "instance_name": "osm-tw"
+        }
+      ]
+    },
+    {
+      "id": "a8c485ba-4749-4c07-8921-b59c5cae4750",
+      "type": "Collection",
+      "title": "20260221/geocoded-24",
+      "extent": {
+        "spatial": {
+          "bbox": [
+            [
+              135.756636110004,
+              34.99228056004308,
+              135.76005278005275,
+              35.007347219999644
+            ]
+          ]
+        },
+        "temporal": {
+          "interval": [
+            [
+              "2026-02-21T02:32:35+00:00",
+              "2026-02-21T02:45:41+00:00"
+            ]
+          ]
+        }
+      },
+      "created": "2026-05-01T23:26:30.791947+00:00",
+      "license": "CC-BY-SA-4.0",
+      "updated": "2026-05-02T07:48:44.548739+00:00",
+      "keywords": [
+        "pictures",
+        "20260221/geocoded-24"
+      ],
+      "providers": [
+        {
+          "id": "e45f6ceb-dfee-4cab-a95d-164224bc6a4c",
+          "name": "Irvin Chen",
+          "roles": [
+            "producer"
+          ]
+        }
+      ],
+      "semantics": [],
+      "summaries": {
+        "panoramax:horizontal_pixel_density": [
+          17
+        ]
+      },
+      "description": "A sequence of geolocated pictures",
+      "stats:items": {
+        "count": 69
+      },
+      "stac_version": "1.0.0",
+      "stac_extensions": [
+        "https://stac-extensions.github.io/stats/v0.2.0/schema.json",
+        "https://stac.linz.govt.nz/v0.0.15/quality/schema.json"
+      ],
+      "geovisio:length_km": 1.996,
+      "geovisio:upload-software": "cli",
+      "quality:horizontal_accuracy": 4.0,
+      "quality:horizontal_accuracy_type": "95% confidence interval",
+      "links": [
+        {
+          "href": "https://api.panoramax.xyz/api",
+          "rel": "root",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections",
+          "rel": "parent",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/queryables",
+          "rel": "http://www.opengis.net/def/rel/ogc/1.0/queryables",
+          "type": "application/schema+json",
+          "title": "Queryables"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/a8c485ba-4749-4c07-8921-b59c5cae4750",
+          "rel": "self",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/a8c485ba-4749-4c07-8921-b59c5cae4750/items",
+          "rel": "items",
+          "type": "application/json"
+        },
+        {
+          "href": "https://panoramax.osm.tw/",
+          "rel": "via",
+          "type": "application/json",
+          "title": "Link to the original instance",
+          "instance_name": "osm-tw"
+        }
+      ]
+    },
+    {
+      "id": "8f84abce-001a-4cb7-97f1-2b99b0aa27f1",
+      "type": "Collection",
+      "title": "20260219/geocoded-3",
+      "extent": {
+        "spatial": {
+          "bbox": [
+            [
+              135.756614,
+              34.9804631299469,
+              135.76506,
+              35.009853
+            ]
+          ]
+        },
+        "temporal": {
+          "interval": [
+            [
+              "2026-02-19T00:21:29+00:00",
+              "2026-02-19T00:42:41+00:00"
+            ]
+          ]
+        }
+      },
+      "created": "2026-05-01T23:47:21.032782+00:00",
+      "license": "CC-BY-SA-4.0",
+      "updated": "2026-05-02T07:50:29.027071+00:00",
+      "keywords": [
+        "pictures",
+        "20260219/geocoded-3"
+      ],
+      "providers": [
+        {
+          "id": "e45f6ceb-dfee-4cab-a95d-164224bc6a4c",
+          "name": "Irvin Chen",
+          "roles": [
+            "producer"
+          ]
+        }
+      ],
+      "semantics": [],
+      "summaries": {
+        "panoramax:horizontal_pixel_density": [
+          17
+        ]
+      },
+      "description": "A sequence of geolocated pictures",
+      "stats:items": {
+        "count": 173
+      },
+      "stac_version": "1.0.0",
+      "stac_extensions": [
+        "https://stac-extensions.github.io/stats/v0.2.0/schema.json",
+        "https://stac.linz.govt.nz/v0.0.15/quality/schema.json"
+      ],
+      "geovisio:length_km": 4.412,
+      "geovisio:upload-software": "cli",
+      "quality:horizontal_accuracy": 4.0,
+      "quality:horizontal_accuracy_type": "95% confidence interval",
+      "links": [
+        {
+          "href": "https://api.panoramax.xyz/api",
+          "rel": "root",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections",
+          "rel": "parent",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/queryables",
+          "rel": "http://www.opengis.net/def/rel/ogc/1.0/queryables",
+          "type": "application/schema+json",
+          "title": "Queryables"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/8f84abce-001a-4cb7-97f1-2b99b0aa27f1",
+          "rel": "self",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/8f84abce-001a-4cb7-97f1-2b99b0aa27f1/items",
+          "rel": "items",
+          "type": "application/json"
+        },
+        {
+          "href": "https://panoramax.osm.tw/",
+          "rel": "via",
+          "type": "application/json",
+          "title": "Link to the original instance",
+          "instance_name": "osm-tw"
+        }
+      ]
+    },
+    {
+      "id": "51c0c305-3912-4d2c-9bda-08514e392176",
+      "type": "Collection",
+      "title": "20260217_Mapillary/20260217_110945_XsrVDvHW",
+      "extent": {
+        "spatial": {
+          "bbox": [
+            [
+              135.75187222222223,
+              34.98929722222222,
+              135.76033333333334,
+              35.00616111111111
+            ]
+          ]
+        },
+        "temporal": {
+          "interval": [
+            [
+              "2026-02-17T02:09:45.149000+00:00",
+              "2026-02-17T02:26:55.329000+00:00"
+            ]
+          ]
+        }
+      },
+      "created": "2026-05-01T23:58:18.275311+00:00",
+      "license": "CC-BY-SA-4.0",
+      "updated": "2026-05-02T09:35:54.586667+00:00",
+      "keywords": [
+        "pictures",
+        "20260217_Mapillary/20260217_110945_XsrVDvHW"
+      ],
+      "providers": [
+        {
+          "id": "e45f6ceb-dfee-4cab-a95d-164224bc6a4c",
+          "name": "Irvin Chen",
+          "roles": [
+            "producer"
+          ]
+        }
+      ],
+      "semantics": [],
+      "summaries": {
+        "panoramax:horizontal_pixel_density": [
+          null
+        ]
+      },
+      "description": "A sequence of geolocated pictures",
+      "stats:items": {
+        "count": 504
+      },
+      "stac_version": "1.0.0",
+      "stac_extensions": [
+        "https://stac-extensions.github.io/stats/v0.2.0/schema.json",
+        "https://stac.linz.govt.nz/v0.0.15/quality/schema.json"
+      ],
+      "geovisio:length_km": 3.178,
+      "geovisio:upload-software": "cli",
+      "quality:horizontal_accuracy_type": "95% confidence interval",
+      "links": [
+        {
+          "href": "https://api.panoramax.xyz/api",
+          "rel": "root",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections",
+          "rel": "parent",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/queryables",
+          "rel": "http://www.opengis.net/def/rel/ogc/1.0/queryables",
+          "type": "application/schema+json",
+          "title": "Queryables"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/51c0c305-3912-4d2c-9bda-08514e392176",
+          "rel": "self",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/51c0c305-3912-4d2c-9bda-08514e392176/items",
+          "rel": "items",
+          "type": "application/json"
+        },
+        {
+          "href": "https://panoramax.osm.tw/",
+          "rel": "via",
+          "type": "application/json",
+          "title": "Link to the original instance",
+          "instance_name": "osm-tw"
+        }
+      ]
+    },
+    {
+      "id": "cf65c61d-2a42-452d-8095-a1daee44e6a9",
+      "type": "Collection",
+      "title": "20260217/geocoded-1",
+      "extent": {
+        "spatial": {
+          "bbox": [
+            [
+              135.75188,
+              34.98928291998819,
+              135.760285,
+              35.006139
+            ]
+          ]
+        },
+        "temporal": {
+          "interval": [
+            [
+              "2026-02-17T02:09:42+00:00",
+              "2026-02-17T02:28:09+00:00"
+            ]
+          ]
+        }
+      },
+      "created": "2026-05-02T00:49:32.482199+00:00",
+      "license": "CC-BY-SA-4.0",
+      "updated": "2026-05-02T07:48:45.552289+00:00",
+      "keywords": [
+        "pictures",
+        "20260217/geocoded-1"
+      ],
+      "providers": [
+        {
+          "id": "e45f6ceb-dfee-4cab-a95d-164224bc6a4c",
+          "name": "Irvin Chen",
+          "roles": [
+            "producer"
+          ]
+        }
+      ],
+      "semantics": [],
+      "summaries": {
+        "panoramax:horizontal_pixel_density": [
+          17
+        ]
+      },
+      "description": "A sequence of geolocated pictures",
+      "stats:items": {
+        "count": 138
+      },
+      "stac_version": "1.0.0",
+      "stac_extensions": [
+        "https://stac-extensions.github.io/stats/v0.2.0/schema.json",
+        "https://stac.linz.govt.nz/v0.0.15/quality/schema.json"
+      ],
+      "geovisio:length_km": 3.137,
+      "geovisio:upload-software": "cli",
+      "quality:horizontal_accuracy": 4.0,
+      "quality:horizontal_accuracy_type": "95% confidence interval",
+      "links": [
+        {
+          "href": "https://api.panoramax.xyz/api",
+          "rel": "root",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections",
+          "rel": "parent",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/queryables",
+          "rel": "http://www.opengis.net/def/rel/ogc/1.0/queryables",
+          "type": "application/schema+json",
+          "title": "Queryables"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/cf65c61d-2a42-452d-8095-a1daee44e6a9",
+          "rel": "self",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/cf65c61d-2a42-452d-8095-a1daee44e6a9/items",
+          "rel": "items",
+          "type": "application/json"
+        },
+        {
+          "href": "https://panoramax.osm.tw/",
+          "rel": "via",
+          "type": "application/json",
+          "title": "Link to the original instance",
+          "instance_name": "osm-tw"
+        }
+      ]
+    },
+    {
+      "id": "fbd6be80-6e7b-4207-b89d-2a88963106b0",
+      "type": "Collection",
+      "title": "20260222/geocoded-2",
+      "extent": {
+        "spatial": {
+          "bbox": [
+            [
+              135.75187,
+              34.93832,
+              135.77119833002646,
+              35.006148
+            ]
+          ]
+        },
+        "temporal": {
+          "interval": [
+            [
+              "2026-02-22T02:25:28+00:00",
+              "2026-02-22T02:59:14+00:00"
+            ]
+          ]
+        }
+      },
+      "created": "2026-05-02T04:35:47.452949+00:00",
+      "license": "CC-BY-SA-4.0",
+      "updated": "2026-05-02T07:48:46.599040+00:00",
+      "keywords": [
+        "pictures",
+        "20260222/geocoded-2"
+      ],
+      "providers": [
+        {
+          "id": "e45f6ceb-dfee-4cab-a95d-164224bc6a4c",
+          "name": "Irvin Chen",
+          "roles": [
+            "producer"
+          ]
+        }
+      ],
+      "semantics": [],
+      "summaries": {
+        "panoramax:horizontal_pixel_density": [
+          17
+        ]
+      },
+      "description": "A sequence of geolocated pictures",
+      "stats:items": {
+        "count": 268
+      },
+      "stac_version": "1.0.0",
+      "stac_extensions": [
+        "https://stac-extensions.github.io/stats/v0.2.0/schema.json",
+        "https://stac.linz.govt.nz/v0.0.15/quality/schema.json"
+      ],
+      "geovisio:length_km": 7.364,
+      "geovisio:upload-software": "cli",
+      "quality:horizontal_accuracy": 4.0,
+      "quality:horizontal_accuracy_type": "95% confidence interval",
+      "links": [
+        {
+          "href": "https://api.panoramax.xyz/api",
+          "rel": "root",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections",
+          "rel": "parent",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/queryables",
+          "rel": "http://www.opengis.net/def/rel/ogc/1.0/queryables",
+          "type": "application/schema+json",
+          "title": "Queryables"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/fbd6be80-6e7b-4207-b89d-2a88963106b0",
+          "rel": "self",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/fbd6be80-6e7b-4207-b89d-2a88963106b0/items",
+          "rel": "items",
+          "type": "application/json"
+        },
+        {
+          "href": "https://panoramax.osm.tw/",
+          "rel": "via",
+          "type": "application/json",
+          "title": "Link to the original instance",
+          "instance_name": "osm-tw"
+        }
+      ]
+    },
+    {
+      "id": "2e8e895d-31a7-4bf3-b112-ecad449633b7",
+      "type": "Collection",
+      "title": "20260220_Mapillary/20260220_091452_bK6haUDN",
+      "extent": {
+        "spatial": {
+          "bbox": [
+            [
+              135.75498055555556,
+              35.00543888888889,
+              135.77987777777778,
+              35.01983611111111
+            ]
+          ]
+        },
+        "temporal": {
+          "interval": [
+            [
+              "2026-02-20T00:14:52.575000+00:00",
+              "2026-02-20T00:35:46.185000+00:00"
+            ]
+          ]
+        }
+      },
+      "created": "2026-05-02T05:29:38.398502+00:00",
+      "license": "CC-BY-SA-4.0",
+      "updated": "2026-05-02T09:35:08.111302+00:00",
+      "keywords": [
+        "pictures",
+        "20260220_Mapillary/20260220_091452_bK6haUDN"
+      ],
+      "providers": [
+        {
+          "id": "e45f6ceb-dfee-4cab-a95d-164224bc6a4c",
+          "name": "Irvin Chen",
+          "roles": [
+            "producer"
+          ]
+        }
+      ],
+      "semantics": [],
+      "summaries": {
+        "panoramax:horizontal_pixel_density": [
+          null
+        ]
+      },
+      "description": "A sequence of geolocated pictures",
+      "stats:items": {
+        "count": 737
+      },
+      "stac_version": "1.0.0",
+      "stac_extensions": [
+        "https://stac-extensions.github.io/stats/v0.2.0/schema.json",
+        "https://stac.linz.govt.nz/v0.0.15/quality/schema.json"
+      ],
+      "geovisio:length_km": 4.83,
+      "geovisio:upload-software": "cli",
+      "quality:horizontal_accuracy_type": "95% confidence interval",
+      "links": [
+        {
+          "href": "https://api.panoramax.xyz/api",
+          "rel": "root",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections",
+          "rel": "parent",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/queryables",
+          "rel": "http://www.opengis.net/def/rel/ogc/1.0/queryables",
+          "type": "application/schema+json",
+          "title": "Queryables"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/2e8e895d-31a7-4bf3-b112-ecad449633b7",
+          "rel": "self",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/2e8e895d-31a7-4bf3-b112-ecad449633b7/items",
+          "rel": "items",
+          "type": "application/json"
+        },
+        {
+          "href": "https://panoramax.osm.tw/",
+          "rel": "via",
+          "type": "application/json",
+          "title": "Link to the original instance",
+          "instance_name": "osm-tw"
+        }
+      ]
+    },
+    {
+      "id": "0e601302-64dc-40ed-a657-1dcbaabb07d1",
+      "type": "Collection",
+      "title": "20260219_Mapillary/20260219_092131_eRtWQS4Y",
+      "extent": {
+        "spatial": {
+          "bbox": [
+            [
+              135.75656388888888,
+              34.98043888888889,
+              135.76502222222223,
+              35.00986388888889
+            ]
+          ]
+        },
+        "temporal": {
+          "interval": [
+            [
+              "2026-02-19T00:21:31.326000+00:00",
+              "2026-02-19T00:42:34.151000+00:00"
+            ]
+          ]
+        }
+      },
+      "created": "2026-05-02T06:24:55.807847+00:00",
+      "license": "CC-BY-SA-4.0",
+      "updated": "2026-05-02T09:34:57.645483+00:00",
+      "keywords": [
+        "pictures",
+        "20260219_Mapillary/20260219_092131_eRtWQS4Y"
+      ],
+      "providers": [
+        {
+          "id": "e45f6ceb-dfee-4cab-a95d-164224bc6a4c",
+          "name": "Irvin Chen",
+          "roles": [
+            "producer"
+          ]
+        }
+      ],
+      "semantics": [],
+      "summaries": {
+        "panoramax:horizontal_pixel_density": [
+          null
+        ]
+      },
+      "description": "A sequence of geolocated pictures",
+      "stats:items": {
+        "count": 695
+      },
+      "stac_version": "1.0.0",
+      "stac_extensions": [
+        "https://stac-extensions.github.io/stats/v0.2.0/schema.json",
+        "https://stac.linz.govt.nz/v0.0.15/quality/schema.json"
+      ],
+      "geovisio:length_km": 4.668,
+      "geovisio:upload-software": "cli",
+      "quality:horizontal_accuracy_type": "95% confidence interval",
+      "links": [
+        {
+          "href": "https://api.panoramax.xyz/api",
+          "rel": "root",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections",
+          "rel": "parent",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/queryables",
+          "rel": "http://www.opengis.net/def/rel/ogc/1.0/queryables",
+          "type": "application/schema+json",
+          "title": "Queryables"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/0e601302-64dc-40ed-a657-1dcbaabb07d1",
+          "rel": "self",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/0e601302-64dc-40ed-a657-1dcbaabb07d1/items",
+          "rel": "items",
+          "type": "application/json"
+        },
+        {
+          "href": "https://panoramax.osm.tw/",
+          "rel": "via",
+          "type": "application/json",
+          "title": "Link to the original instance",
+          "instance_name": "osm-tw"
+        }
+      ]
+    },
+    {
+      "id": "d95b15cb-d7b3-4a7b-92ec-9bb1b1f42d07",
+      "type": "Collection",
+      "title": "20260221_Mapillary/20260221_113240_S6xgvla5",
+      "extent": {
+        "spatial": {
+          "bbox": [
+            [
+              135.75663055555555,
+              34.99228055555556,
+              135.7600527777778,
+              35.00734722222222
+            ]
+          ]
+        },
+        "temporal": {
+          "interval": [
+            [
+              "2026-02-21T02:32:40.221000+00:00",
+              "2026-02-21T02:40:47.186000+00:00"
+            ]
+          ]
+        }
+      },
+      "created": "2026-05-02T07:33:52.849519+00:00",
+      "license": "CC-BY-SA-4.0",
+      "updated": "2026-05-02T09:34:46.883430+00:00",
+      "keywords": [
+        "pictures",
+        "20260221_Mapillary/20260221_113240_S6xgvla5"
+      ],
+      "providers": [
+        {
+          "id": "e45f6ceb-dfee-4cab-a95d-164224bc6a4c",
+          "name": "Irvin Chen",
+          "roles": [
+            "producer"
+          ]
+        }
+      ],
+      "semantics": [],
+      "summaries": {
+        "panoramax:horizontal_pixel_density": [
+          null
+        ]
+      },
+      "description": "A sequence of geolocated pictures",
+      "stats:items": {
+        "count": 313
+      },
+      "stac_version": "1.0.0",
+      "stac_extensions": [
+        "https://stac-extensions.github.io/stats/v0.2.0/schema.json",
+        "https://stac.linz.govt.nz/v0.0.15/quality/schema.json"
+      ],
+      "geovisio:length_km": 2.164,
+      "geovisio:upload-software": "cli",
+      "quality:horizontal_accuracy_type": "95% confidence interval",
+      "links": [
+        {
+          "href": "https://api.panoramax.xyz/api",
+          "rel": "root",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections",
+          "rel": "parent",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/queryables",
+          "rel": "http://www.opengis.net/def/rel/ogc/1.0/queryables",
+          "type": "application/schema+json",
+          "title": "Queryables"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/d95b15cb-d7b3-4a7b-92ec-9bb1b1f42d07",
+          "rel": "self",
+          "type": "application/json"
+        },
+        {
+          "href": "https://api.panoramax.xyz/api/collections/d95b15cb-d7b3-4a7b-92ec-9bb1b1f42d07/items",
+          "rel": "items",
+          "type": "application/json"
+        },
+        {
+          "href": "https://panoramax.osm.tw/",
+          "rel": "via",
+          "type": "application/json",
+          "title": "Link to the original instance",
+          "instance_name": "osm-tw"
+        }
+      ]
+    }
+  ]
+}

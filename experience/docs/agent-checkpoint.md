@@ -3,11 +3,14 @@
 15 November 2026 · Shared-camera reconstruction increment active.
 
 Resume at [the owned increment](../sprints/realism-01/shared-rig-increment.md).
-Reconstruction is executing the official fixed virtual-camera rig against the
-three licensed panorama inputs; independent review checks actual pair geometry;
-source/scene is inspecting complete nearby collections for denser eastbound
-coverage. Count original panorama frames independently from virtual views. Keep
-the previous trial reports, all full-route gates and the free-source constraint.
+The [complete local collection audit](../evidence/realism-01/connector-source-intake/README.md)
+verifies 3,076 records in nine collections and newly acquires four licensed native
+panoramas. No additional camera positions within 50 m of the route are discovered.
+The [independent native-pair audit](../evidence/realism-01/connector-parallax/README.md)
+recomputes all three retained poses and their 0.85–1.66° median angles. Original
+and denser shared-rig trials are undergoing independent model verification and
+publication. Count original panorama frames independently from virtual views.
+Keep all full-route gates and the free-source constraint.
 
 14 November 2026 · Connected Kyoto preparation and public research review delivered.
 
