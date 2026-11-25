@@ -4,88 +4,60 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="styles.css">
-  <title>Kyoto crossing · connected-camera research</title>
-  <script type="module" src="board.js"></script>
+  <link rel="stylesheet" href="surface-style.css">
+  <title>Kyoto · reconstructed surfaces</title>
+  <script type="importmap">{"imports":{"three":"./surface/vendor/three.module.js"}}</script>
+  <script type="module" src="surface-app.js"></script>
 </head>
 <body>
 <main>
-  <header class="opening">
-    <p class="eyebrow">Kyoto · Shijō–Karasuma</p>
-    <h1>From street photographs<br>to a connected place</h1>
-    <p class="introduction">Actual free-source imagery, reconstruction measurements and route coverage.</p>
-    <p id="review-date" class="date">Loading reviewed results…</p>
+  <header>
+    <div class="topline"><p class="eyebrow" data-text="place">Kyoto · Shijō–Karasuma</p><button id="language" type="button" lang="zh">中文</button></div>
+    <h1 data-text="title">A closer look at Kyoto</h1>
+    <p class="intro" data-text="intro">Explore the surfaces reconstructed from four real street photographs.</p>
+    <p class="study-note" data-text="scope">Surface study · captured daylight · relative scale</p>
   </header>
-  <section class="finding" aria-labelledby="finding-title">
-    <div>
-      <p class="eyebrow">Current result</p>
-      <h2 id="finding-title">Loading verified evidence…</h2>
-      <p id="finding-description"></p>
+  <section class="viewer" aria-labelledby="viewer-title">
+    <div class="section-line"><h2 id="viewer-title" data-text="viewerTitle">Photograph and reconstruction</h2><span id="view-status" role="status" aria-live="polite"></span></div>
+    <div class="view-settings">
+      <label for="view" data-text="position">Capture position</label>
+      <select id="view" disabled></select>
+      <div class="mode-buttons" role="group" aria-label="View mode" id="mode-group">
+        <button id="show-photo" type="button" aria-pressed="true" disabled data-text="photo">Photograph</button>
+        <button id="show-surface" type="button" aria-pressed="false" disabled data-text="surface">3D surface</button>
+      </div>
     </div>
-    <dl class="measures" id="measures"></dl>
+    <div class="stage" id="stage">
+      <img id="source-photo" alt="" decoding="async">
+      <canvas id="surface-canvas" tabindex="0" hidden aria-label="Interactive reconstructed surface"></canvas>
+      <div id="loading" class="loading" hidden role="status"></div>
+    </div>
+    <div class="load-row"><button type="button" class="primary" id="load-surface" disabled data-text="load">Load the 3D surface</button><span id="download-size"></span></div>
+    <div class="controls" id="controls" hidden>
+      <button type="button" id="turn-left" data-text="left">Turn left</button>
+      <button type="button" id="turn-right" data-text="right">Turn right</button>
+      <button type="button" id="zoom-in" data-text="closer">Closer</button>
+      <button type="button" id="zoom-out" data-text="farther">Farther</button>
+      <button type="button" id="reset" data-text="reset">Reset view</button>
+    </div>
+    <p class="guidance" data-text="guidance">Drag to inspect, scroll to zoom. Focus the 3D view to use arrow keys, + / − and Home. Reset returns to the selected photograph’s camera.</p>
+    <p class="caption" id="source-caption"></p>
   </section>
-  <section aria-labelledby="comparison-title">
-    <div class="section-heading">
-      <h2 id="comparison-title">How the camera methods compare</h2>
-      <p>The first three trials share the same source photographs. The fourth uses a separate, denser sequence.</p>
-    </div>
-    <div class="table-wrap">
-      <table data-methods>
-        <thead><tr><th scope="col">Method</th><th scope="col">Source positions</th><th scope="col">View constraints</th><th scope="col">Recovered scene</th></tr></thead>
-        <tbody id="methods"></tbody>
-      </table>
-    </div>
-    <p class="caption">Matching features establish correspondence. A connected model also needs consistent camera poses across distinct source positions. Scale and walking surfaces require separate evidence.</p>
-    <figure class="primary-figure">
-      <img id="rig-figure" alt="Actual shared-camera reconstruction measurements">
-      <figcaption id="rig-caption"></figcaption>
-    </figure>
+  <section class="result" aria-labelledby="result-title">
+    <h2 id="result-title" data-text="resultTitle">What this experiment shows</h2>
+    <p id="result-description"></p>
+    <dl id="measurements"></dl>
+    <p class="qualification" data-text="qualification">The complete 1.35 km walk remains under construction. Street coverage, measured ground, real-world scale and realistic appearance still require validation.</p>
+    <p data-text="performance">The 3D download and graphics memory still exceed the intended delivery budgets. Loading remains optional for this research view.</p>
   </section>
-  <section aria-labelledby="coverage-title">
-    <div class="section-heading">
-      <h2 id="coverage-title">Where the source imagery reaches</h2>
-      <p id="coverage-description"></p>
-    </div>
-    <figure class="primary-figure">
-      <img id="coverage-figure" alt="Approved Kyoto route and actual source-camera coverage">
-      <figcaption id="coverage-caption"></figcaption>
-    </figure>
-    <dl class="coverage-measures" id="coverage-measures"></dl>
-  </section>
-  <section aria-labelledby="dense-sources-title">
-    <div class="section-heading">
-      <h2 id="dense-sources-title">The denser source sequence</h2>
-      <p>Four consecutive positions from another capture date test whether closer spacing improves camera recovery.</p>
-    </div>
-    <figure class="primary-figure">
-      <img id="dense-sources-figure" alt="Four actual source photographs from the 17 February Kyoto sequence">
-      <figcaption id="dense-sources-caption"></figcaption>
-    </figure>
-    <details class="source-details">
-      <summary>Original photographs and source records</summary>
-      <ul id="dense-source-links"></ul>
-    </details>
-  </section>
-  <section aria-labelledby="photographs-title">
-    <div class="section-heading">
-      <h2 id="photographs-title">The three original panorama positions</h2>
-      <p>The capture positions run north–south near the crossing. Traffic, the capture vehicle and reflections obscure some surfaces.</p>
-    </div>
-    <div class="photographs" id="photographs"></div>
-  </section>
-  <section class="next" aria-labelledby="next-title">
-    <p class="eyebrow">Before continuous walking</p>
-    <h2 id="next-title">The remaining evidence</h2>
-    <ul id="next-steps"></ul>
-    <p class="qualification" data-qualification>Continuous eastward walking, metric scale, measured floors and night coverage remain unqualified.</p>
+  <section class="evaluation" aria-labelledby="evaluation-title">
+    <h2 id="evaluation-title" data-text="evaluationTitle">Photographs kept for evaluation</h2>
+    <p data-text="evaluationIntro">Two adjacent captures were reserved before reconstruction. Their results measure this capture sequence; independent place recognition remains a separate check.</p>
+    <div id="heldout-results"></div>
   </section>
   <footer>
-    <p>Source photographs: Irvin Chen / Panoramax Taiwan · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · unchanged service previews. Geometry figures retain their source attribution.</p>
-    <details>
-      <summary>Source records and exact measurements</summary>
-      <ul id="evidence-links"></ul>
-      <p><a href="board.html">Original source intake</a> · <a href="package-manifest.json">Published file identities</a></p>
-    </details>
+    <p data-text="credits">Photographs and derived surfaces: Irvin Chen / Panoramax Taiwan · CC BY-SA 4.0. Virtual views are projections of the original panoramas.</p>
+    <details id="evidence"><summary data-text="evidence">Sources, measurements and earlier trials</summary><ul id="evidence-links"></ul></details>
   </footer>
 </main>
 </body>
