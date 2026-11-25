@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "/workspace/TourGuideAI/artifacts/realism-01/surface-methods/bin/DensifyPointCloud",
+    "-i",
+    "scene_dense.mvs",
+    "--output-view-neighbors-file",
+    "neighbors.txt",
+    "--tower-mode",
+    "0",
+    "--estimate-roi",
+    "0",
+    "--crop-to-roi",
+    "0",
+    "--max-threads",
+    "2"
+  ],
+  "cwd": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface/run-02",
+  "executableSha256": "94b01dd11a98f114d0cc0e011dfc115ebe5db3db5aca01a07c7ac75f4a1b6da4",
+  "startedAt": "2026-11-25T02:23:47.425272+00:00",
+  "returnCode": 0,
+  "finishedAt": "2026-11-25T02:23:47.439660+00:00"
+}

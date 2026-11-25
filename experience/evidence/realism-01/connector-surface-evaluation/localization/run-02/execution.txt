@@ -1,0 +1,8 @@
+I20261125 02:25:41.452645 140541014570688 feature_matching.cc:196] === Feature matching & geometric verification ===
+I20261125 02:25:41.453023 140540926490304 sift.cc:1685] Creating SIFT CPU feature matcher
+I20261125 02:25:41.453038 140541006177984 sift.cc:1685] Creating SIFT CPU feature matcher
+I20261125 02:25:41.453142 140541014570688 pairing.cc:905] Importing image pairs...
+I20261125 02:25:41.453807 140541014570688 pairing.cc:938] Processing block [1/1]
+I20261125 02:25:48.799895 140541014570688 feature_matching.cc:218] in 7.346s
+I20261125 02:25:48.800108 140541014570688 timer.cc:90] Elapsed time: 0.122 [minutes]
+{"completed": true, "output": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/run-02", "queries": [{"rank": 67, "poseRecovered": true, "eligible": true, "inliers": 578}, {"rank": 72, "poseRecovered": true, "eligible": true, "inliers": 74}]}

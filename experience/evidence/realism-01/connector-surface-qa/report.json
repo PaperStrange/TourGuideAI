@@ -1,0 +1,3040 @@
+{
+  "schemaVersion": 1,
+  "completed": true,
+  "date": "2026-11-25T02:30:01.049670+00:00",
+  "producerSha256": "72641c111dd76837a111fd5df33913c52ad67c98e6f5abc134ac0a7efcaed9df",
+  "versions": {
+    "numpy": "2.5.4",
+    "pycolmap": "4.2.1",
+    "Pillow": "12.3.0",
+    "plyfile": "1.1.3",
+    "scipy": "1.17.0",
+    "trimesh": "4.11.1",
+    "opencv-python-headless": "4.14.0.94"
+  },
+  "inputs": [
+    {
+      "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface/run-02/prepared.json",
+      "bytes": 41457,
+      "sha256": "1974963cc9d0ded145eb80c63638475c54907f8aed7f3c871c9d203b94308281"
+    },
+    {
+      "path": "/workspace/TourGuideAI/artifacts/realism-01/surface-methods/upstream/colmap-read-write-model-3.11.1.py",
+      "bytes": 22539,
+      "sha256": "f07cc962750d19d6d1edc16b1cf047292e30a43f3390e441dc407dff1d4900cf"
+    },
+    {
+      "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface/run-02/scene_dense.ply",
+      "bytes": 2303149,
+      "sha256": "b9dd393bf543973c781e768f963d1b67fe0b2e636c6b18f1372d75e1acdb8ccd"
+    },
+    {
+      "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface/run-02/scene_mesh.ply",
+      "bytes": 1269785,
+      "sha256": "c1d9806a5fe0815149e8d4e122d5e632509db0fe5a62fb255d20248dc2fe9140"
+    },
+    {
+      "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-review/run-02-dense-intrinsics.json",
+      "bytes": 31832,
+      "sha256": "29528fcbe5c74ef9246e6ae5de31245edafb243ad8944e64c3388ea3fa2835ab"
+    },
+    {
+      "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface/run-02/scene_textured_material_00_map_Kd.jpg",
+      "bytes": 2262452,
+      "sha256": "07227fde03a4ec05a1610a5a8e573e124454b419f1b2091f604cfd3dbee13a46"
+    },
+    {
+      "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface/run-02/roundtrip-exact/sparse/cameras.bin",
+      "bytes": 64,
+      "sha256": "d2064fc7ac013a9c05bf4fc2e6b00da91b2cabc00179923fc9e12348609ef418"
+    },
+    {
+      "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface/run-02/roundtrip-exact/sparse/points3D.bin",
+      "bytes": 105323,
+      "sha256": "3f751a93fc379dd6f97e464d7145692cefd545d67685489654a41b6f3e8db9e7"
+    },
+    {
+      "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface/run-02/roundtrip-exact/sparse/images.bin",
+      "bytes": 109344,
+      "sha256": "bd8fa1a4166f348aef446b30086e9ccee420a818896015a1e71f576c38a165e7"
+    },
+    {
+      "path": "/workspace/TourGuideAI/experience/evidence/realism-01/connector-rig/run-02/sparse/0/frames.bin",
+      "bytes": 1048,
+      "sha256": "85216089a62cf6c351cf36fe243aa000b7bdc882b79298a83471f6e3022d83d6"
+    },
+    {
+      "path": "/workspace/TourGuideAI/experience/evidence/realism-01/connector-rig/run-02/sparse/0/rigs.bin",
+      "bytes": 739,
+      "sha256": "3526e3c77264a3196620a60b12a0465c6b7b4cd9e154c51942402fbef908c306"
+    },
+    {
+      "path": "/workspace/TourGuideAI/experience/evidence/realism-01/connector-rig/run-02/sparse/0/cameras.bin",
+      "bytes": 584,
+      "sha256": "1c641de92e6c934108223bc2457af784e0099ca23af02f179f5f91c35a2a9b89"
+    },
+    {
+      "path": "/workspace/TourGuideAI/experience/evidence/realism-01/connector-rig/run-02/sparse/0/points3D.bin",
+      "bytes": 105323,
+      "sha256": "48f55f6d9c5179ec97cd952311ab01a8ea8e85ca866af23672f84f7d6344910b"
+    },
+    {
+      "path": "/workspace/TourGuideAI/experience/evidence/realism-01/connector-rig/run-02/sparse/0/images.bin",
+      "bytes": 2379448,
+      "sha256": "d769da3b6831a13fd77a1443fc565f857c4c52370656982ec6e32fd53cb570c7"
+    }
+  ],
+  "cameras": {
+    "originalPhysicalFrames": 4,
+    "originalVirtualViews": 48,
+    "importedVirtualViews": 32,
+    "omittedZeroMaskViews": 16,
+    "roundtripFormat": ".bin",
+    "roundtripPoseMaximumErrors": {
+      "count": 32,
+      "minimum": 2.7755575615628914e-17,
+      "median": 8.881784197001252e-16,
+      "p95": 3.2640556923979593e-15,
+      "maximum": 4.440892098500626e-15
+    },
+    "roundtripIntrinsicMaximumErrors": {
+      "count": 32,
+      "minimum": 1.1368683772161603e-13,
+      "median": 1.1368683772161603e-13,
+      "p95": 1.1368683772161603e-13,
+      "maximum": 1.1368683772161603e-13
+    },
+    "poseComparisonTolerance": 1e-08,
+    "fixedIntrinsicsAndOriginalPosesBound": true
+  },
+  "views": [
+    {
+      "internalId": 0,
+      "originalImageId": 10,
+      "originalName": "pano_camera10/4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "name": "pano_camera10__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "frameId": 49,
+      "sourceId": "4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444",
+      "cameraIndex": 10,
+      "center": [
+        0.5555477098928387,
+        -0.02827077436952119,
+        -3.7782008031110457
+      ],
+      "camFromWorld": [
+        [
+          0.7070660921044832,
+          0.0007734170873293644,
+          -0.7071470449786972,
+          -3.064530616367671
+        ],
+        [
+          0.40483829882410455,
+          0.8194650842396237,
+          0.4056882146641081,
+          1.3310314611682146
+        ],
+        [
+          0.5797960789806185,
+          -0.5731285872630639,
+          0.579102865871466,
+          1.8496597400617159
+        ]
+      ],
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "roundtripPoseMaximumError": 1.7763568394002505e-15
+    },
+    {
+      "internalId": 1,
+      "originalImageId": 13,
+      "originalName": "pano_camera11/4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "name": "pano_camera11__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "frameId": 49,
+      "sourceId": "4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444",
+      "cameraIndex": 11,
+      "center": [
+        0.5555477098928376,
+        -0.02827077436951897,
+        -3.7782008031110457
+      ],
+      "camFromWorld": [
+        [
+          -0.7071468521056652,
+          -0.0005464088352725993,
+          -0.7070664968688826,
+          -2.2786008394785915
+        ],
+        [
+          0.404791976790427,
+          0.8195952908238608,
+          -0.40547134890821757,
+          -1.7336628382312613
+        ],
+        [
+          0.5797299242605537,
+          -0.572942632989321,
+          -0.5793530479941547,
+          -2.527177314899565
+        ]
+      ],
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "roundtripPoseMaximumError": 2.6645352591003757e-15
+    },
+    {
+      "internalId": 2,
+      "originalImageId": 25,
+      "originalName": "pano_camera4/4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "name": "pano_camera4__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "frameId": 49,
+      "sourceId": "4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444",
+      "cameraIndex": 4,
+      "center": [
+        0.5555477098928383,
+        -0.028270774369520756,
+        -3.7782008031110483
+      ],
+      "camFromWorld": [
+        [
+          -0.9999995628927885,
+          -0.000933257859857678,
+          5.695611466167126e-05,
+          0.5557362747746999
+        ],
+        [
+          -0.0009332487037698165,
+          0.9999995516315964,
+          0.00016057229882217018,
+          0.029395900262305874
+        ],
+        [
+          -5.710594448430026e-05,
+          0.0001605190744146806,
+          -0.9999999854862689,
+          -3.778164485200042
+        ]
+      ],
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "roundtripPoseMaximumError": 8.881784197001252e-16
+    },
+    {
+      "internalId": 3,
+      "originalImageId": 29,
+      "originalName": "pano_camera5/4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "name": "pano_camera5__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "frameId": 49,
+      "sourceId": "4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444",
+      "cameraIndex": 5,
+      "center": [
+        0.5555477098928381,
+        -0.028270774369520493,
+        -3.778200803111047
+      ],
+      "camFromWorld": [
+        [
+          5.710594448438133e-05,
+          -0.00016051907441468646,
+          0.9999999854862688,
+          3.7781644852000427
+        ],
+        [
+          -0.0009332487037698514,
+          0.9999995516315964,
+          0.00016057229882217593,
+          0.029395900262305652
+        ],
+        [
+          -0.9999995628927884,
+          -0.0009332578598577129,
+          5.695611466172146e-05,
+          0.5557362747747008
+        ]
+      ],
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "roundtripPoseMaximumError": 1.3322676295501878e-15
+    },
+    {
+      "internalId": 4,
+      "originalImageId": 33,
+      "originalName": "pano_camera6/4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "name": "pano_camera6__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "frameId": 49,
+      "sourceId": "4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444",
+      "cameraIndex": 6,
+      "center": [
+        0.5555477098928379,
+        -0.028270774369520534,
+        -3.7782008031110474
+      ],
+      "camFromWorld": [
+        [
+          0.9999995628927885,
+          0.000933257859857678,
+          -5.69561146615488e-05,
+          -0.5557362747746992
+        ],
+        [
+          -0.0009332487037698165,
+          0.9999995516315964,
+          0.00016057229882217013,
+          0.029395900262305652
+        ],
+        [
+          5.71059444841778e-05,
+          -0.00016051907441468066,
+          0.9999999854862688,
+          3.778164485200042
+        ]
+      ],
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "roundtripPoseMaximumError": 4.440892098500626e-16
+    },
+    {
+      "internalId": 5,
+      "originalImageId": 37,
+      "originalName": "pano_camera7/4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "name": "pano_camera7__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "frameId": 49,
+      "sourceId": "4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444",
+      "cameraIndex": 7,
+      "center": [
+        0.5555477098928385,
+        -0.028270774369520787,
+        -3.778200803111047
+      ],
+      "camFromWorld": [
+        [
+          -5.710594448382622e-05,
+          0.00016051907441460802,
+          -0.9999999854862688,
+          -3.778164485200042
+        ],
+        [
+          -0.0009332487037698514,
+          0.9999995516315964,
+          0.00016057229882209738,
+          0.029395900262305652
+        ],
+        [
+          0.9999995628927884,
+          0.0009332578598577129,
+          -5.695611466127737e-05,
+          -0.555736274774699
+        ]
+      ],
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "roundtripPoseMaximumError": 4.440892098500626e-16
+    },
+    {
+      "internalId": 6,
+      "originalImageId": 41,
+      "originalName": "pano_camera8/4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "name": "pano_camera8__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "frameId": 49,
+      "sourceId": "4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444",
+      "cameraIndex": 8,
+      "center": [
+        0.5555477098928367,
+        -0.028270774369520635,
+        -3.7782008031110443
+      ],
+      "camFromWorld": [
+        [
+          -0.7070660921044838,
+          -0.0007734170873294755,
+          0.707147044978697,
+          3.0645306163676707
+        ],
+        [
+          -0.40636724399115054,
+          0.8188382697745711,
+          -0.40542514841043537,
+          -1.2828720375810483
+        ],
+        [
+          -0.5787255000491434,
+          -0.574023771091926,
+          -0.5792870668453367,
+          -1.8833813314932852
+        ]
+      ],
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "roundtripPoseMaximumError": 2.220446049250313e-15
+    },
+    {
+      "internalId": 7,
+      "originalImageId": 45,
+      "originalName": "pano_camera9/4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "name": "pano_camera9__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "frameId": 49,
+      "sourceId": "4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444",
+      "cameraIndex": 9,
+      "center": [
+        0.5555477098928381,
+        -0.028270774369520413,
+        -3.778200803111047
+      ],
+      "camFromWorld": [
+        [
+          0.707146852105665,
+          0.0005464088352726826,
+          0.7070664968688826,
+          2.2786008394785906
+        ],
+        [
+          -0.4063209219574732,
+          0.818708063190334,
+          0.40573441516189035,
+          1.7818222618184265
+        ],
+        [
+          -0.5786593453290786,
+          -0.5742097253656689,
+          0.5791688470202843,
+          2.493455723467998
+        ]
+      ],
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "roundtripPoseMaximumError": 4.440892098500626e-16
+    },
+    {
+      "internalId": 8,
+      "originalImageId": 9,
+      "originalName": "pano_camera10/6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "name": "pano_camera10__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "frameId": 50,
+      "sourceId": "6bcac3e5-738b-4e35-9e46-b00819b4ead1",
+      "cameraIndex": 10,
+      "center": [
+        -0.9080823343986317,
+        0.04458400449650979,
+        6.113840405590205
+      ],
+      "camFromWorld": [
+        [
+          0.7054655999566593,
+          0.0055676956843429826,
+          -0.7087222926101291,
+          4.97338760757948
+        ],
+        [
+          0.4016523014246862,
+          0.82075133976836,
+          0.4062544363187867,
+          -2.1556338096445082
+        ],
+        [
+          0.5839466722553044,
+          -0.5712584695505255,
+          0.5767755585396692,
+          -2.9705730672756694
+        ]
+      ],
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "roundtripPoseMaximumError": 8.881784197001252e-16
+    },
+    {
+      "internalId": 9,
+      "originalImageId": 14,
+      "originalName": "pano_camera11/6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "name": "pano_camera11__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "frameId": 50,
+      "sourceId": "6bcac3e5-738b-4e35-9e46-b00819b4ead1",
+      "cameraIndex": 11,
+      "center": [
+        -0.9080823343986335,
+        0.04458400449650668,
+        6.113840405590203
+      ],
+      "camFromWorld": [
+        [
+          -0.7087194060370541,
+          -0.0028160854449688355,
+          -0.7054848497092281,
+          3.6697717593824133
+        ],
+        [
+          0.39978599492851596,
+          0.8223295985636874,
+          -0.4049014566349466,
+          2.801878738871659
+        ],
+        [
+          0.5812813103528292,
+          -0.5690044823978556,
+          -0.5816751131393252,
+          4.1094885972867115
+        ]
+      ],
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "roundtripPoseMaximumError": 3.9968028886505635e-15
+    },
+    {
+      "internalId": 10,
+      "originalImageId": 26,
+      "originalName": "pano_camera4/6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "name": "pano_camera4__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "frameId": 50,
+      "sourceId": "6bcac3e5-738b-4e35-9e46-b00819b4ead1",
+      "cameraIndex": 4,
+      "center": [
+        -0.9080823343986327,
+        0.04458400449650958,
+        6.113840405590209
+      ],
+      "camFromWorld": [
+        [
+          -0.9999798075904933,
+          -0.005928228488520212,
+          0.0022892178289316088,
+          -0.9217956063224013
+        ],
+        [
+          -0.005923747485839767,
+          0.9999805350243239,
+          0.001959282570438603,
+          -0.06194112806039209
+        ],
+        [
+          -0.002300788344113387,
+          0.001945682259443928,
+          -0.9999954603364665,
+          6.111636599254782
+        ]
+      ],
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "roundtripPoseMaximumError": 2.6645352591003757e-15
+    },
+    {
+      "internalId": 11,
+      "originalImageId": 30,
+      "originalName": "pano_camera5/6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "name": "pano_camera5__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "frameId": 50,
+      "sourceId": "6bcac3e5-738b-4e35-9e46-b00819b4ead1",
+      "cameraIndex": 5,
+      "center": [
+        -0.9080823343986335,
+        0.04458400449650983,
+        6.1138404055902065
+      ],
+      "camFromWorld": [
+        [
+          0.0023007883441130694,
+          -0.0019456822594438859,
+          0.9999954603364665,
+          -6.1116365992547825
+        ],
+        [
+          -0.005923747485839766,
+          0.9999805350243239,
+          0.0019592825704385615,
+          -0.06194112806039209
+        ],
+        [
+          -0.9999798075904933,
+          -0.00592822848852021,
+          0.0022892178289312115,
+          -0.9217956063224024
+        ]
+      ],
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "roundtripPoseMaximumError": 4.440892098500626e-15
+    },
+    {
+      "internalId": 12,
+      "originalImageId": 34,
+      "originalName": "pano_camera6/6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "name": "pano_camera6__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "frameId": 50,
+      "sourceId": "6bcac3e5-738b-4e35-9e46-b00819b4ead1",
+      "cameraIndex": 6,
+      "center": [
+        -0.9080823343986325,
+        0.04458400449650958,
+        6.1138404055902065
+      ],
+      "camFromWorld": [
+        [
+          0.9999798075904931,
+          0.005928228488520212,
+          -0.002289217828931486,
+          0.9217956063224007
+        ],
+        [
+          -0.005923747485839767,
+          0.9999805350243239,
+          0.0019592825704386027,
+          -0.06194112806039209
+        ],
+        [
+          0.002300788344113264,
+          -0.0019456822594439284,
+          0.9999954603364661,
+          -6.111636599254782
+        ]
+      ],
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "roundtripPoseMaximumError": 8.881784197001252e-16
+    },
+    {
+      "internalId": 13,
+      "originalImageId": 38,
+      "originalName": "pano_camera7/6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "name": "pano_camera7__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "frameId": 50,
+      "sourceId": "6bcac3e5-738b-4e35-9e46-b00819b4ead1",
+      "cameraIndex": 7,
+      "center": [
+        -0.90808233439863,
+        0.044584004496509226,
+        6.113840405590209
+      ],
+      "camFromWorld": [
+        [
+          -0.0023007883441128474,
+          0.0019456822594438477,
+          -0.9999954603364661,
+          6.111636599254783
+        ],
+        [
+          -0.005923747485839726,
+          0.9999805350243239,
+          0.00195928257043852,
+          -0.061941128060391204
+        ],
+        [
+          0.999979807590493,
+          0.0059282284885201686,
+          -0.0022892178289311005,
+          0.921795606322398
+        ]
+      ],
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "roundtripPoseMaximumError": 2.6645352591003757e-15
+    },
+    {
+      "internalId": 14,
+      "originalImageId": 42,
+      "originalName": "pano_camera8/6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "name": "pano_camera8__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "frameId": 50,
+      "sourceId": "6bcac3e5-738b-4e35-9e46-b00819b4ead1",
+      "cameraIndex": 8,
+      "center": [
+        -0.9080823343986317,
+        0.04458400449651101,
+        6.113840405590205
+      ],
+      "camFromWorld": [
+        [
+          -0.7054655999566595,
+          -0.005567695684343094,
+          0.708722292610129,
+          -4.973387607579479
+        ],
+        [
+          -0.41135720115044083,
+          0.8175208592603896,
+          -0.4030445356729576,
+          2.0541554062920344
+        ],
+        [
+          -0.5771512283097616,
+          -0.5758720738488027,
+          -0.5790231551687832,
+          3.041629010268558
+        ]
+      ],
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "roundtripPoseMaximumError": 1.1102230246251565e-16
+    },
+    {
+      "internalId": 15,
+      "originalImageId": 46,
+      "originalName": "pano_camera9/6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "name": "pano_camera9__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "frameId": 50,
+      "sourceId": "6bcac3e5-738b-4e35-9e46-b00819b4ead1",
+      "cameraIndex": 9,
+      "center": [
+        -0.9080823343986317,
+        0.044584004496511564,
+        6.113840405590205
+      ],
+      "camFromWorld": [
+        [
+          0.7087194060370541,
+          0.002816085444968891,
+          0.705484849709228,
+          -3.669771759382412
+        ],
+        [
+          -0.4094908946542708,
+          0.8159426004650622,
+          0.40811135728077563,
+          -2.90335714222413
+        ],
+        [
+          -0.5744858664072862,
+          -0.5781260610014728,
+          0.5794275165102114,
+          -4.0384326542938265
+        ]
+      ],
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "roundtripPoseMaximumError": 2.6645352591003757e-15
+    },
+    {
+      "internalId": 16,
+      "originalImageId": 11,
+      "originalName": "pano_camera10/8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "name": "pano_camera10__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "frameId": 51,
+      "sourceId": "8fa8dca2-39b0-4a49-9a2f-f61fe86354e7",
+      "cameraIndex": 10,
+      "center": [
+        -0.24166943774204086,
+        0.00972448089790956,
+        1.6919589086534121
+      ],
+      "camFromWorld": [
+        [
+          0.7056840583263971,
+          0.005204203514206224,
+          -0.7085075342505321,
+          1.3692572958448492
+        ],
+        [
+          0.40284719995830076,
+          0.8196654111577634,
+          0.40726250408960024,
+          -0.5996863862784985
+        ],
+        [
+          0.5828585963248231,
+          -0.5728189330123068,
+          0.5763283150018742,
+          -0.8286943508476572
+        ]
+      ],
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "roundtripPoseMaximumError": 5.551115123125783e-16
+    },
+    {
+      "internalId": 17,
+      "originalImageId": 15,
+      "originalName": "pano_camera11/8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "name": "pano_camera11__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "frameId": 51,
+      "sourceId": "8fa8dca2-39b0-4a49-9a2f-f61fe86354e7",
+      "cameraIndex": 11,
+      "center": [
+        -0.2416694377420403,
+        0.009724480897909282,
+        1.691958908653413
+      ],
+      "camFromWorld": [
+        [
+          -0.7085134720569701,
+          -0.0009149655476148599,
+          -0.7056966931705314,
+          1.0227926519574557
+        ],
+        [
+          0.40122431491375576,
+          0.8221256169853025,
+          -0.40389171694715775,
+          0.7723370983556533
+        ],
+        [
+          0.5805408762832845,
+          -0.5693053949635313,
+          -0.5821199689322241,
+          1.1307582539359766
+        ]
+      ],
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "roundtripPoseMaximumError": 4.440892098500626e-16
+    },
+    {
+      "internalId": 18,
+      "originalImageId": 27,
+      "originalName": "pano_camera4/8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "name": "pano_camera4__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "frameId": 51,
+      "sourceId": "8fa8dca2-39b0-4a49-9a2f-f61fe86354e7",
+      "cameraIndex": 4,
+      "center": [
+        -0.24166943774204058,
+        0.009724480897909433,
+        1.691958908653412
+      ],
+      "camFromWorld": [
+        [
+          -0.999988663671348,
+          -0.004326905938840646,
+          0.0019875647885062367,
+          -0.24498749913415876
+        ],
+        [
+          -0.004320849194626616,
+          0.9999860394544663,
+          0.003041571700271776,
+          -0.015914776668867564
+        ],
+        [
+          -0.0020006976356708207,
+          0.003032949252299677,
+          -0.9999933991921166,
+          1.6914347390279365
+        ]
+      ],
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "roundtripPoseMaximumError": 2.220446049250313e-16
+    },
+    {
+      "internalId": 19,
+      "originalImageId": 31,
+      "originalName": "pano_camera5/8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "name": "pano_camera5__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "frameId": 51,
+      "sourceId": "8fa8dca2-39b0-4a49-9a2f-f61fe86354e7",
+      "cameraIndex": 5,
+      "center": [
+        -0.24166943774204008,
+        0.009724480897909341,
+        1.6919589086534121
+      ],
+      "camFromWorld": [
+        [
+          0.0020006976356707895,
+          -0.0030329492522997163,
+          0.9999933991921166,
+          -1.691434739027937
+        ],
+        [
+          -0.004320849194626596,
+          0.9999860394544663,
+          0.003041571700271816,
+          -0.015914776668867536
+        ],
+        [
+          -0.999988663671348,
+          -0.004326905938840626,
+          0.0019875647885062575,
+          -0.24498749913415896
+        ]
+      ],
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "roundtripPoseMaximumError": 6.661338147750939e-16
+    },
+    {
+      "internalId": 20,
+      "originalImageId": 35,
+      "originalName": "pano_camera6/8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "name": "pano_camera6__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "frameId": 51,
+      "sourceId": "8fa8dca2-39b0-4a49-9a2f-f61fe86354e7",
+      "cameraIndex": 6,
+      "center": [
+        -0.2416694377420405,
+        0.009724480897909293,
+        1.6919589086534121
+      ],
+      "camFromWorld": [
+        [
+          0.9999886636713478,
+          0.004326905938840646,
+          -0.001987564788506114,
+          0.24498749913415852
+        ],
+        [
+          -0.004320849194626616,
+          0.9999860394544663,
+          0.0030415717002717758,
+          -0.015914776668867425
+        ],
+        [
+          0.002000697635670698,
+          -0.0030329492522996773,
+          0.9999933991921165,
+          -1.6914347390279367
+        ]
+      ],
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "roundtripPoseMaximumError": 2.7755575615628914e-17
+    },
+    {
+      "internalId": 21,
+      "originalImageId": 39,
+      "originalName": "pano_camera7/8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "name": "pano_camera7__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "frameId": 51,
+      "sourceId": "8fa8dca2-39b0-4a49-9a2f-f61fe86354e7",
+      "cameraIndex": 7,
+      "center": [
+        -0.24166943774204053,
+        0.009724480897909196,
+        1.6919589086534121
+      ],
+      "camFromWorld": [
+        [
+          -0.0020006976356707895,
+          0.0030329492522996777,
+          -0.9999933991921166,
+          1.691434739027937
+        ],
+        [
+          -0.004320849194626557,
+          0.9999860394544663,
+          0.003041571700271776,
+          -0.015914776668867314
+        ],
+        [
+          0.999988663671348,
+          0.004326905938840586,
+          -0.0019875647885061465,
+          0.2449874991341583
+        ]
+      ],
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "roundtripPoseMaximumError": 1.3322676295501878e-15
+    },
+    {
+      "internalId": 22,
+      "originalImageId": 43,
+      "originalName": "pano_camera8/8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "name": "pano_camera8__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "frameId": 51,
+      "sourceId": "8fa8dca2-39b0-4a49-9a2f-f61fe86354e7",
+      "cameraIndex": 8,
+      "center": [
+        -0.24166943774203942,
+        0.009724480897909393,
+        1.6919589086534113
+      ],
+      "camFromWorld": [
+        [
+          -0.7056840583263975,
+          -0.0052042035142063625,
+          0.7085075342505319,
+          -1.369257295844849
+        ],
+        [
+          -0.4099260648599863,
+          0.8186158058013937,
+          -0.4022794847373419,
+          0.5736131425930873
+        ],
+        [
+          -0.5779019217586946,
+          -0.5743179248098719,
+          -0.5798174627153707,
+          0.8469510326217611
+        ]
+      ],
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "roundtripPoseMaximumError": 1.5543122344752192e-15
+    },
+    {
+      "internalId": 23,
+      "originalImageId": 47,
+      "originalName": "pano_camera9/8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "name": "pano_camera9__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "frameId": 51,
+      "sourceId": "8fa8dca2-39b0-4a49-9a2f-f61fe86354e7",
+      "cameraIndex": 9,
+      "center": [
+        -0.24166943774204058,
+        0.009724480897909005,
+        1.6919589086534124
+      ],
+      "camFromWorld": [
+        [
+          0.7085134720569705,
+          0.0009149655476148322,
+          0.7056966931705315,
+          -1.0227926519574555
+        ],
+        [
+          -0.4083031798154415,
+          0.8161555999738543,
+          0.40887473629941606,
+          -0.7984103420410641
+        ],
+        [
+          -0.5755842017171562,
+          -0.5778314628586475,
+          0.5786308212187281,
+          -1.1125015721618736
+        ]
+      ],
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "roundtripPoseMaximumError": 4.440892098500626e-16
+    },
+    {
+      "internalId": 24,
+      "originalImageId": 12,
+      "originalName": "pano_camera10/d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "name": "pano_camera10__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "frameId": 52,
+      "sourceId": "d8bcfff6-7942-4cf8-8610-8a777e3ad150",
+      "cameraIndex": 10,
+      "center": [
+        0.47669252074590385,
+        -0.02059996764923533,
+        -3.2490519769728516
+      ],
+      "camFromWorld": [
+        [
+          0.7070504934713802,
+          0.005342736094246625,
+          -0.7071428814977246,
+          -2.6344795989692686
+        ],
+        [
+          0.4043496577589401,
+          0.8173212873027007,
+          0.41047200585677485,
+          1.1577312165785805
+        ],
+        [
+          0.5801559738140304,
+          -0.5761574164174956,
+          0.5757270860008333,
+          1.5821423892455555
+        ]
+      ],
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "roundtripPoseMaximumError": 1.5543122344752192e-15
+    },
+    {
+      "internalId": 25,
+      "originalImageId": 16,
+      "originalName": "pano_camera11/d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "name": "pano_camera11__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "frameId": 52,
+      "sourceId": "d8bcfff6-7942-4cf8-8610-8a777e3ad150",
+      "cameraIndex": 11,
+      "center": [
+        0.4766925207459036,
+        -0.020599967649234885,
+        -3.2490519769728534
+      ],
+      "camFromWorld": [
+        [
+          -0.7071613876933716,
+          0.0031642941657227253,
+          -0.7070450897913216,
+          -1.9600625179642703
+        ],
+        [
+          0.40428605144627844,
+          0.8222007194031445,
+          -0.4006728910457117,
+          -1.4775898775169503
+        ],
+        [
+          0.5800651345853864,
+          -0.5691888651892133,
+          -0.5827078816894906,
+          -2.181486178412425
+        ]
+      ],
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "roundtripPoseMaximumError": 6.661338147750939e-16
+    },
+    {
+      "internalId": 26,
+      "originalImageId": 28,
+      "originalName": "pano_camera4/d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "name": "pano_camera4__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "frameId": 52,
+      "sourceId": "d8bcfff6-7942-4cf8-8610-8a777e3ad150",
+      "cameraIndex": 4,
+      "center": [
+        0.47669252074590385,
+        -0.020599967649234975,
+        -3.2490519769728503
+      ],
+      "camFromWorld": [
+        [
+          -0.9999988112061804,
+          -0.0015403910600803468,
+          6.914917874138852e-05,
+          0.47688489132667217
+        ],
+        [
+          -0.00153994722723233,
+          0.9999807210208905,
+          0.006015492421849851,
+          0.04087829937413051
+        ],
+        [
+          -7.841405636441471e-05,
+          0.0060153787845835666,
+          -0.9999819043709315,
+          -3.2488318873309003
+        ]
+      ],
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "roundtripPoseMaximumError": 4.440892098500626e-16
+    },
+    {
+      "internalId": 27,
+      "originalImageId": 32,
+      "originalName": "pano_camera5/d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "name": "pano_camera5__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "frameId": 52,
+      "sourceId": "d8bcfff6-7942-4cf8-8610-8a777e3ad150",
+      "cameraIndex": 5,
+      "center": [
+        0.47669252074590407,
+        -0.020599967649234826,
+        -3.2490519769728525
+      ],
+      "camFromWorld": [
+        [
+          7.84140563641067e-05,
+          -0.00601537878458363,
+          0.9999819043709313,
+          3.248831887330901
+        ],
+        [
+          -0.0015399472272323118,
+          0.9999807210208905,
+          0.006015492421849913,
+          0.04087829937413057
+        ],
+        [
+          -0.9999988112061802,
+          -0.0015403910600803286,
+          6.914917874112358e-05,
+          0.47688489132667256
+        ]
+      ],
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "roundtripPoseMaximumError": 1.3322676295501878e-15
+    },
+    {
+      "internalId": 28,
+      "originalImageId": 36,
+      "originalName": "pano_camera6/d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "name": "pano_camera6__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "frameId": 52,
+      "sourceId": "d8bcfff6-7942-4cf8-8610-8a777e3ad150",
+      "cameraIndex": 6,
+      "center": [
+        0.4766925207459039,
+        -0.020599967649235256,
+        -3.249051976972852
+      ],
+      "camFromWorld": [
+        [
+          0.99999881120618,
+          0.0015403910600803458,
+          -6.914917874126612e-05,
+          -0.4768848913266717
+        ],
+        [
+          -0.0015399472272323298,
+          0.9999807210208905,
+          0.006015492421849851,
+          0.04087829937413079
+        ],
+        [
+          7.84140563642923e-05,
+          -0.0060153787845835666,
+          0.9999819043709309,
+          3.2488318873309
+        ]
+      ],
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "roundtripPoseMaximumError": 4.440892098500626e-16
+    },
+    {
+      "internalId": 29,
+      "originalImageId": 40,
+      "originalName": "pano_camera7/d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "name": "pano_camera7__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "frameId": 52,
+      "sourceId": "d8bcfff6-7942-4cf8-8610-8a777e3ad150",
+      "cameraIndex": 7,
+      "center": [
+        0.47669252074590407,
+        -0.020599967649234635,
+        -3.2490519769728525
+      ],
+      "camFromWorld": [
+        [
+          -7.841405636388465e-05,
+          0.006015378784583551,
+          -0.999981904370931,
+          -3.2488318873309012
+        ],
+        [
+          -0.0015399472272323135,
+          0.9999807210208905,
+          0.006015492421849834,
+          0.04087829937413012
+        ],
+        [
+          0.99999881120618,
+          0.001540391060080327,
+          -6.914917874079052e-05,
+          -0.47688489132667033
+        ]
+      ],
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "roundtripPoseMaximumError": 4.440892098500626e-16
+    },
+    {
+      "internalId": 30,
+      "originalImageId": 44,
+      "originalName": "pano_camera8/d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "name": "pano_camera8__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "frameId": 52,
+      "sourceId": "d8bcfff6-7942-4cf8-8610-8a777e3ad150",
+      "cameraIndex": 8,
+      "center": [
+        0.4766925207459036,
+        -0.02059996764923544,
+        -3.249051976972852
+      ],
+      "camFromWorld": [
+        [
+          -0.7070504934713806,
+          -0.005342736094246708,
+          0.7071428814977244,
+          2.6344795989692678
+        ],
+        [
+          -0.4068725595975089,
+          0.8209512164449841,
+          -0.4006168000272483,
+          -1.0907601315798272
+        ],
+        [
+          -0.5783894189285009,
+          -0.5709733403483283,
+          -0.5826277754132765,
+          -1.6290360478037664
+        ]
+      ],
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "roundtripPoseMaximumError": 1.3322676295501878e-15
+    },
+    {
+      "internalId": 31,
+      "originalImageId": 48,
+      "originalName": "pano_camera9/d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "name": "pano_camera9__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "frameId": 52,
+      "sourceId": "d8bcfff6-7942-4cf8-8610-8a777e3ad150",
+      "cameraIndex": 9,
+      "center": [
+        0.4766925207459035,
+        -0.020599967649235218,
+        -3.2490519769728516
+      ],
+      "camFromWorld": [
+        [
+          0.7071613876933714,
+          -0.0031642941657226697,
+          0.7070450897913216,
+          1.9600625179642701
+        ],
+        [
+          -0.40680895328484756,
+          0.8160717843445403,
+          0.41052809687523806,
+          1.5445609625157024
+        ],
+        [
+          -0.5782985796998572,
+          -0.5779418915766108,
+          0.5758071922770479,
+          2.1345925198542153
+        ]
+      ],
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "roundtripPoseMaximumError": 1.7763568394002505e-15
+    }
+  ],
+  "dense": {
+    "points": 39651,
+    "supportObservations": 144118,
+    "distinctPhysicalFrameSupport": {
+      "0": 0,
+      "1": 0,
+      "2": 7,
+      "3": 14472,
+      "4": 25172
+    },
+    "pointsWithAtLeastTwoPhysicalFrames": 39651,
+    "pointsWithAtLeastThreePhysicalFrames": 39644,
+    "pointsWithRepeatedVirtualViewIds": 0,
+    "pointsWithMultipleVirtualViewsFromOnePhysicalFrame": 0,
+    "positiveDepthObservations": 144118,
+    "nonpositiveDepthObservations": 0,
+    "maximumPhysicalParallaxDegrees": {
+      "count": 39651,
+      "minimum": 0.9146992636198906,
+      "median": 10.240034254127567,
+      "p95": 22.89533927944268,
+      "maximum": 29.18695350010672
+    },
+    "pointsBelow1_5Degrees": 3,
+    "observationWeights": {
+      "count": 144118,
+      "minimum": 0.00024084560573101044,
+      "median": 0.017833994701504707,
+      "p95": 0.1166298504918813,
+      "maximum": 1.1001712083816528
+    },
+    "pairs": [
+      {
+        "frameIds": [
+          49,
+          50
+        ],
+        "baselineArbitraryUnits": 9.999999999999998,
+        "commonPoints": 26630,
+        "acuteAnglesDegrees": {
+          "count": 26630,
+          "minimum": 0.9146992636198906,
+          "median": 8.325479197214438,
+          "p95": 23.95079588374984,
+          "maximum": 29.18695350010672
+        }
+      },
+      {
+        "frameIds": [
+          49,
+          51
+        ],
+        "baselineArbitraryUnits": 5.528077974496828,
+        "commonPoints": 37928,
+        "acuteAnglesDegrees": {
+          "count": 37928,
+          "minimum": 0.4859118810821847,
+          "median": 7.84328194852698,
+          "p95": 18.843936604637285,
+          "maximum": 23.583316978505643
+        }
+      },
+      {
+        "frameIds": [
+          49,
+          52
+        ],
+        "baselineArbitraryUnits": 0.5350471589818673,
+        "commonPoints": 38160,
+        "acuteAnglesDegrees": {
+          "count": 38160,
+          "minimum": 0.18606327674488662,
+          "median": 0.8618923940158023,
+          "p95": 2.122865518159634,
+          "maximum": 2.534453701434992
+        }
+      },
+      {
+        "frameIds": [
+          50,
+          51
+        ],
+        "baselineArbitraryUnits": 4.471952292698092,
+        "commonPoints": 26656,
+        "acuteAnglesDegrees": {
+          "count": 26656,
+          "minimum": 0.42888093120786536,
+          "median": 4.00011772113274,
+          "p95": 9.393915502524532,
+          "maximum": 10.905767800538051
+        }
+      },
+      {
+        "frameIds": [
+          50,
+          52
+        ],
+        "baselineArbitraryUnits": 9.464967201058997,
+        "commonPoints": 26891,
+        "acuteAnglesDegrees": {
+          "count": 26891,
+          "minimum": 1.232175307064134,
+          "median": 7.929492351220837,
+          "p95": 22.37934063176222,
+          "maximum": 27.206571203874773
+        }
+      },
+      {
+        "frameIds": [
+          51,
+          52
+        ],
+        "baselineArbitraryUnits": 4.993050375017217,
+        "commonPoints": 38190,
+        "acuteAnglesDegrees": {
+          "count": 38190,
+          "minimum": 0.605522796491452,
+          "median": 6.871046692160677,
+          "p95": 16.69100831487331,
+          "maximum": 21.09875843115401
+        }
+      }
+    ],
+    "views": [
+      {
+        "internalId": 0,
+        "sourceId": "4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444",
+        "supportObservations": 0,
+        "positiveDepth": 0,
+        "withinOriginalImage": 0,
+        "originalMaskRetainsNearestSample": 0,
+        "originalMaskExcludesNearestSample": 0,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "excludedMaskSamples": [],
+        "cameraDepthArbitraryUnits": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "native760MaskProjection": {
+          "insideImage": 0,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 1,
+        "sourceId": "4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444",
+        "supportObservations": 19110,
+        "positiveDepth": 19110,
+        "withinOriginalImage": 19110,
+        "originalMaskRetainsNearestSample": 19107,
+        "originalMaskExcludesNearestSample": 3,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 3,
+          "minimum": 1.0,
+          "median": 1.0,
+          "p95": 1.3727922061357856,
+          "maximum": 1.4142135623730951
+        },
+        "excludedMaskSamples": [
+          {
+            "pointId": 20528,
+            "pixel": [
+              429,
+              249
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 38016,
+            "pixel": [
+              519,
+              1131
+            ],
+            "distanceToValidMaskPixels": 1.4142135623730951
+          },
+          {
+            "pointId": 39169,
+            "pixel": [
+              584,
+              1242
+            ],
+            "distanceToValidMaskPixels": 1.0
+          }
+        ],
+        "cameraDepthArbitraryUnits": {
+          "count": 19110,
+          "minimum": 12.29332417054356,
+          "median": 21.22165411967263,
+          "p95": 38.56538637399598,
+          "maximum": 106.9415200226178
+        },
+        "native760MaskProjection": {
+          "insideImage": 19110,
+          "excludedSamples": 7,
+          "excludedSampleDistancePixels": {
+            "count": 7,
+            "minimum": 1.0,
+            "median": 1.0,
+            "p95": 1.2899494936611664,
+            "maximum": 1.4142135623730951
+          },
+          "excludedSamplesDetail": [
+            {
+              "pointId": 20507,
+              "pixel": [
+                216,
+                122
+              ],
+              "distanceToValidMaskPixels": 1.0
+            },
+            {
+              "pointId": 20528,
+              "pixel": [
+                214,
+                124
+              ],
+              "distanceToValidMaskPixels": 1.4142135623730951
+            },
+            {
+              "pointId": 20542,
+              "pixel": [
+                214,
+                126
+              ],
+              "distanceToValidMaskPixels": 1.0
+            },
+            {
+              "pointId": 37899,
+              "pixel": [
+                257,
+                560
+              ],
+              "distanceToValidMaskPixels": 1.0
+            },
+            {
+              "pointId": 38016,
+              "pixel": [
+                259,
+                565
+              ],
+              "distanceToValidMaskPixels": 1.0
+            },
+            {
+              "pointId": 38135,
+              "pixel": [
+                262,
+                569
+              ],
+              "distanceToValidMaskPixels": 1.0
+            },
+            {
+              "pointId": 39169,
+              "pixel": [
+                292,
+                621
+              ],
+              "distanceToValidMaskPixels": 1.0
+            }
+          ]
+        }
+      },
+      {
+        "internalId": 2,
+        "sourceId": "4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444",
+        "supportObservations": 0,
+        "positiveDepth": 0,
+        "withinOriginalImage": 0,
+        "originalMaskRetainsNearestSample": 0,
+        "originalMaskExcludesNearestSample": 0,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "excludedMaskSamples": [],
+        "cameraDepthArbitraryUnits": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "native760MaskProjection": {
+          "insideImage": 0,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 3,
+        "sourceId": "4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444",
+        "supportObservations": 0,
+        "positiveDepth": 0,
+        "withinOriginalImage": 0,
+        "originalMaskRetainsNearestSample": 0,
+        "originalMaskExcludesNearestSample": 0,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "excludedMaskSamples": [],
+        "cameraDepthArbitraryUnits": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "native760MaskProjection": {
+          "insideImage": 0,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 4,
+        "sourceId": "4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444",
+        "supportObservations": 201,
+        "positiveDepth": 201,
+        "withinOriginalImage": 201,
+        "originalMaskRetainsNearestSample": 201,
+        "originalMaskExcludesNearestSample": 0,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "excludedMaskSamples": [],
+        "cameraDepthArbitraryUnits": {
+          "count": 201,
+          "minimum": 39.792757069327905,
+          "median": 42.014864924140724,
+          "p95": 48.58320248368385,
+          "maximum": 102.45420044339096
+        },
+        "native760MaskProjection": {
+          "insideImage": 201,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 5,
+        "sourceId": "4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444",
+        "supportObservations": 0,
+        "positiveDepth": 0,
+        "withinOriginalImage": 0,
+        "originalMaskRetainsNearestSample": 0,
+        "originalMaskExcludesNearestSample": 0,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "excludedMaskSamples": [],
+        "cameraDepthArbitraryUnits": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "native760MaskProjection": {
+          "insideImage": 0,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 6,
+        "sourceId": "4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444",
+        "supportObservations": 7248,
+        "positiveDepth": 7248,
+        "withinOriginalImage": 7248,
+        "originalMaskRetainsNearestSample": 7248,
+        "originalMaskExcludesNearestSample": 0,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "excludedMaskSamples": [],
+        "cameraDepthArbitraryUnits": {
+          "count": 7248,
+          "minimum": 10.4955259245625,
+          "median": 14.330040685874254,
+          "p95": 28.485882871730876,
+          "maximum": 39.3707071445508
+        },
+        "native760MaskProjection": {
+          "insideImage": 7248,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 7,
+        "sourceId": "4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444",
+        "supportObservations": 12215,
+        "positiveDepth": 12215,
+        "withinOriginalImage": 12215,
+        "originalMaskRetainsNearestSample": 12206,
+        "originalMaskExcludesNearestSample": 9,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 9,
+          "minimum": 1.0,
+          "median": 1.0,
+          "p95": 1.4142135623730951,
+          "maximum": 1.4142135623730951
+        },
+        "excludedMaskSamples": [
+          {
+            "pointId": 4693,
+            "pixel": [
+              1093,
+              967
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 6146,
+            "pixel": [
+              1067,
+              1014
+            ],
+            "distanceToValidMaskPixels": 1.4142135623730951
+          },
+          {
+            "pointId": 8724,
+            "pixel": [
+              1023,
+              1089
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 9621,
+            "pixel": [
+              1009,
+              1113
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 9924,
+            "pixel": [
+              1005,
+              1121
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 10546,
+            "pixel": [
+              993,
+              1141
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 10590,
+            "pixel": [
+              993,
+              1143
+            ],
+            "distanceToValidMaskPixels": 1.4142135623730951
+          },
+          {
+            "pointId": 11011,
+            "pixel": [
+              979,
+              1166
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 12700,
+            "pixel": [
+              922,
+              1265
+            ],
+            "distanceToValidMaskPixels": 1.0
+          }
+        ],
+        "cameraDepthArbitraryUnits": {
+          "count": 12215,
+          "minimum": 22.97772348948159,
+          "median": 46.64053111072161,
+          "p95": 56.374499177069424,
+          "maximum": 61.26979151372505
+        },
+        "native760MaskProjection": {
+          "insideImage": 12215,
+          "excludedSamples": 1,
+          "excludedSampleDistancePixels": {
+            "count": 1,
+            "minimum": 1.0,
+            "median": 1.0,
+            "p95": 1.0,
+            "maximum": 1.0
+          },
+          "excludedSamplesDetail": [
+            {
+              "pointId": 6146,
+              "pixel": [
+                533,
+                507
+              ],
+              "distanceToValidMaskPixels": 1.0
+            }
+          ]
+        }
+      },
+      {
+        "internalId": 8,
+        "sourceId": "6bcac3e5-738b-4e35-9e46-b00819b4ead1",
+        "supportObservations": 0,
+        "positiveDepth": 0,
+        "withinOriginalImage": 0,
+        "originalMaskRetainsNearestSample": 0,
+        "originalMaskExcludesNearestSample": 0,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "excludedMaskSamples": [],
+        "cameraDepthArbitraryUnits": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "native760MaskProjection": {
+          "insideImage": 0,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 9,
+        "sourceId": "6bcac3e5-738b-4e35-9e46-b00819b4ead1",
+        "supportObservations": 14656,
+        "positiveDepth": 14656,
+        "withinOriginalImage": 14656,
+        "originalMaskRetainsNearestSample": 14646,
+        "originalMaskExcludesNearestSample": 10,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 10,
+          "minimum": 1.0,
+          "median": 1.0,
+          "p95": 1.0,
+          "maximum": 1.0
+        },
+        "excludedMaskSamples": [
+          {
+            "pointId": 35983,
+            "pixel": [
+              1063,
+              1019
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 36370,
+            "pixel": [
+              1052,
+              1039
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 36523,
+            "pixel": [
+              1047,
+              1048
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 37366,
+            "pixel": [
+              1015,
+              1103
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 37507,
+            "pixel": [
+              1008,
+              1115
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 37568,
+            "pixel": [
+              1006,
+              1119
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 37592,
+            "pixel": [
+              1005,
+              1120
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 37695,
+            "pixel": [
+              1001,
+              1128
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 37811,
+            "pixel": [
+              993,
+              1142
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 38381,
+            "pixel": [
+              971,
+              1180
+            ],
+            "distanceToValidMaskPixels": 1.0
+          }
+        ],
+        "cameraDepthArbitraryUnits": {
+          "count": 14656,
+          "minimum": 19.020357440617254,
+          "median": 28.861065652224184,
+          "p95": 45.47141195248522,
+          "maximum": 102.88624683266553
+        },
+        "native760MaskProjection": {
+          "insideImage": 14656,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 10,
+        "sourceId": "6bcac3e5-738b-4e35-9e46-b00819b4ead1",
+        "supportObservations": 0,
+        "positiveDepth": 0,
+        "withinOriginalImage": 0,
+        "originalMaskRetainsNearestSample": 0,
+        "originalMaskExcludesNearestSample": 0,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "excludedMaskSamples": [],
+        "cameraDepthArbitraryUnits": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "native760MaskProjection": {
+          "insideImage": 0,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 11,
+        "sourceId": "6bcac3e5-738b-4e35-9e46-b00819b4ead1",
+        "supportObservations": 0,
+        "positiveDepth": 0,
+        "withinOriginalImage": 0,
+        "originalMaskRetainsNearestSample": 0,
+        "originalMaskExcludesNearestSample": 0,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "excludedMaskSamples": [],
+        "cameraDepthArbitraryUnits": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "native760MaskProjection": {
+          "insideImage": 0,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 12,
+        "sourceId": "6bcac3e5-738b-4e35-9e46-b00819b4ead1",
+        "supportObservations": 249,
+        "positiveDepth": 249,
+        "withinOriginalImage": 249,
+        "originalMaskRetainsNearestSample": 249,
+        "originalMaskExcludesNearestSample": 0,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "excludedMaskSamples": [],
+        "cameraDepthArbitraryUnits": {
+          "count": 249,
+          "minimum": 29.918436253115672,
+          "median": 32.20183370680002,
+          "p95": 39.34107797633974,
+          "maximum": 92.53551137354133
+        },
+        "native760MaskProjection": {
+          "insideImage": 249,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 13,
+        "sourceId": "6bcac3e5-738b-4e35-9e46-b00819b4ead1",
+        "supportObservations": 0,
+        "positiveDepth": 0,
+        "withinOriginalImage": 0,
+        "originalMaskRetainsNearestSample": 0,
+        "originalMaskExcludesNearestSample": 0,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "excludedMaskSamples": [],
+        "cameraDepthArbitraryUnits": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "native760MaskProjection": {
+          "insideImage": 0,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 14,
+        "sourceId": "6bcac3e5-738b-4e35-9e46-b00819b4ead1",
+        "supportObservations": 0,
+        "positiveDepth": 0,
+        "withinOriginalImage": 0,
+        "originalMaskRetainsNearestSample": 0,
+        "originalMaskExcludesNearestSample": 0,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "excludedMaskSamples": [],
+        "cameraDepthArbitraryUnits": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "native760MaskProjection": {
+          "insideImage": 0,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 15,
+        "sourceId": "6bcac3e5-738b-4e35-9e46-b00819b4ead1",
+        "supportObservations": 12598,
+        "positiveDepth": 12598,
+        "withinOriginalImage": 12598,
+        "originalMaskRetainsNearestSample": 12598,
+        "originalMaskExcludesNearestSample": 0,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "excludedMaskSamples": [],
+        "cameraDepthArbitraryUnits": {
+          "count": 12598,
+          "minimum": 21.96323801959158,
+          "median": 39.98156997437107,
+          "p95": 49.77077477624992,
+          "maximum": 54.727912454316645
+        },
+        "native760MaskProjection": {
+          "insideImage": 12598,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 16,
+        "sourceId": "8fa8dca2-39b0-4a49-9a2f-f61fe86354e7",
+        "supportObservations": 0,
+        "positiveDepth": 0,
+        "withinOriginalImage": 0,
+        "originalMaskRetainsNearestSample": 0,
+        "originalMaskExcludesNearestSample": 0,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "excludedMaskSamples": [],
+        "cameraDepthArbitraryUnits": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "native760MaskProjection": {
+          "insideImage": 0,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 17,
+        "sourceId": "8fa8dca2-39b0-4a49-9a2f-f61fe86354e7",
+        "supportObservations": 18776,
+        "positiveDepth": 18776,
+        "withinOriginalImage": 18776,
+        "originalMaskRetainsNearestSample": 18771,
+        "originalMaskExcludesNearestSample": 5,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 5,
+          "minimum": 1.0,
+          "median": 1.0,
+          "p95": 1.331370849898476,
+          "maximum": 1.4142135623730951
+        },
+        "excludedMaskSamples": [
+          {
+            "pointId": 36662,
+            "pixel": [
+              1055,
+              1034
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 36744,
+            "pixel": [
+              1053,
+              1037
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 36779,
+            "pixel": [
+              1053,
+              1039
+            ],
+            "distanceToValidMaskPixels": 1.4142135623730951
+          },
+          {
+            "pointId": 38670,
+            "pixel": [
+              969,
+              1184
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 38702,
+            "pixel": [
+              967,
+              1187
+            ],
+            "distanceToValidMaskPixels": 1.0
+          }
+        ],
+        "cameraDepthArbitraryUnits": {
+          "count": 18776,
+          "minimum": 15.959442333485704,
+          "median": 24.83361170699769,
+          "p95": 42.07513332766273,
+          "maximum": 110.20344360395069
+        },
+        "native760MaskProjection": {
+          "insideImage": 18776,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 18,
+        "sourceId": "8fa8dca2-39b0-4a49-9a2f-f61fe86354e7",
+        "supportObservations": 0,
+        "positiveDepth": 0,
+        "withinOriginalImage": 0,
+        "originalMaskRetainsNearestSample": 0,
+        "originalMaskExcludesNearestSample": 0,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "excludedMaskSamples": [],
+        "cameraDepthArbitraryUnits": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "native760MaskProjection": {
+          "insideImage": 0,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 19,
+        "sourceId": "8fa8dca2-39b0-4a49-9a2f-f61fe86354e7",
+        "supportObservations": 0,
+        "positiveDepth": 0,
+        "withinOriginalImage": 0,
+        "originalMaskRetainsNearestSample": 0,
+        "originalMaskExcludesNearestSample": 0,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "excludedMaskSamples": [],
+        "cameraDepthArbitraryUnits": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "native760MaskProjection": {
+          "insideImage": 0,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 20,
+        "sourceId": "8fa8dca2-39b0-4a49-9a2f-f61fe86354e7",
+        "supportObservations": 255,
+        "positiveDepth": 255,
+        "withinOriginalImage": 255,
+        "originalMaskRetainsNearestSample": 255,
+        "originalMaskExcludesNearestSample": 0,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "excludedMaskSamples": [],
+        "cameraDepthArbitraryUnits": {
+          "count": 255,
+          "minimum": 34.340125218708806,
+          "median": 36.62038604583462,
+          "p95": 43.70006774405044,
+          "maximum": 96.97675972402017
+        },
+        "native760MaskProjection": {
+          "insideImage": 255,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 21,
+        "sourceId": "8fa8dca2-39b0-4a49-9a2f-f61fe86354e7",
+        "supportObservations": 0,
+        "positiveDepth": 0,
+        "withinOriginalImage": 0,
+        "originalMaskRetainsNearestSample": 0,
+        "originalMaskExcludesNearestSample": 0,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "excludedMaskSamples": [],
+        "cameraDepthArbitraryUnits": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "native760MaskProjection": {
+          "insideImage": 0,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 22,
+        "sourceId": "8fa8dca2-39b0-4a49-9a2f-f61fe86354e7",
+        "supportObservations": 7252,
+        "positiveDepth": 7252,
+        "withinOriginalImage": 7252,
+        "originalMaskRetainsNearestSample": 7248,
+        "originalMaskExcludesNearestSample": 4,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 4,
+          "minimum": 1.0,
+          "median": 1.0,
+          "p95": 1.0,
+          "maximum": 1.0
+        },
+        "excludedMaskSamples": [
+          {
+            "pointId": 18138,
+            "pixel": [
+              428,
+              971
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 18267,
+            "pixel": [
+              432,
+              977
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 18752,
+            "pixel": [
+              448,
+              1005
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 20339,
+            "pixel": [
+              529,
+              1147
+            ],
+            "distanceToValidMaskPixels": 1.0
+          }
+        ],
+        "cameraDepthArbitraryUnits": {
+          "count": 7252,
+          "minimum": 13.223287757150004,
+          "median": 17.061641913020345,
+          "p95": 31.225965010651407,
+          "maximum": 42.11710017203942
+        },
+        "native760MaskProjection": {
+          "insideImage": 7252,
+          "excludedSamples": 1,
+          "excludedSampleDistancePixels": {
+            "count": 1,
+            "minimum": 1.0,
+            "median": 1.0,
+            "p95": 1.0,
+            "maximum": 1.0
+          },
+          "excludedSamplesDetail": [
+            {
+              "pointId": 20339,
+              "pixel": [
+                264,
+                573
+              ],
+              "distanceToValidMaskPixels": 1.0
+            }
+          ]
+        }
+      },
+      {
+        "internalId": 23,
+        "sourceId": "8fa8dca2-39b0-4a49-9a2f-f61fe86354e7",
+        "supportObservations": 12521,
+        "positiveDepth": 12521,
+        "withinOriginalImage": 12521,
+        "originalMaskRetainsNearestSample": 12521,
+        "originalMaskExcludesNearestSample": 0,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "excludedMaskSamples": [],
+        "cameraDepthArbitraryUnits": {
+          "count": 12521,
+          "minimum": 19.400779036488792,
+          "median": 42.71125479904904,
+          "p95": 52.73843086804685,
+          "maximum": 57.678499472362184
+        },
+        "native760MaskProjection": {
+          "insideImage": 12521,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 24,
+        "sourceId": "d8bcfff6-7942-4cf8-8610-8a777e3ad150",
+        "supportObservations": 0,
+        "positiveDepth": 0,
+        "withinOriginalImage": 0,
+        "originalMaskRetainsNearestSample": 0,
+        "originalMaskExcludesNearestSample": 0,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "excludedMaskSamples": [],
+        "cameraDepthArbitraryUnits": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "native760MaskProjection": {
+          "insideImage": 0,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 25,
+        "sourceId": "d8bcfff6-7942-4cf8-8610-8a777e3ad150",
+        "supportObservations": 19028,
+        "positiveDepth": 19028,
+        "withinOriginalImage": 19028,
+        "originalMaskRetainsNearestSample": 19028,
+        "originalMaskExcludesNearestSample": 0,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "excludedMaskSamples": [],
+        "cameraDepthArbitraryUnits": {
+          "count": 19028,
+          "minimum": 12.644500987095771,
+          "median": 21.547931960693845,
+          "p95": 38.98982907597887,
+          "maximum": 106.8506472167913
+        },
+        "native760MaskProjection": {
+          "insideImage": 19028,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 26,
+        "sourceId": "d8bcfff6-7942-4cf8-8610-8a777e3ad150",
+        "supportObservations": 0,
+        "positiveDepth": 0,
+        "withinOriginalImage": 0,
+        "originalMaskRetainsNearestSample": 0,
+        "originalMaskExcludesNearestSample": 0,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "excludedMaskSamples": [],
+        "cameraDepthArbitraryUnits": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "native760MaskProjection": {
+          "insideImage": 0,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 27,
+        "sourceId": "d8bcfff6-7942-4cf8-8610-8a777e3ad150",
+        "supportObservations": 0,
+        "positiveDepth": 0,
+        "withinOriginalImage": 0,
+        "originalMaskRetainsNearestSample": 0,
+        "originalMaskExcludesNearestSample": 0,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "excludedMaskSamples": [],
+        "cameraDepthArbitraryUnits": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "native760MaskProjection": {
+          "insideImage": 0,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 28,
+        "sourceId": "d8bcfff6-7942-4cf8-8610-8a777e3ad150",
+        "supportObservations": 223,
+        "positiveDepth": 223,
+        "withinOriginalImage": 223,
+        "originalMaskRetainsNearestSample": 223,
+        "originalMaskExcludesNearestSample": 0,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "excludedMaskSamples": [],
+        "cameraDepthArbitraryUnits": {
+          "count": 223,
+          "minimum": 35.91749687528424,
+          "median": 41.532334039709006,
+          "p95": 48.74649027028925,
+          "maximum": 101.07760440098176
+        },
+        "native760MaskProjection": {
+          "insideImage": 223,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 29,
+        "sourceId": "d8bcfff6-7942-4cf8-8610-8a777e3ad150",
+        "supportObservations": 0,
+        "positiveDepth": 0,
+        "withinOriginalImage": 0,
+        "originalMaskRetainsNearestSample": 0,
+        "originalMaskExcludesNearestSample": 0,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "excludedMaskSamples": [],
+        "cameraDepthArbitraryUnits": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "native760MaskProjection": {
+          "insideImage": 0,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 30,
+        "sourceId": "d8bcfff6-7942-4cf8-8610-8a777e3ad150",
+        "supportObservations": 7251,
+        "positiveDepth": 7251,
+        "withinOriginalImage": 7251,
+        "originalMaskRetainsNearestSample": 7251,
+        "originalMaskExcludesNearestSample": 0,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 0,
+          "minimum": null,
+          "median": null,
+          "p95": null,
+          "maximum": null
+        },
+        "excludedMaskSamples": [],
+        "cameraDepthArbitraryUnits": {
+          "count": 7251,
+          "minimum": 10.767147499670724,
+          "median": 14.600078144287476,
+          "p95": 28.776390006830454,
+          "maximum": 39.62336878951493
+        },
+        "native760MaskProjection": {
+          "insideImage": 7251,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      },
+      {
+        "internalId": 31,
+        "sourceId": "d8bcfff6-7942-4cf8-8610-8a777e3ad150",
+        "supportObservations": 12535,
+        "positiveDepth": 12535,
+        "withinOriginalImage": 12535,
+        "originalMaskRetainsNearestSample": 12523,
+        "originalMaskExcludesNearestSample": 12,
+        "excludedSampleDistanceToValidMaskPixels": {
+          "count": 12,
+          "minimum": 1.0,
+          "median": 1.0,
+          "p95": 1.1863961030678924,
+          "maximum": 1.4142135623730951
+        },
+        "excludedMaskSamples": [
+          {
+            "pointId": 4089,
+            "pixel": [
+              1102,
+              951
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 4318,
+            "pixel": [
+              1097,
+              960
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 4693,
+            "pixel": [
+              1092,
+              969
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 6022,
+            "pixel": [
+              1067,
+              1013
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 6146,
+            "pixel": [
+              1065,
+              1016
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 9162,
+            "pixel": [
+              1015,
+              1104
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 11290,
+            "pixel": [
+              969,
+              1184
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 11656,
+            "pixel": [
+              957,
+              1204
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 12018,
+            "pixel": [
+              945,
+              1226
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 12252,
+            "pixel": [
+              937,
+              1241
+            ],
+            "distanceToValidMaskPixels": 1.4142135623730951
+          },
+          {
+            "pointId": 12654,
+            "pixel": [
+              921,
+              1267
+            ],
+            "distanceToValidMaskPixels": 1.0
+          },
+          {
+            "pointId": 12684,
+            "pixel": [
+              920,
+              1269
+            ],
+            "distanceToValidMaskPixels": 1.0
+          }
+        ],
+        "cameraDepthArbitraryUnits": {
+          "count": 12535,
+          "minimum": 22.67083788988612,
+          "median": 46.12514854514967,
+          "p95": 56.00067340650716,
+          "maximum": 60.98204135673487
+        },
+        "native760MaskProjection": {
+          "insideImage": 12535,
+          "excludedSamples": 0,
+          "excludedSampleDistancePixels": {
+            "count": 0,
+            "minimum": null,
+            "median": null,
+            "p95": null,
+            "maximum": null
+          },
+          "excludedSamplesDetail": []
+        }
+      }
+    ],
+    "maximumPhysicalBaselineArbitraryUnits": 9.999999999999998,
+    "sourceMaskProjectionMethod": "Nearest sample in the original 1520px mask, using COLMAP projection minus0.5px. Fused-point displacement and dense-pyramid sampling can change boundary membership; this does not replay library depth-map mask decisions.",
+    "relativeSupportChecks": {
+      "nonemptyFiniteCloud": true,
+      "atLeastTwoPhysicalFramesForEveryPoint": true,
+      "everySupportObservationHasPositiveDepth": true,
+      "noRepeatedVirtualViewIds": true
+    }
+  },
+  "mesh": {
+    "vertices": 33482,
+    "triangles": 66755,
+    "zeroAreaTriangles": 0,
+    "faceConnectedComponents": 5,
+    "largestFaceComponentTriangles": 35833,
+    "largestFaceComponentFraction": 0.5367837615159913,
+    "triangleAreaArbitraryUnitsSquared": {
+      "count": 66755,
+      "minimum": 0.00013863880795576277,
+      "median": 0.01569795803300623,
+      "p95": 0.12237283408368292,
+      "maximum": 32.31998300897629
+    },
+    "triangleMaximumEdgeArbitraryUnits": {
+      "count": 66755,
+      "minimum": 0.049076642336061564,
+      "median": 0.26652698794880625,
+      "p95": 0.8567952395929997,
+      "maximum": 13.531323952887726
+    },
+    "vertexNearestDensePointArbitraryUnits": {
+      "count": 33482,
+      "minimum": 0.0,
+      "median": 0.0,
+      "p95": 0.0,
+      "maximum": 0.1555968287646146
+    },
+    "faceCentroidNearestDensePointArbitraryUnits": {
+      "count": 66755,
+      "minimum": 0.0036528935144854334,
+      "median": 0.0919343165248128,
+      "p95": 0.2652552021143618,
+      "maximum": 4.701750592321797
+    },
+    "faceCentroidNearestDensePointOverMaximumBaseline": {
+      "count": 66755,
+      "minimum": 0.0003652893514485434,
+      "median": 0.009193431652481283,
+      "p95": 0.02652552021143619,
+      "maximum": 0.4701750592321797
+    },
+    "watertight": false,
+    "windingConsistent": true,
+    "limitations": "Nearest-cloud distances describe graph-cut interpolation and coverage. They do not establish physical surface accuracy, occupied floor, collision or correct texture."
+  },
+  "texture": {
+    "width": 8192,
+    "height": 8192,
+    "mode": "RGB",
+    "encodedBytes": 2262452,
+    "rgb8DecodedBytes": 201326592,
+    "rgba8BaseBytes": 268435456,
+    "rgba8FullMipBytes": 357913940,
+    "method": "Actual JPEG dimensions; calculated allocation for uncompressed RGB8 and hypothetical RGBA8 upload with full mip levels.",
+    "limitations": "These arithmetic texture allocations are separate from measured physical-device GPU memory and application startup transfer."
+  },
+  "relativeSupportChecksPass": true,
+  "routeQualified": false,
+  "limitations": [
+    "Four fitted original panoramas supply this diagnostic. Same-family held-out imaging has its own evaluation.",
+    "All geometry uses arbitrary scale. Physical floor, full-route coverage, night lighting and independent human recognition remain unqualified.",
+    "Dense fusion counts virtual images; this audit independently counts original physical frame centers.",
+    "Source-mask projection uses the original full-resolution mask and reports boundary differences separately."
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "argv": [
+    "/workspace/TourGuideAI/artifacts/realism-01/surface-methods/bin/ReconstructMesh",
+    "-i",
+    "scene_dense.mvs",
+    "-p",
+    "scene_dense.ply",
+    "-o",
+    "scene_mesh.mvs",
+    "--max-threads",
+    "2",
+    "--close-holes",
+    "0",
+    "--smooth",
+    "0",
+    "--decimate",
+    "1",
+    "--free-space-support",
+    "0",
+    "--crop-to-roi",
+    "0",
+    "--verbosity",
+    "3"
+  ],
+  "cwd": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface/run-02",
+  "executableSha256": "7d5c9ce56938637d52581bb8a4cac727d407f0fd35fc409df682a66bbea065f2",
+  "startedAt": "2026-11-25T02:27:36.712111+00:00",
+  "returnCode": 0,
+  "finishedAt": "2026-11-25T02:27:38.710868+00:00"
+}

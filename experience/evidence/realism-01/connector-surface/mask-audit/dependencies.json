@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-25",
+  "method": "Compile an adapter against the unchanged official OpenMVS interface reader; use OpenCV types and nlohmann JSON output.",
+  "dependencies": [
+    {
+      "name": "OpenMVS Interface.h",
+      "version": "v2.4.0",
+      "commit": "58117204c86bbb11a0b25b26a8987676cf11274d",
+      "source": "https://raw.githubusercontent.com/cdcseacave/openMVS/v2.4.0/libs/MVS/Interface.h",
+      "sha256": "1d4d78f30fc34577d11d6a0b8939006aa27f2169a00775f3d7fe18f62e137d73",
+      "rights": "OpenMVS AGPL-3.0; retained upstream notices and license",
+      "retained": "upstream/Interface.h"
+    },
+    {
+      "name": "nlohmann JSON single header",
+      "version": "3.12.0",
+      "source": "https://raw.githubusercontent.com/nlohmann/json/v3.12.0/single_include/nlohmann/json.hpp",
+      "sha256": "aaf127c04cb31c406e5b04a63f1ae89369fccde6d8fa7cdda1ed4f32dfc5de63",
+      "rights": "MIT; Niels Lohmann; retained license",
+      "rawLocation": "artifacts/realism-01/connector-surface-review/upstream/json.hpp"
+    },
+    {
+      "name": "Debian OpenCV development headers",
+      "version": "4.10.0+dfsg-5 amd64",
+      "source": "https://deb.debian.org/debian/pool/main/o/opencv/libopencv-core-dev_4.10.0+dfsg-5_amd64.deb",
+      "sha256": "06ecdfca0a8ce36c1120f5467d64ad258e128b03419c90dec90e863529d11927",
+      "rights": "OpenCV Apache-2.0 and BSD-3-Clause; Debian component copyright receipt retained",
+      "rawLocation": "artifacts/realism-01/connector-surface-review/upstream/libopencv-core-dev_4.10.0+dfsg-5_amd64.deb"
+    }
+  ],
+  "limitations": "Native build inputs and raw run assets are ignored; replay requires restoring them from the recorded sources and verified hashes. The retained reports remain inspectable offline."
+}

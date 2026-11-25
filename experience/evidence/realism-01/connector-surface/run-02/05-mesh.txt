@@ -1,0 +1,87 @@
+02:27:36 [App     ] OpenMVS x64 v2.4.0
+02:27:36 [App     ] Build date: Jan 19 2026, 23:24:23
+02:27:36 [App     ] CPU: AMD EPYC 9V74 80-Core Processor                 (5 cores)
+02:27:36 [App     ] RAM: 17.59GB Physical Memory 0B Virtual Memory
+02:27:36 [App     ] OS: Linux 6.18.57 (x86_64)
+02:27:36 [App     ] Disk: 26.24GB (31.45GB) space
+02:27:36 [App     ] SSE & AVX compatible CPU & OS detected
+02:27:36 [App     ] Command line: ReconstructMesh -i scene_dense.mvs -p scene_dense.ply -o scene_mesh.mvs --max-threads 2 --close-holes 0 --smooth 0 --decimate 1 --free-space-support 0 --crop-to-roi 0 --verbosity 3
+02:27:36 [Scene   ] Camera model loaded: platform 0; camera  0; f 0.500x0.500; poses 32
+02:27:36 [Scene   ] Image loaded   0: pano_camera10__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:27:36 [Scene   ] Image loaded   1: pano_camera11__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:27:36 [Scene   ] Image loaded   2: pano_camera4__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:27:36 [Scene   ] Image loaded   3: pano_camera5__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:27:36 [Scene   ] Image loaded   4: pano_camera6__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:27:36 [Scene   ] Image loaded   5: pano_camera7__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:27:36 [Scene   ] Image loaded   6: pano_camera8__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:27:36 [Scene   ] Image loaded   7: pano_camera9__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:27:36 [Scene   ] Image loaded   8: pano_camera10__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:27:36 [Scene   ] Image loaded   9: pano_camera11__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:27:36 [Scene   ] Image loaded  10: pano_camera4__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:27:36 [Scene   ] Image loaded  11: pano_camera5__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:27:36 [Scene   ] Image loaded  12: pano_camera6__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:27:36 [Scene   ] Image loaded  13: pano_camera7__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:27:36 [Scene   ] Image loaded  14: pano_camera8__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:27:36 [Scene   ] Image loaded  15: pano_camera9__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:27:36 [Scene   ] Image loaded  16: pano_camera10__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:27:36 [Scene   ] Image loaded  17: pano_camera11__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:27:36 [Scene   ] Image loaded  18: pano_camera4__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:27:36 [Scene   ] Image loaded  19: pano_camera5__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:27:36 [Scene   ] Image loaded  20: pano_camera6__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:27:36 [Scene   ] Image loaded  21: pano_camera7__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:27:36 [Scene   ] Image loaded  22: pano_camera8__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:27:36 [Scene   ] Image loaded  23: pano_camera9__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:27:36 [Scene   ] Image loaded  24: pano_camera10__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:27:36 [Scene   ] Image loaded  25: pano_camera11__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:27:36 [Scene   ] Image loaded  26: pano_camera4__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:27:36 [Scene   ] Image loaded  27: pano_camera5__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:27:36 [Scene   ] Image loaded  28: pano_camera6__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:27:36 [Scene   ] Image loaded  29: pano_camera7__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:27:36 [Scene   ] Image loaded  30: pano_camera8__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:27:36 [Scene   ] Image loaded  31: pano_camera9__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:27:36 [Scene   ] Scene loaded in interface format from 'scene_dense.mvs' (9ms):
+	32 images (32 calibrated) with a total of 17.63 MPixels (0.55 MPixels/image)
+	1377 points, 0 vertices, 0 faces
+02:27:36 [PointCld] Point-cloud 'scene_dense.ply' loaded: 39651 points (23ms)
+Points inserted 17668 (44.56%, 100ms, ETA 124ms)...Points inserted 33667 (84.91%, 200ms, ETA 35ms)... Points inserted 39651 (100%, 240ms)               
+02:27:37 [ScnRecnt] Delaunay tetrahedralization completed: 39651 points -> 39533 vertices, 248435 (+144) cells, 496942 (+216) faces (263ms)
+Points weighted 6136 (15.52%, 100ms, ETA 544ms)...Points weighted 11813 (29.88%, 200ms, ETA 469ms)...Points weighted 21586 (54.60%, 300ms, ETA 249ms)...Points weighted 29525 (74.68%, 400ms, ETA 135ms)...Points weighted 34928 (88.35%, 500ms, ETA 65ms)... Points weighted 38441 (97.24%, 601ms, ETA 17ms)...Points weighted 39533 (100%, 688ms)               
+02:27:37 [ScnRecnt] 	weighting completed in 688ms
+02:27:37 [ScnRecnt] Delaunay tetrahedras weighting completed: 248579 cells, 497158 faces (807ms)
+02:27:38 [ScnRecnt] Delaunay tetrahedras graph-cut completed (24305.8 flow): 33504 vertices, 67000 faces (545ms)
+02:27:38 [Mesh    ] Removed 19 non-manifold issues
+02:27:38 [App     ] Mesh reconstruction completed: 33523 vertices, 67000 faces (1s651ms)
+02:27:38 [Mesh    ] Mesh 'scene_mesh_raw.ply' saved: 33523 vertices, 67000 faces (14ms)
+02:27:38 [Mesh    ] Removed 0 zero-area faces
+02:27:38 [Mesh    ] Removed 0 duplicate faces
+02:27:38 [Mesh    ] Removed 0 unreferenced vertices
+02:27:38 [Mesh    ] Removed 0 non-manifold faces
+02:27:38 [Mesh    ] Removed 0 degenerate vertices
+02:27:38 [Mesh    ] Removed 0 duplicate vertices
+02:27:38 [Mesh    ] Split 0 non-manifold vertices
+02:27:38 [Mesh    ] Removed 230 faces with edges longer than 14.286289
+02:27:38 [Mesh    ] Removed 3 connected components out of 8
+02:27:38 [Mesh    ] Removed 8 spikes
+02:27:38 [Mesh    ] Cleaned mesh: 33482 vertices, 66755 faces (126ms)
+02:27:38 [Mesh    ] Removed 0 zero-area faces
+02:27:38 [Mesh    ] Removed 0 duplicate faces
+02:27:38 [Mesh    ] Removed 0 unreferenced vertices
+02:27:38 [Mesh    ] Removed 0 non-manifold faces
+02:27:38 [Mesh    ] Removed 0 degenerate vertices
+02:27:38 [Mesh    ] Removed 0 duplicate vertices
+02:27:38 [Mesh    ] Split 0 non-manifold vertices
+02:27:38 [Mesh    ] Removed 0 spikes
+02:27:38 [Mesh    ] Cleaned mesh: 33482 vertices, 66755 faces (79ms)
+02:27:38 [Mesh    ] Removed 0 zero-area faces
+02:27:38 [Mesh    ] Removed 0 duplicate faces
+02:27:38 [Mesh    ] Removed 0 unreferenced vertices
+02:27:38 [Mesh    ] Removed 0 non-manifold faces
+02:27:38 [Mesh    ] Removed 0 degenerate vertices
+02:27:38 [Mesh    ] Removed 0 duplicate vertices
+02:27:38 [Mesh    ] Split 0 non-manifold vertices
+02:27:38 [Mesh    ] Cleaned mesh: 33482 vertices, 66755 faces (63ms)
+02:27:38 [Mesh    ] Mesh 'scene_mesh.ply' saved: 33482 vertices, 66755 faces (14ms)
+02:27:38 [App     ] MEMORYINFO: {
+02:27:38 [App     ] 	VmPeak:	  183484 kB
+02:27:38 [App     ] 	VmSize:	  129088 kB
+02:27:38 [App     ] } ENDINFO

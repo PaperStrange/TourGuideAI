@@ -1,0 +1,1321 @@
+{
+  "schemaVersion": 1,
+  "completed": true,
+  "date": "2026-11-25T02:19:59.195718+00:00",
+  "sourceRunReportSha256": "ede3af285dd9d6461ee6c726c8587a61edc3f6d6338d13f5c93b54fab7768559",
+  "originalPhysicalFrames": 4,
+  "originalVirtualImages": 48,
+  "retainedVirtualImages": 32,
+  "sparsePoints": 1377,
+  "imageRecords": [
+    {
+      "imageId": 10,
+      "originalName": "pano_camera10/4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "name": "pano_camera10__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "sourceId": "4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444",
+      "cameraIndex": 10,
+      "frameId": 49,
+      "imageSha256": "0fcd45dcd2b1bd66c00b877437347e50dfaf46c8d0c55aed5e7ca97f91f4e1dc",
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "validMaskPixels": 908558,
+      "camFromWorld": [
+        [
+          0.7070660921044832,
+          0.0007734170873293644,
+          -0.7071470449786972,
+          -3.064530616367671
+        ],
+        [
+          0.40483829882410455,
+          0.8194650842396237,
+          0.4056882146641081,
+          1.3310314611682146
+        ],
+        [
+          0.5797960789806185,
+          -0.5731285872630639,
+          0.579102865871466,
+          1.8496597400617159
+        ]
+      ],
+      "center": [
+        0.5555477098928387,
+        -0.02827077436952119,
+        -3.7782008031110457
+      ],
+      "internalId": 0,
+      "roundtripTextPoseMaximumError": 1.4611682146448146e-06
+    },
+    {
+      "imageId": 13,
+      "originalName": "pano_camera11/4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "name": "pano_camera11__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "sourceId": "4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444",
+      "cameraIndex": 11,
+      "frameId": 49,
+      "imageSha256": "2430fe5d8a29fa428ab7d45aeb5c9aeb4ee2fd24ae60393bbec0edcd8f8434f0",
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "validMaskPixels": 908558,
+      "camFromWorld": [
+        [
+          -0.7071468521056652,
+          -0.0005464088352725993,
+          -0.7070664968688826,
+          -2.2786008394785915
+        ],
+        [
+          0.404791976790427,
+          0.8195952908238608,
+          -0.40547134890821757,
+          -1.7336628382312613
+        ],
+        [
+          0.5797299242605537,
+          -0.572942632989321,
+          -0.5793530479941547,
+          -2.527177314899565
+        ]
+      ],
+      "center": [
+        0.5555477098928376,
+        -0.02827077436951897,
+        -3.7782008031110457
+      ],
+      "internalId": 1,
+      "roundtripTextPoseMaximumError": 2.8382312613484117e-06
+    },
+    {
+      "imageId": 25,
+      "originalName": "pano_camera4/4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "name": "pano_camera4__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "sourceId": "4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444",
+      "cameraIndex": 4,
+      "frameId": 49,
+      "imageSha256": "7e6c9c5d25145150aa27d9eafa4d8eaf02bb95555682eb5326425c5b486094a8",
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "validMaskPixels": 307824,
+      "camFromWorld": [
+        [
+          -0.9999995628927885,
+          -0.000933257859857678,
+          5.695611466167126e-05,
+          0.5557362747746999
+        ],
+        [
+          -0.0009332487037698165,
+          0.9999995516315964,
+          0.00016057229882217018,
+          0.029395900262305874
+        ],
+        [
+          -5.710594448430026e-05,
+          0.0001605190744146806,
+          -0.9999999854862689,
+          -3.778164485200042
+        ]
+      ],
+      "center": [
+        0.5555477098928383,
+        -0.028270774369520756,
+        -3.7782008031110483
+      ],
+      "internalId": 2,
+      "roundtripTextPoseMaximumError": 4.4852000420370075e-06
+    },
+    {
+      "imageId": 29,
+      "originalName": "pano_camera5/4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "name": "pano_camera5__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "sourceId": "4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444",
+      "cameraIndex": 5,
+      "frameId": 49,
+      "imageSha256": "e204a245938ac05f97d7117de4758a000e7e4fce603479f17556e095afa55c0e",
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "validMaskPixels": 307824,
+      "camFromWorld": [
+        [
+          5.710594448438133e-05,
+          -0.00016051907441468646,
+          0.9999999854862688,
+          3.7781644852000427
+        ],
+        [
+          -0.0009332487037698514,
+          0.9999995516315964,
+          0.00016057229882217593,
+          0.029395900262305652
+        ],
+        [
+          -0.9999995628927884,
+          -0.0009332578598577129,
+          5.695611466172146e-05,
+          0.5557362747747008
+        ]
+      ],
+      "center": [
+        0.5555477098928381,
+        -0.028270774369520493,
+        -3.778200803111047
+      ],
+      "internalId": 3,
+      "roundtripTextPoseMaximumError": 4.485200042481097e-06
+    },
+    {
+      "imageId": 33,
+      "originalName": "pano_camera6/4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "name": "pano_camera6__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "sourceId": "4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444",
+      "cameraIndex": 6,
+      "frameId": 49,
+      "imageSha256": "f0d08da27f9a7249b2b9371d251b01ad13e8cc1147035c3c7d6cfc774946fa30",
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "validMaskPixels": 307824,
+      "camFromWorld": [
+        [
+          0.9999995628927885,
+          0.000933257859857678,
+          -5.69561146615488e-05,
+          -0.5557362747746992
+        ],
+        [
+          -0.0009332487037698165,
+          0.9999995516315964,
+          0.00016057229882217013,
+          0.029395900262305652
+        ],
+        [
+          5.71059444841778e-05,
+          -0.00016051907441468066,
+          0.9999999854862688,
+          3.778164485200042
+        ]
+      ],
+      "center": [
+        0.5555477098928379,
+        -0.028270774369520534,
+        -3.7782008031110474
+      ],
+      "internalId": 4,
+      "roundtripTextPoseMaximumError": 4.4852000420370075e-06
+    },
+    {
+      "imageId": 37,
+      "originalName": "pano_camera7/4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "name": "pano_camera7__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "sourceId": "4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444",
+      "cameraIndex": 7,
+      "frameId": 49,
+      "imageSha256": "363b7d97dab542ac4a57bf0c2c6d75404c01c7be572990da1981489985ad660c",
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "validMaskPixels": 307824,
+      "camFromWorld": [
+        [
+          -5.710594448382622e-05,
+          0.00016051907441460802,
+          -0.9999999854862688,
+          -3.778164485200042
+        ],
+        [
+          -0.0009332487037698514,
+          0.9999995516315964,
+          0.00016057229882209738,
+          0.029395900262305652
+        ],
+        [
+          0.9999995628927884,
+          0.0009332578598577129,
+          -5.695611466127737e-05,
+          -0.555736274774699
+        ]
+      ],
+      "center": [
+        0.5555477098928385,
+        -0.028270774369520787,
+        -3.778200803111047
+      ],
+      "internalId": 5,
+      "roundtripTextPoseMaximumError": 4.4852000420370075e-06
+    },
+    {
+      "imageId": 41,
+      "originalName": "pano_camera8/4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "name": "pano_camera8__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "sourceId": "4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444",
+      "cameraIndex": 8,
+      "frameId": 49,
+      "imageSha256": "77333f1c8bcf7e58280d4c4b8561867853c69b9e5196b5e7b04c4a7bd3cf3685",
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "validMaskPixels": 908558,
+      "camFromWorld": [
+        [
+          -0.7070660921044838,
+          -0.0007734170873294755,
+          0.707147044978697,
+          3.0645306163676707
+        ],
+        [
+          -0.40636724399115054,
+          0.8188382697745711,
+          -0.40542514841043537,
+          -1.2828720375810483
+        ],
+        [
+          -0.5787255000491434,
+          -0.574023771091926,
+          -0.5792870668453367,
+          -1.8833813314932852
+        ]
+      ],
+      "center": [
+        0.5555477098928367,
+        -0.028270774369520635,
+        -3.7782008031110443
+      ],
+      "internalId": 6,
+      "roundtripTextPoseMaximumError": 2.03758104833085e-06
+    },
+    {
+      "imageId": 45,
+      "originalName": "pano_camera9/4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "name": "pano_camera9__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "sourceId": "4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444",
+      "cameraIndex": 9,
+      "frameId": 49,
+      "imageSha256": "502ca48311cfeb21da2d3064b340e2adfd92fed9a21c96915945a08d0aa8707a",
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "validMaskPixels": 908558,
+      "camFromWorld": [
+        [
+          0.707146852105665,
+          0.0005464088352726826,
+          0.7070664968688826,
+          2.2786008394785906
+        ],
+        [
+          -0.4063209219574732,
+          0.818708063190334,
+          0.40573441516189035,
+          1.7818222618184265
+        ],
+        [
+          -0.5786593453290786,
+          -0.5742097253656689,
+          0.5791688470202843,
+          2.493455723467998
+        ]
+      ],
+      "center": [
+        0.5555477098928381,
+        -0.028270774369520413,
+        -3.778200803111047
+      ],
+      "internalId": 7,
+      "roundtripTextPoseMaximumError": 4.2765320018567365e-06
+    },
+    {
+      "imageId": 9,
+      "originalName": "pano_camera10/6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "name": "pano_camera10__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "sourceId": "6bcac3e5-738b-4e35-9e46-b00819b4ead1",
+      "cameraIndex": 10,
+      "frameId": 50,
+      "imageSha256": "a5acc325d52760110dd86ea3225b51f1d515ff34f92fe22fe087f2f2511b332f",
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "validMaskPixels": 908558,
+      "camFromWorld": [
+        [
+          0.7054655999566593,
+          0.0055676956843429826,
+          -0.7087222926101291,
+          4.97338760757948
+        ],
+        [
+          0.4016523014246862,
+          0.82075133976836,
+          0.4062544363187867,
+          -2.1556338096445082
+        ],
+        [
+          0.5839466722553044,
+          -0.5712584695505255,
+          0.5767755585396692,
+          -2.9705730672756694
+        ]
+      ],
+      "center": [
+        -0.9080823343986317,
+        0.04458400449650979,
+        6.113840405590205
+      ],
+      "internalId": 8,
+      "roundtripTextPoseMaximumError": 3.8096445083013464e-06
+    },
+    {
+      "imageId": 14,
+      "originalName": "pano_camera11/6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "name": "pano_camera11__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "sourceId": "6bcac3e5-738b-4e35-9e46-b00819b4ead1",
+      "cameraIndex": 11,
+      "frameId": 50,
+      "imageSha256": "59cf989dd77872b7a6b5f94135d738cdd9d9a378a668a792c9c27f6674a614e4",
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "validMaskPixels": 908558,
+      "camFromWorld": [
+        [
+          -0.7087194060370541,
+          -0.0028160854449688355,
+          -0.7054848497092281,
+          3.6697717593824133
+        ],
+        [
+          0.39978599492851596,
+          0.8223295985636874,
+          -0.4049014566349466,
+          2.801878738871659
+        ],
+        [
+          0.5812813103528292,
+          -0.5690044823978556,
+          -0.5816751131393252,
+          4.1094885972867115
+        ]
+      ],
+      "center": [
+        -0.9080823343986335,
+        0.04458400449650668,
+        6.113840405590203
+      ],
+      "internalId": 9,
+      "roundtripTextPoseMaximumError": 1.7593824130912594e-06
+    },
+    {
+      "imageId": 26,
+      "originalName": "pano_camera4/6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "name": "pano_camera4__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "sourceId": "6bcac3e5-738b-4e35-9e46-b00819b4ead1",
+      "cameraIndex": 4,
+      "frameId": 50,
+      "imageSha256": "11025ce981a93088e97c4c1d94c492eb612342358ad51d1dfcc9adf56e5a99e9",
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "validMaskPixels": 307824,
+      "camFromWorld": [
+        [
+          -0.9999798075904933,
+          -0.005928228488520212,
+          0.0022892178289316088,
+          -0.9217956063224013
+        ],
+        [
+          -0.005923747485839767,
+          0.9999805350243239,
+          0.001959282570438603,
+          -0.06194112806039209
+        ],
+        [
+          -0.002300788344113387,
+          0.001945682259443928,
+          -0.9999954603364665,
+          6.111636599254782
+        ]
+      ],
+      "center": [
+        -0.9080823343986327,
+        0.04458400449650958,
+        6.113840405590209
+      ],
+      "internalId": 10,
+      "roundtripTextPoseMaximumError": 3.4007452187623244e-06
+    },
+    {
+      "imageId": 30,
+      "originalName": "pano_camera5/6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "name": "pano_camera5__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "sourceId": "6bcac3e5-738b-4e35-9e46-b00819b4ead1",
+      "cameraIndex": 5,
+      "frameId": 50,
+      "imageSha256": "44dee315f1c6f9c9d8c4ab3f29a5769e802b39f158b9aa7f9b512d56361b8268",
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "validMaskPixels": 307824,
+      "camFromWorld": [
+        [
+          0.0023007883441130694,
+          -0.0019456822594438859,
+          0.9999954603364665,
+          -6.1116365992547825
+        ],
+        [
+          -0.005923747485839766,
+          0.9999805350243239,
+          0.0019592825704385615,
+          -0.06194112806039209
+        ],
+        [
+          -0.9999798075904933,
+          -0.00592822848852021,
+          0.0022892178289312115,
+          -0.9217956063224024
+        ]
+      ],
+      "center": [
+        -0.9080823343986335,
+        0.04458400449650983,
+        6.1138404055902065
+      ],
+      "internalId": 11,
+      "roundtripTextPoseMaximumError": 3.400745217874146e-06
+    },
+    {
+      "imageId": 34,
+      "originalName": "pano_camera6/6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "name": "pano_camera6__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "sourceId": "6bcac3e5-738b-4e35-9e46-b00819b4ead1",
+      "cameraIndex": 6,
+      "frameId": 50,
+      "imageSha256": "4f73bcc321e90fed687453572d945712abfa0d4db9ba654e7470005549a032ca",
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "validMaskPixels": 307824,
+      "camFromWorld": [
+        [
+          0.9999798075904931,
+          0.005928228488520212,
+          -0.002289217828931486,
+          0.9217956063224007
+        ],
+        [
+          -0.005923747485839767,
+          0.9999805350243239,
+          0.0019592825704386027,
+          -0.06194112806039209
+        ],
+        [
+          0.002300788344113264,
+          -0.0019456822594439284,
+          0.9999954603364661,
+          -6.111636599254782
+        ]
+      ],
+      "center": [
+        -0.9080823343986325,
+        0.04458400449650958,
+        6.1138404055902065
+      ],
+      "internalId": 12,
+      "roundtripTextPoseMaximumError": 3.4007452187623244e-06
+    },
+    {
+      "imageId": 38,
+      "originalName": "pano_camera7/6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "name": "pano_camera7__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "sourceId": "6bcac3e5-738b-4e35-9e46-b00819b4ead1",
+      "cameraIndex": 7,
+      "frameId": 50,
+      "imageSha256": "3837830a495d9402f6d715c8b7c2103e662fe128684c019f5c1a8a09d5d21100",
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "validMaskPixels": 307824,
+      "camFromWorld": [
+        [
+          -0.0023007883441128474,
+          0.0019456822594438477,
+          -0.9999954603364661,
+          6.111636599254783
+        ],
+        [
+          -0.005923747485839726,
+          0.9999805350243239,
+          0.00195928257043852,
+          -0.061941128060391204
+        ],
+        [
+          0.999979807590493,
+          0.0059282284885201686,
+          -0.0022892178289311005,
+          0.921795606322398
+        ]
+      ],
+      "center": [
+        -0.90808233439863,
+        0.044584004496509226,
+        6.113840405590209
+      ],
+      "internalId": 13,
+      "roundtripTextPoseMaximumError": 3.4007452169859675e-06
+    },
+    {
+      "imageId": 42,
+      "originalName": "pano_camera8/6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "name": "pano_camera8__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "sourceId": "6bcac3e5-738b-4e35-9e46-b00819b4ead1",
+      "cameraIndex": 8,
+      "frameId": 50,
+      "imageSha256": "7f5e826212a8e97e217a8483b5fc04e1140cc2ac85f2364f79c0cf158c8366c0",
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "validMaskPixels": 908558,
+      "camFromWorld": [
+        [
+          -0.7054655999566595,
+          -0.005567695684343094,
+          0.708722292610129,
+          -4.973387607579479
+        ],
+        [
+          -0.41135720115044083,
+          0.8175208592603896,
+          -0.4030445356729576,
+          2.0541554062920344
+        ],
+        [
+          -0.5771512283097616,
+          -0.5758720738488027,
+          -0.5790231551687832,
+          3.041629010268558
+        ]
+      ],
+      "center": [
+        -0.9080823343986317,
+        0.04458400449651101,
+        6.113840405590205
+      ],
+      "internalId": 14,
+      "roundtripTextPoseMaximumError": 4.593707965572236e-06
+    },
+    {
+      "imageId": 46,
+      "originalName": "pano_camera9/6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "name": "pano_camera9__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "sourceId": "6bcac3e5-738b-4e35-9e46-b00819b4ead1",
+      "cameraIndex": 9,
+      "frameId": 50,
+      "imageSha256": "3c0f0c84ee0499408911cd659c6411fa62da9cabc10da43e72629a7767173243",
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "validMaskPixels": 908558,
+      "camFromWorld": [
+        [
+          0.7087194060370541,
+          0.002816085444968891,
+          0.705484849709228,
+          -3.669771759382412
+        ],
+        [
+          -0.4094908946542708,
+          0.8159426004650622,
+          0.40811135728077563,
+          -2.90335714222413
+        ],
+        [
+          -0.5744858664072862,
+          -0.5781260610014728,
+          0.5794275165102114,
+          -4.0384326542938265
+        ]
+      ],
+      "center": [
+        -0.9080823343986317,
+        0.044584004496511564,
+        6.113840405590205
+      ],
+      "internalId": 15,
+      "roundtripTextPoseMaximumError": 2.857775870168666e-06
+    },
+    {
+      "imageId": 11,
+      "originalName": "pano_camera10/8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "name": "pano_camera10__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "sourceId": "8fa8dca2-39b0-4a49-9a2f-f61fe86354e7",
+      "cameraIndex": 10,
+      "frameId": 51,
+      "imageSha256": "15fcc5c3f13c4c5d1a09c7f16ea1407d30f6e672c858a272816a53cfb7d5d9c0",
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "validMaskPixels": 908558,
+      "camFromWorld": [
+        [
+          0.7056840583263971,
+          0.005204203514206224,
+          -0.7085075342505321,
+          1.3692572958448492
+        ],
+        [
+          0.40284719995830076,
+          0.8196654111577634,
+          0.40726250408960024,
+          -0.5996863862784985
+        ],
+        [
+          0.5828585963248231,
+          -0.5728189330123068,
+          0.5763283150018742,
+          -0.8286943508476572
+        ]
+      ],
+      "center": [
+        -0.24166943774204086,
+        0.00972448089790956,
+        1.6919589086534121
+      ],
+      "internalId": 16,
+      "roundtripTextPoseMaximumError": 2.704155150690113e-06
+    },
+    {
+      "imageId": 15,
+      "originalName": "pano_camera11/8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "name": "pano_camera11__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "sourceId": "8fa8dca2-39b0-4a49-9a2f-f61fe86354e7",
+      "cameraIndex": 11,
+      "frameId": 51,
+      "imageSha256": "4c4400fa3d68ffc2c44b1b74f607ee2803fc10336e7e737a25225bc93e2f8123",
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "validMaskPixels": 908558,
+      "camFromWorld": [
+        [
+          -0.7085134720569701,
+          -0.0009149655476148599,
+          -0.7056966931705314,
+          1.0227926519574557
+        ],
+        [
+          0.40122431491375576,
+          0.8221256169853025,
+          -0.40389171694715775,
+          0.7723370983556533
+        ],
+        [
+          0.5805408762832845,
+          -0.5693053949635313,
+          -0.5821199689322241,
+          1.1307582539359766
+        ]
+      ],
+      "center": [
+        -0.2416694377420403,
+        0.009724480897909282,
+        1.691958908653413
+      ],
+      "internalId": 17,
+      "roundtripTextPoseMaximumError": 2.6519574556349568e-06
+    },
+    {
+      "imageId": 27,
+      "originalName": "pano_camera4/8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "name": "pano_camera4__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "sourceId": "8fa8dca2-39b0-4a49-9a2f-f61fe86354e7",
+      "cameraIndex": 4,
+      "frameId": 51,
+      "imageSha256": "b438b7e7c6f094c060ee1340be8ac9dc9343515567d55c1b41412304582f46df",
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "validMaskPixels": 307824,
+      "camFromWorld": [
+        [
+          -0.999988663671348,
+          -0.004326905938840646,
+          0.0019875647885062367,
+          -0.24498749913415876
+        ],
+        [
+          -0.004320849194626616,
+          0.9999860394544663,
+          0.003041571700271776,
+          -0.015914776668867564
+        ],
+        [
+          -0.0020006976356708207,
+          0.003032949252299677,
+          -0.9999933991921166,
+          1.6914347390279365
+        ]
+      ],
+      "center": [
+        -0.24166943774204058,
+        0.009724480897909433,
+        1.691958908653412
+      ],
+      "internalId": 18,
+      "roundtripTextPoseMaximumError": 4.7390279365178145e-06
+    },
+    {
+      "imageId": 31,
+      "originalName": "pano_camera5/8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "name": "pano_camera5__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "sourceId": "8fa8dca2-39b0-4a49-9a2f-f61fe86354e7",
+      "cameraIndex": 5,
+      "frameId": 51,
+      "imageSha256": "5d182373db47cc38581d5d97cb1ccf343fc236ccd38534e972236e69830bf98a",
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "validMaskPixels": 307824,
+      "camFromWorld": [
+        [
+          0.0020006976356707895,
+          -0.0030329492522997163,
+          0.9999933991921166,
+          -1.691434739027937
+        ],
+        [
+          -0.004320849194626596,
+          0.9999860394544663,
+          0.003041571700271816,
+          -0.015914776668867536
+        ],
+        [
+          -0.999988663671348,
+          -0.004326905938840626,
+          0.0019875647885062575,
+          -0.24498749913415896
+        ]
+      ],
+      "center": [
+        -0.24166943774204008,
+        0.009724480897909341,
+        1.6919589086534121
+      ],
+      "internalId": 19,
+      "roundtripTextPoseMaximumError": 4.739027936961904e-06
+    },
+    {
+      "imageId": 35,
+      "originalName": "pano_camera6/8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "name": "pano_camera6__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "sourceId": "8fa8dca2-39b0-4a49-9a2f-f61fe86354e7",
+      "cameraIndex": 6,
+      "frameId": 51,
+      "imageSha256": "f8ef9b53b63aa2e3442a8dd32f8b82316fe8a49bd526f04d83c66da5c56c2cb2",
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "validMaskPixels": 307824,
+      "camFromWorld": [
+        [
+          0.9999886636713478,
+          0.004326905938840646,
+          -0.001987564788506114,
+          0.24498749913415852
+        ],
+        [
+          -0.004320849194626616,
+          0.9999860394544663,
+          0.0030415717002717758,
+          -0.015914776668867425
+        ],
+        [
+          0.002000697635670698,
+          -0.0030329492522996773,
+          0.9999933991921165,
+          -1.6914347390279367
+        ]
+      ],
+      "center": [
+        -0.2416694377420405,
+        0.009724480897909293,
+        1.6919589086534121
+      ],
+      "internalId": 20,
+      "roundtripTextPoseMaximumError": 4.739027936739859e-06
+    },
+    {
+      "imageId": 39,
+      "originalName": "pano_camera7/8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "name": "pano_camera7__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "sourceId": "8fa8dca2-39b0-4a49-9a2f-f61fe86354e7",
+      "cameraIndex": 7,
+      "frameId": 51,
+      "imageSha256": "8d0d34d05150162506f6f6e54139c601a675fe9e5da06fba952f15d0051e0cd4",
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "validMaskPixels": 307824,
+      "camFromWorld": [
+        [
+          -0.0020006976356707895,
+          0.0030329492522996777,
+          -0.9999933991921166,
+          1.691434739027937
+        ],
+        [
+          -0.004320849194626557,
+          0.9999860394544663,
+          0.003041571700271776,
+          -0.015914776668867314
+        ],
+        [
+          0.999988663671348,
+          0.004326905938840586,
+          -0.0019875647885061465,
+          0.2449874991341583
+        ]
+      ],
+      "center": [
+        -0.24166943774204053,
+        0.009724480897909196,
+        1.6919589086534121
+      ],
+      "internalId": 21,
+      "roundtripTextPoseMaximumError": 4.739027936961904e-06
+    },
+    {
+      "imageId": 43,
+      "originalName": "pano_camera8/8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "name": "pano_camera8__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "sourceId": "8fa8dca2-39b0-4a49-9a2f-f61fe86354e7",
+      "cameraIndex": 8,
+      "frameId": 51,
+      "imageSha256": "942df155ba0178d4286f305a41b8c04bdc35fe8d485ad868aae4ee5c9be0e7ee",
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "validMaskPixels": 908558,
+      "camFromWorld": [
+        [
+          -0.7056840583263975,
+          -0.0052042035142063625,
+          0.7085075342505319,
+          -1.369257295844849
+        ],
+        [
+          -0.4099260648599863,
+          0.8186158058013937,
+          -0.4022794847373419,
+          0.5736131425930873
+        ],
+        [
+          -0.5779019217586946,
+          -0.5743179248098719,
+          -0.5798174627153707,
+          0.8469510326217611
+        ]
+      ],
+      "center": [
+        -0.24166943774203942,
+        0.009724480897909393,
+        1.6919589086534113
+      ],
+      "internalId": 22,
+      "roundtripTextPoseMaximumError": 2.7041551509121575e-06
+    },
+    {
+      "imageId": 47,
+      "originalName": "pano_camera9/8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "name": "pano_camera9__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "sourceId": "8fa8dca2-39b0-4a49-9a2f-f61fe86354e7",
+      "cameraIndex": 9,
+      "frameId": 51,
+      "imageSha256": "e7fd02c2177b996cfe79109dd99fdf53da7c71e7b047ee466fe5e93fa437a49e",
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "validMaskPixels": 908558,
+      "camFromWorld": [
+        [
+          0.7085134720569705,
+          0.0009149655476148322,
+          0.7056966931705315,
+          -1.0227926519574555
+        ],
+        [
+          -0.4083031798154415,
+          0.8161555999738543,
+          0.40887473629941606,
+          -0.7984103420410641
+        ],
+        [
+          -0.5755842017171562,
+          -0.5778314628586475,
+          0.5786308212187281,
+          -1.1125015721618736
+        ]
+      ],
+      "center": [
+        -0.24166943774204058,
+        0.009724480897909005,
+        1.6919589086534124
+      ],
+      "internalId": 23,
+      "roundtripTextPoseMaximumError": 2.651957455412912e-06
+    },
+    {
+      "imageId": 12,
+      "originalName": "pano_camera10/d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "name": "pano_camera10__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "sourceId": "d8bcfff6-7942-4cf8-8610-8a777e3ad150",
+      "cameraIndex": 10,
+      "frameId": 52,
+      "imageSha256": "8df57cec8fb02e23278a69db3c1ef878d70da266194a843866f469ade4320c47",
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "validMaskPixels": 908558,
+      "camFromWorld": [
+        [
+          0.7070504934713802,
+          0.005342736094246625,
+          -0.7071428814977246,
+          -2.6344795989692686
+        ],
+        [
+          0.4043496577589401,
+          0.8173212873027007,
+          0.41047200585677485,
+          1.1577312165785805
+        ],
+        [
+          0.5801559738140304,
+          -0.5761574164174956,
+          0.5757270860008333,
+          1.5821423892455555
+        ]
+      ],
+      "center": [
+        0.47669252074590385,
+        -0.02059996764923533,
+        -3.2490519769728516
+      ],
+      "internalId": 24,
+      "roundtripTextPoseMaximumError": 2.3892455554008762e-06
+    },
+    {
+      "imageId": 16,
+      "originalName": "pano_camera11/d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "name": "pano_camera11__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "sourceId": "d8bcfff6-7942-4cf8-8610-8a777e3ad150",
+      "cameraIndex": 11,
+      "frameId": 52,
+      "imageSha256": "ef005fb8ba94da028b9691e7239194fc3469b67658c3594a3df7ed278b01ca24",
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "validMaskPixels": 908558,
+      "camFromWorld": [
+        [
+          -0.7071613876933716,
+          0.0031642941657227253,
+          -0.7070450897913216,
+          -1.9600625179642703
+        ],
+        [
+          0.40428605144627844,
+          0.8222007194031445,
+          -0.4006728910457117,
+          -1.4775898775169503
+        ],
+        [
+          0.5800651345853864,
+          -0.5691888651892133,
+          -0.5827078816894906,
+          -2.181486178412425
+        ]
+      ],
+      "center": [
+        0.4766925207459036,
+        -0.020599967649234885,
+        -3.2490519769728534
+      ],
+      "internalId": 25,
+      "roundtripTextPoseMaximumError": 3.821587575281171e-06
+    },
+    {
+      "imageId": 28,
+      "originalName": "pano_camera4/d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "name": "pano_camera4__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "sourceId": "d8bcfff6-7942-4cf8-8610-8a777e3ad150",
+      "cameraIndex": 4,
+      "frameId": 52,
+      "imageSha256": "4d88dd0566679affe1ff1115123dc514ac330a4015a0bb966c6892ddfcddf0a3",
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "validMaskPixels": 307824,
+      "camFromWorld": [
+        [
+          -0.9999988112061804,
+          -0.0015403910600803468,
+          6.914917874138852e-05,
+          0.47688489132667217
+        ],
+        [
+          -0.00153994722723233,
+          0.9999807210208905,
+          0.006015492421849851,
+          0.04087829937413051
+        ],
+        [
+          -7.841405636441471e-05,
+          0.0060153787845835666,
+          -0.9999819043709315,
+          -3.2488318873309003
+        ]
+      ],
+      "center": [
+        0.47669252074590385,
+        -0.020599967649234975,
+        -3.2490519769728503
+      ],
+      "internalId": 26,
+      "roundtripTextPoseMaximumError": 1.8873309004519001e-06
+    },
+    {
+      "imageId": 32,
+      "originalName": "pano_camera5/d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "name": "pano_camera5__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "sourceId": "d8bcfff6-7942-4cf8-8610-8a777e3ad150",
+      "cameraIndex": 5,
+      "frameId": 52,
+      "imageSha256": "46ebe5cd22f451a926f12511e27d83b54496d8d568aab2b0ff419113dc5d08df",
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "validMaskPixels": 307824,
+      "camFromWorld": [
+        [
+          7.84140563641067e-05,
+          -0.00601537878458363,
+          0.9999819043709313,
+          3.248831887330901
+        ],
+        [
+          -0.0015399472272323118,
+          0.9999807210208905,
+          0.006015492421849913,
+          0.04087829937413057
+        ],
+        [
+          -0.9999988112061802,
+          -0.0015403910600803286,
+          6.914917874112358e-05,
+          0.47688489132667256
+        ]
+      ],
+      "center": [
+        0.47669252074590407,
+        -0.020599967649234826,
+        -3.2490519769728525
+      ],
+      "internalId": 27,
+      "roundtripTextPoseMaximumError": 1.8873309008959893e-06
+    },
+    {
+      "imageId": 36,
+      "originalName": "pano_camera6/d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "name": "pano_camera6__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "sourceId": "d8bcfff6-7942-4cf8-8610-8a777e3ad150",
+      "cameraIndex": 6,
+      "frameId": 52,
+      "imageSha256": "0cf87b25fe8304c68b6237f719a9d5d73bd3bbe488050b13f093556d4cebfa2e",
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "validMaskPixels": 307824,
+      "camFromWorld": [
+        [
+          0.99999881120618,
+          0.0015403910600803458,
+          -6.914917874126612e-05,
+          -0.4768848913266717
+        ],
+        [
+          -0.0015399472272323298,
+          0.9999807210208905,
+          0.006015492421849851,
+          0.04087829937413079
+        ],
+        [
+          7.84140563642923e-05,
+          -0.0060153787845835666,
+          0.9999819043709309,
+          3.2488318873309
+        ]
+      ],
+      "center": [
+        0.4766925207459039,
+        -0.020599967649235256,
+        -3.249051976972852
+      ],
+      "internalId": 28,
+      "roundtripTextPoseMaximumError": 1.887330900007811e-06
+    },
+    {
+      "imageId": 40,
+      "originalName": "pano_camera7/d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "name": "pano_camera7__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "sourceId": "d8bcfff6-7942-4cf8-8610-8a777e3ad150",
+      "cameraIndex": 7,
+      "frameId": 52,
+      "imageSha256": "74ebe48c0acaa983ec4e00dfb7056f0d720246f7a6c7294525117c32d132ece1",
+      "maskSha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56",
+      "validMaskPixels": 307824,
+      "camFromWorld": [
+        [
+          -7.841405636388465e-05,
+          0.006015378784583551,
+          -0.999981904370931,
+          -3.2488318873309012
+        ],
+        [
+          -0.0015399472272323135,
+          0.9999807210208905,
+          0.006015492421849834,
+          0.04087829937413012
+        ],
+        [
+          0.99999881120618,
+          0.001540391060080327,
+          -6.914917874079052e-05,
+          -0.47688489132667033
+        ]
+      ],
+      "center": [
+        0.47669252074590407,
+        -0.020599967649234635,
+        -3.2490519769728525
+      ],
+      "internalId": 29,
+      "roundtripTextPoseMaximumError": 1.8873309013400785e-06
+    },
+    {
+      "imageId": 44,
+      "originalName": "pano_camera8/d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "name": "pano_camera8__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "sourceId": "d8bcfff6-7942-4cf8-8610-8a777e3ad150",
+      "cameraIndex": 8,
+      "frameId": 52,
+      "imageSha256": "c785388afb7995181ddfff9c543648a7a9297698b5c8ca34cf823d5d2817559f",
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "validMaskPixels": 908558,
+      "camFromWorld": [
+        [
+          -0.7070504934713806,
+          -0.005342736094246708,
+          0.7071428814977244,
+          2.6344795989692678
+        ],
+        [
+          -0.4068725595975089,
+          0.8209512164449841,
+          -0.4006168000272483,
+          -1.0907601315798272
+        ],
+        [
+          -0.5783894189285009,
+          -0.5709733403483283,
+          -0.5826277754132765,
+          -1.6290360478037664
+        ]
+      ],
+      "center": [
+        0.4766925207459036,
+        -0.02059996764923544,
+        -3.249051976972852
+      ],
+      "internalId": 30,
+      "roundtripTextPoseMaximumError": 3.9521962336142025e-06
+    },
+    {
+      "imageId": 48,
+      "originalName": "pano_camera9/d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "name": "pano_camera9__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "sourceId": "d8bcfff6-7942-4cf8-8610-8a777e3ad150",
+      "cameraIndex": 9,
+      "frameId": 52,
+      "imageSha256": "dc1da788fc51c349013195fb821ac1109562682222d14e28a2702aa22b17897e",
+      "maskSha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29",
+      "validMaskPixels": 908558,
+      "camFromWorld": [
+        [
+          0.7071613876933714,
+          -0.0031642941657226697,
+          0.7070450897913216,
+          1.9600625179642701
+        ],
+        [
+          -0.40680895328484756,
+          0.8160717843445403,
+          0.41052809687523806,
+          1.5445609625157024
+        ],
+        [
+          -0.5782985796998572,
+          -0.5779418915766108,
+          0.5758071922770479,
+          2.1345925198542153
+        ]
+      ],
+      "center": [
+        0.4766925207459035,
+        -0.020599967649235218,
+        -3.2490519769728516
+      ],
+      "internalId": 31,
+      "roundtripTextPoseMaximumError": 2.519854215066175e-06
+    }
+  ],
+  "droppedImages": [
+    {
+      "imageId": 1,
+      "originalName": "pano_camera0/4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "reason": "Original upper-hemisphere mask retains zero pixels"
+    },
+    {
+      "imageId": 5,
+      "originalName": "pano_camera1/4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "reason": "Original upper-hemisphere mask retains zero pixels"
+    },
+    {
+      "imageId": 17,
+      "originalName": "pano_camera2/4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "reason": "Original upper-hemisphere mask retains zero pixels"
+    },
+    {
+      "imageId": 21,
+      "originalName": "pano_camera3/4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg",
+      "reason": "Original upper-hemisphere mask retains zero pixels"
+    },
+    {
+      "imageId": 2,
+      "originalName": "pano_camera0/6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "reason": "Original upper-hemisphere mask retains zero pixels"
+    },
+    {
+      "imageId": 6,
+      "originalName": "pano_camera1/6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "reason": "Original upper-hemisphere mask retains zero pixels"
+    },
+    {
+      "imageId": 18,
+      "originalName": "pano_camera2/6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "reason": "Original upper-hemisphere mask retains zero pixels"
+    },
+    {
+      "imageId": 22,
+      "originalName": "pano_camera3/6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg",
+      "reason": "Original upper-hemisphere mask retains zero pixels"
+    },
+    {
+      "imageId": 3,
+      "originalName": "pano_camera0/8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "reason": "Original upper-hemisphere mask retains zero pixels"
+    },
+    {
+      "imageId": 7,
+      "originalName": "pano_camera1/8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "reason": "Original upper-hemisphere mask retains zero pixels"
+    },
+    {
+      "imageId": 19,
+      "originalName": "pano_camera2/8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "reason": "Original upper-hemisphere mask retains zero pixels"
+    },
+    {
+      "imageId": 23,
+      "originalName": "pano_camera3/8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg",
+      "reason": "Original upper-hemisphere mask retains zero pixels"
+    },
+    {
+      "imageId": 4,
+      "originalName": "pano_camera0/d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "reason": "Original upper-hemisphere mask retains zero pixels"
+    },
+    {
+      "imageId": 8,
+      "originalName": "pano_camera1/d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "reason": "Original upper-hemisphere mask retains zero pixels"
+    },
+    {
+      "imageId": 20,
+      "originalName": "pano_camera2/d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "reason": "Original upper-hemisphere mask retains zero pixels"
+    },
+    {
+      "imageId": 24,
+      "originalName": "pano_camera3/d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg",
+      "reason": "Original upper-hemisphere mask retains zero pixels"
+    }
+  ],
+  "heldoutImagesIncluded": [],
+  "upstreamReaderSha256": "f07cc962750d19d6d1edc16b1cf047292e30a43f3390e441dc407dff1d4900cf",
+  "officialProjectionSha256": "3536dc027f805e99223ee1098437768f705adb50a733e3fc8146f34a20c82fdf",
+  "maximumRoundtripTextPoseError": 4.739027936961904e-06,
+  "roundtripPrecision": "Official InterfaceCOLMAP TXT exporter uses default stream precision; tolerance 1e-4 covers serialization rounding. Actual scene retains source double poses.",
+  "maskRule": "Unchanged original closest-camera partition intersected with upper hemisphere; label 0 excluded, 255 retained",
+  "limitations": [
+    "Relative geometry remains in arbitrary units.",
+    "All source pixels originate from the four fitted panoramas; held-out ranks 67 and 72 are excluded.",
+    "Source locations remain west of the approved route start; floor and complete-route appearance remain unqualified."
+  ]
+}

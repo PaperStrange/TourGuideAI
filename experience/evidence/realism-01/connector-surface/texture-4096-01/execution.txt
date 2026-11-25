@@ -1,0 +1,125 @@
+02:32:51 [App     ] OpenMVS x64 v2.4.0
+02:32:51 [App     ] Build date: Jan 19 2026, 23:24:23
+02:32:51 [App     ] CPU: AMD EPYC 9V74 80-Core Processor                 (5 cores)
+02:32:51 [App     ] RAM: 17.59GB Physical Memory 0B Virtual Memory
+02:32:51 [App     ] OS: Linux 6.18.57 (x86_64)
+02:32:51 [App     ] Disk: 26.20GB (31.45GB) space
+02:32:51 [App     ] SSE & AVX compatible CPU & OS detected
+02:32:51 [App     ] Command line: TextureMesh -i scene_dense.mvs -m scene_mesh.ply -o /workspace/TourGuideAI/artifacts/realism-01/connector-surface/texture-4096-01/scene_textured.mvs --export-type gltf --max-threads 2 --decimate 1 --close-holes 0 --ignore-mask-label 0 --sharpness-weight 0 --global-seam-leveling 0 --local-seam-leveling 0 --resolution-level 0 --max-texture-size 4096 --verbosity 3
+02:32:51 [Scene   ] Camera model loaded: platform 0; camera  0; f 0.500x0.500; poses 32
+02:32:51 [Scene   ] Image loaded   0: pano_camera10__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:32:51 [Scene   ] Image loaded   1: pano_camera11__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:32:51 [Scene   ] Image loaded   2: pano_camera4__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:32:51 [Scene   ] Image loaded   3: pano_camera5__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:32:51 [Scene   ] Image loaded   4: pano_camera6__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:32:51 [Scene   ] Image loaded   5: pano_camera7__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:32:51 [Scene   ] Image loaded   6: pano_camera8__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:32:51 [Scene   ] Image loaded   7: pano_camera9__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:32:51 [Scene   ] Image loaded   8: pano_camera10__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:32:51 [Scene   ] Image loaded   9: pano_camera11__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:32:51 [Scene   ] Image loaded  10: pano_camera4__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:32:51 [Scene   ] Image loaded  11: pano_camera5__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:32:51 [Scene   ] Image loaded  12: pano_camera6__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:32:51 [Scene   ] Image loaded  13: pano_camera7__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:32:51 [Scene   ] Image loaded  14: pano_camera8__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:32:51 [Scene   ] Image loaded  15: pano_camera9__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:32:51 [Scene   ] Image loaded  16: pano_camera10__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:32:51 [Scene   ] Image loaded  17: pano_camera11__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:32:51 [Scene   ] Image loaded  18: pano_camera4__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:32:51 [Scene   ] Image loaded  19: pano_camera5__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:32:51 [Scene   ] Image loaded  20: pano_camera6__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:32:51 [Scene   ] Image loaded  21: pano_camera7__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:32:51 [Scene   ] Image loaded  22: pano_camera8__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:32:51 [Scene   ] Image loaded  23: pano_camera9__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:32:51 [Scene   ] Image loaded  24: pano_camera10__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:32:51 [Scene   ] Image loaded  25: pano_camera11__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:32:51 [Scene   ] Image loaded  26: pano_camera4__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:32:51 [Scene   ] Image loaded  27: pano_camera5__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:32:51 [Scene   ] Image loaded  28: pano_camera6__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:32:51 [Scene   ] Image loaded  29: pano_camera7__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:32:51 [Scene   ] Image loaded  30: pano_camera8__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:32:51 [Scene   ] Image loaded  31: pano_camera9__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:32:51 [Scene   ] Scene loaded in interface format from 'scene_dense.mvs' (10ms):
+	32 images (32 calibrated) with a total of 17.63 MPixels (0.55 MPixels/image)
+	1377 points, 0 vertices, 0 faces
+02:32:51 [Mesh    ] Mesh 'scene_mesh.ply' loaded: 33482 vertices, 66755 faces (7ms)
+Initialized views 1 (3.12%, 150ms, ETA 4s)...Initialized views 3 (9.38%, 260ms, ETA 2s)...Initialized views 5 (15.62%, 380ms, ETA 2s)...Initialized views 8 (25.00%, 499ms, ETA 1s)...Initialized views 11 (34.38%, 628ms, ETA 1s)...Initialized views 14 (43.75%, 787ms, ETA 1s)...Initialized views 18 (56.25%, 935ms, ETA 727ms)...Initialized views 21 (65.62%, 1s, ETA 562ms)...   Initialized views 24 (75.00%, 1s, ETA 404ms)...Initialized views 27 (84.38%, 1s, ETA 244ms)...Initialized views 30 (93.75%, 1s, ETA 95ms)... Initialized views 32 (100%, 1s506ms)          
+02:32:52 [App     ] 	 0. e: 196498	d: 121296	t: 20ms
+02:32:52 [App     ] 	 1. e: 75202	d: 17572.3	t: 18ms
+02:32:52 [App     ] 	 2. e: 57629.7	d: 10565.9	t: 17ms
+02:32:52 [App     ] 	 3. e: 47063.7	d: 8281.5	t: 15ms
+02:32:52 [App     ] 	 4. e: 38782.2	d: 5306.3	t: 15ms
+02:32:52 [App     ] 	 5. e: 33475.9	d: 4268.91	t: 15ms
+02:32:52 [App     ] 	 6. e: 29207	d: 2214.68	t: 14ms
+02:32:52 [App     ] 	 7. e: 26992.3	d: 2450.34	t: 15ms
+02:32:52 [App     ] 	 8. e: 24542	d: 1735.31	t: 16ms
+02:32:52 [App     ] 	 9. e: 22806.7	d: 1765.57	t: 21ms
+02:32:53 [App     ] 	10. e: 21041.1	d: 1324.64	t: 18ms
+02:32:53 [App     ] 	11. e: 19716.5	d: 1233.54	t: 15ms
+02:32:53 [App     ] 	12. e: 18482.9	d: 1144.18	t: 15ms
+02:32:53 [App     ] 	13. e: 17338.8	d: 859.689	t: 14ms
+02:32:53 [App     ] 	14. e: 16479.1	d: 938.434	t: 14ms
+02:32:53 [App     ] 	15. e: 15540.6	d: 487.398	t: 16ms
+02:32:53 [App     ] 	16. e: 15053.2	d: 507.576	t: 15ms
+02:32:53 [App     ] 	17. e: 14545.7	d: 463.194	t: 14ms
+02:32:53 [App     ] 	18. e: 14082.5	d: 500.342	t: 15ms
+02:32:53 [App     ] 	19. e: 13582.1	d: 329.147	t: 14ms
+02:32:53 [App     ] 	20. e: 13253	d: 189.1	t: 16ms
+02:32:53 [App     ] 	21. e: 13063.9	d: 393.248	t: 16ms
+02:32:53 [App     ] 	22. e: 12670.6	d: 447.229	t: 16ms
+02:32:53 [App     ] 	23. e: 12223.4	d: 197.144	t: 17ms
+02:32:53 [App     ] 	24. e: 12026.3	d: 469.665	t: 19ms
+02:32:53 [App     ] 	25. e: 11556.6	d: 53.8018	t: 18ms
+02:32:53 [App     ] 	26. e: 11502.8	d: 265.651	t: 17ms
+02:32:53 [App     ] 	27. e: 11237.1	d: 47.8047	t: 17ms
+02:32:53 [App     ] 	28. e: 11189.3	d: 135.9	t: 15ms
+02:32:53 [App     ] 	29. e: 11053.4	d: 145.639	t: 16ms
+02:32:53 [App     ] 	30. e: 10907.8	d: 138.08	t: 14ms
+02:32:53 [App     ] 	31. e: 10769.7	d: 213.845	t: 16ms
+02:32:53 [App     ] 	32. e: 10555.9	d: 117.532	t: 16ms
+02:32:53 [App     ] 	33. e: 10438.3	d: 13.7832	t: 16ms
+02:32:53 [App     ] 	34. e: 10424.6	d: 37.6865	t: 16ms
+02:32:53 [App     ] 	35. e: 10386.9	d: 40.0332	t: 16ms
+02:32:53 [App     ] 	36. e: 10346.8	d: 141.853	t: 15ms
+02:32:53 [App     ] 	37. e: 10205	d: 47.8438	t: 16ms
+02:32:53 [App     ] 	38. e: 10157.1	d: 135.893	t: 15ms
+02:32:53 [App     ] 	39. e: 10021.2	d: 12.0459	t: 14ms
+02:32:53 [App     ] 	40. e: 10009.2	d: 16.0791	t: 16ms
+02:32:53 [App     ] 	41. e: 9993.12	d: 68.0332	t: 15ms
+02:32:53 [App     ] 	42. e: 9925.09	d: 41.9033	t: 15ms
+02:32:53 [App     ] 	43. e: 9883.19	d: 47.8701	t: 16ms
+02:32:53 [App     ] 	44. e: 9835.32	d: 66.0596	t: 16ms
+02:32:53 [App     ] 	45. e: 9769.26	d: 20.0186	t: 16ms
+02:32:53 [App     ] 	46. e: 9749.24	d: 39.9863	t: 16ms
+02:32:53 [App     ] 	47. e: 9709.25	d: 9.80469	t: 15ms
+02:32:53 [App     ] 	48. e: 9699.45	d: -13.9521	t: 15ms
+02:32:53 [App     ] 	49. e: 9713.4	d: 62.1484	t: 14ms
+02:32:53 [App     ] 	50. e: 9651.25	d: 37.7461	t: 14ms
+02:32:53 [App     ] 	51. e: 9613.5	d: 61.9033	t: 16ms
+02:32:53 [App     ] 	52. e: 9551.6	d: -7.85254	t: 15ms
+02:32:53 [App     ] 	53. e: 9559.45	d: 66.0566	t: 15ms
+02:32:53 [App     ] 	54. e: 9493.4	d: 31.9678	t: 18ms
+02:32:53 [App     ] 	55. e: 9461.43	d: 57.9062	t: 15ms
+02:32:53 [App     ] 	56. e: 9403.52	d: 26.1436	t: 16ms
+02:32:53 [App     ] 	57. e: 9377.38	d: 25.9404	t: 17ms
+02:32:53 [App     ] 	58. e: 9351.44	d: 26.084	t: 17ms
+02:32:53 [App     ] 	59. e: 9325.36	d: 27.9912	t: 14ms
+02:32:53 [App     ] 	60. e: 9297.36	d: -7.98926	t: 15ms
+02:32:53 [App     ] 	61. e: 9305.35	d: -24.0098	t: 16ms
+02:32:53 [App     ] 	62. e: 9329.36	d: 12.0596	t: 17ms
+02:32:53 [App     ] 	63. e: 9317.3	d: -15.9678	t: 18ms
+02:32:53 [App     ] 	64. e: 9333.27	d: 5.95703	t: 18ms
+02:32:53 [App     ] 	65. e: 9327.31	d: 26	t: 17ms
+02:32:53 [App     ] 	66. e: 9301.31	d: -20.0117	t: 15ms
+02:32:53 [App     ] 	67. e: 9321.33	d: 23.9609	t: 14ms
+02:32:53 [App     ] Inference aborted (energy increased): 68 iterations, 9297.37 energy (1s152ms)
+02:32:54 [ScnTextr] Assigning the best view to each face completed: 66755 faces, 219 patches (2s833ms)
+02:32:54 [ScnTextr] 	packing texture completed: 163 initial patches, 162 placed patches, 2048 texture-size, 0 textures (0ms)
+02:32:54 [ScnTextr] 	packing texture completed: 163 initial patches, 163 placed patches, 4096 texture-size, 0 textures (0ms)
+02:32:54 [ScnTextr] Generating texture atlas and image completed: 163 patches, 4096 image size, 1 textures (96ms)
+02:32:54 [App     ] Mesh texturing completed: 33482 vertices, 66755 faces (2s932ms)
+02:32:55 [Mesh    ] Mesh 'scene_textured.gltf' saved: 33482 vertices, 66755 faces (1s125ms)
+02:32:55 [App     ] MEMORYINFO: {
+02:32:55 [App     ] 	VmPeak:	  461864 kB
+02:32:55 [App     ] 	VmSize:	  145668 kB
+02:32:55 [App     ] } ENDINFO

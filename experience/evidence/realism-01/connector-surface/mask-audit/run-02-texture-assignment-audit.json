@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-25T02:29:27.433100+00:00",
+  "objSha256": "dde1c4b0eafef516187a7ae19e89f7ee4bd487125ac41ca8574b08d1022965dc",
+  "triangleCount": 66755,
+  "facesWithConstantUvMarker": 634,
+  "facesWithNonconstantUv": 66121,
+  "constantUvCoordinates": [
+    [
+      0.001343,
+      0.999878
+    ]
+  ],
+  "constantUvFaceFraction": 0.009497415923900831,
+  "method": "Mature trimesh OBJ/material parser preserves per-corner texture coordinates. Count exact equality of all three face UV coordinates. OpenMVS SceneTexture::GenerateTexture assigns constant coordinates to faces in the unassigned source patch.",
+  "limitations": "Source-view IDs are not exported by this run. Constant UV markers identify the default patch by exporter semantics; six-decimal UV serialization could also collapse extremely small projected faces. This is not a held-out appearance or coverage score."
+}

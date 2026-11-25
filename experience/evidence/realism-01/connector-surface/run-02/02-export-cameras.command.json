@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "/workspace/TourGuideAI/artifacts/realism-01/surface-methods/bin/InterfaceCOLMAP",
+    "-i",
+    "/workspace/TourGuideAI/artifacts/realism-01/connector-surface/run-02/scene.mvs",
+    "-o",
+    "/workspace/TourGuideAI/artifacts/realism-01/connector-surface/run-02/roundtrip-cameras",
+    "--image-folder",
+    "/workspace/TourGuideAI/artifacts/realism-01/connector-surface/run-02/colmap/images",
+    "--no-points",
+    "1",
+    "--binary",
+    "0",
+    "--max-threads",
+    "2"
+  ],
+  "cwd": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface/run-02",
+  "startedAt": "2026-11-25T02:22:57.136760+00:00",
+  "returnCode": 0,
+  "finishedAt": "2026-11-25T02:22:57.147414+00:00"
+}

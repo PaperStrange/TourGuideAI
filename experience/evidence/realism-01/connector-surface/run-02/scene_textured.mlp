@@ -1,0 +1,143 @@
+<!DOCTYPE MeshLabDocument>
+<MeshLabProject>
+ <MeshGroup>
+  <MLMesh label="scene_textured" filename="scene_textured.obj">
+   <MLMatrix44>
+1 0 0 0 
+0 1 0 0 
+0 0 1 0 
+0 0 0 1 
+   </MLMatrix44>
+  </MLMesh>
+ </MeshGroup>
+ <RasterGroup>
+  <MLRaster label="pano_camera10__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444">
+   <VCGCamera TranslationVector="-0.555548 0.0282708 3.7782 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="0.0000 0.0000" RotationMatrix="0.707066 0.000773417 -0.707147 0 -0.404838 -0.819465 -0.405688 0 -0.579796 0.573129 -0.579103 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera10__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera11__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444">
+   <VCGCamera TranslationVector="-0.555548 0.0282708 3.7782 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-0.8195 -0.4057" RotationMatrix="-0.707147 -0.000546409 -0.707066 0 -0.404792 -0.819595 0.405471 0 -0.57973 0.572943 0.579353 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera11__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera4__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444">
+   <VCGCamera TranslationVector="-0.555548 0.0282708 3.7782 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-0.8196 0.4055" RotationMatrix="-1 -0.000933258 5.69561e-05 0 0.000933249 -1 -0.000160572 0 5.71059e-05 -0.000160519 1 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera4__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera5__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444">
+   <VCGCamera TranslationVector="-0.555548 0.0282708 3.7782 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-1.0000 -0.0002" RotationMatrix="5.71059e-05 -0.000160519 1 0 0.000933249 -1 -0.000160572 0 1 0.000933258 -5.69561e-05 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera5__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera6__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444">
+   <VCGCamera TranslationVector="-0.555548 0.0282708 3.7782 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-1.0000 -0.0002" RotationMatrix="1 0.000933258 -5.69561e-05 0 0.000933249 -1 -0.000160572 0 -5.71059e-05 0.000160519 -1 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera6__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera7__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444">
+   <VCGCamera TranslationVector="-0.555548 0.0282708 3.7782 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-1.0000 -0.0002" RotationMatrix="-5.71059e-05 0.000160519 -1 0 0.000933249 -1 -0.000160572 0 -1 -0.000933258 5.69561e-05 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera7__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera8__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444">
+   <VCGCamera TranslationVector="-0.555548 0.0282708 3.7782 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-1.0000 -0.0002" RotationMatrix="-0.707066 -0.000773417 0.707147 0 0.406367 -0.818838 0.405425 0 0.578726 0.574024 0.579287 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera8__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera9__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444">
+   <VCGCamera TranslationVector="-0.555548 0.0282708 3.7782 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-0.8188 0.4054" RotationMatrix="0.707147 0.000546409 0.707066 0 0.406321 -0.818708 -0.405734 0 0.578659 0.57421 -0.579169 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera9__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera10__6bcac3e5-738b-4e35-9e46-b00819b4ead1">
+   <VCGCamera TranslationVector="0.908082 -0.044584 -6.11384 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-0.8187 -0.4057" RotationMatrix="0.705466 0.0055677 -0.708722 0 -0.401652 -0.820751 -0.406254 0 -0.583947 0.571258 -0.576776 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera10__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera11__6bcac3e5-738b-4e35-9e46-b00819b4ead1">
+   <VCGCamera TranslationVector="0.908082 -0.044584 -6.11384 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-0.8208 -0.4063" RotationMatrix="-0.708719 -0.00281609 -0.705485 0 -0.399786 -0.82233 0.404901 0 -0.581281 0.569004 0.581675 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera11__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera4__6bcac3e5-738b-4e35-9e46-b00819b4ead1">
+   <VCGCamera TranslationVector="0.908082 -0.044584 -6.11384 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-0.8223 0.4049" RotationMatrix="-0.99998 -0.00592823 0.00228922 0 0.00592375 -0.999981 -0.00195928 0 0.00230079 -0.00194568 0.999995 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera4__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera5__6bcac3e5-738b-4e35-9e46-b00819b4ead1">
+   <VCGCamera TranslationVector="0.908082 -0.044584 -6.11384 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-1.0000 -0.0020" RotationMatrix="0.00230079 -0.00194568 0.999995 0 0.00592375 -0.999981 -0.00195928 0 0.99998 0.00592823 -0.00228922 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera5__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera6__6bcac3e5-738b-4e35-9e46-b00819b4ead1">
+   <VCGCamera TranslationVector="0.908082 -0.044584 -6.11384 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-1.0000 -0.0020" RotationMatrix="0.99998 0.00592823 -0.00228922 0 0.00592375 -0.999981 -0.00195928 0 -0.00230079 0.00194568 -0.999995 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera6__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera7__6bcac3e5-738b-4e35-9e46-b00819b4ead1">
+   <VCGCamera TranslationVector="0.908082 -0.044584 -6.11384 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-1.0000 -0.0020" RotationMatrix="-0.00230079 0.00194568 -0.999995 0 0.00592375 -0.999981 -0.00195928 0 -0.99998 -0.00592823 0.00228922 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera7__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera8__6bcac3e5-738b-4e35-9e46-b00819b4ead1">
+   <VCGCamera TranslationVector="0.908082 -0.044584 -6.11384 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-1.0000 -0.0020" RotationMatrix="-0.705466 -0.0055677 0.708722 0 0.411357 -0.817521 0.403045 0 0.577151 0.575872 0.579023 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera8__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera9__6bcac3e5-738b-4e35-9e46-b00819b4ead1">
+   <VCGCamera TranslationVector="0.908082 -0.044584 -6.11384 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-0.8175 0.4030" RotationMatrix="0.708719 0.00281609 0.705485 0 0.409491 -0.815943 -0.408111 0 0.574486 0.578126 -0.579428 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera9__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera10__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7">
+   <VCGCamera TranslationVector="0.241669 -0.00972448 -1.69196 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-0.8159 -0.4081" RotationMatrix="0.705684 0.0052042 -0.708508 0 -0.402847 -0.819665 -0.407263 0 -0.582859 0.572819 -0.576328 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera10__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera11__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7">
+   <VCGCamera TranslationVector="0.241669 -0.00972448 -1.69196 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-0.8197 -0.4073" RotationMatrix="-0.708513 -0.000914966 -0.705697 0 -0.401224 -0.822126 0.403892 0 -0.580541 0.569305 0.58212 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera11__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera4__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7">
+   <VCGCamera TranslationVector="0.241669 -0.00972448 -1.69196 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-0.8221 0.4039" RotationMatrix="-0.999989 -0.00432691 0.00198756 0 0.00432085 -0.999986 -0.00304157 0 0.0020007 -0.00303295 0.999993 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera4__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera5__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7">
+   <VCGCamera TranslationVector="0.241669 -0.00972448 -1.69196 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-1.0000 -0.0030" RotationMatrix="0.0020007 -0.00303295 0.999993 0 0.00432085 -0.999986 -0.00304157 0 0.999989 0.00432691 -0.00198756 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera5__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera6__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7">
+   <VCGCamera TranslationVector="0.241669 -0.00972448 -1.69196 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-1.0000 -0.0030" RotationMatrix="0.999989 0.00432691 -0.00198756 0 0.00432085 -0.999986 -0.00304157 0 -0.0020007 0.00303295 -0.999993 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera6__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera7__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7">
+   <VCGCamera TranslationVector="0.241669 -0.00972448 -1.69196 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-1.0000 -0.0030" RotationMatrix="-0.0020007 0.00303295 -0.999993 0 0.00432085 -0.999986 -0.00304157 0 -0.999989 -0.00432691 0.00198756 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera7__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera8__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7">
+   <VCGCamera TranslationVector="0.241669 -0.00972448 -1.69196 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-1.0000 -0.0030" RotationMatrix="-0.705684 -0.0052042 0.708508 0 0.409926 -0.818616 0.402279 0 0.577902 0.574318 0.579817 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera8__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera9__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7">
+   <VCGCamera TranslationVector="0.241669 -0.00972448 -1.69196 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-0.8186 0.4023" RotationMatrix="0.708513 0.000914966 0.705697 0 0.408303 -0.816156 -0.408875 0 0.575584 0.577831 -0.578631 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera9__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera10__d8bcfff6-7942-4cf8-8610-8a777e3ad150">
+   <VCGCamera TranslationVector="-0.476693 0.0206 3.24905 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-0.8162 -0.4089" RotationMatrix="0.70705 0.00534274 -0.707143 0 -0.40435 -0.817321 -0.410472 0 -0.580156 0.576157 -0.575727 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera10__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera11__d8bcfff6-7942-4cf8-8610-8a777e3ad150">
+   <VCGCamera TranslationVector="-0.476693 0.0206 3.24905 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-0.8173 -0.4105" RotationMatrix="-0.707161 0.00316429 -0.707045 0 -0.404286 -0.822201 0.400673 0 -0.580065 0.569189 0.582708 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera11__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera4__d8bcfff6-7942-4cf8-8610-8a777e3ad150">
+   <VCGCamera TranslationVector="-0.476693 0.0206 3.24905 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-0.8222 0.4007" RotationMatrix="-0.999999 -0.00154039 6.91492e-05 0 0.00153995 -0.999981 -0.00601549 0 7.84141e-05 -0.00601538 0.999982 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera4__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera5__d8bcfff6-7942-4cf8-8610-8a777e3ad150">
+   <VCGCamera TranslationVector="-0.476693 0.0206 3.24905 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-1.0000 -0.0060" RotationMatrix="7.84141e-05 -0.00601538 0.999982 0 0.00153995 -0.999981 -0.00601549 0 0.999999 0.00154039 -6.91492e-05 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera5__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera6__d8bcfff6-7942-4cf8-8610-8a777e3ad150">
+   <VCGCamera TranslationVector="-0.476693 0.0206 3.24905 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-1.0000 -0.0060" RotationMatrix="0.999999 0.00154039 -6.91492e-05 0 0.00153995 -0.999981 -0.00601549 0 -7.84141e-05 0.00601538 -0.999982 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera6__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera7__d8bcfff6-7942-4cf8-8610-8a777e3ad150">
+   <VCGCamera TranslationVector="-0.476693 0.0206 3.24905 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-1.0000 -0.0060" RotationMatrix="-7.84141e-05 0.00601538 -0.999982 0 0.00153995 -0.999981 -0.00601549 0 -0.999999 -0.00154039 6.91492e-05 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera7__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera8__d8bcfff6-7942-4cf8-8610-8a777e3ad150">
+   <VCGCamera TranslationVector="-0.476693 0.0206 3.24905 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-1.0000 -0.0060" RotationMatrix="-0.70705 -0.00534274 0.707143 0 0.406873 -0.820951 0.400617 0 0.578389 0.570973 0.582628 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera8__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg"/>
+  </MLRaster>
+  <MLRaster label="pano_camera9__d8bcfff6-7942-4cf8-8610-8a777e3ad150">
+   <VCGCamera TranslationVector="-0.476693 0.0206 3.24905 1" LensDistortion="1 760" ViewportPx="0 0" PixelSizeMm="1 759.5000" FocalMm="759.5000" CenterPx="-0.8210 0.4006" RotationMatrix="0.707161 -0.00316429 0.707045 0 0.406809 -0.816072 -0.410528 0 0.578299 0.577942 -0.575807 0 0 0 0 1"/>
+   <Plane semantic="" fileName="colmap/images/pano_camera9__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg"/>
+  </MLRaster>
+ </RasterGroup>
+</MeshLabProject>

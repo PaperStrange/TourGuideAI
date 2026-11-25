@@ -36,6 +36,11 @@ on 5 November 2026 each returned zero matching issues. Earlier issue records are
 the user's requested iteration scope. New current-year issues may enter this
 register when their behavior is reproduced against the current application.
 
+On 25 November, the connected GitHub issue search returned zero results for both
+`repo:PaperStrange/TourGuideAI is:issue created:>=2026-01-01` and
+`repo:PaperStrange/TourGuideAI is:issue updated:>=2026-01-01`. No current-year issue
+adds work to the surface increment.
+
 Physical-device access, fresh participants, source acquisition quotes and any
 needed capture permission/funding remain explicit dependencies. The scene audit
 and benchmark implementation can proceed while their status is recorded; dependent

@@ -16,6 +16,28 @@ The reservation predates acquisition and surface fitting. Both held-out images
 share the original capture sequence; their evaluation addresses unseen views
 within that source family. They remain excluded from geometry and texture fitting.
 
+The native [surface run](../evidence/realism-01/connector-surface/run-02/manifest.json)
+produces 39,651 dense points and a 66,755-triangle textured mesh. The
+[independent surface audit](../evidence/realism-01/connector-surface-qa/README.md)
+recomputes all 144,118 source-view observations and the complete geometry.
+Every dense point has at least two physical source positions; all support depths
+are positive. Mesh interpolation, mask-boundary observations and three low-parallax
+points remain explicit. The native 8,192-pixel atlas exceeds the texture budget.
+The separate [4,096-pixel atlas](../evidence/realism-01/connector-surface/texture-4096-01/manifest.json)
+preserves all 66,755 triangles and source-photo resolution through native packing.
+Its base texture allocation is 64 MiB; full mipmaps require 85.33 MiB before
+browser render targets. Total browser allocation and transfer gates remain open.
+
+Both reserved images localize against unchanged sparse geometry. The
+[held-out evaluation](../evidence/realism-01/connector-surface-evaluation/README.md)
+retains all 24 virtual views and both matching attempts. Actual coverage is
+30.24% and 13.03% of eligible upper-hemisphere pixels, including sky. The
+4,096-pixel variant's remaining-pixel RGB errors are 19.06 and 36.56 out of 255;
+these are model-relative diagnostics. [Independent retained-evidence QA](../evidence/realism-01/connector-surface-qa/heldout/README.md)
+recomputes associations, pose classifications and saved-pixel measurements.
+Browser comparison delivery is active. Ground, metric scale, eastward overlap,
+independent recognition and the full-route acceptance gates remain open.
+
 15 November 2026 · Shared-camera reconstruction and public comparison delivered.
 
 Resume at [the owned increment](../sprints/realism-01/shared-rig-increment.md).

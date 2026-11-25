@@ -1,0 +1,263 @@
+02:22:57 [App     ] OpenMVS x64 v2.4.0
+02:22:57 [App     ] Build date: Jan 19 2026, 23:24:23
+02:22:57 [App     ] CPU: AMD EPYC 9V74 80-Core Processor                 (5 cores)
+02:22:57 [App     ] RAM: 17.59GB Physical Memory 0B Virtual Memory
+02:22:57 [App     ] OS: Linux 6.18.57 (x86_64)
+02:22:57 [App     ] Disk: 26.50GB (31.45GB) space
+02:22:57 [App     ] SSE & AVX compatible CPU & OS detected
+02:22:57 [App     ] Command line: DensifyPointCloud -i scene.mvs -o scene_dense.mvs --max-threads 2 --resolution-level 1 --max-resolution 1520 --min-resolution 640 --number-views 5 --number-views-fuse 2 --iters 3 --geometric-iters 2 --fusion-filter 2 --fusion-depth-diff-threshold 0.01 --fusion-reprojection-threshold 1.2 --postprocess-dmaps 0 --tower-mode 0 --normalize-coordinates 0 --estimate-scale 0 --estimate-roi 0 --crop-to-roi 0 --remove-dmaps 0 --mask-path /workspace/TourGuideAI/artifacts/realism-01/connector-surface/run-02/masks --ignore-mask-label 0 --archive-type -1 --verbosity 3
+02:22:57 [Scene   ] Camera model loaded: platform 0; camera  0; f 0.500x0.500; poses 32
+02:22:57 [Scene   ] Image loaded   0: pano_camera10__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:22:57 [Scene   ] Image loaded   1: pano_camera11__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:22:57 [Scene   ] Image loaded   2: pano_camera4__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:22:57 [Scene   ] Image loaded   3: pano_camera5__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:22:57 [Scene   ] Image loaded   4: pano_camera6__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:22:57 [Scene   ] Image loaded   5: pano_camera7__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:22:57 [Scene   ] Image loaded   6: pano_camera8__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:22:57 [Scene   ] Image loaded   7: pano_camera9__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:22:57 [Scene   ] Image loaded   8: pano_camera10__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:22:57 [Scene   ] Image loaded   9: pano_camera11__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:22:57 [Scene   ] Image loaded  10: pano_camera4__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:22:57 [Scene   ] Image loaded  11: pano_camera5__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:22:57 [Scene   ] Image loaded  12: pano_camera6__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:22:57 [Scene   ] Image loaded  13: pano_camera7__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:22:57 [Scene   ] Image loaded  14: pano_camera8__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:22:57 [Scene   ] Image loaded  15: pano_camera9__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:22:57 [Scene   ] Image loaded  16: pano_camera10__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:22:57 [Scene   ] Image loaded  17: pano_camera11__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:22:57 [Scene   ] Image loaded  18: pano_camera4__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:22:57 [Scene   ] Image loaded  19: pano_camera5__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:22:57 [Scene   ] Image loaded  20: pano_camera6__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:22:57 [Scene   ] Image loaded  21: pano_camera7__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:22:57 [Scene   ] Image loaded  22: pano_camera8__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:22:57 [Scene   ] Image loaded  23: pano_camera9__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:22:57 [Scene   ] Image loaded  24: pano_camera10__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:22:57 [Scene   ] Image loaded  25: pano_camera11__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:22:57 [Scene   ] Image loaded  26: pano_camera4__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:22:57 [Scene   ] Image loaded  27: pano_camera5__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:22:57 [Scene   ] Image loaded  28: pano_camera6__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:22:57 [Scene   ] Image loaded  29: pano_camera7__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:22:57 [Scene   ] Image loaded  30: pano_camera8__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:22:57 [Scene   ] Image loaded  31: pano_camera9__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:22:57 [Scene   ] Scene loaded in interface format from 'scene.mvs' (8ms):
+	32 images (32 calibrated) with a total of 70.51 MPixels (2.20 MPixels/image)
+	1377 points, 0 vertices, 0 faces
+02:22:57 [PointCld] Point-cloud composed of 1377 points with:
+ - visibility info (4386 views - 3.19 views/point):
+	        0 points with 1- views (0.00%)
+	      234 points with 2  views (16.99%)
+	      669 points with 3  views (48.58%)
+	      474 points with 4+ views (34.42%)
+	2 min / 3.18519 mean (0.715924 std) / 5 max
+02:22:57 [ScnDense] K16 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:57 [ScnDense] K0 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:57 [ScnDense] K17 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:57 [ScnDense] K1 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:57 [ScnDense] K18 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:57 [ScnDense] K2 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:57 [ScnDense] K19 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:57 [ScnDense] K3 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:57 [ScnDense] K20 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:57 [ScnDense] K4 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:57 [ScnDense] K21 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:57 [ScnDense] K5 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:57 [ScnDense] K22 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:57 [ScnDense] K6 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:57 [ScnDense] K23 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:57 [ScnDense] K7 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:57 [ScnDense] K24 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:57 [ScnDense] K8 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:58 [ScnDense] K25 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:58 [ScnDense] K9 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:58 [ScnDense] K26 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:58 [ScnDense] K10 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:58 [ScnDense] K27 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:58 [ScnDense] K28 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:58 [ScnDense] K11 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:58 [ScnDense] K29 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:58 [ScnDense] K12 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:58 [ScnDense] K30 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:58 [ScnDense] K13 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:58 [ScnDense] K31 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:58 [ScnDense] K14 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:58 [ScnDense] K15 = 
+  380.0000     0.0000   379.5000 
+    0.0000   380.0000   379.5000 
+    0.0000     0.0000     1.0000 
+
+02:22:58 [ScnDense] Preparing images for dense reconstruction completed: 32 images (300ms)
+02:22:58 [Scene   ] Reference image   0 sees 4 views:  24(46pts,0.98scl)  16(25pts,0.93scl)   8(8pts,0.90scl)  21(13pts,0.97scl) (52 shared points)
+02:22:58 [Scene   ] Reference image  24 sees 4 views:   0(46pts,1.02scl)  16(25pts,0.94scl)  21(14pts,0.98scl)   8(6pts,0.91scl) (52 shared points)
+02:22:58 [Scene   ] Reference image  16 sees 5 views:   0(25pts,1.07scl)  24(25pts,1.06scl)   8(10pts,0.95scl)   4(8pts,1.11scl)  28(8pts,1.09scl) (37 shared points)
+02:22:58 [Scene   ] Reference image   8 sees 3 views:   0(8pts,1.11scl)  24(6pts,1.10scl)  16(10pts,1.05scl) (10 shared points)
+02:22:58 [Scene   ] Reference image  17 sees 6 views:  25(132pts,0.91scl)   1(107pts,0.90scl)   9(91pts,1.08scl)  29(21pts,0.88scl)   5(22pts,0.87scl)  10(18pts,1.09scl) (190 shared points)
+02:22:58 [Scene   ] Reference image  25 sees 6 views:  17(130pts,1.10scl)   9(81pts,1.15scl)   1(169pts,0.98scl)  10(47pts,1.18scl)  18(34pts,1.11scl)   5(14pts,0.95scl) (236 shared points)
+02:22:58 [Scene   ] Reference image   1 sees 5 views:  17(107pts,1.12scl)   9(75pts,1.16scl)  25(171pts,1.02scl)  10(46pts,1.21scl)  18(32pts,1.19scl) (213 shared points)
+02:22:58 [Scene   ] Reference image   9 sees 6 views:   1(75pts,0.87scl)  25(83pts,0.87scl)  17(91pts,0.93scl)  21(11pts,0.91scl)  29(18pts,0.81scl)   5(15pts,0.80scl) (151 shared points)
+02:22:58 [Scene   ] Reference image  18 sees 7 views:  10(152pts,1.09scl)  26(151pts,0.90scl)   2(140pts,0.89scl)   1(32pts,0.87scl)  30(19pts,0.85scl)  25(34pts,0.90scl)   6(16pts,0.84scl) (215 shared points)
+02:22:58 [Scene   ] Reference image  26 sees 3 views:  10(129pts,1.21scl)  18(150pts,1.12scl)   2(151pts,0.99scl) (171 shared points)
+02:22:58 [Scene   ] Reference image   2 sees 3 views:  10(119pts,1.21scl)  18(140pts,1.13scl)  26(152pts,1.01scl) (160 shared points)
+02:22:58 [Scene   ] Reference image  10 sees 9 views:  18(152pts,0.92scl)  26(130pts,0.83scl)   2(119pts,0.83scl)  30(37pts,0.78scl)   6(32pts,0.77scl)  22(27pts,0.86scl)   1(46pts,0.84scl)  25(47pts,0.85scl)  17(18pts,0.92scl) (239 shared points)
+02:22:58 [Scene   ] Reference image  19 sees 6 views:  27(24pts,1.04scl)  11(14pts,0.97scl)   3(14pts,1.04scl)  31(10pts,1.14scl)   7(10pts,1.15scl)  14(6pts,1.04scl) (35 shared points)
+02:22:58 [Scene   ] Reference image  27 sees 4 views:  19(24pts,0.97scl)  11(11pts,0.93scl)   3(16pts,1.00scl)  14(4pts,1.00scl) (26 shared points)
+02:22:58 [Scene   ] Reference image   3 sees 3 views:  19(14pts,0.97scl)  11(6pts,0.93scl)  27(16pts,1.00scl) (16 shared points)
+02:22:58 [Scene   ] Reference image  11 sees 5 views:  19(14pts,1.03scl)  27(11pts,1.07scl)   3(6pts,1.08scl)  31(5pts,1.35scl)   7(3pts,1.37scl) (17 shared points)
+02:22:58 [Scene   ] Reference image  20 sees 4 views:   4(181pts,1.13scl)  28(160pts,1.12scl)  12(104pts,0.91scl)  15(39pts,0.90scl) (197 shared points)
+02:22:58 [Scene   ] Reference image  28 sees 6 views:   4(261pts,1.01scl)  20(159pts,0.90scl)  12(109pts,0.83scl)  15(106pts,0.82scl)  23(71pts,0.90scl)  16(8pts,0.91scl) (285 shared points)
+02:22:58 [Scene   ] Reference image   4 sees 6 views:  28(263pts,0.99scl)  20(183pts,0.89scl)  12(127pts,0.81scl)  15(108pts,0.80scl)  23(67pts,0.89scl)  16(8pts,0.90scl) (304 shared points)
+02:22:58 [Scene   ] Reference image  29 sees 5 views:  21(52pts,1.06scl)   5(82pts,0.99scl)  17(21pts,1.15scl)   9(18pts,1.24scl)  13(5pts,1.12scl) (95 shared points)
+02:22:58 [Scene   ] Reference image  21 sees 6 views:  29(50pts,0.95scl)   5(46pts,0.94scl)   9(11pts,1.10scl)  24(14pts,1.02scl)  13(8pts,1.04scl)   0(13pts,1.03scl) (74 shared points)
+02:22:58 [Scene   ] Reference image  12 sees 3 views:   4(127pts,1.23scl)  28(110pts,1.21scl)  20(106pts,1.10scl) (136 shared points)
+02:22:58 [Scene   ] Reference image   5 sees 6 views:  21(48pts,1.06scl)  29(82pts,1.01scl)  17(22pts,1.15scl)  25(14pts,1.06scl)   9(15pts,1.25scl)  13(4pts,1.18scl) (101 shared points)
+02:22:58 [Scene   ] Reference image  30 sees 5 views:  22(73pts,1.12scl)  10(36pts,1.29scl)   6(115pts,0.99scl)  14(18pts,1.19scl)  18(18pts,1.18scl) (127 shared points)
+02:22:58 [Scene   ] Reference image  22 sees 4 views:  30(73pts,0.90scl)   6(71pts,0.88scl)  10(27pts,1.16scl)  14(25pts,1.09scl) (88 shared points)
+02:22:58 [Scene   ] Reference image  13 sees 3 views:  21(8pts,0.96scl)  29(5pts,0.90scl)   5(4pts,0.85scl) (11 shared points)
+02:22:58 [Scene   ] Reference image   6 sees 5 views:  22(71pts,1.13scl)  30(115pts,1.01scl)  10(32pts,1.31scl)  14(22pts,1.18scl)  18(15pts,1.19scl) (124 shared points)
+02:22:58 [Scene   ] Reference image  23 sees 5 views:   7(179pts,1.09scl)  31(179pts,1.08scl)  15(208pts,0.92scl)   4(66pts,1.13scl)  28(70pts,1.12scl) (274 shared points)
+02:22:58 [Scene   ] Reference image  31 sees 5 views:  15(137pts,0.86scl)  23(176pts,0.92scl)   7(187pts,1.01scl)  19(10pts,0.88scl)  11(5pts,0.74scl) (204 shared points)
+02:22:58 [Scene   ] Reference image   7 sees 5 views:  15(142pts,0.85scl)  23(180pts,0.91scl)  31(191pts,0.99scl)  19(10pts,0.88scl)  11(3pts,0.73scl) (209 shared points)
+02:22:58 [Scene   ] Reference image  14 sees 5 views:   6(22pts,0.85scl)  30(19pts,0.84scl)  22(26pts,0.92scl)  19(6pts,0.97scl)  27(4pts,1.00scl) (34 shared points)
+02:22:58 [Scene   ] Reference image  15 sees 6 views:   7(142pts,1.18scl)  31(141pts,1.17scl)  23(209pts,1.08scl)   4(108pts,1.25scl)  28(107pts,1.23scl)  20(39pts,1.11scl) (283 shared points)
+02:22:58 [ScnDense] Selecting images for dense reconstruction completed: 32 images (6ms)
+Estimated depth-maps 1 (3.12%, 3s, ETA 1m)...Estimated depth-maps 2 (6.25%, 6s, ETA 1m)...Estimated depth-maps 3 (9.38%, 7s, ETA 1m)...Estimated depth-maps 4 (12.50%, 8s, ETA 57s)...Estimated depth-maps 5 (15.62%, 11s, ETA 59s)...Estimated depth-maps 6 (18.75%, 12s, ETA 54s)...Estimated depth-maps 7 (21.88%, 15s, ETA 54s)...Estimated depth-maps 8 (25.00%, 17s, ETA 51s)...Estimated depth-maps 9 (28.12%, 20s, ETA 52s)...Estimated depth-maps 10 (31.25%, 23s, ETA 50s)...Estimated depth-maps 11 (34.38%, 23s, ETA 45s)...Estimated depth-maps 12 (37.50%, 24s, ETA 40s)...Estimated depth-maps 13 (40.62%, 25s, ETA 36s)...Estimated depth-maps 14 (43.75%, 26s, ETA 34s)...Estimated depth-maps 15 (46.88%, 28s, ETA 32s)...Estimated depth-maps 16 (50.00%, 31s, ETA 31s)...Estimated depth-maps 32 (100%, 31s306ms)         
+Geometric-consistent estimated depth-maps 1 (3.12%, 1s, ETA 32s)...Geometric-consistent estimated depth-maps 2 (6.25%, 2s, ETA 31s)...Geometric-consistent estimated depth-maps 4 (12.50%, 2s, ETA 16s)...Geometric-consistent estimated depth-maps 5 (15.62%, 3s, ETA 17s)...Geometric-consistent estimated depth-maps 6 (18.75%, 3s, ETA 15s)...Geometric-consistent estimated depth-maps 7 (21.88%, 4s, ETA 15s)...Geometric-consistent estimated depth-maps 8 (25.00%, 4s, ETA 14s)...Geometric-consistent estimated depth-maps 9 (28.12%, 5s, ETA 14s)...Geometric-consistent estimated depth-maps 10 (31.25%, 6s, ETA 13s)...Geometric-consistent estimated depth-maps 11 (34.38%, 6s, ETA 12s)...Geometric-consistent estimated depth-maps 12 (37.50%, 6s, ETA 10s)...Geometric-consistent estimated depth-maps 13 (40.62%, 7s, ETA 10s)...Geometric-consistent estimated depth-maps 14 (43.75%, 7s, ETA 9s)... Geometric-consistent estimated depth-maps 15 (46.88%, 8s, ETA 9s)...Geometric-consistent estimated depth-maps 32 (100%, 8s77ms)         
+Geometric-consistent estimated depth-maps 1 (3.12%, 920ms, ETA 28s)...Geometric-consistent estimated depth-maps 2 (6.25%, 1s, ETA 26s)...   Geometric-consistent estimated depth-maps 3 (9.38%, 1s, ETA 18s)...Geometric-consistent estimated depth-maps 4 (12.50%, 2s, ETA 14s)...Geometric-consistent estimated depth-maps 5 (15.62%, 2s, ETA 15s)...Geometric-consistent estimated depth-maps 6 (18.75%, 3s, ETA 14s)...Geometric-consistent estimated depth-maps 7 (21.88%, 4s, ETA 14s)...Geometric-consistent estimated depth-maps 8 (25.00%, 5s, ETA 15s)...Geometric-consistent estimated depth-maps 9 (28.12%, 5s, ETA 14s)...Geometric-consistent estimated depth-maps 10 (31.25%, 6s, ETA 14s)...Geometric-consistent estimated depth-maps 11 (34.38%, 6s, ETA 12s)...Geometric-consistent estimated depth-maps 12 (37.50%, 6s, ETA 11s)...Geometric-consistent estimated depth-maps 13 (40.62%, 7s, ETA 10s)...Geometric-consistent estimated depth-maps 14 (43.75%, 7s, ETA 10s)...Geometric-consistent estimated depth-maps 15 (46.88%, 8s, ETA 9s)... Geometric-consistent estimated depth-maps 32 (100%, 8s742ms)        
+Dense fused depth-maps 5 (15.62%, 138ms, ETA 749ms)...Dense fused depth-maps 9 (28.12%, 253ms, ETA 648ms)...Dense fused depth-maps 12 (37.50%, 396ms, ETA 660ms)...Dense fused depth-maps 32 (100%, 459ms)                
+02:23:46 [ScnDense] Depth-maps dense fused and filtered: 15 depth-maps, 1547722 depths, 39651 points (3%%), 2.67 hits in 8.73 cached (459ms)
+02:23:46 [ScnDense] Dense point-cloud composed of:
+	0 points with 1- views
+	7 points with 2 views
+	39644 points with 3+ views
+02:23:46 [App     ] Densifying point-cloud completed: 39651 points (48s910ms)
+02:23:46 [PointCld] Point-cloud 'scene_dense.ply' saved: 39651 points (11ms)
+02:23:46 [Scene   ] Scene saved in interface format to 'scene_dense.mvs' (0ms):
+	32 images (32 calibrated)
+	1377 points, 0 vertices, 0 faces
+02:23:46 [App     ] MEMORYINFO: {
+02:23:46 [App     ] 	VmPeak:	  670340 kB
+02:23:46 [App     ] 	VmSize:	  662544 kB
+02:23:46 [App     ] } ENDINFO

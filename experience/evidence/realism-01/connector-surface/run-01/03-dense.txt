@@ -1,0 +1,49 @@
+02:21:28 [App     ] OpenMVS x64 v2.4.0
+02:21:28 [App     ] Build date: Jan 19 2026, 23:24:23
+02:21:28 [App     ] CPU: AMD EPYC 9V74 80-Core Processor                 (5 cores)
+02:21:28 [App     ] RAM: 17.59GB Physical Memory 0B Virtual Memory
+02:21:28 [App     ] OS: Linux 6.18.57 (x86_64)
+02:21:28 [App     ] Disk: 26.94GB (31.45GB) space
+02:21:28 [App     ] SSE & AVX compatible CPU & OS detected
+02:21:28 [App     ] Command line: DensifyPointCloud -i scene.mvs -o scene_dense.mvs --max-threads 2 --resolution-level 1 --max-resolution 1520 --min-resolution 640 --number-views 5 --number-views-fuse 2 --iters 3 --geometric-iters 2 --fusion-filter 2 --fusion-depth-diff-threshold 0.01 --fusion-reprojection-threshold 1.2 --postprocess-dmaps 0 --tower-mode 0 --normalize-coordinates 0 --estimate-scale 0 --estimate-roi 0 --crop-to-roi 0 --remove-dmaps 0 --mask-path /workspace/TourGuideAI/artifacts/realism-01/connector-surface/run-01/masks --ignore-mask-label 0 --archive-type -1 --verbosity 3
+02:21:28 [Scene   ] Camera model loaded: platform 0; camera  0; f 0.500x0.500; poses 32
+02:21:28 [Scene   ] Image loaded   0: pano_camera10__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:21:28 [Scene   ] Image loaded   1: pano_camera11__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:21:28 [Scene   ] Image loaded   2: pano_camera4__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:21:28 [Scene   ] Image loaded   3: pano_camera5__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:21:28 [Scene   ] Image loaded   4: pano_camera6__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:21:28 [Scene   ] Image loaded   5: pano_camera7__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:21:28 [Scene   ] Image loaded   6: pano_camera8__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:21:28 [Scene   ] Image loaded   7: pano_camera9__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.jpg
+02:21:28 [Scene   ] Image loaded   8: pano_camera10__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:21:28 [Scene   ] Image loaded   9: pano_camera11__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:21:28 [Scene   ] Image loaded  10: pano_camera4__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:21:28 [Scene   ] Image loaded  11: pano_camera5__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:21:28 [Scene   ] Image loaded  12: pano_camera6__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:21:28 [Scene   ] Image loaded  13: pano_camera7__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:21:28 [Scene   ] Image loaded  14: pano_camera8__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:21:28 [Scene   ] Image loaded  15: pano_camera9__6bcac3e5-738b-4e35-9e46-b00819b4ead1.jpg
+02:21:28 [Scene   ] Image loaded  16: pano_camera10__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:21:28 [Scene   ] Image loaded  17: pano_camera11__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:21:28 [Scene   ] Image loaded  18: pano_camera4__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:21:28 [Scene   ] Image loaded  19: pano_camera5__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:21:28 [Scene   ] Image loaded  20: pano_camera6__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:21:28 [Scene   ] Image loaded  21: pano_camera7__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:21:28 [Scene   ] Image loaded  22: pano_camera8__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:21:28 [Scene   ] Image loaded  23: pano_camera9__8fa8dca2-39b0-4a49-9a2f-f61fe86354e7.jpg
+02:21:28 [Scene   ] Image loaded  24: pano_camera10__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:21:28 [Scene   ] Image loaded  25: pano_camera11__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:21:28 [Scene   ] Image loaded  26: pano_camera4__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:21:28 [Scene   ] Image loaded  27: pano_camera5__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:21:28 [Scene   ] Image loaded  28: pano_camera6__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:21:28 [Scene   ] Image loaded  29: pano_camera7__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:21:28 [Scene   ] Image loaded  30: pano_camera8__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:21:28 [Scene   ] Image loaded  31: pano_camera9__d8bcfff6-7942-4cf8-8610-8a777e3ad150.jpg
+02:21:28 [Scene   ] Scene loaded in interface format from 'scene.mvs' (30ms):
+	32 images (32 calibrated) with a total of 70.51 MPixels (2.20 MPixels/image)
+	1377 points, 0 vertices, 0 faces
+02:21:28 [App     ] error: Mask image /workspace/TourGuideAI/artifacts/realism-01/connector-surface/run-01/masks/pano_camera10__4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444.mask.png not found
+02:21:28 [App     ] MEMORYINFO: {
+02:21:28 [App     ] 	VmPeak:	   29636 kB
+02:21:28 [App     ] 	VmSize:	   29636 kB
+02:21:28 [App     ] } ENDINFO
